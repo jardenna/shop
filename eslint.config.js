@@ -1,7 +1,6 @@
 import { default as js, default as pluginJs } from '@eslint/js';
 import importPlugin from 'eslint-plugin-import';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
-import perfectionist from 'eslint-plugin-perfectionist';
 import prettier from 'eslint-plugin-prettier/recommended';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
@@ -9,7 +8,7 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint, { configs as tsConfigs } from 'typescript-eslint';
 
 export default tseslint.config(
-  { ignores: ['dist', 'node_modules'] },
+  { ignores: ['dist', 'node_modules', '**/.server/'] },
   pluginJs.configs.recommended,
   {
     languageOptions: {
@@ -17,6 +16,10 @@ export default tseslint.config(
         projectService: true,
         ecmaVersion: 'latest',
         sourceType: 'module',
+        globals: {
+          process: 'readonly', // Fixes "process is not defined" error
+          __dirname: 'readonly', // Fixes "__dirname is not defined" if used
+        },
         tsconfigRootDir: import.meta.dirname,
       },
     },
@@ -45,7 +48,6 @@ export default tseslint.config(
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
-      perfectionist,
     },
     settings: {
       // for eslint-plugin-react to auto detect react version
@@ -60,7 +62,6 @@ export default tseslint.config(
       },
     },
     rules: {
-      'perfectionist/sort-imports': 'error',
       'prettier/prettier': [
         'error',
         { endOfLine: 'auto' },
