@@ -1,5 +1,6 @@
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
+// eslint-disable-next-line import/no-named-as-default
 import checker from 'vite-plugin-checker';
 import eslint from 'vite-plugin-eslint2';
 
