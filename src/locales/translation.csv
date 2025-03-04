@@ -11,4 +11,5 @@ passwordLowercase;Password should contain at least one lowercase letter;Adgangsk
 passwordNumber;Password should contain at least one number;Adgangskoden skal indeholde mindst ét tal
 passwordSymbol;Password should contain at least one special character;Adgangskoden skal indeholde mindst ét specialtegn
 passwordUppercase;Password should contain at least one uppercase letter;Adgangskoden skal indeholde mindst ét stort bogstav
-
+invalidUserData;Invalid user data;Ugyldig bruger data
+loggedOut;Logged out successfully;Logget ud 
