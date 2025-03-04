@@ -1,2 +1,14 @@
 ﻿key;en;da
-actions;Actions;Handlinger
+fillAll;Please fill all the inputs;Udfyld venligst alle felter
+invalidEmail;Please provide a valid email;Indtast venligst en gyldig e-mail
+invalidPassword;Invalid password;Ugyldig adgangskode
+loginFailed;Login failed;Login mislykkedes
+noUser;User not found. Please sign up first;Bruger ikke fundet. Opret dig først
+signupFailed;Sign up failed;Registrering mislykkedes
+userAlreadyExist;A profile with this email already exists. Try logging in instead;Der findes en profil med denne e-mail. Prøv at logge ind i stedet
+passwordMinLength;Password should be at least 8 characters;Adgangskoden skal være mindst 8 tegn
+passwordLowercase;Password should contain at least one lowercase letter;Adgangskoden skal indeholde mindst ét lille bogstav
+passwordNumber;Password should contain at least one number;Adgangskoden skal indeholde mindst ét tal
+passwordSymbol;Password should contain at least one special character;Adgangskoden skal indeholde mindst ét specialtegn
+passwordUppercase;Password should contain at least one uppercase letter;Adgangskoden skal indeholde mindst ét stort bogstav
+
