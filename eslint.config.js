@@ -23,6 +23,10 @@ export default tseslint.config(
         tsconfigRootDir: import.meta.dirname,
       },
     },
+    env: {
+      node: true, // Add this line to specify Node.js environment
+      es2020: true,
+    },
   },
   {
     // specify the formats on which to apply the rules below
@@ -37,7 +41,7 @@ export default tseslint.config(
       react.configs.flat.recommended,
       // import
       importPlugin.flatConfigs.recommended,
-      // a11y (accessibility
+      // a11y (accessibility)
       jsxA11y.flatConfigs.recommended,
       // prettier
       prettier,
