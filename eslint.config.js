@@ -1,4 +1,4 @@
-import { default as js, default as pluginJs } from '@eslint/js';
+import { default as js } from '@eslint/js';
 import importPlugin from 'eslint-plugin-import';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import prettier from 'eslint-plugin-prettier/recommended';
@@ -8,8 +8,7 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint, { configs as tsConfigs } from 'typescript-eslint';
 
 export default tseslint.config(
-  { ignores: ['dist', 'node_modules', '**/.server/'] },
-  pluginJs.configs.recommended,
+  // pluginJs.configs.recommended,
   {
     languageOptions: {
       parserOptions: {
@@ -17,20 +16,15 @@ export default tseslint.config(
         ecmaVersion: 'latest',
         sourceType: 'module',
         globals: {
-          process: 'readonly', // Fixes "process is not defined" error
+          process: 'readonly',
+          console: 'readonly',
           __dirname: 'readonly', // Fixes "__dirname is not defined" if used
         },
         tsconfigRootDir: import.meta.dirname,
       },
     },
-    env: {
-      node: true, // Add this line to specify Node.js environment
-      es2020: true,
-    },
   },
   {
-    // specify the formats on which to apply the rules below
-    files: ['**/*.{ts,tsx}'],
     // use predefined configs in installed eslint plugins
     extends: [
       // js
@@ -65,6 +59,9 @@ export default tseslint.config(
         },
       },
     },
+    // specify the formats on which to apply the rules below
+    files: ['**/*.{ts,tsx}'],
+    ignores: ['dist', 'node_modules'],
     rules: {
       'prettier/prettier': [
         'error',
