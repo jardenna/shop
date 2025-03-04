@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "vite",
-    "star1t": "concurrently -n 'backend,frontend' -c  \"red,blue\" \"nodemon  server/app\" \"npm run frontend\"",
+    "frontend": "vite",
+    "start": "concurrently -n 'backend,frontend' -c  \"red,blue\" \"nodemon  server/app\" \"npm run frontend\"",
     "build": "tsc && vite build",
     "preview": "vite preview 5000 --strictPort",
     "format": "prettier --write .",
@@ -14,7 +14,7 @@
     "stylelint": "npx stylelint \"**/*.scss\"",
     "stylelint:fix": "npx stylelint \"**/*.scss\" --fix",
     "prepare": "husky",
-    "server": "nodemon server/index.js",
+    "server": "nodemon server/app.js",
     "translate": "node src/locales/generateTranslations.js"
   },
   "lint-staged": {
