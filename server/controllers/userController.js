@@ -143,4 +143,12 @@ const logoutCurrentUser = asyncHandler(async (req, res) => {
   });
 });
 
-export { createUser, loginUser, logoutCurrentUser };
+// @desc    Get all users
+// @route   Get /api/users/logout
+// @access  Private for admin
+const getAllUsers = asyncHandler(async (req, res) => {
+  const users = await User.find({});
+  res.json(users);
+});
+
+export { createUser, getAllUsers, loginUser, logoutCurrentUser };
