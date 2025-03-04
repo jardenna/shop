@@ -1,6 +1,7 @@
 import { default as js } from '@eslint/js';
 import importPlugin from 'eslint-plugin-import';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
+import perfectionist from 'eslint-plugin-perfectionist';
 import prettier from 'eslint-plugin-prettier/recommended';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
@@ -44,6 +45,7 @@ export default tseslint.config(
 
     // specify used plugins
     plugins: {
+      perfectionist,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
     },
@@ -63,6 +65,7 @@ export default tseslint.config(
     files: ['**/*.{ts,tsx}'],
     ignores: ['dist', 'node_modules'],
     rules: {
+      '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'error',
       'prettier/prettier': [
         'error',
         { endOfLine: 'auto' },
@@ -79,6 +82,14 @@ export default tseslint.config(
           peerDependencies: true,
         },
       ],
+      'perfectionist/sort-interfaces': [
+        'error',
+        {
+          groups: ['required-property', 'optional-property'],
+        },
+      ],
+      'perfectionist/sort-enums': ['error'],
+
       'react/function-component-definition': [
         2,
         {
