@@ -10,7 +10,7 @@ import { t } from '../utils/translator.js';
 // @route   POST /api/users/register
 // @access  Public
 const createUser = asyncHandler(async (req, res) => {
-  const { username, email, password } = req.body;
+  const { username, email, password, isAdmin } = req.body;
   const userExists = await User.findOne({ email });
 
   if (!username || !email || !password) {
@@ -52,6 +52,7 @@ const createUser = asyncHandler(async (req, res) => {
     username,
     email,
     password: hashPassword,
+    isAdmin,
   });
 
   try {
