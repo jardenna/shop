@@ -94,13 +94,15 @@ const loginUser = asyncHandler(async (req, res) => {
 
   if (!email) {
     return res.status(401).json({
-      message: 'Email must be provided',
+      success: false,
+      message: t('noEmail', req.lang),
     });
   }
 
   if (!password) {
     return res.status(401).json({
-      message: 'Password must be provided',
+      success: false,
+      message: t('noPassword', req.lang),
     });
   }
 

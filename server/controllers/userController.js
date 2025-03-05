@@ -36,36 +36,46 @@ const getCurrentUserProfile = asyncHandler(async (req, res) => {
 // @route   Put /api/users/profile
 // @access  Private for logged in user
 const updateCurrentUserProfile = asyncHandler(async (req, res) => {
-  const { password, email } = req.body;
+  const { password, email, username } = req.body;
   const user = await User.findById(req.user._id);
-  if (user) {
-    user.username = req.body.username || user.username;
-    user.email = req.body.email || user.email;
 
-    const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS) || 10;
-    const hashPassword = await bcrypt.hash(password, saltRounds);
+  if (user) {
+    user.username = username || user.username;
+    user.email = email || user.email;
 
     // Validate email
-    if (!emailRegex.test(email)) {
+    if (email === '') {
+      return res.status(401).json({
+        success: false,
+        message: t('noEmail', req.lang),
+      });
+    }
+
+    if (email && !emailRegex.test(email)) {
       return res.status(422).json({
         success: false,
         message: t('invalidEmail', req.lang),
       });
     }
-
-    // Validate password
     if (password) {
+      const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS) || 10;
+      const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
+
       const passwordErrorKey = validatePassword(password);
+
+      if (password === '') {
+        return res.status(401).json({
+          success: false,
+          message: t('noPassword', req.lang),
+        });
+      }
 
       if (passwordErrorKey) {
         return res.status(400).json({
           message: t(passwordErrorKey, req.lang),
         });
       }
-    }
-
-    if (password) {
-      user.password = hashPassword;
+      user.password = hashedPassword;
     }
 
     const updatedUser = await user.save();

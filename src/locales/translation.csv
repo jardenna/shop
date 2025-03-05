@@ -1,6 +1,8 @@
 ﻿key;en;da
 fillAll;Please fill all the inputs;Udfyld venligst alle felter
 invalidEmail;Please provide a valid email;Indtast venligst en gyldig e-mail
+noEmail;Please provide a email;Indtast venligst en e-mail
+noPassword;Please provide a password;Indtast venligst en adgangskode
 invalidPassword;Invalid password;Ugyldig adgangskode
 loginFailed;Login failed;Login mislykkedes
 noUser;User not found. Please sign up first;Bruger ikke fundet. Opret dig først
