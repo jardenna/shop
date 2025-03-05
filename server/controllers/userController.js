@@ -87,4 +87,94 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
   }
 });
 
-export { getAllUsers, getCurrentUserProfile, updateCurrentUserProfile };
+// @desc    Delete user
+// @route   Delete /api/users/:id
+// @params  id
+// @access  Private for Admin
+const deleteUserById = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+
+  if (user) {
+    if (user.isAdmin) {
+      return res.status(400).json({
+        success: false,
+        message: t('cannotDeleteAdmin', req.lang),
+      });
+    }
+
+    await User.deleteOne({ _id: user._id });
+
+    res.status(200).json({
+      success: true,
+      message: t('userDeleted', req.lang),
+    });
+  } else {
+    res.status(404).json({
+      success: false,
+      message: t('noUser', req.lang),
+    });
+  }
+});
+
+// @desc    Get user by Id
+// @route   Get /api/users/:id
+// @params  id
+// @access  Private for Admin
+const getUserById = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id).select('-password');
+
+  if (user) {
+    res.json(user);
+  } else {
+    res.status(404).json({
+      success: false,
+      message: t('noUser', req.lang),
+    });
+  }
+});
+
+// @desc    Update user by Id
+// @route   Put /api/users/:id
+// @params  id
+// @access  Private for Admin
+const updateUserById = asyncHandler(async (req, res) => {
+  const { username, email, isAdmin } = req.body;
+  const user = await User.findById(req.params.id);
+
+  if (user) {
+    user.username = username || user.username;
+    user.email = email || user.email;
+    user.isAdmin = Boolean(isAdmin);
+
+    if (email) {
+      // Validate email
+      const emailResult = validateEmail(email, req.lang);
+      if (!emailResult.isValid) {
+        return res.status(emailResult.status).json(emailResult.payload);
+      }
+    }
+
+    const updatedUser = await user.save();
+
+    res.json({
+      id: updatedUser._id,
+      username: updatedUser.username,
+      email: updatedUser.email,
+      isAdmin: updatedUser.isAdmin,
+    });
+  } else {
+    res.status(404).json({
+      success: false,
+      message: t('noUser', req.lang),
+    });
+  }
+});
+
+export {
+  deleteUserById,
+  getAllUsers,
+  getCurrentUserProfile,
+  getUserById,
+  updateCurrentUserProfile,
+  updateUserById,
+};

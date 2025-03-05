@@ -18,3 +18,5 @@ loggedOut;Logged out successfully;Logget ud
 notAuthorizedTokenFailed;Not authorized, token failed;Ikke autoriseret, token mislykkedes
 notAuthorizedNoToken;Not authorized, no token;Ikke autoriseret, ingen token
 notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 
+cannotDeleteAdmin;Cannot delete admin user;Admin bruger kan ikke slettes
+userDeleted;User deleted;Bruger slettet
