@@ -6,7 +6,8 @@ import { validatePassword } from '../utils/passwordValidator.js';
 import { t } from '../utils/translator.js';
 
 // @desc    Get all users
-// @route   Get /api/users
+// @route   /api/users
+// @method  Get
 // @access  Private for admin
 const getAllUsers = asyncHandler(async (req, res) => {
   const users = await User.find({});
@@ -14,7 +15,8 @@ const getAllUsers = asyncHandler(async (req, res) => {
 });
 
 // @desc    Get User profile
-// @route   Get /api/users/profile
+// @route   /api/users/profile
+// @method  Get
 // @access  Private for logged in user
 const getCurrentUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
@@ -33,7 +35,8 @@ const getCurrentUserProfile = asyncHandler(async (req, res) => {
 });
 
 // @desc    Update User profile
-// @route   Put /api/users/profile
+// @route   /api/users/profile
+// @method  Put
 // @access  Private for logged in user
 const updateCurrentUserProfile = asyncHandler(async (req, res) => {
   const { password, email, username } = req.body;
@@ -88,7 +91,8 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
 });
 
 // @desc    Delete user
-// @route   Delete /api/users/:id
+// @route   /api/users/:id
+// @method  Delete
 // @params  id
 // @access  Private for Admin
 const deleteUserById = asyncHandler(async (req, res) => {
@@ -117,7 +121,8 @@ const deleteUserById = asyncHandler(async (req, res) => {
 });
 
 // @desc    Get user by Id
-// @route   Get /api/users/:id
+// @route   /api/users/:id
+// @method  Get
 // @params  id
 // @access  Private for Admin
 const getUserById = asyncHandler(async (req, res) => {
@@ -134,7 +139,8 @@ const getUserById = asyncHandler(async (req, res) => {
 });
 
 // @desc    Update user by Id
-// @route   Put /api/users/:id
+// @route   /api/users/:id
+// @method   Put
 // @params  id
 // @access  Private for Admin
 const updateUserById = asyncHandler(async (req, res) => {

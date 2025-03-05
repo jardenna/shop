@@ -7,7 +7,8 @@ import { validatePassword } from '../utils/passwordValidator.js';
 import { t } from '../utils/translator.js';
 
 // @desc    Register a new user
-// @route   POST /api/auth/register
+// @route   /api/auth/register
+// @method   POST
 // @access  Public
 const createUser = asyncHandler(async (req, res) => {
   const { username, email, password } = req.body;
@@ -69,7 +70,8 @@ const createUser = asyncHandler(async (req, res) => {
 });
 
 // @desc    Login user
-// @route   POST /api/auth/login
+// @route   /api/auth/login
+// @method   POST
 // @access  Public
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -128,7 +130,8 @@ const loginUser = asyncHandler(async (req, res) => {
 });
 
 // @desc    Logout user / clear cookie
-// @route   POST /api/auth/logout
+// @route   /api/auth/logout
+// @method   POST
 // @access  Public
 const logoutCurrentUser = asyncHandler(async (req, res) => {
   res.cookie('jwt', '', {
