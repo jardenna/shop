@@ -46,7 +46,7 @@ const createUser = asyncHandler(async (req, res) => {
     });
   }
 
-  const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS) || 12;
+  const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS) || 10;
   const hashPassword = await bcrypt.hash(password, saltRounds);
   const newUser = new User({
     username,

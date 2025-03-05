@@ -42,7 +42,7 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
     user.username = req.body.username || user.username;
     user.email = req.body.email || user.email;
 
-    const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS) || 12;
+    const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS) || 10;
     const hashPassword = await bcrypt.hash(password, saltRounds);
 
     // Validate email
