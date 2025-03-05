@@ -12,4 +12,7 @@ passwordNumber;Password should contain at least one number;Adgangskoden skal ind
 passwordSymbol;Password should contain at least one special character;Adgangskoden skal indeholde mindst ét specialtegn
 passwordUppercase;Password should contain at least one uppercase letter;Adgangskoden skal indeholde mindst ét stort bogstav
 invalidUserData;Invalid user data;Ugyldig bruger data
-loggedOut;Logged out successfully;Logget ud 
+loggedOut;Logged out successfully;Logget ud
+notAuthorizedTokenFailed;Not authorized, token failed;Ikke autoriseret, token mislykkedes
+notAuthorizedNoToken;Not authorized, no token;Ikke autoriseret, ingen token
+notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 

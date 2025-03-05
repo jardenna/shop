@@ -7,7 +7,7 @@ import { emailRegex } from '../utils/regex.js';
 import { t } from '../utils/translator.js';
 
 // @desc    Register a new user
-// @route   POST /api/users/register
+// @route   POST /api/auth/register
 // @access  Public
 const createUser = asyncHandler(async (req, res) => {
   const { username, email, password, isAdmin } = req.body;
@@ -71,7 +71,7 @@ const createUser = asyncHandler(async (req, res) => {
 });
 
 // @desc    Login user
-// @route   POST /api/users/auth
+// @route   POST /api/auth/login
 // @access  Public
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -128,7 +128,7 @@ const loginUser = asyncHandler(async (req, res) => {
 });
 
 // @desc    Logout user / clear cookie
-// @route   POST /api/users/logout
+// @route   POST /api/auth/logout
 // @access  Public
 const logoutCurrentUser = asyncHandler(async (req, res) => {
   res.cookie('jwt', '', {
