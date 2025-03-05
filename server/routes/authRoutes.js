@@ -1,16 +1,26 @@
 import express from 'express';
-import languageMiddleware from '../middleware/languageMiddleware.js';
-
 import {
   createUser,
   loginUser,
   logoutCurrentUser,
 } from '../controllers/authController.js';
+import { authenticate } from '../middleware/authMiddleware.js';
+import languageMiddleware from '../middleware/languageMiddleware.js';
 
 const router = express.Router();
 
 router.post('/register', languageMiddleware, createUser);
 router.post('/login', languageMiddleware, loginUser);
 router.post('/logout', languageMiddleware, logoutCurrentUser);
+
+router.get('/check-auth', languageMiddleware, authenticate, (req, res) => {
+  const user = req.user;
+
+  res.status(200).json({
+    success: true,
+    message: 'Authenticated user',
+    user,
+  });
+});
 
 export default router;
