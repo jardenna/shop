@@ -5,7 +5,7 @@ const baseQuery = fetchBaseQuery({
   baseUrl: 'http://localhost:5000/api',
   credentials: 'include',
   prepareHeaders: (headers) => {
-    const lang = localStorage.getItem('lang') || 'en'; // Get language from storage
+    const lang = localStorage.getItem('lang') || 'da'; // Get language from storage
     headers.set('x-language', lang);
     return headers;
   },
