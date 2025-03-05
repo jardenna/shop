@@ -2,15 +2,15 @@ import bcrypt from 'bcryptjs';
 import asyncHandler from '../middleware/asyncHandler.js';
 import User from '../models/userModel.js';
 import createToken from '../utils/createToken.js';
+import { validateEmail } from '../utils/emailValidator.js';
 import { validatePassword } from '../utils/passwordValidator.js';
-import { emailRegex } from '../utils/regex.js';
 import { t } from '../utils/translator.js';
 
 // @desc    Register a new user
 // @route   POST /api/auth/register
 // @access  Public
 const createUser = asyncHandler(async (req, res) => {
-  const { username, email, password, isAdmin } = req.body;
+  const { username, email, password } = req.body;
   const userExists = await User.findOne({ email });
 
   if (!username || !email || !password) {
@@ -21,11 +21,9 @@ const createUser = asyncHandler(async (req, res) => {
   }
 
   // Validate email
-  if (!emailRegex.test(email)) {
-    return res.status(422).json({
-      success: false,
-      message: t('invalidEmail', req.lang),
-    });
+  const emailResult = validateEmail(email, req.lang);
+  if (!emailResult.isValid) {
+    return res.status(emailResult.status).json(emailResult.payload);
   }
 
   // Validate password

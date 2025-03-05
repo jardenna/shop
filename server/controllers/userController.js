@@ -1,8 +1,8 @@
 import bcrypt from 'bcryptjs';
 import asyncHandler from '../middleware/asyncHandler.js';
 import User from '../models/userModel.js';
+import { validateEmail } from '../utils/emailValidator.js';
 import { validatePassword } from '../utils/passwordValidator.js';
-import { emailRegex } from '../utils/regex.js';
 import { t } from '../utils/translator.js';
 
 // @desc    Get all users
@@ -43,19 +43,12 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
     user.username = username || user.username;
     user.email = email || user.email;
 
-    // Validate email
-    if (email === '') {
-      return res.status(401).json({
-        success: false,
-        message: t('noEmail', req.lang),
-      });
-    }
-
-    if (email && !emailRegex.test(email)) {
-      return res.status(422).json({
-        success: false,
-        message: t('invalidEmail', req.lang),
-      });
+    if (email) {
+      // Validate email
+      const emailResult = validateEmail(email, req.lang);
+      if (!emailResult.isValid) {
+        return res.status(emailResult.status).json(emailResult.payload);
+      }
     }
     if (password) {
       const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS) || 10;
