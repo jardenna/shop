@@ -10,11 +10,10 @@ const Table: FC<TableProps> = ({ name }) => (
     <caption>{name || 'cap'}</caption>
     <thead>
       <tr>
-        <th> Title </th>
-        <th>Composer </th>
-        <th>Lyrics </th>
-        <th> Set </th>
-
+        <th>Title</th>
+        <th>Composer</th>
+        <th>Lyrics</th>
+        <th>Set</th>
         <th>Arranger / Editing</th>
       </tr>
     </thead>

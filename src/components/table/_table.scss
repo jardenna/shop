@@ -24,7 +24,9 @@ tr {
   }
 
   td {
-    display: block;
+    display: grid;
+    grid-template-columns: 12ch auto;
+    gap: 8px;
   }
 
   td::before {
