@@ -13,15 +13,15 @@ export type FormValues = {
   [key: string]: string | number | string[];
 };
 
-interface FormValidationProps<T extends KeyValuePair<any>> {
+interface FormValidationProps<T extends KeyValuePair<unknown>> {
   initialState: T;
   isArray?: boolean;
   isLoading?: boolean;
-  validate?: any;
   callback?: (values: T) => void;
+  validate?: (values: T) => ValidationErrors;
 }
 
-function useFormValidation<T extends KeyValuePair<any>>({
+function useFormValidation<T extends KeyValuePair<unknown>>({
   initialState,
   callback,
   validate,
@@ -103,6 +103,7 @@ function useFormValidation<T extends KeyValuePair<any>>({
     // Clear the error message when typing
     setErrors((prevErrors) => {
       const updatedErrors = { ...prevErrors };
+      // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
       delete updatedErrors[name];
       return updatedErrors;
     });
@@ -112,7 +113,12 @@ function useFormValidation<T extends KeyValuePair<any>>({
     if (isArray) {
       setValues({
         ...values,
-        [name]: [...new Set([...(values[name] || []), value])],
+        [name]: [
+          ...new Set([
+            ...((values[name] as (string | number | Date)[]) || []),
+            value,
+          ]),
+        ],
       });
     } else {
       setValues({

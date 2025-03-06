@@ -1,41 +1,22 @@
 @font-face {
-  font-family: 'open_sansregular';
+  font-family: felix;
   src:
-    url('fonts/opensans-variablefont_wdthwght-webfont.woff2') format('woff2'),
-    url('fonts/opensans-variablefont_wdthwght-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: nunito-semibold;
-  src:
-    url('fonts/Nunito-SemiBold.woff2') format('woff2'),
-    url('fonts/Nunito-SemiBold.woff') format('woff');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: nunito-bold;
-  src:
-    url('fonts/Nunito-Bold.woff2') format('woff2'),
-    url('fonts/Nunito-Bold.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: nunito;
-  src:
-    url('fonts/Nunito-Regular.woff2') format('woff2'),
-    url('fonts/Nunito-Regular.woff') format('woff');
+    url('fonts/FelixTitlingMT.woff2') format('woff2'),
+    url('fonts/FelixTitlingMT.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
-$font-primary: nunito, sans-serif;
-$font-secondary: nunito-bold, sans-serif;
+@font-face {
+  font-family: outfit;
+  src:
+    url('fonts/Outfit-Regular.woff2') format('woff2'),
+    url('fonts/Outfit-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+$font-primary: outfit, sans-serif;
+$font-secondary: felix, sans-serif;
