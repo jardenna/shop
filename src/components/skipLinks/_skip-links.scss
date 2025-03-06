@@ -1,0 +1,39 @@
+@use '../../scss/globals' as *;
+
+.skip-link {
+  position: fixed;
+  z-index: 10000;
+  padding: 8px 16px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  border-radius: 4px;
+  background-color: $color-blue;
+  color: $color-white;
+
+  &.is-visible {
+    @include animation(slide-out-top-center);
+  }
+
+  @include max-size($small) {
+    display: none;
+  }
+
+  a {
+    color: $color-white;
+    font-family: $font-primary;
+
+    &:focus-visible {
+      outline: transparent;
+    }
+  }
+
+  p {
+    margin: 4px;
+  }
+
+  &:has(a:focus-visible) {
+    opacity: 1;
+
+    @include animation(slide-in-top-center);
+  }
+}
