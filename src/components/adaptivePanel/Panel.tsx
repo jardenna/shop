@@ -9,8 +9,8 @@ interface PanelProps {
   id: string;
   isPanelHidden: boolean;
   className?: string;
-  onTogglePanel?: () => void;
   variant?: Variant;
+  onTogglePanel?: () => void;
 }
 
 const Panel: FC<PanelProps> = ({

@@ -1,0 +1,20 @@
+@use '../../../scss/globals' as *;
+
+input[type='checkbox'] {
+  &:checked {
+    outline: transparent;
+    border-color: $color-blue;
+    background-color: $color-blue;
+
+    &::before {
+      content: '';
+      position: relative;
+      top: -2px;
+      transform: rotate(45deg);
+      width: rem(6px);
+      height: rem(13px);
+      border-bottom: 3px solid $color-white;
+      border-right: 3px solid $color-white;
+    }
+  }
+}

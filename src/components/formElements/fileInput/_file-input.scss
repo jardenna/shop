@@ -1,0 +1,42 @@
+@use '../../../scss/globals' as *;
+
+.file-container {
+  position: relative;
+
+  .file-input-info {
+    position: absolute;
+    top: 12px;
+    max-width: 294px;
+    left: 128px;
+  }
+
+  .input-container {
+    overflow: hidden;
+    border-radius: 4px;
+    border: 1px solid $color-border;
+
+    &:has(input:focus-visible) {
+      box-shadow: $box-shadow-inset;
+    }
+  }
+
+  .form-label-container {
+    position: absolute;
+    z-index: 2;
+    padding: 12px;
+    color: $color-white;
+    background: $color-blue;
+    display: block;
+  }
+
+  .form-label {
+    margin: 0;
+    cursor: pointer;
+  }
+
+  input[type='file'] {
+    opacity: 0;
+    max-height: rem(37px);
+    cursor: pointer;
+  }
+}

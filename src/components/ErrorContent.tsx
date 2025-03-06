@@ -7,8 +7,8 @@ import Button from './Button';
 interface ErrorContentProps {
   btnLabel: string;
   errorText: string;
-  onClick: () => void;
   className?: string;
+  onClick: () => void;
 }
 
 const ErrorContent: FC<ErrorContentProps> = ({

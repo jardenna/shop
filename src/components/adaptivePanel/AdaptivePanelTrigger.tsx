@@ -7,9 +7,9 @@ interface AdaptivePanelTriggerProps {
   ariaExpanded: boolean;
   children: ReactNode;
   className: string;
-  onClick: () => void;
   ariaLabel?: string;
   btnVariant?: BtnVariant;
+  onClick: () => void;
 }
 
 const AdaptivePanelTrigger: FC<AdaptivePanelTriggerProps> = ({

@@ -9,7 +9,9 @@ const SkipLink: FC = () => {
 
   const handleBlur = () => {
     setIsVisible(true);
-    setTimeout(() => setIsVisible(false), 500);
+    setTimeout(() => {
+      setIsVisible(false);
+    }, 500);
   };
 
   return (

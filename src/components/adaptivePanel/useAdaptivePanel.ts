@@ -8,7 +8,9 @@ const useAdaptivePanel = () => {
   const location = useLocation();
   const [isPanelHidden, setIsPanelHidden] = useState(true);
 
-  useKeyPress(() => setIsPanelHidden(true), [KeyCode.Esc]);
+  useKeyPress(() => {
+    setIsPanelHidden(true);
+  }, [KeyCode.Esc]);
   const panelRef = useRef<HTMLDivElement>(null);
 
   const handleTogglePanel = () => {
@@ -19,7 +21,9 @@ const useAdaptivePanel = () => {
     setIsPanelHidden(true);
   };
 
-  useClickOutside(panelRef, () => handleHidePanel());
+  useClickOutside(panelRef, () => {
+    handleHidePanel();
+  });
 
   useEffect(() => {
     setIsPanelHidden(true);

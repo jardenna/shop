@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return */
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import {
@@ -44,15 +43,21 @@ const useMessagePopup = (messagePopupId?: string) => {
 
     if (isVisible) {
       // Start the auto-dismiss timer
-      const timer = setTimeout(() => setIsVisible(false), autoHideDuration);
-      return () => clearTimeout(timer);
+      const timer = setTimeout(() => {
+        setIsVisible(false);
+      }, autoHideDuration);
+      return () => {
+        clearTimeout(timer);
+      };
     }
     // Start the removal timer after the dismissal animation completes
     const timer = setTimeout(
       () => dispatch(dismissMessagePopup(messagePopupId || '')),
       500,
     );
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+    };
   }, [isVisible, autoHideDuration, dispatch, messagePopupId]);
 
   const popupClass = isVisible ? 'is-visible' : 'dismissed';

@@ -1,0 +1,26 @@
+@use '../../../scss/globals' as *;
+
+input[type='radio'] {
+  border-radius: 50%;
+
+  &::before {
+    content: '';
+    width: rem(15px);
+    height: rem(15px);
+    border-radius: 50%;
+    transform: scale(0);
+
+    @include transition($time: 0.12s);
+
+    box-shadow: inset 16px 0 $color-blue;
+  }
+
+  &:checked {
+    border-color: $color-blue;
+    outline: transparent;
+
+    &::before {
+      transform: scale(1);
+    }
+  }
+}

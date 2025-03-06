@@ -6,15 +6,15 @@ export type SkeletonType = 'primary' | 'secondary' | 'img';
 export interface SkeletonProps {
   className?: string;
   count?: number;
-  height?: number;
+  height?: string;
   variant?: SkeletonType;
-  width?: number;
+  width?: string;
 }
 
 const Skeleton: FC<SkeletonProps> = ({
   className = '',
-  height,
-  width,
+  height = '1',
+  width = '1',
   count,
   variant = 'primary',
 }) =>

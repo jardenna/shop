@@ -10,3 +10,5 @@ export interface AuthResponse {
   success: boolean;
   user: UserRequest;
 }
+
+export type FileUploadNameType = 'cover';

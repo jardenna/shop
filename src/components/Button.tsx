@@ -3,8 +3,8 @@
 import { FC, ReactNode } from 'react';
 import { BtnVariant } from '../types/enums';
 import { BtnType, ButtonEventType } from '../types/types';
-import VisuallyHidden from './VisuallyHidden';
 import Loader from './loader/Loader';
+import VisuallyHidden from './VisuallyHidden';
 
 interface ButtonProps {
   children: ReactNode;
@@ -20,12 +20,12 @@ interface ButtonProps {
   id?: string;
   isLoading?: boolean;
   name?: string;
-  onClick?: (event: ButtonEventType) => void | ((id: string) => void);
-  ref?: (el: HTMLButtonElement | null) => void;
   role?: string;
   tabIndex?: 0 | -1;
   type?: BtnType;
   variant?: BtnVariant;
+  onClick?: (event: ButtonEventType) => void | ((id: string) => void);
+  ref?: (el: HTMLButtonElement | null) => void;
 }
 
 const Button: FC<ButtonProps> = ({

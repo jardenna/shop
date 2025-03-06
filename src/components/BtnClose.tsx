@@ -5,9 +5,9 @@ import Button from './Button';
 import Icon, { IconName } from './icons/Icon';
 
 interface BtnCloseProps {
-  onClick: () => void;
   ariaLabel?: string;
   autoFocus?: boolean;
+  onClick: () => void;
 }
 
 const BtnClose: FC<BtnCloseProps> = ({
