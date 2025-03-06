@@ -8,13 +8,34 @@
 }
 
 @font-face {
-  font-family: 'poiret_oneregular';
+  font-family: nunito-semibold;
   src:
-    url('fonts/poiretone-regular-webfont.woff2') format('woff2'),
-    url('fonts/poiretone-regular-webfont.woff') format('woff');
-  font-weight: normal;
+    url('fonts/Nunito-SemiBold.woff2') format('woff2'),
+    url('fonts/Nunito-SemiBold.woff') format('woff');
+  font-weight: 600;
   font-style: normal;
+  font-display: swap;
 }
 
-$font-primary: open_sansregular, sans-serif;
-$font-secondary: poiret_oneregular, sans-serif;
+@font-face {
+  font-family: nunito-bold;
+  src:
+    url('fonts/Nunito-Bold.woff2') format('woff2'),
+    url('fonts/Nunito-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: nunito;
+  src:
+    url('fonts/Nunito-Regular.woff2') format('woff2'),
+    url('fonts/Nunito-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+$font-primary: nunito, sans-serif;
+$font-secondary: nunito-bold, sans-serif;
