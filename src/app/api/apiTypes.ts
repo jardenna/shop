@@ -1,5 +1,6 @@
 export interface UserRequest {
   email: string;
+  isAdmin: boolean;
   password: string;
   username: string;
 }
