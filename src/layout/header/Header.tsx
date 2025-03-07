@@ -29,11 +29,19 @@ const Header: FC<HeaderProps> = ({
       <LayoutElement as="header" className="main-header" ariaLabel={ariaLabel}>
         <div className="container main-header-container">
           <Logo />
+          <LanguageSelect
+            options={options}
+            onLanguageChange={onLanguageChange}
+            labelText={labelText}
+            defaultValue={defaultValue}
+          />
           <Nav />
           <div>
             <Icon iconName={IconName.Search} title="" />
             <Icon iconName={IconName.User} title="" />
             <Icon iconName={IconName.ShoppingBack} title="" />
+            <Icon iconName={IconName.Currency} title="" />
+            <Icon iconName={IconName.Language} title="" />
           </div>
         </div>
 
@@ -45,12 +53,6 @@ const Header: FC<HeaderProps> = ({
           </div>
         </section>
       </LayoutElement>
-      <LanguageSelect
-        options={options}
-        onLanguageChange={onLanguageChange}
-        labelText={labelText}
-        defaultValue={defaultValue}
-      />
     </article>
   );
 };

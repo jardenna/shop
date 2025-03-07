@@ -9,6 +9,7 @@ import ChevronsLeftIcon from './ChevronsLeftIcon';
 import ChevronsRightIcon from './ChevronsRightIcon';
 import ChevronUpIcon from './ChevronUpIcon';
 import CloseIcon from './CloseIcon';
+import CurrencyIcon from './CurrencyIcon';
 import EditIcon from './EditIcon';
 import ErrorIcon from './ErrorIcon';
 import EyeIcon from './EyeIcon';
@@ -18,6 +19,7 @@ import GridIcon from './GridIcon';
 import GridLargeIcon from './GridLargeIcon';
 import GridSmallIcon from './GridSmallIcon';
 import InfoIcon from './InfoIcon';
+import LanguageIcon from './LanguageIcon';
 import Logo from './Logo';
 import MoreIcon from './MoreIcon';
 import SearchIcon from './SearchIcon';
@@ -52,6 +54,7 @@ export enum IconName {
   ChevronsRight = 'chevronsRight',
   ChevronUp = 'chevronUp',
   Close = 'close',
+  Currency = 'currency',
   Edit = 'edit',
   Error = 'error',
   Eye = 'eye',
@@ -61,6 +64,7 @@ export enum IconName {
   GridLarge = 'gridLarge',
   GridSmall = 'gridSmall',
   Info = 'info',
+  Language = 'language',
   Logo = 'logo',
   More = 'more',
   Search = 'search',
@@ -84,6 +88,7 @@ const iconMapping = {
   chevronsLeft: ChevronsLeftIcon,
   chevronsRight: ChevronsRightIcon,
   close: CloseIcon,
+  currency: CurrencyIcon,
   edit: EditIcon,
   error: ErrorIcon,
   eye: EyeIcon,
@@ -93,6 +98,7 @@ const iconMapping = {
   gridSmall: GridSmallIcon,
   gridLarge: GridLargeIcon,
   info: InfoIcon,
+  language: LanguageIcon,
   logo: Logo,
   more: MoreIcon,
   search: SearchIcon,
