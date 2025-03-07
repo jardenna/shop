@@ -2,6 +2,7 @@ import { FC } from 'react';
 import Icon, { IconName } from '../../components/icons/Icon';
 import LanguageSelect from '../../components/LanguageSelect';
 import { Option, SelectedOption } from '../../components/selectBox/SelectBox';
+import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../LayoutElement';
 import Nav from '../nav/Nav';
 import './_header.scss';
@@ -20,36 +21,37 @@ const Header: FC<HeaderProps> = ({
   defaultValue,
   options,
   labelText,
-}) => (
-  <>
-    <LayoutElement as="header" className="main-header" ariaLabel={ariaLabel}>
-      <div className="container main-header-container">
-        <Logo />
-        <Nav />
-        <div>
-          <Icon iconName={IconName.Search} title="" />
-          <Icon iconName={IconName.User} title="" />
-          <Icon iconName={IconName.ShoppingBack} title="" />
-        </div>
-      </div>
+}) => {
+  const { language } = useLanguage();
 
-      <section className="hero">
-        <div className="container">
-          <h1>Special Fashion Sale</h1>
+  return (
+    <article>
+      <LayoutElement as="header" className="main-header" ariaLabel={ariaLabel}>
+        <div className="container main-header-container">
+          <Logo />
+          <Nav />
           <div>
-            Upgrade your wardrobe with exclusive deals! For a limited time,
-            enjoy incredible discounts on the latest fashion trends.
+            <Icon iconName={IconName.Search} title="" />
+            <Icon iconName={IconName.User} title="" />
+            <Icon iconName={IconName.ShoppingBack} title="" />
           </div>
-          <button type="button">Shop now</button>
         </div>
-      </section>
-    </LayoutElement>
-    <LanguageSelect
-      options={options}
-      onLanguageChange={onLanguageChange}
-      labelText={labelText}
-      defaultValue={defaultValue}
-    />
-  </>
-);
+
+        <section className="hero">
+          <div className="container">
+            <h1>{language.heroTitle}</h1>
+            <div>{language.heroText}</div>
+            <button type="button">{language.shopNow}</button>
+          </div>
+        </section>
+      </LayoutElement>
+      <LanguageSelect
+        options={options}
+        onLanguageChange={onLanguageChange}
+        labelText={labelText}
+        defaultValue={defaultValue}
+      />
+    </article>
+  );
+};
 export default Header;
