@@ -20,6 +20,8 @@ import GridSmallIcon from './GridSmallIcon';
 import InfoIcon from './InfoIcon';
 import Logo from './Logo';
 import MoreIcon from './MoreIcon';
+import SearchIcon from './SearchIcon';
+import ShoppingBackIcon from './ShoppingBackIcon';
 import SubtractIcon from './SubtractIcon';
 import SuccessIcon from './SuccessIcon';
 import TrashIcon from './TrashIcon';
@@ -61,6 +63,8 @@ export enum IconName {
   Info = 'info',
   Logo = 'logo',
   More = 'more',
+  Search = 'search',
+  ShoppingBack = 'shoppingBack',
   Subtract = 'subtract',
   Success = 'success',
   Trash = 'trach',
@@ -91,6 +95,8 @@ const iconMapping = {
   info: InfoIcon,
   logo: Logo,
   more: MoreIcon,
+  search: SearchIcon,
+  shoppingBack: ShoppingBackIcon,
   subtract: SubtractIcon,
   success: SuccessIcon,
   trach: TrashIcon,

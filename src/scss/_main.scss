@@ -15,11 +15,14 @@ body,
 body {
   margin: 0;
   font-size: rem(16px);
-  color: #555;
+  color: $color-gray-12;
 }
 
 h1 {
-  font-size: rem(32px);
+  font-size: rem(48px);
+  font-family: $font-secondary;
+  font-weight: normal;
+  color: #000;
 }
 
 .main-container {
@@ -40,7 +43,11 @@ h1 {
   background-image: url('/images/fashion_fusion_banner.webp');
   background-size: cover;
   background-repeat: no-repeat;
-  height: rem(544px);
+  height: rem(480px);
+
+  @include max-size($large) {
+    height: auto;
+  }
 }
 
 .logo {

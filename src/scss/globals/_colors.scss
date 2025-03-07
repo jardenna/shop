@@ -1,0 +1,40 @@
+$color-white: #fff;
+$color-black: #000;
+$color-green: #7fd0c9;
+$color-blue: #0b6b7c;
+$color-blue-dark: #04515f;
+$color-red: #a71b1b;
+$color-red-light: #d20917;
+
+// Gray colors
+$color-gray-10: #66606d;
+$color-gray-20: #fbfbf9;
+$color-gray-30: #a7a6ba;
+$color-gray-40: #f9f9f9;
+$color-gray-50: #92aebb;
+$color-gray-60: #c086a6;
+
+// xx
+
+$color-gray-2: #fbfbf9;
+$color-gray-6: #a7a6ba;
+$color-gray-12: #66606d;
+
+// $color-gray-40: #f9f9f9;
+
+/* colors */
+$color-secondary: $color-green;
+$color-primary-text: $color-gray-40;
+$color-link: $color-blue-dark;
+$color-primary-btn: $color-blue-dark;
+$color-primary-btn-hover: $color-blue;
+$color-danger: $color-red;
+$color-border: $color-gray-20;
+$color-background: $color-gray-10;
+$color-overlay: rgb($color-black, 0.6);
+
+// $color-mics
+$color-error: $color-danger;
+$color-success: $color-blue-dark;
+$color-info: $color-blue;
+$color-warning: $color-blue;
