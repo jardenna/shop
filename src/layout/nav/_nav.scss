@@ -1,0 +1,14 @@
+.nav-list {
+  display: flex;
+  gap: 16px;
+
+  .nav-item {
+    text-decoration: none;
+    color: #793e5f;
+    text-transform: uppercase;
+
+    &.active {
+      color: #66606d;
+    }
+  }
+}

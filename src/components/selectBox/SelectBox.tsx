@@ -1,3 +1,4 @@
+/* eslint-disable import/named */
 import { FC } from 'react';
 import Select, {
   GroupBase,

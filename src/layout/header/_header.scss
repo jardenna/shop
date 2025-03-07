@@ -1,0 +1,35 @@
+/* stylelint-disable selector-class-pattern */
+@use '../../scss/globals/' as *;
+
+.main-header {
+  @include max-size($small) {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 8;
+  }
+
+  .main-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    svg {
+      height: 24px;
+      width: 260px;
+    }
+  }
+
+  .hero {
+    background-image: url('/images/fashion_fusion_banner.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: rem(480px);
+
+    @include max-size($large) {
+      height: auto;
+    }
+  }
+}

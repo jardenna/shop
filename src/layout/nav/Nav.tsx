@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import useLanguage from '../../features/language/useLanguage';
+import './_nav.scss';
 import NavItemList from './NavItemList';
 import { navList } from './navList';
 
