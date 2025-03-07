@@ -1,0 +1,29 @@
+@use '../../scss/globals' as *;
+
+.progress-bar-container {
+  height: 4px;
+
+  .progress-bar {
+    display: flex;
+    height: 100%;
+    background-color: $color-blue-dark;
+
+    &.auto-animation {
+      background-color: $color-border;
+
+      @include animation(progress-bar, 5s, linear);
+    }
+
+    @include transition($what: width);
+  }
+}
+
+@keyframes progress-bar {
+  0% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0%;
+  }
+}
