@@ -1,22 +1,69 @@
 ﻿key;en;da
+additionalInfo;Additional info;Supplerende information
+cancel;Cancel;Annuller
+cannotDeleteAdmin;Cannot delete admin user;Admin bruger kan ikke slettes
+close;Close;Luk
+closeDialog;Close dialog;Luk dialog
+confirmPassword;Confirm password;Gentag adgangskode
+criterionMet;Criterion met;Kriterium opfyldt
+criterionNotMet;Criterion not met;Kriterium ikke opfyldt
+email;Email;E-mail
+error;Error;Fejl
+errorAltText;A really guilty emoji;En meget skyldig emoji
+eye;Eye;Øje
+eyeClosed;Closed eye;Lukket øje
 fillAll;Please fill all the inputs;Udfyld venligst alle felter
+goBack;Go back;Gå tilbage
+goToContent;Go to content;Gå til indhold
+hidePassword;Hide password;Skjul adgangskode
+home;Home;Hjem
+invalidEmail;Invalid email;Ugyldig e-mail
 invalidEmail;Please provide a valid email;Indtast venligst en gyldig e-mail
+invalidPassword;Invalid password;Ugyldig adgangskode
+invalidUserData;Invalid user data;Ugyldig bruger data
+loading;Loading;Loading
+loggedOut;Logged out successfully;Logget ud
+loggedOut;Logged out successfully;Logget ud 
+login;Login;Log ind
+loginFailed;Login failed;Login mislykkedes
+loginFailed;Login failed;Login mislykkedes
+loginSucceeded;Login succeeded;Login lykkedes
 noEmail;Please provide a email;Indtast venligst en e-mail
 noPassword;Please provide a password;Indtast venligst en adgangskode
-invalidPassword;Invalid password;Ugyldig adgangskode
-loginFailed;Login failed;Login mislykkedes
+notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 
+notAuthorizedNoToken;Not authorized, no token;Ikke autoriseret, ingen token
+notAuthorizedTokenFailed;Not authorized, token failed;Ikke autoriseret, token mislykkedes
 noUser;User not found. Please sign up first;Bruger ikke fundet. Opret dig først
-signupFailed;Sign up failed;Registrering mislykkedes
-userAlreadyExist;A profile with this email already exists. Try logging in instead;Der findes en profil med denne e-mail. Prøv at logge ind i stedet
-passwordMinLength;Password should be at least 8 characters;Adgangskoden skal være mindst 8 tegn
+password;Password;Adgangskode
+passwordDoNotMatch;The passwords do not match;Adgangskoderne stemmer ikke overens
 passwordLowercase;Password should contain at least one lowercase letter;Adgangskoden skal indeholde mindst ét lille bogstav
+passwordLowercase;Password should contain at least one lowercase letter;Adgangskoden skal indeholde mindst ét lille bogstav
+passwordMinLength;Password should be at least 8 characters;Adgangskoden skal være mindst 8 tegn
+passwordMinLength;Password should be at least 8 characters;Adgangskoden skal være mindst 8 tegn
+passwordNumber;Password should contain at least one number;Adgangskoden skal indeholde mindst ét tal
 passwordNumber;Password should contain at least one number;Adgangskoden skal indeholde mindst ét tal
 passwordSymbol;Password should contain at least one special character;Adgangskoden skal indeholde mindst ét specialtegn
+passwordSymbol;Password should contain at least one special character;Adgangskoden skal indeholde mindst ét specialtegn
 passwordUppercase;Password should contain at least one uppercase letter;Adgangskoden skal indeholde mindst ét stort bogstav
-invalidUserData;Invalid user data;Ugyldig bruger data
-loggedOut;Logged out successfully;Logget ud
-notAuthorizedTokenFailed;Not authorized, token failed;Ikke autoriseret, token mislykkedes
-notAuthorizedNoToken;Not authorized, no token;Ikke autoriseret, ingen token
-notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 
-cannotDeleteAdmin;Cannot delete admin user;Admin bruger kan ikke slettes
+passwordUppercase;Password should contain at least one uppercase letter;Adgangskoden skal indeholde mindst ét stort bogstav
+pleaseEnter;Please enter;Indsæt venligst
+pleaseEnterName;Please enter  name;Indsæt venligst navn
+pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
+pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
+pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
+retry;Retry;Forsøg igen
+showPassword;Show password;Vis adgangskode
+signup;Signup;Opret bruger
+signupFailed;Sign up failed;Registrering mislykkedes
+signupFailed;Sign up failed;Registrering mislykkedes
+signupSucceeded;Sign up succeeded;Registrering lykkedes
+sub;Sub;Sekundær
+success;Success;Succes
+user;User;Bruger
+userAlreadyExist;A profile with this email already exists. Try logging in instead;Der findes en profil med denne e-mail. Prøv at logge ind i stedet
+userAlreadyExist;A profile with this email already exists. Try logging in instead;Der findes en profil med denne e-mail. Prøv at logge ind i stedet
+userAlreadyExist;A profile with this email already exists. Try logging in instead;Der findes en profil med denne e-mail. Prøv at logge ind i stedet
 userDeleted;User deleted;Bruger slettet
+userInfo;User info;Bruger info
+username;UserName;Brugernavn
+warning;Warning;Warning
