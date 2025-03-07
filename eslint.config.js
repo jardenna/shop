@@ -76,6 +76,9 @@ export default tseslint.config(
       '@typescript-eslint/no-duplicate-enum-values': 'warn',
       '@typescript-eslint/no-empty-interface': 'warn',
       '@typescript-eslint/no-unnecessary-condition': 'off',
+      '@typescript-eslint/no-unsafe-argument': 'off',
+      '@typescript-eslint/no-unsafe-member-access': 'off',
+
       'import/no-extraneous-dependencies': [
         'error',
         {

@@ -24,7 +24,7 @@ interface ButtonProps {
   tabIndex?: 0 | -1;
   type?: BtnType;
   variant?: BtnVariant;
-  onClick?: (event: ButtonEventType) => void | ((id: string) => void);
+  onClick?: (event: ButtonEventType | string) => void;
   ref?: (el: HTMLButtonElement | null) => void;
 }
 
