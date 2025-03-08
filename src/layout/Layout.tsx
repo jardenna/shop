@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react';
-import { Outlet } from 'react-router';
+import { Outlet, useLocation } from 'react-router';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import useLanguage, { languageOptions } from '../features/language/useLanguage';
 import Header from './header/Header';
@@ -15,7 +15,8 @@ const Layout: FC = () => {
   const selected = languageOptions.find(
     (option) => option.value === selectedLanguage,
   );
-
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
   return (
     <div className="main-container">
       <SkipLink />
@@ -30,7 +31,7 @@ const Layout: FC = () => {
         options={languageOptions}
       />
       <main id="main">
-        <div className="page-container">
+        <div className={isHomePage ? 'home-page' : 'container page'}>
           <Outlet />
         </div>
       </main>
