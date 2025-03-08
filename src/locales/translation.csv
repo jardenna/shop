@@ -9,6 +9,7 @@ closeDialog;Close dialog;Luk dialog
 collection;Collection;Kollektion
 confirmPassword;Confirm password;Gentag adgangskode
 contact;Contact;Kontakt
+createAccount;Create account;Opret konto
 criterionMet;Criterion met;Kriterium opfyldt
 criterionNotMet;Criterion not met;Kriterium ikke opfyldt
 currency;Currency;Valuta
@@ -33,6 +34,7 @@ language;Language;Sprog
 loading;Loading;Loading
 loggedOut;Logged out successfully;Logget ud
 login;Login;Log ind
+loginHere;Login here;Log ind her
 loginFailed;Login failed;Login mislykkedes
 loginSucceeded;Login succeeded;Login lykkedes
 logout;Log out;Log ud

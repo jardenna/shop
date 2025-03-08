@@ -4,14 +4,12 @@
 import { FC } from 'react';
 import { useNavigate } from 'react-router';
 import AuthForm from '../components/authForm/AuthForm';
-import Button from '../components/Button';
 import validationSignup from '../components/formElements/validation/validateSignup';
 import useMessagePopup from '../components/messagePopup/useMessagePopup';
 import { useSignupMutation } from '../features/auth/authApiSlice';
 import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
 import { MainPath } from '../layout/nav/enums';
-import { BtnVariant } from '../types/enums';
 import passwordRules from '../utils/passwordRules';
 
 const SignupPage: FC = () => {
@@ -55,23 +53,21 @@ const SignupPage: FC = () => {
   }
 
   return (
-    <>
-      <h1 className="page-title">Sign up</h1>
-      <AuthForm
-        values={values}
-        labelText={language.signup}
-        onSubmit={onSubmit}
-        isLoading={isLoading}
-        legendText={language.userInfo}
-        onChange={onChange}
-        errors={errors}
-        onBlur={onBlur}
-        passwordRules={passwordRules}
-        isFocused={isFocused}
-        onFocus={onFocus}
-      />
-      <Button variant={BtnVariant.Ghost}>Log in</Button>
-    </>
+    <AuthForm
+      values={values}
+      labelText={language.signup}
+      onSubmit={onSubmit}
+      isLoading={isLoading}
+      legendText={language.userInfo}
+      onChange={onChange}
+      errors={errors}
+      onBlur={onBlur}
+      passwordRules={passwordRules}
+      isFocused={isFocused}
+      onFocus={onFocus}
+      navigateTo={MainPath.Login}
+      navigateToText={language.loginHere}
+    />
   );
 };
 export default SignupPage;

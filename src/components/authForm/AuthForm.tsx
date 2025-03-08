@@ -1,12 +1,17 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import { FC } from 'react';
 
+import { useNavigate } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
 import { KeyValuePair } from '../../hooks/useFormValidation';
+import { MainPath } from '../../layout/nav/enums';
+import { BtnVariant } from '../../types/enums';
 import {
   BlurEventType,
   ChangeInputType,
   FormEventType,
 } from '../../types/types';
+import Button from '../Button';
 import FieldSet from '../fieldset/FieldSet';
 import Form from '../formElements/form/Form';
 import Input from '../formElements/Input';
@@ -26,6 +31,8 @@ interface AuthFormProps {
   isLoading: boolean;
   labelText: string;
   legendText: string;
+  navigateTo: MainPath;
+  navigateToText: string;
   values: User;
   isFocused?: boolean;
   onBlur: (event: BlurEventType) => void;
@@ -41,72 +48,85 @@ const AuthForm: FC<AuthFormProps> = ({
   isLoading,
   onChange,
   labelText,
+  navigateTo,
   legendText,
   errors,
   onBlur,
   passwordRules,
   isFocused,
   onFocus,
+  navigateToText,
 }) => {
+  const navigate = useNavigate();
   const { language } = useLanguage();
 
   return (
-    <Form
-      labelText={labelText}
-      onSubmit={onSubmit}
-      isLoading={isLoading}
-      className="auth-form"
-    >
-      <FieldSet legendText={legendText}>
-        {values.username !== undefined && (
+    <>
+      <h1 className="page-title">Sign up</h1>
+      <Form
+        labelText={labelText}
+        onSubmit={onSubmit}
+        isLoading={isLoading}
+        className="auth-form"
+      >
+        <FieldSet legendText={legendText}>
+          {values.username !== undefined && (
+            <Input
+              name="username"
+              id="username"
+              value={values.username}
+              labelText={language.username}
+              onChange={onChange}
+              required
+              errorText={language[errors.username]}
+              onBlur={onBlur}
+            />
+          )}
           <Input
-            name="username"
-            id="username"
-            value={values.username}
-            labelText={language.username}
+            name="email"
+            id="email"
+            value={values.email}
+            labelText={language.email}
             onChange={onChange}
             required
-            errorText={language[errors.username]}
+            errorText={language[errors.email]}
             onBlur={onBlur}
           />
-        )}
-        <Input
-          name="email"
-          id="email"
-          value={values.email}
-          labelText={language.email}
-          onChange={onChange}
-          required
-          errorText={language[errors.email]}
-          onBlur={onBlur}
-        />
-        <PasswordInput
-          name="password"
-          id="password"
-          value={values.password}
-          labelText={language.password}
-          onChange={onChange}
-          required
-          passwordRules={passwordRules}
-          onFocus={onFocus}
-          isFocused={isFocused}
-          onBlur={onBlur}
-          errorText={language[errors.password]}
-        />
-        {values.confirmPassword !== undefined && (
           <PasswordInput
-            name="confirmPassword"
-            id="confirmPassword"
-            value={values.confirmPassword}
-            labelText={language.confirmPassword}
+            name="password"
+            id="password"
+            value={values.password}
+            labelText={language.password}
             onChange={onChange}
             required
-            errorText={language[errors.confirmPassword]}
+            passwordRules={passwordRules}
+            onFocus={onFocus}
+            isFocused={isFocused}
             onBlur={onBlur}
+            errorText={language[errors.password]}
           />
-        )}
-      </FieldSet>
-    </Form>
+          {values.confirmPassword !== undefined && (
+            <PasswordInput
+              name="confirmPassword"
+              id="confirmPassword"
+              value={values.confirmPassword}
+              labelText={language.confirmPassword}
+              onChange={onChange}
+              required
+              errorText={language[errors.confirmPassword]}
+              onBlur={onBlur}
+            />
+          )}
+        </FieldSet>
+        <Button
+          onClick={() => navigate(`/${navigateTo}`)}
+          variant={BtnVariant.Ghost}
+          className="auth-btn"
+        >
+          {navigateToText}
+        </Button>
+      </Form>
+    </>
   );
 };
 
