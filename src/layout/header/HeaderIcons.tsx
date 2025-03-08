@@ -1,7 +1,10 @@
 import { FC } from 'react';
+import { Link } from 'react-router';
 import IconBtn from '../../components/IconBtn';
+import IconContent from '../../components/IconContent';
 import Icon, { IconName } from '../../components/icons/Icon';
 import useLanguage from '../../features/language/useLanguage';
+import { MainPath } from '../nav/enums';
 
 interface HeaderIconsProps {
   className?: string;
@@ -23,12 +26,13 @@ const HeaderIcons: FC<HeaderIconsProps> = ({ onClick }) => {
           />
         </li>
         <li className="header-icon">
-          <IconBtn
-            iconName={IconName.User}
-            title={language.user}
-            onClick={onClick}
-            ariaLabel={language.myAccount}
-          />
+          <Link to={MainPath.Login}>
+            <IconContent
+              ariaLabel={language.myAccount}
+              iconName={IconName.User}
+              title={language.user}
+            />
+          </Link>
         </li>
         <li className="header-icon">
           <IconBtn
