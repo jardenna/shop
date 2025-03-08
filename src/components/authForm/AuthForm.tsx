@@ -7,11 +7,11 @@ import {
   ChangeInputType,
   FormEventType,
 } from '../../types/types';
+import FieldSet from '../fieldset/FieldSet';
 import Form from '../formElements/form/Form';
 import Input from '../formElements/Input';
 import PasswordInput from '../formElements/password/PasswordInput';
 import { PasswordRulesProps } from '../formElements/password/PasswordPopupList';
-import VisuallyHidden from '../VisuallyHidden';
 import './_auth-form.scss';
 
 export interface User {
@@ -57,8 +57,7 @@ const AuthForm: FC<AuthFormProps> = ({
       isLoading={isLoading}
       className="auth-form"
     >
-      <fieldset className="flex column">
-        <VisuallyHidden as="legend">{legendText}</VisuallyHidden>
+      <FieldSet legendText={legendText}>
         {values.username !== undefined && (
           <Input
             name="username"
@@ -106,7 +105,7 @@ const AuthForm: FC<AuthFormProps> = ({
             onBlur={onBlur}
           />
         )}
-      </fieldset>
+      </FieldSet>
     </Form>
   );
 };
