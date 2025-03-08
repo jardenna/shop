@@ -58,10 +58,13 @@ const createUser = asyncHandler(async (req, res) => {
     createToken(res, newUser._id);
 
     res.status(201).json({
-      id: newUser._id,
-      username: newUser.username,
-      email: newUser.email,
-      isAdmin: newUser.isAdmin,
+      success: true,
+      user: {
+        id: newUser._id,
+        username: newUser.username,
+        email: newUser.email,
+        isAdmin: newUser.isAdmin,
+      },
     });
   } catch (error) {
     res.status(400);
@@ -116,10 +119,13 @@ const loginUser = asyncHandler(async (req, res) => {
   try {
     createToken(res, existingUser._id);
     res.status(201).json({
-      id: existingUser._id,
-      username: existingUser.username,
-      email: existingUser.email,
-      isAdmin: existingUser.isAdmin,
+      success: true,
+      user: {
+        id: existingUser._id,
+        username: existingUser.username,
+        email: existingUser.email,
+        isAdmin: existingUser.isAdmin,
+      },
     });
   } catch (error) {
     res.status(500).json({
