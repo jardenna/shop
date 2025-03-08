@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-floating-promises */
-/* eslint-disable @typescript-eslint/no-misused-promises */
 import { FC } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import AuthForm from '../components/authForm/AuthForm';

@@ -54,8 +54,7 @@ const SelectBox: FC<SelectBoxProps> = ({
 }) => {
   const handleChange = (newValue: SelectedOption) => {
     if (isMulti) {
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-      onChange((newValue as Option[]) || []);
+      onChange(newValue as Option[]);
     } else {
       onChange(newValue as Option);
     }

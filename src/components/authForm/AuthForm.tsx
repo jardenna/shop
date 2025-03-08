@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-misused-promises */
 import { FC } from 'react';
 
 import { useNavigate } from 'react-router';
