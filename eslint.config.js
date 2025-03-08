@@ -134,6 +134,7 @@ export default tseslint.config(
       'react/button-has-type': 'error',
       'react/prefer-stateless-function': 'warn',
       'react/jsx-props-no-spreading': 'off',
+      'react/jsx-no-useless-fragment': 'error',
       'react/no-did-update-set-state': 'warn',
       'class-methods-use-this': 'off',
       'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
