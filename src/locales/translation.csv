@@ -35,8 +35,16 @@ loggedOut;Logged out successfully;Logget ud
 login;Login;Log ind
 loginFailed;Login failed;Login mislykkedes
 loginSucceeded;Login succeeded;Login lykkedes
+logout;Log out;Log ud
+main;Main;Primær
+menu;Menu;Menu
+minLength;At least 8 characters;Mindst 8 tegn
 myAccount;My account;Min brugerkonto
 myBag;My bag;Min indkøbskurv
+mustHaveLowercase;At least one lowercase letter;Mindst ét lille bogstav
+mustHaveNumber;Atleast one number;Mindst ét tal
+mustHaveSymbol;At least one special character;Mindst ét specialtegn
+mustHaveUppercase;At least one uppercase letter;Mindst ét stort bogstav
 noEmail;Please provide a email;Indtast venligst en e-mail
 noPassword;Please provide a password;Indtast venligst en adgangskode
 notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 

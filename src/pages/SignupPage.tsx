@@ -39,7 +39,6 @@ const SignupPage: FC = () => {
       const { confirmPassword, ...rest } = values;
 
       const result = await registerUser(rest).unwrap();
-      console.log(rest);
 
       if (result.success) {
         navigate(MainPath.Root);
