@@ -36,13 +36,13 @@ const Header: FC<HeaderProps> = ({
             defaultValue={defaultValue}
           />
           <Nav />
-          <div>
+          <section>
             <Icon iconName={IconName.Search} title="" />
             <Icon iconName={IconName.User} title="" />
             <Icon iconName={IconName.ShoppingBack} title="" />
             <Icon iconName={IconName.Currency} title="" />
             <Icon iconName={IconName.Language} title="" />
-          </div>
+          </section>
         </div>
 
         <section className="hero">

@@ -7,6 +7,7 @@ const ProtectedRoute: React.FC = () => {
 
   const isLoading = false;
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!isLoading) {
     return <Navigate to={MainPath.Login} state={{ from: location }} replace />;
   }
