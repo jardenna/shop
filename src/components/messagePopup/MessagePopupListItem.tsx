@@ -45,7 +45,9 @@ const MessagePopupListItem: FC<MessagePopupListItemProps> = ({
   };
 
   const { iconName, title, role } =
-    messagePopupTypeConfig[messagePopup.messagePopupType];
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    messagePopupTypeConfig[messagePopup.messagePopupType || 'info'];
+
   return (
     <li
       role={role}
