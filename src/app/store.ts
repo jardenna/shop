@@ -1,11 +1,11 @@
 import type { Middleware } from '@reduxjs/toolkit';
 import { configureStore, isRejectedWithValue } from '@reduxjs/toolkit';
+import { authApiSlice } from '../features/auth/authApiSlice';
 import languageReducer from '../features/language/languageSlice';
 import messagePopupReducer, {
   addMessagePopup,
 } from '../features/messagePopupSlice';
 import modalReducer from '../features/modalSlice';
-import { TagTypesEnum } from '../types/types';
 import apiSlice from './api/apiSlice';
 
 export const rtkQueryErrorLogger: Middleware =
@@ -25,11 +25,8 @@ export const rtkQueryErrorLogger: Middleware =
             messagePopupType: 'error',
             message: `Error: ${errorMessage}`,
             componentType: 'notification',
-          } as const),
+          }),
         );
-        setTimeout(() => {
-          dispatch(apiSlice.util.invalidateTags([TagTypesEnum.Users]));
-        }, 5000); // Invalidate the cache for the 'Records' endpoint after 5 seconds
       }
     }
 
@@ -39,6 +36,7 @@ export const rtkQueryErrorLogger: Middleware =
 export const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
+    auth: authApiSlice.reducer,
     modal: modalReducer,
     messagePopup: messagePopupReducer,
     language: languageReducer,
