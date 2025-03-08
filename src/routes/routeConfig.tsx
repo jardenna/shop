@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router';
 import Layout from '../layout/Layout';
+import LayoutHome from '../layout/LayoutHome';
 import { MainPath } from '../layout/nav/enums';
 import About from '../pages/About';
 import Collections from '../pages/Collections';
@@ -14,10 +15,6 @@ const routeConfig = createBrowserRouter([
     errorElement: <ErrorPage />,
     element: <Layout />,
     children: [
-      {
-        index: true,
-        element: <Home />,
-      },
       {
         path: MainPath.Collection,
         element: <Collections />,
@@ -38,7 +35,15 @@ const routeConfig = createBrowserRouter([
         path: MainPath.Signup,
         element: <div>signup</div>,
       },
-
+      {
+        element: <LayoutHome />,
+        children: [
+          {
+            index: true,
+            element: <Home />,
+          },
+        ],
+      },
       {
         element: <ProtectedRoute />,
         children: [
