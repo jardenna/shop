@@ -1,12 +1,14 @@
 import { FC } from 'react';
+import Button from '../../components/Button';
 import LanguageSelect from '../../components/LanguageSelect';
 import { Option, SelectedOption } from '../../components/selectBox/SelectBox';
 import useLanguage from '../../features/language/useLanguage';
+import { BtnVariant } from '../../types/enums';
 import LayoutElement from '../LayoutElement';
 import Nav from '../nav/Nav';
 import './_header.scss';
-import Logo from './Logo';
 import HeaderIcons from './HeaderIcons';
+import Logo from './Logo';
 
 export interface HeaderProps {
   ariaLabel: string;
@@ -42,13 +44,21 @@ const Header: FC<HeaderProps> = ({
           <HeaderIcons onClick={onClick} />
         </div>
 
-        <section className="hero">
+        <article className="hero">
           <div className="container">
-            <h1>{language.heroTitle}</h1>
-            <div>{language.heroText}</div>
-            <button type="button">{language.shopNow}</button>
+            <section className="hero-content">
+              <h1 className="hero-title">{language.heroTitle}</h1>
+              <div className="hero-text">
+                <p>{language.heroText}</p>
+                <p>{language.heroText1}</p>
+              </div>
+
+              <Button variant={BtnVariant.Ghost}>
+                <span>{language.shopNow}</span>
+              </Button>
+            </section>
           </div>
-        </section>
+        </article>
       </LayoutElement>
     </article>
   );
