@@ -19,7 +19,12 @@ router.get('/check-auth', languageMiddleware, authenticate, (req, res) => {
   res.status(200).json({
     success: true,
     message: 'Authenticated user',
-    user,
+    user: {
+      username: user.username,
+      email: user.email,
+      isAdmin: user.isAdmin,
+      id: user._id,
+    },
   });
 });
 

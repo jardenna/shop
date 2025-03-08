@@ -18,5 +18,9 @@ export interface AuthResponse {
   success: boolean;
   user: UserResponse;
 }
+export interface LogoutResponse {
+  message: string;
+  success: boolean;
+}
 
 export type FileUploadNameType = 'cover';
