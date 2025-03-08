@@ -1,0 +1,11 @@
+@use './globals/variables' as *;
+@use './globals/colors' as *;
+
+:export {
+  mini: $mini;
+  small: $small;
+  medium: $medium;
+  large: $large;
+  colorPrimary: $color-blue;
+  colorBackground: $color-background;
+}

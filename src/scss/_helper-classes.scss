@@ -1,0 +1,56 @@
+@use './globals' as *;
+
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+
+  @include max-size($medium) {
+    flex-direction: column;
+  }
+}
+
+.column {
+  flex-direction: column;
+}
+
+.visually-hidden {
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  height: 1px;
+  width: 1px;
+}
+
+.text-bold {
+  font-weight: 700;
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+
+  &.two-col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &.three-col {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+
+    @include max-size($small) {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+  }
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.position-relative {
+  position: relative;
+}

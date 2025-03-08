@@ -1,0 +1,11 @@
+@use './functions' as *;
+@use './colors' as *;
+
+$mini: rem(400px);
+$small: rem(767px);
+$medium: rem(1024px);
+$large: rem(1424px);
+$color-blue: $color-blue;
+$color-background: $color-background;
+$box-shadow: rgb(99 99 99 / 20%) 0 2px 8px 0;
+$box-shadow-inset: inset 0 -0.16rem 0 $color-blue;

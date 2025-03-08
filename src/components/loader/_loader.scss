@@ -1,0 +1,15 @@
+.spinner {
+  display: flex;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: conic-gradient(#0000 10%, #706f6f);
+  mask: radial-gradient(farthest-side, #0000 calc(100% - 1.8px), #000 0);
+  animation: spinner 1s infinite linear;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(1turn);
+  }
+}

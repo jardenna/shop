@@ -1,11 +1,7 @@
 import { FC } from 'react';
+import { RouterProvider } from 'react-router';
+import routeConfig from './routes/routeConfig';
 
-const App: FC = () => (
-  <div className="main-container">
-    <header aria-label="primary">Header</header>
-    <main>Main content</main>
-    <footer aria-label="primary">Footer</footer>
-  </div>
-);
+const App: FC = () => <RouterProvider router={routeConfig} />;
 
 export default App;

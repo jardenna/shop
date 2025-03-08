@@ -1,0 +1,96 @@
+@use './globals' as *;
+
+button[aria-disabled='true'] {
+  pointer-events: none;
+  background-color: $color-background;
+  color: $color-gray-40;
+  border-color: $color-border;
+}
+
+a[class^='btn-'],
+.btn {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  font-family: $font-primary;
+  font-size: rem(14px);
+  font-weight: normal;
+  color: $color-white;
+  outline: transparent;
+  padding: 16px;
+  border-radius: 4px;
+  width: 100%;
+  border: 1px solid currentcolor;
+  cursor: pointer;
+
+  @include max-size($medium) {
+    font-size: rem(16px);
+  }
+
+  @include transition;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -29%;
+    left: -18%;
+    width: 104%;
+    height: 144%;
+    min-width: rem(48px);
+    min-height: rem(48px);
+  }
+}
+
+.btn-primary {
+  background-color: $color-primary-btn;
+
+  &:hover {
+    background-color: $color-primary-btn-hover;
+  }
+
+  &:focus-visible {
+    @include outline($color-primary-btn-hover);
+
+    border: 1px solid $color-white;
+  }
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: $color-primary-btn;
+
+  &:hover {
+    color: $color-green;
+  }
+
+  &:focus-visible {
+    @include outline(currentColor);
+
+    border: 1px solid $color-white;
+  }
+}
+
+.btn-danger {
+  background-color: $color-danger;
+
+  &:hover {
+    background-color: $color-red-light;
+  }
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: $color-primary-btn;
+  border: 0;
+  width: fit-content;
+
+  &.danger {
+    svg {
+      stroke: $color-danger;
+    }
+  }
+
+  &:focus-visible {
+    @include outline(currentcolor);
+  }
+}

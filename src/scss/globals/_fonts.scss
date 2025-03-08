@@ -1,20 +1,22 @@
 @font-face {
-  font-family: 'open_sansregular';
+  font-family: felix;
   src:
-    url('fonts/opensans-variablefont_wdthwght-webfont.woff2') format('woff2'),
-    url('fonts/opensans-variablefont_wdthwght-webfont.woff') format('woff');
+    url('fonts/FelixTitlingMT.woff2') format('woff2'),
+    url('fonts/FelixTitlingMT.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: 'poiret_oneregular';
+  font-family: outfit;
   src:
-    url('fonts/poiretone-regular-webfont.woff2') format('woff2'),
-    url('fonts/poiretone-regular-webfont.woff') format('woff');
+    url('fonts/Outfit-Regular.woff2') format('woff2'),
+    url('fonts/Outfit-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
-$font-primary: open_sansregular, sans-serif;
-$font-secondary: poiret_oneregular, sans-serif;
+$font-primary: outfit, sans-serif;
+$font-secondary: felix, sans-serif;

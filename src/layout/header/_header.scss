@@ -1,0 +1,81 @@
+/* stylelint-disable selector-class-pattern */
+@use '../../scss/globals/' as *;
+
+.main-header {
+  @include max-size($small) {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 8;
+  }
+
+  .main-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    svg {
+      height: 24px;
+      width: 260px;
+    }
+  }
+
+  .header-icon-list {
+    display: flex;
+  }
+}
+
+.hero {
+  background-image: url('/images/fashion_fusion_banner.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: rem(480px);
+
+  @include max-size($large) {
+    height: auto;
+  }
+
+  .container {
+    height: 100%;
+  }
+
+  .btn-ghost {
+    padding: 0;
+    font-size: inherit;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: currentcolor;
+    align-items: center;
+    width: 100%;
+
+    &::before {
+      content: '';
+      display: flex;
+      margin-right: 30px;
+      width: 80%;
+      border-bottom: 3px solid #c086a6;
+      border-radius: 4px;
+    }
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+    max-width: rem(588px);
+    height: 100%;
+  }
+
+  .hero-text {
+    max-width: rem(512px);
+    font-size: rem(20px);
+    line-height: rem(32px);
+
+    p {
+      margin: 0;
+    }
+  }
+}
