@@ -33,7 +33,7 @@ const Portal: FC<PortalProps> = ({
     setWrapperElement(element);
 
     return () => {
-      if (systemCreated && element && element.parentNode) {
+      if (systemCreated && element.parentNode) {
         element.parentNode.removeChild(element);
       }
     };

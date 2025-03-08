@@ -24,7 +24,7 @@ const NavItemList: FC<NavItemListProps> = ({
 
   const localizedNavItems = navItemsList.map((item) => ({
     ...item,
-    linkText: (language[item.linkText] as LinkText) || item.linkText, // Fallback to the key if translation is missing
+    linkText: language[item.linkText] as LinkText,
   }));
 
   return (

@@ -114,10 +114,7 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
       setValues({
         ...values,
         [name]: [
-          ...new Set([
-            ...((values[name] as (string | number | Date)[]) || []),
-            value,
-          ]),
+          ...new Set([...(values[name] as (string | number | Date)[]), value]),
         ],
       });
     } else {
@@ -156,8 +153,8 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
   const scrollToFirstError = () => {
     const errorField = Object.keys(errors)[0];
     if (errorField && inputRefs.current[errorField]) {
-      inputRefs.current[errorField]?.scrollIntoView({ behavior: 'smooth' });
-      inputRefs.current[errorField]?.focus();
+      inputRefs.current[errorField].scrollIntoView({ behavior: 'smooth' });
+      inputRefs.current[errorField].focus();
     }
   };
 
