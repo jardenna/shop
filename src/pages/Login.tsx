@@ -8,8 +8,8 @@ const Login: FC = () => {
 
   const handleLogin = () => {
     loginUser({
-      email: 'helle@test.com',
-      password: 'Helle123!',
+      email: 'joe@test.com',
+      password: 'JoeJoe123!',
     });
   };
 
