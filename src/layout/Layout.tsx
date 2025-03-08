@@ -1,6 +1,5 @@
 import { FC, ReactNode } from 'react';
 import { Outlet } from 'react-router';
-import SkipLink from '../components/skipLinks/SkipLinks';
 import useLanguage, { languageOptions } from '../features/language/useLanguage';
 import Header from './header/Header';
 
@@ -17,8 +16,7 @@ const Layout: FC = () => {
   );
 
   return (
-    <div className="main-container">
-      <SkipLink />
+    <>
       <Header
         labelText={language.selectLanguage}
         ariaLabel={language.main}
@@ -34,7 +32,7 @@ const Layout: FC = () => {
           <Outlet />
         </div>
       </main>
-    </div>
+    </>
   );
 };
 
