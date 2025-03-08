@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import IconBtn from '../../components/IconBtn';
 import Icon, { IconName } from '../../components/icons/Icon';
 import LanguageSelect from '../../components/LanguageSelect';
 import { Option, SelectedOption } from '../../components/selectBox/SelectBox';
@@ -23,6 +24,9 @@ const Header: FC<HeaderProps> = ({
   labelText,
 }) => {
   const { language } = useLanguage();
+  const onClick = () => {
+    console.log(123);
+  };
 
   return (
     <article>
@@ -37,10 +41,31 @@ const Header: FC<HeaderProps> = ({
           />
           <Nav />
           <section>
-            <Icon iconName={IconName.Search} title="" />
-            <Icon iconName={IconName.User} title="" />
-            <Icon iconName={IconName.ShoppingBack} title="" />
-            <Icon iconName={IconName.Currency} title="" />
+            <IconBtn
+              iconName={IconName.Search}
+              title={language.search}
+              onClick={onClick}
+              ariaLabel={language.search}
+            />
+            <IconBtn
+              iconName={IconName.User}
+              title={language.user}
+              onClick={onClick}
+              ariaLabel={language.myAccount}
+            />
+            <IconBtn
+              iconName={IconName.ShoppingBack}
+              title={language.bag}
+              onClick={onClick}
+              ariaLabel={language.myBag}
+            />
+            <IconBtn
+              iconName={IconName.Currency}
+              title={language.currency}
+              onClick={onClick}
+              ariaLabel={language.currency}
+            />
+
             <Icon iconName={IconName.Language} title="" />
           </section>
         </div>

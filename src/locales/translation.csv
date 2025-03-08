@@ -1,6 +1,7 @@
 ﻿key;en;da
 about;About;Profil
 additionalInfo;Additional info;Supplerende information
+bag;Bag;Indkøbskurv
 cancel;Cancel;Annuller
 cannotDeleteAdmin;Cannot delete admin user;Admin bruger kan ikke slettes
 close;Close;Luk
@@ -10,6 +11,7 @@ confirmPassword;Confirm password;Gentag adgangskode
 contact;Contact;Kontakt
 criterionMet;Criterion met;Kriterium opfyldt
 criterionNotMet;Criterion not met;Kriterium ikke opfyldt
+currency;Currency;Valuta
 email;Email;E-mail
 error;Error;Fejl
 errorAltText;A really guilty emoji;En meget skyldig emoji
@@ -26,11 +28,14 @@ invalidEmail;Invalid email;Ugyldig e-mail
 invalidEmail;Please provide a valid email;Indtast venligst en gyldig e-mail
 invalidPassword;Invalid password;Ugyldig adgangskode
 invalidUserData;Invalid user data;Ugyldig bruger data
+language;Language;Sprog
 loading;Loading;Loading
 loggedOut;Logged out successfully;Logget ud
 login;Login;Log ind
 loginFailed;Login failed;Login mislykkedes
 loginSucceeded;Login succeeded;Login lykkedes
+myAccount;My account;Min brugerkonto
+myBag;My bag;Min indkøbskurv
 noEmail;Please provide a email;Indtast venligst en e-mail
 noPassword;Please provide a password;Indtast venligst en adgangskode
 notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 
@@ -51,6 +56,7 @@ pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
 pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
 pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
 retry;Retry;Forsøg igen
+search;Search;Søg
 shopNow;Shop now;Køb nu
 showPassword;Show password;Vis adgangskode
 signup;Signup;Opret bruger
