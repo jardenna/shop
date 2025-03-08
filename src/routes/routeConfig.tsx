@@ -7,9 +7,9 @@ import Collections from '../pages/Collections';
 import Contact from '../pages/Contact';
 import ErrorPage from '../pages/ErrorPage';
 import Home from '../pages/Home';
-import ProtectedRoute from '../pages/ProtectedRoute';
-import Signup from '../pages/SignUp';
 import LoginPage from '../pages/LoginPage';
+import ProtectedRoute from '../pages/ProtectedRoute';
+import SignupPage from '../pages/SignupPage';
 
 const routeConfig = createBrowserRouter([
   {
@@ -35,7 +35,7 @@ const routeConfig = createBrowserRouter([
       },
       {
         path: MainPath.Signup,
-        element: <Signup />,
+        element: <SignupPage />,
       },
       {
         element: <LayoutHome />,

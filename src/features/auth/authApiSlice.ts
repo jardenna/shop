@@ -10,10 +10,10 @@ import { TagTypesEnum } from '../../types/types';
 export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     signup: builder.mutation<AuthResponse, AuthRequest>({
-      query: () => ({
+      query: (user) => ({
         url: authEndpoints.register,
         method: 'POST',
-        body: 'user',
+        body: user,
       }),
       invalidatesTags: [TagTypesEnum.Auth],
     }),
