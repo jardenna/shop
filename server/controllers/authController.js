@@ -58,7 +58,7 @@ const createUser = asyncHandler(async (req, res) => {
     createToken(res, newUser._id);
 
     res.status(201).json({
-      _id: newUser._id,
+      id: newUser._id,
       username: newUser.username,
       email: newUser.email,
       isAdmin: newUser.isAdmin,
@@ -116,7 +116,7 @@ const loginUser = asyncHandler(async (req, res) => {
   try {
     createToken(res, existingUser._id);
     res.status(201).json({
-      _id: existingUser._id,
+      id: existingUser._id,
       username: existingUser.username,
       email: existingUser.email,
       isAdmin: existingUser.isAdmin,
