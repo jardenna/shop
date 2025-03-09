@@ -2,6 +2,7 @@ export interface UserResponse {
   email: string;
   id: string;
   isAdmin: boolean;
+  role: 'admin' | 'employe' | 'user';
   username: string;
 }
 
