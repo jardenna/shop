@@ -24,6 +24,7 @@ router.get('/check-auth', languageMiddleware, authenticate, (req, res) => {
       email: user.email,
       isAdmin: user.isAdmin,
       id: user._id,
+      role: user.role,
     },
   });
 });

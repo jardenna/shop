@@ -11,7 +11,7 @@ import { t } from '../utils/translator.js';
 // @method   POST
 // @access  Public
 const createUser = asyncHandler(async (req, res) => {
-  const { username, email, password } = req.body;
+  const { username, email, password, role } = req.body;
   const userExists = await User.findOne({ email });
 
   if (!username || !email || !password) {
@@ -51,6 +51,7 @@ const createUser = asyncHandler(async (req, res) => {
     username,
     email,
     password: hashPassword,
+    role,
   });
 
   try {
@@ -64,6 +65,7 @@ const createUser = asyncHandler(async (req, res) => {
         username: newUser.username,
         email: newUser.email,
         isAdmin: newUser.isAdmin,
+        role: newUser.role,
       },
     });
   } catch (error) {
