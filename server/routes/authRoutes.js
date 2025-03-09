@@ -13,20 +13,26 @@ router.post('/register', languageMiddleware, createUser);
 router.post('/login', languageMiddleware, loginUser);
 router.post('/logout', languageMiddleware, logoutCurrentUser);
 
-router.get('/check-auth', languageMiddleware, authenticate, (req, res) => {
-  const user = req.user;
+router.get(
+  '/check-auth',
+  languageMiddleware,
+  authenticate,
 
-  res.status(200).json({
-    success: true,
-    message: 'Authenticated user',
-    user: {
-      username: user.username,
-      email: user.email,
-      isAdmin: user.isAdmin,
-      id: user._id,
-      role: user.role,
-    },
-  });
-});
+  (req, res) => {
+    const user = req.user;
+
+    res.status(200).json({
+      success: true,
+      message: 'Authenticated user',
+      user: {
+        username: user.username,
+        email: user.email,
+        isAdmin: user.isAdmin,
+        id: user._id,
+        role: user.role,
+      },
+    });
+  },
+);
 
 export default router;
