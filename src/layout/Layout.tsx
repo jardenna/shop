@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react';
-import { Outlet, useLocation } from 'react-router';
+import { Outlet, useLocation, useNavigate } from 'react-router';
 import Button from '../components/Button';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import {
@@ -17,6 +17,7 @@ export interface LayoutElementProps {
 
 const Layout: FC = () => {
   const { language, switchLanguage, selectedLanguage } = useLanguage();
+  const navigate = useNavigate();
   const selected = languageOptions.find(
     (option) => option.value === selectedLanguage,
   );
@@ -30,6 +31,7 @@ const Layout: FC = () => {
 
   const handleLogout = () => {
     logout();
+    navigate('/login');
   };
 
   return (
