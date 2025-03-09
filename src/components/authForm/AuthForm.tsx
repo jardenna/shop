@@ -27,6 +27,7 @@ export interface User {
 
 interface AuthFormProps {
   errors: KeyValuePair<string>;
+  heading: string;
   isLoading: boolean;
   labelText: string;
   legendText: string;
@@ -44,6 +45,7 @@ interface AuthFormProps {
 const AuthForm: FC<AuthFormProps> = ({
   values,
   onSubmit,
+  heading,
   isLoading,
   onChange,
   labelText,
@@ -61,7 +63,7 @@ const AuthForm: FC<AuthFormProps> = ({
 
   return (
     <>
-      <h1 className="page-title">Sign up</h1>
+      <h1 className="page-title">{heading}</h1>
       <Form
         labelText={labelText}
         onSubmit={onSubmit}

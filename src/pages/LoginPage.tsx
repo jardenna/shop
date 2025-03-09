@@ -55,6 +55,7 @@ const LoginPage: FC = () => {
       onBlur={onBlur}
       navigateTo={MainPath.Signup}
       navigateToText={language.createAccount}
+      heading={language.login}
     />
   );
 };

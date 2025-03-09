@@ -51,6 +51,7 @@ const SignupPage: FC = () => {
 
   return (
     <AuthForm
+      heading={language.signup}
       values={values}
       labelText={language.signup}
       onSubmit={onSubmit}

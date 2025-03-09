@@ -33,8 +33,8 @@ invalidUserData;Invalid user data;Ugyldig bruger data
 language;Language;Sprog
 loading;Loading;Loading
 loggedOut;Logged out successfully;Logget ud
-login;Login;Log ind
-loginHere;Login here;Log ind her
+login;Log in;Log ind
+loginHere;Log in here;Log ind her
 loginFailed;Login failed;Login mislykkedes
 loginSucceeded;Login succeeded;Login lykkedes
 logout;Log out;Log ud
@@ -70,7 +70,7 @@ retry;Retry;Forsøg igen
 search;Search;Søg
 shopNow;Shop now;Køb nu
 showPassword;Show password;Vis adgangskode
-signup;Signup;Opret bruger
+signup;Sign up;Opret bruger
 signupFailed;Sign up failed;Registrering mislykkedes
 signupSucceeded;Sign up succeeded;Registrering lykkedes
 sub;Sub;Sekundær
