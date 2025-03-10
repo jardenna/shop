@@ -50,6 +50,7 @@ const DropdownList: FC<DropdownListProps> = ({
   useKeyPress(handlePrevListItem, [KeyCode.ArrowUp]);
   useKeyPress(handleGotoFirstListItem, [KeyCode.Home]);
   useKeyPress(handleGotoLastListItem, [KeyCode.End]);
+
   return (
     <div className="dropdown-list" ref={ref}>
       <ul>
@@ -74,4 +75,5 @@ const DropdownList: FC<DropdownListProps> = ({
     </div>
   );
 };
+
 export default DropdownList;
