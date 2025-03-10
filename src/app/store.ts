@@ -29,7 +29,6 @@ export const rtkQueryErrorLogger: Middleware =
         );
       }
     }
-
     return next(action);
   };
 
