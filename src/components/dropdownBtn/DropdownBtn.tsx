@@ -1,0 +1,60 @@
+import { FC } from 'react';
+import { useNavigate } from 'react-router';
+import useLanguage from '../../features/language/useLanguage';
+import { MainPath } from '../../layout/nav/enums';
+import { BtnVariant } from '../../types/enums';
+import Button from '../Button';
+import IconContent from '../IconContent';
+import { IconName } from '../icons/Icon';
+
+interface DropdownBtnProps {
+  btnVariant?: BtnVariant;
+}
+
+const DropdownBtn: FC<DropdownBtnProps> = ({
+  btnVariant = BtnVariant.Ghost,
+}) => {
+  const navigate = useNavigate();
+  const { language } = useLanguage();
+
+  const dropdownList = [
+    {
+      label: language.myAccount,
+      id: 1,
+      onClick: () => {
+        navigate(`/${MainPath.MyAccount}`);
+      },
+    },
+
+    {
+      label: language.orders,
+      id: 2,
+      onClick: () => {
+        navigate(`/${MainPath.Orders}`);
+      },
+    },
+  ];
+  return (
+    <section>
+      <Button variant={btnVariant}>
+        <IconContent
+          ariaLabel={language.myAccount}
+          iconName={IconName.User}
+          title={language.user}
+        />
+      </Button>
+      <div>
+        Logout
+        <ul>
+          {dropdownList.map(({ id, label, onClick }) => (
+            <li key={id}>
+              <Button onClick={onClick}>{label}</Button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+};
+
+export default DropdownBtn;

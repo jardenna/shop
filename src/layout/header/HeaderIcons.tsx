@@ -1,8 +1,10 @@
 import { FC } from 'react';
 import { Link } from 'react-router';
+import DropdownBtn from '../../components/dropdownBtn/DropdownBtn';
 import IconBtn from '../../components/IconBtn';
 import IconContent from '../../components/IconContent';
 import Icon, { IconName } from '../../components/icons/Icon';
+import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../nav/enums';
 
@@ -13,6 +15,8 @@ interface HeaderIconsProps {
 
 const HeaderIcons: FC<HeaderIconsProps> = ({ onClick }) => {
   const { language } = useLanguage();
+  const { currentUser } = useAuth();
+  console.log(currentUser);
 
   return (
     <section>
@@ -26,13 +30,17 @@ const HeaderIcons: FC<HeaderIconsProps> = ({ onClick }) => {
           />
         </li>
         <li className="header-icon">
-          <Link to={MainPath.Login}>
-            <IconContent
-              ariaLabel={language.myAccount}
-              iconName={IconName.User}
-              title={language.user}
-            />
-          </Link>
+          {currentUser ? (
+            <DropdownBtn />
+          ) : (
+            <Link to={MainPath.Login}>
+              <IconContent
+                ariaLabel={language.myAccount}
+                iconName={IconName.User}
+                title={language.user}
+              />
+            </Link>
+          )}
         </li>
         <li className="header-icon">
           <IconBtn
