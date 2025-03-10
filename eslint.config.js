@@ -135,6 +135,16 @@ export default tseslint.config(
       ],
       camelcase: 'off',
       // 'react/destructuring-assignment': 'off',
+      'react/jsx-no-target-blank': [
+        'error',
+        {
+          allowReferrer: false,
+          enforceDynamicLinks: 'always',
+          warnOnSpreadAttributes: true,
+          links: true,
+          forms: true,
+        },
+      ],
       'react/button-has-type': 'error',
       'react/prefer-stateless-function': 'warn',
       // 'react/jsx-props-no-spreading': 'off',
