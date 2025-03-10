@@ -109,6 +109,7 @@ export default tseslint.config(
       'arrow-body-style': 'warn',
       'react/no-multi-comp': ['error', { ignoreStateless: false }],
       'react/no-unescaped-entities': 0,
+      'react/jsx-curly-brace-presence': 'error',
       'no-underscore-dangle': ['error', { allow: ['__esModule', '__extends'] }],
       // 'import/no-unresolved': 'off',
       // 'import/extensions': 'off',
