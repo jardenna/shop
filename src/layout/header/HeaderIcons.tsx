@@ -36,6 +36,7 @@ const HeaderIcons: FC<HeaderIconsProps> = ({ onClick, userDropdownList }) => {
             <DropdownBtn
               username={currentUser.username}
               dropdownList={userDropdownList}
+              ariaControls="user-dropdown"
             />
           ) : (
             <Link to={MainPath.Login}>

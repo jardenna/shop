@@ -4,10 +4,10 @@ import useClickOutside from '../../hooks/useClickOutside';
 import useKeyPress from '../../hooks/useKeyPress';
 import { BtnVariant, KeyCode } from '../../types/enums';
 import Button from '../Button';
+import IconContent from '../IconContent';
 import { IconName } from '../icons/Icon';
 import './_dropdown-btn.scss';
 import DropdownList from './DropdownList';
-import IconContent from '../IconContent';
 
 export interface DropdownItem {
   id: number;
@@ -18,6 +18,7 @@ export interface DropdownItem {
 }
 
 interface DropdownBtnProps {
+  ariaControls: string;
   dropdownList: DropdownItem[];
   username: string;
   btnVariant?: BtnVariant;
@@ -26,6 +27,7 @@ interface DropdownBtnProps {
 const DropdownBtn: FC<DropdownBtnProps> = ({
   dropdownList,
   btnVariant = BtnVariant.Ghost,
+  ariaControls,
 }) => {
   const { language } = useLanguage();
   const dropdownRef = useRef<HTMLDivElement | null>(null);
@@ -46,6 +48,7 @@ const DropdownBtn: FC<DropdownBtnProps> = ({
         }}
         ariaExpanded={dropdownIsOpen}
         ariaHasPopup
+        ariaControls={ariaControls}
       >
         <IconContent
           ariaLabel={language.myAccount}
@@ -54,7 +57,11 @@ const DropdownBtn: FC<DropdownBtnProps> = ({
         />
       </Button>
       {dropdownIsOpen && (
-        <DropdownList dropdownList={dropdownList} ref={dropdownRef} />
+        <DropdownList
+          dropdownList={dropdownList}
+          ref={dropdownRef}
+          ariaControls={ariaControls}
+        />
       )}
     </div>
   );

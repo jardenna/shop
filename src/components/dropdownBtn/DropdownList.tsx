@@ -5,6 +5,7 @@ import Button from '../Button';
 import { DropdownItem } from './DropdownBtn';
 
 interface DropdownListProps {
+  ariaControls: string;
   dropdownList: DropdownItem[];
   ref: RefObject<HTMLDivElement | null>;
   defaultIndex?: number;
@@ -14,6 +15,7 @@ const DropdownList: FC<DropdownListProps> = ({
   dropdownList,
   ref,
   defaultIndex,
+  ariaControls,
 }) => {
   const [selectedListItemIndex, setSelectedListItemIndex] = useState(
     defaultIndex ?? -1,
@@ -53,18 +55,19 @@ const DropdownList: FC<DropdownListProps> = ({
 
   return (
     <div className="dropdown-list" ref={ref}>
-      <ul>
+      <ul id={ariaControls}>
         {dropdownList.map(
           ({ id, label, onClick, className = '', icon }, index) => (
             <li key={id}>
               <Button
                 variant={BtnVariant.Ghost}
                 onClick={onClick}
-                className={className}
                 tabIndex={index === selectedListItemIndex ? 0 : -1}
                 ref={(el) => {
                   listRefs.current[index] = el;
                 }}
+                ariaSelected={index === selectedListItemIndex}
+                className={`${className} ${index === selectedListItemIndex ? 'active' : ''}`}
               >
                 {label} {icon}
               </Button>
