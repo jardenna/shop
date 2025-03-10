@@ -1,11 +1,6 @@
 import { FC, ReactNode } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router';
-import Button from '../components/Button';
 import SkipLink from '../components/skipLinks/SkipLinks';
-import {
-  useCheckAuthQuery,
-  useLogoutMutation,
-} from '../features/auth/authApiSlice';
 import useLanguage, { languageOptions } from '../features/language/useLanguage';
 import Header from './header/Header';
 
@@ -24,16 +19,6 @@ const Layout: FC = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
 
-  const [logout] = useLogoutMutation();
-  const { data: user } = useCheckAuthQuery();
-
-  console.log(user);
-
-  const handleLogout = () => {
-    logout();
-    navigate('/login');
-  };
-
   return (
     <div className="main-container">
       <SkipLink />
@@ -49,7 +34,6 @@ const Layout: FC = () => {
       />
 
       <main id="main">
-        <Button onClick={handleLogout}>Logout</Button>
         <div className={isHomePage ? 'home-page' : 'container page'}>
           <Outlet />
         </div>

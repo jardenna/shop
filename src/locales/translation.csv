@@ -43,6 +43,7 @@ menu;Menu;Menu
 minLength;At least 8 characters;Mindst 8 tegn
 myAccount;My account;Min brugerkonto
 myBag;My bag;Min indkøbskurv
+myOrders;My orders;Mine ordrer
 mustHaveLowercase;At least one lowercase letter;Mindst ét lille bogstav
 mustHaveNumber;Atleast one number;Mindst ét tal
 mustHaveSymbol;At least one special character;Mindst ét specialtegn
@@ -53,7 +54,6 @@ notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin
 notAuthorizedNoToken;Not authorized, no token;Ikke autoriseret, ingen token
 notAuthorizedTokenFailed;Not authorized, token failed;Ikke autoriseret, token mislykkedes
 noUser;User not found. Please sign up first;Bruger ikke fundet. Opret dig først
-orders;Orders;Ordrer
 password;Password;Adgangskode
 passwordDoNotMatch;The passwords do not match;Adgangskoderne stemmer ikke overens
 passwordLowercase;Password should contain at least one lowercase letter;Adgangskoden skal indeholde mindst ét lille bogstav

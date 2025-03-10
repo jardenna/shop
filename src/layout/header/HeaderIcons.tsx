@@ -31,7 +31,7 @@ const HeaderIcons: FC<HeaderIconsProps> = ({ onClick }) => {
         </li>
         <li className="header-icon">
           {currentUser ? (
-            <DropdownBtn />
+            <DropdownBtn username={currentUser.username} />
           ) : (
             <Link to={MainPath.Login}>
               <IconContent
