@@ -52,7 +52,9 @@ const DropdownBtn: FC<DropdownBtnProps> = ({
           title={language.user}
         />
       </Button>
-      <span>Welcome {username}</span>
+      <span>
+        {language.welcome} {username}
+      </span>
       <div>
         <Button onClick={handleLogout}>{language.logout}</Button>
         <ul>

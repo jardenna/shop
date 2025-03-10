@@ -16,7 +16,6 @@ interface HeaderIconsProps {
 const HeaderIcons: FC<HeaderIconsProps> = ({ onClick }) => {
   const { language } = useLanguage();
   const { currentUser } = useAuth();
-  console.log(currentUser);
 
   return (
     <section>
