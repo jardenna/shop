@@ -37,12 +37,12 @@ const Layout: FC = () => {
       onClick: () => {
         navigate(`/${MainPath.MyAccount}`);
       },
-      icon: <Icon iconName={IconName.Auth} title="aa" size="50" />,
+      icon: <Icon iconName={IconName.Auth} title="aa" size="30" />,
     },
     {
       label: language.myOrders,
       id: 2,
-      icon: <Icon iconName={IconName.Account} title="aa" size="50" />,
+      icon: <Icon iconName={IconName.Account} title="aa" size="30" />,
       onClick: () => {
         navigate(`/${MainPath.Orders}`);
       },

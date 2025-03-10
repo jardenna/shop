@@ -44,7 +44,7 @@ const DropdownBtn: FC<DropdownBtnProps> = ({
   }, [buttonRef]);
 
   return (
-    <div>
+    <div className="dropdown-container">
       <Button
         variant={btnVariant}
         ref={(el) => {

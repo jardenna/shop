@@ -54,11 +54,14 @@ const DropdownList: FC<DropdownListProps> = ({
   useKeyPress(handleGotoLastListItem, [KeyCode.End]);
 
   return (
-    <div className="dropdown-list" ref={ref}>
-      <ul id={ariaControls}>
+    <div ref={ref}>
+      <ul id={ariaControls} className="dropdown-list">
         {dropdownList.map(
           ({ id, label, onClick, className = '', icon }, index) => (
-            <li key={id}>
+            <li
+              key={id}
+              className={`dropdown-item ${className} ${index === selectedListItemIndex ? 'active' : ''}`}
+            >
               <Button
                 variant={BtnVariant.Ghost}
                 onClick={onClick}
@@ -67,9 +70,9 @@ const DropdownList: FC<DropdownListProps> = ({
                   listRefs.current[index] = el;
                 }}
                 ariaSelected={index === selectedListItemIndex}
-                className={`${className} ${index === selectedListItemIndex ? 'active' : ''}`}
               >
-                {label} {icon}
+                <span>{label}</span>
+                <span>{icon}</span>
               </Button>
             </li>
           ),
