@@ -1,6 +1,5 @@
 import { createBrowserRouter } from 'react-router';
 import Layout from '../layout/Layout';
-import LayoutHome from '../layout/LayoutHome';
 import { MainPath } from '../layout/nav/enums';
 import About from '../pages/About';
 import Collections from '../pages/Collections';
@@ -10,6 +9,8 @@ import Home from '../pages/Home';
 import LoginPage from '../pages/LoginPage';
 import ProtectedRoute from '../pages/ProtectedRoute';
 import SignupPage from '../pages/SignupPage';
+import MyAccount from '../pages/account/MyAccount';
+import Orders from '../pages/account/Orders';
 
 const routeConfig = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const routeConfig = createBrowserRouter([
     errorElement: <ErrorPage />,
     element: <Layout />,
     children: [
+      {
+        index: true,
+        element: <Home />,
+      },
       {
         path: MainPath.Collection,
         element: <Collections />,
@@ -38,14 +43,23 @@ const routeConfig = createBrowserRouter([
         element: <SignupPage />,
       },
       {
-        element: <LayoutHome />,
-        children: [
-          {
-            index: true,
-            element: <Home />,
-          },
-        ],
+        path: MainPath.MyAccount,
+        element: <MyAccount />,
       },
+      {
+        path: MainPath.Orders,
+        element: <Orders />,
+      },
+
+      // {
+      //   element: <MyAccount />,
+      //   children: [
+      //     {
+      //       index: true,
+      //       element: <Orders />,
+      //     },
+      //   ],
+      // },
       {
         element: <ProtectedRoute />,
         children: [
