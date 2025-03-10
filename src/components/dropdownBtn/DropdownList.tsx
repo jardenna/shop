@@ -11,14 +11,14 @@ interface DropdownListProps {
 const DropdownList: FC<DropdownListProps> = ({ dropdownList, ref }) => (
   <div className="dropdown-list" ref={ref}>
     <ul>
-      {dropdownList.map(({ id, label, onClick, className = '' }) => (
+      {dropdownList.map(({ id, label, onClick, className = '', icon }) => (
         <li key={id}>
           <Button
             variant={BtnVariant.Ghost}
             onClick={onClick}
             className={className}
           >
-            {label}
+            {label} {icon}
           </Button>
         </li>
       ))}

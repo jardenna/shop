@@ -1,5 +1,6 @@
 import { FC, ReactNode } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router';
+import Icon, { IconName } from '../components/icons/Icon';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
 import useLanguage, { languageOptions } from '../features/language/useLanguage';
@@ -36,10 +37,12 @@ const Layout: FC = () => {
       onClick: () => {
         navigate(`/${MainPath.MyAccount}`);
       },
+      icon: <Icon iconName={IconName.Auth} title="aa" size="50" />,
     },
     {
       label: language.myOrders,
       id: 2,
+      icon: <Icon iconName={IconName.Account} title="aa" size="50" />,
       onClick: () => {
         navigate(`/${MainPath.Orders}`);
       },
@@ -49,6 +52,7 @@ const Layout: FC = () => {
       id: 3,
       onClick: handleLogout,
       className: 'logout',
+      icon: <Icon iconName={IconName.Logout} title="aa" />,
     },
   ];
 

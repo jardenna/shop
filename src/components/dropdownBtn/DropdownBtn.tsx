@@ -1,18 +1,19 @@
-import { FC, useRef, useState } from 'react';
+import { FC, ReactNode, useRef, useState } from 'react';
 import useLanguage from '../../features/language/useLanguage';
 import useClickOutside from '../../hooks/useClickOutside';
 import useKeyPress from '../../hooks/useKeyPress';
 import { BtnVariant, KeyCode } from '../../types/enums';
 import Button from '../Button';
-import IconContent from '../IconContent';
 import { IconName } from '../icons/Icon';
 import './_dropdown-btn.scss';
 import DropdownList from './DropdownList';
+import IconContent from '../IconContent';
 
 export interface DropdownItem {
   id: number;
   label: string;
   className?: string;
+  icon?: ReactNode;
   onClick: () => void;
 }
 

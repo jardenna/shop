@@ -32,6 +32,7 @@ import TrashIcon from './TrashIcon';
 import UndoIcon from './UndoIcon';
 import UserIcon from './UserIcon';
 import WarningIcon from './WarningIcon';
+import LogoutIcon from './LogoutIcon';
 
 export interface IconDefaultProps {
   title: string;
@@ -70,6 +71,7 @@ export enum IconName {
   Info = 'info',
   Language = 'language',
   Logo = 'logo',
+  Logout = 'logout',
   More = 'more',
   Search = 'search',
   ShoppingBack = 'shoppingBack',
@@ -106,6 +108,7 @@ const iconMapping = {
   info: InfoIcon,
   language: LanguageIcon,
   logo: Logo,
+  logout: LogoutIcon,
   more: MoreIcon,
   search: SearchIcon,
   shoppingBack: ShoppingBackIcon,
