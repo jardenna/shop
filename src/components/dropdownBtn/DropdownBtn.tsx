@@ -37,14 +37,19 @@ const DropdownBtn: FC<DropdownBtnProps> = ({
     setDropdownIsOpen(false);
   }, [KeyCode.Esc]);
 
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+
   useClickOutside(dropdownRef, () => {
     setDropdownIsOpen(false);
-  });
+  }, [buttonRef]);
 
   return (
     <div>
       <Button
         variant={btnVariant}
+        ref={(el) => {
+          buttonRef.current = el;
+        }}
         onClick={() => {
           setDropdownIsOpen(!dropdownIsOpen);
         }}

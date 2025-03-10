@@ -1,3 +1,7 @@
 .dropdown-list {
   position: absolute;
+
+  .active {
+    background-color: red;
+  }
 }
