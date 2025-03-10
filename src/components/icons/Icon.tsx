@@ -2,6 +2,7 @@ import { FC } from 'react';
 import AddIcon from './AddIcon';
 import ArrowDownIcon from './ArrowDownIcon';
 import ArrowUpIcon from './ArrowUpIcon';
+import AuthIcon from './AuthIco';
 import ChevronDownIcon from './ChevronDownIcon';
 import ChevronLeftIcon from './ChevronLeftIcon';
 import ChevronRightIcon from './ChevronRightIcon';
@@ -47,6 +48,7 @@ export enum IconName {
   Add = 'add',
   ArrowDown = 'arrowDown',
   ArrowUp = 'arrowUp',
+  Auth = 'auth',
   ChevronDown = 'chevronDown',
   ChevronLeft = 'chevronLeft',
   ChevronRight = 'chevronRight',
@@ -81,6 +83,7 @@ const iconMapping = {
   add: AddIcon,
   arrowDown: ArrowDownIcon,
   arrowUp: ArrowUpIcon,
+  auth: AuthIcon,
   chevronLeft: ChevronLeftIcon,
   chevronRight: ChevronRightIcon,
   chevronUp: ChevronUpIcon,
