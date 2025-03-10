@@ -32,9 +32,11 @@ const DropdownBtn: FC<DropdownBtnProps> = ({
   const { language } = useLanguage();
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const [dropdownIsOpen, setDropdownIsOpen] = useState(false);
+
   useKeyPress(() => {
     setDropdownIsOpen(false);
   }, [KeyCode.Esc]);
+
   useClickOutside(dropdownRef, () => {
     setDropdownIsOpen(false);
   });
