@@ -37,12 +37,16 @@ const Layout: FC = () => {
       onClick: () => {
         navigate(`/${MainPath.MyAccount}`);
       },
-      icon: <Icon iconName={IconName.Auth} title="aa" size="30" />,
+      icon: (
+        <Icon iconName={IconName.Auth} title={language.myAccount} size="30" />
+      ),
     },
     {
       label: language.myOrders,
       id: 2,
-      icon: <Icon iconName={IconName.Account} title="aa" size="30" />,
+      icon: (
+        <Icon iconName={IconName.Account} title={language.myOrders} size="30" />
+      ),
       onClick: () => {
         navigate(`/${MainPath.Orders}`);
       },
@@ -52,7 +56,7 @@ const Layout: FC = () => {
       id: 3,
       onClick: handleLogout,
       className: 'logout',
-      icon: <Icon iconName={IconName.Logout} title="aa" />,
+      icon: <Icon iconName={IconName.Logout} title={language.logout} />,
     },
   ];
 
