@@ -1,13 +1,18 @@
 import { FC } from 'react';
 import { Link } from 'react-router';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import DropdownBtn, {
   DropdownItem,
 } from '../../components/dropdownBtn/DropdownBtn';
 import IconBtn from '../../components/IconBtn';
 import IconContent from '../../components/IconContent';
 import Icon, { IconName } from '../../components/icons/Icon';
+import Modal from '../../components/modal/Modal';
+import useModal from '../../components/modal/useModal';
 import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
+import { selectModalId } from '../../features/modalSlice';
+import { SizeVariant } from '../../types/enums';
 import { MainPath } from '../nav/enums';
 
 interface HeaderIconsProps {
@@ -21,17 +26,27 @@ const HeaderIcons: FC<HeaderIconsProps> = ({ userDropdownList }) => {
   const onClick = () => {
     console.log(123);
   };
+
+  const { openModal } = useModal('loginModal');
+  const dispatch = useAppDispatch();
+  const modalId = useAppSelector(selectModalId);
+
+  const handleLogin = () => {
+    // dispatch(toggleModal('loginModal'));
+    openModal();
+  };
+
   return (
     <section>
       <ul className="header-icon-list">
-        <li className="header-icon">
+        {/* <li className="header-icon">
           <IconBtn
             iconName={IconName.Search}
             title={language.search}
             onClick={onClick}
             ariaLabel={language.search}
           />
-        </li>
+        </li> */}
         <li className="header-icon">
           {currentUser ? (
             <DropdownBtn
@@ -61,9 +76,26 @@ const HeaderIcons: FC<HeaderIconsProps> = ({ userDropdownList }) => {
           </Link>
         </li>
         <li>
-          <Icon iconName={IconName.Language} title={language.globe} />
+          <IconBtn
+            iconName={IconName.Language}
+            title={language.globe}
+            onClick={handleLogin}
+            ariaLabel="Select preferred language and currency"
+          />
         </li>
       </ul>
+
+      <Modal
+        id={modalId || ''}
+        modalSize={SizeVariant.Md}
+        modalHeaderText="modalText"
+        primaryActionBtn={{
+          label: language.save,
+          onClick: onClick,
+        }}
+      >
+        hello
+      </Modal>
     </section>
   );
 };

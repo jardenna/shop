@@ -1,0 +1,92 @@
+@use '../../scss/globals' as *;
+
+dialog::backdrop {
+  background-color: gray;
+  opacity: 0.8;
+}
+
+.modal {
+  border: 0;
+  overflow-x: hidden;
+  border-radius: 4px;
+  width: auto;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+
+  @include max-size($small) {
+    border-radius: 0;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+
+    &.animate-top-right {
+      top: 0;
+    }
+  }
+
+  &.modal-sm {
+    max-width: rem(500px);
+
+    @include max-size($medium) {
+      min-width: 90%;
+    }
+  }
+
+  &.modal-md {
+    width: 50%;
+
+    @include max-size($medium) {
+      min-width: 90%;
+    }
+  }
+
+  &.modal-lg {
+    width: 90%;
+
+    @include max-size($large) {
+      min-width: 100%;
+    }
+  }
+
+  .modal-header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $color-border;
+  }
+
+  .modal-title {
+    flex-grow: 1;
+    margin: 0;
+  }
+
+  .modal-form {
+    margin-top: 16px;
+  }
+
+  .modal-body {
+    padding: 20px 16px;
+    font-size: rem(14px);
+    line-height: rem(21px);
+    display: flex;
+    justify-content: center;
+
+    @include max-size($medium) {
+      padding: 20px 0;
+    }
+  }
+
+  .modal-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+}
