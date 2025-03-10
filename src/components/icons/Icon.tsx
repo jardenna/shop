@@ -11,7 +11,6 @@ import ChevronsLeftIcon from './ChevronsLeftIcon';
 import ChevronsRightIcon from './ChevronsRightIcon';
 import ChevronUpIcon from './ChevronUpIcon';
 import CloseIcon from './CloseIcon';
-import CurrencyIcon from './CurrencyIcon';
 import EditIcon from './EditIcon';
 import ErrorIcon from './ErrorIcon';
 import EyeIcon from './EyeIcon';
@@ -23,6 +22,7 @@ import GridSmallIcon from './GridSmallIcon';
 import InfoIcon from './InfoIcon';
 import LanguageIcon from './LanguageIcon';
 import Logo from './Logo';
+import LogoutIcon from './LogoutIcon';
 import MoreIcon from './MoreIcon';
 import SearchIcon from './SearchIcon';
 import ShoppingBackIcon from './ShoppingBackIcon';
@@ -32,7 +32,6 @@ import TrashIcon from './TrashIcon';
 import UndoIcon from './UndoIcon';
 import UserIcon from './UserIcon';
 import WarningIcon from './WarningIcon';
-import LogoutIcon from './LogoutIcon';
 
 export interface IconDefaultProps {
   title: string;
@@ -59,7 +58,6 @@ export enum IconName {
   ChevronsRight = 'chevronsRight',
   ChevronUp = 'chevronUp',
   Close = 'close',
-  Currency = 'currency',
   Edit = 'edit',
   Error = 'error',
   Eye = 'eye',
@@ -96,7 +94,6 @@ const iconMapping = {
   chevronsLeft: ChevronsLeftIcon,
   chevronsRight: ChevronsRightIcon,
   close: CloseIcon,
-  currency: CurrencyIcon,
   edit: EditIcon,
   error: ErrorIcon,
   eye: EyeIcon,
