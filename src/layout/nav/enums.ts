@@ -7,6 +7,7 @@ export enum MainPath {
   MyAccount = 'myAccount',
   Orders = 'orders',
   Root = '/',
+  ShoppingCart = 'shoppingCart',
   Signup = 'signup',
 }
 

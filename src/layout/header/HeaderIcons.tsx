@@ -56,7 +56,7 @@ const HeaderIcons: FC<HeaderIconsProps> = ({ userDropdownList }) => {
           )}
         </li>
         <li className="header-icon">
-          <Link to="/" className="btn btn-ghost">
+          <Link to={MainPath.ShoppingCart} className="btn btn-ghost">
             <Icon iconName={IconName.ShoppingBack} title={language.bag} />
           </Link>
         </li>

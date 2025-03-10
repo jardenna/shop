@@ -10,6 +10,7 @@ import ErrorPage from '../pages/ErrorPage';
 import HomePage from '../pages/home/HomePage';
 import LoginPage from '../pages/LoginPage';
 import ProtectedRoute from '../pages/ProtectedRoute';
+import ShoppingChart from '../pages/ShoppingChart';
 import SignupPage from '../pages/SignupPage';
 
 const routeConfig = createBrowserRouter([
@@ -49,6 +50,10 @@ const routeConfig = createBrowserRouter([
       {
         path: MainPath.Orders,
         element: <Orders />,
+      },
+      {
+        path: MainPath.ShoppingCart,
+        element: <ShoppingChart />,
       },
 
       // {
