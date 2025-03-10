@@ -13,13 +13,14 @@ import { MainPath } from '../nav/enums';
 interface HeaderIconsProps {
   userDropdownList: DropdownItem[];
   className?: string;
-  onClick: () => void;
 }
 
-const HeaderIcons: FC<HeaderIconsProps> = ({ onClick, userDropdownList }) => {
+const HeaderIcons: FC<HeaderIconsProps> = ({ userDropdownList }) => {
   const { language } = useLanguage();
   const { currentUser } = useAuth();
-
+  const onClick = () => {
+    console.log(123);
+  };
   return (
     <section>
       <ul className="header-icon-list">
@@ -62,16 +63,9 @@ const HeaderIcons: FC<HeaderIconsProps> = ({ onClick, userDropdownList }) => {
             ariaLabel={language.myBag}
           />
         </li>
-        <li className="header-icon">
-          <IconBtn
-            iconName={IconName.Currency}
-            title={language.currency}
-            onClick={onClick}
-            ariaLabel={language.currency}
-          />
-        </li>
+
         <li>
-          <Icon iconName={IconName.Language} title="" />
+          <Icon iconName={IconName.Language} title={language.globe} />
         </li>
       </ul>
     </section>

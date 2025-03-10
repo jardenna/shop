@@ -23,25 +23,19 @@ const Header: FC<HeaderProps> = ({
   options,
   labelText,
   userDropdownList,
-}) => {
-  const onClick = () => {
-    console.log(123);
-  };
-
-  return (
-    <LayoutElement as="header" className="main-header" ariaLabel={ariaLabel}>
-      <div className="container main-header-container">
-        <Logo />
-        <LanguageSelect
-          options={options}
-          onLanguageChange={onLanguageChange}
-          labelText={labelText}
-          defaultValue={defaultValue}
-        />
-        <Nav />
-        <HeaderIcons onClick={onClick} userDropdownList={userDropdownList} />
-      </div>
-    </LayoutElement>
-  );
-};
+}) => (
+  <LayoutElement as="header" className="main-header" ariaLabel={ariaLabel}>
+    <div className="container main-header-container">
+      <Logo />
+      <LanguageSelect
+        options={options}
+        onLanguageChange={onLanguageChange}
+        labelText={labelText}
+        defaultValue={defaultValue}
+      />
+      <Nav />
+      <HeaderIcons userDropdownList={userDropdownList} />
+    </div>
+  </LayoutElement>
+);
 export default Header;
