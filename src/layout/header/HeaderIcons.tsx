@@ -1,6 +1,8 @@
 import { FC } from 'react';
 import { Link } from 'react-router';
-import DropdownBtn from '../../components/dropdownBtn/DropdownBtn';
+import DropdownBtn, {
+  DropdownListProps,
+} from '../../components/dropdownBtn/DropdownBtn';
 import IconBtn from '../../components/IconBtn';
 import IconContent from '../../components/IconContent';
 import Icon, { IconName } from '../../components/icons/Icon';
@@ -9,11 +11,12 @@ import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../nav/enums';
 
 interface HeaderIconsProps {
+  userDropdownList: DropdownListProps[];
   className?: string;
   onClick: () => void;
 }
 
-const HeaderIcons: FC<HeaderIconsProps> = ({ onClick }) => {
+const HeaderIcons: FC<HeaderIconsProps> = ({ onClick, userDropdownList }) => {
   const { language } = useLanguage();
   const { currentUser } = useAuth();
 
@@ -30,7 +33,10 @@ const HeaderIcons: FC<HeaderIconsProps> = ({ onClick }) => {
         </li>
         <li className="header-icon">
           {currentUser ? (
-            <DropdownBtn username={currentUser.username} />
+            <DropdownBtn
+              username={currentUser.username}
+              dropdownList={userDropdownList}
+            />
           ) : (
             <Link to={MainPath.Login}>
               <IconContent

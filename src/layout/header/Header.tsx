@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { DropdownListProps } from '../../components/dropdownBtn/DropdownBtn';
 import LanguageSelect from '../../components/LanguageSelect';
 import { Option, SelectedOption } from '../../components/selectBox/SelectBox';
 import LayoutElement from '../LayoutElement';
@@ -12,6 +13,7 @@ export interface HeaderProps {
   defaultValue: Option;
   labelText: string;
   options: { label: string; value: string | number }[];
+  userDropdownList: DropdownListProps[];
   onLanguageChange: (selectedLanguage: SelectedOption) => void;
 }
 const Header: FC<HeaderProps> = ({
@@ -20,6 +22,7 @@ const Header: FC<HeaderProps> = ({
   defaultValue,
   options,
   labelText,
+  userDropdownList,
 }) => {
   const onClick = () => {
     console.log(123);
@@ -36,7 +39,7 @@ const Header: FC<HeaderProps> = ({
           defaultValue={defaultValue}
         />
         <Nav />
-        <HeaderIcons onClick={onClick} />
+        <HeaderIcons onClick={onClick} userDropdownList={userDropdownList} />
       </div>
     </LayoutElement>
   );

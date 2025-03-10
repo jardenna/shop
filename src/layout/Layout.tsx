@@ -1,8 +1,10 @@
 import { FC, ReactNode } from 'react';
-import { Outlet, useLocation } from 'react-router';
+import { Outlet, useLocation, useNavigate } from 'react-router';
 import SkipLink from '../components/skipLinks/SkipLinks';
+import { useLogoutMutation } from '../features/auth/authApiSlice';
 import useLanguage, { languageOptions } from '../features/language/useLanguage';
 import Header from './header/Header';
+import { MainPath } from './nav/enums';
 
 export interface LayoutElementProps {
   ariaLabel: string;
@@ -11,12 +13,43 @@ export interface LayoutElementProps {
 }
 
 const Layout: FC = () => {
+  const location = useLocation();
   const { language, switchLanguage, selectedLanguage } = useLanguage();
+  const navigate = useNavigate();
+
+  const [logout] = useLogoutMutation();
+
+  const handleLogout = () => {
+    logout();
+    navigate(`/${MainPath.Login}`);
+  };
+
   const selected = languageOptions.find(
     (option) => option.value === selectedLanguage,
   );
-  const location = useLocation();
+
   const isHomePage = location.pathname === '/';
+  const userDropdownList = [
+    {
+      label: language.myAccount,
+      id: 1,
+      onClick: () => {
+        navigate(`/${MainPath.MyAccount}`);
+      },
+    },
+    {
+      label: language.myOrders,
+      id: 2,
+      onClick: () => {
+        navigate(`/${MainPath.Orders}`);
+      },
+    },
+    {
+      label: language.logout,
+      id: 3,
+      onClick: handleLogout,
+    },
+  ];
 
   return (
     <div className="main-container">
@@ -30,6 +63,7 @@ const Layout: FC = () => {
           label: selected ? selected.label : 'DK',
         }}
         options={languageOptions}
+        userDropdownList={userDropdownList}
       />
 
       <main id="main">
