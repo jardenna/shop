@@ -56,14 +56,10 @@ const HeaderIcons: FC<HeaderIconsProps> = ({ userDropdownList }) => {
           )}
         </li>
         <li className="header-icon">
-          <IconBtn
-            iconName={IconName.ShoppingBack}
-            title={language.bag}
-            onClick={onClick}
-            ariaLabel={language.myBag}
-          />
+          <Link to="/" className="btn btn-ghost">
+            <Icon iconName={IconName.ShoppingBack} title={language.bag} />
+          </Link>
         </li>
-
         <li>
           <Icon iconName={IconName.Language} title={language.globe} />
         </li>
