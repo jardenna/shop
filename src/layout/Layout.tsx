@@ -48,6 +48,7 @@ const Layout: FC = () => {
       label: language.logout,
       id: 3,
       onClick: handleLogout,
+      className: 'logout',
     },
   ];
 

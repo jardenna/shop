@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Link } from 'react-router';
 import DropdownBtn, {
-  DropdownListProps,
+  DropdownItem,
 } from '../../components/dropdownBtn/DropdownBtn';
 import IconBtn from '../../components/IconBtn';
 import IconContent from '../../components/IconContent';
@@ -11,7 +11,7 @@ import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../nav/enums';
 
 interface HeaderIconsProps {
-  userDropdownList: DropdownListProps[];
+  userDropdownList: DropdownItem[];
   className?: string;
   onClick: () => void;
 }

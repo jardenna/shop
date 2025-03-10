@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { DropdownListProps } from '../../components/dropdownBtn/DropdownBtn';
+import { DropdownItem } from '../../components/dropdownBtn/DropdownBtn';
 import LanguageSelect from '../../components/LanguageSelect';
 import { Option, SelectedOption } from '../../components/selectBox/SelectBox';
 import LayoutElement from '../LayoutElement';
@@ -13,7 +13,7 @@ export interface HeaderProps {
   defaultValue: Option;
   labelText: string;
   options: { label: string; value: string | number }[];
-  userDropdownList: DropdownListProps[];
+  userDropdownList: DropdownItem[];
   onLanguageChange: (selectedLanguage: SelectedOption) => void;
 }
 const Header: FC<HeaderProps> = ({

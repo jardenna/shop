@@ -7,21 +7,22 @@ import Button from '../Button';
 import IconContent from '../IconContent';
 import { IconName } from '../icons/Icon';
 import './_dropdown-btn.scss';
+import DropdownList from './DropdownList';
 
-export interface DropdownListProps {
+export interface DropdownItem {
   id: number;
   label: string;
+  className?: string;
   onClick: () => void;
 }
 
 interface DropdownBtnProps {
-  dropdownList: DropdownListProps[];
+  dropdownList: DropdownItem[];
   username: string;
   btnVariant?: BtnVariant;
 }
 
 const DropdownBtn: FC<DropdownBtnProps> = ({
-  username,
   dropdownList,
   btnVariant = BtnVariant.Ghost,
 }) => {
@@ -36,7 +37,7 @@ const DropdownBtn: FC<DropdownBtnProps> = ({
   });
 
   return (
-    <section>
+    <div>
       <Button
         variant={btnVariant}
         onClick={() => {
@@ -52,22 +53,9 @@ const DropdownBtn: FC<DropdownBtnProps> = ({
         />
       </Button>
       {dropdownIsOpen && (
-        <div className="dropdown-list" ref={dropdownRef}>
-          <span>
-            {language.welcome} {username}
-          </span>
-          <ul>
-            {dropdownList.map(({ id, label, onClick }) => (
-              <li key={id}>
-                <Button variant={BtnVariant.Ghost} onClick={onClick}>
-                  {label}
-                </Button>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <DropdownList dropdownList={dropdownList} ref={dropdownRef} />
       )}
-    </section>
+    </div>
   );
 };
 
