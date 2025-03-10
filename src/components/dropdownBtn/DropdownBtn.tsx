@@ -1,11 +1,8 @@
 import { FC, ReactNode, useRef, useState } from 'react';
-import useLanguage from '../../features/language/useLanguage';
 import useClickOutside from '../../hooks/useClickOutside';
 import useKeyPress from '../../hooks/useKeyPress';
 import { BtnVariant, KeyCode } from '../../types/enums';
 import Button from '../Button';
-import IconContent from '../IconContent';
-import { IconName } from '../icons/Icon';
 import './_dropdown-btn.scss';
 import DropdownList from './DropdownList';
 
@@ -19,6 +16,7 @@ export interface DropdownItem {
 
 interface DropdownBtnProps {
   ariaControls: string;
+  children: ReactNode;
   dropdownList: DropdownItem[];
   username: string;
   btnVariant?: BtnVariant;
@@ -28,8 +26,8 @@ const DropdownBtn: FC<DropdownBtnProps> = ({
   dropdownList,
   btnVariant = BtnVariant.Ghost,
   ariaControls,
+  children,
 }) => {
-  const { language } = useLanguage();
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const [dropdownIsOpen, setDropdownIsOpen] = useState(false);
 
@@ -57,11 +55,7 @@ const DropdownBtn: FC<DropdownBtnProps> = ({
         ariaHasPopup
         ariaControls={ariaControls}
       >
-        <IconContent
-          ariaLabel={language.myAccount}
-          iconName={IconName.User}
-          title={language.user}
-        />
+        {children}
       </Button>
       {dropdownIsOpen && (
         <DropdownList
