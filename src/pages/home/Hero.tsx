@@ -2,6 +2,7 @@ import { FC } from 'react';
 import Button from '../../components/Button';
 import useLanguage from '../../features/language/useLanguage';
 import { BtnVariant } from '../../types/enums';
+import './_hero.scss';
 
 const Hero: FC = () => {
   const { language } = useLanguage();

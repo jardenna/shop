@@ -2,15 +2,15 @@ import { createBrowserRouter } from 'react-router';
 import Layout from '../layout/Layout';
 import { MainPath } from '../layout/nav/enums';
 import About from '../pages/About';
+import MyAccount from '../pages/account/MyAccount';
+import Orders from '../pages/account/Orders';
 import Collections from '../pages/Collections';
 import Contact from '../pages/Contact';
 import ErrorPage from '../pages/ErrorPage';
-import Home from '../pages/Home';
+import HomePage from '../pages/home/HomePage';
 import LoginPage from '../pages/LoginPage';
 import ProtectedRoute from '../pages/ProtectedRoute';
 import SignupPage from '../pages/SignupPage';
-import MyAccount from '../pages/account/MyAccount';
-import Orders from '../pages/account/Orders';
 
 const routeConfig = createBrowserRouter([
   {
@@ -20,7 +20,7 @@ const routeConfig = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />,
+        element: <HomePage />,
       },
       {
         path: MainPath.Collection,
