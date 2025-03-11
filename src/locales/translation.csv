@@ -9,6 +9,7 @@ closeDialog;Close dialog;Luk dialog
 collection;Collection;Kollektion
 confirmPassword;Confirm password;Gentag adgangskode
 contact;Contact;Kontakt
+createAccount;Create account;Opret konto
 criterionMet;Criterion met;Kriterium opfyldt
 criterionNotMet;Criterion not met;Kriterium ikke opfyldt
 currency;Currency;Valuta
@@ -18,6 +19,7 @@ errorAltText;A really guilty emoji;En meget skyldig emoji
 eye;Eye;Øje
 eyeClosed;Closed eye;Lukket øje
 fillAll;Please fill all the inputs;Udfyld venligst alle felter
+globe;Globe;Globus
 goBack;Go back;Gå tilbage
 goToContent;Go to content;Gå til indhold
 heroText;Upgrade your wardrobe with exclusive deals!;Opgradér din garderobe med eksklusive tilbud!
@@ -32,11 +34,21 @@ invalidUserData;Invalid user data;Ugyldig bruger data
 language;Language;Sprog
 loading;Loading;Loading
 loggedOut;Logged out successfully;Logget ud
-login;Login;Log ind
+login;Log in;Log ind
+loginHere;Log in here;Log ind her
 loginFailed;Login failed;Login mislykkedes
 loginSucceeded;Login succeeded;Login lykkedes
+logout;Log out;Log ud
+main;Main;Primær
+menu;Menu;Menu
+minLength;At least 8 characters;Mindst 8 tegn
 myAccount;My account;Min brugerkonto
 myBag;My bag;Min indkøbskurv
+myOrders;My orders;Mine ordrer
+mustHaveLowercase;At least one lowercase letter;Mindst ét lille bogstav
+mustHaveNumber;Atleast one number;Mindst ét tal
+mustHaveSymbol;At least one special character;Mindst ét specialtegn
+mustHaveUppercase;At least one uppercase letter;Mindst ét stort bogstav
 noEmail;Please provide a email;Indtast venligst en e-mail
 noPassword;Please provide a password;Indtast venligst en adgangskode
 notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 
@@ -60,7 +72,7 @@ retry;Retry;Forsøg igen
 search;Search;Søg
 shopNow;Shop now;Køb nu
 showPassword;Show password;Vis adgangskode
-signup;Signup;Opret bruger
+signup;Sign up;Opret bruger
 signupFailed;Sign up failed;Registrering mislykkedes
 signupSucceeded;Sign up succeeded;Registrering lykkedes
 sub;Sub;Sekundær
@@ -71,3 +83,4 @@ userDeleted;User deleted;Bruger slettet
 userInfo;User info;Bruger info
 username;UserName;Brugernavn
 warning;Warning;Warning
+welcome;Welcome;Velkommen

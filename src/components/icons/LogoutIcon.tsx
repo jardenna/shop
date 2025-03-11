@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { IconDefaultProps } from './Icon';
 
-const CurrencyIcon: FC<IconDefaultProps> = ({
+const LogoutIcon: FC<IconDefaultProps> = ({
   size,
   title,
   className,
@@ -13,6 +13,7 @@ const CurrencyIcon: FC<IconDefaultProps> = ({
     width={size}
     height={size}
     className={className}
+    viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
     strokeWidth="2"
@@ -21,10 +22,10 @@ const CurrencyIcon: FC<IconDefaultProps> = ({
     aria-hidden={ariaHidden}
   >
     <title>{title}</title>
-    <path d="M4 10h12" />
-    <path d="M4 14h9" />
-    <path d="M19 6a7.7 7.7 0 0 0-5.2-2A7.9 7.9 0 0 0 6 12c0 4.4 3.5 8 7.8 8 2 0 3.8-.8 5.2-2" />
+    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+    <polyline points="16 17 21 12 16 7" />
+    <line x1="21" x2="9" y1="12" y2="12" />
   </svg>
 );
 
-export default CurrencyIcon;
+export default LogoutIcon;

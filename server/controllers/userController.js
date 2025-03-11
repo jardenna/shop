@@ -144,13 +144,13 @@ const getUserById = asyncHandler(async (req, res) => {
 // @params  id
 // @access  Private for Admin
 const updateUserById = asyncHandler(async (req, res) => {
-  const { username, email, isAdmin } = req.body;
+  const { username, email, role } = req.body;
   const user = await User.findById(req.params.id);
 
   if (user) {
     user.username = username || user.username;
     user.email = email || user.email;
-    user.isAdmin = Boolean(isAdmin);
+    user.role = role || user.role;
 
     if (email) {
       // Validate email
@@ -166,7 +166,7 @@ const updateUserById = asyncHandler(async (req, res) => {
       id: updatedUser._id,
       username: updatedUser.username,
       email: updatedUser.email,
-      isAdmin: updatedUser.isAdmin,
+      role: updatedUser.role,
     });
   } else {
     res.status(404).json({

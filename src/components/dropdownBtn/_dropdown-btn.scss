@@ -1,0 +1,49 @@
+@use '../../scss/globals' as *;
+
+.dropdown-container {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.dropdown-list {
+  background: $color-white;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 6;
+  top: 48px;
+  right: 0;
+  min-width: rem(200px);
+  border-radius: 4px;
+  box-shadow: $box-shadow;
+
+  .dropdown-item {
+    padding: 8px;
+    border-bottom: 1px solid $color-border;
+    border-left: 6px solid transparent;
+    min-height: rem(52px);
+    display: flex;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    &.active {
+      border-color: #92aebb;
+    }
+
+    .btn {
+      display: flex;
+      padding: 0;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 0;
+
+      &:focus-visible {
+        outline: transparent;
+      }
+    }
+  }
+}

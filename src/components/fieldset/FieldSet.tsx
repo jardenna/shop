@@ -13,7 +13,7 @@ const FieldSet: FC<FieldSetProps> = ({
   legendText,
   showLegendText = false,
 }) => (
-  <fieldset>
+  <fieldset className="fieldset">
     {!showLegendText ? (
       <VisuallyHidden as="legend">{legendText}</VisuallyHidden>
     ) : (

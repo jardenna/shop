@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { HeaderProps } from '../layout/header/Header';
 import SelectBox from './selectBox/SelectBox';
 
-type OmittedHeaderProps = Omit<HeaderProps, 'ariaLabel'>;
+type OmittedHeaderProps = Omit<HeaderProps, 'ariaLabel' | 'userDropdownList'>;
 
 const LanguageSelect: FC<OmittedHeaderProps> = ({
   onLanguageChange,

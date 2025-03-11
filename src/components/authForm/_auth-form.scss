@@ -1,4 +1,4 @@
-@use '../../../scss/globals' as *;
+@use '../../scss/globals' as *;
 
 .auth {
   display: flex;
@@ -17,12 +17,16 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-
-  fieldset {
-    flex-grow: 1;
-  }
+  width: 100%;
+  max-width: 500px;
 
   .form-footer {
+    margin: 0;
+  }
+
+  .auth-btn {
+    width: 100%;
+    display: flex;
     justify-content: flex-end;
   }
 }

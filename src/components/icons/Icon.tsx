@@ -1,7 +1,9 @@
 import { FC } from 'react';
+import AccountIcon from './AccountIcon';
 import AddIcon from './AddIcon';
 import ArrowDownIcon from './ArrowDownIcon';
 import ArrowUpIcon from './ArrowUpIcon';
+import AuthIcon from './AuthIcon';
 import ChevronDownIcon from './ChevronDownIcon';
 import ChevronLeftIcon from './ChevronLeftIcon';
 import ChevronRightIcon from './ChevronRightIcon';
@@ -9,7 +11,6 @@ import ChevronsLeftIcon from './ChevronsLeftIcon';
 import ChevronsRightIcon from './ChevronsRightIcon';
 import ChevronUpIcon from './ChevronUpIcon';
 import CloseIcon from './CloseIcon';
-import CurrencyIcon from './CurrencyIcon';
 import EditIcon from './EditIcon';
 import ErrorIcon from './ErrorIcon';
 import EyeIcon from './EyeIcon';
@@ -21,6 +22,7 @@ import GridSmallIcon from './GridSmallIcon';
 import InfoIcon from './InfoIcon';
 import LanguageIcon from './LanguageIcon';
 import Logo from './Logo';
+import LogoutIcon from './LogoutIcon';
 import MoreIcon from './MoreIcon';
 import SearchIcon from './SearchIcon';
 import ShoppingBackIcon from './ShoppingBackIcon';
@@ -44,9 +46,11 @@ interface IconProps extends IconDefaultProps {
 }
 
 export enum IconName {
+  Account = 'account',
   Add = 'add',
   ArrowDown = 'arrowDown',
   ArrowUp = 'arrowUp',
+  Auth = 'auth',
   ChevronDown = 'chevronDown',
   ChevronLeft = 'chevronLeft',
   ChevronRight = 'chevronRight',
@@ -54,7 +58,6 @@ export enum IconName {
   ChevronsRight = 'chevronsRight',
   ChevronUp = 'chevronUp',
   Close = 'close',
-  Currency = 'currency',
   Edit = 'edit',
   Error = 'error',
   Eye = 'eye',
@@ -66,6 +69,7 @@ export enum IconName {
   Info = 'info',
   Language = 'language',
   Logo = 'logo',
+  Logout = 'logout',
   More = 'more',
   Search = 'search',
   ShoppingBack = 'shoppingBack',
@@ -78,9 +82,11 @@ export enum IconName {
 }
 
 const iconMapping = {
+  account: AccountIcon,
   add: AddIcon,
   arrowDown: ArrowDownIcon,
   arrowUp: ArrowUpIcon,
+  auth: AuthIcon,
   chevronLeft: ChevronLeftIcon,
   chevronRight: ChevronRightIcon,
   chevronUp: ChevronUpIcon,
@@ -88,7 +94,6 @@ const iconMapping = {
   chevronsLeft: ChevronsLeftIcon,
   chevronsRight: ChevronsRightIcon,
   close: CloseIcon,
-  currency: CurrencyIcon,
   edit: EditIcon,
   error: ErrorIcon,
   eye: EyeIcon,
@@ -100,6 +105,7 @@ const iconMapping = {
   info: InfoIcon,
   language: LanguageIcon,
   logo: Logo,
+  logout: LogoutIcon,
   more: MoreIcon,
   search: SearchIcon,
   shoppingBack: ShoppingBackIcon,

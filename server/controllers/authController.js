@@ -11,7 +11,7 @@ import { t } from '../utils/translator.js';
 // @method   POST
 // @access  Public
 const createUser = asyncHandler(async (req, res) => {
-  const { username, email, password } = req.body;
+  const { username, email, password, role } = req.body;
   const userExists = await User.findOne({ email });
 
   if (!username || !email || !password) {
@@ -51,6 +51,7 @@ const createUser = asyncHandler(async (req, res) => {
     username,
     email,
     password: hashPassword,
+    role,
   });
 
   try {
@@ -58,10 +59,14 @@ const createUser = asyncHandler(async (req, res) => {
     createToken(res, newUser._id);
 
     res.status(201).json({
-      _id: newUser._id,
-      username: newUser.username,
-      email: newUser.email,
-      isAdmin: newUser.isAdmin,
+      success: true,
+      user: {
+        id: newUser._id,
+        username: newUser.username,
+        email: newUser.email,
+        isAdmin: newUser.isAdmin,
+        role: newUser.role,
+      },
     });
   } catch (error) {
     res.status(400);
@@ -116,10 +121,13 @@ const loginUser = asyncHandler(async (req, res) => {
   try {
     createToken(res, existingUser._id);
     res.status(201).json({
-      _id: existingUser._id,
-      username: existingUser.username,
-      email: existingUser.email,
-      isAdmin: existingUser.isAdmin,
+      success: true,
+      user: {
+        id: existingUser._id,
+        username: existingUser.username,
+        email: existingUser.email,
+        isAdmin: existingUser.isAdmin,
+      },
     });
   } catch (error) {
     res.status(500).json({
