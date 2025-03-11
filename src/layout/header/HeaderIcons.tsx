@@ -1,18 +1,15 @@
 import { FC } from 'react';
 import { Link } from 'react-router';
-import { useAppSelector } from '../../app/hooks';
 import DropdownBtn, {
   DropdownItem,
 } from '../../components/dropdownBtn/DropdownBtn';
 import IconBtn from '../../components/IconBtn';
 import IconContent from '../../components/IconContent';
 import Icon, { IconName } from '../../components/icons/Icon';
-import Modal from '../../components/modal/Modal';
-import useModal from '../../components/modal/useModal';
+import { SecondaryActionBtnProps } from '../../components/modal/Modal';
+import ModalContainer from '../../components/modal/ModalContainer';
 import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
-import { selectModalId } from '../../features/modalSlice';
-import { SizeVariant } from '../../types/enums';
 import { MainPath } from '../nav/enums';
 
 interface HeaderIconsProps {
@@ -23,16 +20,14 @@ interface HeaderIconsProps {
 const HeaderIcons: FC<HeaderIconsProps> = ({ userDropdownList }) => {
   const { language } = useLanguage();
   const { currentUser } = useAuth();
-  const onClick = () => {
-    console.log(123);
+  const primaryActionBtn = {
+    onClick: () => {
+      console.log(123);
+    },
+    label: language.deleteAlbum,
   };
-
-  const { openModal } = useModal('loginModal');
-
-  const modalId = useAppSelector(selectModalId);
-
-  const handleLogin = () => {
-    openModal();
+  const secondaryActionBtn: SecondaryActionBtnProps = {
+    label: language.cancel,
   };
 
   return (
@@ -78,25 +73,30 @@ const HeaderIcons: FC<HeaderIconsProps> = ({ userDropdownList }) => {
           <IconBtn
             iconName={IconName.Language}
             title={language.globe}
-            onClick={handleLogin}
+            onClick={() => {
+              console.log(12);
+            }}
             ariaLabel="Select preferred language and currency"
           />
         </li>
+        <li>
+          <ModalContainer
+            triggerModalBtnContent={
+              <IconContent
+                iconName={IconName.Language}
+                title={language.globe}
+                ariaLabel="Select preferred language and currency"
+              />
+            }
+            triggerModalBtnClassName="danger"
+            id="recordId"
+            primaryActionBtn={primaryActionBtn}
+            secondaryActionBtn={secondaryActionBtn}
+          >
+            modal
+          </ModalContainer>
+        </li>
       </ul>
-
-      {modalId && (
-        <Modal
-          id={modalId}
-          modalSize={SizeVariant.Md}
-          modalHeaderText="modalText"
-          primaryActionBtn={{
-            label: language.save,
-            onClick: onClick,
-          }}
-        >
-          hello
-        </Modal>
-      )}
     </section>
   );
 };
