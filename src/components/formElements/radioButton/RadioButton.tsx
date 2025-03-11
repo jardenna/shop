@@ -4,8 +4,8 @@ import Input from '../Input';
 import './_radio-button.scss';
 
 export interface RadioListItem {
-  id: string;
-  labelText: string;
+  label: string;
+  value: string;
 }
 
 interface RadioButtonProps {
@@ -27,13 +27,13 @@ const RadioButton: FC<RadioButtonProps> = ({
     {radioButtonList.map((radio) => (
       <Input
         type="radio"
-        key={radio.id}
-        id={radio.id}
+        key={radio.value}
+        id={radio.value}
         name={name}
-        value={radio.id}
-        checked={initialChecked === radio.id}
+        value={radio.value}
+        checked={initialChecked === radio.value}
         onChange={onChange}
-        labelText={radio.labelText}
+        labelText={radio.label}
         className="visibility-hidden"
       />
     ))}

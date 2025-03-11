@@ -20,7 +20,11 @@ const useLanguage = () => {
   const language = useAppSelector(selectLanguage);
 
   const switchLanguage = (lang: any) => {
-    setLang(lang.value);
+    if (lang.value) {
+      setLang(lang.value);
+    } else {
+      setLang(lang);
+    }
   };
 
   useEffect(() => {

@@ -3,28 +3,49 @@ import { Link } from 'react-router';
 import DropdownBtn, {
   DropdownItem,
 } from '../../components/dropdownBtn/DropdownBtn';
+import RadioButton from '../../components/formElements/radioButton/RadioButton';
 import IconContent from '../../components/IconContent';
 import Icon, { IconName } from '../../components/icons/Icon';
 import { SecondaryActionBtnProps } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
 import useAuth from '../../features/auth/hooks/useAuth';
-import useLanguage from '../../features/language/useLanguage';
+import useLanguage, {
+  languageOptions,
+} from '../../features/language/useLanguage';
+import useFormValidation from '../../hooks/useFormValidation';
 import { BtnVariant } from '../../types/enums';
 import { MainPath } from '../nav/enums';
 
 interface HeaderIconsProps {
   userDropdownList: DropdownItem[];
+  value: string;
   className?: string;
+  onLanguageChange: (selectedLanguage: string) => void;
 }
 
-const HeaderIcons: FC<HeaderIconsProps> = ({ userDropdownList }) => {
+const HeaderIcons: FC<HeaderIconsProps> = ({
+  userDropdownList,
+  onLanguageChange,
+  value,
+}) => {
   const { language } = useLanguage();
   const { currentUser } = useAuth();
-  const primaryActionBtn = {
-    onClick: () => {
-      console.log(123);
+
+  const initialState = {
+    languageOption: value,
+  };
+
+  const { onChange, onSubmit, values } = useFormValidation({
+    callback: (values) => {
+      onLanguageChange(values.languageOption);
     },
+    initialState,
+  });
+
+  const primaryActionBtn = {
+    onClick: onSubmit,
     label: 'ok',
+    buttonType: 'submit',
   };
   const secondaryActionBtn: SecondaryActionBtnProps = {
     label: language.cancel,
@@ -84,7 +105,12 @@ const HeaderIcons: FC<HeaderIconsProps> = ({ userDropdownList }) => {
             primaryActionBtn={primaryActionBtn}
             secondaryActionBtn={secondaryActionBtn}
           >
-            modal
+            <RadioButton
+              radioButtonList={languageOptions}
+              name="languageOption"
+              initialChecked={values.languageOption}
+              onChange={onChange}
+            />
           </ModalContainer>
         </li>
       </ul>

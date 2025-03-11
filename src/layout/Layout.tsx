@@ -72,6 +72,7 @@ const Layout: FC = () => {
           label: selected ? selected.label : 'DK',
         }}
         options={languageOptions}
+        value={selectedLanguage}
         userDropdownList={userDropdownList}
       />
 

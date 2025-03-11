@@ -83,7 +83,11 @@ const Modal: React.FC<ModalProps> = ({
           />
         </>
       ) : (
-        <form method="modal" className="modal-form">
+        <form
+          method="modal"
+          className="modal-form"
+          onSubmit={primaryActionBtn.onClick}
+        >
           {children}
           <ModalFooter
             onCloseModal={handleClosePopup}
