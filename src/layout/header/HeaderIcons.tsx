@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Link } from 'react-router';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useAppSelector } from '../../app/hooks';
 import DropdownBtn, {
   DropdownItem,
 } from '../../components/dropdownBtn/DropdownBtn';
@@ -28,11 +28,10 @@ const HeaderIcons: FC<HeaderIconsProps> = ({ userDropdownList }) => {
   };
 
   const { openModal } = useModal('loginModal');
-  const dispatch = useAppDispatch();
+
   const modalId = useAppSelector(selectModalId);
 
   const handleLogin = () => {
-    // dispatch(toggleModal('loginModal'));
     openModal();
   };
 
@@ -85,17 +84,19 @@ const HeaderIcons: FC<HeaderIconsProps> = ({ userDropdownList }) => {
         </li>
       </ul>
 
-      <Modal
-        id={modalId || ''}
-        modalSize={SizeVariant.Md}
-        modalHeaderText="modalText"
-        primaryActionBtn={{
-          label: language.save,
-          onClick: onClick,
-        }}
-      >
-        hello
-      </Modal>
+      {modalId && (
+        <Modal
+          id={modalId}
+          modalSize={SizeVariant.Md}
+          modalHeaderText="modalText"
+          primaryActionBtn={{
+            label: language.save,
+            onClick: onClick,
+          }}
+        >
+          hello
+        </Modal>
+      )}
     </section>
   );
 };

@@ -16,8 +16,9 @@ import useVisibility from './useVisibility';
 
 export interface PrimaryActionBtnProps {
   label: string | null;
-  onClick: any;
   buttonType?: BtnType;
+  className?: string;
+  onClick: () => void;
 }
 
 export interface SecondaryActionBtnProps {
