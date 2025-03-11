@@ -9,7 +9,6 @@ const initialState: ModalState = {
   modalId: null,
 };
 
-// log
 const modalSlice = createSlice({
   name: 'modal',
   initialState,

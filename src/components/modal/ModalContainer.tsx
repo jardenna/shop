@@ -1,6 +1,7 @@
 import { FC, ReactNode } from 'react';
 import { useAppDispatch } from '../../app/hooks';
 import { toggleModal } from '../../features/modalSlice';
+import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import Modal, { PrimaryActionBtnProps, SecondaryActionBtnProps } from './Modal';
 
@@ -10,7 +11,7 @@ interface ModalContainerProps {
   primaryActionBtn: PrimaryActionBtnProps;
   triggerModalBtnContent: ReactNode | string;
   secondaryActionBtn?: SecondaryActionBtnProps;
-  triggerModalBtnClassName?: string;
+  triggerModalBtnVariant?: BtnVariant;
 }
 
 const ModalContainer: FC<ModalContainerProps> = ({
@@ -18,7 +19,7 @@ const ModalContainer: FC<ModalContainerProps> = ({
   children,
   primaryActionBtn,
   secondaryActionBtn,
-  triggerModalBtnClassName = 'primary',
+  triggerModalBtnVariant,
   triggerModalBtnContent,
 }) => {
   const dispatch = useAppDispatch();
@@ -29,10 +30,7 @@ const ModalContainer: FC<ModalContainerProps> = ({
   };
   return (
     <>
-      <Button
-        className={`btn-${triggerModalBtnClassName}`}
-        onClick={handleOpenModal}
-      >
+      <Button variant={triggerModalBtnVariant} onClick={handleOpenModal}>
         {triggerModalBtnContent}
       </Button>
 

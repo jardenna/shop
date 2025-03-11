@@ -3,13 +3,13 @@ import { Link } from 'react-router';
 import DropdownBtn, {
   DropdownItem,
 } from '../../components/dropdownBtn/DropdownBtn';
-import IconBtn from '../../components/IconBtn';
 import IconContent from '../../components/IconContent';
 import Icon, { IconName } from '../../components/icons/Icon';
 import { SecondaryActionBtnProps } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
 import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
+import { BtnVariant } from '../../types/enums';
 import { MainPath } from '../nav/enums';
 
 interface HeaderIconsProps {
@@ -24,7 +24,7 @@ const HeaderIcons: FC<HeaderIconsProps> = ({ userDropdownList }) => {
     onClick: () => {
       console.log(123);
     },
-    label: language.deleteAlbum,
+    label: 'ok',
   };
   const secondaryActionBtn: SecondaryActionBtnProps = {
     label: language.cancel,
@@ -69,16 +69,7 @@ const HeaderIcons: FC<HeaderIconsProps> = ({ userDropdownList }) => {
             <Icon iconName={IconName.ShoppingBack} title={language.bag} />
           </Link>
         </li>
-        <li>
-          <IconBtn
-            iconName={IconName.Language}
-            title={language.globe}
-            onClick={() => {
-              console.log(12);
-            }}
-            ariaLabel="Select preferred language and currency"
-          />
-        </li>
+
         <li>
           <ModalContainer
             triggerModalBtnContent={
@@ -88,8 +79,8 @@ const HeaderIcons: FC<HeaderIconsProps> = ({ userDropdownList }) => {
                 ariaLabel="Select preferred language and currency"
               />
             }
-            triggerModalBtnClassName="danger"
-            id="recordId"
+            triggerModalBtnVariant={BtnVariant.Ghost}
+            id="languageId"
             primaryActionBtn={primaryActionBtn}
             secondaryActionBtn={secondaryActionBtn}
           >
