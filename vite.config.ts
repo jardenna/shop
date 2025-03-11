@@ -9,11 +9,16 @@ export default defineConfig({
     react(),
     checker({
       typescript: true,
+      overlay: {
+        initialIsOpen: false, // Disables overlay by default
+      },
     }),
-    eslint(),
+    eslint({
+      emitWarning: true,
+    }),
   ],
   server: {
-    port: 3000,
+    port: 3001,
   },
   css: {
     preprocessorOptions: {
@@ -22,5 +27,8 @@ export default defineConfig({
       },
     },
     devSourcemap: true,
+  },
+  build: {
+    sourcemap: true,
   },
 });
