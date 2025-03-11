@@ -3,7 +3,8 @@ import { Outlet, useLocation, useNavigate } from 'react-router';
 import Icon, { IconName } from '../components/icons/Icon';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
-import useLanguage, { languageOptions } from '../features/language/useLanguage';
+import useLanguage from '../features/language/useLanguage';
+import useFormValidation from '../hooks/useFormValidation';
 import Header from './header/Header';
 import { MainPath } from './nav/enums';
 
@@ -17,7 +18,6 @@ const Layout: FC = () => {
   const location = useLocation();
   const { language, switchLanguage, selectedLanguage } = useLanguage();
   const navigate = useNavigate();
-
   const [logout] = useLogoutMutation();
 
   const handleLogout = () => {
@@ -25,9 +25,22 @@ const Layout: FC = () => {
     navigate(`/${MainPath.Login}`);
   };
 
-  const selected = languageOptions.find(
-    (option) => option.value === selectedLanguage,
-  );
+  const initialState = {
+    languageOption: selectedLanguage,
+  };
+
+  const { onChange, onSubmit, values } = useFormValidation({
+    callback: (values) => {
+      switchLanguage(values.languageOption);
+    },
+    initialState,
+  });
+
+  const primaryActionBtn = {
+    onClick: onSubmit,
+    label: 'ok',
+    buttonType: 'submit',
+  };
 
   const isHomePage = location.pathname === '/';
   const userDropdownList = [
@@ -64,16 +77,12 @@ const Layout: FC = () => {
     <div className="main-container">
       <SkipLink />
       <Header
-        labelText={language.selectLanguage}
         ariaLabel={language.main}
-        onLanguageChange={switchLanguage}
-        defaultValue={{
-          value: selectedLanguage,
-          label: selected ? selected.label : 'DK',
-        }}
-        options={languageOptions}
         value={selectedLanguage}
         userDropdownList={userDropdownList}
+        primaryActionBtn={primaryActionBtn}
+        onChange={onChange}
+        values={values}
       />
 
       <main id="main">

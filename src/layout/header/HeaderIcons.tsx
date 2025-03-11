@@ -12,41 +12,28 @@ import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage, {
   languageOptions,
 } from '../../features/language/useLanguage';
-import useFormValidation from '../../hooks/useFormValidation';
 import { BtnVariant } from '../../types/enums';
 import { MainPath } from '../nav/enums';
 
 interface HeaderIconsProps {
+  onChange: any;
+  primaryActionBtn: any;
   userDropdownList: DropdownItem[];
-  value: string;
+
+  values: any;
   className?: string;
-  onLanguageChange: (selectedLanguage: string) => void;
 }
 
 const HeaderIcons: FC<HeaderIconsProps> = ({
   userDropdownList,
-  onLanguageChange,
-  value,
+  primaryActionBtn,
+
+  onChange,
+  values,
 }) => {
   const { language } = useLanguage();
   const { currentUser } = useAuth();
 
-  const initialState = {
-    languageOption: value,
-  };
-
-  const { onChange, onSubmit, values } = useFormValidation({
-    callback: (values) => {
-      onLanguageChange(values.languageOption);
-    },
-    initialState,
-  });
-
-  const primaryActionBtn = {
-    onClick: onSubmit,
-    label: 'ok',
-    buttonType: 'submit',
-  };
   const secondaryActionBtn: SecondaryActionBtnProps = {
     label: language.cancel,
   };

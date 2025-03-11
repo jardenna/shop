@@ -1,27 +1,31 @@
 import { FC } from 'react';
 import { DropdownItem } from '../../components/dropdownBtn/DropdownBtn';
-import { Option } from '../../components/selectBox/SelectBox';
+import { SelectedLanguage } from '../../features/language/languageSlice';
 import LayoutElement from '../LayoutElement';
 import Nav from '../nav/Nav';
 import './_header.scss';
 import HeaderIcons from './HeaderIcons';
 import Logo from './Logo';
 
+interface Test {
+  languageOption: SelectedLanguage;
+}
+
 export interface HeaderProps {
   ariaLabel: string;
-  defaultValue: Option;
-  labelText: string;
-  options: { label: string; value: string | number }[];
+  onChange: any;
+  primaryActionBtn: any;
   userDropdownList: DropdownItem[];
   value: string;
-  onLanguageChange: (selectedLanguage: string) => void;
+  values: Test;
 }
 const Header: FC<HeaderProps> = ({
   ariaLabel,
-  onLanguageChange,
 
-  value,
   userDropdownList,
+  primaryActionBtn,
+  onChange,
+  values,
 }) => (
   <LayoutElement as="header" className="main-header" ariaLabel={ariaLabel}>
     <div className="container main-header-container">
@@ -30,8 +34,9 @@ const Header: FC<HeaderProps> = ({
       <Nav />
       <HeaderIcons
         userDropdownList={userDropdownList}
-        onLanguageChange={onLanguageChange}
-        value={value}
+        primaryActionBtn={primaryActionBtn}
+        onChange={onChange}
+        values={values}
       />
     </div>
   </LayoutElement>
