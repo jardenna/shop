@@ -63,7 +63,7 @@ export default tseslint.config(
     },
     // specify the formats on which to apply the rules below
     files: ['**/*.{ts,tsx}'],
-    ignores: ['dist', 'node_modules'],
+    ignores: ['dist'],
     rules: {
       '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'error',
       'prettier/prettier': [

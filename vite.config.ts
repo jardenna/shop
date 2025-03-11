@@ -8,17 +8,18 @@ export default defineConfig({
   plugins: [
     react(),
     checker({
-      typescript: true,
-      overlay: {
-        initialIsOpen: false, // Disables overlay by default
+      typescript: {
+        tsconfigPath: './tsconfig.app.json',
       },
     }),
     eslint({
       emitWarning: true,
     }),
   ],
+
   server: {
     port: 3000,
+    host: true,
   },
   css: {
     preprocessorOptions: {
