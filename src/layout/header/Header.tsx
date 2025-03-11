@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { DropdownItem } from '../../components/dropdownBtn/DropdownBtn';
-import { Option, SelectedOption } from '../../components/selectBox/SelectBox';
+import { Option } from '../../components/selectBox/SelectBox';
 import LayoutElement from '../LayoutElement';
 import Nav from '../nav/Nav';
 import './_header.scss';
@@ -14,7 +14,7 @@ export interface HeaderProps {
   options: { label: string; value: string | number }[];
   userDropdownList: DropdownItem[];
   value: string;
-  onLanguageChange: (selectedLanguage: SelectedOption) => void;
+  onLanguageChange: (selectedLanguage: string) => void;
 }
 const Header: FC<HeaderProps> = ({
   ariaLabel,
