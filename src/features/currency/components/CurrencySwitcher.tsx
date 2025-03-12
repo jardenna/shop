@@ -1,14 +1,10 @@
-// components/CurrencySwitcher.tsx
-
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../../app/store';
-import { setCurrency } from '../currencySlice ';
+import { useDispatch } from 'react-redux';
+import { useAppSelector } from '../../../app/hooks';
+import { selectCurrency, setCurrency } from '../currencySlice ';
 
 function CurrencySwitcher() {
   const dispatch = useDispatch();
-  const { selectedCurrency, rates } = useSelector(
-    (state: RootState) => state.currency,
-  );
+  const { selectedCurrency, rates } = useAppSelector(selectCurrency);
 
   const availableCurrencies = Object.keys(rates);
 
@@ -16,6 +12,7 @@ function CurrencySwitcher() {
     <div>
       <label htmlFor="currency">Currency: </label>
       <select
+        id="currency"
         value={selectedCurrency}
         onChange={(e) => dispatch(setCurrency(e.target.value))}
       >
