@@ -1,8 +1,6 @@
 import { FC } from 'react';
 import { Link } from 'react-router';
-import DropdownBtn, {
-  DropdownItem,
-} from '../../components/dropdownBtn/DropdownBtn';
+import DropdownBtn from '../../components/dropdownBtn/DropdownBtn';
 import RadioButton from '../../components/formElements/radioButton/RadioButton';
 import IconContent from '../../components/IconContent';
 import Icon, { IconName } from '../../components/icons/Icon';
@@ -17,15 +15,12 @@ import useLanguage, {
 } from '../../features/language/useLanguage';
 import { BtnVariant } from '../../types/enums';
 import { MainPath } from '../nav/enums';
-import { Values } from './Header';
-import { ChangeInputType } from '../../types/types';
+import { HeaderProps } from './Header';
 
-interface HeaderIconsProps {
+type OmittedHeaderProps = Omit<HeaderProps, 'primaryActionBtn' | 'ariaLabel'>;
+
+interface HeaderIconsProps extends OmittedHeaderProps {
   primaryActionBtn: PrimaryActionBtnProps;
-  userDropdownList: DropdownItem[];
-  values: Values;
-  className?: string;
-  onChange: (event: ChangeInputType) => void;
 }
 
 const HeaderIcons: FC<HeaderIconsProps> = ({

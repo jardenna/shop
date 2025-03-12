@@ -16,13 +16,11 @@ export interface HeaderProps {
   ariaLabel: string;
   primaryActionBtn: any;
   userDropdownList: DropdownItem[];
-  value: string;
   values: Values;
   onChange: (event: ChangeInputType) => void;
 }
 const Header: FC<HeaderProps> = ({
   ariaLabel,
-
   userDropdownList,
   primaryActionBtn,
   onChange,
