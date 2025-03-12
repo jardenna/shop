@@ -43,9 +43,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
       },
     }),
     checkAuth: builder.query<AuthResponse, void>({
-      query: () => ({
-        url: authEndpoints.checkAuth,
-      }),
+      query: () => authEndpoints.checkAuth,
       providesTags: [TagTypesEnum.Auth],
     }),
   }),
