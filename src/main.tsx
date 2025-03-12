@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import App from './App';
 import { store } from './app/store';
 import MessagePopupList from './components/messagePopup/MessagePopupList';
-import CurrencySwitcher from './features/currency/components/CurrencySwitcher';
 import CurrencyProvider from './features/currency/CurrencyProvider';
 import './scss/style.scss';
 
@@ -14,7 +13,6 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <CurrencyProvider>
-        <CurrencySwitcher />
         <App />
       </CurrencyProvider>
 
