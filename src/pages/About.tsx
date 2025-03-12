@@ -1,5 +1,11 @@
 import { FC } from 'react';
-
-const About: FC = () => <section>About</section>;
+import CurrencySwitcher from '../features/currency/components/CurrencySwitcher';
+import ProductPrice from '../features/currency/components/ProductPrice';
+const About: FC = () => (
+  <section>
+    <CurrencySwitcher />
+    <ProductPrice priceDKK={10200} />
+  </section>
+);
 
 export default About;

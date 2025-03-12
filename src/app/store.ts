@@ -2,11 +2,13 @@ import type { Middleware } from '@reduxjs/toolkit';
 import { configureStore, isRejectedWithValue } from '@reduxjs/toolkit';
 import modalSlice from '../components/modal/modalSlice';
 import authSliceReducer from '../features/auth/authSlice';
+import currencyReducer from '../features/currency/currencySlice ';
 import languageReducer from '../features/language/languageSlice';
 import messagePopupReducer, {
   addMessagePopup,
 } from '../features/messagePopupSlice';
 import apiSlice from './api/apiSlice';
+import currencyApiSlice from './api/currencyApiSlice';
 
 export const rtkQueryErrorLogger: Middleware =
   ({ dispatch }) =>
@@ -35,13 +37,19 @@ export const rtkQueryErrorLogger: Middleware =
 export const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
+    [currencyApiSlice.reducerPath]: currencyApiSlice.reducer,
+    currency: currencyReducer,
     auth: authSliceReducer,
     messagePopup: messagePopupReducer,
     language: languageReducer,
     modal: modalSlice,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(apiSlice.middleware, rtkQueryErrorLogger),
+    getDefaultMiddleware().concat(
+      apiSlice.middleware,
+      rtkQueryErrorLogger,
+      currencyApiSlice.middleware,
+    ),
   devTools: true,
 });
 
