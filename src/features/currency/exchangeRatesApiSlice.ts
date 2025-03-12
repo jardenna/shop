@@ -2,7 +2,9 @@ import currencyApiSlice from '../../app/api/currencyApiSlice';
 
 const API_KEY = import.meta.env.VITE_CURRENCY_API_KEY;
 
-const currencyUrl = `/latest?apikey=${API_KEY}&base_currency=DKK`;
+export const currencyCode = 'DKK';
+
+const currencyUrl = `/latest?apikey=${API_KEY}&base_currency=${currencyCode}`;
 
 export const exchangeRatesApiSlice = currencyApiSlice.injectEndpoints({
   endpoints: (builder) => ({

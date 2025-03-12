@@ -15,7 +15,6 @@ root.render(
       <CurrencyProvider>
         <App />
       </CurrencyProvider>
-
       <MessagePopupList />
     </Provider>
   </React.StrictMode>,

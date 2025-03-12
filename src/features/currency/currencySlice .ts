@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from './../../app/store';
+import { currencyCode } from './exchangeRatesApiSlice';
 
 const currencySlice = createSlice({
   name: 'currency',
   initialState: {
-    selectedCurrency: 'DKK',
+    selectedCurrency: currencyCode,
     rates: {} as Record<string, number>,
   },
   reducers: {
@@ -17,7 +18,7 @@ const currencySlice = createSlice({
   },
 });
 
-export const selectCurrency = (state: RootState) => state.currency.rates;
+export const selectCurrency = (state: RootState) => state.currency;
 export const { setCurrency, setRates } = currencySlice.actions;
 
 export default currencySlice.reducer;
