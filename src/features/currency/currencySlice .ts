@@ -1,12 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from './../../app/store';
+import { CurrencyCode } from './currencyConverterUtil';
 import { currencyCode } from './exchangeRatesApiSlice';
 
 const currencySlice = createSlice({
   name: 'currency',
   initialState: {
     selectedCurrency: currencyCode,
-    rates: {} as Record<string, number>,
+    rates: {} as Record<CurrencyCode, number>,
   },
   reducers: {
     setCurrency: (state, action) => {

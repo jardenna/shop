@@ -1,5 +1,5 @@
-import { currencyCode } from './exchangeRatesApiSlice';
 export type Locales = 'en-US' | 'en-GB' | 'de-DE' | 'da-DK' | 'sv-SE' | 'no-No';
+export type CurrencyCode = 'USD' | 'GBP' | 'EUR' | 'DKK' | 'SEK' | 'NOK';
 
 export const currencyToLocaleMap: Record<string, Locales> = {
   USD: 'en-US',
@@ -12,22 +12,19 @@ export const currencyToLocaleMap: Record<string, Locales> = {
 
 export const currencies = Object.keys(currencyToLocaleMap).join(',');
 
-export const convertPrice = (
+export const getFormattedPrice = (
   amountDKK: number,
-  currency: string,
-  rates: Record<string, number>,
-) => (currency === currencyCode ? amountDKK : amountDKK * rates[currency]);
-
-export const formatCurrency = (
-  amount: number,
   currencyCode: string,
-): string => {
+  rates: Record<string, number>,
+) => {
   const locale = currencyToLocaleMap[currencyCode];
+  const convertedAmount =
+    currencyCode === 'DKK' ? amountDKK : amountDKK * rates[currencyCode];
 
   return new Intl.NumberFormat(locale, {
     style: 'currency',
     currency: currencyCode,
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
-  }).format(amount);
+  }).format(convertedAmount);
 };
