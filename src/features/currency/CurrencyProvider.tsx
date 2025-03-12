@@ -1,7 +1,7 @@
 import { FC, ReactNode, useEffect } from 'react';
-import { setRates } from './currencySlice ';
-import { useGetExchangeRatesQuery } from './exchangeRatesApiSlice';
 import { useAppDispatch } from '../../app/hooks';
+import { setRates } from './currencySlice';
+import { useGetExchangeRatesQuery } from './exchangeRatesApiSlice';
 
 interface CurrencyProviderProps {
   children: ReactNode;
