@@ -4,7 +4,7 @@ import ProductPrice from '../features/currency/components/ProductPrice';
 const About: FC = () => (
   <section>
     <CurrencySwitcher />
-    <ProductPrice priceDKK={1000} />
+    <ProductPrice priceDKK={10200} />
   </section>
 );
 

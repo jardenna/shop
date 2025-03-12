@@ -1,11 +1,12 @@
 import { useAppSelector } from '../../../app/hooks';
-import { formatCurrency } from '../currencyConverterUtil';
+import { convertPrice, formatCurrency } from '../currencyConverterUtil';
 import { selectCurrency } from '../currencySlice ';
 
-const ProductPrice = ({ priceDKK }: { priceDKK: number }) => {
-  const { selectedCurrency } = useAppSelector(selectCurrency);
+export default function ProductPrice({ priceDKK }: { priceDKK: number }) {
+  const { selectedCurrency, rates } = useAppSelector(selectCurrency);
+  const convertedPrice = convertPrice(priceDKK, selectedCurrency, rates);
 
-  return <p>Price: {formatCurrency(priceDKK, selectedCurrency)}</p>;
-};
-
-export default ProductPrice;
+  return (
+    <p>Price: {formatCurrency(Number(convertedPrice), selectedCurrency)}</p>
+  );
+}
