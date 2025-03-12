@@ -4,7 +4,9 @@ const API_KEY = import.meta.env.VITE_CURRENCY_API_KEY;
 
 export const currencyCode = 'DKK';
 
-const currencyUrl = `/latest?apikey=${API_KEY}&base_currency=${currencyCode}`;
+const currencyUrl = `/latest?apikey=${API_KEY}&currencies=EUR%2CUSD%2CDKK%2CSEK%2CGBP%2CNOK&base_currency=${currencyCode}`;
+
+// EUR,USD,DKK,SEK,GBP,NOK
 
 export const exchangeRatesApiSlice = currencyApiSlice.injectEndpoints({
   endpoints: (builder) => ({
