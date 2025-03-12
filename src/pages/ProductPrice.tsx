@@ -1,12 +1,10 @@
 // components/ProductPrice.tsx
-import { useSelector } from 'react-redux';
-import { RootState } from '../app/store';
+import { useAppSelector } from '../app/hooks';
 import convertPrice from '../features/currency/currencyConverterUtil';
+import { selectCurrency } from '../features/currency/currencySlice ';
 
 export default function ProductPrice({ priceDKK }: { priceDKK: number }) {
-  const { selectedCurrency, rates } = useSelector(
-    (state: RootState) => state.currency,
-  );
+  const { selectedCurrency, rates } = useAppSelector(selectCurrency);
 
   return (
     <p>
