@@ -3,12 +3,12 @@ import { useAppDispatch } from '../../app/hooks';
 import { toggleModal } from '../../features/modalSlice';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
-import Modal, { SecondaryActionBtnProps } from './Modal';
+import Modal, { PrimaryActionBtnProps, SecondaryActionBtnProps } from './Modal';
 
 interface ModalContainerProps {
   children: ReactNode;
   id: string | null;
-  primaryActionBtn: any;
+  primaryActionBtn: PrimaryActionBtnProps;
   triggerModalBtnContent: ReactNode | string;
   secondaryActionBtn?: SecondaryActionBtnProps;
   triggerModalBtnVariant?: BtnVariant;

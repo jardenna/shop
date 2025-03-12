@@ -7,7 +7,7 @@ import './_header.scss';
 import HeaderIcons from './HeaderIcons';
 import Logo from './Logo';
 
-interface Test {
+export interface Values {
   languageOption: SelectedLanguage;
 }
 
@@ -17,7 +17,7 @@ export interface HeaderProps {
   primaryActionBtn: any;
   userDropdownList: DropdownItem[];
   value: string;
-  values: Test;
+  values: Values;
 }
 const Header: FC<HeaderProps> = ({
   ariaLabel,

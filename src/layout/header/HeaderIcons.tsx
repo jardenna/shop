@@ -6,7 +6,10 @@ import DropdownBtn, {
 import RadioButton from '../../components/formElements/radioButton/RadioButton';
 import IconContent from '../../components/IconContent';
 import Icon, { IconName } from '../../components/icons/Icon';
-import { SecondaryActionBtnProps } from '../../components/modal/Modal';
+import {
+  PrimaryActionBtnProps,
+  SecondaryActionBtnProps,
+} from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
 import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage, {
@@ -14,19 +17,19 @@ import useLanguage, {
 } from '../../features/language/useLanguage';
 import { BtnVariant } from '../../types/enums';
 import { MainPath } from '../nav/enums';
+import { Values } from './Header';
 
 interface HeaderIconsProps {
   onChange: any;
-  primaryActionBtn: any;
+  primaryActionBtn: PrimaryActionBtnProps;
   userDropdownList: DropdownItem[];
-  values: any;
+  values: Values;
   className?: string;
 }
 
 const HeaderIcons: FC<HeaderIconsProps> = ({
   userDropdownList,
   primaryActionBtn,
-
   onChange,
   values,
 }) => {
