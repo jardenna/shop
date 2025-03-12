@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { useAppSelector } from '../../../app/hooks';
 import { selectCurrency, setCurrency } from '../currencySlice ';
 
-function CurrencySwitcher() {
+const CurrencySwitcher = () => {
   const dispatch = useDispatch();
   const { selectedCurrency, rates } = useAppSelector(selectCurrency);
 
@@ -24,6 +24,6 @@ function CurrencySwitcher() {
       </select>
     </div>
   );
-}
+};
 
 export default CurrencySwitcher;
