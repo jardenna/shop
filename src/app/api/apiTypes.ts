@@ -24,4 +24,8 @@ export interface LogoutResponse {
   success: boolean;
 }
 
+export interface CurrencyResponse {
+  data: Record<string, { value: number }>;
+}
+
 export type FileUploadNameType = 'cover';
