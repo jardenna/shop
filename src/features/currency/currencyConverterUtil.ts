@@ -21,10 +21,13 @@ export const getFormattedPrice = (
   const convertedAmount =
     currencyCode === 'DKK' ? amountDKK : amountDKK * rates[currencyCode];
 
+  // Always round up
+  const roundedAmount = Math.ceil(convertedAmount);
+
   return new Intl.NumberFormat(locale, {
     style: 'currency',
     currency: currencyCode,
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
-  }).format(convertedAmount);
+  }).format(roundedAmount);
 };
