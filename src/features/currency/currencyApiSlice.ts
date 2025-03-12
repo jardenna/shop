@@ -5,12 +5,10 @@ const currencyUrl = `https://api.currencyapi.com/v3/latest?apikey=cur_live${API_
 
 export const currencyApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getCurrency: builder.query<any, void>({
-      query: () => ({
-        url: currencyUrl,
-      }),
+    getExchangeRates: builder.query<number, void>({
+      query: () => currencyUrl,
     }),
   }),
 });
 
-export const { useGetCurrencyQuery } = currencyApiSlice;
+export const { useGetExchangeRatesQuery } = currencyApiSlice;
