@@ -18,13 +18,14 @@ import useLanguage, {
 import { BtnVariant } from '../../types/enums';
 import { MainPath } from '../nav/enums';
 import { Values } from './Header';
+import { ChangeInputType } from '../../types/types';
 
 interface HeaderIconsProps {
-  onChange: any;
   primaryActionBtn: PrimaryActionBtnProps;
   userDropdownList: DropdownItem[];
   values: Values;
   className?: string;
+  onChange: (event: ChangeInputType) => void;
 }
 
 const HeaderIcons: FC<HeaderIconsProps> = ({
