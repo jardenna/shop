@@ -15,12 +15,17 @@ const ModalFooter: FC<modalFooterProps> = ({
   secondaryActionBtn,
 }) => {
   const handlePrimaryBtnClick = () => {
-    if (onCloseModal) {
+    if (!onCloseModal) {
+      return;
+    }
+
+    if (primaryActionBtn.buttonType === 'submit') {
+      onCloseModal();
+    } else {
       primaryActionBtn.onClick();
       onCloseModal();
     }
   };
-
   return (
     <LayoutElement className="modal-footer" ariaLabel="dialog">
       <Button

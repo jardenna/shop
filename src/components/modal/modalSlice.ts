@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../app/store';
+import { RootState } from '../../app/store';
 
 interface ModalState {
   modalId: string | null;
@@ -18,8 +18,6 @@ const modalSlice = createSlice({
     },
   },
 });
-
-//
 
 export const { toggleModal } = modalSlice.actions;
 export const selectModalId = (state: RootState) => state.modal.modalId;

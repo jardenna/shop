@@ -1,40 +1,43 @@
 import { FC } from 'react';
 import { DropdownItem } from '../../components/dropdownBtn/DropdownBtn';
-import LanguageSelect from '../../components/LanguageSelect';
-import { Option, SelectedOption } from '../../components/selectBox/SelectBox';
+import { SelectedLanguage } from '../../features/language/languageSlice';
+import { ChangeInputType } from '../../types/types';
 import LayoutElement from '../LayoutElement';
 import Nav from '../nav/Nav';
 import './_header.scss';
 import HeaderIcons from './HeaderIcons';
 import Logo from './Logo';
 
+export interface Values {
+  languageOption: SelectedLanguage;
+}
+
 export interface HeaderProps {
   ariaLabel: string;
-  defaultValue: Option;
-  labelText: string;
-  options: { label: string; value: string | number }[];
+  primaryActionBtn: any;
   userDropdownList: DropdownItem[];
-  onLanguageChange: (selectedLanguage: SelectedOption) => void;
+  value: string;
+  values: Values;
+  onChange: (event: ChangeInputType) => void;
 }
 const Header: FC<HeaderProps> = ({
   ariaLabel,
-  onLanguageChange,
-  defaultValue,
-  options,
-  labelText,
+
   userDropdownList,
+  primaryActionBtn,
+  onChange,
+  values,
 }) => (
   <LayoutElement as="header" className="main-header" ariaLabel={ariaLabel}>
     <div className="container main-header-container">
       <Logo />
-      <LanguageSelect
-        options={options}
-        onLanguageChange={onLanguageChange}
-        labelText={labelText}
-        defaultValue={defaultValue}
-      />
       <Nav />
-      <HeaderIcons userDropdownList={userDropdownList} />
+      <HeaderIcons
+        userDropdownList={userDropdownList}
+        primaryActionBtn={primaryActionBtn}
+        onChange={onChange}
+        values={values}
+      />
     </div>
   </LayoutElement>
 );

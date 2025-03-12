@@ -1,38 +1,44 @@
 import { FC } from 'react';
 import { Link } from 'react-router';
-import { useAppSelector } from '../../app/hooks';
 import DropdownBtn, {
   DropdownItem,
 } from '../../components/dropdownBtn/DropdownBtn';
-import IconBtn from '../../components/IconBtn';
+import RadioButton from '../../components/formElements/radioButton/RadioButton';
 import IconContent from '../../components/IconContent';
 import Icon, { IconName } from '../../components/icons/Icon';
-import Modal from '../../components/modal/Modal';
-import useModal from '../../components/modal/useModal';
+import {
+  PrimaryActionBtnProps,
+  SecondaryActionBtnProps,
+} from '../../components/modal/Modal';
+import ModalContainer from '../../components/modal/ModalContainer';
 import useAuth from '../../features/auth/hooks/useAuth';
-import useLanguage from '../../features/language/useLanguage';
-import { selectModalId } from '../../features/modalSlice';
-import { SizeVariant } from '../../types/enums';
+import useLanguage, {
+  languageOptions,
+} from '../../features/language/useLanguage';
+import { BtnVariant } from '../../types/enums';
 import { MainPath } from '../nav/enums';
+import { Values } from './Header';
+import { ChangeInputType } from '../../types/types';
 
 interface HeaderIconsProps {
+  primaryActionBtn: PrimaryActionBtnProps;
   userDropdownList: DropdownItem[];
+  values: Values;
   className?: string;
+  onChange: (event: ChangeInputType) => void;
 }
 
-const HeaderIcons: FC<HeaderIconsProps> = ({ userDropdownList }) => {
+const HeaderIcons: FC<HeaderIconsProps> = ({
+  userDropdownList,
+  primaryActionBtn,
+  onChange,
+  values,
+}) => {
   const { language } = useLanguage();
   const { currentUser } = useAuth();
-  const onClick = () => {
-    console.log(123);
-  };
 
-  const { openModal } = useModal('loginModal');
-
-  const modalId = useAppSelector(selectModalId);
-
-  const handleLogin = () => {
-    openModal();
+  const secondaryActionBtn: SecondaryActionBtnProps = {
+    label: language.cancel,
   };
 
   return (
@@ -74,29 +80,30 @@ const HeaderIcons: FC<HeaderIconsProps> = ({ userDropdownList }) => {
             <Icon iconName={IconName.ShoppingBack} title={language.bag} />
           </Link>
         </li>
+
         <li>
-          <IconBtn
-            iconName={IconName.Language}
-            title={language.globe}
-            onClick={handleLogin}
-            ariaLabel="Select preferred language and currency"
-          />
+          <ModalContainer
+            triggerModalBtnContent={
+              <IconContent
+                iconName={IconName.Language}
+                title={language.globe}
+                ariaLabel="Select preferred language and currency"
+              />
+            }
+            triggerModalBtnVariant={BtnVariant.Ghost}
+            id="languageId"
+            primaryActionBtn={primaryActionBtn}
+            secondaryActionBtn={secondaryActionBtn}
+          >
+            <RadioButton
+              radioButtonList={languageOptions}
+              name="languageOption"
+              initialChecked={values.languageOption}
+              onChange={onChange}
+            />
+          </ModalContainer>
         </li>
       </ul>
-
-      {modalId && (
-        <Modal
-          id={modalId}
-          modalSize={SizeVariant.Md}
-          modalHeaderText="modalText"
-          primaryActionBtn={{
-            label: language.save,
-            onClick: onClick,
-          }}
-        >
-          hello
-        </Modal>
-      )}
     </section>
   );
 };

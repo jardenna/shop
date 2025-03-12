@@ -1,13 +1,5 @@
 {
   "files": [],
-  "compilerOptions": {
-    "esModuleInterop": true,
-    "declaration": true,
-    "sourceMap": true,
-    "declarationMap": true,
-    "resolveJsonModule": true
-  },
-
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }

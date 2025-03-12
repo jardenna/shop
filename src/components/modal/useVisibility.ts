@@ -2,35 +2,28 @@ import { useEffect, useRef, useState } from 'react';
 import useKeyPress from '../../hooks/useKeyPress';
 import { KeyCode } from '../../types/enums';
 
-interface VisibilityProps {
-  isModalOpen: boolean;
-  transitionDuration?: number;
-  closeModalCallback?: () => void;
-}
-
-const useVisibility = ({
-  isModalOpen,
-  closeModalCallback,
-  transitionDuration = 500,
-}: VisibilityProps) => {
+const useVisibility = (
+  isOpen: boolean,
+  closeCallback: () => void,
+  duration?: number, // Auto-dismiss duration in milliseconds
+  transitionDuration = 500, // Animation duration in milliseconds
+) => {
   const [isVisible, setIsVisible] = useState(false);
   const timeoutRef = useRef<number | null>(null);
 
   const handleClosePopup = () => {
     setIsVisible(false);
-    if (closeModalCallback) {
-      timeoutRef.current = window.setTimeout(
-        closeModalCallback,
-        transitionDuration,
-      );
-    }
+    timeoutRef.current = window.setTimeout(closeCallback, transitionDuration);
   };
 
   useKeyPress(handleClosePopup, [KeyCode.Esc]);
 
   useEffect(() => {
-    if (isModalOpen) {
+    if (isOpen) {
       setIsVisible(true);
+      if (duration) {
+        timeoutRef.current = window.setTimeout(handleClosePopup, duration);
+      }
     } else {
       handleClosePopup();
     }
@@ -39,7 +32,7 @@ const useVisibility = ({
         clearTimeout(timeoutRef.current);
       }
     };
-  }, [isModalOpen]);
+  }, [isOpen, duration]);
 
   const popupClass = isVisible ? 'is-visible' : 'dismissed';
 

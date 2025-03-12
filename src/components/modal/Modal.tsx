@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { useAppSelector } from '../../app/hooks';
-
 import { selectModalId } from '../../features/modalSlice';
+
 import useWindowDimensions from '../../hooks/useWindowDimensions ';
 import { BtnVariant, PopupRole, SizeVariant } from '../../types/enums';
 import { BtnType } from '../../types/types';
@@ -18,6 +18,7 @@ export interface PrimaryActionBtnProps {
   label: string | null;
   buttonType?: BtnType;
   className?: string;
+  variant?: BtnVariant;
   onClick: () => void;
 }
 
@@ -47,18 +48,19 @@ const Modal: React.FC<ModalProps> = ({
   isAlert,
   modalSize = 'sm',
   className = '',
-  showCloseIcon = true,
+  showCloseIcon,
   secondaryActionBtn,
   primaryActionBtn,
   modalInfo,
 }) => {
   const { isMobileSize } = useWindowDimensions();
   const modalId = useAppSelector(selectModalId);
-  const { handleCloseModal, modalRef } = useModal(modalId || '');
-  const { handleClosePopup, popupClass } = useVisibility({
-    isModalOpen: modalId === id,
-    closeModalCallback: handleCloseModal,
-  });
+  const { handleCloseModal, modalRef } = useModal(modalId);
+
+  const { handleClosePopup, popupClass } = useVisibility(
+    modalId === id,
+    handleCloseModal,
+  );
 
   if (!modalId) {
     return null;
@@ -81,7 +83,11 @@ const Modal: React.FC<ModalProps> = ({
           />
         </>
       ) : (
-        <form method="modal" className="modal-form">
+        <form
+          method="modal"
+          className="modal-form"
+          onSubmit={primaryActionBtn.onClick}
+        >
           {children}
           <ModalFooter
             onCloseModal={handleClosePopup}
