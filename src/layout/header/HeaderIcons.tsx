@@ -1,12 +1,13 @@
 import { FC } from 'react';
 import { Link } from 'react-router';
-import DropdownBtn, {
-  DropdownItem,
-} from '../../components/dropdownBtn/DropdownBtn';
+import DropdownBtn from '../../components/dropdownBtn/DropdownBtn';
 import RadioButton from '../../components/formElements/radioButton/RadioButton';
 import IconContent from '../../components/IconContent';
 import Icon, { IconName } from '../../components/icons/Icon';
-import { SecondaryActionBtnProps } from '../../components/modal/Modal';
+import {
+  PrimaryActionBtnProps,
+  SecondaryActionBtnProps,
+} from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
 import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage, {
@@ -14,19 +15,17 @@ import useLanguage, {
 } from '../../features/language/useLanguage';
 import { BtnVariant } from '../../types/enums';
 import { MainPath } from '../nav/enums';
+import { HeaderProps } from './Header';
 
-interface HeaderIconsProps {
-  onChange: any;
-  primaryActionBtn: any;
-  userDropdownList: DropdownItem[];
-  values: any;
-  className?: string;
+type OmittedHeaderProps = Omit<HeaderProps, 'primaryActionBtn' | 'ariaLabel'>;
+
+interface HeaderIconsProps extends OmittedHeaderProps {
+  primaryActionBtn: PrimaryActionBtnProps;
 }
 
 const HeaderIcons: FC<HeaderIconsProps> = ({
   userDropdownList,
   primaryActionBtn,
-
   onChange,
   values,
 }) => {

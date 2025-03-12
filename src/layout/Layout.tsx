@@ -78,7 +78,6 @@ const Layout: FC = () => {
       <SkipLink />
       <Header
         ariaLabel={language.main}
-        value={selectedLanguage}
         userDropdownList={userDropdownList}
         primaryActionBtn={primaryActionBtn}
         onChange={onChange}
