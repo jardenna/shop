@@ -15,9 +15,6 @@ import useLanguage, {
 import { BtnVariant } from '../../types/enums';
 import { MainPath } from '../nav/enums';
 
-// const API_KEY = import.meta.env.VITE_CURRENCY_API_KEY;
-
-// console.log(API_KEY);
 interface HeaderIconsProps {
   onChange: any;
   primaryActionBtn: any;
