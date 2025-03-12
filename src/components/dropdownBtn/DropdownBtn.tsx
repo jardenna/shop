@@ -36,6 +36,9 @@ const DropdownBtn: FC<DropdownBtnProps> = ({
   }, [KeyCode.Esc]);
 
   const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const toggleDropdownList = () => {
+    setDropdownIsOpen(!dropdownIsOpen);
+  };
 
   useClickOutside(dropdownRef, () => {
     setDropdownIsOpen(false);
@@ -48,14 +51,12 @@ const DropdownBtn: FC<DropdownBtnProps> = ({
         ref={(el) => {
           buttonRef.current = el;
         }}
-        onClick={() => {
-          setDropdownIsOpen(!dropdownIsOpen);
-        }}
+        onClick={toggleDropdownList}
         ariaExpanded={dropdownIsOpen}
         ariaHasPopup
         ariaControls={ariaControls}
       >
-        {children}
+        {children} dd
       </Button>
       {dropdownIsOpen && (
         <DropdownList
