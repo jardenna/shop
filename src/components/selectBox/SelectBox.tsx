@@ -15,8 +15,8 @@ import './_select-box.scss';
 export type OptionType = {
   label: string;
   value: number | string;
-  count?: number;
 };
+
 export type SelectedOption = SingleValue<OptionType> | MultiValue<OptionType>;
 
 interface SelectBoxProps {

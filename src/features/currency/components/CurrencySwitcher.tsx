@@ -15,6 +15,8 @@ const CurrencySwitcher = () => {
   }));
 
   const handleChange = (selected: OptionType | null) => {
+    console.log(selected);
+
     if (selected) {
       dispatch(setCurrency(selected.value));
     }

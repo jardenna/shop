@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import CurrencySelect from '../features/currency/components/CurrencySelect';
-import CurrencySwitcher from '../features/currency/components/CurrencySwitcher';
 import ProductPrice from '../features/currency/components/ProductPrice';
+import SelectTest from '../components/selectBox/SelectTest';
 const About: FC = () => (
   <section>
-    <CurrencySwitcher />
+    <SelectTest />
     <CurrencySelect />
     <ProductPrice priceDKK={10200} />
   </section>

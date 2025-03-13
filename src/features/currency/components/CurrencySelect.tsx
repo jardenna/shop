@@ -1,27 +1,35 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import Select from 'react-select';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { OptionType } from '../../../components/selectBox/SelectBox';
+import { selectCurrency, setCurrency } from '../currencySlice';
 
 const CurrencySelect: FC = () => {
-  const options = [
-    { label: 'apple', value: 1 },
-    { label: 'orange', value: 2 },
-    { label: 'kiwi', value: 3 },
-  ];
+  const dispatch = useAppDispatch();
+  const { rates } = useAppSelector(selectCurrency);
 
-  const [items, setItems] = useState();
+  // Convert rates into SelectBox options
+  const currencyOptions = Object.keys(rates).map((currency) => ({
+    label: currency,
+    value: currency,
+  }));
 
-  const handleOption = (selections: any) => {
-    setItems(selections);
+  const handleOption = (selections: OptionType | null) => {
+    if (selections) {
+      dispatch(setCurrency(selections.value));
+    }
   };
-  console.log(items);
 
   return (
     <section>
       <Select
-        isMulti
-        options={options}
+        classNamePrefix="select-box"
+        defaultValue={{
+          label: 'DKK',
+          value: 'DKK',
+        }}
+        options={currencyOptions}
         onChange={handleOption}
-        defaultValue={{ label: 'kiwi', value: 3 }}
       />
     </section>
   );
