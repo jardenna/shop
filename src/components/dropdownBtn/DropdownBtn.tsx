@@ -56,7 +56,7 @@ const DropdownBtn: FC<DropdownBtnProps> = ({
         ariaHasPopup
         ariaControls={ariaControls}
       >
-        {children} dd
+        {children}
       </Button>
       {dropdownIsOpen && (
         <DropdownList

@@ -18,7 +18,7 @@ const DropdownList: FC<DropdownListProps> = ({
   ariaControls,
 }) => {
   const [selectedListItemIndex, setSelectedListItemIndex] = useState(
-    defaultIndex ?? -1,
+    defaultIndex ?? 0,
   );
   const listRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
