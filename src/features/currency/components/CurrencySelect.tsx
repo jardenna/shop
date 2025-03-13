@@ -1,7 +1,9 @@
 import { FC } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import NewSelectBox from '../../../components/selectBox/NewSelectBox';
-import { OptionType } from '../../../components/selectBox/SelectBox';
+import NewSelectBox, {
+  OptionType,
+} from '../../../components/selectBox/NewSelectBox';
+
 import { selectCurrency, setCurrency } from '../currencySlice';
 
 const CurrencySelect: FC = () => {
