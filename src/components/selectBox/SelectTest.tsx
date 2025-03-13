@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import NewSelectBox from './NewSelectBox';
+import Selectbox from './SelectBox';
 
 export type OptionType = {
   label: string;
@@ -22,7 +22,7 @@ const SelectTest: FC = () => {
 
   return (
     <section>
-      <NewSelectBox
+      <Selectbox
         isMulti
         name="fruits"
         options={options}

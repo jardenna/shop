@@ -1,8 +1,6 @@
 import { FC } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import NewSelectBox, {
-  OptionType,
-} from '../../../components/selectBox/NewSelectBox';
+import Selectbox, { OptionType } from '../../../components/selectBox/SelectBox';
 
 import { selectCurrency, setCurrency } from '../currencySlice';
 
@@ -24,7 +22,7 @@ const CurrencySelect: FC = () => {
 
   return (
     <section>
-      <NewSelectBox
+      <Selectbox
         id="currency"
         defaultValue={{
           label: 'DKK',
