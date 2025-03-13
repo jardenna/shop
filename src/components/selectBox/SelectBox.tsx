@@ -12,25 +12,33 @@ import variables from '../../scss/variables.module.scss';
 import FormLabel from '../formElements/FormLabel';
 import './_select-box.scss';
 
-export type Option = { label: string; value: number | string; count?: number };
-export type SelectedOption = SingleValue<Option> | MultiValue<Option>;
+export type OptionType = {
+  label: string;
+  value: number | string;
+  count?: number;
+};
+export type SelectedOption = SingleValue<OptionType> | MultiValue<OptionType>;
 
 interface SelectBoxProps {
-  defaultValue: Option | Option[] | null;
+  defaultValue: OptionType | OptionType[] | null;
   id: string;
   labelText: string;
   name: string;
-  options: OptionsOrGroups<Option, GroupBase<Option>>;
+  options: OptionsOrGroups<OptionType, GroupBase<OptionType>>;
   className?: string;
   closeMenuOnSelect?: boolean;
-  components?: SelectComponentsConfig<Option, boolean, GroupBase<Option>>;
+  components?: SelectComponentsConfig<
+    OptionType,
+    boolean,
+    GroupBase<OptionType>
+  >;
   inputHasNoLabel?: boolean;
   inputValue?: string;
   isMulti?: boolean;
   isSearchable?: boolean;
   placeholder?: string;
   required?: boolean;
-  onChange: (value: SelectedOption) => void;
+  onChange: (value: OptionType | null) => void;
   onInputChange?: (value: string) => void;
 }
 
@@ -54,9 +62,9 @@ const SelectBox: FC<SelectBoxProps> = ({
 }) => {
   const handleChange = (newValue: SelectedOption) => {
     if (isMulti) {
-      onChange(newValue as Option[]);
+      onChange(newValue as any);
     } else {
-      onChange(newValue as Option);
+      onChange(newValue as OptionType);
     }
   };
 
