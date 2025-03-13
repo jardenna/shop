@@ -32,4 +32,5 @@ const CurrencyProvider: FC<CurrencyProviderProps> = ({ children }) => {
 
   return children;
 };
+
 export default CurrencyProvider;

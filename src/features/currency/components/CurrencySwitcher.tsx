@@ -1,9 +1,8 @@
-import { useDispatch } from 'react-redux';
-import { useAppSelector } from '../../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { selectCurrency, setCurrency } from '../currencySlice';
 
 const CurrencySwitcher = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { selectedCurrency, rates } = useAppSelector(selectCurrency);
 
   const availableCurrencies = Object.keys(rates);
