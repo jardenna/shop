@@ -24,10 +24,14 @@ const SelectTest: FC = () => {
     <section>
       <NewSelectBox
         isMulti
+        name="fruits"
         options={options}
-        onChange={handleOption}
+        onChange={(selections) => {
+          handleOption(selections);
+        }}
         defaultValue={{ label: 'kiwi', value: 3 }}
         id="fruits"
+        labelText="Select Fruits"
       />
     </section>
   );
