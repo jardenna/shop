@@ -16,6 +16,7 @@ import useLanguage, {
 import { BtnVariant } from '../../types/enums';
 import { MainPath } from '../nav/enums';
 import { HeaderProps } from './Header';
+import CurrencySelect from '../../features/currency/components/CurrencySelect';
 
 type OmittedHeaderProps = Omit<HeaderProps, 'primaryActionBtn' | 'ariaLabel'>;
 
@@ -96,6 +97,7 @@ const HeaderIcons: FC<HeaderIconsProps> = ({
               initialChecked={values.languageOption}
               onChange={onChange}
             />
+            <CurrencySelect />
           </ModalContainer>
         </li>
       </ul>
