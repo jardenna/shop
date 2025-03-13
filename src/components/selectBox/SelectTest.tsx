@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import Select from 'react-select';
+import NewSelectBox from './NewSelectBox';
 
 export type OptionType = {
   label: string;
@@ -22,11 +22,12 @@ const SelectTest: FC = () => {
 
   return (
     <section>
-      <Select
+      <NewSelectBox
         isMulti
         options={options}
         onChange={handleOption}
         defaultValue={{ label: 'kiwi', value: 3 }}
+        id="fruits"
       />
     </section>
   );
