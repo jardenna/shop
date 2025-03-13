@@ -63,6 +63,13 @@ const NewSelectBox: FC<NewSelectBoxProps> = ({
       />
       <div className="select-box">
         <Select
+          theme={(theme) => ({
+            ...theme,
+            colors: {
+              ...theme.colors,
+              primary50: '#DCE4E7',
+            },
+          })}
           classNamePrefix="select-box"
           isMulti={isMulti}
           options={options}

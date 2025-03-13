@@ -60,6 +60,7 @@ const DropdownBtn: FC<DropdownBtnProps> = ({
       </Button>
       {dropdownIsOpen && (
         <DropdownList
+          defaultIndex={-1}
           dropdownList={dropdownList}
           ref={dropdownRef}
           ariaControls={ariaControls}

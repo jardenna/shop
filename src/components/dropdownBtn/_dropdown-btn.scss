@@ -29,8 +29,10 @@
       border-bottom: 0;
     }
 
+    &:hover,
     &.active {
       border-color: #92aebb;
+      background: #f7f7f7;
     }
 
     .btn {
