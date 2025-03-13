@@ -30,6 +30,8 @@ const CurrencySelect: FC = () => {
         }}
         options={currencyOptions}
         onChange={handleOption}
+        name="currency"
+        labelText="Select currency"
       />
     </section>
   );
