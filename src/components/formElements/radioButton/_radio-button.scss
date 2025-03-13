@@ -24,3 +24,36 @@ input[type='radio'] {
     }
   }
 }
+
+.test {
+  input[type='radio'] {
+    background-color: #f4f4f5;
+    width: 300px;
+    height: 150px;
+    border-radius: 4px;
+    border: 0;
+
+    &::before {
+      transform: scale(0);
+    }
+
+    &:checked {
+      background-color: #2f6d8f;
+      border: 0;
+    }
+  }
+
+  .checkbox-radio-container .form-label-container {
+    z-index: 20;
+    position: absolute;
+    left: calc(50% - 200px / 2);
+  }
+
+  .checkbox-radio-container:focus-within {
+    outline: 0;
+
+    input {
+      @include outline(rgba($color-blue, 70%));
+    }
+  }
+}

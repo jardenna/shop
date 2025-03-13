@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Link } from 'react-router';
 import DropdownBtn from '../../components/dropdownBtn/DropdownBtn';
+import FieldSet from '../../components/fieldset/FieldSet';
 import RadioButton from '../../components/formElements/radioButton/RadioButton';
 import IconContent from '../../components/IconContent';
 import Icon, { IconName } from '../../components/icons/Icon';
@@ -10,13 +11,13 @@ import {
 } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
 import useAuth from '../../features/auth/hooks/useAuth';
+import CurrencySelect from '../../features/currency/components/CurrencySelect';
 import useLanguage, {
   languageOptions,
 } from '../../features/language/useLanguage';
 import { BtnVariant } from '../../types/enums';
 import { MainPath } from '../nav/enums';
 import { HeaderProps } from './Header';
-import CurrencySelect from '../../features/currency/components/CurrencySelect';
 
 type OmittedHeaderProps = Omit<HeaderProps, 'primaryActionBtn' | 'ariaLabel'>;
 
@@ -91,12 +92,14 @@ const HeaderIcons: FC<HeaderIconsProps> = ({
             primaryActionBtn={primaryActionBtn}
             secondaryActionBtn={secondaryActionBtn}
           >
-            <RadioButton
-              radioButtonList={languageOptions}
-              name="languageOption"
-              initialChecked={values.languageOption}
-              onChange={onChange}
-            />
+            <FieldSet legendText="Chose Language" className="test">
+              <RadioButton
+                radioButtonList={languageOptions}
+                name="languageOption"
+                initialChecked={values.languageOption}
+                onChange={onChange}
+              />
+            </FieldSet>
             <CurrencySelect />
           </ModalContainer>
         </li>
