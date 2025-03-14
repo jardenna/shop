@@ -7,9 +7,21 @@ interface CurrencyProviderProps {
   children: ReactNode;
 }
 
+const TWENTY_FOUR_HOURS = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
+
 const CurrencyProvider: FC<CurrencyProviderProps> = ({ children }) => {
   const dispatch = useAppDispatch();
-  const { data: currency, isLoading, error } = useGetExchangeRatesQuery();
+
+  const {
+    data: currency,
+    isLoading,
+    error,
+  } = useGetExchangeRatesQuery(undefined, {
+    // The exchange rate updates every 24 hours so we need to poll the currency updates
+    pollingInterval: TWENTY_FOUR_HOURS,
+    // The polling is stopped when the user has left the window  such as switching the focused tab to another tab
+    skipPollingIfUnfocused: true,
+  });
 
   useEffect(() => {
     if (currency?.data) {
