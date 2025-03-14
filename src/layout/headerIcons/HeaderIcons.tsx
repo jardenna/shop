@@ -92,7 +92,7 @@ const HeaderIcons: FC<HeaderIconsProps> = ({
               <IconContent
                 iconName={IconName.Language}
                 title={language.globe}
-                ariaLabel="Select preferred language and currency"
+                ariaLabel={language.selectPreferences}
               />
             }
             triggerModalBtnVariant={BtnVariant.Ghost}
@@ -103,7 +103,7 @@ const HeaderIcons: FC<HeaderIconsProps> = ({
             modalHeaderText="Pref"
           >
             <div className="preferences">
-              <FieldSet legendText="Select language" showLegendText>
+              <FieldSet legendText={language.selectLanguage} showLegendText>
                 <RadioButton
                   radioButtonList={languageOptions}
                   name="languageOption"
@@ -112,12 +112,13 @@ const HeaderIcons: FC<HeaderIconsProps> = ({
                   radioBtnVariant="card"
                 />
               </FieldSet>
-              <FieldSet legendText="Select Currency" showLegendText>
+              <FieldSet legendText={language.selectCurrency} showLegendText>
                 <CurrencySelect
                   inputHasNoLabel
                   options={currencyOptions}
                   defaultValue={defaultValue}
                   onSelectCurrency={onSelectCurrency}
+                  labelText={language.currency}
                 />
               </FieldSet>
             </div>

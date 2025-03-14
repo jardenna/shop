@@ -70,6 +70,9 @@ pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-ma
 pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
 retry;Retry;Forsøg igen
 search;Search;Søg
+selectCurrency;Select Currency;Vælg valuta
+selectLanguage;Select language;Vælg sprog
+selectPreferences;Select preferred language and currency;Vælg sprog og valuta
 shopNow;Shop now;Køb nu
 showPassword;Show password;Vis adgangskode
 signup;Sign up;Opret bruger
