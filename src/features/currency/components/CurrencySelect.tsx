@@ -1,15 +1,18 @@
 import { FC } from 'react';
-import Selectbox, { OptionType } from '../../../components/selectBox/SelectBox';
+import Selectbox from '../../../components/selectBox/SelectBox';
+import { HeaderProps } from '../../../layout/header/Header';
 
-interface CurrencySelectProps {
-  defaultValue: OptionType;
+type OmittedHeaderProps = Omit<
+  HeaderProps,
+  'primaryActionBtn' | 'ariaLabel' | 'userDropdownList' | 'values' | 'onChange'
+>;
+
+interface CurrencySelectProps extends OmittedHeaderProps {
   inputHasNoLabel: boolean;
   labelText: string;
-  options: OptionType[];
-  onSelectCurrency: (selectedOptions: OptionType) => void;
 }
 const CurrencySelect: FC<CurrencySelectProps> = ({
-  options,
+  currencyOptions,
   defaultValue,
   onSelectCurrency,
   labelText,
@@ -17,7 +20,7 @@ const CurrencySelect: FC<CurrencySelectProps> = ({
   <Selectbox
     id="currency"
     defaultValue={defaultValue}
-    options={options}
+    options={currencyOptions}
     onChange={onSelectCurrency}
     name="currency"
     labelText={labelText}

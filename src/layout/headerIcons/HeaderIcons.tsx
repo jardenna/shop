@@ -1,8 +1,6 @@
 import { FC } from 'react';
 import { Link } from 'react-router';
 import DropdownBtn from '../../components/dropdownBtn/DropdownBtn';
-import FieldSet from '../../components/fieldset/FieldSet';
-import RadioButton from '../../components/formElements/radioButton/RadioButton';
 import IconBtn from '../../components/IconBtn';
 import IconContent from '../../components/IconContent';
 import Icon, { IconName } from '../../components/icons/Icon';
@@ -12,12 +10,10 @@ import {
 } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
 import useAuth from '../../features/auth/hooks/useAuth';
-import CurrencySelect from '../../features/currency/components/CurrencySelect';
-import useLanguage, {
-  languageOptions,
-} from '../../features/language/useLanguage';
+import useLanguage from '../../features/language/useLanguage';
 import { BtnVariant, SizeVariant } from '../../types/enums';
 import { HeaderProps } from '../header/Header';
+import LanguageCurrencyPreferences from '../headerIconsComponents/LanguageCurrencyPreferences';
 import { MainPath } from '../nav/enums';
 import './_header-icons.scss';
 
@@ -102,26 +98,13 @@ const HeaderIcons: FC<HeaderIconsProps> = ({
             modalSize={SizeVariant.Md}
             modalHeaderText="Pref"
           >
-            <div className="preferences">
-              <FieldSet legendText={language.selectLanguage} showLegendText>
-                <RadioButton
-                  radioButtonList={languageOptions}
-                  name="languageOption"
-                  initialChecked={values.languageOption}
-                  onChange={onChange}
-                  radioBtnVariant="card"
-                />
-              </FieldSet>
-              <FieldSet legendText={language.selectCurrency} showLegendText>
-                <CurrencySelect
-                  inputHasNoLabel
-                  options={currencyOptions}
-                  defaultValue={defaultValue}
-                  onSelectCurrency={onSelectCurrency}
-                  labelText={language.currency}
-                />
-              </FieldSet>
-            </div>
+            <LanguageCurrencyPreferences
+              values={values}
+              onChange={onChange}
+              currencyOptions={currencyOptions}
+              defaultValue={defaultValue}
+              onSelectCurrency={onSelectCurrency}
+            />
           </ModalContainer>
         </li>
       </ul>
