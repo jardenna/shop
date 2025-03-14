@@ -23,7 +23,7 @@ const RadioButton: FC<RadioButtonProps> = ({
   name,
   formInfoText,
 }) => (
-  <>
+  <div className="radio-btn-container">
     {radioButtonList.map((radio) => (
       <Input
         type="radio"
@@ -39,7 +39,7 @@ const RadioButton: FC<RadioButtonProps> = ({
     ))}
 
     {formInfoText && <section className="form-info">{formInfoText}</section>}
-  </>
+  </div>
 );
 
 export default RadioButton;
