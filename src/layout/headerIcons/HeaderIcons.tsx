@@ -46,7 +46,7 @@ const HeaderIcons: FC<HeaderIconsProps> = ({
   return (
     <section>
       <ul className="header-icon-list">
-        <li className="header-icon">
+        <li>
           <IconBtn
             iconName={IconName.Search}
             title={language.search}
@@ -54,7 +54,7 @@ const HeaderIcons: FC<HeaderIconsProps> = ({
             ariaLabel={language.search}
           />
         </li>
-        <li className="header-icon">
+        <li>
           {currentUser ? (
             <DropdownBtn
               username={currentUser.username}
@@ -77,12 +77,12 @@ const HeaderIcons: FC<HeaderIconsProps> = ({
             </Link>
           )}
         </li>
-        <li className="header-icon">
+        <li>
           <Link to={MainPath.ShoppingCart} className="btn btn-ghost">
             <Icon iconName={IconName.ShoppingBack} title={language.bag} />
           </Link>
         </li>
-        <li className="header-icon">
+        <li>
           <ModalContainer
             triggerModalBtnContent={
               <IconContent
