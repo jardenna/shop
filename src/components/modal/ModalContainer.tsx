@@ -3,14 +3,10 @@ import { useAppDispatch } from '../../app/hooks';
 import { toggleModal } from '../../features/modalSlice';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
-import Modal, { PrimaryActionBtnProps, SecondaryActionBtnProps } from './Modal';
+import Modal, { ModalProps } from './Modal';
 
-interface ModalContainerProps {
-  children: ReactNode;
-  id: string | null;
-  primaryActionBtn: PrimaryActionBtnProps;
+interface ModalContainerProps extends ModalProps {
   triggerModalBtnContent: ReactNode | string;
-  secondaryActionBtn?: SecondaryActionBtnProps;
   triggerModalBtnVariant?: BtnVariant;
 }
 
@@ -21,6 +17,9 @@ const ModalContainer: FC<ModalContainerProps> = ({
   secondaryActionBtn,
   triggerModalBtnVariant,
   triggerModalBtnContent,
+  modalHeaderText,
+  modalSize,
+  className,
 }) => {
   const dispatch = useAppDispatch();
   const handleOpenModal = () => {
@@ -28,6 +27,7 @@ const ModalContainer: FC<ModalContainerProps> = ({
       dispatch(toggleModal(id));
     }
   };
+
   return (
     <>
       <Button variant={triggerModalBtnVariant} onClick={handleOpenModal}>
@@ -37,10 +37,12 @@ const ModalContainer: FC<ModalContainerProps> = ({
       {id && (
         <Modal
           id={id}
-          modalHeaderText="header"
+          modalHeaderText={modalHeaderText}
           primaryActionBtn={primaryActionBtn}
           secondaryActionBtn={secondaryActionBtn}
           showCloseIcon
+          modalSize={modalSize}
+          className={className}
         >
           {children}
         </Modal>

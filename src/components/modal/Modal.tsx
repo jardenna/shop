@@ -28,7 +28,7 @@ export interface SecondaryActionBtnProps {
   onClick?: () => void;
 }
 
-interface ModalProps {
+export interface ModalProps {
   children: React.ReactNode;
   id: string;
   modalHeaderText: string;
