@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 @use '../../../scss/globals' as *;
 
 input[type='radio'] {
@@ -25,13 +26,29 @@ input[type='radio'] {
   }
 }
 
+.test2 {
+  width: 100%;
+}
+
 .test {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  margin-bottom: 20px;
+
+  .radio-btn-container {
+    display: flex;
+    gap: 8px;
+  }
+
   input[type='radio'] {
     background-color: #f4f4f5;
-    width: 300px;
-    height: 150px;
-    border-radius: 4px;
+    width: 100%;
+    min-height: 60px;
+    border-radius: 2px;
     border: 0;
+    padding: 0;
+    margin: 0;
 
     &::before {
       transform: scale(0);
@@ -44,9 +61,8 @@ input[type='radio'] {
   }
 
   .checkbox-radio-container .form-label-container {
-    z-index: 20;
+    z-index: 1;
     position: absolute;
-    left: calc(50% - 200px / 2);
   }
 
   .checkbox-radio-container:focus-within {
@@ -55,5 +71,26 @@ input[type='radio'] {
     input {
       @include outline(rgba($color-blue, 70%));
     }
+  }
+}
+
+.preferences {
+  fieldset {
+    width: 100%;
+  }
+
+  .checkbox-radio-container {
+    margin-bottom: 0;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .checkbox-radio-container:has(input:checked) {
+    color: white;
+  }
+
+  legend {
+    margin-bottom: 4px;
+    position: static;
   }
 }

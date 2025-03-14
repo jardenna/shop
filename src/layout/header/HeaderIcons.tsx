@@ -15,7 +15,7 @@ import CurrencySelect from '../../features/currency/components/CurrencySelect';
 import useLanguage, {
   languageOptions,
 } from '../../features/language/useLanguage';
-import { BtnVariant } from '../../types/enums';
+import { BtnVariant, SizeVariant } from '../../types/enums';
 import { MainPath } from '../nav/enums';
 import { HeaderProps } from './Header';
 
@@ -94,20 +94,30 @@ const HeaderIcons: FC<HeaderIconsProps> = ({
             id="languageId"
             primaryActionBtn={primaryActionBtn}
             secondaryActionBtn={secondaryActionBtn}
+            modalSize={SizeVariant.Md}
+            modalHeaderText="Pref"
+            className="preferences"
           >
-            <FieldSet legendText="Chose Language" className="test">
-              <RadioButton
-                radioButtonList={languageOptions}
-                name="languageOption"
-                initialChecked={values.languageOption}
-                onChange={onChange}
-              />
-            </FieldSet>
-            <CurrencySelect
-              options={currencyOptions}
-              defaultValue={defaultValue}
-              onSelectCurrency={onSelectCurrency}
-            />
+            <div className="test">
+              <FieldSet legendText="Select language" showLegendText>
+                <div className="test2">
+                  <RadioButton
+                    radioButtonList={languageOptions}
+                    name="languageOption"
+                    initialChecked={values.languageOption}
+                    onChange={onChange}
+                  />
+                </div>
+              </FieldSet>
+              <FieldSet legendText="Select Currency" showLegendText>
+                <CurrencySelect
+                  inputHasNoLabel
+                  options={currencyOptions}
+                  defaultValue={defaultValue}
+                  onSelectCurrency={onSelectCurrency}
+                />
+              </FieldSet>
+            </div>
           </ModalContainer>
         </li>
       </ul>
