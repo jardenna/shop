@@ -3,10 +3,10 @@ import { DropdownItem } from '../../components/dropdownBtn/DropdownBtn';
 import { OptionType } from '../../components/selectBox/SelectBox';
 import { SelectedLanguage } from '../../features/language/languageSlice';
 import { ChangeInputType } from '../../types/types';
+import HeaderIcons from '../headerIcons/HeaderIcons';
 import LayoutElement from '../LayoutElement';
 import Nav from '../nav/Nav';
 import './_header.scss';
-import HeaderIcons from './HeaderIcons';
 import Logo from './Logo';
 
 export interface Values {

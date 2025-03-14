@@ -1,0 +1,21 @@
+.header-icon-list {
+  display: flex;
+}
+
+.header-icon {
+  color: currentcolor;
+}
+
+.preferences {
+  display: flex;
+  gap: 12px;
+
+  legend {
+    margin-bottom: 4px;
+    position: static;
+  }
+
+  .fieldset {
+    width: 100%;
+  }
+}

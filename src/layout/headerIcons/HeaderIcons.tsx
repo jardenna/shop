@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import DropdownBtn from '../../components/dropdownBtn/DropdownBtn';
 import FieldSet from '../../components/fieldset/FieldSet';
 import RadioButton from '../../components/formElements/radioButton/RadioButton';
+import IconBtn from '../../components/IconBtn';
 import IconContent from '../../components/IconContent';
 import Icon, { IconName } from '../../components/icons/Icon';
 import {
@@ -16,8 +17,9 @@ import useLanguage, {
   languageOptions,
 } from '../../features/language/useLanguage';
 import { BtnVariant, SizeVariant } from '../../types/enums';
+import { HeaderProps } from '../header/Header';
 import { MainPath } from '../nav/enums';
-import { HeaderProps } from './Header';
+import './_header-icons.scss';
 
 type OmittedHeaderProps = Omit<HeaderProps, 'primaryActionBtn' | 'ariaLabel'>;
 
@@ -41,17 +43,21 @@ const HeaderIcons: FC<HeaderIconsProps> = ({
     label: language.cancel,
   };
 
+  const handleSearch = () => {
+    console.log(12);
+  };
+
   return (
     <section>
       <ul className="header-icon-list">
-        {/* <li className="header-icon">
+        <li className="header-icon">
           <IconBtn
             iconName={IconName.Search}
             title={language.search}
-            onClick={onClick}
+            onClick={handleSearch}
             ariaLabel={language.search}
           />
-        </li> */}
+        </li>
         <li className="header-icon">
           {currentUser ? (
             <DropdownBtn
@@ -80,8 +86,7 @@ const HeaderIcons: FC<HeaderIconsProps> = ({
             <Icon iconName={IconName.ShoppingBack} title={language.bag} />
           </Link>
         </li>
-
-        <li>
+        <li className="header-icon">
           <ModalContainer
             triggerModalBtnContent={
               <IconContent
@@ -96,18 +101,16 @@ const HeaderIcons: FC<HeaderIconsProps> = ({
             secondaryActionBtn={secondaryActionBtn}
             modalSize={SizeVariant.Md}
             modalHeaderText="Pref"
-            className="preferences"
           >
-            <div className="test">
+            <div className="preferences">
               <FieldSet legendText="Select language" showLegendText>
-                <div className="test2">
-                  <RadioButton
-                    radioButtonList={languageOptions}
-                    name="languageOption"
-                    initialChecked={values.languageOption}
-                    onChange={onChange}
-                  />
-                </div>
+                <RadioButton
+                  radioButtonList={languageOptions}
+                  name="languageOption"
+                  initialChecked={values.languageOption}
+                  onChange={onChange}
+                  radioBtnVariant="card"
+                />
               </FieldSet>
               <FieldSet legendText="Select Currency" showLegendText>
                 <CurrencySelect

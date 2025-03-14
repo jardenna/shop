@@ -8,11 +8,13 @@ export interface RadioListItem {
   value: string;
 }
 
+export type RadioBtnVariant = 'card';
 interface RadioButtonProps {
   initialChecked: string;
   name: string;
   radioButtonList: RadioListItem[];
   formInfoText?: string;
+  radioBtnVariant?: string;
   onChange: (event: ChangeInputType) => void;
 }
 
@@ -22,8 +24,9 @@ const RadioButton: FC<RadioButtonProps> = ({
   onChange,
   name,
   formInfoText,
+  radioBtnVariant = '',
 }) => (
-  <div className="radio-btn-container">
+  <div className={`${radioBtnVariant} radio-btn-container`}>
     {radioButtonList.map((radio) => (
       <Input
         type="radio"
