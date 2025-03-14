@@ -1,12 +1,10 @@
 @use '../../scss/globals' as *;
+@use '../../scss/helper-classes' as *;
 
 /* stylelint-disable selector-class-pattern */
 .select-box {
   .select-box__control {
-    cursor: pointer;
-    background-color: #f4f4f5;
-    border: 0;
-    min-height: 60px;
+    @extend %styled-input;
   }
 
   .select-box__indicator-separator {

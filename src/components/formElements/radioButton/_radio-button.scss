@@ -1,4 +1,5 @@
 @use '../../../scss/globals' as *;
+@use '../../../scss/helper-classes' as *;
 
 input[type='radio'] {
   border-radius: 50%;
@@ -9,10 +10,9 @@ input[type='radio'] {
     height: rem(15px);
     border-radius: 50%;
     transform: scale(0);
+    box-shadow: inset 16px 0 $color-blue;
 
     @include transition($time: 0.12s);
-
-    box-shadow: inset 16px 0 $color-blue;
   }
 
   &:checked {
@@ -56,13 +56,11 @@ input[type='radio'] {
   }
 
   input[type='radio'] {
-    background-color: #f4f4f5;
     width: 100%;
-    min-height: rem(60px);
-    border-radius: 2px;
-    border: 0;
     padding: 0;
     margin: 0;
+
+    @extend %styled-input;
 
     &::before {
       transform: scale(0);

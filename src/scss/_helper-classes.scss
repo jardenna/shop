@@ -54,3 +54,11 @@
 .position-relative {
   position: relative;
 }
+
+%styled-input {
+  cursor: pointer;
+  background-color: #f4f4f5;
+  border: 0;
+  min-height: rem(76px);
+  border-radius: 2px;
+}
