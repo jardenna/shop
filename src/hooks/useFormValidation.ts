@@ -15,9 +15,9 @@ export type FormValues = {
 
 interface FormValidationProps<T extends KeyValuePair<unknown>> {
   initialState: T;
-  callback?: any;
   isArray?: boolean;
   isLoading?: boolean;
+  callback?: (values: T) => void;
   validate?: (values: T) => ValidationErrors;
 }
 
