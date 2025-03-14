@@ -13,17 +13,18 @@ export const currencyToLocaleMap: Record<CurrencyCode, Locales> = {
 export const currencies = Object.keys(currencyToLocaleMap).join(',');
 
 export const getFormattedPrice = (
-  amountDKK: number,
+  price: number,
   currencyCode: CurrencyCode,
   rates: Record<string, number>,
 ) => {
   const locale = currencyToLocaleMap[currencyCode];
   const convertedAmount =
-    currencyCode === 'DKK' ? amountDKK : amountDKK * rates[currencyCode];
+    currencyCode === 'DKK' ? price : price * rates[currencyCode];
 
   // Always round up
   const roundedAmount = Math.ceil(convertedAmount);
 
+  // Convert currency to locales
   return new Intl.NumberFormat(locale, {
     style: 'currency',
     currency: currencyCode,

@@ -1,17 +1,12 @@
 import { FC, ReactNode } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router';
-import { useAppDispatch, useAppSelector } from '../app/hooks';
 import Icon, { IconName } from '../components/icons/Icon';
 import { OptionType } from '../components/selectBox/SelectBox';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
-import {
-  selectCurrency,
-  setCurrency,
-} from '../features/currency/currencySlice';
+import useCurrency from '../features/currency/useCurrency';
 import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
-import useLocalStorage from '../hooks/useLocalStorage';
 import Header from './header/Header';
 import { MainPath } from './nav/enums';
 
@@ -23,7 +18,6 @@ export interface LayoutElementProps {
 
 const Layout: FC = () => {
   const location = useLocation();
-  const { rates, selectedCurrency } = useAppSelector(selectCurrency);
   const { language, switchLanguage, selectedLanguage } = useLanguage();
   const navigate = useNavigate();
   const [logout] = useLogoutMutation();
@@ -33,7 +27,7 @@ const Layout: FC = () => {
     navigate(`/${MainPath.Login}`);
   };
 
-  const [lang, setLang] = useLocalStorage('cur', selectedCurrency);
+  const { currencyOptions, onChangePrice, lang } = useCurrency();
 
   const initialState = {
     languageOption: selectedLanguage,
@@ -49,12 +43,9 @@ const Layout: FC = () => {
     onCustomChange(name, selectedOptions.value);
   };
 
-  const dispatch = useAppDispatch();
-
   function handleSubmit() {
     switchLanguage(values.languageOption);
-    dispatch(setCurrency(values.currencyOption));
-    setLang(values.currencyOption);
+    onChangePrice(values.currencyOption);
   }
 
   const primaryActionBtn = {
@@ -94,12 +85,6 @@ const Layout: FC = () => {
     },
   ];
 
-  // Convert rates into SelectBox options
-  const currencyOptions = Object.keys(rates).map((currency) => ({
-    label: currency,
-    value: currency,
-  }));
-
   return (
     <div className="main-container">
       <SkipLink />
@@ -118,7 +103,6 @@ const Layout: FC = () => {
           handleSelectCurrency('currencyOption', selectedOptions);
         }}
       />
-
       <main id="main">
         <div className={isHomePage ? 'home-page' : 'container page'}>
           <Outlet />

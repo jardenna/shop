@@ -1,9 +1,14 @@
-import { useAppSelector } from '../../../app/hooks';
-import { getFormattedPrice } from '../currencyConverterUtil';
-import { selectCurrency } from '../currencySlice';
+import { FC } from 'react';
+import useCurrency from '../useCurrency';
 
-export default function ProductPrice({ priceDKK }: { priceDKK: number }) {
-  const { selectedCurrency, rates } = useAppSelector(selectCurrency);
-
-  return <p>Price: {getFormattedPrice(priceDKK, selectedCurrency, rates)}</p>;
+interface ProductPriceProps {
+  price: number;
 }
+
+const ProductPrice: FC<ProductPriceProps> = ({ price }) => {
+  const { convertedPrice } = useCurrency(price);
+
+  return <p>Price: {convertedPrice}</p>;
+};
+
+export default ProductPrice;
