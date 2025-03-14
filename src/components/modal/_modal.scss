@@ -7,6 +7,7 @@ dialog::backdrop {
 
 dialog {
   color: #473f4a;
+  padding: 20px 24px;
 }
 
 .modal {
@@ -17,7 +18,6 @@ dialog {
   display: flex;
   flex-direction: column;
   z-index: 10;
-  padding: 0;
 
   @include max-size($small) {
     border-radius: 0;
@@ -62,6 +62,7 @@ dialog {
 
   .modal-title {
     margin: 0;
+    margin-bottom: 12px;
   }
 
   .modal-body {
@@ -86,6 +87,6 @@ dialog {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
+    gap: 24px;
   }
 }

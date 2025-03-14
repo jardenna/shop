@@ -4,10 +4,11 @@
 
 .preferences {
   display: flex;
-  gap: 12px;
+  gap: 24px;
+  margin-block: 24px 44px;
 
   legend {
-    margin-bottom: 4px;
+    margin-bottom: 8px;
     position: static;
   }
 

@@ -28,7 +28,8 @@ input[type='radio'] {
 .card {
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 12px;
+  text-transform: uppercase;
 
   .checkbox-radio-container {
     margin-bottom: 0;

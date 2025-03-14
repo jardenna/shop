@@ -13,7 +13,7 @@ a[class^='btn-'],
   justify-content: center;
   position: relative;
   font-family: $font-primary;
-  font-size: rem(14px);
+  font-size: rem(16px);
   font-weight: normal;
   color: $color-white;
   outline: transparent;
@@ -46,7 +46,7 @@ a[class^='btn-'],
   color: #f4f4f5;
 
   &:hover {
-    background-color: $color-primary-btn-hover;
+    background-color: #020101;
   }
 
   &:focus-visible {
@@ -62,7 +62,7 @@ a[class^='btn-'],
   border: 1px solid #473f4a;
 
   &:hover {
-    color: $color-green;
+    color: #b5b5ba;
   }
 
   &:focus-visible {
