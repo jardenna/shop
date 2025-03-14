@@ -11,6 +11,7 @@ import {
 } from '../features/currency/currencySlice';
 import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
+import useLocalStorage from '../hooks/useLocalStorage';
 import Header from './header/Header';
 import { MainPath } from './nav/enums';
 
@@ -22,7 +23,7 @@ export interface LayoutElementProps {
 
 const Layout: FC = () => {
   const location = useLocation();
-  const { rates } = useAppSelector(selectCurrency);
+  const { rates, selectedCurrency } = useAppSelector(selectCurrency);
   const { language, switchLanguage, selectedLanguage } = useLanguage();
   const navigate = useNavigate();
   const [logout] = useLogoutMutation();
@@ -32,9 +33,11 @@ const Layout: FC = () => {
     navigate(`/${MainPath.Login}`);
   };
 
+  const [lang, setLang] = useLocalStorage('cur', selectedCurrency);
+
   const initialState = {
     languageOption: selectedLanguage,
-    currencyOption: '',
+    currencyOption: lang,
   };
 
   const { onChange, onSubmit, values, onCustomChange } = useFormValidation({
@@ -51,6 +54,7 @@ const Layout: FC = () => {
   function handleSubmit() {
     switchLanguage(values.languageOption);
     dispatch(setCurrency(values.currencyOption));
+    setLang(values.currencyOption);
   }
 
   const primaryActionBtn = {
@@ -104,8 +108,8 @@ const Layout: FC = () => {
         userDropdownList={userDropdownList}
         primaryActionBtn={primaryActionBtn}
         defaultValue={{
-          label: 'DKK',
-          value: 'DKK',
+          label: lang,
+          value: lang,
         }}
         onChange={onChange}
         values={values}
