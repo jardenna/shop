@@ -76,7 +76,6 @@ const NewSelectBox: FC<NewSelectBoxProps> = ({
           onChange={handleChange}
           defaultValue={defaultValue}
           inputId={id}
-          menuPlacement="auto"
           name={name}
           isSearchable={isSearchable}
           placeholder={placeholder}

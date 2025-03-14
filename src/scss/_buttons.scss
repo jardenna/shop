@@ -11,6 +11,7 @@ a[class^='btn-'],
 .btn {
   display: flex;
   justify-content: center;
+  align-items: center;
   position: relative;
   font-family: $font-primary;
   font-size: rem(16px);
@@ -22,6 +23,7 @@ a[class^='btn-'],
   width: 100%;
   border: 1px solid currentcolor;
   cursor: pointer;
+  min-height: rem(60px);
 
   @include max-size($medium) {
     font-size: rem(16px);

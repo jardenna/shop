@@ -1,3 +1,5 @@
+@use '../../scss/globals' as *;
+
 .header-icon-list {
   display: flex;
 }
@@ -5,7 +7,7 @@
 .preferences {
   display: flex;
   gap: 24px;
-  margin-block: 24px 44px;
+  margin-block: 24px 56px;
 
   legend {
     margin-bottom: 8px;
@@ -14,5 +16,10 @@
 
   .fieldset {
     width: 100%;
+  }
+
+  /* stylelint-disable-next-line selector-class-pattern */
+  .select-box__menu-list {
+    max-height: rem(100px);
   }
 }
