@@ -8,8 +8,8 @@ import {
 } from './languageSlice';
 
 export const languageOptions = [
-  { value: 'da', label: 'DK' },
-  { value: 'en', label: 'UK' },
+  { value: 'da', label: 'Dansk' },
+  { value: 'en', label: 'English' },
 ];
 
 const useLanguage = () => {
