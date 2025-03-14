@@ -28,7 +28,7 @@ interface NewSelectBoxProps {
   isSearchable?: boolean;
   placeholder?: string;
   required?: boolean;
-  onChange: (value: OptionType | null) => void;
+  onChange: (value: OptionType) => void;
 }
 
 const NewSelectBox: FC<NewSelectBoxProps> = ({
@@ -48,7 +48,7 @@ const NewSelectBox: FC<NewSelectBoxProps> = ({
 }) => {
   const handleChange = (newValue: SelectedOption) => {
     if (isMulti) {
-      onChange(newValue as OptionType | null);
+      onChange(newValue as OptionType);
     } else {
       onChange(newValue as OptionType);
     }
