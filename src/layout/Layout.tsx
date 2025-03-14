@@ -51,7 +51,7 @@ const Layout: FC = () => {
 
   const primaryActionBtn = {
     onClick: onSubmit,
-    label: 'ok',
+    label: language.updatePreferences,
     buttonType: 'submit',
   };
 

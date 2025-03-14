@@ -43,6 +43,7 @@ a[class^='btn-'],
 
 .btn-primary {
   background-color: #473f4a;
+  color: #f4f4f5;
 
   &:hover {
     background-color: $color-primary-btn-hover;

@@ -40,7 +40,6 @@ const ModalContainer: FC<ModalContainerProps> = ({
           modalHeaderText={modalHeaderText}
           primaryActionBtn={primaryActionBtn}
           secondaryActionBtn={secondaryActionBtn}
-          showCloseIcon
           modalSize={modalSize}
           className={className}
         >

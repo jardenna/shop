@@ -5,15 +5,19 @@ dialog::backdrop {
   opacity: 0.8;
 }
 
+dialog {
+  color: #473f4a;
+}
+
 .modal {
   border: 0;
   overflow-x: hidden;
   border-radius: 4px;
   width: auto;
-  gap: 24px;
   display: flex;
   flex-direction: column;
   z-index: 10;
+  padding: 0;
 
   @include max-size($small) {
     border-radius: 0;
@@ -57,12 +61,7 @@ dialog::backdrop {
   }
 
   .modal-title {
-    flex-grow: 1;
     margin: 0;
-  }
-
-  .modal-form {
-    margin-top: 16px;
   }
 
   .modal-body {

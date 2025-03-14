@@ -35,20 +35,20 @@ language;Language;Sprog
 loading;Loading;Loading
 loggedOut;Logged out successfully;Logget ud
 login;Log in;Log ind
-loginHere;Log in here;Log ind her
 loginFailed;Login failed;Login mislykkedes
+loginHere;Log in here;Log ind her
 loginSucceeded;Login succeeded;Login lykkedes
 logout;Log out;Log ud
 main;Main;Primær
 menu;Menu;Menu
 minLength;At least 8 characters;Mindst 8 tegn
-myAccount;My account;Min brugerkonto
-myBag;My bag;Min indkøbskurv
-myOrders;My orders;Mine ordrer
 mustHaveLowercase;At least one lowercase letter;Mindst ét lille bogstav
 mustHaveNumber;Atleast one number;Mindst ét tal
 mustHaveSymbol;At least one special character;Mindst ét specialtegn
 mustHaveUppercase;At least one uppercase letter;Mindst ét stort bogstav
+myAccount;My account;Min brugerkonto
+myBag;My bag;Min indkøbskurv
+myOrders;My orders;Mine ordrer
 noEmail;Please provide a email;Indtast venligst en e-mail
 noPassword;Please provide a password;Indtast venligst en adgangskode
 notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 
@@ -68,6 +68,7 @@ pleaseEnterName;Please enter  name;Indsæt venligst navn
 pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
 pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
 pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
+preferences;Preferences;Præferencer
 retry;Retry;Forsøg igen
 search;Search;Søg
 selectCurrency;Select Currency;Vælg valuta
@@ -80,6 +81,7 @@ signupFailed;Sign up failed;Registrering mislykkedes
 signupSucceeded;Sign up succeeded;Registrering lykkedes
 sub;Sub;Sekundær
 success;Success;Succes
+updatePreferences;Update Preferences;Opdater præferencer
 user;User;Bruger
 userAlreadyExist;A profile with this email already exists. Try logging in instead;Der findes en profil med denne e-mail. Prøv at logge ind i stedet
 userDeleted;User deleted;Bruger slettet

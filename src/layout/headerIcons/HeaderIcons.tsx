@@ -90,7 +90,7 @@ const HeaderIcons: FC<HeaderIconsProps> = ({
             primaryActionBtn={primaryActionBtn}
             secondaryActionBtn={secondaryActionBtn}
             modalSize={SizeVariant.Md}
-            modalHeaderText="Pref"
+            modalHeaderText={language.preferences}
           >
             <LanguageCurrencyPreferences
               values={values}

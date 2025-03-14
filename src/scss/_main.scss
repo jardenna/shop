@@ -40,7 +40,8 @@ body,
 body {
   margin: 0;
   font-size: rem(14px);
-  color: $color-gray-12;
+  color: #473f4a;
+  letter-spacing: rem(0.5px);
 }
 
 h1 {
@@ -51,6 +52,10 @@ h1 {
   margin: 0;
   margin-bottom: 12px;
   letter-spacing: 3px;
+}
+
+h2 {
+  font-weight: normal;
 }
 
 .page {
