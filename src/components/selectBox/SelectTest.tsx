@@ -1,10 +1,5 @@
 import { FC, useState } from 'react';
-import Selectbox from './SelectBox';
-
-export type OptionType = {
-  label: string;
-  value: number | string;
-};
+import Selectbox, { OptionType } from './SelectBox';
 
 const SelectTest: FC = () => {
   const options = [
