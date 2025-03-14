@@ -2,9 +2,9 @@ import { FC } from 'react';
 import Selectbox, { OptionType } from '../../../components/selectBox/SelectBox';
 
 interface CurrencySelectProps {
-  defaultValue: any;
-  onSelectCurrency: any;
+  defaultValue: OptionType;
   options: OptionType[];
+  onSelectCurrency: (selectedOptions: OptionType) => void;
 }
 const CurrencySelect: FC<CurrencySelectProps> = ({
   options,

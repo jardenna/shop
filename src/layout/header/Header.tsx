@@ -16,12 +16,12 @@ export interface Values {
 export interface HeaderProps {
   ariaLabel: string;
   currencyOptions: OptionType[];
-  defaultValue: any;
-  onSelectCurrency: any;
+  defaultValue: OptionType;
   primaryActionBtn: any;
   userDropdownList: DropdownItem[];
   values: Values;
   onChange: (event: ChangeInputType) => void;
+  onSelectCurrency: (selectedOptions: OptionType) => void;
 }
 const Header: FC<HeaderProps> = ({
   ariaLabel,

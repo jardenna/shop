@@ -48,7 +48,7 @@ const Layout: FC = () => {
 
   const dispatch = useAppDispatch();
 
-  function handleSubmit(values: any) {
+  function handleSubmit() {
     switchLanguage(values.languageOption);
     dispatch(setCurrency(values.currencyOption));
   }
@@ -110,8 +110,8 @@ const Layout: FC = () => {
         onChange={onChange}
         values={values}
         currencyOptions={currencyOptions}
-        onSelectCurrency={(selectedOptions: any) => {
-          handleSelectCurrency('currencyOption', selectedOptions as OptionType);
+        onSelectCurrency={(selectedOptions: OptionType) => {
+          handleSelectCurrency('currencyOption', selectedOptions);
         }}
       />
 
