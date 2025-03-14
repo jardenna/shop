@@ -4,7 +4,12 @@ import { HeaderProps } from '../../../layout/header/Header';
 
 type OmittedHeaderProps = Omit<
   HeaderProps,
-  'primaryActionBtn' | 'ariaLabel' | 'userDropdownList' | 'values' | 'onChange'
+  | 'primaryActionBtn'
+  | 'secondaryActionBtn'
+  | 'ariaLabel'
+  | 'userDropdownList'
+  | 'values'
+  | 'onChange'
 >;
 
 interface CurrencySelectProps extends OmittedHeaderProps {

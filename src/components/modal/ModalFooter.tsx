@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import LayoutElement from '../../layout/LayoutElement';
+import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import { PrimaryActionBtnProps, SecondaryActionBtnProps } from './Modal';
 
@@ -28,21 +29,21 @@ const ModalFooter: FC<modalFooterProps> = ({
   };
   return (
     <LayoutElement className="modal-footer" ariaLabel="dialog">
-      <Button
-        onClick={handlePrimaryBtnClick}
-        type={primaryActionBtn.buttonType}
-        className={primaryActionBtn.className || 'btn-danger'}
-      >
-        {primaryActionBtn.label}
-      </Button>
       {secondaryActionBtn && (
         <Button
           onClick={secondaryActionBtn.onClick || onCloseModal}
-          variant={secondaryActionBtn.variant}
+          variant={secondaryActionBtn.variant || BtnVariant.Secondary}
         >
           {secondaryActionBtn.label}
         </Button>
       )}
+      <Button
+        onClick={handlePrimaryBtnClick}
+        type={primaryActionBtn.buttonType}
+        className={primaryActionBtn.className}
+      >
+        {primaryActionBtn.label}
+      </Button>
     </LayoutElement>
   );
 };

@@ -4,10 +4,7 @@ import DropdownBtn from '../../components/dropdownBtn/DropdownBtn';
 import IconBtn from '../../components/IconBtn';
 import IconContent from '../../components/IconContent';
 import Icon, { IconName } from '../../components/icons/Icon';
-import {
-  PrimaryActionBtnProps,
-  SecondaryActionBtnProps,
-} from '../../components/modal/Modal';
+import { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
 import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
@@ -31,13 +28,10 @@ const HeaderIcons: FC<HeaderIconsProps> = ({
   currencyOptions,
   defaultValue,
   onSelectCurrency,
+  secondaryActionBtn,
 }) => {
   const { language } = useLanguage();
   const { currentUser } = useAuth();
-
-  const secondaryActionBtn: SecondaryActionBtnProps = {
-    label: language.cancel,
-  };
 
   const handleSearch = () => {
     console.log(12);

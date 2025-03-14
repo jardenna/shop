@@ -1,6 +1,7 @@
 import { FC, ReactNode } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router';
 import Icon, { IconName } from '../components/icons/Icon';
+import { SecondaryActionBtnProps } from '../components/modal/Modal';
 import { OptionType } from '../components/selectBox/SelectBox';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
@@ -54,6 +55,10 @@ const Layout: FC = () => {
     buttonType: 'submit',
   };
 
+  const secondaryActionBtn: SecondaryActionBtnProps = {
+    label: language.cancel,
+  };
+
   const userDropdownList = [
     {
       label: language.myAccount,
@@ -91,6 +96,7 @@ const Layout: FC = () => {
         ariaLabel={language.main}
         userDropdownList={userDropdownList}
         primaryActionBtn={primaryActionBtn}
+        secondaryActionBtn={secondaryActionBtn}
         defaultValue={{
           label: lang,
           value: lang,

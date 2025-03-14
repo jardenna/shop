@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { DropdownItem } from '../../components/dropdownBtn/DropdownBtn';
+import { SecondaryActionBtnProps } from '../../components/modal/Modal';
 import { OptionType } from '../../components/selectBox/SelectBox';
 import { SelectedLanguage } from '../../features/language/languageSlice';
 import { ChangeInputType } from '../../types/types';
@@ -18,6 +19,7 @@ export interface HeaderProps {
   currencyOptions: OptionType[];
   defaultValue: OptionType;
   primaryActionBtn: any;
+  secondaryActionBtn: SecondaryActionBtnProps;
   userDropdownList: DropdownItem[];
   values: Values;
   onChange: (event: ChangeInputType) => void;
@@ -32,6 +34,7 @@ const Header: FC<HeaderProps> = ({
   currencyOptions,
   onSelectCurrency,
   defaultValue,
+  secondaryActionBtn,
 }) => (
   <LayoutElement as="header" className="main-header" ariaLabel={ariaLabel}>
     <div className="container main-header-container">
@@ -45,6 +48,7 @@ const Header: FC<HeaderProps> = ({
         currencyOptions={currencyOptions}
         onSelectCurrency={onSelectCurrency}
         defaultValue={defaultValue}
+        secondaryActionBtn={secondaryActionBtn}
       />
     </div>
   </LayoutElement>
