@@ -21,12 +21,7 @@ const Layout: FC = () => {
   const { language, switchLanguage, selectedLanguage } = useLanguage();
   const navigate = useNavigate();
   const [logout] = useLogoutMutation();
-
-  const handleLogout = () => {
-    logout();
-    navigate(`/${MainPath.Login}`);
-  };
-
+  const isHomePage = location.pathname === '/';
   const { currencyOptions, onChangePrice, lang } = useCurrency();
 
   const initialState = {
@@ -48,13 +43,17 @@ const Layout: FC = () => {
     onChangePrice(values.currencyOption);
   }
 
+  const handleLogout = () => {
+    logout();
+    navigate(`/${MainPath.Login}`);
+  };
+
   const primaryActionBtn = {
     onClick: onSubmit,
     label: 'ok',
     buttonType: 'submit',
   };
 
-  const isHomePage = location.pathname === '/';
   const userDropdownList = [
     {
       label: language.myAccount,
