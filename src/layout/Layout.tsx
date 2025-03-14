@@ -1,8 +1,14 @@
 import { FC, ReactNode } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
 import Icon, { IconName } from '../components/icons/Icon';
+import { OptionType } from '../components/selectBox/SelectBox';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
+import {
+  selectCurrency,
+  setCurrency,
+} from '../features/currency/currencySlice';
 import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
 import Header from './header/Header';
@@ -16,6 +22,7 @@ export interface LayoutElementProps {
 
 const Layout: FC = () => {
   const location = useLocation();
+  const { rates } = useAppSelector(selectCurrency);
   const { language, switchLanguage, selectedLanguage } = useLanguage();
   const navigate = useNavigate();
   const [logout] = useLogoutMutation();
@@ -27,14 +34,24 @@ const Layout: FC = () => {
 
   const initialState = {
     languageOption: selectedLanguage,
+    currencyOption: '',
   };
 
-  const { onChange, onSubmit, values } = useFormValidation({
-    callback: (values) => {
-      switchLanguage(values.languageOption);
-    },
+  const { onChange, onSubmit, values, onCustomChange } = useFormValidation({
+    callback: handleSubmit,
     initialState,
   });
+
+  const handleSelectCurrency = (name: string, selectedOptions: OptionType) => {
+    onCustomChange(name, selectedOptions.value);
+  };
+
+  const dispatch = useAppDispatch();
+
+  function handleSubmit(values: any) {
+    switchLanguage(values.languageOption);
+    dispatch(setCurrency(values.currencyOption));
+  }
 
   const primaryActionBtn = {
     onClick: onSubmit,
@@ -73,6 +90,12 @@ const Layout: FC = () => {
     },
   ];
 
+  // Convert rates into SelectBox options
+  const currencyOptions = Object.keys(rates).map((currency) => ({
+    label: currency,
+    value: currency,
+  }));
+
   return (
     <div className="main-container">
       <SkipLink />
@@ -80,8 +103,16 @@ const Layout: FC = () => {
         ariaLabel={language.main}
         userDropdownList={userDropdownList}
         primaryActionBtn={primaryActionBtn}
+        defaultValue={{
+          label: 'DKK',
+          value: 'DKK',
+        }}
         onChange={onChange}
         values={values}
+        currencyOptions={currencyOptions}
+        onSelectCurrency={(selectedOptions: any) => {
+          handleSelectCurrency('currencyOption', selectedOptions as OptionType);
+        }}
       />
 
       <main id="main">

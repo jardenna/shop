@@ -30,6 +30,9 @@ const HeaderIcons: FC<HeaderIconsProps> = ({
   primaryActionBtn,
   onChange,
   values,
+  currencyOptions,
+  defaultValue,
+  onSelectCurrency,
 }) => {
   const { language } = useLanguage();
   const { currentUser } = useAuth();
@@ -100,7 +103,11 @@ const HeaderIcons: FC<HeaderIconsProps> = ({
                 onChange={onChange}
               />
             </FieldSet>
-            <CurrencySelect />
+            <CurrencySelect
+              options={currencyOptions}
+              defaultValue={defaultValue}
+              onSelectCurrency={onSelectCurrency}
+            />
           </ModalContainer>
         </li>
       </ul>
