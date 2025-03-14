@@ -3,6 +3,7 @@ import Selectbox, { OptionType } from '../../../components/selectBox/SelectBox';
 
 interface CurrencySelectProps {
   defaultValue: OptionType;
+  inputHasNoLabel: boolean;
   options: OptionType[];
   onSelectCurrency: (selectedOptions: OptionType) => void;
 }
@@ -11,15 +12,14 @@ const CurrencySelect: FC<CurrencySelectProps> = ({
   defaultValue,
   onSelectCurrency,
 }) => (
-  <section>
-    <Selectbox
-      id="currency"
-      defaultValue={defaultValue}
-      options={options}
-      onChange={onSelectCurrency}
-      name="currency"
-      labelText="Select currency"
-    />
-  </section>
+  <Selectbox
+    id="currency"
+    defaultValue={defaultValue}
+    options={options}
+    onChange={onSelectCurrency}
+    name="currency"
+    labelText="Currency"
+    inputHasNoLabel
+  />
 );
 export default CurrencySelect;
