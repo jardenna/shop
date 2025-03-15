@@ -46,7 +46,7 @@ const Layout: FC = () => {
 
   const handleLogout = () => {
     logout();
-    navigate(`/${MainPath.Login}`);
+    navigate(MainPath.Root);
   };
 
   const primaryActionBtn = {

@@ -18,7 +18,6 @@ interface DropdownBtnProps {
   ariaControls: string;
   children: ReactNode;
   dropdownList: DropdownItem[];
-  username: string;
   btnVariant?: BtnVariant;
 }
 

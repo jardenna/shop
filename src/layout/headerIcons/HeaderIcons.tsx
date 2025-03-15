@@ -51,7 +51,6 @@ const HeaderIcons: FC<HeaderIconsProps> = ({
         <li>
           {currentUser ? (
             <DropdownBtn
-              username={currentUser.username}
               dropdownList={userDropdownList}
               ariaControls="user-dropdown"
             >
