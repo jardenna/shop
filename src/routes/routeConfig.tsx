@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router';
-import AdminLayout from '../adminLayout/AdminLayout';
+import AdminLayout from '../admin/AdminLayout';
 import Layout from '../layout/Layout';
 import { MainPath } from '../layout/nav/enums';
 import About from '../pages/About';
