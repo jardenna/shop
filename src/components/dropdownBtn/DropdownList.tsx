@@ -57,13 +57,13 @@ const DropdownList: FC<DropdownListProps> = ({
     <div ref={ref}>
       <ul id={ariaControls} className="dropdown-list">
         {dropdownList.map(
-          ({ id, label, onClick, className = '', icon }, index) => (
+          ({ id, label, onClick, className = '', icon, btnVariant }, index) => (
             <li
               key={id}
               className={`dropdown-item ${className} ${index === selectedListItemIndex ? 'active' : ''}`}
             >
               <Button
-                variant={BtnVariant.Ghost}
+                variant={btnVariant || BtnVariant.Ghost}
                 onClick={onClick}
                 tabIndex={index === selectedListItemIndex ? 0 : -1}
                 ref={(el) => {
