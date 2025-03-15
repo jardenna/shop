@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { selectModalId } from '../../features/modalSlice';
 
+import useClickOutside from '../../hooks/useClickOutside';
 import useWindowDimensions from '../../hooks/useWindowDimensions ';
 import { BtnVariant, PopupRole, SizeVariant } from '../../types/enums';
 import { BtnType } from '../../types/types';
@@ -61,6 +62,10 @@ const Modal: React.FC<ModalProps> = ({
     modalId === id,
     handleCloseModal,
   );
+
+  useClickOutside(modalRef, () => {
+    handleClosePopup();
+  }, [modalRef]);
 
   if (!modalId) {
     return null;
