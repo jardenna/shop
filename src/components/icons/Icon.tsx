@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import AccountIcon from './AccountIcon';
 import AddIcon from './AddIcon';
+import AdminIcon from './AdminIcon';
 import ArrowDownIcon from './ArrowDownIcon';
 import ArrowUpIcon from './ArrowUpIcon';
 import AuthIcon from './AuthIcon';
@@ -49,6 +50,7 @@ interface IconProps extends IconDefaultProps {
 export enum IconName {
   Account = 'account',
   Add = 'add',
+  Admin = 'admin',
   ArrowDown = 'arrowDown',
   ArrowUp = 'arrowUp',
   Auth = 'auth',
@@ -86,6 +88,7 @@ export enum IconName {
 const iconMapping = {
   account: AccountIcon,
   add: AddIcon,
+  admin: AdminIcon,
   arrowDown: ArrowDownIcon,
   arrowUp: ArrowUpIcon,
   auth: AuthIcon,
