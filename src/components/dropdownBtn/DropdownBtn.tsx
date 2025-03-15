@@ -10,6 +10,7 @@ import DropdownList from './DropdownList';
 export interface DropdownItem {
   id: number;
   label: string;
+  btnVariant?: BtnVariant;
   className?: string;
   icon?: ReactNode;
   onClick: () => void;

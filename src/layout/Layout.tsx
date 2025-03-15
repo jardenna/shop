@@ -5,6 +5,7 @@ import { SecondaryActionBtnProps } from '../components/modal/Modal';
 import { OptionType } from '../components/selectBox/SelectBox';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
+import useAuth from '../features/auth/hooks/useAuth';
 import useCurrency from '../features/currency/useCurrency';
 import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
@@ -19,9 +20,10 @@ export interface LayoutElementProps {
 
 const Layout: FC = () => {
   const location = useLocation();
-  const { language, switchLanguage, selectedLanguage } = useLanguage();
   const navigate = useNavigate();
+  const { language, switchLanguage, selectedLanguage } = useLanguage();
   const [logout] = useLogoutMutation();
+  const { currentUser } = useAuth();
   const isHomePage = location.pathname === '/';
   const { currencyOptions, onChangePrice, lang } = useCurrency();
 
@@ -81,10 +83,13 @@ const Layout: FC = () => {
       },
     },
     {
-      label: language.logout,
+      label: currentUser ? language.logout : language.login,
       id: 3,
-      onClick: handleLogout,
-      className: 'logout',
+      onClick: currentUser
+        ? handleLogout
+        : () => {
+            navigate(`/${MainPath.Login}`);
+          },
       icon: <Icon iconName={IconName.Logout} title={language.logout} />,
     },
   ];

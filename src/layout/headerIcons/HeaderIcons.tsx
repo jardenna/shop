@@ -6,7 +6,6 @@ import IconContent from '../../components/IconContent';
 import Icon, { IconName } from '../../components/icons/Icon';
 import { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
-import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
 import { BtnVariant, SizeVariant } from '../../types/enums';
 import { HeaderProps } from '../header/Header';
@@ -31,7 +30,6 @@ const HeaderIcons: FC<HeaderIconsProps> = ({
   secondaryActionBtn,
 }) => {
   const { language } = useLanguage();
-  const { currentUser } = useAuth();
 
   const handleSearch = () => {
     console.log(12);
@@ -49,26 +47,16 @@ const HeaderIcons: FC<HeaderIconsProps> = ({
           />
         </li>
         <li>
-          {currentUser ? (
-            <DropdownBtn
-              dropdownList={userDropdownList}
-              ariaControls="user-dropdown"
-            >
-              <IconContent
-                ariaLabel={language.myAccount}
-                iconName={IconName.User}
-                title={language.user}
-              />
-            </DropdownBtn>
-          ) : (
-            <Link to={MainPath.Login}>
-              <IconContent
-                ariaLabel={language.myAccount}
-                iconName={IconName.User}
-                title={language.user}
-              />
-            </Link>
-          )}
+          <DropdownBtn
+            dropdownList={userDropdownList}
+            ariaControls="user-dropdown"
+          >
+            <IconContent
+              ariaLabel={language.myAccount}
+              iconName={IconName.User}
+              title={language.user}
+            />
+          </DropdownBtn>
         </li>
         <li>
           <Link to={MainPath.ShoppingCart} className="btn btn-ghost">
