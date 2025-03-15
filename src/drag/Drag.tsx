@@ -1,45 +1,32 @@
-import { FC, ReactNode, useEffect, useState } from 'react';
+import {
+  FC,
+  MouseEvent,
+  PointerEvent,
+  ReactNode,
+  useEffect,
+  useState,
+} from 'react';
 
 interface DragProps {
   children: ReactNode;
   className?: string;
-  style?: any;
-  onDragMove: (e: React.MouseEvent<HTMLDivElement>) => void;
-  onPointerDown?: () => void;
-
-  onPointerUp?: () => void;
+  onDragMove: (event: MouseEvent<HTMLDivElement>) => void;
 }
 
-const Drag: FC<DragProps> = ({
-  onPointerDown,
-  onPointerUp,
-
-  onDragMove,
-  children,
-  style,
-  className,
-}) => {
+const Drag: FC<DragProps> = ({ onDragMove, children, className }) => {
   const [isDragging, setIsDragging] = useState(false);
 
   const handlePointerDown = () => {
     setIsDragging(true);
-
-    if (onPointerDown) {
-      onPointerDown();
-    }
   };
 
   const handlePointerUp = () => {
     setIsDragging(false);
-
-    if (onPointerUp) {
-      onPointerUp();
-    }
   };
 
-  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+  const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
     if (isDragging) {
-      onDragMove(e);
+      onDragMove(event);
     }
   };
 
@@ -55,7 +42,6 @@ const Drag: FC<DragProps> = ({
     <div
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
-      style={style}
       className={className}
     >
       {children}
