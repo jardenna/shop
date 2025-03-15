@@ -7,6 +7,7 @@ import { ChangeInputType } from '../../types/types';
 import HeaderIcons from '../headerIcons/HeaderIcons';
 import LayoutElement from '../LayoutElement';
 import Nav from '../nav/Nav';
+import { navList } from '../nav/navList';
 import './_header.scss';
 import Logo from './Logo';
 
@@ -40,7 +41,7 @@ const Header: FC<HeaderProps> = ({
   <LayoutElement as="header" className="main-header" ariaLabel={ariaLabel}>
     <div className="container main-header-container">
       <Logo />
-      <Nav />
+      <Nav navList={navList} />
       <HeaderIcons
         userDropdownList={userDropdownList}
         primaryActionBtn={primaryActionBtn}

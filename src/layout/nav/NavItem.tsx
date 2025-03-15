@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { NavLink } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
-import { NavItemsProps } from './NavItemList';
+import { NavItemsProps } from './Nav';
 
 interface NavItemProps {
   navItem: NavItemsProps;

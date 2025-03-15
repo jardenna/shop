@@ -30,7 +30,7 @@ const authItemsList = [
   },
 ];
 
-const adminItemsList = [
+const adminNavList = [
   {
     path: MainPath.Dashboard,
     linkText: LinkText.Dashboard,
@@ -57,4 +57,4 @@ const adminItemsList = [
   },
 ];
 
-export { adminItemsList, authItemsList, navList };
+export { adminNavList, authItemsList, navList };

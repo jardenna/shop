@@ -1,12 +1,7 @@
 import { FC } from 'react';
 import LayoutElement from '../LayoutElement';
-import { LinkText, MainPath } from './enums';
+import { NavItemsProps } from './Nav';
 import NavItem from './NavItem';
-
-export interface NavItemsProps {
-  linkText: LinkText;
-  path: MainPath;
-}
 
 interface NavItemListProps {
   ariaLabel: string;

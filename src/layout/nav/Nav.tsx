@@ -2,8 +2,13 @@ import { FC } from 'react';
 
 import useLanguage from '../../features/language/useLanguage';
 import './_nav.scss';
+import { LinkText, MainPath } from './enums';
 import NavItemList from './NavItemList';
-import { navList } from './navList';
+
+export interface NavItemsProps {
+  linkText: LinkText;
+  path: MainPath;
+}
 
 export interface ActionBtnProps {
   ariaLabel?: string;
@@ -12,7 +17,11 @@ export interface ActionBtnProps {
   onClick?: () => void;
 }
 
-const Nav: FC = () => {
+interface NavProps {
+  navList: NavItemsProps[];
+}
+
+const Nav: FC<NavProps> = ({ navList }) => {
   const { language } = useLanguage();
 
   return (

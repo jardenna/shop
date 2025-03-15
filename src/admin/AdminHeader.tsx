@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import Logo from '../../layout/header/Logo';
-import LayoutElement from '../../layout/LayoutElement';
+import Logo from '../layout/header/Logo';
+import LayoutElement from '../layout/LayoutElement';
 
 interface AdminHeaderProps {
   ariaLabel: string;

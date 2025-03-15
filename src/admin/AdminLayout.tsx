@@ -2,7 +2,9 @@ import { FC } from 'react';
 import { Outlet } from 'react-router';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import useLanguage from '../features/language/useLanguage';
-import AdminHeader from './header/AdminHeader';
+import Nav from '../layout/nav/Nav';
+import AdminHeader from './AdminHeader';
+import { adminNavList } from '../layout/nav/navList';
 
 const AdminLayout: FC = () => {
   const { language } = useLanguage();
@@ -12,9 +14,7 @@ const AdminLayout: FC = () => {
       <AdminHeader ariaLabel={language.main} />
       <main id="main" className="main">
         <aside className="aside">
-          <nav className="main-nav">
-            <div className="container">nav</div>
-          </nav>
+          <Nav navList={adminNavList} />
         </aside>
         <div className="container">
           <Outlet />
