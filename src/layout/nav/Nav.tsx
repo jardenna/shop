@@ -1,4 +1,5 @@
 import { FC } from 'react';
+
 import useLanguage from '../../features/language/useLanguage';
 import './_nav.scss';
 import NavItemList from './NavItemList';
@@ -13,30 +14,6 @@ export interface ActionBtnProps {
 
 const Nav: FC = () => {
   const { language } = useLanguage();
-
-  // const getTitle = (pathname: string): string => {
-  //   if (pathname === `/${MainPath.Records}`) {
-  //     return language.albums;
-  //   }
-  //   if (pathname === `/${MainPath.Create}`) {
-  //     return language.createAlbum;
-  //   }
-  //   if (pathname.includes(`/${MainPath.Details}`)) {
-  //     return language.details;
-  //   }
-  //   if (pathname.includes(`/${MainPath.Update}`)) {
-  //     return language.updateAlbum;
-  //   }
-  //   if (pathname === MainPath.Root) {
-  //     return language.home;
-  //   }
-  //   if (pathname === `/${MainPath.Login}`) {
-  //     return language.login;
-  //   }
-  //   return '';
-  // };
-
-  // const title = getTitle(location.pathname);
 
   return (
     <section className="main-nav">

@@ -11,6 +11,7 @@ import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
 import Header from './header/Header';
 import { MainPath } from './nav/enums';
+import MetaTags from './nav/MetaTags';
 
 export interface LayoutElementProps {
   ariaLabel: string;
@@ -114,6 +115,7 @@ const Layout: FC = () => {
 
   return (
     <div className="main-container">
+      <MetaTags />
       <SkipLink />
       <Header
         ariaLabel={language.main}
