@@ -1,5 +1,9 @@
 export enum MainPath {
   About = 'about',
+  AdminCategories = 'admin-categories',
+  AdminOrders = 'admin-orders',
+  AdminProducts = 'admin-products',
+  AdminProfile = 'admin-profile',
   Collection = 'collection',
   Contact = 'contact',
   Dashboard = 'dashboard',
@@ -8,18 +12,23 @@ export enum MainPath {
   MyAccount = 'myAccount',
   Orders = 'orders',
   Root = '/',
-  ShoppingCart = 'shoppingCart',
+  ShoppingCart = 'shopping-cart',
   Signup = 'signup',
   Users = 'users',
 }
 
 export enum LinkText {
   About = 'about',
+  Categories = 'categories',
   Collection = 'collection',
   Contact = 'contact',
+  Dashboard = 'dashboard',
   Home = 'home',
   Login = 'login',
   MyAccount = 'myAccount',
   Orders = 'orders',
+  Products = 'products',
+  Profile = 'profile',
   Signup = 'signup',
+  Users = 'users',
 }

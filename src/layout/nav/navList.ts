@@ -30,4 +30,31 @@ const authItemsList = [
   },
 ];
 
-export { authItemsList, navList };
+const adminItemsList = [
+  {
+    path: MainPath.Dashboard,
+    linkText: LinkText.Dashboard,
+  },
+  {
+    path: MainPath.Users,
+    linkText: LinkText.Users,
+  },
+  {
+    path: MainPath.AdminProfile,
+    linkText: LinkText.Profile,
+  },
+  {
+    path: MainPath.AdminProducts,
+    linkText: LinkText.Products,
+  },
+  {
+    path: MainPath.AdminCategories,
+    linkText: LinkText.Categories,
+  },
+  {
+    path: MainPath.AdminOrders,
+    linkText: LinkText.Orders,
+  },
+];
+
+export { adminItemsList, authItemsList, navList };

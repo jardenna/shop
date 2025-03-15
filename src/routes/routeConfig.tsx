@@ -5,7 +5,11 @@ import { MainPath } from '../layout/nav/enums';
 import About from '../pages/About';
 import MyAccount from '../pages/account/MyAccount';
 import Orders from '../pages/account/Orders';
+import CategoryPage from '../pages/admin/CategoryPage';
 import Dashboard from '../pages/admin/Dashboard';
+import OrderPage from '../pages/admin/OrderPage';
+import ProductPage from '../pages/admin/ProductPage';
+import ProfilePage from '../pages/admin/ProfilePage';
 import UsersPage from '../pages/admin/UsersPage';
 import Collections from '../pages/Collections';
 import Contact from '../pages/Contact';
@@ -79,7 +83,7 @@ const routeConfig = createBrowserRouter([
     children: [
       {
         path: MainPath.Dashboard,
-        element: <AdminLayout />, // Separate layout for protected routes
+        element: <AdminLayout />,
         children: [
           {
             index: true,
@@ -88,6 +92,22 @@ const routeConfig = createBrowserRouter([
           {
             path: MainPath.Users,
             element: <UsersPage />,
+          },
+          {
+            path: MainPath.AdminProfile,
+            element: <ProfilePage />,
+          },
+          {
+            path: MainPath.AdminProducts,
+            element: <ProductPage />,
+          },
+          {
+            path: MainPath.AdminCategories,
+            element: <CategoryPage />,
+          },
+          {
+            path: MainPath.AdminOrders,
+            element: <OrderPage />,
           },
         ],
       },

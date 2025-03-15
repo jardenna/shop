@@ -5,6 +5,7 @@ additionalInfo;Additional info;Supplerende information
 bag;Bag;Indkøbskurv
 cancel;Cancel;Annuller
 cannotDeleteAdmin;Cannot delete admin user;Admin bruger kan ikke slettes
+categories;Categories;Kategorier
 close;Close;Luk
 closeDialog;Close dialog;Luk dialog
 collection;Collection;Kollektion
@@ -14,6 +15,7 @@ createAccount;Create account;Opret konto
 criterionMet;Criterion met;Kriterium opfyldt
 criterionNotMet;Criterion not met;Kriterium ikke opfyldt
 currency;Currency;Valuta
+dashboard;Dashboard;Dashboard
 email;Email;E-mail
 error;Error;Fejl
 errorAltText;A really guilty emoji;En meget skyldig emoji
@@ -45,7 +47,7 @@ main;Main;Primær
 menu;Menu;Menu
 minLength;At least 8 characters;Mindst 8 tegn
 mustHaveLowercase;At least one lowercase letter;Mindst ét lille bogstav
-mustHaveNumber;Atleast one number;Mindst ét tal
+mustHaveNumber;At least one number;Mindst ét tal
 mustHaveSymbol;At least one special character;Mindst ét specialtegn
 mustHaveUppercase;At least one uppercase letter;Mindst ét stort bogstav
 myAccount;My account;Min brugerkonto
@@ -57,6 +59,7 @@ notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin
 notAuthorizedNoToken;Not authorized, no token;Ikke autoriseret, ingen token
 notAuthorizedTokenFailed;Not authorized, token failed;Ikke autoriseret, token mislykkedes
 noUser;User not found. Please sign up first;Bruger ikke fundet. Opret dig først
+orders;Orders;Ordrer
 password;Password;Adgangskode
 passwordDoNotMatch;The passwords do not match;Adgangskoderne stemmer ikke overens
 passwordLowercase;Password should contain at least one lowercase letter;Adgangskoden skal indeholde mindst ét lille bogstav
@@ -71,6 +74,8 @@ pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
 pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
 pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
 preferences;Preferences;Præferencer
+products;Products;Produkter
+profile;Profile;Profil
 retry;Retry;Forsøg igen
 search;Search;Søg
 selectCurrency;Select Currency;Vælg valuta
@@ -85,6 +90,7 @@ sub;Sub;Sekundær
 success;Success;Succes
 updatePreferences;Update Preferences;Opdater præferencer
 user;User;Bruger
+users;Users;Brugere
 userAlreadyExist;A profile with this email already exists. Try logging in instead;Der findes en profil med denne e-mail. Prøv at logge ind i stedet
 userDeleted;User deleted;Bruger slettet
 userInfo;User info;Bruger info
