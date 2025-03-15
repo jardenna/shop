@@ -1,5 +1,6 @@
 ﻿key;en;da
 about;About;Profil
+admin;Admin;Admin
 additionalInfo;Additional info;Supplerende information
 bag;Bag;Indkøbskurv
 cancel;Cancel;Annuller
@@ -33,6 +34,7 @@ invalidPassword;Invalid password;Ugyldig adgangskode
 invalidUserData;Invalid user data;Ugyldig bruger data
 language;Language;Sprog
 loading;Loading;Loading
+lock;Lock;Hængelås
 loggedOut;Logged out successfully;Logget ud
 login;Log in;Log ind
 loginFailed;Login failed;Login mislykkedes

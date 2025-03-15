@@ -27,6 +27,8 @@ const Layout: FC = () => {
   const isHomePage = location.pathname === '/';
   const { currencyOptions, onChangePrice, lang } = useCurrency();
 
+  console.log(currentUser);
+
   const initialState = {
     languageOption: selectedLanguage,
     currencyOption: lang,
@@ -64,27 +66,46 @@ const Layout: FC = () => {
   const userDropdownList = [
     {
       label: language.myAccount,
-      id: 1,
+      id: 10,
       onClick: () => {
-        navigate(`/${MainPath.MyAccount}`);
+        if (currentUser) {
+          navigate(`/${MainPath.MyAccount}`);
+        } else {
+          navigate(`/${MainPath.Login}`);
+        }
       },
       icon: (
         <Icon iconName={IconName.Auth} title={language.myAccount} size="30" />
       ),
+      hide: currentUser?.isAdmin,
     },
     {
       label: language.myOrders,
-      id: 2,
+      id: 20,
       icon: (
         <Icon iconName={IconName.Account} title={language.myOrders} size="30" />
       ),
       onClick: () => {
+        if (currentUser) {
+          navigate(`/${MainPath.Orders}`);
+        } else {
+          navigate(`/${MainPath.Login}`);
+        }
+      },
+      hide: currentUser?.isAdmin,
+    },
+    {
+      label: language.admin,
+      id: 30,
+      icon: <Icon iconName={IconName.Admin} title={language.lock} />,
+      onClick: () => {
         navigate(`/${MainPath.Orders}`);
       },
+      hide: !currentUser?.isAdmin,
     },
     {
       label: currentUser ? language.logout : language.login,
-      id: 3,
+      id: 40,
       onClick: currentUser
         ? handleLogout
         : () => navigate(`/${MainPath.Login}`),
