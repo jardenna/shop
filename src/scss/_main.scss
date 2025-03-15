@@ -58,36 +58,6 @@ h2 {
   font-weight: normal;
 }
 
-.page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  .page-title {
-    width: 100%;
-    font-size: 1.5rem;
-    font-family: felix, sans-serif;
-    font-weight: normal;
-    color: #66606d;
-    margin: 0;
-    margin-bottom: 22px;
-    letter-spacing: 3px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    &::after {
-      content: '';
-      display: flex;
-      margin-left: 8px;
-      width: 80%;
-      border-bottom: 2px solid #262526;
-      border-radius: 4px;
-      max-width: 59px;
-    }
-  }
-}
-
 img {
   width: 100%;
 }

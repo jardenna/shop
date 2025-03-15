@@ -25,6 +25,7 @@ export interface HeaderProps {
   onChange: (event: ChangeInputType) => void;
   onSelectCurrency: (selectedOptions: OptionType) => void;
 }
+
 const Header: FC<HeaderProps> = ({
   ariaLabel,
   userDropdownList,
@@ -53,4 +54,5 @@ const Header: FC<HeaderProps> = ({
     </div>
   </LayoutElement>
 );
+
 export default Header;
