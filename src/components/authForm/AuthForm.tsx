@@ -119,13 +119,14 @@ const AuthForm: FC<AuthFormProps> = ({
             />
           )}
         </FieldSet>
-        <Button
-          onClick={() => navigate(`/${navigateTo}`)}
-          variant={BtnVariant.Ghost}
-          className="auth-btn"
-        >
-          {navigateToText}
-        </Button>
+        <div className="auth-btn">
+          <Button
+            onClick={() => navigate(`/${navigateTo}`)}
+            variant={BtnVariant.Ghost}
+          >
+            {navigateToText}
+          </Button>
+        </div>
       </Form>
     </>
   );
