@@ -10,6 +10,7 @@ export enum MainPath {
   Root = '/',
   ShoppingCart = 'shoppingCart',
   Signup = 'signup',
+  Users = 'users',
 }
 
 export enum LinkText {

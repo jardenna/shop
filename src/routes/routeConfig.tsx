@@ -1,10 +1,12 @@
 import { createBrowserRouter } from 'react-router';
 import Layout from '../layout/Layout';
+import AdminLayout from '../layout/nav/AdminLayout';
 import { MainPath } from '../layout/nav/enums';
 import About from '../pages/About';
 import MyAccount from '../pages/account/MyAccount';
 import Orders from '../pages/account/Orders';
 import Dashboard from '../pages/admin/Dashboard';
+import UsersPage from '../pages/admin/UsersPage';
 import Collections from '../pages/Collections';
 import Contact from '../pages/Contact';
 import ErrorPage from '../pages/ErrorPage';
@@ -18,7 +20,7 @@ const routeConfig = createBrowserRouter([
   {
     path: MainPath.Root,
     errorElement: <ErrorPage />,
-    element: <Layout />,
+    element: <Layout />, // Public layout
     children: [
       {
         index: true,
@@ -57,15 +59,6 @@ const routeConfig = createBrowserRouter([
         element: <ShoppingChart />,
       },
 
-      // {
-      //   element: <MyAccount />,
-      //   children: [
-      //     {
-      //       index: true,
-      //       element: <Orders />,
-      //     },
-      //   ],
-      // },
       {
         element: <ProtectedRoute />,
         children: [
@@ -76,6 +69,25 @@ const routeConfig = createBrowserRouter([
           {
             path: MainPath.Dashboard,
             element: <Dashboard />,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    element: <ProtectedRoute />, // Ensure only authenticated users access
+    children: [
+      {
+        path: MainPath.Dashboard,
+        element: <AdminLayout />, // Separate layout for protected routes
+        children: [
+          {
+            index: true,
+            element: <Dashboard />,
+          },
+          {
+            path: MainPath.Users,
+            element: <UsersPage />,
           },
         ],
       },
