@@ -1,4 +1,5 @@
-import { FC, ReactNode, useRef, useState } from 'react';
+import { FC, ReactNode, useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router';
 import useClickOutside from '../../hooks/useClickOutside';
 import useKeyPress from '../../hooks/useKeyPress';
 import { BtnVariant, KeyCode } from '../../types/enums';
@@ -27,6 +28,7 @@ const DropdownBtn: FC<DropdownBtnProps> = ({
   ariaControls,
   children,
 }) => {
+  const location = useLocation();
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const [dropdownIsOpen, setDropdownIsOpen] = useState(false);
 
@@ -42,6 +44,10 @@ const DropdownBtn: FC<DropdownBtnProps> = ({
   useClickOutside(dropdownRef, () => {
     setDropdownIsOpen(false);
   }, [buttonRef]);
+
+  useEffect(() => {
+    setDropdownIsOpen(false);
+  }, [location]);
 
   return (
     <div className="dropdown-container">
