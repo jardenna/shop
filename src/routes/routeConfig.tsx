@@ -4,6 +4,7 @@ import { MainPath } from '../layout/nav/enums';
 import About from '../pages/About';
 import MyAccount from '../pages/account/MyAccount';
 import Orders from '../pages/account/Orders';
+import Dashboard from '../pages/admin/Dashboard';
 import Collections from '../pages/Collections';
 import Contact from '../pages/Contact';
 import ErrorPage from '../pages/ErrorPage';
@@ -70,7 +71,11 @@ const routeConfig = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <div>protected</div>,
+            element: <Dashboard />,
+          },
+          {
+            path: MainPath.Dashboard,
+            element: <Dashboard />,
           },
         ],
       },

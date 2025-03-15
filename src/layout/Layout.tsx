@@ -27,8 +27,6 @@ const Layout: FC = () => {
   const isHomePage = location.pathname === '/';
   const { currencyOptions, onChangePrice, lang } = useCurrency();
 
-  console.log(currentUser);
-
   const initialState = {
     languageOption: selectedLanguage,
     currencyOption: lang,
@@ -86,11 +84,7 @@ const Layout: FC = () => {
         <Icon iconName={IconName.Account} title={language.myOrders} size="30" />
       ),
       onClick: () => {
-        if (currentUser) {
-          navigate(`/${MainPath.Orders}`);
-        } else {
-          navigate(`/${MainPath.Login}`);
-        }
+        navigate(`/${MainPath.Orders}`);
       },
       hide: currentUser?.isAdmin,
     },
@@ -99,7 +93,7 @@ const Layout: FC = () => {
       id: 30,
       icon: <Icon iconName={IconName.Admin} title={language.lock} />,
       onClick: () => {
-        navigate(`/${MainPath.Orders}`);
+        navigate(`/${MainPath.Dashboard}`);
       },
       hide: !currentUser?.isAdmin,
     },

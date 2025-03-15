@@ -1,14 +1,13 @@
 import React from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router';
+import { useCheckAuthQuery } from '../features/auth/authApiSlice';
 import { MainPath } from '../layout/nav/enums';
 
 const ProtectedRoute: React.FC = () => {
   const location = useLocation();
+  const { data: userProfile, isLoading } = useCheckAuthQuery();
 
-  const isLoading = false;
-
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  if (!isLoading) {
+  if (!isLoading && !userProfile) {
     return <Navigate to={MainPath.Login} state={{ from: location }} replace />;
   }
 

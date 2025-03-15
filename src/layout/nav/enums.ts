@@ -2,6 +2,7 @@ export enum MainPath {
   About = 'about',
   Collection = 'collection',
   Contact = 'contact',
+  Dashboard = 'dashboard',
   Home = 'home',
   Login = 'login',
   MyAccount = 'myAccount',
