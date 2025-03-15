@@ -21,6 +21,7 @@ import GridLargeIcon from './GridLargeIcon';
 import GridSmallIcon from './GridSmallIcon';
 import InfoIcon from './InfoIcon';
 import LanguageIcon from './LanguageIcon';
+import LoginIcon from './LoginIcon';
 import Logo from './Logo';
 import LogoutIcon from './LogoutIcon';
 import MoreIcon from './MoreIcon';
@@ -68,6 +69,7 @@ export enum IconName {
   GridSmall = 'gridSmall',
   Info = 'info',
   Language = 'language',
+  Login = 'login',
   Logo = 'logo',
   Logout = 'logout',
   More = 'more',
@@ -104,6 +106,7 @@ const iconMapping = {
   gridLarge: GridLargeIcon,
   info: InfoIcon,
   language: LanguageIcon,
+  login: LoginIcon,
   logo: Logo,
   logout: LogoutIcon,
   more: MoreIcon,

@@ -87,10 +87,13 @@ const Layout: FC = () => {
       id: 3,
       onClick: currentUser
         ? handleLogout
-        : () => {
-            navigate(`/${MainPath.Login}`);
-          },
-      icon: <Icon iconName={IconName.Logout} title={language.logout} />,
+        : () => navigate(`/${MainPath.Login}`),
+      icon: (
+        <Icon
+          iconName={currentUser ? IconName.Logout : IconName.Login}
+          title={currentUser ? language.logout : language.login}
+        />
+      ),
     },
   ];
 
