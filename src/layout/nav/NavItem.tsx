@@ -8,21 +8,20 @@ interface NavItemProps {
   navItem: NavItemsProps;
 }
 
-const NavItem: FC<NavItemProps> = ({ navItem }) => {
+const NavItem: FC<NavItemProps> = ({
+  navItem: { path, iconName, linkText },
+}) => {
   const { language } = useLanguage();
 
   return (
-    <li key={navItem.linkText}>
-      <NavLink to={navItem.path} className="nav-item">
-        {navItem.iconName && (
+    <li>
+      <NavLink to={path} className="nav-item">
+        {iconName && (
           <span>
-            <Icon
-              iconName={navItem.iconName}
-              title={language[navItem.linkText]}
-            />
+            <Icon iconName={iconName} title={language[linkText]} />
           </span>
         )}
-        <span>{language[navItem.linkText]}</span>
+        <span>{language[linkText]}</span>
       </NavLink>
     </li>
   );
