@@ -41,16 +41,11 @@
 
   .aside,
   .main-nav {
-    min-width: 200px;
+    min-width: rem(300px);
   }
 
   .aside {
     position: relative;
-  }
-
-  .main-nav {
-    position: fixed;
-    height: 100%;
     background-color: #f4f4f5;
   }
 }

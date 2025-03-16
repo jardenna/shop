@@ -36,10 +36,6 @@ const adminNavList = [
     linkText: LinkText.Dashboard,
   },
   {
-    path: MainPath.Users,
-    linkText: LinkText.Users,
-  },
-  {
     path: MainPath.AdminProfile,
     linkText: LinkText.Profile,
   },
@@ -50,6 +46,10 @@ const adminNavList = [
   {
     path: MainPath.AdminCategories,
     linkText: LinkText.Categories,
+  },
+  {
+    path: MainPath.Users,
+    linkText: LinkText.Users,
   },
   {
     path: MainPath.AdminOrders,

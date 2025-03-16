@@ -1,3 +1,5 @@
+@use '../../scss/globals' as *;
+
 .nav-list {
   display: flex;
   gap: 18px;
@@ -13,6 +15,34 @@
       color: #66606d;
       padding-bottom: 4px;
       border-bottom: 2px solid currentcolor;
+    }
+  }
+}
+
+.admin-nav {
+  position: fixed;
+  height: 100%;
+
+  .nav-list {
+    flex-direction: column;
+    gap: 0;
+    padding-top: 28px;
+
+    .nav-item {
+      font-size: rem(16px);
+      text-transform: none;
+      width: 100%;
+      display: flex;
+      padding: 20px;
+
+      @include transition;
+
+      &:hover,
+      &.active {
+        background-color: #66606d;
+        color: #fff;
+        border: 0;
+      }
     }
   }
 }

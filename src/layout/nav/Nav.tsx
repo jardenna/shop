@@ -19,13 +19,14 @@ export interface ActionBtnProps {
 
 interface NavProps {
   navList: NavItemsProps[];
+  className?: string;
 }
 
-const Nav: FC<NavProps> = ({ navList }) => {
+const Nav: FC<NavProps> = ({ navList, className = '' }) => {
   const { language } = useLanguage();
 
   return (
-    <section className="main-nav">
+    <section className={`main-nav ${className}`}>
       <NavItemList navItemsList={navList} ariaLabel={language.main} />
     </section>
   );
