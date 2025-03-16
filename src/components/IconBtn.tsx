@@ -1,8 +1,7 @@
 import { FC } from 'react';
-import { BtnVariant } from '../types/enums';
+import { BtnVariant, IconName } from '../types/enums';
 import Button from './Button';
 import IconContent from './IconContent';
-import { IconName } from './icons/Icon';
 
 interface IconBtnProps {
   ariaLabel: string;

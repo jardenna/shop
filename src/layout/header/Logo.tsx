@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Link } from 'react-router';
-import Icon, { IconName } from '../../components/icons/Icon';
+import Icon from '../../components/icons/Icon';
+import { IconName } from '../../types/enums';
 import { MainPath } from '../nav/enums';
 
 interface LogoProps {

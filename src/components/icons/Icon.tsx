@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { IconName } from '../../types/enums';
 import AccountIcon from './AccountIcon';
 import AddIcon from './AddIcon';
 import AdminIcon from './AdminIcon';
@@ -45,44 +46,6 @@ export interface IconDefaultProps {
 
 interface IconProps extends IconDefaultProps {
   iconName: IconName;
-}
-
-export enum IconName {
-  Account = 'account',
-  Add = 'add',
-  Admin = 'admin',
-  ArrowDown = 'arrowDown',
-  ArrowUp = 'arrowUp',
-  Auth = 'auth',
-  ChevronDown = 'chevronDown',
-  ChevronLeft = 'chevronLeft',
-  ChevronRight = 'chevronRight',
-  ChevronsLeft = 'chevronsLeft',
-  ChevronsRight = 'chevronsRight',
-  ChevronUp = 'chevronUp',
-  Close = 'close',
-  Edit = 'edit',
-  Error = 'error',
-  Eye = 'eye',
-  EyeOff = 'eyeOff',
-  Filter = 'filter',
-  Grid = 'grid',
-  GridLarge = 'gridLarge',
-  GridSmall = 'gridSmall',
-  Info = 'info',
-  Language = 'language',
-  Login = 'login',
-  Logo = 'logo',
-  Logout = 'logout',
-  More = 'more',
-  Search = 'search',
-  ShoppingBack = 'shoppingBack',
-  Subtract = 'subtract',
-  Success = 'success',
-  Trash = 'trach',
-  Undo = 'undo',
-  User = 'user',
-  Warning = 'warning',
 }
 
 const iconMapping = {

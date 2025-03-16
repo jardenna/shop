@@ -1,8 +1,8 @@
 import { FC, useState } from 'react';
 import useLanguage from '../../../features/language/useLanguage';
-import { BtnVariant } from '../../../types/enums';
+import { BtnVariant, IconName } from '../../../types/enums';
 import Button from '../../Button';
-import Icon, { IconName } from '../../icons/Icon';
+import Icon from '../../icons/Icon';
 import Input, { InputProps } from '../Input';
 import './_password-input.scss';
 import PasswordPopupList, { PasswordRulesProps } from './PasswordPopupList';

@@ -4,9 +4,9 @@ import {
   MessagePopup,
   MessagePopupTypes,
 } from '../../features/messagePopupSlice';
-import { PopupRole } from '../../types/enums';
+import { IconName, PopupRole } from '../../types/enums';
 import BtnClose from '../BtnClose';
-import Icon, { IconName } from '../icons/Icon';
+import Icon from '../icons/Icon';
 import useMessagePopup from './useMessagePopup';
 
 interface MessagePopupListItemProps {

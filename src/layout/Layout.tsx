@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router';
-import Icon, { IconName } from '../components/icons/Icon';
+import Icon from '../components/icons/Icon';
 import { SecondaryActionBtnProps } from '../components/modal/Modal';
 import { OptionType } from '../components/selectBox/SelectBox';
 import SkipLink from '../components/skipLinks/SkipLinks';
@@ -9,6 +9,7 @@ import useAuth from '../features/auth/hooks/useAuth';
 import useCurrency from '../features/currency/useCurrency';
 import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
+import { IconName } from '../types/enums';
 import Header from './header/Header';
 import { MainPath } from './nav/enums';
 import MetaTags from './nav/MetaTags';

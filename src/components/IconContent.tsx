@@ -1,5 +1,6 @@
 import { FC } from 'react';
-import Icon, { IconName } from './icons/Icon';
+import { IconName } from '../types/enums';
+import Icon from './icons/Icon';
 import VisuallyHidden from './VisuallyHidden';
 
 interface IconContentProps {
