@@ -17,4 +17,10 @@ const useLocalStorage = <T>(storageKey: string, fallbackState: T) => {
   return [value, setValue] as const;
 };
 
+export const localStorageKeys = {
+  lang: 'lang',
+  currency: 'currency',
+  currencyApiError: 'currency_api_error',
+};
+
 export default useLocalStorage;

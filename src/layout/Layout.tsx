@@ -26,11 +26,11 @@ const Layout: FC = () => {
   const [logout] = useLogoutMutation();
   const { currentUser } = useAuth();
   const isHomePage = location.pathname === '/';
-  const { currencyOptions, onChangePrice, lang } = useCurrency();
+  const { currencyOptions, onChangePrice, exchangeRate } = useCurrency();
 
   const initialState = {
     languageOption: selectedLanguage,
-    currencyOption: lang,
+    currencyOption: exchangeRate,
   };
 
   const { onChange, onSubmit, values, onCustomChange } = useFormValidation({
@@ -123,8 +123,8 @@ const Layout: FC = () => {
         primaryActionBtn={primaryActionBtn}
         secondaryActionBtn={secondaryActionBtn}
         defaultValue={{
-          label: lang,
-          value: lang,
+          label: exchangeRate,
+          value: exchangeRate,
         }}
         onChange={onChange}
         values={values}

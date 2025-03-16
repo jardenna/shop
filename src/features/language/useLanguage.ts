@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import useLocalStorage from '../../hooks/useLocalStorage';
+import useLocalStorage, { localStorageKeys } from '../../hooks/useLocalStorage';
 import {
   SelectedLanguage,
   selectLanguage,
@@ -17,7 +17,10 @@ const useLanguage = () => {
   const dispatch = useAppDispatch();
   const selectedLanguage = useAppSelector(selectSelectedLanguage);
 
-  const [lang, setLang] = useLocalStorage('lang', selectedLanguage);
+  const [lang, setLang] = useLocalStorage(
+    localStorageKeys.lang,
+    selectedLanguage,
+  );
   const language = useAppSelector(selectLanguage);
 
   const switchLanguage = (lang: SelectedLanguage) => {
