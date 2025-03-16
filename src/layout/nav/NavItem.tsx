@@ -16,7 +16,10 @@ const NavItem: FC<NavItemProps> = ({ navItem }) => {
       <NavLink to={navItem.path} className="nav-item">
         {navItem.iconName && (
           <span>
-            <Icon iconName={navItem.iconName} title="" />
+            <Icon
+              iconName={navItem.iconName}
+              title={language[navItem.linkText]}
+            />
           </span>
         )}
         <span>{language[navItem.linkText]}</span>

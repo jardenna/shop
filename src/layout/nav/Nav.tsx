@@ -1,10 +1,10 @@
 import { FC } from 'react';
 
 import useLanguage from '../../features/language/useLanguage';
+import { IconName } from '../../types/enums';
 import './_nav.scss';
 import { LinkText, MainPath } from './enums';
 import NavItemList from './NavItemList';
-import { IconName } from '../../types/enums';
 
 export interface NavItemsProps {
   linkText: LinkText;
