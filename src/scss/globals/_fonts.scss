@@ -1,8 +1,8 @@
 @font-face {
   font-family: felix;
   src:
-    url('fonts/FelixTitlingMT.woff2') format('woff2'),
-    url('fonts/FelixTitlingMT.woff') format('woff');
+    url('/fonts/FelixTitlingMT.woff2') format('woff2'),
+    url('/fonts/FelixTitlingMT.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -11,8 +11,8 @@
 @font-face {
   font-family: outfit;
   src:
-    url('fonts/Outfit-Regular.woff2') format('woff2'),
-    url('fonts/Outfit-Regular.woff') format('woff');
+    url('/fonts/Outfit-Regular.woff2') format('woff2'),
+    url('/fonts/Outfit-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
