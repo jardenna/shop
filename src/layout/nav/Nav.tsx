@@ -7,7 +7,7 @@ import NavItemList from './NavItemList';
 
 export interface NavItemsProps {
   linkText: LinkText;
-  path: MainPath;
+  path: MainPath | string;
 }
 
 export interface ActionBtnProps {

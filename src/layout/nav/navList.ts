@@ -32,7 +32,7 @@ const authItemsList = [
 
 const adminNavList = [
   {
-    path: MainPath.Dashboard,
+    path: `/${MainPath.Dashboard}`,
     linkText: LinkText.Dashboard,
   },
   {

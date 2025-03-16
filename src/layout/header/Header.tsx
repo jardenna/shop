@@ -6,6 +6,7 @@ import { SelectedLanguage } from '../../features/language/languageSlice';
 import { ChangeInputType } from '../../types/types';
 import HeaderIcons from '../headerIcons/HeaderIcons';
 import LayoutElement from '../LayoutElement';
+import { MainPath } from '../nav/enums';
 import Nav from '../nav/Nav';
 import { navList } from '../nav/navList';
 import './_header.scss';
@@ -40,7 +41,7 @@ const Header: FC<HeaderProps> = ({
 }) => (
   <LayoutElement as="header" className="main-header" ariaLabel={ariaLabel}>
     <div className="container main-header-container">
-      <Logo />
+      <Logo link={MainPath.Root} />
       <Nav navList={navList} />
       <HeaderIcons
         userDropdownList={userDropdownList}

@@ -3,9 +3,13 @@ import { Link } from 'react-router';
 import Icon, { IconName } from '../../components/icons/Icon';
 import { MainPath } from '../nav/enums';
 
-const Logo: FC = () => (
+interface LogoProps {
+  link: MainPath | string;
+}
+
+const Logo: FC<LogoProps> = ({ link }) => (
   <div className="logo">
-    <Link to={MainPath.Root}>
+    <Link to={link}>
       <Icon iconName={IconName.Logo} title="Logo" />
     </Link>
   </div>
