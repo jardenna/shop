@@ -19,6 +19,7 @@ export enum MainPath {
 
 export enum LinkText {
   About = 'about',
+  Account = 'account',
   Categories = 'categories',
   Collection = 'collection',
   Contact = 'contact',
