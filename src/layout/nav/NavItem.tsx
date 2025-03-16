@@ -17,7 +17,7 @@ const NavItem: FC<NavItemProps> = ({
     <li>
       <NavLink to={path} className="nav-item">
         {iconName && (
-          <span>
+          <span aria-hidden={true}>
             <Icon iconName={iconName} title={language[linkText]} />
           </span>
         )}
