@@ -40,8 +40,8 @@ const adminNavList: NavItemsProps[] = [
   },
   {
     path: MainPath.AdminProfile,
-    linkText: LinkText.Profile,
-    iconName: IconName.Dashboard,
+    linkText: LinkText.MyAccount,
+    iconName: IconName.Account,
   },
   {
     path: MainPath.AdminProducts,

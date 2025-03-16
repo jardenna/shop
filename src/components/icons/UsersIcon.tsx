@@ -13,22 +13,18 @@ const UsersIcon: FC<IconDefaultProps> = ({
     width={size}
     height={size}
     className={className}
-    viewBox="0 0 125 125"
+    viewBox="0 0 24 24"
     fill="none"
-    stroke="currentcolor"
-    strokeWidth="3"
+    stroke="currentColor"
+    strokeWidth="2"
     strokeLinecap="round"
-    strokeMiterlimit="10"
+    strokeLinejoin="round"
     aria-hidden={ariaHidden}
   >
     <title>{title}</title>
-    <path d="m15 11-1 9" />
-    <path d="m19 11-4-7" />
-    <path d="M2 11h20" />
-    <path d="m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4" />
-    <path d="M4.5 15.5h15" />
-    <path d="m5 11 4-7" />
-    <path d="m9 11 1 9" />
+    <path d="M18 21a8 8 0 0 0-16 0" />
+    <circle cx="10" cy="8" r="5" />
+    <path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3" />
   </svg>
 );
 

@@ -13,12 +13,12 @@ const DashboardIcon: FC<IconDefaultProps> = ({
     width={size}
     height={size}
     className={className}
-    viewBox="0 0 125 125"
+    viewBox="0 0 24 24"
     fill="none"
-    stroke="currentcolor"
-    strokeWidth="3"
+    stroke="currentColor"
+    strokeWidth="2"
     strokeLinecap="round"
-    strokeMiterlimit="10"
+    strokeLinejoin="round"
     aria-hidden={ariaHidden}
   >
     <title>{title}</title>
