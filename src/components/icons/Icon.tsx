@@ -6,6 +6,7 @@ import AdminIcon from './AdminIcon';
 import ArrowDownIcon from './ArrowDownIcon';
 import ArrowUpIcon from './ArrowUpIcon';
 import AuthIcon from './AuthIcon';
+import CategoriesIcon from './CategoriesIcon';
 import ChevronDownIcon from './ChevronDownIcon';
 import ChevronLeftIcon from './ChevronLeftIcon';
 import ChevronRightIcon from './ChevronRightIcon';
@@ -13,6 +14,7 @@ import ChevronsLeftIcon from './ChevronsLeftIcon';
 import ChevronsRightIcon from './ChevronsRightIcon';
 import ChevronUpIcon from './ChevronUpIcon';
 import CloseIcon from './CloseIcon';
+import DashboardIcon from './DashboardIcon';
 import EditIcon from './EditIcon';
 import ErrorIcon from './ErrorIcon';
 import EyeIcon from './EyeIcon';
@@ -27,6 +29,8 @@ import LoginIcon from './LoginIcon';
 import Logo from './Logo';
 import LogoutIcon from './LogoutIcon';
 import MoreIcon from './MoreIcon';
+import OrdersIcon from './OrdersIcon';
+import ProductsIcon from './ProductsIcon';
 import SearchIcon from './SearchIcon';
 import ShoppingBackIcon from './ShoppingBackIcon';
 import SubtractIcon from './SubtractIcon';
@@ -34,6 +38,7 @@ import SuccessIcon from './SuccessIcon';
 import TrashIcon from './TrashIcon';
 import UndoIcon from './UndoIcon';
 import UserIcon from './UserIcon';
+import UsersIcon from './UsersIcon';
 import WarningIcon from './WarningIcon';
 
 export interface IconDefaultProps {
@@ -55,27 +60,31 @@ const iconMapping = {
   arrowDown: ArrowDownIcon,
   arrowUp: ArrowUpIcon,
   auth: AuthIcon,
+  categories: CategoriesIcon,
+  chevronDown: ChevronDownIcon,
   chevronLeft: ChevronLeftIcon,
   chevronRight: ChevronRightIcon,
-  chevronUp: ChevronUpIcon,
-  chevronDown: ChevronDownIcon,
   chevronsLeft: ChevronsLeftIcon,
   chevronsRight: ChevronsRightIcon,
+  chevronUp: ChevronUpIcon,
   close: CloseIcon,
+  dashboard: DashboardIcon,
   edit: EditIcon,
   error: ErrorIcon,
   eye: EyeIcon,
   eyeOff: EyeOffIcon,
   filter: FilterIcon,
   grid: GridIcon,
-  gridSmall: GridSmallIcon,
   gridLarge: GridLargeIcon,
+  gridSmall: GridSmallIcon,
   info: InfoIcon,
   language: LanguageIcon,
   login: LoginIcon,
   logo: Logo,
   logout: LogoutIcon,
   more: MoreIcon,
+  orders: OrdersIcon,
+  products: ProductsIcon,
   search: SearchIcon,
   shoppingBack: ShoppingBackIcon,
   subtract: SubtractIcon,
@@ -83,6 +92,7 @@ const iconMapping = {
   trach: TrashIcon,
   undo: UndoIcon,
   user: UserIcon,
+  users: UsersIcon,
   warning: WarningIcon,
 };
 

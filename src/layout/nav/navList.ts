@@ -1,6 +1,8 @@
+import { IconName } from '../../types/enums';
 import { LinkText, MainPath } from './enums';
+import { NavItemsProps } from './Nav';
 
-const navList = [
+const navList: NavItemsProps[] = [
   {
     path: MainPath.Root,
     linkText: LinkText.Home,
@@ -30,30 +32,36 @@ const authItemsList = [
   },
 ];
 
-const adminNavList = [
+const adminNavList: NavItemsProps[] = [
   {
     path: `/${MainPath.Dashboard}`,
     linkText: LinkText.Dashboard,
+    iconName: IconName.Dashboard,
   },
   {
     path: MainPath.AdminProfile,
     linkText: LinkText.Profile,
+    iconName: IconName.Dashboard,
   },
   {
     path: MainPath.AdminProducts,
     linkText: LinkText.Products,
+    iconName: IconName.Products,
   },
   {
     path: MainPath.AdminCategories,
     linkText: LinkText.Categories,
+    iconName: IconName.Categories,
   },
   {
     path: MainPath.Users,
     linkText: LinkText.Users,
+    iconName: IconName.Users,
   },
   {
     path: MainPath.AdminOrders,
     linkText: LinkText.Orders,
+    iconName: IconName.Orders,
   },
 ];
 

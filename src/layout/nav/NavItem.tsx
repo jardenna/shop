@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { NavLink } from 'react-router';
+import Icon from '../../components/icons/Icon';
 import useLanguage from '../../features/language/useLanguage';
 import { NavItemsProps } from './Nav';
 
@@ -13,7 +14,12 @@ const NavItem: FC<NavItemProps> = ({ navItem }) => {
   return (
     <li key={navItem.linkText}>
       <NavLink to={navItem.path} className="nav-item">
-        {language[navItem.linkText]}
+        {navItem.iconName && (
+          <span>
+            <Icon iconName={navItem.iconName} title="" />
+          </span>
+        )}
+        <span>{language[navItem.linkText]}</span>
       </NavLink>
     </li>
   );
