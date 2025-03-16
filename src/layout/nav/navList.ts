@@ -33,11 +33,11 @@ const authItemsList = [
 ];
 
 const adminNavList: NavItemsProps[] = [
-  {
-    path: `/${MainPath.Dashboard}`,
-    linkText: LinkText.Dashboard,
-    iconName: IconName.Dashboard,
-  },
+  // {
+  //   path: `/${MainPath.Dashboard}`,
+  //   linkText: LinkText.Dashboard,
+  //   iconName: IconName.Dashboard,
+  // },
   {
     path: MainPath.AdminProfile,
     linkText: LinkText.Account,
