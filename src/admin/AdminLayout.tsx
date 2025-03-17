@@ -11,16 +11,16 @@ import AdminHeader from './AdminHeader';
 
 const AdminLayout: FC = () => {
   const { language } = useLanguage();
-  const [collapsedMenu, setCollapsedMenu] = useState(false);
+  const [isMenuCollapsed, setIsMenuCollapsed] = useState(false);
 
   const { isTabletSize } = useMediaQuery();
 
   useEffect(() => {
-    setCollapsedMenu(isTabletSize);
+    setIsMenuCollapsed(isTabletSize);
   }, [isTabletSize]);
 
   const handleCollapseMenu = () => {
-    setCollapsedMenu(!collapsedMenu);
+    setIsMenuCollapsed(!isMenuCollapsed);
   };
 
   return (
@@ -37,7 +37,7 @@ const AdminLayout: FC = () => {
           />
           <Nav
             navList={adminNavList}
-            className={`admin-nav ${collapsedMenu ? 'collapsed' : ''}`}
+            className={`admin-nav ${isMenuCollapsed ? 'collapsed' : ''}`}
           />
         </aside>
         <div className="container">
