@@ -13,10 +13,10 @@ const AdminLayout: FC = () => {
   const { language } = useLanguage();
   const [collapsedMenu, setCollapsedMenu] = useState(false);
 
-  const isTabletSize = useMediaQuery('(max-width: 768px)');
+  const { isTabletSize } = useMediaQuery();
 
   useEffect(() => {
-    setCollapsedMenu(isTabletSize); // Auto-collapse when screen is small
+    setCollapsedMenu(isTabletSize);
   }, [isTabletSize]);
 
   const handleCollapseMenu = () => {

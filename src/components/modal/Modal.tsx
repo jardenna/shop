@@ -3,7 +3,6 @@ import { useAppSelector } from '../../app/hooks';
 import { selectModalId } from '../../features/modalSlice';
 
 import useClickOutside from '../../hooks/useClickOutside';
-import useWindowDimensions from '../../hooks/useWindowDimensions ';
 import { BtnVariant, PopupRole, SizeVariant } from '../../types/enums';
 import { BtnType } from '../../types/types';
 import Overlay from '../overlay/Overlay';
@@ -14,6 +13,7 @@ import ModalFooter from './ModalFooter';
 import ModalHeader from './ModalHeader';
 import useModal from './useModal';
 import useVisibility from './useVisibility';
+import useMediaQuery from '../../hooks/useMediaQuery ';
 
 export interface PrimaryActionBtnProps {
   label: string | null;
@@ -54,7 +54,7 @@ const Modal: React.FC<ModalProps> = ({
   primaryActionBtn,
   modalInfo,
 }) => {
-  const { isMobileSize } = useWindowDimensions();
+  const { isMobileSize } = useMediaQuery();
   const modalId = useAppSelector(selectModalId);
   const { handleCloseModal, modalRef } = useModal(modalId);
 
