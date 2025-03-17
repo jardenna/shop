@@ -1,39 +1,25 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
+import useLanguage from '../../features/language/useLanguage';
+import VisuallyHidden from '../VisuallyHidden';
 import './_table.scss';
 
 interface TableProps {
-  columns: string[];
-  data: (string | number)[][];
+  children: ReactNode;
+  isLoading: boolean;
+  tableCaption: string;
 }
 
-const FixedTable: FC<TableProps> = ({ columns, data }) => (
-  <div className="table-container">
-    <table className="fixed-table">
-      <thead>
-        <tr>
-          {columns.map((col, index) => (
-            <th key={index} className={index === 0 ? 'sticky-col' : ''}>
-              {col}
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((row, rowIndex) => (
-          <tr key={rowIndex}>
-            {row.map((cell, cellIndex) => (
-              <td
-                key={cellIndex}
-                className={cellIndex === 0 ? 'sticky-col' : ''}
-              >
-                {cell}
-              </td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-);
+const Table: FC<TableProps> = ({ children, tableCaption, isLoading }) => {
+  const { language } = useLanguage();
 
-export default FixedTable;
+  return (
+    <div className="fixed-table">
+      <table aria-label={isLoading ? language.loading : undefined}>
+        <VisuallyHidden as="caption">{tableCaption}</VisuallyHidden>
+        {children}
+      </table>
+    </div>
+  );
+};
+
+export default Table;

@@ -1,40 +1,106 @@
-.table-container {
-  width: 100%;
-  max-width: 800px;
-  height: 400px;
-  overflow: auto;
-  border: 1px solid #ccc;
-  position: relative;
-}
+@use '../../scss/globals' as *;
 
 .fixed-table {
-  width: 100%;
-  border-collapse: collapse;
-}
+  position: relative;
+  width: rem(300px);
+  min-width: 100%;
+  margin-bottom: 12px;
+  border: 1px solid $color-border;
 
-.fixed-table th,
-.fixed-table td {
-  padding: 8px;
-  border: 1px solid #ccc;
-  background: white;
-  white-space: nowrap;
-}
-
-.fixed-table thead th {
-  position: sticky;
-  top: 0;
-  background: #f4f4f4;
-  z-index: 2;
-
-  &:first-child {
-    z-index: 5;
+  @include max-size($medium) {
+    max-height: rem(400px);
+    overflow: auto;
   }
 }
 
-.sticky-col {
-  position: sticky;
-  left: 0;
-  background: #fff;
-  z-index: 3;
-  box-shadow: 2px 0 3px rgb(0 0 0 / 10%);
+.table-actions {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 8px;
+
+  @include max-size($medium) {
+    flex-direction: column;
+    align-items: normal;
+  }
+}
+
+table {
+  border-spacing: 0;
+  width: 100%;
+
+  tbody {
+    display: flex;
+    flex-direction: column;
+    max-height: rem(400px);
+    overflow: auto;
+
+    @include max-size($medium) {
+      display: table-row-group;
+    }
+  }
+
+  th {
+    background-color: $color-white;
+    border-right: 1px solid $color-border;
+    border-bottom: 1px solid $color-border;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    white-space: nowrap;
+
+    &:first-child {
+      z-index: 3;
+    }
+
+    &:last-child {
+      border-right: 0;
+    }
+  }
+
+  td {
+    line-height: rem(24px);
+    background-color: $color-white;
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  th,
+  td {
+    padding: 4px 12px;
+    word-wrap: break-word;
+
+    &:first-child {
+      border-right: 1px solid $color-border;
+      position: sticky;
+      left: 0;
+    }
+  }
+
+  tr {
+    @include min-size($medium) {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+    }
+
+    &:nth-child(odd) {
+      td {
+        background-color: $color-background;
+
+        &.no-records-table-field {
+          background-color: $color-white;
+          border: none;
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  .no-record-info {
+    padding: 4px 12px;
+  }
+
+  .btn {
+    padding: 0;
+  }
 }

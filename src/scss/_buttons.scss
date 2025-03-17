@@ -34,13 +34,10 @@ a[class^='btn-'],
   &::after {
     content: '';
     position: absolute;
-    top: -9%;
-    left: -2%;
-    width: 104%;
-    height: 124%;
-    min-width: 3rem;
-    min-width: rem(48px);
-    min-height: rem(48px);
+    top: -13%;
+    left: -35%;
+    width: 174%;
+    height: 128%;
   }
 }
 
