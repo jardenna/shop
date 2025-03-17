@@ -19,23 +19,36 @@
   }
 }
 
+@mixin collapsed-styles {
+  width: rem(61px);
+
+  .nav-text {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 .admin-nav {
   position: fixed;
   height: 100%;
   background-color: #f4f4f5;
+  width: rem(300px);
 
-  &.main-nav {
-    width: rem(300px);
+  @include transition($what: width, $time: 0.2s);
 
-    @include transition($what: width, $time: 0.2s);
+  // @include max-size($medium) {
+  //   width: rem(61px);
 
-    @include max-size($medium) {
-      width: rem(61px);
+  //   .nav-text {
+  //     opacity: 0;
+  //   }
+  // }
 
-      .nav-text {
-        opacity: 0;
-        visibility: hidden;
-      }
+  &.collapsed {
+    width: rem(61px);
+
+    .nav-text {
+      opacity: 0;
     }
   }
 
