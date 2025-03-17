@@ -39,6 +39,10 @@
     max-width: 100%;
   }
 
+  header {
+    height: $header-height;
+  }
+
   .aside {
     position: relative;
   }

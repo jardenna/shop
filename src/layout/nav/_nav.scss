@@ -29,7 +29,7 @@
 }
 
 .admin-nav {
-  min-height: 100svh;
+  height: calc(100svh - $header-height);
   background-color: #f4f4f5;
   width: rem(300px);
 
