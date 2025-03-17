@@ -24,6 +24,21 @@
   height: 100%;
   background-color: #f4f4f5;
 
+  &.main-nav {
+    width: rem(300px);
+
+    @include transition($what: width, $time: 0.2s);
+
+    @include max-size($medium) {
+      width: rem(61px);
+
+      .nav-text {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+  }
+
   .nav-list {
     flex-direction: column;
     gap: 0;

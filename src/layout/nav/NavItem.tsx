@@ -21,7 +21,7 @@ const NavItem: FC<NavItemProps> = ({
             <Icon iconName={iconName} title={language[linkText]} />
           </span>
         )}
-        <span>{language[linkText]}</span>
+        <span className="nav-text">{language[linkText]}</span>
       </NavLink>
     </li>
   );
