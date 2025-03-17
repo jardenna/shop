@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 
 import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
@@ -22,13 +22,15 @@ export interface ActionBtnProps {
 interface NavProps {
   navList: NavItemsProps[];
   className?: string;
+  iconBtn?: ReactNode;
 }
 
-const Nav: FC<NavProps> = ({ navList, className = '' }) => {
+const Nav: FC<NavProps> = ({ navList, iconBtn, className = '' }) => {
   const { language } = useLanguage();
 
   return (
     <section className={`main-nav ${className}`}>
+      {iconBtn && <div>{iconBtn}</div>}
       <NavItemList navItemsList={navList} ariaLabel={language.main} />
     </section>
   );

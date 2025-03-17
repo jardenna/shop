@@ -12,7 +12,6 @@ import AdminHeader from './AdminHeader';
 const AdminLayout: FC = () => {
   const { language } = useLanguage();
   const [isMenuCollapsed, setIsMenuCollapsed] = useState(false);
-
   const { isTabletSize } = useMediaQuery();
 
   useEffect(() => {
@@ -29,14 +28,17 @@ const AdminLayout: FC = () => {
       <AdminHeader ariaLabel={language.main} />
       <main id="main" className="main">
         <aside className="aside">
-          <IconBtn
-            onClick={handleCollapseMenu}
-            ariaLabel="Collapse menu"
-            iconName={IconName.Account}
-            title="collapse menu"
-          />
           <Nav
             navList={adminNavList}
+            iconBtn={
+              <IconBtn
+                onClick={handleCollapseMenu}
+                ariaLabel="Collapse menu"
+                iconName={IconName.ChevronLeft}
+                title="chevron"
+                ariaExpanded={!isMenuCollapsed}
+              />
+            }
             className={`admin-nav ${isMenuCollapsed ? 'collapsed' : ''}`}
           />
         </aside>
