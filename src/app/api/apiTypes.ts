@@ -1,8 +1,10 @@
 export interface UserResponse {
+  createdAt: Date;
   email: string;
   id: string;
   isAdmin: boolean;
-  role: 'admin' | 'employe' | 'user';
+  role: string;
+  updatedAt: Date;
   username: string;
 }
 
