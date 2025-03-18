@@ -25,6 +25,15 @@
   }
 }
 
+.user-role-cell {
+  display: flex;
+  align-items: center;
+
+  .role {
+    flex-grow: 1;
+  }
+}
+
 table {
   border-spacing: 0;
   width: 100%;
