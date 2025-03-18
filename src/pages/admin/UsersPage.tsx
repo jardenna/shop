@@ -1,8 +1,10 @@
 import { FC } from 'react';
 import MainTable from '../../features/admin/users/components/MainTable';
 import { useGetAllUsersQuery } from '../../features/admin/users/usersApiSlice';
+import useLanguage from '../../features/language/useLanguage';
 
 const UsersPage: FC = () => {
+  const { language } = useLanguage();
   const { data: allUsers, isLoading, isFetching } = useGetAllUsersQuery();
 
   return (
@@ -11,9 +13,9 @@ const UsersPage: FC = () => {
         <MainTable
           isLoading={isLoading}
           isPending={isFetching}
-          tableCaption="User list"
+          tableCaption={language.customersList}
           tableData={allUsers}
-          tableHeaders={['name', 'email', 'Role', 'action']}
+          tableHeaders={[language.username, language.email, language.role, '']}
         />
       )}
     </section>

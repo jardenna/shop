@@ -35,9 +35,9 @@ const MainTable: FC<MainTableProps> = ({
   };
 
   const tableGridIconList = [
-    { padding: 4, iconName: IconName.GridSmall, title: 'smallGrid' },
-    { padding: 12, iconName: IconName.Grid, title: 'grid' },
-    { padding: 20, iconName: IconName.GridLarge, title: 'largeGrid' },
+    { padding: 4, iconName: IconName.GridSmall, title: language.gridSmall },
+    { padding: 12, iconName: IconName.Grid, title: language.grid },
+    { padding: 20, iconName: IconName.GridLarge, title: language.gridLarge },
   ];
 
   return (
@@ -71,18 +71,18 @@ const MainTable: FC<MainTableProps> = ({
         ) : (
           <tbody>
             {!isPending ? (
-              tableData.map((album) => (
-                <tr key={album.id}>
-                  <td>{album.username}</td>
-                  <td>{album.email}</td>
-                  <td>{album.role}</td>
+              tableData.map((data) => (
+                <tr key={data.id}>
+                  <td>{data.username}</td>
+                  <td>{data.email}</td>
+                  <td>{data.role}</td>
 
                   <td>
                     <IconBtn
                       iconName={IconName.Trash}
                       className="danger"
                       title={language.trashCan}
-                      ariaLabel={language.deleteAlbum}
+                      ariaLabel={language.deleteCustomer}
                       onClick={() => {
                         console.log(12);
                       }}

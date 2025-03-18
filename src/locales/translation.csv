@@ -1,8 +1,8 @@
 ﻿key;en;da
 about;About;Profil
 account;Account;Konto
-admin;Admin;Admin
 additionalInfo;Additional info;Supplerende information
+admin;Admin;Admin
 bag;Bag;Indkøbskurv
 cancel;Cancel;Annuller
 cannotDeleteAdmin;Cannot delete admin user;Admin bruger kan ikke slettes
@@ -16,7 +16,9 @@ createAccount;Create account;Opret konto
 criterionMet;Criterion met;Kriterium opfyldt
 criterionNotMet;Criterion not met;Kriterium ikke opfyldt
 currency;Currency;Valuta
+customersList;Customers list;Kundeliste
 dashboard;Dashboard;Dashboard
+deleteCustomer;Delete customer;Slet kunde
 email;Email;E-mail
 error;Error;Fejl
 errorAltText;A really guilty emoji;En meget skyldig emoji
@@ -26,6 +28,9 @@ fillAll;Please fill all the inputs;Udfyld venligst alle felter
 globe;Globe;Globus
 goBack;Go back;Gå tilbage
 goToContent;Go to content;Gå til indhold
+grid;Grid;Grid
+gridLarge; Large grid;Bredt grid
+gridSmall; Small grid;Smalt grid
 heroText;Upgrade your wardrobe with exclusive deals!;Opgradér din garderobe med eksklusive tilbud!
 heroText1;For a limited time, enjoy incredible discounts on the latest fashion trends;I en begrænset periode kan du få fantastiske rabatter på de nyeste modetrends
 heroTitle;Exclusive Fashion Sale;Eksklusivt Modesalg
@@ -78,6 +83,7 @@ preferences;Preferences;Præferencer
 products;Products;Produkter
 profile;Profile;Profil
 retry;Retry;Forsøg igen
+role;Role;Rolle
 search;Search;Søg
 selectCurrency;Select Currency;Vælg valuta
 selectLanguage;Select language;Vælg sprog
@@ -89,12 +95,13 @@ signupFailed;Sign up failed;Registrering mislykkedes
 signupSucceeded;Sign up succeeded;Registrering lykkedes
 sub;Sub;Sekundær
 success;Success;Succes
+trashCan;Trash can;Skraldespand
 updatePreferences;Update Preferences;Opdater præferencer
 user;User;Bruger
-users;Users;Brugere
 userAlreadyExist;A profile with this email already exists. Try logging in instead;Der findes en profil med denne e-mail. Prøv at logge ind i stedet
 userDeleted;User deleted;Bruger slettet
 userInfo;User info;Bruger info
-username;UserName;Brugernavn
+username;User name;Brugernavn
+users;Users;Brugere
 warning;Warning;Warning
 welcome;Welcome;Velkommen
