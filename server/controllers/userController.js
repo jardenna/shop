@@ -10,8 +10,18 @@ import { t } from '../utils/translator.js';
 // @method  Get
 // @access  Private for admin
 const getAllUsers = asyncHandler(async (req, res) => {
-  const users = await User.find({});
-  res.json(users);
+  const users = await User.find({})
+    .select('-password') // Exclude password field
+    .lean();
+
+  // Rename _id to id
+  const modifiedUsers = users.map((user) => ({
+    ...user,
+    id: user._id, // Rename _id to id
+    _id: undefined, // Remove _id from the response
+  }));
+
+  res.json(modifiedUsers);
 });
 
 // @desc    Get User profile
@@ -25,6 +35,8 @@ const getCurrentUserProfile = asyncHandler(async (req, res) => {
       id: user._id,
       username: user.username,
       email: user.email,
+      role: user.role,
+      isAdmin: user.isAdmin,
     });
   } else {
     return res.status(404).json({
