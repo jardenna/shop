@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 
 const generateToken = (res, userId) => {
   const token = jwt.sign({ userId }, process.env.ACCESS_TOKEN_SECRET, {
-    expiresIn: '30d',
+    expiresIn: '3d',
   });
 
   // Set JWT as an HTTP-Only Cookie
@@ -10,7 +10,7 @@ const generateToken = (res, userId) => {
     httpOnly: true,
     secure: process.env.NODE_ENV !== 'development',
     sameSite: 'strict',
-    maxAge: 30 * 24 * 60 * 60 * 1000,
+    maxAge: 3 * 24 * 60 * 60 * 1000,
   });
 
   return token;
