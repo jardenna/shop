@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import Logo from '../layout/header/Logo';
-import LayoutElement from '../layout/LayoutElement';
-import { MainPath } from '../layout/nav/enums';
+import Logo from '../../../layout/header/Logo';
+import LayoutElement from '../../../layout/LayoutElement';
+import { MainPath } from '../../../layout/nav/enums';
 
 interface AdminHeaderProps {
   ariaLabel: string;

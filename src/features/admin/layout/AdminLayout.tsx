@@ -1,12 +1,12 @@
 import { FC, useEffect, useState } from 'react';
 import { Outlet } from 'react-router';
-import IconBtn from '../components/IconBtn';
-import SkipLink from '../components/skipLinks/SkipLinks';
-import useLanguage from '../features/language/useLanguage';
-import useMediaQuery from '../hooks/useMediaQuery ';
-import Nav from '../layout/nav/Nav';
-import { adminNavList } from '../layout/nav/navList';
-import { IconName } from '../types/enums';
+import IconBtn from '../../../components/IconBtn';
+import SkipLink from '../../../components/skipLinks/SkipLinks';
+import useMediaQuery from '../../../hooks/useMediaQuery ';
+import Nav from '../../../layout/nav/Nav';
+import { adminNavList } from '../../../layout/nav/navList';
+import { IconName } from '../../../types/enums';
+import useLanguage from '../../language/useLanguage';
 import AdminHeader from './AdminHeader';
 
 const AdminLayout: FC = () => {
