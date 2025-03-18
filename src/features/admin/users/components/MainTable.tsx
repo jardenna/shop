@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { FC, memo } from 'react';
+import { UserResponse } from '../../../../app/api/apiTypes';
 import IconBtn from '../../../../components/IconBtn';
 import Table from '../../../../components/table/Table';
 import useLocalStorage from '../../../../hooks/useLocalStorage';
@@ -11,7 +11,7 @@ interface MainTableProps {
   isLoading: boolean;
   isPending: boolean;
   tableCaption: string;
-  tableData: any;
+  tableData: UserResponse[];
   tableHeaders: string[];
 }
 
@@ -71,9 +71,9 @@ const MainTable: FC<MainTableProps> = ({
         ) : (
           <tbody>
             {!isPending ? (
-              tableData.map((album: any) => (
-                <tr key="album.id">
-                  <td>{album.name}</td>
+              tableData.map((album) => (
+                <tr key={album.id}>
+                  <td>{album.username}</td>
                   <td>{album.email}</td>
                   <td>{album.role}</td>
 
