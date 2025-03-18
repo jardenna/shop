@@ -1,18 +1,24 @@
 import { FC, memo } from 'react';
+import { Form } from 'react-router';
 import { UserResponse } from '../../../../app/api/apiTypes';
+import Input from '../../../../components/formElements/Input';
 import IconBtn from '../../../../components/IconBtn';
 import Table from '../../../../components/table/Table';
+import TableGridList from '../../../../components/TableGridList';
 import useLocalStorage from '../../../../hooks/useLocalStorage';
 import { IconName } from '../../../../types/enums';
 import useLanguage from '../../../language/useLanguage';
-import TableGridList from './TableGridList';
 
 interface MainTableProps {
   isLoading: boolean;
   isPending: boolean;
+  showForm: number | null;
   tableCaption: string;
   tableData: UserResponse[];
   tableHeaders: string[];
+  value: string;
+  onChange?: any;
+  onShowUpdateRole: (id: number) => void;
 }
 
 const MainTable: FC<MainTableProps> = ({
@@ -21,6 +27,10 @@ const MainTable: FC<MainTableProps> = ({
   tableCaption,
   tableData,
   tableHeaders,
+  onChange,
+  value,
+  onShowUpdateRole,
+  showForm,
 }) => {
   const { language } = useLanguage();
   const [padding, setPadding] = useLocalStorage('padding', 12);
@@ -39,6 +49,7 @@ const MainTable: FC<MainTableProps> = ({
     { padding: 12, iconName: IconName.Grid, title: language.grid },
     { padding: 20, iconName: IconName.GridLarge, title: language.gridLarge },
   ];
+  console.log(showForm);
 
   return (
     <>
@@ -74,17 +85,53 @@ const MainTable: FC<MainTableProps> = ({
               tableData.map((data) => (
                 <tr key={data.id}>
                   <td>{data.username}</td>
-                  <td>{data.email}</td>
-                  <td>{data.role}</td>
-
                   <td>
+                    <a href={`mailto:${data.email}`}>{data.email}</a>
+                  </td>
+                  <td className="user-role-cell">
+                    <span className="role">{data.role}</span>
+                    <IconBtn
+                      iconName={IconName.Edit}
+                      className="danger"
+                      title={language.trashCan}
+                      ariaLabel={language.deleteCustomer}
+                      onClick={() => {
+                        onShowUpdateRole(data.id);
+                      }}
+                    />
+                    {showForm === data.id && (
+                      <>
+                        <Form>
+                          <Input
+                            name="username"
+                            id="username"
+                            value={value}
+                            labelText={language.username}
+                            inputHasNoLabel
+                            onChange={onChange}
+                          />
+                        </Form>
+                        <IconBtn
+                          iconName={IconName.Trash}
+                          className="danger"
+                          title={language.trashCan}
+                          ariaLabel={language.deleteCustomer}
+                          onClick={() => {
+                            console.log('save');
+                          }}
+                        />
+                      </>
+                    )}
+                  </td>
+
+                  <td className="delete-user-cell">
                     <IconBtn
                       iconName={IconName.Trash}
                       className="danger"
                       title={language.trashCan}
                       ariaLabel={language.deleteCustomer}
                       onClick={() => {
-                        console.log(12);
+                        console.log(122);
                       }}
                     />
                   </td>
