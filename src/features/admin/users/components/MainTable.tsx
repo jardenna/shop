@@ -1,5 +1,4 @@
-import { FC, memo } from 'react';
-import { Form } from 'react-router';
+import { FC, memo, useState } from 'react';
 import { UserResponse } from '../../../../app/api/apiTypes';
 import Input from '../../../../components/formElements/Input';
 import IconBtn from '../../../../components/IconBtn';
@@ -49,7 +48,15 @@ const MainTable: FC<MainTableProps> = ({
     { padding: 12, iconName: IconName.Grid, title: language.grid },
     { padding: 20, iconName: IconName.GridLarge, title: language.gridLarge },
   ];
-  console.log(showForm);
+  const [editableUserName, setEditableUserName] = useState('');
+
+  const updateHandler = (id: any) => {
+    const x = {
+      userId: id.id,
+      role: editableUserName,
+    };
+    console.log(x);
+  };
 
   return (
     <>
@@ -100,27 +107,33 @@ const MainTable: FC<MainTableProps> = ({
                       }}
                     />
                     {showForm === data.id && (
-                      <>
-                        <Form>
-                          <Input
-                            name="username"
-                            id="username"
-                            value={value}
-                            labelText={language.username}
-                            inputHasNoLabel
-                            onChange={onChange}
-                          />
-                        </Form>
+                      <form
+                        onSubmit={(e) => {
+                          e.preventDefault();
+                        }}
+                      >
+                        <Input
+                          name="username"
+                          id="username"
+                          value={editableUserName}
+                          labelText={language.username}
+                          inputHasNoLabel
+                          onChange={(e) => {
+                            setEditableUserName(e.target.value);
+                          }}
+                        />
+
                         <IconBtn
                           iconName={IconName.Trash}
                           className="danger"
                           title={language.trashCan}
                           ariaLabel={language.deleteCustomer}
+                          btnType="submit"
                           onClick={() => {
-                            console.log('save');
+                            updateHandler(data);
                           }}
                         />
-                      </>
+                      </form>
                     )}
                   </td>
 
