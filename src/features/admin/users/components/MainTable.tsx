@@ -1,4 +1,4 @@
-import { FC, memo, useState } from 'react';
+import { FC, memo } from 'react';
 import { UserResponse } from '../../../../app/api/apiTypes';
 import Input from '../../../../components/formElements/Input';
 import IconBtn from '../../../../components/IconBtn';
@@ -11,6 +11,7 @@ import useLanguage from '../../../language/useLanguage';
 interface MainTableProps {
   isLoading: boolean;
   isPending: boolean;
+  onSubmit: any;
   showForm: number | null;
   tableCaption: string;
   tableData: UserResponse[];
@@ -30,6 +31,7 @@ const MainTable: FC<MainTableProps> = ({
   value,
   onShowUpdateRole,
   showForm,
+  onSubmit,
 }) => {
   const { language } = useLanguage();
   const [padding, setPadding] = useLocalStorage('padding', 12);
@@ -48,15 +50,6 @@ const MainTable: FC<MainTableProps> = ({
     { padding: 12, iconName: IconName.Grid, title: language.grid },
     { padding: 20, iconName: IconName.GridLarge, title: language.gridLarge },
   ];
-  const [editableUserName, setEditableUserName] = useState('');
-
-  const updateHandler = (id: any) => {
-    const x = {
-      userId: id.id,
-      role: editableUserName,
-    };
-    console.log(x);
-  };
 
   return (
     <>
@@ -115,12 +108,10 @@ const MainTable: FC<MainTableProps> = ({
                         <Input
                           name="username"
                           id="username"
-                          value={editableUserName}
+                          value={value}
                           labelText={language.username}
                           inputHasNoLabel
-                          onChange={(e) => {
-                            setEditableUserName(e.target.value);
-                          }}
+                          onChange={onChange}
                         />
 
                         <IconBtn
@@ -130,7 +121,7 @@ const MainTable: FC<MainTableProps> = ({
                           ariaLabel={language.deleteCustomer}
                           btnType="submit"
                           onClick={() => {
-                            updateHandler(data);
+                            onSubmit(data);
                           }}
                         />
                       </form>
