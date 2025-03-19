@@ -1,19 +1,39 @@
 import { FC, useState } from 'react';
+import { RadioListItem } from '../../components/formElements/radioButton/RadioButton';
 import MainTable from '../../features/admin/users/components/MainTable';
 import { useGetAllUsersQuery } from '../../features/admin/users/usersApiSlice';
 import useLanguage from '../../features/language/useLanguage';
-import { ChangeInputType } from '../../types/types';
+
+export interface UpdateUserRole {
+  id: number;
+  role: string;
+}
+
+const radioButtonRoleList: RadioListItem[] = [
+  {
+    label: 'User',
+    value: 'user',
+  },
+  {
+    label: 'Employe',
+    value: 'employe',
+  },
+];
 
 const UsersPage: FC = () => {
   const { language } = useLanguage();
+
+  const initialState = {
+    roleOption: 'user',
+  };
 
   const [showForm, setShowForm] = useState<number | null>(null);
   const { data: allUsers, isLoading, isFetching } = useGetAllUsersQuery();
   const [userRole, setUserRole] = useState('');
 
-  const handleOnSubmit = (id: any) => {
+  const handleOnSubmit = (user: UpdateUserRole) => {
     const x = {
-      userId: id.id,
+      userId: user.id,
       role: userRole,
     };
     console.log(x);
@@ -21,6 +41,7 @@ const UsersPage: FC = () => {
 
   const handleShowUpdateRole = (id: number) => {
     setShowForm(id);
+    setUserRole('');
   };
 
   return (
@@ -35,8 +56,8 @@ const UsersPage: FC = () => {
           value={userRole}
           onShowUpdateRole={handleShowUpdateRole}
           showForm={showForm}
-          onChange={(e: ChangeInputType) => {
-            setUserRole(e.target.value);
+          onChange={(event) => {
+            setUserRole(event.target.value);
           }}
           onSubmit={handleOnSubmit}
         />

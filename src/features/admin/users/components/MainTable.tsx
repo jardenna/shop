@@ -5,20 +5,22 @@ import IconBtn from '../../../../components/IconBtn';
 import Table from '../../../../components/table/Table';
 import TableGridList from '../../../../components/TableGridList';
 import useLocalStorage from '../../../../hooks/useLocalStorage';
+import { UpdateUserRole } from '../../../../pages/admin/UsersPage';
 import { IconName } from '../../../../types/enums';
+import { ChangeInputType } from '../../../../types/types';
 import useLanguage from '../../../language/useLanguage';
 
 interface MainTableProps {
   isLoading: boolean;
   isPending: boolean;
-  onSubmit: any;
   showForm: number | null;
   tableCaption: string;
   tableData: UserResponse[];
   tableHeaders: string[];
   value: string;
-  onChange?: any;
+  onChange: (event: ChangeInputType) => void;
   onShowUpdateRole: (id: number) => void;
+  onSubmit: (user: UpdateUserRole) => void;
 }
 
 const MainTable: FC<MainTableProps> = ({
