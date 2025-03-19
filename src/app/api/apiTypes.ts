@@ -8,6 +8,10 @@ export interface UserResponse {
   username: string;
 }
 
+export interface UpdateUserRoleRequest {
+  role: string;
+  userId: number;
+}
 export interface AuthRequest {
   email: string;
   password: string;

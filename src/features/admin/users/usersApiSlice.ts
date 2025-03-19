@@ -1,5 +1,5 @@
 import apiSlice from '../../../app/api/apiSlice';
-import { UserResponse } from '../../../app/api/apiTypes';
+import { UpdateUserRoleRequest, UserResponse } from '../../../app/api/apiTypes';
 import { userEndpoints } from '../../../app/endpoints';
 import { TagTypesEnum } from '../../../types/types';
 
@@ -9,7 +9,14 @@ export const usersApiSlice = apiSlice.injectEndpoints({
       query: () => userEndpoints.users,
       providesTags: [TagTypesEnum.Auth],
     }),
+    updateUserRole: builder.mutation<UserResponse, UpdateUserRoleRequest>({
+      query: (data) => ({
+        url: `${userEndpoints.users}/${data.userId}`,
+        method: 'PUT',
+        body: data.role,
+      }),
+    }),
   }),
 });
 
-export const { useGetAllUsersQuery } = usersApiSlice;
+export const { useGetAllUsersQuery, useUpdateUserRoleMutation } = usersApiSlice;
