@@ -6,7 +6,7 @@ import {
   OmittedUserRequest,
 } from '../../app/api/apiTypes';
 import { authEndpoints } from '../../app/endpoints';
-import { TagTypesEnum } from '../../types/types';
+import { TagTypesEnum } from '../../types/enums';
 import { logout } from './authSlice';
 
 export const authApiSlice = apiSlice.injectEndpoints({

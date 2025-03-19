@@ -9,10 +9,7 @@ export type BtnType = 'submit' | 'reset' | 'button';
 export type BlurEventType = { target: { name: string } };
 export type FormEventType = FormEvent<HTMLFormElement>;
 
-export enum TagTypesEnum {
-  Auth = 'Auth',
-  Users = 'Users',
-}
+export type RoleTypes = 'Admin' | 'Employee' | 'User';
 
 export type InputType =
   | 'button'

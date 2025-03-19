@@ -1,7 +1,7 @@
 import apiSlice from '../../../app/api/apiSlice';
 import { UpdateUserRoleRequest, UserResponse } from '../../../app/api/apiTypes';
 import { userEndpoints } from '../../../app/endpoints';
-import { TagTypesEnum } from '../../../types/types';
+import { TagTypesEnum } from '../../../types/enums';
 
 export const usersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({

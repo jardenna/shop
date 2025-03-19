@@ -4,10 +4,11 @@ import MainTable from '../../features/admin/users/components/MainTable';
 import { useGetAllUsersQuery } from '../../features/admin/users/usersApiSlice';
 import useLanguage from '../../features/language/useLanguage';
 import useFormValidation from '../../hooks/useFormValidation';
+import { RoleTypes } from '../../types/types';
 
 export interface UpdateUserRole {
   id: number;
-  role: string;
+  role: RoleTypes;
 }
 
 const radioButtonRoleList: RadioListItem[] = [

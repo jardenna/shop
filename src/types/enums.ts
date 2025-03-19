@@ -18,6 +18,11 @@ export enum PopupRole {
   Status = 'status',
 }
 
+export enum TagTypesEnum {
+  Auth = 'Auth',
+  Users = 'Users',
+}
+
 export enum KeyCode {
   Alt = 'AltLeft',
   ArrowDown = 'ArrowDown',
