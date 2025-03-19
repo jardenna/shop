@@ -20,7 +20,6 @@ interface MainTableProps {
   tableCaption: string;
   tableData: UserResponse[];
   tableHeaders: string[];
-
   handleOnSubmit: (id: any) => void;
   onChange: (event: ChangeInputType) => void;
   onShowUpdateRole: (id: number) => void;
