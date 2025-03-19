@@ -3,9 +3,9 @@ import { ChangeInputType } from '../../../types/types';
 import Input from '../Input';
 import './_radio-button.scss';
 
-export interface RadioListItem {
+export interface RadioListItem<T = string> {
   label: string;
-  value: string;
+  value: T;
 }
 
 export type RadioBtnVariant = 'card';
