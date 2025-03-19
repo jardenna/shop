@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { BtnVariant, IconName } from '../types/enums';
+import { BtnType } from '../types/types';
 import Button from './Button';
 import IconContent from './IconContent';
 
@@ -9,6 +10,7 @@ interface IconBtnProps {
   title: string;
   ariaExpanded?: boolean;
   ariaSelected?: boolean;
+  btnType?: BtnType;
   className?: string;
   onClick: () => void;
 }
@@ -21,6 +23,7 @@ const IconBtn: FC<IconBtnProps> = ({
   className = '',
   ariaSelected,
   ariaExpanded,
+  btnType,
 }) => (
   <Button
     variant={BtnVariant.Ghost}
@@ -28,6 +31,7 @@ const IconBtn: FC<IconBtnProps> = ({
     className={className}
     ariaSelected={ariaSelected}
     ariaExpanded={ariaExpanded}
+    type={btnType}
   >
     <IconContent iconName={iconName} title={title} ariaLabel={ariaLabel} />
   </Button>
