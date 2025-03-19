@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { ALLOWED_ROLES } from '../utils/constants.js';
 
 const UserSchema = mongoose.Schema(
   {
@@ -21,11 +22,15 @@ const UserSchema = mongoose.Schema(
       required: true,
       default: false,
     },
-    role: {
-      type: String,
-      required: true,
-      default: 'user',
-    },
+
+    role: [
+      {
+        enum: ALLOWED_ROLES,
+        type: String,
+        default: ALLOWED_ROLES.User,
+        required: true,
+      },
+    ],
   },
   { timestamps: true },
 );
