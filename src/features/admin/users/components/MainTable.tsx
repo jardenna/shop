@@ -1,26 +1,30 @@
 import { FC, memo } from 'react';
 import { UserResponse } from '../../../../app/api/apiTypes';
-import Input from '../../../../components/formElements/Input';
+import RadioButton, {
+  RadioListItem,
+} from '../../../../components/formElements/radioButton/RadioButton';
 import IconBtn from '../../../../components/IconBtn';
 import Table from '../../../../components/table/Table';
 import TableGridList from '../../../../components/TableGridList';
 import useLocalStorage from '../../../../hooks/useLocalStorage';
-import { UpdateUserRole } from '../../../../pages/admin/UsersPage';
 import { IconName } from '../../../../types/enums';
-import { ChangeInputType } from '../../../../types/types';
+import { ChangeInputType, FormEventType } from '../../../../types/types';
 import useLanguage from '../../../language/useLanguage';
 
 interface MainTableProps {
+  initialChecked: string;
   isLoading: boolean;
   isPending: boolean;
+  radioButtonRoleList: RadioListItem[];
   showForm: number | null;
   tableCaption: string;
   tableData: UserResponse[];
   tableHeaders: string[];
-  value: string;
+
+  handleOnSubmit: (id: any) => void;
   onChange: (event: ChangeInputType) => void;
   onShowUpdateRole: (id: number) => void;
-  onSubmit: (user: UpdateUserRole) => void;
+  onSubmit: (event: FormEventType) => void;
 }
 
 const MainTable: FC<MainTableProps> = ({
@@ -30,10 +34,12 @@ const MainTable: FC<MainTableProps> = ({
   tableData,
   tableHeaders,
   onChange,
-  value,
   onShowUpdateRole,
   showForm,
   onSubmit,
+  handleOnSubmit,
+  radioButtonRoleList,
+  initialChecked,
 }) => {
   const { language } = useLanguage();
   const [padding, setPadding] = useLocalStorage('padding', 12);
@@ -102,20 +108,13 @@ const MainTable: FC<MainTableProps> = ({
                       }}
                     />
                     {showForm === data.id && (
-                      <form
-                        onSubmit={(e) => {
-                          e.preventDefault();
-                        }}
-                      >
-                        <Input
-                          name="username"
-                          id="username"
-                          value={value}
-                          labelText={language.username}
-                          inputHasNoLabel
+                      <form onSubmit={onSubmit}>
+                        <RadioButton
+                          radioButtonList={radioButtonRoleList}
+                          name="userRole"
+                          initialChecked={initialChecked}
                           onChange={onChange}
                         />
-
                         <IconBtn
                           iconName={IconName.Trash}
                           className="danger"
@@ -123,7 +122,7 @@ const MainTable: FC<MainTableProps> = ({
                           ariaLabel={language.deleteCustomer}
                           btnType="submit"
                           onClick={() => {
-                            onSubmit(data);
+                            handleOnSubmit(data);
                           }}
                         />
                       </form>
