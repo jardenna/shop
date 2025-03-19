@@ -11,14 +11,14 @@ export interface UpdateUserRole {
   role: RoleTypes;
 }
 
-const radioButtonRoleList: RadioListItem[] = [
+const radioButtonRoleList: RadioListItem<RoleTypes>[] = [
   {
     label: 'User',
-    value: 'user',
+    value: 'User',
   },
   {
-    label: 'Employe',
-    value: 'employe',
+    label: 'Employee',
+    value: 'Employee',
   },
 ];
 
