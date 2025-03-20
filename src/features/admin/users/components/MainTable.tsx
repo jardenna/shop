@@ -1,28 +1,18 @@
 import { FC, memo } from 'react';
 import { UserResponse } from '../../../../app/api/apiTypes';
-import RadioButton, {
-  RadioListItem,
-} from '../../../../components/formElements/radioButton/RadioButton';
 import IconBtn from '../../../../components/IconBtn';
 import Table from '../../../../components/table/Table';
 import TableGridList from '../../../../components/TableGridList';
 import useLocalStorage from '../../../../hooks/useLocalStorage';
 import { IconName } from '../../../../types/enums';
-import { ChangeInputType, FormEventType } from '../../../../types/types';
 import useLanguage from '../../../language/useLanguage';
 
 interface MainTableProps {
-  initialChecked: string;
   isLoading: boolean;
   isPending: boolean;
-  radioButtonRoleList: RadioListItem[];
   tableCaption: string;
   tableData: UserResponse[];
   tableHeaders: string[];
-  userId: string | null;
-  onChange: (event: ChangeInputType) => void;
-  onShowUpdateRole: (id: string) => void;
-  onSubmit: (event: FormEventType) => void;
 }
 
 const MainTable: FC<MainTableProps> = ({
@@ -31,12 +21,6 @@ const MainTable: FC<MainTableProps> = ({
   tableCaption,
   tableData,
   tableHeaders,
-  onChange,
-  onShowUpdateRole,
-  userId,
-  onSubmit,
-  radioButtonRoleList,
-  initialChecked,
 }) => {
   const { language } = useLanguage();
   const [padding, setPadding] = useLocalStorage('padding', 12);
@@ -80,7 +64,7 @@ const MainTable: FC<MainTableProps> = ({
           <tbody>
             <tr>
               <td colSpan={6} className="no-records-table-field">
-                <span className="no-record-info"> {language.noAlbumFound}</span>
+                <span className="no-record-info">{language.noAlbumFound}</span>
               </td>
             </tr>
           </tbody>
@@ -93,34 +77,8 @@ const MainTable: FC<MainTableProps> = ({
                   <td>
                     <a href={`mailto:${data.email}`}>{data.email}</a>
                   </td>
-                  <td className="user-role-cell">
-                    <span className="role">{data.role}</span>
-                    <IconBtn
-                      iconName={IconName.Edit}
-                      className="danger"
-                      title={language.trashCan}
-                      ariaLabel={language.deleteCustomer}
-                      onClick={() => {
-                        onShowUpdateRole(data.id);
-                      }}
-                    />
-                    {userId === data.id && (
-                      <form onSubmit={onSubmit}>
-                        <RadioButton
-                          radioButtonList={radioButtonRoleList}
-                          name="userRole"
-                          initialChecked={initialChecked}
-                          onChange={onChange}
-                        />
-                        <IconBtn
-                          iconName={IconName.Trash}
-                          className="danger"
-                          title={language.trashCan}
-                          ariaLabel={language.deleteCustomer}
-                          btnType="submit"
-                        />
-                      </form>
-                    )}
+                  <td>
+                    <span className="user-role">{data.role}</span>
                   </td>
 
                   <td className="delete-user-cell">
