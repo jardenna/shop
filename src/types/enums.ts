@@ -18,6 +18,11 @@ export enum PopupRole {
   Status = 'status',
 }
 
+export enum SortOrder {
+  Asc = 'asc',
+  Desc = 'desc',
+}
+
 export enum TagTypesEnum {
   Auth = 'Auth',
   Users = 'Users',
