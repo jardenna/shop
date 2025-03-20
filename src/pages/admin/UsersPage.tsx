@@ -7,7 +7,7 @@ import useFormValidation from '../../hooks/useFormValidation';
 import { RoleTypes } from '../../types/types';
 
 export interface UpdateUserRole {
-  id: number;
+  id: string;
   role: RoleTypes;
 }
 
@@ -29,7 +29,7 @@ const UsersPage: FC = () => {
     userRole: 'user',
   };
 
-  const [userId, setUserId] = useState<number | null>(null);
+  const [userId, setUserId] = useState<string | null>(null);
 
   const { data: allUsers, isLoading, isFetching } = useGetAllUsersQuery();
 
@@ -45,7 +45,7 @@ const UsersPage: FC = () => {
     console.log('test', x);
   };
 
-  const handleShowUpdateRole = (id: number) => {
+  const handleShowUpdateRole = (id: string) => {
     setUserId(id);
   };
 

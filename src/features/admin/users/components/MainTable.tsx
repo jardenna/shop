@@ -19,10 +19,10 @@ interface MainTableProps {
   tableCaption: string;
   tableData: UserResponse[];
   tableHeaders: string[];
-  userId: number | null;
-  handleOnSubmit: (id: any) => void;
+  userId: string | null;
+  handleOnSubmit: () => void;
   onChange: (event: ChangeInputType) => void;
-  onShowUpdateRole: (id: number) => void;
+  onShowUpdateRole: (id: string) => void;
   onSubmit: (event: FormEventType) => void;
 }
 
@@ -120,9 +120,7 @@ const MainTable: FC<MainTableProps> = ({
                           title={language.trashCan}
                           ariaLabel={language.deleteCustomer}
                           btnType="submit"
-                          onClick={() => {
-                            handleOnSubmit(data);
-                          }}
+                          onClick={handleOnSubmit}
                         />
                       </form>
                     )}
