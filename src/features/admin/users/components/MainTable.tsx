@@ -1,18 +1,20 @@
-import { FC, memo } from 'react';
+import { FC, memo, useMemo, useState } from 'react';
 import { UserResponse } from '../../../../app/api/apiTypes';
 import IconBtn from '../../../../components/IconBtn';
 import Table from '../../../../components/table/Table';
 import TableGridList from '../../../../components/TableGridList';
 import useLocalStorage from '../../../../hooks/useLocalStorage';
+import { TableHeaders } from '../../../../pages/admin/UsersPage';
 import { IconName } from '../../../../types/enums';
 import useLanguage from '../../../language/useLanguage';
+import sortTableData, { DirectionEnum } from '../sortTableData';
 
 interface MainTableProps {
+  headers: TableHeaders[];
   isLoading: boolean;
   isPending: boolean;
   tableCaption: string;
   tableData: UserResponse[];
-  tableHeaders: string[];
 }
 
 const MainTable: FC<MainTableProps> = ({
@@ -20,15 +22,34 @@ const MainTable: FC<MainTableProps> = ({
   isPending,
   tableCaption,
   tableData,
-  tableHeaders,
+  headers,
 }) => {
   const { language } = useLanguage();
   const [padding, setPadding] = useLocalStorage('padding', 12);
+  const [sort, setSort] = useState({
+    keyToSort: 'username',
+    direction: DirectionEnum.Asc,
+  });
+
+  const handleHeaderClick = (header: TableHeaders) => {
+    let newDirection = DirectionEnum.Desc;
+    if (header.key === sort.keyToSort) {
+      newDirection =
+        sort.direction === DirectionEnum.Asc
+          ? DirectionEnum.Desc
+          : DirectionEnum.Asc;
+    }
+    setSort({ keyToSort: header.key, direction: newDirection });
+  };
 
   const handlePadding = (paddingStyle: number) => {
     setPadding(paddingStyle);
   };
 
+  const sortedData = useMemo(
+    () => sortTableData(tableData, sort.keyToSort, sort.direction),
+    [tableData, sort],
+  );
   const style = {
     paddingTop: padding,
     paddingBottom: padding,
@@ -53,14 +74,22 @@ const MainTable: FC<MainTableProps> = ({
       <Table isLoading={isLoading} tableCaption={tableCaption}>
         <thead>
           <tr>
-            {tableHeaders.map((header) => (
-              <th scope="col" style={style} key={header}>
-                {header}
+            {headers.map((header) => (
+              <th scope="col" style={style} key={header.id}>
+                {header.label}
+                <IconBtn
+                  onClick={() => {
+                    handleHeaderClick(header);
+                  }}
+                  ariaLabel="sort"
+                  iconName={IconName.Account}
+                  title="sort"
+                />
               </th>
             ))}
           </tr>
         </thead>
-        {tableData.length === 0 ? (
+        {sortedData.length === 0 ? (
           <tbody>
             <tr>
               <td colSpan={6} className="no-records-table-field">
@@ -71,7 +100,7 @@ const MainTable: FC<MainTableProps> = ({
         ) : (
           <tbody>
             {!isPending ? (
-              tableData.map((data) => (
+              sortedData.map((data) => (
                 <tr key={data.id}>
                   <td>{data.username}</td>
                   <td>
