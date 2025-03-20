@@ -1,7 +1,7 @@
 export interface UserResponse {
   createdAt: Date;
   email: string;
-  id: number;
+  id: string;
   isAdmin: boolean;
   role: string;
   updatedAt: Date;
@@ -10,7 +10,7 @@ export interface UserResponse {
 
 export interface UpdateUserRoleRequest {
   role: string;
-  userId: number;
+  userId: string;
 }
 
 export interface AuthRequest {
