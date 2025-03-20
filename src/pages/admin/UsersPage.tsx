@@ -28,10 +28,10 @@ const UsersPage: FC = () => {
 
   const { onChange, onSubmit, values } = useFormValidation({
     initialState,
-    callback: handleOnSubmit,
+    callback: handleSubmit,
   });
 
-  function handleOnSubmit() {
+  function handleSubmit() {
     const x = {
       userId,
       role: values.userRole,
