@@ -34,12 +34,12 @@ const MainTable: FC<MainTableProps> = ({
     direction: 'asc',
   });
 
-  const handleHeaderClick = (tableHeader: TableHeaders) => {
+  const handleHeaderClick = (key: string | null) => {
     let newDirection: 'asc' | 'desc' = 'desc';
-    if (tableHeader.key === sort.keyToSort) {
+    if (key && key === sort.keyToSort) {
       newDirection = sort.direction === 'asc' ? 'desc' : 'asc';
     }
-    setSort({ keyToSort: tableHeader.key, direction: newDirection });
+    setSort({ keyToSort: key, direction: newDirection });
   };
 
   const handlePadding = (paddingStyle: number) => {
@@ -83,7 +83,7 @@ const MainTable: FC<MainTableProps> = ({
                 {tableHeader.key && (
                   <IconBtn
                     onClick={() => {
-                      handleHeaderClick(tableHeader);
+                      handleHeaderClick(tableHeader.key);
                     }}
                     ariaLabel="sort"
                     iconName={IconName.Account}
