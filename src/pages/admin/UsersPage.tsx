@@ -5,7 +5,7 @@ import useLanguage from '../../features/language/useLanguage';
 
 export interface TableHeaders {
   id: number;
-  key: string;
+  key: string | null;
   label: string;
 }
 const UsersPage: FC = () => {
@@ -15,7 +15,7 @@ const UsersPage: FC = () => {
     { id: 1, key: 'username', label: language.username },
     { id: 2, key: 'email', label: language.email },
     { id: 3, key: 'role', label: language.role },
-    { id: 4, key: '', label: '' },
+    { id: 4, key: null, label: '' },
   ];
 
   return (

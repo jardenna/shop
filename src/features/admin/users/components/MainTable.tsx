@@ -27,19 +27,19 @@ const MainTable: FC<MainTableProps> = ({
   const { language } = useLanguage();
   const [padding, setPadding] = useLocalStorage('padding', 12);
   const [sort, setSort] = useState<{
-    keyToSort: string;
+    keyToSort: string | null;
     direction: DirectionType;
   }>({
     keyToSort: 'username',
     direction: 'asc',
   });
 
-  const handleHeaderClick = (header: TableHeaders) => {
+  const handleHeaderClick = (tableHeader: TableHeaders) => {
     let newDirection: 'asc' | 'desc' = 'desc';
-    if (header.key === sort.keyToSort) {
+    if (tableHeader.key === sort.keyToSort) {
       newDirection = sort.direction === 'asc' ? 'desc' : 'asc';
     }
-    setSort({ keyToSort: header.key, direction: newDirection });
+    setSort({ keyToSort: tableHeader.key, direction: newDirection });
   };
 
   const handlePadding = (paddingStyle: number) => {
@@ -47,7 +47,10 @@ const MainTable: FC<MainTableProps> = ({
   };
 
   const sortedData = useMemo(
-    () => sortTableData(tableData, sort.keyToSort, sort.direction),
+    () =>
+      sort.keyToSort
+        ? sortTableData(tableData, sort.keyToSort, sort.direction)
+        : tableData,
     [tableData, sort],
   );
   const style = {
@@ -74,17 +77,19 @@ const MainTable: FC<MainTableProps> = ({
       <Table isLoading={isLoading} tableCaption={tableCaption}>
         <thead>
           <tr>
-            {tableHeaders.map((header) => (
-              <th scope="col" style={style} key={header.id}>
-                {header.label}
-                <IconBtn
-                  onClick={() => {
-                    handleHeaderClick(header);
-                  }}
-                  ariaLabel="sort"
-                  iconName={IconName.Account}
-                  title="sort"
-                />
+            {tableHeaders.map((tableHeader) => (
+              <th scope="col" style={style} key={tableHeader.id}>
+                {tableHeader.label}
+                {tableHeader.key && (
+                  <IconBtn
+                    onClick={() => {
+                      handleHeaderClick(tableHeader);
+                    }}
+                    ariaLabel="sort"
+                    iconName={IconName.Account}
+                    title="sort"
+                  />
+                )}
               </th>
             ))}
           </tr>
