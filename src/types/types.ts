@@ -9,8 +9,6 @@ export type BtnType = 'submit' | 'reset' | 'button';
 export type BlurEventType = { target: { name: string } };
 export type FormEventType = FormEvent<HTMLFormElement>;
 
-export type RoleTypes = 'Admin' | 'Employee' | 'User';
-
 export type InputType =
   | 'button'
   | 'checkbox'

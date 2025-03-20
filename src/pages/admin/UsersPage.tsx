@@ -1,19 +1,19 @@
 import { FC, useState } from 'react';
+import { RoleTypes } from '../../app/api/apiTypes';
 import { RadioListItem } from '../../components/formElements/radioButton/RadioButton';
 import MainTable from '../../features/admin/users/components/MainTable';
 import { useGetAllUsersQuery } from '../../features/admin/users/usersApiSlice';
 import useLanguage from '../../features/language/useLanguage';
 import useFormValidation from '../../hooks/useFormValidation';
-import { RoleTypes } from '../../types/types';
 
 const radioButtonRoleList: RadioListItem<RoleTypes>[] = [
   {
     label: 'User',
-    value: 'User',
+    value: 'user',
   },
   {
     label: 'Employee',
-    value: 'Employee',
+    value: 'employee',
   },
 ];
 

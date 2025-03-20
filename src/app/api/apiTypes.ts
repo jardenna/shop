@@ -1,9 +1,11 @@
+export type RoleTypes = 'admin' | 'employee' | 'user';
+
 export interface UserResponse {
   createdAt: Date;
   email: string;
   id: string;
   isAdmin: boolean;
-  role: string;
+  role: RoleTypes;
   updatedAt: Date;
   username: string;
 }
