@@ -1,4 +1,4 @@
-import { FC, memo, useMemo, useState } from 'react';
+import { FC, useMemo, useState } from 'react';
 import { UserResponse } from '../../../../app/api/apiTypes';
 import IconBtn from '../../../../components/IconBtn';
 import Table from '../../../../components/table/Table';
@@ -27,36 +27,25 @@ const MainTable: FC<MainTableProps> = ({
   const { language } = useLanguage();
   const [padding, setPadding] = useLocalStorage('padding', 12);
   const [sort, setSort] = useState<{
-    keyToSort: string | null;
+    keyToSort: string;
     direction: DirectionType;
   }>({
     keyToSort: 'username',
     direction: 'asc',
   });
 
-  const handleHeaderClick = (key: string | null) => {
-    let newDirection: 'asc' | 'desc' = 'desc';
-    if (key && key === sort.keyToSort) {
-      newDirection = sort.direction === 'asc' ? 'desc' : 'asc';
-    }
-    setSort({ keyToSort: key, direction: newDirection });
-  };
-
-  const handlePadding = (paddingStyle: number) => {
-    setPadding(paddingStyle);
+  const handleHeaderClick = (key: string) => {
+    setSort((prev) => ({
+      keyToSort: key,
+      direction:
+        prev.keyToSort === key && prev.direction === 'asc' ? 'desc' : 'asc',
+    }));
   };
 
   const sortedData = useMemo(
-    () =>
-      sort.keyToSort
-        ? sortTableData(tableData, sort.keyToSort, sort.direction)
-        : tableData,
+    () => sortTableData(tableData, sort.keyToSort, sort.direction),
     [tableData, sort],
   );
-  const style = {
-    paddingTop: padding,
-    paddingBottom: padding,
-  };
 
   const tableGridIconList = [
     { padding: 4, iconName: IconName.GridSmall, title: language.gridSmall },
@@ -68,7 +57,7 @@ const MainTable: FC<MainTableProps> = ({
     <>
       <div className="table-actions">
         <TableGridList
-          onSetPadding={handlePadding}
+          onSetPadding={setPadding}
           tableGridIconList={tableGridIconList}
           isActive={padding}
         />
@@ -77,13 +66,17 @@ const MainTable: FC<MainTableProps> = ({
       <Table isLoading={isLoading} tableCaption={tableCaption}>
         <thead>
           <tr>
-            {tableHeaders.map((tableHeader) => (
-              <th scope="col" style={style} key={tableHeader.id}>
-                {tableHeader.label}
-                {tableHeader.key && (
+            {tableHeaders.map(({ id, label, key }) => (
+              <th
+                scope="col"
+                style={{ paddingTop: padding, paddingBottom: padding }}
+                key={id}
+              >
+                {label}
+                {key && (
                   <IconBtn
                     onClick={() => {
-                      handleHeaderClick(tableHeader.key);
+                      handleHeaderClick(key);
                     }}
                     ariaLabel="sort"
                     iconName={IconName.Account}
@@ -94,57 +87,58 @@ const MainTable: FC<MainTableProps> = ({
             ))}
           </tr>
         </thead>
-        {sortedData.length === 0 ? (
-          <tbody>
+
+        <tbody>
+          {sortedData.length === 0 && !isPending && (
             <tr>
-              <td colSpan={6} className="no-records-table-field">
+              <td
+                colSpan={tableHeaders.length}
+                className="no-records-table-field"
+              >
                 <span className="no-record-info">{language.noAlbumFound}</span>
               </td>
             </tr>
-          </tbody>
-        ) : (
-          <tbody>
-            {!isPending ? (
-              sortedData.map((data) => (
-                <tr key={data.id}>
-                  <td>{data.username}</td>
-                  <td>
-                    <a href={`mailto:${data.email}`}>{data.email}</a>
-                  </td>
-                  <td>
-                    <span className="user-role">{data.role}</span>
-                  </td>
+          )}
 
-                  <td className="delete-user-cell">
-                    <IconBtn
-                      iconName={IconName.Trash}
-                      className="danger"
-                      title={language.trashCan}
-                      ariaLabel={language.deleteCustomer}
-                      onClick={() => {
-                        console.log(122);
-                      }}
-                    />
-                  </td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan={6} className="no-records-table-field">
-                  skeleton
-                  {/* <SkeletonList
-                    count={8}
-                    className="column"
-                    variant="secondary"
-                  /> */}
+          {isPending && (
+            <tr>
+              <td
+                colSpan={tableHeaders.length}
+                className="no-records-table-field"
+              >
+                skeleton
+              </td>
+            </tr>
+          )}
+
+          {!isPending &&
+            sortedData.length > 0 &&
+            sortedData.map(({ id, username, email, role }) => (
+              <tr key={id}>
+                <td>{username}</td>
+                <td>
+                  <a href={`mailto:${email}`}>{email}</a>
+                </td>
+                <td>
+                  <span className="user-role">{role}</span>
+                </td>
+                <td className="delete-user-cell">
+                  <IconBtn
+                    iconName={IconName.Trash}
+                    className="danger"
+                    title={language.trashCan}
+                    ariaLabel={language.deleteCustomer}
+                    onClick={() => {
+                      console.log(`Delete ${id}`);
+                    }}
+                  />
                 </td>
               </tr>
-            )}
-          </tbody>
-        )}
+            ))}
+        </tbody>
       </Table>
     </>
   );
 };
 
-export default memo(MainTable);
+export default MainTable;
