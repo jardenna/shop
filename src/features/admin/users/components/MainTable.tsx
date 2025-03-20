@@ -16,10 +16,10 @@ interface MainTableProps {
   isLoading: boolean;
   isPending: boolean;
   radioButtonRoleList: RadioListItem[];
-  showForm: number | null;
   tableCaption: string;
   tableData: UserResponse[];
   tableHeaders: string[];
+  userId: number | null;
   handleOnSubmit: (id: any) => void;
   onChange: (event: ChangeInputType) => void;
   onShowUpdateRole: (id: number) => void;
@@ -34,7 +34,7 @@ const MainTable: FC<MainTableProps> = ({
   tableHeaders,
   onChange,
   onShowUpdateRole,
-  showForm,
+  userId,
   onSubmit,
   handleOnSubmit,
   radioButtonRoleList,
@@ -106,7 +106,7 @@ const MainTable: FC<MainTableProps> = ({
                         onShowUpdateRole(data.id);
                       }}
                     />
-                    {showForm === data.id && (
+                    {userId === data.id && (
                       <form onSubmit={onSubmit}>
                         <RadioButton
                           radioButtonList={radioButtonRoleList}

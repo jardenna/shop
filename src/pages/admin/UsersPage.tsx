@@ -29,23 +29,24 @@ const UsersPage: FC = () => {
     userRole: 'user',
   };
 
-  const [showForm, setShowForm] = useState<number | null>(null);
+  const [userId, setUserId] = useState<number | null>(null);
+
   const { data: allUsers, isLoading, isFetching } = useGetAllUsersQuery();
 
   const { onChange, onSubmit, values } = useFormValidation({
     initialState,
   });
 
-  const handleOnSubmit = (user: UpdateUserRole) => {
+  const handleOnSubmit = () => {
     const x = {
-      userId: user.id,
+      userId,
       role: values.userRole,
     };
     console.log('test', x);
   };
 
   const handleShowUpdateRole = (id: number) => {
-    setShowForm(id);
+    setUserId(id);
   };
 
   return (
@@ -58,7 +59,7 @@ const UsersPage: FC = () => {
           tableData={allUsers}
           tableHeaders={[language.username, language.email, language.role, '']}
           onShowUpdateRole={handleShowUpdateRole}
-          showForm={showForm}
+          userId={userId}
           onChange={onChange}
           onSubmit={onSubmit}
           handleOnSubmit={handleOnSubmit}
