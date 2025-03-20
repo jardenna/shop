@@ -10,11 +10,11 @@ import useLanguage from '../../../language/useLanguage';
 import sortTableData, { DirectionType } from '../sortTableData';
 
 interface MainTableProps {
-  headers: TableHeaders[];
   isLoading: boolean;
   isPending: boolean;
   tableCaption: string;
   tableData: UserResponse[];
+  tableHeaders: TableHeaders[];
 }
 
 const MainTable: FC<MainTableProps> = ({
@@ -22,7 +22,7 @@ const MainTable: FC<MainTableProps> = ({
   isPending,
   tableCaption,
   tableData,
-  headers,
+  tableHeaders,
 }) => {
   const { language } = useLanguage();
   const [padding, setPadding] = useLocalStorage('padding', 12);
@@ -74,7 +74,7 @@ const MainTable: FC<MainTableProps> = ({
       <Table isLoading={isLoading} tableCaption={tableCaption}>
         <thead>
           <tr>
-            {headers.map((header) => (
+            {tableHeaders.map((header) => (
               <th scope="col" style={style} key={header.id}>
                 {header.label}
                 <IconBtn

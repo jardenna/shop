@@ -11,7 +11,7 @@ export interface TableHeaders {
 const UsersPage: FC = () => {
   const { language } = useLanguage();
   const { data: allUsers, isLoading, isFetching } = useGetAllUsersQuery();
-  const headers: TableHeaders[] = [
+  const tableHeaders: TableHeaders[] = [
     { id: 1, key: 'username', label: language.username },
     { id: 2, key: 'email', label: language.email },
     { id: 3, key: 'role', label: language.role },
@@ -26,7 +26,7 @@ const UsersPage: FC = () => {
           isPending={isFetching}
           tableCaption={language.customersList}
           tableData={allUsers}
-          headers={headers}
+          tableHeaders={tableHeaders}
         />
       )}
     </section>
