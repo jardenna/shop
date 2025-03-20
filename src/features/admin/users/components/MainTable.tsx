@@ -7,7 +7,7 @@ import useLocalStorage from '../../../../hooks/useLocalStorage';
 import { TableHeaders } from '../../../../pages/admin/UsersPage';
 import { IconName } from '../../../../types/enums';
 import useLanguage from '../../../language/useLanguage';
-import sortTableData, { DirectionEnum } from '../sortTableData';
+import sortTableData, { DirectionType } from '../sortTableData';
 
 interface MainTableProps {
   headers: TableHeaders[];
@@ -26,18 +26,18 @@ const MainTable: FC<MainTableProps> = ({
 }) => {
   const { language } = useLanguage();
   const [padding, setPadding] = useLocalStorage('padding', 12);
-  const [sort, setSort] = useState({
+  const [sort, setSort] = useState<{
+    keyToSort: string;
+    direction: DirectionType;
+  }>({
     keyToSort: 'username',
-    direction: DirectionEnum.Asc,
+    direction: 'asc',
   });
 
   const handleHeaderClick = (header: TableHeaders) => {
-    let newDirection = DirectionEnum.Desc;
+    let newDirection: 'asc' | 'desc' = 'desc';
     if (header.key === sort.keyToSort) {
-      newDirection =
-        sort.direction === DirectionEnum.Asc
-          ? DirectionEnum.Desc
-          : DirectionEnum.Asc;
+      newDirection = sort.direction === 'asc' ? 'desc' : 'asc';
     }
     setSort({ keyToSort: header.key, direction: newDirection });
   };
