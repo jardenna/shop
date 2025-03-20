@@ -10,7 +10,6 @@ const authEndpoints = {
 
 const userEndpoints = {
   users: baseUserApi,
-  user: `${baseAuthApi}/id`,
   userProfile: `${baseAuthApi}/profile`,
 };
 

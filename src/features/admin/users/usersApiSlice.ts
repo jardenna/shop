@@ -10,7 +10,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
       providesTags: [TagTypesEnum.Auth],
     }),
     getUserByd: builder.query<UserResponse, number>({
-      query: (id) => `${userEndpoints.user}/${id}`,
+      query: (id) => `${userEndpoints.users}/${id}`,
     }),
     updateUserRole: builder.mutation<UserResponse, UpdateUserRoleRequest>({
       query: (data) => ({
