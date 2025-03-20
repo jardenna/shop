@@ -20,7 +20,6 @@ interface MainTableProps {
   tableData: UserResponse[];
   tableHeaders: string[];
   userId: string | null;
-  handleOnSubmit: () => void;
   onChange: (event: ChangeInputType) => void;
   onShowUpdateRole: (id: string) => void;
   onSubmit: (event: FormEventType) => void;
@@ -36,7 +35,6 @@ const MainTable: FC<MainTableProps> = ({
   onShowUpdateRole,
   userId,
   onSubmit,
-  handleOnSubmit,
   radioButtonRoleList,
   initialChecked,
 }) => {
@@ -120,7 +118,6 @@ const MainTable: FC<MainTableProps> = ({
                           title={language.trashCan}
                           ariaLabel={language.deleteCustomer}
                           btnType="submit"
-                          onClick={handleOnSubmit}
                         />
                       </form>
                     )}

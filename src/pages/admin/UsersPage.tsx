@@ -6,11 +6,6 @@ import useLanguage from '../../features/language/useLanguage';
 import useFormValidation from '../../hooks/useFormValidation';
 import { RoleTypes } from '../../types/types';
 
-export interface UpdateUserRole {
-  id: string;
-  role: RoleTypes;
-}
-
 const radioButtonRoleList: RadioListItem<RoleTypes>[] = [
   {
     label: 'User',
@@ -24,26 +19,25 @@ const radioButtonRoleList: RadioListItem<RoleTypes>[] = [
 
 const UsersPage: FC = () => {
   const { language } = useLanguage();
+  const [userId, setUserId] = useState<string | null>(null);
+  const { data: allUsers, isLoading, isFetching } = useGetAllUsersQuery();
 
   const initialState = {
     userRole: 'user',
   };
 
-  const [userId, setUserId] = useState<string | null>(null);
-
-  const { data: allUsers, isLoading, isFetching } = useGetAllUsersQuery();
-
   const { onChange, onSubmit, values } = useFormValidation({
     initialState,
+    callback: handleOnSubmit,
   });
 
-  const handleOnSubmit = () => {
+  function handleOnSubmit() {
     const x = {
       userId,
       role: values.userRole,
     };
     console.log('test', x);
-  };
+  }
 
   const handleShowUpdateRole = (id: string) => {
     setUserId(id);
@@ -62,7 +56,6 @@ const UsersPage: FC = () => {
           userId={userId}
           onChange={onChange}
           onSubmit={onSubmit}
-          handleOnSubmit={handleOnSubmit}
           radioButtonRoleList={radioButtonRoleList}
           initialChecked={values.userRole}
         />

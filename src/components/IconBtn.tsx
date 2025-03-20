@@ -12,7 +12,7 @@ interface IconBtnProps {
   ariaSelected?: boolean;
   btnType?: BtnType;
   className?: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const IconBtn: FC<IconBtnProps> = ({
