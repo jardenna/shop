@@ -83,7 +83,7 @@ export default tseslint.config(
       '@typescript-eslint/no-unsafe-member-access': 'off',
       '@typescript-eslint/restrict-template-expressions': 'off',
       // '@typescript-eslint/no-unsafe-call': 'off',
-
+      'object-shorthand': ['error', 'always'],
       'import/no-extraneous-dependencies': [
         'error',
         {
