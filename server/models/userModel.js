@@ -27,8 +27,7 @@ const UserSchema = mongoose.Schema(
       {
         enum: ALLOWED_ROLES,
         type: String,
-        default: ALLOWED_ROLES.User,
-        required: true,
+        default: 'User',
       },
     ],
   },
