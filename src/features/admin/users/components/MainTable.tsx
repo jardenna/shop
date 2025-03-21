@@ -17,6 +17,7 @@ interface MainTableProps {
   tableCaption: string;
   tableData: UserResponse[];
   tableHeaders: TableHeaders[];
+  onDeleteUser: (id: string) => void;
 }
 
 const MainTable: FC<MainTableProps> = ({
@@ -25,6 +26,7 @@ const MainTable: FC<MainTableProps> = ({
   tableCaption,
   tableData,
   tableHeaders,
+  onDeleteUser,
 }) => {
   const { language } = useLanguage();
   const [padding, setPadding] = useLocalStorage('padding', 12);
@@ -164,7 +166,7 @@ const MainTable: FC<MainTableProps> = ({
                     title={language.trashCan}
                     ariaLabel={language.deleteCustomer}
                     onClick={() => {
-                      console.log(`Delete ${id}`);
+                      onDeleteUser(id);
                     }}
                   />
                 </td>
