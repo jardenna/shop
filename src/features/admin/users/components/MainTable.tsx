@@ -8,8 +8,9 @@ import useFormValidation from '../../../../hooks/useFormValidation';
 import useLocalStorage from '../../../../hooks/useLocalStorage';
 import { TableHeaders } from '../../../../pages/admin/UsersPage';
 import { BtnVariant, IconName } from '../../../../types/enums';
+import { DirectionType } from '../../../../types/types';
 import useLanguage from '../../../language/useLanguage';
-import sortTableData, { DirectionType } from '../sortTableData';
+import sortTableData from '../sortTableData';
 import TableHeaderCell from './TableHeaderCell';
 
 interface MainTableProps {

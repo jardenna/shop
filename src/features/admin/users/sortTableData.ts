@@ -1,4 +1,4 @@
-export type DirectionType = 'asc' | 'desc';
+import { DirectionType } from '../../../types/types';
 
 const sortTableData = <T extends Record<string, any>>(
   data: T[],

@@ -1,5 +1,7 @@
 import { ChangeEvent, FormEvent, MouseEvent } from 'react';
 
+export type DirectionType = 'asc' | 'desc';
+
 export type ButtonEventType = MouseEvent<HTMLButtonElement>;
 export type ChangeInputType = ChangeEvent<
   HTMLInputElement | HTMLTextAreaElement

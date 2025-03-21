@@ -1,9 +1,8 @@
 import { FC } from 'react';
 import IconBtn from '../../../../components/IconBtn';
 import { IconName } from '../../../../types/enums';
-import { ChangeInputType } from '../../../../types/types';
+import { ChangeInputType, DirectionType } from '../../../../types/types';
 import useLanguage from '../../../language/useLanguage';
-import { DirectionType } from '../sortTableData';
 import SearchField from './SearchField';
 
 type SortProps = {
