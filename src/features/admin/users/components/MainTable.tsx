@@ -6,8 +6,10 @@ import TableGridList from '../../../../components/TableGridList';
 import useLocalStorage from '../../../../hooks/useLocalStorage';
 import { TableHeaders } from '../../../../pages/admin/UsersPage';
 import { IconName } from '../../../../types/enums';
+import { ChangeInputType } from '../../../../types/types';
 import useLanguage from '../../../language/useLanguage';
 import sortTableData, { DirectionType } from '../sortTableData';
+import SearchField from './SearchField';
 
 interface MainTableProps {
   isLoading: boolean;
@@ -53,6 +55,17 @@ const MainTable: FC<MainTableProps> = ({
     { padding: 20, iconName: IconName.GridLarge, title: language.gridLarge },
   ];
 
+  const [values, setValues] = useState({
+    search: '',
+  });
+
+  const handleFilterRows = (event: ChangeInputType) => {
+    const { value, name, id } = event.target;
+    console.log(id);
+
+    setValues({ ...values, [name]: value });
+  };
+
   return (
     <>
       <div className="table-actions">
@@ -74,14 +87,21 @@ const MainTable: FC<MainTableProps> = ({
               >
                 {label}
                 {key && (
-                  <IconBtn
-                    onClick={() => {
-                      handleHeaderClick(key);
-                    }}
-                    ariaLabel="sort"
-                    iconName={IconName.Account}
-                    title="sort"
-                  />
+                  <>
+                    <IconBtn
+                      onClick={() => {
+                        handleHeaderClick(key);
+                      }}
+                      ariaLabel="sort"
+                      iconName={IconName.Account}
+                      title="sort"
+                    />
+                    <SearchField
+                      onFilterRows={handleFilterRows}
+                      title={key}
+                      value={values.search}
+                    />
+                  </>
                 )}
               </th>
             ))}
