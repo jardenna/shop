@@ -39,7 +39,7 @@ const MainTable: FC<MainTableProps> = ({
     direction: 'asc',
   });
 
-  const handleHeaderClick = (key: string) => {
+  const handleSortRows = (key: string) => {
     setSort((prev) => ({
       keyToSort: key,
       direction:
@@ -89,6 +89,7 @@ const MainTable: FC<MainTableProps> = ({
   const handleShowConfirmDelete = (id: string) => {
     setConfirmDeleteId(id);
   };
+  console.log(sort);
 
   const handleCloseConfirmDelete = () => {
     setConfirmDeleteId(null);
@@ -113,24 +114,30 @@ const MainTable: FC<MainTableProps> = ({
                 style={{ paddingTop: padding, paddingBottom: padding }}
                 key={id}
               >
-                {label}
-                {key && (
-                  <>
-                    <IconBtn
-                      onClick={() => {
-                        handleHeaderClick(key);
-                      }}
-                      ariaLabel="sort"
-                      iconName={IconName.Account}
-                      title="sort"
-                    />
-                    <SearchField
-                      onFilterRows={handleFilterRows}
-                      title={key}
-                      value={values[key]}
-                    />
-                  </>
-                )}
+                <div>
+                  {label}
+                  {key && (
+                    <>
+                      <IconBtn
+                        onClick={() => {
+                          handleSortRows(key);
+                        }}
+                        ariaLabel="sort"
+                        iconName={
+                          sort.direction === 'asc' && sort.keyToSort === key
+                            ? IconName.ArrowUp
+                            : IconName.ArrowDown
+                        }
+                        title="sort"
+                      />
+                      <SearchField
+                        onFilterRows={handleFilterRows}
+                        title={key}
+                        value={values[key]}
+                      />
+                    </>
+                  )}
+                </div>
               </th>
             ))}
           </tr>
@@ -181,27 +188,28 @@ const MainTable: FC<MainTableProps> = ({
                     }}
                   />
                   {confirmDeleteId === id && (
-                    <>
+                    <div>
                       <span>
                         Are you sure that you want to delete {username}?
                       </span>
-                      <Button
-                        className="danger"
-                        ariaLabel={language.deleteCustomer}
-                        onClick={() => {
-                          onDeleteUser(id, username);
-                        }}
-                      >
-                        OK
-                      </Button>
-                      <Button
-                        className="danger"
-                        ariaLabel={language.deleteCustomer}
-                        onClick={handleCloseConfirmDelete}
-                      >
-                        Annuller
-                      </Button>
-                    </>
+                      <div>
+                        <Button
+                          className="danger"
+                          ariaLabel={language.deleteCustomer}
+                          onClick={() => {
+                            onDeleteUser(id, username);
+                          }}
+                        >
+                          OK
+                        </Button>
+                        <Button
+                          ariaLabel={language.deleteCustomer}
+                          onClick={handleCloseConfirmDelete}
+                        >
+                          Annuller
+                        </Button>
+                      </div>
+                    </div>
                   )}
                 </td>
               </tr>
