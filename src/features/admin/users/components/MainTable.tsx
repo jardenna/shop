@@ -1,5 +1,6 @@
 import { FC, useMemo, useState } from 'react';
 import { UserResponse } from '../../../../app/api/apiTypes';
+import Button from '../../../../components/Button';
 import IconBtn from '../../../../components/IconBtn';
 import Table from '../../../../components/table/Table';
 import TableGridList from '../../../../components/TableGridList';
@@ -17,7 +18,7 @@ interface MainTableProps {
   tableCaption: string;
   tableData: UserResponse[];
   tableHeaders: TableHeaders[];
-  onDeleteUser: (id: string) => void;
+  onDeleteUser: (id: string, username: string) => void;
 }
 
 const MainTable: FC<MainTableProps> = ({
@@ -82,6 +83,16 @@ const MainTable: FC<MainTableProps> = ({
 
     return sortTableData(filteredData, sort.keyToSort, sort.direction);
   }, [tableData, sort, values]);
+
+  const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
+
+  const handleShowConfirmDelete = (id: string) => {
+    setConfirmDeleteId(id);
+  };
+
+  const handleCloseConfirmDelete = () => {
+    setConfirmDeleteId(null);
+  };
 
   return (
     <>
@@ -166,9 +177,32 @@ const MainTable: FC<MainTableProps> = ({
                     title={language.trashCan}
                     ariaLabel={language.deleteCustomer}
                     onClick={() => {
-                      onDeleteUser(id);
+                      handleShowConfirmDelete(id);
                     }}
                   />
+                  {confirmDeleteId === id && (
+                    <>
+                      <span>
+                        Are you sure that you want to delete {username}?
+                      </span>
+                      <Button
+                        className="danger"
+                        ariaLabel={language.deleteCustomer}
+                        onClick={() => {
+                          onDeleteUser(id, username);
+                        }}
+                      >
+                        OK
+                      </Button>
+                      <Button
+                        className="danger"
+                        ariaLabel={language.deleteCustomer}
+                        onClick={handleCloseConfirmDelete}
+                      >
+                        Annuller
+                      </Button>
+                    </>
+                  )}
                 </td>
               </tr>
             ))}

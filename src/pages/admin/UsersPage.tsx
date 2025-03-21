@@ -1,11 +1,11 @@
 import { FC } from 'react';
+import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import MainTable from '../../features/admin/users/components/MainTable';
 import {
   useDeleteUserMutation,
   useGetAllUsersQuery,
 } from '../../features/admin/users/usersApiSlice';
 import useLanguage from '../../features/language/useLanguage';
-import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 
 export interface TableHeaders {
   id: number;
@@ -25,12 +25,12 @@ const UsersPage: FC = () => {
   const [deleteUser] = useDeleteUserMutation();
   const { addMessagePopup } = useMessagePopup();
 
-  const handleDeleteUser = async (id: string) => {
+  const handleDeleteUser = async (id: string, username: string) => {
     try {
       await deleteUser(id).unwrap();
       addMessagePopup({
         messagePopupType: 'success',
-        message: 'User deleted',
+        message: `${username} deleted`,
       });
     } catch (error: any) {
       addMessagePopup({
