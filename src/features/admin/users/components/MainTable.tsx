@@ -55,16 +55,31 @@ const MainTable: FC<MainTableProps> = ({
     { padding: 20, iconName: IconName.GridLarge, title: language.gridLarge },
   ];
 
-  const [values, setValues] = useState({
-    search: '',
+  const [values, setValues] = useState<{ [key: string]: string }>({
+    username: '',
+    email: '',
+    role: '',
   });
 
   const handleFilterRows = (event: ChangeInputType) => {
-    const { value, name, id } = event.target;
-    console.log(id);
+    const { value, name } = event.target;
 
     setValues({ ...values, [name]: value });
   };
+
+  const filteredAndSortedData = useMemo(() => {
+    const filteredData = tableData.filter((row) =>
+      Object.entries(values).every(([key, value]) =>
+        value
+          ? (row[key as keyof UserResponse] as string)
+              .toLowerCase()
+              .includes(value.toLowerCase())
+          : true,
+      ),
+    );
+
+    return sortTableData(filteredData, sort.keyToSort, sort.direction);
+  }, [tableData, sort, values]);
 
   return (
     <>
@@ -99,7 +114,7 @@ const MainTable: FC<MainTableProps> = ({
                     <SearchField
                       onFilterRows={handleFilterRows}
                       title={key}
-                      value={values.search}
+                      value={values[key]}
                     />
                   </>
                 )}
@@ -132,8 +147,8 @@ const MainTable: FC<MainTableProps> = ({
           )}
 
           {!isPending &&
-            sortedData.length > 0 &&
-            sortedData.map(({ id, username, email, role }) => (
+            filteredAndSortedData.length > 0 &&
+            filteredAndSortedData.map(({ id, username, email, role }) => (
               <tr key={id}>
                 <td>{username}</td>
                 <td>
