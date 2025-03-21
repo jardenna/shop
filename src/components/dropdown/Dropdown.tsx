@@ -1,9 +1,7 @@
-import { FC, ReactNode, useEffect, useRef, useState } from 'react';
-import { useLocation } from 'react-router';
+import { FC, ReactNode } from 'react';
 import useLanguage from '../../features/language/useLanguage';
-import useClickOutside from '../../hooks/useClickOutside';
-import useKeyPress from '../../hooks/useKeyPress';
-import { BtnVariant, KeyCode } from '../../types/enums';
+import useDropdown from '../../hooks/useDropdown';
+import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import './_dropdown.scss';
 
@@ -32,42 +30,14 @@ const Dropdown: FC<DropdownProps> = ({
   primaryBtnClassName = '',
   className = '',
 }) => {
-  const location = useLocation();
-  const dropdownRef = useRef<HTMLDivElement | null>(null);
-  const [dropdownIsOpen, setDropdownIsOpen] = useState(false);
   const { language } = useLanguage();
-
-  useKeyPress(() => {
-    setDropdownIsOpen(false);
-  }, [KeyCode.Esc]);
-
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
-  const toggleDropdownList = () => {
-    setDropdownIsOpen(!dropdownIsOpen);
-  };
-
-  useClickOutside(dropdownRef, () => {
-    setDropdownIsOpen(false);
-  }, [buttonRef]);
-
-  useEffect(() => {
-    setDropdownIsOpen(false);
-  }, [location]);
-
-  const handleSecondaryBtnClick = () => {
-    if (onSecondaryClick) {
-      onSecondaryClick();
-    }
-    setDropdownIsOpen(false);
-  };
+  const { dropdownRef, dropdownIsOpen, toggleDropdownList, handleCallback } =
+    useDropdown({ callback: onSecondaryClick });
 
   return (
     <div className="dropdown-container">
       <Button
         variant={btnVariant}
-        ref={(el) => {
-          buttonRef.current = el;
-        }}
         onClick={toggleDropdownList}
         ariaExpanded={dropdownIsOpen}
         ariaHasPopup
@@ -80,7 +50,7 @@ const Dropdown: FC<DropdownProps> = ({
         <section className="dropdown-content" ref={dropdownRef}>
           <span>{text}</span>
           <footer className="dropdown-content-footer">
-            <Button onClick={handleSecondaryBtnClick}>
+            <Button onClick={handleCallback}>
               {secondaryBtnLabel || language.cancel}
             </Button>
             <Button className={primaryBtnClassName} onClick={onPrimaryClick}>

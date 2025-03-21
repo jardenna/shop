@@ -1,8 +1,6 @@
-import { FC, ReactNode, useEffect, useRef, useState } from 'react';
-import { useLocation } from 'react-router';
-import useClickOutside from '../../hooks/useClickOutside';
-import useKeyPress from '../../hooks/useKeyPress';
-import { BtnVariant, KeyCode } from '../../types/enums';
+import { FC, ReactNode, useRef } from 'react';
+import useDropdown from '../../hooks/useDropdown';
+import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import './_dropdown-btn.scss';
 import DropdownList from './DropdownList';
@@ -30,26 +28,8 @@ const DropdownBtn: FC<DropdownBtnProps> = ({
   ariaControls,
   children,
 }) => {
-  const location = useLocation();
-  const dropdownRef = useRef<HTMLDivElement | null>(null);
-  const [dropdownIsOpen, setDropdownIsOpen] = useState(false);
-
-  useKeyPress(() => {
-    setDropdownIsOpen(false);
-  }, [KeyCode.Esc]);
-
+  const { dropdownRef, dropdownIsOpen, toggleDropdownList } = useDropdown({});
   const buttonRef = useRef<HTMLButtonElement | null>(null);
-  const toggleDropdownList = () => {
-    setDropdownIsOpen(!dropdownIsOpen);
-  };
-
-  useClickOutside(dropdownRef, () => {
-    setDropdownIsOpen(false);
-  }, [buttonRef]);
-
-  useEffect(() => {
-    setDropdownIsOpen(false);
-  }, [location]);
 
   return (
     <div className="dropdown-container">
