@@ -154,7 +154,7 @@ const getUserById = asyncHandler(async (req, res) => {
 // @route   /api/users/:id
 // @method   Put
 // @params  id
-// @access  Private for Admin
+// @access  Private
 const updateUserById = asyncHandler(async (req, res) => {
   const { username, email, role } = req.body;
   const user = await User.findById(req.params.id);
