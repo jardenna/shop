@@ -1,12 +1,13 @@
 import { FC, useMemo, useState } from 'react';
 import { UserResponse } from '../../../../app/api/apiTypes';
-import Button from '../../../../components/Button';
+import Dropdown from '../../../../components/dropdownBtn/dropdown/Dropdown';
 import IconBtn from '../../../../components/IconBtn';
+import Icon from '../../../../components/icons/Icon';
 import Table from '../../../../components/table/Table';
 import TableGridList from '../../../../components/TableGridList';
 import useLocalStorage from '../../../../hooks/useLocalStorage';
 import { TableHeaders } from '../../../../pages/admin/UsersPage';
-import { IconName } from '../../../../types/enums';
+import { BtnVariant, IconName } from '../../../../types/enums';
 import { ChangeInputType } from '../../../../types/types';
 import useLanguage from '../../../language/useLanguage';
 import sortTableData, { DirectionType } from '../sortTableData';
@@ -84,15 +85,15 @@ const MainTable: FC<MainTableProps> = ({
     return sortTableData(filteredData, sort.keyToSort, sort.direction);
   }, [tableData, sort, values]);
 
-  const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
+  // const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
 
-  const handleShowConfirmDelete = (id: string) => {
-    setConfirmDeleteId(id);
-  };
+  // const handleShowConfirmDelete = (id: string) => {
+  //   setConfirmDeleteId(id);
+  // };
 
-  const handleCloseConfirmDelete = () => {
-    setConfirmDeleteId(null);
-  };
+  // const handleCloseConfirmDelete = () => {
+  //   setConfirmDeleteId(null);
+  // };
 
   const onClearAllSearch = () => {
     console.log(123);
@@ -194,16 +195,25 @@ const MainTable: FC<MainTableProps> = ({
                 </td>
                 <td>
                   <div>
-                    <IconBtn
-                      iconName={IconName.Trash}
-                      className="danger"
-                      title={language.trashCan}
-                      ariaLabel={language.deleteCustomer}
-                      onClick={() => {
-                        handleShowConfirmDelete(id);
-                      }}
-                    />
-                    {confirmDeleteId === id && (
+                    {role !== 'admin' && (
+                      <Dropdown
+                        ariaControls="test"
+                        text={`Are you sure that you want to delete ${username}?`}
+                        btnVariant={BtnVariant.Ghost}
+                        onPrimaryClick={() => {
+                          onDeleteUser(id, username);
+                        }}
+                        primaryBtnLabel="delete"
+                      >
+                        <Icon
+                          iconName={IconName.Trash}
+                          className="danger"
+                          title={language.trashCan}
+                          ariaLabel={language.deleteCustomer}
+                        />
+                      </Dropdown>
+                    )}
+                    {/* {confirmDeleteId === id && (
                       <section className="delete-row">
                         <span>
                           Are you sure that you want to delete {username}?
@@ -226,7 +236,7 @@ const MainTable: FC<MainTableProps> = ({
                           </Button>
                         </footer>
                       </section>
-                    )}
+                    )} */}
                   </div>
                 </td>
               </tr>
