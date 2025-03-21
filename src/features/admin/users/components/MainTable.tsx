@@ -1,7 +1,6 @@
 import { FC, useMemo, useState } from 'react';
 import { UserResponse } from '../../../../app/api/apiTypes';
 import Dropdown from '../../../../components/dropdown/Dropdown';
-import IconBtn from '../../../../components/IconBtn';
 import Icon from '../../../../components/icons/Icon';
 import Table from '../../../../components/table/Table';
 import TableGridList from '../../../../components/TableGridList';
@@ -11,7 +10,7 @@ import { TableHeaders } from '../../../../pages/admin/UsersPage';
 import { BtnVariant, IconName } from '../../../../types/enums';
 import useLanguage from '../../../language/useLanguage';
 import sortTableData, { DirectionType } from '../sortTableData';
-import SearchField from './SearchField';
+import TableHeaderCell from './TableHeaderCell';
 
 interface MainTableProps {
   isLoading: boolean;
@@ -65,11 +64,7 @@ const MainTable: FC<MainTableProps> = ({
     role: '',
   };
 
-  const { onChange, values, onClearAll } = useFormValidation<{
-    username: string;
-    email: string;
-    role: string;
-  }>({
+  const { onChange, values, onClearAll } = useFormValidation({
     initialState,
   });
 
@@ -94,7 +89,6 @@ const MainTable: FC<MainTableProps> = ({
         tableGridIconList={tableGridIconList}
         isActive={padding}
       />
-
       <Table isLoading={isLoading} tableCaption={tableCaption}>
         <thead>
           <tr>
@@ -104,47 +98,19 @@ const MainTable: FC<MainTableProps> = ({
                 style={{ paddingTop: padding, paddingBottom: padding }}
                 key={id}
               >
-                <section className="sort-container">
-                  <div className="sort">
-                    {label}
-                    {key && (
-                      <IconBtn
-                        onClick={() => {
-                          handleSortRows(key);
-                        }}
-                        ariaLabel="sort"
-                        iconName={
-                          sort.direction === 'asc' && sort.keyToSort === key
-                            ? IconName.ArrowUp
-                            : IconName.ArrowDown
-                        }
-                        title="sort"
-                      />
-                    )}
-                  </div>
-
-                  {key && (
-                    <SearchField
-                      onFilterRows={onChange}
-                      title={key}
-                      value={values[key as keyof typeof values]}
-                    />
-                  )}
-
-                  {!key && (
-                    <IconBtn
-                      iconName={IconName.Undo}
-                      title={language.reset}
-                      ariaLabel={language.resetFiltersAndSorting}
-                      onClick={onClearAll}
-                    />
-                  )}
-                </section>
+                <TableHeaderCell
+                  sortKey={key}
+                  label={label}
+                  sort={sort}
+                  values={values}
+                  onFilterRows={onChange}
+                  onClearAll={onClearAll}
+                  onSortRows={handleSortRows}
+                />
               </th>
             ))}
           </tr>
         </thead>
-
         <tbody>
           {sortedData.length === 0 && !isPending && (
             <tr>
@@ -156,7 +122,6 @@ const MainTable: FC<MainTableProps> = ({
               </td>
             </tr>
           )}
-
           {isPending && (
             <tr>
               <td
@@ -167,7 +132,6 @@ const MainTable: FC<MainTableProps> = ({
               </td>
             </tr>
           )}
-
           {!isPending &&
             filteredAndSortedData.length > 0 &&
             filteredAndSortedData.map(({ id, username, email, role }) => (
