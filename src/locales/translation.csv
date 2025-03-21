@@ -3,6 +3,7 @@ about;About;Profil
 account;Account;Konto
 additionalInfo;Additional info;Supplerende information
 admin;Admin;Admin
+sureToDelete;Are you sure that you want to delete;Er du sikker på at du vil slette
 bag;Bag;Indkøbskurv
 cancel;Cancel;Annuller
 cannotDeleteAdmin;Cannot delete admin user;Admin bruger kan ikke slettes
@@ -19,6 +20,7 @@ currency;Currency;Valuta
 customersList;Customers list;Kundeliste
 dashboard;Dashboard;Dashboard
 delete;Delete;Slet
+deleted;deleted;slettet
 deleteCustomer;Delete customer;Slet kunde
 email;Email;E-mail
 error;Error;Fejl

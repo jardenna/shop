@@ -85,16 +85,6 @@ const MainTable: FC<MainTableProps> = ({
     return sortTableData(filteredData, sort.keyToSort, sort.direction);
   }, [tableData, sort, values]);
 
-  // const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
-
-  // const handleShowConfirmDelete = (id: string) => {
-  //   setConfirmDeleteId(id);
-  // };
-
-  // const handleCloseConfirmDelete = () => {
-  //   setConfirmDeleteId(null);
-  // };
-
   const onClearAllSearch = () => {
     console.log(123);
   };
@@ -198,7 +188,7 @@ const MainTable: FC<MainTableProps> = ({
                     {role !== 'admin' && (
                       <Dropdown
                         ariaControls="delete-user"
-                        text={`Are you sure that you want to delete ${username}?`}
+                        text={`${language.sureToDelete} ${username}?`}
                         btnVariant={BtnVariant.Ghost}
                         onPrimaryClick={() => {
                           onDeleteUser(id, username);
