@@ -1,0 +1,25 @@
+@use '../../scss/globals' as *;
+
+.dropdown-content {
+  position: absolute;
+  z-index: 1;
+  background: #fff;
+  padding: 8px;
+  box-shadow: $box-shadow;
+  border-radius: 4px;
+  max-width: rem(220px);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  .dropdown-content-footer {
+    display: flex;
+    gap: 4px;
+
+    .btn {
+      min-height: auto;
+      font-size: rem(14px);
+      padding: 8px;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import { FC, useMemo, useState } from 'react';
 import { UserResponse } from '../../../../app/api/apiTypes';
-import Dropdown from '../../../../components/dropdownBtn/dropdown/Dropdown';
+import Dropdown from '../../../../components/dropdown/Dropdown';
 import IconBtn from '../../../../components/IconBtn';
 import Icon from '../../../../components/icons/Icon';
 import Table from '../../../../components/table/Table';

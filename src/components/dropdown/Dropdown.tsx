@@ -1,10 +1,11 @@
 import { FC, ReactNode, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router';
-import useLanguage from '../../../features/language/useLanguage';
-import useClickOutside from '../../../hooks/useClickOutside';
-import useKeyPress from '../../../hooks/useKeyPress';
-import { BtnVariant, KeyCode } from '../../../types/enums';
-import Button from '../../Button';
+import useLanguage from '../../features/language/useLanguage';
+import useClickOutside from '../../hooks/useClickOutside';
+import useKeyPress from '../../hooks/useKeyPress';
+import { BtnVariant, KeyCode } from '../../types/enums';
+import Button from '../Button';
+import './_dropdown.scss';
 
 interface DropdownProps {
   ariaControls: string;
@@ -76,9 +77,9 @@ const Dropdown: FC<DropdownProps> = ({
         {children}
       </Button>
       {dropdownIsOpen && (
-        <section className="delete-row" ref={dropdownRef}>
-          <div className="dropdown-text">{text}</div>
-          <footer className="delete-row-footer">
+        <section className="dropdown-content" ref={dropdownRef}>
+          <span>{text}</span>
+          <footer className="dropdown-content-footer">
             <Button onClick={handleSecondaryBtnClick}>
               {secondaryBtnLabel || language.cancel}
             </Button>
