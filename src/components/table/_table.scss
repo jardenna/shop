@@ -13,18 +13,6 @@
   }
 }
 
-.table-actions {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 8px;
-
-  @include max-size($medium) {
-    flex-direction: column;
-    align-items: normal;
-  }
-}
-
 table {
   border-spacing: 0;
   width: 100%;
@@ -48,6 +36,7 @@ table {
     top: 0;
     z-index: 2;
     white-space: nowrap;
+    text-align: left;
 
     &:first-child {
       z-index: 3;
@@ -100,7 +89,76 @@ table {
     padding: 4px 12px;
   }
 
+  .delete-row {
+    position: absolute;
+    z-index: 1;
+    background: #fff;
+    padding: 8px;
+    box-shadow: $box-shadow;
+    border-radius: 4px;
+    max-width: rem(220px);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .delete-row-footer {
+      display: flex;
+      gap: 4px;
+    }
+
+    .btn-ghost {
+      min-height: auto;
+      font-size: rem(14px);
+    }
+  }
+
   .btn {
     padding: 0;
+  }
+
+  .sort-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .sort {
+    display: flex;
+    gap: 4px;
+  }
+
+  .input-container {
+    right: -8px;
+    top: 32px;
+    position: absolute;
+    z-index: 3;
+    min-width: rem(180px);
+  }
+
+  .dot {
+    width: rem(12px);
+    height: rem(12px);
+    border-radius: 50%;
+    background-color: $color-info;
+    display: flex;
+    position: absolute;
+    top: -2px;
+    right: -4px;
+    border: 3px solid $color-white;
+  }
+}
+
+.table-grid-icons {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+
+  .btn-ghost {
+    padding: 0;
+    color: #66606d;
+
+    &.is-active {
+      color: #a7a6ba;
+    }
   }
 }

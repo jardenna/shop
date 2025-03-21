@@ -89,21 +89,22 @@ const MainTable: FC<MainTableProps> = ({
   const handleShowConfirmDelete = (id: string) => {
     setConfirmDeleteId(id);
   };
-  console.log(sort);
 
   const handleCloseConfirmDelete = () => {
     setConfirmDeleteId(null);
   };
 
+  const onClearAllSearch = () => {
+    console.log(123);
+  };
+
   return (
     <>
-      <div className="table-actions">
-        <TableGridList
-          onSetPadding={setPadding}
-          tableGridIconList={tableGridIconList}
-          isActive={padding}
-        />
-      </div>
+      <TableGridList
+        onSetPadding={setPadding}
+        tableGridIconList={tableGridIconList}
+        isActive={padding}
+      />
 
       <Table isLoading={isLoading} tableCaption={tableCaption}>
         <thead>
@@ -114,10 +115,10 @@ const MainTable: FC<MainTableProps> = ({
                 style={{ paddingTop: padding, paddingBottom: padding }}
                 key={id}
               >
-                <div>
-                  {label}
-                  {key && (
-                    <>
+                <section className="sort-container">
+                  <div className="sort">
+                    {label}
+                    {key && (
                       <IconBtn
                         onClick={() => {
                           handleSortRows(key);
@@ -130,14 +131,26 @@ const MainTable: FC<MainTableProps> = ({
                         }
                         title="sort"
                       />
-                      <SearchField
-                        onFilterRows={handleFilterRows}
-                        title={key}
-                        value={values[key]}
-                      />
-                    </>
+                    )}
+                  </div>
+
+                  {key && (
+                    <SearchField
+                      onFilterRows={handleFilterRows}
+                      title={key}
+                      value={values[key]}
+                    />
                   )}
-                </div>
+
+                  {!key && (
+                    <IconBtn
+                      iconName={IconName.Undo}
+                      title={language.reset}
+                      ariaLabel={language.resetFiltersAndSorting}
+                      onClick={onClearAllSearch}
+                    />
+                  )}
+                </section>
               </th>
             ))}
           </tr>
@@ -170,47 +183,51 @@ const MainTable: FC<MainTableProps> = ({
             filteredAndSortedData.length > 0 &&
             filteredAndSortedData.map(({ id, username, email, role }) => (
               <tr key={id}>
-                <td>{username}</td>
+                <td style={{ paddingTop: padding, paddingBottom: padding }}>
+                  {username}
+                </td>
                 <td>
                   <a href={`mailto:${email}`}>{email}</a>
                 </td>
                 <td>
                   <span className="user-role">{role}</span>
                 </td>
-                <td className="delete-user-cell">
-                  <IconBtn
-                    iconName={IconName.Trash}
-                    className="danger"
-                    title={language.trashCan}
-                    ariaLabel={language.deleteCustomer}
-                    onClick={() => {
-                      handleShowConfirmDelete(id);
-                    }}
-                  />
-                  {confirmDeleteId === id && (
-                    <div>
-                      <span>
-                        Are you sure that you want to delete {username}?
-                      </span>
-                      <div>
-                        <Button
-                          className="danger"
-                          ariaLabel={language.deleteCustomer}
-                          onClick={() => {
-                            onDeleteUser(id, username);
-                          }}
-                        >
-                          OK
-                        </Button>
-                        <Button
-                          ariaLabel={language.deleteCustomer}
-                          onClick={handleCloseConfirmDelete}
-                        >
-                          Annuller
-                        </Button>
+                <td>
+                  <section>
+                    <IconBtn
+                      iconName={IconName.Trash}
+                      className="danger"
+                      title={language.trashCan}
+                      ariaLabel={language.deleteCustomer}
+                      onClick={() => {
+                        handleShowConfirmDelete(id);
+                      }}
+                    />
+                    {confirmDeleteId === id && (
+                      <div className="delete-row">
+                        <span>
+                          Are you sure that you want to delete {username}?
+                        </span>
+                        <footer className="delete-row-footer">
+                          <Button
+                            ariaLabel={language.deleteCustomer}
+                            onClick={handleCloseConfirmDelete}
+                          >
+                            Annuller
+                          </Button>
+                          <Button
+                            className="danger"
+                            ariaLabel={language.deleteCustomer}
+                            onClick={() => {
+                              onDeleteUser(id, username);
+                            }}
+                          >
+                            OK
+                          </Button>
+                        </footer>
                       </div>
-                    </div>
-                  )}
+                    )}
+                  </section>
                 </td>
               </tr>
             ))}

@@ -43,7 +43,6 @@ const SearchField: FC<SearchFieldProps> = ({ title, value, onFilterRows }) => {
       )}
       {showSearchsField && (
         <Input
-          className="search-field active"
           type="search"
           name={title}
           id={title}
