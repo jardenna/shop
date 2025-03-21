@@ -1,4 +1,4 @@
-import { FC, useRef, useState } from 'react';
+import { FC, FormEvent, useRef, useState } from 'react';
 import Input from '../../../../components/formElements/Input';
 import IconBtn from '../../../../components/IconBtn';
 import VisuallyHidden from '../../../../components/VisuallyHidden';
@@ -48,18 +48,24 @@ const SearchField: FC<SearchFieldProps> = ({
         </>
       )}
       {showSearchsField && (
-        <Input
-          type="search"
-          name={title}
-          id={title}
-          placeholder={text}
-          value={value}
-          onChange={onFilterRows}
-          labelText={text}
-          inputHasNoLabel
-          ref={SearchFieldRef}
-          autoFocus
-        />
+        <form
+          onSubmit={(event: FormEvent) => {
+            event.preventDefault();
+          }}
+        >
+          <Input
+            type="search"
+            name={title}
+            id={title}
+            placeholder={text}
+            value={value}
+            onChange={onFilterRows}
+            labelText={text}
+            inputHasNoLabel
+            ref={SearchFieldRef}
+            autoFocus
+          />
+        </form>
       )}
     </div>
   );
