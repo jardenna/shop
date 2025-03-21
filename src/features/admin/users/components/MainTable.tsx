@@ -5,10 +5,10 @@ import IconBtn from '../../../../components/IconBtn';
 import Icon from '../../../../components/icons/Icon';
 import Table from '../../../../components/table/Table';
 import TableGridList from '../../../../components/TableGridList';
+import useFormValidation from '../../../../hooks/useFormValidation';
 import useLocalStorage from '../../../../hooks/useLocalStorage';
 import { TableHeaders } from '../../../../pages/admin/UsersPage';
 import { BtnVariant, IconName } from '../../../../types/enums';
-import { ChangeInputType } from '../../../../types/types';
 import useLanguage from '../../../language/useLanguage';
 import sortTableData, { DirectionType } from '../sortTableData';
 import SearchField from './SearchField';
@@ -59,17 +59,19 @@ const MainTable: FC<MainTableProps> = ({
     { padding: 20, iconName: IconName.GridLarge, title: language.gridLarge },
   ];
 
-  const [values, setValues] = useState<{ [key: string]: string }>({
+  const initialState = {
     username: '',
     email: '',
     role: '',
-  });
-
-  const handleFilterRows = (event: ChangeInputType) => {
-    const { value, name } = event.target;
-
-    setValues({ ...values, [name]: value });
   };
+
+  const { onChange, values, onClearAll } = useFormValidation<{
+    username: string;
+    email: string;
+    role: string;
+  }>({
+    initialState,
+  });
 
   const filteredAndSortedData = useMemo(() => {
     const filteredData = tableData.filter((row) =>
@@ -84,10 +86,6 @@ const MainTable: FC<MainTableProps> = ({
 
     return sortTableData(filteredData, sort.keyToSort, sort.direction);
   }, [tableData, sort, values]);
-
-  const onClearAllSearch = () => {
-    console.log(123);
-  };
 
   return (
     <>
@@ -127,9 +125,9 @@ const MainTable: FC<MainTableProps> = ({
 
                   {key && (
                     <SearchField
-                      onFilterRows={handleFilterRows}
+                      onFilterRows={onChange}
                       title={key}
-                      value={values[key]}
+                      value={values[key as keyof typeof values]}
                     />
                   )}
 
@@ -138,7 +136,7 @@ const MainTable: FC<MainTableProps> = ({
                       iconName={IconName.Undo}
                       title={language.reset}
                       ariaLabel={language.resetFiltersAndSorting}
-                      onClick={onClearAllSearch}
+                      onClick={onClearAll}
                     />
                   )}
                 </section>
