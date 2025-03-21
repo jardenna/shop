@@ -61,7 +61,7 @@ const Input: FC<InputProps> = ({
   };
   return (
     <div className={inputClassName}>
-      <span className="form-label-container">
+      <span className={inputHasNoLabel ? '' : 'form-label-container'}>
         <FormLabel
           required={required}
           inputLabel={labelText}
