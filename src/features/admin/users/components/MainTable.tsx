@@ -193,7 +193,7 @@ const MainTable: FC<MainTableProps> = ({
                   <span className="user-role">{role}</span>
                 </td>
                 <td>
-                  <section>
+                  <div>
                     <IconBtn
                       iconName={IconName.Trash}
                       className="danger"
@@ -204,7 +204,7 @@ const MainTable: FC<MainTableProps> = ({
                       }}
                     />
                     {confirmDeleteId === id && (
-                      <div className="delete-row">
+                      <section className="delete-row">
                         <span>
                           Are you sure that you want to delete {username}?
                         </span>
@@ -225,9 +225,9 @@ const MainTable: FC<MainTableProps> = ({
                             OK
                           </Button>
                         </footer>
-                      </div>
+                      </section>
                     )}
-                  </section>
+                  </div>
                 </td>
               </tr>
             ))}
