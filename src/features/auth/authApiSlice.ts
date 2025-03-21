@@ -2,7 +2,7 @@ import apiSlice from '../../app/api/apiSlice';
 import {
   AuthRequest,
   AuthResponse,
-  LogoutResponse,
+  OmittedAuthResponse,
   OmittedUserRequest,
 } from '../../app/api/apiTypes';
 import { authEndpoints } from '../../app/endpoints';
@@ -27,7 +27,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.Auth],
     }),
-    logout: builder.mutation<LogoutResponse, void>({
+    logout: builder.mutation<OmittedAuthResponse, void>({
       query: () => ({
         url: authEndpoints.logout,
         method: 'POST',

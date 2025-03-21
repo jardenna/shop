@@ -28,10 +28,8 @@ export interface AuthResponse {
   success: boolean;
   user: UserResponse;
 }
-export interface LogoutResponse {
-  message: string;
-  success: boolean;
-}
+
+export type OmittedAuthResponse = Omit<AuthRequest, 'user'>;
 
 export interface CurrencyResponse {
   data: Record<string, { value: number }>;
