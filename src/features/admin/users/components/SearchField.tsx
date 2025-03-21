@@ -8,12 +8,18 @@ import { ChangeInputType } from '../../../../types/types';
 import useLanguage from '../../../language/useLanguage';
 
 interface SearchFieldProps {
+  label: string;
   title: string;
   value: string;
   onFilterRows: (e: ChangeInputType) => void;
 }
 
-const SearchField: FC<SearchFieldProps> = ({ title, value, onFilterRows }) => {
+const SearchField: FC<SearchFieldProps> = ({
+  title,
+  value,
+  onFilterRows,
+  label,
+}) => {
   const { language } = useLanguage();
   const SearchFieldRef = useRef<HTMLInputElement>(null);
   const text = `${language.filter} ${language[title]}`;
@@ -30,8 +36,8 @@ const SearchField: FC<SearchFieldProps> = ({ title, value, onFilterRows }) => {
   return (
     <div className="position-relative">
       <IconBtn
-        title={language.listFilter}
-        ariaLabel={`${language.filter} ${language.title}`}
+        title={language.filterRow}
+        ariaLabel={`${language.filter} ${label}`}
         onClick={handleSearchField}
         iconName={IconName.Filter}
       />

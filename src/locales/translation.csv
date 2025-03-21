@@ -3,7 +3,7 @@ about;About;Profil
 account;Account;Konto
 additionalInfo;Additional info;Supplerende information
 admin;Admin;Admin
-sureToDelete;Are you sure that you want to delete;Er du sikker på at du vil slette
+ascending;ascending;stigende
 bag;Bag;Indkøbskurv
 cancel;Cancel;Annuller
 cannotDeleteAdmin;Cannot delete admin user;Admin bruger kan ikke slettes
@@ -20,8 +20,9 @@ currency;Currency;Valuta
 customersList;Customers list;Kundeliste
 dashboard;Dashboard;Dashboard
 delete;Delete;Slet
-deleted;deleted;slettet
 deleteCustomer;Delete customer;Slet kunde
+deleted;deleted;slettet
+descending;descending;faldende
 email;Email;E-mail
 error;Error;Fejl
 errorAltText;A really guilty emoji;En meget skyldig emoji
@@ -29,6 +30,8 @@ eye;Eye;Øje
 eyeClosed;Closed eye;Lukket øje
 fillAll;Please fill all the inputs;Udfyld venligst alle felter
 filter;Filter;Filtrer
+filterRow;Filter row;Filtrer række
+filtersApplied;Filters applied;Filtre anvendt
 globe;Globe;Globus
 goBack;Go back;Gå tilbage
 goToContent;Go to content;Gå til indhold
@@ -87,6 +90,7 @@ pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-ma
 preferences;Preferences;Præferencer
 products;Products;Produkter
 profile;Profile;Profil
+resetFiltersAndSorting;Reset filters and sorting;Nulstil filtre og sortering
 retry;Retry;Forsøg igen
 role;Role;Rolle
 search;Search;Søg
@@ -98,9 +102,12 @@ showPassword;Show password;Vis adgangskode
 signup;Sign up;Opret bruger
 signupFailed;Sign up failed;Registrering mislykkedes
 signupSucceeded;Sign up succeeded;Registrering lykkedes
+sort;Sort;Sorter
 sub;Sub;Sekundær
 success;Success;Succes
+sureToDelete;Are you sure that you want to delete;Er du sikker på at du vil slette
 trashCan;Trash can;Skraldespand
+title;Title;Titel
 updatePreferences;Update Preferences;Opdater præferencer
 user;User;Bruger
 userAlreadyExist;A profile with this email already exists. Try logging in instead;Der findes en profil med denne e-mail. Prøv at logge ind i stedet

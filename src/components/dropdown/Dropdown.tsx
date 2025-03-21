@@ -7,6 +7,7 @@ import './_dropdown.scss';
 
 interface DropdownProps {
   ariaControls: string;
+  ariaLabel: string;
   children: ReactNode;
   primaryBtnLabel: string;
   text: string;
@@ -21,6 +22,7 @@ interface DropdownProps {
 const Dropdown: FC<DropdownProps> = ({
   text,
   ariaControls,
+  ariaLabel,
   btnVariant,
   onPrimaryClick,
   children,
@@ -43,6 +45,7 @@ const Dropdown: FC<DropdownProps> = ({
         ariaHasPopup
         ariaControls={ariaControls}
         className={className}
+        ariaLabel={ariaLabel}
       >
         {children}
       </Button>

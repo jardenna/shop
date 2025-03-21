@@ -38,8 +38,10 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
 }) => {
   const { language } = useLanguage();
 
+  const sortInfo = sort.direction === 'asc' && sort.keyToSort === sortKey;
+
   return (
-    <section className="sort-container">
+    <section className="table-header-cell">
       <div className="sort">
         {label}
         {sortKey && (
@@ -47,13 +49,9 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
             onClick={() => {
               onSortRows(sortKey);
             }}
-            ariaLabel="sort"
-            iconName={
-              sort.direction === 'asc' && sort.keyToSort === sortKey
-                ? IconName.ArrowUp
-                : IconName.ArrowDown
-            }
-            title="sort"
+            ariaLabel={`${language.sort} ${label} ${sortInfo ? language.ascending : language.descending}`}
+            iconName={sortInfo ? IconName.ArrowUp : IconName.ArrowDown}
+            title={language.sort}
           />
         )}
       </div>
@@ -63,6 +61,7 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
           onFilterRows={onFilterRows}
           title={sortKey}
           value={values[sortKey as keyof typeof values]}
+          label={label}
         />
       )}
       {!sortKey && (

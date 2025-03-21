@@ -157,6 +157,7 @@ const MainTable: FC<MainTableProps> = ({
                         }}
                         primaryBtnLabel={language.delete}
                         primaryBtnClassName="danger"
+                        ariaLabel={language.deleteCustomer}
                         className="danger"
                       >
                         <Icon

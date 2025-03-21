@@ -97,7 +97,7 @@ table {
     padding: 0;
   }
 
-  .sort-container {
+  .table-header-cell {
     display: flex;
     justify-content: space-between;
   }
@@ -139,7 +139,7 @@ table {
     color: #66606d;
 
     &.is-active {
-      color: #a7a6ba;
+      color: #c8c8d0;
     }
   }
 }
