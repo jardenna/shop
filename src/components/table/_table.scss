@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 @use '../../scss/globals' as *;
 
 .fixed-table {
@@ -85,6 +86,10 @@ table {
     }
   }
 
+  .dropdown-container {
+    position: static;
+  }
+
   .no-table-data {
     padding: 4px 12px;
   }
@@ -104,11 +109,12 @@ table {
     .delete-row-footer {
       display: flex;
       gap: 4px;
-    }
 
-    .btn-ghost {
-      min-height: auto;
-      font-size: rem(14px);
+      .btn {
+        min-height: auto;
+        font-size: rem(14px);
+        padding: 8px;
+      }
     }
   }
 

@@ -197,46 +197,23 @@ const MainTable: FC<MainTableProps> = ({
                   <div>
                     {role !== 'admin' && (
                       <Dropdown
-                        ariaControls="test"
+                        ariaControls="delete-user"
                         text={`Are you sure that you want to delete ${username}?`}
                         btnVariant={BtnVariant.Ghost}
                         onPrimaryClick={() => {
                           onDeleteUser(id, username);
                         }}
-                        primaryBtnLabel="delete"
+                        primaryBtnLabel={language.delete}
+                        primaryBtnClassName="danger"
+                        className="danger"
                       >
                         <Icon
                           iconName={IconName.Trash}
-                          className="danger"
                           title={language.trashCan}
                           ariaLabel={language.deleteCustomer}
                         />
                       </Dropdown>
                     )}
-                    {/* {confirmDeleteId === id && (
-                      <section className="delete-row">
-                        <span>
-                          Are you sure that you want to delete {username}?
-                        </span>
-                        <footer className="delete-row-footer">
-                          <Button
-                            ariaLabel={language.deleteCustomer}
-                            onClick={handleCloseConfirmDelete}
-                          >
-                            Annuller
-                          </Button>
-                          <Button
-                            className="danger"
-                            ariaLabel={language.deleteCustomer}
-                            onClick={() => {
-                              onDeleteUser(id, username);
-                            }}
-                          >
-                            OK
-                          </Button>
-                        </footer>
-                      </section>
-                    )} */}
                   </div>
                 </td>
               </tr>
