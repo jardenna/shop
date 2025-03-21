@@ -69,8 +69,10 @@ const createUser = asyncHandler(async (req, res) => {
       },
     });
   } catch (error) {
-    res.status(400);
-    throw new Error(t('invalidUserData', req.lang));
+    res.status(400).json({
+      success: false,
+      message: `${error.message} - ${t('invalidUserData', req.lang)}`,
+    });
   }
 });
 

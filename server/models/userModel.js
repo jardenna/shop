@@ -23,13 +23,11 @@ const UserSchema = mongoose.Schema(
       default: false,
     },
 
-    role: [
-      {
-        enum: ALLOWED_ROLES,
-        type: String,
-        default: 'User',
-      },
-    ],
+    role: {
+      enum: ALLOWED_ROLES,
+      type: String,
+      default: 'User',
+    },
   },
   { timestamps: true },
 );
