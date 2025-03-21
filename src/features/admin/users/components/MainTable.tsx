@@ -1,4 +1,5 @@
 import { FC, useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router';
 import { UserResponse } from '../../../../app/api/apiTypes';
 import Dropdown from '../../../../components/dropdown/Dropdown';
 import Icon from '../../../../components/icons/Icon';
@@ -8,7 +9,7 @@ import useFormValidation from '../../../../hooks/useFormValidation';
 import useLocalStorage from '../../../../hooks/useLocalStorage';
 import { TableHeaders } from '../../../../pages/admin/UsersPage';
 import { BtnVariant, IconName } from '../../../../types/enums';
-import { DirectionType } from '../../../../types/types';
+import { ChangeInputType, DirectionType } from '../../../../types/types';
 import useLanguage from '../../../language/useLanguage';
 import sortTableData from '../sortTableData';
 import TableHeaderCell from './TableHeaderCell';
@@ -30,6 +31,7 @@ const MainTable: FC<MainTableProps> = ({
   tableHeaders,
   onDeleteUser,
 }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const { language } = useLanguage();
   const [padding, setPadding] = useLocalStorage('padding', 12);
   const [sort, setSort] = useState<{
@@ -41,6 +43,9 @@ const MainTable: FC<MainTableProps> = ({
   });
 
   const handleSortRows = (key: string) => {
+    searchParams.set('sortField', sort.direction);
+    searchParams.set('sortOrder', sort.keyToSort);
+    setSearchParams(searchParams);
     setSort((prev) => ({
       keyToSort: key,
       direction:
@@ -68,6 +73,23 @@ const MainTable: FC<MainTableProps> = ({
   const { onChange, values, onClearAll } = useFormValidation({
     initialState,
   });
+
+  const handleFilterRows = (event: ChangeInputType) => {
+    const { name, value } = event.target;
+    if (value) {
+      searchParams.set(name, value);
+    } else {
+      searchParams.delete(name);
+    }
+
+    setSearchParams(searchParams);
+    onChange(event);
+  };
+
+  const handleClearAll = () => {
+    onClearAll();
+    setSearchParams();
+  };
 
   const filteredAndSortedData = useMemo(() => {
     const filteredData = tableData.filter((row) =>
@@ -104,8 +126,8 @@ const MainTable: FC<MainTableProps> = ({
                   label={label}
                   sort={sort}
                   values={values}
-                  onFilterRows={onChange}
-                  onClearAll={onClearAll}
+                  onFilterRows={handleFilterRows}
+                  onClearAll={handleClearAll}
                   onSortRows={handleSortRows}
                 />
               </th>
