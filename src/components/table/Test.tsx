@@ -19,7 +19,7 @@ function Test() {
     age: '',
   };
 
-  const { sortedItems, sortFunction, sortClassName, onClearAll } =
+  const { sortedItems, sortFunction, sortClassName, onClearAllParams } =
     useSorting(initialItems);
 
   const test = {
@@ -30,7 +30,7 @@ function Test() {
   const { onChange, values, filteredItems } = useFilter(test);
 
   const handleClear = () => {
-    onClearAll();
+    onClearAllParams();
   };
 
   return (

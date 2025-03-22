@@ -12,7 +12,7 @@ function useSorting<T>(items: T[]) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [sortConfig, setSortConfig] = useState<SortConfig<T>>(null);
 
-  function handleClearAll() {
+  function handleClearAllParams() {
     setSearchParams();
   }
 
@@ -70,7 +70,7 @@ function useSorting<T>(items: T[]) {
     sortedItems,
     sortFunction,
     sortClassName,
-    onClearAll: handleClearAll,
+    onClearAllParams: handleClearAllParams,
   };
 }
 
