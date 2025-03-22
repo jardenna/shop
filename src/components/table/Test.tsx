@@ -1,20 +1,34 @@
+import useFilter from './useFilter';
 import useSorting from './useSorting';
 
 type Item = {
   id: number;
   name: string;
-  age: number;
+  age: string;
 };
 
 function Test() {
   const initialItems: Item[] = [
-    { id: 1, name: 'Alice', age: 25 },
-    { id: 2, name: 'Bob', age: 30 },
-    { id: 3, name: 'Charlie', age: 20 },
+    { id: 1, name: 'Alice', age: '25' },
+    { id: 2, name: 'Bob', age: '30' },
+    { id: 3, name: 'Charlie', age: '20' },
   ];
+
+  const initialState = {
+    name: '',
+    age: '',
+  };
 
   const { sortedItems, sortFunction, sortClassName, onClearAll } =
     useSorting(initialItems);
+
+  const test = {
+    initialState,
+    items: sortedItems,
+  };
+
+  const { handleChange, values, handleEmptyInput, filteredText } =
+    useFilter(test);
 
   const handleClear = () => {
     onClearAll();
@@ -34,6 +48,30 @@ function Test() {
               }}
             >
               Name {sortClassName('name')}
+              <form className="search">
+                <div className="input-wrapper">
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="search"
+                      onChange={handleChange}
+                      value={values.name}
+                      name="name"
+                    />
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        handleEmptyInput('name');
+                      }}
+                      className="icon-x"
+                      aria-label="Clear name filter"
+                    >
+                      <span className="sr-only">Clear</span>
+                    </button>
+                  </div>
+                </div>
+              </form>
             </th>
             <th
               onClick={() => {
@@ -41,12 +79,36 @@ function Test() {
               }}
             >
               Age {sortClassName('age')}
+              <form className="search">
+                <div className="input-wrapper">
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="search"
+                      onChange={handleChange}
+                      value={values.age}
+                      name="age"
+                    />
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        handleEmptyInput('age');
+                      }}
+                      className="icon-x"
+                      aria-label="Clear age filter"
+                    >
+                      <span className="sr-only">Clear</span>
+                    </button>
+                  </div>
+                </div>
+              </form>
             </th>
           </tr>
         </thead>
         <tbody>
-          {sortedItems.map((item) => (
-            <tr key={item.id}>
+          {filteredText.map((item, index) => (
+            <tr key={index}>
               <td>{item.name}</td>
               <td>{item.age}</td>
             </tr>
