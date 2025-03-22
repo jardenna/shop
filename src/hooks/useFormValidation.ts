@@ -125,6 +125,13 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
     }
   };
 
+  const handleClearInput = (name: string) => {
+    setValues({
+      ...values,
+      [name]: '',
+    });
+  };
+
   const onClearAll = () => {
     setValues(initialState);
   };
@@ -180,6 +187,7 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
     onSubmit,
     onChange,
     onCustomChange,
+    onClearInput: handleClearInput,
     isFocused,
     onFocus,
     onBlur,
