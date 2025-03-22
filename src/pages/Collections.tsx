@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import Table from '../components/tabl/tabl';
+import Table from '../newTable/Table';
 
 const Collections: FC = () => (
   <section>

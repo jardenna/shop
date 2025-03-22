@@ -1,7 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unnecessary-condition */
 import React, { FC, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router';
-
 import useLanguage from '../../features/language/useLanguage';
 import './_table.scss';
 
@@ -41,7 +39,7 @@ const Table: FC<TableProps> = ({ isLoading, data = defaultData }) => {
     key: ColumnKey | null;
     direction: SortDirection;
   }>({
-    key: (searchParams.get('sortKey') as ColumnKey) || null,
+    key: searchParams.get('sortKey') as ColumnKey,
     direction: (searchParams.get('sortDir') as SortDirection) || null,
   });
 
@@ -145,7 +143,7 @@ const Table: FC<TableProps> = ({ isLoading, data = defaultData }) => {
       <div className="table-controls">
         <div className="search-container">
           <input
-            type="text"
+            type="search"
             placeholder={language.search || 'Search...'}
             value={searchTerm}
             onChange={handleSearchChange}
