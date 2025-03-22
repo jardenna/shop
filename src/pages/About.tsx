@@ -1,14 +1,16 @@
 import { FC } from 'react';
 import UserTable from '../components/table/UserTable';
+import { useGetAllUsersQuery } from '../features/admin/users/usersApiSlice';
 import ProductPrice from '../features/currency/components/ProductPrice';
-import useLanguage from '../features/language/useLanguage';
 
 const About: FC = () => {
-  const { language } = useLanguage();
-  const tableHeaders = [language.username, language.email, language.role, ''];
+  const tableHeaders = ['username', 'email', 'role', ''];
+  const { data: allUsers } = useGetAllUsersQuery();
   return (
     <section>
-      <UserTable tableHeaders={tableHeaders} />
+      {allUsers && (
+        <UserTable tableHeaders={tableHeaders} tableData={allUsers} />
+      )}
       <ProductPrice price={10200} />
     </section>
   );
