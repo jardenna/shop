@@ -7,30 +7,30 @@ import Input from '../formElements/Input';
 import IconBtn from '../IconBtn';
 import VisuallyHidden from '../VisuallyHidden';
 
-interface SearchFieldProps {
+interface TableSearchInputProps {
   label: string;
   title: string;
   value: string;
   onFilterRows: (e: ChangeInputType) => void;
 }
 
-const SearchField: FC<SearchFieldProps> = ({
+const TableSearchInput: FC<TableSearchInputProps> = ({
   title,
   value,
   onFilterRows,
   label,
 }) => {
   const { language } = useLanguage();
-  const SearchFieldRef = useRef<HTMLInputElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
   const text = `${language.filter} ${language[title]}`;
-  const [showSearchsField, setShowSearchsField] = useState(false);
+  const [showSearchInput, setShowSearchInput] = useState(false);
 
-  const handleSearchField = () => {
-    setShowSearchsField(!showSearchsField);
+  const handleSearchInput = () => {
+    setShowSearchInput(!showSearchInput);
   };
 
-  useClickOutside(SearchFieldRef, () => {
-    setShowSearchsField(false);
+  useClickOutside(searchInputRef, () => {
+    setShowSearchInput(false);
   });
 
   return (
@@ -38,7 +38,7 @@ const SearchField: FC<SearchFieldProps> = ({
       <IconBtn
         title={language.filterRow}
         ariaLabel={`${language.filter} ${label}`}
-        onClick={handleSearchField}
+        onClick={handleSearchInput}
         iconName={IconName.Filter}
       />
       {value && (
@@ -47,7 +47,7 @@ const SearchField: FC<SearchFieldProps> = ({
           <span className="dot" aria-hidden />
         </>
       )}
-      {showSearchsField && (
+      {showSearchInput && (
         <form
           onSubmit={(event: FormEvent) => {
             event.preventDefault();
@@ -62,7 +62,7 @@ const SearchField: FC<SearchFieldProps> = ({
             onChange={onFilterRows}
             labelText={text}
             inputHasNoLabel
-            ref={SearchFieldRef}
+            ref={searchInputRef}
             autoFocus
           />
         </form>
@@ -71,4 +71,4 @@ const SearchField: FC<SearchFieldProps> = ({
   );
 };
 
-export default SearchField;
+export default TableSearchInput;

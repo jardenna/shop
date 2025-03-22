@@ -24,7 +24,7 @@ function Test() {
     age: valuesFromParams.age || '',
   };
 
-  const { sortedItems, sortFunction, sortClassName, onClearAllParams } =
+  const { sortedItems, sortFunction, sortDirection, onClearAllParams } =
     useSorting(initialItems);
 
   const test = {
@@ -60,7 +60,7 @@ function Test() {
                 sortFunction('name');
               }}
             >
-              Name {sortClassName('name')}
+              Name {sortDirection('name')}
               <form className="search">
                 <div className="input-wrapper">
                   <div>
@@ -80,7 +80,7 @@ function Test() {
                 sortFunction('age');
               }}
             >
-              Age {sortClassName('age')}
+              Age {sortDirection('age')}
               <form className="search">
                 <div className="input-wrapper">
                   <div>

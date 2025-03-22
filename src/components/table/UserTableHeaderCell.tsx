@@ -3,7 +3,7 @@ import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import { ChangeInputType } from '../../types/types';
 import IconBtn from '../IconBtn';
-import SearchField from './SearchField';
+import SearchField from './TableSearchInput';
 
 interface UserTableHeaderCellProps {
   ariaLabel: string;

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import IconBtn from '../../../../components/IconBtn';
-import SearchField from '../../../../components/table/SearchField';
+import SearchField from '../../../../components/table/TableSearchInput';
 import { IconName } from '../../../../types/enums';
 import { ChangeInputType, DirectionType } from '../../../../types/types';
 import useLanguage from '../../../language/useLanguage';
