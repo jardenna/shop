@@ -1,25 +1,28 @@
 import { useSearchParams } from 'react-router';
+import useLanguage from '../../features/language/useLanguage';
+import { IconName } from '../../types/enums';
 import { ChangeInputType } from '../../types/types';
+import IconBtn from '../IconBtn';
 import { tableData, tableHeaders } from './tableData';
 import useFilter from './useFilter';
 import useSorting from './useSorting';
 
 const UserTable = () => {
+  const { language } = useLanguage();
   const [searchParams, setSearchParams] = useSearchParams();
-
   const valuesFromParams = Object.fromEntries(searchParams);
 
-  const initialStateUser = {
+  const initialState = {
     username: valuesFromParams.username || '',
     email: valuesFromParams.email || '',
     role: valuesFromParams.role || '',
   };
 
-  const { sortedItems, sortFunction, sortClassName, onClearAllParams } =
+  const { sortedItems, sortFunction, sortDirection, onClearAllParams } =
     useSorting(tableData);
 
   const test = {
-    initialState: initialStateUser,
+    initialState,
     items: sortedItems,
   };
 
@@ -51,27 +54,36 @@ const UserTable = () => {
         <thead>
           <tr>
             {tableHeaders.map((header) => (
-              <th
-                key={header}
-                onClick={() => {
-                  sortFunction(header as 'username' | 'email' | 'role');
-                }}
-              >
-                {header}{' '}
-                {sortClassName(header as 'username' | 'email' | 'role')}
-                <div>
-                  <form className="search">
-                    <div className="input-wrapper">
-                      <input
-                        type="search"
-                        placeholder="search"
-                        onChange={onChangeSearch}
-                        value={values[header]}
-                        name={header}
-                      />
-                    </div>
-                  </form>
-                </div>
+              <th key={header}>
+                {header !== '' && (
+                  <div>
+                    <span>{header}</span>
+                    <IconBtn
+                      onClick={() => {
+                        sortFunction(header as 'username' | 'email' | 'role');
+                      }}
+                      ariaLabel={`${language.sort} ${header} ${sortDirection(header) === 'ascending' ? language.ascending : language.descending}`}
+                      iconName={
+                        sortDirection(header) === 'ascending'
+                          ? IconName.ArrowUp
+                          : IconName.ArrowDown
+                      }
+                      title={language.sort}
+                    />
+
+                    <form>
+                      <div className="input-wrapper">
+                        <input
+                          type="search"
+                          placeholder="search"
+                          onChange={onChangeSearch}
+                          value={values[header]}
+                          name={header}
+                        />
+                      </div>
+                    </form>
+                  </div>
+                )}
               </th>
             ))}
           </tr>
