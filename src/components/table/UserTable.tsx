@@ -4,17 +4,6 @@ import { tableData, tableHeaders } from './tableData';
 import useFilter from './useFilter';
 import useSorting from './useSorting';
 
-type Item = {
-  username: string;
-  email: string;
-  role: string;
-};
-
-interface Test {
-  initialState: Item;
-  items: any;
-}
-
 const UserTable = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -29,7 +18,7 @@ const UserTable = () => {
   const { sortedItems, sortFunction, sortClassName, onClearAllParams } =
     useSorting(tableData);
 
-  const test: Test = {
+  const test = {
     initialState: initialStateUser,
     items: sortedItems,
   };
@@ -38,7 +27,6 @@ const UserTable = () => {
 
   const onChangeSearch = (event: ChangeInputType) => {
     const { name, value } = event.target;
-
     if (value) {
       searchParams.set(name, value);
     } else {
@@ -74,15 +62,13 @@ const UserTable = () => {
                 <div>
                   <form className="search">
                     <div className="input-wrapper">
-                      <div>
-                        <input
-                          type="search"
-                          placeholder="search"
-                          onChange={onChangeSearch}
-                          value={values[header]}
-                          name={header}
-                        />
-                      </div>
+                      <input
+                        type="search"
+                        placeholder="search"
+                        onChange={onChangeSearch}
+                        value={values[header]}
+                        name={header}
+                      />
                     </div>
                   </form>
                 </div>
