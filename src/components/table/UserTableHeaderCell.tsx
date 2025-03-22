@@ -3,6 +3,7 @@ import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import { ChangeInputType } from '../../types/types';
 import IconBtn from '../IconBtn';
+import SearchField from './SearchField';
 
 interface UserTableHeaderCellProps {
   ariaLabel: string;
@@ -32,7 +33,7 @@ const UserTableHeaderCell: FC<UserTableHeaderCellProps> = ({
   return (
     <section className="table-header-cell">
       {!showClearAllBtn && (
-        <div>
+        <>
           <div className="sort">
             {label}
 
@@ -43,20 +44,13 @@ const UserTableHeaderCell: FC<UserTableHeaderCellProps> = ({
               title={language.sort}
             />
           </div>
-
-          <form>
-            <div className="input-wrapper">
-              <input
-                type="search"
-                placeholder="search"
-                onChange={onFilterRows}
-                value={value}
-                name={name}
-                id={name}
-              />
-            </div>
-          </form>
-        </div>
+          <SearchField
+            onFilterRows={onFilterRows}
+            title={name}
+            value={value}
+            label={label}
+          />
+        </>
       )}
 
       {showClearAllBtn && (
