@@ -1,3 +1,5 @@
+import { useSearchParams } from 'react-router';
+import { ChangeInputType } from '../../types/types';
 import useFilter from './useFilter';
 import useSorting from './useSorting';
 
@@ -13,10 +15,13 @@ function Test() {
     { id: 2, name: 'Bob', age: '30' },
     { id: 3, name: 'Charlie', age: '20' },
   ];
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const valuesFromParams = Object.fromEntries(searchParams);
 
   const initialState = {
-    name: '',
-    age: '',
+    name: valuesFromParams.name || '',
+    age: valuesFromParams.age || '',
   };
 
   const { sortedItems, sortFunction, sortClassName, onClearAllParams } =
@@ -28,6 +33,15 @@ function Test() {
   };
 
   const { onChange, values, filteredItems } = useFilter(test);
+
+  const onChangeSearch = (event: ChangeInputType) => {
+    const { name, value } = event.target;
+
+    searchParams.set(name, value);
+    setSearchParams(searchParams);
+
+    onChange(event);
+  };
 
   const handleClear = () => {
     onClearAllParams();
@@ -53,7 +67,7 @@ function Test() {
                     <input
                       type="search"
                       placeholder="search"
-                      onChange={onChange}
+                      onChange={onChangeSearch}
                       value={values.name}
                       name="name"
                     />
@@ -73,7 +87,7 @@ function Test() {
                     <input
                       type="search"
                       placeholder="search"
-                      onChange={onChange}
+                      onChange={onChangeSearch}
                       value={values.age}
                       name="age"
                     />
