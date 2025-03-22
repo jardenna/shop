@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import IconBtn from '../../../../components/IconBtn';
-import SearchField from '../../../../components/table/TableSearchInput';
+import TableSearchInput from '../../../../components/table/TableSearchInput';
 import { IconName } from '../../../../types/enums';
 import { ChangeInputType, DirectionType } from '../../../../types/types';
 import useLanguage from '../../../language/useLanguage';
@@ -56,7 +56,7 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
       </div>
 
       {sortKey && (
-        <SearchField
+        <TableSearchInput
           onFilterRows={onFilterRows}
           title={sortKey}
           value={values[sortKey as keyof typeof values]}

@@ -3,7 +3,7 @@ import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import { ChangeInputType } from '../../types/types';
 import IconBtn from '../IconBtn';
-import SearchField from './TableSearchInput';
+import TableSearchInput from './TableSearchInput';
 
 interface UserTableHeaderCellProps {
   ariaLabel: string;
@@ -44,7 +44,7 @@ const UserTableHeaderCell: FC<UserTableHeaderCellProps> = ({
               title={language.sort}
             />
           </div>
-          <SearchField
+          <TableSearchInput
             onFilterRows={onFilterRows}
             title={name}
             value={value}
