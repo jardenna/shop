@@ -27,8 +27,7 @@ function Test() {
     items: sortedItems,
   };
 
-  const { handleChange, values, handleEmptyInput, filteredText } =
-    useFilter(test);
+  const { onChange, values, filteredItems } = useFilter(test);
 
   const handleClear = () => {
     onClearAll();
@@ -52,23 +51,12 @@ function Test() {
                 <div className="input-wrapper">
                   <div>
                     <input
-                      type="text"
+                      type="search"
                       placeholder="search"
-                      onChange={handleChange}
+                      onChange={onChange}
                       value={values.name}
                       name="name"
                     />
-
-                    <button
-                      type="button"
-                      onClick={() => {
-                        handleEmptyInput('name');
-                      }}
-                      className="icon-x"
-                      aria-label="Clear name filter"
-                    >
-                      <span className="sr-only">Clear</span>
-                    </button>
                   </div>
                 </div>
               </form>
@@ -83,23 +71,12 @@ function Test() {
                 <div className="input-wrapper">
                   <div>
                     <input
-                      type="text"
+                      type="search"
                       placeholder="search"
-                      onChange={handleChange}
+                      onChange={onChange}
                       value={values.age}
                       name="age"
                     />
-
-                    <button
-                      type="button"
-                      onClick={() => {
-                        handleEmptyInput('age');
-                      }}
-                      className="icon-x"
-                      aria-label="Clear age filter"
-                    >
-                      <span className="sr-only">Clear</span>
-                    </button>
                   </div>
                 </div>
               </form>
@@ -107,7 +84,7 @@ function Test() {
           </tr>
         </thead>
         <tbody>
-          {filteredText.map((item, index) => (
+          {filteredItems.map((item, index) => (
             <tr key={index}>
               <td>{item.name}</td>
               <td>{item.age}</td>

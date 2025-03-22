@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 
-type Item = { [key: string]: string | number | boolean }; // Define a general item type
+type Item = { [key: string]: string | number }; // Define a general item type
 type Values = { [key: string]: string }; // Define the type for values in the state
 
 interface UseFilterProps {
@@ -11,24 +11,16 @@ interface UseFilterProps {
 function useFilter({ initialState, items }: UseFilterProps) {
   const [values, setValues] = useState<Values>(initialState);
 
-  const filteredText = items.filter((item) => {
-    for (const key in values) {
-      if (item[key]) {
-        const a = typeof item[key] === 'string' && item[key].toLowerCase();
-        const b = typeof values[key] === 'string' && values[key].toLowerCase();
-
-        if (
-          typeof a === 'string' &&
-          typeof b === 'string' &&
-          !a.includes(b) &&
-          values[key] !== ''
-        ) {
-          return false;
-        }
-      }
-    }
-    return true;
-  });
+  const filteredItems = items.filter((item) =>
+    Object.keys(values).every(
+      (key) =>
+        item[key] &&
+        typeof item[key] === 'string' &&
+        typeof values[key] === 'string' &&
+        (item[key].toLowerCase().includes(values[key].toLowerCase()) ||
+          values[key] === ''),
+    ),
+  );
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -39,7 +31,8 @@ function useFilter({ initialState, items }: UseFilterProps) {
     });
   };
 
-  const handleEmptyInput = (name: string) => {
+  // This is for clearing search. You can use this or just use a input type "search"
+  const handleClearInput = (name: string) => {
     setValues({
       ...values,
       [name]: '',
@@ -47,10 +40,10 @@ function useFilter({ initialState, items }: UseFilterProps) {
   };
 
   return {
-    handleChange,
+    onChange: handleChange,
     values,
-    handleEmptyInput,
-    filteredText,
+    onClearInput: handleClearInput,
+    filteredItems,
   };
 }
 
