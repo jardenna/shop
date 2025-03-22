@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import useFormValidation from '../../hooks/useFormValidation';
 
 type Item = { [key: string]: string | number }; // Define a general item type
 type Values = { [key: string]: string }; // Define the type for values in the state
@@ -9,7 +9,9 @@ interface UseFilterProps {
 }
 
 function useFilter({ initialState, items }: UseFilterProps) {
-  const [values, setValues] = useState<Values>(initialState);
+  const { onChange, values, onClearAll, onClearInput } = useFormValidation({
+    initialState,
+  });
 
   const filteredItems = items.filter((item) =>
     Object.keys(values).every(
@@ -22,27 +24,11 @@ function useFilter({ initialState, items }: UseFilterProps) {
     ),
   );
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-
-    setValues({
-      ...values,
-      [name]: value,
-    });
-  };
-
-  // This is for clearing search. You can use this or just use a input type "search"
-  const handleClearInput = (name: string) => {
-    setValues({
-      ...values,
-      [name]: '',
-    });
-  };
-
   return {
-    onChange: handleChange,
+    onChange,
     values,
-    onClearInput: handleClearInput,
+    onClearInput,
+    onClearAllFilters: onClearAll,
     filteredItems,
   };
 }
