@@ -32,10 +32,12 @@ const UserTable: FC<UserTableProps> = ({ tableHeaders, tableData }) => {
     items: sortedItems,
   };
 
-  const { onChange, values, filteredItems } = useFilter(filterProps);
+  const { onChange, values, filteredItems, onClearAllFilters } =
+    useFilter(filterProps);
 
   const onChangeSearch = (event: ChangeInputType) => {
     const { name, value } = event.target;
+
     if (value) {
       searchParams.set(name, value);
     } else {
@@ -47,7 +49,9 @@ const UserTable: FC<UserTableProps> = ({ tableHeaders, tableData }) => {
   };
 
   const handleClearAllValues = () => {
+    onClearAllFilters();
     onClearAllParams();
+    setSearchParams();
   };
 
   return (
