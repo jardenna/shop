@@ -32,11 +32,10 @@ const UserTableHeaderCell: FC<UserTableHeaderCellProps> = ({
 
   return (
     <section className="table-header-cell">
-      {!showClearAllBtn && (
+      {!showClearAllBtn ? (
         <>
           <div className="sort">
             {label}
-
             <IconBtn
               onClick={onSortRows}
               ariaLabel={ariaLabel}
@@ -51,9 +50,7 @@ const UserTableHeaderCell: FC<UserTableHeaderCellProps> = ({
             label={label}
           />
         </>
-      )}
-
-      {showClearAllBtn && (
+      ) : (
         <IconBtn
           iconName={IconName.Undo}
           title={language.reset}
