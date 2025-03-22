@@ -1,13 +1,18 @@
+import { FC } from 'react';
 import { useSearchParams } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import { ChangeInputType } from '../../types/types';
-import { tableData, tableHeaders } from './tableData';
+import tableData from './tableData';
 import useFilter from './useFilter';
 import UserTableHeaderCell from './UserTableHeaderCell';
 import useSorting from './useSorting';
 
-const UserTable = () => {
+interface UserTableProps {
+  tableHeaders: string[];
+}
+
+const UserTable: FC<UserTableProps> = ({ tableHeaders }) => {
   const { language } = useLanguage();
   const [searchParams, setSearchParams] = useSearchParams();
   const valuesFromParams = Object.fromEntries(searchParams);
@@ -51,7 +56,7 @@ const UserTable = () => {
         <thead>
           <tr>
             {tableHeaders.map((header) => (
-              <th key={header}>
+              <th key={header} scope="col">
                 <UserTableHeaderCell
                   label={header}
                   ariaLabel={`${language.sort} ${header} ${sortDirection(header) === 'ascending' ? language.ascending : language.descending}`}
