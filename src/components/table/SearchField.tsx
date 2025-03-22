@@ -1,11 +1,11 @@
 import { FC, FormEvent, useRef, useState } from 'react';
-import Input from '../../../../components/formElements/Input';
-import IconBtn from '../../../../components/IconBtn';
-import VisuallyHidden from '../../../../components/VisuallyHidden';
-import useClickOutside from '../../../../hooks/useClickOutside';
-import { IconName } from '../../../../types/enums';
-import { ChangeInputType } from '../../../../types/types';
-import useLanguage from '../../../language/useLanguage';
+import useLanguage from '../../features/language/useLanguage';
+import useClickOutside from '../../hooks/useClickOutside';
+import { IconName } from '../../types/enums';
+import { ChangeInputType } from '../../types/types';
+import Input from '../formElements/Input';
+import IconBtn from '../IconBtn';
+import VisuallyHidden from '../VisuallyHidden';
 
 interface SearchFieldProps {
   label: string;
