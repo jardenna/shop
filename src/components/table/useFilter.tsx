@@ -1,14 +1,16 @@
 import useFormValidation from '../../hooks/useFormValidation';
 
-type Item = { [key: string]: string | number }; // Define a general item type
-type Values = { [key: string]: string }; // Define the type for values in the state
+type Values = { [key: string]: string };
 
-interface UseFilterProps {
+interface UseFilterProps<T> {
   initialState: Values;
-  items: Item[];
+  items: T[];
 }
 
-function useFilter({ initialState, items }: UseFilterProps) {
+function useFilter<T extends { [key: string]: any }>({
+  initialState,
+  items,
+}: UseFilterProps<T>) {
   const { onChange, values, onClearAllValues, onClearInput } =
     useFormValidation({
       initialState,
