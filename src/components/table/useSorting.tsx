@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router';
 
 type SortDirection = 'ascending' | 'descending';
@@ -8,9 +8,23 @@ type SortConfig<T> = {
   direction: SortDirection;
 } | null;
 
-function useSorting<T>(items: T[], config: SortConfig<T> = null) {
+function useSorting<T>(items: T[]) {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [sortConfig, setSortConfig] = useState<SortConfig<T>>(config);
+  const [sortConfig, setSortConfig] = useState<SortConfig<T>>(null);
+
+  function handleClearAll() {
+    setSearchParams();
+  }
+
+  useEffect(() => {
+    const getSortParams = Object.fromEntries(searchParams);
+
+    setSortConfig({
+      key: getSortParams.sortKey as keyof T,
+      direction:
+        getSortParams.sortOrder === 'ascending' ? 'ascending' : 'descending',
+    });
+  }, [searchParams]);
 
   const sortClassName = (name: keyof T) => {
     if (!sortConfig) {
@@ -35,7 +49,7 @@ function useSorting<T>(items: T[], config: SortConfig<T> = null) {
     return sortableItems;
   }, [items, sortConfig]);
 
-  const sortFunc = (key: keyof T) => {
+  const sortFunction = (key: keyof T) => {
     let direction: SortDirection = 'ascending';
 
     if (
@@ -46,13 +60,18 @@ function useSorting<T>(items: T[], config: SortConfig<T> = null) {
       direction = 'descending';
     }
 
-    searchParams.set('sortField', key.toString());
+    searchParams.set('sortKey', key.toString());
     searchParams.set('sortOrder', direction);
     setSearchParams(searchParams);
     setSortConfig({ key, direction });
   };
 
-  return { sortedItems, sortFunc, sortClassName };
+  return {
+    sortedItems,
+    sortFunction,
+    sortClassName,
+    onClearAll: handleClearAll,
+  };
 }
 
 export default useSorting;
