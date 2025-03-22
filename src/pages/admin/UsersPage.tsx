@@ -23,17 +23,17 @@ const UsersPage: FC = () => {
 
   const { data: allUsers, isLoading, isFetching } = useGetAllUsersQuery();
   const [deleteUser] = useDeleteUserMutation();
-  const { addMessagePopup } = useMessagePopup();
+  const { onAddMessagePopup } = useMessagePopup();
 
   const handleDeleteUser = async (id: string, username: string) => {
     try {
       await deleteUser(id).unwrap();
-      addMessagePopup({
+      onAddMessagePopup({
         messagePopupType: 'success',
         message: `${username} deleted`,
       });
     } catch (error: any) {
-      addMessagePopup({
+      onAddMessagePopup({
         messagePopupType: 'error',
         message: error.data.message,
         componentType: 'notification',
