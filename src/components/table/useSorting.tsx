@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router';
 
-type SortDirection = 'ascending' | 'descending';
+export type SortDirection = 'ascending' | 'descending';
 
 type SortConfig<T> = {
   key: keyof T;
@@ -10,7 +10,7 @@ type SortConfig<T> = {
 
 function useSorting<T>(items: T[]) {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [sortConfig, setSortConfig] = useState<SortConfig<T>>(null);
+  const [initialSortState, setSortConfig] = useState<SortConfig<T>>(null);
 
   function handleClearAllParams() {
     setSearchParams();
@@ -26,36 +26,36 @@ function useSorting<T>(items: T[]) {
     });
   }, [searchParams]);
 
-  const sortClassName = (name: keyof T) => {
-    if (!sortConfig) {
+  const sortDirection = (name: string) => {
+    if (!initialSortState) {
       return '';
     }
-    return sortConfig.key === name ? sortConfig.direction : '';
+    return initialSortState.key === name ? initialSortState.direction : '';
   };
 
   const sortedItems = useMemo(() => {
     const sortableItems = [...items];
-    if (sortConfig !== null) {
+    if (initialSortState !== null) {
       sortableItems.sort((a, b) => {
-        if (a[sortConfig.key] < b[sortConfig.key]) {
-          return sortConfig.direction === 'ascending' ? -1 : 1;
+        if (a[initialSortState.key] < b[initialSortState.key]) {
+          return initialSortState.direction === 'ascending' ? -1 : 1;
         }
-        if (a[sortConfig.key] > b[sortConfig.key]) {
-          return sortConfig.direction === 'ascending' ? 1 : -1;
+        if (a[initialSortState.key] > b[initialSortState.key]) {
+          return initialSortState.direction === 'ascending' ? 1 : -1;
         }
         return 0;
       });
     }
     return sortableItems;
-  }, [items, sortConfig]);
+  }, [items, initialSortState]);
 
   const sortFunction = (key: keyof T) => {
     let direction: SortDirection = 'ascending';
 
     if (
-      sortConfig &&
-      sortConfig.key === key &&
-      sortConfig.direction === 'ascending'
+      initialSortState &&
+      initialSortState.key === key &&
+      initialSortState.direction === 'ascending'
     ) {
       direction = 'descending';
     }
@@ -64,12 +64,14 @@ function useSorting<T>(items: T[]) {
     searchParams.set('sortOrder', direction);
     setSearchParams(searchParams);
     setSortConfig({ key, direction });
+
+    return direction;
   };
 
   return {
     sortedItems,
     sortFunction,
-    sortClassName,
+    sortDirection,
     onClearAllParams: handleClearAllParams,
   };
 }
