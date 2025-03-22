@@ -2,9 +2,9 @@ import { useSearchParams } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import { ChangeInputType } from '../../types/types';
-import IconBtn from '../IconBtn';
 import { tableData, tableHeaders } from './tableData';
 import useFilter from './useFilter';
+import UserTableHeaderCell from './UserTableHeaderCell';
 import useSorting from './useSorting';
 
 const UserTable = () => {
@@ -41,49 +41,34 @@ const UserTable = () => {
     onChange(event);
   };
 
-  const handleClear = () => {
+  const handleClearAllValues = () => {
     onClearAllParams();
   };
 
   return (
     <div>
-      <button onClick={handleClear} type="button">
-        clear
-      </button>
       <table>
         <thead>
           <tr>
             {tableHeaders.map((header) => (
               <th key={header}>
-                {header !== '' && (
-                  <div>
-                    <span>{header}</span>
-                    <IconBtn
-                      onClick={() => {
-                        sortFunction(header as 'username' | 'email' | 'role');
-                      }}
-                      ariaLabel={`${language.sort} ${header} ${sortDirection(header) === 'ascending' ? language.ascending : language.descending}`}
-                      iconName={
-                        sortDirection(header) === 'ascending'
-                          ? IconName.ArrowUp
-                          : IconName.ArrowDown
-                      }
-                      title={language.sort}
-                    />
-
-                    <form>
-                      <div className="input-wrapper">
-                        <input
-                          type="search"
-                          placeholder="search"
-                          onChange={onChangeSearch}
-                          value={values[header]}
-                          name={header}
-                        />
-                      </div>
-                    </form>
-                  </div>
-                )}
+                <UserTableHeaderCell
+                  label={header}
+                  ariaLabel={`${language.sort} ${header} ${sortDirection(header) === 'ascending' ? language.ascending : language.descending}`}
+                  iconName={
+                    sortDirection(header) === 'ascending'
+                      ? IconName.ArrowUp
+                      : IconName.ArrowDown
+                  }
+                  onSortRows={() => {
+                    sortFunction(header as 'username' | 'email' | 'role');
+                  }}
+                  onFilterRows={onChangeSearch}
+                  onClearAllValues={handleClearAllValues}
+                  value={values[header]}
+                  name={header}
+                  showClearAllBtn={header === ''}
+                />
               </th>
             ))}
           </tr>
