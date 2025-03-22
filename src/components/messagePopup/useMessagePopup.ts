@@ -63,7 +63,7 @@ const useMessagePopup = (messagePopupId?: string) => {
   const popupClass = isVisible ? 'is-visible' : 'dismissed';
 
   return {
-    addMessagePopup: handleAddMessagePopup,
+    onAddMessagePopup: handleAddMessagePopup,
     deleteMessagePopup: handleDeleteMessagePopup,
     messagePopups,
     autoHideDuration,

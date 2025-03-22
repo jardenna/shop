@@ -18,7 +18,7 @@ const LoginPage: FC = () => {
     password: '',
   };
 
-  const { addMessagePopup } = useMessagePopup();
+  const { onAddMessagePopup } = useMessagePopup();
   const from = location.state?.from?.pathname || MainPath.Root;
 
   const { values, errors, onChange, onBlur, onSubmit } = useFormValidation({
@@ -35,7 +35,7 @@ const LoginPage: FC = () => {
         navigate(from, { replace: true });
       }
     } catch (error: any) {
-      addMessagePopup({
+      onAddMessagePopup({
         messagePopupType: 'error',
         message: error.data.message,
         componentType: 'notification',

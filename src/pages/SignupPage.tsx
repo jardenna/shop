@@ -19,7 +19,7 @@ const SignupPage: FC = () => {
     confirmPassword: '',
   };
 
-  const { addMessagePopup } = useMessagePopup();
+  const { onAddMessagePopup } = useMessagePopup();
 
   const { values, errors, onChange, onBlur, isFocused, onFocus, onSubmit } =
     useFormValidation({
@@ -41,7 +41,7 @@ const SignupPage: FC = () => {
         navigate(MainPath.Root);
       }
     } catch (error: any) {
-      addMessagePopup({
+      onAddMessagePopup({
         messagePopupType: 'error',
         message: error.data.message,
         componentType: 'notification',
