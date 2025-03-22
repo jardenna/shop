@@ -132,7 +132,7 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
     });
   };
 
-  const onClearAll = () => {
+  const onClearAllValues = () => {
     setValues(initialState);
   };
 
@@ -193,7 +193,7 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
     onBlur,
     values,
     errors,
-    onClearAll,
+    onClearAllValues,
     inputRefs,
     fileData,
   };

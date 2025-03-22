@@ -9,9 +9,10 @@ interface UseFilterProps {
 }
 
 function useFilter({ initialState, items }: UseFilterProps) {
-  const { onChange, values, onClearAll, onClearInput } = useFormValidation({
-    initialState,
-  });
+  const { onChange, values, onClearAllValues, onClearInput } =
+    useFormValidation({
+      initialState,
+    });
 
   const filteredItems = items.filter((item) =>
     Object.keys(values).every(
@@ -28,7 +29,7 @@ function useFilter({ initialState, items }: UseFilterProps) {
     onChange,
     values,
     onClearInput,
-    onClearAllFilters: onClearAll,
+    onClearAllFilters: onClearAllValues,
     filteredItems,
   };
 }

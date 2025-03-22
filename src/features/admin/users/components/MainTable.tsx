@@ -70,7 +70,7 @@ const MainTable: FC<MainTableProps> = ({
     role: '',
   };
 
-  const { onChange, values, onClearAll } = useFormValidation({
+  const { onChange, values, onClearAllValues } = useFormValidation({
     initialState,
   });
 
@@ -87,7 +87,7 @@ const MainTable: FC<MainTableProps> = ({
   };
 
   const handleClearAll = () => {
-    onClearAll();
+    onClearAllValues();
     setSearchParams();
   };
 
@@ -127,7 +127,7 @@ const MainTable: FC<MainTableProps> = ({
                   sort={sort}
                   values={values}
                   onFilterRows={handleFilterRows}
-                  onClearAll={handleClearAll}
+                  onClearAllValues={handleClearAll}
                   onSortRows={handleSortRows}
                 />
               </th>

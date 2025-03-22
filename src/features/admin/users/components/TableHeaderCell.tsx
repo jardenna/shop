@@ -21,7 +21,7 @@ interface TableHeaderCellProps {
   sort: SortProps;
   sortKey: string | null;
   values: Values;
-  onClearAll: () => void;
+  onClearAllValues: () => void;
   onFilterRows: (event: ChangeInputType) => void;
   onSortRows: (sortKey: string) => void;
 }
@@ -29,7 +29,7 @@ interface TableHeaderCellProps {
 const TableHeaderCell: FC<TableHeaderCellProps> = ({
   sortKey,
   label,
-  onClearAll,
+  onClearAllValues,
   onSortRows,
   onFilterRows,
   sort,
@@ -68,7 +68,7 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
           iconName={IconName.Undo}
           title={language.reset}
           ariaLabel={language.resetFiltersAndSorting}
-          onClick={onClearAll}
+          onClick={onClearAllValues}
         />
       )}
     </section>
