@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router';
 import { ChangeInputType } from '../../types/types';
-import { tableData } from './tableData';
+import { tableData, tableHeaders } from './tableData';
 import useFilter from './useFilter';
 import useSorting from './useSorting';
 
@@ -62,53 +62,40 @@ const UserTable = () => {
       <table>
         <thead>
           <tr>
-            <th
-              onClick={() => {
-                sortFunction('username');
-              }}
-            >
-              User name {sortClassName('username')}
-              <form className="search">
-                <div className="input-wrapper">
-                  <div>
-                    <input
-                      type="search"
-                      placeholder="search"
-                      onChange={onChangeSearch}
-                      value={values.username}
-                      name="username"
-                    />
-                  </div>
+            {tableHeaders.map((header) => (
+              <th
+                key={header}
+                onClick={() => {
+                  sortFunction(header as 'username' | 'email' | 'role');
+                }}
+              >
+                {header}{' '}
+                {sortClassName(header as 'username' | 'email' | 'role')}
+                <div>
+                  <form className="search">
+                    <div className="input-wrapper">
+                      <div>
+                        <input
+                          type="search"
+                          placeholder="search"
+                          onChange={onChangeSearch}
+                          value={values[header]}
+                          name={header}
+                        />
+                      </div>
+                    </div>
+                  </form>
                 </div>
-              </form>
-            </th>
-            <th
-              onClick={() => {
-                sortFunction('email');
-              }}
-            >
-              email {sortClassName('email')}
-              <form className="search">
-                <div className="input-wrapper">
-                  <div>
-                    <input
-                      type="search"
-                      placeholder="search"
-                      onChange={onChangeSearch}
-                      value={values.email}
-                      name="email"
-                    />
-                  </div>
-                </div>
-              </form>
-            </th>
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody>
-          {filteredItems.map((item, index) => (
-            <tr key={index}>
+          {filteredItems.map((item) => (
+            <tr key={item.email}>
               <td>{item.username}</td>
               <td>{item.email}</td>
+              <td>{item.role}</td>
             </tr>
           ))}
         </tbody>
