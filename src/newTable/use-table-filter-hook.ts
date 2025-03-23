@@ -2,16 +2,17 @@
 
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router';
+import { ChangeInputType } from '../types/types';
 
 function useTableFilter<T>(
-  initialSearchTerm: string = '',
+  initialState: string = '',
   filterKeys: (keyof T)[] = [],
 ) {
   const [searchParams, setSearchParams] = useSearchParams();
 
   // Initialize from URL params or defaults
-  const [searchTerm, setSearchTerm] = useState<string>(
-    searchParams.get('search') || initialSearchTerm,
+  const [value, setValue] = useState<string>(
+    searchParams.get('search') || initialState,
   );
 
   // Update URL when search changes
@@ -19,31 +20,32 @@ function useTableFilter<T>(
     const currentParams = Object.fromEntries(searchParams.entries());
     const newParams = { ...currentParams };
 
-    if (searchTerm) {
-      newParams.search = searchTerm;
+    if (value) {
+      newParams.search = value;
     } else {
       delete newParams.search;
     }
 
     setSearchParams(newParams);
-  }, [searchTerm, searchParams, setSearchParams]);
+  }, [value, searchParams, setSearchParams]);
 
   // Handle search input change
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(e.target.value);
+  const handleSearchChange = (event: ChangeInputType) => {
+    const { value } = event.target;
+    setValue(value);
   };
 
   // Function to filter data
   const filterData = <T>(data: T[]): T[] => {
-    if (!searchTerm || filterKeys.length === 0) {
+    if (!value || filterKeys.length === 0) {
       return data;
     }
 
-    const lowercaseSearch = searchTerm.toLowerCase();
+    const lowercaseSearch = value.toLowerCase();
 
-    return data.filter((item: any) =>
+    return data.filter((item: T) =>
       filterKeys.some((key) => {
-        const value = item[key];
+        const value = item[key as unknown as keyof T];
         if (typeof value === 'string') {
           return value.toLowerCase().includes(lowercaseSearch);
         }
@@ -57,12 +59,12 @@ function useTableFilter<T>(
 
   // Reset filter function
   const resetFilter = () => {
-    setSearchTerm('');
+    setValue('');
   };
 
   return {
-    searchTerm,
-    handleSearchChange,
+    value,
+    onSearchChange: handleSearchChange,
     filterData,
     resetFilter,
   };

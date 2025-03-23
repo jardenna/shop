@@ -38,7 +38,7 @@ const Table: FC<TableProps> = ({ isLoading, data = defaultData }) => {
   >({ sortKey: 'name', direction: 'asc' });
 
   // Use custom filter hook
-  const { searchTerm, handleSearchChange, filterData, resetFilter } =
+  const { value, onSearchChange, filterData, resetFilter } =
     useTableFilter<TableData>('', ['name', 'email', 'role']);
 
   // Process data through both hooks
@@ -63,8 +63,8 @@ const Table: FC<TableProps> = ({ isLoading, data = defaultData }) => {
           <input
             type="text"
             placeholder={language.search || 'Search...'}
-            value={searchTerm}
-            onChange={handleSearchChange}
+            value={value}
+            onChange={onSearchChange}
             aria-label={language.searchAriaLabel || 'Search in table'}
             className="search-input"
           />
