@@ -3,9 +3,9 @@ import { useSearchParams } from 'react-router';
 
 export type SortDirection = 'asc' | 'desc' | null;
 
-interface SortingState<K> {
+interface SortingState {
   direction: SortDirection;
-  sortKey: K | null;
+  sortKey: string | null;
 }
 
 // Parameters:
@@ -13,13 +13,13 @@ interface SortingState<K> {
 // - sortKey: Which column to initially sort by (e.g., 'name', 'email')
 // - direction: Initial sort direction ('asc', 'desc')
 
-function useTableSort<T, K extends keyof T>(initialConfig?: {
-  sortKey?: K;
+function useTableSort<T>(initialConfig?: {
+  sortKey?: string;
   direction?: SortDirection;
 }) {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const defaultConfig: SortingState<K> = {
+  const defaultConfig: SortingState = {
     sortKey: null,
     direction: null,
   };
@@ -29,8 +29,8 @@ function useTableSort<T, K extends keyof T>(initialConfig?: {
     : defaultConfig;
 
   // Initialize from URL params or defaults
-  const [tableSort, setTableSort] = useState<SortingState<K>>({
-    sortKey: (searchParams.get('sortKey') as K) || config.sortKey,
+  const [tableSort, setTableSort] = useState<SortingState>({
+    sortKey: (searchParams.get('sortKey') as string) || config.sortKey,
     direction:
       (searchParams.get('sortDir') as SortDirection) || config.direction,
   });
@@ -56,7 +56,7 @@ function useTableSort<T, K extends keyof T>(initialConfig?: {
   }, [tableSort, searchParams, setSearchParams]);
 
   // Handle sorting logic
-  const handleSort = (sortKey: K) => {
+  const handleSort = (sortKey: string) => {
     let direction: SortDirection = 'asc';
 
     if (tableSort.sortKey === sortKey) {
