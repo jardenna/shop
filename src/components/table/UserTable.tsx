@@ -87,6 +87,7 @@ const UserTable: FC<UserTableProps> = ({ tableHeaders, tableData }) => {
             <td>{item.username}</td>
             <td>{item.email}</td>
             <td>{item.role}</td>
+            <td>span</td>
           </tr>
         ))}
       </tbody>

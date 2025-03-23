@@ -1,12 +1,9 @@
 import { FC } from 'react';
-import Button from '../components/Button';
-import TableSearchInput from '../components/table/TableSearchInput';
-import VisuallyHidden from '../components/VisuallyHidden';
 import useLanguage from '../features/language/useLanguage';
-import { BtnVariant } from '../types/enums';
 import './_table.scss';
 import useTableFilter from './use-table-filter-hook';
 import useTableSort from './use-table-sort-hook';
+import UserTableHeaderCell from './UserTableHeaderCell';
 
 // Define table data type
 type TableData = {
@@ -104,29 +101,20 @@ const Table: FC<TableProps> = ({ isLoading, data = defaultData }) => {
           <thead>
             <tr>
               {tableHeaders.map((tableHeader) => (
-                <th
-                  scope="col"
-                  key={tableHeader}
-                  onClick={() => {
-                    handleSort(tableHeader as keyof TableData);
-                  }}
-                  className="sortable-header"
-                >
-                  <Button variant={BtnVariant.Ghost}>
-                    <span>{language[tableHeader]}</span>
-                    <VisuallyHidden>
-                      {language.sort} {language[tableHeader]}{' '}
-                      {language[getColumnSortDirection(tableHeader) || '']}
-                    </VisuallyHidden>
-                    <span className="sort-icon" aria-hidden>
-                      {getSortIcon(tableHeader)}
-                    </span>
-                  </Button>
-                  <TableSearchInput
-                    onFilterRows={onFilterRows}
+                <th scope="col" key={tableHeader} className="sortable-header">
+                  <span>{language[tableHeader]}</span>
+                  <UserTableHeaderCell
+                    icon={getSortIcon(tableHeader)}
+                    ariaLabel={`${language.sort} ${language[tableHeader]}
+                     ${getColumnSortDirection(tableHeader) ? language[getColumnSortDirection(tableHeader) as string] : ''}`}
+                    showClearAllBtn={tableHeader !== ''}
+                    onSortRows={() => {
+                      handleSort(tableHeader as keyof TableData);
+                    }}
                     title={tableHeader}
                     value={values[tableHeader as keyof TableData]}
                     label={tableHeader}
+                    onFilterRows={onFilterRows}
                   />
                 </th>
               ))}
@@ -139,6 +127,7 @@ const Table: FC<TableProps> = ({ isLoading, data = defaultData }) => {
                   <td>{row.username}</td>
                   <td>{row.email}</td>
                   <td>{row.role}</td>
+                  <td>span</td>
                 </tr>
               ))
             ) : (
