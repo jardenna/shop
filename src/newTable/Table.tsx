@@ -1,6 +1,9 @@
 import { FC } from 'react';
+import Button from '../components/Button';
 import TableSearchInput from '../components/table/TableSearchInput';
+import VisuallyHidden from '../components/VisuallyHidden';
 import useLanguage from '../features/language/useLanguage';
+import { BtnVariant } from '../types/enums';
 import './_table.scss';
 import useTableFilter from './use-table-filter-hook';
 import useTableSort from './use-table-sort-hook';
@@ -40,10 +43,16 @@ const initState: TableData = {
 const Table: FC<TableProps> = ({ isLoading, data = defaultData }) => {
   const { language } = useLanguage();
 
-  const { handleSort, sortData, resetSort, getSortIcon } = useTableSort<
-    TableData,
-    ColumnKey
-  >({ sortKey: 'username', direction: 'asc' });
+  const {
+    handleSort,
+    sortData,
+    resetSort,
+    getSortIcon,
+    getColumnSortDirection,
+  } = useTableSort<TableData, ColumnKey>({
+    sortKey: 'username',
+    direction: 'asc',
+  });
 
   const {
     value,
@@ -106,9 +115,16 @@ const Table: FC<TableProps> = ({ isLoading, data = defaultData }) => {
                   }}
                   className="sortable-header"
                 >
-                  <span>{language[tableHeader]}</span>
-
-                  <span className="sort-icon">{getSortIcon(tableHeader)}</span>
+                  <Button variant={BtnVariant.Ghost}>
+                    <span>{language[tableHeader]}</span>
+                    <span className="sort-icon" aria-hidden>
+                      <VisuallyHidden>
+                        {language.sort} {tableHeader}{' '}
+                        {getColumnSortDirection(tableHeader)}
+                      </VisuallyHidden>
+                      {getSortIcon(tableHeader)}
+                    </span>
+                  </Button>
                   <TableSearchInput
                     onFilterRows={onFilterRows}
                     title={tableHeader}

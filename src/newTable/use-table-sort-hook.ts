@@ -110,12 +110,21 @@ function useTableSort<T, K extends keyof T>(initialConfig?: {
     return '⇅';
   };
 
+  // Get current sort direction for a column
+  const getColumnSortDirection = (sortKey: string): SortDirection => {
+    if (tableSort.sortKey !== sortKey) {
+      return null;
+    }
+    return tableSort.direction;
+  };
+
   return {
     sortState: tableSort,
     handleSort,
     sortData,
     resetSort,
     getSortIcon,
+    getColumnSortDirection,
   };
 }
 
