@@ -4,6 +4,7 @@ account;Account;Konto
 additionalInfo;Additional info;Supplerende information
 admin;Admin;Admin
 ascending;ascending;stigende
+asc;ascending;stigende
 bag;Bag;Indkøbskurv
 cancel;Cancel;Annuller
 cannotDeleteAdmin;Cannot delete admin user;Admin bruger kan ikke slettes
@@ -23,6 +24,7 @@ delete;Delete;Slet
 deleteCustomer;Delete customer;Slet kunde
 deleted;deleted;slettet
 descending;descending;faldende
+desc;descending;faldende
 email;Email;E-mail
 error;Error;Fejl
 errorAltText;A really guilty emoji;En meget skyldig emoji

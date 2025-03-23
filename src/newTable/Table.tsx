@@ -15,9 +15,6 @@ type TableData = {
   role: string;
 };
 
-// Define column keys
-type ColumnKey = keyof TableData;
-
 // Define table props interface
 interface TableProps {
   data?: TableData[];
@@ -49,7 +46,7 @@ const Table: FC<TableProps> = ({ isLoading, data = defaultData }) => {
     resetSort,
     getSortIcon,
     getColumnSortDirection,
-  } = useTableSort<TableData, ColumnKey>({
+  } = useTableSort<TableData>({
     sortKey: 'username',
     direction: 'asc',
   });
@@ -117,11 +114,11 @@ const Table: FC<TableProps> = ({ isLoading, data = defaultData }) => {
                 >
                   <Button variant={BtnVariant.Ghost}>
                     <span>{language[tableHeader]}</span>
+                    <VisuallyHidden>
+                      {language.sort} {language[tableHeader]}{' '}
+                      {language[getColumnSortDirection(tableHeader) || '']}
+                    </VisuallyHidden>
                     <span className="sort-icon" aria-hidden>
-                      <VisuallyHidden>
-                        {language.sort} {tableHeader}{' '}
-                        {getColumnSortDirection(tableHeader)}
-                      </VisuallyHidden>
                       {getSortIcon(tableHeader)}
                     </span>
                   </Button>
