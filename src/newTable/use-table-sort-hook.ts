@@ -3,20 +3,31 @@ import { useSearchParams } from 'react-router';
 
 export type SortDirection = 'asc' | 'desc' | null;
 
-export function useTableSort<T, K extends keyof T>(
-  initialSortKey: K | null = null,
-  initialDirection: SortDirection = null,
-) {
+interface SortingState<K> {
+  direction: SortDirection;
+  key: K | null;
+}
+
+function useTableSort<T, K extends keyof T>(initialConfig?: {
+  key?: K | null;
+  direction?: SortDirection;
+}) {
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const defaultConfig: SortingState<K> = {
+    key: null,
+    direction: null,
+  };
+
+  const config = initialConfig
+    ? { ...defaultConfig, ...initialConfig }
+    : defaultConfig;
+
   // Initialize from URL params or defaults
-  const [sortConfig, setSortConfig] = useState<{
-    key: K | null;
-    direction: SortDirection;
-  }>({
-    key: (searchParams.get('sortKey') as K) || initialSortKey,
+  const [tableSort, setTableSort] = useState<SortingState<K>>({
+    key: (searchParams.get('sortKey') as K) || config.key,
     direction:
-      (searchParams.get('sortDir') as SortDirection) || initialDirection,
+      (searchParams.get('sortDir') as SortDirection) || config.direction,
   });
 
   // Update URL when sort changes
@@ -24,10 +35,10 @@ export function useTableSort<T, K extends keyof T>(
     const currentParams = Object.fromEntries(searchParams.entries());
     const newParams = { ...currentParams };
 
-    if (sortConfig.key) {
-      newParams.sortKey = String(sortConfig.key);
-      if (sortConfig.direction) {
-        newParams.sortDir = sortConfig.direction;
+    if (tableSort.key) {
+      newParams.sortKey = String(tableSort.key);
+      if (tableSort.direction) {
+        newParams.sortDir = tableSort.direction;
       } else {
         delete newParams.sortDir;
       }
@@ -37,39 +48,39 @@ export function useTableSort<T, K extends keyof T>(
     }
 
     setSearchParams(newParams);
-  }, [sortConfig, searchParams, setSearchParams]);
+  }, [tableSort, searchParams, setSearchParams]);
 
   // Handle sorting logic
   const handleSort = (key: K) => {
     let direction: SortDirection = 'asc';
 
-    if (sortConfig.key === key) {
-      if (sortConfig.direction === 'asc') {
+    if (tableSort.key === key) {
+      if (tableSort.direction === 'asc') {
         direction = 'desc';
-      } else if (sortConfig.direction === 'desc') {
+      } else if (tableSort.direction === 'desc') {
         direction = null;
       }
     }
 
-    setSortConfig({ key, direction });
+    setTableSort({ key, direction });
   };
 
   // Function to sort data
   const sortData = (data: T[]): T[] => {
-    if (!sortConfig.key || !sortConfig.direction) {
+    if (!tableSort.key || !tableSort.direction) {
       return data;
     }
 
     return [...data].sort((a, b) => {
-      const aValue = a[sortConfig.key as keyof T];
-      const bValue = b[sortConfig.key as keyof T];
+      const aValue = a[tableSort.key as keyof T];
+      const bValue = b[tableSort.key as keyof T];
 
       // Basic comparison for strings and numbers
       if (aValue < bValue) {
-        return sortConfig.direction === 'asc' ? -1 : 1;
+        return tableSort.direction === 'asc' ? -1 : 1;
       }
       if (aValue > bValue) {
-        return sortConfig.direction === 'asc' ? 1 : -1;
+        return tableSort.direction === 'asc' ? 1 : -1;
       }
       return 0;
     });
@@ -77,28 +88,30 @@ export function useTableSort<T, K extends keyof T>(
 
   // Reset sort function
   const resetSort = () => {
-    setSortConfig({ key: null, direction: null });
+    setTableSort({ key: null, direction: null });
   };
 
   // Get sort indicator icon
   const getSortIcon = (key: K) => {
-    if (sortConfig.key !== key) {
+    if (tableSort.key !== key) {
       return '⇅';
     }
-    if (sortConfig.direction === 'asc') {
+    if (tableSort.direction === 'asc') {
       return '↑';
     }
-    if (sortConfig.direction === 'desc') {
+    if (tableSort.direction === 'desc') {
       return '↓';
     }
     return '⇅';
   };
 
   return {
-    sortConfig,
+    sortState: tableSort,
     handleSort,
     sortData,
     resetSort,
     getSortIcon,
   };
 }
+
+export default useTableSort;

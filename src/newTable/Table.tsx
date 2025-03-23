@@ -2,7 +2,7 @@ import { FC } from 'react';
 import useLanguage from '../features/language/useLanguage';
 import './_table.scss';
 import useTableFilter from './use-table-filter-hook';
-import { useTableSort } from './use-table-sort-hook';
+import useTableSort from './use-table-sort-hook';
 
 // Define table data type
 type TableData = {
@@ -35,7 +35,7 @@ const Table: FC<TableProps> = ({ isLoading, data = defaultData }) => {
   const { handleSort, sortData, resetSort, getSortIcon } = useTableSort<
     TableData,
     ColumnKey
-  >();
+  >({ key: 'role', direction: 'desc' });
 
   // Use custom filter hook
   const { searchTerm, handleSearchChange, filterData, resetFilter } =
