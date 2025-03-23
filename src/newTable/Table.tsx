@@ -6,7 +6,7 @@ import useTableSort from './use-table-sort-hook';
 
 // Define table data type
 type TableData = {
-  name: string;
+  username: string;
   email: string;
   role: string;
 };
@@ -22,11 +22,17 @@ interface TableProps {
 
 // Sample data (replace with your actual data source)
 const defaultData: TableData[] = [
-  { name: 'Helle B', email: 'helle@mail.com', role: 'admin' },
-  { name: 'Ole', email: 'ole@mail.com', role: 'user' },
-  { name: 'Steen Larsen', email: 'steen@mail.com', role: 'user' },
-  { name: 'Helene', email: 'helene@mail.com', role: 'employee' },
+  { username: 'Helle B', email: 'helle@mail.com', role: 'admin' },
+  { username: 'Ole', email: 'ole@mail.com', role: 'user' },
+  { username: 'Steen Larsen', email: 'steen@mail.com', role: 'user' },
+  { username: 'Helene', email: 'helene@mail.com', role: 'employee' },
 ];
+
+const initState: TableData = {
+  username: '',
+  email: '',
+  role: '',
+};
 
 const Table: FC<TableProps> = ({ isLoading, data = defaultData }) => {
   const { language } = useLanguage();
@@ -34,10 +40,16 @@ const Table: FC<TableProps> = ({ isLoading, data = defaultData }) => {
   const { handleSort, sortData, resetSort, getSortIcon } = useTableSort<
     TableData,
     ColumnKey
-  >({ sortKey: 'name', direction: 'asc' });
+  >({ sortKey: 'username', direction: 'asc' });
 
-  const { value, onSearchChange, filterData, resetFilter } =
-    useTableFilter<TableData>('', ['name', 'email', 'role']);
+  const {
+    value,
+    values,
+    onSearchChange,
+    filterData,
+    resetFilter,
+    handleChange,
+  } = useTableFilter<TableData>('', ['username', 'email', 'role'], initState);
 
   const getChangedTableData = () => {
     // First filter, then sort
@@ -82,12 +94,21 @@ const Table: FC<TableProps> = ({ isLoading, data = defaultData }) => {
             <tr>
               <th
                 onClick={() => {
-                  handleSort('name');
+                  handleSort('username');
                 }}
                 className="sortable-header"
               >
                 {language.name || 'Name'}{' '}
-                <span className="sort-icon">{getSortIcon('name')}</span>
+                <span className="sort-icon">{getSortIcon('username')}</span>
+                <input
+                  type="search"
+                  placeholder={language.search || 'Search...'}
+                  value={values.username}
+                  onChange={handleChange}
+                  aria-label={language.searchAriaLabel || 'Search in table'}
+                  id="username"
+                  name="username"
+                />
               </th>
               <th
                 onClick={() => {
@@ -97,6 +118,15 @@ const Table: FC<TableProps> = ({ isLoading, data = defaultData }) => {
               >
                 {language.email || 'Email'}{' '}
                 <span className="sort-icon">{getSortIcon('email')}</span>
+                <input
+                  type="search"
+                  placeholder={language.search || 'Search...'}
+                  value={values.email}
+                  onChange={handleChange}
+                  aria-label={language.searchAriaLabel || 'Search in table'}
+                  id="email"
+                  name="email"
+                />
               </th>
               <th
                 onClick={() => {
@@ -106,6 +136,15 @@ const Table: FC<TableProps> = ({ isLoading, data = defaultData }) => {
               >
                 {language.role || 'Role'}{' '}
                 <span className="sort-icon">{getSortIcon('role')}</span>
+                <input
+                  type="search"
+                  placeholder={language.search || 'Search...'}
+                  value={values.role}
+                  onChange={handleChange}
+                  aria-label={language.searchAriaLabel || 'Search in table'}
+                  id="role"
+                  name="role"
+                />
               </th>
             </tr>
           </thead>
@@ -113,7 +152,7 @@ const Table: FC<TableProps> = ({ isLoading, data = defaultData }) => {
             {changedTableData.length > 0 ? (
               changedTableData.map((row, index) => (
                 <tr key={index}>
-                  <td>{row.name}</td>
+                  <td>{row.username}</td>
                   <td>{row.email}</td>
                   <td>{row.role}</td>
                 </tr>
