@@ -31,18 +31,15 @@ const defaultData: TableData[] = [
 const Table: FC<TableProps> = ({ isLoading, data = defaultData }) => {
   const { language } = useLanguage();
 
-  // Use custom sort hook
   const { handleSort, sortData, resetSort, getSortIcon } = useTableSort<
     TableData,
     ColumnKey
   >({ sortKey: 'name', direction: 'asc' });
 
-  // Use custom filter hook
   const { value, onSearchChange, filterData, resetFilter } =
     useTableFilter<TableData>('', ['name', 'email', 'role']);
 
-  // Process data through both hooks
-  const getProcessedData = () => {
+  const getChangedTableData = () => {
     // First filter, then sort
     const filteredData = filterData(data);
     return sortData(filteredData);
@@ -54,7 +51,7 @@ const Table: FC<TableProps> = ({ isLoading, data = defaultData }) => {
     resetSort();
   };
 
-  const processedData = getProcessedData();
+  const changedTableData = getChangedTableData();
 
   return (
     <div className="table-container">
@@ -113,8 +110,8 @@ const Table: FC<TableProps> = ({ isLoading, data = defaultData }) => {
             </tr>
           </thead>
           <tbody>
-            {processedData.length > 0 ? (
-              processedData.map((row, index) => (
+            {changedTableData.length > 0 ? (
+              changedTableData.map((row, index) => (
                 <tr key={index}>
                   <td>{row.name}</td>
                   <td>{row.email}</td>
