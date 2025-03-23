@@ -97,7 +97,7 @@ function useTableSort<T, K extends keyof T>(initialConfig?: {
   };
 
   // Get sort indicator icon
-  const getSortIcon = (sortKey: K) => {
+  const getSortIcon = (sortKey: string) => {
     if (tableSort.sortKey !== sortKey) {
       return '⇅';
     }

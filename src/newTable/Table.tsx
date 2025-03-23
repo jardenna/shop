@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import TableSearchInput from '../components/table/TableSearchInput';
 import useLanguage from '../features/language/useLanguage';
 import './_table.scss';
 import useTableFilter from './use-table-filter-hook';
@@ -19,6 +20,8 @@ interface TableProps {
   data?: TableData[];
   isLoading?: boolean;
 }
+
+const tableHeaders = ['username', 'email', 'role', ''];
 
 // Sample data (replace with your actual data source)
 const defaultData: TableData[] = [
@@ -48,8 +51,11 @@ const Table: FC<TableProps> = ({ isLoading, data = defaultData }) => {
     onSearchChange,
     filterData,
     resetFilter,
-    handleChange,
-  } = useTableFilter<TableData>('', ['username', 'email', 'role'], initState);
+    onFilterRows,
+  } = useTableFilter<TableData>({
+    filterKeys: tableHeaders,
+    initialColumnFilters: initState,
+  });
 
   const getChangedTableData = () => {
     // First filter, then sort
@@ -87,65 +93,30 @@ const Table: FC<TableProps> = ({ isLoading, data = defaultData }) => {
           {language.clearFilters || 'Clear Filters'}
         </button>
       </div>
-
       <div className="fixed-table">
         <table aria-label={isLoading ? language.loading : undefined}>
           <thead>
             <tr>
-              <th
-                onClick={() => {
-                  handleSort('username');
-                }}
-                className="sortable-header"
-              >
-                {language.name || 'Name'}{' '}
-                <span className="sort-icon">{getSortIcon('username')}</span>
-                <input
-                  type="search"
-                  placeholder={language.search || 'Search...'}
-                  value={values.username}
-                  onChange={handleChange}
-                  aria-label={language.searchAriaLabel || 'Search in table'}
-                  id="username"
-                  name="username"
-                />
-              </th>
-              <th
-                onClick={() => {
-                  handleSort('email');
-                }}
-                className="sortable-header"
-              >
-                {language.email || 'Email'}{' '}
-                <span className="sort-icon">{getSortIcon('email')}</span>
-                <input
-                  type="search"
-                  placeholder={language.search || 'Search...'}
-                  value={values.email}
-                  onChange={handleChange}
-                  aria-label={language.searchAriaLabel || 'Search in table'}
-                  id="email"
-                  name="email"
-                />
-              </th>
-              <th
-                onClick={() => {
-                  handleSort('role');
-                }}
-                className="sortable-header"
-              >
-                {language.role || 'Role'}{' '}
-                <span className="sort-icon">{getSortIcon('role')}</span>
-                <input
-                  type="search"
-                  placeholder={language.search || 'Search...'}
-                  value={values.role}
-                  onChange={handleChange}
-                  aria-label={language.searchAriaLabel || 'Search in table'}
-                  id="role"
-                  name="role"
-                />
-              </th>
+              {tableHeaders.map((tableHeader) => (
+                <th
+                  scope="col"
+                  key={tableHeader}
+                  onClick={() => {
+                    handleSort(tableHeader as keyof TableData);
+                  }}
+                  className="sortable-header"
+                >
+                  <span>{language[tableHeader]}</span>
+
+                  <span className="sort-icon">{getSortIcon(tableHeader)}</span>
+                  <TableSearchInput
+                    onFilterRows={onFilterRows}
+                    title={tableHeader}
+                    value={values[tableHeader as keyof TableData]}
+                    label={tableHeader}
+                  />
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>

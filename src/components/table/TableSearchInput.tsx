@@ -11,7 +11,7 @@ interface TableSearchInputProps {
   label: string;
   title: string;
   value: string;
-  onFilterRows: (e: ChangeInputType) => void;
+  onFilterRows: (event: ChangeInputType) => void;
 }
 
 const TableSearchInput: FC<TableSearchInputProps> = ({
