@@ -35,7 +35,7 @@ const Table: FC<TableProps> = ({ isLoading, data = defaultData }) => {
   const { handleSort, sortData, resetSort, getSortIcon } = useTableSort<
     TableData,
     ColumnKey
-  >({ key: 'role', direction: 'desc' });
+  >({ sortKey: 'name', direction: 'asc' });
 
   // Use custom filter hook
   const { searchTerm, handleSearchChange, filterData, resetFilter } =

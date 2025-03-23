@@ -5,17 +5,22 @@ export type SortDirection = 'asc' | 'desc' | null;
 
 interface SortingState<K> {
   direction: SortDirection;
-  key: K | null;
+  sortKey: K | null;
 }
 
+// Parameters:
+// Takes an optional sort object with these properties:
+// - sortKey: Which column to initially sort by (e.g., 'name', 'email')
+// - direction: Initial sort direction ('asc', 'desc')
+
 function useTableSort<T, K extends keyof T>(initialConfig?: {
-  key?: K | null;
+  sortKey?: K;
   direction?: SortDirection;
 }) {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const defaultConfig: SortingState<K> = {
-    key: null,
+    sortKey: null,
     direction: null,
   };
 
@@ -25,7 +30,7 @@ function useTableSort<T, K extends keyof T>(initialConfig?: {
 
   // Initialize from URL params or defaults
   const [tableSort, setTableSort] = useState<SortingState<K>>({
-    key: (searchParams.get('sortKey') as K) || config.key,
+    sortKey: (searchParams.get('sortKey') as K) || config.sortKey,
     direction:
       (searchParams.get('sortDir') as SortDirection) || config.direction,
   });
@@ -35,8 +40,8 @@ function useTableSort<T, K extends keyof T>(initialConfig?: {
     const currentParams = Object.fromEntries(searchParams.entries());
     const newParams = { ...currentParams };
 
-    if (tableSort.key) {
-      newParams.sortKey = String(tableSort.key);
+    if (tableSort.sortKey) {
+      newParams.sortKey = String(tableSort.sortKey);
       if (tableSort.direction) {
         newParams.sortDir = tableSort.direction;
       } else {
@@ -51,10 +56,10 @@ function useTableSort<T, K extends keyof T>(initialConfig?: {
   }, [tableSort, searchParams, setSearchParams]);
 
   // Handle sorting logic
-  const handleSort = (key: K) => {
+  const handleSort = (sortKey: K) => {
     let direction: SortDirection = 'asc';
 
-    if (tableSort.key === key) {
+    if (tableSort.sortKey === sortKey) {
       if (tableSort.direction === 'asc') {
         direction = 'desc';
       } else if (tableSort.direction === 'desc') {
@@ -62,18 +67,18 @@ function useTableSort<T, K extends keyof T>(initialConfig?: {
       }
     }
 
-    setTableSort({ key, direction });
+    setTableSort({ sortKey, direction });
   };
 
   // Function to sort data
   const sortData = (data: T[]): T[] => {
-    if (!tableSort.key || !tableSort.direction) {
+    if (!tableSort.sortKey || !tableSort.direction) {
       return data;
     }
 
     return [...data].sort((a, b) => {
-      const aValue = a[tableSort.key as keyof T];
-      const bValue = b[tableSort.key as keyof T];
+      const aValue = a[tableSort.sortKey as keyof T];
+      const bValue = b[tableSort.sortKey as keyof T];
 
       // Basic comparison for strings and numbers
       if (aValue < bValue) {
@@ -88,12 +93,12 @@ function useTableSort<T, K extends keyof T>(initialConfig?: {
 
   // Reset sort function
   const resetSort = () => {
-    setTableSort({ key: null, direction: null });
+    setTableSort({ sortKey: null, direction: null });
   };
 
   // Get sort indicator icon
-  const getSortIcon = (key: K) => {
-    if (tableSort.key !== key) {
+  const getSortIcon = (sortKey: K) => {
+    if (tableSort.sortKey !== sortKey) {
       return '⇅';
     }
     if (tableSort.direction === 'asc') {
