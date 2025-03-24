@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import VisuallyHidden from '../components/VisuallyHidden';
 import useLanguage from '../features/language/useLanguage';
 import './_table.scss';
 import useTableFilter from './use-table-filter-hook';
@@ -14,6 +15,7 @@ type TableData = {
 
 // Define table props interface
 interface TableProps {
+  tableCaption: string;
   tableData: TableData[];
   tableHeaders: string[];
   initialSortedRow?: SortingState;
@@ -27,6 +29,7 @@ const initState: TableData = {
 };
 
 const Table: FC<TableProps> = ({
+  tableCaption,
   isLoading,
   tableData,
   tableHeaders,
@@ -71,7 +74,7 @@ const Table: FC<TableProps> = ({
   const changedTableData = getChangedTableData();
 
   return (
-    <div className="table-container">
+    <>
       <div className="table-controls">
         <div className="search-container">
           <input
@@ -94,11 +97,11 @@ const Table: FC<TableProps> = ({
       </div>
       <div className="fixed-table">
         <table aria-label={isLoading ? language.loading : undefined}>
+          <VisuallyHidden as="caption">{tableCaption}</VisuallyHidden>
           <thead>
             <tr>
               {tableHeaders.map((tableHeader) => (
-                <th scope="col" key={tableHeader} className="sortable-header">
-                  <span>{language[tableHeader]}</span>
+                <th scope="col" key={tableHeader}>
                   <UserTableHeaderCell
                     icon={getSortIcon(tableHeader)}
                     ariaLabel={`${language.sort} ${getColumnSortDirection(tableHeader) ? language[getColumnSortDirection(tableHeader) as string] : ''}`}
@@ -108,7 +111,7 @@ const Table: FC<TableProps> = ({
                     }}
                     title={tableHeader}
                     value={values[tableHeader as keyof TableData]}
-                    label={tableHeader}
+                    label={language[tableHeader]}
                     onFilterRows={onFilterRows}
                   />
                 </th>
@@ -133,7 +136,7 @@ const Table: FC<TableProps> = ({
           </tbody>
         </table>
       </div>
-    </div>
+    </>
   );
 };
 

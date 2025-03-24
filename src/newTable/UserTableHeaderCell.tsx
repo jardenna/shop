@@ -28,15 +28,18 @@ const UserTableHeaderCell: FC<UserTableHeaderCellProps> = ({
   <section className="table-header-cell">
     {showClearAllBtn && (
       <>
-        <Button
-          variant={BtnVariant.Ghost}
-          onClick={onSortRows}
-          ariaLabel={ariaLabel}
-        >
-          <span className="sort-icon" aria-hidden>
-            {icon}
-          </span>
-        </Button>
+        <div className="sort">
+          <span>{label}</span>
+          <Button
+            variant={BtnVariant.Ghost}
+            onClick={onSortRows}
+            ariaLabel={ariaLabel}
+          >
+            <span className="sort-icon" aria-hidden>
+              {icon}
+            </span>
+          </Button>
+        </div>
         <TableSearchInput
           onFilterRows={onFilterRows}
           title={title}
