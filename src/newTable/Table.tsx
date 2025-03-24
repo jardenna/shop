@@ -10,18 +10,13 @@ type TableData<T> = T;
 
 // Define table props interface
 interface TableProps<T> {
+  initialFilterState: TableData<any>;
   tableCaption: string;
   tableData: TableData<T>[];
-  tableHeaders: (keyof T)[];
+  tableHeaders: (keyof T | '')[];
   initialSortedRow?: SortingState;
   isLoading?: boolean;
 }
-
-const initState: TableData<any> = {
-  username: '',
-  email: '',
-  role: '',
-};
 
 const Table = <T extends Record<string, any>>({
   tableCaption,
@@ -29,6 +24,7 @@ const Table = <T extends Record<string, any>>({
   tableData,
   tableHeaders,
   initialSortedRow,
+  initialFilterState,
 }: TableProps<T>) => {
   const { language } = useLanguage();
 
@@ -51,7 +47,7 @@ const Table = <T extends Record<string, any>>({
     onFilterRows,
   } = useTableFilter<T>({
     filterKeys: tableHeaders as string[],
-    initialColumnFilters: initState,
+    initialColumnFilters: initialFilterState,
   });
 
   const getChangedTableData = () => {
@@ -100,7 +96,7 @@ const Table = <T extends Record<string, any>>({
                   <UserTableHeaderCell
                     icon={getSortIcon(String(header))}
                     ariaLabel={`${language.sort} ${getColumnSortDirection(String(header)) ? language[getColumnSortDirection(String(header)) as string] : ''}`}
-                    showClearAllBtn={true}
+                    showClearAllBtn={header !== ''}
                     onSortRows={() => {
                       handleSort(String(header));
                     }}
@@ -118,7 +114,9 @@ const Table = <T extends Record<string, any>>({
               changedTableData.map((row, idx) => (
                 <tr key={idx}>
                   {tableHeaders.map((header) => (
-                    <td key={String(header)}>{row[header]}</td>
+                    <td key={String(header)}>
+                      {header !== '' ? row[header] : <div>ss</div>}
+                    </td>
                   ))}
                 </tr>
               ))
