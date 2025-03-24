@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router';
-import { ChangeInputType } from '../types/types';
+import { ChangeInputType } from '../../../../../types/types';
 
 interface TableFilterProps<T extends Record<string, any>> {
   filterKeys: string[];

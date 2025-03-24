@@ -1,55 +1,5 @@
 import { FC } from 'react';
-import useMessagePopup from '../components/messagePopup/useMessagePopup';
-import {
-  useDeleteUserMutation,
-  useGetAllUsersQuery,
-} from '../features/admin/users/usersApiSlice';
-import useLanguage from '../features/language/useLanguage';
-import Table from '../newTable/Table';
-import { SortingState } from '../newTable/use-table-sort-hook';
 
-const Collections: FC = () => {
-  const { language } = useLanguage();
-  const { data: allUsers } = useGetAllUsersQuery();
-  const [deleteUser] = useDeleteUserMutation();
-  const { onAddMessagePopup } = useMessagePopup();
-  const tableHeaders = ['username', 'email', 'role', ''];
-
-  const handleDeleteUser = async (id: string, username: string) => {
-    try {
-      await deleteUser(id).unwrap();
-      onAddMessagePopup({
-        messagePopupType: 'success',
-        message: `${username} deleted`,
-      });
-    } catch (error: any) {
-      onAddMessagePopup({
-        messagePopupType: 'error',
-        message: error.data.message,
-        componentType: 'notification',
-      });
-    }
-  };
-
-  const initialSortedRow: SortingState = {
-    sortKey: 'username',
-    direction: 'asc',
-  };
-
-  return (
-    <section>
-      Collections
-      {allUsers && (
-        <Table
-          tableData={allUsers}
-          tableHeaders={tableHeaders}
-          initialSortedRow={initialSortedRow}
-          tableCaption={language.customersList}
-          onDeleteUser={handleDeleteUser}
-        />
-      )}
-    </section>
-  );
-};
+const Collections: FC = () => <section>Collections</section>;
 
 export default Collections;

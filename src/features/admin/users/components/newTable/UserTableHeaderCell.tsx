@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import Button from '../components/Button';
-import TableSearchInput from '../components/table/TableSearchInput';
-import { BtnVariant } from '../types/enums';
-import { ChangeInputType } from '../types/types';
+import Button from '../../../../../components/Button';
+import TableSearchInput from '../../../../../components/table/TableSearchInput';
+import { BtnVariant } from '../../../../../types/enums';
+import { ChangeInputType } from '../../../../../types/types';
 
 interface UserTableHeaderCellProps {
   ariaLabel: string;
