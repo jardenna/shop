@@ -1,6 +1,9 @@
 import { FC } from 'react';
+import Dropdown from '../components/dropdown/Dropdown';
+import Icon from '../components/icons/Icon';
 import VisuallyHidden from '../components/VisuallyHidden';
 import useLanguage from '../features/language/useLanguage';
+import { BtnVariant, IconName } from '../types/enums';
 import './_table.scss';
 import useTableFilter from './use-table-filter-hook';
 import useTableSort, { SortingState } from './use-table-sort-hook';
@@ -11,21 +14,23 @@ type TableData = {
   username: string;
   email: string;
   role: string;
+  id: string;
 };
 
-// Define table props interface
 interface TableProps {
   tableCaption: string;
   tableData: TableData[];
   tableHeaders: string[];
   initialSortedRow?: SortingState;
   isLoading?: boolean;
+  onDeleteUser: (id: string, username: string) => void;
 }
 
-const initState: TableData = {
+const initState = {
   username: '',
   email: '',
   role: '',
+  id: '',
 };
 
 const Table: FC<TableProps> = ({
@@ -34,6 +39,7 @@ const Table: FC<TableProps> = ({
   tableData,
   tableHeaders,
   initialSortedRow,
+  onDeleteUser,
 }) => {
   const { language } = useLanguage();
 
@@ -120,12 +126,35 @@ const Table: FC<TableProps> = ({
           </thead>
           <tbody>
             {changedTableData.length > 0 ? (
-              changedTableData.map((row) => (
-                <tr key={row.email}>
-                  <td>{row.username}</td>
-                  <td>{row.email}</td>
-                  <td>{row.role}</td>
-                  <td>span</td>
+              changedTableData.map(({ id, email, username, role }) => (
+                <tr key={email}>
+                  <td>{username}</td>
+                  <td>{email}</td>
+                  <td>{role}</td>
+                  <td>
+                    <div>
+                      {role !== 'admin' && (
+                        <Dropdown
+                          ariaControls="delete-user"
+                          text={`${language.sureToDelete} ${username}?`}
+                          btnVariant={BtnVariant.Ghost}
+                          onPrimaryClick={() => {
+                            onDeleteUser(id, username);
+                          }}
+                          primaryBtnLabel={language.delete}
+                          primaryBtnClassName="danger"
+                          ariaLabel={language.deleteCustomer}
+                          className="danger"
+                        >
+                          <Icon
+                            iconName={IconName.Trash}
+                            title={language.trashCan}
+                            ariaLabel={language.deleteCustomer}
+                          />
+                        </Dropdown>
+                      )}
+                    </div>
+                  </td>
                 </tr>
               ))
             ) : (
