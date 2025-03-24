@@ -2,17 +2,15 @@ import { FC } from 'react';
 import Dropdown from '../../../../../components/dropdown/Dropdown';
 import Input from '../../../../../components/formElements/Input';
 import Icon from '../../../../../components/icons/Icon';
+import Table from '../../../../../components/table/Table';
 import TableGridList from '../../../../../components/TableGridList';
-import VisuallyHidden from '../../../../../components/VisuallyHidden';
 import useLocalStorage from '../../../../../hooks/useLocalStorage';
 import { BtnVariant, IconName } from '../../../../../types/enums';
 import useLanguage from '../../../../language/useLanguage';
-import './_table.scss';
-import useTableFilter from './use-table-filter-hook';
-import useTableSort, { SortingState } from './use-table-sort-hook';
 import UserTableHeaderCell from './UserTableHeaderCell';
+import useTableFilter from './useTableFilter';
+import useTableSort, { SortingState } from './useTableSort';
 
-// Define table data type
 type TableData = {
   username: string;
   email: string;
@@ -20,7 +18,7 @@ type TableData = {
   id: string;
 };
 
-interface TableProps {
+interface UsersTableProps {
   tableCaption: string;
   tableData: TableData[];
   tableHeaders: string[];
@@ -36,7 +34,7 @@ const initState = {
   id: '',
 };
 
-const Table: FC<TableProps> = ({
+const UsersTable: FC<UsersTableProps> = ({
   tableCaption,
   isLoading,
   tableData,
@@ -119,8 +117,7 @@ const Table: FC<TableProps> = ({
         />
       </div>
       <div className="fixed-table">
-        <table aria-label={isLoading ? language.loading : undefined}>
-          <VisuallyHidden as="caption">{tableCaption}</VisuallyHidden>
+        <Table isLoading={isLoading} tableCaption={tableCaption}>
           <thead>
             <tr>
               {tableHeaders.map((tableHeader) => (
@@ -190,10 +187,10 @@ const Table: FC<TableProps> = ({
               </tr>
             )}
           </tbody>
-        </table>
+        </Table>
       </div>
     </>
   );
 };
 
-export default Table;
+export default UsersTable;

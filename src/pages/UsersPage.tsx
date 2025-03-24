@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import useMessagePopup from '../components/messagePopup/useMessagePopup';
-import Table from '../features/admin/users/components/newTable/UserTable';
-import { SortingState } from '../features/admin/users/components/newTable/use-table-sort-hook';
+import Table from '../features/admin/users/components/table/UserTable';
+import { SortingState } from '../features/admin/users/components/table/useTableSort';
 import {
   useDeleteUserMutation,
   useGetAllUsersQuery,
