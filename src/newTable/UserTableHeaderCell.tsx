@@ -26,7 +26,7 @@ const UserTableHeaderCell: FC<UserTableHeaderCellProps> = ({
   value,
 }) => (
   <section className="table-header-cell">
-    {showClearAllBtn ? (
+    {showClearAllBtn && (
       <>
         <Button
           variant={BtnVariant.Ghost}
@@ -44,14 +44,6 @@ const UserTableHeaderCell: FC<UserTableHeaderCellProps> = ({
           label={label}
         />
       </>
-    ) : (
-      <span>e</span>
-      // <IconBtn
-      //   iconName={IconName.Undo}
-      //   title={language.reset}
-      //   ariaLabel={language.resetFiltersAndSorting}
-      //   onClick={onClearAllValues}
-      // />
     )}
   </section>
 );

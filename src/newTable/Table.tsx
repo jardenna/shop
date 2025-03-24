@@ -105,8 +105,7 @@ const Table: FC<TableProps> = ({ isLoading, data = defaultData }) => {
                   <span>{language[tableHeader]}</span>
                   <UserTableHeaderCell
                     icon={getSortIcon(tableHeader)}
-                    ariaLabel={`${language.sort} ${language[tableHeader]}
-                     ${getColumnSortDirection(tableHeader) ? language[getColumnSortDirection(tableHeader) as string] : ''}`}
+                    ariaLabel={`${language.sort} ${getColumnSortDirection(tableHeader) ? language[getColumnSortDirection(tableHeader) as string] : ''}`}
                     showClearAllBtn={tableHeader !== ''}
                     onSortRows={() => {
                       handleSort(tableHeader as keyof TableData);
