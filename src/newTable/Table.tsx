@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import VisuallyHidden from '../components/VisuallyHidden';
 import useLanguage from '../features/language/useLanguage';
 import './_table.scss';
@@ -5,27 +6,35 @@ import useTableFilter from './use-table-filter-hook';
 import useTableSort, { SortingState } from './use-table-sort-hook';
 import UserTableHeaderCell from './UserTableHeaderCell';
 
-// Define generic table data type
-type TableData<T> = T;
+// Define table data type
+type TableData = {
+  username: string;
+  email: string;
+  role: string;
+};
 
 // Define table props interface
-interface TableProps<T> {
-  initialFilterState: TableData<any>;
+interface TableProps {
   tableCaption: string;
-  tableData: TableData<T>[];
-  tableHeaders: (keyof T | '')[];
+  tableData: TableData[];
+  tableHeaders: string[];
   initialSortedRow?: SortingState;
   isLoading?: boolean;
 }
 
-const Table = <T extends Record<string, any>>({
+const initState: TableData = {
+  username: '',
+  email: '',
+  role: '',
+};
+
+const Table: FC<TableProps> = ({
   tableCaption,
   isLoading,
   tableData,
   tableHeaders,
   initialSortedRow,
-  initialFilterState,
-}: TableProps<T>) => {
+}) => {
   const { language } = useLanguage();
 
   const {
@@ -34,7 +43,7 @@ const Table = <T extends Record<string, any>>({
     resetSort,
     getSortIcon,
     getColumnSortDirection,
-  } = useTableSort<T>({
+  } = useTableSort<TableData>({
     initialSortedRow,
   });
 
@@ -45,9 +54,9 @@ const Table = <T extends Record<string, any>>({
     filterData,
     resetFilter,
     onFilterRows,
-  } = useTableFilter<T>({
-    filterKeys: tableHeaders as string[],
-    initialColumnFilters: initialFilterState,
+  } = useTableFilter<TableData>({
+    filterKeys: tableHeaders,
+    initialColumnFilters: initState,
   });
 
   const getChangedTableData = () => {
@@ -91,18 +100,18 @@ const Table = <T extends Record<string, any>>({
           <VisuallyHidden as="caption">{tableCaption}</VisuallyHidden>
           <thead>
             <tr>
-              {tableHeaders.map((header) => (
-                <th scope="col" key={String(header)}>
+              {tableHeaders.map((tableHeader) => (
+                <th scope="col" key={tableHeader}>
                   <UserTableHeaderCell
-                    icon={getSortIcon(String(header))}
-                    ariaLabel={`${language.sort} ${getColumnSortDirection(String(header)) ? language[getColumnSortDirection(String(header)) as string] : ''}`}
-                    showClearAllBtn={header !== ''}
+                    icon={getSortIcon(tableHeader)}
+                    ariaLabel={`${language.sort} ${getColumnSortDirection(tableHeader) ? language[getColumnSortDirection(tableHeader) as string] : ''}`}
+                    showClearAllBtn={tableHeader !== ''}
                     onSortRows={() => {
-                      handleSort(String(header));
+                      handleSort(tableHeader as keyof TableData);
                     }}
-                    title={String(header)}
-                    value={values[header] as string}
-                    label={language[String(header)]}
+                    title={tableHeader}
+                    value={values[tableHeader as keyof TableData]}
+                    label={language[tableHeader]}
                     onFilterRows={onFilterRows}
                   />
                 </th>
@@ -111,18 +120,17 @@ const Table = <T extends Record<string, any>>({
           </thead>
           <tbody>
             {changedTableData.length > 0 ? (
-              changedTableData.map((row, idx) => (
-                <tr key={idx}>
-                  {tableHeaders.map((header) => (
-                    <td key={String(header)}>
-                      {header !== '' ? row[header] : <div>ss</div>}
-                    </td>
-                  ))}
+              changedTableData.map((row) => (
+                <tr key={row.email}>
+                  <td>{row.username}</td>
+                  <td>{row.email}</td>
+                  <td>{row.role}</td>
+                  <td>span</td>
                 </tr>
               ))
             ) : (
               <tr className="no-results">
-                <td colSpan={tableHeaders.length}>{language.noData}</td>
+                <td colSpan={3}>{language.noData}</td>
               </tr>
             )}
           </tbody>

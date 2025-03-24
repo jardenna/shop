@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { UserResponse } from '../app/api/apiTypes';
 import { useGetAllUsersQuery } from '../features/admin/users/usersApiSlice';
 import useLanguage from '../features/language/useLanguage';
 import Table from '../newTable/Table';
@@ -8,17 +7,8 @@ import { SortingState } from '../newTable/use-table-sort-hook';
 const Collections: FC = () => {
   const { language } = useLanguage();
   const { data: allUsers } = useGetAllUsersQuery();
-  const tableHeaders: ('' | keyof UserResponse)[] = [
-    'username',
-    'email',
-    'role',
-    '',
-  ];
-  const initialFilterState = {
-    username: '',
-    email: '',
-    role: '',
-  };
+  const tableHeaders = ['username', 'email', 'role', ''];
+
   const initialSortedRow: SortingState = {
     sortKey: 'username',
     direction: 'asc',
@@ -29,7 +19,6 @@ const Collections: FC = () => {
       Collections
       {allUsers && (
         <Table
-          initialFilterState={initialFilterState}
           tableData={allUsers}
           tableHeaders={tableHeaders}
           initialSortedRow={initialSortedRow}
