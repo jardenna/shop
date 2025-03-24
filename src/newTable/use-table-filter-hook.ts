@@ -53,19 +53,6 @@ function useTableFilter<T extends Record<string, any>>({
     setSearchParams(newParams);
   }, [columnFilters, setSearchParams]);
 
-  // Sync URL params with state when global search changes
-  useEffect(() => {
-    const newParams = new URLSearchParams(searchParams);
-
-    if (globalSearch && globalSearch.trim() !== '') {
-      newParams.set('search', globalSearch);
-    } else {
-      newParams.delete('search');
-    }
-
-    setSearchParams(newParams);
-  }, [globalSearch, setSearchParams]);
-
   // Handle column filter change
   const handleFilterRows = (event: ChangeInputType) => {
     const { name, value } = event.target;
@@ -132,9 +119,8 @@ function useTableFilter<T extends Record<string, any>>({
 
   // Reset all filters
   const resetFilter = () => {
-    setGlobalSearch('');
     setColumnFilters(initialColumnFilters);
-    setSearchParams(new URLSearchParams());
+    setSearchParams('');
   };
 
   return {
