@@ -9,6 +9,8 @@ bag;Bag;Indkøbskurv
 cancel;Cancel;Annuller
 cannotDeleteAdmin;Cannot delete admin user;Admin bruger kan ikke slettes
 categories;Categories;Kategorier
+clearFilters;Clear filters;Ryd filtre
+clearSort;Clear sort;Ryd sortering
 close;Close;Luk
 closeDialog;Close dialog;Luk dialog
 collection;Collection;Kollektion

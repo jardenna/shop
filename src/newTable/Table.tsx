@@ -1,10 +1,12 @@
 import { FC } from 'react';
 import Dropdown from '../components/dropdown/Dropdown';
+import Input from '../components/formElements/Input';
 import Icon from '../components/icons/Icon';
+import TableGridList from '../components/TableGridList';
 import VisuallyHidden from '../components/VisuallyHidden';
 import useLanguage from '../features/language/useLanguage';
+import useLocalStorage from '../hooks/useLocalStorage';
 import { BtnVariant, IconName } from '../types/enums';
-import './_table.scss';
 import useTableFilter from './use-table-filter-hook';
 import useTableSort, { SortingState } from './use-table-sort-hook';
 import UserTableHeaderCell from './UserTableHeaderCell';
@@ -70,36 +72,50 @@ const Table: FC<TableProps> = ({
     const filteredData = filterData(tableData);
     return sortData(filteredData);
   };
-
-  // Clear all filters and sorting
-  const clearAll = () => {
-    resetFilter();
-    resetSort();
-  };
+  const [padding, setPadding] = useLocalStorage('padding', 12);
+  const tableGridIconList = [
+    { padding: 4, iconName: IconName.GridSmall, title: language.gridSmall },
+    { padding: 12, iconName: IconName.Grid, title: language.grid },
+    { padding: 20, iconName: IconName.GridLarge, title: language.gridLarge },
+  ];
 
   const changedTableData = getChangedTableData();
 
   return (
     <>
+      <Input
+        type="search"
+        placeholder={language.search}
+        value={value}
+        onChange={onSearchChange}
+        id="search"
+        labelText={language.search}
+        name="search"
+        inputHasNoLabel
+      />
+
       <div className="table-controls">
-        <div className="search-container">
-          <input
-            type="text"
-            placeholder={language.search || 'Search...'}
-            value={value}
-            onChange={onSearchChange}
-            aria-label={language.searchAriaLabel || 'Search in table'}
-            className="search-input"
-          />
+        <div className="clear-btns">
+          <button
+            type="button"
+            className="clear-filters-btn"
+            onClick={resetSort}
+          >
+            {language.clearSort}
+          </button>
+          <button
+            type="button"
+            className="clear-filters-btn"
+            onClick={resetFilter}
+          >
+            {language.clearFilters}
+          </button>
         </div>
-        <button
-          type="button"
-          onClick={clearAll}
-          className="clear-filters-btn"
-          aria-label={language.clearFilters || 'Clear all filters'}
-        >
-          {language.clearFilters || 'Clear Filters'}
-        </button>
+        <TableGridList
+          onSetPadding={setPadding}
+          tableGridIconList={tableGridIconList}
+          isActive={padding}
+        />
       </div>
       <div className="fixed-table">
         <table aria-label={isLoading ? language.loading : undefined}>
@@ -107,7 +123,11 @@ const Table: FC<TableProps> = ({
           <thead>
             <tr>
               {tableHeaders.map((tableHeader) => (
-                <th scope="col" key={tableHeader}>
+                <th
+                  scope="col"
+                  key={tableHeader}
+                  style={{ paddingTop: padding, paddingBottom: padding }}
+                >
                   <UserTableHeaderCell
                     icon={getSortIcon(tableHeader)}
                     ariaLabel={`${language.sort} ${getColumnSortDirection(tableHeader) ? language[getColumnSortDirection(tableHeader) as string] : ''}`}
@@ -128,7 +148,9 @@ const Table: FC<TableProps> = ({
             {changedTableData.length > 0 ? (
               changedTableData.map(({ id, email, username, role }) => (
                 <tr key={email}>
-                  <td>{username}</td>
+                  <td style={{ paddingTop: padding, paddingBottom: padding }}>
+                    {username}
+                  </td>
                   <td>{email}</td>
                   <td>{role}</td>
                   <td>
