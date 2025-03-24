@@ -151,8 +151,12 @@ const Table: FC<TableProps> = ({
                   <td style={{ paddingTop: padding, paddingBottom: padding }}>
                     {username}
                   </td>
-                  <td>{email}</td>
-                  <td>{role}</td>
+                  <td>
+                    <a href={`mailto:${email}`}>{email}</a>
+                  </td>
+                  <td>
+                    <span className="user-role">{role}</span>
+                  </td>
                   <td>
                     <div>
                       {role !== 'admin' && (
