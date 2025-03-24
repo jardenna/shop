@@ -120,8 +120,8 @@ const Table: FC<TableProps> = ({
           </thead>
           <tbody>
             {changedTableData.length > 0 ? (
-              changedTableData.map((row, index) => (
-                <tr key={index}>
+              changedTableData.map((row) => (
+                <tr key={row.email}>
                   <td>{row.username}</td>
                   <td>{row.email}</td>
                   <td>{row.role}</td>
@@ -130,7 +130,7 @@ const Table: FC<TableProps> = ({
               ))
             ) : (
               <tr className="no-results">
-                <td colSpan={3}>{language.noResults || 'No results found'}</td>
+                <td colSpan={3}>{language.noData}</td>
               </tr>
             )}
           </tbody>
