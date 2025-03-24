@@ -7,7 +7,7 @@ import { SortingState } from '../newTable/use-table-sort-hook';
 const Collections: FC = () => {
   const { language } = useLanguage();
   const { data: allUsers } = useGetAllUsersQuery();
-  const tableHeaders = ['username', 'email', 'role', ''];
+
   const initialSortedRow: SortingState = {
     sortKey: 'username',
     direction: 'asc',
@@ -19,7 +19,7 @@ const Collections: FC = () => {
       {allUsers && (
         <Table
           tableData={allUsers}
-          tableHeaders={tableHeaders}
+          tableHeaders={['username', 'email', 'role']}
           initialSortedRow={initialSortedRow}
           tableCaption={language.customersList}
         />
