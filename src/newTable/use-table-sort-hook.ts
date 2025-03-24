@@ -13,26 +13,26 @@ export interface SortingState {
 // - sortKey: Which column to initially sort by (e.g., 'name', 'email')
 // - direction: Initial sort direction ('asc', 'desc')
 
-function useTableSort<T>(initialConfig?: {
+function useTableSort<T>(initialSortingState?: {
   sortKey?: string;
   direction?: SortDirection;
 }) {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const defaultConfig: SortingState = {
+  const defaultSortingState: SortingState = {
     sortKey: null,
     direction: null,
   };
 
-  const config = initialConfig
-    ? { ...defaultConfig, ...initialConfig }
-    : defaultConfig;
+  const sortState = initialSortingState
+    ? { ...defaultSortingState, ...initialSortingState }
+    : defaultSortingState;
 
   // Initialize from URL params or defaults
   const [tableSort, setTableSort] = useState<SortingState>({
-    sortKey: (searchParams.get('sortKey') as string) || config.sortKey,
+    sortKey: (searchParams.get('sortKey') as string) || sortState.sortKey,
     direction:
-      (searchParams.get('sortDir') as SortDirection) || config.direction,
+      (searchParams.get('sortDir') as SortDirection) || sortState.direction,
   });
 
   // Update URL when sort changes
