@@ -1,8 +1,9 @@
 import { FC } from 'react';
+import { UserResponse } from '../app/api/apiTypes';
 import useLanguage from '../features/language/useLanguage';
 import './_table.scss';
 import useTableFilter from './use-table-filter-hook';
-import useTableSort from './use-table-sort-hook';
+import useTableSort, { SortingState } from './use-table-sort-hook';
 import UserTableHeaderCell from './UserTableHeaderCell';
 
 // Define table data type
@@ -14,19 +15,11 @@ type TableData = {
 
 // Define table props interface
 interface TableProps {
-  data?: TableData[];
+  tableData: UserResponse[];
+  tableHeaders: string[];
+  initialSortedRow?: SortingState;
   isLoading?: boolean;
 }
-
-const tableHeaders = ['username', 'email', 'role', ''];
-
-// Sample data (replace with your actual data source)
-const defaultData: TableData[] = [
-  { username: 'Helle B', email: 'helle@mail.com', role: 'admin' },
-  { username: 'Ole', email: 'ole@mail.com', role: 'user' },
-  { username: 'Steen Larsen', email: 'steen@mail.com', role: 'user' },
-  { username: 'Helene', email: 'helene@mail.com', role: 'employee' },
-];
 
 const initState: TableData = {
   username: '',
@@ -34,7 +27,12 @@ const initState: TableData = {
   role: '',
 };
 
-const Table: FC<TableProps> = ({ isLoading, data = defaultData }) => {
+const Table: FC<TableProps> = ({
+  isLoading,
+  tableData,
+  tableHeaders,
+  initialSortedRow,
+}) => {
   const { language } = useLanguage();
 
   const {
@@ -43,10 +41,11 @@ const Table: FC<TableProps> = ({ isLoading, data = defaultData }) => {
     resetSort,
     getSortIcon,
     getColumnSortDirection,
-  } = useTableSort<TableData>({
-    sortKey: 'username',
-    direction: 'asc',
-  });
+  } = useTableSort<TableData>(
+    initialSortedRow
+      ? { ...initialSortedRow, sortKey: initialSortedRow.sortKey ?? undefined }
+      : undefined,
+  );
 
   const {
     value,
@@ -62,7 +61,7 @@ const Table: FC<TableProps> = ({ isLoading, data = defaultData }) => {
 
   const getChangedTableData = () => {
     // First filter, then sort
-    const filteredData = filterData(data);
+    const filteredData = filterData(tableData);
     return sortData(filteredData);
   };
 

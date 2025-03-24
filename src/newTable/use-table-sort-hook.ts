@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router';
 
 export type SortDirection = 'asc' | 'desc' | null;
 
-interface SortingState {
+export interface SortingState {
   direction: SortDirection;
   sortKey: string | null;
 }
