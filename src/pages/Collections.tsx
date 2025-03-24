@@ -10,6 +10,7 @@ const Collections: FC = () => {
     sortKey: 'username',
     direction: 'asc',
   };
+
   return (
     <section>
       Collections

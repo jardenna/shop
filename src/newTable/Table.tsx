@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { UserResponse } from '../app/api/apiTypes';
 import useLanguage from '../features/language/useLanguage';
 import './_table.scss';
 import useTableFilter from './use-table-filter-hook';
@@ -15,7 +14,7 @@ type TableData = {
 
 // Define table props interface
 interface TableProps {
-  tableData: UserResponse[];
+  tableData: TableData[];
   tableHeaders: string[];
   initialSortedRow?: SortingState;
   isLoading?: boolean;
@@ -41,11 +40,9 @@ const Table: FC<TableProps> = ({
     resetSort,
     getSortIcon,
     getColumnSortDirection,
-  } = useTableSort<TableData>(
-    initialSortedRow
-      ? { ...initialSortedRow, sortKey: initialSortedRow.sortKey ?? undefined }
-      : undefined,
-  );
+  } = useTableSort<TableData>({
+    initialSortedRow,
+  });
 
   const {
     value,

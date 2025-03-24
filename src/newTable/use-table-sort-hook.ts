@@ -5,7 +5,11 @@ export type SortDirection = 'asc' | 'desc' | null;
 
 export interface SortingState {
   direction: SortDirection;
-  sortKey: string | null;
+  sortKey?: string | null;
+}
+
+interface TableSortProps {
+  initialSortedRow?: SortingState;
 }
 
 // Parameters:
@@ -13,10 +17,7 @@ export interface SortingState {
 // - sortKey: Which column to initially sort by (e.g., 'name', 'email')
 // - direction: Initial sort direction ('asc', 'desc')
 
-function useTableSort<T>(initialSortingState?: {
-  sortKey?: string;
-  direction?: SortDirection;
-}) {
+function useTableSort<T>({ initialSortedRow }: TableSortProps) {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const defaultSortingState: SortingState = {
@@ -24,8 +25,8 @@ function useTableSort<T>(initialSortingState?: {
     direction: null,
   };
 
-  const sortState = initialSortingState
-    ? { ...defaultSortingState, ...initialSortingState }
+  const sortState = initialSortedRow
+    ? { ...defaultSortingState, ...initialSortedRow }
     : defaultSortingState;
 
   // Initialize from URL params or defaults
