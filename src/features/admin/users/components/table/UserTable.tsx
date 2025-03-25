@@ -116,79 +116,77 @@ const UsersTable: FC<UsersTableProps> = ({
           isActive={padding}
         />
       </div>
-      <div className="fixed-table">
-        <Table isLoading={isLoading} tableCaption={tableCaption}>
-          <thead>
-            <tr>
-              {tableHeaders.map((tableHeader) => (
-                <th
-                  scope="col"
-                  key={tableHeader}
-                  style={{ paddingTop: padding, paddingBottom: padding }}
-                >
-                  <UserTableHeaderCell
-                    icon={getSortIcon(tableHeader)}
-                    ariaLabel={`${language.sort} ${getColumnSortDirection(tableHeader) ? language[getColumnSortDirection(tableHeader) as string] : ''}`}
-                    showClearAllBtn={tableHeader !== ''}
-                    onSortRows={() => {
-                      handleSort(tableHeader as keyof TableData);
-                    }}
-                    title={tableHeader}
-                    value={values[tableHeader as keyof TableData]}
-                    label={language[tableHeader]}
-                    onFilterRows={onFilterRows}
-                  />
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {changedTableData.length > 0 ? (
-              changedTableData.map(({ id, email, username, role }) => (
-                <tr key={email}>
-                  <td style={{ paddingTop: padding, paddingBottom: padding }}>
-                    {username}
-                  </td>
-                  <td>
-                    <a href={`mailto:${email}`}>{email}</a>
-                  </td>
-                  <td>
-                    <span className="user-role">{role}</span>
-                  </td>
-                  <td>
-                    <div>
-                      {role !== 'admin' && (
-                        <Dropdown
-                          ariaControls="delete-user"
-                          text={`${language.sureToDelete} ${username}?`}
-                          btnVariant={BtnVariant.Ghost}
-                          onPrimaryClick={() => {
-                            onDeleteUser(id, username);
-                          }}
-                          primaryBtnLabel={language.delete}
-                          primaryBtnClassName="danger"
+      <Table isLoading={isLoading} tableCaption={tableCaption}>
+        <thead>
+          <tr>
+            {tableHeaders.map((tableHeader) => (
+              <th
+                scope="col"
+                key={tableHeader}
+                style={{ paddingTop: padding, paddingBottom: padding }}
+              >
+                <UserTableHeaderCell
+                  icon={getSortIcon(tableHeader)}
+                  ariaLabel={`${language.sort} ${getColumnSortDirection(tableHeader) ? language[getColumnSortDirection(tableHeader) as string] : ''}`}
+                  showClearAllBtn={tableHeader !== ''}
+                  onSortRows={() => {
+                    handleSort(tableHeader as keyof TableData);
+                  }}
+                  title={tableHeader}
+                  value={values[tableHeader as keyof TableData]}
+                  label={language[tableHeader]}
+                  onFilterRows={onFilterRows}
+                />
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {changedTableData.length > 0 ? (
+            changedTableData.map(({ id, email, username, role }) => (
+              <tr key={email}>
+                <td style={{ paddingTop: padding, paddingBottom: padding }}>
+                  {username}
+                </td>
+                <td>
+                  <a href={`mailto:${email}`}>{email}</a>
+                </td>
+                <td>
+                  <span className="user-role">{role}</span>
+                </td>
+                <td>
+                  <div>
+                    {role !== 'admin' && (
+                      <Dropdown
+                        ariaControls="delete-user"
+                        text={`${language.sureToDelete} ${username}?`}
+                        btnVariant={BtnVariant.Ghost}
+                        onPrimaryClick={() => {
+                          onDeleteUser(id, username);
+                        }}
+                        primaryBtnLabel={language.delete}
+                        primaryBtnClassName="danger"
+                        ariaLabel={language.deleteCustomer}
+                        className="danger"
+                      >
+                        <Icon
+                          iconName={IconName.Trash}
+                          title={language.trashCan}
                           ariaLabel={language.deleteCustomer}
-                          className="danger"
-                        >
-                          <Icon
-                            iconName={IconName.Trash}
-                            title={language.trashCan}
-                            ariaLabel={language.deleteCustomer}
-                          />
-                        </Dropdown>
-                      )}
-                    </div>
-                  </td>
-                </tr>
-              ))
-            ) : (
-              <tr className="no-results">
-                <td colSpan={3}>{language.noData}</td>
+                        />
+                      </Dropdown>
+                    )}
+                  </div>
+                </td>
               </tr>
-            )}
-          </tbody>
-        </Table>
-      </div>
+            ))
+          ) : (
+            <tr className="no-results">
+              <td colSpan={3}>{language.noData}</td>
+            </tr>
+          )}
+        </tbody>
+      </Table>
     </>
   );
 };
