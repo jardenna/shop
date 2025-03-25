@@ -3,9 +3,13 @@ import { useSearchParams } from 'react-router';
 
 export type SortDirection = 'asc' | 'desc' | null;
 
-interface SortingState<K> {
+export interface SortingState {
   direction: SortDirection;
-  sortKey: K | null;
+  sortKey?: string | null;
+}
+
+interface TableSortProps {
+  initialSortedRow?: SortingState;
 }
 
 // Parameters:
@@ -13,26 +17,23 @@ interface SortingState<K> {
 // - sortKey: Which column to initially sort by (e.g., 'name', 'email')
 // - direction: Initial sort direction ('asc', 'desc')
 
-function useTableSort<T, K extends keyof T>(initialConfig?: {
-  sortKey?: K;
-  direction?: SortDirection;
-}) {
+function useTableSort<T>({ initialSortedRow }: TableSortProps) {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const defaultConfig: SortingState<K> = {
+  const defaultSortingState: SortingState = {
     sortKey: null,
     direction: null,
   };
 
-  const config = initialConfig
-    ? { ...defaultConfig, ...initialConfig }
-    : defaultConfig;
+  const sortState = initialSortedRow
+    ? { ...defaultSortingState, ...initialSortedRow }
+    : defaultSortingState;
 
   // Initialize from URL params or defaults
-  const [tableSort, setTableSort] = useState<SortingState<K>>({
-    sortKey: (searchParams.get('sortKey') as K) || config.sortKey,
+  const [tableSort, setTableSort] = useState<SortingState>({
+    sortKey: (searchParams.get('sortKey') as string) || sortState.sortKey,
     direction:
-      (searchParams.get('sortDir') as SortDirection) || config.direction,
+      (searchParams.get('sortDir') as SortDirection) || sortState.direction,
   });
 
   // Update URL when sort changes
@@ -56,7 +57,7 @@ function useTableSort<T, K extends keyof T>(initialConfig?: {
   }, [tableSort, searchParams, setSearchParams]);
 
   // Handle sorting logic
-  const handleSort = (sortKey: K) => {
+  const handleSort = (sortKey: string) => {
     let direction: SortDirection = 'asc';
 
     if (tableSort.sortKey === sortKey) {
@@ -97,7 +98,7 @@ function useTableSort<T, K extends keyof T>(initialConfig?: {
   };
 
   // Get sort indicator icon
-  const getSortIcon = (sortKey: K) => {
+  const getSortIcon = (sortKey: string) => {
     if (tableSort.sortKey !== sortKey) {
       return '⇅';
     }
@@ -110,12 +111,21 @@ function useTableSort<T, K extends keyof T>(initialConfig?: {
     return '⇅';
   };
 
+  // Get current sort direction for a column
+  const getColumnSortDirection = (sortKey: string): SortDirection => {
+    if (tableSort.sortKey !== sortKey) {
+      return null;
+    }
+    return tableSort.direction;
+  };
+
   return {
     sortState: tableSort,
     handleSort,
     sortData,
     resetSort,
     getSortIcon,
+    getColumnSortDirection,
   };
 }
 

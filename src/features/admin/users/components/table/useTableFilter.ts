@@ -1,19 +1,23 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router';
+import { ChangeInputType } from '../../../../../types/types';
 
-// Define the input change event type
-export type ChangeInputType = React.ChangeEvent<HTMLInputElement>;
+interface TableFilterProps<T extends Record<string, any>> {
+  filterKeys: string[];
+  initialColumnFilters: T;
+  initialSearch?: string;
+}
 
-function useTableFilter<T extends Record<string, any>>(
-  initialSearch: string = '',
-  filterKeys: (keyof T)[] = [],
-  initialColumnFilters: T,
-) {
+function useTableFilter<T extends Record<string, any>>({
+  initialSearch,
+  filterKeys,
+  initialColumnFilters,
+}: TableFilterProps<T>) {
   const [searchParams, setSearchParams] = useSearchParams();
 
   // Initialize global search from URL params or defaults
   const [globalSearch, setGlobalSearch] = useState<string>(
-    searchParams.get('search') || initialSearch,
+    searchParams.get('search') || initialSearch || '',
   );
 
   // Initialize column filters from URL params or defaults
@@ -49,21 +53,8 @@ function useTableFilter<T extends Record<string, any>>(
     setSearchParams(newParams);
   }, [columnFilters, setSearchParams]);
 
-  // Sync URL params with state when global search changes
-  useEffect(() => {
-    const newParams = new URLSearchParams(searchParams);
-
-    if (globalSearch && globalSearch.trim() !== '') {
-      newParams.set('search', globalSearch);
-    } else {
-      newParams.delete('search');
-    }
-
-    setSearchParams(newParams);
-  }, [globalSearch, setSearchParams]);
-
   // Handle column filter change
-  const handleChange = (event: ChangeInputType) => {
+  const handleFilterRows = (event: ChangeInputType) => {
     const { name, value } = event.target;
     setColumnFilters((prev) => {
       // Create a new object with the updated value
@@ -128,9 +119,8 @@ function useTableFilter<T extends Record<string, any>>(
 
   // Reset all filters
   const resetFilter = () => {
-    setGlobalSearch('');
     setColumnFilters(initialColumnFilters);
-    setSearchParams(new URLSearchParams());
+    setSearchParams('');
   };
 
   return {
@@ -139,7 +129,7 @@ function useTableFilter<T extends Record<string, any>>(
     onSearchChange: handleSearchChange,
     filterData,
     resetFilter,
-    handleChange,
+    onFilterRows: handleFilterRows,
   };
 }
 

@@ -1,29 +1,19 @@
 import { FC } from 'react';
-import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-import MainTable from '../../features/admin/users/components/MainTable';
+import useMessagePopup from '../components/messagePopup/useMessagePopup';
+import Table from '../features/admin/users/components/table/UserTable';
+import { SortingState } from '../features/admin/users/components/table/useTableSort';
 import {
   useDeleteUserMutation,
   useGetAllUsersQuery,
-} from '../../features/admin/users/usersApiSlice';
-import useLanguage from '../../features/language/useLanguage';
+} from '../features/admin/users/usersApiSlice';
+import useLanguage from '../features/language/useLanguage';
 
-export interface TableHeaders {
-  id: number;
-  key: string | null;
-  label: string;
-}
 const UsersPage: FC = () => {
   const { language } = useLanguage();
-  const tableHeaders: TableHeaders[] = [
-    { id: 1, key: 'username', label: language.username },
-    { id: 2, key: 'email', label: language.email },
-    { id: 3, key: 'role', label: language.role },
-    { id: 4, key: null, label: '' },
-  ];
-
-  const { data: allUsers, isLoading, isFetching } = useGetAllUsersQuery();
+  const { data: allUsers } = useGetAllUsersQuery();
   const [deleteUser] = useDeleteUserMutation();
   const { onAddMessagePopup } = useMessagePopup();
+  const tableHeaders = ['username', 'email', 'role', ''];
 
   const handleDeleteUser = async (id: string, username: string) => {
     try {
@@ -41,15 +31,20 @@ const UsersPage: FC = () => {
     }
   };
 
+  const initialSortedRow: SortingState = {
+    sortKey: 'username',
+    direction: 'asc',
+  };
+
   return (
     <section>
+      UsersPage
       {allUsers && (
-        <MainTable
-          isLoading={isLoading}
-          isPending={isFetching}
-          tableCaption={language.customersList}
+        <Table
           tableData={allUsers}
           tableHeaders={tableHeaders}
+          initialSortedRow={initialSortedRow}
+          tableCaption={language.customersList}
           onDeleteUser={handleDeleteUser}
         />
       )}

@@ -5,8 +5,8 @@ import './_table.scss';
 
 interface TableProps {
   children: ReactNode;
-  isLoading: boolean;
   tableCaption: string;
+  isLoading?: boolean;
 }
 
 const Table: FC<TableProps> = ({ children, tableCaption, isLoading }) => {
