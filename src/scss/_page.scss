@@ -49,6 +49,8 @@
 
   .aside {
     position: relative;
+    display: flex;
+    flex-direction: column;
     height: calc(100svh - $header-height);
     background-color: #f4f4f5;
     width: rem(300px);
