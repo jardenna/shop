@@ -13,6 +13,7 @@ clearFilters;Clear filters;Ryd filtre
 clearSort;Clear sort;Ryd sortering
 close;Close;Luk
 closeDialog;Close dialog;Luk dialog
+collapseMenu;Collapse menu;Skjul menu
 collection;Collection;Kollektion
 confirmPassword;Confirm password;Gentag adgangskode
 contact;Contact;Kontakt
@@ -30,6 +31,7 @@ desc;descending;faldende
 email;Email;E-mail
 error;Error;Fejl
 errorAltText;A really guilty emoji;En meget skyldig emoji
+expandMenu;Expand menu;Udvid menu
 eye;Eye;Øje
 eyeClosed;Closed eye;Lukket øje
 fillAll;Please fill all the inputs;Udfyld venligst alle felter

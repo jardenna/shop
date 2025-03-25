@@ -29,26 +29,6 @@
 }
 
 .admin-nav {
-  height: calc(100svh - $header-height);
-  background-color: #f4f4f5;
-  width: rem(300px);
-
-  @include transition($what: width, $time: 0.2s);
-
-  &.collapsed {
-    width: rem(61px);
-
-    .btn-ghost {
-      svg {
-        transform: rotate(180deg);
-      }
-    }
-
-    .nav-text {
-      opacity: 0;
-    }
-  }
-
   .btn-ghost {
     position: absolute;
     background: #d9d6d6;

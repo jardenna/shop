@@ -29,10 +29,10 @@ const Nav: FC<NavProps> = ({ navList, iconBtn, className = '' }) => {
   const { language } = useLanguage();
 
   return (
-    <section className={`main-nav ${className}`}>
-      {iconBtn && <div>{iconBtn}</div>}
+    <nav className={`main-nav ${className}`}>
+      {iconBtn && iconBtn}
       <NavItemList navItemsList={navList} ariaLabel={language.main} />
-    </section>
+    </nav>
   );
 };
 

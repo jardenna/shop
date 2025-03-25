@@ -27,20 +27,23 @@ const AdminLayout: FC = () => {
       <SkipLink />
       <AdminHeader ariaLabel={language.main} />
       <main id="main" className="main">
-        <aside className="aside">
+        <aside className={`aside ${isMenuCollapsed ? 'collapsed' : ''}`}>
           <Nav
             navList={adminNavList}
+            className="admin-nav"
             iconBtn={
               <IconBtn
                 onClick={handleCollapseMenu}
-                ariaLabel="Collapse menu"
+                ariaLabel={
+                  isMenuCollapsed ? language.expandMenu : language.collapseMenu
+                }
                 iconName={IconName.ChevronLeft}
                 title="chevron"
                 ariaExpanded={!isMenuCollapsed}
               />
             }
-            className={`admin-nav ${isMenuCollapsed ? 'collapsed' : ''}`}
           />
+          link to shop
         </aside>
         <div className="container">
           <Outlet />
