@@ -1,7 +1,9 @@
 import { FC, useState } from 'react';
 import { useSearchParams } from 'react-router';
 import { UserResponse } from '../../app/api/apiTypes';
+import { BtnVariant } from '../../types/enums';
 import { ChangeInputType } from '../../types/types';
+import Button from '../Button';
 import Input from '../formElements/Input';
 
 const tableData: UserResponse[] = [
@@ -36,11 +38,36 @@ const tableData: UserResponse[] = [
 
 const SortTable: FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const filteredDataFromParams = Object.fromEntries(searchParams);
+  const [editRowId, setEditRowId] = useState<string | null>(null);
+  const [values, setValues] = useState<Partial<UserResponse>>({});
+  const [editingField, setEditingField] = useState<keyof UserResponse | null>(
+    null,
+  );
 
+  const filteredDataFromParams = Object.fromEntries(searchParams);
   const [filterValues, setFilterValues] = useState<{ [key: string]: string }>(
     filteredDataFromParams,
   );
+
+  const handleEdit = (id: string, field: keyof UserResponse) => {
+    setEditRowId(id);
+    setEditingField(field);
+    const row = tableData.find((item) => item.id === id);
+    if (row) {
+      setValues({ [field]: row[field] });
+    }
+  };
+
+  const handleChange = (event: ChangeInputType) => {
+    const { name, value } = event.target;
+    setValues({ ...values, [name]: value });
+  };
+
+  const handleCancel = () => {
+    setEditRowId(null);
+    setEditingField(null);
+    setValues({});
+  };
 
   const handleFilter = (event: ChangeInputType) => {
     const { name, value } = event.target;
@@ -103,9 +130,90 @@ const SortTable: FC = () => {
       <tbody>
         {filteredData.map(({ id, username, email, role }) => (
           <tr key={id}>
-            <td>{username}</td>
-            <td>{email}</td>
-            <td>{role}</td>
+            <td>
+              {editRowId === id && editingField === 'username' ? (
+                <div>
+                  <Input
+                    id="username"
+                    name="username"
+                    onChange={handleChange}
+                    value={values.username || ''}
+                    labelText="Username"
+                  />
+                  <button type="button" onClick={handleCancel}>
+                    Cancel
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <span>{username}</span>
+                  <Button
+                    variant={BtnVariant.Ghost}
+                    onClick={() => {
+                      handleEdit(id, 'username');
+                    }}
+                  >
+                    Edit
+                  </Button>
+                </>
+              )}
+            </td>
+            <td>
+              {editRowId === id && editingField === 'email' ? (
+                <>
+                  <Input
+                    id="email"
+                    name="email"
+                    onChange={handleChange}
+                    value={values.email || ''}
+                    labelText="Username"
+                  />
+                  <button type="button" onClick={handleCancel}>
+                    Cancel
+                  </button>
+                </>
+              ) : (
+                <>
+                  <span>{email}</span>
+                  <Button
+                    variant={BtnVariant.Ghost}
+                    onClick={() => {
+                      handleEdit(id, 'email');
+                    }}
+                  >
+                    Edit
+                  </Button>
+                </>
+              )}
+            </td>
+            <td>
+              {editRowId === id && editingField === 'role' ? (
+                <>
+                  <Input
+                    id="role"
+                    name="role"
+                    onChange={handleChange}
+                    value={values.role || ''}
+                    labelText="Role"
+                  />
+                  <button type="button" onClick={handleCancel}>
+                    Cancel
+                  </button>
+                </>
+              ) : (
+                <>
+                  <span>{role}</span>
+                  <Button
+                    variant={BtnVariant.Ghost}
+                    onClick={() => {
+                      handleEdit(id, 'role');
+                    }}
+                  >
+                    Edit
+                  </Button>
+                </>
+              )}
+            </td>
           </tr>
         ))}
       </tbody>
