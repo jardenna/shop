@@ -38,13 +38,9 @@ const SortTable: FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const filteredDataFromParams = Object.fromEntries(searchParams);
 
-  const initialState = {
-    username: filteredDataFromParams.username || '',
-    email: filteredDataFromParams.email || '',
-    role: filteredDataFromParams.role || '',
-  };
-
-  const [filterValues, setFilterValues] = useState(initialState);
+  const [filterValues, setFilterValues] = useState<{ [key: string]: string }>(
+    filteredDataFromParams,
+  );
 
   const handleFilter = (event: ChangeInputType) => {
     const { name, value } = event.target;
@@ -53,7 +49,6 @@ const SortTable: FC = () => {
     } else {
       searchParams.delete(name);
     }
-
     setSearchParams(searchParams);
     setFilterValues({ ...filterValues, [name]: value });
   };
@@ -79,7 +74,7 @@ const SortTable: FC = () => {
               id="username"
               name="username"
               onChange={handleFilter}
-              value={filterValues.username}
+              value={filterValues.username || ''}
               labelText="Username"
             />
           </th>
@@ -89,7 +84,7 @@ const SortTable: FC = () => {
               id="email"
               name="email"
               onChange={handleFilter}
-              value={filterValues.email}
+              value={filterValues.email || ''}
               labelText="Email"
             />
           </th>
@@ -99,7 +94,7 @@ const SortTable: FC = () => {
               id="role"
               name="role"
               onChange={handleFilter}
-              value={filterValues.role}
+              value={filterValues.role || ''}
               labelText="Role"
             />
           </th>
