@@ -34,7 +34,7 @@ const TableSearchInput: FC<TableSearchInputProps> = ({
   });
 
   return (
-    <div className="position-relative">
+    <div className="table-search-input">
       <IconBtn
         title={language.filterRow}
         ariaLabel={`${language.filter} ${label}`}

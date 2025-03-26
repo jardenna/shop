@@ -136,14 +136,6 @@ table {
     gap: 4px;
   }
 
-  .input-container {
-    right: -8px;
-    top: 32px;
-    position: absolute;
-    z-index: 3;
-    min-width: rem(180px);
-  }
-
   .dot {
     width: rem(12px);
     height: rem(12px);
@@ -154,6 +146,18 @@ table {
     top: -2px;
     right: -4px;
     border: 3px solid $color-white;
+  }
+}
+
+.table-search-input {
+  position: relative;
+
+  .input-container {
+    right: -8px;
+    top: 32px;
+    position: absolute;
+    z-index: 3;
+    min-width: rem(180px);
   }
 }
 
