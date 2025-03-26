@@ -43,6 +43,10 @@ const SortTable: FC = () => {
   const [editingField, setEditingField] = useState<keyof UserResponse | null>(
     null,
   );
+  const [sortConfig, setSortConfig] = useState<{
+    key: keyof UserResponse;
+    direction: 'asc' | 'desc';
+  } | null>(null);
 
   const filteredDataFromParams = Object.fromEntries(searchParams);
   const [filterValues, setFilterValues] = useState<{ [key: string]: string }>(
@@ -62,6 +66,7 @@ const SortTable: FC = () => {
     const { name, value } = event.target;
     setValues({ ...values, [name]: value });
   };
+  console.log(sortConfig);
 
   const handleSave = (id: string, field: keyof UserResponse) => {
     console.log(id, values[field], field);
@@ -86,7 +91,33 @@ const SortTable: FC = () => {
     setFilterValues({ ...filterValues, [name]: value });
   };
 
-  const filteredData = tableData.filter((item) =>
+  const handleSort = (key: keyof UserResponse) => {
+    setSortConfig((prev) => {
+      if (prev?.key === key && prev.direction === 'asc') {
+        return { key, direction: 'desc' };
+      }
+      return { key, direction: 'asc' };
+    });
+  };
+
+  const sortedData = [...tableData].sort((a, b) => {
+    if (!sortConfig) {
+      return 0;
+    }
+
+    const { key, direction } = sortConfig;
+    const order = direction === 'asc' ? 1 : -1;
+
+    if (a[key] < b[key]) {
+      return -1 * order;
+    }
+    if (a[key] > b[key]) {
+      return 1 * order;
+    }
+    return 0;
+  });
+
+  const filteredData = sortedData.filter((item) =>
     Object.entries(filterValues).every(([key, value]) =>
       value
         ? item[key as keyof UserResponse]
@@ -101,7 +132,11 @@ const SortTable: FC = () => {
     <table>
       <thead>
         <tr>
-          <th>
+          <th
+            onClick={() => {
+              handleSort('username');
+            }}
+          >
             <Input
               type="search"
               id="username"
@@ -111,7 +146,11 @@ const SortTable: FC = () => {
               labelText="Username"
             />
           </th>
-          <th>
+          <th
+            onClick={() => {
+              handleSort('email');
+            }}
+          >
             <Input
               type="search"
               id="email"
@@ -121,7 +160,11 @@ const SortTable: FC = () => {
               labelText="Email"
             />
           </th>
-          <th>
+          <th
+            onClick={() => {
+              handleSort('role');
+            }}
+          >
             <Input
               type="search"
               id="role"
