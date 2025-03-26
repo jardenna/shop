@@ -36,6 +36,7 @@ const tableData: UserResponse[] = [
     id: '67dd870d5d44e490f0ae7de3',
   },
 ];
+export type SortDirection = 'asc' | 'desc';
 
 const SortTable: FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -46,7 +47,7 @@ const SortTable: FC = () => {
   );
   const [sortConfig, setSortConfig] = useState<{
     sortKey: keyof UserResponse;
-    sortDirection: 'asc' | 'desc';
+    sortDirection: SortDirection;
   } | null>(null);
 
   const filteredDataFromParams = Object.fromEntries(searchParams);
@@ -96,6 +97,7 @@ const SortTable: FC = () => {
       if (prev?.sortKey === sortKey && prev.sortDirection === 'asc') {
         return { sortKey, sortDirection: 'desc' };
       }
+
       return { sortKey, sortDirection: 'asc' };
     });
   };

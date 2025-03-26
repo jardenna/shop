@@ -1,6 +1,8 @@
+import { SortDirection } from './SortTable';
+
 const sortData = <T>(
   data: T[],
-  sortConfig: { sortKey: keyof T; sortDirection: 'asc' | 'desc' } | null,
+  sortConfig: { sortKey: keyof T; sortDirection: SortDirection } | null,
 ): T[] => {
   if (!sortConfig) {
     return data;
@@ -24,7 +26,7 @@ const sortData = <T>(
 
 export const getSortIcon = <T>(
   key: keyof T,
-  sortConfig: { sortKey: keyof T; sortDirection: 'asc' | 'desc' } | null,
+  sortConfig: { sortKey: keyof T; sortDirection: SortDirection } | null,
 ) => {
   if (!sortConfig || sortConfig.sortKey !== key) {
     return '⇅';
@@ -34,12 +36,25 @@ export const getSortIcon = <T>(
 
 export const getSortDirection = <T>(
   key: keyof T,
-  sortConfig: { sortKey: keyof T; sortDirection: 'asc' | 'desc' } | null,
+  sortConfig: { sortKey: keyof T; sortDirection: SortDirection } | null,
 ) => {
   if (!sortConfig || sortConfig.sortKey !== key) {
     return '';
   }
   return sortConfig.sortDirection === 'asc' ? 'asc' : 'desc';
 };
+
+// export const getSortMeta = <T>(
+//   key: keyof T,
+//   sortConfig: { sortKey: keyof T; sortDirection: SortDirection } | null,
+// ) => {
+//   if (!sortConfig || sortConfig.sortKey !== key) {
+//     return { icon: '⇅', direction: '' };
+//   }
+//   return {
+//     icon: sortConfig.sortDirection === 'asc' ? '↑' : '↓',
+//     direction: sortConfig.sortDirection === 'asc' ? 'asc' : 'desc',
+//   };
+// };
 
 export default sortData;
