@@ -5,6 +5,7 @@ import { BtnVariant } from '../../types/enums';
 import { ChangeInputType } from '../../types/types';
 import Button from '../Button';
 import Input from '../formElements/Input';
+import sortData from './utils';
 
 const tableData: UserResponse[] = [
   {
@@ -45,7 +46,7 @@ const SortTable: FC = () => {
   );
   const [sortConfig, setSortConfig] = useState<{
     key: keyof UserResponse;
-    direction: 'asc' | 'desc';
+    sortDirection: 'asc' | 'desc';
   } | null>(null);
 
   const filteredDataFromParams = Object.fromEntries(searchParams);
@@ -66,7 +67,6 @@ const SortTable: FC = () => {
     const { name, value } = event.target;
     setValues({ ...values, [name]: value });
   };
-  console.log(sortConfig);
 
   const handleSave = (id: string, field: keyof UserResponse) => {
     console.log(id, values[field], field);
@@ -93,29 +93,14 @@ const SortTable: FC = () => {
 
   const handleSort = (key: keyof UserResponse) => {
     setSortConfig((prev) => {
-      if (prev?.key === key && prev.direction === 'asc') {
-        return { key, direction: 'desc' };
+      if (prev?.key === key && prev.sortDirection === 'asc') {
+        return { key, sortDirection: 'desc' };
       }
-      return { key, direction: 'asc' };
+      return { key, sortDirection: 'asc' };
     });
   };
 
-  const sortedData = [...tableData].sort((a, b) => {
-    if (!sortConfig) {
-      return 0;
-    }
-
-    const { key, direction } = sortConfig;
-    const order = direction === 'asc' ? 1 : -1;
-
-    if (a[key] < b[key]) {
-      return -1 * order;
-    }
-    if (a[key] > b[key]) {
-      return 1 * order;
-    }
-    return 0;
-  });
+  const sortedData = sortData(tableData, sortConfig);
 
   const filteredData = sortedData.filter((item) =>
     Object.entries(filterValues).every(([key, value]) =>
