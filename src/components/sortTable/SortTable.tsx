@@ -63,6 +63,12 @@ const SortTable: FC = () => {
     setValues({ ...values, [name]: value });
   };
 
+  const handleSave = (id: string, field: keyof UserResponse) => {
+    console.log(id, values[field], field);
+
+    setEditRowId(null);
+    setEditingField(null);
+  };
   const handleCancel = () => {
     setEditRowId(null);
     setEditingField(null);
@@ -140,9 +146,17 @@ const SortTable: FC = () => {
                     value={values.username || ''}
                     labelText="Username"
                   />
-                  <button type="button" onClick={handleCancel}>
+                  <Button variant={BtnVariant.Ghost} onClick={handleCancel}>
                     Cancel
-                  </button>
+                  </Button>
+                  <Button
+                    variant={BtnVariant.Ghost}
+                    onClick={() => {
+                      handleSave(id, 'username');
+                    }}
+                  >
+                    Save
+                  </Button>
                 </div>
               ) : (
                 <>
@@ -168,9 +182,17 @@ const SortTable: FC = () => {
                     value={values.email || ''}
                     labelText="Username"
                   />
-                  <button type="button" onClick={handleCancel}>
+                  <Button variant={BtnVariant.Ghost} onClick={handleCancel}>
                     Cancel
-                  </button>
+                  </Button>
+                  <Button
+                    variant={BtnVariant.Ghost}
+                    onClick={() => {
+                      handleSave(id, 'email');
+                    }}
+                  >
+                    Save
+                  </Button>
                 </>
               ) : (
                 <>
@@ -196,9 +218,17 @@ const SortTable: FC = () => {
                     value={values.role || ''}
                     labelText="Role"
                   />
-                  <button type="button" onClick={handleCancel}>
+                  <Button variant={BtnVariant.Ghost} onClick={handleCancel}>
                     Cancel
-                  </button>
+                  </Button>
+                  <Button
+                    variant={BtnVariant.Ghost}
+                    onClick={() => {
+                      handleSave(id, 'role');
+                    }}
+                  >
+                    Save
+                  </Button>
                 </>
               ) : (
                 <>
