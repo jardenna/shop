@@ -9,7 +9,7 @@ const sortData = <T>(
   const { sortKey, sortDirection } = sortConfig;
   const order = sortDirection === 'asc' ? 1 : -1;
 
-  return [...data].sort((a, b) => {
+  const sortedData = [...data].sort((a, b) => {
     if (a[sortKey] < b[sortKey]) {
       return -1 * order;
     }
@@ -18,6 +18,28 @@ const sortData = <T>(
     }
     return 0;
   });
+
+  return sortedData;
+};
+
+export const getSortIcon = <T>(
+  key: keyof T,
+  sortConfig: { sortKey: keyof T; sortDirection: 'asc' | 'desc' } | null,
+) => {
+  if (!sortConfig || sortConfig.sortKey !== key) {
+    return '⇅';
+  }
+  return sortConfig.sortDirection === 'asc' ? '↑' : '↓';
+};
+
+export const getSortDirection = <T>(
+  key: keyof T,
+  sortConfig: { sortKey: keyof T; sortDirection: 'asc' | 'desc' } | null,
+) => {
+  if (!sortConfig || sortConfig.sortKey !== key) {
+    return '';
+  }
+  return sortConfig.sortDirection === 'asc' ? 'asc' : 'desc';
 };
 
 export default sortData;

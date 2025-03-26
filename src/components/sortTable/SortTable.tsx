@@ -5,7 +5,7 @@ import { BtnVariant } from '../../types/enums';
 import { ChangeInputType } from '../../types/types';
 import Button from '../Button';
 import Input from '../formElements/Input';
-import sortData from './utils';
+import sortData, { getSortDirection, getSortIcon } from './utils';
 
 const tableData: UserResponse[] = [
   {
@@ -130,6 +130,8 @@ const SortTable: FC = () => {
               value={filterValues.username || ''}
               labelText="Username"
             />
+            {getSortIcon('username', sortConfig)}
+            {getSortDirection('username', sortConfig)}
           </th>
           <th
             onClick={() => {
@@ -144,6 +146,9 @@ const SortTable: FC = () => {
               value={filterValues.email || ''}
               labelText="Email"
             />
+
+            {getSortIcon('email', sortConfig)}
+            {getSortDirection('email', sortConfig)}
           </th>
           <th
             onClick={() => {
@@ -158,6 +163,8 @@ const SortTable: FC = () => {
               value={filterValues.role || ''}
               labelText="Role"
             />
+            {getSortIcon('role', sortConfig)}
+            {getSortDirection('role', sortConfig)}
           </th>
         </tr>
       </thead>
