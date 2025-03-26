@@ -45,7 +45,7 @@ const SortTable: FC = () => {
     null,
   );
   const [sortConfig, setSortConfig] = useState<{
-    key: keyof UserResponse;
+    sortKey: keyof UserResponse;
     sortDirection: 'asc' | 'desc';
   } | null>(null);
 
@@ -91,12 +91,12 @@ const SortTable: FC = () => {
     setFilterValues({ ...filterValues, [name]: value });
   };
 
-  const handleSort = (key: keyof UserResponse) => {
+  const handleSort = (sortKey: keyof UserResponse) => {
     setSortConfig((prev) => {
-      if (prev?.key === key && prev.sortDirection === 'asc') {
-        return { key, sortDirection: 'desc' };
+      if (prev?.sortKey === sortKey && prev.sortDirection === 'asc') {
+        return { sortKey, sortDirection: 'desc' };
       }
-      return { key, sortDirection: 'asc' };
+      return { sortKey, sortDirection: 'asc' };
     });
   };
 
