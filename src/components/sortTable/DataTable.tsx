@@ -17,27 +17,26 @@ export default function DataTable() {
   const [data, setData] = useState(initialData);
   const [editRowId, setEditRowId] = useState<number | null>(null);
   const [editingField, setEditingField] = useState<keyof Data | null>(null);
-  const [formData, setFormData] = useState<Partial<Data>>({});
+  const [values, setValues] = useState<Partial<Data>>({});
 
   const handleEdit = (id: number, field: keyof Data) => {
     setEditRowId(id);
     setEditingField(field);
     const row = data.find((item) => item.id === id);
     if (row) {
-      setFormData({ [field]: row[field] });
+      setValues({ [field]: row[field] });
     }
   };
-  console.log(data);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setValues({ ...values, [name]: value });
   };
 
   const handleSave = (id: number, field: keyof Data) => {
     setData((prev) =>
       prev.map((item) =>
-        item.id === id ? { ...item, [field]: formData[field] } : item,
+        item.id === id ? { ...item, [field]: values[field] } : item,
       ),
     );
     setEditRowId(null);
@@ -47,7 +46,7 @@ export default function DataTable() {
   const handleCancel = () => {
     setEditRowId(null);
     setEditingField(null);
-    setFormData({});
+    setValues({});
   };
 
   return (
@@ -68,7 +67,7 @@ export default function DataTable() {
                     <input
                       type="text"
                       name="name"
-                      value={formData.name || ''}
+                      value={values.name || ''}
                       onChange={handleChange}
                     />
                     <button
@@ -103,7 +102,7 @@ export default function DataTable() {
                     <input
                       type="number"
                       name="age"
-                      value={formData.age || ''}
+                      value={values.age || ''}
                       onChange={handleChange}
                     />
                     <button
