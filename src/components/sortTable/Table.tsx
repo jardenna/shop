@@ -13,11 +13,11 @@ type Column<T> = {
 };
 
 type TableProps<T> = {
-  data: T[];
   columns: Column<T>[];
-  children: (sortedData: T[]) => ReactNode;
-  tableCaption: string;
+  data: T[];
   isLoading: boolean;
+  tableCaption: string;
+  children: (sortedData: T[]) => ReactNode;
 };
 
 const Table = <T,>({

@@ -1,10 +1,8 @@
 import { FC, useState } from 'react';
 import { UserResponse } from '../../app/api/apiTypes';
-import Button from '../../components/Button';
-import Input from '../../components/formElements/Input';
+import EditField from '../../components/sortTable/EditField';
 import Table from '../../components/sortTable/Table';
 import useLanguage from '../../features/language/useLanguage';
-import { BtnVariant } from '../../types/enums';
 import { ChangeInputType } from '../../types/types';
 
 const tableData: UserResponse[] = [
@@ -88,40 +86,22 @@ const Dashboard: FC = () => {
           data.map(({ id, email, username, role }) => (
             <tr key={id}>
               <td>
-                {editRowId === id && editingField === 'username' ? (
-                  <div>
-                    <Input
-                      id="username"
-                      name="username"
-                      onChange={handleChange}
-                      value={values.username || ''}
-                      labelText="Username"
-                    />
-                    <Button variant={BtnVariant.Ghost} onClick={handleCancel}>
-                      Cancel
-                    </Button>
-                    <Button
-                      variant={BtnVariant.Ghost}
-                      onClick={() => {
-                        handleSave(id, 'username');
-                      }}
-                    >
-                      Save
-                    </Button>
-                  </div>
-                ) : (
-                  <>
-                    <span>{username}</span>
-                    <Button
-                      variant={BtnVariant.Ghost}
-                      onClick={() => {
-                        handleEdit(id, 'username');
-                      }}
-                    >
-                      Edit
-                    </Button>
-                  </>
-                )}
+                <EditField
+                  onSave={() => {
+                    handleSave(id, 'username');
+                  }}
+                  showEditInput={
+                    editRowId === id && editingField === 'username'
+                  }
+                  id="username"
+                  onChange={handleChange}
+                  value={values.username || ''}
+                  labelText={username}
+                  onCancel={handleCancel}
+                  onEdit={() => {
+                    handleEdit(id, 'username');
+                  }}
+                />
               </td>
               <td>{email}</td>
               <td>{role}</td>
