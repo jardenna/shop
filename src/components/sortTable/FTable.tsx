@@ -1,57 +1,70 @@
+import { ReactNode } from 'react';
 import { useSearchParams } from 'react-router';
 
-const SortableTable = () => {
+type Column<T> = {
+  key: keyof T;
+  label: string;
+};
+
+type SortableTableProps<T> = {
+  data: T[];
+  columns: Column<T>[];
+  children: (sortedData: T[]) => ReactNode;
+};
+
+const SortableTable = <T,>({
+  data,
+  columns,
+  children,
+}: SortableTableProps<T>) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const data = [
-    { id: 1, name: 'Alice', age: 25, city: 'New York' },
-    { id: 2, name: 'Bob', age: 30, city: 'Los Angeles' },
-    { id: 3, name: 'Charlie', age: 35, city: 'Chicago' },
-  ];
-
-  const sortField = searchParams.get('sortField') || 'name';
+  const sortField =
+    (searchParams.get('sortField') as keyof T) || columns[0]?.key;
   const sortOrder = searchParams.get('sortOrder') || 'asc';
-  const filters = {
-    name: searchParams.get('name') || '',
-    age: searchParams.get('age') || '',
-    city: searchParams.get('city') || '',
-  };
 
-  const handleSort = (field: string) => {
+  const filters = {} as Record<keyof T, string>;
+  for (const col of columns) {
+    filters[col.key] = searchParams.get(col.key as string) || '';
+  }
+
+  const handleSort = (field: keyof T) => {
     const newOrder =
       sortField === field && sortOrder === 'asc' ? 'desc' : 'asc';
     setSearchParams({
       ...Object.fromEntries(searchParams.entries()),
-      sortField: field,
+      sortField: field as string,
       sortOrder: newOrder,
     });
   };
 
-  const handleFilter = (field: string, value: string) => {
+  const handleFilter = (field: keyof T, value: string) => {
     setSearchParams({
       ...Object.fromEntries(searchParams.entries()),
-      [field]: value,
+      [field as string]: value,
     });
   };
+
   const handleClearAll = () => {
     setSearchParams('');
   };
+
   const filteredData = data.filter((item) =>
-    Object.keys(filters).every(
+    (Object.keys(filters) as (keyof T)[]).every(
       (key) =>
-        filters[key as keyof typeof filters] === '' ||
-        item[key as keyof typeof item]
-          .toString()
+        filters[key] === '' ||
+        item[key]
+          ?.toString()
           .toLowerCase()
-          .includes(filters[key as keyof typeof filters].toLowerCase()),
+          .includes(filters[key].toLowerCase()),
     ),
   );
 
   const sortedData = [...filteredData].sort((a, b) => {
-    if (a[sortField as keyof typeof a] < b[sortField as keyof typeof b]) {
+    if (a[sortField] < b[sortField]) {
       return sortOrder === 'asc' ? -1 : 1;
     }
-    if (a[sortField as keyof typeof a] > b[sortField as keyof typeof b]) {
+    if (a[sortField] > b[sortField]) {
       return sortOrder === 'asc' ? 1 : -1;
     }
     return 0;
@@ -60,76 +73,34 @@ const SortableTable = () => {
   return (
     <div>
       <button onClick={handleClearAll} type="button">
-        clear
+        Clear
       </button>
       <table>
         <thead>
           <tr>
-            <th>
-              <button
-                type="button"
-                onClick={() => {
-                  handleSort('name');
-                }}
-              >
-                Name
-              </button>
-              <input
-                type="text"
-                value={filters.name}
-                onChange={(e) => {
-                  handleFilter('name', e.target.value);
-                }}
-                placeholder="Filter by name"
-              />
-            </th>
-            <th>
-              <button
-                type="button"
-                onClick={() => {
-                  handleSort('age');
-                }}
-              >
-                Age
-              </button>
-              <input
-                type="text"
-                value={filters.age}
-                onChange={(e) => {
-                  handleFilter('age', e.target.value);
-                }}
-                placeholder="Filter by age"
-              />
-            </th>
-            <th>
-              <button
-                type="button"
-                onClick={() => {
-                  handleSort('city');
-                }}
-              >
-                City
-              </button>
-              <input
-                type="text"
-                value={filters.city}
-                onChange={(e) => {
-                  handleFilter('city', e.target.value);
-                }}
-                placeholder="Filter by city"
-              />
-            </th>
+            {columns.map((col) => (
+              <th key={col.key as string}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    handleSort(col.key);
+                  }}
+                >
+                  {col.label}
+                </button>
+                <input
+                  type="text"
+                  value={filters[col.key]}
+                  onChange={(e) => {
+                    handleFilter(col.key, e.target.value);
+                  }}
+                  placeholder={`Filter by ${col.label}`}
+                />
+              </th>
+            ))}
           </tr>
         </thead>
-        <tbody>
-          {sortedData.map((item) => (
-            <tr key={item.id}>
-              <td>{item.name}</td>
-              <td>{item.age}</td>
-              <td>{item.city}</td>
-            </tr>
-          ))}
-        </tbody>
+        <tbody>{children(sortedData)}</tbody>
       </table>
     </div>
   );
