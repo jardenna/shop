@@ -57,6 +57,15 @@ table {
     }
   }
 
+  .edit-cell {
+    display: flex;
+    justify-content: space-between;
+
+    input {
+      padding: 4px;
+    }
+  }
+
   th {
     background-color: $color-white;
     border-right: 1px solid $color-border;

@@ -24,9 +24,9 @@ const EditField = ({
   labelText,
   onEdit,
 }: EditFieldProps) => (
-  <section>
+  <div className="edit-cell">
     {showEditInput ? (
-      <div>
+      <>
         <Input
           id={id}
           name={id}
@@ -49,7 +49,7 @@ const EditField = ({
           title="Check"
           ariaLabel="save"
         />
-      </div>
+      </>
     ) : (
       <>
         <span>
@@ -67,7 +67,7 @@ const EditField = ({
         />
       </>
     )}
-  </section>
+  </div>
 );
 
 export default EditField;
