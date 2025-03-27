@@ -1,9 +1,17 @@
 import { FC, useState } from 'react';
 import { UserResponse } from '../../app/api/apiTypes';
+import Dropdown from '../../components/dropdown/Dropdown';
+import Icon from '../../components/icons/Icon';
+import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import EditField from '../../components/sortTable/EditField';
 import Table from '../../components/sortTable/Table';
-import { useGetAllUsersQuery } from '../../features/admin/users/usersApiSlice';
+import {
+  useDeleteUserMutation,
+  useGetAllUsersQuery,
+  useUpdateUserMutation,
+} from '../../features/admin/users/usersApiSlice';
 import useLanguage from '../../features/language/useLanguage';
+import { BtnVariant, IconName } from '../../types/enums';
 import { ChangeInputType } from '../../types/types';
 
 const tableHeaders: { key: keyof UserResponse; label: string }[] = [
@@ -21,6 +29,10 @@ const Dashboard: FC = () => {
   const [editingField, setEditingField] = useState<keyof UserResponse | null>(
     null,
   );
+  const [deleteUser] = useDeleteUserMutation();
+  const [updateUser] = useUpdateUserMutation();
+  const { onAddMessagePopup } = useMessagePopup();
+
   const handleEdit = (id: string, field: keyof UserResponse) => {
     setEditRowId(id);
     setEditingField(field);
@@ -35,18 +47,50 @@ const Dashboard: FC = () => {
     setValues({ ...values, [name]: value });
   };
 
-  const handleSave = (id: string, field: keyof UserResponse) => {
-    console.log(id, values[field], field);
-
-    setEditRowId(null);
-    setEditingField(null);
-  };
   const handleCancel = () => {
     setEditRowId(null);
     setEditingField(null);
     setValues({});
   };
-  const tds: (keyof UserResponse)[] = ['username', 'email', 'role'];
+
+  const handleSave = async (id: string, username: string) => {
+    try {
+      await updateUser({
+        id,
+        user: values,
+      }).unwrap();
+      onAddMessagePopup({
+        messagePopupType: 'success',
+        message: `${username} updated`,
+      });
+    } catch (error: any) {
+      onAddMessagePopup({
+        messagePopupType: 'error',
+        message: error.data.message,
+        componentType: 'notification',
+      });
+    }
+
+    setEditRowId(null);
+    setEditingField(null);
+  };
+
+  const handleDeleteUser = async (id: string, username: string) => {
+    try {
+      await deleteUser(id).unwrap();
+      onAddMessagePopup({
+        messagePopupType: 'success',
+        message: `${username} deleted`,
+      });
+    } catch (error: any) {
+      onAddMessagePopup({
+        messagePopupType: 'error',
+        message: error.data.message,
+        componentType: 'notification',
+      });
+    }
+  };
+  const tableBodyCells: (keyof UserResponse)[] = ['username', 'email', 'role'];
 
   return (
     allUsers && (
@@ -57,13 +101,13 @@ const Dashboard: FC = () => {
         isLoading={isLoading}
       >
         {(data) =>
-          data.map(({ id }) => (
+          data.map(({ id, role, username }) => (
             <tr key={id}>
-              {tds.map((td) => (
+              {tableBodyCells.map((td) => (
                 <td key={td}>
                   <EditField
                     onSave={() => {
-                      handleSave(id, td);
+                      handleSave(id, username);
                     }}
                     showEditInput={editRowId === id && editingField === td}
                     id={td}
@@ -79,7 +123,30 @@ const Dashboard: FC = () => {
                   />
                 </td>
               ))}
-              <td>{id}</td>
+              <td>
+                <div>
+                  {role !== 'Admin' && (
+                    <Dropdown
+                      ariaControls="delete-user"
+                      text={`${language.sureToDelete} ${username}?`}
+                      btnVariant={BtnVariant.Ghost}
+                      onPrimaryClick={() => {
+                        handleDeleteUser(id, username);
+                      }}
+                      primaryBtnLabel={language.delete}
+                      primaryBtnClassName="danger"
+                      ariaLabel={language.deleteCustomer}
+                      className="danger"
+                    >
+                      <Icon
+                        iconName={IconName.Trash}
+                        title={language.trashCan}
+                        ariaLabel={language.deleteCustomer}
+                      />
+                    </Dropdown>
+                  )}
+                </div>
+              </td>
             </tr>
           ))
         }

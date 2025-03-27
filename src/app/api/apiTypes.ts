@@ -35,4 +35,21 @@ export interface CurrencyResponse {
   data: Record<string, { value: number }>;
 }
 
+export interface UpdateUserByIdResponse {
+  email: string;
+  id: string;
+  role: RoleTypes;
+  username: string;
+}
+
+export interface UpdateUserById {
+  email?: string;
+  role?: RoleTypes;
+  username?: string;
+}
+export interface UpdateUserByIdRequest {
+  id: string;
+  user: UpdateUserById;
+}
+
 export type FileUploadNameType = 'cover';
