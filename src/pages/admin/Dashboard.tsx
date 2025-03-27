@@ -35,6 +35,7 @@ const tableHeaders: { key: keyof UserResponse; label: string }[] = [
   { key: 'username', label: 'Username' },
   { key: 'email', label: 'Email' },
   { key: 'role', label: 'Role' },
+  { key: 'id', label: '' },
 ];
 
 const Dashboard: FC = () => (
@@ -46,6 +47,7 @@ const Dashboard: FC = () => (
             <td>{username}</td>
             <td>{email}</td>
             <td>{role}</td>
+            <td>f</td>
           </tr>
         ))
       }

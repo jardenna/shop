@@ -25,7 +25,9 @@ const SortableTable = <T,>({
 
   const filters = {} as Record<keyof T, string>;
   for (const col of columns) {
-    filters[col.key] = searchParams.get(col.key as string) || '';
+    if (col.key) {
+      filters[col.key] = searchParams.get(col.key as string) || '';
+    }
   }
 
   const handleSort = (field: keyof T) => {
@@ -80,22 +82,26 @@ const SortableTable = <T,>({
           <tr>
             {columns.map((col) => (
               <th key={col.key as string}>
-                <button
-                  type="button"
-                  onClick={() => {
-                    handleSort(col.key);
-                  }}
-                >
-                  {col.label}
-                </button>
-                <input
-                  type="text"
-                  value={filters[col.key]}
-                  onChange={(e) => {
-                    handleFilter(col.key, e.target.value);
-                  }}
-                  placeholder={`Filter by ${col.label}`}
-                />
+                {col.label !== '' && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        handleSort(col.key);
+                      }}
+                    >
+                      {col.label}
+                    </button>
+                    <input
+                      type="text"
+                      value={filters[col.key]}
+                      onChange={(e) => {
+                        handleFilter(col.key, e.target.value);
+                      }}
+                      placeholder={`Filter by ${col.label}`}
+                    />
+                  </>
+                )}
               </th>
             ))}
           </tr>
