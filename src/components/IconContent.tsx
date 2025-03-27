@@ -1,17 +1,21 @@
 import { FC } from 'react';
-import { IconName } from '../types/enums';
+import { IconBtnProps } from './IconBtn';
 import Icon from './icons/Icon';
 import VisuallyHidden from './VisuallyHidden';
 
-interface IconContentProps {
-  ariaLabel: string;
-  iconName: IconName;
-  title: string;
-}
+export type OmittedIconBtnProps = Omit<
+  IconBtnProps,
+  'ariaExpanded' | 'ariaSelected' | 'onClick' | 'btnType' | 'className'
+>;
 
-const IconContent: FC<IconContentProps> = ({ iconName, title, ariaLabel }) => (
+const IconContent: FC<IconBtnProps> = ({
+  iconName,
+  title,
+  ariaLabel,
+  size,
+}) => (
   <>
-    <Icon iconName={iconName} title={title} ariaHidden />
+    <Icon iconName={iconName} title={title} ariaHidden size={size} />
     <VisuallyHidden>{ariaLabel}</VisuallyHidden>
   </>
 );

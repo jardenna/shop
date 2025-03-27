@@ -26,7 +26,7 @@ const EditField = ({
 }: EditFieldProps) => (
   <div className="edit-cell">
     {showEditInput ? (
-      <>
+      <div className="edit-controls">
         <Input
           id={id}
           name={id}
@@ -41,6 +41,7 @@ const EditField = ({
           iconName={IconName.Close}
           title="Check"
           ariaLabel="save"
+          size="12"
         />
 
         <IconBtn
@@ -48,8 +49,9 @@ const EditField = ({
           iconName={IconName.Check}
           title="Check"
           ariaLabel="save"
+          size="16"
         />
-      </>
+      </div>
     ) : (
       <>
         <span>

@@ -49,44 +49,42 @@ const Dashboard: FC = () => {
   const tds: (keyof UserResponse)[] = ['username', 'email', 'role'];
 
   return (
-    <section>
-      {allUsers && (
-        <Table
-          data={allUsers}
-          columns={tableHeaders}
-          tableCaption={language.customersList}
-          isLoading={isLoading}
-        >
-          {(data) =>
-            data.map(({ id }) => (
-              <tr key={id}>
-                {tds.map((td) => (
-                  <td key={td}>
-                    <EditField
-                      onSave={() => {
-                        handleSave(id, td);
-                      }}
-                      showEditInput={editRowId === id && editingField === td}
-                      id={td}
-                      onChange={handleChange}
-                      value={String(values[td] || '')}
-                      labelText={String(
-                        allUsers.find((user) => user.id === id)?.[td] || '',
-                      )}
-                      onCancel={handleCancel}
-                      onEdit={() => {
-                        handleEdit(id, td);
-                      }}
-                    />
-                  </td>
-                ))}
-                <td>{id}</td>
-              </tr>
-            ))
-          }
-        </Table>
-      )}
-    </section>
+    allUsers && (
+      <Table
+        data={allUsers}
+        columns={tableHeaders}
+        tableCaption={language.customersList}
+        isLoading={isLoading}
+      >
+        {(data) =>
+          data.map(({ id }) => (
+            <tr key={id}>
+              {tds.map((td) => (
+                <td key={td}>
+                  <EditField
+                    onSave={() => {
+                      handleSave(id, td);
+                    }}
+                    showEditInput={editRowId === id && editingField === td}
+                    id={td}
+                    onChange={handleChange}
+                    value={String(values[td] || '')}
+                    labelText={String(
+                      allUsers.find((user) => user.id === id)?.[td] || '',
+                    )}
+                    onCancel={handleCancel}
+                    onEdit={() => {
+                      handleEdit(id, td);
+                    }}
+                  />
+                </td>
+              ))}
+              <td>{id}</td>
+            </tr>
+          ))
+        }
+      </Table>
+    )
   );
 };
 

@@ -4,7 +4,7 @@ import { BtnType } from '../types/types';
 import Button from './Button';
 import IconContent from './IconContent';
 
-interface IconBtnProps {
+export interface IconBtnProps {
   ariaLabel: string;
   iconName: IconName;
   title: string;
@@ -12,6 +12,7 @@ interface IconBtnProps {
   ariaSelected?: boolean;
   btnType?: BtnType;
   className?: string;
+  size?: string;
   onClick?: () => void;
 }
 
@@ -24,6 +25,7 @@ const IconBtn: FC<IconBtnProps> = ({
   ariaSelected,
   ariaExpanded,
   btnType,
+  size,
 }) => (
   <Button
     variant={BtnVariant.Ghost}
@@ -33,7 +35,12 @@ const IconBtn: FC<IconBtnProps> = ({
     ariaExpanded={ariaExpanded}
     type={btnType}
   >
-    <IconContent iconName={iconName} title={title} ariaLabel={ariaLabel} />
+    <IconContent
+      iconName={iconName}
+      title={title}
+      ariaLabel={ariaLabel}
+      size={size}
+    />
   </Button>
 );
 
