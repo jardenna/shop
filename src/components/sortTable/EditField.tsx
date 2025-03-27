@@ -1,7 +1,7 @@
-import { BtnVariant } from '../../types/enums';
+import { IconName } from '../../types/enums';
 import { ChangeInputType } from '../../types/types';
-import Button from '../Button';
 import Input from '../formElements/Input';
+import IconBtn from '../IconBtn';
 
 type EditFieldProps = {
   id: string;
@@ -33,20 +33,32 @@ const EditField = ({
           onChange={onChange}
           value={value}
           labelText={labelText}
+          inputHasNoLabel
         />
-        <Button variant={BtnVariant.Ghost} onClick={onCancel}>
-          Cancel
-        </Button>
-        <Button variant={BtnVariant.Ghost} onClick={onSave}>
-          Save
-        </Button>
+
+        <IconBtn
+          onClick={onCancel}
+          iconName={IconName.Close}
+          title="Check"
+          ariaLabel="save"
+        />
+
+        <IconBtn
+          onClick={onSave}
+          iconName={IconName.Check}
+          title="Check"
+          ariaLabel="save"
+        />
       </div>
     ) : (
       <>
         <span>{labelText}</span>
-        <Button variant={BtnVariant.Ghost} onClick={onEdit}>
-          Edit
-        </Button>
+        <IconBtn
+          onClick={onEdit}
+          iconName={IconName.Edit}
+          title="gg"
+          ariaLabel="edit"
+        />
       </>
     )}
   </section>

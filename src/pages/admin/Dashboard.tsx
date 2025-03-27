@@ -46,6 +46,7 @@ const Dashboard: FC = () => {
     setEditingField(null);
     setValues({});
   };
+  const tds: (keyof UserResponse)[] = ['username', 'email', 'role'];
 
   return (
     <section>
@@ -57,29 +58,29 @@ const Dashboard: FC = () => {
           isLoading={isLoading}
         >
           {(data) =>
-            data.map(({ id, email, username, role }) => (
+            data.map(({ id }) => (
               <tr key={id}>
-                <td>
-                  <EditField
-                    onSave={() => {
-                      handleSave(id, 'username');
-                    }}
-                    showEditInput={
-                      editRowId === id && editingField === 'username'
-                    }
-                    id="username"
-                    onChange={handleChange}
-                    value={values.username || ''}
-                    labelText={username}
-                    onCancel={handleCancel}
-                    onEdit={() => {
-                      handleEdit(id, 'username');
-                    }}
-                  />
-                </td>
-                <td>{email}</td>
-                <td>{role}</td>
-                <td>f</td>
+                {tds.map((td) => (
+                  <td key={td}>
+                    <EditField
+                      onSave={() => {
+                        handleSave(id, td);
+                      }}
+                      showEditInput={editRowId === id && editingField === td}
+                      id={td}
+                      onChange={handleChange}
+                      value={String(values[td] || '')}
+                      labelText={String(
+                        allUsers.find((user) => user.id === id)?.[td] || '',
+                      )}
+                      onCancel={handleCancel}
+                      onEdit={() => {
+                        handleEdit(id, td);
+                      }}
+                    />
+                  </td>
+                ))}
+                <td>hello</td>
               </tr>
             ))
           }

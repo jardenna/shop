@@ -7,6 +7,7 @@ import ArrowDownIcon from './ArrowDownIcon';
 import ArrowUpIcon from './ArrowUpIcon';
 import AuthIcon from './AuthIcon';
 import CategoriesIcon from './CategoriesIcon';
+import CheckIcon from './CheckIcon';
 import ChevronDownIcon from './ChevronDownIcon';
 import ChevronLeftIcon from './ChevronLeftIcon';
 import ChevronRightIcon from './ChevronRightIcon';
@@ -61,6 +62,7 @@ const iconMapping = {
   arrowUp: ArrowUpIcon,
   auth: AuthIcon,
   categories: CategoriesIcon,
+  check: CheckIcon,
   chevronDown: ChevronDownIcon,
   chevronLeft: ChevronLeftIcon,
   chevronRight: ChevronRightIcon,
