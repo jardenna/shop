@@ -96,6 +96,12 @@ export default tseslint.config(
           groups: ['required-property', 'optional-property'],
         },
       ],
+      'perfectionist/sort-object-types': [
+        'error',
+        {
+          groups: ['required-property', 'optional-property'],
+        },
+      ],
       'perfectionist/sort-enums': ['error'],
 
       'react/function-component-definition': [
