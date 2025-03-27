@@ -23,12 +23,13 @@ const SortableTable = <T,>({
     (searchParams.get('sortField') as keyof T) || columns[0]?.key;
   const sortOrder = searchParams.get('sortOrder') || 'asc';
 
-  const filters = {} as Record<keyof T, string>;
-  for (const col of columns) {
-    if (col.key) {
-      filters[col.key] = searchParams.get(col.key as string) || '';
-    }
-  }
+  const filters: Record<keyof T, string> = columns.reduce(
+    (acc: Record<keyof T, string>, col) => ({
+      ...acc,
+      [col.key]: searchParams.get(col.key as string) || '',
+    }),
+    {} as Record<keyof T, string>,
+  );
 
   const handleSort = (field: keyof T) => {
     const newOrder =
