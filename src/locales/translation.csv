@@ -3,7 +3,6 @@ about;About;Profil
 account;Account;Konto
 additionalInfo;Additional info;Supplerende information
 admin;Admin;Admin
-ascending;ascending;stigende
 asc;ascending;stigende
 bag;Bag;Indkøbskurv
 cancel;Cancel;Annuller
@@ -24,10 +23,10 @@ currency;Currency;Valuta
 customersList;Customers list;Kundeliste
 dashboard;Dashboard;Dashboard
 delete;Delete;Slet
-deleteCustomer;Delete customer;Slet kunde
+deleteUser;Delete user;Slet bruger
 deleted;deleted;slettet
-descending;descending;faldende
 desc;descending;faldende
+editUser;Edit user;Opdater bruger
 email;Email;E-mail
 error;Error;Fejl
 errorAltText;A really guilty emoji;En meget skyldig emoji
@@ -88,6 +87,7 @@ passwordMinLength;Password should be at least 8 characters;Adgangskoden skal væ
 passwordNumber;Password should contain at least one number;Adgangskoden skal indeholde mindst ét tal
 passwordSymbol;Password should contain at least one special character;Adgangskoden skal indeholde mindst ét specialtegn
 passwordUppercase;Password should contain at least one uppercase letter;Adgangskoden skal indeholde mindst ét stort bogstav
+pensil;Pensil;Blyant
 pleaseEnter;Please enter;Indsæt venligst
 pleaseEnterName;Please enter  name;Indsæt venligst navn
 pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
@@ -100,6 +100,7 @@ resetFiltersAndSorting;Reset filters and sorting;Nulstil filtre og sortering
 retry;Retry;Forsøg igen
 role;Role;Rolle
 search;Search;Søg
+save;Save;Gem
 selectCurrency;Select Currency;Vælg valuta
 selectLanguage;Select language;Vælg sprog
 selectPreferences;Select preferred language and currency;Vælg sprog og valuta

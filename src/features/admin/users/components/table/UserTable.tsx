@@ -166,13 +166,13 @@ const UsersTable: FC<UsersTableProps> = ({
                         }}
                         primaryBtnLabel={language.delete}
                         primaryBtnClassName="danger"
-                        ariaLabel={language.deleteCustomer}
+                        ariaLabel={language.deleteUser}
                         className="danger"
                       >
                         <Icon
                           iconName={IconName.Trash}
                           title={language.trashCan}
-                          ariaLabel={language.deleteCustomer}
+                          ariaLabel={language.deleteUser}
                         />
                       </Dropdown>
                     )}

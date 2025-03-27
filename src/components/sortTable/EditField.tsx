@@ -1,3 +1,4 @@
+import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import { ChangeInputType } from '../../types/types';
 import Input from '../formElements/Input';
@@ -5,6 +6,7 @@ import IconBtn from '../IconBtn';
 
 type EditFieldProps = {
   id: string;
+  isAdmin: boolean;
   labelText: string;
   showEditInput: boolean;
   value: string;
@@ -23,53 +25,60 @@ const EditField = ({
   value,
   labelText,
   onEdit,
-}: EditFieldProps) => (
-  <div className="edit-cell">
-    {showEditInput ? (
-      <div className="edit-controls">
-        <Input
-          id={id}
-          name={id}
-          onChange={onChange}
-          value={value}
-          labelText={labelText}
-          inputHasNoLabel
-        />
+  isAdmin,
+}: EditFieldProps) => {
+  const { language } = useLanguage();
 
-        <IconBtn
-          onClick={onCancel}
-          iconName={IconName.Close}
-          title="Check"
-          ariaLabel="save"
-          size="12"
-        />
+  return (
+    <div className="edit-cell">
+      {showEditInput ? (
+        <div className="edit-controls">
+          <Input
+            id={id}
+            name={id}
+            onChange={onChange}
+            value={value}
+            labelText={labelText}
+            inputHasNoLabel
+          />
 
-        <IconBtn
-          onClick={onSave}
-          iconName={IconName.Check}
-          title="Check"
-          ariaLabel="save"
-          size="16"
-        />
-      </div>
-    ) : (
-      <>
-        <span>
-          {!labelText.includes('@') ? (
-            labelText
-          ) : (
-            <a href={`mailto:${labelText}`}>{labelText}</a>
+          <IconBtn
+            onClick={onCancel}
+            iconName={IconName.Close}
+            title={language.cancel}
+            ariaLabel={language.cancel}
+            size="12"
+          />
+
+          <IconBtn
+            onClick={onSave}
+            iconName={IconName.Check}
+            title="Check"
+            ariaLabel={language.save}
+            size="16"
+          />
+        </div>
+      ) : (
+        <>
+          <span>
+            {!labelText.includes('@') ? (
+              labelText
+            ) : (
+              <a href={`mailto:${labelText}`}>{labelText}</a>
+            )}
+          </span>
+          {!isAdmin && (
+            <IconBtn
+              onClick={onEdit}
+              iconName={IconName.Edit}
+              title={language.pensil}
+              ariaLabel={language.editUser}
+            />
           )}
-        </span>
-        <IconBtn
-          onClick={onEdit}
-          iconName={IconName.Edit}
-          title="gg"
-          ariaLabel="edit"
-        />
-      </>
-    )}
-  </div>
-);
+        </>
+      )}
+    </div>
+  );
+};
 
 export default EditField;

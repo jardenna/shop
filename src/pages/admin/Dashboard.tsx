@@ -101,11 +101,12 @@ const Dashboard: FC = () => {
         isLoading={isLoading}
       >
         {(data) =>
-          data.map(({ id, role, username }) => (
+          data.map(({ id, role, username, isAdmin }) => (
             <tr key={id}>
               {tableBodyCells.map((td) => (
                 <td key={td}>
                   <EditField
+                    isAdmin={isAdmin}
                     onSave={() => {
                       handleSave(id, username);
                     }}
@@ -135,13 +136,13 @@ const Dashboard: FC = () => {
                       }}
                       primaryBtnLabel={language.delete}
                       primaryBtnClassName="danger"
-                      ariaLabel={language.deleteCustomer}
+                      ariaLabel={language.deleteUser}
                       className="danger"
                     >
                       <Icon
                         iconName={IconName.Trash}
                         title={language.trashCan}
-                        ariaLabel={language.deleteCustomer}
+                        ariaLabel={language.deleteUser}
                       />
                     </Dropdown>
                   )}
