@@ -12,10 +12,10 @@ import useTableFilter from './useTableFilter';
 import useTableSort, { SortingState } from './useTableSort';
 
 type TableData = {
-  username: string;
   email: string;
-  role: string;
   id: string;
+  role: string;
+  username: string;
 };
 
 interface UsersTableProps {
@@ -156,7 +156,7 @@ const UsersTable: FC<UsersTableProps> = ({
                 </td>
                 <td>
                   <div>
-                    {role !== 'admin' && (
+                    {role !== 'Admin' && (
                       <Dropdown
                         ariaControls="delete-user"
                         text={`${language.sureToDelete} ${username}?`}

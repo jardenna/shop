@@ -80,7 +80,7 @@ const Dashboard: FC = () => {
                     />
                   </td>
                 ))}
-                <td>hello</td>
+                <td>{id}</td>
               </tr>
             ))
           }

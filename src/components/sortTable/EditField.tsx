@@ -52,7 +52,13 @@ const EditField = ({
       </div>
     ) : (
       <>
-        <span>{labelText}</span>
+        <span>
+          {!labelText.includes('@') ? (
+            labelText
+          ) : (
+            <a href={`mailto:${labelText}`}>{labelText}</a>
+          )}
+        </span>
         <IconBtn
           onClick={onEdit}
           iconName={IconName.Edit}
