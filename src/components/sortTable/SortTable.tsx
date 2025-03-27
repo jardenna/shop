@@ -45,10 +45,13 @@ const SortTable: FC = () => {
   const [editingField, setEditingField] = useState<keyof UserResponse | null>(
     null,
   );
-  const [sortConfig, setSortConfig] = useState<{
-    sortKey: keyof UserResponse;
+
+  interface SortConfig {
     sortDirection: SortDirection;
-  } | null>(null);
+    sortKey: keyof UserResponse;
+  }
+
+  const [sortConfig, setSortConfig] = useState<SortConfig | null>(null);
 
   const filteredDataFromParams = Object.fromEntries(searchParams);
   const [filterValues, setFilterValues] = useState<{ [key: string]: string }>(
