@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { useSearchParams } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
 import { BtnVariant } from '../../types/enums';
+import { SortOrderType } from '../../types/types';
 import Button from '../Button';
 import TableSearchInput from '../table/TableSearchInput';
 import VisuallyHidden from '../VisuallyHidden';
@@ -43,7 +44,7 @@ const Table = <T,>({
   );
 
   const handleSort = (field: keyof T) => {
-    const newOrder =
+    const newOrder: SortOrderType =
       sortField === field && sortOrder === 'asc' ? 'desc' : 'asc';
     setSearchParams({
       ...Object.fromEntries(searchParams.entries()),
