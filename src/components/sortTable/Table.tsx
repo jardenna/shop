@@ -1,6 +1,9 @@
 import { ReactNode } from 'react';
 import { useSearchParams } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
+import { BtnVariant } from '../../types/enums';
+import Button from '../Button';
+import TableSearchInput from '../table/TableSearchInput';
 import VisuallyHidden from '../VisuallyHidden';
 import './_table.scss';
 
@@ -80,7 +83,8 @@ const Table = <T,>({
     }
     return 0;
   });
-
+  const sortIcon = sortOrder === 'asc' ? '↑' : '↓';
+  const ariaLabel = sortOrder === 'asc' ? language.desc : language.asc;
   return (
     <div>
       <button onClick={handleClearAll} type="button">
@@ -94,24 +98,33 @@ const Table = <T,>({
               {columns.map((col) => (
                 <th key={col.key as string} scope="col">
                   {col.label !== '' && (
-                    <>
-                      <button
-                        type="button"
+                    <div className="sort">
+                      {language[col.label]}
+                      <Button
+                        variant={BtnVariant.Ghost}
                         onClick={() => {
                           handleSort(col.key);
                         }}
+                        ariaLabel={
+                          sortField === col.label
+                            ? `${language.sort} ${language[col.label]} ${ariaLabel}`
+                            : `${language.sort} ${language[col.label]}`
+                        }
                       >
-                        {col.label}
-                      </button>
-                      <input
-                        type="text"
-                        value={filters[col.key]}
-                        onChange={(e) => {
+                        <span className="sort-icon" aria-hidden>
+                          {sortField === col.label ? sortIcon : '⇅'}
+                        </span>
+                      </Button>
+
+                      <TableSearchInput
+                        onFilterRows={(e) => {
                           handleFilter(col.key, e.target.value);
                         }}
-                        placeholder={`Filter by ${col.label}`}
+                        title={col.label}
+                        value={filters[col.key]}
+                        label={language[col.label]}
                       />
-                    </>
+                    </div>
                   )}
                 </th>
               ))}

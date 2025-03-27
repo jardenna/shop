@@ -3,9 +3,9 @@ import { UserResponse } from '../../app/api/apiTypes';
 import Button from '../../components/Button';
 import Input from '../../components/formElements/Input';
 import Table from '../../components/sortTable/Table';
+import useLanguage from '../../features/language/useLanguage';
 import { BtnVariant } from '../../types/enums';
 import { ChangeInputType } from '../../types/types';
-import useLanguage from '../../features/language/useLanguage';
 
 const tableData: UserResponse[] = [
   {
@@ -37,9 +37,9 @@ const tableData: UserResponse[] = [
   },
 ];
 const tableHeaders: { key: keyof UserResponse; label: string }[] = [
-  { key: 'username', label: 'Username' },
-  { key: 'email', label: 'Email' },
-  { key: 'role', label: 'Role' },
+  { key: 'username', label: 'username' },
+  { key: 'email', label: 'email' },
+  { key: 'role', label: 'role' },
   { key: 'id', label: '' },
 ];
 
