@@ -19,11 +19,11 @@ type TableData = {
 };
 
 interface UsersTableProps {
+  isLoading: boolean;
   tableCaption: string;
   tableData: TableData[];
   tableHeaders: string[];
   initialSortedRow?: SortingState;
-  isLoading?: boolean;
   onDeleteUser: (id: string, username: string) => void;
 }
 

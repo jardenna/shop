@@ -1,22 +1,30 @@
 import { ReactNode } from 'react';
 import { useSearchParams } from 'react-router';
+import useLanguage from '../../features/language/useLanguage';
+import VisuallyHidden from '../VisuallyHidden';
+import './_table.scss';
 
 type Column<T> = {
   key: keyof T;
   label: string;
 };
 
-type SortableTableProps<T> = {
+type TableProps<T> = {
   data: T[];
   columns: Column<T>[];
   children: (sortedData: T[]) => ReactNode;
+  tableCaption: string;
+  isLoading: boolean;
 };
 
-const SortableTable = <T,>({
+const Table = <T,>({
   data,
   columns,
   children,
-}: SortableTableProps<T>) => {
+  tableCaption,
+  isLoading,
+}: TableProps<T>) => {
+  const { language } = useLanguage();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const sortField =
@@ -78,39 +86,42 @@ const SortableTable = <T,>({
       <button onClick={handleClearAll} type="button">
         Clear
       </button>
-      <table>
-        <thead>
-          <tr>
-            {columns.map((col) => (
-              <th key={col.key as string}>
-                {col.label !== '' && (
-                  <>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        handleSort(col.key);
-                      }}
-                    >
-                      {col.label}
-                    </button>
-                    <input
-                      type="text"
-                      value={filters[col.key]}
-                      onChange={(e) => {
-                        handleFilter(col.key, e.target.value);
-                      }}
-                      placeholder={`Filter by ${col.label}`}
-                    />
-                  </>
-                )}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>{children(sortedData)}</tbody>
-      </table>
+      <div className="fixed-table">
+        <table aria-label={isLoading ? language.loading : undefined}>
+          <VisuallyHidden as="caption">{tableCaption}</VisuallyHidden>
+          <thead>
+            <tr>
+              {columns.map((col) => (
+                <th key={col.key as string} scope="col">
+                  {col.label !== '' && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          handleSort(col.key);
+                        }}
+                      >
+                        {col.label}
+                      </button>
+                      <input
+                        type="text"
+                        value={filters[col.key]}
+                        onChange={(e) => {
+                          handleFilter(col.key, e.target.value);
+                        }}
+                        placeholder={`Filter by ${col.label}`}
+                      />
+                    </>
+                  )}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>{children(sortedData)}</tbody>
+        </table>
+      </div>
     </div>
   );
 };
 
-export default SortableTable;
+export default Table;

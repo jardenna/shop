@@ -10,7 +10,7 @@ import useLanguage from '../features/language/useLanguage';
 
 const UsersPage: FC = () => {
   const { language } = useLanguage();
-  const { data: allUsers } = useGetAllUsersQuery();
+  const { data: allUsers, isLoading } = useGetAllUsersQuery();
   const [deleteUser] = useDeleteUserMutation();
   const { onAddMessagePopup } = useMessagePopup();
   const tableHeaders = ['username', 'email', 'role', ''];
@@ -46,6 +46,7 @@ const UsersPage: FC = () => {
           initialSortedRow={initialSortedRow}
           tableCaption={language.customersList}
           onDeleteUser={handleDeleteUser}
+          isLoading={isLoading}
         />
       )}
     </section>
