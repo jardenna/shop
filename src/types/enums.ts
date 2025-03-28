@@ -1,6 +1,4 @@
 export enum ValidationMessage {
-  InvalidEmail = 'invalidEmail',
-  MustBeGreaterEqual = 'mustBeGreaterEqual',
   PasswordDoNotMatch = 'passwordDoNotMatch',
   PasswordLowercase = 'passwordLowercase',
   PasswordMinLength = 'passwordMinLength',

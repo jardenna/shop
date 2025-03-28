@@ -23,8 +23,8 @@ currency;Currency;Valuta
 customersList;Customers list;Kundeliste
 dashboard;Dashboard;Dashboard
 delete;Delete;Slet
-deleteUser;Delete user;Slet bruger
 deleted;deleted;slettet
+deleteUser;Delete user;Slet bruger
 desc;descending;faldende
 editUser;Edit user;Opdater bruger
 email;Email;E-mail
@@ -48,7 +48,6 @@ heroText1;For a limited time, enjoy incredible discounts on the latest fashion t
 heroTitle;Exclusive Fashion Sale;Eksklusivt Modesalg
 hidePassword;Hide password;Skjul adgangskode
 home;Home;Hjem
-invalidEmail;Please provide a valid email;Indtast venligst en gyldig e-mail
 invalidPassword;Invalid password;Ugyldig adgangskode
 invalidUserData;Invalid user data;Ugyldig bruger data
 language;Language;Sprog
@@ -81,14 +80,13 @@ orders;Orders;Ordrer
 password;Password;Adgangskode
 passwordDoNotMatch;The passwords do not match;Adgangskoderne stemmer ikke overens
 passwordLowercase;Password should contain at least one lowercase letter;Adgangskoden skal indeholde mindst ét lille bogstav
-passwordLowercase;Password should contain at least one lowercase letter;Adgangskoden skal indeholde mindst ét lille bogstav
 passwordMinLength;Password should be at least 8 characters;Adgangskoden skal være mindst 8 tegn
 passwordNumber;Password should contain at least one number;Adgangskoden skal indeholde mindst ét tal
 passwordSymbol;Password should contain at least one special character;Adgangskoden skal indeholde mindst ét specialtegn
 passwordUppercase;Password should contain at least one uppercase letter;Adgangskoden skal indeholde mindst ét stort bogstav
 pensil;Pensil;Blyant
 pleaseEnter;Please enter;Indsæt venligst
-pleaseEnterName;Please enter  name;Indsæt venligst navn
+pleaseEnterName;Please enter name;Indsæt venligst navn
 pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
 pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
 preferences;Preferences;Præferencer
@@ -97,8 +95,8 @@ profile;Profile;Profil
 resetFiltersAndSorting;Reset filters and sorting;Nulstil filtre og sortering
 retry;Retry;Forsøg igen
 role;Role;Rolle
-search;Search;Søg
 save;Save;Gem
+search;Search;Søg
 selectCurrency;Select Currency;Vælg valuta
 selectLanguage;Select language;Vælg sprog
 selectPreferences;Select preferred language and currency;Vælg sprog og valuta
@@ -111,16 +109,15 @@ sort;Sort;Sorter
 sub;Sub;Sekundær
 success;Success;Succes
 sureToDelete;Are you sure that you want to delete;Er du sikker på at du vil slette
-trashCan;Trash can;Skraldespand
 title;Title;Titel
+trashCan;Trash can;Skraldespand
 updatePreferences;Update Preferences;Opdater præferencer
 user;User;Bruger
-userUpdated;User updated;Bruger opdateret
 userAlreadyExist;A profile with this email already exists. Try logging in instead;Der findes en profil med denne e-mail. Prøv at logge ind i stedet
 userDeleted;User deleted;Bruger slettet
-deleted;deleted;slettet
 userInfo;User info;Bruger info
 username;User name;Brugernavn
 users;Users;Brugere
+userUpdated;User updated;Bruger opdateret
 warning;Warning;Warning
 welcome;Welcome;Velkommen
