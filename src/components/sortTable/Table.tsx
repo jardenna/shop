@@ -1,10 +1,12 @@
 import { ReactNode } from 'react';
 import { useSearchParams } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
-import { BtnVariant } from '../../types/enums';
+import useLocalStorage from '../../hooks/useLocalStorage';
+import { BtnVariant, IconName } from '../../types/enums';
 import { SortOrderType } from '../../types/types';
 import Button from '../Button';
 import TableSearchInput from '../table/TableSearchInput';
+import TableGridList from '../TableGridList';
 import VisuallyHidden from '../VisuallyHidden';
 import './_table.scss';
 
@@ -30,6 +32,12 @@ const Table = <T,>({
 }: TableProps<T>) => {
   const { language } = useLanguage();
   const [searchParams, setSearchParams] = useSearchParams();
+  const [padding, setPadding] = useLocalStorage('padding', 12);
+  const tableGridIconList = [
+    { padding: 4, iconName: IconName.GridSmall, title: language.gridSmall },
+    { padding: 12, iconName: IconName.Grid, title: language.grid },
+    { padding: 20, iconName: IconName.GridLarge, title: language.gridLarge },
+  ];
 
   const sortField =
     (searchParams.get('sortField') as keyof T) || columns[0]?.key;
@@ -90,14 +98,23 @@ const Table = <T,>({
     <div>
       <button onClick={handleClearAll} type="button">
         Clear
-      </button>
+      </button>{' '}
+      <TableGridList
+        onSetPadding={setPadding}
+        tableGridIconList={tableGridIconList}
+        isActive={padding}
+      />
       <div className="fixed-table">
         <table aria-label={isLoading ? language.loading : undefined}>
           <VisuallyHidden as="caption">{tableCaption}</VisuallyHidden>
           <thead>
             <tr>
               {columns.map((col) => (
-                <th key={col.key as string} scope="col">
+                <th
+                  key={col.key as string}
+                  scope="col"
+                  style={{ paddingBlock: padding }}
+                >
                   {col.label !== '' && (
                     <div className="sort">
                       {language[col.label]}
@@ -131,7 +148,7 @@ const Table = <T,>({
               ))}
             </tr>
           </thead>
-          <tbody>{children(sortedData)}</tbody>
+          <tbody className={`padding-${padding}`}>{children(sortedData)}</tbody>
         </table>
       </div>
     </div>

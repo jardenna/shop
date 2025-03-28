@@ -46,17 +46,6 @@ table {
   border-collapse: collapse;
   width: 100%;
 
-  tbody {
-    display: flex;
-    flex-direction: column;
-    max-height: rem(400px);
-    overflow: auto;
-
-    @include max-size($medium) {
-      display: table-row-group;
-    }
-  }
-
   .edit-cell {
     display: flex;
     justify-content: space-between;
@@ -132,6 +121,35 @@ table {
     }
   }
 
+  tbody {
+    display: flex;
+    flex-direction: column;
+    max-height: rem(400px);
+    overflow: auto;
+
+    &.padding-8 {
+      td {
+        padding-block: 8px;
+      }
+    }
+
+    &.padding-12 {
+      td {
+        padding-block: 12px;
+      }
+    }
+
+    &.padding-20 {
+      td {
+        padding-block: 20px;
+      }
+    }
+
+    @include max-size($medium) {
+      display: table-row-group;
+    }
+  }
+
   .dropdown-container {
     position: static;
   }
@@ -170,6 +188,7 @@ table {
 .table-search-input {
   position: relative;
 
+  /* stylelint-disable-next-line no-descending-specificity */
   .input-container {
     right: -8px;
     top: 32px;
