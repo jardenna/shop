@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import useLanguage from '../features/language/useLanguage';
-import { IconName } from '../types/enums';
-import IconBtn from './IconBtn';
+import useLanguage from '../../features/language/useLanguage';
+import { IconName } from '../../types/enums';
+import IconBtn from '../IconBtn';
 
 interface TableGridList {
   iconName: IconName;

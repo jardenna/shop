@@ -6,10 +6,10 @@ import variables from '../../scss/variables.module.scss';
 import { BtnVariant, IconName } from '../../types/enums';
 import { SortOrderType } from '../../types/types';
 import Button from '../Button';
-import TableSearchInput from '../table/TableSearchInput';
-import TableGridList from '../TableGridList';
 import VisuallyHidden from '../VisuallyHidden';
 import './_table.scss';
+import TableGridList from './TableGridList';
+import TableSearchInput from './TableSearchInput';
 
 type Column<T> = {
   key: keyof T;

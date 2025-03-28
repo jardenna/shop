@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import { UserResponse } from '../../app/api/apiTypes';
 import Dropdown from '../../components/dropdown/Dropdown';
 import validateUpdateUser from '../../components/formElements/validation/validateUpdateUser';
@@ -22,7 +22,7 @@ const tableHeaders: { key: keyof UserResponse; label: string }[] = [
   { key: 'id', label: '' },
 ];
 
-const UserPage: FC = () => {
+const UserPage = () => {
   const { language } = useLanguage();
   const { data: allUsers, isLoading } = useGetAllUsersQuery();
   const [editRowId, setEditRowId] = useState<string | null>(null);
