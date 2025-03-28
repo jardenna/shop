@@ -41,6 +41,11 @@ table {
     }
   }
 
+  .radio-btn-container {
+    display: flex;
+    gap: 4px;
+  }
+
   th {
     background-color: $color-white;
     border-right: 1px solid $color-border;

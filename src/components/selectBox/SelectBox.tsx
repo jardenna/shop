@@ -6,7 +6,6 @@ import Select, {
   OptionsOrGroups,
   SingleValue,
 } from 'react-select';
-
 import FormLabel from '../formElements/FormLabel';
 import './_select-box.scss';
 

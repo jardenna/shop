@@ -2,12 +2,15 @@ import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import { ChangeInputType } from '../../types/types';
 import Input from '../formElements/Input';
+import RadioButton from '../formElements/radioButton/RadioButton';
 import IconBtn from '../IconBtn';
 
 type EditTableCellProps = {
   id: string;
   isAdmin: boolean;
   labelText: string;
+  roleOptions: any;
+  roleValue: any;
   showEditInput: boolean;
   value: string;
   onCancel: () => void;
@@ -26,6 +29,8 @@ const EditTableCell = ({
   labelText,
   onEdit,
   isAdmin,
+  roleOptions,
+  roleValue,
 }: EditTableCellProps) => {
   const { language } = useLanguage();
 
@@ -33,14 +38,23 @@ const EditTableCell = ({
     <div className="edit-cell">
       {showEditInput ? (
         <div className="edit-controls">
-          <Input
-            id={id}
-            name={id}
-            onChange={onChange}
-            value={value}
-            labelText={labelText}
-            inputHasNoLabel
-          />
+          {id !== 'role' ? (
+            <Input
+              id={id}
+              name={id}
+              onChange={onChange}
+              value={value}
+              labelText={labelText}
+              inputHasNoLabel
+            />
+          ) : (
+            <RadioButton
+              radioButtonList={roleOptions}
+              name="role"
+              initialChecked={roleValue}
+              onChange={onChange}
+            />
+          )}
 
           <IconBtn
             onClick={onCancel}

@@ -22,6 +22,11 @@ const tableHeaders: { key: keyof UserResponse; label: string }[] = [
   { key: 'id', label: '' },
 ];
 
+const roleOptions = [
+  { value: 'Employee', label: 'Employee' },
+  { value: 'User', label: 'user' },
+];
+
 const tableBodyCells: (keyof UserResponse)[] = ['username', 'email', 'role'];
 
 const UserPage = () => {
@@ -32,6 +37,7 @@ const UserPage = () => {
   const [editingField, setEditingField] = useState<keyof UserResponse | null>(
     null,
   );
+
   const [deleteUser] = useDeleteUserMutation();
   const [updateUser] = useUpdateUserMutation();
   const { onAddMessagePopup } = useMessagePopup();
@@ -119,6 +125,7 @@ const UserPage = () => {
               {tableBodyCells.map((td) => (
                 <td key={td}>
                   <EditTableCell
+                    roleOptions={roleOptions}
                     isAdmin={isAdmin}
                     onSave={() => {
                       handleSave(id);
@@ -127,6 +134,7 @@ const UserPage = () => {
                     id={td}
                     onChange={handleChange}
                     value={String(values[td] || '')}
+                    roleValue={values.role}
                     labelText={String(
                       allUsers.find((user) => user.id === id)?.[td] || '',
                     )}
