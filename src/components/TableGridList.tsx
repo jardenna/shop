@@ -5,14 +5,14 @@ import IconBtn from './IconBtn';
 
 interface TableGridList {
   iconName: IconName;
-  padding: number;
+  padding: string;
   title: string;
 }
 
 interface TableGridIconListProps {
-  isActive: number;
+  isActive: string;
   tableGridIconList: TableGridList[];
-  onSetPadding: (id: number) => void;
+  onSetPadding: (id: string) => void;
 }
 
 const TableGridList: FC<TableGridIconListProps> = ({

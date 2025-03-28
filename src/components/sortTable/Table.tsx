@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { useSearchParams } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
 import useLocalStorage from '../../hooks/useLocalStorage';
+import variables from '../../scss/variables.module.scss';
 import { BtnVariant, IconName } from '../../types/enums';
 import { SortOrderType } from '../../types/types';
 import Button from '../Button';
@@ -32,11 +33,26 @@ const Table = <T,>({
 }: TableProps<T>) => {
   const { language } = useLanguage();
   const [searchParams, setSearchParams] = useSearchParams();
-  const [padding, setPadding] = useLocalStorage('padding', 12);
+  const { paddingBlockSmall, paddingBlockMedium, paddingBlockLarge } =
+    variables;
+  const [padding, setPadding] = useLocalStorage('padding', paddingBlockMedium);
+
   const tableGridIconList = [
-    { padding: 4, iconName: IconName.GridSmall, title: language.gridSmall },
-    { padding: 12, iconName: IconName.Grid, title: language.grid },
-    { padding: 20, iconName: IconName.GridLarge, title: language.gridLarge },
+    {
+      padding: paddingBlockSmall,
+      iconName: IconName.GridSmall,
+      title: language.gridSmall,
+    },
+    {
+      padding: paddingBlockMedium,
+      iconName: IconName.Grid,
+      title: language.grid,
+    },
+    {
+      padding: paddingBlockLarge,
+      iconName: IconName.GridLarge,
+      title: language.gridLarge,
+    },
   ];
 
   const sortField =
@@ -113,7 +129,7 @@ const Table = <T,>({
                 <th
                   key={col.key as string}
                   scope="col"
-                  style={{ paddingBlock: padding }}
+                  style={{ paddingBlock: Number(padding) }}
                 >
                   {col.label !== '' && (
                     <div className="sort">

@@ -127,21 +127,21 @@ table {
     max-height: rem(400px);
     overflow: auto;
 
-    &.padding-8 {
+    &.padding-4 {
       td {
-        padding-block: 8px;
+        padding-block: $padding-block-small-px;
       }
     }
 
     &.padding-12 {
       td {
-        padding-block: 12px;
+        padding-block: $padding-block-medium-px;
       }
     }
 
     &.padding-20 {
       td {
-        padding-block: 20px;
+        padding-block: $padding-block-large-px;
       }
     }
 
