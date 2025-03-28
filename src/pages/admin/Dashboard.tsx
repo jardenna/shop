@@ -1,6 +1,7 @@
 import { FC, useState } from 'react';
 import { UserResponse } from '../../app/api/apiTypes';
 import Dropdown from '../../components/dropdown/Dropdown';
+import validateUpdateUser from '../../components/formElements/validation/validateUpdateUser';
 import Icon from '../../components/icons/Icon';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import EditField from '../../components/sortTable/EditField';
@@ -53,7 +54,18 @@ const Dashboard: FC = () => {
     setValues({});
   };
 
-  const handleSave = async (id: string, username: string) => {
+  const handleSave = async (id: string) => {
+    const validation = validateUpdateUser(values);
+
+    if (validation) {
+      onAddMessagePopup({
+        messagePopupType: 'error',
+        message: language[validation],
+        componentType: 'notification',
+      });
+      return;
+    }
+
     try {
       await updateUser({
         id,
@@ -61,7 +73,7 @@ const Dashboard: FC = () => {
       }).unwrap();
       onAddMessagePopup({
         messagePopupType: 'success',
-        message: `${username} updated`,
+        message: language.userUpdated,
       });
     } catch (error: any) {
       onAddMessagePopup({
@@ -80,7 +92,7 @@ const Dashboard: FC = () => {
       await deleteUser(id).unwrap();
       onAddMessagePopup({
         messagePopupType: 'success',
-        message: `${username} deleted`,
+        message: `${username} ${language.deleted}`,
       });
     } catch (error: any) {
       onAddMessagePopup({
@@ -108,7 +120,7 @@ const Dashboard: FC = () => {
                   <EditField
                     isAdmin={isAdmin}
                     onSave={() => {
-                      handleSave(id, username);
+                      handleSave(id);
                     }}
                     showEditInput={editRowId === id && editingField === td}
                     id={td}

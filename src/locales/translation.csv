@@ -48,7 +48,6 @@ heroText1;For a limited time, enjoy incredible discounts on the latest fashion t
 heroTitle;Exclusive Fashion Sale;Eksklusivt Modesalg
 hidePassword;Hide password;Skjul adgangskode
 home;Home;Hjem
-invalidEmail;Invalid email;Ugyldig e-mail
 invalidEmail;Please provide a valid email;Indtast venligst en gyldig e-mail
 invalidPassword;Invalid password;Ugyldig adgangskode
 invalidUserData;Invalid user data;Ugyldig bruger data
@@ -72,7 +71,7 @@ myAccount;My account;Min brugerkonto
 myBag;My bag;Min indkøbskurv
 myOrders;My orders;Mine ordrer
 noData;No data found;Ingen data fundet
-noEmail;Please provide a email;Indtast venligst en e-mail
+noEmail;Please provide an email;Indtast venligst en e-mail
 noPassword;Please provide a password;Indtast venligst en adgangskode
 notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 
 notAuthorizedNoToken;Not authorized, no token;Ikke autoriseret, ingen token
@@ -91,7 +90,6 @@ pensil;Pensil;Blyant
 pleaseEnter;Please enter;Indsæt venligst
 pleaseEnterName;Please enter  name;Indsæt venligst navn
 pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
-pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
 pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
 preferences;Preferences;Præferencer
 products;Products;Produkter
@@ -117,8 +115,10 @@ trashCan;Trash can;Skraldespand
 title;Title;Titel
 updatePreferences;Update Preferences;Opdater præferencer
 user;User;Bruger
+userUpdated;User updated;Bruger opdateret
 userAlreadyExist;A profile with this email already exists. Try logging in instead;Der findes en profil med denne e-mail. Prøv at logge ind i stedet
 userDeleted;User deleted;Bruger slettet
+deleted;deleted;slettet
 userInfo;User info;Bruger info
 username;User name;Brugernavn
 users;Users;Brugere
