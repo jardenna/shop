@@ -18,7 +18,7 @@ import LoginPage from '../pages/LoginPage';
 import ProtectedRoute from '../pages/ProtectedRoute';
 import ShoppingChart from '../pages/ShoppingChart';
 import SignupPage from '../pages/SignupPage';
-import UsersPage from '../pages/UsersPage';
+import UserPage from '../pages/admin/UserPage';
 
 const routeConfig = createBrowserRouter([
   {
@@ -91,7 +91,7 @@ const routeConfig = createBrowserRouter([
           },
           {
             path: MainPath.Users,
-            element: <UsersPage />,
+            element: <UserPage />,
           },
           {
             path: MainPath.AdminProfile,

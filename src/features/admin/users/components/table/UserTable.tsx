@@ -3,8 +3,6 @@ import Dropdown from '../../../../../components/dropdown/Dropdown';
 import Input from '../../../../../components/formElements/Input';
 import Icon from '../../../../../components/icons/Icon';
 import Table from '../../../../../components/table/Table';
-import TableGridList from '../../../../../components/TableGridList';
-import useLocalStorage from '../../../../../hooks/useLocalStorage';
 import { BtnVariant, IconName } from '../../../../../types/enums';
 import useLanguage from '../../../../language/useLanguage';
 import UserTableHeaderCell from './UserTableHeaderCell';
@@ -71,12 +69,6 @@ const UsersTable: FC<UsersTableProps> = ({
     const filteredData = filterData(tableData);
     return sortData(filteredData);
   };
-  const [padding, setPadding] = useLocalStorage('padding', 12);
-  const tableGridIconList = [
-    { padding: 4, iconName: IconName.GridSmall, title: language.gridSmall },
-    { padding: 12, iconName: IconName.Grid, title: language.grid },
-    { padding: 20, iconName: IconName.GridLarge, title: language.gridLarge },
-  ];
 
   const changedTableData = getChangedTableData();
 
@@ -110,21 +102,12 @@ const UsersTable: FC<UsersTableProps> = ({
             {language.clearFilters}
           </button>
         </div>
-        <TableGridList
-          onSetPadding={setPadding}
-          tableGridIconList={tableGridIconList}
-          isActive={padding}
-        />
       </div>
       <Table isLoading={isLoading} tableCaption={tableCaption}>
         <thead>
           <tr>
             {tableHeaders.map((tableHeader) => (
-              <th
-                scope="col"
-                key={tableHeader}
-                style={{ paddingTop: padding, paddingBottom: padding }}
-              >
+              <th scope="col" key={tableHeader}>
                 <UserTableHeaderCell
                   icon={getSortIcon(tableHeader)}
                   ariaLabel={`${language.sort} ${getColumnSortDirection(tableHeader) ? language[getColumnSortDirection(tableHeader) as string] : ''}`}
@@ -145,9 +128,7 @@ const UsersTable: FC<UsersTableProps> = ({
           {changedTableData.length > 0 ? (
             changedTableData.map(({ id, email, username, role }) => (
               <tr key={email}>
-                <td style={{ paddingTop: padding, paddingBottom: padding }}>
-                  {username}
-                </td>
+                <td>{username}</td>
                 <td>
                   <a href={`mailto:${email}`}>{email}</a>
                 </td>
