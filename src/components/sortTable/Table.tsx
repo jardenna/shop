@@ -111,15 +111,17 @@ const Table = <T,>({
   const sortIcon = sortOrder === 'asc' ? '↑' : '↓';
   const ariaLabel = sortOrder === 'asc' ? language.desc : language.asc;
   return (
-    <div>
-      <button onClick={handleClearAll} type="button">
-        Clear
-      </button>{' '}
-      <TableGridList
-        onSetPadding={setPadding}
-        tableGridIconList={tableGridIconList}
-        isActive={padding}
-      />
+    <>
+      <div className="table-controls">
+        <Button onClick={handleClearAll} variant={BtnVariant.Default}>
+          Clear
+        </Button>
+        <TableGridList
+          onSetPadding={setPadding}
+          tableGridIconList={tableGridIconList}
+          isActive={padding}
+        />
+      </div>
       <div className="fixed-table">
         <table aria-label={isLoading ? language.loading : undefined}>
           <VisuallyHidden as="caption">{tableCaption}</VisuallyHidden>
@@ -132,23 +134,25 @@ const Table = <T,>({
                   style={{ paddingBlock: Number(padding) }}
                 >
                   {col.label !== '' && (
-                    <div className="sort">
-                      {language[col.label]}
-                      <Button
-                        variant={BtnVariant.Ghost}
-                        onClick={() => {
-                          handleSort(col.key);
-                        }}
-                        ariaLabel={
-                          sortField === col.label
-                            ? `${language.sort} ${language[col.label]} ${ariaLabel}`
-                            : `${language.sort} ${language[col.label]}`
-                        }
-                      >
-                        <span className="sort-icon" aria-hidden>
-                          {sortField === col.label ? sortIcon : '⇅'}
-                        </span>
-                      </Button>
+                    <div className="table-header-cell">
+                      <div className="sort">
+                        {language[col.label]}
+                        <Button
+                          variant={BtnVariant.Ghost}
+                          onClick={() => {
+                            handleSort(col.key);
+                          }}
+                          ariaLabel={
+                            sortField === col.label
+                              ? `${language.sort} ${language[col.label]} ${ariaLabel}`
+                              : `${language.sort} ${language[col.label]}`
+                          }
+                        >
+                          <span className="sort-icon" aria-hidden>
+                            {sortField === col.label ? sortIcon : '⇅'}
+                          </span>
+                        </Button>
+                      </div>
 
                       <TableSearchInput
                         onFilterRows={(e) => {
@@ -167,7 +171,7 @@ const Table = <T,>({
           <tbody className={`padding-${padding}`}>{children(sortedData)}</tbody>
         </table>
       </div>
-    </div>
+    </>
   );
 };
 

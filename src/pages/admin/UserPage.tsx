@@ -4,7 +4,7 @@ import Dropdown from '../../components/dropdown/Dropdown';
 import validateUpdateUser from '../../components/formElements/validation/validateUpdateUser';
 import Icon from '../../components/icons/Icon';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-import EditField from '../../components/sortTable/EditField';
+import EditTableCell from '../../components/sortTable/EditTableCell';
 import Table from '../../components/sortTable/Table';
 import {
   useDeleteUserMutation,
@@ -21,6 +21,8 @@ const tableHeaders: { key: keyof UserResponse; label: string }[] = [
   { key: 'role', label: 'role' },
   { key: 'id', label: '' },
 ];
+
+const tableBodyCells: (keyof UserResponse)[] = ['username', 'email', 'role'];
 
 const UserPage = () => {
   const { language } = useLanguage();
@@ -102,7 +104,6 @@ const UserPage = () => {
       });
     }
   };
-  const tableBodyCells: (keyof UserResponse)[] = ['username', 'email', 'role'];
 
   return (
     allUsers && (
@@ -117,7 +118,7 @@ const UserPage = () => {
             <tr key={id}>
               {tableBodyCells.map((td) => (
                 <td key={td}>
-                  <EditField
+                  <EditTableCell
                     isAdmin={isAdmin}
                     onSave={() => {
                       handleSave(id);

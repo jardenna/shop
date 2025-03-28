@@ -4,7 +4,7 @@ import { ChangeInputType } from '../../types/types';
 import Input from '../formElements/Input';
 import IconBtn from '../IconBtn';
 
-type EditFieldProps = {
+type EditTableCellProps = {
   id: string;
   isAdmin: boolean;
   labelText: string;
@@ -16,7 +16,7 @@ type EditFieldProps = {
   onSave: () => void;
 };
 
-const EditField = ({
+const EditTableCell = ({
   showEditInput,
   id,
   onChange,
@@ -26,7 +26,7 @@ const EditField = ({
   labelText,
   onEdit,
   isAdmin,
-}: EditFieldProps) => {
+}: EditTableCellProps) => {
   const { language } = useLanguage();
 
   return (
@@ -81,4 +81,4 @@ const EditField = ({
   );
 };
 
-export default EditField;
+export default EditTableCell;

@@ -7,29 +7,6 @@
   margin-bottom: 8px;
 }
 
-.clear-btns {
-  display: flex;
-  gap: 8px;
-}
-
-.clear-filters-btn {
-  padding: 8px 16px;
-  background-color: #f1f1f1;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.2s;
-
-  &:hover {
-    background-color: #e5e5e5;
-  }
-
-  &:active {
-    background-color: #d9d9d9;
-  }
-}
-
 .fixed-table {
   position: relative;
   width: 100%;
