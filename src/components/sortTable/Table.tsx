@@ -21,6 +21,7 @@ type TableProps<T> = {
   data: T[];
   isLoading: boolean;
   tableCaption: string;
+  emptyHeaderCellText?: string;
   children: (sortedData: T[]) => ReactNode;
 };
 
@@ -30,6 +31,7 @@ const Table = <T,>({
   children,
   tableCaption,
   isLoading,
+  emptyHeaderCellText,
 }: TableProps<T>) => {
   const { language } = useLanguage();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -133,7 +135,7 @@ const Table = <T,>({
                   scope="col"
                   style={{ paddingBlock: Number(padding) }}
                 >
-                  {col.label !== '' && (
+                  {col.label !== '' ? (
                     <div className="table-header-cell">
                       <div className="sort">
                         {language[col.label]}
@@ -163,6 +165,10 @@ const Table = <T,>({
                         label={language[col.label]}
                       />
                     </div>
+                  ) : (
+                    <VisuallyHidden as="p">
+                      {emptyHeaderCellText}
+                    </VisuallyHidden>
                   )}
                 </th>
               ))}

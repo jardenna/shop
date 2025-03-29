@@ -118,6 +118,7 @@ const UserPage = () => {
         columns={tableHeaders}
         tableCaption={language.customersList}
         isLoading={isLoading}
+        emptyHeaderCellText={language.deleteUser}
       >
         {(data) =>
           data.map(({ id, username, isAdmin }) => (
