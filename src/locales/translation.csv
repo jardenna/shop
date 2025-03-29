@@ -8,6 +8,7 @@ asc;ascending;stigende
 bag;Bag;Indkøbskurv
 cancel;Cancel;Annuller
 cannotDeleteAdmin;This action is not allowed for admin;Admin bruger kan ikke slettes
+categorieAlreadyExist;Category already exist;Kategori findes allerede
 categories;Categories;Kategorier
 clearFilters;Clear filters;Ryd filtre
 clearSort;Clear sort;Ryd sortering

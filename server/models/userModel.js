@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import { ALLOWED_ROLES } from '../utils/constants.js';
 
-const UserSchema = mongoose.Schema(
+const UserSchema = new mongoose.Schema(
   {
     username: {
       type: String,
