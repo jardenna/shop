@@ -1,4 +1,4 @@
-export type RoleTypes = 'Admin' | 'Employee' | 'User';
+export type RoleTypes = 'Employee' | 'User';
 
 export interface UserResponse {
   createdAt: Date;

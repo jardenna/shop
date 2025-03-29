@@ -120,7 +120,7 @@ const UserPage = () => {
         isLoading={isLoading}
       >
         {(data) =>
-          data.map(({ id, role, username, isAdmin }) => (
+          data.map(({ id, username, isAdmin }) => (
             <tr key={id}>
               {tableBodyCells.map((td) => (
                 <td key={td}>
@@ -146,28 +146,26 @@ const UserPage = () => {
                 </td>
               ))}
               <td>
-                <div>
-                  {role !== 'Admin' && (
-                    <Dropdown
-                      ariaControls="delete-user"
-                      text={`${language.sureToDelete} ${username}?`}
-                      btnVariant={BtnVariant.Ghost}
-                      onPrimaryClick={() => {
-                        handleDeleteUser(id, username);
-                      }}
-                      primaryBtnLabel={language.delete}
-                      primaryBtnClassName="danger"
+                {!isAdmin && (
+                  <Dropdown
+                    ariaControls="delete-user"
+                    text={`${language.sureToDelete} ${username}?`}
+                    btnVariant={BtnVariant.Ghost}
+                    onPrimaryClick={() => {
+                      handleDeleteUser(id, username);
+                    }}
+                    primaryBtnLabel={language.delete}
+                    primaryBtnClassName="danger"
+                    ariaLabel={language.deleteUser}
+                    className="danger"
+                  >
+                    <Icon
+                      iconName={IconName.Trash}
+                      title={language.trashCan}
                       ariaLabel={language.deleteUser}
-                      className="danger"
-                    >
-                      <Icon
-                        iconName={IconName.Trash}
-                        title={language.trashCan}
-                        ariaLabel={language.deleteUser}
-                      />
-                    </Dropdown>
-                  )}
-                </div>
+                    />
+                  </Dropdown>
+                )}
               </td>
             </tr>
           ))

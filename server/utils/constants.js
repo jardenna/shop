@@ -1,1 +1,1 @@
-export const ALLOWED_ROLES = ['Admin', 'Employee', 'User'];
+export const ALLOWED_ROLES = ['Employee', 'User'];
