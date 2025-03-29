@@ -136,7 +136,6 @@ export default tseslint.config(
         'error',
         { terms: ['todo', 'fixme', 'any other term'], location: 'anywhere' },
       ],
-      camelcase: 'off',
       'react/jsx-no-target-blank': [
         'error',
         {
@@ -172,8 +171,6 @@ export default tseslint.config(
         },
       ],
       'import/prefer-default-export': 'warn',
-      // 'jsx-a11y/click-events-have-key-events': 'off',
-      // 'jsx-a11y/no-noninteractive-element-interactions': 'off',
       'jsx-a11y/html-has-lang': ['error'],
       'jsx-a11y/aria-role': ['error'],
       'jsx-a11y/aria-unsupported-elements': ['error'],
