@@ -1,12 +1,10 @@
 export type RoleTypes = 'Employee' | 'User';
 
 export interface UserResponse {
-  createdAt: Date;
   email: string;
   id: string;
   isAdmin: boolean;
   role: RoleTypes;
-  updatedAt: Date;
   username: string;
 }
 
@@ -50,6 +48,21 @@ export interface UpdateUserById {
 export interface UpdateUserByIdRequest {
   id: string;
   user: UpdateUserById;
+}
+
+interface Category {
+  createdAt: Date;
+  id: string;
+  name: string;
+}
+export interface CreateCategoryResponse {
+  category: Category;
+  message: string;
+  success: boolean;
+}
+
+export interface CreateCategoryRequest {
+  name: string;
 }
 
 export type FileUploadNameType = 'cover';
