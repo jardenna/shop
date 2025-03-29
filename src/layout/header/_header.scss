@@ -1,6 +1,6 @@
 @use '../../scss/globals/' as *;
 
-.main-header:not(.admin-page .main-header) {
+.main-header:not(.admin-container .main-header) {
   @include max-size($small) {
     width: 100%;
     position: fixed;

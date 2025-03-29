@@ -23,7 +23,7 @@ const AdminLayout: FC = () => {
   };
 
   return (
-    <div className="main-container admin-page">
+    <div className="main-container admin-container">
       <SkipLink />
       <AdminHeader ariaLabel={language.main} />
       <main id="main" className="main">

@@ -30,11 +30,27 @@
   }
 }
 
-.user-role {
-  text-transform: capitalize;
-}
+.admin-container {
+  .user-page {
+    .empty-cell {
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
 
-.admin-page {
+      &::before {
+        content: '';
+        position: absolute;
+        display: flex;
+        background-color: currentcolor;
+        height: 28px;
+        width: 2px;
+        transform: rotate(45deg);
+        top: -3px;
+        right: 9px;
+      }
+    }
+  }
+
   .main {
     display: flex;
   }

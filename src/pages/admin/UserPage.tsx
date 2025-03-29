@@ -113,75 +113,77 @@ const UserPage = () => {
   };
 
   return (
-    allUsers && (
-      <Table
-        data={allUsers}
-        columns={tableHeaders}
-        tableCaption={language.customersList}
-        isLoading={isLoading}
-        emptyHeaderCellText={language.deleteUser}
-      >
-        {(data) =>
-          data.map(({ id, username, isAdmin }) => (
-            <tr key={id}>
-              {tableBodyCells.map((td) => (
-                <td key={td}>
-                  <EditTableCell
-                    roleOptions={roleOptions}
-                    isAdmin={isAdmin}
-                    onSave={() => {
-                      handleSave(id);
-                    }}
-                    showEditInput={editRowId === id && editingField === td}
-                    id={td}
-                    onChange={handleChange}
-                    value={String(values[td] || '')}
-                    roleValue={values.role || 'User'}
-                    labelText={String(
-                      allUsers.find((user) => user.id === id)?.[td] || '',
-                    )}
-                    onCancel={handleCancel}
-                    onEdit={() => {
-                      handleEdit(id, td);
-                    }}
-                  />
-                </td>
-              ))}
-              <td>
-                {!isAdmin ? (
-                  <Dropdown
-                    ariaControls="delete-user"
-                    text={`${language.sureToDelete} ${username}?`}
-                    triggerBtnVariant={BtnVariant.Ghost}
-                    triggerBtnClassName="danger"
-                    onPrimaryClick={() => {
-                      handleDeleteUser(id, username);
-                    }}
-                    primaryBtnLabel={language.delete}
-                    primaryBtnVariant={BtnVariant.Danger}
-                    ariaLabel={language.deleteUser}
-                  >
-                    <Icon
-                      iconName={IconName.Trash}
-                      title={language.trashCan}
+    <section className="user-page">
+      {allUsers && (
+        <Table
+          data={allUsers}
+          columns={tableHeaders}
+          tableCaption={language.customersList}
+          isLoading={isLoading}
+          emptyHeaderCellText={language.deleteUser}
+        >
+          {(data) =>
+            data.map(({ id, username, isAdmin }) => (
+              <tr key={id}>
+                {tableBodyCells.map((td) => (
+                  <td key={td}>
+                    <EditTableCell
+                      roleOptions={roleOptions}
+                      isAdmin={isAdmin}
+                      onSave={() => {
+                        handleSave(id);
+                      }}
+                      showEditInput={editRowId === id && editingField === td}
+                      id={td}
+                      onChange={handleChange}
+                      value={String(values[td] || '')}
+                      roleValue={values.role || 'User'}
+                      labelText={String(
+                        allUsers.find((user) => user.id === id)?.[td] || '',
+                      )}
+                      onCancel={handleCancel}
+                      onEdit={() => {
+                        handleEdit(id, td);
+                      }}
+                    />
+                  </td>
+                ))}
+                <td>
+                  {!isAdmin ? (
+                    <Dropdown
+                      ariaControls="delete-user"
+                      text={`${language.sureToDelete} ${username}?`}
+                      triggerBtnVariant={BtnVariant.Ghost}
+                      triggerBtnClassName="danger"
+                      onPrimaryClick={() => {
+                        handleDeleteUser(id, username);
+                      }}
+                      primaryBtnLabel={language.delete}
+                      primaryBtnVariant={BtnVariant.Danger}
                       ariaLabel={language.deleteUser}
-                    />
-                  </Dropdown>
-                ) : (
-                  <div className="test">
-                    <IconContent
-                      iconName={IconName.Trash}
-                      title={language.trashCan}
-                      ariaLabel={language.actionNotAllowedForAdmin}
-                    />
-                  </div>
-                )}
-              </td>
-            </tr>
-          ))
-        }
-      </Table>
-    )
+                    >
+                      <Icon
+                        iconName={IconName.Trash}
+                        title={language.trashCan}
+                        ariaLabel={language.deleteUser}
+                      />
+                    </Dropdown>
+                  ) : (
+                    <div className="empty-cell">
+                      <IconContent
+                        iconName={IconName.Trash}
+                        title={language.trashCan}
+                        ariaLabel={language.actionNotAllowedForAdmin}
+                      />
+                    </div>
+                  )}
+                </td>
+              </tr>
+            ))
+          }
+        </Table>
+      )}
+    </section>
   );
 };
 
