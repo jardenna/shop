@@ -134,7 +134,7 @@ const UserPage = () => {
                     id={td}
                     onChange={handleChange}
                     value={String(values[td] || '')}
-                    roleValue={values.role}
+                    roleValue={values.role || 'User'}
                     labelText={String(
                       allUsers.find((user) => user.id === id)?.[td] || '',
                     )}
