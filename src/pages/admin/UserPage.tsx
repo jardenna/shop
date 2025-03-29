@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { UserResponse } from '../../app/api/apiTypes';
 import Dropdown from '../../components/dropdown/Dropdown';
 import validateUpdateUser from '../../components/formElements/validation/validateUpdateUser';
+import IconContent from '../../components/IconContent';
 import Icon from '../../components/icons/Icon';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import EditTableCell from '../../components/sortTable/EditTableCell';
@@ -147,7 +148,7 @@ const UserPage = () => {
                 </td>
               ))}
               <td>
-                {!isAdmin && (
+                {!isAdmin ? (
                   <Dropdown
                     ariaControls="delete-user"
                     text={`${language.sureToDelete} ${username}?`}
@@ -166,6 +167,14 @@ const UserPage = () => {
                       ariaLabel={language.deleteUser}
                     />
                   </Dropdown>
+                ) : (
+                  <div className="test">
+                    <IconContent
+                      iconName={IconName.Trash}
+                      title={language.trashCan}
+                      ariaLabel={language.actionNotAllowedForAdmin}
+                    />
+                  </div>
                 )}
               </td>
             </tr>

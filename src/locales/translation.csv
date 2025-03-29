@@ -1,12 +1,13 @@
 ﻿key;en;da
 about;About;Profil
 account;Account;Konto
+actionNotAllowedForAdmin;Admin cannot be deleted;Denne handling er ikke tilladt for administrator
 additionalInfo;Additional info;Supplerende information
 admin;Admin;Admin
 asc;ascending;stigende
 bag;Bag;Indkøbskurv
 cancel;Cancel;Annuller
-cannotDeleteAdmin;Cannot delete admin user;Admin bruger kan ikke slettes
+cannotDeleteAdmin;This action is not allowed for admin;Admin bruger kan ikke slettes
 categories;Categories;Kategorier
 clearFilters;Clear filters;Ryd filtre
 clearSort;Clear sort;Ryd sortering
