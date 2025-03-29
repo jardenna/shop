@@ -7,29 +7,6 @@
   margin-bottom: 8px;
 }
 
-.clear-btns {
-  display: flex;
-  gap: 8px;
-}
-
-.clear-filters-btn {
-  padding: 8px 16px;
-  background-color: #f1f1f1;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.2s;
-
-  &:hover {
-    background-color: #e5e5e5;
-  }
-
-  &:active {
-    background-color: #d9d9d9;
-  }
-}
-
 .fixed-table {
   position: relative;
   width: 100%;
@@ -46,15 +23,27 @@ table {
   border-collapse: collapse;
   width: 100%;
 
-  tbody {
+  .edit-cell {
     display: flex;
-    flex-direction: column;
-    max-height: rem(400px);
-    overflow: auto;
+    justify-content: space-between;
 
-    @include max-size($medium) {
-      display: table-row-group;
+    .input-container {
+      width: auto;
     }
+
+    input {
+      padding: 4px;
+    }
+
+    .edit-controls {
+      display: flex;
+      gap: 12px;
+    }
+  }
+
+  .radio-btn-container {
+    display: flex;
+    gap: 4px;
   }
 
   th {
@@ -114,6 +103,35 @@ table {
     }
   }
 
+  tbody {
+    display: flex;
+    flex-direction: column;
+    max-height: rem(400px);
+    overflow: auto;
+
+    &.padding-4 {
+      td {
+        padding-block: $padding-block-small-px;
+      }
+    }
+
+    &.padding-12 {
+      td {
+        padding-block: $padding-block-medium-px;
+      }
+    }
+
+    &.padding-20 {
+      td {
+        padding-block: $padding-block-large-px;
+      }
+    }
+
+    @include max-size($medium) {
+      display: table-row-group;
+    }
+  }
+
   .dropdown-container {
     position: static;
   }
@@ -152,6 +170,7 @@ table {
 .table-search-input {
   position: relative;
 
+  /* stylelint-disable-next-line no-descending-specificity */
   .input-container {
     right: -8px;
     top: 32px;

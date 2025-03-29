@@ -6,7 +6,7 @@ const validateEmail = (email, lang) => {
     return {
       isValid: false,
       status: 422,
-      payload: { success: false, message: t('invalidEmail', lang) },
+      payload: { success: false, message: t('pleaseEnterValidEmail', lang) },
     };
   }
   return { isValid: true };

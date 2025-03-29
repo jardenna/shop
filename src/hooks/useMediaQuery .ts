@@ -1,36 +1,6 @@
 import { useEffect, useState } from 'react';
 import variables from '../scss/variables.module.scss';
 
-// const useMediaQuery = (query: string) => {
-//   const stripUnit = (value: string): number =>
-//     parseFloat(value.replace(/rem$/, ''));
-
-//   // variables
-//   const mq = {
-//     small: stripUnit(variables.small) * 16,
-//     medium: stripUnit(variables.medium) * 16,
-//   };
-//   console.log(mq);
-
-//   const [matches, setMatches] = useState(
-//     () => window.matchMedia(query).matches,
-//   );
-
-//   useEffect(() => {
-//     const mediaQueryList = window.matchMedia(query);
-//     const listener = (event: MediaQueryListEvent) => {
-//       setMatches(event.matches);
-//     };
-
-//     mediaQueryList.addEventListener('change', listener);
-//     return () => {
-//       mediaQueryList.removeEventListener('change', listener);
-//     };
-//   }, [query]);
-
-//   return matches;
-// };
-
 const stripUnit = (value: string): number =>
   parseFloat(value.replace(/rem$/, ''));
 

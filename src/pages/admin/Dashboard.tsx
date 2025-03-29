@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
-const Dashboard: FC = () => <section>Dashboard</section>;
+const Dashboard = () => <section>Dashboard</section>;
 
 export default Dashboard;

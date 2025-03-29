@@ -39,10 +39,6 @@ textarea {
     margin-bottom: 4px;
   }
 
-  input {
-    height: rem(44px);
-  }
-
   input,
   select,
   textarea {
@@ -85,11 +81,11 @@ textarea {
   }
 }
 
-.form-label-container {
-  display: flex;
-  gap: 12px;
-  align-items: baseline;
-}
+// .form-label-container {
+//   display: flex;
+//   gap: 12px;
+//   align-items: baseline;
+// }
 
 .error-icon {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -117,11 +113,10 @@ textarea {
   /* stylelint-disable-next-line no-descending-specificity */
   input {
     appearance: none;
-    margin-right: 10px;
     background-color: $color-white;
     color: currentcolor;
-    width: rem(24px);
-    height: rem(24px);
+    width: rem(18px);
+    height: rem(18px);
     border: 2px solid $color-blue;
     transform: translateY(-1.2px);
     display: flex;

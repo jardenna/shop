@@ -1,18 +1,18 @@
 import { FC } from 'react';
-import useLanguage from '../features/language/useLanguage';
-import { IconName } from '../types/enums';
-import IconBtn from './IconBtn';
+import useLanguage from '../../features/language/useLanguage';
+import { IconName } from '../../types/enums';
+import IconBtn from '../IconBtn';
 
 interface TableGridList {
   iconName: IconName;
-  padding: number;
+  padding: string;
   title: string;
 }
 
 interface TableGridIconListProps {
-  isActive: number;
+  isActive: string;
   tableGridIconList: TableGridList[];
-  onSetPadding: (id: number) => void;
+  onSetPadding: (id: string) => void;
 }
 
 const TableGridList: FC<TableGridIconListProps> = ({

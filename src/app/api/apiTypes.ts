@@ -1,4 +1,4 @@
-export type RoleTypes = 'admin' | 'employee' | 'user';
+export type RoleTypes = 'Admin' | 'Employee' | 'User';
 
 export interface UserResponse {
   createdAt: Date;
@@ -33,6 +33,23 @@ export type OmittedAuthResponse = Omit<AuthRequest, 'user'>;
 
 export interface CurrencyResponse {
   data: Record<string, { value: number }>;
+}
+
+export interface UpdateUserByIdResponse {
+  email: string;
+  id: string;
+  role: RoleTypes;
+  username: string;
+}
+
+export interface UpdateUserById {
+  email?: string;
+  role?: RoleTypes;
+  username?: string;
+}
+export interface UpdateUserByIdRequest {
+  id: string;
+  user: UpdateUserById;
 }
 
 export type FileUploadNameType = 'cover';

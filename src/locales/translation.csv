@@ -3,7 +3,6 @@ about;About;Profil
 account;Account;Konto
 additionalInfo;Additional info;Supplerende information
 admin;Admin;Admin
-ascending;ascending;stigende
 asc;ascending;stigende
 bag;Bag;Indkøbskurv
 cancel;Cancel;Annuller
@@ -24,10 +23,10 @@ currency;Currency;Valuta
 customersList;Customers list;Kundeliste
 dashboard;Dashboard;Dashboard
 delete;Delete;Slet
-deleteCustomer;Delete customer;Slet kunde
 deleted;deleted;slettet
-descending;descending;faldende
+deleteUser;Delete user;Slet bruger
 desc;descending;faldende
+editUser;Edit user;Opdater bruger
 email;Email;E-mail
 error;Error;Fejl
 errorAltText;A really guilty emoji;En meget skyldig emoji
@@ -49,8 +48,6 @@ heroText1;For a limited time, enjoy incredible discounts on the latest fashion t
 heroTitle;Exclusive Fashion Sale;Eksklusivt Modesalg
 hidePassword;Hide password;Skjul adgangskode
 home;Home;Hjem
-invalidEmail;Invalid email;Ugyldig e-mail
-invalidEmail;Please provide a valid email;Indtast venligst en gyldig e-mail
 invalidPassword;Invalid password;Ugyldig adgangskode
 invalidUserData;Invalid user data;Ugyldig bruger data
 language;Language;Sprog
@@ -73,7 +70,7 @@ myAccount;My account;Min brugerkonto
 myBag;My bag;Min indkøbskurv
 myOrders;My orders;Mine ordrer
 noData;No data found;Ingen data fundet
-noEmail;Please provide a email;Indtast venligst en e-mail
+noEmail;Please provide an email;Indtast venligst en e-mail
 noPassword;Please provide a password;Indtast venligst en adgangskode
 notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 
 notAuthorizedNoToken;Not authorized, no token;Ikke autoriseret, ingen token
@@ -83,15 +80,14 @@ orders;Orders;Ordrer
 password;Password;Adgangskode
 passwordDoNotMatch;The passwords do not match;Adgangskoderne stemmer ikke overens
 passwordLowercase;Password should contain at least one lowercase letter;Adgangskoden skal indeholde mindst ét lille bogstav
-passwordLowercase;Password should contain at least one lowercase letter;Adgangskoden skal indeholde mindst ét lille bogstav
 passwordMinLength;Password should be at least 8 characters;Adgangskoden skal være mindst 8 tegn
 passwordNumber;Password should contain at least one number;Adgangskoden skal indeholde mindst ét tal
 passwordSymbol;Password should contain at least one special character;Adgangskoden skal indeholde mindst ét specialtegn
 passwordUppercase;Password should contain at least one uppercase letter;Adgangskoden skal indeholde mindst ét stort bogstav
+pensil;Pensil;Blyant
 pleaseEnter;Please enter;Indsæt venligst
-pleaseEnterName;Please enter  name;Indsæt venligst navn
+pleaseEnterName;Please enter name;Indsæt venligst navn
 pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
-pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
 pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
 preferences;Preferences;Præferencer
 products;Products;Produkter
@@ -99,6 +95,7 @@ profile;Profile;Profil
 resetFiltersAndSorting;Reset filters and sorting;Nulstil filtre og sortering
 retry;Retry;Forsøg igen
 role;Role;Rolle
+save;Save;Gem
 search;Search;Søg
 selectCurrency;Select Currency;Vælg valuta
 selectLanguage;Select language;Vælg sprog
@@ -112,8 +109,8 @@ sort;Sort;Sorter
 sub;Sub;Sekundær
 success;Success;Succes
 sureToDelete;Are you sure that you want to delete;Er du sikker på at du vil slette
-trashCan;Trash can;Skraldespand
 title;Title;Titel
+trashCan;Trash can;Skraldespand
 updatePreferences;Update Preferences;Opdater præferencer
 user;User;Bruger
 userAlreadyExist;A profile with this email already exists. Try logging in instead;Der findes en profil med denne e-mail. Prøv at logge ind i stedet
@@ -121,5 +118,6 @@ userDeleted;User deleted;Bruger slettet
 userInfo;User info;Bruger info
 username;User name;Brugernavn
 users;Users;Brugere
+userUpdated;User updated;Bruger opdateret
 warning;Warning;Warning
 welcome;Welcome;Velkommen

@@ -1,6 +1,4 @@
 export enum ValidationMessage {
-  InvalidEmail = 'invalidEmail',
-  MustBeGreaterEqual = 'mustBeGreaterEqual',
   PasswordDoNotMatch = 'passwordDoNotMatch',
   PasswordLowercase = 'passwordLowercase',
   PasswordMinLength = 'passwordMinLength',
@@ -8,6 +6,7 @@ export enum ValidationMessage {
   PasswordSymbol = 'passwordSymbol',
   PasswordUppercase = 'passwordUppercase',
   PleaseEnter = 'pleaseEnter',
+  PleaseEnterEmail = 'noEmail',
   PleaseEnterName = 'pleaseEnterName',
   PleaseEnterPassword = 'pleaseEnterPassword',
   PleaseEnterValidEmail = 'pleaseEnterValidEmail',
@@ -16,11 +15,6 @@ export enum ValidationMessage {
 export enum PopupRole {
   Alert = 'alert',
   Status = 'status',
-}
-
-export enum SortOrder {
-  Asc = 'asc',
-  Desc = 'desc',
 }
 
 export enum TagTypesEnum {
@@ -50,8 +44,8 @@ export enum SizeVariant {
 }
 
 export enum BtnVariant {
+  Default = 'default',
   Ghost = 'ghost',
-  Link = 'link',
   Primary = 'primary',
   Secondary = 'secondary',
 }
@@ -64,6 +58,7 @@ export enum IconName {
   ArrowUp = 'arrowUp',
   Auth = 'auth',
   Categories = 'categories',
+  Check = 'check',
   ChevronDown = 'chevronDown',
   ChevronLeft = 'chevronLeft',
   ChevronRight = 'chevronRight',

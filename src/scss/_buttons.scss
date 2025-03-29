@@ -16,7 +16,6 @@ a[class^='btn-'],
   font-family: $font-primary;
   font-size: rem(16px);
   font-weight: normal;
-  color: $color-white;
   outline: transparent;
   padding: 16px;
   border-radius: 4px;
@@ -24,11 +23,6 @@ a[class^='btn-'],
   border: 1px solid currentcolor;
   cursor: pointer;
   min-height: rem(60px);
-
-  &.danger {
-    background-color: $color-danger;
-    color: $color-white;
-  }
 
   @include transition;
 
@@ -64,6 +58,25 @@ a[class^='btn-'],
 
   &:hover {
     color: #b5b5ba;
+  }
+
+  &:focus-visible {
+    @include outline(currentColor);
+
+    border: 1px solid $color-white;
+  }
+}
+
+.btn-default {
+  border-color: #c4bfbf;
+  background-color: #f1f1f1;
+  font-size: 0.875rem;
+  padding: 8px 32px;
+  min-height: auto;
+  width: auto;
+
+  &:hover {
+    background-color: #e5e5e5;
   }
 
   &:focus-visible {

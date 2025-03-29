@@ -6,8 +6,8 @@ input[type='radio'] {
 
   &::before {
     content: '';
-    width: rem(15px);
-    height: rem(15px);
+    width: rem(8px);
+    height: rem(8px);
     border-radius: 50%;
     transform: scale(0);
     box-shadow: inset 16px 0 $color-blue;

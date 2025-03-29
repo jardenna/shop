@@ -1,7 +1,8 @@
 import apiSlice from '../../../app/api/apiSlice';
 import {
   OmittedAuthResponse,
-  UpdateUserRoleRequest,
+  UpdateUserByIdRequest,
+  UpdateUserByIdResponse,
   UserResponse,
 } from '../../../app/api/apiTypes';
 import { userEndpoints } from '../../../app/endpoints';
@@ -18,6 +19,16 @@ export const usersApiSlice = apiSlice.injectEndpoints({
     getUserByd: builder.query<UserResponse, number>({
       query: (id) => `${endpoint}/${id}`,
     }),
+    updateUser: builder.mutation<UpdateUserByIdResponse, UpdateUserByIdRequest>(
+      {
+        query: ({ user, id }) => ({
+          url: `${endpoint}/${id}`,
+          method: 'PUT',
+          body: user,
+        }),
+        invalidatesTags: [TagTypesEnum.Auth],
+      },
+    ),
     deleteUser: builder.mutation<OmittedAuthResponse, string>({
       query: (id) => ({
         url: `${endpoint}/${id}`,
@@ -26,19 +37,12 @@ export const usersApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.Auth],
     }),
-    updateUserRole: builder.mutation<UserResponse, UpdateUserRoleRequest>({
-      query: (data) => ({
-        url: `${endpoint}/${data.userId}`,
-        method: 'PUT',
-        body: data.role,
-      }),
-    }),
   }),
 });
 
 export const {
   useGetAllUsersQuery,
   useGetUserBydQuery,
-  useUpdateUserRoleMutation,
   useDeleteUserMutation,
+  useUpdateUserMutation,
 } = usersApiSlice;
