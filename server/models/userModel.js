@@ -22,7 +22,6 @@ const UserSchema = mongoose.Schema(
       required: true,
       default: false,
     },
-
     role: {
       enum: ALLOWED_ROLES,
       type: String,
