@@ -150,14 +150,14 @@ const UserPage = () => {
                   <Dropdown
                     ariaControls="delete-user"
                     text={`${language.sureToDelete} ${username}?`}
-                    btnVariant={BtnVariant.Ghost}
+                    triggerBtnVariant={BtnVariant.Ghost}
+                    triggerBtnClassName="danger"
                     onPrimaryClick={() => {
                       handleDeleteUser(id, username);
                     }}
                     primaryBtnLabel={language.delete}
-                    primaryBtnClassName="danger"
+                    primaryBtnVariant={BtnVariant.Danger}
                     ariaLabel={language.deleteUser}
-                    className="danger"
                   >
                     <Icon
                       iconName={IconName.Trash}

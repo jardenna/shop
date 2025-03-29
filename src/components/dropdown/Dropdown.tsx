@@ -11,10 +11,11 @@ interface DropdownProps {
   children: ReactNode;
   primaryBtnLabel: string;
   text: string;
-  btnVariant?: BtnVariant;
-  className?: string;
-  primaryBtnClassName?: string;
+  primaryBtnVariant?: BtnVariant;
   secondaryBtnLabel?: string;
+  secondaryBtnVariant?: BtnVariant;
+  triggerBtnClassName?: string;
+  triggerBtnVariant?: BtnVariant;
   onPrimaryClick: () => void;
   onSecondaryClick?: () => void;
 }
@@ -23,14 +24,15 @@ const Dropdown: FC<DropdownProps> = ({
   text,
   ariaControls,
   ariaLabel,
-  btnVariant,
+  triggerBtnVariant,
+  triggerBtnClassName = '',
   onPrimaryClick,
   children,
   primaryBtnLabel,
+  primaryBtnVariant = BtnVariant.Default,
   secondaryBtnLabel,
+  secondaryBtnVariant,
   onSecondaryClick,
-  primaryBtnClassName = '',
-  className = '',
 }) => {
   const { language } = useLanguage();
   const { dropdownRef, dropdownIsOpen, toggleDropdownList, handleCallback } =
@@ -39,13 +41,13 @@ const Dropdown: FC<DropdownProps> = ({
   return (
     <div className="dropdown-container">
       <Button
-        variant={btnVariant}
+        variant={triggerBtnVariant}
         onClick={toggleDropdownList}
         ariaExpanded={dropdownIsOpen}
         ariaHasPopup
         ariaControls={ariaControls}
-        className={className}
         ariaLabel={ariaLabel}
+        className={triggerBtnClassName}
       >
         {children}
       </Button>
@@ -53,10 +55,10 @@ const Dropdown: FC<DropdownProps> = ({
         <section className="dropdown-content" ref={dropdownRef}>
           <span>{text}</span>
           <footer className="dropdown-content-footer">
-            <Button onClick={handleCallback}>
+            <Button variant={secondaryBtnVariant} onClick={handleCallback}>
               {secondaryBtnLabel || language.cancel}
             </Button>
-            <Button className={primaryBtnClassName} onClick={onPrimaryClick}>
+            <Button variant={primaryBtnVariant} onClick={onPrimaryClick}>
               {primaryBtnLabel}
             </Button>
           </footer>

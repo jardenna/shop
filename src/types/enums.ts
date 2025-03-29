@@ -44,6 +44,7 @@ export enum SizeVariant {
 }
 
 export enum BtnVariant {
+  Danger = 'danger',
   Default = 'default',
   Ghost = 'ghost',
   Primary = 'primary',

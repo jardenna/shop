@@ -55,6 +55,11 @@
   position: relative;
 }
 
+.danger {
+  background-color: transparent;
+  color: $color-red-light;
+}
+
 %styled-input {
   cursor: pointer;
   background-color: #f4f4f5;

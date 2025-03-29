@@ -87,10 +87,11 @@ a[class^='btn-'],
 }
 
 .btn-danger {
-  background-color: $color-danger;
+  background-color: $color-red-light;
+  color: #fff;
 
   &:hover {
-    background-color: $color-red-light;
+    background-color: $color-red;
   }
 }
 
@@ -100,11 +101,6 @@ a[class^='btn-'],
   border: 0;
   width: fit-content;
   min-height: auto;
-
-  &.danger {
-    background-color: transparent;
-    color: $color-red-light;
-  }
 
   svg {
     stroke: currentcolor;
