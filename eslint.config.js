@@ -118,11 +118,7 @@ export default tseslint.config(
       'react/no-unescaped-entities': 0,
       'react/jsx-curly-brace-presence': 'error',
       'no-underscore-dangle': ['error', { allow: ['__esModule', '__extends'] }],
-      // 'import/no-unresolved': 'off',
-      // 'import/extensions': 'off',
-      // 'react/jsx-uses-react': 'off',
       'react/react-in-jsx-scope': 'off',
-      // 'react/prop-types': 'off',
       'jsx-a11y/alt-text': 'error',
       'react/jsx-filename-extension': [
         2,
@@ -141,7 +137,6 @@ export default tseslint.config(
         { terms: ['todo', 'fixme', 'any other term'], location: 'anywhere' },
       ],
       camelcase: 'off',
-      // 'react/destructuring-assignment': 'off',
       'react/jsx-no-target-blank': [
         'error',
         {
@@ -154,13 +149,11 @@ export default tseslint.config(
       ],
       'react/button-has-type': 'error',
       'react/prefer-stateless-function': 'warn',
-      // 'react/jsx-props-no-spreading': 'off',
       'react/jsx-no-useless-fragment': 'error',
       'prefer-template': 'error',
       'react/no-did-update-set-state': 'warn',
       'class-methods-use-this': 'off',
       'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
-      // 'react/no-array-index-key': 'off',
       'react/no-direct-mutation-state': 1,
       'no-nested-ternary': 'warn',
       'react/require-default-props': [
