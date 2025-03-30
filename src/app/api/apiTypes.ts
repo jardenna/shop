@@ -1,5 +1,10 @@
 export type RoleTypes = 'Employee' | 'User';
 
+interface DefaultResponse {
+  message: string;
+  success: boolean;
+}
+
 export interface UserResponse {
   email: string;
   id: string;
@@ -21,9 +26,7 @@ export interface AuthRequest {
 
 export type OmittedUserRequest = Omit<AuthRequest, 'username'>;
 
-export interface AuthResponse {
-  message: string;
-  success: boolean;
+export interface AuthResponse extends DefaultResponse {
   user: UserResponse;
 }
 
@@ -45,24 +48,39 @@ export interface UpdateUserById {
   role?: RoleTypes;
   username?: string;
 }
+
 export interface UpdateUserByIdRequest {
   id: string;
   user: UpdateUserById;
 }
 
+// Category
 interface Category {
   createdAt: Date;
   id: string;
   name: string;
+  updatedAt: Date;
 }
-export interface CreateCategoryResponse {
+
+export interface CategoryResponse extends DefaultResponse {
   category: Category;
-  message: string;
-  success: boolean;
 }
 
 export interface CreateCategoryRequest {
   name: string;
+}
+
+export interface UpdateCategoryRequest {
+  id: string;
+}
+
+export interface GetAllCategoryResponse {
+  category: Category[];
+  success: boolean;
+}
+
+export interface DeleteCategoryRequest {
+  id: string;
 }
 
 export type FileUploadNameType = 'cover';

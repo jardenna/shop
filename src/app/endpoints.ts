@@ -1,5 +1,6 @@
 const baseAuthApi = 'auth';
 const baseUserApi = 'users';
+const baseCategoryApi = 'category';
 
 const authEndpoints = {
   register: `${baseAuthApi}/register`,
@@ -13,4 +14,8 @@ const userEndpoints = {
   userProfile: `${baseAuthApi}/profile`,
 };
 
-export { authEndpoints, userEndpoints };
+const categoryEndpoints = {
+  categories: baseCategoryApi,
+};
+
+export { authEndpoints, categoryEndpoints, userEndpoints };
