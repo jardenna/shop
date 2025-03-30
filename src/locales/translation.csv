@@ -15,7 +15,10 @@ categories;Categories;Kategorier
 categories;Categories;Kategorier
 categoryDeleted;Category deleted;Kategori blev slettet
 categoryName;Category name;Kategori navn
+name;Category name;Kategori navn
 clearFilters;Clear filters;Ryd filtre
+createdAt;Created at;Tilføjet at
+updatedAt;Updated at;Opdateret at
 clearSort;Clear sort;Ryd sortering
 close;Close;Luk
 closeDialog;Close dialog;Luk dialog
