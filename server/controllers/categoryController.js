@@ -42,7 +42,7 @@ const createCategory = asyncHandler(async (req, res) => {
     if (existingCategory) {
       return res.json({
         success: false,
-        message: t('categorieAlreadyExist', req.lang),
+        message: t('categoryAlreadyExist', req.lang),
       });
     }
     const category = await new Category({ name }).save();
