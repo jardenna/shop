@@ -21,8 +21,13 @@ const CategoryPage = () => {
 
   async function handleSubmitCategory() {
     try {
-      const result = await createCategory(values);
-      console.log(result);
+      const result = await createCategory(values).unwrap();
+
+      onAddMessagePopup({
+        messagePopupType: !result.success ? 'error' : 'success',
+        message: result.message,
+        componentType: !result.success ? 'notification' : undefined,
+      });
     } catch (error: any) {
       onAddMessagePopup({
         messagePopupType: 'error',
