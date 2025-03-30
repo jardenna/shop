@@ -8,7 +8,7 @@ import './_form.scss';
 
 interface FormProps {
   children: ReactNode;
-  labelText: string;
+  submitBtnLabel: string;
   ariaLabel?: string;
   className?: string;
   isLoading?: boolean;
@@ -19,7 +19,7 @@ interface FormProps {
 const Form: FC<FormProps> = ({
   children,
   onSubmit,
-  labelText,
+  submitBtnLabel,
   className = '',
   isLoading,
   ariaLabel,
@@ -42,7 +42,7 @@ const Form: FC<FormProps> = ({
           </Button>
         )}
         <Button type="submit" isLoading={isLoading} ariaLabel={ariaLabel}>
-          {labelText}
+          {submitBtnLabel}
         </Button>
       </LayoutElement>
     </form>
