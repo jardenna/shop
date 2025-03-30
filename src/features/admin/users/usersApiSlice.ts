@@ -1,4 +1,4 @@
-import apiSlice from '../../../app/api/apiSlice';
+import apiSlice, { TagTypesEnum } from '../../../app/api/apiSlice';
 import {
   OmittedAuthResponse,
   UpdateUserByIdRequest,
@@ -6,7 +6,6 @@ import {
   UserResponse,
 } from '../../../app/api/apiTypes';
 import { userEndpoints } from '../../../app/endpoints';
-import { TagTypesEnum } from '../../../types/enums';
 
 const endpoint = userEndpoints.users;
 
