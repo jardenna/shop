@@ -29,10 +29,10 @@ interface AuthFormProps {
   errors: KeyValuePair<string>;
   heading: string;
   isLoading: boolean;
-  labelText: string;
   legendText: string;
   navigateTo: MainPath;
   navigateToText: string;
+  submitBtnLabel: string;
   values: User;
   isFocused?: boolean;
   onBlur: (event: BlurEventType) => void;
@@ -48,7 +48,7 @@ const AuthForm: FC<AuthFormProps> = ({
   heading,
   isLoading,
   onChange,
-  labelText,
+  submitBtnLabel,
   navigateTo,
   legendText,
   errors,
@@ -65,7 +65,7 @@ const AuthForm: FC<AuthFormProps> = ({
     <>
       <h1 className="page-title">{heading}</h1>
       <Form
-        labelText={labelText}
+        submitBtnLabel={submitBtnLabel}
         onSubmit={onSubmit}
         isLoading={isLoading}
         className="auth-form"

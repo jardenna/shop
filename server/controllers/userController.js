@@ -2,6 +2,7 @@ import bcrypt from 'bcryptjs';
 import asyncHandler from '../middleware/asyncHandler.js';
 import User from '../models/userModel.js';
 import { validateEmail } from '../utils/emailValidator.js';
+import formatMongoData from '../utils/formatMongoData.js';
 import { validatePassword } from '../utils/passwordValidator.js';
 import { t } from '../utils/translator.js';
 
@@ -14,14 +15,13 @@ const getAllUsers = asyncHandler(async (req, res) => {
     .select('-password') // Exclude password field
     .lean();
 
-  // Rename _id to id
-  const modifiedUsers = users.map((user) => ({
-    ...user,
-    id: user._id, // Rename _id to id
-    _id: undefined, // Remove _id from the response
-  }));
+  if (!users?.length) {
+    return res.status(400).json({ message: t('noData', req.lang) });
+  }
 
-  res.json(modifiedUsers);
+  const formattedUsers = formatMongoData(users);
+
+  res.json(formattedUsers);
 });
 
 // @desc    Get User profile

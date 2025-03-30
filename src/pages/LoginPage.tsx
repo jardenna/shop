@@ -46,7 +46,7 @@ const LoginPage: FC = () => {
   return (
     <AuthForm
       values={values}
-      labelText={language.login}
+      submitBtnLabel={language.login}
       onSubmit={onSubmit}
       isLoading={isLoading}
       legendText={language.userInfo}
