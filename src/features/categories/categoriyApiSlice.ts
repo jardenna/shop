@@ -1,0 +1,48 @@
+import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
+import {
+  Category,
+  CategoryResponse,
+  CreateCategoryRequest,
+  GetAllCategoryResponse,
+  UpdateCategoryRequest,
+} from '../../app/api/apiTypes';
+import { categoryEndpoints } from '../../app/endpoints';
+
+const categoryApiSlice = apiSlice.injectEndpoints({
+  endpoints: (builder) => ({
+    getAllCategories: builder.query<GetAllCategoryResponse, void>({
+      query: () => categoryEndpoints.categories,
+      providesTags: [TagTypesEnum.Categories],
+    }),
+    createCategory: builder.mutation<CategoryResponse, CreateCategoryRequest>({
+      query: (name) => ({
+        url: categoryEndpoints.categories,
+        method: 'POST',
+        body: name,
+      }),
+    }),
+    updateCategory: builder.mutation<CategoryResponse, UpdateCategoryRequest>({
+      query: ({ name, id }) => ({
+        url: `${categoryEndpoints.categories}/${id}`,
+        method: 'PUT',
+        body: name,
+      }),
+      invalidatesTags: [TagTypesEnum.Categories],
+    }),
+    deleteCategory: builder.mutation<Category, string>({
+      query: (id) => ({
+        url: `${categoryEndpoints.categories}/${id}`,
+        method: 'DELETE',
+        body: id,
+      }),
+      invalidatesTags: [TagTypesEnum.Categories],
+    }),
+  }),
+});
+
+export const {
+  useGetAllCategoriesQuery,
+  useUpdateCategoryMutation,
+  useDeleteCategoryMutation,
+  useCreateCategoryMutation,
+} = categoryApiSlice;

@@ -17,7 +17,7 @@ const baseQuery = fetchBaseQuery({
 
 const apiSlice = createApi({
   baseQuery,
-  tagTypes: [TagTypesEnum.Users, TagTypesEnum.Auth],
+  tagTypes: [TagTypesEnum.Users, TagTypesEnum.Auth, TagTypesEnum.Categories],
   endpoints: () => ({}),
 });
 
