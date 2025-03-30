@@ -1,6 +1,8 @@
 import express from 'express';
 import {
   createCategory,
+  deleteCategory,
+  getAllCategories,
   updateCategory,
 } from '../controllers/categoryController.js';
 import { authenticate, authorizeAdmin } from '../middleware/authMiddleware.js';
@@ -16,7 +18,13 @@ router.post(
 );
 
 router
+  .route('/')
+  .post(languageMiddleware, authenticate, authorizeAdmin, createCategory)
+  .get(languageMiddleware, authenticate, authorizeAdmin, getAllCategories);
+
+router
   .route('/:id')
-  .put(languageMiddleware, authenticate, authorizeAdmin, updateCategory);
+  .put(languageMiddleware, authenticate, authorizeAdmin, updateCategory)
+  .delete(languageMiddleware, authenticate, authorizeAdmin, deleteCategory);
 
 export default router;

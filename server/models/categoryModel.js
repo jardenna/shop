@@ -8,6 +8,7 @@ const CategorySchema = new mongoose.Schema(
       trim: true,
       maxLength: 32,
       unique: true,
+      required: [true, 'Please enter an category name'],
     },
   },
   { timestamps: true },
