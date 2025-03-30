@@ -1,5 +1,6 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import Category from '../models/categoryModel.js';
+import formatMongoData from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 
 // @desc    Create category
@@ -80,11 +81,20 @@ const updateCategory = asyncHandler(async (req, res) => {
 // @desc    Get all Categories
 // @route   /api/category
 // @method  Get
-// @access  Private for admin
+// @access  Private for admin and employee
 const getAllCategories = asyncHandler(async (req, res) => {
-  const categories = await Category.find();
+  try {
+    const allCategories = await Category.find({}).lean();
+    const formattedCategories = formatMongoData(allCategories);
 
-  console.log(categories);
+    if (!allCategories?.length) {
+      return res.status(400).json({ message: t('noData', req.lang) });
+    }
+
+    res.status(200).json({ success: true, allCategories: formattedCategories });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
 });
 
 // @desc    Create category
