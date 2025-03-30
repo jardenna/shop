@@ -16,7 +16,7 @@ const getAllCategories = asyncHandler(async (req, res) => {
       return res.status(400).json({ message: t('noData', req.lang) });
     }
 
-    res.status(200).json({ success: true, allCategories: formattedCategories });
+    res.status(200).json(formattedCategories);
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }

@@ -75,9 +75,4 @@ export interface UpdateCategoryRequest {
   name: string;
 }
 
-export interface GetAllCategoryResponse {
-  category: Category[];
-  success: boolean;
-}
-
 export type FileUploadNameType = 'cover';

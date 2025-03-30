@@ -3,14 +3,13 @@ import {
   Category,
   CategoryResponse,
   CreateCategoryRequest,
-  GetAllCategoryResponse,
   UpdateCategoryRequest,
 } from '../../app/api/apiTypes';
 import { categoryEndpoints } from '../../app/endpoints';
 
 const categoryApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getAllCategories: builder.query<GetAllCategoryResponse, void>({
+    getAllCategories: builder.query<Category[], void>({
       query: () => categoryEndpoints.categories,
       providesTags: [TagTypesEnum.Categories],
     }),

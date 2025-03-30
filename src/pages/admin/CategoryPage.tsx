@@ -1,7 +1,11 @@
 import Form from '../../components/formElements/form/Form';
 import Input from '../../components/formElements/Input';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-import { useCreateCategoryMutation } from '../../features/categories/categoriyApiSlice';
+import {
+  useCreateCategoryMutation,
+  useGetAllCategoriesQuery,
+} from '../../features/categories/categoriyApiSlice';
+import CategoryList from '../../features/categories/CategoryList';
 import useLanguage from '../../features/language/useLanguage';
 import useFormValidation from '../../hooks/useFormValidation';
 
@@ -12,6 +16,7 @@ const initialState = {
 const CategoryPage = () => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
+  const { data: allCategories } = useGetAllCategoriesQuery();
   const [createCategory] = useCreateCategoryMutation();
 
   const { onChange, values, onSubmit, errors } = useFormValidation({
@@ -51,7 +56,10 @@ const CategoryPage = () => {
           errorText={errors.name}
         />
       </Form>
-      <div>category list</div>
+      <div>
+        <h2>Category list</h2>
+        {allCategories && <CategoryList categories={allCategories} />}
+      </div>
     </section>
   );
 };
