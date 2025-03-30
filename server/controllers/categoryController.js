@@ -30,7 +30,7 @@ const createCategory = asyncHandler(async (req, res) => {
     if (category) {
       res.status(201).json({
         success: true,
-        message: 'New category created',
+        message: t('newCategoryCreated', req.lang),
         id: category._id,
         name: category.name,
         createdAt: category.createdAt,
