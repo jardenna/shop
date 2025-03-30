@@ -115,7 +115,7 @@ const deleteCategory = asyncHandler(async (req, res) => {
 
     return res
       .status(200)
-      .json({ success: false, message: t('categoryDeleted', req.lang) });
+      .json({ success: true, message: t('categoryDeleted', req.lang) });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
