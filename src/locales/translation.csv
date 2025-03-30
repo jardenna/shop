@@ -2,6 +2,7 @@
 about;About;Profil
 account;Account;Konto
 actionNotAllowedForAdmin;Admin cannot be deleted;Denne handling er ikke tilladt for administrator
+addCategory;Add category;Tilføj kategori
 additionalInfo;Additional info;Supplerende information
 admin;Admin;Admin
 asc;ascending;stigende
@@ -10,8 +11,10 @@ cancel;Cancel;Annuller
 cannotDeleteAdmin;This action is not allowed for admin;Admin bruger kan ikke slettes
 categorieAlreadyExist;Category already exist;Kategori findes allerede
 categorieNotFound;Category not found;Kategori findes ikke
-categoryDeleted;Category deleted;Kategori blev slettet
 categories;Categories;Kategorier
+categories;Categories;Kategorier
+categoryDeleted;Category deleted;Kategori blev slettet
+categoryName;Category name;Kategori navn
 clearFilters;Clear filters;Ryd filtre
 clearSort;Clear sort;Ryd sortering
 close;Close;Luk
@@ -63,7 +66,6 @@ loginFailed;Login failed;Login mislykkedes
 loginHere;Log in here;Log ind her
 loginSucceeded;Login succeeded;Login lykkedes
 logout;Log out;Log ud
-newCategoryCreated;New category created;Ny kategori blev oprettet
 main;Main;Primær
 menu;Menu;Menu
 minLength;At least 8 characters;Mindst 8 tegn
@@ -74,6 +76,7 @@ mustHaveUppercase;At least one uppercase letter;Mindst ét stort bogstav
 myAccount;My account;Min brugerkonto
 myBag;My bag;Min indkøbskurv
 myOrders;My orders;Mine ordrer
+newCategoryCreated;New category created;Ny kategori blev oprettet
 noData;No data found;Ingen data fundet
 noEmail;Please provide an email;Indtast venligst en e-mail
 noPassword;Please provide a password;Indtast venligst en adgangskode
