@@ -15,6 +15,10 @@ const getAllUsers = asyncHandler(async (req, res) => {
     .select('-password') // Exclude password field
     .lean();
 
+  if (!users?.length) {
+    return res.status(400).json({ message: t('noData', req.lang) });
+  }
+
   const formattedUsers = formatMongoData(users);
 
   res.json(formattedUsers);

@@ -3,6 +3,25 @@ import Category from '../models/categoryModel.js';
 import formatMongoData from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 
+// @desc    Get all Categories
+// @route   /api/category
+// @method  Get
+// @access  Private for admin and employee
+const getAllCategories = asyncHandler(async (req, res) => {
+  try {
+    const allCategories = await Category.find({}).lean();
+    const formattedCategories = formatMongoData(allCategories);
+
+    if (!allCategories?.length) {
+      return res.status(400).json({ message: t('noData', req.lang) });
+    }
+
+    res.status(200).json({ success: true, allCategories: formattedCategories });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
 // @desc    Create category
 // @route   /api/category
 // @method  Post
@@ -78,28 +97,9 @@ const updateCategory = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Get all Categories
-// @route   /api/category
-// @method  Get
-// @access  Private for admin and employee
-const getAllCategories = asyncHandler(async (req, res) => {
-  try {
-    const allCategories = await Category.find({}).lean();
-    const formattedCategories = formatMongoData(allCategories);
-
-    if (!allCategories?.length) {
-      return res.status(400).json({ message: t('noData', req.lang) });
-    }
-
-    res.status(200).json({ success: true, allCategories: formattedCategories });
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
-  }
-});
-
-// @desc    Create category
+// @desc    Delete category
 // @route   /api/category/id
-// @method  Put
+// @method  Delete
 // @access  Private for admin
 const deleteCategory = asyncHandler(async (req, res) => {
   try {
