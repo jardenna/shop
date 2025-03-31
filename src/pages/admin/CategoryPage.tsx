@@ -1,18 +1,20 @@
 import { useState } from 'react';
 import { Category } from '../../app/api/apiTypes'; // Assuming this is defined elsewhere
+import Dropdown from '../../components/dropdown/Dropdown';
 import Form from '../../components/formElements/form/Form';
 import Input from '../../components/formElements/Input';
-import IconContent from '../../components/IconContent';
+import Icon from '../../components/icons/Icon';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Table from '../../components/sortTable/Table';
 import {
   useCreateCategoryMutation,
+  useDeleteCategoryMutation,
   useGetAllCategoriesQuery,
   useUpdateCategoryMutation,
 } from '../../features/categories/categoriyApiSlice';
 import useLanguage from '../../features/language/useLanguage';
 import useFormValidation from '../../hooks/useFormValidation';
-import { IconName } from '../../types/enums';
+import { BtnVariant, IconName } from '../../types/enums';
 import { ChangeInputType } from '../../types/types';
 import EditField from './EditField';
 
@@ -35,10 +37,14 @@ const tableBodyCells: (keyof Category)[] = [
 
 const CategoryPage = () => {
   const { language } = useLanguage();
+  const [editValues, setEditValues] = useState<Partial<Category>>(initialState);
+  const [editRowId, setEditRowId] = useState<string | null>(null);
+  const [editingField, setEditingField] = useState<keyof Category | null>(null);
   const { onAddMessagePopup } = useMessagePopup();
   const { data: allCategories, isLoading } = useGetAllCategoriesQuery();
   const [createCategory] = useCreateCategoryMutation();
   const [updateCategory] = useUpdateCategoryMutation();
+  const [deleteCategory] = useDeleteCategoryMutation();
 
   const { onChange, values, onSubmit, errors } = useFormValidation({
     initialState,
@@ -62,10 +68,6 @@ const CategoryPage = () => {
       });
     }
   }
-  const [editValues, setEditValues] = useState<Partial<Category>>(initialState);
-  const [editRowId, setEditRowId] = useState<string | null>(null);
-
-  const [editingField, setEditingField] = useState<keyof Category | null>(null);
 
   const handleEditChange = (event: ChangeInputType) => {
     const { name, value } = event.target;
@@ -104,6 +106,22 @@ const CategoryPage = () => {
     setEditValues(initialState);
   };
 
+  const handleDeleteUser = async (id: string, username: string) => {
+    try {
+      await deleteCategory(id).unwrap();
+      onAddMessagePopup({
+        messagePopupType: 'success',
+        message: `${username} ${language.deleted}`,
+      });
+    } catch (error: any) {
+      onAddMessagePopup({
+        messagePopupType: 'error',
+        message: error.data.message,
+        componentType: 'notification',
+      });
+    }
+  };
+
   return (
     <section className="category-page">
       <h1>{language.categories}</h1>
@@ -133,7 +151,7 @@ const CategoryPage = () => {
             emptyHeaderCellText={language.deleteUser}
           >
             {(data) =>
-              data.map(({ id }) => (
+              data.map(({ id, categoryName }) => (
                 <tr key={id}>
                   {tableBodyCells.map((cellText) => (
                     <td key={cellText}>
@@ -162,13 +180,24 @@ const CategoryPage = () => {
                     </td>
                   ))}
                   <td>
-                    <div className="empty-cell">
-                      <IconContent
+                    <Dropdown
+                      ariaControls="delete-user"
+                      text={`${language.sureToDelete} ${categoryName}?`}
+                      triggerBtnVariant={BtnVariant.Ghost}
+                      triggerBtnClassName="danger"
+                      onPrimaryClick={() => {
+                        handleDeleteUser(id, categoryName);
+                      }}
+                      primaryBtnLabel={language.delete}
+                      primaryBtnVariant={BtnVariant.Danger}
+                      ariaLabel={language.deleteUser}
+                    >
+                      <Icon
                         iconName={IconName.Trash}
                         title={language.trashCan}
-                        ariaLabel={language.actionNotAllowedForAdmin}
+                        ariaLabel={language.deleteUser}
                       />
-                    </div>
+                    </Dropdown>
                   </td>
                 </tr>
               ))
