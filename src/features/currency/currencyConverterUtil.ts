@@ -1,4 +1,5 @@
-export type Locales = 'en-US' | 'en-GB' | 'de-DE' | 'da-DK' | 'sv-SE' | 'no-No';
+import Locales from '../../utils/locales';
+
 export type CurrencyCode = 'USD' | 'GBP' | 'EUR' | 'DKK' | 'SEK' | 'NOK';
 
 export const currencyToLocaleMap: Record<CurrencyCode, Locales> = {

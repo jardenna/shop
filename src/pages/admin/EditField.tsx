@@ -4,6 +4,7 @@ import IconBtn from '../../components/IconBtn';
 import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import { ChangeInputType } from '../../types/types';
+import dateToLocaleMap from '../../utils/dates';
 
 type EditFieldProps<T extends Record<string, any>> = {
   cellText: string;
@@ -30,7 +31,7 @@ const EditField = <T extends Record<string, any>>({
   onCancel,
   onSave,
 }: EditFieldProps<T>) => {
-  const { language } = useLanguage();
+  const { language, selectedLanguage } = useLanguage();
   const categoryCellContent = useMemo(
     () => String(data.find((item) => item.id === id)?.[cellText] || ''),
     [data, id, cellText],
@@ -71,14 +72,25 @@ const EditField = <T extends Record<string, any>>({
         </form>
       ) : (
         <>
-          <span>{categoryCellContent}</span>
+          {cellText !== 'categoryName' && (
+            <span>
+              {new Intl.DateTimeFormat(dateToLocaleMap[selectedLanguage], {
+                day: '2-digit',
+                month: 'long',
+                year: 'numeric',
+              }).format(new Date(categoryCellContent))}
+            </span>
+          )}
           {cellText === 'categoryName' && (
-            <IconBtn
-              onClick={onEditBtnClick}
-              iconName={IconName.Edit}
-              title={language.pensil}
-              ariaLabel={language.editUser}
-            />
+            <>
+              <span>{categoryCellContent}</span>
+              <IconBtn
+                onClick={onEditBtnClick}
+                iconName={IconName.Edit}
+                title={language.pensil}
+                ariaLabel={language.editUser}
+              />
+            </>
           )}
         </>
       )}
