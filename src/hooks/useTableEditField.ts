@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { useState } from 'react';
 
 type ChangeInputType = React.ChangeEvent<HTMLInputElement>;
@@ -8,7 +7,7 @@ type UseTableEditFieldProps<T extends { id: string }> = {
   callback?: (id: string, values: Partial<T>) => void;
 };
 
-export const useTableEditField = <T extends { id: string }>({
+const useTableEditField = <T extends { id: string }>({
   data,
   callback,
 }: UseTableEditFieldProps<T>) => {
@@ -16,7 +15,7 @@ export const useTableEditField = <T extends { id: string }>({
   const [editingField, setEditingField] = useState<keyof T | null>(null);
   const [values, setValues] = useState<Partial<T>>({});
 
-  const handleEdit = (id: string, field: keyof T) => {
+  const handleShowEditInput = (id: string, field: keyof T) => {
     setEditRowId(id);
     setEditingField(field);
     const row = data.find((item) => item.id === id);
@@ -25,18 +24,18 @@ export const useTableEditField = <T extends { id: string }>({
     }
   };
 
-  const handleChange = (event: ChangeInputType) => {
+  const handleEditChange = (event: ChangeInputType) => {
     const { name, value } = event.target;
     setValues((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleCancel = () => {
+  const handleCancelEdit = () => {
     setEditRowId(null);
     setEditingField(null);
     setValues({});
   };
 
-  const handleSave = () => {
+  const handleSaveEdit = () => {
     if (callback && editRowId) {
       callback(editRowId, values);
     }
@@ -48,10 +47,12 @@ export const useTableEditField = <T extends { id: string }>({
   return {
     editRowId,
     editingField,
-    handleEdit,
-    handleChange,
-    handleCancel,
-    handleSave,
+    handleShowEditInput,
+    handleEditChange,
+    handleCancelEdit,
+    handleSaveEdit,
     editValues: values,
   };
 };
+
+export default useTableEditField;
