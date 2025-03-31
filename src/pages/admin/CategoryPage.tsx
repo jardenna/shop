@@ -8,6 +8,7 @@ import Table from '../../components/sortTable/Table';
 import {
   useCreateCategoryMutation,
   useGetAllCategoriesQuery,
+  useUpdateCategoryMutation,
 } from '../../features/categories/categoriyApiSlice';
 import useLanguage from '../../features/language/useLanguage';
 import useFormValidation from '../../hooks/useFormValidation';
@@ -37,7 +38,7 @@ const CategoryPage = () => {
   const { onAddMessagePopup } = useMessagePopup();
   const { data: allCategories, isLoading } = useGetAllCategoriesQuery();
   const [createCategory] = useCreateCategoryMutation();
-  // const [updateCategory] = useUpdateCategoryMutation();
+  const [updateCategory] = useUpdateCategoryMutation();
 
   const { onChange, values, onSubmit, errors } = useFormValidation({
     initialState,
@@ -68,30 +69,26 @@ const CategoryPage = () => {
 
   const handleEditChange = (event: ChangeInputType) => {
     const { name, value } = event.target;
-    console.log(name, value);
 
     setEditValues({ ...values, [name]: value });
   };
 
-  // async function handleUpdateCategory(id: string) {
-  //   // console.log(id, editValues);
-  //   try {
-  //     await updateCategory({
-  //       id,
-  //       name: {
-  //         name: editValues.name,
-  //       },
-  //     }).unwrap();
-  //   } catch (error: any) {
-  //     onAddMessagePopup({
-  //       messagePopupType: 'error',
-  //       message: error.data.message,
-  //       componentType: 'notification',
-  //     });
-  //   }
-  //   setEditRowId(null);
-  //   setEditingField(null);
-  // }
+  async function handleUpdateCategorya(id: string) {
+    try {
+      await updateCategory({
+        id,
+        categoryData: { categoryName: editValues.categoryName as string }, // ✅ Ensure it's always a string
+      }).unwrap();
+    } catch (error: any) {
+      onAddMessagePopup({
+        messagePopupType: 'error',
+        message: error.data.message,
+        componentType: 'notification',
+      });
+    }
+    setEditRowId(null);
+    setEditingField(null);
+  }
 
   const handleEdit = (id: string, field: keyof Category) => {
     setEditRowId(id);
@@ -101,11 +98,11 @@ const CategoryPage = () => {
       setEditValues({ [field]: row[field] });
     }
   };
-  // const handleCancel = () => {
-  //   setEditRowId(null);
-  //   setEditingField(null);
-  //   setEditValues({});
-  // };
+  const handleCancel = () => {
+    setEditRowId(null);
+    setEditingField(null);
+    setEditValues({});
+  };
 
   return (
     <section className="category-page">
@@ -141,10 +138,14 @@ const CategoryPage = () => {
                   {tableBodyCells.map((cellText) => (
                     <td key={cellText}>
                       <EditField
+                        onSave={() => {
+                          handleUpdateCategorya(id);
+                        }}
                         showEditInput={
                           editRowId === id && editingField === cellText
                         }
                         data={allCategories}
+                        onCancel={handleCancel}
                         cellText={cellText}
                         id={id}
                         onEditChange={handleEditChange}

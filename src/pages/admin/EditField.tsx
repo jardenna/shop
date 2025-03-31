@@ -12,8 +12,10 @@ type EditFieldProps<T extends Record<string, any>> = {
   labelText: string;
   showEditInput: boolean;
   value: string;
+  onCancel: () => void;
   onEditBtnClick: () => void;
   onEditChange: (event: ChangeInputType) => void;
+  onSave: () => void;
 };
 
 const EditField = <T extends Record<string, any>>({
@@ -25,6 +27,8 @@ const EditField = <T extends Record<string, any>>({
   value,
   onEditBtnClick,
   labelText,
+  onCancel,
+  onSave,
 }: EditFieldProps<T>) => {
   const { language } = useLanguage();
   const categoryValue = useMemo(
@@ -41,6 +45,20 @@ const EditField = <T extends Record<string, any>>({
         value={value}
         labelText={labelText}
         inputHasNoLabel
+      />
+      <IconBtn
+        onClick={onCancel}
+        iconName={IconName.Close}
+        title={language.cancel}
+        ariaLabel={language.cancel}
+        size="12"
+      />
+      <IconBtn
+        onClick={onSave}
+        iconName={IconName.Check}
+        title="Check"
+        ariaLabel={language.save}
+        size="16"
       />
     </form>
   ) : (

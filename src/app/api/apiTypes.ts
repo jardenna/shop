@@ -71,8 +71,8 @@ export interface CreateCategoryRequest {
 }
 
 export interface UpdateCategoryRequest {
+  categoryName: string;
   id: string;
-  name: string;
 }
 
 export type FileUploadNameType = 'cover';

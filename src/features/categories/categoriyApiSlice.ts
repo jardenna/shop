@@ -20,11 +20,14 @@ const categoryApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.Categories],
     }),
-    updateCategory: builder.mutation<CategoryResponse, any>({
-      query: ({ name, id }) => ({
+    updateCategory: builder.mutation<
+      CategoryResponse,
+      { categoryData: { categoryName: string }; id: string }
+    >({
+      query: ({ id, categoryData }) => ({
         url: `${categoryEndpoints.categories}/${id}`,
         method: 'PUT',
-        body: name,
+        body: categoryData, // <- Now correctly passing the categoryData object
       }),
       invalidatesTags: [TagTypesEnum.Categories],
     }),
