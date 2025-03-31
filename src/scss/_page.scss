@@ -51,6 +51,17 @@
     }
   }
 
+  .category-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .submit-category {
+      max-width: rem(450px);
+      width: 100%;
+    }
+  }
+
   .main {
     display: flex;
   }
