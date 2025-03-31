@@ -31,13 +31,16 @@ const createCategory = asyncHandler(async (req, res) => {
     const { categoryName } = req.body;
 
     if (!categoryName) {
-      return res.json({ error: 'Name is required' });
+      return res.status(400).json({
+        success: false,
+        message: t('pleaseEnterCategoryName', req.lang),
+      });
     }
 
     const existingCategory = await Category.findOne({ categoryName });
 
     if (existingCategory) {
-      return res.json({
+      return res.status(400).json({
         success: false,
         message: t('categoryAlreadyExist', req.lang),
       });

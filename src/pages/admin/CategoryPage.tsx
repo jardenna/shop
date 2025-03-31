@@ -3,6 +3,7 @@ import { Category } from '../../app/api/apiTypes'; // Assuming this is defined e
 import Dropdown from '../../components/dropdown/Dropdown';
 import Form from '../../components/formElements/form/Form';
 import Input from '../../components/formElements/Input';
+import validateUpdateCategory from '../../components/formElements/validation/validateUpdateCategory';
 import Icon from '../../components/icons/Icon';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Table from '../../components/sortTable/Table';
@@ -71,11 +72,19 @@ const CategoryPage = () => {
 
   const handleEditChange = (event: ChangeInputType) => {
     const { name, value } = event.target;
-
     setEditValues({ ...values, [name]: value });
   };
 
-  async function handleUpdateCategorya(id: string) {
+  async function handleUpdateCategory(id: string) {
+    const validation = validateUpdateCategory(editValues);
+    if (validation) {
+      onAddMessagePopup({
+        messagePopupType: 'error',
+        message: language[validation],
+        componentType: 'notification',
+      });
+      return;
+    }
     try {
       await updateCategory({
         id,
@@ -100,6 +109,7 @@ const CategoryPage = () => {
       setEditValues({ ...initialState, [field]: row[field] });
     }
   };
+
   const handleCancel = () => {
     setEditRowId(null);
     setEditingField(null);
@@ -157,7 +167,7 @@ const CategoryPage = () => {
                     <td key={cellText}>
                       <EditField
                         onSave={() => {
-                          handleUpdateCategorya(id);
+                          handleUpdateCategory(id);
                         }}
                         showEditInput={
                           editRowId === id && editingField === cellText
