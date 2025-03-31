@@ -40,7 +40,12 @@ const EditTableCell = ({
   return (
     <div className="edit-cell">
       {showEditInput ? (
-        <div className="edit-controls">
+        <form
+          className="edit-controls"
+          onSubmit={(event) => {
+            event.preventDefault();
+          }}
+        >
           {id !== 'role' ? (
             <Input
               id={id}
@@ -73,8 +78,9 @@ const EditTableCell = ({
             title="Check"
             ariaLabel={language.save}
             size="16"
+            btnType="submit"
           />
-        </div>
+        </form>
       ) : (
         <>
           <span>

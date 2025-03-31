@@ -15,7 +15,6 @@ categories;Categories;Kategorier
 categories;Categories;Kategorier
 categoryDeleted;Category deleted;Kategori blev slettet
 categoryName;Category name;Kategori navn
-name;Category name;Kategori navn
 clearFilters;Clear filters;Ryd filtre
 createdAt;Created at;Tilføjet at
 updatedAt;Updated at;Opdateret at
@@ -132,5 +131,6 @@ userInfo;User info;Bruger info
 username;User name;Brugernavn
 users;Users;Brugere
 userUpdated;User updated;Bruger opdateret
+categoryUpdated;Category updated;Kategori opdateret
 warning;Warning;Warning
 welcome;Welcome;Velkommen

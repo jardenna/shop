@@ -31,51 +31,56 @@ const EditField = <T extends Record<string, any>>({
   onSave,
 }: EditFieldProps<T>) => {
   const { language } = useLanguage();
-  const categoryValue = useMemo(
+  const categoryCellContent = useMemo(
     () => String(data.find((item) => item.id === id)?.[cellText] || ''),
     [data, id, cellText],
   );
 
-  return showEditInput ? (
-    <form
-      onSubmit={(event) => {
-        event.preventDefault();
-      }}
-    >
-      <Input
-        id={cellText}
-        name={cellText}
-        onChange={onEditChange}
-        value={value}
-        labelText={labelText}
-        inputHasNoLabel
-      />
-      <IconBtn
-        onClick={onCancel}
-        iconName={IconName.Close}
-        title={language.cancel}
-        ariaLabel={language.cancel}
-        size="12"
-      />
-      <IconBtn
-        onClick={onSave}
-        iconName={IconName.Check}
-        title="Check"
-        ariaLabel={language.save}
-        size="16"
-        btnType="submit"
-      />
-    </form>
-  ) : (
-    <div>
-      {categoryValue}
-      {cellText === 'categoryName' && (
-        <IconBtn
-          onClick={onEditBtnClick}
-          iconName={IconName.Edit}
-          title={language.pensil}
-          ariaLabel={language.editUser}
-        />
+  return (
+    <div className="edit-cell">
+      {showEditInput ? (
+        <form
+          className="edit-controls"
+          onSubmit={(event) => {
+            event.preventDefault();
+          }}
+        >
+          <Input
+            id={cellText}
+            name={cellText}
+            onChange={onEditChange}
+            value={value}
+            labelText={labelText}
+            inputHasNoLabel
+          />
+          <IconBtn
+            onClick={onCancel}
+            iconName={IconName.Close}
+            title={language.cancel}
+            ariaLabel={language.cancel}
+            size="12"
+          />
+          <IconBtn
+            onClick={onSave}
+            iconName={IconName.Check}
+            title="Check"
+            ariaLabel={language.save}
+            size="16"
+            btnType="submit"
+          />
+        </form>
+      ) : (
+        <>
+          <span>{categoryCellContent}</span>
+          {cellText === 'categoryName' && (
+            <IconBtn
+              onClick={onEditBtnClick}
+              iconName={IconName.Edit}
+              title={language.pensil}
+              ariaLabel={language.editUser}
+            />
+          )}
+        </>
       )}
     </div>
   );

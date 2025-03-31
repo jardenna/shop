@@ -94,6 +94,11 @@ const CategoryPage = () => {
         id,
         categoryName: editValues.categoryName || '',
       }).unwrap();
+
+      onAddMessagePopup({
+        messagePopupType: 'success',
+        message: language.categoryUpdated,
+      });
     } catch (error: any) {
       onAddMessagePopup({
         messagePopupType: 'error',
@@ -133,7 +138,7 @@ const CategoryPage = () => {
           id="categoryName"
           name="categoryName"
           labelText={language.addCategory}
-          placeholder={language.name}
+          placeholder={language.categoryName}
           errorText={errors.categoryName}
         />
       </Form>
