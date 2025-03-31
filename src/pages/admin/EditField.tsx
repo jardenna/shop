@@ -32,6 +32,7 @@ const EditField = <T extends Record<string, any>>({
   onSave,
 }: EditFieldProps<T>) => {
   const { language, selectedLanguage } = useLanguage();
+  const isCategoryName = cellText === 'categoryName';
   const categoryCellContent = useMemo(
     () => String(data.find((item) => item.id === id)?.[cellText] || ''),
     [data, id, cellText],
@@ -39,7 +40,7 @@ const EditField = <T extends Record<string, any>>({
 
   return (
     <div className="edit-cell">
-      {showEditInput ? (
+      {showEditInput && (
         <form
           className="edit-controls"
           onSubmit={(event) => {
@@ -70,29 +71,26 @@ const EditField = <T extends Record<string, any>>({
             btnType="submit"
           />
         </form>
-      ) : (
+      )}
+      {!showEditInput && isCategoryName && (
         <>
-          {cellText !== 'categoryName' && (
-            <span>
-              {new Intl.DateTimeFormat(dateToLocaleMap[selectedLanguage], {
-                day: '2-digit',
-                month: 'long',
-                year: 'numeric',
-              }).format(new Date(categoryCellContent))}
-            </span>
-          )}
-          {cellText === 'categoryName' && (
-            <>
-              <span>{categoryCellContent}</span>
-              <IconBtn
-                onClick={onEditBtnClick}
-                iconName={IconName.Edit}
-                title={language.pensil}
-                ariaLabel={language.editUser}
-              />
-            </>
-          )}
+          <span>{categoryCellContent}</span>
+          <IconBtn
+            onClick={onEditBtnClick}
+            iconName={IconName.Edit}
+            title={language.pensil}
+            ariaLabel={language.editUser}
+          />
         </>
+      )}
+      {!showEditInput && !isCategoryName && (
+        <span>
+          {new Intl.DateTimeFormat(dateToLocaleMap[selectedLanguage], {
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric',
+          }).format(new Date(categoryCellContent))}
+        </span>
       )}
     </div>
   );
