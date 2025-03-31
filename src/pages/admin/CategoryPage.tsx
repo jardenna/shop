@@ -106,12 +106,12 @@ const CategoryPage = () => {
     setEditValues(initialState);
   };
 
-  const handleDeleteUser = async (id: string, username: string) => {
+  const handleDeleteCategory = async (id: string, category: string) => {
     try {
       await deleteCategory(id).unwrap();
       onAddMessagePopup({
         messagePopupType: 'success',
-        message: `${username} ${language.deleted}`,
+        message: `${category} ${language.deleted}`,
       });
     } catch (error: any) {
       onAddMessagePopup({
@@ -148,7 +148,7 @@ const CategoryPage = () => {
             columns={tableHeaders}
             tableCaption={language.customersList}
             isLoading={isLoading}
-            emptyHeaderCellText={language.deleteUser}
+            emptyHeaderCellText={language.deleteCategory}
           >
             {(data) =>
               data.map(({ id, categoryName }) => (
@@ -172,30 +172,30 @@ const CategoryPage = () => {
                         }}
                         value={String(editValues[cellText] || '')}
                         labelText={String(
-                          allCategories.find((user) => user.id === id)?.[
-                            cellText
-                          ] || '',
+                          allCategories.find(
+                            (category) => category.id === id,
+                          )?.[cellText] || '',
                         )}
                       />
                     </td>
                   ))}
                   <td>
                     <Dropdown
-                      ariaControls="delete-user"
+                      ariaControls="delete-category"
                       text={`${language.sureToDelete} ${categoryName}?`}
                       triggerBtnVariant={BtnVariant.Ghost}
                       triggerBtnClassName="danger"
                       onPrimaryClick={() => {
-                        handleDeleteUser(id, categoryName);
+                        handleDeleteCategory(id, categoryName);
                       }}
                       primaryBtnLabel={language.delete}
                       primaryBtnVariant={BtnVariant.Danger}
-                      ariaLabel={language.deleteUser}
+                      ariaLabel={language.deleteCategory}
                     >
                       <Icon
                         iconName={IconName.Trash}
                         title={language.trashCan}
-                        ariaLabel={language.deleteUser}
+                        ariaLabel={language.deleteCategory}
                       />
                     </Dropdown>
                   </td>
