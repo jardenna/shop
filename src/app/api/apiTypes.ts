@@ -56,9 +56,9 @@ export interface UpdateUserByIdRequest {
 
 // Category
 export interface Category {
+  categoryName: string;
   createdAt: Date;
   id: string;
-  name: string;
   updatedAt: Date;
 }
 
@@ -67,7 +67,7 @@ export interface CategoryResponse extends DefaultResponse {
 }
 
 export interface CreateCategoryRequest {
-  name: string;
+  categoryName: string;
 }
 
 export interface UpdateCategoryRequest {
