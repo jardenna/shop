@@ -9,7 +9,6 @@ import Table from '../../components/sortTable/Table';
 import {
   useCreateCategoryMutation,
   useGetAllCategoriesQuery,
-  useUpdateCategoryMutation,
 } from '../../features/categories/categoriyApiSlice';
 import useLanguage from '../../features/language/useLanguage';
 import useFormValidation from '../../hooks/useFormValidation';
@@ -17,31 +16,35 @@ import { IconName } from '../../types/enums';
 import { ChangeInputType } from '../../types/types';
 
 const initialState = {
-  name: '',
+  categoryName: '',
 };
 
 const tableHeaders: { key: keyof Category; label: string }[] = [
-  { key: 'name', label: 'name' },
+  { key: 'categoryName', label: 'name' },
   { key: 'createdAt', label: 'createdAt' },
   { key: 'updatedAt', label: 'updatedAt' },
   { key: 'id', label: '' },
 ];
 
-const tableBodyCells: (keyof Category)[] = ['name', 'createdAt', 'updatedAt'];
+const tableBodyCells: (keyof Category)[] = [
+  'categoryName',
+  'createdAt',
+  'updatedAt',
+];
 
 const CategoryPage = () => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
   const { data: allCategories, isLoading } = useGetAllCategoriesQuery();
   const [createCategory] = useCreateCategoryMutation();
-  const [updateCategory] = useUpdateCategoryMutation();
+  // const [updateCategory] = useUpdateCategoryMutation();
 
   const { onChange, values, onSubmit, errors } = useFormValidation({
     initialState,
-    callback: handleSubmitCategory,
+    callback: handleSubmitNewCategory,
   });
 
-  async function handleSubmitCategory() {
+  async function handleSubmitNewCategory() {
     try {
       const result = await createCategory(values).unwrap();
 
@@ -58,35 +61,36 @@ const CategoryPage = () => {
       });
     }
   }
+  const [editValues, setEditValues] = useState<Partial<Category>>({});
+  const [editRowId, setEditRowId] = useState<string | null>(null);
+
+  const [editingField, setEditingField] = useState<keyof Category | null>(null);
+
   const handleEditChange = (event: ChangeInputType) => {
     const { name, value } = event.target;
 
     setEditValues({ ...values, [name]: value });
   };
 
-  async function handleUpdateCategory(id: string) {
-    // console.log(id, editValues);
-    try {
-      await updateCategory({
-        id,
-        name: {
-          name: editValues.name,
-        },
-      }).unwrap();
-    } catch (error: any) {
-      onAddMessagePopup({
-        messagePopupType: 'error',
-        message: error.data.message,
-        componentType: 'notification',
-      });
-    }
-    setEditRowId(null);
-    setEditingField(null);
-  }
-
-  const [editRowId, setEditRowId] = useState<string | null>(null);
-  const [editValues, setEditValues] = useState<Partial<Category>>({});
-  const [editingField, setEditingField] = useState<keyof Category | null>(null);
+  // async function handleUpdateCategory(id: string) {
+  //   // console.log(id, editValues);
+  //   try {
+  //     await updateCategory({
+  //       id,
+  //       name: {
+  //         name: editValues.name,
+  //       },
+  //     }).unwrap();
+  //   } catch (error: any) {
+  //     onAddMessagePopup({
+  //       messagePopupType: 'error',
+  //       message: error.data.message,
+  //       componentType: 'notification',
+  //     });
+  //   }
+  //   setEditRowId(null);
+  //   setEditingField(null);
+  // }
 
   const handleEdit = (id: string, field: keyof Category) => {
     setEditRowId(id);
@@ -96,12 +100,13 @@ const CategoryPage = () => {
       setEditValues({ [field]: row[field] });
     }
   };
+  // const handleCancel = () => {
+  //   setEditRowId(null);
+  //   setEditingField(null);
+  //   setEditValues({});
+  // };
 
-  const handleCancel = () => {
-    setEditRowId(null);
-    setEditingField(null);
-    setEditValues({});
-  };
+  console.log(editingField);
 
   return (
     <section className="category-page">
@@ -113,12 +118,12 @@ const CategoryPage = () => {
       >
         <Input
           onChange={onChange}
-          value={values.name || ''}
-          id="name"
-          name="name"
+          value={values.categoryName || ''}
+          id="categoryName"
+          name="categoryName"
           labelText={language.addCategory}
           placeholder={language.name}
-          errorText={errors.name}
+          errorText={errors.categoryName}
         />
       </Form>
       <div>
@@ -137,46 +142,30 @@ const CategoryPage = () => {
                   {tableBodyCells.map((td) => (
                     <td key={td}>
                       {editRowId === id && editingField === td ? (
-                        <>
-                          <Input
-                            id="name"
-                            name="name"
-                            onChange={handleEditChange}
-                            value={String(editValues[td] || '')}
-                            labelText="labelText"
-                            inputHasNoLabel
-                          />
-                          <IconBtn
-                            onClick={handleCancel}
-                            iconName={IconName.Close}
-                            title={language.cancel}
-                            ariaLabel={language.cancel}
-                            size="12"
-                          />
-                          <IconBtn
-                            onClick={() => {
-                              handleUpdateCategory(id);
-                            }}
-                            iconName={IconName.Check}
-                            title="Check"
-                            ariaLabel={language.save}
-                            size="16"
-                          />
-                        </>
+                        <Input
+                          id={td}
+                          name={td}
+                          onChange={handleEditChange}
+                          value={String(editValues[td] || '')}
+                          labelText="labelText"
+                          inputHasNoLabel
+                        />
                       ) : (
                         <div>
-                          <IconBtn
-                            onClick={() => {
-                              handleEdit(id, td);
-                            }}
-                            iconName={IconName.Edit}
-                            title={language.pensil}
-                            ariaLabel={language.editUser}
-                          />
                           {String(
                             allCategories.find((user) => user.id === id)?.[
                               td
                             ] || '',
+                          )}
+                          {td === 'categoryName' && (
+                            <IconBtn
+                              onClick={() => {
+                                handleEdit(id, td);
+                              }}
+                              iconName={IconName.Edit}
+                              title={language.pensil}
+                              ariaLabel={language.editUser}
+                            />
                           )}
                         </div>
                       )}
