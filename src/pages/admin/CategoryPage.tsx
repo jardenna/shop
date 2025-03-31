@@ -70,11 +70,6 @@ const CategoryPage = () => {
     }
   }
 
-  const handleEditChange = (event: ChangeInputType) => {
-    const { name, value } = event.target;
-    setEditValues({ ...values, [name]: value });
-  };
-
   async function handleUpdateCategory(id: string) {
     const validation = validateUpdateCategory(editValues);
     if (validation) {
@@ -101,21 +96,6 @@ const CategoryPage = () => {
     setEditingField(null);
   }
 
-  const handleEdit = (id: string, field: keyof Category) => {
-    setEditRowId(id);
-    setEditingField(field);
-    const row = allCategories?.find((item) => item.id === id);
-    if (row) {
-      setEditValues({ ...initialState, [field]: row[field] });
-    }
-  };
-
-  const handleCancel = () => {
-    setEditRowId(null);
-    setEditingField(null);
-    setEditValues(initialState);
-  };
-
   const handleDeleteCategory = async (id: string, category: string) => {
     try {
       await deleteCategory(id).unwrap();
@@ -130,6 +110,26 @@ const CategoryPage = () => {
         componentType: 'notification',
       });
     }
+  };
+
+  const handleEditChange = (event: ChangeInputType) => {
+    const { name, value } = event.target;
+    setEditValues({ ...values, [name]: value });
+  };
+
+  const handleShowEditInput = (id: string, field: keyof Category) => {
+    setEditRowId(id);
+    setEditingField(field);
+    const row = allCategories?.find((item) => item.id === id);
+    if (row) {
+      setEditValues({ ...initialState, [field]: row[field] });
+    }
+  };
+
+  const handleCancelEdit = () => {
+    setEditRowId(null);
+    setEditingField(null);
+    setEditValues(initialState);
   };
 
   return (
@@ -173,12 +173,12 @@ const CategoryPage = () => {
                           editRowId === id && editingField === cellText
                         }
                         data={allCategories}
-                        onCancel={handleCancel}
+                        onCancel={handleCancelEdit}
                         cellText={cellText}
                         id={id}
                         onEditChange={handleEditChange}
                         onEditBtnClick={() => {
-                          handleEdit(id, cellText);
+                          handleShowEditInput(id, cellText);
                         }}
                         value={String(editValues[cellText] || '')}
                         labelText={String(

@@ -43,27 +43,7 @@ const UserPage = () => {
   const [updateUser] = useUpdateUserMutation();
   const { onAddMessagePopup } = useMessagePopup();
 
-  const handleEdit = (id: string, field: keyof UserResponse) => {
-    setEditRowId(id);
-    setEditingField(field);
-    const row = allUsers?.find((item) => item.id === id);
-    if (row) {
-      setValues({ [field]: row[field] });
-    }
-  };
-
-  const handleChange = (event: ChangeInputType) => {
-    const { name, value } = event.target;
-    setValues({ ...values, [name]: value });
-  };
-
-  const handleCancel = () => {
-    setEditRowId(null);
-    setEditingField(null);
-    setValues({});
-  };
-
-  const handleSave = async (id: string) => {
+  const handleUpdateUser = async (id: string) => {
     const validation = validateUpdateUser(values);
 
     if (validation) {
@@ -112,6 +92,26 @@ const UserPage = () => {
     }
   };
 
+  const handleEditChange = (event: ChangeInputType) => {
+    const { name, value } = event.target;
+    setValues({ ...values, [name]: value });
+  };
+
+  const handleShowEditInput = (id: string, field: keyof UserResponse) => {
+    setEditRowId(id);
+    setEditingField(field);
+    const row = allUsers?.find((item) => item.id === id);
+    if (row) {
+      setValues({ [field]: row[field] });
+    }
+  };
+
+  const handleCancelEdit = () => {
+    setEditRowId(null);
+    setEditingField(null);
+    setValues({});
+  };
+
   return (
     <section className="user-page">
       {allUsers && (
@@ -131,19 +131,19 @@ const UserPage = () => {
                       roleOptions={roleOptions}
                       isAdmin={isAdmin}
                       onSave={() => {
-                        handleSave(id);
+                        handleUpdateUser(id);
                       }}
                       showEditInput={editRowId === id && editingField === td}
                       id={td}
-                      onChange={handleChange}
+                      onChange={handleEditChange}
                       value={String(values[td] || '')}
                       roleValue={values.role || 'User'}
                       labelText={String(
                         allUsers.find((user) => user.id === id)?.[td] || '',
                       )}
-                      onCancel={handleCancel}
+                      onCancel={handleCancelEdit}
                       onEdit={() => {
-                        handleEdit(id, td);
+                        handleShowEditInput(id, td);
                       }}
                     />
                   </td>
