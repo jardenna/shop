@@ -4,8 +4,8 @@ import validateUpdateUser from '../../components/formElements/validation/validat
 import IconContent from '../../components/IconContent';
 import Icon from '../../components/icons/Icon';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-import EditTableCell from '../../components/sortTable/EditTableCell';
 import Table from '../../components/sortTable/Table';
+import EditUserInput from '../../features/admin/users/EditUserInput';
 import {
   useDeleteUserMutation,
   useGetAllUsersQuery,
@@ -111,7 +111,7 @@ const UserPage = () => {
               <tr key={id}>
                 {tableBodyCells.map((td) => (
                   <td key={td}>
-                    <EditTableCell
+                    <EditUserInput
                       roleOptions={roleOptions}
                       isAdmin={isAdmin}
                       onSave={() => {

@@ -12,11 +12,11 @@ import {
   useGetAllCategoriesQuery,
   useUpdateCategoryMutation,
 } from '../../features/categories/categoriyApiSlice';
+import EditCategoryInput from '../../features/categories/EditCategoryInput';
 import useLanguage from '../../features/language/useLanguage';
 import useFormValidation from '../../hooks/useFormValidation';
 import useTableEditField from '../../hooks/useTableEditField';
 import { BtnVariant, IconName } from '../../types/enums';
-import EditField from './EditField';
 
 const initialState = {
   categoryName: '',
@@ -157,7 +157,7 @@ const CategoryPage = () => {
                 <tr key={id}>
                   {tableBodyCells.map((cellText) => (
                     <td key={cellText}>
-                      <EditField
+                      <EditCategoryInput
                         onSave={() => {
                           handleSaveEdit();
                         }}

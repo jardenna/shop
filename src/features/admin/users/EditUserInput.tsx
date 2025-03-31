@@ -1,14 +1,14 @@
-import { RoleTypes } from '../../app/api/apiTypes';
-import useLanguage from '../../features/language/useLanguage';
-import { IconName } from '../../types/enums';
-import { ChangeInputType } from '../../types/types';
-import Input from '../formElements/Input';
+import { RoleTypes } from '../../../app/api/apiTypes';
+import Input from '../../../components/formElements/Input';
 import RadioButton, {
   RadioListItem,
-} from '../formElements/radioButton/RadioButton';
-import IconBtn from '../IconBtn';
+} from '../../../components/formElements/radioButton/RadioButton';
+import IconBtn from '../../../components/IconBtn';
+import { IconName } from '../../../types/enums';
+import { ChangeInputType } from '../../../types/types';
+import useLanguage from '../../language/useLanguage';
 
-type EditTableCellProps = {
+type EditUserInputProps = {
   id: string;
   isAdmin: boolean;
   labelText: string;
@@ -22,7 +22,7 @@ type EditTableCellProps = {
   onSave: () => void;
 };
 
-const EditTableCell = ({
+const EditUserInput = ({
   showEditInput,
   id,
   onChange,
@@ -34,7 +34,7 @@ const EditTableCell = ({
   isAdmin,
   roleOptions,
   roleValue,
-}: EditTableCellProps) => {
+}: EditUserInputProps) => {
   const { language } = useLanguage();
 
   return (
@@ -104,4 +104,4 @@ const EditTableCell = ({
   );
 };
 
-export default EditTableCell;
+export default EditUserInput;

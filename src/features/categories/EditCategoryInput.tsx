@@ -1,12 +1,12 @@
 import { useMemo } from 'react';
 import Input from '../../components/formElements/Input';
 import IconBtn from '../../components/IconBtn';
-import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import { ChangeInputType } from '../../types/types';
 import dateToLocaleMap from '../../utils/dates';
+import useLanguage from '../language/useLanguage';
 
-type EditFieldProps<T extends Record<string, any>> = {
+type EditCategoryInputProps<T extends Record<string, any>> = {
   cellText: string;
   data: T[];
   id: string;
@@ -19,7 +19,7 @@ type EditFieldProps<T extends Record<string, any>> = {
   onSave: () => void;
 };
 
-const EditField = <T extends Record<string, any>>({
+const EditCategoryInput = <T extends Record<string, any>>({
   data,
   id,
   cellText,
@@ -30,7 +30,7 @@ const EditField = <T extends Record<string, any>>({
   labelText,
   onCancel,
   onSave,
-}: EditFieldProps<T>) => {
+}: EditCategoryInputProps<T>) => {
   const { language, selectedLanguage } = useLanguage();
   const isCategoryName = cellText === 'categoryName';
   const categoryCellContent = useMemo(
@@ -95,4 +95,4 @@ const EditField = <T extends Record<string, any>>({
     </div>
   );
 };
-export default EditField;
+export default EditCategoryInput;
