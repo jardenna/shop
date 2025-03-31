@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { UserResponse } from '../../app/api/apiTypes';
 import Dropdown from '../../components/dropdown/Dropdown';
 import validateUpdateUser from '../../components/formElements/validation/validateUpdateUser';
@@ -13,8 +12,8 @@ import {
   useUpdateUserMutation,
 } from '../../features/admin/users/usersApiSlice';
 import useLanguage from '../../features/language/useLanguage';
+import useTableEditField from '../../hooks/useTableEditField';
 import { BtnVariant, IconName } from '../../types/enums';
-import { ChangeInputType } from '../../types/types';
 
 const tableHeaders: { key: keyof UserResponse; label: string }[] = [
   { key: 'username', label: 'username' },
@@ -32,19 +31,27 @@ const tableBodyCells: (keyof UserResponse)[] = ['username', 'email', 'role'];
 
 const UserPage = () => {
   const { language } = useLanguage();
+  const { onAddMessagePopup } = useMessagePopup();
   const { data: allUsers, isLoading } = useGetAllUsersQuery();
-  const [editRowId, setEditRowId] = useState<string | null>(null);
-  const [values, setValues] = useState<Partial<UserResponse>>({});
-  const [editingField, setEditingField] = useState<keyof UserResponse | null>(
-    null,
-  );
 
   const [deleteUser] = useDeleteUserMutation();
   const [updateUser] = useUpdateUserMutation();
-  const { onAddMessagePopup } = useMessagePopup();
 
-  const handleUpdateUser = async (id: string) => {
-    const validation = validateUpdateUser(values);
+  const {
+    editRowId,
+    editingField,
+    handleShowEditInput,
+    handleEditChange,
+    handleCancelEdit,
+    editValues,
+    handleSaveEdit,
+  } = useTableEditField({
+    data: allUsers || [],
+    callback: handleUpdateUser,
+  });
+
+  async function handleUpdateUser(id: string) {
+    const validation = validateUpdateUser(editValues);
 
     if (validation) {
       onAddMessagePopup({
@@ -58,7 +65,7 @@ const UserPage = () => {
     try {
       await updateUser({
         id,
-        user: values,
+        user: editValues,
       }).unwrap();
       onAddMessagePopup({
         messagePopupType: 'success',
@@ -71,10 +78,7 @@ const UserPage = () => {
         componentType: 'notification',
       });
     }
-
-    setEditRowId(null);
-    setEditingField(null);
-  };
+  }
 
   const handleDeleteUser = async (id: string, username: string) => {
     try {
@@ -90,26 +94,6 @@ const UserPage = () => {
         componentType: 'notification',
       });
     }
-  };
-
-  const handleEditChange = (event: ChangeInputType) => {
-    const { name, value } = event.target;
-    setValues({ ...values, [name]: value });
-  };
-
-  const handleShowEditInput = (id: string, field: keyof UserResponse) => {
-    setEditRowId(id);
-    setEditingField(field);
-    const row = allUsers?.find((item) => item.id === id);
-    if (row) {
-      setValues({ [field]: row[field] });
-    }
-  };
-
-  const handleCancelEdit = () => {
-    setEditRowId(null);
-    setEditingField(null);
-    setValues({});
   };
 
   return (
@@ -131,13 +115,13 @@ const UserPage = () => {
                       roleOptions={roleOptions}
                       isAdmin={isAdmin}
                       onSave={() => {
-                        handleUpdateUser(id);
+                        handleSaveEdit();
                       }}
                       showEditInput={editRowId === id && editingField === td}
                       id={td}
                       onChange={handleEditChange}
-                      value={String(values[td] || '')}
-                      roleValue={values.role || 'User'}
+                      value={String(editValues[td] || '')}
+                      roleValue={editValues.role || 'User'}
                       labelText={String(
                         allUsers.find((user) => user.id === id)?.[td] || '',
                       )}

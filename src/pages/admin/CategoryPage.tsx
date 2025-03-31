@@ -43,7 +43,6 @@ const CategoryPage = () => {
   const [createCategory] = useCreateCategoryMutation();
   const [updateCategory] = useUpdateCategoryMutation();
   const [deleteCategory] = useDeleteCategoryMutation();
-
   const { onChange, values, onSubmit, errors } = useFormValidation({
     initialState,
     callback: handleSubmitNewCategory,
