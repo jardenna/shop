@@ -62,7 +62,7 @@ const CategoryPage = () => {
       });
     }
   }
-  const [editValues, setEditValues] = useState<Partial<Category>>({});
+  const [editValues, setEditValues] = useState<Partial<Category>>(initialState);
   const [editRowId, setEditRowId] = useState<string | null>(null);
 
   const [editingField, setEditingField] = useState<keyof Category | null>(null);
@@ -95,13 +95,13 @@ const CategoryPage = () => {
     setEditingField(field);
     const row = allCategories?.find((item) => item.id === id);
     if (row) {
-      setEditValues({ [field]: row[field] });
+      setEditValues({ ...initialState, [field]: row[field] });
     }
   };
   const handleCancel = () => {
     setEditRowId(null);
     setEditingField(null);
-    setEditValues({});
+    setEditValues(initialState);
   };
 
   return (
