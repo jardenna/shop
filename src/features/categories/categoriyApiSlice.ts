@@ -22,12 +22,12 @@ const categoryApiSlice = apiSlice.injectEndpoints({
     }),
     updateCategory: builder.mutation<
       CategoryResponse,
-      { categoryData: { categoryName: string }; id: string }
+      { categoryName: string; id: string }
     >({
-      query: ({ id, categoryData }) => ({
+      query: ({ id, categoryName }) => ({
         url: `${categoryEndpoints.categories}/${id}`,
         method: 'PUT',
-        body: categoryData, // <- Now correctly passing the categoryData object
+        body: { categoryName }, // No extra nesting
       }),
       invalidatesTags: [TagTypesEnum.Categories],
     }),

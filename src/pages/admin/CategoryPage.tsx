@@ -77,7 +77,7 @@ const CategoryPage = () => {
     try {
       await updateCategory({
         id,
-        categoryData: { categoryName: editValues.categoryName as string }, // ✅ Ensure it's always a string
+        categoryName: editValues.categoryName || '',
       }).unwrap();
     } catch (error: any) {
       onAddMessagePopup({
