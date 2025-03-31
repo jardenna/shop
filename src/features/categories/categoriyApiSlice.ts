@@ -3,6 +3,7 @@ import {
   Category,
   CategoryResponse,
   CreateCategoryRequest,
+  UpdateCategoryRequest,
 } from '../../app/api/apiTypes';
 import { categoryEndpoints } from '../../app/endpoints';
 
@@ -20,10 +21,7 @@ const categoryApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.Categories],
     }),
-    updateCategory: builder.mutation<
-      CategoryResponse,
-      { categoryName: string; id: string }
-    >({
+    updateCategory: builder.mutation<CategoryResponse, UpdateCategoryRequest>({
       query: ({ id, categoryName }) => ({
         url: `${categoryEndpoints.categories}/${id}`,
         method: 'PUT',
