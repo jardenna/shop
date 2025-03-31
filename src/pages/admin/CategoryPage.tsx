@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Category } from '../../app/api/apiTypes'; // Assuming this is defined elsewhere
 import Form from '../../components/formElements/form/Form';
 import Input from '../../components/formElements/Input';
-import IconBtn from '../../components/IconBtn';
 import IconContent from '../../components/IconContent';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Table from '../../components/sortTable/Table';
@@ -14,6 +13,7 @@ import useLanguage from '../../features/language/useLanguage';
 import useFormValidation from '../../hooks/useFormValidation';
 import { IconName } from '../../types/enums';
 import { ChangeInputType } from '../../types/types';
+import EditField from './EditField';
 
 const initialState = {
   categoryName: '',
@@ -68,6 +68,7 @@ const CategoryPage = () => {
 
   const handleEditChange = (event: ChangeInputType) => {
     const { name, value } = event.target;
+    console.log(name, value);
 
     setEditValues({ ...values, [name]: value });
   };
@@ -106,8 +107,6 @@ const CategoryPage = () => {
   //   setEditValues({});
   // };
 
-  console.log(editingField);
-
   return (
     <section className="category-page">
       <h1>{language.categories}</h1>
@@ -139,36 +138,26 @@ const CategoryPage = () => {
             {(data) =>
               data.map(({ id }) => (
                 <tr key={id}>
-                  {tableBodyCells.map((td) => (
-                    <td key={td}>
-                      {editRowId === id && editingField === td ? (
-                        <Input
-                          id={td}
-                          name={td}
-                          onChange={handleEditChange}
-                          value={String(editValues[td] || '')}
-                          labelText="labelText"
-                          inputHasNoLabel
-                        />
-                      ) : (
-                        <div>
-                          {String(
-                            allCategories.find((user) => user.id === id)?.[
-                              td
-                            ] || '',
-                          )}
-                          {td === 'categoryName' && (
-                            <IconBtn
-                              onClick={() => {
-                                handleEdit(id, td);
-                              }}
-                              iconName={IconName.Edit}
-                              title={language.pensil}
-                              ariaLabel={language.editUser}
-                            />
-                          )}
-                        </div>
-                      )}
+                  {tableBodyCells.map((cellText) => (
+                    <td key={cellText}>
+                      <EditField
+                        showEditInput={
+                          editRowId === id && editingField === cellText
+                        }
+                        data={allCategories}
+                        cellText={cellText}
+                        id={id}
+                        onEditChange={handleEditChange}
+                        onEditBtnClick={() => {
+                          handleEdit(id, cellText);
+                        }}
+                        value={String(editValues[cellText] || '')}
+                        labelText={String(
+                          allCategories.find((user) => user.id === id)?.[
+                            cellText
+                          ] || '',
+                        )}
+                      />
                     </td>
                   ))}
                   <td>

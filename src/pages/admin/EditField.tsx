@@ -1,21 +1,60 @@
 import { useMemo } from 'react';
+import Input from '../../components/formElements/Input';
+import IconBtn from '../../components/IconBtn';
+import useLanguage from '../../features/language/useLanguage';
+import { IconName } from '../../types/enums';
+import { ChangeInputType } from '../../types/types';
 
 type EditFieldProps<T extends Record<string, any>> = {
+  cellText: string;
   data: T[];
   id: string;
+  labelText: string;
   showEditInput: boolean;
-  td: keyof T;
+  value: string;
+  onEditBtnClick: () => void;
+  onEditChange: (event: ChangeInputType) => void;
 };
 
 const EditField = <T extends Record<string, any>>({
   data,
   id,
-  td,
+  cellText,
+  showEditInput,
+  onEditChange,
+  value,
+  onEditBtnClick,
+  labelText,
 }: EditFieldProps<T>) => {
+  const { language } = useLanguage();
   const categoryValue = useMemo(
-    () => String(data.find((item) => item.id === id)?.[td] || ''),
-    [data, id, td],
+    () => String(data.find((item) => item.id === id)?.[cellText] || ''),
+    [data, id, cellText],
   );
-  return <section>{categoryValue}</section>;
+
+  return showEditInput ? (
+    <form>
+      <Input
+        id={cellText}
+        name={cellText}
+        onChange={onEditChange}
+        value={value}
+        labelText={labelText}
+        inputHasNoLabel
+      />
+    </form>
+  ) : (
+    <div>
+      {categoryValue}
+      {cellText === 'categoryName' && (
+        <IconBtn
+          onClick={onEditBtnClick}
+          iconName={IconName.Edit}
+          title={language.pensil}
+          ariaLabel={language.editUser}
+        />
+      )}
+    </div>
+  );
 };
 export default EditField;
