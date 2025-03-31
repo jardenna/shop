@@ -37,7 +37,11 @@ const EditField = <T extends Record<string, any>>({
   );
 
   return showEditInput ? (
-    <form>
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+      }}
+    >
       <Input
         id={cellText}
         name={cellText}
@@ -59,6 +63,7 @@ const EditField = <T extends Record<string, any>>({
         title="Check"
         ariaLabel={language.save}
         size="16"
+        btnType="submit"
       />
     </form>
   ) : (
