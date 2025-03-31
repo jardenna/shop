@@ -1,6 +1,6 @@
 import { useState } from 'react';
+import { ChangeInputType } from '../types/types';
 
-type ChangeInputType = React.ChangeEvent<HTMLInputElement>;
 type UseTableEditFieldProps<T extends { id: string }> = {
   data: T[];
   callback?: (id: string, values: Partial<T>) => void;
