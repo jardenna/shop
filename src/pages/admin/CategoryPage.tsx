@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { Category } from '../../app/api/apiTypes'; // Assuming this is defined elsewhere
+import { Category } from '../../app/api/apiTypes';
 import Dropdown from '../../components/dropdown/Dropdown';
 import Form from '../../components/formElements/form/Form';
 import Input from '../../components/formElements/Input';
@@ -15,8 +14,8 @@ import {
 } from '../../features/categories/categoriyApiSlice';
 import useLanguage from '../../features/language/useLanguage';
 import useFormValidation from '../../hooks/useFormValidation';
+import useTableEditField from '../../hooks/useTableEditField';
 import { BtnVariant, IconName } from '../../types/enums';
-import { ChangeInputType } from '../../types/types';
 import EditField from './EditField';
 
 const initialState = {
@@ -38,9 +37,7 @@ const tableBodyCells: (keyof Category)[] = [
 
 const CategoryPage = () => {
   const { language } = useLanguage();
-  const [editValues, setEditValues] = useState<Partial<Category>>(initialState);
-  const [editRowId, setEditRowId] = useState<string | null>(null);
-  const [editingField, setEditingField] = useState<keyof Category | null>(null);
+
   const { onAddMessagePopup } = useMessagePopup();
   const { data: allCategories, isLoading } = useGetAllCategoriesQuery();
   const [createCategory] = useCreateCategoryMutation();
@@ -50,6 +47,19 @@ const CategoryPage = () => {
   const { onChange, values, onSubmit, errors } = useFormValidation({
     initialState,
     callback: handleSubmitNewCategory,
+  });
+
+  const {
+    editRowId,
+    editingField,
+    handleShowEditInput,
+    handleEditChange,
+    handleCancelEdit,
+    editValues,
+    handleSaveEdit,
+  } = useTableEditField({
+    data: allCategories || [],
+    callback: handleUpdateCategory,
   });
 
   async function handleSubmitNewCategory() {
@@ -92,8 +102,6 @@ const CategoryPage = () => {
         componentType: 'notification',
       });
     }
-    setEditRowId(null);
-    setEditingField(null);
   }
 
   const handleDeleteCategory = async (id: string, category: string) => {
@@ -110,26 +118,6 @@ const CategoryPage = () => {
         componentType: 'notification',
       });
     }
-  };
-
-  const handleEditChange = (event: ChangeInputType) => {
-    const { name, value } = event.target;
-    setEditValues({ ...values, [name]: value });
-  };
-
-  const handleShowEditInput = (id: string, field: keyof Category) => {
-    setEditRowId(id);
-    setEditingField(field);
-    const row = allCategories?.find((item) => item.id === id);
-    if (row) {
-      setEditValues({ ...initialState, [field]: row[field] });
-    }
-  };
-
-  const handleCancelEdit = () => {
-    setEditRowId(null);
-    setEditingField(null);
-    setEditValues(initialState);
   };
 
   return (
@@ -167,7 +155,7 @@ const CategoryPage = () => {
                     <td key={cellText}>
                       <EditField
                         onSave={() => {
-                          handleUpdateCategory(id);
+                          handleSaveEdit();
                         }}
                         showEditInput={
                           editRowId === id && editingField === cellText

@@ -3,18 +3,17 @@ import Input from '../../components/formElements/Input';
 import IconBtn from '../../components/IconBtn';
 import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
-import { ChangeInputType } from '../../types/types';
 
 type EditFieldProps<T extends Record<string, any>> = {
   cellText: string;
   data: T[];
   id: string;
   labelText: string;
+  onEditChange: any;
   showEditInput: boolean;
   value: string;
   onCancel: () => void;
   onEditBtnClick: () => void;
-  onEditChange: (event: ChangeInputType) => void;
   onSave: () => void;
 };
 
