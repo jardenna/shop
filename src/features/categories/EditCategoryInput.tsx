@@ -1,5 +1,5 @@
-import Input from '../../components/formElements/Input';
 import IconBtn from '../../components/IconBtn';
+import EditTableInput from '../../components/sortTable/EditTableInput';
 import { IconName } from '../../types/enums';
 import { ChangeInputType } from '../../types/types';
 import dateToLocaleMap from '../../utils/dates';
@@ -37,36 +37,14 @@ const EditCategoryInput = ({
   return (
     <div className="edit-cell">
       {showEditInput && (
-        <form
-          className="edit-controls"
-          onSubmit={(event) => {
-            event.preventDefault();
-          }}
-        >
-          <Input
-            id={id}
-            name={id}
-            onChange={onEditChange}
-            value={value}
-            labelText={cellContent}
-            inputHasNoLabel
-          />
-          <IconBtn
-            onClick={onCancel}
-            iconName={IconName.Close}
-            title={language.cancel}
-            ariaLabel={language.cancel}
-            size="12"
-          />
-          <IconBtn
-            onClick={onSave}
-            iconName={IconName.Check}
-            title="Check"
-            ariaLabel={language.save}
-            size="16"
-            btnType="submit"
-          />
-        </form>
+        <EditTableInput
+          id={id}
+          onEditChange={onEditChange}
+          value={value}
+          cellContent={cellContent}
+          onCancel={onCancel}
+          onSave={onSave}
+        />
       )}
       {!showEditInput && isCategoryName && (
         <>
