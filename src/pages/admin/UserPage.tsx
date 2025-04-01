@@ -33,7 +33,6 @@ const UserPage = () => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
   const { data: allUsers, isLoading } = useGetAllUsersQuery();
-
   const [deleteUser] = useDeleteUserMutation();
   const [updateUser] = useUpdateUserMutation();
 
@@ -106,8 +105,8 @@ const UserPage = () => {
           isLoading={isLoading}
           emptyHeaderCellText={language.deleteUser}
         >
-          {(data) =>
-            data.map(({ id, username, isAdmin }) => (
+          {() =>
+            allUsers.map(({ id, username, isAdmin }) => (
               <tr key={id}>
                 {columnKeys.map((columnKey) => (
                   <td key={columnKey}>

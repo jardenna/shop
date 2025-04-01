@@ -37,7 +37,6 @@ const columnKeys: (keyof Category)[] = [
 
 const CategoryPage = () => {
   const { language } = useLanguage();
-
   const { onAddMessagePopup } = useMessagePopup();
   const { data: allCategories, isLoading } = useGetAllCategoriesQuery();
   const [createCategory] = useCreateCategoryMutation();
@@ -152,8 +151,8 @@ const CategoryPage = () => {
             isLoading={isLoading}
             emptyHeaderCellText={language.deleteCategory}
           >
-            {(data) =>
-              data.map(({ id, categoryName }) => (
+            {() =>
+              allCategories.map(({ id, categoryName }) => (
                 <tr key={id}>
                   {columnKeys.map((columnKey) => (
                     <td key={columnKey}>
