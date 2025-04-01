@@ -11,9 +11,8 @@ import useLanguage from '../language/useLanguage';
 // } & baseEditTableInput;
 
 type EditCategoryInputProps = {
-  cellContent: string | Date;
+  cellContent: string;
   id: string;
-  labelText: string;
   showEditInput: boolean;
   value: string;
   onCancel: () => void;
@@ -28,7 +27,6 @@ const EditCategoryInput = ({
   onEditChange,
   value,
   onEditBtnClick,
-  labelText,
   onCancel,
   onSave,
   cellContent,
@@ -50,7 +48,7 @@ const EditCategoryInput = ({
             name={id}
             onChange={onEditChange}
             value={value}
-            labelText={labelText}
+            labelText={cellContent}
             inputHasNoLabel
           />
           <IconBtn

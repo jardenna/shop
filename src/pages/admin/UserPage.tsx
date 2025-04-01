@@ -105,8 +105,8 @@ const UserPage = () => {
           isLoading={isLoading}
           emptyHeaderCellText={language.deleteUser}
         >
-          {() =>
-            allUsers.map(({ id, username, isAdmin }) => (
+          {(data) =>
+            data.map(({ id, username, isAdmin }) => (
               <tr key={id}>
                 {columnKeys.map((columnKey) => (
                   <td key={columnKey}>

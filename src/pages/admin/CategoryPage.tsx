@@ -151,8 +151,8 @@ const CategoryPage = () => {
             isLoading={isLoading}
             emptyHeaderCellText={language.deleteCategory}
           >
-            {() =>
-              allCategories.map(({ id, categoryName }) => (
+            {(data) =>
+              data.map(({ id, categoryName }) => (
                 <tr key={id}>
                   {columnKeys.map((columnKey) => (
                     <td key={columnKey}>
@@ -169,17 +169,12 @@ const CategoryPage = () => {
                         onEditBtnClick={() => {
                           handleShowEditInput(id, columnKey);
                         }}
-                        cellContent={
+                        cellContent={String(
                           allCategories.find((item) => item.id === id)?.[
                             columnKey
-                          ] || ''
-                        }
-                        value={String(editValues[columnKey] || '')}
-                        labelText={String(
-                          allCategories.find(
-                            (category) => category.id === id,
-                          )?.[columnKey] || '',
+                          ] || '',
                         )}
+                        value={String(editValues[columnKey] || '')}
                       />
                     </td>
                   ))}
