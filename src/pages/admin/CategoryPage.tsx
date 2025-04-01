@@ -23,13 +23,13 @@ const initialState = {
 };
 
 const tableHeaders: { key: keyof Category; label: string }[] = [
-  { key: 'categoryName', label: 'name' },
+  { key: 'categoryName', label: 'categoryName' },
   { key: 'createdAt', label: 'createdAt' },
   { key: 'updatedAt', label: 'updatedAt' },
   { key: 'id', label: '' },
 ];
 
-const tableBodyCells: (keyof Category)[] = [
+const columnKeys: (keyof Category)[] = [
   'categoryName',
   'createdAt',
   'updatedAt',
@@ -155,29 +155,31 @@ const CategoryPage = () => {
             {(data) =>
               data.map(({ id, categoryName }) => (
                 <tr key={id}>
-                  {tableBodyCells.map((cellText) => (
-                    <td key={cellText}>
+                  {columnKeys.map((columnKey) => (
+                    <td key={columnKey}>
                       <EditCategoryInput
+                        id={columnKey}
                         onSave={() => {
                           handleSaveEdit();
                         }}
                         showEditInput={
-                          editRowId === id && editingField === cellText
+                          editRowId === id && editingField === columnKey
                         }
                         onCancel={handleCancelEdit}
-                        cellText={cellText}
                         onEditChange={handleEditChange}
                         onEditBtnClick={() => {
-                          handleShowEditInput(id, cellText);
+                          handleShowEditInput(id, columnKey);
                         }}
                         cellContent={
-                          data.find((item) => item.id === id)?.[cellText] || ''
+                          allCategories.find((item) => item.id === id)?.[
+                            columnKey
+                          ] || ''
                         }
-                        value={String(editValues[cellText] || '')}
+                        value={String(editValues[columnKey] || '')}
                         labelText={String(
                           allCategories.find(
                             (category) => category.id === id,
-                          )?.[cellText] || '',
+                          )?.[columnKey] || '',
                         )}
                       />
                     </td>

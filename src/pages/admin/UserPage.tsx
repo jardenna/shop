@@ -27,7 +27,7 @@ const roleOptions = [
   { value: 'User', label: 'user' },
 ];
 
-const tableBodyCells: (keyof UserResponse)[] = ['username', 'email', 'role'];
+const columnKeys: (keyof UserResponse)[] = ['username', 'email', 'role'];
 
 const UserPage = () => {
   const { language } = useLanguage();
@@ -109,26 +109,29 @@ const UserPage = () => {
           {(data) =>
             data.map(({ id, username, isAdmin }) => (
               <tr key={id}>
-                {tableBodyCells.map((td) => (
-                  <td key={td}>
+                {columnKeys.map((columnKey) => (
+                  <td key={columnKey}>
                     <EditUserInput
                       roleOptions={roleOptions}
                       isAdmin={isAdmin}
                       onSave={() => {
                         handleSaveEdit();
                       }}
-                      showEditInput={editRowId === id && editingField === td}
-                      id={td}
-                      onChange={handleEditChange}
-                      value={String(editValues[td] || '')}
-                      roleValue={editValues.role || 'User'}
-                      inputLabel={String(
-                        allUsers.find((user) => user.id === id)?.[td] || '',
-                      )}
+                      showEditInput={
+                        editRowId === id && editingField === columnKey
+                      }
                       onCancel={handleCancelEdit}
-                      onEditChange={() => {
-                        handleShowEditInput(id, td);
+                      onEditChange={handleEditChange}
+                      onEditBtnClick={() => {
+                        handleShowEditInput(id, columnKey);
                       }}
+                      id={columnKey}
+                      value={String(editValues[columnKey] || '')}
+                      roleValue={editValues.role || 'User'}
+                      cellContent={String(
+                        allUsers.find((item) => item.id === id)?.[columnKey] ||
+                          '',
+                      )}
                     />
                   </td>
                 ))}

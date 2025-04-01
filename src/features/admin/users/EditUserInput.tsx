@@ -4,7 +4,7 @@ import RadioButton, {
 } from '../../../components/formElements/radioButton/RadioButton';
 import IconBtn from '../../../components/IconBtn';
 import EditTableInput, {
-  baseEditTableInput,
+  BaseEditTableInput,
 } from '../../../components/sortTable/EditTableInput';
 import { IconName } from '../../../types/enums';
 import useLanguage from '../../language/useLanguage';
@@ -14,18 +14,18 @@ type EditUserInputProps = {
   roleOptions: RadioListItem[];
   roleValue: RoleTypes;
   showEditInput: boolean;
-  onEditChange: () => void;
-} & baseEditTableInput;
+  onEditBtnClick: () => void;
+} & BaseEditTableInput;
 
 const EditUserInput = ({
   showEditInput,
   id,
-  onChange,
+  onEditChange,
   onSave,
   onCancel,
   value,
-  inputLabel,
-  onEditChange,
+  cellContent,
+  onEditBtnClick,
   isAdmin,
   roleOptions,
   roleValue,
@@ -37,9 +37,9 @@ const EditUserInput = ({
       {showEditInput ? (
         <EditTableInput
           id={id}
-          onChange={onChange}
+          onEditChange={onEditChange}
           value={value}
-          inputLabel={inputLabel}
+          cellContent={cellContent}
           onCancel={onCancel}
           onSave={onSave}
           isAlterntiveInput={id === 'role'}
@@ -48,22 +48,22 @@ const EditUserInput = ({
               radioButtonList={roleOptions}
               name="role"
               initialChecked={roleValue}
-              onChange={onChange}
+              onChange={onEditChange}
             />
           }
         />
       ) : (
         <>
           <span>
-            {!inputLabel.includes('@') ? (
-              inputLabel
+            {!cellContent.includes('@') ? (
+              cellContent
             ) : (
-              <a href={`mailto:${inputLabel}`}>{inputLabel}</a>
+              <a href={`mailto:${cellContent}`}>{cellContent}</a>
             )}
           </span>
           {!isAdmin && (
             <IconBtn
-              onClick={onEditChange}
+              onClick={onEditBtnClick}
               iconName={IconName.Edit}
               title={language.pensil}
               ariaLabel={language.editUser}

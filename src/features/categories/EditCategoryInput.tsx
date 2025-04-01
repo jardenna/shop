@@ -12,7 +12,7 @@ import useLanguage from '../language/useLanguage';
 
 type EditCategoryInputProps = {
   cellContent: string | Date;
-  cellText: string;
+  id: string;
   labelText: string;
   showEditInput: boolean;
   value: string;
@@ -23,7 +23,7 @@ type EditCategoryInputProps = {
 };
 
 const EditCategoryInput = ({
-  cellText,
+  id,
   showEditInput,
   onEditChange,
   value,
@@ -34,7 +34,7 @@ const EditCategoryInput = ({
   cellContent,
 }: EditCategoryInputProps) => {
   const { language, selectedLanguage } = useLanguage();
-  const isCategoryName = cellText === 'categoryName';
+  const isCategoryName = id === 'categoryName';
 
   return (
     <div className="edit-cell">
@@ -46,8 +46,8 @@ const EditCategoryInput = ({
           }}
         >
           <Input
-            id={cellText}
-            name={cellText}
+            id={id}
+            name={id}
             onChange={onEditChange}
             value={value}
             labelText={labelText}

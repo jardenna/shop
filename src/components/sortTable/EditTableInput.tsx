@@ -5,12 +5,12 @@ import { ChangeInputType, InputType } from '../../types/types';
 import Input from '../formElements/Input';
 import IconBtn from '../IconBtn';
 
-export type baseEditTableInput = {
+export type BaseEditTableInput = {
+  cellContent: string;
   id: string;
-  inputLabel: string;
   value: string;
   onCancel: () => void;
-  onChange: (event: ChangeInputType) => void;
+  onEditChange: (event: ChangeInputType) => void;
   onSave: () => void;
 };
 
@@ -18,15 +18,15 @@ type EditTableInputProps = {
   alternativeInput?: ReactElement;
   inputType?: InputType;
   isAlterntiveInput?: boolean;
-} & baseEditTableInput;
+} & BaseEditTableInput;
 
 const EditTableInput = ({
   id,
   inputType,
   value,
-  inputLabel,
+  cellContent,
   onCancel,
-  onChange,
+  onEditChange,
   onSave,
   isAlterntiveInput,
   alternativeInput,
@@ -44,9 +44,9 @@ const EditTableInput = ({
         <Input
           id={id}
           name={id}
-          onChange={onChange}
+          onChange={onEditChange}
           value={value}
-          labelText={inputLabel}
+          labelText={cellContent}
           type={inputType}
           inputHasNoLabel
         />
