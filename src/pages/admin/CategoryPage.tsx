@@ -164,14 +164,15 @@ const CategoryPage = () => {
                         showEditInput={
                           editRowId === id && editingField === cellText
                         }
-                        data={allCategories}
                         onCancel={handleCancelEdit}
                         cellText={cellText}
-                        id={id}
                         onEditChange={handleEditChange}
                         onEditBtnClick={() => {
                           handleShowEditInput(id, cellText);
                         }}
+                        cellContent={
+                          data.find((item) => item.id === id)?.[cellText] || ''
+                        }
                         value={String(editValues[cellText] || '')}
                         labelText={String(
                           allCategories.find(

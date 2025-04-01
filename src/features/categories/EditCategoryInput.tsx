@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import Input from '../../components/formElements/Input';
 import IconBtn from '../../components/IconBtn';
 import { IconName } from '../../types/enums';
@@ -6,10 +5,14 @@ import { ChangeInputType } from '../../types/types';
 import dateToLocaleMap from '../../utils/dates';
 import useLanguage from '../language/useLanguage';
 
-type EditCategoryInputProps<T extends Record<string, any>> = {
+// type EditUserInputProps = {
+//   showEditInput: boolean;
+//   onEditChange: () => void;
+// } & baseEditTableInput;
+
+type EditCategoryInputProps = {
+  cellContent: string | Date;
   cellText: string;
-  data: T[];
-  id: string;
   labelText: string;
   showEditInput: boolean;
   value: string;
@@ -19,9 +22,7 @@ type EditCategoryInputProps<T extends Record<string, any>> = {
   onSave: () => void;
 };
 
-const EditCategoryInput = <T extends Record<string, any>>({
-  data,
-  id,
+const EditCategoryInput = ({
   cellText,
   showEditInput,
   onEditChange,
@@ -30,13 +31,10 @@ const EditCategoryInput = <T extends Record<string, any>>({
   labelText,
   onCancel,
   onSave,
-}: EditCategoryInputProps<T>) => {
+  cellContent,
+}: EditCategoryInputProps) => {
   const { language, selectedLanguage } = useLanguage();
   const isCategoryName = cellText === 'categoryName';
-  const categoryCellContent = useMemo(
-    () => String(data.find((item) => item.id === id)?.[cellText] || ''),
-    [data, id, cellText],
-  );
 
   return (
     <div className="edit-cell">
@@ -74,7 +72,7 @@ const EditCategoryInput = <T extends Record<string, any>>({
       )}
       {!showEditInput && isCategoryName && (
         <>
-          <span>{categoryCellContent}</span>
+          <span>{cellContent.toString()}</span>
           <IconBtn
             onClick={onEditBtnClick}
             iconName={IconName.Edit}
@@ -89,7 +87,7 @@ const EditCategoryInput = <T extends Record<string, any>>({
             day: '2-digit',
             month: 'long',
             year: 'numeric',
-          }).format(new Date(categoryCellContent))}
+          }).format(new Date(cellContent))}
         </span>
       )}
     </div>
