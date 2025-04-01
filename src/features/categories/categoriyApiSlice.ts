@@ -25,7 +25,7 @@ const categoryApiSlice = apiSlice.injectEndpoints({
       query: ({ id, categoryName }) => ({
         url: `${categoryEndpoints.categories}/${id}`,
         method: 'PUT',
-        body: { categoryName }, // No extra nesting
+        body: { categoryName },
       }),
       invalidatesTags: [TagTypesEnum.Categories],
     }),
