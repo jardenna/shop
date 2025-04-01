@@ -9,13 +9,16 @@ asc;ascending;stigende
 bag;Bag;Indkøbskurv
 cancel;Cancel;Annuller
 cannotDeleteAdmin;This action is not allowed for admin;Admin bruger kan ikke slettes
-categorieAlreadyExist;Category already exist;Kategori findes allerede
+categoryAlreadyExist;Category already exist;Kategori findes allerede
 categorieNotFound;Category not found;Kategori findes ikke
 categories;Categories;Kategorier
 categories;Categories;Kategorier
 categoryDeleted;Category deleted;Kategori blev slettet
 categoryName;Category name;Kategori navn
+name;Category name;Kategori navn
 clearFilters;Clear filters;Ryd filtre
+createdAt;Created at;Tilføjet at
+updatedAt;Updated at;Opdateret at
 clearSort;Clear sort;Ryd sortering
 close;Close;Luk
 closeDialog;Close dialog;Luk dialog
@@ -31,6 +34,7 @@ customersList;Customers list;Kundeliste
 dashboard;Dashboard;Dashboard
 delete;Delete;Slet
 deleted;deleted;slettet
+deleteCategory;Delete category;Slet kategori
 deleteUser;Delete user;Slet bruger
 desc;descending;faldende
 editUser;Edit user;Opdater bruger
@@ -78,8 +82,8 @@ myBag;My bag;Min indkøbskurv
 myOrders;My orders;Mine ordrer
 newCategoryCreated;New category created;Ny kategori blev oprettet
 noData;No data found;Ingen data fundet
-noEmail;Please provide an email;Indtast venligst en e-mail
-noPassword;Please provide a password;Indtast venligst en adgangskode
+noEmail;Please enter an email;Indtast venligst en e-mail
+noPassword;Please enter a password;Indtast venligst en adgangskode
 notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 
 notAuthorizedNoToken;Not authorized, no token;Ikke autoriseret, ingen token
 notAuthorizedTokenFailed;Not authorized, token failed;Ikke autoriseret, token mislykkedes
@@ -95,6 +99,7 @@ passwordUppercase;Password should contain at least one uppercase letter;Adgangsk
 pensil;Pensil;Blyant
 pleaseEnter;Please enter;Indsæt venligst
 pleaseEnterName;Please enter name;Indsæt venligst navn
+pleaseEnterCategoryName;Please enter a category name;Indsæt venligst kategori
 pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
 pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
 preferences;Preferences;Præferencer

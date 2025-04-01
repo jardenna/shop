@@ -3,14 +3,13 @@ import {
   Category,
   CategoryResponse,
   CreateCategoryRequest,
-  GetAllCategoryResponse,
   UpdateCategoryRequest,
 } from '../../app/api/apiTypes';
 import { categoryEndpoints } from '../../app/endpoints';
 
 const categoryApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getAllCategories: builder.query<GetAllCategoryResponse, void>({
+    getAllCategories: builder.query<Category[], void>({
       query: () => categoryEndpoints.categories,
       providesTags: [TagTypesEnum.Categories],
     }),
@@ -20,12 +19,13 @@ const categoryApiSlice = apiSlice.injectEndpoints({
         method: 'POST',
         body: name,
       }),
+      invalidatesTags: [TagTypesEnum.Categories],
     }),
     updateCategory: builder.mutation<CategoryResponse, UpdateCategoryRequest>({
-      query: ({ name, id }) => ({
+      query: ({ id, categoryName }) => ({
         url: `${categoryEndpoints.categories}/${id}`,
         method: 'PUT',
-        body: name,
+        body: { categoryName },
       }),
       invalidatesTags: [TagTypesEnum.Categories],
     }),

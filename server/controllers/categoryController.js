@@ -16,7 +16,7 @@ const getAllCategories = asyncHandler(async (req, res) => {
       return res.status(400).json({ message: t('noData', req.lang) });
     }
 
-    res.status(200).json({ success: true, allCategories: formattedCategories });
+    res.status(200).json(formattedCategories);
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
@@ -28,31 +28,31 @@ const getAllCategories = asyncHandler(async (req, res) => {
 // @access  Private for admin and employee
 const createCategory = asyncHandler(async (req, res) => {
   try {
-    const { name } = req.body;
+    const { categoryName } = req.body;
 
-    if (!name) {
-      return res.json({
+    if (!categoryName) {
+      return res.status(400).json({
         success: false,
-        message: 'Name is required',
+        message: t('pleaseEnterCategoryName', req.lang),
       });
     }
 
-    const existingCategory = await Category.findOne({ name });
+    const existingCategory = await Category.findOne({ categoryName });
 
     if (existingCategory) {
-      return res.json({
+      return res.status(400).json({
         success: false,
-        message: t('categorieAlreadyExist', req.lang),
+        message: t('categoryAlreadyExist', req.lang),
       });
     }
-    const category = await new Category({ name }).save();
 
+    const category = await new Category({ categoryName }).save();
     if (category) {
       res.status(201).json({
         success: true,
         message: t('newCategoryCreated', req.lang),
         id: category._id,
-        name: category.name,
+        categoryName: category.categoryName,
         createdAt: category.createdAt,
       });
     }
@@ -63,16 +63,15 @@ const createCategory = asyncHandler(async (req, res) => {
     });
   }
 });
-
-// @desc    Create category
+// @desc    Update category
 // @route   /api/category/id
 // @method  Put
 // @access  Private for admin and employee
 const updateCategory = asyncHandler(async (req, res) => {
   try {
-    const { name } = req.body;
-    const { categoryId } = req.params;
-    const category = await Category.findOne({ id: categoryId });
+    const { categoryName } = req.body;
+
+    const category = await Category.findOne({ _id: req.params.id });
 
     if (!category) {
       return res.status(404).json({
@@ -81,7 +80,7 @@ const updateCategory = asyncHandler(async (req, res) => {
       });
     }
 
-    category.name = name;
+    category.categoryName = categoryName;
 
     const updatedCategory = await category.save();
     res.status(201).json({

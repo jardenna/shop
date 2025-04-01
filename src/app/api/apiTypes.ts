@@ -56,9 +56,9 @@ export interface UpdateUserByIdRequest {
 
 // Category
 export interface Category {
+  categoryName: string;
   createdAt: Date;
   id: string;
-  name: string;
   updatedAt: Date;
 }
 
@@ -67,17 +67,12 @@ export interface CategoryResponse extends DefaultResponse {
 }
 
 export interface CreateCategoryRequest {
-  name: string;
+  categoryName: string;
 }
 
 export interface UpdateCategoryRequest {
+  categoryName: string;
   id: string;
-  name: string;
-}
-
-export interface GetAllCategoryResponse {
-  category: Category[];
-  success: boolean;
 }
 
 export type FileUploadNameType = 'cover';
