@@ -122,11 +122,11 @@ const UserPage = () => {
                       onChange={handleEditChange}
                       value={String(editValues[td] || '')}
                       roleValue={editValues.role || 'User'}
-                      labelText={String(
+                      inputLabel={String(
                         allUsers.find((user) => user.id === id)?.[td] || '',
                       )}
                       onCancel={handleCancelEdit}
-                      onEdit={() => {
+                      onEditChange={() => {
                         handleShowEditInput(id, td);
                       }}
                     />

@@ -1,26 +1,21 @@
 import { RoleTypes } from '../../../app/api/apiTypes';
-import Input from '../../../components/formElements/Input';
 import RadioButton, {
   RadioListItem,
 } from '../../../components/formElements/radioButton/RadioButton';
 import IconBtn from '../../../components/IconBtn';
+import EditTableInput, {
+  baseEditTableInput,
+} from '../../../components/sortTable/EditTableInput';
 import { IconName } from '../../../types/enums';
-import { ChangeInputType } from '../../../types/types';
 import useLanguage from '../../language/useLanguage';
 
 type EditUserInputProps = {
-  id: string;
   isAdmin: boolean;
-  labelText: string;
   roleOptions: RadioListItem[];
   roleValue: RoleTypes;
   showEditInput: boolean;
-  value: string;
-  onCancel: () => void;
-  onChange: (event: ChangeInputType) => void;
-  onEdit: () => void;
-  onSave: () => void;
-};
+  onEditChange: () => void;
+} & baseEditTableInput;
 
 const EditUserInput = ({
   showEditInput,
@@ -29,8 +24,8 @@ const EditUserInput = ({
   onSave,
   onCancel,
   value,
-  labelText,
-  onEdit,
+  inputLabel,
+  onEditChange,
   isAdmin,
   roleOptions,
   roleValue,
@@ -40,59 +35,35 @@ const EditUserInput = ({
   return (
     <div className="edit-cell">
       {showEditInput ? (
-        <form
-          className="edit-controls"
-          onSubmit={(event) => {
-            event.preventDefault();
-          }}
-        >
-          {id !== 'role' ? (
-            <Input
-              id={id}
-              name={id}
-              onChange={onChange}
-              value={value}
-              labelText={labelText}
-              inputHasNoLabel
-            />
-          ) : (
+        <EditTableInput
+          id={id}
+          onChange={onChange}
+          value={value}
+          inputLabel={inputLabel}
+          onCancel={onCancel}
+          onSave={onSave}
+          isAlterntiveInput={id === 'role'}
+          alternativeInput={
             <RadioButton
               radioButtonList={roleOptions}
               name="role"
               initialChecked={roleValue}
               onChange={onChange}
             />
-          )}
-
-          <IconBtn
-            onClick={onCancel}
-            iconName={IconName.Close}
-            title={language.cancel}
-            ariaLabel={language.cancel}
-            size="12"
-          />
-
-          <IconBtn
-            onClick={onSave}
-            iconName={IconName.Check}
-            title="Check"
-            ariaLabel={language.save}
-            size="16"
-            btnType="submit"
-          />
-        </form>
+          }
+        />
       ) : (
         <>
           <span>
-            {!labelText.includes('@') ? (
-              labelText
+            {!inputLabel.includes('@') ? (
+              inputLabel
             ) : (
-              <a href={`mailto:${labelText}`}>{labelText}</a>
+              <a href={`mailto:${inputLabel}`}>{inputLabel}</a>
             )}
           </span>
           {!isAdmin && (
             <IconBtn
-              onClick={onEdit}
+              onClick={onEditChange}
               iconName={IconName.Edit}
               title={language.pensil}
               ariaLabel={language.editUser}
