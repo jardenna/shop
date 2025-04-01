@@ -42,10 +42,11 @@ const CategoryPage = () => {
   const [createCategory] = useCreateCategoryMutation();
   const [updateCategory] = useUpdateCategoryMutation();
   const [deleteCategory] = useDeleteCategoryMutation();
-  const { onChange, values, onSubmit, errors } = useFormValidation({
-    initialState,
-    callback: handleSubmitNewCategory,
-  });
+  const { onChange, values, onSubmit, errors, onClearAllValues } =
+    useFormValidation({
+      initialState,
+      callback: handleSubmitNewCategory,
+    });
 
   const {
     editRowId,
@@ -63,6 +64,7 @@ const CategoryPage = () => {
   async function handleSubmitNewCategory() {
     try {
       const result = await createCategory(values).unwrap();
+      onClearAllValues();
 
       onAddMessagePopup({
         messagePopupType: !result.success ? 'error' : 'success',
@@ -142,7 +144,6 @@ const CategoryPage = () => {
         />
       </Form>
       <div>
-        <h2>Category list</h2>
         {allCategories && (
           <Table
             data={allCategories}
