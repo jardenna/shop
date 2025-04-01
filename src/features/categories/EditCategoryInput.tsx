@@ -1,25 +1,15 @@
 import IconBtn from '../../components/IconBtn';
-import EditTableInput from '../../components/sortTable/EditTableInput';
+import EditTableInput, {
+  BaseEditTableInput,
+} from '../../components/sortTable/EditTableInput';
 import { IconName } from '../../types/enums';
-import { ChangeInputType } from '../../types/types';
 import dateToLocaleMap from '../../utils/dates';
 import useLanguage from '../language/useLanguage';
 
-// type EditUserInputProps = {
-//   showEditInput: boolean;
-//   onEditChange: () => void;
-// } & baseEditTableInput;
-
 type EditCategoryInputProps = {
-  cellContent: string;
-  id: string;
   showEditInput: boolean;
-  value: string;
-  onCancel: () => void;
   onEditBtnClick: () => void;
-  onEditChange: (event: ChangeInputType) => void;
-  onSave: () => void;
-};
+} & BaseEditTableInput;
 
 const EditCategoryInput = ({
   id,
