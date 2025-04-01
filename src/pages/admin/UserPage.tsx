@@ -1,20 +1,19 @@
-import { useState } from 'react';
 import { UserResponse } from '../../app/api/apiTypes';
 import Dropdown from '../../components/dropdown/Dropdown';
 import validateUpdateUser from '../../components/formElements/validation/validateUpdateUser';
 import IconContent from '../../components/IconContent';
 import Icon from '../../components/icons/Icon';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-import EditTableCell from '../../components/sortTable/EditTableCell';
 import Table from '../../components/sortTable/Table';
+import EditUserInput from '../../features/admin/users/EditUserInput';
 import {
   useDeleteUserMutation,
   useGetAllUsersQuery,
   useUpdateUserMutation,
 } from '../../features/admin/users/usersApiSlice';
 import useLanguage from '../../features/language/useLanguage';
+import useTableEditField from '../../hooks/useTableEditField';
 import { BtnVariant, IconName } from '../../types/enums';
-import { ChangeInputType } from '../../types/types';
 
 const tableHeaders: { key: keyof UserResponse; label: string }[] = [
   { key: 'username', label: 'username' },
@@ -28,43 +27,30 @@ const roleOptions = [
   { value: 'User', label: 'user' },
 ];
 
-const tableBodyCells: (keyof UserResponse)[] = ['username', 'email', 'role'];
+const columnKeys: (keyof UserResponse)[] = ['username', 'email', 'role'];
 
 const UserPage = () => {
   const { language } = useLanguage();
+  const { onAddMessagePopup } = useMessagePopup();
   const { data: allUsers, isLoading } = useGetAllUsersQuery();
-  const [editRowId, setEditRowId] = useState<string | null>(null);
-  const [values, setValues] = useState<Partial<UserResponse>>({});
-  const [editingField, setEditingField] = useState<keyof UserResponse | null>(
-    null,
-  );
-
   const [deleteUser] = useDeleteUserMutation();
   const [updateUser] = useUpdateUserMutation();
-  const { onAddMessagePopup } = useMessagePopup();
 
-  const handleEdit = (id: string, field: keyof UserResponse) => {
-    setEditRowId(id);
-    setEditingField(field);
-    const row = allUsers?.find((item) => item.id === id);
-    if (row) {
-      setValues({ [field]: row[field] });
-    }
-  };
+  const {
+    editRowId,
+    editingField,
+    handleShowEditInput,
+    handleEditChange,
+    handleCancelEdit,
+    editValues,
+    handleSaveEdit,
+  } = useTableEditField({
+    data: allUsers || [],
+    callback: handleUpdateUser,
+  });
 
-  const handleChange = (event: ChangeInputType) => {
-    const { name, value } = event.target;
-    setValues({ ...values, [name]: value });
-  };
-
-  const handleCancel = () => {
-    setEditRowId(null);
-    setEditingField(null);
-    setValues({});
-  };
-
-  const handleSave = async (id: string) => {
-    const validation = validateUpdateUser(values);
+  async function handleUpdateUser(id: string) {
+    const validation = validateUpdateUser(editValues);
 
     if (validation) {
       onAddMessagePopup({
@@ -78,7 +64,7 @@ const UserPage = () => {
     try {
       await updateUser({
         id,
-        user: values,
+        user: editValues,
       }).unwrap();
       onAddMessagePopup({
         messagePopupType: 'success',
@@ -91,10 +77,7 @@ const UserPage = () => {
         componentType: 'notification',
       });
     }
-
-    setEditRowId(null);
-    setEditingField(null);
-  };
+  }
 
   const handleDeleteUser = async (id: string, username: string) => {
     try {
@@ -125,26 +108,29 @@ const UserPage = () => {
           {(data) =>
             data.map(({ id, username, isAdmin }) => (
               <tr key={id}>
-                {tableBodyCells.map((td) => (
-                  <td key={td}>
-                    <EditTableCell
+                {columnKeys.map((columnKey) => (
+                  <td key={columnKey}>
+                    <EditUserInput
                       roleOptions={roleOptions}
                       isAdmin={isAdmin}
                       onSave={() => {
-                        handleSave(id);
+                        handleSaveEdit();
                       }}
-                      showEditInput={editRowId === id && editingField === td}
-                      id={td}
-                      onChange={handleChange}
-                      value={String(values[td] || '')}
-                      roleValue={values.role || 'User'}
-                      labelText={String(
-                        allUsers.find((user) => user.id === id)?.[td] || '',
+                      showEditInput={
+                        editRowId === id && editingField === columnKey
+                      }
+                      onCancel={handleCancelEdit}
+                      onEditChange={handleEditChange}
+                      onEditBtnClick={() => {
+                        handleShowEditInput(id, columnKey);
+                      }}
+                      id={columnKey}
+                      value={String(editValues[columnKey] || '')}
+                      roleValue={editValues.role || 'User'}
+                      cellContent={String(
+                        allUsers.find((item) => item.id === id)?.[columnKey] ||
+                          '',
                       )}
-                      onCancel={handleCancel}
-                      onEdit={() => {
-                        handleEdit(id, td);
-                      }}
                     />
                   </td>
                 ))}

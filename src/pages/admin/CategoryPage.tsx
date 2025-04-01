@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { Category } from '../../app/api/apiTypes'; // Assuming this is defined elsewhere
+import { Category } from '../../app/api/apiTypes';
 import Dropdown from '../../components/dropdown/Dropdown';
 import Form from '../../components/formElements/form/Form';
 import Input from '../../components/formElements/Input';
@@ -13,24 +12,24 @@ import {
   useGetAllCategoriesQuery,
   useUpdateCategoryMutation,
 } from '../../features/categories/categoriyApiSlice';
+import EditCategoryInput from '../../features/categories/EditCategoryInput';
 import useLanguage from '../../features/language/useLanguage';
 import useFormValidation from '../../hooks/useFormValidation';
+import useTableEditField from '../../hooks/useTableEditField';
 import { BtnVariant, IconName } from '../../types/enums';
-import { ChangeInputType } from '../../types/types';
-import EditField from './EditField';
 
 const initialState = {
   categoryName: '',
 };
 
 const tableHeaders: { key: keyof Category; label: string }[] = [
-  { key: 'categoryName', label: 'name' },
+  { key: 'categoryName', label: 'categoryName' },
   { key: 'createdAt', label: 'createdAt' },
   { key: 'updatedAt', label: 'updatedAt' },
   { key: 'id', label: '' },
 ];
 
-const tableBodyCells: (keyof Category)[] = [
+const columnKeys: (keyof Category)[] = [
   'categoryName',
   'createdAt',
   'updatedAt',
@@ -38,23 +37,34 @@ const tableBodyCells: (keyof Category)[] = [
 
 const CategoryPage = () => {
   const { language } = useLanguage();
-  const [editValues, setEditValues] = useState<Partial<Category>>(initialState);
-  const [editRowId, setEditRowId] = useState<string | null>(null);
-  const [editingField, setEditingField] = useState<keyof Category | null>(null);
   const { onAddMessagePopup } = useMessagePopup();
   const { data: allCategories, isLoading } = useGetAllCategoriesQuery();
   const [createCategory] = useCreateCategoryMutation();
   const [updateCategory] = useUpdateCategoryMutation();
   const [deleteCategory] = useDeleteCategoryMutation();
+  const { onChange, values, onSubmit, errors, onClearAllValues } =
+    useFormValidation({
+      initialState,
+      callback: handleSubmitNewCategory,
+    });
 
-  const { onChange, values, onSubmit, errors } = useFormValidation({
-    initialState,
-    callback: handleSubmitNewCategory,
+  const {
+    editRowId,
+    editingField,
+    handleShowEditInput,
+    handleEditChange,
+    handleCancelEdit,
+    editValues,
+    handleSaveEdit,
+  } = useTableEditField({
+    data: allCategories || [],
+    callback: handleUpdateCategory,
   });
 
   async function handleSubmitNewCategory() {
     try {
       const result = await createCategory(values).unwrap();
+      onClearAllValues();
 
       onAddMessagePopup({
         messagePopupType: !result.success ? 'error' : 'success',
@@ -69,11 +79,6 @@ const CategoryPage = () => {
       });
     }
   }
-
-  const handleEditChange = (event: ChangeInputType) => {
-    const { name, value } = event.target;
-    setEditValues({ ...values, [name]: value });
-  };
 
   async function handleUpdateCategory(id: string) {
     const validation = validateUpdateCategory(editValues);
@@ -90,6 +95,11 @@ const CategoryPage = () => {
         id,
         categoryName: editValues.categoryName || '',
       }).unwrap();
+
+      onAddMessagePopup({
+        messagePopupType: 'success',
+        message: language.categoryUpdated,
+      });
     } catch (error: any) {
       onAddMessagePopup({
         messagePopupType: 'error',
@@ -97,24 +107,7 @@ const CategoryPage = () => {
         componentType: 'notification',
       });
     }
-    setEditRowId(null);
-    setEditingField(null);
   }
-
-  const handleEdit = (id: string, field: keyof Category) => {
-    setEditRowId(id);
-    setEditingField(field);
-    const row = allCategories?.find((item) => item.id === id);
-    if (row) {
-      setEditValues({ ...initialState, [field]: row[field] });
-    }
-  };
-
-  const handleCancel = () => {
-    setEditRowId(null);
-    setEditingField(null);
-    setEditValues(initialState);
-  };
 
   const handleDeleteCategory = async (id: string, category: string) => {
     try {
@@ -146,12 +139,11 @@ const CategoryPage = () => {
           id="categoryName"
           name="categoryName"
           labelText={language.addCategory}
-          placeholder={language.name}
+          placeholder={language.categoryName}
           errorText={errors.categoryName}
         />
       </Form>
       <div>
-        <h2>Category list</h2>
         {allCategories && (
           <Table
             data={allCategories}
@@ -163,29 +155,27 @@ const CategoryPage = () => {
             {(data) =>
               data.map(({ id, categoryName }) => (
                 <tr key={id}>
-                  {tableBodyCells.map((cellText) => (
-                    <td key={cellText}>
-                      <EditField
+                  {columnKeys.map((columnKey) => (
+                    <td key={columnKey}>
+                      <EditCategoryInput
+                        id={columnKey}
                         onSave={() => {
-                          handleUpdateCategory(id);
+                          handleSaveEdit();
                         }}
                         showEditInput={
-                          editRowId === id && editingField === cellText
+                          editRowId === id && editingField === columnKey
                         }
-                        data={allCategories}
-                        onCancel={handleCancel}
-                        cellText={cellText}
-                        id={id}
+                        onCancel={handleCancelEdit}
                         onEditChange={handleEditChange}
                         onEditBtnClick={() => {
-                          handleEdit(id, cellText);
+                          handleShowEditInput(id, columnKey);
                         }}
-                        value={String(editValues[cellText] || '')}
-                        labelText={String(
-                          allCategories.find(
-                            (category) => category.id === id,
-                          )?.[cellText] || '',
+                        cellContent={String(
+                          allCategories.find((item) => item.id === id)?.[
+                            columnKey
+                          ] || '',
                         )}
+                        value={String(editValues[columnKey] || '')}
                       />
                     </td>
                   ))}
