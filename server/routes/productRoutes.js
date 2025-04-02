@@ -6,11 +6,15 @@ import { authenticate, authorizeAdmin } from '../middleware/authMiddleware.js';
 import {
   createProduct,
   deleteProduct,
+  getAllProject,
   updateProduct,
 } from '../controllers/productController.js';
 
 const router = express.Router();
-router.route('/').post(authenticate, authorizeAdmin, createProduct);
+router
+  .route('/')
+  .get(getAllProject)
+  .post(authenticate, authorizeAdmin, createProduct);
 
 router
   .route('/:id')
