@@ -20,13 +20,11 @@ router
   .post(authenticate, authorizeAdmin, createProduct);
 
 router.get('/allProducts', getSortedProducts);
-router
-  .route('/:id/reviews')
-  .post(authenticate, authorizeAdmin, createProductReviews);
+router.route('/:id/reviews').post(authenticate, createProductReviews);
 router
   .route('/:id')
   .get(languageMiddleware, getProductById)
-  .put(authenticate, updateProduct)
+  .put(authenticate, authorizeAdmin, updateProduct)
   .delete(authenticate, authorizeAdmin, deleteProduct);
 
 export default router;
