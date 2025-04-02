@@ -5,6 +5,7 @@ import languageMiddleware from '../middleware/languageMiddleware.js';
 
 import {
   createProduct,
+  createProductReviews,
   deleteProduct,
   getProductById,
   getProducts,
@@ -20,9 +21,12 @@ router
 
 router.get('/allProducts', getSortedProducts);
 router
+  .route('/:id/reviews')
+  .post(authenticate, authorizeAdmin, createProductReviews);
+router
   .route('/:id')
   .get(languageMiddleware, getProductById)
-  .put(authenticate, authorizeAdmin, updateProduct)
+  .put(authenticate, updateProduct)
   .delete(authenticate, authorizeAdmin, deleteProduct);
 
 export default router;
