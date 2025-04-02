@@ -7,6 +7,7 @@ import {
   createProduct,
   createProductReviews,
   deleteProduct,
+  getNewProducts,
   getProductById,
   getProducts,
   getSortedProducts,
@@ -23,6 +24,7 @@ router
 router.get('/allProducts', getSortedProducts);
 router.post('/:id/reviews', authenticate, createProductReviews);
 router.get('/top', getTopProducts);
+router.get('/new', getNewProducts);
 
 router
   .route('/:id')

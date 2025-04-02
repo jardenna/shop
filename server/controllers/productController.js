@@ -180,7 +180,7 @@ const createProductReviews = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Create reviews
+// @desc    Get 4 top products
 // @route   /api/products/top
 // @method  Get
 // @access  Public
@@ -192,10 +192,25 @@ const getTopProducts = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: error.message });
   }
 });
+
+// @desc   Get 5 newest products
+// @route   /api/products/new
+// @method  Get
+// @access  Public
+const getNewProducts = asyncHandler(async (req, res) => {
+  try {
+    const products = await Product.find({}).sort({ createdAt: -1 }).limit(5);
+    res.json(products);
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
+});
+
 export {
   createProduct,
   createProductReviews,
   deleteProduct,
+  getNewProducts,
   getProductById,
   getProducts,
   getSortedProducts,
