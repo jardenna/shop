@@ -138,40 +138,41 @@ const createProductReviews = asyncHandler(async (req, res) => {
     const { rating, comment } = req.body;
     const product = await Product.findById(req.params.id);
 
-    if (product) {
-      const alreadyReviewed = product.reviews.find(
-        (review) => review.user.toString() === req.user._id.toString(),
-      );
-
-      if (alreadyReviewed) {
-        res.status(400).json({
-          success: false,
-          message: 'Product already reviewed',
-        });
-      }
-      const review = {
-        name: req.user.username,
-        rating: Number(rating),
-        comment,
-        user: req.user._id,
-      };
-
-      product.reviews.push(review);
-      product.numReviews = product.reviews.length;
-      product.rating =
-        product.reviews.reduce((acc, item) => item.rating + acc, 0) /
-        product.reviews.length;
-
-      await product.save();
-      res.status(201).json({ message: 'Review added' });
-    } else {
-      res.status(404).json({
+    if (!product) {
+      return res.status(404).json({
         success: false,
         message: t('noProduct', req.lang),
       });
     }
+
+    const alreadyReviewed = product.reviews.find(
+      (review) => review.user.toString() === req.user._id.toString(),
+    );
+
+    if (alreadyReviewed) {
+      return res.status(400).json({
+        success: false,
+        message: 'Product already reviewed',
+      });
+    }
+
+    const review = {
+      name: req.user.username,
+      rating: Number(rating),
+      comment,
+      user: req.user._id,
+    };
+
+    product.reviews.push(review);
+    product.numReviews = product.reviews.length;
+    product.rating =
+      product.reviews.reduce((acc, item) => item.rating + acc, 0) /
+      product.reviews.length;
+
+    await product.save();
+    return res.status(201).json({ message: 'Review added' });
   } catch (error) {
-    res.status(400).json(error.message);
+    return res.status(400).json({ error: error.message });
   }
 });
 
