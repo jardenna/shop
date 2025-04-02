@@ -27,8 +27,13 @@ const createProduct = asyncHandler(async (req, res) => {
 // @access  Private for admin and employee
 const updateProduct = asyncHandler(async (req, res) => {
   try {
+    const error = validateProduct(req.body);
+    if (error) {
+      return res.json({ success: false, message: error });
+    }
+
     const product = await Product.findOneAndUpdate(
-      req.params._id,
+      { _id: req.params.id },
       {
         ...req.body,
       },
@@ -47,11 +52,11 @@ const updateProduct = asyncHandler(async (req, res) => {
 // @access  Private for admin
 const deleteProduct = asyncHandler(async (req, res) => {
   try {
+    const product = await Product.findByIdAndDelete(req.params.id);
+    res.json(product);
   } catch (error) {
-    res.status(400).json(error.message);
+    res.status(500).json(error.message);
   }
-  const id = req.params.id;
-  console.log(id);
 });
 
 export { createProduct, deleteProduct, updateProduct };
