@@ -10,6 +10,7 @@ import {
   getProductById,
   getProducts,
   getSortedProducts,
+  getTopProducts,
   updateProduct,
 } from '../controllers/productController.js';
 
@@ -20,7 +21,9 @@ router
   .post(authenticate, authorizeAdmin, createProduct);
 
 router.get('/allProducts', getSortedProducts);
-router.route('/:id/reviews').post(authenticate, createProductReviews);
+router.post('/:id/reviews', authenticate, createProductReviews);
+router.get('/top', getTopProducts);
+
 router
   .route('/:id')
   .get(languageMiddleware, getProductById)

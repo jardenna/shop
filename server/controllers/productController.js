@@ -136,7 +136,7 @@ const getSortedProducts = asyncHandler(async (req, res) => {
 // @desc    Create reviews
 // @route   /api/products/id/reviews
 // @method  Post
-// @access  Public
+// @access  Public for logged in users
 const createProductReviews = asyncHandler(async (req, res) => {
   try {
     const { rating, comment } = req.body;
@@ -176,10 +176,22 @@ const createProductReviews = asyncHandler(async (req, res) => {
     await product.save();
     return res.status(201).json({ message: 'Review added' });
   } catch (error) {
-    return res.status(400).json({ error: error.message });
+    return res.status(400).json({ message: error.message });
   }
 });
 
+// @desc    Create reviews
+// @route   /api/products/top
+// @method  Get
+// @access  Public
+const getTopProducts = asyncHandler(async (req, res) => {
+  try {
+    const products = await Product.find({}).sort({ rating: -1 }).limit(4);
+    res.json(products);
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
+});
 export {
   createProduct,
   createProductReviews,
@@ -187,5 +199,6 @@ export {
   getProductById,
   getProducts,
   getSortedProducts,
+  getTopProducts,
   updateProduct,
 };
