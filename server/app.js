@@ -7,6 +7,7 @@ import path from 'path';
 import authRoutes from './routes/authRoutes.js';
 import categoryRoutes from './routes/categoryRoutes.js';
 import productRoutes from './routes/productRoutes.js';
+import uploadRoutes from './routes/uploadRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import dbConnect from './utils/dbConnect.js';
 dotenv.config();
@@ -42,6 +43,8 @@ app.use('/api/users', userRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/category', categoryRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/upload', uploadRoutes);
+app.use('/api/upload', express.static(path.join(__dirname + '/uploads')));
 
 mongoose.connection.once('open', () => {
   console.log('Connected to MongoDB');

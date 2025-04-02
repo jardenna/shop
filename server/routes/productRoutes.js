@@ -1,7 +1,7 @@
 import express from 'express';
 import { authenticate, authorizeAdmin } from '../middleware/authMiddleware.js';
+import checkId from '../middleware/checkId.js';
 import languageMiddleware from '../middleware/languageMiddleware.js';
-// import checkId from '../middleware/checkId.js'
 
 import {
   createProduct,
@@ -22,7 +22,7 @@ router
   .post(authenticate, authorizeAdmin, createProduct);
 
 router.get('/allProducts', getSortedProducts);
-router.post('/:id/reviews', authenticate, createProductReviews);
+router.post('/:id/reviews', authenticate, checkId, createProductReviews);
 router.get('/top', getTopProducts);
 router.get('/new', getNewProducts);
 
