@@ -16,3 +16,5 @@ const validateProduct = (product) => {
       return null; // No errors
   }
 };
+
+export default validateProduct;
