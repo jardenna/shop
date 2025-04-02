@@ -20,7 +20,7 @@ router.post(
 router
   .route('/')
   .post(languageMiddleware, authenticate, authorizeAdmin, createCategory)
-  .get(languageMiddleware, authenticate, authorizeAdmin, getAllCategories);
+  .get(languageMiddleware, getAllCategories);
 
 router
   .route('/:id')
