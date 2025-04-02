@@ -6,17 +6,19 @@ import languageMiddleware from '../middleware/languageMiddleware.js';
 import {
   createProduct,
   deleteProduct,
-  getAllProject,
   getProductById,
+  getProducts,
+  getSortedProducts,
   updateProduct,
 } from '../controllers/productController.js';
 
 const router = express.Router();
 router
   .route('/')
-  .get(getAllProject)
+  .get(getProducts)
   .post(authenticate, authorizeAdmin, createProduct);
 
+router.get('/allProducts', getSortedProducts);
 router
   .route('/:id')
   .get(languageMiddleware, getProductById)

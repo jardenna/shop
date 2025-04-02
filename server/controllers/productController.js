@@ -67,7 +67,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
 // @route   /api/products
 // @method  Get
 // @access  Public
-const getAllProject = asyncHandler(async (req, res) => {
+const getProducts = asyncHandler(async (req, res) => {
   try {
     const pageSize = 6;
     const keyword = req.query.keyword
@@ -117,10 +117,27 @@ const getProductById = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Get sorted Products
+// @route   /api/products/allProducts
+// @method  Get
+// @access  Public
+const getSortedProducts = asyncHandler(async (req, res) => {
+  try {
+    const products = await Product.find({})
+      .populate('category')
+      .limit(12)
+      .sort({ createAt: -1 });
+    res.json(products);
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+});
+
 export {
   createProduct,
   deleteProduct,
-  getAllProject,
   getProductById,
+  getProducts,
+  getSortedProducts,
   updateProduct,
 };
