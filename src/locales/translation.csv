@@ -86,7 +86,8 @@ noPassword;Please enter a password;Indtast venligst en adgangskode
 notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 
 notAuthorizedNoToken;Not authorized, no token;Ikke autoriseret, ingen token
 notAuthorizedTokenFailed;Not authorized, token failed;Ikke autoriseret, token mislykkedes
-noUser;User not found. Please sign up first;Bruger ikke fundet. Opret dig først
+noUser;User not found. Please sign up first;Bruger blev ikke fundet. Opret dig først
+noProduct;Product not found;Produkt blev ikke fundet
 orders;Orders;Ordrer
 password;Password;Adgangskode
 passwordDoNotMatch;The passwords do not match;Adgangskoderne stemmer ikke overens

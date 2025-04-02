@@ -1,5 +1,6 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import Product from '../models/productModel.js';
+import { t } from '../utils/translator.js';
 import validateProduct from '../utils/validateProduct .js';
 
 // @desc    Create Product
@@ -55,7 +56,10 @@ const deleteProduct = asyncHandler(async (req, res) => {
     const product = await Product.findByIdAndDelete(req.params.id);
     res.json(product);
   } catch (error) {
-    res.status(500).json(error.message);
+    res.status(500).json({
+      success: false,
+      message: t('noProduct', req.lang),
+    });
   }
 });
 
@@ -63,11 +67,9 @@ const deleteProduct = asyncHandler(async (req, res) => {
 // @route   /api/products
 // @method  Get
 // @access  Public
-
 const getAllProject = asyncHandler(async (req, res) => {
   try {
     const pageSize = 6;
-
     const keyword = req.query.keyword
       ? {
           name: {
@@ -91,4 +93,34 @@ const getAllProject = asyncHandler(async (req, res) => {
   }
 });
 
-export { createProduct, deleteProduct, getAllProject, updateProduct };
+// @desc    Get ProductById
+// @route   /api/products
+// @method  Get
+// @access  Public
+const getProductById = asyncHandler(async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+
+    if (product) {
+      return res.json(product);
+    } else {
+      res.status(404).json({
+        success: false,
+        message: t('noProduct', req.lang),
+      });
+    }
+  } catch (error) {
+    res.status(404).json({
+      success: false,
+      message: t('noProduct', req.lang),
+    });
+  }
+});
+
+export {
+  createProduct,
+  deleteProduct,
+  getAllProject,
+  getProductById,
+  updateProduct,
+};
