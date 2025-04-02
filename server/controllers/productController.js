@@ -63,7 +63,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Get all products
+// @desc    Get all paginated products and keyword-based search
 // @route   /api/products
 // @method  Get
 // @access  Public
@@ -94,7 +94,7 @@ const getProducts = asyncHandler(async (req, res) => {
 });
 
 // @desc    Get ProductById
-// @route   /api/products
+// @route   /api/products/id
 // @method  Get
 // @access  Public
 const getProductById = asyncHandler(async (req, res) => {
@@ -133,6 +133,10 @@ const getSortedProducts = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Create reviews
+// @route   /api/products/id/reviews
+// @method  Post
+// @access  Public
 const createProductReviews = asyncHandler(async (req, res) => {
   try {
     const { rating, comment } = req.body;
