@@ -12,6 +12,8 @@ const validateProduct = (product) => {
       return 'Quantity is required';
     case !product.brand:
       return 'Brand is required';
+    case !product.countInStock:
+      return 'Count in stock is required';
     default:
       return null; // No errors
   }
