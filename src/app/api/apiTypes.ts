@@ -3,8 +3,9 @@ export type RoleTypes = 'Employee' | 'User';
 export type DefaultResponseType = {
   createdAt: Date;
   message: string;
-  success: boolean;
+  reviews: ReviewResponse[];
   updatedAt: Date;
+  success?: boolean;
 };
 
 interface DefaultResponse {
@@ -113,12 +114,16 @@ export type AllPaginatedProductsResponse = {
   page: number;
   pages: number;
   products: ProductResponse[];
-  reviews: ReviewResponse[];
 };
 
-export type GetProductByIdResponse = DefaultResponseType & {
-  product: ProductResponse;
-  reviews: ReviewResponse[];
+export type AllSortedProductsResponse = Omit<
+  AllPaginatedProductsResponse,
+  'page' | 'pages' | 'hasMore'
+>;
+
+export type GetSortedProductsResponse = DefaultResponseType & {
+  category: Category;
+  product: ProductResponse[];
 };
 
 export type FileUploadNameType = 'image';

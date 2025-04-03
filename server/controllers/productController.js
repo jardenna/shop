@@ -112,26 +112,6 @@ const getProducts = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Get ProductById
-// @route   /api/products/id
-// @method  Get
-// @access  Public
-const getProductById = asyncHandler(async (req, res) => {
-  try {
-    const product = await Product.findById(req.params.id).lean();
-    const { _id, ...rest } = product;
-    const productResponse = { id: _id, ...rest };
-
-    if (product) {
-      return res.json(productResponse);
-    } else {
-      res.status(404).json(errorResponse);
-    }
-  } catch (error) {
-    res.status(404).json(errorResponse);
-  }
-});
-
 // @desc    Get sorted Products
 // @route   /api/products/allProducts
 // @method  Get
@@ -141,10 +121,78 @@ const getSortedProducts = asyncHandler(async (req, res) => {
     const products = await Product.find({})
       .populate('category')
       .limit(12)
-      .sort({ createAt: -1 });
-    res.json(products);
+      .sort({ createAt: -1 })
+      .lean();
+
+    if (!products) {
+      return res
+        .status(404)
+        .json({ success: false, message: 'Found no products' });
+    }
+    res.json({
+      products: products.map(({ _id, category, ...rest }) => ({
+        id: _id,
+        category: category
+          ? { id: category._id, ...category, _id: undefined }
+          : null,
+        ...rest,
+      })),
+    });
   } catch (error) {
     res.status(500).json(error.message);
+  }
+});
+
+// @desc    Get 4 top products
+// @route   /api/products/top
+// @method  Get
+// @access  Public
+const getTopProducts = asyncHandler(async (req, res) => {
+  try {
+    const products = await Product.find({})
+      .sort({ rating: -1 })
+      .limit(4)
+      .lean();
+    if (!products) {
+      return res
+        .status(404)
+        .json({ success: false, message: 'Found no products' });
+    }
+    res.json({
+      products: products.map(({ _id, ...rest }) => ({
+        id: _id,
+        ...rest,
+      })),
+    });
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
+});
+
+// @desc   Get 5 newest products
+// @route   /api/products/new
+// @method  Get
+// @access  Public
+const getNewProducts = asyncHandler(async (req, res) => {
+  try {
+    const products = await Product.find({})
+      .sort({ createdAt: -1 })
+      .limit(5)
+      .lean();
+
+    if (!products) {
+      return res
+        .status(404)
+        .json({ success: false, message: 'Found no products' });
+    }
+    res.json({
+      products: products.map(({ _id, ...rest }) => ({
+        id: _id,
+        ...rest,
+      })),
+    });
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
   }
 });
 
@@ -156,7 +204,6 @@ const createProductReviews = asyncHandler(async (req, res) => {
   try {
     const { rating, comment } = req.body;
     const product = await Product.findById(req.params.id);
-
 
     // const { _id, ...rest } = product;
     // const productResponse = { id: _id, ...rest };
@@ -197,29 +244,23 @@ const createProductReviews = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Get 4 top products
-// @route   /api/products/top
+// @desc    Get ProductById
+// @route   /api/products/id
 // @method  Get
 // @access  Public
-const getTopProducts = asyncHandler(async (req, res) => {
+const getProductById = asyncHandler(async (req, res) => {
   try {
-    const products = await Product.find({}).sort({ rating: -1 }).limit(4);
-    res.json(products);
-  } catch (error) {
-    return res.status(400).json({ message: error.message });
-  }
-});
+    const product = await Product.findById(req.params.id).lean();
+    const { _id, ...rest } = product;
+    const productResponse = { id: _id, ...rest };
 
-// @desc   Get 5 newest products
-// @route   /api/products/new
-// @method  Get
-// @access  Public
-const getNewProducts = asyncHandler(async (req, res) => {
-  try {
-    const products = await Product.find({}).sort({ createdAt: -1 }).limit(5);
-    res.json(products);
+    if (product) {
+      return res.json(productResponse);
+    } else {
+      res.status(404).json(errorResponse);
+    }
   } catch (error) {
-    return res.status(400).json({ message: error.message });
+    res.status(404).json(errorResponse);
   }
 });
 
@@ -232,6 +273,5 @@ export {
   getProducts,
   getSortedProducts,
   getTopProducts,
-  updateProduct
+  updateProduct,
 };
-
