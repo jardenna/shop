@@ -1,8 +1,8 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import Product from '../models/productModel.js';
-import { t } from '../utils/translator.js';
 import validateProduct from '../utils/validateProduct .js';
 
+const errorMessage = { message: 'Product not found' };
 // @desc    Create Product
 // @route   /api/products
 // @method  Post
@@ -15,8 +15,15 @@ const createProduct = asyncHandler(async (req, res) => {
     }
 
     const product = new Product({ ...req.body });
+
+    if (!product) {
+      return res.status(404).json(errorMessage);
+    }
+
     await product.save();
-    res.json(product);
+    const productResponse = { id: product._id, ...req.body };
+
+    res.json(productResponse);
   } catch (error) {
     res.status(400).json(error.message);
   }
@@ -42,13 +49,12 @@ const updateProduct = asyncHandler(async (req, res) => {
     );
 
     if (!product) {
-      return res.status(404).json({ message: 'Product not found' });
+      return res.status(404).json(errorMessage);
     }
 
     await product.save();
 
     const productResponse = { id: product._id, ...req.body };
-
     res.json(productResponse);
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -62,9 +68,6 @@ const updateProduct = asyncHandler(async (req, res) => {
 const deleteProduct = asyncHandler(async (req, res) => {
   try {
     const product = await Product.findByIdAndDelete(req.params.id);
-    if (!product) {
-      return res.status(404).json({ message: t('noData', req.lang) });
-    }
 
     if (record.image) {
       const imagePath = path.join(
@@ -90,7 +93,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: t('noProduct', req.lang),
+      errorMessage,
     });
   }
 });
@@ -112,10 +115,19 @@ const getProducts = asyncHandler(async (req, res) => {
       : {};
 
     const count = await Product.countDocuments({ ...keyword });
-    const products = await Product.find({ ...keyword }).limit(pageSize);
+    const products = await Product.find({ ...keyword })
+      .limit(pageSize)
+      .lean();
+
+    if (!products) {
+      return res.status(404).json(errorMessage);
+    }
 
     res.json({
-      products,
+      products: products.map(({ _id, ...rest }) => ({
+        id: _id,
+        ...rest,
+      })),
       page: 1,
       pages: Math.ceil(count / pageSize),
       hasMore: false,
@@ -138,13 +150,13 @@ const getProductById = asyncHandler(async (req, res) => {
     } else {
       res.status(404).json({
         success: false,
-        message: t('noProduct', req.lang),
+        errorMessage,
       });
     }
   } catch (error) {
     res.status(404).json({
       success: false,
-      message: t('noProduct', req.lang),
+      errorMessage,
     });
   }
 });
@@ -177,7 +189,7 @@ const createProductReviews = asyncHandler(async (req, res) => {
     if (!product) {
       return res.status(404).json({
         success: false,
-        message: t('noProduct', req.lang),
+        errorMessage,
       });
     }
 
@@ -194,6 +206,7 @@ const createProductReviews = asyncHandler(async (req, res) => {
 
     const review = {
       name: req.user.username,
+      id: req.user._id,
       rating: Number(rating),
       comment,
       user: req.user._id,

@@ -1,5 +1,12 @@
 export type RoleTypes = 'Employee' | 'User';
 
+export type Timestamps = {
+  createdAt: Date;
+  message: string;
+  success: boolean;
+  updatedAt: Date;
+};
+
 interface DefaultResponse {
   message: string;
   success: boolean;
@@ -55,12 +62,10 @@ export interface UpdateUserByIdRequest {
 }
 
 // Category
-export interface Category {
+export type Category = Timestamps & {
   categoryName: string;
-  createdAt: Date;
   id: string;
-  updatedAt: Date;
-}
+};
 
 export interface CategoryResponse extends DefaultResponse {
   category: Category;
@@ -76,15 +81,44 @@ export interface UpdateCategoryRequest {
 }
 
 // Products
-export type UpdateProductRequest = {
+export type ProductResponse = Timestamps & {
   brand: string;
   category: Category | string;
   countInStock: number;
   description: string;
+  id: string;
   image: string;
   price: number;
   productName: string;
   quantity: number;
+};
+
+export type ProductRequest = Omit<ProductResponse, 'id'>;
+
+export type ReviewResponse = Timestamps & {
+  comment: string;
+  id: string;
+  name: string;
+  rating: number;
+  user: string;
+};
+
+export type ReviewRequest = {
+  comment: string;
+  rating: number;
+};
+
+export type AllPaginatedProductsResponse = {
+  hasMore: boolean;
+  page: number;
+  pages: number;
+  products: ProductResponse[];
+  reviews: ReviewResponse[];
+};
+
+export type GetProductByIdResponse = {
+  product: ProductResponse;
+  reviews: ReviewResponse[];
 };
 
 export type FileUploadNameType = 'image';
