@@ -21,10 +21,18 @@ const fileFilter = (req, file, cb) => {
   const extname = path.extname(file.originalname).toLowerCase();
   const mimetype = file.mimetype;
 
+  const fileName = file.originalname;
+  const splitFileName = fileName.split('.')[1];
+
   if (filetypes.test(extname) && mimetypes.test(mimetype)) {
     cb(null, true);
   } else {
-    cb(new Error('Images only'), false);
+    return cb(
+      new Error(
+        `${splitFileName} ${t('unsupportedFile', req.lang)} . 
+        ${t('allowedFormats', req.lang)}: JPEG, JPG, PNG, WEBP, GIF.`,
+      ),
+    );
   }
 };
 
