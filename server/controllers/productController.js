@@ -2,7 +2,7 @@ import asyncHandler from '../middleware/asyncHandler.js';
 import Product from '../models/productModel.js';
 import validateProduct from '../utils/validateProduct .js';
 
-const errorMessage = { message: 'Product not found' };
+const errorResponse = { success: false, message: 'Product not found' };
 // @desc    Create Product
 // @route   /api/products
 // @method  Post
@@ -17,7 +17,7 @@ const createProduct = asyncHandler(async (req, res) => {
     const product = new Product({ ...req.body });
 
     if (!product) {
-      return res.status(404).json(errorMessage);
+      return res.status(404).json(errorResponse);
     }
 
     await product.save();
@@ -49,7 +49,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     );
 
     if (!product) {
-      return res.status(404).json(errorMessage);
+      return res.status(404).json(errorResponse);
     }
 
     await product.save();
@@ -69,10 +69,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
   try {
     res.json({ message: 'Product deleted successfully' });
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      errorMessage,
-    });
+    res.status(500).json(errorResponse);
   }
 });
 
@@ -98,7 +95,7 @@ const getProducts = asyncHandler(async (req, res) => {
       .lean();
 
     if (!products) {
-      return res.status(404).json(errorMessage);
+      return res.status(404).json(errorResponse);
     }
 
     res.json({
@@ -121,21 +118,17 @@ const getProducts = asyncHandler(async (req, res) => {
 // @access  Public
 const getProductById = asyncHandler(async (req, res) => {
   try {
-    const product = await Product.findById(req.params.id);
+    const product = await Product.findById(req.params.id).lean();
+    const { _id, ...rest } = product;
+    const productResponse = { id: _id, ...rest };
 
     if (product) {
-      return res.json(product);
+      return res.json(productResponse);
     } else {
-      res.status(404).json({
-        success: false,
-        errorMessage,
-      });
+      res.status(404).json(errorResponse);
     }
   } catch (error) {
-    res.status(404).json({
-      success: false,
-      errorMessage,
-    });
+    res.status(404).json(errorResponse);
   }
 });
 
@@ -164,11 +157,12 @@ const createProductReviews = asyncHandler(async (req, res) => {
     const { rating, comment } = req.body;
     const product = await Product.findById(req.params.id);
 
+
+    // const { _id, ...rest } = product;
+    // const productResponse = { id: _id, ...rest };
+
     if (!product) {
-      return res.status(404).json({
-        success: false,
-        errorMessage,
-      });
+      return res.status(404).json(errorResponse);
     }
 
     const alreadyReviewed = product.reviews.find(
@@ -238,5 +232,6 @@ export {
   getProducts,
   getSortedProducts,
   getTopProducts,
-  updateProduct,
+  updateProduct
 };
+

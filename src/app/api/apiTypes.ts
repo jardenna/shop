@@ -1,6 +1,6 @@
 export type RoleTypes = 'Employee' | 'User';
 
-export type Timestamps = {
+export type DefaultResponseType = {
   createdAt: Date;
   message: string;
   success: boolean;
@@ -62,7 +62,7 @@ export interface UpdateUserByIdRequest {
 }
 
 // Category
-export type Category = Timestamps & {
+export type Category = DefaultResponseType & {
   categoryName: string;
   id: string;
 };
@@ -81,7 +81,7 @@ export interface UpdateCategoryRequest {
 }
 
 // Products
-export type ProductResponse = Timestamps & {
+export type ProductResponse = DefaultResponseType & {
   brand: string;
   category: Category | string;
   countInStock: number;
@@ -95,7 +95,7 @@ export type ProductResponse = Timestamps & {
 
 export type ProductRequest = Omit<ProductResponse, 'id'>;
 
-export type ReviewResponse = Timestamps & {
+export type ReviewResponse = DefaultResponseType & {
   comment: string;
   id: string;
   name: string;
@@ -116,7 +116,7 @@ export type AllPaginatedProductsResponse = {
   reviews: ReviewResponse[];
 };
 
-export type GetProductByIdResponse = {
+export type GetProductByIdResponse = DefaultResponseType & {
   product: ProductResponse;
   reviews: ReviewResponse[];
 };
