@@ -75,4 +75,16 @@ export interface UpdateCategoryRequest {
   id: string;
 }
 
-export type FileUploadNameType = 'cover';
+// Products
+export type UpdateProductRequest = {
+  brand: string;
+  category: Category | string;
+  countInStock: number;
+  description: string;
+  image: string;
+  price: number;
+  productName: string;
+  quantity: number;
+};
+
+export type FileUploadNameType = 'image';
