@@ -40,10 +40,18 @@ const updateProduct = asyncHandler(async (req, res) => {
       },
       { new: true },
     );
+
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+
     await product.save();
-    res.json(product);
+
+    const productResponse = { id: product._id, ...req.body };
+
+    res.json(productResponse);
   } catch (error) {
-    res.status(400).json({ message: 'Product not found' });
+    res.status(400).json({ message: error.message });
   }
 });
 
