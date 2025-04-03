@@ -67,29 +67,7 @@ const updateProduct = asyncHandler(async (req, res) => {
 // @access  Private for admin
 const deleteProduct = asyncHandler(async (req, res) => {
   try {
-    const product = await Product.findByIdAndDelete(req.params.id);
-
-    if (record.image) {
-      const imagePath = path.join(
-        process.cwd(),
-        'public/images/uploads',
-        record.image,
-      );
-
-      fs.unlink(imagePath, (error) => {
-        if (error) {
-          return res
-            .status(500)
-            .json({ success: false, message: 'Error deleting image' });
-        } else {
-          return res.status(200).json({ message: 'Product deleted' });
-        }
-      });
-    } else {
-      return res.status(200).json({ message: 'Product deleted' });
-    }
-
-    res.json(product);
+    res.json({ message: 'Product deleted successfully' });
   } catch (error) {
     res.status(500).json({
       success: false,
