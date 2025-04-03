@@ -43,7 +43,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     await product.save();
     res.json(product);
   } catch (error) {
-    res.status(400).json(error.message);
+    res.status(400).json({ message: 'Product not found' });
   }
 });
 
@@ -54,6 +54,30 @@ const updateProduct = asyncHandler(async (req, res) => {
 const deleteProduct = asyncHandler(async (req, res) => {
   try {
     const product = await Product.findByIdAndDelete(req.params.id);
+    if (!product) {
+      return res.status(404).json({ message: t('noData', req.lang) });
+    }
+
+    if (record.image) {
+      const imagePath = path.join(
+        process.cwd(),
+        'public/images/uploads',
+        record.image,
+      );
+
+      fs.unlink(imagePath, (error) => {
+        if (error) {
+          return res
+            .status(500)
+            .json({ success: false, message: 'Error deleting image' });
+        } else {
+          return res.status(200).json({ message: 'Product deleted' });
+        }
+      });
+    } else {
+      return res.status(200).json({ message: 'Product deleted' });
+    }
+
     res.json(product);
   } catch (error) {
     res.status(500).json({
