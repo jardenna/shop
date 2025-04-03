@@ -109,7 +109,7 @@ const deleteCategory = asyncHandler(async (req, res) => {
     if (!category) {
       return res
         .status(404)
-        .json({ message: t('categorieNotFound', req.lang) });
+        .json({ success: false, message: t('categorieNotFound', req.lang) });
     }
 
     return res
