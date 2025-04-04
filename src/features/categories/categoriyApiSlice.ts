@@ -29,20 +29,11 @@ const categoryApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.Categories],
     }),
-    deleteCategory: builder.mutation<Category, string>({
-      query: (id) => ({
-        url: `${categoryUrl}/${id}`,
-        method: 'DELETE',
-        body: id,
-      }),
-      invalidatesTags: [TagTypesEnum.Categories],
-    }),
   }),
 });
 
 export const {
   useGetAllCategoriesQuery,
   useUpdateCategoryMutation,
-  useDeleteCategoryMutation,
   useCreateCategoryMutation,
 } = categoryApiSlice;
