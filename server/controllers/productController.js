@@ -51,6 +51,7 @@ const createProduct = asyncHandler(async (req, res) => {
 
   res.status(201).json({ id: product._id, ...req.body });
 });
+
 // @desc    Update Product
 // @route   /api/products/:id
 // @method  Put

@@ -82,6 +82,8 @@ export interface UpdateCategoryRequest {
 }
 
 // Products
+export type ProductSizes = 'S' | 'M' | 'L' | 'XL';
+
 export type ProductResponse = DefaultResponseType & {
   brand: string;
   category: Category | string;
@@ -92,6 +94,8 @@ export type ProductResponse = DefaultResponseType & {
   price: number;
   productName: string;
   quantity: number;
+  sizes: ProductSizes;
+  subCategory: string;
 };
 
 export type ProductRequest = Omit<ProductResponse, 'id'>;
@@ -124,6 +128,23 @@ export type AllSortedProductsResponse = Omit<
 export type GetSortedProductsResponse = DefaultResponseType & {
   category: Category;
   product: ProductResponse[];
+};
+
+export type CreateSubCategoriesRequest = {
+  category: string;
+  subCategoryName: string;
+};
+
+export type CreateSubCategoriesResponse = DefaultResponseType & {
+  _id: string;
+  category: string;
+  subCategoryName: string;
+};
+
+export type GetSubCategoriesResponse = DefaultResponseType & {
+  _id: string;
+  category: Category;
+  subCategoryName: string;
 };
 
 export type FileUploadNameType = 'image';
