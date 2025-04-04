@@ -1,4 +1,5 @@
 import asyncHandler from '../middleware/asyncHandler.js';
+import Product from '../models/productModel.js';
 import SubCategory from '../models/subCategoryModel.js';
 
 // @desc    Create SubCategory
@@ -40,14 +41,27 @@ const getSubCategories = asyncHandler(async (req, res) => {
 // @method  Delete
 // @access  Private for admin
 const deleteSubCategory = asyncHandler(async (req, res) => {
-  const subCategory = await SubCategory.findByIdAndDelete(req.params.id);
-  if (!subCategory) {
-    return res
-      .status(404)
-      .json({ success: false, message: 'SubCategory does not exists' });
+  const subCategoryId = req.params.id;
+
+  // Check if any products are associated with this subcategory
+  const products = await Product.find({ subCategory: subCategoryId });
+  if (products.length > 0) {
+    return res.status(400).json({
+      success: false,
+      message: 'Cannot delete subcategory. Products are associated with it.',
+    });
   }
 
-  res.json({ message: 'subCategory deleted successfully' });
+  // Proceed with deletion if no products are associated
+  const subCategory = await SubCategory.findByIdAndDelete(subCategoryId);
+  if (!subCategory) {
+    return res.status(404).json({
+      success: false,
+      message: 'SubCategory does not exist',
+    });
+  }
+
+  res.json({ success: true, message: 'SubCategory deleted successfully' });
 });
 
 export { createSubCategory, deleteSubCategory, getSubCategories };
