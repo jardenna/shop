@@ -22,12 +22,19 @@ const productSchema = new mongoose.Schema(
     brand: { type: String, required: true },
     quantity: { type: Number, required: true },
     category: { type: ObjectId, ref: 'Category', required: true },
+    subCategory: { type: ObjectId, ref: 'SubCategory', required: false }, // Added subCategory
     description: { type: String, required: true },
     reviews: [reviewSchema],
     rating: { type: Number, required: true, default: 0 },
     numReviews: { type: Number, required: true, default: 0 },
     price: { type: Number, required: true, default: 0 },
     countInStock: { type: Number, required: true, default: 0 },
+    sizes: {
+      // Added sizes
+      type: [String],
+      enum: ['S', 'M', 'L', 'XL', 'XXL'],
+      default: [],
+    },
   },
   { timestamps: true },
 );

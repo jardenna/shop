@@ -21,12 +21,36 @@ const createProduct = asyncHandler(async (req, res) => {
     return res.status(400).json({ success: false, message: error });
   }
 
-  const product = new Product({ ...req.body });
+  const {
+    productName,
+    image,
+    brand,
+    quantity,
+    category,
+    subCategory,
+    description,
+    price,
+    countInStock,
+    sizes,
+  } = req.body;
+
+  const product = new Product({
+    productName,
+    image,
+    brand,
+    quantity,
+    category,
+    subCategory, // Include subCategory
+    description,
+    price,
+    countInStock,
+    sizes, // Include sizes
+  });
+
   await product.save();
 
   res.status(201).json({ id: product._id, ...req.body });
 });
-
 // @desc    Update Product
 // @route   /api/products/:id
 // @method  Put
@@ -37,9 +61,36 @@ const updateProduct = asyncHandler(async (req, res) => {
     return res.status(400).json({ success: false, message: error });
   }
 
-  const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-  });
+  const {
+    productName,
+    image,
+    brand,
+    quantity,
+    category,
+    subCategory,
+    description,
+    price,
+    countInStock,
+    sizes,
+  } = req.body;
+
+  const product = await Product.findByIdAndUpdate(
+    req.params.id,
+    {
+      productName,
+      image,
+      brand,
+      quantity,
+      category,
+      subCategory, // Include subCategory
+      description,
+      price,
+      countInStock,
+      sizes, // Include sizes
+    },
+    { new: true },
+  );
+
   if (!product) {
     return res.status(404).json(errorResponse);
   }
@@ -95,6 +146,7 @@ const getSortedProducts = asyncHandler(async (req, res) => {
 
   const products = await Product.find({})
     .populate('category')
+    .populate('subCategory')
     .limit(pageSize)
     .skip(pageSize * (page - 1))
     .sort({ createdAt: -1 })
