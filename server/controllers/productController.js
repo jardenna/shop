@@ -32,6 +32,9 @@ const createProduct = asyncHandler(async (req, res) => {
     price,
     countInStock,
     sizes,
+    colors,
+    material,
+    discount,
   } = req.body;
 
   const product = new Product({
@@ -40,11 +43,14 @@ const createProduct = asyncHandler(async (req, res) => {
     brand,
     quantity,
     category,
-    subCategory, // Include subCategory
+    subCategory,
     description,
     price,
     countInStock,
-    sizes, // Include sizes
+    colors,
+    material,
+    sizes,
+    discount,
   });
 
   await product.save();
@@ -73,6 +79,9 @@ const updateProduct = asyncHandler(async (req, res) => {
     price,
     countInStock,
     sizes,
+    colors,
+    material,
+    discount,
   } = req.body;
 
   const product = await Product.findByIdAndUpdate(
@@ -83,11 +92,14 @@ const updateProduct = asyncHandler(async (req, res) => {
       brand,
       quantity,
       category,
-      subCategory, // Include subCategory
+      subCategory,
       description,
       price,
       countInStock,
-      sizes, // Include sizes
+      sizes: req.body.sizes || ['S', 'M', 'L', 'XL'],
+      colors,
+      material,
+      discount,
     },
     { new: true },
   );

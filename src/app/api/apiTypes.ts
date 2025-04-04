@@ -87,15 +87,18 @@ export type ProductSizes = 'S' | 'M' | 'L' | 'XL';
 export type ProductResponse = DefaultResponseType & {
   brand: string;
   category: Category | string;
+  colors: string[];
   countInStock: number;
   description: string;
   id: string;
   image: string;
+  material: string;
   price: number;
   productName: string;
   quantity: number;
   sizes: ProductSizes;
   subCategory: string;
+  discount?: number;
 };
 
 export type ProductRequest = Omit<ProductResponse, 'id'>;
