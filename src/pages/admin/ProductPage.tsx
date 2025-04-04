@@ -1,5 +1,10 @@
-import { FC } from 'react';
+import { useGetAllProductsQuery } from '../../features/products/productApiSlice';
 
-const ProductPage: FC = () => <section>Products</section>;
+const ProductPage = () => {
+  const { data: allProducts } = useGetAllProductsQuery();
+  console.log(allProducts);
+
+  return <section>Products</section>;
+};
 
 export default ProductPage;
