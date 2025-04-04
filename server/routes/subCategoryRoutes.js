@@ -1,6 +1,7 @@
 import express from 'express';
 import {
   createSubCategory,
+  deleteSubCategory,
   getSubCategories,
 } from '../controllers/subCategoryController.js';
 import { authenticate, authorizeAdmin } from '../middleware/authMiddleware.js';
@@ -11,5 +12,7 @@ router
   .route('/')
   .post(languageMiddleware, authenticate, authorizeAdmin, createSubCategory)
   .get(languageMiddleware, getSubCategories);
+
+router.delete('/:id', deleteSubCategory);
 
 export default router;

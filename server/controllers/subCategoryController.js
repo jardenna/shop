@@ -35,4 +35,19 @@ const getSubCategories = asyncHandler(async (req, res) => {
   res.json(subCategories);
 });
 
-export { createSubCategory, getSubCategories };
+// @desc    Delete SubCategory
+// @route   /api/subcategories/:id
+// @method  Delete
+// @access  Private for admin
+const deleteSubCategory = asyncHandler(async (req, res) => {
+  const subCategory = await SubCategory.findByIdAndDelete(req.params.id);
+  if (!subCategory) {
+    return res
+      .status(404)
+      .json({ success: false, message: 'SubCategory does not exists' });
+  }
+
+  res.json({ message: 'subCategory deleted successfully' });
+});
+
+export { createSubCategory, deleteSubCategory, getSubCategories };
