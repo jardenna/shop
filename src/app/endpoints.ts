@@ -1,6 +1,4 @@
 const baseAuthApi = 'auth';
-const baseUserApi = 'users';
-const baseCategoryApi = 'category';
 
 const authEndpoints = {
   register: `${baseAuthApi}/register`,
@@ -9,13 +7,9 @@ const authEndpoints = {
   checkAuth: `${baseAuthApi}/check-auth`,
 };
 
-const userEndpoints = {
-  users: baseUserApi,
-  userProfile: `${baseAuthApi}/profile`,
-};
+const userUrl = '/users';
+const categoryUrl = '/category';
+const productUrl = '/products';
+const uploadUrl = '/upload';
 
-const categoryEndpoints = {
-  categories: baseCategoryApi,
-};
-
-export { authEndpoints, categoryEndpoints, userEndpoints };
+export { authEndpoints, categoryUrl, productUrl, uploadUrl, userUrl };

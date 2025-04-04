@@ -5,23 +5,21 @@ import {
   UpdateUserByIdResponse,
   UserResponse,
 } from '../../../app/api/apiTypes';
-import { userEndpoints } from '../../../app/endpoints';
-
-const endpoint = userEndpoints.users;
+import { userUrl } from '../../../app/endpoints';
 
 export const usersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllUsers: builder.query<UserResponse[], void>({
-      query: () => endpoint,
+      query: () => userUrl,
       providesTags: [TagTypesEnum.Auth],
     }),
     getUserByd: builder.query<UserResponse, number>({
-      query: (id) => `${endpoint}/${id}`,
+      query: (id) => `${userUrl}/${id}`,
     }),
     updateUser: builder.mutation<UpdateUserByIdResponse, UpdateUserByIdRequest>(
       {
         query: ({ user, id }) => ({
-          url: `${endpoint}/${id}`,
+          url: `${userUrl}/${id}`,
           method: 'PUT',
           body: user,
         }),
@@ -30,7 +28,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
     ),
     deleteUser: builder.mutation<OmittedAuthResponse, string>({
       query: (id) => ({
-        url: `${endpoint}/${id}`,
+        url: `${userUrl}/${id}`,
         method: 'DELETE',
         body: id,
       }),

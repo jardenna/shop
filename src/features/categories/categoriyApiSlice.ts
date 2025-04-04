@@ -5,17 +5,17 @@ import {
   CreateCategoryRequest,
   UpdateCategoryRequest,
 } from '../../app/api/apiTypes';
-import { categoryEndpoints } from '../../app/endpoints';
+import { categoryUrl } from '../../app/endpoints';
 
 const categoryApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllCategories: builder.query<Category[], void>({
-      query: () => categoryEndpoints.categories,
+      query: () => categoryUrl,
       providesTags: [TagTypesEnum.Categories],
     }),
     createCategory: builder.mutation<CategoryResponse, CreateCategoryRequest>({
       query: (name) => ({
-        url: categoryEndpoints.categories,
+        url: categoryUrl,
         method: 'POST',
         body: name,
       }),
@@ -23,7 +23,7 @@ const categoryApiSlice = apiSlice.injectEndpoints({
     }),
     updateCategory: builder.mutation<CategoryResponse, UpdateCategoryRequest>({
       query: ({ id, categoryName }) => ({
-        url: `${categoryEndpoints.categories}/${id}`,
+        url: `${categoryUrl}/${id}`,
         method: 'PUT',
         body: { categoryName },
       }),
@@ -31,7 +31,7 @@ const categoryApiSlice = apiSlice.injectEndpoints({
     }),
     deleteCategory: builder.mutation<Category, string>({
       query: (id) => ({
-        url: `${categoryEndpoints.categories}/${id}`,
+        url: `${categoryUrl}/${id}`,
         method: 'DELETE',
         body: id,
       }),

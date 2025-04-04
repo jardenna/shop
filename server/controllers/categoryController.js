@@ -6,7 +6,7 @@ import { t } from '../utils/translator.js';
 // @desc    Get all Categories
 // @route   /api/category
 // @method  Get
-// @access  Private for admin and employee
+// @access  Public
 const getAllCategories = asyncHandler(async (req, res) => {
   try {
     const allCategories = await Category.find({}).lean();
@@ -91,7 +91,7 @@ const updateCategory = asyncHandler(async (req, res) => {
   } catch (error) {
     return res.status(500).json({
       success: false,
-      message: error,
+      message: error.message,
     });
   }
 });

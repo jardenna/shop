@@ -116,7 +116,7 @@ const Table = <T,>({
     <>
       <div className="table-controls">
         <Button onClick={handleClearAll} variant={BtnVariant.Default}>
-          Clear
+          {language.clearFilters}
         </Button>
         <TableGridList
           onSetPadding={setPadding}

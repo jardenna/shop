@@ -5,6 +5,7 @@ actionNotAllowedForAdmin;Admin cannot be deleted;Denne handling er ikke tilladt 
 addCategory;Add category;Tilføj kategori
 additionalInfo;Additional info;Supplerende information
 admin;Admin;Admin
+allowedFormats;Allowed formats;Tilladte formater
 asc;ascending;stigende
 bag;Bag;Indkøbskurv
 cancel;Cancel;Annuller
@@ -86,7 +87,8 @@ noPassword;Please enter a password;Indtast venligst en adgangskode
 notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 
 notAuthorizedNoToken;Not authorized, no token;Ikke autoriseret, ingen token
 notAuthorizedTokenFailed;Not authorized, token failed;Ikke autoriseret, token mislykkedes
-noUser;User not found. Please sign up first;Bruger ikke fundet. Opret dig først
+noUser;User not found. Please sign up first;Bruger blev ikke fundet. Opret dig først
+noProduct;Product not found;Produkt blev ikke fundet
 orders;Orders;Ordrer
 password;Password;Adgangskode
 passwordDoNotMatch;The passwords do not match;Adgangskoderne stemmer ikke overens
@@ -124,6 +126,7 @@ sureToDelete;Are you sure that you want to delete;Er du sikker på at du vil sle
 title;Title;Titel
 trashCan;Trash can;Skraldespand
 updatePreferences;Update Preferences;Opdater præferencer
+unsupportedFile;is not supported type;er ikke understøttet
 user;User;Bruger
 userAlreadyExist;A profile with this email already exists. Try logging in instead;Der findes en profil med denne e-mail. Prøv at logge ind i stedet
 userDeleted;User deleted;Bruger slettet
