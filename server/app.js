@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
 import path from 'path';
+import errorHandler from './middleware/errorHandler.js';
 import authRoutes from './routes/authRoutes.js';
 import categoryRoutes from './routes/categoryRoutes.js';
 import productRoutes from './routes/productRoutes.js';
@@ -45,6 +46,9 @@ app.use('/api/category', categoryRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api/upload', express.static(path.join(__dirname + '/uploads')));
+
+// Global error handler
+app.use(errorHandler);
 
 mongoose.connection.once('open', () => {
   console.log('Connected to MongoDB');
