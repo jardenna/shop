@@ -50,6 +50,7 @@ const EditTableInput = ({
           labelText={cellContent}
           type={inputType}
           inputHasNoLabel
+          autoFocus
         />
       ) : (
         alternativeInput
