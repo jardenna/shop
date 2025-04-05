@@ -112,7 +112,14 @@ export default tseslint.config(
           unnamedComponents: 'arrow-function',
         },
       ],
-
+      'spaced-comment': [
+        'error',
+        'always',
+        {
+          markers: ['/'], // TS
+          exceptions: ['-'],
+        },
+      ],
       curly: ['error', 'all'],
       'arrow-body-style': 'warn',
       'react/no-multi-comp': ['error', { ignoreStateless: false }],
