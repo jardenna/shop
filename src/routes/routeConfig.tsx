@@ -24,7 +24,7 @@ const routeConfig = createBrowserRouter([
   {
     path: MainPath.Root,
     errorElement: <ErrorPage />,
-    element: <Layout />, // Public layout
+    element: <Layout />,
     children: [
       {
         index: true,
@@ -62,27 +62,14 @@ const routeConfig = createBrowserRouter([
         path: MainPath.ShoppingCart,
         element: <ShoppingChart />,
       },
-
-      {
-        element: <ProtectedRoute />,
-        children: [
-          {
-            index: true,
-            element: <Dashboard />,
-          },
-          {
-            path: MainPath.Dashboard,
-            element: <Dashboard />,
-          },
-        ],
-      },
     ],
   },
   {
-    element: <ProtectedRoute />, // Ensure only authenticated users access
+    // <Route path="product/update/:_id" element={<ProductUpdate />} />
+    element: <ProtectedRoute />,
     children: [
       {
-        path: MainPath.Dashboard,
+        path: MainPath.Admin,
         element: <AdminLayout />,
         children: [
           {
