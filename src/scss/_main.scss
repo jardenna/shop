@@ -44,18 +44,17 @@ body {
   letter-spacing: rem(0.5px);
 }
 
+h1,
+h2 {
+  margin: 0;
+  font-weight: normal;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+
 h1 {
   font-size: rem(24px);
   font-family: $font-secondary;
-  font-weight: normal;
-  color: #66606d;
-  margin: 0;
-  margin-bottom: 12px;
-  letter-spacing: 3px;
-}
-
-h2 {
-  font-weight: normal;
 }
 
 img {
