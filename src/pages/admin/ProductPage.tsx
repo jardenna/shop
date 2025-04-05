@@ -1,13 +1,12 @@
 import { ProductResponse } from '../../app/api/apiTypes';
 import Figure from '../../components/figure/Figure';
 import Table from '../../components/sortTable/Table';
+import DateDisplay from '../../features/categories/DateDisplay';
 import ProductPrice from '../../features/currency/components/ProductPrice';
-import useLanguage from '../../features/language/useLanguage';
 import { useGetAllProductsQuery } from '../../features/products/productApiSlice';
-import dateToLocaleMap from '../../utils/dates';
 
 const ProductPage = () => {
-  const { selectedLanguage } = useLanguage();
+  // const { selectedLanguage } = useLanguage();
   const tableHeaders: {
     key: keyof ProductResponse;
     label: string;
@@ -43,16 +42,11 @@ const ProductPage = () => {
                   <ProductPrice price={price} />
                 </td>
                 <td>
-                  <span>
-                    {new Intl.DateTimeFormat(
-                      dateToLocaleMap[selectedLanguage],
-                      {
-                        day: '2-digit',
-                        month: '2-digit',
-                        year: '2-digit',
-                      },
-                    ).format(new Date(updatedAt))}
-                  </span>
+                  <DateDisplay
+                    date={updatedAt}
+                    month="2-digit"
+                    year="2-digit"
+                  />
                 </td>
               </tr>
             ),

@@ -1,23 +1,36 @@
+import dateToLocaleMap from '../../utils/dates';
+import useLanguage from '../language/useLanguage';
+
 type DateDisplayProps = {
-  cellContent: string | Date;
-  locale: string;
+  date: Date | string;
   day?: 'numeric' | '2-digit' | undefined;
+  hour?: 'numeric' | '2-digit' | undefined;
+  minute?: 'numeric' | '2-digit' | undefined;
   month?: 'numeric' | '2-digit' | 'long' | 'short' | 'narrow' | undefined;
   year?: 'numeric' | '2-digit' | undefined;
 };
 
 const DateDisplay = ({
-  cellContent,
-  locale,
+  date,
   day = '2-digit',
   month = 'long',
   year = 'numeric',
-}: DateDisplayProps) => (
-  <span>
-    {new Intl.DateTimeFormat(locale, { day, month, year }).format(
-      new Date(cellContent),
-    )}
-  </span>
-);
+  hour,
+  minute,
+}: DateDisplayProps) => {
+  const { selectedLanguage } = useLanguage();
+
+  return (
+    <span>
+      {new Intl.DateTimeFormat(dateToLocaleMap[selectedLanguage], {
+        day,
+        month,
+        year,
+        hour,
+        minute,
+      }).format(new Date(date))}
+    </span>
+  );
+};
 
 export default DateDisplay;

@@ -3,7 +3,6 @@ import EditTableInput, {
   BaseEditTableInput,
 } from '../../components/sortTable/EditTableInput';
 import { IconName } from '../../types/enums';
-import dateToLocaleMap from '../../utils/dates';
 import useLanguage from '../language/useLanguage';
 import DateDisplay from './DateDisplay'; // Import the new child component
 
@@ -22,7 +21,7 @@ const EditCategoryInput = ({
   onSave,
   cellContent,
 }: EditCategoryInputProps) => {
-  const { language, selectedLanguage } = useLanguage();
+  const { language } = useLanguage();
   const isCategoryName = id === 'categoryName';
 
   return (
@@ -48,12 +47,7 @@ const EditCategoryInput = ({
           />
         </>
       )}
-      {!showEditInput && !isCategoryName && (
-        <DateDisplay
-          cellContent={cellContent}
-          locale={dateToLocaleMap[selectedLanguage]}
-        />
-      )}
+      {!showEditInput && !isCategoryName && <DateDisplay date={cellContent} />}
     </div>
   );
 };
