@@ -86,7 +86,7 @@ export type ProductSizes = 'S' | 'M' | 'L' | 'XL';
 
 export type ProductResponse = DefaultResponseType & {
   brand: string;
-  category: Category | string;
+  category: Category;
   colors: string[];
   countInStock: number;
   description: string;

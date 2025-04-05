@@ -12,7 +12,7 @@ cancel;Cancel;Annuller
 cannotDeleteAdmin;This action is not allowed for admin;Admin bruger kan ikke slettes
 categorieNotFound;Category not found;Kategori findes ikke
 categories;Categories;Kategorier
-categories;Categories;Kategorier
+category;Category;Kategori
 categoryAlreadyExist;Category already exist;Kategori findes allerede
 categoryDeleted;Category deleted;Kategori blev slettet
 categoryName;Category name;Kategori navn

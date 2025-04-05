@@ -12,6 +12,7 @@ const tableHeaders: Column<ProductResponse>[] = [
   { key: 'image', label: 'image', hideTableControls: true },
   { key: 'productName', label: 'productName' },
   { key: 'description', label: 'description' },
+  { key: 'category', label: 'category' },
   { key: 'price', label: 'price' },
   { key: 'updatedAt', label: 'updatedAt' },
   { key: 'id', label: '' },
@@ -32,13 +33,22 @@ const ProductPage = () => {
       >
         {(data) =>
           data.map(
-            ({ id, productName, image, description, price, updatedAt }) => (
+            ({
+              id,
+              productName,
+              image,
+              description,
+              price,
+              updatedAt,
+              category,
+            }) => (
               <tr key={id}>
                 <td>
-                  <Figure src={`/images${image}`} alt="s" />
+                  <Figure src={`/images${image}`} alt="" />
                 </td>
                 <td>{productName}</td>
                 <td>{description}</td>
+                <td>{category.categoryName}</td>
                 <td>
                   <ProductPrice price={price} />
                 </td>
