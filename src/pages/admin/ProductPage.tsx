@@ -1,12 +1,11 @@
+import { Link } from 'react-router';
 import { ProductResponse } from '../../app/api/apiTypes';
-import Button from '../../components/Button';
 import Figure from '../../components/figure/Figure';
 import Table, { Column } from '../../components/sortTable/Table';
 import DateDisplay from '../../features/categories/DateDisplay';
 import ProductPrice from '../../features/currency/components/ProductPrice';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetAllProductsQuery } from '../../features/products/productApiSlice';
-import { BtnVariant } from '../../types/enums';
 
 const tableHeaders: Column<ProductResponse>[] = [
   { key: 'image', label: 'image', hideTableControls: true },
@@ -47,7 +46,9 @@ const ProductPage = () => {
                   <Figure src={`/images${image}`} alt="" />
                 </td>
                 <td>{productName}</td>
-                <td>{description}</td>
+                <td>
+                  <p className="text-ellipsis">{description}</p>
+                </td>
                 <td>{category.categoryName}</td>
                 <td>
                   <ProductPrice price={price} />
@@ -60,9 +61,12 @@ const ProductPage = () => {
                   />
                 </td>
                 <td>
-                  <Button variant={BtnVariant.Default}>
+                  <Link
+                    to={`/admin/product/update/${id}`}
+                    className="block mb-4 overflow-hidden"
+                  >
                     {language.update}
-                  </Button>
+                  </Link>
                 </td>
               </tr>
             ),
