@@ -1,4 +1,5 @@
 import { ProductResponse } from '../../app/api/apiTypes';
+import Button from '../../components/Button';
 import Figure from '../../components/figure/Figure';
 import Table from '../../components/sortTable/Table';
 import DateDisplay from '../../features/categories/DateDisplay';
@@ -47,6 +48,9 @@ const ProductPage = () => {
                     month="2-digit"
                     year="2-digit"
                   />
+                </td>
+                <td>
+                  <Button>Update</Button>
                 </td>
               </tr>
             ),

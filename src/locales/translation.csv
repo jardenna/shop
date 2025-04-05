@@ -10,15 +10,14 @@ asc;ascending;stigende
 bag;Bag;Indkøbskurv
 cancel;Cancel;Annuller
 cannotDeleteAdmin;This action is not allowed for admin;Admin bruger kan ikke slettes
-categoryAlreadyExist;Category already exist;Kategori findes allerede
 categorieNotFound;Category not found;Kategori findes ikke
 categories;Categories;Kategorier
 categories;Categories;Kategorier
+categoryAlreadyExist;Category already exist;Kategori findes allerede
 categoryDeleted;Category deleted;Kategori blev slettet
 categoryName;Category name;Kategori navn
+categoryUpdated;Category updated;Kategori opdateret
 clearFilters;Clear filters;Ryd filtre
-createdAt;Created at;Tilføjet
-updatedAt;Updated at;Opdateret
 clearSort;Clear sort;Ryd sortering
 close;Close;Luk
 closeDialog;Close dialog;Luk dialog
@@ -27,6 +26,7 @@ collection;Collection;Kollektion
 confirmPassword;Confirm password;Gentag adgangskode
 contact;Contact;Kontakt
 createAccount;Create account;Opret konto
+createdAt;Created at;Tilføjet
 criterionMet;Criterion met;Kriterium opfyldt
 criterionNotMet;Criterion not met;Kriterium ikke opfyldt
 currency;Currency;Valuta
@@ -36,6 +36,7 @@ delete;Delete;Slet
 deleted;deleted;slettet
 deleteUser;Delete user;Slet bruger
 desc;descending;faldende
+description;Description;Beskrivelse
 editUser;Edit user;Opdater bruger
 email;Email;E-mail
 error;Error;Fejl
@@ -58,6 +59,7 @@ heroText1;For a limited time, enjoy incredible discounts on the latest fashion t
 heroTitle;Exclusive Fashion Sale;Eksklusivt Modesalg
 hidePassword;Hide password;Skjul adgangskode
 home;Home;Hjem
+image;Image;Foto
 invalidPassword;Invalid password;Ugyldig adgangskode
 invalidUserData;Invalid user data;Ugyldig bruger data
 language;Language;Sprog
@@ -83,11 +85,11 @@ newCategoryCreated;New category created;Ny kategori blev oprettet
 noData;No data found;Ingen data fundet
 noEmail;Please enter an email;Indtast venligst en e-mail
 noPassword;Please enter a password;Indtast venligst en adgangskode
+noProduct;Product not found;Produkt blev ikke fundet
 notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 
 notAuthorizedNoToken;Not authorized, no token;Ikke autoriseret, ingen token
 notAuthorizedTokenFailed;Not authorized, token failed;Ikke autoriseret, token mislykkedes
 noUser;User not found. Please sign up first;Bruger blev ikke fundet. Opret dig først
-noProduct;Product not found;Produkt blev ikke fundet
 orders;Orders;Ordrer
 password;Password;Adgangskode
 passwordDoNotMatch;The passwords do not match;Adgangskoderne stemmer ikke overens
@@ -98,11 +100,13 @@ passwordSymbol;Password should contain at least one special character;Adgangskod
 passwordUppercase;Password should contain at least one uppercase letter;Adgangskoden skal indeholde mindst ét stort bogstav
 pensil;Pensil;Blyant
 pleaseEnter;Please enter;Indsæt venligst
-pleaseEnterName;Please enter name;Indsæt venligst navn
 pleaseEnterCategoryName;Please enter a category name;Indsæt venligst kategori
+pleaseEnterName;Please enter name;Indsæt venligst navn
 pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
 pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
 preferences;Preferences;Præferencer
+price;Price;Pris
+productName;Product name;Produkt navn
 products;Products;Produkter
 profile;Profile;Profil
 resetFiltersAndSorting;Reset filters and sorting;Nulstil filtre og sortering
@@ -124,8 +128,9 @@ success;Success;Succes
 sureToDelete;Are you sure that you want to delete;Er du sikker på at du vil slette
 title;Title;Titel
 trashCan;Trash can;Skraldespand
-updatePreferences;Update Preferences;Opdater præferencer
 unsupportedFile;is not supported type;er ikke understøttet
+updatedAt;Updated at;Opdateret
+updatePreferences;Update Preferences;Opdater præferencer
 user;User;Bruger
 userAlreadyExist;A profile with this email already exists. Try logging in instead;Der findes en profil med denne e-mail. Prøv at logge ind i stedet
 userDeleted;User deleted;Bruger slettet
@@ -133,6 +138,5 @@ userInfo;User info;Bruger info
 username;User name;Brugernavn
 users;Users;Brugere
 userUpdated;User updated;Bruger opdateret
-categoryUpdated;Category updated;Kategori opdateret
 warning;Warning;Warning
 welcome;Welcome;Velkommen
