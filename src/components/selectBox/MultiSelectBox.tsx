@@ -8,12 +8,11 @@ const MultiSelectBox: FC = () => {
     { label: 'kiwi', value: 3 },
   ];
 
-  const [items, setItems] = useState<OptionType[] | OptionType>();
+  const [, setItems] = useState<OptionType[] | OptionType>();
 
   const handleOption = (selections: any) => {
     setItems(selections);
   };
-  console.log(items);
 
   return (
     <section>
