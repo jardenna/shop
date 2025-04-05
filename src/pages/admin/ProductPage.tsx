@@ -7,12 +7,12 @@ import ProductPrice from '../../features/currency/components/ProductPrice';
 import { useGetAllProductsQuery } from '../../features/products/productApiSlice';
 
 const ProductPage = () => {
-  // const { selectedLanguage } = useLanguage();
   const tableHeaders: {
     key: keyof ProductResponse;
     label: string;
+    hideTableControls?: boolean;
   }[] = [
-    { key: 'image', label: 'image' },
+    { key: 'image', label: 'image', hideTableControls: true },
     { key: 'productName', label: 'productName' },
     { key: 'description', label: 'description' },
     { key: 'price', label: 'price' },

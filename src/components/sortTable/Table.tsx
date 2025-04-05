@@ -14,6 +14,7 @@ import TableSearchInput from './TableSearchInput';
 type Column<T> = {
   key: keyof T;
   label: string;
+  hideTableControls?: boolean;
 };
 
 type TableProps<T> = {
@@ -138,7 +139,7 @@ const Table = <T,>({
                     scope="col"
                     style={{ paddingBlock: Number(padding) }}
                   >
-                    {col.label !== '' ? (
+                    {!col.hideTableControls && col.label !== '' ? (
                       <div className="table-header-cell">
                         <div className="sort">
                           {language[col.label]}
