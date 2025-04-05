@@ -106,6 +106,7 @@ pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
 pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
 preferences;Preferences;Præferencer
 price;Price;Pris
+productList;Product list;Produktliste
 productName;Product name;Produkt navn
 products;Products;Produkter
 profile;Profile;Profil
@@ -129,6 +130,8 @@ sureToDelete;Are you sure that you want to delete;Er du sikker på at du vil sle
 title;Title;Titel
 trashCan;Trash can;Skraldespand
 unsupportedFile;is not supported type;er ikke understøttet
+update;Update;Opdater
+updateProduct;Update product;Opdater produkt
 updatedAt;Updated at;Opdateret
 updatePreferences;Update Preferences;Opdater præferencer
 user;User;Bruger

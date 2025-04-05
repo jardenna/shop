@@ -4,18 +4,21 @@ import Figure from '../../components/figure/Figure';
 import Table, { Column } from '../../components/sortTable/Table';
 import DateDisplay from '../../features/categories/DateDisplay';
 import ProductPrice from '../../features/currency/components/ProductPrice';
+import useLanguage from '../../features/language/useLanguage';
 import { useGetAllProductsQuery } from '../../features/products/productApiSlice';
+import { BtnVariant } from '../../types/enums';
+
+const tableHeaders: Column<ProductResponse>[] = [
+  { key: 'image', label: 'image', hideTableControls: true },
+  { key: 'productName', label: 'productName' },
+  { key: 'description', label: 'description' },
+  { key: 'price', label: 'price' },
+  { key: 'updatedAt', label: 'updatedAt' },
+  { key: 'id', label: '' },
+];
 
 const ProductPage = () => {
-  const tableHeaders: Column<ProductResponse>[] = [
-    { key: 'image', label: 'image', hideTableControls: true },
-    { key: 'productName', label: 'productName' },
-    { key: 'description', label: 'description' },
-    { key: 'price', label: 'price' },
-    { key: 'updatedAt', label: 'updatedAt' },
-    { key: 'id', label: '' },
-  ];
-
+  const { language } = useLanguage();
   const { data: allProducts, isLoading } = useGetAllProductsQuery();
 
   return (
@@ -24,7 +27,8 @@ const ProductPage = () => {
         isLoading={isLoading}
         data={allProducts?.products ?? []}
         columns={tableHeaders}
-        tableCaption="products"
+        tableCaption={language.productList}
+        emptyHeaderCellText={language.updateProduct}
       >
         {(data) =>
           data.map(
@@ -46,7 +50,9 @@ const ProductPage = () => {
                   />
                 </td>
                 <td>
-                  <Button>Update</Button>
+                  <Button variant={BtnVariant.Default}>
+                    {language.update}
+                  </Button>
                 </td>
               </tr>
             ),

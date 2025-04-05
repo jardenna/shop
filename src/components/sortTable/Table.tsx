@@ -139,35 +139,39 @@ const Table = <T,>({
                     scope="col"
                     style={{ paddingBlock: Number(padding) }}
                   >
-                    {!col.hideTableControls && col.label !== '' ? (
+                    {col.label !== '' ? (
                       <div className="table-header-cell">
                         <div className="sort">
                           {language[col.label]}
-                          <Button
-                            variant={BtnVariant.Ghost}
-                            onClick={() => {
-                              handleSort(col.key);
-                            }}
-                            ariaLabel={
-                              sortField === col.label
-                                ? `${language.sort} ${language[col.label]} ${ariaLabel}`
-                                : `${language.sort} ${language[col.label]}`
-                            }
-                          >
-                            <span className="sort-icon" aria-hidden>
-                              {sortField === col.label ? sortIcon : '⇅'}
-                            </span>
-                          </Button>
+                          {!col.hideTableControls && (
+                            <Button
+                              variant={BtnVariant.Ghost}
+                              onClick={() => {
+                                handleSort(col.key);
+                              }}
+                              ariaLabel={
+                                sortField === col.label
+                                  ? `${language.sort} ${language[col.label]} ${ariaLabel}`
+                                  : `${language.sort} ${language[col.label]}`
+                              }
+                            >
+                              <span className="sort-icon" aria-hidden>
+                                {sortField === col.label ? sortIcon : '⇅'}
+                              </span>
+                            </Button>
+                          )}
                         </div>
 
-                        <TableSearchInput
-                          onFilterRows={(e) => {
-                            handleFilter(col.key, e.target.value);
-                          }}
-                          title={col.label}
-                          value={filters[col.key]}
-                          label={language[col.label]}
-                        />
+                        {!col.hideTableControls && (
+                          <TableSearchInput
+                            onFilterRows={(e) => {
+                              handleFilter(col.key, e.target.value);
+                            }}
+                            title={col.label}
+                            value={filters[col.key]}
+                            label={language[col.label]}
+                          />
+                        )}
                       </div>
                     ) : (
                       <VisuallyHidden as="p">

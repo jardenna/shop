@@ -23,8 +23,12 @@ table {
   border-collapse: collapse;
   width: 100%;
 
-  img {
-    max-width: rem(72px);
+  figure {
+    align-items: flex-start;
+
+    img {
+      max-width: rem(72px);
+    }
   }
 
   .edit-cell {
@@ -144,7 +148,7 @@ table {
     padding: 4px 12px;
   }
 
-  .btn {
+  .btn-ghost {
     padding: 0;
   }
 
