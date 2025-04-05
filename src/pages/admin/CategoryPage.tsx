@@ -122,45 +122,43 @@ const CategoryPage = () => {
         />
       </Form>
       <div>
-        {allCategories && (
-          <Table
-            data={allCategories}
-            columns={tableHeaders}
-            tableCaption={language.customersList}
-            isLoading={isLoading}
-          >
-            {(data) =>
-              data.map(({ id }) => (
-                <tr key={id}>
-                  {columnKeys.map((columnKey) => (
-                    <td key={columnKey}>
-                      <EditCategoryInput
-                        id={columnKey}
-                        onSave={() => {
-                          handleSaveEdit();
-                        }}
-                        showEditInput={
-                          editRowId === id && editingField === columnKey
-                        }
-                        onCancel={handleCancelEdit}
-                        onEditChange={handleEditChange}
-                        onEditBtnClick={() => {
-                          handleShowEditInput(id, columnKey);
-                        }}
-                        cellContent={String(
-                          allCategories.find((item) => item.id === id)?.[
-                            columnKey
-                          ] || '',
-                        )}
-                        value={String(editValues[columnKey] || '')}
-                      />
-                    </td>
-                  ))}
-                </tr>
-              ))
-            }
-          </Table>
-        )}
+        <Table
+          data={allCategories || []}
+          columns={tableHeaders}
+          tableCaption={language.customersList}
+          isLoading={isLoading}
+        >
+          {(data) =>
+            data.map(({ id }) => (
+              <tr key={id}>
+                {columnKeys.map((columnKey) => (
+                  <td key={columnKey}>
+                    <EditCategoryInput
+                      id={columnKey}
+                      onSave={() => {
+                        handleSaveEdit();
+                      }}
+                      showEditInput={
+                        editRowId === id && editingField === columnKey
+                      }
+                      onCancel={handleCancelEdit}
+                      onEditChange={handleEditChange}
+                      onEditBtnClick={() => {
+                        handleShowEditInput(id, columnKey);
+                      }}
+                      cellContent={String(
+                        allCategories?.find((item) => item.id === id)?.[
+                          columnKey
+                        ] || '',
+                      )}
+                      value={String(editValues[columnKey] || '')}
+                    />
+                  </td>
+                ))}
+              </tr>
+            ))
+          }
+        </Table>
       </div>
     </section>
   );

@@ -125,57 +125,63 @@ const Table = <T,>({
         />
       </div>
       <div className="fixed-table">
-        <table aria-label={isLoading ? language.loading : undefined}>
-          <VisuallyHidden as="caption">{tableCaption}</VisuallyHidden>
-          <thead>
-            <tr>
-              {columns.map((col) => (
-                <th
-                  key={col.key as string}
-                  scope="col"
-                  style={{ paddingBlock: Number(padding) }}
-                >
-                  {col.label !== '' ? (
-                    <div className="table-header-cell">
-                      <div className="sort">
-                        {language[col.label]}
-                        <Button
-                          variant={BtnVariant.Ghost}
-                          onClick={() => {
-                            handleSort(col.key);
-                          }}
-                          ariaLabel={
-                            sortField === col.label
-                              ? `${language.sort} ${language[col.label]} ${ariaLabel}`
-                              : `${language.sort} ${language[col.label]}`
-                          }
-                        >
-                          <span className="sort-icon" aria-hidden>
-                            {sortField === col.label ? sortIcon : '⇅'}
-                          </span>
-                        </Button>
-                      </div>
+        {isLoading ? (
+          <div className="loading-indicator">{language.loading}</div>
+        ) : (
+          <table>
+            <VisuallyHidden as="caption">{tableCaption}</VisuallyHidden>
+            <thead>
+              <tr>
+                {columns.map((col) => (
+                  <th
+                    key={col.key as string}
+                    scope="col"
+                    style={{ paddingBlock: Number(padding) }}
+                  >
+                    {col.label !== '' ? (
+                      <div className="table-header-cell">
+                        <div className="sort">
+                          {language[col.label]}
+                          <Button
+                            variant={BtnVariant.Ghost}
+                            onClick={() => {
+                              handleSort(col.key);
+                            }}
+                            ariaLabel={
+                              sortField === col.label
+                                ? `${language.sort} ${language[col.label]} ${ariaLabel}`
+                                : `${language.sort} ${language[col.label]}`
+                            }
+                          >
+                            <span className="sort-icon" aria-hidden>
+                              {sortField === col.label ? sortIcon : '⇅'}
+                            </span>
+                          </Button>
+                        </div>
 
-                      <TableSearchInput
-                        onFilterRows={(e) => {
-                          handleFilter(col.key, e.target.value);
-                        }}
-                        title={col.label}
-                        value={filters[col.key]}
-                        label={language[col.label]}
-                      />
-                    </div>
-                  ) : (
-                    <VisuallyHidden as="p">
-                      {emptyHeaderCellText}
-                    </VisuallyHidden>
-                  )}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className={`padding-${padding}`}>{children(sortedData)}</tbody>
-        </table>
+                        <TableSearchInput
+                          onFilterRows={(e) => {
+                            handleFilter(col.key, e.target.value);
+                          }}
+                          title={col.label}
+                          value={filters[col.key]}
+                          label={language[col.label]}
+                        />
+                      </div>
+                    ) : (
+                      <VisuallyHidden as="p">
+                        {emptyHeaderCellText}
+                      </VisuallyHidden>
+                    )}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody className={`padding-${padding}`}>
+              {children(sortedData)}
+            </tbody>
+          </table>
+        )}
       </div>
     </>
   );

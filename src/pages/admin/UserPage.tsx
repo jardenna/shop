@@ -97,78 +97,76 @@ const UserPage = () => {
 
   return (
     <section className="user-page">
-      {allUsers && (
-        <Table
-          data={allUsers}
-          columns={tableHeaders}
-          tableCaption={language.customersList}
-          isLoading={isLoading}
-          emptyHeaderCellText={language.deleteUser}
-        >
-          {(data) =>
-            data.map(({ id, username, isAdmin }) => (
-              <tr key={id}>
-                {columnKeys.map((columnKey) => (
-                  <td key={columnKey}>
-                    <EditUserInput
-                      roleOptions={roleOptions}
-                      isAdmin={isAdmin}
-                      onSave={() => {
-                        handleSaveEdit();
-                      }}
-                      showEditInput={
-                        editRowId === id && editingField === columnKey
-                      }
-                      onCancel={handleCancelEdit}
-                      onEditChange={handleEditChange}
-                      onEditBtnClick={() => {
-                        handleShowEditInput(id, columnKey);
-                      }}
-                      id={columnKey}
-                      value={String(editValues[columnKey] || '')}
-                      roleValue={editValues.role || 'User'}
-                      cellContent={String(
-                        allUsers.find((item) => item.id === id)?.[columnKey] ||
-                          '',
-                      )}
-                    />
-                  </td>
-                ))}
-                <td>
-                  {!isAdmin ? (
-                    <Dropdown
-                      ariaControls="delete-user"
-                      text={`${language.sureToDelete} ${username}?`}
-                      triggerBtnVariant={BtnVariant.Ghost}
-                      triggerBtnClassName="danger"
-                      onPrimaryClick={() => {
-                        handleDeleteUser(id, username);
-                      }}
-                      primaryBtnLabel={language.delete}
-                      primaryBtnVariant={BtnVariant.Danger}
-                      ariaLabel={language.deleteUser}
-                    >
-                      <Icon
-                        iconName={IconName.Trash}
-                        title={language.trashCan}
-                        ariaLabel={language.deleteUser}
-                      />
-                    </Dropdown>
-                  ) : (
-                    <div className="empty-cell">
-                      <IconContent
-                        iconName={IconName.Trash}
-                        title={language.trashCan}
-                        ariaLabel={language.actionNotAllowedForAdmin}
-                      />
-                    </div>
-                  )}
+      <Table
+        data={allUsers || []}
+        columns={tableHeaders}
+        tableCaption={language.customersList}
+        isLoading={isLoading}
+        emptyHeaderCellText={language.deleteUser}
+      >
+        {(data) =>
+          data.map(({ id, username, isAdmin }) => (
+            <tr key={id}>
+              {columnKeys.map((columnKey) => (
+                <td key={columnKey}>
+                  <EditUserInput
+                    roleOptions={roleOptions}
+                    isAdmin={isAdmin}
+                    onSave={() => {
+                      handleSaveEdit();
+                    }}
+                    showEditInput={
+                      editRowId === id && editingField === columnKey
+                    }
+                    onCancel={handleCancelEdit}
+                    onEditChange={handleEditChange}
+                    onEditBtnClick={() => {
+                      handleShowEditInput(id, columnKey);
+                    }}
+                    id={columnKey}
+                    value={String(editValues[columnKey] || '')}
+                    roleValue={editValues.role || 'User'}
+                    cellContent={String(
+                      allUsers?.find((item) => item.id === id)?.[columnKey] ||
+                        '',
+                    )}
+                  />
                 </td>
-              </tr>
-            ))
-          }
-        </Table>
-      )}
+              ))}
+              <td>
+                {!isAdmin ? (
+                  <Dropdown
+                    ariaControls="delete-user"
+                    text={`${language.sureToDelete} ${username}?`}
+                    triggerBtnVariant={BtnVariant.Ghost}
+                    triggerBtnClassName="danger"
+                    onPrimaryClick={() => {
+                      handleDeleteUser(id, username);
+                    }}
+                    primaryBtnLabel={language.delete}
+                    primaryBtnVariant={BtnVariant.Danger}
+                    ariaLabel={language.deleteUser}
+                  >
+                    <Icon
+                      iconName={IconName.Trash}
+                      title={language.trashCan}
+                      ariaLabel={language.deleteUser}
+                    />
+                  </Dropdown>
+                ) : (
+                  <div className="empty-cell">
+                    <IconContent
+                      iconName={IconName.Trash}
+                      title={language.trashCan}
+                      ariaLabel={language.actionNotAllowedForAdmin}
+                    />
+                  </div>
+                )}
+              </td>
+            </tr>
+          ))
+        }
+      </Table>
     </section>
   );
 };

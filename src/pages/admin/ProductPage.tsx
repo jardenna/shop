@@ -20,46 +20,45 @@ const ProductPage = () => {
     { key: 'id', label: '' },
   ];
 
-  const { data: allProducts } = useGetAllProductsQuery();
+  const { data: allProducts, isLoading } = useGetAllProductsQuery();
 
   return (
     <section className="product-page">
-      {allProducts && (
-        <Table
-          data={allProducts.products}
-          columns={tableHeaders}
-          tableCaption="products"
-        >
-          {(data) =>
-            data.map(
-              ({ id, productName, image, description, price, updatedAt }) => (
-                <tr key={id}>
-                  <td>
-                    <Figure src={`/images${image}`} alt="s" />
-                  </td>
-                  <td>{productName}</td>
-                  <td>{description}</td>
-                  <td>
-                    <ProductPrice price={price} />
-                  </td>
-                  <td>
-                    <span>
-                      {new Intl.DateTimeFormat(
-                        dateToLocaleMap[selectedLanguage],
-                        {
-                          day: '2-digit',
-                          month: '2-digit',
-                          year: '2-digit',
-                        },
-                      ).format(new Date(updatedAt))}
-                    </span>
-                  </td>
-                </tr>
-              ),
-            )
-          }
-        </Table>
-      )}
+      <Table
+        isLoading={isLoading}
+        data={allProducts?.products ?? []}
+        columns={tableHeaders}
+        tableCaption="products"
+      >
+        {(data) =>
+          data.map(
+            ({ id, productName, image, description, price, updatedAt }) => (
+              <tr key={id}>
+                <td>
+                  <Figure src={`/images${image}`} alt="s" />
+                </td>
+                <td>{productName}</td>
+                <td>{description}</td>
+                <td>
+                  <ProductPrice price={price} />
+                </td>
+                <td>
+                  <span>
+                    {new Intl.DateTimeFormat(
+                      dateToLocaleMap[selectedLanguage],
+                      {
+                        day: '2-digit',
+                        month: '2-digit',
+                        year: '2-digit',
+                      },
+                    ).format(new Date(updatedAt))}
+                  </span>
+                </td>
+              </tr>
+            ),
+          )
+        }
+      </Table>
     </section>
   );
 };
