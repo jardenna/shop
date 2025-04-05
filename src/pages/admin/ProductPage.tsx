@@ -1,17 +1,13 @@
 import { ProductResponse } from '../../app/api/apiTypes';
 import Button from '../../components/Button';
 import Figure from '../../components/figure/Figure';
-import Table from '../../components/sortTable/Table';
+import Table, { Column } from '../../components/sortTable/Table';
 import DateDisplay from '../../features/categories/DateDisplay';
 import ProductPrice from '../../features/currency/components/ProductPrice';
 import { useGetAllProductsQuery } from '../../features/products/productApiSlice';
 
 const ProductPage = () => {
-  const tableHeaders: {
-    key: keyof ProductResponse;
-    label: string;
-    hideTableControls?: boolean;
-  }[] = [
+  const tableHeaders: Column<ProductResponse>[] = [
     { key: 'image', label: 'image', hideTableControls: true },
     { key: 'productName', label: 'productName' },
     { key: 'description', label: 'description' },

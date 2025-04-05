@@ -11,7 +11,7 @@ import './_table.scss';
 import TableGridList from './TableGridList';
 import TableSearchInput from './TableSearchInput';
 
-type Column<T> = {
+export type Column<T> = {
   key: keyof T;
   label: string;
   hideTableControls?: boolean;
