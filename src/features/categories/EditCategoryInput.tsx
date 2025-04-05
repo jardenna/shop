@@ -5,6 +5,7 @@ import EditTableInput, {
 import { IconName } from '../../types/enums';
 import dateToLocaleMap from '../../utils/dates';
 import useLanguage from '../language/useLanguage';
+import DateDisplay from './DateDisplay'; // Import the new child component
 
 type EditCategoryInputProps = {
   showEditInput: boolean;
@@ -48,13 +49,10 @@ const EditCategoryInput = ({
         </>
       )}
       {!showEditInput && !isCategoryName && (
-        <span>
-          {new Intl.DateTimeFormat(dateToLocaleMap[selectedLanguage], {
-            day: '2-digit',
-            month: 'long',
-            year: 'numeric',
-          }).format(new Date(cellContent))}
-        </span>
+        <DateDisplay
+          cellContent={cellContent}
+          locale={dateToLocaleMap[selectedLanguage]}
+        />
       )}
     </div>
   );
