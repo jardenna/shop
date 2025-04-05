@@ -23,6 +23,10 @@ table {
   border-collapse: collapse;
   width: 100%;
 
+  img {
+    max-width: rem(72px);
+  }
+
   .edit-cell {
     display: flex;
     justify-content: space-between;

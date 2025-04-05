@@ -22,12 +22,12 @@ const tableHeaders: { key: keyof UserResponse; label: string }[] = [
   { key: 'id', label: '' },
 ];
 
+const columnKeys: (keyof UserResponse)[] = ['username', 'email', 'role'];
+
 const roleOptions = [
   { value: 'Employee', label: 'Employee' },
   { value: 'User', label: 'user' },
 ];
-
-const columnKeys: (keyof UserResponse)[] = ['username', 'email', 'role'];
 
 const UserPage = () => {
   const { language } = useLanguage();
