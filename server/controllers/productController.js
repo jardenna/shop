@@ -78,7 +78,6 @@ const updateProduct = asyncHandler(async (req, res) => {
     description,
     price,
     countInStock,
-    sizes,
     colors,
     material,
     discount,
