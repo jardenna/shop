@@ -4,7 +4,7 @@ import SubCategory from '../models/subCategoryModel.js';
 
 // @desc    Create SubCategory
 // @route   POST /api/subcategories
-// @access  Private for admin
+// @access  Private for admin and employee
 const createSubCategory = asyncHandler(async (req, res) => {
   const { subCategoryName, category } = req.body;
 

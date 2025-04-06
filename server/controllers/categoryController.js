@@ -4,41 +4,6 @@ import formatMongoData from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 import validateScheduledDate from '../utils/validateCategory.js';
 
-// @desc    Get all Categories
-// @route   /api/category
-// @method  Get
-// @access  Public
-const getAllCategories = asyncHandler(async (req, res) => {
-  const allCategories = await Category.find({}).lean();
-
-  // Automatically update "Scheduled" categories to "Published" if the date has passed
-  const now = new Date();
-  const updatedCategories = await Promise.all(
-    allCategories.map(async (category) => {
-      if (
-        category.categoryStatus === 'Scheduled' &&
-        category.scheduledDate <= now
-      ) {
-        await Category.findByIdAndUpdate(category._id, {
-          categoryStatus: 'Published',
-          scheduledDate: undefined, // Clear the scheduledDate
-        });
-        category.categoryStatus = 'Published';
-        category.scheduledDate = undefined;
-      }
-      return category;
-    }),
-  );
-
-  const formattedCategories = formatMongoData(updatedCategories);
-
-  if (!updatedCategories?.length) {
-    return res.status(404).json({ message: t('noData', req.lang) });
-  }
-
-  res.status(200).json(formattedCategories);
-});
-
 // @desc    Create category
 // @route   /api/category
 // @method  Post
@@ -82,6 +47,41 @@ const createCategory = asyncHandler(async (req, res) => {
     scheduledDate: category.scheduledDate, // Ensure this field is included
     createdAt: category.createdAt,
   });
+});
+
+// @desc    Get all Categories
+// @route   /api/category
+// @method  Get
+// @access  Public
+const getAllCategories = asyncHandler(async (req, res) => {
+  const allCategories = await Category.find({}).lean();
+
+  // Automatically update "Scheduled" categories to "Published" if the date has passed
+  const now = new Date();
+  const updatedCategories = await Promise.all(
+    allCategories.map(async (category) => {
+      if (
+        category.categoryStatus === 'Scheduled' &&
+        category.scheduledDate <= now
+      ) {
+        await Category.findByIdAndUpdate(category._id, {
+          categoryStatus: 'Published',
+          scheduledDate: undefined, // Clear the scheduledDate
+        });
+        category.categoryStatus = 'Published';
+        category.scheduledDate = undefined;
+      }
+      return category;
+    }),
+  );
+
+  const formattedCategories = formatMongoData(updatedCategories);
+
+  if (!updatedCategories?.length) {
+    return res.status(404).json({ message: t('noData', req.lang) });
+  }
+
+  res.status(200).json(formattedCategories);
 });
 
 // @desc    Update category
