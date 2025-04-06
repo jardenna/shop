@@ -10,6 +10,7 @@ import Dashboard from '../pages/admin/Dashboard';
 import OrderPage from '../pages/admin/OrderPage';
 import ProductPage from '../pages/admin/ProductPage';
 import ProfilePage from '../pages/admin/ProfilePage';
+import UpdatePage from '../pages/admin/UpdatePage';
 import UserPage from '../pages/admin/UserPage';
 import Collections from '../pages/Collections';
 import Contact from '../pages/Contact';
@@ -65,7 +66,6 @@ const routeConfig = createBrowserRouter([
     ],
   },
   {
-    // <Route path="product/update/:_id" element={<ProductUpdate />} />
     element: <ProtectedRoute />,
     children: [
       {
@@ -79,6 +79,10 @@ const routeConfig = createBrowserRouter([
           {
             path: MainPath.Users,
             element: <UserPage />,
+          },
+          {
+            path: MainPath.AdminProductUpdate,
+            element: <UpdatePage />,
           },
           {
             path: MainPath.AdminProfile,

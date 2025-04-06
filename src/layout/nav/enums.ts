@@ -4,6 +4,7 @@ export enum MainPath {
   AdminCategories = 'categories',
   AdminOrders = 'orders',
   AdminProducts = 'products',
+  AdminProductUpdate = 'product/update/:id',
   AdminProfile = 'profile',
   Collection = 'collection',
   Contact = 'contact',
