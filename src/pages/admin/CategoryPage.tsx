@@ -106,22 +106,24 @@ const CategoryPage = () => {
   return (
     <section className="category-page">
       <h1>{language.categories}</h1>
-      <Form
-        onSubmit={onSubmit}
-        submitBtnLabel={language.save}
-        className="submit-category"
-      >
-        <Input
-          onChange={onChange}
-          value={values.categoryName || ''}
-          id="categoryName"
-          name="categoryName"
-          labelText={language.addCategory}
-          placeholder={language.categoryName}
-          errorText={errors.categoryName}
-        />
-      </Form>
-      <div>
+      <div className="page-card">
+        <Form
+          onSubmit={onSubmit}
+          submitBtnLabel={language.save}
+          className="submit-category"
+        >
+          <Input
+            onChange={onChange}
+            value={values.categoryName || ''}
+            id="categoryName"
+            name="categoryName"
+            labelText={language.addCategory}
+            placeholder={language.categoryName}
+            errorText={errors.categoryName}
+          />
+        </Form>
+      </div>
+      <div className="page-card">
         <Table
           data={allCategories || []}
           columns={tableHeaders}

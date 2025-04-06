@@ -96,7 +96,7 @@ const UserPage = () => {
   };
 
   return (
-    <section className="user-page">
+    <section className="user-page page-card">
       <Table
         data={allUsers || []}
         columns={tableHeaders}

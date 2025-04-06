@@ -22,7 +22,7 @@ const ProductPage = () => {
   const { data: allProducts, isLoading } = useGetAllProductsQuery();
 
   return (
-    <section className="product-page">
+    <section className="page-card ">
       <Table
         isLoading={isLoading}
         data={allProducts?.products ?? []}
