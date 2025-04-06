@@ -54,26 +54,19 @@ const createUser = asyncHandler(async (req, res) => {
     role,
   });
 
-  try {
-    await newUser.save();
-    createToken(res, newUser._id);
+  await newUser.save();
+  createToken(res, newUser._id);
 
-    res.status(201).json({
-      success: true,
-      user: {
-        id: newUser._id,
-        username: newUser.username,
-        email: newUser.email,
-        isAdmin: newUser.isAdmin,
-        role: newUser.role,
-      },
-    });
-  } catch (error) {
-    res.status(400).json({
-      success: false,
-      message: `${error.message} - ${t('invalidUserData', req.lang)}`,
-    });
-  }
+  res.status(201).json({
+    success: true,
+    user: {
+      id: newUser._id,
+      username: newUser.username,
+      email: newUser.email,
+      isAdmin: newUser.isAdmin,
+      role: newUser.role,
+    },
+  });
 });
 
 // @desc    Login user
@@ -120,23 +113,16 @@ const loginUser = asyncHandler(async (req, res) => {
     });
   }
 
-  try {
-    createToken(res, existingUser._id);
-    res.status(201).json({
-      success: true,
-      user: {
-        id: existingUser._id,
-        username: existingUser.username,
-        email: existingUser.email,
-        isAdmin: existingUser.isAdmin,
-      },
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: `${error.message} - ${t('loginFailed', req.lang)}`,
-    });
-  }
+  createToken(res, existingUser._id);
+  res.status(201).json({
+    success: true,
+    user: {
+      id: existingUser._id,
+      username: existingUser.username,
+      email: existingUser.email,
+      isAdmin: existingUser.isAdmin,
+    },
+  });
 });
 
 // @desc    Logout user / clear cookie
