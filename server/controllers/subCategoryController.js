@@ -116,15 +116,15 @@ const updateSubCategory = asyncHandler(async (req, res) => {
   }
 
   // Update only the provided fields
-  if (subCategoryName !== undefined) {
+  if (subCategoryName) {
     subCategory.subCategoryName = subCategoryName;
   }
 
-  if (category !== undefined) {
+  if (category) {
     subCategory.category = category;
   }
 
-  if (categoryStatus !== undefined) {
+  if (categoryStatus) {
     subCategory.categoryStatus = categoryStatus;
 
     const validationResult = validateScheduledDate(
@@ -135,7 +135,7 @@ const updateSubCategory = asyncHandler(async (req, res) => {
       return res.status(400).json(validationResult);
     }
 
-    if (categoryStatus === 'Scheduled' && scheduledDate !== undefined) {
+    if (categoryStatus === 'Scheduled' && scheduledDate) {
       subCategory.scheduledDate = scheduledDate;
     } else if (categoryStatus !== 'Scheduled') {
       subCategory.scheduledDate = undefined; // Clear scheduledDate if status is not "Scheduled"
