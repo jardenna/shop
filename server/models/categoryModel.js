@@ -10,6 +10,12 @@ const CategorySchema = new mongoose.Schema(
       unique: true,
       required: [true, 'Please enter an category name'],
     },
+    categoryStatus: {
+      type: String,
+      enum: ['Published', 'inActive', 'Scheduled'],
+      default: 'inActive',
+      required: true,
+    },
   },
   { timestamps: true },
 );

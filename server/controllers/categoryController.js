@@ -23,8 +23,14 @@ const getAllCategories = asyncHandler(async (req, res) => {
 // @method  Post
 // @access  Private for admin and employee
 const createCategory = asyncHandler(async (req, res) => {
-  const { categoryName } = req.body;
+  const { categoryName, categoryStatus } = req.body;
 
+  if (!categoryStatus) {
+    return res.status(400).json({
+      success: false,
+      message: t('pleaseSpecifyCategoryStatus', req.lang),
+    });
+  }
   if (!categoryName) {
     return res.status(400).json({
       success: false,
@@ -41,12 +47,13 @@ const createCategory = asyncHandler(async (req, res) => {
     });
   }
 
-  const category = await new Category({ categoryName }).save();
+  const category = await new Category({ categoryName, categoryStatus }).save();
+
   res.status(201).json({
-    success: true,
     message: t('newCategoryCreated', req.lang),
     id: category._id,
     categoryName: category.categoryName,
+    categoryStatus: category.categoryStatus,
     createdAt: category.createdAt,
   });
 });
@@ -56,7 +63,7 @@ const createCategory = asyncHandler(async (req, res) => {
 // @method  Put
 // @access  Private for admin and employee
 const updateCategory = asyncHandler(async (req, res) => {
-  const { categoryName } = req.body;
+  const { categoryName, categoryStatus } = req.body;
 
   if (!categoryName) {
     return res.status(400).json({
@@ -75,12 +82,21 @@ const updateCategory = asyncHandler(async (req, res) => {
   }
 
   category.categoryName = categoryName;
+  if (categoryStatus) {
+    category.categoryStatus = categoryStatus;
+  }
 
   const updatedCategory = await category.save();
   res.status(200).json({
     success: true,
     message: t('categoryUpdated', req.lang),
-    updatedCategory,
+    updatedCategory: {
+      id: updatedCategory._id,
+      categoryName: updatedCategory.categoryName,
+      categoryStatus: updatedCategory.categoryStatus,
+      createdAt: updatedCategory.createdAt,
+      updatedAt: updatedCategory.updatedAt,
+    },
   });
 });
 
