@@ -99,41 +99,6 @@ const getSubCategories = asyncHandler(async (req, res) => {
   res.json(subCategories);
 });
 
-// @desc    Get all SubCategories
-// @route   /api/subcategories
-// @method  Get
-// @access  Public
-const getAllSubCategories = asyncHandler(async (req, res) => {
-  const allSubCategories = await SubCategory.find({})
-    .populate('category')
-    .lean();
-
-  // Automatically update "Scheduled" subcategories to "Published" if the date has passed
-  const now = new Date();
-  const updatedSubCategories = await Promise.all(
-    allSubCategories.map(async (subCategory) => {
-      if (
-        subCategory.categoryStatus === 'Scheduled' &&
-        subCategory.scheduledDate <= now
-      ) {
-        await SubCategory.findByIdAndUpdate(subCategory._id, {
-          categoryStatus: 'Published',
-          scheduledDate: undefined, // Clear the scheduledDate
-        });
-        subCategory.categoryStatus = 'Published';
-        subCategory.scheduledDate = undefined;
-      }
-      return subCategory;
-    }),
-  );
-
-  if (!updatedSubCategories?.length) {
-    return res.status(404).json({ message: 'No subcategories found' });
-  }
-
-  res.status(200).json(updatedSubCategories);
-});
-
 // @desc    Update SubCategory
 // @route   /api/subcategories/:id
 // @method  Put
@@ -223,7 +188,6 @@ const deleteSubCategory = asyncHandler(async (req, res) => {
 export {
   createSubCategory,
   deleteSubCategory,
-  getAllSubCategories,
   getSubCategories,
   updateSubCategory,
 };
