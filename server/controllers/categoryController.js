@@ -23,7 +23,7 @@ const getAllCategories = asyncHandler(async (req, res) => {
 // @method  Post
 // @access  Private for admin and employee
 const createCategory = asyncHandler(async (req, res) => {
-  const { categoryName, categoryStatus } = req.body;
+  const { categoryName, categoryStatus, scheduledDate } = req.body;
 
   if (!categoryStatus) {
     return res.status(400).json({
@@ -31,6 +31,29 @@ const createCategory = asyncHandler(async (req, res) => {
       message: t('pleaseSpecifyCategoryStatus', req.lang),
     });
   }
+
+  // Validate "Scheduled" status
+  if (categoryStatus === 'Scheduled') {
+    if (!scheduledDate) {
+      return res.status(400).json({
+        success: false,
+        message: t('pleaseProvideScheduledDate', req.lang),
+      });
+    }
+    if (isNaN(Date.parse(scheduledDate))) {
+      return res.status(400).json({
+        success: false,
+        message: t('invalidScheduledDateFormat', req.lang),
+      });
+    }
+    if (new Date(scheduledDate) <= new Date()) {
+      return res.status(400).json({
+        success: false,
+        message: t('scheduledDateMustBeFuture', req.lang),
+      });
+    }
+  }
+
   if (!categoryName) {
     return res.status(400).json({
       success: false,
@@ -47,13 +70,19 @@ const createCategory = asyncHandler(async (req, res) => {
     });
   }
 
-  const category = await new Category({ categoryName, categoryStatus }).save();
+  const categoryData = { categoryName, categoryStatus };
+  if (categoryStatus === 'Scheduled') {
+    categoryData.scheduledDate = scheduledDate;
+  }
+
+  const category = await new Category(categoryData).save();
 
   res.status(201).json({
     message: t('newCategoryCreated', req.lang),
     id: category._id,
     categoryName: category.categoryName,
     categoryStatus: category.categoryStatus,
+    scheduledDate: category.scheduledDate,
     createdAt: category.createdAt,
   });
 });
@@ -63,7 +92,7 @@ const createCategory = asyncHandler(async (req, res) => {
 // @method  Put
 // @access  Private for admin and employee
 const updateCategory = asyncHandler(async (req, res) => {
-  const { categoryName, categoryStatus } = req.body;
+  const { categoryName, categoryStatus, scheduledDate } = req.body;
 
   if (!categoryName) {
     return res.status(400).json({
@@ -82,8 +111,35 @@ const updateCategory = asyncHandler(async (req, res) => {
   }
 
   category.categoryName = categoryName;
+
   if (categoryStatus) {
     category.categoryStatus = categoryStatus;
+
+    // Handle "Scheduled" status
+    if (categoryStatus === 'Scheduled') {
+      if (!scheduledDate) {
+        return res.status(400).json({
+          success: false,
+          message: t('pleaseProvideScheduledDate', req.lang),
+        });
+      }
+
+      if (isNaN(Date.parse(scheduledDate))) {
+        return res.status(400).json({
+          success: false,
+          message: t('invalidScheduledDateFormat', req.lang),
+        });
+      }
+      if (new Date(scheduledDate) <= new Date()) {
+        return res.status(400).json({
+          success: false,
+          message: t('scheduledDateMustBeFuture', req.lang),
+        });
+      }
+      category.scheduledDate = scheduledDate;
+    } else {
+      category.scheduledDate = undefined; // Clear scheduledDate if status is not "Scheduled"
+    }
   }
 
   const updatedCategory = await category.save();
@@ -94,6 +150,7 @@ const updateCategory = asyncHandler(async (req, res) => {
       id: updatedCategory._id,
       categoryName: updatedCategory.categoryName,
       categoryStatus: updatedCategory.categoryStatus,
+      scheduledDate: updatedCategory.scheduledDate,
       createdAt: updatedCategory.createdAt,
       updatedAt: updatedCategory.updatedAt,
     },
