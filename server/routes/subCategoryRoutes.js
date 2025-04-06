@@ -3,6 +3,7 @@ import {
   createSubCategory,
   deleteSubCategory,
   getSubCategories,
+  updateSubCategory,
 } from '../controllers/subCategoryController.js';
 import { authenticate, authorizeAdmin } from '../middleware/authMiddleware.js';
 import languageMiddleware from '../middleware/languageMiddleware.js';
@@ -13,6 +14,9 @@ router
   .post(languageMiddleware, authenticate, authorizeAdmin, createSubCategory)
   .get(languageMiddleware, getSubCategories);
 
-router.delete('/:id', deleteSubCategory);
+router
+  .route('/:id')
+  .put(authenticate, authorizeAdmin, updateSubCategory)
+  .delete(authenticate, authorizeAdmin, deleteSubCategory);
 
 export default router;
