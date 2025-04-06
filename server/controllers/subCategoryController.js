@@ -59,7 +59,7 @@ const createSubCategory = asyncHandler(async (req, res) => {
 // @route   /api/subcategories
 // @method  Get
 // @access  Public
-const getSubCategories = asyncHandler(async (req, res) => {
+const getAllSubCategories = asyncHandler(async (req, res) => {
   const now = new Date();
 
   // Automatically update "Scheduled" subcategories to "Published" if the date has passed
@@ -188,6 +188,6 @@ const deleteSubCategory = asyncHandler(async (req, res) => {
 export {
   createSubCategory,
   deleteSubCategory,
-  getSubCategories,
+  getAllSubCategories,
   updateSubCategory,
 };
