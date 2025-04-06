@@ -8,18 +8,14 @@ import { t } from '../utils/translator.js';
 // @method  Get
 // @access  Public
 const getAllCategories = asyncHandler(async (req, res) => {
-  try {
-    const allCategories = await Category.find({}).lean();
-    const formattedCategories = formatMongoData(allCategories);
+  const allCategories = await Category.find({}).lean();
+  const formattedCategories = formatMongoData(allCategories);
 
-    if (!allCategories?.length) {
-      return res.status(400).json({ message: t('noData', req.lang) });
-    }
-
-    res.status(200).json(formattedCategories);
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
+  if (!allCategories?.length) {
+    return res.status(404).json({ message: t('noData', req.lang) });
   }
+
+  res.status(200).json(formattedCategories);
 });
 
 // @desc    Create category
@@ -27,73 +23,65 @@ const getAllCategories = asyncHandler(async (req, res) => {
 // @method  Post
 // @access  Private for admin and employee
 const createCategory = asyncHandler(async (req, res) => {
-  try {
-    const { categoryName } = req.body;
+  const { categoryName } = req.body;
 
-    if (!categoryName) {
-      return res.status(400).json({
-        success: false,
-        message: t('pleaseEnterCategoryName', req.lang),
-      });
-    }
-
-    const existingCategory = await Category.findOne({ categoryName });
-
-    if (existingCategory) {
-      return res.status(400).json({
-        success: false,
-        message: t('categoryAlreadyExist', req.lang),
-      });
-    }
-
-    const category = await new Category({ categoryName }).save();
-    if (category) {
-      res.status(201).json({
-        success: true,
-        message: t('newCategoryCreated', req.lang),
-        id: category._id,
-        categoryName: category.categoryName,
-        createdAt: category.createdAt,
-      });
-    }
-  } catch (error) {
+  if (!categoryName) {
     return res.status(400).json({
       success: false,
-      message: error,
+      message: t('pleaseEnterCategoryName', req.lang),
     });
   }
+
+  const existingCategory = await Category.findOne({ categoryName });
+
+  if (existingCategory) {
+    return res.status(400).json({
+      success: false,
+      message: t('categoryAlreadyExist', req.lang),
+    });
+  }
+
+  const category = await new Category({ categoryName }).save();
+  res.status(201).json({
+    success: true,
+    message: t('newCategoryCreated', req.lang),
+    id: category._id,
+    categoryName: category.categoryName,
+    createdAt: category.createdAt,
+  });
 });
+
 // @desc    Update category
 // @route   /api/category/id
 // @method  Put
 // @access  Private for admin and employee
 const updateCategory = asyncHandler(async (req, res) => {
-  try {
-    const { categoryName } = req.body;
+  const { categoryName } = req.body;
 
-    const category = await Category.findOne({ _id: req.params.id });
-
-    if (!category) {
-      return res.status(404).json({
-        success: false,
-        message: t('categorieNotFound', req.lang),
-      });
-    }
-
-    category.categoryName = categoryName;
-
-    const updatedCategory = await category.save();
-    res.status(201).json({
-      success: true,
-      message: 'Category updated',
-      updatedCategory,
-    });
-  } catch (error) {
-    return res.status(500).json({
+  if (!categoryName) {
+    return res.status(400).json({
       success: false,
-      message: error.message,
+      message: t('pleaseEnterCategoryName', req.lang),
     });
   }
+
+  const category = await Category.findById(req.params.id);
+
+  if (!category) {
+    return res.status(404).json({
+      success: false,
+      message: t('categoryNotFound', req.lang),
+    });
+  }
+
+  category.categoryName = categoryName;
+
+  const updatedCategory = await category.save();
+  res.status(200).json({
+    success: true,
+    message: t('categoryUpdated', req.lang),
+    updatedCategory,
+  });
 });
 
 export { createCategory, getAllCategories, updateCategory };
