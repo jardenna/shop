@@ -82,7 +82,7 @@ const createCategory = asyncHandler(async (req, res) => {
     id: category._id,
     categoryName: category.categoryName,
     categoryStatus: category.categoryStatus,
-    scheduledDate: category.scheduledDate,
+    scheduledDate: category.scheduledDate, // Ensure this field is included
     createdAt: category.createdAt,
   });
 });
