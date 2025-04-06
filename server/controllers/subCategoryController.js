@@ -8,10 +8,17 @@ import SubCategory from '../models/subCategoryModel.js';
 const createSubCategory = asyncHandler(async (req, res) => {
   const { subCategoryName, category } = req.body;
 
-  if (!subCategoryName || !category) {
+  if (!subCategoryName) {
     return res.status(400).json({
       success: false,
-      message: 'subCategoryName and category are required',
+      message: 'Subcategory name is required',
+    });
+  }
+
+  if (!category) {
+    return res.status(400).json({
+      success: false,
+      message: 'Category name is required',
     });
   }
 
@@ -19,7 +26,7 @@ const createSubCategory = asyncHandler(async (req, res) => {
   if (subCategoryExists) {
     return res
       .status(400)
-      .json({ success: false, message: 'SubCategory already exists' });
+      .json({ success: false, message: 'Subcategory already exists' });
   }
 
   const subCategory = new SubCategory({ subCategoryName, category });
@@ -32,7 +39,27 @@ const createSubCategory = asyncHandler(async (req, res) => {
 // @route   GET /api/subcategories
 // @access  Public
 const getSubCategories = asyncHandler(async (req, res) => {
-  const subCategories = await SubCategory.find().populate('category').lean();
+  const subCategories = await SubCategory.aggregate([
+    {
+      $lookup: {
+        from: 'products', // Collection name for products
+        localField: '_id',
+        foreignField: 'subCategory',
+        as: 'products',
+      },
+    },
+    {
+      $addFields: {
+        productCount: { $size: '$products' },
+      },
+    },
+    {
+      $project: {
+        products: 0, // Exclude the products array from the response
+      },
+    },
+  ]);
+
   res.json(subCategories);
 });
 
