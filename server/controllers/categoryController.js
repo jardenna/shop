@@ -2,6 +2,7 @@ import asyncHandler from '../middleware/asyncHandler.js';
 import Category from '../models/categoryModel.js';
 import formatMongoData from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
+import validateScheduledDate from '../utils/validateCategory.js';
 
 // @desc    Get all Categories
 // @route   /api/category
@@ -32,26 +33,9 @@ const createCategory = asyncHandler(async (req, res) => {
     });
   }
 
-  // Validate "Scheduled" status
-  if (categoryStatus === 'Scheduled') {
-    if (!scheduledDate) {
-      return res.status(400).json({
-        success: false,
-        message: t('pleaseProvideScheduledDate', req.lang),
-      });
-    }
-    if (isNaN(Date.parse(scheduledDate))) {
-      return res.status(400).json({
-        success: false,
-        message: t('invalidScheduledDateFormat', req.lang),
-      });
-    }
-    if (new Date(scheduledDate) <= new Date()) {
-      return res.status(400).json({
-        success: false,
-        message: t('scheduledDateMustBeFuture', req.lang),
-      });
-    }
+  const validationResult = validateScheduledDate(categoryStatus, scheduledDate);
+  if (!validationResult.success) {
+    return res.status(400).json(validationResult);
   }
 
   if (!categoryName) {
@@ -115,27 +99,15 @@ const updateCategory = asyncHandler(async (req, res) => {
   if (categoryStatus) {
     category.categoryStatus = categoryStatus;
 
-    // Handle "Scheduled" status
-    if (categoryStatus === 'Scheduled') {
-      if (!scheduledDate) {
-        return res.status(400).json({
-          success: false,
-          message: t('pleaseProvideScheduledDate', req.lang),
-        });
-      }
+    const validationResult = validateScheduledDate(
+      categoryStatus,
+      scheduledDate,
+    );
+    if (!validationResult.success) {
+      return res.status(400).json(validationResult);
+    }
 
-      if (isNaN(Date.parse(scheduledDate))) {
-        return res.status(400).json({
-          success: false,
-          message: t('invalidScheduledDateFormat', req.lang),
-        });
-      }
-      if (new Date(scheduledDate) <= new Date()) {
-        return res.status(400).json({
-          success: false,
-          message: t('scheduledDateMustBeFuture', req.lang),
-        });
-      }
+    if (categoryStatus === 'Scheduled') {
       category.scheduledDate = scheduledDate;
     } else {
       category.scheduledDate = undefined; // Clear scheduledDate if status is not "Scheduled"

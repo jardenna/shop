@@ -124,6 +124,12 @@ signup;Sign up;Opret bruger
 signupFailed;Sign up failed;Registrering mislykkedes
 signupSucceeded;Sign up succeeded;Registrering lykkedes
 sort;Sort;Sorter
+statusPublished;Published;Udgivet
+statusInactive;Inactive;Inaktiv
+statusScheduled;Scheduled;Planlagt til udgivelse
+pleaseProvideScheduledDate;Please provide a scheduled date;Angiv venligst en planlagt dato
+invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for planlagt dato
+scheduledDateMustBeFuture;Scheduled date must be after today;Planlagt dato skal være efter i dag
 sub;Sub;Sekundær
 success;Success;Succes
 sureToDelete;Are you sure that you want to delete;Er du sikker på at du vil slette
