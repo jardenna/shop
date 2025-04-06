@@ -10,7 +10,7 @@ asc;ascending;stigende
 bag;Bag;Indkøbskurv
 cancel;Cancel;Annuller
 cannotDeleteAdmin;This action is not allowed for admin;Admin bruger kan ikke slettes
-categorieNotFound;Category not found;Kategori findes ikke
+categoryNotFound;Category not found;Kategori findes ikke
 categories;Categories;Kategorier
 category;Category;Kategori
 categoryAlreadyExist;Category already exist;Kategori findes allerede

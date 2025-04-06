@@ -26,13 +26,6 @@ const getAllCategories = asyncHandler(async (req, res) => {
 const createCategory = asyncHandler(async (req, res) => {
   const { categoryName, categoryStatus, scheduledDate } = req.body;
 
-  if (!categoryStatus) {
-    return res.status(400).json({
-      success: false,
-      message: t('pleaseSpecifyCategoryStatus', req.lang),
-    });
-  }
-
   const validationResult = validateScheduledDate(categoryStatus, scheduledDate);
   if (!validationResult.success) {
     return res.status(400).json(validationResult);
@@ -41,7 +34,7 @@ const createCategory = asyncHandler(async (req, res) => {
   if (!categoryName) {
     return res.status(400).json({
       success: false,
-      message: t('pleaseEnterCategoryName', req.lang),
+      message: 'Please enter a category name',
     });
   }
 
@@ -62,10 +55,10 @@ const createCategory = asyncHandler(async (req, res) => {
   const category = await new Category(categoryData).save();
 
   res.status(201).json({
-    message: t('newCategoryCreated', req.lang),
+    message: 'New category created',
     id: category._id,
     categoryName: category.categoryName,
-    categoryStatus: category.categoryStatus,
+    categoryStatus: category.categoryStatus || 'Inactive',
     scheduledDate: category.scheduledDate, // Ensure this field is included
     createdAt: category.createdAt,
   });
@@ -81,7 +74,7 @@ const updateCategory = asyncHandler(async (req, res) => {
   if (!categoryName) {
     return res.status(400).json({
       success: false,
-      message: t('pleaseEnterCategoryName', req.lang),
+      message: 'Please enter a category name',
     });
   }
 
@@ -90,7 +83,7 @@ const updateCategory = asyncHandler(async (req, res) => {
   if (!category) {
     return res.status(404).json({
       success: false,
-      message: t('categoryNotFound', req.lang),
+      message: 'Category not found',
     });
   }
 
@@ -117,7 +110,7 @@ const updateCategory = asyncHandler(async (req, res) => {
   const updatedCategory = await category.save();
   res.status(200).json({
     success: true,
-    message: t('categoryUpdated', req.lang),
+    message: 'Category updated',
     updatedCategory: {
       id: updatedCategory._id,
       categoryName: updatedCategory.categoryName,

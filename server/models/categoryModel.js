@@ -14,7 +14,6 @@ const CategorySchema = new mongoose.Schema(
       type: String,
       enum: ['Published', 'Inactive', 'Scheduled'],
       default: 'inactive',
-      required: true,
     },
     scheduledDate: {
       type: Date, // Ensure this field is of type Date
