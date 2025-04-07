@@ -73,7 +73,7 @@ export type Category = DefaultResponseType & {
 };
 
 export interface CategoryResponse extends DefaultResponse {
-  category: Category;
+  categories: Category[];
 }
 
 export interface CreateCategoryRequest {

@@ -1,6 +1,5 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import {
-  Category,
   CategoryResponse,
   CreateCategoryRequest,
   UpdateCategoryRequest,
@@ -9,7 +8,7 @@ import { categoryUrl } from '../../app/endpoints';
 
 const categoryApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getAllCategories: builder.query<Category[], void>({
+    getAllCategories: builder.query<CategoryResponse, void>({
       query: () => categoryUrl,
       providesTags: [TagTypesEnum.Categories],
     }),

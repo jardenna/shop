@@ -40,7 +40,7 @@ const CategoryPage = () => {
     });
 
   const { editValues } = useTableEditField({
-    data: allCategories || [],
+    data: allCategories?.categories || [],
     callback: handleUpdateCategory,
   });
 
@@ -114,7 +114,7 @@ const CategoryPage = () => {
       </div>
       <div className="page-card">
         <Table
-          data={allCategories || []}
+          data={allCategories?.categories || []}
           columns={tableHeaders}
           tableCaption={language.customersList}
           isLoading={isLoading}

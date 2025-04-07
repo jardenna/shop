@@ -82,7 +82,7 @@ const getAllCategories = asyncHandler(async (req, res) => {
     return res.status(404).json({ message: t('noData', req.lang) });
   }
 
-  res.status(200).json(formattedCategories);
+  res.status(200).json({ success: true, categories: formattedCategories });
 });
 
 // @desc    Update category
