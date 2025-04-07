@@ -28,9 +28,13 @@ const tableHeaders: { key: keyof Category; label: string }[] = [
 ];
 
 const CategoryPage = () => {
+  const TwentyFourHours = 1000 * 60 * 60 * 24;
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
-  const { data: allCategories, isLoading } = useGetAllCategoriesQuery();
+  const { data: allCategories, isLoading } = useGetAllCategoriesQuery(
+    undefined,
+    { pollingInterval: TwentyFourHours },
+  );
   const [createCategory] = useCreateCategoryMutation();
   const [updateCategory] = useUpdateCategoryMutation();
   const { onChange, values, onSubmit, errors, onClearAllValues } =
