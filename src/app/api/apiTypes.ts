@@ -78,10 +78,13 @@ export interface CategoryResponse extends DefaultResponse {
 
 export interface CreateCategoryRequest {
   categoryName: string;
+  categoryStatus: CategoryStatus;
+  scheduledDate?: Date;
 }
 
 export interface UpdateCategoryRequest {
   categoryName: string;
+
   id: string;
 }
 

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { CategoryStatus } from '../../app/api/apiTypes';
 import DatePicker from '../../components/datePicker/DatePicker';
 import Form from '../../components/formElements/form/Form';
@@ -12,13 +13,11 @@ const CreateCategoryPage = () => {
   type CategoryState = {
     categoryName: string;
     categoryStatus: CategoryStatus;
-    scheduledDate: string;
   };
 
   const initialState: CategoryState = {
     categoryName: '',
     categoryStatus: '' as CategoryStatus,
-    scheduledDate: '',
   };
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
@@ -35,13 +34,18 @@ const CreateCategoryPage = () => {
   });
   const [createCategory] = useCreateCategoryMutation();
 
+  const [selected, setSelected] = useState(new Date());
+
   const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
     onCustomChange(name, selectedOptions.value);
   };
 
   async function handleSubmitNewCategory() {
     try {
-      const result = await createCategory(values).unwrap();
+      const result = await createCategory({
+        ...values,
+        scheduledDate: selected,
+      }).unwrap();
       onClearAllValues();
 
       onAddMessagePopup({
@@ -104,7 +108,9 @@ const CreateCategoryPage = () => {
             name="categoryStatus"
             labelText="select status"
           />
-          {values.categoryStatus === 'Scheduled' && <DatePicker />}
+          {values.categoryStatus === 'Scheduled' && (
+            <DatePicker handleSelect={setSelected} parentSelected={selected} />
+          )}
         </div>
       </Form>
     </section>
