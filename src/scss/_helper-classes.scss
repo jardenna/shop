@@ -24,6 +24,14 @@
   width: 1px;
 }
 
+.page-small {
+  max-width: $page-width-small;
+}
+
+.page-medium {
+  max-width: $page-width-medium;
+}
+
 .text-bold {
   font-weight: 700;
 }

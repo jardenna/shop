@@ -78,43 +78,41 @@ const CreateCategoryPage = () => {
   ];
 
   return (
-    <section className="page-card">
+    <section className="page-card page-small">
       <Form
         onSubmit={onSubmit}
         submitBtnLabel={language.save}
         className="submit-category"
       >
-        <div className="flex">
-          <Input
-            onChange={onChange}
-            value={values.categoryName}
-            id="categoryName"
-            name="categoryName"
-            labelText={language.addCategory}
-            placeholder={language.categoryName}
-            errorText={errors.categoryName}
-          />
+        <Input
+          onChange={onChange}
+          value={values.categoryName}
+          id="categoryName"
+          name="categoryName"
+          labelText={language.addCategory}
+          placeholder={language.categoryName}
+          errorText={errors.categoryName}
+        />
 
-          <Selectbox
-            id="categoryStatus"
-            defaultValue={{
-              label: language.inactive,
-              value: 'Inactive',
-            }}
-            options={statusOptions}
-            onChange={(selectedOptions: OptionType) => {
-              handleSelectStatus('categoryStatus', selectedOptions);
-            }}
-            name="categoryStatus"
-            labelText="select status"
+        <Selectbox
+          id="categoryStatus"
+          defaultValue={{
+            label: language.inactive,
+            value: 'Inactive',
+          }}
+          options={statusOptions}
+          onChange={(selectedOptions: OptionType) => {
+            handleSelectStatus('categoryStatus', selectedOptions);
+          }}
+          name="categoryStatus"
+          labelText="select status"
+        />
+        {values.categoryStatus === 'Scheduled' && (
+          <DatePicker
+            onSelectDate={setSelectedDate}
+            selectedDate={selectedDate}
           />
-          {values.categoryStatus === 'Scheduled' && (
-            <DatePicker
-              onSelectDate={setSelectedDate}
-              selectedDate={selectedDate}
-            />
-          )}
-        </div>
+        )}
       </Form>
     </section>
   );
