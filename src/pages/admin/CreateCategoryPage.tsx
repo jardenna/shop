@@ -4,7 +4,7 @@ import DatePicker from '../../components/datePicker/DatePicker';
 import Form from '../../components/formElements/form/Form';
 import Input from '../../components/formElements/Input';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-import Selectbox, { OptionType } from '../../components/selectBox/SelectBox';
+import Selectbox, { OptionType } from '../../components/selectBox/Selectbox';
 import { useCreateCategoryMutation } from '../../features/categories/categoriyApiSlice';
 import useLanguage from '../../features/language/useLanguage';
 import useFormValidation from '../../hooks/useFormValidation';
