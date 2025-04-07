@@ -82,7 +82,7 @@ const routeConfig = createBrowserRouter([
             element: <UserPage />,
           },
           {
-            path: MainPath.AdminProductUpdate,
+            path: `${MainPath.AdminProductUpdate}/:id`,
             element: <UpdateProductPage />,
           },
           {
