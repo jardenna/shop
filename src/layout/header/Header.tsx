@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { DropdownItem } from '../../components/dropdownBtn/DropdownBtn';
 import { SecondaryActionBtnProps } from '../../components/modal/Modal';
-import { OptionType } from '../../components/selectBox/Selectbox';
+import { OptionType } from '../../components/selectbox/Selectbox';
 import { SelectedLanguage } from '../../features/language/languageSlice';
 import { ChangeInputType } from '../../types/types';
 import HeaderIcons from '../headerIcons/HeaderIcons';
