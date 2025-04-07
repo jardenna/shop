@@ -25,14 +25,14 @@ const tableHeaders: { key: keyof Category; label: string }[] = [
 
 const CategoryPage = () => {
   const dispatch = useAppDispatch();
-  const TwentyFourHours = 1000 * 60 * 60 * 24;
+  const sixHours = 1000 * 60 * 60 * 6;
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
   const { data: allCategories, isLoading } = useGetAllCategoriesQuery();
 
   const { data: scheduledCategories, refetch } = useGetScheduledCategoriesQuery(
     undefined,
-    { pollingInterval: TwentyFourHours },
+    { pollingInterval: sixHours },
   );
 
   const [updateCategory] = useUpdateCategoryMutation();
