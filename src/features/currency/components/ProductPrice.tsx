@@ -8,7 +8,7 @@ interface ProductPriceProps {
 const ProductPrice: FC<ProductPriceProps> = ({ price }) => {
   const { convertedPrice } = useCurrency(price);
 
-  return <p>Price: {convertedPrice}</p>;
+  return <p>{convertedPrice}</p>;
 };
 
 export default ProductPrice;

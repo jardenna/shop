@@ -10,6 +10,14 @@ const CategorySchema = new mongoose.Schema(
       unique: true,
       required: [true, 'Please enter an category name'],
     },
+    categoryStatus: {
+      type: String,
+      enum: ['Published', 'Inactive', 'Scheduled'],
+      default: 'inactive',
+    },
+    scheduledDate: {
+      type: Date, // Ensure this field is of type Date
+    },
   },
   { timestamps: true },
 );

@@ -30,7 +30,19 @@
   }
 }
 
-.admin-container {
+.admin-page-container {
+  background-color: #f9f9f9;
+  padding-left: 40px;
+  padding-right: 40px;
+
+  .page-card {
+    background: #fff;
+    padding: 12px;
+    border-radius: 4px;
+    box-shadow: $box-shadow;
+    margin-bottom: 12px;
+  }
+
   .user-page {
     .empty-cell {
       position: relative;
@@ -61,7 +73,9 @@
       width: 100%;
     }
   }
+}
 
+.admin-container {
   .main {
     display: flex;
   }
@@ -79,7 +93,6 @@
     display: flex;
     flex-direction: column;
     height: calc(100svh - $header-height);
-    background-color: #f4f4f5;
     width: rem(300px);
 
     @include transition($what: width, $time: 0.2s);

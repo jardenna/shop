@@ -1,14 +1,11 @@
 import { Category } from '../../app/api/apiTypes';
-import Dropdown from '../../components/dropdown/Dropdown';
 import Form from '../../components/formElements/form/Form';
 import Input from '../../components/formElements/Input';
 import validateUpdateCategory from '../../components/formElements/validation/validateUpdateCategory';
-import Icon from '../../components/icons/Icon';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Table from '../../components/sortTable/Table';
 import {
   useCreateCategoryMutation,
-  useDeleteCategoryMutation,
   useGetAllCategoriesQuery,
   useUpdateCategoryMutation,
 } from '../../features/categories/categoriyApiSlice';
@@ -16,7 +13,6 @@ import EditCategoryInput from '../../features/categories/EditCategoryInput';
 import useLanguage from '../../features/language/useLanguage';
 import useFormValidation from '../../hooks/useFormValidation';
 import useTableEditField from '../../hooks/useTableEditField';
-import { BtnVariant, IconName } from '../../types/enums';
 
 const initialState = {
   categoryName: '',
@@ -26,7 +22,6 @@ const tableHeaders: { key: keyof Category; label: string }[] = [
   { key: 'categoryName', label: 'categoryName' },
   { key: 'createdAt', label: 'createdAt' },
   { key: 'updatedAt', label: 'updatedAt' },
-  { key: 'id', label: '' },
 ];
 
 const columnKeys: (keyof Category)[] = [
@@ -41,7 +36,6 @@ const CategoryPage = () => {
   const { data: allCategories, isLoading } = useGetAllCategoriesQuery();
   const [createCategory] = useCreateCategoryMutation();
   const [updateCategory] = useUpdateCategoryMutation();
-  const [deleteCategory] = useDeleteCategoryMutation();
   const { onChange, values, onSubmit, errors, onClearAllValues } =
     useFormValidation({
       initialState,
@@ -109,101 +103,64 @@ const CategoryPage = () => {
     }
   }
 
-  const handleDeleteCategory = async (id: string, category: string) => {
-    try {
-      await deleteCategory(id).unwrap();
-      onAddMessagePopup({
-        messagePopupType: 'success',
-        message: `${category} ${language.deleted}`,
-      });
-    } catch (error: any) {
-      onAddMessagePopup({
-        messagePopupType: 'error',
-        message: error.data.message,
-        componentType: 'notification',
-      });
-    }
-  };
-
   return (
     <section className="category-page">
       <h1>{language.categories}</h1>
-      <Form
-        onSubmit={onSubmit}
-        submitBtnLabel={language.save}
-        className="submit-category"
-      >
-        <Input
-          onChange={onChange}
-          value={values.categoryName || ''}
-          id="categoryName"
-          name="categoryName"
-          labelText={language.addCategory}
-          placeholder={language.categoryName}
-          errorText={errors.categoryName}
-        />
-      </Form>
-      <div>
-        {allCategories && (
-          <Table
-            data={allCategories}
-            columns={tableHeaders}
-            tableCaption={language.customersList}
-            isLoading={isLoading}
-            emptyHeaderCellText={language.deleteCategory}
-          >
-            {(data) =>
-              data.map(({ id, categoryName }) => (
-                <tr key={id}>
-                  {columnKeys.map((columnKey) => (
-                    <td key={columnKey}>
-                      <EditCategoryInput
-                        id={columnKey}
-                        onSave={() => {
-                          handleSaveEdit();
-                        }}
-                        showEditInput={
-                          editRowId === id && editingField === columnKey
-                        }
-                        onCancel={handleCancelEdit}
-                        onEditChange={handleEditChange}
-                        onEditBtnClick={() => {
-                          handleShowEditInput(id, columnKey);
-                        }}
-                        cellContent={String(
-                          allCategories.find((item) => item.id === id)?.[
-                            columnKey
-                          ] || '',
-                        )}
-                        value={String(editValues[columnKey] || '')}
-                      />
-                    </td>
-                  ))}
-                  <td>
-                    <Dropdown
-                      ariaControls="delete-category"
-                      text={`${language.sureToDelete} ${categoryName}?`}
-                      triggerBtnVariant={BtnVariant.Ghost}
-                      triggerBtnClassName="danger"
-                      onPrimaryClick={() => {
-                        handleDeleteCategory(id, categoryName);
+      <div className="page-card">
+        <Form
+          onSubmit={onSubmit}
+          submitBtnLabel={language.save}
+          className="submit-category"
+        >
+          <Input
+            onChange={onChange}
+            value={values.categoryName || ''}
+            id="categoryName"
+            name="categoryName"
+            labelText={language.addCategory}
+            placeholder={language.categoryName}
+            errorText={errors.categoryName}
+          />
+        </Form>
+      </div>
+      <div className="page-card">
+        <Table
+          data={allCategories || []}
+          columns={tableHeaders}
+          tableCaption={language.customersList}
+          isLoading={isLoading}
+        >
+          {(data) =>
+            data.map(({ id }) => (
+              <tr key={id}>
+                {columnKeys.map((columnKey) => (
+                  <td key={columnKey}>
+                    <EditCategoryInput
+                      id={columnKey}
+                      onSave={() => {
+                        handleSaveEdit();
                       }}
-                      primaryBtnLabel={language.delete}
-                      primaryBtnVariant={BtnVariant.Danger}
-                      ariaLabel={language.deleteCategory}
-                    >
-                      <Icon
-                        iconName={IconName.Trash}
-                        title={language.trashCan}
-                        ariaLabel={language.deleteCategory}
-                      />
-                    </Dropdown>
+                      showEditInput={
+                        editRowId === id && editingField === columnKey
+                      }
+                      onCancel={handleCancelEdit}
+                      onEditChange={handleEditChange}
+                      onEditBtnClick={() => {
+                        handleShowEditInput(id, columnKey);
+                      }}
+                      cellContent={String(
+                        allCategories?.find((item) => item.id === id)?.[
+                          columnKey
+                        ] || '',
+                      )}
+                      value={String(editValues[columnKey] || '')}
+                    />
                   </td>
-                </tr>
-              ))
-            }
-          </Table>
-        )}
+                ))}
+              </tr>
+            ))
+          }
+        </Table>
       </div>
     </section>
   );

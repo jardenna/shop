@@ -10,7 +10,7 @@ interface AdminHeaderProps {
 const AdminHeader: FC<AdminHeaderProps> = ({ ariaLabel }) => (
   <LayoutElement as="header" className="main-header" ariaLabel={ariaLabel}>
     <div className="container main-header-container">
-      <Logo link={`/${MainPath.Dashboard}`} />
+      <Logo link={`/${MainPath.Admin}`} />
     </div>
   </LayoutElement>
 );

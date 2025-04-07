@@ -10,6 +10,7 @@ import Dashboard from '../pages/admin/Dashboard';
 import OrderPage from '../pages/admin/OrderPage';
 import ProductPage from '../pages/admin/ProductPage';
 import ProfilePage from '../pages/admin/ProfilePage';
+import UpdatePage from '../pages/admin/UpdatePage';
 import UserPage from '../pages/admin/UserPage';
 import Collections from '../pages/Collections';
 import Contact from '../pages/Contact';
@@ -24,7 +25,7 @@ const routeConfig = createBrowserRouter([
   {
     path: MainPath.Root,
     errorElement: <ErrorPage />,
-    element: <Layout />, // Public layout
+    element: <Layout />,
     children: [
       {
         index: true,
@@ -62,27 +63,13 @@ const routeConfig = createBrowserRouter([
         path: MainPath.ShoppingCart,
         element: <ShoppingChart />,
       },
-
-      {
-        element: <ProtectedRoute />,
-        children: [
-          {
-            index: true,
-            element: <Dashboard />,
-          },
-          {
-            path: MainPath.Dashboard,
-            element: <Dashboard />,
-          },
-        ],
-      },
     ],
   },
   {
-    element: <ProtectedRoute />, // Ensure only authenticated users access
+    element: <ProtectedRoute />,
     children: [
       {
-        path: MainPath.Dashboard,
+        path: MainPath.Admin,
         element: <AdminLayout />,
         children: [
           {
@@ -92,6 +79,10 @@ const routeConfig = createBrowserRouter([
           {
             path: MainPath.Users,
             element: <UserPage />,
+          },
+          {
+            path: MainPath.AdminProductUpdate,
+            element: <UpdatePage />,
           },
           {
             path: MainPath.AdminProfile,

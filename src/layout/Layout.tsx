@@ -95,7 +95,7 @@ const Layout: FC = () => {
       id: 30,
       icon: <Icon iconName={IconName.Admin} title={language.lock} />,
       onClick: () => {
-        navigate(`/${MainPath.Dashboard}`);
+        navigate(`/${MainPath.Admin}`);
       },
       hide: !currentUser?.isAdmin,
     },

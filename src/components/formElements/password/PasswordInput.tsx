@@ -72,7 +72,7 @@ const PasswordInput: FC<PasswordInputProps> = ({
           onClick={handleShowPassword}
           className="toggle-icon-btn"
         >
-          {!showPassword ? (
+          {showPassword ? (
             <Icon
               iconName={IconName.EyeOff}
               title={language.eyeClosed}

@@ -23,6 +23,14 @@ table {
   border-collapse: collapse;
   width: 100%;
 
+  figure {
+    align-items: flex-start;
+
+    img {
+      max-width: rem(72px);
+    }
+  }
+
   .edit-cell {
     display: flex;
     justify-content: space-between;
@@ -140,7 +148,7 @@ table {
     padding: 4px 12px;
   }
 
-  .btn {
+  .btn-ghost {
     padding: 0;
   }
 
