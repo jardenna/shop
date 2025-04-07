@@ -1,4 +1,3 @@
-/* eslint-disable import/named */
 import Select, {
   GroupBase,
   MultiValue,
@@ -29,7 +28,7 @@ type SelectBoxProps = {
   onChange: (value: OptionType) => void;
 };
 
-const SelectBox = ({
+const Selectbox = ({
   options,
   isMulti,
   onChange,
@@ -85,4 +84,4 @@ const SelectBox = ({
   );
 };
 
-export default SelectBox;
+export default Selectbox;
