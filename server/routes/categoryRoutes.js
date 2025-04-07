@@ -2,6 +2,7 @@ import express from 'express';
 import {
   createCategory,
   getAllCategories,
+  getScheduledCategories,
   updateCategory,
 } from '../controllers/categoryController.js';
 import { authenticate, authorizeAdmin } from '../middleware/authMiddleware.js';
@@ -24,5 +25,7 @@ router
 router
   .route('/:id')
   .put(languageMiddleware, authenticate, authorizeAdmin, updateCategory);
+
+router.get('/scheduled', getScheduledCategories);
 
 export default router;
