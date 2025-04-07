@@ -144,6 +144,7 @@ const getSortedProducts = asyncHandler(async (req, res) => {
   const count = await Product.countDocuments();
 
   res.json({
+    success: true,
     products: formatMongoData(
       products.map(({ category, ...rest }) => ({
         ...rest,
