@@ -1,5 +1,8 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router';
+import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import { Category } from '../../app/api/apiTypes';
+import { useAppDispatch } from '../../app/hooks';
 import Form from '../../components/formElements/form/Form';
 import Input from '../../components/formElements/Input';
 import validateUpdateCategory from '../../components/formElements/validation/validateUpdateCategory';
@@ -8,6 +11,7 @@ import Table from '../../components/sortTable/Table';
 import {
   useCreateCategoryMutation,
   useGetAllCategoriesQuery,
+  useGetScheduledCategoriesQuery,
   useUpdateCategoryMutation,
 } from '../../features/categories/categoriyApiSlice';
 import DateDisplay from '../../features/categories/DateDisplay';
@@ -28,13 +32,17 @@ const tableHeaders: { key: keyof Category; label: string }[] = [
 ];
 
 const CategoryPage = () => {
+  const dispatch = useAppDispatch();
   const TwentyFourHours = 1000 * 60 * 60 * 24;
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
-  const { data: allCategories, isLoading } = useGetAllCategoriesQuery(
+  const { data: allCategories, isLoading } = useGetAllCategoriesQuery();
+
+  const { data: scheduledCategories, refetch } = useGetScheduledCategoriesQuery(
     undefined,
     { pollingInterval: TwentyFourHours },
   );
+
   const [createCategory] = useCreateCategoryMutation();
   const [updateCategory] = useUpdateCategoryMutation();
   const { onChange, values, onSubmit, errors, onClearAllValues } =
@@ -95,6 +103,19 @@ const CategoryPage = () => {
       });
     }
   }
+
+  // Monitor for emptying scheduled list
+  useEffect(() => {
+    if (!isLoading && scheduledCategories?.categories.length === 0) {
+      // Trigger refetch of full category list
+      dispatch(
+        apiSlice.util.invalidateTags([
+          { type: TagTypesEnum.Categories, id: 'SCHEDULED' },
+        ]),
+      );
+    }
+    refetch();
+  }, [scheduledCategories, isLoading, dispatch, refetch]);
 
   return (
     <section className="category-page">
