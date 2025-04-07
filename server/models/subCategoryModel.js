@@ -8,6 +8,14 @@ const subCategorySchema = new mongoose.Schema(
       ref: 'Category',
       required: true,
     }, // Link to Category
+    categoryStatus: {
+      type: String,
+      enum: ['Published', 'Inactive', 'Scheduled'],
+      default: 'Inactive',
+    },
+    scheduledDate: {
+      type: Date, // Ensure this field is of type Date
+    },
   },
   { timestamps: true },
 );

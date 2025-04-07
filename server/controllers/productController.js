@@ -1,14 +1,12 @@
 import asyncHandler from '../middleware/asyncHandler.js';
+import Category from '../models/categoryModel.js'; // Import Category model
 import Product from '../models/productModel.js';
-import validateProduct from '../utils/validateProduct .js';
-
-const ERROR_MESSAGES = {
-  PRODUCT_NOT_FOUND: 'Product not found',
-};
+import SubCategory from '../models/subCategoryModel.js'; // Import SubCategory model
+import validateProduct from '../utils/validateProduct.js';
 
 const errorResponse = {
   success: false,
-  message: ERROR_MESSAGES.PRODUCT_NOT_FOUND,
+  message: 'Product not found',
 };
 
 // @desc    Create Product
@@ -21,37 +19,26 @@ const createProduct = asyncHandler(async (req, res) => {
     return res.status(400).json({ success: false, message: error });
   }
 
-  const {
-    productName,
-    image,
-    brand,
-    quantity,
-    category,
-    subCategory,
-    description,
-    price,
-    countInStock,
-    sizes,
-    colors,
-    material,
-    discount,
-  } = req.body;
+  const { category, subCategory, ...rest } = req.body;
 
-  const product = new Product({
-    productName,
-    image,
-    brand,
-    quantity,
-    category,
-    subCategory,
-    description,
-    price,
-    countInStock,
-    colors,
-    material,
-    sizes,
-    discount,
-  });
+  // Validate category existence
+  const categoryId = await Category.findById(category);
+
+  if (!categoryId) {
+    return res
+      .status(400)
+      .json({ success: false, message: 'Invalid category ID' });
+  }
+
+  // Validate subCategory existence
+  const subCategoryId = await SubCategory.findById(category);
+  if (!subCategoryId) {
+    return res
+      .status(400)
+      .json({ success: false, message: 'Invalid subCategory ID' });
+  }
+
+  const product = new Product({ category, subCategory, ...rest });
 
   await product.save();
 
@@ -68,38 +55,27 @@ const updateProduct = asyncHandler(async (req, res) => {
     return res.status(400).json({ success: false, message: error });
   }
 
-  const {
-    productName,
-    image,
-    brand,
-    quantity,
-    category,
-    subCategory,
-    description,
-    price,
-    countInStock,
-    colors,
-    material,
-    discount,
-  } = req.body;
+  const { category, subCategory, ...rest } = req.body;
+
+  // Validate category existence
+  const categoryId = await Category.findById(category);
+  if (!categoryId) {
+    return res
+      .status(400)
+      .json({ success: false, message: 'Invalid category ID' });
+  }
+
+  // Validate subCategory existence
+  const subCategoryId = await SubCategory.findById(category);
+  if (!subCategoryId) {
+    return res
+      .status(400)
+      .json({ success: false, message: 'Invalid subCategory ID' });
+  }
 
   const product = await Product.findByIdAndUpdate(
     req.params.id,
-    {
-      productName,
-      image,
-      brand,
-      quantity,
-      category,
-      subCategory,
-      description,
-      price,
-      countInStock,
-      sizes: req.body.sizes || ['S', 'M', 'L', 'XL'],
-      colors,
-      material,
-      discount,
-    },
+    { category, subCategory, ...rest },
     { new: true },
   );
 
@@ -206,46 +182,6 @@ const getNewProducts = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Create Product Reviews
-// @route   /api/products/:id/reviews
-// @method  Post
-// @access  Public for logged-in users
-const createProductReviews = asyncHandler(async (req, res) => {
-  const { rating, comment } = req.body;
-  const product = await Product.findById(req.params.id);
-
-  if (!product) {
-    return res.status(404).json(errorResponse);
-  }
-
-  const alreadyReviewed = product.reviews.find(
-    (review) => review.user.toString() === req.user._id.toString(),
-  );
-
-  if (alreadyReviewed) {
-    return res
-      .status(400)
-      .json({ success: false, message: 'Product already reviewed' });
-  }
-
-  const review = {
-    name: req.user.username,
-    id: req.user._id,
-    rating: Number(rating),
-    comment,
-    user: req.user._id,
-  };
-
-  product.reviews.push(review);
-  product.numReviews = product.reviews.length;
-  product.rating =
-    product.reviews.reduce((acc, item) => item.rating + acc, 0) /
-    product.reviews.length;
-
-  await product.save();
-  res.status(201).json({ message: 'Review added' });
-});
-
 // @desc    Get Product By ID
 // @route   /api/products/:id
 // @method  Get
@@ -263,7 +199,6 @@ const getProductById = asyncHandler(async (req, res) => {
 
 export {
   createProduct,
-  createProductReviews,
   deleteProduct,
   getNewProducts,
   getProductById,

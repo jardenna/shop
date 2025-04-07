@@ -2,7 +2,7 @@ import asyncHandler from '../middleware/asyncHandler.js';
 import Category from '../models/categoryModel.js';
 import formatMongoData from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
-import validateScheduledDate from '../utils/validateCategory.js';
+import validateScheduledDate from '../utils/validateScheduledDate.js';
 
 // @desc    Create category
 // @route   /api/category

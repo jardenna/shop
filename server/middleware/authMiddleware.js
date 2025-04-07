@@ -39,4 +39,15 @@ const authorizeAdmin = (req, res, next) => {
   }
 };
 
-export { authenticate, authorizeAdmin };
+const authorizeEmployee = (req, res, next) => {
+  if (req.user && req.user.role === 'Employee') {
+    next();
+  } else {
+    return res.status(401).json({
+      success: false,
+      message: 'Not authorized as an employee',
+    });
+  }
+};
+
+export { authenticate, authorizeAdmin, authorizeEmployee };
