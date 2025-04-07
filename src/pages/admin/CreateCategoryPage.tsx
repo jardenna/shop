@@ -1,6 +1,8 @@
+import DatePicker from '../../components/datePicker/DatePicker';
 import Form from '../../components/formElements/form/Form';
 import Input from '../../components/formElements/Input';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
+import Selectbox, { OptionType } from '../../components/selectBox/SelectBox';
 import { useCreateCategoryMutation } from '../../features/categories/categoriyApiSlice';
 import useLanguage from '../../features/language/useLanguage';
 import useFormValidation from '../../hooks/useFormValidation';
@@ -13,13 +15,23 @@ const CreateCategoryPage = () => {
   };
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
-  const { onChange, values, onSubmit, errors, onClearAllValues } =
-    useFormValidation({
-      initialState,
-      callback: handleSubmitNewCategory,
-    });
+  const {
+    onChange,
+    values,
+    onSubmit,
+    errors,
+    onClearAllValues,
+    onCustomChange,
+  } = useFormValidation({
+    initialState,
+    callback: handleSubmitNewCategory,
+  });
   const [createCategory] = useCreateCategoryMutation();
   console.log(values);
+
+  const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
+    onCustomChange(name, selectedOptions.value);
+  };
 
   async function handleSubmitNewCategory() {
     try {
@@ -39,6 +51,22 @@ const CreateCategoryPage = () => {
       });
     }
   }
+
+  const statusOptions = [
+    {
+      label: language.inactive,
+      value: 'Inactive',
+    },
+    {
+      label: language.scheduled,
+      value: 'Scheduled',
+    },
+    {
+      label: language.published,
+      value: 'Published',
+    },
+  ];
+
   return (
     <section className="page-card">
       <Form
@@ -56,14 +84,21 @@ const CreateCategoryPage = () => {
             placeholder={language.categoryName}
             errorText={errors.categoryName}
           />
-          <Input
-            onChange={onChange}
-            value={values.categoryStatus}
+
+          <Selectbox
             id="categoryStatus"
+            defaultValue={{
+              label: language.inactive,
+              value: 'Inactive',
+            }}
+            options={statusOptions}
+            onChange={(selectedOptions: OptionType) => {
+              handleSelectStatus('categoryStatus', selectedOptions);
+            }}
             name="categoryStatus"
-            labelText={language.addCategory}
-            placeholder={language.categoryName}
+            labelText="select status"
           />
+          <DatePicker />
         </div>
       </Form>
     </section>
