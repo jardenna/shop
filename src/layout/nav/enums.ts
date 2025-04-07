@@ -2,6 +2,7 @@ export enum MainPath {
   About = 'about',
   Admin = 'admin',
   AdminCategories = 'categories',
+  AdminCategoryCreate = 'category/create',
   AdminCategoryUpdate = 'category/update',
   AdminOrders = 'orders',
   AdminProducts = 'products',

@@ -6,6 +6,7 @@ import About from '../pages/About';
 import MyAccount from '../pages/account/MyAccount';
 import Orders from '../pages/account/Orders';
 import CategoryPage from '../pages/admin/CategoryPage';
+import CreateCategoryPage from '../pages/admin/CreateCategoryPage';
 import Dashboard from '../pages/admin/Dashboard';
 import OrderPage from '../pages/admin/OrderPage';
 import ProductPage from '../pages/admin/ProductPage';
@@ -88,6 +89,10 @@ const routeConfig = createBrowserRouter([
           {
             path: `${MainPath.AdminCategoryUpdate}/:id`,
             element: <UpdateCategoryPage />,
+          },
+          {
+            path: MainPath.AdminCategoryCreate,
+            element: <CreateCategoryPage />,
           },
           {
             path: MainPath.AdminProfile,

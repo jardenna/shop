@@ -119,7 +119,12 @@ const CategoryPage = () => {
 
   return (
     <section className="category-page">
-      <h1>{language.categories}</h1>
+      <div className="top-container ">
+        <h1>{language.categories}</h1>
+        <Link to={`/admin/${MainPath.AdminCategoryCreate}`}>
+          {language.addCategory}
+        </Link>
+      </div>
       <div className="page-card">
         <Form
           onSubmit={onSubmit}
