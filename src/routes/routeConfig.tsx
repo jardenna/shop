@@ -10,6 +10,7 @@ import Dashboard from '../pages/admin/Dashboard';
 import OrderPage from '../pages/admin/OrderPage';
 import ProductPage from '../pages/admin/ProductPage';
 import ProfilePage from '../pages/admin/ProfilePage';
+import UpdateCategoryPage from '../pages/admin/UpdateCategoryPage';
 import UpdateProductPage from '../pages/admin/UpdateProductPage';
 import UserPage from '../pages/admin/UserPage';
 import Collections from '../pages/Collections';
@@ -20,7 +21,6 @@ import LoginPage from '../pages/LoginPage';
 import ProtectedRoute from '../pages/ProtectedRoute';
 import ShoppingChart from '../pages/ShoppingChart';
 import SignupPage from '../pages/SignupPage';
-import UpdateCategoryPage from '../pages/admin/UpdateCategoryPage';
 
 const routeConfig = createBrowserRouter([
   {
@@ -86,7 +86,7 @@ const routeConfig = createBrowserRouter([
             element: <UpdateProductPage />,
           },
           {
-            path: MainPath.AdminCategoryUpdate,
+            path: `${MainPath.AdminCategoryUpdate}/:id`,
             element: <UpdateCategoryPage />,
           },
           {

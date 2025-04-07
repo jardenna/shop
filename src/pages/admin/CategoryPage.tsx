@@ -14,6 +14,7 @@ import DateDisplay from '../../features/categories/DateDisplay';
 import useLanguage from '../../features/language/useLanguage';
 import useFormValidation from '../../hooks/useFormValidation';
 import useTableEditField from '../../hooks/useTableEditField';
+import { MainPath } from '../../layout/nav/enums';
 
 const initialState = {
   categoryName: '',
@@ -139,7 +140,7 @@ const CategoryPage = () => {
                     <DateDisplay date={createdAt} />
                   </td>
                   <td>
-                    <Link to={`/admin/category/update/${id}`}>
+                    <Link to={`/admin/${MainPath.AdminCategoryUpdate}/${id}`}>
                       {language.update}
                     </Link>
                   </td>
