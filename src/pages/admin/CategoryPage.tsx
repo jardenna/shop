@@ -3,26 +3,18 @@ import { Link } from 'react-router';
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import { Category } from '../../app/api/apiTypes';
 import { useAppDispatch } from '../../app/hooks';
-import Form from '../../components/formElements/form/Form';
-import Input from '../../components/formElements/Input';
 import validateUpdateCategory from '../../components/formElements/validation/validateUpdateCategory';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Table from '../../components/sortTable/Table';
 import {
-  useCreateCategoryMutation,
   useGetAllCategoriesQuery,
   useGetScheduledCategoriesQuery,
   useUpdateCategoryMutation,
 } from '../../features/categories/categoriyApiSlice';
 import DateDisplay from '../../features/categories/DateDisplay';
 import useLanguage from '../../features/language/useLanguage';
-import useFormValidation from '../../hooks/useFormValidation';
 import useTableEditField from '../../hooks/useTableEditField';
 import { MainPath } from '../../layout/nav/enums';
-
-const initialState = {
-  categoryName: '',
-};
 
 const tableHeaders: { key: keyof Category; label: string }[] = [
   { key: 'categoryName', label: 'categoryName' },
@@ -43,37 +35,12 @@ const CategoryPage = () => {
     { pollingInterval: TwentyFourHours },
   );
 
-  const [createCategory] = useCreateCategoryMutation();
   const [updateCategory] = useUpdateCategoryMutation();
-  const { onChange, values, onSubmit, errors, onClearAllValues } =
-    useFormValidation({
-      initialState,
-      callback: handleSubmitNewCategory,
-    });
 
   const { editValues } = useTableEditField({
     data: allCategories?.categories || [],
     callback: handleUpdateCategory,
   });
-
-  async function handleSubmitNewCategory() {
-    try {
-      const result = await createCategory(values).unwrap();
-      onClearAllValues();
-
-      onAddMessagePopup({
-        messagePopupType: !result.success ? 'error' : 'success',
-        message: result.message,
-        componentType: !result.success ? 'notification' : undefined,
-      });
-    } catch (error: any) {
-      onAddMessagePopup({
-        messagePopupType: 'error',
-        message: error.data.message,
-        componentType: 'notification',
-      });
-    }
-  }
 
   async function handleUpdateCategory(id: string) {
     const validation = validateUpdateCategory(editValues);
@@ -125,23 +92,7 @@ const CategoryPage = () => {
           {language.addCategory}
         </Link>
       </div>
-      <div className="page-card">
-        <Form
-          onSubmit={onSubmit}
-          submitBtnLabel={language.save}
-          className="submit-category"
-        >
-          <Input
-            onChange={onChange}
-            value={values.categoryName || ''}
-            id="categoryName"
-            name="categoryName"
-            labelText={language.addCategory}
-            placeholder={language.categoryName}
-            errorText={errors.categoryName}
-          />
-        </Form>
-      </div>
+
       <div className="page-card">
         <Table
           data={allCategories?.categories || []}
