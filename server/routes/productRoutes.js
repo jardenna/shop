@@ -10,7 +10,11 @@ import {
   updateProduct,
 } from '../controllers/productController.js';
 import createProductReviews from '../controllers/productReviewController.js';
-import { authenticate, authorizeAdmin } from '../middleware/authMiddleware.js';
+import {
+  authenticate,
+  authorizeAdmin,
+  authorizeEmployee,
+} from '../middleware/authMiddleware.js';
 import checkId from '../middleware/checkId.js';
 import languageMiddleware from '../middleware/languageMiddleware.js';
 
@@ -18,7 +22,7 @@ const router = express.Router();
 router
   .route('/')
   .get(getProducts)
-  .post(authenticate, authorizeAdmin, createProduct);
+  .post(authenticate, authorizeEmployee, createProduct);
 
 router.get('/allProducts', getSortedProducts);
 router.post('/:id/reviews', authenticate, checkId, createProductReviews);
@@ -28,7 +32,7 @@ router.get('/new', getNewProducts);
 router
   .route('/:id')
   .get(languageMiddleware, getProductById)
-  .put(authenticate, authorizeAdmin, updateProduct)
+  .put(authenticate, authorizeEmployee, updateProduct)
   .delete(authenticate, authorizeAdmin, deleteProduct);
 
 export default router;
