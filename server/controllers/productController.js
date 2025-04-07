@@ -1,5 +1,7 @@
 import asyncHandler from '../middleware/asyncHandler.js';
+import Category from '../models/categoryModel.js'; // Import Category model
 import Product from '../models/productModel.js';
+import SubCategory from '../models/subCategoryModel.js'; // Import SubCategory model
 import validateProduct from '../utils/validateProduct .js';
 
 const ERROR_MESSAGES = {
@@ -21,37 +23,26 @@ const createProduct = asyncHandler(async (req, res) => {
     return res.status(400).json({ success: false, message: error });
   }
 
-  const {
-    productName,
-    image,
-    brand,
-    quantity,
-    category,
-    subCategory,
-    description,
-    price,
-    countInStock,
-    sizes,
-    colors,
-    material,
-    discount,
-  } = req.body;
+  const { category, subCategory, ...rest } = req.body;
 
-  const product = new Product({
-    productName,
-    image,
-    brand,
-    quantity,
-    category,
-    subCategory,
-    description,
-    price,
-    countInStock,
-    colors,
-    material,
-    sizes,
-    discount,
-  });
+  // Validate category existence
+  const categoryId = await Category.findById(category);
+
+  if (!categoryId) {
+    return res
+      .status(400)
+      .json({ success: false, message: 'Invalid category ID' });
+  }
+
+  // Validate subCategory existence
+  const subCategoryId = await SubCategory.findById(category);
+  if (!subCategoryId) {
+    return res
+      .status(400)
+      .json({ success: false, message: 'Invalid subCategory ID' });
+  }
+
+  const product = new Product({ category, subCategory, ...rest });
 
   await product.save();
 
@@ -68,38 +59,27 @@ const updateProduct = asyncHandler(async (req, res) => {
     return res.status(400).json({ success: false, message: error });
   }
 
-  const {
-    productName,
-    image,
-    brand,
-    quantity,
-    category,
-    subCategory,
-    description,
-    price,
-    countInStock,
-    colors,
-    material,
-    discount,
-  } = req.body;
+  const { category, subCategory, ...rest } = req.body;
+
+  // Validate category existence
+  const categoryId = await Category.findById(category);
+  if (!categoryId) {
+    return res
+      .status(400)
+      .json({ success: false, message: 'Invalid category ID' });
+  }
+
+  // Validate subCategory existence
+  const subCategoryId = await SubCategory.findById(category);
+  if (!subCategoryId) {
+    return res
+      .status(400)
+      .json({ success: false, message: 'Invalid subCategory ID' });
+  }
 
   const product = await Product.findByIdAndUpdate(
     req.params.id,
-    {
-      productName,
-      image,
-      brand,
-      quantity,
-      category,
-      subCategory,
-      description,
-      price,
-      countInStock,
-      sizes: req.body.sizes || ['S', 'M', 'L', 'XL'],
-      colors,
-      material,
-      discount,
-    },
+    { category, subCategory, ...rest },
     { new: true },
   );
 
