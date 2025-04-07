@@ -2,6 +2,7 @@ import asyncHandler from '../middleware/asyncHandler.js';
 import Category from '../models/categoryModel.js'; // Import Category model
 import Product from '../models/productModel.js';
 import SubCategory from '../models/subCategoryModel.js'; // Import SubCategory model
+import formatMongoData from '../utils/formatMongoData.js';
 import validateProduct from '../utils/validateProduct.js';
 
 const errorResponse = {
@@ -31,7 +32,7 @@ const createProduct = asyncHandler(async (req, res) => {
   }
 
   // Validate subCategory existence
-  const subCategoryId = await SubCategory.findById(category);
+  const subCategoryId = await SubCategory.findById(subCategory);
   if (!subCategoryId) {
     return res
       .status(400)
@@ -66,7 +67,7 @@ const updateProduct = asyncHandler(async (req, res) => {
   }
 
   // Validate subCategory existence
-  const subCategoryId = await SubCategory.findById(category);
+  const subCategoryId = await SubCategory.findById(subCategory);
   if (!subCategoryId) {
     return res
       .status(400)
@@ -118,7 +119,7 @@ const getProducts = asyncHandler(async (req, res) => {
     .lean();
 
   res.json({
-    products: products.map(({ _id, ...rest }) => ({ id: _id, ...rest })),
+    products: formatMongoData(products),
     page,
     pages: Math.ceil(count / pageSize),
   });
@@ -143,13 +144,14 @@ const getSortedProducts = asyncHandler(async (req, res) => {
   const count = await Product.countDocuments();
 
   res.json({
-    products: products.map(({ _id, category, ...rest }) => ({
-      id: _id,
-      category: category
-        ? { id: category._id, ...category, _id: undefined }
-        : null,
-      ...rest,
-    })),
+    products: formatMongoData(
+      products.map(({ category, ...rest }) => ({
+        ...rest,
+        category: category
+          ? { id: category._id, ...category, _id: undefined }
+          : null,
+      })),
+    ),
     page,
     pages: Math.ceil(count / pageSize),
   });
@@ -163,7 +165,7 @@ const getTopProducts = asyncHandler(async (req, res) => {
   const products = await Product.find({}).sort({ rating: -1 }).limit(4).lean();
 
   res.json({
-    products: products.map(({ _id, ...rest }) => ({ id: _id, ...rest })),
+    products: formatMongoData(products),
   });
 });
 
@@ -178,7 +180,7 @@ const getNewProducts = asyncHandler(async (req, res) => {
     .lean();
 
   res.json({
-    products: products.map(({ _id, ...rest }) => ({ id: _id, ...rest })),
+    products: formatMongoData(products),
   });
 });
 
@@ -193,8 +195,7 @@ const getProductById = asyncHandler(async (req, res) => {
     return res.status(404).json(errorResponse);
   }
 
-  const { _id, ...rest } = product;
-  res.json({ id: _id, ...rest });
+  res.json(formatMongoData(product));
 });
 
 export {
