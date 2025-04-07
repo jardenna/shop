@@ -34,7 +34,7 @@ const CreateCategoryPage = () => {
   });
   const [createCategory] = useCreateCategoryMutation();
 
-  const [selected, setSelected] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
   const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
     onCustomChange(name, selectedOptions.value);
@@ -44,7 +44,7 @@ const CreateCategoryPage = () => {
     try {
       const result = await createCategory({
         ...values,
-        scheduledDate: selected,
+        scheduledDate: selectedDate,
       }).unwrap();
       onClearAllValues();
 
@@ -109,7 +109,10 @@ const CreateCategoryPage = () => {
             labelText="select status"
           />
           {values.categoryStatus === 'Scheduled' && (
-            <DatePicker handleSelect={setSelected} parentSelected={selected} />
+            <DatePicker
+              onSelectDate={setSelectedDate}
+              selectedDate={selectedDate}
+            />
           )}
         </div>
       </Form>
