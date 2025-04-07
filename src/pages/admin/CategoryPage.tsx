@@ -9,7 +9,7 @@ import {
   useGetAllCategoriesQuery,
   useUpdateCategoryMutation,
 } from '../../features/categories/categoriyApiSlice';
-import EditCategoryInput from '../../features/categories/EditCategoryInput';
+import DateDisplay from '../../features/categories/DateDisplay';
 import useLanguage from '../../features/language/useLanguage';
 import useFormValidation from '../../hooks/useFormValidation';
 import useTableEditField from '../../hooks/useTableEditField';
@@ -20,14 +20,8 @@ const initialState = {
 
 const tableHeaders: { key: keyof Category; label: string }[] = [
   { key: 'categoryName', label: 'categoryName' },
+  { key: 'categoryStatus', label: 'categoryStatus' },
   { key: 'createdAt', label: 'createdAt' },
-  { key: 'updatedAt', label: 'updatedAt' },
-];
-
-const columnKeys: (keyof Category)[] = [
-  'categoryName',
-  'createdAt',
-  'updatedAt',
 ];
 
 const CategoryPage = () => {
@@ -42,15 +36,7 @@ const CategoryPage = () => {
       callback: handleSubmitNewCategory,
     });
 
-  const {
-    editRowId,
-    editingField,
-    handleShowEditInput,
-    handleEditChange,
-    handleCancelEdit,
-    editValues,
-    handleSaveEdit,
-  } = useTableEditField({
+  const { editValues } = useTableEditField({
     data: allCategories || [],
     callback: handleUpdateCategory,
   });
@@ -131,34 +117,28 @@ const CategoryPage = () => {
           isLoading={isLoading}
         >
           {(data) =>
-            data.map(({ id }) => (
-              <tr key={id}>
-                {columnKeys.map((columnKey) => (
-                  <td key={columnKey}>
-                    <EditCategoryInput
-                      id={columnKey}
-                      onSave={() => {
-                        handleSaveEdit();
-                      }}
-                      showEditInput={
-                        editRowId === id && editingField === columnKey
-                      }
-                      onCancel={handleCancelEdit}
-                      onEditChange={handleEditChange}
-                      onEditBtnClick={() => {
-                        handleShowEditInput(id, columnKey);
-                      }}
-                      cellContent={String(
-                        allCategories?.find((item) => item.id === id)?.[
-                          columnKey
-                        ] || '',
-                      )}
-                      value={String(editValues[columnKey] || '')}
-                    />
+            data.map(
+              ({
+                id,
+                scheduledDate,
+                categoryName,
+                createdAt,
+                categoryStatus,
+              }) => (
+                <tr key={id}>
+                  <td>{categoryName}</td>
+                  <td>
+                    <span>{language[categoryStatus.toLocaleLowerCase()]} </span>
+                    <span>
+                      {scheduledDate && <DateDisplay date={scheduledDate} />}
+                    </span>
                   </td>
-                ))}
-              </tr>
-            ))
+                  <td>
+                    <DateDisplay date={createdAt} />
+                  </td>
+                </tr>
+              ),
+            )
           }
         </Table>
       </div>

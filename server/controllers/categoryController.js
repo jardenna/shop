@@ -40,6 +40,7 @@ const createCategory = asyncHandler(async (req, res) => {
   const category = await new Category(categoryData).save();
 
   res.status(201).json({
+    success: true,
     message: 'New category created',
     id: category._id,
     categoryName: category.categoryName,

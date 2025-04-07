@@ -13,7 +13,7 @@ const CategorySchema = new mongoose.Schema(
     categoryStatus: {
       type: String,
       enum: ['Published', 'Inactive', 'Scheduled'],
-      default: 'inactive',
+      default: 'Inactive',
     },
     scheduledDate: {
       type: Date, // Ensure this field is of type Date

@@ -16,6 +16,7 @@ category;Category;Kategori
 categoryAlreadyExist;Category already exist;Kategori findes allerede
 categoryDeleted;Category deleted;Kategori blev slettet
 categoryName;Category name;Kategori navn
+categoryStatus;Category status;Kategori status
 categoryUpdated;Category updated;Kategori opdateret
 clearFilters;Clear filters;Ryd filtre
 clearSort;Clear sort;Ryd sortering
@@ -32,6 +33,7 @@ criterionNotMet;Criterion not met;Kriterium ikke opfyldt
 currency;Currency;Valuta
 customersList;Customers list;Kundeliste
 dashboard;Dashboard;Dashboard
+date;Date;Dato
 delete;Delete;Slet
 deleted;deleted;slettet
 deleteUser;Delete user;Slet bruger
@@ -124,9 +126,9 @@ signup;Sign up;Opret bruger
 signupFailed;Sign up failed;Registrering mislykkedes
 signupSucceeded;Sign up succeeded;Registrering lykkedes
 sort;Sort;Sorter
-statusPublished;Published;Udgivet
-statusInactive;Inactive;Inaktiv
-statusScheduled;Scheduled;Planlagt til udgivelse
+published;Published;Udgivet
+inactive;Inactive;Inaktiv
+scheduled;Scheduled for;Planlagt til udgivelse den
 pleaseProvideScheduledDate;Please provide a scheduled date;Angiv venligst en planlagt dato
 invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for planlagt dato
 scheduledDateMustBeFuture;Scheduled date must be after today;Planlagt dato skal være efter i dag
