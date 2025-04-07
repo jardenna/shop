@@ -57,6 +57,17 @@ h1 {
   font-family: $font-secondary;
 }
 
+a {
+  text-decoration: none;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: '';
+    inset: -10px;
+  }
+}
+
 img {
   width: 100%;
 }
