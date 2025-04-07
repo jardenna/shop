@@ -1,5 +1,4 @@
 /* eslint-disable import/named */
-import { FC } from 'react';
 import Select, {
   GroupBase,
   MultiValue,
@@ -14,7 +13,7 @@ export type OptionType = {
   value: number | string;
 };
 export type SelectedOption = SingleValue<OptionType> | MultiValue<OptionType>;
-interface NewSelectBoxProps {
+type SelectBoxProps = {
   defaultValue: OptionType;
   id: string;
   labelText: string;
@@ -28,9 +27,9 @@ interface NewSelectBoxProps {
   placeholder?: string;
   required?: boolean;
   onChange: (value: OptionType) => void;
-}
+};
 
-const NewSelectBox: FC<NewSelectBoxProps> = ({
+const SelectBox = ({
   options,
   isMulti,
   onChange,
@@ -44,7 +43,7 @@ const NewSelectBox: FC<NewSelectBoxProps> = ({
   closeMenuOnSelect,
   labelText,
   inputHasNoLabel,
-}) => {
+}: SelectBoxProps) => {
   const handleChange = (newValue: SelectedOption) => {
     if (isMulti) {
       onChange(newValue as OptionType);
@@ -86,4 +85,4 @@ const NewSelectBox: FC<NewSelectBoxProps> = ({
   );
 };
 
-export default NewSelectBox;
+export default SelectBox;
