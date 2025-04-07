@@ -5,7 +5,7 @@ import createToken from '../utils/createToken.js';
 import { validateEmail } from '../utils/emailValidator.js';
 import { validatePassword } from '../utils/passwordValidator.js';
 import { t } from '../utils/translator.js';
-// Test
+
 // @desc    Register a new user
 // @route   /api/auth/register
 // @method   POST
