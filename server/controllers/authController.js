@@ -17,7 +17,7 @@ const createUser = asyncHandler(async (req, res) => {
   if (!username || !email || !password) {
     return res.status(400).json({
       success: false,
-      message: t('fillAll', req.lang),
+      message: 'Please fill all inputs',
     });
   }
 
@@ -95,14 +95,14 @@ const loginUser = asyncHandler(async (req, res) => {
   if (!email) {
     return res.status(401).json({
       success: false,
-      message: t('noEmail', req.lang),
+      message: 'Please enter an email',
     });
   }
 
   if (!password) {
     return res.status(401).json({
       success: false,
-      message: t('noPassword', req.lang),
+      message: 'Please enter a password',
     });
   }
 

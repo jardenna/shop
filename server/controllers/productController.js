@@ -2,15 +2,11 @@ import asyncHandler from '../middleware/asyncHandler.js';
 import Category from '../models/categoryModel.js'; // Import Category model
 import Product from '../models/productModel.js';
 import SubCategory from '../models/subCategoryModel.js'; // Import SubCategory model
-import validateProduct from '../utils/validateProduct .js';
-
-const ERROR_MESSAGES = {
-  PRODUCT_NOT_FOUND: 'Product not found',
-};
+import validateProduct from '../utils/validateProduct.js';
 
 const errorResponse = {
   success: false,
-  message: ERROR_MESSAGES.PRODUCT_NOT_FOUND,
+  message: 'Product not found',
 };
 
 // @desc    Create Product
