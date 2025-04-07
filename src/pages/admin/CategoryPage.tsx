@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import { Category } from '../../app/api/apiTypes';
 import Form from '../../components/formElements/form/Form';
 import Input from '../../components/formElements/Input';
@@ -22,6 +23,7 @@ const tableHeaders: { key: keyof Category; label: string }[] = [
   { key: 'categoryName', label: 'categoryName' },
   { key: 'categoryStatus', label: 'categoryStatus' },
   { key: 'createdAt', label: 'createdAt' },
+  { key: 'id', label: '' },
 ];
 
 const CategoryPage = () => {
@@ -135,6 +137,11 @@ const CategoryPage = () => {
                   </td>
                   <td>
                     <DateDisplay date={createdAt} />
+                  </td>
+                  <td>
+                    <Link to={`/admin/category/update/${id}`}>
+                      {language.update}
+                    </Link>
                   </td>
                 </tr>
               ),

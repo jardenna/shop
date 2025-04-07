@@ -35,6 +35,14 @@
   padding-left: 40px;
   padding-right: 40px;
 
+  .top-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: flex-end;
+    margin-bottom: 16px;
+  }
+
   .page-card {
     background: #fff;
     padding: 12px;

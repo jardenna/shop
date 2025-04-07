@@ -61,10 +61,7 @@ const ProductPage = () => {
                   />
                 </td>
                 <td>
-                  <Link
-                    to={`/admin/product/update/${id}`}
-                    className="block mb-4 overflow-hidden"
-                  >
+                  <Link to={`/admin/product/update/${id}`}>
                     {language.update}
                   </Link>
                 </td>
