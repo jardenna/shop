@@ -1,3 +1,4 @@
+import { CategoryStatus } from '../../app/api/apiTypes';
 import DatePicker from '../../components/datePicker/DatePicker';
 import Form from '../../components/formElements/form/Form';
 import Input from '../../components/formElements/Input';
@@ -6,11 +7,17 @@ import Selectbox, { OptionType } from '../../components/selectBox/SelectBox';
 import { useCreateCategoryMutation } from '../../features/categories/categoriyApiSlice';
 import useLanguage from '../../features/language/useLanguage';
 import useFormValidation from '../../hooks/useFormValidation';
-
+// CategoryStatus
 const CreateCategoryPage = () => {
-  const initialState = {
+  type CategoryState = {
+    categoryName: string;
+    categoryStatus: CategoryStatus;
+    scheduledDate: string;
+  };
+
+  const initialState: CategoryState = {
     categoryName: '',
-    categoryStatus: '',
+    categoryStatus: '' as CategoryStatus,
     scheduledDate: '',
   };
   const { language } = useLanguage();
@@ -27,7 +34,6 @@ const CreateCategoryPage = () => {
     callback: handleSubmitNewCategory,
   });
   const [createCategory] = useCreateCategoryMutation();
-  console.log(values);
 
   const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
     onCustomChange(name, selectedOptions.value);
@@ -98,7 +104,7 @@ const CreateCategoryPage = () => {
             name="categoryStatus"
             labelText="select status"
           />
-          <DatePicker />
+          {values.categoryStatus === 'Scheduled' && <DatePicker />}
         </div>
       </Form>
     </section>
