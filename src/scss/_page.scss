@@ -94,7 +94,8 @@
     display: flex;
     flex-direction: column;
     height: calc(100svh - $header-height);
-    width: rem(300px);
+    width: rem(350px);
+    box-shadow: rgb(0 0 0 / 30%) 0 1px 4px -1px;
 
     @include transition($what: width, $time: 0.2s);
 
