@@ -1,11 +1,6 @@
 import express from 'express';
-import { authenticate, authorizeAdmin } from '../middleware/authMiddleware.js';
-import checkId from '../middleware/checkId.js';
-import languageMiddleware from '../middleware/languageMiddleware.js';
-
 import {
   createProduct,
-  createProductReviews,
   deleteProduct,
   getNewProducts,
   getProductById,
@@ -14,6 +9,10 @@ import {
   getTopProducts,
   updateProduct,
 } from '../controllers/productController.js';
+import createProductReviews from '../controllers/productReviewController.js';
+import { authenticate, authorizeAdmin } from '../middleware/authMiddleware.js';
+import checkId from '../middleware/checkId.js';
+import languageMiddleware from '../middleware/languageMiddleware.js';
 
 const router = express.Router();
 router
