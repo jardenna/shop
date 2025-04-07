@@ -1,4 +1,5 @@
 @use '../../../scss/globals' as *;
+@use '../../../scss/helper-classes' as *;
 
 // Remove autofill
 :-webkit-autofill,
@@ -44,14 +45,12 @@ textarea {
   textarea {
     padding: 12px;
     width: 100%;
-    background-color: $color-white;
-    color: $color-gray-50;
     position: relative;
-    border: 1px solid $color-border;
     font-size: rem(14px);
-    border-radius: 4px;
     outline: transparent;
     font-family: $font-primary;
+
+    @extend %styled-input;
 
     &:focus-visible {
       box-shadow: $box-shadow-inset;
