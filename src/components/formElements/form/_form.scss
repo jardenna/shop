@@ -32,6 +32,7 @@ textarea {
 .input-container {
   display: flex;
   flex-direction: column;
+  gap: 4px;
   width: 100%;
   position: relative;
   border-bottom: 3px solid transparent;
@@ -41,7 +42,8 @@ textarea {
   }
 
   .form-label-container {
-    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
   }
 
   input,
@@ -80,7 +82,7 @@ textarea {
   transform: rotate(180deg);
   position: absolute;
   right: 8px;
-  top: 29px;
+  top: 48px;
   background-color: $color-danger;
   color: $color-white;
   z-index: 2;
