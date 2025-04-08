@@ -3,6 +3,7 @@ about;About;Profil
 account;Account;Konto
 actionNotAllowedForAdmin;Admin cannot be deleted;Denne handling er ikke tilladt for administrator
 addCategory;Add category;Tilføj kategori
+addCategoryName;Add category name;Tilføj navn på kategori
 additionalInfo;Additional info;Supplerende information
 admin;Admin;Admin
 allowedFormats;Allowed formats;Tilladte formater
@@ -117,9 +118,11 @@ retry;Retry;Forsøg igen
 role;Role;Rolle
 save;Save;Gem
 search;Search;Søg
-selectCurrency;Select Currency;Vælg valuta
+selectCurrency;Select currency;Vælg valuta
+selectCategoryStatus;Select categoryStatus;Vælg kategori status
 selectLanguage;Select language;Vælg sprog
 selectPreferences;Select preferred language and currency;Vælg sprog og valuta
+selectPublishDate;Select Publish date;Vælg udgivelsesdato
 shopNow;Shop now;Køb nu
 showPassword;Show password;Vis adgangskode
 signup;Sign up;Opret bruger
@@ -129,6 +132,7 @@ sort;Sort;Sorter
 published;Published;Udgivet
 inactive;Inactive;Inaktiv
 scheduled;Scheduled for;Planlagt til udgivelse den
+scheduledFor;Scheduled;Planlagt til udgivelse
 pleaseProvideScheduledDate;Please provide a scheduled date;Angiv venligst en planlagt dato
 invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for planlagt dato
 scheduledDateMustBeFuture;Scheduled date must be after today;Planlagt dato skal være efter i dag

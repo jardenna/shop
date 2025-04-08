@@ -68,7 +68,7 @@ const CreateCategoryPage = () => {
       value: 'Inactive',
     },
     {
-      label: language.scheduled,
+      label: language.scheduledFor,
       value: 'Scheduled',
     },
     {
@@ -89,7 +89,7 @@ const CreateCategoryPage = () => {
           value={values.categoryName}
           id="categoryName"
           name="categoryName"
-          labelText={language.addCategory}
+          labelText={language.addCategoryName}
           placeholder={language.categoryName}
           errorText={errors.categoryName}
         />
@@ -105,12 +105,14 @@ const CreateCategoryPage = () => {
             handleSelectStatus('categoryStatus', selectedOptions);
           }}
           name="categoryStatus"
-          labelText="select status"
+          labelText={language.selectCategoryStatus}
         />
         {values.categoryStatus === 'Scheduled' && (
           <DatePicker
             onSelectDate={setSelectedDate}
             selectedDate={selectedDate}
+            id="selectedDate"
+            labelText={language.selectPublishDate}
           />
         )}
       </Form>
