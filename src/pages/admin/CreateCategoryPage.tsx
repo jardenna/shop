@@ -83,11 +83,7 @@ const CreateCategoryPage = () => {
     <section className="page-small">
       <h1>{language.createNewCategory}</h1>
       <div className="page-card">
-        <Form
-          onSubmit={onSubmit}
-          submitBtnLabel={language.save}
-          className="submit-category"
-        >
+        <Form onSubmit={onSubmit} submitBtnLabel={language.save}>
           <FieldSet legendText={language.categories}>
             <Input
               onChange={onChange}

@@ -86,7 +86,7 @@ const CategoryPage = () => {
   }, [scheduledCategories, isLoading, dispatch, refetch]);
 
   return (
-    <section className="category-page">
+    <section className="page">
       <TopContainer
         heading={language.categories}
         linkText={language.addCategory}
