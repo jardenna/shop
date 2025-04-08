@@ -9,7 +9,7 @@ import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
 import { useCreateCategoryMutation } from '../../features/categories/categoriyApiSlice';
 import useLanguage from '../../features/language/useLanguage';
 import useFormValidation from '../../hooks/useFormValidation';
-// CategoryStatus
+
 const CreateCategoryPage = () => {
   type CategoryState = {
     categoryName: string;
@@ -85,7 +85,7 @@ const CreateCategoryPage = () => {
         submitBtnLabel={language.save}
         className="submit-category"
       >
-        <FieldSet legendText="hh">
+        <FieldSet legendText={language.categories}>
           <Input
             onChange={onChange}
             value={values.categoryName}
