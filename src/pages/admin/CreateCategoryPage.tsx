@@ -79,46 +79,49 @@ const CreateCategoryPage = () => {
   ];
 
   return (
-    <section className="page-card page-small">
-      <Form
-        onSubmit={onSubmit}
-        submitBtnLabel={language.save}
-        className="submit-category"
-      >
-        <FieldSet legendText={language.categories}>
-          <Input
-            onChange={onChange}
-            value={values.categoryName}
-            id="categoryName"
-            name="categoryName"
-            labelText={language.addCategoryName}
-            placeholder={language.categoryName}
-            errorText={errors.categoryName}
-          />
-
-          <Selectbox
-            id="categoryStatus"
-            defaultValue={{
-              label: language.inactive,
-              value: 'Inactive',
-            }}
-            options={statusOptions}
-            onChange={(selectedOptions: OptionType) => {
-              handleSelectStatus('categoryStatus', selectedOptions);
-            }}
-            name="categoryStatus"
-            labelText={language.selectCategoryStatus}
-          />
-          {values.categoryStatus === 'Scheduled' && (
-            <DatePicker
-              onSelectDate={setSelectedDate}
-              selectedDate={selectedDate}
-              id="selectedDate"
-              labelText={language.selectPublishDate}
+    <section className="page-small">
+      <h1>{language.createNewCategory}</h1>
+      <div className="page-card">
+        <Form
+          onSubmit={onSubmit}
+          submitBtnLabel={language.save}
+          className="submit-category"
+        >
+          <FieldSet legendText={language.categories}>
+            <Input
+              onChange={onChange}
+              value={values.categoryName}
+              id="categoryName"
+              name="categoryName"
+              labelText={language.addCategoryName}
+              placeholder={language.categoryName}
+              errorText={errors.categoryName}
             />
-          )}
-        </FieldSet>
-      </Form>
+
+            <Selectbox
+              id="categoryStatus"
+              defaultValue={{
+                label: language.inactive,
+                value: 'Inactive',
+              }}
+              options={statusOptions}
+              onChange={(selectedOptions: OptionType) => {
+                handleSelectStatus('categoryStatus', selectedOptions);
+              }}
+              name="categoryStatus"
+              labelText={language.selectCategoryStatus}
+            />
+            {values.categoryStatus === 'Scheduled' && (
+              <DatePicker
+                onSelectDate={setSelectedDate}
+                selectedDate={selectedDate}
+                id="selectedDate"
+                labelText={language.selectPublishDate}
+              />
+            )}
+          </FieldSet>
+        </Form>
+      </div>
     </section>
   );
 };
