@@ -1,4 +1,5 @@
 import asyncHandler from '../middleware/asyncHandler.js';
+import Category from '../models/categoryModel.js';
 import Product from '../models/productModel.js';
 import SubCategory from '../models/subCategoryModel.js';
 import validateScheduledDate from '../utils/validateScheduledDate.js';
@@ -9,6 +10,15 @@ import validateScheduledDate from '../utils/validateScheduledDate.js';
 // @access  Private for admin and employee
 const createSubCategory = asyncHandler(async (req, res) => {
   const { subCategoryName, category, categoryStatus, scheduledDate } = req.body;
+
+  // Validate category existence
+  const categoryId = await Category.findById(category);
+
+  if (!categoryId) {
+    return res
+      .status(400)
+      .json({ success: false, message: 'Category do not exist' });
+  }
 
   const validationResult = validateScheduledDate(categoryStatus, scheduledDate);
   if (!validationResult.success) {
