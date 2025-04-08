@@ -1,7 +1,7 @@
 import asyncHandler from '../middleware/asyncHandler.js';
-import Category from '../models/categoryModel.js'; // Import Category model
+import Category from '../models/categoryModel.js';
 import Product from '../models/productModel.js';
-import SubCategory from '../models/subCategoryModel.js'; // Import SubCategory model
+import SubCategory from '../models/subCategoryModel.js';
 import formatMongoData from '../utils/formatMongoData.js';
 import validateProduct from '../utils/validateProduct.js';
 
@@ -28,7 +28,7 @@ const createProduct = asyncHandler(async (req, res) => {
   if (!categoryId) {
     return res
       .status(400)
-      .json({ success: false, message: 'Invalid category ID' });
+      .json({ success: false, message: 'Category do not exist' });
   }
 
   // Validate subCategory existence
@@ -36,7 +36,7 @@ const createProduct = asyncHandler(async (req, res) => {
   if (!subCategoryId) {
     return res
       .status(400)
-      .json({ success: false, message: 'Invalid subCategory ID' });
+      .json({ success: false, message: 'subcategory do not exist' });
   }
 
   const product = new Product({ category, subCategory, ...rest });
