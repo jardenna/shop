@@ -5,7 +5,11 @@ import {
   getScheduledCategories,
   updateCategory,
 } from '../controllers/categoryController.js';
-import { authenticate, authorizeAdmin } from '../middleware/authMiddleware.js';
+import {
+  authenticate,
+  authorizeAdmin,
+  authorizeEmployee,
+} from '../middleware/authMiddleware.js';
 import languageMiddleware from '../middleware/languageMiddleware.js';
 const router = express.Router();
 
@@ -24,7 +28,7 @@ router
 
 router
   .route('/:id')
-  .put(languageMiddleware, authenticate, authorizeAdmin, updateCategory);
+  .put(languageMiddleware, authenticate, authorizeEmployee, updateCategory);
 
 router.get('/scheduled', getScheduledCategories);
 
