@@ -69,10 +69,16 @@
 }
 
 %styled-input {
-  cursor: pointer;
   background-color: #f4f4f5;
   border: 0;
   min-height: rem(68px);
   border-radius: 4px;
   color: #2a3439;
+  outline: transparent;
+  font-family: $font-primary;
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.3;
+  }
 }
