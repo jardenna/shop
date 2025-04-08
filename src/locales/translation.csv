@@ -3,6 +3,7 @@ about;About;Profil
 account;Account;Konto
 actionNotAllowedForAdmin;Admin cannot be deleted;Denne handling er ikke tilladt for administrator
 addCategory;Add category;Tilføj kategori
+addSubCategory;Add subcategory;Tilføj underkategori
 addCategoryName;Add category name;Tilføj navn på kategori
 additionalInfo;Additional info;Supplerende information
 admin;Admin;Admin

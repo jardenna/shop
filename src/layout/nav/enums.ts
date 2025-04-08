@@ -9,6 +9,7 @@ export enum MainPath {
   AdminProductUpdate = 'product/update',
   AdminProfile = 'profile',
   AdminSubCategories = 'sub-categories',
+  AdminSubCategoryCreate = 'sub-category/create',
   AdminSubCategoryUpdate = 'sub-category/update',
   Collection = 'collection',
   Contact = 'contact',

@@ -6,6 +6,7 @@ import { useAppDispatch } from '../../app/hooks';
 import validateUpdateCategory from '../../components/formElements/validation/validateUpdateCategory';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Table from '../../components/sortTable/Table';
+import TopContainer from '../../components/TopContainer';
 import {
   useGetAllCategoriesQuery,
   useGetScheduledCategoriesQuery,
@@ -86,12 +87,11 @@ const CategoryPage = () => {
 
   return (
     <section className="category-page">
-      <div className="top-container ">
-        <h1>{language.categories}</h1>
-        <Link to={`/admin/${MainPath.AdminCategoryCreate}`}>
-          {language.addCategory}
-        </Link>
-      </div>
+      <TopContainer
+        heading={language.categories}
+        linkText={language.addCategory}
+        linkTo={`/admin/${MainPath.AdminCategoryCreate}`}
+      />
 
       <div className="page-card">
         <Table
