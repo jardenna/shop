@@ -23,7 +23,9 @@ const createCategory = asyncHandler(async (req, res) => {
     });
   }
 
-  const existingCategory = await Category.findOne({ categoryName });
+  const existingCategory = await Category.findOne({
+    categoryName: { $regex: new RegExp(`^${categoryName}$`, 'i') },
+  });
 
   if (existingCategory) {
     return res.status(400).json({
