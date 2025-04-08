@@ -29,8 +29,10 @@ const createSubCategory = asyncHandler(async (req, res) => {
     });
   }
 
-  const subCategoryExists = await SubCategory.findOne({ subCategoryName });
-  if (subCategoryExists) {
+  const existingSubCategory = await SubCategory.findOne({
+    subCategoryName: { $regex: new RegExp(`^${subCategoryName}$`, 'i') },
+  });
+  if (existingSubCategory) {
     return res
       .status(400)
       .json({ success: false, message: 'Subcategory already exists' });
