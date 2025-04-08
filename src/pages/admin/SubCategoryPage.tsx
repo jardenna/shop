@@ -6,14 +6,14 @@ const SubCategoryPage = () => {
   const { language } = useLanguage();
 
   return (
-    <section className="page">
+    <>
       <TopContainer
         heading={language.subCategories}
         linkText={language.addSubCategory}
         linkTo={`/admin/${MainPath.AdminSubCategoryCreate}`}
       />
       <div className="page-card">HELLEs</div>
-    </section>
+    </>
   );
 };
 
