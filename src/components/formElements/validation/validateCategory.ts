@@ -1,0 +1,19 @@
+import { ValidationErrors } from '../../../hooks/useFormValidation';
+import { CategoryState } from '../../../pages/admin/CreateCategoryPage';
+import { ValidationMessage } from '../../../types/enums';
+
+// type OmittedRLoginType = Omit<CategoryState, 'username' | 'confirmPassword'>;
+
+function validationCategories(values: CategoryState) {
+  const errors: ValidationErrors = {};
+  const { categoryName } = values;
+
+  // Email Errors
+  if (!categoryName) {
+    errors.categoryName = ValidationMessage.PleaseEnterCategoryName;
+  }
+
+  return errors;
+}
+
+export default validationCategories;

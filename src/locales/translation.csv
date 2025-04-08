@@ -107,7 +107,8 @@ passwordSymbol;Password should contain at least one special character;Adgangskod
 passwordUppercase;Password should contain at least one uppercase letter;Adgangskoden skal indeholde mindst ét stort bogstav
 pensil;Pensil;Blyant
 pleaseEnter;Please enter;Indsæt venligst
-pleaseEnterCategoryName;Please enter a category name;Indsæt venligst kategori
+pleaseEnterCategoryName;Please enter a name for category;Indsæt venligst navn på kategori
+pleaseEnterSubCategoryName;Please enter a subcategory name;Indsæt venligst navn på underkategori
 pleaseEnterName;Please enter name;Indsæt venligst navn
 pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
 pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail

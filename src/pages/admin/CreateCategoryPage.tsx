@@ -4,18 +4,19 @@ import DatePicker from '../../components/datePicker/DatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/formElements/form/Form';
 import Input from '../../components/formElements/Input';
+import validationCategories from '../../components/formElements/validation/validateCategory';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
 import { useCreateCategoryMutation } from '../../features/categories/categoriyApiSlice';
 import useLanguage from '../../features/language/useLanguage';
 import useFormValidation from '../../hooks/useFormValidation';
 
-const CreateCategoryPage = () => {
-  type CategoryState = {
-    categoryName: string;
-    categoryStatus: CategoryStatus;
-  };
+export type CategoryState = {
+  categoryName: string;
+  categoryStatus: CategoryStatus;
+};
 
+const CreateCategoryPage = () => {
   const initialState: CategoryState = {
     categoryName: '',
     categoryStatus: '' as CategoryStatus,
@@ -31,6 +32,7 @@ const CreateCategoryPage = () => {
     onCustomChange,
   } = useFormValidation({
     initialState,
+    validate: validationCategories,
     callback: handleSubmitNewCategory,
   });
   const [createCategory] = useCreateCategoryMutation();
@@ -95,7 +97,8 @@ const CreateCategoryPage = () => {
               name="categoryName"
               labelText={language.addCategoryName}
               placeholder={language.categoryName}
-              errorText={errors.categoryName}
+              errorText={language[errors.categoryName]}
+              required
             />
 
             <Selectbox

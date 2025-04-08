@@ -6,9 +6,11 @@ export enum ValidationMessage {
   PasswordSymbol = 'passwordSymbol',
   PasswordUppercase = 'passwordUppercase',
   PleaseEnter = 'pleaseEnter',
+  PleaseEnterCategoryName = 'pleaseEnterCategoryName',
   PleaseEnterEmail = 'noEmail',
   PleaseEnterName = 'pleaseEnterName',
   PleaseEnterPassword = 'pleaseEnterPassword',
+  PleaseEnterSubCategoryName = 'pleaseEnterSubCategoryName',
   PleaseEnterValidEmail = 'pleaseEnterValidEmail',
 }
 
