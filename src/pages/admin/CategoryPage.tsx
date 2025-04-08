@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router';
-import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
+import apiSlice, { TagTypeIdEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import { Category } from '../../app/api/apiTypes';
 import { useAppDispatch } from '../../app/hooks';
 import validateUpdateCategory from '../../components/formElements/validation/validateUpdateCategory';
@@ -78,7 +78,7 @@ const CategoryPage = () => {
       // Trigger refetch of full category list
       dispatch(
         apiSlice.util.invalidateTags([
-          { type: TagTypesEnum.Categories, id: 'SCHEDULED' },
+          { type: TagTypesEnum.Categories, id: TagTypeIdEnum.Scheduled },
         ]),
       );
     }
@@ -86,7 +86,7 @@ const CategoryPage = () => {
   }, [scheduledCategories, isLoading, dispatch, refetch]);
 
   return (
-    <section className="page">
+    <>
       <TopContainer
         heading={language.categories}
         linkText={language.addCategory}
@@ -131,7 +131,7 @@ const CategoryPage = () => {
           }
         </Table>
       </div>
-    </section>
+    </>
   );
 };
 
