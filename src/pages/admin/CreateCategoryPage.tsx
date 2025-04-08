@@ -19,7 +19,7 @@ export type CategoryState = {
 const CreateCategoryPage = () => {
   const initialState: CategoryState = {
     categoryName: '',
-    categoryStatus: '' as CategoryStatus,
+    categoryStatus: 'Inactive' as CategoryStatus,
   };
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
@@ -36,7 +36,6 @@ const CreateCategoryPage = () => {
     callback: handleSubmitNewCategory,
   });
   const [createCategory] = useCreateCategoryMutation();
-
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
