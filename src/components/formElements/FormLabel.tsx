@@ -19,10 +19,12 @@ const FormLabel: FC<FormLabelProps> = ({
       {inputLabel}
     </VisuallyHidden>
   ) : (
-    <label className="form-label" htmlFor={id}>
-      {inputLabel}
-      {required && <span aria-hidden="true">*</span>}
-    </label>
+    <span className="form-label-container">
+      <label className="form-label" htmlFor={id}>
+        {inputLabel}
+        {required && <span aria-hidden="true">*</span>}
+      </label>
+    </span>
   );
 
 export default FormLabel;

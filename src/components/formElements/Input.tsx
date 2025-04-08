@@ -61,15 +61,14 @@ const Input: FC<InputProps> = ({
   };
   return (
     <div className={inputClassName}>
-      <span className={inputHasNoLabel ? '' : 'form-label-container'}>
-        <FormLabel
-          required={required}
-          inputLabel={labelText}
-          id={id}
-          inputHasNoLabel={inputHasNoLabel}
-        />
-        {errorText && <FormError errorText={errorText} ariaErrorId={id} />}
-      </span>
+      <FormLabel
+        required={required}
+        inputLabel={labelText}
+        id={id}
+        inputHasNoLabel={inputHasNoLabel}
+      />
+      {errorText && <FormError errorText={errorText} ariaErrorId={id} />}
+
       {errorText && (
         <span className="error-icon" aria-hidden="true">
           i
