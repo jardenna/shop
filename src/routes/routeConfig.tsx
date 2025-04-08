@@ -6,11 +6,14 @@ import About from '../pages/About';
 import MyAccount from '../pages/account/MyAccount';
 import Orders from '../pages/account/Orders';
 import CategoryPage from '../pages/admin/CategoryPage';
+import CreateCategoryPage from '../pages/admin/CreateCategoryPage';
 import Dashboard from '../pages/admin/Dashboard';
 import OrderPage from '../pages/admin/OrderPage';
 import ProductPage from '../pages/admin/ProductPage';
 import ProfilePage from '../pages/admin/ProfilePage';
-import UpdatePage from '../pages/admin/UpdatePage';
+import SubCategoryPage from '../pages/admin/SubCategoryPage';
+import UpdateCategoryPage from '../pages/admin/UpdateCategoryPage';
+import UpdateProductPage from '../pages/admin/UpdateProductPage';
 import UserPage from '../pages/admin/UserPage';
 import Collections from '../pages/Collections';
 import Contact from '../pages/Contact';
@@ -20,6 +23,7 @@ import LoginPage from '../pages/LoginPage';
 import ProtectedRoute from '../pages/ProtectedRoute';
 import ShoppingChart from '../pages/ShoppingChart';
 import SignupPage from '../pages/SignupPage';
+import CreateSubCategoryPage from '../pages/admin/CreateSubCategoryPage';
 
 const routeConfig = createBrowserRouter([
   {
@@ -81,8 +85,28 @@ const routeConfig = createBrowserRouter([
             element: <UserPage />,
           },
           {
-            path: MainPath.AdminProductUpdate,
-            element: <UpdatePage />,
+            path: `${MainPath.AdminProductUpdate}/:id`,
+            element: <UpdateProductPage />,
+          },
+          {
+            path: MainPath.AdminCategoryCreate,
+            element: <CreateCategoryPage />,
+          },
+          {
+            path: MainPath.AdminSubCategoryCreate,
+            element: <CreateSubCategoryPage />,
+          },
+          {
+            path: `${MainPath.AdminCategoryUpdate}/:id`,
+            element: <UpdateCategoryPage />,
+          },
+          {
+            path: MainPath.AdminSubCategories,
+            element: <SubCategoryPage />,
+          },
+          {
+            path: `${MainPath.AdminSubCategoryUpdate}/:id`,
+            element: <UpdateCategoryPage />,
           },
           {
             path: MainPath.AdminProfile,

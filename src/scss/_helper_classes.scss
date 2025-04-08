@@ -1,5 +1,14 @@
 @use './globals' as *;
 
+.visually-hidden {
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  height: 1px;
+  width: 1px;
+}
+
 .flex {
   display: flex;
   align-items: center;
@@ -15,13 +24,14 @@
   flex-direction: column;
 }
 
-.visually-hidden {
-  clip: rect(1px, 1px, 1px, 1px);
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  height: 1px;
-  width: 1px;
+.page-small {
+  width: 100%;
+  max-width: $page-width-small;
+}
+
+.page-medium {
+  width: 100%;
+  max-width: $page-width-medium;
 }
 
 .text-bold {
@@ -45,12 +55,6 @@
   }
 }
 
-.text-ellipsis {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 .position-relative {
   position: relative;
 }
@@ -58,12 +62,4 @@
 .danger {
   background-color: transparent;
   color: $color-red-light;
-}
-
-%styled-input {
-  cursor: pointer;
-  background-color: #f4f4f5;
-  border: 0;
-  min-height: rem(76px);
-  border-radius: 2px;
 }

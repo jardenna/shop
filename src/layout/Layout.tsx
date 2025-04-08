@@ -2,7 +2,7 @@ import { FC, ReactNode } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router';
 import Icon from '../components/icons/Icon';
 import { SecondaryActionBtnProps } from '../components/modal/Modal';
-import { OptionType } from '../components/selectBox/SelectBox';
+import { OptionType } from '../components/selectbox/Selectbox';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
 import useAuth from '../features/auth/hooks/useAuth';

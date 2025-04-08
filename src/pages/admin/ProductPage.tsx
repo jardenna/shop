@@ -6,6 +6,7 @@ import DateDisplay from '../../features/categories/DateDisplay';
 import ProductPrice from '../../features/currency/components/ProductPrice';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetAllProductsQuery } from '../../features/products/productApiSlice';
+import { MainPath } from '../../layout/nav/enums';
 
 const tableHeaders: Column<ProductResponse>[] = [
   { key: 'image', label: 'image', hideTableControls: true },
@@ -61,10 +62,7 @@ const ProductPage = () => {
                   />
                 </td>
                 <td>
-                  <Link
-                    to={`/admin/product/update/${id}`}
-                    className="block mb-4 overflow-hidden"
-                  >
+                  <Link to={`/admin/${MainPath.AdminProductUpdate}/${id}`}>
                     {language.update}
                   </Link>
                 </td>

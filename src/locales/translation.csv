@@ -3,6 +3,8 @@ about;About;Profil
 account;Account;Konto
 actionNotAllowedForAdmin;Admin cannot be deleted;Denne handling er ikke tilladt for administrator
 addCategory;Add category;Tilføj kategori
+addSubCategory;Add subcategory;Tilføj underkategori
+addCategoryName;Add category name;Tilføj navn på kategori
 additionalInfo;Additional info;Supplerende information
 admin;Admin;Admin
 allowedFormats;Allowed formats;Tilladte formater
@@ -10,12 +12,13 @@ asc;ascending;stigende
 bag;Bag;Indkøbskurv
 cancel;Cancel;Annuller
 cannotDeleteAdmin;This action is not allowed for admin;Admin bruger kan ikke slettes
-categoryNotFound;Category not found;Kategori findes ikke
 categories;Categories;Kategorier
 category;Category;Kategori
 categoryAlreadyExist;Category already exist;Kategori findes allerede
 categoryDeleted;Category deleted;Kategori blev slettet
 categoryName;Category name;Kategori navn
+categoryNotFound;Category not found;Kategori findes ikke
+categoryStatus;Category status;Kategori status
 categoryUpdated;Category updated;Kategori opdateret
 clearFilters;Clear filters;Ryd filtre
 clearSort;Clear sort;Ryd sortering
@@ -27,11 +30,14 @@ confirmPassword;Confirm password;Gentag adgangskode
 contact;Contact;Kontakt
 createAccount;Create account;Opret konto
 createdAt;Created at;Tilføjet
+createNewCategory;Create new category;Opret ny kategori
+createNewSubCategory;Create new subcategory;Opret ny underkategori
 criterionMet;Criterion met;Kriterium opfyldt
 criterionNotMet;Criterion not met;Kriterium ikke opfyldt
 currency;Currency;Valuta
 customersList;Customers list;Kundeliste
 dashboard;Dashboard;Dashboard
+date;Date;Dato
 delete;Delete;Slet
 deleted;deleted;slettet
 deleteUser;Delete user;Slet bruger
@@ -60,7 +66,9 @@ heroTitle;Exclusive Fashion Sale;Eksklusivt Modesalg
 hidePassword;Hide password;Skjul adgangskode
 home;Home;Hjem
 image;Image;Foto
+inactive;Inactive;Inaktiv
 invalidPassword;Invalid password;Ugyldig adgangskode
+invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for planlagt dato
 invalidUserData;Invalid user data;Ugyldig bruger data
 language;Language;Sprog
 loading;Loading;Loading
@@ -100,46 +108,49 @@ passwordSymbol;Password should contain at least one special character;Adgangskod
 passwordUppercase;Password should contain at least one uppercase letter;Adgangskoden skal indeholde mindst ét stort bogstav
 pensil;Pensil;Blyant
 pleaseEnter;Please enter;Indsæt venligst
-pleaseEnterCategoryName;Please enter a category name;Indsæt venligst kategori
+pleaseEnterCategoryName;Please enter a name for category;Indsæt venligst navn på kategori
+pleaseEnterSubCategoryName;Please enter a subcategory name;Indsæt venligst navn på underkategori
 pleaseEnterName;Please enter name;Indsæt venligst navn
 pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
 pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
+pleaseProvideScheduledDate;Please provide a scheduled date;Angiv venligst en planlagt dato
 preferences;Preferences;Præferencer
 price;Price;Pris
 productList;Product list;Produktliste
 productName;Product name;Produkt navn
 products;Products;Produkter
 profile;Profile;Profil
+published;Published;Udgivet
 resetFiltersAndSorting;Reset filters and sorting;Nulstil filtre og sortering
 retry;Retry;Forsøg igen
 role;Role;Rolle
 save;Save;Gem
+scheduled;Scheduled for;Planlagt til udgivelse den
+scheduledDateMustBeFuture;Scheduled date must be after today;Planlagt dato skal være efter i dag
+scheduledFor;Scheduled;Planlagt til udgivelse
 search;Search;Søg
-selectCurrency;Select Currency;Vælg valuta
+selectCategoryStatus;Select categoryStatus;Vælg kategori status
+selectCurrency;Select currency;Vælg valuta
 selectLanguage;Select language;Vælg sprog
 selectPreferences;Select preferred language and currency;Vælg sprog og valuta
+selectPublishDate;Select Publish date;Vælg udgivelsesdato
 shopNow;Shop now;Køb nu
 showPassword;Show password;Vis adgangskode
 signup;Sign up;Opret bruger
 signupFailed;Sign up failed;Registrering mislykkedes
 signupSucceeded;Sign up succeeded;Registrering lykkedes
 sort;Sort;Sorter
-statusPublished;Published;Udgivet
-statusInactive;Inactive;Inaktiv
-statusScheduled;Scheduled;Planlagt til udgivelse
-pleaseProvideScheduledDate;Please provide a scheduled date;Angiv venligst en planlagt dato
-invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for planlagt dato
-scheduledDateMustBeFuture;Scheduled date must be after today;Planlagt dato skal være efter i dag
 sub;Sub;Sekundær
+subCategories;Subcategories;Underkategorier
 success;Success;Succes
 sureToDelete;Are you sure that you want to delete;Er du sikker på at du vil slette
 title;Title;Titel
 trashCan;Trash can;Skraldespand
 unsupportedFile;is not supported type;er ikke understøttet
 update;Update;Opdater
-updateProduct;Update product;Opdater produkt
 updatedAt;Updated at;Opdateret
 updatePreferences;Update Preferences;Opdater præferencer
+updateProduct;Update product;Opdater produkt
 user;User;Bruger
 userAlreadyExist;A profile with this email already exists. Try logging in instead;Der findes en profil med denne e-mail. Prøv at logge ind i stedet
 userDeleted;User deleted;Bruger slettet

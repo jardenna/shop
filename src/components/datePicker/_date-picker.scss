@@ -1,0 +1,59 @@
+/* stylelint-disable selector-class-pattern */
+@use '../../scss/globals' as *;
+
+.date-picker-container {
+  button {
+    font-family: $font-primary;
+  }
+
+  .rdp-caption_label {
+    z-index: 0;
+    text-transform: capitalize;
+  }
+
+  .rdp-month {
+    border: 1px solid #463f4a;
+  }
+
+  .rdp-today {
+    button {
+      color: #f4f4f5;
+      background-color: #2f6d8f;
+      border-radius: 4px;
+    }
+  }
+
+  .rdp-month_caption {
+    padding: 10px;
+    font-size: 16px;
+    font-weight: normal;
+    border-bottom: 1px solid #463f4a;
+  }
+
+  .rdp-weekday {
+    text-transform: capitalize;
+  }
+
+  .rdp-day_button {
+    border-radius: 4px;
+    font-size: 14px;
+
+    &:focus-visible {
+      outline: transparent;
+      color: #f4f4f5;
+      background-color: #463f4a;
+    }
+  }
+
+  .rdp-selected .rdp-day_button {
+    border: 0;
+    background-color: #463f4a;
+    color: #f4f4f5;
+    font-weight: normal;
+  }
+
+  svg {
+    fill: #2a3439;
+    width: rem(20px);
+  }
+}

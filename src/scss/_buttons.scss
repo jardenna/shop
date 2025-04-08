@@ -30,11 +30,14 @@ a[class^='btn-'],
   &::after {
     content: '';
     position: absolute;
-    top: -13%;
-    left: -35%;
-    width: 174%;
-    height: 128%;
+    inset: -10px;
   }
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .btn-primary {

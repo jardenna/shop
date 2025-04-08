@@ -41,6 +41,7 @@ import UndoIcon from './UndoIcon';
 import UserIcon from './UserIcon';
 import UsersIcon from './UsersIcon';
 import WarningIcon from './WarningIcon';
+import SubCategoriesIcon from './SubCategoriesIcon';
 
 export interface IconDefaultProps {
   title: string;
@@ -89,6 +90,7 @@ const iconMapping = {
   products: ProductsIcon,
   search: SearchIcon,
   shoppingBack: ShoppingBackIcon,
+  subCategories: SubCategoriesIcon,
   subtract: SubtractIcon,
   success: SuccessIcon,
   trach: TrashIcon,

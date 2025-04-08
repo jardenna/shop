@@ -1,6 +1,5 @@
-import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
+import apiSlice, { TagTypeIdEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import {
-  Category,
   CategoryResponse,
   CreateCategoryRequest,
   UpdateCategoryRequest,
@@ -9,9 +8,15 @@ import { categoryUrl } from '../../app/endpoints';
 
 const categoryApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getAllCategories: builder.query<Category[], void>({
+    getAllCategories: builder.query<CategoryResponse, void>({
       query: () => categoryUrl,
       providesTags: [TagTypesEnum.Categories],
+    }),
+    getScheduledCategories: builder.query<CategoryResponse, void>({
+      query: () => `${categoryUrl}/scheduled`,
+      providesTags: [
+        { type: TagTypesEnum.Categories, id: TagTypeIdEnum.Scheduled },
+      ],
     }),
     createCategory: builder.mutation<CategoryResponse, CreateCategoryRequest>({
       query: (name) => ({
@@ -36,4 +41,5 @@ export const {
   useGetAllCategoriesQuery,
   useUpdateCategoryMutation,
   useCreateCategoryMutation,
+  useGetScheduledCategoriesQuery,
 } = categoryApiSlice;

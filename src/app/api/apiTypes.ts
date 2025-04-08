@@ -63,21 +63,28 @@ export interface UpdateUserByIdRequest {
 }
 
 // Category
+export type CategoryStatus = 'Published' | 'Inactive' | 'Scheduled';
+
 export type Category = DefaultResponseType & {
   categoryName: string;
+  categoryStatus: CategoryStatus;
   id: string;
+  scheduledDate?: Date;
 };
 
 export interface CategoryResponse extends DefaultResponse {
-  category: Category;
+  categories: Category[];
 }
 
 export interface CreateCategoryRequest {
   categoryName: string;
+  categoryStatus: CategoryStatus;
+  scheduledDate?: Date;
 }
 
 export interface UpdateCategoryRequest {
   categoryName: string;
+
   id: string;
 }
 

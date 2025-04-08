@@ -1,78 +1,47 @@
+import { useEffect } from 'react';
+import { Link } from 'react-router';
+import apiSlice, { TagTypeIdEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import { Category } from '../../app/api/apiTypes';
-import Form from '../../components/formElements/form/Form';
-import Input from '../../components/formElements/Input';
+import { useAppDispatch } from '../../app/hooks';
 import validateUpdateCategory from '../../components/formElements/validation/validateUpdateCategory';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Table from '../../components/sortTable/Table';
+import TopContainer from '../../components/TopContainer';
 import {
-  useCreateCategoryMutation,
   useGetAllCategoriesQuery,
+  useGetScheduledCategoriesQuery,
   useUpdateCategoryMutation,
 } from '../../features/categories/categoriyApiSlice';
-import EditCategoryInput from '../../features/categories/EditCategoryInput';
+import DateDisplay from '../../features/categories/DateDisplay';
 import useLanguage from '../../features/language/useLanguage';
-import useFormValidation from '../../hooks/useFormValidation';
 import useTableEditField from '../../hooks/useTableEditField';
-
-const initialState = {
-  categoryName: '',
-};
+import { MainPath } from '../../layout/nav/enums';
 
 const tableHeaders: { key: keyof Category; label: string }[] = [
   { key: 'categoryName', label: 'categoryName' },
+  { key: 'categoryStatus', label: 'categoryStatus' },
   { key: 'createdAt', label: 'createdAt' },
-  { key: 'updatedAt', label: 'updatedAt' },
-];
-
-const columnKeys: (keyof Category)[] = [
-  'categoryName',
-  'createdAt',
-  'updatedAt',
+  { key: 'id', label: '' },
 ];
 
 const CategoryPage = () => {
+  const dispatch = useAppDispatch();
+  const sixHours = 1000 * 60 * 60 * 6;
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
   const { data: allCategories, isLoading } = useGetAllCategoriesQuery();
-  const [createCategory] = useCreateCategoryMutation();
-  const [updateCategory] = useUpdateCategoryMutation();
-  const { onChange, values, onSubmit, errors, onClearAllValues } =
-    useFormValidation({
-      initialState,
-      callback: handleSubmitNewCategory,
-    });
 
-  const {
-    editRowId,
-    editingField,
-    handleShowEditInput,
-    handleEditChange,
-    handleCancelEdit,
-    editValues,
-    handleSaveEdit,
-  } = useTableEditField({
-    data: allCategories || [],
+  const { data: scheduledCategories, refetch } = useGetScheduledCategoriesQuery(
+    undefined,
+    { pollingInterval: sixHours },
+  );
+
+  const [updateCategory] = useUpdateCategoryMutation();
+
+  const { editValues } = useTableEditField({
+    data: allCategories?.categories || [],
     callback: handleUpdateCategory,
   });
-
-  async function handleSubmitNewCategory() {
-    try {
-      const result = await createCategory(values).unwrap();
-      onClearAllValues();
-
-      onAddMessagePopup({
-        messagePopupType: !result.success ? 'error' : 'success',
-        message: result.message,
-        componentType: !result.success ? 'notification' : undefined,
-      });
-    } catch (error: any) {
-      onAddMessagePopup({
-        messagePopupType: 'error',
-        message: error.data.message,
-        componentType: 'notification',
-      });
-    }
-  }
 
   async function handleUpdateCategory(id: string) {
     const validation = validateUpdateCategory(editValues);
@@ -103,62 +72,62 @@ const CategoryPage = () => {
     }
   }
 
+  // Monitor for emptying scheduled list
+  useEffect(() => {
+    if (!isLoading && scheduledCategories?.categories.length === 0) {
+      // Trigger refetch of full category list
+      dispatch(
+        apiSlice.util.invalidateTags([
+          { type: TagTypesEnum.Categories, id: TagTypeIdEnum.Scheduled },
+        ]),
+      );
+    }
+    refetch();
+  }, [scheduledCategories, isLoading, dispatch, refetch]);
+
   return (
     <section className="category-page">
-      <h1>{language.categories}</h1>
-      <div className="page-card">
-        <Form
-          onSubmit={onSubmit}
-          submitBtnLabel={language.save}
-          className="submit-category"
-        >
-          <Input
-            onChange={onChange}
-            value={values.categoryName || ''}
-            id="categoryName"
-            name="categoryName"
-            labelText={language.addCategory}
-            placeholder={language.categoryName}
-            errorText={errors.categoryName}
-          />
-        </Form>
-      </div>
+      <TopContainer
+        heading={language.categories}
+        linkText={language.addCategory}
+        linkTo={`/admin/${MainPath.AdminCategoryCreate}`}
+      />
+
       <div className="page-card">
         <Table
-          data={allCategories || []}
+          data={allCategories?.categories || []}
           columns={tableHeaders}
           tableCaption={language.customersList}
           isLoading={isLoading}
         >
           {(data) =>
-            data.map(({ id }) => (
-              <tr key={id}>
-                {columnKeys.map((columnKey) => (
-                  <td key={columnKey}>
-                    <EditCategoryInput
-                      id={columnKey}
-                      onSave={() => {
-                        handleSaveEdit();
-                      }}
-                      showEditInput={
-                        editRowId === id && editingField === columnKey
-                      }
-                      onCancel={handleCancelEdit}
-                      onEditChange={handleEditChange}
-                      onEditBtnClick={() => {
-                        handleShowEditInput(id, columnKey);
-                      }}
-                      cellContent={String(
-                        allCategories?.find((item) => item.id === id)?.[
-                          columnKey
-                        ] || '',
-                      )}
-                      value={String(editValues[columnKey] || '')}
-                    />
+            data.map(
+              ({
+                id,
+                scheduledDate,
+                categoryName,
+                createdAt,
+                categoryStatus,
+              }) => (
+                <tr key={id}>
+                  <td>{categoryName}</td>
+                  <td>
+                    <span>{language[categoryStatus.toLocaleLowerCase()]} </span>
+                    <span>
+                      {scheduledDate && <DateDisplay date={scheduledDate} />}
+                    </span>
                   </td>
-                ))}
-              </tr>
-            ))
+                  <td>
+                    <DateDisplay date={createdAt} />
+                  </td>
+                  <td>
+                    <Link to={`/admin/${MainPath.AdminCategoryUpdate}/${id}`}>
+                      {language.update}
+                    </Link>
+                  </td>
+                </tr>
+              ),
+            )
           }
         </Table>
       </div>

@@ -48,13 +48,35 @@ h1,
 h2 {
   margin: 0;
   font-weight: normal;
-  letter-spacing: 3px;
-  margin-bottom: 12px;
+  letter-spacing: rem(3px);
+  margin-bottom: 24px;
 }
 
 h1 {
   font-size: rem(24px);
   font-family: $font-secondary;
+  display: flex;
+  align-items: center;
+
+  &::after {
+    content: '';
+    display: flex;
+    margin-left: 8px;
+    border-bottom: 2px solid #262526;
+    border-radius: 4px;
+    width: 59px;
+  }
+}
+
+a {
+  text-decoration: none;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: '';
+    inset: -10px;
+  }
 }
 
 img {

@@ -5,6 +5,10 @@ export enum TagTypesEnum {
   Users = 'Users',
 }
 
+export enum TagTypeIdEnum {
+  Scheduled = 'SCHEDULED',
+}
+
 const baseQuery = fetchBaseQuery({
   baseUrl: 'http://localhost:5000/api',
   credentials: 'include',

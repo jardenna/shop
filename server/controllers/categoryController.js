@@ -23,7 +23,9 @@ const createCategory = asyncHandler(async (req, res) => {
     });
   }
 
-  const existingCategory = await Category.findOne({ categoryName });
+  const existingCategory = await Category.findOne({
+    categoryName: { $regex: new RegExp(`^${categoryName}$`, 'i') },
+  });
 
   if (existingCategory) {
     return res.status(400).json({
@@ -40,6 +42,7 @@ const createCategory = asyncHandler(async (req, res) => {
   const category = await new Category(categoryData).save();
 
   res.status(201).json({
+    success: true,
     message: 'New category created',
     id: category._id,
     categoryName: category.categoryName,
@@ -49,7 +52,7 @@ const createCategory = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Get all Categories
+// @desc    Get all categories
 // @route   /api/category
 // @method  Get
 // @access  Public
@@ -81,7 +84,26 @@ const getAllCategories = asyncHandler(async (req, res) => {
     return res.status(404).json({ message: t('noData', req.lang) });
   }
 
-  res.status(200).json(formattedCategories);
+  res.status(200).json({ success: true, categories: formattedCategories });
+});
+
+// @desc    Get all Scheduled categories
+// @route   /api/scheduled
+// @method  Get
+// @access  Public
+const getScheduledCategories = asyncHandler(async (req, res) => {
+  const scheduledCategories = await Category.find({
+    categoryStatus: 'Scheduled',
+    scheduledDate: { $exists: true },
+  }).lean();
+
+  const formatted = formatMongoData(scheduledCategories);
+
+  if (!formatted.length) {
+    return res.status(404).json({ message: t('noData', req.lang) });
+  }
+
+  res.status(200).json({ success: true, categories: formatted });
 });
 
 // @desc    Update category
@@ -142,4 +164,9 @@ const updateCategory = asyncHandler(async (req, res) => {
   });
 });
 
-export { createCategory, getAllCategories, updateCategory };
+export {
+  createCategory,
+  getAllCategories,
+  getScheduledCategories,
+  updateCategory,
+};

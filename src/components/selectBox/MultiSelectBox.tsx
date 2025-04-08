@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
-import Selectbox, { OptionType } from './SelectBox';
+import Selectbox, { OptionType } from './Selectbox';
 
-const MultiSelectBox: FC = () => {
+const MultiSelectbox: FC = () => {
   const options = [
     { label: 'apple', value: 1 },
     { label: 'orange', value: 2 },
@@ -31,4 +31,4 @@ const MultiSelectBox: FC = () => {
   );
 };
 
-export default MultiSelectBox;
+export default MultiSelectbox;

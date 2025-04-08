@@ -32,11 +32,18 @@ textarea {
 .input-container {
   display: flex;
   flex-direction: column;
+  gap: 4px;
   width: 100%;
   position: relative;
+  border-bottom: 3px solid transparent;
 
-  .form-label {
-    margin-bottom: 4px;
+  &:has(input:focus-visible) {
+    border-color: #2a3439;
+  }
+
+  .form-label-container {
+    display: flex;
+    justify-content: space-between;
   }
 
   input,
@@ -44,22 +51,10 @@ textarea {
   textarea {
     padding: 12px;
     width: 100%;
-    background-color: $color-white;
-    color: $color-gray-50;
     position: relative;
-    border: 1px solid $color-border;
     font-size: rem(14px);
-    border-radius: 4px;
-    outline: transparent;
-    font-family: $font-primary;
 
-    &:focus-visible {
-      box-shadow: $box-shadow-inset;
-    }
-
-    &:disabled {
-      pointer-events: none;
-    }
+    @extend %styled-input;
   }
 
   .error-message {
@@ -75,17 +70,11 @@ textarea {
     @include outline($color-danger);
 
     &:focus-visible {
-      box-shadow: inset 0 -0.16rem 0 $color-danger;
+      border-color: $color-danger;
       outline: transparent;
     }
   }
 }
-
-// .form-label-container {
-//   display: flex;
-//   gap: 12px;
-//   align-items: baseline;
-// }
 
 .error-icon {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -93,7 +82,7 @@ textarea {
   transform: rotate(180deg);
   position: absolute;
   right: 8px;
-  top: 29px;
+  top: 48px;
   background-color: $color-danger;
   color: $color-white;
   z-index: 2;
@@ -123,6 +112,7 @@ textarea {
     position: relative;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 
     @include transition($time: 0.22s);
 
@@ -137,6 +127,10 @@ textarea {
 
   .form-label-container {
     order: 2;
+  }
+
+  label {
+    cursor: pointer;
   }
 }
 
