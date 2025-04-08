@@ -86,7 +86,7 @@ const CategoryPage = () => {
   }, [scheduledCategories, isLoading, dispatch, refetch]);
 
   return (
-    <>
+    <section className="category-page">
       <TopContainer
         heading={language.categories}
         linkText={language.addCategory}
@@ -131,7 +131,7 @@ const CategoryPage = () => {
           }
         </Table>
       </div>
-    </>
+    </section>
   );
 };
 
