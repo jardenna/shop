@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { CategoryStatus } from '../../app/api/apiTypes';
 import DatePicker from '../../components/datePicker/DatePicker';
+import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/formElements/form/Form';
 import Input from '../../components/formElements/Input';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
@@ -84,37 +85,39 @@ const CreateCategoryPage = () => {
         submitBtnLabel={language.save}
         className="submit-category"
       >
-        <Input
-          onChange={onChange}
-          value={values.categoryName}
-          id="categoryName"
-          name="categoryName"
-          labelText={language.addCategoryName}
-          placeholder={language.categoryName}
-          errorText={errors.categoryName}
-        />
-
-        <Selectbox
-          id="categoryStatus"
-          defaultValue={{
-            label: language.inactive,
-            value: 'Inactive',
-          }}
-          options={statusOptions}
-          onChange={(selectedOptions: OptionType) => {
-            handleSelectStatus('categoryStatus', selectedOptions);
-          }}
-          name="categoryStatus"
-          labelText={language.selectCategoryStatus}
-        />
-        {values.categoryStatus === 'Scheduled' && (
-          <DatePicker
-            onSelectDate={setSelectedDate}
-            selectedDate={selectedDate}
-            id="selectedDate"
-            labelText={language.selectPublishDate}
+        <FieldSet legendText="hh">
+          <Input
+            onChange={onChange}
+            value={values.categoryName}
+            id="categoryName"
+            name="categoryName"
+            labelText={language.addCategoryName}
+            placeholder={language.categoryName}
+            errorText={errors.categoryName}
           />
-        )}
+
+          <Selectbox
+            id="categoryStatus"
+            defaultValue={{
+              label: language.inactive,
+              value: 'Inactive',
+            }}
+            options={statusOptions}
+            onChange={(selectedOptions: OptionType) => {
+              handleSelectStatus('categoryStatus', selectedOptions);
+            }}
+            name="categoryStatus"
+            labelText={language.selectCategoryStatus}
+          />
+          {values.categoryStatus === 'Scheduled' && (
+            <DatePicker
+              onSelectDate={setSelectedDate}
+              selectedDate={selectedDate}
+              id="selectedDate"
+              labelText={language.selectPublishDate}
+            />
+          )}
+        </FieldSet>
       </Form>
     </section>
   );
