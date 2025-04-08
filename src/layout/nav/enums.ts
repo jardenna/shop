@@ -8,6 +8,8 @@ export enum MainPath {
   AdminProducts = 'products',
   AdminProductUpdate = 'product/update',
   AdminProfile = 'profile',
+  AdminSubCategories = 'sub-categories',
+  AdminSubCategoryUpdate = 'sub-category/update',
   Collection = 'collection',
   Contact = 'contact',
   Home = 'home',
@@ -34,6 +36,7 @@ export enum LinkText {
   Products = 'products',
   Profile = 'profile',
   Signup = 'signup',
+  SubCategories = 'subCategories',
   Update = 'update',
   Users = 'users',
 }

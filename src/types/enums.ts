@@ -83,6 +83,7 @@ export enum IconName {
   Products = 'products',
   Search = 'search',
   ShoppingBack = 'shoppingBack',
+  SubCategories = 'subCategories',
   Subtract = 'subtract',
   Success = 'success',
   Trash = 'trach',

@@ -22,6 +22,7 @@ import LoginPage from '../pages/LoginPage';
 import ProtectedRoute from '../pages/ProtectedRoute';
 import ShoppingChart from '../pages/ShoppingChart';
 import SignupPage from '../pages/SignupPage';
+import SubCategoryPage from '../pages/admin/SubCategoryPage';
 
 const routeConfig = createBrowserRouter([
   {
@@ -87,12 +88,20 @@ const routeConfig = createBrowserRouter([
             element: <UpdateProductPage />,
           },
           {
+            path: MainPath.AdminCategoryCreate,
+            element: <CreateCategoryPage />,
+          },
+          {
             path: `${MainPath.AdminCategoryUpdate}/:id`,
             element: <UpdateCategoryPage />,
           },
           {
-            path: MainPath.AdminCategoryCreate,
-            element: <CreateCategoryPage />,
+            path: MainPath.AdminSubCategories,
+            element: <SubCategoryPage />,
+          },
+          {
+            path: `${MainPath.AdminSubCategoryUpdate}/:id`,
+            element: <UpdateCategoryPage />,
           },
           {
             path: MainPath.AdminProfile,

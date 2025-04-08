@@ -49,6 +49,11 @@ const adminNavList: NavItemsProps[] = [
     iconName: IconName.Categories,
   },
   {
+    path: MainPath.AdminSubCategories,
+    linkText: LinkText.SubCategories,
+    iconName: IconName.SubCategories,
+  },
+  {
     path: MainPath.Users,
     linkText: LinkText.Users,
     iconName: IconName.Users,
