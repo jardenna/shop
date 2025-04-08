@@ -63,7 +63,7 @@ const AuthForm: FC<AuthFormProps> = ({
 
   return (
     <>
-      <h1 className="page-title">{heading}</h1>
+      <h1>{heading}</h1>
       <Form
         submitBtnLabel={submitBtnLabel}
         onSubmit={onSubmit}
