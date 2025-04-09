@@ -128,7 +128,7 @@ const CategoryPage = () => {
         <Table
           data={allCategories?.categories || []}
           columns={tableHeaders}
-          tableCaption={language.customersList}
+          tableCaption={language.categoryList}
           isLoading={isLoading}
         >
           {(data) => data.map(renderRow)}

@@ -61,7 +61,7 @@ const SubCategoryPage = () => {
         <Table
           data={allSubcategories?.subCategories || []}
           columns={tableHeaders}
-          tableCaption={language.customersList}
+          tableCaption={language.subCategoryList}
           isLoading={isLoading}
         >
           {(data) => data.map(renderRow)}
