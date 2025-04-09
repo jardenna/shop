@@ -10,6 +10,7 @@ admin;Admin;Admin
 allowedFormats;Allowed formats;Tilladte formater
 asc;ascending;stigende
 bag;Bag;Indkøbskurv
+calendar;Calendar;Kalender
 cancel;Cancel;Annuller
 cannotDeleteAdmin;This action is not allowed for admin;Admin bruger kan ikke slettes
 categories;Categories;Kategorier
@@ -126,9 +127,8 @@ resetFiltersAndSorting;Reset filters and sorting;Nulstil filtre og sortering
 retry;Retry;Forsøg igen
 role;Role;Rolle
 save;Save;Gem
-scheduled;Scheduled for;Planlagt til udgivelse den
+scheduled;Scheduled;Planlagt
 scheduledDateMustBeFuture;Scheduled date must be after today;Planlagt dato skal være efter i dag
-scheduledFor;Scheduled;Planlagt til udgivelse
 search;Search;Søg
 selectCategoryStatus;Select categoryStatus;Vælg kategori status
 selectCurrency;Select currency;Vælg valuta

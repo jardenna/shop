@@ -70,7 +70,7 @@ const CreateCategoryPage = () => {
       value: 'Inactive',
     },
     {
-      label: language.scheduledFor,
+      label: language.scheduled,
       value: 'Scheduled',
     },
     {
