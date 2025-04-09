@@ -91,6 +91,11 @@ export interface UpdateCategoryRequest {
 // Products
 export type ProductSizes = 'S' | 'M' | 'L' | 'XL';
 
+export type subCategory = {
+  category: string;
+  subCategoryName: string;
+};
+
 export type ProductResponse = DefaultResponseType & {
   brand: string;
   category: Category;
@@ -104,7 +109,7 @@ export type ProductResponse = DefaultResponseType & {
   productName: string;
   quantity: number;
   sizes: ProductSizes;
-  subCategory: string;
+  subCategory: subCategory;
   discount?: number;
 };
 

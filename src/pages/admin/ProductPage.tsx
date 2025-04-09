@@ -12,7 +12,7 @@ const tableHeaders: Column<ProductResponse>[] = [
   { key: 'image', label: 'image', hideTableControls: true },
   { key: 'productName', label: 'productName' },
   { key: 'description', label: 'description' },
-  { key: 'category', label: 'category' },
+  { key: 'subCategory', label: 'subCategory' },
   { key: 'price', label: 'price' },
   { key: 'updatedAt', label: 'updatedAt' },
   { key: 'id', label: '' },
@@ -40,7 +40,7 @@ const ProductPage = () => {
               description,
               price,
               updatedAt,
-              category,
+              subCategory,
             }) => (
               <tr key={id}>
                 <td>
@@ -50,7 +50,7 @@ const ProductPage = () => {
                 <td>
                   <p className="text-ellipsis">{description}</p>
                 </td>
-                <td>{category.categoryName}</td>
+                <td>{subCategory.subCategoryName}</td>
                 <td>
                   <ProductPrice price={price} />
                 </td>
