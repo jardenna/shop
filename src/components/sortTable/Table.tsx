@@ -183,7 +183,13 @@ const Table = <T,>({
               </tr>
             </thead>
             <tbody className={`padding-${padding}`}>
-              {children(sortedData)}
+              {data.length ? (
+                children(sortedData)
+              ) : (
+                <tr>
+                  <td colSpan={columns.length}>{language.noData}</td>
+                </tr>
+              )}
             </tbody>
           </table>
         )}
