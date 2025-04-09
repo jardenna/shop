@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 import { CategoryStatus } from '../../app/api/apiTypes';
 import DatePicker from '../../components/datePicker/DatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
@@ -10,6 +11,7 @@ import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
 import { useCreateCategoryMutation } from '../../features/categories/categoriyApiSlice';
 import useLanguage from '../../features/language/useLanguage';
 import useFormValidation from '../../hooks/useFormValidation';
+import { MainPath } from '../../layout/nav/enums';
 
 export type CategoryState = {
   categoryName: string;
@@ -17,11 +19,13 @@ export type CategoryState = {
 };
 
 const CreateCategoryPage = () => {
+  const navigate = useNavigate();
+  const { language } = useLanguage();
   const initialState: CategoryState = {
     categoryName: '',
     categoryStatus: 'Inactive' as CategoryStatus,
   };
-  const { language } = useLanguage();
+
   const { onAddMessagePopup } = useMessagePopup();
   const {
     onChange,
@@ -55,6 +59,8 @@ const CreateCategoryPage = () => {
         message: result.message,
         componentType: !result.success ? 'notification' : undefined,
       });
+
+      navigate(`/admin/${MainPath.AdminCategories}`);
     } catch (error: any) {
       onAddMessagePopup({
         messagePopupType: 'error',
