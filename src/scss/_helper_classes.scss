@@ -20,6 +20,11 @@
   }
 }
 
+.flex-align-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .column {
   flex-direction: column;
 }
@@ -62,4 +67,21 @@
 .danger {
   background-color: transparent;
   color: $color-red-light;
+}
+
+.disabled-trash-icon {
+  position: relative;
+  display: flex;
+
+  &::before {
+    content: '';
+    position: absolute;
+    display: flex;
+    background-color: currentcolor;
+    height: 28px;
+    width: 2px;
+    transform: rotate(45deg);
+    top: -3px;
+    right: 9px;
+  }
 }

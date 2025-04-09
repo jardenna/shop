@@ -45,7 +45,7 @@ const AdminLayout: FC = () => {
           />
           link to shop
         </aside>
-        <div className="admin-page-container container">
+        <div className="container">
           <Outlet />
         </div>
       </main>
