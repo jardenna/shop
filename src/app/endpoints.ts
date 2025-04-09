@@ -9,7 +9,15 @@ const authEndpoints = {
 
 const userUrl = '/users';
 const categoryUrl = '/category';
+const subCategoryUrl = '/subcategories';
 const productUrl = '/products';
 const uploadUrl = '/upload';
 
-export { authEndpoints, categoryUrl, productUrl, uploadUrl, userUrl };
+export {
+  authEndpoints,
+  categoryUrl,
+  productUrl,
+  subCategoryUrl,
+  uploadUrl,
+  userUrl,
+};

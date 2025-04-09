@@ -85,6 +85,37 @@ const CategoryPage = () => {
     refetch();
   }, [scheduledCategories, isLoading, dispatch, refetch]);
 
+  const renderRow = ({
+    id,
+    scheduledDate,
+    categoryName,
+    createdAt,
+    categoryStatus,
+  }: Category) => {
+    const statusKey = categoryStatus.toLocaleLowerCase();
+    return (
+      <tr key={id}>
+        <td>{categoryName}</td>
+        <td>
+          <span>{language[statusKey]}</span>
+          {scheduledDate && (
+            <span>
+              <DateDisplay date={scheduledDate} />
+            </span>
+          )}
+        </td>
+        <td>
+          <DateDisplay date={createdAt} />
+        </td>
+        <td>
+          <Link to={`/admin/${MainPath.AdminCategoryUpdate}/${id}`}>
+            {language.update}
+          </Link>
+        </td>
+      </tr>
+    );
+  };
+
   return (
     <section className="category-page">
       <TopContainer
@@ -100,35 +131,7 @@ const CategoryPage = () => {
           tableCaption={language.customersList}
           isLoading={isLoading}
         >
-          {(data) =>
-            data.map(
-              ({
-                id,
-                scheduledDate,
-                categoryName,
-                createdAt,
-                categoryStatus,
-              }) => (
-                <tr key={id}>
-                  <td>{categoryName}</td>
-                  <td>
-                    <span>{language[categoryStatus.toLocaleLowerCase()]} </span>
-                    <span>
-                      {scheduledDate && <DateDisplay date={scheduledDate} />}
-                    </span>
-                  </td>
-                  <td>
-                    <DateDisplay date={createdAt} />
-                  </td>
-                  <td>
-                    <Link to={`/admin/${MainPath.AdminCategoryUpdate}/${id}`}>
-                      {language.update}
-                    </Link>
-                  </td>
-                </tr>
-              ),
-            )
-          }
+          {(data) => data.map(renderRow)}
         </Table>
       </div>
     </section>
