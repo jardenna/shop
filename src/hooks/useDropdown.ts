@@ -4,11 +4,7 @@ import { KeyCode } from '../types/enums';
 import useClickOutside from './useClickOutside';
 import useKeyPress from './useKeyPress';
 
-interface UseDropdownProps {
-  callback?: () => void;
-}
-
-const useDropdown = ({ callback }: UseDropdownProps) => {
+const useDropdown = ({ callback }: { callback?: () => void } = {}) => {
   const location = useLocation();
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const [dropdownIsOpen, setDropdownIsOpen] = useState(false);
