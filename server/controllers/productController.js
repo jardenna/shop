@@ -1,5 +1,4 @@
 import asyncHandler from '../middleware/asyncHandler.js';
-import Category from '../models/categoryModel.js';
 import Product from '../models/productModel.js';
 import SubCategory from '../models/subCategoryModel.js';
 import formatMongoData from '../utils/formatMongoData.js';
@@ -20,16 +19,7 @@ const createProduct = asyncHandler(async (req, res) => {
     return res.status(400).json({ success: false, message: error });
   }
 
-  const { category, subCategory, ...rest } = req.body;
-
-  // Validate category existence
-  const categoryId = await Category.findById(category);
-
-  if (!categoryId) {
-    return res
-      .status(400)
-      .json({ success: false, message: 'Category do not exist' });
-  }
+  const { subCategory, ...rest } = req.body;
 
   // Validate subCategory existence
   const subCategoryId = await SubCategory.findById(subCategory);
@@ -39,7 +29,7 @@ const createProduct = asyncHandler(async (req, res) => {
       .json({ success: false, message: 'subcategory do not exist' });
   }
 
-  const product = new Product({ category, subCategory, ...rest });
+  const product = new Product({ subCategory, ...rest });
 
   await product.save();
 
@@ -56,15 +46,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     return res.status(400).json({ success: false, message: error });
   }
 
-  const { category, subCategory, ...rest } = req.body;
-
-  // Validate category existence
-  const categoryId = await Category.findById(category);
-  if (!categoryId) {
-    return res
-      .status(400)
-      .json({ success: false, message: 'Invalid category ID' });
-  }
+  const { subCategory, ...rest } = req.body;
 
   // Validate subCategory existence
   const subCategoryId = await SubCategory.findById(subCategory);
@@ -134,7 +116,6 @@ const getSortedProducts = asyncHandler(async (req, res) => {
   const page = parseInt(req.query.page) || 1;
 
   const products = await Product.find({})
-    .populate('category')
     .populate('subCategory')
     .limit(pageSize)
     .skip(pageSize * (page - 1))
