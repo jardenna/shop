@@ -3,11 +3,11 @@ import { Link } from 'react-router';
 import apiSlice, { TagTypeIdEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import { Category } from '../../app/api/apiTypes';
 import { useAppDispatch } from '../../app/hooks';
-import Dropdown from '../../components/dropdown/Dropdown';
 import validateUpdateCategory from '../../components/formElements/validation/validateUpdateCategory';
 import Icon from '../../components/icons/Icon';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Table from '../../components/sortTable/Table';
+import Tooltip from '../../components/tooltip/Tooltip';
 import TopContainer from '../../components/TopContainer';
 import {
   useGetAllCategoriesQuery,
@@ -100,22 +100,23 @@ const CategoryPage = () => {
       <tr key={id}>
         <td>{categoryName}</td>
         <td>
-          <span>{language[statusKey]}</span>
-          {scheduledDate && (
-            <Dropdown
-              text={<DateDisplay date={scheduledDate} />}
-              ariaControls="scheduled-date"
-              triggerBtnVariant={BtnVariant.Ghost}
-              ariaLabel={language.scheduledDate}
-              hideFooter
-            >
-              <Icon
-                iconName={IconName.Calendar}
-                title={language.calendar}
+          <div className="flex">
+            <span>{language[statusKey]}</span>
+            {scheduledDate && (
+              <Tooltip
+                text={<DateDisplay date={scheduledDate} />}
+                ariaControls="scheduled-date"
+                triggerBtnVariant={BtnVariant.Ghost}
                 ariaLabel={language.scheduledDate}
-              />
-            </Dropdown>
-          )}
+              >
+                <Icon
+                  iconName={IconName.Calendar}
+                  title={language.calendar}
+                  ariaLabel={language.scheduledDate}
+                />
+              </Tooltip>
+            )}
+          </div>
         </td>
         <td>
           <DateDisplay date={createdAt} />
