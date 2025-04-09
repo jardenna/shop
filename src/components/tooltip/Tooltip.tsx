@@ -37,7 +37,11 @@ const Tooltip: FC<DropdownProps> = ({
         {children}
       </Button>
       {dropdownIsOpen && (
-        <section className="tooltip-content" ref={dropdownRef}>
+        <section
+          className="tooltip-content"
+          ref={dropdownRef}
+          id={ariaControls}
+        >
           <span>{text}</span>
         </section>
       )}

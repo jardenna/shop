@@ -52,7 +52,11 @@ const Dropdown: FC<DropdownProps> = ({
         {children}
       </Button>
       {dropdownIsOpen && (
-        <section className="dropdown-content" ref={dropdownRef}>
+        <section
+          className="dropdown-content"
+          ref={dropdownRef}
+          id={ariaControls}
+        >
           <span>{text}</span>
           <footer className="dropdown-content-footer">
             <Button variant={secondaryBtnVariant} onClick={handleCallback}>
