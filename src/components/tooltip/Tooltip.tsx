@@ -42,7 +42,7 @@ const Tooltip: FC<DropdownProps> = ({
           ref={dropdownRef}
           id={ariaControls}
         >
-          <span>{text}</span>
+          {text}
         </section>
       )}
     </div>
