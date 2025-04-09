@@ -3,7 +3,9 @@ import { Link } from 'react-router';
 import apiSlice, { TagTypeIdEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import { Category } from '../../app/api/apiTypes';
 import { useAppDispatch } from '../../app/hooks';
+import Dropdown from '../../components/dropdown/Dropdown';
 import validateUpdateCategory from '../../components/formElements/validation/validateUpdateCategory';
+import Icon from '../../components/icons/Icon';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Table from '../../components/sortTable/Table';
 import TopContainer from '../../components/TopContainer';
@@ -16,6 +18,7 @@ import DateDisplay from '../../features/categories/DateDisplay';
 import useLanguage from '../../features/language/useLanguage';
 import useTableEditField from '../../hooks/useTableEditField';
 import { MainPath } from '../../layout/nav/enums';
+import { BtnVariant, IconName } from '../../types/enums';
 
 const tableHeaders: { key: keyof Category; label: string }[] = [
   { key: 'categoryName', label: 'categoryName' },
@@ -99,9 +102,19 @@ const CategoryPage = () => {
         <td>
           <span>{language[statusKey]}</span>
           {scheduledDate && (
-            <span>
-              <DateDisplay date={scheduledDate} />
-            </span>
+            <Dropdown
+              text={<DateDisplay date={scheduledDate} />}
+              ariaControls="scheduled-date"
+              triggerBtnVariant={BtnVariant.Ghost}
+              ariaLabel={language.scheduledDate}
+              hideFooter
+            >
+              <Icon
+                iconName={IconName.Calendar}
+                title={language.calendar}
+                ariaLabel={language.scheduledDate}
+              />
+            </Dropdown>
           )}
         </td>
         <td>
@@ -117,7 +130,7 @@ const CategoryPage = () => {
   };
 
   return (
-    <section className="category-page">
+    <section className="page">
       <TopContainer
         heading={language.categories}
         linkText={language.addCategory}

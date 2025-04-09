@@ -128,6 +128,7 @@ retry;Retry;Forsøg igen
 role;Role;Rolle
 save;Save;Gem
 scheduled;Scheduled;Planlagt
+scheduledDate;Scheduled date;Planlagt dato
 scheduledDateMustBeFuture;Scheduled date must be after today;Planlagt dato skal være efter i dag
 search;Search;Søg
 selectCategoryStatus;Select categoryStatus;Vælg kategori status
