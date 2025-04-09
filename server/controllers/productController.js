@@ -19,17 +19,24 @@ const createProduct = asyncHandler(async (req, res) => {
     return res.status(400).json({ success: false, message: error });
   }
 
-  const { subCategory, ...rest } = req.body;
+  const { subCategory, quantity, ...rest } = req.body;
 
-  // Validate subCategory existence
+  // Check subcategory
   const subCategoryId = await SubCategory.findById(subCategory);
   if (!subCategoryId) {
     return res
       .status(400)
-      .json({ success: false, message: 'subcategory do not exist' });
+      .json({ success: false, message: 'Subcategory does not exist' });
   }
 
-  const product = new Product({ subCategory, ...rest });
+  // Use quantity to set initial countInStock
+  const countInStock = Number(quantity) || 0;
+
+  const product = new Product({
+    subCategory,
+    countInStock,
+    ...rest,
+  });
 
   await product.save();
 
@@ -46,7 +53,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     return res.status(400).json({ success: false, message: error });
   }
 
-  const { subCategory, ...rest } = req.body;
+  const { subCategory, quantity, ...rest } = req.body;
 
   // Validate subCategory existence
   const subCategoryId = await SubCategory.findById(subCategory);
@@ -56,17 +63,42 @@ const updateProduct = asyncHandler(async (req, res) => {
       .json({ success: false, message: 'Invalid subCategory ID' });
   }
 
+  const existingProduct = await Product.findById(req.params.id);
+  if (!existingProduct) {
+    return res
+      .status(404)
+      .json({ success: false, message: 'Product not found' });
+  }
+
+  // Add quantity to the existing countInStock if quantity is provided
+  let updatedCountInStock = existingProduct.countInStock;
+  if (quantity && quantity > 0) {
+    updatedCountInStock += Number(quantity);
+  }
+
   const product = await Product.findByIdAndUpdate(
     req.params.id,
-    { category, subCategory, ...rest },
+    {
+      subCategory,
+      countInStock: updatedCountInStock,
+      ...rest,
+    },
     { new: true },
   );
 
   if (!product) {
-    return res.status(404).json(errorResponse);
+    return res
+      .status(404)
+      .json({ success: false, message: 'Product update failed' });
   }
 
-  res.json({ id: product._id, ...req.body });
+  res.json({
+    id: product._id,
+    productName: product.productName,
+    countInStock: product.countInStock,
+    quantity: product.quantity, // optional, if you're tracking total quantity added
+    ...rest, // any other updated fields
+  });
 });
 
 // @desc    Delete Product
@@ -127,11 +159,8 @@ const getSortedProducts = asyncHandler(async (req, res) => {
   res.json({
     success: true,
     products: formatMongoData(
-      products.map(({ category, ...rest }) => ({
+      products.map(({ subCategoryName, ...rest }) => ({
         ...rest,
-        category: category
-          ? { id: category._id, ...category, _id: undefined }
-          : null,
       })),
     ),
     page,

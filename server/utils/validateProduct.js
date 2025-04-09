@@ -6,12 +6,8 @@ const validateProduct = (product) => {
       return 'Description is required';
     case !product.price:
       return 'Price is required';
-    case !product.quantity:
-      return 'Quantity is required';
     case !product.brand:
       return 'Brand is required';
-    case !product.countInStock:
-      return 'Count in stock is required';
     case !product.material:
       return 'Material is required';
     case !product.colors:
