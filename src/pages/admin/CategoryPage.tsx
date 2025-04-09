@@ -100,7 +100,7 @@ const CategoryPage = () => {
       <tr key={id}>
         <td>{categoryName}</td>
         <td>
-          <div className="flex">
+          <div className={`badge ${categoryStatus.toLowerCase()}`}>
             <span>{language[statusKey]}</span>
             {scheduledDate && (
               <Tooltip
