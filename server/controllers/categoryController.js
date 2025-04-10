@@ -164,7 +164,7 @@ const updateCategory = asyncHandler(async (req, res) => {
   res.status(200).json({
     success: true,
     message: 'Category updated',
-    updatedCategory: formatMongoData(updatedCategory.toObject()), // Convert to plain object before formatting
+    category: formatMongoData(updatedCategory.toObject()), // Convert to plain object before formatting
   });
 });
 

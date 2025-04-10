@@ -1,7 +1,9 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import {
+  CategoryRequest,
   CategoryResponse,
-  CreateCategoryRequest,
+  UpdateCategoryRequest,
+  UpdateCategoryResponse,
 } from '../../app/api/apiTypes';
 import { categoryUrl } from '../../app/endpoints';
 
@@ -20,7 +22,7 @@ const categoryApiSlice = apiSlice.injectEndpoints({
     getCategoryById: builder.query<any, string>({
       query: (id) => `${categoryUrl}/${id}`,
     }),
-    createCategory: builder.mutation<CategoryResponse, CreateCategoryRequest>({
+    createCategory: builder.mutation<CategoryResponse, CategoryRequest>({
       query: (name) => ({
         url: categoryUrl,
         method: 'POST',
@@ -28,7 +30,10 @@ const categoryApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.Categories],
     }),
-    updateCategory: builder.mutation<CategoryResponse, any>({
+    updateCategory: builder.mutation<
+      UpdateCategoryResponse,
+      UpdateCategoryRequest
+    >({
       query: ({ category, id }) => ({
         url: `${categoryUrl}/${id}`,
         method: 'PUT',

@@ -76,19 +76,20 @@ export interface CategoryResponse extends DefaultResponse {
   categories: Category[];
 }
 
-export interface CreateCategoryRequest {
+export type CategoryRequest = {
   categoryName: string;
   categoryStatus: CategoryStatus;
   scheduledDate?: Date;
-}
+};
 
-export interface UpdateCategoryRequest {
-  categoryName: string;
-  categoryStatus: CategoryStatus;
+export type UpdateCategoryResponse = DefaultResponseType & {
+  category: Category;
+};
+
+export type UpdateCategoryRequest = {
+  category: CategoryRequest;
   id: string;
-  scheduledDate?: Date;
-}
-
+};
 // Products
 export type ProductSizes = 'S' | 'M' | 'L' | 'XL';
 
