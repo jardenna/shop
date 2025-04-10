@@ -84,7 +84,9 @@ export interface CreateCategoryRequest {
 
 export interface UpdateCategoryRequest {
   categoryName: string;
+  categoryStatus: CategoryStatus;
   id: string;
+  scheduledDate?: Date;
 }
 
 // Products
