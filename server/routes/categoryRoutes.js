@@ -2,6 +2,7 @@ import express from 'express';
 import {
   createCategory,
   getAllCategories,
+  getCategoryById,
   getScheduledCategories,
   updateCategory,
 } from '../controllers/categoryController.js';
@@ -28,6 +29,7 @@ router
 
 router
   .route('/:id')
+  .get(getCategoryById)
   .put(languageMiddleware, authenticate, authorizeEmployee, updateCategory);
 
 router.get('/scheduled', getScheduledCategories);
