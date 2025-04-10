@@ -2,7 +2,6 @@ import apiSlice, { TagTypeIdEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import {
   CategoryResponse,
   CreateCategoryRequest,
-  UpdateCategoryRequest,
 } from '../../app/api/apiTypes';
 import { categoryUrl } from '../../app/endpoints';
 
@@ -18,6 +17,9 @@ const categoryApiSlice = apiSlice.injectEndpoints({
         { type: TagTypesEnum.Categories, id: TagTypeIdEnum.Scheduled },
       ],
     }),
+    getCategoryById: builder.query<any, string>({
+      query: (id) => `${categoryUrl}/${id}`,
+    }),
     createCategory: builder.mutation<CategoryResponse, CreateCategoryRequest>({
       query: (name) => ({
         url: categoryUrl,
@@ -26,12 +28,17 @@ const categoryApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.Categories],
     }),
-    updateCategory: builder.mutation<CategoryResponse, UpdateCategoryRequest>({
-      query: ({ id, categoryName }) => ({
+    updateCategory: builder.mutation<CategoryResponse, any>({
+      query: ({ user, id }) => ({
         url: `${categoryUrl}/${id}`,
         method: 'PUT',
-        body: { categoryName },
+        body: user,
       }),
+      // query: ({ category, id }) => ({
+      //   url: `${categoryUrl}/${id}`,
+      //   method: 'PUT',
+      //   body: category,
+      // }),
       invalidatesTags: [TagTypesEnum.Categories],
     }),
   }),
@@ -42,4 +49,5 @@ export const {
   useUpdateCategoryMutation,
   useCreateCategoryMutation,
   useGetScheduledCategoriesQuery,
+  useGetCategoryByIdQuery,
 } = categoryApiSlice;
