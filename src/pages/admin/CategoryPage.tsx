@@ -1,20 +1,14 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router';
-import apiSlice, { TagTypeIdEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import { Category } from '../../app/api/apiTypes';
-import { useAppDispatch } from '../../app/hooks';
 import Icon from '../../components/icons/Icon';
 import Table from '../../components/sortTable/Table';
 import Tooltip from '../../components/tooltip/Tooltip';
 import TopContainer from '../../components/TopContainer';
-import {
-  useGetAllCategoriesQuery,
-  useGetScheduledCategoriesQuery,
-} from '../../features/categories/categoriyApiSlice';
+import { useGetAllCategoriesQuery } from '../../features/categories/categoriyApiSlice';
 import DateDisplay from '../../features/categories/DateDisplay';
-import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant, IconName } from '../../types/enums';
+import useLanguage from '../../features/language/useLanguage';
 
 const tableHeaders: { key: keyof Category; label: string }[] = [
   { key: 'categoryName', label: 'categoryName' },
@@ -24,30 +18,28 @@ const tableHeaders: { key: keyof Category; label: string }[] = [
 ];
 
 const CategoryPage = () => {
-  const dispatch = useAppDispatch();
-  const sixHours = 1000 * 60 * 60 * 6;
+  // const dispatch = useAppDispatch();
+  // const sixHours = 1000 * 60 * 60 * 6;
   const { language } = useLanguage();
   const { data: allCategories, isLoading } = useGetAllCategoriesQuery();
 
-  const { data: scheduledCategories, refetch } = useGetScheduledCategoriesQuery(
-    undefined,
-    { pollingInterval: sixHours },
-  );
+  // const { data: scheduledCategories, refetch } = useGetScheduledCategoriesQuery(
+  //   undefined,
+  //   { pollingInterval: sixHours },
+  // );
 
-  console.log(scheduledCategories);
-
-  // Monitor for emptying scheduled list
-  useEffect(() => {
-    if (!isLoading && scheduledCategories?.categories.length === 0) {
-      // Trigger refetch of full category list
-      dispatch(
-        apiSlice.util.invalidateTags([
-          { type: TagTypesEnum.Categories, id: TagTypeIdEnum.Scheduled },
-        ]),
-      );
-    }
-    refetch();
-  }, [scheduledCategories, isLoading, dispatch, refetch]);
+  // // Monitor for emptying scheduled list
+  // useEffect(() => {
+  //   if (!isLoading && scheduledCategories?.categories.length === 0) {
+  //     // Trigger refetch of full category list
+  //     dispatch(
+  //       apiSlice.util.invalidateTags([
+  //         { type: TagTypesEnum.Categories, id: TagTypeIdEnum.Scheduled },
+  //       ]),
+  //     );
+  //   }
+  //   refetch();
+  // }, [scheduledCategories, isLoading, dispatch, refetch]);
 
   const renderRow = ({
     id,
