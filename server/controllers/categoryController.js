@@ -164,14 +164,7 @@ const updateCategory = asyncHandler(async (req, res) => {
   res.status(200).json({
     success: true,
     message: 'Category updated',
-    updatedCategory: {
-      id: updatedCategory._id,
-      categoryName: updatedCategory.categoryName,
-      categoryStatus: updatedCategory.categoryStatus,
-      scheduledDate: updatedCategory.scheduledDate,
-      createdAt: updatedCategory.createdAt,
-      updatedAt: updatedCategory.updatedAt,
-    },
+    updatedCategory: formatMongoData(updatedCategory.toObject()), // Convert to plain object before formatting
   });
 });
 
