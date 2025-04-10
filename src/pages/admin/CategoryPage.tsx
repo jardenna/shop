@@ -3,20 +3,16 @@ import { Link } from 'react-router';
 import apiSlice, { TagTypeIdEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import { Category } from '../../app/api/apiTypes';
 import { useAppDispatch } from '../../app/hooks';
-import validateUpdateCategory from '../../components/formElements/validation/validateUpdateCategory';
 import Icon from '../../components/icons/Icon';
-import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Table from '../../components/sortTable/Table';
 import Tooltip from '../../components/tooltip/Tooltip';
 import TopContainer from '../../components/TopContainer';
 import {
   useGetAllCategoriesQuery,
   useGetScheduledCategoriesQuery,
-  useUpdateCategoryMutation,
 } from '../../features/categories/categoriyApiSlice';
 import DateDisplay from '../../features/categories/DateDisplay';
 import useLanguage from '../../features/language/useLanguage';
-import useTableEditField from '../../hooks/useTableEditField';
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant, IconName } from '../../types/enums';
 
@@ -31,7 +27,6 @@ const CategoryPage = () => {
   const dispatch = useAppDispatch();
   const sixHours = 1000 * 60 * 60 * 6;
   const { language } = useLanguage();
-  const { onAddMessagePopup } = useMessagePopup();
   const { data: allCategories, isLoading } = useGetAllCategoriesQuery();
 
   const { data: scheduledCategories, refetch } = useGetScheduledCategoriesQuery(
@@ -39,41 +34,7 @@ const CategoryPage = () => {
     { pollingInterval: sixHours },
   );
 
-  const [updateCategory] = useUpdateCategoryMutation();
-
-  const { editValues } = useTableEditField({
-    data: allCategories?.categories || [],
-    callback: handleUpdateCategory,
-  });
-
-  async function handleUpdateCategory(id: string) {
-    const validation = validateUpdateCategory(editValues);
-    if (validation) {
-      onAddMessagePopup({
-        messagePopupType: 'error',
-        message: language[validation],
-        componentType: 'notification',
-      });
-      return;
-    }
-    try {
-      await updateCategory({
-        id,
-        categoryName: editValues.categoryName || '',
-      }).unwrap();
-
-      onAddMessagePopup({
-        messagePopupType: 'success',
-        message: language.categoryUpdated,
-      });
-    } catch (error: any) {
-      onAddMessagePopup({
-        messagePopupType: 'error',
-        message: error.data.message,
-        componentType: 'notification',
-      });
-    }
-  }
+  console.log(scheduledCategories);
 
   // Monitor for emptying scheduled list
   useEffect(() => {
