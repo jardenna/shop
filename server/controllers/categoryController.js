@@ -99,8 +99,10 @@ const getScheduledCategories = asyncHandler(async (req, res) => {
 
   const formatted = formatMongoData(scheduledCategories);
 
-  if (!formatted.length) {
-    return res.status(404).json({ message: t('noData', req.lang) });
+  if (!formatted) {
+    return res
+      .status(200)
+      .json({ success: true, message: 'No scheduled categories found' });
   }
 
   res.status(200).json({ success: true, categories: formatted });
