@@ -147,27 +147,20 @@ const updateCategory = asyncHandler(async (req, res) => {
     });
   }
 
+  // Update fields directly
   category.categoryName = categoryName;
+  category.categoryStatus = categoryStatus;
 
-  if (categoryStatus) {
-    category.categoryStatus = categoryStatus;
-
-    const validationResult = validateScheduledDate(
-      categoryStatus,
-      scheduledDate,
-    );
-    if (!validationResult.success) {
-      return res.status(400).json(validationResult);
-    }
-
-    if (categoryStatus === 'Scheduled') {
-      category.scheduledDate = scheduledDate;
-    } else {
-      category.scheduledDate = undefined; // Clear scheduledDate if status is not "Scheduled"
-    }
+  const validationResult = validateScheduledDate(categoryStatus, scheduledDate);
+  if (!validationResult.success) {
+    return res.status(400).json(validationResult);
   }
 
+  category.scheduledDate =
+    categoryStatus === 'Scheduled' ? scheduledDate : undefined; // Set or clear scheduledDate
+
   const updatedCategory = await category.save();
+
   res.status(200).json({
     success: true,
     message: 'Category updated',
