@@ -3,19 +3,21 @@ about;About;Profil
 account;Account;Konto
 actionNotAllowedForAdmin;Admin cannot be deleted;Denne handling er ikke tilladt for administrator
 addCategory;Add category;Tilføj kategori
-addSubCategory;Add subcategory;Tilføj underkategori
 addCategoryName;Add category name;Tilføj navn på kategori
 additionalInfo;Additional info;Supplerende information
+addSubCategory;Add subcategory;Tilføj underkategori
 admin;Admin;Admin
 allowedFormats;Allowed formats;Tilladte formater
 asc;ascending;stigende
 bag;Bag;Indkøbskurv
+calendar;Calendar;Kalender
 cancel;Cancel;Annuller
 cannotDeleteAdmin;This action is not allowed for admin;Admin bruger kan ikke slettes
 categories;Categories;Kategorier
 category;Category;Kategori
 categoryAlreadyExist;Category already exist;Kategori findes allerede
 categoryDeleted;Category deleted;Kategori blev slettet
+categoryList;Category list;Kategori-liste
 categoryName;Category name;Kategori navn
 categoryNotFound;Category not found;Kategori findes ikke
 categoryStatus;Category status;Kategori status
@@ -109,9 +111,9 @@ passwordUppercase;Password should contain at least one uppercase letter;Adgangsk
 pensil;Pensil;Blyant
 pleaseEnter;Please enter;Indsæt venligst
 pleaseEnterCategoryName;Please enter a name for category;Indsæt venligst navn på kategori
-pleaseEnterSubCategoryName;Please enter a subcategory name;Indsæt venligst navn på underkategori
 pleaseEnterName;Please enter name;Indsæt venligst navn
 pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
+pleaseEnterSubCategoryName;Please enter a subcategory name;Indsæt venligst navn på underkategori
 pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
 pleaseProvideScheduledDate;Please provide a scheduled date;Angiv venligst en planlagt dato
 preferences;Preferences;Præferencer
@@ -125,9 +127,9 @@ resetFiltersAndSorting;Reset filters and sorting;Nulstil filtre og sortering
 retry;Retry;Forsøg igen
 role;Role;Rolle
 save;Save;Gem
-scheduled;Scheduled for;Planlagt til udgivelse den
+scheduled;Scheduled;Planlagt
+scheduledDate;Scheduled date;Planlagt dato
 scheduledDateMustBeFuture;Scheduled date must be after today;Planlagt dato skal være efter i dag
-scheduledFor;Scheduled;Planlagt til udgivelse
 search;Search;Søg
 selectCategoryStatus;Select categoryStatus;Vælg kategori status
 selectCurrency;Select currency;Vælg valuta
@@ -143,6 +145,8 @@ sort;Sort;Sorter
 sub;Sub;Sekundær
 subCategories;Subcategories;Underkategorier
 subCategory;Subcategory;Underkategori
+subCategoryList;Subcategory list;Underkategori-liste
+subCategoryName;Subcategory name;Underkategori navn
 success;Success;Succes
 sureToDelete;Are you sure that you want to delete;Er du sikker på at du vil slette
 title;Title;Titel

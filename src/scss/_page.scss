@@ -7,12 +7,10 @@
   width: 100%;
 }
 
-.admin-page-container {
-  background-color: #f9f9f9;
-  padding-left: 40px;
-  padding-right: 40px;
-  display: flex;
-  justify-content: center;
+.admin-container {
+  .main {
+    display: flex;
+  }
 
   .top-container {
     display: flex;
@@ -36,34 +34,13 @@
     padding-top: 32px;
   }
 
-  .user-page {
-    .empty-cell {
-      position: relative;
-      display: flex;
-      justify-content: flex-end;
-
-      &::before {
-        content: '';
-        position: absolute;
-        display: flex;
-        background-color: currentcolor;
-        height: 28px;
-        width: 2px;
-        transform: rotate(45deg);
-        top: -3px;
-        right: 9px;
-      }
-    }
-  }
-}
-
-.admin-container {
-  .main {
-    display: flex;
-  }
-
   .container {
     max-width: 100%;
+    background-color: #f9f9f9;
+    padding-left: 40px;
+    padding-right: 40px;
+    display: flex;
+    justify-content: center;
   }
 
   header {

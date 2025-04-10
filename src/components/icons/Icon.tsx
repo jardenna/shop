@@ -6,6 +6,8 @@ import AdminIcon from './AdminIcon';
 import ArrowDownIcon from './ArrowDownIcon';
 import ArrowUpIcon from './ArrowUpIcon';
 import AuthIcon from './AuthIcon';
+
+import CalendarIcon from './CalendarIcon';
 import CategoriesIcon from './CategoriesIcon';
 import CheckIcon from './CheckIcon';
 import ChevronDownIcon from './ChevronDownIcon';
@@ -34,6 +36,7 @@ import OrdersIcon from './OrdersIcon';
 import ProductsIcon from './ProductsIcon';
 import SearchIcon from './SearchIcon';
 import ShoppingBackIcon from './ShoppingBackIcon';
+import SubCategoriesIcon from './SubCategoriesIcon';
 import SubtractIcon from './SubtractIcon';
 import SuccessIcon from './SuccessIcon';
 import TrashIcon from './TrashIcon';
@@ -41,7 +44,6 @@ import UndoIcon from './UndoIcon';
 import UserIcon from './UserIcon';
 import UsersIcon from './UsersIcon';
 import WarningIcon from './WarningIcon';
-import SubCategoriesIcon from './SubCategoriesIcon';
 
 export interface IconDefaultProps {
   title: string;
@@ -62,6 +64,7 @@ const iconMapping = {
   arrowDown: ArrowDownIcon,
   arrowUp: ArrowUpIcon,
   auth: AuthIcon,
+  calendar: CalendarIcon,
   categories: CategoriesIcon,
   check: CheckIcon,
   chevronDown: ChevronDownIcon,

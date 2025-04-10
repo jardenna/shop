@@ -55,6 +55,7 @@ export enum IconName {
   ArrowDown = 'arrowDown',
   ArrowUp = 'arrowUp',
   Auth = 'auth',
+  Calendar = 'calendar',
   Categories = 'categories',
   Check = 'check',
   ChevronDown = 'chevronDown',

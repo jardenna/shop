@@ -11,6 +11,7 @@ interface DropdownProps {
   children: ReactNode;
   primaryBtnLabel: string;
   text: string;
+  className?: string;
   primaryBtnVariant?: BtnVariant;
   secondaryBtnLabel?: string;
   secondaryBtnVariant?: BtnVariant;
@@ -33,13 +34,14 @@ const Dropdown: FC<DropdownProps> = ({
   secondaryBtnLabel,
   secondaryBtnVariant,
   onSecondaryClick,
+  className = '',
 }) => {
   const { language } = useLanguage();
   const { dropdownRef, dropdownIsOpen, toggleDropdownList, handleCallback } =
     useDropdown({ callback: onSecondaryClick });
 
   return (
-    <div className="dropdown-container">
+    <div className={`dropdown-container ${className}`}>
       <Button
         variant={triggerBtnVariant}
         onClick={toggleDropdownList}
@@ -52,7 +54,11 @@ const Dropdown: FC<DropdownProps> = ({
         {children}
       </Button>
       {dropdownIsOpen && (
-        <section className="dropdown-content" ref={dropdownRef}>
+        <section
+          className="dropdown-content"
+          ref={dropdownRef}
+          id={ariaControls}
+        >
           <span>{text}</span>
           <footer className="dropdown-content-footer">
             <Button variant={secondaryBtnVariant} onClick={handleCallback}>
