@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { CategoryRequest } from '../app/api/apiTypes';
 import { useUpdateCategoryMutation } from '../features/categories/categoriyApiSlice';
 import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
@@ -11,6 +10,7 @@ import validationCategories from './formElements/validation/validateCategory';
 import validateUpdateCategory from './formElements/validation/validateUpdateCategory';
 import useMessagePopup from './messagePopup/useMessagePopup';
 import Selectbox, { OptionType } from './selectbox/Selectbox';
+import { CreateCategoryRequest } from '../app/api/apiTypes';
 
 type CategoryFormProps = {
   id: string;
@@ -19,7 +19,7 @@ type CategoryFormProps = {
 
 const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
   const { language } = useLanguage();
-  const initialState: CategoryRequest = {
+  const initialState: CreateCategoryRequest = {
     categoryName: selectedCategory.categoryName || '',
     categoryStatus: selectedCategory.categoryStatus || 'Inactive',
   };
