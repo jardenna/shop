@@ -53,7 +53,7 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
     try {
       await updateCategory({
         id,
-        user: { ...values, scheduledDate: selectedDate },
+        category: { ...values, scheduledDate: selectedDate }, // Ensure this object is sent
       }).unwrap();
 
       onAddMessagePopup({
