@@ -96,7 +96,7 @@ const UserPage = () => {
   };
 
   return (
-    <section className="user-page page-card">
+    <section className="page-card">
       <Table
         data={allUsers || []}
         columns={tableHeaders}
@@ -136,6 +136,7 @@ const UserPage = () => {
               <td>
                 {!isAdmin ? (
                   <Dropdown
+                    className="flex-align-right"
                     ariaControls="delete-user"
                     text={`${language.sureToDelete} ${username}?`}
                     triggerBtnVariant={BtnVariant.Ghost}
@@ -154,13 +155,13 @@ const UserPage = () => {
                     />
                   </Dropdown>
                 ) : (
-                  <div className="empty-cell">
+                  <span className="disabled-trash-icon flex-align-right">
                     <IconContent
                       iconName={IconName.Trash}
                       title={language.trashCan}
                       ariaLabel={language.actionNotAllowedForAdmin}
                     />
-                  </div>
+                  </span>
                 )}
               </td>
             </tr>

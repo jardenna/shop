@@ -1,0 +1,21 @@
+@use '../../scss/globals' as *;
+
+.tooltip-container {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.tooltip-content {
+  position: absolute;
+  z-index: 1;
+  background: #fff;
+  color: #473f4a;
+  padding: 8px;
+  box-shadow: $box-shadow;
+  border-radius: 4px;
+  max-width: rem(220px);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}

@@ -1,0 +1,24 @@
+@use './globals' as *;
+
+.badge {
+  max-width: fit-content;
+  border-radius: 50px;
+  background-color: #2c566d;
+  color: #fff;
+  display: flex;
+  padding: 2px 12px;
+  align-items: center;
+  gap: 8px;
+
+  .btn-ghost {
+    color: currentcolor;
+  }
+
+  &.scheduled {
+    background-color: #527693;
+  }
+
+  &.inactive {
+    background-color: #a0738f;
+  }
+}
