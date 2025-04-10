@@ -1,6 +1,8 @@
 /* stylelint-disable no-descending-specificity */
 @use '../../scss/globals' as *;
 
+$input-height: rem(38px);
+
 .table-controls {
   display: flex;
   justify-content: space-between;
@@ -32,7 +34,7 @@ table {
       padding: 4px;
       background-color: #fff;
       border: 1px solid #a7a6ba;
-      min-height: rem(38px);
+      min-height: $input-height;
     }
 
     .edit-controls {
@@ -196,6 +198,12 @@ table {
     position: absolute;
     z-index: 3;
     min-width: rem(180px);
+
+    input {
+      background-color: #fff;
+      border: 1px solid #a7a6ba;
+      min-height: $input-height;
+    }
   }
 }
 
