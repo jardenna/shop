@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
+import { CreateCategoryRequest } from '../app/api/apiTypes';
 import { useUpdateCategoryMutation } from '../features/categories/categoriyApiSlice';
 import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
+import { MainPath } from '../layout/nav/enums';
 import DatePicker from './datePicker/DatePicker';
 import FieldSet from './fieldset/FieldSet';
 import Form from './formElements/form/Form';
@@ -10,18 +13,18 @@ import validationCategories from './formElements/validation/validateCategory';
 import validateUpdateCategory from './formElements/validation/validateUpdateCategory';
 import useMessagePopup from './messagePopup/useMessagePopup';
 import Selectbox, { OptionType } from './selectbox/Selectbox';
-import { CreateCategoryRequest } from '../app/api/apiTypes';
 
 type CategoryFormProps = {
   id: string;
-  selectedCategory: any;
+  selectedCategory: CreateCategoryRequest;
 };
 
 const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
+  const navigate = useNavigate();
   const { language } = useLanguage();
   const initialState: CreateCategoryRequest = {
     categoryName: selectedCategory.categoryName || '',
-    categoryStatus: selectedCategory.categoryStatus || 'Inactive',
+    categoryStatus: selectedCategory.categoryStatus,
   };
 
   const { onChange, values, onSubmit, errors, onCustomChange } =
@@ -32,7 +35,6 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
     });
 
   const { onAddMessagePopup } = useMessagePopup();
-
   const [updateCategory] = useUpdateCategoryMutation();
   const [selectedDate, setSelectedDate] = useState(new Date());
 
@@ -60,6 +62,8 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
         messagePopupType: 'success',
         message: language.categoryUpdated,
       });
+
+      navigate(`/admin/${MainPath.AdminCategories}`);
     } catch (error: any) {
       onAddMessagePopup({
         messagePopupType: 'error',
