@@ -95,7 +95,7 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
     await subCategory.save();
   }
 
-  // Fetch subcategories with product count
+  // Fetch subcategories with product count and mainCategory details
   const subCategories = await SubCategory.aggregate([
     {
       $lookup: {
@@ -111,11 +111,27 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
       },
     },
     {
+      $lookup: {
+        from: 'categories', // Collection name for categories
+        localField: 'category',
+        foreignField: '_id',
+        as: 'mainCategory',
+      },
+    },
+    {
+      $unwind: {
+        path: '$mainCategory',
+        preserveNullAndEmptyArrays: true,
+      },
+    },
+    {
       $project: {
         products: 0, // Exclude the products array from the response
+        'mainCategory.__v': 0, // Exclude unnecessary fields from mainCategory
       },
     },
   ]);
+
   const formattedCategories = formatMongoData(subCategories);
   res.json({
     success: true,
