@@ -13,9 +13,9 @@ const createSubCategory = asyncHandler(async (req, res) => {
   const { subCategoryName, category, categoryStatus, scheduledDate } = req.body;
 
   // Validate category existence
-  const categoryId = await Category.findById(category);
+  const mainCategory = await Category.findById(category);
 
-  if (!categoryId) {
+  if (!mainCategory) {
     return res
       .status(400)
       .json({ success: false, message: 'Category do not exist' });
@@ -57,14 +57,22 @@ const createSubCategory = asyncHandler(async (req, res) => {
   const subCategory = new SubCategory(subCategoryData);
   await subCategory.save();
 
+  // Fetch the categoryName for the mainCategory field
+  const mainCategoryData =
+    await Category.findById(category).select('categoryName');
+
   res.status(201).json({
-    message: 'New subcategory created',
     id: subCategory._id,
-    subCategoryName: subCategory.subCategoryName,
-    category: subCategory.category,
+    mainCategory: {
+      id: mainCategoryData._id,
+      categoryName: mainCategoryData.categoryName,
+    },
+    categoryName: subCategory.subCategoryName,
     categoryStatus: subCategory.categoryStatus || 'Inactive',
     scheduledDate: subCategory.scheduledDate,
     createdAt: subCategory.createdAt,
+    updatedAt: subCategory.updatedAt,
+    productCount: 0, // Default product count as 0 for a new subcategory
   });
 });
 
