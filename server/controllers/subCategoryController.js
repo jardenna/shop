@@ -145,6 +145,25 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
   });
 });
 
+// @desc    Get category by id
+// @route   /api/category/id
+// @method  Get
+// @access  Public
+const getSubCategoryById = asyncHandler(async (req, res) => {
+  const subCategory = await SubCategory.findById(req.params.id).populate(
+    'category',
+    'categoryName categoryStatus createdAt updatedAt',
+  ); // Populate category details
+
+  if (!subCategory) {
+    return res
+      .status(404)
+      .json({ success: false, message: 'No subcategory with that ID' });
+  }
+
+  res.status(200).json({ success: true, subCategory });
+});
+
 // @desc    Update SubCategory
 // @route   /api/subcategories/:id
 // @method  Put
@@ -235,5 +254,6 @@ export {
   createSubCategory,
   deleteSubCategory,
   getAllSubCategories,
+  getSubCategoryById,
   updateSubCategory,
 };

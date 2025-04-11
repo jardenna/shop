@@ -3,6 +3,7 @@ import {
   createSubCategory,
   deleteSubCategory,
   getAllSubCategories,
+  getSubCategoryById,
   updateSubCategory,
 } from '../controllers/subCategoryController.js';
 import {
@@ -21,6 +22,7 @@ router
 router
   .route('/:id')
   .put(authenticate, authorizeEmployee, updateSubCategory)
+  .get(getSubCategoryById)
   .delete(authenticate, authorizeAdmin, deleteSubCategory);
 
 export default router;
