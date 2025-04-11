@@ -8,9 +8,15 @@ const ViewSubCategoryPage = () => {
   const { language } = useLanguage();
   const params = useParams();
 
-  const { data: category, isLoading } = useGetSubCategoryByIdQuery(
-    params.id || '',
-  );
+  const {
+    data: category,
+    isLoading,
+    isError,
+  } = useGetSubCategoryByIdQuery(params.id || '');
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <section className="page">
@@ -20,10 +26,10 @@ const ViewSubCategoryPage = () => {
         linkTo={`/admin/${MainPath.AdminCategoryCreate}`}
       />
       <div className="page-card">
-        {isLoading ? (
-          <span>Loading..</span>
-        ) : (
+        {!isError && category ? (
           <div>{category.subCategoryName}</div>
+        ) : (
+          <span>error..</span>
         )}
       </div>
     </section>
