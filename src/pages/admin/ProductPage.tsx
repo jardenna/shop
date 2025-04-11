@@ -9,13 +9,11 @@ import { useGetAllProductsQuery } from '../../features/products/productApiSlice'
 import { MainPath } from '../../layout/nav/enums';
 
 const tableHeaders: Column<ProductResponse>[] = [
-  { key: 'image', label: 'image', hideTableControls: true },
-  { key: 'productName', label: 'productName' },
-  { key: 'description', label: 'description' },
-  { key: 'subCategory', label: 'subCategory' },
-  { key: 'price', label: 'price' },
-  { key: 'updatedAt', label: 'updatedAt' },
-  { key: 'id', label: '' },
+  { key: 'productName', label: 'image', name: 'name' },
+  { key: 'subCategory', label: 'subCategory', name: 'subCategory' },
+  { key: 'price', label: 'price', name: 'price' },
+  { key: 'updatedAt', label: 'updatedAt', name: 'updatedAt' },
+  { key: 'id', label: '', name: '' },
 ];
 
 const ProductPage = () => {
@@ -44,12 +42,12 @@ const ProductPage = () => {
             }) => (
               <tr key={id}>
                 <td>
-                  <Figure src={`/images${image}`} alt="" />
+                  <div>
+                    <Figure src={`/images${image}`} alt="" /> {productName}{' '}
+                    <p className="text-ellipsis">{description}</p>
+                  </div>
                 </td>
-                <td>{productName}</td>
-                <td>
-                  <p className="text-ellipsis">{description}</p>
-                </td>
+
                 <td>{subCategory.subCategoryName}</td>
                 <td>
                   <ProductPrice price={price} />
