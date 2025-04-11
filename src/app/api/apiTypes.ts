@@ -22,7 +22,7 @@ export interface UserResponse {
 }
 
 export interface UpdateUserRoleRequest {
-  role: string;
+  role: RoleTypes;
   userId: string;
 }
 
@@ -72,22 +72,24 @@ export type Category = DefaultResponseType & {
   scheduledDate?: Date;
 };
 
-export interface CategoryResponse extends DefaultResponse {
+export interface CategoriesResponse extends DefaultResponse {
   categories: Category[];
 }
 
-export interface CreateCategoryRequest {
+export type CreateCategoryRequest = {
   categoryName: string;
   categoryStatus: CategoryStatus;
   scheduledDate?: Date;
-}
+};
 
-export interface UpdateCategoryRequest {
-  categoryName: string;
-  categoryStatus: CategoryStatus;
+export type CategoryItemResponse = DefaultResponseType & {
+  category: Category;
+};
+
+export type UpdateCategoryRequest = {
+  category: CreateCategoryRequest;
   id: string;
-  scheduledDate?: Date;
-}
+};
 
 // Products
 export type ProductSizes = 'S' | 'M' | 'L' | 'XL';

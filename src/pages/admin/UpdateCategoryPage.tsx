@@ -5,10 +5,8 @@ import useLanguage from '../../features/language/useLanguage';
 
 const UpdateCategoryPage = () => {
   const params = useParams();
-
-  const { data: selectedCategory } = useGetCategoryByIdQuery(params.id || '');
-
   const { language } = useLanguage();
+  const { data: selectedCategory } = useGetCategoryByIdQuery(params.id || '');
 
   return (
     <section className="page-small">
