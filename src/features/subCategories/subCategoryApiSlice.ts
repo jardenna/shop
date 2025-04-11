@@ -1,6 +1,10 @@
-/* eslint-disable import/prefer-default-export */
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
-import { SubCategoryResponse } from '../../app/api/apiTypes';
+import {
+  DefaultResponse,
+  SubCategoryResponse,
+  UpdateSubCategoryRequest,
+  UpdateSubCategoryResponse,
+} from '../../app/api/apiTypes';
 import { subCategoryUrl } from '../../app/endpoints';
 
 const subCategoryApiSlice = apiSlice.injectEndpoints({
@@ -9,7 +13,32 @@ const subCategoryApiSlice = apiSlice.injectEndpoints({
       query: () => subCategoryUrl,
       providesTags: [TagTypesEnum.SubCategories],
     }),
+    getSubCategoryById: builder.query<SubCategoryResponse, string>({
+      query: (id) => `${subCategoryUrl}/${id}`,
+    }),
+    deleteSubCategory: builder.mutation<DefaultResponse, string>({
+      query: (id) => ({
+        url: `${subCategoryUrl}/${id}`,
+        method: 'Delete',
+        body: id,
+      }),
+      invalidatesTags: [TagTypesEnum.SubCategories],
+    }),
+    updateSubCategory: builder.mutation<
+      UpdateSubCategoryResponse,
+      UpdateSubCategoryRequest
+    >({
+      query: ({ subCategory, id }) => ({
+        url: `${subCategoryUrl}/${id}`,
+        method: 'PUT',
+        body: subCategory,
+      }),
+    }),
   }),
 });
 
-export const { useGetAllSubCategoriesQuery } = subCategoryApiSlice;
+export const {
+  useGetAllSubCategoriesQuery,
+  useGetSubCategoryByIdQuery,
+  useDeleteSubCategoryMutation,
+} = subCategoryApiSlice;

@@ -8,7 +8,7 @@ export type DefaultResponseType = {
   success?: boolean;
 };
 
-interface DefaultResponse {
+export interface DefaultResponse {
   message: string;
   success: boolean;
 }
@@ -37,8 +37,6 @@ export type OmittedUserRequest = Omit<AuthRequest, 'username'>;
 export interface AuthResponse extends DefaultResponse {
   user: UserResponse;
 }
-
-export type OmittedAuthResponse = Omit<AuthRequest, 'user'>;
 
 export interface CurrencyResponse {
   data: Record<string, { value: number }>;
@@ -92,7 +90,6 @@ export type UpdateCategoryRequest = {
 };
 
 // SubCategories
-
 export type MainCategory = {
   categoryName: string;
   categoryStatus: CategoryStatus;
@@ -113,9 +110,14 @@ export type SubCategoryResponse = DefaultResponseType & {
   subCategories: SubCategory[];
 };
 
-export type CreateSubCategoriesRequest = {
+export type UpdateSubCategoryRequest = {
   category: string;
-  subCategoryName: string;
+  id: string;
+  subCategory: SubCategory;
+};
+export type UpdateSubCategoryResponse = {
+  category: Category;
+  subCategory: SubCategory;
 };
 
 export type CreateSubCategoriesResponse = DefaultResponseType & {
