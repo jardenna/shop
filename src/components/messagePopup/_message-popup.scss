@@ -2,12 +2,12 @@
 
 .message-popup-list {
   position: fixed;
+  width: fit-content;
   height: fit-content;
   bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
-  width: auto;
   display: flex;
   gap: 4px;
   flex-direction: column;
