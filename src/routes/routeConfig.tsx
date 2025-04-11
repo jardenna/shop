@@ -7,6 +7,7 @@ import MyAccount from '../pages/account/MyAccount';
 import Orders from '../pages/account/Orders';
 import CategoryPage from '../pages/admin/CategoryPage';
 import CreateCategoryPage from '../pages/admin/CreateCategoryPage';
+import CreateSubCategoryPage from '../pages/admin/CreateSubCategoryPage';
 import Dashboard from '../pages/admin/Dashboard';
 import OrderPage from '../pages/admin/OrderPage';
 import ProductPage from '../pages/admin/ProductPage';
@@ -15,6 +16,7 @@ import SubCategoryPage from '../pages/admin/SubCategoryPage';
 import UpdateCategoryPage from '../pages/admin/UpdateCategoryPage';
 import UpdateProductPage from '../pages/admin/UpdateProductPage';
 import UserPage from '../pages/admin/UserPage';
+import ViewSubCategoryPage from '../pages/admin/ViewSubCategoryPage';
 import Collections from '../pages/Collections';
 import Contact from '../pages/Contact';
 import ErrorPage from '../pages/ErrorPage';
@@ -23,7 +25,6 @@ import LoginPage from '../pages/LoginPage';
 import ProtectedRoute from '../pages/ProtectedRoute';
 import ShoppingChart from '../pages/ShoppingChart';
 import SignupPage from '../pages/SignupPage';
-import CreateSubCategoryPage from '../pages/admin/CreateSubCategoryPage';
 
 const routeConfig = createBrowserRouter([
   {
@@ -105,8 +106,8 @@ const routeConfig = createBrowserRouter([
             element: <SubCategoryPage />,
           },
           {
-            path: `${MainPath.AdminSubCategoryUpdate}/:id`,
-            element: <UpdateCategoryPage />,
+            path: `${MainPath.AdminSubCategoryView}/:id`,
+            element: <ViewSubCategoryPage />,
           },
           {
             path: MainPath.AdminProfile,

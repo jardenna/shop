@@ -50,7 +50,7 @@ const SubCategoryPage = () => {
           <DateDisplay date={createdAt} />
         </td>
         <td>
-          <Link to={`/admin/${MainPath.AdminCategoryUpdate}/${id}`}>
+          <Link to={`/admin/${MainPath.AdminSubCategoryView}/${id}`}>
             {language.editCategory}
           </Link>
         </td>
@@ -63,7 +63,7 @@ const SubCategoryPage = () => {
       <TopContainer
         heading={language.subCategories}
         linkText={language.addSubCategory}
-        linkTo={`/admin/${MainPath.AdminSubCategoryCreate}`}
+        linkTo={`/admin/${MainPath.AdminSubCategoryView}`}
       />
       <div className="page-card">
         <Table
