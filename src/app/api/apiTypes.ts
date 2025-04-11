@@ -8,57 +8,57 @@ export type DefaultResponseType = {
   success?: boolean;
 };
 
-export interface DefaultResponse {
+export type DefaultResponse = {
   message: string;
   success: boolean;
-}
+};
 
-export interface UserResponse {
+export type UserResponse = {
   email: string;
   id: string;
   isAdmin: boolean;
   role: RoleTypes;
   username: string;
-}
+};
 
-export interface UpdateUserRoleRequest {
+export type UpdateUserRoleRequest = {
   role: RoleTypes;
   userId: string;
-}
+};
 
-export interface AuthRequest {
+export type AuthRequest = {
   email: string;
   password: string;
   username: string;
-}
+};
 
 export type OmittedUserRequest = Omit<AuthRequest, 'username'>;
 
-export interface AuthResponse extends DefaultResponse {
+export type AuthResponse = DefaultResponse & {
   user: UserResponse;
-}
+};
 
-export interface CurrencyResponse {
+export type CurrencyResponse = {
   data: Record<string, { value: number }>;
-}
+};
 
-export interface UpdateUserByIdResponse {
+export type UpdateUserByIdResponse = {
   email: string;
   id: string;
   role: RoleTypes;
   username: string;
-}
+};
 
-export interface UpdateUserById {
+export type UpdateUserById = {
   email?: string;
   role?: RoleTypes;
   username?: string;
-}
+};
 
-export interface UpdateUserByIdRequest {
+export type UpdateUserByIdRequest = {
   id: string;
   user: UpdateUserById;
-}
+};
 
 // Category
 export type CategoryStatus = 'Published' | 'Inactive' | 'Scheduled';
@@ -70,9 +70,9 @@ export type Category = DefaultResponseType & {
   scheduledDate?: Date;
 };
 
-export interface CategoriesResponse extends DefaultResponse {
+export type CategoriesResponse = DefaultResponse & {
   categories: Category[];
-}
+};
 
 export type CreateCategoryRequest = {
   categoryName: string;
