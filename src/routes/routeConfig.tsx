@@ -5,26 +5,25 @@ import { MainPath } from '../layout/nav/enums';
 import About from '../pages/About';
 import MyAccount from '../pages/account/MyAccount';
 import Orders from '../pages/account/Orders';
-import CategoryPage from '../pages/admin/CategoryPage';
-import CreateCategoryPage from '../pages/admin/CreateCategoryPage';
-import CreateSubCategoryPage from '../pages/admin/CreateSubCategoryPage';
 import Dashboard from '../pages/admin/Dashboard';
 import OrderPage from '../pages/admin/OrderPage';
-import ProductPage from '../pages/admin/ProductPage';
 import ProfilePage from '../pages/admin/ProfilePage';
-import SubCategoryPage from '../pages/admin/SubCategoryPage';
-import UpdateCategoryPage from '../pages/admin/UpdateCategoryPage';
-import UpdateProductPage from '../pages/admin/UpdateProductPage';
 import UserPage from '../pages/admin/UserPage';
-import ViewSubCategoryPage from '../pages/admin/ViewSubCategoryPage';
+import CategoryPage from '../pages/category/CategoryPage';
+import CreateCategoryPage from '../pages/category/CreateCategoryPage';
+import UpdateCategoryPage from '../pages/category/UpdateCategoryPage';
 import Collections from '../pages/Collections';
 import Contact from '../pages/Contact';
 import ErrorPage from '../pages/ErrorPage';
 import HomePage from '../pages/home/HomePage';
 import LoginPage from '../pages/LoginPage';
+import ProductPage from '../pages/product/ProductPage';
 import ProtectedRoute from '../pages/ProtectedRoute';
 import ShoppingChart from '../pages/ShoppingChart';
 import SignupPage from '../pages/SignupPage';
+import CreateSubCategoryPage from '../pages/subCategory/CreateSubCategoryPage';
+import SubCategoryPage from '../pages/subCategory/SubCategoryPage';
+import ViewSubCategoryPage from '../pages/subCategory/ViewSubCategoryPage';
 
 const routeConfig = createBrowserRouter([
   {
@@ -84,10 +83,6 @@ const routeConfig = createBrowserRouter([
           {
             path: MainPath.Users,
             element: <UserPage />,
-          },
-          {
-            path: `${MainPath.AdminProductUpdate}/:id`,
-            element: <UpdateProductPage />,
           },
           {
             path: MainPath.AdminCategoryCreate,
