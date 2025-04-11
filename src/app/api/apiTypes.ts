@@ -91,13 +91,20 @@ export type UpdateCategoryRequest = {
   id: string;
 };
 
-// Products
-export type ProductSizes = 'S' | 'M' | 'L' | 'XL';
+// SubCategories
 
-export type SubCategory = DefaultResponseType & {
-  category: string;
+export type MainCategory = {
+  categoryName: string;
   categoryStatus: CategoryStatus;
   id: string;
+  scheduledDate?: Date;
+};
+
+export type SubCategory = DefaultResponseType & {
+  categoryStatus: CategoryStatus;
+  id: string;
+  mainCategory: MainCategory;
+  productCount: number;
   subCategoryName: string;
   scheduledDate?: Date;
 };
@@ -105,6 +112,26 @@ export type SubCategory = DefaultResponseType & {
 export type SubCategoryResponse = DefaultResponseType & {
   subCategories: SubCategory[];
 };
+
+export type CreateSubCategoriesRequest = {
+  category: string;
+  subCategoryName: string;
+};
+
+export type CreateSubCategoriesResponse = DefaultResponseType & {
+  _id: string;
+  category: string;
+  subCategoryName: string;
+};
+
+export type GetSubCategoriesResponse = DefaultResponseType & {
+  _id: string;
+  category: Category;
+  subCategoryName: string;
+};
+
+// Products
+export type ProductSizes = 'S' | 'M' | 'L' | 'XL';
 
 export type ProductResponse = DefaultResponseType & {
   brand: string;
@@ -153,23 +180,6 @@ export type AllSortedProductsResponse = Omit<
 export type GetSortedProductsResponse = DefaultResponseType & {
   category: Category;
   product: ProductResponse[];
-};
-
-export type CreateSubCategoriesRequest = {
-  category: string;
-  subCategoryName: string;
-};
-
-export type CreateSubCategoriesResponse = DefaultResponseType & {
-  _id: string;
-  category: string;
-  subCategoryName: string;
-};
-
-export type GetSubCategoriesResponse = DefaultResponseType & {
-  _id: string;
-  category: Category;
-  subCategoryName: string;
 };
 
 export type FileUploadNameType = 'image';
