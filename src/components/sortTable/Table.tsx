@@ -14,6 +14,7 @@ import TableSearchInput from './TableSearchInput';
 export type Column<T> = {
   key: keyof T;
   label: string;
+  name: string;
   hideTableControls?: boolean;
 };
 
@@ -112,7 +113,9 @@ const Table = <T,>({
     return 0;
   });
   const sortIcon = sortOrder === 'asc' ? '↑' : '↓';
-  const ariaLabel = sortOrder === 'asc' ? language.desc : language.asc;
+  const ariaSort = sortOrder !== 'asc' ? 'descending' : 'ascending';
+  const ariaLabel = sortOrder !== 'asc' ? language.desc : language.asc;
+
   return (
     <>
       <div className="table-controls">
@@ -138,11 +141,11 @@ const Table = <T,>({
                     key={col.key as string}
                     scope="col"
                     style={{ paddingBlock: Number(padding) }}
+                    aria-sort={sortField === col.name ? ariaSort : 'none'}
                   >
-                    {col.label !== '' ? (
+                    {col.name !== '' ? (
                       <div className="table-header-cell">
                         <div className="sort">
-                          {language[col.label]}
                           {!col.hideTableControls && (
                             <Button
                               variant={BtnVariant.Ghost}
@@ -150,13 +153,14 @@ const Table = <T,>({
                                 handleSort(col.key);
                               }}
                               ariaLabel={
-                                sortField === col.label
-                                  ? `${language.sort} ${language[col.label]} ${ariaLabel}`
-                                  : `${language.sort} ${language[col.label]}`
+                                sortField === col.name
+                                  ? `${language.sort} ${language[col.name]} ${ariaLabel}`
+                                  : `${language.sort} ${language[col.name]}`
                               }
                             >
+                              {language[col.label]}
                               <span className="sort-icon" aria-hidden>
-                                {sortField === col.label ? sortIcon : '⇅'}
+                                {sortField === col.name ? sortIcon : '⇅'}
                               </span>
                             </Button>
                           )}

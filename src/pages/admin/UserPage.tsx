@@ -15,12 +15,13 @@ import useLanguage from '../../features/language/useLanguage';
 import useTableEditField from '../../hooks/useTableEditField';
 import { BtnVariant, IconName } from '../../types/enums';
 
-const tableHeaders: { key: keyof UserResponse; label: string }[] = [
-  { key: 'username', label: 'username' },
-  { key: 'email', label: 'email' },
-  { key: 'role', label: 'role' },
-  { key: 'id', label: '' },
-];
+const tableHeaders: { key: keyof UserResponse; label: string; name: string }[] =
+  [
+    { key: 'username', label: 'username', name: 'name' },
+    { key: 'email', label: 'email', name: 'email' },
+    { key: 'role', label: 'role', name: 'role' },
+    { key: 'id', label: '', name: '' },
+  ];
 
 const columnKeys: (keyof UserResponse)[] = ['username', 'email', 'role'];
 

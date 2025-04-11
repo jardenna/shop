@@ -12,11 +12,19 @@ const SubCategoryPage = () => {
 
   const { data: allSubcategories, isLoading } = useGetAllSubCategoriesQuery();
 
-  const tableHeaders: { key: keyof SubCategory; label: string }[] = [
-    { key: 'subCategoryName', label: 'subCategoryName' },
-    { key: 'categoryStatus', label: 'categoryStatus' },
-    { key: 'createdAt', label: 'createdAt' },
-    { key: 'id', label: '' },
+  const tableHeaders: {
+    key: keyof SubCategory;
+    label: string;
+    name: string;
+  }[] = [
+    {
+      key: 'subCategoryName',
+      label: 'name',
+      name: 'subCategoryName',
+    },
+    { key: 'categoryStatus', label: 'status', name: 'categoryStatus' },
+    { key: 'createdAt', label: 'createdAt', name: 'createdAt' },
+    { key: 'id', label: '', name: '' },
   ];
 
   const renderRow = ({

@@ -55,6 +55,11 @@ table {
     white-space: nowrap;
     text-align: left;
 
+    .btn-ghost {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
     &:last-child {
       border-right: 0;
     }

@@ -13,9 +13,9 @@ const createSubCategory = asyncHandler(async (req, res) => {
   const { subCategoryName, category, categoryStatus, scheduledDate } = req.body;
 
   // Validate category existence
-  const categoryId = await Category.findById(category);
+  const mainCategory = await Category.findById(category);
 
-  if (!categoryId) {
+  if (!mainCategory) {
     return res
       .status(400)
       .json({ success: false, message: 'Category do not exist' });
@@ -57,14 +57,22 @@ const createSubCategory = asyncHandler(async (req, res) => {
   const subCategory = new SubCategory(subCategoryData);
   await subCategory.save();
 
+  // Fetch the categoryName for the mainCategory field
+  const mainCategoryData =
+    await Category.findById(category).select('categoryName');
+
   res.status(201).json({
-    message: 'New subcategory created',
     id: subCategory._id,
-    subCategoryName: subCategory.subCategoryName,
-    category: subCategory.category,
+    mainCategory: {
+      id: mainCategoryData._id,
+      categoryName: mainCategoryData.categoryName,
+    },
+    categoryName: subCategory.subCategoryName,
     categoryStatus: subCategory.categoryStatus || 'Inactive',
     scheduledDate: subCategory.scheduledDate,
     createdAt: subCategory.createdAt,
+    updatedAt: subCategory.updatedAt,
+    productCount: 0, // Default product count as 0 for a new subcategory
   });
 });
 
@@ -87,7 +95,7 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
     await subCategory.save();
   }
 
-  // Fetch subcategories with product count
+  // Fetch subcategories with product count and mainCategory details
   const subCategories = await SubCategory.aggregate([
     {
       $lookup: {
@@ -103,11 +111,33 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
       },
     },
     {
+      $lookup: {
+        from: 'categories', // Collection name for categories
+        localField: 'category',
+        foreignField: '_id',
+        as: 'mainCategory',
+      },
+    },
+    {
+      $unwind: {
+        path: '$mainCategory',
+        preserveNullAndEmptyArrays: true,
+      },
+    },
+    {
+      $addFields: {
+        'mainCategory.id': '$mainCategory._id', // Add an `id` field in mainCategory
+      },
+    },
+    {
       $project: {
         products: 0, // Exclude the products array from the response
+        'mainCategory._id': 0, // Exclude the original `_id` field in mainCategory
+        category: 0, // Exclude the `category` field from the response
       },
     },
   ]);
+
   const formattedCategories = formatMongoData(subCategories);
   res.json({
     success: true,
