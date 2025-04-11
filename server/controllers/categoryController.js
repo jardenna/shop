@@ -99,11 +99,29 @@ const getScheduledCategories = asyncHandler(async (req, res) => {
 
   const formatted = formatMongoData(scheduledCategories);
 
-  if (!formatted.length) {
-    return res.status(404).json({ message: t('noData', req.lang) });
+  if (!formatted) {
+    return res
+      .status(200)
+      .json({ success: true, message: 'No scheduled categories found' });
   }
 
   res.status(200).json({ success: true, categories: formatted });
+});
+
+// @desc    Get category by id
+// @route   /api/category/id
+// @method  Get
+// @access  Public
+const getCategoryById = asyncHandler(async (req, res) => {
+  const category = await Category.findById(req.params.id);
+
+  if (!category) {
+    return res
+      .status(404)
+      .json({ success: false, message: 'No category with that ID' });
+  }
+
+  res.status(200).json({ success: true, category });
 });
 
 // @desc    Update category
@@ -167,6 +185,7 @@ const updateCategory = asyncHandler(async (req, res) => {
 export {
   createCategory,
   getAllCategories,
+  getCategoryById,
   getScheduledCategories,
   updateCategory,
 };

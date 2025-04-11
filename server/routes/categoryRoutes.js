@@ -2,6 +2,7 @@ import express from 'express';
 import {
   createCategory,
   getAllCategories,
+  getCategoryById,
   getScheduledCategories,
   updateCategory,
 } from '../controllers/categoryController.js';
@@ -26,10 +27,12 @@ router
   .post(languageMiddleware, authenticate, authorizeAdmin, createCategory)
   .get(languageMiddleware, getAllCategories);
 
+// Always define specific routes before dynamic ones
+router.get('/scheduled', getScheduledCategories);
+
 router
   .route('/:id')
+  .get(getCategoryById)
   .put(languageMiddleware, authenticate, authorizeEmployee, updateCategory);
-
-router.get('/scheduled', getScheduledCategories);
 
 export default router;

@@ -2,9 +2,9 @@ export type RoleTypes = 'Employee' | 'User';
 
 export type DefaultResponseType = {
   createdAt: Date;
-  message: string;
   reviews: ReviewResponse[];
   updatedAt: Date;
+  message?: string;
   success?: boolean;
 };
 
@@ -84,16 +84,24 @@ export interface CreateCategoryRequest {
 
 export interface UpdateCategoryRequest {
   categoryName: string;
-
+  categoryStatus: CategoryStatus;
   id: string;
+  scheduledDate?: Date;
 }
 
 // Products
 export type ProductSizes = 'S' | 'M' | 'L' | 'XL';
 
-export type subCategory = {
+export type SubCategory = DefaultResponseType & {
   category: string;
+  categoryStatus: CategoryStatus;
+  id: string;
   subCategoryName: string;
+  scheduledDate?: Date;
+};
+
+export type SubCategoryResponse = DefaultResponseType & {
+  subCategories: SubCategory[];
 };
 
 export type ProductResponse = DefaultResponseType & {
@@ -109,7 +117,7 @@ export type ProductResponse = DefaultResponseType & {
   productName: string;
   quantity: number;
   sizes: ProductSizes;
-  subCategory: subCategory;
+  subCategory: SubCategory;
   discount?: number;
 };
 

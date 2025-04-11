@@ -2,6 +2,7 @@ import asyncHandler from '../middleware/asyncHandler.js';
 import Category from '../models/categoryModel.js';
 import Product from '../models/productModel.js';
 import SubCategory from '../models/subCategoryModel.js';
+import formatMongoData from '../utils/formatMongoData.js';
 import validateScheduledDate from '../utils/validateScheduledDate.js';
 
 // @desc    Create SubCategory
@@ -107,8 +108,11 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
       },
     },
   ]);
-
-  res.json(subCategories);
+  const formattedCategories = formatMongoData(subCategories);
+  res.json({
+    success: true,
+    subCategories: formattedCategories,
+  });
 });
 
 // @desc    Update SubCategory
