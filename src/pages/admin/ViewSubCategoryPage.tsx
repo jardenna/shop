@@ -13,7 +13,7 @@ const ViewSubCategoryPage = () => {
     <section className="page">
       <TopContainer
         heading={language.categories}
-        linkText={language.addCategory}
+        linkText={language.createNewCategory}
         linkTo={`/admin/${MainPath.AdminCategoryCreate}`}
       />
       <div className="page-card">sub cat</div>

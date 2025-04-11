@@ -93,7 +93,7 @@ const CategoryPage = () => {
     <section className="page">
       <TopContainer
         heading={language.categories}
-        linkText={language.addCategory}
+        linkText={language.createNewCategory}
         linkTo={`/admin/${MainPath.AdminCategoryCreate}`}
       />
 

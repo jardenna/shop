@@ -62,8 +62,8 @@ const SubCategoryPage = () => {
     <section className="page">
       <TopContainer
         heading={language.subCategories}
-        linkText={language.addSubCategory}
-        linkTo={`/admin/${MainPath.AdminSubCategoryView}`}
+        linkText={language.createNewSubCategory}
+        linkTo={`/admin/${MainPath.AdminSubCategoryCreate}`}
       />
       <div className="page-card">
         <Table
