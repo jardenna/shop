@@ -50,7 +50,7 @@ const MessagePopupListItem: FC<MessagePopupListItemProps> = ({
   return (
     <li
       role={role}
-      className={`message-popup-item ${messagePopup.componentType || ''} animate-top-center ${popupClass} ${messagePopup.messagePopupType}`}
+      className={`message-popup-item ${messagePopup.componentType || ''} animate-bottom-center ${popupClass} ${messagePopup.messagePopupType}`}
     >
       <span className="message-popup-item-info">
         <Icon iconName={iconName} title={title} />

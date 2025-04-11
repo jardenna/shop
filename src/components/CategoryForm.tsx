@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { CreateCategoryRequest } from '../app/api/apiTypes';
-import { useUpdateCategoryMutation } from '../features/categories/categoriyApiSlice';
+import {
+  useCreateCategoryMutation,
+  useUpdateCategoryMutation,
+} from '../features/categories/categoriyApiSlice';
 import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
 import { MainPath } from '../layout/nav/enums';
@@ -15,34 +18,35 @@ import useMessagePopup from './messagePopup/useMessagePopup';
 import Selectbox, { OptionType } from './selectbox/Selectbox';
 
 type CategoryFormProps = {
-  id: string;
-  selectedCategory: CreateCategoryRequest;
+  id: string | null; // Allow id to be null
+  selectedCategory: CreateCategoryRequest | null; // Allow selectedCategory to be null
 };
 
 const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const initialState: CreateCategoryRequest = {
-    categoryName: selectedCategory.categoryName || '',
-    categoryStatus: selectedCategory.categoryStatus,
+    categoryName: selectedCategory?.categoryName || '', // Use default if null
+    categoryStatus: selectedCategory?.categoryStatus || 'Inactive', // Default to 'Inactive'
   };
 
   const { onChange, values, onSubmit, errors, onCustomChange } =
     useFormValidation({
       initialState,
       validate: validationCategories,
-      callback: handleUpdateCategory,
+      callback: handleSubmitCategory,
     });
 
   const { onAddMessagePopup } = useMessagePopup();
   const [updateCategory] = useUpdateCategoryMutation();
+  const [createCategory] = useCreateCategoryMutation();
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
     onCustomChange(name, selectedOptions.value);
   };
 
-  async function handleUpdateCategory() {
+  async function handleSubmitCategory() {
     const validation = validateUpdateCategory(values);
     if (validation) {
       onAddMessagePopup({
@@ -53,15 +57,27 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
       return;
     }
     try {
-      await updateCategory({
-        id,
-        category: { ...values, scheduledDate: selectedDate },
-      }).unwrap();
+      if (id) {
+        await updateCategory({
+          id,
+          category: { ...values, scheduledDate: selectedDate },
+        }).unwrap();
 
-      onAddMessagePopup({
-        messagePopupType: 'success',
-        message: language.categoryUpdated,
-      });
+        onAddMessagePopup({
+          messagePopupType: 'success',
+          message: language.categoryUpdated,
+        });
+      } else {
+        await createCategory({
+          ...values,
+          scheduledDate: selectedDate,
+        }).unwrap();
+
+        onAddMessagePopup({
+          messagePopupType: 'success',
+          message: language.categoryCreated,
+        });
+      }
 
       navigate(`/admin/${MainPath.AdminCategories}`);
     } catch (error: any) {
@@ -89,7 +105,10 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
   ];
 
   return (
-    <Form onSubmit={onSubmit} submitBtnLabel={language.save}>
+    <Form
+      onSubmit={onSubmit}
+      submitBtnLabel={id ? language.save : language.create}
+    >
       <FieldSet legendText={language.categories}>
         <Input
           onChange={onChange}

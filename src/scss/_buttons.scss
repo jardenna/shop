@@ -49,7 +49,7 @@ a[class^='btn-'],
   }
 
   &:focus-visible {
-    @include outline($color-primary-btn-hover);
+    @include outline(#473f4a);
 
     border: 1px solid $color-white;
   }
