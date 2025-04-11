@@ -133,6 +133,7 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
       $project: {
         products: 0, // Exclude the products array from the response
         'mainCategory._id': 0, // Exclude the original `_id` field in mainCategory
+        category: 0, // Exclude the `category` field from the response
       },
     },
   ]);
