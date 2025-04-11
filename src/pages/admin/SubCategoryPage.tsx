@@ -51,7 +51,7 @@ const SubCategoryPage = () => {
         </td>
         <td>
           <Link to={`/admin/${MainPath.AdminCategoryUpdate}/${id}`}>
-            {language.update}
+            {language.editCategory}
           </Link>
         </td>
       </tr>

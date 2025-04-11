@@ -46,6 +46,8 @@ deleted;deleted;slettet
 deleteUser;Delete user;Slet bruger
 desc;descending;faldende
 description;Description;Beskrivelse
+editCategory;Edit category;Opdater kategori
+editProduct;Edit product;Opdater produkt
 editUser;Edit user;Opdater bruger
 email;Email;E-mail
 error;Error;Fejl
