@@ -9,7 +9,7 @@ import { useGetAllProductsQuery } from '../../features/products/productApiSlice'
 import { MainPath } from '../../layout/nav/enums';
 
 const tableHeaders: Column<ProductResponse>[] = [
-  { key: 'productName', label: 'image', name: 'name' },
+  { key: 'productName', label: 'name', name: 'image' },
   { key: 'subCategory', label: 'subCategory', name: 'subCategory' },
   { key: 'price', label: 'price', name: 'price' },
   { key: 'updatedAt', label: 'updatedAt', name: 'updatedAt' },

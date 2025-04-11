@@ -141,9 +141,9 @@ const Table = <T,>({
                     key={col.key as string}
                     scope="col"
                     style={{ paddingBlock: Number(padding) }}
-                    aria-sort={sortField === col.label ? ariaSort : 'none'}
+                    aria-sort={sortField === col.name ? ariaSort : 'none'}
                   >
-                    {col.label !== '' ? (
+                    {col.name !== '' ? (
                       <div className="table-header-cell">
                         <div className="sort">
                           {!col.hideTableControls && (
@@ -153,14 +153,14 @@ const Table = <T,>({
                                 handleSort(col.key);
                               }}
                               ariaLabel={
-                                sortField === col.label
-                                  ? `${language.sort} ${language[col.label]} ${ariaLabel}`
-                                  : `${language.sort} ${language[col.label]}`
+                                sortField === col.name
+                                  ? `${language.sort} ${language[col.name]} ${ariaLabel}`
+                                  : `${language.sort} ${language[col.name]}`
                               }
                             >
-                              {language[col.name]}
+                              {language[col.label]}
                               <span className="sort-icon" aria-hidden>
-                                {sortField === col.label ? sortIcon : '⇅'}
+                                {sortField === col.name ? sortIcon : '⇅'}
                               </span>
                             </Button>
                           )}

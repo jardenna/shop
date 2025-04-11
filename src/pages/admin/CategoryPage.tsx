@@ -17,8 +17,8 @@ import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant, IconName } from '../../types/enums';
 
 const tableHeaders: { key: keyof Category; label: string; name: string }[] = [
-  { key: 'categoryName', label: 'categoryName', name: 'name' },
-  { key: 'categoryStatus', label: 'categoryStatus', name: 'status' },
+  { key: 'categoryName', label: 'name', name: 'categoryName' },
+  { key: 'categoryStatus', label: 'status', name: 'categoryStatus' },
   { key: 'createdAt', label: 'createdAt', name: 'createdAt' },
   { key: 'id', label: '', name: '' },
 ];

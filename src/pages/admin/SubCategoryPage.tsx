@@ -19,10 +19,10 @@ const SubCategoryPage = () => {
   }[] = [
     {
       key: 'subCategoryName',
-      label: 'subCategoryName',
-      name: 'name',
+      label: 'name',
+      name: 'subCategoryName',
     },
-    { key: 'categoryStatus', label: 'categoryStatus', name: 'status' },
+    { key: 'categoryStatus', label: 'status', name: 'categoryStatus' },
     { key: 'createdAt', label: 'createdAt', name: 'createdAt' },
     { key: 'id', label: '', name: '' },
   ];
