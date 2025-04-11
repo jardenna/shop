@@ -125,9 +125,14 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
       },
     },
     {
+      $addFields: {
+        'mainCategory.id': '$mainCategory._id', // Add an `id` field in mainCategory
+      },
+    },
+    {
       $project: {
         products: 0, // Exclude the products array from the response
-        'mainCategory.__v': 0, // Exclude unnecessary fields from mainCategory
+        'mainCategory._id': 0, // Exclude the original `_id` field in mainCategory
       },
     },
   ]);
