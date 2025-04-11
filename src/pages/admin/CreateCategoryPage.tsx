@@ -1,17 +1,6 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router';
 import { CategoryStatus } from '../../app/api/apiTypes';
-import DatePicker from '../../components/datePicker/DatePicker';
-import FieldSet from '../../components/fieldset/FieldSet';
-import Form from '../../components/formElements/form/Form';
-import Input from '../../components/formElements/Input';
-import validationCategories from '../../components/formElements/validation/validateCategory';
-import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
-import { useCreateCategoryMutation } from '../../features/categories/categoriyApiSlice';
+import CategoryForm from '../../components/CategoryForm';
 import useLanguage from '../../features/language/useLanguage';
-import useFormValidation from '../../hooks/useFormValidation';
-import { MainPath } from '../../layout/nav/enums';
 
 export type CategoryState = {
   categoryName: string;
@@ -19,112 +8,13 @@ export type CategoryState = {
 };
 
 const CreateCategoryPage = () => {
-  const navigate = useNavigate();
   const { language } = useLanguage();
-  const initialState: CategoryState = {
-    categoryName: '',
-    categoryStatus: 'Inactive' as CategoryStatus,
-  };
-
-  const { onAddMessagePopup } = useMessagePopup();
-  const {
-    onChange,
-    values,
-    onSubmit,
-    errors,
-    onClearAllValues,
-    onCustomChange,
-  } = useFormValidation({
-    initialState,
-    validate: validationCategories,
-    callback: handleSubmitNewCategory,
-  });
-  const [createCategory] = useCreateCategoryMutation();
-  const [selectedDate, setSelectedDate] = useState(new Date());
-
-  const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
-    onCustomChange(name, selectedOptions.value);
-  };
-
-  async function handleSubmitNewCategory() {
-    try {
-      const result = await createCategory({
-        ...values,
-        scheduledDate: selectedDate,
-      }).unwrap();
-      onClearAllValues();
-
-      onAddMessagePopup({
-        messagePopupType: !result.success ? 'error' : 'success',
-        message: result.message,
-        componentType: !result.success ? 'notification' : undefined,
-      });
-
-      navigate(`/admin/${MainPath.AdminCategories}`);
-    } catch (error: any) {
-      onAddMessagePopup({
-        messagePopupType: 'error',
-        message: error.data.message,
-        componentType: 'notification',
-      });
-    }
-  }
-
-  const statusOptions = [
-    {
-      label: language.inactive,
-      value: 'Inactive',
-    },
-    {
-      label: language.scheduled,
-      value: 'Scheduled',
-    },
-    {
-      label: language.published,
-      value: 'Published',
-    },
-  ];
 
   return (
     <section className="page-small">
       <h1>{language.createNewCategory}</h1>
       <div className="page-card">
-        <Form onSubmit={onSubmit} submitBtnLabel={language.save}>
-          <FieldSet legendText={language.categories}>
-            <Input
-              onChange={onChange}
-              value={values.categoryName}
-              id="categoryName"
-              name="categoryName"
-              labelText={language.addCategoryName}
-              placeholder={language.categoryName}
-              errorText={language[errors.categoryName]}
-              required
-            />
-
-            <Selectbox
-              id="categoryStatus"
-              defaultValue={{
-                label: language.inactive,
-                value: 'Inactive',
-              }}
-              options={statusOptions}
-              onChange={(selectedOptions: OptionType) => {
-                handleSelectStatus('categoryStatus', selectedOptions);
-              }}
-              name="categoryStatus"
-              labelText={language.selectCategoryStatus}
-            />
-            {values.categoryStatus === 'Scheduled' && (
-              <DatePicker
-                onSelectDate={setSelectedDate}
-                selectedDate={selectedDate}
-                id="selectedDate"
-                labelText={language.selectPublishDate}
-              />
-            )}
-          </FieldSet>
-        </Form>
+        <CategoryForm selectedCategory={null} id={null} />
       </div>
     </section>
   );
