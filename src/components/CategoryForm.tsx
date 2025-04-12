@@ -42,8 +42,10 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
   const [updateCategory] = useUpdateCategoryMutation();
   const [createCategory] = useCreateCategoryMutation();
 
+  const selectedTime = selectedCategory?.scheduledDate;
+
   const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
-    useDatePicker();
+    useDatePicker({ initialTime: selectedTime });
 
   const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
     onCustomChange(name, selectedOptions.value);
@@ -106,6 +108,7 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
       value: 'Published',
     },
   ];
+  // console.log(selectedCategory?.scheduledDate);
 
   return (
     <Form

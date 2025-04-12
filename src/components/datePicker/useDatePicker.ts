@@ -1,17 +1,20 @@
-import { setHours, setMinutes } from 'date-fns';
+import { format, setHours, setMinutes } from 'date-fns';
 import { useState } from 'react';
 import { ChangeInputType } from '../../types/types';
 
-const useDatePicker = ({ initTime }: { initTime?: Date | undefined } = {}) => {
+const useDatePicker = ({ initialTime }: { initialTime?: Date } = {}) => {
+  const initTime = initialTime || new Date();
+
+  const date = new Date(initTime);
+  const formattedDate = format(date, 'HH:mm');
+
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
-  const [timeValue, setTimeValue] = useState('00:00');
+  const [timeValue, setTimeValue] = useState(formattedDate);
 
   const parseTime = (value: string) => {
     const [hours, minutes] = value.split(':').map(Number);
     return { hours, minutes };
   };
-
-  console.log(initTime); // === 2025-04-12T20:48:00.000Z or new Date
 
   const handleTimeChange = (event: ChangeInputType) => {
     const value = event.target.value;
@@ -24,7 +27,7 @@ const useDatePicker = ({ initTime }: { initTime?: Date | undefined } = {}) => {
 
   const handleDaySelect = (date?: Date) => {
     if (!date) {
-      setSelectedDate(undefined as unknown as Date); // or null if you change the state type
+      setSelectedDate(undefined as unknown as Date);
       return;
     }
 
