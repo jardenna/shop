@@ -1,5 +1,3 @@
-import { setHours, setMinutes } from 'date-fns';
-import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { CreateCategoryRequest } from '../app/api/apiTypes';
 import {
@@ -9,8 +7,8 @@ import {
 import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
 import { MainPath } from '../layout/nav/enums';
-import { ChangeInputType } from '../types/types';
 import DatePicker from './datePicker/DatePicker';
+import useDatePicker from './datePicker/useDatePicker';
 import FieldSet from './fieldset/FieldSet';
 import Form from './formElements/form/Form';
 import Input from './formElements/Input';
@@ -42,39 +40,14 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
   const { onAddMessagePopup } = useMessagePopup();
   const [updateCategory] = useUpdateCategoryMutation();
   const [createCategory] = useCreateCategoryMutation();
-  const [selectedDate, setSelectedDate] = useState<any>(new Date());
-  const [timeValue, setTimeValue] = useState<string>('00:00');
 
-  const handleTimeChange = (event: ChangeInputType) => {
-    const { value } = event.target;
-
-    const [hours, minutes] = value.split(':').map((str) => parseInt(str, 10));
-    const newSelectedDate = setHours(setMinutes(selectedDate, minutes), hours);
-    setSelectedDate(newSelectedDate);
-    setTimeValue(value);
-  };
+  const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
+    useDatePicker();
 
   const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
     onCustomChange(name, selectedOptions.value);
   };
 
-  const handleDaySelect = (date: Date | undefined) => {
-    if (!timeValue || !date) {
-      setSelectedDate(date);
-      return;
-    }
-    const [hours, minutes] = timeValue
-      .split(':')
-      .map((str) => parseInt(str, 10));
-    const newDate = new Date(
-      date.getFullYear(),
-      date.getMonth(),
-      date.getDate(),
-      hours,
-      minutes,
-    );
-    setSelectedDate(newDate);
-  };
   async function handleSubmitCategory() {
     const validation = validateUpdateCategory(values);
     if (validation) {

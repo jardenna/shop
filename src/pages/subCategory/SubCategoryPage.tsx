@@ -1,8 +1,8 @@
 import { Link } from 'react-router';
 import { SubCategory } from '../../app/api/apiTypes';
+import DateDisplay from '../../components/datePicker/DateDisplay';
 import Table from '../../components/sortTable/Table';
 import TopContainer from '../../components/TopContainer';
-import DateDisplay from '../../features/categories/DateDisplay';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetAllSubCategoriesQuery } from '../../features/subCategories/subCategoryApiSlice';
 import { MainPath } from '../../layout/nav/enums';

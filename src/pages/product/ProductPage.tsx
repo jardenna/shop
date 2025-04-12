@@ -1,7 +1,7 @@
 import { ProductResponse } from '../../app/api/apiTypes';
+import DateDisplay from '../../components/datePicker/DateDisplay';
 import Figure from '../../components/figure/Figure';
 import Table, { Column } from '../../components/sortTable/Table';
-import DateDisplay from '../../features/categories/DateDisplay';
 import ProductPrice from '../../features/currency/components/ProductPrice';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetAllProductsQuery } from '../../features/products/productApiSlice';

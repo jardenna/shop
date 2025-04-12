@@ -1,10 +1,10 @@
+import DateDisplay from '../../components/datePicker/DateDisplay'; // Import the new child component
 import IconBtn from '../../components/IconBtn';
 import EditTableInput, {
   BaseEditTableInput,
 } from '../../components/sortTable/EditTableInput';
 import { IconName } from '../../types/enums';
 import useLanguage from '../language/useLanguage';
-import DateDisplay from './DateDisplay'; // Import the new child component
 
 type EditCategoryInputProps = {
   showEditInput: boolean;
