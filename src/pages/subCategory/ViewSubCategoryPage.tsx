@@ -2,7 +2,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate, useParams } from 'react-router';
 import Button from '../../components/Button';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
-import TopContainer from '../../components/TopContainer';
+import PageHeader from '../../components/PageHeader';
 import DateDisplay from '../../components/datePicker/DateDisplay';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import { SecondaryActionBtnProps } from '../../components/modal/Modal';
@@ -73,7 +73,7 @@ const ViewSubCategoryPage = () => {
 
   return (
     <section className="page page-small">
-      <TopContainer
+      <PageHeader
         heading={language.category}
         linkText={language.createNewCategory}
         linkTo={`/admin/${MainPath.AdminSubCategoryCreate}`}

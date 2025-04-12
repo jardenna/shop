@@ -5,9 +5,9 @@ import { Category } from '../../app/api/apiTypes';
 import { useAppDispatch } from '../../app/hooks';
 import DateDisplay from '../../components/datePicker/DateDisplay';
 import Icon from '../../components/icons/Icon';
+import PageHeader from '../../components/PageHeader';
 import Table from '../../components/sortTable/Table';
 import Tooltip from '../../components/tooltip/Tooltip';
-import TopContainer from '../../components/TopContainer';
 import {
   useGetAllCategoriesQuery,
   useGetScheduledCategoriesQuery,
@@ -97,7 +97,7 @@ const CategoryPage = () => {
 
   return (
     <section className="page">
-      <TopContainer
+      <PageHeader
         heading={language.categories}
         linkText={language.createNewCategory}
         linkTo={`/admin/${MainPath.AdminCategoryCreate}`}
