@@ -1,22 +1,22 @@
 import { useNavigate } from 'react-router';
-import { CreateCategoryRequest } from '../app/api/apiTypes';
+import { CreateCategoryRequest } from '../../app/api/apiTypes';
+import DatePicker from '../../components/datePicker/DatePicker';
+import useDatePicker from '../../components/datePicker/useDatePicker';
+import FieldSet from '../../components/fieldset/FieldSet';
+import Form from '../../components/formElements/form/Form';
+import Input from '../../components/formElements/Input';
+import TimeInput from '../../components/formElements/timeInput/TimeInput';
+import validationCategories from '../../components/formElements/validation/validateCategory';
+import validateUpdateCategory from '../../components/formElements/validation/validateUpdateCategory';
+import useMessagePopup from '../../components/messagePopup/useMessagePopup';
+import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
+import useFormValidation from '../../hooks/useFormValidation';
+import { MainPath } from '../../layout/nav/enums';
+import useLanguage from '../language/useLanguage';
 import {
   useCreateCategoryMutation,
   useUpdateCategoryMutation,
-} from '../features/categories/categoriyApiSlice';
-import useLanguage from '../features/language/useLanguage';
-import useFormValidation from '../hooks/useFormValidation';
-import { MainPath } from '../layout/nav/enums';
-import DatePicker from './datePicker/DatePicker';
-import useDatePicker from './datePicker/useDatePicker';
-import FieldSet from './fieldset/FieldSet';
-import Form from './formElements/form/Form';
-import Input from './formElements/Input';
-import TimeInput from './formElements/timeInput/TimeInput';
-import validationCategories from './formElements/validation/validateCategory';
-import validateUpdateCategory from './formElements/validation/validateUpdateCategory';
-import useMessagePopup from './messagePopup/useMessagePopup';
-import Selectbox, { OptionType } from './selectbox/Selectbox';
+} from './categoriyApiSlice';
 
 type CategoryFormProps = {
   id: string | null;

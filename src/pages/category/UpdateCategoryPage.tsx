@@ -1,5 +1,5 @@
 import { useParams } from 'react-router';
-import CategoryForm from '../../components/CategoryForm';
+import CategoryForm from '../../features/categories/CategoryForm';
 import { useGetCategoryByIdQuery } from '../../features/categories/categoriyApiSlice';
 import useLanguage from '../../features/language/useLanguage';
 

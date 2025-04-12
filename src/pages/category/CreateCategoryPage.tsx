@@ -1,5 +1,5 @@
 import { CategoryStatus } from '../../app/api/apiTypes';
-import CategoryForm from '../../components/CategoryForm';
+import CategoryForm from '../../features/categories/CategoryForm';
 import useLanguage from '../../features/language/useLanguage';
 
 export type CategoryState = {
