@@ -1,5 +1,7 @@
+import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import Button from '../../components/Button';
+import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import TopContainer from '../../components/TopContainer';
 import useLanguage from '../../features/language/useLanguage';
 import {
@@ -21,6 +23,7 @@ const ViewSubCategoryPage = () => {
     data: category,
     isLoading,
     isError,
+    refetch,
   } = useGetSubCategoryByIdQuery(params.id || '');
 
   if (isLoading) {
@@ -34,18 +37,21 @@ const ViewSubCategoryPage = () => {
         linkText={language.createNewCategory}
         linkTo={`/admin/${MainPath.AdminCategoryCreate}`}
       />
-      <div className="page-card">
-        {!isError && category ? (
-          <div>
-            <div>Name: {category.subCategoryName}</div>
-            <Button onClick={handleDeleteSubCategory}>Klik</Button>
-
-            <div>Name: {category.mainCategory.categoryName}</div>
-          </div>
-        ) : (
-          <span>error..</span>
-        )}
-      </div>
+      <ErrorBoundary
+        FallbackComponent={ErrorBoundaryFallback}
+        onReset={() => refetch}
+      >
+        <div className="page-card">
+          {!isError && category ? (
+            <div>
+              <div>Name: {category.subCategoryName}</div>
+              <Button onClick={handleDeleteSubCategory}>Klik</Button>
+            </div>
+          ) : (
+            <span>error..</span>
+          )}
+        </div>
+      </ErrorBoundary>
     </section>
   );
 };
