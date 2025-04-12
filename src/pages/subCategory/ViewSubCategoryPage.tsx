@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import TopContainer from '../../components/TopContainer';
 import DateDisplay from '../../components/datePicker/DateDisplay';
+import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import { SecondaryActionBtnProps } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
 import useLanguage from '../../features/language/useLanguage';
@@ -17,6 +18,7 @@ const ViewSubCategoryPage = () => {
   const { language } = useLanguage();
   const params = useParams();
   const navigate = useNavigate();
+  const { onAddMessagePopup } = useMessagePopup();
   const [deleteSubCategory] = useDeleteSubCategoryMutation();
 
   const handleDeleteSubCategory = async () => {
@@ -25,11 +27,25 @@ const ViewSubCategoryPage = () => {
 
       if (result.success) {
         navigate(MainPath.AdminSubCategories);
+        onAddMessagePopup({
+          messagePopupType: 'success',
+          message: language.categoryUpdated,
+        });
       } else {
-        console.log(123);
+        onAddMessagePopup({
+          messagePopupType: 'error',
+          message: language.categoryUpdated,
+          componentType: 'notification',
+        });
       }
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
+
+      onAddMessagePopup({
+        messagePopupType: 'error',
+        message: error.data.message,
+        componentType: 'notification',
+      });
     }
   };
 
@@ -94,7 +110,7 @@ const ViewSubCategoryPage = () => {
                 primaryActionBtn={primaryActionBtn}
                 secondaryActionBtn={secondaryActionBtn}
                 modalSize={SizeVariant.Md}
-                modalHeaderText="Delete category"
+                modalHeaderText={language.deleteCategory}
               >
                 {language.sureToDelete} {category.subCategoryName}
               </ModalContainer>
