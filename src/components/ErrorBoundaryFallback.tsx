@@ -2,10 +2,10 @@ import { FC } from 'react';
 import useLanguage from '../features/language/useLanguage';
 import ErrorContent from './ErrorContent';
 
-export interface FallbackProps {
+type FallbackProps = {
   error: Error;
   resetErrorBoundary: () => void;
-}
+};
 
 const ErrorBoundaryFallback: FC<FallbackProps> = ({
   error,
