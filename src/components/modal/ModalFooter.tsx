@@ -41,6 +41,7 @@ const ModalFooter: FC<modalFooterProps> = ({
         onClick={handlePrimaryBtnClick}
         type={primaryActionBtn.buttonType}
         className={primaryActionBtn.className}
+        variant={primaryActionBtn.variant || BtnVariant.Primary}
       >
         {primaryActionBtn.label}
       </Button>
