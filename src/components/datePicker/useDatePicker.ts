@@ -4,12 +4,9 @@ import { ChangeInputType } from '../../types/types';
 
 const useDatePicker = ({ initialTime }: { initialTime?: Date } = {}) => {
   const initTime = initialTime || new Date();
-
-  const date = new Date(initTime);
-  const formattedDate = format(date, 'HH:mm');
-
-  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
-  const [timeValue, setTimeValue] = useState(formattedDate);
+  const formattedTime = format(initTime, 'HH:mm');
+  const [selectedDate, setSelectedDate] = useState<Date>(initTime);
+  const [timeValue, setTimeValue] = useState(formattedTime);
 
   const parseTime = (value: string) => {
     const [hours, minutes] = value.split(':').map(Number);
