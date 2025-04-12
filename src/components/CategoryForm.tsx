@@ -12,6 +12,7 @@ import useDatePicker from './datePicker/useDatePicker';
 import FieldSet from './fieldset/FieldSet';
 import Form from './formElements/form/Form';
 import Input from './formElements/Input';
+import TimeInput from './formElements/timeInput/TimeInput';
 import validationCategories from './formElements/validation/validateCategory';
 import validateUpdateCategory from './formElements/validation/validateUpdateCategory';
 import useMessagePopup from './messagePopup/useMessagePopup';
@@ -134,18 +135,24 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
           }}
           name="categoryStatus"
           labelText={language.selectCategoryStatus}
-        />{' '}
-        <label>
-          Set the time:{' '}
-          <input type="time" value={timeValue} onChange={handleTimeChange} />
-        </label>
+        />
+
         {values.categoryStatus === 'Scheduled' && (
-          <DatePicker
-            onSelectDate={handleDaySelect}
-            selectedDate={selectedDate}
-            id="selectedDate"
-            labelText={language.selectPublishDate}
-          />
+          <>
+            <DatePicker
+              onSelectDate={handleDaySelect}
+              selectedDate={selectedDate}
+              id="date"
+              labelText={language.selectPublishDate}
+            />
+            <TimeInput
+              value={timeValue}
+              onChange={handleTimeChange}
+              id="time"
+              labelText="Select publish time"
+              name="time"
+            />
+          </>
         )}
       </FieldSet>
     </Form>
