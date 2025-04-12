@@ -72,11 +72,11 @@ const ViewSubCategoryPage = () => {
   }
 
   return (
-    <section className="page page-medium">
+    <section className="page page-small">
       <TopContainer
-        heading={language.categories}
+        heading={language.category}
         linkText={language.createNewCategory}
-        linkTo={`/admin/${MainPath.AdminCategoryCreate}`}
+        linkTo={`/admin/${MainPath.AdminSubCategoryCreate}`}
       />
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
