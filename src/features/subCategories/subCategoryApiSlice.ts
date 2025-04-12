@@ -42,4 +42,5 @@ export const {
   useGetAllSubCategoriesQuery,
   useGetSubCategoryByIdQuery,
   useDeleteSubCategoryMutation,
+  useUpdateSubCategoryMutation,
 } = subCategoryApiSlice;
