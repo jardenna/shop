@@ -1,5 +1,6 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate, useParams } from 'react-router';
+import Button from '../../components/Button';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import TopContainer from '../../components/TopContainer';
 import DateDisplay from '../../components/datePicker/DateDisplay';
@@ -71,7 +72,7 @@ const ViewSubCategoryPage = () => {
   }
 
   return (
-    <section className="page">
+    <section className="page page-medium">
       <TopContainer
         heading={language.categories}
         linkText={language.createNewCategory}
@@ -85,6 +86,7 @@ const ViewSubCategoryPage = () => {
           {!isError && category ? (
             <div>
               <div>Name: {category.subCategoryName}</div>
+              <div>Product count: {category.productCount}</div>
               <div>Status: {category.categoryStatus}</div>
               {category.scheduledDate && (
                 <div>
@@ -103,17 +105,20 @@ const ViewSubCategoryPage = () => {
                 <span>inactive</span>
                 <span>scheduled</span>
               </div>
-              <ModalContainer
-                triggerModalBtnContent={language.delete}
-                triggerModalBtnVariant={BtnVariant.Danger}
-                id="viewSubId"
-                primaryActionBtn={primaryActionBtn}
-                secondaryActionBtn={secondaryActionBtn}
-                modalSize={SizeVariant.Md}
-                modalHeaderText={language.deleteCategory}
-              >
-                {language.sureToDelete} {category.subCategoryName}
-              </ModalContainer>
+              <div className="footer-buttons">
+                <ModalContainer
+                  triggerModalBtnContent={language.delete}
+                  triggerModalBtnVariant={BtnVariant.Danger}
+                  id="viewSubId"
+                  primaryActionBtn={primaryActionBtn}
+                  secondaryActionBtn={secondaryActionBtn}
+                  modalSize={SizeVariant.Md}
+                  modalHeaderText={language.deleteCategory}
+                >
+                  {language.sureToDelete} {category.subCategoryName}
+                </ModalContainer>
+                <Button>{language.update}</Button>
+              </div>
             </div>
           ) : (
             <span>error..</span>

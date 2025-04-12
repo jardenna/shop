@@ -85,3 +85,10 @@
     right: 9px;
   }
 }
+
+.footer-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
