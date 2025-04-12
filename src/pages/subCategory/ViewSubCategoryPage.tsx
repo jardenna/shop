@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import Button from '../../components/Button';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import TopContainer from '../../components/TopContainer';
+import DateDisplay from '../../features/categories/DateDisplay';
 import useLanguage from '../../features/language/useLanguage';
 import {
   useDeleteSubCategoryMutation,
@@ -45,6 +46,19 @@ const ViewSubCategoryPage = () => {
           {!isError && category ? (
             <div>
               <div>Name: {category.subCategoryName}</div>
+              <div>Status: {category.categoryStatus}</div>
+              {category.scheduledDate && (
+                <div>
+                  Date:
+                  <DateDisplay
+                    date={category.scheduledDate}
+                    hour="2-digit"
+                    minute="2-digit"
+                  />
+                </div>
+              )}
+
+              <div>Parent category: {category.mainCategory.categoryName}</div>
               <Button onClick={handleDeleteSubCategory}>Klik</Button>
             </div>
           ) : (
