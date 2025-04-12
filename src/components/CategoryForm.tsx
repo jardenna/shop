@@ -18,16 +18,16 @@ import useMessagePopup from './messagePopup/useMessagePopup';
 import Selectbox, { OptionType } from './selectbox/Selectbox';
 
 type CategoryFormProps = {
-  id: string | null; // Allow id to be null
-  selectedCategory: CreateCategoryRequest | null; // Allow selectedCategory to be null
+  id: string | null;
+  selectedCategory: CreateCategoryRequest | null;
 };
 
 const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const initialState: CreateCategoryRequest = {
-    categoryName: selectedCategory?.categoryName || '', // Use default if null
-    categoryStatus: selectedCategory?.categoryStatus || 'Inactive', // Default to 'Inactive'
+    categoryName: selectedCategory?.categoryName || '',
+    categoryStatus: selectedCategory?.categoryStatus || 'Inactive',
   };
 
   const { onChange, values, onSubmit, errors, onCustomChange } =

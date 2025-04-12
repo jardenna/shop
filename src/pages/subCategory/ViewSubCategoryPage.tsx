@@ -1,12 +1,21 @@
 import { useParams } from 'react-router';
+import Button from '../../components/Button';
 import TopContainer from '../../components/TopContainer';
 import useLanguage from '../../features/language/useLanguage';
-import { useGetSubCategoryByIdQuery } from '../../features/subCategories/subCategoryApiSlice';
+import {
+  useDeleteSubCategoryMutation,
+  useGetSubCategoryByIdQuery,
+} from '../../features/subCategories/subCategoryApiSlice';
 import { MainPath } from '../../layout/nav/enums';
 
 const ViewSubCategoryPage = () => {
   const { language } = useLanguage();
   const params = useParams();
+  const [deleteSubCategory] = useDeleteSubCategoryMutation();
+
+  const handleDeleteSubCategory = () => {
+    deleteSubCategory(params.id || '');
+  };
 
   const {
     data: category,
@@ -27,7 +36,12 @@ const ViewSubCategoryPage = () => {
       />
       <div className="page-card">
         {!isError && category ? (
-          <div>{category.subCategoryName}</div>
+          <div>
+            <div>Name: {category.subCategoryName}</div>
+            <Button onClick={handleDeleteSubCategory}>Klik</Button>
+
+            <div>Name: {category.mainCategory.categoryName}</div>
+          </div>
         ) : (
           <span>error..</span>
         )}
