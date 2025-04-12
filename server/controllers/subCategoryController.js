@@ -150,17 +150,19 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Public
 const getSubCategoryById = asyncHandler(async (req, res) => {
-  const subCategory = await SubCategory.findById(req.params.id)
-    .populate('category', 'categoryName categoryStatus createdAt updatedAt')
-    .lean(); // Populate category details
+  const category = await SubCategory.findById(req.params.id)
+    .populate('category', 'categoryName categoryStatus')
+    .lean();
 
-  if (!subCategory) {
+  if (!category) {
     return res
       .status(404)
       .json({ success: false, message: 'No subcategory with that ID' });
   }
 
-  res.status(200).json(formatMongoData(subCategory));
+  const { category: mainCategory, ...rest } = category;
+
+  res.status(200).json(formatMongoData({ ...rest, mainCategory }));
 });
 
 // @desc    Update SubCategory
