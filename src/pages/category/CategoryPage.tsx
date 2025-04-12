@@ -63,7 +63,13 @@ const CategoryPage = () => {
             <span>{language[statusKey]}</span>
             {scheduledDate && (
               <Tooltip
-                text={<DateDisplay date={scheduledDate} />}
+                text={
+                  <DateDisplay
+                    date={scheduledDate}
+                    hour="2-digit"
+                    minute="2-digit"
+                  />
+                }
                 ariaControls="scheduled-date"
                 triggerBtnVariant={BtnVariant.Ghost}
                 ariaLabel={language.scheduledDate}
