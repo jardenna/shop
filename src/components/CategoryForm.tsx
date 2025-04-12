@@ -152,7 +152,7 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
               value={timeValue}
               onChange={handleTimeChange}
               id="time"
-              labelText="Select publish time"
+              labelText={language.selectPublishTime}
               name="time"
             />
           </>

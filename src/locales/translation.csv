@@ -133,11 +133,12 @@ scheduled;Scheduled;Planlagt
 scheduledDate;Scheduled date;Planlagt dato
 scheduledDateMustBeFuture;Scheduled date must be after today;Planlagt dato skal være efter i dag
 search;Search;Søg
-selectCategoryStatus;Select categoryStatus;Vælg kategori status
+selectCategoryStatus;Select category status;Vælg kategori status
 selectCurrency;Select currency;Vælg valuta
 selectLanguage;Select language;Vælg sprog
 selectPreferences;Select preferred language and currency;Vælg sprog og valuta
-selectPublishDate;Select Publish date;Vælg udgivelsesdato
+selectPublishDate;Select publish date;Vælg udgivelsesdato
+selectPublishTime;Select publish time;Vælg udgivelsestid
 shopNow;Shop now;Køb nu
 showPassword;Show password;Vis adgangskode
 signup;Sign up;Opret bruger
