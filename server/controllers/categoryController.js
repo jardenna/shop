@@ -168,8 +168,33 @@ const updateCategory = asyncHandler(async (req, res) => {
   });
 });
 
+// @desc    Delete category
+// @route   /api/category/id
+// @method  Delete
+// @access  Private for admin
+const deleteCategory = asyncHandler(async (req, res) => {
+  try {
+    const category = await Category.findOneAndDelete({
+      _id: req.params.id,
+    });
+
+    if (!category) {
+      return res
+        .status(404)
+        .json({ message: t('categorieNotFound', req.lang) });
+    }
+
+    return res
+      .status(200)
+      .json({ success: true, message: t('categoryDeleted', req.lang) });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
 export {
   createCategory,
+  deleteCategory,
   getAllCategories,
   getCategoryById,
   getScheduledCategories,
