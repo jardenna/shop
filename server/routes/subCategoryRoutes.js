@@ -23,6 +23,6 @@ router
   .route('/:id')
   .put(authenticate, authorizeEmployee, updateSubCategory)
   .get(getSubCategoryById)
-  .delete(authenticate, authorizeAdmin, deleteSubCategory);
+  .delete(languageMiddleware, authenticate, authorizeAdmin, deleteSubCategory);
 
 export default router;

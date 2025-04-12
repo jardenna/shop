@@ -3,6 +3,7 @@ import Category from '../models/categoryModel.js';
 import Product from '../models/productModel.js';
 import SubCategory from '../models/subCategoryModel.js';
 import formatMongoData from '../utils/formatMongoData.js';
+import { t } from '../utils/translator.js';
 import validateScheduledDate from '../utils/validateScheduledDate.js';
 
 // @desc    Create SubCategory
@@ -245,7 +246,7 @@ const deleteSubCategory = asyncHandler(async (req, res) => {
   if (products.length > 0) {
     return res.status(400).json({
       success: false,
-      message: 'Cannot delete subcategory. Products are associated with it.',
+      message: t('deleteOrReassignCategory', req.lang),
     });
   }
 
