@@ -160,9 +160,19 @@ const getSubCategoryById = asyncHandler(async (req, res) => {
       .json({ success: false, message: 'No subcategory with that ID' });
   }
 
+  const productCount = await Product.countDocuments({
+    subCategory: req.params.id,
+  });
+
   const { category: mainCategory, ...rest } = category;
 
-  res.status(200).json(formatMongoData({ ...rest, mainCategory }));
+  res.status(200).json(
+    formatMongoData({
+      ...rest,
+      mainCategory,
+      productCount,
+    }),
+  );
 });
 
 // @desc    Update SubCategory
