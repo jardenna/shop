@@ -45,9 +45,10 @@ const createSubCategory = asyncHandler(async (req, res) => {
     subCategoryName: { $regex: new RegExp(`^${subCategoryName}$`, 'i') },
   });
   if (existingSubCategory) {
-    return res
-      .status(400)
-      .json({ success: false, message: 'Subcategory already exists' });
+    return res.status(400).json({
+      success: false,
+      message: t('subCategoryAlreadyExist', req.lang),
+    });
   }
 
   const subCategoryData = { subCategoryName, category, categoryStatus };

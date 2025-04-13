@@ -152,6 +152,7 @@ status;Status;Status
 sub;Sub;Sekundær
 subCategories;Subcategories;Underkategorier
 subCategory;Subcategory;Underkategori
+subCategoryAlreadyExist;Subcategory already exists;Underkategori findes allerede
 subCategoryList;Subcategory list;Underkategori-liste
 subCategoryName;Subcategory name;Underkategori navn
 success;Success;Succes

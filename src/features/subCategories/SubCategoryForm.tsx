@@ -44,12 +44,10 @@ const SubCategoryForm = ({
     }),
   );
 
-  const { onChange, values, onSubmit, errors, onCustomChange } =
-    useFormValidation({
-      initialState,
-      callback: handleSubmitCategory,
-    });
-  console.log(values);
+  const { onChange, values, onSubmit, onCustomChange } = useFormValidation({
+    initialState,
+    callback: handleSubmitCategory,
+  });
 
   const { onAddMessagePopup } = useMessagePopup();
 

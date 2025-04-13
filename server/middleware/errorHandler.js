@@ -4,8 +4,8 @@ const errorHandler = (error, req, res, next) => {
 
   // Handle specific error types
   if (error.name === 'CastError' && error.kind === 'ObjectId') {
-    statusCode = 400; // Bad Request
-    message = 'Invalid ID format';
+    statusCode = 400;
+    message = 'Please add a parent category ID';
   }
 
   if (error.name === 'ValidationError') {
