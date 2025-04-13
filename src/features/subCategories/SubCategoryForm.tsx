@@ -10,7 +10,6 @@ import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/formElements/form/Form';
 import Input from '../../components/formElements/Input';
 import TimeInput from '../../components/formElements/timeInput/TimeInput';
-import validationCategories from '../../components/formElements/validation/validateCategory';
 import validateUpdateCategory from '../../components/formElements/validation/validateUpdateCategory';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
@@ -33,7 +32,7 @@ const SubCategoryForm = ({
   const navigate = useNavigate();
   const { language } = useLanguage();
   const initialState: CreateSubCategoryRequest = {
-    categoryName: selectedCategory?.categoryName || '',
+    subCategoryName: selectedCategory?.categoryName || '',
     categoryStatus: selectedCategory?.categoryStatus || 'Inactive',
     category: '',
   };
@@ -48,9 +47,9 @@ const SubCategoryForm = ({
   const { onChange, values, onSubmit, errors, onCustomChange } =
     useFormValidation({
       initialState,
-      validate: validationCategories,
       callback: handleSubmitCategory,
     });
+  console.log(values);
 
   const { onAddMessagePopup } = useMessagePopup();
 
@@ -121,13 +120,11 @@ const SubCategoryForm = ({
       <FieldSet legendText={language.categories}>
         <Input
           onChange={onChange}
-          value={values.categoryName}
-          id="categoryName"
-          name="categoryName"
+          value={values.subCategoryName}
+          id="subCategoryName"
+          name="subCategoryName"
           labelText={language.addCategoryName}
           placeholder={language.categoryName}
-          errorText={language[errors.categoryName]}
-          required
         />
         <Selectbox
           id="category"

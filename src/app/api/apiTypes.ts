@@ -82,8 +82,8 @@ export type CreateCategoryRequest = {
 
 export type CreateSubCategoryRequest = {
   category: string;
-  categoryName: string;
   categoryStatus: CategoryStatus;
+  subCategoryName: string;
   scheduledDate?: Date;
 };
 
