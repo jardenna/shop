@@ -19,7 +19,7 @@ const createSubCategory = asyncHandler(async (req, res) => {
   if (!mainCategory) {
     return res
       .status(400)
-      .json({ success: false, message: 'Category do not exist' });
+      .json({ success: false, message: 'Parent category does not exist' });
   }
 
   const validationResult = validateScheduledDate(categoryStatus, scheduledDate);

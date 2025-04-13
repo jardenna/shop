@@ -1,11 +1,15 @@
 import PageHeader from '../../components/PageHeader';
+import useLanguage from '../../features/language/useLanguage';
 
 const CreateSubCategoryPage = () => {
-  console.log(123);
+  const { language } = useLanguage();
 
   return (
     <section className="page">
-      <PageHeader heading="create" />
+      <PageHeader heading={language.createNewCategory} />
+      {/* <div className="page-card">
+        <SubCategoryForm selectedCategory={null} id={null} />
+      </div> */}
     </section>
   );
 };
