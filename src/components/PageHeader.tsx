@@ -2,14 +2,14 @@ import { Link } from 'react-router';
 
 type PageHeaderProps = {
   heading: string;
-  linkText: string;
-  linkTo: string;
+  linkText?: string;
+  linkTo?: string;
 };
 
 const PageHeader = ({ heading, linkTo, linkText }: PageHeaderProps) => (
-  <div className="top-container ">
+  <div className="page-header ">
     <h1>{heading}</h1>
-    <Link to={linkTo}>{linkText}</Link>
+    {linkTo && <Link to={linkTo}>{linkText}</Link>}
   </div>
 );
 
