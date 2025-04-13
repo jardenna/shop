@@ -80,6 +80,13 @@ export type CreateCategoryRequest = {
   scheduledDate?: Date;
 };
 
+export type CreateSubCategoryRequest = {
+  category: string;
+  categoryName: string;
+  categoryStatus: CategoryStatus;
+  scheduledDate?: Date;
+};
+
 export type CategoryItemResponse = DefaultResponseType & {
   category: Category;
 };
