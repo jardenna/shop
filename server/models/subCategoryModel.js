@@ -7,7 +7,7 @@ const subCategorySchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Category',
       required: true,
-    }, // Link to Category
+    }, // Link to Parent Category
     categoryStatus: {
       type: String,
       enum: ['Published', 'Inactive', 'Scheduled'],
