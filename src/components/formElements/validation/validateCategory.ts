@@ -8,7 +8,6 @@ function validationCategories(values: CategoryState) {
   const errors: ValidationErrors = {};
   const { categoryName } = values;
 
-  // Email Errors
   if (!categoryName) {
     errors.categoryName = ValidationMessage.PleaseEnterCategoryName;
   }
