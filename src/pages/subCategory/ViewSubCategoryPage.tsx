@@ -27,7 +27,7 @@ const ViewSubCategoryPage = () => {
       const result = await deleteSubCategory(params.id || '').unwrap();
 
       if (result.success) {
-        navigate(MainPath.AdminSubCategories);
+        navigate(`/admin/${MainPath.AdminSubCategories}`);
         onAddMessagePopup({
           messagePopupType: 'success',
           message: language.categoryUpdated,
@@ -40,8 +40,6 @@ const ViewSubCategoryPage = () => {
         });
       }
     } catch (error: any) {
-      console.log(error);
-
       onAddMessagePopup({
         messagePopupType: 'error',
         message: error.data.message,
@@ -109,7 +107,7 @@ const ViewSubCategoryPage = () => {
                 <ModalContainer
                   triggerModalBtnContent={language.delete}
                   triggerModalBtnVariant={BtnVariant.Danger}
-                  id="viewSubId"
+                  id={category.id}
                   primaryActionBtn={primaryActionBtn}
                   secondaryActionBtn={secondaryActionBtn}
                   modalSize={SizeVariant.Md}

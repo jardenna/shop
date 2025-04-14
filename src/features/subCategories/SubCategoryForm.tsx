@@ -110,7 +110,6 @@ const SubCategoryForm = ({
       value: 'Published',
     },
   ];
-  // console.log(selectedCategory?.scheduledDate);
 
   return (
     <Form
@@ -131,7 +130,7 @@ const SubCategoryForm = ({
         <Selectbox
           id="category"
           defaultValue={{
-            label: language[values.category.toLowerCase()],
+            label: language.selectParentCategory,
             value: values.category,
           }}
           options={parentCategoriesOptions}
@@ -139,7 +138,7 @@ const SubCategoryForm = ({
             handleSelectStatus('category', selectedOptions);
           }}
           name="category"
-          labelText="select parent Cat"
+          labelText={language.selectParentCategory}
           errorText={language[errors.category]}
           required
         />
