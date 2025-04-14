@@ -3,6 +3,11 @@ import { useGetAllCategoriesQuery } from '../../features/categories/categoriyApi
 import useLanguage from '../../features/language/useLanguage';
 import SubCategoryForm from '../../features/subCategories/SubCategoryForm';
 
+export type SubCategoryState = {
+  category: string;
+  subCategoryName: string;
+};
+
 const CreateSubCategoryPage = () => {
   const { language } = useLanguage();
   const { data: allCategories } = useGetAllCategoriesQuery();

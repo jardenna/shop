@@ -10,6 +10,7 @@ import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/formElements/form/Form';
 import Input from '../../components/formElements/Input';
 import TimeInput from '../../components/formElements/timeInput/TimeInput';
+import validateSubcategory from '../../components/formElements/validation/validate';
 import validateUpdateCategory from '../../components/formElements/validation/validateUpdateCategory';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
@@ -44,10 +45,12 @@ const SubCategoryForm = ({
     }),
   );
 
-  const { onChange, values, onSubmit, onCustomChange } = useFormValidation({
-    initialState,
-    callback: handleSubmitCategory,
-  });
+  const { onChange, values, onSubmit, onCustomChange, errors } =
+    useFormValidation({
+      initialState,
+      validate: validateSubcategory,
+      callback: handleSubmitCategory,
+    });
 
   const { onAddMessagePopup } = useMessagePopup();
 
@@ -73,11 +76,10 @@ const SubCategoryForm = ({
       return;
     }
     try {
-      const result = await createSubCategory({
+      await createSubCategory({
         ...values,
         scheduledDate: selectedDate,
       }).unwrap();
-      console.log(result);
 
       onAddMessagePopup({
         messagePopupType: 'success',
@@ -123,6 +125,8 @@ const SubCategoryForm = ({
           name="subCategoryName"
           labelText={language.addCategoryName}
           placeholder={language.categoryName}
+          errorText={language[errors.subCategoryName]}
+          required
         />
         <Selectbox
           id="category"
@@ -136,6 +140,8 @@ const SubCategoryForm = ({
           }}
           name="category"
           labelText="select parent Cat"
+          errorText={language[errors.category]}
+          required
         />
 
         <Selectbox

@@ -41,7 +41,6 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
   const { onAddMessagePopup } = useMessagePopup();
   const [updateCategory] = useUpdateCategoryMutation();
   const [createCategory] = useCreateCategoryMutation();
-
   const selectedTime = selectedCategory?.scheduledDate;
 
   const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
@@ -108,7 +107,6 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
       value: 'Published',
     },
   ];
-  // console.log(selectedCategory?.scheduledDate);
 
   return (
     <Form

@@ -4,6 +4,7 @@ import Select, {
   OptionsOrGroups,
   SingleValue,
 } from 'react-select';
+import FormError from '../formElements/FormError';
 import FormLabel from '../formElements/FormLabel';
 import './_select-box.scss';
 
@@ -19,6 +20,7 @@ type SelectBoxProps = {
   name: string;
   options: OptionsOrGroups<OptionType, GroupBase<OptionType>>;
   closeMenuOnSelect?: boolean;
+  errorText?: string;
   inputHasNoLabel?: boolean;
   isDisabled?: boolean;
   isMulti?: boolean;
@@ -41,6 +43,7 @@ const Selectbox = ({
   isDisabled,
   closeMenuOnSelect,
   labelText,
+  errorText,
   inputHasNoLabel,
 }: SelectBoxProps) => {
   const handleChange = (newValue: SelectedOption) => {
@@ -52,12 +55,20 @@ const Selectbox = ({
   };
   return (
     <div className="input-container">
-      <FormLabel
-        required={required}
-        inputLabel={labelText}
-        id={id}
-        inputHasNoLabel={inputHasNoLabel}
-      />
+      <span className={inputHasNoLabel ? '' : 'form-label-container'}>
+        <FormLabel
+          required={required}
+          inputLabel={labelText}
+          id={id}
+          inputHasNoLabel={inputHasNoLabel}
+        />
+        {errorText && <FormError errorText={errorText} ariaErrorId={id} />}
+      </span>
+      {errorText && (
+        <span className="error-icon" aria-hidden="true">
+          i
+        </span>
+      )}
       <div className="select-box">
         <Select
           theme={(theme) => ({

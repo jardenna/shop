@@ -1,11 +1,9 @@
-import { CategoryStatus } from '../../app/api/apiTypes';
 import PageHeader from '../../components/PageHeader';
 import CategoryForm from '../../features/categories/CategoryForm';
 import useLanguage from '../../features/language/useLanguage';
 
 export type CategoryState = {
   categoryName: string;
-  categoryStatus: CategoryStatus;
 };
 
 const CreateCategoryPage = () => {
