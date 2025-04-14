@@ -24,6 +24,7 @@ import SignupPage from '../pages/SignupPage';
 import CreateSubCategoryPage from '../pages/subCategory/CreateSubCategoryPage';
 import SubCategoryPage from '../pages/subCategory/SubCategoryPage';
 import ViewSubCategoryPage from '../pages/subCategory/ViewSubCategoryPage';
+import UpdateSubCategoryPage from '../pages/subCategory/UpdateSubCategoryPage';
 
 const routeConfig = createBrowserRouter([
   {
@@ -95,6 +96,10 @@ const routeConfig = createBrowserRouter([
           {
             path: `${MainPath.AdminCategoryUpdate}/:id`,
             element: <UpdateCategoryPage />,
+          },
+          {
+            path: `${MainPath.AdminSubCategoryUpdate}/:id`,
+            element: <UpdateSubCategoryPage />,
           },
           {
             path: MainPath.AdminSubCategories,

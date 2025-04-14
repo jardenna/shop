@@ -1,0 +1,38 @@
+import { useParams } from 'react-router';
+import PageHeader from '../../components/PageHeader';
+import { useGetAllCategoriesQuery } from '../../features/categories/categoriyApiSlice';
+import useLanguage from '../../features/language/useLanguage';
+import { useGetSubCategoryByIdQuery } from '../../features/subCategories/subCategoryApiSlice';
+import SubCategoryForm from '../../features/subCategories/SubCategoryForm';
+
+const UpdateSubCategoryPage = () => {
+  const params = useParams();
+  const { language } = useLanguage();
+  const { data: allCategories } = useGetAllCategoriesQuery();
+  const { data: category, isLoading } = useGetSubCategoryByIdQuery(
+    params.id || '',
+  );
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <section>
+      {allCategories && category && (
+        <>
+          <PageHeader
+            heading={`${language.updateSubCategory} ${category.subCategoryName}`}
+          />
+          <SubCategoryForm
+            selectedCategory={category}
+            id={params.id || ''}
+            parentCategories={allCategories.categories}
+          />
+        </>
+      )}
+    </section>
+  );
+};
+
+export default UpdateSubCategoryPage;

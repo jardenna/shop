@@ -1,6 +1,5 @@
 import { ErrorBoundary } from 'react-error-boundary';
-import { useNavigate, useParams } from 'react-router';
-import Button from '../../components/Button';
+import { Link, useNavigate, useParams } from 'react-router';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import PageHeader from '../../components/PageHeader';
 import DateDisplay from '../../components/datePicker/DateDisplay';
@@ -115,7 +114,12 @@ const ViewSubCategoryPage = () => {
                 >
                   {language.sureToDelete} {category.subCategoryName}
                 </ModalContainer>
-                <Button>{language.update}</Button>
+
+                <Link
+                  to={`/admin/${MainPath.AdminSubCategoryUpdate}/${category.id}`}
+                >
+                  {language.editSubCategory}
+                </Link>
               </div>
             </div>
           ) : (

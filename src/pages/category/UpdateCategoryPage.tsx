@@ -1,4 +1,5 @@
 import { useParams } from 'react-router';
+import PageHeader from '../../components/PageHeader';
 import CategoryForm from '../../features/categories/CategoryForm';
 import { useGetCategoryByIdQuery } from '../../features/categories/categoriyApiSlice';
 import useLanguage from '../../features/language/useLanguage';
@@ -10,15 +11,19 @@ const UpdateCategoryPage = () => {
 
   return (
     <section className="page-small">
-      <h1>{language.createNewCategory}</h1>
-      <div className="page-card">
-        {selectedCategory && (
-          <CategoryForm
-            selectedCategory={selectedCategory.category}
-            id={params.id || ''}
+      {selectedCategory && (
+        <>
+          <PageHeader
+            heading={`${language.updateCategory} aa ${selectedCategory.id}`}
           />
-        )}
-      </div>
+          <div className="page-card">
+            <CategoryForm
+              selectedCategory={selectedCategory.category}
+              id={params.id || ''}
+            />
+          </div>
+        </>
+      )}
     </section>
   );
 };

@@ -48,6 +48,7 @@ deleteUser;Delete user;Slet bruger
 desc;descending;faldende
 description;Description;Beskrivelse
 editCategory;Edit category;Opdater kategori
+editSubCategory;Edit subcategory;Opdater underkategori
 editProduct;Edit product;Opdater produkt
 editUser;Edit user;Opdater bruger
 email;Email;E-mail
@@ -165,6 +166,8 @@ update;Update;Opdater
 updatedAt;Updated at;Opdateret
 updatePreferences;Update Preferences;Opdater præferencer
 updateProduct;Update product;Opdater produkt
+updateCategory;Update category;Opdater kategori
+updateSubCategory;Update subcategory;Opdater underkategori
 user;User;Bruger
 userAlreadyExist;A profile with this email already exists. Try logging in instead;Der findes en profil med denne e-mail. Prøv at logge ind i stedet
 userDeleted;User deleted;Bruger slettet

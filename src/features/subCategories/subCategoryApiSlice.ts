@@ -36,6 +36,7 @@ const subCategoryApiSlice = apiSlice.injectEndpoints({
         method: 'PUT',
         body: subCategory,
       }),
+      invalidatesTags: [TagTypesEnum.SubCategories],
     }),
     createSubCategory: builder.mutation<
       CategoriesResponse,
@@ -46,6 +47,7 @@ const subCategoryApiSlice = apiSlice.injectEndpoints({
         method: 'POST',
         body: subCategory,
       }),
+      invalidatesTags: [TagTypesEnum.SubCategories],
     }),
   }),
 });

@@ -1,9 +1,5 @@
 import { useNavigate } from 'react-router';
-import {
-  Category,
-  CreateCategoryRequest,
-  CreateSubCategoryRequest,
-} from '../../app/api/apiTypes';
+import { Category, CreateSubCategoryRequest } from '../../app/api/apiTypes';
 import DatePicker from '../../components/datePicker/DatePicker';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
@@ -22,7 +18,7 @@ import { useCreateSubCategoryMutation } from './subCategoryApiSlice';
 type SubCategoryFormProps = {
   id: string | null;
   parentCategories: Category[];
-  selectedCategory: CreateCategoryRequest | null;
+  selectedCategory: any;
 };
 
 const SubCategoryForm = ({
@@ -32,10 +28,11 @@ const SubCategoryForm = ({
 }: SubCategoryFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
+
   const initialState: CreateSubCategoryRequest = {
-    subCategoryName: selectedCategory?.categoryName || '',
+    subCategoryName: selectedCategory?.subCategoryName || '',
     categoryStatus: selectedCategory?.categoryStatus || 'Inactive',
-    category: '',
+    category: selectedCategory?.mainCategory.categoryName || '',
   };
 
   const parentCategoriesOptions = parentCategories.map(
@@ -64,6 +61,7 @@ const SubCategoryForm = ({
   const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
     onCustomChange(name, selectedOptions.value);
   };
+  console.log(values);
 
   async function handleSubmitCategory() {
     const validation = validateUpdateCategory(values);
@@ -130,7 +128,7 @@ const SubCategoryForm = ({
         <Selectbox
           id="category"
           defaultValue={{
-            label: language.selectParentCategory,
+            label: values.category,
             value: values.category,
           }}
           options={parentCategoriesOptions}
