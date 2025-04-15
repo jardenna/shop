@@ -111,7 +111,6 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
           categoryStatus={values.categoryStatus}
           onSelectDate={handleDaySelect}
           selectedDate={selectedDate}
-          legendText={language.categories}
           timeValue={timeValue}
           onTimeChange={handleTimeChange}
           categoryNameErrorText={language[errors.categoryName]}

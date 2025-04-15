@@ -150,7 +150,6 @@ const SubCategoryForm = ({
           categoryStatus={values.categoryStatus}
           onSelectDate={handleDaySelect}
           selectedDate={selectedDate}
-          legendText={language.categories}
           timeValue={timeValue}
           onTimeChange={handleTimeChange}
         />

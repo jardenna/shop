@@ -2,7 +2,6 @@ import { CategoryStatus } from '../../app/api/apiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import { ChangeInputType } from '../../types/types';
 import DatePicker from '../datePicker/DatePicker';
-import FieldSet from '../fieldset/FieldSet';
 import Input from '../formElements/Input';
 import TimeInput from '../formElements/timeInput/TimeInput';
 import Selectbox, { OptionType } from '../selectbox/Selectbox';
@@ -17,14 +16,13 @@ type SharedDatePickerProps = {
   categoryNameId: string;
   categoryNameLabelText: string;
   categoryNamePlaceholder: string;
-  categoryNamevalue: any;
+  categoryNamevalue: string;
   categoryStatus: string;
   defaultStatusValue: StatusOptions;
-  legendText: string;
-  onSelectDate: any;
   selectedDate: Date;
-  timeValue: any;
+  timeValue: string;
   onCategoryNameChange: (event: ChangeInputType) => void;
+  onSelectDate: (date: Date) => void;
   onSelectStatus: (selectedOptions: OptionType) => void;
   onTimeChange: (event: ChangeInputType) => void;
 };
@@ -32,7 +30,6 @@ type SharedDatePickerProps = {
 const SharedDatePicker = ({
   categoryStatus,
   onSelectDate,
-  legendText,
   selectedDate,
   timeValue,
   onTimeChange,
@@ -62,7 +59,7 @@ const SharedDatePicker = ({
   ];
 
   return (
-    <FieldSet legendText={legendText}>
+    <>
       <Input
         onChange={onCategoryNameChange}
         value={categoryNamevalue}
@@ -99,7 +96,7 @@ const SharedDatePicker = ({
           />
         </>
       )}
-    </FieldSet>
+    </>
   );
 };
 
