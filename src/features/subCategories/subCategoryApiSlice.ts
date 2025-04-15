@@ -1,9 +1,8 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import {
-  CategoriesResponse,
   CreateSubCategoryRequest,
   DefaultResponse,
-  SubCategory,
+  SubCategoriesResponse,
   SubCategoryResponse,
   UpdateSubCategoryRequest,
   UpdateSubCategoryResponse,
@@ -12,11 +11,11 @@ import { subCategoryUrl } from '../../app/endpoints';
 
 const subCategoryApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getAllSubCategories: builder.query<SubCategoryResponse, void>({
+    getAllSubCategories: builder.query<SubCategoriesResponse, void>({
       query: () => subCategoryUrl,
       providesTags: [TagTypesEnum.SubCategories],
     }),
-    getSubCategoryById: builder.query<SubCategory, string>({
+    getSubCategoryById: builder.query<SubCategoryResponse, string>({
       query: (id) => `${subCategoryUrl}/${id}`,
     }),
     deleteSubCategory: builder.mutation<DefaultResponse, string>({
@@ -39,7 +38,7 @@ const subCategoryApiSlice = apiSlice.injectEndpoints({
       invalidatesTags: [TagTypesEnum.SubCategories],
     }),
     createSubCategory: builder.mutation<
-      CategoriesResponse,
+      SubCategoryResponse,
       CreateSubCategoryRequest
     >({
       query: (subCategory) => ({

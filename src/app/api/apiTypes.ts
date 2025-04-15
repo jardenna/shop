@@ -104,7 +104,7 @@ export type MainCategory = {
   scheduledDate?: Date;
 };
 
-export type SubCategory = DefaultResponseType & {
+export type SubCategoryResponse = DefaultResponseType & {
   categoryStatus: CategoryStatus;
   id: string;
   mainCategory: MainCategory;
@@ -113,18 +113,18 @@ export type SubCategory = DefaultResponseType & {
   scheduledDate?: Date;
 };
 
-export type Test = {
-  id: string;
-  subCategory: CreateSubCategoryRequest;
-};
-
-export type SubCategoryResponse = DefaultResponseType & {
-  subCategories: SubCategory[];
+export type SubCategoriesResponse = DefaultResponseType & {
+  subCategories: SubCategoryResponse[];
 };
 
 export type UpdateSubCategoryResponse = {
   category: Category;
-  subCategory: SubCategory;
+  subCategory: SubCategoryResponse;
+};
+
+export type UpdateSubCategoryRequest = {
+  id: string;
+  subCategory: CreateSubCategoryRequest;
 };
 
 // Products
@@ -143,7 +143,7 @@ export type ProductResponse = DefaultResponseType & {
   productName: string;
   quantity: number;
   sizes: ProductSizes;
-  subCategory: SubCategory;
+  subCategory: SubCategoryResponse;
   discount?: number;
 };
 

@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { SubCategory } from '../../app/api/apiTypes';
+import { SubCategoryResponse } from '../../app/api/apiTypes';
 import DateDisplay from '../../components/datePicker/DateDisplay';
 import PageHeader from '../../components/PageHeader';
 import Table from '../../components/sortTable/Table';
@@ -13,7 +13,7 @@ const SubCategoryPage = () => {
   const { data: allSubcategories, isLoading } = useGetAllSubCategoriesQuery();
 
   const tableHeaders: {
-    key: keyof SubCategory;
+    key: keyof SubCategoryResponse;
     label: string;
     name: string;
   }[] = [
@@ -33,7 +33,7 @@ const SubCategoryPage = () => {
     subCategoryName,
     createdAt,
     categoryStatus,
-  }: SubCategory) => {
+  }: SubCategoryResponse) => {
     const statusKey = categoryStatus.toLocaleLowerCase();
     return (
       <tr key={id}>
