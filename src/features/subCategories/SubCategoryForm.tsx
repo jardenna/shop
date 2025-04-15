@@ -4,7 +4,7 @@ import {
   CreateSubCategoryRequest,
   SubCategoryResponse,
 } from '../../app/api/apiTypes';
-import SharedDatePicker from '../../components/authForm/SharedDatePicker';
+import SharedCategoryInputs from '../../components/SharedCategoryInputs';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/formElements/form/Form';
@@ -133,7 +133,7 @@ const SubCategoryForm = ({
           required
         />
 
-        <SharedDatePicker
+        <SharedCategoryInputs
           categoryNamevalue={values.subCategoryName}
           categoryNameId="subCategoryName"
           categoryNameErrorText={language[errors.category]}

@@ -1,17 +1,17 @@
-import { CategoryStatus } from '../../app/api/apiTypes';
-import useLanguage from '../../features/language/useLanguage';
-import { ChangeInputType } from '../../types/types';
-import DatePicker from '../datePicker/DatePicker';
-import Input from '../formElements/Input';
-import TimeInput from '../formElements/timeInput/TimeInput';
-import Selectbox, { OptionType } from '../selectbox/Selectbox';
+import { CategoryStatus } from '../app/api/apiTypes';
+import useLanguage from '../features/language/useLanguage';
+import { ChangeInputType } from '../types/types';
+import DatePicker from './datePicker/DatePicker';
+import Input from './formElements/Input';
+import TimeInput from './formElements/timeInput/TimeInput';
+import Selectbox, { OptionType } from './selectbox/Selectbox';
 
 type StatusOptions = {
   label: string;
   value: CategoryStatus;
 };
 
-type SharedDatePickerProps = {
+type SharedCategoryInputsProps = {
   categoryNameErrorText: string;
   categoryNameId: string;
   categoryNameLabelText: string;
@@ -27,7 +27,7 @@ type SharedDatePickerProps = {
   onTimeChange: (event: ChangeInputType) => void;
 };
 
-const SharedDatePicker = ({
+const SharedCategoryInputs = ({
   categoryStatus,
   onSelectDate,
   selectedDate,
@@ -41,7 +41,7 @@ const SharedDatePicker = ({
   categoryNamePlaceholder,
   categoryNameLabelText,
   categoryNameErrorText,
-}: SharedDatePickerProps) => {
+}: SharedCategoryInputsProps) => {
   const { language } = useLanguage();
   const statusOptions: StatusOptions[] = [
     {
@@ -100,4 +100,4 @@ const SharedDatePicker = ({
   );
 };
 
-export default SharedDatePicker;
+export default SharedCategoryInputs;

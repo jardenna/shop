@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router';
 import { CreateCategoryRequest } from '../../app/api/apiTypes';
-import SharedDatePicker from '../../components/authForm/SharedDatePicker';
+import SharedCategoryInputs from '../../components/SharedCategoryInputs';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/formElements/form/Form';
@@ -97,7 +97,7 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
       submitBtnLabel={id ? language.save : language.create}
     >
       <FieldSet legendText={language.categories}>
-        <SharedDatePicker
+        <SharedCategoryInputs
           onCategoryNameChange={onChange}
           categoryNamevalue={values.categoryName}
           categoryNameId="categoryName"
