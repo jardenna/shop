@@ -1,11 +1,10 @@
 import { useNavigate } from 'react-router';
 import { CategoryStatus, CreateCategoryRequest } from '../../app/api/apiTypes';
-import DatePicker from '../../components/datePicker/DatePicker';
+import SharedDatePicker from '../../components/authForm/SharedDatePicker';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/formElements/form/Form';
 import Input from '../../components/formElements/Input';
-import TimeInput from '../../components/formElements/timeInput/TimeInput';
 import validationCategories from '../../components/formElements/validation/validateCategory';
 import validateUpdateCategory from '../../components/formElements/validation/validateUpdateCategory';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
@@ -143,23 +142,14 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
           labelText={language.selectCategoryStatus}
         />
 
-        {values.categoryStatus === 'Scheduled' && (
-          <>
-            <DatePicker
-              onSelectDate={handleDaySelect}
-              selectedDate={selectedDate}
-              id="date"
-              labelText={language.selectPublishDate}
-            />
-            <TimeInput
-              value={timeValue}
-              onChange={handleTimeChange}
-              id="time"
-              labelText={language.selectPublishTime}
-              name="time"
-            />
-          </>
-        )}
+        <SharedDatePicker
+          categoryStatus={values.categoryStatus}
+          onSelectDate={handleDaySelect}
+          selectedDate={selectedDate}
+          legendText={language.categories}
+          timeValue={timeValue}
+          onTimeChange={handleTimeChange}
+        />
       </FieldSet>
     </Form>
   );

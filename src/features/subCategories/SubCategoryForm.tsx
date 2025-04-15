@@ -4,12 +4,11 @@ import {
   CreateSubCategoryRequest,
   SubCategoryResponse,
 } from '../../app/api/apiTypes';
-import DatePicker from '../../components/datePicker/DatePicker';
+import SharedDatePicker from '../../components/authForm/SharedDatePicker';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/formElements/form/Form';
 import Input from '../../components/formElements/Input';
-import TimeInput from '../../components/formElements/timeInput/TimeInput';
 import validateSubcategory from '../../components/formElements/validation/validate';
 import validateUpdateCategory from '../../components/formElements/validation/validateUpdateCategory';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
@@ -174,23 +173,14 @@ const SubCategoryForm = ({
           labelText={language.selectCategoryStatus}
         />
 
-        {values.categoryStatus === 'Scheduled' && (
-          <>
-            <DatePicker
-              onSelectDate={handleDaySelect}
-              selectedDate={selectedDate}
-              id="date"
-              labelText={language.selectPublishDate}
-            />
-            <TimeInput
-              value={timeValue}
-              onChange={handleTimeChange}
-              id="time"
-              labelText={language.selectPublishTime}
-              name="time"
-            />
-          </>
-        )}
+        <SharedDatePicker
+          categoryStatus={values.categoryStatus}
+          onSelectDate={handleDaySelect}
+          selectedDate={selectedDate}
+          legendText={language.categories}
+          timeValue={timeValue}
+          onTimeChange={handleTimeChange}
+        />
       </FieldSet>
     </Form>
   );
