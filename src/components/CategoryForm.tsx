@@ -8,6 +8,7 @@ import {
 import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
 import { MainPath } from '../layout/nav/enums';
+import Selectbox, { OptionType } from './customSelectbox/Selectbox';
 import DatePicker from './datePicker/DatePicker';
 import FieldSet from './fieldset/FieldSet';
 import Form from './formElements/form/Form';
@@ -15,7 +16,6 @@ import Input from './formElements/Input';
 import validationCategories from './formElements/validation/validateCategory';
 import validateUpdateCategory from './formElements/validation/validateUpdateCategory';
 import useMessagePopup from './messagePopup/useMessagePopup';
-import Selectbox, { OptionType } from './selectbox/Selectbox';
 
 type CategoryFormProps = {
   id: string | null; // Allow id to be null
