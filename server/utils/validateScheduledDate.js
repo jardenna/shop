@@ -1,4 +1,6 @@
-const validateScheduledDate = (categoryStatus, scheduledDate) => {
+import { t } from '../utils/translator.js';
+
+const validateScheduledDate = (categoryStatus, scheduledDate, lang) => {
   if (categoryStatus === 'Scheduled') {
     if (!scheduledDate) {
       return {
@@ -15,7 +17,7 @@ const validateScheduledDate = (categoryStatus, scheduledDate) => {
     if (new Date(scheduledDate) <= new Date()) {
       return {
         success: false,
-        message: 'Scheduled date must be after today',
+        message: t('scheduledDateMustBeFuture', lang),
       };
     }
   }

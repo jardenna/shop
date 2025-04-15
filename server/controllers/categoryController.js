@@ -151,7 +151,11 @@ const updateCategory = asyncHandler(async (req, res) => {
   category.categoryName = categoryName;
   category.categoryStatus = categoryStatus;
 
-  const validationResult = validateScheduledDate(categoryStatus, scheduledDate);
+  const validationResult = validateScheduledDate(
+    categoryStatus,
+    scheduledDate,
+    req.lang,
+  );
   if (!validationResult.success) {
     return res.status(400).json(validationResult);
   }
