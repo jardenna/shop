@@ -11,9 +11,12 @@ import validateUpdateCategory from '../../components/formElements/validation/val
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
 import useFormValidation from '../../hooks/useFormValidation';
-import { MainPath } from '../../layout/nav/enums';
 import useLanguage from '../language/useLanguage';
-import { useCreateSubCategoryMutation } from './subCategoryApiSlice';
+import {
+  useCreateSubCategoryMutation,
+  useUpdateSubCategoryMutation,
+} from './subCategoryApiSlice';
+import { MainPath } from '../../layout/nav/enums';
 
 type SubCategoryFormProps = {
   id: string | null;
@@ -32,7 +35,7 @@ const SubCategoryForm = ({
   const initialState: CreateSubCategoryRequest = {
     subCategoryName: selectedCategory?.subCategoryName || '',
     categoryStatus: selectedCategory?.categoryStatus || 'Inactive',
-    category: selectedCategory?.mainCategory.categoryName || '',
+    category: selectedCategory?.mainCategory?.categoryName || '',
   };
 
   const parentCategoriesOptions = parentCategories.map(
@@ -48,11 +51,9 @@ const SubCategoryForm = ({
       validate: validateSubcategory,
       callback: handleSubmitCategory,
     });
-
   const { onAddMessagePopup } = useMessagePopup();
-
+  const [updateSubCategory] = useUpdateSubCategoryMutation();
   const [createSubCategory] = useCreateSubCategoryMutation();
-
   const selectedTime = selectedCategory?.scheduledDate;
 
   const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
@@ -61,7 +62,6 @@ const SubCategoryForm = ({
   const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
     onCustomChange(name, selectedOptions.value);
   };
-  console.log(values);
 
   async function handleSubmitCategory() {
     const validation = validateUpdateCategory(values);
@@ -74,16 +74,31 @@ const SubCategoryForm = ({
       return;
     }
     try {
-      await createSubCategory({
-        ...values,
-        scheduledDate: selectedDate,
-      }).unwrap();
+      if (id) {
+        await updateSubCategory({
+          id,
+          subCategory: {
+            ...values,
+            category: values.category,
+            scheduledDate: selectedDate,
+          },
+        }).unwrap();
 
-      onAddMessagePopup({
-        messagePopupType: 'success',
-        message: language.categoryCreated,
-      });
+        onAddMessagePopup({
+          messagePopupType: 'success',
+          message: language.categoryUpdated,
+        });
+      } else {
+        await createSubCategory({
+          ...values,
+          scheduledDate: selectedDate,
+        }).unwrap();
 
+        onAddMessagePopup({
+          messagePopupType: 'success',
+          message: language.categoryCreated,
+        });
+      }
       navigate(`/admin/${MainPath.AdminSubCategories}`);
     } catch (error: any) {
       onAddMessagePopup({
