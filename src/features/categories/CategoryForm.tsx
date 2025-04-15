@@ -4,7 +4,6 @@ import SharedDatePicker from '../../components/authForm/SharedDatePicker';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/formElements/form/Form';
-import Input from '../../components/formElements/Input';
 import validationCategories from '../../components/formElements/validation/validateCategory';
 import validateUpdateCategory from '../../components/formElements/validation/validateUpdateCategory';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
@@ -98,18 +97,10 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
       submitBtnLabel={id ? language.save : language.create}
     >
       <FieldSet legendText={language.categories}>
-        <Input
-          onChange={onChange}
-          value={values.categoryName}
-          id="categoryName"
-          name="categoryName"
-          labelText={language.addCategoryName}
-          placeholder={language.categoryName}
-          errorText={language[errors.categoryName]}
-          required
-        />
-
         <SharedDatePicker
+          onCategoryNameChange={onChange}
+          categoryNamevalue={values.categoryName}
+          categoryNameId="categoryName"
           defaultStatusValue={{
             label: language[values.categoryStatus.toLowerCase()],
             value: values.categoryStatus,
@@ -123,6 +114,9 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
           legendText={language.categories}
           timeValue={timeValue}
           onTimeChange={handleTimeChange}
+          categoryNameErrorText={language[errors.categoryName]}
+          categoryNameLabelText={language.addCategoryName}
+          categoryNamePlaceholder={language.categoryName}
         />
       </FieldSet>
     </Form>

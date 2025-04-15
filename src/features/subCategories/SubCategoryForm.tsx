@@ -8,7 +8,6 @@ import SharedDatePicker from '../../components/authForm/SharedDatePicker';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/formElements/form/Form';
-import Input from '../../components/formElements/Input';
 import validateSubcategory from '../../components/formElements/validation/validate';
 import validateUpdateCategory from '../../components/formElements/validation/validateUpdateCategory';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
@@ -118,16 +117,6 @@ const SubCategoryForm = ({
       submitBtnLabel={id ? language.save : language.create}
     >
       <FieldSet legendText={language.categories}>
-        <Input
-          onChange={onChange}
-          value={values.subCategoryName}
-          id="subCategoryName"
-          name="subCategoryName"
-          labelText={language.addCategoryName}
-          placeholder={language.categoryName}
-          errorText={language[errors.subCategoryName]}
-          required
-        />
         <Selectbox
           id="category"
           defaultValue={{
@@ -145,6 +134,12 @@ const SubCategoryForm = ({
         />
 
         <SharedDatePicker
+          categoryNamevalue={values.subCategoryName}
+          categoryNameId="subCategoryName"
+          categoryNameErrorText={language[errors.category]}
+          categoryNameLabelText={language.addCategoryName}
+          categoryNamePlaceholder={language.categoryName}
+          onCategoryNameChange={onChange}
           defaultStatusValue={{
             label: language[values.categoryStatus.toLowerCase()],
             value: values.categoryStatus,

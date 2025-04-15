@@ -3,6 +3,7 @@ import useLanguage from '../../features/language/useLanguage';
 import { ChangeInputType } from '../../types/types';
 import DatePicker from '../datePicker/DatePicker';
 import FieldSet from '../fieldset/FieldSet';
+import Input from '../formElements/Input';
 import TimeInput from '../formElements/timeInput/TimeInput';
 import Selectbox, { OptionType } from '../selectbox/Selectbox';
 
@@ -12,12 +13,18 @@ type StatusOptions = {
 };
 
 type SharedDatePickerProps = {
+  categoryNameErrorText: string;
+  categoryNameId: string;
+  categoryNameLabelText: string;
+  categoryNamePlaceholder: string;
+  categoryNamevalue: any;
   categoryStatus: string;
   defaultStatusValue: StatusOptions;
   legendText: string;
   onSelectDate: any;
   selectedDate: Date;
   timeValue: any;
+  onCategoryNameChange: (event: ChangeInputType) => void;
   onSelectStatus: (selectedOptions: OptionType) => void;
   onTimeChange: (event: ChangeInputType) => void;
 };
@@ -31,6 +38,12 @@ const SharedDatePicker = ({
   onTimeChange,
   onSelectStatus,
   defaultStatusValue,
+  onCategoryNameChange,
+  categoryNamevalue,
+  categoryNameId,
+  categoryNamePlaceholder,
+  categoryNameLabelText,
+  categoryNameErrorText,
 }: SharedDatePickerProps) => {
   const { language } = useLanguage();
   const statusOptions: StatusOptions[] = [
@@ -50,6 +63,17 @@ const SharedDatePicker = ({
 
   return (
     <FieldSet legendText={legendText}>
+      <Input
+        onChange={onCategoryNameChange}
+        value={categoryNamevalue}
+        id={categoryNameId}
+        name={categoryNameId}
+        labelText={categoryNameLabelText}
+        placeholder={categoryNamePlaceholder}
+        errorText={categoryNameErrorText}
+        required
+      />
+
       <Selectbox
         id="categoryStatus"
         defaultValue={defaultStatusValue}
