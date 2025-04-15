@@ -21,7 +21,7 @@ const getAllUsers = asyncHandler(async (req, res) => {
 
   const formattedUsers = formatMongoData(users);
 
-  res.json(formattedUsers);
+  res.json({ users: formattedUsers });
 });
 
 // @desc    Get User profile
