@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router';
-import { CreateCategoryRequest } from '../../app/api/apiTypes';
+import { CategoryStatus, CreateCategoryRequest } from '../../app/api/apiTypes';
 import DatePicker from '../../components/datePicker/DatePicker';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
@@ -21,6 +21,11 @@ import {
 type CategoryFormProps = {
   id: string | null;
   selectedCategory: CreateCategoryRequest | null;
+};
+
+type StatusOptions = {
+  label: string;
+  value: CategoryStatus;
 };
 
 const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
@@ -93,7 +98,7 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
     }
   }
 
-  const statusOptions = [
+  const statusOptions: StatusOptions[] = [
     {
       label: language.inactive,
       value: 'Inactive',

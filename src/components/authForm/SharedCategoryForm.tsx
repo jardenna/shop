@@ -1,3 +1,4 @@
+import { CategoryStatus } from '../../app/api/apiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import { ChangeInputType, FormEventType } from '../../types/types';
 import DatePicker from '../datePicker/DatePicker';
@@ -8,10 +9,15 @@ import Input from '../formElements/Input';
 import TimeInput from '../formElements/timeInput/TimeInput';
 import Selectbox, { OptionType } from '../selectbox/Selectbox';
 
+type StatusOptions = {
+  label: string;
+  value: CategoryStatus;
+};
+
 type SharedCategoryFormProps = {
   errors: any;
-  id: string;
   onCustomChange: any;
+  submitBtnLabel: string;
   values: any;
   parentCategoriesOptions?: any;
   selectedTime?: Date;
@@ -20,7 +26,6 @@ type SharedCategoryFormProps = {
 };
 
 const SharedCategoryForm = ({
-  id,
   selectedTime,
   onSubmit,
   onChange,
@@ -28,9 +33,10 @@ const SharedCategoryForm = ({
   values,
   onCustomChange,
   parentCategoriesOptions,
+  submitBtnLabel,
 }: SharedCategoryFormProps) => {
   const { language } = useLanguage();
-  const statusOptions = [
+  const statusOptions: StatusOptions[] = [
     {
       label: language.inactive,
       value: 'Inactive',
@@ -53,10 +59,7 @@ const SharedCategoryForm = ({
   };
 
   return (
-    <Form
-      onSubmit={onSubmit}
-      submitBtnLabel={id ? language.save : language.create}
-    >
+    <Form onSubmit={onSubmit} submitBtnLabel={submitBtnLabel}>
       <FieldSet legendText={language.categories}>
         <Input
           onChange={onChange}
