@@ -183,8 +183,15 @@ const getSubCategoryById = asyncHandler(async (req, res) => {
 // @access  Private for admin and employee
 const updateSubCategory = asyncHandler(async (req, res) => {
   const { subCategoryName, category, categoryStatus, scheduledDate } = req.body;
-
   const subCategory = await SubCategory.findById(req.params.id);
+  // Validate category existence
+  const mainCategory = await Category.findById(category);
+
+  if (!mainCategory) {
+    return res
+      .status(400)
+      .json({ success: false, message: 'Parent category does not exist' });
+  }
 
   if (!subCategory) {
     return res.status(404).json({
