@@ -41,23 +41,24 @@ const SubCategoryForm = ({
     category: selectedCategory?.mainCategory.categoryName || '',
   };
 
-  const parentCategoriesOptions = parentCategories.map(
-    ({ categoryName, id }) => ({
-      label: categoryName,
-      value: id,
-    }),
-  );
-
   const { onChange, values, onSubmit, onCustomChange, errors } =
     useFormValidation({
       initialState,
       validate: validateSubcategory,
       callback: handleSubmitCategory,
     });
+
   const { onAddMessagePopup } = useMessagePopup();
   const [updateSubCategory] = useUpdateSubCategoryMutation();
   const [createSubCategory] = useCreateSubCategoryMutation();
   const selectedTime = selectedCategory?.scheduledDate;
+
+  const parentCategoriesOptions = parentCategories.map(
+    ({ categoryName, id }) => ({
+      label: categoryName,
+      value: id,
+    }),
+  );
 
   const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
     useDatePicker({ initialTime: selectedTime });
