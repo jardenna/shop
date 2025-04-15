@@ -112,21 +112,6 @@ const SubCategoryForm = ({
     }
   }
 
-  const statusOptions = [
-    {
-      label: language.inactive,
-      value: 'Inactive',
-    },
-    {
-      label: language.scheduled,
-      value: 'Scheduled',
-    },
-    {
-      label: language.published,
-      value: 'Published',
-    },
-  ];
-
   return (
     <Form
       onSubmit={onSubmit}
@@ -159,21 +144,14 @@ const SubCategoryForm = ({
           required
         />
 
-        <Selectbox
-          id="categoryStatus"
-          defaultValue={{
+        <SharedDatePicker
+          defaultStatusValue={{
             label: language[values.categoryStatus.toLowerCase()],
             value: values.categoryStatus,
           }}
-          options={statusOptions}
-          onChange={(selectedOptions: OptionType) => {
+          onSelectStatus={(selectedOptions: OptionType) => {
             handleSelectStatus('categoryStatus', selectedOptions);
           }}
-          name="categoryStatus"
-          labelText={language.selectCategoryStatus}
-        />
-
-        <SharedDatePicker
           categoryStatus={values.categoryStatus}
           onSelectDate={handleDaySelect}
           selectedDate={selectedDate}

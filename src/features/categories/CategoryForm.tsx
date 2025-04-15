@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router';
-import { CategoryStatus, CreateCategoryRequest } from '../../app/api/apiTypes';
+import { CreateCategoryRequest } from '../../app/api/apiTypes';
 import SharedDatePicker from '../../components/authForm/SharedDatePicker';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
@@ -8,7 +8,7 @@ import Input from '../../components/formElements/Input';
 import validationCategories from '../../components/formElements/validation/validateCategory';
 import validateUpdateCategory from '../../components/formElements/validation/validateUpdateCategory';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
+import { OptionType } from '../../components/selectbox/Selectbox';
 import useFormValidation from '../../hooks/useFormValidation';
 import { MainPath } from '../../layout/nav/enums';
 import useLanguage from '../language/useLanguage';
@@ -20,11 +20,6 @@ import {
 type CategoryFormProps = {
   id: string | null;
   selectedCategory: CreateCategoryRequest | null;
-};
-
-type StatusOptions = {
-  label: string;
-  value: CategoryStatus;
 };
 
 const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
@@ -97,21 +92,6 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
     }
   }
 
-  const statusOptions: StatusOptions[] = [
-    {
-      label: language.inactive,
-      value: 'Inactive',
-    },
-    {
-      label: language.scheduled,
-      value: 'Scheduled',
-    },
-    {
-      label: language.published,
-      value: 'Published',
-    },
-  ];
-
   return (
     <Form
       onSubmit={onSubmit}
@@ -128,21 +108,15 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
           errorText={language[errors.categoryName]}
           required
         />
-        <Selectbox
-          id="categoryStatus"
-          defaultValue={{
+
+        <SharedDatePicker
+          defaultStatusValue={{
             label: language[values.categoryStatus.toLowerCase()],
             value: values.categoryStatus,
           }}
-          options={statusOptions}
-          onChange={(selectedOptions: OptionType) => {
+          onSelectStatus={(selectedOptions: OptionType) => {
             handleSelectStatus('categoryStatus', selectedOptions);
           }}
-          name="categoryStatus"
-          labelText={language.selectCategoryStatus}
-        />
-
-        <SharedDatePicker
           categoryStatus={values.categoryStatus}
           onSelectDate={handleDaySelect}
           selectedDate={selectedDate}
