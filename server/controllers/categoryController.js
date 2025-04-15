@@ -113,15 +113,15 @@ const getScheduledCategories = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Public
 const getCategoryById = asyncHandler(async (req, res) => {
-  const category = await Category.findById(req.params.id);
+  const category = await Category.findById(req.params.id).lean();
 
   if (!category) {
     return res
       .status(404)
       .json({ success: false, message: 'No category with that ID' });
   }
-
-  res.status(200).json({ success: true, category });
+  const formattedCategory = formatMongoData(category);
+  res.status(200).json({ success: true, formattedCategory });
 });
 
 // @desc    Update category
