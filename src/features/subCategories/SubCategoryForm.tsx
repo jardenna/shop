@@ -1,5 +1,9 @@
 import { useNavigate } from 'react-router';
-import { Category, CreateSubCategoryRequest } from '../../app/api/apiTypes';
+import {
+  Category,
+  CreateSubCategoryRequest,
+  SubCategoryResponse,
+} from '../../app/api/apiTypes';
 import DatePicker from '../../components/datePicker/DatePicker';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
@@ -11,17 +15,17 @@ import validateUpdateCategory from '../../components/formElements/validation/val
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
 import useFormValidation from '../../hooks/useFormValidation';
+import { MainPath } from '../../layout/nav/enums';
 import useLanguage from '../language/useLanguage';
 import {
   useCreateSubCategoryMutation,
   useUpdateSubCategoryMutation,
 } from './subCategoryApiSlice';
-import { MainPath } from '../../layout/nav/enums';
 
 type SubCategoryFormProps = {
   id: string | null;
   parentCategories: Category[];
-  selectedCategory: any;
+  selectedCategory: SubCategoryResponse | null;
 };
 
 const SubCategoryForm = ({
@@ -31,11 +35,10 @@ const SubCategoryForm = ({
 }: SubCategoryFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
-
   const initialState: CreateSubCategoryRequest = {
     subCategoryName: selectedCategory?.subCategoryName || '',
     categoryStatus: selectedCategory?.categoryStatus || 'Inactive',
-    category: selectedCategory?.mainCategory?.categoryName || '',
+    category: selectedCategory?.mainCategory.categoryName || '',
   };
 
   const parentCategoriesOptions = parentCategories.map(
