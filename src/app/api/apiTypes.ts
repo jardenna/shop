@@ -80,13 +80,6 @@ export type CreateCategoryRequest = {
   scheduledDate?: Date;
 };
 
-export type CreateSubCategoryRequest = {
-  category: string;
-  categoryStatus: CategoryStatus;
-  subCategoryName: string;
-  scheduledDate?: Date;
-};
-
 export type CategoryItemResponse = DefaultResponseType & {
   category: Category;
 };
@@ -97,6 +90,13 @@ export type UpdateCategoryRequest = {
 };
 
 // SubCategories
+export type CreateSubCategoryRequest = {
+  category: string;
+  categoryStatus: CategoryStatus;
+  subCategoryName: string;
+  scheduledDate?: Date;
+};
+
 export type MainCategory = {
   categoryName: string;
   categoryStatus: CategoryStatus;
@@ -113,30 +113,18 @@ export type SubCategory = DefaultResponseType & {
   scheduledDate?: Date;
 };
 
+export type Test = {
+  id: string;
+  subCategory: CreateSubCategoryRequest;
+};
+
 export type SubCategoryResponse = DefaultResponseType & {
   subCategories: SubCategory[];
 };
 
-export type UpdateSubCategoryRequest = {
-  category: string;
-  id: string;
-  subCategory: SubCategory;
-};
 export type UpdateSubCategoryResponse = {
   category: Category;
   subCategory: SubCategory;
-};
-
-export type CreateSubCategoriesResponse = DefaultResponseType & {
-  _id: string;
-  category: string;
-  subCategoryName: string;
-};
-
-export type GetSubCategoriesResponse = DefaultResponseType & {
-  _id: string;
-  category: Category;
-  subCategoryName: string;
 };
 
 // Products
