@@ -65,6 +65,10 @@ const SubCategoryForm = ({
     onCustomChange(name, selectedOptions.value);
   };
 
+  const preSelectedCategory = parentCategoriesOptions.find(
+    (parentCategory) => parentCategory.label === values.category,
+  );
+
   async function handleSubmitCategory() {
     const validation = validateUpdateCategory(values);
     if (validation) {
@@ -81,7 +85,9 @@ const SubCategoryForm = ({
           id,
           subCategory: {
             ...values,
-            category: values.category,
+            category: preSelectedCategory
+              ? preSelectedCategory.value
+              : values.category,
             scheduledDate: selectedDate,
           },
         }).unwrap();
