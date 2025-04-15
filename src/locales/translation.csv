@@ -13,8 +13,8 @@ cancel;Cancel;Annuller
 cannotDeleteAdmin;This action is not allowed for admin;Admin bruger kan ikke slettes
 categories;Categories;Kategorier
 category;Category;Kategori
-categoryCreated;Category created;Kategori tilføjet
 categoryAlreadyExist;Category already exist;Kategori findes allerede
+categoryCreated;Category created;Kategori tilføjet
 categoryDeleted;Category deleted;Kategori blev slettet
 categoryList;Category list;Kategori-liste
 categoryName;Category name;Kategori navn
@@ -41,15 +41,15 @@ customersList;Customers list;Kundeliste
 dashboard;Dashboard;Dashboard
 date;Date;Dato
 delete;Delete;Slet
-deleted;deleted;slettet
 deleteCategory;Delete category;Slet kategori
+deleted;deleted;slettet
 deleteOrReassignCategory;Delete or reassign associated  products before deleting this category;Slet eller tildel produkter på ny, før du sletter denne kategori
 deleteUser;Delete user;Slet bruger
 desc;descending;faldende
 description;Description;Beskrivelse
 editCategory;Edit category;Opdater kategori
-editSubCategory;Edit subcategory;Opdater underkategori
 editProduct;Edit product;Opdater produkt
+editSubCategory;Edit subcategory;Opdater underkategori
 editUser;Edit user;Opdater bruger
 email;Email;E-mail
 error;Error;Fejl
@@ -138,9 +138,9 @@ scheduledDate;Scheduled date;Planlagt dato
 scheduledDateMustBeFuture;Scheduled date must be after today;Planlagt dato skal være efter i dag
 search;Search;Søg
 selectCategoryStatus;Select category status;Vælg kategori status
-selectParentCategory;Select parent category status;Vælg main kategori
 selectCurrency;Select currency;Vælg valuta
 selectLanguage;Select language;Vælg sprog
+selectParentCategory;Select parent category status;Vælg main kategori
 selectPreferences;Select preferred language and currency;Vælg sprog og valuta
 selectPublishDate;Select publish date;Vælg udgivelsesdato
 selectPublishTime;Select publish time;Vælg udgivelsestid
@@ -163,10 +163,10 @@ title;Title;Titel
 trashCan;Trash can;Skraldespand
 unsupportedFile;is not supported type;er ikke understøttet
 update;Update;Opdater
+updateCategory;Update category;Opdater kategori
 updatedAt;Updated at;Opdateret
 updatePreferences;Update Preferences;Opdater præferencer
 updateProduct;Update product;Opdater produkt
-updateCategory;Update category;Opdater kategori
 updateSubCategory;Update subcategory;Opdater underkategori
 user;User;Bruger
 userAlreadyExist;A profile with this email already exists. Try logging in instead;Der findes en profil med denne e-mail. Prøv at logge ind i stedet
