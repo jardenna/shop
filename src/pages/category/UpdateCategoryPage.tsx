@@ -7,20 +7,17 @@ import useLanguage from '../../features/language/useLanguage';
 const UpdateCategoryPage = () => {
   const params = useParams();
   const { language } = useLanguage();
-  const { data: selectedCategory } = useGetCategoryByIdQuery(params.id || '');
+  const { data: { category } = {} } = useGetCategoryByIdQuery(params.id || '');
 
   return (
     <section className="page-small">
-      {selectedCategory && (
+      {category && (
         <>
           <PageHeader
-            heading={`${language.updateCategory} aa ${selectedCategory.id}`}
+            heading={`${language.updateCategory} ${category.categoryName}`}
           />
           <div className="page-card">
-            <CategoryForm
-              selectedCategory={selectedCategory.category}
-              id={params.id || ''}
-            />
+            <CategoryForm selectedCategory={category} id={params.id || ''} />
           </div>
         </>
       )}
