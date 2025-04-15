@@ -121,7 +121,7 @@ const getCategoryById = asyncHandler(async (req, res) => {
       .json({ success: false, message: 'No category with that ID' });
   }
   const formattedCategory = formatMongoData(category);
-  res.status(200).json({ success: true, formattedCategory });
+  res.status(200).json({ success: true, category: formattedCategory });
 });
 
 // @desc    Update category
