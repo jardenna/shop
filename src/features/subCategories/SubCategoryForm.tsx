@@ -5,13 +5,15 @@ import {
   SubCategoryResponse,
 } from '../../app/api/apiTypes';
 import SharedCategoryInputs from '../../components/SharedCategoryInputs';
+import Selectbox, {
+  OptionType,
+} from '../../components/customSelectbox/Selectbox';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/formElements/form/Form';
 import validateSubcategory from '../../components/formElements/validation/validate';
 import validateUpdateCategory from '../../components/formElements/validation/validateUpdateCategory';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
 import useFormValidation from '../../hooks/useFormValidation';
 import { MainPath } from '../../layout/nav/enums';
 import useLanguage from '../language/useLanguage';

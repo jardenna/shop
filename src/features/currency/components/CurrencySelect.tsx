@@ -1,5 +1,6 @@
 import { FC } from 'react';
-import Selectbox from '../../../components/selectbox/Selectbox';
+
+import Selectbox from '../../../components/customSelectbox/Selectbox';
 import { HeaderProps } from '../../../layout/header/Header';
 
 type OmittedHeaderProps = Omit<

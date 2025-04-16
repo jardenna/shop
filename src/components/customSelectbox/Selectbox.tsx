@@ -13,7 +13,7 @@ export type OptionType = {
   value: number | string;
 };
 export type SelectedOption = SingleValue<OptionType> | MultiValue<OptionType>;
-type SelectBoxProps = {
+type SelectboxProps = {
   defaultValue: OptionType;
   id: string;
   labelText: string;
@@ -45,7 +45,7 @@ const Selectbox = ({
   labelText,
   errorText,
   inputHasNoLabel,
-}: SelectBoxProps) => {
+}: SelectboxProps) => {
   const handleChange = (newValue: SelectedOption) => {
     if (isMulti) {
       onChange(newValue as OptionType);

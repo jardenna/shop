@@ -1,10 +1,10 @@
 import { CategoryStatus } from '../app/api/apiTypes';
 import useLanguage from '../features/language/useLanguage';
 import { ChangeInputType } from '../types/types';
+import Selectbox, { OptionType } from './customSelectbox/Selectbox';
 import DatePicker from './datePicker/DatePicker';
 import Input from './formElements/Input';
 import TimeInput from './formElements/timeInput/TimeInput';
-import Selectbox, { OptionType } from './selectbox/Selectbox';
 
 type StatusOptions = {
   label: string;
