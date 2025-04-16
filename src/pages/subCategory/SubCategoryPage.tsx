@@ -24,7 +24,7 @@ const SubCategoryPage = () => {
   const shouldPollFullList = hasScheduledData?.hasScheduled ?? false;
 
   const { data: allSubcategories } = useGetAllSubCategoriesQuery(undefined, {
-    pollingInterval: shouldPollFullList ? 15000 : 0,
+    pollingInterval: shouldPollFullList ? 15000 : undefined,
   });
 
   const tableHeaders: {
