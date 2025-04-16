@@ -4,19 +4,28 @@ import DateDisplay from '../../components/datePicker/DateDisplay';
 import PageHeader from '../../components/PageHeader';
 import Table from '../../components/sortTable/Table';
 import useLanguage from '../../features/language/useLanguage';
-import { useGetAllSubCategoriesQuery } from '../../features/subCategories/subCategoryApiSlice';
+import {
+  useGetAllSubCategoriesQuery,
+  useGetScheduledQuery,
+} from '../../features/subCategories/subCategoryApiSlice';
 import { MainPath } from '../../layout/nav/enums';
 
 const SubCategoryPage = () => {
   const { language } = useLanguage();
   // const sixHours = 1000 * 60 * 60 * 6;
 
-  const { data: allSubcategories, isLoading } = useGetAllSubCategoriesQuery(
+  const { data: hasScheduledData, isLoading } = useGetScheduledQuery(
     undefined,
     {
-      pollingInterval: 1000 * 60,
+      pollingInterval: 15000, // check every 1 min
     },
   );
+
+  const shouldPollFullList = hasScheduledData?.hasScheduled ?? false;
+
+  const { data: allSubcategories } = useGetAllSubCategoriesQuery(undefined, {
+    pollingInterval: shouldPollFullList ? 15000 : 0,
+  });
 
   const tableHeaders: {
     key: keyof SubCategoryResponse;

@@ -15,6 +15,10 @@ const subCategoryApiSlice = apiSlice.injectEndpoints({
       query: () => subCategoryUrl,
       providesTags: [TagTypesEnum.SubCategories],
     }),
+    getScheduled: builder.query<any, void>({
+      query: () => `${subCategoryUrl}/scheduled`,
+      providesTags: [TagTypesEnum.SubCategories],
+    }),
     getSubCategoryById: builder.query<SubCategoryResponse, string>({
       query: (id) => `${subCategoryUrl}/${id}`,
     }),
@@ -57,4 +61,5 @@ export const {
   useDeleteSubCategoryMutation,
   useUpdateSubCategoryMutation,
   useCreateSubCategoryMutation,
+  useGetScheduledQuery,
 } = subCategoryApiSlice;

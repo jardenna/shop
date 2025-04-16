@@ -1,5 +1,6 @@
 import express from 'express';
 import {
+  checkScheduledReady,
   createSubCategory,
   deleteSubCategory,
   getAllSubCategories,
@@ -14,6 +15,7 @@ import {
 import languageMiddleware from '../middleware/languageMiddleware.js';
 const router = express.Router();
 
+router.get('/scheduled', checkScheduledReady);
 router
   .route('/')
   .post(languageMiddleware, authenticate, authorizeEmployee, createSubCategory)
