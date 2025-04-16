@@ -9,8 +9,14 @@ import { MainPath } from '../../layout/nav/enums';
 
 const SubCategoryPage = () => {
   const { language } = useLanguage();
+  // const sixHours = 1000 * 60 * 60 * 6;
 
-  const { data: allSubcategories, isLoading } = useGetAllSubCategoriesQuery();
+  const { data: allSubcategories, isLoading } = useGetAllSubCategoriesQuery(
+    undefined,
+    {
+      pollingInterval: 1000 * 60,
+    },
+  );
 
   const tableHeaders: {
     key: keyof SubCategoryResponse;
