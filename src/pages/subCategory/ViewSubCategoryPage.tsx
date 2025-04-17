@@ -97,11 +97,17 @@ const ViewSubCategoryPage = () => {
               )}
 
               <div>Parent category: {category.mainCategory.categoryName}</div>
-              <div>
-                Be aware that this category is
-                <span>inactive</span>
-                <span>scheduled</span>
-              </div>
+
+              {category.categoryStatus !== 'Published' && (
+                <div>
+                  <span>{language.categoryIsCurrently}</span>
+                  <span>
+                    {language[category.categoryStatus.toLocaleLowerCase()]}
+                  </span>
+                  <span>{language.categoryWillNotBeVisible}</span>
+                </div>
+              )}
+
               <div className="footer-buttons">
                 <ModalContainer
                   triggerModalBtnContent={language.delete}
