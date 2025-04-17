@@ -2,6 +2,7 @@ import asyncHandler from '../middleware/asyncHandler.js';
 import Category from '../models/categoryModel.js';
 import formatMongoData from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
+import { updateScheduledItems } from '../utils/UpdateScheduledItemsOptions.js';
 import validateScheduledDate from '../utils/validateScheduledDate.js';
 
 // @desc    Create category
@@ -59,25 +60,10 @@ const createCategory = asyncHandler(async (req, res) => {
 const getAllCategories = asyncHandler(async (req, res) => {
   const allCategories = await Category.find({}).lean();
 
-  // Automatically update "Scheduled" categories to "Published" if the date has passed
-  const now = new Date();
-  const updatedCategories = await Promise.all(
-    allCategories.map(async (category) => {
-      if (
-        category.categoryStatus === 'Scheduled' &&
-        category.scheduledDate <= now
-      ) {
-        await Category.findByIdAndUpdate(category._id, {
-          categoryStatus: 'Published',
-          $unset: { scheduledDate: '' },
-        });
-
-        category.categoryStatus = 'Published';
-        category.scheduledDate = undefined;
-      }
-      return category;
-    }),
-  );
+  const updatedCategories = await updateScheduledItems({
+    items: allCategories,
+    model: Category,
+  });
 
   const formattedCategories = formatMongoData(updatedCategories);
 
