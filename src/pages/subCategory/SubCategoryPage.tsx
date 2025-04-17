@@ -17,7 +17,7 @@ const SubCategoryPage = () => {
   const { language } = useLanguage();
 
   const { data: hasScheduledData } = useGetScheduledQuery(undefined, {
-    pollingInterval: 30000, // check every 6 hours
+    pollingInterval: 30000,
   });
 
   const shouldPollFullList = hasScheduledData?.hasScheduled ?? false;
