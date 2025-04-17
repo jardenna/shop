@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import variables from '../../scss/variables.module.scss';
 import { IconDefaultProps } from './Icon';
 
 const SuccessIcon: FC<IconDefaultProps> = ({
@@ -15,7 +16,7 @@ const SuccessIcon: FC<IconDefaultProps> = ({
     className={className}
     viewBox="0 0 24 24"
     fill="none"
-    stroke="#04515f"
+    stroke={variables.colorSuccess}
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
