@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import { SubCategoryResponse } from '../../app/api/apiTypes';
+import Badge from '../../components/badge/Badge';
 import DateDisplay from '../../components/datePicker/DateDisplay';
 import Icon from '../../components/icons/Icon';
 import PageHeader from '../../components/PageHeader';
@@ -69,29 +70,32 @@ const SubCategoryPage = () => {
         <td>{subCategoryName}</td>
         <td>{productCount}</td>
         <td>
-          <div className={`badge ${categoryStatus.toLowerCase()}`}>
-            <span>{language[statusKey]}</span>
-            {scheduledDate && (
-              <Tooltip
-                text={
-                  <DateDisplay
-                    date={scheduledDate}
-                    hour="2-digit"
-                    minute="2-digit"
-                  />
-                }
-                ariaControls="scheduled-date"
-                triggerBtnVariant={BtnVariant.Ghost}
-                ariaLabel={language.scheduledDate}
-              >
-                <Icon
-                  iconName={IconName.Calendar}
-                  title={language.calendar}
+          <Badge
+            badgeText={language[statusKey]}
+            className={categoryStatus.toLowerCase()}
+            tooltip={
+              scheduledDate && (
+                <Tooltip
+                  text={
+                    <DateDisplay
+                      date={scheduledDate}
+                      hour="2-digit"
+                      minute="2-digit"
+                    />
+                  }
+                  ariaControls="scheduled-date"
+                  triggerBtnVariant={BtnVariant.Ghost}
                   ariaLabel={language.scheduledDate}
-                />
-              </Tooltip>
-            )}
-          </div>
+                >
+                  <Icon
+                    iconName={IconName.Calendar}
+                    title={language.calendar}
+                    ariaLabel={language.scheduledDate}
+                  />
+                </Tooltip>
+              )
+            }
+          />
         </td>
 
         <td>
