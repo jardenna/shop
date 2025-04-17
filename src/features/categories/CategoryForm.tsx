@@ -1,13 +1,13 @@
 import { useNavigate } from 'react-router';
 import { CreateCategoryRequest } from '../../app/api/apiTypes';
 import SharedCategoryInputs from '../../components/SharedCategoryInputs';
-import { OptionType } from '../../components/customSelectbox/Selectbox';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/formElements/form/Form';
 import validationCategories from '../../components/formElements/validation/validateCategory';
 import validateUpdateCategory from '../../components/formElements/validation/validateUpdateCategory';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
+import { OptionType } from '../../components/selectbox/Selectbox';
 import useFormValidation from '../../hooks/useFormValidation';
 import { MainPath } from '../../layout/nav/enums';
 import useLanguage from '../language/useLanguage';
