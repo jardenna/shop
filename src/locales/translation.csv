@@ -31,7 +31,8 @@ confirmPassword;Confirm password;Gentag adgangskode
 contact;Contact;Kontakt
 create;Create;Tilføj
 createAccount;Create account;Opret konto
-createdAt;Created at;Tilføjet
+createdAt;Created at;Tilføjet den
+created;Created;Tilføjet
 createNewCategory;Create new category;Opret ny kategori
 createNewSubCategory;Create new subcategory;Opret ny underkategori
 criterionMet;Criterion met;Kriterium opfyldt

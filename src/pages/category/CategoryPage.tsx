@@ -14,7 +14,7 @@ import { BtnVariant, IconName } from '../../types/enums';
 const tableHeaders: { key: keyof Category; label: string; name: string }[] = [
   { key: 'categoryName', label: 'name', name: 'categoryName' },
   { key: 'categoryStatus', label: 'status', name: 'categoryStatus' },
-  { key: 'createdAt', label: 'createdAt', name: 'createdAt' },
+  { key: 'createdAt', label: 'created', name: 'createdAt' },
   { key: 'id', label: '', name: '' },
 ];
 

@@ -87,8 +87,15 @@ const ViewSubCategoryPage = () => {
           {!isError && category ? (
             <>
               <CategoryCard
+                createdAt={category.createdAt}
                 subCategoryName={category.subCategoryName}
                 totalProducts={category.productCount}
+                mainCategoryName={category.mainCategory.categoryName}
+                showStatusMessage={
+                  category.mainCategory.categoryStatus !== 'Published'
+                }
+                statusMessage={category.mainCategory.categoryStatus.toLocaleLowerCase()}
+                categoryStatus={category.mainCategory.categoryStatus}
               />
               <div>
                 <div>

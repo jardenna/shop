@@ -1,9 +1,9 @@
-.category-card {
+.category-card-container {
   display: flex;
   justify-content: space-between;
   margin-bottom: 24px;
 
-  .category-card-content {
+  .category-card {
     background-color: #fff;
     flex: 1;
     padding-top: 40px;
@@ -16,12 +16,11 @@
     }
   }
 
-  .category-card-right,
-  .category-card-left {
+  .category-card-content {
     padding: 30px;
   }
 
-  .card-info {
+  .card-right {
     background-color: #dbe0dc;
 
     .card-top-line {
