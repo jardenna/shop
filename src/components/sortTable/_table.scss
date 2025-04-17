@@ -144,8 +144,10 @@ table {
   }
 
   .sort {
-    display: flex;
-    gap: 4px;
+    .btn-ghost {
+      display: flex;
+      gap: 4px;
+    }
   }
 
   .dot {

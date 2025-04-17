@@ -108,6 +108,7 @@ export type SubCategoryResponse = DefaultResponseType & {
   categoryStatus: CategoryStatus;
   id: string;
   mainCategory: MainCategory;
+  mainCategoryName: string;
   productCount: number;
   subCategoryName: string;
   scheduledDate?: Date;

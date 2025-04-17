@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import PageHeader from '../../components/PageHeader';
 import DateDisplay from '../../components/datePicker/DateDisplay';
+import Icon from '../../components/icons/Icon';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import { SecondaryActionBtnProps } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
@@ -12,12 +13,21 @@ import {
   useGetSubCategoryByIdQuery,
 } from '../../features/subCategories/subCategoryApiSlice';
 import { MainPath } from '../../layout/nav/enums';
-import { BtnVariant, SizeVariant } from '../../types/enums';
+import { BtnVariant, IconName, SizeVariant } from '../../types/enums';
 
 const ViewSubCategoryPage = () => {
   const { language } = useLanguage();
   const params = useParams();
   const navigate = useNavigate();
+  const {
+    data: category,
+    isLoading,
+    isError,
+    refetch,
+  } = useGetSubCategoryByIdQuery(params.id || '', {
+    refetchOnMountOrArgChange: true,
+  });
+
   const { onAddMessagePopup } = useMessagePopup();
   const [deleteSubCategory] = useDeleteSubCategoryMutation();
 
@@ -57,19 +67,12 @@ const ViewSubCategoryPage = () => {
     label: language.cancel,
   };
 
-  const {
-    data: category,
-    isLoading,
-    isError,
-    refetch,
-  } = useGetSubCategoryByIdQuery(params.id || '');
-
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
   return (
-    <section className="page page-small">
+    <section className="page page-medium">
       <PageHeader
         heading={language.category}
         linkText={language.createNewCategory}
@@ -82,12 +85,18 @@ const ViewSubCategoryPage = () => {
         <div className="page-card">
           {!isError && category ? (
             <div>
-              <div>Name: {category.subCategoryName}</div>
-              <div>Product count: {category.productCount}</div>
-              <div>Status: {category.categoryStatus}</div>
+              <div>
+                {language.name}: {category.subCategoryName}
+              </div>
+              <div>
+                {language.totalProducts} {category.productCount}
+              </div>
+              <div>
+                {language.status}: {category.categoryStatus}
+              </div>
               {category.scheduledDate && (
                 <div>
-                  Date:
+                  {language.date}:
                   <DateDisplay
                     date={category.scheduledDate}
                     hour="2-digit"
@@ -95,13 +104,23 @@ const ViewSubCategoryPage = () => {
                   />
                 </div>
               )}
-
-              <div>Parent category: {category.mainCategory.categoryName}</div>
               <div>
-                Be aware that this category is
-                <span>inactive</span>
-                <span>scheduled</span>
+                {language.parentCategory}: {category.mainCategory.categoryName}
               </div>
+              {category.mainCategory.categoryStatus !== 'Published' && (
+                <div>
+                  <Icon iconName={IconName.Warning} title="ll" />
+                  <span>{language.categoryIsCurrently}</span>
+                  <span>
+                    {
+                      language[
+                        category.mainCategory.categoryStatus.toLocaleLowerCase()
+                      ]
+                    }
+                  </span>
+                  <span>{language.categoryWillNotBeVisible}</span>
+                </div>
+              )}
               <div className="footer-buttons">
                 <ModalContainer
                   triggerModalBtnContent={language.delete}

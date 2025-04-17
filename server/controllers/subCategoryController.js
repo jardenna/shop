@@ -43,7 +43,9 @@ const createSubCategory = asyncHandler(async (req, res) => {
 
   const existingSubCategory = await SubCategory.findOne({
     subCategoryName: { $regex: new RegExp(`^${subCategoryName}$`, 'i') },
+    category,
   });
+
   if (existingSubCategory) {
     return res.status(400).json({
       success: false,
@@ -110,6 +112,7 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
     {
       $addFields: {
         productCount: { $size: '$products' },
+        mainCategoryName: '$mainCategory.categoryName',
       },
     },
     {
@@ -128,7 +131,8 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
     },
     {
       $addFields: {
-        'mainCategory.id': '$mainCategory._id', // Add an `id` field in mainCategory
+        'mainCategory.id': '$mainCategory._id',
+        mainCategoryName: '$mainCategory.categoryName',
       },
     },
     {
@@ -147,7 +151,11 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
   });
 });
 
-const checkScheduledReady = asyncHandler(async (req, res) => {
+// @desc    Check if category is scheduled
+// @route   /api/scheduled
+// @method  Get
+// @access  Public
+const checkScheduled = asyncHandler(async (req, res) => {
   const now = new Date();
   const hasScheduled = await SubCategory.exists({
     categoryStatus: 'Scheduled',
@@ -281,7 +289,7 @@ const deleteSubCategory = asyncHandler(async (req, res) => {
 });
 
 export {
-  checkScheduledReady,
+  checkScheduled,
   createSubCategory,
   deleteSubCategory,
   getAllSubCategories,

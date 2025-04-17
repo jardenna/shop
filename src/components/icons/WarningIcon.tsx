@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import variables from '../../scss/variables.module.scss';
 import { IconDefaultProps } from './Icon';
 
 const WarningIcon: FC<IconDefaultProps> = ({
@@ -15,7 +16,7 @@ const WarningIcon: FC<IconDefaultProps> = ({
     className={className}
     viewBox="0 0 24 24"
     fill="none"
-    stroke="currentColor"
+    stroke={variables.colorWarning}
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"

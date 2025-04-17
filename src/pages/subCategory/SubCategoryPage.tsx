@@ -1,32 +1,34 @@
 import { Link } from 'react-router';
 import { SubCategoryResponse } from '../../app/api/apiTypes';
 import DateDisplay from '../../components/datePicker/DateDisplay';
+import Icon from '../../components/icons/Icon';
 import PageHeader from '../../components/PageHeader';
 import Table from '../../components/sortTable/Table';
+import Tooltip from '../../components/tooltip/Tooltip';
 import useLanguage from '../../features/language/useLanguage';
 import {
   useGetAllSubCategoriesQuery,
   useGetScheduledQuery,
 } from '../../features/subCategories/subCategoryApiSlice';
 import { MainPath } from '../../layout/nav/enums';
+import { BtnVariant, IconName } from '../../types/enums';
 
 const SubCategoryPage = () => {
   const { language } = useLanguage();
-  const sixHours = 1000 * 60 * 60 * 6;
 
-  const { data: hasScheduledData, isLoading } = useGetScheduledQuery(
-    undefined,
-    {
-      pollingInterval: sixHours, // check every 6 hours
-    },
-  );
+  const { data: hasScheduledData } = useGetScheduledQuery(undefined, {
+    pollingInterval: 30000,
+  });
 
   const shouldPollFullList = hasScheduledData?.hasScheduled ?? false;
 
-  const { data: allSubcategories } = useGetAllSubCategoriesQuery(undefined, {
-    pollingInterval: shouldPollFullList ? 15000 : undefined,
-    refetchOnMountOrArgChange: true,
-  });
+  const { data: allSubcategories, isLoading } = useGetAllSubCategoriesQuery(
+    undefined,
+    {
+      pollingInterval: shouldPollFullList ? 15000 : undefined,
+      refetchOnMountOrArgChange: true,
+    },
+  );
 
   const tableHeaders: {
     key: keyof SubCategoryResponse;
@@ -34,12 +36,21 @@ const SubCategoryPage = () => {
     name: string;
   }[] = [
     {
+      key: 'mainCategoryName',
+      label: 'parentCategory',
+      name: 'mainCategoryName',
+    },
+    {
       key: 'subCategoryName',
       label: 'name',
       name: 'subCategoryName',
     },
+    {
+      key: 'productCount',
+      label: 'totalProducts',
+      name: 'productCount',
+    },
     { key: 'categoryStatus', label: 'status', name: 'categoryStatus' },
-    { key: 'createdAt', label: 'createdAt', name: 'createdAt' },
     { key: 'id', label: '', name: '' },
   ];
 
@@ -47,24 +58,42 @@ const SubCategoryPage = () => {
     id,
     scheduledDate,
     subCategoryName,
-    createdAt,
     categoryStatus,
+    productCount,
+    mainCategoryName,
   }: SubCategoryResponse) => {
     const statusKey = categoryStatus.toLocaleLowerCase();
     return (
       <tr key={id}>
+        <td>{mainCategoryName}</td>
         <td>{subCategoryName}</td>
+        <td>{productCount}</td>
         <td>
-          <span>{language[statusKey]}</span>
-          {scheduledDate && (
-            <span>
-              <DateDisplay date={scheduledDate} />
-            </span>
-          )}
+          <div className={`badge ${categoryStatus.toLowerCase()}`}>
+            <span>{language[statusKey]}</span>
+            {scheduledDate && (
+              <Tooltip
+                text={
+                  <DateDisplay
+                    date={scheduledDate}
+                    hour="2-digit"
+                    minute="2-digit"
+                  />
+                }
+                ariaControls="scheduled-date"
+                triggerBtnVariant={BtnVariant.Ghost}
+                ariaLabel={language.scheduledDate}
+              >
+                <Icon
+                  iconName={IconName.Calendar}
+                  title={language.calendar}
+                  ariaLabel={language.scheduledDate}
+                />
+              </Tooltip>
+            )}
+          </div>
         </td>
-        <td>
-          <DateDisplay date={createdAt} />
-        </td>
+
         <td>
           <Link to={`/admin/${MainPath.AdminSubCategoryView}/${id}`}>
             {language.editCategory}

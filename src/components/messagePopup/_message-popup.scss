@@ -50,32 +50,19 @@
   padding-left: 12px;
 
   svg {
-    stroke: $color-success;
     min-width: rem(24px);
   }
 
   &.error {
     border-left-color: $color-danger;
-
-    svg {
-      stroke: $color-danger;
-    }
   }
 
   &.info {
     border-left-color: $color-info;
-
-    svg {
-      stroke: $color-info;
-    }
   }
 
   &.warning {
     border-left-color: $color-warning;
-
-    svg {
-      stroke: $color-warning;
-    }
   }
 
   .btn-ghost {
@@ -87,7 +74,6 @@
     svg {
       width: rem(12px);
       min-width: rem(12px);
-      stroke: currentcolor;
     }
   }
 }

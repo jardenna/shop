@@ -73,6 +73,10 @@
   position: relative;
   display: flex;
 
+  svg {
+    stroke: currentcolor;
+  }
+
   &::before {
     content: '';
     position: absolute;
