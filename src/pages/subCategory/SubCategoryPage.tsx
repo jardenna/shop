@@ -36,12 +36,21 @@ const SubCategoryPage = () => {
     name: string;
   }[] = [
     {
+      key: 'mainCategoryName',
+      label: 'parentCategory',
+      name: 'mainCategoryName',
+    },
+    {
       key: 'subCategoryName',
       label: 'name',
       name: 'subCategoryName',
     },
+    {
+      key: 'productCount',
+      label: 'totalProducts',
+      name: 'productCount',
+    },
     { key: 'categoryStatus', label: 'status', name: 'categoryStatus' },
-    { key: 'createdAt', label: 'createdAt', name: 'createdAt' },
     { key: 'id', label: '', name: '' },
   ];
 
@@ -49,13 +58,16 @@ const SubCategoryPage = () => {
     id,
     scheduledDate,
     subCategoryName,
-    createdAt,
     categoryStatus,
+    productCount,
+    mainCategoryName,
   }: SubCategoryResponse) => {
     const statusKey = categoryStatus.toLocaleLowerCase();
     return (
       <tr key={id}>
+        <td>{mainCategoryName}</td>
         <td>{subCategoryName}</td>
+        <td>{productCount}</td>
         <td>
           <div className={`badge ${categoryStatus.toLowerCase()}`}>
             <span>{language[statusKey]}</span>
@@ -81,9 +93,7 @@ const SubCategoryPage = () => {
             )}
           </div>
         </td>
-        <td>
-          <DateDisplay date={createdAt} />
-        </td>
+
         <td>
           <Link to={`/admin/${MainPath.AdminSubCategoryView}/${id}`}>
             {language.editCategory}
