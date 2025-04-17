@@ -21,6 +21,7 @@ const subCategoryApiSlice = apiSlice.injectEndpoints({
     }),
     getSubCategoryById: builder.query<SubCategoryResponse, string>({
       query: (id) => `${subCategoryUrl}/${id}`,
+      providesTags: [TagTypesEnum.SubCategories],
     }),
     deleteSubCategory: builder.mutation<DefaultResponse, string>({
       query: (id) => ({

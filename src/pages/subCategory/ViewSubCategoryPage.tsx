@@ -19,6 +19,15 @@ const ViewSubCategoryPage = () => {
   const { language } = useLanguage();
   const params = useParams();
   const navigate = useNavigate();
+  const {
+    data: category,
+    isLoading,
+    isError,
+    refetch,
+  } = useGetSubCategoryByIdQuery(params.id || '', {
+    refetchOnMountOrArgChange: true,
+  });
+
   const { onAddMessagePopup } = useMessagePopup();
   const [deleteSubCategory] = useDeleteSubCategoryMutation();
 
@@ -57,13 +66,6 @@ const ViewSubCategoryPage = () => {
   const secondaryActionBtn: SecondaryActionBtnProps = {
     label: language.cancel,
   };
-
-  const {
-    data: category,
-    isLoading,
-    isError,
-    refetch,
-  } = useGetSubCategoryByIdQuery(params.id || '');
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -105,12 +107,16 @@ const ViewSubCategoryPage = () => {
               <div>
                 {language.parentCategory}: {category.mainCategory.categoryName}
               </div>
-              {category.categoryStatus !== 'Published' && (
+              {category.mainCategory.categoryStatus !== 'Published' && (
                 <div>
                   <Icon iconName={IconName.Warning} title="ll" />
                   <span>{language.categoryIsCurrently}</span>
                   <span>
-                    {language[category.categoryStatus.toLocaleLowerCase()]}
+                    {
+                      language[
+                        category.mainCategory.categoryStatus.toLocaleLowerCase()
+                      ]
+                    }
                   </span>
                   <span>{language.categoryWillNotBeVisible}</span>
                 </div>
