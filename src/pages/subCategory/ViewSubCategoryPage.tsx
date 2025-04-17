@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import PageHeader from '../../components/PageHeader';
 import DateDisplay from '../../components/datePicker/DateDisplay';
+import Icon from '../../components/icons/Icon';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import { SecondaryActionBtnProps } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
@@ -12,7 +13,7 @@ import {
   useGetSubCategoryByIdQuery,
 } from '../../features/subCategories/subCategoryApiSlice';
 import { MainPath } from '../../layout/nav/enums';
-import { BtnVariant, SizeVariant } from '../../types/enums';
+import { BtnVariant, IconName, SizeVariant } from '../../types/enums';
 
 const ViewSubCategoryPage = () => {
   const { language } = useLanguage();
@@ -69,7 +70,7 @@ const ViewSubCategoryPage = () => {
   }
 
   return (
-    <section className="page page-small">
+    <section className="page page-medium">
       <PageHeader
         heading={language.category}
         linkText={language.createNewCategory}
@@ -101,13 +102,12 @@ const ViewSubCategoryPage = () => {
                   />
                 </div>
               )}
-
               <div>
                 {language.parentCategory}: {category.mainCategory.categoryName}
               </div>
-
               {category.categoryStatus !== 'Published' && (
                 <div>
+                  <Icon iconName={IconName.Warning} title="ll" />
                   <span>{language.categoryIsCurrently}</span>
                   <span>
                     {language[category.categoryStatus.toLocaleLowerCase()]}
@@ -115,7 +115,6 @@ const ViewSubCategoryPage = () => {
                   <span>{language.categoryWillNotBeVisible}</span>
                 </div>
               )}
-
               <div className="footer-buttons">
                 <ModalContainer
                   triggerModalBtnContent={language.delete}
