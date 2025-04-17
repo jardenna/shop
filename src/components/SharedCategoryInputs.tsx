@@ -84,7 +84,6 @@ const SharedCategoryInputs = ({
           <DatePicker
             onSelectDate={onSelectDate}
             selectedDate={selectedDate}
-            id="date"
             labelText={language.selectPublishDate}
           />
           <TimeInput

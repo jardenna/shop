@@ -2,25 +2,18 @@ import { DayPicker, OnSelectHandler } from 'react-day-picker';
 import { da, enGB } from 'react-day-picker/locale';
 import 'react-day-picker/style.css';
 import useLanguage from '../../features/language/useLanguage';
-import FormLabel from '../formElements/FormLabel';
 import './_date-picker.scss';
 
 type DatePickerProps = {
-  id: string;
   labelText: string;
   onSelectDate: OnSelectHandler<Date>;
   selectedDate: Date;
-  inputHasNoLabel?: boolean;
-  required?: boolean;
 };
 
 function DatePicker({
   onSelectDate,
   selectedDate,
-  required,
   labelText,
-  id,
-  inputHasNoLabel,
 }: DatePickerProps) {
   const { selectedLanguage } = useLanguage();
 
@@ -28,15 +21,9 @@ function DatePicker({
 
   return (
     <div className="input-container date-picker-container">
-      <FormLabel
-        required={required}
-        inputLabel={labelText}
-        id={id}
-        inputHasNoLabel={inputHasNoLabel}
-      />
+      <span>{labelText}</span>
       <DayPicker
         fixedWeeks
-        id={id}
         required
         startMonth={new Date()}
         mode="single"
