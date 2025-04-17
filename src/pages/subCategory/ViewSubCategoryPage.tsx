@@ -82,12 +82,18 @@ const ViewSubCategoryPage = () => {
         <div className="page-card">
           {!isError && category ? (
             <div>
-              <div>Name: {category.subCategoryName}</div>
-              <div>Product count: {category.productCount}</div>
-              <div>Status: {category.categoryStatus}</div>
+              <div>
+                {language.name}: {category.subCategoryName}
+              </div>
+              <div>
+                {language.totalProducts} {category.productCount}
+              </div>
+              <div>
+                {language.status}: {category.categoryStatus}
+              </div>
               {category.scheduledDate && (
                 <div>
-                  Date:
+                  {language.date}:
                   <DateDisplay
                     date={category.scheduledDate}
                     hour="2-digit"
@@ -96,7 +102,9 @@ const ViewSubCategoryPage = () => {
                 </div>
               )}
 
-              <div>Parent category: {category.mainCategory.categoryName}</div>
+              <div>
+                {language.parentCategory}: {category.mainCategory.categoryName}
+              </div>
 
               {category.categoryStatus !== 'Published' && (
                 <div>
