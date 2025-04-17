@@ -1,10 +1,10 @@
 import express from 'express';
 import {
+  checkScheduled,
   createCategory,
   deleteCategory,
   getAllCategories,
   getCategoryById,
-  getScheduledCategories,
   updateCategory,
 } from '../controllers/categoryController.js';
 import {
@@ -23,13 +23,13 @@ router.post(
   createCategory,
 );
 
+// Always define specific routes before dynamic ones
+router.get('/scheduled', checkScheduled);
+
 router
   .route('/')
   .post(languageMiddleware, authenticate, authorizeAdmin, createCategory)
   .get(languageMiddleware, getAllCategories);
-
-// Always define specific routes before dynamic ones
-router.get('/scheduled', getScheduledCategories);
 
 router
   .route('/:id')
