@@ -49,32 +49,32 @@ const CategoryPage = () => {
       <tr key={id}>
         <td>{categoryName}</td>
         <td>
-          <Badge
-            badgeText={language[statusKey]}
-            className={categoryStatus.toLowerCase()}
-            tooltip={
-              scheduledDate && (
-                <Tooltip
-                  text={
-                    <DateDisplay
-                      date={scheduledDate}
-                      hour="2-digit"
-                      minute="2-digit"
-                    />
-                  }
-                  ariaControls="scheduled-date"
-                  triggerBtnVariant={BtnVariant.Ghost}
-                  ariaLabel={language.scheduledDate}
-                >
-                  <Icon
-                    iconName={IconName.Calendar}
-                    title={language.calendar}
-                    ariaLabel={language.scheduledDate}
+          <div className="flex">
+            <Badge
+              badgeText={language[statusKey]}
+              className={categoryStatus.toLowerCase()}
+            />
+            {scheduledDate && (
+              <Tooltip
+                text={
+                  <DateDisplay
+                    date={scheduledDate}
+                    hour="2-digit"
+                    minute="2-digit"
                   />
-                </Tooltip>
-              )
-            }
-          />
+                }
+                ariaControls="scheduled-date"
+                triggerBtnVariant={BtnVariant.Ghost}
+                ariaLabel={language.scheduledDate}
+              >
+                <Icon
+                  iconName={IconName.Calendar}
+                  title={language.calendar}
+                  ariaLabel={language.scheduledDate}
+                />
+              </Tooltip>
+            )}
+          </div>
         </td>
         <td>
           <DateDisplay date={createdAt} />
