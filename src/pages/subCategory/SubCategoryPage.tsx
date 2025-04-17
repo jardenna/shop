@@ -12,12 +12,12 @@ import { MainPath } from '../../layout/nav/enums';
 
 const SubCategoryPage = () => {
   const { language } = useLanguage();
-  // const sixHours = 1000 * 60 * 60 * 6;
+  const sixHours = 1000 * 60 * 60 * 6;
 
   const { data: hasScheduledData, isLoading } = useGetScheduledQuery(
     undefined,
     {
-      pollingInterval: 15000, // check every 1 min
+      pollingInterval: sixHours, // check every 6 hours
     },
   );
 
@@ -25,6 +25,7 @@ const SubCategoryPage = () => {
 
   const { data: allSubcategories } = useGetAllSubCategoriesQuery(undefined, {
     pollingInterval: shouldPollFullList ? 15000 : undefined,
+    refetchOnMountOrArgChange: true,
   });
 
   const tableHeaders: {
