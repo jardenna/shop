@@ -6,6 +6,10 @@
     @extend %styled-input;
   }
 
+  .select-box__menu {
+    z-index: 2;
+  }
+
   .select-box__indicator-separator {
     display: none;
   }

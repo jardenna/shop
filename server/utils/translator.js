@@ -31,9 +31,13 @@ translations.forEach((row) => {
 
 // Translation function
 export const t = (key, lang = 'en') => {
-  if (!translationMap[key]) {
-    console.error(`Missing translation key: ${key}`);
-    return key; // Return key if missing
+  lang = lang?.replace(/^"+|"+$/g, '') || 'en'; // remove leading/trailing double quotes
+  const translation = translationMap[key]?.[lang];
+
+  if (translation === undefined || translation === null) {
+    console.warn(`Missing translation for key "${key}" in lang "${lang}"`);
+    return key;
   }
-  return translationMap[key][lang] || key;
+
+  return translation;
 };

@@ -2,7 +2,7 @@ import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import {
   AuthRequest,
   AuthResponse,
-  OmittedAuthResponse,
+  DefaultResponse,
   OmittedUserRequest,
 } from '../../app/api/apiTypes';
 import { authEndpoints } from '../../app/endpoints';
@@ -26,7 +26,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.Auth],
     }),
-    logout: builder.mutation<OmittedAuthResponse, void>({
+    logout: builder.mutation<DefaultResponse, void>({
       query: () => ({
         url: authEndpoints.logout,
         method: 'POST',

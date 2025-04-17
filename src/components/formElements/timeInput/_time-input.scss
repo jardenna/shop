@@ -1,0 +1,13 @@
+@use '../../../scss/globals' as *;
+
+.hide-time-icon {
+  display: flex;
+  width: 30px;
+  position: absolute;
+  height: 30px;
+  background-color: #f4f4f5;
+  z-index: 1;
+  right: 0;
+  top: 50%;
+  transform: translateX(-50%);
+}

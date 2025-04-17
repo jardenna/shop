@@ -1,6 +1,6 @@
 import apiSlice, { TagTypesEnum } from '../../../app/api/apiSlice';
 import {
-  OmittedAuthResponse,
+  DefaultResponse,
   UpdateUserByIdRequest,
   UpdateUserByIdResponse,
   UserResponse,
@@ -26,7 +26,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         invalidatesTags: [TagTypesEnum.Auth],
       },
     ),
-    deleteUser: builder.mutation<OmittedAuthResponse, string>({
+    deleteUser: builder.mutation<DefaultResponse, string>({
       query: (id) => ({
         url: `${userUrl}/${id}`,
         method: 'DELETE',

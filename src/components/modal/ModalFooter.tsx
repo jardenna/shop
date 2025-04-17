@@ -28,7 +28,7 @@ const ModalFooter: FC<modalFooterProps> = ({
     }
   };
   return (
-    <LayoutElement className="modal-footer" ariaLabel="dialog">
+    <LayoutElement className="footer-buttons" ariaLabel="dialog">
       {secondaryActionBtn && (
         <Button
           onClick={secondaryActionBtn.onClick || onCloseModal}
@@ -41,6 +41,7 @@ const ModalFooter: FC<modalFooterProps> = ({
         onClick={handlePrimaryBtnClick}
         type={primaryActionBtn.buttonType}
         className={primaryActionBtn.className}
+        variant={primaryActionBtn.variant || BtnVariant.Primary}
       >
         {primaryActionBtn.label}
       </Button>

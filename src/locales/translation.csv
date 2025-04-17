@@ -2,10 +2,8 @@
 about;About;Profil
 account;Account;Konto
 actionNotAllowedForAdmin;Admin cannot be deleted;Denne handling er ikke tilladt for administrator
-addCategory;Add category;Tilføj kategori
 addCategoryName;Add category name;Tilføj navn på kategori
 additionalInfo;Additional info;Supplerende information
-addSubCategory;Add subcategory;Tilføj underkategori
 admin;Admin;Admin
 allowedFormats;Allowed formats;Tilladte formater
 asc;ascending;stigende
@@ -16,6 +14,7 @@ cannotDeleteAdmin;This action is not allowed for admin;Admin bruger kan ikke sle
 categories;Categories;Kategorier
 category;Category;Kategori
 categoryAlreadyExist;Category already exist;Kategori findes allerede
+categoryCreated;Category created;Kategori tilføjet
 categoryDeleted;Category deleted;Kategori blev slettet
 categoryList;Category list;Kategori-liste
 categoryName;Category name;Kategori navn
@@ -42,10 +41,15 @@ customersList;Customers list;Kundeliste
 dashboard;Dashboard;Dashboard
 date;Date;Dato
 delete;Delete;Slet
+deleteCategory;Delete category;Slet kategori
 deleted;deleted;slettet
+deleteOrReassignCategory;Delete or reassign associated  products before deleting this category;Slet eller tildel produkter på ny, før du sletter denne kategori
 deleteUser;Delete user;Slet bruger
 desc;descending;faldende
 description;Description;Beskrivelse
+editCategory;Edit category;Opdater kategori
+editProduct;Edit product;Opdater produkt
+editSubCategory;Edit subcategory;Opdater underkategori
 editUser;Edit user;Opdater bruger
 email;Email;E-mail
 error;Error;Fejl
@@ -131,13 +135,15 @@ role;Role;Rolle
 save;Save;Gem
 scheduled;Scheduled;Planlagt
 scheduledDate;Scheduled date;Planlagt dato
-scheduledDateMustBeFuture;Scheduled date must be after today;Planlagt dato skal være efter i dag
+scheduledDateMustBeFuture;Scheduled date must be after now;Planlagt dato skal være efter nu
 search;Search;Søg
-selectCategoryStatus;Select categoryStatus;Vælg kategori status
+selectCategoryStatus;Select category status;Vælg kategori status
 selectCurrency;Select currency;Vælg valuta
 selectLanguage;Select language;Vælg sprog
+selectParentCategory;Select parent category status;Vælg main kategori
 selectPreferences;Select preferred language and currency;Vælg sprog og valuta
-selectPublishDate;Select Publish date;Vælg udgivelsesdato
+selectPublishDate;Select publish date;Vælg udgivelsesdato
+selectPublishTime;Select publish time;Vælg udgivelsestid
 shopNow;Shop now;Køb nu
 showPassword;Show password;Vis adgangskode
 signup;Sign up;Opret bruger
@@ -148,6 +154,7 @@ status;Status;Status
 sub;Sub;Sekundær
 subCategories;Subcategories;Underkategorier
 subCategory;Subcategory;Underkategori
+subCategoryAlreadyExist;Subcategory already exists;Underkategori findes allerede
 subCategoryList;Subcategory list;Underkategori-liste
 subCategoryName;Subcategory name;Underkategori navn
 success;Success;Succes
@@ -156,9 +163,11 @@ title;Title;Titel
 trashCan;Trash can;Skraldespand
 unsupportedFile;is not supported type;er ikke understøttet
 update;Update;Opdater
+updateCategory;Update category;Opdater kategori
 updatedAt;Updated at;Opdateret
 updatePreferences;Update Preferences;Opdater præferencer
 updateProduct;Update product;Opdater produkt
+updateSubCategory;Update subcategory;Opdater underkategori
 user;User;Bruger
 userAlreadyExist;A profile with this email already exists. Try logging in instead;Der findes en profil med denne e-mail. Prøv at logge ind i stedet
 userDeleted;User deleted;Bruger slettet

@@ -3,15 +3,15 @@ import { Link } from 'react-router';
 import apiSlice, { TagTypeIdEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import { Category } from '../../app/api/apiTypes';
 import { useAppDispatch } from '../../app/hooks';
+import DateDisplay from '../../components/datePicker/DateDisplay';
 import Icon from '../../components/icons/Icon';
+import PageHeader from '../../components/PageHeader';
 import Table from '../../components/sortTable/Table';
 import Tooltip from '../../components/tooltip/Tooltip';
-import TopContainer from '../../components/TopContainer';
 import {
   useGetAllCategoriesQuery,
   useGetScheduledCategoriesQuery,
 } from '../../features/categories/categoriyApiSlice';
-import DateDisplay from '../../features/categories/DateDisplay';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant, IconName } from '../../types/enums';
@@ -63,7 +63,13 @@ const CategoryPage = () => {
             <span>{language[statusKey]}</span>
             {scheduledDate && (
               <Tooltip
-                text={<DateDisplay date={scheduledDate} />}
+                text={
+                  <DateDisplay
+                    date={scheduledDate}
+                    hour="2-digit"
+                    minute="2-digit"
+                  />
+                }
                 ariaControls="scheduled-date"
                 triggerBtnVariant={BtnVariant.Ghost}
                 ariaLabel={language.scheduledDate}
@@ -91,9 +97,9 @@ const CategoryPage = () => {
 
   return (
     <section className="page">
-      <TopContainer
+      <PageHeader
         heading={language.categories}
-        linkText={language.addCategory}
+        linkText={language.createNewCategory}
         linkTo={`/admin/${MainPath.AdminCategoryCreate}`}
       />
 

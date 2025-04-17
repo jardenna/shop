@@ -1,5 +1,6 @@
 const languageMiddleware = (req, res, next) => {
-  req.lang = req.headers['x-language'] || 'da';
+  let lang = req.headers['x-language'] || 'da';
+  req.lang = lang.replace(/^"+|"+$/g, '');
   console.log('Detected Language:', req.lang);
   next();
 };

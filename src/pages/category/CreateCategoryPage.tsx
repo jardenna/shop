@@ -1,10 +1,9 @@
-import { CategoryStatus } from '../../app/api/apiTypes';
-import CategoryForm from '../../components/CategoryForm';
+import PageHeader from '../../components/PageHeader';
+import CategoryForm from '../../features/categories/CategoryForm';
 import useLanguage from '../../features/language/useLanguage';
 
 export type CategoryState = {
   categoryName: string;
-  categoryStatus: CategoryStatus;
 };
 
 const CreateCategoryPage = () => {
@@ -12,7 +11,7 @@ const CreateCategoryPage = () => {
 
   return (
     <section className="page-small">
-      <h1>{language.createNewCategory}</h1>
+      <PageHeader heading={language.createNewCategory} />
       <div className="page-card">
         <CategoryForm selectedCategory={null} id={null} />
       </div>

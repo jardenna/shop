@@ -113,15 +113,15 @@ const getScheduledCategories = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Public
 const getCategoryById = asyncHandler(async (req, res) => {
-  const category = await Category.findById(req.params.id);
+  const category = await Category.findById(req.params.id).lean();
 
   if (!category) {
     return res
       .status(404)
       .json({ success: false, message: 'No category with that ID' });
   }
-
-  res.status(200).json({ success: true, category });
+  const formattedCategory = formatMongoData(category);
+  res.status(200).json({ success: true, category: formattedCategory });
 });
 
 // @desc    Update category
@@ -151,7 +151,11 @@ const updateCategory = asyncHandler(async (req, res) => {
   category.categoryName = categoryName;
   category.categoryStatus = categoryStatus;
 
-  const validationResult = validateScheduledDate(categoryStatus, scheduledDate);
+  const validationResult = validateScheduledDate(
+    categoryStatus,
+    scheduledDate,
+    req.lang,
+  );
   if (!validationResult.success) {
     return res.status(400).json(validationResult);
   }
@@ -168,8 +172,33 @@ const updateCategory = asyncHandler(async (req, res) => {
   });
 });
 
+// @desc    Delete category
+// @route   /api/category/id
+// @method  Delete
+// @access  Private for admin
+const deleteCategory = asyncHandler(async (req, res) => {
+  try {
+    const category = await Category.findOneAndDelete({
+      _id: req.params.id,
+    });
+
+    if (!category) {
+      return res
+        .status(404)
+        .json({ message: t('categorieNotFound', req.lang) });
+    }
+
+    return res
+      .status(200)
+      .json({ success: true, message: t('categoryDeleted', req.lang) });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
 export {
   createCategory,
+  deleteCategory,
   getAllCategories,
   getCategoryById,
   getScheduledCategories,

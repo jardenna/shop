@@ -1,33 +1,32 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { CreateCategoryRequest } from '../app/api/apiTypes';
+import { CreateCategoryRequest } from '../../app/api/apiTypes';
+import SharedCategoryInputs from '../../components/SharedCategoryInputs';
+import { OptionType } from '../../components/customSelectbox/Selectbox';
+import useDatePicker from '../../components/datePicker/useDatePicker';
+import FieldSet from '../../components/fieldset/FieldSet';
+import Form from '../../components/formElements/form/Form';
+import validationCategories from '../../components/formElements/validation/validateCategory';
+import validateUpdateCategory from '../../components/formElements/validation/validateUpdateCategory';
+import useMessagePopup from '../../components/messagePopup/useMessagePopup';
+import useFormValidation from '../../hooks/useFormValidation';
+import { MainPath } from '../../layout/nav/enums';
+import useLanguage from '../language/useLanguage';
 import {
   useCreateCategoryMutation,
   useUpdateCategoryMutation,
-} from '../features/categories/categoriyApiSlice';
-import useLanguage from '../features/language/useLanguage';
-import useFormValidation from '../hooks/useFormValidation';
-import { MainPath } from '../layout/nav/enums';
-import Selectbox, { OptionType } from './customSelectbox/Selectbox';
-import DatePicker from './datePicker/DatePicker';
-import FieldSet from './fieldset/FieldSet';
-import Form from './formElements/form/Form';
-import Input from './formElements/Input';
-import validationCategories from './formElements/validation/validateCategory';
-import validateUpdateCategory from './formElements/validation/validateUpdateCategory';
-import useMessagePopup from './messagePopup/useMessagePopup';
+} from './categoriyApiSlice';
 
 type CategoryFormProps = {
-  id: string | null; // Allow id to be null
-  selectedCategory: CreateCategoryRequest | null; // Allow selectedCategory to be null
+  id: string | null;
+  selectedCategory: CreateCategoryRequest | null;
 };
 
 const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const initialState: CreateCategoryRequest = {
-    categoryName: selectedCategory?.categoryName || '', // Use default if null
-    categoryStatus: selectedCategory?.categoryStatus || 'Inactive', // Default to 'Inactive'
+    categoryName: selectedCategory?.categoryName || '',
+    categoryStatus: selectedCategory?.categoryStatus || 'Inactive',
   };
 
   const { onChange, values, onSubmit, errors, onCustomChange } =
@@ -40,7 +39,10 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
   const { onAddMessagePopup } = useMessagePopup();
   const [updateCategory] = useUpdateCategoryMutation();
   const [createCategory] = useCreateCategoryMutation();
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const selectedTime = selectedCategory?.scheduledDate;
+
+  const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
+    useDatePicker({ initialTime: selectedTime });
 
   const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
     onCustomChange(name, selectedOptions.value);
@@ -89,59 +91,32 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
     }
   }
 
-  const statusOptions = [
-    {
-      label: language.inactive,
-      value: 'Inactive',
-    },
-    {
-      label: language.scheduled,
-      value: 'Scheduled',
-    },
-    {
-      label: language.published,
-      value: 'Published',
-    },
-  ];
-
   return (
     <Form
       onSubmit={onSubmit}
       submitBtnLabel={id ? language.save : language.create}
     >
       <FieldSet legendText={language.categories}>
-        <Input
-          onChange={onChange}
-          value={values.categoryName}
-          id="categoryName"
-          name="categoryName"
-          labelText={language.addCategoryName}
-          placeholder={language.categoryName}
-          errorText={language[errors.categoryName]}
-          required
-        />
-
-        <Selectbox
-          id="categoryStatus"
-          defaultValue={{
+        <SharedCategoryInputs
+          onCategoryNameChange={onChange}
+          categoryNamevalue={values.categoryName}
+          categoryNameId="categoryName"
+          defaultStatusValue={{
             label: language[values.categoryStatus.toLowerCase()],
             value: values.categoryStatus,
           }}
-          options={statusOptions}
-          onChange={(selectedOptions: OptionType) => {
+          onSelectStatus={(selectedOptions: OptionType) => {
             handleSelectStatus('categoryStatus', selectedOptions);
           }}
-          name="categoryStatus"
-          labelText={language.selectCategoryStatus}
+          categoryStatus={values.categoryStatus}
+          onSelectDate={handleDaySelect}
+          selectedDate={selectedDate}
+          timeValue={timeValue}
+          onTimeChange={handleTimeChange}
+          categoryNameErrorText={language[errors.categoryName]}
+          categoryNameLabelText={language.addCategoryName}
+          categoryNamePlaceholder={language.categoryName}
         />
-        {values.categoryStatus === 'Scheduled' && (
-          <DatePicker
-            onSelectDate={setSelectedDate}
-            selectedDate={selectedDate}
-            id="selectedDate"
-            labelText={language.selectPublishDate}
-          />
-        )}
       </FieldSet>
     </Form>
   );

@@ -1,8 +1,10 @@
 import express from 'express';
 import {
+  checkScheduledReady,
   createSubCategory,
   deleteSubCategory,
   getAllSubCategories,
+  getSubCategoryById,
   updateSubCategory,
 } from '../controllers/subCategoryController.js';
 import {
@@ -13,6 +15,7 @@ import {
 import languageMiddleware from '../middleware/languageMiddleware.js';
 const router = express.Router();
 
+router.get('/scheduled', checkScheduledReady);
 router
   .route('/')
   .post(languageMiddleware, authenticate, authorizeEmployee, createSubCategory)
@@ -21,6 +24,7 @@ router
 router
   .route('/:id')
   .put(authenticate, authorizeEmployee, updateSubCategory)
-  .delete(authenticate, authorizeAdmin, deleteSubCategory);
+  .get(getSubCategoryById)
+  .delete(languageMiddleware, authenticate, authorizeAdmin, deleteSubCategory);
 
 export default router;

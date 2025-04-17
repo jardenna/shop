@@ -1,6 +1,7 @@
 import express from 'express';
 import {
   createCategory,
+  deleteCategory,
   getAllCategories,
   getCategoryById,
   getScheduledCategories,
@@ -33,6 +34,7 @@ router.get('/scheduled', getScheduledCategories);
 router
   .route('/:id')
   .get(getCategoryById)
-  .put(languageMiddleware, authenticate, authorizeEmployee, updateCategory);
+  .put(languageMiddleware, authenticate, authorizeEmployee, updateCategory)
+  .delete(languageMiddleware, authenticate, authorizeAdmin, deleteCategory);
 
 export default router;

@@ -3,6 +3,7 @@ import Category from '../models/categoryModel.js';
 import Product from '../models/productModel.js';
 import SubCategory from '../models/subCategoryModel.js';
 import formatMongoData from '../utils/formatMongoData.js';
+import { t } from '../utils/translator.js';
 import validateScheduledDate from '../utils/validateScheduledDate.js';
 
 // @desc    Create SubCategory
@@ -18,7 +19,7 @@ const createSubCategory = asyncHandler(async (req, res) => {
   if (!mainCategory) {
     return res
       .status(400)
-      .json({ success: false, message: 'Category do not exist' });
+      .json({ success: false, message: 'Parent category does not exist' });
   }
 
   const validationResult = validateScheduledDate(categoryStatus, scheduledDate);
@@ -44,9 +45,10 @@ const createSubCategory = asyncHandler(async (req, res) => {
     subCategoryName: { $regex: new RegExp(`^${subCategoryName}$`, 'i') },
   });
   if (existingSubCategory) {
-    return res
-      .status(400)
-      .json({ success: false, message: 'Subcategory already exists' });
+    return res.status(400).json({
+      success: false,
+      message: t('subCategoryAlreadyExist', req.lang),
+    });
   }
 
   const subCategoryData = { subCategoryName, category, categoryStatus };
@@ -145,14 +147,61 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
   });
 });
 
+const checkScheduledReady = asyncHandler(async (req, res) => {
+  const now = new Date();
+  const hasScheduled = await SubCategory.exists({
+    categoryStatus: 'Scheduled',
+    scheduledDate: { $lte: now },
+  });
+
+  res.json({ hasScheduled: !!hasScheduled });
+});
+
+// @desc    Get category by id
+// @route   /api/category/id
+// @method  Get
+// @access  Public
+const getSubCategoryById = asyncHandler(async (req, res) => {
+  const category = await SubCategory.findById(req.params.id)
+    .populate('category', 'categoryName categoryStatus')
+    .lean();
+
+  if (!category) {
+    return res
+      .status(404)
+      .json({ success: false, message: 'No subcategory with that ID' });
+  }
+
+  const productCount = await Product.countDocuments({
+    subCategory: req.params.id,
+  });
+
+  const { category: mainCategory, ...rest } = category;
+
+  res.status(200).json(
+    formatMongoData({
+      ...rest,
+      mainCategory,
+      productCount,
+    }),
+  );
+});
+
 // @desc    Update SubCategory
 // @route   /api/subcategories/:id
 // @method  Put
 // @access  Private for admin and employee
 const updateSubCategory = asyncHandler(async (req, res) => {
   const { subCategoryName, category, categoryStatus, scheduledDate } = req.body;
-
   const subCategory = await SubCategory.findById(req.params.id);
+  // Validate category existence
+  const mainCategory = await Category.findById(category);
+
+  if (!mainCategory) {
+    return res
+      .status(400)
+      .json({ success: false, message: 'Parent category does not exist' });
+  }
 
   if (!subCategory) {
     return res.status(404).json({
@@ -215,7 +264,7 @@ const deleteSubCategory = asyncHandler(async (req, res) => {
   if (products.length > 0) {
     return res.status(400).json({
       success: false,
-      message: 'Cannot delete subcategory. Products are associated with it.',
+      message: t('deleteOrReassignCategory', req.lang),
     });
   }
 
@@ -232,8 +281,10 @@ const deleteSubCategory = asyncHandler(async (req, res) => {
 });
 
 export {
+  checkScheduledReady,
   createSubCategory,
   deleteSubCategory,
   getAllSubCategories,
+  getSubCategoryById,
   updateSubCategory,
 };

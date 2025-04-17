@@ -1,19 +1,35 @@
 import { Link } from 'react-router';
-import { SubCategory } from '../../app/api/apiTypes';
+import { SubCategoryResponse } from '../../app/api/apiTypes';
+import DateDisplay from '../../components/datePicker/DateDisplay';
+import PageHeader from '../../components/PageHeader';
 import Table from '../../components/sortTable/Table';
-import TopContainer from '../../components/TopContainer';
-import DateDisplay from '../../features/categories/DateDisplay';
 import useLanguage from '../../features/language/useLanguage';
-import { useGetAllSubCategoriesQuery } from '../../features/subCategories/subCategoryApiSlice';
+import {
+  useGetAllSubCategoriesQuery,
+  useGetScheduledQuery,
+} from '../../features/subCategories/subCategoryApiSlice';
 import { MainPath } from '../../layout/nav/enums';
 
 const SubCategoryPage = () => {
   const { language } = useLanguage();
+  const sixHours = 1000 * 60 * 60 * 6;
 
-  const { data: allSubcategories, isLoading } = useGetAllSubCategoriesQuery();
+  const { data: hasScheduledData, isLoading } = useGetScheduledQuery(
+    undefined,
+    {
+      pollingInterval: sixHours, // check every 6 hours
+    },
+  );
+
+  const shouldPollFullList = hasScheduledData?.hasScheduled ?? false;
+
+  const { data: allSubcategories } = useGetAllSubCategoriesQuery(undefined, {
+    pollingInterval: shouldPollFullList ? 15000 : undefined,
+    refetchOnMountOrArgChange: true,
+  });
 
   const tableHeaders: {
-    key: keyof SubCategory;
+    key: keyof SubCategoryResponse;
     label: string;
     name: string;
   }[] = [
@@ -33,7 +49,7 @@ const SubCategoryPage = () => {
     subCategoryName,
     createdAt,
     categoryStatus,
-  }: SubCategory) => {
+  }: SubCategoryResponse) => {
     const statusKey = categoryStatus.toLocaleLowerCase();
     return (
       <tr key={id}>
@@ -50,8 +66,8 @@ const SubCategoryPage = () => {
           <DateDisplay date={createdAt} />
         </td>
         <td>
-          <Link to={`/admin/${MainPath.AdminCategoryUpdate}/${id}`}>
-            {language.update}
+          <Link to={`/admin/${MainPath.AdminSubCategoryView}/${id}`}>
+            {language.editCategory}
           </Link>
         </td>
       </tr>
@@ -60,9 +76,9 @@ const SubCategoryPage = () => {
 
   return (
     <section className="page">
-      <TopContainer
+      <PageHeader
         heading={language.subCategories}
-        linkText={language.addSubCategory}
+        linkText={language.createNewSubCategory}
         linkTo={`/admin/${MainPath.AdminSubCategoryCreate}`}
       />
       <div className="page-card">
