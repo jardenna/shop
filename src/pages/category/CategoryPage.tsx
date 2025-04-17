@@ -1,16 +1,13 @@
 import { Link } from 'react-router';
 import { Category } from '../../app/api/apiTypes';
-import Badge from '../../components/badge/Badge';
 import DateDisplay from '../../components/datePicker/DateDisplay';
-import Icon from '../../components/icons/Icon';
 import PageHeader from '../../components/PageHeader';
 import Table from '../../components/sortTable/Table';
-import Tooltip from '../../components/tooltip/Tooltip';
 import { useGetAllCategoriesQuery } from '../../features/categories/categoriyApiSlice';
+import CategoryBadge from '../../features/categories/CategoryBadge';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetScheduledQuery } from '../../features/subCategories/subCategoryApiSlice';
 import { MainPath } from '../../layout/nav/enums';
-import { BtnVariant, IconName } from '../../types/enums';
 
 const tableHeaders: { key: keyof Category; label: string; name: string }[] = [
   { key: 'categoryName', label: 'name', name: 'categoryName' },
@@ -49,32 +46,11 @@ const CategoryPage = () => {
       <tr key={id}>
         <td>{categoryName}</td>
         <td>
-          <div className="flex">
-            <Badge
-              badgeText={language[statusKey]}
-              className={categoryStatus.toLowerCase()}
-            />
-            {scheduledDate && (
-              <Tooltip
-                text={
-                  <DateDisplay
-                    date={scheduledDate}
-                    hour="2-digit"
-                    minute="2-digit"
-                  />
-                }
-                ariaControls="scheduled-date"
-                triggerBtnVariant={BtnVariant.Ghost}
-                ariaLabel={language.scheduledDate}
-              >
-                <Icon
-                  iconName={IconName.Calendar}
-                  title={language.calendar}
-                  ariaLabel={language.scheduledDate}
-                />
-              </Tooltip>
-            )}
-          </div>
+          <CategoryBadge
+            badgeClassName={categoryStatus.toLowerCase()}
+            badgeText={language[statusKey]}
+            scheduledDate={scheduledDate || null}
+          />
         </td>
         <td>
           <DateDisplay date={createdAt} />
