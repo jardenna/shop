@@ -2,6 +2,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { Link, useNavigate, useParams } from 'react-router';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import PageHeader from '../../components/PageHeader';
+import CategoryCard from '../../components/categoryCard/CategoryCard';
 import DateDisplay from '../../components/datePicker/DateDisplay';
 import Icon from '../../components/icons/Icon';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
@@ -84,63 +85,71 @@ const ViewSubCategoryPage = () => {
       >
         <div className="page-card">
           {!isError && category ? (
-            <div>
+            <>
+              <CategoryCard
+                subCategoryName={category.subCategoryName}
+                totalProducts={category.productCount}
+              />
               <div>
-                {language.name}: {category.subCategoryName}
-              </div>
-              <div>
-                {language.totalProducts} {category.productCount}
-              </div>
-              <div>
-                {language.status}: {category.categoryStatus}
-              </div>
-              {category.scheduledDate && (
                 <div>
-                  {language.date}:
-                  <DateDisplay
-                    date={category.scheduledDate}
-                    hour="2-digit"
-                    minute="2-digit"
-                  />
+                  {language.name}: {category.subCategoryName}
                 </div>
-              )}
-              <div>
-                {language.parentCategory}: {category.mainCategory.categoryName}
-              </div>
-              {category.mainCategory.categoryStatus !== 'Published' && (
                 <div>
-                  <Icon iconName={IconName.Warning} title="ll" />
-                  <span>{language.categoryIsCurrently}</span>
-                  <span>
-                    {
-                      language[
-                        category.mainCategory.categoryStatus.toLocaleLowerCase()
-                      ]
-                    }
-                  </span>
-                  <span>{language.categoryWillNotBeVisible}</span>
+                  {language.totalProducts} {category.productCount}
                 </div>
-              )}
-              <div className="footer-buttons">
-                <ModalContainer
-                  triggerModalBtnContent={language.delete}
-                  triggerModalBtnVariant={BtnVariant.Danger}
-                  id={category.id}
-                  primaryActionBtn={primaryActionBtn}
-                  secondaryActionBtn={secondaryActionBtn}
-                  modalSize={SizeVariant.Md}
-                  modalHeaderText={language.deleteCategory}
-                >
-                  {language.sureToDelete} {category.subCategoryName}
-                </ModalContainer>
+                <div>
+                  {language.status}:{' '}
+                  {language[category.categoryStatus.toLocaleLowerCase()]}
+                </div>
+                {category.scheduledDate && (
+                  <div>
+                    {language.date}:
+                    <DateDisplay
+                      date={category.scheduledDate}
+                      hour="2-digit"
+                      minute="2-digit"
+                    />
+                  </div>
+                )}
+                <div>
+                  {language.parentCategory}:{' '}
+                  {category.mainCategory.categoryName}
+                </div>
+                {category.mainCategory.categoryStatus !== 'Published' && (
+                  <div>
+                    <Icon iconName={IconName.Warning} title="ll" />
+                    <span>{language.categoryIsCurrently}</span>
+                    <span>
+                      {
+                        language[
+                          category.mainCategory.categoryStatus.toLocaleLowerCase()
+                        ]
+                      }
+                    </span>
+                    <span>{language.categoryWillNotBeVisible}</span>
+                  </div>
+                )}
+                <div className="footer-buttons">
+                  <ModalContainer
+                    triggerModalBtnContent={language.delete}
+                    triggerModalBtnVariant={BtnVariant.Danger}
+                    id={category.id}
+                    primaryActionBtn={primaryActionBtn}
+                    secondaryActionBtn={secondaryActionBtn}
+                    modalSize={SizeVariant.Md}
+                    modalHeaderText={language.deleteCategory}
+                  >
+                    {language.sureToDelete} {category.subCategoryName}
+                  </ModalContainer>
 
-                <Link
-                  to={`/admin/${MainPath.AdminSubCategoryUpdate}/${category.id}`}
-                >
-                  {language.editSubCategory}
-                </Link>
+                  <Link
+                    to={`/admin/${MainPath.AdminSubCategoryUpdate}/${category.id}`}
+                  >
+                    {language.editSubCategory}
+                  </Link>
+                </div>
               </div>
-            </div>
+            </>
           ) : (
             <span>error..</span>
           )}
