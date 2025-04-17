@@ -69,8 +69,9 @@ const getAllCategories = asyncHandler(async (req, res) => {
       ) {
         await Category.findByIdAndUpdate(category._id, {
           categoryStatus: 'Published',
-          scheduledDate: undefined, // Clear the scheduledDate
+          $unset: { scheduledDate: '' },
         });
+
         category.categoryStatus = 'Published';
         category.scheduledDate = undefined;
       }
@@ -93,8 +94,6 @@ const getAllCategories = asyncHandler(async (req, res) => {
 // @access  Public
 const checkScheduled = asyncHandler(async (req, res) => {
   const now = new Date();
-  const cat = await Category.find({});
-  console.log(cat);
 
   const hasScheduled = await Category.exists({
     categoryStatus: 'Scheduled',
