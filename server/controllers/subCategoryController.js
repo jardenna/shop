@@ -147,7 +147,11 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
   });
 });
 
-const checkScheduledReady = asyncHandler(async (req, res) => {
+// @desc    Check if category is scheduled
+// @route   /api/scheduled
+// @method  Get
+// @access  Public
+const checkScheduled = asyncHandler(async (req, res) => {
   const now = new Date();
   const hasScheduled = await SubCategory.exists({
     categoryStatus: 'Scheduled',
@@ -281,7 +285,7 @@ const deleteSubCategory = asyncHandler(async (req, res) => {
 });
 
 export {
-  checkScheduledReady,
+  checkScheduled,
   createSubCategory,
   deleteSubCategory,
   getAllSubCategories,
