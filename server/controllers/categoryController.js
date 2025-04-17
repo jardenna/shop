@@ -87,25 +87,21 @@ const getAllCategories = asyncHandler(async (req, res) => {
   res.status(200).json({ success: true, categories: formattedCategories });
 });
 
-// @desc    Get all Scheduled categories
+// @desc    Check if category is scheduled
 // @route   /api/scheduled
 // @method  Get
 // @access  Public
-const getScheduledCategories = asyncHandler(async (req, res) => {
-  const scheduledCategories = await Category.find({
+const checkScheduled = asyncHandler(async (req, res) => {
+  const now = new Date();
+  const cat = await Category.find({});
+  console.log(cat);
+
+  const hasScheduled = await Category.exists({
     categoryStatus: 'Scheduled',
-    scheduledDate: { $exists: true },
-  }).lean();
+    scheduledDate: { $lte: now },
+  });
 
-  const formatted = formatMongoData(scheduledCategories);
-
-  if (!formatted) {
-    return res
-      .status(200)
-      .json({ success: true, message: 'No scheduled categories found' });
-  }
-
-  res.status(200).json({ success: true, categories: formatted });
+  res.json({ hasScheduled: !!hasScheduled });
 });
 
 // @desc    Get category by id
@@ -197,10 +193,10 @@ const deleteCategory = asyncHandler(async (req, res) => {
 });
 
 export {
+  checkScheduled,
   createCategory,
   deleteCategory,
   getAllCategories,
   getCategoryById,
-  getScheduledCategories,
   updateCategory,
 };
