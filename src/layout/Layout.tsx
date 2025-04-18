@@ -1,7 +1,10 @@
 import { ReactNode } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router';
 import Icon from '../components/icons/Icon';
-import { SecondaryActionBtnProps } from '../components/modal/Modal';
+import {
+  PrimaryActionBtnProps,
+  SecondaryActionBtnProps,
+} from '../components/modal/Modal';
 import { OptionType } from '../components/selectbox/Selectbox';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
@@ -53,8 +56,8 @@ const Layout = () => {
     navigate(MainPath.Root);
   };
 
-  const primaryActionBtn = {
-    onClick: onSubmit,
+  const primaryActionBtn: PrimaryActionBtnProps = {
+    onClick: () => onSubmit,
     label: language.updatePreferences,
     buttonType: 'submit',
   };
