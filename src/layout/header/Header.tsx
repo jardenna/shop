@@ -11,9 +11,9 @@ import { navList } from '../nav/navList';
 import './_header.scss';
 import Logo from './Logo';
 
-export interface Values {
+export type Values = {
   languageOption: SelectedLanguage;
-}
+};
 
 export type HeaderProps = {
   ariaLabel: string;

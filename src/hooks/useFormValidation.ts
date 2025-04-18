@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { BlurEventType, ChangeInputType, FormEventType } from '../types/types';
 
-export interface KeyValuePair<T> {
+export type KeyValuePair<T> = {
   [key: string]: T;
-}
+};
 
 export type ValidationErrors = {
   [key: string]: string;
@@ -13,13 +13,13 @@ export type FormValues = {
   [key: string]: string | number | string[];
 };
 
-interface FormValidationProps<T extends KeyValuePair<unknown>> {
+export type FormValidationProps<T extends KeyValuePair<unknown>> = {
   initialState: T;
   isArray?: boolean;
   isLoading?: boolean;
   callback?: (values: T) => void;
   validate?: (values: T) => ValidationErrors;
-}
+};
 
 function useFormValidation<T extends KeyValuePair<unknown>>({
   initialState,

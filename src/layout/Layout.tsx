@@ -14,11 +14,11 @@ import Header from './header/Header';
 import { MainPath } from './nav/enums';
 import MetaTags from './nav/MetaTags';
 
-export interface LayoutElementProps {
+export type LayoutElementProps = {
   ariaLabel: string;
   children: ReactNode;
   className?: string;
-}
+};
 
 const Layout = () => {
   const location = useLocation();

@@ -3,10 +3,10 @@ import { useLocation } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from './enums';
 
-interface MetaTagsProps {
+type MetaTagsProps = {
   description?: string;
   keywords?: string;
-}
+};
 
 const MetaTags = ({ description, keywords }: MetaTagsProps) => {
   const location = useLocation();
