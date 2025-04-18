@@ -3,8 +3,6 @@ import { Link, useNavigate, useParams } from 'react-router';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import PageHeader from '../../components/PageHeader';
 import CategoryCard from '../../components/categoryCard/CategoryCard';
-import DateDisplay from '../../components/datePicker/DateDisplay';
-import Icon from '../../components/icons/Icon';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import { SecondaryActionBtnProps } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
@@ -14,7 +12,7 @@ import {
   useGetSubCategoryByIdQuery,
 } from '../../features/subCategories/subCategoryApiSlice';
 import { MainPath } from '../../layout/nav/enums';
-import { BtnVariant, IconName, SizeVariant } from '../../types/enums';
+import { BtnVariant, SizeVariant } from '../../types/enums';
 
 const ViewSubCategoryPage = () => {
   const { language } = useLanguage();
@@ -94,67 +92,29 @@ const ViewSubCategoryPage = () => {
                 showStatusMessage={
                   category.mainCategory.categoryStatus !== 'Published'
                 }
+                scheduledDate={category.scheduledDate || null}
                 statusMessage={category.mainCategory.categoryStatus.toLocaleLowerCase()}
-                categoryStatus={category.mainCategory.categoryStatus}
+                status={category.categoryStatus}
               />
-              <div>
-                <div>
-                  {language.name}: {category.subCategoryName}
-                </div>
-                <div>
-                  {language.totalProducts} {category.productCount}
-                </div>
-                <div>
-                  {language.status}:{' '}
-                  {language[category.categoryStatus.toLocaleLowerCase()]}
-                </div>
-                {category.scheduledDate && (
-                  <div>
-                    {language.date}:
-                    <DateDisplay
-                      date={category.scheduledDate}
-                      hour="2-digit"
-                      minute="2-digit"
-                    />
-                  </div>
-                )}
-                <div>
-                  {language.parentCategory}:{' '}
-                  {category.mainCategory.categoryName}
-                </div>
-                {category.mainCategory.categoryStatus !== 'Published' && (
-                  <div>
-                    <Icon iconName={IconName.Warning} title="ll" />
-                    <span>{language.categoryIsCurrently}</span>
-                    <span>
-                      {
-                        language[
-                          category.mainCategory.categoryStatus.toLocaleLowerCase()
-                        ]
-                      }
-                    </span>
-                    <span>{language.categoryWillNotBeVisible}</span>
-                  </div>
-                )}
-                <div className="footer-buttons">
-                  <ModalContainer
-                    triggerModalBtnContent={language.delete}
-                    triggerModalBtnVariant={BtnVariant.Danger}
-                    id={category.id}
-                    primaryActionBtn={primaryActionBtn}
-                    secondaryActionBtn={secondaryActionBtn}
-                    modalSize={SizeVariant.Md}
-                    modalHeaderText={language.deleteCategory}
-                  >
-                    {language.sureToDelete} {category.subCategoryName}
-                  </ModalContainer>
 
-                  <Link
-                    to={`/admin/${MainPath.AdminSubCategoryUpdate}/${category.id}`}
-                  >
-                    {language.editSubCategory}
-                  </Link>
-                </div>
+              <div className="footer-buttons">
+                <ModalContainer
+                  triggerModalBtnContent={language.delete}
+                  triggerModalBtnVariant={BtnVariant.Danger}
+                  id={category.id}
+                  primaryActionBtn={primaryActionBtn}
+                  secondaryActionBtn={secondaryActionBtn}
+                  modalSize={SizeVariant.Md}
+                  modalHeaderText={language.deleteCategory}
+                >
+                  {language.sureToDelete} {category.subCategoryName}
+                </ModalContainer>
+
+                <Link
+                  to={`/admin/${MainPath.AdminSubCategoryUpdate}/${category.id}`}
+                >
+                  {language.editSubCategory}
+                </Link>
               </div>
             </>
           ) : (
