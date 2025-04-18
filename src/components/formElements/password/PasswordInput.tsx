@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import useLanguage from '../../../features/language/useLanguage';
 import { BtnVariant, IconName } from '../../../types/enums';
 import Button from '../../Button';
@@ -12,11 +12,12 @@ type OmittedInputProps = Omit<
   'checked' | 'min' | 'max' | 'maxLength'
 >;
 
-interface PasswordInputProps extends OmittedInputProps {
+type PasswordInputProps = OmittedInputProps & {
   isFocused?: boolean;
   passwordRules?: (value: string) => PasswordRulesProps[];
-}
-const PasswordInput: FC<PasswordInputProps> = ({
+};
+
+const PasswordInput = ({
   value,
   id,
   onChange,
@@ -33,7 +34,7 @@ const PasswordInput: FC<PasswordInputProps> = ({
   passwordRules,
   isFocused,
   onFocus,
-}) => {
+}: PasswordInputProps) => {
   const { language } = useLanguage();
   const [showPassword, setShowPassword] = useState(true);
 

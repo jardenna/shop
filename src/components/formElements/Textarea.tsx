@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { ChangeInputType } from '../../types/types';
 import FormLabel from './FormLabel';
 import { InputProps } from './Input';
@@ -7,11 +6,11 @@ type OmittedProps = Omit<
   InputProps,
   'className' | 'type' | 'checked' | 'placeholder' | 'autoComplete' | 'onChange'
 >;
-interface TextareaProps extends OmittedProps {
+type TextareaProps = OmittedProps & {
   onChange: (event: ChangeInputType) => void;
-}
+};
 
-const Textarea: FC<TextareaProps> = ({
+const Textarea = ({
   value,
   id,
   name,
@@ -19,7 +18,7 @@ const Textarea: FC<TextareaProps> = ({
   required,
   labelText,
   onChange,
-}) => (
+}: TextareaProps) => (
   <div className="input-container">
     <span className="form-label-container">
       <FormLabel

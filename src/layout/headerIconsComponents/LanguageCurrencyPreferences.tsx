@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import FieldSet from '../../components/fieldset/FieldSet';
 import RadioButton from '../../components/formElements/radioButton/RadioButton';
 import CurrencySelect from '../../features/currency/components/CurrencySelect';
@@ -12,13 +11,13 @@ type OmittedHeaderProps = Omit<
   'primaryActionBtn' | 'secondaryActionBtn' | 'ariaLabel' | 'userDropdownList'
 >;
 
-const LanguageCurrencyPreferences: FC<OmittedHeaderProps> = ({
+const LanguageCurrencyPreferences = ({
   values,
   onChange,
   currencyOptions,
   defaultValue,
   onSelectCurrency,
-}) => {
+}: OmittedHeaderProps) => {
   const { language } = useLanguage();
 
   return (

@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { Link } from 'react-router';
 import DropdownBtn from '../../components/dropdownBtn/DropdownBtn';
 import IconContent from '../../components/IconContent';
@@ -14,11 +13,11 @@ import './_header-icons.scss';
 
 type OmittedHeaderProps = Omit<HeaderProps, 'primaryActionBtn' | 'ariaLabel'>;
 
-interface HeaderIconsProps extends OmittedHeaderProps {
+type HeaderIconsProps = OmittedHeaderProps & {
   primaryActionBtn: PrimaryActionBtnProps;
-}
+};
 
-const HeaderIcons: FC<HeaderIconsProps> = ({
+const HeaderIcons = ({
   userDropdownList,
   primaryActionBtn,
   onChange,
@@ -27,7 +26,7 @@ const HeaderIcons: FC<HeaderIconsProps> = ({
   defaultValue,
   onSelectCurrency,
   secondaryActionBtn,
-}) => {
+}: HeaderIconsProps) => {
   const { language } = useLanguage();
 
   return (
