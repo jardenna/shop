@@ -142,6 +142,7 @@ save;Save;Gem
 scheduled;Scheduled;Planlagt
 scheduledDate;Scheduled date;Planlagt dato
 scheduledDateMustBeFuture;Scheduled date must be after now;Planlagt dato skal være efter nu
+scheduledToBePubliched;is scheduled to be published at;er planlagt til udgivelse den 
 search;Search;Søg
 selectCategoryStatus;Select category status;Vælg kategori status
 selectCurrency;Select currency;Vælg valuta
