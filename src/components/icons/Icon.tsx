@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { IconName } from '../../types/enums';
 import AccountIcon from './AccountIcon';
 import AddIcon from './AddIcon';
@@ -44,17 +43,17 @@ import UserIcon from './UserIcon';
 import UsersIcon from './UsersIcon';
 import WarningIcon from './WarningIcon';
 
-export interface IconDefaultProps {
+export type IconDefaultProps = {
   title: string;
   ariaHidden?: boolean;
   ariaLabel?: string;
   className?: string;
   size?: string;
-}
+};
 
-interface IconProps extends IconDefaultProps {
+type IconProps = IconDefaultProps & {
   iconName: IconName;
-}
+};
 
 const iconMapping = {
   account: AccountIcon,
@@ -102,14 +101,14 @@ const iconMapping = {
   warning: WarningIcon,
 };
 
-const Icon: FC<IconProps> = ({
+const Icon = ({
   iconName,
   size = '20',
   title,
   className = '',
   ariaHidden,
   ariaLabel,
-}) => {
+}: IconProps) => {
   const IconComponent = iconMapping[iconName];
   return (
     <IconComponent

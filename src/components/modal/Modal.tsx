@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { selectModalId } from '../../features/modalSlice';
 import useClickOutside from '../../hooks/useClickOutside';
@@ -14,21 +14,21 @@ import ModalHeader from './ModalHeader';
 import useModal from './useModal';
 import useVisibility from './useVisibility';
 
-export interface PrimaryActionBtnProps {
+export type PrimaryActionBtnProps = {
   label: string | null;
   buttonType?: BtnType;
   className?: string;
   variant?: BtnVariant;
   onClick: () => void;
-}
+};
 
-export interface SecondaryActionBtnProps {
+export type SecondaryActionBtnProps = {
   label: string | null;
   variant?: BtnVariant;
   onClick?: () => void;
-}
+};
 
-export interface ModalProps {
+export type ModalProps = {
   children: ReactNode;
   id: string;
   modalHeaderText: string;
@@ -39,20 +39,20 @@ export interface ModalProps {
   modalSize?: SizeVariant;
   secondaryActionBtn?: SecondaryActionBtnProps;
   showCloseIcon?: boolean;
-}
+};
 
-const Modal: FC<ModalProps> = ({
+const Modal = ({
   id,
   modalHeaderText,
   children,
   isAlert,
-  modalSize = 'sm',
+  modalSize = SizeVariant.Sm,
   className = '',
   showCloseIcon,
   secondaryActionBtn,
   primaryActionBtn,
   modalInfo,
-}) => {
+}: ModalProps) => {
   const { isMobileSize } = useMediaQuery();
   const modalId = useAppSelector(selectModalId);
   const { handleCloseModal, modalRef } = useModal(modalId);

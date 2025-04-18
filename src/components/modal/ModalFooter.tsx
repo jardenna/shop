@@ -1,20 +1,19 @@
-import { FC } from 'react';
 import LayoutElement from '../../layout/LayoutElement';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import { PrimaryActionBtnProps, SecondaryActionBtnProps } from './Modal';
 
-interface modalFooterProps {
+type modalFooterProps = {
   primaryActionBtn: PrimaryActionBtnProps;
   secondaryActionBtn?: SecondaryActionBtnProps;
   onCloseModal?: () => void;
-}
+};
 
-const ModalFooter: FC<modalFooterProps> = ({
+const ModalFooter = ({
   primaryActionBtn,
   onCloseModal,
   secondaryActionBtn,
-}) => {
+}: modalFooterProps) => {
   const handlePrimaryBtnClick = () => {
     if (!onCloseModal) {
       return;
