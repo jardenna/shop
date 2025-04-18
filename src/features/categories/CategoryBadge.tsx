@@ -33,6 +33,7 @@ const CategoryBadge = ({
             iconName={IconName.Calendar}
             title={language.calendar}
             ariaLabel={language.scheduledDate}
+            ariaHidden
           />
         </Tooltip>
       )}
