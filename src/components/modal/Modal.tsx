@@ -1,8 +1,9 @@
-import React, { ReactNode } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { selectModalId } from '../../features/modalSlice';
 
 import useClickOutside from '../../hooks/useClickOutside';
+import useMediaQuery from '../../hooks/useMediaQuery ';
 import { BtnVariant, PopupRole, SizeVariant } from '../../types/enums';
 import { BtnType } from '../../types/types';
 import Overlay from '../overlay/Overlay';
@@ -13,7 +14,6 @@ import ModalFooter from './ModalFooter';
 import ModalHeader from './ModalHeader';
 import useModal from './useModal';
 import useVisibility from './useVisibility';
-import useMediaQuery from '../../hooks/useMediaQuery ';
 
 export interface PrimaryActionBtnProps {
   label: string | null;
@@ -42,7 +42,7 @@ export interface ModalProps {
   showCloseIcon?: boolean;
 }
 
-const Modal: React.FC<ModalProps> = ({
+const Modal: FC<ModalProps> = ({
   id,
   modalHeaderText,
   children,

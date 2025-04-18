@@ -1,31 +1,31 @@
-import { FC } from 'react';
 import { ChangeInputType } from '../../../types/types';
 import Input from '../Input';
 import './_radio-button.scss';
 
-export interface RadioListItem<T = string> {
+export type RadioListItem<T = string> = {
   label: string;
   value: T;
-}
+};
 
 export type RadioBtnVariant = 'card';
-interface RadioButtonProps {
+
+type RadioButtonProps = {
   initialChecked: string;
   name: string;
   radioButtonList: RadioListItem[];
   formInfoText?: string;
   radioBtnVariant?: string;
   onChange: (event: ChangeInputType) => void;
-}
+};
 
-const RadioButton: FC<RadioButtonProps> = ({
+const RadioButton = ({
   initialChecked,
   radioButtonList,
   onChange,
   name,
   formInfoText,
   radioBtnVariant = '',
-}) => (
+}: RadioButtonProps) => (
   <div className={`${radioBtnVariant} radio-btn-container`}>
     {radioButtonList.map((radio) => (
       <Input
