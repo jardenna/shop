@@ -1,22 +1,21 @@
-import { FC } from 'react';
 import useLanguage from '../features/language/useLanguage';
 import LayoutElement from '../layout/LayoutElement';
 import { BtnVariant } from '../types/enums';
 import Button from './Button';
 
-interface ErrorContentProps {
+type ErrorContentProps = {
   btnLabel: string;
   errorText: string;
   className?: string;
   onClick: () => void;
-}
+};
 
-const ErrorContent: FC<ErrorContentProps> = ({
+const ErrorContent = ({
   onClick,
   errorText,
   btnLabel,
   className = '',
-}) => {
+}: ErrorContentProps) => {
   const { language } = useLanguage();
   return (
     <section className={`error ${className}`}>

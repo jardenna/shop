@@ -1,11 +1,10 @@
-import React from 'react';
 import { MessagePopup } from '../../features/messagePopupSlice';
 import Portal from '../Portal';
 import './_message-popup.scss';
 import MessagePopupListItem from './MessagePopupListItem';
 import useMessagePopup from './useMessagePopup';
 
-const MessagePopupList: React.FC = () => {
+const MessagePopupList = () => {
   const { messagePopups } = useMessagePopup();
 
   if (messagePopups.length === 0) {

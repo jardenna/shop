@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
-const Collections: FC = () => <section>Collections</section>;
+const Collections = () => <section>Collections</section>;
 
 export default Collections;

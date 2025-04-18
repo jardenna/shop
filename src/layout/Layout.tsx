@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router';
 import Icon from '../components/icons/Icon';
 import { SecondaryActionBtnProps } from '../components/modal/Modal';
@@ -20,7 +20,7 @@ export interface LayoutElementProps {
   className?: string;
 }
 
-const Layout: FC = () => {
+const Layout = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { language, switchLanguage, selectedLanguage } = useLanguage();

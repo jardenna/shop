@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { useNavigate } from 'react-router';
 import AuthForm from '../components/authForm/AuthForm';
 import validationSignup from '../components/formElements/validation/validateSignup';
@@ -9,7 +8,7 @@ import useFormValidation from '../hooks/useFormValidation';
 import { MainPath } from '../layout/nav/enums';
 import passwordRules from '../utils/passwordRules';
 
-const SignupPage: FC = () => {
+const SignupPage = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const initialState = {

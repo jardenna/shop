@@ -1,7 +1,6 @@
-import { FC } from 'react';
 import Hero from './Hero';
 
-const HomePage: FC = () => (
+const HomePage = () => (
   <section>
     <Hero />
   </section>

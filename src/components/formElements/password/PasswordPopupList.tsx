@@ -6,6 +6,7 @@ export type PasswordRulesProps = {
   isValid: boolean;
   text: string;
 };
+
 type PasswordPopupListProps = {
   inputValue: string;
   passwordRules: (value: string) => PasswordRulesProps[];

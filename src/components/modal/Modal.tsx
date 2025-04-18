@@ -1,7 +1,6 @@
-import React, { FC, ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { selectModalId } from '../../features/modalSlice';
-
 import useClickOutside from '../../hooks/useClickOutside';
 import useMediaQuery from '../../hooks/useMediaQuery ';
 import { BtnVariant, PopupRole, SizeVariant } from '../../types/enums';
@@ -30,7 +29,7 @@ export interface SecondaryActionBtnProps {
 }
 
 export interface ModalProps {
-  children: React.ReactNode;
+  children: ReactNode;
   id: string;
   modalHeaderText: string;
   primaryActionBtn: PrimaryActionBtnProps;

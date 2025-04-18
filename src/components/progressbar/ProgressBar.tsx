@@ -1,14 +1,14 @@
-import { FC } from 'react';
 import useLanguage from '../../features/language/useLanguage';
 import './_progress-bar.scss';
 
-interface ProgressBarProps {
+type ProgressBarProps = {
   progressPercentage: number;
   isAuto?: boolean;
-}
+};
 
-const ProgressBar: FC<ProgressBarProps> = ({ progressPercentage, isAuto }) => {
+const ProgressBar = ({ progressPercentage, isAuto }: ProgressBarProps) => {
   const { language } = useLanguage();
+
   return (
     <span
       className="progress-bar-container"
@@ -18,7 +18,8 @@ const ProgressBar: FC<ProgressBarProps> = ({ progressPercentage, isAuto }) => {
       <span
         style={{ width: `${progressPercentage}%` }}
         className={`progress-bar  ${isAuto ? 'auto-animation' : ''}`}
-        aria-valuetext={`${language.progress} ${progressPercentage}% ${language.completed}`}
+        aria-valuetext={progressPercentage.toString()}
+        aria-valuenow={progressPercentage}
       />
     </span>
   );

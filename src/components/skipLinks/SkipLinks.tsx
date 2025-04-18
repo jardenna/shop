@@ -1,8 +1,8 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import useLanguage from '../../features/language/useLanguage';
 import './_skip-links.scss';
 
-const SkipLink: FC = () => {
+const SkipLink = () => {
   const { language } = useLanguage();
 
   const [isVisible, setIsVisible] = useState(false);

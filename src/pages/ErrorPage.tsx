@@ -1,9 +1,8 @@
-import { FC } from 'react';
 import { isRouteErrorResponse, useNavigate, useRouteError } from 'react-router';
 import ErrorContent from '../components/ErrorContent';
 import useLanguage from '../features/language/useLanguage';
 
-const ErrorPage: FC = () => {
+const ErrorPage = () => {
   const error = useRouteError() as Error;
   const navigate = useNavigate();
   const { language } = useLanguage();

@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import AuthForm from '../components/authForm/AuthForm';
 import validationLogin from '../components/formElements/validation/validateLogin';
@@ -8,7 +7,7 @@ import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
 import { MainPath } from '../layout/nav/enums';
 
-const LoginPage: FC = () => {
+const LoginPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { language } = useLanguage();
