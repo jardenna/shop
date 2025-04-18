@@ -1,10 +1,9 @@
-import { FC } from 'react';
 import { BtnVariant, IconName } from '../types/enums';
 import { BtnType } from '../types/types';
 import Button from './Button';
 import IconContent from './IconContent';
 
-export interface IconBtnProps {
+export type IconBtnProps = {
   ariaLabel: string;
   iconName: IconName;
   title: string;
@@ -14,9 +13,9 @@ export interface IconBtnProps {
   className?: string;
   size?: string;
   onClick?: () => void;
-}
+};
 
-const IconBtn: FC<IconBtnProps> = ({
+const IconBtn = ({
   ariaLabel,
   iconName,
   title,
@@ -26,7 +25,7 @@ const IconBtn: FC<IconBtnProps> = ({
   ariaExpanded,
   btnType,
   size,
-}) => (
+}: IconBtnProps) => (
   <Button
     variant={BtnVariant.Ghost}
     onClick={onClick}

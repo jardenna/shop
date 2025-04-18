@@ -1,20 +1,20 @@
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import VisuallyHidden from '../VisuallyHidden';
 import './_fieldset.scss';
 
-interface FieldSetProps {
+type FieldSetProps = {
   children: ReactNode;
   legendText: string;
   className?: string;
   showLegendText?: boolean;
-}
+};
 
-const FieldSet: FC<FieldSetProps> = ({
+const FieldSet = ({
   children,
   legendText,
   showLegendText = false,
   className = '',
-}) => (
+}: FieldSetProps) => (
   <fieldset className={`fieldset ${className}`}>
     {!showLegendText ? (
       <VisuallyHidden as="legend">{legendText}</VisuallyHidden>

@@ -1,11 +1,11 @@
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import useLanguage from '../../features/language/useLanguage';
 import useDropdown from '../../hooks/useDropdown';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import './_dropdown.scss';
 
-interface DropdownProps {
+type DropdownProps = {
   ariaControls: string;
   ariaLabel: string;
   children: ReactNode;
@@ -19,9 +19,9 @@ interface DropdownProps {
   triggerBtnVariant?: BtnVariant;
   onPrimaryClick: () => void;
   onSecondaryClick?: () => void;
-}
+};
 
-const Dropdown: FC<DropdownProps> = ({
+const Dropdown = ({
   text,
   ariaControls,
   ariaLabel,
@@ -35,7 +35,7 @@ const Dropdown: FC<DropdownProps> = ({
   secondaryBtnVariant,
   onSecondaryClick,
   className = '',
-}) => {
+}: DropdownProps) => {
   const { language } = useLanguage();
   const { dropdownRef, dropdownIsOpen, toggleDropdownList, handleCallback } =
     useDropdown({ callback: onSecondaryClick });

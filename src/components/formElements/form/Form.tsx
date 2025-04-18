@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import useLanguage from '../../../features/language/useLanguage';
 import LayoutElement from '../../../layout/LayoutElement';
 import { BtnVariant } from '../../../types/enums';
@@ -6,7 +6,7 @@ import { FormEventType } from '../../../types/types';
 import Button from '../../Button';
 import './_form.scss';
 
-interface FormProps {
+type FormProps = {
   children: ReactNode;
   submitBtnLabel: string;
   ariaLabel?: string;
@@ -14,9 +14,9 @@ interface FormProps {
   isLoading?: boolean;
   onCancel?: () => void;
   onSubmit: (event: FormEventType) => void;
-}
+};
 
-const Form: FC<FormProps> = ({
+const Form = ({
   children,
   onSubmit,
   submitBtnLabel,
@@ -24,7 +24,7 @@ const Form: FC<FormProps> = ({
   isLoading,
   ariaLabel,
   onCancel,
-}) => {
+}: FormProps) => {
   const { language } = useLanguage();
 
   return (

@@ -1,21 +1,20 @@
-import { FC } from 'react';
 import useLanguage from '../../../features/language/useLanguage';
 import ProgressBar from '../../progressbar/ProgressBar';
 import PasswordPopupItem from './PasswordPopupItem';
 
-export interface PasswordRulesProps {
+export type PasswordRulesProps = {
   isValid: boolean;
   text: string;
-}
-interface PasswordPopupListProps {
+};
+type PasswordPopupListProps = {
   inputValue: string;
   passwordRules: (value: string) => PasswordRulesProps[];
-}
+};
 
-const PasswordPopupList: FC<PasswordPopupListProps> = ({
+const PasswordPopupList = ({
   passwordRules,
   inputValue,
-}) => {
+}: PasswordPopupListProps) => {
   const { language } = useLanguage();
   const passwordRulesList = passwordRules(inputValue);
 

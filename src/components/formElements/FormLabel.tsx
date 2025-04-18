@@ -1,19 +1,18 @@
-import { FC } from 'react';
 import VisuallyHidden from '../VisuallyHidden';
 
-interface FormLabelProps {
+type FormLabelProps = {
   id: string;
   inputLabel: string;
   inputHasNoLabel?: boolean;
   required?: boolean;
-}
+};
 
-const FormLabel: FC<FormLabelProps> = ({
+const FormLabel = ({
   inputLabel,
   id,
   required,
   inputHasNoLabel,
-}) =>
+}: FormLabelProps) =>
   inputHasNoLabel ? (
     <VisuallyHidden htmlFor={id} as="label">
       {inputLabel}

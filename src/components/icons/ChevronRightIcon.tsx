@@ -1,12 +1,11 @@
-import { FC } from 'react';
 import { IconDefaultProps } from './Icon';
 
-const ChevronRightIcon: FC<IconDefaultProps> = ({
+const ChevronRightIcon = ({
   size,
   title,
   className,
   ariaHidden,
-}) => (
+}: IconDefaultProps) => (
   <svg
     role="img"
     xmlns="http://www.w3.org/2000/svg"

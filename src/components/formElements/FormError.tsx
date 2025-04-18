@@ -1,11 +1,9 @@
-import { FC } from 'react';
-
-interface FormErrorProps {
+type FormErrorProps = {
   errorText: string;
   ariaErrorId?: string;
-}
+};
 
-const FormError: FC<FormErrorProps> = ({ errorText, ariaErrorId }) => (
+const FormError = ({ errorText, ariaErrorId }: FormErrorProps) => (
   <span id={ariaErrorId} className="error-message">
     {errorText}
   </span>

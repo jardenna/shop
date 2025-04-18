@@ -1,9 +1,9 @@
-import { ChangeEvent, FC, RefObject } from 'react';
+import { ChangeEvent, RefObject } from 'react';
 import { BlurEventType, ChangeInputType, InputType } from '../../types/types';
 import FormError from './FormError';
 import FormLabel from './FormLabel';
 
-export interface InputProps {
+export type InputProps = {
   id: string;
   labelText: string;
   name: string;
@@ -24,9 +24,9 @@ export interface InputProps {
   onBlur?: (event: BlurEventType) => void;
   onChange: (event: ChangeInputType) => void;
   onFocus?: () => void;
-}
+};
 
-const Input: FC<InputProps> = ({
+const Input = ({
   id,
   ref,
   type,
@@ -47,7 +47,7 @@ const Input: FC<InputProps> = ({
   autoComplete = 'on',
   autoFocus,
   onFocus,
-}) => {
+}: InputProps) => {
   const inputClassName =
     type === 'checkbox' || type === 'radio'
       ? 'checkbox-radio-container'
