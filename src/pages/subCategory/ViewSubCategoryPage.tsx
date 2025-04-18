@@ -111,9 +111,10 @@ const ViewSubCategoryPage = () => {
                 </ModalContainer>
 
                 <Link
+                  className="btn btn-primary"
                   to={`/admin/${MainPath.AdminSubCategoryUpdate}/${category.id}`}
                 >
-                  {language.editSubCategory}
+                  {language.edit}
                 </Link>
               </div>
             </>

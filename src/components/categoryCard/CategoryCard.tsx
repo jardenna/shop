@@ -1,8 +1,7 @@
 import useLanguage from '../../features/language/useLanguage';
-import { IconName } from '../../types/enums';
 import Badge from '../badge/Badge';
+import Button from '../Button';
 import DateDisplay from '../datePicker/DateDisplay';
-import Icon from '../icons/Icon';
 import './_category-card.scss';
 
 type CategoryCardProps = {
@@ -34,29 +33,20 @@ const CategoryCard = ({
         <span className="card-top-line" />
         <div className="category-card-content">
           <h2>{subCategoryName}</h2>
-          <span>{language.totalProducts}:</span>
-          <span>{totalProducts}</span>
           <Badge
             badgeText={language[status.toLocaleLowerCase()]}
             className={status.toLowerCase()}
           />
-
+          <span>{language.totalProducts}:</span>
+          <span>{totalProducts}</span>
           {scheduledDate && (
             <div>
-              {language.date}:
+              <span>{subCategoryName} er planlagt til udgivelse den </span>
               <DateDisplay
                 date={scheduledDate}
                 hour="2-digit"
                 minute="2-digit"
               />
-            </div>
-          )}
-          {showStatusMessage && (
-            <div>
-              <Icon iconName={IconName.Warning} title="ll" size="30" />
-              <span>{language.categoryIsCurrently}</span>
-              <span>{language[statusMessage]}</span>
-              <span>{language.categoryWillNotBeVisible}</span>
             </div>
           )}
         </div>
@@ -65,6 +55,21 @@ const CategoryCard = ({
         <span className="card-top-line" />
         <div className="category-card-content">
           <h2>{mainCategoryName}</h2>
+
+          {showStatusMessage && (
+            <div>
+              <p>
+                <strong>
+                  <span>{language.parentCategoryIs}</span>
+                  <span> {language[statusMessage]}</span>
+                </strong>
+              </p>
+              <span>
+                {subCategoryName} {language.notVisibleInShop}.
+              </span>
+            </div>
+          )}
+          <Button>{language.edit}</Button>
           <span>
             {language.createdAt} <DateDisplay date={createdAt} />
           </span>
