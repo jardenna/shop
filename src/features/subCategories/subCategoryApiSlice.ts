@@ -2,6 +2,7 @@ import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import {
   CreateSubCategoryRequest,
   DefaultResponse,
+  ScheduledResponse,
   SubCategoriesResponse,
   SubCategoryResponse,
   UpdateSubCategoryRequest,
@@ -15,7 +16,7 @@ const subCategoryApiSlice = apiSlice.injectEndpoints({
       query: () => subCategoryUrl,
       providesTags: [TagTypesEnum.SubCategories],
     }),
-    getScheduled: builder.query<any, void>({
+    getScheduled: builder.query<ScheduledResponse, void>({
       query: () => `${subCategoryUrl}/scheduled`,
       providesTags: [TagTypesEnum.SubCategories],
     }),
