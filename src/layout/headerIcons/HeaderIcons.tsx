@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { Link } from 'react-router';
 import DropdownBtn from '../../components/dropdownBtn/DropdownBtn';
-import IconBtn from '../../components/IconBtn';
 import IconContent from '../../components/IconContent';
 import Icon from '../../components/icons/Icon';
 import { PrimaryActionBtnProps } from '../../components/modal/Modal';
@@ -31,21 +30,17 @@ const HeaderIcons: FC<HeaderIconsProps> = ({
 }) => {
   const { language } = useLanguage();
 
-  const handleSearch = () => {
-    console.log(12);
-  };
-
   return (
     <section>
       <ul className="header-icon-list">
-        <li>
+        {/* <li>
           <IconBtn
             iconName={IconName.Search}
             title={language.search}
             onClick={handleSearch}
             ariaLabel={language.search}
           />
-        </li>
+        </li> */}
         <li>
           <DropdownBtn
             dropdownList={userDropdownList}

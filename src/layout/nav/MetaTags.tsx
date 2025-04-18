@@ -1,14 +1,14 @@
-import { FC, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useLocation } from 'react-router';
-import { MainPath } from './enums';
 import useLanguage from '../../features/language/useLanguage';
+import { MainPath } from './enums';
 
 interface MetaTagsProps {
   description?: string;
   keywords?: string;
 }
 
-const MetaTags: FC<MetaTagsProps> = ({ description, keywords }) => {
+const MetaTags = ({ description, keywords }: MetaTagsProps) => {
   const location = useLocation();
   const { language } = useLanguage();
 

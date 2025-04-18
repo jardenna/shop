@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { DropdownItem } from '../../components/dropdownBtn/DropdownBtn';
 import { SecondaryActionBtnProps } from '../../components/modal/Modal';
 import { OptionType } from '../../components/selectbox/Selectbox';
@@ -16,7 +15,7 @@ export interface Values {
   languageOption: SelectedLanguage;
 }
 
-export interface HeaderProps {
+export type HeaderProps = {
   ariaLabel: string;
   currencyOptions: OptionType[];
   defaultValue: OptionType;
@@ -26,9 +25,9 @@ export interface HeaderProps {
   values: Values;
   onChange: (event: ChangeInputType) => void;
   onSelectCurrency: (selectedOptions: OptionType) => void;
-}
+};
 
-const Header: FC<HeaderProps> = ({
+const Header = ({
   ariaLabel,
   userDropdownList,
   primaryActionBtn,
@@ -38,7 +37,7 @@ const Header: FC<HeaderProps> = ({
   onSelectCurrency,
   defaultValue,
   secondaryActionBtn,
-}) => (
+}: HeaderProps) => (
   <LayoutElement as="header" className="main-header" ariaLabel={ariaLabel}>
     <div className="container main-header-container">
       <Logo link={MainPath.Root} />

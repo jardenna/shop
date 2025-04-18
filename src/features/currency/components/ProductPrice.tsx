@@ -1,11 +1,6 @@
-import { FC } from 'react';
 import useCurrency from '../useCurrency';
 
-interface ProductPriceProps {
-  price: number;
-}
-
-const ProductPrice: FC<ProductPriceProps> = ({ price }) => {
+const ProductPrice = ({ price }: { price: number }) => {
   const { convertedPrice } = useCurrency(price);
 
   return <p>{convertedPrice}</p>;
