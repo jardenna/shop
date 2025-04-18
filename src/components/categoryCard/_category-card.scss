@@ -1,12 +1,55 @@
+@use '../../scss/globals' as *;
+
 .category-card-container {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 24px;
+
+  h3 {
+    margin: 0;
+    font-size: rem(14px);
+  }
+
+  .category-card-title {
+    margin: 0;
+  }
+
+  .category-date {
+    font-style: italic;
+  }
+
+  .footer-buttons {
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .btn {
+    min-height: rem(30px);
+  }
+
+  .badge {
+    position: absolute;
+    right: 0;
+  }
 
   .category-card {
     background-color: #fff;
     flex: 1;
     padding-top: 40px;
+
+    .category-card-content {
+      min-height: rem(300px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 12px 30px;
+    }
+
+    &.card-left {
+      padding-top: 42px;
+    }
+
+    &.card-right {
+      padding-right: 12px;
+    }
 
     .card-top-line {
       display: flex;
@@ -16,15 +59,31 @@
     }
   }
 
-  .category-card-content {
-    padding: 30px;
+  .category-card-text {
+    margin-bottom: 8px;
   }
 
   .card-right {
     background-color: #dbe0dc;
+    max-width: rem(400px);
 
     .card-top-line {
-      height: 8px;
+      height: 6px;
+    }
+
+    .category-date {
+      text-align: right;
+    }
+
+    .category-card-title {
+      display: flex;
+      justify-content: flex-end;
+      font-size: rem(18px);
+    }
+
+    .btn {
+      max-width: fit-content;
+      padding: 0 32px;
     }
   }
 }
