@@ -5,16 +5,14 @@ $color-red: #d20917;
 
 // Gray colors
 
-$color-gray-20: #fbfbf9;
 $color-gray-30: #a7a6ba;
 $color-gray-40: #f9f9f9;
 $color-gray-55: #dbe0dc;
-$color-gray-2: #fbfbf9;
 
 /* colors */
 $color-danger: $color-red;
-$color-border: #a7a6ba;
-$color-background: $color-gray-2;
+$color-border: $color-gray-30;
+$color-background: $color-gray-40;
 $color-overlay: rgb($color-black, 0.6);
 
 // $color-mics

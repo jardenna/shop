@@ -4,7 +4,7 @@
   box-sizing: border-box;
   font-family: $font-primary;
 
-  $color-background: $color-gray-40;
+  $color-background: $color-background;
   $color-foreground: #dbd9db;
 
   @include min-size($small) {
@@ -62,7 +62,7 @@ h1 {
     content: '';
     display: flex;
     margin-left: 8px;
-    border-bottom: 2px solid #262526;
+    border-bottom: 2px solid #473f4a;
     border-radius: 4px;
     width: 59px;
   }
