@@ -32,7 +32,7 @@ table {
 
     input {
       padding: 4px;
-      background-color: #fff;
+      background-color: $color-white;
       border: 1px solid #a7a6ba;
       min-height: $input-height;
     }
@@ -207,7 +207,7 @@ table {
     min-width: rem(180px);
 
     input {
-      background-color: #fff;
+      background-color: $color-white;
       border: 1px solid #a7a6ba;
       min-height: $input-height;
     }

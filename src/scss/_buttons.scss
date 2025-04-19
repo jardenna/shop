@@ -92,7 +92,7 @@ a[class^='btn-'],
 
 .btn-danger {
   background-color: #660d44;
-  color: #fff;
+  color: $color-white;
 
   &:hover {
     background-color: $color-red;

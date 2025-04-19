@@ -19,7 +19,7 @@
   }
 
   .select-box__option {
-    background-color: #fff;
+    background-color: $color-white;
   }
 
   .select-box__option--is-focused {
@@ -36,7 +36,7 @@
 
   .select-box__option--is-selected {
     background-color: #2f6d8f !important;
-    color: #fff;
+    color: $color-white;
 
     &.select-box__option--is-focused {
       background-color: #94afba !important;
