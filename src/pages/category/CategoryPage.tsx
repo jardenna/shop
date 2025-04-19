@@ -78,6 +78,7 @@ const CategoryPage = () => {
           columns={tableHeaders}
           tableCaption={language.categoryList}
           isLoading={isLoading}
+          emptyHeaderCellText={language.updateCategory}
         >
           {(data) => data.map(renderRow)}
         </Table>

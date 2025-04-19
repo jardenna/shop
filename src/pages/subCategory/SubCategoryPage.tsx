@@ -2,13 +2,13 @@ import { Link } from 'react-router';
 import { SubCategoryResponse } from '../../app/api/apiTypes';
 import PageHeader from '../../components/PageHeader';
 import Table from '../../components/sortTable/Table';
+import CategoryBadge from '../../features/categories/CategoryBadge';
 import useLanguage from '../../features/language/useLanguage';
 import {
   useGetAllSubCategoriesQuery,
   useGetScheduledQuery,
 } from '../../features/subCategories/subCategoryApiSlice';
 import { MainPath } from '../../layout/nav/enums';
-import CategoryBadge from '../../features/categories/CategoryBadge';
 
 const SubCategoryPage = () => {
   const { language } = useLanguage();
@@ -95,6 +95,7 @@ const SubCategoryPage = () => {
           columns={tableHeaders}
           tableCaption={language.subCategoryList}
           isLoading={isLoading}
+          emptyHeaderCellText={language.updateSubCategory}
         >
           {(data) => data.map(renderRow)}
         </Table>

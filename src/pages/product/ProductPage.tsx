@@ -58,7 +58,7 @@ const ProductPage = () => {
                   />
                 </td>
                 <td>
-                  aa
+                  {language.update}
                   {/* <Link to={`/admin/${MainPath.AdminProductUpdate}/${id}`}>
                     {language.update}
                   </Link> */}
