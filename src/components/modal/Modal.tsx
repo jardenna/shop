@@ -4,7 +4,7 @@ import { selectModalId } from '../../features/modalSlice';
 import useClickOutside from '../../hooks/useClickOutside';
 import useMediaQuery from '../../hooks/useMediaQuery ';
 import { BtnVariant, PopupRole, SizeVariant } from '../../types/enums';
-import { BtnType } from '../../types/types';
+import { ButtonType } from '../../types/types';
 import Overlay from '../overlay/Overlay';
 import Portal from '../Portal';
 import SwipeContainer from '../SwipeContainer';
@@ -16,7 +16,7 @@ import useVisibility from './useVisibility';
 
 export type PrimaryActionBtnProps = {
   label: string | null;
-  buttonType?: BtnType;
+  buttonType?: ButtonType;
   className?: string;
   variant?: BtnVariant;
   onClick: () => void;

@@ -69,7 +69,6 @@ const EditTableInput = ({
         title="Check"
         ariaLabel={language.save}
         size="16"
-        btnType="submit"
       />
     </form>
   );

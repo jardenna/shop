@@ -1,5 +1,5 @@
 import { BtnVariant, IconName } from '../types/enums';
-import { BtnType } from '../types/types';
+import { ButtonType } from '../types/types';
 import Button from './Button';
 import IconContent from './IconContent';
 
@@ -9,7 +9,7 @@ export type IconBtnProps = {
   title: string;
   ariaExpanded?: boolean;
   ariaSelected?: boolean;
-  btnType?: BtnType;
+  btnType?: ButtonType;
   className?: string;
   size?: string;
   onClick?: () => void;

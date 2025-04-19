@@ -2,7 +2,7 @@
 
 import { ReactNode } from 'react';
 import { BtnVariant } from '../types/enums';
-import { BtnType, ButtonEventType } from '../types/types';
+import { ButtonEventType, ButtonType } from '../types/types';
 import Loader from './loader/Loader';
 import VisuallyHidden from './VisuallyHidden';
 
@@ -22,7 +22,7 @@ type ButtonProps = {
   name?: string;
   role?: string;
   tabIndex?: 0 | -1;
-  type?: BtnType;
+  type?: ButtonType;
   variant?: BtnVariant;
   onClick?: (event: ButtonEventType | string) => void;
   ref?: (el: HTMLButtonElement | null) => void;
