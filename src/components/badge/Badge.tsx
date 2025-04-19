@@ -1,7 +1,14 @@
+import './_badge.scss';
+
 type BadgeProps = {
-  text: string;
+  badgeText: string;
+  className: string;
 };
 
-const Badge = ({ text }: BadgeProps) => <div className="badge">{text}</div>;
+const Badge = ({ className, badgeText }: BadgeProps) => (
+  <div className={`badge ${className}`}>
+    <span>{badgeText}</span>
+  </div>
+);
 
 export default Badge;

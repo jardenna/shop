@@ -48,13 +48,13 @@ h1,
 h2 {
   margin: 0;
   font-weight: normal;
-  letter-spacing: rem(3px);
   margin-bottom: 24px;
 }
 
 h1 {
   font-size: rem(24px);
   font-family: $font-secondary;
+  letter-spacing: rem(3px);
   display: flex;
   align-items: center;
 

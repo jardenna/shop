@@ -4,6 +4,7 @@ import Product from '../models/productModel.js';
 import SubCategory from '../models/subCategoryModel.js';
 import formatMongoData from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
+import { updateScheduledItems } from '../utils/UpdateScheduledItemsOptions.js';
 import validateScheduledDate from '../utils/validateScheduledDate.js';
 
 // @desc    Create SubCategory
@@ -85,19 +86,12 @@ const createSubCategory = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Public
 const getAllSubCategories = asyncHandler(async (req, res) => {
-  const now = new Date();
+  const allSubCategories = await SubCategory.find({}).lean();
 
-  // Automatically update "Scheduled" subcategories to "Published" if the date has passed
-  const subCategoriesToUpdate = await SubCategory.find({
-    categoryStatus: 'Scheduled',
-    scheduledDate: { $lte: now },
+  await updateScheduledItems({
+    items: allSubCategories,
+    model: SubCategory,
   });
-
-  for (const subCategory of subCategoriesToUpdate) {
-    subCategory.categoryStatus = 'Published';
-    subCategory.scheduledDate = undefined; // Clear the scheduledDate
-    await subCategory.save();
-  }
 
   // Fetch subcategories with product count and mainCategory details
   const subCategories = await SubCategory.aggregate([
@@ -137,15 +131,15 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
     },
     {
       $project: {
-        products: 0, // Exclude the products array from the response
-        'mainCategory._id': 0, // Exclude the original `_id` field in mainCategory
-        category: 0, // Exclude the `category` field from the response
+        products: 0,
+        'mainCategory._id': 0,
+        category: 0,
       },
     },
   ]);
 
   const formattedCategories = formatMongoData(subCategories);
-  res.json({
+  res.status(200).json({
     success: true,
     subCategories: formattedCategories,
   });
