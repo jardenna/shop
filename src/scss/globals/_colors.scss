@@ -4,19 +4,21 @@ $color-blue: #2c566d;
 $color-red: #d20917;
 
 // Gray colors
-
-$color-gray-30: #a7a6ba;
-$color-gray-40: #f9f9f9;
-$color-gray-55: #dbe0dc;
+$color-gray-10: #f9f9f9;
+$color-gray-20: #99a4a9;
 
 /* colors */
-$color-danger: $color-red;
-$color-border: $color-gray-30;
-$color-background: $color-gray-40;
+$color-border: $color-gray-20;
+$color-background: $color-gray-10;
 $color-overlay: rgb($color-black, 0.6);
 
-// $color-mics
-$color-error: $color-danger;
-$color-success: #2c566d;
+// Message popup colors
+$color-danger: $color-red;
+$color-success: $color-blue;
 $color-info: #4e8673;
 $color-warning: #fec901;
+
+// Badge colors
+$color-badge-scheduled: $color-gray-20;
+$color-badge-inactive: #a0738f;
+$color-badge-default: $color-blue;
