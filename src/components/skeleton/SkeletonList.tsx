@@ -1,13 +1,12 @@
-import { FC } from 'react';
 import Skeleton, { SkeletonProps } from './Skeleton';
 
-const SkeletonList: FC<SkeletonProps> = ({
+const SkeletonList = ({
   count = 2,
   width,
   height,
   className = '',
   variant,
-}) => {
+}: SkeletonProps) => {
   const skeletons = Array.from({ length: count });
   return (
     <span className={`skeleton-list ${className}`}>

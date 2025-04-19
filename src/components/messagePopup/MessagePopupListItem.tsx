@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import useLanguage from '../../features/language/useLanguage';
 import {
   MessagePopup,
@@ -9,13 +8,11 @@ import BtnClose from '../BtnClose';
 import Icon from '../icons/Icon';
 import useMessagePopup from './useMessagePopup';
 
-interface MessagePopupListItemProps {
+type MessagePopupListItemProps = {
   messagePopup: MessagePopup;
-}
+};
 
-const MessagePopupListItem: FC<MessagePopupListItemProps> = ({
-  messagePopup,
-}) => {
+const MessagePopupListItem = ({ messagePopup }: MessagePopupListItemProps) => {
   const { language } = useLanguage();
   const { deleteMessagePopup, popupClass } = useMessagePopup(messagePopup.id);
   const messagePopupTypeConfig: Record<

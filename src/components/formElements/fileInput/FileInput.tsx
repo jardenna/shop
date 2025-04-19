@@ -1,24 +1,23 @@
-import { FC } from 'react';
 import { FileUploadNameType } from '../../../app/api/apiTypes';
 import { ChangeInputType } from '../../../types/types';
 import Input from '../Input';
 import './_file-input.scss';
 
-interface FileInputProps {
+type FileInputProps = {
   id: string;
   labelText: string;
   name: FileUploadNameType;
   title: string | null;
   onChange: (event: ChangeInputType) => void;
-}
+};
 
-const FileInput: FC<FileInputProps> = ({
+const FileInput = ({
   onChange,
   name,
   id,
   labelText,
   title,
-}) => (
+}: FileInputProps) => (
   <div className="file-container">
     <span className="file-input-info text-ellipsis">{title}</span>
     <Input

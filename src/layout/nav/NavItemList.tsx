@@ -1,19 +1,18 @@
-import { FC } from 'react';
 import LayoutElement from '../LayoutElement';
 import { NavItemsProps } from './Nav';
 import NavItem from './NavItem';
 
-interface NavItemListProps {
+type NavItemListProps = {
   ariaLabel: string;
   navItemsList: NavItemsProps[];
   className?: string;
-}
+};
 
-const NavItemList: FC<NavItemListProps> = ({
+const NavItemList = ({
   navItemsList,
   ariaLabel,
   className = '',
-}) => (
+}: NavItemListProps) => (
   <LayoutElement as="nav" ariaLabel={ariaLabel} className={className}>
     <ul className="nav-list">
       {navItemsList.map((navItem) => (

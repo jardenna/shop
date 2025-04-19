@@ -1,8 +1,7 @@
-import { FC } from 'react';
 import Skeleton from './Skeleton';
 import SkeletonList from './SkeletonList';
 
-const SkeletonGrid: FC = () => (
+const SkeletonGrid = () => (
   <div className="grid three-col">
     <span className="flex column">
       <Skeleton count={6} />

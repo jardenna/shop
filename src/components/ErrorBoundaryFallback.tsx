@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import useLanguage from '../features/language/useLanguage';
 import ErrorContent from './ErrorContent';
 
@@ -7,10 +6,10 @@ type FallbackProps = {
   resetErrorBoundary: () => void;
 };
 
-const ErrorBoundaryFallback: FC<FallbackProps> = ({
+const ErrorBoundaryFallback = ({
   error,
   resetErrorBoundary,
-}) => {
+}: FallbackProps) => {
   const { language } = useLanguage();
 
   return (

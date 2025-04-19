@@ -1,12 +1,6 @@
-import { FC } from 'react';
 import { IconDefaultProps } from './Icon';
 
-const UserIcon: FC<IconDefaultProps> = ({
-  size,
-  title,
-  className,
-  ariaHidden,
-}) => (
+const UserIcon = ({ size, title, className, ariaHidden }: IconDefaultProps) => (
   <svg
     role="img"
     xmlns="http://www.w3.org/2000/svg"

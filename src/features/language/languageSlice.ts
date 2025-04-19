@@ -5,10 +5,10 @@ import englishLang from '../../locales/en.json';
 
 export type SelectedLanguage = 'en' | 'da';
 
-interface LanguageState {
+type LanguageState = {
   language: Record<string, string>;
   selectedLanguage: SelectedLanguage;
-}
+};
 
 const languageFiles: Record<SelectedLanguage, Record<string, string>> = {
   da: danishLang,

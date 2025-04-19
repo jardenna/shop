@@ -1,13 +1,12 @@
-import { FC } from 'react';
 import { IconDefaultProps } from './Icon';
 
-const EyeOffIcon: FC<IconDefaultProps> = ({
+const EyeOffIcon = ({
   size,
   title,
   className,
   ariaHidden,
   ariaLabel,
-}) => (
+}: IconDefaultProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"

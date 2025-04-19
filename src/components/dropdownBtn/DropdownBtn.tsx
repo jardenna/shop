@@ -1,11 +1,11 @@
-import { FC, ReactNode, useRef } from 'react';
+import { ReactNode, useRef } from 'react';
 import useDropdown from '../../hooks/useDropdown';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import './_dropdown-btn.scss';
 import DropdownList from './DropdownList';
 
-export interface DropdownItem {
+export type DropdownItem = {
   id: number;
   label: string;
   btnVariant?: BtnVariant;
@@ -13,21 +13,21 @@ export interface DropdownItem {
   hide?: boolean;
   icon?: ReactNode;
   onClick: () => void;
-}
+};
 
-interface DropdownBtnProps {
+type DropdownBtnProps = {
   ariaControls: string;
   children: ReactNode;
   dropdownList: DropdownItem[];
   btnVariant?: BtnVariant;
-}
+};
 
-const DropdownBtn: FC<DropdownBtnProps> = ({
+const DropdownBtn = ({
   dropdownList,
   btnVariant = BtnVariant.Ghost,
   ariaControls,
   children,
-}) => {
+}: DropdownBtnProps) => {
   const { dropdownRef, dropdownIsOpen, toggleDropdownList } = useDropdown({});
   const buttonRef = useRef<HTMLButtonElement | null>(null);
 

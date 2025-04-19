@@ -1,16 +1,16 @@
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { useAppDispatch } from '../../app/hooks';
 import { toggleModal } from '../../features/modalSlice';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import Modal, { ModalProps } from './Modal';
 
-interface ModalContainerProps extends ModalProps {
+type ModalContainerProps = ModalProps & {
   triggerModalBtnContent: ReactNode | string;
   triggerModalBtnVariant?: BtnVariant;
-}
+};
 
-const ModalContainer: FC<ModalContainerProps> = ({
+const ModalContainer = ({
   id,
   children,
   primaryActionBtn,
@@ -20,7 +20,7 @@ const ModalContainer: FC<ModalContainerProps> = ({
   modalHeaderText,
   modalSize,
   className,
-}) => {
+}: ModalContainerProps) => {
   const dispatch = useAppDispatch();
   const handleOpenModal = () => {
     if (id) {

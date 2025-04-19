@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 import Selectbox from '../../../components/selectbox/Selectbox';
 import { HeaderProps } from '../../../layout/header/Header';
 
@@ -13,16 +11,16 @@ type OmittedHeaderProps = Omit<
   | 'onChange'
 >;
 
-interface CurrencySelectProps extends OmittedHeaderProps {
+type CurrencySelectProps = OmittedHeaderProps & {
   inputHasNoLabel: boolean;
   labelText: string;
-}
-const CurrencySelect: FC<CurrencySelectProps> = ({
+};
+const CurrencySelect = ({
   currencyOptions,
   defaultValue,
   onSelectCurrency,
   labelText,
-}) => (
+}: CurrencySelectProps) => (
   <Selectbox
     id="currency"
     defaultValue={defaultValue}

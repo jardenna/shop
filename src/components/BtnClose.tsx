@@ -1,20 +1,19 @@
-import { FC } from 'react';
 import useLanguage from '../features/language/useLanguage';
 import { BtnVariant, IconName } from '../types/enums';
 import Button from './Button';
 import Icon from './icons/Icon';
 
-interface BtnCloseProps {
+type BtnCloseProps = {
   ariaLabel?: string;
   autoFocus?: boolean;
   onClick: () => void;
-}
+};
 
-const BtnClose: FC<BtnCloseProps> = ({
+const BtnClose = ({
   onClick,
   ariaLabel = 'Close',
   autoFocus,
-}) => {
+}: BtnCloseProps) => {
   const { language } = useLanguage();
 
   return (

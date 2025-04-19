@@ -1,7 +1,5 @@
-import { FC } from 'react';
 import { Link } from 'react-router';
 import DropdownBtn from '../../components/dropdownBtn/DropdownBtn';
-import IconBtn from '../../components/IconBtn';
 import IconContent from '../../components/IconContent';
 import Icon from '../../components/icons/Icon';
 import { PrimaryActionBtnProps } from '../../components/modal/Modal';
@@ -15,11 +13,11 @@ import './_header-icons.scss';
 
 type OmittedHeaderProps = Omit<HeaderProps, 'primaryActionBtn' | 'ariaLabel'>;
 
-interface HeaderIconsProps extends OmittedHeaderProps {
+type HeaderIconsProps = OmittedHeaderProps & {
   primaryActionBtn: PrimaryActionBtnProps;
-}
+};
 
-const HeaderIcons: FC<HeaderIconsProps> = ({
+const HeaderIcons = ({
   userDropdownList,
   primaryActionBtn,
   onChange,
@@ -28,24 +26,20 @@ const HeaderIcons: FC<HeaderIconsProps> = ({
   defaultValue,
   onSelectCurrency,
   secondaryActionBtn,
-}) => {
+}: HeaderIconsProps) => {
   const { language } = useLanguage();
-
-  const handleSearch = () => {
-    console.log(12);
-  };
 
   return (
     <section>
       <ul className="header-icon-list">
-        <li>
+        {/* <li>
           <IconBtn
             iconName={IconName.Search}
             title={language.search}
             onClick={handleSearch}
             ariaLabel={language.search}
           />
-        </li>
+        </li> */}
         <li>
           <DropdownBtn
             dropdownList={userDropdownList}

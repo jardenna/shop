@@ -1,25 +1,24 @@
-import { FC } from 'react';
 import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import IconBtn from '../IconBtn';
 
-interface TableGridList {
+type TableGridList = {
   iconName: IconName;
   padding: string;
   title: string;
-}
+};
 
-interface TableGridIconListProps {
+type TableGridIconListProps = {
   isActive: string;
   tableGridIconList: TableGridList[];
   onSetPadding: (id: string) => void;
-}
+};
 
-const TableGridList: FC<TableGridIconListProps> = ({
+const TableGridList = ({
   tableGridIconList,
   onSetPadding,
   isActive,
-}) => {
+}: TableGridIconListProps) => {
   const { language } = useLanguage();
   return (
     <div className="table-grid-icons">

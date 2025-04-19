@@ -1,12 +1,12 @@
 /* eslint-disable react/button-has-type */
 
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { BtnVariant } from '../types/enums';
-import { BtnType, ButtonEventType } from '../types/types';
+import { ButtonEventType, ButtonType } from '../types/types';
 import Loader from './loader/Loader';
 import VisuallyHidden from './VisuallyHidden';
 
-interface ButtonProps {
+type ButtonProps = {
   children: ReactNode;
   ariaControls?: string;
   ariaDescribedby?: string;
@@ -22,18 +22,18 @@ interface ButtonProps {
   name?: string;
   role?: string;
   tabIndex?: 0 | -1;
-  type?: BtnType;
+  type?: ButtonType;
   variant?: BtnVariant;
   onClick?: (event: ButtonEventType | string) => void;
   ref?: (el: HTMLButtonElement | null) => void;
-}
+};
 
-const Button: FC<ButtonProps> = ({
+const Button = ({
   children,
   type = 'button',
   id,
   tabIndex,
-  variant = 'primary',
+  variant = BtnVariant.Primary,
   onClick,
   ref,
   ariaSelected,
@@ -48,7 +48,7 @@ const Button: FC<ButtonProps> = ({
   name,
   ariaDescribedby,
   isLoading,
-}) => (
+}: ButtonProps) => (
   <button
     id={id}
     tabIndex={tabIndex}

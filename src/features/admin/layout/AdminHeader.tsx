@@ -1,13 +1,8 @@
-import { FC } from 'react';
 import Logo from '../../../layout/header/Logo';
 import LayoutElement from '../../../layout/LayoutElement';
 import { MainPath } from '../../../layout/nav/enums';
 
-interface AdminHeaderProps {
-  ariaLabel: string;
-}
-
-const AdminHeader: FC<AdminHeaderProps> = ({ ariaLabel }) => (
+const AdminHeader = ({ ariaLabel }: { ariaLabel: string }) => (
   <LayoutElement as="header" className="main-header" ariaLabel={ariaLabel}>
     <div className="container main-header-container">
       <Logo link={`/${MainPath.Admin}`} />

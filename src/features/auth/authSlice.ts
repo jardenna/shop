@@ -2,9 +2,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AuthResponse } from '../../app/api/apiTypes';
 import { RootState } from '../../app/store';
 
-interface AuthState {
+type AuthState = {
   user: AuthResponse | null;
-}
+};
 
 const initialState: AuthState = {
   user: null,

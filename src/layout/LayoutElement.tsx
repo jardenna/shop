@@ -1,18 +1,18 @@
-import { ElementType, FC, ReactNode } from 'react';
+import { ElementType, ReactNode } from 'react';
 
-interface LayoutElementProps {
+type LayoutElementProps = {
   ariaLabel: string;
   children: ReactNode;
   as?: ElementType;
   className?: string;
-}
+};
 
-const LayoutElement: FC<LayoutElementProps> = ({
+const LayoutElement = ({
   children,
   ariaLabel,
   as: Tag = 'footer',
   className = '',
-}) => (
+}: LayoutElementProps) => (
   <Tag className={className} aria-label={ariaLabel}>
     {children}
   </Tag>

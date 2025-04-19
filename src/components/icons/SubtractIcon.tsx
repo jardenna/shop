@@ -1,7 +1,11 @@
-import { FC } from 'react';
 import { IconDefaultProps } from './Icon';
 
-const SubtractIcon: FC<IconDefaultProps> = ({ size, title, className }) => (
+const SubtractIcon = ({
+  size,
+  title,
+  className,
+  ariaHidden,
+}: IconDefaultProps) => (
   <svg
     role="img"
     xmlns="http://www.w3.org/2000/svg"
@@ -12,6 +16,7 @@ const SubtractIcon: FC<IconDefaultProps> = ({ size, title, className }) => (
     fillRule="evenodd"
     strokeLinejoin="round"
     strokeMiterlimit="2"
+    aria-hidden={ariaHidden}
   >
     <title>{title}</title>
     <path d="M0 3.6V0h17.964v3.6H0z" fillRule="nonzero" />

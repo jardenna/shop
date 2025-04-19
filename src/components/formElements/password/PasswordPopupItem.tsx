@@ -1,15 +1,14 @@
-import { FC } from 'react';
 import useLanguage from '../../../features/language/useLanguage';
 import { IconName } from '../../../types/enums';
 import Icon from '../../icons/Icon';
 import VisuallyHidden from '../../VisuallyHidden';
 
-interface PasswordPopupItemProps {
+type PasswordPopupItemProps = {
   isValid: boolean;
   text: string;
-}
+};
 
-const PasswordPopupItem: FC<PasswordPopupItemProps> = ({ text, isValid }) => {
+const PasswordPopupItem = ({ text, isValid }: PasswordPopupItemProps) => {
   const { language } = useLanguage();
 
   return (

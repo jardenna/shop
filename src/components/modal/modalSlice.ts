@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 
-interface ModalState {
+type ModalState = {
   modalId: string | null;
-}
+};
 
 const initialState: ModalState = {
   modalId: null,

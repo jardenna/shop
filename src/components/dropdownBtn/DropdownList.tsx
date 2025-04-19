@@ -1,22 +1,22 @@
-import { FC, RefObject, useRef, useState } from 'react';
+import { RefObject, useRef, useState } from 'react';
 import useKeyPress from '../../hooks/useKeyPress';
 import { BtnVariant, KeyCode } from '../../types/enums';
 import Button from '../Button';
 import { DropdownItem } from './DropdownBtn';
 
-interface DropdownListProps {
+type DropdownListProps = {
   ariaControls: string;
   dropdownList: DropdownItem[];
   ref: RefObject<HTMLDivElement | null>;
   defaultIndex?: number;
-}
+};
 
-const DropdownList: FC<DropdownListProps> = ({
+const DropdownList = ({
   dropdownList,
   ref,
   defaultIndex,
   ariaControls,
-}) => {
+}: DropdownListProps) => {
   const [selectedListItemIndex, setSelectedListItemIndex] = useState(
     defaultIndex ?? 0,
   );

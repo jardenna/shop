@@ -7,7 +7,7 @@ export type ChangeInputType = ChangeEvent<
   HTMLInputElement | HTMLTextAreaElement
 >;
 
-export type BtnType = 'submit' | 'reset' | 'button';
+export type ButtonType = 'submit' | 'reset' | 'button';
 export type BlurEventType = { target: { name: string } };
 export type FormEventType = FormEvent<HTMLFormElement>;
 

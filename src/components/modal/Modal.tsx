@@ -1,10 +1,10 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { selectModalId } from '../../features/modalSlice';
-
 import useClickOutside from '../../hooks/useClickOutside';
+import useMediaQuery from '../../hooks/useMediaQuery ';
 import { BtnVariant, PopupRole, SizeVariant } from '../../types/enums';
-import { BtnType } from '../../types/types';
+import { ButtonType } from '../../types/types';
 import Overlay from '../overlay/Overlay';
 import Portal from '../Portal';
 import SwipeContainer from '../SwipeContainer';
@@ -13,24 +13,23 @@ import ModalFooter from './ModalFooter';
 import ModalHeader from './ModalHeader';
 import useModal from './useModal';
 import useVisibility from './useVisibility';
-import useMediaQuery from '../../hooks/useMediaQuery ';
 
-export interface PrimaryActionBtnProps {
+export type PrimaryActionBtnProps = {
   label: string | null;
-  buttonType?: BtnType;
+  buttonType?: ButtonType;
   className?: string;
   variant?: BtnVariant;
   onClick: () => void;
-}
+};
 
-export interface SecondaryActionBtnProps {
+export type SecondaryActionBtnProps = {
   label: string | null;
   variant?: BtnVariant;
   onClick?: () => void;
-}
+};
 
-export interface ModalProps {
-  children: React.ReactNode;
+export type ModalProps = {
+  children: ReactNode;
   id: string;
   modalHeaderText: string;
   primaryActionBtn: PrimaryActionBtnProps;
@@ -40,20 +39,20 @@ export interface ModalProps {
   modalSize?: SizeVariant;
   secondaryActionBtn?: SecondaryActionBtnProps;
   showCloseIcon?: boolean;
-}
+};
 
-const Modal: React.FC<ModalProps> = ({
+const Modal = ({
   id,
   modalHeaderText,
   children,
   isAlert,
-  modalSize = 'sm',
+  modalSize = SizeVariant.Sm,
   className = '',
   showCloseIcon,
   secondaryActionBtn,
   primaryActionBtn,
   modalInfo,
-}) => {
+}: ModalProps) => {
   const { isMobileSize } = useMediaQuery();
   const modalId = useAppSelector(selectModalId);
   const { handleCloseModal, modalRef } = useModal(modalId);

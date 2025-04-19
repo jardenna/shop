@@ -2,12 +2,12 @@ import { ValidationErrors } from '../../../hooks/useFormValidation';
 import { ValidationMessage } from '../../../types/enums';
 import { emailRegex } from '../../../utils/regex';
 
-export interface AuthFormValues {
+export type AuthFormValues = {
   confirmPassword: string;
   email: string;
   password: string;
   username: string;
-}
+};
 
 function validationSignup(values: AuthFormValues) {
   const errors: ValidationErrors = {};

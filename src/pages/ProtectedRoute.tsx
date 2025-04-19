@@ -1,9 +1,8 @@
-import React from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router';
 import { useCheckAuthQuery } from '../features/auth/authApiSlice';
 import { MainPath } from '../layout/nav/enums';
 
-const ProtectedRoute: React.FC = () => {
+const ProtectedRoute = () => {
   const location = useLocation();
   const { data: userProfile, isLoading } = useCheckAuthQuery();
 

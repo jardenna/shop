@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router';
 import IconBtn from '../../../components/IconBtn';
 import SkipLink from '../../../components/skipLinks/SkipLinks';
@@ -9,7 +9,7 @@ import { IconName } from '../../../types/enums';
 import useLanguage from '../../language/useLanguage';
 import AdminHeader from './AdminHeader';
 
-const AdminLayout: FC = () => {
+const AdminLayout = () => {
   const { language } = useLanguage();
   const [isMenuCollapsed, setIsMenuCollapsed] = useState(false);
   const { isTabletSize } = useMediaQuery();

@@ -1,11 +1,3 @@
-import { FC } from 'react';
-
-interface ShoppingChartProps {
-  name?: string;
-}
-
-const ShoppingChart: FC<ShoppingChartProps> = ({ name }) => (
-  <section>Cart {name}</section>
-);
+const ShoppingChart = () => <section>Cart</section>;
 
 export default ShoppingChart;

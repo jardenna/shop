@@ -1,16 +1,12 @@
-import { FC, ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { useAppDispatch } from '../../app/hooks';
 import { localStorageKeys } from '../../hooks/useLocalStorage';
 import { setRates } from './currencySlice';
 import { useGetExchangeRatesQuery } from './exchangeRatesApiSlice';
 
-interface CurrencyProviderProps {
-  children: ReactNode;
-}
-
 const oneDay = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
 
-const CurrencyProvider: FC<CurrencyProviderProps> = ({ children }) => {
+const CurrencyProvider = ({ children }: { children: ReactNode }) => {
   const dispatch = useAppDispatch();
 
   // Check if an error was previously stored

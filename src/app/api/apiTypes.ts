@@ -61,6 +61,10 @@ export type UpdateUserByIdRequest = {
 };
 
 // Category
+export type ScheduledResponse = {
+  hasScheduled: boolean;
+};
+
 export type CategoryStatus = 'Published' | 'Inactive' | 'Scheduled';
 
 export type Category = DefaultResponseType & {

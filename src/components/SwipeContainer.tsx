@@ -1,16 +1,16 @@
-import { FC, ReactNode, TouchEvent, useState } from 'react';
+import { ReactNode, TouchEvent, useState } from 'react';
 
-interface SwipeContainerProps {
+type SwipeContainerProps = {
   children: ReactNode;
   onSwipeLeft?: () => void;
   onSwipeRight?: () => void;
-}
+};
 
-const SwipeContainer: FC<SwipeContainerProps> = ({
+const SwipeContainer = ({
   children,
   onSwipeLeft,
   onSwipeRight,
-}) => {
+}: SwipeContainerProps) => {
   const [touchStart, setTouchStart] = useState<{ x: number; y: number } | null>(
     null,
   );

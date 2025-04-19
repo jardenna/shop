@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
-const Orders: FC = () => <section>Order</section>;
+const Orders = () => <section>Order</section>;
 
 export default Orders;

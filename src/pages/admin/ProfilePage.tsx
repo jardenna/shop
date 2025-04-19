@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
-const ProfilePage: FC = () => <section>Profile</section>;
+const ProfilePage = () => <section>Profile</section>;
 
 export default ProfilePage;

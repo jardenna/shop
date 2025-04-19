@@ -3,6 +3,7 @@ import {
   CategoriesResponse,
   CategoryItemResponse,
   CreateCategoryRequest,
+  ScheduledResponse,
   UpdateCategoryRequest,
 } from '../../app/api/apiTypes';
 import { categoryUrl } from '../../app/endpoints';
@@ -13,8 +14,7 @@ const categoryApiSlice = apiSlice.injectEndpoints({
       query: () => categoryUrl,
       providesTags: [TagTypesEnum.Categories],
     }),
-
-    getScheduled: builder.query<any, void>({
+    getScheduled: builder.query<ScheduledResponse, void>({
       query: () => `${categoryUrl}/scheduled`,
       providesTags: [TagTypesEnum.Categories],
     }),

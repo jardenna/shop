@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 import { useNavigate } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
 import { KeyValuePair } from '../../hooks/useFormValidation';
@@ -18,14 +16,14 @@ import PasswordInput from '../formElements/password/PasswordInput';
 import { PasswordRulesProps } from '../formElements/password/PasswordPopupList';
 import './_auth-form.scss';
 
-export interface User {
+export type User = {
   email: string;
   password: string;
   confirmPassword?: string;
   username?: string;
-}
+};
 
-interface AuthFormProps {
+type AuthFormProps = {
   errors: KeyValuePair<string>;
   heading: string;
   isLoading: boolean;
@@ -40,9 +38,9 @@ interface AuthFormProps {
   onFocus?: () => void;
   onSubmit: (event: FormEventType) => void;
   passwordRules?: (value: string) => PasswordRulesProps[];
-}
+};
 
-const AuthForm: FC<AuthFormProps> = ({
+const AuthForm = ({
   values,
   onSubmit,
   heading,
@@ -57,7 +55,7 @@ const AuthForm: FC<AuthFormProps> = ({
   isFocused,
   onFocus,
   navigateToText,
-}) => {
+}: AuthFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
 

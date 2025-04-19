@@ -1,31 +1,30 @@
-import { FC, ReactNode } from 'react';
-
+import { ReactNode } from 'react';
 import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import './_nav.scss';
 import { LinkText, MainPath } from './enums';
 import NavItemList from './NavItemList';
 
-export interface NavItemsProps {
+export type NavItemsProps = {
   linkText: LinkText;
   path: MainPath | string;
   iconName?: IconName;
-}
+};
 
-export interface ActionBtnProps {
+export type ActionBtnProps = {
   ariaLabel?: string;
   className?: string;
   label?: string;
   onClick?: () => void;
-}
+};
 
-interface NavProps {
+type NavProps = {
   navList: NavItemsProps[];
   className?: string;
   iconBtn?: ReactNode;
-}
+};
 
-const Nav: FC<NavProps> = ({ navList, iconBtn, className = '' }) => {
+const Nav = ({ navList, iconBtn, className = '' }: NavProps) => {
   const { language } = useLanguage();
 
   return (

@@ -12,20 +12,20 @@ export type MessagePopupPosition =
   | 'bottom-right'
   | 'bottom-left';
 
-export interface MessagePopup {
+export type MessagePopup = {
   id: string;
   message: string;
   messagePopupType: MessagePopupTypes;
   componentType?: ComponentType;
   onClose?: () => void;
-}
+};
 
 export type MessagePopupWithoutId = Omit<MessagePopup, 'id'>;
 
-interface MessagePopupState {
+type MessagePopupState = {
   messagePopups: MessagePopup[];
   autoHideDuration?: number;
-}
+};
 
 const initialState: Readonly<MessagePopupState> = {
   messagePopups: [],

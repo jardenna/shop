@@ -1,4 +1,4 @@
-import { FC, FormEvent, useRef, useState } from 'react';
+import { FormEvent, useRef, useState } from 'react';
 import useLanguage from '../../features/language/useLanguage';
 import useClickOutside from '../../hooks/useClickOutside';
 import { IconName } from '../../types/enums';
@@ -7,19 +7,19 @@ import Input from '../formElements/Input';
 import IconBtn from '../IconBtn';
 import VisuallyHidden from '../VisuallyHidden';
 
-interface TableSearchInputProps {
+type TableSearchInputProps = {
   label: string;
   title: string;
   value: string;
   onFilterRows: (event: ChangeInputType) => void;
-}
+};
 
-const TableSearchInput: FC<TableSearchInputProps> = ({
+const TableSearchInput = ({
   title,
   value,
   onFilterRows,
   label,
-}) => {
+}: TableSearchInputProps) => {
   const { language } = useLanguage();
   const searchInputRef = useRef<HTMLInputElement>(null);
   const text = `${language.filter} ${language[title]}`;
