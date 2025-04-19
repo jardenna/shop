@@ -1,6 +1,11 @@
 import { IconDefaultProps } from './Icon';
 
-const MoreIcon = ({ ariaHidden, size, title, className }: IconDefaultProps) => (
+const ThreeDotsHorizontalIcon = ({
+  ariaHidden,
+  size,
+  title,
+  className,
+}: IconDefaultProps) => (
   <svg
     role="img"
     xmlns="http://www.w3.org/2000/svg"
@@ -22,4 +27,4 @@ const MoreIcon = ({ ariaHidden, size, title, className }: IconDefaultProps) => (
   </svg>
 );
 
-export default MoreIcon;
+export default ThreeDotsHorizontalIcon;

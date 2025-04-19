@@ -80,7 +80,7 @@ export enum IconName {
   Login = 'login',
   Logo = 'logo',
   Logout = 'logout',
-  More = 'more',
+  More = 'menuDotsHorizontal',
   Orders = 'orders',
   Products = 'products',
   Search = 'search',
