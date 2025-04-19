@@ -30,7 +30,7 @@ table {
       width: auto;
     }
 
-    input {
+    input:not(input[type='radio']) {
       padding: 4px;
       background-color: $color-white;
       border: 1px solid #a7a6ba;
