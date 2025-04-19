@@ -1,12 +1,7 @@
 @use '../../scss/globals' as *;
 
-dialog::backdrop {
-  background-color: gray;
-  opacity: 0.8;
-}
-
 dialog {
-  color: #473f4a;
+  color: $color-main;
   padding: 20px 24px;
 }
 

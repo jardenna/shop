@@ -40,7 +40,7 @@
 
     &:focus-visible {
       outline: transparent;
-      color: #f4f4f5;
+      color: $color-gray-15;
       background-color: #463f4a;
     }
   }
@@ -48,12 +48,12 @@
   .rdp-selected .rdp-day_button {
     border: 0;
     background-color: #463f4a;
-    color: #f4f4f5;
+    color: $color-gray-15;
     font-weight: normal;
   }
 
   svg {
-    fill: #2a3439;
+    fill: $color-main;
     width: rem(20px);
   }
 }

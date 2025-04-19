@@ -40,7 +40,7 @@ body,
 body {
   margin: 0;
   font-size: rem(14px);
-  color: #473f4a;
+  color: $color-main;
   letter-spacing: rem(0.5px);
 }
 
@@ -62,7 +62,7 @@ h1 {
     content: '';
     display: flex;
     margin-left: 8px;
-    border-bottom: 2px solid #473f4a;
+    border-bottom: 2px solid $color-main;
     border-radius: 4px;
     width: 59px;
   }

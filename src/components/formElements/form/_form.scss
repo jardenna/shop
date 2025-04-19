@@ -38,7 +38,7 @@ textarea {
   border-bottom: 3px solid transparent;
 
   &:has(input:focus-visible) {
-    border-color: #2a3439;
+    border-color: $color-main;
   }
 
   .form-label-container {
