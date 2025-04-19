@@ -139,7 +139,7 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
   ]);
 
   const formattedCategories = formatMongoData(subCategories);
-  res.json({
+  res.status(200).json({
     success: true,
     subCategories: formattedCategories,
   });
