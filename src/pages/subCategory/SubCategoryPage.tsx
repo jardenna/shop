@@ -10,6 +10,30 @@ import {
 } from '../../features/subCategories/subCategoryApiSlice';
 import { MainPath } from '../../layout/nav/enums';
 
+const tableHeaders: {
+  key: keyof SubCategoryResponse;
+  label: string;
+  name: string;
+}[] = [
+  {
+    key: 'mainCategoryName',
+    label: 'parentCategory',
+    name: 'mainCategoryName',
+  },
+  {
+    key: 'subCategoryName',
+    label: 'name',
+    name: 'subCategoryName',
+  },
+  {
+    key: 'productCount',
+    label: 'totalProducts',
+    name: 'productCount',
+  },
+  { key: 'categoryStatus', label: 'status', name: 'categoryStatus' },
+  { key: 'id', label: '', name: '' },
+];
+
 const SubCategoryPage = () => {
   const { language } = useLanguage();
 
@@ -26,30 +50,6 @@ const SubCategoryPage = () => {
       refetchOnMountOrArgChange: true,
     },
   );
-
-  const tableHeaders: {
-    key: keyof SubCategoryResponse;
-    label: string;
-    name: string;
-  }[] = [
-    {
-      key: 'mainCategoryName',
-      label: 'parentCategory',
-      name: 'mainCategoryName',
-    },
-    {
-      key: 'subCategoryName',
-      label: 'name',
-      name: 'subCategoryName',
-    },
-    {
-      key: 'productCount',
-      label: 'totalProducts',
-      name: 'productCount',
-    },
-    { key: 'categoryStatus', label: 'status', name: 'categoryStatus' },
-    { key: 'id', label: '', name: '' },
-  ];
 
   const renderRow = ({
     id,
@@ -72,10 +72,9 @@ const SubCategoryPage = () => {
             scheduledDate={scheduledDate || null}
           />
         </td>
-
         <td>
           <Link to={`/admin/${MainPath.AdminSubCategoryView}/${id}`}>
-            {language.editCategory}
+            {language.viewCategory}
           </Link>
         </td>
       </tr>
@@ -95,7 +94,7 @@ const SubCategoryPage = () => {
           columns={tableHeaders}
           tableCaption={language.subCategoryList}
           isLoading={isLoading}
-          emptyHeaderCellText={language.updateSubCategory}
+          emptyHeaderCellText={language.viewCategory}
         >
           {(data) => data.map(renderRow)}
         </Table>

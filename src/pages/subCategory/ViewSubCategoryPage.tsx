@@ -1,6 +1,4 @@
-import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate, useParams } from 'react-router';
-import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import PageHeader from '../../components/PageHeader';
 import CategoryCard from '../../components/categoryCard/CategoryCard';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
@@ -15,14 +13,12 @@ const ViewSubCategoryPage = () => {
   const { language } = useLanguage();
   const params = useParams();
   const navigate = useNavigate();
-  const {
-    data: category,
-    isLoading,
-    isError,
-    refetch,
-  } = useGetSubCategoryByIdQuery(params.id || '', {
-    refetchOnMountOrArgChange: true,
-  });
+  const { data: category, isLoading } = useGetSubCategoryByIdQuery(
+    params.id || '',
+    {
+      refetchOnMountOrArgChange: true,
+    },
+  );
 
   const { onAddMessagePopup } = useMessagePopup();
   const [deleteSubCategory] = useDeleteSubCategoryMutation();
@@ -59,17 +55,14 @@ const ViewSubCategoryPage = () => {
 
   return (
     <section className="page page-medium">
-      <PageHeader
-        heading={language.category}
-        linkText={language.createNewCategory}
-        linkTo={`/admin/${MainPath.AdminSubCategoryCreate}`}
-      />
-      <ErrorBoundary
-        FallbackComponent={ErrorBoundaryFallback}
-        onReset={() => refetch}
-      >
-        <div className="page-card">
-          {!isError && category ? (
+      {category && (
+        <>
+          <PageHeader
+            heading={`${language.category} ${category.subCategoryName}`}
+            linkText={language.createNewCategory}
+            linkTo={`/admin/${MainPath.AdminSubCategoryCreate}`}
+          />
+          <div className="page-card">
             <CategoryCard
               onDeleteSubCategory={handleDeleteSubCategory}
               categoryId={category.id}
@@ -84,11 +77,9 @@ const ViewSubCategoryPage = () => {
               statusMessage={category.mainCategory.categoryStatus.toLocaleLowerCase()}
               status={category.categoryStatus}
             />
-          ) : (
-            <span>error..</span>
-          )}
-        </div>
-      </ErrorBoundary>
+          </div>
+        </>
+      )}
     </section>
   );
 };
