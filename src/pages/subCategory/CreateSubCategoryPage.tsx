@@ -13,7 +13,7 @@ const CreateSubCategoryPage = () => {
   const { data: allCategories } = useGetAllCategoriesQuery();
 
   return (
-    <section className="page">
+    <section className="page page-small">
       <PageHeader heading={language.createNewCategory} />
       <div className="page-card">
         {allCategories && (

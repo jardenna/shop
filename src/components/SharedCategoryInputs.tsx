@@ -81,17 +81,17 @@ const SharedCategoryInputs = ({
       />
       {categoryStatus === 'Scheduled' && (
         <>
-          <DatePicker
-            onSelectDate={onSelectDate}
-            selectedDate={selectedDate}
-            labelText={language.selectPublishDate}
-          />
           <TimeInput
             value={timeValue}
             onChange={onTimeChange}
             id="time"
             labelText={language.selectPublishTime}
             name="time"
+          />
+          <DatePicker
+            onSelectDate={onSelectDate}
+            selectedDate={selectedDate}
+            labelText={language.selectPublishDate}
           />
         </>
       )}
