@@ -5,7 +5,7 @@ import { MainPath } from '../../../layout/nav/enums';
 const AdminHeader = ({ ariaLabel }: { ariaLabel: string }) => (
   <LayoutElement as="header" className="main-header" ariaLabel={ariaLabel}>
     <div className="container main-header-container">
-      <Logo link={`/${MainPath.Admin}`} />
+      <Logo linkTo={`/${MainPath.Admin}`} />
     </div>
   </LayoutElement>
 );

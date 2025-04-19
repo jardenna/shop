@@ -88,6 +88,7 @@ const Selectbox = ({
           isSearchable={isSearchable}
           placeholder={placeholder}
           isDisabled={isDisabled}
+          menuPlacement="auto"
           closeMenuOnSelect={closeMenuOnSelect}
         />
       </div>

@@ -43,7 +43,7 @@ const Header = ({
 }: HeaderProps) => (
   <LayoutElement as="header" className="main-header" ariaLabel={ariaLabel}>
     <div className="container main-header-container">
-      <Logo link={MainPath.Root} />
+      <Logo linkTo={MainPath.Root} />
       <Nav navList={navList} />
       <HeaderIcons
         userDropdownList={userDropdownList}

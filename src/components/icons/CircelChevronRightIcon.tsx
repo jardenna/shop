@@ -1,6 +1,11 @@
 import { IconDefaultProps } from './Icon';
 
-const MoreIcon = ({ ariaHidden, size, title, className }: IconDefaultProps) => (
+const CircelChevronRightIcon = ({
+  ariaHidden,
+  size,
+  title,
+  className,
+}: IconDefaultProps) => (
   <svg
     role="img"
     xmlns="http://www.w3.org/2000/svg"
@@ -16,10 +21,9 @@ const MoreIcon = ({ ariaHidden, size, title, className }: IconDefaultProps) => (
     aria-hidden={ariaHidden}
   >
     <title>{title}</title>
-    <circle cx="12" cy="12" r="1" />
-    <circle cx="19" cy="12" r="1" />
-    <circle cx="5" cy="12" r="1" />
+    <circle cx="12" cy="12" r="10" />
+    <path d="m10 8 4 4-4 4" />
   </svg>
 );
 
-export default MoreIcon;
+export default CircelChevronRightIcon;

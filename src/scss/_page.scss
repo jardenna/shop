@@ -33,6 +33,8 @@
   }
 
   .page-card {
+    max-height: 78lvh;
+    overflow: auto;
     background: #fff;
     border-radius: 4px;
     box-shadow: $box-shadow;

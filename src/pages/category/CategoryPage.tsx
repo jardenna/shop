@@ -1,6 +1,6 @@
-import { Link } from 'react-router';
 import { Category } from '../../app/api/apiTypes';
 import DateDisplay from '../../components/datePicker/DateDisplay';
+import MoreLink from '../../components/MoreLink';
 import PageHeader from '../../components/PageHeader';
 import Table from '../../components/sortTable/Table';
 import { useGetAllCategoriesQuery } from '../../features/categories/categoriyApiSlice';
@@ -56,9 +56,10 @@ const CategoryPage = () => {
           <DateDisplay date={createdAt} />
         </td>
         <td>
-          <Link to={`/admin/${MainPath.AdminCategoryUpdate}/${id}`}>
-            {language.update}
-          </Link>
+          <MoreLink
+            linkText={language.update}
+            linkTo={`/admin/${MainPath.AdminCategoryUpdate}/${id}`}
+          />
         </td>
       </tr>
     );
@@ -78,6 +79,7 @@ const CategoryPage = () => {
           columns={tableHeaders}
           tableCaption={language.categoryList}
           isLoading={isLoading}
+          emptyHeaderCellText={language.updateCategory}
         >
           {(data) => data.map(renderRow)}
         </Table>

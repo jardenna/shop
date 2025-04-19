@@ -1,9 +1,10 @@
 import { Link } from 'react-router';
+import { MainPath } from '../layout/nav/enums';
 
 type PageHeaderProps = {
   heading: string;
   linkText?: string;
-  linkTo?: string;
+  linkTo?: MainPath | string;
 };
 
 const PageHeader = ({ heading, linkTo, linkText }: PageHeaderProps) => (

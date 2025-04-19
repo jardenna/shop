@@ -14,6 +14,7 @@ import ChevronRightIcon from './ChevronRightIcon';
 import ChevronsLeftIcon from './ChevronsLeftIcon';
 import ChevronsRightIcon from './ChevronsRightIcon';
 import ChevronUpIcon from './ChevronUpIcon';
+import CircelChevronRightIcon from './CircelChevronRightIcon';
 import CloseIcon from './CloseIcon';
 import DashboardIcon from './DashboardIcon';
 import EditIcon from './EditIcon';
@@ -29,7 +30,6 @@ import LanguageIcon from './LanguageIcon';
 import LoginIcon from './LoginIcon';
 import Logo from './Logo';
 import LogoutIcon from './LogoutIcon';
-import MoreIcon from './MoreIcon';
 import OrdersIcon from './OrdersIcon';
 import ProductsIcon from './ProductsIcon';
 import SearchIcon from './SearchIcon';
@@ -37,6 +37,7 @@ import ShoppingBackIcon from './ShoppingBackIcon';
 import SubCategoriesIcon from './SubCategoriesIcon';
 import SubtractIcon from './SubtractIcon';
 import SuccessIcon from './SuccessIcon';
+import ThreeDotsHorizontalIcon from './ThreeDotsHorizontalIcon';
 import TrashIcon from './TrashIcon';
 import UndoIcon from './UndoIcon';
 import UserIcon from './UserIcon';
@@ -71,6 +72,7 @@ const iconMapping = {
   chevronsLeft: ChevronsLeftIcon,
   chevronsRight: ChevronsRightIcon,
   chevronUp: ChevronUpIcon,
+  circelChevronRight: CircelChevronRightIcon,
   close: CloseIcon,
   dashboard: DashboardIcon,
   edit: EditIcon,
@@ -86,7 +88,7 @@ const iconMapping = {
   login: LoginIcon,
   logo: Logo,
   logout: LogoutIcon,
-  more: MoreIcon,
+  menuDotsHorizontal: ThreeDotsHorizontalIcon,
   orders: OrdersIcon,
   products: ProductsIcon,
   search: SearchIcon,

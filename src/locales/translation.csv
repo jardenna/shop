@@ -21,6 +21,7 @@ categoryName;Category name;Kategori navn
 categoryNotFound;Category not found;Kategori findes ikke
 categoryStatus;Category status;Kategori status
 categoryUpdated;Category updated;Kategori opdateret
+circelChevronRight;Circel chevronRight;Circel chevronRight
 clearFilters;Clear filters;Ryd filtre
 clearSort;Clear sort;Ryd sortering
 close;Close;Luk
@@ -177,11 +178,14 @@ updatePreferences;Update Preferences;Opdater præferencer
 updateProduct;Update product;Opdater produkt
 updateSubCategory;Update subcategory;Opdater underkategori
 user;User;Bruger
+users;Users;Brugere
 userAlreadyExist;A profile with this email already exists. Try logging in instead;Der findes en profil med denne e-mail. Prøv at logge ind i stedet
 userDeleted;User deleted;Bruger slettet
 userInfo;User info;Bruger info
 username;User name;Brugernavn
 users;Users;Brugere
 userUpdated;User updated;Bruger opdateret
+viewCategory;View category;Se kategori
+viewProduct;View product;Se produkt
 warning;Warning;Warning
 welcome;Welcome;Velkommen

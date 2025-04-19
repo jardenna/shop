@@ -18,17 +18,19 @@ const UpdateSubCategoryPage = () => {
   }
 
   return (
-    <section>
+    <section className="page page-small">
       {allCategories && category && (
         <>
           <PageHeader
-            heading={`${language.updateSubCategory} ${category.subCategoryName}`}
+            heading={`${language.updateCategory} ${category.subCategoryName}`}
           />
-          <SubCategoryForm
-            selectedCategory={category}
-            id={params.id || ''}
-            parentCategories={allCategories.categories}
-          />
+          <div className="page-card">
+            <SubCategoryForm
+              selectedCategory={category}
+              id={params.id || ''}
+              parentCategories={allCategories.categories}
+            />
+          </div>
         </>
       )}
     </section>
