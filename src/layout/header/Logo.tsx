@@ -3,9 +3,9 @@ import Icon from '../../components/icons/Icon';
 import { IconName } from '../../types/enums';
 import { MainPath } from '../nav/enums';
 
-const Logo = ({ link }: { link: MainPath | string }) => (
+const Logo = ({ linkTo }: { linkTo: MainPath | string }) => (
   <div className="logo">
-    <Link to={link}>
+    <Link to={linkTo}>
       <Icon iconName={IconName.Logo} title="Logo" />
     </Link>
   </div>
