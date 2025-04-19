@@ -21,6 +21,7 @@ categoryName;Category name;Kategori navn
 categoryNotFound;Category not found;Kategori findes ikke
 categoryStatus;Category status;Kategori status
 categoryUpdated;Category updated;Kategori opdateret
+circelChevronRight;Circel chevronRight;Circel chevronRight
 clearFilters;Clear filters;Ryd filtre
 clearSort;Clear sort;Ryd sortering
 close;Close;Luk
@@ -184,5 +185,6 @@ username;User name;Brugernavn
 users;Users;Brugere
 userUpdated;User updated;Bruger opdateret
 viewCategory;View category;Se kategori
+viewProduct;View product;Se produkt
 warning;Warning;Warning
 welcome;Welcome;Velkommen

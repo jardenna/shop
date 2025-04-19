@@ -1,10 +1,12 @@
 import { ProductResponse } from '../../app/api/apiTypes';
 import DateDisplay from '../../components/datePicker/DateDisplay';
 import Figure from '../../components/figure/Figure';
+import MoreLink from '../../components/MoreLink';
 import Table, { Column } from '../../components/sortTable/Table';
 import ProductPrice from '../../features/currency/components/ProductPrice';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetAllProductsQuery } from '../../features/products/productApiSlice';
+import { MainPath } from '../../layout/nav/enums';
 
 const tableHeaders: Column<ProductResponse>[] = [
   { key: 'productName', label: 'name', name: 'image' },
@@ -58,10 +60,10 @@ const ProductPage = () => {
                   />
                 </td>
                 <td>
-                  {language.update}
-                  {/* <Link to={`/admin/${MainPath.AdminProductUpdate}/${id}`}>
-                    {language.update}
-                  </Link> */}
+                  <MoreLink
+                    linkText={language.viewProduct}
+                    linkTo={`/admin/${MainPath.AdminSubCategoryView}/${id}`}
+                  />
                 </td>
               </tr>
             ),

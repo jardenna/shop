@@ -1,5 +1,5 @@
-import { Link } from 'react-router';
 import { SubCategoryResponse } from '../../app/api/apiTypes';
+import MoreLink from '../../components/MoreLink';
 import PageHeader from '../../components/PageHeader';
 import Table from '../../components/sortTable/Table';
 import CategoryBadge from '../../features/categories/CategoryBadge';
@@ -73,9 +73,10 @@ const SubCategoryPage = () => {
           />
         </td>
         <td>
-          <Link to={`/admin/${MainPath.AdminSubCategoryView}/${id}`}>
-            {language.viewCategory}
-          </Link>
+          <MoreLink
+            linkText={language.viewCategory}
+            linkTo={`/admin/${MainPath.AdminSubCategoryView}/${id}`}
+          />
         </td>
       </tr>
     );
