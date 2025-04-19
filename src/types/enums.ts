@@ -64,6 +64,7 @@ export enum IconName {
   ChevronsLeft = 'chevronsLeft',
   ChevronsRight = 'chevronsRight',
   ChevronUp = 'chevronUp',
+  CircelChevronRight = 'circelChevronRight',
   Close = 'close',
   Dashboard = 'dashboard',
   Edit = 'edit',
