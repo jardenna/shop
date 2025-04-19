@@ -83,7 +83,7 @@ const SubCategoryPage = () => {
   };
 
   return (
-    <section className="page">
+    <section className="page page-medium">
       <PageHeader
         heading={language.subCategories}
         linkText={language.createNewSubCategory}
