@@ -18,6 +18,7 @@ export type PrimaryActionBtnProps = {
   label: string | null;
   buttonType?: ButtonType;
   className?: string;
+  disabled?: boolean;
   variant?: BtnVariant;
   onClick: () => void;
 };
