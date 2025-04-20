@@ -113,14 +113,14 @@ a[class^='btn-'],
   min-height: auto;
   width: auto;
 
+  &:focus-visible,
   &:hover {
-    background-color: $color-gray-30;
+    border-color: transparent;
   }
 
-  &:focus-visible {
-    @include outline(currentColor);
-
-    border: 1px solid $color-white;
+  &::before {
+    color: $color-light-gray-10;
+    background-color: $color-gray-20;
   }
 }
 
