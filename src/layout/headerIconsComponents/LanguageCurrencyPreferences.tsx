@@ -1,5 +1,5 @@
 import FieldSet from '../../components/fieldset/FieldSet';
-import RadioButton from '../../components/formElements/radioButton/RadioButton';
+import RadioButton from '../../components/formElements/RadioButton';
 import CurrencySelect from '../../features/currency/components/CurrencySelect';
 import useLanguage, {
   languageOptions,

@@ -86,7 +86,7 @@ const SubCategoryPage = () => {
     <section className="page page-medium">
       <PageHeader
         heading={language.subCategories}
-        linkText={language.createNewSubCategory}
+        linkText={language.createNewCategory}
         linkTo={`/admin/${MainPath.AdminSubCategoryCreate}`}
       />
       <div className="page-card">

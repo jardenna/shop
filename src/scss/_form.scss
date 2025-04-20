@@ -1,4 +1,4 @@
-@use '../../../scss/globals' as *;
+@use './globals' as *;
 
 // Remove autofill
 :-webkit-autofill,
@@ -92,46 +92,6 @@ textarea {
   height: rem(20px);
   align-items: center;
   justify-content: center;
-}
-
-.checkbox-radio-container {
-  display: flex;
-  align-items: center;
-  margin-bottom: 8px;
-
-  /* stylelint-disable-next-line no-descending-specificity */
-  input {
-    appearance: none;
-    background-color: $color-white;
-    color: currentcolor;
-    width: rem(18px);
-    height: rem(18px);
-    border: 2px solid $color-blue;
-    transform: translateY(-1.2px);
-    display: flex;
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-
-    @include transition($time: 0.22s);
-
-    &:focus-visible {
-      outline: transparent;
-    }
-  }
-
-  &:focus-within {
-    @include outline(rgba($color-blue, 70%));
-  }
-
-  .form-label-container {
-    order: 2;
-  }
-
-  label {
-    cursor: pointer;
-  }
 }
 
 .form-info {

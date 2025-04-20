@@ -1,10 +1,9 @@
 import { ReactNode } from 'react';
-import useLanguage from '../../../features/language/useLanguage';
-import LayoutElement from '../../../layout/LayoutElement';
-import { BtnVariant } from '../../../types/enums';
-import { FormEventType } from '../../../types/types';
-import Button from '../../Button';
-import './_form.scss';
+import useLanguage from '../features/language/useLanguage';
+import LayoutElement from '../layout/LayoutElement';
+import { BtnVariant } from '../types/enums';
+import { FormEventType } from '../types/types';
+import Button from './Button';
 
 type FormProps = {
   children: ReactNode;

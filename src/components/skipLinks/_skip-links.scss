@@ -7,33 +7,15 @@
   opacity: 0;
   transition: opacity 0.5s ease;
   border-radius: 4px;
-  background-color: $color-blue;
+  background-color: $color-background-secondary;
   color: $color-white;
+  top: -20px;
 
-  &.is-visible {
-    @include animation(slide-out-top-center);
-  }
+  @include transition;
 
-  @include max-size($small) {
-    display: none;
-  }
-
-  a {
-    color: $color-white;
-    font-family: $font-primary;
-
-    &:focus-visible {
-      outline: transparent;
-    }
-  }
-
-  p {
-    margin: 4px;
-  }
-
-  &:has(a:focus-visible) {
+  &:focus {
+    top: 0;
+    outline: transparent;
     opacity: 1;
-
-    @include animation(slide-in-top-center);
   }
 }

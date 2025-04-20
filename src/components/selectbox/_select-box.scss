@@ -35,7 +35,7 @@
   }
 
   .select-box__option--is-selected {
-    background-color: $color-blue-30 !important;
+    background-color: $color-background-secondary !important;
     color: $color-white;
 
     &.select-box__option--is-focused {

@@ -25,6 +25,7 @@ const useTableEditField = <T extends { id: string }>({
 
   const handleEditChange = (event: ChangeInputType) => {
     const { name, value } = event.target;
+
     setValues((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -35,6 +36,8 @@ const useTableEditField = <T extends { id: string }>({
   };
 
   const handleSaveEdit = () => {
+    console.log(123);
+
     if (callback && editRowId) {
       callback(editRowId, values);
     }

@@ -1,9 +1,9 @@
-import { Link } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant, SizeVariant } from '../../types/enums';
 import Badge from '../badge/Badge';
 import DateDisplay from '../datePicker/DateDisplay';
+import LinkButton from '../LinkButton';
 import { SecondaryActionBtnProps } from '../modal/Modal';
 import ModalContainer from '../modal/ModalContainer';
 import './_category-card.scss';
@@ -83,13 +83,10 @@ const CategoryCard = ({
             >
               {language.sureToDelete} {subCategoryName}
             </ModalContainer>
-
-            <Link
-              className="btn btn-primary"
-              to={`/admin/${MainPath.AdminSubCategoryUpdate}/${categoryId}`}
-            >
-              {language.edit}
-            </Link>
+            <LinkButton
+              linkTo={`/admin/${MainPath.AdminSubCategoryUpdate}/${categoryId}`}
+              linkText={language.edit}
+            />
           </div>
         </div>
       </CategoryCardContent>
@@ -105,14 +102,11 @@ const CategoryCard = ({
               </h3>
               {subCategoryName} {language.notVisibleInShop}.
             </div>
-
             <div>
-              <Link
-                className="btn btn-primary"
-                to={`/admin/${MainPath.AdminCategories}`}
-              >
-                {language.publish}
-              </Link>
+              <LinkButton
+                linkTo={`/admin/${MainPath.AdminCategories}`}
+                linkText={language.publish}
+              />
             </div>
           </div>
         )}

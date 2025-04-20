@@ -2,7 +2,6 @@ $color-white: #fff;
 $color-black: #000;
 
 // Blue colors
-$color-blue: #2c566d;
 $color-blue-20: #dce4e7;
 $color-blue-25: #94afba;
 $color-blue-30: #2f6d8f;
@@ -28,18 +27,20 @@ $color-light-gray-30: #f4f4f5;
 
 /* colors */
 $color-border: $color-gray-30;
+$color-border-secondary: $color-blue-30;
 $color-primary: $color-gray-90;
 $color-secondary: $color-light-gray-30;
 $color-background: $color-light-gray-20;
+$color-background-secondary: $color-blue-30;
 $color-overlay: rgb($color-black, 0.6);
 
 // Message popup colors
 $color-danger: $color-red-20;
-$color-success: $color-blue;
+$color-success: $color-blue-30;
 $color-info: #4e8673;
 $color-warning: #fec901;
 
 // Badge colors
 $color-badge-scheduled: $color-gray-60;
 $color-badge-inactive: $color-red-10;
-$color-badge-default: $color-blue;
+$color-badge-default: $color-blue-30;

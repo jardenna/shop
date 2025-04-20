@@ -99,10 +99,7 @@ const UserPage = () => {
 
   return (
     <section className="page page-medium">
-      <PageHeader
-        heading={language.users}
-        linkText={language.createNewSubCategory}
-      />
+      <PageHeader heading={language.users} />
       <div className="page-card">
         <Table
           data={allUsers || []}

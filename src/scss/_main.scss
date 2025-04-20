@@ -109,3 +109,14 @@ ul {
   padding: 28px 20px;
   width: 100%;
 }
+
+.more-link {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  &:hover {
+    gap: 12px;
+    color: currentcolor;
+  }
+}

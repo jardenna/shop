@@ -1,7 +1,8 @@
 import { RoleTypes } from '../../../app/api/apiTypes';
 import RadioButton, {
   RadioListItem,
-} from '../../../components/formElements/radioButton/RadioButton';
+} from '../../../components/formElements/RadioButton';
+
 import IconBtn from '../../../components/IconBtn';
 import EditTableInput, {
   BaseEditTableInput,

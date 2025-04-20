@@ -70,7 +70,7 @@ const Button = ({
   >
     {ariaLabel && <VisuallyHidden>{ariaLabel}</VisuallyHidden>}
     {!isLoading ? (
-      children
+      <span className="button-text">{children}</span>
     ) : (
       <span aria-hidden>
         <Loader />
