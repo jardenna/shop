@@ -1,8 +1,5 @@
 import { DropdownItem } from '../../components/dropdownBtn/DropdownBtn';
-import {
-  PrimaryActionBtnProps,
-  SecondaryActionBtnProps,
-} from '../../components/modal/Modal';
+import { SecondaryActionBtnProps } from '../../components/modal/Modal';
 import { OptionType } from '../../components/selectbox/Selectbox';
 import { SelectedLanguage } from '../../features/language/languageSlice';
 import { ChangeInputType } from '../../types/types';
@@ -22,7 +19,7 @@ export type HeaderProps = {
   ariaLabel: string;
   currencyOptions: OptionType[];
   defaultValue: OptionType;
-  primaryActionBtn: PrimaryActionBtnProps;
+  primaryActionBtn: any;
   secondaryActionBtn: SecondaryActionBtnProps;
   userDropdownList: DropdownItem[];
   values: Values;
