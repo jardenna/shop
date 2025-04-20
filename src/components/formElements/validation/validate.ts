@@ -11,7 +11,7 @@ function validateSubcategory(values: SubCategoryState) {
   }
 
   if (!category) {
-    errors.category = ValidationMessage.PleaseEnterParentCategory;
+    errors.category = ValidationMessage.PleaseSelectParentCategory;
   }
 
   return errors;

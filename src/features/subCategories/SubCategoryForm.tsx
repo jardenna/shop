@@ -142,7 +142,7 @@ const SubCategoryForm = ({
         <SharedCategoryInputs
           categoryNamevalue={values.subCategoryName}
           categoryNameId="subCategoryName"
-          categoryNameErrorText={language[errors.category]}
+          categoryNameErrorText={language[errors.subCategoryName]}
           categoryNameLabelText={language.addCategoryName}
           categoryNamePlaceholder={language.categoryName}
           onCategoryNameChange={onChange}

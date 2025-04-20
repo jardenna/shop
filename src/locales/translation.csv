@@ -122,7 +122,7 @@ passwordUppercase;Password should contain at least one uppercase letter;Adgangsk
 pensil;Pensil;Blyant
 pleaseEnter;Please enter;Indsæt venligst
 pleaseEnterCategoryName;Please enter a name for category;Indsæt venligst navn på kategori
-pleaseEnterParentCategory;Please enter parent category;Indsæt venligst hovedkategori
+pleaseSelectParentCategory;Please select parent category;Vælg venligst hovedkategori
 pleaseEnterName;Please enter name;Indsæt venligst navn
 pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
 pleaseEnterSubCategoryName;Please enter a subcategory name;Indsæt venligst navn på underkategori
