@@ -20,11 +20,10 @@ a[class^='btn-'],
   padding: 16px;
   border-radius: 4px;
   width: 100%;
-  border: 0;
+  border: 1px solid transparent;
   cursor: pointer;
   min-height: rem(60px);
   letter-spacing: rem(0.5px);
-  overflow: hidden;
 
   @include transition;
 
@@ -75,10 +74,11 @@ a[class^='btn-'],
   &:hover {
     color: $color-primary;
     border-radius: 0;
+    border-color: $color-gray-60;
   }
 
   &::before {
-    background: $color-secondary;
+    background-color: $color-white;
     color: $color-primary;
   }
 }
@@ -128,10 +128,16 @@ a.btn {
   background-color: $color-red-20;
   color: $color-white;
 
+  &:focus-visible,
   &:hover {
     color: $color-red-20;
-    background-color: $color-white;
-    border-color: $color-red-20;
+    border-radius: 0;
+    border: 1px solid $color-red-20;
+  }
+
+  &::before {
+    background: $color-white;
+    color: $color-red-20;
   }
 }
 
