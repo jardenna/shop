@@ -40,12 +40,15 @@ a[class^='btn-'],
   white-space: nowrap;
 }
 
+// Primary button
 .btn-primary {
   background-color: $color-primary;
   color: $color-secondary;
 
   &:hover {
-    background-color: $color-primary;
+    color: $color-primary;
+    background-color: $color-white;
+    border-color: $color-primary;
   }
 
   &:focus-visible {
@@ -55,15 +58,15 @@ a[class^='btn-'],
   }
 }
 
+// Secondary button
 .btn-secondary {
   background-color: $color-white;
   color: $color-primary;
-  border: 1px solid $color-border;
+  border-color: $color-primary;
 
   &:hover {
     color: $color-light-gray-10;
-    background-color: $color-border;
-    border: 1px solid $color-light-gray-10;
+    background-color: $color-gray-70;
   }
 
   &:focus-visible {
@@ -73,6 +76,7 @@ a[class^='btn-'],
   }
 }
 
+// Default button
 .btn-default {
   border-color: $color-border;
   background-color: $color-secondary;
@@ -92,11 +96,19 @@ a[class^='btn-'],
   }
 }
 
+// Danger button
 .btn-danger {
   background-color: $color-red-20;
   color: $color-white;
+
+  &:hover {
+    color: $color-red-20;
+    background-color: $color-white;
+    border-color: $color-red-20;
+  }
 }
 
+// Ghost button
 .btn-ghost {
   background-color: transparent;
   color: $color-primary;
