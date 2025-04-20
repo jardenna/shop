@@ -106,7 +106,7 @@ textarea {
     color: currentcolor;
     width: rem(18px);
     height: rem(18px);
-    border: 2px solid $color-blue;
+    border: 2px solid $color-blue-30;
     transform: translateY(-1.2px);
     display: flex;
     position: relative;
@@ -122,7 +122,7 @@ textarea {
   }
 
   &:focus-within {
-    @include outline(rgba($color-blue, 70%));
+    @include outline(rgba($color-blue-30, 70%));
   }
 
   .form-label-container {

@@ -3,8 +3,8 @@
 input[type='checkbox'] {
   &:checked {
     outline: transparent;
-    border-color: $color-blue;
-    background-color: $color-blue;
+    border-color: $color-blue-30;
+    background-color: $color-blue-30;
 
     &::before {
       content: '';

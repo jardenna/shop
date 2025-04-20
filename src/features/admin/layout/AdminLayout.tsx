@@ -26,7 +26,7 @@ const AdminLayout = () => {
     <div className="main-container admin-container">
       <SkipLink />
       <AdminHeader ariaLabel={language.main} />
-      <main id="main" className="main">
+      <main className="main">
         <aside className={`aside ${isMenuCollapsed ? 'collapsed' : ''}`}>
           <Nav
             navList={adminNavList}
@@ -45,7 +45,7 @@ const AdminLayout = () => {
           />
           link to shop
         </aside>
-        <div className="admin container">
+        <div id="main" className="admin container">
           <Outlet />
         </div>
       </main>
