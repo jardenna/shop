@@ -52,6 +52,11 @@ a[class^='btn-'],
     opacity: 1;
     transform: scale(1, 1);
   }
+
+  &:focus-visible,
+  &:hover {
+    border-radius: 0;
+  }
 }
 
 .button-text {
@@ -73,7 +78,6 @@ a[class^='btn-'],
   &:focus-visible,
   &:hover {
     color: $color-primary;
-    border-radius: 0;
     border-color: $color-gray-60;
   }
 
@@ -89,9 +93,14 @@ a[class^='btn-'],
   color: $color-primary;
   border-color: $color-primary;
 
+  &:focus-visible,
   &:hover {
+    border-color: transparent;
+  }
+
+  &::before {
     color: $color-light-gray-10;
-    background-color: $color-gray-70;
+    background-color: $color-gray-20;
   }
 }
 
@@ -119,7 +128,6 @@ a.btn {
   &:focus-visible,
   &:hover {
     color: $color-primary;
-    border-radius: 0;
   }
 }
 
@@ -131,7 +139,6 @@ a.btn {
   &:focus-visible,
   &:hover {
     color: $color-red-20;
-    border-radius: 0;
     border: 1px solid $color-red-20;
   }
 
