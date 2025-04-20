@@ -1,6 +1,5 @@
 $color-white: #fff;
 $color-black: #000;
-$color-red: #d20917;
 
 // Blue colors
 $color-blue: #2c566d;
@@ -10,8 +9,8 @@ $color-blue-30: #2f6d8f;
 
 // Red colors
 $color-red-10: #a0738f;
-$color-red-15: #88001b;
-$color-red-20: #793e5f;
+$color-red-20: #88001b;
+$color-red-30: #793e5f;
 
 // Gray colors
 $color-gray-20: #dbe0dc;
@@ -34,7 +33,7 @@ $color-background: $color-light-gray-20;
 $color-overlay: rgb($color-black, 0.6);
 
 // Message popup colors
-$color-danger: $color-red-15;
+$color-danger: $color-red-20;
 $color-success: $color-blue;
 $color-info: #4e8673;
 $color-warning: #fec901;
