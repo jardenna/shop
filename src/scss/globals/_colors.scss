@@ -1,42 +1,45 @@
 $color-white: #fff;
 $color-black: #000;
-$color-green: #7fd0c9;
-$color-blue: #0b6b7c;
-$color-blue-dark: #04515f;
-$color-red: #a71b1b;
-$color-red-light: #d20917;
+
+// Blue colors
+$color-blue: #2c566d;
+$color-blue-20: #dce4e7;
+$color-blue-25: #94afba;
+$color-blue-30: #2f6d8f;
+
+// Red colors
+$color-red-10: #a0738f;
+$color-red-20: #88001b;
+$color-red-30: #793e5f;
 
 // Gray colors
+$color-gray-20: #dbe0dc;
+$color-gray-30: #e5e5e5;
+$color-gray-40: #d9d6d6;
+$color-gray-60: #99a4a9;
+$color-gray-70: #66606d;
+$color-gray-80: #1e211d;
+$color-gray-90: #020101;
 
-$color-gray-20: #fbfbf9;
-$color-gray-30: #a7a6ba;
-$color-gray-40: #f9f9f9;
-$color-gray-50: #92aebb;
-$color-gray-55: #dbe0dc;
-$color-gray-60: #c086a6;
-$color-gray-2: #fbfbf9;
-$color-gray-6: #a7a6ba;
-$color-gray-12: #66606d;
-$color-25: #2a3439; // x
-$color-6: #2f6d8f;
-$color-12: #f5f5f5;
-$color-16: #f4f4f5;
-
-// $color-gray-40: #f9f9f9;
+// Light gray colors
+$color-light-gray-10: #fdfefe;
+$color-light-gray-20: #f9f9f9;
+$color-light-gray-30: #f4f4f5;
 
 /* colors */
-$color-secondary: $color-green;
-$color-primary-text: $color-gray-40;
-$color-link: $color-blue-dark;
-$color-primary-btn: $color-blue-dark;
-$color-primary-btn-hover: $color-blue;
-$color-danger: $color-red;
-$color-border: #a7a6ba;
-$color-background: $color-gray-2;
+$color-border: $color-gray-30;
+$color-primary: $color-gray-90;
+$color-secondary: $color-light-gray-30;
+$color-background: $color-light-gray-20;
 $color-overlay: rgb($color-black, 0.6);
 
-// $color-mics
-$color-error: $color-danger;
-$color-success: $color-blue-dark;
-$color-info: $color-blue;
+// Message popup colors
+$color-danger: $color-red-20;
+$color-success: $color-blue;
+$color-info: #4e8673;
 $color-warning: #fec901;
+
+// Badge colors
+$color-badge-scheduled: $color-gray-60;
+$color-badge-inactive: $color-red-10;
+$color-badge-default: $color-blue;

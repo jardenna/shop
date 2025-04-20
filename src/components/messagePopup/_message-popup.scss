@@ -43,7 +43,7 @@
 .message-popup-item {
   min-width: rem(300px);
   border-left: 12px solid $color-success;
-  background: $color-white;
+  background-color: $color-white;
   box-shadow: $box-shadow;
   border-radius: 6px;
   padding: 16px 8px;
@@ -67,9 +67,8 @@
 
   .btn-ghost {
     position: absolute;
-    right: 0;
-    top: -8px;
-    padding: 12px;
+    right: 6px;
+    top: 4px;
 
     svg {
       width: rem(12px);

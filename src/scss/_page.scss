@@ -8,7 +8,7 @@
 }
 
 .admin {
-  background-color: #f9f9f9;
+  background-color: $color-background;
   padding-left: 40px;
   padding-right: 40px;
   display: flex;
@@ -35,7 +35,7 @@
   .page-card {
     max-height: 78lvh;
     overflow: auto;
-    background: #fff;
+    background-color: $color-white;
     border-radius: 4px;
     box-shadow: $box-shadow;
     margin-bottom: 12px;

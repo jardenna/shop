@@ -26,6 +26,7 @@ const ModalFooter = ({
       onCloseModal();
     }
   };
+
   return (
     <LayoutElement className="footer-buttons" ariaLabel="dialog">
       {secondaryActionBtn && (
@@ -39,6 +40,7 @@ const ModalFooter = ({
       <Button
         onClick={handlePrimaryBtnClick}
         type={primaryActionBtn.buttonType}
+        disabled={primaryActionBtn.disabled}
         className={primaryActionBtn.className}
         variant={primaryActionBtn.variant || BtnVariant.Primary}
       >

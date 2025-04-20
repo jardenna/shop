@@ -20,7 +20,7 @@ input[type='number'] {
 }
 
 ::placeholder {
-  color: $color-gray-30;
+  color: $color-gray-60;
   opacity: 1;
 }
 
@@ -38,7 +38,7 @@ textarea {
   border-bottom: 3px solid transparent;
 
   &:has(input:focus-visible) {
-    border-color: #2a3439;
+    border-color: $color-primary;
   }
 
   .form-label-container {

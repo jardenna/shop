@@ -2,8 +2,8 @@
 
 button[aria-disabled='true'] {
   pointer-events: none;
-  background-color: $color-background;
-  color: $color-gray-40;
+  background-color: $color-secondary;
+  color: $color-gray-60;
   border-color: $color-border;
 }
 
@@ -40,28 +40,33 @@ a[class^='btn-'],
   white-space: nowrap;
 }
 
+// Primary button
 .btn-primary {
-  background-color: #473f4a;
-  color: #f4f4f5;
+  background-color: $color-primary;
+  color: $color-secondary;
 
   &:hover {
-    background-color: #020101;
+    color: $color-primary;
+    background-color: $color-white;
+    border-color: $color-primary;
   }
 
   &:focus-visible {
-    @include outline(#473f4a);
+    @include outline($color-primary);
 
     border: 1px solid $color-white;
   }
 }
 
+// Secondary button
 .btn-secondary {
-  background-color: transparent;
-  color: #2a3439;
-  border: 1px solid #473f4a;
+  background-color: $color-white;
+  color: $color-primary;
+  border-color: $color-primary;
 
   &:hover {
-    color: #b5b5ba;
+    color: $color-light-gray-10;
+    background-color: $color-gray-70;
   }
 
   &:focus-visible {
@@ -71,16 +76,17 @@ a[class^='btn-'],
   }
 }
 
+// Default button
 .btn-default {
-  border-color: #c4bfbf;
-  background-color: #f1f1f1;
+  border-color: $color-border;
+  background-color: $color-secondary;
   font-size: 0.875rem;
   padding: 8px 32px;
   min-height: auto;
   width: auto;
 
   &:hover {
-    background-color: #e5e5e5;
+    background-color: $color-gray-30;
   }
 
   &:focus-visible {
@@ -90,21 +96,26 @@ a[class^='btn-'],
   }
 }
 
+// Danger button
 .btn-danger {
-  background-color: #660d44;
-  color: #fff;
+  background-color: $color-red-20;
+  color: $color-white;
 
   &:hover {
-    background-color: $color-red;
+    color: $color-red-20;
+    background-color: $color-white;
+    border-color: $color-red-20;
   }
 }
 
+// Ghost button
 .btn-ghost {
   background-color: transparent;
-  color: #2a3439;
+  color: $color-primary;
   border: 0;
   width: fit-content;
   min-height: auto;
+  padding: 0;
 
   svg {
     stroke: currentcolor;

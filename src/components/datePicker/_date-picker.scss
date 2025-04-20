@@ -12,13 +12,13 @@
   }
 
   .rdp-month {
-    border: 1px solid #463f4a;
+    border: 1px solid $color-gray-70;
   }
 
   .rdp-today {
     button {
-      color: #463f4a;
-      border: 2px solid #463f4a;
+      color: $color-gray-70;
+      border: 2px solid $color-gray-70;
       border-radius: 4px;
     }
   }
@@ -27,7 +27,7 @@
     padding: 10px;
     font-size: 16px;
     font-weight: normal;
-    border-bottom: 1px solid #463f4a;
+    border-bottom: 1px solid $color-gray-70;
   }
 
   .rdp-weekday {
@@ -40,20 +40,20 @@
 
     &:focus-visible {
       outline: transparent;
-      color: #f4f4f5;
-      background-color: #463f4a;
+      color: $color-secondary;
+      background-color: $color-gray-70;
     }
   }
 
   .rdp-selected .rdp-day_button {
     border: 0;
-    background-color: #463f4a;
-    color: #f4f4f5;
+    background-color: $color-gray-70;
+    color: $color-secondary;
     font-weight: normal;
   }
 
   svg {
-    fill: #2a3439;
+    fill: $color-primary;
     width: rem(20px);
   }
 }

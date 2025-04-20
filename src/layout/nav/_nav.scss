@@ -5,14 +5,12 @@
   gap: 18px;
 
   .nav-item {
-    text-decoration: none;
-    color: #793e5f;
     text-transform: uppercase;
     padding: 8px;
 
     &:hover,
     &.active {
-      color: #66606d;
+      color: $color-gray-70;
       padding-bottom: 4px;
       border-bottom: 2px solid currentcolor;
     }
@@ -34,13 +32,12 @@
   .btn-ghost {
     position: absolute;
     z-index: 3;
-    background: #d9d6d6;
-    height: 60px;
+    background-color: $color-gray-40;
+    height: rem(60px);
     padding: 2px;
     top: 50%;
     transform: translate(-50%);
     right: -21px;
-    border: 0;
   }
 
   .nav-list {
@@ -59,8 +56,8 @@
 
       &:hover,
       &.active {
-        background-color: #66606d;
-        color: #fff;
+        background-color: $color-gray-70;
+        color: $color-white;
         border: 0;
       }
     }

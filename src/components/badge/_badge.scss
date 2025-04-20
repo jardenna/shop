@@ -3,8 +3,8 @@
 .badge {
   max-width: fit-content;
   border-radius: 50px;
-  background-color: #2c566d;
-  color: #fff;
+  background-color: $color-badge-default;
+  color: $color-white;
   display: flex;
   padding: 2px 12px;
   align-items: center;
@@ -15,10 +15,10 @@
   }
 
   &.scheduled {
-    background-color: #527693;
+    background-color: $color-badge-scheduled;
   }
 
   &.inactive {
-    background-color: #a0738f;
+    background-color: $color-badge-inactive;
   }
 }

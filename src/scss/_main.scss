@@ -4,8 +4,8 @@
   box-sizing: border-box;
   font-family: $font-primary;
 
-  $color-background: $color-gray-40;
-  $color-foreground: #dbd9db;
+  $color-background: $color-background;
+  $color-foreground: $color-gray-30;
 
   @include min-size($small) {
     ::-webkit-scrollbar {
@@ -40,7 +40,7 @@ body,
 body {
   margin: 0;
   font-size: rem(14px);
-  color: #473f4a;
+  color: $color-primary;
   letter-spacing: rem(0.5px);
 }
 
@@ -62,7 +62,7 @@ h1 {
     content: '';
     display: flex;
     margin-left: 8px;
-    border-bottom: 2px solid #262526;
+    border-bottom: 2px solid $color-primary;
     border-radius: 4px;
     width: 59px;
   }
@@ -71,12 +71,12 @@ h1 {
 a {
   text-decoration: none;
   position: relative;
-  color: #717579;
+  color: $color-red-30;
 
   @include transition;
 
   &:hover {
-    color: #99a4a9;
+    color: $color-gray-60;
   }
 
   &::after {

@@ -1,12 +1,7 @@
 @use '../../scss/globals' as *;
 
-dialog::backdrop {
-  background-color: gray;
-  opacity: 0.8;
-}
-
 dialog {
-  color: #473f4a;
+  color: $color-primary;
   padding: 20px 24px;
 }
 
@@ -18,6 +13,10 @@ dialog {
   display: flex;
   flex-direction: column;
   z-index: 10;
+
+  &.animate-top-center {
+    top: 30%;
+  }
 
   @include max-size($small) {
     border-radius: 0;

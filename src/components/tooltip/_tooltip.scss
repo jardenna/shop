@@ -9,8 +9,8 @@
 .tooltip-content {
   position: absolute;
   z-index: 1;
-  background: #fff;
-  color: #473f4a;
+  background-color: $color-white;
+  color: $color-primary;
   padding: 8px;
   box-shadow: $box-shadow;
   border-radius: 4px;

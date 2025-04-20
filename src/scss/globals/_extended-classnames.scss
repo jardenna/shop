@@ -3,11 +3,11 @@
 @use './fonts' as *;
 
 %styled-input {
-  background-color: #f4f4f5;
+  background-color: $color-secondary;
   border: 0;
   min-height: rem(68px);
   border-radius: 4px;
-  color: #2a3439;
+  color: $color-primary;
   outline: transparent;
   font-family: $font-primary;
 
