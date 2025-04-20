@@ -1,6 +1,5 @@
-import { ChangeInputType } from '../../../types/types';
-import Input from '../Input';
-import './_radio-button.scss';
+import { ChangeInputType } from '../../types/types';
+import Input from './Input';
 
 export type RadioListItem<T = string> = {
   label: string;

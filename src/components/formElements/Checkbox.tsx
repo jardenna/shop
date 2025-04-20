@@ -1,6 +1,5 @@
-import { ChangeInputType } from '../../../types/types';
-import Input from '../Input';
-import './_checkbox.scss';
+import { ChangeInputType } from '../../types/types';
+import Input from './Input';
 
 export type CheckboxItems = {
   label: string;
