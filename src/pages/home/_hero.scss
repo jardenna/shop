@@ -6,6 +6,10 @@
   background-repeat: no-repeat;
   height: rem(480px);
 
+  h1::after {
+    display: none;
+  }
+
   @include max-size($large) {
     height: auto;
   }
