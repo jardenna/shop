@@ -14,11 +14,7 @@ $color-red-15: #88001b;
 $color-red-20: #793e5f;
 
 // Gray colors
-$color-gray-5: #fdfefe;
-$color-gray-10: #f9f9f9;
-$color-gray-15: #f4f4f5;
-$color-gray-22: #f7f7f7;
-$color-gray-21: #dbe0dc;
+$color-gray-20: #dbe0dc;
 $color-gray-30: #e5e5e5;
 $color-gray-40: #d9d6d6;
 $color-gray-60: #99a4a9;
@@ -26,10 +22,15 @@ $color-gray-70: #66606d;
 $color-gray-80: #1e211d;
 $color-gray-90: #020101;
 
+// Light gray colors
+$color-light-gray-10: #fdfefe;
+$color-light-gray-20: #f9f9f9;
+$color-gray-15: #f4f4f5;
+
 /* colors */
 $color-border: $color-gray-30;
 $color-main: $color-gray-90;
-$color-background: $color-gray-10;
+$color-background: $color-light-gray-20;
 $color-overlay: rgb($color-black, 0.6);
 
 // Message popup colors
