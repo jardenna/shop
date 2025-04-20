@@ -33,7 +33,7 @@
     position: absolute;
     z-index: 3;
     background-color: $color-gray-19;
-    height: 60px;
+    height: rem(60px);
     padding: 2px;
     top: 50%;
     transform: translate(-50%);
