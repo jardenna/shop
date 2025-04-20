@@ -41,15 +41,15 @@ a[class^='btn-'],
 }
 
 .btn-primary {
-  background-color: $color-main;
+  background-color: $color-primary;
   color: $color-secondary;
 
   &:hover {
-    background-color: $color-main;
+    background-color: $color-primary;
   }
 
   &:focus-visible {
-    @include outline($color-main);
+    @include outline($color-primary);
 
     border: 1px solid $color-white;
   }
@@ -57,7 +57,7 @@ a[class^='btn-'],
 
 .btn-secondary {
   background-color: $color-white;
-  color: $color-main;
+  color: $color-primary;
   border: 1px solid $color-border;
 
   &:hover {
@@ -99,7 +99,7 @@ a[class^='btn-'],
 
 .btn-ghost {
   background-color: transparent;
-  color: $color-main;
+  color: $color-primary;
   border: 0;
   width: fit-content;
   min-height: auto;
