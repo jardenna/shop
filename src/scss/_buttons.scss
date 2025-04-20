@@ -2,7 +2,7 @@
 
 button[aria-disabled='true'] {
   pointer-events: none;
-  background-color: $color-light-gray-30;
+  background-color: $color-secondary;
   color: $color-gray-60;
   border-color: $color-border;
 }
@@ -42,10 +42,10 @@ a[class^='btn-'],
 
 .btn-primary {
   background-color: $color-main;
-  color: $color-light-gray-30;
+  color: $color-secondary;
 
   &:hover {
-    background-color: $color-gray-90;
+    background-color: $color-main;
   }
 
   &:focus-visible {
@@ -75,7 +75,7 @@ a[class^='btn-'],
 
 .btn-default {
   border-color: $color-border;
-  background-color: $color-light-gray-30;
+  background-color: $color-secondary;
   font-size: 0.875rem;
   padding: 8px 32px;
   min-height: auto;
