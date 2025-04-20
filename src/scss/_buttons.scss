@@ -42,7 +42,7 @@ a[class^='btn-'],
 
 .btn-primary {
   background-color: $color-main;
-  color: $color-gray-15;
+  color: $color-light-gray-30;
 
   &:hover {
     background-color: $color-gray-90;
@@ -75,7 +75,7 @@ a[class^='btn-'],
 
 .btn-default {
   border-color: $color-border;
-  background-color: $color-gray-15;
+  background-color: $color-light-gray-30;
   font-size: 0.875rem;
   padding: 8px 32px;
   min-height: auto;
