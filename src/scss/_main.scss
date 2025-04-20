@@ -5,7 +5,7 @@
   font-family: $font-primary;
 
   $color-background: $color-background;
-  $color-foreground: #dbd9db;
+  $color-foreground: $color-gray-18;
 
   @include min-size($small) {
     ::-webkit-scrollbar {
@@ -71,12 +71,12 @@ h1 {
 a {
   text-decoration: none;
   position: relative;
-  color: #717579;
+  color: $color-red-20;
 
   @include transition;
 
   &:hover {
-    color: #99a4a9;
+    color: $color-gray-20;
   }
 
   &::after {

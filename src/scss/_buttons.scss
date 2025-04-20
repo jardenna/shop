@@ -56,12 +56,14 @@ a[class^='btn-'],
 }
 
 .btn-secondary {
-  background-color: transparent;
+  background-color: $color-gray-10;
   color: $color-main;
-  border: 1px solid $color-main;
+  border: 1px solid $color-border;
 
   &:hover {
-    color: #b5b5ba;
+    color: $color-gray-10;
+    background-color: $color-border;
+    border: 1px solid $color-gray-10;
   }
 
   &:focus-visible {
@@ -72,15 +74,15 @@ a[class^='btn-'],
 }
 
 .btn-default {
-  border-color: #c4bfbf;
-  background-color: #f1f1f1;
+  border-color: $color-border;
+  background-color: $color-gray-15;
   font-size: 0.875rem;
   padding: 8px 32px;
   min-height: auto;
   width: auto;
 
   &:hover {
-    background-color: #e5e5e5;
+    background-color: $color-gray-18;
   }
 
   &:focus-visible {

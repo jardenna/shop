@@ -33,7 +33,7 @@ table {
     input:not(input[type='radio']) {
       padding: 4px;
       background-color: $color-white;
-      border: 1px solid #a7a6ba;
+      border: 1px solid $color-gray-20;
       min-height: $input-height;
     }
 
@@ -208,7 +208,7 @@ table {
 
     input {
       background-color: $color-white;
-      border: 1px solid #a7a6ba;
+      border: 1px solid $color-border;
       min-height: $input-height;
     }
   }
@@ -221,10 +221,10 @@ table {
 
   .btn-ghost {
     padding: 0;
-    color: #66606d;
+    color: $color-gray-50;
 
     &.is-active {
-      color: #c8c8d0;
+      color: $color-gray-20;
     }
   }
 }

@@ -3,14 +3,20 @@ $color-black: #000;
 $color-blue: #2c566d;
 $color-red: #d20917;
 
+// Red colors
+$color-red-10: #a0738f;
+$color-red-20: #793e5f;
+
 // Gray colors
 $color-gray-10: #f9f9f9;
 $color-gray-15: #f4f4f5;
+$color-gray-18: #e5e5e5;
 $color-gray-20: #99a4a9;
+$color-gray-50: #66606d;
 $color-gray-90: #020101;
 
 /* colors */
-$color-border: $color-gray-20;
+$color-border: $color-gray-18;
 $color-main: $color-gray-90;
 $color-background: $color-gray-10;
 $color-overlay: rgb($color-black, 0.6);
@@ -23,5 +29,5 @@ $color-warning: #fec901;
 
 // Badge colors
 $color-badge-scheduled: $color-gray-20;
-$color-badge-inactive: #a0738f;
+$color-badge-inactive: $color-red-10;
 $color-badge-default: $color-blue;
