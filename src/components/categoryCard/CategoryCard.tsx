@@ -78,7 +78,7 @@ const CategoryCard = ({
               id={categoryId}
               primaryActionBtn={primaryActionBtn}
               secondaryActionBtn={secondaryActionBtn}
-              modalSize={SizeVariant.Md}
+              modalSize={SizeVariant.Sm}
               modalHeaderText={language.deleteCategory}
             >
               {language.sureToDelete} {subCategoryName}
