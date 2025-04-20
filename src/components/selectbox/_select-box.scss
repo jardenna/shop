@@ -23,7 +23,7 @@
   }
 
   .select-box__option--is-focused {
-    background-color: #dce4e7;
+    background-color: $color-blue-20;
   }
 
   .select-box__control--is-focused {
@@ -35,11 +35,11 @@
   }
 
   .select-box__option--is-selected {
-    background-color: #2f6d8f !important;
+    background-color: $color-blue-30 !important;
     color: $color-white;
 
     &.select-box__option--is-focused {
-      background-color: #94afba !important;
+      background-color: $color-blue-25 !important;
     }
   }
 }

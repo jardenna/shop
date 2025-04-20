@@ -29,8 +29,8 @@
 
     &:hover,
     &.active {
-      border-color: #92aebb;
-      background: #f7f7f7;
+      border-color: $color-blue-25;
+      background-color: $color-background;
     }
 
     .btn {
