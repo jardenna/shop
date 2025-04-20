@@ -5,7 +5,7 @@
   font-family: $font-primary;
 
   $color-background: $color-background;
-  $color-foreground: $color-gray-18;
+  $color-foreground: $color-gray-30;
 
   @include min-size($small) {
     ::-webkit-scrollbar {
@@ -76,7 +76,7 @@ a {
   @include transition;
 
   &:hover {
-    color: $color-gray-20;
+    color: $color-gray-60;
   }
 
   &::after {
