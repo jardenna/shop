@@ -15,7 +15,7 @@ $animation-timing-function: ease-in-out;
   }
 }
 
-@mixin transition($what: all, $time: 0.3s, $how: $animation-timing-function) {
+@mixin transition($what: all, $time: 0.5s, $how: $animation-timing-function) {
   & {
     transition: $what $time $how;
   }
