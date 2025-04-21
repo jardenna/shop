@@ -5,14 +5,28 @@ import { setRates } from './currencySlice';
 import { useGetExchangeRatesQuery } from './exchangeRatesApiSlice';
 
 const oneDay = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
+const currencyCacheKey = 'exchangeRates';
 
 const CurrencyProvider = ({ children }: { children: ReactNode }) => {
   const dispatch = useAppDispatch();
 
-  // Check if an error was previously stored
-  const [shouldFetch, setShouldFetch] = useState(
-    () => !localStorage.getItem(localStorageKeys.currencyApiError), // If error exists, don't fetch
-  );
+  const [shouldFetch, setShouldFetch] = useState(() => {
+    const cached = localStorage.getItem(currencyCacheKey);
+    const error = localStorage.getItem(localStorageKeys.currencyApiError);
+
+    if (error) {
+      return false;
+    }
+    if (cached) {
+      const { timestamp, rates } = JSON.parse(cached);
+      const isFresh = Date.now() - timestamp < oneDay;
+      if (isFresh) {
+        dispatch(setRates(rates));
+        return false; // skip fetching
+      }
+    }
+    return true; // fetch if no valid cache
+  });
 
   const {
     data: currency,
@@ -20,11 +34,10 @@ const CurrencyProvider = ({ children }: { children: ReactNode }) => {
     error,
   } = useGetExchangeRatesQuery(undefined, {
     pollingInterval: shouldFetch ? oneDay : undefined,
-    skip: !shouldFetch, // Stop fetching when shouldFetch is false
+    skip: !shouldFetch,
     skipPollingIfUnfocused: true,
   });
 
-  // Effect to store exchange rates when data is available
   useEffect(() => {
     if (currency?.data) {
       const rates = Object.fromEntries(
@@ -35,16 +48,19 @@ const CurrencyProvider = ({ children }: { children: ReactNode }) => {
       );
 
       dispatch(setRates(rates));
-      localStorage.removeItem(localStorageKeys.currencyApiError); // Reset error state if successful
+      localStorage.setItem(
+        currencyCacheKey,
+        JSON.stringify({ timestamp: Date.now(), rates }),
+      );
+      localStorage.removeItem(localStorageKeys.currencyApiError);
     }
   }, [currency, dispatch]);
 
-  // Effect to stop fetching & store error in localStorage
   useEffect(() => {
     if (error) {
-      dispatch(setRates({ DKK: 1 })); // Fallback to DKK
-      localStorage.setItem(localStorageKeys.currencyApiError, 'true'); // Store error flag
-      setShouldFetch(false); // Stop future requests
+      dispatch(setRates({ DKK: 1 }));
+      localStorage.setItem(localStorageKeys.currencyApiError, 'true');
+      setShouldFetch(false);
     }
   }, [error, dispatch]);
 
