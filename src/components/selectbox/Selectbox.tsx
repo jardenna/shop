@@ -53,6 +53,7 @@ const Selectbox = ({
       onChange(newValue as OptionType);
     }
   };
+
   return (
     <div className="input-container">
       <span className={inputHasNoLabel ? '' : 'form-label-container'}>
