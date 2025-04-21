@@ -8,6 +8,10 @@
     text-transform: uppercase;
     padding: 8px;
 
+    &:focus-visible {
+      @include outline;
+    }
+
     &:hover,
     &.active {
       color: $color-gray-70;
