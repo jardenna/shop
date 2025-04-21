@@ -82,6 +82,7 @@ const Selectbox = ({
           classNamePrefix="select-box"
           isMulti={isMulti}
           options={options}
+          aria-invalid={errorText ? true : undefined}
           onChange={handleChange}
           defaultValue={defaultValue}
           inputId={id}

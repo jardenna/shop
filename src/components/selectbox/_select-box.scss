@@ -2,6 +2,15 @@
 
 /* stylelint-disable selector-class-pattern */
 .select-box {
+  &:has(input[aria-invalid='true']) {
+    @include outline($color-danger);
+
+    &:focus-visible {
+      border-color: $color-danger;
+      outline: transparent;
+    }
+  }
+
   .select-box__control {
     @extend %styled-input;
   }
