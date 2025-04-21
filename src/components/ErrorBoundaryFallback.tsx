@@ -6,16 +6,13 @@ type FallbackProps = {
   resetErrorBoundary: () => void;
 };
 
-const ErrorBoundaryFallback = ({
-  error,
-  resetErrorBoundary,
-}: FallbackProps) => {
+const ErrorBoundaryFallback = ({ resetErrorBoundary }: FallbackProps) => {
   const { language } = useLanguage();
 
   return (
     <ErrorContent
       onClick={resetErrorBoundary}
-      errorText={error.message}
+      errorText={language.somethingWentWrong}
       btnLabel={language.retry}
       className="error-boundary"
     />

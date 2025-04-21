@@ -1,4 +1,6 @@
+import { ErrorBoundary } from 'react-error-boundary';
 import { SubCategoryResponse } from '../../app/api/apiTypes';
+import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import MoreLink from '../../components/MoreLink';
 import PageHeader from '../../components/PageHeader';
 import Table from '../../components/sortTable/Table';
@@ -33,23 +35,24 @@ const tableHeaders: {
   { key: 'categoryStatus', label: 'status', name: 'categoryStatus' },
   { key: 'id', label: '', name: '' },
 ];
-
+const oneDay = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
 const SubCategoryPage = () => {
   const { language } = useLanguage();
 
   const { data: hasScheduledData } = useGetScheduledQuery(undefined, {
-    pollingInterval: 30000,
+    pollingInterval: oneDay,
   });
 
   const shouldPollFullList = hasScheduledData?.hasScheduled ?? false;
 
-  const { data: allSubcategories, isLoading } = useGetAllSubCategoriesQuery(
-    undefined,
-    {
-      pollingInterval: shouldPollFullList ? 15000 : undefined,
-      refetchOnMountOrArgChange: true,
-    },
-  );
+  const {
+    data: allSubcategories,
+    isLoading,
+    refetch,
+  } = useGetAllSubCategoriesQuery(undefined, {
+    pollingInterval: shouldPollFullList ? 15000 : undefined,
+    refetchOnMountOrArgChange: true,
+  });
 
   const renderRow = ({
     id,
@@ -83,24 +86,29 @@ const SubCategoryPage = () => {
   };
 
   return (
-    <section className="page page-medium">
-      <PageHeader
-        heading={language.subCategories}
-        linkText={language.createNewCategory}
-        linkTo={`/admin/${MainPath.AdminSubCategoryCreate}`}
-      />
-      <div className="page-card">
-        <Table
-          data={allSubcategories?.subCategories || []}
-          columns={tableHeaders}
-          tableCaption={language.subCategoryList}
-          isLoading={isLoading}
-          emptyHeaderCellText={language.viewCategory}
-        >
-          {(data) => data.map(renderRow)}
-        </Table>
-      </div>
-    </section>
+    <ErrorBoundary
+      FallbackComponent={ErrorBoundaryFallback}
+      onReset={() => refetch}
+    >
+      <section className="page page-medium">
+        <PageHeader
+          heading={language.subCategories}
+          linkText={language.createNewCategory}
+          linkTo={`/admin/${MainPath.AdminSubCategoryCreate}`}
+        />
+        <div className="page-card">
+          <Table
+            data={allSubcategories?.subCategories || []}
+            columns={tableHeaders}
+            tableCaption={language.subCategoryList}
+            isLoading={isLoading}
+            emptyHeaderCellText={language.viewCategory}
+          >
+            {(data) => data.map(renderRow)}
+          </Table>
+        </div>
+      </section>
+    </ErrorBoundary>
   );
 };
 
