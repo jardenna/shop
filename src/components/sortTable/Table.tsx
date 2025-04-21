@@ -145,26 +145,24 @@ const Table = <T,>({
                   >
                     {col.name !== '' ? (
                       <div className="table-header-cell">
-                        <div className="sort">
-                          {!col.hideTableControls && (
-                            <Button
-                              variant={BtnVariant.Ghost}
-                              onClick={() => {
-                                handleSort(col.key);
-                              }}
-                              ariaLabel={
-                                sortField === col.name
-                                  ? `${language.sort} ${language[col.name]} ${ariaLabel}`
-                                  : `${language.sort} ${language[col.name]}`
-                              }
-                            >
-                              {language[col.label]}
-                              <span className="sort-icon" aria-hidden>
-                                {sortField === col.name ? sortIcon : '⇅'}
-                              </span>
-                            </Button>
-                          )}
-                        </div>
+                        {!col.hideTableControls && (
+                          <Button
+                            variant={BtnVariant.Ghost}
+                            onClick={() => {
+                              handleSort(col.key);
+                            }}
+                            ariaLabel={
+                              sortField === col.name
+                                ? `${language.sort} ${language[col.name]} ${ariaLabel}`
+                                : `${language.sort} ${language[col.name]}`
+                            }
+                          >
+                            {language[col.label]}
+                            <span className="sort-icon" aria-hidden>
+                              {sortField === col.name ? sortIcon : '⇅'}
+                            </span>
+                          </Button>
+                        )}
 
                         {!col.hideTableControls && (
                           <TableSearchInput

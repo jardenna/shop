@@ -33,17 +33,14 @@
       background-color: $color-background;
     }
 
-    .btn {
+    .btn-text {
       display: flex;
-      padding: 0;
+      gap: 8px;
       width: 100%;
-      align-items: center;
-      justify-content: space-between;
-      border-radius: 0;
+    }
 
-      &:focus-visible {
-        outline: transparent;
-      }
+    .btn {
+      width: 100%;
     }
   }
 }
