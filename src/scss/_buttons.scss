@@ -33,7 +33,7 @@ a[class^='btn-'],
     inset: -10px;
   }
 
-  &::before {
+  &:not(.btn-ghost)::before {
     content: '';
     position: absolute;
     bottom: 0;

@@ -64,6 +64,12 @@ table {
       font-size: 14px;
     }
 
+    .button-text {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+
     &:last-child {
       border-right: 0;
     }
@@ -141,13 +147,6 @@ table {
   .table-header-cell {
     display: flex;
     justify-content: space-between;
-  }
-
-  .sort {
-    .btn-ghost {
-      display: flex;
-      gap: 4px;
-    }
   }
 
   .dot {

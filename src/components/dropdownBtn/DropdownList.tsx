@@ -75,8 +75,8 @@ const DropdownList = ({
                   }}
                   ariaSelected={index === selectedListItemIndex}
                 >
-                  <span>{label}</span>
-                  <span>{icon}</span>
+                  {label}
+                  {icon}
                 </Button>
               </li>
             ),
