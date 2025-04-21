@@ -37,13 +37,9 @@ const Tooltip = ({
         {children}
       </Button>
       {dropdownIsOpen && (
-        <section
-          className="tooltip-content"
-          ref={dropdownRef}
-          id={ariaControls}
-        >
+        <span className="tooltip-content" ref={dropdownRef} id={ariaControls}>
           {text}
-        </section>
+        </span>
       )}
     </div>
   );
