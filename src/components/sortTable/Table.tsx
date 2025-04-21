@@ -141,7 +141,6 @@ const Table = <T,>({
             FallbackComponent={ErrorBoundaryFallback}
             onReset={() => onReset}
           >
-            {' '}
             <table>
               <VisuallyHidden as="caption">{tableCaption}</VisuallyHidden>
               <thead>
