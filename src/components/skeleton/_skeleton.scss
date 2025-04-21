@@ -1,7 +1,7 @@
 @use '../../scss/globals' as *;
 
 .skeleton {
-  background-color: $color-gray-60;
+  background-color: $color-gray-40;
   width: 100%;
   border-radius: 4px;
   display: flex;
@@ -27,17 +27,16 @@
 
 @keyframes skeleton-animation {
   0% {
-    opacity: 0.2;
+    opacity: 0.1;
   }
 
   100% {
-    opacity: 0.6;
+    opacity: 0.4;
   }
 }
 
 .skeleton-list {
   display: flex;
-  gap: 12px;
+  gap: 8px;
   justify-content: flex-end;
-  margin-bottom: 12px;
 }

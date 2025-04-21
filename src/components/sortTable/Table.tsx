@@ -6,6 +6,7 @@ import variables from '../../scss/variables.module.scss';
 import { BtnVariant, IconName } from '../../types/enums';
 import { SortOrderType } from '../../types/types';
 import Button from '../Button';
+import SkeletonList from '../skeleton/SkeletonList';
 import VisuallyHidden from '../VisuallyHidden';
 import './_table.scss';
 import TableGridList from './TableGridList';
@@ -130,7 +131,7 @@ const Table = <T,>({
       </div>
       <div className="fixed-table">
         {isLoading ? (
-          <div className="loading-indicator">{language.loading}</div>
+          <SkeletonList count={6} className="column" variant="secondary" />
         ) : (
           <table>
             <VisuallyHidden as="caption">{tableCaption}</VisuallyHidden>
