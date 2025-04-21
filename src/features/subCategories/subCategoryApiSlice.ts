@@ -30,7 +30,6 @@ const subCategoryApiSlice = apiSlice.injectEndpoints({
         method: 'Delete',
         body: id,
       }),
-      invalidatesTags: [TagTypesEnum.SubCategories],
     }),
     updateSubCategory: builder.mutation<
       UpdateSubCategoryResponse,
