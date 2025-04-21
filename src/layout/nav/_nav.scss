@@ -60,6 +60,16 @@
         color: $color-white;
         border: 0;
       }
+
+      &:focus-visible {
+        outline: transparent;
+        background-color: $color-gray-70;
+        color: $color-white;
+
+        &.active {
+          background-color: $color-gray-80;
+        }
+      }
     }
   }
 }

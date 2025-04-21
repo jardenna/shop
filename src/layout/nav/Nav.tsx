@@ -29,8 +29,8 @@ const Nav = ({ navList, iconBtn, className = '' }: NavProps) => {
 
   return (
     <nav className={`main-nav ${className}`}>
-      {iconBtn && iconBtn}
       <NavItemList navItemsList={navList} ariaLabel={language.main} />
+      {iconBtn && iconBtn}
     </nav>
   );
 };

@@ -1,4 +1,5 @@
 @use './colors' as *;
+@use './variables' as *;
 
 $animation-duration: 0.5s;
 $animation-timing-function: ease-in-out;
@@ -15,7 +16,7 @@ $animation-timing-function: ease-in-out;
   }
 }
 
-@mixin transition($what: all, $time: 0.5s, $how: $animation-timing-function) {
+@mixin transition($what: all, $time: 0.3s, $how: $animation-timing-function) {
   & {
     transition: $what $time $how;
   }
@@ -37,6 +38,7 @@ $animation-timing-function: ease-in-out;
   }
 }
 
-@mixin outline($color: $color-blue, $size: 2px) {
+@mixin outline($color: $color-blue-30, $size: 2px) {
   outline: $size solid $color;
+  box-shadow: $box-shadow;
 }

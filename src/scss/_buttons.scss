@@ -162,6 +162,6 @@ a.btn {
   }
 
   &:focus-visible {
-    @include outline(currentcolor);
+    @include outline;
   }
 }
