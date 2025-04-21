@@ -66,7 +66,7 @@ const CategoryPage = () => {
   };
 
   return (
-    <section className="page">
+    <section className="page page-medium">
       <PageHeader
         heading={language.categories}
         linkText={language.createNewCategory}

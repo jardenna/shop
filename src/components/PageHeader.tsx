@@ -8,7 +8,7 @@ type PageHeaderProps = {
 };
 
 const PageHeader = ({ heading, linkTo, linkText }: PageHeaderProps) => (
-  <div className="page-header ">
+  <div className="page-header">
     <h1>{heading}</h1>
     {linkTo && <Link to={linkTo}>{linkText}</Link>}
   </div>
