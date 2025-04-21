@@ -14,7 +14,7 @@ const LinkButton = ({
   linkText,
 }: LinkButtonProps) => (
   <Link className={`btn btn-${variant}`} to={linkTo}>
-    <span className="button-text">{linkText}</span>
+    <span className="btn-text">{linkText}</span>
   </Link>
 );
 
