@@ -67,7 +67,7 @@ const Modal = ({
     handleClosePopup();
   }, [modalRef]);
 
-  if (!modalId) {
+  if (modalId !== id || !modalId) {
     return null;
   }
 
