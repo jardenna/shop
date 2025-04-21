@@ -123,6 +123,13 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
         [name]: value,
       });
     }
+
+    setErrors((prevErrors) => {
+      const updatedErrors = { ...prevErrors };
+      // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+      delete updatedErrors[name];
+      return updatedErrors;
+    });
   };
 
   const handleClearInput = (name: string) => {
