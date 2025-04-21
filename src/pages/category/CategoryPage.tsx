@@ -26,13 +26,14 @@ const CategoryPage = () => {
 
   const shouldPollFullList = hasScheduledData?.hasScheduled ?? false;
 
-  const { data: allCategories, isLoading } = useGetAllCategoriesQuery(
-    undefined,
-    {
-      pollingInterval: shouldPollFullList ? 15000 : undefined,
-      refetchOnMountOrArgChange: true,
-    },
-  );
+  const {
+    data: allCategories,
+    isLoading,
+    refetch,
+  } = useGetAllCategoriesQuery(undefined, {
+    pollingInterval: shouldPollFullList ? 15000 : undefined,
+    refetchOnMountOrArgChange: true,
+  });
 
   const renderRow = ({
     id,
@@ -75,6 +76,7 @@ const CategoryPage = () => {
 
       <div className="page-card">
         <Table
+          onReset={() => refetch}
           data={allCategories?.categories || []}
           columns={tableHeaders}
           tableCaption={language.categoryList}

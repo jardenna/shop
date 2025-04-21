@@ -1,6 +1,4 @@
-import { ErrorBoundary } from 'react-error-boundary';
 import { SubCategoryResponse } from '../../app/api/apiTypes';
-import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import MoreLink from '../../components/MoreLink';
 import PageHeader from '../../components/PageHeader';
 import Table from '../../components/sortTable/Table';
@@ -86,29 +84,25 @@ const SubCategoryPage = () => {
   };
 
   return (
-    <ErrorBoundary
-      FallbackComponent={ErrorBoundaryFallback}
-      onReset={() => refetch}
-    >
-      <section className="page page-medium">
-        <PageHeader
-          heading={language.subCategories}
-          linkText={language.createNewCategory}
-          linkTo={`/admin/${MainPath.AdminSubCategoryCreate}`}
-        />
-        <div className="page-card">
-          <Table
-            data={allSubcategories?.subCategories || []}
-            columns={tableHeaders}
-            tableCaption={language.subCategoryList}
-            isLoading={isLoading}
-            emptyHeaderCellText={language.viewCategory}
-          >
-            {(data) => data.map(renderRow)}
-          </Table>
-        </div>
-      </section>
-    </ErrorBoundary>
+    <section className="page page-medium">
+      <PageHeader
+        heading={language.subCategories}
+        linkText={language.createNewCategory}
+        linkTo={`/admin/${MainPath.AdminSubCategoryCreate}`}
+      />
+      <div className="page-card">
+        <Table
+          onReset={() => refetch}
+          data={allSubcategories?.subCategories || []}
+          columns={tableHeaders}
+          tableCaption={language.subCategoryList}
+          isLoading={isLoading}
+          emptyHeaderCellText={language.viewCategory}
+        >
+          {(data) => data.map(renderRow)}
+        </Table>
+      </div>
+    </section>
   );
 };
 

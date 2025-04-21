@@ -1,6 +1,5 @@
 import useLanguage from '../features/language/useLanguage';
 import LayoutElement from '../layout/LayoutElement';
-import { BtnVariant } from '../types/enums';
 import Button from './Button';
 
 type ErrorContentProps = {
@@ -25,14 +24,10 @@ const ErrorContent = ({
         alt={language.errorAltText}
         loading="lazy"
       />
-
       <LayoutElement as="header" ariaLabel={language.error}>
         <h2 className="error-info">{errorText}</h2>
       </LayoutElement>
-
-      <Button onClick={onClick} variant={BtnVariant.Secondary}>
-        {btnLabel}
-      </Button>
+      <Button onClick={onClick}>{btnLabel}</Button>
     </section>
   );
 };

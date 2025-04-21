@@ -34,7 +34,7 @@ const roleOptions = [
 const UserPage = () => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
-  const { data: allUsers, isLoading } = useGetAllUsersQuery();
+  const { data: allUsers, isLoading, refetch } = useGetAllUsersQuery();
   const [deleteUser] = useDeleteUserMutation();
   const [updateUser] = useUpdateUserMutation();
 
@@ -102,6 +102,7 @@ const UserPage = () => {
       <PageHeader heading={language.users} />
       <div className="page-card">
         <Table
+          onReset={() => refetch}
           data={allUsers || []}
           columns={tableHeaders}
           tableCaption={language.customersList}

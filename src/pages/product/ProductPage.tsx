@@ -18,11 +18,12 @@ const tableHeaders: Column<ProductResponse>[] = [
 
 const ProductPage = () => {
   const { language } = useLanguage();
-  const { data: allProducts, isLoading } = useGetAllProductsQuery();
+  const { data: allProducts, isLoading, refetch } = useGetAllProductsQuery();
 
   return (
     <section className="page-card ">
       <Table
+        onReset={() => refetch}
         isLoading={isLoading}
         data={allProducts?.products ?? []}
         columns={tableHeaders}

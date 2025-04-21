@@ -6,6 +6,11 @@
   align-items: center;
   color: currentcolor;
   flex-direction: column;
+  margin-bottom: 8px;
+
+  .btn {
+    max-width: 300px;
+  }
 
   .btn-secondary {
     color: currentcolor;
