@@ -2,6 +2,7 @@ import { useNavigate, useParams } from 'react-router';
 import PageHeader from '../../components/PageHeader';
 import CategoryCard from '../../components/categoryCard/CategoryCard';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
+import SkeletonPage from '../../components/skeleton/SkeletonPage';
 import useLanguage from '../../features/language/useLanguage';
 import {
   useDeleteSubCategoryMutation,
@@ -49,12 +50,9 @@ const ViewSubCategoryPage = () => {
     }
   };
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <section className="page page-medium">
+      {isLoading && <SkeletonPage />}
       {category && (
         <>
           <PageHeader

@@ -1,5 +1,6 @@
 import { useParams } from 'react-router';
 import PageHeader from '../../components/PageHeader';
+import SkeletonPage from '../../components/skeleton/SkeletonPage';
 import { useGetAllCategoriesQuery } from '../../features/categories/categoriyApiSlice';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetSubCategoryByIdQuery } from '../../features/subCategories/subCategoryApiSlice';
@@ -13,12 +14,9 @@ const UpdateSubCategoryPage = () => {
     params.id || '',
   );
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <section className="page page-small">
+      {isLoading && <SkeletonPage />}
       {allCategories && category && (
         <>
           <PageHeader
