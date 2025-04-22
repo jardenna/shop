@@ -76,6 +76,12 @@ textarea {
   }
 }
 
+.date-picker-container {
+  tbody {
+    max-height: rem(250px);
+  }
+}
+
 .error-icon {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: rem(12px);
@@ -105,4 +111,10 @@ textarea {
   display: flex;
   gap: 12px;
   margin-top: 28px;
+}
+
+.category-form {
+  .form-footer {
+    margin-top: 20px;
+  }
 }

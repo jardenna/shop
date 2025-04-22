@@ -12,8 +12,8 @@ export type SkeletonProps = {
 
 const Skeleton = ({
   className = '',
-  height = '1',
-  width = '1',
+  height = '',
+  width = '',
   count,
   variant = 'primary',
 }: SkeletonProps) =>

@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { Outlet } from 'react-router';
+import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import IconBtn from '../../../components/IconBtn';
 import SkipLink from '../../../components/skipLinks/SkipLinks';
 import useMediaQuery from '../../../hooks/useMediaQuery ';
@@ -46,7 +48,9 @@ const AdminLayout = () => {
           link to shop
         </aside>
         <div id="main" className="admin container">
-          <Outlet />
+          <ErrorBoundary FallbackComponent={ErrorBoundaryFallback}>
+            <Outlet />
+          </ErrorBoundary>
         </div>
       </main>
     </div>

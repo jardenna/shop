@@ -157,6 +157,7 @@ showPassword;Show password;Vis adgangskode
 signup;Sign up;Opret bruger
 signupFailed;Sign up failed;Registrering mislykkedes
 signupSucceeded;Sign up succeeded;Registrering lykkedes
+somethingWentWrong;Something went wrong, please try again;Noget gik galt, forsøg venligst igen
 sort;Sort;Sorter
 status;Status;Status
 sub;Sub;Sekundær

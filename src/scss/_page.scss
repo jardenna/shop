@@ -20,6 +20,10 @@
     display: flex;
   }
 
+  .main-header {
+    height: $header-height;
+  }
+
   .page-header {
     display: flex;
     justify-content: space-between;
@@ -52,10 +56,6 @@
 
   .container {
     max-width: 100%;
-  }
-
-  header {
-    height: $header-height;
   }
 
   .aside {

@@ -5,6 +5,12 @@
   gap: 24px;
   align-items: center;
   color: currentcolor;
+  flex-direction: column;
+  margin-bottom: 8px;
+
+  .btn {
+    max-width: 300px;
+  }
 
   .btn-secondary {
     color: currentcolor;
@@ -17,11 +23,6 @@
   &.error-boundary {
     .emoji {
       max-width: rem(120px);
-    }
-
-    .error-info {
-      font-size: rem(14px);
-      font-weight: normal;
     }
   }
 }

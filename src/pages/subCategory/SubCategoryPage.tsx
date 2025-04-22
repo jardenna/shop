@@ -9,6 +9,7 @@ import {
   useGetScheduledQuery,
 } from '../../features/subCategories/subCategoryApiSlice';
 import { MainPath } from '../../layout/nav/enums';
+import { oneDay } from '../../utils/utils';
 
 const tableHeaders: {
   key: keyof SubCategoryResponse;
@@ -38,18 +39,19 @@ const SubCategoryPage = () => {
   const { language } = useLanguage();
 
   const { data: hasScheduledData } = useGetScheduledQuery(undefined, {
-    pollingInterval: 30000,
+    pollingInterval: oneDay,
   });
 
   const shouldPollFullList = hasScheduledData?.hasScheduled ?? false;
 
-  const { data: allSubcategories, isLoading } = useGetAllSubCategoriesQuery(
-    undefined,
-    {
-      pollingInterval: shouldPollFullList ? 15000 : undefined,
-      refetchOnMountOrArgChange: true,
-    },
-  );
+  const {
+    data: allSubcategories,
+    isLoading,
+    refetch,
+  } = useGetAllSubCategoriesQuery(undefined, {
+    pollingInterval: shouldPollFullList ? 15000 : undefined,
+    refetchOnMountOrArgChange: true,
+  });
 
   const renderRow = ({
     id,
@@ -91,6 +93,7 @@ const SubCategoryPage = () => {
       />
       <div className="page-card">
         <Table
+          onReset={() => refetch}
           data={allSubcategories?.subCategories || []}
           columns={tableHeaders}
           tableCaption={language.subCategoryList}

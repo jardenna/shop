@@ -12,7 +12,7 @@ type MoreLinkProps = {
 const MoreLink = ({ linkText, linkTo }: MoreLinkProps) => {
   const { language } = useLanguage();
   return (
-    <Link to={linkTo} className="btn btn-ghost more-link">
+    <Link to={linkTo} className="more-link">
       {linkText}
       <Icon
         ariaHidden
