@@ -109,8 +109,6 @@ table {
   tbody {
     display: flex;
     flex-direction: column;
-    max-height: rem(400px);
-    overflow: auto;
 
     &.padding-4 {
       td {
@@ -182,6 +180,11 @@ table {
       &:first-child {
         z-index: 3;
       }
+    }
+
+    tbody {
+      max-height: rem(400px);
+      overflow: auto;
     }
 
     th,

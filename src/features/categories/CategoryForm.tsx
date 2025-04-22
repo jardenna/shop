@@ -91,34 +91,40 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
     }
   }
 
+  const maxHeight =
+    values.categoryStatus === 'Scheduled' ? '50rem' : '23.25rem';
+
   return (
-    <Form
-      onSubmit={onSubmit}
-      submitBtnLabel={id ? language.save : language.create}
-    >
-      <FieldSet legendText={language.categories}>
-        <SharedCategoryInputs
-          onCategoryNameChange={onChange}
-          categoryNamevalue={values.categoryName}
-          categoryNameId="categoryName"
-          defaultStatusValue={{
-            label: language[values.categoryStatus.toLowerCase()],
-            value: values.categoryStatus,
-          }}
-          onSelectStatus={(selectedOptions: OptionType) => {
-            handleSelectStatus('categoryStatus', selectedOptions);
-          }}
-          categoryStatus={values.categoryStatus}
-          onSelectDate={handleDaySelect}
-          selectedDate={selectedDate}
-          timeValue={timeValue}
-          onTimeChange={handleTimeChange}
-          categoryNameErrorText={language[errors.categoryName]}
-          categoryNameLabelText={language.addCategoryName}
-          categoryNamePlaceholder={language.categoryName}
-        />
-      </FieldSet>
-    </Form>
+    <div className="page-card" style={{ maxHeight }}>
+      <Form
+        className="category-form"
+        onSubmit={onSubmit}
+        submitBtnLabel={id ? language.save : language.create}
+      >
+        <FieldSet legendText={language.categories}>
+          <SharedCategoryInputs
+            onCategoryNameChange={onChange}
+            categoryNamevalue={values.categoryName}
+            categoryNameId="categoryName"
+            defaultStatusValue={{
+              label: language[values.categoryStatus.toLowerCase()],
+              value: values.categoryStatus,
+            }}
+            onSelectStatus={(selectedOptions: OptionType) => {
+              handleSelectStatus('categoryStatus', selectedOptions);
+            }}
+            categoryStatus={values.categoryStatus}
+            onSelectDate={handleDaySelect}
+            selectedDate={selectedDate}
+            timeValue={timeValue}
+            onTimeChange={handleTimeChange}
+            categoryNameErrorText={language[errors.categoryName]}
+            categoryNameLabelText={language.addCategoryName}
+            categoryNamePlaceholder={language.categoryName}
+          />
+        </FieldSet>
+      </Form>
+    </div>
   );
 };
 

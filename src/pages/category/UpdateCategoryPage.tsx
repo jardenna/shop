@@ -28,9 +28,7 @@ const UpdateCategoryPage = () => {
             FallbackComponent={ErrorBoundaryFallback}
             onReset={() => refetch}
           >
-            <div className="page-card">
-              <CategoryForm selectedCategory={category} id={params.id || ''} />
-            </div>
+            <CategoryForm selectedCategory={category} id={params.id || ''} />
           </ErrorBoundary>
         </>
       )}

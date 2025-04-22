@@ -12,9 +12,7 @@ const CreateCategoryPage = () => {
   return (
     <section className="page-small">
       <PageHeader heading={language.createNewCategory} />
-      <div className="page-card">
-        <CategoryForm selectedCategory={null} id={null} />
-      </div>
+      <CategoryForm selectedCategory={null} id={null} />
     </section>
   );
 };
