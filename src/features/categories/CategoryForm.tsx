@@ -91,11 +91,8 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
     }
   }
 
-  const maxHeight =
-    values.categoryStatus === 'Scheduled' ? '50rem' : '23.25rem';
-
   return (
-    <div className="page-card" style={{ maxHeight }}>
+    <div className="page-card">
       <Form
         className="category-form"
         onSubmit={onSubmit}
