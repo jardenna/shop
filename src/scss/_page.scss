@@ -43,7 +43,8 @@
   }
 
   .page-card {
-    max-height: 78lvh;
+    height: 100%;
+    max-height: rem(380px);
     overflow: auto;
     background-color: $color-white;
     border-radius: 4px;
@@ -51,7 +52,7 @@
     margin-bottom: 12px;
     width: 100%;
     padding: 24px;
-    padding-top: 32px;
+    padding-top: 40px;
   }
 
   .container {
