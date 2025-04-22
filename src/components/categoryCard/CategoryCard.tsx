@@ -63,7 +63,9 @@ const CategoryCard = ({
         <div>
           {scheduledDate && (
             <div className="category-date">
-              <span>{subCategoryName} er planlagt til udgivelse den </span>
+              <span>
+                {subCategoryName} {language.scheduledToBePubliched}
+              </span>
               <DateDisplay
                 date={scheduledDate}
                 hour="2-digit"
@@ -92,7 +94,9 @@ const CategoryCard = ({
       </CategoryCardContent>
 
       <CategoryCardContent className="right">
-        <h2 className="category-card-title">{mainCategoryName}</h2>
+        <h2 className="category-card-title">
+          {language.parentCategory}: {mainCategoryName}
+        </h2>
 
         {showStatusMessage && (
           <div>
