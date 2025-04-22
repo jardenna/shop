@@ -3,9 +3,7 @@ import { useAppDispatch } from '../../app/hooks';
 import { localStorageKeys } from '../../hooks/useLocalStorage';
 import { setRates } from './currencySlice';
 import { useGetExchangeRatesQuery } from './exchangeRatesApiSlice';
-
-const oneDay = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
-const currencyCacheKey = 'exchangeRates';
+import { currencyCacheKey, oneDay } from '../../utils/utils';
 
 const CurrencyProvider = ({ children }: { children: ReactNode }) => {
   const dispatch = useAppDispatch();

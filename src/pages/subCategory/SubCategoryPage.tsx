@@ -9,6 +9,7 @@ import {
   useGetScheduledQuery,
 } from '../../features/subCategories/subCategoryApiSlice';
 import { MainPath } from '../../layout/nav/enums';
+import { oneDay } from '../../utils/utils';
 
 const tableHeaders: {
   key: keyof SubCategoryResponse;
@@ -33,7 +34,7 @@ const tableHeaders: {
   { key: 'categoryStatus', label: 'status', name: 'categoryStatus' },
   { key: 'id', label: '', name: '' },
 ];
-const oneDay = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
+
 const SubCategoryPage = () => {
   const { language } = useLanguage();
 

@@ -8,6 +8,7 @@ import CategoryBadge from '../../features/categories/CategoryBadge';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetScheduledQuery } from '../../features/subCategories/subCategoryApiSlice';
 import { MainPath } from '../../layout/nav/enums';
+import { oneDay } from '../../utils/utils';
 
 const tableHeaders: { key: keyof Category; label: string; name: string }[] = [
   { key: 'categoryName', label: 'name', name: 'categoryName' },
@@ -18,10 +19,9 @@ const tableHeaders: { key: keyof Category; label: string; name: string }[] = [
 
 const CategoryPage = () => {
   const { language } = useLanguage();
-  // const sixHours = 1000 * 60 * 60 * 6;
 
   const { data: hasScheduledData } = useGetScheduledQuery(undefined, {
-    pollingInterval: 15000, // check every 6 hours
+    pollingInterval: oneDay,
   });
 
   const shouldPollFullList = hasScheduledData?.hasScheduled ?? false;
