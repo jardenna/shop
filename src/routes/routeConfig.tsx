@@ -18,13 +18,14 @@ import ErrorPage from '../pages/ErrorPage';
 import HomePage from '../pages/home/HomePage';
 import LoginPage from '../pages/LoginPage';
 import ProductPage from '../pages/product/ProductPage';
+import ViewProductPage from '../pages/product/ViewProductPage';
 import ProtectedRoute from '../pages/ProtectedRoute';
 import ShoppingChart from '../pages/ShoppingChart';
 import SignupPage from '../pages/SignupPage';
 import CreateSubCategoryPage from '../pages/subCategory/CreateSubCategoryPage';
 import SubCategoryPage from '../pages/subCategory/SubCategoryPage';
-import ViewSubCategoryPage from '../pages/subCategory/ViewSubCategoryPage';
 import UpdateSubCategoryPage from '../pages/subCategory/UpdateSubCategoryPage';
+import ViewSubCategoryPage from '../pages/subCategory/ViewSubCategoryPage';
 
 const routeConfig = createBrowserRouter([
   {
@@ -117,6 +118,7 @@ const routeConfig = createBrowserRouter([
             path: MainPath.AdminProducts,
             element: <ProductPage />,
           },
+          { path: MainPath.AdminProductView, element: <ViewProductPage /> },
           {
             path: MainPath.AdminCategories,
             element: <CategoryPage />,
