@@ -148,7 +148,13 @@ const getSortedProducts = asyncHandler(async (req, res) => {
   const page = parseInt(req.query.page) || 1;
 
   const products = await Product.find({})
-    .populate('subCategory')
+    .populate({
+      path: 'subCategory',
+      populate: {
+        path: 'category',
+        model: 'Category',
+      },
+    })
     .limit(pageSize)
     .skip(pageSize * (page - 1))
     .sort({ createdAt: -1 })
