@@ -11,18 +11,21 @@ const tableHeaders: Column<ProductResponse>[] = [
   { key: 'productName', label: 'name', name: 'image' },
   { key: 'subCategory', label: 'category', name: 'subCategory' },
   { key: 'price', label: 'price', name: 'price' },
+  { key: 'countInStock', label: 'qty', name: 'countInStock' },
   { key: 'id', label: '', name: '' },
 ];
 
 const ProductPage = () => {
   const { language } = useLanguage();
   const { data: allProducts, isLoading, refetch } = useGetAllProductsQuery();
+
   const renderRow = ({
     id,
     productName,
     image,
     price,
     subCategory,
+    countInStock,
   }: ProductResponse) => (
     <tr key={id}>
       <td>
@@ -31,12 +34,11 @@ const ProductPage = () => {
           <span className="product-name">{productName}</span>
         </div>
       </td>
-
       <td>{subCategory.subCategoryName}</td>
       <td>
         <ProductPrice price={price} />
       </td>
-
+      <td>{countInStock}</td>
       <td>
         <MoreLink
           linkText={language.viewProduct}
