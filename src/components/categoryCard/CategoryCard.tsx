@@ -1,12 +1,10 @@
+import { CategoryStatus } from '../../app/api/apiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
-import Badge from '../badge/Badge';
 import './_category-card.scss';
-import CategoryCardContent from './CategoryCardContent';
-import CategoryCardFooter from './CategoryCardFooter';
+import CategoryCardLeft from './CategoryCardLeft';
 import CategoryCardRight from './CategoryCardRight';
-import CategoryDate from './CategoryDate';
 
 type CategoryCardProps = {
   categoryId: string;
@@ -14,7 +12,7 @@ type CategoryCardProps = {
   mainCategoryName: string;
   scheduledDate: Date | null;
   showStatusMessage: boolean;
-  status: string;
+  status: CategoryStatus;
   statusMessage: string;
   subCategoryName: string;
   totalProducts: number;
@@ -42,35 +40,15 @@ const CategoryCard = ({
 
   return (
     <article className="category-card-container">
-      <CategoryCardContent className="left" heading={null}>
-        <div className="position-relative">
-          <h2 className="category-card-title">{subCategoryName}</h2>
-          <Badge
-            badgeText={language[status.toLocaleLowerCase()]}
-            className={status.toLowerCase()}
-          />
-          <span>
-            {language.totalProducts}: {totalProducts}
-          </span>
-        </div>
-
-        <>
-          {scheduledDate && (
-            <CategoryDate
-              name={subCategoryName}
-              text={language.scheduledToBePubliched}
-              date={scheduledDate}
-            />
-          )}
-          <CategoryCardFooter
-            id={categoryId}
-            primaryActionBtn={primaryActionBtn}
-            name={subCategoryName}
-            modalHeaderText={language.deleteCategory}
-            linkTo={`/admin/${MainPath.AdminSubCategoryUpdate}/${categoryId}`}
-          />
-        </>
-      </CategoryCardContent>
+      <CategoryCardLeft
+        name={subCategoryName}
+        primaryActionBtn={primaryActionBtn}
+        id={categoryId}
+        linkTo={`/admin/${MainPath.AdminSubCategoryUpdate}/${categoryId}`}
+        status={status}
+        totalProducts={totalProducts}
+        scheduledDate={scheduledDate}
+      />
       <CategoryCardRight
         linkTo={`/admin/${MainPath.AdminCategories}`}
         createdAt={createdAt}
