@@ -11,7 +11,13 @@ const useAuth = () => {
   const currentUser = useAppSelector(selectUser);
   const [sendLogout, { isSuccess }] = useLogoutMutation();
 
-  const { data: userProfile, isLoading, error } = useCheckAuthQuery();
+  const {
+    data: userProfile,
+    isLoading,
+    error,
+  } = useCheckAuthQuery(undefined, {
+    refetchOnMountOrArgChange: true,
+  });
 
   useEffect(() => {
     if (isSuccess) {
