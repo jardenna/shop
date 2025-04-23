@@ -42,7 +42,7 @@ const ProductPage = () => {
       <td>
         <MoreLink
           linkText={language.viewProduct}
-          linkTo={`/admin/${MainPath.AdminSubCategoryView}/${id}`}
+          linkTo={`/admin/${MainPath.AdminProductView}/${id}`}
         />
       </td>
     </tr>

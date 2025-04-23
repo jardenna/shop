@@ -118,7 +118,10 @@ const routeConfig = createBrowserRouter([
             path: MainPath.AdminProducts,
             element: <ProductPage />,
           },
-          { path: MainPath.AdminProductView, element: <ViewProductPage /> },
+          {
+            path: `${MainPath.AdminProductView}/:id`,
+            element: <ViewProductPage />,
+          },
           {
             path: MainPath.AdminCategories,
             element: <CategoryPage />,
