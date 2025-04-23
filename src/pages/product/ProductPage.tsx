@@ -1,5 +1,4 @@
 import { ProductResponse } from '../../app/api/apiTypes';
-import DateDisplay from '../../components/datePicker/DateDisplay';
 import MoreLink from '../../components/MoreLink';
 import Table, { Column } from '../../components/sortTable/Table';
 import ProductPrice from '../../features/currency/components/ProductPrice';
@@ -10,15 +9,42 @@ import './_product-page.scss';
 
 const tableHeaders: Column<ProductResponse>[] = [
   { key: 'productName', label: 'name', name: 'image' },
-  { key: 'subCategory', label: 'subCategory', name: 'subCategory' },
+  { key: 'subCategory', label: 'category', name: 'subCategory' },
   { key: 'price', label: 'price', name: 'price' },
-  { key: 'updatedAt', label: 'updatedAt', name: 'updatedAt' },
   { key: 'id', label: '', name: '' },
 ];
 
 const ProductPage = () => {
   const { language } = useLanguage();
   const { data: allProducts, isLoading, refetch } = useGetAllProductsQuery();
+  const renderRow = ({
+    id,
+    productName,
+    image,
+    price,
+    subCategory,
+  }: ProductResponse) => (
+    <tr key={id}>
+      <td>
+        <div className="product-overview-cell">
+          <img src={`/images${image}`} alt="" loading="lazy" />
+          <span className="product-name">{productName}</span>
+        </div>
+      </td>
+
+      <td>{subCategory.subCategoryName}</td>
+      <td>
+        <ProductPrice price={price} />
+      </td>
+
+      <td>
+        <MoreLink
+          linkText={language.viewProduct}
+          linkTo={`/admin/${MainPath.AdminSubCategoryView}/${id}`}
+        />
+      </td>
+    </tr>
+  );
 
   return (
     <section className="page-card">
@@ -30,40 +56,7 @@ const ProductPage = () => {
         tableCaption={language.productList}
         emptyHeaderCellText={language.updateProduct}
       >
-        {(data) =>
-          data.map(
-            ({ id, productName, image, price, updatedAt, subCategory }) => (
-              <tr key={id}>
-                <td>
-                  <div className="product-overview-cell">
-                    <span>
-                      <img src={`/images${image}`} alt="" loading="lazy" />
-                    </span>
-                    <span className="product-name">{productName}</span>
-                  </div>
-                </td>
-
-                <td>{subCategory.subCategoryName}</td>
-                <td>
-                  <ProductPrice price={price} />
-                </td>
-                <td>
-                  <DateDisplay
-                    date={updatedAt}
-                    month="2-digit"
-                    year="2-digit"
-                  />
-                </td>
-                <td>
-                  <MoreLink
-                    linkText={language.viewProduct}
-                    linkTo={`/admin/${MainPath.AdminSubCategoryView}/${id}`}
-                  />
-                </td>
-              </tr>
-            ),
-          )
-        }
+        {(data) => data.map(renderRow)}
       </Table>
     </section>
   );
