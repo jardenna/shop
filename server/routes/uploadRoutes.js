@@ -17,7 +17,6 @@ const storage = multer.diskStorage({
 const fileFilter = (req, file, cb) => {
   const filetypes = /jpe?g|png|webp/;
   const mimetypes = /image\/jpe?g|image\/png|image\/webp/;
-
   const extname = path.extname(file.originalname).toLowerCase();
   const mimetype = file.mimetype;
 
@@ -45,6 +44,7 @@ router.post('/', (req, res) => {
       res.status(400).send({ message: err.message });
     } else if (req.file) {
       res.status(200).send({
+        success: true,
         message: 'Image uploaded successfully',
         image: `/${req.file.path}`,
       });

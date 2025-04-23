@@ -1,0 +1,7 @@
+@use '../../scss/globals' as *;
+
+.product-overview-cell {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}

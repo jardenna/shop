@@ -1,12 +1,12 @@
 import { ProductResponse } from '../../app/api/apiTypes';
 import DateDisplay from '../../components/datePicker/DateDisplay';
-import Figure from '../../components/figure/Figure';
 import MoreLink from '../../components/MoreLink';
 import Table, { Column } from '../../components/sortTable/Table';
 import ProductPrice from '../../features/currency/components/ProductPrice';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetAllProductsQuery } from '../../features/products/productApiSlice';
 import { MainPath } from '../../layout/nav/enums';
+import './_product-page.scss';
 
 const tableHeaders: Column<ProductResponse>[] = [
   { key: 'productName', label: 'name', name: 'image' },
@@ -21,7 +21,7 @@ const ProductPage = () => {
   const { data: allProducts, isLoading, refetch } = useGetAllProductsQuery();
 
   return (
-    <section className="page-card ">
+    <section className="page-card">
       <Table
         onReset={() => refetch}
         isLoading={isLoading}
@@ -32,20 +32,14 @@ const ProductPage = () => {
       >
         {(data) =>
           data.map(
-            ({
-              id,
-              productName,
-              image,
-              description,
-              price,
-              updatedAt,
-              subCategory,
-            }) => (
+            ({ id, productName, image, price, updatedAt, subCategory }) => (
               <tr key={id}>
                 <td>
-                  <div>
-                    <Figure src={`/images${image}`} alt="" /> {productName}{' '}
-                    <p className="text-ellipsis">{description}</p>
+                  <div className="product-overview-cell">
+                    <span>
+                      <img src={`/images${image}`} alt="" loading="lazy" />
+                    </span>
+                    <span className="product-name">{productName}</span>
                   </div>
                 </td>
 
