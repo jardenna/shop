@@ -26,7 +26,7 @@ const CategoryCardFooter = ({
     label: language.cancel,
   };
   return (
-    <LayoutElement className="footer-buttons" ariaLabel="card">
+    <LayoutElement className="footer" ariaLabel="card">
       <ModalContainer
         triggerModalBtnContent={language.delete}
         triggerModalBtnVariant={BtnVariant.Danger}

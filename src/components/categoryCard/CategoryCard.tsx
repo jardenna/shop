@@ -72,7 +72,7 @@ const CategoryCard = ({
               />
             </div>
           )}
-          <div className="footer-buttons">
+          <div className="footer">
             <ModalContainer
               triggerModalBtnContent={language.delete}
               triggerModalBtnVariant={BtnVariant.Danger}
