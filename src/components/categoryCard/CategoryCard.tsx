@@ -46,15 +46,14 @@ const CategoryCard = ({
   };
 
   return (
-    <div className="category-card-container">
-      <CategoryCardContent className="left">
+    <article className="category-card-container">
+      <CategoryCardContent className="left" heading={null}>
         <div className="position-relative">
+          <h2 className="category-card-title">{subCategoryName}</h2>
           <Badge
             badgeText={language[status.toLocaleLowerCase()]}
             className={status.toLowerCase()}
           />
-          <h2 className="category-card-title">{subCategoryName}</h2>
-
           <span>
             {language.totalProducts}: {totalProducts}
           </span>
@@ -93,11 +92,10 @@ const CategoryCard = ({
         </div>
       </CategoryCardContent>
 
-      <CategoryCardContent className="right">
-        <h2 className="category-card-title">
-          {language.parentCategory}: {mainCategoryName}
-        </h2>
-
+      <CategoryCardContent
+        className="right"
+        heading={`${language.parentCategory}: ${mainCategoryName}`}
+      >
         {showStatusMessage && (
           <div>
             <div className="category-card-text">
@@ -119,7 +117,7 @@ const CategoryCard = ({
           {language.createdAt} <DateDisplay date={createdAt} />
         </span>
       </CategoryCardContent>
-    </div>
+    </article>
   );
 };
 export default CategoryCard;

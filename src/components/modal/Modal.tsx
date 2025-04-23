@@ -72,7 +72,7 @@ const Modal = ({
   }
 
   const ModalContent = (
-    <>
+    <article>
       <ModalHeader
         modalHeadertext={modalHeaderText}
         onCloseModal={handleClosePopup}
@@ -102,7 +102,7 @@ const Modal = ({
         </form>
       )}
       {modalInfo && modalInfo}
-    </>
+    </article>
   );
 
   return (
