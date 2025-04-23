@@ -7,6 +7,7 @@ import LinkButton from '../LinkButton';
 import './_category-card.scss';
 import CategoryCardContent from './CategoryCardContent';
 import CategoryCardFooter from './CategoryCardFooter';
+import CategoryScheduledDate from './CategoryScheduledDate';
 
 type CategoryCardProps = {
   categoryId: string;
@@ -56,16 +57,11 @@ const CategoryCard = ({
 
         <div>
           {scheduledDate && (
-            <div className="category-date">
-              <span>
-                {subCategoryName} {language.scheduledToBePubliched}
-              </span>
-              <DateDisplay
-                date={scheduledDate}
-                hour="2-digit"
-                minute="2-digit"
-              />
-            </div>
+            <CategoryScheduledDate
+              name={subCategoryName}
+              publishText={language.scheduledToBePubliched}
+              scheduledDate={scheduledDate}
+            />
           )}
           <CategoryCardFooter
             id={categoryId}
