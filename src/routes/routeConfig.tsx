@@ -17,7 +17,9 @@ import Contact from '../pages/Contact';
 import ErrorPage from '../pages/ErrorPage';
 import HomePage from '../pages/home/HomePage';
 import LoginPage from '../pages/LoginPage';
+import CreateProductPage from '../pages/product/CreateProductPage';
 import ProductPage from '../pages/product/ProductPage';
+import UpdateProductPage from '../pages/product/UpdateProductPage';
 import ViewProductPage from '../pages/product/ViewProductPage';
 import ProtectedRoute from '../pages/ProtectedRoute';
 import ShoppingChart from '../pages/ShoppingChart';
@@ -121,6 +123,14 @@ const routeConfig = createBrowserRouter([
           {
             path: `${MainPath.AdminProductView}/:id`,
             element: <ViewProductPage />,
+          },
+          {
+            path: MainPath.AdminProductCreate,
+            element: <CreateProductPage />,
+          },
+          {
+            path: `${MainPath.AdminProductUpdate}/:id`,
+            element: <UpdateProductPage />,
           },
           {
             path: MainPath.AdminCategories,
