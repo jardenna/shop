@@ -1,13 +1,12 @@
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
-import { BtnVariant, SizeVariant } from '../../types/enums';
+import { BtnVariant } from '../../types/enums';
 import Badge from '../badge/Badge';
 import DateDisplay from '../datePicker/DateDisplay';
 import LinkButton from '../LinkButton';
-import { SecondaryActionBtnProps } from '../modal/Modal';
-import ModalContainer from '../modal/ModalContainer';
 import './_category-card.scss';
 import CategoryCardContent from './CategoryCardContent';
+import CategoryCardFooter from './CategoryCardFooter';
 
 type CategoryCardProps = {
   categoryId: string;
@@ -41,10 +40,6 @@ const CategoryCard = ({
     variant: BtnVariant.Danger,
   };
 
-  const secondaryActionBtn: SecondaryActionBtnProps = {
-    label: language.cancel,
-  };
-
   return (
     <article className="category-card-container">
       <CategoryCardContent className="left" heading={null}>
@@ -72,23 +67,13 @@ const CategoryCard = ({
               />
             </div>
           )}
-          <div className="footer">
-            <ModalContainer
-              triggerModalBtnContent={language.delete}
-              triggerModalBtnVariant={BtnVariant.Danger}
-              id={categoryId}
-              primaryActionBtn={primaryActionBtn}
-              secondaryActionBtn={secondaryActionBtn}
-              modalSize={SizeVariant.Sm}
-              modalHeaderText={language.deleteCategory}
-            >
-              {language.sureToDelete} {subCategoryName}
-            </ModalContainer>
-            <LinkButton
-              linkTo={`/admin/${MainPath.AdminSubCategoryUpdate}/${categoryId}`}
-              linkText={language.edit}
-            />
-          </div>
+          <CategoryCardFooter
+            id={categoryId}
+            primaryActionBtn={primaryActionBtn}
+            name={subCategoryName}
+            modalHeaderText={language.deleteCategory}
+            linkTo={`/admin/${MainPath.AdminSubCategoryUpdate}/${categoryId}`}
+          />
         </div>
       </CategoryCardContent>
 
