@@ -2,10 +2,10 @@ import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
 import Badge from '../badge/Badge';
-import LinkButton from '../LinkButton';
 import './_category-card.scss';
 import CategoryCardContent from './CategoryCardContent';
 import CategoryCardFooter from './CategoryCardFooter';
+import CategoryCardRight from './CategoryCardRight';
 import CategoryDate from './CategoryDate';
 
 type CategoryCardProps = {
@@ -54,7 +54,7 @@ const CategoryCard = ({
           </span>
         </div>
 
-        <div>
+        <>
           {scheduledDate && (
             <CategoryDate
               name={subCategoryName}
@@ -69,31 +69,16 @@ const CategoryCard = ({
             modalHeaderText={language.deleteCategory}
             linkTo={`/admin/${MainPath.AdminSubCategoryUpdate}/${categoryId}`}
           />
-        </div>
+        </>
       </CategoryCardContent>
-
-      <CategoryCardContent
-        className="right"
+      <CategoryCardRight
+        linkTo={`/admin/${MainPath.AdminCategories}`}
+        createdAt={createdAt}
         heading={`${language.parentCategory}: ${mainCategoryName}`}
-      >
-        {showStatusMessage && (
-          <div>
-            <div className="category-card-text">
-              <h3>
-                {language.parentCategoryIs} {language[statusMessage]}
-              </h3>
-              {subCategoryName} {language.notVisibleInShop}.
-            </div>
-            <div>
-              <LinkButton
-                linkTo={`/admin/${MainPath.AdminCategories}`}
-                linkText={language.publish}
-              />
-            </div>
-          </div>
-        )}
-        <CategoryDate text={language.createdAt} date={createdAt} />
-      </CategoryCardContent>
+        name={subCategoryName}
+        showStatusMessage={showStatusMessage}
+        statusMessage={statusMessage}
+      />
     </article>
   );
 };
