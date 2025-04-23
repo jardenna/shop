@@ -16,7 +16,7 @@ const CategorySchema = new mongoose.Schema(
       default: 'Inactive',
     },
     scheduledDate: {
-      type: Date, // Ensure this field is of type Date
+      type: Date,
     },
   },
   { timestamps: true },
