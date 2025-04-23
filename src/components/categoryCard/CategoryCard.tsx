@@ -2,12 +2,11 @@ import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
 import Badge from '../badge/Badge';
-import DateDisplay from '../datePicker/DateDisplay';
 import LinkButton from '../LinkButton';
 import './_category-card.scss';
 import CategoryCardContent from './CategoryCardContent';
 import CategoryCardFooter from './CategoryCardFooter';
-import CategoryScheduledDate from './CategoryScheduledDate';
+import CategoryDate from './CategoryDate';
 
 type CategoryCardProps = {
   categoryId: string;
@@ -57,10 +56,10 @@ const CategoryCard = ({
 
         <div>
           {scheduledDate && (
-            <CategoryScheduledDate
+            <CategoryDate
               name={subCategoryName}
-              publishText={language.scheduledToBePubliched}
-              scheduledDate={scheduledDate}
+              text={language.scheduledToBePubliched}
+              date={scheduledDate}
             />
           )}
           <CategoryCardFooter
@@ -93,10 +92,7 @@ const CategoryCard = ({
             </div>
           </div>
         )}
-
-        <span className="category-date">
-          {language.createdAt} <DateDisplay date={createdAt} />
-        </span>
+        <CategoryDate text={language.createdAt} date={createdAt} />
       </CategoryCardContent>
     </article>
   );
