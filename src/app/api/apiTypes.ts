@@ -108,6 +108,14 @@ export type MainCategory = {
   scheduledDate?: Date;
 };
 
+export type SubCategory = DefaultResponseType & {
+  categoryStatus: CategoryStatus;
+  id: string;
+  productCount: number;
+  subCategoryName: string;
+  scheduledDate?: Date;
+};
+
 export type SubCategoryResponse = DefaultResponseType & {
   categoryStatus: CategoryStatus;
   id: string;
@@ -148,7 +156,7 @@ export type ProductResponse = DefaultResponseType & {
   productName: string;
   quantity: number;
   sizes: ProductSizes;
-  subCategory: SubCategoryResponse;
+  subCategory: SubCategory;
   discount?: number;
 };
 

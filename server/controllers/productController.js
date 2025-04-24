@@ -206,7 +206,11 @@ const getNewProducts = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Public
 const getProductById = asyncHandler(async (req, res) => {
-  const product = await Product.findById(req.params.id).lean();
+  const product = await Product.findById(req.params.id)
+    .populate({
+      path: 'subCategory',
+    })
+    .lean();
 
   if (!product) {
     return res.status(404).json(errorResponse);
