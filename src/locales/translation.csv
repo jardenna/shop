@@ -16,6 +16,7 @@ category;Category;Kategori
 categoryAlreadyExist;Category already exist;Kategori findes allerede
 categoryCreated;Category created;Kategori tilføjet
 categoryDeleted;Category deleted;Kategori blev slettet
+categoryIs;Category is;Kategori er
 categoryList;Category list;Kategori-liste
 categoryName;Category name;Kategori navn
 categoryNotFound;Category not found;Kategori findes ikke

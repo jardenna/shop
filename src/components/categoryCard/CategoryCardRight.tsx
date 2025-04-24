@@ -28,9 +28,7 @@ const CategoryCardRight = ({
       {showStatusMessage && (
         <div>
           <div className="category-card-text">
-            <h3>
-              {language.parentCategoryIs} {language[statusMessage]}
-            </h3>
+            <h3>{statusMessage}</h3>
             {name} {language.notVisibleInShop}.
           </div>
           <div>

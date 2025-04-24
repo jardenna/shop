@@ -1,5 +1,6 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
+import CategoryCardRight from '../../components/categoryCard/CategoryCardRight';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import PageHeader from '../../components/PageHeader';
 import SkeletonPage from '../../components/skeleton/SkeletonPage';
@@ -34,7 +35,20 @@ const ViewProductPage = () => {
           FallbackComponent={ErrorBoundaryFallback}
           onReset={() => refetch}
         >
-          qq
+          {product && (
+            <article className="category-card-container">
+              <CategoryCardRight
+                linkTo={`/admin/${MainPath.AdminSubCategories}`}
+                createdAt={product.createdAt}
+                heading={`${language.category}: ${product.subCategory.subCategoryName}`}
+                name={product.productName}
+                showStatusMessage={
+                  product.subCategory.categoryStatus !== 'Published'
+                }
+                statusMessage={`${language.categoryIs} ${language[product.subCategory.categoryStatus.toLowerCase()]}`}
+              />
+            </article>
+          )}
         </ErrorBoundary>
       </div>
     </section>

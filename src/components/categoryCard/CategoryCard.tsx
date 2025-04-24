@@ -55,7 +55,7 @@ const CategoryCard = ({
         heading={`${language.parentCategory}: ${mainCategoryName}`}
         name={subCategoryName}
         showStatusMessage={showStatusMessage}
-        statusMessage={statusMessage}
+        statusMessage={`${language.parentCategoryIs} ${language[statusMessage]}`}
       />
     </article>
   );
