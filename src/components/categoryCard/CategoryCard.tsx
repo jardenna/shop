@@ -3,10 +3,10 @@ import { CategoryStatus } from '../../app/api/apiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
+import CardRight from '../card/CardRight';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import './_category-card.scss';
 import CategoryCardLeft from './CategoryCardLeft';
-import CategoryCardRight from './CategoryCardRight';
 
 type CategoryCardProps = {
   categoryId: string;
@@ -62,7 +62,7 @@ const CategoryCard = ({
         FallbackComponent={ErrorBoundaryFallback}
         onReset={onReset}
       >
-        <CategoryCardRight
+        <CardRight
           linkTo={`/admin/${MainPath.AdminCategories}`}
           createdAt={createdAt}
           heading={`${language.parentCategory}: ${mainCategoryName.toLocaleLowerCase()}`}

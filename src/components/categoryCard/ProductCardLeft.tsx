@@ -1,9 +1,9 @@
 import { CategoryStatus } from '../../app/api/apiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import Badge from '../badge/Badge';
+import CardContent from '../card/CardContent';
+import CardFooter from '../card/CardFooter';
 import { PrimaryActionBtnProps } from '../modal/Modal';
-import CategoryCardContent from './CategoryCardContent';
-import CategoryCardFooter from './CategoryCardFooter';
 
 type ProductCardLeftProps = {
   countInStock: number;
@@ -27,7 +27,7 @@ const ProductCardLeft = ({
   const { language } = useLanguage();
 
   return (
-    <CategoryCardContent className="left" heading={null}>
+    <CardContent className="left" heading={null}>
       <div className="position-relative flex">
         <Badge
           badgeText={language[status.toLocaleLowerCase()]}
@@ -48,7 +48,7 @@ const ProductCardLeft = ({
         </div>
       </div>
 
-      <CategoryCardFooter
+      <CardFooter
         id={id}
         primaryActionBtn={primaryActionBtn}
         name={name}
@@ -56,7 +56,7 @@ const ProductCardLeft = ({
         linkTo={linkTo}
         scheduledDate={scheduledDate}
       />
-    </CategoryCardContent>
+    </CardContent>
   );
 };
 

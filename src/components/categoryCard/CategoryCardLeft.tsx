@@ -1,9 +1,9 @@
 import { CategoryStatus } from '../../app/api/apiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import Badge from '../badge/Badge';
+import CardContent from '../card/CardContent';
+import CardFooter from '../card/CardFooter';
 import { PrimaryActionBtnProps } from '../modal/Modal';
-import CategoryCardContent from './CategoryCardContent';
-import CategoryCardFooter from './CategoryCardFooter';
 
 type CategoryCardLeftProps = {
   id: string;
@@ -27,7 +27,7 @@ const CategoryCardLeft = ({
   const { language } = useLanguage();
 
   return (
-    <CategoryCardContent className="left" heading={null}>
+    <CardContent className="left" heading={null}>
       <div className="position-relative">
         <h2 className="category-card-title">{name}</h2>
         <Badge
@@ -39,7 +39,7 @@ const CategoryCardLeft = ({
         </span>
       </div>
 
-      <CategoryCardFooter
+      <CardFooter
         id={id}
         primaryActionBtn={primaryActionBtn}
         name={name}
@@ -47,7 +47,7 @@ const CategoryCardLeft = ({
         linkTo={linkTo}
         scheduledDate={scheduledDate}
       />
-    </CategoryCardContent>
+    </CardContent>
   );
 };
 

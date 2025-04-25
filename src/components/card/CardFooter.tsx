@@ -5,9 +5,9 @@ import { BtnVariant, SizeVariant } from '../../types/enums';
 import LinkButton from '../LinkButton';
 import { PrimaryActionBtnProps, SecondaryActionBtnProps } from '../modal/Modal';
 import ModalContainer from '../modal/ModalContainer';
-import CategoryDate from './CategoryDate';
+import CardDate from './CardDate';
 
-type CategoryCardFooterProps = {
+type CardFooterProps = {
   id: string;
   linkTo: MainPath | string;
   modalHeaderText: string;
@@ -16,14 +16,14 @@ type CategoryCardFooterProps = {
   scheduledDate?: Date;
 };
 
-const CategoryCardFooter = ({
+const CardFooter = ({
   id,
   linkTo,
   name,
   primaryActionBtn,
   modalHeaderText,
   scheduledDate,
-}: CategoryCardFooterProps) => {
+}: CardFooterProps) => {
   const { language } = useLanguage();
   const secondaryActionBtn: SecondaryActionBtnProps = {
     label: language.cancel,
@@ -31,7 +31,7 @@ const CategoryCardFooter = ({
   return (
     <div>
       {scheduledDate && (
-        <CategoryDate
+        <CardDate
           name={name}
           text={language.scheduledToBePubliched}
           date={scheduledDate}
@@ -55,4 +55,4 @@ const CategoryCardFooter = ({
   );
 };
 
-export default CategoryCardFooter;
+export default CardFooter;

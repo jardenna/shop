@@ -1,10 +1,10 @@
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
 import LinkButton from '../LinkButton';
-import CategoryCardContent from './CategoryCardContent';
-import CategoryDate from './CategoryDate';
+import CardContent from './CardContent';
+import CardDate from './CardDate';
 
-type CategoryCardRightProps = {
+type CardRightProps = {
   createdAt: Date;
   heading: string;
   linkTo: MainPath | string;
@@ -13,18 +13,18 @@ type CategoryCardRightProps = {
   statusMessage: string;
 };
 
-const CategoryCardRight = ({
+const CardRight = ({
   createdAt,
   linkTo,
   heading,
   name,
   showStatusMessage,
   statusMessage,
-}: CategoryCardRightProps) => {
+}: CardRightProps) => {
   const { language } = useLanguage();
 
   return (
-    <CategoryCardContent className="right" heading={heading}>
+    <CardContent className="right" heading={heading}>
       {showStatusMessage && (
         <div>
           <div className="category-card-text">
@@ -36,9 +36,9 @@ const CategoryCardRight = ({
           </div>
         </div>
       )}
-      <CategoryDate text={language.createdAt} date={createdAt} />
-    </CategoryCardContent>
+      <CardDate text={language.createdAt} date={createdAt} />
+    </CardContent>
   );
 };
 
-export default CategoryCardRight;
+export default CardRight;

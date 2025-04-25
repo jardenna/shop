@@ -1,12 +1,12 @@
 import DateDisplay from '../datePicker/DateDisplay';
 
-type CategoryScheduledDateProps = {
+type CardDateProps = {
   date: Date;
   text: string;
   name?: string;
 };
 
-const CategoryDate = ({ name, date, text }: CategoryScheduledDateProps) => (
+const CardDate = ({ name, date, text }: CardDateProps) => (
   <span className="category-date">
     <span>
       {name} {text}{' '}
@@ -15,4 +15,4 @@ const CategoryDate = ({ name, date, text }: CategoryScheduledDateProps) => (
   </span>
 );
 
-export default CategoryDate;
+export default CardDate;
