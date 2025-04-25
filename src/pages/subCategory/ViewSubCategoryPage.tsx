@@ -2,7 +2,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate, useParams } from 'react-router';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import PageHeader from '../../components/PageHeader';
-import CategoryCard from '../../components/categoryCard/CategoryCard';
+import CategoryCard from '../../components/adminCard/CategoryCard';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import SkeletonPage from '../../components/skeleton/SkeletonPage';
 import useLanguage from '../../features/language/useLanguage';

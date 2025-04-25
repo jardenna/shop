@@ -12,6 +12,7 @@ type CardRightProps = {
   showStatusMessage: boolean;
   statusMessage: string;
 };
+console.log(123);
 
 const CardRight = ({
   createdAt,

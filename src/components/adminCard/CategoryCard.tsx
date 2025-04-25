@@ -5,7 +5,6 @@ import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
 import CardRight from '../card/CardRight';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
-import './_category-card.scss';
 import CategoryCardLeft from './CategoryCardLeft';
 
 type CategoryCardProps = {
