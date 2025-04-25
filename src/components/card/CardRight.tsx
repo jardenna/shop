@@ -12,7 +12,6 @@ type CardRightProps = {
   showStatusMessage: boolean;
   statusMessage: string;
 };
-console.log(123);
 
 const CardRight = ({
   createdAt,
@@ -28,13 +27,9 @@ const CardRight = ({
     <CardContent className="right" heading={heading}>
       {showStatusMessage && (
         <div>
-          <div className="category-card-text">
-            <h3>{statusMessage}</h3>
-            {name} {language.notVisibleInShop}.
-          </div>
-          <div>
-            <LinkButton linkTo={linkTo} linkText={language.publish} />
-          </div>
+          <h3>{statusMessage}</h3>
+          {name} {language.notVisibleInShop}.
+          <LinkButton linkTo={linkTo} linkText={language.publish} />
         </div>
       )}
       <CardDate text={language.createdAt} date={createdAt} />
