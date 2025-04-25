@@ -11,6 +11,9 @@ import { useGetProductByIdQuery } from '../../features/products/productApiSlice'
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
 
+const sizeList = ['S', 'M', 'L', 'XL'];
+const testSize = ['S', 'M', 'XL'];
+
 const ViewProductPage = () => {
   const { language } = useLanguage();
   const params = useParams();
@@ -56,6 +59,7 @@ const ViewProductPage = () => {
                 countInStock={product.countInStock}
               />
             </ErrorBoundary>
+
             <ErrorBoundary
               FallbackComponent={ErrorBoundaryFallback}
               onReset={() => refetch}
@@ -67,6 +71,8 @@ const ViewProductPage = () => {
                 material={product.material}
                 price={product.price}
                 sizes={product.sizes}
+                sizeList={sizeList}
+                testSize={testSize}
               />
             </ErrorBoundary>
 
