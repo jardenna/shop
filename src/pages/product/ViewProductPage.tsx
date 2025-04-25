@@ -1,5 +1,6 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
+import CategoryCardLeft from '../../components/categoryCard/CategoryCardLeft';
 import CategoryCardRight from '../../components/categoryCard/CategoryCardRight';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import PageHeader from '../../components/PageHeader';
@@ -7,6 +8,7 @@ import SkeletonPage from '../../components/skeleton/SkeletonPage';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetProductByIdQuery } from '../../features/products/productApiSlice';
 import { MainPath } from '../../layout/nav/enums';
+import { BtnVariant } from '../../types/enums';
 
 const ViewProductPage = () => {
   const { language } = useLanguage();
@@ -18,6 +20,13 @@ const ViewProductPage = () => {
     refetch,
   } = useGetProductByIdQuery(params.id || '');
 
+  const primaryActionBtn = {
+    onClick: () => {
+      console.log(12);
+    },
+    label: language.delete,
+    variant: BtnVariant.Danger,
+  };
   console.log(product);
 
   return (
@@ -31,12 +40,27 @@ const ViewProductPage = () => {
         />
       )}
       <div className="page-card">
-        <ErrorBoundary
-          FallbackComponent={ErrorBoundaryFallback}
-          onReset={() => refetch}
-        >
-          {product && (
-            <article className="category-card-container">
+        {product && (
+          <article className="category-card-container">
+            <ErrorBoundary
+              FallbackComponent={ErrorBoundaryFallback}
+              onReset={() => refetch}
+            >
+              <CategoryCardLeft
+                id={product.id}
+                primaryActionBtn={primaryActionBtn}
+                linkTo=""
+                name=""
+                scheduledDate={product.scheduledDate}
+                status={product.productStatus}
+                totalProducts={0}
+              />
+            </ErrorBoundary>
+
+            <ErrorBoundary
+              FallbackComponent={ErrorBoundaryFallback}
+              onReset={() => refetch}
+            >
               <CategoryCardRight
                 linkTo={`/admin/${MainPath.AdminSubCategories}`}
                 createdAt={product.createdAt}
@@ -47,9 +71,9 @@ const ViewProductPage = () => {
                 }
                 statusMessage={`${language.categoryIs} ${language[product.subCategory.categoryStatus.toLowerCase()]}`}
               />
-            </article>
-          )}
-        </ErrorBoundary>
+            </ErrorBoundary>
+          </article>
+        )}
       </div>
     </section>
   );
