@@ -37,7 +37,7 @@ const ProductCardLeft = ({
           <img alt="" loading="lazy" src="/images/uploads/image.jpg" />
         </div>
         <div>
-          <h2 className="category-card-title">{name}</h2>
+          <h2 className="admin-card-title">{name}</h2>
           <span>{language.qty}: </span>
           <span>{countInStock}</span>
           <p>

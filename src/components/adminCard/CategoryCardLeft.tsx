@@ -29,7 +29,7 @@ const CategoryCardLeft = ({
   return (
     <CardContent className="left" heading={null}>
       <div className="position-relative">
-        <h2 className="category-card-title">{name}</h2>
+        <h2 className="admin-card-title">{name}</h2>
         <Badge
           badgeText={language[status.toLocaleLowerCase()]}
           className={status.toLowerCase()}

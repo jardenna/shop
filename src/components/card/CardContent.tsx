@@ -8,12 +8,12 @@ type CardContentProps = {
 };
 
 const CardContent = ({ children, className, heading }: CardContentProps) => (
-  <div className={`category-card card-${className}`}>
+  <div className={`admin-card card-${className}`}>
     <span className="card-top-line" />
-    <section className="category-card-content">
+    <section className="admin-card-content">
       {heading && (
         <LayoutElement as="header" ariaLabel="card">
-          <h2 className="category-card-title">{heading}</h2>
+          <h2 className="admin-card-title">{heading}</h2>
         </LayoutElement>
       )}
       {children}

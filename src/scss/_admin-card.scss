@@ -1,6 +1,6 @@
 @use './globals' as *;
 
-.category-card-container {
+.card-container {
   display: flex;
   margin-block: 30px;
 
@@ -20,7 +20,7 @@
   }
 }
 
-.category-card-title {
+.admin-card-title {
   margin: 0;
 }
 
@@ -28,12 +28,12 @@
   font-style: italic;
 }
 
-.category-card {
+.admin-card {
   background-color: $color-white;
   flex: 1;
   padding-top: 40px;
 
-  .category-card-content {
+  .admin-card-content {
     min-height: rem(300px);
     display: flex;
     flex-direction: column;
@@ -57,7 +57,7 @@
   }
 }
 
-.category-card-text {
+.admin-card-text {
   margin-bottom: 8px;
 }
 
@@ -73,7 +73,7 @@
     text-align: right;
   }
 
-  .category-card-title {
+  .admin-card-title {
     display: flex;
     justify-content: flex-end;
     font-size: rem(18px);
