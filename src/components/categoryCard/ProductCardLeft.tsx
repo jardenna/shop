@@ -5,38 +5,47 @@ import { PrimaryActionBtnProps } from '../modal/Modal';
 import CategoryCardContent from './CategoryCardContent';
 import CategoryCardFooter from './CategoryCardFooter';
 
-type CategoryCardLeftProps = {
+type ProductCardLeftProps = {
+  countInStock: number;
   id: string;
   linkTo: string;
   name: string;
   primaryActionBtn: PrimaryActionBtnProps;
   scheduledDate: any;
   status: CategoryStatus;
-  totalProducts: number;
 };
 
-const CategoryCardLeft = ({
+const ProductCardLeft = ({
   status,
   scheduledDate,
-  totalProducts,
+  countInStock,
   name,
   linkTo,
   id,
   primaryActionBtn,
-}: CategoryCardLeftProps) => {
+}: ProductCardLeftProps) => {
   const { language } = useLanguage();
 
   return (
     <CategoryCardContent className="left" heading={null}>
-      <div className="position-relative">
-        <h2 className="category-card-title">{name}</h2>
+      <div className="position-relative flex">
         <Badge
           badgeText={language[status.toLocaleLowerCase()]}
           className={status.toLowerCase()}
         />
-        <span>
-          {language.totalProducts}: {totalProducts}
-        </span>
+        <div>
+          <img alt="" loading="lazy" src="/images/uploads/image.jpg" />
+        </div>
+        <div>
+          <h2 className="category-card-title">{name}</h2>
+          <span>{language.qty}: </span>
+          <span>{countInStock}</span>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500
+          </p>
+        </div>
       </div>
 
       <CategoryCardFooter
@@ -51,4 +60,4 @@ const CategoryCardLeft = ({
   );
 };
 
-export default CategoryCardLeft;
+export default ProductCardLeft;

@@ -5,6 +5,7 @@ import { BtnVariant, SizeVariant } from '../../types/enums';
 import LinkButton from '../LinkButton';
 import { PrimaryActionBtnProps, SecondaryActionBtnProps } from '../modal/Modal';
 import ModalContainer from '../modal/ModalContainer';
+import CategoryDate from './CategoryDate';
 
 type CategoryCardFooterProps = {
   id: string;
@@ -12,6 +13,7 @@ type CategoryCardFooterProps = {
   modalHeaderText: string;
   name: string;
   primaryActionBtn: PrimaryActionBtnProps;
+  scheduledDate?: Date;
 };
 
 const CategoryCardFooter = ({
@@ -20,26 +22,36 @@ const CategoryCardFooter = ({
   name,
   primaryActionBtn,
   modalHeaderText,
+  scheduledDate,
 }: CategoryCardFooterProps) => {
   const { language } = useLanguage();
   const secondaryActionBtn: SecondaryActionBtnProps = {
     label: language.cancel,
   };
   return (
-    <LayoutElement className="footer" ariaLabel="card">
-      <ModalContainer
-        triggerModalBtnContent={language.delete}
-        triggerModalBtnVariant={BtnVariant.Danger}
-        id={id}
-        primaryActionBtn={primaryActionBtn}
-        secondaryActionBtn={secondaryActionBtn}
-        modalSize={SizeVariant.Sm}
-        modalHeaderText={modalHeaderText}
-      >
-        {language.sureToDelete} {name}
-      </ModalContainer>
-      <LinkButton linkTo={linkTo} linkText={language.edit} />
-    </LayoutElement>
+    <div>
+      {scheduledDate && (
+        <CategoryDate
+          name={name}
+          text={language.scheduledToBePubliched}
+          date={scheduledDate}
+        />
+      )}
+      <LayoutElement className="footer" ariaLabel="card">
+        <ModalContainer
+          triggerModalBtnContent={language.delete}
+          triggerModalBtnVariant={BtnVariant.Danger}
+          id={id}
+          primaryActionBtn={primaryActionBtn}
+          secondaryActionBtn={secondaryActionBtn}
+          modalSize={SizeVariant.Sm}
+          modalHeaderText={modalHeaderText}
+        >
+          {language.sureToDelete} {name}
+        </ModalContainer>
+        <LinkButton linkTo={linkTo} linkText={language.edit} />
+      </LayoutElement>
+    </div>
   );
 };
 

@@ -1,7 +1,7 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
-import CategoryCardLeft from '../../components/categoryCard/CategoryCardLeft';
 import CategoryCardRight from '../../components/categoryCard/CategoryCardRight';
+import ProductCardLeft from '../../components/categoryCard/ProductCardLeft';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import PageHeader from '../../components/PageHeader';
 import SkeletonPage from '../../components/skeleton/SkeletonPage';
@@ -46,14 +46,14 @@ const ViewProductPage = () => {
               FallbackComponent={ErrorBoundaryFallback}
               onReset={() => refetch}
             >
-              <CategoryCardLeft
+              <ProductCardLeft
                 id={product.id}
                 primaryActionBtn={primaryActionBtn}
                 linkTo=""
-                name=""
+                name={product.productName}
                 scheduledDate={product.scheduledDate}
                 status={product.productStatus}
-                totalProducts={0}
+                countInStock={product.countInStock}
               />
             </ErrorBoundary>
 

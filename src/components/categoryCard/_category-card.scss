@@ -4,21 +4,9 @@
   display: flex;
   margin-block: 30px;
 
-  .category-card-title {
-    margin: 0;
-  }
-
-  .category-date {
-    font-style: italic;
-  }
-
   .footer {
     gap: 12px;
     margin-top: 8px;
-  }
-
-  .btn {
-    min-height: rem(30px);
   }
 
   .badge {
@@ -27,60 +15,72 @@
     top: 0;
   }
 
-  .category-card {
-    background-color: $color-white;
-    flex: 1;
-    padding-top: 40px;
+  .btn {
+    min-height: rem(30px);
+  }
+}
 
-    .category-card-content {
-      min-height: rem(300px);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 12px 30px;
-    }
+.category-card-title {
+  margin: 0;
+}
 
-    &.card-left {
-      padding-top: 42px;
-    }
+.category-date {
+  font-style: italic;
+}
 
-    &.card-right {
-      padding-right: 12px;
-    }
+.category-card {
+  background-color: $color-white;
+  flex: 1;
+  padding-top: 40px;
 
-    .card-top-line {
-      display: flex;
-      height: 4px;
-      width: 100%;
-      background-color: $color-gray-80;
-    }
+  .category-card-content {
+    min-height: rem(300px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 12px 30px;
   }
 
-  .category-card-text {
-    margin-bottom: 8px;
+  &.card-left {
+    padding-top: 42px;
   }
 
-  .card-right {
-    background-color: $color-gray-20;
-    max-width: rem(400px);
+  &.card-right {
+    padding-right: 12px;
+  }
 
-    .card-top-line {
-      height: 6px;
-    }
+  .card-top-line {
+    display: flex;
+    height: 4px;
+    width: 100%;
+    background-color: $color-gray-80;
+  }
+}
 
-    .category-date {
-      text-align: right;
-    }
+.category-card-text {
+  margin-bottom: 8px;
+}
 
-    .category-card-title {
-      display: flex;
-      justify-content: flex-end;
-      font-size: rem(18px);
-    }
+.card-right {
+  background-color: $color-gray-20;
+  max-width: rem(400px);
 
-    .btn {
-      max-width: fit-content;
-      padding: 0 32px;
-    }
+  .card-top-line {
+    height: 6px;
+  }
+
+  .category-date {
+    text-align: right;
+  }
+
+  .category-card-title {
+    display: flex;
+    justify-content: flex-end;
+    font-size: rem(18px);
+  }
+
+  .btn {
+    max-width: fit-content;
+    padding: 0 32px;
   }
 }
