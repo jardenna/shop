@@ -152,12 +152,16 @@ export type ProductResponse = DefaultResponseType & {
   id: string;
   image: string;
   material: string;
+  numReviews: number;
   price: number;
   productName: string;
+  productStatus: CategoryStatus;
   quantity: number;
+  rating: number;
   sizes: ProductSizes;
   subCategory: SubCategory;
   discount?: number;
+  scheduledDate?: Date;
 };
 
 export type ProductRequest = Omit<ProductResponse, 'id'>;
