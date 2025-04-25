@@ -26,6 +26,7 @@ const CategoryCardLeft = ({
   primaryActionBtn,
 }: CategoryCardLeftProps) => {
   const { language } = useLanguage();
+
   return (
     <CategoryCardContent className="left" heading={null}>
       <div className="position-relative">
