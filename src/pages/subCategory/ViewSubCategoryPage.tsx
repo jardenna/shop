@@ -69,6 +69,7 @@ const ViewSubCategoryPage = () => {
               onReset={() => refetch}
             >
               <CategoryCard
+                onReset={() => refetch}
                 onDeleteSubCategory={handleDeleteSubCategory}
                 categoryId={category.id}
                 createdAt={category.createdAt}

@@ -1,7 +1,9 @@
+import { ErrorBoundary } from 'react-error-boundary';
 import { CategoryStatus } from '../../app/api/apiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
+import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import './_category-card.scss';
 import CategoryCardLeft from './CategoryCardLeft';
 import CategoryCardRight from './CategoryCardRight';
@@ -17,6 +19,7 @@ type CategoryCardProps = {
   subCategoryName: string;
   totalProducts: number;
   onDeleteSubCategory: () => void;
+  onReset: () => void;
 };
 
 const CategoryCard = ({
@@ -30,6 +33,7 @@ const CategoryCard = ({
   status,
   categoryId,
   onDeleteSubCategory,
+  onReset,
 }: CategoryCardProps) => {
   const { language } = useLanguage();
   const primaryActionBtn = {
@@ -40,23 +44,33 @@ const CategoryCard = ({
 
   return (
     <article className="category-card-container">
-      <CategoryCardLeft
-        name={subCategoryName}
-        primaryActionBtn={primaryActionBtn}
-        id={categoryId}
-        linkTo={`/admin/${MainPath.AdminSubCategoryUpdate}/${categoryId}`}
-        status={status}
-        totalProducts={totalProducts}
-        scheduledDate={scheduledDate}
-      />
-      <CategoryCardRight
-        linkTo={`/admin/${MainPath.AdminCategories}`}
-        createdAt={createdAt}
-        heading={`${language.parentCategory}: ${mainCategoryName}`}
-        name={subCategoryName}
-        showStatusMessage={showStatusMessage}
-        statusMessage={`${language.parentCategoryIs} ${language[statusMessage]}`}
-      />
+      <ErrorBoundary
+        FallbackComponent={ErrorBoundaryFallback}
+        onReset={onReset}
+      >
+        <CategoryCardLeft
+          name={subCategoryName}
+          primaryActionBtn={primaryActionBtn}
+          id={categoryId}
+          linkTo={`/admin/${MainPath.AdminSubCategoryUpdate}/${categoryId}`}
+          status={status}
+          totalProducts={totalProducts}
+          scheduledDate={scheduledDate}
+        />
+      </ErrorBoundary>
+      <ErrorBoundary
+        FallbackComponent={ErrorBoundaryFallback}
+        onReset={onReset}
+      >
+        <CategoryCardRight
+          linkTo={`/admin/${MainPath.AdminCategories}`}
+          createdAt={createdAt}
+          heading={`${language.parentCategory}: ${mainCategoryName.toLocaleLowerCase()}`}
+          name={subCategoryName}
+          showStatusMessage={showStatusMessage}
+          statusMessage={`${language.parentCategoryIs} ${language[statusMessage]}`}
+        />
+      </ErrorBoundary>
     </article>
   );
 };

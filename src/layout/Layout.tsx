@@ -1,7 +1,5 @@
 import { ReactNode } from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
 import { Outlet, useLocation, useNavigate } from 'react-router';
-import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import Icon from '../components/icons/Icon';
 import { SecondaryActionBtnProps } from '../components/modal/Modal';
 import { OptionType } from '../components/selectbox/Selectbox';
@@ -138,9 +136,7 @@ const Layout = () => {
       />
       <main id="main">
         <div className={isHomePage ? 'home-page' : 'container page'}>
-          <ErrorBoundary FallbackComponent={ErrorBoundaryFallback}>
-            <Outlet />
-          </ErrorBoundary>
+          <Outlet />
         </div>
       </main>
     </div>
