@@ -8,6 +8,7 @@ admin;Admin;Admin
 allowedFormats;Allowed formats;Tilladte formater
 asc;ascending;stigende
 bag;Bag;Indkøbskurv
+brand;Brand;Mærke
 calendar;Calendar;Kalender
 cancel;Cancel;Annuller
 cannotDeleteAdmin;This action is not allowed for admin;Admin bruger kan ikke slettes
@@ -29,6 +30,7 @@ close;Close;Luk
 closeDialog;Close dialog;Luk dialog
 collapseMenu;Collapse menu;Skjul menu
 collection;Collection;Kollektion
+colours;Colours;Farver
 confirmPassword;Confirm password;Gentag adgangskode
 contact;Contact;Kontakt
 create;Create;Tilføj
@@ -50,6 +52,7 @@ deleteOrReassignCategory;Delete or reassign associated  products before deleting
 deleteUser;Delete user;Slet bruger
 desc;descending;faldende
 description;Description;Beskrivelse
+discount;Discount;Rabat
 edit;Edit;Opdater
 editCategory;Edit category;Opdater kategori
 editProduct;Edit product;Opdater produkt
@@ -91,6 +94,7 @@ loginHere;Log in here;Log ind her
 loginSucceeded;Login succeeded;Login lykkedes
 logout;Log out;Log ud
 main;Main;Primær
+material;Material;Materiale
 menu;Menu;Menu
 minLength;At least 8 characters;Mindst 8 tegn
 mustHaveLowercase;At least one lowercase letter;Mindst ét lille bogstav
@@ -160,6 +164,7 @@ showPassword;Show password;Vis adgangskode
 signup;Sign up;Opret bruger
 signupFailed;Sign up failed;Registrering mislykkedes
 signupSucceeded;Sign up succeeded;Registrering lykkedes
+sizes;Sizes;Størrelser
 somethingWentWrong;Something went wrong, please try again;Noget gik galt, forsøg venligst igen
 sort;Sort;Sorter
 status;Status;Status

@@ -1,5 +1,6 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
+import ProductCardCenter from '../../components/adminCard/ProductCardCenter';
 import ProductCardLeft from '../../components/adminCard/ProductCardLeft';
 import CardRight from '../../components/card/CardRight';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
@@ -27,7 +28,6 @@ const ViewProductPage = () => {
     label: language.delete,
     variant: BtnVariant.Danger,
   };
-  console.log(product);
 
   return (
     <section className="page">
@@ -54,6 +54,19 @@ const ViewProductPage = () => {
                 scheduledDate={product.scheduledDate}
                 status={product.productStatus}
                 countInStock={product.countInStock}
+              />
+            </ErrorBoundary>
+            <ErrorBoundary
+              FallbackComponent={ErrorBoundaryFallback}
+              onReset={() => refetch}
+            >
+              <ProductCardCenter
+                brand={product.brand}
+                colours={product.colors}
+                discount={product.discount || 0}
+                material={product.material}
+                price={product.price}
+                sizes={product.sizes}
               />
             </ErrorBoundary>
 

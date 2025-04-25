@@ -158,7 +158,7 @@ export type ProductResponse = DefaultResponseType & {
   productStatus: CategoryStatus;
   quantity: number;
   rating: number;
-  sizes: ProductSizes;
+  sizes: ProductSizes[];
   subCategory: SubCategory;
   discount?: number;
   scheduledDate?: Date;

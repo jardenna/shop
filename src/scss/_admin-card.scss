@@ -31,7 +31,7 @@
 .admin-card {
   background-color: $color-white;
   flex: 1;
-  padding-top: 40px;
+  padding-top: 42px;
 
   .admin-card-content {
     min-height: rem(300px);
@@ -41,12 +41,9 @@
     padding: 12px 30px;
   }
 
-  &.card-left {
-    padding-top: 42px;
-  }
-
   &.card-right {
     padding-right: 12px;
+    padding-top: 40px;
   }
 
   .card-top-line {
