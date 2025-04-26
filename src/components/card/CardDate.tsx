@@ -7,7 +7,7 @@ type CardDateProps = {
 };
 
 const CardDate = ({ name, date, text }: CardDateProps) => (
-  <span className="category-date">
+  <span className="admin-card-date">
     <span>
       {name} {text}{' '}
     </span>

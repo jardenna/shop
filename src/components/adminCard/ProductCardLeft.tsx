@@ -7,6 +7,7 @@ import { PrimaryActionBtnProps } from '../modal/Modal';
 
 type ProductCardLeftProps = {
   countInStock: number;
+  description: string;
   id: string;
   linkTo: string;
   name: string;
@@ -22,6 +23,7 @@ const ProductCardLeft = ({
   name,
   linkTo,
   id,
+  description,
   primaryActionBtn,
 }: ProductCardLeftProps) => {
   const { language } = useLanguage();
@@ -40,14 +42,9 @@ const ProductCardLeft = ({
           <h2 className="admin-card-title">{name}</h2>
           <span>{language.qty}: </span>
           <span>{countInStock}</span>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500
-          </p>
+          <p>{description}</p>
         </div>
       </div>
-
       <CardFooter
         id={id}
         primaryActionBtn={primaryActionBtn}

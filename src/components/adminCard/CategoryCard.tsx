@@ -42,7 +42,7 @@ const CategoryCard = ({
   };
 
   return (
-    <article className="card-container">
+    <article className="admin-card-container">
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={onReset}

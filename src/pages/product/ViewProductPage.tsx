@@ -44,7 +44,7 @@ const ViewProductPage = () => {
       )}
       <div className="page-card">
         {product && (
-          <article className="card-container">
+          <article className="admin-card-container">
             <ErrorBoundary
               FallbackComponent={ErrorBoundaryFallback}
               onReset={() => refetch}
@@ -57,6 +57,7 @@ const ViewProductPage = () => {
                 scheduledDate={product.scheduledDate}
                 status={product.productStatus}
                 countInStock={product.countInStock}
+                description={product.description}
               />
             </ErrorBoundary>
 
