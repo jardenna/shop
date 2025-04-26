@@ -1,3 +1,4 @@
+import React from 'react';
 import { Status } from '../../app/api/apiTypes';
 import CardBadge from '../../components/card/CardBadge';
 import Img from '../../components/Img';
@@ -62,4 +63,4 @@ const ProductTableRow = ({
   );
 };
 
-export default ProductTableRow;
+export default React.memo(ProductTableRow);
