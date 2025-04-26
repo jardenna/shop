@@ -12,7 +12,7 @@ type ProductCardLeftProps = {
   linkTo: string;
   name: string;
   primaryActionBtn: PrimaryActionBtnProps;
-  scheduledDate: any;
+  scheduledDate: Date | null;
   status: CategoryStatus;
 };
 

@@ -13,7 +13,7 @@ type CardFooterProps = {
   modalHeaderText: string;
   name: string;
   primaryActionBtn: PrimaryActionBtnProps;
-  scheduledDate?: Date;
+  scheduledDate: Date | null;
 };
 
 const CardFooter = ({

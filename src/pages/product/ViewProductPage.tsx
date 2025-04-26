@@ -63,7 +63,7 @@ const ViewProductPage = () => {
                 primaryActionBtn={primaryActionBtn}
                 linkTo=""
                 name={product.productName}
-                scheduledDate={product.scheduledDate}
+                scheduledDate={product.scheduledDate || null}
                 status={product.productStatus}
                 countInStock={product.countInStock}
                 description={product.description}
