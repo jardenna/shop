@@ -3,6 +3,7 @@ import useLanguage from '../../features/language/useLanguage';
 import Badge from '../badge/Badge';
 import CardContent from '../card/CardContent';
 import CardFooter from '../card/CardFooter';
+import Img from '../Img';
 import AdminCard from './types';
 
 type ProductCardLeftProps = AdminCard & {
@@ -31,7 +32,7 @@ const ProductCardLeft = ({
           className={status.toLowerCase()}
         />
         <div>
-          <img alt="" loading="lazy" src="/images/uploads/image.jpg" />
+          <Img alt="" src="uploads/image.jpg" />
         </div>
         <div>
           <h2 className="admin-card-title">{name}</h2>

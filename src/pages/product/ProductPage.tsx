@@ -1,5 +1,6 @@
 import { ProductResponse } from '../../app/api/apiTypes';
 import CardBadge from '../../components/card/CardBadge';
+import Img from '../../components/Img';
 import MoreLink from '../../components/MoreLink';
 import Table, { Column } from '../../components/sortTable/Table';
 import ProductPrice from '../../features/currency/components/ProductPrice';
@@ -34,7 +35,7 @@ const ProductPage = () => {
     <tr key={id}>
       <td>
         <div className="product-overview-cell">
-          <img src={`/images${image}`} alt="" loading="lazy" />
+          <Img src={image} alt="" />
           <span className="product-name">{productName}</span>
         </div>
       </td>

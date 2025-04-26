@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import Img from '../Img';
 import './_figure.scss';
 
 type FigureProps = {
@@ -11,7 +12,7 @@ type FigureProps = {
 const Figure = ({ figcaption, src, alt, className = '' }: FigureProps) => (
   <figure className={className}>
     {figcaption && <figcaption>{figcaption}</figcaption>}
-    <img className="figure-img" src={src} alt={alt} loading="lazy" />
+    <Img className="figure-img" src={src} alt={alt} />
   </figure>
 );
 
