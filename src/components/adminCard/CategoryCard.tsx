@@ -1,5 +1,5 @@
 import { ErrorBoundary } from 'react-error-boundary';
-import { CategoryStatus } from '../../app/api/apiTypes';
+import { Status } from '../../app/api/apiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
@@ -13,7 +13,7 @@ type CategoryCardProps = {
   mainCategoryName: string;
   scheduledDate: Date | null;
   showStatusMessage: boolean;
-  status: CategoryStatus;
+  status: Status;
   statusMessage: string;
   subCategoryName: string;
   totalProducts: number;

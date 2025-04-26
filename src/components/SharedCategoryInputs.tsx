@@ -1,4 +1,4 @@
-import { CategoryStatus } from '../app/api/apiTypes';
+import { Status } from '../app/api/apiTypes';
 import useLanguage from '../features/language/useLanguage';
 import { ChangeInputType } from '../types/types';
 import DatePicker from './datePicker/DatePicker';
@@ -8,7 +8,7 @@ import Selectbox, { OptionType } from './selectbox/Selectbox';
 
 type StatusOptions = {
   label: string;
-  value: CategoryStatus;
+  value: Status;
 };
 
 type SharedCategoryInputsProps = {

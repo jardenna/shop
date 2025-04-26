@@ -1,4 +1,4 @@
-import { CategoryStatus } from '../../app/api/apiTypes';
+import { Status } from '../../app/api/apiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import Badge from '../badge/Badge';
 import CardContent from '../card/CardContent';
@@ -6,7 +6,7 @@ import CardFooter from '../card/CardFooter';
 import AdminCard from './types';
 
 type CategoryCardLeftProps = AdminCard & {
-  status: CategoryStatus;
+  status: Status;
   totalProducts: number;
 };
 

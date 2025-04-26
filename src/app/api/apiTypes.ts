@@ -1,4 +1,5 @@
 export type RoleTypes = 'Employee' | 'User';
+export type Status = 'Published' | 'Inactive' | 'Scheduled';
 
 export type DefaultResponseType = {
   createdAt: Date;
@@ -65,11 +66,9 @@ export type ScheduledResponse = {
   hasScheduled: boolean;
 };
 
-export type CategoryStatus = 'Published' | 'Inactive' | 'Scheduled';
-
 export type Category = DefaultResponseType & {
   categoryName: string;
-  categoryStatus: CategoryStatus;
+  categoryStatus: Status;
   id: string;
   scheduledDate?: Date;
 };
@@ -80,7 +79,7 @@ export type CategoriesResponse = DefaultResponse & {
 
 export type CreateCategoryRequest = {
   categoryName: string;
-  categoryStatus: CategoryStatus;
+  categoryStatus: Status;
   scheduledDate?: Date;
 };
 
@@ -96,21 +95,21 @@ export type UpdateCategoryRequest = {
 // SubCategories
 export type CreateSubCategoryRequest = {
   category: string;
-  categoryStatus: CategoryStatus;
+  categoryStatus: Status;
   subCategoryName: string;
   scheduledDate?: Date;
 };
 
 export type MainCategory = {
   categoryName: string;
-  categoryStatus: CategoryStatus;
+  categoryStatus: Status;
   id: string;
   scheduledDate?: Date;
 };
 
 export type SubCategory = DefaultResponseType & {
   category: MainCategory;
-  categoryStatus: CategoryStatus;
+  categoryStatus: Status;
   id: string;
   productCount: number;
   subCategoryName: string;
@@ -118,7 +117,7 @@ export type SubCategory = DefaultResponseType & {
 };
 
 export type SubCategoryResponse = DefaultResponseType & {
-  categoryStatus: CategoryStatus;
+  categoryStatus: Status;
   id: string;
   mainCategory: MainCategory;
   mainCategoryName: string;
@@ -156,7 +155,7 @@ export type ProductResponse = DefaultResponseType & {
   numReviews: number;
   price: number;
   productName: string;
-  productStatus: CategoryStatus;
+  productStatus: Status;
   quantity: number;
   rating: number;
   sizes: ProductSizes[];

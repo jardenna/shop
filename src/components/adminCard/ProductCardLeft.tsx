@@ -1,4 +1,4 @@
-import { CategoryStatus } from '../../app/api/apiTypes';
+import { Status } from '../../app/api/apiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import Badge from '../badge/Badge';
 import CardContent from '../card/CardContent';
@@ -8,7 +8,7 @@ import AdminCard from './types';
 type ProductCardLeftProps = AdminCard & {
   countInStock: number;
   description: string;
-  status: CategoryStatus;
+  status: Status;
 };
 
 const ProductCardLeft = ({
