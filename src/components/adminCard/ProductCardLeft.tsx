@@ -3,16 +3,11 @@ import useLanguage from '../../features/language/useLanguage';
 import Badge from '../badge/Badge';
 import CardContent from '../card/CardContent';
 import CardFooter from '../card/CardFooter';
-import { PrimaryActionBtnProps } from '../modal/Modal';
+import AdminCard from './types';
 
-type ProductCardLeftProps = {
+type ProductCardLeftProps = AdminCard & {
   countInStock: number;
   description: string;
-  id: string;
-  linkTo: string;
-  name: string;
-  primaryActionBtn: PrimaryActionBtnProps;
-  scheduledDate: Date | null;
   status: CategoryStatus;
 };
 

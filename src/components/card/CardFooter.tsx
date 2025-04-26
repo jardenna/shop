@@ -1,19 +1,14 @@
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
-import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant, SizeVariant } from '../../types/enums';
+import AdminCard from '../adminCard/types';
 import LinkButton from '../LinkButton';
-import { PrimaryActionBtnProps, SecondaryActionBtnProps } from '../modal/Modal';
+import { SecondaryActionBtnProps } from '../modal/Modal';
 import ModalContainer from '../modal/ModalContainer';
 import CardDate from './CardDate';
 
-type CardFooterProps = {
-  id: string;
-  linkTo: MainPath | string;
+type CardFooterProps = AdminCard & {
   modalHeaderText: string;
-  name: string;
-  primaryActionBtn: PrimaryActionBtnProps;
-  scheduledDate: Date | null;
 };
 
 const CardFooter = ({
