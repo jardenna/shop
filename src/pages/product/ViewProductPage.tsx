@@ -1,5 +1,6 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
+import { ProductSizes } from '../../app/api/apiTypes';
 import ProductCardCenter from '../../components/adminCard/ProductCardCenter';
 import ProductCardLeft from '../../components/adminCard/ProductCardLeft';
 import CardRight from '../../components/card/CardRight';
@@ -11,8 +12,7 @@ import { useGetProductByIdQuery } from '../../features/products/productApiSlice'
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
 
-const sizeList = ['S', 'M', 'L', 'XL'];
-const testSize = ['S', 'M', 'XL'];
+export const sizeList: ProductSizes[] = ['S', 'M', 'L', 'XL'];
 
 const ViewProductPage = () => {
   const { language } = useLanguage();
@@ -81,8 +81,6 @@ const ViewProductPage = () => {
                 material={product.material}
                 price={product.price}
                 sizes={product.sizes}
-                sizeList={sizeList}
-                testSize={testSize}
               />
             </ErrorBoundary>
 

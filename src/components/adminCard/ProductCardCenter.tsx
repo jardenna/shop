@@ -1,6 +1,7 @@
 import { ProductSizes } from '../../app/api/apiTypes';
 import ProductPrice from '../../features/currency/components/ProductPrice';
 import useLanguage from '../../features/language/useLanguage';
+import { sizeList } from '../../pages/product/ViewProductPage';
 import CardContent from '../card/CardContent';
 import GridTwoCol from '../GridTwoCol';
 
@@ -10,9 +11,7 @@ type ProductCardCenterProps = {
   discount: number;
   material: string;
   price: number;
-  sizeList: string[];
   sizes: ProductSizes[];
-  testSize: string[];
 };
 
 const ProductCardCenter = ({
@@ -22,11 +21,8 @@ const ProductCardCenter = ({
   material,
   price,
   sizes,
-  sizeList,
-  testSize,
 }: ProductCardCenterProps) => {
   const { language } = useLanguage();
-  console.log(sizes, testSize);
 
   return (
     <CardContent heading={null} className="center">
@@ -61,7 +57,7 @@ const ProductCardCenter = ({
           <ul className="product-size-list">
             {sizeList.map((size) => (
               <li
-                className={`product-size-list-item ${testSize.includes(size) ? 'available' : 'unavailable'}`}
+                className={`product-size-list-item ${sizes.includes(size) ? 'available' : 'unavailable'}`}
                 key={size}
               >
                 {size}
