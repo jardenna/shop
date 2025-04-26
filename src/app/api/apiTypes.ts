@@ -109,6 +109,7 @@ export type MainCategory = {
 };
 
 export type SubCategory = DefaultResponseType & {
+  category: MainCategory;
   categoryStatus: CategoryStatus;
   id: string;
   productCount: number;

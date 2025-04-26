@@ -32,6 +32,15 @@ const ViewProductPage = () => {
     variant: BtnVariant.Danger,
   };
 
+  const mainCategory = product ? product.subCategory.category.categoryName : '';
+  const subCategory = product ? product.subCategory.subCategoryName : '';
+  const heading = `${language.category}: ${mainCategory}/${subCategory}`;
+  const subCategoryStatus = product
+    ? language[product.subCategory.categoryStatus.toLowerCase()]
+    : '';
+
+  const statusMessage = `${language.categoryIs} ${subCategoryStatus}`;
+
   return (
     <section className="page">
       {isLoading && <SkeletonPage />}
@@ -84,12 +93,12 @@ const ViewProductPage = () => {
               <CardRight
                 linkTo={`/admin/${MainPath.AdminSubCategories}`}
                 createdAt={product.createdAt}
-                heading={`${language.category}: ${product.subCategory.subCategoryName}`}
+                heading={heading}
                 name={product.productName}
                 showStatusMessage={
                   product.subCategory.categoryStatus !== 'Published'
                 }
-                statusMessage={`${language.categoryIs} ${language[product.subCategory.categoryStatus.toLowerCase()]}`}
+                statusMessage={statusMessage}
               />
             </ErrorBoundary>
           </article>

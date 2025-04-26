@@ -209,6 +209,10 @@ const getProductById = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id)
     .populate({
       path: 'subCategory',
+      populate: {
+        path: 'category',
+        model: 'Category',
+      },
     })
     .lean();
 
