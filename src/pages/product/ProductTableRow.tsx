@@ -6,11 +6,11 @@ import ProductPrice from '../../features/currency/components/ProductPrice';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
 
-type SubCategoryTableRowProps = {
+export type SubCategoryTableRowProps = {
   categoryName: string;
   countInStock: number;
   id: string;
-  imageUrl: string;
+  imageSrc: string;
   price: number;
   productName: string;
   productStatus: Status;
@@ -21,7 +21,7 @@ type SubCategoryTableRowProps = {
 const ProductTableRow = ({
   id,
   productName,
-  imageUrl,
+  imageSrc,
   price,
   subCategoryName,
   categoryName,
@@ -34,7 +34,7 @@ const ProductTableRow = ({
     <tr>
       <td>
         <div className="product-overview-cell">
-          <Img src={imageUrl} alt="" />
+          <Img src={imageSrc} alt="" />
           <span className="product-name">{productName}</span>
         </div>
       </td>

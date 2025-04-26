@@ -1,13 +1,9 @@
 import { ProductResponse } from '../../app/api/apiTypes';
-import CardBadge from '../../components/card/CardBadge';
-import Img from '../../components/Img';
-import MoreLink from '../../components/MoreLink';
 import Table, { Column } from '../../components/sortTable/Table';
-import ProductPrice from '../../features/currency/components/ProductPrice';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetAllProductsQuery } from '../../features/products/productApiSlice';
-import { MainPath } from '../../layout/nav/enums';
 import './_product-page.scss';
+import ProductTableRow from './ProductTableRow';
 
 const tableHeaders: Column<ProductResponse>[] = [
   { key: 'productName', label: 'name', name: 'image' },
@@ -22,46 +18,6 @@ const ProductPage = () => {
   const { language } = useLanguage();
   const { data: allProducts, isLoading, refetch } = useGetAllProductsQuery();
 
-  const renderRow = ({
-    id,
-    productName,
-    image,
-    price,
-    subCategory,
-    countInStock,
-    productStatus,
-    scheduledDate,
-  }: ProductResponse) => (
-    <tr key={id}>
-      <td>
-        <div className="product-overview-cell">
-          <Img src={image} alt="" />
-          <span className="product-name">{productName}</span>
-        </div>
-      </td>
-      <td>
-        {subCategory.subCategoryName} / {subCategory.category.categoryName}
-      </td>
-      <td>
-        <ProductPrice price={price} />
-      </td>
-      <td>{countInStock}</td>
-      <td>
-        <CardBadge
-          badgeClassName={productStatus.toLowerCase()}
-          badgeText={language[productStatus.toLocaleLowerCase()]}
-          scheduledDate={scheduledDate || null}
-        />
-      </td>
-      <td>
-        <MoreLink
-          linkText={language.viewProduct}
-          linkTo={`/admin/${MainPath.AdminProductView}/${id}`}
-        />
-      </td>
-    </tr>
-  );
-
   return (
     <section className="page-card">
       <Table
@@ -72,7 +28,33 @@ const ProductPage = () => {
         tableCaption={language.productList}
         emptyHeaderCellText={language.updateProduct}
       >
-        {(data) => data.map(renderRow)}
+        {(data) =>
+          data.map(
+            ({
+              id,
+              countInStock,
+              image,
+              price,
+              productName,
+              productStatus,
+              subCategory,
+              scheduledDate,
+            }) => (
+              <ProductTableRow
+                key={id}
+                id={id}
+                countInStock={countInStock}
+                imageSrc={image}
+                price={price}
+                productName={productName}
+                productStatus={productStatus}
+                categoryName={subCategory.category.categoryName}
+                scheduledDate={scheduledDate || null}
+                subCategoryName={subCategory.subCategoryName}
+              />
+            ),
+          )
+        }
       </Table>
     </section>
   );
