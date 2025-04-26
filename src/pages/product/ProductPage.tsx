@@ -1,6 +1,7 @@
 import { ProductResponse } from '../../app/api/apiTypes';
 import MoreLink from '../../components/MoreLink';
 import Table, { Column } from '../../components/sortTable/Table';
+import CategoryBadge from '../../features/categories/CategoryBadge';
 import ProductPrice from '../../features/currency/components/ProductPrice';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetAllProductsQuery } from '../../features/products/productApiSlice';
@@ -12,6 +13,7 @@ const tableHeaders: Column<ProductResponse>[] = [
   { key: 'subCategory', label: 'category', name: 'subCategory' },
   { key: 'price', label: 'price', name: 'price' },
   { key: 'countInStock', label: 'qty', name: 'countInStock' },
+  { key: 'productStatus', label: 'status', name: 'productStatus' },
   { key: 'id', label: '', name: '' },
 ];
 
@@ -26,6 +28,8 @@ const ProductPage = () => {
     price,
     subCategory,
     countInStock,
+    productStatus,
+    scheduledDate,
   }: ProductResponse) => (
     <tr key={id}>
       <td>
@@ -34,11 +38,20 @@ const ProductPage = () => {
           <span className="product-name">{productName}</span>
         </div>
       </td>
-      <td>{subCategory.subCategoryName}</td>
+      <td>
+        {subCategory.subCategoryName} / {subCategory.category.categoryName}
+      </td>
       <td>
         <ProductPrice price={price} />
       </td>
       <td>{countInStock}</td>
+      <td>
+        <CategoryBadge
+          badgeClassName={productStatus.toLowerCase()}
+          badgeText={language[productStatus.toLocaleLowerCase()]}
+          scheduledDate={scheduledDate || null}
+        />
+      </td>
       <td>
         <MoreLink
           linkText={language.viewProduct}

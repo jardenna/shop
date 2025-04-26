@@ -34,7 +34,7 @@ const ViewProductPage = () => {
 
   const mainCategory = product ? product.subCategory.category.categoryName : '';
   const subCategory = product ? product.subCategory.subCategoryName : '';
-  const heading = `${language.category}: ${mainCategory}/${subCategory}`;
+  const heading = `${language.category}: ${subCategory} / ${mainCategory}`;
   const subCategoryStatus = product
     ? language[product.subCategory.categoryStatus.toLowerCase()]
     : '';

@@ -60,29 +60,26 @@ const SubCategoryPage = () => {
     categoryStatus,
     productCount,
     mainCategoryName,
-  }: SubCategoryResponse) => {
-    const statusKey = categoryStatus.toLocaleLowerCase();
-    return (
-      <tr key={id}>
-        <td>{mainCategoryName}</td>
-        <td>{subCategoryName}</td>
-        <td>{productCount}</td>
-        <td>
-          <CategoryBadge
-            badgeClassName={categoryStatus.toLowerCase()}
-            badgeText={language[statusKey]}
-            scheduledDate={scheduledDate || null}
-          />
-        </td>
-        <td>
-          <MoreLink
-            linkText={language.viewCategory}
-            linkTo={`/admin/${MainPath.AdminSubCategoryView}/${id}`}
-          />
-        </td>
-      </tr>
-    );
-  };
+  }: SubCategoryResponse) => (
+    <tr key={id}>
+      <td>{mainCategoryName}</td>
+      <td>{subCategoryName}</td>
+      <td>{productCount}</td>
+      <td>
+        <CategoryBadge
+          badgeClassName={categoryStatus.toLowerCase()}
+          badgeText={language[categoryStatus.toLocaleLowerCase()]}
+          scheduledDate={scheduledDate || null}
+        />
+      </td>
+      <td>
+        <MoreLink
+          linkText={language.viewCategory}
+          linkTo={`/admin/${MainPath.AdminSubCategoryView}/${id}`}
+        />
+      </td>
+    </tr>
+  );
 
   return (
     <section className="page page-medium">
