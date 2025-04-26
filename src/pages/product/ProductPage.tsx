@@ -1,7 +1,7 @@
 import { ProductResponse } from '../../app/api/apiTypes';
+import CardBadge from '../../components/card/CardBadge';
 import MoreLink from '../../components/MoreLink';
 import Table, { Column } from '../../components/sortTable/Table';
-import CategoryBadge from '../../features/categories/CategoryBadge';
 import ProductPrice from '../../features/currency/components/ProductPrice';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetAllProductsQuery } from '../../features/products/productApiSlice';
@@ -46,7 +46,7 @@ const ProductPage = () => {
       </td>
       <td>{countInStock}</td>
       <td>
-        <CategoryBadge
+        <CardBadge
           badgeClassName={productStatus.toLowerCase()}
           badgeText={language[productStatus.toLocaleLowerCase()]}
           scheduledDate={scheduledDate || null}

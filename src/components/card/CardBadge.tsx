@@ -1,21 +1,21 @@
-import Badge from '../../components/badge/Badge';
-import DateDisplay from '../../components/datePicker/DateDisplay';
-import Icon from '../../components/icons/Icon';
-import Tooltip from '../../components/tooltip/Tooltip';
+import useLanguage from '../../features/language/useLanguage';
 import { BtnVariant, IconName } from '../../types/enums';
-import useLanguage from '../language/useLanguage';
+import Badge from '../badge/Badge';
+import DateDisplay from '../datePicker/DateDisplay';
+import Icon from '../icons/Icon';
+import Tooltip from '../tooltip/Tooltip';
 
-type CategoryBadgeProps = {
+type CardBadgeProps = {
   badgeClassName: string;
   badgeText: string;
   scheduledDate: Date | null;
 };
 
-const CategoryBadge = ({
+const CardBadge = ({
   badgeText,
   badgeClassName,
   scheduledDate,
-}: CategoryBadgeProps) => {
+}: CardBadgeProps) => {
   const { language } = useLanguage();
   return (
     <div className="flex">
@@ -41,4 +41,4 @@ const CategoryBadge = ({
   );
 };
 
-export default CategoryBadge;
+export default CardBadge;

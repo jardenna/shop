@@ -1,8 +1,8 @@
 import { SubCategoryResponse } from '../../app/api/apiTypes';
+import CardBadge from '../../components/card/CardBadge';
 import MoreLink from '../../components/MoreLink';
 import PageHeader from '../../components/PageHeader';
 import Table from '../../components/sortTable/Table';
-import CategoryBadge from '../../features/categories/CategoryBadge';
 import useLanguage from '../../features/language/useLanguage';
 import {
   useGetAllSubCategoriesQuery,
@@ -66,7 +66,7 @@ const SubCategoryPage = () => {
       <td>{subCategoryName}</td>
       <td>{productCount}</td>
       <td>
-        <CategoryBadge
+        <CardBadge
           badgeClassName={categoryStatus.toLowerCase()}
           badgeText={language[categoryStatus.toLocaleLowerCase()]}
           scheduledDate={scheduledDate || null}

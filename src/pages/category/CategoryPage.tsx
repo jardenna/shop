@@ -1,10 +1,10 @@
 import { Category } from '../../app/api/apiTypes';
+import CardBadge from '../../components/card/CardBadge';
 import DateDisplay from '../../components/datePicker/DateDisplay';
 import MoreLink from '../../components/MoreLink';
 import PageHeader from '../../components/PageHeader';
 import Table from '../../components/sortTable/Table';
 import { useGetAllCategoriesQuery } from '../../features/categories/categoriyApiSlice';
-import CategoryBadge from '../../features/categories/CategoryBadge';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetScheduledQuery } from '../../features/subCategories/subCategoryApiSlice';
 import { MainPath } from '../../layout/nav/enums';
@@ -47,7 +47,7 @@ const CategoryPage = () => {
       <tr key={id}>
         <td>{categoryName}</td>
         <td>
-          <CategoryBadge
+          <CardBadge
             badgeClassName={categoryStatus.toLowerCase()}
             badgeText={language[statusKey]}
             scheduledDate={scheduledDate || null}
