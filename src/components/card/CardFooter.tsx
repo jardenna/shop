@@ -24,7 +24,7 @@ const CardFooter = ({
     label: language.cancel,
   };
   return (
-    <div>
+    <>
       {scheduledDate && (
         <CardDate
           name={name}
@@ -46,7 +46,7 @@ const CardFooter = ({
         </ModalContainer>
         <LinkButton linkTo={linkTo} linkText={language.edit} />
       </LayoutElement>
-    </div>
+    </>
   );
 };
 

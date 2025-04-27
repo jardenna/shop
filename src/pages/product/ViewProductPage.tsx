@@ -61,7 +61,7 @@ const ViewProductPage = () => {
               <ProductCardLeft
                 id={product.id}
                 primaryActionBtn={primaryActionBtn}
-                linkTo=""
+                linkTo={`/admin/${MainPath.AdminProductUpdate}/:id`}
                 name={product.productName}
                 scheduledDate={product.scheduledDate || null}
                 status={product.productStatus}
