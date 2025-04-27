@@ -15,8 +15,8 @@ import { BtnVariant } from '../../types/enums';
 export const sizeList: ProductSizes[] = ['S', 'M', 'L', 'XL'];
 
 const ViewProductPage = () => {
-  const { language } = useLanguage();
   const params = useParams();
+  const { language } = useLanguage();
 
   const {
     data: product,
