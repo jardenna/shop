@@ -1,7 +1,9 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import {
   AllSortedProductsResponse,
-  ProductResponse,
+  Product,
+  ProductRequest,
+  UpdateProductRequest,
 } from '../../app/api/apiTypes';
 import { productUrl } from '../../app/endpoints';
 
@@ -10,10 +12,10 @@ const productApiSlice = apiSlice.injectEndpoints({
     getAllProducts: builder.query<AllSortedProductsResponse, void>({
       query: () => `${productUrl}/allProducts`,
     }),
-    getProductById: builder.query<ProductResponse, string>({
+    getProductById: builder.query<Product, string>({
       query: (id) => `${productUrl}/${id}`,
     }),
-    updateProduct: builder.mutation<any, any>({
+    updateProduct: builder.mutation<Product, UpdateProductRequest>({
       query: ({ id, product }) => ({
         url: `${productUrl}/${id}`,
         method: 'PUT',
@@ -21,7 +23,7 @@ const productApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.SubCategories],
     }),
-    createProduct: builder.mutation<any, any>({
+    createProduct: builder.mutation<Product, ProductRequest>({
       query: (product) => ({
         url: productUrl,
         method: 'POST',

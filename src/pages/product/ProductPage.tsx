@@ -1,11 +1,11 @@
-import { ProductResponse } from '../../app/api/apiTypes';
+import { Product } from '../../app/api/apiTypes';
 import Table, { Column } from '../../components/sortTable/Table';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetAllProductsQuery } from '../../features/products/productApiSlice';
 import './_product-page.scss';
 import ProductTableRow from './ProductTableRow';
 
-const tableHeaders: Column<ProductResponse>[] = [
+const tableHeaders: Column<Product>[] = [
   { key: 'productName', label: 'name', name: 'image' },
   { key: 'subCategory', label: 'category', name: 'subCategory' },
   { key: 'price', label: 'price', name: 'price' },

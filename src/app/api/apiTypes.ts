@@ -143,10 +143,10 @@ export type UpdateSubCategoryRequest = {
 // Products
 export type ProductSizes = 'S' | 'M' | 'L' | 'XL';
 
-export type ProductResponse = DefaultResponseType & {
+export type Product = DefaultResponseType & {
   brand: string;
   category: Category;
-  colors: string[];
+  colors: string[] | [];
   countInStock: number;
   description: string;
   id: string;
@@ -158,13 +158,29 @@ export type ProductResponse = DefaultResponseType & {
   productStatus: Status;
   quantity: number;
   rating: number;
-  sizes: ProductSizes[];
+  sizes: ProductSizes[] | [];
   subCategory: SubCategory;
   discount?: number;
   scheduledDate?: Date;
 };
 
-export type ProductRequest = Omit<ProductResponse, 'id'>;
+export type ProductRequest = Omit<
+  Product,
+  | 'createdAt'
+  | 'reviews'
+  | 'updatedAt'
+  | 'id'
+  | 'category'
+  | 'countInStock'
+  | 'numReviews'
+  | 'rating'
+  | 'subCategory'
+>;
+
+export type UpdateProductRequest = {
+  id: string;
+  product: ProductRequest;
+};
 
 export type ReviewResponse = DefaultResponseType & {
   comment: string;
@@ -183,7 +199,7 @@ export type AllPaginatedProductsResponse = {
   hasMore: boolean;
   page: number;
   pages: number;
-  products: ProductResponse[];
+  products: Product[];
 };
 
 export type AllSortedProductsResponse = Omit<
@@ -193,7 +209,7 @@ export type AllSortedProductsResponse = Omit<
 
 export type GetSortedProductsResponse = DefaultResponseType & {
   category: Category;
-  product: ProductResponse[];
+  product: Product[];
 };
 
 export type FileUploadNameType = 'image';
