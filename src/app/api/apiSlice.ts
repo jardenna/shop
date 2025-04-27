@@ -2,12 +2,9 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export enum TagTypesEnum {
   Auth = 'Auth',
   Categories = 'Categories',
+  Products = 'Products',
   SubCategories = 'SubCategories',
   Users = 'Users',
-}
-
-export enum TagTypeIdEnum {
-  Scheduled = 'SCHEDULED',
 }
 
 const baseQuery = fetchBaseQuery({
