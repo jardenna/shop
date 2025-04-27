@@ -1,7 +1,4 @@
 import { Category } from '../../app/api/apiTypes';
-import CardBadge from '../../components/card/CardBadge';
-import DateDisplay from '../../components/datePicker/DateDisplay';
-import MoreLink from '../../components/MoreLink';
 import PageHeader from '../../components/PageHeader';
 import Table from '../../components/sortTable/Table';
 import { useGetAllCategoriesQuery } from '../../features/categories/categoriyApiSlice';
@@ -9,6 +6,7 @@ import useLanguage from '../../features/language/useLanguage';
 import { useGetScheduledQuery } from '../../features/subCategories/subCategoryApiSlice';
 import { MainPath } from '../../layout/nav/enums';
 import { oneDay } from '../../utils/utils';
+import CategoryTableRow from './CategoryTableRow';
 
 const tableHeaders: { key: keyof Category; label: string; name: string }[] = [
   { key: 'categoryName', label: 'name', name: 'categoryName' },
@@ -35,37 +33,6 @@ const CategoryPage = () => {
     refetchOnMountOrArgChange: true,
   });
 
-  const renderRow = ({
-    id,
-    scheduledDate,
-    categoryName,
-    createdAt,
-    categoryStatus,
-  }: Category) => {
-    const statusKey = categoryStatus.toLocaleLowerCase();
-    return (
-      <tr key={id}>
-        <td>{categoryName}</td>
-        <td>
-          <CardBadge
-            badgeClassName={categoryStatus.toLowerCase()}
-            badgeText={language[statusKey]}
-            scheduledDate={scheduledDate || null}
-          />
-        </td>
-        <td>
-          <DateDisplay date={createdAt} />
-        </td>
-        <td>
-          <MoreLink
-            linkText={language.update}
-            linkTo={`/admin/${MainPath.AdminCategoryUpdate}/${id}`}
-          />
-        </td>
-      </tr>
-    );
-  };
-
   return (
     <section className="page page-medium">
       <PageHeader
@@ -83,7 +50,26 @@ const CategoryPage = () => {
           isLoading={isLoading}
           emptyHeaderCellText={language.updateCategory}
         >
-          {(data) => data.map(renderRow)}
+          {(data) =>
+            data.map(
+              ({
+                id,
+                scheduledDate,
+                categoryName,
+                createdAt,
+                categoryStatus,
+              }) => (
+                <CategoryTableRow
+                  key={id}
+                  id={id}
+                  status={categoryStatus}
+                  scheduledDate={scheduledDate || null}
+                  categoryName={categoryName}
+                  createdAt={createdAt}
+                />
+              ),
+            )
+          }
         </Table>
       </div>
     </section>
