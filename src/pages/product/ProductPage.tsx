@@ -47,7 +47,7 @@ const ProductPage = () => {
                 imageSrc={image}
                 price={price}
                 productName={productName}
-                productStatus={productStatus}
+                status={productStatus}
                 categoryName={subCategory.category.categoryName}
                 scheduledDate={scheduledDate || null}
                 subCategoryName={subCategory.subCategoryName}

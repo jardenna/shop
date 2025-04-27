@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import { Status } from '../../app/api/apiTypes';
 import CardBadge from '../../components/card/CardBadge';
 import Img from '../../components/Img';
@@ -7,15 +7,15 @@ import ProductPrice from '../../features/currency/components/ProductPrice';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
 
-export type SubCategoryTableRowProps = {
+type ProductTableRowProps = {
   categoryName: string;
   countInStock: number;
   id: string;
   imageSrc: string;
   price: number;
   productName: string;
-  productStatus: Status;
   scheduledDate: Date | null;
+  status: Status;
   subCategoryName: string;
 };
 
@@ -27,9 +27,9 @@ const ProductTableRow = ({
   subCategoryName,
   categoryName,
   countInStock,
-  productStatus,
+  status,
   scheduledDate,
-}: SubCategoryTableRowProps) => {
+}: ProductTableRowProps) => {
   const { language } = useLanguage();
   return (
     <tr>
@@ -48,8 +48,8 @@ const ProductTableRow = ({
       <td>{countInStock}</td>
       <td>
         <CardBadge
-          badgeClassName={productStatus.toLowerCase()}
-          badgeText={language[productStatus.toLocaleLowerCase()]}
+          badgeClassName={status.toLowerCase()}
+          badgeText={language[status.toLocaleLowerCase()]}
           scheduledDate={scheduledDate || null}
         />
       </td>
@@ -63,4 +63,4 @@ const ProductTableRow = ({
   );
 };
 
-export default React.memo(ProductTableRow);
+export default memo(ProductTableRow);
