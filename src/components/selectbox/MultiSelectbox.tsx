@@ -29,6 +29,7 @@ const MultiSelectbox = ({
     <section>
       <Selectbox
         isMulti
+        closeMenuOnSelect={false}
         isSearchable={isSearchable}
         name={name}
         options={options}
