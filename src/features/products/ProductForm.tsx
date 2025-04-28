@@ -2,6 +2,9 @@ import { Product, ProductRequest } from '../../app/api/apiTypes';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/Form';
+import Checkbox, {
+  CheckboxItems,
+} from '../../components/formElements/Checkbox';
 import Input from '../../components/formElements/Input';
 import Textarea from '../../components/formElements/Textarea';
 import MultiSelectbox from '../../components/selectbox/MultiSelectbox';
@@ -18,10 +21,18 @@ type ProductFormProps = {
 const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
   const { language } = useLanguage();
 
-  const options = [
+  const colorOptions = [
     { label: language.black, value: 'black' },
     { label: 'orange', value: 2 },
     { label: 'kiwi', value: 3 },
+  ];
+
+  const checkboxItems: CheckboxItems[] = [
+    { label: 'S' },
+    { label: 'M' },
+    { label: 'L' },
+    { label: 'X' },
+    { label: 'XL' },
   ];
 
   const initialState: ProductRequest = {
@@ -35,7 +46,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
     discount: 0,
     productName: '',
     productStatus: 'Inactive',
-    sizes: [],
+    sizes: ['S', 'M'],
   };
 
   const selectedTime = selectedProduct?.scheduledDate;
@@ -75,6 +86,51 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
             required
           />
 
+          <Input
+            value={values.brand}
+            id="brand"
+            name="brand"
+            errorText={language[errors.brand]}
+            labelText="brand"
+            onChange={onChange}
+            required
+          />
+          <Input
+            value={values.price}
+            id="price"
+            name="price"
+            errorText={language[errors.price]}
+            labelText="price"
+            onChange={onChange}
+            required
+          />
+          <Input
+            value={values.material}
+            id="material"
+            name="material"
+            errorText={language[errors.material]}
+            labelText="material"
+            onChange={onChange}
+            required
+          />
+          <Input
+            value={values.quantity}
+            id="quantity"
+            name="quantity"
+            errorText={language[errors.quantity]}
+            labelText="quantity"
+            onChange={onChange}
+            required
+          />
+          <Input
+            type="number"
+            value={values.discount || 0}
+            id="discount"
+            name="discount"
+            labelText="discount"
+            onChange={onChange}
+          />
+
           <Textarea
             value={values.description}
             name="description"
@@ -83,12 +139,21 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
             onChange={onChange}
           />
         </FieldSet>
+        <fieldset>
+          <legend>Choose an option</legend>
+          <Checkbox
+            onChange={onChange}
+            values={values.sizes}
+            checkBoxList={checkboxItems}
+            name="sizes"
+          />
+        </fieldset>
         <FieldSet legendText="Product Variants">
           <MultiSelectbox
             id="colors"
             name="colors"
             labelText="Colors"
-            options={options}
+            options={colorOptions}
             isSearchable
           />
         </FieldSet>

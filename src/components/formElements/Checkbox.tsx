@@ -7,6 +7,7 @@ export type CheckboxItems = {
 
 type CheckboxProps = {
   checkBoxList: CheckboxItems[];
+  name: string;
   values: string[];
   formInfoText?: string;
   onChange: (event: ChangeInputType) => void;
@@ -17,13 +18,14 @@ const Checkbox = ({
   onChange,
   values,
   formInfoText,
+  name,
 }: CheckboxProps) => (
   <>
     {checkBoxList.map((checkbox) => (
       <Input
         key={checkbox.label}
         type="checkbox"
-        name="selectedItems"
+        name={name}
         value={checkbox.label}
         onChange={onChange}
         checked={values.includes(checkbox.label)}
