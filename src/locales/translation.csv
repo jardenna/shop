@@ -151,8 +151,8 @@ scheduledDate;Scheduled date;Planlagt dato
 scheduledDateMustBeFuture;Scheduled date must be after now;Planlagt dato skal være efter nu
 scheduledToBePubliched;is scheduled to be published at;er planlagt til udgivelse den 
 search;Search;Søg
-selectCurrency;Select currency;Vælg valuta
-selectLanguage;Select language;Vælg sprog
+currency;Currency;Valuta
+language;Language;Sprog
 selectPreferences;Select preferred language and currency;Vælg sprog og valuta
 publishDate;Publish date;Udgivelsesdato
 publishTime;Publish time;Udgivelsestidspunkt

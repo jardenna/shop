@@ -11,6 +11,10 @@
     }
   }
 
+  .select-box__value-container {
+    padding-block: 0;
+  }
+
   .select-box__control {
     @extend %styled-input;
   }

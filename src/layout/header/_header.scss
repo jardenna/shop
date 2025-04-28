@@ -21,3 +21,32 @@
     }
   }
 }
+
+.header-icon-list {
+  display: flex;
+  gap: 16px;
+}
+
+.preferences {
+  display: flex;
+  gap: 24px;
+  margin-block: 24px 56px;
+
+  .input-container {
+    gap: 0;
+  }
+
+  legend {
+    margin-bottom: 8px;
+    position: static;
+  }
+
+  .fieldset {
+    width: 100%;
+  }
+
+  /* stylelint-disable-next-line selector-class-pattern */
+  .select-box__menu-list {
+    max-height: rem(100px);
+  }
+}
