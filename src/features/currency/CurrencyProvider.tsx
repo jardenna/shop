@@ -1,9 +1,10 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { useAppDispatch } from '../../app/hooks';
+import SkeletonList from '../../components/skeleton/SkeletonList';
 import { localStorageKeys } from '../../hooks/useLocalStorage';
+import { currencyCacheKey, oneDay } from '../../utils/utils';
 import { setRates } from './currencySlice';
 import { useGetExchangeRatesQuery } from './exchangeRatesApiSlice';
-import { currencyCacheKey, oneDay } from '../../utils/utils';
 
 const CurrencyProvider = ({ children }: { children: ReactNode }) => {
   const dispatch = useAppDispatch();
@@ -63,7 +64,7 @@ const CurrencyProvider = ({ children }: { children: ReactNode }) => {
   }, [error, dispatch]);
 
   if (isLoading) {
-    return <p>Loading exchange rates...</p>;
+    return <SkeletonList />;
   }
 
   return children;
