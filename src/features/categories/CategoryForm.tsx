@@ -110,7 +110,7 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
             onSelectStatus={(selectedOptions: OptionType) => {
               handleSelectStatus('categoryStatus', selectedOptions);
             }}
-            categoryStatus={values.categoryStatus}
+            status={values.categoryStatus}
             onSelectDate={handleDaySelect}
             selectedDate={selectedDate}
             timeValue={timeValue}

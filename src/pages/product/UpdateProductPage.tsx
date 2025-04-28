@@ -5,6 +5,7 @@ import PageHeader from '../../components/PageHeader';
 import SkeletonPage from '../../components/skeleton/SkeletonPage';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetProductByIdQuery } from '../../features/products/productApiSlice';
+import ProductForm from '../../features/products/ProductForm';
 
 const UpdateProductPage = () => {
   const params = useParams();
@@ -17,19 +18,22 @@ const UpdateProductPage = () => {
   } = useGetProductByIdQuery(params.id || '');
 
   return (
-    <section className="page page-small">
+    <section className="page">
       {isLoading && <SkeletonPage />}
-      {product && (
-        <>
-          <PageHeader heading={`${language.update} ${product.productName}`} />
-          <ErrorBoundary
-            FallbackComponent={ErrorBoundaryFallback}
-            onReset={() => refetch}
-          >
-            form
-          </ErrorBoundary>
-        </>
-      )}
+
+      <ErrorBoundary
+        FallbackComponent={ErrorBoundaryFallback}
+        onReset={() => refetch}
+      >
+        {product && (
+          <>
+            <PageHeader heading={`${language.update} ${product.productName}`} />
+            <div className="page-card">
+              <ProductForm selectedProduct={product} id={params.id || null} />
+            </div>
+          </>
+        )}
+      </ErrorBoundary>
     </section>
   );
 };
