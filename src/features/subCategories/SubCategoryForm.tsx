@@ -134,7 +134,7 @@ const SubCategoryForm = ({
             handleSelectStatus('category', selectedOptions);
           }}
           name="category"
-          labelText={language.selectParentCategory}
+          labelText={language.parentCategory}
           errorText={language[errors.category]}
           required
         />
@@ -143,7 +143,7 @@ const SubCategoryForm = ({
           categoryNamevalue={values.subCategoryName}
           categoryNameId="subCategoryName"
           categoryNameErrorText={language[errors.subCategoryName]}
-          categoryNameLabelText={language.addCategoryName}
+          categoryNameLabelText={language.categoryName}
           categoryNamePlaceholder={language.categoryName}
           onCategoryNameChange={onChange}
           defaultStatusValue={{

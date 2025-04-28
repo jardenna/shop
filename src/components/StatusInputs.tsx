@@ -53,7 +53,7 @@ const StatusInputs = ({
         options={statusOptions}
         onChange={onSelectStatus}
         name="status"
-        labelText={language.selectCategoryStatus}
+        labelText={language.categoryStatus}
       />
       {status === 'Scheduled' && (
         <>
@@ -61,13 +61,13 @@ const StatusInputs = ({
             value={timeValue}
             onChange={onTimeChange}
             id="time"
-            labelText={language.selectPublishTime}
+            labelText={language.publishTime}
             name="time"
           />
           <DatePicker
             onSelectDate={onSelectDate}
             selectedDate={selectedDate}
-            labelText={language.selectPublishDate}
+            labelText={language.publishDate}
           />
         </>
       )}

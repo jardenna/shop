@@ -116,7 +116,7 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
             timeValue={timeValue}
             onTimeChange={handleTimeChange}
             categoryNameErrorText={language[errors.categoryName]}
-            categoryNameLabelText={language.addCategoryName}
+            categoryNameLabelText={language.categoryName}
             categoryNamePlaceholder={language.categoryName}
           />
         </FieldSet>
