@@ -2,11 +2,14 @@ import { Product, ProductRequest } from '../../app/api/apiTypes';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/Form';
+import FileInput from '../../components/formElements/fileInput/FileInput';
 import Input from '../../components/formElements/Input';
+import Textarea from '../../components/formElements/Textarea';
 import { OptionType } from '../../components/selectbox/Selectbox';
 import StatusInputs from '../../components/StatusInputs';
 import useFormValidation from '../../hooks/useFormValidation';
 import useLanguage from '../language/useLanguage';
+import ProductImg from './ProductImg';
 
 type ProductFormProps = {
   id: string | null;
@@ -31,7 +34,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
   };
 
   const selectedTime = selectedProduct?.scheduledDate;
-  const { onChange, values, onSubmit, errors, onCustomChange } =
+  const { onChange, values, onSubmit, errors, onCustomChange, fileData } =
     useFormValidation({
       initialState,
       callback: handleSubmitProduct,
@@ -47,6 +50,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
   function handleSubmitProduct() {
     console.log(12);
   }
+  console.log(fileData);
 
   return (
     <Form
@@ -64,6 +68,29 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
           onChange={onChange}
           required
         />
+
+        <Textarea
+          value={values.description}
+          name="description"
+          id="description"
+          labelText="Description"
+          onChange={onChange}
+        />
+        <div>
+          <FileInput
+            onChange={onChange}
+            name="image"
+            id="image"
+            labelText={language.upLoadCover}
+            title={fileData.file?.name || language.noFileChosen}
+          />
+
+          <ProductImg
+            src={selectedProduct?.image || '/uploads/image.jpg'}
+            previewUrl={fileData.preview || null}
+            alt=""
+          />
+        </div>
       </FieldSet>
       <FieldSet legendText="Product status">
         <StatusInputs
