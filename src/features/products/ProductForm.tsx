@@ -9,6 +9,7 @@ import { OptionType } from '../../components/selectbox/Selectbox';
 import StatusInputs from '../../components/StatusInputs';
 import useFormValidation from '../../hooks/useFormValidation';
 import useLanguage from '../language/useLanguage';
+import ImageUploadForm from './ImageUploadForm';
 import ProductImg from './ProductImg';
 
 type ProductFormProps = {
@@ -50,65 +51,67 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
   function handleSubmitProduct() {
     console.log(12);
   }
-  console.log(fileData);
 
   return (
-    <Form
-      onSubmit={onSubmit}
-      submitBtnLabel={id ? language.save : language.create}
-    >
-      <FieldSet legendText="Product information">
-        <Input
-          value={values.productName}
-          id="productName"
-          name="productName"
-          errorText={language[errors.productName]}
-          labelText={language.categoryName}
-          placeholder={language.categoryName}
-          onChange={onChange}
-          required
-        />
-
-        <Textarea
-          value={values.description}
-          name="description"
-          id="description"
-          labelText="Description"
-          onChange={onChange}
-        />
-        <div>
-          <FileInput
+    <>
+      <ImageUploadForm />
+      <Form
+        onSubmit={onSubmit}
+        submitBtnLabel={id ? language.save : language.create}
+      >
+        <FieldSet legendText="Product information">
+          <Input
+            value={values.productName}
+            id="productName"
+            name="productName"
+            errorText={language[errors.productName]}
+            labelText={language.categoryName}
+            placeholder={language.categoryName}
             onChange={onChange}
-            name="image"
-            id="image"
-            labelText={language.upLoadCover}
-            title={fileData.file?.name || language.noFileChosen}
+            required
           />
 
-          <ProductImg
-            src={selectedProduct?.image || '/uploads/image.jpg'}
-            previewUrl={fileData.preview || null}
-            alt=""
+          <Textarea
+            value={values.description}
+            name="description"
+            id="description"
+            labelText="Description"
+            onChange={onChange}
           />
-        </div>
-      </FieldSet>
-      <FieldSet legendText="Product status">
-        <StatusInputs
-          defaultStatusValue={{
-            label: language[values.productStatus.toLowerCase()],
-            value: values.productStatus,
-          }}
-          onSelectStatus={(selectedOptions: OptionType) => {
-            handleSelectStatus('productStatus', selectedOptions);
-          }}
-          status={values.productStatus}
-          onSelectDate={handleDaySelect}
-          selectedDate={selectedDate}
-          timeValue={timeValue}
-          onTimeChange={handleTimeChange}
-        />
-      </FieldSet>
-    </Form>
+          <div>
+            <FileInput
+              onChange={onChange}
+              name="image"
+              id="image"
+              labelText={language.upLoadCover}
+              title={fileData.file?.name || language.noFileChosen}
+            />
+
+            <ProductImg
+              src={selectedProduct?.image || '/uploads/image.jpg'}
+              previewUrl={fileData.preview || null}
+              alt=""
+            />
+          </div>
+        </FieldSet>
+        <FieldSet legendText="Product status">
+          <StatusInputs
+            defaultStatusValue={{
+              label: language[values.productStatus.toLowerCase()],
+              value: values.productStatus,
+            }}
+            onSelectStatus={(selectedOptions: OptionType) => {
+              handleSelectStatus('productStatus', selectedOptions);
+            }}
+            status={values.productStatus}
+            onSelectDate={handleDaySelect}
+            selectedDate={selectedDate}
+            timeValue={timeValue}
+            onTimeChange={handleTimeChange}
+          />
+        </FieldSet>
+      </Form>
+    </>
   );
 };
 

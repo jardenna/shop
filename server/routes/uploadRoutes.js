@@ -36,20 +36,21 @@ const fileFilter = (req, file, cb) => {
 };
 
 const upload = multer({ storage, fileFilter });
-const uploadSingleImage = upload.single('image');
 
 router.post('/', (req, res) => {
-  uploadSingleImage(req, res, (err) => {
+  upload.array('images', 5)(req, res, (err) => {
+    // '5' er max files limit
     if (err) {
       res.status(400).send({ message: err.message });
-    } else if (req.file) {
+    } else if (req.files) {
+      const filePaths = req.files.map((file) => `/${file.path}`);
       res.status(200).send({
         success: true,
-        message: 'Image uploaded successfully',
-        image: `/${req.file.path}`,
+        message: 'Images uploaded successfully',
+        images: filePaths,
       });
     } else {
-      res.status(400).send({ message: 'No image file provided' });
+      res.status(400).send({ message: 'No image files provided' });
     }
   });
 });
