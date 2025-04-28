@@ -4,6 +4,7 @@ import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/Form';
 import Input from '../../components/formElements/Input';
 import Textarea from '../../components/formElements/Textarea';
+import MultiSelectbox from '../../components/selectbox/MultiSelectbox';
 import { OptionType } from '../../components/selectbox/Selectbox';
 import StatusInputs from '../../components/StatusInputs';
 import useFormValidation from '../../hooks/useFormValidation';
@@ -16,6 +17,12 @@ type ProductFormProps = {
 
 const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
   const { language } = useLanguage();
+
+  const options = [
+    { label: language.black, value: 'black' },
+    { label: 'orange', value: 2 },
+    { label: 'kiwi', value: 3 },
+  ];
 
   const initialState: ProductRequest = {
     brand: '',
@@ -74,6 +81,15 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
             id="description"
             labelText="Description"
             onChange={onChange}
+          />
+        </FieldSet>
+        <FieldSet legendText="Product Variants">
+          <MultiSelectbox
+            id="colors"
+            name="colors"
+            labelText="Colors"
+            options={options}
+            isSearchable
           />
         </FieldSet>
         <FieldSet legendText="Product status">
