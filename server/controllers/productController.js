@@ -19,7 +19,7 @@ const createProduct = asyncHandler(async (req, res) => {
     return res.status(400).json({ success: false, message: error });
   }
 
-  const { subCategory, quantity, sizes, ...rest } = req.body;
+  const { subCategory, quantity, ...rest } = req.body;
 
   // Check subcategory
   const subCategoryId = await SubCategory.findById(subCategory);
@@ -40,13 +40,7 @@ const createProduct = asyncHandler(async (req, res) => {
 
   await product.save();
 
-  res
-    .status(201)
-    .json({
-      id: product._id,
-      sizes: sizes || ['S', 'M', 'L', 'XL'],
-      ...req.body,
-    });
+  res.status(201).json({ id: product._id, ...req.body });
 });
 
 // @desc    Update Product
