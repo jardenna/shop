@@ -14,7 +14,7 @@ export type OptionType = {
 };
 export type SelectedOption = SingleValue<OptionType> | MultiValue<OptionType>;
 type SelectboxProps = {
-  defaultValue: OptionType;
+  defaultValue: OptionType | null;
   id: string;
   labelText: string;
   name: string;

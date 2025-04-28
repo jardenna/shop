@@ -1,13 +1,24 @@
 import { useState } from 'react';
+import { MultiValue } from 'react-select';
 import Selectbox, { OptionType } from './Selectbox';
 
-const MultiSelectbox = () => {
-  const options = [
-    { label: 'apple', value: 1 },
-    { label: 'orange', value: 2 },
-    { label: 'kiwi', value: 3 },
-  ];
+type MultiSelectboxProps = {
+  id: string;
+  labelText: string;
+  name: string;
+  options: MultiValue<OptionType>;
+  defaultValue?: OptionType;
+  isSearchable?: boolean;
+};
 
+const MultiSelectbox = ({
+  id,
+  name,
+  labelText,
+  options,
+  defaultValue,
+  isSearchable,
+}: MultiSelectboxProps) => {
   const [, setItems] = useState<OptionType[] | OptionType>();
 
   const handleOption = (selections: any) => {
@@ -18,14 +29,15 @@ const MultiSelectbox = () => {
     <section>
       <Selectbox
         isMulti
-        name="fruits"
+        isSearchable={isSearchable}
+        name={name}
         options={options}
         onChange={(selections) => {
           handleOption(selections);
         }}
-        defaultValue={{ label: 'kiwi', value: 3 }}
-        id="fruits"
-        labelText="Select Fruits"
+        defaultValue={defaultValue || null}
+        id={id}
+        labelText={labelText}
       />
     </section>
   );
