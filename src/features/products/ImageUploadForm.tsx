@@ -1,29 +1,21 @@
-import { useState } from 'react';
+import useFormValidation from '../../hooks/useFormValidation';
 import { useUploadImageMutation } from '../uploadImageApiSlice';
 
 const ImageUploadForm = () => {
-  const [files, setFiles] = useState<File[]>([]);
-  const [previewUrls, setPreviewUrls] = useState<string[]>([]);
   const [uploadImages, { isLoading }] = useUploadImageMutation();
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFiles = e.target.files;
-    if (selectedFiles) {
-      setFiles(Array.from(selectedFiles));
-      setPreviewUrls(
-        Array.from(selectedFiles).map((file) => URL.createObjectURL(file)),
-      );
-    }
-  };
+  const { onChange, onSubmit, previewUrls, filesData } = useFormValidation({
+    initialState: { files: '' },
+    callback: handleSubmit,
+  });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (files.length === 0) {
+  async function handleSubmit() {
+    if (filesData.length === 0) {
       return;
     }
 
     const formData = new FormData();
-    files.forEach((file) => {
+    filesData.forEach((file) => {
       formData.append('images', file);
     });
 
@@ -41,14 +33,14 @@ const ImageUploadForm = () => {
     } catch (err) {
       console.error(err);
     }
-  };
+  }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+    <form onSubmit={onSubmit} className="flex flex-col gap-4">
       <input
         type="file"
         accept="image/jpeg,image/jpg,image/png,image/webp"
-        onChange={handleFileChange}
+        onChange={onChange}
         multiple // tillader flere filer
         required
       />

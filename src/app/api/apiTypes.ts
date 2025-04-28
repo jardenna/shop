@@ -150,7 +150,6 @@ export type Product = DefaultResponseType & {
   countInStock: number;
   description: string;
   id: string;
-  image: string;
   material: string;
   numReviews: number;
   price: number;
@@ -161,6 +160,8 @@ export type Product = DefaultResponseType & {
   sizes: ProductSizes[] | [];
   subCategory: SubCategory;
   discount?: number;
+  image?: string;
+  images?: string[];
   scheduledDate?: Date;
 };
 

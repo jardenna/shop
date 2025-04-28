@@ -44,7 +44,7 @@ const ProductPage = () => {
                 key={id}
                 id={id}
                 countInStock={countInStock}
-                imageSrc={image}
+                imageSrc={image || ''}
                 price={price}
                 productName={productName}
                 status={productStatus}
