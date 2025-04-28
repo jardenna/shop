@@ -2,10 +2,8 @@ import { useState } from 'react';
 import { useUploadImageMutation } from '../uploadImageApiSlice';
 
 const ImageUploadForm = () => {
-  const [name, setName] = useState('');
   const [files, setFiles] = useState<File[]>([]);
   const [previewUrls, setPreviewUrls] = useState<string[]>([]);
-
   const [uploadImages, { isLoading }] = useUploadImageMutation();
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,7 +32,6 @@ const ImageUploadForm = () => {
       const imageUrls = uploadResponse.images; // returnerer array af image URLs
 
       const productData = {
-        name,
         imageUrls, // brug disse URLs til at oprette produktet
       };
 
@@ -48,15 +45,6 @@ const ImageUploadForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <input
-        type="text"
-        value={name}
-        onChange={(e: any) => {
-          setName(e.target.value);
-        }}
-        placeholder="Name"
-        required
-      />
       <input
         type="file"
         accept="image/jpeg,image/jpg,image/png,image/webp"

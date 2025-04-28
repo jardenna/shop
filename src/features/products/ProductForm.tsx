@@ -12,6 +12,7 @@ import { OptionType } from '../../components/selectbox/Selectbox';
 import StatusInputs from '../../components/StatusInputs';
 import useFormValidation from '../../hooks/useFormValidation';
 import useLanguage from '../language/useLanguage';
+import ImageUploadForm from './ImageUploadForm';
 
 type ProductFormProps = {
   id: string | null;
@@ -69,7 +70,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
 
   return (
     <>
-      {/* <ImageUploadForm /> */}
+      <ImageUploadForm />
       <Form
         onSubmit={onSubmit}
         submitBtnLabel={id ? language.save : language.create}
