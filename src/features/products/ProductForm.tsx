@@ -1,8 +1,10 @@
 import { Product, ProductRequest } from '../../app/api/apiTypes';
 import useDatePicker from '../../components/datePicker/useDatePicker';
+import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/Form';
+import Input from '../../components/formElements/Input';
 import { OptionType } from '../../components/selectbox/Selectbox';
-import SharedCategoryInputs from '../../components/SharedCategoryInputs';
+import StatusInputs from '../../components/StatusInputs';
 import useFormValidation from '../../hooks/useFormValidation';
 import useLanguage from '../language/useLanguage';
 
@@ -51,26 +53,34 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
       onSubmit={onSubmit}
       submitBtnLabel={id ? language.save : language.create}
     >
-      <SharedCategoryInputs
-        categoryNamevalue={values.productName}
-        categoryNameId="subCategoryName"
-        categoryNameErrorText={language[errors.subCategoryName]}
-        categoryNameLabelText={language.categoryName}
-        categoryNamePlaceholder={language.categoryName}
-        onCategoryNameChange={onChange}
-        defaultStatusValue={{
-          label: language[values.productStatus.toLowerCase()],
-          value: values.productStatus,
-        }}
-        onSelectStatus={(selectedOptions: OptionType) => {
-          handleSelectStatus('productStatus', selectedOptions);
-        }}
-        status={values.productStatus}
-        onSelectDate={handleDaySelect}
-        selectedDate={selectedDate}
-        timeValue={timeValue}
-        onTimeChange={handleTimeChange}
-      />
+      <FieldSet legendText="Product information">
+        <Input
+          value={values.productName}
+          id="productName"
+          name="productName"
+          errorText={language[errors.productName]}
+          labelText={language.categoryName}
+          placeholder={language.categoryName}
+          onChange={onChange}
+          required
+        />
+      </FieldSet>
+      <FieldSet legendText="Product status">
+        <StatusInputs
+          defaultStatusValue={{
+            label: language[values.productStatus.toLowerCase()],
+            value: values.productStatus,
+          }}
+          onSelectStatus={(selectedOptions: OptionType) => {
+            handleSelectStatus('productStatus', selectedOptions);
+          }}
+          status={values.productStatus}
+          onSelectDate={handleDaySelect}
+          selectedDate={selectedDate}
+          timeValue={timeValue}
+          onTimeChange={handleTimeChange}
+        />
+      </FieldSet>
     </Form>
   );
 };
