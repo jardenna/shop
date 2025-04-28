@@ -38,4 +38,5 @@ export const {
   useGetAllProductsQuery,
   useGetProductByIdQuery,
   useUpdateProductMutation,
+  useCreateProductMutation,
 } = productApiSlice;

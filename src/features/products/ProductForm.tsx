@@ -13,6 +13,7 @@ import StatusInputs from '../../components/StatusInputs';
 import useFormValidation from '../../hooks/useFormValidation';
 import useLanguage from '../language/useLanguage';
 import { useUploadImageMutation } from '../uploadImageApiSlice';
+import { useCreateProductMutation } from './productApiSlice';
 
 type ProductFormProps = {
   id: string | null;
@@ -21,7 +22,7 @@ type ProductFormProps = {
 
 const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
   const { language } = useLanguage();
-  // const [updateProduct] = useUpdateProductMutation();
+  const [createProduct] = useCreateProductMutation();
 
   const colorOptions = [
     { label: language.black, value: 'black' },
@@ -87,8 +88,13 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
       const uploadResponse = await uploadImages(formData).unwrap();
       const imageUrl = uploadResponse.images;
 
-      const productData = { ...values, images: imageUrl };
-      console.log(productData);
+      const productData = {
+        ...values,
+        images: imageUrl,
+        subCategory: '6800a3996970b670bca671bb',
+      };
+
+      await createProduct(productData).unwrap();
     } catch (error) {
       console.log(error);
     }
