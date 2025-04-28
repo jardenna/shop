@@ -2,15 +2,12 @@ import { Product, ProductRequest } from '../../app/api/apiTypes';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/Form';
-import FileInput from '../../components/formElements/fileInput/FileInput';
 import Input from '../../components/formElements/Input';
 import Textarea from '../../components/formElements/Textarea';
 import { OptionType } from '../../components/selectbox/Selectbox';
 import StatusInputs from '../../components/StatusInputs';
 import useFormValidation from '../../hooks/useFormValidation';
 import useLanguage from '../language/useLanguage';
-import ImageUploadForm from './ImageUploadForm';
-import ProductImg from './ProductImg';
 
 type ProductFormProps = {
   id: string | null;
@@ -35,7 +32,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
   };
 
   const selectedTime = selectedProduct?.scheduledDate;
-  const { onChange, values, onSubmit, errors, onCustomChange, fileData } =
+  const { onChange, values, onSubmit, errors, onCustomChange } =
     useFormValidation({
       initialState,
       callback: handleSubmitProduct,
@@ -54,7 +51,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
 
   return (
     <>
-      <ImageUploadForm />
+      {/* <ImageUploadForm /> */}
       <Form
         onSubmit={onSubmit}
         submitBtnLabel={id ? language.save : language.create}
@@ -78,21 +75,6 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
             labelText="Description"
             onChange={onChange}
           />
-          <div>
-            <FileInput
-              onChange={onChange}
-              name="image"
-              id="image"
-              labelText={language.upLoadCover}
-              title={fileData.file?.name || language.noFileChosen}
-            />
-
-            <ProductImg
-              src={selectedProduct?.image || '/uploads/image.jpg'}
-              previewUrl={fileData.preview || null}
-              alt=""
-            />
-          </div>
         </FieldSet>
         <FieldSet legendText="Product status">
           <StatusInputs
