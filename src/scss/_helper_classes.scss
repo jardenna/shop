@@ -3,7 +3,7 @@
 .visually-hidden {
   clip: rect(1px, 1px, 1px, 1px);
   overflow: hidden;
-  position: absolute;
+  position: absolute !important;
   white-space: nowrap;
   height: 1px;
   width: 1px;
