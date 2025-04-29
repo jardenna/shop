@@ -41,6 +41,8 @@ const ViewProductPage = () => {
 
   const statusMessage = `${language.categoryIs} ${subCategoryStatus}`;
 
+  console.log(product);
+
   return (
     <section className="page">
       {isLoading && <SkeletonPage />}
@@ -67,6 +69,7 @@ const ViewProductPage = () => {
                 status={product.productStatus}
                 countInStock={product.countInStock}
                 description={product.description}
+                images={product.images}
               />
             </ErrorBoundary>
 

@@ -7,6 +7,7 @@ import Checkbox, {
 } from '../../components/formElements/Checkbox';
 import Input from '../../components/formElements/Input';
 import Textarea from '../../components/formElements/Textarea';
+import Img from '../../components/Img';
 import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
 import StatusInputs from '../../components/StatusInputs';
 import useFormValidation from '../../hooks/useFormValidation';
@@ -65,7 +66,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
     initialState,
     callback: handleSubmitProduct,
   });
-  // const [items, setItems] = useState<OptionType[]>();
+
   const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
     useDatePicker({ initialTime: selectedTime });
 
@@ -79,8 +80,6 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
     onCustomChange(name, selectedValues);
   };
 
-  console.log(values);
-
   async function handleSubmitProduct() {
     try {
       if (filesData.length === 0) {
@@ -91,6 +90,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
       filesData.forEach((file) => {
         formData.append('images', file);
       });
+
       const uploadResponse = await uploadImages(formData).unwrap();
       const imageUrl = uploadResponse.images;
 
@@ -112,19 +112,21 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
       submitBtnLabel={id ? language.save : language.create}
     >
       <FieldSet legendText="Product information">
-        <input
+        <Input
           type="file"
-          accept="image/jpeg,image/jpg,image/png,image/webp"
           onChange={onChange}
-          multiple // tillader flere filer
+          multiple
           required
           name="images"
+          id="images"
+          labelText="images"
+          value=""
         />
-        <div className="flex gap-4">
-          {previewUrls.map((url, idx) => (
-            <img key={idx} src={url} alt={`Preview ${idx + 1}`} />
-          ))}
-        </div>
+
+        {previewUrls.map((url, idx) => (
+          <Img key={idx} src={url} alt="" />
+        ))}
+
         <Input
           value={values.productName}
           id="productName"
