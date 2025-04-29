@@ -16,24 +16,27 @@ const Preview = ({
   ariaLabel,
   title,
   previewData,
-}: PreviewProps) =>
-  previewData.map((preview) => (
-    <div key={preview.name} className="preview-container">
-      <Img className="preview-img" src={preview.url} alt="" />
-      <div className="preview-info">
-        <span>{preview.name}</span>
-        <span className="preview-size">{preview.size}</span>
-      </div>
-      <Button
-        variant={BtnVariant.Ghost}
-        onClick={() => {
-          onRemoveImg();
-        }}
-        ariaLabel={ariaLabel}
-      >
-        <Icon iconName={IconName.Close} title={title} />
-      </Button>
-    </div>
-  ));
+}: PreviewProps) => (
+  <ul className="preview-list">
+    {previewData.map((preview) => (
+      <li key={preview.name} className="preview-item">
+        <Img className="preview-img" src={preview.url} alt="" />
+        <div className="preview-info">
+          <span>{preview.name}</span>
+          <span className="preview-size">{preview.size}</span>
+        </div>
+        <Button
+          variant={BtnVariant.Ghost}
+          onClick={() => {
+            onRemoveImg();
+          }}
+          ariaLabel={ariaLabel}
+        >
+          <Icon iconName={IconName.Close} title={title} />
+        </Button>
+      </li>
+    ))}
+  </ul>
+);
 
 export default Preview;

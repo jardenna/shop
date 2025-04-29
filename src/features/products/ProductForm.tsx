@@ -118,7 +118,6 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
           required
           name="images"
           id="images"
-          labelText="images"
           previewData={previewData}
           title={language.delete}
           ariaLabel={language.delete}

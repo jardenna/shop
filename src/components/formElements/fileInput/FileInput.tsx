@@ -2,13 +2,11 @@ import { FileName } from '../../../app/api/apiTypes';
 import { IconName } from '../../../types/enums';
 import { ChangeInputType } from '../../../types/types';
 import Icon from '../../icons/Icon';
-import Input from '../Input';
 import './_file-input.scss';
 import Preview, { PreviewProps } from './Preview';
 
 type FileInputProps = PreviewProps & {
   id: string;
-  labelText: string;
   name: FileName;
   multiple?: boolean;
   required?: boolean;
@@ -19,7 +17,6 @@ const FileInput = ({
   onChange,
   name,
   id,
-  labelText,
   multiple,
   required,
   onRemoveImg,
@@ -28,22 +25,21 @@ const FileInput = ({
   previewData,
 }: FileInputProps) => (
   <div className="file-container">
-    <Input
+    <label htmlFor="images" className="file-upload-label">
+      <Icon iconName={IconName.Upload} title="upload" ariaHidden />
+      <span>Browse images</span>
+      <span>Files suported: .jpg, .png , webp</span>
+    </label>
+    <input
       type="file"
       onChange={onChange}
       name={name}
       id={id}
-      value=""
       multiple={multiple}
       required={required}
-      labelText={labelText}
+      className="visually-hidden"
     />
 
-    <div className="file-upload-btn">
-      <Icon iconName={IconName.Upload} title="upload" />
-      <span>Browse images</span>
-      <span>Files suported: .jpg, .png , webp</span>
-    </div>
     <Preview
       previewData={previewData}
       title={title}

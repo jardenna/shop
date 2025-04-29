@@ -1,23 +1,33 @@
 @use '../../../scss/globals' as *;
 
 .file-container {
-  .file-upload-btn {
+  display: flex;
+  align-items: center;
+
+  .file-upload-label {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
+    cursor: pointer;
+    flex: 1;
   }
 }
 
-.preview-container {
+.preview-list {
   display: flex;
-  border: 1px solid $color-border;
-  gap: 12px;
-  position: relative;
-  align-items: center;
-  padding: 8px;
-  border-radius: 4px;
-  margin-bottom: 8px;
+  flex-direction: column;
+  flex: 2;
+
+  .preview-item {
+    border: 1px solid $color-border;
+    gap: 12px;
+    position: relative;
+    align-items: center;
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
 
   .preview-img {
     width: rem(92px);
