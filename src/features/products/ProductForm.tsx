@@ -74,9 +74,9 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
   };
 
   const handleSelectColors = (name: string, selectedOptions: OptionType[]) => {
-    const x = selectedOptions.map((option) => option.value);
+    const selectedValues = selectedOptions.map((option) => option.value);
 
-    onCustomChange(name, x);
+    onCustomChange(name, selectedValues);
   };
 
   console.log(values);
@@ -207,8 +207,8 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
           isSearchable
           closeMenuOnSelect={false}
           isMulti
-          onChange={(value: OptionType[]) => {
-            handleSelectColors('colors', value);
+          onChange={(values: OptionType[]) => {
+            handleSelectColors('colors', values);
           }}
         />
       </FieldSet>
