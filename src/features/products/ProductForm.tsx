@@ -7,8 +7,7 @@ import Checkbox, {
 } from '../../components/formElements/Checkbox';
 import Input from '../../components/formElements/Input';
 import Textarea from '../../components/formElements/Textarea';
-import MultiSelectbox from '../../components/selectbox/MultiSelectbox';
-import { OptionType } from '../../components/selectbox/Selectbox';
+import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
 import StatusInputs from '../../components/StatusInputs';
 import useFormValidation from '../../hooks/useFormValidation';
 import useLanguage from '../language/useLanguage';
@@ -200,14 +199,16 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
         />
       </fieldset>
       <FieldSet legendText="Product Variants">
-        <MultiSelectbox
+        <Selectbox
           id="colors"
           name="colors"
           labelText="Colors"
           options={colorOptions}
           isSearchable
-          onChange={(item: OptionType[]) => {
-            handleSelectColors('colors', item);
+          closeMenuOnSelect={false}
+          isMulti
+          onChange={(value: OptionType[]) => {
+            handleSelectColors('colors', value);
           }}
         />
       </FieldSet>

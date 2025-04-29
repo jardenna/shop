@@ -14,12 +14,12 @@ export type OptionType = {
 };
 export type SelectedOption = SingleValue<OptionType> | MultiValue<OptionType>;
 type SelectboxProps = {
-  defaultValue: OptionType | null;
   id: string;
   labelText: string;
   name: string;
   options: OptionsOrGroups<OptionType, GroupBase<OptionType>>;
   closeMenuOnSelect?: boolean;
+  defaultValue?: OptionType;
   errorText?: string;
   inputHasNoLabel?: boolean;
   isDisabled?: boolean;
@@ -27,7 +27,7 @@ type SelectboxProps = {
   isSearchable?: boolean;
   placeholder?: string;
   required?: boolean;
-  onChange: (value: OptionType) => void;
+  onChange: (value: any) => void;
 };
 
 const Selectbox = ({
