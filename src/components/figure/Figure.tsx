@@ -12,7 +12,7 @@ type FigureProps = {
 const Figure = ({ figcaption, src, alt, className = '' }: FigureProps) => (
   <figure className={className}>
     {figcaption && <figcaption>{figcaption}</figcaption>}
-    <Img className="figure-img" src={src} alt={alt} />
+    <Img className="figure-img" src={`/images/${src}`} alt={alt} />
   </figure>
 );
 

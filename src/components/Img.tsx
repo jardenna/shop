@@ -5,7 +5,7 @@ type ImgProps = {
 };
 
 const Img = ({ className = '', src, alt }: ImgProps) => (
-  <img className={className} src={`/images/${src}`} alt={alt} loading="lazy" />
+  <img className={className} src={src} alt={alt} loading="lazy" />
 );
 
 export default Img;

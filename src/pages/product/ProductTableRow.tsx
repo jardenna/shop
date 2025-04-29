@@ -35,7 +35,7 @@ const ProductTableRow = ({
     <tr>
       <td>
         <div className="product-overview-cell">
-          <Img src={imageSrc} alt="" />
+          <Img src={`/images/${imageSrc}`} alt="" />
           <span className="product-name">{productName}</span>
         </div>
       </td>

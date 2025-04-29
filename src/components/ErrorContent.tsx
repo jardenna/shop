@@ -19,7 +19,11 @@ const ErrorContent = ({
   const { language } = useLanguage();
   return (
     <section className={`error ${className}`}>
-      <Img className="emoji" src="sad_smiley.png" alt={language.errorAltText} />
+      <Img
+        className="emoji"
+        src="/images/sad_smiley.png"
+        alt={language.errorAltText}
+      />
       <LayoutElement as="header" ariaLabel={language.error}>
         <h2 className="error-info">{errorText}</h2>
       </LayoutElement>

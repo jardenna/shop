@@ -32,7 +32,7 @@ const ProductCardLeft = ({
           className={status.toLowerCase()}
         />
         <div>
-          <Img alt="" src="uploads/image.jpg" />
+          <Img alt="" src="/images/uploads/image.jpg" />
         </div>
         <div>
           <h2 className="admin-card-title">{name}</h2>
