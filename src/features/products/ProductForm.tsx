@@ -1,4 +1,5 @@
 import { Product, ProductRequest } from '../../app/api/apiTypes';
+import Button from '../../components/Button';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/Form';
@@ -7,10 +8,12 @@ import Checkbox, {
 } from '../../components/formElements/Checkbox';
 import Input from '../../components/formElements/Input';
 import Textarea from '../../components/formElements/Textarea';
+import Icon from '../../components/icons/Icon';
 import Img from '../../components/Img';
 import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
 import StatusInputs from '../../components/StatusInputs';
 import useFormValidation from '../../hooks/useFormValidation';
+import { BtnVariant, IconName } from '../../types/enums';
 import useLanguage from '../language/useLanguage';
 import { useUploadImageMutation } from '../uploadImageApiSlice';
 import { useCreateProductMutation } from './productApiSlice';
@@ -61,7 +64,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
     errors,
     onCustomChange,
     filesData,
-    previewUrls,
+    previewData,
   } = useFormValidation({
     initialState,
     callback: handleSubmitProduct,
@@ -123,8 +126,24 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
           value=""
         />
 
-        {previewUrls.map((url, idx) => (
-          <Img key={idx} src={url} alt="" />
+        {previewData.map((preview, idx) => (
+          <div key={idx} className="flex">
+            <Img src={preview.url} alt="" />
+            <div>
+              <span>{preview.name}</span>
+              <span>{preview.size}</span>
+            </div>
+            <Button
+              variant={BtnVariant.Ghost}
+              onClick={() => {
+                console.log(1);
+              }}
+              ariaLabel={language.delete}
+              className="btn-close"
+            >
+              <Icon iconName={IconName.Close} title={language.delete} />
+            </Button>
+          </div>
         ))}
 
         <Input

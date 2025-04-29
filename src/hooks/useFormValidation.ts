@@ -34,9 +34,10 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const inputRefs = useRef<Record<string, HTMLInputElement | null>>({});
-
   const [filesData, setFilesData] = useState<File[]>([]);
-  const [previewUrls, setPreviewUrls] = useState<string[]>([]);
+  const [previewData, setPreviewData] = useState<
+    { name: string; size: string; url: string }[]
+  >([]);
 
   useEffect(() => {
     if (isSubmitting) {
@@ -53,9 +54,17 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
       const selectedFiles = event.target.files;
       if (selectedFiles) {
         setFilesData(Array.from(selectedFiles));
-        setPreviewUrls(
-          Array.from(selectedFiles).map((file) => URL.createObjectURL(file)),
-        );
+
+        const fileArray = Array.from(selectedFiles);
+        const formatBytes = (bytes: number) => `${Math.round(bytes / 1000)} KB`;
+
+        const previews = fileArray.map((file) => ({
+          url: URL.createObjectURL(file),
+          name: file.name,
+          size: formatBytes(file.size),
+        }));
+
+        setPreviewData(previews);
       }
     },
     [],
@@ -204,7 +213,7 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
     onClearAllValues,
     inputRefs,
     filesData,
-    previewUrls,
+    previewData,
   };
 }
 
