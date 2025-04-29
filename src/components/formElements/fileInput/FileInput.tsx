@@ -1,21 +1,18 @@
 import { FileName } from '../../../app/api/apiTypes';
-import { PreviewImg } from '../../../hooks/useFormValidation';
+import { IconName } from '../../../types/enums';
 import { ChangeInputType } from '../../../types/types';
+import Icon from '../../icons/Icon';
 import Input from '../Input';
 import './_file-input.scss';
-import Preview from './Preview';
+import Preview, { PreviewProps } from './Preview';
 
-type FileInputProps = {
-  ariaLabel: string;
+type FileInputProps = PreviewProps & {
   id: string;
   labelText: string;
   name: FileName;
-  previewData: PreviewImg[];
-  title: string;
   multiple?: boolean;
   required?: boolean;
   onChange: (event: ChangeInputType) => void;
-  onRemoveImg: () => void;
 };
 
 const FileInput = ({
@@ -42,6 +39,11 @@ const FileInput = ({
       labelText={labelText}
     />
 
+    <div className="file-upload-btn">
+      <Icon iconName={IconName.Upload} title="upload" />
+      <span>Browse images</span>
+      <span>Files suported: .jpg, .png , webp</span>
+    </div>
     <Preview
       previewData={previewData}
       title={title}

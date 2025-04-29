@@ -91,6 +91,7 @@ export enum IconName {
   Success = 'success',
   Trash = 'trach',
   Undo = 'undo',
+  Upload = 'upload',
   User = 'user',
   Users = 'users',
   Warning = 'warning',

@@ -4,7 +4,7 @@ import Button from '../../Button';
 import Icon from '../../icons/Icon';
 import Img from '../../Img';
 
-type PreviewProps = {
+export type PreviewProps = {
   ariaLabel: string;
   previewData: PreviewImg[];
   title: string;
@@ -18,11 +18,11 @@ const Preview = ({
   previewData,
 }: PreviewProps) =>
   previewData.map((preview) => (
-    <div key={preview.name} className="flex">
-      <Img src={preview.url} alt="" />
-      <div>
+    <div key={preview.name} className="preview-container">
+      <Img className="preview-img" src={preview.url} alt="" />
+      <div className="preview-info">
         <span>{preview.name}</span>
-        <span>{preview.size}</span>
+        <span className="preview-size">{preview.size}</span>
       </div>
       <Button
         variant={BtnVariant.Ghost}
