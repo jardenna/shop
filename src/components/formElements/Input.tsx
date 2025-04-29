@@ -17,6 +17,7 @@ export type InputProps = {
   max?: number;
   maxLength?: number;
   min?: number;
+  multiple?: boolean;
   placeholder?: string;
   ref?: RefObject<HTMLInputElement | null>;
   required?: boolean;
@@ -41,6 +42,7 @@ const Input = ({
   onChange,
   onBlur,
   min,
+  multiple,
   max,
   placeholder,
   maxLength,
@@ -77,6 +79,7 @@ const Input = ({
       )}
       <input
         ref={ref}
+        multiple={multiple}
         type={type || 'text'}
         name={name}
         checked={checked}

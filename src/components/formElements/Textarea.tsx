@@ -4,7 +4,16 @@ import { InputProps } from './Input';
 
 type OmittedProps = Omit<
   InputProps,
-  'className' | 'type' | 'checked' | 'placeholder' | 'autoComplete' | 'onChange'
+  | 'className'
+  | 'type'
+  | 'checked'
+  | 'placeholder'
+  | 'autoComplete'
+  | 'onChange'
+  | 'min'
+  | 'max'
+  | 'maxLength'
+  | 'multiple'
 >;
 type TextareaProps = OmittedProps & {
   onChange: (event: ChangeInputType) => void;

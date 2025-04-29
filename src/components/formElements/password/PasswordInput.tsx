@@ -9,7 +9,7 @@ import PasswordPopupList, { PasswordRulesProps } from './PasswordPopupList';
 
 type OmittedInputProps = Omit<
   InputProps,
-  'checked' | 'min' | 'max' | 'maxLength'
+  'checked' | 'min' | 'max' | 'maxLength' | 'multiple'
 >;
 
 type PasswordInputProps = OmittedInputProps & {
