@@ -1,19 +1,16 @@
 import { Product, ProductRequest } from '../../app/api/apiTypes';
-import Button from '../../components/Button';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/Form';
 import Checkbox, {
   CheckboxItems,
 } from '../../components/formElements/Checkbox';
+import FileInput from '../../components/formElements/fileInput/FileInput';
 import Input from '../../components/formElements/Input';
 import Textarea from '../../components/formElements/Textarea';
-import Icon from '../../components/icons/Icon';
-import Img from '../../components/Img';
 import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
 import StatusInputs from '../../components/StatusInputs';
 import useFormValidation from '../../hooks/useFormValidation';
-import { BtnVariant, IconName } from '../../types/enums';
 import useLanguage from '../language/useLanguage';
 import { useUploadImageMutation } from '../uploadImageApiSlice';
 import { useCreateProductMutation } from './productApiSlice';
@@ -115,36 +112,20 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
       submitBtnLabel={id ? language.save : language.create}
     >
       <FieldSet legendText="Product information">
-        <Input
-          type="file"
+        <FileInput
           onChange={onChange}
           multiple
           required
           name="images"
           id="images"
           labelText="images"
-          value=""
+          previewData={previewData}
+          title={language.delete}
+          ariaLabel={language.delete}
+          onRemoveImg={() => {
+            console.log(1);
+          }}
         />
-
-        {previewData.map((preview, idx) => (
-          <div key={idx} className="flex">
-            <Img src={preview.url} alt="" />
-            <div>
-              <span>{preview.name}</span>
-              <span>{preview.size}</span>
-            </div>
-            <Button
-              variant={BtnVariant.Ghost}
-              onClick={() => {
-                console.log(1);
-              }}
-              ariaLabel={language.delete}
-              className="btn-close"
-            >
-              <Icon iconName={IconName.Close} title={language.delete} />
-            </Button>
-          </div>
-        ))}
 
         <Input
           value={values.productName}

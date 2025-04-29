@@ -5,6 +5,8 @@ export type KeyValuePair<T> = {
   [key: string]: T;
 };
 
+export type PreviewImg = { name: string; size: string; url: string };
+
 export type ValidationErrors = {
   [key: string]: string;
 };
@@ -35,9 +37,7 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
   const [isFocused, setIsFocused] = useState(false);
   const inputRefs = useRef<Record<string, HTMLInputElement | null>>({});
   const [filesData, setFilesData] = useState<File[]>([]);
-  const [previewData, setPreviewData] = useState<
-    { name: string; size: string; url: string }[]
-  >([]);
+  const [previewData, setPreviewData] = useState<PreviewImg[]>([]);
 
   useEffect(() => {
     if (isSubmitting) {

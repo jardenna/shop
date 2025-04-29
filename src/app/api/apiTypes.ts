@@ -213,4 +213,4 @@ export type GetSortedProductsResponse = DefaultResponseType & {
   product: Product[];
 };
 
-export type FileUploadNameType = 'image';
+export type FileName = 'images';
