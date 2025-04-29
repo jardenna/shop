@@ -137,7 +137,13 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
           onChange={onChange}
           required
         />
-
+        <Textarea
+          value={values.description}
+          name="description"
+          id="description"
+          labelText="Description"
+          onChange={onChange}
+        />
         <Input
           value={values.brand}
           id="brand"
@@ -147,15 +153,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
           onChange={onChange}
           required
         />
-        <Input
-          value={values.price}
-          id="price"
-          name="price"
-          errorText={language[errors.price]}
-          labelText="price"
-          onChange={onChange}
-          required
-        />
+
         <Input
           value={values.material}
           id="material"
@@ -165,12 +163,14 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
           onChange={onChange}
           required
         />
+      </FieldSet>
+      <FieldSet legendText="pricing">
         <Input
-          value={values.quantity}
-          id="quantity"
-          name="quantity"
-          errorText={language[errors.quantity]}
-          labelText="quantity"
+          value={values.price}
+          id="price"
+          name="price"
+          errorText={language[errors.price]}
+          labelText="price"
           onChange={onChange}
           required
         />
@@ -182,25 +182,15 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
           labelText="discount"
           onChange={onChange}
         />
-
-        <Textarea
-          value={values.description}
-          name="description"
-          id="description"
-          labelText="Description"
-          onChange={onChange}
-        />
       </FieldSet>
-      <fieldset>
-        <legend>Choose an option</legend>
+
+      <FieldSet legendText="Product Variants">
         <Checkbox
           onChange={onChange}
           values={values.sizes}
           checkBoxList={checkboxItems}
           name="sizes"
         />
-      </fieldset>
-      <FieldSet legendText="Product Variants">
         <Selectbox
           id="colors"
           name="colors"
@@ -228,6 +218,18 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
           selectedDate={selectedDate}
           timeValue={timeValue}
           onTimeChange={handleTimeChange}
+        />
+      </FieldSet>
+
+      <FieldSet legendText="Inventory">
+        <Input
+          value={values.quantity}
+          id="quantity"
+          name="quantity"
+          errorText={language[errors.quantity]}
+          labelText="quantity"
+          onChange={onChange}
+          required
         />
       </FieldSet>
     </Form>
