@@ -107,7 +107,10 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
     });
   }
 
-  const onCustomChange = (name: string, value: Date | string | number) => {
+  const onCustomChange = (
+    name: string,
+    value: Date | string | number | (string | number)[],
+  ) => {
     if (isArray) {
       setValues({
         ...values,

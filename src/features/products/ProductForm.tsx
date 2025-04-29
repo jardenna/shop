@@ -34,7 +34,6 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
     { label: 'S' },
     { label: 'M' },
     { label: 'L' },
-    { label: 'X' },
     { label: 'XL' },
   ];
 
@@ -67,13 +66,21 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
     initialState,
     callback: handleSubmitProduct,
   });
-
+  // const [items, setItems] = useState<OptionType[]>();
   const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
     useDatePicker({ initialTime: selectedTime });
 
   const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
     onCustomChange(name, selectedOptions.value);
   };
+
+  const handleSelectColors = (name: string, selectedOptions: OptionType[]) => {
+    const x = selectedOptions.map((option) => option.value);
+
+    onCustomChange(name, x);
+  };
+
+  console.log(values);
 
   async function handleSubmitProduct() {
     try {
@@ -199,6 +206,9 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
           labelText="Colors"
           options={colorOptions}
           isSearchable
+          onChange={(item: OptionType[]) => {
+            handleSelectColors('colors', item);
+          }}
         />
       </FieldSet>
       <FieldSet legendText="Product status">

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { MultiValue } from 'react-select';
 import Selectbox, { OptionType } from './Selectbox';
 
@@ -6,6 +5,7 @@ type MultiSelectboxProps = {
   id: string;
   labelText: string;
   name: string;
+  onChange: any;
   options: MultiValue<OptionType>;
   defaultValue?: OptionType;
   isSearchable?: boolean;
@@ -18,30 +18,21 @@ const MultiSelectbox = ({
   options,
   defaultValue,
   isSearchable,
-}: MultiSelectboxProps) => {
-  const [, setItems] = useState<OptionType[] | OptionType>();
-
-  const handleOption = (selections: any) => {
-    setItems(selections);
-  };
-
-  return (
-    <section>
-      <Selectbox
-        isMulti
-        closeMenuOnSelect={false}
-        isSearchable={isSearchable}
-        name={name}
-        options={options}
-        onChange={(selections) => {
-          handleOption(selections);
-        }}
-        defaultValue={defaultValue || null}
-        id={id}
-        labelText={labelText}
-      />
-    </section>
-  );
-};
+  onChange,
+}: MultiSelectboxProps) => (
+  <section>
+    <Selectbox
+      isMulti
+      closeMenuOnSelect={false}
+      isSearchable={isSearchable}
+      name={name}
+      options={options}
+      onChange={onChange}
+      defaultValue={defaultValue || null}
+      id={id}
+      labelText={labelText}
+    />
+  </section>
+);
 
 export default MultiSelectbox;
