@@ -282,11 +282,60 @@ const deleteSubCategory = asyncHandler(async (req, res) => {
   res.json({ success: true, message: 'SubCategory deleted successfully' });
 });
 
+// @desc    Get subcategories with parent category
+// @route   /api/subcategories/with-parent
+// @method  Get
+// @access  Public
+const getSubCategoriesWithParent = asyncHandler(async (req, res) => {
+  const subCategories = await SubCategory.aggregate([
+    {
+      $lookup: {
+        from: 'categories', // Collection name for categories
+        localField: 'category',
+        foreignField: '_id',
+        as: 'parentCategory',
+      },
+    },
+    {
+      $unwind: {
+        path: '$parentCategory',
+        preserveNullAndEmptyArrays: true, // Allow subcategories without a parent category
+      },
+    },
+    {
+      $project: {
+        id: '$_id',
+        label: '$subCategoryName', // Use subCategoryName as the label
+        value: '$_id', // Use _id as the value
+        parentCategoryName: '$parentCategory.categoryName',
+        _id: 0,
+      },
+    },
+    {
+      $addFields: {
+        fullCategoryPath: {
+          $cond: {
+            if: { $ifNull: ['$parentCategoryName', false] },
+            then: { $concat: ['$parentCategoryName', ' / ', '$label'] },
+            else: '$label',
+          },
+        },
+      },
+    },
+  ]);
+
+  res.status(200).json({
+    success: true,
+    subCategories,
+  });
+});
+
 export {
   checkScheduled,
   createSubCategory,
   deleteSubCategory,
   getAllSubCategories,
+  getSubCategoriesWithParent,
   getSubCategoryById,
   updateSubCategory,
 };

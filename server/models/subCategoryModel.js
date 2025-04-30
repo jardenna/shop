@@ -21,6 +21,18 @@ const subCategorySchema = new mongoose.Schema(
   { timestamps: true },
 );
 
+// Drop the old single-field index on subCategoryName if it exists
+subCategorySchema.pre('save', async function (next) {
+  const collection = mongoose.connection.collections['subcategories'];
+  if (collection) {
+    const indexes = await collection.indexes();
+    if (indexes.some((index) => index.name === 'subCategoryName_1')) {
+      await collection.dropIndex('subCategoryName_1');
+    }
+  }
+  next();
+});
+
 // Make subCategoryName + category unique (case-insensitive)
 subCategorySchema.set('collation', { locale: 'en', strength: 2 });
 subCategorySchema.index({ subCategoryName: 1, category: 1 }, { unique: true });

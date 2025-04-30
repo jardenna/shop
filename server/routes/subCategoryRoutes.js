@@ -4,6 +4,7 @@ import {
   createSubCategory,
   deleteSubCategory,
   getAllSubCategories,
+  getSubCategoriesWithParent,
   getSubCategoryById,
   updateSubCategory,
 } from '../controllers/subCategoryController.js';
@@ -14,6 +15,12 @@ import {
 } from '../middleware/authMiddleware.js';
 import languageMiddleware from '../middleware/languageMiddleware.js';
 const router = express.Router();
+
+// Static route for getting subcategories with parent
+// @route   GET /api/subcategories/with-parent
+// @desc    Get subcategories with parent category
+// @access  Public
+router.get('/with-parent', getSubCategoriesWithParent);
 
 router.get('/scheduled', checkScheduled);
 router

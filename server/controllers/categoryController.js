@@ -71,7 +71,13 @@ const getAllCategories = asyncHandler(async (req, res) => {
     return res.status(404).json({ message: t('noData', req.lang) });
   }
 
-  res.status(200).json({ success: true, categories: formattedCategories });
+  // Include parent category IDs in the response
+  const categoriesWithParent = formattedCategories.map((category) => ({
+    ...category,
+    parentCategoryId: category.parentCategory || null, // Add parentCategoryId if it exists
+  }));
+
+  res.status(200).json({ success: true, categories: categoriesWithParent });
 });
 
 // @desc    Check if category is scheduled
