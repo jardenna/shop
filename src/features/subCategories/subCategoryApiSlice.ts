@@ -4,6 +4,7 @@ import {
   DefaultResponse,
   ScheduledResponse,
   SubCategoriesResponse,
+  SubCategoriesWithParent,
   SubCategoryResponse,
   UpdateSubCategoryRequest,
   UpdateSubCategoryResponse,
@@ -14,6 +15,10 @@ const subCategoryApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllSubCategories: builder.query<SubCategoriesResponse, void>({
       query: () => subCategoryUrl,
+      providesTags: [TagTypesEnum.SubCategories],
+    }),
+    getSubCategoriesWithParent: builder.query<SubCategoriesWithParent[], void>({
+      query: () => `${subCategoryUrl}/with-parent`,
       providesTags: [TagTypesEnum.SubCategories],
     }),
     getScheduled: builder.query<ScheduledResponse, void>({
@@ -27,7 +32,7 @@ const subCategoryApiSlice = apiSlice.injectEndpoints({
     deleteSubCategory: builder.mutation<DefaultResponse, string>({
       query: (id) => ({
         url: `${subCategoryUrl}/${id}`,
-        method: 'Delete',
+        method: 'DELETE',
         body: id,
       }),
     }),
@@ -63,4 +68,5 @@ export const {
   useUpdateSubCategoryMutation,
   useCreateSubCategoryMutation,
   useGetScheduledQuery,
+  useGetSubCategoriesWithParentQuery,
 } = subCategoryApiSlice;

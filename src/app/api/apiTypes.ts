@@ -130,6 +130,12 @@ export type SubCategoriesResponse = DefaultResponseType & {
   subCategories: SubCategoryResponse[];
 };
 
+export type SubCategoriesWithParent = {
+  label: string;
+  parentCategoryName: string;
+  value: string;
+};
+
 export type UpdateSubCategoryResponse = {
   category: Category;
   subCategory: SubCategoryResponse;

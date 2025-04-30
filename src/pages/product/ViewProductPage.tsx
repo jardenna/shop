@@ -41,8 +41,6 @@ const ViewProductPage = () => {
 
   const statusMessage = `${language.categoryIs} ${subCategoryStatus}`;
 
-  console.log(product);
-
   return (
     <section className="page">
       {isLoading && <SkeletonPage />}

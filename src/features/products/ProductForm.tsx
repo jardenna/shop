@@ -14,6 +14,7 @@ import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
 import StatusInputs from '../../components/StatusInputs';
 import useFormValidation from '../../hooks/useFormValidation';
 import useLanguage from '../language/useLanguage';
+import { useGetSubCategoriesWithParentQuery } from '../subCategories/subCategoryApiSlice';
 import { useUploadImageMutation } from '../uploadImageApiSlice';
 import { useCreateProductMutation } from './productApiSlice';
 
@@ -24,6 +25,17 @@ type ProductFormProps = {
 
 const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
   const { language } = useLanguage();
+  const formRef = useRef<HTMLFormElement | null>(null);
+
+  const { data: subCategories, isLoading } =
+    useGetSubCategoriesWithParentQuery();
+
+  const parentCategoryOptions = subCategories?.map(
+    ({ label, parentCategoryName, value }) => ({
+      label: `${parentCategoryName} / ${label}`,
+      value,
+    }),
+  );
   const [createProduct] = useCreateProductMutation();
 
   const colorOptions = [
@@ -82,6 +94,10 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
     onCustomChange(name, selectedValues);
   };
 
+  const handleSelectCat = (name: string, selectedOptions: OptionType) => {
+    onCustomChange(name, selectedOptions.value);
+  };
+
   async function handleSubmitProduct() {
     try {
       if (filesData.length === 0) {
@@ -99,7 +115,6 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
       const productData = {
         ...values,
         images: imageUrl,
-        subCategory: '6800a3996970b670bca671bb',
       };
 
       await createProduct(productData).unwrap();
@@ -107,7 +122,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
       console.log(error);
     }
   }
-  const formRef = useRef<HTMLFormElement | null>(null);
+
   return (
     <Form
       onSubmit={onSubmit}
@@ -243,15 +258,16 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
                 labelText={language.category}
               >
                 <Selectbox
-                  id="colors"
+                  id="subCategory"
                   ref={formRef}
-                  name="colors"
+                  name="subCategory"
                   labelText={language.category}
-                  options={colorOptions}
+                  options={parentCategoryOptions ? parentCategoryOptions : []}
+                  isLoading={isLoading}
                   inputHasNoLabel
                   isSearchable
-                  onChange={(values: OptionType[]) => {
-                    handleSelectColors('colors', values);
+                  onChange={(selectedOptions: OptionType) => {
+                    handleSelectCat('subCategory', selectedOptions);
                   }}
                 />
               </AddToInput>

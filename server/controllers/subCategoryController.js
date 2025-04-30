@@ -285,7 +285,7 @@ const deleteSubCategory = asyncHandler(async (req, res) => {
 // @desc    Get subcategories with parent category
 // @route   /api/subcategories/with-parent
 // @method  Get
-// @access  Public
+// @access  Private for employees
 const getSubCategoriesWithParent = asyncHandler(async (req, res) => {
   const subCategories = await SubCategory.aggregate([
     {
@@ -304,30 +304,15 @@ const getSubCategoriesWithParent = asyncHandler(async (req, res) => {
     },
     {
       $project: {
-        id: '$_id',
         label: '$subCategoryName', // Use subCategoryName as the label
         value: '$_id', // Use _id as the value
         parentCategoryName: '$parentCategory.categoryName',
         _id: 0,
       },
     },
-    {
-      $addFields: {
-        fullCategoryPath: {
-          $cond: {
-            if: { $ifNull: ['$parentCategoryName', false] },
-            then: { $concat: ['$parentCategoryName', ' / ', '$label'] },
-            else: '$label',
-          },
-        },
-      },
-    },
   ]);
 
-  res.status(200).json({
-    success: true,
-    subCategories,
-  });
+  res.status(200).json(subCategories);
 });
 
 export {
