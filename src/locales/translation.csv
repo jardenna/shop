@@ -114,6 +114,7 @@ name;Name;Navn
 newCategoryCreated;New category created;Ny kategori blev oprettet
 noData;No data found;Ingen data fundet
 noEmail;Please enter an email;Indtast venligst en e-mail
+noOptions;No optionsl;Ingen valgmuligheder
 noPassword;Please enter a password;Indtast venligst en adgangskode
 noProduct;Product not found;Produkt blev ikke fundet
 notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 

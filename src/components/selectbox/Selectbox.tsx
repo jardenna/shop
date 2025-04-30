@@ -5,6 +5,7 @@ import Select, {
   OptionsOrGroups,
   SingleValue,
 } from 'react-select';
+import useLanguage from '../../features/language/useLanguage';
 import FormError from '../formElements/FormError';
 import FormLabel from '../formElements/FormLabel';
 import './_select-box.scss';
@@ -49,6 +50,7 @@ const Selectbox = ({
   ref,
   isFixed = true,
 }: SelectboxProps) => {
+  const { language } = useLanguage();
   const handleChange = (newValue: SelectedOption) => {
     if (isMulti) {
       onChange(newValue as OptionType);
@@ -107,6 +109,8 @@ const Selectbox = ({
           isDisabled={isDisabled}
           menuPlacement="auto"
           closeMenuOnSelect={closeMenuOnSelect}
+          placeholder=""
+          noOptionsMessage={() => language.noOptions}
         />
       </div>
     </div>
