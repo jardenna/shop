@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, RefObject } from 'react';
 import useLanguage from '../features/language/useLanguage';
 import LayoutElement from '../layout/LayoutElement';
 import { BtnVariant } from '../types/enums';
@@ -11,6 +11,7 @@ type FormProps = {
   ariaLabel?: string;
   className?: string;
   isLoading?: boolean;
+  ref?: RefObject<HTMLFormElement | null>;
   onCancel?: () => void;
   onSubmit: (event: FormEventType) => void;
 };
@@ -23,11 +24,12 @@ const Form = ({
   isLoading,
   ariaLabel,
   onCancel,
+  ref,
 }: FormProps) => {
   const { language } = useLanguage();
 
   return (
-    <form onSubmit={onSubmit} noValidate className={className}>
+    <form onSubmit={onSubmit} noValidate className={className} ref={ref}>
       {children}
       <LayoutElement className="form-footer" ariaLabel={language.form}>
         {onCancel && (

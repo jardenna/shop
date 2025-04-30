@@ -1,3 +1,4 @@
+import { RefObject } from 'react';
 import { Status } from '../app/api/apiTypes';
 import useLanguage from '../features/language/useLanguage';
 import { ChangeInputType } from '../types/types';
@@ -15,6 +16,7 @@ export type StatusInputsProps = {
   selectedDate: Date;
   status: string;
   timeValue: string;
+  ref?: RefObject<HTMLFormElement | null>;
   onSelectDate: (date: Date) => void;
   onSelectStatus: (selectedOptions: OptionType) => void;
   onTimeChange: (event: ChangeInputType) => void;
@@ -28,6 +30,7 @@ const StatusInputs = ({
   onTimeChange,
   onSelectStatus,
   defaultStatusValue,
+  ref,
 }: StatusInputsProps) => {
   const { language } = useLanguage();
   const statusOptions: StatusOptions[] = [
@@ -54,6 +57,7 @@ const StatusInputs = ({
         onChange={onSelectStatus}
         name="status"
         labelText={language.categoryStatus}
+        ref={ref}
       />
       {status === 'Scheduled' && (
         <>

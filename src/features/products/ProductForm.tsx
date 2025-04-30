@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { Product, ProductRequest } from '../../app/api/apiTypes';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
@@ -106,11 +107,12 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
       console.log(error);
     }
   }
-
+  const formRef = useRef<HTMLFormElement | null>(null);
   return (
     <Form
       onSubmit={onSubmit}
       submitBtnLabel={id ? language.save : language.create}
+      ref={formRef}
     >
       <div className="page-card">
         <FieldSet legendText="Product image">
@@ -172,29 +174,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
               </div>
             </FieldSet>
           </div>
-          <div className="page-card">
-            <FieldSet legendText="Product Variants" className="row">
-              <div>Sizes</div>
-              <Checkbox
-                onChange={onChange}
-                values={values.sizes}
-                checkBoxList={checkboxItems}
-                name="sizes"
-              />
-              <Selectbox
-                id="colors"
-                name="colors"
-                labelText="Colors"
-                options={colorOptions}
-                isSearchable
-                closeMenuOnSelect={false}
-                isMulti
-                onChange={(values: OptionType[]) => {
-                  handleSelectColors('colors', values);
-                }}
-              />
-            </FieldSet>
-          </div>
+
           <div className="page-card">
             <FieldSet legendText="Inventory">
               <Input
@@ -211,7 +191,33 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
         </div>
         <div className="flex-1">
           <div className="page-card">
-            <FieldSet legendText="pricing">
+            <FieldSet legendText="Product Variants">
+              <div>
+                <span className="form-label-container">Sizes</span>
+                <Checkbox
+                  onChange={onChange}
+                  values={values.sizes}
+                  checkBoxList={checkboxItems}
+                  name="sizes"
+                />
+              </div>
+              <Selectbox
+                ref={formRef}
+                id="colors"
+                name="colors"
+                labelText="Colors"
+                options={colorOptions}
+                isSearchable
+                closeMenuOnSelect={false}
+                isMulti
+                onChange={(values: OptionType[]) => {
+                  handleSelectColors('colors', values);
+                }}
+              />
+            </FieldSet>
+          </div>
+          <div className="page-card">
+            <FieldSet legendText="pricing" className="row">
               <Input
                 value={values.price}
                 id="price"
@@ -236,6 +242,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
               <AddToInput ariaLabel="test" id="colors" labelText="Category">
                 <Selectbox
                   id="colors"
+                  ref={formRef}
                   name="colors"
                   labelText="Category"
                   options={colorOptions}
@@ -248,6 +255,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
               </AddToInput>
 
               <StatusInputs
+                ref={formRef}
                 defaultStatusValue={{
                   label: language[values.productStatus.toLowerCase()],
                   value: values.productStatus,

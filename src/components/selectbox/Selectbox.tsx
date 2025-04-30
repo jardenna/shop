@@ -7,6 +7,7 @@ import Select, {
 import FormError from '../formElements/FormError';
 import FormLabel from '../formElements/FormLabel';
 import './_select-box.scss';
+import { RefObject } from 'react';
 
 export type OptionType = {
   label: string;
@@ -23,9 +24,11 @@ type SelectboxProps = {
   errorText?: string;
   inputHasNoLabel?: boolean;
   isDisabled?: boolean;
+  isFixed?: boolean;
   isMulti?: boolean;
   isSearchable?: boolean;
   placeholder?: string;
+  ref?: RefObject<HTMLFormElement | null>;
   required?: boolean;
   onChange: (value: any) => void;
 };
@@ -45,12 +48,22 @@ const Selectbox = ({
   labelText,
   errorText,
   inputHasNoLabel,
+  ref,
+  isFixed = true,
 }: SelectboxProps) => {
   const handleChange = (newValue: SelectedOption) => {
     if (isMulti) {
       onChange(newValue as OptionType);
     } else {
       onChange(newValue as OptionType);
+    }
+  };
+
+  const closeMenuOnScroll = () => {
+    if (ref) {
+      return true;
+    } else {
+      return false;
     }
   };
 
@@ -72,6 +85,10 @@ const Selectbox = ({
       )}
       <div className="select-box">
         <Select
+          isClearable
+          styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
+          menuPortalTarget={document.body}
+          menuPosition={isFixed ? 'fixed' : 'absolute'}
           theme={(theme) => ({
             ...theme,
             colors: {
@@ -80,6 +97,7 @@ const Selectbox = ({
             },
           })}
           classNamePrefix="select-box"
+          closeMenuOnScroll={closeMenuOnScroll}
           isMulti={isMulti}
           options={options}
           aria-invalid={errorText ? true : undefined}
