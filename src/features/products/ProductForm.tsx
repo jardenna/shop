@@ -238,7 +238,11 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
           </section>
           <section className="page-card">
             <FieldSet legendText={language.details}>
-              <AddToInput ariaLabel="test" id="colors" labelText="Category">
+              <AddToInput
+                ariaLabel="test"
+                id="colors"
+                labelText={language.category}
+              >
                 <Selectbox
                   id="colors"
                   ref={formRef}

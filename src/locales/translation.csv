@@ -3,12 +3,14 @@ about;About;Profil
 account;Account;Konto
 actionNotAllowedForAdmin;Admin cannot be deleted;Denne handling er ikke tilladt for administrator
 additionalInfo;Additional info;Supplerende information
+addToStock;Add to stock;Tilføj til lager
 admin;Admin;Admin
 allowedFormats;Allowed formats;Tilladte formater
 asc;ascending;stigende
 bag;Bag;Indkøbskurv
 black;Black;Sort
 brand;Brand;Mærke
+browseImages;Browse images;Vælg produkt billeder
 calendar;Calendar;Kalender
 cancel;Cancel;Annuller
 cannotDeleteAdmin;This action is not allowed for admin;Admin bruger kan ikke slettes
@@ -22,7 +24,6 @@ categoryList;Category list;Kategori-liste
 categoryName;Category name;Kategori navn
 categoryNotFound;Category not found;Kategori findes ikke
 categoryStatus;Category status;Kategori status
-productStatus;Product status;Produkt status
 categoryUpdated;Category updated;Kategori opdateret
 circelChevronRight;Circel chevronRight;Circel chevronRight
 clearFilters;Clear filters;Ryd filtre
@@ -43,6 +44,7 @@ createNewProduct;Create new product;Opret nyt produkt
 criterionMet;Criterion met;Kriterium opfyldt
 criterionNotMet;Criterion not met;Kriterium ikke opfyldt
 currency;Currency;Valuta
+currency;Currency;Valuta
 customersList;Customers list;Kundeliste
 dashboard;Dashboard;Dashboard
 date;Date;Dato
@@ -53,6 +55,7 @@ deleteOrReassignCategory;Delete or reassign associated  products before deleting
 deleteUser;Delete user;Slet bruger
 desc;descending;faldende
 description;Description;Beskrivelse
+details;Details;Detaljer
 discount;Discount;Rabat
 edit;Edit;Opdater
 editCategory;Edit category;Opdater kategori
@@ -65,6 +68,7 @@ errorAltText;A really guilty emoji;En meget skyldig emoji
 expandMenu;Expand menu;Udvid menu
 eye;Eye;Øje
 eyeClosed;Closed eye;Lukket øje
+filesSuported;Files suported;Tilladte filer
 fillAll;Please fill all inputs;Udfyld venligst alle felter
 filter;Filter;Filtrer
 filterRow;Filter row;Filtrer række
@@ -85,6 +89,7 @@ inactive;Inactive;Inaktiv
 invalidPassword;Invalid password;Ugyldig adgangskode
 invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for planlagt dato
 invalidUserData;Invalid user data;Ugyldig bruger data
+language;Language;Sprog
 language;Language;Sprog
 loading;Loading;Loading
 lock;Lock;Hængelås
@@ -129,20 +134,28 @@ passwordUppercase;Password should contain at least one uppercase letter;Adgangsk
 pensil;Pensil;Blyant
 pleaseEnter;Please enter;Indsæt venligst
 pleaseEnterCategoryName;Please enter a name for category;Indsæt venligst navn på kategori
-pleaseSelectParentCategory;Please select parent category;Vælg venligst hovedkategori
 pleaseEnterName;Please enter name;Indsæt venligst navn
 pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
 pleaseEnterSubCategoryName;Please enter a subcategory name;Indsæt venligst navn på underkategori
 pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
 pleaseProvideScheduledDate;Please provide a scheduled date;Angiv venligst en planlagt dato
+pleaseSelectParentCategory;Please select parent category;Vælg venligst hovedkategori
 preferences;Preferences;Præferencer
 price;Price;Pris
+pricing;Pricing;Prissætning
+productImages;Product images;Produkt billeder
+productInformation;Product information;Produkt oplysninger
 productList;Product list;Produktliste
 productName;Product name;Produkt navn
+productQuantity;Product quantity;Produkt antal
 products;Products;Produkter
+productStatus;Product status;Produkt status
+productVariants;Product Variants;Produkt varianter
 profile;Profile;Profil
 publish;Publish;Udgiv
+publishDate;Publish date;Udgivelsesdato
 published;Published;Udgivet
+publishTime;Publish time;Udgivelsestidspunkt
 qty;Qty;Antal
 resetFiltersAndSorting;Reset filters and sorting;Nulstil filtre og sortering
 retry;Retry;Forsøg igen
@@ -153,11 +166,7 @@ scheduledDate;Scheduled date;Planlagt dato
 scheduledDateMustBeFuture;Scheduled date must be after now;Planlagt dato skal være efter nu
 scheduledToBePubliched;is scheduled to be published at;er planlagt til udgivelse den 
 search;Search;Søg
-currency;Currency;Valuta
-language;Language;Sprog
 selectPreferences;Select preferred language and currency;Vælg sprog og valuta
-publishDate;Publish date;Udgivelsesdato
-publishTime;Publish time;Udgivelsestidspunkt
 shopNow;Shop now;Køb nu
 showPassword;Show password;Vis adgangskode
 signup;Sign up;Opret bruger
@@ -186,21 +195,14 @@ updatePreferences;Update Preferences;Opdater præferencer
 updateProduct;Update product;Opdater produkt
 updateSubCategory;Update subcategory;Opdater underkategori
 user;User;Bruger
-users;Users;Brugere
 userAlreadyExist;A profile with this email already exists. Try logging in instead;Der findes en profil med denne e-mail. Prøv at logge ind i stedet
 userDeleted;User deleted;Bruger slettet
 userInfo;User info;Bruger info
 username;User name;Brugernavn
+users;Users;Brugere
 users;Users;Brugere
 userUpdated;User updated;Bruger opdateret
 viewCategory;View category;Se kategori
 viewProduct;View product;Se produkt
 warning;Warning;Warning
 welcome;Welcome;Velkommen
-productInformation;Product information;Produkt oplysninger
-productImages;Product images;Produkt billeder
-productQuantity;Product quantity;Produkt antal
-productVariants;Product Variants;Produkt varianter
-pricing;Pricing;Prissætning
-details;Details;Detaljer
-addToStock;Add to stock;Tilføj til lager
