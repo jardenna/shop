@@ -2,6 +2,7 @@ import { Product, ProductRequest } from '../../app/api/apiTypes';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/Form';
+import AddToInput from '../../components/formElements/AddToInput';
 import Checkbox, {
   CheckboxItems,
 } from '../../components/formElements/Checkbox';
@@ -232,6 +233,20 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
           </div>
           <div className="page-card">
             <FieldSet legendText="Organize">
+              <AddToInput ariaLabel="test" id="colors" labelText="Category">
+                <Selectbox
+                  id="colors"
+                  name="colors"
+                  labelText="Category"
+                  options={colorOptions}
+                  inputHasNoLabel
+                  isSearchable
+                  onChange={(values: OptionType[]) => {
+                    handleSelectColors('colors', values);
+                  }}
+                />
+              </AddToInput>
+
               <StatusInputs
                 defaultStatusValue={{
                   label: language[values.productStatus.toLowerCase()],
