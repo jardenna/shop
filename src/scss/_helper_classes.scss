@@ -18,11 +18,18 @@
   @include max-size($medium) {
     flex-direction: column;
   }
-}
 
-.flex-align-right {
-  display: flex;
-  justify-content: flex-end;
+  &.flex-align-start {
+    align-items: flex-start;
+  }
+
+  .flex-1 {
+    flex: 1;
+  }
+
+  .flex-2 {
+    flex: 2;
+  }
 }
 
 .column {
