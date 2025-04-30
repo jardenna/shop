@@ -28,9 +28,7 @@ const UpdateProductPage = () => {
         {product && (
           <>
             <PageHeader heading={`${language.update} ${product.productName}`} />
-            <div className="page-card">
-              <ProductForm selectedProduct={product} id={params.id || null} />
-            </div>
+            <ProductForm selectedProduct={product} id={params.id || null} />
           </>
         )}
       </ErrorBoundary>
