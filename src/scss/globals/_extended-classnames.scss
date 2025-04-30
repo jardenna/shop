@@ -1,11 +1,11 @@
 @use './colors' as *;
-@use './functions' as *;
+@use './variables' as *;
 @use './fonts' as *;
 
 %styled-input {
   background-color: $color-secondary;
   border: 0;
-  min-height: rem(68px);
+  height: $input-height;
   border-radius: 4px;
   color: $color-primary;
   outline: transparent;
