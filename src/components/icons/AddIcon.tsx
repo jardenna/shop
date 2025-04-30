@@ -7,6 +7,7 @@ const AddIcon = ({ size, title, className, ariaHidden }: IconDefaultProps) => (
     width={size}
     height={size}
     className={className}
+    fill="currentcolor"
     viewBox="0 0 18 19"
     fillRule="evenodd"
     strokeLinejoin="round"
