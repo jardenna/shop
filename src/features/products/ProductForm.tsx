@@ -111,126 +111,145 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
       onSubmit={onSubmit}
       submitBtnLabel={id ? language.save : language.create}
     >
-      <FieldSet legendText="Product information">
-        <FileInput
-          onChange={onChange}
-          multiple
-          required
-          name="images"
-          id="images"
-          previewData={previewData}
-          title={language.delete}
-          ariaLabel={language.delete}
-          onRemoveImg={() => {
-            console.log(1);
-          }}
-        />
-
-        <Input
-          value={values.productName}
-          id="productName"
-          name="productName"
-          errorText={language[errors.productName]}
-          labelText={language.categoryName}
-          placeholder={language.categoryName}
-          onChange={onChange}
-          required
-        />
-        <Textarea
-          value={values.description}
-          name="description"
-          id="description"
-          labelText="Description"
-          onChange={onChange}
-        />
-        <Input
-          value={values.brand}
-          id="brand"
-          name="brand"
-          errorText={language[errors.brand]}
-          labelText="brand"
-          onChange={onChange}
-          required
-        />
-
-        <Input
-          value={values.material}
-          id="material"
-          name="material"
-          errorText={language[errors.material]}
-          labelText="material"
-          onChange={onChange}
-          required
-        />
-      </FieldSet>
-      <FieldSet legendText="pricing">
-        <Input
-          value={values.price}
-          id="price"
-          name="price"
-          errorText={language[errors.price]}
-          labelText="price"
-          onChange={onChange}
-          required
-        />
-        <Input
-          type="number"
-          value={values.discount || 0}
-          id="discount"
-          name="discount"
-          labelText="discount"
-          onChange={onChange}
-        />
-      </FieldSet>
-
-      <FieldSet legendText="Product Variants">
-        <Checkbox
-          onChange={onChange}
-          values={values.sizes}
-          checkBoxList={checkboxItems}
-          name="sizes"
-        />
-        <Selectbox
-          id="colors"
-          name="colors"
-          labelText="Colors"
-          options={colorOptions}
-          isSearchable
-          closeMenuOnSelect={false}
-          isMulti
-          onChange={(values: OptionType[]) => {
-            handleSelectColors('colors', values);
-          }}
-        />
-      </FieldSet>
-      <FieldSet legendText="Product status">
-        <StatusInputs
-          defaultStatusValue={{
-            label: language[values.productStatus.toLowerCase()],
-            value: values.productStatus,
-          }}
-          onSelectStatus={(selectedOptions: OptionType) => {
-            handleSelectStatus('productStatus', selectedOptions);
-          }}
-          status={values.productStatus}
-          onSelectDate={handleDaySelect}
-          selectedDate={selectedDate}
-          timeValue={timeValue}
-          onTimeChange={handleTimeChange}
-        />
-      </FieldSet>
-
-      <FieldSet legendText="Inventory">
-        <Input
-          value={values.quantity}
-          id="quantity"
-          name="quantity"
-          errorText={language[errors.quantity]}
-          labelText="quantity"
-          onChange={onChange}
-          required
-        />
-      </FieldSet>
+      <div className="page-card">
+        <FieldSet legendText="Product image">
+          <FileInput
+            onChange={onChange}
+            multiple
+            required
+            name="images"
+            id="images"
+            previewData={previewData}
+            title={language.delete}
+            ariaLabel={language.delete}
+            onRemoveImg={() => {
+              console.log(1);
+            }}
+          />
+        </FieldSet>
+      </div>
+      <div className="flex flex-align-start">
+        <div className="flex-2">
+          <div className="page-card">
+            <FieldSet legendText="Product information">
+              <Input
+                value={values.productName}
+                id="productName"
+                name="productName"
+                errorText={language[errors.productName]}
+                labelText={language.categoryName}
+                placeholder={language.categoryName}
+                onChange={onChange}
+                required
+              />
+              <Textarea
+                value={values.description}
+                name="description"
+                id="description"
+                labelText="Description"
+                onChange={onChange}
+              />
+              <div className="flex">
+                <Input
+                  value={values.brand}
+                  id="brand"
+                  name="brand"
+                  errorText={language[errors.brand]}
+                  labelText="brand"
+                  onChange={onChange}
+                  required
+                />
+                <Input
+                  value={values.material}
+                  id="material"
+                  name="material"
+                  errorText={language[errors.material]}
+                  labelText="material"
+                  onChange={onChange}
+                  required
+                />
+              </div>
+            </FieldSet>
+          </div>
+          <div className="page-card">
+            <FieldSet legendText="Product Variants" className="row">
+              <div>Sizes</div>
+              <Checkbox
+                onChange={onChange}
+                values={values.sizes}
+                checkBoxList={checkboxItems}
+                name="sizes"
+              />
+              <Selectbox
+                id="colors"
+                name="colors"
+                labelText="Colors"
+                options={colorOptions}
+                isSearchable
+                closeMenuOnSelect={false}
+                isMulti
+                onChange={(values: OptionType[]) => {
+                  handleSelectColors('colors', values);
+                }}
+              />
+            </FieldSet>
+          </div>
+          <div className="page-card">
+            <FieldSet legendText="Inventory">
+              <Input
+                value={values.quantity}
+                id="quantity"
+                name="quantity"
+                labelText="quantity add to stock"
+                onChange={onChange}
+              />
+            </FieldSet>
+            Product in stock now: 54 Product in transit: 390 Last time
+            restocked: 24th June, 2022
+          </div>
+        </div>
+        <div className="flex-1">
+          <div className="page-card">
+            <FieldSet legendText="pricing">
+              <Input
+                value={values.price}
+                id="price"
+                name="price"
+                errorText={language[errors.price]}
+                labelText="price"
+                onChange={onChange}
+                required
+              />
+              <Input
+                type="number"
+                value={values.discount || 0}
+                id="discount"
+                name="discount"
+                labelText="discount"
+                onChange={onChange}
+              />
+            </FieldSet>
+          </div>
+          <div className="page-card">
+            <FieldSet legendText="Organize">
+              <StatusInputs
+                defaultStatusValue={{
+                  label: language[values.productStatus.toLowerCase()],
+                  value: values.productStatus,
+                }}
+                onSelectStatus={(selectedOptions: OptionType) => {
+                  handleSelectStatus('productStatus', selectedOptions);
+                }}
+                status={values.productStatus}
+                onSelectDate={handleDaySelect}
+                selectedDate={selectedDate}
+                timeValue={timeValue}
+                onTimeChange={handleTimeChange}
+              />
+            </FieldSet>
+          </div>
+        </div>
+      </div>
     </Form>
   );
 };
