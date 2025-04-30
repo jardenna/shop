@@ -28,6 +28,19 @@ const UpdateProductPage = () => {
         {product && (
           <>
             <PageHeader heading={`${language.update} ${product.productName}`} />
+            <div className="page-card">Product Image</div>
+            <div className="flex flex-align-start">
+              <div className="flex-2">
+                <div className="page-card">Product information</div>
+                <div className="page-card">Product Variants</div>
+                <div className="page-card">Inventory</div>
+              </div>
+              <div className="flex-1">
+                <div className="page-card">Pricing</div>
+                <div className="page-card">Organize</div>
+              </div>
+            </div>
+
             <ProductForm selectedProduct={product} id={params.id || null} />
           </>
         )}
