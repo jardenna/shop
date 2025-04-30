@@ -54,7 +54,7 @@ const ViewSubCategoryPage = () => {
   };
 
   return (
-    <section className="page page-medium">
+    <article className="page page-medium">
       {isLoading && <SkeletonPage />}
       {category && (
         <>
@@ -87,7 +87,7 @@ const ViewSubCategoryPage = () => {
           </div>
         </>
       )}
-    </section>
+    </article>
   );
 };
 

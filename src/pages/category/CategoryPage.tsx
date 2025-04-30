@@ -34,7 +34,7 @@ const CategoryPage = () => {
   });
 
   return (
-    <section className="page page-medium">
+    <article className="page page-medium">
       <PageHeader
         heading={language.categories}
         linkText={language.createNewCategory}
@@ -72,7 +72,7 @@ const CategoryPage = () => {
           }
         </Table>
       </div>
-    </section>
+    </article>
   );
 };
 

@@ -53,7 +53,7 @@ const SubCategoryPage = () => {
   });
 
   return (
-    <section className="page page-medium">
+    <article className="page page-medium">
       <PageHeader
         heading={language.subCategories}
         linkText={language.createNewCategory}
@@ -92,7 +92,7 @@ const SubCategoryPage = () => {
           }
         </Table>
       </div>
-    </section>
+    </article>
   );
 };
 

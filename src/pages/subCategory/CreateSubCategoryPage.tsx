@@ -20,7 +20,7 @@ const CreateSubCategoryPage = () => {
   } = useGetAllCategoriesQuery();
 
   return (
-    <section className="page page-small">
+    <article className="page page-small">
       {isLoading && <SkeletonPage />}
       <PageHeader heading={language.createNewCategory} />
       <ErrorBoundary
@@ -37,7 +37,7 @@ const CreateSubCategoryPage = () => {
           )}
         </div>
       </ErrorBoundary>
-    </section>
+    </article>
   );
 };
 

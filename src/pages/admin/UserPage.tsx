@@ -98,7 +98,7 @@ const UserPage = () => {
   };
 
   return (
-    <section className="page page-medium">
+    <article className="page page-medium">
       <PageHeader heading={language.users} />
       <div className="page-card">
         <Table
@@ -174,7 +174,7 @@ const UserPage = () => {
           }
         </Table>
       </div>
-    </section>
+    </article>
   );
 };
 
