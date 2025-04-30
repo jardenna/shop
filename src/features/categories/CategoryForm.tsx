@@ -100,6 +100,7 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
       >
         <FieldSet legendText={language.categories} hideLegendText>
           <SharedCategoryInputs
+            labelText={language.categoryStatus}
             onCategoryNameChange={onChange}
             categoryNamevalue={values.categoryName}
             categoryNameId="categoryName"

@@ -115,9 +115,9 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
       ref={formRef}
     >
       <div className="flex flex-align-start">
-        <section className="flex-2">
-          <div className="page-card">
-            <FieldSet legendText="Product images">
+        <div className="flex-2">
+          <section className="page-card">
+            <FieldSet legendText={language.productImages}>
               <FileInput
                 onChange={onChange}
                 multiple
@@ -132,9 +132,9 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
                 }}
               />
             </FieldSet>
-          </div>
+          </section>
           <section className="page-card">
-            <FieldSet legendText="Product information">
+            <FieldSet legendText={language.productInformation}>
               <Input
                 value={values.productName}
                 id="productName"
@@ -149,7 +149,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
                 value={values.description}
                 name="description"
                 id="description"
-                labelText="Description"
+                labelText={language.description}
                 onChange={onChange}
               />
               <div className="flex">
@@ -158,7 +158,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
                   id="brand"
                   name="brand"
                   errorText={language[errors.brand]}
-                  labelText="brand"
+                  labelText={language.brand}
                   onChange={onChange}
                   required
                 />
@@ -167,7 +167,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
                   id="material"
                   name="material"
                   errorText={language[errors.material]}
-                  labelText="material"
+                  labelText={language.material}
                   onChange={onChange}
                   required
                 />
@@ -175,24 +175,24 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
             </FieldSet>
           </section>
           <section className="page-card">
-            <FieldSet legendText="Inventory">
+            <FieldSet legendText={language.productQuantity}>
               <Input
                 value={values.quantity}
                 id="quantity"
                 name="quantity"
-                labelText="quantity add to stock"
+                labelText={language.addToStock}
                 onChange={onChange}
               />
             </FieldSet>
             Product in stock now: 54 Product in transit: 390 Last time
             restocked: 24th June, 2022
           </section>
-        </section>
+        </div>
         <div className="flex-1">
           <section className="page-card">
-            <FieldSet legendText="Product Variants">
+            <FieldSet legendText={language.productVariants}>
               <div>
-                <span className="form-label-container">Sizes</span>
+                <span className="form-label-container">{language.sizes}</span>
                 <Checkbox
                   onChange={onChange}
                   values={values.sizes}
@@ -204,7 +204,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
                 ref={formRef}
                 id="colors"
                 name="colors"
-                labelText="Colors"
+                labelText={language.colours}
                 options={colorOptions}
                 isSearchable
                 closeMenuOnSelect={false}
@@ -216,13 +216,13 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
             </FieldSet>
           </section>
           <section className="page-card">
-            <FieldSet legendText="pricing" className="row">
+            <FieldSet legendText={language.pricing} className="row">
               <Input
                 value={values.price}
                 id="price"
                 name="price"
                 errorText={language[errors.price]}
-                labelText="price"
+                labelText={language.price}
                 onChange={onChange}
                 required
               />
@@ -231,19 +231,19 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
                 value={values.discount || 0}
                 id="discount"
                 name="discount"
-                labelText="discount"
+                labelText={language.discount}
                 onChange={onChange}
               />
             </FieldSet>
           </section>
           <section className="page-card">
-            <FieldSet legendText="Organize">
+            <FieldSet legendText={language.details}>
               <AddToInput ariaLabel="test" id="colors" labelText="Category">
                 <Selectbox
                   id="colors"
                   ref={formRef}
                   name="colors"
-                  labelText="Category"
+                  labelText={language.category}
                   options={colorOptions}
                   inputHasNoLabel
                   isSearchable
@@ -254,6 +254,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
               </AddToInput>
 
               <StatusInputs
+                labelText={language.productStatus}
                 ref={formRef}
                 defaultStatusValue={{
                   label: language[values.productStatus.toLowerCase()],

@@ -13,6 +13,7 @@ export type StatusOptions = {
 
 export type StatusInputsProps = {
   defaultStatusValue: StatusOptions;
+  labelText: string;
   selectedDate: Date;
   status: string;
   timeValue: string;
@@ -31,6 +32,7 @@ const StatusInputs = ({
   onSelectStatus,
   defaultStatusValue,
   ref,
+  labelText,
 }: StatusInputsProps) => {
   const { language } = useLanguage();
   const statusOptions: StatusOptions[] = [
@@ -56,7 +58,7 @@ const StatusInputs = ({
         options={statusOptions}
         onChange={onSelectStatus}
         name="status"
-        labelText={language.categoryStatus}
+        labelText={labelText}
         ref={ref}
       />
       {status === 'Scheduled' && (

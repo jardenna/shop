@@ -25,6 +25,7 @@ const SharedCategoryInputs = ({
   categoryNamePlaceholder,
   categoryNameLabelText,
   categoryNameErrorText,
+  labelText,
 }: SharedCategoryInputsProps) => (
   <>
     <Input
@@ -39,6 +40,7 @@ const SharedCategoryInputs = ({
     />
 
     <StatusInputs
+      labelText={labelText}
       timeValue={timeValue}
       onTimeChange={onTimeChange}
       status={status}

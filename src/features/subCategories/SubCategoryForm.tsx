@@ -140,6 +140,7 @@ const SubCategoryForm = ({
         />
 
         <SharedCategoryInputs
+          labelText={language.categoryStatus}
           categoryNamevalue={values.subCategoryName}
           categoryNameId="subCategoryName"
           categoryNameErrorText={language[errors.subCategoryName]}
