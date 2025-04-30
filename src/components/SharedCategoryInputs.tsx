@@ -6,7 +6,6 @@ type SharedCategoryInputsProps = StatusInputsProps & {
   categoryNameErrorText: string;
   categoryNameId: string;
   categoryNameLabelText: string;
-  categoryNamePlaceholder: string;
   categoryNamevalue: string;
   onCategoryNameChange: (event: ChangeInputType) => void;
 };
@@ -22,7 +21,6 @@ const SharedCategoryInputs = ({
   onCategoryNameChange,
   categoryNamevalue,
   categoryNameId,
-  categoryNamePlaceholder,
   categoryNameLabelText,
   categoryNameErrorText,
   labelText,
@@ -34,7 +32,6 @@ const SharedCategoryInputs = ({
       id={categoryNameId}
       name={categoryNameId}
       labelText={categoryNameLabelText}
-      placeholder={categoryNamePlaceholder}
       errorText={categoryNameErrorText}
       required
     />

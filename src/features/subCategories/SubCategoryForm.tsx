@@ -145,7 +145,6 @@ const SubCategoryForm = ({
           categoryNameId="subCategoryName"
           categoryNameErrorText={language[errors.subCategoryName]}
           categoryNameLabelText={language.categoryName}
-          categoryNamePlaceholder={language.categoryName}
           onCategoryNameChange={onChange}
           defaultStatusValue={{
             label: language[values.categoryStatus.toLowerCase()],

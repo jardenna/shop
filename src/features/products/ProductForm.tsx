@@ -141,7 +141,6 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
                 name="productName"
                 errorText={language[errors.productName]}
                 labelText={language.categoryName}
-                placeholder={language.categoryName}
                 onChange={onChange}
                 required
               />

@@ -1,3 +1,4 @@
+import { RefObject } from 'react';
 import Select, {
   GroupBase,
   MultiValue,
@@ -7,7 +8,6 @@ import Select, {
 import FormError from '../formElements/FormError';
 import FormLabel from '../formElements/FormLabel';
 import './_select-box.scss';
-import { RefObject } from 'react';
 
 export type OptionType = {
   label: string;
@@ -27,7 +27,6 @@ type SelectboxProps = {
   isFixed?: boolean;
   isMulti?: boolean;
   isSearchable?: boolean;
-  placeholder?: string;
   ref?: RefObject<HTMLFormElement | null>;
   required?: boolean;
   onChange: (value: any) => void;
@@ -41,7 +40,6 @@ const Selectbox = ({
   id,
   isSearchable = false,
   required,
-  placeholder,
   name,
   isDisabled,
   closeMenuOnSelect,
@@ -106,7 +104,6 @@ const Selectbox = ({
           inputId={id}
           name={name}
           isSearchable={isSearchable}
-          placeholder={placeholder}
           isDisabled={isDisabled}
           menuPlacement="auto"
           closeMenuOnSelect={closeMenuOnSelect}
