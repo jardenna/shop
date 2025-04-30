@@ -6,17 +6,17 @@ type FieldSetProps = {
   children: ReactNode;
   legendText: string;
   className?: string;
-  showLegendText?: boolean;
+  hideLegendText?: boolean;
 };
 
 const FieldSet = ({
   children,
   legendText,
-  showLegendText = false,
+  hideLegendText,
   className = '',
 }: FieldSetProps) => (
   <fieldset className={`fieldset ${className}`}>
-    {!showLegendText ? (
+    {hideLegendText ? (
       <VisuallyHidden as="legend">{legendText}</VisuallyHidden>
     ) : (
       <legend>{legendText}</legend>

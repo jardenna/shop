@@ -122,7 +122,7 @@ const SubCategoryForm = ({
       onSubmit={onSubmit}
       submitBtnLabel={id ? language.save : language.create}
     >
-      <FieldSet legendText={language.categories}>
+      <FieldSet legendText={language.categories} hideLegendText>
         <Selectbox
           id="category"
           defaultValue={{

@@ -22,7 +22,7 @@ const LanguageCurrencyPreferences = ({
 
   return (
     <div className="preferences">
-      <FieldSet legendText={language.language} showLegendText>
+      <FieldSet legendText={language.language}>
         <RadioButton
           radioButtonList={languageOptions}
           name="languageOption"
@@ -31,7 +31,7 @@ const LanguageCurrencyPreferences = ({
           radioBtnVariant="radio-card"
         />
       </FieldSet>
-      <FieldSet legendText={language.currency} showLegendText>
+      <FieldSet legendText={language.currency}>
         <CurrencySelect
           inputHasNoLabel
           currencyOptions={currencyOptions}
