@@ -114,25 +114,25 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
       submitBtnLabel={id ? language.save : language.create}
       ref={formRef}
     >
-      <div className="page-card">
-        <FieldSet legendText="Product image">
-          <FileInput
-            onChange={onChange}
-            multiple
-            required
-            name="images"
-            id="images"
-            previewData={previewData}
-            title={language.delete}
-            ariaLabel={language.delete}
-            onRemoveImg={() => {
-              console.log(1);
-            }}
-          />
-        </FieldSet>
-      </div>
       <div className="flex flex-align-start">
         <div className="flex-2">
+          <div className="page-card">
+            <FieldSet legendText="Product images">
+              <FileInput
+                onChange={onChange}
+                multiple
+                required
+                name="images"
+                id="images"
+                previewData={previewData}
+                title={language.delete}
+                ariaLabel={language.delete}
+                onRemoveImg={() => {
+                  console.log(1);
+                }}
+              />
+            </FieldSet>
+          </div>
           <div className="page-card">
             <FieldSet legendText="Product information">
               <Input
