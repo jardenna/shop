@@ -24,28 +24,31 @@ const FileInput = ({
   title,
   previewData,
 }: FileInputProps) => (
-  <div className="file-container">
-    <label htmlFor="images" className="file-upload-label">
-      <Icon iconName={IconName.Upload} title="upload" ariaHidden />
-      <span>Browse images</span>
-      <span>Files suported: .jpg, .png , webp</span>
-    </label>
-    <input
-      type="file"
-      onChange={onChange}
-      name={name}
-      id={id}
-      multiple={multiple}
-      required={required}
-      className="visually-hidden"
-    />
-
-    <Preview
-      previewData={previewData}
-      title={title}
-      ariaLabel={ariaLabel}
-      onRemoveImg={onRemoveImg}
-    />
+  <div>
+    <div className="file-container">
+      <label htmlFor="images" className="file-upload-label">
+        <Icon iconName={IconName.Upload} title="upload" ariaHidden />
+        <span>Browse images</span>
+      </label>
+      <input
+        type="file"
+        onChange={onChange}
+        name={name}
+        id={id}
+        multiple={multiple}
+        required={required}
+        className="visually-hidden"
+      />
+      {previewData.length > 0 && (
+        <Preview
+          previewData={previewData}
+          title={title}
+          ariaLabel={ariaLabel}
+          onRemoveImg={onRemoveImg}
+        />
+      )}
+    </div>
+    <span className="text-italic">Files suported: .jpg, .png , webp</span>
   </div>
 );
 

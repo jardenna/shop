@@ -49,7 +49,11 @@
 }
 
 .text-bold {
-  font-weight: 700;
+  font-family: $font-primary-bold;
+}
+
+.text-italic {
+  font-style: italic;
 }
 
 .grid {

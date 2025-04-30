@@ -115,7 +115,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
       ref={formRef}
     >
       <div className="flex flex-align-start">
-        <div className="flex-2">
+        <section className="flex-2">
           <div className="page-card">
             <FieldSet legendText="Product images">
               <FileInput
@@ -133,7 +133,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
               />
             </FieldSet>
           </div>
-          <div className="page-card">
+          <section className="page-card">
             <FieldSet legendText="Product information">
               <Input
                 value={values.productName}
@@ -173,9 +173,8 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
                 />
               </div>
             </FieldSet>
-          </div>
-
-          <div className="page-card">
+          </section>
+          <section className="page-card">
             <FieldSet legendText="Inventory">
               <Input
                 value={values.quantity}
@@ -187,10 +186,10 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
             </FieldSet>
             Product in stock now: 54 Product in transit: 390 Last time
             restocked: 24th June, 2022
-          </div>
-        </div>
+          </section>
+        </section>
         <div className="flex-1">
-          <div className="page-card">
+          <section className="page-card">
             <FieldSet legendText="Product Variants">
               <div>
                 <span className="form-label-container">Sizes</span>
@@ -215,8 +214,8 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
                 }}
               />
             </FieldSet>
-          </div>
-          <div className="page-card">
+          </section>
+          <section className="page-card">
             <FieldSet legendText="pricing" className="row">
               <Input
                 value={values.price}
@@ -236,8 +235,8 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
                 onChange={onChange}
               />
             </FieldSet>
-          </div>
-          <div className="page-card">
+          </section>
+          <section className="page-card">
             <FieldSet legendText="Organize">
               <AddToInput ariaLabel="test" id="colors" labelText="Category">
                 <Selectbox
@@ -270,7 +269,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
                 onTimeChange={handleTimeChange}
               />
             </FieldSet>
-          </div>
+          </section>
         </div>
       </div>
     </Form>

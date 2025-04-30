@@ -3,6 +3,8 @@
 .file-container {
   display: flex;
   align-items: center;
+  gap: 20px;
+  margin-bottom: 12px;
 
   .file-upload-label {
     display: flex;
@@ -11,6 +13,9 @@
     gap: 8px;
     cursor: pointer;
     flex: 1;
+    border: 1px solid $color-border;
+    border-radius: 4px;
+    padding: 20px;
   }
 }
 
