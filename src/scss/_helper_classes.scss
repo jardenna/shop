@@ -36,6 +36,10 @@
   flex-direction: column;
 }
 
+.row {
+  flex-direction: row;
+}
+
 .page-small {
   max-width: $page-width-small;
 }

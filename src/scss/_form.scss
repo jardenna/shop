@@ -24,6 +24,10 @@ input[type='number'] {
   opacity: 1;
 }
 
+form {
+  width: 100%;
+}
+
 textarea {
   resize: none;
   min-height: rem(128px);
