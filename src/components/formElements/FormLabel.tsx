@@ -18,7 +18,7 @@ const FormLabel = ({
       {inputLabel}
     </VisuallyHidden>
   ) : (
-    <label className="form-label" htmlFor={id}>
+    <label htmlFor={id}>
       {inputLabel}
       {required && <span aria-hidden="true">*</span>}
     </label>

@@ -33,21 +33,19 @@ textarea {
   min-height: rem(128px);
 }
 
-.input-container {
+.form-label-container {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.input-container {
   width: 100%;
   position: relative;
   border-bottom: 3px solid transparent;
 
   &:has(input:focus-visible) {
     border-color: $color-primary;
-  }
-
-  .form-label-container {
-    display: flex;
-    justify-content: space-between;
   }
 
   input,

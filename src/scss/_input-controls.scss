@@ -25,6 +25,8 @@ input[type='radio'] {
 }
 
 input[type='checkbox'] {
+  border-radius: 4px;
+
   &:checked {
     outline: transparent;
     border-color: $color-border-secondary;
@@ -35,26 +37,30 @@ input[type='checkbox'] {
       position: relative;
       top: -2px;
       transform: rotate(45deg);
-      width: rem(6px);
-      height: rem(13px);
-      border-bottom: 3px solid $color-white;
-      border-right: 3px solid $color-white;
+      width: rem(3px);
+      height: rem(8px);
+      border-bottom: 2px solid $color-white;
+      border-right: 2px solid $color-white;
     }
   }
+}
+
+.checkbox-list {
+  display: flex;
+  justify-content: space-between;
 }
 
 .checkbox-radio-container {
   display: flex;
   align-items: center;
-  margin-bottom: 8px;
+  gap: 4px;
 
-  /* stylelint-disable-next-line no-descending-specificity */
   input {
     appearance: none;
     background-color: $color-white;
     color: currentcolor;
-    width: rem(18px);
-    height: rem(18px);
+    width: rem(24px);
+    height: rem(24px);
     border: 2px solid $color-border-secondary;
     transform: translateY(-1.2px);
     display: flex;
@@ -90,9 +96,9 @@ input[type='checkbox'] {
   text-transform: uppercase;
 
   .checkbox-radio-container {
-    margin-bottom: 0;
     width: 100%;
     justify-content: center;
+    gap: 4px;
 
     &:has(input:checked) {
       color: white;
@@ -117,7 +123,6 @@ input[type='checkbox'] {
   input[type='radio'] {
     width: 100%;
     padding: 0;
-    margin: 0;
 
     @extend %styled-input;
 
