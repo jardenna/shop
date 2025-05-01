@@ -1,6 +1,7 @@
 @use '../../scss/globals' as *;
 
 /* stylelint-disable selector-class-pattern */
+.select-box__menu-portal,
 .select-box {
   &:has(input[aria-invalid='true']) {
     @include outline($color-danger);
@@ -55,4 +56,31 @@
       background-color: $color-blue-25 !important;
     }
   }
+}
+
+// .select-box__option .select-box__option--is-focused
+
+.custom-option {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+
+  &.disabled {
+    color: $color-gray-30;
+  }
+
+  &.selected {
+    background-color: $color-background-secondary;
+  }
+
+  &.focused {
+    background-color: $color-blue-20;
+  }
+}
+
+.color-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
 }

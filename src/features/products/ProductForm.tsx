@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { Product, ProductRequest } from '../../app/api/apiTypes';
+import CustomOption from '../../components/CustomOption';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/Form';
@@ -37,11 +38,28 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
     }),
   );
   const [createProduct] = useCreateProductMutation();
+  // Sort;
+  // Brun;
+  // Grå;
+  // Hvid;
+  // Blå;
+  // Gul;
+  // Orange;
+  // Rød;
+  // Lilla;
+  // Flerfarvet;
 
   const colorOptions = [
     { label: language.black, value: 'black' },
-    { label: 'orange', value: 2 },
-    { label: 'kiwi', value: 3 },
+    { label: language.grey, value: 'grey' },
+    { label: language.brown, value: 'brown' },
+    { label: language.white, value: 'white' },
+    { label: language.blue, value: 'blue' },
+    { label: language.yellow, value: 'yellow' },
+    { label: language.orange, value: 'orange' },
+    { label: language.red, value: 'red' },
+    { label: language.purple, value: 'purple' },
+    { label: language.multiColor, value: 'multiColor' },
   ];
 
   const checkboxItems: CheckboxItems[] = [
@@ -220,6 +238,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
                 name="colors"
                 labelText={language.colours}
                 options={colorOptions}
+                components={{ Option: CustomOption }}
                 isSearchable
                 closeMenuOnSelect={false}
                 isMulti

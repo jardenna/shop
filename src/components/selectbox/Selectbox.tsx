@@ -21,6 +21,7 @@ type SelectboxProps = {
   name: string;
   options: OptionsOrGroups<OptionType, GroupBase<OptionType>>;
   closeMenuOnSelect?: boolean;
+  components?: any;
   defaultValue?: OptionType;
   errorText?: string;
   inputHasNoLabel?: boolean;
@@ -49,6 +50,7 @@ const Selectbox = ({
   errorText,
   inputHasNoLabel,
   ref,
+  components,
   isFixed = true,
   isLoading,
 }: SelectboxProps) => {
@@ -114,6 +116,7 @@ const Selectbox = ({
           closeMenuOnSelect={closeMenuOnSelect}
           placeholder=""
           noOptionsMessage={() => language.noOptions}
+          components={components}
         />
       </div>
     </div>

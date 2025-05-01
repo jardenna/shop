@@ -9,6 +9,14 @@ allowedFormats;Allowed formats;Tilladte formater
 asc;ascending;stigende
 bag;Bag;Indkøbskurv
 black;Black;Sort
+grey;Grey;Grå
+white;White;Hvid
+blue;Blue;Blå
+yellow;Yellow;Gul
+orange;Orange;Orange
+red;Red;Rød
+purple;Purple;Lilla
+multiColor;MultiColor;Flerfarvet
 brand;Brand;Mærke
 browseImages;Browse images;Vælg produkt billeder
 calendar;Calendar;Kalender
