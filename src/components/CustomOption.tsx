@@ -2,9 +2,9 @@ import { FC } from 'react';
 import { OptionProps } from 'react-select';
 
 interface Aggregation {
-  key: string;
   label: string;
   value: string;
+  border?: string;
 }
 
 const CustomOption: FC<OptionProps<Aggregation>> = ({
@@ -18,11 +18,14 @@ const CustomOption: FC<OptionProps<Aggregation>> = ({
   const className = `custom-option ${isDisabled ? 'disabled' : ''} ${
     isSelected ? 'selected' : ''
   } ${isFocused ? 'focused' : ''}`;
-
+  const border = data.border ? data.border : '';
   return (
     <div className={className} ref={innerRef} {...innerProps}>
       <span>{data.label}</span>
-      <span className="color-icon" style={{ backgroundColor: data.value }} />
+      <span
+        className="color-icon"
+        style={{ backgroundColor: data.value, borderColor: border }}
+      />
     </div>
   );
 };

@@ -38,28 +38,17 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
     }),
   );
   const [createProduct] = useCreateProductMutation();
-  // Sort;
-  // Brun;
-  // Grå;
-  // Hvid;
-  // Blå;
-  // Gul;
-  // Orange;
-  // Rød;
-  // Lilla;
-  // Flerfarvet;
 
   const colorOptions = [
     { label: language.black, value: 'black' },
     { label: language.grey, value: 'grey' },
     { label: language.brown, value: 'brown' },
-    { label: language.white, value: 'white' },
+    { label: language.white, value: 'white', border: '#66606d' },
     { label: language.blue, value: 'blue' },
     { label: language.yellow, value: 'yellow' },
     { label: language.orange, value: 'orange' },
     { label: language.red, value: 'red' },
     { label: language.purple, value: 'purple' },
-    { label: language.multiColor, value: 'multiColor' },
   ];
 
   const checkboxItems: CheckboxItems[] = [
@@ -233,7 +222,6 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
                 />
               </div>
               <Selectbox
-                ref={formRef}
                 id="colors"
                 name="colors"
                 labelText={language.colours}
