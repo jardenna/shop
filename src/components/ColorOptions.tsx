@@ -6,7 +6,7 @@ type Colors = {
   border?: string;
 };
 
-const CustomOption = ({
+const ColorOptions = ({
   data,
   innerRef,
   innerProps,
@@ -29,4 +29,4 @@ const CustomOption = ({
   );
 };
 
-export default CustomOption;
+export default ColorOptions;

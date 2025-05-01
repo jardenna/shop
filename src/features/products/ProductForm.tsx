@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { Product, ProductRequest } from '../../app/api/apiTypes';
-import CustomOption from '../../components/CustomOption';
+import ColorOptions from '../../components/ColorOptions';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/Form';
@@ -226,7 +226,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
                 name="colors"
                 labelText={language.colours}
                 options={colorOptions}
-                components={{ Option: CustomOption }}
+                components={{ Option: ColorOptions }}
                 isSearchable
                 closeMenuOnSelect={false}
                 isMulti
