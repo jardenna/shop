@@ -1,10 +1,10 @@
 @use '../../scss/globals' as *;
 
 .badge {
-  max-width: fit-content;
+  width: fit-content;
   border-radius: 50px;
   background-color: $color-badge-default;
-  color: $color-white;
+  color: $color-light-gray-30;
   display: flex;
   padding: 2px 12px;
   align-items: center;

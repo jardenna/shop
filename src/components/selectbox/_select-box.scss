@@ -78,9 +78,21 @@
   }
 }
 
-.color-icon {
+.option-icon {
   width: 24px;
   height: 24px;
   border-radius: 4px;
   border: 1px solid transparent;
+
+  &.published {
+    background-color: $color-badge-default;
+  }
+
+  &.scheduled {
+    background-color: $color-badge-scheduled;
+  }
+
+  &.inactive {
+    background-color: $color-badge-inactive;
+  }
 }

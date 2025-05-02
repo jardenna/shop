@@ -13,7 +13,7 @@ const ColorOptions = (props: OptionProps<Colors>) => (
     render={(data) => (
       <>
         <span
-          className="color-icon"
+          className="option-icon"
           style={{ backgroundColor: data.value, borderColor: data.border }}
         />
         <span>{data.label}</span>
