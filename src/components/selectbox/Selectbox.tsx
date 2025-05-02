@@ -119,6 +119,7 @@ const Selectbox = ({
           placeholder=""
           noOptionsMessage={() => language.noOptions}
           components={components}
+          // menuIsOpen
         />
       </div>
     </div>

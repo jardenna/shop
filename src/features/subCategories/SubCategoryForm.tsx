@@ -11,6 +11,7 @@ import validateSubcategory from '../../components/formElements/validation/valida
 import validateUpdateCategory from '../../components/formElements/validation/validateUpdateCategory';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
+import StatusOptions from '../../components/selectbox/StatusOptions';
 import SharedCategoryInputs from '../../components/SharedCategoryInputs';
 import useFormValidation from '../../hooks/useFormValidation';
 import { MainPath } from '../../layout/nav/enums';
@@ -52,9 +53,10 @@ const SubCategoryForm = ({
   const selectedTime = selectedCategory?.scheduledDate;
 
   const parentCategoriesOptions = parentCategories.map(
-    ({ categoryName, id }) => ({
+    ({ categoryName, id, categoryStatus }) => ({
       label: categoryName,
       value: id,
+      status: language[categoryStatus.toLocaleLowerCase()],
     }),
   );
 
@@ -130,6 +132,7 @@ const SubCategoryForm = ({
             value: values.category,
           }}
           options={parentCategoriesOptions}
+          components={{ Option: StatusOptions }}
           onChange={(selectedOptions: OptionType) => {
             handleSelectStatus('category', selectedOptions);
           }}
