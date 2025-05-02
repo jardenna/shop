@@ -131,6 +131,7 @@ export type SubCategoriesResponse = DefaultResponseType & {
 };
 
 export type SubCategoriesWithParent = {
+  categoryStatus: Status;
   label: string;
   parentCategoryName: string;
   value: string;
