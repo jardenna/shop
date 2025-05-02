@@ -32,6 +32,11 @@
   }
 }
 
+.flex-align-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .column {
   flex-direction: column;
 }
