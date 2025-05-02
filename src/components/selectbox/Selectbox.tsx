@@ -31,6 +31,7 @@ type SelectboxProps = {
   isLoading?: boolean;
   isMulti?: boolean;
   isSearchable?: boolean;
+  menuIsOpen?: boolean;
   ref?: RefObject<HTMLFormElement | null>;
   required?: boolean;
   onChange: (value: any) => void;
@@ -44,6 +45,7 @@ const Selectbox = ({
   id,
   isSearchable = false,
   required,
+  menuIsOpen,
   name,
   isDisabled,
   closeMenuOnSelect,
@@ -119,7 +121,7 @@ const Selectbox = ({
           placeholder=""
           noOptionsMessage={() => language.noOptions}
           components={components}
-          // menuIsOpen
+          menuIsOpen={menuIsOpen}
         />
       </div>
     </div>
