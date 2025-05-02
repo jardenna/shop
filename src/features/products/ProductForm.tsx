@@ -264,6 +264,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
               <Selectbox
                 id="subCategory"
                 showIconBtn
+                iconBtnAriaLabel={language.createNewCategory}
                 ref={formRef}
                 name="subCategory"
                 labelText={language.category}

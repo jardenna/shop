@@ -26,6 +26,7 @@ type SelectboxProps = {
   components?: any;
   defaultValue?: OptionType;
   errorText?: string;
+  iconBtnAriaLabel?: string;
   inputHasNoLabel?: boolean;
   isClearable?: boolean;
   isDisabled?: boolean;
@@ -55,6 +56,7 @@ const Selectbox = ({
   labelText,
   errorText,
   inputHasNoLabel,
+  iconBtnAriaLabel,
   ref,
   components,
   showIconBtn,
@@ -133,8 +135,8 @@ const Selectbox = ({
             size="12"
             variant={BtnVariant.Primary}
             iconName={IconName.Add}
-            title="add"
-            ariaLabel="ariaLabel"
+            title={language.add}
+            ariaLabel={iconBtnAriaLabel || ''}
           />
         )}
       </div>
