@@ -83,6 +83,13 @@
   height: 24px;
   border-radius: 4px;
   border: 1px solid transparent;
+}
+
+.status-option {
+  color: $color-white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &.published {
     background-color: $color-badge-default;

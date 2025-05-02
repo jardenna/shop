@@ -1,6 +1,5 @@
 import { OptionProps } from 'react-select';
 import useLanguage from '../../features/language/useLanguage';
-import Badge from '../badge/Badge';
 import CustomOption from './CustomOption';
 
 type Colors = {
@@ -16,11 +15,12 @@ const StatusOptions = (props: OptionProps<Colors>) => {
       {...props}
       render={(data) => (
         <>
+          <span
+            className={`option-icon status-option ${data.status.toLowerCase()}`}
+          >
+            {language[data.status.toLowerCase()]}
+          </span>
           <span>{data.label}</span>
-          <Badge
-            badgeText={language[data.status.toLowerCase()]}
-            className={data.status.toLowerCase()}
-          />
         </>
       )}
     />
