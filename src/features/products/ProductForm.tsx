@@ -67,19 +67,19 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
   const [uploadImages] = useUploadImageMutation();
 
   const initialState: ProductRequest = {
-    brand: '',
-    colors: [],
-    quantity: 0,
-    description: '',
-    images: [],
-    material: '',
-    price: 0,
-    discount: 0,
-    productName: '',
-    productStatus: 'Inactive',
-    sizes: ['S', 'M'],
+    brand: selectedProduct?.brand ?? '',
+    colors: selectedProduct?.colors ?? [],
+    quantity: selectedProduct?.quantity ?? 0,
+    description: selectedProduct?.description ?? '',
+    images: selectedProduct?.images ?? [],
+    material: selectedProduct?.material ?? '',
+    price: selectedProduct?.price ?? 0,
+    discount: selectedProduct?.discount ?? 0,
+    productName: selectedProduct?.productName ?? '',
+    productStatus: selectedProduct?.productStatus ?? 'Inactive',
+    sizes: selectedProduct?.sizes ?? [],
   };
-
+  // console.log(selectedProduct?.subCategory.subCategoryName);
   const selectedTime = selectedProduct?.scheduledDate;
   const {
     onChange,
@@ -95,7 +95,6 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
   });
 
   const { data: allCategories } = useGetAllCategoriesQuery();
-  console.log(allCategories);
 
   const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
     useDatePicker({ initialTime: selectedTime });
