@@ -10,6 +10,7 @@ type Colors = {
 
 const StatusOptions = (props: OptionProps<Colors>) => {
   const { language } = useLanguage();
+
   return (
     <CustomOption
       {...props}
@@ -18,7 +19,7 @@ const StatusOptions = (props: OptionProps<Colors>) => {
           <span
             className={`option-icon status-option ${data.status.toLowerCase()}`}
           >
-            {language[data.status.toLowerCase()]}
+            {language[data.status.toLowerCase()].substring(0, 1)}
           </span>
           <span>{data.label}</span>
         </>
@@ -26,4 +27,5 @@ const StatusOptions = (props: OptionProps<Colors>) => {
     />
   );
 };
+
 export default StatusOptions;
