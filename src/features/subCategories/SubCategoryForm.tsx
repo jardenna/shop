@@ -35,9 +35,9 @@ const SubCategoryForm = ({
   const navigate = useNavigate();
   const { language } = useLanguage();
   const initialState: CreateSubCategoryRequest = {
-    subCategoryName: selectedCategory?.subCategoryName || '',
-    categoryStatus: selectedCategory?.categoryStatus || 'Inactive',
-    category: selectedCategory?.mainCategory.categoryName || '',
+    subCategoryName: selectedCategory?.subCategoryName ?? '',
+    categoryStatus: selectedCategory?.categoryStatus ?? 'Inactive',
+    category: selectedCategory?.mainCategory.categoryName ?? '',
   };
 
   const { onChange, values, onSubmit, onCustomChange, errors } =
