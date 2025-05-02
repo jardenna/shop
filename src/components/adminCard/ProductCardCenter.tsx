@@ -2,6 +2,7 @@ import { ProductSizes } from '../../app/api/apiTypes';
 import ProductPrice from '../../features/currency/components/ProductPrice';
 import useLanguage from '../../features/language/useLanguage';
 import { sizeList } from '../../pages/product/ViewProductPage';
+import variables from '../../scss/variables.module.scss';
 import CardContent from '../card/CardContent';
 import GridTwoCol from '../GridTwoCol';
 
@@ -48,7 +49,15 @@ const ProductCardCenter = ({
           <strong>{language.colours}:</strong>
           <ul>
             {colours.map((colour) => (
-              <li key={colour}>{colour}</li>
+              <li
+                key={colour}
+                style={{
+                  backgroundColor: colour,
+                  borderColor:
+                    colour === 'white' ? variables.colorIconBorder : '',
+                }}
+                className="option-icon"
+              />
             ))}
           </ul>
         </div>

@@ -19,6 +19,7 @@ import StatusOptions from '../../components/selectbox/StatusOptions';
 import StatusInputs from '../../components/StatusInputs';
 import useFormValidation from '../../hooks/useFormValidation';
 import { MainPath } from '../../layout/nav/enums';
+import variables from '../../scss/variables.module.scss';
 import { SizeVariant } from '../../types/enums';
 import { useGetAllCategoriesQuery } from '../categories/categoriyApiSlice';
 import useLanguage from '../language/useLanguage';
@@ -63,7 +64,11 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
     { label: language.black, value: 'black' },
     { label: language.grey, value: 'grey' },
     { label: language.brown, value: 'brown' },
-    { label: language.white, value: 'white', border: '#66606d' },
+    {
+      label: language.white,
+      value: 'white',
+      border: variables.colorIconBorder,
+    },
     { label: language.blue, value: 'blue' },
     { label: language.yellow, value: 'yellow' },
     { label: language.orange, value: 'orange' },
@@ -100,6 +105,11 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
     sizes: selectedProduct?.sizes ?? [],
     subCategory: selectedCategory,
   };
+
+  const defaultColorValue = selectedProduct?.colors.map((color) => ({
+    label: language[color],
+    value: color,
+  }));
 
   const selectedTime = selectedProduct?.scheduledDate;
   const {
@@ -283,6 +293,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
                 options={colorOptions}
                 components={{ Option: ColorOptions }}
                 isSearchable
+                defaultValue={defaultColorValue}
                 isMulti
                 onChange={(values: OptionType[]) => {
                   handleSelectColors('colors', values);

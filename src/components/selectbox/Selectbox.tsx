@@ -22,7 +22,7 @@ type SelectboxProps = {
   options: OptionsOrGroups<OptionType, GroupBase<OptionType>>;
   closeMenuOnSelect?: boolean;
   components?: any;
-  defaultValue?: OptionType;
+  defaultValue?: OptionType | OptionType[];
   errorText?: string;
   inputHasNoLabel?: boolean;
   isClearable?: boolean;
