@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { useRef } from 'react';
 import { Product, ProductRequest } from '../../app/api/apiTypes';
 import useDatePicker from '../../components/datePicker/useDatePicker';
@@ -76,6 +77,12 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
 
   const [uploadImages] = useUploadImageMutation();
 
+  const selectedCategory = selectedProduct?.subCategory._id ?? '';
+
+  const defaultCategoryValue = parentCategoryOptions?.find(
+    (category) => category.value === selectedCategory,
+  );
+
   const initialState: ProductRequest = {
     brand: selectedProduct?.brand ?? '',
     colors: selectedProduct?.colors ?? [],
@@ -88,8 +95,9 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
     productName: selectedProduct?.productName ?? '',
     productStatus: selectedProduct?.productStatus ?? 'Inactive',
     sizes: selectedProduct?.sizes ?? [],
+    subCategory: selectedCategory,
   };
-  // console.log(selectedProduct?.subCategory.subCategoryName);
+
   const selectedTime = selectedProduct?.scheduledDate;
   const {
     onChange,
@@ -120,7 +128,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
     onCustomChange(name, selectedValues);
   };
 
-  const handleSelectCat = (name: string, selectedOptions: OptionType) => {
+  const handleSelectCategory = (name: string, selectedOptions: OptionType) => {
     onCustomChange(name, selectedOptions.value);
   };
 
@@ -295,9 +303,10 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
                   options={parentCategoryOptions ? parentCategoryOptions : []}
                   components={{ Option: StatusOptions }}
                   isLoading={isLoading}
+                  defaultValue={defaultCategoryValue}
                   isSearchable
                   onChange={(selectedOptions: OptionType) => {
-                    handleSelectCat('subCategory', selectedOptions);
+                    handleSelectCategory('subCategory', selectedOptions);
                   }}
                 />
                 {id && (

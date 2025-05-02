@@ -108,6 +108,7 @@ export type MainCategory = {
 };
 
 export type SubCategory = DefaultResponseType & {
+  _id: string;
   category: MainCategory;
   categoryStatus: Status;
   id: string;
@@ -172,7 +173,7 @@ export type Product = DefaultResponseType & {
   scheduledDate?: Date;
 };
 
-export type ProductRequest = Omit<
+export type OmittedProduct = Omit<
   Product,
   | 'createdAt'
   | 'reviews'
@@ -185,6 +186,9 @@ export type ProductRequest = Omit<
   | 'subCategory'
 >;
 
+export type ProductRequest = OmittedProduct & {
+  subCategory: string;
+};
 export type UpdateProductRequest = {
   id: string;
   product: ProductRequest;
