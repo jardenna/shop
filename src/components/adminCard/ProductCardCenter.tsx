@@ -46,8 +46,8 @@ const ProductCardCenter = ({
           <strong>{language.material}:</strong> {material}
         </GridTwoCol>
         <div>
-          <strong>{language.colours}:</strong>
-          <ul>
+          <strong className="product-list-headline">{language.colours}:</strong>
+          <ul className="product-color-list">
             {colours.map((colour) => (
               <li
                 key={colour}
@@ -62,7 +62,7 @@ const ProductCardCenter = ({
           </ul>
         </div>
         <div>
-          <strong>{language.sizes}:</strong>
+          <strong className="product-list-headline">{language.sizes}:</strong>
           <ul className="product-size-list">
             {sizeList.map((size) => (
               <li

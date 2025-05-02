@@ -10,6 +10,11 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+
+  .product-list-headline {
+    display: flex;
+    margin-bottom: 4px;
+  }
 }
 
 .product-size-list {
@@ -30,6 +35,11 @@
       color: $color-primary;
     }
   }
+}
+
+.product-color-list {
+  display: flex;
+  gap: 8px;
 }
 
 .product-img-list {
