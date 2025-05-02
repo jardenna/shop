@@ -35,12 +35,12 @@ const ViewSubCategoryPage = () => {
         navigate(`/admin/${MainPath.AdminSubCategories}`);
         onAddMessagePopup({
           messagePopupType: 'success',
-          message: language.categoryUpdated,
+          message: language.categoryDeleted,
         });
       } else {
         onAddMessagePopup({
           messagePopupType: 'error',
-          message: language.categoryUpdated,
+          message: language.categoryNotFound,
           componentType: 'notification',
         });
       }

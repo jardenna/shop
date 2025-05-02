@@ -275,7 +275,7 @@ const deleteSubCategory = asyncHandler(async (req, res) => {
   if (!subCategory) {
     return res.status(404).json({
       success: false,
-      message: 'SubCategory does not exist',
+      message: t('categoryNotFound', req.lang),
     });
   }
 
