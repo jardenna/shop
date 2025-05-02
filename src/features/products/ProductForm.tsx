@@ -32,6 +32,11 @@ type ProductFormProps = {
   selectedProduct: Product | null;
 };
 
+type ErrorWithMessage = {
+  data?: {
+    message?: string;
+  };
+};
 const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
   const { language } = useLanguage();
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -138,10 +143,15 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
       } else {
         await createProduct(productData).unwrap();
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const err = error as ErrorWithMessage;
+      const message =
+        err.data?.message ??
+        (error instanceof Error ? error.message : language.somethingWentWrong);
+
       onAddMessagePopup({
         messagePopupType: 'error',
-        message: error.data.message,
+        message,
         componentType: 'notification',
       });
     }
