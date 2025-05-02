@@ -1,33 +1,65 @@
 import { ErrorBoundary } from 'react-error-boundary';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { ProductSizes } from '../../app/api/apiTypes';
 import ProductCardCenter from '../../components/adminCard/ProductCardCenter';
 import ProductCardLeft from '../../components/adminCard/ProductCardLeft';
 import CardRight from '../../components/card/CardRight';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
+import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import PageHeader from '../../components/PageHeader';
 import SkeletonPage from '../../components/skeleton/SkeletonPage';
 import useLanguage from '../../features/language/useLanguage';
-import { useGetProductByIdQuery } from '../../features/products/productApiSlice';
+import {
+  useDeleteProductMutation,
+  useGetProductByIdQuery,
+} from '../../features/products/productApiSlice';
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
 
 export const sizeList: ProductSizes[] = ['S', 'M', 'L', 'XL'];
 
 const ViewProductPage = () => {
-  const params = useParams();
   const { language } = useLanguage();
+  const params = useParams();
+  const navigate = useNavigate();
+
+  const [deleteProduct] = useDeleteProductMutation();
 
   const {
     data: product,
     isLoading,
     refetch,
   } = useGetProductByIdQuery(params.id || '');
+  const { onAddMessagePopup } = useMessagePopup();
+
+  const handleDeleteProduct = async () => {
+    try {
+      const result = await deleteProduct(params.id || '').unwrap();
+
+      if (result.success) {
+        navigate(`/admin/${MainPath.AdminProducts}`);
+        onAddMessagePopup({
+          messagePopupType: 'success',
+          message: language.productDeleted,
+        });
+      } else {
+        onAddMessagePopup({
+          messagePopupType: 'error',
+          message: language.productNotFound,
+          componentType: 'notification',
+        });
+      }
+    } catch (error: any) {
+      onAddMessagePopup({
+        messagePopupType: 'error',
+        message: error.data.message,
+        componentType: 'notification',
+      });
+    }
+  };
 
   const primaryActionBtn = {
-    onClick: () => {
-      console.log(12);
-    },
+    onClick: handleDeleteProduct,
     label: language.delete,
     variant: BtnVariant.Danger,
   };

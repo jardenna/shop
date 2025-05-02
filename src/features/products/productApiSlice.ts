@@ -1,6 +1,7 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import {
   AllSortedProductsResponse,
+  DefaultResponse,
   Product,
   ProductRequest,
   UpdateProductRequest,
@@ -31,6 +32,12 @@ const productApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.SubCategories],
     }),
+    deleteProduct: builder.mutation<DefaultResponse, string>({
+      query: (id) => ({
+        url: `${productUrl}/${id}`,
+        method: 'DELETE',
+      }),
+    }),
   }),
 });
 
@@ -39,4 +46,5 @@ export const {
   useGetProductByIdQuery,
   useUpdateProductMutation,
   useCreateProductMutation,
+  useDeleteProductMutation,
 } = productApiSlice;
