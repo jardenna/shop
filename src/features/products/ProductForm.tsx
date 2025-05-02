@@ -1,6 +1,5 @@
 import { useRef } from 'react';
 import { Product, ProductRequest } from '../../app/api/apiTypes';
-import ColorOptions from '../../components/ColorOptions';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/Form';
@@ -11,6 +10,7 @@ import Checkbox, {
 import FileInput from '../../components/formElements/fileInput/FileInput';
 import Input from '../../components/formElements/Input';
 import Textarea from '../../components/formElements/Textarea';
+import ColorOptions from '../../components/selectbox/ColorOptions';
 import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
 import StatusInputs from '../../components/StatusInputs';
 import useFormValidation from '../../hooks/useFormValidation';
