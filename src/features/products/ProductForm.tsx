@@ -3,7 +3,6 @@ import { Product, ProductRequest } from '../../app/api/apiTypes';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/Form';
-import AddToInput from '../../components/formElements/AddToInput';
 import Checkbox, {
   CheckboxItems,
 } from '../../components/formElements/Checkbox';
@@ -262,28 +261,20 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
           </section>
           <section className="page-card">
             <FieldSet legendText={language.details}>
-              <AddToInput
-                ariaLabel="test"
-                id="colors"
+              <Selectbox
+                id="subCategory"
+                showIconBtn
+                ref={formRef}
+                name="subCategory"
                 labelText={language.category}
-              >
-                <Selectbox
-                  id="subCategory"
-                  ref={formRef}
-                  name="subCategory"
-                  labelText={language.category}
-                  options={parentCategoryOptions ? parentCategoryOptions : []}
-                  components={{ Option: StatusOptions }}
-                  isLoading={isLoading}
-                  inputHasNoLabel
-                  isSearchable
-                  menuIsOpen
-                  onChange={(selectedOptions: OptionType) => {
-                    handleSelectCat('subCategory', selectedOptions);
-                  }}
-                />
-              </AddToInput>
-
+                options={parentCategoryOptions ? parentCategoryOptions : []}
+                components={{ Option: StatusOptions }}
+                isLoading={isLoading}
+                isSearchable
+                onChange={(selectedOptions: OptionType) => {
+                  handleSelectCat('subCategory', selectedOptions);
+                }}
+              />
               <StatusInputs
                 labelText={language.productStatus}
                 ref={formRef}

@@ -6,8 +6,10 @@ import Select, {
   SingleValue,
 } from 'react-select';
 import useLanguage from '../../features/language/useLanguage';
+import { BtnVariant, IconName } from '../../types/enums';
 import FormError from '../formElements/FormError';
 import FormLabel from '../formElements/FormLabel';
+import IconBtn from '../IconBtn';
 import './_select-box.scss';
 
 export type OptionType = {
@@ -34,6 +36,7 @@ type SelectboxProps = {
   menuIsOpen?: boolean;
   ref?: RefObject<HTMLFormElement | null>;
   required?: boolean;
+  showIconBtn?: boolean;
   onChange: (value: any) => void;
 };
 
@@ -54,6 +57,7 @@ const Selectbox = ({
   inputHasNoLabel,
   ref,
   components,
+  showIconBtn,
   isFixed = true,
   isLoading,
   isClearable,
@@ -91,7 +95,8 @@ const Selectbox = ({
           i
         </span>
       )}
-      <div className="select-box">
+
+      <div className={`select-box ${showIconBtn ? 'add-to-input' : ''}`}>
         <Select
           isLoading={isLoading}
           isClearable={isClearable}
@@ -123,6 +128,15 @@ const Selectbox = ({
           components={components}
           menuIsOpen={menuIsOpen}
         />
+        {showIconBtn && (
+          <IconBtn
+            size="12"
+            variant={BtnVariant.Primary}
+            iconName={IconName.Add}
+            title="add"
+            ariaLabel="ariaLabel"
+          />
+        )}
       </div>
     </div>
   );

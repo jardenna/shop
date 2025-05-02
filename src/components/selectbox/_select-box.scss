@@ -1,6 +1,11 @@
 @use '../../scss/globals' as *;
 
 /* stylelint-disable selector-class-pattern */
+.select-box {
+  display: flex;
+  gap: 4px;
+}
+
 .select-box__menu-portal,
 .select-box {
   &:has(input[aria-invalid='true']) {
@@ -101,5 +106,20 @@
 
   &.inactive {
     background-color: $color-badge-inactive;
+  }
+}
+
+.add-to-input {
+  display: flex;
+
+  div {
+    &:first-child {
+      width: 100%;
+    }
+  }
+
+  .btn {
+    max-width: rem(52px);
+    height: $input-height;
   }
 }
