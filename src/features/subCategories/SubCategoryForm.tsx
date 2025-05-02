@@ -56,7 +56,7 @@ const SubCategoryForm = ({
     ({ categoryName, id, categoryStatus }) => ({
       label: categoryName,
       value: id,
-      status: language[categoryStatus.toLocaleLowerCase()],
+      status: categoryStatus,
     }),
   );
 
@@ -141,7 +141,6 @@ const SubCategoryForm = ({
           errorText={language[errors.category]}
           required
         />
-
         <SharedCategoryInputs
           labelText={language.categoryStatus}
           categoryNamevalue={values.subCategoryName}

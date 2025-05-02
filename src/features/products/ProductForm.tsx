@@ -12,6 +12,7 @@ import Input from '../../components/formElements/Input';
 import Textarea from '../../components/formElements/Textarea';
 import ColorOptions from '../../components/selectbox/ColorOptions';
 import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
+import StatusOptions from '../../components/selectbox/StatusOptions';
 import StatusInputs from '../../components/StatusInputs';
 import useFormValidation from '../../hooks/useFormValidation';
 import useLanguage from '../language/useLanguage';
@@ -32,11 +33,13 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
     useGetSubCategoriesWithParentQuery();
 
   const parentCategoryOptions = subCategories?.map(
-    ({ label, parentCategoryName, value }) => ({
+    ({ label, parentCategoryName, value, categoryStatus }) => ({
       label: `${parentCategoryName} / ${label}`,
       value,
+      status: categoryStatus,
     }),
   );
+
   const [createProduct] = useCreateProductMutation();
 
   const colorOptions = [
@@ -270,9 +273,11 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
                   name="subCategory"
                   labelText={language.category}
                   options={parentCategoryOptions ? parentCategoryOptions : []}
+                  components={{ Option: StatusOptions }}
                   isLoading={isLoading}
                   inputHasNoLabel
                   isSearchable
+                  menuIsOpen
                   onChange={(selectedOptions: OptionType) => {
                     handleSelectCat('subCategory', selectedOptions);
                   }}
