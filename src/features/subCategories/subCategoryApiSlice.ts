@@ -33,7 +33,6 @@ const subCategoryApiSlice = apiSlice.injectEndpoints({
       query: (id) => ({
         url: `${subCategoryUrl}/${id}`,
         method: 'DELETE',
-        body: id,
       }),
     }),
     updateSubCategory: builder.mutation<

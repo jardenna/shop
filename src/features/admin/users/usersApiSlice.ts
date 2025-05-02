@@ -30,7 +30,6 @@ export const usersApiSlice = apiSlice.injectEndpoints({
       query: (id) => ({
         url: `${userUrl}/${id}`,
         method: 'DELETE',
-        body: id,
       }),
       invalidatesTags: [TagTypesEnum.Auth],
     }),
