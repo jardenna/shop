@@ -148,8 +148,16 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
       };
       if (id) {
         await updateProduct({ id, product: productData }).unwrap();
+        onAddMessagePopup({
+          messagePopupType: 'success',
+          message: language.categoryUpdated,
+        });
       } else {
         await createProduct(productData).unwrap();
+        onAddMessagePopup({
+          messagePopupType: 'success',
+          message: language.categoryCreated,
+        });
       }
     } catch (error: unknown) {
       const err = error as ErrorWithMessage;
