@@ -31,3 +31,15 @@
     }
   }
 }
+
+.product-img-list {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 12px;
+
+  .product-img-item {
+    width: 100%;
+    height: rem(124px);
+    object-fit: cover;
+  }
+}

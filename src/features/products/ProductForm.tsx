@@ -260,6 +260,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
               <Selectbox
                 id="colors"
                 name="colors"
+                closeMenuOnSelect={false}
                 labelText={language.colours}
                 options={colorOptions}
                 components={{ Option: ColorOptions }}

@@ -99,7 +99,7 @@ const ViewProductPage = () => {
                 status={product.productStatus}
                 countInStock={product.countInStock}
                 description={product.description}
-                images={product.images}
+                images={product.images || []}
               />
             </ErrorBoundary>
 

@@ -41,7 +41,7 @@ const ProductPage = () => {
               ({
                 id,
                 countInStock,
-                image,
+                images,
                 price,
                 productName,
                 productStatus,
@@ -52,7 +52,7 @@ const ProductPage = () => {
                   key={id}
                   id={id}
                   countInStock={countInStock}
-                  imageSrc={image || ''}
+                  imageSrc={images || []}
                   price={price}
                   productName={productName}
                   status={productStatus}

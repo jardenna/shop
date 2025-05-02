@@ -11,7 +11,7 @@ type ProductTableRowProps = {
   categoryName: string;
   countInStock: number;
   id: string;
-  imageSrc: string;
+  imageSrc: string[];
   price: number;
   productName: string;
   scheduledDate: Date | null;
@@ -31,11 +31,12 @@ const ProductTableRow = ({
   scheduledDate,
 }: ProductTableRowProps) => {
   const { language } = useLanguage();
+
   return (
     <tr>
       <td>
         <div className="product-overview-cell">
-          <Img src={`/images/${imageSrc}`} alt="" />
+          <Img src={imageSrc[1]} alt="" />
           <span className="product-name">{productName}</span>
         </div>
       </td>

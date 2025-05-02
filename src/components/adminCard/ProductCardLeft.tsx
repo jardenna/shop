@@ -9,8 +9,8 @@ import AdminCard from './types';
 type ProductCardLeftProps = AdminCard & {
   countInStock: number;
   description: string;
+  images: string[];
   status: Status;
-  images?: string[];
 };
 
 const ProductCardLeft = ({
@@ -28,25 +28,24 @@ const ProductCardLeft = ({
 
   return (
     <CardContent className="left" heading={null}>
-      <div className="position-relative flex">
+      <ul className="product-img-list">
+        {images.map((url) => (
+          <li key={url}>
+            <Img src={url} alt="" className="product-img-item" />
+          </li>
+        ))}
+      </ul>
+      <div className="position-relative ">
         <Badge
           badgeText={language[status.toLowerCase()]}
           className={status.toLowerCase()}
         />
-        <div>
-          {images ? (
-            images.map((url, idx) => <Img key={idx} src={url} alt="" />)
-          ) : (
-            <Img alt="" src="/images/uploads/image.jpg" />
-          )}
-        </div>
-        <div>
-          <h2 className="admin-card-title">{name}</h2>
-          <span>{language.qty}: </span>
-          <span>{countInStock}</span>
-          <p>{description}</p>
-        </div>
+        <h2 className="admin-card-title">{name}</h2>
+        <span>{language.qty}: </span>
+        <span>{countInStock}</span>
+        <p>{description}</p>
       </div>
+
       <CardFooter
         id={id}
         primaryActionBtn={primaryActionBtn}

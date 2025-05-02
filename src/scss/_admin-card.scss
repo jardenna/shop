@@ -47,10 +47,6 @@
     background-color: $color-gray-80;
   }
 
-  img {
-    max-width: rem(350px);
-  }
-
   .admin-card-content {
     height: 100%;
     min-height: rem(300px);
@@ -62,7 +58,7 @@
   }
 
   &.card-left {
-    flex: 2;
+    flex: 1;
   }
 
   &.card-center {
