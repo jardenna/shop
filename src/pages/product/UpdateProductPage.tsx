@@ -6,6 +6,7 @@ import SkeletonPage from '../../components/skeleton/SkeletonPage';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetProductByIdQuery } from '../../features/products/productApiSlice';
 import ProductForm from '../../features/products/ProductForm';
+import { useGetSubCategoriesWithParentQuery } from '../../features/subCategories/subCategoryApiSlice';
 
 const UpdateProductPage = () => {
   const params = useParams();
@@ -17,6 +18,9 @@ const UpdateProductPage = () => {
     refetch,
   } = useGetProductByIdQuery(params.id || '');
 
+  const { data: subCategories, isLoading: subCategoriesIsLoading } =
+    useGetSubCategoriesWithParentQuery();
+
   return (
     <section className="page">
       {isLoading && <SkeletonPage />}
@@ -25,12 +29,17 @@ const UpdateProductPage = () => {
         FallbackComponent={ErrorBoundaryFallback}
         onReset={() => refetch}
       >
-        {product && (
+        {product && subCategories && (
           <>
             <PageHeader heading={`${language.update} ${product.productName}`} />
 
             <div className="page-card">
-              <ProductForm selectedProduct={product} id={params.id || null} />
+              <ProductForm
+                selectedProduct={product}
+                id={params.id || null}
+                parentCategories={subCategories}
+                isLoading={subCategoriesIsLoading}
+              />
             </div>
           </>
         )}

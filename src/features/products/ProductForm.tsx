@@ -1,7 +1,11 @@
 /* eslint-disable no-underscore-dangle */
 import { useRef } from 'react';
 import { useNavigate } from 'react-router';
-import { Product, ProductRequest } from '../../app/api/apiTypes';
+import {
+  Product,
+  ProductRequest,
+  SubCategoriesWithParent,
+} from '../../app/api/apiTypes';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/Form';
@@ -23,7 +27,6 @@ import variables from '../../scss/variables.module.scss';
 import { SizeVariant } from '../../types/enums';
 import { useGetAllCategoriesQuery } from '../categories/categoriyApiSlice';
 import useLanguage from '../language/useLanguage';
-import { useGetSubCategoriesWithParentQuery } from '../subCategories/subCategoryApiSlice';
 import SubCategoryForm from '../subCategories/SubCategoryForm';
 import { useUploadImageMutation } from '../uploadImageApiSlice';
 import {
@@ -33,6 +36,8 @@ import {
 
 type ProductFormProps = {
   id: string | null;
+  isLoading: boolean;
+  parentCategories: SubCategoriesWithParent[];
   selectedProduct: Product | null;
 };
 
@@ -41,15 +46,17 @@ type ErrorWithMessage = {
     message?: string;
   };
 };
-const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
+const ProductForm = ({
+  id,
+  selectedProduct,
+  parentCategories,
+  isLoading,
+}: ProductFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const formRef = useRef<HTMLFormElement | null>(null);
 
-  const { data: subCategories, isLoading } =
-    useGetSubCategoriesWithParentQuery();
-
-  const parentCategoryOptions = subCategories?.map(
+  const parentCategoryOptions = parentCategories.map(
     ({ label, parentCategoryName, value, categoryStatus }) => ({
       label: `${parentCategoryName} / ${label}`,
       value,
@@ -87,7 +94,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
 
   const selectedCategory = selectedProduct?.subCategory._id ?? '';
 
-  const defaultCategoryValue = parentCategoryOptions?.find(
+  const defaultCategoryValue = parentCategoryOptions.find(
     (category) => category.value === selectedCategory,
   );
 
@@ -235,6 +242,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
                 id="description"
                 labelText={language.description}
                 onChange={onChange}
+                required
               />
               <div className="flex">
                 <Input
@@ -330,7 +338,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
                   ref={formRef}
                   name="subCategory"
                   labelText={language.category}
-                  options={parentCategoryOptions ? parentCategoryOptions : []}
+                  options={parentCategoryOptions}
                   components={{ Option: StatusOptions }}
                   isLoading={isLoading}
                   defaultValue={defaultCategoryValue}
