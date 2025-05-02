@@ -9,13 +9,17 @@ import Checkbox, {
 import FileInput from '../../components/formElements/fileInput/FileInput';
 import Input from '../../components/formElements/Input';
 import Textarea from '../../components/formElements/Textarea';
+import ModalContainer from '../../components/modal/ModalContainer';
 import ColorOptions from '../../components/selectbox/ColorOptions';
 import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
 import StatusOptions from '../../components/selectbox/StatusOptions';
 import StatusInputs from '../../components/StatusInputs';
 import useFormValidation from '../../hooks/useFormValidation';
+import { SizeVariant } from '../../types/enums';
+import { useGetAllCategoriesQuery } from '../categories/categoriyApiSlice';
 import useLanguage from '../language/useLanguage';
 import { useGetSubCategoriesWithParentQuery } from '../subCategories/subCategoryApiSlice';
+import SubCategoryForm from '../subCategories/SubCategoryForm';
 import { useUploadImageMutation } from '../uploadImageApiSlice';
 import { useCreateProductMutation } from './productApiSlice';
 
@@ -89,6 +93,9 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
     initialState,
     callback: handleSubmitProduct,
   });
+
+  const { data: allCategories } = useGetAllCategoriesQuery();
+  console.log(allCategories);
 
   const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
     useDatePicker({ initialTime: selectedTime });
@@ -223,6 +230,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
                   name="sizes"
                 />
               </div>
+
               <Selectbox
                 id="colors"
                 name="colors"
@@ -230,7 +238,6 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
                 options={colorOptions}
                 components={{ Option: ColorOptions }}
                 isSearchable
-                closeMenuOnSelect={false}
                 isMulti
                 onChange={(values: OptionType[]) => {
                   handleSelectColors('colors', values);
@@ -261,21 +268,37 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
           </section>
           <section className="page-card">
             <FieldSet legendText={language.details}>
-              <Selectbox
-                id="subCategory"
-                showIconBtn
-                iconBtnAriaLabel={language.createNewCategory}
-                ref={formRef}
-                name="subCategory"
-                labelText={language.category}
-                options={parentCategoryOptions ? parentCategoryOptions : []}
-                components={{ Option: StatusOptions }}
-                isLoading={isLoading}
-                isSearchable
-                onChange={(selectedOptions: OptionType) => {
-                  handleSelectCat('subCategory', selectedOptions);
-                }}
-              />
+              <div className="flex">
+                <Selectbox
+                  id="subCategory"
+                  ref={formRef}
+                  name="subCategory"
+                  labelText={language.category}
+                  options={parentCategoryOptions ? parentCategoryOptions : []}
+                  components={{ Option: StatusOptions }}
+                  isLoading={isLoading}
+                  isSearchable
+                  onChange={(selectedOptions: OptionType) => {
+                    handleSelectCat('subCategory', selectedOptions);
+                  }}
+                />
+                {id && (
+                  <ModalContainer
+                    triggerModalBtnContent="+"
+                    id={id}
+                    modalSize={SizeVariant.Sm}
+                    modalHeaderText="modalHeaderText"
+                  >
+                    {allCategories && (
+                      <SubCategoryForm
+                        selectedCategory={null}
+                        id={null}
+                        parentCategories={allCategories.categories}
+                      />
+                    )}
+                  </ModalContainer>
+                )}
+              </div>
               <StatusInputs
                 labelText={language.productStatus}
                 ref={formRef}

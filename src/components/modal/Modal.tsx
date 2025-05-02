@@ -33,11 +33,11 @@ export type ModalProps = {
   children: ReactNode;
   id: string;
   modalHeaderText: string;
-  primaryActionBtn: PrimaryActionBtnProps;
   className?: string;
   isAlert?: boolean;
   modalInfo?: ReactNode;
   modalSize?: SizeVariant;
+  primaryActionBtn?: PrimaryActionBtnProps;
   secondaryActionBtn?: SecondaryActionBtnProps;
   showCloseIcon?: boolean;
 };
@@ -78,14 +78,16 @@ const Modal = ({
         onCloseModal={handleClosePopup}
         showCloseIcon={showCloseIcon}
       />
-      {primaryActionBtn.buttonType !== 'submit' ? (
+      {primaryActionBtn?.buttonType !== 'submit' ? (
         <>
           <div className="modal-body">{children}</div>
-          <ModalFooter
-            onCloseModal={handleClosePopup}
-            primaryActionBtn={primaryActionBtn}
-            secondaryActionBtn={secondaryActionBtn}
-          />
+          {primaryActionBtn && (
+            <ModalFooter
+              onCloseModal={handleClosePopup}
+              primaryActionBtn={primaryActionBtn}
+              secondaryActionBtn={secondaryActionBtn}
+            />
+          )}
         </>
       ) : (
         <form
