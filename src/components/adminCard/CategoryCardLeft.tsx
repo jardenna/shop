@@ -26,7 +26,7 @@ const CategoryCardLeft = ({
       <div className="position-relative">
         <h2 className="admin-card-title">{name}</h2>
         <Badge
-          badgeText={language[status.toLocaleLowerCase()]}
+          badgeText={language[status.toLowerCase()]}
           className={status.toLowerCase()}
         />
         <span>

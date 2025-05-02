@@ -80,7 +80,7 @@ const ViewSubCategoryPage = () => {
                   category.mainCategory.categoryStatus !== 'Published'
                 }
                 scheduledDate={category.scheduledDate || null}
-                statusMessage={category.mainCategory.categoryStatus.toLocaleLowerCase()}
+                statusMessage={category.mainCategory.categoryStatus.toLowerCase()}
                 status={category.categoryStatus}
               />
             </ErrorBoundary>

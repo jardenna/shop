@@ -30,7 +30,7 @@ const ProductCardLeft = ({
     <CardContent className="left" heading={null}>
       <div className="position-relative flex">
         <Badge
-          badgeText={language[status.toLocaleLowerCase()]}
+          badgeText={language[status.toLowerCase()]}
           className={status.toLowerCase()}
         />
         <div>

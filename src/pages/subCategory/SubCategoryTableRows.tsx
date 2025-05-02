@@ -31,7 +31,7 @@ const SubCategoryTableRows = ({
       <td>
         <CardBadge
           badgeClassName={status.toLowerCase()}
-          badgeText={language[status.toLocaleLowerCase()]}
+          badgeText={language[status.toLowerCase()]}
           scheduledDate={scheduledDate || null}
         />
       </td>

@@ -28,7 +28,7 @@ const CategoryTableRow = ({
       <td>
         <CardBadge
           badgeClassName={status.toLowerCase()}
-          badgeText={language[status.toLocaleLowerCase()]}
+          badgeText={language[status.toLowerCase()]}
           scheduledDate={scheduledDate || null}
         />
       </td>
