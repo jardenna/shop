@@ -1,4 +1,5 @@
 import { OptionProps } from 'react-select';
+import CustomOption from './CustomOption';
 
 type Colors = {
   label: string;
@@ -6,27 +7,19 @@ type Colors = {
   border?: string;
 };
 
-const ColorOptions = ({
-  data,
-  innerRef,
-  innerProps,
-  isDisabled,
-  isFocused,
-  isSelected,
-}: OptionProps<Colors>) => {
-  const className = `custom-option ${isDisabled ? 'disabled' : ''} ${
-    isSelected ? 'selected' : ''
-  } ${isFocused ? 'focused' : ''}`;
-
-  return (
-    <div className={className} ref={innerRef} {...innerProps}>
-      <span
-        className="color-icon"
-        style={{ backgroundColor: data.value, borderColor: data.border }}
-      />
-      <span>{data.label}</span>
-    </div>
-  );
-};
+const ColorOptions = (props: OptionProps<Colors>) => (
+  <CustomOption
+    {...props}
+    render={(data) => (
+      <>
+        <span
+          className="color-icon"
+          style={{ backgroundColor: data.value, borderColor: data.border }}
+        />
+        <span>{data.label}</span>
+      </>
+    )}
+  />
+);
 
 export default ColorOptions;
