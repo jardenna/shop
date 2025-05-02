@@ -25,6 +25,7 @@ type SelectboxProps = {
   defaultValue?: OptionType;
   errorText?: string;
   inputHasNoLabel?: boolean;
+  isClearable?: boolean;
   isDisabled?: boolean;
   isFixed?: boolean;
   isLoading?: boolean;
@@ -53,6 +54,7 @@ const Selectbox = ({
   components,
   isFixed = true,
   isLoading,
+  isClearable,
 }: SelectboxProps) => {
   const { language } = useLanguage();
   const handleChange = (newValue: SelectedOption) => {
@@ -90,7 +92,7 @@ const Selectbox = ({
       <div className="select-box">
         <Select
           isLoading={isLoading}
-          isClearable
+          isClearable={isClearable}
           styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
           menuPortalTarget={document.body}
           menuPosition={isFixed ? 'fixed' : 'absolute'}
