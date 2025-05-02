@@ -6,6 +6,7 @@ import MoreLink from '../../components/MoreLink';
 import ProductPrice from '../../features/currency/components/ProductPrice';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
+import { formatNumber } from '../../utils/utils';
 
 type ProductTableRowProps = {
   categoryName: string;
@@ -30,8 +31,7 @@ const ProductTableRow = ({
   status,
   scheduledDate,
 }: ProductTableRowProps) => {
-  const { language } = useLanguage();
-  console.log(imageSrc);
+  const { language, selectedLanguage } = useLanguage();
 
   return (
     <tr>
@@ -47,7 +47,7 @@ const ProductTableRow = ({
       <td>
         <ProductPrice price={price} />
       </td>
-      <td>{countInStock}</td>
+      <td>{formatNumber(countInStock, selectedLanguage)}</td>
       <td>
         <CardBadge
           badgeClassName={status.toLowerCase()}
