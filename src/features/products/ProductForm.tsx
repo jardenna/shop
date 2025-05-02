@@ -9,6 +9,7 @@ import Checkbox, {
 import FileInput from '../../components/formElements/fileInput/FileInput';
 import Input from '../../components/formElements/Input';
 import Textarea from '../../components/formElements/Textarea';
+import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import ModalContainer from '../../components/modal/ModalContainer';
 import ColorOptions from '../../components/selectbox/ColorOptions';
 import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
@@ -21,7 +22,10 @@ import useLanguage from '../language/useLanguage';
 import { useGetSubCategoriesWithParentQuery } from '../subCategories/subCategoryApiSlice';
 import SubCategoryForm from '../subCategories/SubCategoryForm';
 import { useUploadImageMutation } from '../uploadImageApiSlice';
-import { useCreateProductMutation } from './productApiSlice';
+import {
+  useCreateProductMutation,
+  useUpdateProductMutation,
+} from './productApiSlice';
 
 type ProductFormProps = {
   id: string | null;
@@ -44,6 +48,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
   );
 
   const [createProduct] = useCreateProductMutation();
+  const [updateProduct] = useUpdateProductMutation();
 
   const colorOptions = [
     { label: language.black, value: 'black' },
@@ -95,6 +100,7 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
   });
 
   const { data: allCategories } = useGetAllCategoriesQuery();
+  const { onAddMessagePopup } = useMessagePopup();
 
   const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
     useDatePicker({ initialTime: selectedTime });
@@ -115,10 +121,6 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
 
   async function handleSubmitProduct() {
     try {
-      if (filesData.length === 0) {
-        return;
-      }
-
       const formData = new FormData();
       filesData.forEach((file) => {
         formData.append('images', file);
@@ -131,10 +133,17 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
         ...values,
         images: imageUrl,
       };
-
-      await createProduct(productData).unwrap();
-    } catch (error) {
-      console.log(error);
+      if (id) {
+        await updateProduct({ id, product: productData }).unwrap();
+      } else {
+        await createProduct(productData).unwrap();
+      }
+    } catch (error: any) {
+      onAddMessagePopup({
+        messagePopupType: 'error',
+        message: error.data.message,
+        componentType: 'notification',
+      });
     }
   }
 
