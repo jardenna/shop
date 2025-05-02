@@ -12,9 +12,11 @@ const productApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllProducts: builder.query<AllSortedProductsResponse, void>({
       query: () => `${productUrl}/allProducts`,
+      providesTags: [TagTypesEnum.Products],
     }),
     getProductById: builder.query<Product, string>({
       query: (id) => `${productUrl}/${id}`,
+      providesTags: [TagTypesEnum.Products],
     }),
     updateProduct: builder.mutation<Product, UpdateProductRequest>({
       query: ({ id, product }) => ({
@@ -22,7 +24,7 @@ const productApiSlice = apiSlice.injectEndpoints({
         method: 'PUT',
         body: product,
       }),
-      invalidatesTags: [TagTypesEnum.SubCategories],
+      invalidatesTags: [TagTypesEnum.Products],
     }),
     createProduct: builder.mutation<Product, ProductRequest>({
       query: (product) => ({
@@ -30,7 +32,7 @@ const productApiSlice = apiSlice.injectEndpoints({
         method: 'POST',
         body: product,
       }),
-      invalidatesTags: [TagTypesEnum.SubCategories],
+      invalidatesTags: [TagTypesEnum.Products],
     }),
     deleteProduct: builder.mutation<DefaultResponse, string>({
       query: (id) => ({

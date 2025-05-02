@@ -31,12 +31,13 @@ const ProductTableRow = ({
   scheduledDate,
 }: ProductTableRowProps) => {
   const { language } = useLanguage();
+  console.log(imageSrc);
 
   return (
     <tr>
       <td>
         <div className="product-overview-cell">
-          <Img src={imageSrc[1]} alt="" />
+          <Img src={imageSrc[0]} alt="" />
           <span className="product-name">{productName}</span>
         </div>
       </td>

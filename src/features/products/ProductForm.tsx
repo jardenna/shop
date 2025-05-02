@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import { useRef } from 'react';
+import { useNavigate } from 'react-router';
 import { Product, ProductRequest } from '../../app/api/apiTypes';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
@@ -17,6 +18,7 @@ import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
 import StatusOptions from '../../components/selectbox/StatusOptions';
 import StatusInputs from '../../components/StatusInputs';
 import useFormValidation from '../../hooks/useFormValidation';
+import { MainPath } from '../../layout/nav/enums';
 import { SizeVariant } from '../../types/enums';
 import { useGetAllCategoriesQuery } from '../categories/categoriyApiSlice';
 import useLanguage from '../language/useLanguage';
@@ -39,6 +41,7 @@ type ErrorWithMessage = {
   };
 };
 const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
+  const navigate = useNavigate();
   const { language } = useLanguage();
   const formRef = useRef<HTMLFormElement | null>(null);
 
@@ -146,19 +149,26 @@ const ProductForm = ({ id, selectedProduct }: ProductFormProps) => {
         ...values,
         images: imageUrl,
       };
+
       if (id) {
-        await updateProduct({ id, product: productData }).unwrap();
+        await updateProduct({
+          id,
+          product: productData,
+        }).unwrap();
+
         onAddMessagePopup({
           messagePopupType: 'success',
-          message: language.categoryUpdated,
+          message: language.productUpdated,
         });
       } else {
         await createProduct(productData).unwrap();
         onAddMessagePopup({
           messagePopupType: 'success',
-          message: language.categoryCreated,
+          message: language.productCreated,
         });
       }
+
+      navigate(`/admin/${MainPath.AdminProducts}`);
     } catch (error: unknown) {
       const err = error as ErrorWithMessage;
       const message =

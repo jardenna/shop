@@ -150,6 +150,7 @@ pleaseSelectParentCategory;Please select parent category;Vælg venligst hovedkat
 preferences;Preferences;Præferencer
 price;Price;Pris
 pricing;Pricing;Prissætning
+productCreated;Product created;Produkt tilføjet
 productDeleted;Product deleted;Produkt blev slettet
 productImages;Product images;Produkt billeder
 productInformation;Product information;Produkt oplysninger
@@ -159,6 +160,7 @@ productNotFound;Product not found;Produktet findes ikke
 productQuantity;Product quantity;Produkt antal
 products;Products;Produkter
 productStatus;Product status;Produkt status
+productUpdated;Product updated;Produkt opdateret
 productVariants;Product Variants;Produkt varianter
 profile;Profile;Profil
 publish;Publish;Udgiv

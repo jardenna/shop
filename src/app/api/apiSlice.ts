@@ -24,6 +24,7 @@ const apiSlice = createApi({
     TagTypesEnum.Auth,
     TagTypesEnum.Categories,
     TagTypesEnum.SubCategories,
+    TagTypesEnum.Products,
   ],
   endpoints: () => ({}),
 });
