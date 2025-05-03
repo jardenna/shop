@@ -28,6 +28,15 @@ form {
   width: 100%;
 }
 
+.form-card {
+  background-color: $color-white;
+  border-radius: 4px;
+  box-shadow: $box-shadow;
+  margin-bottom: 12px;
+  width: 100%;
+  padding: 24px;
+}
+
 textarea {
   resize: none;
   min-height: rem(128px);

@@ -208,7 +208,7 @@ const ProductForm = ({
     >
       <div className="flex flex-align-start">
         <div className="flex-2">
-          <section className="page-card">
+          <section className="form-card">
             <FieldSet legendText={language.productImages}>
               <FileInput
                 onChange={onChange}
@@ -225,7 +225,7 @@ const ProductForm = ({
               />
             </FieldSet>
           </section>
-          <section className="page-card">
+          <section className="form-card">
             <FieldSet legendText={language.productInformation}>
               <Input
                 value={values.productName}
@@ -266,7 +266,7 @@ const ProductForm = ({
               </div>
             </FieldSet>
           </section>
-          <section className="page-card">
+          <section className="form-card">
             <FieldSet legendText={language.productQuantity}>
               <Input
                 value={values.quantity}
@@ -281,7 +281,7 @@ const ProductForm = ({
           </section>
         </div>
         <div className="flex-1">
-          <section className="page-card">
+          <section className="form-card">
             <FieldSet legendText={language.productVariants}>
               <div>
                 <span className="form-label-container">{language.sizes}</span>
@@ -309,7 +309,7 @@ const ProductForm = ({
               />
             </FieldSet>
           </section>
-          <section className="page-card">
+          <section className="form-card">
             <FieldSet legendText={language.pricing} className="row">
               <Input
                 value={values.price}
@@ -330,7 +330,7 @@ const ProductForm = ({
               />
             </FieldSet>
           </section>
-          <section className="page-card">
+          <section className="form-card">
             <FieldSet legendText={language.details}>
               <div className="flex">
                 <Selectbox
