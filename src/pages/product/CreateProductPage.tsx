@@ -10,7 +10,7 @@ const CreateProductPage = () => {
 
   return (
     <section className="page">
-      <PageHeader heading={language.createNewCategory} />
+      <PageHeader heading={language.createNewProduct} />
 
       <div className="page-card">
         {subCategories && (
