@@ -1,6 +1,6 @@
 import { ChangeEvent, RefObject } from 'react';
 import { BlurEventType, ChangeInputType, InputType } from '../../types/types';
-import FormLabelError from './FormLabelError';
+import FormLabel from './FormLabel';
 
 export type InputProps = {
   id: string;
@@ -62,7 +62,7 @@ const Input = ({
   };
   return (
     <div className={inputClassName}>
-      <FormLabelError
+      <FormLabel
         required={required}
         labelText={labelText}
         id={id}

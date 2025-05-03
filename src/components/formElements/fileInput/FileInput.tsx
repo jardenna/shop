@@ -2,7 +2,7 @@ import { FileName } from '../../../app/api/apiTypes';
 import useLanguage from '../../../features/language/useLanguage';
 import { IconName } from '../../../types/enums';
 import { ChangeInputType } from '../../../types/types';
-import FormLabelError from '../FormLabelError';
+import FormLabel from '../FormLabel';
 import './_file-input.scss';
 import Preview, { PreviewProps } from './Preview';
 
@@ -33,7 +33,7 @@ const FileInput = ({
   return (
     <div>
       <div className="file-container">
-        <FormLabelError
+        <FormLabel
           required={required}
           labelText={language.browseImages}
           id="images"
@@ -42,10 +42,7 @@ const FileInput = ({
           className="file-upload-label"
           iconName={IconName.Upload}
         />
-        {/* <label htmlFor="images" className="file-upload-label">
-          <Icon iconName={IconName.Upload} title="upload" ariaHidden />
-          <span>{language.browseImages}</span>
-        </label> */}
+
         <input
           type="file"
           onChange={onChange}
