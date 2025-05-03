@@ -24,16 +24,16 @@ const createCategory = asyncHandler(async (req, res) => {
     });
   }
 
-  const existingCategory = await Category.findOne({
-    categoryName: { $regex: new RegExp(`^${categoryName}$`, 'i') },
-  });
+  // const existingCategory = await Category.findOne({
+  //   categoryName: { $regex: new RegExp(`^${categoryName}$`, 'i') },
+  // });
 
-  if (existingCategory) {
-    return res.status(400).json({
-      success: false,
-      message: t('categoryAlreadyExist', req.lang),
-    });
-  }
+  // if (existingCategory) {
+  //   return res.status(400).json({
+  //     success: false,
+  //     message: t('categoryAlreadyExist', req.lang),
+  //   });
+  // }
 
   const categoryData = { categoryName, categoryStatus };
   if (categoryStatus === 'Scheduled') {

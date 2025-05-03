@@ -42,17 +42,17 @@ const createSubCategory = asyncHandler(async (req, res) => {
     });
   }
 
-  const existingSubCategory = await SubCategory.findOne({
-    subCategoryName: { $regex: new RegExp(`^${subCategoryName}$`, 'i') },
-    category,
-  });
+  // const existingSubCategory = await SubCategory.findOne({
+  //   subCategoryName: { $regex: new RegExp(`^${subCategoryName}$`, 'i') },
+  //   category,
+  // });
 
-  if (existingSubCategory) {
-    return res.status(400).json({
-      success: false,
-      message: t('subCategoryAlreadyExist', req.lang),
-    });
-  }
+  // if (existingSubCategory) {
+  //   return res.status(400).json({
+  //     success: false,
+  //     message: t('subCategoryAlreadyExist', req.lang),
+  //   });
+  // }
 
   const subCategoryData = { subCategoryName, category, categoryStatus };
   if (categoryStatus === 'Scheduled') {
