@@ -10,10 +10,10 @@ const CreateCategoryPage = () => {
   const { language } = useLanguage();
 
   return (
-    <section className="page-small">
+    <article className="page page-small">
       <PageHeader heading={language.createNewCategory} />
       <CategoryForm selectedCategory={null} id={null} />
-    </section>
+    </article>
   );
 };
 
