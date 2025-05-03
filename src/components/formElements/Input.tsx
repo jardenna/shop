@@ -1,7 +1,6 @@
 import { ChangeEvent, RefObject } from 'react';
 import { BlurEventType, ChangeInputType, InputType } from '../../types/types';
-import FormError from './FormError';
-import FormLabel from './FormLabel';
+import FormLabelError from './FormLabelError';
 
 export type InputProps = {
   id: string;
@@ -63,20 +62,14 @@ const Input = ({
   };
   return (
     <div className={inputClassName}>
-      <span className={inputHasNoLabel ? '' : 'form-label-container'}>
-        <FormLabel
-          required={required}
-          labelText={labelText}
-          id={id}
-          inputHasNoLabel={inputHasNoLabel}
-        />
-        {errorText && <FormError errorText={errorText} ariaErrorId={id} />}
-      </span>
-      {errorText && (
-        <span className="error-icon" aria-hidden="true">
-          i
-        </span>
-      )}
+      <FormLabelError
+        required={required}
+        labelText={labelText}
+        id={id}
+        inputHasNoLabel={inputHasNoLabel}
+        errorText={errorText}
+      />
+
       <input
         ref={ref}
         multiple={multiple}

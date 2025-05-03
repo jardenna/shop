@@ -2,13 +2,15 @@ import { FileName } from '../../../app/api/apiTypes';
 import useLanguage from '../../../features/language/useLanguage';
 import { IconName } from '../../../types/enums';
 import { ChangeInputType } from '../../../types/types';
-import Icon from '../../icons/Icon';
+import FormLabelError from '../FormLabelError';
 import './_file-input.scss';
 import Preview, { PreviewProps } from './Preview';
 
 type FileInputProps = PreviewProps & {
   id: string;
   name: FileName;
+  errorText?: string;
+  inputHasNoLabel?: boolean;
   multiple?: boolean;
   required?: boolean;
   onChange: (event: ChangeInputType) => void;
@@ -24,15 +26,26 @@ const FileInput = ({
   ariaLabel,
   title,
   previewData,
+  inputHasNoLabel,
+  errorText,
 }: FileInputProps) => {
   const { language } = useLanguage();
   return (
     <div>
       <div className="file-container">
-        <label htmlFor="images" className="file-upload-label">
+        <FormLabelError
+          required={required}
+          labelText={language.browseImages}
+          id="images"
+          inputHasNoLabel={inputHasNoLabel}
+          errorText={errorText}
+          className="file-upload-label"
+          iconName={IconName.Upload}
+        />
+        {/* <label htmlFor="images" className="file-upload-label">
           <Icon iconName={IconName.Upload} title="upload" ariaHidden />
           <span>{language.browseImages}</span>
-        </label>
+        </label> */}
         <input
           type="file"
           onChange={onChange}
