@@ -8,7 +8,6 @@ import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/Form';
 import validateSubcategory from '../../components/formElements/validation/validate';
-import validateUpdateCategory from '../../components/formElements/validation/validateUpdateCategory';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
 import StatusOptions from '../../components/selectbox/StatusOptions';
@@ -72,15 +71,6 @@ const SubCategoryForm = ({
   );
 
   async function handleSubmitCategory() {
-    const validation = validateUpdateCategory(values);
-    if (validation) {
-      onAddMessagePopup({
-        messagePopupType: 'error',
-        message: language[validation],
-        componentType: 'notification',
-      });
-      return;
-    }
     try {
       if (id) {
         await updateSubCategory({

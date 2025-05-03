@@ -31,7 +31,7 @@ const createSubCategory = asyncHandler(async (req, res) => {
   if (!subCategoryName) {
     return res.status(400).json({
       success: false,
-      message: 'Subcategory name is required',
+      message: t('pleaseEnterCategoryName', req.lang),
     });
   }
 
