@@ -4,7 +4,6 @@ import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/Form';
 import validationCategories from '../../components/formElements/validation/validateCategory';
-import validateUpdateCategory from '../../components/formElements/validation/validateUpdateCategory';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import { OptionType } from '../../components/selectbox/Selectbox';
 import SharedCategoryInputs from '../../components/SharedCategoryInputs';
@@ -49,15 +48,6 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
   };
 
   async function handleSubmitCategory() {
-    const validation = validateUpdateCategory(values);
-    if (validation) {
-      onAddMessagePopup({
-        messagePopupType: 'error',
-        message: language[validation],
-        componentType: 'notification',
-      });
-      return;
-    }
     try {
       if (id) {
         await updateCategory({

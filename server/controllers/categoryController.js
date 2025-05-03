@@ -20,7 +20,7 @@ const createCategory = asyncHandler(async (req, res) => {
   if (!categoryName) {
     return res.status(400).json({
       success: false,
-      message: 'Please enter a category name',
+      message: t('pleaseEnterCategoryName', req.lang),
     });
   }
 
