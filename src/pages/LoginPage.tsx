@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from 'react-router';
 import AuthForm from '../components/authForm/AuthForm';
-import validationLogin from '../components/formElements/validation/validateLogin';
+import validateLogin from '../components/formElements/validation/validateLogin';
 import useMessagePopup from '../components/messagePopup/useMessagePopup';
 import { useLoginMutation } from '../features/auth/authApiSlice';
 import useLanguage from '../features/language/useLanguage';
@@ -23,7 +23,7 @@ const LoginPage = () => {
   const { values, errors, onChange, onBlur, onSubmit } = useFormValidation({
     initialState,
     callback: handleLoginUser,
-    validate: validationLogin,
+    validate: validateLogin,
   });
   const [loginUser, { isLoading }] = useLoginMutation();
 

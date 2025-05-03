@@ -5,7 +5,7 @@ import { AuthFormValues } from './validateSignup';
 
 type OmittedRLoginType = Omit<AuthFormValues, 'username' | 'confirmPassword'>;
 
-function validationLogin(values: OmittedRLoginType) {
+function validateLogin(values: OmittedRLoginType) {
   const errors: ValidationErrors = {};
   const { email, password } = values;
 
@@ -24,4 +24,4 @@ function validationLogin(values: OmittedRLoginType) {
   return errors;
 }
 
-export default validationLogin;
+export default validateLogin;
