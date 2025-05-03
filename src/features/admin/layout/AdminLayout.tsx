@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router';
 import IconBtn from '../../../components/IconBtn';
 import SkipLink from '../../../components/skipLinks/SkipLinks';
-import useMediaQuery from '../../../hooks/useMediaQuery ';
+import useLocalStorage, {
+  localStorageKeys,
+} from '../../../hooks/useLocalStorage';
 import Nav from '../../../layout/nav/Nav';
 import { adminNavList } from '../../../layout/nav/navList';
 import { IconName } from '../../../types/enums';
@@ -11,13 +12,16 @@ import AdminHeader from './AdminHeader';
 
 const AdminLayout = () => {
   const { language } = useLanguage();
-  const [isMenuCollapsed, setIsMenuCollapsed] = useState(false);
-  const { isTabletSize } = useMediaQuery();
 
-  useEffect(() => {
-    setIsMenuCollapsed(isTabletSize);
-  }, [isTabletSize]);
+  const [isMenuCollapsed, setIsMenuCollapsed] = useLocalStorage(
+    localStorageKeys.menuCollapsed,
+    false,
+  );
+  // const { isTabletSize } = useMediaQuery();
 
+  // useEffect(() => {
+  //   setIsMenuCollapsed(isTabletSize);
+  // }, [isTabletSize]);
   const handleCollapseMenu = () => {
     setIsMenuCollapsed(!isMenuCollapsed);
   };
