@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router';
 import AuthForm from '../components/authForm/AuthForm';
-import validationSignup from '../components/formElements/validation/validateSignup';
+import validateSignup from '../components/formElements/validation/validateSignup';
 import useMessagePopup from '../components/messagePopup/useMessagePopup';
 import { useSignupMutation } from '../features/auth/authApiSlice';
 import useLanguage from '../features/language/useLanguage';
@@ -24,7 +24,7 @@ const SignupPage = () => {
     useFormValidation({
       initialState,
       callback: handleRegisterUser,
-      validate: validationSignup,
+      validate: validateSignup,
     });
 
   const [registerUser, { isLoading }] = useSignupMutation();
