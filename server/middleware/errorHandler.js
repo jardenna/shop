@@ -1,17 +1,26 @@
+import { t } from '../utils/translator.js';
+
 const errorHandler = (error, req, res, next) => {
   let statusCode = res.statusCode === 200 ? 500 : res.statusCode;
   let message = error.message;
 
-  // Handle specific error types
+  // CastError - invalid ObjectId
   if (error.name === 'CastError' && error.kind === 'ObjectId') {
     statusCode = 400;
-    message = 'Please add a parent category ID';
+    message = t('pleaseSelectParentCategory', req.lang);
   }
 
+  // Duplicate key error
+  if (error.code === 11000) {
+    statusCode = 400;
+    message = t('categoryAlreadyExist', req.lang);
+  }
+
+  // Mongoose validation errors
   if (error.name === 'ValidationError') {
-    statusCode = 400; // Bad Request
+    statusCode = 400;
     message = Object.values(error.errors)
-      .map((err) => err.message)
+      .map((err) => t(err.message, req.lang))
       .join(', ');
   }
 
