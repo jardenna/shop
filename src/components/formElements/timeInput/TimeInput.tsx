@@ -28,7 +28,7 @@ const TimeInput = ({
   <div className={`input-container ${className}`}>
     <span className={inputHasNoLabel ? '' : 'form-label-container'}>
       <FormLabel
-        inputLabel={labelText}
+        labelText={labelText}
         id={id}
         inputHasNoLabel={inputHasNoLabel}
       />

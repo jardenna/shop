@@ -32,7 +32,7 @@ const Textarea = ({
     <span className="form-label-container">
       <FormLabel
         required={required}
-        inputLabel={labelText}
+        labelText={labelText}
         id={id}
         inputHasNoLabel={inputHasNoLabel}
       />

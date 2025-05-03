@@ -66,7 +66,7 @@ const Input = ({
       <span className={inputHasNoLabel ? '' : 'form-label-container'}>
         <FormLabel
           required={required}
-          inputLabel={labelText}
+          labelText={labelText}
           id={id}
           inputHasNoLabel={inputHasNoLabel}
         />
