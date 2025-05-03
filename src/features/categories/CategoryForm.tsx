@@ -3,7 +3,7 @@ import { CreateCategoryRequest } from '../../app/api/apiTypes';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/Form';
-import validationCategories from '../../components/formElements/validation/validateCategory';
+import validateCategory from '../../components/formElements/validation/validateCategory';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import { OptionType } from '../../components/selectbox/Selectbox';
 import SharedCategoryInputs from '../../components/SharedCategoryInputs';
@@ -31,7 +31,7 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
   const { onChange, values, onSubmit, errors, onCustomChange } =
     useFormValidation({
       initialState,
-      validate: validationCategories,
+      validate: validateCategory,
       callback: handleSubmitCategory,
     });
 
