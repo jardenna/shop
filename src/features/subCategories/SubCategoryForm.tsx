@@ -7,7 +7,7 @@ import {
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/Form';
-import validateSubcategory from '../../components/formElements/validation/validate';
+import validateSubcategory from '../../components/formElements/validation/validateSubcategory';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
 import StatusOptions from '../../components/selectbox/StatusOptions';
