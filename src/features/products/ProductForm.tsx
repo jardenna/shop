@@ -18,7 +18,6 @@ import Textarea from '../../components/formElements/Textarea';
 import validateProduct from '../../components/formElements/validation/validateProduct';
 import GridTwoCol from '../../components/GridTwoCol';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-import ModalContainer from '../../components/modal/ModalContainer';
 import ColorOptions from '../../components/selectbox/ColorOptions';
 import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
 import StatusOptions from '../../components/selectbox/StatusOptions';
@@ -26,12 +25,9 @@ import StatusInputs from '../../components/StatusInputs';
 import useFormValidation from '../../hooks/useFormValidation';
 import { MainPath } from '../../layout/nav/enums';
 import variables from '../../scss/variables.module.scss';
-import { SizeVariant } from '../../types/enums';
 import { discountCalculation } from '../../utils/utils';
-import { useGetAllCategoriesQuery } from '../categories/categoriyApiSlice';
 import ProductPrice from '../currency/components/ProductPrice';
 import useLanguage from '../language/useLanguage';
-import SubCategoryForm from '../subCategories/SubCategoryForm';
 import { useUploadImageMutation } from '../uploadImageApiSlice';
 import {
   useCreateProductMutation,
@@ -132,7 +128,6 @@ const ProductForm = ({
     callback: handleSubmitProduct,
   });
 
-  const { data: allCategories } = useGetAllCategoriesQuery();
   const { onAddMessagePopup } = useMessagePopup();
 
   const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
@@ -272,8 +267,12 @@ const ProductForm = ({
                 onChange={onChange}
               />
             </FieldSet>
-            Product in stock now: 54 Product in transit: 390 Last time
-            restocked: 24th June, 2022
+            {selectedProduct && (
+              <p>
+                <strong>{language.productsInStockNow}: </strong>
+                {selectedProduct.countInStock}
+              </p>
+            )}
           </section>
         </div>
         <div className="flex-1">
@@ -355,22 +354,6 @@ const ProductForm = ({
                     handleSelectCategory('subCategory', selectedOptions);
                   }}
                 />
-                {id && (
-                  <ModalContainer
-                    triggerModalBtnContent="+"
-                    id={id}
-                    modalSize={SizeVariant.Sm}
-                    modalHeaderText="modalHeaderText"
-                  >
-                    {allCategories && (
-                      <SubCategoryForm
-                        selectedCategory={null}
-                        id={null}
-                        parentCategories={allCategories.categories}
-                      />
-                    )}
-                  </ModalContainer>
-                )}
               </div>
               <StatusInputs
                 labelText={language.productStatus}

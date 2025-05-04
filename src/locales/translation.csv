@@ -155,6 +155,7 @@ productCreated;Product created;Produkt tilføjet
 productDeleted;Product deleted;Produkt blev slettet
 productImages;Product images;Produkt billeder
 productInformation;Product information;Produkt oplysninger
+productsInStockNow;Products in stock now;Antal produkter på lager
 productList;Product list;Produktliste
 productName;Product name;Produkt navn
 productNotFound;Product not found;Produktet findes ikke
