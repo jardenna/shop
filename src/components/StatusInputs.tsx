@@ -17,6 +17,8 @@ export type StatusInputsProps = {
   selectedDate: Date;
   status: string;
   timeValue: string;
+  max?: number;
+  min?: number;
   ref?: RefObject<HTMLFormElement | null>;
   onSelectDate: (date: Date) => void;
   onSelectStatus: (selectedOptions: OptionType) => void;
@@ -33,6 +35,8 @@ const StatusInputs = ({
   defaultStatusValue,
   ref,
   labelText,
+  min,
+  max,
 }: StatusInputsProps) => {
   const { language } = useLanguage();
   const statusOptions: StatusOptions[] = [
@@ -69,6 +73,8 @@ const StatusInputs = ({
             id="time"
             labelText={language.publishTime}
             name="time"
+            min={min}
+            max={max}
           />
           <DatePicker
             onSelectDate={onSelectDate}
