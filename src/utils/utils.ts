@@ -6,8 +6,7 @@ const formatNumber = (value: number, lang: 'en' | 'da') =>
 
 const discountCalculation = (price: number, discount: number) => {
   const discountPrice = (price * discount) / 100;
-  const newPrice = price - discountPrice;
-  return newPrice;
+  return price - discountPrice;
 };
 
 export { currencyCacheKey, discountCalculation, formatNumber, oneDay };
