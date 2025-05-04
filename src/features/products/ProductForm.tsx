@@ -105,7 +105,7 @@ const ProductForm = ({
     discount: selectedProduct?.discount ?? 0,
     productName: selectedProduct?.productName ?? '',
     productStatus: selectedProduct?.productStatus ?? 'Inactive',
-    sizes: selectedProduct?.sizes ?? [],
+    sizes: selectedProduct?.sizes ?? ['S', 'M', 'L', 'XL'],
     subCategory: selectedCategory,
   };
 
@@ -330,7 +330,6 @@ const ProductForm = ({
                 <Selectbox
                   errorText={language[errors.subCategory]}
                   id="subCategory"
-                  ref={formRef}
                   name="subCategory"
                   labelText={language.category}
                   options={parentCategoryOptions}
