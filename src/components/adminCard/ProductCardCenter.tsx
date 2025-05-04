@@ -44,7 +44,7 @@ const ProductCardCenter = ({
               <strong>{language.discount}:</strong> {discount}%
             </GridTwoCol>
             <GridTwoCol>
-              <strong>Ny pris:</strong>
+              <strong>{language.newPrice}:</strong>
               <ProductPrice price={newPrice} />
             </GridTwoCol>
           </>

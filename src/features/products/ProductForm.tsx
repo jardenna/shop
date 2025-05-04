@@ -16,6 +16,7 @@ import FileInput from '../../components/formElements/fileInput/FileInput';
 import Input from '../../components/formElements/Input';
 import Textarea from '../../components/formElements/Textarea';
 import validateProduct from '../../components/formElements/validation/validateProduct';
+import GridTwoCol from '../../components/GridTwoCol';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import ModalContainer from '../../components/modal/ModalContainer';
 import ColorOptions from '../../components/selectbox/ColorOptions';
@@ -26,7 +27,9 @@ import useFormValidation from '../../hooks/useFormValidation';
 import { MainPath } from '../../layout/nav/enums';
 import variables from '../../scss/variables.module.scss';
 import { SizeVariant } from '../../types/enums';
+import { discountCalculation } from '../../utils/utils';
 import { useGetAllCategoriesQuery } from '../categories/categoriyApiSlice';
+import ProductPrice from '../currency/components/ProductPrice';
 import useLanguage from '../language/useLanguage';
 import SubCategoryForm from '../subCategories/SubCategoryForm';
 import { useUploadImageMutation } from '../uploadImageApiSlice';
@@ -304,24 +307,35 @@ const ProductForm = ({
             </FieldSet>
           </section>
           <section className="form-card">
-            <FieldSet legendText={language.pricing} className="row">
-              <Input
-                value={values.price}
-                id="price"
-                name="price"
-                errorText={language[errors.price]}
-                labelText={language.price}
-                onChange={onChange}
-                required
-              />
-              <Input
-                type="number"
-                value={values.discount || 0}
-                id="discount"
-                name="discount"
-                labelText={language.discount}
-                onChange={onChange}
-              />
+            <FieldSet legendText={language.pricing}>
+              <div className="flex">
+                <Input
+                  value={values.price}
+                  id="price"
+                  name="price"
+                  errorText={language[errors.price]}
+                  labelText={language.price}
+                  onChange={onChange}
+                  required
+                />
+                <Input
+                  type="number"
+                  value={values.discount || 0}
+                  id="discount"
+                  name="discount"
+                  labelText={language.discount}
+                  onChange={onChange}
+                />
+              </div>
+
+              {values.discount && (
+                <GridTwoCol>
+                  <strong>{language.newPrice}:</strong>
+                  <ProductPrice
+                    price={discountCalculation(values.price, values.discount)}
+                  />
+                </GridTwoCol>
+              )}
             </FieldSet>
           </section>
           <section className="form-card">
