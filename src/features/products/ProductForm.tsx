@@ -15,6 +15,7 @@ import Checkbox, {
 import FileInput from '../../components/formElements/fileInput/FileInput';
 import Input from '../../components/formElements/Input';
 import Textarea from '../../components/formElements/Textarea';
+import validateProduct from '../../components/formElements/validation/validateProduct';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import ModalContainer from '../../components/modal/ModalContainer';
 import ColorOptions from '../../components/selectbox/ColorOptions';
@@ -41,11 +42,6 @@ type ProductFormProps = {
   selectedProduct: Product | null;
 };
 
-type ErrorWithMessage = {
-  data?: {
-    message?: string;
-  };
-};
 const ProductForm = ({
   id,
   selectedProduct,
@@ -129,6 +125,7 @@ const ProductForm = ({
     previewData,
   } = useFormValidation({
     initialState,
+    validate: validateProduct,
     callback: handleSubmitProduct,
   });
 
@@ -186,15 +183,10 @@ const ProductForm = ({
       }
 
       navigate(`/admin/${MainPath.AdminProducts}`);
-    } catch (error: unknown) {
-      const err = error as ErrorWithMessage;
-      const message =
-        err.data?.message ??
-        (error instanceof Error ? error.message : language.somethingWentWrong);
-
+    } catch (error: any) {
       onAddMessagePopup({
         messagePopupType: 'error',
-        message,
+        message: error.data.message,
         componentType: 'notification',
       });
     }
@@ -238,6 +230,7 @@ const ProductForm = ({
               />
               <Textarea
                 value={values.description}
+                errorText={language[errors.description]}
                 name="description"
                 id="description"
                 labelText={language.description}
@@ -296,6 +289,7 @@ const ProductForm = ({
               <Selectbox
                 id="colors"
                 name="colors"
+                errorText={language[errors.colors]}
                 closeMenuOnSelect={false}
                 labelText={language.colours}
                 options={colorOptions}
@@ -334,6 +328,7 @@ const ProductForm = ({
             <FieldSet legendText={language.details}>
               <div className="flex">
                 <Selectbox
+                  errorText={language[errors.subCategory]}
                   id="subCategory"
                   ref={formRef}
                   name="subCategory"

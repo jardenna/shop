@@ -27,17 +27,24 @@ const Textarea = ({
   required,
   labelText,
   onChange,
+  errorText,
 }: TextareaProps) => (
   <div className="input-container">
-    <span className="form-label-container">
-      <FormLabel
-        required={required}
-        labelText={labelText}
-        id={id}
-        inputHasNoLabel={inputHasNoLabel}
-      />
-    </span>
-    <textarea name={name} id={id} value={value} onChange={onChange} />
+    <FormLabel
+      errorText={errorText}
+      required={required}
+      labelText={labelText}
+      id={id}
+      inputHasNoLabel={inputHasNoLabel}
+    />
+
+    <textarea
+      name={name}
+      id={id}
+      value={value}
+      onChange={onChange}
+      aria-invalid={errorText ? true : undefined}
+    />
   </div>
 );
 
