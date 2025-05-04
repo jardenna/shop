@@ -3,7 +3,9 @@ import ProductPrice from '../../features/currency/components/ProductPrice';
 import useLanguage from '../../features/language/useLanguage';
 import { sizeList } from '../../pages/product/ViewProductPage';
 import variables from '../../scss/variables.module.scss';
+import { discountCalculation } from '../../utils/utils';
 import CardContent from '../card/CardContent';
+
 import GridTwoCol from '../GridTwoCol';
 
 type ProductCardCenterProps = {
@@ -25,6 +27,8 @@ const ProductCardCenter = ({
 }: ProductCardCenterProps) => {
   const { language } = useLanguage();
 
+  const newPrice = discountCalculation(price, discount);
+
   return (
     <CardContent heading={null} className="center">
       <span className="separator" />
@@ -33,10 +37,17 @@ const ProductCardCenter = ({
           <strong>{language.price}:</strong>
           <ProductPrice price={price} />
         </GridTwoCol>
+
         {discount !== 0 && (
-          <GridTwoCol>
-            <strong>{language.discount}:</strong> {discount}
-          </GridTwoCol>
+          <>
+            <GridTwoCol>
+              <strong>{language.discount}:</strong> {discount}%
+            </GridTwoCol>
+            <GridTwoCol>
+              <strong>Ny pris:</strong>
+              <ProductPrice price={newPrice} />
+            </GridTwoCol>
+          </>
         )}
         <GridTwoCol>
           <strong>{language.brand}:</strong>

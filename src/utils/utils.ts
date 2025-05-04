@@ -4,4 +4,10 @@ const currencyCacheKey = 'exchangeRates';
 const formatNumber = (value: number, lang: 'en' | 'da') =>
   new Intl.NumberFormat(lang === 'en' ? 'en-US' : 'da-DK').format(value);
 
-export { currencyCacheKey, formatNumber, oneDay };
+const discountCalculation = (price: number, discount: number) => {
+  const discountPrice = (price * discount) / 100;
+  const newPrice = price - discountPrice;
+  return newPrice;
+};
+
+export { currencyCacheKey, discountCalculation, formatNumber, oneDay };
