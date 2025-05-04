@@ -8,9 +8,11 @@ type TimeInputProps = {
   name: string;
   value: string;
   className?: string;
+  errorText?: string;
   inputHasNoLabel?: boolean;
   max?: number;
   min?: number;
+  required?: boolean;
   onChange: (event: ChangeInputType) => void;
 };
 
@@ -24,16 +26,17 @@ const TimeInput = ({
   value,
   min,
   max,
+  errorText,
+  required,
 }: TimeInputProps) => (
   <div className={`input-container ${className}`}>
-    <span className={inputHasNoLabel ? '' : 'form-label-container'}>
-      <FormLabel
-        labelText={labelText}
-        id={id}
-        inputHasNoLabel={inputHasNoLabel}
-      />
-    </span>
-    <span className="hide-time-icon" aria-hidden={true} />
+    <FormLabel
+      errorText={errorText}
+      required={required}
+      labelText={labelText}
+      id={id}
+      inputHasNoLabel={inputHasNoLabel}
+    />
 
     <input
       type="time"

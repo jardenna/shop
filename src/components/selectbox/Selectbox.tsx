@@ -6,7 +6,6 @@ import Select, {
   SingleValue,
 } from 'react-select';
 import useLanguage from '../../features/language/useLanguage';
-import FormError from '../formElements/FormError';
 import FormLabel from '../formElements/FormLabel';
 import './_select-box.scss';
 
@@ -14,7 +13,9 @@ export type OptionType = {
   label: string;
   value: number | string;
 };
+
 export type SelectedOption = SingleValue<OptionType> | MultiValue<OptionType>;
+
 type SelectboxProps = {
   id: string;
   labelText: string;
@@ -52,7 +53,6 @@ const Selectbox = ({
   labelText,
   errorText,
   inputHasNoLabel,
-
   ref,
   components,
   isFixed = true,
@@ -62,7 +62,7 @@ const Selectbox = ({
   const { language } = useLanguage();
   const handleChange = (newValue: SelectedOption) => {
     if (isMulti) {
-      onChange(newValue as OptionType);
+      onChange(newValue as OptionType[]);
     } else {
       onChange(newValue as OptionType);
     }
@@ -78,20 +78,13 @@ const Selectbox = ({
 
   return (
     <div className="input-container">
-      <span className={inputHasNoLabel ? '' : 'form-label-container'}>
-        <FormLabel
-          required={required}
-          labelText={labelText}
-          id={id}
-          inputHasNoLabel={inputHasNoLabel}
-        />
-        {errorText && <FormError errorText={errorText} ariaErrorId={id} />}
-      </span>
-      {errorText && (
-        <span className="error-icon" aria-hidden="true">
-          i
-        </span>
-      )}
+      <FormLabel
+        errorText={errorText}
+        required={required}
+        labelText={labelText}
+        id={id}
+        inputHasNoLabel={inputHasNoLabel}
+      />
 
       <div className="select-box">
         <Select
