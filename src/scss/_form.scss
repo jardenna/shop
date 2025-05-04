@@ -77,6 +77,15 @@ textarea {
     }
   }
 
+  textarea[aria-invalid='true'] {
+    @include outline($color-danger);
+
+    &:focus-visible {
+      border-color: $color-danger;
+      outline: transparent;
+    }
+  }
+
   input[aria-invalid='true'] {
     @include outline($color-danger);
 
