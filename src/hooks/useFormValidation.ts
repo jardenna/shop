@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { BlurEventType, ChangeInputType, FormEventType } from '../types/types';
 
 export type KeyValuePair<T> = {
@@ -35,7 +35,6 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
   const [touched, setTouched] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
-  const inputRefs = useRef<Record<string, HTMLInputElement | null>>({});
   const [filesData, setFilesData] = useState<File[]>([]);
   const [previewData, setPreviewData] = useState<PreviewImg[]>([]);
 
@@ -174,11 +173,12 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
     }
   };
 
-  const scrollToFirstError = () => {
-    const errorField = Object.keys(errors)[0];
-    if (errorField && inputRefs.current[errorField]) {
-      inputRefs.current[errorField].scrollIntoView({ behavior: 'smooth' });
-      inputRefs.current[errorField].focus();
+  const scrollToFirstError = (errors: KeyValuePair<string>) => {
+    const firstErrorField = Object.keys(errors)[0];
+    const errorElement = document.querySelector(`[name="${firstErrorField}"]`);
+    if (errorElement) {
+      errorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      (errorElement as HTMLElement).focus();
     }
   };
 
@@ -196,7 +196,7 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
       }
     } else {
       setErrors(validationErrors);
-      scrollToFirstError();
+      scrollToFirstError(validationErrors);
     }
   };
 
@@ -211,7 +211,6 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
     values,
     errors,
     onClearAllValues,
-    inputRefs,
     filesData,
     previewData,
   };
