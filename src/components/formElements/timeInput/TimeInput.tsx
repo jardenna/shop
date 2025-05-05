@@ -1,6 +1,5 @@
 import { ChangeInputType } from '../../../types/types';
-import FormLabel from '../FormLabel';
-import './_time-input.scss';
+import Input from '../Input';
 
 type TimeInputProps = {
   id: string;
@@ -8,9 +7,11 @@ type TimeInputProps = {
   name: string;
   value: string;
   className?: string;
+  errorText?: string;
   inputHasNoLabel?: boolean;
   max?: number;
   min?: number;
+  required?: boolean;
   onChange: (event: ChangeInputType) => void;
 };
 
@@ -24,28 +25,23 @@ const TimeInput = ({
   value,
   min,
   max,
+  errorText,
+  required,
 }: TimeInputProps) => (
-  <div className={`input-container ${className}`}>
-    <span className={inputHasNoLabel ? '' : 'form-label-container'}>
-      <FormLabel
-        inputLabel={labelText}
-        id={id}
-        inputHasNoLabel={inputHasNoLabel}
-      />
-    </span>
-    <span className="hide-time-icon" aria-hidden={true} />
-
-    <input
-      type="time"
-      name={name}
-      onChange={onChange}
-      className={className}
-      value={value}
-      id={id}
-      min={min}
-      max={max}
-    />
-  </div>
+  <Input
+    type="time"
+    name={name}
+    onChange={onChange}
+    className={className}
+    value={value}
+    id={id}
+    min={min}
+    max={max}
+    errorText={errorText}
+    required={required}
+    labelText={labelText}
+    inputHasNoLabel={inputHasNoLabel}
+  />
 );
 
 export default TimeInput;

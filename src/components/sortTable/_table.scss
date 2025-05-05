@@ -14,12 +14,8 @@ table {
   border-collapse: collapse;
   width: 100%;
 
-  figure {
-    align-items: flex-start;
-
-    img {
-      max-width: rem(72px);
-    }
+  img {
+    width: rem(72px);
   }
 
   .edit-cell {

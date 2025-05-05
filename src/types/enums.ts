@@ -1,4 +1,9 @@
 export enum ValidationMessage {
+  BrandRequired = 'brandRequired',
+  CategoryRequired = 'categoryRequired',
+  ColorRequired = 'colorRequired',
+  ImageRequired = 'imageRequired',
+  MaterialRequired = 'materialRequired',
   PasswordDoNotMatch = 'passwordDoNotMatch',
   PasswordLowercase = 'passwordLowercase',
   PasswordMinLength = 'passwordMinLength',
@@ -13,6 +18,10 @@ export enum ValidationMessage {
   PleaseEnterSubCategoryName = 'pleaseEnterSubCategoryName',
   PleaseEnterValidEmail = 'pleaseEnterValidEmail',
   PleaseSelectParentCategory = 'pleaseSelectParentCategory',
+  PriceRequired = 'priceRequired',
+  ProductDescriptionRequired = 'productDescriptionRequired',
+  ProductNameRequired = 'productNameRequired',
+  SizeRequired = 'sizeRequired',
 }
 
 export enum PopupRole {
@@ -91,6 +100,7 @@ export enum IconName {
   Success = 'success',
   Trash = 'trach',
   Undo = 'undo',
+  Upload = 'upload',
   User = 'user',
   Users = 'users',
   Warning = 'warning',

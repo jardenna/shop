@@ -1,9 +1,11 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { BlurEventType, ChangeInputType, FormEventType } from '../types/types';
 
 export type KeyValuePair<T> = {
   [key: string]: T;
 };
+
+export type PreviewImg = { name: string; size: string; url: string };
 
 export type ValidationErrors = {
   [key: string]: string;
@@ -33,17 +35,8 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
   const [touched, setTouched] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
-  const inputRefs = useRef<Record<string, HTMLInputElement | null>>({});
-
-  const [fileData, setFileData] = useState<{
-    file: File | null;
-    name: string;
-    preview: string;
-  }>({
-    file: null,
-    name: '',
-    preview: '',
-  });
+  const [filesData, setFilesData] = useState<File[]>([]);
+  const [previewData, setPreviewData] = useState<PreviewImg[]>([]);
 
   useEffect(() => {
     if (isSubmitting) {
@@ -55,15 +48,26 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
     }
   }, [errors]);
 
-  const uploadFile = useCallback((file: File, name: string) => {
-    const preview = URL.createObjectURL(file);
-    setFileData({ file, name, preview });
+  const handleFileChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const selectedFiles = event.target.files;
+      if (selectedFiles) {
+        setFilesData(Array.from(selectedFiles));
 
-    // Clean up Object URL when done (if using URL.createObjectURL)
-    return () => {
-      URL.revokeObjectURL(preview);
-    };
-  }, []);
+        const fileArray = Array.from(selectedFiles);
+        const formatBytes = (bytes: number) => `${Math.round(bytes / 1000)} KB`;
+
+        const previews = fileArray.map((file) => ({
+          url: URL.createObjectURL(file),
+          name: file.name,
+          size: formatBytes(file.size),
+        }));
+
+        setPreviewData(previews);
+      }
+    },
+    [],
+  );
 
   function onChange(event: ChangeInputType) {
     const { name, value, type, checked, files } =
@@ -97,7 +101,9 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
     const file = files?.[0];
 
     if (file) {
-      uploadFile(file, name);
+      if (event.target instanceof HTMLInputElement) {
+        handleFileChange(event as ChangeEvent<HTMLInputElement>);
+      }
     }
 
     // Clear the error message when typing
@@ -109,7 +115,10 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
     });
   }
 
-  const onCustomChange = (name: string, value: Date | string | number) => {
+  const onCustomChange = (
+    name: string,
+    value: Date | string | number | (string | number)[],
+  ) => {
     if (isArray) {
       setValues({
         ...values,
@@ -164,11 +173,12 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
     }
   };
 
-  const scrollToFirstError = () => {
-    const errorField = Object.keys(errors)[0];
-    if (errorField && inputRefs.current[errorField]) {
-      inputRefs.current[errorField].scrollIntoView({ behavior: 'smooth' });
-      inputRefs.current[errorField].focus();
+  const scrollToFirstError = (errors: KeyValuePair<string>) => {
+    const firstErrorField = Object.keys(errors)[0];
+    const errorElement = document.querySelector(`[name="${firstErrorField}"]`);
+    if (errorElement) {
+      errorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      (errorElement as HTMLElement).focus();
     }
   };
 
@@ -186,7 +196,7 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
       }
     } else {
       setErrors(validationErrors);
-      scrollToFirstError();
+      scrollToFirstError(validationErrors);
     }
   };
 
@@ -201,8 +211,8 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
     values,
     errors,
     onClearAllValues,
-    inputRefs,
-    fileData,
+    filesData,
+    previewData,
   };
 }
 

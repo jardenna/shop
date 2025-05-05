@@ -36,8 +36,6 @@ const useTableEditField = <T extends { id: string }>({
   };
 
   const handleSaveEdit = () => {
-    console.log(123);
-
     if (callback && editRowId) {
       callback(editRowId, values);
     }

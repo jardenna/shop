@@ -7,9 +7,8 @@ import ModalContainer from '../../components/modal/ModalContainer';
 import useLanguage from '../../features/language/useLanguage';
 import { BtnVariant, IconName, SizeVariant } from '../../types/enums';
 import { HeaderProps } from '../header/Header';
-import LanguageCurrencyPreferences from '../headerIconsComponents/LanguageCurrencyPreferences';
 import { MainPath } from '../nav/enums';
-import './_header-icons.scss';
+import LanguageCurrencyPreferences from './LanguageCurrencyPreferences';
 
 type OmittedHeaderProps = Omit<HeaderProps, 'primaryActionBtn' | 'ariaLabel'>;
 

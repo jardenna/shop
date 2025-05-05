@@ -20,20 +20,20 @@ const createCategory = asyncHandler(async (req, res) => {
   if (!categoryName) {
     return res.status(400).json({
       success: false,
-      message: 'Please enter a category name',
+      message: t('pleaseEnterCategoryName', req.lang),
     });
   }
 
-  const existingCategory = await Category.findOne({
-    categoryName: { $regex: new RegExp(`^${categoryName}$`, 'i') },
-  });
+  // const existingCategory = await Category.findOne({
+  //   categoryName: { $regex: new RegExp(`^${categoryName}$`, 'i') },
+  // });
 
-  if (existingCategory) {
-    return res.status(400).json({
-      success: false,
-      message: t('categoryAlreadyExist', req.lang),
-    });
-  }
+  // if (existingCategory) {
+  //   return res.status(400).json({
+  //     success: false,
+  //     message: t('categoryAlreadyExist', req.lang),
+  //   });
+  // }
 
   const categoryData = { categoryName, categoryStatus };
   if (categoryStatus === 'Scheduled') {
@@ -71,7 +71,13 @@ const getAllCategories = asyncHandler(async (req, res) => {
     return res.status(404).json({ message: t('noData', req.lang) });
   }
 
-  res.status(200).json({ success: true, categories: formattedCategories });
+  // Include parent category IDs in the response
+  const categoriesWithParent = formattedCategories.map((category) => ({
+    ...category,
+    parentCategoryId: category.parentCategory || null, // Add parentCategoryId if it exists
+  }));
+
+  res.status(200).json({ success: true, categories: categoriesWithParent });
 });
 
 // @desc    Check if category is scheduled

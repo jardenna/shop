@@ -1,0 +1,101 @@
+@use './globals' as *;
+
+.admin-card-container {
+  display: flex;
+  margin-block: 30px;
+
+  .footer {
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .badge {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .btn {
+    min-height: rem(30px);
+  }
+
+  .separator {
+    height: 100px;
+    width: 1px;
+    position: absolute;
+    top: 30%;
+  }
+
+  .admin-card-title {
+    margin: 0;
+  }
+
+  .admin-card-date {
+    font-style: italic;
+  }
+}
+
+.admin-card {
+  background-color: $color-white;
+  flex: 1;
+  padding-top: 42px;
+
+  .card-top-line {
+    display: flex;
+    height: 4px;
+    width: 100%;
+    background-color: $color-gray-80;
+  }
+
+  .admin-card-content {
+    height: 100%;
+    min-height: rem(300px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 12px 30px;
+    position: relative;
+  }
+
+  &.card-left {
+    flex: 1;
+  }
+
+  &.card-center {
+    .product-list-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding-left: 30px;
+      justify-content: center;
+      height: 100%;
+    }
+  }
+
+  &.card-right {
+    background-color: $color-gray-20;
+    max-width: rem(400px);
+    padding-right: 12px;
+    padding-top: 40px;
+
+    .card-top-line {
+      height: 6px;
+    }
+
+    .admin-card-date {
+      text-align: right;
+    }
+
+    .admin-card-title {
+      display: flex;
+      justify-content: flex-end;
+      font-size: rem(18px);
+    }
+
+    .btn {
+      max-width: fit-content;
+      padding: 0 32px;
+      margin-top: 8px;
+    }
+  }
+}

@@ -19,7 +19,7 @@ const UpdateSubCategoryPage = () => {
   } = useGetSubCategoryByIdQuery(params.id || '');
 
   return (
-    <section className="page page-small">
+    <article className="page page-small">
       {isLoading && <SkeletonPage />}
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
@@ -40,7 +40,7 @@ const UpdateSubCategoryPage = () => {
           </>
         )}
       </ErrorBoundary>
-    </section>
+    </article>
   );
 };
 

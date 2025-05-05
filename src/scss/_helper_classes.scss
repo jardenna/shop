@@ -3,7 +3,7 @@
 .visually-hidden {
   clip: rect(1px, 1px, 1px, 1px);
   overflow: hidden;
-  position: absolute;
+  position: absolute !important;
   white-space: nowrap;
   height: 1px;
   width: 1px;
@@ -18,6 +18,18 @@
   @include max-size($medium) {
     flex-direction: column;
   }
+
+  &.flex-align-start {
+    align-items: flex-start;
+  }
+
+  .flex-1 {
+    flex: 1;
+  }
+
+  .flex-2 {
+    flex: 2;
+  }
 }
 
 .flex-align-right {
@@ -29,6 +41,10 @@
   flex-direction: column;
 }
 
+.row {
+  flex-direction: row;
+}
+
 .page-small {
   max-width: $page-width-small;
 }
@@ -38,7 +54,11 @@
 }
 
 .text-bold {
-  font-weight: 700;
+  font-family: $font-primary-bold;
+}
+
+.text-italic {
+  font-style: italic;
 }
 
 .grid {
@@ -88,9 +108,16 @@
   }
 }
 
-.footer-buttons {
+.footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+  display: flex;
+  background-color: $color-gray-80;
 }

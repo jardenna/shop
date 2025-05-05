@@ -31,7 +31,7 @@ const createSubCategory = asyncHandler(async (req, res) => {
   if (!subCategoryName) {
     return res.status(400).json({
       success: false,
-      message: 'Subcategory name is required',
+      message: t('pleaseEnterCategoryName', req.lang),
     });
   }
 
@@ -42,17 +42,17 @@ const createSubCategory = asyncHandler(async (req, res) => {
     });
   }
 
-  const existingSubCategory = await SubCategory.findOne({
-    subCategoryName: { $regex: new RegExp(`^${subCategoryName}$`, 'i') },
-    category,
-  });
+  // const existingSubCategory = await SubCategory.findOne({
+  //   subCategoryName: { $regex: new RegExp(`^${subCategoryName}$`, 'i') },
+  //   category,
+  // });
 
-  if (existingSubCategory) {
-    return res.status(400).json({
-      success: false,
-      message: t('subCategoryAlreadyExist', req.lang),
-    });
-  }
+  // if (existingSubCategory) {
+  //   return res.status(400).json({
+  //     success: false,
+  //     message: t('subCategoryAlreadyExist', req.lang),
+  //   });
+  // }
 
   const subCategoryData = { subCategoryName, category, categoryStatus };
   if (categoryStatus === 'Scheduled') {
@@ -275,11 +275,45 @@ const deleteSubCategory = asyncHandler(async (req, res) => {
   if (!subCategory) {
     return res.status(404).json({
       success: false,
-      message: 'SubCategory does not exist',
+      message: t('categoryNotFound', req.lang),
     });
   }
 
   res.json({ success: true, message: 'SubCategory deleted successfully' });
+});
+
+// @desc    Get subcategories with parent category
+// @route   /api/subcategories/with-parent
+// @method  Get
+// @access  Private for employees
+const getSubCategoriesWithParent = asyncHandler(async (req, res) => {
+  const subCategories = await SubCategory.aggregate([
+    {
+      $lookup: {
+        from: 'categories', // Collection name for categories
+        localField: 'category',
+        foreignField: '_id',
+        as: 'parentCategory',
+      },
+    },
+    {
+      $unwind: {
+        path: '$parentCategory',
+        preserveNullAndEmptyArrays: true, // Allow subcategories without a parent category
+      },
+    },
+    {
+      $project: {
+        categoryStatus: '$categoryStatus',
+        label: '$subCategoryName', // Use subCategoryName as the label
+        value: '$_id', // Use _id as the value
+        parentCategoryName: '$parentCategory.categoryName',
+        _id: 0,
+      },
+    },
+  ]);
+
+  res.status(200).json(subCategories);
 });
 
 export {
@@ -287,6 +321,7 @@ export {
   createSubCategory,
   deleteSubCategory,
   getAllSubCategories,
+  getSubCategoriesWithParent,
   getSubCategoryById,
   updateSubCategory,
 };

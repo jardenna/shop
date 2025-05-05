@@ -40,6 +40,7 @@ import SuccessIcon from './SuccessIcon';
 import ThreeDotsHorizontalIcon from './ThreeDotsHorizontalIcon';
 import TrashIcon from './TrashIcon';
 import UndoIcon from './UndoIcon';
+import UploadIcon from './UploadIcon';
 import UserIcon from './UserIcon';
 import UsersIcon from './UsersIcon';
 import WarningIcon from './WarningIcon';
@@ -98,6 +99,7 @@ const iconMapping = {
   success: SuccessIcon,
   trach: TrashIcon,
   undo: UndoIcon,
+  upload: UploadIcon,
   user: UserIcon,
   users: UsersIcon,
   warning: WarningIcon,

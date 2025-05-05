@@ -148,7 +148,13 @@ const getSortedProducts = asyncHandler(async (req, res) => {
   const page = parseInt(req.query.page) || 1;
 
   const products = await Product.find({})
-    .populate('subCategory')
+    .populate({
+      path: 'subCategory',
+      populate: {
+        path: 'category',
+        model: 'Category',
+      },
+    })
     .limit(pageSize)
     .skip(pageSize * (page - 1))
     .sort({ createdAt: -1 })
@@ -200,7 +206,15 @@ const getNewProducts = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Public
 const getProductById = asyncHandler(async (req, res) => {
-  const product = await Product.findById(req.params.id).lean();
+  const product = await Product.findById(req.params.id)
+    .populate({
+      path: 'subCategory',
+      populate: {
+        path: 'category',
+        model: 'Category',
+      },
+    })
+    .lean();
 
   if (!product) {
     return res.status(404).json(errorResponse);

@@ -1,34 +1,17 @@
-import { CategoryStatus } from '../app/api/apiTypes';
-import useLanguage from '../features/language/useLanguage';
 import { ChangeInputType } from '../types/types';
-import DatePicker from './datePicker/DatePicker';
 import Input from './formElements/Input';
-import TimeInput from './formElements/timeInput/TimeInput';
-import Selectbox, { OptionType } from './selectbox/Selectbox';
+import StatusInputs, { StatusInputsProps } from './StatusInputs';
 
-type StatusOptions = {
-  label: string;
-  value: CategoryStatus;
-};
-
-type SharedCategoryInputsProps = {
+type SharedCategoryInputsProps = StatusInputsProps & {
   categoryNameErrorText: string;
   categoryNameId: string;
   categoryNameLabelText: string;
-  categoryNamePlaceholder: string;
   categoryNamevalue: string;
-  categoryStatus: string;
-  defaultStatusValue: StatusOptions;
-  selectedDate: Date;
-  timeValue: string;
   onCategoryNameChange: (event: ChangeInputType) => void;
-  onSelectDate: (date: Date) => void;
-  onSelectStatus: (selectedOptions: OptionType) => void;
-  onTimeChange: (event: ChangeInputType) => void;
 };
 
 const SharedCategoryInputs = ({
-  categoryStatus,
+  status,
   onSelectDate,
   selectedDate,
   timeValue,
@@ -38,65 +21,32 @@ const SharedCategoryInputs = ({
   onCategoryNameChange,
   categoryNamevalue,
   categoryNameId,
-  categoryNamePlaceholder,
   categoryNameLabelText,
   categoryNameErrorText,
-}: SharedCategoryInputsProps) => {
-  const { language } = useLanguage();
-  const statusOptions: StatusOptions[] = [
-    {
-      label: language.inactive,
-      value: 'Inactive',
-    },
-    {
-      label: language.scheduled,
-      value: 'Scheduled',
-    },
-    {
-      label: language.published,
-      value: 'Published',
-    },
-  ];
+  labelText,
+}: SharedCategoryInputsProps) => (
+  <>
+    <Input
+      onChange={onCategoryNameChange}
+      value={categoryNamevalue}
+      id={categoryNameId}
+      name={categoryNameId}
+      labelText={categoryNameLabelText}
+      errorText={categoryNameErrorText}
+      required
+    />
 
-  return (
-    <>
-      <Input
-        onChange={onCategoryNameChange}
-        value={categoryNamevalue}
-        id={categoryNameId}
-        name={categoryNameId}
-        labelText={categoryNameLabelText}
-        placeholder={categoryNamePlaceholder}
-        errorText={categoryNameErrorText}
-        required
-      />
-
-      <Selectbox
-        id="categoryStatus"
-        defaultValue={defaultStatusValue}
-        options={statusOptions}
-        onChange={onSelectStatus}
-        name="categoryStatus"
-        labelText={language.selectCategoryStatus}
-      />
-      {categoryStatus === 'Scheduled' && (
-        <>
-          <TimeInput
-            value={timeValue}
-            onChange={onTimeChange}
-            id="time"
-            labelText={language.selectPublishTime}
-            name="time"
-          />
-          <DatePicker
-            onSelectDate={onSelectDate}
-            selectedDate={selectedDate}
-            labelText={language.selectPublishDate}
-          />
-        </>
-      )}
-    </>
-  );
-};
+    <StatusInputs
+      labelText={labelText}
+      timeValue={timeValue}
+      onTimeChange={onTimeChange}
+      status={status}
+      onSelectDate={onSelectDate}
+      onSelectStatus={onSelectStatus}
+      defaultStatusValue={defaultStatusValue}
+      selectedDate={selectedDate}
+    />
+  </>
+);
 
 export default SharedCategoryInputs;

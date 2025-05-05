@@ -51,6 +51,14 @@ h2 {
   margin-bottom: 24px;
 }
 
+h3 {
+  font-family: $font-primary-bold;
+  font-size: rem(14px);
+  font-weight: normal;
+  margin: 0;
+  margin-bottom: 4px;
+}
+
 h1 {
   font-size: rem(24px);
   font-family: $font-secondary;
@@ -88,6 +96,7 @@ a {
 
 img {
   width: 100%;
+  border-radius: 4px;
 }
 
 ul {

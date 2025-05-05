@@ -1,0 +1,44 @@
+import useLanguage from '../../features/language/useLanguage';
+import { BtnVariant, IconName } from '../../types/enums';
+import Badge from '../badge/Badge';
+import DateDisplay from '../datePicker/DateDisplay';
+import Icon from '../icons/Icon';
+import Tooltip from '../tooltip/Tooltip';
+
+type CardBadgeProps = {
+  badgeClassName: string;
+  badgeText: string;
+  scheduledDate: Date | null;
+};
+
+const CardBadge = ({
+  badgeText,
+  badgeClassName,
+  scheduledDate,
+}: CardBadgeProps) => {
+  const { language } = useLanguage();
+  return (
+    <div className="flex">
+      <Badge badgeText={badgeText} className={badgeClassName} />
+      {scheduledDate && (
+        <Tooltip
+          text={
+            <DateDisplay date={scheduledDate} hour="2-digit" minute="2-digit" />
+          }
+          ariaControls="scheduled-date"
+          triggerBtnVariant={BtnVariant.Ghost}
+          ariaLabel={language.scheduledDate}
+        >
+          <Icon
+            iconName={IconName.Calendar}
+            title={language.calendar}
+            ariaLabel={language.scheduledDate}
+            ariaHidden
+          />
+        </Tooltip>
+      )}
+    </div>
+  );
+};
+
+export default CardBadge;

@@ -8,7 +8,7 @@ const authEndpoints = {
 };
 
 const userUrl = '/users';
-const categoryUrl = '/category';
+const categoryUrl = '/categories';
 const subCategoryUrl = '/subcategories';
 const productUrl = '/products';
 const uploadUrl = '/upload';

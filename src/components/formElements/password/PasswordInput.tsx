@@ -9,7 +9,7 @@ import PasswordPopupList, { PasswordRulesProps } from './PasswordPopupList';
 
 type OmittedInputProps = Omit<
   InputProps,
-  'checked' | 'min' | 'max' | 'maxLength'
+  'checked' | 'min' | 'max' | 'maxLength' | 'multiple'
 >;
 
 type PasswordInputProps = OmittedInputProps & {
@@ -28,7 +28,6 @@ const PasswordInput = ({
   inputHasNoLabel,
   ref,
   autoComplete,
-  placeholder,
   autoFocus,
   required,
   passwordRules,
@@ -62,7 +61,6 @@ const PasswordInput = ({
         inputHasNoLabel={inputHasNoLabel}
         ref={ref}
         autoComplete={autoComplete}
-        placeholder={placeholder}
         autoFocus={autoFocus}
         required={required}
         onFocus={onFocus}

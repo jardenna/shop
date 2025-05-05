@@ -24,26 +24,38 @@ input[type='number'] {
   opacity: 1;
 }
 
+form {
+  width: 100%;
+}
+
+.form-card {
+  background-color: $color-white;
+  border-radius: 4px;
+  box-shadow: $box-shadow;
+  margin-bottom: 12px;
+  width: 100%;
+  padding: 24px;
+}
+
 textarea {
   resize: none;
   min-height: rem(128px);
 }
 
-.input-container {
+.checkbox-label-container,
+.form-label-container {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.input-container {
   width: 100%;
   position: relative;
   border-bottom: 3px solid transparent;
 
   &:has(input:focus-visible) {
     border-color: $color-primary;
-  }
-
-  .form-label-container {
-    display: flex;
-    justify-content: space-between;
   }
 
   input,
@@ -57,12 +69,12 @@ textarea {
     @extend %styled-input;
   }
 
-  .error-message {
-    font-weight: bold;
-    color: $color-danger;
+  textarea[aria-invalid='true'] {
+    @include outline($color-danger);
 
-    @include max-size($small) {
-      font-size: rem(12px);
+    &:focus-visible {
+      border-color: $color-danger;
+      outline: transparent;
     }
   }
 
@@ -79,6 +91,15 @@ textarea {
 .date-picker-container {
   tbody {
     max-height: rem(250px);
+  }
+}
+
+.error-message {
+  font-weight: bold;
+  color: $color-danger;
+
+  @include max-size($small) {
+    font-size: rem(12px);
   }
 }
 

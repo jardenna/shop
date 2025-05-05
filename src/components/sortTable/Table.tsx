@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useSearchParams } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
-import useLocalStorage from '../../hooks/useLocalStorage';
+import useLocalStorage, { localStorageKeys } from '../../hooks/useLocalStorage';
 import variables from '../../scss/variables.module.scss';
 import { BtnVariant, IconName } from '../../types/enums';
 import { SortOrderType } from '../../types/types';
@@ -44,7 +44,10 @@ const Table = <T,>({
   const [searchParams, setSearchParams] = useSearchParams();
   const { paddingBlockSmall, paddingBlockMedium, paddingBlockLarge } =
     variables;
-  const [padding, setPadding] = useLocalStorage('padding', paddingBlockMedium);
+  const [padding, setPadding] = useLocalStorage(
+    localStorageKeys.tableCellPadding,
+    paddingBlockMedium,
+  );
 
   const tableGridIconList = [
     {

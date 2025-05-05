@@ -7,10 +7,10 @@ import {
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/Form';
-import validateSubcategory from '../../components/formElements/validation/validate';
-import validateUpdateCategory from '../../components/formElements/validation/validateUpdateCategory';
+import validateSubcategory from '../../components/formElements/validation/validateSubcategory';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
+import StatusOptions from '../../components/selectbox/StatusOptions';
 import SharedCategoryInputs from '../../components/SharedCategoryInputs';
 import useFormValidation from '../../hooks/useFormValidation';
 import { MainPath } from '../../layout/nav/enums';
@@ -34,9 +34,9 @@ const SubCategoryForm = ({
   const navigate = useNavigate();
   const { language } = useLanguage();
   const initialState: CreateSubCategoryRequest = {
-    subCategoryName: selectedCategory?.subCategoryName || '',
-    categoryStatus: selectedCategory?.categoryStatus || 'Inactive',
-    category: selectedCategory?.mainCategory.categoryName || '',
+    subCategoryName: selectedCategory?.subCategoryName ?? '',
+    categoryStatus: selectedCategory?.categoryStatus ?? 'Inactive',
+    category: selectedCategory?.mainCategory.categoryName ?? '',
   };
 
   const { onChange, values, onSubmit, onCustomChange, errors } =
@@ -52,9 +52,10 @@ const SubCategoryForm = ({
   const selectedTime = selectedCategory?.scheduledDate;
 
   const parentCategoriesOptions = parentCategories.map(
-    ({ categoryName, id }) => ({
+    ({ categoryName, id, categoryStatus }) => ({
       label: categoryName,
       value: id,
+      status: categoryStatus,
     }),
   );
 
@@ -70,15 +71,6 @@ const SubCategoryForm = ({
   );
 
   async function handleSubmitCategory() {
-    const validation = validateUpdateCategory(values);
-    if (validation) {
-      onAddMessagePopup({
-        messagePopupType: 'error',
-        message: language[validation],
-        componentType: 'notification',
-      });
-      return;
-    }
     try {
       if (id) {
         await updateSubCategory({
@@ -122,7 +114,7 @@ const SubCategoryForm = ({
       onSubmit={onSubmit}
       submitBtnLabel={id ? language.save : language.create}
     >
-      <FieldSet legendText={language.categories}>
+      <FieldSet legendText={language.categories} hideLegendText>
         <Selectbox
           id="category"
           defaultValue={{
@@ -130,21 +122,21 @@ const SubCategoryForm = ({
             value: values.category,
           }}
           options={parentCategoriesOptions}
+          components={{ Option: StatusOptions }}
           onChange={(selectedOptions: OptionType) => {
             handleSelectStatus('category', selectedOptions);
           }}
           name="category"
-          labelText={language.selectParentCategory}
+          labelText={language.parentCategory}
           errorText={language[errors.category]}
           required
         />
-
         <SharedCategoryInputs
+          labelText={language.categoryStatus}
           categoryNamevalue={values.subCategoryName}
           categoryNameId="subCategoryName"
           categoryNameErrorText={language[errors.subCategoryName]}
-          categoryNameLabelText={language.addCategoryName}
-          categoryNamePlaceholder={language.categoryName}
+          categoryNameLabelText={language.categoryName}
           onCategoryNameChange={onChange}
           defaultStatusValue={{
             label: language[values.categoryStatus.toLowerCase()],
@@ -153,7 +145,7 @@ const SubCategoryForm = ({
           onSelectStatus={(selectedOptions: OptionType) => {
             handleSelectStatus('categoryStatus', selectedOptions);
           }}
-          categoryStatus={values.categoryStatus}
+          status={values.categoryStatus}
           onSelectDate={handleDaySelect}
           selectedDate={selectedDate}
           timeValue={timeValue}

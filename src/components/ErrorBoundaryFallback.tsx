@@ -2,7 +2,6 @@ import useLanguage from '../features/language/useLanguage';
 import ErrorContent from './ErrorContent';
 
 type FallbackProps = {
-  error: Error;
   resetErrorBoundary: () => void;
 };
 

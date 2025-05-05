@@ -1,6 +1,8 @@
 @use '../../scss/globals' as *;
 
 /* stylelint-disable selector-class-pattern */
+
+.select-box__menu-portal,
 .select-box {
   &:has(input[aria-invalid='true']) {
     @include outline($color-danger);
@@ -9,6 +11,10 @@
       border-color: $color-danger;
       outline: transparent;
     }
+  }
+
+  .select-box__value-container {
+    padding-block: 0;
   }
 
   .select-box__control {
@@ -50,5 +56,51 @@
     &.select-box__option--is-focused {
       background-color: $color-blue-25 !important;
     }
+  }
+}
+
+.custom-option {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+
+  &.disabled {
+    color: $color-gray-30;
+  }
+
+  &.selected {
+    background-color: $color-background-secondary;
+  }
+
+  &.focused {
+    background-color: $color-blue-20;
+  }
+}
+
+.option-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+}
+
+.status-option {
+  color: $color-white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.published {
+    background-color: $color-badge-default;
+  }
+
+  &.scheduled {
+    background-color: $color-badge-scheduled;
+  }
+
+  &.inactive {
+    background-color: $color-badge-inactive;
   }
 }

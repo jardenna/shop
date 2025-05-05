@@ -28,7 +28,7 @@ const ModalFooter = ({
   };
 
   return (
-    <LayoutElement className="footer-buttons" ariaLabel="dialog">
+    <LayoutElement className="footer" ariaLabel="dialog">
       {secondaryActionBtn && (
         <Button
           onClick={secondaryActionBtn.onClick || onCloseModal}

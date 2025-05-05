@@ -1,6 +1,5 @@
 import { ChangeEvent, RefObject } from 'react';
 import { BlurEventType, ChangeInputType, InputType } from '../../types/types';
-import FormError from './FormError';
 import FormLabel from './FormLabel';
 
 export type InputProps = {
@@ -17,6 +16,7 @@ export type InputProps = {
   max?: number;
   maxLength?: number;
   min?: number;
+  multiple?: boolean;
   placeholder?: string;
   ref?: RefObject<HTMLInputElement | null>;
   required?: boolean;
@@ -41,6 +41,7 @@ const Input = ({
   onChange,
   onBlur,
   min,
+  multiple,
   max,
   placeholder,
   maxLength,
@@ -61,22 +62,17 @@ const Input = ({
   };
   return (
     <div className={inputClassName}>
-      <span className={inputHasNoLabel ? '' : 'form-label-container'}>
-        <FormLabel
-          required={required}
-          inputLabel={labelText}
-          id={id}
-          inputHasNoLabel={inputHasNoLabel}
-        />
-        {errorText && <FormError errorText={errorText} ariaErrorId={id} />}
-      </span>
-      {errorText && (
-        <span className="error-icon" aria-hidden="true">
-          i
-        </span>
-      )}
+      <FormLabel
+        required={required}
+        labelText={labelText}
+        id={id}
+        inputHasNoLabel={inputHasNoLabel}
+        errorText={errorText}
+      />
+
       <input
         ref={ref}
+        multiple={multiple}
         type={type || 'text'}
         name={name}
         checked={checked}
@@ -87,7 +83,7 @@ const Input = ({
         id={id}
         aria-invalid={errorText ? true : undefined}
         aria-required={required || undefined}
-        aria-errormessage={errorText ? id : undefined}
+        aria-errormessage={errorText ? `err-${id}` : undefined}
         onBlur={onBlur}
         placeholder={placeholder}
         min={min}

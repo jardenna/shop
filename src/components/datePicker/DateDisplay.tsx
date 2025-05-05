@@ -21,7 +21,7 @@ const DateDisplay = ({
   const { selectedLanguage } = useLanguage();
 
   return (
-    <span>
+    <>
       {new Intl.DateTimeFormat(dateToLocaleMap[selectedLanguage], {
         day,
         month,
@@ -29,7 +29,7 @@ const DateDisplay = ({
         hour,
         minute,
       }).format(new Date(date))}
-    </span>
+    </>
   );
 };
 

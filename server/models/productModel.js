@@ -7,7 +7,7 @@ const reviewSchema = new mongoose.Schema(
     rating: { type: Number, required: true },
     comment: { type: String, required: true },
     user: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: ObjectId,
       required: true,
       ref: 'User',
     },
@@ -18,7 +18,7 @@ const reviewSchema = new mongoose.Schema(
 const productSchema = new mongoose.Schema(
   {
     productName: { type: String, required: true },
-    image: { type: String, required: true },
+    images: { type: [String], required: true },
     brand: { type: String, required: true },
     quantity: { type: Number },
     subCategory: { type: ObjectId, ref: 'SubCategory', required: true },
@@ -26,12 +26,27 @@ const productSchema = new mongoose.Schema(
     reviews: [reviewSchema],
     rating: { type: Number, required: true, default: 0 },
     numReviews: { type: Number, required: true, default: 0 },
-    price: { type: Number, required: true, default: 0 },
+    price: {
+      type: Number,
+      required: true,
+      default: 0,
+      set: (value) =>
+        typeof value === 'string' ? parseFloat(value.replace(',', '.')) : value,
+    },
+    productStatus: {
+      type: String,
+      enum: ['Published', 'Inactive', 'Scheduled'],
+      default: 'Inactive',
+    },
+    scheduledDate: {
+      type: Date,
+    },
     discount: { type: Number, default: 0 },
     material: { type: String, required: true, default: 0 },
     countInStock: { type: Number, required: true, default: 0 },
     sizes: {
       type: [String],
+      required: true,
       enum: ['S', 'M', 'L', 'XL'],
       default: ['S', 'M', 'L', 'XL'],
     },

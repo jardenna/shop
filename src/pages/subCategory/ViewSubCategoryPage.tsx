@@ -2,7 +2,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate, useParams } from 'react-router';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import PageHeader from '../../components/PageHeader';
-import CategoryCard from '../../components/categoryCard/CategoryCard';
+import CategoryCard from '../../components/adminCard/CategoryCard';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import SkeletonPage from '../../components/skeleton/SkeletonPage';
 import useLanguage from '../../features/language/useLanguage';
@@ -35,12 +35,12 @@ const ViewSubCategoryPage = () => {
         navigate(`/admin/${MainPath.AdminSubCategories}`);
         onAddMessagePopup({
           messagePopupType: 'success',
-          message: language.categoryUpdated,
+          message: language.categoryDeleted,
         });
       } else {
         onAddMessagePopup({
           messagePopupType: 'error',
-          message: language.categoryUpdated,
+          message: language.categoryNotFound,
           componentType: 'notification',
         });
       }
@@ -54,7 +54,7 @@ const ViewSubCategoryPage = () => {
   };
 
   return (
-    <section className="page page-medium">
+    <article className="page page-medium">
       {isLoading && <SkeletonPage />}
       {category && (
         <>
@@ -69,6 +69,7 @@ const ViewSubCategoryPage = () => {
               onReset={() => refetch}
             >
               <CategoryCard
+                onReset={() => refetch}
                 onDeleteSubCategory={handleDeleteSubCategory}
                 categoryId={category.id}
                 createdAt={category.createdAt}
@@ -79,14 +80,14 @@ const ViewSubCategoryPage = () => {
                   category.mainCategory.categoryStatus !== 'Published'
                 }
                 scheduledDate={category.scheduledDate || null}
-                statusMessage={category.mainCategory.categoryStatus.toLocaleLowerCase()}
+                statusMessage={category.mainCategory.categoryStatus.toLowerCase()}
                 status={category.categoryStatus}
               />
             </ErrorBoundary>
           </div>
         </>
       )}
-    </section>
+    </article>
   );
 };
 

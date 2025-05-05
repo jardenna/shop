@@ -1,8 +1,6 @@
 import { SubCategoryResponse } from '../../app/api/apiTypes';
-import MoreLink from '../../components/MoreLink';
 import PageHeader from '../../components/PageHeader';
 import Table from '../../components/sortTable/Table';
-import CategoryBadge from '../../features/categories/CategoryBadge';
 import useLanguage from '../../features/language/useLanguage';
 import {
   useGetAllSubCategoriesQuery,
@@ -10,6 +8,7 @@ import {
 } from '../../features/subCategories/subCategoryApiSlice';
 import { MainPath } from '../../layout/nav/enums';
 import { oneDay } from '../../utils/utils';
+import SubCategoryTableRows from './SubCategoryTableRows';
 
 const tableHeaders: {
   key: keyof SubCategoryResponse;
@@ -53,39 +52,8 @@ const SubCategoryPage = () => {
     refetchOnMountOrArgChange: true,
   });
 
-  const renderRow = ({
-    id,
-    scheduledDate,
-    subCategoryName,
-    categoryStatus,
-    productCount,
-    mainCategoryName,
-  }: SubCategoryResponse) => {
-    const statusKey = categoryStatus.toLocaleLowerCase();
-    return (
-      <tr key={id}>
-        <td>{mainCategoryName}</td>
-        <td>{subCategoryName}</td>
-        <td>{productCount}</td>
-        <td>
-          <CategoryBadge
-            badgeClassName={categoryStatus.toLowerCase()}
-            badgeText={language[statusKey]}
-            scheduledDate={scheduledDate || null}
-          />
-        </td>
-        <td>
-          <MoreLink
-            linkText={language.viewCategory}
-            linkTo={`/admin/${MainPath.AdminSubCategoryView}/${id}`}
-          />
-        </td>
-      </tr>
-    );
-  };
-
   return (
-    <section className="page page-medium">
+    <article className="page page-medium">
       <PageHeader
         heading={language.subCategories}
         linkText={language.createNewCategory}
@@ -100,10 +68,31 @@ const SubCategoryPage = () => {
           isLoading={isLoading}
           emptyHeaderCellText={language.viewCategory}
         >
-          {(data) => data.map(renderRow)}
+          {(data) =>
+            data.map(
+              ({
+                id,
+                scheduledDate,
+                subCategoryName,
+                categoryStatus,
+                productCount,
+                mainCategoryName,
+              }) => (
+                <SubCategoryTableRows
+                  key={id}
+                  id={id}
+                  status={categoryStatus}
+                  scheduledDate={scheduledDate || null}
+                  subCategoryName={subCategoryName}
+                  mainCategoryName={mainCategoryName}
+                  productCount={productCount}
+                />
+              ),
+            )
+          }
         </Table>
       </div>
-    </section>
+    </article>
   );
 };
 

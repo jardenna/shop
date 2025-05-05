@@ -3,8 +3,7 @@ import { CreateCategoryRequest } from '../../app/api/apiTypes';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/Form';
-import validationCategories from '../../components/formElements/validation/validateCategory';
-import validateUpdateCategory from '../../components/formElements/validation/validateUpdateCategory';
+import validateCategory from '../../components/formElements/validation/validateCategory';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import { OptionType } from '../../components/selectbox/Selectbox';
 import SharedCategoryInputs from '../../components/SharedCategoryInputs';
@@ -32,7 +31,7 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
   const { onChange, values, onSubmit, errors, onCustomChange } =
     useFormValidation({
       initialState,
-      validate: validationCategories,
+      validate: validateCategory,
       callback: handleSubmitCategory,
     });
 
@@ -49,15 +48,6 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
   };
 
   async function handleSubmitCategory() {
-    const validation = validateUpdateCategory(values);
-    if (validation) {
-      onAddMessagePopup({
-        messagePopupType: 'error',
-        message: language[validation],
-        componentType: 'notification',
-      });
-      return;
-    }
     try {
       if (id) {
         await updateCategory({
@@ -98,8 +88,9 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
         onSubmit={onSubmit}
         submitBtnLabel={id ? language.save : language.create}
       >
-        <FieldSet legendText={language.categories}>
+        <FieldSet legendText={language.categories} hideLegendText>
           <SharedCategoryInputs
+            labelText={language.categoryStatus}
             onCategoryNameChange={onChange}
             categoryNamevalue={values.categoryName}
             categoryNameId="categoryName"
@@ -110,14 +101,13 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
             onSelectStatus={(selectedOptions: OptionType) => {
               handleSelectStatus('categoryStatus', selectedOptions);
             }}
-            categoryStatus={values.categoryStatus}
+            status={values.categoryStatus}
             onSelectDate={handleDaySelect}
             selectedDate={selectedDate}
             timeValue={timeValue}
             onTimeChange={handleTimeChange}
             categoryNameErrorText={language[errors.categoryName]}
-            categoryNameLabelText={language.addCategoryName}
-            categoryNamePlaceholder={language.categoryName}
+            categoryNameLabelText={language.categoryName}
           />
         </FieldSet>
       </Form>

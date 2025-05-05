@@ -4,7 +4,7 @@ type FormErrorProps = {
 };
 
 const FormError = ({ errorText, ariaErrorId }: FormErrorProps) => (
-  <span id={ariaErrorId} className="error-message">
+  <span id={`err-${ariaErrorId}`} className="error-message">
     {errorText}
   </span>
 );

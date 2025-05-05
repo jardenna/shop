@@ -17,7 +17,7 @@ const UpdateCategoryPage = () => {
   } = useGetCategoryByIdQuery(params.id || '');
 
   return (
-    <section className="page page-small">
+    <article className="page page-small">
       {isLoading && <SkeletonPage />}
       {category && (
         <>
@@ -32,7 +32,7 @@ const UpdateCategoryPage = () => {
           </ErrorBoundary>
         </>
       )}
-    </section>
+    </article>
   );
 };
 

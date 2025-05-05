@@ -1,0 +1,55 @@
+@use '../../scss/globals' as *;
+
+.product-overview-cell {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.product-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .product-list-headline {
+    display: flex;
+    margin-bottom: 4px;
+  }
+}
+
+.product-size-list {
+  display: flex;
+  gap: 8px;
+
+  .product-size-list-item {
+    background-color: $color-secondary;
+    height: rem(40px);
+    width: rem(40px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    color: $color-gray-40;
+
+    &.available {
+      color: $color-primary;
+    }
+  }
+}
+
+.product-color-list {
+  display: flex;
+  gap: 8px;
+}
+
+.product-img-list {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 12px;
+
+  .product-img-item {
+    width: 100%;
+    height: rem(124px);
+    object-fit: cover;
+  }
+}

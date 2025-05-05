@@ -1,6 +1,7 @@
 import useLanguage from '../features/language/useLanguage';
 import LayoutElement from '../layout/LayoutElement';
 import Button from './Button';
+import Img from './Img';
 
 type ErrorContentProps = {
   btnLabel: string;
@@ -18,11 +19,10 @@ const ErrorContent = ({
   const { language } = useLanguage();
   return (
     <section className={`error ${className}`}>
-      <img
+      <Img
         className="emoji"
         src="/images/sad_smiley.png"
         alt={language.errorAltText}
-        loading="lazy"
       />
       <LayoutElement as="header" ariaLabel={language.error}>
         <h2 className="error-info">{errorText}</h2>
