@@ -17,6 +17,16 @@
     border-radius: 4px;
     padding: 20px;
   }
+
+  .error-message {
+    position: absolute;
+    top: -20px;
+    left: 0;
+  }
+
+  .error-icon {
+    display: none;
+  }
 }
 
 .preview-list {
