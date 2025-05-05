@@ -12,6 +12,7 @@ bag;Bag;Indkøbskurv
 black;Black;Sort
 blue;Blue;Blå
 brand;Brand;Mærke
+brandRequired;Please insert brand;Indsæt venligst mærke
 brown;Brown;Brun
 browseImages;Browse images;Vælg produkt billeder
 calendar;Calendar;Kalender
@@ -35,6 +36,8 @@ close;Close;Luk
 closeDialog;Close dialog;Luk dialog
 collapseMenu;Collapse menu;Skjul menu
 collection;Collection;Kollektion
+colorRequired;Please select at least one color;Vælg mindst 1 farve
+categoryRequired;Please select a category;Vælg venligst kategori
 colours;Colours;Farver
 confirmPassword;Confirm password;Gentag adgangskode
 contact;Contact;Kontakt
@@ -89,6 +92,7 @@ heroTitle;Exclusive Fashion Sale;Eksklusivt Modesalg
 hidePassword;Hide password;Skjul adgangskode
 home;Home;Hjem
 image;Image;Foto
+imageRequired;Please insert image(s);Indsæt venligst billede(r)
 inactive;Inactive;Inaktiv
 invalidPassword;Invalid password;Ugyldig adgangskode
 invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for planlagt dato
@@ -105,6 +109,7 @@ loginSucceeded;Login succeeded;Login lykkedes
 logout;Log out;Log ud
 main;Main;Primær
 material;Material;Materiale
+materialRequired;Please insert material;Indsæt venligst materiale
 menu;Menu;Menu
 minLength;At least 8 characters;Mindst 8 tegn
 multiColor;MultiColor;Flerfarvet
@@ -150,17 +155,20 @@ pleaseProvideScheduledDate;Please provide a scheduled date;Angiv venligst en pla
 pleaseSelectParentCategory;Please select parent category;Vælg venligst hovedkategori
 preferences;Preferences;Præferencer
 price;Price;Pris
+priceRequired;Please insert price;Indsæt venligst pris
 pricing;Pricing;Prissætning
 productCreated;Product created;Produkt tilføjet
 productDeleted;Product deleted;Produkt blev slettet
+productDescriptionRequired;Please insert product description;Indsæt venligst produktbeskrivelse
 productImages;Product images;Produkt billeder
 productInformation;Product information;Produkt oplysninger
-productsInStockNow;Products in stock now;Antal produkter på lager
 productList;Product list;Produktliste
 productName;Product name;Produkt navn
+productNameRequired;Please insert product name;Indsæt venligst produktnavn
 productNotFound;Product not found;Produktet findes ikke
 productQuantity;Product quantity;Produkt antal
 products;Products;Produkter
+productsInStockNow;Products in stock now;Antal produkter på lager
 productStatus;Product status;Produkt status
 productUpdated;Product updated;Produkt opdateret
 productVariants;Product Variants;Produkt varianter
@@ -181,12 +189,13 @@ scheduledDate;Scheduled date;Planlagt dato
 scheduledDateMustBeFuture;Scheduled date must be after now;Planlagt dato skal være efter nu
 scheduledToBePubliched;is scheduled to be published at;er planlagt til udgivelse den 
 search;Search;Søg
-selectPreferences;Select preferred language and currency;Vælg sprog og valuta
+selectPreferences;Select preferred language and currency;Vælg venligst sprog og valuta
 shopNow;Shop now;Køb nu
 showPassword;Show password;Vis adgangskode
 signup;Sign up;Opret bruger
 signupFailed;Sign up failed;Registrering mislykkedes
 signupSucceeded;Sign up succeeded;Registrering lykkedes
+sizeRequired;Please select at least one size;Vælg mindst 1 størrelse
 sizes;Sizes;Størrelser
 somethingWentWrong;Something went wrong, please try again;Noget gik galt, forsøg venligst igen
 sort;Sort;Sorter

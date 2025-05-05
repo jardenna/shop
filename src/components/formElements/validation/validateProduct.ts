@@ -16,35 +16,34 @@ function validateProduct(values: ProductRequest) {
   } = values;
 
   if (!productName) {
-    errors.productName = ValidationMessage.PleaseEnterCategoryName;
+    errors.productName = ValidationMessage.ProductNameRequired;
   }
+
   if (!brand) {
-    errors.brand = ValidationMessage.PleaseEnterCategoryName;
+    errors.brand = ValidationMessage.BrandRequired;
   }
 
   if (!description) {
-    errors.description = ValidationMessage.PleaseEnterCategoryName;
+    errors.description = ValidationMessage.ProductDescriptionRequired;
   }
   if (!material) {
-    errors.material = ValidationMessage.PleaseEnterCategoryName;
-  }
-  if (!price) {
-    errors.price = ValidationMessage.PleaseEnterCategoryName;
+    errors.material = ValidationMessage.MaterialRequired;
   }
 
-  if (!material) {
-    errors.material = ValidationMessage.PleaseEnterCategoryName;
+  if (!price) {
+    errors.price = ValidationMessage.PriceRequired;
   }
+
   if (subCategory === '') {
-    errors.subCategory = ValidationMessage.PleaseEnterCategoryName;
+    errors.subCategory = ValidationMessage.CategoryRequired;
   }
 
   if (colors.length === 0) {
-    errors.colors = ValidationMessage.PleaseSelectParentCategory;
+    errors.colors = ValidationMessage.ColorRequired;
   }
 
   if (images.length === 0) {
-    errors.images = ValidationMessage.PleaseSelectParentCategory;
+    errors.images = ValidationMessage.ImageRequired;
   }
 
   return errors;

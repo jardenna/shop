@@ -1,17 +1,17 @@
 const validateProduct = (product) => {
   switch (true) {
     case !product.productName:
-      return 'Product name is required';
+      return 'Please insert product name';
     case !product.description:
-      return 'Description is required';
+      return 'Please insert product description';
     case !product.price:
-      return 'Price is required';
+      return 'Please insert price';
     case !product.brand:
-      return 'Brand is required';
+      return 'Please insert brand';
     case !product.material:
-      return 'Material is required';
+      return 'Please insert material';
     case !product.colors:
-      return 'Colors is required';
+      return 'Please select at least one color';
     default:
       return null; // No errors
   }
