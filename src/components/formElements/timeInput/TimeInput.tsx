@@ -1,6 +1,5 @@
 import { ChangeInputType } from '../../../types/types';
-import FormLabel from '../FormLabel';
-import './_time-input.scss';
+import Input from '../Input';
 
 type TimeInputProps = {
   id: string;
@@ -29,26 +28,20 @@ const TimeInput = ({
   errorText,
   required,
 }: TimeInputProps) => (
-  <div className={`input-container ${className}`}>
-    <FormLabel
-      errorText={errorText}
-      required={required}
-      labelText={labelText}
-      id={id}
-      inputHasNoLabel={inputHasNoLabel}
-    />
-
-    <input
-      type="time"
-      name={name}
-      onChange={onChange}
-      className={className}
-      value={value}
-      id={id}
-      min={min}
-      max={max}
-    />
-  </div>
+  <Input
+    type="time"
+    name={name}
+    onChange={onChange}
+    className={className}
+    value={value}
+    id={id}
+    min={min}
+    max={max}
+    errorText={errorText}
+    required={required}
+    labelText={labelText}
+    inputHasNoLabel={inputHasNoLabel}
+  />
 );
 
 export default TimeInput;
