@@ -46,6 +46,7 @@ const productSchema = new mongoose.Schema(
     countInStock: { type: Number, required: true, default: 0 },
     sizes: {
       type: [String],
+      required: true,
       enum: ['S', 'M', 'L', 'XL'],
       default: ['S', 'M', 'L', 'XL'],
     },

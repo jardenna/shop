@@ -12,6 +12,8 @@ const validateProduct = (product) => {
       return 'Please insert material';
     case !product.colors:
       return 'Please select at least one color';
+    case !product.sizes:
+      return 'Please select at least one size';
     default:
       return null; // No errors
   }
