@@ -52,6 +52,9 @@ const FileInput = ({
           multiple={multiple}
           required={required}
           className="visually-hidden"
+          aria-invalid={errorText ? true : undefined}
+          aria-required={required || undefined}
+          aria-errormessage={errorText ? `err-${id}` : undefined}
         />
         {previewData.length > 0 && (
           <Preview
