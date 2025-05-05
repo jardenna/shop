@@ -89,6 +89,11 @@ input[type='checkbox'] {
   }
 }
 
+.checkbox-label-container {
+  justify-content: flex-start;
+  gap: 20px;
+}
+
 .radio-card {
   display: flex;
   flex-direction: row;

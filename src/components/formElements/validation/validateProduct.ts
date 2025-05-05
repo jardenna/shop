@@ -13,6 +13,7 @@ function validateProduct(values: ProductRequest) {
     subCategory,
     productName,
     images,
+    sizes,
   } = values;
 
   if (!productName) {
@@ -44,6 +45,10 @@ function validateProduct(values: ProductRequest) {
 
   if (images.length === 0) {
     errors.images = ValidationMessage.ImageRequired;
+  }
+
+  if (sizes.length === 0) {
+    errors.sizes = ValidationMessage.SizeRequired;
   }
 
   return errors;

@@ -280,7 +280,13 @@ const ProductForm = ({
           <section className="form-card">
             <FieldSet legendText={language.productVariants}>
               <div>
-                <span className="form-label-container">{language.sizes}</span>
+                <span className="checkbox-label-container">
+                  {language.sizes}{' '}
+                  <span className="error-message">
+                    {language[errors.sizes]}
+                  </span>
+                </span>
+
                 <Checkbox
                   onChange={onChange}
                   values={values.sizes}
