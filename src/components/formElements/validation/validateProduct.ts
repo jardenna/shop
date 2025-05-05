@@ -12,8 +12,8 @@ function validateProduct(values: ProductRequest) {
     price,
     subCategory,
     productName,
+    images,
   } = values;
-  console.log(subCategory === '');
 
   if (!productName) {
     errors.productName = ValidationMessage.PleaseEnterCategoryName;
@@ -41,6 +41,10 @@ function validateProduct(values: ProductRequest) {
 
   if (colors.length === 0) {
     errors.colors = ValidationMessage.PleaseSelectParentCategory;
+  }
+
+  if (images.length === 0) {
+    errors.images = ValidationMessage.PleaseSelectParentCategory;
   }
 
   return errors;

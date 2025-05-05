@@ -30,6 +30,7 @@ const FileInput = ({
   errorText,
 }: FileInputProps) => {
   const { language } = useLanguage();
+
   return (
     <div>
       <div className="file-container">

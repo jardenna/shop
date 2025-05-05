@@ -68,15 +68,6 @@ textarea {
     @extend %styled-input;
   }
 
-  .error-message {
-    font-weight: bold;
-    color: $color-danger;
-
-    @include max-size($small) {
-      font-size: rem(12px);
-    }
-  }
-
   textarea[aria-invalid='true'] {
     @include outline($color-danger);
 
@@ -99,6 +90,15 @@ textarea {
 .date-picker-container {
   tbody {
     max-height: rem(250px);
+  }
+}
+
+.error-message {
+  font-weight: bold;
+  color: $color-danger;
+
+  @include max-size($small) {
+    font-size: rem(12px);
   }
 }
 

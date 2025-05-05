@@ -204,6 +204,7 @@ const ProductForm = ({
                 onChange={onChange}
                 multiple
                 required
+                errorText={language[errors.images]}
                 name="images"
                 id="images"
                 previewData={previewData}
