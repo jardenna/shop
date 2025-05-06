@@ -151,10 +151,17 @@ const ProductForm = ({
     onCustomChange(name, selectedOptions.value);
   };
 
-  const [img, setImg] = useState(selectedProduct?.images || []);
+  const [uploadedImg, setUploadedImg] = useState(selectedProduct?.images || []);
   const handleRemoveImg = (name: string) => {
-    const x = img.filter((a) => a !== name);
-    setImg(x);
+    const imgage = uploadedImg.filter((img) => img !== name);
+    setUploadedImg(imgage);
+  };
+
+  // const [previewedImg, setPreviewedImg] = useState(
+  //   selectedProduct?.images || [],
+  // );
+  const handleRemovePreviewImg = (name: string) => {
+    console.log(name);
   };
 
   async function handleSubmitProduct() {
@@ -170,10 +177,10 @@ const ProductForm = ({
         const uploadedImages = uploadResponse.images;
 
         // Combine existing images with newly uploaded images
-        values.images = [...img, ...uploadedImages];
+        values.images = [...uploadedImg, ...uploadedImages];
       } else {
         // Retain existing images if no new files are uploaded
-        values.images = img;
+        values.images = uploadedImg;
       }
 
       const productData = { ...values };
@@ -217,7 +224,7 @@ const ProductForm = ({
           <section className="form-card">
             <FieldSet legendText={language.productImages}>
               <ul className="preview-list">
-                {img.map((img) => (
+                {uploadedImg.map((img) => (
                   <li key={img} className="preview-item">
                     <Img className="preview-img" src={img} alt="" />
                     <Button
@@ -242,8 +249,8 @@ const ProductForm = ({
                 previewData={previewData}
                 title={language.delete}
                 ariaLabel={language.delete}
-                onRemoveImg={() => {
-                  console.log(1);
+                onRemoveImg={(name: string) => {
+                  handleRemovePreviewImg(name);
                 }}
               />
             </FieldSet>

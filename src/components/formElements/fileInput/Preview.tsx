@@ -8,7 +8,7 @@ export type PreviewProps = {
   ariaLabel: string;
   previewData: PreviewImg[];
   title: string;
-  onRemoveImg: () => void;
+  onRemoveImg: (name: string) => void;
 };
 
 const Preview = ({
@@ -28,7 +28,7 @@ const Preview = ({
         <Button
           variant={BtnVariant.Ghost}
           onClick={() => {
-            onRemoveImg();
+            onRemoveImg(preview.name);
           }}
           ariaLabel={ariaLabel}
         >
