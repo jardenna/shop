@@ -1,6 +1,7 @@
 import express from 'express';
 import multer from 'multer';
 import path from 'path';
+import { t } from '../utils/translator.js';
 
 const router = express.Router();
 
@@ -15,7 +16,7 @@ const storage = multer.diskStorage({
 });
 
 const fileFilter = (req, file, cb) => {
-  const filetypes = /jpe?g|png|webp/;
+  const filetypes = /jpeg|jpg|png|webp|gif/;
   const mimetypes = /image\/jpe?g|image\/png|image\/webp/;
   const extname = path.extname(file.originalname).toLowerCase();
   const mimetype = file.mimetype;
@@ -35,7 +36,8 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-const upload = multer({ storage, fileFilter });
+const fileSize = 1 * 1000 * 1000;
+const upload = multer({ storage, fileFilter, limits: { fileSize } });
 
 router.post('/', (req, res) => {
   upload.array('images', 5)(req, res, (err) => {

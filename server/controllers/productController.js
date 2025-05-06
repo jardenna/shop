@@ -1,3 +1,5 @@
+import fs from 'fs';
+import path from 'path';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Product from '../models/productModel.js';
 import SubCategory from '../models/subCategoryModel.js';
@@ -53,7 +55,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     return res.status(400).json({ success: false, message: error });
   }
 
-  const { subCategory, quantity, ...rest } = req.body;
+  const { subCategory, quantity, images, ...rest } = req.body;
 
   // Validate subCategory existence
   const subCategoryId = await SubCategory.findById(subCategory);
@@ -70,6 +72,25 @@ const updateProduct = asyncHandler(async (req, res) => {
       .json({ success: false, message: 'Product not found' });
   }
 
+  // Handle image updates
+  if (images && Array.isArray(images)) {
+    const oldImages = existingProduct.images || [];
+    const imagesToDelete = oldImages.filter(
+      (oldImage) => !images.includes(oldImage),
+    );
+
+    imagesToDelete.forEach((imagePath) => {
+      const fullPath = path.join(process.cwd(), imagePath);
+      fs.unlink(fullPath, (error) => {
+        if (error) {
+          return res
+            .status(500)
+            .json({ message: `Failed to delete image: ${fullPath}`, error });
+        }
+      });
+    });
+  }
+
   // Add quantity to the existing countInStock if quantity is provided
   let updatedCountInStock = existingProduct.countInStock;
   if (quantity && quantity > 0) {
@@ -81,6 +102,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     {
       subCategory,
       countInStock: updatedCountInStock,
+      images, // Update images
       ...rest,
     },
     { new: true },
@@ -97,6 +119,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     productName: product.productName,
     countInStock: product.countInStock,
     quantity: product.quantity, // optional, if you're tracking total quantity added
+    images: product.images, // updated images
     ...rest, // any other updated fields
   });
 });
@@ -109,6 +132,20 @@ const deleteProduct = asyncHandler(async (req, res) => {
   const product = await Product.findByIdAndDelete(req.params.id);
   if (!product) {
     return res.status(404).json(errorResponse);
+  }
+
+  // Delete associated images
+  if (product.images && product.images.length > 0) {
+    product.images.forEach((imagePath) => {
+      const fullPath = path.join(process.cwd(), imagePath);
+      fs.unlink(fullPath, (error) => {
+        if (error) {
+          return res
+            .status(500)
+            .json({ message: `Failed to delete image: ${fullPath}`, error });
+        }
+      });
+    });
   }
 
   res.json({ success: true, message: 'Product deleted successfully' });
