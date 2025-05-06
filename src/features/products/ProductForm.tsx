@@ -6,6 +6,7 @@ import {
   ProductRequest,
   SubCategoriesWithParent,
 } from '../../app/api/apiTypes';
+import Button from '../../components/Button';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/Form';
@@ -17,6 +18,8 @@ import Input from '../../components/formElements/Input';
 import Textarea from '../../components/formElements/Textarea';
 import validateProduct from '../../components/formElements/validation/validateProduct';
 import GridTwoCol from '../../components/GridTwoCol';
+import Icon from '../../components/icons/Icon';
+import Img from '../../components/Img';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import ColorOptions from '../../components/selectbox/ColorOptions';
 import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
@@ -25,6 +28,7 @@ import StatusInputs from '../../components/StatusInputs';
 import useFormValidation from '../../hooks/useFormValidation';
 import { MainPath } from '../../layout/nav/enums';
 import variables from '../../scss/variables.module.scss';
+import { BtnVariant, IconName } from '../../types/enums';
 import { discountCalculation } from '../../utils/utils';
 import ProductPrice from '../currency/components/ProductPrice';
 import useLanguage from '../language/useLanguage';
@@ -206,6 +210,23 @@ const ProductForm = ({
         <div className="flex-2">
           <section className="form-card">
             <FieldSet legendText={language.productImages}>
+              <ul className="preview-list">
+                {selectedProduct &&
+                  selectedProduct.images.map((img) => (
+                    <li key={img} className="preview-item">
+                      <Img className="preview-img" src={img} alt="" />
+                      <Button
+                        variant={BtnVariant.Ghost}
+                        onClick={() => {
+                          console.log(2);
+                        }}
+                        ariaLabel="ariaLabel"
+                      >
+                        <Icon iconName={IconName.Close} title="title" />
+                      </Button>
+                    </li>
+                  ))}
+              </ul>
               <FileInput
                 onChange={onChange}
                 multiple
