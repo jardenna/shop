@@ -127,18 +127,18 @@ a.btn {
 
 // Danger button
 .btn-danger {
-  background-color: $color-red-20;
+  background-color: $color-danger;
   color: $color-white;
 
   &:focus-visible,
   &:hover {
-    color: $color-red-20;
-    border: 1px solid $color-red-20;
+    color: $color-danger;
+    border: 1px solid $color-danger;
   }
 
   &::before {
     background: $color-white;
-    color: $color-red-20;
+    color: $color-danger;
   }
 }
 
