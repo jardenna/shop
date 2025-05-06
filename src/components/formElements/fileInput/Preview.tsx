@@ -5,7 +5,6 @@ export type PreviewProps = {
   ariaLabel: string;
   previewData: PreviewImg[];
   title: string;
-  className?: string;
   onRemoveImg: (name: string) => void;
 };
 
@@ -14,9 +13,8 @@ const Preview = ({
   ariaLabel,
   title,
   previewData,
-  className = '',
 }: PreviewProps) => (
-  <ul className={`preview-list ${className}`}>
+  <ul className="preview-list">
     {previewData.map((preview, index) => (
       <ProductImgList
         key={index}
@@ -24,7 +22,7 @@ const Preview = ({
           onRemoveImg(preview.name);
         }}
         img={preview.url}
-        ariaLabel={ariaLabel}
+        ariaLabel={`${ariaLabel} ${preview.name}`}
         title={title}
       >
         <div className="preview-info">

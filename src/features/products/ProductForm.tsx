@@ -222,7 +222,7 @@ const ProductForm = ({
                       handleRemoveImg(img);
                     }}
                     img={img}
-                    ariaLabel={language.delete}
+                    ariaLabel={`${language.delete} ${language.image}`}
                     title={language.trash}
                   >
                     <div className="preview-info" />
