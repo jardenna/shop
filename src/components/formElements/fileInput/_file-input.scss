@@ -31,7 +31,7 @@
 
 .preview-list {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   flex: 2;
   gap: 8px;
 
@@ -51,16 +51,37 @@
     object-fit: cover;
   }
 
+  &.uploaded-img {
+    flex-direction: row;
+    border: 1px solid $color-border;
+    padding: 20px;
+    gap: 24px;
+
+    .preview-item {
+      border: transparent;
+      padding: 0;
+    }
+
+    .btn-ghost {
+      top: -12px;
+      right: -12px;
+      background: #ba1b1b;
+      color: #fff;
+      padding: 4px;
+    }
+  }
+
   .preview-info {
     display: flex;
     flex-direction: column;
+    max-width: rem(200px);
   }
 
   .preview-size {
     color: $color-gray-60;
   }
 
-  .btn-ghost {
+  .btn {
     position: absolute;
     right: 16px;
   }

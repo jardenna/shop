@@ -217,7 +217,7 @@ const ProductForm = ({
         <div className="flex-2">
           <section className="form-card">
             <FieldSet legendText={language.productImages}>
-              <ul className="preview-list">
+              <ul className="preview-list uploaded-img">
                 {uploadedImg.map((img) => (
                   <li key={img} className="preview-item">
                     <Img className="preview-img" src={img} alt="" />
@@ -228,7 +228,7 @@ const ProductForm = ({
                       }}
                       ariaLabel="ariaLabel"
                     >
-                      <Icon iconName={IconName.Close} title="title" />
+                      <Icon iconName={IconName.Trash} title="title" />
                     </Button>
                   </li>
                 ))}

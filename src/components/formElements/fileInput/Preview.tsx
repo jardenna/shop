@@ -22,17 +22,18 @@ const Preview = ({
       <li key={preview.name} className="preview-item">
         <Img className="preview-img" src={preview.url} alt="" />
         <div className="preview-info">
-          <span>{preview.name}</span>
+          <span className="text-ellipsis">{preview.name}</span>
           <span className="preview-size">{preview.size}</span>
         </div>
         <Button
+          className="danger"
           variant={BtnVariant.Ghost}
           onClick={() => {
             onRemoveImg(preview.name);
           }}
           ariaLabel={ariaLabel}
         >
-          <Icon iconName={IconName.Close} title={title} />
+          <Icon iconName={IconName.Trash} title={title} />
         </Button>
       </li>
     ))}
