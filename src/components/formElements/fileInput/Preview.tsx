@@ -1,13 +1,11 @@
 import { PreviewImg } from '../../../hooks/useFormValidation';
-import { BtnVariant, IconName } from '../../../types/enums';
-import Button from '../../Button';
-import Icon from '../../icons/Icon';
-import Img from '../../Img';
+import ProductImgList from './ProductImgList';
 
 export type PreviewProps = {
   ariaLabel: string;
   previewData: PreviewImg[];
   title: string;
+  className?: string;
   onRemoveImg: (name: string) => void;
 };
 
@@ -16,26 +14,24 @@ const Preview = ({
   ariaLabel,
   title,
   previewData,
+  className = '',
 }: PreviewProps) => (
-  <ul className="preview-list">
-    {previewData.map((preview) => (
-      <li key={preview.name} className="preview-item">
-        <Img className="preview-img" src={preview.url} alt="" />
+  <ul className={`preview-list ${className}`}>
+    {previewData.map((preview, index) => (
+      <ProductImgList
+        key={index}
+        onClick={() => {
+          onRemoveImg(preview.name);
+        }}
+        img={preview.url}
+        ariaLabel={ariaLabel}
+        title={title}
+      >
         <div className="preview-info">
           <span className="text-ellipsis">{preview.name}</span>
           <span className="preview-size">{preview.size}</span>
         </div>
-        <Button
-          className="danger"
-          variant={BtnVariant.Ghost}
-          onClick={() => {
-            onRemoveImg(preview.name);
-          }}
-          ariaLabel={ariaLabel}
-        >
-          <Icon iconName={IconName.Trash} title={title} />
-        </Button>
-      </li>
+      </ProductImgList>
     ))}
   </ul>
 );

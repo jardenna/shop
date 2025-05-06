@@ -6,7 +6,6 @@ import {
   ProductRequest,
   SubCategoriesWithParent,
 } from '../../app/api/apiTypes';
-import Button from '../../components/Button';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/Form';
@@ -14,12 +13,11 @@ import Checkbox, {
   CheckboxItems,
 } from '../../components/formElements/Checkbox';
 import FileInput from '../../components/formElements/fileInput/FileInput';
+import ProductImgList from '../../components/formElements/fileInput/ProductImgList';
 import Input from '../../components/formElements/Input';
 import Textarea from '../../components/formElements/Textarea';
 import validateProduct from '../../components/formElements/validation/validateProduct';
 import GridTwoCol from '../../components/GridTwoCol';
-import Icon from '../../components/icons/Icon';
-import Img from '../../components/Img';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import ColorOptions from '../../components/selectbox/ColorOptions';
 import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
@@ -28,7 +26,6 @@ import StatusInputs from '../../components/StatusInputs';
 import useFormValidation from '../../hooks/useFormValidation';
 import { MainPath } from '../../layout/nav/enums';
 import variables from '../../scss/variables.module.scss';
-import { BtnVariant, IconName } from '../../types/enums';
 import { discountCalculation } from '../../utils/utils';
 import ProductPrice from '../currency/components/ProductPrice';
 import useLanguage from '../language/useLanguage';
@@ -218,19 +215,18 @@ const ProductForm = ({
           <section className="form-card">
             <FieldSet legendText={language.productImages}>
               <ul className="preview-list uploaded-img">
-                {uploadedImg.map((img) => (
-                  <li key={img} className="preview-item">
-                    <Img className="preview-img" src={img} alt="" />
-                    <Button
-                      variant={BtnVariant.Ghost}
-                      onClick={() => {
-                        handleRemoveImg(img);
-                      }}
-                      ariaLabel="ariaLabel"
-                    >
-                      <Icon iconName={IconName.Trash} title="title" />
-                    </Button>
-                  </li>
+                {uploadedImg.map((img, index) => (
+                  <ProductImgList
+                    key={index}
+                    onClick={() => {
+                      handleRemoveImg(img);
+                    }}
+                    img={img}
+                    ariaLabel={language.delete}
+                    title={language.trash}
+                  >
+                    <div className="preview-info" />
+                  </ProductImgList>
                 ))}
               </ul>
               <FileInput
