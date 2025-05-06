@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 import {
   Product,
@@ -151,6 +151,12 @@ const ProductForm = ({
     onCustomChange(name, selectedOptions.value);
   };
 
+  const [img, setImg] = useState(selectedProduct?.images || []);
+  const handleRemoveImg = (name: string) => {
+    const x = img.filter((a) => a !== name);
+    setImg(x);
+  };
+
   async function handleSubmitProduct() {
     try {
       const formData = new FormData();
@@ -164,10 +170,10 @@ const ProductForm = ({
         const uploadedImages = uploadResponse.images;
 
         // Combine existing images with newly uploaded images
-        values.images = [...(selectedProduct?.images || []), ...uploadedImages];
+        values.images = [...img, ...uploadedImages];
       } else {
         // Retain existing images if no new files are uploaded
-        values.images = selectedProduct?.images || [];
+        values.images = img;
       }
 
       const productData = { ...values };
@@ -211,21 +217,20 @@ const ProductForm = ({
           <section className="form-card">
             <FieldSet legendText={language.productImages}>
               <ul className="preview-list">
-                {selectedProduct &&
-                  selectedProduct.images.map((img) => (
-                    <li key={img} className="preview-item">
-                      <Img className="preview-img" src={img} alt="" />
-                      <Button
-                        variant={BtnVariant.Ghost}
-                        onClick={() => {
-                          console.log(2);
-                        }}
-                        ariaLabel="ariaLabel"
-                      >
-                        <Icon iconName={IconName.Close} title="title" />
-                      </Button>
-                    </li>
-                  ))}
+                {img.map((img) => (
+                  <li key={img} className="preview-item">
+                    <Img className="preview-img" src={img} alt="" />
+                    <Button
+                      variant={BtnVariant.Ghost}
+                      onClick={() => {
+                        handleRemoveImg(img);
+                      }}
+                      ariaLabel="ariaLabel"
+                    >
+                      <Icon iconName={IconName.Close} title="title" />
+                    </Button>
+                  </li>
+                ))}
               </ul>
               <FileInput
                 onChange={onChange}
