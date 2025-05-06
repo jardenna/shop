@@ -150,17 +150,21 @@ const ProductForm = ({
   async function handleSubmitProduct() {
     try {
       const formData = new FormData();
-      filesData.forEach((file) => {
-        formData.append('images', file);
-      });
 
-      const uploadResponse = await uploadImages(formData).unwrap();
-      const imageUrl = uploadResponse.images;
+      if (filesData.length > 0) {
+        filesData.forEach((file) => {
+          formData.append('images', file);
+        });
 
-      const productData = {
-        ...values,
-        images: imageUrl,
-      };
+        const uploadResponse = await uploadImages(formData).unwrap();
+        const imageUrl = uploadResponse.images;
+
+        values.images = imageUrl; // Use uploaded images
+      } else if (selectedProduct?.images) {
+        values.images = selectedProduct.images; // Retain existing images
+      }
+
+      const productData = { ...values };
 
       if (id) {
         await updateProduct({

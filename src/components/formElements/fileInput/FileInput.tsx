@@ -66,7 +66,7 @@ const FileInput = ({
         )}
       </div>
       <span className="text-italic">
-        {language.filesSuported}: .jpg, .png , webp
+        {language.filesSuported}: JPEG, JPG, PNG, WEBP, GIF
       </span>
     </div>
   );
