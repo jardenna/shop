@@ -39,6 +39,7 @@ const productApiSlice = apiSlice.injectEndpoints({
         url: `${productUrl}/${id}`,
         method: 'DELETE',
       }),
+      invalidatesTags: [TagTypesEnum.Products],
     }),
   }),
 });
