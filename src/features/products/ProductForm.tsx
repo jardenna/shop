@@ -157,11 +157,13 @@ const ProductForm = ({
         });
 
         const uploadResponse = await uploadImages(formData).unwrap();
-        const imageUrl = uploadResponse.images;
+        const uploadedImages = uploadResponse.images;
 
-        values.images = imageUrl; // Use uploaded images
-      } else if (selectedProduct?.images) {
-        values.images = selectedProduct.images; // Retain existing images
+        // Combine existing images with newly uploaded images
+        values.images = [...(selectedProduct?.images || []), ...uploadedImages];
+      } else {
+        // Retain existing images if no new files are uploaded
+        values.images = selectedProduct?.images || [];
       }
 
       const productData = { ...values };
