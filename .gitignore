@@ -11,7 +11,7 @@ lerna-debug.log*
 node_modules
 build
 *.local
-.vscode
+
 
 /keys
 
@@ -22,8 +22,7 @@ en.json
 da.json
 
 # Editor directories and files
-.vscode/*
-!.vscode/extensions.json
+
 .idea
 .DS_Store
 *.suo
