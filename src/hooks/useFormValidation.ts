@@ -200,6 +200,12 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
     }
   };
 
+  const removePreviewImage = (name: string) => {
+    setPreviewData((prevPreviewData) =>
+      prevPreviewData.filter((img) => img.name !== name),
+    );
+  };
+
   return {
     onSubmit,
     onChange,
@@ -213,6 +219,7 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
     onClearAllValues,
     filesData,
     previewData,
+    removePreviewImage,
   };
 }
 

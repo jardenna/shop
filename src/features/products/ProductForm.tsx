@@ -126,6 +126,7 @@ const ProductForm = ({
     onCustomChange,
     filesData,
     previewData,
+    removePreviewImage,
   } = useFormValidation({
     initialState,
     validate: validateProduct,
@@ -153,15 +154,8 @@ const ProductForm = ({
 
   const [uploadedImg, setUploadedImg] = useState(selectedProduct?.images || []);
   const handleRemoveImg = (name: string) => {
-    const imgage = uploadedImg.filter((img) => img !== name);
-    setUploadedImg(imgage);
-  };
-
-  // const [previewedImg, setPreviewedImg] = useState(
-  //   selectedProduct?.images || [],
-  // );
-  const handleRemovePreviewImg = (name: string) => {
-    console.log(name);
+    const image = uploadedImg.filter((img) => img !== name);
+    setUploadedImg(image);
   };
 
   async function handleSubmitProduct() {
@@ -250,7 +244,7 @@ const ProductForm = ({
                 title={language.delete}
                 ariaLabel={language.delete}
                 onRemoveImg={(name: string) => {
-                  handleRemovePreviewImg(name);
+                  removePreviewImage(name);
                 }}
               />
             </FieldSet>
