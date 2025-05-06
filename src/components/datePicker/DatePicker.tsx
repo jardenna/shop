@@ -2,7 +2,7 @@ import { DayPicker, OnSelectHandler } from 'react-day-picker';
 import { da, enGB } from 'react-day-picker/locale';
 import 'react-day-picker/style.css';
 import useLanguage from '../../features/language/useLanguage';
-import FormLabel from '../formElements/FormLabel';
+import VisuallyHidden from '../VisuallyHidden';
 import './_date-picker.scss';
 
 type DatePickerProps = {
@@ -10,7 +10,6 @@ type DatePickerProps = {
   onSelectDate: OnSelectHandler<Date>;
   selectedDate: Date;
   errorText?: string;
-  id?: string;
   inputHasNoLabel?: boolean;
   required?: boolean;
 };
@@ -19,7 +18,6 @@ function DatePicker({
   onSelectDate,
   selectedDate,
   labelText,
-  id,
   required,
   inputHasNoLabel,
   errorText,
@@ -30,13 +28,17 @@ function DatePicker({
 
   return (
     <div className="input-container date-picker-container">
-      <FormLabel
-        required={required}
-        labelText={labelText}
-        id={id || ''}
-        inputHasNoLabel={inputHasNoLabel}
-        errorText={errorText}
-      />
+      <span className={inputHasNoLabel ? '' : 'form-label-container'}>
+        {inputHasNoLabel ? (
+          <VisuallyHidden>{labelText}</VisuallyHidden>
+        ) : (
+          <span>
+            {labelText}
+            {required && <span aria-hidden="true">*</span>}
+          </span>
+        )}
+        {errorText && <span className="error-message">{errorText}</span>}
+      </span>
       <DayPicker
         fixedWeeks
         required
