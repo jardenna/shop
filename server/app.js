@@ -39,7 +39,7 @@ app.use(cors(corsOptions)); // Use the CORS middleware with options
 
 app.use(express.json()); // Ensure this is before the routes
 app.use(express.urlencoded({ extended: true }));
-app.use('/', express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/users', userRoutes);
 app.use('/api/auth', authRoutes);
@@ -47,7 +47,6 @@ app.use('/api/categories', categoryRoutes);
 app.use('/api/subcategories', subCategoryRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/upload', uploadRoutes);
-app.use('/api/upload', express.static(path.join(__dirname + '/uploads')));
 
 // Global error handler
 app.use(errorHandler);
