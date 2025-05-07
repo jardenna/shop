@@ -51,7 +51,7 @@ const createProduct = asyncHandler(async (req, res) => {
 // @method  Put
 // @access  Private for admin and employee
 const updateProduct = [
-  scheduledStatusHandler, // Apply middleware here
+  scheduledStatusHandler('productStatus'), // Pass the field name
   asyncHandler(async (req, res) => {
     const { subCategory, quantity, images, ...rest } = req.body;
 
@@ -98,6 +98,7 @@ const updateProduct = [
         subCategory,
         countInStock: updatedCountInStock,
         images,
+        productStatus: req.body.productStatus,
         scheduledDate: req.body.scheduledDate, // Set or clear scheduledDate
         ...rest,
       },
@@ -257,7 +258,23 @@ const getProductById = asyncHandler(async (req, res) => {
   res.json(formatMongoData(product));
 });
 
+// @desc    Check Scheduled Products
+// @route   /api/products/checkScheduled
+// @method  Get
+// @access  Public
+const checkScheduled = asyncHandler(async (req, res) => {
+  const now = new Date();
+
+  const hasScheduled = await Product.exists({
+    productStatus: 'Scheduled', // Ensure this matches the schema field
+    scheduledDate: { $lte: now }, // Check if the scheduledDate is in the past or now
+  });
+
+  res.json({ hasScheduled: !!hasScheduled }); // Return true if a match is found
+});
+
 export {
+  checkScheduled,
   createProduct,
   deleteProduct,
   getNewProducts,

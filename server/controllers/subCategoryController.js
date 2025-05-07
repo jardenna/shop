@@ -1,85 +1,67 @@
 import asyncHandler from '../middleware/asyncHandler.js';
+import scheduledStatusHandler from '../middleware/scheduledStatusHandler.js';
 import Category from '../models/categoryModel.js';
 import Product from '../models/productModel.js';
 import SubCategory from '../models/subCategoryModel.js';
 import formatMongoData from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 import { updateScheduledItems } from '../utils/UpdateScheduledItemsOptions.js';
-import validateScheduledDate from '../utils/validateScheduledDate.js';
 
 // @desc    Create SubCategory
 // @route   /api/subcategories
 // @method  Post
 // @access  Private for admin and employee
-const createSubCategory = asyncHandler(async (req, res) => {
-  const { subCategoryName, category, categoryStatus, scheduledDate } = req.body;
+const createSubCategory = [
+  scheduledStatusHandler('categoryStatus'), // Pass the field name
+  asyncHandler(async (req, res) => {
+    const { subCategoryName, category } = req.body;
 
-  // Validate category existence
-  const mainCategory = await Category.findById(category);
+    // Validate category existence
+    const mainCategory = await Category.findById(category);
 
-  if (!mainCategory) {
-    return res
-      .status(400)
-      .json({ success: false, message: 'Parent category does not exist' });
-  }
+    if (!mainCategory) {
+      return res
+        .status(400)
+        .json({ success: false, message: 'Parent category does not exist' });
+    }
 
-  const validationResult = validateScheduledDate(categoryStatus, scheduledDate);
-  if (!validationResult.success) {
-    return res.status(400).json(validationResult);
-  }
+    if (!subCategoryName) {
+      return res.status(400).json({
+        success: false,
+        message: t('pleaseEnterCategoryName', req.lang),
+      });
+    }
 
-  if (!subCategoryName) {
-    return res.status(400).json({
-      success: false,
-      message: t('pleaseEnterCategoryName', req.lang),
+    if (!category) {
+      return res.status(400).json({
+        success: false,
+        message: 'Category name is required',
+      });
+    }
+
+    const subCategoryData = { subCategoryName, category, ...req.body };
+
+    const subCategory = new SubCategory(subCategoryData);
+    await subCategory.save();
+
+    const mainCategoryData =
+      await Category.findById(category).select('categoryName');
+
+    res.status(201).json({
+      id: subCategory._id,
+      mainCategory: {
+        id: mainCategoryData._id,
+        categoryName: mainCategoryData.categoryName,
+      },
+      categoryName: subCategory.subCategoryName,
+      categoryStatus: subCategory.categoryStatus || 'Inactive',
+      scheduledDate: subCategory.scheduledDate,
+      createdAt: subCategory.createdAt,
+      updatedAt: subCategory.updatedAt,
+      productCount: 0,
     });
-  }
-
-  if (!category) {
-    return res.status(400).json({
-      success: false,
-      message: 'Category name is required',
-    });
-  }
-
-  // const existingSubCategory = await SubCategory.findOne({
-  //   subCategoryName: { $regex: new RegExp(`^${subCategoryName}$`, 'i') },
-  //   category,
-  // });
-
-  // if (existingSubCategory) {
-  //   return res.status(400).json({
-  //     success: false,
-  //     message: t('subCategoryAlreadyExist', req.lang),
-  //   });
-  // }
-
-  const subCategoryData = { subCategoryName, category, categoryStatus };
-  if (categoryStatus === 'Scheduled') {
-    subCategoryData.scheduledDate = scheduledDate;
-  }
-
-  const subCategory = new SubCategory(subCategoryData);
-  await subCategory.save();
-
-  // Fetch the categoryName for the mainCategory field
-  const mainCategoryData =
-    await Category.findById(category).select('categoryName');
-
-  res.status(201).json({
-    id: subCategory._id,
-    mainCategory: {
-      id: mainCategoryData._id,
-      categoryName: mainCategoryData.categoryName,
-    },
-    categoryName: subCategory.subCategoryName,
-    categoryStatus: subCategory.categoryStatus || 'Inactive',
-    scheduledDate: subCategory.scheduledDate,
-    createdAt: subCategory.createdAt,
-    updatedAt: subCategory.updatedAt,
-    productCount: 0, // Default product count as 0 for a new subcategory
-  });
-});
+  }),
+];
 
 // @desc    Get All SubCategories
 // @route   /api/subcategories
@@ -151,12 +133,14 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
 // @access  Public
 const checkScheduled = asyncHandler(async (req, res) => {
   const now = new Date();
+
+  // Check if any subcategory has a scheduledDate >= now
   const hasScheduled = await SubCategory.exists({
     categoryStatus: 'Scheduled',
-    scheduledDate: { $lte: now },
+    scheduledDate: { $gte: now }, // Check for dates in the future or now
   });
 
-  res.json({ hasScheduled: !!hasScheduled });
+  res.json({ hasScheduled: !!hasScheduled }); // Return true if a match is foundcheduled }); // Return true if a match is found
 });
 
 // @desc    Get category by id
@@ -165,7 +149,7 @@ const checkScheduled = asyncHandler(async (req, res) => {
 // @access  Public
 const getSubCategoryById = asyncHandler(async (req, res) => {
   const category = await SubCategory.findById(req.params.id)
-    .populate('category', 'categoryName categoryStatus')
+    .populate('category', 'categoryName categoryStatus') // Populate parent category details
     .lean();
 
   if (!category) {
@@ -193,66 +177,54 @@ const getSubCategoryById = asyncHandler(async (req, res) => {
 // @route   /api/subcategories/:id
 // @method  Put
 // @access  Private for admin and employee
-const updateSubCategory = asyncHandler(async (req, res) => {
-  const { subCategoryName, category, categoryStatus, scheduledDate } = req.body;
-  const subCategory = await SubCategory.findById(req.params.id);
-  // Validate category existence
-  const mainCategory = await Category.findById(category);
+const updateSubCategory = [
+  scheduledStatusHandler('categoryStatus'), // Pass the field name
+  asyncHandler(async (req, res) => {
+    const { subCategoryName, category } = req.body;
 
-  if (!mainCategory) {
-    return res
-      .status(400)
-      .json({ success: false, message: 'Parent category does not exist' });
-  }
+    const subCategory = await SubCategory.findById(req.params.id);
+    // Validate category existence
+    const mainCategory = await Category.findById(category);
 
-  if (!subCategory) {
-    return res.status(404).json({
-      success: false,
-      message: 'Subcategory not found',
+    if (!mainCategory) {
+      return res
+        .status(400)
+        .json({ success: false, message: 'Parent category does not exist' });
+    }
+
+    if (!subCategory) {
+      return res.status(404).json({
+        success: false,
+        message: 'Subcategory not found',
+      });
+    }
+
+    if (subCategoryName) {
+      subCategory.subCategoryName = subCategoryName;
+    }
+
+    if (category) {
+      subCategory.category = category;
+    }
+
+    subCategory.categoryStatus = req.body.categoryStatus;
+    subCategory.scheduledDate = req.body.scheduledDate; // Set or clear scheduledDate
+
+    const updatedSubCategory = await subCategory.save();
+    res.status(200).json({
+      message: 'Subcategory updated',
+      updatedSubCategory: {
+        id: updatedSubCategory._id,
+        subCategoryName: updatedSubCategory.subCategoryName,
+        category: updatedSubCategory.category,
+        categoryStatus: updatedSubCategory.categoryStatus,
+        scheduledDate: updatedSubCategory.scheduledDate,
+        createdAt: updatedSubCategory.createdAt,
+        updatedAt: updatedSubCategory.updatedAt,
+      },
     });
-  }
-
-  // Update only the provided fields
-  if (subCategoryName) {
-    subCategory.subCategoryName = subCategoryName;
-  }
-
-  if (category) {
-    subCategory.category = category;
-  }
-
-  if (categoryStatus) {
-    subCategory.categoryStatus = categoryStatus;
-
-    const validationResult = validateScheduledDate(
-      categoryStatus,
-      scheduledDate,
-    );
-    if (!validationResult.success) {
-      return res.status(400).json(validationResult);
-    }
-
-    if (categoryStatus === 'Scheduled' && scheduledDate) {
-      subCategory.scheduledDate = scheduledDate;
-    } else if (categoryStatus !== 'Scheduled') {
-      subCategory.scheduledDate = undefined; // Clear scheduledDate if status is not "Scheduled"
-    }
-  }
-
-  const updatedSubCategory = await subCategory.save();
-  res.status(200).json({
-    message: 'Subcategory updated',
-    updatedSubCategory: {
-      id: updatedSubCategory._id,
-      subCategoryName: updatedSubCategory.subCategoryName,
-      category: updatedSubCategory.category,
-      categoryStatus: updatedSubCategory.categoryStatus,
-      scheduledDate: updatedSubCategory.scheduledDate,
-      createdAt: updatedSubCategory.createdAt,
-      updatedAt: updatedSubCategory.updatedAt,
-    },
-  });
-});
+  }),
+];
 
 // @desc    Delete SubCategory
 // @route   /api/subcategories/:id

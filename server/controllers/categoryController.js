@@ -117,7 +117,7 @@ const getCategoryById = asyncHandler(async (req, res) => {
 // @method  Put
 // @access  Private for admin and employee
 const updateCategory = [
-  scheduledStatusHandler, // Apply middleware here
+  scheduledStatusHandler('categoryStatus'), // Pass the field name
   asyncHandler(async (req, res) => {
     const { categoryName, categoryStatus } = req.body;
 
@@ -138,7 +138,7 @@ const updateCategory = [
     }
 
     category.categoryName = categoryName;
-    category.categoryStatus = categoryStatus;
+    category.categoryStatus = req.body.categoryStatus;
     category.scheduledDate = req.body.scheduledDate; // Set or clear scheduledDate
 
     const updatedCategory = await category.save();

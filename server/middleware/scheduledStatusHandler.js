@@ -1,5 +1,6 @@
-const scheduledStatusHandler = (req, res, next) => {
-  const { status, scheduledDate } = req.body;
+const scheduledStatusHandler = (statusField) => (req, res, next) => {
+  const status = req.body[statusField];
+  const { scheduledDate } = req.body;
 
   if (status === 'Scheduled') {
     if (!scheduledDate) {
