@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
+import useLanguage from '../../../features/language/useLanguage';
 import { BtnVariant, IconName } from '../../../types/enums';
-import Button from '../../Button';
+import Dropdown from '../../dropdown/Dropdown';
 import Icon from '../../icons/Icon';
 import Img from '../../Img';
 
@@ -18,19 +19,26 @@ const ProductImgList = ({
   children,
   ariaLabel,
   title,
-}: ProductImgListProps) => (
-  <li className="preview-item">
-    <Img className="preview-img" src={img} alt="" />
-    {children && children}
-    <Button
-      variant={BtnVariant.Ghost}
-      onClick={onClick}
-      ariaLabel={ariaLabel}
-      className="danger"
-    >
-      <Icon iconName={IconName.Trash} title={title} />
-    </Button>
-  </li>
-);
+}: ProductImgListProps) => {
+  const { language } = useLanguage();
+  return (
+    <li className="preview-item">
+      <Img className="preview-img" src={img} alt="" />
+      {children && children}
+      <Dropdown
+        ariaControls="delete-image"
+        text={`${language.sureToDelete}?`}
+        triggerBtnVariant={BtnVariant.Ghost}
+        triggerBtnClassName="danger"
+        onPrimaryClick={onClick}
+        primaryBtnLabel={language.delete}
+        primaryBtnVariant={BtnVariant.Danger}
+        ariaLabel={ariaLabel}
+      >
+        <Icon iconName={IconName.Trash} title={title} ariaLabel={ariaLabel} />
+      </Dropdown>
+    </li>
+  );
+};
 
 export default ProductImgList;
