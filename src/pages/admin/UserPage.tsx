@@ -141,7 +141,6 @@ const UserPage = () => {
                 <td>
                   {!isAdmin ? (
                     <Dropdown
-                      className="flex-align-right"
                       ariaControls="delete-user"
                       text={`${language.sureToDelete} ${username}?`}
                       triggerBtnVariant={BtnVariant.Ghost}
