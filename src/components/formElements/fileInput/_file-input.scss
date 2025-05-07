@@ -31,9 +31,14 @@
 
 .preview-list {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   flex: 2;
   gap: 8px;
+
+  .dropdown-container {
+    position: absolute;
+    right: 14px;
+  }
 
   .preview-item {
     display: flex;
@@ -51,17 +56,39 @@
     object-fit: cover;
   }
 
+  &.uploaded-img {
+    flex-direction: row;
+    border: 1px solid $color-border;
+    padding: 20px;
+    gap: 24px;
+
+    .dropdown-container {
+      right: -15px;
+      top: 0;
+    }
+
+    .preview-item {
+      border: transparent;
+      padding: 0;
+    }
+
+    .btn-ghost {
+      top: -12px;
+      right: 11px;
+      background: #ba1b1b;
+      color: #fff;
+      padding: 4px;
+      position: absolute;
+    }
+  }
+
   .preview-info {
     display: flex;
     flex-direction: column;
+    max-width: rem(200px);
   }
 
   .preview-size {
     color: $color-gray-60;
-  }
-
-  .btn-ghost {
-    position: absolute;
-    right: 16px;
   }
 }

@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 import {
   Product,
@@ -13,6 +13,7 @@ import Checkbox, {
   CheckboxItems,
 } from '../../components/formElements/Checkbox';
 import FileInput from '../../components/formElements/fileInput/FileInput';
+import ProductImgList from '../../components/formElements/fileInput/ProductImgList';
 import Input from '../../components/formElements/Input';
 import Textarea from '../../components/formElements/Textarea';
 import validateProduct from '../../components/formElements/validation/validateProduct';
@@ -122,6 +123,7 @@ const ProductForm = ({
     onCustomChange,
     filesData,
     previewData,
+    removePreviewImage,
   } = useFormValidation({
     initialState,
     validate: validateProduct,
@@ -147,6 +149,12 @@ const ProductForm = ({
     onCustomChange(name, selectedOptions.value);
   };
 
+  const [uploadedImg, setUploadedImg] = useState(selectedProduct?.images || []);
+  const handleRemoveImg = (name: string) => {
+    const image = uploadedImg.filter((img) => img !== name);
+    setUploadedImg(image);
+  };
+
   async function handleSubmitProduct() {
     try {
       const formData = new FormData();
@@ -157,11 +165,13 @@ const ProductForm = ({
         });
 
         const uploadResponse = await uploadImages(formData).unwrap();
-        const imageUrl = uploadResponse.images;
+        const uploadedImages = uploadResponse.images;
 
-        values.images = imageUrl; // Use uploaded images
-      } else if (selectedProduct?.images) {
-        values.images = selectedProduct.images; // Retain existing images
+        // Combine existing images with newly uploaded images
+        values.images = [...uploadedImg, ...uploadedImages];
+      } else {
+        // Retain existing images if no new files are uploaded
+        values.images = uploadedImg;
       }
 
       const productData = { ...values };
@@ -204,6 +214,21 @@ const ProductForm = ({
         <div className="flex-2">
           <section className="form-card">
             <FieldSet legendText={language.productImages}>
+              <ul className="preview-list uploaded-img">
+                {uploadedImg.map((img, index) => (
+                  <ProductImgList
+                    key={index}
+                    onClick={() => {
+                      handleRemoveImg(img);
+                    }}
+                    img={img}
+                    ariaLabel={`${language.delete} ${language.image}`}
+                    title={language.trash}
+                  >
+                    <div className="preview-info" />
+                  </ProductImgList>
+                ))}
+              </ul>
               <FileInput
                 onChange={onChange}
                 multiple
@@ -214,8 +239,8 @@ const ProductForm = ({
                 previewData={previewData}
                 title={language.delete}
                 ariaLabel={language.delete}
-                onRemoveImg={() => {
-                  console.log(1);
+                onRemoveImg={(name: string) => {
+                  removePreviewImage(name);
                 }}
               />
             </FieldSet>
@@ -284,7 +309,7 @@ const ProductForm = ({
           <section className="form-card">
             <FieldSet legendText={language.productVariants}>
               <div>
-                <span className="checkbox-label-container">
+                <span className="form-span-container">
                   {language.sizes}{' '}
                   <span className="error-message">
                     {language[errors.sizes]}

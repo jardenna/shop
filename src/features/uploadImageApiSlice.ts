@@ -1,8 +1,9 @@
 import apiSlice from '../app/api/apiSlice';
+import { UploadResponse } from '../app/api/apiTypes';
 
 export const uploadImageApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    uploadImage: builder.mutation<any, FormData>({
+    uploadImage: builder.mutation<UploadResponse, FormData>({
       query: (formData) => ({
         url: '/upload',
         method: 'POST',

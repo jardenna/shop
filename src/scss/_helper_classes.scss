@@ -61,6 +61,12 @@
   font-style: italic;
 }
 
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .grid {
   display: grid;
   gap: 16px;
@@ -84,7 +90,7 @@
 
 .danger {
   background-color: transparent;
-  color: $color-red-20;
+  color: $color-danger;
 }
 
 .disabled-trash-icon {
