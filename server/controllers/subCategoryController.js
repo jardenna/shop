@@ -134,13 +134,12 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
 const checkScheduled = asyncHandler(async (req, res) => {
   const now = new Date();
 
-  // Check if any subcategory has a scheduledDate >= now
   const hasScheduled = await SubCategory.exists({
     categoryStatus: 'Scheduled',
-    scheduledDate: { $gte: now }, // Check for dates in the future or now
+    scheduledDate: { $lte: now },
   });
 
-  res.json({ hasScheduled: !!hasScheduled }); // Return true if a match is foundcheduled }); // Return true if a match is found
+  res.json({ hasScheduled: !!hasScheduled });
 });
 
 // @desc    Get category by id
