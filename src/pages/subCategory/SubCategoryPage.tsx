@@ -4,7 +4,7 @@ import Table from '../../components/sortTable/Table';
 import useLanguage from '../../features/language/useLanguage';
 import {
   useGetAllSubCategoriesQuery,
-  useGetScheduledQuery,
+  useGetHasSubCatScheduledQuery,
 } from '../../features/subCategories/subCategoryApiSlice';
 import { MainPath } from '../../layout/nav/enums';
 import SubCategoryTableRows from './SubCategoryTableRows';
@@ -36,7 +36,7 @@ const tableHeaders: {
 const SubCategoryPage = () => {
   const { language } = useLanguage();
 
-  const { data: hasScheduledData } = useGetScheduledQuery(undefined, {
+  const { data: hasScheduledData } = useGetHasSubCatScheduledQuery(undefined, {
     pollingInterval: 10000,
   });
 

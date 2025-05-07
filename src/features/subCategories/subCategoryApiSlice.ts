@@ -21,7 +21,7 @@ const subCategoryApiSlice = apiSlice.injectEndpoints({
       query: () => `${subCategoryUrl}/with-parent`,
       providesTags: [TagTypesEnum.SubCategories],
     }),
-    getScheduled: builder.query<ScheduledResponse, void>({
+    getHasSubCatScheduled: builder.query<ScheduledResponse, void>({
       query: () => `${subCategoryUrl}/scheduled`,
       providesTags: [TagTypesEnum.SubCategories],
     }),
@@ -66,6 +66,6 @@ export const {
   useDeleteSubCategoryMutation,
   useUpdateSubCategoryMutation,
   useCreateSubCategoryMutation,
-  useGetScheduledQuery,
+  useGetHasSubCatScheduledQuery,
   useGetSubCategoriesWithParentQuery,
 } = subCategoryApiSlice;
