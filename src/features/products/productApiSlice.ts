@@ -4,6 +4,7 @@ import {
   DefaultResponse,
   Product,
   ProductRequest,
+  ScheduledResponse,
   UpdateProductRequest,
 } from '../../app/api/apiTypes';
 import { productUrl } from '../../app/endpoints';
@@ -16,6 +17,10 @@ const productApiSlice = apiSlice.injectEndpoints({
     }),
     getProductById: builder.query<Product, string>({
       query: (id) => `${productUrl}/${id}`,
+      providesTags: [TagTypesEnum.Products],
+    }),
+    getHasScheduledData: builder.query<ScheduledResponse, void>({
+      query: () => `${productUrl}/scheduled`,
       providesTags: [TagTypesEnum.Products],
     }),
     updateProduct: builder.mutation<Product, UpdateProductRequest>({
@@ -50,4 +55,5 @@ export const {
   useUpdateProductMutation,
   useCreateProductMutation,
   useDeleteProductMutation,
+  useGetHasScheduledDataQuery,
 } = productApiSlice;

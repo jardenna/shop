@@ -2,7 +2,10 @@ import { Product } from '../../app/api/apiTypes';
 import PageHeader from '../../components/PageHeader';
 import Table, { Column } from '../../components/sortTable/Table';
 import useLanguage from '../../features/language/useLanguage';
-import { useGetAllProductsQuery } from '../../features/products/productApiSlice';
+import {
+  useGetAllProductsQuery,
+  useGetHasScheduledDataQuery,
+} from '../../features/products/productApiSlice';
 import { MainPath } from '../../layout/nav/enums';
 import './_product-page.scss';
 import ProductTableRow from './ProductTableRow';
@@ -18,7 +21,20 @@ const tableHeaders: Column<Product>[] = [
 
 const ProductPage = () => {
   const { language } = useLanguage();
-  const { data: allProducts, isLoading, refetch } = useGetAllProductsQuery();
+  const { data: hasScheduledData } = useGetHasScheduledDataQuery(undefined, {
+    pollingInterval: 10000,
+  });
+
+  const shouldPollFullList = hasScheduledData?.hasScheduled ?? false;
+
+  const {
+    data: allProducts,
+    isLoading,
+    refetch,
+  } = useGetAllProductsQuery(undefined, {
+    pollingInterval: shouldPollFullList ? 15000 : undefined,
+    refetchOnMountOrArgChange: true,
+  });
 
   return (
     <section className="page">
