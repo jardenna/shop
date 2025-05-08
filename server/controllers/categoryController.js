@@ -64,6 +64,7 @@ const getAllCategories = asyncHandler(async (req, res) => {
   const updatedCategories = await updateScheduledItems({
     items: allCategories,
     model: Category,
+    statusKey: 'categoryStatus',
   });
 
   const formattedCategories = formatMongoData(updatedCategories);

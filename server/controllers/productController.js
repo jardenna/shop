@@ -187,6 +187,7 @@ const getSortedProducts = asyncHandler(async (req, res) => {
   await updateScheduledItems({
     items: allProducts,
     model: Product,
+    statusKey: 'productStatus',
   });
 
   const products = await Product.find({})

@@ -73,6 +73,7 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
   await updateScheduledItems({
     items: allSubCategories,
     model: SubCategory,
+    statusKey: 'categoryStatus',
   });
 
   // Fetch subcategories with product count and mainCategory details

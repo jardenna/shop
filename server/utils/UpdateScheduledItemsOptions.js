@@ -2,7 +2,7 @@ async function updateScheduledItems({
   items,
   model,
   now = new Date(),
-  statusKey = 'categoryStatus',
+  statusKey,
   dateKey = 'scheduledDate',
 }) {
   const updates = await Promise.all(
