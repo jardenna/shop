@@ -259,7 +259,7 @@ const getProductById = asyncHandler(async (req, res) => {
 });
 
 // @desc    Check Scheduled Products
-// @route   /api/products/checkScheduled
+// @route   /api/products/scheduled
 // @method  Get
 // @access  Public
 const checkScheduled = asyncHandler(async (req, res) => {

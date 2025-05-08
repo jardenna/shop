@@ -1,5 +1,6 @@
 import express from 'express';
 import {
+  checkScheduled,
   createProduct,
   deleteProduct,
   getNewProducts,
@@ -24,6 +25,7 @@ router
   .get(getProducts)
   .post(authenticate, authorizeEmployee, createProduct);
 
+router.get('/scheduled', checkScheduled);
 router.get('/allProducts', getSortedProducts);
 router.post('/:id/reviews', authenticate, checkId, createProductReviews);
 router.get('/top', getTopProducts);
