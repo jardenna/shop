@@ -7,6 +7,7 @@ import {
   useGetHasSubCatScheduledQuery,
 } from '../../features/subCategories/subCategoryApiSlice';
 import { MainPath } from '../../layout/nav/enums';
+import { oneDay } from '../../utils/utils';
 import SubCategoryTableRows from './SubCategoryTableRows';
 
 const tableHeaders: {
@@ -37,7 +38,7 @@ const SubCategoryPage = () => {
   const { language } = useLanguage();
 
   const { data: hasScheduledData } = useGetHasSubCatScheduledQuery(undefined, {
-    pollingInterval: 10000,
+    pollingInterval: oneDay,
   });
 
   const shouldPollFullList = hasScheduledData?.hasScheduled ?? false;
