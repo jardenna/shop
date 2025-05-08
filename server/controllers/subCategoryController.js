@@ -183,7 +183,7 @@ const getSubCategoryById = asyncHandler(async (req, res) => {
 // @method  Put
 // @access  Private for admin and employee
 const updateSubCategory = [
-  scheduledStatusHandler('categoryStatus'), // Pass the field name
+  scheduledStatusHandler('categoryStatus'),
   asyncHandler(async (req, res) => {
     const { subCategoryName, category, categoryStatus, scheduledDate } =
       req.body;
@@ -204,9 +204,9 @@ const updateSubCategory = [
         ...(subCategoryName && { subCategoryName }),
         ...(category && { category }),
         ...(categoryStatus && { categoryStatus }),
-        scheduledDate, // Can be set or cleared
+        scheduledDate,
       },
-      { new: true }, // Return the updated document
+      { new: true },
     );
 
     if (!updatedSubCategory) {
@@ -270,7 +270,7 @@ const getSubCategoriesWithParent = asyncHandler(async (req, res) => {
   const subCategories = await SubCategory.aggregate([
     {
       $lookup: {
-        from: 'categories', // Collection name for categories
+        from: 'categories',
         localField: 'category',
         foreignField: '_id',
         as: 'parentCategory',

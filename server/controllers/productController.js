@@ -13,42 +13,45 @@ import validateProduct from '../utils/validateProduct.js';
 // @route   /api/products
 // @method  Post
 // @access  Private for admin and employee
-const createProduct = asyncHandler(async (req, res) => {
-  const error = validateProduct(req.body);
-  if (error) {
-    return res.status(400).json({ success: false, message: error });
-  }
+const createProduct = [
+  scheduledStatusHandler('productStatus'),
+  asyncHandler(async (req, res) => {
+    const error = validateProduct(req.body);
+    if (error) {
+      return res.status(400).json({ success: false, message: error });
+    }
 
-  const { subCategory, quantity, ...rest } = req.body;
+    const { subCategory, quantity, ...rest } = req.body;
 
-  // Check subcategory
-  const subCategoryId = await SubCategory.findById(subCategory);
-  if (!subCategoryId) {
-    return res
-      .status(400)
-      .json({ success: false, message: 'Subcategory does not exist' });
-  }
+    // Check subcategory
+    const subCategoryId = await SubCategory.findById(subCategory);
+    if (!subCategoryId) {
+      return res
+        .status(400)
+        .json({ success: false, message: 'Subcategory does not exist' });
+    }
 
-  // Use quantity to set initial countInStock
-  const countInStock = Number(quantity) || 0;
+    // Use quantity to set initial countInStock
+    const countInStock = Number(quantity) || 0;
 
-  const product = new Product({
-    subCategory,
-    countInStock,
-    ...rest,
-  });
+    const product = new Product({
+      subCategory,
+      countInStock,
+      ...rest,
+    });
 
-  await product.save();
+    await product.save();
 
-  res.status(201).json({ id: product._id, ...req.body });
-});
+    res.status(201).json({ id: product._id, ...req.body });
+  }),
+];
 
 // @desc    Update Product
 // @route   /api/products/:id
 // @method  Put
 // @access  Private for admin and employee
 const updateProduct = [
-  scheduledStatusHandler('productStatus'), // Pass the field name
+  scheduledStatusHandler('productStatus'),
   asyncHandler(async (req, res) => {
     const { subCategory, quantity, images, scheduledDate, ...rest } = req.body;
 
@@ -96,7 +99,7 @@ const updateProduct = [
         countInStock: updatedCountInStock,
         images,
         productStatus: req.body.productStatus,
-        scheduledDate: req.body.scheduledDate, // Set or clear scheduledDate
+        scheduledDate: req.body.scheduledDate,
         ...rest,
       },
       { new: true },
@@ -280,7 +283,7 @@ const checkScheduled = asyncHandler(async (req, res) => {
 
   const hasScheduled = await Product.exists({
     productStatus: 'Scheduled',
-    scheduledDate: { $lte: now }, // Ensure scheduledDate is stored as a Date type
+    scheduledDate: { $lte: now },
   });
 
   res.status(200).json({ hasScheduled: !!hasScheduled });
