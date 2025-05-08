@@ -83,7 +83,7 @@ const checkScheduled = asyncHandler(async (req, res) => {
     scheduledDate: { $lte: now },
   });
 
-  res.json({ hasScheduled: !!hasScheduled });
+  res.status(200).json({ hasScheduled: !!hasScheduled });
 });
 
 // @desc    Get category by id

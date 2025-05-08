@@ -21,7 +21,7 @@ const getAllUsers = asyncHandler(async (req, res) => {
 
   const formattedUsers = formatMongoData(users);
 
-  res.json(formattedUsers);
+  res.status(200).json(formattedUsers);
 });
 
 // @desc    Get User profile
@@ -31,7 +31,7 @@ const getAllUsers = asyncHandler(async (req, res) => {
 const getCurrentUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
   if (user) {
-    res.json({
+    res.status(200).json({
       id: user._id,
       username: user.username,
       email: user.email,
@@ -88,7 +88,7 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
 
     const updatedUser = await user.save();
 
-    res.json({
+    res.status(200).json({
       id: updatedUser._id,
       username: updatedUser.username,
       email: updatedUser.email,
@@ -141,7 +141,7 @@ const getUserById = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id).select('-password');
 
   if (user) {
-    res.json(user);
+    res.status(200).json(user);
   } else {
     res.status(404).json({
       success: false,
@@ -174,7 +174,7 @@ const updateUserById = asyncHandler(async (req, res) => {
 
     const updatedUser = await user.save();
 
-    res.json({
+    res.status(200).json({
       id: updatedUser._id,
       username: updatedUser.username,
       email: updatedUser.email,

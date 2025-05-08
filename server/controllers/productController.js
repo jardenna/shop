@@ -5,13 +5,9 @@ import scheduledStatusHandler from '../middleware/scheduledStatusHandler.js';
 import Product from '../models/productModel.js';
 import SubCategory from '../models/subCategoryModel.js';
 import formatMongoData from '../utils/formatMongoData.js';
+import { t } from '../utils/translator.js';
 import { updateScheduledItems } from '../utils/UpdateScheduledItemsOptions.js';
 import validateProduct from '../utils/validateProduct.js';
-
-const errorResponse = {
-  success: false,
-  message: 'Product not found',
-};
 
 // @desc    Create Product
 // @route   /api/products
@@ -109,10 +105,10 @@ const updateProduct = [
     if (!product) {
       return res
         .status(404)
-        .json({ success: false, message: 'Product update failed' });
+        .json({ success: false, message: 'Product not found' });
     }
 
-    res.json({
+    res.status(200).json({
       id: product._id,
       productName: product.productName,
       countInStock: product.countInStock,
@@ -130,7 +126,10 @@ const updateProduct = [
 const deleteProduct = asyncHandler(async (req, res) => {
   const product = await Product.findByIdAndDelete(req.params.id);
   if (!product) {
-    return res.status(404).json(errorResponse);
+    return res.status(404).json({
+      success: false,
+      message: t('productNotFound', req.lang),
+    });
   }
 
   // Delete associated images
@@ -145,7 +144,9 @@ const deleteProduct = asyncHandler(async (req, res) => {
     await Promise.all(deleteImagePromises); // Wait for all deletions to complete
   }
 
-  res.json({ success: true, message: 'Product deleted successfully' });
+  res
+    .status(200)
+    .json({ success: true, message: 'Product deleted successfully' });
 });
 
 // @desc    Get All Products with Pagination
@@ -166,7 +167,7 @@ const getProducts = asyncHandler(async (req, res) => {
     .sort({ createdAt: -1 })
     .lean();
 
-  res.json({
+  res.status(200).json({
     products: formatMongoData(products),
     page,
     pages: Math.ceil(count / pageSize),
@@ -205,7 +206,7 @@ const getSortedProducts = asyncHandler(async (req, res) => {
 
   const count = await Product.countDocuments();
 
-  res.json({
+  res.status(200).json({
     success: true,
     products: formatMongoData(
       products.map(({ subCategoryName, scheduledDate, ...rest }) => ({
@@ -225,7 +226,7 @@ const getSortedProducts = asyncHandler(async (req, res) => {
 const getTopProducts = asyncHandler(async (req, res) => {
   const products = await Product.find({}).sort({ rating: -1 }).limit(4).lean();
 
-  res.json({
+  res.status(200).json({
     products: formatMongoData(products),
   });
 });
@@ -240,7 +241,7 @@ const getNewProducts = asyncHandler(async (req, res) => {
     .limit(5)
     .lean();
 
-  res.json({
+  res.status(200).json({
     products: formatMongoData(products),
   });
 });
@@ -261,7 +262,10 @@ const getProductById = asyncHandler(async (req, res) => {
     .lean();
 
   if (!product) {
-    return res.status(404).json(errorResponse);
+    return res.status(404).json({
+      success: false,
+      message: 'Product not found',
+    });
   }
 
   res.status(200).json(formatMongoData(product));
@@ -279,7 +283,7 @@ const checkScheduled = asyncHandler(async (req, res) => {
     scheduledDate: { $lte: now }, // Ensure scheduledDate is stored as a Date type
   });
 
-  res.json({ hasScheduled: !!hasScheduled });
+  res.status(200).json({ hasScheduled: !!hasScheduled });
 });
 
 export {
