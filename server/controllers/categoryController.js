@@ -25,17 +25,6 @@ const createCategory = asyncHandler(async (req, res) => {
     });
   }
 
-  // const existingCategory = await Category.findOne({
-  //   categoryName: { $regex: new RegExp(`^${categoryName}$`, 'i') },
-  // });
-
-  // if (existingCategory) {
-  //   return res.status(400).json({
-  //     success: false,
-  //     message: t('categoryAlreadyExist', req.lang),
-  //   });
-  // }
-
   const categoryData = { categoryName, categoryStatus };
   if (categoryStatus === 'Scheduled') {
     categoryData.scheduledDate = scheduledDate;
@@ -61,15 +50,15 @@ const createCategory = asyncHandler(async (req, res) => {
 const getAllCategories = asyncHandler(async (req, res) => {
   const allCategories = await Category.find({}).lean();
 
-  const updatedCategories = await updateScheduledItems({
+  const categories = await updateScheduledItems({
     items: allCategories,
     model: Category,
     statusKey: 'categoryStatus',
   });
 
-  const formattedCategories = formatMongoData(updatedCategories);
+  const formattedCategories = formatMongoData(categories);
 
-  if (!updatedCategories?.length) {
+  if (!categories?.length) {
     return res.status(404).json({ message: t('noData', req.lang) });
   }
 
@@ -170,7 +159,7 @@ const deleteCategory = asyncHandler(async (req, res) => {
 
     return res
       .status(200)
-      .json({ success: true, message: t('categoryDeleted', req.lang) });
+      .json({ success: true, message: 'Category deleted successfully' });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }

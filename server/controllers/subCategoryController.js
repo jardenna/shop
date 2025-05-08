@@ -12,7 +12,7 @@ import { updateScheduledItems } from '../utils/UpdateScheduledItemsOptions.js';
 // @method  Post
 // @access  Private for admin and employee
 const createSubCategory = [
-  scheduledStatusHandler('categoryStatus'), // Pass the field name
+  scheduledStatusHandler('categoryStatus'),
   asyncHandler(async (req, res) => {
     const { subCategoryName, category } = req.body;
 
@@ -94,7 +94,7 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
     },
     {
       $lookup: {
-        from: 'categories', // Collection name for categories
+        from: 'categories',
         localField: 'category',
         foreignField: '_id',
         as: 'mainCategory',
@@ -122,6 +122,11 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
   ]);
 
   const formattedCategories = formatMongoData(subCategories);
+
+  if (!subCategories?.length) {
+    return res.status(404).json({ message: t('noData', req.lang) });
+  }
+
   res.status(200).json({
     success: true,
     subCategories: formattedCategories,
