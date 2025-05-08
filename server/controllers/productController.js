@@ -5,6 +5,7 @@ import scheduledStatusHandler from '../middleware/scheduledStatusHandler.js';
 import Product from '../models/productModel.js';
 import SubCategory from '../models/subCategoryModel.js';
 import formatMongoData from '../utils/formatMongoData.js';
+import { updateScheduledItems } from '../utils/UpdateScheduledItemsOptions.js';
 import validateProduct from '../utils/validateProduct.js';
 
 const errorResponse = {
@@ -53,7 +54,7 @@ const createProduct = asyncHandler(async (req, res) => {
 const updateProduct = [
   scheduledStatusHandler('productStatus'), // Pass the field name
   asyncHandler(async (req, res) => {
-    const { subCategory, quantity, images, ...rest } = req.body;
+    const { subCategory, quantity, images, scheduledDate, ...rest } = req.body;
 
     const subCategoryId = await SubCategory.findById(subCategory);
     if (!subCategoryId) {
@@ -180,6 +181,14 @@ const getSortedProducts = asyncHandler(async (req, res) => {
   const pageSize = parseInt(req.query.pageSize) || 12;
   const page = parseInt(req.query.page) || 1;
 
+  const allProducts = await Product.find({}).lean();
+
+  // Update scheduled products
+  await updateScheduledItems({
+    items: allProducts,
+    model: Product,
+  });
+
   const products = await Product.find({})
     .populate({
       path: 'subCategory',
@@ -198,8 +207,9 @@ const getSortedProducts = asyncHandler(async (req, res) => {
   res.json({
     success: true,
     products: formatMongoData(
-      products.map(({ subCategoryName, ...rest }) => ({
+      products.map(({ subCategoryName, scheduledDate, ...rest }) => ({
         ...rest,
+        ...(rest.productStatus === 'Scheduled' ? { scheduledDate } : {}),
       })),
     ),
     page,
@@ -253,7 +263,7 @@ const getProductById = asyncHandler(async (req, res) => {
     return res.status(404).json(errorResponse);
   }
 
-  res.json(formatMongoData(product));
+  res.status(200).json(formatMongoData(product));
 });
 
 // @desc    Check Scheduled Products
@@ -264,11 +274,11 @@ const checkScheduled = asyncHandler(async (req, res) => {
   const now = new Date();
 
   const hasScheduled = await Product.exists({
-    productStatus: 'Scheduled', // Ensure this matches the schema field
-    scheduledDate: { $lte: now }, // Check if the scheduledDate is in the past or now
+    productStatus: 'Scheduled',
+    scheduledDate: { $lte: now }, // Ensure scheduledDate is stored as a Date type
   });
 
-  res.json({ hasScheduled: !!hasScheduled }); // Return true if a match is found
+  res.json({ hasScheduled: !!hasScheduled });
 });
 
 export {
