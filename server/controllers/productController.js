@@ -134,16 +134,14 @@ const deleteProduct = asyncHandler(async (req, res) => {
 
   // Delete associated images
   if (product.images && product.images.length > 0) {
-    product.images.forEach((imagePath) => {
+    const deleteImagePromises = product.images.map((imagePath) => {
       const fullPath = path.join(process.cwd(), imagePath);
-      fs.unlink(fullPath, (error) => {
-        if (error) {
-          return res
-            .status(500)
-            .json({ message: `Failed to delete image: ${fullPath}`, error });
-        }
+      return fs.promises.unlink(fullPath).catch((error) => {
+        console.error(`Failed to delete image: ${fullPath}`, error);
       });
     });
+
+    await Promise.all(deleteImagePromises); // Wait for all deletions to complete
   }
 
   res.json({ success: true, message: 'Product deleted successfully' });
