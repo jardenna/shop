@@ -5,54 +5,53 @@ import scheduledStatusHandler from '../middleware/scheduledStatusHandler.js';
 import Product from '../models/productModel.js';
 import SubCategory from '../models/subCategoryModel.js';
 import formatMongoData from '../utils/formatMongoData.js';
+import { t } from '../utils/translator.js';
 import { updateScheduledItems } from '../utils/UpdateScheduledItemsOptions.js';
 import validateProduct from '../utils/validateProduct.js';
-
-const errorResponse = {
-  success: false,
-  message: 'Product not found',
-};
 
 // @desc    Create Product
 // @route   /api/products
 // @method  Post
 // @access  Private for admin and employee
-const createProduct = asyncHandler(async (req, res) => {
-  const error = validateProduct(req.body);
-  if (error) {
-    return res.status(400).json({ success: false, message: error });
-  }
+const createProduct = [
+  scheduledStatusHandler('productStatus'),
+  asyncHandler(async (req, res) => {
+    const error = validateProduct(req.body);
+    if (error) {
+      return res.status(400).json({ success: false, message: error });
+    }
 
-  const { subCategory, quantity, ...rest } = req.body;
+    const { subCategory, quantity, ...rest } = req.body;
 
-  // Check subcategory
-  const subCategoryId = await SubCategory.findById(subCategory);
-  if (!subCategoryId) {
-    return res
-      .status(400)
-      .json({ success: false, message: 'Subcategory does not exist' });
-  }
+    // Check subcategory
+    const subCategoryId = await SubCategory.findById(subCategory);
+    if (!subCategoryId) {
+      return res
+        .status(400)
+        .json({ success: false, message: 'Subcategory does not exist' });
+    }
 
-  // Use quantity to set initial countInStock
-  const countInStock = Number(quantity) || 0;
+    // Use quantity to set initial countInStock
+    const countInStock = Number(quantity) || 0;
 
-  const product = new Product({
-    subCategory,
-    countInStock,
-    ...rest,
-  });
+    const product = new Product({
+      subCategory,
+      countInStock,
+      ...rest,
+    });
 
-  await product.save();
+    await product.save();
 
-  res.status(201).json({ id: product._id, ...req.body });
-});
+    res.status(201).json({ id: product._id, ...req.body });
+  }),
+];
 
 // @desc    Update Product
 // @route   /api/products/:id
 // @method  Put
 // @access  Private for admin and employee
 const updateProduct = [
-  scheduledStatusHandler('productStatus'), // Pass the field name
+  scheduledStatusHandler('productStatus'),
   asyncHandler(async (req, res) => {
     const { subCategory, quantity, images, scheduledDate, ...rest } = req.body;
 
@@ -100,7 +99,7 @@ const updateProduct = [
         countInStock: updatedCountInStock,
         images,
         productStatus: req.body.productStatus,
-        scheduledDate: req.body.scheduledDate, // Set or clear scheduledDate
+        scheduledDate: req.body.scheduledDate,
         ...rest,
       },
       { new: true },
@@ -109,10 +108,10 @@ const updateProduct = [
     if (!product) {
       return res
         .status(404)
-        .json({ success: false, message: 'Product update failed' });
+        .json({ success: false, message: 'Product not found' });
     }
 
-    res.json({
+    res.status(200).json({
       id: product._id,
       productName: product.productName,
       countInStock: product.countInStock,
@@ -130,7 +129,10 @@ const updateProduct = [
 const deleteProduct = asyncHandler(async (req, res) => {
   const product = await Product.findByIdAndDelete(req.params.id);
   if (!product) {
-    return res.status(404).json(errorResponse);
+    return res.status(404).json({
+      success: false,
+      message: t('productNotFound', req.lang),
+    });
   }
 
   // Delete associated images
@@ -145,7 +147,9 @@ const deleteProduct = asyncHandler(async (req, res) => {
     await Promise.all(deleteImagePromises); // Wait for all deletions to complete
   }
 
-  res.json({ success: true, message: 'Product deleted successfully' });
+  res
+    .status(200)
+    .json({ success: true, message: 'Product deleted successfully' });
 });
 
 // @desc    Get All Products with Pagination
@@ -166,7 +170,7 @@ const getProducts = asyncHandler(async (req, res) => {
     .sort({ createdAt: -1 })
     .lean();
 
-  res.json({
+  res.status(200).json({
     products: formatMongoData(products),
     page,
     pages: Math.ceil(count / pageSize),
@@ -205,7 +209,7 @@ const getSortedProducts = asyncHandler(async (req, res) => {
 
   const count = await Product.countDocuments();
 
-  res.json({
+  res.status(200).json({
     success: true,
     products: formatMongoData(
       products.map(({ subCategoryName, scheduledDate, ...rest }) => ({
@@ -225,7 +229,7 @@ const getSortedProducts = asyncHandler(async (req, res) => {
 const getTopProducts = asyncHandler(async (req, res) => {
   const products = await Product.find({}).sort({ rating: -1 }).limit(4).lean();
 
-  res.json({
+  res.status(200).json({
     products: formatMongoData(products),
   });
 });
@@ -240,7 +244,7 @@ const getNewProducts = asyncHandler(async (req, res) => {
     .limit(5)
     .lean();
 
-  res.json({
+  res.status(200).json({
     products: formatMongoData(products),
   });
 });
@@ -261,7 +265,10 @@ const getProductById = asyncHandler(async (req, res) => {
     .lean();
 
   if (!product) {
-    return res.status(404).json(errorResponse);
+    return res.status(404).json({
+      success: false,
+      message: 'Product not found',
+    });
   }
 
   res.status(200).json(formatMongoData(product));
@@ -276,10 +283,10 @@ const checkScheduled = asyncHandler(async (req, res) => {
 
   const hasScheduled = await Product.exists({
     productStatus: 'Scheduled',
-    scheduledDate: { $lte: now }, // Ensure scheduledDate is stored as a Date type
+    scheduledDate: { $lte: now },
   });
 
-  res.json({ hasScheduled: !!hasScheduled });
+  res.status(200).json({ hasScheduled: !!hasScheduled });
 });
 
 export {

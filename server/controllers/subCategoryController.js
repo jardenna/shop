@@ -12,7 +12,7 @@ import { updateScheduledItems } from '../utils/UpdateScheduledItemsOptions.js';
 // @method  Post
 // @access  Private for admin and employee
 const createSubCategory = [
-  scheduledStatusHandler('categoryStatus'), // Pass the field name
+  scheduledStatusHandler('categoryStatus'),
   asyncHandler(async (req, res) => {
     const { subCategoryName, category } = req.body;
 
@@ -94,7 +94,7 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
     },
     {
       $lookup: {
-        from: 'categories', // Collection name for categories
+        from: 'categories',
         localField: 'category',
         foreignField: '_id',
         as: 'mainCategory',
@@ -122,6 +122,11 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
   ]);
 
   const formattedCategories = formatMongoData(subCategories);
+
+  if (!subCategories?.length) {
+    return res.status(404).json({ message: t('noData', req.lang) });
+  }
+
   res.status(200).json({
     success: true,
     subCategories: formattedCategories,
@@ -140,7 +145,7 @@ const checkScheduled = asyncHandler(async (req, res) => {
     scheduledDate: { $lte: now },
   });
 
-  res.json({ hasScheduled: !!hasScheduled });
+  res.status(200).json({ hasScheduled: !!hasScheduled });
 });
 
 // @desc    Get category by id
@@ -178,39 +183,39 @@ const getSubCategoryById = asyncHandler(async (req, res) => {
 // @method  Put
 // @access  Private for admin and employee
 const updateSubCategory = [
-  scheduledStatusHandler('categoryStatus'), // Pass the field name
+  scheduledStatusHandler('categoryStatus'),
   asyncHandler(async (req, res) => {
-    const { subCategoryName, category } = req.body;
+    const { subCategoryName, category, categoryStatus, scheduledDate } =
+      req.body;
 
-    const subCategory = await SubCategory.findById(req.params.id);
     // Validate category existence
-    const mainCategory = await Category.findById(category);
-
-    if (!mainCategory) {
-      return res
-        .status(400)
-        .json({ success: false, message: 'Parent category does not exist' });
+    if (category) {
+      const mainCategory = await Category.findById(category);
+      if (!mainCategory) {
+        return res
+          .status(400)
+          .json({ success: false, message: 'Parent category does not exist' });
+      }
     }
 
-    if (!subCategory) {
+    const updatedSubCategory = await SubCategory.findByIdAndUpdate(
+      req.params.id,
+      {
+        ...(subCategoryName && { subCategoryName }),
+        ...(category && { category }),
+        ...(categoryStatus && { categoryStatus }),
+        scheduledDate,
+      },
+      { new: true },
+    );
+
+    if (!updatedSubCategory) {
       return res.status(404).json({
         success: false,
         message: 'Subcategory not found',
       });
     }
 
-    if (subCategoryName) {
-      subCategory.subCategoryName = subCategoryName;
-    }
-
-    if (category) {
-      subCategory.category = category;
-    }
-
-    subCategory.categoryStatus = req.body.categoryStatus;
-    subCategory.scheduledDate = req.body.scheduledDate; // Set or clear scheduledDate
-
-    const updatedSubCategory = await subCategory.save();
     res.status(200).json({
       message: 'Subcategory updated',
       updatedSubCategory: {
@@ -251,7 +256,10 @@ const deleteSubCategory = asyncHandler(async (req, res) => {
     });
   }
 
-  res.json({ success: true, message: 'SubCategory deleted successfully' });
+  res.status(200).json({
+    success: true,
+    message: 'SubCategory deleted successfully',
+  });
 });
 
 // @desc    Get subcategories with parent category
@@ -262,7 +270,7 @@ const getSubCategoriesWithParent = asyncHandler(async (req, res) => {
   const subCategories = await SubCategory.aggregate([
     {
       $lookup: {
-        from: 'categories', // Collection name for categories
+        from: 'categories',
         localField: 'category',
         foreignField: '_id',
         as: 'parentCategory',
@@ -277,8 +285,8 @@ const getSubCategoriesWithParent = asyncHandler(async (req, res) => {
     {
       $project: {
         categoryStatus: '$categoryStatus',
-        label: '$subCategoryName', // Use subCategoryName as the label
-        value: '$_id', // Use _id as the value
+        label: '$subCategoryName',
+        value: '$_id',
         parentCategoryName: '$parentCategory.categoryName',
         _id: 0,
       },

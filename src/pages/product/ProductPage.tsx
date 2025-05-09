@@ -7,6 +7,7 @@ import {
   useGetHasScheduledDataQuery,
 } from '../../features/products/productApiSlice';
 import { MainPath } from '../../layout/nav/enums';
+import { oneDay } from '../../utils/utils';
 import './_product-page.scss';
 import ProductTableRow from './ProductTableRow';
 
@@ -22,7 +23,7 @@ const tableHeaders: Column<Product>[] = [
 const ProductPage = () => {
   const { language } = useLanguage();
   const { data: hasScheduledData } = useGetHasScheduledDataQuery(undefined, {
-    pollingInterval: 10000,
+    pollingInterval: oneDay,
   });
 
   const shouldPollFullList = hasScheduledData?.hasScheduled ?? false;

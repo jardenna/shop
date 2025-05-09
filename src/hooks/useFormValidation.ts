@@ -51,10 +51,10 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
   const handleFileChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       const selectedFiles = event.target.files;
-      if (selectedFiles) {
-        setFilesData(Array.from(selectedFiles));
 
+      if (selectedFiles) {
         const fileArray = Array.from(selectedFiles);
+        setFilesData(fileArray);
         const formatBytes = (bytes: number) => `${Math.round(bytes / 1000)} KB`;
 
         const previews = fileArray.map((file) => ({
@@ -204,6 +204,9 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
     setPreviewData((prevPreviewData) =>
       prevPreviewData.filter((img) => img.name !== name),
     );
+
+    const updatedFilesData = filesData.filter((file) => file.name !== name);
+    setFilesData(updatedFilesData);
   };
 
   return {
