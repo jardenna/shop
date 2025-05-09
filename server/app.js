@@ -36,9 +36,9 @@ const corsOptions = {
 
 app.use(cookieParser());
 app.use(cors(corsOptions)); // Use the CORS middleware with options
+app.use(express.urlencoded({ extended: true }));
 
 app.use(express.json()); // Ensure this is before the routes
-app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/users', userRoutes);
