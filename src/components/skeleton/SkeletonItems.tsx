@@ -1,7 +1,7 @@
 import './_skeleton-items.scss';
 
 const SkeletonItems = () => (
-  <section>
+  <>
     <div className="search-ssc-lg ssc">
       <div className="ssc-card ssc-wrapper">
         <div className="flex mbs">
@@ -12,9 +12,7 @@ const SkeletonItems = () => (
           <div className="tag ssc-square" />
         </div>
       </div>
-      <br />
-      <div className="ssc-hr" />
-      <br />
+
       <div className="ssc-card ssc-wrapper">
         <div className="ssc-head-line w-50" />
         <br />
@@ -39,9 +37,7 @@ const SkeletonItems = () => (
           </div>
         </div>
       </div>
-      <br />
-      <div className="ssc-hr" />
-      <br />
+
       <div className="flex align-start">
         <div className="ssc-card w-30 mr">
           <div className="ssc-wrapper flex justify-between">
@@ -172,7 +168,7 @@ const SkeletonItems = () => (
         </div>
       </div>
     </div>
-  </section>
+  </>
 );
 
 export default SkeletonItems;

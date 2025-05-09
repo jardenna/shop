@@ -1,18 +1,6 @@
 /* stylelint-disable no-duplicate-selectors */
-* {
-  box-sizing: border-box;
-}
 
 .search-ssc-lg {
-  display: none;
-  padding: 16px;
-  margin: 0 auto;
-  max-width: 1200px;
-
-  @media screen and (width >= 769px) {
-    display: block;
-  }
-
   .tag {
     height: 30px;
     width: 150px;
@@ -38,11 +26,6 @@
     margin-right: 12px;
     margin-bottom: 12px;
     border-radius: 10px;
-  }
-
-  &__category {
-    height: 45px;
-    border-radius: 6px;
   }
 }
 
@@ -183,26 +166,6 @@ $skeleton-square-height: 150px !default;
     display: flex;
   }
 
-  .inline-flex {
-    display: inline-flex;
-  }
-
-  .flex-column {
-    flex-direction: column;
-  }
-
-  .flex-column-reverse {
-    flex-direction: column-reverse;
-  }
-
-  .flex-row {
-    flex-direction: row;
-  }
-
-  .flex-row-reverse {
-    flex-direction: row-reverse;
-  }
-
   .align-center {
     align-items: center;
   }
@@ -211,32 +174,8 @@ $skeleton-square-height: 150px !default;
     align-items: flex-start;
   }
 
-  .align-end {
-    align-items: flex-end;
-  }
-
-  .align-stretch {
-    align-items: stretch;
-  }
-
-  .justify-start {
-    justify-content: start;
-  }
-
-  .justify-center {
-    justify-content: center;
-  }
-
-  .justify-end {
-    justify-content: end;
-  }
-
   .justify-between {
     justify-content: space-between;
-  }
-
-  .justify-around {
-    justify-content: space-around;
   }
 }
 
@@ -259,13 +198,6 @@ $skeleton-square-height: 150px !default;
   border-radius: 50%;
   width: $skeleton-circle-size;
   height: $skeleton-circle-size;
-
-  @extend %ssc-animation;
-}
-
-.ssc-hr {
-  width: 100%;
-  height: $skeleton-hr-height;
 
   @extend %ssc-animation;
 }
