@@ -1,4 +1,5 @@
 import asyncHandler from '../middleware/asyncHandler.js';
+import scheduledStatusHandler from '../middleware/scheduledStatusHandler.js';
 import Category from '../models/categoryModel.js';
 import formatMongoData from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
@@ -63,6 +64,7 @@ const getAllCategories = asyncHandler(async (req, res) => {
   const updatedCategories = await updateScheduledItems({
     items: allCategories,
     model: Category,
+    statusKey: 'categoryStatus',
   });
 
   const formattedCategories = formatMongoData(updatedCategories);
@@ -115,49 +117,40 @@ const getCategoryById = asyncHandler(async (req, res) => {
 // @route   /api/category/id
 // @method  Put
 // @access  Private for admin and employee
-const updateCategory = asyncHandler(async (req, res) => {
-  const { categoryName, categoryStatus, scheduledDate } = req.body;
+const updateCategory = [
+  scheduledStatusHandler('categoryStatus'), // Pass the field name
+  asyncHandler(async (req, res) => {
+    const { categoryName, categoryStatus } = req.body;
 
-  if (!categoryName) {
-    return res.status(400).json({
-      success: false,
-      message: 'Please enter a category name',
+    if (!categoryName) {
+      return res.status(400).json({
+        success: false,
+        message: 'Please enter a category name',
+      });
+    }
+
+    const category = await Category.findById(req.params.id);
+
+    if (!category) {
+      return res.status(404).json({
+        success: false,
+        message: 'Category not found',
+      });
+    }
+
+    category.categoryName = categoryName;
+    category.categoryStatus = req.body.categoryStatus;
+    category.scheduledDate = req.body.scheduledDate; // Set or clear scheduledDate
+
+    const updatedCategory = await category.save();
+
+    res.status(200).json({
+      success: true,
+      message: 'Category updated',
+      category: formatMongoData(updatedCategory.toObject()),
     });
-  }
-
-  const category = await Category.findById(req.params.id);
-
-  if (!category) {
-    return res.status(404).json({
-      success: false,
-      message: 'Category not found',
-    });
-  }
-
-  // Update fields directly
-  category.categoryName = categoryName;
-  category.categoryStatus = categoryStatus;
-
-  const validationResult = validateScheduledDate(
-    categoryStatus,
-    scheduledDate,
-    req.lang,
-  );
-  if (!validationResult.success) {
-    return res.status(400).json(validationResult);
-  }
-
-  category.scheduledDate =
-    categoryStatus === 'Scheduled' ? scheduledDate : undefined; // Set or clear scheduledDate
-
-  const updatedCategory = await category.save();
-
-  res.status(200).json({
-    success: true,
-    message: 'Category updated',
-    category: formatMongoData(updatedCategory.toObject()), // Convert to plain object before formatting
-  });
-});
+  }),
+];
 
 // @desc    Delete category
 // @route   /api/category/id

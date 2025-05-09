@@ -1,9 +1,11 @@
 import { Category } from '../../app/api/apiTypes';
 import PageHeader from '../../components/PageHeader';
 import Table from '../../components/sortTable/Table';
-import { useGetAllCategoriesQuery } from '../../features/categories/categoriyApiSlice';
+import {
+  useGetAllCategoriesQuery,
+  useGetHasCategoriesScheduledQuery,
+} from '../../features/categories/categoriyApiSlice';
 import useLanguage from '../../features/language/useLanguage';
-import { useGetScheduledQuery } from '../../features/subCategories/subCategoryApiSlice';
 import { MainPath } from '../../layout/nav/enums';
 import { oneDay } from '../../utils/utils';
 import CategoryTableRow from './CategoryTableRow';
@@ -18,9 +20,12 @@ const tableHeaders: { key: keyof Category; label: string; name: string }[] = [
 const CategoryPage = () => {
   const { language } = useLanguage();
 
-  const { data: hasScheduledData } = useGetScheduledQuery(undefined, {
-    pollingInterval: oneDay,
-  });
+  const { data: hasScheduledData } = useGetHasCategoriesScheduledQuery(
+    undefined,
+    {
+      pollingInterval: oneDay,
+    },
+  );
 
   const shouldPollFullList = hasScheduledData?.hasScheduled ?? false;
 

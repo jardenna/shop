@@ -14,7 +14,7 @@ const categoryApiSlice = apiSlice.injectEndpoints({
       query: () => categoryUrl,
       providesTags: [TagTypesEnum.Categories],
     }),
-    getScheduled: builder.query<ScheduledResponse, void>({
+    getHasCategoriesScheduled: builder.query<ScheduledResponse, void>({
       query: () => `${categoryUrl}/scheduled`,
       providesTags: [TagTypesEnum.Categories],
     }),
@@ -50,5 +50,5 @@ export const {
   useUpdateCategoryMutation,
   useCreateCategoryMutation,
   useGetCategoryByIdQuery,
-  useGetScheduledQuery,
+  useGetHasCategoriesScheduledQuery,
 } = categoryApiSlice;

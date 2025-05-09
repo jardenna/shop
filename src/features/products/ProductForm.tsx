@@ -174,7 +174,7 @@ const ProductForm = ({
         values.images = uploadedImg;
       }
 
-      const productData = { ...values };
+      const productData = { ...values, scheduledDate: selectedDate };
 
       if (id) {
         await updateProduct({

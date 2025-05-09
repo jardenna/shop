@@ -1,9 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 import asyncHandler from '../middleware/asyncHandler.js';
+import scheduledStatusHandler from '../middleware/scheduledStatusHandler.js';
 import Product from '../models/productModel.js';
 import SubCategory from '../models/subCategoryModel.js';
 import formatMongoData from '../utils/formatMongoData.js';
+import { updateScheduledItems } from '../utils/UpdateScheduledItemsOptions.js';
 import validateProduct from '../utils/validateProduct.js';
 
 const errorResponse = {
@@ -49,80 +51,77 @@ const createProduct = asyncHandler(async (req, res) => {
 // @route   /api/products/:id
 // @method  Put
 // @access  Private for admin and employee
-const updateProduct = asyncHandler(async (req, res) => {
-  const error = validateProduct(req.body);
-  if (error) {
-    return res.status(400).json({ success: false, message: error });
-  }
+const updateProduct = [
+  scheduledStatusHandler('productStatus'), // Pass the field name
+  asyncHandler(async (req, res) => {
+    const { subCategory, quantity, images, scheduledDate, ...rest } = req.body;
 
-  const { subCategory, quantity, images, ...rest } = req.body;
+    const subCategoryId = await SubCategory.findById(subCategory);
+    if (!subCategoryId) {
+      return res
+        .status(400)
+        .json({ success: false, message: 'Invalid subCategory ID' });
+    }
 
-  // Validate subCategory existence
-  const subCategoryId = await SubCategory.findById(subCategory);
-  if (!subCategoryId) {
-    return res
-      .status(400)
-      .json({ success: false, message: 'Invalid subCategory ID' });
-  }
+    const existingProduct = await Product.findById(req.params.id);
+    if (!existingProduct) {
+      return res
+        .status(404)
+        .json({ success: false, message: 'Product not found' });
+    }
 
-  const existingProduct = await Product.findById(req.params.id);
-  if (!existingProduct) {
-    return res
-      .status(404)
-      .json({ success: false, message: 'Product not found' });
-  }
+    if (images && Array.isArray(images)) {
+      const oldImages = existingProduct.images || [];
+      const imagesToDelete = oldImages.filter(
+        (oldImage) => !images.includes(oldImage),
+      );
 
-  // Handle image updates
-  if (images && Array.isArray(images)) {
-    const oldImages = existingProduct.images || [];
-    const imagesToDelete = oldImages.filter(
-      (oldImage) => !images.includes(oldImage),
+      imagesToDelete.forEach((imagePath) => {
+        const fullPath = path.join(process.cwd(), imagePath);
+        fs.unlink(fullPath, (error) => {
+          if (error) {
+            return res
+              .status(500)
+              .json({ message: `Failed to delete image: ${fullPath}`, error });
+          }
+        });
+      });
+    }
+
+    let updatedCountInStock = existingProduct.countInStock;
+    if (quantity && quantity > 0) {
+      updatedCountInStock += Number(quantity);
+    }
+
+    const product = await Product.findByIdAndUpdate(
+      req.params.id,
+      {
+        subCategory,
+        countInStock: updatedCountInStock,
+        images,
+        productStatus: req.body.productStatus,
+        scheduledDate: req.body.scheduledDate, // Set or clear scheduledDate
+        ...rest,
+      },
+      { new: true },
     );
 
-    imagesToDelete.forEach((imagePath) => {
-      const fullPath = path.join(process.cwd(), imagePath);
-      fs.unlink(fullPath, (error) => {
-        if (error) {
-          return res
-            .status(500)
-            .json({ message: `Failed to delete image: ${fullPath}`, error });
-        }
-      });
-    });
-  }
+    if (!product) {
+      return res
+        .status(404)
+        .json({ success: false, message: 'Product update failed' });
+    }
 
-  // Add quantity to the existing countInStock if quantity is provided
-  let updatedCountInStock = existingProduct.countInStock;
-  if (quantity && quantity > 0) {
-    updatedCountInStock += Number(quantity);
-  }
-
-  const product = await Product.findByIdAndUpdate(
-    req.params.id,
-    {
-      subCategory,
-      countInStock: updatedCountInStock,
-      images, // Update images
+    res.json({
+      id: product._id,
+      productName: product.productName,
+      countInStock: product.countInStock,
+      quantity: product.quantity,
+      images: product.images,
       ...rest,
-    },
-    { new: true },
-  );
-
-  if (!product) {
-    return res
-      .status(404)
-      .json({ success: false, message: 'Product update failed' });
-  }
-
-  res.json({
-    id: product._id,
-    productName: product.productName,
-    countInStock: product.countInStock,
-    quantity: product.quantity, // optional, if you're tracking total quantity added
-    images: product.images, // updated images
-    ...rest, // any other updated fields
-  });
-});
+    });
+  }),
+];
 
 // @desc    Delete Product
 // @route   /api/products/:id
@@ -136,16 +135,14 @@ const deleteProduct = asyncHandler(async (req, res) => {
 
   // Delete associated images
   if (product.images && product.images.length > 0) {
-    product.images.forEach((imagePath) => {
+    const deleteImagePromises = product.images.map((imagePath) => {
       const fullPath = path.join(process.cwd(), imagePath);
-      fs.unlink(fullPath, (error) => {
-        if (error) {
-          return res
-            .status(500)
-            .json({ message: `Failed to delete image: ${fullPath}`, error });
-        }
+      return fs.promises.unlink(fullPath).catch((error) => {
+        console.error(`Failed to delete image: ${fullPath}`, error);
       });
     });
+
+    await Promise.all(deleteImagePromises); // Wait for all deletions to complete
   }
 
   res.json({ success: true, message: 'Product deleted successfully' });
@@ -184,6 +181,15 @@ const getSortedProducts = asyncHandler(async (req, res) => {
   const pageSize = parseInt(req.query.pageSize) || 12;
   const page = parseInt(req.query.page) || 1;
 
+  const allProducts = await Product.find({}).lean();
+
+  // Update scheduled products
+  await updateScheduledItems({
+    items: allProducts,
+    model: Product,
+    statusKey: 'productStatus',
+  });
+
   const products = await Product.find({})
     .populate({
       path: 'subCategory',
@@ -202,8 +208,9 @@ const getSortedProducts = asyncHandler(async (req, res) => {
   res.json({
     success: true,
     products: formatMongoData(
-      products.map(({ subCategoryName, ...rest }) => ({
+      products.map(({ subCategoryName, scheduledDate, ...rest }) => ({
         ...rest,
+        ...(rest.productStatus === 'Scheduled' ? { scheduledDate } : {}),
       })),
     ),
     page,
@@ -257,10 +264,26 @@ const getProductById = asyncHandler(async (req, res) => {
     return res.status(404).json(errorResponse);
   }
 
-  res.json(formatMongoData(product));
+  res.status(200).json(formatMongoData(product));
+});
+
+// @desc    Check Scheduled Products
+// @route   /api/products/scheduled
+// @method  Get
+// @access  Public
+const checkScheduled = asyncHandler(async (req, res) => {
+  const now = new Date();
+
+  const hasScheduled = await Product.exists({
+    productStatus: 'Scheduled',
+    scheduledDate: { $lte: now }, // Ensure scheduledDate is stored as a Date type
+  });
+
+  res.json({ hasScheduled: !!hasScheduled });
 });
 
 export {
+  checkScheduled,
   createProduct,
   deleteProduct,
   getNewProducts,
