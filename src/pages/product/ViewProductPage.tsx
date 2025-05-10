@@ -1,10 +1,8 @@
-import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate, useParams } from 'react-router';
 import { ProductSizes } from '../../app/api/apiTypes';
 import ProductCardCenter from '../../components/adminCard/ProductCardCenter';
 import ProductCardLeft from '../../components/adminCard/ProductCardLeft';
 import CardRight from '../../components/card/CardRight';
-import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import SkeletonPage from '../../components/skeleton/SkeletonPage';
 import useLanguage from '../../features/language/useLanguage';
@@ -84,36 +82,28 @@ const ViewProductPage = () => {
           onReset={() => refetch}
         >
           <article className="admin-card-container">
-            <ErrorBoundary
-              FallbackComponent={ErrorBoundaryFallback}
+            <ProductCardLeft
+              id={product.id}
+              primaryActionBtn={primaryActionBtn}
+              linkTo={`/admin/${MainPath.AdminProductUpdate}/${params.id}`}
+              name={product.productName}
+              scheduledDate={product.scheduledDate || null}
+              status={product.productStatus}
+              countInStock={product.countInStock}
+              description={product.description}
+              images={product.images}
               onReset={() => refetch}
-            >
-              <ProductCardLeft
-                id={product.id}
-                primaryActionBtn={primaryActionBtn}
-                linkTo={`/admin/${MainPath.AdminProductUpdate}/${params.id}`}
-                name={product.productName}
-                scheduledDate={product.scheduledDate || null}
-                status={product.productStatus}
-                countInStock={product.countInStock}
-                description={product.description}
-                images={product.images}
-              />
-            </ErrorBoundary>
+            />
 
-            <ErrorBoundary
-              FallbackComponent={ErrorBoundaryFallback}
+            <ProductCardCenter
+              brand={product.brand}
+              colours={product.colors}
+              discount={product.discount || 0}
+              material={product.material}
+              price={product.price}
+              sizes={product.sizes}
               onReset={() => refetch}
-            >
-              <ProductCardCenter
-                brand={product.brand}
-                colours={product.colors}
-                discount={product.discount || 0}
-                material={product.material}
-                price={product.price}
-                sizes={product.sizes}
-              />
-            </ErrorBoundary>
+            />
 
             <CardRight
               linkTo={`/admin/${MainPath.AdminSubCategories}`}
