@@ -1,10 +1,8 @@
-import { ErrorBoundary } from 'react-error-boundary';
 import { Status } from '../../app/api/apiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
 import CardRight from '../card/CardRight';
-import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import CategoryCardLeft from './CategoryCardLeft';
 
 type CategoryCardProps = {
@@ -43,21 +41,16 @@ const CategoryCard = ({
 
   return (
     <article className="admin-card-container">
-      <ErrorBoundary
-        FallbackComponent={ErrorBoundaryFallback}
+      <CategoryCardLeft
+        name={subCategoryName}
+        primaryActionBtn={primaryActionBtn}
+        id={categoryId}
+        linkTo={`/admin/${MainPath.AdminSubCategoryUpdate}/${categoryId}`}
+        status={status}
+        totalProducts={totalProducts}
+        scheduledDate={scheduledDate}
         onReset={onReset}
-      >
-        <CategoryCardLeft
-          name={subCategoryName}
-          primaryActionBtn={primaryActionBtn}
-          id={categoryId}
-          linkTo={`/admin/${MainPath.AdminSubCategoryUpdate}/${categoryId}`}
-          status={status}
-          totalProducts={totalProducts}
-          scheduledDate={scheduledDate}
-        />
-      </ErrorBoundary>
-
+      />
       <CardRight
         linkTo={`/admin/${MainPath.AdminCategories}`}
         createdAt={createdAt}
