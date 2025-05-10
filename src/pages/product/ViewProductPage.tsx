@@ -6,7 +6,6 @@ import ProductCardLeft from '../../components/adminCard/ProductCardLeft';
 import CardRight from '../../components/card/CardRight';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-import PageHeader from '../../components/PageHeader';
 import SkeletonPage from '../../components/skeleton/SkeletonPage';
 import useLanguage from '../../features/language/useLanguage';
 import {
@@ -15,6 +14,7 @@ import {
 } from '../../features/products/productApiSlice';
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
+import PageContainer from '../PageContainer';
 
 export const sizeList: ProductSizes[] = ['S', 'M', 'L', 'XL'];
 
@@ -74,17 +74,15 @@ const ViewProductPage = () => {
   const statusMessage = `${language.categoryIs} ${subCategoryStatus}`;
 
   return (
-    <section className="page">
+    <article className="page">
       {isLoading && <SkeletonPage />}
       {product && (
-        <PageHeader
+        <PageContainer
           heading={product.productName}
           linkText={language.createNewProduct}
           linkTo={`/admin/${MainPath.AdminProductCreate}`}
-        />
-      )}
-      <div className="page-card">
-        {product && (
+          onReset={() => refetch}
+        >
           <article className="admin-card-container">
             <ErrorBoundary
               FallbackComponent={ErrorBoundaryFallback}
@@ -117,25 +115,21 @@ const ViewProductPage = () => {
               />
             </ErrorBoundary>
 
-            <ErrorBoundary
-              FallbackComponent={ErrorBoundaryFallback}
+            <CardRight
+              linkTo={`/admin/${MainPath.AdminSubCategories}`}
+              createdAt={product.createdAt}
+              heading={heading}
               onReset={() => refetch}
-            >
-              <CardRight
-                linkTo={`/admin/${MainPath.AdminSubCategories}`}
-                createdAt={product.createdAt}
-                heading={heading}
-                name={product.productName}
-                showStatusMessage={
-                  product.subCategory.categoryStatus !== 'Published'
-                }
-                statusMessage={statusMessage}
-              />
-            </ErrorBoundary>
+              name={product.productName}
+              showStatusMessage={
+                product.subCategory.categoryStatus !== 'Published'
+              }
+              statusMessage={statusMessage}
+            />
           </article>
-        )}
-      </div>
-    </section>
+        </PageContainer>
+      )}
+    </article>
   );
 };
 

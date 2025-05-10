@@ -1,4 +1,6 @@
+import { ErrorBoundary } from 'react-error-boundary';
 import useLanguage from '../../features/language/useLanguage';
+import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import LinkButton from '../LinkButton';
 import CardContent from './CardContent';
 import CardDate from './CardDate';
@@ -10,6 +12,7 @@ type CardRightProps = {
   name: string;
   showStatusMessage: boolean;
   statusMessage: string;
+  onReset: () => void;
 };
 
 const CardRight = ({
@@ -19,20 +22,23 @@ const CardRight = ({
   name,
   showStatusMessage,
   statusMessage,
+  onReset,
 }: CardRightProps) => {
   const { language } = useLanguage();
 
   return (
-    <CardContent className="right" heading={heading}>
-      {showStatusMessage && (
-        <div>
-          <h3>{statusMessage}</h3>
-          {name} {language.notVisibleInShop}.
-          <LinkButton linkTo={linkTo} linkText={language.publish} />
-        </div>
-      )}
-      <CardDate text={language.createdAt} date={createdAt} />
-    </CardContent>
+    <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
+      <CardContent className="right" heading={heading}>
+        {showStatusMessage && (
+          <div>
+            <h3>{statusMessage}</h3>
+            {name} {language.notVisibleInShop}.
+            <LinkButton linkTo={linkTo} linkText={language.publish} />
+          </div>
+        )}
+        <CardDate text={language.createdAt} date={createdAt} />
+      </CardContent>
+    </ErrorBoundary>
   );
 };
 

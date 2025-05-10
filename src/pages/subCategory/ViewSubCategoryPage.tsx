@@ -1,7 +1,4 @@
-import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate, useParams } from 'react-router';
-import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
-import PageHeader from '../../components/PageHeader';
 import CategoryCard from '../../components/adminCard/CategoryCard';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import SkeletonPage from '../../components/skeleton/SkeletonPage';
@@ -11,6 +8,7 @@ import {
   useGetSubCategoryByIdQuery,
 } from '../../features/subCategories/subCategoryApiSlice';
 import { MainPath } from '../../layout/nav/enums';
+import PageContainer from '../PageContainer';
 
 const ViewSubCategoryPage = () => {
   const { language } = useLanguage();
@@ -57,35 +55,28 @@ const ViewSubCategoryPage = () => {
     <article className="page page-medium">
       {isLoading && <SkeletonPage />}
       {category && (
-        <>
-          <PageHeader
-            heading={`${language.category} ${category.subCategoryName}`}
-            linkText={language.createNewCategory}
-            linkTo={`/admin/${MainPath.AdminSubCategoryCreate}`}
+        <PageContainer
+          heading={`${language.category} ${category.subCategoryName}`}
+          linkText={language.createNewCategory}
+          linkTo={`/admin/${MainPath.AdminSubCategoryCreate}`}
+          onReset={() => refetch}
+        >
+          <CategoryCard
+            onReset={() => refetch}
+            onDeleteSubCategory={handleDeleteSubCategory}
+            categoryId={category.id}
+            createdAt={category.createdAt}
+            subCategoryName={category.subCategoryName}
+            totalProducts={category.productCount}
+            mainCategoryName={category.mainCategory.categoryName}
+            showStatusMessage={
+              category.mainCategory.categoryStatus !== 'Published'
+            }
+            scheduledDate={category.scheduledDate || null}
+            statusMessage={category.mainCategory.categoryStatus.toLowerCase()}
+            status={category.categoryStatus}
           />
-          <div className="page-card">
-            <ErrorBoundary
-              FallbackComponent={ErrorBoundaryFallback}
-              onReset={() => refetch}
-            >
-              <CategoryCard
-                onReset={() => refetch}
-                onDeleteSubCategory={handleDeleteSubCategory}
-                categoryId={category.id}
-                createdAt={category.createdAt}
-                subCategoryName={category.subCategoryName}
-                totalProducts={category.productCount}
-                mainCategoryName={category.mainCategory.categoryName}
-                showStatusMessage={
-                  category.mainCategory.categoryStatus !== 'Published'
-                }
-                scheduledDate={category.scheduledDate || null}
-                statusMessage={category.mainCategory.categoryStatus.toLowerCase()}
-                status={category.categoryStatus}
-              />
-            </ErrorBoundary>
-          </div>
-        </>
+        </PageContainer>
       )}
     </article>
   );

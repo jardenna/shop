@@ -57,19 +57,16 @@ const CategoryCard = ({
           scheduledDate={scheduledDate}
         />
       </ErrorBoundary>
-      <ErrorBoundary
-        FallbackComponent={ErrorBoundaryFallback}
+
+      <CardRight
+        linkTo={`/admin/${MainPath.AdminCategories}`}
+        createdAt={createdAt}
+        heading={`${language.parentCategory}: ${mainCategoryName}`}
+        name={subCategoryName}
+        showStatusMessage={showStatusMessage}
+        statusMessage={`${language.parentCategoryIs} ${language[statusMessage]}`}
         onReset={onReset}
-      >
-        <CardRight
-          linkTo={`/admin/${MainPath.AdminCategories}`}
-          createdAt={createdAt}
-          heading={`${language.parentCategory}: ${mainCategoryName}`}
-          name={subCategoryName}
-          showStatusMessage={showStatusMessage}
-          statusMessage={`${language.parentCategoryIs} ${language[statusMessage]}`}
-        />
-      </ErrorBoundary>
+      />
     </article>
   );
 };
