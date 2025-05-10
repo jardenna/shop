@@ -27,6 +27,7 @@ const ViewProductPage = () => {
     data: product,
     isLoading,
     refetch,
+    error,
   } = useGetProductByIdQuery(params.id || '');
   const { onAddMessagePopup } = useMessagePopup();
 
@@ -74,6 +75,9 @@ const ViewProductPage = () => {
   return (
     <article className="page">
       {isLoading && <SkeletonPage />}
+      {error && 'data' in error && (
+        <div>{(error.data as { message: string }).message}</div>
+      )}
       {product && (
         <PageContainer
           heading={product.productName}

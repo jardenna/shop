@@ -18,6 +18,7 @@ const ViewSubCategoryPage = () => {
     data: category,
     isLoading,
     refetch,
+    error,
   } = useGetSubCategoryByIdQuery(params.id || '', {
     refetchOnMountOrArgChange: true,
   });
@@ -53,6 +54,9 @@ const ViewSubCategoryPage = () => {
 
   return (
     <article className="page page-medium">
+      {error && 'data' in error && (
+        <div>{(error.data as { message: string }).message}</div>
+      )}
       {isLoading && <SkeletonPage />}
       {category && (
         <PageContainer

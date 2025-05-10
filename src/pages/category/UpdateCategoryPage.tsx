@@ -12,11 +12,15 @@ const UpdateCategoryPage = () => {
     data: { category } = {},
     isLoading,
     refetch,
+    error,
   } = useGetCategoryByIdQuery(params.id || '');
 
   return (
     <article className="page page-small">
       {isLoading && <SkeletonPage />}
+      {error && 'data' in error && (
+        <div>{(error.data as { message: string }).message}</div>
+      )}
       {category && (
         <PageContainer
           heading={`${language.updateCategory} ${category.categoryName}`}
