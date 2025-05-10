@@ -3,11 +3,15 @@ import LayoutElement from '../../layout/LayoutElement';
 
 type CardContentProps = {
   children: ReactNode;
-  className: string;
   heading: string | null;
+  className?: string;
 };
 
-const CardContent = ({ children, className, heading }: CardContentProps) => (
+const CardContent = ({
+  children,
+  className = '',
+  heading,
+}: CardContentProps) => (
   <div className={`admin-card card-${className}`}>
     <span className="card-top-line" />
     <section className="admin-card-content">

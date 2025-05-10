@@ -30,7 +30,7 @@ const ProductCardCenter = ({
   const newPrice = discountCalculation(price, discount);
 
   return (
-    <CardContent heading={null} className="center">
+    <CardContent heading={null}>
       <span className="separator" />
       <div className="product-list-container">
         <GridTwoCol>

@@ -32,6 +32,11 @@
   gap: 12px;
 }
 
+.skeleton-card {
+  height: 350px;
+  padding: 12px 30px;
+}
+
 @keyframes skeleton-animation {
   0% {
     opacity: 0.1;

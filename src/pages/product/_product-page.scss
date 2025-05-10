@@ -9,7 +9,8 @@
 .product-list-container {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
+  padding: 30px;
 
   .product-list-headline {
     display: flex;
