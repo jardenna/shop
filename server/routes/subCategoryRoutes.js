@@ -31,8 +31,9 @@ router
 
 router
   .route('/:id')
-  .put(authenticate, authorizeEmployee, updateSubCategory)
-  .get(getSubCategoryById)
+  .post(languageMiddleware, authenticate, authorizeEmployee, createSubCategory)
+  .put(languageMiddleware, authenticate, authorizeEmployee, updateSubCategory)
+  .get(languageMiddleware, authenticate, authorizeEmployee, getSubCategoryById)
   .delete(languageMiddleware, authenticate, authorizeAdmin, deleteSubCategory);
 
 export default router;

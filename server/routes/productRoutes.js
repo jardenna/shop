@@ -34,7 +34,7 @@ router.get('/new', getNewProducts);
 router
   .route('/:id')
   .get(languageMiddleware, getProductById)
-  .put(authenticate, authorizeEmployee, updateProduct)
-  .delete(authenticate, authorizeAdmin, deleteProduct);
+  .put(languageMiddleware, authenticate, authorizeEmployee, updateProduct)
+  .delete(languageMiddleware, authenticate, authorizeAdmin, deleteProduct);
 
 export default router;

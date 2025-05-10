@@ -33,7 +33,7 @@ router
 
 router
   .route('/:id')
-  .get(getCategoryById)
+  .get(languageMiddleware, authenticate, authorizeEmployee, getCategoryById)
   .put(languageMiddleware, authenticate, authorizeEmployee, updateCategory)
   .delete(languageMiddleware, authenticate, authorizeAdmin, deleteCategory);
 
