@@ -153,18 +153,21 @@ const checkScheduled = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Public
 const getSubCategoryById = asyncHandler(async (req, res) => {
-  const category = await SubCategory.findById(req.params.id)
+  const { id } = req.params;
+
+  const category = await SubCategory.findById(id)
     .populate('category', 'categoryName categoryStatus') // Populate parent category details
     .lean();
 
   if (!category) {
-    return res
-      .status(404)
-      .json({ success: false, message: 'No subcategory with that ID' });
+    return res.status(404).json({
+      success: false,
+      message: t('couldNotFindInfo', req.lang),
+    });
   }
 
   const productCount = await Product.countDocuments({
-    subCategory: req.params.id,
+    subCategory: id,
   });
 
   const { category: mainCategory, ...rest } = category;

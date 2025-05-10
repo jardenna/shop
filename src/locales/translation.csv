@@ -27,6 +27,7 @@ categoryIs;Category is;Kategori er
 categoryList;Category list;Kategori-liste
 categoryName;Category name;Kategori navn
 categoryNotFound;Category not found;Kategorien findes ikke
+categoryRequired;Please select a category;Vælg venligst kategori
 categoryStatus;Category status;Kategori status
 categoryUpdated;Category updated;Kategori opdateret
 circelChevronRight;Circel chevronRight;Circel chevronRight
@@ -37,10 +38,10 @@ closeDialog;Close dialog;Luk dialog
 collapseMenu;Collapse menu;Skjul menu
 collection;Collection;Kollektion
 colorRequired;Please select at least one color;Vælg mindst 1 farve
-categoryRequired;Please select a category;Vælg venligst kategori
 colours;Colours;Farver
 confirmPassword;Confirm password;Gentag adgangskode
 contact;Contact;Kontakt
+couldNotFindInfo;Sorry, We couldn’t find the information you’re looking for;Vi kunne desværre ikke finde den information, du søger
 create;Create;Tilføj
 createAccount;Create account;Opret konto
 created;Created;Tilføjet
