@@ -4,10 +4,20 @@ const errorHandler = (error, req, res, next) => {
   let statusCode = res.statusCode === 200 ? 500 : res.statusCode;
   let message = error.message;
 
-  // CastError - invalid ObjectId
-  if (error.name === 'CastError' && error.kind === 'ObjectId') {
-    statusCode = 400;
-    message = t('pleaseSelectParentCategory', req.lang);
+  // Handle CastError (e.g. invalid ObjectId)
+  if (error.name === 'CastError') {
+    const isIdParam = error.path === '_id' && req.params?.id;
+
+    if (isIdParam) {
+      statusCode = 404;
+      message = t('couldNotFindInfo', req.lang);
+    } else {
+      console.warn(
+        `[CastError] Path: ${error.path} | Value: ${error.value} | Route: ${req.originalUrl}`,
+      );
+      statusCode = 400;
+      message = t('couldNotFindInfo', req.lang);
+    }
   }
 
   // Duplicate key error
@@ -16,7 +26,7 @@ const errorHandler = (error, req, res, next) => {
     message = t('categoryAlreadyExist', req.lang);
   }
 
-  // Mongoose validation errors
+  // Mongoose validation error
   if (error.name === 'ValidationError') {
     statusCode = 400;
     message = Object.values(error.errors)
