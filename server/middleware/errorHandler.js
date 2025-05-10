@@ -1,16 +1,8 @@
-import mongoose from 'mongoose';
 import { t } from '../utils/translator.js';
 
 const errorHandler = (error, req, res, next) => {
   let statusCode = res.statusCode === 200 ? 500 : res.statusCode;
   let message = error.message;
-
-  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-    return res.status(400).json({
-      success: false,
-      message: t('couldNotFindInfo', req.lang),
-    });
-  }
 
   // CastError - invalid ObjectId
   if (error.name === 'CastError' && error.kind === 'ObjectId') {

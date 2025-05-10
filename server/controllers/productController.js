@@ -1,4 +1,5 @@
 import fs from 'fs';
+import mongoose from 'mongoose';
 import path from 'path';
 import asyncHandler from '../middleware/asyncHandler.js';
 import scheduledStatusHandler from '../middleware/scheduledStatusHandler.js';
@@ -263,6 +264,13 @@ const getProductById = asyncHandler(async (req, res) => {
       },
     })
     .lean();
+
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    return res.status(400).json({
+      success: false,
+      message: t('couldNotFindInfo', req.lang),
+    });
+  }
 
   if (!product) {
     return res.status(404).json({

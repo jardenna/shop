@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import asyncHandler from '../middleware/asyncHandler.js';
 import scheduledStatusHandler from '../middleware/scheduledStatusHandler.js';
 import Category from '../models/categoryModel.js';
@@ -158,6 +159,13 @@ const getSubCategoryById = asyncHandler(async (req, res) => {
   const category = await SubCategory.findById(id)
     .populate('category', 'categoryName categoryStatus') // Populate parent category details
     .lean();
+
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    return res.status(400).json({
+      success: false,
+      message: t('couldNotFindInfo', req.lang),
+    });
+  }
 
   if (!category) {
     return res.status(404).json({

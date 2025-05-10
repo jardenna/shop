@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import asyncHandler from '../middleware/asyncHandler.js';
 import scheduledStatusHandler from '../middleware/scheduledStatusHandler.js';
 import Category from '../models/categoryModel.js';
@@ -93,11 +94,19 @@ const checkScheduled = asyncHandler(async (req, res) => {
 const getCategoryById = asyncHandler(async (req, res) => {
   const category = await Category.findById(req.params.id).lean();
 
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    return res.status(400).json({
+      success: false,
+      message: t('couldNotFindInfo', req.lang),
+    });
+  }
+
   if (!category) {
     return res
       .status(404)
       .json({ success: false, message: t('couldNotFindInfo', req.lang) });
   }
+
   const formattedCategory = formatMongoData(category);
   res.status(200).json({ success: true, category: formattedCategory });
 });
