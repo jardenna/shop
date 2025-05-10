@@ -96,7 +96,7 @@ const getCategoryById = asyncHandler(async (req, res) => {
   if (!category) {
     return res
       .status(404)
-      .json({ success: false, message: 'No category with that ID' });
+      .json({ success: false, message: t('couldNotFindInfo', req.lang) });
   }
   const formattedCategory = formatMongoData(category);
   res.status(200).json({ success: true, category: formattedCategory });
