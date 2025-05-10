@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import asyncHandler from '../middleware/asyncHandler.js';
 import scheduledStatusHandler from '../middleware/scheduledStatusHandler.js';
 import Category from '../models/categoryModel.js';
@@ -93,13 +92,7 @@ const checkScheduled = asyncHandler(async (req, res) => {
 // @access  Public
 const getCategoryById = asyncHandler(async (req, res) => {
   const category = await Category.findById(req.params.id).lean();
-
-  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-    return res.status(400).json({
-      success: false,
-      message: t('couldNotFindInfo', req.lang),
-    });
-  }
+  console.log(req.lang);
 
   if (!category) {
     return res
@@ -118,7 +111,7 @@ const getCategoryById = asyncHandler(async (req, res) => {
 const updateCategory = [
   scheduledStatusHandler('categoryStatus'), // Pass the field name
   asyncHandler(async (req, res) => {
-    const { categoryName, categoryStatus } = req.body;
+    const { categoryName } = req.body;
 
     if (!categoryName) {
       return res.status(400).json({
@@ -161,9 +154,7 @@ const deleteCategory = asyncHandler(async (req, res) => {
     });
 
     if (!category) {
-      return res
-        .status(404)
-        .json({ message: t('categorieNotFound', req.lang) });
+      return res.status(404).json({ message: t('categoryNotFound', req.lang) });
     }
 
     return res
