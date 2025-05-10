@@ -1,5 +1,4 @@
 import useLanguage from '../../features/language/useLanguage';
-import { MainPath } from '../../layout/nav/enums';
 import LinkButton from '../LinkButton';
 import CardContent from './CardContent';
 import CardDate from './CardDate';
@@ -7,7 +6,7 @@ import CardDate from './CardDate';
 type CardRightProps = {
   createdAt: Date;
   heading: string;
-  linkTo: MainPath | string;
+  linkTo: string;
   name: string;
   showStatusMessage: boolean;
   statusMessage: string;

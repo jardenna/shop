@@ -1,10 +1,9 @@
 import { Link } from 'react-router';
-import { MainPath } from '../layout/nav/enums';
 import { BtnVariant } from '../types/enums';
 
 type LinkButtonProps = {
   linkText: string;
-  linkTo: MainPath | string;
+  linkTo: string;
   variant?: BtnVariant;
 };
 

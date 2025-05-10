@@ -2,12 +2,12 @@ import { ReactNode } from 'react';
 import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import './_nav.scss';
-import { LinkText, MainPath } from './enums';
+import { LinkText } from './enums';
 import NavItemList from './NavItemList';
 
 export type NavItemsProps = {
   linkText: LinkText;
-  path: MainPath | string;
+  path: string;
   iconName?: IconName;
 };
 
