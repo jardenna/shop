@@ -1,10 +1,8 @@
-import { ErrorBoundary } from 'react-error-boundary';
 import { Status } from '../../app/api/apiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import Badge from '../badge/Badge';
 import CardContent from '../card/CardContent';
 import CardFooter from '../card/CardFooter';
-import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import Img from '../Img';
 import AdminCard from './types';
 
@@ -31,36 +29,34 @@ const ProductCardLeft = ({
   const { language } = useLanguage();
 
   return (
-    <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
-      <CardContent className="left" heading={null}>
-        <ul className="product-img-list">
-          {images.map((url) => (
-            <li key={url}>
-              <Img src={url} alt="" className="product-img-item" />
-            </li>
-          ))}
-        </ul>
-        <div className="position-relative ">
-          <Badge
-            badgeText={language[status.toLowerCase()]}
-            className={status.toLowerCase()}
-          />
-          <h2 className="admin-card-title">{name}</h2>
-          <span>{language.qty}: </span>
-          <span>{countInStock}</span>
-          <p>{description}</p>
-        </div>
-
-        <CardFooter
-          id={id}
-          primaryActionBtn={primaryActionBtn}
-          name={name}
-          modalHeaderText={language.deleteCategory}
-          linkTo={linkTo}
-          scheduledDate={scheduledDate}
+    <CardContent className="left" heading={null} onReset={onReset}>
+      <ul className="product-img-list">
+        {images.map((url) => (
+          <li key={url}>
+            <Img src={url} alt="" className="product-img-item" />
+          </li>
+        ))}
+      </ul>
+      <div className="position-relative ">
+        <Badge
+          badgeText={language[status.toLowerCase()]}
+          className={status.toLowerCase()}
         />
-      </CardContent>
-    </ErrorBoundary>
+        <h2 className="admin-card-title">{name}</h2>
+        <span>{language.qty}: </span>
+        <span>{countInStock}</span>
+        <p>{description}</p>
+      </div>
+
+      <CardFooter
+        id={id}
+        primaryActionBtn={primaryActionBtn}
+        name={name}
+        modalHeaderText={language.deleteCategory}
+        linkTo={linkTo}
+        scheduledDate={scheduledDate}
+      />
+    </CardContent>
   );
 };
 

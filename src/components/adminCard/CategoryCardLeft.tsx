@@ -1,10 +1,8 @@
-import { ErrorBoundary } from 'react-error-boundary';
 import { Status } from '../../app/api/apiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import Badge from '../badge/Badge';
 import CardContent from '../card/CardContent';
 import CardFooter from '../card/CardFooter';
-import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import AdminCard from './types';
 
 type CategoryCardLeftProps = AdminCard & {
@@ -26,29 +24,26 @@ const CategoryCardLeft = ({
   const { language } = useLanguage();
 
   return (
-    <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
-      <CardContent className="left" heading={null}>
-        <div className="position-relative">
-          <h2 className="admin-card-title">{name}</h2>
-          <Badge
-            badgeText={language[status.toLowerCase()]}
-            className={status.toLowerCase()}
-          />
-          <span>
-            {language.totalProducts}: {totalProducts}
-          </span>
-        </div>
-
-        <CardFooter
-          id={id}
-          primaryActionBtn={primaryActionBtn}
-          name={name}
-          modalHeaderText={language.deleteCategory}
-          linkTo={linkTo}
-          scheduledDate={scheduledDate}
+    <CardContent className="left" heading={null} onReset={onReset}>
+      <div className="position-relative">
+        <h2 className="admin-card-title">{name}</h2>
+        <Badge
+          badgeText={language[status.toLowerCase()]}
+          className={status.toLowerCase()}
         />
-      </CardContent>
-    </ErrorBoundary>
+        <span>
+          {language.totalProducts}: {totalProducts}
+        </span>
+      </div>
+      <CardFooter
+        id={id}
+        primaryActionBtn={primaryActionBtn}
+        name={name}
+        modalHeaderText={language.deleteCategory}
+        linkTo={linkTo}
+        scheduledDate={scheduledDate}
+      />
+    </CardContent>
   );
 };
 
