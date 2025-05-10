@@ -76,6 +76,7 @@ errorAltText;A really guilty emoji;En meget skyldig emoji
 expandMenu;Expand menu;Udvid menu
 eye;Eye;Øje
 eyeClosed;Closed eye;Lukket øje
+fileExceedsSize;The selected file exceeds the 1MB limit; Den valgte fil overstiger grænsen på 1 MB. Upload venligst en mindre fil
 filesSuported;Files suported;Tilladte filer
 fillAll;Please fill all inputs;Udfyld venligst alle felter
 filter;Filter;Filtrer

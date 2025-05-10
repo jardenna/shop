@@ -5,6 +5,7 @@ import {
   authorizeEmployee,
 } from '../middleware/authMiddleware.js';
 import languageMiddleware from '../middleware/languageMiddleware.js';
+import { t } from '../utils/translator.js';
 
 const router = express.Router();
 
@@ -16,6 +17,13 @@ router.post(
   (req, res) => {
     upload.array('images', 5)(req, res, (err) => {
       // '5' is the max files limit
+
+      if (err && err.code === 'LIMIT_FILE_SIZE') {
+        return res.status(400).send({
+          message: t('fileExceedsSize', req.lang),
+        });
+      }
+
       if (err) {
         res.status(400).send({ message: err.message });
       } else if (req.files) {

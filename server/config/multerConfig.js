@@ -1,5 +1,6 @@
 import multer from 'multer';
 import path from 'path';
+import { maxFileSize } from '../utils/constants.js';
 import { t } from '../utils/translator.js';
 
 const storage = multer.diskStorage({
@@ -33,6 +34,6 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-const fileSize = 1 * 1000 * 1000; // 1 MB file size limit
+const fileSize = maxFileSize;
 
 export const upload = multer({ storage, fileFilter, limits: { fileSize } });
