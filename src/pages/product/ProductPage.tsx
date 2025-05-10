@@ -1,5 +1,4 @@
 import { Product } from '../../app/api/apiTypes';
-import PageHeader from '../../components/PageHeader';
 import Table, { Column } from '../../components/sortTable/Table';
 import useLanguage from '../../features/language/useLanguage';
 import {
@@ -8,6 +7,7 @@ import {
 } from '../../features/products/productApiSlice';
 import { MainPath } from '../../layout/nav/enums';
 import { oneDay } from '../../utils/utils';
+import PageContainer from '../PageContainer';
 import './_product-page.scss';
 import ProductTableRow from './ProductTableRow';
 
@@ -38,13 +38,13 @@ const ProductPage = () => {
   });
 
   return (
-    <section className="page">
-      <PageHeader
+    <article className="page">
+      <PageContainer
         heading={language.products}
         linkText={language.createNewProduct}
         linkTo={`/admin/${MainPath.AdminProductCreate}`}
-      />
-      <div className="page-card">
+        onReset={() => refetch}
+      >
         <Table
           onReset={() => refetch}
           isLoading={isLoading}
@@ -81,8 +81,8 @@ const ProductPage = () => {
             )
           }
         </Table>
-      </div>
-    </section>
+      </PageContainer>
+    </article>
   );
 };
 

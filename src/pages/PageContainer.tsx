@@ -8,7 +8,7 @@ type PageContainerProps = {
   heading: string;
   linkText?: string;
   linkTo?: string;
-  onReset: () => void;
+  onReset?: () => void;
 };
 
 const PageContainer = ({
@@ -20,7 +20,6 @@ const PageContainer = ({
 }: PageContainerProps) => (
   <>
     <PageHeader heading={heading} linkText={linkText} linkTo={linkTo} />
-
     <div className="page-card">
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
