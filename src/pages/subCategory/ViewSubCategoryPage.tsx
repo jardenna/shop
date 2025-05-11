@@ -28,7 +28,7 @@ const ViewSubCategoryPage = () => {
   const { onAddMessagePopup } = useMessagePopup();
   const [deleteSubCategory] = useDeleteSubCategoryMutation();
   const handleGoback = () => {
-    void navigate(-1);
+    navigate(-1);
   };
 
   const handleDeleteSubCategory = async () => {

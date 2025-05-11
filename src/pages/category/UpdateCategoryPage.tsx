@@ -19,12 +19,11 @@ const UpdateCategoryPage = () => {
   } = useGetCategoryByIdQuery(params.id || '');
 
   const handleGoback = () => {
-    void navigate(-1);
+    navigate(-1);
   };
 
   return (
     <article className="page page-small">
-      <SkeletonPage />
       {isLoading && <SkeletonPage />}
       {error && (
         <ErrorContent
