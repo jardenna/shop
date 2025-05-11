@@ -92,7 +92,6 @@ const checkScheduled = asyncHandler(async (req, res) => {
 // @access  Public
 const getCategoryById = asyncHandler(async (req, res) => {
   const category = await Category.findById(req.params.id).lean();
-  console.log(req.lang);
 
   if (!category) {
     return res
