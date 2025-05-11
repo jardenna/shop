@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from 'react-router';
 import CategoryCard from '../../components/adminCard/CategoryCard';
+import ErrorContent from '../../components/ErrorContent';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import SkeletonPage from '../../components/skeleton/SkeletonPage';
 import useLanguage from '../../features/language/useLanguage';
@@ -8,6 +9,7 @@ import {
   useGetSubCategoryByIdQuery,
 } from '../../features/subCategories/subCategoryApiSlice';
 import { MainPath } from '../../layout/nav/enums';
+import { getErrorMessage } from '../../utils/utils';
 import PageContainer from '../PageContainer';
 
 const ViewSubCategoryPage = () => {
@@ -25,6 +27,9 @@ const ViewSubCategoryPage = () => {
 
   const { onAddMessagePopup } = useMessagePopup();
   const [deleteSubCategory] = useDeleteSubCategoryMutation();
+  const handleGoback = () => {
+    void navigate(-1);
+  };
 
   const handleDeleteSubCategory = async () => {
     try {
@@ -54,8 +59,12 @@ const ViewSubCategoryPage = () => {
 
   return (
     <article className="page page-medium">
-      {error && 'data' in error && (
-        <div>{(error.data as { message: string }).message}</div>
+      {error && (
+        <ErrorContent
+          onClick={handleGoback}
+          errorText={getErrorMessage(error)}
+          btnLabel={language.goBack}
+        />
       )}
       {isLoading && <SkeletonPage />}
       {category && (
