@@ -1,9 +1,10 @@
+/* stylelint-disable no-descending-specificity */
 @use '../../scss/globals' as *;
 
 .skeleton {
   background-color: $color-gray-40;
   width: 100%;
-  border-radius: 4px;
+  border-radius: 8px;
   display: flex;
 
   &.skeleton-img {
@@ -51,4 +52,23 @@
   display: flex;
   gap: 8px;
   justify-content: flex-end;
+}
+
+.skeleton-paragraph {
+  display: flex;
+  gap: 6px;
+  flex-direction: column;
+  width: 100%;
+
+  .skeleton {
+    &:last-child {
+      max-width: 85%;
+    }
+  }
+}
+
+.skeleton-badge {
+  .skeleton {
+    border-radius: 50px;
+  }
 }
