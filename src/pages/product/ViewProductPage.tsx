@@ -86,7 +86,6 @@ const ViewProductPage = () => {
           onClick={handleGoback}
           errorText={getErrorMessage(error)}
           btnLabel={language.goBack}
-          className="error-boundary"
         />
       )}
       {product && (

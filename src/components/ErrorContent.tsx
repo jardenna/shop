@@ -6,19 +6,14 @@ import Img from './Img';
 type ErrorContentProps = {
   btnLabel: string;
   errorText: string;
-  className?: string;
+
   onClick: () => void;
 };
 
-const ErrorContent = ({
-  onClick,
-  errorText,
-  btnLabel,
-  className = '',
-}: ErrorContentProps) => {
+const ErrorContent = ({ onClick, errorText, btnLabel }: ErrorContentProps) => {
   const { language } = useLanguage();
   return (
-    <section className={`error ${className}`}>
+    <section className="error">
       <Img
         className="emoji"
         src="/images/sad_smiley.png"
