@@ -203,12 +203,16 @@ const ProductForm = ({
       });
     }
   }
+  const handleGoback = () => {
+    navigate(-1);
+  };
 
   return (
     <Form
       onSubmit={onSubmit}
       submitBtnLabel={id ? language.save : language.create}
       ref={formRef}
+      onCancel={handleGoback}
     >
       <div className="flex align-items-start">
         <div className="flex-2">

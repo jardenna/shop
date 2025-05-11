@@ -109,10 +109,15 @@ const SubCategoryForm = ({
     }
   }
 
+  const handleGoback = () => {
+    navigate(-1);
+  };
+
   return (
     <Form
       onSubmit={onSubmit}
       submitBtnLabel={id ? language.save : language.create}
+      onCancel={handleGoback}
     >
       <FieldSet legendText={language.categories} hideLegendText>
         <Selectbox

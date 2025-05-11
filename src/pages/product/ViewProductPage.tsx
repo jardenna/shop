@@ -75,7 +75,7 @@ const ViewProductPage = () => {
   const statusMessage = `${language.categoryIs} ${subCategoryStatus}`;
 
   const handleGoback = () => {
-    void navigate(-1);
+    navigate(-1);
   };
 
   return (
