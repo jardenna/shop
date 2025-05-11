@@ -3,6 +3,7 @@ import { ProductSizes } from '../../app/api/apiTypes';
 import ProductCardCenter from '../../components/adminCard/ProductCardCenter';
 import ProductCardLeft from '../../components/adminCard/ProductCardLeft';
 import CardRight from '../../components/card/CardRight';
+import ErrorContent from '../../components/ErrorContent';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import SkeletonPage from '../../components/skeleton/SkeletonPage';
 import useLanguage from '../../features/language/useLanguage';
@@ -12,6 +13,7 @@ import {
 } from '../../features/products/productApiSlice';
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
+import { getErrorMessage } from '../../utils/utils';
 import PageContainer from '../PageContainer';
 
 export const sizeList: ProductSizes[] = ['S', 'M', 'L', 'XL'];
@@ -72,11 +74,20 @@ const ViewProductPage = () => {
 
   const statusMessage = `${language.categoryIs} ${subCategoryStatus}`;
 
+  const handleGoback = () => {
+    void navigate(-1);
+  };
+
   return (
     <article className="page">
       {isLoading && <SkeletonPage />}
-      {error && 'data' in error && (
-        <div>{(error.data as { message: string }).message}</div>
+      {error && (
+        <ErrorContent
+          onClick={handleGoback}
+          errorText={getErrorMessage(error)}
+          btnLabel={language.goBack}
+          className="error-boundary"
+        />
       )}
       {product && (
         <PageContainer
@@ -98,7 +109,6 @@ const ViewProductPage = () => {
               images={product.images}
               onReset={() => refetch}
             />
-
             <ProductCardCenter
               brand={product.brand}
               colours={product.colors}
@@ -108,7 +118,6 @@ const ViewProductPage = () => {
               sizes={product.sizes}
               onReset={() => refetch}
             />
-
             <CardRight
               linkTo={`/admin/${MainPath.AdminSubCategories}`}
               createdAt={product.createdAt}

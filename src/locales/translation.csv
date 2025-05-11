@@ -222,6 +222,7 @@ updatedAt;Updated at;Opdateret
 updatePreferences;Update Preferences;Opdater præferencer
 updateProduct;Update product;Opdater produkt
 updateSubCategory;Update subcategory;Opdater underkategori
+unknownError;Unknown error;Ukendt fejl
 user;User;Bruger
 userAlreadyExist;A profile with this email already exists. Try logging in instead;Der findes en profil med denne e-mail. Prøv at logge ind i stedet
 userDeleted;User deleted;Bruger slettet

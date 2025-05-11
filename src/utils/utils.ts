@@ -1,3 +1,5 @@
+import { ValidationMessage } from '../types/enums';
+
 const oneDay = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
 const currencyCacheKey = 'exchangeRates';
 
@@ -9,4 +11,25 @@ const discountCalculation = (price: number, discount: number) => {
   return price - discountPrice;
 };
 
-export { currencyCacheKey, discountCalculation, formatNumber, oneDay };
+const getErrorMessage = (error: unknown): string => {
+  if (
+    error &&
+    typeof error === 'object' &&
+    'data' in error &&
+    error.data &&
+    typeof error.data === 'object' &&
+    'message' in error.data
+  ) {
+    return (error.data as { message: string }).message;
+  }
+
+  return ValidationMessage.UnknownError;
+};
+
+export {
+  currencyCacheKey,
+  discountCalculation,
+  formatNumber,
+  getErrorMessage,
+  oneDay,
+};
