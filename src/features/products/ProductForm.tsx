@@ -210,7 +210,7 @@ const ProductForm = ({
       submitBtnLabel={id ? language.save : language.create}
       ref={formRef}
     >
-      <div className="flex flex-align-start">
+      <div className="flex align-items-start">
         <div className="flex-2">
           <section className="form-card">
             <FieldSet legendText={language.productImages}>

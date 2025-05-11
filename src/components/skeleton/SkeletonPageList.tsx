@@ -1,11 +1,11 @@
 import Skeleton from './Skeleton';
 import SkeletonBadge from './SkeletonBadge';
 import SkeletonList from './SkeletonList';
+import SkeletonListGrid from './SkeletonListGrid';
 import SkeletonParagraph from './SkeletonParagraph';
 
 const SkeletonPageList = () => (
   <div className="page-card">
-    <span className="card-top-line" />
     <div className="flex">
       <div className="page-card flex-1">
         <div className="flex column">
@@ -18,9 +18,13 @@ const SkeletonPageList = () => (
           <SkeletonList count={2} height="3.5" />
         </div>
       </div>
-      <div className="page-card flex-1">Center</div>
+      <div className="flex column page-card flex-1">
+        <SkeletonListGrid />
+        <Skeleton width="5" height=".75" />
+        <SkeletonList width="2" height="2" count={4} />
+      </div>
       <div className="page-card flex-1" style={{ maxWidth: '25rem' }}>
-        Right
+        <span className="skeleton" style={{ width: '100%', height: '100%' }} />
       </div>
     </div>
   </div>
