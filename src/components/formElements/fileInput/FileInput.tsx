@@ -43,7 +43,7 @@ const FileInput = ({
           />
           <span className="file-info">
             <span>
-              <strong>{language.filesSuported}: </strong> JPEG/JPG/PNG/WEBP/GIF
+              <strong>{language.filesSuported}: </strong>JPEG/JPG/PNG/WEBP/GIF
             </span>
             <span>
               <strong>{language.maximumFileSize}: </strong>1MB
