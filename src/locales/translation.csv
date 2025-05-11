@@ -113,6 +113,7 @@ logout;Log out;Log ud
 main;Main;Primær
 material;Material;Materiale
 materialRequired;Please insert material;Indsæt venligst materiale
+maximumFileSize;Maximum file size;Maksimal filstørrelse
 menu;Menu;Menu
 minLength;At least 8 characters;Mindst 8 tegn
 multiColor;MultiColor;Flerfarvet

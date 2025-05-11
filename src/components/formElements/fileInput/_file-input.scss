@@ -18,6 +18,13 @@
     padding: 20px;
   }
 
+  .file-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: rem(12px);
+  }
+
   .error-message {
     position: absolute;
     top: -20px;

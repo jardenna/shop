@@ -10,7 +10,6 @@ type FileInputProps = PreviewProps & {
   id: string;
   name: FileName;
   errorText?: string;
-  inputHasNoLabel?: boolean;
   multiple?: boolean;
   required?: boolean;
   onChange: (event: ChangeInputType) => void;
@@ -26,7 +25,6 @@ const FileInput = ({
   ariaLabel,
   title,
   previewData,
-  inputHasNoLabel,
   errorText,
 }: FileInputProps) => {
   const { language } = useLanguage();
@@ -34,16 +32,24 @@ const FileInput = ({
   return (
     <div>
       <div className="file-container">
-        <FormLabel
-          required={required}
-          labelText={language.browseImages}
-          id="images"
-          inputHasNoLabel={inputHasNoLabel}
-          errorText={errorText}
-          className="file-upload-label"
-          iconName={IconName.Upload}
-        />
-
+        <div>
+          <FormLabel
+            required={required}
+            labelText={language.browseImages}
+            id="images"
+            errorText={errorText}
+            className="file-upload-label"
+            iconName={IconName.Upload}
+          />
+          <span className="file-info">
+            <span>
+              <strong>{language.filesSuported}: </strong> JPEG/JPG/PNG/WEBP/GIF
+            </span>
+            <span>
+              <strong>{language.maximumFileSize}: </strong>1MB
+            </span>
+          </span>
+        </div>
         <input
           type="file"
           onChange={onChange}
@@ -65,9 +71,6 @@ const FileInput = ({
           />
         )}
       </div>
-      <span className="text-italic">
-        {language.filesSuported}: JPEG, JPG, PNG, WEBP, GIF
-      </span>
     </div>
   );
 };
