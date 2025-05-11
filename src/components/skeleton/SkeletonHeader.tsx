@@ -1,9 +1,13 @@
 import Skeleton from './Skeleton';
 
-const SkeletonHeader = () => (
+type SkeletonHeaderProps = {
+  hideLink?: boolean;
+};
+
+const SkeletonHeader = ({ hideLink }: SkeletonHeaderProps) => (
   <div className="skeleton-header">
-    <Skeleton width="16" height="3" />
-    <Skeleton width="12" height="1" />
+    <Skeleton width="20" height="3" />
+    {!hideLink && <Skeleton width="12" height="1" />}
   </div>
 );
 

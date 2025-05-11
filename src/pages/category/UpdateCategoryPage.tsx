@@ -24,6 +24,7 @@ const UpdateCategoryPage = () => {
 
   return (
     <article className="page page-small">
+      <SkeletonPage />
       {isLoading && <SkeletonPage />}
       {error && (
         <ErrorContent

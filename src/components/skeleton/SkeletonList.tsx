@@ -3,7 +3,7 @@ import Skeleton, { SkeletonProps } from './Skeleton';
 const SkeletonList = ({
   count = 2,
   width,
-  height,
+  height = '3.5',
   className = '',
   variant,
 }: SkeletonProps) => {

@@ -6,7 +6,7 @@ const SkeletonInput = ({ count = 3, className = '' }: SkeletonProps) => {
     <span className={`skeleton-input-container ${className}`}>
       {skeletons.map((_, index) => (
         <div key={index} className="skeleton-input">
-          <Skeleton height="1" width="16" />
+          <Skeleton height="1.3" width="14" />
           <Skeleton height="4" />
         </div>
       ))}
