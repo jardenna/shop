@@ -12,6 +12,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+}
+
+.skeleton-input-container {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.skeleton-input {
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
 }
 
 .skeleton {

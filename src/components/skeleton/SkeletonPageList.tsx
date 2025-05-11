@@ -1,15 +1,13 @@
 import Skeleton from './Skeleton';
 import SkeletonBadge from './SkeletonBadge';
+import SkeletonHeader from './SkeletonHeader';
 import SkeletonList from './SkeletonList';
 import SkeletonListGrid from './SkeletonListGrid';
 import SkeletonParagraph from './SkeletonParagraph';
 
 const SkeletonPageList = () => (
   <div className="skeleton-page-list">
-    <div className="skeleton-header">
-      <Skeleton width="16" height="3" className="skeleton-headline" />
-      <Skeleton width="12" height="1" className="skeleton-headline" />
-    </div>
+    <SkeletonHeader />
     <div className="page-card">
       <div className="flex">
         <div className="page-card flex-1">
