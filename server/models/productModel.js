@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { STATUS } from '../config/constants.js';
 const { ObjectId } = mongoose.Schema;
 
 const reviewSchema = new mongoose.Schema(
@@ -35,7 +36,7 @@ const productSchema = new mongoose.Schema(
     },
     productStatus: {
       type: String,
-      enum: ['Published', 'Inactive', 'Scheduled'],
+      enum: STATUS,
       default: 'Inactive',
     },
     scheduledDate: {
