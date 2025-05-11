@@ -1,6 +1,19 @@
 /* stylelint-disable no-descending-specificity */
 @use '../../scss/globals' as *;
 
+.skeleton-page-list {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+}
+
+.skeleton-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .skeleton {
   background-color: $color-gray-40;
   width: 100%;
@@ -8,7 +21,8 @@
   display: flex;
 
   &.skeleton-img {
-    height: rem(428px);
+    height: 8rem;
+    width: 12rem;
   }
 
   &.skeleton-primary {

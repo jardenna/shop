@@ -5,7 +5,7 @@ import ProductCardLeft from '../../components/adminCard/ProductCardLeft';
 import CardRight from '../../components/card/CardRight';
 import ErrorContent from '../../components/ErrorContent';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-import SkeletonPage from '../../components/skeleton/SkeletonPage';
+import SkeletonPageList from '../../components/skeleton/SkeletonPageList';
 import useLanguage from '../../features/language/useLanguage';
 import {
   useDeleteProductMutation,
@@ -15,7 +15,6 @@ import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
 import { getErrorMessage } from '../../utils/utils';
 import PageContainer from '../PageContainer';
-import SkeletonPageList from '../../components/skeleton/SkeletonPageList';
 
 export const sizeList: ProductSizes[] = ['S', 'M', 'L', 'XL'];
 
@@ -81,8 +80,7 @@ const ViewProductPage = () => {
 
   return (
     <article className="page">
-      <SkeletonPageList />
-      {isLoading && <SkeletonPage />}
+      {isLoading && <SkeletonPageList />}
       {error && (
         <ErrorContent
           onClick={handleGoback}
