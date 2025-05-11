@@ -1,7 +1,7 @@
 import multer from 'multer';
 import path from 'path';
-import { maxFileSize } from '../utils/constants.js';
 import { t } from '../utils/translator.js';
+import { maxFileSize } from './constants.js';
 
 const storage = multer.diskStorage({
   destination: './public/images/uploads',
