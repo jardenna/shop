@@ -82,36 +82,34 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
   }
 
   return (
-    <div className="page-card">
-      <Form
-        className="category-form"
-        onSubmit={onSubmit}
-        submitBtnLabel={id ? language.save : language.create}
-      >
-        <FieldSet legendText={language.categories} hideLegendText>
-          <SharedCategoryInputs
-            labelText={language.categoryStatus}
-            onCategoryNameChange={onChange}
-            categoryNamevalue={values.categoryName}
-            categoryNameId="categoryName"
-            defaultStatusValue={{
-              label: language[values.categoryStatus.toLowerCase()],
-              value: values.categoryStatus,
-            }}
-            onSelectStatus={(selectedOptions: OptionType) => {
-              handleSelectStatus('categoryStatus', selectedOptions);
-            }}
-            status={values.categoryStatus}
-            onSelectDate={handleDaySelect}
-            selectedDate={selectedDate}
-            timeValue={timeValue}
-            onTimeChange={handleTimeChange}
-            categoryNameErrorText={language[errors.categoryName]}
-            categoryNameLabelText={language.categoryName}
-          />
-        </FieldSet>
-      </Form>
-    </div>
+    <Form
+      className="category-form"
+      onSubmit={onSubmit}
+      submitBtnLabel={id ? language.save : language.create}
+    >
+      <FieldSet legendText={language.categories} hideLegendText>
+        <SharedCategoryInputs
+          labelText={language.categoryStatus}
+          onCategoryNameChange={onChange}
+          categoryNamevalue={values.categoryName}
+          categoryNameId="categoryName"
+          defaultStatusValue={{
+            label: language[values.categoryStatus.toLowerCase()],
+            value: values.categoryStatus,
+          }}
+          onSelectStatus={(selectedOptions: OptionType) => {
+            handleSelectStatus('categoryStatus', selectedOptions);
+          }}
+          status={values.categoryStatus}
+          onSelectDate={handleDaySelect}
+          selectedDate={selectedDate}
+          timeValue={timeValue}
+          onTimeChange={handleTimeChange}
+          categoryNameErrorText={language[errors.categoryName]}
+          categoryNameLabelText={language.categoryName}
+        />
+      </FieldSet>
+    </Form>
   );
 };
 

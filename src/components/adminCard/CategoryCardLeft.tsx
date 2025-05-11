@@ -8,6 +8,7 @@ import AdminCard from './types';
 type CategoryCardLeftProps = AdminCard & {
   status: Status;
   totalProducts: number;
+  onReset: () => void;
 };
 
 const CategoryCardLeft = ({
@@ -18,11 +19,12 @@ const CategoryCardLeft = ({
   linkTo,
   id,
   primaryActionBtn,
+  onReset,
 }: CategoryCardLeftProps) => {
   const { language } = useLanguage();
 
   return (
-    <CardContent className="left" heading={null}>
+    <CardContent className="left" heading={null} onReset={onReset}>
       <div className="position-relative">
         <h2 className="admin-card-title">{name}</h2>
         <Badge
@@ -33,7 +35,6 @@ const CategoryCardLeft = ({
           {language.totalProducts}: {totalProducts}
         </span>
       </div>
-
       <CardFooter
         id={id}
         primaryActionBtn={primaryActionBtn}

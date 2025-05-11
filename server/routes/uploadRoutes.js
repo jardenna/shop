@@ -1,60 +1,43 @@
 import express from 'express';
-import multer from 'multer';
-import path from 'path';
+import { upload } from '../config/multerConfig.js';
+import {
+  authenticate,
+  authorizeEmployee,
+} from '../middleware/authMiddleware.js';
+import languageMiddleware from '../middleware/languageMiddleware.js';
 import { t } from '../utils/translator.js';
 
 const router = express.Router();
 
-const storage = multer.diskStorage({
-  destination: './public/images/uploads',
-  filename: function (req, file, cb) {
-    cb(
-      null,
-      file.fieldname + '-' + Date.now() + path.extname(file.originalname),
-    );
+router.post(
+  '/',
+  languageMiddleware,
+  authenticate,
+  authorizeEmployee,
+  (req, res) => {
+    upload.array('images', 5)(req, res, (err) => {
+      // '5' is the max files limit
+
+      if (err && err.code === 'LIMIT_FILE_SIZE') {
+        return res.status(400).send({
+          message: t('fileExceedsSize', req.lang),
+        });
+      }
+
+      if (err) {
+        res.status(400).send({ message: err.message });
+      } else if (req.files) {
+        const filePaths = req.files.map((file) => `/${file.path}`);
+        res.status(200).send({
+          success: true,
+          message: 'Images uploaded successfully',
+          images: filePaths,
+        });
+      } else {
+        res.status(400).send({ message: 'No image files provided' });
+      }
+    });
   },
-});
-
-const fileFilter = (req, file, cb) => {
-  const filetypes = /jpeg|jpg|png|webp|gif/;
-  const mimetypes = /image\/jpe?g|image\/png|image\/webp/;
-  const extname = path.extname(file.originalname).toLowerCase();
-  const mimetype = file.mimetype;
-
-  const fileName = file.originalname;
-  const splitFileName = fileName.split('.')[1];
-
-  if (filetypes.test(extname) && mimetypes.test(mimetype)) {
-    cb(null, true);
-  } else {
-    return cb(
-      new Error(
-        `${splitFileName} ${t('unsupportedFile', req.lang)} . 
-        ${t('allowedFormats', req.lang)}: JPEG, JPG, PNG, WEBP, GIF.`,
-      ),
-    );
-  }
-};
-
-const fileSize = 1 * 1000 * 1000;
-const upload = multer({ storage, fileFilter, limits: { fileSize } });
-
-router.post('/', (req, res) => {
-  upload.array('images', 5)(req, res, (err) => {
-    // '5' er max files limit
-    if (err) {
-      res.status(400).send({ message: err.message });
-    } else if (req.files) {
-      const filePaths = req.files.map((file) => `/${file.path}`);
-      res.status(200).send({
-        success: true,
-        message: 'Images uploaded successfully',
-        images: filePaths,
-      });
-    } else {
-      res.status(400).send({ message: 'No image files provided' });
-    }
-  });
-});
+);
 
 export default router;

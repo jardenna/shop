@@ -13,7 +13,6 @@ const ErrorBoundaryFallback = ({ resetErrorBoundary }: FallbackProps) => {
       onClick={resetErrorBoundary}
       errorText={language.somethingWentWrong}
       btnLabel={language.retry}
-      className="error-boundary"
     />
   );
 };

@@ -11,6 +11,7 @@ type ProductCardLeftProps = AdminCard & {
   description: string;
   images: string[];
   status: Status;
+  onReset: () => void;
 };
 
 const ProductCardLeft = ({
@@ -23,11 +24,12 @@ const ProductCardLeft = ({
   description,
   primaryActionBtn,
   images,
+  onReset,
 }: ProductCardLeftProps) => {
   const { language } = useLanguage();
 
   return (
-    <CardContent className="left" heading={null}>
+    <CardContent className="left" heading={null} onReset={onReset}>
       <ul className="product-img-list">
         {images.map((url) => (
           <li key={url}>

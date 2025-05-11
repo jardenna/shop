@@ -1,12 +1,10 @@
-import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate, useParams } from 'react-router';
 import { ProductSizes } from '../../app/api/apiTypes';
 import ProductCardCenter from '../../components/adminCard/ProductCardCenter';
 import ProductCardLeft from '../../components/adminCard/ProductCardLeft';
 import CardRight from '../../components/card/CardRight';
-import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
+import ErrorContent from '../../components/ErrorContent';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-import PageHeader from '../../components/PageHeader';
 import SkeletonPage from '../../components/skeleton/SkeletonPage';
 import useLanguage from '../../features/language/useLanguage';
 import {
@@ -15,6 +13,8 @@ import {
 } from '../../features/products/productApiSlice';
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
+import { getErrorMessage } from '../../utils/utils';
+import PageContainer from '../PageContainer';
 
 export const sizeList: ProductSizes[] = ['S', 'M', 'L', 'XL'];
 
@@ -29,6 +29,7 @@ const ViewProductPage = () => {
     data: product,
     isLoading,
     refetch,
+    error,
   } = useGetProductByIdQuery(params.id || '');
   const { onAddMessagePopup } = useMessagePopup();
 
@@ -73,69 +74,64 @@ const ViewProductPage = () => {
 
   const statusMessage = `${language.categoryIs} ${subCategoryStatus}`;
 
+  const handleGoback = () => {
+    void navigate(-1);
+  };
+
   return (
-    <section className="page">
+    <article className="page">
       {isLoading && <SkeletonPage />}
+      {error && (
+        <ErrorContent
+          onClick={handleGoback}
+          errorText={getErrorMessage(error)}
+          btnLabel={language.goBack}
+        />
+      )}
       {product && (
-        <PageHeader
+        <PageContainer
           heading={product.productName}
           linkText={language.createNewProduct}
           linkTo={`/admin/${MainPath.AdminProductCreate}`}
-        />
-      )}
-      <div className="page-card">
-        {product && (
+          onReset={() => refetch}
+        >
           <article className="admin-card-container">
-            <ErrorBoundary
-              FallbackComponent={ErrorBoundaryFallback}
+            <ProductCardLeft
+              id={product.id}
+              primaryActionBtn={primaryActionBtn}
+              linkTo={`/admin/${MainPath.AdminProductUpdate}/${params.id}`}
+              name={product.productName}
+              scheduledDate={product.scheduledDate || null}
+              status={product.productStatus}
+              countInStock={product.countInStock}
+              description={product.description}
+              images={product.images}
               onReset={() => refetch}
-            >
-              <ProductCardLeft
-                id={product.id}
-                primaryActionBtn={primaryActionBtn}
-                linkTo={`/admin/${MainPath.AdminProductUpdate}/${params.id}`}
-                name={product.productName}
-                scheduledDate={product.scheduledDate || null}
-                status={product.productStatus}
-                countInStock={product.countInStock}
-                description={product.description}
-                images={product.images}
-              />
-            </ErrorBoundary>
-
-            <ErrorBoundary
-              FallbackComponent={ErrorBoundaryFallback}
+            />
+            <ProductCardCenter
+              brand={product.brand}
+              colours={product.colors}
+              discount={product.discount || 0}
+              material={product.material}
+              price={product.price}
+              sizes={product.sizes}
               onReset={() => refetch}
-            >
-              <ProductCardCenter
-                brand={product.brand}
-                colours={product.colors}
-                discount={product.discount || 0}
-                material={product.material}
-                price={product.price}
-                sizes={product.sizes}
-              />
-            </ErrorBoundary>
-
-            <ErrorBoundary
-              FallbackComponent={ErrorBoundaryFallback}
+            />
+            <CardRight
+              linkTo={`/admin/${MainPath.AdminSubCategories}`}
+              createdAt={product.createdAt}
+              heading={heading}
               onReset={() => refetch}
-            >
-              <CardRight
-                linkTo={`/admin/${MainPath.AdminSubCategories}`}
-                createdAt={product.createdAt}
-                heading={heading}
-                name={product.productName}
-                showStatusMessage={
-                  product.subCategory.categoryStatus !== 'Published'
-                }
-                statusMessage={statusMessage}
-              />
-            </ErrorBoundary>
+              name={product.productName}
+              showStatusMessage={
+                product.subCategory.categoryStatus !== 'Published'
+              }
+              statusMessage={statusMessage}
+            />
           </article>
-        )}
-      </div>
-    </section>
+        </PageContainer>
+      )}
+    </article>
   );
 };
 

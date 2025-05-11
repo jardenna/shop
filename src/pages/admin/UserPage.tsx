@@ -4,7 +4,6 @@ import validateUpdateUser from '../../components/formElements/validation/validat
 import IconContent from '../../components/IconContent';
 import Icon from '../../components/icons/Icon';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-import PageHeader from '../../components/PageHeader';
 import Table from '../../components/sortTable/Table';
 import EditUserInput from '../../features/admin/users/EditUserInput';
 import {
@@ -14,7 +13,9 @@ import {
 } from '../../features/admin/users/usersApiSlice';
 import useLanguage from '../../features/language/useLanguage';
 import useTableEditField from '../../hooks/useTableEditField';
+import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant, IconName } from '../../types/enums';
+import PageContainer from '../PageContainer';
 
 const tableHeaders: { key: keyof UserResponse; label: string; name: string }[] =
   [
@@ -99,8 +100,12 @@ const UserPage = () => {
 
   return (
     <article className="page page-medium">
-      <PageHeader heading={language.users} />
-      <div className="page-card">
+      <PageContainer
+        heading={language.users}
+        linkText={language.createNewUser}
+        linkTo={`/admin/${MainPath.AdminSubCategoryCreate}`}
+        onReset={() => refetch}
+      >
         <Table
           onReset={() => refetch}
           data={allUsers || []}
@@ -172,7 +177,7 @@ const UserPage = () => {
             ))
           }
         </Table>
-      </div>
+      </PageContainer>
     </article>
   );
 };

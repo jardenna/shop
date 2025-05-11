@@ -1,5 +1,4 @@
 import useLanguage from '../../features/language/useLanguage';
-import { MainPath } from '../../layout/nav/enums';
 import LinkButton from '../LinkButton';
 import CardContent from './CardContent';
 import CardDate from './CardDate';
@@ -7,10 +6,11 @@ import CardDate from './CardDate';
 type CardRightProps = {
   createdAt: Date;
   heading: string;
-  linkTo: MainPath | string;
+  linkTo: string;
   name: string;
   showStatusMessage: boolean;
   statusMessage: string;
+  onReset: () => void;
 };
 
 const CardRight = ({
@@ -20,11 +20,12 @@ const CardRight = ({
   name,
   showStatusMessage,
   statusMessage,
+  onReset,
 }: CardRightProps) => {
   const { language } = useLanguage();
 
   return (
-    <CardContent className="right" heading={heading}>
+    <CardContent className="right" heading={heading} onReset={onReset}>
       {showStatusMessage && (
         <div>
           <h3>{statusMessage}</h3>

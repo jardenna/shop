@@ -15,6 +15,7 @@ type ProductCardCenterProps = {
   material: string;
   price: number;
   sizes: ProductSizes[];
+  onReset: () => void;
 };
 
 const ProductCardCenter = ({
@@ -24,13 +25,14 @@ const ProductCardCenter = ({
   material,
   price,
   sizes,
+  onReset,
 }: ProductCardCenterProps) => {
   const { language } = useLanguage();
 
   const newPrice = discountCalculation(price, discount);
 
   return (
-    <CardContent heading={null} className="center">
+    <CardContent heading={null} onReset={onReset}>
       <span className="separator" />
       <div className="product-list-container">
         <GridTwoCol>

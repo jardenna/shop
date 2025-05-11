@@ -27,6 +27,7 @@ categoryIs;Category is;Kategori er
 categoryList;Category list;Kategori-liste
 categoryName;Category name;Kategori navn
 categoryNotFound;Category not found;Kategorien findes ikke
+categoryRequired;Please select a category;Vælg venligst kategori
 categoryStatus;Category status;Kategori status
 categoryUpdated;Category updated;Kategori opdateret
 circelChevronRight;Circel chevronRight;Circel chevronRight
@@ -37,16 +38,17 @@ closeDialog;Close dialog;Luk dialog
 collapseMenu;Collapse menu;Skjul menu
 collection;Collection;Kollektion
 colorRequired;Please select at least one color;Vælg mindst 1 farve
-categoryRequired;Please select a category;Vælg venligst kategori
 colours;Colours;Farver
 confirmPassword;Confirm password;Gentag adgangskode
 contact;Contact;Kontakt
+couldNotFindInfo;Sorry, We couldn’t find the information you’re looking for;Vi kunne desværre ikke finde den information, du søger
 create;Create;Tilføj
 createAccount;Create account;Opret konto
 created;Created;Tilføjet
 createdAt;Created at;Tilføjet den
 createNewCategory;Create new category;Opret ny kategori
 createNewProduct;Create new product;Opret nyt produkt
+createNewUser;Create new user;Opret ny bruger
 criterionMet;Criterion met;Kriterium opfyldt
 criterionNotMet;Criterion not met;Kriterium ikke opfyldt
 currency;Currency;Valuta
@@ -57,7 +59,7 @@ date;Date;Dato
 delete;Delete;Slet
 deleteCategory;Delete category;Slet kategori
 deleted;deleted;slettet
-deleteOrReassignCategory;Delete or reassign associated  products before deleting this category;Slet eller tildel produkter på ny, før du sletter denne kategori
+deleteOrReassignCategory;Delete or reassign associated products before deleting this category;Slet eller tildel produkter på ny, før du sletter denne kategori
 deleteUser;Delete user;Slet bruger
 desc;descending;faldende
 description;Description;Beskrivelse
@@ -74,6 +76,7 @@ errorAltText;A really guilty emoji;En meget skyldig emoji
 expandMenu;Expand menu;Udvid menu
 eye;Eye;Øje
 eyeClosed;Closed eye;Lukket øje
+fileExceedsSize;The selected file exceeds the 1MB limit; Den valgte fil overstiger grænsen på 1 MB. Upload venligst en mindre fil
 filesSuported;Files suported;Tilladte filer
 fillAll;Please fill all inputs;Udfyld venligst alle felter
 filter;Filter;Filtrer
@@ -110,6 +113,7 @@ logout;Log out;Log ud
 main;Main;Primær
 material;Material;Materiale
 materialRequired;Please insert material;Indsæt venligst materiale
+maximumFileSize;Maximum file size;Maksimal filstørrelse
 menu;Menu;Menu
 minLength;At least 8 characters;Mindst 8 tegn
 multiColor;MultiColor;Flerfarvet
@@ -218,6 +222,7 @@ updatedAt;Updated at;Opdateret
 updatePreferences;Update Preferences;Opdater præferencer
 updateProduct;Update product;Opdater produkt
 updateSubCategory;Update subcategory;Opdater underkategori
+unknownError;Unknown error;Ukendt fejl
 user;User;Bruger
 userAlreadyExist;A profile with this email already exists. Try logging in instead;Der findes en profil med denne e-mail. Prøv at logge ind i stedet
 userDeleted;User deleted;Bruger slettet

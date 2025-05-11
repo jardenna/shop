@@ -22,6 +22,7 @@ export enum ValidationMessage {
   ProductDescriptionRequired = 'productDescriptionRequired',
   ProductNameRequired = 'productNameRequired',
   SizeRequired = 'sizeRequired',
+  UnknownError = 'unknownError',
 }
 
 export enum PopupRole {

@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { ALLOWED_ROLES } from '../utils/constants.js';
+import { ALLOWED_ROLES } from '../config/constants.js';
 
 const UserSchema = new mongoose.Schema(
   {

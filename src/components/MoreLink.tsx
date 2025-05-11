@@ -1,12 +1,11 @@
 import { Link } from 'react-router';
 import useLanguage from '../features/language/useLanguage';
-import { MainPath } from '../layout/nav/enums';
 import { IconName } from '../types/enums';
 import Icon from './icons/Icon';
 
 type MoreLinkProps = {
   linkText: string;
-  linkTo: MainPath | string;
+  linkTo: string;
 };
 
 const MoreLink = ({ linkText, linkTo }: MoreLinkProps) => {

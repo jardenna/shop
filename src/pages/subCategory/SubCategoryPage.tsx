@@ -1,5 +1,4 @@
 import { SubCategoryResponse } from '../../app/api/apiTypes';
-import PageHeader from '../../components/PageHeader';
 import Table from '../../components/sortTable/Table';
 import useLanguage from '../../features/language/useLanguage';
 import {
@@ -8,6 +7,7 @@ import {
 } from '../../features/subCategories/subCategoryApiSlice';
 import { MainPath } from '../../layout/nav/enums';
 import { oneDay } from '../../utils/utils';
+import PageContainer from '../PageContainer';
 import SubCategoryTableRows from './SubCategoryTableRows';
 
 const tableHeaders: {
@@ -54,12 +54,12 @@ const SubCategoryPage = () => {
 
   return (
     <article className="page page-medium">
-      <PageHeader
+      <PageContainer
         heading={language.subCategories}
         linkText={language.createNewCategory}
         linkTo={`/admin/${MainPath.AdminSubCategoryCreate}`}
-      />
-      <div className="page-card">
+        onReset={() => refetch}
+      >
         <Table
           onReset={() => refetch}
           data={allSubcategories?.subCategories || []}
@@ -91,7 +91,7 @@ const SubCategoryPage = () => {
             )
           }
         </Table>
-      </div>
+      </PageContainer>
     </article>
   );
 };

@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { STATUS } from '../config/constants.js';
 
 const CategorySchema = new mongoose.Schema(
   {
@@ -12,7 +13,7 @@ const CategorySchema = new mongoose.Schema(
     },
     categoryStatus: {
       type: String,
-      enum: ['Published', 'Inactive', 'Scheduled'],
+      enum: STATUS,
       default: 'Inactive',
     },
     scheduledDate: {

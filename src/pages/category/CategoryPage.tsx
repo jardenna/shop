@@ -1,5 +1,4 @@
 import { Category } from '../../app/api/apiTypes';
-import PageHeader from '../../components/PageHeader';
 import Table from '../../components/sortTable/Table';
 import {
   useGetAllCategoriesQuery,
@@ -8,6 +7,7 @@ import {
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
 import { oneDay } from '../../utils/utils';
+import PageContainer from '../PageContainer';
 import CategoryTableRow from './CategoryTableRow';
 
 const tableHeaders: { key: keyof Category; label: string; name: string }[] = [
@@ -40,13 +40,12 @@ const CategoryPage = () => {
 
   return (
     <article className="page page-medium">
-      <PageHeader
+      <PageContainer
         heading={language.categories}
         linkText={language.createNewCategory}
         linkTo={`/admin/${MainPath.AdminCategoryCreate}`}
-      />
-
-      <div className="page-card">
+        onReset={() => refetch}
+      >
         <Table
           onReset={() => refetch}
           data={allCategories?.categories || []}
@@ -76,7 +75,7 @@ const CategoryPage = () => {
             )
           }
         </Table>
-      </div>
+      </PageContainer>
     </article>
   );
 };
