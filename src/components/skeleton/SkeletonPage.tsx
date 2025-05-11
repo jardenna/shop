@@ -4,14 +4,15 @@ import SkeletonList from './SkeletonList';
 
 type SkeletonPageProps = {
   className?: string;
+  count?: number;
 };
 
-const SkeletonPage = ({ className = '' }: SkeletonPageProps) => (
+const SkeletonPage = ({ className = '', count = 2 }: SkeletonPageProps) => (
   <div className="skeleton-column">
     <SkeletonHeader hideLink />
     <div className="page-card">
       <div className={`skeleton-page skeleton-column  ${className}`}>
-        <SkeletonInput count={2} />
+        <SkeletonInput count={count} />
         <SkeletonList />
       </div>
     </div>
