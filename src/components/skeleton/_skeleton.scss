@@ -32,7 +32,14 @@
 }
 
 .skeleton {
-  background-color: $color-gray-40;
+  animation: shimmer 1.5s infinite linear;
+  background: linear-gradient(
+    90deg,
+    $color-light-gray-30 25%,
+    $color-light-gray-40 50%,
+    $color-light-gray-30 75%
+  );
+  background-size: 200% 100%;
   width: 100%;
   border-radius: 8px;
   display: flex;
@@ -49,12 +56,16 @@
   &.skeleton-secondary {
     height: rem(44px);
   }
+}
 
-  @include animation(
-    skeleton-animation,
-    $duration: 1.2s,
-    $timing: linear infinite alternate
-  );
+@keyframes shimmer {
+  0% {
+    background-position: 100%;
+  }
+
+  100% {
+    background-position: -100%;
+  }
 }
 
 .skeleton-column {
