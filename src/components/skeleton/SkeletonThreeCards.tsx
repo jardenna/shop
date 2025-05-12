@@ -1,9 +1,7 @@
 import Skeleton from './Skeleton';
-import SkeletonBadge from './SkeletonBadge';
 import SkeletonHeader from './SkeletonHeader';
 import SkeletonList from './SkeletonList';
 import SkeletonListGrid from './SkeletonListGrid';
-import SkeletonParagraph from './SkeletonParagraph';
 
 const SkeletonThreeCards = () => (
   <div className="skeleton-column">
@@ -14,10 +12,23 @@ const SkeletonThreeCards = () => (
           <div className="flex column">
             <Skeleton variant="img" />
             <div className="flex">
-              <SkeletonParagraph height="1.5" count={1} />
-              <SkeletonBadge width="6" height="1.5" />
+              <SkeletonList
+                className="skeleton-paragraph skeleton-column "
+                height="1.5"
+                count={1}
+              />
+              <SkeletonList
+                className="skeleton-badge "
+                width="6"
+                height="1.5"
+                count={1}
+              />
             </div>
-            <SkeletonParagraph height="0.8" />
+            <SkeletonList
+              height="0.8"
+              count={3}
+              className="skeleton-paragraph skeleton-column"
+            />
             <SkeletonList count={2} height="3.5" />
           </div>
         </div>
