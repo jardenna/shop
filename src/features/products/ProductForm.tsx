@@ -299,7 +299,6 @@ const ProductForm = ({
               labelText={language.addToStock}
               onChange={onChange}
             />
-
             {selectedProduct && (
               <span>
                 <strong>{language.productsInStockNow}: </strong>
@@ -315,7 +314,6 @@ const ProductForm = ({
                 {language.sizes}{' '}
                 <span className="error-message">{language[errors.sizes]}</span>
               </span>
-
               <Checkbox
                 onChange={onChange}
                 values={values.sizes}
@@ -323,7 +321,6 @@ const ProductForm = ({
                 name="sizes"
               />
             </div>
-
             <Selectbox
               id="colors"
               name="colors"
@@ -360,7 +357,6 @@ const ProductForm = ({
                 onChange={onChange}
               />
             </div>
-
             {values.discount && (
               <GridTwoCol>
                 <strong>{language.newPrice}:</strong>
