@@ -13,7 +13,7 @@
   display: block;
   width: 60px;
   height: 30px;
-  background-color: #fd632f;
+  background-color: $color-background-secondary;
   border-radius: 99px;
   cursor: pointer;
 
@@ -33,6 +33,10 @@
   }
 }
 
-.toggle-input:checked + .toggle-label::after {
-  left: 32px;
+.toggle-input:checked + .toggle-label {
+  background-color: $color-gray-40;
+
+  &::after {
+    left: 32px;
+  }
 }
