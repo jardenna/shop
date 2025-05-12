@@ -30,5 +30,3 @@ const SkeletonTwoCards = () => (
 );
 
 export default SkeletonTwoCards;
-
-//
