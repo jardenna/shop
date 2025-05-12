@@ -219,21 +219,23 @@ const ProductForm = ({
       <div className="flex align-items-start">
         <div className="flex-2">
           <FormCard legendText={language.productImages} onReset={onReset}>
-            <ul className="preview-list uploaded-img">
-              {uploadedImg.map((img, index) => (
-                <ProductImgList
-                  key={index}
-                  onClick={() => {
-                    handleRemoveImg(img);
-                  }}
-                  img={img}
-                  ariaLabel={`${language.delete} ${language.image}`}
-                  title={language.trash}
-                >
-                  <div className="preview-info" />
-                </ProductImgList>
-              ))}
-            </ul>
+            {id && (
+              <ul className="preview-list uploaded-img">
+                {uploadedImg.map((img, index) => (
+                  <ProductImgList
+                    key={index}
+                    onClick={() => {
+                      handleRemoveImg(img);
+                    }}
+                    img={img}
+                    ariaLabel={`${language.delete} ${language.image}`}
+                    title={language.trash}
+                  >
+                    <div className="preview-info" />
+                  </ProductImgList>
+                ))}
+              </ul>
+            )}
             <FileInput
               onChange={onChange}
               multiple
@@ -299,10 +301,10 @@ const ProductForm = ({
             />
 
             {selectedProduct && (
-              <p>
+              <span>
                 <strong>{language.productsInStockNow}: </strong>
                 {selectedProduct.countInStock}
-              </p>
+              </span>
             )}
           </FormCard>
         </div>
