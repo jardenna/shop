@@ -75,6 +75,10 @@
     &:last-child {
       max-width: 85%;
     }
+
+    &:only-child {
+      max-width: 100%;
+    }
   }
 }
 
