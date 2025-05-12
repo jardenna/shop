@@ -1,5 +1,6 @@
 import Skeleton from './Skeleton';
 import SkeletonBadge from './SkeletonBadge';
+import SkeletonCard from './SkeletonCard';
 import SkeletonGrid from './SkeletonGrid';
 import SkeletonHeader from './SkeletonHeader';
 import SkeletonList from './SkeletonList';
@@ -27,9 +28,7 @@ const SkeletonThreeCards = () => (
           <Skeleton width="5" height=".75" />
           <SkeletonList width="2" height="2" count={4} />
         </div>
-        <div className="page-card flex-1" style={{ maxWidth: '25rem' }}>
-          <span className="skeleton" style={{ height: '100%' }} />
-        </div>
+        <SkeletonCard />
       </div>
     </div>
   </div>

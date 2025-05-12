@@ -1,4 +1,5 @@
 import SkeletonBadge from './SkeletonBadge';
+import SkeletonCard from './SkeletonCard';
 import SkeletonHeader from './SkeletonHeader';
 import SkeletonList from './SkeletonList';
 import SkeletonParagraph from './SkeletonParagraph';
@@ -22,9 +23,7 @@ const SkeletonTwoCards = () => (
           </div>
         </div>
 
-        <div className="page-card flex-1" style={{ maxWidth: '25rem' }}>
-          <span className="skeleton" style={{ height: '100%' }} />
-        </div>
+        <SkeletonCard />
       </div>
     </div>
   </div>
