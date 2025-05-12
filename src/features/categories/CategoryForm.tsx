@@ -81,11 +81,16 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
     }
   }
 
+  const handleGoback = () => {
+    navigate(-1);
+  };
+
   return (
     <Form
       className="category-form"
       onSubmit={onSubmit}
       submitBtnLabel={id ? language.save : language.create}
+      onCancel={handleGoback}
     >
       <FieldSet legendText={language.categories} hideLegendText>
         <SharedCategoryInputs

@@ -12,7 +12,7 @@ const ErrorPage = () => {
   }
 
   const handleGoback = () => {
-    void navigate(-1);
+    navigate(-1);
   };
 
   return (

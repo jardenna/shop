@@ -138,7 +138,7 @@ const Table = <T,>({
       </div>
       <div className="fixed-table">
         {isLoading ? (
-          <SkeletonList count={6} className="column" variant="secondary" />
+          <SkeletonList count={6} className="column" height="2.75" />
         ) : (
           <ErrorBoundary
             FallbackComponent={ErrorBoundaryFallback}

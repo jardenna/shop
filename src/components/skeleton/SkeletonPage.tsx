@@ -1,13 +1,14 @@
-import Skeleton from './Skeleton';
+import Skeleton, { PickedSkeletonTypes } from './Skeleton';
+import SkeletonHeader from './SkeletonHeader';
 
-type SkeletonPageProps = {
-  className?: string;
-};
-
-const SkeletonPage = ({ className = '' }: SkeletonPageProps) => (
-  <div className={`skeleton-page ${className}`}>
-    <Skeleton width="30" variant="secondary" />
-    <Skeleton height="40" />
+const SkeletonPage = ({ count = 2, height = '' }: PickedSkeletonTypes) => (
+  <div className="skeleton-column">
+    <SkeletonHeader hideLink />
+    <div className="page-card">
+      <div className="skeleton-page skeleton-column">
+        <Skeleton count={count} height={height} />
+      </div>
+    </div>
   </div>
 );
 export default SkeletonPage;

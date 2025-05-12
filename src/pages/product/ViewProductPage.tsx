@@ -5,7 +5,7 @@ import ProductCardLeft from '../../components/adminCard/ProductCardLeft';
 import CardRight from '../../components/card/CardRight';
 import ErrorContent from '../../components/ErrorContent';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-import SkeletonPage from '../../components/skeleton/SkeletonPage';
+import SkeletonThreeCards from '../../components/skeleton/SkeletonThreeCards';
 import useLanguage from '../../features/language/useLanguage';
 import {
   useDeleteProductMutation,
@@ -75,12 +75,12 @@ const ViewProductPage = () => {
   const statusMessage = `${language.categoryIs} ${subCategoryStatus}`;
 
   const handleGoback = () => {
-    void navigate(-1);
+    navigate(-1);
   };
 
   return (
     <article className="page">
-      {isLoading && <SkeletonPage />}
+      {isLoading && <SkeletonThreeCards />}
       {error && (
         <ErrorContent
           onClick={handleGoback}

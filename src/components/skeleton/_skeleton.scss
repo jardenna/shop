@@ -1,54 +1,93 @@
 @use '../../scss/globals' as *;
 
-.skeleton {
-  background-color: $color-gray-40;
+.skeleton-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  border-radius: 4px;
+}
+
+.skeleton {
+  animation: skeleton-animation 1.5s infinite linear;
+  background: linear-gradient(
+    90deg,
+    $color-light-gray-30 25%,
+    $color-light-gray-40 50%,
+    $color-light-gray-30 75%
+  );
+  background-size: 200% 100%;
+  width: 100%;
+  border-radius: 8px;
   display: flex;
 
   &.skeleton-img {
-    height: rem(428px);
+    height: 8rem;
+    width: 12rem;
   }
 
   &.skeleton-primary {
     height: rem(36px);
   }
 
-  &.skeleton-secondary {
-    height: rem(44px);
-  }
-
-  @include animation(
-    skeleton-animation,
-    $duration: 1.2s,
-    $timing: linear infinite alternate
-  );
+  @include animation(skeleton-animation, 1.5s infinite, linear);
 }
 
-.skeleton-page {
+.skeleton-badge {
+  .skeleton {
+    border-radius: 50px;
+  }
+}
+
+.skeleton-column {
   width: 100%;
   display: flex;
+  gap: 16px;
   flex-direction: column;
-  gap: 12px;
-}
 
-.skeleton-card {
-  height: 350px;
-  padding: 12px 30px;
-}
-
-@keyframes skeleton-animation {
-  0% {
-    opacity: 0.1;
+  .page-card {
+    min-height: rem(360px);
   }
 
-  100% {
-    opacity: 0.4;
+  &.skeleton-page {
+    gap: 32px;
+  }
+
+  &.skeleton-paragraph {
+    gap: 8px;
+  }
+
+  &.skeleton-input-container {
+    gap: 20px;
+
+    .skeleton-input {
+      gap: 8px;
+    }
   }
 }
 
 .skeleton-list {
   display: flex;
   gap: 8px;
-  justify-content: flex-end;
+}
+
+.skeleton-paragraph {
+  .skeleton {
+    &:last-child {
+      max-width: 85%;
+    }
+
+    &:only-child {
+      max-width: 100%;
+    }
+  }
+}
+
+@keyframes skeleton-animation {
+  0% {
+    background-position: 100%;
+  }
+
+  100% {
+    background-position: -100%;
+  }
 }

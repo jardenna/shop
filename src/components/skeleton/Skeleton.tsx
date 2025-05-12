@@ -1,6 +1,6 @@
 import './_skeleton.scss';
 
-export type SkeletonType = 'primary' | 'secondary' | 'img';
+export type SkeletonType = 'primary' | 'img';
 
 export type SkeletonProps = {
   className?: string;
@@ -9,6 +9,8 @@ export type SkeletonProps = {
   variant?: SkeletonType;
   width?: string;
 };
+
+export type PickedSkeletonTypes = Pick<SkeletonProps, 'count' | 'height'>;
 
 const Skeleton = ({
   className = '',

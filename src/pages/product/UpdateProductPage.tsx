@@ -23,7 +23,7 @@ const UpdateProductPage = () => {
 
   return (
     <article className="page">
-      {isLoading && <SkeletonPage />}
+      {isLoading && <SkeletonPage count={3} height="14" />}
 
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}

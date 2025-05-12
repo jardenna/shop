@@ -1,4 +1,4 @@
-import SkeletonPage from '../../components/skeleton/SkeletonPage';
+import SkeletonForm from '../../components/skeleton/SkeletonForm';
 import { useGetAllCategoriesQuery } from '../../features/categories/categoriyApiSlice';
 import useLanguage from '../../features/language/useLanguage';
 import SubCategoryForm from '../../features/subCategories/SubCategoryForm';
@@ -19,7 +19,7 @@ const CreateSubCategoryPage = () => {
 
   return (
     <article className="page page-small">
-      {isLoading && <SkeletonPage />}
+      {isLoading && <SkeletonForm count={3} />}
       <PageContainer
         heading={language.createNewCategory}
         onReset={() => refetch}

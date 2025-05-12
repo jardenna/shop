@@ -31,7 +31,9 @@ $animation-timing-function: ease-in-out;
   $duration: $animation-duration,
   $timing: $animation-timing-function
 ) {
-  animation: $name $duration $timing forwards;
+  & {
+    animation: $name $duration $timing forwards;
+  }
 
   @media (prefers-reduced-motion) {
     animation-name: none;

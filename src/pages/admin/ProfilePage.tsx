@@ -1,9 +1,3 @@
-import SkeletonItems from '../../components/skeleton/SkeletonItems';
-
-const ProfilePage = () => (
-  <section>
-    <SkeletonItems />
-  </section>
-);
+const ProfilePage = () => <section>Profile</section>;
 
 export default ProfilePage;
