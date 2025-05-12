@@ -20,8 +20,7 @@ export const currencyToText: Record<CurrencyCode, CurrencyText> = {
   SEK: 'Kr.',
   NOK: 'Kr.',
 };
-const x = 'DDK';
-const y = currencyToText[x];
+
 export const currencies = Object.keys(currencyToLocaleMap).join(',');
 
 export const getFormattedPrice = (

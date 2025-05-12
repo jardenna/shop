@@ -27,6 +27,7 @@ import { MainPath } from '../../layout/nav/enums';
 import variables from '../../scss/variables.module.scss';
 import { discountCalculation } from '../../utils/utils';
 import ProductPrice from '../currency/components/ProductPrice';
+import useCurrency from '../currency/useCurrency';
 import useLanguage from '../language/useLanguage';
 import { useUploadImageMutation } from '../uploadImageApiSlice';
 import FormCard from './FormCard';
@@ -110,7 +111,7 @@ const ProductForm = ({
     sizes: selectedProduct?.sizes ?? ['S', 'M', 'L', 'XL'],
     subCategory: selectedCategory,
   };
-
+  const { currencyText } = useCurrency();
   const defaultColorValue = selectedProduct?.colors.map((color) => ({
     label: language[color],
     value: color,
@@ -312,7 +313,7 @@ const ProductForm = ({
           <FormCard legendText={language.productVariants} onReset={onReset}>
             <div>
               <span className="form-span-container">
-                {language.sizes}{' '}
+                {language.sizes}
                 <span className="error-message">{language[errors.sizes]}</span>
               </span>
               <Checkbox
@@ -349,6 +350,7 @@ const ProductForm = ({
                 labelText={language.price}
                 onChange={onChange}
                 required
+                inputInfo={currencyText}
               />
               <Input
                 type="number"
@@ -357,6 +359,7 @@ const ProductForm = ({
                 name="discount"
                 labelText={language.discount}
                 onChange={onChange}
+                inputInfo="%"
               />
             </div>
             {values.discount && (
