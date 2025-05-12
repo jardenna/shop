@@ -4,7 +4,7 @@ import SkeletonList from './SkeletonList';
 import SkeletonParagraph from './SkeletonParagraph';
 
 const SkeletonTwoCards = () => (
-  <div className="skeleton-page-list">
+  <div className="skeleton-column">
     <SkeletonHeader />
     <div className="page-card">
       <div className="flex">

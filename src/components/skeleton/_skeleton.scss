@@ -1,33 +1,10 @@
 @use '../../scss/globals' as *;
 
-.skeleton-page-list {
-  width: 100%;
-  display: flex;
-  gap: 12px;
-  flex-direction: column;
-
-  .page-card {
-    min-height: rem(360px);
-  }
-}
-
 .skeleton-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-}
-
-.skeleton-input-container {
-  display: flex;
-  gap: 20px;
-  flex-direction: column;
-
-  .skeleton-input {
-    gap: 8px;
-    display: flex;
-    flex-direction: column;
-  }
 }
 
 .skeleton {
@@ -64,11 +41,27 @@
 .skeleton-column {
   width: 100%;
   display: flex;
-  flex-direction: column;
   gap: 16px;
+  flex-direction: column;
+
+  .page-card {
+    min-height: rem(360px);
+  }
 
   &.skeleton-page {
     gap: 32px;
+  }
+
+  &.skeleton-paragraph {
+    gap: 8px;
+  }
+
+  &.skeleton-input-container {
+    gap: 20px;
+
+    .skeleton-input {
+      gap: 8px;
+    }
   }
 }
 
@@ -78,11 +71,6 @@
 }
 
 .skeleton-paragraph {
-  display: flex;
-  gap: 6px;
-  flex-direction: column;
-  width: 100%;
-
   .skeleton {
     &:last-child {
       max-width: 85%;

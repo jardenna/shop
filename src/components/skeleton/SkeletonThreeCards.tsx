@@ -6,7 +6,7 @@ import SkeletonListGrid from './SkeletonListGrid';
 import SkeletonParagraph from './SkeletonParagraph';
 
 const SkeletonThreeCards = () => (
-  <div className="skeleton-page-list">
+  <div className="skeleton-column">
     <SkeletonHeader />
     <div className="page-card">
       <div className="flex">

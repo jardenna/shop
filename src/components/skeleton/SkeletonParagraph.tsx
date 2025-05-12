@@ -9,7 +9,7 @@ const SkeletonParagraph = ({
 }: SkeletonProps) => {
   const skeletons = Array.from({ length: count });
   return (
-    <span className={`skeleton-paragraph ${className}`}>
+    <span className={`skeleton-paragraph skeleton-column ${className}`}>
       {skeletons.map((_, index) => (
         <Skeleton key={index} height={height} width={width} variant={variant} />
       ))}
