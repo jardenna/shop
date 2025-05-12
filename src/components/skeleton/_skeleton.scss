@@ -52,6 +52,8 @@
   &.skeleton-primary {
     height: rem(36px);
   }
+
+  @include animation(skeleton-animation, 1.5s infinite, linear);
 }
 
 @keyframes skeleton-animation {
