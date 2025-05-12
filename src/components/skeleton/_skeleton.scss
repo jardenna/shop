@@ -23,16 +23,16 @@
   display: flex;
   gap: 20px;
   flex-direction: column;
-}
 
-.skeleton-input {
-  gap: 8px;
-  display: flex;
-  flex-direction: column;
+  .skeleton-input {
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .skeleton {
-  animation: shimmer 1.5s infinite linear;
+  animation: skeleton-animation 1.5s infinite linear;
   background: linear-gradient(
     90deg,
     $color-light-gray-30 25%,
@@ -52,13 +52,9 @@
   &.skeleton-primary {
     height: rem(36px);
   }
-
-  &.skeleton-secondary {
-    height: rem(44px);
-  }
 }
 
-@keyframes shimmer {
+@keyframes skeleton-animation {
   0% {
     background-position: 100%;
   }
@@ -76,21 +72,6 @@
 
   &.skeleton-page {
     gap: 32px;
-  }
-}
-
-.skeleton-card {
-  height: 350px;
-  padding: 12px 30px;
-}
-
-@keyframes skeleton-animation {
-  0% {
-    opacity: 0.1;
-  }
-
-  100% {
-    opacity: 0.4;
   }
 }
 
