@@ -16,7 +16,7 @@ const SkeletonPage = ({
     <SkeletonHeader hideLink />
     <div className="page-card">
       <div className={`skeleton-page skeleton-column  ${className}`}>
-        <Skeleton count={count} height={height} variant="secondary" />
+        <Skeleton count={count} height={height} />
       </div>
     </div>
   </div>
