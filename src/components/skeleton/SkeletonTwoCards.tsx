@@ -1,3 +1,4 @@
+import SkeletonBadge from './SkeletonBadge';
 import SkeletonHeader from './SkeletonHeader';
 import SkeletonList from './SkeletonList';
 import SkeletonParagraph from './SkeletonParagraph';
@@ -14,12 +15,7 @@ const SkeletonTwoCards = () => (
           >
             <div className="flex">
               <SkeletonParagraph height="1.5" count={1} />
-              <SkeletonList
-                className="skeleton-badge"
-                width="6"
-                height="1.5"
-                count={1}
-              />
+              <SkeletonBadge />
             </div>
             <SkeletonParagraph />
             <SkeletonList count={2} height="3.5" />
