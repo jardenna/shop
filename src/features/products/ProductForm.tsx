@@ -293,7 +293,8 @@ const ProductForm = ({
           </FormCard>
           <FormCard legendText={language.productQuantity} onReset={onReset}>
             <Input
-              value={values.quantity}
+              value={values.quantity || ''}
+              type="number"
               id="quantity"
               name="quantity"
               labelText={language.addToStock}
@@ -340,7 +341,8 @@ const ProductForm = ({
           <FormCard legendText={language.pricing} onReset={onReset}>
             <div className="flex">
               <Input
-                value={values.price}
+                type="number"
+                value={values.price || ''}
                 id="price"
                 name="price"
                 errorText={language[errors.price]}
@@ -350,7 +352,7 @@ const ProductForm = ({
               />
               <Input
                 type="number"
-                value={values.discount || 0}
+                value={values.discount || ''}
                 id="discount"
                 name="discount"
                 labelText={language.discount}
