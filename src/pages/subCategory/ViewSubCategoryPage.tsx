@@ -66,7 +66,6 @@ const ViewSubCategoryPage = () => {
           btnLabel={language.goBack}
         />
       )}
-      <SkeletonTwoCards />
       {isLoading && <SkeletonTwoCards />}
       {category && (
         <PageContainer
