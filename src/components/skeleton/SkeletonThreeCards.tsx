@@ -27,10 +27,7 @@ const SkeletonThreeCards = () => (
           <SkeletonList width="2" height="2" count={4} />
         </div>
         <div className="page-card flex-1" style={{ maxWidth: '25rem' }}>
-          <span
-            className="skeleton"
-            style={{ width: '100%', height: '100%' }}
-          />
+          <span className="skeleton" style={{ height: '100%' }} />
         </div>
       </div>
     </div>
