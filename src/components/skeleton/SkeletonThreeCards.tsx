@@ -1,8 +1,8 @@
 import Skeleton from './Skeleton';
 import SkeletonBadge from './SkeletonBadge';
+import SkeletonGrid from './SkeletonGrid';
 import SkeletonHeader from './SkeletonHeader';
 import SkeletonList from './SkeletonList';
-import SkeletonListGrid from './SkeletonListGrid';
 import SkeletonParagraph from './SkeletonParagraph';
 
 const SkeletonThreeCards = () => (
@@ -19,11 +19,11 @@ const SkeletonThreeCards = () => (
             </div>
             <SkeletonParagraph />
 
-            <SkeletonList count={2} height="3.5" />
+            <SkeletonList />
           </div>
         </div>
         <div className="flex column page-card flex-1">
-          <SkeletonListGrid />
+          <SkeletonGrid />
           <Skeleton width="5" height=".75" />
           <SkeletonList width="2" height="2" count={4} />
         </div>

@@ -1,9 +1,9 @@
 import Skeleton, { SkeletonProps } from './Skeleton';
 
-const SkeletonListGrid = ({ count = 5 }: SkeletonProps) => {
+const SkeletonGrid = ({ count = 5 }: SkeletonProps) => {
   const skeletons = Array.from({ length: count });
   return (
-    <div className="flex column">
+    <div className="skeleton-column">
       {skeletons.map((_, index) => (
         <div key={index} className="grid two-col">
           <Skeleton height="1" width="5" />
@@ -14,4 +14,4 @@ const SkeletonListGrid = ({ count = 5 }: SkeletonProps) => {
   );
 };
 
-export default SkeletonListGrid;
+export default SkeletonGrid;

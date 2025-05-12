@@ -18,7 +18,7 @@ const SkeletonTwoCards = () => (
               <SkeletonBadge />
             </div>
             <SkeletonParagraph />
-            <SkeletonList count={2} height="3.5" />
+            <SkeletonList />
           </div>
         </div>
 
