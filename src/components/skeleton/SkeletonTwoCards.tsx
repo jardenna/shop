@@ -9,7 +9,10 @@ const SkeletonTwoCards = () => (
     <div className="page-card">
       <div className="flex">
         <div className="page-card flex-1">
-          <div className="flex column">
+          <div
+            className="flex column justify-space-between"
+            style={{ height: '100%' }}
+          >
             <div className="flex">
               <SkeletonParagraph height="1.5" count={1} />
               <SkeletonBadge width="6" height="1.5" />
