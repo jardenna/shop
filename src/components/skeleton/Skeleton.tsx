@@ -10,6 +10,8 @@ export type SkeletonProps = {
   width?: string;
 };
 
+export type CountHeightProps = Pick<SkeletonProps, 'count' | 'height'>;
+
 const Skeleton = ({
   className = '',
   height = '',

@@ -1,6 +1,6 @@
-import Skeleton, { SkeletonProps } from './Skeleton';
+import Skeleton, { CountHeightProps } from './Skeleton';
 
-const SkeletonGrid = ({ count = 5 }: SkeletonProps) => {
+const SkeletonGrid = ({ count = 5 }: CountHeightProps) => {
   const skeletons = Array.from({ length: count });
   return (
     <div className="skeleton-column">
