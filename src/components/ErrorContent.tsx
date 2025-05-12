@@ -1,5 +1,4 @@
 import useLanguage from '../features/language/useLanguage';
-import LayoutElement from '../layout/LayoutElement';
 import Button from './Button';
 import Img from './Img';
 
@@ -19,9 +18,7 @@ const ErrorContent = ({ onClick, errorText, btnLabel }: ErrorContentProps) => {
         src="/images/sad_smiley.png"
         alt={language.errorAltText}
       />
-      <LayoutElement as="header" ariaLabel={language.error}>
-        <h2 className="error-info">{errorText}</h2>
-      </LayoutElement>
+      <p className="error-info">{errorText}</p>
       <Button onClick={onClick}>{btnLabel}</Button>
     </section>
   );

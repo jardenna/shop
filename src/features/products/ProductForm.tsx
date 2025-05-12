@@ -40,6 +40,7 @@ type ProductFormProps = {
   isLoading: boolean;
   parentCategories: SubCategoriesWithParent[];
   selectedProduct: Product | null;
+  onReset: () => void;
 };
 
 const ProductForm = ({
@@ -47,6 +48,7 @@ const ProductForm = ({
   selectedProduct,
   parentCategories,
   isLoading,
+  onReset,
 }: ProductFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
@@ -216,7 +218,7 @@ const ProductForm = ({
     >
       <div className="flex align-items-start">
         <div className="flex-2">
-          <FormCard legendText={language.productImages}>
+          <FormCard legendText={language.productImages} onReset={onReset}>
             <ul className="preview-list uploaded-img">
               {uploadedImg.map((img, index) => (
                 <ProductImgList
@@ -247,7 +249,7 @@ const ProductForm = ({
               }}
             />
           </FormCard>
-          <FormCard legendText={language.productInformation}>
+          <FormCard legendText={language.productInformation} onReset={onReset}>
             <Input
               value={values.productName}
               id="productName"
@@ -287,7 +289,7 @@ const ProductForm = ({
               />
             </div>
           </FormCard>
-          <FormCard legendText={language.productQuantity}>
+          <FormCard legendText={language.productQuantity} onReset={onReset}>
             <Input
               value={values.quantity}
               id="quantity"
@@ -305,7 +307,7 @@ const ProductForm = ({
           </FormCard>
         </div>
         <div className="flex-1">
-          <FormCard legendText={language.productVariants}>
+          <FormCard legendText={language.productVariants} onReset={onReset}>
             <div>
               <span className="form-span-container">
                 {language.sizes}{' '}
@@ -336,7 +338,7 @@ const ProductForm = ({
               }}
             />
           </FormCard>
-          <FormCard legendText={language.pricing}>
+          <FormCard legendText={language.pricing} onReset={onReset}>
             <div className="flex">
               <Input
                 value={values.price}
@@ -366,7 +368,7 @@ const ProductForm = ({
               </GridTwoCol>
             )}
           </FormCard>
-          <FormCard legendText={language.details}>
+          <FormCard legendText={language.details} onReset={onReset}>
             <div className="flex">
               <Selectbox
                 errorText={language[errors.subCategory]}

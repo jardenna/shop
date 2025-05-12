@@ -23,6 +23,7 @@ const CreateProductPage = () => {
             id={null}
             parentCategories={subCategories}
             isLoading={subCategoriesIsLoading}
+            onReset={() => refetch}
           />
         </PageContainer>
       )}
