@@ -22,7 +22,6 @@ const SkeletonTwoCards = () => (
             <SkeletonList />
           </div>
         </div>
-
         <SkeletonCard />
       </div>
     </div>

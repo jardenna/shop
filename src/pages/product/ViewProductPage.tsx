@@ -15,7 +15,6 @@ import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
 import { getErrorMessage } from '../../utils/utils';
 import PageContainer from '../PageContainer';
-import SkeletonTwoCards from '../../components/skeleton/SkeletonTwoCards';
 
 export const sizeList: ProductSizes[] = ['S', 'M', 'L', 'XL'];
 
@@ -81,8 +80,6 @@ const ViewProductPage = () => {
 
   return (
     <article className="page">
-      <SkeletonTwoCards />
-      <SkeletonThreeCards />
       {isLoading && <SkeletonThreeCards />}
       {error && (
         <ErrorContent
