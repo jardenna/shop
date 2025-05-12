@@ -1,0 +1,33 @@
+import SkeletonBadge from './SkeletonBadge';
+import SkeletonHeader from './SkeletonHeader';
+import SkeletonList from './SkeletonList';
+import SkeletonParagraph from './SkeletonParagraph';
+
+const SkeletonTwoCards = () => (
+  <div className="skeleton-page-list">
+    <SkeletonHeader />
+    <div className="page-card">
+      <div className="flex">
+        <div className="page-card flex-1">
+          <div className="flex column">
+            <div className="flex">
+              <SkeletonParagraph height="1.5" count={1} />
+              <SkeletonBadge width="6" height="1.5" />
+            </div>
+            <SkeletonParagraph height="0.8" />
+            <SkeletonList count={2} height="3.5" />
+          </div>
+        </div>
+
+        <div className="page-card flex-1" style={{ maxWidth: '25rem' }}>
+          <span
+            className="skeleton"
+            style={{ width: '100%', height: '100%' }}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export default SkeletonTwoCards;

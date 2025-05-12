@@ -5,7 +5,7 @@ import SkeletonList from './SkeletonList';
 import SkeletonListGrid from './SkeletonListGrid';
 import SkeletonParagraph from './SkeletonParagraph';
 
-const SkeletonPageList = () => (
+const SkeletonThreeCards = () => (
   <div className="skeleton-page-list">
     <SkeletonHeader />
     <div className="page-card">
@@ -37,4 +37,4 @@ const SkeletonPageList = () => (
   </div>
 );
 
-export default SkeletonPageList;
+export default SkeletonThreeCards;

@@ -5,7 +5,7 @@ import ProductCardLeft from '../../components/adminCard/ProductCardLeft';
 import CardRight from '../../components/card/CardRight';
 import ErrorContent from '../../components/ErrorContent';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-import SkeletonPageList from '../../components/skeleton/SkeletonPageList';
+import SkeletonThreeCards from '../../components/skeleton/SkeletonThreeCards';
 import useLanguage from '../../features/language/useLanguage';
 import {
   useDeleteProductMutation,
@@ -80,7 +80,7 @@ const ViewProductPage = () => {
 
   return (
     <article className="page">
-      {isLoading && <SkeletonPageList />}
+      {isLoading && <SkeletonThreeCards />}
       {error && (
         <ErrorContent
           onClick={handleGoback}
