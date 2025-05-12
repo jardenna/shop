@@ -7,7 +7,6 @@ import {
   SubCategoriesWithParent,
 } from '../../app/api/apiTypes';
 import useDatePicker from '../../components/datePicker/useDatePicker';
-import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/Form';
 import Checkbox, {
   CheckboxItems,
@@ -30,6 +29,7 @@ import { discountCalculation } from '../../utils/utils';
 import ProductPrice from '../currency/components/ProductPrice';
 import useLanguage from '../language/useLanguage';
 import { useUploadImageMutation } from '../uploadImageApiSlice';
+import FormCard from './FormCard';
 import {
   useCreateProductMutation,
   useUpdateProductMutation,
@@ -216,203 +216,190 @@ const ProductForm = ({
     >
       <div className="flex align-items-start">
         <div className="flex-2">
-          <section className="form-card">
-            <FieldSet legendText={language.productImages}>
-              <ul className="preview-list uploaded-img">
-                {uploadedImg.map((img, index) => (
-                  <ProductImgList
-                    key={index}
-                    onClick={() => {
-                      handleRemoveImg(img);
-                    }}
-                    img={img}
-                    ariaLabel={`${language.delete} ${language.image}`}
-                    title={language.trash}
-                  >
-                    <div className="preview-info" />
-                  </ProductImgList>
-                ))}
-              </ul>
-              <FileInput
-                onChange={onChange}
-                multiple
-                required
-                errorText={language[errors.images]}
-                name="images"
-                id="images"
-                previewData={previewData}
-                title={language.delete}
-                ariaLabel={language.delete}
-                onRemoveImg={(name: string) => {
-                  removePreviewImage(name);
-                }}
-              />
-            </FieldSet>
-          </section>
-          <section className="form-card">
-            <FieldSet legendText={language.productInformation}>
+          <FormCard legendText={language.productImages}>
+            <ul className="preview-list uploaded-img">
+              {uploadedImg.map((img, index) => (
+                <ProductImgList
+                  key={index}
+                  onClick={() => {
+                    handleRemoveImg(img);
+                  }}
+                  img={img}
+                  ariaLabel={`${language.delete} ${language.image}`}
+                  title={language.trash}
+                >
+                  <div className="preview-info" />
+                </ProductImgList>
+              ))}
+            </ul>
+            <FileInput
+              onChange={onChange}
+              multiple
+              required
+              errorText={language[errors.images]}
+              name="images"
+              id="images"
+              previewData={previewData}
+              title={language.delete}
+              ariaLabel={language.delete}
+              onRemoveImg={(name: string) => {
+                removePreviewImage(name);
+              }}
+            />
+          </FormCard>
+          <FormCard legendText={language.productInformation}>
+            <Input
+              value={values.productName}
+              id="productName"
+              name="productName"
+              errorText={language[errors.productName]}
+              labelText={language.categoryName}
+              onChange={onChange}
+              required
+            />
+            <Textarea
+              value={values.description}
+              errorText={language[errors.description]}
+              name="description"
+              id="description"
+              labelText={language.description}
+              onChange={onChange}
+              required
+            />
+            <div className="flex">
               <Input
-                value={values.productName}
-                id="productName"
-                name="productName"
-                errorText={language[errors.productName]}
-                labelText={language.categoryName}
+                value={values.brand}
+                id="brand"
+                name="brand"
+                errorText={language[errors.brand]}
+                labelText={language.brand}
                 onChange={onChange}
                 required
               />
-              <Textarea
-                value={values.description}
-                errorText={language[errors.description]}
-                name="description"
-                id="description"
-                labelText={language.description}
-                onChange={onChange}
-                required
-              />
-              <div className="flex">
-                <Input
-                  value={values.brand}
-                  id="brand"
-                  name="brand"
-                  errorText={language[errors.brand]}
-                  labelText={language.brand}
-                  onChange={onChange}
-                  required
-                />
-                <Input
-                  value={values.material}
-                  id="material"
-                  name="material"
-                  errorText={language[errors.material]}
-                  labelText={language.material}
-                  onChange={onChange}
-                  required
-                />
-              </div>
-            </FieldSet>
-          </section>
-          <section className="form-card">
-            <FieldSet legendText={language.productQuantity}>
               <Input
-                value={values.quantity}
-                id="quantity"
-                name="quantity"
-                labelText={language.addToStock}
+                value={values.material}
+                id="material"
+                name="material"
+                errorText={language[errors.material]}
+                labelText={language.material}
                 onChange={onChange}
+                required
               />
-            </FieldSet>
+            </div>
+          </FormCard>
+          <FormCard legendText={language.productQuantity}>
+            <Input
+              value={values.quantity}
+              id="quantity"
+              name="quantity"
+              labelText={language.addToStock}
+              onChange={onChange}
+            />
+
             {selectedProduct && (
               <p>
                 <strong>{language.productsInStockNow}: </strong>
                 {selectedProduct.countInStock}
               </p>
             )}
-          </section>
+          </FormCard>
         </div>
         <div className="flex-1">
-          <section className="form-card">
-            <FieldSet legendText={language.productVariants}>
-              <div>
-                <span className="form-span-container">
-                  {language.sizes}{' '}
-                  <span className="error-message">
-                    {language[errors.sizes]}
-                  </span>
-                </span>
+          <FormCard legendText={language.productVariants}>
+            <div>
+              <span className="form-span-container">
+                {language.sizes}{' '}
+                <span className="error-message">{language[errors.sizes]}</span>
+              </span>
 
-                <Checkbox
-                  onChange={onChange}
-                  values={values.sizes}
-                  checkBoxList={checkboxItems}
-                  name="sizes"
+              <Checkbox
+                onChange={onChange}
+                values={values.sizes}
+                checkBoxList={checkboxItems}
+                name="sizes"
+              />
+            </div>
+
+            <Selectbox
+              id="colors"
+              name="colors"
+              errorText={language[errors.colors]}
+              closeMenuOnSelect={false}
+              labelText={language.colours}
+              options={colorOptions}
+              components={{ Option: ColorOptions }}
+              isSearchable
+              defaultValue={defaultColorValue}
+              isMulti
+              onChange={(values: OptionType[]) => {
+                handleSelectColors('colors', values);
+              }}
+            />
+          </FormCard>
+          <FormCard legendText={language.pricing}>
+            <div className="flex">
+              <Input
+                value={values.price}
+                id="price"
+                name="price"
+                errorText={language[errors.price]}
+                labelText={language.price}
+                onChange={onChange}
+                required
+              />
+              <Input
+                type="number"
+                value={values.discount || 0}
+                id="discount"
+                name="discount"
+                labelText={language.discount}
+                onChange={onChange}
+              />
+            </div>
+
+            {values.discount && (
+              <GridTwoCol>
+                <strong>{language.newPrice}:</strong>
+                <ProductPrice
+                  price={discountCalculation(values.price, values.discount)}
                 />
-              </div>
-
+              </GridTwoCol>
+            )}
+          </FormCard>
+          <FormCard legendText={language.details}>
+            <div className="flex">
               <Selectbox
-                id="colors"
-                name="colors"
-                errorText={language[errors.colors]}
-                closeMenuOnSelect={false}
-                labelText={language.colours}
-                options={colorOptions}
-                components={{ Option: ColorOptions }}
+                errorText={language[errors.subCategory]}
+                id="subCategory"
+                name="subCategory"
+                labelText={language.category}
+                options={parentCategoryOptions}
+                components={{ Option: StatusOptions }}
+                isLoading={isLoading}
+                defaultValue={defaultCategoryValue}
                 isSearchable
-                defaultValue={defaultColorValue}
-                isMulti
-                onChange={(values: OptionType[]) => {
-                  handleSelectColors('colors', values);
+                onChange={(selectedOptions: OptionType) => {
+                  handleSelectCategory('subCategory', selectedOptions);
                 }}
               />
-            </FieldSet>
-          </section>
-          <section className="form-card">
-            <FieldSet legendText={language.pricing}>
-              <div className="flex">
-                <Input
-                  value={values.price}
-                  id="price"
-                  name="price"
-                  errorText={language[errors.price]}
-                  labelText={language.price}
-                  onChange={onChange}
-                  required
-                />
-                <Input
-                  type="number"
-                  value={values.discount || 0}
-                  id="discount"
-                  name="discount"
-                  labelText={language.discount}
-                  onChange={onChange}
-                />
-              </div>
-
-              {values.discount && (
-                <GridTwoCol>
-                  <strong>{language.newPrice}:</strong>
-                  <ProductPrice
-                    price={discountCalculation(values.price, values.discount)}
-                  />
-                </GridTwoCol>
-              )}
-            </FieldSet>
-          </section>
-          <section className="form-card">
-            <FieldSet legendText={language.details}>
-              <div className="flex">
-                <Selectbox
-                  errorText={language[errors.subCategory]}
-                  id="subCategory"
-                  name="subCategory"
-                  labelText={language.category}
-                  options={parentCategoryOptions}
-                  components={{ Option: StatusOptions }}
-                  isLoading={isLoading}
-                  defaultValue={defaultCategoryValue}
-                  isSearchable
-                  onChange={(selectedOptions: OptionType) => {
-                    handleSelectCategory('subCategory', selectedOptions);
-                  }}
-                />
-              </div>
-              <StatusInputs
-                labelText={language.productStatus}
-                ref={formRef}
-                defaultStatusValue={{
-                  label: language[values.productStatus.toLowerCase()],
-                  value: values.productStatus,
-                }}
-                onSelectStatus={(selectedOptions: OptionType) => {
-                  handleSelectStatus('productStatus', selectedOptions);
-                }}
-                status={values.productStatus}
-                onSelectDate={handleDaySelect}
-                selectedDate={selectedDate}
-                timeValue={timeValue}
-                onTimeChange={handleTimeChange}
-              />
-            </FieldSet>
-          </section>
+            </div>
+            <StatusInputs
+              labelText={language.productStatus}
+              ref={formRef}
+              defaultStatusValue={{
+                label: language[values.productStatus.toLowerCase()],
+                value: values.productStatus,
+              }}
+              onSelectStatus={(selectedOptions: OptionType) => {
+                handleSelectStatus('productStatus', selectedOptions);
+              }}
+              status={values.productStatus}
+              onSelectDate={handleDaySelect}
+              selectedDate={selectedDate}
+              timeValue={timeValue}
+              onTimeChange={handleTimeChange}
+            />
+          </FormCard>
         </div>
       </div>
     </Form>
