@@ -31,7 +31,6 @@ const Checkbox = ({
           checked={values.includes(checkbox.label)}
           id={checkbox.label}
           labelText={checkbox.label}
-          className="visibility-hidden"
         />
       </li>
     ))}

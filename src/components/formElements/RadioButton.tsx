@@ -36,7 +36,6 @@ const RadioButton = ({
         checked={initialChecked === radio.value}
         onChange={onChange}
         labelText={radio.label}
-        className="visibility-hidden"
       />
     ))}
 
