@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from 'react-router';
 import ErrorContent from '../../components/ErrorContent';
-import SkeletonPage from '../../components/skeleton/SkeletonPage';
+import SkeletonForm from '../../components/skeleton/SkeletonForm';
 import CategoryForm from '../../features/categories/CategoryForm';
 import { useGetCategoryByIdQuery } from '../../features/categories/categoriyApiSlice';
 import useLanguage from '../../features/language/useLanguage';
@@ -24,8 +24,7 @@ const UpdateCategoryPage = () => {
 
   return (
     <article className="page page-small">
-      <SkeletonPage />
-      {isLoading && <SkeletonPage />}
+      {isLoading && <SkeletonForm />}
       {error && (
         <ErrorContent
           onClick={handleGoback}

@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from 'react-router';
 import ErrorContent from '../../components/ErrorContent';
-import SkeletonPage from '../../components/skeleton/SkeletonPage';
+import SkeletonForm from '../../components/skeleton/SkeletonForm';
 import { useGetAllCategoriesQuery } from '../../features/categories/categoriyApiSlice';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetSubCategoryByIdQuery } from '../../features/subCategories/subCategoryApiSlice';
@@ -26,7 +26,7 @@ const UpdateSubCategoryPage = () => {
 
   return (
     <article className="page page-small">
-      {isLoading && <SkeletonPage />}
+      {isLoading && <SkeletonForm count={3} />}
       {error && (
         <ErrorContent
           onClick={handleGoback}
