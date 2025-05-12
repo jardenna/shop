@@ -15,6 +15,7 @@ import FileInput from '../../components/formElements/fileInput/FileInput';
 import ProductImgList from '../../components/formElements/fileInput/ProductImgList';
 import Input from '../../components/formElements/Input';
 import Textarea from '../../components/formElements/Textarea';
+import ToggleSwitch from '../../components/formElements/toggleSwitch/ToggleSwitch';
 import validateProduct from '../../components/formElements/validation/validateProduct';
 import GridTwoCol from '../../components/GridTwoCol';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
@@ -362,6 +363,7 @@ const ProductForm = ({
                 inputInfo="%"
               />
             </div>
+            <ToggleSwitch text="Vis andet" id="pris" />
             {values.discount && (
               <GridTwoCol>
                 <strong>{language.newPrice}:</strong>
