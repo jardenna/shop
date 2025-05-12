@@ -1,9 +1,9 @@
-import { CountHeightProps } from './Skeleton';
+import { PickedSkeletonTypes } from './Skeleton';
 import SkeletonHeader from './SkeletonHeader';
 import SkeletonInput from './SkeletonInput';
 import SkeletonList from './SkeletonList';
 
-const SkeletonForm = ({ count = 2 }: CountHeightProps) => (
+const SkeletonForm = ({ count = 2 }: PickedSkeletonTypes) => (
   <div className="skeleton-column">
     <SkeletonHeader hideLink />
     <div className="page-card">

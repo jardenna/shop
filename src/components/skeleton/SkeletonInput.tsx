@@ -1,6 +1,6 @@
-import Skeleton, { CountHeightProps } from './Skeleton';
+import Skeleton, { PickedSkeletonTypes } from './Skeleton';
 
-const SkeletonInput = ({ count = 3 }: CountHeightProps) => {
+const SkeletonInput = ({ count = 3 }: PickedSkeletonTypes) => {
   const skeletons = Array.from({ length: count });
   return (
     <span className="skeleton-input-container skeleton-column">

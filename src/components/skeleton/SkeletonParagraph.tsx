@@ -1,7 +1,10 @@
-import { CountHeightProps } from './Skeleton';
+import { PickedSkeletonTypes } from './Skeleton';
 import SkeletonList from './SkeletonList';
 
-const SkeletonParagraph = ({ count = 3, height = '0.8' }: CountHeightProps) => (
+const SkeletonParagraph = ({
+  count = 3,
+  height = '0.8',
+}: PickedSkeletonTypes) => (
   <SkeletonList
     className="skeleton-paragraph skeleton-column"
     height={height}
