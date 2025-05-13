@@ -38,6 +38,7 @@ const EditTableInput = ({
       className="edit-controls"
       onSubmit={(event) => {
         event.preventDefault();
+        onSave();
       }}
     >
       {!isAlterntiveInput ? (
@@ -64,7 +65,6 @@ const EditTableInput = ({
       />
 
       <IconBtn
-        onClick={onSave}
         iconName={IconName.Check}
         title="Check"
         ariaLabel={language.save}
