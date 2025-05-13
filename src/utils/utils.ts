@@ -26,10 +26,16 @@ const getErrorMessage = (error: unknown): string => {
   return ValidationMessage.UnknownError;
 };
 
+const getlowerCaseFirstLetter = (
+  key: string,
+  language: Record<string, string>,
+) => language[key[0].toLowerCase() + key.slice(1)] || key;
+
 export {
   currencyCacheKey,
   discountCalculation,
   formatNumber,
   getErrorMessage,
+  getlowerCaseFirstLetter,
   oneDay,
 };

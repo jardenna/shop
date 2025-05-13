@@ -7,6 +7,7 @@ import EditTableInput, {
 } from '../../../components/sortTable/EditTableInput';
 import { IconName } from '../../../types/enums';
 import { OptionType } from '../../../types/types';
+import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import useLanguage from '../../language/useLanguage';
 
 type EditUserInputProps = {
@@ -56,7 +57,7 @@ const EditUserInput = ({
         <>
           <span>
             {!cellContent.includes('@') ? (
-              cellContent
+              getlowerCaseFirstLetter(cellContent, language)
             ) : (
               <a href={`mailto:${cellContent}`}>{cellContent}</a>
             )}
