@@ -1,5 +1,6 @@
 import useLanguage from '../../features/language/useLanguage';
 import { ChangeInputType, OptionType } from '../../types/types';
+import { getlowerCaseFirstLetter } from '../../utils/utils';
 import Input from './Input';
 
 export type RadioBtnVariant = 'card';
@@ -22,6 +23,7 @@ const RadioButton = ({
   radioBtnVariant = '',
 }: RadioButtonProps) => {
   const { language } = useLanguage();
+
   return (
     <div className={`${radioBtnVariant} radio-btn-container`}>
       {radioButtonList.map((radio) => (
@@ -33,10 +35,9 @@ const RadioButton = ({
           value={radio.value}
           checked={initialChecked === radio.value}
           onChange={onChange}
-          labelText={language[radio.label] || radio.label}
+          labelText={getlowerCaseFirstLetter(radio.label, language)}
         />
       ))}
-
       {formInfoText && <section className="form-info">{formInfoText}</section>}
     </div>
   );
