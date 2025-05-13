@@ -52,6 +52,8 @@ const ProductForm = ({
   onReset,
 }: ProductFormProps) => {
   const navigate = useNavigate();
+  const { currencyText } = useCurrency();
+
   const { language } = useLanguage();
   const formRef = useRef<HTMLFormElement | null>(null);
 
@@ -116,7 +118,7 @@ const ProductForm = ({
     sizes: selectedProduct?.sizes ?? ['S', 'M', 'L', 'XL'],
     subCategory: selectedCategory,
   };
-  const { currencyText } = useCurrency();
+
   const defaultColorValue = selectedProduct?.colors.map((color) => ({
     label: language[color],
     value: color,
