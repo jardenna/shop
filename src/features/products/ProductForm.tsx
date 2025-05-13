@@ -8,9 +8,7 @@ import {
 } from '../../app/api/apiTypes';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import Form from '../../components/Form';
-import Checkbox, {
-  CheckboxItems,
-} from '../../components/formElements/Checkbox';
+import Checkbox from '../../components/formElements/Checkbox';
 import FileInput from '../../components/formElements/fileInput/FileInput';
 import ProductImgList from '../../components/formElements/fileInput/ProductImgList';
 import Input from '../../components/formElements/Input';
@@ -83,11 +81,11 @@ const ProductForm = ({
     { label: language.purple, value: 'purple' },
   ];
 
-  const checkboxItems: CheckboxItems[] = [
-    { label: 'S' },
-    { label: 'M' },
-    { label: 'L' },
-    { label: 'XL' },
+  const checkboxItems = [
+    { value: 'S', label: 'S' },
+    { value: 'M', label: 'M' },
+    { value: 'L', label: 'L' },
+    { value: 'XL', label: 'XL' },
   ];
 
   const [uploadImages] = useUploadImageMutation();

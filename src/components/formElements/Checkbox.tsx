@@ -3,6 +3,7 @@ import Input from './Input';
 
 export type CheckboxItems = {
   label: string;
+  value: string;
 };
 
 type CheckboxProps = {
@@ -26,9 +27,9 @@ const Checkbox = ({
         <Input
           type="checkbox"
           name={name}
-          value={checkbox.label}
+          value={checkbox.value}
           onChange={onChange}
-          checked={values.includes(checkbox.label)}
+          checked={values.includes(checkbox.value)}
           id={checkbox.label}
           labelText={checkbox.label}
         />

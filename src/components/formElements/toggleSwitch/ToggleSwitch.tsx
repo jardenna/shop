@@ -11,7 +11,12 @@ const ToggleSwitch = ({ text, id }: ToggleSwitchProps) => (
       <label htmlFor={id} className="toggle-switch-label" aria-label={text}>
         <span className="toggle-switch-text"> {text}</span>
       </label>
-      <input type="checkbox" id={id} className="toggle-switch-input" />
+      <input
+        type="checkbox"
+        id={id}
+        className="toggle-switch-input"
+        name={id}
+      />
     </li>
   </ul>
 );
