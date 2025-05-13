@@ -24,7 +24,7 @@ import StatusInputs from '../../components/StatusInputs';
 import useFormValidation from '../../hooks/useFormValidation';
 import { MainPath } from '../../layout/nav/enums';
 import variables from '../../scss/variables.module.scss';
-import { OptionType } from '../../types/types';
+import { ChangeInputType1, OptionType } from '../../types/types';
 import { discountCalculation, sizeList } from '../../utils/utils';
 import ProductPrice from '../currency/components/ProductPrice';
 import useCurrency from '../currency/useCurrency';
@@ -110,10 +110,7 @@ const ProductForm = ({
     { value: 'XL', label: 'XL' },
   ];
 
-  const showPriceItems = [
-    { value: 'showPrice', label: language.showPrice },
-    { value: 'showOther', label: 'showOther' },
-  ];
+  const showPriceItems = [{ value: 'showPrice', label: 'showPrice' }];
 
   const initialState: ProductRequest = {
     brand: selectedProduct?.brand ?? '',
@@ -163,6 +160,29 @@ const ProductForm = ({
   const { currencyText } = useCurrency();
 
   const [uploadedImg, setUploadedImg] = useState(selectedProduct?.images || []);
+  const initS = {
+    val: [],
+  };
+
+  const [showCalculatedPrice, setShowCalculatedPrice] = useState<any>(initS);
+
+  const handleShowCalculatedPrice = (event: ChangeInputType1) => {
+    const { name, checked, value } = event.target;
+
+    const currentValues = showCalculatedPrice[name] as string[];
+
+    if (checked) {
+      setShowCalculatedPrice({
+        ...showCalculatedPrice,
+        [name]: [...currentValues, value],
+      });
+    } else {
+      setShowCalculatedPrice({
+        ...values,
+        [name]: currentValues.filter((item) => item !== value),
+      });
+    }
+  };
 
   // Redux hooks
   const [uploadImages] = useUploadImageMutation();
@@ -373,14 +393,21 @@ const ProductForm = ({
             </div>
 
             <GridTwoCol>
-              <ToggleSwitch list={showPriceItems} />
-              {values.discount ? (
-                <ProductPrice
-                  price={discountCalculation(values.price, values.discount)}
-                />
-              ) : (
-                <ProductPrice price={values.price} />
-              )}
+              <ToggleSwitch
+                toggleSwitchList={showPriceItems}
+                onChange={handleShowCalculatedPrice}
+                name="val"
+                values={showCalculatedPrice.val}
+              />
+
+              {showCalculatedPrice.val.includes('showPrice') &&
+                (values.discount ? (
+                  <ProductPrice
+                    price={discountCalculation(values.price, values.discount)}
+                  />
+                ) : (
+                  <ProductPrice price={values.price} />
+                ))}
             </GridTwoCol>
           </FormCard>
           <FormCard legendText={language.details} onReset={onReset}>

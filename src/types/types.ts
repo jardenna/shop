@@ -6,6 +6,7 @@ export type ButtonEventType = MouseEvent<HTMLButtonElement>;
 export type ChangeInputType = ChangeEvent<
   HTMLInputElement | HTMLTextAreaElement
 >;
+export type ChangeInputType1 = ChangeEvent<HTMLInputElement>;
 
 export type OptionType<T = string> = {
   label: string;
