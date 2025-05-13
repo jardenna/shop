@@ -12,7 +12,7 @@ type ErrorContentProps = {
 const ErrorContent = ({ onClick, errorText, btnLabel }: ErrorContentProps) => {
   const { language } = useLanguage();
   return (
-    <section className="error">
+    <section className="error-content">
       <Img
         className="emoji"
         src="/images/sad_smiley.png"
