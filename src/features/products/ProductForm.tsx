@@ -109,10 +109,7 @@ const ProductForm = ({
     { value: 'XL', label: 'XL' },
   ];
 
-  const showPriceItems = [
-    { value: 'showPrice', label: 'showPrice' },
-    { value: 'showOther', label: 'showOther' },
-  ];
+  const showPriceItems = [{ value: 'showPrice', label: 'showPrice' }];
 
   const initialState: ProductRequest = {
     brand: selectedProduct?.brand ?? '',
