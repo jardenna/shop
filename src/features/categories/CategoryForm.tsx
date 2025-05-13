@@ -14,6 +14,7 @@ import {
   useCreateCategoryMutation,
   useUpdateCategoryMutation,
 } from './categoriyApiSlice';
+import { getlowerCaseFirstLetter } from '../../utils/utils';
 
 type CategoryFormProps = {
   id: string | null;
@@ -106,7 +107,7 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
           categoryNamevalue={values.categoryName}
           categoryNameId="categoryName"
           defaultStatusValue={{
-            label: language[values.categoryStatus.toLowerCase()],
+            label: getlowerCaseFirstLetter(values.categoryStatus, language),
             value: values.categoryStatus,
           }}
           onSelectStatus={(selectedOptions: OptionType) => {

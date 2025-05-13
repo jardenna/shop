@@ -61,6 +61,10 @@ const ViewProductPage = () => {
     label: language.delete,
     variant: BtnVariant.Danger,
   };
+  //  statusMessage={getlowerCaseFirstLetter(
+  //             category.mainCategory.categoryStatus,
+  //             language,
+  //           )}
 
   const mainCategory = product ? product.subCategory.category.categoryName : '';
   const subCategory = product ? product.subCategory.subCategoryName : '';

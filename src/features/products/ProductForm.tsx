@@ -25,7 +25,11 @@ import useFormValidation from '../../hooks/useFormValidation';
 import { MainPath } from '../../layout/nav/enums';
 import variables from '../../scss/variables.module.scss';
 import { OptionType } from '../../types/types';
-import { discountCalculation, sizeList } from '../../utils/utils';
+import {
+  discountCalculation,
+  getlowerCaseFirstLetter,
+  sizeList,
+} from '../../utils/utils';
 import ProductPrice from '../currency/components/ProductPrice';
 import useCurrency from '../currency/useCurrency';
 import useLanguage from '../language/useLanguage';
@@ -411,7 +415,7 @@ const ProductForm = ({
               labelText={language.productStatus}
               ref={formRef}
               defaultStatusValue={{
-                label: language[values.productStatus.toLowerCase()],
+                label: getlowerCaseFirstLetter(values.productStatus, language),
                 value: values.productStatus,
               }}
               onSelectStatus={(selectedOptions: OptionType) => {

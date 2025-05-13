@@ -9,7 +9,7 @@ import {
   useGetSubCategoryByIdQuery,
 } from '../../features/subCategories/subCategoryApiSlice';
 import { MainPath } from '../../layout/nav/enums';
-import { getErrorMessage } from '../../utils/utils';
+import { getErrorMessage, getlowerCaseFirstLetter } from '../../utils/utils';
 import PageContainer from '../PageContainer';
 
 const ViewSubCategoryPage = () => {
@@ -86,7 +86,10 @@ const ViewSubCategoryPage = () => {
               category.mainCategory.categoryStatus !== 'Published'
             }
             scheduledDate={category.scheduledDate || null}
-            statusMessage={category.mainCategory.categoryStatus.toLowerCase()}
+            statusMessage={getlowerCaseFirstLetter(
+              category.mainCategory.categoryStatus,
+              language,
+            )}
             status={category.categoryStatus}
           />
         </PageContainer>

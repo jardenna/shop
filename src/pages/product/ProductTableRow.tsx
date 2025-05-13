@@ -6,7 +6,7 @@ import MoreLink from '../../components/MoreLink';
 import ProductPrice from '../../features/currency/components/ProductPrice';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
-import { formatNumber } from '../../utils/utils';
+import { formatNumber, getlowerCaseFirstLetter } from '../../utils/utils';
 
 type ProductTableRowProps = {
   categoryName: string;
@@ -51,7 +51,7 @@ const ProductTableRow = ({
       <td>
         <CardBadge
           badgeClassName={status.toLowerCase()}
-          badgeText={language[status.toLowerCase()]}
+          badgeText={getlowerCaseFirstLetter(status, language)}
           scheduledDate={scheduledDate || null}
         />
       </td>

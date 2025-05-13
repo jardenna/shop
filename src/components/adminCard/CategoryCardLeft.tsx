@@ -1,5 +1,6 @@
 import { Status } from '../../app/api/apiTypes';
 import useLanguage from '../../features/language/useLanguage';
+import { getlowerCaseFirstLetter } from '../../utils/utils';
 import Badge from '../badge/Badge';
 import CardContent from '../card/CardContent';
 import CardFooter from '../card/CardFooter';
@@ -28,7 +29,7 @@ const CategoryCardLeft = ({
       <div className="position-relative">
         <h2 className="admin-card-title">{name}</h2>
         <Badge
-          badgeText={language[status.toLowerCase()]}
+          badgeText={getlowerCaseFirstLetter(status, language)}
           className={status.toLowerCase()}
         />
         <span>

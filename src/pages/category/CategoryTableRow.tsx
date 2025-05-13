@@ -5,6 +5,7 @@ import DateDisplay from '../../components/datePicker/DateDisplay';
 import MoreLink from '../../components/MoreLink';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
+import { getlowerCaseFirstLetter } from '../../utils/utils';
 
 type CategoryTableRowProps = {
   categoryName: string;
@@ -28,7 +29,7 @@ const CategoryTableRow = ({
       <td>
         <CardBadge
           badgeClassName={status.toLowerCase()}
-          badgeText={language[status.toLowerCase()]}
+          badgeText={getlowerCaseFirstLetter(status, language)}
           scheduledDate={scheduledDate || null}
         />
       </td>
