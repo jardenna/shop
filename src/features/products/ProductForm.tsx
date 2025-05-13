@@ -365,7 +365,7 @@ const ProductForm = ({
             </div>
 
             <GridTwoCol>
-              <ToggleSwitch text="Vis pris" id="pris" />
+              <ToggleSwitch text={language.showPrice} id="price" />
               {values.discount ? (
                 <ProductPrice
                   price={discountCalculation(values.price, values.discount)}
