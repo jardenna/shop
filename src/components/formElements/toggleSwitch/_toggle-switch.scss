@@ -1,15 +1,15 @@
 @use '../../../scss/globals' as *;
 
-.toggle {
+.toggle-switch-list {
   position: relative;
   display: inline-block;
 }
 
-.toggle-input {
+.toggle-switch-input {
   display: none;
 }
 
-.toggle-label {
+.toggle-switch-label {
   display: block;
   width: 47px;
   height: 25px;
@@ -33,16 +33,18 @@
   }
 }
 
-.toggle-input:checked + .toggle-label {
-  background-color: $color-background-secondary;
-
-  &::after {
-    left: 25px;
-  }
-}
-
-.toggle-text {
+.toggle-switch-text {
   position: absolute;
   left: 51px;
   top: 3px;
+}
+
+.toggle-switch-item:has(input:checked) {
+  .toggle-switch-label {
+    background-color: $color-background-secondary;
+
+    &::after {
+      left: 25px;
+    }
+  }
 }

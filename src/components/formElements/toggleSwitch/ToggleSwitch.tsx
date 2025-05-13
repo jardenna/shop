@@ -6,12 +6,14 @@ type ToggleSwitchProps = {
 };
 
 const ToggleSwitch = ({ text, id }: ToggleSwitchProps) => (
-  <div className="toggle">
-    <input type="checkbox" id={id} className="toggle-input" />
-    <label htmlFor={id} className="toggle-label" aria-label={text}>
-      <span className="toggle-text"> {text}</span>
-    </label>
-  </div>
+  <ul className="toggle-switch-list">
+    <li className="toggle-switch-item">
+      <label htmlFor={id} className="toggle-switch-label" aria-label={text}>
+        <span className="toggle-switch-text"> {text}</span>
+      </label>
+      <input type="checkbox" id={id} className="toggle-switch-input" />
+    </li>
+  </ul>
 );
 
 export default ToggleSwitch;
