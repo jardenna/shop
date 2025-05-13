@@ -27,7 +27,7 @@ const tableHeaders: { key: keyof UserResponse; label: string; name: string }[] =
 
 const columnKeys: (keyof UserResponse)[] = ['username', 'email', 'role'];
 
-const roleOptions = [
+const radioButtonList = [
   { value: 'Employee', label: 'Employee' },
   { value: 'User', label: 'user' },
 ];
@@ -120,7 +120,7 @@ const UserPage = () => {
                 {columnKeys.map((columnKey) => (
                   <td key={columnKey}>
                     <EditUserInput
-                      roleOptions={roleOptions}
+                      radioButtonList={radioButtonList}
                       isAdmin={isAdmin}
                       onSave={() => {
                         handleSaveEdit();

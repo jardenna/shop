@@ -12,7 +12,7 @@ import useLanguage from '../../language/useLanguage';
 
 type EditUserInputProps = {
   isAdmin: boolean;
-  roleOptions: RadioListItem[];
+  radioButtonList: RadioListItem[];
   roleValue: RoleTypes;
   showEditInput: boolean;
   onEditBtnClick: () => void;
@@ -28,7 +28,7 @@ const EditUserInput = ({
   cellContent,
   onEditBtnClick,
   isAdmin,
-  roleOptions,
+  radioButtonList,
   roleValue,
 }: EditUserInputProps) => {
   const { language } = useLanguage();
@@ -46,7 +46,7 @@ const EditUserInput = ({
           isAlterntiveInput={id === 'role'}
           alternativeInput={
             <RadioButton
-              radioButtonList={roleOptions}
+              radioButtonList={radioButtonList}
               name="role"
               initialChecked={roleValue}
               onChange={onEditChange}
