@@ -90,7 +90,7 @@ const ProductForm = ({
   ];
 
   const showPriceItems = [
-    { value: 'showPrice', label: 'showPrice' },
+    { value: 'showPrice', label: language.showPrice },
     { value: 'showOther', label: 'showOther' },
   ];
 

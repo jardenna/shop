@@ -28,7 +28,7 @@ const tableHeaders: { key: keyof UserResponse; label: string; name: string }[] =
 const columnKeys: (keyof UserResponse)[] = ['username', 'email', 'role'];
 
 const radioButtonList = [
-  { value: 'Employee', label: 'Employee' },
+  { value: 'Employee', label: 'employee' },
   { value: 'User', label: 'user' },
 ];
 
@@ -168,7 +168,7 @@ const UserPage = () => {
                       <IconContent
                         iconName={IconName.Trash}
                         title={language.trashCan}
-                        ariaLabel={language.actionNotAllowedForAdmin}
+                        ariaLabel={language.adminCannotBeDeleted}
                       />
                     </span>
                   )}
