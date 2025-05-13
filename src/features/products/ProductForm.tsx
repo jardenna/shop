@@ -52,11 +52,33 @@ const ProductForm = ({
   onReset,
 }: ProductFormProps) => {
   const navigate = useNavigate();
-  const { currencyText } = useCurrency();
-
   const { language } = useLanguage();
   const formRef = useRef<HTMLFormElement | null>(null);
 
+  // Helper functions
+  const handleGoback = () => {
+    navigate(-1);
+  };
+
+  const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
+    onCustomChange(name, selectedOptions.value);
+  };
+
+  const handleSelectColors = (name: string, selectedOptions: OptionType[]) => {
+    const selectedValues = selectedOptions.map((option) => option.value);
+    onCustomChange(name, selectedValues);
+  };
+
+  const handleSelectCategory = (name: string, selectedOptions: OptionType) => {
+    onCustomChange(name, selectedOptions.value);
+  };
+
+  const handleRemoveImg = (name: string) => {
+    const image = uploadedImg.filter((img) => img !== name);
+    setUploadedImg(image);
+  };
+
+  // Options and initial state
   const parentCategoryOptions = parentCategories.map(
     ({ label, parentCategoryName, value, categoryStatus }) => ({
       label: `${parentCategoryName} / ${label}`,
@@ -64,9 +86,6 @@ const ProductForm = ({
       status: categoryStatus,
     }),
   );
-
-  const [createProduct] = useCreateProductMutation();
-  const [updateProduct] = useUpdateProductMutation();
 
   const colorOptions = [
     { label: language.black, value: 'black' },
@@ -96,14 +115,6 @@ const ProductForm = ({
     { value: 'showOther', label: 'showOther' },
   ];
 
-  const [uploadImages] = useUploadImageMutation();
-
-  const selectedCategory = selectedProduct?.subCategory._id ?? '';
-
-  const defaultCategoryValue = parentCategoryOptions.find(
-    (category) => category.value === selectedCategory,
-  );
-
   const initialState: ProductRequest = {
     brand: selectedProduct?.brand ?? '',
     colors: selectedProduct?.colors ?? [],
@@ -116,7 +127,7 @@ const ProductForm = ({
     productName: selectedProduct?.productName ?? '',
     productStatus: selectedProduct?.productStatus ?? 'Inactive',
     sizes: selectedProduct?.sizes ?? ['S', 'M', 'L', 'XL'],
-    subCategory: selectedCategory,
+    subCategory: selectedProduct?.subCategory._id ?? '',
   };
 
   const defaultColorValue = selectedProduct?.colors.map((color) => ({
@@ -124,7 +135,13 @@ const ProductForm = ({
     value: color,
   }));
 
+  const defaultCategoryValue = parentCategoryOptions.find(
+    (category) => category.value === selectedProduct?.subCategory._id,
+  );
+
   const selectedTime = selectedProduct?.scheduledDate;
+
+  // Hooks
   const {
     onChange,
     values,
@@ -141,30 +158,16 @@ const ProductForm = ({
   });
 
   const { onAddMessagePopup } = useMessagePopup();
-
   const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
     useDatePicker({ initialTime: selectedTime });
-
-  const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
-    onCustomChange(name, selectedOptions.value);
-  };
-
-  const handleSelectColors = (name: string, selectedOptions: OptionType[]) => {
-    const selectedValues = selectedOptions.map((option) => option.value);
-
-    onCustomChange(name, selectedValues);
-  };
-
-  const handleSelectCategory = (name: string, selectedOptions: OptionType) => {
-    onCustomChange(name, selectedOptions.value);
-  };
+  const { currencyText } = useCurrency();
 
   const [uploadedImg, setUploadedImg] = useState(selectedProduct?.images || []);
-  const handleRemoveImg = (name: string) => {
-    const image = uploadedImg.filter((img) => img !== name);
-    setUploadedImg(image);
-  };
+  const [uploadImages] = useUploadImageMutation();
+  const [createProduct] = useCreateProductMutation();
+  const [updateProduct] = useUpdateProductMutation();
 
+  // Submit handler
   async function handleSubmitProduct() {
     try {
       const formData = new FormData();
@@ -213,9 +216,6 @@ const ProductForm = ({
       });
     }
   }
-  const handleGoback = () => {
-    navigate(-1);
-  };
 
   return (
     <Form
