@@ -11,6 +11,7 @@ export type IconBtnProps = {
   ariaSelected?: boolean;
   btnType?: ButtonType;
   className?: string;
+  disabled?: boolean;
   size?: string;
   variant?: BtnVariant;
   onClick?: () => void;
@@ -27,6 +28,7 @@ const IconBtn = ({
   btnType,
   variant = BtnVariant.Ghost,
   size,
+  disabled,
 }: IconBtnProps) => (
   <Button
     variant={variant}
@@ -35,6 +37,7 @@ const IconBtn = ({
     ariaSelected={ariaSelected}
     ariaExpanded={ariaExpanded}
     type={btnType}
+    disabled={disabled}
   >
     <IconContent
       iconName={iconName}
