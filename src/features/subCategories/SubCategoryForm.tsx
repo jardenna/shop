@@ -53,10 +53,6 @@ const SubCategoryForm = ({
     }),
   );
 
-  const preSelectedCategory = parentCategoriesOptions.find(
-    (parentCategory) => parentCategory.label === values.category,
-  );
-
   const initialState: CreateSubCategoryRequest = {
     subCategoryName: selectedCategory?.subCategoryName ?? '',
     categoryStatus: selectedCategory?.categoryStatus ?? 'Inactive',
@@ -72,6 +68,10 @@ const SubCategoryForm = ({
       validate: validateSubcategory,
       callback: handleSubmitCategory,
     });
+
+  const preSelectedCategory = parentCategoriesOptions.find(
+    (parentCategory) => parentCategory.label === values.category,
+  );
 
   const { onAddMessagePopup } = useMessagePopup();
   const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
