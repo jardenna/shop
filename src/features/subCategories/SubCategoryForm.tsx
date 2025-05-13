@@ -34,24 +34,17 @@ const SubCategoryForm = ({
 }: SubCategoryFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
-  const initialState: CreateSubCategoryRequest = {
-    subCategoryName: selectedCategory?.subCategoryName ?? '',
-    categoryStatus: selectedCategory?.categoryStatus ?? 'Inactive',
-    category: selectedCategory?.mainCategory.categoryName ?? '',
+
+  // Helper functions
+  const handleGoback = () => {
+    navigate(-1);
   };
 
-  const { onChange, values, onSubmit, onCustomChange, errors } =
-    useFormValidation({
-      initialState,
-      validate: validateSubcategory,
-      callback: handleSubmitCategory,
-    });
+  const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
+    onCustomChange(name, selectedOptions.value);
+  };
 
-  const { onAddMessagePopup } = useMessagePopup();
-  const [updateSubCategory] = useUpdateSubCategoryMutation();
-  const [createSubCategory] = useCreateSubCategoryMutation();
-  const selectedTime = selectedCategory?.scheduledDate;
-
+  // Options and initial state
   const parentCategoriesOptions = parentCategories.map(
     ({ categoryName, id, categoryStatus }) => ({
       label: categoryName,
@@ -60,17 +53,34 @@ const SubCategoryForm = ({
     }),
   );
 
-  const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
-    useDatePicker({ initialTime: selectedTime });
-
-  const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
-    onCustomChange(name, selectedOptions.value);
-  };
-
   const preSelectedCategory = parentCategoriesOptions.find(
     (parentCategory) => parentCategory.label === values.category,
   );
 
+  const initialState: CreateSubCategoryRequest = {
+    subCategoryName: selectedCategory?.subCategoryName ?? '',
+    categoryStatus: selectedCategory?.categoryStatus ?? 'Inactive',
+    category: selectedCategory?.mainCategory.categoryName ?? '',
+  };
+
+  const selectedTime = selectedCategory?.scheduledDate;
+
+  // Hooks
+  const { onChange, values, onSubmit, onCustomChange, errors } =
+    useFormValidation({
+      initialState,
+      validate: validateSubcategory,
+      callback: handleSubmitCategory,
+    });
+
+  const { onAddMessagePopup } = useMessagePopup();
+  const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
+    useDatePicker({ initialTime: selectedTime });
+
+  const [updateSubCategory] = useUpdateSubCategoryMutation();
+  const [createSubCategory] = useCreateSubCategoryMutation();
+
+  // Submit handler
   async function handleSubmitCategory() {
     try {
       if (id) {
@@ -109,10 +119,6 @@ const SubCategoryForm = ({
       });
     }
   }
-
-  const handleGoback = () => {
-    navigate(-1);
-  };
 
   return (
     <Form
