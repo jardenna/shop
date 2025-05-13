@@ -1,3 +1,4 @@
+import useLanguage from '../../features/language/useLanguage';
 import { ChangeInputType, OptionType } from '../../types/types';
 import Input from './Input';
 
@@ -19,23 +20,26 @@ const RadioButton = ({
   name,
   formInfoText,
   radioBtnVariant = '',
-}: RadioButtonProps) => (
-  <div className={`${radioBtnVariant} radio-btn-container`}>
-    {radioButtonList.map((radio) => (
-      <Input
-        type="radio"
-        key={radio.value}
-        id={radio.value}
-        name={name}
-        value={radio.value}
-        checked={initialChecked === radio.value}
-        onChange={onChange}
-        labelText={radio.label}
-      />
-    ))}
+}: RadioButtonProps) => {
+  const { language } = useLanguage();
+  return (
+    <div className={`${radioBtnVariant} radio-btn-container`}>
+      {radioButtonList.map((radio) => (
+        <Input
+          type="radio"
+          key={radio.value}
+          id={radio.value}
+          name={name}
+          value={radio.value}
+          checked={initialChecked === radio.value}
+          onChange={onChange}
+          labelText={language[radio.label] || radio.label}
+        />
+      ))}
 
-    {formInfoText && <section className="form-info">{formInfoText}</section>}
-  </div>
-);
+      {formInfoText && <section className="form-info">{formInfoText}</section>}
+    </div>
+  );
+};
 
 export default RadioButton;
