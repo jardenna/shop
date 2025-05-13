@@ -7,6 +7,11 @@ button[aria-disabled='true'] {
   border-color: $color-border;
 }
 
+.btn-ghost[aria-disabled='true'] {
+  background-color: transparent;
+  color: $color-gray-60;
+}
+
 a[class^='btn-'],
 .btn {
   display: flex;

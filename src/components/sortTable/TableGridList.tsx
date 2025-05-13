@@ -31,7 +31,7 @@ const TableGridList = ({
           onClick={() => {
             onSetPadding(padding);
           }}
-          className={isActive === padding ? 'is-active' : ''}
+          disabled={isActive === padding}
           ariaSelected={isActive === padding}
         />
       ))}
