@@ -25,7 +25,7 @@ import useFormValidation from '../../hooks/useFormValidation';
 import { MainPath } from '../../layout/nav/enums';
 import variables from '../../scss/variables.module.scss';
 import { OptionType } from '../../types/types';
-import { discountCalculation } from '../../utils/utils';
+import { discountCalculation, sizeList } from '../../utils/utils';
 import ProductPrice from '../currency/components/ProductPrice';
 import useCurrency from '../currency/useCurrency';
 import useLanguage from '../language/useLanguage';
@@ -126,7 +126,7 @@ const ProductForm = ({
     discount: selectedProduct?.discount ?? 0,
     productName: selectedProduct?.productName ?? '',
     productStatus: selectedProduct?.productStatus ?? 'Inactive',
-    sizes: selectedProduct?.sizes ?? ['S', 'M', 'L', 'XL'],
+    sizes: selectedProduct?.sizes ?? sizeList,
     subCategory: selectedProduct?.subCategory._id ?? '',
   };
 
@@ -163,6 +163,8 @@ const ProductForm = ({
   const { currencyText } = useCurrency();
 
   const [uploadedImg, setUploadedImg] = useState(selectedProduct?.images || []);
+
+  // Redux hooks
   const [uploadImages] = useUploadImageMutation();
   const [createProduct] = useCreateProductMutation();
   const [updateProduct] = useUpdateProductMutation();
