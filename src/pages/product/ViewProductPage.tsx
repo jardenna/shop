@@ -16,9 +16,9 @@ import { getErrorMessage } from '../../utils/utils';
 import PageContainer from '../PageContainer';
 
 const ViewProductPage = () => {
+  const params = useParams();
   const navigate = useNavigate();
   const { language } = useLanguage();
-  const params = useParams();
 
   const handleGoback = () => {
     navigate(-1);

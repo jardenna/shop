@@ -13,9 +13,9 @@ import { getErrorMessage, getlowerCaseFirstLetter } from '../../utils/utils';
 import PageContainer from '../PageContainer';
 
 const ViewSubCategoryPage = () => {
+  const params = useParams();
   const navigate = useNavigate();
   const { language } = useLanguage();
-  const params = useParams();
 
   const handleGoback = () => {
     navigate(-1);

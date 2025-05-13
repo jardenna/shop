@@ -8,8 +8,8 @@ import useFormValidation from '../hooks/useFormValidation';
 import { MainPath } from '../layout/nav/enums';
 
 const LoginPage = () => {
-  const navigate = useNavigate();
   const location = useLocation();
+  const navigate = useNavigate();
   const { language } = useLanguage();
 
   const initialState = {
