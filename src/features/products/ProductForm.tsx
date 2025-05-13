@@ -363,15 +363,17 @@ const ProductForm = ({
                 inputInfo="%"
               />
             </div>
-            <ToggleSwitch text="Vis andet" id="pris" />
-            {values.discount && (
-              <GridTwoCol>
-                <strong>{language.newPrice}:</strong>
+
+            <GridTwoCol>
+              <ToggleSwitch text="Vis pris" id="pris" />
+              {values.discount ? (
                 <ProductPrice
                   price={discountCalculation(values.price, values.discount)}
                 />
-              </GridTwoCol>
-            )}
+              ) : (
+                <ProductPrice price={values.price} />
+              )}
+            </GridTwoCol>
           </FormCard>
           <FormCard legendText={language.details} onReset={onReset}>
             <div className="flex">
