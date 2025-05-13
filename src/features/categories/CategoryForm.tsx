@@ -23,11 +23,25 @@ type CategoryFormProps = {
 const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
+
+  // Helper functions
+  const handleGoback = () => {
+    navigate(-1);
+  };
+
+  const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
+    onCustomChange(name, selectedOptions.value);
+  };
+
+  // Initial state
   const initialState: CreateCategoryRequest = {
     categoryName: selectedCategory?.categoryName || '',
     categoryStatus: selectedCategory?.categoryStatus || 'Inactive',
   };
 
+  const selectedTime = selectedCategory?.scheduledDate;
+
+  // Hooks
   const { onChange, values, onSubmit, errors, onCustomChange } =
     useFormValidation({
       initialState,
@@ -36,17 +50,13 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
     });
 
   const { onAddMessagePopup } = useMessagePopup();
-  const [updateCategory] = useUpdateCategoryMutation();
-  const [createCategory] = useCreateCategoryMutation();
-  const selectedTime = selectedCategory?.scheduledDate;
-
   const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
     useDatePicker({ initialTime: selectedTime });
 
-  const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
-    onCustomChange(name, selectedOptions.value);
-  };
+  const [updateCategory] = useUpdateCategoryMutation();
+  const [createCategory] = useCreateCategoryMutation();
 
+  // Submit handler
   async function handleSubmitCategory() {
     try {
       if (id) {
@@ -80,10 +90,6 @@ const CategoryForm = ({ selectedCategory, id }: CategoryFormProps) => {
       });
     }
   }
-
-  const handleGoback = () => {
-    navigate(-1);
-  };
 
   return (
     <Form
