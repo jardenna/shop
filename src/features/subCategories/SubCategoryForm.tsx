@@ -9,11 +9,12 @@ import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/Form';
 import validateSubcategory from '../../components/formElements/validation/validateSubcategory';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
+import Selectbox from '../../components/selectbox/Selectbox';
 import StatusOptions from '../../components/selectbox/StatusOptions';
 import SharedCategoryInputs from '../../components/SharedCategoryInputs';
 import useFormValidation from '../../hooks/useFormValidation';
 import { MainPath } from '../../layout/nav/enums';
+import { OptionType } from '../../types/types';
 import useLanguage from '../language/useLanguage';
 import {
   useCreateSubCategoryMutation,

@@ -1,8 +1,7 @@
 import { DropdownItem } from '../../components/dropdownBtn/DropdownBtn';
 import { SecondaryActionBtnProps } from '../../components/modal/Modal';
-import { OptionType } from '../../components/selectbox/Selectbox';
 import { SelectedLanguage } from '../../features/language/languageSlice';
-import { ChangeInputType } from '../../types/types';
+import { ChangeInputType, OptionType } from '../../types/types';
 import HeaderIcons from '../headerIcons/HeaderIcons';
 import LayoutElement from '../LayoutElement';
 import { MainPath } from '../nav/enums';

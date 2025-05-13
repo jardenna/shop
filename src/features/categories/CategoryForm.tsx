@@ -5,10 +5,10 @@ import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/Form';
 import validateCategory from '../../components/formElements/validation/validateCategory';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-import { OptionType } from '../../components/selectbox/Selectbox';
 import SharedCategoryInputs from '../../components/SharedCategoryInputs';
 import useFormValidation from '../../hooks/useFormValidation';
 import { MainPath } from '../../layout/nav/enums';
+import { OptionType } from '../../types/types';
 import useLanguage from '../language/useLanguage';
 import {
   useCreateCategoryMutation,

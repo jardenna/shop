@@ -1,18 +1,17 @@
 import { RoleTypes } from '../../../app/api/apiTypes';
-import RadioButton, {
-  RadioListItem,
-} from '../../../components/formElements/RadioButton';
+import RadioButton from '../../../components/formElements/RadioButton';
 
 import IconBtn from '../../../components/IconBtn';
 import EditTableInput, {
   BaseEditTableInput,
 } from '../../../components/sortTable/EditTableInput';
 import { IconName } from '../../../types/enums';
+import { OptionType } from '../../../types/types';
 import useLanguage from '../../language/useLanguage';
 
 type EditUserInputProps = {
   isAdmin: boolean;
-  radioButtonList: RadioListItem[];
+  radioButtonList: OptionType[];
   roleValue: RoleTypes;
   showEditInput: boolean;
   onEditBtnClick: () => void;

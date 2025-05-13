@@ -18,12 +18,13 @@ import validateProduct from '../../components/formElements/validation/validatePr
 import GridTwoCol from '../../components/GridTwoCol';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import ColorOptions from '../../components/selectbox/ColorOptions';
-import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
+import Selectbox from '../../components/selectbox/Selectbox';
 import StatusOptions from '../../components/selectbox/StatusOptions';
 import StatusInputs from '../../components/StatusInputs';
 import useFormValidation from '../../hooks/useFormValidation';
 import { MainPath } from '../../layout/nav/enums';
 import variables from '../../scss/variables.module.scss';
+import { OptionType } from '../../types/types';
 import { discountCalculation } from '../../utils/utils';
 import ProductPrice from '../currency/components/ProductPrice';
 import useCurrency from '../currency/useCurrency';

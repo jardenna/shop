@@ -1,17 +1,12 @@
-import { ChangeInputType } from '../../types/types';
+import { ChangeInputType, OptionType } from '../../types/types';
 import Input from './Input';
-
-export type RadioListItem<T = string> = {
-  label: string;
-  value: T;
-};
 
 export type RadioBtnVariant = 'card';
 
 type RadioButtonProps = {
   initialChecked: string;
   name: string;
-  radioButtonList: RadioListItem[];
+  radioButtonList: OptionType[];
   formInfoText?: string;
   radioBtnVariant?: string;
   onChange: (event: ChangeInputType) => void;

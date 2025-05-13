@@ -1,13 +1,8 @@
-import { ChangeInputType } from '../../types/types';
+import { ChangeInputType, OptionType } from '../../types/types';
 import Input from './Input';
 
-export type CheckboxItems = {
-  label: string;
-  value: string;
-};
-
 type CheckboxProps = {
-  checkBoxList: CheckboxItems[];
+  checkBoxList: OptionType[];
   name: string;
   values: string[];
   formInfoText?: string;

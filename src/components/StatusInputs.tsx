@@ -1,10 +1,10 @@
 import { RefObject } from 'react';
 import { Status } from '../app/api/apiTypes';
 import useLanguage from '../features/language/useLanguage';
-import { ChangeInputType } from '../types/types';
+import { ChangeInputType, OptionType } from '../types/types';
 import DatePicker from './datePicker/DatePicker';
 import TimeInput from './formElements/timeInput/TimeInput';
-import Selectbox, { OptionType } from './selectbox/Selectbox';
+import Selectbox from './selectbox/Selectbox';
 
 export type StatusOptions = {
   label: string;
