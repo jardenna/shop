@@ -13,9 +13,17 @@ import { getErrorMessage, getlowerCaseFirstLetter } from '../../utils/utils';
 import PageContainer from '../PageContainer';
 
 const ViewSubCategoryPage = () => {
+  const navigate = useNavigate();
   const { language } = useLanguage();
   const params = useParams();
-  const navigate = useNavigate();
+
+  const handleGoback = () => {
+    navigate(-1);
+  };
+
+  const { onAddMessagePopup } = useMessagePopup();
+
+  // Redux hooks
   const {
     data: category,
     isLoading,
@@ -25,11 +33,7 @@ const ViewSubCategoryPage = () => {
     refetchOnMountOrArgChange: true,
   });
 
-  const { onAddMessagePopup } = useMessagePopup();
   const [deleteSubCategory] = useDeleteSubCategoryMutation();
-  const handleGoback = () => {
-    navigate(-1);
-  };
 
   const handleDeleteSubCategory = async () => {
     try {

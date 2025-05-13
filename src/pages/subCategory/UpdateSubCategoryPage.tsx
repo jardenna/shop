@@ -12,6 +12,12 @@ const UpdateSubCategoryPage = () => {
   const params = useParams();
   const navigate = useNavigate();
   const { language } = useLanguage();
+
+  const handleGoback = () => {
+    navigate(-1);
+  };
+
+  // Redux hooks
   const { data: allCategories } = useGetAllCategoriesQuery();
   const {
     data: category,
@@ -19,10 +25,6 @@ const UpdateSubCategoryPage = () => {
     refetch,
     error,
   } = useGetSubCategoryByIdQuery(params.id || '');
-
-  const handleGoback = () => {
-    navigate(-1);
-  };
 
   return (
     <article className="page page-small">
