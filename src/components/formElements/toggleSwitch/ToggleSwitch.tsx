@@ -1,23 +1,30 @@
+import { OptionType } from '../../../types/types';
 import './_toggle-switch.scss';
 
 type ToggleSwitchProps = {
-  id: string;
-  text: string;
+  list: OptionType[];
 };
 
-const ToggleSwitch = ({ text, id }: ToggleSwitchProps) => (
+// text={language.showPrice}
+const ToggleSwitch = ({ list }: ToggleSwitchProps) => (
   <ul className="toggle-switch-list">
-    <li className="toggle-switch-item">
-      <label htmlFor={id} className="toggle-switch-label" aria-label={text}>
-        <span className="toggle-switch-text"> {text}</span>
-      </label>
-      <input
-        type="checkbox"
-        id={id}
-        className="toggle-switch-input"
-        name={id}
-      />
-    </li>
+    {list.map((item) => (
+      <li className="toggle-switch-item" key={item.label}>
+        <label
+          htmlFor={item.label}
+          className="toggle-switch-label"
+          aria-label={item.label}
+        >
+          <span className="toggle-switch-text">{item.label}</span>
+        </label>
+        <input
+          type="checkbox"
+          id={item.label}
+          className="toggle-switch-input"
+          name={item.label}
+        />
+      </li>
+    ))}
   </ul>
 );
 

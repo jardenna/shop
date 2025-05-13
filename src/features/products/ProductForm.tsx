@@ -89,6 +89,11 @@ const ProductForm = ({
     { value: 'XL', label: 'XL' },
   ];
 
+  const showPriceItems = [
+    { value: 'showPrice', label: 'showPrice' },
+    { value: 'showOther', label: 'showOther' },
+  ];
+
   const [uploadImages] = useUploadImageMutation();
 
   const selectedCategory = selectedProduct?.subCategory._id ?? '';
@@ -364,7 +369,7 @@ const ProductForm = ({
             </div>
 
             <GridTwoCol>
-              <ToggleSwitch text={language.showPrice} id="totelPrice" />
+              <ToggleSwitch list={showPriceItems} />
               {values.discount ? (
                 <ProductPrice
                   price={discountCalculation(values.price, values.discount)}
