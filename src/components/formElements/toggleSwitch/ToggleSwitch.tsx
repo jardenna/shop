@@ -20,7 +20,7 @@ const ToggleSwitch = ({ list }: ToggleSwitchProps) => (
         <input
           type="checkbox"
           id={item.label}
-          className="toggle-switch-input"
+          className="toggle-switch-input visually-hidden"
           name={item.label}
         />
       </li>

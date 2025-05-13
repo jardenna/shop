@@ -2,19 +2,17 @@
 
 .toggle-switch-list {
   position: relative;
-  display: inline-block;
+  gap: 12px;
+  display: flex;
+  flex-direction: column;
 }
 
 .toggle-switch-item {
   position: relative;
 }
 
-.toggle-switch-input {
-  display: none;
-}
-
 .toggle-switch-label {
-  display: block;
+  display: flex;
   width: 47px;
   height: 25px;
   background-color: $color-gray-40;
@@ -39,7 +37,7 @@
 
 .toggle-switch-text {
   position: absolute;
-  left: 51px;
+  left: 52px;
   top: 3px;
 }
 
