@@ -9,7 +9,6 @@ type CheckboxProps = {
   checkBoxList: OptionType[];
   name: string;
   values: string[];
-  className?: string;
   formInfoText?: string;
   variant?: CheckboxVariant;
   onChange: (event: ChangeInputType) => void;
@@ -22,7 +21,6 @@ const Checkbox = ({
   formInfoText,
   name,
   variant = 'checkbox',
-  className = '',
 }: CheckboxProps) => {
   const { language } = useLanguage();
 
@@ -38,7 +36,11 @@ const Checkbox = ({
             checked={values.includes(checkbox.value)}
             id={checkbox.label}
             labelText={getlowerCaseFirstLetter(checkbox.label, language)}
-            className={className}
+            className={
+              variant === 'toggle-switch'
+                ? 'toggle-switch-input visually-hidden'
+                : ''
+            }
           />
         </li>
       ))}

@@ -13,6 +13,7 @@ import FileInput from '../../components/formElements/fileInput/FileInput';
 import ProductImgList from '../../components/formElements/fileInput/ProductImgList';
 import Input from '../../components/formElements/Input';
 import Textarea from '../../components/formElements/Textarea';
+import ToggleSwitch from '../../components/formElements/ToggleSwitch';
 import validateProduct from '../../components/formElements/validation/validateProduct';
 import GridTwoCol from '../../components/GridTwoCol';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
@@ -109,8 +110,6 @@ const ProductForm = ({
     { value: 'XL', label: 'XL' },
   ];
 
-  const showPriceItems = [{ value: 'showPrice', label: 'showPrice' }];
-
   const initialState: ProductRequest = {
     brand: selectedProduct?.brand ?? '',
     colors: selectedProduct?.colors ?? [],
@@ -159,28 +158,10 @@ const ProductForm = ({
   const { currencyText } = useCurrency();
 
   const [uploadedImg, setUploadedImg] = useState(selectedProduct?.images || []);
-  const initS = {
-    val: ['showPrice'],
-  };
+  const [showPrice, setShowPrice] = useState(false);
 
-  const [showCalculatedPrice, setShowCalculatedPrice] = useState<any>(initS);
-
-  const handleShowCalculatedPrice = (event: any) => {
-    const { name, checked, value } = event.target;
-
-    const currentValues = showCalculatedPrice[name] as string[];
-
-    if (checked) {
-      setShowCalculatedPrice({
-        ...showCalculatedPrice,
-        [name]: [...currentValues, value],
-      });
-    } else {
-      setShowCalculatedPrice({
-        ...values,
-        [name]: currentValues.filter((item) => item !== value),
-      });
-    }
+  const handleShowPrice = () => {
+    setShowPrice(!showPrice);
   };
 
   // Redux hooks
@@ -392,16 +373,14 @@ const ProductForm = ({
             </div>
 
             <GridTwoCol>
-              <Checkbox
-                checkBoxList={showPriceItems}
-                onChange={handleShowCalculatedPrice}
-                name="val"
-                values={showCalculatedPrice.val}
-                variant="toggle-switch"
-                className="toggle-switch-input visually-hidden"
+              <ToggleSwitch
+                id="show-price"
+                checked={showPrice}
+                onChange={handleShowPrice}
+                labelText="showPrice"
               />
 
-              {showCalculatedPrice.val.includes('showPrice') &&
+              {showPrice &&
                 (values.discount ? (
                   <ProductPrice
                     price={discountCalculation(values.price, values.discount)}
