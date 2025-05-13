@@ -4,6 +4,7 @@ import CardBadge from '../../components/card/CardBadge';
 import MoreLink from '../../components/MoreLink';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
+import { getlowerCaseFirstLetter } from '../../utils/utils';
 
 type SubCategoryTableRowsProps = {
   id: string;
@@ -31,7 +32,7 @@ const SubCategoryTableRows = ({
       <td>
         <CardBadge
           badgeClassName={status.toLowerCase()}
-          badgeText={language[status.toLowerCase()]}
+          badgeText={getlowerCaseFirstLetter(status, language)}
           scheduledDate={scheduledDate || null}
         />
       </td>

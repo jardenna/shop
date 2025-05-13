@@ -15,6 +15,7 @@ import SharedCategoryInputs from '../../components/SharedCategoryInputs';
 import useFormValidation from '../../hooks/useFormValidation';
 import { MainPath } from '../../layout/nav/enums';
 import { OptionType } from '../../types/types';
+import { getlowerCaseFirstLetter } from '../../utils/utils';
 import useLanguage from '../language/useLanguage';
 import {
   useCreateSubCategoryMutation,
@@ -53,10 +54,6 @@ const SubCategoryForm = ({
     }),
   );
 
-  const preSelectedCategory = parentCategoriesOptions.find(
-    (parentCategory) => parentCategory.label === values.category,
-  );
-
   const initialState: CreateSubCategoryRequest = {
     subCategoryName: selectedCategory?.subCategoryName ?? '',
     categoryStatus: selectedCategory?.categoryStatus ?? 'Inactive',
@@ -72,6 +69,10 @@ const SubCategoryForm = ({
       validate: validateSubcategory,
       callback: handleSubmitCategory,
     });
+
+  const preSelectedCategory = parentCategoriesOptions.find(
+    (parentCategory) => parentCategory.label === values.category,
+  );
 
   const { onAddMessagePopup } = useMessagePopup();
   const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
@@ -152,7 +153,7 @@ const SubCategoryForm = ({
           categoryNameLabelText={language.categoryName}
           onCategoryNameChange={onChange}
           defaultStatusValue={{
-            label: language[values.categoryStatus.toLowerCase()],
+            label: getlowerCaseFirstLetter(values.categoryStatus, language),
             value: values.categoryStatus,
           }}
           onSelectStatus={(selectedOptions: OptionType) => {

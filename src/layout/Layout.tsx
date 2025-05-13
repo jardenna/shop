@@ -24,20 +24,17 @@ const Layout = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { language, switchLanguage, selectedLanguage } = useLanguage();
-  const [logout] = useLogoutMutation();
+
+  // Hooks
   const { currentUser } = useAuth();
-  const isHomePage = location.pathname === '/';
   const { currencyOptions, onChangePrice, exchangeRate } = useCurrency();
+  const [logout] = useLogoutMutation();
 
-  const initialState = {
-    languageOption: selectedLanguage,
-    currencyOption: exchangeRate,
+  // Helper functions
+  const handleLogout = () => {
+    logout();
+    navigate(MainPath.Root);
   };
-
-  const { onChange, onSubmit, values, onCustomChange } = useFormValidation({
-    callback: handleSubmit,
-    initialState,
-  });
 
   const handleSelectCurrency = (name: string, selectedOptions: OptionType) => {
     onCustomChange(name, selectedOptions.value);
@@ -48,11 +45,20 @@ const Layout = () => {
     onChangePrice(values.currencyOption);
   }
 
-  const handleLogout = () => {
-    logout();
-    navigate(MainPath.Root);
+  // Initial state
+  const initialState = {
+    languageOption: selectedLanguage,
+    currencyOption: exchangeRate,
   };
 
+  const { onChange, onSubmit, values, onCustomChange } = useFormValidation({
+    callback: handleSubmit,
+    initialState,
+  });
+
+  const isHomePage = location.pathname === '/';
+
+  // Button configurations
   const primaryActionBtn = {
     onClick: onSubmit,
     label: language.updatePreferences,
@@ -63,6 +69,7 @@ const Layout = () => {
     label: language.cancel,
   };
 
+  // User dropdown list
   const userDropdownList = [
     {
       label: language.myAccount,

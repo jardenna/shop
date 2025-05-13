@@ -9,13 +9,21 @@ import {
   useGetSubCategoryByIdQuery,
 } from '../../features/subCategories/subCategoryApiSlice';
 import { MainPath } from '../../layout/nav/enums';
-import { getErrorMessage } from '../../utils/utils';
+import { getErrorMessage, getlowerCaseFirstLetter } from '../../utils/utils';
 import PageContainer from '../PageContainer';
 
 const ViewSubCategoryPage = () => {
-  const { language } = useLanguage();
   const params = useParams();
   const navigate = useNavigate();
+  const { language } = useLanguage();
+
+  const handleGoback = () => {
+    navigate(-1);
+  };
+
+  const { onAddMessagePopup } = useMessagePopup();
+
+  // Redux hooks
   const {
     data: category,
     isLoading,
@@ -25,11 +33,7 @@ const ViewSubCategoryPage = () => {
     refetchOnMountOrArgChange: true,
   });
 
-  const { onAddMessagePopup } = useMessagePopup();
   const [deleteSubCategory] = useDeleteSubCategoryMutation();
-  const handleGoback = () => {
-    navigate(-1);
-  };
 
   const handleDeleteSubCategory = async () => {
     try {
@@ -86,7 +90,10 @@ const ViewSubCategoryPage = () => {
               category.mainCategory.categoryStatus !== 'Published'
             }
             scheduledDate={category.scheduledDate || null}
-            statusMessage={category.mainCategory.categoryStatus.toLowerCase()}
+            statusMessage={getlowerCaseFirstLetter(
+              category.mainCategory.categoryStatus,
+              language,
+            )}
             status={category.categoryStatus}
           />
         </PageContainer>

@@ -16,19 +16,24 @@ import { getErrorMessage } from '../../utils/utils';
 import PageContainer from '../PageContainer';
 
 const ViewProductPage = () => {
-  const { language } = useLanguage();
   const params = useParams();
   const navigate = useNavigate();
+  const { language } = useLanguage();
 
-  const [deleteProduct] = useDeleteProductMutation();
+  const handleGoback = () => {
+    navigate(-1);
+  };
+  const { onAddMessagePopup } = useMessagePopup();
 
+  // Redux hooks
   const {
     data: product,
     isLoading,
     refetch,
     error,
   } = useGetProductByIdQuery(params.id || '');
-  const { onAddMessagePopup } = useMessagePopup();
+
+  const [deleteProduct] = useDeleteProductMutation();
 
   const handleDeleteProduct = async () => {
     try {
@@ -70,10 +75,6 @@ const ViewProductPage = () => {
     : '';
 
   const statusMessage = `${language.categoryIs} ${subCategoryStatus}`;
-
-  const handleGoback = () => {
-    navigate(-1);
-  };
 
   return (
     <article className="page">
