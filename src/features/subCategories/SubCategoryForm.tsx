@@ -9,11 +9,12 @@ import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/Form';
 import validateSubcategory from '../../components/formElements/validation/validateSubcategory';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-import Selectbox, { OptionType } from '../../components/selectbox/Selectbox';
+import Selectbox from '../../components/selectbox/Selectbox';
 import StatusOptions from '../../components/selectbox/StatusOptions';
 import SharedCategoryInputs from '../../components/SharedCategoryInputs';
 import useFormValidation from '../../hooks/useFormValidation';
 import { MainPath } from '../../layout/nav/enums';
+import { OptionType } from '../../types/types';
 import useLanguage from '../language/useLanguage';
 import {
   useCreateSubCategoryMutation,
@@ -33,24 +34,17 @@ const SubCategoryForm = ({
 }: SubCategoryFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
-  const initialState: CreateSubCategoryRequest = {
-    subCategoryName: selectedCategory?.subCategoryName ?? '',
-    categoryStatus: selectedCategory?.categoryStatus ?? 'Inactive',
-    category: selectedCategory?.mainCategory.categoryName ?? '',
+
+  // Helper functions
+  const handleGoback = () => {
+    navigate(-1);
   };
 
-  const { onChange, values, onSubmit, onCustomChange, errors } =
-    useFormValidation({
-      initialState,
-      validate: validateSubcategory,
-      callback: handleSubmitCategory,
-    });
+  const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
+    onCustomChange(name, selectedOptions.value);
+  };
 
-  const { onAddMessagePopup } = useMessagePopup();
-  const [updateSubCategory] = useUpdateSubCategoryMutation();
-  const [createSubCategory] = useCreateSubCategoryMutation();
-  const selectedTime = selectedCategory?.scheduledDate;
-
+  // Options and initial state
   const parentCategoriesOptions = parentCategories.map(
     ({ categoryName, id, categoryStatus }) => ({
       label: categoryName,
@@ -59,17 +53,35 @@ const SubCategoryForm = ({
     }),
   );
 
-  const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
-    useDatePicker({ initialTime: selectedTime });
-
-  const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
-    onCustomChange(name, selectedOptions.value);
-  };
-
   const preSelectedCategory = parentCategoriesOptions.find(
     (parentCategory) => parentCategory.label === values.category,
   );
 
+  const initialState: CreateSubCategoryRequest = {
+    subCategoryName: selectedCategory?.subCategoryName ?? '',
+    categoryStatus: selectedCategory?.categoryStatus ?? 'Inactive',
+    category: selectedCategory?.mainCategory.categoryName ?? '',
+  };
+
+  const selectedTime = selectedCategory?.scheduledDate;
+
+  // Hooks
+  const { onChange, values, onSubmit, onCustomChange, errors } =
+    useFormValidation({
+      initialState,
+      validate: validateSubcategory,
+      callback: handleSubmitCategory,
+    });
+
+  const { onAddMessagePopup } = useMessagePopup();
+  const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
+    useDatePicker({ initialTime: selectedTime });
+
+  // Redux hooks
+  const [updateSubCategory] = useUpdateSubCategoryMutation();
+  const [createSubCategory] = useCreateSubCategoryMutation();
+
+  // Submit handler
   async function handleSubmitCategory() {
     try {
       if (id) {
@@ -108,10 +120,6 @@ const SubCategoryForm = ({
       });
     }
   }
-
-  const handleGoback = () => {
-    navigate(-1);
-  };
 
   return (
     <Form

@@ -1,7 +1,11 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import useLocalStorage, { localStorageKeys } from '../../hooks/useLocalStorage';
-import { CurrencyCode, getFormattedPrice } from './currencyConverterUtil';
+import {
+  CurrencyCode,
+  currencyToText,
+  getFormattedPrice,
+} from './currencyConverterUtil';
 import { selectCurrency, setCurrency } from './currencySlice';
 
 const useCurrency = (price?: number) => {
@@ -16,6 +20,7 @@ const useCurrency = (price?: number) => {
     value: currency,
   }));
 
+  const currencyText = currencyToText[selectedCurrency];
   const handleChangePrice = (exchangeRate: CurrencyCode) => {
     setExchangeRate(exchangeRate);
   };
@@ -31,6 +36,7 @@ const useCurrency = (price?: number) => {
     convertedPrice,
     onChangePrice: handleChangePrice,
     exchangeRate,
+    currencyText,
   };
 };
 

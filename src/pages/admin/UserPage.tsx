@@ -27,8 +27,8 @@ const tableHeaders: { key: keyof UserResponse; label: string; name: string }[] =
 
 const columnKeys: (keyof UserResponse)[] = ['username', 'email', 'role'];
 
-const roleOptions = [
-  { value: 'Employee', label: 'Employee' },
+const radioButtonList = [
+  { value: 'Employee', label: 'employee' },
   { value: 'User', label: 'user' },
 ];
 
@@ -120,7 +120,7 @@ const UserPage = () => {
                 {columnKeys.map((columnKey) => (
                   <td key={columnKey}>
                     <EditUserInput
-                      roleOptions={roleOptions}
+                      radioButtonList={radioButtonList}
                       isAdmin={isAdmin}
                       onSave={() => {
                         handleSaveEdit();
@@ -168,7 +168,7 @@ const UserPage = () => {
                       <IconContent
                         iconName={IconName.Trash}
                         title={language.trashCan}
-                        ariaLabel={language.actionNotAllowedForAdmin}
+                        ariaLabel={language.adminCannotBeDeleted}
                       />
                     </span>
                   )}

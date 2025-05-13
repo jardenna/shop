@@ -6,13 +6,9 @@ import Select, {
   SingleValue,
 } from 'react-select';
 import useLanguage from '../../features/language/useLanguage';
+import { OptionType } from '../../types/types';
 import FormLabel from '../formElements/FormLabel';
 import './_select-box.scss';
-
-export type OptionType = {
-  label: string;
-  value: number | string;
-};
 
 export type SelectedOption = SingleValue<OptionType> | MultiValue<OptionType>;
 

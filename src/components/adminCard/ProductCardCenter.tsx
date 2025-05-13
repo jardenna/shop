@@ -1,9 +1,8 @@
 import { ProductSizes } from '../../app/api/apiTypes';
 import ProductPrice from '../../features/currency/components/ProductPrice';
 import useLanguage from '../../features/language/useLanguage';
-import { sizeList } from '../../pages/product/ViewProductPage';
 import variables from '../../scss/variables.module.scss';
-import { discountCalculation } from '../../utils/utils';
+import { discountCalculation, sizeList } from '../../utils/utils';
 import CardContent from '../card/CardContent';
 
 import GridTwoCol from '../GridTwoCol';

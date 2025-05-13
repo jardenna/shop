@@ -1,11 +1,12 @@
 ﻿key;en;da
 about;About;Profil
 account;Account;Konto
-actionNotAllowedForAdmin;Admin cannot be deleted;Denne handling er ikke tilladt for administrator
+actionOnlyAllowedForAdmin;This action is only allowed for administrator;Denne handling er kun tilladt for administrator
 add;Add;Tilføj
 additionalInfo;Additional info;Supplerende information
 addToStock;Add to stock;Tilføj til lager
 admin;Admin;Admin
+adminCannotBeDeleted;Administrator cannot be deleted;Administrator kan ikke slettes
 allowedFormats;Allowed formats;Tilladte formater
 asc;ascending;stigende
 bag;Bag;Indkøbskurv
@@ -71,6 +72,7 @@ editProduct;Edit product;Opdater produkt
 editSubCategory;Edit subcategory;Opdater underkategori
 editUser;Edit user;Opdater bruger
 email;Email;E-mail
+employee;Employee;Ansat
 error;Error;Fejl
 errorAltText;A really guilty emoji;En meget skyldig emoji
 expandMenu;Expand menu;Udvid menu
@@ -196,6 +198,7 @@ search;Search;Søg
 selectPreferences;Select preferred language and currency;Vælg venligst sprog og valuta
 shopNow;Shop now;Køb nu
 showPassword;Show password;Vis adgangskode
+showPrice;Show price;Vis pris
 signup;Sign up;Opret bruger
 signupFailed;Sign up failed;Registrering mislykkedes
 signupSucceeded;Sign up succeeded;Registrering lykkedes

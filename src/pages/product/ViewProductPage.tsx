@@ -1,5 +1,4 @@
 import { useNavigate, useParams } from 'react-router';
-import { ProductSizes } from '../../app/api/apiTypes';
 import ProductCardCenter from '../../components/adminCard/ProductCardCenter';
 import ProductCardLeft from '../../components/adminCard/ProductCardLeft';
 import CardRight from '../../components/card/CardRight';
@@ -15,8 +14,6 @@ import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
 import { getErrorMessage } from '../../utils/utils';
 import PageContainer from '../PageContainer';
-
-export const sizeList: ProductSizes[] = ['S', 'M', 'L', 'XL'];
 
 const ViewProductPage = () => {
   const { language } = useLanguage();

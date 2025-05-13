@@ -1,6 +1,8 @@
 import Locales from '../../utils/locales';
 
 export type CurrencyCode = 'USD' | 'GBP' | 'EUR' | 'DKK' | 'SEK' | 'NOK';
+export type CurrencyText = '$' | '£' | '€' | 'Kr.';
+export type Currency = 'USD' | 'GBP' | 'EUR' | 'DKK';
 
 export const currencyToLocaleMap: Record<CurrencyCode, Locales> = {
   USD: 'en-US',
@@ -9,6 +11,14 @@ export const currencyToLocaleMap: Record<CurrencyCode, Locales> = {
   DKK: 'da-DK',
   SEK: 'sv-SE',
   NOK: 'no-No',
+};
+export const currencyToText: Record<CurrencyCode, CurrencyText> = {
+  USD: '$',
+  GBP: '£',
+  EUR: '€',
+  DKK: 'Kr.',
+  SEK: 'Kr.',
+  NOK: 'Kr.',
 };
 
 export const currencies = Object.keys(currencyToLocaleMap).join(',');

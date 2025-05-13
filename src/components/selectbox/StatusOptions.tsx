@@ -2,13 +2,13 @@ import { OptionProps } from 'react-select';
 import useLanguage from '../../features/language/useLanguage';
 import CustomOption from './CustomOption';
 
-type Colors = {
+type Status = {
   label: string;
   status: string;
   value: string;
 };
 
-const StatusOptions = (props: OptionProps<Colors>) => {
+const StatusOptions = (props: OptionProps<Status>) => {
   const { language } = useLanguage();
 
   return (

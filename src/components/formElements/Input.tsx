@@ -13,6 +13,7 @@ export type InputProps = {
   className?: string;
   errorText?: string;
   inputHasNoLabel?: boolean;
+  inputInfo?: string;
   max?: number;
   maxLength?: number;
   min?: number;
@@ -43,6 +44,7 @@ const Input = ({
   min,
   multiple,
   max,
+  inputInfo,
   placeholder,
   maxLength,
   autoComplete = 'on',
@@ -69,7 +71,6 @@ const Input = ({
         inputHasNoLabel={inputHasNoLabel}
         errorText={errorText}
       />
-
       <input
         ref={ref}
         multiple={multiple}
@@ -92,6 +93,7 @@ const Input = ({
         onInput={handleOnInput}
         onFocus={onFocus}
       />
+      {inputInfo && <span className="input-info">{inputInfo}</span>}
     </div>
   );
 };

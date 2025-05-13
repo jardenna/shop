@@ -1,18 +1,18 @@
 import { RoleTypes } from '../../../app/api/apiTypes';
-import RadioButton, {
-  RadioListItem,
-} from '../../../components/formElements/RadioButton';
+import RadioButton from '../../../components/formElements/RadioButton';
 
 import IconBtn from '../../../components/IconBtn';
 import EditTableInput, {
   BaseEditTableInput,
 } from '../../../components/sortTable/EditTableInput';
 import { IconName } from '../../../types/enums';
+import { OptionType } from '../../../types/types';
+import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import useLanguage from '../../language/useLanguage';
 
 type EditUserInputProps = {
   isAdmin: boolean;
-  roleOptions: RadioListItem[];
+  radioButtonList: OptionType[];
   roleValue: RoleTypes;
   showEditInput: boolean;
   onEditBtnClick: () => void;
@@ -28,7 +28,7 @@ const EditUserInput = ({
   cellContent,
   onEditBtnClick,
   isAdmin,
-  roleOptions,
+  radioButtonList,
   roleValue,
 }: EditUserInputProps) => {
   const { language } = useLanguage();
@@ -46,7 +46,7 @@ const EditUserInput = ({
           isAlterntiveInput={id === 'role'}
           alternativeInput={
             <RadioButton
-              radioButtonList={roleOptions}
+              radioButtonList={radioButtonList}
               name="role"
               initialChecked={roleValue}
               onChange={onEditChange}
@@ -57,7 +57,7 @@ const EditUserInput = ({
         <>
           <span>
             {!cellContent.includes('@') ? (
-              cellContent
+              getlowerCaseFirstLetter(cellContent, language)
             ) : (
               <a href={`mailto:${cellContent}`}>{cellContent}</a>
             )}

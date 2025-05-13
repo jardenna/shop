@@ -1,7 +1,10 @@
+import { ProductSizes } from '../app/api/apiTypes';
 import { ValidationMessage } from '../types/enums';
 
 const oneDay = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
 const currencyCacheKey = 'exchangeRates';
+
+const sizeList: ProductSizes[] = ['S', 'M', 'L', 'XL'];
 
 const formatNumber = (value: number, lang: 'en' | 'da') =>
   new Intl.NumberFormat(lang === 'en' ? 'en-US' : 'da-DK').format(value);
@@ -26,10 +29,17 @@ const getErrorMessage = (error: unknown): string => {
   return ValidationMessage.UnknownError;
 };
 
+const getlowerCaseFirstLetter = (
+  key: string,
+  language: Record<string, string>,
+) => language[key[0].toLowerCase() + key.slice(1)] || key;
+
 export {
   currencyCacheKey,
   discountCalculation,
   formatNumber,
   getErrorMessage,
+  getlowerCaseFirstLetter,
   oneDay,
+  sizeList,
 };
