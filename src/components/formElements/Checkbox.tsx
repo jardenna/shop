@@ -3,11 +3,15 @@ import { ChangeInputType, OptionType } from '../../types/types';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 import Input from './Input';
 
+export type CheckboxVariant = 'checkbox' | 'toggle-switch';
+
 type CheckboxProps = {
   checkBoxList: OptionType[];
   name: string;
   values: string[];
+  className?: string;
   formInfoText?: string;
+  variant?: CheckboxVariant;
   onChange: (event: ChangeInputType) => void;
 };
 
@@ -17,13 +21,15 @@ const Checkbox = ({
   values,
   formInfoText,
   name,
+  variant = 'checkbox',
+  className = '',
 }: CheckboxProps) => {
   const { language } = useLanguage();
 
   return (
-    <ul className="checkbox-list">
+    <ul className={`${variant}-list`}>
       {checkBoxList.map((checkbox) => (
-        <li key={checkbox.label}>
+        <li key={checkbox.label} className="checkbox-item">
           <Input
             type="checkbox"
             name={name}
@@ -32,6 +38,7 @@ const Checkbox = ({
             checked={values.includes(checkbox.value)}
             id={checkbox.label}
             labelText={getlowerCaseFirstLetter(checkbox.label, language)}
+            className={className}
           />
         </li>
       ))}

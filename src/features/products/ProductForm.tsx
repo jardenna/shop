@@ -13,7 +13,6 @@ import FileInput from '../../components/formElements/fileInput/FileInput';
 import ProductImgList from '../../components/formElements/fileInput/ProductImgList';
 import Input from '../../components/formElements/Input';
 import Textarea from '../../components/formElements/Textarea';
-import ToggleSwitch from '../../components/formElements/toggleSwitch/ToggleSwitch';
 import validateProduct from '../../components/formElements/validation/validateProduct';
 import GridTwoCol from '../../components/GridTwoCol';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
@@ -24,7 +23,7 @@ import StatusInputs from '../../components/StatusInputs';
 import useFormValidation from '../../hooks/useFormValidation';
 import { MainPath } from '../../layout/nav/enums';
 import variables from '../../scss/variables.module.scss';
-import { ChangeInputType1, OptionType } from '../../types/types';
+import { OptionType } from '../../types/types';
 import { discountCalculation, sizeList } from '../../utils/utils';
 import ProductPrice from '../currency/components/ProductPrice';
 import useCurrency from '../currency/useCurrency';
@@ -110,7 +109,10 @@ const ProductForm = ({
     { value: 'XL', label: 'XL' },
   ];
 
-  const showPriceItems = [{ value: 'showPrice', label: 'showPrice' }];
+  const showPriceItems = [
+    { value: 'showPrice', label: 'showPrice' },
+    { value: 'showOther', label: 'showOther' },
+  ];
 
   const initialState: ProductRequest = {
     brand: selectedProduct?.brand ?? '',
@@ -161,12 +163,12 @@ const ProductForm = ({
 
   const [uploadedImg, setUploadedImg] = useState(selectedProduct?.images || []);
   const initS = {
-    val: [],
+    val: ['showPrice'],
   };
 
   const [showCalculatedPrice, setShowCalculatedPrice] = useState<any>(initS);
 
-  const handleShowCalculatedPrice = (event: ChangeInputType1) => {
+  const handleShowCalculatedPrice = (event: any) => {
     const { name, checked, value } = event.target;
 
     const currentValues = showCalculatedPrice[name] as string[];
@@ -393,11 +395,13 @@ const ProductForm = ({
             </div>
 
             <GridTwoCol>
-              <ToggleSwitch
-                toggleSwitchList={showPriceItems}
+              <Checkbox
+                checkBoxList={showPriceItems}
                 onChange={handleShowCalculatedPrice}
                 name="val"
                 values={showCalculatedPrice.val}
+                variant="toggle-switch"
+                className="toggle-switch-input visually-hidden"
               />
 
               {showCalculatedPrice.val.includes('showPrice') &&
