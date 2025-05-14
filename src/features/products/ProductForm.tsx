@@ -119,6 +119,9 @@ const ProductForm = ({
 
   const [uploadedImg, setUploadedImg] = useState(selectedProduct?.images || []);
   const [showPrice, setShowPrice] = useState(false);
+  // const [images, setImages] = useState<string[]>(selectedProduct?.images || []);
+
+  const [disabledImages, setDisabledImages] = useState<Set<string>>(new Set());
 
   // Helper functions
   const handleGoback = () => {
@@ -138,9 +141,23 @@ const ProductForm = ({
     onCustomChange(name, selectedOptions.value);
   };
 
-  const handleRemoveImg = (name: string) => {
-    const image = uploadedImg.filter((img) => img !== name);
-    setUploadedImg(image);
+  // const handleRemoveImg = (name: string) => {
+  //   const image = uploadedImg.filter((img) => img !== name);
+  //   setUploadedImg(image);
+  // };
+
+  console.log(disabledImages);
+
+  const toggleImage = (img: string) => {
+    setDisabledImages((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(img)) {
+        newSet.delete(img);
+      } else {
+        newSet.add(img);
+      }
+      return newSet;
+    });
   };
 
   // Hooks
@@ -235,18 +252,17 @@ const ProductForm = ({
           <FormCard legendText={language.productImages} onReset={onReset}>
             {id && (
               <ul className="preview-list uploaded-img">
-                {uploadedImg.map((img, index) => (
+                {selectedProduct?.images.map((img, index) => (
                   <ProductImgList
                     key={index}
                     onClick={() => {
-                      handleRemoveImg(img);
+                      toggleImage(img);
                     }}
+                    className={disabledImages.has(img) ? 'gray-scaled' : ''}
                     img={img}
                     ariaLabel={`${language.delete} ${language.image}`}
                     title={language.trash}
-                  >
-                    <div className="preview-info" />
-                  </ProductImgList>
+                  />
                 ))}
               </ul>
             )}
