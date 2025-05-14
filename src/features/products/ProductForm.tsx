@@ -59,29 +59,6 @@ const ProductForm = ({
   const { language } = useLanguage();
   const formRef = useRef<HTMLFormElement | null>(null);
 
-  // Helper functions
-  const handleGoback = () => {
-    navigate(-1);
-  };
-
-  const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
-    onCustomChange(name, selectedOptions.value);
-  };
-
-  const handleSelectColors = (name: string, selectedOptions: OptionType[]) => {
-    const selectedValues = selectedOptions.map((option) => option.value);
-    onCustomChange(name, selectedValues);
-  };
-
-  const handleSelectCategory = (name: string, selectedOptions: OptionType) => {
-    onCustomChange(name, selectedOptions.value);
-  };
-
-  const handleRemoveImg = (name: string) => {
-    const image = uploadedImg.filter((img) => img !== name);
-    setUploadedImg(image);
-  };
-
   // Options and initial state
   const parentCategoryOptions = parentCategories.map(
     ({ label, parentCategoryName, value, categoryStatus }) => ({
@@ -140,6 +117,32 @@ const ProductForm = ({
 
   const selectedTime = selectedProduct?.scheduledDate;
 
+  const [uploadedImg, setUploadedImg] = useState(selectedProduct?.images || []);
+  const [showPrice, setShowPrice] = useState(false);
+
+  // Helper functions
+  const handleGoback = () => {
+    navigate(-1);
+  };
+
+  const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
+    onCustomChange(name, selectedOptions.value);
+  };
+
+  const handleSelectColors = (name: string, selectedOptions: OptionType[]) => {
+    const selectedValues = selectedOptions.map((option) => option.value);
+    onCustomChange(name, selectedValues);
+  };
+
+  const handleSelectCategory = (name: string, selectedOptions: OptionType) => {
+    onCustomChange(name, selectedOptions.value);
+  };
+
+  const handleRemoveImg = (name: string) => {
+    const image = uploadedImg.filter((img) => img !== name);
+    setUploadedImg(image);
+  };
+
   // Hooks
   const {
     onChange,
@@ -160,9 +163,6 @@ const ProductForm = ({
   const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
     useDatePicker({ initialTime: selectedTime });
   const { currencyText } = useCurrency();
-
-  const [uploadedImg, setUploadedImg] = useState(selectedProduct?.images || []);
-  const [showPrice, setShowPrice] = useState(false);
 
   const handleShowPrice = () => {
     setShowPrice(!showPrice);
