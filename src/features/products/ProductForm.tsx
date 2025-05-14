@@ -121,7 +121,7 @@ const ProductForm = ({
   const [showPrice, setShowPrice] = useState(false);
   // const [images, setImages] = useState<string[]>(selectedProduct?.images || []);
 
-  const [disabledImages, setDisabledImages] = useState<Set<string>>(new Set());
+  const [disabledImages, setDisabledImages] = useState<string[]>([]);
 
   // Helper functions
   const handleGoback = () => {
@@ -146,19 +146,14 @@ const ProductForm = ({
   //   setUploadedImg(image);
   // };
 
-  console.log(disabledImages);
-
   const toggleImage = (img: string) => {
-    setDisabledImages((prev) => {
-      const newSet = new Set(prev);
-      if (newSet.has(img)) {
-        newSet.delete(img);
-      } else {
-        newSet.add(img);
-      }
-      return newSet;
-    });
+    setDisabledImages((prev) =>
+      prev.includes(img)
+        ? prev.filter((i: string) => i !== img)
+        : [...prev, img],
+    );
   };
+  console.log(disabledImages);
 
   // Hooks
   const {
@@ -258,7 +253,9 @@ const ProductForm = ({
                     onClick={() => {
                       toggleImage(img);
                     }}
-                    className={disabledImages.has(img) ? 'gray-scaled' : ''}
+                    className={
+                      disabledImages.includes(img) ? 'gray-scaled' : ''
+                    }
                     img={img}
                     ariaLabel={`${language.delete} ${language.image}`}
                     title={language.trash}
