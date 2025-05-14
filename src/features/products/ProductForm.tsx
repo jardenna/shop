@@ -117,7 +117,6 @@ const ProductForm = ({
 
   const selectedTime = selectedProduct?.scheduledDate;
 
-  const [uploadedImg, setUploadedImg] = useState(selectedProduct?.images || []);
   const [showPrice, setShowPrice] = useState(false);
   // const [images, setImages] = useState<string[]>(selectedProduct?.images || []);
 
@@ -127,6 +126,20 @@ const ProductForm = ({
   const handleGoback = () => {
     navigate(-1);
   };
+
+  const toggleImage = (img: string) => {
+    setDisabledImages((prev) =>
+      prev.includes(img)
+        ? prev.filter((i: string) => i !== img)
+        : [...prev, img],
+    );
+  };
+
+  const uploadedImg = selectedProduct?.images || [];
+
+  const activeImages = uploadedImg.filter(
+    (img) => !disabledImages.includes(img),
+  );
 
   const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
     onCustomChange(name, selectedOptions.value);
@@ -140,20 +153,6 @@ const ProductForm = ({
   const handleSelectCategory = (name: string, selectedOptions: OptionType) => {
     onCustomChange(name, selectedOptions.value);
   };
-
-  // const handleRemoveImg = (name: string) => {
-  //   const image = uploadedImg.filter((img) => img !== name);
-  //   setUploadedImg(image);
-  // };
-
-  const toggleImage = (img: string) => {
-    setDisabledImages((prev) =>
-      prev.includes(img)
-        ? prev.filter((i: string) => i !== img)
-        : [...prev, img],
-    );
-  };
-  console.log(disabledImages);
 
   // Hooks
   const {
@@ -196,13 +195,13 @@ const ProductForm = ({
         });
 
         const uploadResponse = await uploadImages(formData).unwrap();
-        const uploadedImages = uploadResponse.images;
+        const currentUploadedImages = uploadResponse.images;
 
         // Combine existing images with newly uploaded images
-        values.images = [...uploadedImg, ...uploadedImages];
+        values.images = [...activeImages, ...currentUploadedImages];
       } else {
         // Retain existing images if no new files are uploaded
-        values.images = uploadedImg;
+        values.images = activeImages;
       }
 
       const productData = { ...values, scheduledDate: selectedDate };
@@ -253,9 +252,7 @@ const ProductForm = ({
                     onClick={() => {
                       toggleImage(img);
                     }}
-                    className={
-                      disabledImages.includes(img) ? 'gray-scaled' : ''
-                    }
+                    isImgDisabled={disabledImages.includes(img)}
                     img={img}
                     ariaLabel={`${language.delete} ${language.image}`}
                     title={language.trash}

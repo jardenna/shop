@@ -8,7 +8,7 @@ type ProductImgListProps = {
   img: string;
   title: string;
   children?: ReactNode;
-  className?: string;
+  isImgDisabled?: boolean;
   onClick: () => void;
 };
 
@@ -18,14 +18,18 @@ const ProductImgList = ({
   children,
   ariaLabel,
   title,
-  className,
+  isImgDisabled,
 }: ProductImgListProps) => (
   <li className="preview-item overlays">
-    <Img className={`preview-img ${className}`} src={img} alt="" />
+    <Img
+      className={`preview-img ${isImgDisabled ? 'gray-scaled' : ''}`}
+      src={img}
+      alt=""
+    />
     {children && children}
     <IconBtn
       onClick={onClick}
-      iconName={IconName.Trash}
+      iconName={isImgDisabled ? IconName.Undo : IconName.Trash}
       title={title}
       ariaLabel={ariaLabel}
     />
