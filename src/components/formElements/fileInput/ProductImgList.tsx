@@ -5,9 +5,10 @@ import Img from '../../Img';
 
 type ProductImgListProps = {
   ariaLabel: string;
-  children: ReactNode;
   img: string;
   title: string;
+  children?: ReactNode;
+  className?: string;
   onClick: () => void;
 };
 
@@ -17,10 +18,11 @@ const ProductImgList = ({
   children,
   ariaLabel,
   title,
+  className,
 }: ProductImgListProps) => (
-  <li className="preview-item">
-    <Img className="preview-img" src={img} alt="" />
-    {children}
+  <li className="preview-item overlays">
+    <Img className={`preview-img ${className}`} src={img} alt="" />
+    {children && children}
     <IconBtn
       onClick={onClick}
       iconName={IconName.Trash}

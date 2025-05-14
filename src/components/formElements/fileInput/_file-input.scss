@@ -36,6 +36,13 @@
   }
 }
 
+.gray-scaled {
+  opacity: 0.4;
+  filter: grayscale(1);
+
+  @include transition;
+}
+
 .preview-list {
   display: flex;
   flex-flow: column wrap;
@@ -61,6 +68,8 @@
     width: rem(192px);
     height: rem(76px);
     object-fit: cover;
+
+    @include transition;
   }
 
   &.uploaded-img {
@@ -75,7 +84,6 @@
     }
 
     .preview-item {
-      border: transparent;
       padding: 0;
     }
 
