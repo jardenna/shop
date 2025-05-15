@@ -1,9 +1,11 @@
 import { Status } from '../../app/api/apiTypes';
 import useLanguage from '../../features/language/useLanguage';
+import { IconName } from '../../types/enums';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 import Badge from '../badge/Badge';
 import CardContent from '../card/CardContent';
 import CardFooter from '../card/CardFooter';
+import IconContent from '../IconContent';
 import Img from '../Img';
 import AdminCard from './types';
 
@@ -31,13 +33,24 @@ const ProductCardLeft = ({
 
   return (
     <CardContent className="left" heading={null} onReset={onReset}>
-      <ul className="product-img-list">
-        {images.map((url) => (
-          <li key={url}>
-            <Img src={url} alt="" className="product-img-item" />
-          </li>
-        ))}
-      </ul>
+      {images.length > 0 ? (
+        <ul className="product-img-list">
+          {images.map((url) => (
+            <li key={url}>
+              <Img src={url} alt="" className="product-img-item" />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <span className="missing-img">
+          <IconContent
+            iconName={IconName.Image}
+            size="50"
+            title={language.trashCan}
+            ariaLabel={language.adminCannotBeDeleted}
+          />
+        </span>
+      )}
       <div className="position-relative ">
         <Badge
           badgeText={getlowerCaseFirstLetter(status, language)}
