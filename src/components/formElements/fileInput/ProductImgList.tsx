@@ -20,12 +20,8 @@ const ProductImgList = ({
   title,
   isImgDisabled,
 }: ProductImgListProps) => (
-  <li className="preview-item overlays">
-    <Img
-      className={`preview-img ${isImgDisabled ? 'gray-scaled' : ''}`}
-      src={img}
-      alt=""
-    />
+  <li className={`preview-item ${isImgDisabled ? 'gray-scaled' : ''}`}>
+    <Img src={img} alt="" className="preview-img" />
     {children && children}
     <IconBtn
       onClick={onClick}
