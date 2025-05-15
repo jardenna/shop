@@ -17,6 +17,7 @@ import ChevronUpIcon from './ChevronUpIcon';
 import CircelChevronRightIcon from './CircelChevronRightIcon';
 import CloseIcon from './CloseIcon';
 import DashboardIcon from './DashboardIcon';
+import DublicateIcon from './DublicateIcon';
 import EditIcon from './EditIcon';
 import ErrorIcon from './ErrorIcon';
 import EyeIcon from './EyeIcon';
@@ -76,6 +77,7 @@ const iconMapping = {
   circelChevronRight: CircelChevronRightIcon,
   close: CloseIcon,
   dashboard: DashboardIcon,
+  dublicate: DublicateIcon,
   edit: EditIcon,
   error: ErrorIcon,
   eye: EyeIcon,

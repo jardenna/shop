@@ -1,11 +1,13 @@
 import { memo } from 'react';
 import { Status } from '../../app/api/apiTypes';
 import CardBadge from '../../components/card/CardBadge';
+import IconBtn from '../../components/IconBtn';
 import Img from '../../components/Img';
 import MoreLink from '../../components/MoreLink';
 import ProductPrice from '../../features/currency/components/ProductPrice';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
+import { IconName } from '../../types/enums';
 import {
   discountCalculation,
   formatNumber,
@@ -77,6 +79,16 @@ const ProductTableRow = ({
         <MoreLink
           linkText={language.viewProduct}
           linkTo={`/admin/${MainPath.AdminProductView}/${id}`}
+        />
+      </td>
+      <td>
+        <IconBtn
+          title={language.filterRow}
+          ariaLabel="copy"
+          onClick={() => {
+            console.log(id);
+          }}
+          iconName={IconName.Dublicate}
         />
       </td>
     </tr>
