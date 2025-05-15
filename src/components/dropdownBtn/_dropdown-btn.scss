@@ -33,13 +33,10 @@
       background-color: $color-background;
     }
 
-    .btn-text {
+    .btn {
       display: flex;
       gap: 8px;
-      width: 100%;
-    }
-
-    .btn {
+      justify-content: space-between;
       width: 100%;
     }
   }
