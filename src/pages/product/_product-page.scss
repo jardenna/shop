@@ -4,6 +4,16 @@
   display: flex;
   gap: 8px;
   align-items: center;
+
+  .missing-img {
+    width: 4.5rem;
+    height: auto;
+    padding: 8px 0;
+
+    svg {
+      width: rem(36px);
+    }
+  }
 }
 
 .product-list-container {

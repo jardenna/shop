@@ -35,6 +35,7 @@ const UpdateProductPage = () => {
           >
             <ProductForm
               selectedProduct={product}
+              images={product.images}
               id={params.id || null}
               parentCategories={subCategories}
               onReset={() => refetch}

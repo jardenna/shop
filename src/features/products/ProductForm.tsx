@@ -44,14 +44,23 @@ type ProductFormProps = {
   id: string | null;
   parentCategories: SubCategoriesWithParent[];
   selectedProduct: Product | null;
+  images?: string[];
   onReset: () => void;
 };
+
+const checkboxItems = [
+  { value: 'S', label: 'S' },
+  { value: 'M', label: 'M' },
+  { value: 'L', label: 'L' },
+  { value: 'XL', label: 'XL' },
+];
 
 const ProductForm = ({
   id,
   selectedProduct,
   parentCategories,
   onReset,
+  images,
 }: ProductFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
@@ -82,13 +91,6 @@ const ProductForm = ({
     { label: language.purple, value: 'purple' },
   ];
 
-  const checkboxItems = [
-    { value: 'S', label: 'S' },
-    { value: 'M', label: 'M' },
-    { value: 'L', label: 'L' },
-    { value: 'XL', label: 'XL' },
-  ];
-
   const initialState: ProductRequest = {
     brand: selectedProduct?.brand ?? '',
     colors: selectedProduct?.colors ?? [],
@@ -114,10 +116,9 @@ const ProductForm = ({
   );
 
   const selectedTime = selectedProduct?.scheduledDate;
+  const uploadedImg = selectedProduct?.images || [];
 
   const [showPrice, setShowPrice] = useState(false);
-  // const [images, setImages] = useState<string[]>(selectedProduct?.images || []);
-
   const [disabledImages, setDisabledImages] = useState<string[]>([]);
 
   // Helper functions
@@ -125,15 +126,13 @@ const ProductForm = ({
     navigate(-1);
   };
 
-  const toggleImage = (img: string) => {
+  const handleToggleImage = (img: string) => {
     setDisabledImages((prev) =>
       prev.includes(img)
         ? prev.filter((i: string) => i !== img)
         : [...prev, img],
     );
   };
-
-  const uploadedImg = selectedProduct?.images || [];
 
   const activeImages = uploadedImg.filter(
     (img) => !disabledImages.includes(img),
@@ -242,13 +241,13 @@ const ProductForm = ({
       <div className="flex align-items-start">
         <div className="flex-2">
           <FormCard legendText={language.productImages} onReset={onReset}>
-            {id && (
+            {images && images.length > 0 && (
               <ul className="preview-list uploaded-img">
-                {selectedProduct?.images.map((img, index) => (
+                {images.map((img, index) => (
                   <ProductImgList
                     key={index}
                     onClick={() => {
-                      toggleImage(img);
+                      handleToggleImage(img);
                     }}
                     isImgDisabled={disabledImages.includes(img)}
                     img={img}

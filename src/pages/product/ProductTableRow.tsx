@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { Status } from '../../app/api/apiTypes';
 import CardBadge from '../../components/card/CardBadge';
+import MissingImage from '../../components/formElements/fileInput/MissingImage';
 import IconBtn from '../../components/IconBtn';
 import Img from '../../components/Img';
 import MoreLink from '../../components/MoreLink';
@@ -44,11 +45,16 @@ const ProductTableRow = ({
   const { language, selectedLanguage } = useLanguage();
 
   const productHasDiscount = discount && discount > 0;
+
   return (
     <tr>
       <td>
         <div className="product-overview-cell">
-          <Img src={imageSrc[0]} alt="" />
+          {imageSrc.length > 0 ? (
+            <Img src={imageSrc[0]} alt="" />
+          ) : (
+            <MissingImage />
+          )}
           <span className="product-name">{productName}</span>
         </div>
       </td>
