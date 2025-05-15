@@ -42,7 +42,6 @@ import {
 
 type ProductFormProps = {
   id: string | null;
-  isLoading: boolean;
   parentCategories: SubCategoriesWithParent[];
   selectedProduct: Product | null;
   onReset: () => void;
@@ -52,35 +51,11 @@ const ProductForm = ({
   id,
   selectedProduct,
   parentCategories,
-  isLoading,
   onReset,
 }: ProductFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const formRef = useRef<HTMLFormElement | null>(null);
-
-  // Helper functions
-  const handleGoback = () => {
-    navigate(-1);
-  };
-
-  const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
-    onCustomChange(name, selectedOptions.value);
-  };
-
-  const handleSelectColors = (name: string, selectedOptions: OptionType[]) => {
-    const selectedValues = selectedOptions.map((option) => option.value);
-    onCustomChange(name, selectedValues);
-  };
-
-  const handleSelectCategory = (name: string, selectedOptions: OptionType) => {
-    onCustomChange(name, selectedOptions.value);
-  };
-
-  const handleRemoveImg = (name: string) => {
-    const image = uploadedImg.filter((img) => img !== name);
-    setUploadedImg(image);
-  };
 
   // Options and initial state
   const parentCategoryOptions = parentCategories.map(
@@ -140,6 +115,43 @@ const ProductForm = ({
 
   const selectedTime = selectedProduct?.scheduledDate;
 
+  const [showPrice, setShowPrice] = useState(false);
+  // const [images, setImages] = useState<string[]>(selectedProduct?.images || []);
+
+  const [disabledImages, setDisabledImages] = useState<string[]>([]);
+
+  // Helper functions
+  const handleGoback = () => {
+    navigate(-1);
+  };
+
+  const toggleImage = (img: string) => {
+    setDisabledImages((prev) =>
+      prev.includes(img)
+        ? prev.filter((i: string) => i !== img)
+        : [...prev, img],
+    );
+  };
+
+  const uploadedImg = selectedProduct?.images || [];
+
+  const activeImages = uploadedImg.filter(
+    (img) => !disabledImages.includes(img),
+  );
+
+  const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
+    onCustomChange(name, selectedOptions.value);
+  };
+
+  const handleSelectColors = (name: string, selectedOptions: OptionType[]) => {
+    const selectedValues = selectedOptions.map((option) => option.value);
+    onCustomChange(name, selectedValues);
+  };
+
+  const handleSelectCategory = (name: string, selectedOptions: OptionType) => {
+    onCustomChange(name, selectedOptions.value);
+  };
+
   // Hooks
   const {
     onChange,
@@ -161,9 +173,6 @@ const ProductForm = ({
     useDatePicker({ initialTime: selectedTime });
   const { currencyText } = useCurrency();
 
-  const [uploadedImg, setUploadedImg] = useState(selectedProduct?.images || []);
-  const [showPrice, setShowPrice] = useState(false);
-
   const handleShowPrice = () => {
     setShowPrice(!showPrice);
   };
@@ -184,13 +193,13 @@ const ProductForm = ({
         });
 
         const uploadResponse = await uploadImages(formData).unwrap();
-        const uploadedImages = uploadResponse.images;
+        const currentUploadedImages = uploadResponse.images;
 
         // Combine existing images with newly uploaded images
-        values.images = [...uploadedImg, ...uploadedImages];
+        values.images = [...activeImages, ...currentUploadedImages];
       } else {
         // Retain existing images if no new files are uploaded
-        values.images = uploadedImg;
+        values.images = activeImages;
       }
 
       const productData = { ...values, scheduledDate: selectedDate };
@@ -235,18 +244,17 @@ const ProductForm = ({
           <FormCard legendText={language.productImages} onReset={onReset}>
             {id && (
               <ul className="preview-list uploaded-img">
-                {uploadedImg.map((img, index) => (
+                {selectedProduct?.images.map((img, index) => (
                   <ProductImgList
                     key={index}
                     onClick={() => {
-                      handleRemoveImg(img);
+                      toggleImage(img);
                     }}
+                    isImgDisabled={disabledImages.includes(img)}
                     img={img}
                     ariaLabel={`${language.delete} ${language.image}`}
                     title={language.trash}
-                  >
-                    <div className="preview-info" />
-                  </ProductImgList>
+                  />
                 ))}
               </ul>
             )}
@@ -403,7 +411,6 @@ const ProductForm = ({
                 labelText={language.category}
                 options={parentCategoryOptions}
                 components={{ Option: StatusOptions }}
-                isLoading={isLoading}
                 defaultValue={defaultCategoryValue}
                 isSearchable
                 onChange={(selectedOptions: OptionType) => {

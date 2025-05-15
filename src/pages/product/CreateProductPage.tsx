@@ -5,11 +5,7 @@ import PageContainer from '../PageContainer';
 
 const CreateProductPage = () => {
   const { language } = useLanguage();
-  const {
-    data: subCategories,
-    isLoading: subCategoriesIsLoading,
-    refetch,
-  } = useGetSubCategoriesWithParentQuery();
+  const { data: subCategories, refetch } = useGetSubCategoriesWithParentQuery();
 
   return (
     <article className="page">
@@ -22,7 +18,6 @@ const CreateProductPage = () => {
             selectedProduct={null}
             id={null}
             parentCategories={subCategories}
-            isLoading={subCategoriesIsLoading}
             onReset={() => refetch}
           />
         </PageContainer>

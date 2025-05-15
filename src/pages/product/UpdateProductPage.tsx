@@ -18,8 +18,7 @@ const UpdateProductPage = () => {
     refetch,
   } = useGetProductByIdQuery(params.id || '');
 
-  const { data: subCategories, isLoading: subCategoriesIsLoading } =
-    useGetSubCategoriesWithParentQuery();
+  const { data: subCategories } = useGetSubCategoriesWithParentQuery();
 
   return (
     <article className="page">
@@ -38,7 +37,6 @@ const UpdateProductPage = () => {
               selectedProduct={product}
               id={params.id || null}
               parentCategories={subCategories}
-              isLoading={subCategoriesIsLoading}
               onReset={() => refetch}
             />
           </PageContainer>
