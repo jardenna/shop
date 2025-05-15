@@ -42,7 +42,6 @@ import {
 
 type ProductFormProps = {
   id: string | null;
-  isLoading: boolean;
   parentCategories: SubCategoriesWithParent[];
   selectedProduct: Product | null;
   onReset: () => void;
@@ -52,7 +51,6 @@ const ProductForm = ({
   id,
   selectedProduct,
   parentCategories,
-  isLoading,
   onReset,
 }: ProductFormProps) => {
   const navigate = useNavigate();
@@ -413,7 +411,6 @@ const ProductForm = ({
                 labelText={language.category}
                 options={parentCategoryOptions}
                 components={{ Option: StatusOptions }}
-                isLoading={isLoading}
                 defaultValue={defaultCategoryValue}
                 isSearchable
                 onChange={(selectedOptions: OptionType) => {
