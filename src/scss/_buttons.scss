@@ -74,14 +74,11 @@ a[class^='btn-'],
   min-height: auto;
   width: auto;
 
-  &:hover {
-    background-color: $color-gray-30;
-  }
-
+  &:hover,
   &:focus-visible {
-    @include outline(currentColor);
-
     border: 1px solid $color-white;
+
+    @include outline($color-gray-40);
   }
 }
 
@@ -111,7 +108,12 @@ a[class^='btn-'],
     stroke: currentcolor;
   }
 
+  &:hover,
   &:focus-visible {
-    @include outline;
+    svg {
+      stroke: #3a6d90;
+
+      @include transition;
+    }
   }
 }

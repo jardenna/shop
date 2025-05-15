@@ -1,4 +1,15 @@
+/* stylelint-disable no-descending-specificity */
 @use '../../../scss/globals' as *;
+
+.file-container:has(input:focus) {
+  .file-upload-label {
+    svg {
+      stroke: #3a6d90;
+
+      @include transition;
+    }
+  }
+}
 
 .file-container {
   display: flex;
@@ -49,11 +60,6 @@
     position: absolute;
     width: 50px;
     height: 40px;
-
-    &:focus-visible,
-    &:hover {
-      background-color: rgba($color-gray-60, 40%);
-    }
   }
 
   .preview-item {
@@ -100,8 +106,6 @@
       .btn-ghost {
         color: $color-primary;
       }
-
-      @include transition;
     }
   }
 
