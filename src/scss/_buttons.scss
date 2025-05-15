@@ -28,6 +28,7 @@ a[class^='btn-'],
   cursor: pointer;
   min-height: rem(60px);
   letter-spacing: rem(0.5px);
+  outline: transparent;
 
   @include transition;
 
@@ -57,15 +58,10 @@ a[class^='btn-'],
   color: $color-primary;
   border-color: $color-primary;
 
+  &:focus-visible,
   &:hover {
     color: $color-light-gray-10;
     background-color: $color-gray-70;
-  }
-
-  &:focus-visible {
-    border: 1px solid $color-white;
-
-    @include outline(currentColor);
   }
 }
 
@@ -94,10 +90,11 @@ a[class^='btn-'],
   background-color: $color-danger;
   color: $color-white;
 
-  &:focus-visible,
-  &:hover {
-    color: $color-danger;
-    border: 1px solid $color-danger;
+  &:hover,
+  &:focus-visible {
+    border: 1px solid $color-white;
+
+    @include outline($color-danger);
   }
 }
 
