@@ -261,8 +261,6 @@ const ProductForm = ({
             <FileInput
               onChange={onChange}
               multiple
-              required
-              errorText={language[errors.images]}
               name="images"
               id="images"
               previewData={previewData}

@@ -1,11 +1,10 @@
 import { Status } from '../../app/api/apiTypes';
 import useLanguage from '../../features/language/useLanguage';
-import { IconName } from '../../types/enums';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 import Badge from '../badge/Badge';
 import CardContent from '../card/CardContent';
 import CardFooter from '../card/CardFooter';
-import IconContent from '../IconContent';
+import MissingImage from '../formElements/fileInput/MissingImage';
 import Img from '../Img';
 import AdminCard from './types';
 
@@ -42,14 +41,7 @@ const ProductCardLeft = ({
           ))}
         </ul>
       ) : (
-        <span className="missing-img">
-          <IconContent
-            iconName={IconName.Image}
-            size="50"
-            title={language.trashCan}
-            ariaLabel={language.adminCannotBeDeleted}
-          />
-        </span>
+        <MissingImage />
       )}
       <div className="position-relative ">
         <Badge

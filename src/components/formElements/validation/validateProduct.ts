@@ -12,7 +12,6 @@ function validateProduct(values: ProductRequest) {
     price,
     subCategory,
     productName,
-    images,
     sizes,
   } = values;
 
@@ -41,10 +40,6 @@ function validateProduct(values: ProductRequest) {
 
   if (colors.length === 0) {
     errors.colors = ValidationMessage.ColorRequired;
-  }
-
-  if (images.length === 0) {
-    errors.images = ValidationMessage.ImageRequired;
   }
 
   if (sizes.length === 0) {
