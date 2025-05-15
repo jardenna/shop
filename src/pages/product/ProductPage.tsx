@@ -61,6 +61,7 @@ const ProductPage = () => {
                 images,
                 price,
                 productName,
+                discount,
                 productStatus,
                 subCategory,
                 scheduledDate,
@@ -71,6 +72,7 @@ const ProductPage = () => {
                   countInStock={countInStock}
                   imageSrc={images}
                   price={price}
+                  discount={discount}
                   productName={productName}
                   status={productStatus}
                   categoryName={subCategory.category.categoryName}

@@ -6,7 +6,11 @@ import MoreLink from '../../components/MoreLink';
 import ProductPrice from '../../features/currency/components/ProductPrice';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
-import { formatNumber, getlowerCaseFirstLetter } from '../../utils/utils';
+import {
+  discountCalculation,
+  formatNumber,
+  getlowerCaseFirstLetter,
+} from '../../utils/utils';
 
 type ProductTableRowProps = {
   categoryName: string;
@@ -18,6 +22,7 @@ type ProductTableRowProps = {
   scheduledDate: Date | null;
   status: Status;
   subCategoryName: string;
+  discount?: number;
 };
 
 const ProductTableRow = ({
@@ -30,9 +35,11 @@ const ProductTableRow = ({
   countInStock,
   status,
   scheduledDate,
+  discount,
 }: ProductTableRowProps) => {
   const { language, selectedLanguage } = useLanguage();
 
+  const productHasDiscount = discount && discount > 0;
   return (
     <tr>
       <td>
@@ -45,7 +52,18 @@ const ProductTableRow = ({
         {subCategoryName} / {categoryName}
       </td>
       <td>
-        <ProductPrice price={price} />
+        <ProductPrice
+          price={price}
+          className={productHasDiscount ? 'text-line-through' : ''}
+        />
+        {productHasDiscount ? (
+          <span>
+            {' '}
+            / <ProductPrice price={discountCalculation(price, discount)} />
+          </span>
+        ) : (
+          ''
+        )}
       </td>
       <td>{formatNumber(countInStock, selectedLanguage)}</td>
       <td>
