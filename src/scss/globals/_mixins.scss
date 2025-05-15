@@ -42,5 +42,4 @@ $animation-timing-function: ease-in-out;
 
 @mixin outline($color: $color-blue-30, $size: 2px) {
   outline: $size solid $color;
-  box-shadow: $box-shadow;
 }

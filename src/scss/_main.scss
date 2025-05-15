@@ -78,6 +78,9 @@ h1 {
 
 a {
   text-decoration: none;
+}
+
+a:not(.btn) {
   position: relative;
   color: $color-red-30;
 
