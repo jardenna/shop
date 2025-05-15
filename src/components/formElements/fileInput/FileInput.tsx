@@ -4,6 +4,7 @@ import { IconName } from '../../../types/enums';
 import { ChangeInputType } from '../../../types/types';
 import FormLabel from '../FormLabel';
 import './_file-input.scss';
+import FileInfo from './FileInfo';
 import Preview, { PreviewProps } from './Preview';
 
 type FileInputProps = PreviewProps & {
@@ -41,14 +42,7 @@ const FileInput = ({
             className="file-upload-label btn btn-ghost"
             iconName={IconName.Upload}
           />
-          <span className="file-info">
-            <span>
-              <strong>{language.filesSuported}: </strong>JPEG/JPG/PNG/WEBP/GIF
-            </span>
-            <span>
-              <strong>{language.maximumFileSize}: </strong>1MB
-            </span>
-          </span>
+          <FileInfo />
         </div>
         <input
           type="file"
