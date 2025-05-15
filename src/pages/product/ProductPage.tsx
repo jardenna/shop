@@ -1,4 +1,5 @@
 import { Product } from '../../app/api/apiTypes';
+import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Table, { Column } from '../../components/sortTable/Table';
 import useLanguage from '../../features/language/useLanguage';
 import {
@@ -20,12 +21,15 @@ const tableHeaders: Column<Product>[] = [
   { key: 'productStatus', label: 'status', name: 'productStatus' },
   { key: 'id', label: '', name: '' },
 ];
-// const { onAddMessagePopup } = useMessagePopup();
+
 const ProductPage = () => {
   const { language } = useLanguage();
+  const { onAddMessagePopup } = useMessagePopup();
+
   const { data: hasScheduledData } = useGetHasScheduledDataQuery(undefined, {
     pollingInterval: oneDay,
   });
+  const [createProduct] = useCreateProductMutation();
 
   const shouldPollFullList = hasScheduledData?.hasScheduled ?? false;
 
@@ -38,19 +42,25 @@ const ProductPage = () => {
     refetchOnMountOrArgChange: true,
   });
 
-  const [createProduct] = useCreateProductMutation();
-
   async function handleCopyProduct(id: string) {
     try {
-      const productData = allProducts?.products.find(
-        (product) => product.id === id,
-      );
-      if (!productData) {
-        return;
+      if (allProducts) {
+        const productData = allProducts.products.find(
+          (product) => product.id === id,
+        );
+
+        await createProduct(productData).unwrap();
+        onAddMessagePopup({
+          messagePopupType: 'success',
+          message: language.productUpdated,
+        });
       }
-      await createProduct(productData).unwrap();
     } catch (error: any) {
-      console.log(error);
+      onAddMessagePopup({
+        messagePopupType: 'error',
+        message: error.data.message,
+        componentType: 'notification',
+      });
     }
   }
 
