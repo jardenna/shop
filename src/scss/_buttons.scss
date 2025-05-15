@@ -5,11 +5,12 @@ button[aria-disabled='true'] {
   background-color: $color-secondary;
   color: $color-gray-60;
   border-color: $color-border;
-}
 
-.btn-ghost[aria-disabled='true'] {
-  background-color: transparent;
-  color: $color-gray-60;
+  &.btn-ghost {
+    border-color: transparent;
+    background-color: transparent;
+    color: $color-gray-60;
+  }
 }
 
 a[class^='btn-'],
@@ -96,10 +97,11 @@ a[class^='btn-'],
 }
 
 // Ghost button
+
 .btn-ghost {
   background-color: transparent;
   color: $color-primary;
-  border: 0;
+  border: 2px solid transparent;
   width: fit-content;
   min-height: auto;
   padding: 0;
@@ -110,6 +112,10 @@ a[class^='btn-'],
 
   &:hover,
   &:focus-visible {
+    color: $color-blue-30;
+
+    @include outline($color-blue-30);
+
     svg {
       stroke: $color-blue-30;
 
