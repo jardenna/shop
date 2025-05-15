@@ -81,9 +81,8 @@ const ProductTableRow = ({
         <MoreLink
           linkText={language.viewProduct}
           linkTo={`/admin/${MainPath.AdminProductView}/${id}`}
-        />
-      </td>
-      <td>
+        />{' '}
+        I{' '}
         <IconBtn
           title={language.filterRow}
           ariaLabel="copy"
