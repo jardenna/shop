@@ -3,6 +3,7 @@ import {
   AllSortedProductsResponse,
   DefaultResponse,
   Product,
+  ProductRequest,
   ScheduledResponse,
   UpdateProductRequest,
 } from '../../app/api/apiTypes';
@@ -30,11 +31,18 @@ const productApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.Products],
     }),
-    createProduct: builder.mutation<Product, any>({
+    createProduct: builder.mutation<Product, ProductRequest>({
       query: (product) => ({
         url: productUrl,
         method: 'POST',
         body: product,
+      }),
+      invalidatesTags: [TagTypesEnum.Products],
+    }),
+    dublicateProduct: builder.mutation<Product, string>({
+      query: (id) => ({
+        method: 'POST',
+        url: `${productUrl}/${id}/dublicate`,
       }),
       invalidatesTags: [TagTypesEnum.Products],
     }),
@@ -55,4 +63,5 @@ export const {
   useCreateProductMutation,
   useDeleteProductMutation,
   useGetHasScheduledDataQuery,
+  useDublicateProductMutation,
 } = productApiSlice;

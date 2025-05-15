@@ -3,7 +3,7 @@ import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Table, { Column } from '../../components/sortTable/Table';
 import useLanguage from '../../features/language/useLanguage';
 import {
-  useCreateProductMutation,
+  useDublicateProductMutation,
   useGetAllProductsQuery,
   useGetHasScheduledDataQuery,
 } from '../../features/products/productApiSlice';
@@ -29,7 +29,8 @@ const ProductPage = () => {
   const { data: hasScheduledData } = useGetHasScheduledDataQuery(undefined, {
     pollingInterval: oneDay,
   });
-  const [createProduct] = useCreateProductMutation();
+
+  const [dublicateProduct] = useDublicateProductMutation();
 
   const shouldPollFullList = hasScheduledData?.hasScheduled ?? false;
 
@@ -44,17 +45,11 @@ const ProductPage = () => {
 
   async function handleCopyProduct(id: string) {
     try {
-      if (allProducts) {
-        const productData = allProducts.products.find(
-          (product) => product.id === id,
-        );
-
-        await createProduct(productData).unwrap();
-        onAddMessagePopup({
-          messagePopupType: 'success',
-          message: language.productUpdated,
-        });
-      }
+      await dublicateProduct(id);
+      onAddMessagePopup({
+        messagePopupType: 'success',
+        message: language.productUpdated,
+      });
     } catch (error: any) {
       onAddMessagePopup({
         messagePopupType: 'error',
