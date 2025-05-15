@@ -68,7 +68,7 @@ input[type='checkbox'] {
     cursor: pointer;
 
     &:focus-visible {
-      box-shadow: 0 0 4px 3px rgb($color-blue-30, 0.3);
+      box-shadow: $box-shadow-input;
       outline: transparent;
     }
 
@@ -180,6 +180,12 @@ input[type='checkbox'] {
       &::after {
         left: 25px;
       }
+    }
+  }
+
+  .checkbox-item:has(input:focus-visible) {
+    label {
+      box-shadow: $box-shadow-input;
     }
   }
 
