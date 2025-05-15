@@ -38,7 +38,7 @@ const FileInput = ({
             labelText={language.browseImages}
             id="images"
             errorText={errorText}
-            className="file-upload-label"
+            className="file-upload-label btn btn-secondary"
             iconName={IconName.Upload}
           />
           <span className="file-info">
