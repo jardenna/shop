@@ -5,11 +5,12 @@ button[aria-disabled='true'] {
   background-color: $color-secondary;
   color: $color-gray-60;
   border-color: $color-border;
-}
 
-.btn-ghost[aria-disabled='true'] {
-  background-color: transparent;
-  color: $color-gray-60;
+  &.btn-ghost {
+    border-color: transparent;
+    background-color: transparent;
+    color: $color-gray-60;
+  }
 }
 
 a[class^='btn-'],
@@ -21,14 +22,14 @@ a[class^='btn-'],
   font-family: $font-primary;
   font-size: rem(16px);
   font-weight: normal;
-  outline: transparent;
   padding: 16px;
   border-radius: 4px;
   width: 100%;
-  border: 1px solid transparent;
+  border: 1px solid currentcolor;
   cursor: pointer;
   min-height: rem(60px);
   letter-spacing: rem(0.5px);
+  outline: transparent;
 
   @include transition;
 
@@ -37,36 +38,6 @@ a[class^='btn-'],
     position: absolute;
     inset: -10px;
   }
-
-  &:not(.btn-ghost)::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    opacity: 0;
-    transform: scale(0.1, 0.1);
-
-    @include transition;
-  }
-
-  &:focus-visible::before,
-  &:hover::before {
-    opacity: 1;
-    transform: scale(1, 1);
-  }
-
-  &:focus-visible,
-  &:hover {
-    border-radius: 0;
-  }
-}
-
-.btn-text {
-  position: relative;
-  z-index: 2;
 }
 
 // Primary button
@@ -74,15 +45,11 @@ a[class^='btn-'],
   background-color: $color-primary;
   color: $color-secondary;
 
-  &:focus-visible,
-  &:hover {
-    color: $color-primary;
-    border-color: $color-gray-60;
-  }
+  &:hover,
+  &:focus-visible {
+    border: 1px solid $color-white;
 
-  &::before {
-    background-color: $color-white;
-    color: $color-primary;
+    @include outline($color-primary);
   }
 }
 
@@ -94,12 +61,8 @@ a[class^='btn-'],
 
   &:focus-visible,
   &:hover {
-    border-color: transparent;
-  }
-
-  &::before {
     color: $color-light-gray-10;
-    background-color: $color-gray-20;
+    background-color: $color-gray-70;
   }
 }
 
@@ -112,21 +75,11 @@ a[class^='btn-'],
   min-height: auto;
   width: auto;
 
-  &:focus-visible,
-  &:hover {
-    border-color: transparent;
-  }
+  &:hover,
+  &:focus-visible {
+    border: 1px solid $color-white;
 
-  &::before {
-    color: $color-light-gray-10;
-    background-color: $color-gray-20;
-  }
-}
-
-a.btn {
-  &:focus-visible,
-  &:hover {
-    color: $color-primary;
+    @include outline($color-gray-40);
   }
 }
 
@@ -135,23 +88,20 @@ a.btn {
   background-color: $color-danger;
   color: $color-white;
 
-  &:focus-visible,
-  &:hover {
-    color: $color-danger;
-    border: 1px solid $color-danger;
-  }
+  &:hover,
+  &:focus-visible {
+    border: 1px solid $color-white;
 
-  &::before {
-    background: $color-white;
-    color: $color-danger;
+    @include outline($color-danger);
   }
 }
 
 // Ghost button
+
 .btn-ghost {
   background-color: transparent;
   color: $color-primary;
-  border: 0;
+  border: 2px solid transparent;
   width: fit-content;
   min-height: auto;
   padding: 0;
@@ -160,7 +110,16 @@ a.btn {
     stroke: currentcolor;
   }
 
+  &:hover,
   &:focus-visible {
-    @include outline;
+    color: $color-blue-30;
+
+    @include outline($color-blue-30);
+
+    svg {
+      stroke: $color-blue-30;
+
+      @include transition;
+    }
   }
 }

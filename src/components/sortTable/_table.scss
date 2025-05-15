@@ -60,12 +60,6 @@ table {
       font-size: 14px;
     }
 
-    .btn-text {
-      display: flex;
-      gap: 4px;
-      align-items: center;
-    }
-
     &:last-child {
       border-right: 0;
     }
@@ -216,9 +210,4 @@ table {
   display: flex;
   gap: 8px;
   justify-content: flex-end;
-
-  .btn-ghost {
-    padding: 0;
-    color: $color-gray-70;
-  }
 }

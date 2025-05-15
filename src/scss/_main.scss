@@ -80,7 +80,14 @@ a {
   text-decoration: none;
   position: relative;
   color: $color-red-30;
+  border: 2px solid transparent;
 
+  &:focus-visible {
+    outline: 2px solid currentcolor;
+  }
+}
+
+a:not(.btn) {
   @include transition;
 
   &:hover {
@@ -128,8 +135,10 @@ ul {
     @include outline(currentcolor);
   }
 
-  &:hover {
-    gap: 12px;
-    color: currentcolor;
+  @include min-size($large) {
+    &:hover {
+      gap: 12px;
+      color: currentcolor;
+    }
   }
 }

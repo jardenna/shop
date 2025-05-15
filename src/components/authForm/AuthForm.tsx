@@ -10,7 +10,7 @@ import {
 } from '../../types/types';
 import Button from '../Button';
 import FieldSet from '../fieldset/FieldSet';
-import Form from '../Form';
+import Form from '../form/Form';
 import Input from '../formElements/Input';
 import PasswordInput from '../formElements/password/PasswordInput';
 import { PasswordRulesProps } from '../formElements/password/PasswordPopupList';

@@ -191,6 +191,7 @@ export type OmittedProduct = Omit<
 export type ProductRequest = OmittedProduct & {
   subCategory: string;
 };
+
 export type UpdateProductRequest = {
   id: string;
   product: ProductRequest;

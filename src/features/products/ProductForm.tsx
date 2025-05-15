@@ -7,7 +7,7 @@ import {
   SubCategoriesWithParent,
 } from '../../app/api/apiTypes';
 import useDatePicker from '../../components/datePicker/useDatePicker';
-import Form from '../../components/Form';
+import Form from '../../components/form/Form';
 import Checkbox from '../../components/formElements/Checkbox';
 import FileInput from '../../components/formElements/fileInput/FileInput';
 import ProductImgList from '../../components/formElements/fileInput/ProductImgList';

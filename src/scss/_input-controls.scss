@@ -16,7 +16,6 @@ input[type='radio'] {
 
   &:checked {
     border-color: $color-border-secondary;
-    outline: transparent;
 
     &::before {
       transform: scale(1);
@@ -28,7 +27,6 @@ input[type='checkbox'] {
   border-radius: 4px;
 
   &:checked {
-    outline: transparent;
     border-color: $color-border-secondary;
     background-color: $color-background-secondary;
 
@@ -69,15 +67,12 @@ input[type='checkbox'] {
     justify-content: center;
     cursor: pointer;
 
-    @include transition($time: 0.22s);
-
     &:focus-visible {
+      box-shadow: $box-shadow-input;
       outline: transparent;
     }
-  }
 
-  &:focus-within {
-    @include outline(rgba($color-border-secondary, 70%));
+    @include transition($time: 0.22s);
   }
 
   .form-label-container {
@@ -185,6 +180,12 @@ input[type='checkbox'] {
       &::after {
         left: 25px;
       }
+    }
+  }
+
+  .checkbox-item:has(input:focus-visible) {
+    label {
+      box-shadow: $box-shadow-input;
     }
   }
 

@@ -6,7 +6,7 @@ import {
 } from '../../app/api/apiTypes';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
-import Form from '../../components/Form';
+import Form from '../../components/form/Form';
 import validateSubcategory from '../../components/formElements/validation/validateSubcategory';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Selectbox from '../../components/selectbox/Selectbox';
