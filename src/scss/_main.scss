@@ -78,12 +78,11 @@ h1 {
 
 a {
   text-decoration: none;
+  position: relative;
+  color: $color-red-30;
 }
 
 a:not(.btn) {
-  position: relative;
-  color: $color-red-30;
-
   @include transition;
 
   &:hover {
