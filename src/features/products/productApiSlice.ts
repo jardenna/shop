@@ -39,10 +39,10 @@ const productApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.Products],
     }),
-    dublicateProduct: builder.mutation<Product, string>({
+    duplicateProduct: builder.mutation<Product, string>({
       query: (id) => ({
         method: 'POST',
-        url: `${productUrl}/${id}/dublicate`,
+        url: `${productUrl}/${id}/duplicate`,
       }),
       invalidatesTags: [TagTypesEnum.Products],
     }),
@@ -63,5 +63,5 @@ export const {
   useCreateProductMutation,
   useDeleteProductMutation,
   useGetHasScheduledDataQuery,
-  useDublicateProductMutation,
+  useDuplicateProductMutation,
 } = productApiSlice;

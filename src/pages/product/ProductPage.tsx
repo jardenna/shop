@@ -3,7 +3,7 @@ import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Table, { Column } from '../../components/sortTable/Table';
 import useLanguage from '../../features/language/useLanguage';
 import {
-  useDublicateProductMutation,
+  useDuplicateProductMutation,
   useGetAllProductsQuery,
   useGetHasScheduledDataQuery,
 } from '../../features/products/productApiSlice';
@@ -30,7 +30,7 @@ const ProductPage = () => {
     pollingInterval: oneDay,
   });
 
-  const [dublicateProduct] = useDublicateProductMutation();
+  const [dublicateProduct] = useDuplicateProductMutation();
 
   const shouldPollFullList = hasScheduledData?.hasScheduled ?? false;
 
