@@ -75,7 +75,7 @@ const duplicateProduct = asyncHandler(async (req, res) => {
     countInStock,
     images: [],
     createdAt: new Date(),
-    productName: `${rest.productName} (kopi)`,
+    productName: `${rest.productName} (${t('copy', req.lang)})`,
   });
 
   await copy.save();
@@ -148,7 +148,7 @@ const updateProduct = [
     if (!product) {
       return res
         .status(404)
-        .json({ success: false, message: 'Product not found' });
+        .json({ success: false, message: t('productNotFound', req.lang) });
     }
 
     res.status(200).json({
