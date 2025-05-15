@@ -1,10 +1,9 @@
-/* stylelint-disable no-descending-specificity */
 @use '../../../scss/globals' as *;
 
 .file-container:has(input:focus) {
   .file-upload-label {
     svg {
-      stroke: #3a6d90;
+      stroke: $color-blue-30;
 
       @include transition;
     }

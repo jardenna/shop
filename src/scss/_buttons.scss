@@ -111,7 +111,7 @@ a[class^='btn-'],
   &:hover,
   &:focus-visible {
     svg {
-      stroke: #3a6d90;
+      stroke: $color-blue-30;
 
       @include transition;
     }
