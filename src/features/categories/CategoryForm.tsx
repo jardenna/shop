@@ -2,19 +2,19 @@ import { useNavigate } from 'react-router';
 import { CreateCategoryRequest } from '../../app/api/apiTypes';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
-import Form from '../../components/Form';
+import Form from '../../components/form/Form';
 import validateCategory from '../../components/formElements/validation/validateCategory';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import SharedCategoryInputs from '../../components/SharedCategoryInputs';
 import useFormValidation from '../../hooks/useFormValidation';
 import { MainPath } from '../../layout/nav/enums';
 import { OptionType } from '../../types/types';
+import { getlowerCaseFirstLetter } from '../../utils/utils';
 import useLanguage from '../language/useLanguage';
 import {
   useCreateCategoryMutation,
   useUpdateCategoryMutation,
 } from './categoriyApiSlice';
-import { getlowerCaseFirstLetter } from '../../utils/utils';
 
 type CategoryFormProps = {
   id: string | null;

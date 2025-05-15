@@ -1,0 +1,40 @@
+@use '../../scss/globals' as *;
+
+form {
+  width: 100%;
+}
+
+.form-card {
+  background-color: $color-white;
+  border-radius: 4px;
+  box-shadow: $box-shadow;
+  margin-bottom: 12px;
+  width: 100%;
+  padding: 16px 24px;
+}
+
+.form-span-container,
+.form-label-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.form-info {
+  font-style: italic;
+  font-size: rem(12px);
+  line-height: rem(18px);
+  margin-block: 12px;
+}
+
+.form-footer {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.category-form {
+  .form-footer {
+    margin-top: 20px;
+  }
+}
