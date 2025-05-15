@@ -25,6 +25,7 @@ type ProductTableRowProps = {
   status: Status;
   subCategoryName: string;
   discount?: number;
+  onCopyProduct: (id: string) => void;
 };
 
 const ProductTableRow = ({
@@ -38,6 +39,7 @@ const ProductTableRow = ({
   status,
   scheduledDate,
   discount,
+  onCopyProduct,
 }: ProductTableRowProps) => {
   const { language, selectedLanguage } = useLanguage();
 
@@ -86,7 +88,7 @@ const ProductTableRow = ({
           title={language.filterRow}
           ariaLabel="copy"
           onClick={() => {
-            console.log(id);
+            onCopyProduct(id);
           }}
           iconName={IconName.Dublicate}
         />

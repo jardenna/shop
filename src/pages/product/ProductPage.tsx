@@ -2,6 +2,7 @@ import { Product } from '../../app/api/apiTypes';
 import Table, { Column } from '../../components/sortTable/Table';
 import useLanguage from '../../features/language/useLanguage';
 import {
+  useCreateProductMutation,
   useGetAllProductsQuery,
   useGetHasScheduledDataQuery,
 } from '../../features/products/productApiSlice';
@@ -19,7 +20,7 @@ const tableHeaders: Column<Product>[] = [
   { key: 'productStatus', label: 'status', name: 'productStatus' },
   { key: 'id', label: '', name: '' },
 ];
-
+// const { onAddMessagePopup } = useMessagePopup();
 const ProductPage = () => {
   const { language } = useLanguage();
   const { data: hasScheduledData } = useGetHasScheduledDataQuery(undefined, {
@@ -36,6 +37,22 @@ const ProductPage = () => {
     pollingInterval: shouldPollFullList ? 15000 : undefined,
     refetchOnMountOrArgChange: true,
   });
+
+  const [createProduct] = useCreateProductMutation();
+
+  async function handleCopyProduct(id: string) {
+    try {
+      const productData = allProducts?.products.find(
+        (product) => product.id === id,
+      );
+      if (!productData) {
+        return;
+      }
+      await createProduct(productData).unwrap();
+    } catch (error: any) {
+      console.log(error);
+    }
+  }
 
   return (
     <article className="page">
@@ -78,6 +95,7 @@ const ProductPage = () => {
                   categoryName={subCategory.category.categoryName}
                   scheduledDate={scheduledDate || null}
                   subCategoryName={subCategory.subCategoryName}
+                  onCopyProduct={handleCopyProduct}
                 />
               ),
             )
