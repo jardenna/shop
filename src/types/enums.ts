@@ -93,7 +93,7 @@ export enum IconName {
   Login = 'login',
   Logo = 'logo',
   Logout = 'logout',
-  More = 'menuDotsHorizontal',
+  MenuDotsHorizontal = 'menuDotsHorizontal',
   Orders = 'orders',
   Products = 'products',
   Search = 'search',
