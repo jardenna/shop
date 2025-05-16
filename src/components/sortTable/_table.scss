@@ -15,7 +15,21 @@ table {
   width: 100%;
 
   img {
-    width: rem(72px);
+    width: rem(120px);
+    height: rem(64px);
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .missing-img {
+    width: rem(120px);
+    height: auto;
+    padding: 8px 0;
+    margin: 0;
+
+    svg {
+      width: rem(36px);
+    }
   }
 
   .edit-cell {
