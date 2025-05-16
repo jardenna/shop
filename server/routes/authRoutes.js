@@ -4,10 +4,7 @@ import {
   loginUser,
   logoutCurrentUser,
 } from '../controllers/authController.js';
-import {
-  authenticate,
-  authorizeEmployee,
-} from '../middleware/authMiddleware.js';
+import { authenticate } from '../middleware/authMiddleware.js';
 import languageMiddleware from '../middleware/languageMiddleware.js';
 
 const router = express.Router();
@@ -20,7 +17,6 @@ router.get(
   '/check-auth',
   languageMiddleware,
   authenticate,
-  authorizeEmployee,
 
   (req, res) => {
     const user = req.user;
