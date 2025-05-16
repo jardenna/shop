@@ -117,7 +117,11 @@ const Layout = () => {
       id: 20,
       icon: <Icon iconName={IconName.Orders} title={language.myOrders} />,
       onClick: () => {
-        navigate(`/${MainPath.Orders}`);
+        if (currentUser) {
+          navigate(`/${MainPath.Orders}`);
+        } else {
+          navigate(`/${MainPath.Login}`);
+        }
       },
     },
 
