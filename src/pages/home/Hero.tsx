@@ -14,9 +14,12 @@ const Hero = () => {
             <p>{language.heroText}</p>
             <p>{language.heroText1}</p>
           </div>
-          <Button variant={BtnVariant.Ghost}>
-            <span>{language.shopNow}</span>
-          </Button>
+          <div className="hero-btn-container">
+            <span className="hero-btn-decoration" />
+            <Button variant={BtnVariant.Ghost}>
+              <span>{language.shopNow}</span>
+            </Button>
+          </div>
         </section>
       </div>
     </div>
