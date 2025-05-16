@@ -109,14 +109,14 @@ const Layout = () => {
         }
       },
       icon: (
-        <Icon iconName={IconName.Auth} title="language.myAccount" size="30" />
+        <Icon iconName={IconName.Auth} title={language.myAccount} size="30" />
       ),
     },
     {
       label: language.myOrders,
       id: 20,
       icon: (
-        <Icon iconName={IconName.Account} title={language.myOrders} size="30" />
+        <Icon iconName={IconName.Account} title={language.myOrders} size="28" />
       ),
       onClick: () => {
         navigate(`/${MainPath.Orders}`);
