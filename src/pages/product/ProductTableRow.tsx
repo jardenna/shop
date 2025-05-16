@@ -1,21 +1,20 @@
 import { memo } from 'react';
 import { Status } from '../../app/api/apiTypes';
 import CardBadge from '../../components/card/CardBadge';
-import MissingImage from '../../components/formElements/fileInput/MissingImage';
 import IconBtn from '../../components/IconBtn';
-import Img from '../../components/Img';
 import MoreLink from '../../components/MoreLink';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
 import { IconName } from '../../types/enums';
 import { formatNumber, getlowerCaseFirstLetter } from '../../utils/utils';
 import ProductDiscountPrice from './ProductDiscountPrice';
+import ProductOverviewCell from './ProductOverviewCell';
 
 type ProductTableRowProps = {
   categoryName: string;
   countInStock: number;
   id: string;
-  imageSrc: string[];
+  images: string[];
   price: number;
   productName: string;
   scheduledDate: Date | null;
@@ -28,7 +27,7 @@ type ProductTableRowProps = {
 const ProductTableRow = ({
   id,
   productName,
-  imageSrc,
+  images,
   price,
   subCategoryName,
   categoryName,
@@ -43,14 +42,7 @@ const ProductTableRow = ({
   return (
     <tr>
       <td>
-        <div className="product-overview-cell">
-          {imageSrc.length > 0 ? (
-            <Img src={imageSrc[0]} alt="" />
-          ) : (
-            <MissingImage />
-          )}
-          <span className="product-name">{productName}</span>
-        </div>
+        <ProductOverviewCell productName={productName} images={images} />
       </td>
       <td>
         {subCategoryName} / {categoryName}

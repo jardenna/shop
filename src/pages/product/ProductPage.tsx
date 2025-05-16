@@ -92,7 +92,7 @@ const ProductPage = () => {
                   key={id}
                   id={id}
                   countInStock={countInStock}
-                  imageSrc={images}
+                  images={images}
                   price={price}
                   discount={discount}
                   productName={productName}
