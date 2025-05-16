@@ -12,7 +12,7 @@ type ProductActionsProps = {
 const ProductActions = ({ onCopyProduct, id }: ProductActionsProps) => {
   const { language } = useLanguage();
   return (
-    <>
+    <div className="flex">
       <MoreLink
         linkText={language.viewProduct}
         linkTo={`/admin/${MainPath.AdminProductView}/${id}`}
@@ -26,7 +26,7 @@ const ProductActions = ({ onCopyProduct, id }: ProductActionsProps) => {
         }}
         iconName={IconName.Dublicate}
       />
-    </>
+    </div>
   );
 };
 
