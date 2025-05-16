@@ -48,7 +48,7 @@ const ProductPage = () => {
       await dublicateProduct(id);
       onAddMessagePopup({
         messagePopupType: 'success',
-        message: language.productUpdated,
+        message: language.productCopied,
       });
     } catch (error: any) {
       onAddMessagePopup({
