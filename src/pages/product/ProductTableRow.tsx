@@ -5,15 +5,11 @@ import MissingImage from '../../components/formElements/fileInput/MissingImage';
 import IconBtn from '../../components/IconBtn';
 import Img from '../../components/Img';
 import MoreLink from '../../components/MoreLink';
-import ProductPrice from '../../features/currency/components/ProductPrice';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
 import { IconName } from '../../types/enums';
-import {
-  discountCalculation,
-  formatNumber,
-  getlowerCaseFirstLetter,
-} from '../../utils/utils';
+import { formatNumber, getlowerCaseFirstLetter } from '../../utils/utils';
+import ProductDiscountPrice from './ProductDiscountPrice';
 
 type ProductTableRowProps = {
   categoryName: string;
@@ -44,8 +40,6 @@ const ProductTableRow = ({
 }: ProductTableRowProps) => {
   const { language, selectedLanguage } = useLanguage();
 
-  const productHasDiscount = discount && discount > 0;
-
   return (
     <tr>
       <td>
@@ -62,18 +56,7 @@ const ProductTableRow = ({
         {subCategoryName} / {categoryName}
       </td>
       <td>
-        <ProductPrice
-          price={price}
-          className={productHasDiscount ? 'text-line-through' : ''}
-        />
-        {productHasDiscount ? (
-          <span>
-            {' '}
-            / <ProductPrice price={discountCalculation(price, discount)} />
-          </span>
-        ) : (
-          ''
-        )}
+        <ProductDiscountPrice price={price} discount={discount || null} />
       </td>
       <td>{formatNumber(countInStock, selectedLanguage)}</td>
       <td>
