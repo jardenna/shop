@@ -1,12 +1,9 @@
 import { memo } from 'react';
 import { Status } from '../../app/api/apiTypes';
 import CardBadge from '../../components/card/CardBadge';
-import IconBtn from '../../components/IconBtn';
-import MoreLink from '../../components/MoreLink';
 import useLanguage from '../../features/language/useLanguage';
-import { MainPath } from '../../layout/nav/enums';
-import { IconName } from '../../types/enums';
 import { formatNumber, getlowerCaseFirstLetter } from '../../utils/utils';
+import ProductActions from './ProductActions';
 import ProductDiscountPrice from './ProductDiscountPrice';
 import ProductOverviewCell from './ProductOverviewCell';
 
@@ -59,19 +56,7 @@ const ProductTableRow = ({
         />
       </td>
       <td>
-        <MoreLink
-          linkText={language.viewProduct}
-          linkTo={`/admin/${MainPath.AdminProductView}/${id}`}
-        />{' '}
-        I{' '}
-        <IconBtn
-          title={language.filterRow}
-          ariaLabel="copy"
-          onClick={() => {
-            onCopyProduct(id);
-          }}
-          iconName={IconName.Dublicate}
-        />
+        <ProductActions id={id} onCopyProduct={onCopyProduct} />
       </td>
     </tr>
   );
