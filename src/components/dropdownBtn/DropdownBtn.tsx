@@ -10,7 +10,6 @@ export type DropdownItem = {
   label: string;
   btnVariant?: BtnVariant;
   className?: string;
-  hide?: boolean;
   icon?: ReactNode;
   onClick: () => void;
 };
