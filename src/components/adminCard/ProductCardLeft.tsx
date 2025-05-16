@@ -4,6 +4,7 @@ import { getlowerCaseFirstLetter } from '../../utils/utils';
 import Badge from '../badge/Badge';
 import CardContent from '../card/CardContent';
 import CardFooter from '../card/CardFooter';
+import MissingImage from '../formElements/fileInput/MissingImage';
 import Img from '../Img';
 import AdminCard from './types';
 
@@ -31,13 +32,17 @@ const ProductCardLeft = ({
 
   return (
     <CardContent className="left" heading={null} onReset={onReset}>
-      <ul className="product-img-list">
-        {images.map((url) => (
-          <li key={url}>
-            <Img src={url} alt="" className="product-img-item" />
-          </li>
-        ))}
-      </ul>
+      {images.length > 0 ? (
+        <ul className="product-img-list">
+          {images.map((url) => (
+            <li key={url}>
+              <Img src={url} alt="" className="product-img-item" />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <MissingImage />
+      )}
       <div className="position-relative ">
         <Badge
           badgeText={getlowerCaseFirstLetter(status, language)}

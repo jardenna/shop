@@ -1,7 +1,9 @@
 import { Product } from '../../app/api/apiTypes';
+import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Table, { Column } from '../../components/sortTable/Table';
 import useLanguage from '../../features/language/useLanguage';
 import {
+  useDuplicateProductMutation,
   useGetAllProductsQuery,
   useGetHasScheduledDataQuery,
 } from '../../features/products/productApiSlice';
@@ -22,9 +24,13 @@ const tableHeaders: Column<Product>[] = [
 
 const ProductPage = () => {
   const { language } = useLanguage();
+  const { onAddMessagePopup } = useMessagePopup();
+
   const { data: hasScheduledData } = useGetHasScheduledDataQuery(undefined, {
     pollingInterval: oneDay,
   });
+
+  const [dublicateProduct] = useDuplicateProductMutation();
 
   const shouldPollFullList = hasScheduledData?.hasScheduled ?? false;
 
@@ -36,6 +42,22 @@ const ProductPage = () => {
     pollingInterval: shouldPollFullList ? 15000 : undefined,
     refetchOnMountOrArgChange: true,
   });
+
+  async function handleCopyProduct(id: string) {
+    try {
+      await dublicateProduct(id);
+      onAddMessagePopup({
+        messagePopupType: 'success',
+        message: language.productCopied,
+      });
+    } catch (error: any) {
+      onAddMessagePopup({
+        messagePopupType: 'error',
+        message: error.data.message,
+        componentType: 'notification',
+      });
+    }
+  }
 
   return (
     <article className="page">
@@ -70,7 +92,7 @@ const ProductPage = () => {
                   key={id}
                   id={id}
                   countInStock={countInStock}
-                  imageSrc={images}
+                  images={images}
                   price={price}
                   discount={discount}
                   productName={productName}
@@ -78,6 +100,7 @@ const ProductPage = () => {
                   categoryName={subCategory.category.categoryName}
                   scheduledDate={scheduledDate || null}
                   subCategoryName={subCategory.subCategoryName}
+                  onCopyProduct={handleCopyProduct}
                 />
               ),
             )

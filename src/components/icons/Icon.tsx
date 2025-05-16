@@ -17,6 +17,7 @@ import ChevronUpIcon from './ChevronUpIcon';
 import CircelChevronRightIcon from './CircelChevronRightIcon';
 import CloseIcon from './CloseIcon';
 import DashboardIcon from './DashboardIcon';
+import DublicateIcon from './DublicateIcon';
 import EditIcon from './EditIcon';
 import ErrorIcon from './ErrorIcon';
 import EyeIcon from './EyeIcon';
@@ -25,6 +26,7 @@ import FilterIcon from './FilterIcon';
 import GridIcon from './GridIcon';
 import GridLargeIcon from './GridLargeIcon';
 import GridSmallIcon from './GridSmallIcon';
+import ImageIcon from './ImageIcon';
 import InfoIcon from './InfoIcon';
 import LanguageIcon from './LanguageIcon';
 import LoginIcon from './LoginIcon';
@@ -76,6 +78,7 @@ const iconMapping = {
   circelChevronRight: CircelChevronRightIcon,
   close: CloseIcon,
   dashboard: DashboardIcon,
+  dublicate: DublicateIcon,
   edit: EditIcon,
   error: ErrorIcon,
   eye: EyeIcon,
@@ -84,6 +87,7 @@ const iconMapping = {
   grid: GridIcon,
   gridLarge: GridLargeIcon,
   gridSmall: GridSmallIcon,
+  image: ImageIcon,
   info: InfoIcon,
   language: LanguageIcon,
   login: LoginIcon,

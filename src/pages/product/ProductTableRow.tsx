@@ -1,34 +1,30 @@
 import { memo } from 'react';
 import { Status } from '../../app/api/apiTypes';
 import CardBadge from '../../components/card/CardBadge';
-import Img from '../../components/Img';
-import MoreLink from '../../components/MoreLink';
-import ProductPrice from '../../features/currency/components/ProductPrice';
 import useLanguage from '../../features/language/useLanguage';
-import { MainPath } from '../../layout/nav/enums';
-import {
-  discountCalculation,
-  formatNumber,
-  getlowerCaseFirstLetter,
-} from '../../utils/utils';
+import { formatNumber, getlowerCaseFirstLetter } from '../../utils/utils';
+import ProductActions from './ProductActions';
+import ProductDiscountPrice from './ProductDiscountPrice';
+import ProductOverviewCell from './ProductOverviewCell';
 
 type ProductTableRowProps = {
   categoryName: string;
   countInStock: number;
   id: string;
-  imageSrc: string[];
+  images: string[];
   price: number;
   productName: string;
   scheduledDate: Date | null;
   status: Status;
   subCategoryName: string;
   discount?: number;
+  onCopyProduct: (id: string) => void;
 };
 
 const ProductTableRow = ({
   id,
   productName,
-  imageSrc,
+  images,
   price,
   subCategoryName,
   categoryName,
@@ -36,34 +32,20 @@ const ProductTableRow = ({
   status,
   scheduledDate,
   discount,
+  onCopyProduct,
 }: ProductTableRowProps) => {
   const { language, selectedLanguage } = useLanguage();
 
-  const productHasDiscount = discount && discount > 0;
   return (
     <tr>
       <td>
-        <div className="product-overview-cell">
-          <Img src={imageSrc[0]} alt="" />
-          <span className="product-name">{productName}</span>
-        </div>
+        <ProductOverviewCell productName={productName} images={images} />
       </td>
       <td>
         {subCategoryName} / {categoryName}
       </td>
       <td>
-        <ProductPrice
-          price={price}
-          className={productHasDiscount ? 'text-line-through' : ''}
-        />
-        {productHasDiscount ? (
-          <span>
-            {' '}
-            / <ProductPrice price={discountCalculation(price, discount)} />
-          </span>
-        ) : (
-          ''
-        )}
+        <ProductDiscountPrice price={price} discount={discount || null} />
       </td>
       <td>{formatNumber(countInStock, selectedLanguage)}</td>
       <td>
@@ -74,10 +56,7 @@ const ProductTableRow = ({
         />
       </td>
       <td>
-        <MoreLink
-          linkText={language.viewProduct}
-          linkTo={`/admin/${MainPath.AdminProductView}/${id}`}
-        />
+        <ProductActions id={id} onCopyProduct={onCopyProduct} />
       </td>
     </tr>
   );

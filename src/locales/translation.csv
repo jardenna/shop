@@ -42,6 +42,7 @@ colorRequired;Please select at least one color;Vælg mindst 1 farve
 colours;Colours;Farver
 confirmPassword;Confirm password;Gentag adgangskode
 contact;Contact;Kontakt
+copy;Copy;Kopi
 couldNotFindInfo;Sorry, We couldn’t find the information you’re looking for;Vi kunne desværre ikke finde den information, du søger
 create;Create;Tilføj
 createAccount;Create account;Opret konto
@@ -163,7 +164,8 @@ preferences;Preferences;Præferencer
 price;Price;Pris
 priceRequired;Please insert price;Indsæt venligst pris
 pricing;Pricing;Prissætning
-productCreated;Product created;Produkt tilføjet
+productCreated;Product created;Produkt blev tilføjet
+productCopied;Product copied;Produkt blev kopieret
 productDeleted;Product deleted;Produkt blev slettet
 productDescriptionRequired;Please insert product description;Indsæt venligst produktbeskrivelse
 productImages;Product images;Produkt billeder
@@ -176,7 +178,7 @@ productQuantity;Product quantity;Produkt antal
 products;Products;Produkter
 productsInStockNow;Products in stock now;Antal produkter på lager
 productStatus;Product status;Produkt status
-productUpdated;Product updated;Produkt opdateret
+productUpdated;Product updated;Produkt blev opdateret
 productVariants;Product Variants;Produkt varianter
 profile;Profile;Profil
 publish;Publish;Udgiv
@@ -218,6 +220,7 @@ sureToDelete;Are you sure that you want to delete;Er du sikker på at du vil sle
 title;Title;Titel
 totalProducts;Total products;Antal produkter
 trashCan;Trash can;Skraldespand
+unknownError;Unknown error;Ukendt fejl
 unsupportedFile;is not supported type;er ikke understøttet
 update;Update;Opdater
 updateCategory;Update category;Opdater kategori
@@ -225,7 +228,6 @@ updatedAt;Updated at;Opdateret
 updatePreferences;Update Preferences;Opdater præferencer
 updateProduct;Update product;Opdater produkt
 updateSubCategory;Update subcategory;Opdater underkategori
-unknownError;Unknown error;Ukendt fejl
 user;User;Bruger
 userAlreadyExist;A profile with this email already exists. Try logging in instead;Der findes en profil med denne e-mail. Prøv at logge ind i stedet
 userDeleted;User deleted;Bruger slettet

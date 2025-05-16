@@ -1,5 +1,21 @@
 @use '../../../scss/globals' as *;
 
+.missing-img {
+  display: flex;
+  width: rem(200px);
+  height: rem(112px);
+  background: $color-light-gray-30;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  margin-bottom: 12px;
+
+  svg {
+    fill: $color-gray-40;
+    stroke: $color-gray-40;
+  }
+}
+
 .file-container:has(input:focus) {
   .file-upload-label {
     svg {

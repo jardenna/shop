@@ -3,6 +3,7 @@ import {
   checkScheduled,
   createProduct,
   deleteProduct,
+  duplicateProduct,
   getNewProducts,
   getProductById,
   getProducts,
@@ -30,6 +31,13 @@ router.get('/allProducts', getSortedProducts);
 router.post('/:id/reviews', authenticate, checkId, createProductReviews);
 router.get('/top', getTopProducts);
 router.get('/new', getNewProducts);
+router.post(
+  '/:id/duplicate',
+  languageMiddleware,
+  authenticate,
+  authorizeEmployee,
+  duplicateProduct,
+);
 
 router
   .route('/:id')

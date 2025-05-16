@@ -46,6 +46,46 @@ const createProduct = [
   }),
 ];
 
+// @desc    Dublicate Product
+// @route   /api/products/:id/duplicate
+// @method  Post
+// @access  Private for admin and employee
+const duplicateProduct = asyncHandler(async (req, res) => {
+  const original = await Product.findById(req.params.id);
+
+  if (!original) {
+    return res
+      .status(404)
+      .json({ success: false, message: 'Original product not found' });
+  }
+
+  const { _id, images, createdAt, updatedAt, ...rest } = original.toObject();
+
+  const subCategoryExists = await SubCategory.findById(original.subCategory);
+  if (!subCategoryExists) {
+    return res
+      .status(400)
+      .json({ success: false, message: 'Subcategory does not exist' });
+  }
+
+  const countInStock = Number(rest.quantity) || 0;
+
+  const copy = new Product({
+    ...rest,
+    countInStock,
+    images: [],
+    createdAt: new Date(),
+    productName: `${rest.productName} (${t('copy', req.lang)})`,
+  });
+
+  await copy.save();
+
+  res.status(201).json({
+    id: copy._id,
+    ...copy.toObject(),
+  });
+});
+
 // @desc    Update Product
 // @route   /api/products/:id
 // @method  Put
@@ -108,7 +148,7 @@ const updateProduct = [
     if (!product) {
       return res
         .status(404)
-        .json({ success: false, message: 'Product not found' });
+        .json({ success: false, message: t('productNotFound', req.lang) });
     }
 
     res.status(200).json({
@@ -293,6 +333,7 @@ export {
   checkScheduled,
   createProduct,
   deleteProduct,
+  duplicateProduct,
   getNewProducts,
   getProductById,
   getProducts,

@@ -33,11 +33,16 @@
       background-color: $color-background;
     }
 
-    .btn {
+    .btn-ghost {
       display: flex;
       gap: 8px;
       justify-content: space-between;
       width: 100%;
+
+      &:hover,
+      &:focus-visible {
+        outline: transparent;
+      }
     }
   }
 }
