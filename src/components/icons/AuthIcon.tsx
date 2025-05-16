@@ -10,13 +10,11 @@ const AuthIcon = ({ size, title, className, ariaHidden }: IconDefaultProps) => (
     viewBox="0 0 125 125"
     fill="none"
     stroke="currentcolor"
-    strokeWidth="3"
-    strokeLinecap="round"
-    strokeMiterlimit="10"
+    strokeWidth="4"
     aria-hidden={ariaHidden}
   >
     <title>{title}</title>
-    <circle className="st0" cx="58.1" cy="42.3" r="19.7" />
+    <circle cx="58.1" cy="42.3" r="19.7" />
     <path d="M69.8 99.7H25.1c-5.9 0-10.2-6.6-8.6-13.2 3-12.6 10.1-23.3 19.6-29.9M80.1 56.6c1.4 1 2.8 2.1 4.1 3.2" />
     <path d="M80.1 56.6c1.3.9 2.5 1.8 3.7 2.9" />
     <circle cx="89.2" cy="82.8" r="19.7" />

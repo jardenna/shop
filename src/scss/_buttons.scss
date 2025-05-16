@@ -106,10 +106,6 @@ a[class^='btn-'],
   min-height: auto;
   padding: 0;
 
-  svg {
-    stroke: currentcolor;
-  }
-
   &:hover,
   &:focus-visible {
     color: $color-blue-30;

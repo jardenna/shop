@@ -69,6 +69,33 @@ const Layout = () => {
     label: language.cancel,
   };
 
+  const isEmployee = currentUser && currentUser.role === 'Employee';
+
+  // Employee dropdown list
+  const employeeDropdownList = [
+    {
+      label: language.admin,
+      id: 30,
+      icon: <Icon iconName={IconName.Admin} title={language.lock} />,
+      onClick: () => {
+        navigate(`/${MainPath.Admin}`);
+      },
+    },
+    {
+      label: currentUser ? language.logout : language.login,
+      id: 40,
+      onClick: currentUser
+        ? handleLogout
+        : () => navigate(`/${MainPath.Login}`),
+      icon: (
+        <Icon
+          iconName={currentUser ? IconName.Logout : IconName.Login}
+          title={currentUser ? language.logout : language.login}
+        />
+      ),
+    },
+  ];
+
   // User dropdown list
   const userDropdownList = [
     {
@@ -82,33 +109,25 @@ const Layout = () => {
         }
       },
       icon: (
-        <Icon iconName={IconName.Auth} title={language.myAccount} size="30" />
+        <Icon iconName={IconName.Auth} title={language.myAccount} size="25" />
       ),
-      hide: currentUser?.isAdmin,
     },
     {
       label: language.myOrders,
       id: 20,
-      icon: (
-        <Icon iconName={IconName.Account} title={language.myOrders} size="30" />
-      ),
+      icon: <Icon iconName={IconName.Orders} title={language.myOrders} />,
       onClick: () => {
-        navigate(`/${MainPath.Orders}`);
+        if (currentUser) {
+          navigate(`/${MainPath.Orders}`);
+        } else {
+          navigate(`/${MainPath.Login}`);
+        }
       },
-      hide: currentUser?.isAdmin,
     },
-    {
-      label: language.admin,
-      id: 30,
-      icon: <Icon iconName={IconName.Admin} title={language.lock} />,
-      onClick: () => {
-        navigate(`/${MainPath.Admin}`);
-      },
-      hide: !currentUser?.isAdmin,
-    },
+
     {
       label: currentUser ? language.logout : language.login,
-      id: 40,
+      id: 30,
       onClick: currentUser
         ? handleLogout
         : () => navigate(`/${MainPath.Login}`),
@@ -127,7 +146,7 @@ const Layout = () => {
       <SkipLink />
       <Header
         ariaLabel={language.main}
-        userDropdownList={userDropdownList}
+        userDropdownList={isEmployee ? employeeDropdownList : userDropdownList}
         primaryActionBtn={primaryActionBtn}
         secondaryActionBtn={secondaryActionBtn}
         defaultValue={{

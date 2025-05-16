@@ -6,11 +6,25 @@ const ProtectedRoute = () => {
   const location = useLocation();
   const { data: userProfile, isLoading } = useCheckAuthQuery();
 
-  if (!isLoading && !userProfile) {
+  const isAuthenticated = !!userProfile;
+  const isUser = userProfile?.user.role === 'User';
+
+  if (isLoading) {
+    return null;
+  }
+
+  if (!isAuthenticated) {
     return <Navigate to={MainPath.Login} state={{ from: location }} replace />;
+  }
+
+  const isTryingToAccessAdmin = location.pathname.startsWith(
+    `/${MainPath.Admin}`,
+  );
+
+  if (isTryingToAccessAdmin && isUser) {
+    return <Navigate to={MainPath.Root} state={{ from: location }} replace />;
   }
 
   return <Outlet />;
 };
-
 export default ProtectedRoute;
