@@ -127,7 +127,7 @@ const Layout = () => {
 
     {
       label: currentUser ? language.logout : language.login,
-      id: 40,
+      id: 30,
       onClick: currentUser
         ? handleLogout
         : () => navigate(`/${MainPath.Login}`),
