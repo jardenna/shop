@@ -3,7 +3,7 @@ import { BtnVariant, IconName } from '../../types/enums';
 import Badge from '../badge/Badge';
 import DateDisplay from '../datePicker/DateDisplay';
 import Icon from '../icons/Icon';
-import Tooltip from '../tooltip/Tooltip';
+import Tooltip from '../tip/Tip';
 
 type CardBadgeProps = {
   badgeClassName: string;
@@ -22,7 +22,7 @@ const CardBadge = ({
       <Badge badgeText={badgeText} className={badgeClassName} />
       {scheduledDate && (
         <Tooltip
-          text={
+          tooltip={
             <DateDisplay date={scheduledDate} hour="2-digit" minute="2-digit" />
           }
           ariaControls="scheduled-date"
