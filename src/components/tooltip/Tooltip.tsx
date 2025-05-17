@@ -1,3 +1,4 @@
+import { Placement } from '@popperjs/core';
 import { ReactNode } from 'react';
 import useDropdown from '../../hooks/useDropdown';
 import { BtnVariant } from '../../types/enums';
@@ -9,6 +10,7 @@ type TooltipProps = {
   ariaLabel: string;
   children: ReactNode;
   tooltip: string | ReactNode;
+  placement?: Placement;
   triggerBtnClassName?: string;
   triggerBtnVariant?: BtnVariant;
 };
@@ -20,6 +22,7 @@ const Tooltip = ({
   ariaLabel,
   triggerBtnVariant,
   triggerBtnClassName = '',
+  placement = 'top-start',
 }: TooltipProps) => {
   const {
     dropdownRef,
@@ -27,7 +30,7 @@ const Tooltip = ({
     dropdownIsOpen,
     toggleDropdownList,
     arrowRef,
-  } = useDropdown();
+  } = useDropdown({ placement });
 
   return (
     <div className="tooltip-container">

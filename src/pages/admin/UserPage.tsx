@@ -1,10 +1,10 @@
 import { UserResponse } from '../../app/api/apiTypes';
-import Dropdown from '../../components/dropdown/Dropdown';
 import validateUpdateUser from '../../components/formElements/validation/validateUpdateUser';
 import IconContent from '../../components/IconContent';
 import Icon from '../../components/icons/Icon';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Table from '../../components/sortTable/Table';
+import Tooltip from '../../components/tooltip/Tooltip';
 import EditUserInput from '../../features/admin/users/EditUserInput';
 import {
   useDeleteUserMutation,
@@ -16,6 +16,7 @@ import useTableEditField from '../../hooks/useTableEditField';
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant, IconName } from '../../types/enums';
 import PageContainer from '../PageContainer';
+import DeleteUser from './DeleteUser';
 
 const tableHeaders: { key: keyof UserResponse; label: string; name: string }[] =
   [
@@ -145,16 +146,19 @@ const UserPage = () => {
                 ))}
                 <td>
                   {!isAdmin ? (
-                    <Dropdown
+                    <Tooltip
+                      placement="left-start"
                       ariaControls="delete-user"
-                      text={`${language.sureToDelete} ${username}?`}
+                      tooltip={
+                        <DeleteUser
+                          onPrimaryClick={() => {
+                            handleDeleteUser(id, username);
+                          }}
+                          text={`${language.sureToDelete} ${username}?`}
+                        />
+                      }
                       triggerBtnVariant={BtnVariant.Ghost}
                       triggerBtnClassName="danger"
-                      onPrimaryClick={() => {
-                        handleDeleteUser(id, username);
-                      }}
-                      primaryBtnLabel={language.delete}
-                      primaryBtnVariant={BtnVariant.Danger}
                       ariaLabel={language.deleteUser}
                     >
                       <Icon
@@ -162,7 +166,7 @@ const UserPage = () => {
                         title={language.trashCan}
                         ariaLabel={language.deleteUser}
                       />
-                    </Dropdown>
+                    </Tooltip>
                   ) : (
                     <span className="disabled-trash-icon flex-align-right">
                       <IconContent
