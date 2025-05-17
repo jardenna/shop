@@ -1,17 +1,27 @@
 import { createPopper } from '@popperjs/core';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { BtnVariant } from '../../types/enums';
+import Button from '../Button';
 
 type DropdownProps = {
   ariaControls: string;
   ariaLabel: string;
   children: ReactNode;
   tooltip: string | ReactNode;
+  dropdownIsOpen?: boolean;
   triggerBtnClassName?: string;
   triggerBtnVariant?: BtnVariant;
 };
 
-const Tooltip = ({ children, tooltip }: DropdownProps) => {
+const Tooltip = ({
+  children,
+  tooltip,
+  triggerBtnClassName,
+  ariaControls,
+  triggerBtnVariant,
+  dropdownIsOpen,
+  ariaLabel,
+}: DropdownProps) => {
   const referenceRef = useRef<HTMLDivElement | null>(null);
   const tooltipRef = useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState(false);
@@ -54,16 +64,21 @@ const Tooltip = ({ children, tooltip }: DropdownProps) => {
         onMouseLeave={() => {
           setVisible(false);
         }}
-        className="inline-block"
+        className="tooltip-container"
       >
-        {children}
+        <Button
+          variant={triggerBtnVariant}
+          ariaExpanded={dropdownIsOpen}
+          ariaHasPopup
+          ariaControls={ariaControls}
+          ariaLabel={ariaLabel}
+          className={triggerBtnClassName}
+        >
+          {children}
+        </Button>
       </div>
       {visible && (
-        <div
-          ref={tooltipRef}
-          className="z-50 bg-black text-white text-sm px-2 py-1 rounded shadow-lg"
-          style={{ position: 'absolute' }}
-        >
+        <div ref={tooltipRef} className="tooltip-content">
           {tooltip}
         </div>
       )}
