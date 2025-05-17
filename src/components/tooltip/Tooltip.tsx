@@ -4,24 +4,25 @@ import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import './_tooltip.scss';
 
-type DropdownProps = {
+type TooltipProps = {
   ariaControls: string;
   ariaLabel: string;
   children: ReactNode;
-  text: string | ReactNode;
+  tooltip: string | ReactNode;
   triggerBtnClassName?: string;
   triggerBtnVariant?: BtnVariant;
 };
 
 const Tooltip = ({
-  text,
+  children,
+  tooltip,
   ariaControls,
   ariaLabel,
   triggerBtnVariant,
   triggerBtnClassName = '',
-  children,
-}: DropdownProps) => {
-  const { dropdownRef, dropdownIsOpen, toggleDropdownList } = useDropdown();
+}: TooltipProps) => {
+  const { dropdownRef, buttonRef, dropdownIsOpen, toggleDropdownList } =
+    useDropdown();
 
   return (
     <div className="tooltip-container">
@@ -33,13 +34,15 @@ const Tooltip = ({
         ariaControls={ariaControls}
         ariaLabel={ariaLabel}
         className={triggerBtnClassName}
+        tooltipRef={buttonRef}
       >
         {children}
       </Button>
+
       {dropdownIsOpen && (
-        <span className="tooltip-content" ref={dropdownRef} id={ariaControls}>
-          {text}
-        </span>
+        <div ref={dropdownRef} className="tooltip-content" id={ariaControls}>
+          {tooltip}
+        </div>
       )}
     </div>
   );

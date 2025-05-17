@@ -1,6 +1,9 @@
 import useLanguage from '../../features/language/useLanguage';
+import { BtnVariant, IconName } from '../../types/enums';
 import Badge from '../badge/Badge';
-import Tooltip from '../tip/Tooltip';
+import DateDisplay from '../datePicker/DateDisplay';
+import Icon from '../icons/Icon';
+import Tooltip from '../tooltip/Tooltip';
 
 type CardBadgeProps = {
   badgeClassName: string;
@@ -14,12 +17,27 @@ const CardBadge = ({
   scheduledDate,
 }: CardBadgeProps) => {
   const { language } = useLanguage();
-  console.log(language.add);
 
   return (
     <div className="flex align-items-center ">
       <Badge badgeText={badgeText} className={badgeClassName} />
-      {scheduledDate && <Tooltip />}
+      {scheduledDate && (
+        <Tooltip
+          ariaControls="scheduled-date"
+          triggerBtnVariant={BtnVariant.Ghost}
+          ariaLabel={language.scheduledDate}
+          tooltip={
+            <DateDisplay date={scheduledDate} hour="2-digit" minute="2-digit" />
+          }
+        >
+          <Icon
+            iconName={IconName.Calendar}
+            title={language.calendar}
+            ariaLabel={language.scheduledDate}
+            ariaHidden
+          />
+        </Tooltip>
+      )}
     </div>
   );
 };

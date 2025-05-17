@@ -3,14 +3,13 @@
 .tooltip-container {
   display: flex;
   justify-content: flex-end;
-  position: relative;
 }
 
 .tooltip-content {
-  position: absolute;
-  z-index: 2;
   background-color: $color-white;
   padding: 8px;
   box-shadow: $box-shadow;
   border-radius: 4px;
+  position: absolute;
+  z-index: 2;
 }
