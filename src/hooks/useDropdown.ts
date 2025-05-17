@@ -1,11 +1,16 @@
-import { createPopper, Instance } from '@popperjs/core';
+import { createPopper, Instance, Placement } from '@popperjs/core';
 import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router';
 import { KeyCode } from '../types/enums';
 import useClickOutside from './useClickOutside';
 import useKeyPress from './useKeyPress';
 
-const useDropdown = ({ callback }: { callback?: () => void } = {}) => {
+type useDropdownProps = {
+  placement?: Placement;
+  callback?: () => void;
+};
+
+const useDropdown = ({ callback, placement }: useDropdownProps) => {
   const location = useLocation();
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
@@ -31,7 +36,8 @@ const useDropdown = ({ callback }: { callback?: () => void } = {}) => {
         buttonRef.current,
         dropdownRef.current,
         {
-          placement: 'top-start', // "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end";
+          placement: placement || 'left-start',
+          // "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end";
           modifiers: [
             {
               name: 'offset',
@@ -44,7 +50,7 @@ const useDropdown = ({ callback }: { callback?: () => void } = {}) => {
             {
               name: 'flip',
               options: {
-                fallbackPlacements: ['top', 'bottom'],
+                fallbackPlacements: ['top', 'bottom', 'left', 'right'],
               },
             },
             {
