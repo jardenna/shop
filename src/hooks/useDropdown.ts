@@ -36,7 +36,7 @@ const useDropdown = ({ callback, placement }: useDropdownProps) => {
         buttonRef.current,
         dropdownRef.current,
         {
-          placement: placement || 'left-start',
+          placement: placement || 'top-start',
           // "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end";
           modifiers: [
             {

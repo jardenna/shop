@@ -22,7 +22,7 @@ const Tooltip = ({
   ariaLabel,
   triggerBtnVariant,
   triggerBtnClassName = '',
-  placement = 'top-start',
+  placement,
 }: TooltipProps) => {
   const {
     dropdownRef,
