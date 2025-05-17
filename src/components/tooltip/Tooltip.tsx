@@ -21,8 +21,13 @@ const Tooltip = ({
   triggerBtnVariant,
   triggerBtnClassName = '',
 }: TooltipProps) => {
-  const { dropdownRef, buttonRef, dropdownIsOpen, toggleDropdownList } =
-    useDropdown();
+  const {
+    dropdownRef,
+    buttonRef,
+    dropdownIsOpen,
+    toggleDropdownList,
+    arrowRef,
+  } = useDropdown();
 
   return (
     <div className="tooltip-container">
@@ -42,6 +47,7 @@ const Tooltip = ({
       {dropdownIsOpen && (
         <div ref={dropdownRef} className="tooltip-content" id={ariaControls}>
           {tooltip}
+          <div ref={arrowRef} className="arrow" />
         </div>
       )}
     </div>

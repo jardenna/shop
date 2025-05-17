@@ -9,6 +9,7 @@ const useDropdown = ({ callback }: { callback?: () => void } = {}) => {
   const location = useLocation();
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const arrowRef = useRef<HTMLDivElement | null>(null);
   const [dropdownIsOpen, setDropdownIsOpen] = useState(false);
   const popperInstanceRef = useRef<Instance | null>(null);
 
@@ -34,7 +35,7 @@ const useDropdown = ({ callback }: { callback?: () => void } = {}) => {
           modifiers: [
             {
               name: 'offset',
-              options: { offset: [0, 6] },
+              options: { offset: [0, 8] },
             },
             {
               name: 'preventOverflow',
@@ -44,6 +45,13 @@ const useDropdown = ({ callback }: { callback?: () => void } = {}) => {
               name: 'flip',
               options: {
                 fallbackPlacements: ['top', 'bottom'],
+              },
+            },
+            {
+              name: 'arrow',
+              options: {
+                element: arrowRef.current,
+                padding: 6,
               },
             },
           ],
@@ -72,6 +80,7 @@ const useDropdown = ({ callback }: { callback?: () => void } = {}) => {
     dropdownIsOpen,
     toggleDropdownList,
     handleCallback,
+    arrowRef,
   };
 };
 
