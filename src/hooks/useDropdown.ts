@@ -1,3 +1,4 @@
+import { createPopper, Instance } from '@popperjs/core';
 import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router';
 import { KeyCode } from '../types/enums';
@@ -7,17 +8,13 @@ import useKeyPress from './useKeyPress';
 const useDropdown = ({ callback }: { callback?: () => void } = {}) => {
   const location = useLocation();
   const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [dropdownIsOpen, setDropdownIsOpen] = useState(false);
+  const popperInstanceRef = useRef<Instance | null>(null);
 
   useKeyPress(() => {
     setDropdownIsOpen(false);
   }, [KeyCode.Esc]);
-
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
-
-  const toggleDropdownList = () => {
-    setDropdownIsOpen(!dropdownIsOpen);
-  };
 
   useClickOutside(dropdownRef, () => {
     setDropdownIsOpen(false);
@@ -27,14 +24,49 @@ const useDropdown = ({ callback }: { callback?: () => void } = {}) => {
     setDropdownIsOpen(false);
   }, [location]);
 
-  const handleCallback = () => {
-    if (callback) {
-      callback();
+  useEffect(() => {
+    if (dropdownIsOpen && buttonRef.current && dropdownRef.current) {
+      popperInstanceRef.current = createPopper(
+        buttonRef.current,
+        dropdownRef.current,
+        {
+          placement: 'bottom-start',
+          modifiers: [
+            {
+              name: 'offset',
+              options: { offset: [0, 4] },
+            },
+            {
+              name: 'preventOverflow',
+              options: { boundary: 'viewport' },
+            },
+          ],
+        },
+      );
     }
+
+    return () => {
+      popperInstanceRef.current?.destroy();
+      popperInstanceRef.current = null;
+    };
+  }, [dropdownIsOpen]);
+
+  const toggleDropdownList = () => {
+    setDropdownIsOpen((prev) => !prev);
+  };
+
+  const handleCallback = () => {
+    callback?.();
     setDropdownIsOpen(false);
   };
 
-  return { dropdownRef, dropdownIsOpen, toggleDropdownList, handleCallback };
+  return {
+    dropdownRef,
+    buttonRef,
+    dropdownIsOpen,
+    toggleDropdownList,
+    handleCallback,
+  };
 };
 
 export default useDropdown;
