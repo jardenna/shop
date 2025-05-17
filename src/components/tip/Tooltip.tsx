@@ -2,13 +2,9 @@ import useDropdown from '../../hooks/useDropdown';
 import './_tooltip.scss';
 
 const Tooltip = () => {
-  const {
-    dropdownRef,
-    buttonRef,
-    dropdownIsOpen,
-    toggleDropdownList,
-    arrowRef,
-  } = useDropdown();
+  const { dropdownRef, buttonRef, dropdownIsOpen, toggleDropdownList } =
+    useDropdown();
+
   return (
     <div className="tooltip-container">
       <button type="button" ref={buttonRef} onClick={toggleDropdownList}>
@@ -17,8 +13,7 @@ const Tooltip = () => {
 
       {dropdownIsOpen && (
         <div ref={dropdownRef} className="tooltip-content">
-          Tooltip or Dropdown Content{' '}
-          <div ref={arrowRef} className="tooltip-arrow" />
+          Tooltip or Dropdown Content
         </div>
       )}
     </div>
