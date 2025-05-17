@@ -9,7 +9,7 @@ type TooltipProps = {
   ariaControls: string;
   ariaLabel: string;
   children: ReactNode;
-  tooltip: string | ReactNode;
+  tooltip: ReactNode | ((helpers: { close: () => void }) => ReactNode);
   placement?: Placement;
   triggerBtnClassName?: string;
   triggerBtnVariant?: BtnVariant;
@@ -49,7 +49,9 @@ const Tooltip = ({
 
       {dropdownIsOpen && (
         <div ref={dropdownRef} className="tooltip-content" id={ariaControls}>
-          {tooltip}
+          {typeof tooltip === 'function'
+            ? tooltip({ close: toggleDropdownList })
+            : tooltip}
           <div ref={arrowRef} className="arrow" />
         </div>
       )}

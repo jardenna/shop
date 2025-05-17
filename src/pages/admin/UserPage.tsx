@@ -149,14 +149,16 @@ const UserPage = () => {
                     <Tooltip
                       placement="left-start"
                       ariaControls="delete-user"
-                      tooltip={
+                      tooltip={({ close }) => (
                         <DeleteUser
                           onPrimaryClick={() => {
                             handleDeleteUser(id, username);
+                            close();
                           }}
+                          onSecondaryClick={close}
                           text={`${language.sureToDelete} ${username}?`}
                         />
-                      }
+                      )}
                       triggerBtnVariant={BtnVariant.Ghost}
                       triggerBtnClassName="danger"
                       ariaLabel={language.deleteUser}
