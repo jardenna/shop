@@ -30,15 +30,21 @@ const useDropdown = ({ callback }: { callback?: () => void } = {}) => {
         buttonRef.current,
         dropdownRef.current,
         {
-          placement: 'bottom-start',
+          placement: 'top-start', // "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end";
           modifiers: [
             {
               name: 'offset',
-              options: { offset: [0, 4] },
+              options: { offset: [0, 6] },
             },
             {
               name: 'preventOverflow',
               options: { boundary: 'viewport' },
+            },
+            {
+              name: 'flip',
+              options: {
+                fallbackPlacements: ['top', 'bottom'],
+              },
             },
           ],
         },
