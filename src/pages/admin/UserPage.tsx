@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { UserResponse } from '../../app/api/apiTypes';
 import validateUpdateUser from '../../components/formElements/validation/validateUpdateUser';
 import IconContent from '../../components/IconContent';
@@ -13,7 +14,7 @@ import {
 } from '../../features/admin/users/usersApiSlice';
 import useLanguage from '../../features/language/useLanguage';
 import useTableEditField from '../../hooks/useTableEditField';
-import useTrapFocus from '../../hooks/useTrapFocus';
+import useTrap from '../../hooks/useTrap';
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant, IconName } from '../../types/enums';
 import PageContainer from '../PageContainer';
@@ -41,7 +42,8 @@ const UserPage = () => {
   const [deleteUser] = useDeleteUserMutation();
   const [updateUser] = useUpdateUserMutation();
 
-  const { popupRef } = useTrapFocus('delete');
+  const popupRef = useRef<HTMLDialogElement | null>(null);
+  useTrap('deleteUser', popupRef);
 
   const {
     editRowId,

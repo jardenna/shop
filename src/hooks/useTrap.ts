@@ -12,16 +12,24 @@ const useTrap = (
             'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
           );
 
-        const first = focusableElements[0];
-        const last = focusableElements[focusableElements.length - 1];
+        const firstFocusableElement = focusableElements[0];
+
+        const lastFocusableElement =
+          focusableElements[focusableElements.length - 1];
 
         if (event.key === 'Tab') {
-          if (event.shiftKey && document.activeElement === first) {
+          if (
+            event.shiftKey &&
+            document.activeElement === firstFocusableElement
+          ) {
             event.preventDefault();
-            last.focus();
-          } else if (!event.shiftKey && document.activeElement === last) {
+            lastFocusableElement.focus();
+          } else if (
+            !event.shiftKey &&
+            document.activeElement === lastFocusableElement
+          ) {
             event.preventDefault();
-            first.focus();
+            firstFocusableElement.focus();
           }
         }
       }
