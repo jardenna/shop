@@ -36,7 +36,7 @@ const useVisibility = (
 
   const popupClass = isVisible ? 'is-visible' : 'dismissed';
 
-  return { popupClass, handleClosePopup };
+  return { popupClass, onCloseModal: handleClosePopup };
 };
 
 export default useVisibility;

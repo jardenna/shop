@@ -58,13 +58,13 @@ const Modal = ({
   const modalId = useAppSelector(selectModalId);
   const { handleCloseModal, modalRef } = useModal(modalId);
 
-  const { handleClosePopup, popupClass } = useVisibility(
+  const { onCloseModal, popupClass } = useVisibility(
     modalId === id,
     handleCloseModal,
   );
 
   useClickOutside(modalRef, () => {
-    handleClosePopup();
+    onCloseModal();
   }, [modalRef]);
 
   if (modalId !== id || !modalId) {
@@ -75,7 +75,7 @@ const Modal = ({
     <article>
       <ModalHeader
         modalHeadertext={modalHeaderText}
-        onCloseModal={handleClosePopup}
+        onCloseModal={onCloseModal}
         showCloseIcon={showCloseIcon}
       />
       {primaryActionBtn?.buttonType !== 'submit' ? (
@@ -83,7 +83,7 @@ const Modal = ({
           <div className="modal-body">{children}</div>
           {primaryActionBtn && (
             <ModalFooter
-              onCloseModal={handleClosePopup}
+              onCloseModal={onCloseModal}
               primaryActionBtn={primaryActionBtn}
               secondaryActionBtn={secondaryActionBtn}
             />
@@ -97,7 +97,7 @@ const Modal = ({
         >
           {children}
           <ModalFooter
-            onCloseModal={handleClosePopup}
+            onCloseModal={onCloseModal}
             primaryActionBtn={primaryActionBtn}
             secondaryActionBtn={secondaryActionBtn}
           />
@@ -115,7 +115,7 @@ const Modal = ({
         role={isAlert ? PopupRole.Alert : undefined}
       >
         {isMobileSize ? (
-          <SwipeContainer onSwipeRight={handleClosePopup}>
+          <SwipeContainer onSwipeRight={onCloseModal}>
             {ModalContent}
           </SwipeContainer>
         ) : (
