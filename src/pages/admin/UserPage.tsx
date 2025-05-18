@@ -3,7 +3,6 @@ import validateUpdateUser from '../../components/formElements/validation/validat
 import IconContent from '../../components/IconContent';
 import Icon from '../../components/icons/Icon';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-import usePopup from '../../components/modal/usePopup';
 import Table from '../../components/sortTable/Table';
 import Tooltip from '../../components/tooltip/Tooltip';
 import EditUserInput from '../../features/admin/users/EditUserInput';
@@ -13,6 +12,7 @@ import {
   useUpdateUserMutation,
 } from '../../features/admin/users/usersApiSlice';
 import useLanguage from '../../features/language/useLanguage';
+import usePopup from '../../hooks/usePopup';
 import useTableEditField from '../../hooks/useTableEditField';
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant, IconName } from '../../types/enums';

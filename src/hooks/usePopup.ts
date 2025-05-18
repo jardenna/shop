@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-enum-comparison */
 import { useEffect, useRef } from 'react';
-import { useAppDispatch } from '../../app/hooks';
-import { toggleModal } from '../../features/modalSlice';
-import { KeyCode } from '../../types/enums';
+import { useAppDispatch } from '../app/hooks';
+import { toggleModal } from '../features/modalSlice';
+import { KeyCode } from '../types/enums';
 
 const usePopup = (modalId: string | null) => {
   const dispatch = useAppDispatch();
