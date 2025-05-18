@@ -12,8 +12,8 @@ import {
   useUpdateUserMutation,
 } from '../../features/admin/users/usersApiSlice';
 import useLanguage from '../../features/language/useLanguage';
-import usePopup from '../../hooks/usePopup';
 import useTableEditField from '../../hooks/useTableEditField';
+import useTrapFocus from '../../hooks/useTrapFocus';
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant, IconName } from '../../types/enums';
 import PageContainer from '../PageContainer';
@@ -99,7 +99,8 @@ const UserPage = () => {
       });
     }
   };
-  const { popupRef } = usePopup('delete');
+
+  const { popupRef } = useTrapFocus('delete');
   return (
     <article className="page page-medium">
       <PageContainer
