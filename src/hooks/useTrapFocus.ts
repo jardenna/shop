@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 const useTrapFocus = (id: string) => {
-  const popupRef = useRef<HTMLDialogElement | null>(null);
+  const popupRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const handleTabKeyPress = (event: KeyboardEvent) => {

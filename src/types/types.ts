@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, MouseEvent } from 'react';
+import { ChangeEvent, FormEvent, MouseEvent, RefObject } from 'react';
 
 export type SortOrderType = 'asc' | 'desc';
 
@@ -15,6 +15,10 @@ export type OptionType<T = string> = {
 export type ButtonType = 'submit' | 'reset' | 'button';
 export type BlurEventType = { target: { name: string } };
 export type FormEventType = FormEvent<HTMLFormElement>;
+export type refElementType = RefObject<HTMLElement | null>;
+export type refDivType = RefObject<HTMLDivElement | null>;
+export type refInputType = RefObject<HTMLInputElement | null>;
+export type refFormType = RefObject<HTMLFormElement | null>;
 
 export type InputType =
   | 'button'

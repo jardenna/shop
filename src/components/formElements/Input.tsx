@@ -1,5 +1,10 @@
-import { ChangeEvent, RefObject } from 'react';
-import { BlurEventType, ChangeInputType, InputType } from '../../types/types';
+import { ChangeEvent } from 'react';
+import {
+  BlurEventType,
+  ChangeInputType,
+  InputType,
+  refInputType,
+} from '../../types/types';
 import FormLabel from './FormLabel';
 
 export type InputProps = {
@@ -19,7 +24,7 @@ export type InputProps = {
   min?: number;
   multiple?: boolean;
   placeholder?: string;
-  ref?: RefObject<HTMLInputElement | null>;
+  ref?: refInputType;
   required?: boolean;
   type?: InputType;
   onBlur?: (event: BlurEventType) => void;

@@ -1,10 +1,10 @@
-import { RefObject } from 'react';
 import Button from '../../components/Button';
 import useLanguage from '../../features/language/useLanguage';
 import { BtnVariant } from '../../types/enums';
+import { refElementType } from '../../types/types';
 
 type DeleteUserProps = {
-  ref: RefObject<HTMLDialogElement | null>;
+  ref: refElementType;
   text: string;
   onPrimaryClick: () => void;
   onSecondaryClick?: () => void;
