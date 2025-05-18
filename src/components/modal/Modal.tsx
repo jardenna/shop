@@ -11,7 +11,7 @@ import SwipeContainer from '../SwipeContainer';
 import './_modal.scss';
 import ModalFooter from './ModalFooter';
 import ModalHeader from './ModalHeader';
-import useModal from './useModal';
+import usePopup from './usePopup';
 import useVisibility from './useVisibility';
 
 export type PrimaryActionBtnProps = {
@@ -56,16 +56,16 @@ const Modal = ({
 }: ModalProps) => {
   const { isMobileSize } = useMediaQuery();
   const modalId = useAppSelector(selectModalId);
-  const { handleCloseModal, modalRef } = useModal(modalId);
+  const { onClosePopup, popupRef } = usePopup(modalId);
 
   const { onCloseModal, popupClass } = useVisibility(
     modalId === id,
-    handleCloseModal,
+    onClosePopup,
   );
 
-  useClickOutside(modalRef, () => {
+  useClickOutside(popupRef, () => {
     onCloseModal();
-  }, [modalRef]);
+  }, [popupRef]);
 
   if (modalId !== id || !modalId) {
     return null;
@@ -110,7 +110,7 @@ const Modal = ({
   return (
     <Portal portalId="modal">
       <dialog
-        ref={modalRef}
+        ref={popupRef}
         className={`modal modal-${modalSize} ${className} ${popupClass} ${isMobileSize ? 'animate-top-right' : 'animate-top-center'}`}
         role={isAlert ? PopupRole.Alert : undefined}
       >

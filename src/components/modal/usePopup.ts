@@ -4,18 +4,18 @@ import { useAppDispatch } from '../../app/hooks';
 import { toggleModal } from '../../features/modalSlice';
 import { KeyCode } from '../../types/enums';
 
-const useModal = (modalId: string | null) => {
+const usePopup = (modalId: string | null) => {
   const dispatch = useAppDispatch();
-  const modalRef = useRef<HTMLDialogElement | null>(null);
+  const popupRef = useRef<HTMLDialogElement | null>(null);
 
-  const handleCloseModal = () => {
+  const handleClosePopup = () => {
     dispatch(toggleModal(null));
   };
 
   useEffect(() => {
     const handleTabKeyPress = (event: KeyboardEvent) => {
-      if (modalRef.current && modalId) {
-        const focusableElements = modalRef.current.querySelectorAll(
+      if (popupRef.current && modalId) {
+        const focusableElements = popupRef.current.querySelectorAll(
           'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
         );
 
@@ -50,7 +50,7 @@ const useModal = (modalId: string | null) => {
     };
   }, [modalId]);
 
-  return { handleCloseModal, modalRef };
+  return { onClosePopup: handleClosePopup, popupRef };
 };
 
-export default useModal;
+export default usePopup;

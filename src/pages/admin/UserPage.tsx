@@ -3,7 +3,7 @@ import validateUpdateUser from '../../components/formElements/validation/validat
 import IconContent from '../../components/IconContent';
 import Icon from '../../components/icons/Icon';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-import useModal from '../../components/modal/useModal';
+import usePopup from '../../components/modal/usePopup';
 import Table from '../../components/sortTable/Table';
 import Tooltip from '../../components/tooltip/Tooltip';
 import EditUserInput from '../../features/admin/users/EditUserInput';
@@ -99,7 +99,7 @@ const UserPage = () => {
       });
     }
   };
-  const { modalRef } = useModal('delete');
+  const { popupRef } = usePopup('delete');
   return (
     <article className="page page-medium">
       <PageContainer
@@ -158,7 +158,7 @@ const UserPage = () => {
                           }}
                           onSecondaryClick={close}
                           text={`${language.sureToDelete} ${username}?`}
-                          ref={modalRef}
+                          ref={popupRef}
                         />
                       )}
                       triggerBtnVariant={BtnVariant.Ghost}
