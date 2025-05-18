@@ -41,6 +41,8 @@ const UserPage = () => {
   const [deleteUser] = useDeleteUserMutation();
   const [updateUser] = useUpdateUserMutation();
 
+  const { popupRef } = useTrapFocus('delete');
+
   const {
     editRowId,
     editingField,
@@ -100,7 +102,6 @@ const UserPage = () => {
     }
   };
 
-  const { popupRef } = useTrapFocus('delete');
   return (
     <article className="page page-medium">
       <PageContainer
