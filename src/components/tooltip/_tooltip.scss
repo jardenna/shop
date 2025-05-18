@@ -1,11 +1,11 @@
 @use '../../scss/globals' as *;
 
-.tooltip-container {
+.tooltip {
   display: flex;
   justify-content: flex-end;
 }
 
-.tooltip-content {
+.tooltip-container {
   padding: 8px;
   box-shadow: $box-shadow;
   background-color: $color-light-gray-10;
@@ -28,19 +28,19 @@
   }
 }
 
-.tooltip-content[data-popper-placement^='top'] > .arrow {
+.tooltip-container[data-popper-placement^='top'] > .arrow {
   bottom: 4px;
 }
 
-.tooltip-content[data-popper-placement^='bottom'] > .arrow {
+.tooltip-container[data-popper-placement^='bottom'] > .arrow {
   top: 4px;
 }
 
-.tooltip-content[data-popper-placement^='left'] > .arrow {
+.tooltip-container[data-popper-placement^='left'] > .arrow {
   right: 4px;
 }
 
-.tooltip-content[data-popper-placement^='right'] > .arrow {
+.tooltip-container[data-popper-placement^='right'] > .arrow {
   left: 4px;
 }
 
@@ -55,6 +55,6 @@
   }
 }
 
-.test {
-  max-width: 200px;
+.tooltip-content {
+  max-width: rem(200px);
 }

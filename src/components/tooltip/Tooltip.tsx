@@ -33,7 +33,7 @@ const Tooltip = ({
   } = useDropdown({ placement });
 
   return (
-    <div className="tooltip-container">
+    <div className="tooltip">
       <Button
         variant={triggerBtnVariant}
         onClick={toggleDropdownList}
@@ -48,7 +48,7 @@ const Tooltip = ({
       </Button>
 
       {dropdownIsOpen && (
-        <div ref={dropdownRef} className="tooltip-content" id={ariaControls}>
+        <div ref={dropdownRef} className="tooltip-container" id={ariaControls}>
           {typeof tooltip === 'function'
             ? tooltip({ close: toggleDropdownList })
             : tooltip}
