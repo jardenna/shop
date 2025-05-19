@@ -49,7 +49,10 @@ const ProductActions = ({ onCopyProduct, id }: ProductActionsProps) => {
       showArrow
       placement="left-start"
     >
-      <IconContent iconName={IconName.User} title={language.user} />
+      <IconContent
+        iconName={IconName.MenuDotsHorizontal}
+        title={language.user}
+      />
     </DropdownBtn>
   );
 };
