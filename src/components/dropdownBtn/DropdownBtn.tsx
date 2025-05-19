@@ -42,15 +42,15 @@ const DropdownBtn = ({
     <div className="tooltip">
       <Button
         variant={triggerBtnVariant}
-        ref={(el) => {
-          buttonRef.current = el;
-        }}
         onClick={togglePopupList}
         ariaExpanded={popupIsOpen}
         ariaHasPopup
         ariaControls={ariaControls}
-        className={triggerBtnClassName}
         ariaLabel={ariaLabel}
+        className={triggerBtnClassName}
+        ref={(el) => {
+          buttonRef.current = el;
+        }}
       >
         {children}
       </Button>
