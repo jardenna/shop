@@ -1,7 +1,6 @@
-import { RefObject } from 'react';
 import { Status } from '../app/api/apiTypes';
 import useLanguage from '../features/language/useLanguage';
-import { ChangeInputType, OptionType } from '../types/types';
+import { ChangeInputType, OptionType, refFormType } from '../types/types';
 import DatePicker from './datePicker/DatePicker';
 import TimeInput from './formElements/timeInput/TimeInput';
 import Selectbox from './selectbox/Selectbox';
@@ -19,7 +18,7 @@ export type StatusInputsProps = {
   timeValue: string;
   max?: number;
   min?: number;
-  ref?: RefObject<HTMLFormElement | null>;
+  ref?: refFormType;
   onSelectDate: (date: Date) => void;
   onSelectStatus: (selectedOptions: OptionType) => void;
   onTimeChange: (event: ChangeInputType) => void;

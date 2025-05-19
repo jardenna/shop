@@ -11,21 +11,21 @@ const useVisibility = (
   const [isVisible, setIsVisible] = useState(false);
   const timeoutRef = useRef<number | null>(null);
 
-  const handleClosePopup = () => {
+  const handleCloseModal = () => {
     setIsVisible(false);
     timeoutRef.current = window.setTimeout(closeCallback, transitionDuration);
   };
 
-  useKeyPress(handleClosePopup, [KeyCode.Esc]);
+  useKeyPress(handleCloseModal, [KeyCode.Esc]);
 
   useEffect(() => {
     if (isOpen) {
       setIsVisible(true);
       if (duration) {
-        timeoutRef.current = window.setTimeout(handleClosePopup, duration);
+        timeoutRef.current = window.setTimeout(handleCloseModal, duration);
       }
     } else {
-      handleClosePopup();
+      handleCloseModal();
     }
     return () => {
       if (timeoutRef.current) {
@@ -36,7 +36,7 @@ const useVisibility = (
 
   const popupClass = isVisible ? 'is-visible' : 'dismissed';
 
-  return { popupClass, handleClosePopup };
+  return { popupClass, onCloseModal: handleCloseModal };
 };
 
 export default useVisibility;

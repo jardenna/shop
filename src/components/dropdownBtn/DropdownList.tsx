@@ -1,13 +1,14 @@
-import { RefObject, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import useKeyPress from '../../hooks/useKeyPress';
 import { BtnVariant, KeyCode } from '../../types/enums';
 import Button from '../Button';
 import { DropdownItem } from './DropdownBtn';
+import { refDivType } from '../../types/types';
 
 type DropdownListProps = {
   ariaControls: string;
   dropdownList: DropdownItem[];
-  ref: RefObject<HTMLDivElement | null>;
+  ref: refDivType;
   defaultIndex?: number;
 };
 

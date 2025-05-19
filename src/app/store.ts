@@ -1,12 +1,12 @@
 import type { Middleware } from '@reduxjs/toolkit';
 import { configureStore, isRejectedWithValue } from '@reduxjs/toolkit';
-import modalSlice from '../components/modal/modalSlice';
 import authSliceReducer from '../features/auth/authSlice';
 import currencyReducer from '../features/currency/currencySlice';
 import languageReducer from '../features/language/languageSlice';
 import messagePopupReducer, {
   addMessagePopup,
 } from '../features/messagePopupSlice';
+import modalSlice from '../features/modalSlice';
 import apiSlice from './api/apiSlice';
 import currencyApiSlice from './api/currencyApiSlice';
 

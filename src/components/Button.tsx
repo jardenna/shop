@@ -1,6 +1,6 @@
 /* eslint-disable react/button-has-type */
 
-import { ReactNode } from 'react';
+import { ReactNode, RefObject } from 'react';
 import { BtnVariant } from '../types/enums';
 import { ButtonEventType, ButtonType } from '../types/types';
 import Loader from './loader/Loader';
@@ -22,7 +22,7 @@ type ButtonProps = {
   name?: string;
   role?: string;
   tabIndex?: 0 | -1;
-  tooltipRef?: React.RefObject<HTMLButtonElement | null>;
+  tooltipRef?: RefObject<HTMLButtonElement | null>;
   type?: ButtonType;
   variant?: BtnVariant;
   onClick?: (event: ButtonEventType | string) => void;

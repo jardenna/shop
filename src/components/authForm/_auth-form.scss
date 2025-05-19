@@ -21,17 +21,13 @@
   max-width: rem(500px);
   margin-top: 32px;
 
-  .form-footer {
-    margin: 0;
-  }
-
   .auth-btn {
     display: flex;
     justify-content: flex-end;
 
     .btn {
       padding: 0;
-      margin-block: 12px 28px;
+      margin-block: 12px 4px;
     }
   }
 }

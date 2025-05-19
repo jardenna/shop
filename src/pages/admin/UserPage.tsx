@@ -1,9 +1,9 @@
+import { useRef } from 'react';
 import { UserResponse } from '../../app/api/apiTypes';
 import validateUpdateUser from '../../components/formElements/validation/validateUpdateUser';
 import IconContent from '../../components/IconContent';
 import Icon from '../../components/icons/Icon';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-import useModal from '../../components/modal/useModal';
 import Table from '../../components/sortTable/Table';
 import Tooltip from '../../components/tooltip/Tooltip';
 import EditUserInput from '../../features/admin/users/EditUserInput';
@@ -14,6 +14,7 @@ import {
 } from '../../features/admin/users/usersApiSlice';
 import useLanguage from '../../features/language/useLanguage';
 import useTableEditField from '../../hooks/useTableEditField';
+import useTrapFocus from '../../hooks/useTrapFocus';
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant, IconName } from '../../types/enums';
 import PageContainer from '../PageContainer';
@@ -40,6 +41,9 @@ const UserPage = () => {
   const { data: allUsers, isLoading, refetch } = useGetAllUsersQuery();
   const [deleteUser] = useDeleteUserMutation();
   const [updateUser] = useUpdateUserMutation();
+
+  const popupRef = useRef<HTMLDialogElement | null>(null);
+  useTrapFocus({ id: 'deleteUser', popupRef });
 
   const {
     editRowId,
@@ -99,7 +103,7 @@ const UserPage = () => {
       });
     }
   };
-  const { modalRef } = useModal('delete');
+
   return (
     <article className="page page-medium">
       <PageContainer
@@ -158,7 +162,7 @@ const UserPage = () => {
                           }}
                           onSecondaryClick={close}
                           text={`${language.sureToDelete} ${username}?`}
-                          ref={modalRef}
+                          ref={popupRef}
                         />
                       )}
                       triggerBtnVariant={BtnVariant.Ghost}

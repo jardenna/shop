@@ -19,8 +19,6 @@ const modalSlice = createSlice({
   },
 });
 
-//
-
 export const { toggleModal } = modalSlice.actions;
 export const selectModalId = (state: RootState) => state.modal.modalId;
 export default modalSlice.reducer;

@@ -3,6 +3,7 @@ import { useAppSelector } from '../../app/hooks';
 import { selectModalId } from '../../features/modalSlice';
 import useClickOutside from '../../hooks/useClickOutside';
 import useMediaQuery from '../../hooks/useMediaQuery ';
+import usePopup from '../../hooks/usePopup';
 import { BtnVariant, PopupRole, SizeVariant } from '../../types/enums';
 import { ButtonType } from '../../types/types';
 import Overlay from '../overlay/Overlay';
@@ -11,7 +12,6 @@ import SwipeContainer from '../SwipeContainer';
 import './_modal.scss';
 import ModalFooter from './ModalFooter';
 import ModalHeader from './ModalHeader';
-import useModal from './useModal';
 import useVisibility from './useVisibility';
 
 export type PrimaryActionBtnProps = {
@@ -56,16 +56,16 @@ const Modal = ({
 }: ModalProps) => {
   const { isMobileSize } = useMediaQuery();
   const modalId = useAppSelector(selectModalId);
-  const { handleCloseModal, modalRef } = useModal(modalId);
+  const { onClosePopup, popupRef } = usePopup(modalId);
 
-  const { handleClosePopup, popupClass } = useVisibility(
+  const { onCloseModal, popupClass } = useVisibility(
     modalId === id,
-    handleCloseModal,
+    onClosePopup,
   );
 
-  useClickOutside(modalRef, () => {
-    handleClosePopup();
-  }, [modalRef]);
+  useClickOutside(popupRef, () => {
+    onCloseModal();
+  }, [popupRef]);
 
   if (modalId !== id || !modalId) {
     return null;
@@ -75,7 +75,7 @@ const Modal = ({
     <article>
       <ModalHeader
         modalHeadertext={modalHeaderText}
-        onCloseModal={handleClosePopup}
+        onCloseModal={onCloseModal}
         showCloseIcon={showCloseIcon}
       />
       {primaryActionBtn?.buttonType !== 'submit' ? (
@@ -83,7 +83,7 @@ const Modal = ({
           <div className="modal-body">{children}</div>
           {primaryActionBtn && (
             <ModalFooter
-              onCloseModal={handleClosePopup}
+              onCloseModal={onCloseModal}
               primaryActionBtn={primaryActionBtn}
               secondaryActionBtn={secondaryActionBtn}
             />
@@ -97,7 +97,7 @@ const Modal = ({
         >
           {children}
           <ModalFooter
-            onCloseModal={handleClosePopup}
+            onCloseModal={onCloseModal}
             primaryActionBtn={primaryActionBtn}
             secondaryActionBtn={secondaryActionBtn}
           />
@@ -110,12 +110,12 @@ const Modal = ({
   return (
     <Portal portalId="modal">
       <dialog
-        ref={modalRef}
+        ref={popupRef}
         className={`modal modal-${modalSize} ${className} ${popupClass} ${isMobileSize ? 'animate-top-right' : 'animate-top-center'}`}
         role={isAlert ? PopupRole.Alert : undefined}
       >
         {isMobileSize ? (
-          <SwipeContainer onSwipeRight={handleClosePopup}>
+          <SwipeContainer onSwipeRight={onCloseModal}>
             {ModalContent}
           </SwipeContainer>
         ) : (
