@@ -1,5 +1,5 @@
 import { ReactNode, useRef } from 'react';
-import useDropdown from '../../hooks/useDropdown';
+import usePopup from '../../hooks/usePopup';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import './_dropdown-btn.scss';
@@ -27,24 +27,24 @@ const DropdownBtn = ({
   ariaControls,
   children,
 }: DropdownBtnProps) => {
-  const { dropdownRef, dropdownIsOpen, toggleDropdownList } = useDropdown({});
+  const { popupRef, popupIsOpen, togglePopupList } = usePopup({});
   const triggerDropdownBtnRef = useRef<HTMLButtonElement | null>(null);
 
   return (
-    <div className="dropdown-container" ref={dropdownRef}>
+    <div className="dropdown-container" ref={popupRef}>
       <Button
         variant={btnVariant}
         ref={(el) => {
           triggerDropdownBtnRef.current = el;
         }}
-        onClick={toggleDropdownList}
-        ariaExpanded={dropdownIsOpen}
+        onClick={togglePopupList}
+        ariaExpanded={popupIsOpen}
         ariaHasPopup
         ariaControls={ariaControls}
       >
         {children}
       </Button>
-      {dropdownIsOpen && (
+      {popupIsOpen && (
         <DropdownList
           defaultIndex={-1}
           dropdownList={dropdownList}

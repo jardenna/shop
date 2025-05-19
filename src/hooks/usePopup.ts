@@ -5,36 +5,36 @@ import { KeyCode } from '../types/enums';
 import useClickOutside from './useClickOutside';
 import useKeyPress from './useKeyPress';
 
-type useDropdownProps = {
+type usePopupProps = {
   placement?: Placement;
   callback?: () => void;
 };
 
-const useDropdown = ({ callback, placement }: useDropdownProps) => {
+const usePopup = ({ callback, placement }: usePopupProps) => {
   const location = useLocation();
-  const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const popupRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const arrowRef = useRef<HTMLDivElement | null>(null);
-  const [dropdownIsOpen, setDropdownIsOpen] = useState(false);
+  const [popupIsOpen, setPopupIsOpen] = useState(false);
   const popperInstanceRef = useRef<Instance | null>(null);
 
   useKeyPress(() => {
-    setDropdownIsOpen(false);
+    setPopupIsOpen(false);
   }, [KeyCode.Esc]);
 
-  useClickOutside(dropdownRef, () => {
-    setDropdownIsOpen(false);
+  useClickOutside(popupRef, () => {
+    setPopupIsOpen(false);
   }, [buttonRef]);
 
   useEffect(() => {
-    setDropdownIsOpen(false);
+    setPopupIsOpen(false);
   }, [location]);
 
   useEffect(() => {
-    if (dropdownIsOpen && buttonRef.current && dropdownRef.current) {
+    if (popupIsOpen && buttonRef.current && popupRef.current) {
       popperInstanceRef.current = createPopper(
         buttonRef.current,
-        dropdownRef.current,
+        popupRef.current,
         {
           placement: placement || 'top-start',
           // "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end";
@@ -69,25 +69,25 @@ const useDropdown = ({ callback, placement }: useDropdownProps) => {
       popperInstanceRef.current?.destroy();
       popperInstanceRef.current = null;
     };
-  }, [dropdownIsOpen]);
+  }, [popupIsOpen]);
 
-  const toggleDropdownList = () => {
-    setDropdownIsOpen((prev) => !prev);
+  const togglePopupList = () => {
+    setPopupIsOpen((prev) => !prev);
   };
 
   const handleCallback = () => {
     callback?.();
-    setDropdownIsOpen(false);
+    setPopupIsOpen(false);
   };
 
   return {
-    dropdownRef,
+    popupRef,
     buttonRef,
-    dropdownIsOpen,
-    toggleDropdownList,
-    handleCallback,
+    popupIsOpen,
+    togglePopupList,
+    onCallback: handleCallback,
     arrowRef,
   };
 };
 
-export default useDropdown;
+export default usePopup;
