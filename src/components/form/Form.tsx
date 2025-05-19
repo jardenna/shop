@@ -32,7 +32,7 @@ const Form = ({
   return (
     <form onSubmit={onSubmit} noValidate className={className} ref={ref}>
       {children}
-      <LayoutElement className="form-footer" ariaLabel={language.form}>
+      <LayoutElement className="footer" ariaLabel={language.form}>
         {onCancel && (
           <Button
             onClick={onCancel}
