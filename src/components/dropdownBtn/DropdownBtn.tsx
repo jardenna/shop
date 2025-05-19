@@ -6,7 +6,6 @@ import './_dropdown-btn.scss';
 import DropdownList from './DropdownList';
 
 export type DropdownItem = {
-  id: number;
   label: string;
   btnVariant?: BtnVariant;
   className?: string;

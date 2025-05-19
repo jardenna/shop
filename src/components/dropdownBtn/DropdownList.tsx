@@ -22,9 +22,9 @@ const DropdownList = ({
   return (
     <ul id={ariaControls} className="dropdown-list">
       {dropdownList.map(
-        ({ id, label, onClick, className = '', icon, btnVariant }, index) => (
+        ({ label, onClick, className = '', icon, btnVariant }, index) => (
           <li
-            key={id}
+            key={label}
             className={`dropdown-item ${className} ${index === selectedListItemIndex ? 'active' : ''}`}
           >
             <Button
