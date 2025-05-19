@@ -1,19 +1,18 @@
-import { useRef, useState } from 'react';
+import { RefObject, useState } from 'react';
 import { DropdownItem } from '../components/dropdownBtn/DropdownBtn';
 import { KeyCode } from '../types/enums';
 import useKeyPress from './useKeyPress';
 
 type UseArrowProps = {
   dropdownList: DropdownItem[];
+  listRefs: RefObject<(HTMLButtonElement | null)[]>;
   defaultIndex?: number;
 };
 
-const useArrow = ({ defaultIndex, dropdownList }: UseArrowProps) => {
+const useArrow = ({ defaultIndex, dropdownList, listRefs }: UseArrowProps) => {
   const [selectedListItemIndex, setSelectedListItemIndex] = useState(
     defaultIndex ?? 0,
   );
-
-  const listRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const handleActivateListItem = (index: number) => {
     setSelectedListItemIndex(index);
