@@ -1,18 +1,5 @@
 @use '../../scss/globals' as *;
 
-.dropdown-list {
-  background-color: $color-white;
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  z-index: 6;
-  top: 48px;
-  right: 0;
-  min-width: rem(200px);
-  border-radius: 4px;
-  box-shadow: $box-shadow;
-}
-
 .dropdown-item {
   padding: 8px;
   border-bottom: 1px solid $color-border;
