@@ -1,5 +1,9 @@
-import IconBtn from '../../components/IconBtn';
-import MoreLink from '../../components/MoreLink';
+import { useNavigate } from 'react-router';
+import DropdownBtn, {
+  DropdownItem,
+} from '../../components/dropdownBtn/DropdownBtn';
+import IconContent from '../../components/IconContent';
+import Icon from '../../components/icons/Icon';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
 import { IconName } from '../../types/enums';
@@ -10,23 +14,51 @@ type ProductActionsProps = {
 };
 
 const ProductActions = ({ onCopyProduct, id }: ProductActionsProps) => {
+  const navigate = useNavigate();
   const { language } = useLanguage();
+
+  const ActionsDropdownList: DropdownItem[] = [
+    {
+      label: language.viewProduct,
+      onClick: () => {
+        navigate(`/admin/${MainPath.AdminProductView}/${id}`);
+      },
+      icon: (
+        <Icon iconName={IconName.Auth} title={language.myAccount} size="25" />
+      ),
+    },
+    {
+      label: language.update,
+      onClick: () => {
+        navigate(`/admin/${MainPath.AdminProductUpdate}/${id}`);
+      },
+      icon: (
+        <Icon
+          iconName={IconName.Dublicate}
+          title={language.myAccount}
+          size="25"
+        />
+      ),
+    },
+    {
+      label: language.copy,
+      onClick: () => {
+        onCopyProduct(id);
+      },
+      icon: (
+        <Icon iconName={IconName.Auth} title={language.myAccount} size="25" />
+      ),
+    },
+  ];
+
   return (
-    <div className="flex">
-      <MoreLink
-        linkText={language.viewProduct}
-        linkTo={`/admin/${MainPath.AdminProductView}/${id}`}
-      />{' '}
-      I{' '}
-      <IconBtn
-        title={language.filterRow}
-        ariaLabel="copy"
-        onClick={() => {
-          onCopyProduct(id);
-        }}
-        iconName={IconName.Dublicate}
+    <DropdownBtn dropdownList={ActionsDropdownList} ariaControls="test">
+      <IconContent
+        ariaLabel={language.myAccount}
+        iconName={IconName.User}
+        title={language.user}
       />
-    </div>
+    </DropdownBtn>
   );
 };
 

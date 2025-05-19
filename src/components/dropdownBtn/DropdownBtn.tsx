@@ -1,4 +1,4 @@
-import { ReactNode, useRef } from 'react';
+import { ReactNode } from 'react';
 import usePopup from '../../hooks/usePopup';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
@@ -26,15 +26,15 @@ const DropdownBtn = ({
   ariaControls,
   children,
 }: DropdownBtnProps) => {
-  const { popupRef, popupIsOpen, togglePopupList } = usePopup({});
-  const triggerDropdownBtnRef = useRef<HTMLButtonElement | null>(null);
+  const { popupRef, popupIsOpen, togglePopupList, arrowRef, buttonRef } =
+    usePopup({});
 
   return (
-    <div className="dropdown-container" ref={popupRef}>
+    <div className="tooltip">
       <Button
         variant={btnVariant}
         ref={(el) => {
-          triggerDropdownBtnRef.current = el;
+          buttonRef.current = el;
         }}
         onClick={togglePopupList}
         ariaExpanded={popupIsOpen}
@@ -44,11 +44,14 @@ const DropdownBtn = ({
         {children}
       </Button>
       {popupIsOpen && (
-        <DropdownList
-          defaultIndex={-1}
-          dropdownList={dropdownList}
-          ariaControls={ariaControls}
-        />
+        <div ref={popupRef} className="tooltip-container">
+          <DropdownList
+            defaultIndex={-1}
+            dropdownList={dropdownList}
+            ariaControls={ariaControls}
+          />
+          <div ref={arrowRef} className="arrow" />
+        </div>
       )}
     </div>
   );
