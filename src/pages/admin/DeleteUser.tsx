@@ -1,5 +1,6 @@
 import Button from '../../components/Button';
 import useLanguage from '../../features/language/useLanguage';
+import LayoutElement from '../../layout/LayoutElement';
 import { BtnVariant } from '../../types/enums';
 import { refElementType } from '../../types/types';
 
@@ -21,14 +22,17 @@ const DeleteUser = ({
   return (
     <section className="tooltip-content" ref={ref}>
       <span>{text}</span>
-      <footer className="dropdown-content-footer">
+      <LayoutElement
+        className="dropdown-content-footer"
+        ariaLabel={language.deleteUser}
+      >
         <Button variant={BtnVariant.Secondary} onClick={onSecondaryClick}>
           {language.cancel}
         </Button>
         <Button variant={BtnVariant.Danger} onClick={onPrimaryClick}>
           {language.delete}
         </Button>
-      </footer>
+      </LayoutElement>
     </section>
   );
 };
