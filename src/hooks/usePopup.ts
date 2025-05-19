@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { useAppDispatch } from '../app/hooks';
 import { toggleModal } from '../features/modalSlice';
-import useTrap from './useTrap';
+import useTrapFocus from './useTrapFocus';
 
 const usePopup = (modalId: string | null) => {
   const dispatch = useAppDispatch();
@@ -11,7 +11,7 @@ const usePopup = (modalId: string | null) => {
     dispatch(toggleModal(null));
   };
 
-  useTrap(modalId, popupRef);
+  useTrapFocus({ id: modalId, popupRef });
 
   return { onClosePopup: handleClosePopup, popupRef };
 };

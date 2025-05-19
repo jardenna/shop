@@ -1,12 +1,14 @@
 import { RefObject, useEffect } from 'react';
 
-const useTrap = (
-  modalId: string | null,
-  popupRef: RefObject<HTMLDialogElement | null>,
-) => {
+type useTrapFocusProps = {
+  id: string | null;
+  popupRef: RefObject<HTMLDialogElement | null>;
+};
+
+const useTrapFocus = ({ id, popupRef }: useTrapFocusProps) => {
   useEffect(() => {
     const handleTabKeyPress = (event: KeyboardEvent) => {
-      if (popupRef.current && modalId) {
+      if (popupRef.current && id) {
         const focusableElements =
           popupRef.current.querySelectorAll<HTMLElement>(
             'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
@@ -39,7 +41,7 @@ const useTrap = (
     return () => {
       document.removeEventListener('keydown', handleTabKeyPress);
     };
-  }, [modalId, popupRef]);
+  }, [id, popupRef]);
 };
 
-export default useTrap;
+export default useTrapFocus;

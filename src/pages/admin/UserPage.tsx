@@ -14,7 +14,7 @@ import {
 } from '../../features/admin/users/usersApiSlice';
 import useLanguage from '../../features/language/useLanguage';
 import useTableEditField from '../../hooks/useTableEditField';
-import useTrap from '../../hooks/useTrap';
+import useTrapFocus from '../../hooks/useTrapFocus';
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant, IconName } from '../../types/enums';
 import PageContainer from '../PageContainer';
@@ -43,7 +43,7 @@ const UserPage = () => {
   const [updateUser] = useUpdateUserMutation();
 
   const popupRef = useRef<HTMLDialogElement | null>(null);
-  useTrap('deleteUser', popupRef);
+  useTrapFocus({ id: 'deleteUser', popupRef });
 
   const {
     editRowId,
