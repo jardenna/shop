@@ -26,7 +26,7 @@ const useTableEditField = <T extends { id: string }>({
   const handleEditChange = (event: ChangeInputType) => {
     const { name, value } = event.target;
 
-    setValues((prev) => ({ ...prev, [name]: value }));
+    setValues({ ...values, [name]: value });
   };
 
   const handleCancelEdit = () => {
