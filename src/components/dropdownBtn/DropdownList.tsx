@@ -21,27 +21,25 @@ const DropdownList = ({
 
   return (
     <ul id={ariaControls}>
-      {dropdownList.map(
-        ({ label, onClick, className = '', icon, btnVariant }, index) => (
-          <li
-            key={label}
-            className={`${className} ${index === selectedListItemIndex ? 'active' : ''}`}
+      {dropdownList.map(({ label, onClick, icon, btnVariant }, index) => (
+        <li
+          key={label}
+          className={`dropdown-item ${index === selectedListItemIndex ? 'active' : ''}`}
+        >
+          <Button
+            variant={btnVariant || BtnVariant.Ghost}
+            onClick={onClick}
+            tabIndex={index === selectedListItemIndex ? 0 : -1}
+            ref={(el) => {
+              listRefs.current[index] = el;
+            }}
+            ariaSelected={index === selectedListItemIndex}
           >
-            <Button
-              variant={btnVariant || BtnVariant.Ghost}
-              onClick={onClick}
-              tabIndex={index === selectedListItemIndex ? 0 : -1}
-              ref={(el) => {
-                listRefs.current[index] = el;
-              }}
-              ariaSelected={index === selectedListItemIndex}
-            >
-              {label}
-              {icon}
-            </Button>
-          </li>
-        ),
-      )}
+            {label}
+            {icon}
+          </Button>
+        </li>
+      ))}
     </ul>
   );
 };

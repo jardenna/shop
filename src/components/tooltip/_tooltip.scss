@@ -1,5 +1,9 @@
 @use '../../scss/globals' as *;
 
+.tooltip {
+  padding: 8px;
+}
+
 .tooltip-content {
   max-width: rem(200px);
 

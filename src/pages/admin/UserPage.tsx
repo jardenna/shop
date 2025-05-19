@@ -176,7 +176,7 @@ const UserPage = () => {
                       />
                     </Tooltip>
                   ) : (
-                    <span className="disabled-trash-icon flex-align-right">
+                    <span className="disabled-trash-icon">
                       <IconContent
                         iconName={IconName.Trash}
                         title={language.trashCan}

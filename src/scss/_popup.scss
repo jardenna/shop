@@ -2,7 +2,7 @@
 
 .popup {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 $placements: (
@@ -13,7 +13,6 @@ $placements: (
 );
 
 .popup-container {
-  padding: 8px;
   box-shadow: $box-shadow;
   background-color: $color-light-gray-10;
   border-radius: 4px;

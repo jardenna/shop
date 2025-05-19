@@ -57,6 +57,7 @@ const ProductActions = ({ onCopyProduct, id }: ProductActionsProps) => {
       ariaControls="product-actions"
       ariaLabel={language.productActions}
       showArrow
+      placement="left-start"
     >
       <IconContent iconName={IconName.User} title={language.user} />
     </DropdownBtn>

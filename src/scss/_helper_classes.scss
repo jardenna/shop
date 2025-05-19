@@ -109,6 +109,7 @@
 .disabled-trash-icon {
   position: relative;
   display: flex;
+  justify-content: center;
 
   svg {
     stroke: currentcolor;
@@ -123,7 +124,6 @@
     width: 2px;
     transform: rotate(45deg);
     top: -3px;
-    right: 9px;
   }
 }
 
