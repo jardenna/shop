@@ -41,17 +41,16 @@ $placements: (
   }
 }
 
-.dropdown-content-footer {
-  display: flex;
-  gap: 4px;
-
-  .btn {
-    min-height: auto;
-    font-size: rem(14px);
-    padding: 8px;
-  }
-}
-
 .tooltip-content {
   max-width: rem(200px);
+
+  .footer {
+    margin-top: 4px;
+
+    .btn {
+      min-height: auto;
+      font-size: rem(14px);
+      padding: 8px;
+    }
+  }
 }

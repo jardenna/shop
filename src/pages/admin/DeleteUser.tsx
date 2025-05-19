@@ -22,10 +22,7 @@ const DeleteUser = ({
   return (
     <section className="tooltip-content" ref={ref}>
       <span>{text}</span>
-      <LayoutElement
-        className="dropdown-content-footer"
-        ariaLabel={language.deleteUser}
-      >
+      <LayoutElement className="footer" ariaLabel={language.deleteUser}>
         <Button variant={BtnVariant.Secondary} onClick={onSecondaryClick}>
           {language.cancel}
         </Button>
