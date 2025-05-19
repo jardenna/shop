@@ -54,14 +54,11 @@ const ProductActions = ({ onCopyProduct, id }: ProductActionsProps) => {
   return (
     <DropdownBtn
       dropdownList={ActionsDropdownList}
-      ariaControls="test"
+      ariaControls="product-actions"
+      ariaLabel={language.productActions}
       showArrow
     >
-      <IconContent
-        ariaLabel={language.myAccount}
-        iconName={IconName.User}
-        title={language.user}
-      />
+      <IconContent iconName={IconName.User} title={language.user} />
     </DropdownBtn>
   );
 };

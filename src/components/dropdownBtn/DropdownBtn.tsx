@@ -1,3 +1,4 @@
+import { Placement } from '@popperjs/core';
 import { ReactNode } from 'react';
 import usePopup from '../../hooks/usePopup';
 import { BtnVariant } from '../../types/enums';
@@ -17,24 +18,30 @@ type DropdownBtnProps = {
   ariaControls: string;
   children: ReactNode;
   dropdownList: DropdownItem[];
-  btnVariant?: BtnVariant;
+  ariaLabel?: string;
+  placement?: Placement;
   showArrow?: boolean;
+  triggerBtnClassName?: string;
+  triggerBtnVariant?: BtnVariant;
 };
 
 const DropdownBtn = ({
   dropdownList,
-  btnVariant = BtnVariant.Ghost,
+  triggerBtnVariant = BtnVariant.Ghost,
   ariaControls,
   children,
   showArrow,
+  placement,
+  ariaLabel,
+  triggerBtnClassName = '',
 }: DropdownBtnProps) => {
   const { popupRef, popupIsOpen, togglePopupList, arrowRef, buttonRef } =
-    usePopup({});
+    usePopup({ placement });
 
   return (
     <div className="tooltip">
       <Button
-        variant={btnVariant}
+        variant={triggerBtnVariant}
         ref={(el) => {
           buttonRef.current = el;
         }}
@@ -42,6 +49,8 @@ const DropdownBtn = ({
         ariaExpanded={popupIsOpen}
         ariaHasPopup
         ariaControls={ariaControls}
+        className={triggerBtnClassName}
+        ariaLabel={ariaLabel}
       >
         {children}
       </Button>
