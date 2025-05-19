@@ -1,30 +1,39 @@
+import { Placement } from '@popperjs/core';
 import { ReactNode } from 'react';
 import useDropdown from '../../hooks/useDropdown';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import './_tooltip.scss';
 
-type DropdownProps = {
+type TooltipProps = {
   ariaControls: string;
   ariaLabel: string;
   children: ReactNode;
-  text: string | ReactNode;
+  tooltip: ReactNode | ((helpers: { close: () => void }) => ReactNode);
+  placement?: Placement;
   triggerBtnClassName?: string;
   triggerBtnVariant?: BtnVariant;
 };
 
 const Tooltip = ({
-  text,
+  children,
+  tooltip,
   ariaControls,
   ariaLabel,
   triggerBtnVariant,
   triggerBtnClassName = '',
-  children,
-}: DropdownProps) => {
-  const { dropdownRef, dropdownIsOpen, toggleDropdownList } = useDropdown();
+  placement,
+}: TooltipProps) => {
+  const {
+    dropdownRef,
+    buttonRef,
+    dropdownIsOpen,
+    toggleDropdownList,
+    arrowRef,
+  } = useDropdown({ placement });
 
   return (
-    <div className="tooltip-container">
+    <div className="tooltip">
       <Button
         variant={triggerBtnVariant}
         onClick={toggleDropdownList}
@@ -33,13 +42,18 @@ const Tooltip = ({
         ariaControls={ariaControls}
         ariaLabel={ariaLabel}
         className={triggerBtnClassName}
+        tooltipRef={buttonRef}
       >
         {children}
       </Button>
+
       {dropdownIsOpen && (
-        <span className="tooltip-content" ref={dropdownRef} id={ariaControls}>
-          {text}
-        </span>
+        <div ref={dropdownRef} className="tooltip-container" id={ariaControls}>
+          {typeof tooltip === 'function'
+            ? tooltip({ close: toggleDropdownList })
+            : tooltip}
+          <div ref={arrowRef} className="arrow" />
+        </div>
       )}
     </div>
   );

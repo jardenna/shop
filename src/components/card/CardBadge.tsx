@@ -17,17 +17,18 @@ const CardBadge = ({
   scheduledDate,
 }: CardBadgeProps) => {
   const { language } = useLanguage();
+
   return (
     <div className="flex align-items-center ">
       <Badge badgeText={badgeText} className={badgeClassName} />
       {scheduledDate && (
         <Tooltip
-          text={
-            <DateDisplay date={scheduledDate} hour="2-digit" minute="2-digit" />
-          }
           ariaControls="scheduled-date"
           triggerBtnVariant={BtnVariant.Ghost}
           ariaLabel={language.scheduledDate}
+          tooltip={
+            <DateDisplay date={scheduledDate} hour="2-digit" minute="2-digit" />
+          }
         >
           <Icon
             iconName={IconName.Calendar}

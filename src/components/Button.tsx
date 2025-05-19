@@ -22,6 +22,7 @@ type ButtonProps = {
   name?: string;
   role?: string;
   tabIndex?: 0 | -1;
+  tooltipRef?: React.RefObject<HTMLButtonElement | null>;
   type?: ButtonType;
   variant?: BtnVariant;
   onClick?: (event: ButtonEventType | string) => void;
@@ -48,13 +49,14 @@ const Button = ({
   name,
   ariaDescribedby,
   isLoading,
+  tooltipRef,
 }: ButtonProps) => (
   <button
     id={id}
     tabIndex={tabIndex}
     role={role}
     type={type}
-    ref={ref}
+    ref={ref || tooltipRef}
     onClick={onClick}
     aria-selected={ariaSelected}
     aria-expanded={ariaExpanded}
