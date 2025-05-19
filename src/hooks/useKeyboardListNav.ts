@@ -3,13 +3,16 @@ import { DropdownItem } from '../components/dropdownBtn/DropdownBtn';
 import { KeyCode } from '../types/enums';
 import useKeyPress from './useKeyPress';
 
-type UseArrowProps = {
+type UseKeyboardListNavProps = {
   dropdownList: DropdownItem[];
 
   defaultIndex?: number;
 };
 
-const useArrow = ({ defaultIndex, dropdownList }: UseArrowProps) => {
+const useKeyboardListNav = ({
+  defaultIndex,
+  dropdownList,
+}: UseKeyboardListNavProps) => {
   const listRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const [selectedListItemIndex, setSelectedListItemIndex] = useState(
     defaultIndex ?? 0,
@@ -51,4 +54,4 @@ const useArrow = ({ defaultIndex, dropdownList }: UseArrowProps) => {
   return { selectedListItemIndex, listRefs };
 };
 
-export default useArrow;
+export default useKeyboardListNav;

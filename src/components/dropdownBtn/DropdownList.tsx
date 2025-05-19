@@ -1,4 +1,4 @@
-import useArrow from '../../hooks/UseArrow';
+import useKeyboardListNav from '../../hooks/useKeyboardListNav';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import { DropdownItem } from './DropdownBtn';
@@ -14,7 +14,7 @@ const DropdownList = ({
   defaultIndex,
   ariaControls,
 }: DropdownListProps) => {
-  const { selectedListItemIndex, listRefs } = useArrow({
+  const { selectedListItemIndex, listRefs } = useKeyboardListNav({
     defaultIndex,
     dropdownList,
   });
