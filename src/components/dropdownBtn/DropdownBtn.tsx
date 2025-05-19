@@ -31,7 +31,7 @@ const DropdownBtn = ({
   const buttonRef = useRef<HTMLButtonElement | null>(null);
 
   return (
-    <div className="dropdown-container">
+    <div className="dropdown-container" ref={dropdownRef}>
       <Button
         variant={btnVariant}
         ref={(el) => {
@@ -48,7 +48,6 @@ const DropdownBtn = ({
         <DropdownList
           defaultIndex={-1}
           dropdownList={dropdownList}
-          ref={dropdownRef}
           ariaControls={ariaControls}
         />
       )}

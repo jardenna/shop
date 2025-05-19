@@ -3,18 +3,15 @@ import useKeyPress from '../../hooks/useKeyPress';
 import { BtnVariant, KeyCode } from '../../types/enums';
 import Button from '../Button';
 import { DropdownItem } from './DropdownBtn';
-import { refDivType } from '../../types/types';
 
 type DropdownListProps = {
   ariaControls: string;
   dropdownList: DropdownItem[];
-  ref: refDivType;
   defaultIndex?: number;
 };
 
 const DropdownList = ({
   dropdownList,
-  ref,
   defaultIndex,
   ariaControls,
 }: DropdownListProps) => {
@@ -55,31 +52,29 @@ const DropdownList = ({
   useKeyPress(handleGotoLastListItem, [KeyCode.End]);
 
   return (
-    <div ref={ref}>
-      <ul id={ariaControls} className="dropdown-list">
-        {dropdownList.map(
-          ({ id, label, onClick, className = '', icon, btnVariant }, index) => (
-            <li
-              key={id}
-              className={`dropdown-item ${className} ${index === selectedListItemIndex ? 'active' : ''}`}
+    <ul id={ariaControls} className="dropdown-list">
+      {dropdownList.map(
+        ({ id, label, onClick, className = '', icon, btnVariant }, index) => (
+          <li
+            key={id}
+            className={`dropdown-item ${className} ${index === selectedListItemIndex ? 'active' : ''}`}
+          >
+            <Button
+              variant={btnVariant || BtnVariant.Ghost}
+              onClick={onClick}
+              tabIndex={index === selectedListItemIndex ? 0 : -1}
+              ref={(el) => {
+                listRefs.current[index] = el;
+              }}
+              ariaSelected={index === selectedListItemIndex}
             >
-              <Button
-                variant={btnVariant || BtnVariant.Ghost}
-                onClick={onClick}
-                tabIndex={index === selectedListItemIndex ? 0 : -1}
-                ref={(el) => {
-                  listRefs.current[index] = el;
-                }}
-                ariaSelected={index === selectedListItemIndex}
-              >
-                {label}
-                {icon}
-              </Button>
-            </li>
-          ),
-        )}
-      </ul>
-    </div>
+              {label}
+              {icon}
+            </Button>
+          </li>
+        ),
+      )}
+    </ul>
   );
 };
 
