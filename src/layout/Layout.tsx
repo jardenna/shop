@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router';
+import { DropdownItem } from '../components/dropdownBtn/DropdownBtn';
 import Icon from '../components/icons/Icon';
 import { SecondaryActionBtnProps } from '../components/modal/Modal';
 import SkipLink from '../components/skipLinks/SkipLinks';
@@ -70,37 +71,33 @@ const Layout = () => {
   };
 
   const isEmployee = currentUser && currentUser.role === 'Employee';
+  const authDropdownItem = {
+    label: currentUser ? language.logout : language.login,
+    onClick: currentUser ? handleLogout : () => navigate(`/${MainPath.Login}`),
+    icon: (
+      <Icon
+        iconName={currentUser ? IconName.Logout : IconName.Login}
+        title={currentUser ? language.logout : language.login}
+      />
+    ),
+  };
 
   // Employee dropdown list
-  const employeeDropdownList = [
+  const employeeDropdownList: DropdownItem[] = [
     {
       label: language.admin,
-      id: 30,
       icon: <Icon iconName={IconName.Admin} title={language.lock} />,
       onClick: () => {
         navigate(`/${MainPath.Admin}`);
       },
     },
-    {
-      label: currentUser ? language.logout : language.login,
-      id: 40,
-      onClick: currentUser
-        ? handleLogout
-        : () => navigate(`/${MainPath.Login}`),
-      icon: (
-        <Icon
-          iconName={currentUser ? IconName.Logout : IconName.Login}
-          title={currentUser ? language.logout : language.login}
-        />
-      ),
-    },
+    authDropdownItem,
   ];
 
   // User dropdown list
-  const userDropdownList = [
+  const userDropdownList: DropdownItem[] = [
     {
       label: language.myAccount,
-      id: 10,
       onClick: () => {
         if (currentUser) {
           navigate(`/${MainPath.MyAccount}`);
@@ -114,7 +111,6 @@ const Layout = () => {
     },
     {
       label: language.myOrders,
-      id: 20,
       icon: <Icon iconName={IconName.Orders} title={language.myOrders} />,
       onClick: () => {
         if (currentUser) {
@@ -124,20 +120,7 @@ const Layout = () => {
         }
       },
     },
-
-    {
-      label: currentUser ? language.logout : language.login,
-      id: 30,
-      onClick: currentUser
-        ? handleLogout
-        : () => navigate(`/${MainPath.Login}`),
-      icon: (
-        <Icon
-          iconName={currentUser ? IconName.Logout : IconName.Login}
-          title={currentUser ? language.logout : language.login}
-        />
-      ),
-    },
+    authDropdownItem,
   ];
 
   return (

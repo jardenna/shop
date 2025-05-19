@@ -1,0 +1,41 @@
+@use './globals' as *;
+
+.popup {
+  display: flex;
+  justify-content: center;
+}
+
+$placements: (
+  top: bottom,
+  bottom: top,
+  left: right,
+  right: left,
+);
+
+.popup-container {
+  box-shadow: $box-shadow;
+  background-color: $color-light-gray-10;
+  border-radius: 4px;
+  z-index: 2;
+
+  @each $placement, $side in $placements {
+    &[data-popper-placement^='#{$placement}'] > .popup-arrow {
+      #{$side}: 4px;
+    }
+  }
+}
+
+.popup-arrow {
+  visibility: hidden;
+  background: inherit;
+
+  &::before {
+    visibility: visible;
+    content: '';
+    transform: rotate(45deg);
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: inherit;
+  }
+}

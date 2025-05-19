@@ -4,10 +4,10 @@ import Button from './Button';
 import IconContent from './IconContent';
 
 export type IconBtnProps = {
-  ariaLabel: string;
   iconName: IconName;
   title: string;
   ariaExpanded?: boolean;
+  ariaLabel?: string;
   ariaSelected?: boolean;
   btnType?: ButtonType;
   className?: string;

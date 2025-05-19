@@ -20,6 +20,10 @@
       width: rem(260px);
     }
   }
+
+  .dropdown-item {
+    min-width: rem(200px);
+  }
 }
 
 .header-icon-list {

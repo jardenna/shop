@@ -26,12 +26,12 @@ const ProductPage = () => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
 
+  // Redux hooks
   const { data: hasScheduledData } = useGetHasScheduledDataQuery(undefined, {
     pollingInterval: oneDay,
   });
 
   const [dublicateProduct] = useDuplicateProductMutation();
-
   const shouldPollFullList = hasScheduledData?.hasScheduled ?? false;
 
   const {
@@ -43,6 +43,7 @@ const ProductPage = () => {
     refetchOnMountOrArgChange: true,
   });
 
+  // Copy row handler
   async function handleCopyProduct(id: string) {
     try {
       await dublicateProduct(id);

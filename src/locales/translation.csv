@@ -42,7 +42,7 @@ colorRequired;Please select at least one color;Vælg mindst 1 farve
 colours;Colours;Farver
 confirmPassword;Confirm password;Gentag adgangskode
 contact;Contact;Kontakt
-copy;Copy;Kopi
+copy;Copy;Kopier
 couldNotFindInfo;Sorry, We couldn’t find the information you’re looking for;Vi kunne desværre ikke finde den information, du søger
 create;Create;Tilføj
 createAccount;Create account;Opret konto
@@ -164,6 +164,7 @@ preferences;Preferences;Præferencer
 price;Price;Pris
 priceRequired;Please insert price;Indsæt venligst pris
 pricing;Pricing;Prissætning
+productActions;Product actions;Produkt aktioner
 productCreated;Product created;Produkt blev tilføjet
 productCopied;Product copied;Produkt blev kopieret
 productDeleted;Product deleted;Produkt blev slettet
@@ -237,6 +238,7 @@ users;Users;Brugere
 users;Users;Brugere
 userUpdated;User updated;Bruger opdateret
 viewCategory;View category;Se kategori
+view;View;Se
 viewProduct;View product;Se produkt
 warning;Warning;Warning
 welcome;Welcome;Velkommen

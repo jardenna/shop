@@ -1,12 +1,12 @@
-import { ReactNode, useRef } from 'react';
-import useDropdown from '../../hooks/useDropdown';
+import { Placement } from '@popperjs/core';
+import { ReactNode } from 'react';
+import usePopup from '../../hooks/usePopup';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import './_dropdown-btn.scss';
 import DropdownList from './DropdownList';
 
 export type DropdownItem = {
-  id: number;
   label: string;
   btnVariant?: BtnVariant;
   className?: string;
@@ -14,42 +14,55 @@ export type DropdownItem = {
   onClick: () => void;
 };
 
-type DropdownBtnProps = {
+export type DropdownBtnProps = {
   ariaControls: string;
   children: ReactNode;
   dropdownList: DropdownItem[];
-  btnVariant?: BtnVariant;
+  ariaLabel?: string;
+  placement?: Placement;
+  showArrow?: boolean;
+  triggerBtnClassName?: string;
+  triggerBtnVariant?: BtnVariant;
 };
 
 const DropdownBtn = ({
   dropdownList,
-  btnVariant = BtnVariant.Ghost,
+  triggerBtnVariant = BtnVariant.Ghost,
   ariaControls,
   children,
+  showArrow,
+  placement,
+  ariaLabel,
+  triggerBtnClassName = '',
 }: DropdownBtnProps) => {
-  const { dropdownRef, dropdownIsOpen, toggleDropdownList } = useDropdown({});
-  const triggerDropdownBtnRef = useRef<HTMLButtonElement | null>(null);
+  const { popupRef, popupIsOpen, togglePopupList, arrowRef, buttonRef } =
+    usePopup({ placement });
 
   return (
-    <div className="dropdown-container" ref={dropdownRef}>
+    <div className="popup">
       <Button
-        variant={btnVariant}
-        ref={(el) => {
-          triggerDropdownBtnRef.current = el;
-        }}
-        onClick={toggleDropdownList}
-        ariaExpanded={dropdownIsOpen}
+        variant={triggerBtnVariant}
+        onClick={togglePopupList}
+        ariaExpanded={popupIsOpen}
         ariaHasPopup
         ariaControls={ariaControls}
+        ariaLabel={ariaLabel}
+        className={triggerBtnClassName}
+        ref={(el) => {
+          buttonRef.current = el;
+        }}
       >
         {children}
       </Button>
-      {dropdownIsOpen && (
-        <DropdownList
-          defaultIndex={-1}
-          dropdownList={dropdownList}
-          ariaControls={ariaControls}
-        />
+      {popupIsOpen && (
+        <div ref={popupRef} className="popup-container">
+          <DropdownList
+            defaultIndex={-1}
+            dropdownList={dropdownList}
+            ariaControls={ariaControls}
+          />
+          {showArrow && <div ref={arrowRef} className="popup-arrow" />}
+        </div>
       )}
     </div>
   );

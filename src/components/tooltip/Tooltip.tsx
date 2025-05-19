@@ -1,18 +1,16 @@
-import { Placement } from '@popperjs/core';
 import { ReactNode } from 'react';
-import useDropdown from '../../hooks/useDropdown';
-import { BtnVariant } from '../../types/enums';
+import usePopup from '../../hooks/usePopup';
 import Button from '../Button';
+import { DropdownBtnProps } from '../dropdownBtn/DropdownBtn';
 import './_tooltip.scss';
 
-type TooltipProps = {
-  ariaControls: string;
-  ariaLabel: string;
-  children: ReactNode;
+type OmittedDropdownBtnProps = Omit<
+  DropdownBtnProps,
+  'dropdownList' | 'showArrow'
+>;
+
+type TooltipProps = OmittedDropdownBtnProps & {
   tooltip: ReactNode | ((helpers: { close: () => void }) => ReactNode);
-  placement?: Placement;
-  triggerBtnClassName?: string;
-  triggerBtnVariant?: BtnVariant;
 };
 
 const Tooltip = ({
@@ -24,20 +22,15 @@ const Tooltip = ({
   triggerBtnClassName = '',
   placement,
 }: TooltipProps) => {
-  const {
-    dropdownRef,
-    buttonRef,
-    dropdownIsOpen,
-    toggleDropdownList,
-    arrowRef,
-  } = useDropdown({ placement });
+  const { popupRef, buttonRef, popupIsOpen, togglePopupList, arrowRef } =
+    usePopup({ placement });
 
   return (
-    <div className="tooltip">
+    <div className="popup">
       <Button
         variant={triggerBtnVariant}
-        onClick={toggleDropdownList}
-        ariaExpanded={dropdownIsOpen}
+        onClick={togglePopupList}
+        ariaExpanded={popupIsOpen}
         ariaHasPopup
         ariaControls={ariaControls}
         ariaLabel={ariaLabel}
@@ -47,12 +40,16 @@ const Tooltip = ({
         {children}
       </Button>
 
-      {dropdownIsOpen && (
-        <div ref={dropdownRef} className="tooltip-container" id={ariaControls}>
+      {popupIsOpen && (
+        <div
+          ref={popupRef}
+          className="tooltip popup-container"
+          id={ariaControls}
+        >
           {typeof tooltip === 'function'
-            ? tooltip({ close: toggleDropdownList })
+            ? tooltip({ close: togglePopupList })
             : tooltip}
-          <div ref={arrowRef} className="arrow" />
+          <div ref={arrowRef} className="popup-arrow" />
         </div>
       )}
     </div>
