@@ -18,6 +18,7 @@ type DropdownBtnProps = {
   children: ReactNode;
   dropdownList: DropdownItem[];
   btnVariant?: BtnVariant;
+  showArrow?: boolean;
 };
 
 const DropdownBtn = ({
@@ -25,6 +26,7 @@ const DropdownBtn = ({
   btnVariant = BtnVariant.Ghost,
   ariaControls,
   children,
+  showArrow,
 }: DropdownBtnProps) => {
   const { popupRef, popupIsOpen, togglePopupList, arrowRef, buttonRef } =
     usePopup({});
@@ -50,7 +52,7 @@ const DropdownBtn = ({
             dropdownList={dropdownList}
             ariaControls={ariaControls}
           />
-          <div ref={arrowRef} className="arrow" />
+          {showArrow && <div ref={arrowRef} className="arrow" />}
         </div>
       )}
     </div>
