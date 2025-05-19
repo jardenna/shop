@@ -1,18 +1,16 @@
-import { Placement } from '@popperjs/core';
 import { ReactNode } from 'react';
 import usePopup from '../../hooks/usePopup';
-import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
+import { DropdownBtnProps } from '../dropdownBtn/DropdownBtn';
 import './_tooltip.scss';
 
-type TooltipProps = {
-  ariaControls: string;
-  ariaLabel: string;
-  children: ReactNode;
+type OmittedDropdownBtnProps = Omit<
+  DropdownBtnProps,
+  'dropdownList' | 'showArrow'
+>;
+
+type TooltipProps = OmittedDropdownBtnProps & {
   tooltip: ReactNode | ((helpers: { close: () => void }) => ReactNode);
-  placement?: Placement;
-  triggerBtnClassName?: string;
-  triggerBtnVariant?: BtnVariant;
 };
 
 const Tooltip = ({

@@ -14,7 +14,7 @@ export type DropdownItem = {
   onClick: () => void;
 };
 
-type DropdownBtnProps = {
+export type DropdownBtnProps = {
   ariaControls: string;
   children: ReactNode;
   dropdownList: DropdownItem[];
