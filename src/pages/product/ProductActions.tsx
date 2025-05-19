@@ -19,35 +19,25 @@ const ProductActions = ({ onCopyProduct, id }: ProductActionsProps) => {
 
   const ActionsDropdownList: DropdownItem[] = [
     {
-      label: language.viewProduct,
+      label: language.view,
       onClick: () => {
         navigate(`/admin/${MainPath.AdminProductView}/${id}`);
       },
-      icon: (
-        <Icon iconName={IconName.Auth} title={language.myAccount} size="25" />
-      ),
+      icon: <Icon iconName={IconName.Eye} title={language.eye} />,
     },
     {
       label: language.update,
       onClick: () => {
         navigate(`/admin/${MainPath.AdminProductUpdate}/${id}`);
       },
-      icon: (
-        <Icon
-          iconName={IconName.Dublicate}
-          title={language.myAccount}
-          size="25"
-        />
-      ),
+      icon: <Icon iconName={IconName.Edit} title={language.pensil} />,
     },
     {
       label: language.copy,
       onClick: () => {
         onCopyProduct(id);
       },
-      icon: (
-        <Icon iconName={IconName.Auth} title={language.myAccount} size="25" />
-      ),
+      icon: <Icon iconName={IconName.Dublicate} title={language.copy} />,
     },
   ];
 
