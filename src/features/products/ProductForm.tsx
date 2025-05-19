@@ -127,10 +127,10 @@ const ProductForm = ({
   };
 
   const handleToggleImage = (img: string) => {
-    setDisabledImages((prev) =>
-      prev.includes(img)
-        ? prev.filter((i: string) => i !== img)
-        : [...prev, img],
+    setDisabledImages(
+      disabledImages.includes(img)
+        ? disabledImages.filter((i: string) => i !== img)
+        : [...disabledImages, img],
     );
   };
 
