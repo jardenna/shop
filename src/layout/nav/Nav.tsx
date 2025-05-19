@@ -9,6 +9,7 @@ export type NavItemsProps = {
   linkText: LinkText;
   path: string;
   iconName?: IconName;
+  iconSize?: string;
 };
 
 export type ActionBtnProps = {

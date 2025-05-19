@@ -14,6 +14,7 @@ const NavItem = ({ navItem }: { navItem: NavItemsProps }) => {
             <Icon
               iconName={navItem.iconName}
               title={language[navItem.linkText]}
+              size={navItem.iconSize}
             />
           </span>
         )}
