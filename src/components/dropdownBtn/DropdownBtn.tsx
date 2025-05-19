@@ -39,7 +39,7 @@ const DropdownBtn = ({
     usePopup({ placement });
 
   return (
-    <div className="tooltip">
+    <div className="popup">
       <Button
         variant={triggerBtnVariant}
         onClick={togglePopupList}
@@ -55,13 +55,13 @@ const DropdownBtn = ({
         {children}
       </Button>
       {popupIsOpen && (
-        <div ref={popupRef} className="tooltip-container">
+        <div ref={popupRef} className="popup-container">
           <DropdownList
             defaultIndex={-1}
             dropdownList={dropdownList}
             ariaControls={ariaControls}
           />
-          {showArrow && <div ref={arrowRef} className="arrow" />}
+          {showArrow && <div ref={arrowRef} className="popup-arrow" />}
         </div>
       )}
     </div>

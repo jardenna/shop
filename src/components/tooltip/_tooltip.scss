@@ -1,46 +1,5 @@
 @use '../../scss/globals' as *;
 
-.tooltip {
-  display: flex;
-  justify-content: flex-end;
-}
-
-$placements: (
-  top: bottom,
-  bottom: top,
-  left: right,
-  right: left,
-);
-
-.tooltip-container {
-  padding: 8px;
-  box-shadow: $box-shadow;
-  background-color: $color-light-gray-10;
-  border-radius: 4px;
-  z-index: 2;
-
-  @each $placement, $side in $placements {
-    &[data-popper-placement^='#{$placement}'] > .arrow {
-      #{$side}: 4px;
-    }
-  }
-}
-
-.arrow {
-  visibility: hidden;
-  background: inherit;
-
-  &::before {
-    visibility: visible;
-    content: '';
-    transform: rotate(45deg);
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: inherit;
-  }
-}
-
 .tooltip-content {
   max-width: rem(200px);
 

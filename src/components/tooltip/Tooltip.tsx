@@ -28,7 +28,7 @@ const Tooltip = ({
     usePopup({ placement });
 
   return (
-    <div className="tooltip">
+    <div className="popup">
       <Button
         variant={triggerBtnVariant}
         onClick={togglePopupList}
@@ -43,11 +43,11 @@ const Tooltip = ({
       </Button>
 
       {popupIsOpen && (
-        <div ref={popupRef} className="tooltip-container" id={ariaControls}>
+        <div ref={popupRef} className="popup-container" id={ariaControls}>
           {typeof tooltip === 'function'
             ? tooltip({ close: togglePopupList })
             : tooltip}
-          <div ref={arrowRef} className="arrow" />
+          <div ref={arrowRef} className="popup-arrow" />
         </div>
       )}
     </div>
