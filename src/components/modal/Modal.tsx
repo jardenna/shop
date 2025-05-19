@@ -3,7 +3,6 @@ import { useAppSelector } from '../../app/hooks';
 import { selectModalId } from '../../features/modalSlice';
 import useClickOutside from '../../hooks/useClickOutside';
 import useMediaQuery from '../../hooks/useMediaQuery ';
-import usePopup from '../../hooks/usePopup';
 import { BtnVariant, PopupRole, SizeVariant } from '../../types/enums';
 import { ButtonType } from '../../types/types';
 import Overlay from '../overlay/Overlay';
@@ -12,6 +11,7 @@ import SwipeContainer from '../SwipeContainer';
 import './_modal.scss';
 import ModalFooter from './ModalFooter';
 import ModalHeader from './ModalHeader';
+import useModal from './useModal';
 import useVisibility from './useVisibility';
 
 export type PrimaryActionBtnProps = {
@@ -56,7 +56,7 @@ const Modal = ({
 }: ModalProps) => {
   const { isMobileSize } = useMediaQuery();
   const modalId = useAppSelector(selectModalId);
-  const { onClosePopup, popupRef } = usePopup(modalId);
+  const { onClosePopup, popupRef } = useModal(modalId);
 
   const { onCloseModal, popupClass } = useVisibility(
     modalId === id,
