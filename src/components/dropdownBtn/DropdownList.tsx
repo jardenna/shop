@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import useArrow from '../../hooks/UseArrow';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
@@ -15,13 +14,11 @@ const DropdownList = ({
   defaultIndex,
   ariaControls,
 }: DropdownListProps) => {
-  const listRefs = useRef<(HTMLButtonElement | null)[]>([]);
-
-  const { selectedListItemIndex } = useArrow({
+  const { selectedListItemIndex, listRefs } = useArrow({
     defaultIndex,
     dropdownList,
-    listRefs,
   });
+
   return (
     <ul id={ariaControls} className="dropdown-list">
       {dropdownList.map(

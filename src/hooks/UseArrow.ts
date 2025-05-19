@@ -1,42 +1,45 @@
-import { RefObject, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { DropdownItem } from '../components/dropdownBtn/DropdownBtn';
 import { KeyCode } from '../types/enums';
 import useKeyPress from './useKeyPress';
 
 type UseArrowProps = {
   dropdownList: DropdownItem[];
-  listRefs: RefObject<(HTMLButtonElement | null)[]>;
+
   defaultIndex?: number;
 };
 
-const useArrow = ({ defaultIndex, dropdownList, listRefs }: UseArrowProps) => {
+const useArrow = ({ defaultIndex, dropdownList }: UseArrowProps) => {
+  const listRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const [selectedListItemIndex, setSelectedListItemIndex] = useState(
     defaultIndex ?? 0,
   );
 
-  const handleActivateListItem = (index: number) => {
-    setSelectedListItemIndex(index);
-    // Use arrowUp & arrowDown
-    listRefs.current[index]?.focus();
-  };
+  const handleActivateListItem = useCallback(
+    (index: number) => {
+      setSelectedListItemIndex(index);
+      listRefs.current[index]?.focus();
+    },
+    [listRefs],
+  );
 
-  const handleNextListItem = () => {
+  const handleNextListItem = useCallback(() => {
     handleActivateListItem((selectedListItemIndex + 1) % dropdownList.length);
-  };
+  }, [selectedListItemIndex, dropdownList.length, handleActivateListItem]);
 
-  const handlePrevListItem = () => {
+  const handlePrevListItem = useCallback(() => {
     handleActivateListItem(
       (selectedListItemIndex - 1 + dropdownList.length) % dropdownList.length,
     );
-  };
+  }, [selectedListItemIndex, dropdownList.length, handleActivateListItem]);
 
-  const handleGotoFirstListItem = () => {
+  const handleGotoFirstListItem = useCallback(() => {
     handleActivateListItem(0);
-  };
+  }, [handleActivateListItem]);
 
-  const handleGotoLastListItem = () => {
+  const handleGotoLastListItem = useCallback(() => {
     handleActivateListItem(dropdownList.length - 1);
-  };
+  }, [dropdownList.length, handleActivateListItem]);
 
   useKeyPress(handleNextListItem, [KeyCode.ArrowRight]);
   useKeyPress(handlePrevListItem, [KeyCode.ArrowLeft]);
