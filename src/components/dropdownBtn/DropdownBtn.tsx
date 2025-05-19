@@ -28,14 +28,14 @@ const DropdownBtn = ({
   children,
 }: DropdownBtnProps) => {
   const { dropdownRef, dropdownIsOpen, toggleDropdownList } = useDropdown({});
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const triggerDropdownBtnRef = useRef<HTMLButtonElement | null>(null);
 
   return (
     <div className="dropdown-container" ref={dropdownRef}>
       <Button
         variant={btnVariant}
         ref={(el) => {
-          buttonRef.current = el;
+          triggerDropdownBtnRef.current = el;
         }}
         onClick={toggleDropdownList}
         ariaExpanded={dropdownIsOpen}
