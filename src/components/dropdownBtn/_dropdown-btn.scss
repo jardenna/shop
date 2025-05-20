@@ -17,12 +17,16 @@
     background-color: $color-background;
   }
 
-  .btn-ghost {
+  .btn {
     display: flex;
     gap: 8px;
     justify-content: space-between;
     width: 100%;
+    padding-block: 0;
+    min-height: auto;
+  }
 
+  .btn-ghost {
     &:hover,
     &:focus-visible {
       outline: transparent;

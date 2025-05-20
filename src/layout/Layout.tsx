@@ -9,7 +9,7 @@ import useAuth from '../features/auth/hooks/useAuth';
 import useCurrency from '../features/currency/useCurrency';
 import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
-import { IconName } from '../types/enums';
+import { BtnVariant, IconName } from '../types/enums';
 import { OptionType } from '../types/types';
 import Header from './header/Header';
 import { MainPath } from './nav/enums';
@@ -71,8 +71,9 @@ const Layout = () => {
   };
 
   const isEmployee = currentUser && currentUser.role === 'Employee';
-  const authDropdownItem = {
+  const authDropdownItem: DropdownItem = {
     label: currentUser ? language.logout : language.login,
+    btnVariant: BtnVariant.Danger,
     onClick: currentUser ? handleLogout : () => navigate(`/${MainPath.Login}`),
     icon: (
       <Icon
