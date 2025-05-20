@@ -4,7 +4,7 @@ import {
   loginUser,
   logoutCurrentUser,
 } from '../controllers/authController.js';
-import { authenticate } from '../middleware/authMiddleware.js';
+import { authenticate, authorizeAdmin } from '../middleware/authMiddleware.js';
 import languageMiddleware from '../middleware/languageMiddleware.js';
 
 const router = express.Router();
@@ -12,6 +12,14 @@ const router = express.Router();
 router.post('/register', languageMiddleware, createUser);
 router.post('/login', languageMiddleware, loginUser);
 router.post('/logout', languageMiddleware, logoutCurrentUser);
+
+router.post(
+  '/admin/create-user',
+  languageMiddleware,
+  authenticate,
+  authorizeAdmin,
+  createUser,
+);
 
 router.get(
   '/check-auth',

@@ -12,7 +12,6 @@ import { t } from '../utils/translator.js';
 // @access  Public
 const createUser = asyncHandler(async (req, res) => {
   const { username, email, password, role } = req.body;
-  const userExists = await User.findOne({ email });
 
   if (!username || !email || !password) {
     return res.status(400).json({
@@ -21,23 +20,14 @@ const createUser = asyncHandler(async (req, res) => {
     });
   }
 
-  // Validate email
-  const emailResult = validateEmail(email, req.lang);
-  if (!emailResult.isValid) {
-    return res.status(emailResult.status).json(emailResult.payload);
+  if (!req.user?.isAdmin && role) {
+    return res.status(403).json({
+      success: false,
+      message: 'You are not allowed to assign roles',
+    });
   }
 
-  // Validate password
-  if (password) {
-    const passwordErrorKey = validatePassword(password);
-
-    if (passwordErrorKey) {
-      return res.status(400).json({
-        message: t(passwordErrorKey, req.lang),
-      });
-    }
-  }
-
+  const userExists = await User.findOne({ email });
   if (userExists) {
     return res.status(400).json({
       success: false,
@@ -45,8 +35,21 @@ const createUser = asyncHandler(async (req, res) => {
     });
   }
 
+  const emailResult = validateEmail(email, req.lang);
+  if (!emailResult.isValid) {
+    return res.status(emailResult.status).json(emailResult.payload);
+  }
+
+  const passwordErrorKey = validatePassword(password);
+  if (passwordErrorKey) {
+    return res.status(400).json({
+      message: t(passwordErrorKey, req.lang),
+    });
+  }
+
   const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS) || 10;
   const hashPassword = await bcrypt.hash(password, saltRounds);
+
   const newUser = new User({
     username,
     email,
@@ -55,7 +58,10 @@ const createUser = asyncHandler(async (req, res) => {
   });
 
   await newUser.save();
-  createToken(res, newUser._id);
+
+  if (!req.user?.isAdmin) {
+    createToken(res, newUser._id);
+  }
 
   res.status(201).json({
     success: true,
