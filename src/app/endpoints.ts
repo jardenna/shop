@@ -2,6 +2,7 @@ const baseAuthApi = 'auth';
 
 const authEndpoints = {
   register: `${baseAuthApi}/register`,
+  create: `${baseAuthApi}/admin/create-user`,
   login: `${baseAuthApi}/login`,
   logout: `${baseAuthApi}/logout`,
   checkAuth: `${baseAuthApi}/check-auth`,

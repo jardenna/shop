@@ -4,15 +4,15 @@ import { roleButtonList } from '../../../utils/utils';
 
 type RoleRadioBtnProps = {
   roleValue: string;
-  onEditChange: (event: ChangeInputType) => void;
+  onChange: (event: ChangeInputType) => void;
 };
 
-const RoleRadioBtn = ({ roleValue, onEditChange }: RoleRadioBtnProps) => (
+const RoleRadioBtn = ({ roleValue, onChange }: RoleRadioBtnProps) => (
   <RadioButton
     radioButtonList={roleButtonList}
     name="role"
     initialChecked={roleValue}
-    onChange={onEditChange}
+    onChange={onChange}
   />
 );
 

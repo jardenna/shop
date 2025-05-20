@@ -27,7 +27,7 @@ const RegisterUser = ({
     email: '',
     password: '',
     confirmPassword: '',
-    role: '',
+    role: 'User',
   };
 
   const { onAddMessagePopup } = useMessagePopup();
@@ -46,7 +46,7 @@ const RegisterUser = ({
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { confirmPassword, ...rest } = values;
 
-      const result = await registerUser(rest).unwrap();
+      const result = await registerUser({ user: rest, isAdmin: true }).unwrap();
 
       if (result.success) {
         navigate(navigateTo);
@@ -79,7 +79,7 @@ const RegisterUser = ({
         navigateTo={MainPath.Login}
         navigateToText={language.loginHere}
       />
-      <RoleRadioBtn onEditChange={onChange} roleValue={values.role} />
+      <RoleRadioBtn onChange={onChange} roleValue={values.role} />
     </>
   );
 };

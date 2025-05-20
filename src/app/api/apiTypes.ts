@@ -21,6 +21,10 @@ export type UserResponse = {
   role: RoleTypes;
   username: string;
 };
+export type User = {
+  isAdmin: boolean;
+  user: AuthRequest;
+};
 
 export type UpdateUserRoleRequest = {
   role: RoleTypes;
