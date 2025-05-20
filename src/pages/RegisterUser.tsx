@@ -2,13 +2,14 @@ import { useNavigate } from 'react-router';
 import AuthForm from '../components/authForm/AuthForm';
 import validateSignup from '../components/formElements/validation/validateSignup';
 import useMessagePopup from '../components/messagePopup/useMessagePopup';
+import RoleRadioBtn from '../features/admin/users/RoleRadioBtn';
 import { useSignupMutation } from '../features/auth/authApiSlice';
 import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
 import { MainPath } from '../layout/nav/enums';
 import passwordRules from '../utils/passwordRules';
 
-type RegisterUserProps = {
+export type RegisterUserProps = {
   navigateTo: string;
   heading?: string;
   hideAuthBtn?: boolean;
@@ -26,6 +27,7 @@ const RegisterUser = ({
     email: '',
     password: '',
     confirmPassword: '',
+    role: '',
   };
 
   const { onAddMessagePopup } = useMessagePopup();
@@ -59,23 +61,26 @@ const RegisterUser = ({
   }
 
   return (
-    <AuthForm
-      hideAuthBtn={hideAuthBtn}
-      heading={heading}
-      values={values}
-      submitBtnLabel={language.signup}
-      onSubmit={onSubmit}
-      isLoading={isLoading}
-      legendText={language.userInfo}
-      onChange={onChange}
-      errors={errors}
-      onBlur={onBlur}
-      passwordRules={passwordRules}
-      isFocused={isFocused}
-      onFocus={onFocus}
-      navigateTo={MainPath.Login}
-      navigateToText={language.loginHere}
-    />
+    <>
+      <AuthForm
+        hideAuthBtn={hideAuthBtn}
+        heading={heading}
+        values={values}
+        submitBtnLabel={language.signup}
+        onSubmit={onSubmit}
+        isLoading={isLoading}
+        legendText={language.userInfo}
+        onChange={onChange}
+        errors={errors}
+        onBlur={onBlur}
+        passwordRules={passwordRules}
+        isFocused={isFocused}
+        onFocus={onFocus}
+        navigateTo={MainPath.Login}
+        navigateToText={language.loginHere}
+      />
+      <RoleRadioBtn onEditChange={onChange} roleValue={values.role} />
+    </>
   );
 };
 

@@ -6,6 +6,11 @@ const currencyCacheKey = 'exchangeRates';
 
 const sizeList: ProductSizes[] = ['S', 'M', 'L', 'XL'];
 
+const roleButtonList = [
+  { value: 'Employee', label: 'employee' },
+  { value: 'User', label: 'user' },
+];
+
 const formatNumber = (value: number, lang: 'en' | 'da') =>
   new Intl.NumberFormat(lang === 'en' ? 'en-US' : 'da-DK').format(value);
 
@@ -41,5 +46,6 @@ export {
   getErrorMessage,
   getlowerCaseFirstLetter,
   oneDay,
+  roleButtonList,
   sizeList,
 };

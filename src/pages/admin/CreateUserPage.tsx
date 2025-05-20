@@ -7,9 +7,9 @@ const CreateUserPage = () => {
   const { language } = useLanguage();
 
   return (
-    <article className="page">
+    <article className="page page-small">
       <PageContainer heading={language.createNewUser}>
-        <RegisterUser navigateTo={MainPath.Users} hideAuthBtn />
+        <RegisterUser navigateTo={`/admin/${MainPath.Users}`} hideAuthBtn />
       </PageContainer>
     </article>
   );

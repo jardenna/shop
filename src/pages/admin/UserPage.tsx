@@ -17,6 +17,7 @@ import useTableEditField from '../../hooks/useTableEditField';
 import useTrapFocus from '../../hooks/useTrapFocus';
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant, IconName } from '../../types/enums';
+import { roleButtonList } from '../../utils/utils';
 import PageContainer from '../PageContainer';
 import DeleteUser from './DeleteUser';
 
@@ -29,11 +30,6 @@ const tableHeaders: { key: keyof UserResponse; label: string; name: string }[] =
   ];
 
 const columnKeys: (keyof UserResponse)[] = ['username', 'email', 'role'];
-
-const radioButtonList = [
-  { value: 'Employee', label: 'employee' },
-  { value: 'User', label: 'user' },
-];
 
 const UserPage = () => {
   const { language } = useLanguage();
@@ -126,7 +122,7 @@ const UserPage = () => {
                 {columnKeys.map((columnKey) => (
                   <td key={columnKey}>
                     <EditUserInput
-                      radioButtonList={radioButtonList}
+                      radioButtonList={roleButtonList}
                       isAdmin={isAdmin}
                       onSave={() => {
                         handleSaveEdit();

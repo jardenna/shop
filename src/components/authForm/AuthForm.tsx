@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
 import { KeyValuePair } from '../../hooks/useFormValidation';
-import { MainPath } from '../../layout/nav/enums';
+import { RegisterUserProps } from '../../pages/RegisterUser';
 import { BtnVariant } from '../../types/enums';
 import {
   BlurEventType,
@@ -23,16 +23,13 @@ export type User = {
   username?: string;
 };
 
-type AuthFormProps = {
+type AuthFormProps = RegisterUserProps & {
   errors: KeyValuePair<string>;
   isLoading: boolean;
   legendText: string;
-  navigateTo: MainPath;
   navigateToText: string;
   submitBtnLabel: string;
   values: User;
-  heading?: string;
-  hideAuthBtn?: boolean;
   isFocused?: boolean;
   onBlur: (event: BlurEventType) => void;
   onChange: (event: ChangeInputType) => void;
@@ -119,7 +116,6 @@ const AuthForm = ({
             />
           )}
         </FieldSet>
-
         {!hideAuthBtn && (
           <div className="auth-btn">
             <Button
@@ -130,6 +126,15 @@ const AuthForm = ({
             </Button>
           </div>
         )}
+
+        {/* {onSelectRole && (
+          <ToggleSwitch
+            id="role"
+            checked={checked || false}
+            onChange={onSelectRole}
+            labelText="employee"
+          />
+        )} */}
       </Form>
     </>
   );
