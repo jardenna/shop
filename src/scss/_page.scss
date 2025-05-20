@@ -22,6 +22,12 @@
 
   .main-header {
     height: $header-height;
+
+    .btn {
+      max-width: rem(100px);
+      padding-block: 12px;
+      min-height: auto;
+    }
   }
 
   .page-header {
@@ -49,6 +55,7 @@
 
   .container {
     max-width: 100%;
+    padding-block: 12px;
   }
 
   .aside {
