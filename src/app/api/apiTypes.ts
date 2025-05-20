@@ -1,6 +1,15 @@
 export type RoleTypes = 'Employee' | 'User';
 export type Status = 'Published' | 'Inactive' | 'Scheduled';
 
+export type CurrencyResponse = {
+  data: Record<string, { value: number }>;
+};
+
+export type DefaultResponse = {
+  message: string;
+  success: boolean;
+};
+
 export type DefaultResponseType = {
   createdAt: Date;
   reviews: ReviewResponse[];
@@ -9,57 +18,49 @@ export type DefaultResponseType = {
   success?: boolean;
 };
 
-export type DefaultResponse = {
-  message: string;
-  success: boolean;
+// --- Base user fields shared across types ---
+type EditableUserFields = {
+  email: string;
+  username: string;
+  role?: RoleTypes;
 };
 
-export type UserResponse = {
-  email: string;
+type BaseUser = Required<EditableUserFields> & {
   id: string;
+};
+
+// --- Users ---
+export type UserResponse = BaseUser & {
   isAdmin: boolean;
-  role: RoleTypes;
-  username: string;
 };
 
-export type UpdateUserRoleRequest = {
-  role: RoleTypes;
-  userId: string;
-};
+export type UpdateUserByIdResponse = BaseUser;
 
-export type AuthRequest = {
-  email: string;
-  password: string;
-  username: string;
-  role?: RoleTypes;
-};
-
-export type OmittedUserRequest = Omit<AuthRequest, 'username'>;
-
-export type AuthResponse = DefaultResponse & {
-  user: UserResponse;
-};
-
-export type CurrencyResponse = {
-  data: Record<string, { value: number }>;
-};
-
-export type UpdateUserByIdResponse = {
-  email: string;
-  id: string;
-  role: RoleTypes;
-  username: string;
-};
-
-export type UpdateUserById = {
-  email?: string;
-  role?: RoleTypes;
-  username?: string;
-};
+export type UpdateUserById = Partial<EditableUserFields>;
 
 export type UpdateUserByIdRequest = {
   id: string;
   user: UpdateUserById;
+};
+
+export type UpdateUserRole = {
+  role: RoleTypes;
+};
+
+export type UpdateUserRoleRequest = {
+  user: UpdateUserRole;
+  userId: string;
+};
+
+export type OmittedUserRequest = Omit<AuthRequest, 'username'>;
+
+// --- Auth ---
+export type AuthRequest = EditableUserFields & {
+  password: string;
+};
+
+export type AuthResponse = DefaultResponse & {
+  user: UserResponse;
 };
 
 // Category
