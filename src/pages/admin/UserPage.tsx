@@ -17,7 +17,6 @@ import useTableEditField from '../../hooks/useTableEditField';
 import useTrapFocus from '../../hooks/useTrapFocus';
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant, IconName } from '../../types/enums';
-import { roleButtonList } from '../../utils/utils';
 import PageContainer from '../PageContainer';
 import DeleteUser from './DeleteUser';
 
@@ -122,7 +121,6 @@ const UserPage = () => {
                 {columnKeys.map((columnKey) => (
                   <td key={columnKey}>
                     <EditUserInput
-                      radioButtonList={roleButtonList}
                       isAdmin={isAdmin}
                       onSave={() => {
                         handleSaveEdit();
