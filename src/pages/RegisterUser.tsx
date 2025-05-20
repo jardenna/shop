@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router';
+import { RoleTypes } from '../app/api/apiTypes';
 import AuthForm from '../components/authForm/AuthForm';
 import validateSignup from '../components/formElements/validation/validateSignup';
 import useMessagePopup from '../components/messagePopup/useMessagePopup';
@@ -46,7 +47,10 @@ const RegisterUser = ({
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { confirmPassword, ...rest } = values;
 
-      const result = await registerUser({ user: rest, isAdmin: true }).unwrap();
+      const result = await registerUser({
+        ...rest,
+        role: rest.role as RoleTypes,
+      }).unwrap();
 
       if (result.success) {
         navigate(navigateTo);

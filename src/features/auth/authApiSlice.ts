@@ -1,21 +1,25 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import {
+  AuthRequest,
   AuthResponse,
   DefaultResponse,
   OmittedUserRequest,
-  User,
 } from '../../app/api/apiTypes';
 import { authEndpoints } from '../../app/endpoints';
+import { store } from '../../app/store';
 import { logout } from './authSlice';
 
 export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    signup: builder.mutation<AuthResponse, User>({
-      query: ({ user, isAdmin }) => ({
-        url: isAdmin ? authEndpoints.create : authEndpoints.register,
-        method: 'POST',
-        body: user,
-      }),
+    signup: builder.mutation<AuthResponse, AuthRequest>({
+      query: (user) => {
+        const isAdmin = store.getState().auth.user?.user.isAdmin;
+        return {
+          url: isAdmin ? authEndpoints.create : authEndpoints.register,
+          method: 'POST',
+          body: user,
+        };
+      },
       invalidatesTags: [TagTypesEnum.Auth],
     }),
     login: builder.mutation<AuthResponse, OmittedUserRequest>({
