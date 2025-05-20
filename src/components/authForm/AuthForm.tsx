@@ -25,13 +25,14 @@ export type User = {
 
 type AuthFormProps = {
   errors: KeyValuePair<string>;
-  heading: string;
   isLoading: boolean;
   legendText: string;
   navigateTo: MainPath;
   navigateToText: string;
   submitBtnLabel: string;
   values: User;
+  heading?: string;
+  hideAuthBtn?: boolean;
   isFocused?: boolean;
   onBlur: (event: BlurEventType) => void;
   onChange: (event: ChangeInputType) => void;
@@ -55,13 +56,14 @@ const AuthForm = ({
   isFocused,
   onFocus,
   navigateToText,
+  hideAuthBtn,
 }: AuthFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
 
   return (
     <>
-      <h1>{heading}</h1>
+      {heading && <h1>{heading}</h1>}
       <Form
         submitBtnLabel={submitBtnLabel}
         onSubmit={onSubmit}
@@ -117,14 +119,17 @@ const AuthForm = ({
             />
           )}
         </FieldSet>
-        <div className="auth-btn">
-          <Button
-            onClick={() => navigate(`/${navigateTo}`)}
-            variant={BtnVariant.Ghost}
-          >
-            {navigateToText}
-          </Button>
-        </div>
+
+        {!hideAuthBtn && (
+          <div className="auth-btn">
+            <Button
+              onClick={() => navigate(`/${navigateTo}`)}
+              variant={BtnVariant.Ghost}
+            >
+              {navigateToText}
+            </Button>
+          </div>
+        )}
       </Form>
     </>
   );

@@ -10,9 +10,15 @@ import passwordRules from '../utils/passwordRules';
 
 type RegisterUserProps = {
   navigateTo: string;
+  heading?: string;
+  hideAuthBtn?: boolean;
 };
 
-const RegisterUser = ({ navigateTo }: RegisterUserProps) => {
+const RegisterUser = ({
+  navigateTo,
+  heading,
+  hideAuthBtn,
+}: RegisterUserProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const initialState = {
@@ -54,7 +60,8 @@ const RegisterUser = ({ navigateTo }: RegisterUserProps) => {
 
   return (
     <AuthForm
-      heading={language.signup}
+      hideAuthBtn={hideAuthBtn}
+      heading={heading}
       values={values}
       submitBtnLabel={language.signup}
       onSubmit={onSubmit}
