@@ -14,6 +14,7 @@ export enum MainPath {
   AdminSubCategoryCreate = 'sub-categories/create',
   AdminSubCategoryUpdate = 'sub-categories/update',
   AdminSubCategoryView = 'sub-categories/view',
+  AdminUserCreate = 'users/create',
   Collection = 'collection',
   Contact = 'contact',
   Home = 'home',

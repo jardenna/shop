@@ -109,7 +109,7 @@ const UserPage = () => {
       <PageContainer
         heading={language.users}
         linkText={language.createNewUser}
-        linkTo={`/admin/${MainPath.AdminSubCategoryCreate}`}
+        linkTo={`/admin/${MainPath.AdminUserCreate}`}
         onReset={() => refetch}
       >
         <Table
