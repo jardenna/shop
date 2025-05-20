@@ -44,7 +44,9 @@ const AdminLayout = () => {
         ariaLabel={language.main}
         onLogout={handleLogout}
         btnLabel={language.logout}
-        currentUser={currentUser?.username || ''}
+        welcomeMessage={
+          currentUser ? `${language.welcome} ${currentUser.username}` : null
+        }
       />
       <main className="main">
         <aside className={`aside ${isMenuCollapsed ? 'collapsed' : ''}`}>
