@@ -23,7 +23,7 @@ const createUser = asyncHandler(async (req, res) => {
   if (!req.user?.isAdmin && role) {
     return res.status(403).json({
       success: false,
-      message: 'You are not allowed to assign roles',
+      message: t('actionOnlyAllowedForAdmin', req.lang),
     });
   }
 
