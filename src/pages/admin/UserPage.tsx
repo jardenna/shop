@@ -106,8 +106,10 @@ const UserPage = () => {
     <article className="page page-medium">
       <PageContainer
         heading={language.users}
-        linkText={language.createNewUser}
-        linkTo={`/admin/${MainPath.AdminUserCreate}`}
+        linkText={allowedEditUser ? language.createNewUser : undefined}
+        linkTo={
+          allowedEditUser ? `/admin/${MainPath.AdminUserCreate}` : undefined
+        }
         onReset={() => refetch}
       >
         <Table
