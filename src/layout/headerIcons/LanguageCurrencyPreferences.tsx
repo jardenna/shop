@@ -28,7 +28,7 @@ const LanguageCurrencyPreferences = ({
           name="languageOption"
           initialChecked={values.languageOption}
           onChange={onChange}
-          radioBtnVariant="radio-card"
+          radioBtnVariant="card"
         />
       </FieldSet>
       <FieldSet legendText={language.currency}>
