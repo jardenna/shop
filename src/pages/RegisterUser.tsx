@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router';
-import { RoleTypes, UserResponse } from '../app/api/apiTypes';
+import { AuthRequest, RoleTypes, UserResponse } from '../app/api/apiTypes';
 import AuthForm from '../components/authForm/AuthForm';
 import validateSignup from '../components/formElements/validation/validateSignup';
 import useMessagePopup from '../components/messagePopup/useMessagePopup';
@@ -15,6 +15,10 @@ export type RegisterUserProps = {
   heading?: string;
 };
 
+type InitialState = AuthRequest & {
+  confirmPassword: string;
+};
+
 const RegisterUser = ({
   navigateTo,
   heading,
@@ -22,7 +26,7 @@ const RegisterUser = ({
 }: RegisterUserProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
-  const initialState = {
+  const initialState: InitialState = {
     username: '',
     email: '',
     password: '',
