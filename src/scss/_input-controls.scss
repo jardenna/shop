@@ -101,7 +101,7 @@ input[type='checkbox'] {
     gap: 4px;
 
     &:has(input:checked) {
-      color: white;
+      color: $color-white;
     }
 
     /* stylelint-disable-next-line no-descending-specificity */
@@ -132,7 +132,6 @@ input[type='checkbox'] {
 
     &:checked {
       background-color: $color-background-secondary;
-      border: 0;
     }
   }
 }
