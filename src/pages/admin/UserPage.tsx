@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import { UserResponse } from '../../app/api/apiTypes';
 import validateUpdateUser from '../../components/formElements/validation/validateUpdateUser';
-import IconContent from '../../components/IconContent';
 import Icon from '../../components/icons/Icon';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Table from '../../components/sortTable/Table';
@@ -12,6 +11,7 @@ import {
   useGetAllUsersQuery,
   useUpdateUserMutation,
 } from '../../features/admin/users/usersApiSlice';
+import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
 import useTableEditField from '../../hooks/useTableEditField';
 import useTrapFocus from '../../hooks/useTrapFocus';
@@ -33,9 +33,12 @@ const columnKeys: (keyof UserResponse)[] = ['username', 'email', 'role'];
 const UserPage = () => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
+  const { isAdmin } = useAuth();
   const { data: allUsers, isLoading, refetch } = useGetAllUsersQuery();
   const [deleteUser] = useDeleteUserMutation();
   const [updateUser] = useUpdateUserMutation();
+
+  const allowedEditUser = !!isAdmin;
 
   const popupRef = useRef<HTMLDialogElement | null>(null);
   useTrapFocus({ id: 'deleteUser', popupRef });
@@ -103,8 +106,8 @@ const UserPage = () => {
     <article className="page page-medium">
       <PageContainer
         heading={language.users}
-        linkText={language.createNewUser}
-        linkTo={`/admin/${MainPath.AdminUserCreate}`}
+        linkText={isAdmin ? language.createNewUser : undefined}
+        linkTo={isAdmin ? `/admin/${MainPath.AdminUserCreate}` : undefined}
         onReset={() => refetch}
       >
         <Table
@@ -122,6 +125,7 @@ const UserPage = () => {
                   <td key={columnKey}>
                     <EditUserInput
                       isAdmin={isAdmin}
+                      allowedEditUser={!!isAdmin}
                       onSave={() => {
                         handleSaveEdit();
                       }}
@@ -144,7 +148,7 @@ const UserPage = () => {
                   </td>
                 ))}
                 <td>
-                  {!isAdmin ? (
+                  {allowedEditUser && !isAdmin && (
                     <Tooltip
                       placement="left-start"
                       ariaControls="delete-user"
@@ -169,14 +173,6 @@ const UserPage = () => {
                         ariaLabel={language.deleteUser}
                       />
                     </Tooltip>
-                  ) : (
-                    <span className="disabled-trash-icon">
-                      <IconContent
-                        iconName={IconName.Trash}
-                        title={language.trashCan}
-                        ariaLabel={language.adminCannotBeDeleted}
-                      />
-                    </span>
                   )}
                 </td>
               </tr>

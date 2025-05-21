@@ -14,11 +14,11 @@ export type BaseEditTableInput = {
   onSave: () => void;
 };
 
-type EditTableInputProps = {
+type EditTableInputProps = BaseEditTableInput & {
   alternativeInput?: ReactElement;
   inputType?: InputType;
   isAlterntiveInput?: boolean;
-} & BaseEditTableInput;
+};
 
 const EditTableInput = ({
   id,

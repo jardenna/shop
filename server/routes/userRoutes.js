@@ -7,19 +7,29 @@ import {
   updateCurrentUserProfile,
   updateUserById,
 } from '../controllers/userController.js';
-import { authenticate, authorizeAdmin } from '../middleware/authMiddleware.js';
+import {
+  authenticate,
+  authorizeAdmin,
+  authorizeEmployee,
+} from '../middleware/authMiddleware.js';
 import languageMiddleware from '../middleware/languageMiddleware.js';
 
 const router = express.Router();
 
-router.get('/', languageMiddleware, authenticate, authorizeAdmin, getAllUsers);
+router.get(
+  '/',
+  languageMiddleware,
+  authenticate,
+  authorizeEmployee,
+  getAllUsers,
+);
 
 router
   .route('/profile')
   .get(languageMiddleware, authenticate, getCurrentUserProfile)
   .put(languageMiddleware, authenticate, updateCurrentUserProfile);
 
-// ADMIN ROUTES
+// EMPLOYEE ROUTES
 router
   .route('/:id')
   .delete(languageMiddleware, authenticate, authorizeAdmin, deleteUserById)

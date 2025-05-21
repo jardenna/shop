@@ -16,6 +16,7 @@ export type InputProps = {
   autoFocus?: boolean;
   checked?: boolean;
   className?: string;
+  disabled?: boolean;
   errorText?: string;
   inputHasNoLabel?: boolean;
   inputInfo?: string;
@@ -55,6 +56,7 @@ const Input = ({
   autoComplete = 'on',
   autoFocus,
   onFocus,
+  disabled,
 }: InputProps) => {
   const inputClassName =
     type === 'checkbox' || type === 'radio'
@@ -87,8 +89,9 @@ const Input = ({
         value={value}
         autoFocus={autoFocus}
         id={id}
+        aria-disabled={disabled}
         aria-invalid={errorText ? true : undefined}
-        aria-required={required || undefined}
+        aria-required={required && !disabled}
         aria-errormessage={errorText ? `err-${id}` : undefined}
         onBlur={onBlur}
         placeholder={placeholder}
@@ -97,6 +100,7 @@ const Input = ({
         autoComplete={autoComplete}
         onInput={handleOnInput}
         onFocus={onFocus}
+        disabled={disabled}
       />
       {inputInfo && <span className="input-info">{inputInfo}</span>}
     </div>

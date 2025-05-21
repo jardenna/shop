@@ -10,7 +10,7 @@ type RadioButtonProps = {
   name: string;
   radioButtonList: OptionType[];
   formInfoText?: string;
-  radioBtnVariant?: string;
+  radioBtnVariant?: RadioBtnVariant;
   onChange: (event: ChangeInputType) => void;
 };
 
@@ -20,12 +20,14 @@ const RadioButton = ({
   onChange,
   name,
   formInfoText,
-  radioBtnVariant = '',
+  radioBtnVariant,
 }: RadioButtonProps) => {
   const { language } = useLanguage();
 
   return (
-    <div className={`${radioBtnVariant} radio-btn-container`}>
+    <div
+      className={`radio-btn-container ${radioBtnVariant ? `radio-${radioBtnVariant}` : ''}`}
+    >
       {radioButtonList.map((radio) => (
         <Input
           type="radio"

@@ -1,4 +1,5 @@
 import { Status } from '../../app/api/apiTypes';
+import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 import Badge from '../badge/Badge';
@@ -23,6 +24,7 @@ const CategoryCardLeft = ({
   onReset,
 }: CategoryCardLeftProps) => {
   const { language } = useLanguage();
+  const { isAdmin } = useAuth();
 
   return (
     <CardContent className="left" heading={null} onReset={onReset}>
@@ -43,6 +45,7 @@ const CategoryCardLeft = ({
         modalHeaderText={language.deleteCategory}
         linkTo={linkTo}
         scheduledDate={scheduledDate}
+        allowedDeleteCategory={!!isAdmin}
       />
     </CardContent>
   );
