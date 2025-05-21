@@ -18,7 +18,7 @@ import PasswordInput from '../formElements/password/PasswordInput';
 import { PasswordRulesProps } from '../formElements/password/PasswordPopupList';
 import './_auth-form.scss';
 
-export type User = {
+type UserFields = {
   email: string;
   password: string;
   confirmPassword?: string;
@@ -32,7 +32,7 @@ type AuthFormProps = RegisterUserProps & {
   legendText: string;
   navigateToText: string;
   submitBtnLabel: string;
-  values: User;
+  values: UserFields;
   isFocused?: boolean;
   onBlur: (event: BlurEventType) => void;
   onChange: (event: ChangeInputType) => void;

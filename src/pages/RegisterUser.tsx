@@ -15,7 +15,7 @@ export type RegisterUserProps = {
   heading?: string;
 };
 
-type InitialState = AuthRequest & {
+export type InitialState = AuthRequest & {
   confirmPassword: string;
 };
 
