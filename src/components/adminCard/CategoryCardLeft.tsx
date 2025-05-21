@@ -24,8 +24,7 @@ const CategoryCardLeft = ({
   onReset,
 }: CategoryCardLeftProps) => {
   const { language } = useLanguage();
-  const { currentUser } = useAuth();
-  const allowedDeleteCategory = !!currentUser?.isAdmin;
+  const { isAdmin } = useAuth();
 
   return (
     <CardContent className="left" heading={null} onReset={onReset}>
@@ -46,7 +45,7 @@ const CategoryCardLeft = ({
         modalHeaderText={language.deleteCategory}
         linkTo={linkTo}
         scheduledDate={scheduledDate}
-        allowedDeleteCategory={allowedDeleteCategory}
+        allowedDeleteCategory={!!isAdmin}
       />
     </CardContent>
   );

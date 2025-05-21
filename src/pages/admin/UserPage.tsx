@@ -33,12 +33,12 @@ const columnKeys: (keyof UserResponse)[] = ['username', 'email', 'role'];
 const UserPage = () => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
-  const { currentUser } = useAuth();
+  const { isAdmin } = useAuth();
   const { data: allUsers, isLoading, refetch } = useGetAllUsersQuery();
   const [deleteUser] = useDeleteUserMutation();
   const [updateUser] = useUpdateUserMutation();
 
-  const allowedEditUser = !!currentUser?.isAdmin;
+  const allowedEditUser = !!isAdmin;
 
   const popupRef = useRef<HTMLDialogElement | null>(null);
   useTrapFocus({ id: 'deleteUser', popupRef });
@@ -106,10 +106,8 @@ const UserPage = () => {
     <article className="page page-medium">
       <PageContainer
         heading={language.users}
-        linkText={allowedEditUser ? language.createNewUser : undefined}
-        linkTo={
-          allowedEditUser ? `/admin/${MainPath.AdminUserCreate}` : undefined
-        }
+        linkText={isAdmin ? language.createNewUser : undefined}
+        linkTo={isAdmin ? `/admin/${MainPath.AdminUserCreate}` : undefined}
         onReset={() => refetch}
       >
         <Table
@@ -127,7 +125,7 @@ const UserPage = () => {
                   <td key={columnKey}>
                     <EditUserInput
                       isAdmin={isAdmin}
-                      allowedEditUser={allowedEditUser}
+                      allowedEditUser={!!isAdmin}
                       onSave={() => {
                         handleSaveEdit();
                       }}

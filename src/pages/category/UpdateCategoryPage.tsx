@@ -12,9 +12,7 @@ const UpdateCategoryPage = () => {
   const params = useParams();
   const navigate = useNavigate();
   const { language } = useLanguage();
-
-  const { currentUser } = useAuth();
-  const allowedDeleteCategory = !!currentUser?.isAdmin;
+  const { isAdmin } = useAuth();
 
   const {
     data: { category } = {},
@@ -45,7 +43,7 @@ const UpdateCategoryPage = () => {
           <CategoryForm
             selectedCategory={category}
             id={params.id || ''}
-            allowedDeleteCategory={allowedDeleteCategory}
+            allowedDeleteCategory={!!isAdmin}
           />
         </PageContainer>
       )}

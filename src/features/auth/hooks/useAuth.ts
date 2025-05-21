@@ -37,6 +37,7 @@ const useAuth = () => {
 
   return {
     currentUser: currentUser?.user,
+    isAdmin: currentUser?.user.isAdmin,
     isLoading,
     error,
     logout: sendLogout,
