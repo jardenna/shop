@@ -1,9 +1,8 @@
 import { useNavigate } from 'react-router';
-import { RoleTypes } from '../app/api/apiTypes';
+import { RoleTypes, UserResponse } from '../app/api/apiTypes';
 import AuthForm from '../components/authForm/AuthForm';
 import validateSignup from '../components/formElements/validation/validateSignup';
 import useMessagePopup from '../components/messagePopup/useMessagePopup';
-import RoleRadioBtn from '../features/admin/users/RoleRadioBtn';
 import { useSignupMutation } from '../features/auth/authApiSlice';
 import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
@@ -12,14 +11,14 @@ import passwordRules from '../utils/passwordRules';
 
 export type RegisterUserProps = {
   navigateTo: string;
+  currentUser?: UserResponse;
   heading?: string;
-  hideAuthBtn?: boolean;
 };
 
 const RegisterUser = ({
   navigateTo,
   heading,
-  hideAuthBtn,
+  currentUser,
 }: RegisterUserProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
@@ -65,26 +64,23 @@ const RegisterUser = ({
   }
 
   return (
-    <>
-      <AuthForm
-        hideAuthBtn={hideAuthBtn}
-        heading={heading}
-        values={values}
-        submitBtnLabel={language.signup}
-        onSubmit={onSubmit}
-        isLoading={isLoading}
-        legendText={language.userInfo}
-        onChange={onChange}
-        errors={errors}
-        onBlur={onBlur}
-        passwordRules={passwordRules}
-        isFocused={isFocused}
-        onFocus={onFocus}
-        navigateTo={MainPath.Login}
-        navigateToText={language.loginHere}
-      />
-      <RoleRadioBtn onChange={onChange} roleValue={values.role} />
-    </>
+    <AuthForm
+      heading={heading}
+      values={values}
+      submitBtnLabel={language.signup}
+      onSubmit={onSubmit}
+      isLoading={isLoading}
+      legendText={language.userInfo}
+      onChange={onChange}
+      errors={errors}
+      onBlur={onBlur}
+      passwordRules={passwordRules}
+      isFocused={isFocused}
+      onFocus={onFocus}
+      navigateTo={MainPath.Login}
+      navigateToText={language.loginHere}
+      currentUser={currentUser}
+    />
   );
 };
 

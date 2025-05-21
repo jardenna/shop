@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router';
+import RoleRadioBtn from '../../features/admin/users/RoleRadioBtn';
 import useLanguage from '../../features/language/useLanguage';
 import { KeyValuePair } from '../../hooks/useFormValidation';
 import { RegisterUserProps } from '../../pages/RegisterUser';
@@ -20,6 +21,7 @@ export type User = {
   email: string;
   password: string;
   confirmPassword?: string;
+  role?: string;
   username?: string;
 };
 
@@ -53,7 +55,7 @@ const AuthForm = ({
   isFocused,
   onFocus,
   navigateToText,
-  hideAuthBtn,
+  currentUser,
 }: AuthFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
@@ -116,7 +118,7 @@ const AuthForm = ({
             />
           )}
         </FieldSet>
-        {!hideAuthBtn && (
+        {!currentUser && (
           <div className="auth-btn">
             <Button
               onClick={() => navigate(`/${navigateTo}`)}
@@ -126,15 +128,13 @@ const AuthForm = ({
             </Button>
           </div>
         )}
-
-        {/* {onSelectRole && (
-          <ToggleSwitch
-            id="role"
-            checked={checked || false}
-            onChange={onSelectRole}
-            labelText="employee"
+        {currentUser?.isAdmin && (
+          <RoleRadioBtn
+            onChange={onChange}
+            roleValue={values.role || ''}
+            radioBtnVariant="radio-card"
           />
-        )} */}
+        )}
       </Form>
     </>
   );
