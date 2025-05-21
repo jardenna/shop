@@ -19,7 +19,7 @@ const router = express.Router();
 router.get(
   '/with-parent',
   authenticate,
-  authorizeAdmin,
+  authorizeEmployee,
   getSubCategoriesWithParent,
 );
 
