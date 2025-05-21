@@ -4,21 +4,24 @@ import IconBtn from '../../../components/IconBtn';
 import EditTableInput, {
   BaseEditTableInput,
 } from '../../../components/sortTable/EditTableInput';
+import EditTableText from '../../../components/sortTable/EditTableText';
 import { IconName } from '../../../types/enums';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import useLanguage from '../../language/useLanguage';
 import RoleRadioBtn from './RoleRadioBtn';
 
-type EditUserInputProps = {
+type EditUserInputProps = BaseEditTableInput & {
+  allowedEditUser: boolean;
   isAdmin: boolean;
   roleValue: RoleTypes;
   showEditInput: boolean;
   onEditBtnClick: () => void;
-} & BaseEditTableInput;
+};
 
 const EditUserInput = ({
   showEditInput,
   id,
+  allowedEditUser,
   onEditChange,
   onSave,
   onCancel,
@@ -30,7 +33,12 @@ const EditUserInput = ({
 }: EditUserInputProps) => {
   const { language } = useLanguage();
 
-  return (
+  return !allowedEditUser ? (
+    <EditTableText
+      cellContent={cellContent}
+      text={getlowerCaseFirstLetter(cellContent, language)}
+    />
+  ) : (
     <div className="edit-cell">
       {showEditInput ? (
         <EditTableInput
@@ -47,13 +55,10 @@ const EditUserInput = ({
         />
       ) : (
         <>
-          <span>
-            {!cellContent.includes('@') ? (
-              getlowerCaseFirstLetter(cellContent, language)
-            ) : (
-              <a href={`mailto:${cellContent}`}>{cellContent}</a>
-            )}
-          </span>
+          <EditTableText
+            cellContent={cellContent}
+            text={getlowerCaseFirstLetter(cellContent, language)}
+          />
           {!isAdmin && (
             <IconBtn
               onClick={onEditBtnClick}
