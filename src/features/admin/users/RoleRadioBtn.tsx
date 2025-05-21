@@ -1,9 +1,10 @@
+import { RoleTypes } from '../../../app/api/apiTypes';
 import RadioButton from '../../../components/formElements/RadioButton';
 import { ChangeInputType } from '../../../types/types';
 import { roleButtonList } from '../../../utils/utils';
 
 type RoleRadioBtnProps = {
-  roleValue: string;
+  roleValue: RoleTypes;
   radioBtnVariant?: string;
   onChange: (event: ChangeInputType) => void;
 };

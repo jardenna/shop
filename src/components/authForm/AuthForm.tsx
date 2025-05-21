@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router';
+import { RoleTypes } from '../../app/api/apiTypes';
 import RoleRadioBtn from '../../features/admin/users/RoleRadioBtn';
 import useLanguage from '../../features/language/useLanguage';
 import { KeyValuePair } from '../../hooks/useFormValidation';
@@ -21,7 +22,7 @@ export type User = {
   email: string;
   password: string;
   confirmPassword?: string;
-  role?: string;
+  role?: RoleTypes;
   username?: string;
 };
 
@@ -128,12 +129,8 @@ const AuthForm = ({
             </Button>
           </div>
         )}
-        {currentUser?.isAdmin && (
-          <RoleRadioBtn
-            onChange={onChange}
-            roleValue={values.role || ''}
-            radioBtnVariant="radio-card"
-          />
+        {currentUser?.isAdmin && values.role && (
+          <RoleRadioBtn onChange={onChange} roleValue={values.role} />
         )}
       </Form>
     </>
