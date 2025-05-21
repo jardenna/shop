@@ -9,6 +9,7 @@ import CardDate from './CardDate';
 
 type CardFooterProps = AdminCard & {
   modalHeaderText: string;
+  allowedDeleteCategory?: boolean;
 };
 
 const CardFooter = ({
@@ -18,11 +19,13 @@ const CardFooter = ({
   primaryActionBtn,
   modalHeaderText,
   scheduledDate,
+  allowedDeleteCategory,
 }: CardFooterProps) => {
   const { language } = useLanguage();
   const secondaryActionBtn: SecondaryActionBtnProps = {
     label: language.cancel,
   };
+
   return (
     <>
       {scheduledDate && (
@@ -33,17 +36,19 @@ const CardFooter = ({
         />
       )}
       <LayoutElement className="footer" ariaLabel="card">
-        <ModalContainer
-          triggerModalBtnContent={language.delete}
-          triggerModalBtnVariant={BtnVariant.Danger}
-          id={id}
-          primaryActionBtn={primaryActionBtn}
-          secondaryActionBtn={secondaryActionBtn}
-          modalSize={SizeVariant.Sm}
-          modalHeaderText={modalHeaderText}
-        >
-          {language.sureToDelete} {name}
-        </ModalContainer>
+        {allowedDeleteCategory && (
+          <ModalContainer
+            triggerModalBtnContent={language.delete}
+            triggerModalBtnVariant={BtnVariant.Danger}
+            id={id}
+            primaryActionBtn={primaryActionBtn}
+            secondaryActionBtn={secondaryActionBtn}
+            modalSize={SizeVariant.Sm}
+            modalHeaderText={modalHeaderText}
+          >
+            {language.sureToDelete} {name}
+          </ModalContainer>
+        )}
         <LinkButton linkTo={linkTo} linkText={language.edit} />
       </LayoutElement>
     </>

@@ -7,6 +7,7 @@ type SharedCategoryInputsProps = StatusInputsProps & {
   categoryNameId: string;
   categoryNameLabelText: string;
   categoryNamevalue: string;
+  allowedDeleteCategory?: boolean;
   onCategoryNameChange: (event: ChangeInputType) => void;
 };
 
@@ -24,12 +25,14 @@ const SharedCategoryInputs = ({
   categoryNameLabelText,
   categoryNameErrorText,
   labelText,
+  allowedDeleteCategory,
 }: SharedCategoryInputsProps) => (
   <>
     <Input
       onChange={onCategoryNameChange}
       value={categoryNamevalue}
       id={categoryNameId}
+      disabled={!allowedDeleteCategory}
       name={categoryNameId}
       labelText={categoryNameLabelText}
       errorText={categoryNameErrorText}
