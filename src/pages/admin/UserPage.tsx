@@ -30,11 +30,6 @@ const tableHeaders: { key: keyof UserResponse; label: string; name: string }[] =
 
 const columnKeys: (keyof UserResponse)[] = ['username', 'email', 'role'];
 
-const radioButtonList = [
-  { value: 'Employee', label: 'employee' },
-  { value: 'User', label: 'user' },
-];
-
 const UserPage = () => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
@@ -109,7 +104,7 @@ const UserPage = () => {
       <PageContainer
         heading={language.users}
         linkText={language.createNewUser}
-        linkTo={`/admin/${MainPath.AdminSubCategoryCreate}`}
+        linkTo={`/admin/${MainPath.AdminUserCreate}`}
         onReset={() => refetch}
       >
         <Table
@@ -126,7 +121,6 @@ const UserPage = () => {
                 {columnKeys.map((columnKey) => (
                   <td key={columnKey}>
                     <EditUserInput
-                      radioButtonList={radioButtonList}
                       isAdmin={isAdmin}
                       onSave={() => {
                         handleSaveEdit();

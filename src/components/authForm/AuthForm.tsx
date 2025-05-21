@@ -1,7 +1,9 @@
 import { useNavigate } from 'react-router';
+import { RoleTypes } from '../../app/api/apiTypes';
+import RoleRadioBtn from '../../features/admin/users/RoleRadioBtn';
 import useLanguage from '../../features/language/useLanguage';
 import { KeyValuePair } from '../../hooks/useFormValidation';
-import { MainPath } from '../../layout/nav/enums';
+import { RegisterUserProps } from '../../pages/RegisterUser';
 import { BtnVariant } from '../../types/enums';
 import {
   BlurEventType,
@@ -16,22 +18,21 @@ import PasswordInput from '../formElements/password/PasswordInput';
 import { PasswordRulesProps } from '../formElements/password/PasswordPopupList';
 import './_auth-form.scss';
 
-export type User = {
+type UserFields = {
   email: string;
   password: string;
   confirmPassword?: string;
+  role?: RoleTypes;
   username?: string;
 };
 
-type AuthFormProps = {
+type AuthFormProps = RegisterUserProps & {
   errors: KeyValuePair<string>;
-  heading: string;
   isLoading: boolean;
   legendText: string;
-  navigateTo: MainPath;
   navigateToText: string;
   submitBtnLabel: string;
-  values: User;
+  values: UserFields;
   isFocused?: boolean;
   onBlur: (event: BlurEventType) => void;
   onChange: (event: ChangeInputType) => void;
@@ -55,13 +56,14 @@ const AuthForm = ({
   isFocused,
   onFocus,
   navigateToText,
+  currentUser,
 }: AuthFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
 
   return (
     <>
-      <h1>{heading}</h1>
+      {heading && <h1>{heading}</h1>}
       <Form
         submitBtnLabel={submitBtnLabel}
         onSubmit={onSubmit}
@@ -117,14 +119,19 @@ const AuthForm = ({
             />
           )}
         </FieldSet>
-        <div className="auth-btn">
-          <Button
-            onClick={() => navigate(`/${navigateTo}`)}
-            variant={BtnVariant.Ghost}
-          >
-            {navigateToText}
-          </Button>
-        </div>
+        {!currentUser && (
+          <div className="auth-btn">
+            <Button
+              onClick={() => navigate(`/${navigateTo}`)}
+              variant={BtnVariant.Ghost}
+            >
+              {navigateToText}
+            </Button>
+          </div>
+        )}
+        {currentUser?.isAdmin && values.role && (
+          <RoleRadioBtn onChange={onChange} roleValue={values.role} />
+        )}
       </Form>
     </>
   );

@@ -5,6 +5,7 @@ import { MainPath } from '../layout/nav/enums';
 import About from '../pages/About';
 import MyAccount from '../pages/account/MyAccount';
 import Orders from '../pages/account/Orders';
+import CreateUserPage from '../pages/admin/CreateUserPage';
 import Dashboard from '../pages/admin/Dashboard';
 import OrderPage from '../pages/admin/OrderPage';
 import ProfilePage from '../pages/admin/ProfilePage';
@@ -87,6 +88,10 @@ const routeConfig = createBrowserRouter([
           {
             path: MainPath.Users,
             element: <UserPage />,
+          },
+          {
+            path: MainPath.AdminUserCreate,
+            element: <CreateUserPage />,
           },
           {
             path: MainPath.AdminCategoryCreate,

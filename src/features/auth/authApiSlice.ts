@@ -6,16 +6,20 @@ import {
   OmittedUserRequest,
 } from '../../app/api/apiTypes';
 import { authEndpoints } from '../../app/endpoints';
+import { store } from '../../app/store';
 import { logout } from './authSlice';
 
 export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     signup: builder.mutation<AuthResponse, AuthRequest>({
-      query: (user) => ({
-        url: authEndpoints.register,
-        method: 'POST',
-        body: user,
-      }),
+      query: (user) => {
+        const isAdmin = store.getState().auth.user?.user.isAdmin;
+        return {
+          url: isAdmin ? authEndpoints.create : authEndpoints.register,
+          method: 'POST',
+          body: user,
+        };
+      },
       invalidatesTags: [TagTypesEnum.Auth],
     }),
     login: builder.mutation<AuthResponse, OmittedUserRequest>({

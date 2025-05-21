@@ -9,6 +9,7 @@ import Nav from '../../../layout/nav/Nav';
 import { adminNavList } from '../../../layout/nav/navList';
 import { IconName } from '../../../types/enums';
 import { useLogoutMutation } from '../../auth/authApiSlice';
+import useAuth from '../../auth/hooks/useAuth';
 import useLanguage from '../../language/useLanguage';
 import AdminHeader from './AdminHeader';
 
@@ -16,6 +17,7 @@ const AdminLayout = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const [logout] = useLogoutMutation();
+  const { currentUser } = useAuth();
 
   const handleLogout = () => {
     logout();
@@ -42,6 +44,9 @@ const AdminLayout = () => {
         ariaLabel={language.main}
         onLogout={handleLogout}
         btnLabel={language.logout}
+        welcomeMessage={
+          currentUser ? `${language.welcome} ${currentUser.username}` : null
+        }
       />
       <main className="main">
         <aside className={`aside ${isMenuCollapsed ? 'collapsed' : ''}`}>
