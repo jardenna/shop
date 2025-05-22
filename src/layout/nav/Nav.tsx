@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import IconBtn from '../../components/IconBtn';
 import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import './_nav.scss';
@@ -22,16 +22,32 @@ export type ActionBtnProps = {
 type NavProps = {
   navList: NavItemsProps[];
   className?: string;
-  iconBtn?: ReactNode;
+  isMenuCollapsed?: boolean;
+  onCollapseMenu?: () => void;
 };
 
-const Nav = ({ navList, iconBtn, className = '' }: NavProps) => {
+const Nav = ({
+  navList,
+  isMenuCollapsed,
+  onCollapseMenu,
+  className = '',
+}: NavProps) => {
   const { language } = useLanguage();
 
   return (
     <div className={`main-nav ${className}`}>
       <NavItemList navItemsList={navList} ariaLabel={language.main} />
-      {iconBtn && iconBtn}
+      {onCollapseMenu && (
+        <IconBtn
+          onClick={onCollapseMenu}
+          ariaLabel={
+            isMenuCollapsed ? language.expandMenu : language.collapseMenu
+          }
+          iconName={IconName.ChevronLeft}
+          title="chevron"
+          ariaExpanded={!isMenuCollapsed}
+        />
+      )}
     </div>
   );
 };

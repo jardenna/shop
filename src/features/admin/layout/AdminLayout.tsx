@@ -1,5 +1,4 @@
 import { Outlet, useNavigate } from 'react-router';
-import IconBtn from '../../../components/IconBtn';
 import SkipLink from '../../../components/skipLinks/SkipLinks';
 import useLocalStorage, {
   localStorageKeys,
@@ -7,7 +6,6 @@ import useLocalStorage, {
 import { MainPath } from '../../../layout/nav/enums';
 import Nav from '../../../layout/nav/Nav';
 import { adminNavList } from '../../../layout/nav/navList';
-import { IconName } from '../../../types/enums';
 import { useLogoutMutation } from '../../auth/authApiSlice';
 import useAuth from '../../auth/hooks/useAuth';
 import useLanguage from '../../language/useLanguage';
@@ -53,17 +51,8 @@ const AdminLayout = () => {
           <Nav
             navList={adminNavList}
             className="admin-nav"
-            iconBtn={
-              <IconBtn
-                onClick={handleCollapseMenu}
-                ariaLabel={
-                  isMenuCollapsed ? language.expandMenu : language.collapseMenu
-                }
-                iconName={IconName.ChevronLeft}
-                title="chevron"
-                ariaExpanded={!isMenuCollapsed}
-              />
-            }
+            isMenuCollapsed={isMenuCollapsed}
+            onCollapseMenu={handleCollapseMenu}
           />
           link to shop
         </aside>
