@@ -26,8 +26,10 @@ const Layout = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { language, switchLanguage, selectedLanguage } = useLanguage();
+  const { isMobileSize } = useMediaQuery();
+
+  // Hooks
   const { currentUser } = useAuth();
-  const { isTabletSize } = useMediaQuery();
   const { currencyOptions, onChangePrice, exchangeRate } = useCurrency();
   const [logout] = useLogoutMutation();
 
@@ -125,7 +127,7 @@ const Layout = () => {
   return (
     <div className="main-container">
       <MetaTags />
-      {!isTabletSize && <SkipLink />}
+      {!isMobileSize && <SkipLink />}
       <Header
         ariaLabel={language.main}
         userDropdownList={isEmployee ? employeeDropdownList : userDropdownList}

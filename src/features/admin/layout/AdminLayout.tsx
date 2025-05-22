@@ -17,7 +17,7 @@ const AdminLayout = () => {
   const { language } = useLanguage();
   const [logout] = useLogoutMutation();
   const { currentUser } = useAuth();
-  const { isTabletSize } = useMediaQuery();
+  const { isMobileSize } = useMediaQuery();
 
   const handleLogout = () => {
     logout();
@@ -35,7 +35,7 @@ const AdminLayout = () => {
 
   return (
     <div className="main-container admin-container">
-      {!isTabletSize && <SkipLink />}
+      {!isMobileSize && <SkipLink />}
       <AdminHeader
         ariaLabel={language.main}
         onLogout={handleLogout}
@@ -43,6 +43,7 @@ const AdminLayout = () => {
         welcomeMessage={
           currentUser ? `${language.welcome} ${currentUser.username}` : null
         }
+        isMobileSize={isMobileSize}
       />
       <main className="main">
         <aside className={`aside ${isMenuCollapsed ? 'collapsed' : ''}`}>

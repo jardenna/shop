@@ -26,12 +26,14 @@
 
   .main-header {
     height: $header-height;
+    display: flex;
+    align-items: center;
 
-    // .btn {
-    //   max-width: rem(100px);
-    //   padding-block: 12px;
-    //   min-height: auto;
-    // }
+    .btn {
+      max-width: rem(100px);
+      padding-block: 12px;
+      min-height: auto;
+    }
   }
 
   .page-header {

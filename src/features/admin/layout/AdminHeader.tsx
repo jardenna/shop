@@ -1,12 +1,12 @@
-import IconBtn from '../../../components/IconBtn';
+import Button from '../../../components/Button';
 import Logo from '../../../layout/header/Logo';
 import LayoutElement from '../../../layout/LayoutElement';
 import { MainPath } from '../../../layout/nav/enums';
-import { IconName } from '../../../types/enums';
 
 type AdminHeaderProps = {
   ariaLabel: string;
   btnLabel: string;
+  isMobileSize: boolean;
   welcomeMessage: string | null;
   onLogout: () => void;
 };
@@ -14,23 +14,21 @@ const AdminHeader = ({
   ariaLabel,
   onLogout,
   btnLabel,
+  isMobileSize,
   welcomeMessage,
 }: AdminHeaderProps) => (
   <LayoutElement as="header" className="main-header" ariaLabel={ariaLabel}>
     <div className="container main-header-container">
-      {/* <div className="menu-burger">
+      <div className="menu-burger">
         <span className="menu-burger-item" />
-      </div> */}
-      <Logo linkTo={`/${MainPath.Admin}`} />
-      <div className="welcome-message-container">
-        <span>{welcomeMessage && welcomeMessage}</span>
-        <IconBtn
-          onClick={onLogout}
-          iconName={IconName.Logout}
-          title={btnLabel}
-          ariaLabel={btnLabel}
-        />
       </div>
+      <Logo linkTo={`/${MainPath.Admin}`} />
+      {!isMobileSize && (
+        <>
+          <span>{welcomeMessage && welcomeMessage}</span>
+          <Button onClick={onLogout}>{btnLabel}</Button>
+        </>
+      )}
     </div>
   </LayoutElement>
 );
