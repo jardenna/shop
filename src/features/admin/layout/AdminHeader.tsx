@@ -1,7 +1,8 @@
-import Button from '../../../components/Button';
+import IconBtn from '../../../components/IconBtn';
 import Logo from '../../../layout/header/Logo';
 import LayoutElement from '../../../layout/LayoutElement';
 import { MainPath } from '../../../layout/nav/enums';
+import { IconName } from '../../../types/enums';
 
 type AdminHeaderProps = {
   ariaLabel: string;
@@ -17,9 +18,19 @@ const AdminHeader = ({
 }: AdminHeaderProps) => (
   <LayoutElement as="header" className="main-header" ariaLabel={ariaLabel}>
     <div className="container main-header-container">
+      <div className="menu-burger">
+        <span className="menu-burger-item" />
+      </div>
       <Logo linkTo={`/${MainPath.Admin}`} />
-      {welcomeMessage && welcomeMessage}
-      <Button onClick={onLogout}>{btnLabel}</Button>
+      <div className="welcome-message-container">
+        <span>{welcomeMessage && welcomeMessage}</span>
+        <IconBtn
+          onClick={onLogout}
+          iconName={IconName.Logout}
+          title={btnLabel}
+          ariaLabel={btnLabel}
+        />
+      </div>
     </div>
   </LayoutElement>
 );
