@@ -4,23 +4,18 @@ import Button from '../Button';
 import { DropdownItem } from './DropdownBtn';
 
 type DropdownListProps = {
-  ariaControls: string;
   dropdownList: DropdownItem[];
   defaultIndex?: number;
 };
 
-const DropdownList = ({
-  dropdownList,
-  defaultIndex,
-  ariaControls,
-}: DropdownListProps) => {
+const DropdownList = ({ dropdownList, defaultIndex }: DropdownListProps) => {
   const { selectedListItemIndex, listRefs } = useKeyboardListNav({
     defaultIndex,
     dropdownList,
   });
 
   return (
-    <ul id={ariaControls}>
+    <ul>
       {dropdownList.map(({ label, onClick, icon, btnVariant }, index) => (
         <li
           key={label}
