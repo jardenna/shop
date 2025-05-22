@@ -29,10 +29,10 @@ const Nav = ({ navList, iconBtn, className = '' }: NavProps) => {
   const { language } = useLanguage();
 
   return (
-    <nav className={`main-nav ${className}`}>
+    <div className={`main-nav ${className}`}>
       <NavItemList navItemsList={navList} ariaLabel={language.main} />
       {iconBtn && iconBtn}
-    </nav>
+    </div>
   );
 };
 
