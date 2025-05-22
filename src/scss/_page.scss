@@ -26,6 +26,8 @@
 
   .main-header {
     height: $header-height;
+    display: flex;
+    align-items: center;
 
     .btn {
       max-width: rem(100px);
