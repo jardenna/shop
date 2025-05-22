@@ -9,6 +9,7 @@ import useAuth from '../features/auth/hooks/useAuth';
 import useCurrency from '../features/currency/useCurrency';
 import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
+import useMediaQuery from '../hooks/useMediaQuery ';
 import { IconName } from '../types/enums';
 import { OptionType } from '../types/types';
 import Header from './header/Header';
@@ -25,13 +26,11 @@ const Layout = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { language, switchLanguage, selectedLanguage } = useLanguage();
-
-  // Hooks
   const { currentUser } = useAuth();
+  const { isTabletSize } = useMediaQuery();
   const { currencyOptions, onChangePrice, exchangeRate } = useCurrency();
   const [logout] = useLogoutMutation();
 
-  // Helper functions
   const handleLogout = () => {
     logout();
     navigate(MainPath.Root);
@@ -126,7 +125,7 @@ const Layout = () => {
   return (
     <div className="main-container">
       <MetaTags />
-      <SkipLink />
+      {!isTabletSize && <SkipLink />}
       <Header
         ariaLabel={language.main}
         userDropdownList={isEmployee ? employeeDropdownList : userDropdownList}

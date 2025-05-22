@@ -3,6 +3,7 @@ import SkipLink from '../../../components/skipLinks/SkipLinks';
 import useLocalStorage, {
   localStorageKeys,
 } from '../../../hooks/useLocalStorage';
+import useMediaQuery from '../../../hooks/useMediaQuery ';
 import { MainPath } from '../../../layout/nav/enums';
 import Nav from '../../../layout/nav/Nav';
 import { adminNavList } from '../../../layout/nav/navList';
@@ -16,6 +17,7 @@ const AdminLayout = () => {
   const { language } = useLanguage();
   const [logout] = useLogoutMutation();
   const { currentUser } = useAuth();
+  const { isTabletSize } = useMediaQuery();
 
   const handleLogout = () => {
     logout();
@@ -26,18 +28,14 @@ const AdminLayout = () => {
     localStorageKeys.menuCollapsed,
     false,
   );
-  // const { isTabletSize } = useMediaQuery();
 
-  // useEffect(() => {
-  //   setIsMenuCollapsed(isTabletSize);
-  // }, [isTabletSize]);
   const handleCollapseMenu = () => {
     setIsMenuCollapsed(!isMenuCollapsed);
   };
 
   return (
     <div className="main-container admin-container">
-      <SkipLink />
+      {!isTabletSize && <SkipLink />}
       <AdminHeader
         ariaLabel={language.main}
         onLogout={handleLogout}
