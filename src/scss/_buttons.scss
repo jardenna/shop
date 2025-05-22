@@ -31,6 +31,10 @@ a[class^='btn-'],
   letter-spacing: rem(0.5px);
   outline: transparent;
 
+  @include max-size($small) {
+    font-size: rem(14px);
+  }
+
   @include transition;
 
   &::after {
