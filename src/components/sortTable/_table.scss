@@ -87,7 +87,7 @@ table {
   th,
   td {
     padding: 4px 12px;
-    word-wrap: break-word;
+    white-space: nowrap;
   }
 
   tr {
@@ -164,11 +164,6 @@ table {
   width: 100%;
   margin-bottom: 12px;
   border: 1px solid $color-border;
-
-  @include max-size($medium) {
-    max-height: rem(400px);
-    overflow: auto;
-  }
 
   table {
     th {
