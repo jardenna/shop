@@ -54,7 +54,7 @@ const AdminLayout = () => {
             ariaLabel={
               !isPanelHidden ? language.expandMenu : language.collapseMenu
             }
-            className={isPanelHidden ? 'test1' : ''}
+            className={isPanelHidden ? 'hidden' : ''}
             onToggleHidden={onTogglePanel}
             currentUser={currentUser || null}
           />
