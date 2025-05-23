@@ -12,6 +12,8 @@ import Nav from '../layout/nav/Nav';
 import { adminNavList } from '../layout/nav/navList';
 import { BtnVariant } from '../types/enums';
 import AdminHeader from './AdminHeader';
+import Aside from './Aside';
+import MobileNav from './MobileNav';
 
 const AdminLayout = () => {
   const navigate = useNavigate();
@@ -51,6 +53,14 @@ const AdminLayout = () => {
       <main className="main">
         {isMobileSize ? (
           <>
+            <MobileNav
+              isPanelHidden={isPanelHidden}
+              ariaLabel={
+                !isPanelHidden ? language.expandMenu : language.collapseMenu
+              }
+              className={isPanelHidden ? 'test1' : ''}
+              onTogglePanel={onTogglePanel}
+            />
             <Button
               className="menu-burger"
               variant={BtnVariant.Ghost}
@@ -68,15 +78,10 @@ const AdminLayout = () => {
             />
           </>
         ) : (
-          <aside className={`aside ${isMenuCollapsed ? 'collapsed' : ''}`}>
-            <Nav
-              navList={adminNavList}
-              className="admin-nav"
-              isMenuCollapsed={isMenuCollapsed}
-              onCollapseMenu={handleCollapseMenu}
-            />
-            link to shop
-          </aside>
+          <Aside
+            isMenuCollapsed={isMenuCollapsed}
+            onCollapseMenu={handleCollapseMenu}
+          />
         )}
 
         <div id="main" className="admin container">
