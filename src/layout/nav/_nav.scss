@@ -40,7 +40,7 @@
 
     @include transition;
 
-    &.hidden {
+    &.shown {
       left: 0;
       width: 100%;
     }

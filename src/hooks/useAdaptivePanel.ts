@@ -6,19 +6,19 @@ import useKeyPress from './useKeyPress';
 
 const useAdaptivePanel = () => {
   const location = useLocation();
-  const [isPanelHidden, setIsPanelHidden] = useState(true);
+  const [isPanelShown, setIsPanelShown] = useState(false);
 
+  const handleHidePanel = () => {
+    setIsPanelShown(false);
+  };
   useKeyPress(() => {
-    setIsPanelHidden(true);
+    handleHidePanel();
   }, [KeyCode.Esc]);
+
   const panelRef = useRef<HTMLDivElement>(null);
 
   const handleTogglePanel = () => {
-    setIsPanelHidden(!isPanelHidden);
-  };
-
-  const handleHidePanel = () => {
-    setIsPanelHidden(true);
+    setIsPanelShown(!isPanelShown);
   };
 
   useClickOutside(panelRef, () => {
@@ -26,12 +26,13 @@ const useAdaptivePanel = () => {
   });
 
   useEffect(() => {
-    setIsPanelHidden(false);
+    handleHidePanel();
   }, [location]);
 
   return {
-    isPanelHidden,
+    isPanelShown,
     onTogglePanel: handleTogglePanel,
+    panelRef,
   };
 };
 

@@ -33,7 +33,7 @@ const AdminLayout = () => {
     setIsMenuCollapsed(!isMenuCollapsed);
   };
 
-  const { isPanelHidden, onTogglePanel } = useAdaptivePanel();
+  const { isPanelShown, onTogglePanel } = useAdaptivePanel();
 
   return (
     <div className="main-container admin-container">
@@ -50,11 +50,11 @@ const AdminLayout = () => {
       <main className="main">
         {isMobileSize ? (
           <MobileNav
-            isHidden={isPanelHidden}
+            isHidden={isPanelShown}
             ariaLabel={
-              !isPanelHidden ? language.expandMenu : language.collapseMenu
+              !isPanelShown ? language.expandMenu : language.collapseMenu
             }
-            className={isPanelHidden ? 'hidden' : ''}
+            className={isPanelShown ? 'shown' : ''}
             onToggleHidden={onTogglePanel}
             currentUser={currentUser || null}
           />
