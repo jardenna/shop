@@ -4,8 +4,8 @@ $burger-placement: -8px;
 
 %burger-basic {
   width: rem(30px);
-  height: 2px;
-  background-color: red;
+  height: rem(3px);
+  background-color: $color-red-30;
   position: absolute;
 }
 
@@ -28,7 +28,7 @@ $burger-placement: -8px;
     &::before,
     &::after {
       content: '';
-      display: block;
+      display: flex;
 
       @extend %burger-basic;
       @include transition($time: 0.6s);
