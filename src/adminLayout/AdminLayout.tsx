@@ -49,7 +49,7 @@ const AdminLayout = () => {
       <main className="main">
         {isMobileSize ? (
           <MobileNav
-            isHidden={isPanelShown}
+            isShown={isPanelShown}
             ariaLabel={
               !isPanelShown ? language.expandMenu : language.collapseMenu
             }
@@ -60,7 +60,7 @@ const AdminLayout = () => {
           />
         ) : (
           <Aside
-            isHidden={isMenuCollapsed}
+            isShown={isMenuCollapsed}
             onToggleHidden={handleCollapseMenu}
             ariaLabel={
               isMenuCollapsed ? language.expandMenu : language.collapseMenu

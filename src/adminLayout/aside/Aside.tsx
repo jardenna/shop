@@ -7,15 +7,15 @@ type OmittedAdminNavProps = Omit<AdminNavProps, 'className' | 'ariaControls'>;
 
 const Aside = ({
   onToggleHidden,
-  isHidden,
+  isShown,
   ariaLabel,
   currentUser,
 }: OmittedAdminNavProps) => (
-  <aside className={`aside ${isHidden ? 'collapsed' : ''}`}>
+  <aside className={`aside ${isShown ? 'collapsed' : ''}`}>
     <NavContainer
       navList={adminNavList}
       className="admin-nav"
-      isMenuCollapsed={isHidden}
+      isMenuCollapsed={isShown}
       onCollapseMenu={onToggleHidden}
       ariaLabel={ariaLabel}
       currentUser={currentUser}

@@ -9,14 +9,14 @@ export type AdminNavProps = {
   ariaLabel: string;
   className: string;
   currentUser: UserResponse | null;
-  isHidden: boolean;
+  isShown: boolean;
   onToggleHidden: () => void;
 };
 
 const MobileNav = ({
   ariaLabel,
   onToggleHidden,
-  isHidden,
+  isShown,
   className,
   currentUser,
   ariaControls,
@@ -25,7 +25,7 @@ const MobileNav = ({
     <Button
       className="menu-burger"
       variant={BtnVariant.Ghost}
-      ariaExpanded={isHidden}
+      ariaExpanded={isShown}
       onClick={onToggleHidden}
       ariaLabel={ariaLabel}
       ariaHasPopup
