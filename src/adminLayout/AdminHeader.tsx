@@ -1,7 +1,7 @@
-import Button from '../../../components/Button';
-import Logo from '../../../layout/header/Logo';
-import LayoutElement from '../../../layout/LayoutElement';
-import { MainPath } from '../../../layout/nav/enums';
+import Button from '../components/Button';
+import Logo from '../layout/header/Logo';
+import LayoutElement from '../layout/LayoutElement';
+import { MainPath } from '../layout/nav/enums';
 
 type AdminHeaderProps = {
   ariaLabel: string;

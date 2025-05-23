@@ -1,18 +1,16 @@
 import { Outlet, useNavigate } from 'react-router';
-import Button from '../../../components/Button';
-import SkipLink from '../../../components/skipLinks/SkipLinks';
-import useAdaptivePanel from '../../../hooks/useAdaptivePanel';
-import useLocalStorage, {
-  localStorageKeys,
-} from '../../../hooks/useLocalStorage';
-import useMediaQuery from '../../../hooks/useMediaQuery ';
-import { MainPath } from '../../../layout/nav/enums';
-import Nav from '../../../layout/nav/Nav';
-import { adminNavList } from '../../../layout/nav/navList';
-import { BtnVariant } from '../../../types/enums';
-import { useLogoutMutation } from '../../auth/authApiSlice';
-import useAuth from '../../auth/hooks/useAuth';
-import useLanguage from '../../language/useLanguage';
+import Button from '../components/Button';
+import SkipLink from '../components/skipLinks/SkipLinks';
+import { useLogoutMutation } from '../features/auth/authApiSlice';
+import useAuth from '../features/auth/hooks/useAuth';
+import useLanguage from '../features/language/useLanguage';
+import useAdaptivePanel from '../hooks/useAdaptivePanel';
+import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
+import useMediaQuery from '../hooks/useMediaQuery ';
+import { MainPath } from '../layout/nav/enums';
+import Nav from '../layout/nav/Nav';
+import { adminNavList } from '../layout/nav/navList';
+import { BtnVariant } from '../types/enums';
 import AdminHeader from './AdminHeader';
 
 const AdminLayout = () => {
