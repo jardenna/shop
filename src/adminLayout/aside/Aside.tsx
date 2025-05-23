@@ -1,21 +1,24 @@
 import NavContainer from '../../layout/nav/NavContainer';
 import { adminNavList } from '../../layout/nav/navList';
+import { AdminNavProps } from '../MobileNav';
 import './_aside.scss';
 
-type AsideProps = {
-  ariaLabel: string;
-  isMenuCollapsed: boolean;
-  onCollapseMenu: () => void;
-};
+export type OmittedUserRequest = Omit<AdminNavProps, 'className'>;
 
-const Aside = ({ onCollapseMenu, isMenuCollapsed, ariaLabel }: AsideProps) => (
-  <aside className={`aside ${isMenuCollapsed ? 'collapsed' : ''}`}>
+const Aside = ({
+  onToggleHidden,
+  isHidden,
+  ariaLabel,
+  currentUser,
+}: OmittedUserRequest) => (
+  <aside className={`aside ${isHidden ? 'collapsed' : ''}`}>
     <NavContainer
       navList={adminNavList}
       className="admin-nav"
-      isMenuCollapsed={isMenuCollapsed}
-      onCollapseMenu={onCollapseMenu}
+      isMenuCollapsed={isHidden}
+      onCollapseMenu={onToggleHidden}
       ariaLabel={ariaLabel}
+      currentUser={currentUser}
     />
   </aside>
 );

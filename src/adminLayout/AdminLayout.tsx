@@ -50,20 +50,22 @@ const AdminLayout = () => {
       <main className="main">
         {isMobileSize ? (
           <MobileNav
-            isPanelHidden={isPanelHidden}
+            isHidden={isPanelHidden}
             ariaLabel={
               !isPanelHidden ? language.expandMenu : language.collapseMenu
             }
             className={isPanelHidden ? 'test1' : ''}
-            onTogglePanel={onTogglePanel}
+            onToggleHidden={onTogglePanel}
+            currentUser={currentUser || null}
           />
         ) : (
           <Aside
-            isMenuCollapsed={isMenuCollapsed}
-            onCollapseMenu={handleCollapseMenu}
+            isHidden={isMenuCollapsed}
+            onToggleHidden={handleCollapseMenu}
             ariaLabel={
               isMenuCollapsed ? language.expandMenu : language.collapseMenu
             }
+            currentUser={currentUser || null}
           />
         )}
 
