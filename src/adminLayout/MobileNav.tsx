@@ -5,6 +5,7 @@ import { adminNavList } from '../layout/nav/navList';
 import { BtnVariant } from '../types/enums';
 
 export type AdminNavProps = {
+  ariaControls: string;
   ariaLabel: string;
   className: string;
   currentUser: UserResponse | null;
@@ -18,6 +19,7 @@ const MobileNav = ({
   isHidden,
   className,
   currentUser,
+  ariaControls,
 }: AdminNavProps) => (
   <>
     <Button
@@ -26,10 +28,13 @@ const MobileNav = ({
       ariaExpanded={isHidden}
       onClick={onToggleHidden}
       ariaLabel={ariaLabel}
+      ariaHasPopup
+      ariaControls={ariaControls}
     >
       <span className="menu-burger-item" aria-hidden={true} />
     </Button>
     <NavContainer
+      ariaControls={ariaControls}
       navList={adminNavList}
       className={`admin-nav ${className}`}
       currentUser={currentUser}

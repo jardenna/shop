@@ -11,6 +11,7 @@ const useAdaptivePanel = () => {
   const handleHidePanel = () => {
     setIsPanelShown(false);
   };
+
   useKeyPress(() => {
     handleHidePanel();
   }, [KeyCode.Esc]);

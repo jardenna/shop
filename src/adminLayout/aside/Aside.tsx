@@ -3,7 +3,7 @@ import { adminNavList } from '../../layout/nav/navList';
 import { AdminNavProps } from '../MobileNav';
 import './_aside.scss';
 
-type OmittedAdminNavProps = Omit<AdminNavProps, 'className'>;
+type OmittedAdminNavProps = Omit<AdminNavProps, 'className' | 'ariaControls'>;
 
 const Aside = ({
   onToggleHidden,

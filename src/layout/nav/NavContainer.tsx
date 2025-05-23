@@ -15,6 +15,7 @@ export type ActionBtnProps = {
 
 type NavContainerProps = {
   navList: NavItemsProps[];
+  ariaControls?: string;
   ariaLabel?: string;
   className?: string;
   currentUser?: UserResponse | null;
@@ -29,11 +30,12 @@ const NavContainer = ({
   className = '',
   ariaLabel,
   currentUser,
+  ariaControls,
 }: NavContainerProps) => {
   const { language } = useLanguage();
 
   return (
-    <div className={className}>
+    <div className={className} id={ariaControls}>
       <Nav navItemsList={navList} ariaLabel={language.main} />
       {onCollapseMenu && (
         <IconBtn

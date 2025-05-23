@@ -18,22 +18,21 @@ const AdminLayout = () => {
   const [logout] = useLogoutMutation();
   const { currentUser } = useAuth();
   const { isMobileSize } = useMediaQuery();
-
-  const handleLogout = () => {
-    logout();
-    navigate(MainPath.Root);
-  };
+  const { isPanelShown, onTogglePanel } = useAdaptivePanel();
 
   const [isMenuCollapsed, setIsMenuCollapsed] = useLocalStorage(
     localStorageKeys.menuCollapsed,
     false,
   );
 
+  const handleLogout = () => {
+    logout();
+    navigate(MainPath.Root);
+  };
+
   const handleCollapseMenu = () => {
     setIsMenuCollapsed(!isMenuCollapsed);
   };
-
-  const { isPanelShown, onTogglePanel } = useAdaptivePanel();
 
   return (
     <div className="main-container admin-container">
@@ -57,6 +56,7 @@ const AdminLayout = () => {
             className={isPanelShown ? 'shown' : ''}
             onToggleHidden={onTogglePanel}
             currentUser={currentUser || null}
+            ariaControls="nav"
           />
         ) : (
           <Aside
