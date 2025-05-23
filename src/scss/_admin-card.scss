@@ -30,17 +30,17 @@
   }
 }
 
-.card-top-line {
-  display: flex;
-  height: 4px;
-  width: 100%;
-  background-color: $color-gray-80;
-}
-
 .admin-card {
   background-color: $color-white;
   flex: 1;
   padding-top: 42px;
+
+  .card-top-line {
+    display: flex;
+    height: 4px;
+    width: 100%;
+    background-color: $color-gray-80;
+  }
 
   .admin-card-content {
     height: 100%;

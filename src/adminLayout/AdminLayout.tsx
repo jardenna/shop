@@ -7,6 +7,7 @@ import useAdaptivePanel from '../hooks/useAdaptivePanel';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
 import useMediaQuery from '../hooks/useMediaQuery ';
 import { MainPath } from '../layout/nav/enums';
+import './_admin-layout.scss';
 import AdminHeader from './AdminHeader';
 import Aside from './aside/Aside';
 import MobileNav from './MobileNav';
