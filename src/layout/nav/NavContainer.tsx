@@ -3,16 +3,8 @@ import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import './_nav.scss';
-import { LinkText } from './enums';
-import Nav from './Nav';
+import Nav, { NavItemsProps } from './Nav';
 import NavUser from './NavUser';
-
-export type NavItemsProps = {
-  linkText: LinkText;
-  path: string;
-  iconName?: IconName;
-  iconSize?: string;
-};
 
 export type ActionBtnProps = {
   ariaLabel?: string;

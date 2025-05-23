@@ -1,6 +1,6 @@
 import { IconName } from '../../types/enums';
 import { LinkText, MainPath } from './enums';
-import { NavItemsProps } from './NavContainer';
+import { NavItemsProps } from './Nav';
 
 const navList: NavItemsProps[] = [
   {

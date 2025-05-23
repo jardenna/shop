@@ -1,6 +1,14 @@
+import { IconName } from '../../types/enums';
 import LayoutElement from '../LayoutElement';
-import { NavItemsProps } from './NavContainer';
+import { LinkText } from './enums';
 import NavItem from './NavItem';
+
+export type NavItemsProps = {
+  linkText: LinkText;
+  path: string;
+  iconName?: IconName;
+  iconSize?: string;
+};
 
 type NavProps = {
   ariaLabel: string;
