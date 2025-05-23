@@ -33,6 +33,21 @@
 .admin-nav {
   flex-grow: 1;
 
+  @include max-size($small) {
+    position: fixed;
+    background-color: $color-white;
+    height: 100%;
+    left: -400px;
+    z-index: 10;
+
+    @include transition;
+
+    &.test1 {
+      left: 0;
+      width: 100%;
+    }
+  }
+
   .btn-ghost {
     position: absolute;
     z-index: 3;

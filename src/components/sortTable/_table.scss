@@ -91,7 +91,7 @@ table {
   }
 
   tr {
-    @include min-size($medium) {
+    @include min-size($large) {
       display: table;
       width: 100%;
       table-layout: fixed;
@@ -132,7 +132,7 @@ table {
       }
     }
 
-    @include max-size($medium) {
+    @include max-size($large) {
       display: table-row-group;
     }
   }

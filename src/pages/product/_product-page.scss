@@ -4,6 +4,10 @@
   display: flex;
   gap: 8px;
   align-items: center;
+
+  @include max-size($medium) {
+    flex-direction: column;
+  }
 }
 
 .product-list-container {

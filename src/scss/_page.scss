@@ -11,13 +11,13 @@
   background-color: $color-background;
   padding-left: 40px;
   padding-right: 40px;
-  display: flex;
   justify-content: center;
 }
 
 .admin-container {
   .main {
     display: flex;
+    height: calc(100svh - $header-height);
   }
 
   .auth-form {
@@ -54,7 +54,6 @@
     background-color: $color-white;
     border-radius: 4px;
     box-shadow: $box-shadow;
-    margin-bottom: 12px;
     width: 100%;
     padding: 24px;
   }
@@ -62,6 +61,7 @@
   .container {
     max-width: 100%;
     padding-block: 12px;
+    display: flex;
   }
 
   .aside {
