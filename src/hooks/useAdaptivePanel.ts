@@ -26,7 +26,7 @@ const useAdaptivePanel = () => {
   });
 
   useEffect(() => {
-    setIsPanelHidden(true);
+    setIsPanelHidden(false);
   }, [location]);
 
   return {
