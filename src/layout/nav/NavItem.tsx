@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router';
 import Icon from '../../components/icons/Icon';
 import useLanguage from '../../features/language/useLanguage';
-import { NavItemsProps } from './Nav';
+import { NavItemsProps } from './NavContainer';
 
 const NavItem = ({ navItem }: { navItem: NavItemsProps }) => {
   const { language } = useLanguage();

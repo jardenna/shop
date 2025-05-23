@@ -1,4 +1,4 @@
-import Nav from '../../layout/nav/Nav';
+import NavContainer from '../../layout/nav/NavContainer';
 import { adminNavList } from '../../layout/nav/navList';
 import './_aside.scss';
 
@@ -10,7 +10,7 @@ type AsideProps = {
 
 const Aside = ({ onCollapseMenu, isMenuCollapsed, ariaLabel }: AsideProps) => (
   <aside className={`aside ${isMenuCollapsed ? 'collapsed' : ''}`}>
-    <Nav
+    <NavContainer
       navList={adminNavList}
       className="admin-nav"
       isMenuCollapsed={isMenuCollapsed}

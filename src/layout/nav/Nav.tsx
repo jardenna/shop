@@ -1,59 +1,20 @@
-import IconBtn from '../../components/IconBtn';
-import useAuth from '../../features/auth/hooks/useAuth';
-import useLanguage from '../../features/language/useLanguage';
-import { IconName } from '../../types/enums';
-import './_nav.scss';
-import { LinkText } from './enums';
-import NavItemList from './NavItemList';
-import NavUser from './NavUser';
-
-export type NavItemsProps = {
-  linkText: LinkText;
-  path: string;
-  iconName?: IconName;
-  iconSize?: string;
-};
-
-export type ActionBtnProps = {
-  ariaLabel?: string;
-  className?: string;
-  label?: string;
-  onClick?: () => void;
-};
+import LayoutElement from '../LayoutElement';
+import { NavItemsProps } from './NavContainer';
+import NavItem from './NavItem';
 
 type NavProps = {
-  navList: NavItemsProps[];
-  ariaLabel?: string;
-  className?: string;
-  isMenuCollapsed?: boolean;
-  onCollapseMenu?: () => void;
+  ariaLabel: string;
+  navItemsList: NavItemsProps[];
 };
 
-const Nav = ({
-  navList,
-  isMenuCollapsed,
-  onCollapseMenu,
-  className = '',
-  ariaLabel,
-}: NavProps) => {
-  const { language } = useLanguage();
-  const { currentUser } = useAuth();
-
-  return (
-    <div className={className}>
-      <NavItemList navItemsList={navList} ariaLabel={language.main} />
-      {onCollapseMenu && (
-        <IconBtn
-          onClick={onCollapseMenu}
-          ariaLabel={ariaLabel}
-          iconName={IconName.ChevronLeft}
-          title="chevron"
-          ariaExpanded={!isMenuCollapsed}
-        />
-      )}
-      {currentUser && <NavUser currentUser={currentUser} />}
-    </div>
-  );
-};
+const Nav = ({ navItemsList, ariaLabel }: NavProps) => (
+  <LayoutElement as="nav" ariaLabel={ariaLabel} className="nav">
+    <ul className="nav-list">
+      {navItemsList.map((navItem) => (
+        <NavItem key={navItem.linkText} navItem={navItem} />
+      ))}
+    </ul>
+  </LayoutElement>
+);
 
 export default Nav;

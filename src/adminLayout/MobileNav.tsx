@@ -1,5 +1,5 @@
 import Button from '../components/Button';
-import Nav from '../layout/nav/Nav';
+import NavContainer from '../layout/nav/NavContainer';
 import { adminNavList } from '../layout/nav/navList';
 import { BtnVariant } from '../types/enums';
 
@@ -26,7 +26,7 @@ const MobileNav = ({
     >
       <span className="menu-burger-item" aria-hidden={true} />
     </Button>
-    <Nav navList={adminNavList} className={`admin-nav ${className}`} />
+    <NavContainer navList={adminNavList} className={`admin-nav ${className}`} />
   </>
 );
 
