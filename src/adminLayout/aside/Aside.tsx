@@ -3,14 +3,14 @@ import { adminNavList } from '../../layout/nav/navList';
 import { AdminNavProps } from '../MobileNav';
 import './_aside.scss';
 
-export type OmittedUserRequest = Omit<AdminNavProps, 'className'>;
+type OmittedAdminNavProps = Omit<AdminNavProps, 'className'>;
 
 const Aside = ({
   onToggleHidden,
   isHidden,
   ariaLabel,
   currentUser,
-}: OmittedUserRequest) => (
+}: OmittedAdminNavProps) => (
   <aside className={`aside ${isHidden ? 'collapsed' : ''}`}>
     <NavContainer
       navList={adminNavList}
