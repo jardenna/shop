@@ -3,9 +3,9 @@ import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
 import useAuth from '../features/auth/hooks/useAuth';
 import useLanguage from '../features/language/useLanguage';
-import useAdaptivePanel from '../hooks/useAdaptivePanel';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
 import useMediaQuery from '../hooks/useMediaQuery ';
+import useTogglePanel from '../hooks/useTogglePanel';
 import { MainPath } from '../layout/nav/enums';
 import './_admin-layout.scss';
 import AdminHeader from './AdminHeader';
@@ -18,7 +18,7 @@ const AdminLayout = () => {
   const [logout] = useLogoutMutation();
   const { currentUser } = useAuth();
   const { isMobileSize } = useMediaQuery();
-  const { isPanelShown, onTogglePanel } = useAdaptivePanel();
+  const { isPanelShown, onTogglePanel } = useTogglePanel();
 
   const [isMenuCollapsed, setIsMenuCollapsed] = useLocalStorage(
     localStorageKeys.menuCollapsed,

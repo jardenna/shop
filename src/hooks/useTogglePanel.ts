@@ -4,7 +4,7 @@ import { KeyCode } from '../types/enums';
 import useClickOutside from './useClickOutside';
 import useKeyPress from './useKeyPress';
 
-const useAdaptivePanel = () => {
+const useTogglePanel = () => {
   const location = useLocation();
   const [isPanelShown, setIsPanelShown] = useState(false);
 
@@ -37,4 +37,4 @@ const useAdaptivePanel = () => {
   };
 };
 
-export default useAdaptivePanel;
+export default useTogglePanel;
