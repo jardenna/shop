@@ -1,7 +1,8 @@
 import { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
-import PageHeader from '../components/PageHeader';
+import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
+import PageHeader from '../../components/PageHeader';
+import './_page-container.scss';
 
 type PageContainerProps = {
   children: ReactNode;

@@ -1,7 +1,7 @@
 import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
-import PageContainer from '../PageContainer';
+import PageContainer from '../pageContainer/PageContainer';
 import RegisterUser from '../RegisterUser';
 
 const CreateUserPage = () => {

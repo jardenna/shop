@@ -7,7 +7,7 @@ import {
 } from '../../features/subCategories/subCategoryApiSlice';
 import { MainPath } from '../../layout/nav/enums';
 import { oneDay } from '../../utils/utils';
-import PageContainer from '../PageContainer';
+import PageContainer from '../pageContainer/PageContainer';
 import SubCategoryTableRows from './SubCategoryTableRows';
 
 const tableHeaders: {

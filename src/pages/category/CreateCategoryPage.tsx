@@ -1,6 +1,6 @@
 import CategoryForm from '../../features/categories/CategoryForm';
 import useLanguage from '../../features/language/useLanguage';
-import PageContainer from '../PageContainer';
+import PageContainer from '../pageContainer/PageContainer';
 
 export type CategoryState = {
   categoryName: string;

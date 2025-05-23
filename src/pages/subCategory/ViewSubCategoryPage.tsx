@@ -10,7 +10,7 @@ import {
 } from '../../features/subCategories/subCategoryApiSlice';
 import { MainPath } from '../../layout/nav/enums';
 import { getErrorMessage, getlowerCaseFirstLetter } from '../../utils/utils';
-import PageContainer from '../PageContainer';
+import PageContainer from '../pageContainer/PageContainer';
 
 const ViewSubCategoryPage = () => {
   const params = useParams();

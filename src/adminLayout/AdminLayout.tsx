@@ -8,7 +8,7 @@ import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
 import useMediaQuery from '../hooks/useMediaQuery ';
 import { MainPath } from '../layout/nav/enums';
 import AdminHeader from './AdminHeader';
-import Aside from './Aside';
+import Aside from './aside/Aside';
 import MobileNav from './MobileNav';
 
 const AdminLayout = () => {

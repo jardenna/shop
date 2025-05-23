@@ -1,5 +1,6 @@
-import Nav from '../layout/nav/Nav';
-import { adminNavList } from '../layout/nav/navList';
+import Nav from '../../layout/nav/Nav';
+import { adminNavList } from '../../layout/nav/navList';
+import './_aside.scss';
 
 type AsideProps = {
   ariaLabel: string;

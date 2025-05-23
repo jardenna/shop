@@ -6,7 +6,7 @@ import useLanguage from '../../features/language/useLanguage';
 import { useGetProductByIdQuery } from '../../features/products/productApiSlice';
 import ProductForm from '../../features/products/ProductForm';
 import { useGetSubCategoriesWithParentQuery } from '../../features/subCategories/subCategoryApiSlice';
-import PageContainer from '../PageContainer';
+import PageContainer from '../pageContainer/PageContainer';
 
 const UpdateProductPage = () => {
   const params = useParams();

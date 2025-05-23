@@ -13,7 +13,7 @@ import {
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
 import { getErrorMessage } from '../../utils/utils';
-import PageContainer from '../PageContainer';
+import PageContainer from '../pageContainer/PageContainer';
 
 const ViewProductPage = () => {
   const params = useParams();

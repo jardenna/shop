@@ -7,7 +7,7 @@ import {
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
 import { oneDay } from '../../utils/utils';
-import PageContainer from '../PageContainer';
+import PageContainer from '../pageContainer/PageContainer';
 import CategoryTableRow from './CategoryTableRow';
 
 const tableHeaders: { key: keyof Category; label: string; name: string }[] = [
