@@ -5,14 +5,14 @@ import Icon from '../../components/icons/Icon';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Table from '../../components/sortTable/Table';
 import Tooltip from '../../components/tooltip/Tooltip';
-import EditUserInput from '../../features/admin/users/EditUserInput';
+import useAuth from '../../features/auth/hooks/useAuth';
+import useLanguage from '../../features/language/useLanguage';
+import EditUserInput from '../../features/users/EditUserInput';
 import {
   useDeleteUserMutation,
   useGetAllUsersQuery,
   useUpdateUserMutation,
-} from '../../features/admin/users/usersApiSlice';
-import useAuth from '../../features/auth/hooks/useAuth';
-import useLanguage from '../../features/language/useLanguage';
+} from '../../features/users/usersApiSlice';
 import useTableEditField from '../../hooks/useTableEditField';
 import useTrapFocus from '../../hooks/useTrapFocus';
 import { MainPath } from '../../layout/nav/enums';

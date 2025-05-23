@@ -1,13 +1,13 @@
-import { RoleTypes } from '../../../app/api/apiTypes';
+import { RoleTypes } from '../../app/api/apiTypes';
 
-import IconBtn from '../../../components/IconBtn';
+import IconBtn from '../../components/IconBtn';
 import EditTableInput, {
   BaseEditTableInput,
-} from '../../../components/sortTable/EditTableInput';
-import EditTableText from '../../../components/sortTable/EditTableText';
-import { IconName } from '../../../types/enums';
-import { getlowerCaseFirstLetter } from '../../../utils/utils';
-import useLanguage from '../../language/useLanguage';
+} from '../../components/sortTable/EditTableInput';
+import EditTableText from '../../components/sortTable/EditTableText';
+import { IconName } from '../../types/enums';
+import { getlowerCaseFirstLetter } from '../../utils/utils';
+import useLanguage from '../language/useLanguage';
 import RoleRadioBtn from './RoleRadioBtn';
 
 type EditUserInputProps = BaseEditTableInput & {

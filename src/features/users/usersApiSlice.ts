@@ -1,11 +1,11 @@
-import apiSlice, { TagTypesEnum } from '../../../app/api/apiSlice';
+import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import {
   DefaultResponse,
   UpdateUserByIdRequest,
   UpdateUserByIdResponse,
   UserResponse,
-} from '../../../app/api/apiTypes';
-import { userUrl } from '../../../app/endpoints';
+} from '../../app/api/apiTypes';
+import { userUrl } from '../../app/endpoints';
 
 export const usersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
