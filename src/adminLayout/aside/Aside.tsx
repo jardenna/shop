@@ -17,7 +17,6 @@ const Aside = ({ onCollapseMenu, isMenuCollapsed, ariaLabel }: AsideProps) => (
       onCollapseMenu={onCollapseMenu}
       ariaLabel={ariaLabel}
     />
-    link to shop
   </aside>
 );
 

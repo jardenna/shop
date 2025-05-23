@@ -21,22 +21,19 @@
   }
 }
 
-@mixin collapsed-styles {
-  width: rem(61px);
-
-  .nav-text {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-
 .admin-nav {
-  flex-grow: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .nav {
+    flex-grow: 1;
+  }
 
   @include max-size($small) {
     position: fixed;
     background-color: $color-white;
-    height: 100%;
+    height: calc(100svh - $header-height);
     left: -400px;
     z-index: 10;
 

@@ -5,15 +5,10 @@ import NavItem from './NavItem';
 type NavItemListProps = {
   ariaLabel: string;
   navItemsList: NavItemsProps[];
-  className?: string;
 };
 
-const NavItemList = ({
-  navItemsList,
-  ariaLabel,
-  className = '',
-}: NavItemListProps) => (
-  <LayoutElement as="nav" ariaLabel={ariaLabel} className={className}>
+const NavItemList = ({ navItemsList, ariaLabel }: NavItemListProps) => (
+  <LayoutElement as="nav" ariaLabel={ariaLabel} className="nav">
     <ul className="nav-list">
       {navItemsList.map((navItem) => (
         <NavItem key={navItem.linkText} navItem={navItem} />
