@@ -50,7 +50,7 @@ const AdminLayout = () => {
       />
       <main className="main">
         {isMobileSize ? (
-          <div className="test">
+          <>
             <Button
               className="menu-burger"
               variant={BtnVariant.Ghost}
@@ -66,7 +66,7 @@ const AdminLayout = () => {
               navList={adminNavList}
               className={`admin-nav ${isPanelHidden ? 'test1' : ''}`}
             />
-          </div>
+          </>
         ) : (
           <aside className={`aside ${isMenuCollapsed ? 'collapsed' : ''}`}>
             <Nav
