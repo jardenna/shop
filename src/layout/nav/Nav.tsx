@@ -21,6 +21,7 @@ export type ActionBtnProps = {
 
 type NavProps = {
   navList: NavItemsProps[];
+  ariaLabel?: string;
   className?: string;
   isMenuCollapsed?: boolean;
   onCollapseMenu?: () => void;
@@ -31,6 +32,7 @@ const Nav = ({
   isMenuCollapsed,
   onCollapseMenu,
   className = '',
+  ariaLabel,
 }: NavProps) => {
   const { language } = useLanguage();
 
@@ -40,9 +42,7 @@ const Nav = ({
       {onCollapseMenu && (
         <IconBtn
           onClick={onCollapseMenu}
-          ariaLabel={
-            isMenuCollapsed ? language.expandMenu : language.collapseMenu
-          }
+          ariaLabel={ariaLabel}
           iconName={IconName.ChevronLeft}
           title="chevron"
           ariaExpanded={!isMenuCollapsed}

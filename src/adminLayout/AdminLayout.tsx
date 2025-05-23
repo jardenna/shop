@@ -1,5 +1,4 @@
 import { Outlet, useNavigate } from 'react-router';
-import Button from '../components/Button';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
 import useAuth from '../features/auth/hooks/useAuth';
@@ -8,9 +7,6 @@ import useAdaptivePanel from '../hooks/useAdaptivePanel';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
 import useMediaQuery from '../hooks/useMediaQuery ';
 import { MainPath } from '../layout/nav/enums';
-import Nav from '../layout/nav/Nav';
-import { adminNavList } from '../layout/nav/navList';
-import { BtnVariant } from '../types/enums';
 import AdminHeader from './AdminHeader';
 import Aside from './Aside';
 import MobileNav from './MobileNav';
@@ -52,35 +48,21 @@ const AdminLayout = () => {
       />
       <main className="main">
         {isMobileSize ? (
-          <>
-            <MobileNav
-              isPanelHidden={isPanelHidden}
-              ariaLabel={
-                !isPanelHidden ? language.expandMenu : language.collapseMenu
-              }
-              className={isPanelHidden ? 'test1' : ''}
-              onTogglePanel={onTogglePanel}
-            />
-            <Button
-              className="menu-burger"
-              variant={BtnVariant.Ghost}
-              ariaExpanded={isPanelHidden}
-              onClick={onTogglePanel}
-              ariaLabel={
-                !isPanelHidden ? language.expandMenu : language.collapseMenu
-              }
-            >
-              <span className="menu-burger-item" aria-hidden={true} />
-            </Button>
-            <Nav
-              navList={adminNavList}
-              className={`admin-nav ${isPanelHidden ? 'test1' : ''}`}
-            />
-          </>
+          <MobileNav
+            isPanelHidden={isPanelHidden}
+            ariaLabel={
+              !isPanelHidden ? language.expandMenu : language.collapseMenu
+            }
+            className={isPanelHidden ? 'test1' : ''}
+            onTogglePanel={onTogglePanel}
+          />
         ) : (
           <Aside
             isMenuCollapsed={isMenuCollapsed}
             onCollapseMenu={handleCollapseMenu}
+            ariaLabel={
+              isMenuCollapsed ? language.expandMenu : language.collapseMenu
+            }
           />
         )}
 

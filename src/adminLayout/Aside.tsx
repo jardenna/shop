@@ -2,17 +2,19 @@ import Nav from '../layout/nav/Nav';
 import { adminNavList } from '../layout/nav/navList';
 
 type AsideProps = {
+  ariaLabel: string;
   isMenuCollapsed: boolean;
   onCollapseMenu: () => void;
 };
 
-const Aside = ({ onCollapseMenu, isMenuCollapsed }: AsideProps) => (
+const Aside = ({ onCollapseMenu, isMenuCollapsed, ariaLabel }: AsideProps) => (
   <aside className={`aside ${isMenuCollapsed ? 'collapsed' : ''}`}>
     <Nav
       navList={adminNavList}
       className="admin-nav"
       isMenuCollapsed={isMenuCollapsed}
       onCollapseMenu={onCollapseMenu}
+      ariaLabel={ariaLabel}
     />
     link to shop
   </aside>
