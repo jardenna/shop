@@ -6,3 +6,11 @@
   align-items: center;
   width: 100%;
 }
+
+.page-small {
+  max-width: $page-width-small;
+}
+
+.page-medium {
+  max-width: $page-width-medium;
+}
