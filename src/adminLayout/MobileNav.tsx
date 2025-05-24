@@ -1,5 +1,5 @@
 import { UserResponse } from '../app/api/apiTypes';
-import TogglePanel from '../components/TogglePanel';
+import TogglePanel from '../components/togglePanel/TogglePanel';
 import NavContainer from '../layout/nav/NavContainer';
 import { adminNavList } from '../layout/nav/navList';
 

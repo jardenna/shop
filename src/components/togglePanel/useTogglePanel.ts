@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router';
-import { KeyCode } from '../types/enums';
-import useKeyPress from './useKeyPress';
+import useKeyPress from '../../hooks/useKeyPress';
+import { KeyCode } from '../../types/enums';
 
 const useTogglePanel = () => {
   const location = useLocation();

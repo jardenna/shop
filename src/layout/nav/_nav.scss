@@ -21,23 +21,6 @@
   }
 }
 
-.toggle-panel {
-  @include max-size($small) {
-    position: fixed;
-    background-color: $color-white;
-    height: calc(100svh - $header-height);
-    left: -400px;
-    z-index: 10;
-
-    @include transition;
-
-    &.shown {
-      left: 0;
-      width: 100%;
-    }
-  }
-}
-
 .admin-nav {
   height: 100%;
   display: flex;

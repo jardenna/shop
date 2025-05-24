@@ -1,19 +1,26 @@
 import { ReactNode } from 'react';
+import useLanguage from '../../features/language/useLanguage';
+import { BtnVariant } from '../../types/enums';
+import Button from '../Button';
+import './_toggle-panel.scss';
+import useTogglePanel from './useTogglePanel';
 
-import useLanguage from '../features/language/useLanguage';
-import useTogglePanel from '../hooks/useTogglePanel';
-import { BtnVariant } from '../types/enums';
-import Button from './Button';
+type PanelPosition = 'right' | 'left' | 'bottom' | 'top';
 
-export type TogglePanelProps = {
+type TogglePanelProps = {
   ariaControls: string;
   children: ReactNode;
+  panelPosition?: PanelPosition;
 };
-const TogglePanel = ({ children, ariaControls }: TogglePanelProps) => {
+
+const TogglePanel = ({
+  children,
+  ariaControls,
+  panelPosition = 'left',
+}: TogglePanelProps) => {
   const { language } = useLanguage();
   const { isPanelShown, onTogglePanel, panelRef } = useTogglePanel();
 
-  //  {isOpen ? 'Skjul indhold' : 'Vis indhold'}
   return (
     <>
       <Button
@@ -29,7 +36,7 @@ const TogglePanel = ({ children, ariaControls }: TogglePanelProps) => {
       </Button>
       <div
         ref={panelRef}
-        className={`toggle-panel ${isPanelShown ? 'shown' : ''}`}
+        className={`toggle-panel ${panelPosition} ${isPanelShown ? 'shown' : ''}`}
         id={ariaControls}
       >
         {children}
