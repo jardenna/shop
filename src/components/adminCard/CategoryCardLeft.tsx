@@ -45,7 +45,7 @@ const CategoryCardLeft = ({
         modalHeaderText={language.deleteCategory}
         linkTo={linkTo}
         scheduledDate={scheduledDate}
-        allowedDeleteCategory={!!isAdmin}
+        allowedToDelete={!!isAdmin}
       />
     </CardContent>
   );

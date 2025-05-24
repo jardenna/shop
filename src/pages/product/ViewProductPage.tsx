@@ -5,6 +5,7 @@ import CardRight from '../../components/card/CardRight';
 import ErrorContent from '../../components/ErrorContent';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import SkeletonThreeCards from '../../components/skeleton/SkeletonThreeCards';
+import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
 import {
   useDeleteProductMutation,
@@ -19,6 +20,7 @@ const ViewProductPage = () => {
   const params = useParams();
   const navigate = useNavigate();
   const { language } = useLanguage();
+  const { isAdmin } = useAuth();
 
   const handleGoback = () => {
     navigate(-1);
@@ -105,6 +107,7 @@ const ViewProductPage = () => {
               description={product.description}
               images={product.images}
               onReset={() => refetch}
+              allowedDeleteProduct={!!isAdmin}
             />
             <ProductCardCenter
               brand={product.brand}
