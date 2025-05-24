@@ -125,7 +125,7 @@ const UserPage = () => {
                   <td key={columnKey}>
                     <EditUserInput
                       isAdmin={isAdmin}
-                      allowedEditUser={!!isAdmin}
+                      allowedEditUser={allowedEditUser}
                       onSave={() => {
                         handleSaveEdit();
                       }}
