@@ -20,7 +20,7 @@ a[class^='btn-'],
   align-items: center;
   position: relative;
   font-family: $font-primary;
-  font-size: clamp($font-medium, 2.5vw, rem(16px));
+  font-size: clamp($font-small, 2.5vw, rem(16px));
   font-weight: normal;
   padding: 16px;
   border-radius: 4px;

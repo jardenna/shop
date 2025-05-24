@@ -48,15 +48,15 @@
   }
 
   .hero-title {
-    font-size: $font-xlarge; // clamp
+    font-size: clamp($font-large, 2.5vw, $font-xlarge);
     letter-spacing: 0;
     margin-bottom: 0;
   }
 
   .hero-text {
     max-width: rem(512px);
-    font-size: rem(20px); // clamp
-    line-height: rem(32px);
+    font-size: clamp($font-medium, 2.5vw, rem(20px));
+    line-height: clamp($font-medium, 2.5vw, rem(32px));
 
     p {
       margin: 0;

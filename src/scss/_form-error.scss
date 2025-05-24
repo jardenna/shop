@@ -5,13 +5,13 @@
   color: $color-danger;
 
   @include max-size($small) {
-    font-size: rem(12px);
+    font-size: $font-mini;
   }
 }
 
 .error-icon {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: rem(12px);
+  font-size: $font-mini;
   transform: rotate(180deg);
   position: absolute;
   right: 8px;

@@ -25,7 +25,7 @@
 
   .rdp-month_caption {
     padding: 10px;
-    font-size: rem(16px);
+    font-size: $font-medium;
     font-weight: normal;
     border-bottom: 1px solid $color-gray-70;
   }
@@ -36,7 +36,7 @@
 
   .rdp-day_button {
     border-radius: 4px;
-    font-size: $font-medium;
+    font-size: $font-small;
 
     &:focus-visible {
       outline: transparent;

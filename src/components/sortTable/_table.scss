@@ -10,7 +10,7 @@ $input-height: rem(38px);
   margin-bottom: 8px;
 
   .btn-default {
-    font-size: $font-medium;
+    font-size: $font-small;
   }
 }
 
@@ -75,7 +75,7 @@ table {
 
     .btn-ghost {
       font-weight: bold;
-      font-size: $font-medium;
+      font-size: $font-small;
     }
 
     &:last-child {
