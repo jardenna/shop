@@ -8,6 +8,10 @@ $input-height: rem(38px);
   justify-content: space-between;
   align-items: flex-end;
   margin-bottom: 8px;
+
+  .btn-default {
+    font-size: $font-medium;
+  }
 }
 
 table {
@@ -71,7 +75,7 @@ table {
 
     .btn-ghost {
       font-weight: bold;
-      font-size: 14px;
+      font-size: $font-medium;
     }
 
     &:last-child {

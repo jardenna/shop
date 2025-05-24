@@ -44,7 +44,7 @@ textarea {
     padding: 12px;
     width: 100%;
     position: relative;
-    font-size: rem(14px);
+    font-size: $font-medium;
 
     @extend %styled-input;
   }

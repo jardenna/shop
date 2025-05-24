@@ -20,7 +20,7 @@ a[class^='btn-'],
   align-items: center;
   position: relative;
   font-family: $font-primary;
-  font-size: rem(16px);
+  font-size: clamp($font-medium, 2.5vw, rem(16px));
   font-weight: normal;
   padding: 16px;
   border-radius: 4px;
@@ -30,10 +30,6 @@ a[class^='btn-'],
   min-height: rem(60px);
   letter-spacing: rem(0.5px);
   outline: transparent;
-
-  @include max-size($small) {
-    font-size: rem(14px);
-  }
 
   @include transition;
 
@@ -74,7 +70,6 @@ a[class^='btn-'],
 .btn-default {
   border-color: $color-border;
   background-color: $color-secondary;
-  font-size: 0.875rem;
   padding: 8px 32px;
   min-height: auto;
   width: auto;
