@@ -5,7 +5,6 @@ import useAuth from '../features/auth/hooks/useAuth';
 import useLanguage from '../features/language/useLanguage';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
 import useMediaQuery from '../hooks/useMediaQuery ';
-import useTogglePanel from '../hooks/useTogglePanel';
 import { MainPath } from '../layout/nav/enums';
 import './_admin-layout.scss';
 import AdminHeader from './AdminHeader';
@@ -18,7 +17,6 @@ const AdminLayout = () => {
   const [logout] = useLogoutMutation();
   const { currentUser } = useAuth();
   const { isMobileSize } = useMediaQuery();
-  const { isPanelShown, onTogglePanel } = useTogglePanel();
 
   const [isMenuCollapsed, setIsMenuCollapsed] = useLocalStorage(
     localStorageKeys.menuCollapsed,
@@ -48,20 +46,11 @@ const AdminLayout = () => {
       />
       <main className="main">
         {isMobileSize ? (
-          <MobileNav
-            isShown={isPanelShown}
-            ariaLabel={
-              !isPanelShown ? language.expandMenu : language.collapseMenu
-            }
-            className={isPanelShown ? 'shown' : ''}
-            onToggleHidden={onTogglePanel}
-            currentUser={currentUser || null}
-            ariaControls="nav"
-          />
+          <MobileNav currentUser={currentUser || null} ariaControls="nav" />
         ) : (
           <Aside
             isShown={isMenuCollapsed}
-            onToggleHidden={handleCollapseMenu}
+            onTogglePanel={handleCollapseMenu}
             ariaLabel={
               isMenuCollapsed ? language.expandMenu : language.collapseMenu
             }

@@ -1,20 +1,19 @@
 import { ReactNode } from 'react';
 
+import useLanguage from '../features/language/useLanguage';
 import useTogglePanel from '../hooks/useTogglePanel';
 import { BtnVariant } from '../types/enums';
 import Button from './Button';
 
 export type TogglePanelProps = {
   ariaControls: string;
-  ariaLabel: string;
   children: ReactNode;
 };
-const TogglePanel = ({
-  ariaLabel,
-  children,
-  ariaControls,
-}: TogglePanelProps) => {
+const TogglePanel = ({ children, ariaControls }: TogglePanelProps) => {
+  const { language } = useLanguage();
   const { isPanelShown, onTogglePanel, panelRef } = useTogglePanel();
+
+  //  {isOpen ? 'Skjul indhold' : 'Vis indhold'}
   return (
     <>
       <Button
@@ -22,7 +21,7 @@ const TogglePanel = ({
         variant={BtnVariant.Ghost}
         ariaExpanded={isPanelShown}
         onClick={onTogglePanel}
-        ariaLabel={ariaLabel}
+        ariaLabel={!isPanelShown ? language.showContent : language.hideContent}
         ariaHasPopup
         ariaControls={ariaControls}
       >

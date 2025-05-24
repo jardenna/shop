@@ -7,11 +7,11 @@ export type AsideProps = {
   ariaLabel: string;
   currentUser: UserResponse | null;
   isShown: boolean;
-  onToggleHidden: () => void;
+  onTogglePanel: () => void;
 };
 
 const Aside = ({
-  onToggleHidden,
+  onTogglePanel,
   isShown,
   ariaLabel,
   currentUser,
@@ -21,7 +21,7 @@ const Aside = ({
       navList={adminNavList}
       className="admin-nav"
       isMenuCollapsed={isShown}
-      onCollapseMenu={onToggleHidden}
+      onCollapseMenu={onTogglePanel}
       ariaLabel={ariaLabel}
       currentUser={currentUser}
     />
