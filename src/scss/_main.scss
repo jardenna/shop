@@ -60,7 +60,7 @@ h3 {
 }
 
 h1 {
-  font-size: clamp(rem(20px), 2.5vw, $font-large);
+  font-size: clamp(rem(20px), $clamp-val, $font-large);
   font-family: $font-secondary;
   letter-spacing: rem(3px);
   display: flex;
