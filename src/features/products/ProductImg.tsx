@@ -27,7 +27,7 @@ const ProductImg = ({
   }
 
   return (
-    <div className="record-img-container">
+    <div>
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={() => refetch}

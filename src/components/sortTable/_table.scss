@@ -104,12 +104,6 @@ table {
     &:nth-child(odd) {
       td {
         background-color: $color-background;
-
-        &.no-records-table-field {
-          background-color: $color-white;
-          border: none;
-          padding: 0;
-        }
       }
     }
   }
