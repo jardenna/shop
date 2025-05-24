@@ -21,16 +21,7 @@
   }
 }
 
-.admin-nav {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden auto;
-
-  .nav {
-    flex-grow: 1;
-  }
-
+.toggle-panel {
   @include max-size($small) {
     position: fixed;
     background-color: $color-white;
@@ -44,6 +35,17 @@
       left: 0;
       width: 100%;
     }
+  }
+}
+
+.admin-nav {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden auto;
+
+  .nav {
+    flex-grow: 1;
   }
 
   .btn-ghost {

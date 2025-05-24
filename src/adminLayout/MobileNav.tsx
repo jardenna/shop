@@ -1,8 +1,7 @@
 import { UserResponse } from '../app/api/apiTypes';
-import Button from '../components/Button';
+import TogglePanel from '../components/TogglePanel';
 import NavContainer from '../layout/nav/NavContainer';
 import { adminNavList } from '../layout/nav/navList';
-import { BtnVariant } from '../types/enums';
 
 export type AdminNavProps = {
   ariaControls: string;
@@ -15,31 +14,18 @@ export type AdminNavProps = {
 
 const MobileNav = ({
   ariaLabel,
-  onToggleHidden,
-  isShown,
   className,
   currentUser,
   ariaControls,
 }: AdminNavProps) => (
-  <>
-    <Button
-      className="menu-burger"
-      variant={BtnVariant.Ghost}
-      ariaExpanded={isShown}
-      onClick={onToggleHidden}
-      ariaLabel={ariaLabel}
-      ariaHasPopup
-      ariaControls={ariaControls}
-    >
-      <span className="menu-burger-item" aria-hidden={true} />
-    </Button>
+  <TogglePanel ariaControls={ariaControls} ariaLabel={ariaLabel}>
     <NavContainer
       ariaControls={ariaControls}
       navList={adminNavList}
       className={`admin-nav ${className}`}
       currentUser={currentUser}
     />
-  </>
+  </TogglePanel>
 );
 
 export default MobileNav;

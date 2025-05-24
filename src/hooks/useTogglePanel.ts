@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router';
 import { KeyCode } from '../types/enums';
-import useClickOutside from './useClickOutside';
 import useKeyPress from './useKeyPress';
 
 const useTogglePanel = () => {
@@ -21,10 +20,6 @@ const useTogglePanel = () => {
   const handleTogglePanel = () => {
     setIsPanelShown(!isPanelShown);
   };
-
-  useClickOutside(panelRef, () => {
-    handleHidePanel();
-  });
 
   useEffect(() => {
     handleHidePanel();

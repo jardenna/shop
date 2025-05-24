@@ -1,16 +1,21 @@
+import { UserResponse } from '../../app/api/apiTypes';
 import NavContainer from '../../layout/nav/NavContainer';
 import { adminNavList } from '../../layout/nav/navList';
-import { AdminNavProps } from '../MobileNav';
 import './_aside.scss';
 
-type OmittedAdminNavProps = Omit<AdminNavProps, 'className' | 'ariaControls'>;
+export type AsideProps = {
+  ariaLabel: string;
+  currentUser: UserResponse | null;
+  isShown: boolean;
+  onToggleHidden: () => void;
+};
 
 const Aside = ({
   onToggleHidden,
   isShown,
   ariaLabel,
   currentUser,
-}: OmittedAdminNavProps) => (
+}: AsideProps) => (
   <aside className={`aside ${isShown ? 'collapsed' : ''}`}>
     <NavContainer
       navList={adminNavList}
