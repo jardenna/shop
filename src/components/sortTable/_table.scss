@@ -58,6 +58,10 @@ table {
     .edit-controls {
       display: flex;
       gap: 12px;
+
+      @include max-size($small) {
+        flex-direction: column;
+      }
     }
   }
 

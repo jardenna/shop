@@ -16,6 +16,10 @@
   gap: 16px;
   padding: 30px;
 
+  @include max-size($small) {
+    padding: 0;
+  }
+
   .product-list-headline {
     display: flex;
     margin-bottom: 4px;
