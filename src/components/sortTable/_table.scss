@@ -20,19 +20,6 @@ $input-height: rem(38px);
   }
 }
 
-.fixed-table {
-  position: relative;
-  width: rem(300px);
-  min-width: 100%;
-  margin-bottom: 12px;
-  border: 1px solid $color-border;
-
-  @include max-size($medium) {
-    max-height: rem(400px);
-    overflow: auto;
-  }
-}
-
 .table-actions {
   display: flex;
   align-items: flex-end;
@@ -45,68 +32,47 @@ $input-height: rem(38px);
   }
 }
 
+.table-search-input {
+  position: relative;
+
+  .input-container {
+    right: -8px;
+    top: 32px;
+    position: absolute;
+    z-index: 3;
+    min-width: rem(180px);
+
+    input {
+      background-color: $color-white;
+      border: 1px solid $color-border;
+      min-height: $input-height;
+    }
+  }
+}
+
 table {
   border-spacing: 0;
   border-collapse: collapse;
   width: 100%;
 
-  .edit-cell {
-    display: flex;
-    justify-content: space-between;
-
-    .checkbox-radio-container {
-      margin: 0;
-    }
-
-    .input-container {
-      width: auto;
-    }
-
-    input:not(input[type='radio']) {
-      padding: 4px;
-      background-color: $color-white;
-      border: 1px solid $color-gray-60;
-      height: $input-height;
-    }
-
-    .edit-controls {
-      display: flex;
-      gap: 12px;
-
-      @include max-size($small) {
-        flex-direction: column;
-      }
-    }
+  th,
+  td {
+    padding: 4px 12px;
+    white-space: nowrap;
   }
 
-  img {
-    max-width: rem(120px);
-    height: rem(64px);
-    object-fit: cover;
-    object-position: top;
+  td {
+    line-height: rem(24px);
+    background-color: $color-white;
   }
 
-  .missing-img {
-    max-width: rem(120px);
-    height: auto;
-    padding: 8px 0;
-    margin: 0;
-
-    svg {
-      width: rem(36px);
-    }
+  th {
+    background-color: $color-white;
+    border-right: 1px solid $color-border;
+    border-bottom: 1px solid $color-border;
   }
 
   tbody {
-    display: flex;
-    flex-direction: column;
-    max-height: rem(400px);
-    overflow: auto;
-
-    @include max-size($medium) {
-      display: table-row-group;
-    }
-
     &.padding-4 {
       td {
         padding-block: $padding-block-small-px;
@@ -126,96 +92,142 @@ table {
     }
   }
 
-  th {
-    background-color: $color-white;
-    border-right: 1px solid $color-border;
-    border-bottom: 1px solid $color-border;
-    position: sticky;
-    top: 0;
-    z-index: 2;
-    white-space: nowrap;
-
-    &:first-child {
-      z-index: 3;
-    }
-
-    &:last-child {
-      border-right: 0;
-    }
-  }
-
-  td {
-    line-height: rem(24px);
-    background-color: $color-white;
-  }
-
-  th,
-  td {
-    padding: 4px 12px;
-    white-space: nowrap;
-
-    &:first-child {
-      position: sticky;
-      left: 0;
-      width: 30%;
-      white-space: inherit;
-
-      @include max-size($small) {
-        width: auto;
-      }
-    }
-  }
-
   tr {
-    @include min-size($medium) {
-      display: table;
-      width: 100%;
-      table-layout: fixed;
-    }
-
     &:nth-child(odd) {
       td {
         background-color: $color-background;
       }
     }
   }
-
-  .table-header-cell {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .dot {
-    width: rem(12px);
-    height: rem(12px);
-    border-radius: 50%;
-    background-color: $color-info;
-    display: flex;
-    position: absolute;
-    top: -2px;
-    right: -4px;
-    border: 3px solid $color-white;
-  }
-
-  .btn {
-    padding: 0;
-  }
 }
 
-.table-search-input {
+.fixed-table {
   position: relative;
+  width: rem(300px);
+  min-width: 100%;
+  margin-bottom: 12px;
+  border: 1px solid $color-border;
 
-  .input-container {
-    right: -8px;
-    top: 32px;
-    position: absolute;
-    z-index: 3;
-    min-width: rem(180px);
+  @include max-size($medium) {
+    max-height: rem(400px);
+    overflow: auto;
+  }
 
-    input {
-      background-color: $color-white;
-      border: 1px solid $color-border;
-      min-height: $input-height;
+  table {
+    .edit-cell {
+      display: flex;
+      justify-content: space-between;
+
+      .checkbox-radio-container {
+        margin: 0;
+      }
+
+      .input-container {
+        width: auto;
+      }
+
+      input:not(input[type='radio']) {
+        padding: 4px;
+        background-color: $color-white;
+        border: 1px solid $color-gray-60;
+        height: $input-height;
+      }
+
+      .edit-controls {
+        display: flex;
+        gap: 12px;
+
+        @include max-size($small) {
+          flex-direction: column;
+        }
+      }
+    }
+
+    img {
+      max-width: rem(120px);
+      height: rem(64px);
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .missing-img {
+      max-width: rem(120px);
+      height: auto;
+      padding: 8px 0;
+      margin: 0;
+
+      svg {
+        width: rem(36px);
+      }
+    }
+
+    tbody {
+      display: flex;
+      flex-direction: column;
+      max-height: rem(400px);
+      overflow: auto;
+
+      @include max-size($medium) {
+        display: table-row-group;
+      }
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      white-space: nowrap;
+
+      &:first-child {
+        z-index: 3;
+      }
+
+      &:last-child {
+        border-right: 0;
+      }
+    }
+
+    th,
+    td {
+      &:first-child {
+        position: sticky;
+        left: 0;
+        width: 30%;
+        white-space: inherit;
+
+        @include max-size($small) {
+          width: auto;
+        }
+      }
+    }
+
+    tr {
+      @include min-size($medium) {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+      }
+    }
+
+    .table-header-cell {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .dot {
+      width: rem(12px);
+      height: rem(12px);
+      border-radius: 50%;
+      background-color: $color-info;
+      display: flex;
+      position: absolute;
+      top: -2px;
+      right: -4px;
+      border: 3px solid $color-white;
+    }
+
+    .btn {
+      padding: 0;
     }
   }
 }
