@@ -152,6 +152,7 @@ const SubCategoryForm = ({
           categoryNameErrorText={language[errors.subCategoryName]}
           categoryNameLabelText={language.categoryName}
           onCategoryNameChange={onChange}
+          allowedUpdateCategory
           defaultStatusValue={{
             label: getlowerCaseFirstLetter(values.categoryStatus, language),
             value: values.categoryStatus,
