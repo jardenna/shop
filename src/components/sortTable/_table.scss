@@ -1,6 +1,19 @@
 /* stylelint-disable no-descending-specificity */
 @use '../../scss/globals' as *;
 
+$input-height: rem(38px);
+
+.table-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 8px;
+
+  .btn-default {
+    font-size: $font-small;
+  }
+}
+
 .fixed-table {
   position: relative;
   width: rem(300px);
@@ -87,6 +100,24 @@ table {
     @include max-size($medium) {
       display: table-row-group;
     }
+
+    &.padding-4 {
+      td {
+        padding-block: $padding-block-small-px;
+      }
+    }
+
+    &.padding-12 {
+      td {
+        padding-block: $padding-block-medium-px;
+      }
+    }
+
+    &.padding-20 {
+      td {
+        padding-block: $padding-block-large-px;
+      }
+    }
   }
 
   th {
@@ -121,6 +152,11 @@ table {
       border-right: 1px solid $color-border;
       position: sticky;
       left: 0;
+      width: 30%;
+
+      @include max-size($small) {
+        width: auto;
+      }
     }
   }
 
@@ -134,18 +170,8 @@ table {
     &:nth-child(odd) {
       td {
         background-color: $color-background;
-
-        &.no-records-table-field {
-          background-color: $color-white;
-          border: none;
-          padding: 0;
-        }
       }
     }
-  }
-
-  .no-table-data {
-    padding: 4px 12px;
   }
 
   .table-header-cell {
