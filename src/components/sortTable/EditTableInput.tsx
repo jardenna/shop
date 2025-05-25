@@ -35,42 +35,42 @@ const EditTableInput = ({
 
   return (
     <form
-      className="edit-controls"
       onSubmit={(event) => {
         event.preventDefault();
         onSave();
       }}
     >
-      {!isAlterntiveInput ? (
-        <Input
-          id={id}
-          name={id}
-          onChange={onEditChange}
-          value={value}
-          labelText={cellContent}
-          type={inputType}
-          inputHasNoLabel
-          autoFocus
+      <div className="edit-controls">
+        {!isAlterntiveInput ? (
+          <Input
+            id={id}
+            name={id}
+            onChange={onEditChange}
+            value={value}
+            labelText={cellContent}
+            type={inputType}
+            inputHasNoLabel
+            autoFocus
+          />
+        ) : (
+          alternativeInput
+        )}
+
+        <IconBtn
+          onClick={onCancel}
+          iconName={IconName.Close}
+          title={language.cancel}
+          ariaLabel={language.cancel}
+          size="12"
         />
-      ) : (
-        alternativeInput
-      )}
-
-      <IconBtn
-        onClick={onCancel}
-        iconName={IconName.Close}
-        title={language.cancel}
-        ariaLabel={language.cancel}
-        size="12"
-      />
-
-      <IconBtn
-        iconName={IconName.Check}
-        title="Check"
-        ariaLabel={language.save}
-        size="16"
-        btnType="submit"
-      />
+        <IconBtn
+          iconName={IconName.Check}
+          title="Check"
+          ariaLabel={language.save}
+          size="16"
+          btnType="submit"
+        />
+      </div>
     </form>
   );
 };

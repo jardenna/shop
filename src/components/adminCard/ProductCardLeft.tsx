@@ -9,6 +9,7 @@ import Img from '../Img';
 import AdminCard from './types';
 
 type ProductCardLeftProps = AdminCard & {
+  allowedDeleteProduct: boolean;
   countInStock: number;
   description: string;
   images: string[];
@@ -27,6 +28,7 @@ const ProductCardLeft = ({
   primaryActionBtn,
   images,
   onReset,
+  allowedDeleteProduct,
 }: ProductCardLeftProps) => {
   const { language } = useLanguage();
 
@@ -61,6 +63,7 @@ const ProductCardLeft = ({
         modalHeaderText={language.deleteCategory}
         linkTo={linkTo}
         scheduledDate={scheduledDate}
+        allowedToDelete={allowedDeleteProduct}
       />
     </CardContent>
   );

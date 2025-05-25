@@ -6,7 +6,7 @@ import { refElementType } from '../../types/types';
 
 type DeleteUserProps = {
   ref: refElementType;
-  text: string;
+  username: string;
   onPrimaryClick: () => void;
   onSecondaryClick?: () => void;
 };
@@ -14,14 +14,17 @@ type DeleteUserProps = {
 const DeleteUser = ({
   onPrimaryClick,
   onSecondaryClick,
-  text,
   ref,
+  username,
 }: DeleteUserProps) => {
   const { language } = useLanguage();
 
   return (
     <section className="tooltip-content" ref={ref}>
-      <span>{text}</span>
+      <span>
+        <p>{language.sureToDelete}</p>
+        <p>{username}?</p>
+      </span>
       <LayoutElement className="footer" ariaLabel={language.deleteUser}>
         <Button variant={BtnVariant.Secondary} onClick={onSecondaryClick}>
           {language.cancel}

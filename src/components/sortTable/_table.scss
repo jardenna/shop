@@ -8,6 +8,10 @@ $input-height: rem(38px);
   justify-content: space-between;
   align-items: flex-end;
   margin-bottom: 8px;
+
+  .btn-default {
+    font-size: $font-small;
+  }
 }
 
 table {
@@ -15,14 +19,14 @@ table {
   width: 100%;
 
   img {
-    width: rem(120px);
+    max-width: rem(120px);
     height: rem(64px);
     object-fit: cover;
     object-position: top;
   }
 
   .missing-img {
-    width: rem(120px);
+    max-width: rem(120px);
     height: auto;
     padding: 8px 0;
     margin: 0;
@@ -54,12 +58,11 @@ table {
     .edit-controls {
       display: flex;
       gap: 12px;
-    }
-  }
 
-  .radio-btn-container {
-    display: flex;
-    gap: 4px;
+      @include max-size($small) {
+        flex-direction: column;
+      }
+    }
   }
 
   th {
@@ -71,7 +74,7 @@ table {
 
     .btn-ghost {
       font-weight: bold;
-      font-size: 14px;
+      font-size: $font-small;
     }
 
     &:last-child {
@@ -87,11 +90,11 @@ table {
   th,
   td {
     padding: 4px 12px;
-    word-wrap: break-word;
+    white-space: nowrap;
   }
 
   tr {
-    @include min-size($medium) {
+    @include min-size($large) {
       display: table;
       width: 100%;
       table-layout: fixed;
@@ -100,12 +103,6 @@ table {
     &:nth-child(odd) {
       td {
         background-color: $color-background;
-
-        &.no-records-table-field {
-          background-color: $color-white;
-          border: none;
-          padding: 0;
-        }
       }
     }
   }
@@ -132,7 +129,7 @@ table {
       }
     }
 
-    @include max-size($medium) {
+    @include max-size($large) {
       display: table-row-group;
     }
   }
@@ -164,11 +161,6 @@ table {
   width: 100%;
   margin-bottom: 12px;
   border: 1px solid $color-border;
-
-  @include max-size($medium) {
-    max-height: rem(400px);
-    overflow: auto;
-  }
 
   table {
     th {

@@ -27,7 +27,7 @@ const ProductImg = ({
   }
 
   return (
-    <div className="record-img-container">
+    <div>
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={() => refetch}
@@ -37,8 +37,8 @@ const ProductImg = ({
           alt={alt}
           figcaption={
             <div className="record-img-header">
-              <h2 className="record-img-title text-ellipsis">{title}</h2>
-              {Subtitle && <h3 className="record-img-sub-title">{Subtitle}</h3>}
+              <h2 className="text-ellipsis">{title}</h2>
+              {Subtitle && <h3>{Subtitle}</h3>}
             </div>
           }
         />

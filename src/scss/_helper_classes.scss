@@ -14,10 +14,6 @@
   gap: 20px;
   width: 100%;
 
-  @include max-size($medium) {
-    flex-direction: column;
-  }
-
   &.align-items-start {
     align-items: flex-start;
   }
@@ -50,14 +46,6 @@
 
 .row {
   flex-direction: row;
-}
-
-.page-small {
-  max-width: $page-width-small;
-}
-
-.page-medium {
-  max-width: $page-width-medium;
 }
 
 .text-bold {
@@ -117,13 +105,4 @@
   height: 1px;
   display: flex;
   background-color: $color-gray-80;
-}
-
-.card {
-  background-color: $color-white;
-  border-radius: 4px;
-  box-shadow: $box-shadow;
-  margin-bottom: 12px;
-  width: 100%;
-  padding: 24px;
 }

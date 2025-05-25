@@ -39,7 +39,7 @@ body,
 
 body {
   margin: 0;
-  font-size: rem(14px);
+  font-size: $font-small;
   color: $color-primary;
   letter-spacing: rem(0.5px);
 }
@@ -51,34 +51,39 @@ h2 {
   margin-bottom: 24px;
 }
 
-h3 {
-  font-family: $font-primary-bold;
-  font-size: rem(14px);
-  font-weight: normal;
-  margin: 0;
-  margin-bottom: 4px;
-}
-
 h1 {
-  font-size: rem(24px);
+  font-size: clamp(rem(20px), $clamp-val, $font-large);
   font-family: $font-secondary;
   letter-spacing: rem(3px);
   display: flex;
   align-items: center;
 
   &::after {
-    content: '';
-    display: flex;
-    margin-left: 8px;
-    border-bottom: 2px solid $color-primary;
-    border-radius: 4px;
-    width: 59px;
+    @include min-size($small) {
+      content: '';
+      display: flex;
+      margin-left: 8px;
+      border-bottom: 2px solid $color-primary;
+      border-radius: 4px;
+      width: 59px;
+    }
   }
+}
+
+h2 {
+  font-size: rem(20px);
+}
+
+h3 {
+  font-family: $font-primary-bold;
+  font-size: $font-small;
+  font-weight: normal;
+  margin: 0;
+  margin-bottom: 4px;
 }
 
 a {
   text-decoration: none;
-  position: relative;
   color: $color-red-30;
   border: 2px solid transparent;
 
@@ -95,7 +100,6 @@ a:not(.btn) {
   }
 
   &::after {
-    position: absolute;
     content: '';
     inset: -10px;
   }
@@ -115,8 +119,6 @@ ul {
 .main-container {
   margin: 0;
   height: 100%;
-  display: grid;
-  grid-template-rows: max-content 1fr;
 }
 
 .container {

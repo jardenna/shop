@@ -95,6 +95,7 @@ gridSmall; Small grid;Smalt grid
 heroText;Upgrade your wardrobe with exclusive deals!;Opgradér din garderobe med eksklusive tilbud!
 heroText1;For a limited time, enjoy incredible discounts on the latest fashion trends;I en begrænset periode kan du få fantastiske rabatter på de nyeste modetrends
 heroTitle;Exclusive Fashion Sale;Eksklusivt Modesalg
+hideContent;Hide content;Skjul indhold
 hidePassword;Hide password;Skjul adgangskode
 home;Home;Hjem
 image;Image;Foto
@@ -200,6 +201,7 @@ scheduledToBePubliched;is scheduled to be published at;er planlagt til udgivelse
 search;Search;Søg
 selectPreferences;Select preferred language and currency;Vælg venligst sprog og valuta
 shopNow;Shop now;Køb nu
+showContent;Show content;Vis indhold
 showPassword;Show password;Vis adgangskode
 showPrice;Show price;Vis pris
 signup;Sign up;Opret bruger

@@ -1,29 +1,35 @@
 @use '../../scss/globals/' as *;
 
-.main-header:not(.admin-container .main-header) {
-  @include max-size($small) {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    z-index: 8;
-  }
-}
-
 .main-header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
+  @include max-size($small) {
+    flex-direction: column;
+  }
+
   .logo {
     svg {
-      height: 24px;
+      height: rem(24px);
       width: rem(260px);
+
+      @include max-size($small) {
+        height: rem(16px);
+        width: rem(180px);
+      }
     }
   }
 
   .dropdown-item {
     min-width: rem(200px);
   }
+}
+
+.welcome-message-container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
 .header-icon-list {

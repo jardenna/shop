@@ -4,6 +4,10 @@
   display: flex;
   gap: 8px;
   align-items: center;
+
+  @include max-size($medium) {
+    flex-direction: column;
+  }
 }
 
 .product-list-container {
@@ -11,6 +15,10 @@
   flex-direction: column;
   gap: 16px;
   padding: 30px;
+
+  @include max-size($small) {
+    padding: 0;
+  }
 
   .product-list-headline {
     display: flex;

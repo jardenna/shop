@@ -1,0 +1,50 @@
+@use '../scss/globals' as *;
+
+.admin {
+  background-color: $color-background;
+  justify-content: center;
+}
+
+.admin-container {
+  .main {
+    display: flex;
+    height: calc(100svh - $header-height);
+  }
+
+  .auth-form {
+    margin-top: 0;
+  }
+
+  .admin-header {
+    height: $header-height;
+    display: flex;
+    align-items: center;
+
+    .btn {
+      max-width: rem(100px);
+      padding-block: 12px;
+      min-height: auto;
+    }
+  }
+
+  .container {
+    max-width: 100%;
+    padding-block: 12px;
+    display: flex;
+  }
+
+  .user-container {
+    .user-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px;
+      border-top: 1px solid $color-border;
+    }
+  }
+}

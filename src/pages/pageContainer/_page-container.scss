@@ -1,0 +1,34 @@
+@use '../../scss/globals' as *;
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: flex-end;
+  margin-bottom: 16px;
+
+  @include max-size($small) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  h1 {
+    margin: 0;
+  }
+}
+
+.page-card {
+  max-height: 78lvh;
+  overflow: auto;
+  background-color: $color-white;
+  border-radius: 4px;
+  box-shadow: $box-shadow;
+  width: 100%;
+  padding: 24px;
+
+  @include max-size($small) {
+    max-height: 100%;
+    padding: 12px;
+  }
+}

@@ -9,7 +9,7 @@ import {
 } from '../../features/products/productApiSlice';
 import { MainPath } from '../../layout/nav/enums';
 import { oneDay } from '../../utils/utils';
-import PageContainer from '../PageContainer';
+import PageContainer from '../pageContainer/PageContainer';
 import './_product-page.scss';
 import ProductTableRow from './ProductTableRow';
 

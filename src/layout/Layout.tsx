@@ -33,7 +33,6 @@ const Layout = () => {
   const { currencyOptions, onChangePrice, exchangeRate } = useCurrency();
   const [logout] = useLogoutMutation();
 
-  // Helper functions
   const handleLogout = () => {
     logout();
     navigate(MainPath.Root);

@@ -6,7 +6,7 @@ import CategoryForm from '../../features/categories/CategoryForm';
 import { useGetCategoryByIdQuery } from '../../features/categories/categoriyApiSlice';
 import useLanguage from '../../features/language/useLanguage';
 import { getErrorMessage } from '../../utils/utils';
-import PageContainer from '../PageContainer';
+import PageContainer from '../pageContainer/PageContainer';
 
 const UpdateCategoryPage = () => {
   const params = useParams();

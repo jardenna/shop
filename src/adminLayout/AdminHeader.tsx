@@ -1,7 +1,7 @@
-import Button from '../../../components/Button';
-import Logo from '../../../layout/header/Logo';
-import LayoutElement from '../../../layout/LayoutElement';
-import { MainPath } from '../../../layout/nav/enums';
+import Button from '../components/Button';
+import Logo from '../layout/header/Logo';
+import LayoutElement from '../layout/LayoutElement';
+import { MainPath } from '../layout/nav/enums';
 
 type AdminHeaderProps = {
   ariaLabel: string;
@@ -17,7 +17,7 @@ const AdminHeader = ({
   isMobileSize,
   welcomeMessage,
 }: AdminHeaderProps) => (
-  <LayoutElement as="header" className="main-header" ariaLabel={ariaLabel}>
+  <LayoutElement as="header" className="admin-header" ariaLabel={ariaLabel}>
     <div className="container main-header-container">
       <Logo linkTo={`/${MainPath.Admin}`} />
       {!isMobileSize && (

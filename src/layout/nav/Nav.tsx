@@ -1,9 +1,7 @@
-import { ReactNode } from 'react';
-import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
-import './_nav.scss';
+import LayoutElement from '../LayoutElement';
 import { LinkText } from './enums';
-import NavItemList from './NavItemList';
+import NavItem from './NavItem';
 
 export type NavItemsProps = {
   linkText: LinkText;
@@ -12,28 +10,19 @@ export type NavItemsProps = {
   iconSize?: string;
 };
 
-export type ActionBtnProps = {
-  ariaLabel?: string;
-  className?: string;
-  label?: string;
-  onClick?: () => void;
-};
-
 type NavProps = {
-  navList: NavItemsProps[];
-  className?: string;
-  iconBtn?: ReactNode;
+  ariaLabel: string;
+  navItemsList: NavItemsProps[];
 };
 
-const Nav = ({ navList, iconBtn, className = '' }: NavProps) => {
-  const { language } = useLanguage();
-
-  return (
-    <nav className={`main-nav ${className}`}>
-      <NavItemList navItemsList={navList} ariaLabel={language.main} />
-      {iconBtn && iconBtn}
-    </nav>
-  );
-};
+const Nav = ({ navItemsList, ariaLabel }: NavProps) => (
+  <LayoutElement as="nav" ariaLabel={ariaLabel} className="nav">
+    <ul className="nav-list">
+      {navItemsList.map((navItem) => (
+        <NavItem key={navItem.linkText} navItem={navItem} />
+      ))}
+    </ul>
+  </LayoutElement>
+);
 
 export default Nav;

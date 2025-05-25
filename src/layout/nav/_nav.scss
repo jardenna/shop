@@ -21,17 +21,15 @@
   }
 }
 
-@mixin collapsed-styles {
-  width: rem(61px);
-
-  .nav-text {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-
 .admin-nav {
-  flex-grow: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden auto;
+
+  .nav {
+    flex-grow: 1;
+  }
 
   .btn-ghost {
     position: absolute;
@@ -49,7 +47,7 @@
     gap: 0;
 
     .nav-item {
-      font-size: rem(16px);
+      font-size: $font-medium;
       text-transform: none;
       width: 100%;
       display: flex;

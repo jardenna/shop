@@ -9,7 +9,7 @@ import CardDate from './CardDate';
 
 type CardFooterProps = AdminCard & {
   modalHeaderText: string;
-  allowedDeleteCategory?: boolean;
+  allowedToDelete?: boolean;
 };
 
 const CardFooter = ({
@@ -19,7 +19,7 @@ const CardFooter = ({
   primaryActionBtn,
   modalHeaderText,
   scheduledDate,
-  allowedDeleteCategory,
+  allowedToDelete,
 }: CardFooterProps) => {
   const { language } = useLanguage();
   const secondaryActionBtn: SecondaryActionBtnProps = {
@@ -36,7 +36,7 @@ const CardFooter = ({
         />
       )}
       <LayoutElement className="footer" ariaLabel="card">
-        {allowedDeleteCategory && (
+        {allowedToDelete && (
           <ModalContainer
             triggerModalBtnContent={language.delete}
             triggerModalBtnVariant={BtnVariant.Danger}

@@ -7,12 +7,16 @@
 .tooltip-content {
   max-width: rem(200px);
 
+  p {
+    margin: 0;
+  }
+
   .footer {
     margin-top: 4px;
 
     .btn {
       min-height: auto;
-      font-size: rem(14px);
+      font-size: $font-small;
       padding: 8px;
     }
   }

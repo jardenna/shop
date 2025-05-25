@@ -67,6 +67,10 @@
 }
 
 .radio-btn-container:not(.radio-card) {
+  display: flex;
+  gap: 4px;
+  margin-top: 12px;
+
   input[type='radio'] {
     border-radius: 50%;
 

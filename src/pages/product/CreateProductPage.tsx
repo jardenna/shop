@@ -1,7 +1,7 @@
 import useLanguage from '../../features/language/useLanguage';
 import ProductForm from '../../features/products/ProductForm';
 import { useGetSubCategoriesWithParentQuery } from '../../features/subCategories/subCategoryApiSlice';
-import PageContainer from '../PageContainer';
+import PageContainer from '../pageContainer/PageContainer';
 
 const CreateProductPage = () => {
   const { language } = useLanguage();

@@ -5,7 +5,7 @@ import { ChangeInputType, OptionType } from '../../types/types';
 import HeaderIcons from '../headerIcons/HeaderIcons';
 import LayoutElement from '../LayoutElement';
 import { MainPath } from '../nav/enums';
-import Nav from '../nav/Nav';
+import NavContainer from '../nav/NavContainer';
 import { navList } from '../nav/navList';
 import './_header.scss';
 import Logo from './Logo';
@@ -40,7 +40,7 @@ const Header = ({
   <LayoutElement as="header" className="main-header" ariaLabel={ariaLabel}>
     <div className="container main-header-container">
       <Logo linkTo={MainPath.Root} />
-      <Nav navList={navList} />
+      <NavContainer navList={navList} />
       <HeaderIcons
         userDropdownList={userDropdownList}
         primaryActionBtn={primaryActionBtn}

@@ -7,87 +7,10 @@
   width: 100%;
 }
 
-.admin {
-  background-color: $color-background;
-  padding-left: 40px;
-  padding-right: 40px;
-  display: flex;
-  justify-content: center;
+.page-small {
+  max-width: $page-width-small;
 }
 
-.admin-container {
-  .main {
-    display: flex;
-  }
-
-  .auth-form {
-    margin-top: 0;
-  }
-
-  .main-header {
-    height: $header-height;
-    display: flex;
-    align-items: center;
-
-    .btn {
-      max-width: rem(100px);
-      padding-block: 12px;
-      min-height: auto;
-    }
-  }
-
-  .page-header {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    align-items: flex-end;
-    margin-bottom: 16px;
-
-    h1 {
-      margin: 0;
-    }
-  }
-
-  .page-card {
-    max-height: 78lvh;
-    overflow: auto;
-    background-color: $color-white;
-    border-radius: 4px;
-    box-shadow: $box-shadow;
-    margin-bottom: 12px;
-    width: 100%;
-    padding: 24px;
-  }
-
-  .container {
-    max-width: 100%;
-    padding-block: 12px;
-  }
-
-  .aside {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    height: calc(100svh - $header-height);
-    width: rem(350px);
-    box-shadow: rgb($color-black, 0.3) 0 1px 4px -1px;
-
-    @include transition($what: width, $time: 0.2s);
-
-    &.collapsed {
-      width: rem(61px);
-
-      .btn-ghost {
-        svg {
-          transform: rotate(180deg);
-        }
-      }
-
-      .nav-text {
-        opacity: 0;
-        width: 0;
-        overflow: hidden;
-      }
-    }
-  }
+.page-medium {
+  max-width: $page-width-medium;
 }
