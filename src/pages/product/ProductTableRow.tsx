@@ -41,10 +41,10 @@ const ProductTableRow = ({
       <td>
         <ProductOverviewCell productName={productName} images={images} />
       </td>
-      <td>
+      <td className="text-nowrap">
         {subCategoryName} / {categoryName}
       </td>
-      <td>
+      <td className="text-nowrap">
         <ProductDiscountPrice price={price} discount={discount || null} />
       </td>
       <td>{formatNumber(countInStock, selectedLanguage)}</td>

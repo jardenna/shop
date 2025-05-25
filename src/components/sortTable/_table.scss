@@ -19,14 +19,14 @@ table {
   width: 100%;
 
   img {
-    width: rem(120px);
+    max-width: rem(120px);
     height: rem(64px);
     object-fit: cover;
     object-position: top;
   }
 
   .missing-img {
-    width: rem(120px);
+    max-width: rem(120px);
     height: auto;
     padding: 8px 0;
     margin: 0;
@@ -74,7 +74,6 @@ table {
     background-color: $color-white;
     border-right: 1px solid $color-border;
     border-bottom: 1px solid $color-border;
-    white-space: nowrap;
     text-align: left;
 
     .btn-ghost {
@@ -95,7 +94,6 @@ table {
   th,
   td {
     padding: 4px 12px;
-    white-space: nowrap;
   }
 
   tr {
