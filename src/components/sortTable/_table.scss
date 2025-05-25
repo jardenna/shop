@@ -112,7 +112,6 @@ table {
     background-color: $color-white;
   }
 
-  /* stylelint-disable-next-line no-descending-specificity */
   th,
   td {
     padding: 4px 12px;
@@ -122,7 +121,6 @@ table {
       border-right: 1px solid $color-border;
       position: sticky;
       left: 0;
-      width: 800px;
     }
   }
 
