@@ -24,7 +24,7 @@ const TableSearchInput = ({
   return (
     <div className="table-search-input">
       <Tooltip
-        placement="top-start"
+        placement="bottom-start"
         ariaControls="filter"
         tooltip={
           <TableSearch

@@ -1,8 +1,6 @@
 /* stylelint-disable no-descending-specificity */
 @use '../../scss/globals' as *;
 
-$input-height: rem(38px);
-
 .table-controls {
   display: flex;
   justify-content: space-between;
@@ -33,19 +31,14 @@ $input-height: rem(38px);
 }
 
 .table-search-input {
-  position: relative;
+  .tooltip {
+    padding: 0;
+  }
 
   .input-container {
-    right: -8px;
-    top: 32px;
-    position: absolute;
-    z-index: 3;
-    min-width: rem(180px);
-
-    input {
+    .table-search {
       background-color: $color-white;
-      border: 1px solid $color-border;
-      min-height: $input-height;
+      height: rem(48px);
     }
   }
 }
@@ -130,7 +123,7 @@ table {
         padding: 4px;
         background-color: $color-white;
         border: 1px solid $color-gray-60;
-        height: $input-height;
+        height: rem(38px);
       }
 
       .edit-controls {

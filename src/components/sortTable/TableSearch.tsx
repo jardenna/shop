@@ -20,6 +20,7 @@ const TableSearch = ({ title, onFilterRows, value }: TableSearchProps) => {
       }}
     >
       <Input
+        className="table-search"
         type="search"
         name={title}
         id={title}

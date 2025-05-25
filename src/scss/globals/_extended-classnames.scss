@@ -2,7 +2,7 @@
 @use './variables' as *;
 @use './fonts' as *;
 
-%styled-input:not(.select-box__input) {
+%styled-input {
   background-color: $color-secondary;
   border: 0;
   height: $input-height;
