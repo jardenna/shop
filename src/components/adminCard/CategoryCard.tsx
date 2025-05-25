@@ -2,6 +2,7 @@ import { Status } from '../../app/api/apiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
+import { getlowerCaseFirstLetter } from '../../utils/utils';
 import CardRight from '../card/CardRight';
 import CategoryCardLeft from './CategoryCardLeft';
 
@@ -57,7 +58,7 @@ const CategoryCard = ({
         heading={`${language.parentCategory}: ${mainCategoryName}`}
         name={subCategoryName}
         showStatusMessage={showStatusMessage}
-        statusMessage={`${language.parentCategoryIs} ${language[statusMessage]}`}
+        statusMessage={`${language.parentCategoryIs} ${getlowerCaseFirstLetter(statusMessage, language)}`}
         onReset={onReset}
       />
     </article>
