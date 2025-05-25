@@ -1,4 +1,4 @@
-import { FormEvent, useRef } from 'react';
+import { FormEvent } from 'react';
 import useLanguage from '../../features/language/useLanguage';
 import { ChangeInputType } from '../../types/types';
 import Input from '../formElements/Input';
@@ -11,7 +11,6 @@ type TableSearchProps = {
 
 const TableSearch = ({ title, onFilterRows, value }: TableSearchProps) => {
   const { language } = useLanguage();
-  const searchInputRef = useRef<HTMLInputElement>(null);
   const text = `${language.filter} ${language[title]}`;
   return (
     <form
@@ -29,7 +28,6 @@ const TableSearch = ({ title, onFilterRows, value }: TableSearchProps) => {
         onChange={onFilterRows}
         labelText={text}
         inputHasNoLabel
-        ref={searchInputRef}
         autoFocus
       />
     </form>

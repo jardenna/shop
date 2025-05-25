@@ -1,6 +1,5 @@
 import { createPopper, Instance, Placement } from '@popperjs/core';
 import { useEffect, useRef, useState } from 'react';
-import { useLocation } from 'react-router';
 import { KeyCode } from '../types/enums';
 import useClickOutside from './useClickOutside';
 import useKeyPress from './useKeyPress';
@@ -11,7 +10,6 @@ type usePopupProps = {
 };
 
 const usePopup = ({ callback, placement }: usePopupProps) => {
-  const location = useLocation();
   const popupRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const arrowRef = useRef<HTMLDivElement | null>(null);
@@ -25,10 +23,6 @@ const usePopup = ({ callback, placement }: usePopupProps) => {
   useClickOutside(popupRef, () => {
     setPopupIsOpen(false);
   }, [buttonRef]);
-
-  useEffect(() => {
-    setPopupIsOpen(false);
-  }, [location]);
 
   useEffect(() => {
     if (popupIsOpen && buttonRef.current && popupRef.current) {
