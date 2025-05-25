@@ -12,6 +12,12 @@ $input-height: rem(38px);
   .btn-default {
     font-size: $font-small;
   }
+
+  .table-grid-icons {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+  }
 }
 
 .fixed-table {
@@ -149,10 +155,10 @@ table {
     white-space: nowrap;
 
     &:first-child {
-      border-right: 1px solid $color-border;
       position: sticky;
       left: 0;
       width: 30%;
+      white-space: inherit;
 
       @include max-size($small) {
         width: auto;
@@ -212,10 +218,4 @@ table {
       min-height: $input-height;
     }
   }
-}
-
-.table-grid-icons {
-  display: flex;
-  gap: 8px;
-  justify-content: flex-end;
 }
