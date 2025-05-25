@@ -34,7 +34,7 @@ const TableSearchInput = ({
           />
         }
         triggerBtnVariant={BtnVariant.Ghost}
-        ariaLabel={language.deleteUser}
+        ariaLabel={`${language.filter} ${label}`}
       >
         <IconBtn
           title={language.filterRow}
