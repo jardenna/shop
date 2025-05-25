@@ -84,7 +84,6 @@ h3 {
 
 a {
   text-decoration: none;
-  position: relative;
   color: $color-red-30;
   border: 2px solid transparent;
 
@@ -101,7 +100,6 @@ a:not(.btn) {
   }
 
   &::after {
-    position: absolute;
     content: '';
     inset: -10px;
   }

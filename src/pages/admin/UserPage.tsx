@@ -159,7 +159,7 @@ const UserPage = () => {
                             close();
                           }}
                           onSecondaryClick={close}
-                          text={`${language.sureToDelete} ${username}?`}
+                          username={username}
                           ref={popupRef}
                         />
                       )}
