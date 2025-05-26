@@ -21,10 +21,13 @@ const createSubCategory = [
     const validationResult = validateScheduledDate(
       categoryStatus,
       scheduledDate,
+      req.lang,
     );
+
     if (!validationResult.success) {
       return res.status(400).json(validationResult);
     }
+
     // Validate category existence
     const mainCategory = await Category.findById(category);
 
@@ -202,6 +205,7 @@ const updateSubCategory = [
     const validationResult = validateScheduledDate(
       categoryStatus,
       scheduledDate,
+      req.lang,
     );
     if (!validationResult.success) {
       return res.status(400).json(validationResult);
