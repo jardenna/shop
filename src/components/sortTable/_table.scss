@@ -182,10 +182,13 @@ table {
 
     th,
     td {
+      &:last-child {
+        width: 15%;
+      }
+
       &:first-child {
         position: sticky;
         left: 0;
-        width: 30%;
         white-space: inherit;
 
         @include max-size($small) {
