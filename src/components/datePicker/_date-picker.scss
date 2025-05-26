@@ -38,6 +38,10 @@
     border-radius: 4px;
     font-size: $font-small;
 
+    &:disabled {
+      cursor: not-allowed;
+    }
+
     &:focus-visible {
       outline: transparent;
       color: $color-secondary;
