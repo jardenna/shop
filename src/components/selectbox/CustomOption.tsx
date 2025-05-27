@@ -8,12 +8,11 @@ const CustomOption = <OptionType,>({
   data,
   innerRef,
   innerProps,
-  isDisabled,
   isFocused,
   isSelected,
   render,
 }: CustomOptionProps<OptionType>) => {
-  const className = `custom-option ${isDisabled ? 'disabled' : ''} ${
+  const className = `custom-option ${
     isSelected ? 'selected' : ''
   } ${isFocused ? 'focused' : ''}`;
 

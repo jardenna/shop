@@ -8,6 +8,7 @@ import formatMongoData from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 import { updateScheduledItems } from '../utils/UpdateScheduledItemsOptions.js';
 import validateProduct from '../utils/validateProduct.js';
+import validateScheduledDate from '../utils/validateScheduledDate.js';
 
 // @desc    Create Product
 // @route   /api/products
@@ -20,8 +21,19 @@ const createProduct = [
     if (error) {
       return res.status(400).json({ success: false, message: error });
     }
+    console.log(req.lang);
 
     const { subCategory, quantity, ...rest } = req.body;
+
+    const validationResult = validateScheduledDate(
+      rest.productStatus,
+      rest.scheduledDate,
+      req.lang,
+    );
+
+    if (!validationResult.success) {
+      return res.status(400).json(validationResult);
+    }
 
     // Check subcategory
     const subCategoryId = await SubCategory.findById(subCategory);
@@ -94,6 +106,16 @@ const updateProduct = [
   scheduledStatusHandler('productStatus'),
   asyncHandler(async (req, res) => {
     const { subCategory, quantity, images, scheduledDate, ...rest } = req.body;
+
+    const validationResult = validateScheduledDate(
+      rest.productStatus,
+      scheduledDate,
+      req.lang,
+    );
+
+    if (!validationResult.success) {
+      return res.status(400).json(validationResult);
+    }
 
     const subCategoryId = await SubCategory.findById(subCategory);
     if (!subCategoryId) {

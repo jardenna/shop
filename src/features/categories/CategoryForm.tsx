@@ -19,13 +19,13 @@ import {
 type CategoryFormProps = {
   id: string | null;
   selectedCategory: CreateCategoryRequest | null;
-  allowedDeleteCategory?: boolean;
+  allowedUpdateCategory?: boolean;
 };
 
 const CategoryForm = ({
   selectedCategory,
   id,
-  allowedDeleteCategory,
+  allowedUpdateCategory,
 }: CategoryFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
@@ -108,7 +108,7 @@ const CategoryForm = ({
       <FieldSet legendText={language.categories} hideLegendText>
         <SharedCategoryInputs
           labelText={language.categoryStatus}
-          allowedDeleteCategory={allowedDeleteCategory}
+          allowedUpdateCategory={allowedUpdateCategory}
           onCategoryNameChange={onChange}
           categoryNamevalue={values.categoryName}
           categoryNameId="categoryName"

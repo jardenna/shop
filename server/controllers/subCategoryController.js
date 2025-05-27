@@ -6,6 +6,7 @@ import SubCategory from '../models/subCategoryModel.js';
 import formatMongoData from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 import { updateScheduledItems } from '../utils/UpdateScheduledItemsOptions.js';
+import validateScheduledDate from '../utils/validateScheduledDate.js';
 
 // @desc    Create SubCategory
 // @route   /api/subcategories
@@ -14,7 +15,18 @@ import { updateScheduledItems } from '../utils/UpdateScheduledItemsOptions.js';
 const createSubCategory = [
   scheduledStatusHandler('categoryStatus'),
   asyncHandler(async (req, res) => {
-    const { subCategoryName, category } = req.body;
+    const { subCategoryName, category, categoryStatus, scheduledDate } =
+      req.body;
+
+    const validationResult = validateScheduledDate(
+      categoryStatus,
+      scheduledDate,
+      req.lang,
+    );
+
+    if (!validationResult.success) {
+      return res.status(400).json(validationResult);
+    }
 
     // Validate category existence
     const mainCategory = await Category.findById(category);
@@ -190,7 +202,14 @@ const updateSubCategory = [
   asyncHandler(async (req, res) => {
     const { subCategoryName, category, categoryStatus, scheduledDate } =
       req.body;
-
+    const validationResult = validateScheduledDate(
+      categoryStatus,
+      scheduledDate,
+      req.lang,
+    );
+    if (!validationResult.success) {
+      return res.status(400).json(validationResult);
+    }
     // Validate category existence
     if (category) {
       const mainCategory = await Category.findById(category);

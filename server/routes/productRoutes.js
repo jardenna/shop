@@ -24,7 +24,7 @@ const router = express.Router();
 router
   .route('/')
   .get(getProducts)
-  .post(authenticate, authorizeEmployee, createProduct);
+  .post(languageMiddleware, authenticate, authorizeEmployee, createProduct);
 
 router.get('/scheduled', checkScheduled);
 router.get('/allProducts', getSortedProducts);

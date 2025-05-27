@@ -43,7 +43,7 @@ const UpdateCategoryPage = () => {
           <CategoryForm
             selectedCategory={category}
             id={params.id || ''}
-            allowedDeleteCategory={!!isAdmin}
+            allowedUpdateCategory={!!isAdmin}
           />
         </PageContainer>
       )}

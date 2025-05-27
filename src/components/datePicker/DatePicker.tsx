@@ -1,3 +1,4 @@
+import { isBefore, startOfDay } from 'date-fns';
 import { DayPicker, OnSelectHandler } from 'react-day-picker';
 import { da, enGB } from 'react-day-picker/locale';
 import 'react-day-picker/style.css';
@@ -25,6 +26,7 @@ function DatePicker({
   const { selectedLanguage } = useLanguage();
 
   const locales = selectedLanguage === 'en' ? enGB : da;
+  const today = startOfDay(new Date());
 
   return (
     <div className="input-container date-picker-container">
@@ -42,6 +44,7 @@ function DatePicker({
       <DayPicker
         fixedWeeks
         required
+        disabled={(date) => isBefore(date, today)}
         startMonth={new Date()}
         mode="single"
         selected={selectedDate}

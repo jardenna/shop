@@ -197,7 +197,7 @@ const Table = <T,>({
                 </tr>
               </thead>
               <tbody className={`padding-${padding}`}>
-                {data.length ? (
+                {filteredData.length ? (
                   children(sortedData)
                 ) : (
                   <tr>

@@ -13,7 +13,11 @@ import validateScheduledDate from '../utils/validateScheduledDate.js';
 const createCategory = asyncHandler(async (req, res) => {
   const { categoryName, categoryStatus, scheduledDate } = req.body;
 
-  const validationResult = validateScheduledDate(categoryStatus, scheduledDate);
+  const validationResult = validateScheduledDate(
+    categoryStatus,
+    scheduledDate,
+    req.lang,
+  );
   if (!validationResult.success) {
     return res.status(400).json(validationResult);
   }
@@ -110,7 +114,16 @@ const getCategoryById = asyncHandler(async (req, res) => {
 const updateCategory = [
   scheduledStatusHandler('categoryStatus'), // Pass the field name
   asyncHandler(async (req, res) => {
-    const { categoryName } = req.body;
+    const { categoryName, categoryStatus, scheduledDate } = req.body;
+
+    const validationResult = validateScheduledDate(
+      categoryStatus,
+      scheduledDate,
+      req.lang,
+    );
+    if (!validationResult.success) {
+      return res.status(400).json(validationResult);
+    }
 
     if (!categoryName) {
       return res.status(400).json({
