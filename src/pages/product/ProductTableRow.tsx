@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { Status } from '../../app/api/apiTypes';
-import CardBadge from '../../components/card/CardBadge';
+import ScheduledDateBadge from '../../components/card/ScheduledDateBadge';
 import useLanguage from '../../features/language/useLanguage';
 import { formatNumber, getlowerCaseFirstLetter } from '../../utils/utils';
 import ProductActions from './ProductActions';
@@ -49,7 +49,7 @@ const ProductTableRow = ({
       </td>
       <td>{formatNumber(countInStock, selectedLanguage)}</td>
       <td>
-        <CardBadge
+        <ScheduledDateBadge
           badgeClassName={status.toLowerCase()}
           badgeText={getlowerCaseFirstLetter(status, language)}
           scheduledDate={scheduledDate || null}

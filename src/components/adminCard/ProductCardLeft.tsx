@@ -1,8 +1,8 @@
 import { Status } from '../../app/api/apiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
-import CardBadge from '../card/CardBadge';
 import CardContent from '../card/CardContent';
+import ScheduledDateBadge from '../card/ScheduledDateBadge';
 import MissingImage from '../formElements/fileInput/MissingImage';
 import Img from '../Img';
 
@@ -41,9 +41,9 @@ const ProductCardLeft = ({
         <MissingImage />
       )}
       <div className="position-relative">
-        <CardBadge
-          badgeText={getlowerCaseFirstLetter(status, language)}
+        <ScheduledDateBadge
           badgeClassName={status.toLowerCase()}
+          badgeText={getlowerCaseFirstLetter(status, language)}
           scheduledDate={scheduledDate || null}
         />
         <h2 className="admin-card-title">{name}</h2>

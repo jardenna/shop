@@ -5,17 +5,17 @@ import DateDisplay from '../datePicker/DateDisplay';
 import Icon from '../icons/Icon';
 import Tooltip from '../tooltip/Tooltip';
 
-type CardBadgeProps = {
+type ScheduledDateBadgeProps = {
   badgeClassName: string;
   badgeText: string;
   scheduledDate: Date | null;
 };
 
-const CardBadge = ({
+const ScheduledDateBadge = ({
   badgeText,
   badgeClassName,
   scheduledDate,
-}: CardBadgeProps) => {
+}: ScheduledDateBadgeProps) => {
   const { language } = useLanguage();
 
   return (
@@ -42,4 +42,4 @@ const CardBadge = ({
   );
 };
 
-export default CardBadge;
+export default ScheduledDateBadge;

@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { Status } from '../../app/api/apiTypes';
-import CardBadge from '../../components/card/CardBadge';
+import ScheduledDateBadge from '../../components/card/ScheduledDateBadge';
 import DateDisplay from '../../components/datePicker/DateDisplay';
 import MoreLink from '../../components/MoreLink';
 import useLanguage from '../../features/language/useLanguage';
@@ -27,7 +27,7 @@ const CategoryTableRow = ({
     <tr>
       <td>{categoryName}</td>
       <td>
-        <CardBadge
+        <ScheduledDateBadge
           badgeClassName={status.toLowerCase()}
           badgeText={getlowerCaseFirstLetter(status, language)}
           scheduledDate={scheduledDate || null}
