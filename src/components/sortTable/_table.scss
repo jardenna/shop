@@ -48,23 +48,6 @@ table {
   border-collapse: collapse;
   width: 100%;
 
-  th,
-  td {
-    padding: 4px 12px;
-    white-space: nowrap;
-  }
-
-  td {
-    line-height: rem(24px);
-    background-color: $color-white;
-  }
-
-  th {
-    background-color: $color-white;
-    border-right: 1px solid $color-border;
-    border-bottom: 1px solid $color-border;
-  }
-
   tbody {
     &.padding-4 {
       td {
@@ -90,6 +73,27 @@ table {
       td {
         background-color: $color-background;
       }
+    }
+  }
+
+  th,
+  td {
+    padding: 4px 12px;
+    white-space: nowrap;
+  }
+
+  td {
+    line-height: rem(24px);
+    background-color: $color-white;
+  }
+
+  th {
+    background-color: $color-white;
+    border-right: 1px solid $color-border;
+    border-bottom: 1px solid $color-border;
+
+    .input-container {
+      min-width: 180px;
     }
   }
 }
@@ -138,6 +142,7 @@ table {
 
     img {
       max-width: rem(120px);
+      min-width: rem(120px);
       height: rem(64px);
       object-fit: cover;
       object-position: top;
@@ -145,6 +150,7 @@ table {
 
     .missing-img {
       max-width: rem(120px);
+      min-width: rem(120px);
       height: auto;
       padding: 8px 0;
       margin: 0;
