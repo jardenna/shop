@@ -5,12 +5,6 @@
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   margin-block: 30px;
 
-  .badge {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-
   .btn {
     min-height: rem(30px);
   }
@@ -24,6 +18,7 @@
 
   .admin-card-title {
     margin: 0;
+    width: 100%;
   }
 
   .admin-card-date {
@@ -43,12 +38,15 @@
     background-color: $color-gray-80;
   }
 
+  .admin-card-heading {
+    display: flex;
+  }
+
   .admin-card-content {
     height: 100%;
     min-height: rem(300px);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     padding: 12px 30px;
     position: relative;
   }

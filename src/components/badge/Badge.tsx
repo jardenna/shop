@@ -6,9 +6,9 @@ type BadgeProps = {
 };
 
 const Badge = ({ className, badgeText }: BadgeProps) => (
-  <div className={`badge ${className}`}>
+  <span className={`badge ${className}`}>
     <span>{badgeText}</span>
-  </div>
+  </span>
 );
 
 export default Badge;

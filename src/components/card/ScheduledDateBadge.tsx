@@ -19,7 +19,7 @@ const ScheduledDateBadge = ({
   const { language } = useLanguage();
 
   return (
-    <div className="flex align-items-center">
+    <div className="badge-container">
       <Badge badgeText={badgeText} className={badgeClassName} />
       {scheduledDate && (
         <Tooltip

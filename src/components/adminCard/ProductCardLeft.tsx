@@ -40,17 +40,18 @@ const ProductCardLeft = ({
       ) : (
         <MissingImage />
       )}
-      <div className="position-relative">
+      <div className="admin-card-heading">
+        <h2 className="admin-card-title">{name}</h2>
         <ScheduledDateBadge
           badgeClassName={status.toLowerCase()}
           badgeText={getlowerCaseFirstLetter(status, language)}
           scheduledDate={scheduledDate || null}
         />
-        <h2 className="admin-card-title">{name}</h2>
-        <span>{language.qty}: </span>
-        <span>{countInStock}</span>
-        <p>{description}</p>
       </div>
+      <span>
+        {language.qty}: {countInStock}{' '}
+      </span>
+      <p>{description}</p>
     </CardContent>
   );
 };
