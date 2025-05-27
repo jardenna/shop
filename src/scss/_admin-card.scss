@@ -5,7 +5,7 @@
 
   &.two-col {
     display: grid;
-    grid-template-columns: 1fr 0.7fr;
+    grid-template-columns: 1fr 0.8fr;
 
     @include max-size($small) {
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -14,7 +14,7 @@
 
   &.three-col {
     display: grid;
-    grid-template-columns: 1fr 1fr 0.7fr;
+    grid-template-columns: 1fr 1fr 0.8fr;
 
     @include max-size($small) {
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -37,8 +37,9 @@
     width: 100%;
   }
 
-  .admin-card-date {
-    font-style: italic;
+  .footer {
+    padding: 0 28px;
+    margin: 0;
   }
 }
 
@@ -61,11 +62,13 @@
     min-height: rem(252px);
     padding: 12px 28px;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   &.card-right {
     background-color: $color-gray-20;
-    max-width: rem(400px);
     padding-right: 12px;
     padding-top: 40px;
     grid-row: span 2;

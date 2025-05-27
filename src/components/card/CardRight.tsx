@@ -24,11 +24,13 @@ const CardRight = ({
   return (
     <CardContent className="right" heading={heading} onReset={onReset}>
       {showStatusMessage && (
-        <div>
-          <h3>{statusMessage}</h3>
-          {name} {language.notVisibleInShop}.
+        <>
+          <div>
+            <h3>{statusMessage}</h3>
+            {name} {language.notVisibleInShop}.
+          </div>
           <LinkButton linkTo={linkTo} linkText={language.publish} />
-        </div>
+        </>
       )}
     </CardContent>
   );
