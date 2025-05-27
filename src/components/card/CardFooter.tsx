@@ -1,14 +1,16 @@
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import { BtnVariant, SizeVariant } from '../../types/enums';
-import AdminCard from '../adminCard/types';
 import LinkButton from '../LinkButton';
-import { SecondaryActionBtnProps } from '../modal/Modal';
+import { PrimaryActionBtnProps, SecondaryActionBtnProps } from '../modal/Modal';
 import ModalContainer from '../modal/ModalContainer';
-import CardDate from './CardDate';
 
-type CardFooterProps = AdminCard & {
+type CardFooterProps = {
+  id: string;
+  linkTo: string;
   modalHeaderText: string;
+  name: string;
+  primaryActionBtn: PrimaryActionBtnProps;
   allowedToDelete?: boolean;
 };
 
@@ -18,7 +20,6 @@ const CardFooter = ({
   name,
   primaryActionBtn,
   modalHeaderText,
-  scheduledDate,
   allowedToDelete,
 }: CardFooterProps) => {
   const { language } = useLanguage();
@@ -27,31 +28,22 @@ const CardFooter = ({
   };
 
   return (
-    <>
-      {scheduledDate && (
-        <CardDate
-          name={name}
-          text={language.scheduledToBePubliched}
-          date={scheduledDate}
-        />
+    <LayoutElement className="footer" ariaLabel="card">
+      {allowedToDelete && (
+        <ModalContainer
+          triggerModalBtnContent={language.delete}
+          triggerModalBtnVariant={BtnVariant.Danger}
+          id={id}
+          primaryActionBtn={primaryActionBtn}
+          secondaryActionBtn={secondaryActionBtn}
+          modalSize={SizeVariant.Sm}
+          modalHeaderText={modalHeaderText}
+        >
+          {language.sureToDelete} {name}
+        </ModalContainer>
       )}
-      <LayoutElement className="footer" ariaLabel="card">
-        {allowedToDelete && (
-          <ModalContainer
-            triggerModalBtnContent={language.delete}
-            triggerModalBtnVariant={BtnVariant.Danger}
-            id={id}
-            primaryActionBtn={primaryActionBtn}
-            secondaryActionBtn={secondaryActionBtn}
-            modalSize={SizeVariant.Sm}
-            modalHeaderText={modalHeaderText}
-          >
-            {language.sureToDelete} {name}
-          </ModalContainer>
-        )}
-        <LinkButton linkTo={linkTo} linkText={language.edit} />
-      </LayoutElement>
-    </>
+      <LinkButton linkTo={linkTo} linkText={language.edit} />
+    </LayoutElement>
   );
 };
 

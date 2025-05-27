@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from 'react-router';
 import ProductCardCenter from '../../components/adminCard/ProductCardCenter';
 import ProductCardLeft from '../../components/adminCard/ProductCardLeft';
+import CardFooter from '../../components/card/CardFooter';
 import CardRight from '../../components/card/CardRight';
 import ErrorContent from '../../components/ErrorContent';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
@@ -97,9 +98,6 @@ const ViewProductPage = () => {
         >
           <article className="admin-card-container">
             <ProductCardLeft
-              id={product.id}
-              primaryActionBtn={primaryActionBtn}
-              linkTo={`/admin/${MainPath.AdminProductUpdate}/${params.id}`}
               name={product.productName}
               scheduledDate={product.scheduledDate || null}
               status={product.productStatus}
@@ -107,7 +105,6 @@ const ViewProductPage = () => {
               description={product.description}
               images={product.images}
               onReset={() => refetch}
-              allowedDeleteProduct={!!isAdmin}
             />
             <ProductCardCenter
               brand={product.brand}
@@ -120,7 +117,6 @@ const ViewProductPage = () => {
             />
             <CardRight
               linkTo={`/admin/${MainPath.AdminSubCategories}`}
-              createdAt={product.createdAt}
               heading={heading}
               onReset={() => refetch}
               name={product.productName}
@@ -128,6 +124,14 @@ const ViewProductPage = () => {
                 product.subCategory.categoryStatus !== 'Published'
               }
               statusMessage={statusMessage}
+            />
+            <CardFooter
+              id={product.id}
+              primaryActionBtn={primaryActionBtn}
+              name={product.productName}
+              modalHeaderText={language.deleteCategory}
+              linkTo={`/admin/${MainPath.AdminProductUpdate}/${params.id}`}
+              allowedToDelete={!!isAdmin}
             />
           </article>
         </PageContainer>

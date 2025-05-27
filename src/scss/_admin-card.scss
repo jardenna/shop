@@ -1,7 +1,8 @@
 @use './globals' as *;
 
 .admin-card-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   margin-block: 30px;
 
   .badge {

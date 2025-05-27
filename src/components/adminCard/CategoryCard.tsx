@@ -8,7 +8,6 @@ import CategoryCardLeft from './CategoryCardLeft';
 
 type CategoryCardProps = {
   categoryId: string;
-  createdAt: Date;
   mainCategoryName: string;
   scheduledDate: Date | null;
   showStatusMessage: boolean;
@@ -23,7 +22,6 @@ type CategoryCardProps = {
 const CategoryCard = ({
   subCategoryName,
   totalProducts,
-  createdAt,
   mainCategoryName,
   showStatusMessage,
   scheduledDate,
@@ -54,7 +52,6 @@ const CategoryCard = ({
       />
       <CardRight
         linkTo={`/admin/${MainPath.AdminCategories}`}
-        createdAt={createdAt}
         heading={`${language.parentCategory}: ${mainCategoryName}`}
         name={subCategoryName}
         showStatusMessage={showStatusMessage}

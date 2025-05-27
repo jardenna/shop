@@ -1,34 +1,29 @@
 import { Status } from '../../app/api/apiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
-import Badge from '../badge/Badge';
+import CardBadge from '../card/CardBadge';
 import CardContent from '../card/CardContent';
-import CardFooter from '../card/CardFooter';
 import MissingImage from '../formElements/fileInput/MissingImage';
 import Img from '../Img';
-import AdminCard from './types';
 
-type ProductCardLeftProps = AdminCard & {
-  allowedDeleteProduct: boolean;
+type ProductCardLeftProps = {
   countInStock: number;
   description: string;
   images: string[];
+  name: string;
+  scheduledDate: Date | null;
   status: Status;
   onReset: () => void;
 };
 
 const ProductCardLeft = ({
   status,
-  scheduledDate,
   countInStock,
   name,
-  linkTo,
-  id,
+  scheduledDate,
   description,
-  primaryActionBtn,
   images,
   onReset,
-  allowedDeleteProduct,
 }: ProductCardLeftProps) => {
   const { language } = useLanguage();
 
@@ -45,26 +40,17 @@ const ProductCardLeft = ({
       ) : (
         <MissingImage />
       )}
-      <div className="position-relative ">
-        <Badge
+      <div className="position-relative">
+        <CardBadge
           badgeText={getlowerCaseFirstLetter(status, language)}
-          className={status.toLowerCase()}
+          badgeClassName={status.toLowerCase()}
+          scheduledDate={scheduledDate || null}
         />
         <h2 className="admin-card-title">{name}</h2>
         <span>{language.qty}: </span>
         <span>{countInStock}</span>
         <p>{description}</p>
       </div>
-
-      <CardFooter
-        id={id}
-        primaryActionBtn={primaryActionBtn}
-        name={name}
-        modalHeaderText={language.deleteCategory}
-        linkTo={linkTo}
-        scheduledDate={scheduledDate}
-        allowedToDelete={allowedDeleteProduct}
-      />
     </CardContent>
   );
 };

@@ -82,7 +82,6 @@ const ViewSubCategoryPage = () => {
             onReset={() => refetch}
             onDeleteSubCategory={handleDeleteSubCategory}
             categoryId={category.id}
-            createdAt={category.createdAt}
             subCategoryName={category.subCategoryName}
             totalProducts={category.productCount}
             mainCategoryName={category.mainCategory.categoryName}

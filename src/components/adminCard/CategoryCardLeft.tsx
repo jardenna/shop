@@ -2,12 +2,17 @@ import { Status } from '../../app/api/apiTypes';
 import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
-import Badge from '../badge/Badge';
+import CardBadge from '../card/CardBadge';
 import CardContent from '../card/CardContent';
 import CardFooter from '../card/CardFooter';
-import AdminCard from './types';
+import { PrimaryActionBtnProps } from '../modal/Modal';
 
-type CategoryCardLeftProps = AdminCard & {
+type CategoryCardLeftProps = {
+  id: string;
+  linkTo: string;
+  name: string;
+  primaryActionBtn: PrimaryActionBtnProps;
+  scheduledDate: Date | null;
   status: Status;
   totalProducts: number;
   onReset: () => void;
@@ -30,9 +35,10 @@ const CategoryCardLeft = ({
     <CardContent className="left" heading={null} onReset={onReset}>
       <div className="position-relative">
         <h2 className="admin-card-title">{name}</h2>
-        <Badge
+        <CardBadge
           badgeText={getlowerCaseFirstLetter(status, language)}
-          className={status.toLowerCase()}
+          badgeClassName={status.toLowerCase()}
+          scheduledDate={scheduledDate || null}
         />
         <span>
           {language.totalProducts}: {totalProducts}
@@ -44,7 +50,6 @@ const CategoryCardLeft = ({
         name={name}
         modalHeaderText={language.deleteCategory}
         linkTo={linkTo}
-        scheduledDate={scheduledDate}
         allowedToDelete={!!isAdmin}
       />
     </CardContent>
