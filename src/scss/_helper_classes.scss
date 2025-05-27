@@ -70,16 +70,13 @@
 .grid {
   display: grid;
 
-  &.two-col {
+  &.grid-two-col {
     grid-template-columns: repeat(2, 1fr);
-
-    @include max-size($small) {
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
+    align-items: center;
   }
 
   &.three-col {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 
     @include max-size($small) {
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

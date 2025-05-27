@@ -5,7 +5,7 @@ type GridTwoColProps = {
 };
 
 const GridTwoCol = ({ children }: GridTwoColProps) => (
-  <div className="grid two-col">{children}</div>
+  <div className="grid grid-two-col">{children}</div>
 );
 
 export default GridTwoCol;

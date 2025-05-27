@@ -96,7 +96,7 @@ const ViewProductPage = () => {
           linkTo={`/admin/${MainPath.AdminProductCreate}`}
           onReset={() => refetch}
         >
-          <article className="grid three-col admin-card-container">
+          <article className="three-col admin-card-container">
             <ProductCardLeft
               name={product.productName}
               scheduledDate={product.scheduledDate || null}

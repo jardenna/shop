@@ -43,7 +43,7 @@ const CategoryCard = ({
   };
 
   return (
-    <article className="grid two-col admin-card-container">
+    <article className="two-col admin-card-container">
       <CategoryCardLeft
         name={subCategoryName}
         status={status}

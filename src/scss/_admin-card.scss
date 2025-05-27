@@ -1,12 +1,25 @@
 @use './globals' as *;
 
 .admin-card-container {
-  // grid-template-columns: repeat(3, 1fr);
   margin-block: 30px;
 
-  // @include max-size($small) {
-  //   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  // }
+  &.two-col {
+    display: grid;
+    grid-template-columns: 1fr 0.7fr;
+
+    @include max-size($small) {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+  }
+
+  &.three-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.7fr;
+
+    @include max-size($small) {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+  }
 
   .btn {
     min-height: rem(30px);
@@ -31,7 +44,6 @@
 
 .admin-card {
   background-color: $color-white;
-  flex: 1;
   padding-top: 42px;
 
   .card-top-line {
@@ -46,11 +58,8 @@
   }
 
   .admin-card-content {
-    height: 100%;
-    min-height: rem(300px);
-    display: flex;
-    flex-direction: column;
-    padding: 12px 30px;
+    min-height: rem(252px);
+    padding: 12px 28px;
     position: relative;
   }
 
