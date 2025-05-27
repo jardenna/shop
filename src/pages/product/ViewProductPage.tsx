@@ -104,6 +104,8 @@ const ViewProductPage = () => {
               countInStock={product.countInStock}
               description={product.description}
               images={product.images}
+              price={product.price}
+              discount={product.discount || 0}
               onReset={() => refetch}
             />
             <ProductCardCenter

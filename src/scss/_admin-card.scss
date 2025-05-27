@@ -58,6 +58,11 @@
     display: flex;
   }
 
+  .admin-card-price {
+    display: flex;
+    justify-content: flex-end;
+  }
+
   .admin-card-content {
     min-height: rem(252px);
     padding: 12px 28px;

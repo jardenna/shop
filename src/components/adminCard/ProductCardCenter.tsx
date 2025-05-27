@@ -1,8 +1,7 @@
 import { ProductSizes } from '../../app/api/apiTypes';
-import ProductPrice from '../../features/currency/components/ProductPrice';
 import useLanguage from '../../features/language/useLanguage';
 import variables from '../../scss/variables.module.scss';
-import { discountCalculation, sizeList } from '../../utils/utils';
+import { sizeList } from '../../utils/utils';
 import CardContent from '../card/CardContent';
 
 import GridTwoCol from '../GridTwoCol';
@@ -22,33 +21,19 @@ const ProductCardCenter = ({
   colours,
   discount,
   material,
-  price,
   sizes,
   onReset,
 }: ProductCardCenterProps) => {
   const { language } = useLanguage();
 
-  const newPrice = discountCalculation(price, discount);
-
   return (
     <CardContent heading={null} onReset={onReset}>
       <span className="separator" />
       <div className="product-list-container">
-        <GridTwoCol>
-          <strong>{language.price}:</strong>
-          <ProductPrice price={price} />
-        </GridTwoCol>
-
         {discount !== 0 && (
-          <>
-            <GridTwoCol>
-              <strong>{language.discount}:</strong> {discount}%
-            </GridTwoCol>
-            <GridTwoCol>
-              <strong>{language.newPrice}:</strong>
-              <ProductPrice price={newPrice} />
-            </GridTwoCol>
-          </>
+          <GridTwoCol>
+            <strong>{language.discount}:</strong> {discount}%
+          </GridTwoCol>
         )}
         <GridTwoCol>
           <strong>{language.brand}:</strong>

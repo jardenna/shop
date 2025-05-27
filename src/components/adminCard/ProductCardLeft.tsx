@@ -1,16 +1,22 @@
 import { Status } from '../../app/api/apiTypes';
+import ProductPrice from '../../features/currency/components/ProductPrice';
 import useLanguage from '../../features/language/useLanguage';
+import ProductDiscountPrice from '../../pages/product/ProductDiscountPrice';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 import CardContent from '../card/CardContent';
 import MissingImage from '../formElements/fileInput/MissingImage';
+import GridTwoCol from '../GridTwoCol';
+
 import Img from '../Img';
 import AdminCardHeading from './AdminCardHeading';
 
 type ProductCardLeftProps = {
   countInStock: number;
   description: string;
+  discount: number;
   images: string[];
   name: string;
+  price: number;
   scheduledDate: Date | null;
   status: Status;
   onReset: () => void;
@@ -24,6 +30,8 @@ const ProductCardLeft = ({
   description,
   images,
   onReset,
+  price,
+  discount,
 }: ProductCardLeftProps) => {
   const { language } = useLanguage();
 
@@ -50,6 +58,14 @@ const ProductCardLeft = ({
         {language.qty}: {countInStock}
       </span>
       <p>{description}</p>
+      <GridTwoCol>
+        <strong>{language.price}:</strong>
+        {discount !== 0 ? (
+          <ProductDiscountPrice price={price} discount={discount} />
+        ) : (
+          <ProductPrice price={price} />
+        )}
+      </GridTwoCol>
     </CardContent>
   );
 };

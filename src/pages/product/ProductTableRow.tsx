@@ -45,7 +45,7 @@ const ProductTableRow = ({
         {subCategoryName} / {categoryName}
       </td>
       <td>
-        <ProductDiscountPrice price={price} discount={discount || null} />
+        <ProductDiscountPrice price={price} discount={discount || 0} />
       </td>
       <td>{formatNumber(countInStock, selectedLanguage)}</td>
       <td>
