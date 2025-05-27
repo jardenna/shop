@@ -39,7 +39,7 @@
     font-size: $font-small;
 
     &:disabled {
-      cursor: not-allowed;
+      pointer-events: none;
     }
 
     &:focus-visible {
