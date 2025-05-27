@@ -1,9 +1,12 @@
 @use './globals' as *;
 
 .admin-card-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  // grid-template-columns: repeat(3, 1fr);
   margin-block: 30px;
+
+  // @include max-size($small) {
+  //   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  // }
 
   .btn {
     min-height: rem(30px);
@@ -56,6 +59,7 @@
     max-width: rem(400px);
     padding-right: 12px;
     padding-top: 40px;
+    grid-row: span 2;
 
     .card-top-line {
       height: 6px;
