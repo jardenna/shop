@@ -60,11 +60,13 @@ const ProductCardLeft = ({
       <p>{description}</p>
       <GridTwoCol>
         <strong>{language.price}:</strong>
-        {discount !== 0 ? (
-          <ProductDiscountPrice price={price} discount={discount} />
-        ) : (
-          <ProductPrice price={price} />
-        )}
+        <span className="flex-align-right">
+          {discount !== 0 ? (
+            <ProductDiscountPrice price={price} discount={discount} />
+          ) : (
+            <ProductPrice price={price} />
+          )}
+        </span>
       </GridTwoCol>
     </CardContent>
   );
