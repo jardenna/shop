@@ -2,7 +2,7 @@ import { Status } from '../../app/api/apiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 import CardContent from '../card/CardContent';
-import ScheduledDateBadge from '../card/ScheduledDateBadge';
+import AdminCardHeading from './AdminCardHeading';
 
 type CategoryCardLeftProps = {
   name: string;
@@ -23,14 +23,12 @@ const CategoryCardLeft = ({
 
   return (
     <CardContent className="left" heading={null} onReset={onReset}>
-      <div className="admin-card-heading">
-        <h2 className="admin-card-title">{name}</h2>
-        <ScheduledDateBadge
-          badgeClassName={status.toLowerCase()}
-          badgeText={getlowerCaseFirstLetter(status, language)}
-          scheduledDate={scheduledDate || null}
-        />
-      </div>
+      <AdminCardHeading
+        badgeClassName={status.toLowerCase()}
+        badgeText={getlowerCaseFirstLetter(status, language)}
+        scheduledDate={scheduledDate || null}
+        name={name}
+      />
       <span>
         {language.totalProducts}: {totalProducts}
       </span>
