@@ -1,8 +1,10 @@
 import { Status } from '../../app/api/apiTypes';
+import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
+import CardFooter from '../card/CardFooter';
 import CardRight from '../card/CardRight';
 import CategoryCardLeft from './CategoryCardLeft';
 
@@ -32,6 +34,8 @@ const CategoryCard = ({
   onReset,
 }: CategoryCardProps) => {
   const { language } = useLanguage();
+  const { isAdmin } = useAuth();
+
   const primaryActionBtn = {
     onClick: onDeleteSubCategory,
     label: language.delete,
@@ -42,9 +46,6 @@ const CategoryCard = ({
     <article className="admin-card-container">
       <CategoryCardLeft
         name={subCategoryName}
-        primaryActionBtn={primaryActionBtn}
-        id={categoryId}
-        linkTo={`/admin/${MainPath.AdminSubCategoryUpdate}/${categoryId}`}
         status={status}
         totalProducts={totalProducts}
         scheduledDate={scheduledDate}
@@ -57,6 +58,14 @@ const CategoryCard = ({
         showStatusMessage={showStatusMessage}
         statusMessage={`${language.parentCategoryIs} ${getlowerCaseFirstLetter(statusMessage, language)}`}
         onReset={onReset}
+      />
+      <CardFooter
+        id={categoryId}
+        primaryActionBtn={primaryActionBtn}
+        name={subCategoryName}
+        modalHeaderText={language.deleteCategory}
+        linkTo={`/admin/${MainPath.AdminSubCategoryUpdate}/${categoryId}`}
+        allowedToDelete={!!isAdmin}
       />
     </article>
   );
