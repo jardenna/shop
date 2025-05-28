@@ -17,7 +17,7 @@ const tableHeaders: Column<Product>[] = [
   { key: 'productName', label: 'name', name: 'image' },
   { key: 'subCategory', label: 'category', name: 'subCategory' },
   { key: 'price', label: 'price', name: 'price' },
-  { key: 'countInStock', label: 'itemsInStock', name: 'countInStock' },
+  { key: 'countInStock', label: 'countInStock', name: 'countInStock' },
   { key: 'productStatus', label: 'status', name: 'productStatus' },
   { key: 'id', label: '', name: '' },
 ];

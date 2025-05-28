@@ -105,7 +105,7 @@ invalidPassword;Invalid password;Ugyldig adgangskode
 invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for planlagt dato
 invalidUserData;Invalid user data;Ugyldig bruger data
 items;items;stk
-itemsInStock;Items in stock;Antal på lager
+countInStock;Items in stock;Antal på lager
 language;Language;Sprog
 loading;Loading;Loading
 lock;Lock;Hængelås
