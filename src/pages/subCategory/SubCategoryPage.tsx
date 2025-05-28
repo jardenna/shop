@@ -25,11 +25,6 @@ const tableHeaders: {
     label: 'name',
     name: 'subCategoryName',
   },
-  {
-    key: 'productCount',
-    label: 'totalProducts',
-    name: 'productCount',
-  },
   { key: 'categoryStatus', label: 'status', name: 'categoryStatus' },
   { key: 'id', label: '', name: '' },
 ];
@@ -75,7 +70,6 @@ const SubCategoryPage = () => {
                 scheduledDate,
                 subCategoryName,
                 categoryStatus,
-                productCount,
                 mainCategoryName,
               }) => (
                 <SubCategoryTableRows
@@ -85,7 +79,6 @@ const SubCategoryPage = () => {
                   scheduledDate={scheduledDate || null}
                   subCategoryName={subCategoryName}
                   mainCategoryName={mainCategoryName}
-                  productCount={productCount}
                 />
               ),
             )

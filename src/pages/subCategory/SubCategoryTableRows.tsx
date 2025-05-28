@@ -9,7 +9,6 @@ import { getlowerCaseFirstLetter } from '../../utils/utils';
 type SubCategoryTableRowsProps = {
   id: string;
   mainCategoryName: string;
-  productCount: number;
   scheduledDate: Date | null;
   status: Status;
   subCategoryName: string;
@@ -20,7 +19,6 @@ const SubCategoryTableRows = ({
   scheduledDate,
   subCategoryName,
   status,
-  productCount,
   mainCategoryName,
 }: SubCategoryTableRowsProps) => {
   const { language } = useLanguage();
@@ -29,7 +27,6 @@ const SubCategoryTableRows = ({
     <tr>
       <td>{mainCategoryName}</td>
       <td>{subCategoryName}</td>
-      <td>{productCount}</td>
       <td>
         <ScheduledDateBadge
           badgeClassName={status.toLowerCase()}
