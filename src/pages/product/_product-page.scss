@@ -18,6 +18,10 @@
   padding: 24px;
   padding-bottom: 0;
 
+  @include max-size($small) {
+    padding: 0;
+  }
+
   .product-list-headline {
     display: flex;
     margin-bottom: 4px;
@@ -53,6 +57,10 @@
   display: flex;
   gap: 4px;
   margin-bottom: 12px;
+
+  @include max-size($small) {
+    margin: 0;
+  }
 
   .product-img-item {
     width: 100%;

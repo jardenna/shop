@@ -27,7 +27,9 @@ const CardRight = ({
         <>
           <div>
             <h3>{statusMessage}</h3>
-            {name} {language.notVisibleInShop}.
+            <p>
+              {name} {language.notVisibleInShop}.
+            </p>
           </div>
           <LinkButton linkTo={linkTo} linkText={language.publish} />
         </>

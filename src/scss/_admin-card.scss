@@ -5,8 +5,12 @@
     display: grid;
     grid-template-columns: 1fr 0.7fr;
 
-    @include max-size($small) {
+    @include max-size($mini) {
       grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+
+      .card-top-line {
+        display: none;
+      }
     }
   }
 
@@ -16,10 +20,15 @@
 
     @include max-size($small) {
       grid-template-columns: repeat(auto-fit, minmax(352px, 1fr));
+
+      .separator,
+      .card-top-line {
+        display: none;
+      }
     }
 
     @include max-size($mini) {
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     }
   }
 
@@ -59,6 +68,10 @@
   background-color: $color-white;
   padding-top: 42px;
 
+  @include max-size($small) {
+    padding-top: 0;
+  }
+
   .card-top-line {
     display: flex;
     height: 4px;
@@ -82,6 +95,15 @@
     flex-direction: column;
     justify-content: space-between;
     padding: 8px;
+
+    @include max-size($small) {
+      min-height: auto;
+      gap: 12px;
+
+      p {
+        margin: 0;
+      }
+    }
   }
 
   &.card-right {
@@ -89,6 +111,14 @@
     padding-right: 12px;
     padding-top: 40px;
     grid-row: span 2;
+
+    p {
+      margin: 0;
+    }
+
+    @include max-size($small) {
+      padding: 0;
+    }
 
     .admin-card-content {
       padding-left: 20px;
@@ -105,6 +135,10 @@
     .admin-card-title {
       display: flex;
       justify-content: flex-end;
+
+      @include max-size($small) {
+        justify-content: flex-start;
+      }
     }
 
     .btn {
