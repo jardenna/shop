@@ -6,6 +6,7 @@ import { BtnVariant } from '../../types/enums';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 import CardFooter from '../card/CardFooter';
 import CardRight from '../card/CardRight';
+import { PrimaryActionBtnProps } from '../modal/Modal';
 import CategoryCardLeft from './CategoryCardLeft';
 
 type CategoryCardProps = {
@@ -36,7 +37,7 @@ const CategoryCard = ({
   const { language } = useLanguage();
   const { isAdmin } = useAuth();
 
-  const primaryActionBtn = {
+  const primaryActionBtn: PrimaryActionBtnProps = {
     onClick: onDeleteSubCategory,
     label: language.delete,
     variant: BtnVariant.Danger,

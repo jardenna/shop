@@ -5,6 +5,7 @@ import CardFooter from '../../components/card/CardFooter';
 import CardRight from '../../components/card/CardRight';
 import ErrorContent from '../../components/ErrorContent';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
+import { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import SkeletonThreeCards from '../../components/skeleton/SkeletonThreeCards';
 import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
@@ -64,7 +65,7 @@ const ViewProductPage = () => {
     }
   };
 
-  const primaryActionBtn = {
+  const primaryActionBtn: PrimaryActionBtnProps = {
     onClick: handleDeleteProduct,
     label: language.delete,
     variant: BtnVariant.Danger,
