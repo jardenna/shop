@@ -11,7 +11,6 @@ import Img from '../Img';
 import AdminCardHeading from './AdminCardHeading';
 
 type ProductCardLeftProps = {
-  countInStock: number;
   description: string;
   discount: number;
   images: string[];
@@ -24,7 +23,6 @@ type ProductCardLeftProps = {
 
 const ProductCardLeft = ({
   status,
-  countInStock,
   name,
   scheduledDate,
   description,
@@ -54,9 +52,7 @@ const ProductCardLeft = ({
         scheduledDate={scheduledDate || null}
         name={name}
       />
-      <span>
-        {language.productsInStock}: {countInStock}
-      </span>
+
       <p>{description}</p>
       <GridTwoCol>
         <strong>{language.price}:</strong>

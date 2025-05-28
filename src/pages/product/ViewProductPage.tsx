@@ -102,7 +102,6 @@ const ViewProductPage = () => {
               name={product.productName}
               scheduledDate={product.scheduledDate || null}
               status={product.productStatus}
-              countInStock={product.countInStock}
               description={product.description}
               images={product.images}
               price={product.price}
@@ -110,6 +109,7 @@ const ViewProductPage = () => {
               onReset={() => refetch}
             />
             <ProductCardCenter
+              countInStock={product.countInStock}
               brand={product.brand}
               colours={product.colors}
               discount={product.discount || 0}

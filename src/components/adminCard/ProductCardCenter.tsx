@@ -9,6 +9,7 @@ import GridTwoCol from '../GridTwoCol';
 type ProductCardCenterProps = {
   brand: string;
   colours: string[];
+  countInStock: number;
   discount: number;
   material: string;
   price: number;
@@ -23,6 +24,7 @@ const ProductCardCenter = ({
   material,
   sizes,
   onReset,
+  countInStock,
 }: ProductCardCenterProps) => {
   const { language } = useLanguage();
 
@@ -30,6 +32,10 @@ const ProductCardCenter = ({
     <CardContent heading={null} onReset={onReset}>
       <span className="separator" />
       <div className="product-list-container">
+        <GridTwoCol>
+          <strong>{language.productsInStock}:</strong> {countInStock}{' '}
+          {language.items}.
+        </GridTwoCol>
         {discount !== 0 && (
           <GridTwoCol>
             <strong>{language.discount}:</strong> {discount}%
