@@ -15,7 +15,7 @@
     grid-template-columns: 1fr 1fr 0.8fr;
 
     @include max-size($small) {
-      grid-template-columns: repeat(auto-fit, minmax(335px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(352px, 1fr));
     }
 
     @include max-size($mini) {
@@ -49,9 +49,13 @@
       padding-top: 12px;
     }
 
-    @media (1000px < width < 800px) {
+    @include between-size($medium, $small) {
       grid-column: span 3;
     }
+
+    // @media (1000px < width < 800px) {
+    //   grid-column: span 3;
+    // }
   }
 }
 
