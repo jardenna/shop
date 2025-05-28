@@ -22,6 +22,7 @@ cannotDeleteAdmin;This action is not allowed for admin;Admin bruger kan ikke sle
 categories;Categories;Kategorier
 category;Category;Kategori
 categoryAlreadyExist;Category already exist;Kategori findes allerede
+categoryCard;Category card;Kategori card
 categoryCreated;Category created;Kategori tilføjet
 categoryDeleted;Category deleted;Kategori blev slettet
 categoryIs;Category is;Kategori er
@@ -167,6 +168,7 @@ price;Price;Pris
 priceRequired;Please insert price;Indsæt venligst pris
 pricing;Pricing;Prissætning
 productActions;Product actions;Produkt aktioner
+productCard;Product card;Produkt card
 productCreated;Product created;Produkt blev tilføjet
 productCopied;Product copied;Produkt blev kopieret
 productDeleted;Product deleted;Produkt blev slettet

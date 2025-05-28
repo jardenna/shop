@@ -238,7 +238,7 @@ const ProductForm = ({
       ref={formRef}
       onCancel={handleGoback}
     >
-      <div className="flex align-items-start">
+      <div className="form-container">
         <div className="flex-2">
           <FormCard legendText={language.productImages} onReset={onReset}>
             {images && images.length > 0 && (

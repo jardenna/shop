@@ -51,7 +51,7 @@ const ProductCardLeft = ({
         badgeText={getlowerCaseFirstLetter(status, language)}
         scheduledDate={scheduledDate || null}
         name={name}
-        ariaLabel="product card"
+        ariaLabel={language.productCard}
       />
       <p>{description}</p>
       <GridTwoCol1 text={language.price}>
