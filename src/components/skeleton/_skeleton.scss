@@ -5,6 +5,13 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+
+  @include max-size($small) {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
+  }
 }
 
 .skeleton {
@@ -46,6 +53,14 @@
 
   .page-card {
     min-height: rem(360px);
+
+    @include max-size($small) {
+      min-height: auto;
+
+      .flex {
+        flex-direction: column;
+      }
+    }
   }
 
   &.skeleton-page {
