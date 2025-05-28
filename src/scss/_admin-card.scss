@@ -45,7 +45,10 @@
 
   .admin-card-title {
     margin: 0;
-    width: 100%;
+
+    @include max-size($small) {
+      justify-content: flex-start;
+    }
   }
 
   .footer {
@@ -77,15 +80,6 @@
     height: 4px;
     width: 100%;
     background-color: $color-gray-80;
-  }
-
-  .admin-card-heading {
-    display: flex;
-  }
-
-  .admin-card-price {
-    display: flex;
-    justify-content: flex-end;
   }
 
   .admin-card-content {
@@ -130,15 +124,6 @@
 
     .admin-card-date {
       text-align: right;
-    }
-
-    .admin-card-title {
-      display: flex;
-      justify-content: flex-end;
-
-      @include max-size($small) {
-        justify-content: flex-start;
-      }
     }
 
     .btn {

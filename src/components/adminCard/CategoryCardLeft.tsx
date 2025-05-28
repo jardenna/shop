@@ -28,6 +28,7 @@ const CategoryCardLeft = ({
         badgeText={getlowerCaseFirstLetter(status, language)}
         scheduledDate={scheduledDate || null}
         name={name}
+        ariaLabel="Category card"
       />
       <span>
         {language.productsInSubcategory}: {productsInSubcategory}{' '}

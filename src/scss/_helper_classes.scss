@@ -36,7 +36,8 @@
   justify-content: flex-end;
 }
 
-.justify-space-between {
+.flex-justify-space-between {
+  display: flex;
   justify-content: space-between;
 }
 

@@ -388,7 +388,6 @@ const ProductForm = ({
                 onChange={handleShowPrice}
                 labelText="showPrice"
               />
-
               {showPrice &&
                 (values.discount ? (
                   <ProductPrice

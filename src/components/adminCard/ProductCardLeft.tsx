@@ -5,7 +5,7 @@ import ProductDiscountPrice from '../../pages/product/ProductDiscountPrice';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 import CardContent from '../card/CardContent';
 import MissingImage from '../formElements/fileInput/MissingImage';
-import GridTwoCol from '../GridTwoCol';
+import GridTwoCol1 from '../GridTwoCol1';
 
 import Img from '../Img';
 import AdminCardHeading from './AdminCardHeading';
@@ -51,19 +51,16 @@ const ProductCardLeft = ({
         badgeText={getlowerCaseFirstLetter(status, language)}
         scheduledDate={scheduledDate || null}
         name={name}
+        ariaLabel="product card"
       />
-
       <p>{description}</p>
-      <GridTwoCol>
-        <strong>{language.price}:</strong>
-        <span className="flex-align-right">
-          {discount !== 0 ? (
-            <ProductDiscountPrice price={price} discount={discount} />
-          ) : (
-            <ProductPrice price={price} />
-          )}
-        </span>
-      </GridTwoCol>
+      <GridTwoCol1 text={language.price}>
+        {discount !== 0 ? (
+          <ProductDiscountPrice price={price} discount={discount} />
+        ) : (
+          <ProductPrice price={price} />
+        )}
+      </GridTwoCol1>
     </CardContent>
   );
 };
