@@ -17,7 +17,7 @@ const tableHeaders: {
 }[] = [
   {
     key: 'mainCategoryName',
-    label: 'parentCategory',
+    label: 'mainCategoryName',
     name: 'mainCategoryName',
   },
   {
