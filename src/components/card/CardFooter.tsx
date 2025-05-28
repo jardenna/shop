@@ -12,6 +12,7 @@ type CardFooterProps = {
   name: string;
   primaryActionBtn: PrimaryActionBtnProps;
   allowedToDelete?: boolean;
+  triggerModalDisabled?: boolean;
 };
 
 const CardFooter = ({
@@ -21,6 +22,7 @@ const CardFooter = ({
   primaryActionBtn,
   modalHeaderText,
   allowedToDelete,
+  triggerModalDisabled,
 }: CardFooterProps) => {
   const { language } = useLanguage();
   const secondaryActionBtn: SecondaryActionBtnProps = {
@@ -38,6 +40,7 @@ const CardFooter = ({
           secondaryActionBtn={secondaryActionBtn}
           modalSize={SizeVariant.Sm}
           modalHeaderText={modalHeaderText}
+          triggerModalDisabled={triggerModalDisabled}
         >
           {language.sureToDelete} {name}
         </ModalContainer>

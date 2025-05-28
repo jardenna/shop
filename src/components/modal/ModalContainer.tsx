@@ -8,6 +8,7 @@ import Modal, { ModalProps } from './Modal';
 type ModalContainerProps = ModalProps & {
   triggerModalBtnContent: ReactNode | string;
   triggerModalBtnVariant?: BtnVariant;
+  triggerModalDisabled?: boolean;
 };
 
 const ModalContainer = ({
@@ -20,6 +21,7 @@ const ModalContainer = ({
   modalHeaderText,
   modalSize,
   className,
+  triggerModalDisabled,
 }: ModalContainerProps) => {
   const dispatch = useAppDispatch();
   const handleOpenModal = () => {
@@ -30,7 +32,11 @@ const ModalContainer = ({
 
   return (
     <>
-      <Button variant={triggerModalBtnVariant} onClick={handleOpenModal}>
+      <Button
+        variant={triggerModalBtnVariant}
+        onClick={handleOpenModal}
+        disabled={triggerModalDisabled}
+      >
         {triggerModalBtnContent}
       </Button>
 

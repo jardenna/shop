@@ -18,6 +18,7 @@ type CategoryCardProps = {
   status: Status;
   statusMessage: string;
   subCategoryName: string;
+  triggerModalDisabled?: boolean;
   onDeleteSubCategory: () => void;
   onReset: () => void;
 };
@@ -33,6 +34,7 @@ const CategoryCard = ({
   categoryId,
   onDeleteSubCategory,
   onReset,
+  triggerModalDisabled,
 }: CategoryCardProps) => {
   const { language } = useLanguage();
   const { isAdmin } = useAuth();
@@ -67,6 +69,7 @@ const CategoryCard = ({
         modalHeaderText={language.deleteCategory}
         linkTo={`/admin/${MainPath.AdminSubCategoryUpdate}/${categoryId}`}
         allowedToDelete={!!isAdmin}
+        triggerModalDisabled={triggerModalDisabled}
       />
     </article>
   );

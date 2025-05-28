@@ -85,6 +85,7 @@ const ViewSubCategoryPage = () => {
             subCategoryName={category.subCategoryName}
             productsInSubcategory={category.productCount}
             mainCategoryName={category.mainCategory.categoryName}
+            triggerModalDisabled={category.productCount > 0}
             showStatusMessage={
               category.mainCategory.categoryStatus !== 'Published'
             }
