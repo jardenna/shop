@@ -11,19 +11,19 @@ import CategoryCardLeft from './CategoryCardLeft';
 type CategoryCardProps = {
   categoryId: string;
   mainCategoryName: string;
+  productsInSubcategory: number;
   scheduledDate: Date | null;
   showStatusMessage: boolean;
   status: Status;
   statusMessage: string;
   subCategoryName: string;
-  totalProducts: number;
   onDeleteSubCategory: () => void;
   onReset: () => void;
 };
 
 const CategoryCard = ({
   subCategoryName,
-  totalProducts,
+  productsInSubcategory,
   mainCategoryName,
   showStatusMessage,
   scheduledDate,
@@ -47,7 +47,7 @@ const CategoryCard = ({
       <CategoryCardLeft
         name={subCategoryName}
         status={status}
-        totalProducts={totalProducts}
+        productsInSubcategory={productsInSubcategory}
         scheduledDate={scheduledDate}
         onReset={onReset}
       />

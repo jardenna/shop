@@ -6,16 +6,16 @@ import AdminCardHeading from './AdminCardHeading';
 
 type CategoryCardLeftProps = {
   name: string;
+  productsInSubcategory: number;
   scheduledDate: Date | null;
   status: Status;
-  totalProducts: number;
   onReset: () => void;
 };
 
 const CategoryCardLeft = ({
   status,
   scheduledDate,
-  totalProducts,
+  productsInSubcategory,
   name,
   onReset,
 }: CategoryCardLeftProps) => {
@@ -30,7 +30,8 @@ const CategoryCardLeft = ({
         name={name}
       />
       <span>
-        {language.totalProducts}: {totalProducts}
+        {language.productsInSubcategory}: {productsInSubcategory}{' '}
+        {language.items}.
       </span>
     </CardContent>
   );

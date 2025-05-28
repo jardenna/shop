@@ -55,7 +55,7 @@ const ProductCardLeft = ({
         name={name}
       />
       <span>
-        {language.qty}: {countInStock}
+        {language.productsInStock}: {countInStock}
       </span>
       <p>{description}</p>
       <GridTwoCol>

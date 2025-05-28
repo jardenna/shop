@@ -321,7 +321,7 @@ const ProductForm = ({
             />
             {selectedProduct && (
               <span>
-                <strong>{language.productsInStockNow}: </strong>
+                <strong>{language.productsInStock}: </strong>
                 {selectedProduct.countInStock}
               </span>
             )}
