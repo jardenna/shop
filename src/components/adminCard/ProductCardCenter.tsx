@@ -4,7 +4,7 @@ import variables from '../../scss/variables.module.scss';
 import { sizeList } from '../../utils/utils';
 import CardContent from '../card/CardContent';
 
-import GridTwoCol1 from '../GridTwoCol1';
+import GridTwoCol from '../GridTwoCol';
 
 type ProductCardCenterProps = {
   brand: string;
@@ -32,14 +32,14 @@ const ProductCardCenter = ({
     <CardContent heading={null} onReset={onReset}>
       <span className="separator" aria-hidden={true} />
       <div className="product-list-container">
-        <GridTwoCol1 text={language.productsInStock}>
+        <GridTwoCol text={language.productsInStock}>
           {countInStock} {language.items}.
-        </GridTwoCol1>
+        </GridTwoCol>
         {discount !== 0 && (
-          <GridTwoCol1 text={language.discount}>{discount}%</GridTwoCol1>
+          <GridTwoCol text={language.discount}>{discount}%</GridTwoCol>
         )}
-        <GridTwoCol1 text={language.brand}>{brand}</GridTwoCol1>
-        <GridTwoCol1 text={language.material}>{material}</GridTwoCol1>
+        <GridTwoCol text={language.brand}>{brand}</GridTwoCol>
+        <GridTwoCol text={language.material}>{material}</GridTwoCol>
         <div>
           <strong className="product-list-headline">{language.colours}:</strong>
           <ul className="product-color-list">

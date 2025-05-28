@@ -5,7 +5,7 @@ import ProductDiscountPrice from '../../pages/product/ProductDiscountPrice';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 import CardContent from '../card/CardContent';
 import MissingImage from '../formElements/fileInput/MissingImage';
-import GridTwoCol1 from '../GridTwoCol1';
+import GridTwoCol from '../GridTwoCol';
 
 import Img from '../Img';
 import AdminCardHeading from './AdminCardHeading';
@@ -54,13 +54,13 @@ const ProductCardLeft = ({
         ariaLabel={language.productCard}
       />
       <p>{description}</p>
-      <GridTwoCol1 text={language.price}>
+      <GridTwoCol text={language.price}>
         {discount !== 0 ? (
           <ProductDiscountPrice price={price} discount={discount} />
         ) : (
           <ProductPrice price={price} />
         )}
-      </GridTwoCol1>
+      </GridTwoCol>
     </CardContent>
   );
 };
