@@ -17,12 +17,12 @@ const CardContent = ({
   onReset,
 }: CardContentProps) => (
   <div className={`admin-card card-${className}`}>
-    <span className="card-top-line" />
+    <span className="card-top-line" aria-hidden={true} />
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
       <section className="admin-card-content">
         {heading && (
           <LayoutElement as="header" ariaLabel="card">
-            <h2 className="admin-card-title">{heading}</h2>
+            <h2 className="flex-align-right admin-card-title">{heading}</h2>
           </LayoutElement>
         )}
         {children}

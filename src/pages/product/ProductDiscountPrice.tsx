@@ -2,7 +2,7 @@ import ProductPrice from '../../features/currency/components/ProductPrice';
 import { discountCalculation } from '../../utils/utils';
 
 type ProductDiscountPriceProps = {
-  discount: number | null;
+  discount: number;
   price: number;
 };
 
@@ -12,7 +12,7 @@ const ProductDiscountPrice = ({
 }: ProductDiscountPriceProps) => {
   const productHasDiscount = discount && discount > 0;
   return (
-    <>
+    <span>
       <ProductPrice
         price={price}
         className={productHasDiscount ? 'text-line-through' : ''}
@@ -25,7 +25,7 @@ const ProductDiscountPrice = ({
       ) : (
         ''
       )}
-    </>
+    </span>
   );
 };
 

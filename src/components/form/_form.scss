@@ -11,6 +11,10 @@ form {
   margin-bottom: 12px;
   width: 100%;
   padding: 16px 24px;
+
+  @include max-size($small) {
+    padding: 12px;
+  }
 }
 
 .form-span-container,
@@ -25,4 +29,12 @@ form {
   font-size: $font-mini;
   line-height: rem(18px);
   margin-block: 12px;
+}
+
+.form-container {
+  display: flex;
+
+  @include max-size($small) {
+    flex-direction: column;
+  }
 }

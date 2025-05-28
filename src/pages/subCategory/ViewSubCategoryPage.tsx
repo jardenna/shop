@@ -82,9 +82,8 @@ const ViewSubCategoryPage = () => {
             onReset={() => refetch}
             onDeleteSubCategory={handleDeleteSubCategory}
             categoryId={category.id}
-            createdAt={category.createdAt}
             subCategoryName={category.subCategoryName}
-            totalProducts={category.productCount}
+            productsInSubcategory={category.productCount}
             mainCategoryName={category.mainCategory.categoryName}
             showStatusMessage={
               category.mainCategory.categoryStatus !== 'Published'

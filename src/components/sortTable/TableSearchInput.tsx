@@ -1,7 +1,7 @@
 import useLanguage from '../../features/language/useLanguage';
 import { BtnVariant, IconName } from '../../types/enums';
 import { ChangeInputType } from '../../types/types';
-import IconBtn from '../IconBtn';
+import Icon from '../icons/Icon';
 import Tooltip from '../tooltip/Tooltip';
 import VisuallyHidden from '../VisuallyHidden';
 import TableSearch from './TableSearch';
@@ -36,11 +36,12 @@ const TableSearchInput = ({
         triggerBtnVariant={BtnVariant.Ghost}
         ariaLabel={`${language.filter} ${label}`}
       >
-        <IconBtn
+        <Icon
           title={language.filterRow}
           ariaLabel={`${language.filter} ${label}`}
           iconName={IconName.Filter}
         />
+
         {value && (
           <>
             <VisuallyHidden>{language.filtersApplied}</VisuallyHidden>

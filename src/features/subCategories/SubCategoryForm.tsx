@@ -71,7 +71,7 @@ const SubCategoryForm = ({
     });
 
   const preSelectedCategory = parentCategoriesOptions.find(
-    (parentCategory) => parentCategory.label === values.category,
+    (mainCategoryName) => mainCategoryName.label === values.category,
   );
 
   const { onAddMessagePopup } = useMessagePopup();
@@ -141,7 +141,7 @@ const SubCategoryForm = ({
             handleSelectStatus('category', selectedOptions);
           }}
           name="category"
-          labelText={language.parentCategory}
+          labelText={language.mainCategoryName}
           errorText={language[errors.category]}
           required
         />

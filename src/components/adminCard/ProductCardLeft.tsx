@@ -1,34 +1,35 @@
 import { Status } from '../../app/api/apiTypes';
+import ProductPrice from '../../features/currency/components/ProductPrice';
 import useLanguage from '../../features/language/useLanguage';
+import ProductDiscountPrice from '../../pages/product/ProductDiscountPrice';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
-import Badge from '../badge/Badge';
 import CardContent from '../card/CardContent';
-import CardFooter from '../card/CardFooter';
 import MissingImage from '../formElements/fileInput/MissingImage';
-import Img from '../Img';
-import AdminCard from './types';
+import GridTwoCol from '../GridTwoCol';
 
-type ProductCardLeftProps = AdminCard & {
-  allowedDeleteProduct: boolean;
-  countInStock: number;
+import Img from '../Img';
+import AdminCardHeading from './AdminCardHeading';
+
+type ProductCardLeftProps = {
   description: string;
+  discount: number;
   images: string[];
+  name: string;
+  price: number;
+  scheduledDate: Date | null;
   status: Status;
   onReset: () => void;
 };
 
 const ProductCardLeft = ({
   status,
-  scheduledDate,
-  countInStock,
   name,
-  linkTo,
-  id,
+  scheduledDate,
   description,
-  primaryActionBtn,
   images,
   onReset,
-  allowedDeleteProduct,
+  price,
+  discount,
 }: ProductCardLeftProps) => {
   const { language } = useLanguage();
 
@@ -45,26 +46,21 @@ const ProductCardLeft = ({
       ) : (
         <MissingImage />
       )}
-      <div className="position-relative ">
-        <Badge
-          badgeText={getlowerCaseFirstLetter(status, language)}
-          className={status.toLowerCase()}
-        />
-        <h2 className="admin-card-title">{name}</h2>
-        <span>{language.qty}: </span>
-        <span>{countInStock}</span>
-        <p>{description}</p>
-      </div>
-
-      <CardFooter
-        id={id}
-        primaryActionBtn={primaryActionBtn}
+      <AdminCardHeading
+        badgeClassName={status.toLowerCase()}
+        badgeText={getlowerCaseFirstLetter(status, language)}
+        scheduledDate={scheduledDate || null}
         name={name}
-        modalHeaderText={language.deleteCategory}
-        linkTo={linkTo}
-        scheduledDate={scheduledDate}
-        allowedToDelete={allowedDeleteProduct}
+        ariaLabel={language.productCard}
       />
+      <p>{description}</p>
+      <GridTwoCol text={language.price}>
+        {discount !== 0 ? (
+          <ProductDiscountPrice price={price} discount={discount} />
+        ) : (
+          <ProductPrice price={price} />
+        )}
+      </GridTwoCol>
     </CardContent>
   );
 };

@@ -1,52 +1,39 @@
 import { Status } from '../../app/api/apiTypes';
-import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
-import Badge from '../badge/Badge';
 import CardContent from '../card/CardContent';
-import CardFooter from '../card/CardFooter';
-import AdminCard from './types';
+import AdminCardHeading from './AdminCardHeading';
 
-type CategoryCardLeftProps = AdminCard & {
+type CategoryCardLeftProps = {
+  name: string;
+  productsInSubcategory: number;
+  scheduledDate: Date | null;
   status: Status;
-  totalProducts: number;
   onReset: () => void;
 };
 
 const CategoryCardLeft = ({
   status,
   scheduledDate,
-  totalProducts,
+  productsInSubcategory,
   name,
-  linkTo,
-  id,
-  primaryActionBtn,
   onReset,
 }: CategoryCardLeftProps) => {
   const { language } = useLanguage();
-  const { isAdmin } = useAuth();
 
   return (
     <CardContent className="left" heading={null} onReset={onReset}>
-      <div className="position-relative">
-        <h2 className="admin-card-title">{name}</h2>
-        <Badge
-          badgeText={getlowerCaseFirstLetter(status, language)}
-          className={status.toLowerCase()}
-        />
-        <span>
-          {language.totalProducts}: {totalProducts}
-        </span>
-      </div>
-      <CardFooter
-        id={id}
-        primaryActionBtn={primaryActionBtn}
+      <AdminCardHeading
+        badgeClassName={status.toLowerCase()}
+        badgeText={getlowerCaseFirstLetter(status, language)}
+        scheduledDate={scheduledDate || null}
         name={name}
-        modalHeaderText={language.deleteCategory}
-        linkTo={linkTo}
-        scheduledDate={scheduledDate}
-        allowedToDelete={!!isAdmin}
+        ariaLabel={language.categoryCard}
       />
+      <span>
+        {language.productsInSubcategory}: {productsInSubcategory}{' '}
+        {language.items}.
+      </span>
     </CardContent>
   );
 };

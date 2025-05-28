@@ -1,29 +1,31 @@
 import { Status } from '../../app/api/apiTypes';
+import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
+import CardFooter from '../card/CardFooter';
 import CardRight from '../card/CardRight';
+import { PrimaryActionBtnProps } from '../modal/Modal';
 import CategoryCardLeft from './CategoryCardLeft';
 
 type CategoryCardProps = {
   categoryId: string;
-  createdAt: Date;
   mainCategoryName: string;
+  productsInSubcategory: number;
   scheduledDate: Date | null;
   showStatusMessage: boolean;
   status: Status;
   statusMessage: string;
   subCategoryName: string;
-  totalProducts: number;
+  triggerModalDisabled?: boolean;
   onDeleteSubCategory: () => void;
   onReset: () => void;
 };
 
 const CategoryCard = ({
   subCategoryName,
-  totalProducts,
-  createdAt,
+  productsInSubcategory,
   mainCategoryName,
   showStatusMessage,
   scheduledDate,
@@ -32,34 +34,42 @@ const CategoryCard = ({
   categoryId,
   onDeleteSubCategory,
   onReset,
+  triggerModalDisabled,
 }: CategoryCardProps) => {
   const { language } = useLanguage();
-  const primaryActionBtn = {
+  const { isAdmin } = useAuth();
+
+  const primaryActionBtn: PrimaryActionBtnProps = {
     onClick: onDeleteSubCategory,
     label: language.delete,
     variant: BtnVariant.Danger,
   };
 
   return (
-    <article className="admin-card-container">
+    <article className="two-col admin-card-container">
       <CategoryCardLeft
         name={subCategoryName}
-        primaryActionBtn={primaryActionBtn}
-        id={categoryId}
-        linkTo={`/admin/${MainPath.AdminSubCategoryUpdate}/${categoryId}`}
         status={status}
-        totalProducts={totalProducts}
+        productsInSubcategory={productsInSubcategory}
         scheduledDate={scheduledDate}
         onReset={onReset}
       />
       <CardRight
         linkTo={`/admin/${MainPath.AdminCategories}`}
-        createdAt={createdAt}
-        heading={`${language.parentCategory}: ${mainCategoryName}`}
+        heading={`${language.mainCategoryName}: ${mainCategoryName}`}
         name={subCategoryName}
         showStatusMessage={showStatusMessage}
         statusMessage={`${language.parentCategoryIs} ${getlowerCaseFirstLetter(statusMessage, language)}`}
         onReset={onReset}
+      />
+      <CardFooter
+        id={categoryId}
+        primaryActionBtn={primaryActionBtn}
+        name={subCategoryName}
+        modalHeaderText={language.deleteCategory}
+        linkTo={`/admin/${MainPath.AdminSubCategoryUpdate}/${categoryId}`}
+        allowedToDelete={!!isAdmin}
+        triggerModalDisabled={triggerModalDisabled}
       />
     </article>
   );

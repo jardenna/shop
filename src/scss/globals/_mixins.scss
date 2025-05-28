@@ -5,13 +5,19 @@ $animation-duration: 0.5s;
 $animation-timing-function: ease-in-out;
 
 @mixin max-size($width) {
-  @media screen and (width <= $width) {
+  @media (width <= $width) {
+    @content;
+  }
+}
+
+@mixin between-size($maxWidth, $minWidth) {
+  @media ($maxWidth < width < $minWidth) {
     @content;
   }
 }
 
 @mixin min-size($width) {
-  @media screen and (width >= $width) {
+  @media (width >= $width) {
     @content;
   }
 }

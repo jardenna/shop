@@ -1,9 +1,11 @@
 import { useNavigate, useParams } from 'react-router';
 import ProductCardCenter from '../../components/adminCard/ProductCardCenter';
 import ProductCardLeft from '../../components/adminCard/ProductCardLeft';
+import CardFooter from '../../components/card/CardFooter';
 import CardRight from '../../components/card/CardRight';
 import ErrorContent from '../../components/ErrorContent';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
+import { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import SkeletonThreeCards from '../../components/skeleton/SkeletonThreeCards';
 import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
@@ -63,7 +65,7 @@ const ViewProductPage = () => {
     }
   };
 
-  const primaryActionBtn = {
+  const primaryActionBtn: PrimaryActionBtnProps = {
     onClick: handleDeleteProduct,
     label: language.delete,
     variant: BtnVariant.Danger,
@@ -79,7 +81,7 @@ const ViewProductPage = () => {
   const statusMessage = `${language.categoryIs} ${subCategoryStatus}`;
 
   return (
-    <article className="page">
+    <article className="page page-large">
       {isLoading && <SkeletonThreeCards />}
       {error && (
         <ErrorContent
@@ -95,21 +97,19 @@ const ViewProductPage = () => {
           linkTo={`/admin/${MainPath.AdminProductCreate}`}
           onReset={() => refetch}
         >
-          <article className="admin-card-container">
+          <article className="three-col admin-card-container">
             <ProductCardLeft
-              id={product.id}
-              primaryActionBtn={primaryActionBtn}
-              linkTo={`/admin/${MainPath.AdminProductUpdate}/${params.id}`}
               name={product.productName}
               scheduledDate={product.scheduledDate || null}
               status={product.productStatus}
-              countInStock={product.countInStock}
               description={product.description}
               images={product.images}
+              price={product.price}
+              discount={product.discount || 0}
               onReset={() => refetch}
-              allowedDeleteProduct={!!isAdmin}
             />
             <ProductCardCenter
+              countInStock={product.countInStock}
               brand={product.brand}
               colours={product.colors}
               discount={product.discount || 0}
@@ -120,7 +120,6 @@ const ViewProductPage = () => {
             />
             <CardRight
               linkTo={`/admin/${MainPath.AdminSubCategories}`}
-              createdAt={product.createdAt}
               heading={heading}
               onReset={() => refetch}
               name={product.productName}
@@ -128,6 +127,14 @@ const ViewProductPage = () => {
                 product.subCategory.categoryStatus !== 'Published'
               }
               statusMessage={statusMessage}
+            />
+            <CardFooter
+              id={product.id}
+              primaryActionBtn={primaryActionBtn}
+              name={product.productName}
+              modalHeaderText={language.deleteCategory}
+              linkTo={`/admin/${MainPath.AdminProductUpdate}/${params.id}`}
+              allowedToDelete={!!isAdmin}
             />
           </article>
         </PageContainer>

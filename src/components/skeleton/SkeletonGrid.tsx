@@ -5,7 +5,7 @@ const SkeletonGrid = ({ count = 5 }: PickedSkeletonTypes) => {
   return (
     <div className="skeleton-column">
       {skeletons.map((_, index) => (
-        <div key={index} className="grid two-col">
+        <div key={index} className="grid grid-two-col">
           <Skeleton height="1" width="5" />
           <Skeleton height="1" />
         </div>

@@ -1,8 +1,7 @@
 import { ProductSizes } from '../../app/api/apiTypes';
-import ProductPrice from '../../features/currency/components/ProductPrice';
 import useLanguage from '../../features/language/useLanguage';
 import variables from '../../scss/variables.module.scss';
-import { discountCalculation, sizeList } from '../../utils/utils';
+import { sizeList } from '../../utils/utils';
 import CardContent from '../card/CardContent';
 
 import GridTwoCol from '../GridTwoCol';
@@ -10,6 +9,7 @@ import GridTwoCol from '../GridTwoCol';
 type ProductCardCenterProps = {
   brand: string;
   colours: string[];
+  countInStock: number;
   discount: number;
   material: string;
   price: number;
@@ -22,41 +22,24 @@ const ProductCardCenter = ({
   colours,
   discount,
   material,
-  price,
   sizes,
   onReset,
+  countInStock,
 }: ProductCardCenterProps) => {
   const { language } = useLanguage();
 
-  const newPrice = discountCalculation(price, discount);
-
   return (
     <CardContent heading={null} onReset={onReset}>
-      <span className="separator" />
+      <span className="separator" aria-hidden={true} />
       <div className="product-list-container">
-        <GridTwoCol>
-          <strong>{language.price}:</strong>
-          <ProductPrice price={price} />
+        <GridTwoCol text={language.productsInStock}>
+          {countInStock} {language.items}.
         </GridTwoCol>
-
         {discount !== 0 && (
-          <>
-            <GridTwoCol>
-              <strong>{language.discount}:</strong> {discount}%
-            </GridTwoCol>
-            <GridTwoCol>
-              <strong>{language.newPrice}:</strong>
-              <ProductPrice price={newPrice} />
-            </GridTwoCol>
-          </>
+          <GridTwoCol text={language.discount}>{discount}%</GridTwoCol>
         )}
-        <GridTwoCol>
-          <strong>{language.brand}:</strong>
-          {brand}
-        </GridTwoCol>
-        <GridTwoCol>
-          <strong>{language.material}:</strong> {material}
-        </GridTwoCol>
+        <GridTwoCol text={language.brand}>{brand}</GridTwoCol>
+        <GridTwoCol text={language.material}>{material}</GridTwoCol>
         <div>
           <strong className="product-list-headline">{language.colours}:</strong>
           <ul className="product-color-list">

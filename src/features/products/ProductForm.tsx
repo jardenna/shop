@@ -15,7 +15,6 @@ import Input from '../../components/formElements/Input';
 import Textarea from '../../components/formElements/Textarea';
 import ToggleSwitch from '../../components/formElements/ToggleSwitch';
 import validateProduct from '../../components/formElements/validation/validateProduct';
-import GridTwoCol from '../../components/GridTwoCol';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import ColorOptions from '../../components/selectbox/ColorOptions';
 import Selectbox from '../../components/selectbox/Selectbox';
@@ -238,7 +237,7 @@ const ProductForm = ({
       ref={formRef}
       onCancel={handleGoback}
     >
-      <div className="flex align-items-start">
+      <div className="form-container">
         <div className="flex-2">
           <FormCard legendText={language.productImages} onReset={onReset}>
             {images && images.length > 0 && (
@@ -321,7 +320,7 @@ const ProductForm = ({
             />
             {selectedProduct && (
               <span>
-                <strong>{language.productsInStockNow}: </strong>
+                <strong>{language.productsInStock}: </strong>
                 {selectedProduct.countInStock}
               </span>
             )}
@@ -380,15 +379,13 @@ const ProductForm = ({
                 inputInfo="%"
               />
             </div>
-
-            <GridTwoCol>
+            <div className="grid grid-two-col">
               <ToggleSwitch
                 id="show-price"
                 checked={showPrice}
                 onChange={handleShowPrice}
                 labelText="showPrice"
               />
-
               {showPrice &&
                 (values.discount ? (
                   <ProductPrice
@@ -397,7 +394,7 @@ const ProductForm = ({
                 ) : (
                   <ProductPrice price={values.price} />
                 ))}
-            </GridTwoCol>
+            </div>
           </FormCard>
           <FormCard legendText={language.details} onReset={onReset}>
             <div className="flex">

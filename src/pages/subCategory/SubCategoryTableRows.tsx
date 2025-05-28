@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { Status } from '../../app/api/apiTypes';
-import CardBadge from '../../components/card/CardBadge';
+import ScheduledDateBadge from '../../components/card/ScheduledDateBadge';
 import MoreLink from '../../components/MoreLink';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
@@ -9,7 +9,6 @@ import { getlowerCaseFirstLetter } from '../../utils/utils';
 type SubCategoryTableRowsProps = {
   id: string;
   mainCategoryName: string;
-  productCount: number;
   scheduledDate: Date | null;
   status: Status;
   subCategoryName: string;
@@ -20,17 +19,16 @@ const SubCategoryTableRows = ({
   scheduledDate,
   subCategoryName,
   status,
-  productCount,
   mainCategoryName,
 }: SubCategoryTableRowsProps) => {
   const { language } = useLanguage();
+
   return (
     <tr>
       <td>{mainCategoryName}</td>
       <td>{subCategoryName}</td>
-      <td>{productCount}</td>
       <td>
-        <CardBadge
+        <ScheduledDateBadge
           badgeClassName={status.toLowerCase()}
           badgeText={getlowerCaseFirstLetter(status, language)}
           scheduledDate={scheduledDate || null}

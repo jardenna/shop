@@ -4,7 +4,6 @@
   display: flex;
   gap: 8px;
   align-items: center;
-  white-space: nowrap;
 
   @include max-size($large) {
     flex-direction: column;
@@ -15,8 +14,9 @@
 .product-list-container {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 30px;
+  gap: 12px;
+  padding: 24px;
+  padding-bottom: 0;
 
   @include max-size($small) {
     padding: 0;
@@ -57,6 +57,10 @@
   display: flex;
   gap: 4px;
   margin-bottom: 12px;
+
+  @include max-size($small) {
+    margin: 0;
+  }
 
   .product-img-item {
     width: 100%;

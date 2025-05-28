@@ -178,6 +178,7 @@ const getSubCategoryById = asyncHandler(async (req, res) => {
     });
   }
 
+  // Check if subcategory have attached products. If so it is not allowed to delete the subcategory
   const productCount = await Product.countDocuments({
     subCategory: id,
   });

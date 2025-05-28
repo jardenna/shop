@@ -21,7 +21,6 @@ const createProduct = [
     if (error) {
       return res.status(400).json({ success: false, message: error });
     }
-    console.log(req.lang);
 
     const { subCategory, quantity, ...rest } = req.body;
 

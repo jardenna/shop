@@ -22,6 +22,7 @@ cannotDeleteAdmin;This action is not allowed for admin;Admin bruger kan ikke sle
 categories;Categories;Kategorier
 category;Category;Kategori
 categoryAlreadyExist;Category already exist;Kategori findes allerede
+categoryCard;Category card;Kategori card
 categoryCreated;Category created;Kategori tilføjet
 categoryDeleted;Category deleted;Kategori blev slettet
 categoryIs;Category is;Kategori er
@@ -61,7 +62,7 @@ date;Date;Dato
 delete;Delete;Slet
 deleteCategory;Delete category;Slet kategori
 deleted;deleted;slettet
-deleteOrReassignCategory;Delete or reassign associated products before deleting this category;Slet eller tildel produkter på ny, før du sletter denne kategori
+deleteOrReassignCategory;Cannot be deleted. Category has linked products;Kan ikke slettes. Kategori har tilknyttede produkter
 deleteUser;Delete user;Slet bruger
 desc;descending;faldende
 description;Description;Beskrivelse
@@ -104,7 +105,8 @@ inactive;Inactive;Inaktiv
 invalidPassword;Invalid password;Ugyldig adgangskode
 invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for planlagt dato
 invalidUserData;Invalid user data;Ugyldig bruger data
-language;Language;Sprog
+items;items;stk
+countInStock;Items in stock;Antal på lager
 language;Language;Sprog
 loading;Loading;Loading
 lock;Lock;Hængelås
@@ -143,7 +145,7 @@ notVisibleInShop;is not visible in the shop until the main category is published
 noUser;User not found. Please sign up first;Bruger blev ikke fundet. Opret dig først
 orange;Orange;Orange
 orders;Orders;Ordrer
-parentCategory;Parent category;Hovedkategori
+mainCategoryName;Parent category;Hovedkategori
 parentCategoryIs;Parent category is;Hovedkategori er
 password;Password;Adgangskode
 passwordDoNotMatch;The passwords do not match;Adgangskoderne stemmer ikke overens
@@ -166,6 +168,7 @@ price;Price;Pris
 priceRequired;Please insert price;Indsæt venligst pris
 pricing;Pricing;Prissætning
 productActions;Product actions;Produkt aktioner
+productCard;Product card;Produkt card
 productCreated;Product created;Produkt blev tilføjet
 productCopied;Product copied;Produkt blev kopieret
 productDeleted;Product deleted;Produkt blev slettet
@@ -178,7 +181,8 @@ productNameRequired;Please insert product name;Indsæt venligst produktnavn
 productNotFound;Product not found;Produktet findes ikke
 productQuantity;Product quantity;Produkt antal
 products;Products;Produkter
-productsInStockNow;Products in stock now;Antal produkter på lager
+productsInStock;Products in stock;Antal produkter på lager
+productsInSubcategory;Products linked to subcategory;Produkter tilknyttet denne underkategori
 productStatus;Product status;Produkt status
 productUpdated;Product updated;Produkt blev opdateret
 productVariants;Product Variants;Produkt varianter
