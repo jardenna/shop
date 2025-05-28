@@ -6,7 +6,7 @@
     grid-template-columns: 1fr 0.7fr;
 
     @include max-size($small) {
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
     }
   }
 
@@ -52,10 +52,6 @@
     @include between-size($medium, $small) {
       grid-column: span 3;
     }
-
-    // @media (1000px < width < 800px) {
-    //   grid-column: span 3;
-    // }
   }
 }
 
