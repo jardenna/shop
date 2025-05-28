@@ -1,8 +1,6 @@
 @use './globals' as *;
 
 .admin-card-container {
-  margin-block: 30px;
-
   &.two-col {
     display: grid;
     grid-template-columns: 1fr 0.7fr;
@@ -22,7 +20,7 @@
   }
 
   .btn {
-    min-height: rem(30px);
+    min-height: rem(28px);
   }
 
   .separator {
@@ -38,8 +36,9 @@
   }
 
   .footer {
-    padding: 0 28px;
     margin: 0;
+    padding: 8px;
+    padding-bottom: 0;
   }
 }
 
@@ -65,11 +64,11 @@
 
   .admin-card-content {
     min-height: rem(252px);
-    padding: 12px 28px;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 8px;
   }
 
   &.card-right {
@@ -77,6 +76,10 @@
     padding-right: 12px;
     padding-top: 40px;
     grid-row: span 2;
+
+    .admin-card-content {
+      padding-left: 20px;
+    }
 
     .card-top-line {
       height: 6px;
