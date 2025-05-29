@@ -1,5 +1,5 @@
 import LayoutElement from '../../layout/LayoutElement';
-import ScheduledDateBadge from '../badge/ScheduledDateBadge';
+import ScheduledDateBadge from '../badge/Badge';
 
 type AdminCardHeadingProps = {
   ariaLabel: string;
