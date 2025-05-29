@@ -1,9 +1,9 @@
 import useLanguage from '../../features/language/useLanguage';
 import { BtnVariant, IconName } from '../../types/enums';
-import Badge from '../badge/Badge';
 import DateDisplay from '../datePicker/DateDisplay';
 import Icon from '../icons/Icon';
 import Tooltip from '../tooltip/Tooltip';
+import './_badge.scss';
 
 type ScheduledDateBadgeProps = {
   badgeClassName: string;
@@ -20,7 +20,9 @@ const ScheduledDateBadge = ({
 
   return (
     <div className="badge-container">
-      <Badge badgeText={badgeText} className={badgeClassName} />
+      <span className={`badge ${badgeClassName}`}>
+        <span>{badgeText}</span>
+      </span>
       {scheduledDate && (
         <Tooltip
           ariaControls="scheduled-date"
