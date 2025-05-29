@@ -5,17 +5,13 @@ import Icon from '../icons/Icon';
 import Tooltip from '../tooltip/Tooltip';
 import './_badge.scss';
 
-type ScheduledDateBadgeProps = {
+type BadgeProps = {
   badgeClassName: string;
   badgeText: string;
   scheduledDate: Date | null;
 };
 
-const ScheduledDateBadge = ({
-  badgeText,
-  badgeClassName,
-  scheduledDate,
-}: ScheduledDateBadgeProps) => {
+const Badge = ({ badgeText, badgeClassName, scheduledDate }: BadgeProps) => {
   const { language } = useLanguage();
 
   return (
@@ -44,4 +40,4 @@ const ScheduledDateBadge = ({
   );
 };
 
-export default ScheduledDateBadge;
+export default Badge;

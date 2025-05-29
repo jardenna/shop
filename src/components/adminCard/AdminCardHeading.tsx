@@ -1,5 +1,5 @@
 import LayoutElement from '../../layout/LayoutElement';
-import ScheduledDateBadge from '../badge/Badge';
+import Badge from '../badge/Badge';
 
 type AdminCardHeadingProps = {
   ariaLabel: string;
@@ -21,7 +21,7 @@ const AdminCardHeading = ({
       <h2 className="admin-card-title">{name}</h2>
     </LayoutElement>
 
-    <ScheduledDateBadge
+    <Badge
       badgeClassName={badgeClassName}
       badgeText={badgeText}
       scheduledDate={scheduledDate || null}
