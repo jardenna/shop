@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router';
+import { adminUrl } from '../../app/endpoints';
 import DropdownBtn, {
   DropdownItem,
 } from '../../components/dropdownBtn/DropdownBtn';
@@ -21,14 +22,14 @@ const ProductActions = ({ onCopyProduct, id }: ProductActionsProps) => {
     {
       label: language.view,
       onClick: () => {
-        navigate(`/admin/${MainPath.AdminProductView}/${id}`);
+        navigate(`${adminUrl}${MainPath.AdminProductView}/${id}`);
       },
       icon: <Icon iconName={IconName.Eye} title={language.eye} ariaHidden />,
     },
     {
       label: language.update,
       onClick: () => {
-        navigate(`/admin/${MainPath.AdminProductUpdate}/${id}`);
+        navigate(`${adminUrl}${MainPath.AdminProductUpdate}/${id}`);
       },
       icon: (
         <Icon iconName={IconName.Edit} title={language.pensil} ariaHidden />

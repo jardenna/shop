@@ -6,6 +6,7 @@ import {
   ProductRequest,
   SubCategoriesWithParent,
 } from '../../app/api/apiTypes';
+import { adminUrl } from '../../app/endpoints';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import Form from '../../components/form/Form';
 import Checkbox from '../../components/formElements/Checkbox';
@@ -220,7 +221,7 @@ const ProductForm = ({
         });
       }
 
-      navigate(`/admin/${MainPath.AdminProducts}`);
+      navigate(`${adminUrl}${MainPath.AdminProducts}`);
     } catch (error: any) {
       onAddMessagePopup({
         messagePopupType: 'error',

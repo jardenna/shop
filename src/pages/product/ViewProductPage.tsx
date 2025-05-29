@@ -1,4 +1,5 @@
 import { useNavigate, useParams } from 'react-router';
+import { adminUrl } from '../../app/endpoints';
 import ProductCardCenter from '../../components/adminCard/ProductCardCenter';
 import ProductCardLeft from '../../components/adminCard/ProductCardLeft';
 import CardFooter from '../../components/card/CardFooter';
@@ -44,7 +45,7 @@ const ViewProductPage = () => {
       const result = await deleteProduct(params.id || '').unwrap();
 
       if (result.success) {
-        navigate(`/admin/${MainPath.AdminProducts}`);
+        navigate(`${adminUrl}${MainPath.AdminProducts}`);
         onAddMessagePopup({
           messagePopupType: 'success',
           message: language.productDeleted,
@@ -94,7 +95,7 @@ const ViewProductPage = () => {
         <PageContainer
           heading={product.productName}
           linkText={language.createNewProduct}
-          linkTo={`/admin/${MainPath.AdminProductCreate}`}
+          linkTo={`${adminUrl}${MainPath.AdminProductCreate}`}
           onReset={() => refetch}
         >
           <article className="three-col admin-card-container">
@@ -119,7 +120,7 @@ const ViewProductPage = () => {
               onReset={() => refetch}
             />
             <CardRight
-              linkTo={`/admin/${MainPath.AdminSubCategories}`}
+              linkTo={`${adminUrl}${MainPath.AdminSubCategories}`}
               heading={heading}
               onReset={() => refetch}
               name={product.productName}
@@ -133,7 +134,7 @@ const ViewProductPage = () => {
               primaryActionBtn={primaryActionBtn}
               name={product.productName}
               modalHeaderText={language.deleteCategory}
-              linkTo={`/admin/${MainPath.AdminProductUpdate}/${params.id}`}
+              linkTo={`${adminUrl}${MainPath.AdminProductUpdate}/${params.id}`}
               allowedToDelete={!!isAdmin}
             />
           </article>

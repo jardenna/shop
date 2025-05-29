@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { Status } from '../../app/api/apiTypes';
+import { adminUrl } from '../../app/endpoints';
 import Badge from '../../components/badge/Badge';
 import DateDisplay from '../../components/datePicker/DateDisplay';
 import MoreLink from '../../components/MoreLink';
@@ -39,7 +40,7 @@ const CategoryTableRow = ({
       <td>
         <MoreLink
           linkText={language.update}
-          linkTo={`/admin/${MainPath.AdminCategoryUpdate}/${id}`}
+          linkTo={`${adminUrl}${MainPath.AdminCategoryUpdate}/${id}`}
         />
       </td>
     </tr>
