@@ -6,6 +6,7 @@
   border-left: 6px solid transparent;
   min-height: rem(52px);
   display: flex;
+  min-width: rem(200px);
 
   &:last-child {
     border-bottom: 0;
