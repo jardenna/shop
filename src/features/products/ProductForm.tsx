@@ -53,6 +53,7 @@ const checkboxItems = [
   { value: 'M', label: 'M' },
   { value: 'L', label: 'L' },
   { value: 'XL', label: 'XL' },
+  { value: 'Onesize', label: 'Onesize' },
 ];
 
 const ProductForm = ({

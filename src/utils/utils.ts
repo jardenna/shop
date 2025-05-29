@@ -4,7 +4,7 @@ import { ValidationMessage } from '../types/enums';
 const oneDay = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
 const currencyCacheKey = 'exchangeRates';
 
-const sizeList: ProductSizes[] = ['S', 'M', 'L', 'XL'];
+const sizeList: ProductSizes[] = ['S', 'M', 'L', 'XL', 'Onesize'];
 
 const roleButtonList = [
   { value: 'Employee', label: 'employee' },
