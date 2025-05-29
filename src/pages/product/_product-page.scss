@@ -1,5 +1,14 @@
 @use '../../scss/globals' as *;
 
+.product-table {
+  th,
+  td {
+    &:first-child {
+      width: rem(300px);
+    }
+  }
+}
+
 .product-overview-cell {
   display: flex;
   gap: 8px;
