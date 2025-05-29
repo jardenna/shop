@@ -39,7 +39,7 @@ const UpdateSubCategoryPage = () => {
 
       {allCategories && category && (
         <PageContainer
-          heading={`${language.category} ${category.subCategoryName}`}
+          heading={`${language.edit} ${language.category} ${category.subCategoryName}`}
           onReset={() => refetch}
         >
           <SubCategoryForm
