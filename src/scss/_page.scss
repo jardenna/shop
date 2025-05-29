@@ -5,6 +5,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  max-width: $page-width-large;
 }
 
 .page-small {
@@ -13,8 +14,4 @@
 
 .page-medium {
   max-width: $page-width-medium;
-}
-
-.page-large {
-  max-width: $page-width-large;
 }

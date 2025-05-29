@@ -75,6 +75,7 @@ const ProductPage = () => {
           columns={tableHeaders}
           tableCaption={language.productList}
           emptyHeaderCellText={language.updateProduct}
+          className="product-table "
         >
           {(data) =>
             data.map(

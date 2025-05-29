@@ -81,7 +81,7 @@ const ViewProductPage = () => {
   const statusMessage = `${language.categoryIs} ${subCategoryStatus}`;
 
   return (
-    <article className="page page-large">
+    <article className="page">
       {isLoading && <SkeletonThreeCards />}
       {error && (
         <ErrorContent
