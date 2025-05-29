@@ -15,6 +15,7 @@ import {
   useCreateCategoryMutation,
   useUpdateCategoryMutation,
 } from './categoriyApiSlice';
+import { adminUrl } from '../../app/endpoints';
 
 type CategoryFormProps = {
   id: string | null;
@@ -88,7 +89,7 @@ const CategoryForm = ({
         });
       }
 
-      navigate(`/admin/${MainPath.AdminCategories}`);
+      navigate(`${adminUrl}${MainPath.AdminCategories}`);
     } catch (error: any) {
       onAddMessagePopup({
         messagePopupType: 'error',

@@ -4,6 +4,7 @@ import {
   CreateSubCategoryRequest,
   SubCategoryResponse,
 } from '../../app/api/apiTypes';
+import { adminUrl } from '../../app/endpoints';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/form/Form';
@@ -112,7 +113,7 @@ const SubCategoryForm = ({
           message: language.categoryCreated,
         });
       }
-      navigate(`/admin/${MainPath.AdminSubCategories}`);
+      navigate(`${adminUrl}${MainPath.AdminSubCategories}`);
     } catch (error: any) {
       onAddMessagePopup({
         messagePopupType: 'error',

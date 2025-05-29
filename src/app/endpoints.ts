@@ -1,8 +1,9 @@
 const baseAuthApi = 'auth';
+const adminUrl = '/admin/';
 
 const authEndpoints = {
   register: `${baseAuthApi}/register`,
-  create: `${baseAuthApi}/admin/create-user`,
+  create: `${baseAuthApi}${adminUrl}create-user`,
   login: `${baseAuthApi}/login`,
   logout: `${baseAuthApi}/logout`,
   checkAuth: `${baseAuthApi}/check-auth`,
@@ -15,6 +16,7 @@ const productUrl = '/products';
 const uploadUrl = '/upload';
 
 export {
+  adminUrl,
   authEndpoints,
   categoryUrl,
   productUrl,

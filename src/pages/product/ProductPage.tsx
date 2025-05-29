@@ -1,4 +1,5 @@
 import { Product } from '../../app/api/apiTypes';
+import { adminUrl } from '../../app/endpoints';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Table, { Column } from '../../components/sortTable/Table';
 import useLanguage from '../../features/language/useLanguage';
@@ -65,7 +66,7 @@ const ProductPage = () => {
       <PageContainer
         heading={language.products}
         linkText={language.createNewProduct}
-        linkTo={`/admin/${MainPath.AdminProductCreate}`}
+        linkTo={`${adminUrl}${MainPath.AdminProductCreate}`}
         onReset={() => refetch}
       >
         <Table

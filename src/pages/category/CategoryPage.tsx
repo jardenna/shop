@@ -1,4 +1,5 @@
 import { Category } from '../../app/api/apiTypes';
+import { adminUrl } from '../../app/endpoints';
 import Table from '../../components/sortTable/Table';
 import {
   useGetAllCategoriesQuery,
@@ -43,7 +44,7 @@ const CategoryPage = () => {
       <PageContainer
         heading={language.categories}
         linkText={language.createNewCategory}
-        linkTo={`/admin/${MainPath.AdminCategoryCreate}`}
+        linkTo={`${adminUrl}${MainPath.AdminCategoryCreate}`}
         onReset={() => refetch}
       >
         <Table

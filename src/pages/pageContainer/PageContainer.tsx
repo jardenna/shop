@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import PageHeader from '../../components/PageHeader';
+import MetaTags from '../../layout/nav/MetaTags';
 import './_page-container.scss';
 
 type PageContainerProps = {
@@ -20,6 +21,7 @@ const PageContainer = ({
   onReset,
 }: PageContainerProps) => (
   <>
+    <MetaTags metaTitle={heading} />
     <PageHeader heading={heading} linkText={linkText} linkTo={linkTo} />
     <div className="page-card">
       <ErrorBoundary
