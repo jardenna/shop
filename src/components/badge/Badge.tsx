@@ -3,6 +3,7 @@ import { BtnVariant, IconName } from '../../types/enums';
 import DateDisplay from '../datePicker/DateDisplay';
 import Icon from '../icons/Icon';
 import Tooltip from '../tooltip/Tooltip';
+import VisuallyHidden from '../VisuallyHidden';
 import './_badge.scss';
 
 type BadgeProps = {
@@ -20,21 +21,26 @@ const Badge = ({ badgeText, badgeClassName, scheduledDate }: BadgeProps) => {
         <span>{badgeText}</span>
       </span>
       {scheduledDate && (
-        <Tooltip
-          ariaControls="scheduled-date"
-          triggerBtnVariant={BtnVariant.Ghost}
-          ariaLabel={language.scheduledDate}
-          tooltip={
+        <>
+          <VisuallyHidden>
             <DateDisplay date={scheduledDate} hour="2-digit" minute="2-digit" />
-          }
-        >
-          <Icon
-            iconName={IconName.Calendar}
-            title={language.calendar}
-            ariaLabel={language.scheduledDate}
-            ariaHidden
-          />
-        </Tooltip>
+          </VisuallyHidden>
+          <div aria-hidden={true}>
+            <Tooltip
+              ariaControls="scheduled-date"
+              triggerBtnVariant={BtnVariant.Ghost}
+              tooltip={
+                <DateDisplay
+                  date={scheduledDate}
+                  hour="2-digit"
+                  minute="2-digit"
+                />
+              }
+            >
+              <Icon iconName={IconName.Calendar} title={language.calendar} />
+            </Tooltip>
+          </div>
+        </>
       )}
     </div>
   );
