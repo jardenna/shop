@@ -42,6 +42,7 @@ const Tooltip = ({
 
       {popupIsOpen && (
         <div
+          role="tooltip"
           ref={popupRef}
           className="tooltip popup-container"
           id={ariaControls}
@@ -49,7 +50,7 @@ const Tooltip = ({
           {typeof tooltip === 'function'
             ? tooltip({ close: togglePopupList })
             : tooltip}
-          <div ref={arrowRef} className="popup-arrow" />
+          <span ref={arrowRef} className="popup-arrow" aria-hidden={true} />
         </div>
       )}
     </div>

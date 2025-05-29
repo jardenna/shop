@@ -57,7 +57,9 @@ const DropdownBtn = ({
       {popupIsOpen && (
         <div ref={popupRef} className="popup-container" id={ariaControls}>
           <DropdownList defaultIndex={-1} dropdownList={dropdownList} />
-          {showArrow && <div ref={arrowRef} className="popup-arrow" />}
+          {showArrow && (
+            <span ref={arrowRef} className="popup-arrow" aria-hidden={true} />
+          )}
         </div>
       )}
     </div>

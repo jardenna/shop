@@ -171,6 +171,7 @@ const UserPage = () => {
                         iconName={IconName.Trash}
                         title={language.trashCan}
                         ariaLabel={language.deleteUser}
+                        ariaHidden
                       />
                     </Tooltip>
                   )}
