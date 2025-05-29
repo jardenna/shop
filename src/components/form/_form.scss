@@ -4,6 +4,20 @@ form {
   width: 100%;
 }
 
+.form-container {
+  display: flex;
+  gap: 20px;
+
+  @include max-size($medium) {
+    flex-direction: column;
+    gap: 0;
+
+    .form-card {
+      padding: 12px;
+    }
+  }
+}
+
 .form-card {
   background-color: $color-white;
   border-radius: 4px;
@@ -11,10 +25,6 @@ form {
   margin-bottom: 12px;
   width: 100%;
   padding: 16px 24px;
-
-  @include max-size($small) {
-    padding: 12px;
-  }
 }
 
 .form-span-container,
@@ -29,12 +39,4 @@ form {
   font-size: $font-mini;
   line-height: rem(18px);
   margin-block: 12px;
-}
-
-.form-container {
-  display: flex;
-
-  @include max-size($small) {
-    flex-direction: column;
-  }
 }

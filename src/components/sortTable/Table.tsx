@@ -26,6 +26,7 @@ type TableProps<T> = {
   data: T[];
   isLoading: boolean;
   tableCaption: string;
+  className?: string;
   emptyHeaderCellText?: string;
   children: (sortedData: T[]) => ReactNode;
   onReset: () => void;
@@ -39,6 +40,7 @@ const Table = <T,>({
   isLoading,
   emptyHeaderCellText,
   onReset,
+  className = '',
 }: TableProps<T>) => {
   const { language } = useLanguage();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -144,7 +146,7 @@ const Table = <T,>({
             FallbackComponent={ErrorBoundaryFallback}
             onReset={() => onReset}
           >
-            <table>
+            <table className={className}>
               <VisuallyHidden as="caption">{tableCaption}</VisuallyHidden>
               <thead>
                 <tr>

@@ -1,5 +1,5 @@
 import LayoutElement from '../../layout/LayoutElement';
-import ScheduledDateBadge from '../card/ScheduledDateBadge';
+import Badge from '../badge/Badge';
 
 type AdminCardHeadingProps = {
   ariaLabel: string;
@@ -16,12 +16,12 @@ const AdminCardHeading = ({
   badgeText,
   ariaLabel,
 }: AdminCardHeadingProps) => (
-  <div className="flex-justify-space-between ">
+  <div className="flex-justify-space-between">
     <LayoutElement as="header" ariaLabel={ariaLabel}>
       <h2 className="admin-card-title">{name}</h2>
     </LayoutElement>
 
-    <ScheduledDateBadge
+    <Badge
       badgeClassName={badgeClassName}
       badgeText={badgeText}
       scheduledDate={scheduledDate || null}

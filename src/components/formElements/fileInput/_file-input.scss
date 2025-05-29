@@ -108,7 +108,10 @@
     border: 1px solid #e5e5e5;
     padding: 12px;
     gap: 12px;
-    justify-content: center;
+
+    @include max-size($small) {
+      justify-content: center;
+    }
 
     .preview-item {
       padding: 0;
