@@ -6,6 +6,7 @@ import useLanguage from '../features/language/useLanguage';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
 import useMediaQuery from '../hooks/useMediaQuery ';
 import { MainPath } from '../layout/nav/enums';
+import MetaTags from '../layout/nav/MetaTags';
 import './_admin-layout.scss';
 import AdminHeader from './AdminHeader';
 import Aside from './aside/Aside';
@@ -34,6 +35,7 @@ const AdminLayout = () => {
 
   return (
     <div className="main-container admin-container">
+      <MetaTags metaTitle={language.admin} />
       {!isMobileSize && <SkipLink />}
       <AdminHeader
         ariaLabel={language.main}

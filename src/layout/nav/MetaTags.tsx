@@ -6,9 +6,10 @@ import { MainPath } from './enums';
 type MetaTagsProps = {
   description?: string;
   keywords?: string;
+  metaTitle?: string;
 };
 
-const MetaTags = ({ description, keywords }: MetaTagsProps) => {
+const MetaTags = ({ description, keywords, metaTitle }: MetaTagsProps) => {
   const location = useLocation();
   const { language } = useLanguage();
 
@@ -18,6 +19,9 @@ const MetaTags = ({ description, keywords }: MetaTagsProps) => {
     }
     if (pathname === '/') {
       return language.login;
+    }
+    if (metaTitle) {
+      return metaTitle;
     }
     return '';
   };
