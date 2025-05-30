@@ -1,0 +1,42 @@
+@use '../../../scss/globals' as *;
+
+.fashion-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+}
+
+.grid-item-1 {
+  grid-row: span 2;
+  background: #f1f1f1;
+}
+
+.grid-flex {
+  display: flex;
+}
+
+.grid-item-3,
+.grid-item-4 {
+  flex: 1;
+
+  //   background: #f1f1f1;
+}
+
+.grid-item-2 {
+  background: #f1f1f1;
+
+  //   background: #faf0ef;
+}
+
+.grid-item-3 {
+  background: #faf0ef;
+}
+
+// .grid-item-4 {
+//   background: #f1f1f1;
+// }
+
+.grid-item-4 {
+  grid-column: 2;
+  background: #bcd6da;
+}
