@@ -1,7 +1,8 @@
 @use '../../scss/globals' as *;
 
 .hero {
-  background-image: url('/images/fashion_fusion_banner.webp');
+  background-color: $color-light-gray-40;
+  background-image: url('/images/fashion_fusion_banner1.png');
   background-size: cover;
   background-repeat: no-repeat;
   height: rem(372px);
@@ -16,6 +17,8 @@
 
   .container {
     height: 100%;
+    display: flex;
+    justify-content: flex-end;
   }
 
   .hero-btn-container {
@@ -43,7 +46,8 @@
     flex-direction: column;
     justify-content: center;
     gap: 32px;
-    max-width: rem(588px);
+    width: 100%;
+    max-width: rem(800px);
     height: 100%;
   }
 
