@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { STATUS } from '../config/constants.js';
+import { SIZES, STATUS } from '../config/constants.js';
 const { ObjectId } = mongoose.Schema;
 
 const reviewSchema = new mongoose.Schema(
@@ -48,8 +48,8 @@ const productSchema = new mongoose.Schema(
     sizes: {
       type: [String],
       required: true,
-      enum: ['S', 'M', 'L', 'XL'],
-      default: ['S', 'M', 'L', 'XL'],
+      enum: SIZES,
+      default: ['S', 'M', 'L', 'XL', 'Onesize'],
     },
     colors: {
       type: [String],

@@ -154,7 +154,7 @@ export type UpdateSubCategoryRequest = {
 };
 
 // Products
-export type ProductSizes = 'S' | 'M' | 'L' | 'XL';
+export type ProductSizes = 'S' | 'M' | 'L' | 'XL' | 'Onesize';
 
 export type Product = DefaultResponseType & {
   brand: string;
