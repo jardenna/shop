@@ -4,7 +4,6 @@ import Hero from './Hero';
 const HomePage = () => (
   <section>
     <Hero />
-
     <div className="container">
       <FashionGrid />
     </div>
