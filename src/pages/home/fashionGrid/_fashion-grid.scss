@@ -4,7 +4,10 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;
-  gap: 28px;
+
+  .grid-flex {
+    display: flex;
+  }
 
   .fashion-grid-item {
     display: flex;
@@ -26,10 +29,18 @@
     }
   }
 
+  .fashion-grid-text {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+  }
+
   .grid-item-1 {
     grid-row: span 2;
     background-color: #f1f1f1;
-    background-image: url('/images/home/topbanner1.png');
+    background-image: url('/images/home/sale.png');
     background-size: contain;
     min-height: 760px;
 
@@ -44,13 +55,8 @@
     }
   }
 
-  .grid-flex {
-    display: flex;
-    gap: 28px;
-  }
-
   .grid-item-2 {
-    background-image: url('/images/home/test/men.jpg');
+    background-image: url('/images/home/men.jpg');
     background-size: cover;
   }
 
@@ -76,17 +82,5 @@
   .grid-item-4 {
     background-image: url('/images/home/kids.jpg');
     background-size: cover;
-
-    .more-link {
-      justify-content: flex-end;
-    }
-  }
-
-  .fashion-grid-text {
-    position: relative;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
   }
 }
