@@ -135,11 +135,4 @@ ul {
   &:focus-visible {
     @include outline(currentcolor);
   }
-
-  @include min-size($large) {
-    &:hover {
-      gap: 12px;
-      color: currentcolor;
-    }
-  }
 }
