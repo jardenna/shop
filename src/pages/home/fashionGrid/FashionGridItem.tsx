@@ -18,7 +18,7 @@ const FashionGridItem = ({
   linkText,
   subHading,
 }: FashionGridItemProps) => (
-  <section className={className}>
+  <section className={`fashion-grid-item ${className}`}>
     <div className="fashion-grid-text">
       <h2>{heading}</h2>
       {subHading && <h3>{subHading}</h3>}

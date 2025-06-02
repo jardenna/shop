@@ -41,7 +41,7 @@ const FashionGrid = () => {
             linkTo="/"
             linkText={language.shopKidsLink}
           >
-            <p>{language.shopWomanText}</p>
+            <p>{language.shopKidsText}</p>
           </FashionGridItem>
         </div>
       </article>

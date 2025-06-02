@@ -4,78 +4,89 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;
-  gap: 32px;
+  gap: 28px;
 
-  img {
-    border-radius: 0;
-  }
-}
-
-.grid-item-1 {
-  grid-row: span 2;
-  background: #f1f1f1;
-  position: relative;
-  display: flex;
-  background-image: url('/images/home/topbanner1.png');
-  background-size: contain;
-  min-height: 760px;
-  background-repeat: no-repeat;
-
-  .fashion-grid-text {
-    position: absolute;
-    top: 101px;
-    right: 20px;
-    max-width: 400px;
-    padding: 30px;
-  }
-
-  h2 {
-    font-size: $font-xlarge;
-    line-height: $font-xlarge;
-  }
-
-  a {
-    width: 100%;
+  .fashion-grid-item {
     display: flex;
-    font-size: 16px;
-    color: $color-red-40;
+    justify-content: flex-end;
+    background-repeat: no-repeat;
+    width: 100%;
+    padding: 28px;
+
+    h2 {
+      font-size: $font-large;
+      line-height: $font-large;
+    }
+
+    a {
+      width: 100%;
+      display: flex;
+      font-size: rem(16px);
+      color: $color-red-40;
+    }
   }
-}
 
-.grid-flex {
-  display: flex;
-  gap: 20px;
-}
+  .grid-item-1 {
+    grid-row: span 2;
+    background-color: #f1f1f1;
+    background-image: url('/images/home/topbanner1.png');
+    background-size: contain;
+    min-height: 760px;
 
-.grid-item-3,
-.grid-item-4 {
-  flex: 1;
-}
+    .fashion-grid-text {
+      justify-content: center;
+      padding-bottom: 80px;
+    }
 
-.grid-item-2 {
-  background-image: url('/images/home/test/men.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: flex;
-  justify-content: flex-end;
+    h2 {
+      font-size: $font-xlarge;
+      line-height: $font-xlarge;
+    }
+  }
+
+  .grid-flex {
+    display: flex;
+    gap: 28px;
+  }
+
+  .grid-item-2 {
+    background-image: url('/images/home/test/men.jpg');
+    background-size: cover;
+  }
+
+  .grid-item-3 {
+    background-color: #faf0ef;
+    background-image: url('/images/home/women.png');
+    background-size: 280px;
+    background-position-y: bottom;
+
+    .fashion-grid-text {
+      max-width: rem(212px);
+      padding-top: 20px;
+    }
+
+    .more-link {
+      width: fit-content;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+
+  .grid-item-4 {
+    background-image: url('/images/home/kids.jpg');
+    background-size: cover;
+
+    .more-link {
+      justify-content: flex-end;
+    }
+  }
 
   .fashion-grid-text {
-    max-width: 372px;
-    padding: 30px;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
   }
-}
-
-.grid-item-3 {
-  background: #faf0ef;
-  background-image: url('/images/home/women.png');
-  background-size: 291px;
-  background-repeat: no-repeat;
-}
-
-.grid-item-4 {
-  grid-column: 2;
-  background: #bcd6da;
-  background-image: url('/images/home/test/kids1.png');
-  background-size: cover;
-  background-repeat: no-repeat;
 }
