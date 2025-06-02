@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;
-  gap: 20px;
+  gap: 32px;
 
   img {
     border-radius: 0;
@@ -16,8 +16,12 @@
   background: #f1f1f1;
   position: relative;
   display: flex;
+  background-image: url('/images/home/topbanner1.png');
+  background-size: contain;
+  min-height: 760px;
+  background-repeat: no-repeat;
 
-  .caption-text {
+  .fashion-grid-text {
     position: absolute;
     top: 101px;
     right: 20px;
@@ -34,6 +38,7 @@
     width: 100%;
     display: flex;
     font-size: 16px;
+    color: $color-red-40;
   }
 }
 
@@ -51,16 +56,19 @@
   background-image: url('/images/home/test/men.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 30px 60px;
   display: flex;
   justify-content: flex-end;
+
+  .fashion-grid-text {
+    max-width: 372px;
+    padding: 30px;
+  }
 }
 
 .grid-item-3 {
   background: #faf0ef;
   background-image: url('/images/home/women.png');
   background-size: 291px;
-  background-position: left bottom;
   background-repeat: no-repeat;
 }
 
