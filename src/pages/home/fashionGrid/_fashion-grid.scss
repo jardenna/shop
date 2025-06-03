@@ -39,7 +39,7 @@
 
   .grid-item-1 {
     grid-row: span 2;
-    background-color: #f1f1f1;
+    background-color: $color-light-gray;
     background-image: url('/images/home/sale.png');
     background-size: contain;
     min-height: 760px;
