@@ -117,12 +117,8 @@
     background-size: 250px;
     background-position-y: bottom;
 
-    @include max-size($large) {
+    @include between-size($small, $large) {
       background-size: contain;
-    }
-
-    @include max-size($small) {
-      background-size: 250px;
     }
 
     .fashion-grid-text {

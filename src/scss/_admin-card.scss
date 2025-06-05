@@ -59,7 +59,7 @@
       padding-top: 12px;
     }
 
-    @include between-size($medium, $small) {
+    @include between-size($small, $medium) {
       grid-column: span 3;
     }
   }
