@@ -1,4 +1,4 @@
-export enum MainPath {
+enum MainPath {
   About = 'about',
   Admin = 'admin',
   AdminCategories = 'categories',
@@ -28,7 +28,11 @@ export enum MainPath {
   Users = 'users',
 }
 
-export enum LinkText {
+enum FrontPath {
+  Kids = 'kids',
+}
+
+enum LinkText {
   About = 'about',
   Account = 'account',
   Categories = 'categories',
@@ -45,3 +49,5 @@ export enum LinkText {
   Update = 'update',
   Users = 'users',
 }
+
+export { FrontPath, LinkText, MainPath };

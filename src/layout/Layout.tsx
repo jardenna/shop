@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Outlet, useLocation, useNavigate } from 'react-router';
+import { Outlet, useNavigate } from 'react-router';
 import { DropdownItem } from '../components/dropdownBtn/DropdownBtn';
 import Icon from '../components/icons/Icon';
 import { SecondaryActionBtnProps } from '../components/modal/Modal';
@@ -23,7 +23,6 @@ export type LayoutElementProps = {
 };
 
 const Layout = () => {
-  const location = useLocation();
   const navigate = useNavigate();
   const { language, switchLanguage, selectedLanguage } = useLanguage();
   const { isMobileSize } = useMediaQuery();
@@ -57,8 +56,6 @@ const Layout = () => {
     callback: handleSubmit,
     initialState,
   });
-
-  const isHomePage = location.pathname === '/';
 
   // Button configurations
   const primaryActionBtn = {
@@ -145,9 +142,7 @@ const Layout = () => {
         }}
       />
       <main id="main">
-        <div className={isHomePage ? 'home-page' : 'container page'}>
-          <Outlet />
-        </div>
+        <Outlet />
       </main>
     </div>
   );

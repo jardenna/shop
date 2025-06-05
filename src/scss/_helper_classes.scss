@@ -72,7 +72,7 @@
     align-items: center;
   }
 
-  &.three-col {
+  &.grid-three-col {
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 
     @include max-size($small) {

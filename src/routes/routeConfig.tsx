@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router';
 import AdminLayout from '../adminLayout/AdminLayout';
 import Layout from '../layout/Layout';
-import { MainPath } from '../layout/nav/enums';
+import { FrontPath, MainPath } from '../layout/nav/enums';
 import About from '../pages/About';
 import MyAccount from '../pages/account/MyAccount';
 import Orders from '../pages/account/Orders';
@@ -16,6 +16,7 @@ import UpdateCategoryPage from '../pages/category/UpdateCategoryPage';
 import Collections from '../pages/Collections';
 import Contact from '../pages/Contact';
 import ErrorPage from '../pages/ErrorPage';
+import Kids from '../pages/frontPages/Kids';
 import HomePage from '../pages/home/HomePage';
 import LoginPage from '../pages/LoginPage';
 import CreateProductPage from '../pages/product/CreateProductPage';
@@ -39,6 +40,10 @@ const routeConfig = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+      },
+      {
+        path: FrontPath.Kids,
+        element: <Kids />,
       },
       {
         path: MainPath.Collection,
