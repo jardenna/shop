@@ -1,3 +1,5 @@
-const Collections = () => <section>Collections</section>;
+const Collections = () => (
+  <section className="container page">Collections</section>
+);
 
 export default Collections;
