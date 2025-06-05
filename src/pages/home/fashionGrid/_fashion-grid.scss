@@ -26,6 +26,7 @@
       display: flex;
       font-size: rem(16px);
       color: $color-red-40;
+      justify-content: flex-end;
     }
   }
 
@@ -82,5 +83,6 @@
   .grid-item-4 {
     background-image: url('/images/home/kids.jpg');
     background-size: cover;
+    background-color: #e1e1e1;
   }
 }
