@@ -107,6 +107,7 @@ invalidPassword;Invalid password;Ugyldig adgangskode
 invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for planlagt dato
 invalidUserData;Invalid user data;Ugyldig bruger data
 items;items;stk
+kids;Kids;Børn
 language;Language;Sprog
 loading;Loading;Loading
 lock;Lock;Hængelås
@@ -121,6 +122,7 @@ mainCategoryName;Parent category;Hovedkategori
 material;Material;Materiale
 materialRequired;Please insert material;Indsæt venligst materiale
 maximumFileSize;Maximum file size;Maksimal filstørrelse
+men:Men:Mænd
 menu;Menu;Menu
 minLength;At least 8 characters;Mindst 8 tegn
 multiColor;MultiColor;Flerfarvet
@@ -253,7 +255,6 @@ userDeleted;User deleted;Bruger slettet
 userInfo;User info;Bruger info
 username;User name;Brugernavn
 users;Users;Brugere
-users;Users;Brugere
 userUpdated;User updated;Bruger opdateret
 view;View;Se
 viewCategory;View category;Se kategori
@@ -261,4 +262,5 @@ viewProduct;View product;Se produkt
 warning;Warning;Warning
 welcome;Welcome;Velkommen
 white;White;Hvid
+woman;Woman;Damer
 yellow;Yellow;Gul
