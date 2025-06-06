@@ -39,6 +39,7 @@
 
     @include max-size($medium) {
       min-height: rem(412px);
+      padding: 12px;
     }
 
     @include max-size($small) {
@@ -47,6 +48,12 @@
 
     &.grid-item-2 {
       justify-content: flex-start;
+    }
+
+    &.grid-item-4 {
+      @include max-size($small) {
+        flex-direction: column;
+      }
     }
 
     h2 {
@@ -81,7 +88,7 @@
     @include max-size($large) {
       min-height: rem(332px);
       grid-row: span 1;
-      min-width: rem(600px);
+      min-width: rem(748px);
     }
 
     @include max-size($medium) {
@@ -96,11 +103,21 @@
     .fashion-grid-text {
       justify-content: center;
       padding-bottom: 80px;
+
+      @include max-size($small) {
+        padding-bottom: 30px;
+        max-width: rem(164px);
+      }
     }
 
     h2 {
       font-size: $font-xlarge;
       line-height: $font-xlarge;
+
+      @include max-size($small) {
+        font-size: $font-large;
+        line-height: $font-large;
+      }
     }
   }
 
@@ -117,16 +134,24 @@
     background-size: 250px;
     background-position-y: bottom;
 
-    @include between-size($small, $large) {
-      background-size: contain;
-    }
+    // @include between-size($small, $large) {
+    //   background-size: contain;
+    // }
 
     .fashion-grid-text {
       max-width: rem(212px);
       padding-top: 20px;
 
-      @include max-size($medium) {
-        padding-top: 0;
+      @include max-size($large) {
+        max-width: rem(412px);
+      }
+
+      @include max-size($small) {
+        max-width: rem(296px);
+      }
+
+      @include max-size($mini) {
+        max-width: rem(164px);
       }
     }
 
@@ -144,13 +169,10 @@
     background-color: #e1e1e1;
 
     .fashion-grid-text {
-      @include max-size($medium) {
-        max-width: rem(252px);
+      @include max-size($small) {
+        max-width: 100%;
+        padding: 30px;
       }
-    }
-
-    @include max-size($large) {
-      background-size: contain;
     }
   }
 }
