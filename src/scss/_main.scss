@@ -136,21 +136,3 @@ ul {
     @include outline(currentcolor);
   }
 }
-
-.collections {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  gap: 32px;
-  margin-top: 32px;
-}
-
-.collection-item {
-  height: 400px;
-  background: #f9fafb;
-  min-width: 400px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
