@@ -5,10 +5,6 @@
   justify-content: space-between;
   align-items: center;
 
-  &.container {
-    padding-bottom: 0;
-  }
-
   @include max-size($small) {
     flex-direction: column;
   }
@@ -24,6 +20,10 @@
       }
     }
   }
+}
+
+.container:has(.hero) {
+  padding: 0 20px;
 }
 
 .welcome-message-container {
