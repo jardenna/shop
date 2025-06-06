@@ -10,8 +10,9 @@ const NavItem = ({ navItem }: { navItem: NavItemsProps }) => {
     <li>
       <NavLink to={navItem.path} className="nav-item">
         {navItem.iconName && (
-          <span aria-hidden={true}>
+          <span>
             <Icon
+              ariaHidden
               iconName={navItem.iconName}
               title={language[navItem.linkText]}
               size={navItem.iconSize}
