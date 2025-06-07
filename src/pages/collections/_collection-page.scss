@@ -30,6 +30,7 @@
       min-width: rem(200px);
       position: relative;
       left: 40px;
+      padding: 12px;
 
       @include max-size($large) {
         position: static;
