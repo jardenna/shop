@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { NavLink } from 'react-router';
 import Icon from '../../components/icons/Icon';
 import useLanguage from '../../features/language/useLanguage';
@@ -5,10 +6,24 @@ import { NavItemsProps } from './Nav';
 
 const NavItem = ({ navItem }: { navItem: NavItemsProps }) => {
   const { language } = useLanguage();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <li>
-      <NavLink to={navItem.path} className="nav-item">
+    <li
+      className={navItem.subNav ? 'has-sub-nav' : ''}
+      onMouseEnter={() => {
+        setIsOpen(true);
+      }}
+      onMouseLeave={() => {
+        setIsOpen(false);
+      }}
+    >
+      <NavLink
+        to={navItem.path}
+        className="nav-item"
+        aria-haspopup={!!navItem.subNav}
+        aria-expanded={isOpen}
+      >
         {navItem.iconName && (
           <span>
             <Icon
