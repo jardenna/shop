@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router';
 import Icon from '../../components/icons/Icon';
+import TogglePanel from '../../components/togglePanel/TogglePanel';
 import useLanguage from '../../features/language/useLanguage';
 import { NavItemsProps } from './Nav';
 
@@ -21,14 +22,18 @@ const NavItem = ({ navItem }: { navItem: NavItemsProps }) => {
         )}
         <span className="nav-text">{language[navItem.linkText]}</span>
       </NavLink>
-      <ul>
-        {navItem.subNav &&
-          navItem.subNav.map((sub) => (
-            <li key={sub.path}>
-              <NavLink to={sub.path}>{language[sub.linkText]}</NavLink>
-            </li>
-          ))}
-      </ul>
+
+      {navItem.subNav && (
+        <TogglePanel ariaControls="aa">
+          <ul>
+            {navItem.subNav.map((sub) => (
+              <li key={sub.linkText}>
+                <NavLink to={sub.path}>{language[sub.linkText]}</NavLink>
+              </li>
+            ))}
+          </ul>
+        </TogglePanel>
+      )}
     </li>
   );
 };
