@@ -10,7 +10,22 @@ const navList: NavItemsProps[] = [
   {
     path: MainPath.Collection,
     linkText: LinkText.Collection,
+    subNav: [
+      {
+        path: MainPath.Collection,
+        linkText: LinkText.Women,
+      },
+      {
+        path: MainPath.Collection,
+        linkText: LinkText.Men,
+      },
+      {
+        path: MainPath.Collection,
+        linkText: LinkText.Kids,
+      },
+    ],
   },
+
   {
     path: MainPath.About,
     linkText: LinkText.About,

@@ -21,6 +21,14 @@ const NavItem = ({ navItem }: { navItem: NavItemsProps }) => {
         )}
         <span className="nav-text">{language[navItem.linkText]}</span>
       </NavLink>
+      <ul>
+        {navItem.subNav &&
+          navItem.subNav.map((sub) => (
+            <li key={sub.path}>
+              <NavLink to={sub.path}>{language[sub.linkText]}</NavLink>
+            </li>
+          ))}
+      </ul>
     </li>
   );
 };

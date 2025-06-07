@@ -3,11 +3,15 @@ import LayoutElement from '../LayoutElement';
 import { LinkText } from './enums';
 import NavItem from './NavItem';
 
-export type NavItemsProps = {
+export type BaseNav = {
   linkText: LinkText;
   path: string;
   iconName?: IconName;
   iconSize?: string;
+};
+
+export type NavItemsProps = BaseNav & {
+  subNav?: BaseNav[];
 };
 
 type NavProps = {

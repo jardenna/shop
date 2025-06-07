@@ -39,7 +39,9 @@ enum LinkText {
   Collection = 'collection',
   Contact = 'contact',
   Home = 'home',
+  Kids = 'kids',
   Login = 'login',
+  Men = 'men',
   MyAccount = 'myAccount',
   Orders = 'orders',
   Products = 'products',
@@ -48,6 +50,7 @@ enum LinkText {
   SubCategories = 'subCategories',
   Update = 'update',
   Users = 'users',
+  Women = 'women',
 }
 
 export { FrontPath, LinkText, MainPath };
