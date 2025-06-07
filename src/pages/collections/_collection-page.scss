@@ -1,17 +1,51 @@
+@use '../../scss/globals' as *;
+
 .main-collection-container {
   width: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   justify-content: space-between;
-  gap: 32px;
+  gap: 24px;
   margin-top: 32px;
-}
 
-.collection-item {
-  height: 400px;
-  background: #f9fafb;
-  min-width: 400px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  .collections-item {
+    background: $color-background;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    justify-content: space-between;
+
+    .collections-content {
+      min-width: rem(200px);
+      position: relative;
+      left: 40px;
+    }
+
+    &:last-child {
+      grid-column: span 2;
+
+      .collections-content {
+        order: 2;
+        left: auto;
+        right: 20%;
+      }
+
+      .collections-img-container {
+        display: flex;
+        gap: 20px;
+      }
+    }
+  }
+
+  .collections-title {
+    &::first-letter {
+      font-family: $font-secondary;
+      font-size: rem(80px);
+    }
+  }
+
+  .collections-img {
+    width: 200px;
+  }
 }
