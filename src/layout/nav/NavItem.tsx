@@ -23,7 +23,7 @@ const NavItem = ({ navItem }: { navItem: NavItemsProps }) => {
       </NavLink>
 
       {navItem.subNav && (
-        <ul>
+        <ul className="sub-nav">
           {navItem.subNav.map((sub) => (
             <li key={sub.linkText}>
               <NavLink to={sub.path}>{language[sub.linkText]}</NavLink>

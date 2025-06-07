@@ -1,8 +1,21 @@
 @use '../../scss/globals' as *;
 
+.sub-nav {
+  gap: 12px;
+  justify-content: space-between;
+  min-width: rem(220px);
+  box-shadow: $box-shadow;
+  position: absolute;
+  top: 24px;
+  padding: 16px 20px;
+  background-color: $color-white;
+  display: flex;
+}
+
 .nav-list {
   display: flex;
   gap: 18px;
+  position: relative;
 
   .nav-item {
     text-transform: uppercase;
