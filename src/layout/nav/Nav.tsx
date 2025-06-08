@@ -8,6 +8,7 @@ export type BaseNav = {
   path: string;
   iconName?: IconName;
   iconSize?: string;
+  infoText?: string;
 };
 
 export type NavItemsProps = BaseNav & {

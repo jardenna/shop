@@ -38,13 +38,26 @@ const NavItem = ({ navItem }: { navItem: NavItemsProps }) => {
       </NavLink>
 
       {navItem.subNav && (
-        <ul className="sub-nav">
-          {navItem.subNav.map((sub) => (
-            <li key={sub.linkText}>
-              <NavLink to={sub.path}>{language[sub.linkText]}</NavLink>
-            </li>
-          ))}
-        </ul>
+        <div className="sub-nav">
+          <ul className="sub-nav-container">
+            {navItem.subNav.map(({ linkText, path, infoText }) => (
+              <li key={linkText}>
+                <section className="sub-nav-content">
+                  <NavLink to={path}>{language[linkText]}</NavLink>
+                  <p>{infoText}</p>
+                </section>
+              </li>
+            ))}
+          </ul>
+          <section className="brand-container">
+            <h2>Selected brands</h2>
+            <div className="brand-content">
+              <div className="brand-item">Brand</div>
+              <div className="brand-item">Brand 1</div>
+              <div className="brand-item">Brand 2</div>
+            </div>
+          </section>
+        </div>
       )}
     </li>
   );
