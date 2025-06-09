@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router';
-import Button from '../../../components/Button';
 import Img from '../../../components/Img';
 import useLanguage from '../../../features/language/useLanguage';
 import { LinkText, MainPath } from '../enums';
@@ -37,14 +36,15 @@ const SubNav = () => {
           </div>
         </section>
         {subNav.map(({ linkText, path, infoText }) => (
-          <NavLink to={path} className="menu-item" key={linkText}>
+          <section className="menu-item" key={linkText}>
             <h2 className="link-heading">{language[linkText]}</h2>
             <p className="link-text">{infoText}</p>
-
             <div className="nav-link">
-              <Button>Shop nu</Button>
+              <NavLink to={path} className="btn btn-primary">
+                {language.shopNow}
+              </NavLink>
             </div>
-          </NavLink>
+          </section>
         ))}
       </article>
     </div>
