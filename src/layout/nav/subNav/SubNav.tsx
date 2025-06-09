@@ -27,9 +27,9 @@ const SubNav = () => {
 
   return (
     <div className="sub-menu-container">
-      <article className="sub-menu">
+      <ul className="sub-menu">
         <div className="grid-line" />
-        <section className="menu-item img-item">
+        <li className="menu-item img-item">
           <Img
             src="/images/ad.png"
             alt={language.discoverLatestTrendsAltText}
@@ -37,9 +37,9 @@ const SubNav = () => {
           <div>
             <h2>{language.discoverLatestTrends}.</h2>
           </div>
-        </section>
+        </li>
         {subNav.map(({ linkText, path, infoText }) => (
-          <section className="menu-item" key={linkText}>
+          <li className="menu-item" key={linkText}>
             <h2 className="link-heading">{language[linkText]}</h2>
             <p className="link-text">{infoText}</p>
             <div className="nav-link">
@@ -47,9 +47,9 @@ const SubNav = () => {
                 {language.shopNow}
               </NavLink>
             </div>
-          </section>
+          </li>
         ))}
-      </article>
+      </ul>
     </div>
   );
 };
