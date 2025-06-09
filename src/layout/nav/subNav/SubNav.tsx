@@ -2,7 +2,7 @@ import { NavLink } from 'react-router';
 import Img from '../../../components/Img';
 import useLanguage from '../../../features/language/useLanguage';
 import { LinkText, MainPath } from '../enums';
-import './_sub-menu.scss';
+import './_sub-nav.scss';
 
 const subNav = [
   {
@@ -26,10 +26,10 @@ const SubNav = () => {
   const { language } = useLanguage();
 
   return (
-    <div className="sub-menu-container">
-      <ul className="sub-menu">
-        <div className="grid-line" />
-        <li className="menu-item img-item">
+    <div className="sub-nav-container">
+      <ul className="sub-nav">
+        <div className="top-line" />
+        <li className="sub-nav-item img-item">
           <Img
             src="/images/ad.png"
             alt={language.discoverLatestTrendsAltText}
@@ -39,10 +39,10 @@ const SubNav = () => {
           </div>
         </li>
         {subNav.map(({ linkText, path, infoText }) => (
-          <li className="menu-item" key={linkText}>
-            <h2 className="link-heading">{language[linkText]}</h2>
-            <p className="link-text">{infoText}</p>
-            <div className="nav-link">
+          <li className="sub-nav-item" key={linkText}>
+            <h2 className="sub-nav-heading">{language[linkText]}</h2>
+            <p className="sub-nav-text">{infoText}</p>
+            <div className="sub-nav-link">
               <NavLink to={path} className="btn btn-primary">
                 {language.shopNow}
               </NavLink>
