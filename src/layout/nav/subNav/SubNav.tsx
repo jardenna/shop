@@ -30,9 +30,12 @@ const SubNav = () => {
       <article className="sub-menu">
         <div className="grid-line" />
         <section className="menu-item img-item">
-          <Img src="/images/ad.png" alt="man and woman" />
+          <Img
+            src="/images/ad.png"
+            alt={language.discoverLatestTrendsAltText}
+          />
           <div>
-            <h2>Discover latest trends</h2>
+            <h2>{language.discoverLatestTrends}.</h2>
           </div>
         </section>
         {subNav.map(({ linkText, path, infoText }) => (
