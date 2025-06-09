@@ -35,7 +35,7 @@ const NavContainer = ({
   const { language } = useLanguage();
 
   return (
-    <div className={className} id={ariaControls}>
+    <section className={className} id={ariaControls}>
       <Nav navItemsList={navList} ariaLabel={language.main} />
       {onCollapseMenu && (
         <IconBtn
@@ -47,7 +47,7 @@ const NavContainer = ({
         />
       )}
       {currentUser && <NavUser currentUser={currentUser} />}
-    </div>
+    </section>
   );
 };
 

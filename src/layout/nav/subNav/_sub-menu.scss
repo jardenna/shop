@@ -1,0 +1,30 @@
+@use '../../../scss/globals' as *;
+
+.sub-menu-container {
+  gap: 30px;
+  box-shadow: $box-shadow;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  top: 54px;
+  left: 0;
+  padding: 20px;
+  background-color: $color-white;
+  display: flex;
+  justify-content: center;
+
+  .sub-menu {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+}
+
+.menu-ad {
+  display: flex;
+  background-color: #f9f9f9;
+
+  img {
+    max-width: rem(200px);
+  }
+}

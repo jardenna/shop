@@ -15,6 +15,7 @@ import { OptionType } from '../types/types';
 import Header from './header/Header';
 import { MainPath } from './nav/enums';
 import MetaTags from './nav/MetaTags';
+import SubNav from './nav/subNav/SubNav';
 
 export type LayoutElementProps = {
   ariaLabel: string;
@@ -141,6 +142,7 @@ const Layout = () => {
           handleSelectCurrency('currencyOption', selectedOptions);
         }}
       />
+      <SubNav />
       <main id="main">
         <Outlet />
       </main>
