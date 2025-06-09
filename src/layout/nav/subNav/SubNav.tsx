@@ -1,28 +1,14 @@
 import { NavLink } from 'react-router';
-import Img from '../../../components/Img';
 import useLanguage from '../../../features/language/useLanguage';
-import { LinkText, MainPath } from '../enums';
+import { BaseNav } from '../Nav';
 import './_sub-nav.scss';
+import SubNavAd from './SubNavAd';
 
-const subNav = [
-  {
-    path: MainPath.Root,
-    linkText: LinkText.Women,
-    infoText: 'Opdag stilfulde nyheder, must-haves og sæsonens trends.',
-  },
-  {
-    path: MainPath.Collection,
-    linkText: LinkText.Men,
-    infoText: 'Fra hverdagslook til formelt, alt til den moderne mand.',
-  },
-  {
-    path: MainPath.Collection,
-    linkText: LinkText.Kids,
-    infoText: 'Komfortabelt og sjovt tøj til leg, skole og eventyr.',
-  },
-];
+type SubNavProps = {
+  subNav: BaseNav[];
+};
 
-const SubNav = () => {
+const SubNav = ({ subNav }: SubNavProps) => {
   const { language } = useLanguage();
 
   return (
@@ -30,13 +16,11 @@ const SubNav = () => {
       <ul className="sub-nav">
         <div className="top-line" />
         <li className="sub-nav-item img-item">
-          <Img
+          <SubNavAd
+            heading={language.discoverLatestTrends}
             src="/images/ad.png"
             alt={language.discoverLatestTrendsAltText}
           />
-          <div>
-            <h2>{language.discoverLatestTrends}.</h2>
-          </div>
         </li>
         {subNav.map(({ linkText, path, infoText }) => (
           <li className="sub-nav-item" key={linkText}>
