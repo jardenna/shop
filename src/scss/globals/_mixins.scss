@@ -11,7 +11,7 @@ $animation-timing-function: ease-in-out;
 }
 
 @mixin between-size($maxWidth, $minWidth) {
-  @media ($maxWidth < width < $minWidth) {
+  @media ($maxWidth <= width <= $minWidth) {
     @content;
   }
 }

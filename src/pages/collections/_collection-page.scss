@@ -1,0 +1,80 @@
+@use '../../scss/globals' as *;
+
+.main-collection-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 32px;
+
+  @include max-size($small) {
+    grid-template-columns: 1fr;
+  }
+
+  .collections-item {
+    background: $color-background;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    justify-content: space-between;
+
+    @include max-size($small) {
+      flex-direction: column;
+      gap: 12px;
+      align-items: initial;
+    }
+
+    .collections-content {
+      min-width: rem(200px);
+      position: relative;
+      left: 40px;
+      padding: 12px;
+
+      @include max-size($large) {
+        position: static;
+      }
+    }
+
+    .collections-img-container {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      overflow: auto;
+    }
+
+    &:last-child {
+      grid-column: span 2;
+
+      @include max-size($small) {
+        grid-column: span 1;
+      }
+
+      .collections-content {
+        order: 2;
+        left: auto;
+        right: 20%;
+
+        @include max-size($small) {
+          order: initial;
+        }
+      }
+
+      .collections-img-container {
+        justify-content: inherit;
+      }
+    }
+  }
+
+  .collections-title {
+    &::first-letter {
+      font-family: $font-secondary;
+      font-size: rem(80px);
+    }
+  }
+
+  .collections-img {
+    width: rem(200px);
+  }
+}

@@ -122,8 +122,8 @@ mainCategoryName;Parent category;Hovedkategori
 material;Material;Materiale
 materialRequired;Please insert material;Indsæt venligst materiale
 maximumFileSize;Maximum file size;Maksimal filstørrelse
-men:Men:Mænd
 menu;Menu;Menu
+men;Men;Mænd
 minLength;At least 8 characters;Mindst 8 tegn
 multiColor;MultiColor;Flerfarvet
 mustHaveLowercase;At least one lowercase letter;Mindst ét lille bogstav
@@ -262,5 +262,5 @@ viewProduct;View product;Se produkt
 warning;Warning;Warning
 welcome;Welcome;Velkommen
 white;White;Hvid
-woman;Woman;Damer
+women;Women;Damer
 yellow;Yellow;Gul

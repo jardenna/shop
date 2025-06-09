@@ -51,8 +51,8 @@ h2 {
 }
 
 h1 {
-  font-size: clamp(rem(20px), $clamp-val, $font-large);
   font-family: $font-secondary;
+  font-size: clamp(rem(20px), $clamp-val, $font-large);
   letter-spacing: rem(3px);
   display: flex;
   align-items: center;

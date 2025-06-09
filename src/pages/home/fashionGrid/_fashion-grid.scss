@@ -2,11 +2,32 @@
 
 .fashion-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto auto;
+  gap: 32px;
+
+  @include max-size($medium) {
+    gap: 20px;
+    grid-template-columns: 1fr;
+  }
 
   .grid-flex {
     display: flex;
+    gap: 32px;
+
+    @include max-size($large) {
+      grid-column: span 2;
+      min-height: rem(380px);
+    }
+
+    @include max-size($medium) {
+      grid-column: span 1;
+      gap: 20px;
+    }
+
+    @include max-size($small) {
+      flex-direction: column;
+    }
   }
 
   .fashion-grid-item {
@@ -15,6 +36,25 @@
     background-repeat: no-repeat;
     width: 100%;
     padding: 28px;
+
+    @include max-size($medium) {
+      min-height: rem(412px);
+      padding: 12px;
+    }
+
+    @include max-size($small) {
+      min-height: rem(363px);
+    }
+
+    &.grid-item-2 {
+      justify-content: flex-start;
+    }
+
+    &.grid-item-4 {
+      @include max-size($small) {
+        flex-direction: column;
+      }
+    }
 
     h2 {
       font-size: $font-large;
@@ -35,7 +75,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    max-width: 400px;
+    max-width: rem(400px);
   }
 
   .grid-item-1 {
@@ -43,33 +83,76 @@
     background-color: $color-light-gray;
     background-image: url('/images/home/sale.png');
     background-size: contain;
-    min-height: 760px;
+    min-height: rem(760px);
+
+    @include max-size($large) {
+      min-height: rem(332px);
+      grid-row: span 1;
+      min-width: rem(748px);
+    }
+
+    @include max-size($medium) {
+      min-height: rem(668px);
+      min-width: 100%;
+    }
+
+    @include max-size($small) {
+      min-height: auto;
+    }
 
     .fashion-grid-text {
       justify-content: center;
       padding-bottom: 80px;
+
+      @include max-size($small) {
+        padding-bottom: 30px;
+        max-width: rem(164px);
+      }
     }
 
     h2 {
       font-size: $font-xlarge;
       line-height: $font-xlarge;
+
+      @include max-size($small) {
+        font-size: $font-large;
+        line-height: $font-large;
+      }
     }
   }
 
   .grid-item-2 {
-    background-image: url('/images/home/men.jpg');
-    background-size: cover;
+    background-image: url('/images/home/men.png');
+    background-size: contain;
+    background-position: right bottom;
+    background-color: #d6dcda;
   }
 
   .grid-item-3 {
     background-color: #faf0ef;
     background-image: url('/images/home/women.png');
-    background-size: 280px;
+    background-size: 250px;
     background-position-y: bottom;
+
+    // @include between-size($small, $large) {
+    //   background-size: contain;
+    // }
 
     .fashion-grid-text {
       max-width: rem(212px);
       padding-top: 20px;
+
+      @include max-size($large) {
+        max-width: rem(412px);
+      }
+
+      @include max-size($small) {
+        max-width: rem(296px);
+      }
+
+      @include max-size($mini) {
+        max-width: rem(164px);
+      }
     }
 
     .more-link {
@@ -84,5 +167,12 @@
     background-image: url('/images/home/kids.jpg');
     background-size: cover;
     background-color: #e1e1e1;
+
+    .fashion-grid-text {
+      @include max-size($small) {
+        max-width: 100%;
+        padding: 30px;
+      }
+    }
   }
 }

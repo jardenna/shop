@@ -13,7 +13,7 @@ import UserPage from '../pages/admin/UserPage';
 import CategoryPage from '../pages/category/CategoryPage';
 import CreateCategoryPage from '../pages/category/CreateCategoryPage';
 import UpdateCategoryPage from '../pages/category/UpdateCategoryPage';
-import Collections from '../pages/Collections';
+import CollectionsPage from '../pages/collections/CollectionsPage';
 import Contact from '../pages/Contact';
 import ErrorPage from '../pages/ErrorPage';
 import Kids from '../pages/frontPages/Kids';
@@ -47,7 +47,7 @@ const routeConfig = createBrowserRouter([
       },
       {
         path: MainPath.Collection,
-        element: <Collections />,
+        element: <CollectionsPage />,
       },
       {
         path: MainPath.About,
