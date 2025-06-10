@@ -10,6 +10,11 @@ const navList: NavItemsProps[] = [
   {
     path: MainPath.Collection,
     linkText: LinkText.Collection,
+    subNavAdContent: {
+      heading: 'discoverLatestTrends',
+      src: '/images/ad.png',
+      alt: 'discoverLatestTrendsAltText',
+    },
     subNav: [
       {
         path: MainPath.Root,

@@ -1,26 +1,29 @@
 import { NavLink } from 'react-router';
 import useLanguage from '../../../features/language/useLanguage';
-import { BaseNav } from '../Nav';
+import { BaseNav, SubNavAdContentProps } from '../Nav';
 import './_sub-nav.scss';
 import SubNavAd from './SubNavAd';
 
 type SubNavProps = {
   subNav: BaseNav[];
+  subNavAdContent: SubNavAdContentProps;
 };
 
-const SubNav = ({ subNav }: SubNavProps) => {
+const SubNav = ({ subNav, subNavAdContent }: SubNavProps) => {
   const { language } = useLanguage();
+  const { heading, src, alt } = subNavAdContent;
 
   return (
     <div className="sub-nav-container">
       <ul className="sub-nav">
         <div className="top-line" />
         <li className="sub-nav-item img-item">
-          <SubNavAd
+          <SubNavAd heading={language[heading]} src={src} alt={language[alt]} />
+          {/* <SubNavAd
             heading={language.discoverLatestTrends}
             src="/images/ad.png"
             alt={language.discoverLatestTrendsAltText}
-          />
+          /> */}
         </li>
         {subNav.map(({ linkText, path, infoText }) => (
           <li className="sub-nav-item" key={linkText}>

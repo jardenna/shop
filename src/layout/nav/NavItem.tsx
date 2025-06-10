@@ -37,9 +37,12 @@ const NavItem = ({ navItem }: { navItem: NavItemsProps }) => {
         )}
         <span className="nav-text">{language[navItem.linkText]}</span>
       </NavLink>
-      {navItem.subNav && (
+      {navItem.subNav && navItem.subNavAdContent && (
         <div className="sub-nav">
-          <SubNav subNav={navItem.subNav} />
+          <SubNav
+            subNav={navItem.subNav}
+            subNavAdContent={navItem.subNavAdContent}
+          />
         </div>
       )}
     </li>
