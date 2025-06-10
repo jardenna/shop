@@ -1,6 +1,8 @@
 import { UserResponse } from '../../app/api/apiTypes';
 import IconBtn from '../../components/IconBtn';
+import TogglePanel from '../../components/togglePanel/TogglePanel';
 import useLanguage from '../../features/language/useLanguage';
+import useMediaQuery from '../../hooks/useMediaQuery ';
 import { IconName } from '../../types/enums';
 import './_nav.scss';
 import Nav, { NavItemsProps } from './Nav';
@@ -33,10 +35,19 @@ const NavContainer = ({
   ariaControls,
 }: NavContainerProps) => {
   const { language } = useLanguage();
+  const { isMobileSize } = useMediaQuery();
 
   return (
     <section className={className} id={ariaControls}>
-      <Nav navItemsList={navList} ariaLabel={language.main} />
+      {isMobileSize ? (
+        <TogglePanel ariaControls="ariaControls">
+          {' '}
+          <Nav navItemsList={navList} ariaLabel={language.main} />
+        </TogglePanel>
+      ) : (
+        <Nav navItemsList={navList} ariaLabel={language.main} />
+      )}
+
       {onCollapseMenu && (
         <IconBtn
           onClick={onCollapseMenu}
