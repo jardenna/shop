@@ -16,14 +16,9 @@ const SubNav = ({ subNav, subNavAdContent }: SubNavProps) => {
   return (
     <div className="sub-nav-container">
       <ul className="sub-nav">
-        <div className="top-line" />
+        <li className="top-line" aria-hidden={true} />
         <li className="sub-nav-item img-item">
           <SubNavAd heading={language[heading]} src={src} alt={language[alt]} />
-          {/* <SubNavAd
-            heading={language.discoverLatestTrends}
-            src="/images/ad.png"
-            alt={language.discoverLatestTrendsAltText}
-          /> */}
         </li>
         {subNav.map(({ linkText, path, infoText }) => (
           <li className="sub-nav-item" key={linkText}>
