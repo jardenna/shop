@@ -4,6 +4,12 @@
   display: flex;
   gap: 18px;
 
+  @include max-size($small) {
+    flex-direction: column;
+    gap: 32px;
+    padding: 30px;
+  }
+
   .nav-item {
     text-transform: uppercase;
     padding: 8px;

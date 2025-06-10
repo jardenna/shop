@@ -130,6 +130,7 @@ const Layout = () => {
         userDropdownList={isEmployee ? employeeDropdownList : userDropdownList}
         primaryActionBtn={primaryActionBtn}
         secondaryActionBtn={secondaryActionBtn}
+        isMobileSize={isMobileSize}
         defaultValue={{
           label: exchangeRate,
           value: exchangeRate,

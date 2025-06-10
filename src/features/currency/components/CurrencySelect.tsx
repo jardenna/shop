@@ -9,6 +9,7 @@ type OmittedHeaderProps = Omit<
   | 'userDropdownList'
   | 'values'
   | 'onChange'
+  | 'isMobileSize'
 >;
 
 type CurrencySelectProps = OmittedHeaderProps & {

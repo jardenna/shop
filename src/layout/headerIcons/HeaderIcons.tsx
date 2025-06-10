@@ -10,7 +10,10 @@ import { HeaderProps } from '../header/Header';
 import { MainPath } from '../nav/enums';
 import LanguageCurrencyPreferences from './LanguageCurrencyPreferences';
 
-type OmittedHeaderProps = Omit<HeaderProps, 'primaryActionBtn' | 'ariaLabel'>;
+type OmittedHeaderProps = Omit<
+  HeaderProps,
+  'primaryActionBtn' | 'ariaLabel' | 'isMobileSize'
+>;
 
 type HeaderIconsProps = OmittedHeaderProps & {
   primaryActionBtn: PrimaryActionBtnProps;

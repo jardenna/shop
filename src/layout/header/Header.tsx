@@ -1,5 +1,6 @@
 import { DropdownItem } from '../../components/dropdownBtn/DropdownBtn';
 import { SecondaryActionBtnProps } from '../../components/modal/Modal';
+import TogglePanel from '../../components/togglePanel/TogglePanel';
 import { SelectedLanguage } from '../../features/language/languageSlice';
 import { ChangeInputType, OptionType } from '../../types/types';
 import HeaderIcons from '../headerIcons/HeaderIcons';
@@ -18,6 +19,7 @@ export type HeaderProps = {
   ariaLabel: string;
   currencyOptions: OptionType[];
   defaultValue: OptionType;
+  isMobileSize: boolean;
   primaryActionBtn: any;
   secondaryActionBtn: SecondaryActionBtnProps;
   userDropdownList: DropdownItem[];
@@ -36,11 +38,18 @@ const Header = ({
   onSelectCurrency,
   defaultValue,
   secondaryActionBtn,
+  isMobileSize,
 }: HeaderProps) => (
   <LayoutElement as="header" className="main-header" ariaLabel={ariaLabel}>
     <div className="container main-header-container">
       <Logo linkTo={MainPath.Root} />
-      <NavContainer navList={navList} />
+      {!isMobileSize ? (
+        <NavContainer navList={navList} />
+      ) : (
+        <TogglePanel ariaControls="ariaControls">
+          <NavContainer navList={navList} />
+        </TogglePanel>
+      )}
       <HeaderIcons
         userDropdownList={userDropdownList}
         primaryActionBtn={primaryActionBtn}
