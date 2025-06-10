@@ -12,6 +12,7 @@ export type SubNavAdContentProps = {
 export type BaseNav = {
   linkText: LinkText;
   path: string;
+  className?: string;
   iconName?: IconName;
   iconSize?: string;
   infoText?: string;

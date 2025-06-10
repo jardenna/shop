@@ -20,6 +20,7 @@ const navList: NavItemsProps[] = [
         path: MainPath.Root,
         linkText: LinkText.Women,
         infoText: 'collectionSubWomenText',
+        className: 'background-gray',
       },
       {
         path: MainPath.Collection,
@@ -30,6 +31,7 @@ const navList: NavItemsProps[] = [
         path: MainPath.Collection,
         linkText: LinkText.Kids,
         infoText: 'collectionSubKidsText',
+        className: 'background-green',
       },
     ],
   },

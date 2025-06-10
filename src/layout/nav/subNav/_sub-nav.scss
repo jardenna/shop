@@ -9,7 +9,7 @@
   left: 0;
   background-color: $color-white;
   justify-content: center;
-  display: none;
+  display: flex;
 
   .sub-nav {
     position: relative;
@@ -36,11 +36,11 @@
       max-width: rem(252px);
     }
 
-    &:nth-child(3) {
+    &.background-gray {
       background-color: $color-light-gray-30;
     }
 
-    &:last-child {
+    &.background-green {
       background-color: $color-gray-20;
     }
   }

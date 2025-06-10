@@ -20,8 +20,8 @@ const SubNav = ({ subNav, subNavAdContent }: SubNavProps) => {
         <li className="sub-nav-item img-item">
           <SubNavAd heading={language[heading]} src={src} alt={language[alt]} />
         </li>
-        {subNav.map(({ linkText, path, infoText }) => (
-          <li className="sub-nav-item" key={linkText}>
+        {subNav.map(({ linkText, path, infoText, className }) => (
+          <li className={`sub-nav-item ${className}`} key={linkText}>
             <h2 className="sub-nav-heading">{language[linkText]}</h2>
             <p className="sub-nav-text">{infoText ? language[infoText] : ''}</p>
             <div className="sub-nav-link">
