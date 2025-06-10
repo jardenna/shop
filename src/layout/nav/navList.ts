@@ -19,17 +19,17 @@ const navList: NavItemsProps[] = [
       {
         path: MainPath.Root,
         linkText: LinkText.Women,
-        infoText: 'Opdag stilfulde nyheder, must-haves og sæsonens trends.',
+        infoText: 'collectionSubWomenText',
       },
       {
         path: MainPath.Collection,
         linkText: LinkText.Men,
-        infoText: 'Fra hverdagslook til formelt, alt til den moderne mand.',
+        infoText: 'collectionSubMenText',
       },
       {
         path: MainPath.Collection,
         linkText: LinkText.Kids,
-        infoText: 'Komfortabelt og sjovt tøj til leg, skole og eventyr.',
+        infoText: 'collectionSubKidsText',
       },
     ],
   },
