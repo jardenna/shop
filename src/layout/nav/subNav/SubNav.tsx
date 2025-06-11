@@ -3,7 +3,6 @@ import useLanguage from '../../../features/language/useLanguage';
 import useMediaQuery from '../../../hooks/useMediaQuery ';
 import { BaseNav } from '../Nav';
 import './_sub-nav.scss';
-import SubNavAd from './SubNavAd';
 
 type SubNavProps = {
   adHeading: string;
@@ -39,7 +38,7 @@ const SubNav = ({ subNav, adHeading }: SubNavProps) => {
           ),
         )}
         <li className="sub-nav-item sub-nav-ad">
-          <SubNavAd heading={language[adHeading]} />
+          <p className="ad-heading">{language[adHeading]}.</p>
         </li>
       </ul>
     </div>

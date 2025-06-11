@@ -9,7 +9,7 @@
   left: 0;
   background-color: $color-white;
   justify-content: center;
-  display: flex;
+  display: none;
 
   @include max-size($small) {
     position: static;
@@ -51,11 +51,20 @@
       flex-direction: row;
       align-items: center;
       gap: 28px;
+      position: relative;
       background-color: $color-gray-20;
       background-image: url('/images/ad.png');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: top right;
+    }
+
+    .ad-heading {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      max-width: 40%;
+      font-size: 24px;
     }
 
     &.background-gray {
