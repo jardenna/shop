@@ -48,7 +48,10 @@ const AdminLayout = () => {
       />
       <main className="main">
         {isMobileSize ? (
-          <MobileNav currentUser={currentUser || null} ariaControls="nav" />
+          <MobileNav
+            currentUser={currentUser || null}
+            ariaControls="admin-nav"
+          />
         ) : (
           <Aside
             isShown={isMenuCollapsed}

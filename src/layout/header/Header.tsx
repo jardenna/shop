@@ -46,7 +46,7 @@ const Header = ({
       {!isMobileSize ? (
         <NavContainer navList={navList} />
       ) : (
-        <TogglePanel ariaControls="ariaControls">
+        <TogglePanel ariaControls="nav">
           <NavContainer navList={navList} />
         </TogglePanel>
       )}
