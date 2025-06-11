@@ -18,7 +18,7 @@ const SubNav = ({ subNav, adHeading }: SubNavProps) => {
       <ul className="sub-nav">
         {subNav.map(({ linkText, path, infoText, className = '' }) =>
           isMobileSize ? (
-            <li key={linkText}>
+            <li key={linkText} className="sub-nav-item">
               <NavLink to={path}>{language[linkText]}</NavLink>
             </li>
           ) : (
