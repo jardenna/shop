@@ -24,10 +24,12 @@ const SubNav = ({ subNav, adHeading }: SubNavProps) => {
             </li>
           ) : (
             <li className={`sub-nav-item ${className}`} key={linkText}>
-              <h2 className="sub-nav-heading">{language[linkText]}</h2>
-              <p className="sub-nav-text">
-                {infoText ? language[infoText] : ''}
-              </p>
+              <section className="sub-nav-content">
+                <h2 className="sub-nav-heading">{language[linkText]}</h2>
+                <p className="sub-nav-text">
+                  {infoText ? language[infoText] : ''}
+                </p>
+              </section>
               <div className="sub-nav-link">
                 <NavLink to={path} className="btn btn-primary">
                   {language.shopNow}
