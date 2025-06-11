@@ -1,36 +1,44 @@
 import { NavLink } from 'react-router';
 import useLanguage from '../../../features/language/useLanguage';
-import { BaseNav, SubNavAdContentProps } from '../Nav';
+import useMediaQuery from '../../../hooks/useMediaQuery ';
+import { BaseNav } from '../Nav';
 import './_sub-nav.scss';
 import SubNavAd from './SubNavAd';
 
 type SubNavProps = {
+  adHeading: string;
   subNav: BaseNav[];
-  subNavAdContent: SubNavAdContentProps;
 };
 
-const SubNav = ({ subNav, subNavAdContent }: SubNavProps) => {
+const SubNav = ({ subNav, adHeading }: SubNavProps) => {
   const { language } = useLanguage();
-  const { heading, src, alt } = subNavAdContent;
+  const { isMobileSize } = useMediaQuery();
 
   return (
     <div className="sub-nav-container">
       <ul className="sub-nav">
-        <li className="top-line" aria-hidden={true} />
-        <li className="sub-nav-item img-item">
-          <SubNavAd heading={language[heading]} src={src} alt={language[alt]} />
+        {subNav.map(({ linkText, path, infoText, className = '' }) =>
+          isMobileSize ? (
+            <li key={linkText}>
+              <NavLink to={path}>{language[linkText]}</NavLink>
+            </li>
+          ) : (
+            <li className={`sub-nav-item ${className}`} key={linkText}>
+              <h2 className="sub-nav-heading">{language[linkText]}</h2>
+              <p className="sub-nav-text">
+                {infoText ? language[infoText] : ''}
+              </p>
+              <div className="sub-nav-link">
+                <NavLink to={path} className="btn btn-primary">
+                  {language.shopNow}
+                </NavLink>
+              </div>
+            </li>
+          ),
+        )}
+        <li className="sub-nav-item sub-nav-ad">
+          <SubNavAd heading={language[adHeading]} />
         </li>
-        {subNav.map(({ linkText, path, infoText, className }) => (
-          <li className={`sub-nav-item ${className}`} key={linkText}>
-            <h2 className="sub-nav-heading">{language[linkText]}</h2>
-            <p className="sub-nav-text">{infoText ? language[infoText] : ''}</p>
-            <div className="sub-nav-link">
-              <NavLink to={path} className="btn btn-primary">
-                {language.shopNow}
-              </NavLink>
-            </div>
-          </li>
-        ))}
       </ul>
     </div>
   );

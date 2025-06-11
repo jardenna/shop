@@ -37,11 +37,8 @@ const NavItem = ({ navItem }: { navItem: NavItemsProps }) => {
         )}
         <span className="nav-text">{language[navItem.linkText]}</span>
       </NavLink>
-      {navItem.subNav && navItem.subNavAdContent && (
-        <SubNav
-          subNav={navItem.subNav}
-          subNavAdContent={navItem.subNavAdContent}
-        />
+      {navItem.subNav && navItem.adHeading && (
+        <SubNav subNav={navItem.subNav} adHeading={navItem.adHeading} />
       )}
     </li>
   );

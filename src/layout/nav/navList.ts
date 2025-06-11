@@ -10,28 +10,23 @@ const navList: NavItemsProps[] = [
   {
     path: MainPath.Collection,
     linkText: LinkText.Collection,
-    subNavAdContent: {
-      heading: 'discoverLatestTrends',
-      src: '/images/ad.png',
-      alt: 'discoverLatestTrendsAltText',
-    },
+    adHeading: 'discoverLatestTrends',
     subNav: [
       {
         path: MainPath.Root,
         linkText: LinkText.Women,
         infoText: 'collectionSubWomenText',
-        className: 'background-gray',
       },
       {
         path: MainPath.Collection,
         linkText: LinkText.Men,
         infoText: 'collectionSubMenText',
+        className: 'background-gray',
       },
       {
         path: MainPath.Collection,
         linkText: LinkText.Kids,
         infoText: 'collectionSubKidsText',
-        className: 'background-green',
       },
     ],
   },

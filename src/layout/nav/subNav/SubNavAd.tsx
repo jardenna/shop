@@ -1,18 +1,11 @@
-import Img from '../../../components/Img';
-
 type SubNavAdProps = {
-  alt: string;
   heading: string;
-  src: string;
 };
 
-const SubNavAd = ({ src, alt, heading }: SubNavAdProps) => (
-  <>
-    <Img src={src} alt={alt} />
-    <div>
-      <h2>{heading}.</h2>
-    </div>
-  </>
+const SubNavAd = ({ heading }: SubNavAdProps) => (
+  <section>
+    <h2>{heading}.</h2>
+  </section>
 );
 
 export default SubNavAd;
