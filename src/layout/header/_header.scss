@@ -7,6 +7,10 @@
 
   @include max-size($small) {
     align-items: flex-start;
+
+    &.container {
+      padding-top: 52px;
+    }
   }
 
   .logo {
@@ -19,6 +23,10 @@
       }
     }
   }
+}
+
+.main-panel {
+  top: 84px;
 }
 
 .welcome-message-container {
