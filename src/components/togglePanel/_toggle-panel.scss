@@ -6,6 +6,8 @@
   height: calc(100svh - $header-height);
   z-index: 10;
   width: 100%;
+  overflow: auto;
+  padding-bottom: 4px;
 
   @include transition;
 
