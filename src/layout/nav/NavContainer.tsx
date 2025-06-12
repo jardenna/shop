@@ -27,7 +27,7 @@ const NavContainer = ({
   navList,
   isMenuCollapsed,
   onCollapseMenu,
-  className = '',
+  className = 'main-nav',
   ariaLabel,
   currentUser,
   ariaControls,

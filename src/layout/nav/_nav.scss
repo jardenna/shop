@@ -7,23 +7,11 @@
   @include max-size($small) {
     flex-direction: column;
     gap: 2px;
-
-    a {
-      color: inherit;
-      font-size: rem(16px);
-      display: flex;
-      width: 100%;
-    }
   }
 
   .nav-item {
     text-transform: uppercase;
     padding: 8px;
-
-    @include max-size($small) {
-      padding: 12px 20px;
-      background-color: $color-light-gray-20;
-    }
 
     &:focus-visible {
       @include outline;
@@ -37,11 +25,27 @@
     &.active {
       color: $color-gray-70;
       border-bottom: 2px solid currentcolor;
+    }
+  }
+}
 
-      @include max-size($small) {
-        border-color: transparent;
-        background-color: $color-gray-60;
-        color: $color-white;
+// Main nav
+.main-nav {
+  .nav-list {
+    @include max-size($small) {
+      .nav-item {
+        padding: 12px 20px;
+        background-color: $color-light-gray-20;
+        color: inherit;
+        font-size: $font-medium;
+        display: flex;
+        width: 100%;
+
+        &.active {
+          border-color: transparent;
+          background-color: $color-gray-60;
+          color: $color-white;
+        }
       }
     }
   }
@@ -75,6 +79,7 @@
 
     .nav-item {
       font-size: $font-medium;
+      border: 2px solid transparent;
       text-transform: none;
       width: 100%;
       display: flex;
