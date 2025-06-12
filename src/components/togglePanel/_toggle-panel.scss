@@ -3,7 +3,7 @@
 .toggle-panel {
   position: fixed;
   background-color: $color-white;
-  height: calc(100svh - $header-height);
+  height: 100%;
   z-index: 10;
   width: 100%;
   overflow: auto;
