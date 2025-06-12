@@ -6,7 +6,7 @@
 
   @include max-size($small) {
     flex-direction: column;
-    gap: 0;
+    gap: 2px;
 
     a {
       color: inherit;
@@ -22,20 +22,26 @@
 
     @include max-size($small) {
       padding: 12px 20px;
+      background-color: $color-light-gray-20;
     }
 
     &:focus-visible {
       @include outline;
     }
 
-    &:hover,
+    &:hover {
+      color: $color-gray-70;
+      border-bottom: 2px solid currentcolor;
+    }
+
     &.active {
       color: $color-gray-70;
-      padding-bottom: 4px;
       border-bottom: 2px solid currentcolor;
 
       @include max-size($small) {
         border: 0;
+        background-color: $color-gray-60;
+        color: $color-white;
       }
     }
   }

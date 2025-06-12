@@ -30,12 +30,17 @@
       flex-direction: column;
 
       .sub-nav-item:not(.sub-nav-ad) {
-        padding: 12px 40px;
+        padding: 0 40px;
 
         a {
           border-bottom: 1px solid $color-gray-60;
-          padding-bottom: 8px;
+          padding: 8px 12px;
           font-size: rem(14px);
+
+          &.active {
+            background-color: $color-gray-80;
+            color: $color-white;
+          }
         }
       }
     }

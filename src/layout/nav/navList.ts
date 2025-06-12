@@ -30,7 +30,6 @@ const navList: NavItemsProps[] = [
       },
     ],
   },
-
   {
     path: MainPath.About,
     linkText: LinkText.About,
