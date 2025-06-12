@@ -30,6 +30,8 @@ import CreateSubCategoryPage from '../pages/subCategory/CreateSubCategoryPage';
 import SubCategoryPage from '../pages/subCategory/SubCategoryPage';
 import UpdateSubCategoryPage from '../pages/subCategory/UpdateSubCategoryPage';
 import ViewSubCategoryPage from '../pages/subCategory/ViewSubCategoryPage';
+import Men from '../pages/frontPages/Men';
+import Women from '../pages/frontPages/Women';
 
 const routeConfig = createBrowserRouter([
   {
@@ -40,6 +42,14 @@ const routeConfig = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+      },
+      {
+        path: FrontPath.Men,
+        element: <Men />,
+      },
+      {
+        path: FrontPath.Women,
+        element: <Women />,
       },
       {
         path: FrontPath.Kids,

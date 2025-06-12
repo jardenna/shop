@@ -3,10 +3,18 @@ import { NavLink } from 'react-router';
 import Icon from '../../components/icons/Icon';
 import useLanguage from '../../features/language/useLanguage';
 import { NavItemsProps } from './Nav';
+import SubNav from './subNav/SubNav';
 
-const NavItem = ({ navItem }: { navItem: NavItemsProps }) => {
+const NavItem = ({
+  navItem,
+  hideAria,
+}: {
+  navItem: NavItemsProps;
+  hideAria?: boolean;
+}) => {
   const { language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
+  const aria = navItem.subNav && !hideAria;
 
   return (
     <li
@@ -21,8 +29,8 @@ const NavItem = ({ navItem }: { navItem: NavItemsProps }) => {
       <NavLink
         to={navItem.path}
         className="nav-item"
-        aria-haspopup={!!navItem.subNav}
-        aria-expanded={isOpen}
+        aria-haspopup={aria ? true : undefined}
+        aria-expanded={aria ? isOpen : undefined}
       >
         {navItem.iconName && (
           <span>
@@ -36,28 +44,8 @@ const NavItem = ({ navItem }: { navItem: NavItemsProps }) => {
         )}
         <span className="nav-text">{language[navItem.linkText]}</span>
       </NavLink>
-
-      {navItem.subNav && (
-        <div className="sub-nav">
-          <ul className="sub-nav-container">
-            {navItem.subNav.map(({ linkText, path, infoText }) => (
-              <li key={linkText}>
-                <section className="sub-nav-content">
-                  <NavLink to={path}>{language[linkText]}</NavLink>
-                  <p>{infoText}</p>
-                </section>
-              </li>
-            ))}
-          </ul>
-          <section className="brand-container">
-            <h2>Selected brands</h2>
-            <div className="brand-content">
-              <div className="brand-item">Brand</div>
-              <div className="brand-item">Brand 1</div>
-              <div className="brand-item">Brand 2</div>
-            </div>
-          </section>
-        </div>
+      {navItem.subNav && navItem.adHeading && (
+        <SubNav subNav={navItem.subNav} adHeading={navItem.adHeading} />
       )}
     </li>
   );

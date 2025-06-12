@@ -84,7 +84,6 @@ h3 {
 a {
   text-decoration: none;
   color: $color-red-30;
-  border: 2px solid transparent;
 
   &:focus-visible {
     outline: 2px solid currentcolor;
@@ -125,6 +124,10 @@ ul {
   margin: 0 auto;
   padding: 28px 20px;
   width: 100%;
+
+  @include max-size($small) {
+    padding: 12px 20px;
+  }
 }
 
 .more-link {

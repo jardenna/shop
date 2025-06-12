@@ -10,13 +10,15 @@ type PanelPosition = 'right' | 'left' | 'bottom' | 'top';
 type TogglePanelProps = {
   ariaControls: string;
   children: ReactNode;
+  className?: string;
   panelPosition?: PanelPosition;
 };
 
 const TogglePanel = ({
   children,
   ariaControls,
-  panelPosition = 'left',
+  panelPosition = 'right',
+  className = '',
 }: TogglePanelProps) => {
   const { language } = useLanguage();
   const { isPanelShown, onTogglePanel, panelRef } = useTogglePanel();
@@ -36,7 +38,7 @@ const TogglePanel = ({
       </Button>
       <div
         ref={panelRef}
-        className={`toggle-panel ${panelPosition} ${isPanelShown ? 'shown' : ''}`}
+        className={`toggle-panel ${panelPosition} ${className} ${isPanelShown ? 'shown' : ''}`}
         id={ariaControls}
       >
         {children}

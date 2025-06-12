@@ -4,9 +4,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid $color-border;
 
   @include max-size($small) {
-    flex-direction: column;
+    align-items: flex-start;
+
+    &.container {
+      padding-top: 52px;
+    }
   }
 
   .logo {
@@ -15,11 +20,14 @@
       width: rem(260px);
 
       @include max-size($small) {
-        height: rem(16px);
-        width: rem(180px);
+        width: rem(200px);
       }
     }
   }
+}
+
+.main-panel {
+  top: 84px;
 }
 
 .welcome-message-container {

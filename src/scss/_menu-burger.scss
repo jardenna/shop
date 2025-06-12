@@ -1,6 +1,7 @@
 @use './globals' as *;
 
 $burger-placement: -8px;
+$burger-expanded-width: rem(20px);
 
 %burger-basic {
   width: rem(32px);
@@ -11,8 +12,8 @@ $burger-placement: -8px;
 
 .menu-burger {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 28px;
+  right: 28px;
 
   &.btn-ghost {
     &:hover,
@@ -47,15 +48,18 @@ $burger-placement: -8px;
     .menu-burger-item {
       background-color: transparent;
       transform: rotateY(180deg);
+      width: $burger-expanded-width;
 
       &::before {
         transform: translate3d(0, 10px, 0) rotate(45deg);
         top: -10px;
+        width: $burger-expanded-width;
       }
 
       &::after {
         transform: translate3d(0, -10px, 0) rotate(-45deg);
         bottom: -10px;
+        width: $burger-expanded-width;
       }
     }
   }

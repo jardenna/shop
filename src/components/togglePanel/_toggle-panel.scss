@@ -6,39 +6,51 @@
   height: calc(100svh - $header-height);
   z-index: 10;
   width: 100%;
+  overflow: auto;
+  padding-bottom: 4px;
 
   @include transition;
 
+  transform: translate(0);
+
   &.left {
-    left: -100%;
+    left: 0;
+    top: $header-height;
+    transform: translateX(-100%);
 
     &.shown {
-      left: 0;
+      transform: translateX(0);
     }
   }
 
   &.right {
-    right: -100%;
+    right: 0;
+    top: $header-height;
+    transform: translateX(100%);
 
     &.shown {
-      right: 0;
+      transform: translateX(0);
     }
   }
 
   &.top {
-    top: -100%;
+    top: $header-height;
+    left: 0;
+    transform: translateY(-100%);
 
     &.shown {
-      top: $header-height;
+      transform: translateY(0);
     }
   }
 
   &.bottom {
-    bottom: -100%;
+    bottom: 0;
     top: auto;
+    left: 0;
+    transform: translateY(100%);
 
     &.shown {
-      bottom: 0;
+      transform: translateY(0);
     }
   }
 }

@@ -10,7 +10,10 @@ import { HeaderProps } from '../header/Header';
 import { MainPath } from '../nav/enums';
 import LanguageCurrencyPreferences from './LanguageCurrencyPreferences';
 
-type OmittedHeaderProps = Omit<HeaderProps, 'primaryActionBtn' | 'ariaLabel'>;
+type OmittedHeaderProps = Omit<
+  HeaderProps,
+  'primaryActionBtn' | 'ariaLabel' | 'isMobileSize'
+>;
 
 type HeaderIconsProps = OmittedHeaderProps & {
   primaryActionBtn: PrimaryActionBtnProps;
@@ -29,9 +32,8 @@ const HeaderIcons = ({
   const { language } = useLanguage();
 
   return (
-    <section>
-      <ul className="header-icon-list">
-        {/* <li>
+    <ul className="header-icon-list">
+      {/* <li>
           <IconBtn
             iconName={IconName.Search}
             title={language.search}
@@ -39,51 +41,50 @@ const HeaderIcons = ({
             ariaLabel={language.search}
           />
         </li> */}
-        <li>
-          <DropdownBtn
-            dropdownList={userDropdownList}
-            ariaControls="user-dropdown"
-            placement="bottom-start"
-          >
+      <li>
+        <DropdownBtn
+          dropdownList={userDropdownList}
+          ariaControls="user-dropdown"
+          placement="bottom-start"
+        >
+          <IconContent
+            ariaLabel={language.myAccount}
+            iconName={IconName.User}
+            title={language.user}
+          />
+        </DropdownBtn>
+      </li>
+      <li>
+        <Link to={MainPath.ShoppingCart} className="btn btn-ghost">
+          <Icon iconName={IconName.ShoppingBack} title={language.bag} />
+        </Link>
+      </li>
+      <li>
+        <ModalContainer
+          triggerModalBtnContent={
             <IconContent
-              ariaLabel={language.myAccount}
-              iconName={IconName.User}
-              title={language.user}
+              iconName={IconName.Language}
+              title={language.globe}
+              ariaLabel={language.selectPreferences}
             />
-          </DropdownBtn>
-        </li>
-        <li>
-          <Link to={MainPath.ShoppingCart} className="btn btn-ghost">
-            <Icon iconName={IconName.ShoppingBack} title={language.bag} />
-          </Link>
-        </li>
-        <li>
-          <ModalContainer
-            triggerModalBtnContent={
-              <IconContent
-                iconName={IconName.Language}
-                title={language.globe}
-                ariaLabel={language.selectPreferences}
-              />
-            }
-            triggerModalBtnVariant={BtnVariant.Ghost}
-            id="languageId"
-            primaryActionBtn={primaryActionBtn}
-            secondaryActionBtn={secondaryActionBtn}
-            modalSize={SizeVariant.Md}
-            modalHeaderText={language.preferences}
-          >
-            <LanguageCurrencyPreferences
-              values={values}
-              onChange={onChange}
-              currencyOptions={currencyOptions}
-              defaultValue={defaultValue}
-              onSelectCurrency={onSelectCurrency}
-            />
-          </ModalContainer>
-        </li>
-      </ul>
-    </section>
+          }
+          triggerModalBtnVariant={BtnVariant.Ghost}
+          id="languageId"
+          primaryActionBtn={primaryActionBtn}
+          secondaryActionBtn={secondaryActionBtn}
+          modalSize={SizeVariant.Md}
+          modalHeaderText={language.preferences}
+        >
+          <LanguageCurrencyPreferences
+            values={values}
+            onChange={onChange}
+            currencyOptions={currencyOptions}
+            defaultValue={defaultValue}
+            onSelectCurrency={onSelectCurrency}
+          />
+        </ModalContainer>
+      </li>
+    </ul>
   );
 };
 

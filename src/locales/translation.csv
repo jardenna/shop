@@ -39,6 +39,9 @@ close;Close;Luk
 closeDialog;Close dialog;Luk dialog
 collapseMenu;Collapse menu;Skjul menu
 collection;Collection;Kollektion
+collectionSubKidsText;Comfortable and fun clothes for play, school and adventures.;Komfortabelt og sjovt tøj til leg, skole og eventyr.
+collectionSubMenText;From everyday looks to formal, everything for the modern man.;Fra hverdagslook til formelt, alt til den moderne mand.
+collectionSubWomenText;Discover stylish news, must-haves and trends of the season.;Opdag stilfulde nyheder, must-haves og sæsonens trends.
 colorRequired;Please select at least one color;Vælg mindst 1 farve
 colours;Colours;Farver
 confirmPassword;Confirm password;Gentag adgangskode
@@ -69,6 +72,8 @@ desc;descending;faldende
 description;Description;Beskrivelse
 details;Details;Detaljer
 discount;Discount;Rabat
+discoverLatestTrends;Discover latest trends;Udforsk de nyeste tendenser
+discoverLatestTrendsAltText;A man playfully surprises a woman by covering her eyes from behinds.;En mand overrasker legende en kvinde ved at dække hendes øjne bagfra.
 edit;Edit;Opdater
 editCategory;Edit category;Opdater kategori
 editProduct;Edit product;Opdater produkt
@@ -122,8 +127,8 @@ mainCategoryName;Parent category;Hovedkategori
 material;Material;Materiale
 materialRequired;Please insert material;Indsæt venligst materiale
 maximumFileSize;Maximum file size;Maksimal filstørrelse
-menu;Menu;Menu
 men;Men;Mænd
+menu;Menu;Menu
 minLength;At least 8 characters;Mindst 8 tegn
 multiColor;MultiColor;Flerfarvet
 mustHaveLowercase;At least one lowercase letter;Mindst ét lille bogstav
@@ -206,11 +211,11 @@ scheduledDateMustBeFuture;Scheduled date must be after now;Planlagt dato skal v�
 scheduledToBePubliched;is scheduled to be published at;er planlagt til udgivelse den 
 search;Search;Søg
 selectPreferences;Select preferred language and currency;Vælg venligst sprog og valuta
-shopMenHeading;Luxury begins with the feeling;Luksus starter med følelsen
-shopMenLink;Shop men;Shop herre
 shopKidsHeading;Playful by Nature;Leg er liv
 shopKidsLink;Shop kids;Shop børn
 shopKidsText;Fun, functional, and built for adventure-styles kids love and parents trust;Sjove og funktionelle styles til børn på farten og forældre med krav til kvalitet
+shopMenHeading;Luxury begins with the feeling;Luksus starter med følelsen
+shopMenLink;Shop men;Shop herre
 shopMenText;Premium materials and considered design. For the man who knows that calm is a kind of strength;Eksklusive materialer og gennemtænkt design. Til manden der forstår, at ro også er styrke
 shopNewHeading;Celebrating Life;Celebrating Life
 shopNewLink;Discover Collection;Se kollektionen

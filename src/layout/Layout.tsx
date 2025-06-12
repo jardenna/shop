@@ -25,12 +25,12 @@ export type LayoutElementProps = {
 const Layout = () => {
   const navigate = useNavigate();
   const { language, switchLanguage, selectedLanguage } = useLanguage();
-  const { isMobileSize } = useMediaQuery();
 
   // Hooks
   const { currentUser } = useAuth();
   const { currencyOptions, onChangePrice, exchangeRate } = useCurrency();
   const [logout] = useLogoutMutation();
+  const { isMobileSize } = useMediaQuery();
 
   const handleLogout = () => {
     logout();
@@ -130,6 +130,7 @@ const Layout = () => {
         userDropdownList={isEmployee ? employeeDropdownList : userDropdownList}
         primaryActionBtn={primaryActionBtn}
         secondaryActionBtn={secondaryActionBtn}
+        isMobileSize={isMobileSize}
         defaultValue={{
           label: exchangeRate,
           value: exchangeRate,

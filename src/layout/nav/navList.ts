@@ -1,5 +1,5 @@
 import { IconName } from '../../types/enums';
-import { LinkText, MainPath } from './enums';
+import { FrontPath, LinkText, MainPath } from './enums';
 import { NavItemsProps } from './Nav';
 
 const navList: NavItemsProps[] = [
@@ -10,25 +10,26 @@ const navList: NavItemsProps[] = [
   {
     path: MainPath.Collection,
     linkText: LinkText.Collection,
+    adHeading: 'discoverLatestTrends',
     subNav: [
       {
-        path: MainPath.Collection,
+        path: FrontPath.Women,
         linkText: LinkText.Women,
-        infoText: 'Udtryk dig selv med styles',
+        infoText: 'collectionSubWomenText',
       },
       {
-        path: MainPath.Collection,
+        path: FrontPath.Men,
         linkText: LinkText.Men,
-        infoText: 'Eksklusive materialer og gennemtænkt design.',
+        infoText: 'collectionSubMenText',
+        className: 'background-gray',
       },
       {
-        path: MainPath.Collection,
+        path: FrontPath.Kids,
         linkText: LinkText.Kids,
-        infoText: 'Sjove og funktionelle styles til børn på farten',
+        infoText: 'collectionSubKidsText',
       },
     ],
   },
-
   {
     path: MainPath.About,
     linkText: LinkText.About,

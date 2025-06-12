@@ -8,7 +8,11 @@ import { HeaderProps } from '../header/Header';
 
 type OmittedHeaderProps = Omit<
   HeaderProps,
-  'primaryActionBtn' | 'secondaryActionBtn' | 'ariaLabel' | 'userDropdownList'
+  | 'primaryActionBtn'
+  | 'secondaryActionBtn'
+  | 'ariaLabel'
+  | 'userDropdownList'
+  | 'isMobileSize'
 >;
 
 const LanguageCurrencyPreferences = ({

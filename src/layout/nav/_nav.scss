@@ -4,6 +4,11 @@
   display: flex;
   gap: 18px;
 
+  @include max-size($small) {
+    flex-direction: column;
+    gap: 2px;
+  }
+
   .nav-item {
     text-transform: uppercase;
     padding: 8px;
@@ -12,76 +17,36 @@
       @include outline;
     }
 
-    &:hover,
     &.active {
       color: $color-gray-70;
-      padding-bottom: 4px;
       border-bottom: 2px solid currentcolor;
     }
   }
 }
 
-.sub-nav {
-  gap: 30px;
-  box-shadow: $box-shadow;
-  position: absolute;
-  width: 100%;
-  z-index: 2;
-  top: 54px;
-  left: 0;
-  padding: 20px;
-  background-color: $color-white;
-  display: none;
-  justify-content: center;
+// Main nav
+.main-nav {
+  .nav-list {
+    @include max-size($small) {
+      .nav-item {
+        padding: 12px 20px;
+        background-color: $color-light-gray-20;
+        color: inherit;
+        font-size: $font-medium;
+        display: flex;
+        width: 100%;
 
-  // display: none;
-
-  .sub-nav-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .brand-container {
-    border-left: 1px solid $color-border;
-    padding-left: 20px;
-  }
-
-  .brand-content {
-    display: flex;
-    gap: 20px;
-    padding-top: 8px;
-
-    .brand-item {
-      width: 200px;
-      height: 160px;
-      background-color: $color-background;
-      padding: 20px;
-    }
-  }
-
-  .sub-nav-content {
-    a {
-      font-size: 20px;
-    }
-
-    p {
-      margin: 0;
+        &.active {
+          border-color: transparent;
+          background-color: $color-gray-60;
+          color: $color-white;
+        }
+      }
     }
   }
 }
 
-.has-sub-nav {
-  // position: relative;
-
-  &:hover,
-  &:focus-within {
-    .sub-nav {
-      display: flex;
-    }
-  }
-}
-
+// Admin nav
 .admin-nav {
   height: 100%;
   display: flex;
@@ -109,6 +74,7 @@
 
     .nav-item {
       font-size: $font-medium;
+      border: 2px solid transparent;
       text-transform: none;
       width: 100%;
       display: flex;
@@ -117,7 +83,6 @@
 
       @include transition;
 
-      &:hover,
       &.active {
         background-color: $color-gray-70;
         color: $color-white;
