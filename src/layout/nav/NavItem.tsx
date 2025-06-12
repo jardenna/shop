@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router';
+import { useEffect, useState } from 'react';
+import { NavLink, useLocation } from 'react-router';
 import Icon from '../../components/icons/Icon';
 import useLanguage from '../../features/language/useLanguage';
 import useKeyPress from '../../hooks/useKeyPress';
@@ -14,22 +14,38 @@ const NavItem = ({
   navItem: NavItemsProps;
   hideAria?: boolean;
 }) => {
+  const location = useLocation();
   const { language } = useLanguage();
   const [isSubNavShown, setIsSubNavShown] = useState(false);
   const aria = navItem.subNav && !hideAria;
 
-  useKeyPress(() => {
+  const handleShowSubNav = () => {
+    setIsSubNavShown(true);
+  };
+
+  const handleHideSubNav = () => {
     setIsSubNavShown(false);
+  };
+
+  useEffect(() => {
+    handleHideSubNav();
+  }, [location]);
+
+  useKeyPress(() => {
+    handleHideSubNav();
   }, [KeyCode.Esc]);
 
   return (
     <li
       className={navItem.subNav ? 'has-sub-nav' : ''}
-      onMouseEnter={() => {
-        setIsSubNavShown(true);
-      }}
-      onMouseLeave={() => {
-        setIsSubNavShown(false);
+      onMouseEnter={handleShowSubNav}
+      onMouseLeave={handleHideSubNav}
+      onFocus={handleShowSubNav}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget)) {
+          // ensures that focus inside the submenu won't immediately close it
+          handleHideSubNav();
+        }
       }}
     >
       <NavLink
