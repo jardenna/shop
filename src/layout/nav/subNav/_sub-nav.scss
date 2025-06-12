@@ -11,6 +11,10 @@
   justify-content: center;
   display: none;
 
+  &.shown {
+    display: flex;
+  }
+
   @include max-size($small) {
     position: static;
     display: flex;
@@ -116,11 +120,11 @@
   }
 }
 
-.has-sub-nav {
-  &:hover,
-  &:focus-within {
-    .sub-nav-container {
-      display: flex;
-    }
-  }
-}
+// .has-sub-nav {
+//   &:hover,
+//   &:focus-within {
+//     .sub-nav-container {
+//       display: flex;
+//     }
+//   }
+// }

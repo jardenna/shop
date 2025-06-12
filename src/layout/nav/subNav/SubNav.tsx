@@ -7,14 +7,15 @@ import './_sub-nav.scss';
 type SubNavProps = {
   adHeading: string;
   subNav: BaseNav[];
+  className?: string;
 };
 
-const SubNav = ({ subNav, adHeading }: SubNavProps) => {
+const SubNav = ({ subNav, adHeading, className = '' }: SubNavProps) => {
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
 
   return (
-    <div className="sub-nav-container">
+    <div className={`sub-nav-container ${className}`}>
       <ul className="sub-nav">
         {subNav.map(({ linkText, path, infoText, className = '' }) =>
           isMobileSize ? (

@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { NavLink } from 'react-router';
 import Icon from '../../components/icons/Icon';
 import useLanguage from '../../features/language/useLanguage';
+import useKeyPress from '../../hooks/useKeyPress';
+import { KeyCode } from '../../types/enums';
 import { NavItemsProps } from './Nav';
 import SubNav from './subNav/SubNav';
 
@@ -13,24 +15,28 @@ const NavItem = ({
   hideAria?: boolean;
 }) => {
   const { language } = useLanguage();
-  const [isOpen, setIsOpen] = useState(false);
+  const [isSubNavShown, setIsSubNavShown] = useState(false);
   const aria = navItem.subNav && !hideAria;
+
+  useKeyPress(() => {
+    setIsSubNavShown(false);
+  }, [KeyCode.Esc]);
 
   return (
     <li
       className={navItem.subNav ? 'has-sub-nav' : ''}
       onMouseEnter={() => {
-        setIsOpen(true);
+        setIsSubNavShown(true);
       }}
       onMouseLeave={() => {
-        setIsOpen(false);
+        setIsSubNavShown(false);
       }}
     >
       <NavLink
         to={navItem.path}
         className="nav-item"
         aria-haspopup={aria ? true : undefined}
-        aria-expanded={aria ? isOpen : undefined}
+        aria-expanded={aria ? isSubNavShown : undefined}
       >
         {navItem.iconName && (
           <span>
@@ -45,7 +51,11 @@ const NavItem = ({
         <span className="nav-text">{language[navItem.linkText]}</span>
       </NavLink>
       {navItem.subNav && navItem.adHeading && (
-        <SubNav subNav={navItem.subNav} adHeading={navItem.adHeading} />
+        <SubNav
+          subNav={navItem.subNav}
+          adHeading={navItem.adHeading}
+          className={`sub-nav-container ${isSubNavShown ? 'shown' : ''}`}
+        />
       )}
     </li>
   );
