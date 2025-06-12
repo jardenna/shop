@@ -22,8 +22,8 @@ const NavItem = ({ navItem }: { navItem: NavItemsProps }) => {
       <NavLink
         to={navItem.path}
         className="nav-item"
-        aria-haspopup={!!navItem.subNav}
-        aria-expanded={isOpen}
+        aria-haspopup={!!navItem.subNav || undefined}
+        aria-expanded={navItem.subNav ? isOpen : undefined}
       >
         {navItem.iconName && (
           <span>
