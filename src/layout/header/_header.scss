@@ -6,7 +6,7 @@
   align-items: center;
 
   @include max-size($small) {
-    flex-direction: column;
+    align-items: flex-start;
   }
 
   .logo {
@@ -15,8 +15,7 @@
       width: rem(260px);
 
       @include max-size($small) {
-        height: rem(16px);
-        width: rem(180px);
+        width: rem(200px);
       }
     }
   }

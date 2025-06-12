@@ -16,7 +16,7 @@ type TogglePanelProps = {
 const TogglePanel = ({
   children,
   ariaControls,
-  panelPosition = 'left',
+  panelPosition = 'right',
 }: TogglePanelProps) => {
   const { language } = useLanguage();
   const { isPanelShown, onTogglePanel, panelRef } = useTogglePanel();

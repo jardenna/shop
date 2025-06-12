@@ -17,11 +17,6 @@
       @include outline;
     }
 
-    &:hover {
-      color: $color-gray-70;
-      border-bottom: 2px solid currentcolor;
-    }
-
     &.active {
       color: $color-gray-70;
       border-bottom: 2px solid currentcolor;
@@ -88,7 +83,6 @@
 
       @include transition;
 
-      &:hover,
       &.active {
         background-color: $color-gray-70;
         color: $color-white;

@@ -124,6 +124,11 @@ ul {
   margin: 0 auto;
   padding: 28px 20px;
   width: 100%;
+
+  @include max-size($small) {
+    padding: 12px 20px;
+    padding-top: 52px;
+  }
 }
 
 .more-link {

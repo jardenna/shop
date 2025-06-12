@@ -49,7 +49,7 @@
 
   .hero-text {
     font-size: clamp($font-medium, $clamp-val, rem(20px));
-    line-height: clamp($font-medium, $clamp-val, rem(32px));
+    line-height: clamp($font-large, $clamp-val, rem(32px));
 
     p {
       margin: 0;
