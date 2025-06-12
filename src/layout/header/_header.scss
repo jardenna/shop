@@ -4,6 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid $color-border;
 
   @include max-size($small) {
     align-items: flex-start;
