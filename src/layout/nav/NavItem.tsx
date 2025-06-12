@@ -5,9 +5,16 @@ import useLanguage from '../../features/language/useLanguage';
 import { NavItemsProps } from './Nav';
 import SubNav from './subNav/SubNav';
 
-const NavItem = ({ navItem }: { navItem: NavItemsProps }) => {
+const NavItem = ({
+  navItem,
+  hideAria,
+}: {
+  navItem: NavItemsProps;
+  hideAria?: boolean;
+}) => {
   const { language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
+  const aria = navItem.subNav && !hideAria;
 
   return (
     <li
@@ -22,8 +29,8 @@ const NavItem = ({ navItem }: { navItem: NavItemsProps }) => {
       <NavLink
         to={navItem.path}
         className="nav-item"
-        aria-haspopup={!!navItem.subNav || undefined}
-        aria-expanded={navItem.subNav ? isOpen : undefined}
+        aria-haspopup={aria ? true : undefined}
+        aria-expanded={aria ? isOpen : undefined}
       >
         {navItem.iconName && (
           <span>

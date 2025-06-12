@@ -47,7 +47,7 @@ const Header = ({
         <NavContainer navList={navList} />
       ) : (
         <TogglePanel ariaControls="nav">
-          <NavContainer navList={navList} />
+          <NavContainer navList={navList} hideAria />
         </TogglePanel>
       )}
       <HeaderIcons

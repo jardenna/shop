@@ -19,6 +19,7 @@ type NavContainerProps = {
   ariaLabel?: string;
   className?: string;
   currentUser?: UserResponse | null;
+  hideAria?: boolean;
   isMenuCollapsed?: boolean;
   onCollapseMenu?: () => void;
 };
@@ -31,12 +32,17 @@ const NavContainer = ({
   ariaLabel,
   currentUser,
   ariaControls,
+  hideAria,
 }: NavContainerProps) => {
   const { language } = useLanguage();
 
   return (
     <section className={className} id={ariaControls}>
-      <Nav navItemsList={navList} ariaLabel={language.main} />
+      <Nav
+        navItemsList={navList}
+        ariaLabel={language.main}
+        hideAria={hideAria}
+      />
       {onCollapseMenu && (
         <IconBtn
           onClick={onCollapseMenu}
