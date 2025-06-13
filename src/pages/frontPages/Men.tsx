@@ -1,8 +1,13 @@
 import useLanguage from '../../features/language/useLanguage';
+import MainPageContainer from '../pageContainer/MainPageContainer';
 
 const Men = () => {
   const { language } = useLanguage();
-  return <section className="container page">{language.men}</section>;
+  return (
+    <MainPageContainer heading={language.men}>
+      <section>Mænd</section>
+    </MainPageContainer>
+  );
 };
 
 export default Men;
