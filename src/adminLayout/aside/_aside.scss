@@ -26,19 +26,19 @@
       overflow: hidden;
     }
   }
+}
 
-  .user-container {
-    .user-text {
-      display: flex;
-      flex-direction: column;
-    }
+.user-container {
+  .user-text {
+    display: flex;
+    flex-direction: column;
+  }
 
-    .user {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 20px;
-      border-top: 1px solid $color-border;
-    }
+  .user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px;
+    border-top: 1px solid $color-border;
   }
 }
