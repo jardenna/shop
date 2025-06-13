@@ -12,7 +12,7 @@ const FashionGrid = () => {
           className="grid-item-1"
           heading={language.shopNewHeading}
           linkTo="/"
-          linkText={language.shopNewLink}
+          linkText={language.discoverCollection}
           subHading="NewArrivals"
         >
           <p>{language.shopNewText}</p>

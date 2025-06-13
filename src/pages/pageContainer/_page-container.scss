@@ -1,5 +1,10 @@
 @use '../../scss/globals' as *;
 
+.main-page {
+  margin-top: 32px;
+  width: 100%;
+}
+
 .page-header {
   display: flex;
   justify-content: space-between;
