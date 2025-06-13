@@ -6,7 +6,7 @@ const About = () => {
   const { language } = useLanguage();
 
   return (
-    <MainPageContainer heading={language.collection}>
+    <MainPageContainer heading={language.about}>
       <section>
         <ProductPrice price={10200} />
       </section>

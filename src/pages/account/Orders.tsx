@@ -5,7 +5,7 @@ const Orders = () => {
   const { language } = useLanguage();
 
   return (
-    <MainPageContainer heading={language.collection}>Contact</MainPageContainer>
+    <MainPageContainer heading={language.orders}>Ordrer</MainPageContainer>
   );
 };
 

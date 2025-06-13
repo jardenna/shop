@@ -5,7 +5,7 @@ const MyAccount = () => {
   const { language } = useLanguage();
 
   return (
-    <MainPageContainer heading={language.collection}>Contact</MainPageContainer>
+    <MainPageContainer heading={language.myAccount}>Konto</MainPageContainer>
   );
 };
 
