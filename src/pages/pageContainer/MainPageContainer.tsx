@@ -7,6 +7,7 @@ import './_page-container.scss';
 type MainPageContainerProps = {
   children: ReactNode;
   heading: string;
+  className?: string;
   onReset?: () => void;
 };
 
@@ -14,10 +15,11 @@ const MainPageContainer = ({
   children,
   heading,
   onReset,
+  className = '',
 }: MainPageContainerProps) => (
   <>
     <MetaTags metaTitle={heading} />
-    <article className="container page">
+    <article className={`container page ${className}`}>
       <h1>{heading}</h1>
       <div className="main-page">
         <ErrorBoundary

@@ -12,18 +12,13 @@ import passwordRules from '../utils/passwordRules';
 export type RegisterUserProps = {
   navigateTo: string;
   currentUser?: UserResponse;
-  heading?: string;
 };
 
 export type InitialState = AuthRequest & {
   confirmPassword: string;
 };
 
-const RegisterUser = ({
-  navigateTo,
-  heading,
-  currentUser,
-}: RegisterUserProps) => {
+const RegisterUser = ({ navigateTo, currentUser }: RegisterUserProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const initialState: InitialState = {
@@ -69,7 +64,6 @@ const RegisterUser = ({
 
   return (
     <AuthForm
-      heading={heading}
       values={values}
       submitBtnLabel={language.signup}
       onSubmit={onSubmit}
