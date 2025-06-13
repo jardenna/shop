@@ -3,10 +3,10 @@ import Img from '../../components/Img';
 import { FrontPath } from '../../layout/nav/enums';
 
 export type MainCollectionsItemProps = {
+  linkText: string;
   linkTo: FrontPath;
   src: string[];
   title: string;
-  linkText?: string;
 };
 
 const MainCollectionsItem = ({

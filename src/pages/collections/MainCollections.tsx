@@ -11,11 +11,13 @@ const MainCollections = () => {
       title: language.men,
       src: ['/images/collections/men.jpg'],
       linkTo: FrontPath.Men,
+      linkText: language.discoverCollection,
     },
     {
       title: language.kids,
       src: ['/images/collections/kids.jpg'],
       linkTo: FrontPath.Kids,
+      linkText: language.discoverCollection,
     },
     {
       title: language.women,
@@ -25,18 +27,19 @@ const MainCollections = () => {
         '/images/collections/women_3.jpg',
       ],
       linkTo: FrontPath.Women,
+      linkText: language.discoverCollection,
     },
   ];
 
   return (
     <div className="main-collection-container">
-      {mainCollectionsList.map(({ title, src, linkTo }) => (
+      {mainCollectionsList.map(({ title, src, linkTo, linkText }) => (
         <MainCollectionsItem
           key={title}
           title={title}
           src={src}
           linkTo={linkTo}
-          linkText={language.discoverCollection}
+          linkText={linkText}
         />
       ))}
     </div>
