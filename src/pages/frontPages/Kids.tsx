@@ -1,12 +1,16 @@
+import Img from '../../components/Img';
 import useLanguage from '../../features/language/useLanguage';
 import MainPageContainer from '../pageContainer/MainPageContainer';
 
 const Kids = () => {
   const { language } = useLanguage();
   return (
-    <MainPageContainer heading={language.kids}>
-      <section>Kids</section>
-    </MainPageContainer>
+    <>
+      <Img src="/images/kids/kid_banner.png" alt="lots of kids" />
+      <MainPageContainer heading={language.kids}>
+        <section>Kids</section>
+      </MainPageContainer>
+    </>
   );
 };
 

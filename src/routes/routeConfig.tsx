@@ -17,6 +17,8 @@ import CollectionsPage from '../pages/collections/CollectionsPage';
 import Contact from '../pages/Contact';
 import ErrorPage from '../pages/ErrorPage';
 import Kids from '../pages/frontPages/Kids';
+import Men from '../pages/frontPages/Men';
+import Women from '../pages/frontPages/Women';
 import HomePage from '../pages/home/HomePage';
 import LoginPage from '../pages/LoginPage';
 import CreateProductPage from '../pages/product/CreateProductPage';
@@ -30,8 +32,6 @@ import CreateSubCategoryPage from '../pages/subCategory/CreateSubCategoryPage';
 import SubCategoryPage from '../pages/subCategory/SubCategoryPage';
 import UpdateSubCategoryPage from '../pages/subCategory/UpdateSubCategoryPage';
 import ViewSubCategoryPage from '../pages/subCategory/ViewSubCategoryPage';
-import Men from '../pages/frontPages/Men';
-import Women from '../pages/frontPages/Women';
 
 const routeConfig = createBrowserRouter([
   {
