@@ -6,6 +6,17 @@
   align-items: center;
   width: 100%;
   max-width: $page-width-large;
+  padding-block: 32px;
+}
+
+.home-page {
+  &.container {
+    padding: 0;
+  }
+}
+
+.home-page-container {
+  padding-block: 32px;
 }
 
 .page-small {

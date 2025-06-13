@@ -122,12 +122,8 @@ ul {
 .container {
   max-width: rem(1800px);
   margin: 0 auto;
-  padding: 28px 20px;
+  padding-inline: 20px;
   width: 100%;
-
-  @include max-size($small) {
-    padding: 12px 20px;
-  }
 }
 
 .more-link {

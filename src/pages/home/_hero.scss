@@ -1,9 +1,5 @@
 @use '../../scss/globals' as *;
 
-.container:has(.hero) {
-  padding: 0 20px;
-}
-
 .hero {
   background-color: $color-light-gray;
   background-image: url('/images/fashion_fusion_banner.png');
@@ -12,7 +8,6 @@
   height: rem(372px);
   padding: 40px;
   padding-left: 130px;
-  margin-bottom: 32px;
 
   @include max-size($large) {
     padding-left: 40px;

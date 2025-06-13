@@ -8,10 +8,6 @@
 
   @include max-size($small) {
     align-items: flex-start;
-
-    &.container {
-      padding-top: 52px;
-    }
   }
 
   .logo {
@@ -23,6 +19,16 @@
         width: rem(200px);
       }
     }
+  }
+}
+
+.main-header {
+  min-height: $header-height;
+  display: flex;
+  align-items: center;
+
+  .main-header-container {
+    padding-block: 30px;
   }
 }
 
