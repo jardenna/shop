@@ -1,4 +1,5 @@
-import { Link, matchPath, useLocation } from 'react-router';
+import { NavLink, matchPath, useLocation } from 'react-router';
+import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
 import { routeList } from '../../routes/routeConfig';
 
@@ -7,6 +8,7 @@ const matchRoute = (routePath: string, currentPath: string) =>
 
 const Breadcrumbs = () => {
   const location = useLocation();
+  const { language } = useLanguage();
   const pathnames: string[] = location.pathname.split('/').filter(Boolean);
 
   const breadcrumbItems = pathnames.map((_, index) => {
@@ -21,16 +23,15 @@ const Breadcrumbs = () => {
 
     return (
       <span key={to}>
-        <Link to={to}>{matchedRoute.label}</Link>
+        <NavLink to={to}>{language[matchedRoute.label]} / </NavLink>
       </span>
     );
   });
 
   return (
     <nav>
-      <Link to={MainPath.Root}>Home</Link>
+      <NavLink to={MainPath.Root}>Home</NavLink>
       {breadcrumbItems.length > 0 && ' / '}
-
       {breadcrumbItems}
     </nav>
   );

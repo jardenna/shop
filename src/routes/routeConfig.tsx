@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router';
 import AdminLayout from '../adminLayout/AdminLayout';
 import Layout from '../layout/Layout';
-import { FrontPath, MainPath } from '../layout/nav/enums';
+import { FrontPath, LinkText, MainPath } from '../layout/nav/enums';
 import About from '../pages/About';
 import MyAccount from '../pages/account/MyAccount';
 import Orders from '../pages/account/Orders';
@@ -37,51 +37,62 @@ export const routeList = [
   {
     index: true,
     element: <HomePage />,
+    label: LinkText.Home,
   },
   {
     path: FrontPath.Men,
     element: <Men />,
+    label: LinkText.Men,
   },
   {
     path: FrontPath.Women,
     element: <Women />,
+    label: LinkText.Women,
   },
   {
     path: FrontPath.Kids,
     element: <Kids />,
-    label: 'Kiaads',
+    label: LinkText.Kids,
   },
   {
     path: MainPath.Collection,
     element: <CollectionsPage />,
+    label: LinkText.Collection,
   },
   {
     path: MainPath.About,
     element: <About />,
+    label: LinkText.About,
   },
   {
     path: MainPath.Contact,
     element: <Contact />,
+    label: LinkText.Contact,
   },
   {
     path: MainPath.Login,
     element: <LoginPage />,
+    label: LinkText.Kids,
   },
   {
     path: MainPath.Signup,
     element: <SignupPage />,
+    label: LinkText.Kids,
   },
   {
     path: MainPath.MyAccount,
     element: <MyAccount />,
+    label: LinkText.Kids,
   },
   {
     path: MainPath.Orders,
     element: <Orders />,
+    label: LinkText.Kids,
   },
   {
     path: MainPath.ShoppingCart,
     element: <ShoppingChart />,
+    label: LinkText.Kids,
   },
 ];
 

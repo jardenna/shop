@@ -26,7 +26,7 @@ const Kids = () => {
         })}
       </nav> */}
       <Breadcrumbs />
-      aa
+
       <Img src="/images/kids/kid_banner.png" alt="lots of kids" />
       <MainPageContainer heading={language.kids}>
         <section>Kids</section>
