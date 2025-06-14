@@ -38,7 +38,7 @@ const AdminLayout = () => {
       <MetaTags metaTitle={language.admin} />
       {!isMobileSize && <SkipLink />}
       <AdminHeader
-        ariaLabel={language.main}
+        ariaLabel={language.mainSiteHeader}
         onLogout={handleLogout}
         btnLabel={language.logout}
         welcomeMessage={
