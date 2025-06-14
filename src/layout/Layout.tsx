@@ -126,7 +126,7 @@ const Layout = () => {
       <MetaTags />
       {!isMobileSize && <SkipLink />}
       <Header
-        ariaLabel={language.main}
+        ariaLabel={language.mainSiteHeader}
         userDropdownList={isEmployee ? employeeDropdownList : userDropdownList}
         primaryActionBtn={primaryActionBtn}
         secondaryActionBtn={secondaryActionBtn}

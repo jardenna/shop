@@ -44,7 +44,6 @@ type AuthFormProps = RegisterUserProps & {
 const AuthForm = ({
   values,
   onSubmit,
-  heading,
   isLoading,
   onChange,
   submitBtnLabel,
@@ -62,78 +61,75 @@ const AuthForm = ({
   const { language } = useLanguage();
 
   return (
-    <>
-      {heading && <h1>{heading}</h1>}
-      <Form
-        submitBtnLabel={submitBtnLabel}
-        onSubmit={onSubmit}
-        isLoading={isLoading}
-        className="auth-form"
-      >
-        <FieldSet legendText={legendText} hideLegendText>
-          {values.username !== undefined && (
-            <Input
-              name="username"
-              id="username"
-              value={values.username}
-              labelText={language.username}
-              onChange={onChange}
-              required
-              errorText={language[errors.username]}
-              onBlur={onBlur}
-            />
-          )}
+    <Form
+      submitBtnLabel={submitBtnLabel}
+      onSubmit={onSubmit}
+      isLoading={isLoading}
+      className="auth-form"
+    >
+      <FieldSet legendText={legendText} hideLegendText>
+        {values.username !== undefined && (
           <Input
-            name="email"
-            id="email"
-            value={values.email}
-            labelText={language.email}
+            name="username"
+            id="username"
+            value={values.username}
+            labelText={language.username}
             onChange={onChange}
             required
-            errorText={language[errors.email]}
+            errorText={language[errors.username]}
             onBlur={onBlur}
           />
+        )}
+        <Input
+          name="email"
+          id="email"
+          value={values.email}
+          labelText={language.email}
+          onChange={onChange}
+          required
+          errorText={language[errors.email]}
+          onBlur={onBlur}
+        />
+        <PasswordInput
+          name="password"
+          id="password"
+          value={values.password}
+          labelText={language.password}
+          onChange={onChange}
+          required
+          passwordRules={passwordRules}
+          onFocus={onFocus}
+          isFocused={isFocused}
+          onBlur={onBlur}
+          errorText={language[errors.password]}
+        />
+        {values.confirmPassword !== undefined && (
           <PasswordInput
-            name="password"
-            id="password"
-            value={values.password}
-            labelText={language.password}
+            name="confirmPassword"
+            id="confirmPassword"
+            value={values.confirmPassword}
+            labelText={language.confirmPassword}
             onChange={onChange}
             required
-            passwordRules={passwordRules}
-            onFocus={onFocus}
-            isFocused={isFocused}
+            errorText={language[errors.confirmPassword]}
             onBlur={onBlur}
-            errorText={language[errors.password]}
           />
-          {values.confirmPassword !== undefined && (
-            <PasswordInput
-              name="confirmPassword"
-              id="confirmPassword"
-              value={values.confirmPassword}
-              labelText={language.confirmPassword}
-              onChange={onChange}
-              required
-              errorText={language[errors.confirmPassword]}
-              onBlur={onBlur}
-            />
-          )}
-        </FieldSet>
-        {!currentUser && (
-          <div className="auth-btn">
-            <Button
-              onClick={() => navigate(`/${navigateTo}`)}
-              variant={BtnVariant.Ghost}
-            >
-              {navigateToText}
-            </Button>
-          </div>
         )}
-        {currentUser?.isAdmin && values.role && (
-          <RoleRadioBtn onChange={onChange} roleValue={values.role} />
-        )}
-      </Form>
-    </>
+      </FieldSet>
+      {!currentUser && (
+        <div className="auth-btn">
+          <Button
+            onClick={() => navigate(`/${navigateTo}`)}
+            variant={BtnVariant.Ghost}
+          >
+            {navigateToText}
+          </Button>
+        </div>
+      )}
+      {currentUser?.isAdmin && values.role && (
+        <RoleRadioBtn onChange={onChange} roleValue={values.role} />
+      )}
+    </Form>
   );
 };
 

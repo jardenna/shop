@@ -72,6 +72,7 @@ desc;descending;faldende
 description;Description;Beskrivelse
 details;Details;Detaljer
 discount;Discount;Rabat
+discoverCollection;Discover Collection;Se kollektionen
 discoverLatestTrends;Discover latest trends;Udforsk de nyeste tendenser
 discoverLatestTrendsAltText;A man playfully surprises a woman by covering her eyes from behinds.;En mand overrasker legende en kvinde ved at dække hendes øjne bagfra.
 edit;Edit;Opdater
@@ -124,6 +125,7 @@ loginSucceeded;Login succeeded;Login lykkedes
 logout;Log out;Log ud
 main;Main;Primær
 mainCategoryName;Parent category;Hovedkategori
+mainSiteHeader;Main site;Primær site
 material;Material;Materiale
 materialRequired;Please insert material;Indsæt venligst materiale
 maximumFileSize;Maximum file size;Maksimal filstørrelse
@@ -153,6 +155,7 @@ notVisibleInShop;is not visible in the shop until the main category is published
 noUser;User not found. Please sign up first;Bruger blev ikke fundet. Opret dig først
 orange;Orange;Orange
 orders;Orders;Ordrer
+page;Page;Side
 parentCategoryIs;Parent category is;Hovedkategori er
 password;Password;Adgangskode
 passwordDoNotMatch;The passwords do not match;Adgangskoderne stemmer ikke overens
@@ -211,6 +214,7 @@ scheduledDateMustBeFuture;Scheduled date must be after now;Planlagt dato skal v�
 scheduledToBePubliched;is scheduled to be published at;er planlagt til udgivelse den 
 search;Search;Søg
 selectPreferences;Select preferred language and currency;Vælg venligst sprog og valuta
+shopCart;Shopping cart;Indkøbskurv
 shopKidsHeading;Playful by Nature;Leg er liv
 shopKidsLink;Shop kids;Shop børn
 shopKidsText;Fun, functional, and built for adventure-styles kids love and parents trust;Sjove og funktionelle styles til børn på farten og forældre med krav til kvalitet
@@ -218,7 +222,6 @@ shopMenHeading;Luxury begins with the feeling;Luksus starter med følelsen
 shopMenLink;Shop men;Shop herre
 shopMenText;Premium materials and considered design. For the man who knows that calm is a kind of strength;Eksklusive materialer og gennemtænkt design. Til manden der forstår, at ro også er styrke
 shopNewHeading;Celebrating Life;Celebrating Life
-shopNewLink;Discover Collection;Se kollektionen
 shopNewText;Discover style made to move with your passions and celebrate what makes you unique;Opdag stil skabt til at følge dine passioner og hyld det, der gør dig unik
 shopNow;Shop now;Shop nu
 shopWomanHeading;Empower Your Everyday;Styrke i din stil

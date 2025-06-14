@@ -33,6 +33,7 @@ const useMessagePopup = (messagePopupId?: string) => {
   const handleDeleteMessagePopup = () => {
     setIsVisible(false);
   };
+
   useKeyPress(handleDeleteMessagePopup, [KeyCode.Esc]);
 
   useEffect(() => {

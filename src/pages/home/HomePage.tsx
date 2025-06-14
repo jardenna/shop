@@ -2,9 +2,11 @@ import FashionGrid from './fashionGrid/FashionGrid';
 import Hero from './Hero';
 
 const HomePage = () => (
-  <section className="container">
+  <section className="container home-page">
     <Hero />
-    <FashionGrid />
+    <div className="home-page-container">
+      <FashionGrid />
+    </div>
   </section>
 );
 

@@ -1,9 +1,17 @@
 import ProductPrice from '../features/currency/components/ProductPrice';
+import useLanguage from '../features/language/useLanguage';
+import MainPageContainer from './pageContainer/MainPageContainer';
 
-const About = () => (
-  <section>
-    <ProductPrice price={10200} />
-  </section>
-);
+const About = () => {
+  const { language } = useLanguage();
+
+  return (
+    <MainPageContainer heading={language.about}>
+      <section>
+        <ProductPrice price={10200} />
+      </section>
+    </MainPageContainer>
+  );
+};
 
 export default About;

@@ -6,6 +6,17 @@
   align-items: center;
   width: 100%;
   max-width: $page-width-large;
+  padding-block: 32px;
+}
+
+.home-page {
+  &.container {
+    padding: 0;
+  }
+}
+
+.home-page-container {
+  padding-block: 32px;
 }
 
 .page-small {
@@ -14,4 +25,17 @@
 
 .page-medium {
   max-width: $page-width-medium;
+}
+
+.top-img {
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 400px;
+}
+
+.kids-page {
+  .top-img {
+    background-image: url('/images/kids/kid_banner.jpg');
+  }
 }

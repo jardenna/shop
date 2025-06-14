@@ -6,6 +6,7 @@ import { useLoginMutation } from '../features/auth/authApiSlice';
 import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
 import { MainPath } from '../layout/nav/enums';
+import MainPageContainer from './pageContainer/MainPageContainer';
 
 const LoginPage = () => {
   const location = useLocation();
@@ -43,19 +44,20 @@ const LoginPage = () => {
   }
 
   return (
-    <AuthForm
-      values={values}
-      submitBtnLabel={language.login}
-      onSubmit={onSubmit}
-      isLoading={isLoading}
-      legendText={language.userInfo}
-      onChange={onChange}
-      errors={errors}
-      onBlur={onBlur}
-      navigateTo={MainPath.Signup}
-      navigateToText={language.createAccount}
-      heading={language.login}
-    />
+    <MainPageContainer heading={language.login} className="page-small">
+      <AuthForm
+        values={values}
+        submitBtnLabel={language.login}
+        onSubmit={onSubmit}
+        isLoading={isLoading}
+        legendText={language.userInfo}
+        onChange={onChange}
+        errors={errors}
+        onBlur={onBlur}
+        navigateTo={MainPath.Signup}
+        navigateToText={language.createAccount}
+      />
+    </MainPageContainer>
   );
 };
 

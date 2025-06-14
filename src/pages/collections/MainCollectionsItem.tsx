@@ -1,17 +1,26 @@
-import Button from '../../components/Button';
+import { NavLink } from 'react-router';
 import Img from '../../components/Img';
+import { FrontPath } from '../../layout/nav/enums';
 
-type MainCollectionsItemProps = {
+export type MainCollectionsItemProps = {
+  linkText: string;
+  linkTo: FrontPath;
   src: string[];
   title: string;
 };
 
-const MainCollectionsItem = ({ title, src }: MainCollectionsItemProps) => (
+const MainCollectionsItem = ({
+  title,
+  src,
+  linkTo,
+  linkText,
+}: MainCollectionsItemProps) => (
   <section className="collections-item">
     <div className="collections-content">
       <h2 className="collections-title">{title}</h2>
-
-      <Button>Se kollektion</Button>
+      <NavLink className="btn btn-primary" to={linkTo}>
+        {linkText}
+      </NavLink>
     </div>
     <div className="collections-img-container">
       {src.map((s) => (

@@ -1,11 +1,15 @@
+import useLanguage from '../../features/language/useLanguage';
+import MainPageContainer from '../pageContainer/MainPageContainer';
 import './_collection-page.scss';
 import MainCollections from './MainCollections';
 
-const CollectionsPage = () => (
-  <article className="container page">
-    <h1>Collections</h1>
-    <MainCollections />
-  </article>
-);
+const CollectionsPage = () => {
+  const { language } = useLanguage();
+  return (
+    <MainPageContainer heading={language.collection}>
+      <MainCollections />
+    </MainPageContainer>
+  );
+};
 
 export default CollectionsPage;

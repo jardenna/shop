@@ -6,6 +6,11 @@
 }
 
 .admin-container {
+  .container {
+    max-width: 100%;
+    display: flex;
+  }
+
   .main-header-container {
     border: 0;
   }
@@ -20,7 +25,7 @@
   }
 
   .admin-header {
-    height: $header-height;
+    min-height: $header-height;
     display: flex;
     align-items: center;
 
@@ -37,10 +42,5 @@
       padding-block: 12px;
       min-height: auto;
     }
-  }
-
-  .container {
-    max-width: 100%;
-    display: flex;
   }
 }
