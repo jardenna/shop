@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
+import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import MetaTags from '../../layout/nav/MetaTags';
 import './_page-container.scss';
@@ -20,6 +21,10 @@ const MainPageContainer = ({
   <>
     <MetaTags metaTitle={heading} />
     <article className={`container page ${className}`}>
+      <Breadcrumbs />
+      <header className="page-header">
+        <div className="top-img" />
+      </header>
       <h1>{heading}</h1>
       <div className="main-page">
         <ErrorBoundary
