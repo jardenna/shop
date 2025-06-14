@@ -18,21 +18,22 @@ const Breadcrumbs = () => {
     const matchedRoute = routeList.find(
       (route) => route.path && matchRoute(route.path, to),
     );
+
     if (!matchedRoute) {
       return null;
     }
 
     return (
       <span key={to}>
-        <NavLink to={to}>{language[matchedRoute.label]} / </NavLink>
+        <span>{'\u203A'}</span>
+        <NavLink to={to}>{language[matchedRoute.label]}</NavLink>
       </span>
     );
   });
 
   return (
-    <LayoutElement as="nav" ariaLabel="breadcrumbs">
-      <NavLink to={MainPath.Root}>Home</NavLink>
-      {breadcrumbItems.length > 0 && ' / '}
+    <LayoutElement as="nav" ariaLabel="breadcrumbs" className="breadcrumb">
+      <NavLink to={MainPath.Root}>{language.home}</NavLink>
       {breadcrumbItems}
     </LayoutElement>
   );
