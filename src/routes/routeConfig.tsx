@@ -33,61 +33,64 @@ import SubCategoryPage from '../pages/subCategory/SubCategoryPage';
 import UpdateSubCategoryPage from '../pages/subCategory/UpdateSubCategoryPage';
 import ViewSubCategoryPage from '../pages/subCategory/ViewSubCategoryPage';
 
+export const routeList = [
+  {
+    index: true,
+    element: <HomePage />,
+  },
+  {
+    path: FrontPath.Men,
+    element: <Men />,
+  },
+  {
+    path: FrontPath.Women,
+    element: <Women />,
+  },
+  {
+    path: FrontPath.Kids,
+    element: <Kids />,
+    label: 'Kiaads',
+  },
+  {
+    path: MainPath.Collection,
+    element: <CollectionsPage />,
+  },
+  {
+    path: MainPath.About,
+    element: <About />,
+  },
+  {
+    path: MainPath.Contact,
+    element: <Contact />,
+  },
+  {
+    path: MainPath.Login,
+    element: <LoginPage />,
+  },
+  {
+    path: MainPath.Signup,
+    element: <SignupPage />,
+  },
+  {
+    path: MainPath.MyAccount,
+    element: <MyAccount />,
+  },
+  {
+    path: MainPath.Orders,
+    element: <Orders />,
+  },
+  {
+    path: MainPath.ShoppingCart,
+    element: <ShoppingChart />,
+  },
+];
+
 const routeConfig = createBrowserRouter([
   {
     path: MainPath.Root,
     errorElement: <ErrorPage />,
     element: <Layout />,
-    children: [
-      {
-        index: true,
-        element: <HomePage />,
-      },
-      {
-        path: FrontPath.Men,
-        element: <Men />,
-      },
-      {
-        path: FrontPath.Women,
-        element: <Women />,
-      },
-      {
-        path: FrontPath.Kids,
-        element: <Kids />,
-      },
-      {
-        path: MainPath.Collection,
-        element: <CollectionsPage />,
-      },
-      {
-        path: MainPath.About,
-        element: <About />,
-      },
-      {
-        path: MainPath.Contact,
-        element: <Contact />,
-      },
-      {
-        path: MainPath.Login,
-        element: <LoginPage />,
-      },
-      {
-        path: MainPath.Signup,
-        element: <SignupPage />,
-      },
-      {
-        path: MainPath.MyAccount,
-        element: <MyAccount />,
-      },
-      {
-        path: MainPath.Orders,
-        element: <Orders />,
-      },
-      {
-        path: MainPath.ShoppingCart,
-        element: <ShoppingChart />,
-      },
-    ],
+    children: routeList,
   },
   {
     element: <ProtectedRoute />,
