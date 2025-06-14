@@ -11,6 +11,7 @@ type MainPageContainerProps = {
   children: ReactNode;
   heading: string;
   className?: string;
+  hasTopImg?: boolean;
   onReset?: () => void;
 };
 
@@ -19,6 +20,7 @@ const MainPageContainer = ({
   heading,
   onReset,
   className = '',
+  hasTopImg,
 }: MainPageContainerProps) => {
   const { language } = useLanguage();
   return (
@@ -31,7 +33,7 @@ const MainPageContainer = ({
           className="main-page-header"
         >
           <Breadcrumbs />
-          <div className="top-img" />
+          {hasTopImg && <div className="top-img" />}
           <h1>{heading}</h1>
         </LayoutElement>
 

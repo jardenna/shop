@@ -5,7 +5,7 @@ const Kids = () => {
   const { language } = useLanguage();
 
   return (
-    <MainPageContainer heading={language.kids} className="kids-page">
+    <MainPageContainer heading={language.kids} className="kids-page" hasTopImg>
       <section>Kids</section>
     </MainPageContainer>
   );
