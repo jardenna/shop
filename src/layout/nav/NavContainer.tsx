@@ -48,7 +48,7 @@ const NavContainer = ({
           onClick={onCollapseMenu}
           ariaLabel={ariaLabel}
           iconName={IconName.ChevronLeft}
-          title="chevron"
+          title="Chevron left"
           ariaExpanded={!isMenuCollapsed}
         />
       )}

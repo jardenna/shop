@@ -1,12 +1,19 @@
-import { NavLink } from 'react-router';
+import { Link } from 'react-router';
 import { IconName } from '../../types/enums';
 import Icon from '../icons/Icon';
 
-const BreadcrumbItem = ({ to, label }: { label: string; to: string }) => (
+type BreadcrumbItemProps = {
+  isCurrent: boolean;
+  label: string;
+  to: string;
+};
+
+const BreadcrumbItem = ({ to, label, isCurrent }: BreadcrumbItemProps) => (
   <li>
-    <NavLink to={to}>
-      <Icon iconName={IconName.ChevronRight} title="tt" ariaHidden /> {label}
-    </NavLink>
+    <Link to={to} aria-current={isCurrent ? 'page' : undefined}>
+      <Icon iconName={IconName.ChevronRight} title="Chevron right" ariaHidden />
+      {label}
+    </Link>
   </li>
 );
 

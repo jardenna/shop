@@ -59,9 +59,7 @@
     display: flex;
   }
 
-  span:last-child {
-    a {
-      color: $color-gray-60;
-    }
+  [aria-current] {
+    color: $color-gray-60;
   }
 }
