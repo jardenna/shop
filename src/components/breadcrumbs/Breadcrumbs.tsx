@@ -8,7 +8,13 @@ import BreadcrumbItem from './BreadcrumbItem';
 const matchRoute = (routePath: string, currentPath: string) =>
   Boolean(matchPath({ path: routePath, end: true }, currentPath));
 
-const Breadcrumbs = ({ routeList }: { routeList: Routes[] }) => {
+const Breadcrumbs = ({
+  routeList,
+  nameLabel,
+}: {
+  routeList: Routes[];
+  nameLabel?: string;
+}) => {
   const location = useLocation();
   const { language } = useLanguage();
   const pathnames: string[] = location.pathname.split('/').filter(Boolean);
@@ -25,13 +31,12 @@ const Breadcrumbs = ({ routeList }: { routeList: Routes[] }) => {
 
     const isCurrent = index === pathnames.length - 1;
 
+    const label = matchedRoute.path?.includes('id')
+      ? `${language[matchedRoute.label]} ${nameLabel ? nameLabel : ''}`
+      : language[matchedRoute.label];
+
     return (
-      <BreadcrumbItem
-        key={to}
-        to={to}
-        label={matchedRoute.label ? language[matchedRoute.label] : ''}
-        isCurrent={isCurrent}
-      />
+      <BreadcrumbItem key={to} to={to} label={label} isCurrent={isCurrent} />
     );
   });
 

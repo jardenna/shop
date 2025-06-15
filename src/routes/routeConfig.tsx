@@ -100,14 +100,17 @@ export const adminRouteList = [
   {
     index: true,
     element: <Dashboard />,
+    label: LinkText.Dashboard,
   },
   {
     path: MainPath.Users,
     element: <UserPage />,
+    label: LinkText.Users,
   },
   {
     path: MainPath.AdminUserCreate,
     element: <CreateUserPage />,
+    label: LinkText.CreateNewUser,
   },
   {
     path: MainPath.AdminCategoryCreate,
@@ -117,42 +120,52 @@ export const adminRouteList = [
   {
     path: MainPath.AdminSubCategoryCreate,
     element: <CreateSubCategoryPage />,
+    label: LinkText.Create,
   },
   {
     path: `${MainPath.AdminCategoryUpdate}/:id`,
     element: <UpdateCategoryPage />,
+    label: LinkText.Update,
   },
   {
     path: `${MainPath.AdminSubCategoryUpdate}/:id`,
     element: <UpdateSubCategoryPage />,
+    label: LinkText.Update,
   },
   {
     path: MainPath.AdminSubCategories,
     element: <SubCategoryPage />,
+    label: LinkText.Categories,
   },
   {
     path: `${MainPath.AdminSubCategoryView}/:id`,
     element: <ViewSubCategoryPage />,
+    label: LinkText.View,
   },
   {
     path: MainPath.AdminProfile,
     element: <ProfilePage />,
+    label: LinkText.Profile,
   },
   {
     path: MainPath.AdminProducts,
     element: <ProductPage />,
+    label: LinkText.Products,
   },
   {
     path: `${MainPath.AdminProductView}/:id`,
     element: <ViewProductPage />,
+    label: LinkText.View,
   },
   {
     path: MainPath.AdminProductCreate,
     element: <CreateProductPage />,
+    label: LinkText.Create,
   },
   {
     path: `${MainPath.AdminProductUpdate}/:id`,
     element: <UpdateProductPage />,
+    label: LinkText.Update,
   },
   {
     path: MainPath.AdminCategories,
@@ -162,6 +175,7 @@ export const adminRouteList = [
   {
     path: MainPath.AdminOrders,
     element: <OrderPage />,
+    label: LinkText.Orders,
   },
 ];
 

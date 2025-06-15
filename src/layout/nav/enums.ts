@@ -40,6 +40,10 @@ enum LinkText {
   Categories = 'categories',
   Collection = 'collection',
   Contact = 'contact',
+  Create = 'create',
+  CreateNewUser = 'createNewUser',
+  Dashboard = 'dashboard',
+  Edit = 'edit',
   Home = 'home',
   Kids = 'kids',
   Login = 'login',
@@ -52,6 +56,7 @@ enum LinkText {
   SubCategories = 'subCategories',
   Update = 'update',
   Users = 'users',
+  View = 'view',
   Women = 'women',
 }
 

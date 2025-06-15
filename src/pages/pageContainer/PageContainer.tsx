@@ -25,7 +25,7 @@ const PageContainer = ({
   <>
     <MetaTags metaTitle={heading} />
     <PageHeader heading={heading} linkText={linkText} linkTo={linkTo} />
-    <Breadcrumbs routeList={adminRouteList} />
+    <Breadcrumbs routeList={adminRouteList} nameLabel="Bunny" />
     <div className="page-card">
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}

@@ -11,8 +11,8 @@ import './_page-container.scss';
 
 export type Routes = {
   element: JSX.Element;
+  label: LinkText;
   index?: boolean;
-  label?: LinkText;
   path?: string;
 };
 
