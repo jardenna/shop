@@ -2,17 +2,23 @@ import { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
+import Img from '../../components/Img';
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import MetaTags from '../../layout/nav/MetaTags';
 import { routeList } from '../../routes/routeConfig';
 import './_page-container.scss';
 
+export type TopImage = {
+  alt: string;
+  src: string;
+};
+
 type MainPageContainerProps = {
   children: ReactNode;
   heading: string;
   className?: string;
-  hasTopImg?: boolean;
+  topImg?: TopImage;
   onReset?: () => void;
 };
 
@@ -20,8 +26,8 @@ const MainPageContainer = ({
   children,
   heading,
   onReset,
+  topImg,
   className = '',
-  hasTopImg,
 }: MainPageContainerProps) => {
   const { language } = useLanguage();
   return (
@@ -34,7 +40,7 @@ const MainPageContainer = ({
           className="main-page-header"
         >
           <Breadcrumbs routeList={routeList} />
-          {hasTopImg && <div className="top-img" />}
+          {topImg && <Img src={topImg.src} alt={topImg.alt} />}
           <h1>{heading}</h1>
         </LayoutElement>
 
