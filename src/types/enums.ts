@@ -25,10 +25,6 @@ export enum ValidationMessage {
   UnknownError = 'unknownError',
 }
 
-export enum Unicode {
-  ChevronRight = '\u203A',
-}
-
 export enum PopupRole {
   Alert = 'alert',
   Status = 'status',
@@ -74,6 +70,7 @@ export enum IconName {
   Categories = 'categories',
   Check = 'check',
   ChevronLeft = 'chevronLeft',
+  ChevronRight = 'chevronRight',
   CircelChevronRight = 'circelChevronRight',
   Close = 'close',
   Dashboard = 'dashboard',
