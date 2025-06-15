@@ -23,6 +23,7 @@ const Badge = ({ badgeText, badgeClassName, scheduledDate }: BadgeProps) => {
         <div>
           <Tooltip
             ariaControls="scheduled-date"
+            ariaLabel={language.viewScheduledDate}
             triggerBtnVariant={BtnVariant.Ghost}
             tooltip={
               <DateDisplay
