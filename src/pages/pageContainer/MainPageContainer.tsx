@@ -5,6 +5,7 @@ import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import MetaTags from '../../layout/nav/MetaTags';
+import { routeList } from '../../routes/routeConfig';
 import './_page-container.scss';
 
 type MainPageContainerProps = {
@@ -32,7 +33,7 @@ const MainPageContainer = ({
           as="header"
           className="main-page-header"
         >
-          <Breadcrumbs />
+          <Breadcrumbs routeList={routeList} />
           {hasTopImg && <div className="top-img" />}
           <h1>{heading}</h1>
         </LayoutElement>

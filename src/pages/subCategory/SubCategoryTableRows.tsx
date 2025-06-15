@@ -1,6 +1,5 @@
 import { memo } from 'react';
 import { Status } from '../../app/api/apiTypes';
-import { adminUrl } from '../../app/endpoints';
 import Badge from '../../components/badge/Badge';
 import MoreLink from '../../components/MoreLink';
 import useLanguage from '../../features/language/useLanguage';
@@ -38,7 +37,7 @@ const SubCategoryTableRows = ({
       <td>
         <MoreLink
           linkText={language.viewCategory}
-          linkTo={`${adminUrl}${MainPath.AdminSubCategoryView}/${id}`}
+          linkTo={`${MainPath.AdminSubCategoryView}/${id}`}
         />
       </td>
     </tr>

@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import { createBrowserRouter } from 'react-router';
 import AdminLayout from '../adminLayout/AdminLayout';
 import Layout from '../layout/Layout';
@@ -32,6 +33,13 @@ import CreateSubCategoryPage from '../pages/subCategory/CreateSubCategoryPage';
 import SubCategoryPage from '../pages/subCategory/SubCategoryPage';
 import UpdateSubCategoryPage from '../pages/subCategory/UpdateSubCategoryPage';
 import ViewSubCategoryPage from '../pages/subCategory/ViewSubCategoryPage';
+
+export type Routes = {
+  element: JSX.Element;
+  label: LinkText | string;
+  index?: boolean;
+  path?: string;
+};
 
 export const routeList = [
   {
@@ -96,6 +104,89 @@ export const routeList = [
   },
 ];
 
+export const adminRouteList = [
+  {
+    index: true,
+    element: <Dashboard />,
+    label: LinkText.Dashboard,
+  },
+  {
+    path: MainPath.Users,
+    element: <UserPage />,
+    label: LinkText.Users,
+  },
+  {
+    path: MainPath.AdminUserCreate,
+    element: <CreateUserPage />,
+    label: LinkText.CreateNewUser,
+  },
+  {
+    path: MainPath.AdminCategoryCreate,
+    element: <CreateCategoryPage />,
+    label: LinkText.CreateNewCategory,
+  },
+  {
+    path: MainPath.AdminSubCategoryCreate,
+    element: <CreateSubCategoryPage />,
+    label: LinkText.CreateNewCategory,
+  },
+  {
+    path: `${MainPath.AdminCategoryUpdate}/:id`,
+    element: <UpdateCategoryPage />,
+    label: '',
+  },
+  {
+    path: `${MainPath.AdminSubCategoryUpdate}/:id`,
+    element: <UpdateSubCategoryPage />,
+    label: '',
+  },
+  {
+    path: MainPath.AdminSubCategories,
+    element: <SubCategoryPage />,
+    label: LinkText.Categories,
+  },
+  {
+    path: `${MainPath.AdminSubCategoryView}/:id`,
+    element: <ViewSubCategoryPage />,
+    label: '',
+  },
+  {
+    path: MainPath.AdminProfile,
+    element: <ProfilePage />,
+    label: LinkText.Profile,
+  },
+  {
+    path: MainPath.AdminProducts,
+    element: <ProductPage />,
+    label: LinkText.Products,
+  },
+  {
+    path: `${MainPath.AdminProductView}/:id`,
+    element: <ViewProductPage />,
+    label: '',
+  },
+  {
+    path: MainPath.AdminProductCreate,
+    element: <CreateProductPage />,
+    label: 'LinkText.CreateNewProduct',
+  },
+  {
+    path: `${MainPath.AdminProductUpdate}/:id`,
+    element: <UpdateProductPage />,
+    label: '',
+  },
+  {
+    path: MainPath.AdminCategories,
+    element: <CategoryPage />,
+    label: LinkText.Categories,
+  },
+  {
+    path: MainPath.AdminOrders,
+    element: <OrderPage />,
+    label: LinkText.Orders,
+  },
+];
+
 const routeConfig = createBrowserRouter([
   {
     path: MainPath.Root,
@@ -109,72 +200,7 @@ const routeConfig = createBrowserRouter([
       {
         path: MainPath.Admin,
         element: <AdminLayout />,
-        children: [
-          {
-            index: true,
-            element: <Dashboard />,
-          },
-          {
-            path: MainPath.Users,
-            element: <UserPage />,
-          },
-          {
-            path: MainPath.AdminUserCreate,
-            element: <CreateUserPage />,
-          },
-          {
-            path: MainPath.AdminCategoryCreate,
-            element: <CreateCategoryPage />,
-          },
-          {
-            path: MainPath.AdminSubCategoryCreate,
-            element: <CreateSubCategoryPage />,
-          },
-          {
-            path: `${MainPath.AdminCategoryUpdate}/:id`,
-            element: <UpdateCategoryPage />,
-          },
-          {
-            path: `${MainPath.AdminSubCategoryUpdate}/:id`,
-            element: <UpdateSubCategoryPage />,
-          },
-          {
-            path: MainPath.AdminSubCategories,
-            element: <SubCategoryPage />,
-          },
-          {
-            path: `${MainPath.AdminSubCategoryView}/:id`,
-            element: <ViewSubCategoryPage />,
-          },
-          {
-            path: MainPath.AdminProfile,
-            element: <ProfilePage />,
-          },
-          {
-            path: MainPath.AdminProducts,
-            element: <ProductPage />,
-          },
-          {
-            path: `${MainPath.AdminProductView}/:id`,
-            element: <ViewProductPage />,
-          },
-          {
-            path: MainPath.AdminProductCreate,
-            element: <CreateProductPage />,
-          },
-          {
-            path: `${MainPath.AdminProductUpdate}/:id`,
-            element: <UpdateProductPage />,
-          },
-          {
-            path: MainPath.AdminCategories,
-            element: <CategoryPage />,
-          },
-          {
-            path: MainPath.AdminOrders,
-            element: <OrderPage />,
-          },
-        ],
+        children: adminRouteList,
       },
     ],
   },
