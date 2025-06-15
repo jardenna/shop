@@ -17,7 +17,7 @@ const Breadcrumbs = ({
 }) => {
   const location = useLocation();
   const { language } = useLanguage();
-  const pathnames: string[] = location.pathname.split('/').filter(Boolean);
+  const pathnames = location.pathname.split('/').filter(Boolean);
 
   const breadcrumbItems = pathnames.map((_, index) => {
     const to = `/${pathnames.slice(0, index + 1).join('/')}`;
@@ -31,9 +31,12 @@ const Breadcrumbs = ({
 
     const isCurrent = index === pathnames.length - 1;
 
-    const label = matchedRoute.path?.includes('id')
-      ? `${language[matchedRoute.label] ? language[matchedRoute.label] : matchedRoute.label} ${currentLabel ? currentLabel : ''}`
-      : language[matchedRoute.label];
+    const baseLabel = language[matchedRoute.label] ?? '';
+
+    const label =
+      matchedRoute.path?.includes(':id') && currentLabel
+        ? `${baseLabel} ${currentLabel}`
+        : baseLabel;
 
     return (
       <BreadcrumbItem key={to} to={to} label={label} isCurrent={isCurrent} />

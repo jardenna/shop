@@ -41,6 +41,7 @@ enum LinkText {
   Collection = 'collection',
   Contact = 'contact',
   Create = 'create',
+  CreateNewProduct = 'createNewProduct',
   CreateNewUser = 'createNewUser',
   Dashboard = 'dashboard',
   Edit = 'edit',

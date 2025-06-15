@@ -168,7 +168,7 @@ export const adminRouteList = [
   {
     path: MainPath.AdminProductCreate,
     element: <CreateProductPage />,
-    label: LinkText.Create,
+    label: LinkText.CreateNewProduct,
   },
   {
     path: `${MainPath.AdminProductUpdate}/:id`,
