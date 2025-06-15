@@ -96,6 +96,75 @@ export const routeList = [
   },
 ];
 
+export const adminRouteList = [
+  {
+    index: true,
+    element: <Dashboard />,
+  },
+  {
+    path: MainPath.Users,
+    element: <UserPage />,
+  },
+  {
+    path: MainPath.AdminUserCreate,
+    element: <CreateUserPage />,
+  },
+  {
+    path: MainPath.AdminCategoryCreate,
+    element: <CreateCategoryPage />,
+    label: LinkText.Users,
+  },
+  {
+    path: MainPath.AdminSubCategoryCreate,
+    element: <CreateSubCategoryPage />,
+  },
+  {
+    path: `${MainPath.AdminCategoryUpdate}/:id`,
+    element: <UpdateCategoryPage />,
+  },
+  {
+    path: `${MainPath.AdminSubCategoryUpdate}/:id`,
+    element: <UpdateSubCategoryPage />,
+  },
+  {
+    path: MainPath.AdminSubCategories,
+    element: <SubCategoryPage />,
+  },
+  {
+    path: `${MainPath.AdminSubCategoryView}/:id`,
+    element: <ViewSubCategoryPage />,
+  },
+  {
+    path: MainPath.AdminProfile,
+    element: <ProfilePage />,
+  },
+  {
+    path: MainPath.AdminProducts,
+    element: <ProductPage />,
+  },
+  {
+    path: `${MainPath.AdminProductView}/:id`,
+    element: <ViewProductPage />,
+  },
+  {
+    path: MainPath.AdminProductCreate,
+    element: <CreateProductPage />,
+  },
+  {
+    path: `${MainPath.AdminProductUpdate}/:id`,
+    element: <UpdateProductPage />,
+  },
+  {
+    path: MainPath.AdminCategories,
+    element: <CategoryPage />,
+    label: LinkText.Categories,
+  },
+  {
+    path: MainPath.AdminOrders,
+    element: <OrderPage />,
+  },
+];
+
 const routeConfig = createBrowserRouter([
   {
     path: MainPath.Root,
@@ -109,72 +178,7 @@ const routeConfig = createBrowserRouter([
       {
         path: MainPath.Admin,
         element: <AdminLayout />,
-        children: [
-          {
-            index: true,
-            element: <Dashboard />,
-          },
-          {
-            path: MainPath.Users,
-            element: <UserPage />,
-          },
-          {
-            path: MainPath.AdminUserCreate,
-            element: <CreateUserPage />,
-          },
-          {
-            path: MainPath.AdminCategoryCreate,
-            element: <CreateCategoryPage />,
-          },
-          {
-            path: MainPath.AdminSubCategoryCreate,
-            element: <CreateSubCategoryPage />,
-          },
-          {
-            path: `${MainPath.AdminCategoryUpdate}/:id`,
-            element: <UpdateCategoryPage />,
-          },
-          {
-            path: `${MainPath.AdminSubCategoryUpdate}/:id`,
-            element: <UpdateSubCategoryPage />,
-          },
-          {
-            path: MainPath.AdminSubCategories,
-            element: <SubCategoryPage />,
-          },
-          {
-            path: `${MainPath.AdminSubCategoryView}/:id`,
-            element: <ViewSubCategoryPage />,
-          },
-          {
-            path: MainPath.AdminProfile,
-            element: <ProfilePage />,
-          },
-          {
-            path: MainPath.AdminProducts,
-            element: <ProductPage />,
-          },
-          {
-            path: `${MainPath.AdminProductView}/:id`,
-            element: <ViewProductPage />,
-          },
-          {
-            path: MainPath.AdminProductCreate,
-            element: <CreateProductPage />,
-          },
-          {
-            path: `${MainPath.AdminProductUpdate}/:id`,
-            element: <UpdateProductPage />,
-          },
-          {
-            path: MainPath.AdminCategories,
-            element: <CategoryPage />,
-          },
-          {
-            path: MainPath.AdminOrders,
-            element: <OrderPage />,
-          },
-        ],
+        children: adminRouteList,
       },
     ],
   },

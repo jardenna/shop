@@ -1,5 +1,4 @@
 import { SubCategoryResponse } from '../../app/api/apiTypes';
-import { adminUrl } from '../../app/endpoints';
 import Table from '../../components/sortTable/Table';
 import useLanguage from '../../features/language/useLanguage';
 import {
@@ -53,7 +52,7 @@ const SubCategoryPage = () => {
       <PageContainer
         heading={language.subCategories}
         linkText={language.createNewCategory}
-        linkTo={`${adminUrl}${MainPath.AdminSubCategoryCreate}`}
+        linkTo={MainPath.AdminSubCategoryCreate}
         onReset={() => refetch}
       >
         <Table

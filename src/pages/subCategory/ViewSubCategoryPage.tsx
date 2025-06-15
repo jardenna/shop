@@ -1,5 +1,4 @@
 import { useNavigate, useParams } from 'react-router';
-import { adminUrl } from '../../app/endpoints';
 import CategoryCard from '../../components/adminCard/CategoryCard';
 import ErrorContent from '../../components/ErrorContent';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
@@ -41,7 +40,7 @@ const ViewSubCategoryPage = () => {
       const result = await deleteSubCategory(params.id || '').unwrap();
 
       if (result.success) {
-        navigate(`${adminUrl}${MainPath.AdminSubCategories}`);
+        navigate(MainPath.AdminSubCategories);
         onAddMessagePopup({
           messagePopupType: 'success',
           message: language.categoryDeleted,
@@ -76,7 +75,7 @@ const ViewSubCategoryPage = () => {
         <PageContainer
           heading={`${language.category} ${category.subCategoryName}`}
           linkText={language.createNewCategory}
-          linkTo={`${adminUrl}${MainPath.AdminSubCategoryCreate}`}
+          linkTo={MainPath.AdminSubCategoryCreate}
           onReset={() => refetch}
         >
           <CategoryCard

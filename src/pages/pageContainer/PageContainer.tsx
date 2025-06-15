@@ -1,8 +1,10 @@
 import { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
+import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import PageHeader from '../../components/PageHeader';
 import MetaTags from '../../layout/nav/MetaTags';
+import { adminRouteList } from '../../routes/routeConfig';
 import './_page-container.scss';
 
 type PageContainerProps = {
@@ -23,6 +25,7 @@ const PageContainer = ({
   <>
     <MetaTags metaTitle={heading} />
     <PageHeader heading={heading} linkText={linkText} linkTo={linkTo} />
+    <Breadcrumbs routeList={adminRouteList} />
     <div className="page-card">
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}

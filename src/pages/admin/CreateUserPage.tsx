@@ -1,4 +1,3 @@
-import { adminUrl } from '../../app/endpoints';
 import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
@@ -12,10 +11,7 @@ const CreateUserPage = () => {
   return (
     <article className="page page-small">
       <PageContainer heading={language.createNewUser}>
-        <RegisterUser
-          navigateTo={`${adminUrl}${MainPath.Users}`}
-          currentUser={currentUser}
-        />
+        <RegisterUser navigateTo={MainPath.Users} currentUser={currentUser} />
       </PageContainer>
     </article>
   );

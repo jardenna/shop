@@ -2,13 +2,13 @@ import { Link, matchPath, useLocation } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import { MainPath } from '../../layout/nav/enums';
-import { routeList } from '../../routes/routeConfig';
+import { Routes } from '../../pages/pageContainer/MainPageContainer';
 import BreadcrumbItem from './BreadcrumbItem';
 
 const matchRoute = (routePath: string, currentPath: string) =>
   Boolean(matchPath({ path: routePath, end: true }, currentPath));
 
-const Breadcrumbs = () => {
+const Breadcrumbs = ({ routeList }: { routeList: Routes[] }) => {
   const location = useLocation();
   const { language } = useLanguage();
   const pathnames: string[] = location.pathname.split('/').filter(Boolean);
@@ -29,7 +29,7 @@ const Breadcrumbs = () => {
       <BreadcrumbItem
         key={to}
         to={to}
-        label={language[matchedRoute.label]}
+        label={matchedRoute.label ? language[matchedRoute.label] : ''}
         isCurrent={isCurrent}
       />
     );
