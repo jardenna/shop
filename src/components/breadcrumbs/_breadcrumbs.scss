@@ -1,0 +1,27 @@
+@use '../../scss/globals' as *;
+
+.breadcrumbs-container {
+  width: 100%;
+}
+
+.breadcrumbs {
+  color: $color-gray-70;
+  display: flex;
+  align-items: center;
+  font-size: rem(16px);
+
+  svg {
+    width: rem(16px);
+    margin: 0 12px;
+    stroke: $color-gray-70;
+  }
+
+  a {
+    color: currentcolor;
+    display: flex;
+  }
+
+  [aria-current] {
+    color: $color-gray-60;
+  }
+}

@@ -4,6 +4,7 @@ import LayoutElement from '../../layout/LayoutElement';
 import { MainPath } from '../../layout/nav/enums';
 import { Routes } from '../../routes/routeConfig';
 import BreadcrumbItem from './BreadcrumbItem';
+import './_breadcrumbs.scss';
 
 const matchRoute = (routePath: string, currentPath: string) =>
   Boolean(matchPath({ path: routePath, end: true }, currentPath));
@@ -44,7 +45,11 @@ const Breadcrumbs = ({
   });
 
   return (
-    <LayoutElement as="nav" ariaLabel="breadcrumbs">
+    <LayoutElement
+      as="nav"
+      ariaLabel="breadcrumbs"
+      className="breadcrumbs-container"
+    >
       <ul className="breadcrumbs">
         <li>
           <Link to={MainPath.Root}>{language.home}</Link>
