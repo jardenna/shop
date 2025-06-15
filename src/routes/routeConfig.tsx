@@ -123,22 +123,22 @@ export const adminRouteList = [
   {
     path: MainPath.AdminCategoryCreate,
     element: <CreateCategoryPage />,
-    label: LinkText.Users,
+    label: LinkText.CreateNewCategory,
   },
   {
     path: MainPath.AdminSubCategoryCreate,
     element: <CreateSubCategoryPage />,
-    label: LinkText.Create,
+    label: LinkText.CreateNewCategory,
   },
   {
     path: `${MainPath.AdminCategoryUpdate}/:id`,
     element: <UpdateCategoryPage />,
-    label: LinkText.Update,
+    label: '',
   },
   {
     path: `${MainPath.AdminSubCategoryUpdate}/:id`,
     element: <UpdateSubCategoryPage />,
-    label: LinkText.Update,
+    label: '',
   },
   {
     path: MainPath.AdminSubCategories,
@@ -168,7 +168,7 @@ export const adminRouteList = [
   {
     path: MainPath.AdminProductCreate,
     element: <CreateProductPage />,
-    label: LinkText.CreateNewProduct,
+    label: 'LinkText.CreateNewProduct',
   },
   {
     path: `${MainPath.AdminProductUpdate}/:id`,
