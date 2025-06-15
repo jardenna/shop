@@ -10,10 +10,10 @@ const matchRoute = (routePath: string, currentPath: string) =>
 
 const Breadcrumbs = ({
   routeList,
-  nameLabel,
+  currentLabel,
 }: {
   routeList: Routes[];
-  nameLabel?: string;
+  currentLabel?: string;
 }) => {
   const location = useLocation();
   const { language } = useLanguage();
@@ -32,7 +32,7 @@ const Breadcrumbs = ({
     const isCurrent = index === pathnames.length - 1;
 
     const label = matchedRoute.path?.includes('id')
-      ? `${language[matchedRoute.label] ? language[matchedRoute.label] : matchedRoute.label} ${nameLabel ? nameLabel : ''}`
+      ? `${language[matchedRoute.label] ? language[matchedRoute.label] : matchedRoute.label} ${currentLabel ? currentLabel : ''}`
       : language[matchedRoute.label];
 
     return (
