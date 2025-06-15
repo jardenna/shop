@@ -1,8 +1,9 @@
-import { NavLink, matchPath, useLocation } from 'react-router';
+import { Link, matchPath, useLocation } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import { MainPath } from '../../layout/nav/enums';
 import { routeList } from '../../routes/routeConfig';
+import BreadcrumbItem from './BreadcrumbItem';
 
 const matchRoute = (routePath: string, currentPath: string) =>
   Boolean(matchPath({ path: routePath, end: true }, currentPath));
@@ -14,26 +15,34 @@ const Breadcrumbs = () => {
 
   const breadcrumbItems = pathnames.map((_, index) => {
     const to = `/${pathnames.slice(0, index + 1).join('/')}`;
-
     const matchedRoute = routeList.find(
       (route) => route.path && matchRoute(route.path, to),
     );
+
     if (!matchedRoute) {
       return null;
     }
 
+    const isCurrent = index === pathnames.length - 1;
+
     return (
-      <span key={to}>
-        <NavLink to={to}>{language[matchedRoute.label]} / </NavLink>
-      </span>
+      <BreadcrumbItem
+        key={to}
+        to={to}
+        label={language[matchedRoute.label]}
+        isCurrent={isCurrent}
+      />
     );
   });
 
   return (
     <LayoutElement as="nav" ariaLabel="breadcrumbs">
-      <NavLink to={MainPath.Root}>Home</NavLink>
-      {breadcrumbItems.length > 0 && ' / '}
-      {breadcrumbItems}
+      <ul className="breadcrumbs">
+        <li>
+          <Link to={MainPath.Root}>{language.home}</Link>
+        </li>
+        {breadcrumbItems}
+      </ul>
     </LayoutElement>
   );
 };

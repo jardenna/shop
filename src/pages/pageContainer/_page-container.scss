@@ -42,3 +42,24 @@
     padding: 12px;
   }
 }
+
+.breadcrumbs {
+  color: $color-gray-70;
+  display: flex;
+  align-items: center;
+  font-size: rem(16px);
+
+  svg {
+    width: rem(16px);
+    margin: 0 12px;
+  }
+
+  a {
+    color: currentcolor;
+    display: flex;
+  }
+
+  [aria-current] {
+    color: $color-gray-60;
+  }
+}
