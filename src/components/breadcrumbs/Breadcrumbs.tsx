@@ -1,10 +1,18 @@
+import { ErrorBoundary } from 'react-error-boundary';
 import { Link, matchPath, useLocation } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import { MainPath } from '../../layout/nav/enums';
 import { Routes } from '../../routes/routeConfig';
+import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import BreadcrumbItem from './BreadcrumbItem';
 import './_breadcrumbs.scss';
+
+type BreadCrumbsProps = {
+  routeList: Routes[];
+  currentLabel?: string;
+  onReset?: () => void;
+};
 
 const matchRoute = (routePath: string, currentPath: string) =>
   Boolean(matchPath({ path: routePath, end: true }, currentPath));
@@ -12,10 +20,8 @@ const matchRoute = (routePath: string, currentPath: string) =>
 const Breadcrumbs = ({
   routeList,
   currentLabel,
-}: {
-  routeList: Routes[];
-  currentLabel?: string;
-}) => {
+  onReset,
+}: BreadCrumbsProps) => {
   const location = useLocation();
   const { language } = useLanguage();
   const pathnames = location.pathname.split('/').filter(Boolean);
@@ -50,12 +56,17 @@ const Breadcrumbs = ({
       ariaLabel="breadcrumbs"
       className="breadcrumbs-container"
     >
-      <ul className="breadcrumbs">
-        <li>
-          <Link to={MainPath.Root}>{language.home}</Link>
-        </li>
-        {breadcrumbItems}
-      </ul>
+      <ErrorBoundary
+        FallbackComponent={ErrorBoundaryFallback}
+        onReset={onReset}
+      >
+        <ul className="breadcrumbs">
+          <li>
+            <Link to={MainPath.Root}>{language.home}</Link>
+          </li>
+          {breadcrumbItems}
+        </ul>
+      </ErrorBoundary>
     </LayoutElement>
   );
 };
