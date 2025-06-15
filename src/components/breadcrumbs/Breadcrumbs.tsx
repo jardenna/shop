@@ -1,4 +1,4 @@
-import { NavLink, matchPath, useLocation } from 'react-router';
+import { matchPath, NavLink, useLocation } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import { MainPath } from '../../layout/nav/enums';
@@ -28,9 +28,13 @@ const Breadcrumbs = () => {
   });
 
   return (
-    <LayoutElement as="nav" ariaLabel="breadcrumbs" className="breadcrumb">
-      <NavLink to={MainPath.Root}>{language.home}</NavLink>
-      {breadcrumbItems}
+    <LayoutElement as="nav" ariaLabel="breadcrumbs">
+      <ul className="breadcrumbs">
+        <li>
+          <NavLink to={MainPath.Root}>{language.home}</NavLink>
+        </li>
+        {breadcrumbItems}
+      </ul>
     </LayoutElement>
   );
 };
