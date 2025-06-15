@@ -148,7 +148,7 @@ export const adminRouteList = [
   {
     path: `${MainPath.AdminSubCategoryView}/:id`,
     element: <ViewSubCategoryPage />,
-    label: LinkText.View,
+    label: '',
   },
   {
     path: MainPath.AdminProfile,
