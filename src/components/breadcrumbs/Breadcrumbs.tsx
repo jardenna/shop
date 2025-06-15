@@ -2,7 +2,7 @@ import { Link, matchPath, useLocation } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import { MainPath } from '../../layout/nav/enums';
-import { Routes } from '../../pages/pageContainer/MainPageContainer';
+import { Routes } from '../../routes/routeConfig';
 import BreadcrumbItem from './BreadcrumbItem';
 
 const matchRoute = (routePath: string, currentPath: string) =>
@@ -32,7 +32,7 @@ const Breadcrumbs = ({
     const isCurrent = index === pathnames.length - 1;
 
     const label = matchedRoute.path?.includes('id')
-      ? `${language[matchedRoute.label]} ${nameLabel ? nameLabel : ''}`
+      ? `${language[matchedRoute.label] ? language[matchedRoute.label] : matchedRoute.label} ${nameLabel ? nameLabel : ''}`
       : language[matchedRoute.label];
 
     return (

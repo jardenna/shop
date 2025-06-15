@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import { createBrowserRouter } from 'react-router';
 import AdminLayout from '../adminLayout/AdminLayout';
 import Layout from '../layout/Layout';
@@ -32,6 +33,13 @@ import CreateSubCategoryPage from '../pages/subCategory/CreateSubCategoryPage';
 import SubCategoryPage from '../pages/subCategory/SubCategoryPage';
 import UpdateSubCategoryPage from '../pages/subCategory/UpdateSubCategoryPage';
 import ViewSubCategoryPage from '../pages/subCategory/ViewSubCategoryPage';
+
+export type Routes = {
+  element: JSX.Element;
+  label: LinkText | string;
+  index?: boolean;
+  path?: string;
+};
 
 export const routeList = [
   {
@@ -155,7 +163,7 @@ export const adminRouteList = [
   {
     path: `${MainPath.AdminProductView}/:id`,
     element: <ViewProductPage />,
-    label: LinkText.View,
+    label: '',
   },
   {
     path: MainPath.AdminProductCreate,
@@ -165,7 +173,7 @@ export const adminRouteList = [
   {
     path: `${MainPath.AdminProductUpdate}/:id`,
     element: <UpdateProductPage />,
-    label: LinkText.Update,
+    label: '',
   },
   {
     path: MainPath.AdminCategories,

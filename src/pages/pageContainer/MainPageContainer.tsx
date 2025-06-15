@@ -1,20 +1,12 @@
-import { JSX, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
-import { LinkText } from '../../layout/nav/enums';
 import MetaTags from '../../layout/nav/MetaTags';
 import { routeList } from '../../routes/routeConfig';
 import './_page-container.scss';
-
-export type Routes = {
-  element: JSX.Element;
-  label: LinkText;
-  index?: boolean;
-  path?: string;
-};
 
 type MainPageContainerProps = {
   children: ReactNode;
