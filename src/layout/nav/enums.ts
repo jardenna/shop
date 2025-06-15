@@ -4,7 +4,7 @@ enum MainPath {
   AdminCategories = '/admin/categories',
   AdminCategoryCreate = '/admin/categories/create',
   AdminCategoryUpdate = '/admin/categories/update',
-  AdminOrders = 'orders',
+  AdminOrders = '/admin/orders',
   AdminProductCreate = '/admin/products/create',
   AdminProducts = '/admin/products',
   AdminProductUpdate = '/admin/products/update',
