@@ -243,43 +243,38 @@ const getProducts = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Public
 const getSortedProducts = asyncHandler(async (req, res) => {
-  const pageSize = parseInt(req.query.pageSize) || 12;
-  const page = parseInt(req.query.page) || 1;
-
-  const allProducts = await Product.find({}).lean();
-
-  // Update scheduled products
   await updateScheduledItems({
-    items: allProducts,
+    items: await Product.find({ productStatus: 'Scheduled' }).lean(),
     model: Product,
     statusKey: 'productStatus',
   });
 
-  const products = await Product.find({})
+  const { page, pageSize } = req.pagination;
+  const filter = req.filter;
+  const sort = req.sort;
+
+  const products = await Product.find(filter)
     .populate({
       path: 'subCategory',
-      populate: {
-        path: 'category',
-        model: 'Category',
-      },
+      populate: { path: 'category', model: 'Category' },
     })
-    .limit(pageSize)
+    .sort(sort)
     .skip(pageSize * (page - 1))
-    .sort({ createdAt: -1 })
+    .limit(pageSize)
     .lean();
 
-  const count = await Product.countDocuments();
+  const count = await Product.countDocuments(filter);
 
   res.status(200).json({
     success: true,
     products: formatMongoData(
-      products.map(({ subCategoryName, scheduledDate, ...rest }) => ({
-        ...rest,
-        ...(rest.productStatus === 'Scheduled' ? { scheduledDate } : {}),
-      })),
+      products.map(({ subCategoryName, scheduledDate, ...rest }) =>
+        rest.productStatus === 'Scheduled' ? { ...rest, scheduledDate } : rest,
+      ),
     ),
     page,
     pages: Math.ceil(count / pageSize),
+    total: count,
   });
 });
 

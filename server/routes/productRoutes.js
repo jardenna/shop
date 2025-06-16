@@ -19,6 +19,7 @@ import {
 } from '../middleware/authMiddleware.js';
 import checkId from '../middleware/checkId.js';
 import languageMiddleware from '../middleware/languageMiddleware.js';
+import paginatedProducts from '../middleware/paginatedProducts.js';
 
 const router = express.Router();
 router
@@ -27,7 +28,7 @@ router
   .post(languageMiddleware, authenticate, authorizeEmployee, createProduct);
 
 router.get('/scheduled', checkScheduled);
-router.get('/allProducts', getSortedProducts);
+router.get('/allProducts', paginatedProducts, getSortedProducts);
 router.post('/:id/reviews', authenticate, checkId, createProductReviews);
 router.get('/top', getTopProducts);
 router.get('/new', getNewProducts);
