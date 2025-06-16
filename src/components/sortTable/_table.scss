@@ -163,7 +163,7 @@ table {
     tbody {
       display: flex;
       flex-direction: column;
-      max-height: rem(400px);
+      max-height: rem(600px);
       overflow: auto;
 
       @include max-size($medium) {
