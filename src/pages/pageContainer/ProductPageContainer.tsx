@@ -1,34 +1,34 @@
-import { JSX, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
+import Img from '../../components/Img';
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
-import { LinkText } from '../../layout/nav/enums';
 import MetaTags from '../../layout/nav/MetaTags';
 import { routeList } from '../../routes/routeConfig';
 import './_page-container.scss';
 
-export type Routes = {
-  element: JSX.Element;
-  label: LinkText;
-  index?: boolean;
-  path?: string;
+export type TopImage = {
+  alt: string;
+  src: string;
 };
 
-type MainPageContainerProps = {
+type ProductPageContainerProps = {
   children: ReactNode;
   heading: string;
+  topImg: TopImage;
   className?: string;
   onReset?: () => void;
 };
 
-const MainPageContainer = ({
+const ProductPageContainer = ({
   children,
   heading,
   onReset,
+  topImg,
   className = '',
-}: MainPageContainerProps) => {
+}: ProductPageContainerProps) => {
   const { language } = useLanguage();
   return (
     <>
@@ -40,7 +40,7 @@ const MainPageContainer = ({
           className="main-page-header"
         >
           <Breadcrumbs routeList={routeList} />
-          <h1>{heading}</h1>
+          <Img src={topImg.src} alt={topImg.alt} />
         </LayoutElement>
 
         <div className="main-page">
@@ -48,7 +48,19 @@ const MainPageContainer = ({
             FallbackComponent={ErrorBoundaryFallback}
             onReset={onReset}
           >
-            {children}
+            <article className="product-page-container">
+              <ul className="left-panel">
+                <li>Tøj</li>
+                <li>Sko</li>
+                <li>Accessories</li>
+                <li>Legetøj</li>
+              </ul>
+              <section>
+                <h1>{heading}</h1>
+                {children}
+              </section>
+              <div>Filter</div>
+            </article>
           </ErrorBoundary>
         </div>
       </article>
@@ -56,4 +68,4 @@ const MainPageContainer = ({
   );
 };
 
-export default MainPageContainer;
+export default ProductPageContainer;

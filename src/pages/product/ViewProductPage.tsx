@@ -132,7 +132,7 @@ const ViewProductPage = () => {
               id={product.id}
               primaryActionBtn={primaryActionBtn}
               name={product.productName}
-              modalHeaderText={language.deleteCategory}
+              modalHeaderText={language.deleteProduct}
               linkTo={`${MainPath.AdminProductUpdate}/${params.id}`}
               allowedToDelete={!!isAdmin}
             />

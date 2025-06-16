@@ -27,15 +27,17 @@
   max-width: $page-width-medium;
 }
 
-.top-img {
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100%;
-  min-height: 400px;
+// Products pages
+
+.product-page-container {
+  display: flex;
+
+  .left-panel {
+    min-width: rem(200px);
+  }
 }
 
-.kids-page {
-  .top-img {
-    background-image: url('/images/kids/kid_banner.jpg');
-  }
+.product-container {
+  display: flex;
+  gap: 20px;
 }

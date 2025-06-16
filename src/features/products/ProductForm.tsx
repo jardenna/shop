@@ -89,6 +89,11 @@ const ProductForm = ({
     { label: language.orange, value: 'orange' },
     { label: language.red, value: 'red' },
     { label: language.purple, value: 'purple' },
+    { label: language.blue, value: 'blue' },
+    { label: language.green, value: 'green' },
+    { label: language.gold, value: 'gold' },
+    { label: language.silver, value: 'silver' },
+    { label: language.pink, value: 'pink' },
   ];
 
   const initialState: ProductRequest = {
