@@ -1,3 +1,4 @@
+import Img from '../../components/Img';
 import useLanguage from '../../features/language/useLanguage';
 import MainPageContainer from '../pageContainer/MainPageContainer';
 
@@ -8,11 +9,16 @@ const Kids = () => {
     <MainPageContainer
       heading={language.kids}
       topImg={{
-        src: '/images/kids/kid_banner.jpg',
+        src: '/images/kids/kid_banner1.jpg',
         alt: '',
       }}
     >
-      <section>Kids</section>
+      <section className="product-container">
+        <Img src="/images/collections/kids.jpg" alt="" />
+        <Img src="/images/collections/kids.jpg" alt="" />
+        <Img src="/images/collections/kids.jpg" alt="" />
+        <Img src="/images/collections/kids.jpg" alt="" />
+      </section>
     </MainPageContainer>
   );
 };

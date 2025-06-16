@@ -26,3 +26,18 @@
 .page-medium {
   max-width: $page-width-medium;
 }
+
+// Products pages
+
+.product-page-container {
+  display: flex;
+
+  .left-panel {
+    min-width: rem(200px);
+  }
+}
+
+.product-container {
+  display: flex;
+  gap: 20px;
+}

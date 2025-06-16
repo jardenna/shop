@@ -41,7 +41,6 @@ const MainPageContainer = ({
         >
           <Breadcrumbs routeList={routeList} />
           {topImg && <Img src={topImg.src} alt={topImg.alt} />}
-          <h1>{heading}</h1>
         </LayoutElement>
 
         <div className="main-page">
@@ -49,7 +48,20 @@ const MainPageContainer = ({
             FallbackComponent={ErrorBoundaryFallback}
             onReset={onReset}
           >
-            {children}
+            <article className="product-page-container">
+              <ul className="left-panel">
+                <li>Tøj</li>
+                <li>Sko</li>
+                <li>Legetøj</li>
+                <li>Assories</li>
+              </ul>
+
+              <section>
+                <h1>{heading}</h1>
+                {children}
+              </section>
+              <div>Filter</div>
+            </article>
           </ErrorBoundary>
         </div>
       </article>
