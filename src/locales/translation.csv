@@ -65,6 +65,7 @@ dashboard;Dashboard;Dashboard
 date;Date;Dato
 delete;Delete;Slet
 deleteCategory;Delete category;Slet kategori
+deleteProduct;Delete product;Slet produkt
 deleted;deleted;slettet
 deleteOrReassignCategory;Cannot be deleted. Category has linked products;Kan ikke slettes. Kategori har tilknyttede produkter
 deleteUser;Delete user;Slet bruger
