@@ -38,7 +38,7 @@ const ProductPage = () => {
     data: allProducts,
     isLoading,
     refetch,
-  } = useGetAllProductsQuery(undefined, {
+  } = useGetAllProductsQuery('100', {
     pollingInterval: shouldPollFullList ? 15000 : undefined,
     refetchOnMountOrArgChange: true,
   });
