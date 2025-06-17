@@ -64,19 +64,20 @@ const Button = ({
     aria-haspopup={ariaHasPopup}
     autoFocus={autoFocus}
     aria-disabled={disabled || isLoading}
-    disabled={disabled || isLoading}
     className={`btn btn-${variant} ${className}`}
     name={name}
     aria-describedby={ariaDescribedby || undefined}
-    aria-label={isLoading ? 'Loading' : undefined}
   >
     {ariaLabel && <VisuallyHidden>{ariaLabel}</VisuallyHidden>}
     {!isLoading ? (
       children
     ) : (
-      <span aria-hidden>
-        <Loader />
-      </span>
+      <>
+        <VisuallyHidden>Loading</VisuallyHidden>
+        <span aria-hidden>
+          <Loader />
+        </span>
+      </>
     )}
   </button>
 );
