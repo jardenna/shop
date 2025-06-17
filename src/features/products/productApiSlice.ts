@@ -11,8 +11,8 @@ import { productUrl } from '../../app/endpoints';
 
 const productApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getAllProducts: builder.query<AllSortedProductsResponse, void>({
-      query: () => `${productUrl}/allProducts`,
+    getAllProducts: builder.query<AllSortedProductsResponse, string>({
+      query: (limit) => `${productUrl}/allProducts?pageSize=${limit}`,
       providesTags: [TagTypesEnum.Products],
     }),
     getProductById: builder.query<Product, string>({
