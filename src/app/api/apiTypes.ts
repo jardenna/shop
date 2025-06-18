@@ -190,6 +190,26 @@ export type OmittedProduct = Omit<
   | 'subCategory'
 >;
 
+export type ProductBaseParams = {
+  maxPrice?: string;
+  maxStock?: string;
+  minPrice?: string;
+  minStock?: string;
+  page?: string;
+  pageSize?: string;
+  productName?: string;
+};
+
+export type ProductsParams = ProductBaseParams & {
+  productStatus?: Status;
+  subCategory?: string;
+};
+
+export type ShopProductsParams = ProductBaseParams & {
+  subCategoryId: string;
+  mainCategory?: string;
+};
+
 export type ProductRequest = OmittedProduct & {
   subCategory: string;
 };
