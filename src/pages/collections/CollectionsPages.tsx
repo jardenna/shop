@@ -2,17 +2,16 @@ import { useParams } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
 import MainPageContainer from '../pageContainer/MainPageContainer';
 import './_collection-page.scss';
-import MainCollections from './MainCollections';
 
-const CollectionsPage = () => {
+const CollectionsPages = () => {
   const { language } = useLanguage();
   const { category } = useParams();
   console.log(category);
   return (
     <MainPageContainer heading={language.collection}>
-      <MainCollections />
+      {category}
     </MainPageContainer>
   );
 };
 
-export default CollectionsPage;
+export default CollectionsPages;

@@ -15,6 +15,7 @@ import CategoryPage from '../pages/category/CategoryPage';
 import CreateCategoryPage from '../pages/category/CreateCategoryPage';
 import UpdateCategoryPage from '../pages/category/UpdateCategoryPage';
 import CollectionsPage from '../pages/collections/CollectionsPage';
+import CollectionsPages from '../pages/collections/CollectionsPages';
 import Contact from '../pages/Contact';
 import ErrorPage from '../pages/ErrorPage';
 import Kids from '../pages/frontPages/Kids';
@@ -67,6 +68,12 @@ export const routeList = [
     element: <CollectionsPage />,
     label: LinkText.Collection,
   },
+  {
+    path: '/collections/:category',
+    element: <CollectionsPages />,
+    label: LinkText.Collection,
+  },
+
   {
     path: MainPath.About,
     element: <About />,

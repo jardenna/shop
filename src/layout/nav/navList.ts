@@ -1,5 +1,5 @@
 import { IconName } from '../../types/enums';
-import { FrontPath, LinkText, MainPath } from './enums';
+import { LinkText, MainPath } from './enums';
 import { NavItemsProps } from './Nav';
 
 const navList: NavItemsProps[] = [
@@ -13,18 +13,18 @@ const navList: NavItemsProps[] = [
     adHeading: 'discoverLatestTrends',
     subNav: [
       {
-        path: FrontPath.Women,
+        path: 'collections/women',
         linkText: LinkText.Women,
         infoText: 'collectionSubWomenText',
       },
       {
-        path: FrontPath.Men,
+        path: 'collections/men',
         linkText: LinkText.Men,
         infoText: 'collectionSubMenText',
         className: 'background-gray',
       },
       {
-        path: FrontPath.Kids,
+        path: '/collections/kids',
         linkText: LinkText.Kids,
         infoText: 'collectionSubKidsText',
       },
