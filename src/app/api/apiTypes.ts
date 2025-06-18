@@ -137,10 +137,10 @@ export type SubCategoriesResponse = DefaultResponseType & {
 };
 
 export type SubCategoriesWithParent = {
+  categoryId: string;
   categoryStatus: Status;
   label: string;
   parentCategoryName: string;
-  value: string;
 };
 
 export type UpdateSubCategoryResponse = {
