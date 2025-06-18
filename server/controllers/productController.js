@@ -275,11 +275,14 @@ const getProducts = asyncHandler(async (req, res) => {
     {
       $addFields: {
         id: '$_id',
+        mainCategory: '$categoryData._id', // include just the ID
       },
     },
     {
       $project: {
         _id: 0,
+        subCategoryData: 0,
+        categoryData: 0,
       },
     },
   ];
