@@ -292,6 +292,7 @@ const getProducts = asyncHandler(async (req, res) => {
   const products = await Product.aggregate(paginatedPipeline);
 
   res.status(200).json({
+    success: true,
     products,
     page,
     pages: Math.ceil(count / pageSize),

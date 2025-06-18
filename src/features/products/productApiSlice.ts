@@ -6,6 +6,8 @@ import {
   ProductRequest,
   ProductsParams,
   ScheduledResponse,
+  ShopProductResponse,
+  ShopProductsParams,
   UpdateProductRequest,
 } from '../../app/api/apiTypes';
 import { productUrl } from '../../app/endpoints';
@@ -18,6 +20,15 @@ const productApiSlice = apiSlice.injectEndpoints({
           params as Record<string, string>,
         ).toString();
         return `${productUrl}/allProducts?${query}`;
+      },
+      providesTags: [TagTypesEnum.Products],
+    }),
+    getShopProducts: builder.query<ShopProductResponse, ShopProductsParams>({
+      query: (params) => {
+        const query = new URLSearchParams(
+          params as Record<string, string>,
+        ).toString();
+        return `${productUrl}?${query}`;
       },
       providesTags: [TagTypesEnum.Products],
     }),
@@ -64,6 +75,7 @@ const productApiSlice = apiSlice.injectEndpoints({
 
 export const {
   useGetAllProductsQuery,
+  useGetShopProductsQuery,
   useGetProductByIdQuery,
   useUpdateProductMutation,
   useCreateProductMutation,

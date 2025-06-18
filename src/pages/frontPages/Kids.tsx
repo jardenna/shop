@@ -1,9 +1,16 @@
 import Img from '../../components/Img';
 import useLanguage from '../../features/language/useLanguage';
+import { useGetShopProductsQuery } from '../../features/products/productApiSlice';
 import ProductPageContainer from '../pageContainer/ProductPageContainer';
 
 const Kids = () => {
   const { language } = useLanguage();
+
+  const { data: products } = useGetShopProductsQuery({
+    pageSize: '100',
+    mainCategory: 'kids',
+  });
+  console.log(products);
 
   return (
     <ProductPageContainer

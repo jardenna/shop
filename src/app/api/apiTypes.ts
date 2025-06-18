@@ -210,8 +210,8 @@ export type ProductsParams = ProductBaseParams & {
 };
 
 export type ShopProductsParams = ProductBaseParams & {
-  subCategoryId: string;
   mainCategory?: string;
+  subCategoryId?: string;
 };
 
 export type ShopProductResponse = BaseProduct &
