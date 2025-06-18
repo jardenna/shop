@@ -4,6 +4,7 @@ import {
   DefaultResponse,
   Product,
   ProductRequest,
+  ProductsParams,
   ScheduledResponse,
   UpdateProductRequest,
 } from '../../app/api/apiTypes';
@@ -11,8 +12,13 @@ import { productUrl } from '../../app/endpoints';
 
 const productApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getAllProducts: builder.query<AllSortedProductsResponse, string>({
-      query: (limit) => `${productUrl}/allProducts?pageSize=${limit}`,
+    getAllProducts: builder.query<AllSortedProductsResponse, ProductsParams>({
+      query: (params) => {
+        const query = new URLSearchParams(
+          params as Record<string, string>,
+        ).toString();
+        return `${productUrl}/allProducts?${query}`;
+      },
       providesTags: [TagTypesEnum.Products],
     }),
     getProductById: builder.query<Product, string>({
