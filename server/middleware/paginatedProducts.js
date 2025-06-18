@@ -3,7 +3,7 @@ function paginatedProducts(req, res, next) {
   let pageSize = parseInt(req.query.pageSize);
 
   if (isNaN(page) || page < 1) page = 1;
-  if (isNaN(pageSize) || pageSize < 1 || pageSize > 100) pageSize = 120;
+  if (isNaN(pageSize) || pageSize < 1 || pageSize > 100) pageSize = 12;
 
   const filter = {};
 
