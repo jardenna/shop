@@ -29,9 +29,9 @@ enum MainPath {
 }
 
 enum FrontPath {
-  Kids = '/collections/kids',
-  Men = '/collections/men',
-  Women = '/collections/women',
+  Kids = '/collection/kids',
+  Men = '/collection/men',
+  Women = '/collection/women',
 }
 
 enum LinkText {
