@@ -228,7 +228,7 @@ const getProducts = asyncHandler(async (req, res) => {
 
   if (subCategoryId) {
     matchStage.push({
-      'subCategoryData._id': new mongoose.Types.ObjectId(subCategoryId),
+      'subCategoryData._id': new mongoose.Types.ObjectId(String(subCategoryId)),
     });
   }
 
