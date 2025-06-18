@@ -220,12 +220,17 @@ const deleteProduct = asyncHandler(async (req, res) => {
 const getProducts = asyncHandler(async (req, res) => {
   const pageSize = parseInt(req.query.pageSize) || 6;
   const page = parseInt(req.query.page) || 1;
-  const keyword = req.query.keyword
-    ? { name: { $regex: req.query.keyword, $options: 'i' } }
-    : {};
+  const subCategoryId = req.query.subCategoryId;
 
-  const count = await Product.countDocuments(keyword);
-  const products = await Product.find(keyword)
+  const filter = {};
+
+  if (subCategoryId) {
+    filter.subCategory = subCategoryId;
+  }
+
+  const count = await Product.countDocuments(filter);
+
+  const products = await Product.find(filter)
     .limit(pageSize)
     .skip(pageSize * (page - 1))
     .sort({ createdAt: -1 })
@@ -235,6 +240,7 @@ const getProducts = asyncHandler(async (req, res) => {
     products: formatMongoData(products),
     page,
     pages: Math.ceil(count / pageSize),
+    productCount: count,
   });
 });
 
