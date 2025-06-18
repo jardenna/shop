@@ -1,6 +1,6 @@
 {
   "extends": ["stylelint-config-standard-scss"],
-  "ignoreFiles": ["**/variables.module.scss"],
+  "ignoreFiles": ["**/variables.module.scss", "dist/**"],
   "rules": {
     "scss/at-extend-no-missing-placeholder": null
   }
