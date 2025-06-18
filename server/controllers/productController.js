@@ -1,4 +1,5 @@
 import fs from 'fs';
+import mongoose from 'mongoose';
 import path from 'path';
 import asyncHandler from '../middleware/asyncHandler.js';
 import scheduledStatusHandler from '../middleware/scheduledStatusHandler.js';
@@ -220,21 +221,84 @@ const deleteProduct = asyncHandler(async (req, res) => {
 const getProducts = asyncHandler(async (req, res) => {
   const pageSize = parseInt(req.query.pageSize) || 6;
   const page = parseInt(req.query.page) || 1;
-  const keyword = req.query.keyword
-    ? { name: { $regex: req.query.keyword, $options: 'i' } }
-    : {};
+  const subCategoryId = req.query.subCategoryId;
+  const mainCategory = req.query.mainCategory;
 
-  const count = await Product.countDocuments(keyword);
-  const products = await Product.find(keyword)
-    .limit(pageSize)
-    .skip(pageSize * (page - 1))
-    .sort({ createdAt: -1 })
-    .lean();
+  const matchStage = [];
+
+  if (subCategoryId) {
+    matchStage.push({
+      'subCategoryData._id': new mongoose.Types.ObjectId(String(subCategoryId)),
+    });
+  }
+
+  if (mainCategory) {
+    matchStage.push({
+      'categoryData.categoryName': {
+        $regex: `^${mainCategory}$`,
+        $options: 'i',
+      },
+    });
+  }
+
+  const basePipeline = [
+    {
+      $lookup: {
+        from: 'subcategories',
+        localField: 'subCategory',
+        foreignField: '_id',
+        as: 'subCategoryData',
+      },
+    },
+    { $unwind: '$subCategoryData' },
+    {
+      $lookup: {
+        from: 'categories',
+        localField: 'subCategoryData.category',
+        foreignField: '_id',
+        as: 'categoryData',
+      },
+    },
+    { $unwind: '$categoryData' },
+  ];
+
+  if (matchStage.length > 0) {
+    basePipeline.push({ $match: { $and: matchStage } });
+  }
+
+  // Count pipeline
+  const countPipeline = [...basePipeline, { $count: 'total' }];
+  const countResult = await Product.aggregate(countPipeline);
+  const count = countResult[0]?.total || 0;
+
+  // Paginated results
+  const paginatedPipeline = [
+    ...basePipeline,
+    { $sort: { createdAt: -1 } },
+    { $skip: pageSize * (page - 1) },
+    { $limit: pageSize },
+    {
+      $addFields: {
+        id: '$_id',
+        mainCategory: '$categoryData._id', // include just the ID
+      },
+    },
+    {
+      $project: {
+        _id: 0,
+        subCategoryData: 0,
+        categoryData: 0,
+      },
+    },
+  ];
+
+  const products = await Product.aggregate(paginatedPipeline);
 
   res.status(200).json({
-    products: formatMongoData(products),
+    products,
     page,
     pages: Math.ceil(count / pageSize),
+    productCount: count,
   });
 });
 
