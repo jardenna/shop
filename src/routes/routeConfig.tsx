@@ -2,7 +2,7 @@ import { JSX } from 'react';
 import { createBrowserRouter } from 'react-router';
 import AdminLayout from '../adminLayout/AdminLayout';
 import Layout from '../layout/Layout';
-import { FrontPath, LinkText, MainPath } from '../layout/nav/enums';
+import { LinkText, MainPath } from '../layout/nav/enums';
 import About from '../pages/About';
 import MyAccount from '../pages/account/MyAccount';
 import Orders from '../pages/account/Orders';
@@ -14,13 +14,10 @@ import UserPage from '../pages/admin/UserPage';
 import CategoryPage from '../pages/category/CategoryPage';
 import CreateCategoryPage from '../pages/category/CreateCategoryPage';
 import UpdateCategoryPage from '../pages/category/UpdateCategoryPage';
-import CollectionsPage from '../pages/collections/CollectionsPage';
-import CollectionsPages from '../pages/collections/CollectionsPages';
+import CollectionLandingPage from '../pages/collections/CollectionLandingPage';
+import CollectionPage from '../pages/collections/CollectionPage';
 import Contact from '../pages/Contact';
 import ErrorPage from '../pages/ErrorPage';
-import Kids from '../pages/frontPages/Kids';
-import Men from '../pages/frontPages/Men';
-import Women from '../pages/frontPages/Women';
 import HomePage from '../pages/home/HomePage';
 import LoginPage from '../pages/LoginPage';
 import CreateProductPage from '../pages/product/CreateProductPage';
@@ -49,28 +46,13 @@ export const routeList = [
     label: LinkText.Home,
   },
   {
-    path: FrontPath.Men,
-    element: <Men />,
-    label: LinkText.Men,
-  },
-  {
-    path: FrontPath.Women,
-    element: <Women />,
-    label: LinkText.Women,
-  },
-  {
-    path: FrontPath.Kids,
-    element: <Kids />,
-    label: LinkText.Kids,
-  },
-  {
     path: MainPath.Collection,
-    element: <CollectionsPage />,
+    element: <CollectionLandingPage />,
     label: LinkText.Collection,
   },
   {
-    path: '/collections/:category',
-    element: <CollectionsPages />,
+    path: 'collections/:category',
+    element: <CollectionPage />,
     label: LinkText.Collection,
   },
 
