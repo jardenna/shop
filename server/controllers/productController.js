@@ -233,7 +233,12 @@ const getProducts = asyncHandler(async (req, res) => {
   }
 
   if (mainCategory) {
-    matchStage.push({ 'categoryData.categoryName': mainCategory });
+    matchStage.push({
+      'categoryData.categoryName': {
+        $regex: `^${mainCategory}$`,
+        $options: 'i',
+      },
+    });
   }
 
   const basePipeline = [
