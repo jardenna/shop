@@ -16,7 +16,6 @@ import CreateCategoryPage from '../pages/category/CreateCategoryPage';
 import UpdateCategoryPage from '../pages/category/UpdateCategoryPage';
 import CollectionLandingPage from '../pages/collections/CollectionLandingPage';
 import CollectionPage from '../pages/collections/CollectionPage';
-import Contact from '../pages/Contact';
 import ErrorPage from '../pages/ErrorPage';
 import HomePage from '../pages/home/HomePage';
 import LoginPage from '../pages/LoginPage';
@@ -31,6 +30,7 @@ import CreateSubCategoryPage from '../pages/subCategory/CreateSubCategoryPage';
 import SubCategoryPage from '../pages/subCategory/SubCategoryPage';
 import UpdateSubCategoryPage from '../pages/subCategory/UpdateSubCategoryPage';
 import ViewSubCategoryPage from '../pages/subCategory/ViewSubCategoryPage';
+import KidsOld from '../pages/frontPages/KidsOld';
 
 export type Routes = {
   element: JSX.Element;
@@ -62,7 +62,7 @@ export const routeList = [
   },
   {
     path: MainPath.Contact,
-    element: <Contact />,
+    element: <KidsOld />,
     label: LinkText.Contact,
   },
   {

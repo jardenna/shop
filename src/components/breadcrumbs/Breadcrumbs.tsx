@@ -37,11 +37,13 @@ const Breadcrumbs = ({
     }
 
     const isCurrent = index === pathnames.length - 1;
-
     const baseLabel = language[matchedRoute.label] ?? '';
+    const needsLabelSuffix = [':id', ':category'].some((param) =>
+      matchedRoute.path?.includes(param),
+    );
 
     const label =
-      matchedRoute.path?.includes(':id') && currentLabel
+      needsLabelSuffix && currentLabel
         ? `${baseLabel} ${currentLabel}`
         : baseLabel;
 
