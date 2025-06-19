@@ -331,12 +331,34 @@ const getMenuByParentCategory = asyncHandler(async (req, res) => {
     .lean();
 
   // Filter by parent category name
+  const priorityOrder = ['Clothing', 'Shoes', 'Accessories & Toys'];
+
   const menu = subCategories
-    .filter((sub) => sub.category?.categoryName === parentCategoryName)
+    .filter(
+      (sub) =>
+        sub.category?.categoryName?.toLowerCase() ===
+        parentCategoryName?.toLowerCase(),
+    )
     .map((sub) => ({
       label: sub.subCategoryName,
       categoryId: sub._id,
-    }));
+    }))
+    .sort((a, b) => {
+      const aIndex = priorityOrder.indexOf(a.label);
+      const bIndex = priorityOrder.indexOf(b.label);
+
+      const aInPriority = aIndex !== -1;
+      const bInPriority = bIndex !== -1;
+
+      if (aInPriority && bInPriority) {
+        return aIndex - bIndex;
+      }
+
+      if (aInPriority) return -1;
+      if (bInPriority) return 1;
+
+      return a.label.localeCompare(b.label);
+    });
 
   res.status(200).json({ success: true, data: menu });
 });
