@@ -53,9 +53,8 @@ export const routeList = [
   {
     path: 'collection/:category',
     element: <CollectionPage />,
-    label: LinkText.Collection,
+    label: '',
   },
-
   {
     path: MainPath.About,
     element: <About />,

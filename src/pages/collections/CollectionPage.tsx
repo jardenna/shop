@@ -15,7 +15,7 @@ const CollectionPage = () => {
   console.log(products);
 
   return (
-    <MainPageContainer heading={language.collection}>
+    <MainPageContainer heading={category ? language[category] : ''}>
       {category} Collection page
     </MainPageContainer>
   );
