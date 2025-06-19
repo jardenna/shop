@@ -5,7 +5,10 @@ import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import Img from '../../components/Img';
 import Skeleton from '../../components/skeleton/Skeleton';
 import useLanguage from '../../features/language/useLanguage';
-import { useGetShopProductsQuery } from '../../features/products/productApiSlice';
+import {
+  useGetShopMenuQuery,
+  useGetShopProductsQuery,
+} from '../../features/products/productApiSlice';
 import LayoutElement from '../../layout/LayoutElement';
 import MetaTags from '../../layout/nav/MetaTags';
 import { routeList } from '../../routes/routeConfig';
@@ -24,6 +27,9 @@ const CollectionPage = () => {
     mainCategory: category,
   });
   console.log(products);
+
+  const { data: subMenu } = useGetShopMenuQuery(category || 'women');
+  console.log(subMenu);
 
   const categoryText = category ? language[category] : '';
 
