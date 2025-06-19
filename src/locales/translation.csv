@@ -1,5 +1,7 @@
 ﻿key;en;da
 about;About;Profil
+accessories;Accessories;Accessories
+accessoriesAndToys;Accessories & toys;Accessories og legetøj
 account;Account;Konto
 actionOnlyAllowedForAdmin;This action is only allowed for administrator;Denne handling er kun tilladt for administrator
 add;Add;Tilføj
@@ -37,6 +39,7 @@ clearFilters;Clear filters;Ryd filtre
 clearSort;Clear sort;Ryd sortering
 close;Close;Luk
 closeDialog;Close dialog;Luk dialog
+clothing;Clothing;Tøj
 collapseMenu;Collapse menu;Skjul menu
 collection;Collection;Kollektion
 collectionSubKidsText;Comfortable and fun clothes for play, school and adventures.;Komfortabelt og sjovt tøj til leg, skole og eventyr.
@@ -215,6 +218,7 @@ scheduledDateMustBeFuture;Scheduled date must be after now;Planlagt dato skal v�
 scheduledToBePubliched;is scheduled to be published at;er planlagt til udgivelse den 
 search;Search;Søg
 selectPreferences;Select preferred language and currency;Vælg venligst sprog og valuta
+shoes;Shoes;Sko
 shopCart;Shopping cart;Indkøbskurv
 shopKidsHeading;Playful by Nature;Leg er liv
 shopKidsLink;Shop kids;Shop børn

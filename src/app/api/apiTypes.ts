@@ -204,9 +204,13 @@ export type ProductBaseParams = {
   productName?: string;
 };
 
-export type ProductMenuResponse = {
+export type ProductMenu = {
   categoryId: string;
   label: string;
+};
+
+export type ProductMenuResponse = {
+  data: ProductMenu[];
   success: boolean;
 };
 

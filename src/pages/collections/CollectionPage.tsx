@@ -29,7 +29,6 @@ const CollectionPage = () => {
   console.log(products);
 
   const { data: subMenu } = useGetShopMenuQuery(category || 'women');
-  console.log(subMenu);
 
   const categoryText = category ? language[category] : '';
 
@@ -58,12 +57,13 @@ const CollectionPage = () => {
                 onReset={() => refetch}
               >
                 <article className="product-page-container">
-                  <ul className="left-panel">
-                    <li>Tøj</li>
-                    <li>Sko</li>
-                    <li>Accessories</li>
-                    <li>Legetøj</li>
-                  </ul>
+                  <LayoutElement as="nav" ariaLabel={language.page}>
+                    <ul className="left-menu">
+                      {subMenu?.data.map(({ label }) => (
+                        <li key={label}>{language[label.toLowerCase()]}</li>
+                      ))}
+                    </ul>
+                  </LayoutElement>
                   <section>Products</section>
                 </article>
               </ErrorBoundary>

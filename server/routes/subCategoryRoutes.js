@@ -25,7 +25,7 @@ router.get(
 );
 
 router.get('/scheduled', checkScheduled);
-router.get('/menu', getMenuByParentCategory);
+router.get('/menu', languageMiddleware, getMenuByParentCategory);
 router
   .route('/')
   .post(languageMiddleware, authenticate, authorizeEmployee, createSubCategory)
