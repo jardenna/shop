@@ -319,11 +319,34 @@ const getSubCategoriesWithParent = asyncHandler(async (req, res) => {
   res.status(200).json(subCategories);
 });
 
+// @desc    Get sub cat items if main cat is published
+// @route   /api/subcategories//menu/?parentCategoryName=Kids
+// @method  Get
+// @access  Public
+const getMenuByParentCategory = asyncHandler(async (req, res) => {
+  const { parentCategoryName } = req.query;
+
+  const subCategories = await SubCategory.find({ categoryStatus: 'Published' })
+    .populate('category', 'categoryName')
+    .lean();
+
+  // Filter by parent category name
+  const menu = subCategories
+    .filter((sub) => sub.category?.categoryName === parentCategoryName)
+    .map((sub) => ({
+      label: sub.subCategoryName,
+      categoryId: sub._id,
+    }));
+
+  res.status(200).json({ success: true, data: menu });
+});
+
 export {
   checkScheduled,
   createSubCategory,
   deleteSubCategory,
   getAllSubCategories,
+  getMenuByParentCategory,
   getSubCategoriesWithParent,
   getSubCategoryById,
   updateSubCategory,
