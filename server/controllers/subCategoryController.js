@@ -34,14 +34,6 @@ const createSubCategory = [
       return res.status(400).json(validationResult);
     }
 
-    // Validate translationKey
-    if (!translationKey) {
-      return res.status(400).json({
-        success: false,
-        message: t('pleaseEnterTranslationKey', req.lang),
-      });
-    }
-
     // Validate category existence
     const mainCategory = await Category.findById(category);
 
@@ -49,6 +41,14 @@ const createSubCategory = [
       return res
         .status(400)
         .json({ success: false, message: 'Parent category does not exist' });
+    }
+
+    // Validate translationKey
+    if (!translationKey) {
+      return res.status(400).json({
+        success: false,
+        message: t('pleaseEnterTranslationKey', req.lang),
+      });
     }
 
     // Validate subcategory existence
@@ -301,14 +301,18 @@ const updateSubCategory = [
       scheduledDate,
       translationKey,
     } = req.body;
+
+    // Validate scheduledDate
     const validationResult = validateScheduledDate(
       categoryStatus,
       scheduledDate,
       req.lang,
     );
+
     if (!validationResult.success) {
       return res.status(400).json(validationResult);
     }
+
     // Validate category existence
     if (category) {
       const mainCategory = await Category.findById(category);
@@ -319,7 +323,7 @@ const updateSubCategory = [
       }
     }
 
-    // validate translationKey
+    // Validate translationKey
     if (!translationKey) {
       return res.status(400).json({
         success: false,
