@@ -30,7 +30,7 @@ import CreateSubCategoryPage from '../pages/subCategory/CreateSubCategoryPage';
 import SubCategoryPage from '../pages/subCategory/SubCategoryPage';
 import UpdateSubCategoryPage from '../pages/subCategory/UpdateSubCategoryPage';
 import ViewSubCategoryPage from '../pages/subCategory/ViewSubCategoryPage';
-import KidsOld from '../pages/frontPages/KidsOld';
+import Contact from '../pages/Contact';
 
 export type Routes = {
   element: JSX.Element;
@@ -62,7 +62,7 @@ export const routeList = [
   },
   {
     path: MainPath.Contact,
-    element: <KidsOld />,
+    element: <Contact />,
     label: LinkText.Contact,
   },
   {
