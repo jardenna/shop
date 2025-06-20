@@ -16,10 +16,6 @@
 
   h1 {
     font-family: $font-primary;
-
-    &::after {
-      display: none;
-    }
   }
 
   .hero-content {
