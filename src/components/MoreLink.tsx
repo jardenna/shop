@@ -14,7 +14,6 @@ const MoreLink = ({ linkText, linkTo }: MoreLinkProps) => {
     <Link to={linkTo} className="more-link">
       {linkText}
       <Icon
-        ariaHidden
         iconName={IconName.CircelChevronRight}
         title={language.circelChevronRight}
       />

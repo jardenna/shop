@@ -115,7 +115,7 @@ const Icon = ({
       size={size}
       title={title}
       className={className}
-      ariaHidden={ariaHidden}
+      ariaHidden={ariaHidden === undefined ? true : undefined}
       ariaLabel={ariaLabel}
     />
   );

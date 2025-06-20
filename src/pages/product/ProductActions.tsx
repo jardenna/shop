@@ -23,25 +23,21 @@ const ProductActions = ({ onCopyProduct, id }: ProductActionsProps) => {
       onClick: () => {
         navigate(`${MainPath.AdminProductView}/${id}`);
       },
-      icon: <Icon iconName={IconName.Eye} title={language.eye} ariaHidden />,
+      icon: <Icon iconName={IconName.Eye} title={language.eye} />,
     },
     {
       label: language.update,
       onClick: () => {
         navigate(`${MainPath.AdminProductUpdate}/${id}`);
       },
-      icon: (
-        <Icon iconName={IconName.Edit} title={language.pensil} ariaHidden />
-      ),
+      icon: <Icon iconName={IconName.Edit} title={language.pensil} />,
     },
     {
       label: language.copy,
       onClick: () => {
         onCopyProduct(id);
       },
-      icon: (
-        <Icon iconName={IconName.Dublicate} title={language.copy} ariaHidden />
-      ),
+      icon: <Icon iconName={IconName.Dublicate} title={language.copy} />,
     },
   ];
 
