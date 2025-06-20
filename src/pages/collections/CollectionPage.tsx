@@ -1,6 +1,7 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
+import { routeBreadcrumbs } from '../../components/breadcrumbs/breadcrumbsRoutes';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import Img from '../../components/Img';
 import Skeleton from '../../components/skeleton/Skeleton';
@@ -11,7 +12,6 @@ import {
 } from '../../features/products/productApiSlice';
 import LayoutElement from '../../layout/LayoutElement';
 import MetaTags from '../../layout/nav/MetaTags';
-import { routeList } from '../../routes/routeConfig';
 import './_collection-page.scss';
 
 const CollectionPage = () => {
@@ -40,7 +40,10 @@ const CollectionPage = () => {
           <Skeleton />
         ) : (
           <>
-            <Breadcrumbs routeList={routeList} currentLabel={categoryText} />
+            <Breadcrumbs
+              routeList={routeBreadcrumbs}
+              currentLabel={categoryText}
+            />
             <section className="collection-page">
               <aside className="collection-aside">
                 <LayoutElement
