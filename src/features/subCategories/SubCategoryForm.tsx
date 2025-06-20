@@ -8,7 +8,6 @@ import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/form/Form';
 import Input from '../../components/formElements/Input';
-import validateSubcategory from '../../components/formElements/validation/validateSubcategory';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Selectbox from '../../components/selectbox/Selectbox';
 import StatusOptions from '../../components/selectbox/StatusOptions';
@@ -68,7 +67,7 @@ const SubCategoryForm = ({
   const { onChange, values, onSubmit, onCustomChange, errors } =
     useFormValidation({
       initialState,
-      validate: validateSubcategory,
+      // validate: validateSubcategory,
       callback: handleSubmitCategory,
     });
 

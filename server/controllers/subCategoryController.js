@@ -6,7 +6,7 @@ import SubCategory from '../models/subCategoryModel.js';
 import formatMongoData from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 import { updateScheduledItems } from '../utils/UpdateScheduledItemsOptions.js';
-import validateScheduledDate from '../utils/validateScheduledDate.js';
+import validateSubCategory from '../utils/validateSubCategory.js';
 
 // @desc    Create SubCategory
 // @route   /api/subcategories
@@ -23,42 +23,18 @@ const createSubCategory = [
       translationKey,
     } = req.body;
 
-    // Validate scheduledDate
-    const validationResult = validateScheduledDate(
+    const validationResult = await validateSubCategory({
       categoryStatus,
       scheduledDate,
-      req.lang,
-    );
+      categoryId: category,
+      translationKey,
+      subCategoryName,
+      lang: req.lang,
+    });
 
     if (!validationResult.success) {
       return res.status(400).json(validationResult);
     }
-
-    // Validate category existence
-    const mainCategory = await Category.findById(category);
-
-    if (!mainCategory) {
-      return res
-        .status(400)
-        .json({ success: false, message: 'Parent category does not exist' });
-    }
-
-    // Validate translationKey
-    if (!translationKey) {
-      return res.status(400).json({
-        success: false,
-        message: t('pleaseEnterTranslationKey', req.lang),
-      });
-    }
-
-    // Validate subcategory existence
-    if (!subCategoryName) {
-      return res.status(400).json({
-        success: false,
-        message: t('pleaseEnterCategoryName', req.lang),
-      });
-    }
-
     const subCategoryData = { subCategoryName, category, ...req.body };
 
     const subCategory = new SubCategory(subCategoryData);
@@ -295,40 +271,17 @@ const updateSubCategory = [
       translationKey,
     } = req.body;
 
-    // Validate scheduledDate
-    const validationResult = validateScheduledDate(
+    const validationResult = await validateSubCategory({
       categoryStatus,
       scheduledDate,
-      req.lang,
-    );
+      categoryId: category,
+      translationKey,
+      subCategoryName,
+      lang: req.lang,
+    });
 
     if (!validationResult.success) {
       return res.status(400).json(validationResult);
-    }
-
-    // Validate category existence
-    const mainCategory = await Category.findById(category);
-
-    if (!mainCategory) {
-      return res
-        .status(400)
-        .json({ success: false, message: 'Parent category does not exist' });
-    }
-
-    // Validate translationKey
-    if (!translationKey) {
-      return res.status(400).json({
-        success: false,
-        message: t('pleaseEnterTranslationKey', req.lang),
-      });
-    }
-
-    // Validate subcategory existence
-    if (!subCategoryName) {
-      return res.status(400).json({
-        success: false,
-        message: t('pleaseEnterCategoryName', req.lang),
-      });
     }
 
     const updatedSubCategory = await SubCategory.findByIdAndUpdate(
