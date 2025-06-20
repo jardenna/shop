@@ -307,13 +307,12 @@ const updateSubCategory = [
     }
 
     // Validate category existence
-    if (category) {
-      const mainCategory = await Category.findById(category);
-      if (!mainCategory) {
-        return res
-          .status(400)
-          .json({ success: false, message: 'Parent category does not exist' });
-      }
+    const mainCategory = await Category.findById(category);
+
+    if (!mainCategory) {
+      return res
+        .status(400)
+        .json({ success: false, message: 'Parent category does not exist' });
     }
 
     // Validate translationKey
