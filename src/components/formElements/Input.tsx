@@ -1,10 +1,12 @@
 import { ChangeEvent } from 'react';
+import { IconName } from '../../types/enums';
 import {
   BlurEventType,
   ChangeInputType,
   InputType,
   refInputType,
 } from '../../types/types';
+import Icon from '../icons/Icon';
 import FormLabel from './FormLabel';
 
 export type InputProps = {
@@ -19,7 +21,8 @@ export type InputProps = {
   disabled?: boolean;
   errorText?: string;
   inputHasNoLabel?: boolean;
-  inputInfo?: string;
+  inputHelpText?: string;
+  inputSuffix?: string;
   max?: number;
   maxLength?: number;
   min?: number;
@@ -50,13 +53,14 @@ const Input = ({
   min,
   multiple,
   max,
-  inputInfo,
+  inputSuffix,
   placeholder,
   maxLength,
   autoComplete = 'on',
   autoFocus,
   onFocus,
   disabled,
+  inputHelpText,
 }: InputProps) => {
   const inputClassName =
     type === 'checkbox' || type === 'radio'
@@ -102,7 +106,13 @@ const Input = ({
         onFocus={onFocus}
         disabled={disabled}
       />
-      {inputInfo && <span className="input-info">{inputInfo}</span>}
+      {inputSuffix && <span className="input-suffix">{inputSuffix}</span>}
+      {inputHelpText && (
+        <span className="input-help-text">
+          <Icon iconName={IconName.Info} title="info" />
+          <span>{inputHelpText}</span>
+        </span>
+      )}
     </div>
   );
 };
