@@ -331,6 +331,14 @@ const updateSubCategory = [
       });
     }
 
+    // Validate subcategory existence
+    if (!subCategoryName) {
+      return res.status(400).json({
+        success: false,
+        message: t('pleaseEnterCategoryName', req.lang),
+      });
+    }
+
     const updatedSubCategory = await SubCategory.findByIdAndUpdate(
       req.params.id,
       {
