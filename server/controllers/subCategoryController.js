@@ -23,6 +23,7 @@ const createSubCategory = [
       translationKey,
     } = req.body;
 
+    // Validate scheduledDate
     const validationResult = validateScheduledDate(
       categoryStatus,
       scheduledDate,
@@ -33,7 +34,7 @@ const createSubCategory = [
       return res.status(400).json(validationResult);
     }
 
-    // validate translationKey
+    // Validate translationKey
     if (!translationKey) {
       return res.status(400).json({
         success: false,
@@ -50,6 +51,7 @@ const createSubCategory = [
         .json({ success: false, message: 'Parent category does not exist' });
     }
 
+    // Validate subcategory existence
     if (!subCategoryName) {
       return res.status(400).json({
         success: false,
