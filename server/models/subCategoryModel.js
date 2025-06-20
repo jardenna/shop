@@ -5,6 +5,7 @@ const { ObjectId } = mongoose.Schema;
 const subCategorySchema = new mongoose.Schema(
   {
     subCategoryName: { type: String, required: true },
+    translationKey: { type: String },
     category: {
       type: ObjectId,
       ref: 'Category',

@@ -1,5 +1,7 @@
 ﻿key;en;da
 about;About;Profil
+accessories;Accessories;Accessories
+accessoriesAndToys;Accessories & toys;Accessories og legetøj
 account;Account;Konto
 actionOnlyAllowedForAdmin;This action is only allowed for administrator;Denne handling er kun tilladt for administrator
 add;Add;Tilføj
@@ -37,6 +39,7 @@ clearFilters;Clear filters;Ryd filtre
 clearSort;Clear sort;Ryd sortering
 close;Close;Luk
 closeDialog;Close dialog;Luk dialog
+clothing;Clothing;Tøj
 collapseMenu;Collapse menu;Skjul menu
 collection;Collection;Kollektion
 collectionSubKidsText;Comfortable and fun clothes for play, school and adventures.;Komfortabelt og sjovt tøj til leg, skole og eventyr.
@@ -170,7 +173,8 @@ pleaseEnter;Please enter;Indsæt venligst
 pleaseEnterCategoryName;Please enter a name for category;Indsæt venligst navn på kategori
 pleaseEnterName;Please enter name;Indsæt venligst navn
 pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
-pleaseEnterSubCategoryName;Please enter a subcategory name;Indsæt venligst navn på underkategori
+pleaseEnterTranslationKey;Please enter a translation key;Indsæt venligst oversættelsesnøgle
+translationKey;Translation key;Oversættelsesnøgle
 pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
 pleaseProvideScheduledDate;Please provide a scheduled date;Angiv venligst en planlagt dato
 pleaseSelectParentCategory;Please select parent category;Vælg venligst hovedkategori
@@ -215,6 +219,7 @@ scheduledDateMustBeFuture;Scheduled date must be after now;Planlagt dato skal v�
 scheduledToBePubliched;is scheduled to be published at;er planlagt til udgivelse den 
 search;Search;Søg
 selectPreferences;Select preferred language and currency;Vælg venligst sprog og valuta
+shoes;Shoes;Sko
 shopCart;Shopping cart;Indkøbskurv
 shopKidsHeading;Playful by Nature;Leg er liv
 shopKidsLink;Shop kids;Shop børn

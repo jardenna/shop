@@ -4,6 +4,7 @@ import {
   createSubCategory,
   deleteSubCategory,
   getAllSubCategories,
+  getMenuByParentCategory,
   getSubCategoriesWithParent,
   getSubCategoryById,
   updateSubCategory,
@@ -24,6 +25,7 @@ router.get(
 );
 
 router.get('/scheduled', checkScheduled);
+router.get('/menu', languageMiddleware, getMenuByParentCategory);
 router
   .route('/')
   .post(languageMiddleware, authenticate, authorizeEmployee, createSubCategory)

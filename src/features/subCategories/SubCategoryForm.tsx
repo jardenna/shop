@@ -7,6 +7,7 @@ import {
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/form/Form';
+import Input from '../../components/formElements/Input';
 import validateSubcategory from '../../components/formElements/validation/validateSubcategory';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Selectbox from '../../components/selectbox/Selectbox';
@@ -58,6 +59,7 @@ const SubCategoryForm = ({
     subCategoryName: selectedCategory?.subCategoryName ?? '',
     categoryStatus: selectedCategory?.categoryStatus ?? 'Inactive',
     category: selectedCategory?.mainCategory.categoryName ?? '',
+    translationKey: selectedCategory?.translationKey ?? '',
   };
 
   const selectedTime = selectedCategory?.scheduledDate;
@@ -143,6 +145,15 @@ const SubCategoryForm = ({
           name="category"
           labelText={language.mainCategoryName}
           errorText={language[errors.category]}
+          required
+        />
+        <Input
+          onChange={onChange}
+          value={values.translationKey}
+          id="translationKey"
+          name="translationKey"
+          labelText={language.translationKey}
+          errorText={language[errors.translationKey]}
           required
         />
         <SharedCategoryInputs

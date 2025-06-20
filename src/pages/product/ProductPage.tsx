@@ -38,10 +38,13 @@ const ProductPage = () => {
     data: allProducts,
     isLoading,
     refetch,
-  } = useGetAllProductsQuery('100', {
-    pollingInterval: shouldPollFullList ? 15000 : undefined,
-    refetchOnMountOrArgChange: true,
-  });
+  } = useGetAllProductsQuery(
+    { pageSize: '100' },
+    {
+      pollingInterval: shouldPollFullList ? 15000 : undefined,
+      refetchOnMountOrArgChange: true,
+    },
+  );
 
   // Copy row handler
   async function handleCopyProduct(id: string) {

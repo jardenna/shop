@@ -17,6 +17,7 @@ export type MessagePopup = {
   message: string;
   messagePopupType: MessagePopupTypes;
   componentType?: ComponentType;
+  count?: number;
   onClose?: () => void;
 };
 
@@ -37,8 +38,23 @@ const messagePopupSlice = createSlice({
   initialState,
   reducers: {
     addMessagePopup: (state, action: PayloadAction<MessagePopupWithoutId>) => {
+      const { message, messagePopupType } = action.payload;
+
+      if (messagePopupType === 'error') {
+        const existing = state.messagePopups.find(
+          (popup) =>
+            popup.message === message && popup.messagePopupType === 'error',
+        );
+
+        if (existing) {
+          existing.count = (existing.count || 1) + 1;
+          return;
+        }
+      }
+
       state.messagePopups.unshift({
         id: nanoid(),
+        count: messagePopupType === 'error' ? 1 : undefined,
         ...action.payload,
       });
     },

@@ -3,16 +3,38 @@ import {
   AllSortedProductsResponse,
   DefaultResponse,
   Product,
+  ProductMenuResponse,
   ProductRequest,
+  ProductsParams,
   ScheduledResponse,
+  ShopProductResponse,
+  ShopProductsParams,
   UpdateProductRequest,
 } from '../../app/api/apiTypes';
-import { productUrl } from '../../app/endpoints';
+import { productUrl, subCategoryMenuUrl } from '../../app/endpoints';
 
 const productApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getAllProducts: builder.query<AllSortedProductsResponse, string>({
-      query: (limit) => `${productUrl}/allProducts?pageSize=${limit}`,
+    getAllProducts: builder.query<AllSortedProductsResponse, ProductsParams>({
+      query: (params) => {
+        const query = new URLSearchParams(
+          params as unknown as Record<string, string>,
+        ).toString();
+        return `${productUrl}/allProducts?${query}`;
+      },
+      providesTags: [TagTypesEnum.Products],
+    }),
+    getShopProducts: builder.query<ShopProductResponse, ShopProductsParams>({
+      query: (params) => {
+        const query = new URLSearchParams(
+          params as Record<string, string>,
+        ).toString();
+        return `${productUrl}?${query}`;
+      },
+      providesTags: [TagTypesEnum.Products],
+    }),
+    getShopMenu: builder.query<ProductMenuResponse, string>({
+      query: (params) => `${subCategoryMenuUrl}${params}`,
       providesTags: [TagTypesEnum.Products],
     }),
     getProductById: builder.query<Product, string>({
@@ -58,10 +80,12 @@ const productApiSlice = apiSlice.injectEndpoints({
 
 export const {
   useGetAllProductsQuery,
+  useGetShopProductsQuery,
   useGetProductByIdQuery,
   useUpdateProductMutation,
   useCreateProductMutation,
   useDeleteProductMutation,
   useGetHasScheduledDataQuery,
   useDuplicateProductMutation,
+  useGetShopMenuQuery,
 } = productApiSlice;

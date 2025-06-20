@@ -16,6 +16,7 @@ export enum ValidationMessage {
   PleaseEnterName = 'pleaseEnterName',
   PleaseEnterPassword = 'pleaseEnterPassword',
   PleaseEnterSubCategoryName = 'pleaseEnterSubCategoryName',
+  PleaseEnterTranslationKey = 'pleaseEnterTranslationKey',
   PleaseEnterValidEmail = 'pleaseEnterValidEmail',
   PleaseSelectParentCategory = 'pleaseSelectParentCategory',
   PriceRequired = 'priceRequired',

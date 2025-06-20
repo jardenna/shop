@@ -3,8 +3,9 @@ import MainPageContainer from '../pageContainer/MainPageContainer';
 import './_collection-page.scss';
 import MainCollections from './MainCollections';
 
-const CollectionsPage = () => {
+const CollectionLandingPage = () => {
   const { language } = useLanguage();
+
   return (
     <MainPageContainer heading={language.collection}>
       <MainCollections />
@@ -12,4 +13,4 @@ const CollectionsPage = () => {
   );
 };
 
-export default CollectionsPage;
+export default CollectionLandingPage;

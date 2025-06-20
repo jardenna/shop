@@ -7,6 +7,7 @@ import PageContainer from '../pageContainer/PageContainer';
 export type SubCategoryState = {
   category: string;
   subCategoryName: string;
+  translationKey: string;
 };
 
 const CreateSubCategoryPage = () => {

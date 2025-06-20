@@ -102,6 +102,7 @@ export type CreateSubCategoryRequest = {
   category: string;
   categoryStatus: Status;
   subCategoryName: string;
+  translationKey: string;
   scheduledDate?: Date;
 };
 
@@ -129,6 +130,7 @@ export type SubCategoryResponse = DefaultResponseType & {
   mainCategoryName: string;
   productCount: number;
   subCategoryName: string;
+  translationKey: string;
   scheduledDate?: Date;
 };
 
@@ -156,10 +158,9 @@ export type UpdateSubCategoryRequest = {
 // Products
 export type ProductSizes = 'S' | 'M' | 'L' | 'XL' | 'Onesize';
 
-export type Product = DefaultResponseType & {
+export type BaseProduct = {
   brand: string;
-  category: Category;
-  colors: string[] | [];
+  colors: string[];
   countInStock: number;
   description: string;
   id: string;
@@ -169,13 +170,18 @@ export type Product = DefaultResponseType & {
   price: number;
   productName: string;
   productStatus: Status;
-  quantity: number;
   rating: number;
-  sizes: ProductSizes[] | [];
-  subCategory: SubCategory;
+  sizes: ProductSizes[];
   discount?: number;
-  scheduledDate?: Date;
 };
+
+export type Product = BaseProduct &
+  DefaultResponseType & {
+    category: Category;
+    quantity: number;
+    subCategory: SubCategory;
+    scheduledDate?: Date;
+  };
 
 export type OmittedProduct = Omit<
   Product,
@@ -189,6 +195,48 @@ export type OmittedProduct = Omit<
   | 'rating'
   | 'subCategory'
 >;
+
+export type ProductBaseParams = {
+  maxPrice?: string;
+  maxStock?: string;
+  minPrice?: string;
+  minStock?: string;
+  page?: string;
+  pageSize?: string;
+  productName?: string;
+};
+
+export type ProductMenu = {
+  categoryId: string;
+  label: string;
+};
+
+export type ProductMenuResponse = {
+  data: ProductMenu[];
+  success: boolean;
+};
+
+export type ProductsParams = ProductBaseParams & {
+  productStatus?: Status;
+  subCategory?: string;
+};
+
+export type ShopProductsParams = ProductBaseParams & {
+  mainCategory?: string;
+  subCategoryId?: string;
+};
+
+export type ShopProductResponse = BaseProduct &
+  DefaultResponseType & {
+    categoryData: Category;
+    createdAt: string;
+    reviews: ReviewResponse[];
+    subCategory: {
+      category: string;
+      id: string;
+      name: string;
+    };
+  };
 
 export type ProductRequest = OmittedProduct & {
   subCategory: string;

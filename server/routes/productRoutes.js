@@ -24,7 +24,7 @@ import paginatedProducts from '../middleware/paginatedProducts.js';
 const router = express.Router();
 router
   .route('/')
-  .get(getProducts)
+  .get(languageMiddleware, paginatedProducts, getProducts)
   .post(languageMiddleware, authenticate, authorizeEmployee, createProduct);
 
 router.get('/scheduled', checkScheduled);
