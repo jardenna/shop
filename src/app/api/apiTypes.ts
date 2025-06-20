@@ -102,6 +102,7 @@ export type CreateSubCategoryRequest = {
   category: string;
   categoryStatus: Status;
   subCategoryName: string;
+  translationKey: string;
   scheduledDate?: Date;
 };
 
@@ -129,6 +130,7 @@ export type SubCategoryResponse = DefaultResponseType & {
   mainCategoryName: string;
   productCount: number;
   subCategoryName: string;
+  translationKey: string;
   scheduledDate?: Date;
 };
 

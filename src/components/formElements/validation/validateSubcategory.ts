@@ -4,10 +4,14 @@ import { ValidationMessage } from '../../../types/enums';
 
 function validateSubcategory(values: SubCategoryState) {
   const errors: ValidationErrors = {};
-  const { category, subCategoryName } = values;
+  const { category, subCategoryName, translationKey } = values;
 
   if (!subCategoryName) {
     errors.subCategoryName = ValidationMessage.PleaseEnterCategoryName;
+  }
+
+  if (!translationKey) {
+    errors.translationKey = ValidationMessage.PleaseEnterTranslationKey;
   }
 
   if (!category) {
