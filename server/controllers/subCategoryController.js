@@ -59,13 +59,6 @@ const createSubCategory = [
       });
     }
 
-    if (!category) {
-      return res.status(400).json({
-        success: false,
-        message: 'Category name is required',
-      });
-    }
-
     const subCategoryData = { subCategoryName, category, ...req.body };
 
     const subCategory = new SubCategory(subCategoryData);
