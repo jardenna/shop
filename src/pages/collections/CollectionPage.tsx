@@ -60,7 +60,7 @@ const CollectionPage = () => {
                   <LayoutElement as="nav" ariaLabel={language.page}>
                     <ul className="left-menu">
                       {subMenu?.data.map(({ label }) => (
-                        <li key={label}>{language[label.toLowerCase()]}</li>
+                        <li key={label}>{label}</li>
                       ))}
                     </ul>
                   </LayoutElement>

@@ -358,7 +358,17 @@ const getMenuByParentCategory = asyncHandler(async (req, res) => {
       if (bInPriority) return 1;
 
       return a.label.localeCompare(b.label);
-    });
+    })
+    .map((item) => ({
+      ...item,
+      label: t(item.label.toLowerCase(), req.lang),
+    }));
+
+  res.status(200).json({
+    success: true,
+    message: t('noData', req.lang),
+    data: menu,
+  });
 
   res.status(200).json({ success: true, data: menu });
 });
