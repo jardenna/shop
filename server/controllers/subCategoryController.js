@@ -207,6 +207,84 @@ const getSubCategoryById = asyncHandler(async (req, res) => {
   );
 });
 
+// @desc    Get subcategories with parent category
+// @route   /api/subcategories/with-parent
+// @method  Get
+// @access  Private for employees
+const getSubCategoriesWithParent = asyncHandler(async (req, res) => {
+  const subCategories = await SubCategory.aggregate([
+    {
+      $lookup: {
+        from: 'categories',
+        localField: 'category',
+        foreignField: '_id',
+        as: 'parentCategory',
+      },
+    },
+    {
+      $unwind: {
+        path: '$parentCategory',
+        preserveNullAndEmptyArrays: true, // Allow subcategories without a parent category
+      },
+    },
+    {
+      $project: {
+        categoryStatus: '$categoryStatus',
+        label: '$subCategoryName',
+        categoryId: '$_id',
+        parentCategoryName: '$parentCategory.categoryName',
+        _id: 0,
+      },
+    },
+  ]);
+
+  res.status(200).json(subCategories);
+});
+
+// @desc    Get sub cat items if main cat is published
+// @route   /api/subcategories//menu/?parentCategoryName=Kids
+// @method  Get
+// @access  Public
+const getMenuByParentCategory = asyncHandler(async (req, res) => {
+  const { parentCategoryName } = req.query;
+
+  const subCategories = await SubCategory.find({ categoryStatus: 'Published' })
+    .populate('category', 'categoryName')
+    .lean();
+
+  // Filter by parent category name
+  const priorityOrder = ['clothing', 'shoes', 'accessoriesAndToys'];
+
+  const menu = subCategories
+    .filter(
+      (sub) =>
+        sub.category?.categoryName?.toLowerCase() ===
+        parentCategoryName?.toLowerCase(),
+    )
+    .map((sub) => ({
+      label: t(sub.translationKey, req.lang) || t(sub.translationKey, 'en'),
+      translationKey: sub.translationKey,
+      categoryId: sub._id,
+    }))
+    .sort((a, b) => {
+      const aIndex = priorityOrder.indexOf(a.translationKey);
+      const bIndex = priorityOrder.indexOf(b.translationKey);
+
+      const aInPriority = aIndex !== -1;
+      const bInPriority = bIndex !== -1;
+
+      if (aInPriority && bInPriority) return aIndex - bIndex;
+      if (aInPriority) return -1;
+      if (bInPriority) return 1;
+
+      // fallback: sort by translated label
+      return a.label.localeCompare(b.label);
+    })
+    .map(({ label, categoryId }) => ({ label, categoryId }));
+
+  res.status(200).json({ success: true, data: menu });
+});
+
 // @desc    Update SubCategory
 // @route   /api/subcategories/:id
 // @method  Put
@@ -311,85 +389,6 @@ const deleteSubCategory = asyncHandler(async (req, res) => {
     success: true,
     message: 'SubCategory deleted successfully',
   });
-});
-
-// @desc    Get subcategories with parent category
-// @route   /api/subcategories/with-parent
-// @method  Get
-// @access  Private for employees
-const getSubCategoriesWithParent = asyncHandler(async (req, res) => {
-  const subCategories = await SubCategory.aggregate([
-    {
-      $lookup: {
-        from: 'categories',
-        localField: 'category',
-        foreignField: '_id',
-        as: 'parentCategory',
-      },
-    },
-    {
-      $unwind: {
-        path: '$parentCategory',
-        preserveNullAndEmptyArrays: true, // Allow subcategories without a parent category
-      },
-    },
-    {
-      $project: {
-        categoryStatus: '$categoryStatus',
-        label: '$subCategoryName',
-        categoryId: '$_id',
-        parentCategoryName: '$parentCategory.categoryName',
-        _id: 0,
-      },
-    },
-  ]);
-
-  res.status(200).json(subCategories);
-});
-
-// @desc    Get sub cat items if main cat is published
-// @route   /api/subcategories//menu/?parentCategoryName=Kids
-// @method  Get
-// @access  Public
-const getMenuByParentCategory = asyncHandler(async (req, res) => {
-  const { parentCategoryName } = req.query;
-
-  const subCategories = await SubCategory.find({ categoryStatus: 'Published' })
-    .populate('category', 'categoryName')
-    .lean();
-
-  // Filter by parent category name
-
-  const priorityOrder = ['clothing', 'shoes', 'accessoriesAndToys'];
-
-  const menu = subCategories
-    .filter(
-      (sub) =>
-        sub.category?.categoryName?.toLowerCase() ===
-        parentCategoryName?.toLowerCase(),
-    )
-    .map((sub) => ({
-      label: t(sub.translationKey, req.lang) || t(sub.translationKey, 'en'),
-      translationKey: sub.translationKey,
-      categoryId: sub._id,
-    }))
-    .sort((a, b) => {
-      const aIndex = priorityOrder.indexOf(a.translationKey);
-      const bIndex = priorityOrder.indexOf(b.translationKey);
-
-      const aInPriority = aIndex !== -1;
-      const bInPriority = bIndex !== -1;
-
-      if (aInPriority && bInPriority) return aIndex - bIndex;
-      if (aInPriority) return -1;
-      if (bInPriority) return 1;
-
-      // fallback: sort by translated label
-      return a.label.localeCompare(b.label);
-    })
-    .map(({ label, categoryId }) => ({ label, categoryId }));
-
-  res.status(200).json({ success: true, data: menu });
 });
 
 export {
