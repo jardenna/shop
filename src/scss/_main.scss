@@ -56,17 +56,6 @@ h1 {
   letter-spacing: rem(3px);
   display: flex;
   align-items: center;
-
-  &::after {
-    @include min-size($small) {
-      content: '';
-      display: flex;
-      margin-left: 8px;
-      border-bottom: 2px solid $color-primary;
-      border-radius: 4px;
-      width: 59px;
-    }
-  }
 }
 
 h2 {

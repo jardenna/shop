@@ -40,35 +40,44 @@ const CollectionPage = () => {
           <Skeleton />
         ) : (
           <>
-            <LayoutElement
-              ariaLabel={language.page}
-              as="header"
-              className="main-page-header"
-            >
-              <Breadcrumbs routeList={routeList} currentLabel={categoryText} />
-              <h1>{categoryText}</h1>
-              <LayoutElement as="nav" ariaLabel={language.page}>
-                <ul className="left-menu">
-                  {subMenu?.data.map(({ label }) => (
-                    <li key={label}>{label}</li>
-                  ))}
-                </ul>
-              </LayoutElement>
-              <Img src={`/images/collections/${category}/banner.jpg`} alt="" />
-
-              <div>Filter</div>
-            </LayoutElement>
-
-            <div className="main-page">
-              <ErrorBoundary
-                FallbackComponent={ErrorBoundaryFallback}
-                onReset={() => refetch}
-              >
-                <article className="product-page-container">
-                  <section>Products</section>
-                </article>
-              </ErrorBoundary>
-            </div>
+            <Breadcrumbs routeList={routeList} currentLabel={categoryText} />
+            <section className="collection-page">
+              <aside className="collection-aside">
+                <LayoutElement
+                  ariaLabel={language.page}
+                  as="header"
+                  className="collection-header"
+                >
+                  <h1>{categoryText}</h1>
+                </LayoutElement>
+                <LayoutElement as="nav" ariaLabel={language.page}>
+                  <ul className="left-menu">
+                    {subMenu?.data.map(({ label }) => (
+                      <li key={label}>{label}</li>
+                    ))}
+                  </ul>
+                </LayoutElement>
+              </aside>
+              <section>
+                <div>
+                  <Img
+                    src={`/images/collections/${category}/banner.jpg`}
+                    alt=""
+                  />
+                </div>
+                <div>
+                  <ErrorBoundary
+                    FallbackComponent={ErrorBoundaryFallback}
+                    onReset={() => refetch}
+                  >
+                    <article className="product-page-container">
+                      <div>filter</div>
+                      <section>Products</section>
+                    </article>
+                  </ErrorBoundary>
+                </div>
+              </section>
+            </section>
           </>
         )}
       </article>

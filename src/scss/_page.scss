@@ -29,15 +29,16 @@
 
 // Products pages
 
-.product-page-container {
+.collection-page {
   display: flex;
-
-  .left-menu {
-    min-width: rem(200px);
-  }
+  gap: 12px;
 }
 
-.product-container {
-  display: flex;
-  gap: 20px;
+.collection-aside {
+  background-color: $color-light-gray-10;
+  min-width: rem(252px);
+}
+
+.collection-header {
+  background-color: $color-light-gray;
 }
