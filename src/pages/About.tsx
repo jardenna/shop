@@ -9,6 +9,7 @@ const About = () => {
     <MainPageContainer heading={language.about}>
       <section>
         <ProductPrice price={10200} />
+        <p>tet</p>
       </section>
     </MainPageContainer>
   );

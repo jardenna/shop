@@ -46,8 +46,16 @@ const CollectionPage = () => {
               className="main-page-header"
             >
               <Breadcrumbs routeList={routeList} currentLabel={categoryText} />
-              <Img src={`/images/collections/${category}/banner.jpg`} alt="" />
               <h1>{categoryText}</h1>
+              <LayoutElement as="nav" ariaLabel={language.page}>
+                <ul className="left-menu">
+                  {subMenu?.data.map(({ label }) => (
+                    <li key={label}>{label}</li>
+                  ))}
+                </ul>
+              </LayoutElement>
+              <Img src={`/images/collections/${category}/banner.jpg`} alt="" />
+
               <div>Filter</div>
             </LayoutElement>
 
@@ -57,13 +65,6 @@ const CollectionPage = () => {
                 onReset={() => refetch}
               >
                 <article className="product-page-container">
-                  <LayoutElement as="nav" ariaLabel={language.page}>
-                    <ul className="left-menu">
-                      {subMenu?.data.map(({ label }) => (
-                        <li key={label}>{label}</li>
-                      ))}
-                    </ul>
-                  </LayoutElement>
                   <section>Products</section>
                 </article>
               </ErrorBoundary>

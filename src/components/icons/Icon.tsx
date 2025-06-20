@@ -25,6 +25,8 @@ import GridSmallIcon from './GridSmallIcon';
 import ImageIcon from './ImageIcon';
 import InfoIcon from './InfoIcon';
 import LanguageIcon from './LanguageIcon';
+import LayoutGridIcon from './LayoutGridIcon';
+import LayoutListIcon from './LayoutListIcon';
 import LoginIcon from './LoginIcon';
 import Logo from './Logo';
 import LogoutIcon from './LogoutIcon';
@@ -82,6 +84,8 @@ const iconMapping = {
   image: ImageIcon,
   info: InfoIcon,
   language: LanguageIcon,
+  layoutGrid: LayoutGridIcon,
+  layoutList: LayoutListIcon,
   login: LoginIcon,
   logo: Logo,
   logout: LogoutIcon,
