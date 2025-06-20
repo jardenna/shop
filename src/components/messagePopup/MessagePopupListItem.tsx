@@ -51,8 +51,10 @@ const MessagePopupListItem = ({ messagePopup }: MessagePopupListItemProps) => {
     >
       <span className="message-popup-item-info">
         <Icon iconName={iconName} title={title} ariaHidden />
-        <p className="message-popup-message">{messagePopup.message}</p>
-        <p className="message-popup-message">{messagePopup.count}</p>
+        <p className="message-popup-message">
+          {messagePopup.message}{' '}
+          {messagePopup.count && messagePopup.count > 1 && messagePopup.count}
+        </p>
       </span>
       <BtnClose onClick={deleteMessagePopup} />
     </li>
