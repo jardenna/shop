@@ -331,7 +331,8 @@ const getMenuByParentCategory = asyncHandler(async (req, res) => {
     .lean();
 
   // Filter by parent category name
-  const priorityOrder = ['Clothing', 'Shoes', 'Accessories & Toys'];
+
+  const priorityOrder = ['clothing', 'shoes', 'accessoriesAndToys'];
 
   const menu = subCategories
     .filter(
@@ -340,29 +341,25 @@ const getMenuByParentCategory = asyncHandler(async (req, res) => {
         parentCategoryName?.toLowerCase(),
     )
     .map((sub) => ({
-      label: sub.subCategoryName,
+      label: t(sub.translationKey, req.lang) || t(sub.translationKey, 'en'),
+      translationKey: sub.translationKey,
       categoryId: sub._id,
     }))
     .sort((a, b) => {
-      const aIndex = priorityOrder.indexOf(a.label);
-      const bIndex = priorityOrder.indexOf(b.label);
+      const aIndex = priorityOrder.indexOf(a.translationKey);
+      const bIndex = priorityOrder.indexOf(b.translationKey);
 
       const aInPriority = aIndex !== -1;
       const bInPriority = bIndex !== -1;
 
-      if (aInPriority && bInPriority) {
-        return aIndex - bIndex;
-      }
-
+      if (aInPriority && bInPriority) return aIndex - bIndex;
       if (aInPriority) return -1;
       if (bInPriority) return 1;
 
+      // fallback: sort by translated label
       return a.label.localeCompare(b.label);
     })
-    .map((item) => ({
-      ...item,
-      label: t(item.label.toLowerCase(), req.lang),
-    }));
+    .map(({ label, categoryId }) => ({ label, categoryId }));
 
   res.status(200).json({
     success: true,
