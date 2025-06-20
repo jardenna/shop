@@ -8,7 +8,7 @@ const SignupPage = () => {
 
   return (
     <MainPageContainer heading={language.signup} className="page-small">
-      <RegisterUser navigateTo={MainPath.Root} />;
+      <RegisterUser navigateTo={MainPath.Root} />
     </MainPageContainer>
   );
 };
