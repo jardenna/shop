@@ -1,4 +1,3 @@
-import { JSX } from 'react';
 import { createBrowserRouter } from 'react-router';
 import AdminLayout from '../adminLayout/AdminLayout';
 import Layout from '../layout/Layout';
@@ -16,6 +15,7 @@ import CreateCategoryPage from '../pages/category/CreateCategoryPage';
 import UpdateCategoryPage from '../pages/category/UpdateCategoryPage';
 import CollectionLandingPage from '../pages/collections/CollectionLandingPage';
 import CollectionPage from '../pages/collections/CollectionPage';
+import Contact from '../pages/Contact';
 import ErrorPage from '../pages/ErrorPage';
 import HomePage from '../pages/home/HomePage';
 import LoginPage from '../pages/LoginPage';
@@ -30,16 +30,8 @@ import CreateSubCategoryPage from '../pages/subCategory/CreateSubCategoryPage';
 import SubCategoryPage from '../pages/subCategory/SubCategoryPage';
 import UpdateSubCategoryPage from '../pages/subCategory/UpdateSubCategoryPage';
 import ViewSubCategoryPage from '../pages/subCategory/ViewSubCategoryPage';
-import Contact from '../pages/Contact';
 
-export type Routes = {
-  element: JSX.Element;
-  label: LinkText | string;
-  index?: boolean;
-  path?: string;
-};
-
-export const routeList = [
+const routeList = [
   {
     index: true,
     element: <HomePage />,
