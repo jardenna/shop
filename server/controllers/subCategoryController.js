@@ -15,8 +15,13 @@ import validateScheduledDate from '../utils/validateScheduledDate.js';
 const createSubCategory = [
   scheduledStatusHandler('categoryStatus'),
   asyncHandler(async (req, res) => {
-    const { subCategoryName, category, categoryStatus, scheduledDate } =
-      req.body;
+    const {
+      subCategoryName,
+      category,
+      categoryStatus,
+      scheduledDate,
+      translationKey,
+    } = req.body;
 
     const validationResult = validateScheduledDate(
       categoryStatus,
@@ -26,6 +31,14 @@ const createSubCategory = [
 
     if (!validationResult.success) {
       return res.status(400).json(validationResult);
+    }
+
+    // validate translationKey
+    if (!translationKey) {
+      return res.status(400).json({
+        success: false,
+        message: t('pleaseEnterTranslationKey', req.lang),
+      });
     }
 
     // Validate category existence
@@ -201,8 +214,13 @@ const getSubCategoryById = asyncHandler(async (req, res) => {
 const updateSubCategory = [
   scheduledStatusHandler('categoryStatus'),
   asyncHandler(async (req, res) => {
-    const { subCategoryName, category, categoryStatus, scheduledDate } =
-      req.body;
+    const {
+      subCategoryName,
+      category,
+      categoryStatus,
+      scheduledDate,
+      translationKey,
+    } = req.body;
     const validationResult = validateScheduledDate(
       categoryStatus,
       scheduledDate,
@@ -221,12 +239,21 @@ const updateSubCategory = [
       }
     }
 
+    // validate translationKey
+    if (!translationKey) {
+      return res.status(400).json({
+        success: false,
+        message: t('pleaseEnterTranslationKey', req.lang),
+      });
+    }
+
     const updatedSubCategory = await SubCategory.findByIdAndUpdate(
       req.params.id,
       {
         ...(subCategoryName && { subCategoryName }),
         ...(category && { category }),
         ...(categoryStatus && { categoryStatus }),
+        translationKey,
         scheduledDate,
       },
       { new: true },
@@ -244,6 +271,7 @@ const updateSubCategory = [
       updatedSubCategory: {
         id: updatedSubCategory._id,
         subCategoryName: updatedSubCategory.subCategoryName,
+        translationKey: updatedSubCategory.translationKey,
         category: updatedSubCategory.category,
         categoryStatus: updatedSubCategory.categoryStatus,
         scheduledDate: updatedSubCategory.scheduledDate,
