@@ -35,7 +35,7 @@ const CollectionPage = () => {
   return (
     <>
       <MetaTags metaTitle={category} />
-      <article className="container page">
+      <article className="container page collection-page">
         {isLoading ? (
           <Skeleton />
         ) : (
@@ -44,7 +44,7 @@ const CollectionPage = () => {
               routeList={routeBreadcrumbs}
               currentLabel={categoryText}
             />
-            <section className="collection-page">
+            <section className="collection-page-container">
               <aside className="collection-aside">
                 <LayoutElement
                   ariaLabel={language.page}
@@ -54,7 +54,7 @@ const CollectionPage = () => {
                   <h1>{categoryText}</h1>
                 </LayoutElement>
                 <LayoutElement as="nav" ariaLabel={language.page}>
-                  <ul className="left-menu">
+                  <ul className="collection-menu">
                     {subMenu?.data.map(({ label }) => (
                       <li key={label}>{label}</li>
                     ))}

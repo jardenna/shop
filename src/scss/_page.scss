@@ -30,6 +30,14 @@
 // Products pages
 
 .collection-page {
+  .breadcrumbs-container {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.collection-page-container {
   display: flex;
   gap: 12px;
 }
@@ -37,8 +45,21 @@
 .collection-aside {
   background-color: $color-light-gray-10;
   min-width: rem(252px);
+
+  .collection-menu {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    font-size: rem(16px);
+    padding: 12px 16px;
+  }
 }
 
 .collection-header {
-  background-color: $color-light-gray;
+  background-color: $color-light-gray-20;
+  border-bottom: 4px solid $color-gray-40;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
 }
