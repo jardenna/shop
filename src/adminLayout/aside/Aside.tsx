@@ -1,4 +1,4 @@
-import { UserResponse } from '../../app/api/apiTypes/sharedTypes';
+import { UserResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import NavContainer from '../../layout/nav/NavContainer';
 import { adminNavList } from '../../layout/nav/navList';
 import './_aside.scss';

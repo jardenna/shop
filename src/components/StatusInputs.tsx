@@ -1,4 +1,4 @@
-import { Status } from '../app/api/apiTypes/sharedTypes';
+import { Status } from '../app/api/apiTypes/sharedApiTypes';
 import useLanguage from '../features/language/useLanguage';
 import { ChangeInputType, OptionType, refFormType } from '../types/types';
 import DatePicker from './datePicker/DatePicker';

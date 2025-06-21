@@ -4,7 +4,7 @@ import {
   UpdateUserByIdRequest,
   UpdateUserByIdResponse,
   UserResponse,
-} from '../../app/api/apiTypes/sharedTypes';
+} from '../../app/api/apiTypes/sharedApiTypes';
 import { userUrl } from '../../app/endpoints';
 
 export const usersApiSlice = apiSlice.injectEndpoints({

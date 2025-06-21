@@ -1,4 +1,4 @@
-import { UserResponse } from '../app/api/apiTypes/sharedTypes';
+import { UserResponse } from '../app/api/apiTypes/sharedApiTypes';
 import TogglePanel from '../components/togglePanel/TogglePanel';
 import NavContainer from '../layout/nav/NavContainer';
 import { adminNavList } from '../layout/nav/navList';

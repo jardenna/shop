@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { Status } from '../../app/api/apiTypes/sharedTypes';
+import { Status } from '../../app/api/apiTypes/sharedApiTypes';
 import Badge from '../../components/badge/Badge';
 import useLanguage from '../../features/language/useLanguage';
 import { formatNumber, getlowerCaseFirstLetter } from '../../utils/utils';

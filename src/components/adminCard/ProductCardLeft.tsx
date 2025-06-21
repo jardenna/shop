@@ -1,4 +1,4 @@
-import { Status } from '../../app/api/apiTypes/sharedTypes';
+import { Status } from '../../app/api/apiTypes/sharedApiTypes';
 import ProductPrice from '../../features/currency/components/ProductPrice';
 import useLanguage from '../../features/language/useLanguage';
 import ProductDiscountPrice from '../../pages/product/ProductDiscountPrice';

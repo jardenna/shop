@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router';
-import { CreateCategoryRequest } from '../../app/api/apiTypes/sharedTypes';
+import { CreateCategoryRequest } from '../../app/api/apiTypes/sharedApiTypes';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/form/Form';

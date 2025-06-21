@@ -1,4 +1,4 @@
-import { Status } from '../../app/api/apiTypes/sharedTypes';
+import { Status } from '../../app/api/apiTypes/sharedApiTypes';
 import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';

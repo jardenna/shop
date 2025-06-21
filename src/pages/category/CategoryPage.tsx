@@ -1,4 +1,4 @@
-import { Category } from '../../app/api/apiTypes/sharedTypes';
+import { Category } from '../../app/api/apiTypes/sharedApiTypes';
 import Table from '../../components/sortTable/Table';
 import {
   useGetAllCategoriesQuery,

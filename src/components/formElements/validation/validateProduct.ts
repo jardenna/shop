@@ -1,4 +1,4 @@
-import { ProductRequest } from '../../../app/api/apiTypes/sharedTypes';
+import { ProductRequest } from '../../../app/api/apiTypes/sharedApiTypes';
 import { ValidationErrors } from '../../../hooks/useFormValidation';
 import { ValidationMessage } from '../../../types/enums';
 

@@ -1,4 +1,4 @@
-import { RoleTypes } from '../../app/api/apiTypes/sharedTypes';
+import { RoleTypes } from '../../app/api/apiTypes/sharedApiTypes';
 import RadioButton, {
   RadioBtnVariant,
 } from '../../components/formElements/RadioButton';
