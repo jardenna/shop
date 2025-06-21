@@ -258,17 +258,17 @@ export type ReviewRequest = {
   rating: number;
 };
 
-export type AllPaginatedProductsResponse = {
-  hasMore: boolean;
+export type BasePagination = {
   page: number;
   pages: number;
+};
+
+export type AllPaginatedProductsResponse = BasePagination & {
+  hasMore: boolean;
   products: Product[];
 };
 
-export type AllSortedProductsResponse = Omit<
-  AllPaginatedProductsResponse,
-  'page' | 'pages' | 'hasMore'
->;
+export type AllSortedProductsResponse = { products: Product[] };
 
 export type GetSortedProductsResponse = DefaultResponseType & {
   category: Category;
