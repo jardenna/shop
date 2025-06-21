@@ -1,8 +1,9 @@
 import {
+  BasePagination,
   BaseProduct,
+  BaseProductParams,
   DefaultResponse,
   DefaultResponseType,
-  ProductBaseParams,
 } from './sharedApiTypes';
 
 export type RoleTypes = 'Employee' | 'User';
@@ -165,12 +166,12 @@ type OmittedAdminProduct = Omit<
   | 'subCategory'
 >;
 
-export type ProductsParams = ProductBaseParams & {
+export type ProductsParams = BaseProductParams & {
   productStatus?: Status;
   subCategory?: string;
 };
 
-export type ShopProductsParams = ProductBaseParams & {
+export type ShopProductsParams = BaseProductParams & {
   mainCategory?: string;
   subCategoryId?: string;
 };
@@ -192,24 +193,6 @@ export type ProductRequest = OmittedAdminProduct & {
 export type UpdateProductRequest = {
   id: string;
   product: ProductRequest;
-};
-
-export type ReviewResponse = DefaultResponseType & {
-  comment: string;
-  id: string;
-  name: string;
-  rating: number;
-  user: string;
-};
-
-export type ReviewRequest = {
-  comment: string;
-  rating: number;
-};
-
-export type BasePagination = {
-  page: number;
-  pages: number;
 };
 
 export type AllPaginatedProductsResponse = BasePagination & {

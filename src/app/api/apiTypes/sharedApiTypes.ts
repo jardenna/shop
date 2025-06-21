@@ -39,7 +39,7 @@ export type BaseProduct = DefaultResponseType & {
   discount?: number;
 };
 
-export type ProductBaseParams = {
+export type BaseProductParams = {
   maxPrice?: string;
   maxStock?: string;
   minPrice?: string;
