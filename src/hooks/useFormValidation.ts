@@ -19,7 +19,7 @@ export type FormValues = {
   [key: string]: string | number | string[];
 };
 
-export type FormValidationProps<T extends KeyValuePair<unknown>> = {
+type FormValidationProps<T extends KeyValuePair<unknown>> = {
   initialState: T;
   isArray?: boolean;
   isLoading?: boolean;

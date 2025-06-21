@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router';
 import type { RoleTypes } from '../../app/api/apiTypes/adminApiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import RoleRadioBtn from '../../features/users/RoleRadioBtn';
-import { KeyValuePair } from '../../hooks/useFormValidation';
+import type { KeyValuePair } from '../../hooks/useFormValidation';
 import type { RegisterUserProps } from '../../pages/RegisterUser';
 import { BtnVariant } from '../../types/enums';
 import type {

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { RootState } from '../../app/store';
-import { CurrencyCode } from './currencyConverterUtil';
+import type { RootState } from '../../app/store';
+import type { CurrencyCode } from './currencyConverterUtil';
 import { currencyCode } from './exchangeRatesApiSlice';
 
 const currencySlice = createSlice({

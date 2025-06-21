@@ -1,4 +1,4 @@
-import { ValidationErrors } from '../../../hooks/useFormValidation';
+import type { ValidationErrors } from '../../../hooks/useFormValidation';
 import type { CategoryState } from '../../../pages/category/CreateCategoryPage';
 import { ValidationMessage } from '../../../types/enums';
 

@@ -1,4 +1,4 @@
-import { PreviewImg } from '../../../hooks/useFormValidation';
+import type { PreviewImg } from '../../../hooks/useFormValidation';
 import ProductImgList from './ProductImgList';
 
 export type PreviewProps = {

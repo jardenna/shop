@@ -1,5 +1,5 @@
 import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../app/store';
+import type { RootState } from '../app/store';
 
 export type MessagePopupTypes = 'success' | 'info' | 'warning' | 'error';
 export type ComponentType = 'notification' | 'toast';
