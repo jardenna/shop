@@ -45,13 +45,31 @@
 .collection-aside {
   background-color: $color-light-gray-10;
   min-width: rem(252px);
+}
 
-  .collection-menu {
+.collection-nav-list {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  font-size: rem(16px);
+  padding: 20px 16px;
+
+  .collection-nav-item {
     display: flex;
-    gap: 20px;
-    flex-direction: column;
-    font-size: rem(16px);
-    padding: 12px 16px;
+    align-items: center;
+
+    &::marker {
+      content: '';
+    }
+
+    &::before {
+      content: '▪▪\A▪▪';
+      white-space: pre;
+      display: inline-block;
+      line-height: 0.4;
+      font-size: 16px;
+      margin-right: 8px;
+    }
   }
 }
 

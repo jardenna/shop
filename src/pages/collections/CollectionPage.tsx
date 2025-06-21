@@ -54,9 +54,11 @@ const CollectionPage = () => {
                   <h1>{categoryText}</h1>
                 </LayoutElement>
                 <LayoutElement as="nav" ariaLabel={language.page}>
-                  <ul className="collection-menu">
+                  <ul className="collection-nav-list">
                     {subMenu?.data.map(({ label }) => (
-                      <li key={label}>{label}</li>
+                      <li className="collection-nav-item" key={label}>
+                        {label}
+                      </li>
                     ))}
                   </ul>
                 </LayoutElement>
