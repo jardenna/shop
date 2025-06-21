@@ -5,7 +5,7 @@ import DatePicker from './datePicker/DatePicker';
 import TimeInput from './formElements/timeInput/TimeInput';
 import Selectbox from './selectbox/Selectbox';
 
-export type StatusOptions = {
+type StatusOptions = {
   label: string;
   value: Status;
 };

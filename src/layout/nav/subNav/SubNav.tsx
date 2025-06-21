@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router';
 import useLanguage from '../../../features/language/useLanguage';
 import useMediaQuery from '../../../hooks/useMediaQuery ';
-import { BaseNav } from '../Nav';
+import type { BaseNav } from '../Nav';
 import './_sub-nav.scss';
 
 type SubNavProps = {

@@ -6,7 +6,7 @@ import { BtnVariant } from '../../types/enums';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 import CardFooter from '../card/CardFooter';
 import CardRight from '../card/CardRight';
-import { PrimaryActionBtnProps } from '../modal/Modal';
+import type { PrimaryActionBtnProps } from '../modal/Modal';
 import CategoryCardLeft from './CategoryCardLeft';
 
 type CategoryCardProps = {

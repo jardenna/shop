@@ -6,13 +6,6 @@ import './_nav.scss';
 import Nav, { NavItemsProps } from './Nav';
 import NavUser from './NavUser';
 
-export type ActionBtnProps = {
-  ariaLabel?: string;
-  className?: string;
-  label?: string;
-  onClick?: () => void;
-};
-
 type NavContainerProps = {
   navList: NavItemsProps[];
   ariaControls?: string;

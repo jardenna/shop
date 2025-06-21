@@ -4,7 +4,7 @@ import CurrencySelect from '../../features/currency/components/CurrencySelect';
 import useLanguage, {
   languageOptions,
 } from '../../features/language/useLanguage';
-import { HeaderProps } from '../header/Header';
+import type { HeaderProps } from '../header/Header';
 
 type OmittedHeaderProps = Omit<
   HeaderProps,

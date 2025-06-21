@@ -1,5 +1,5 @@
 import { ValidationErrors } from '../../../hooks/useFormValidation';
-import { SubCategoryState } from '../../../pages/subCategory/CreateSubCategoryPage';
+import type { SubCategoryState } from '../../../pages/subCategory/CreateSubCategoryPage';
 import { ValidationMessage } from '../../../types/enums';
 
 function validateSubcategory(values: SubCategoryState) {
