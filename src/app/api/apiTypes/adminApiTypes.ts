@@ -1,21 +1,10 @@
+import { DefaultResponse, DefaultResponseType } from './sharedApiTypes';
+
 export type RoleTypes = 'Employee' | 'User';
 export type Status = 'Published' | 'Inactive' | 'Scheduled';
 
 export type CurrencyResponse = {
   data: Record<string, { value: number }>;
-};
-
-export type DefaultResponse = {
-  message: string;
-  success: boolean;
-};
-
-export type DefaultResponseType = {
-  createdAt: Date;
-  reviews: ReviewResponse[];
-  updatedAt: Date;
-  message?: string;
-  success?: boolean;
 };
 
 // --- Users ---

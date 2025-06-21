@@ -1,10 +1,10 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import {
-  DefaultResponse,
   UpdateUserByIdRequest,
   UpdateUserByIdResponse,
   UserResponse,
 } from '../../app/api/apiTypes/adminApiTypes';
+import { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import { userUrl } from '../../app/endpoints';
 
 export const usersApiSlice = apiSlice.injectEndpoints({
