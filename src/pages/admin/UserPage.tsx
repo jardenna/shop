@@ -170,7 +170,6 @@ const UserPage = () => {
                       <Icon
                         iconName={IconName.Trash}
                         title={language.trashCan}
-                        ariaLabel={language.deleteUser}
                       />
                     </Tooltip>
                   )}

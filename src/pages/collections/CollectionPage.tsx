@@ -15,6 +15,7 @@ import LayoutElement from '../../layout/LayoutElement';
 import MetaTags from '../../layout/nav/MetaTags';
 import { IconName } from '../../types/enums';
 import './_collection-page.scss';
+import IconContent from '../../components/IconContent';
 
 const CollectionPage = () => {
   const { language } = useLanguage();
@@ -80,12 +81,12 @@ const CollectionPage = () => {
                     <article className="product-page-container">
                       <section className="collectiopn-filter">
                         <div className="filter-icons">
-                          <Icon
+                          <IconContent
                             iconName={IconName.LayoutGrid}
                             title={language.grid}
                             ariaLabel={language.viewAsGrid}
                           />
-                          <Icon
+                          <IconContent
                             iconName={IconName.LayoutList}
                             title={language.list}
                             ariaLabel={language.viewAsList}
@@ -95,7 +96,6 @@ const CollectionPage = () => {
                           <Icon
                             iconName={IconName.Filter}
                             title={language.filter}
-                            ariaLabel={language.filterProducts}
                           />
                           <span>{language.filter}</span>
                         </div>

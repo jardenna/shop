@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import useLanguage from '../../../features/language/useLanguage';
-import { BtnVariant, IconName } from '../../../types/enums';
-import Button from '../../Button';
-import Icon from '../../icons/Icon';
+import { IconName } from '../../../types/enums';
+import IconBtn from '../../IconBtn';
 import Input, { InputProps } from '../Input';
 import './_password-input.scss';
 import PasswordPopupList, { PasswordRulesProps } from './PasswordPopupList';
@@ -66,25 +65,15 @@ const PasswordInput = ({
         onFocus={onFocus}
       />
       {!!value && (
-        <Button
-          variant={BtnVariant.Ghost}
+        <IconBtn
           onClick={handleShowPassword}
           className="toggle-icon-btn"
-        >
-          {showPassword ? (
-            <Icon
-              iconName={IconName.EyeOff}
-              title={language.eyeClosed}
-              ariaLabel={language.showPassword}
-            />
-          ) : (
-            <Icon
-              iconName={IconName.Eye}
-              title={language.eye}
-              ariaLabel={language.hidePassword}
-            />
-          )}
-        </Button>
+          iconName={showPassword ? IconName.EyeOff : IconName.Eye}
+          title={showPassword ? language.eyeClosed : language.eye}
+          ariaLabel={
+            showPassword ? language.showPassword : language.hidePassword
+          }
+        />
       )}
     </div>
   );

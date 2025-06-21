@@ -111,7 +111,6 @@ const Icon = ({
   title,
   className = '',
   ariaHidden,
-  ariaLabel,
 }: IconProps) => {
   const IconComponent = iconMapping[iconName];
   return (
@@ -120,7 +119,6 @@ const Icon = ({
       title={title}
       className={className}
       ariaHidden={ariaHidden === undefined ? true : undefined}
-      ariaLabel={ariaLabel}
     />
   );
 };

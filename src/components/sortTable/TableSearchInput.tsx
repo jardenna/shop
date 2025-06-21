@@ -36,11 +36,7 @@ const TableSearchInput = ({
         triggerBtnVariant={BtnVariant.Ghost}
         ariaLabel={`${language.filter} ${label}`}
       >
-        <Icon
-          title={language.filterRow}
-          ariaLabel={`${language.filter} ${label}`}
-          iconName={IconName.Filter}
-        />
+        <Icon title={language.filterRow} iconName={IconName.Filter} />
 
         {value && (
           <>
