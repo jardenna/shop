@@ -81,3 +81,20 @@
   align-items: center;
   padding: 32px;
 }
+
+.collection-filter {
+  display: flex;
+  justify-content: space-between;
+  margin-block: 8px 24px;
+
+  .filter-icons,
+  .filter-text {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .filter-icons {
+    gap: 8px;
+  }
+}

@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 import { routeBreadcrumbs } from '../../components/breadcrumbs/breadcrumbsRoutes';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
+import IconContent from '../../components/IconContent';
 import Icon from '../../components/icons/Icon';
 import Img from '../../components/Img';
 import Skeleton from '../../components/skeleton/Skeleton';
@@ -15,7 +16,6 @@ import LayoutElement from '../../layout/LayoutElement';
 import MetaTags from '../../layout/nav/MetaTags';
 import { IconName } from '../../types/enums';
 import './_collection-page.scss';
-import IconContent from '../../components/IconContent';
 
 const CollectionPage = () => {
   const { language } = useLanguage();
@@ -47,7 +47,7 @@ const CollectionPage = () => {
               routeList={routeBreadcrumbs}
               currentLabel={categoryText}
             />
-            <section className="collection-page-container">
+            <div className="collection-page-container">
               <aside className="collection-aside">
                 <LayoutElement
                   ariaLabel={language.page}
@@ -66,46 +66,47 @@ const CollectionPage = () => {
                   </ul>
                 </LayoutElement>
               </aside>
-              <section>
+
+              <ErrorBoundary
+                FallbackComponent={ErrorBoundaryFallback}
+                onReset={() => refetch}
+              >
                 <div>
                   <Img
                     src={`/images/collections/${category}/banner.jpg`}
                     alt=""
                   />
+                  <section className="collection-filter">
+                    <div className="filter-icons">
+                      <IconContent
+                        iconName={IconName.LayoutGrid}
+                        title={language.grid}
+                        ariaLabel={language.viewAsGrid}
+                      />
+                      <IconContent
+                        iconName={IconName.LayoutList}
+                        title={language.list}
+                        ariaLabel={language.viewAsList}
+                      />
+
+                      {products?.productCount && (
+                        <span>
+                          {products.productCount} {language.products}
+                        </span>
+                      )}
+                    </div>
+                    <div className="filter-text">
+                      <span>{language.filter}</span>
+                      <Icon
+                        iconName={IconName.Filter}
+                        title={language.filter}
+                      />
+                    </div>
+                  </section>
+                  <section className="collection-list">Products</section>
                 </div>
-                <div>
-                  <ErrorBoundary
-                    FallbackComponent={ErrorBoundaryFallback}
-                    onReset={() => refetch}
-                  >
-                    <article className="product-page-container">
-                      <section className="collectiopn-filter">
-                        <div className="filter-icons">
-                          <IconContent
-                            iconName={IconName.LayoutGrid}
-                            title={language.grid}
-                            ariaLabel={language.viewAsGrid}
-                          />
-                          <IconContent
-                            iconName={IconName.LayoutList}
-                            title={language.list}
-                            ariaLabel={language.viewAsList}
-                          />
-                        </div>
-                        <div>
-                          <Icon
-                            iconName={IconName.Filter}
-                            title={language.filter}
-                          />
-                          <span>{language.filter}</span>
-                        </div>
-                      </section>
-                      <section>Products</section>
-                    </article>
-                  </ErrorBoundary>
-                </div>
-              </section>
-            </section>
+              </ErrorBoundary>
+            </div>
           </>
         )}
       </article>
