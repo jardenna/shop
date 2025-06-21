@@ -3,7 +3,7 @@ import {
   Category,
   CreateSubCategoryRequest,
   SubCategoryResponse,
-} from '../../app/api/apiTypes/sharedApiTypes';
+} from '../../app/api/apiTypes/adminApiTypes';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/form/Form';

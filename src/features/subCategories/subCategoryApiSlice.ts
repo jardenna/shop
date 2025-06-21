@@ -8,7 +8,7 @@ import {
   SubCategoryResponse,
   UpdateSubCategoryRequest,
   UpdateSubCategoryResponse,
-} from '../../app/api/apiTypes/sharedApiTypes';
+} from '../../app/api/apiTypes/adminApiTypes';
 import { subCategoryUrl } from '../../app/endpoints';
 
 const subCategoryApiSlice = apiSlice.injectEndpoints({

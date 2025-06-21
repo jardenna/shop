@@ -5,7 +5,7 @@ import {
   Product,
   ProductRequest,
   SubCategoriesWithParent,
-} from '../../app/api/apiTypes/sharedApiTypes';
+} from '../../app/api/apiTypes/adminApiTypes';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import Form from '../../components/form/Form';
 import Checkbox from '../../components/formElements/Checkbox';

@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { UserResponse } from '../../app/api/apiTypes/sharedApiTypes';
+import { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
 import validateUpdateUser from '../../components/formElements/validation/validateUpdateUser';
 import Icon from '../../components/icons/Icon';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';

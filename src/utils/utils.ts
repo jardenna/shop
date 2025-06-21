@@ -1,4 +1,4 @@
-import { ProductSizes } from '../app/api/apiTypes/sharedApiTypes';
+import { ProductSizes } from '../app/api/apiTypes/adminApiTypes';
 import { ValidationMessage } from '../types/enums';
 
 const oneDay = 1000 * 60 * 60 * 24; // 24 hours in milliseconds

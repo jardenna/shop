@@ -3,7 +3,7 @@ import {
   AuthRequest,
   RoleTypes,
   UserResponse,
-} from '../app/api/apiTypes/sharedApiTypes';
+} from '../app/api/apiTypes/adminApiTypes';
 import AuthForm from '../components/authForm/AuthForm';
 import validateSignup from '../components/formElements/validation/validateSignup';
 import useMessagePopup from '../components/messagePopup/useMessagePopup';

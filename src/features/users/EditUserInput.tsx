@@ -1,4 +1,4 @@
-import { RoleTypes } from '../../app/api/apiTypes/sharedApiTypes';
+import { RoleTypes } from '../../app/api/apiTypes/adminApiTypes';
 
 import IconBtn from '../../components/IconBtn';
 import EditTableInput, {

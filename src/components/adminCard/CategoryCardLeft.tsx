@@ -1,4 +1,4 @@
-import { Status } from '../../app/api/apiTypes/sharedApiTypes';
+import { Status } from '../../app/api/apiTypes/adminApiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 import CardContent from '../card/CardContent';

@@ -4,7 +4,7 @@ import {
   AuthResponse,
   DefaultResponse,
   OmittedUserRequest,
-} from '../../app/api/apiTypes/sharedApiTypes';
+} from '../../app/api/apiTypes/adminApiTypes';
 import { authEndpoints } from '../../app/endpoints';
 import { store } from '../../app/store';
 import { logout } from './authSlice';
