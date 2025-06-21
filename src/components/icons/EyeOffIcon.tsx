@@ -5,7 +5,6 @@ const EyeOffIcon = ({
   title,
   className,
   ariaHidden,
-  ariaLabel,
 }: IconDefaultProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -19,7 +18,6 @@ const EyeOffIcon = ({
     height={size}
     className={className}
     aria-hidden={ariaHidden}
-    aria-label={ariaLabel}
   >
     <title>{title}</title>
     <path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49" />

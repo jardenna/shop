@@ -48,7 +48,6 @@ import WarningIcon from './WarningIcon';
 export type IconDefaultProps = {
   title: string;
   ariaHidden?: boolean;
-  ariaLabel?: string;
   className?: string;
   size?: string;
 };
