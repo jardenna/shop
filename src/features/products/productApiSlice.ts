@@ -7,7 +7,7 @@ import {
   ScheduledResponse,
   UpdateProductRequest,
 } from '../../app/api/apiTypes/adminApiTypes';
-import { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
+import type { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import {
   ProductMenuResponse,
   ShopProductResponse,

@@ -1,4 +1,4 @@
-import { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
+import type { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import variables from '../../scss/variables.module.scss';
 import { sizeList } from '../../utils/utils';

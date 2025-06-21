@@ -1,5 +1,5 @@
-import { Category } from './adminApiTypes';
-import { BaseProduct, BaseProductParams } from './sharedApiTypes';
+import type { Category } from './adminApiTypes';
+import type { BaseProduct, BaseProductParams } from './sharedApiTypes';
 
 export type ShopProductsParams = BaseProductParams & {
   mainCategory?: string;
