@@ -5,7 +5,7 @@ import {
   CreateCategoryRequest,
   ScheduledResponse,
   UpdateCategoryRequest,
-} from '../../app/api/apiTypes';
+} from '../../app/api/apiTypes/sharedTypes';
 import { categoryUrl } from '../../app/endpoints';
 
 const categoryApiSlice = apiSlice.injectEndpoints({

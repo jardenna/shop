@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { Status } from '../../app/api/apiTypes';
+import { Status } from '../../app/api/apiTypes/sharedTypes';
 import Badge from '../../components/badge/Badge';
 import MoreLink from '../../components/MoreLink';
 import useLanguage from '../../features/language/useLanguage';

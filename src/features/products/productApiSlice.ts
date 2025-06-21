@@ -10,7 +10,7 @@ import {
   ShopProductResponse,
   ShopProductsParams,
   UpdateProductRequest,
-} from '../../app/api/apiTypes';
+} from '../../app/api/apiTypes/sharedTypes';
 import { productUrl, subCategoryMenuUrl } from '../../app/endpoints';
 
 const productApiSlice = apiSlice.injectEndpoints({

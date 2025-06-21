@@ -1,4 +1,4 @@
-import { CurrencyResponse } from '../../app/api/apiTypes';
+import { CurrencyResponse } from '../../app/api/apiTypes/sharedTypes';
 import currencyApiSlice from '../../app/api/currencyApiSlice';
 import { currencies, CurrencyCode } from './currencyConverterUtil';
 

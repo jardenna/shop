@@ -1,5 +1,5 @@
 import apiSlice from '../app/api/apiSlice';
-import { UploadResponse } from '../app/api/apiTypes';
+import { UploadResponse } from '../app/api/apiTypes/sharedTypes';
 
 export const uploadImageApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({

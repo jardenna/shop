@@ -1,4 +1,4 @@
-import { Product } from '../../app/api/apiTypes';
+import { Product } from '../../app/api/apiTypes/sharedTypes';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Table, { Column } from '../../components/sortTable/Table';
 import useLanguage from '../../features/language/useLanguage';

@@ -1,5 +1,9 @@
 import { useNavigate } from 'react-router';
-import { AuthRequest, RoleTypes, UserResponse } from '../app/api/apiTypes';
+import {
+  AuthRequest,
+  RoleTypes,
+  UserResponse,
+} from '../app/api/apiTypes/sharedTypes';
 import AuthForm from '../components/authForm/AuthForm';
 import validateSignup from '../components/formElements/validation/validateSignup';
 import useMessagePopup from '../components/messagePopup/useMessagePopup';
