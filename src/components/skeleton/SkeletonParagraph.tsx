@@ -1,4 +1,4 @@
-import { PickedSkeletonTypes } from './Skeleton';
+import type { PickedSkeletonTypes } from './Skeleton';
 import SkeletonList from './SkeletonList';
 
 const SkeletonParagraph = ({

@@ -1,4 +1,4 @@
-import { PickedSkeletonTypes } from './Skeleton';
+import type { PickedSkeletonTypes } from './Skeleton';
 import SkeletonHeader from './SkeletonHeader';
 import SkeletonInput from './SkeletonInput';
 import SkeletonList from './SkeletonList';
