@@ -1,5 +1,5 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
-import {
+import type {
   CategoriesResponse,
   CategoryItemResponse,
   CreateCategoryRequest,

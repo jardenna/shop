@@ -1,4 +1,4 @@
-import { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
+import type { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
 import Icon from '../../components/icons/Icon';
 import { IconName } from '../../types/enums';
 

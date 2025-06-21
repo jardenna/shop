@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router';
-import { RoleTypes } from '../../app/api/apiTypes/adminApiTypes';
+import type { RoleTypes } from '../../app/api/apiTypes/adminApiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import RoleRadioBtn from '../../features/users/RoleRadioBtn';
 import { KeyValuePair } from '../../hooks/useFormValidation';

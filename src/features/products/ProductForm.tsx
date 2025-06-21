@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
-import {
+import type {
   Product,
   ProductRequest,
   SubCategoriesWithParent,

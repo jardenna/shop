@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router';
-import {
+import type {
   AuthRequest,
   RoleTypes,
   UserResponse,
