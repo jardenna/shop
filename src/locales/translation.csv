@@ -95,6 +95,7 @@ fileExceedsSize;The selected file exceeds the 1MB limit; Den valgte fil overstig
 filesSuported;Files suported;Tilladte filer
 fillAll;Please fill all inputs;Udfyld venligst alle felter
 filter;Filter;Filtrer
+filterProducts;Filter products;Filtrer produkter
 filterRow;Filter row;Filtrer række
 filtersApplied;Filters applied;Filtre anvendt
 globe;Globe;Globus
@@ -119,6 +120,7 @@ invalidUserData;Invalid user data;Ugyldig bruger data
 items;items;stk
 kids;Kids;Børn
 language;Language;Sprog
+list;List;Liste
 loading;Loading;Loading
 lock;Lock;Hængelås
 loggedOut;Logged out successfully;Logget ud
@@ -272,6 +274,8 @@ username;User name;Brugernavn
 users;Users;Brugere
 userUpdated;User updated;Bruger opdateret
 view;View;Se
+viewAsGrid;View as grid;Gridvisning
+viewAsList;View as list;Listevisning
 viewCategory;View category;Se kategori
 viewProduct;View product;Se produkt
 viewScheduledDate;View scheduled date;Se planlagt dato

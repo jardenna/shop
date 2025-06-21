@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 import { routeBreadcrumbs } from '../../components/breadcrumbs/breadcrumbsRoutes';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
+import Icon from '../../components/icons/Icon';
 import Img from '../../components/Img';
 import Skeleton from '../../components/skeleton/Skeleton';
 import useLanguage from '../../features/language/useLanguage';
@@ -12,6 +13,7 @@ import {
 } from '../../features/shop/shopApiSlice';
 import LayoutElement from '../../layout/LayoutElement';
 import MetaTags from '../../layout/nav/MetaTags';
+import { IconName } from '../../types/enums';
 import './_collection-page.scss';
 
 const CollectionPage = () => {
@@ -76,7 +78,28 @@ const CollectionPage = () => {
                     onReset={() => refetch}
                   >
                     <article className="product-page-container">
-                      <div>filter</div>
+                      <section className="collectiopn-filter">
+                        <div className="filter-icons">
+                          <Icon
+                            iconName={IconName.LayoutGrid}
+                            title={language.grid}
+                            ariaLabel={language.viewAsGrid}
+                          />
+                          <Icon
+                            iconName={IconName.LayoutList}
+                            title={language.list}
+                            ariaLabel={language.viewAsList}
+                          />
+                        </div>
+                        <div>
+                          <Icon
+                            iconName={IconName.Filter}
+                            title={language.filter}
+                            ariaLabel={language.filterProducts}
+                          />
+                          <span>{language.filter}</span>
+                        </div>
+                      </section>
                       <section>Products</section>
                     </article>
                   </ErrorBoundary>
