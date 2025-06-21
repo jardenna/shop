@@ -1,5 +1,5 @@
 import useLanguage from '../../features/language/useLanguage';
-import { ChangeInputType, OptionType } from '../../types/types';
+import type { ChangeInputType, OptionType } from '../../types/types';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 import Input from './Input';
 

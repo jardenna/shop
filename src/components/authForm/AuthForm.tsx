@@ -5,7 +5,7 @@ import RoleRadioBtn from '../../features/users/RoleRadioBtn';
 import { KeyValuePair } from '../../hooks/useFormValidation';
 import type { RegisterUserProps } from '../../pages/RegisterUser';
 import { BtnVariant } from '../../types/enums';
-import {
+import type {
   BlurEventType,
   ChangeInputType,
   FormEventType,

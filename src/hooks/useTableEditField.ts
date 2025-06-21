@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ChangeInputType } from '../types/types';
+import type { ChangeInputType } from '../types/types';
 
 type UseTableEditFieldProps<T extends { id: string }> = {
   data: T[];

@@ -1,7 +1,7 @@
 import type { FileName } from '../../../app/api/apiTypes/adminApiTypes';
 import useLanguage from '../../../features/language/useLanguage';
 import { IconName } from '../../../types/enums';
-import { ChangeInputType } from '../../../types/types';
+import type { ChangeInputType } from '../../../types/types';
 import FormLabel from '../FormLabel';
 import './_file-input.scss';
 import FileInfo from './FileInfo';

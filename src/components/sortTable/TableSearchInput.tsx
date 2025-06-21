@@ -1,6 +1,6 @@
 import useLanguage from '../../features/language/useLanguage';
 import { BtnVariant, IconName } from '../../types/enums';
-import { ChangeInputType } from '../../types/types';
+import type { ChangeInputType } from '../../types/types';
 import Icon from '../icons/Icon';
 import Tooltip from '../tooltip/Tooltip';
 import VisuallyHidden from '../VisuallyHidden';

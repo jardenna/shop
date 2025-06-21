@@ -2,7 +2,7 @@ import { DropdownItem } from '../../components/dropdownBtn/DropdownBtn';
 import type { SecondaryActionBtnProps } from '../../components/modal/Modal';
 import TogglePanel from '../../components/togglePanel/TogglePanel';
 import type { SelectedLanguage } from '../../features/language/languageSlice';
-import { ChangeInputType, OptionType } from '../../types/types';
+import type { ChangeInputType, OptionType } from '../../types/types';
 import HeaderIcons from '../headerIcons/HeaderIcons';
 import LayoutElement from '../LayoutElement';
 import { MainPath } from '../nav/enums';

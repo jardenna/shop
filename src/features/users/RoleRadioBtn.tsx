@@ -2,7 +2,7 @@ import type { RoleTypes } from '../../app/api/apiTypes/adminApiTypes';
 import RadioButton, {
   RadioBtnVariant,
 } from '../../components/formElements/RadioButton';
-import { ChangeInputType } from '../../types/types';
+import type { ChangeInputType } from '../../types/types';
 import { roleButtonList } from '../../utils/utils';
 
 type RoleRadioBtnProps = {

@@ -1,6 +1,6 @@
 import type { Status } from '../app/api/apiTypes/adminApiTypes';
 import useLanguage from '../features/language/useLanguage';
-import { ChangeInputType, OptionType, refFormType } from '../types/types';
+import type { ChangeInputType, OptionType, refFormType } from '../types/types';
 import DatePicker from './datePicker/DatePicker';
 import TimeInput from './formElements/timeInput/TimeInput';
 import Selectbox from './selectbox/Selectbox';

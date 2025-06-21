@@ -5,7 +5,7 @@ import useLanguage from '../../features/language/useLanguage';
 import useLocalStorage, { localStorageKeys } from '../../hooks/useLocalStorage';
 import variables from '../../scss/variables.module.scss';
 import { BtnVariant, IconName } from '../../types/enums';
-import { SortOrderType } from '../../types/types';
+import type { SortOrderType } from '../../types/types';
 import Button from '../Button';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import SkeletonList from '../skeleton/SkeletonList';

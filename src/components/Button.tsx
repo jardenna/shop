@@ -2,7 +2,7 @@
 
 import { ReactNode, RefObject } from 'react';
 import { BtnVariant } from '../types/enums';
-import { ButtonEventType, ButtonType } from '../types/types';
+import type { ButtonEventType, ButtonType } from '../types/types';
 import Loader from './loader/Loader';
 import VisuallyHidden from './VisuallyHidden';
 

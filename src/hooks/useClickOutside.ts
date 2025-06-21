@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { refElementType } from '../types/types';
+import type { refElementType } from '../types/types';
 
 const useClickOutside = (
   ref: refElementType,

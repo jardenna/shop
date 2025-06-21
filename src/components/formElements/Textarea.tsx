@@ -1,4 +1,4 @@
-import { ChangeInputType } from '../../types/types';
+import type { ChangeInputType } from '../../types/types';
 import FormLabel from './FormLabel';
 import type { InputProps } from './Input';
 

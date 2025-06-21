@@ -1,6 +1,6 @@
 import { ChangeEvent } from 'react';
 import { IconName } from '../../types/enums';
-import {
+import type {
   BlurEventType,
   ChangeInputType,
   InputType,

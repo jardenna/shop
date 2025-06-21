@@ -1,4 +1,4 @@
-import { ChangeInputType } from '../types/types';
+import type { ChangeInputType } from '../types/types';
 import Input from './formElements/Input';
 import StatusInputs, { StatusInputsProps } from './StatusInputs';
 
