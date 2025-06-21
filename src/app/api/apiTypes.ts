@@ -183,7 +183,7 @@ export type Product = BaseProduct & {
   scheduledDate?: Date;
 };
 
-export type OmittedProduct = Omit<
+type OmittedAdminProduct = Omit<
   Product,
   | 'createdAt'
   | 'reviews'
@@ -236,7 +236,7 @@ export type ShopProductResponse = BaseProduct & {
   };
 };
 
-export type ProductRequest = OmittedProduct & {
+export type ProductRequest = OmittedAdminProduct & {
   subCategory: string;
 };
 
