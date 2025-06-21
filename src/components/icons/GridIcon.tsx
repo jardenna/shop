@@ -1,4 +1,4 @@
-import { IconDefaultProps } from './Icon';
+import type { IconDefaultProps } from './Icon';
 
 const GridIcon = ({ size, title, className, ariaHidden }: IconDefaultProps) => (
   <svg

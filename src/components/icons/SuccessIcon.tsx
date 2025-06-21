@@ -1,5 +1,5 @@
 import variables from '../../scss/variables.module.scss';
-import { IconDefaultProps } from './Icon';
+import type { IconDefaultProps } from './Icon';
 
 const SuccessIcon = ({
   size,
