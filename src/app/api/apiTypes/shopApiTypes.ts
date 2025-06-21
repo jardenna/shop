@@ -1,18 +1,27 @@
 import type { Category } from './adminApiTypes';
-import type { BaseProduct, BaseProductParams } from './sharedApiTypes';
+import type {
+  BaseProduct,
+  BaseProductParams,
+  BaseSubCategory,
+} from './sharedApiTypes';
 
 export type ShopProductsParams = BaseProductParams & {
   mainCategory?: string;
   subCategoryId?: string;
 };
 
-export type ShopProductResponse = BaseProduct & {
+export type ShopProduct = BaseProduct & {
   categoryData: Category;
-  subCategory: {
-    category: string;
-    id: string;
-    name: string;
-  };
+  subCategory: string;
+  subCategoryData: BaseSubCategory;
+};
+
+export type ShopProductResponse = BaseProduct & {
+  page: number;
+  pages: number;
+  productCount: number;
+  products: ShopProduct[];
+  success: boolean;
 };
 
 type ProductMenu = {

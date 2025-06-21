@@ -1,3 +1,5 @@
+import { MainCategory } from './adminApiTypes';
+
 export type RoleTypes = 'Employee' | 'User';
 export type Status = 'Published' | 'Inactive' | 'Scheduled';
 
@@ -65,4 +67,12 @@ export type ReviewRequest = {
 export type BasePagination = {
   page: number;
   pages: number;
+};
+
+export type BaseSubCategory = DefaultResponseType & {
+  _id: string;
+  category: MainCategory;
+  categoryStatus: Status;
+  subCategoryName: string;
+  translationKey: string;
 };

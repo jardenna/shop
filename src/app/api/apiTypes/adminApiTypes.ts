@@ -2,6 +2,7 @@ import type {
   BasePagination,
   BaseProduct,
   BaseProductParams,
+  BaseSubCategory,
   DefaultResponse,
   DefaultResponseType,
 } from './sharedApiTypes';
@@ -96,31 +97,18 @@ export type CreateSubCategoryRequest = {
   scheduledDate?: Date;
 };
 
-export type MainCategory = {
+export type MainCategory = DefaultResponseType & {
   categoryName: string;
   categoryStatus: Status;
   id: string;
   scheduledDate?: Date;
 };
 
-export type SubCategory = DefaultResponseType & {
-  _id: string;
-  category: MainCategory;
-  categoryStatus: Status;
-  id: string;
-  productCount: number;
-  subCategoryName: string;
-  scheduledDate?: Date;
-};
-
-export type SubCategoryResponse = DefaultResponseType & {
-  categoryStatus: Status;
+export type SubCategoryResponse = BaseSubCategory & {
   id: string;
   mainCategory: MainCategory;
   mainCategoryName: string;
   productCount: number;
-  subCategoryName: string;
-  translationKey: string;
   scheduledDate?: Date;
 };
 
@@ -149,7 +137,7 @@ export type UpdateSubCategoryRequest = {
 export type Product = BaseProduct & {
   category: Category;
   quantity: number;
-  subCategory: SubCategory;
+  subCategory: BaseSubCategory;
   scheduledDate?: Date;
 };
 

@@ -7,9 +7,9 @@ import Img from '../../components/Img';
 import Skeleton from '../../components/skeleton/Skeleton';
 import useLanguage from '../../features/language/useLanguage';
 import {
+  useGetProductsQuery,
   useGetShopMenuQuery,
-  useGetShopProductsQuery,
-} from '../../features/products/productApiSlice';
+} from '../../features/shop/shopApiSlice';
 import LayoutElement from '../../layout/LayoutElement';
 import MetaTags from '../../layout/nav/MetaTags';
 import './_collection-page.scss';
@@ -22,7 +22,7 @@ const CollectionPage = () => {
     data: products,
     isLoading,
     refetch,
-  } = useGetShopProductsQuery({
+  } = useGetProductsQuery({
     pageSize: '100',
     mainCategory: category,
   });
