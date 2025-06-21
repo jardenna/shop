@@ -1,6 +1,7 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
+import { routeBreadcrumbs } from '../../components/breadcrumbs/breadcrumbsRoutes';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import Img from '../../components/Img';
 import Skeleton from '../../components/skeleton/Skeleton';
@@ -11,7 +12,6 @@ import {
 } from '../../features/products/productApiSlice';
 import LayoutElement from '../../layout/LayoutElement';
 import MetaTags from '../../layout/nav/MetaTags';
-import { routeList } from '../../routes/routeConfig';
 import './_collection-page.scss';
 
 const CollectionPage = () => {
@@ -35,39 +35,54 @@ const CollectionPage = () => {
   return (
     <>
       <MetaTags metaTitle={category} />
-      <article className="container page">
+      <article className="container page collection-page">
         {isLoading ? (
           <Skeleton />
         ) : (
           <>
-            <LayoutElement
-              ariaLabel={language.page}
-              as="header"
-              className="main-page-header"
-            >
-              <Breadcrumbs routeList={routeList} currentLabel={categoryText} />
-              <Img src={`/images/collections/${category}/banner.jpg`} alt="" />
-              <h1>{categoryText}</h1>
-              <div>Filter</div>
-            </LayoutElement>
-
-            <div className="main-page">
-              <ErrorBoundary
-                FallbackComponent={ErrorBoundaryFallback}
-                onReset={() => refetch}
-              >
-                <article className="product-page-container">
-                  <LayoutElement as="nav" ariaLabel={language.page}>
-                    <ul className="left-menu">
-                      {subMenu?.data.map(({ label }) => (
-                        <li key={label}>{label}</li>
-                      ))}
-                    </ul>
-                  </LayoutElement>
-                  <section>Products</section>
-                </article>
-              </ErrorBoundary>
-            </div>
+            <Breadcrumbs
+              routeList={routeBreadcrumbs}
+              currentLabel={categoryText}
+            />
+            <section className="collection-page-container">
+              <aside className="collection-aside">
+                <LayoutElement
+                  ariaLabel={language.page}
+                  as="header"
+                  className="collection-header"
+                >
+                  <h1>{categoryText}</h1>
+                </LayoutElement>
+                <LayoutElement as="nav" ariaLabel={language.page}>
+                  <ul className="collection-nav-list">
+                    {subMenu?.data.map(({ label }) => (
+                      <li className="collection-nav-item" key={label}>
+                        {label}
+                      </li>
+                    ))}
+                  </ul>
+                </LayoutElement>
+              </aside>
+              <section>
+                <div>
+                  <Img
+                    src={`/images/collections/${category}/banner.jpg`}
+                    alt=""
+                  />
+                </div>
+                <div>
+                  <ErrorBoundary
+                    FallbackComponent={ErrorBoundaryFallback}
+                    onReset={() => refetch}
+                  >
+                    <article className="product-page-container">
+                      <div>filter</div>
+                      <section>Products</section>
+                    </article>
+                  </ErrorBoundary>
+                </div>
+              </section>
+            </section>
           </>
         )}
       </article>

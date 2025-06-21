@@ -50,7 +50,7 @@ const MessagePopupListItem = ({ messagePopup }: MessagePopupListItemProps) => {
       className={`message-popup-item ${messagePopup.componentType || ''} animate-bottom-center ${popupClass} ${messagePopup.messagePopupType}`}
     >
       <span className="message-popup-item-info">
-        <Icon iconName={iconName} title={title} ariaHidden />
+        <Icon iconName={iconName} title={title} />
         <p className="message-popup-message">
           {messagePopup.message}{' '}
           {messagePopup.count && messagePopup.count > 1 && messagePopup.count}

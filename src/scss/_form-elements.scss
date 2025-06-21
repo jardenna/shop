@@ -74,9 +74,18 @@ textarea {
   }
 }
 
-.input-info {
+.input-suffix {
   position: absolute;
   z-index: 1;
   top: 52%;
   right: 12px;
+}
+
+.input-help-text {
+  font-size: rem(12px);
+  font-style: italic;
+  gap: 4px;
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
 }

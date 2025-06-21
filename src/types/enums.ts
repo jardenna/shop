@@ -87,6 +87,8 @@ export enum IconName {
   Image = 'image',
   Info = 'info',
   Language = 'language',
+  LayoutGrid = 'layoutGrid',
+  LayoutList = 'layoutList',
   Login = 'login',
   Logo = 'logo',
   Logout = 'logout',

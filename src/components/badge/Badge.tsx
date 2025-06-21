@@ -33,11 +33,7 @@ const Badge = ({ badgeText, badgeClassName, scheduledDate }: BadgeProps) => {
               />
             }
           >
-            <Icon
-              iconName={IconName.Calendar}
-              title={language.calendar}
-              ariaHidden
-            />
+            <Icon iconName={IconName.Calendar} title={language.calendar} />
           </Tooltip>
         </div>
       )}

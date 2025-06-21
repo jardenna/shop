@@ -30,7 +30,7 @@ const FormLabel = ({
         </VisuallyHidden>
       ) : (
         <label htmlFor={id} className={className}>
-          {iconName && <Icon iconName={iconName} title={iconName} ariaHidden />}
+          {iconName && <Icon iconName={iconName} title={iconName} />}
           <span>
             {labelText}
             {required && <span aria-hidden="true">*</span>}

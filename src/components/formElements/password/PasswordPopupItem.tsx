@@ -16,7 +16,6 @@ const PasswordPopupItem = ({ text, isValid }: PasswordPopupItemProps) => {
       <Icon
         iconName={isValid ? IconName.Success : IconName.Error}
         title={isValid ? language.success : language.error}
-        ariaHidden
       />
       <span>{text}</span>
       <VisuallyHidden>

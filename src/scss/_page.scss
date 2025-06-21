@@ -29,15 +29,55 @@
 
 // Products pages
 
-.product-page-container {
-  display: flex;
-
-  .left-menu {
-    min-width: rem(200px);
+.collection-page {
+  .breadcrumbs-container {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: flex-end;
   }
 }
 
-.product-container {
+.collection-page-container {
+  display: flex;
+  gap: 12px;
+}
+
+.collection-aside {
+  background-color: $color-light-gray-10;
+  min-width: rem(252px);
+}
+
+.collection-nav-list {
   display: flex;
   gap: 20px;
+  flex-direction: column;
+  font-size: rem(16px);
+  padding: 20px 16px;
+
+  .collection-nav-item {
+    display: flex;
+    align-items: center;
+
+    &::marker {
+      content: '';
+    }
+
+    &::before {
+      content: '▪▪\A▪▪';
+      white-space: pre;
+      display: inline-block;
+      line-height: 0.4;
+      font-size: 16px;
+      margin-right: 8px;
+    }
+  }
+}
+
+.collection-header {
+  background-color: $color-light-gray-20;
+  border-bottom: 4px solid $color-gray-40;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
 }

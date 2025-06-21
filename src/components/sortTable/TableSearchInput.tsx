@@ -40,7 +40,6 @@ const TableSearchInput = ({
           title={language.filterRow}
           ariaLabel={`${language.filter} ${label}`}
           iconName={IconName.Filter}
-          ariaHidden
         />
 
         {value && (

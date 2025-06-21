@@ -9,7 +9,7 @@ export type OmittedIconBtnProps = Omit<
 
 const IconContent = ({ iconName, title, ariaLabel, size }: IconBtnProps) => (
   <>
-    <Icon iconName={iconName} title={title} ariaHidden size={size} />
+    <Icon iconName={iconName} title={title} size={size} />
     {ariaLabel && <VisuallyHidden>{ariaLabel}</VisuallyHidden>}
   </>
 );

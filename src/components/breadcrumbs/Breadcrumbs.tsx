@@ -2,14 +2,18 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { Link, matchPath, useLocation } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
-import { MainPath } from '../../layout/nav/enums';
-import { Routes } from '../../routes/routeConfig';
+import { LinkText, MainPath } from '../../layout/nav/enums';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import BreadcrumbItem from './BreadcrumbItem';
 import './_breadcrumbs.scss';
 
+export type RouteListProps = {
+  label: LinkText | string;
+  path?: string;
+};
+
 type BreadCrumbsProps = {
-  routeList: Routes[];
+  routeList: RouteListProps[];
   currentLabel?: string;
   onReset?: () => void;
 };

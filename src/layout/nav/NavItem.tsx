@@ -57,7 +57,6 @@ const NavItem = ({
         {navItem.iconName && (
           <span>
             <Icon
-              ariaHidden
               iconName={navItem.iconName}
               title={language[navItem.linkText]}
               size={navItem.iconSize}

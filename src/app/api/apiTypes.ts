@@ -158,7 +158,7 @@ export type UpdateSubCategoryRequest = {
 // Products
 export type ProductSizes = 'S' | 'M' | 'L' | 'XL' | 'Onesize';
 
-export type BaseProduct = {
+export type BaseProduct = DefaultResponseType & {
   brand: string;
   colors: string[];
   countInStock: number;
@@ -171,19 +171,19 @@ export type BaseProduct = {
   productName: string;
   productStatus: Status;
   rating: number;
+  reviews: ReviewResponse[];
   sizes: ProductSizes[];
   discount?: number;
 };
 
-export type Product = BaseProduct &
-  DefaultResponseType & {
-    category: Category;
-    quantity: number;
-    subCategory: SubCategory;
-    scheduledDate?: Date;
-  };
+export type Product = BaseProduct & {
+  category: Category;
+  quantity: number;
+  subCategory: SubCategory;
+  scheduledDate?: Date;
+};
 
-export type OmittedProduct = Omit<
+type OmittedAdminProduct = Omit<
   Product,
   | 'createdAt'
   | 'reviews'
@@ -226,19 +226,17 @@ export type ShopProductsParams = ProductBaseParams & {
   subCategoryId?: string;
 };
 
-export type ShopProductResponse = BaseProduct &
-  DefaultResponseType & {
-    categoryData: Category;
-    createdAt: string;
-    reviews: ReviewResponse[];
-    subCategory: {
-      category: string;
-      id: string;
-      name: string;
-    };
-  };
+export type ShopProductResponse = BaseProduct & {
+  categoryData: Category;
 
-export type ProductRequest = OmittedProduct & {
+  subCategory: {
+    category: string;
+    id: string;
+    name: string;
+  };
+};
+
+export type ProductRequest = OmittedAdminProduct & {
   subCategory: string;
 };
 
