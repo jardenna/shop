@@ -49,16 +49,6 @@ export type BaseProductParams = {
   productName?: string;
 };
 
-type ProductMenu = {
-  categoryId: string;
-  label: string;
-};
-
-export type ProductMenuResponse = {
-  data: ProductMenu[];
-  success: boolean;
-};
-
 export type ReviewResponse = DefaultResponseType & {
   comment: string;
   id: string;

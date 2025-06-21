@@ -5,14 +5,14 @@ import {
   ProductsParams,
   ProductsResponse,
   ScheduledResponse,
-  ShopProductResponse,
-  ShopProductsParams,
   UpdateProductRequest,
 } from '../../app/api/apiTypes/adminApiTypes';
+import { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import {
-  DefaultResponse,
   ProductMenuResponse,
-} from '../../app/api/apiTypes/sharedApiTypes';
+  ShopProductResponse,
+  ShopProductsParams,
+} from '../../app/api/apiTypes/shopApiTypes';
 import { productUrl, subCategoryMenuUrl } from '../../app/endpoints';
 
 const productApiSlice = apiSlice.injectEndpoints({

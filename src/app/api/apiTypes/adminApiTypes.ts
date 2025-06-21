@@ -153,7 +153,7 @@ export type Product = BaseProduct & {
   scheduledDate?: Date;
 };
 
-type OmittedAdminProduct = Omit<
+type OmittedProduct = Omit<
   Product,
   | 'createdAt'
   | 'reviews'
@@ -171,22 +171,7 @@ export type ProductsParams = BaseProductParams & {
   subCategory?: string;
 };
 
-export type ShopProductsParams = BaseProductParams & {
-  mainCategory?: string;
-  subCategoryId?: string;
-};
-
-export type ShopProductResponse = BaseProduct & {
-  categoryData: Category;
-
-  subCategory: {
-    category: string;
-    id: string;
-    name: string;
-  };
-};
-
-export type ProductRequest = OmittedAdminProduct & {
+export type ProductRequest = OmittedProduct & {
   subCategory: string;
 };
 
