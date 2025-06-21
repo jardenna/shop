@@ -195,12 +195,7 @@ export type UpdateProductRequest = {
   product: ProductRequest;
 };
 
-export type AllPaginatedProductsResponse = BasePagination & {
-  hasMore: boolean;
-  products: Product[];
-};
-
-export type AllSortedProductsResponse = { products: Product[] };
+export type ProductsResponse = BasePagination & { products: Product[] };
 
 export type GetSortedProductsResponse = DefaultResponseType & {
   category: Category;

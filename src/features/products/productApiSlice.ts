@@ -1,9 +1,9 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import {
-  AllSortedProductsResponse,
   Product,
   ProductRequest,
   ProductsParams,
+  ProductsResponse,
   ScheduledResponse,
   ShopProductResponse,
   ShopProductsParams,
@@ -17,7 +17,7 @@ import { productUrl, subCategoryMenuUrl } from '../../app/endpoints';
 
 const productApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getAllProducts: builder.query<AllSortedProductsResponse, ProductsParams>({
+    getAllProducts: builder.query<ProductsResponse, ProductsParams>({
       query: (params) => {
         const query = new URLSearchParams(
           params as unknown as Record<string, string>,
