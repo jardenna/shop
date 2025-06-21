@@ -1,11 +1,12 @@
-import { DefaultResponse, DefaultResponseType } from './sharedApiTypes';
+import {
+  BaseProduct,
+  DefaultResponse,
+  DefaultResponseType,
+  ProductBaseParams,
+} from './sharedApiTypes';
 
 export type RoleTypes = 'Employee' | 'User';
 export type Status = 'Published' | 'Inactive' | 'Scheduled';
-
-export type CurrencyResponse = {
-  data: Record<string, { value: number }>;
-};
 
 // --- Users ---
 type EditableUserFields = {
@@ -144,26 +145,6 @@ export type UpdateSubCategoryRequest = {
 };
 
 // Products
-export type ProductSizes = 'S' | 'M' | 'L' | 'XL' | 'Onesize';
-
-export type BaseProduct = DefaultResponseType & {
-  brand: string;
-  colors: string[];
-  countInStock: number;
-  description: string;
-  id: string;
-  images: string[];
-  material: string;
-  numReviews: number;
-  price: number;
-  productName: string;
-  productStatus: Status;
-  rating: number;
-  reviews: ReviewResponse[];
-  sizes: ProductSizes[];
-  discount?: number;
-};
-
 export type Product = BaseProduct & {
   category: Category;
   quantity: number;
@@ -183,26 +164,6 @@ type OmittedAdminProduct = Omit<
   | 'rating'
   | 'subCategory'
 >;
-
-export type ProductBaseParams = {
-  maxPrice?: string;
-  maxStock?: string;
-  minPrice?: string;
-  minStock?: string;
-  page?: string;
-  pageSize?: string;
-  productName?: string;
-};
-
-export type ProductMenu = {
-  categoryId: string;
-  label: string;
-};
-
-export type ProductMenuResponse = {
-  data: ProductMenu[];
-  success: boolean;
-};
 
 export type ProductsParams = ProductBaseParams & {
   productStatus?: Status;

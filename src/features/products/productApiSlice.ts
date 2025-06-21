@@ -2,7 +2,6 @@ import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import {
   AllSortedProductsResponse,
   Product,
-  ProductMenuResponse,
   ProductRequest,
   ProductsParams,
   ScheduledResponse,
@@ -10,7 +9,10 @@ import {
   ShopProductsParams,
   UpdateProductRequest,
 } from '../../app/api/apiTypes/adminApiTypes';
-import { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
+import {
+  DefaultResponse,
+  ProductMenuResponse,
+} from '../../app/api/apiTypes/sharedApiTypes';
 import { productUrl, subCategoryMenuUrl } from '../../app/endpoints';
 
 const productApiSlice = apiSlice.injectEndpoints({

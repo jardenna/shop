@@ -18,40 +18,6 @@ export type DefaultResponseType = {
   success?: boolean;
 };
 
-// Category
-export type ScheduledResponse = {
-  hasScheduled: boolean;
-};
-
-export type Category = DefaultResponseType & {
-  categoryName: string;
-  categoryStatus: Status;
-  id: string;
-  scheduledDate?: Date;
-};
-
-export type CategoriesResponse = DefaultResponse & {
-  categories: Category[];
-};
-export type UploadResponse = DefaultResponse & {
-  images: string[];
-};
-
-export type CreateCategoryRequest = {
-  categoryName: string;
-  categoryStatus: Status;
-  scheduledDate?: Date;
-};
-
-export type CategoryItemResponse = DefaultResponseType & {
-  category: Category;
-};
-
-export type UpdateCategoryRequest = {
-  category: CreateCategoryRequest;
-  id: string;
-};
-
 // Products
 export type ProductSizes = 'S' | 'M' | 'L' | 'XL' | 'Onesize';
 
@@ -83,7 +49,7 @@ export type ProductBaseParams = {
   productName?: string;
 };
 
-export type ProductMenu = {
+type ProductMenu = {
   categoryId: string;
   label: string;
 };
@@ -91,26 +57,6 @@ export type ProductMenu = {
 export type ProductMenuResponse = {
   data: ProductMenu[];
   success: boolean;
-};
-
-export type ProductsParams = ProductBaseParams & {
-  productStatus?: Status;
-  subCategory?: string;
-};
-
-export type ShopProductsParams = ProductBaseParams & {
-  mainCategory?: string;
-  subCategoryId?: string;
-};
-
-export type ShopProductResponse = BaseProduct & {
-  categoryData: Category;
-
-  subCategory: {
-    category: string;
-    id: string;
-    name: string;
-  };
 };
 
 export type ReviewResponse = DefaultResponseType & {
