@@ -95,7 +95,7 @@ const ViewProductPage = () => {
           heading={product.productName}
           linkText={language.createNewProduct}
           linkTo={MainPath.AdminProductCreate}
-          onReset={() => refetch}
+          onReset={() => refetch()}
         >
           <article className="three-col admin-card-container">
             <ProductCardLeft
@@ -106,7 +106,7 @@ const ViewProductPage = () => {
               images={product.images}
               price={product.price}
               discount={product.discount || 0}
-              onReset={() => refetch}
+              onReset={() => refetch()}
             />
             <ProductCardCenter
               countInStock={product.countInStock}
@@ -116,12 +116,12 @@ const ViewProductPage = () => {
               material={product.material}
               price={product.price}
               sizes={product.sizes}
-              onReset={() => refetch}
+              onReset={() => refetch()}
             />
             <CardRight
               linkTo={MainPath.AdminSubCategories}
               heading={heading}
-              onReset={() => refetch}
+              onReset={() => refetch()}
               name={product.productName}
               showStatusMessage={
                 product.subCategory.categoryStatus !== 'Published'

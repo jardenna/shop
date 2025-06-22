@@ -40,7 +40,7 @@ const UpdateSubCategoryPage = () => {
       {allCategories && category && (
         <PageContainer
           heading={`${language.edit} ${language.category} ${category.subCategoryName}`}
-          onReset={() => refetch}
+          onReset={() => refetch()}
         >
           <SubCategoryForm
             selectedCategory={category}

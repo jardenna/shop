@@ -69,7 +69,7 @@ const CollectionPage = () => {
 
               <ErrorBoundary
                 FallbackComponent={ErrorBoundaryFallback}
-                onReset={() => refetch}
+                onReset={() => refetch()}
               >
                 <div>
                   <Img

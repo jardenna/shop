@@ -44,10 +44,10 @@ const CategoryPage = () => {
         heading={language.categories}
         linkText={language.createNewCategory}
         linkTo={MainPath.AdminCategoryCreate}
-        onReset={() => refetch}
+        onReset={() => refetch()}
       >
         <Table
-          onReset={() => refetch}
+          onReset={() => refetch()}
           data={allCategories?.categories || []}
           columns={tableHeaders}
           tableCaption={language.categoryList}

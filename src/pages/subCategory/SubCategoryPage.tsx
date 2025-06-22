@@ -53,10 +53,10 @@ const SubCategoryPage = () => {
         heading={language.subCategories}
         linkText={language.createNewCategory}
         linkTo={MainPath.AdminSubCategoryCreate}
-        onReset={() => refetch}
+        onReset={() => refetch()}
       >
         <Table
-          onReset={() => refetch}
+          onReset={() => refetch()}
           data={allSubcategories?.subCategories || []}
           columns={tableHeaders}
           tableCaption={language.subCategoryList}

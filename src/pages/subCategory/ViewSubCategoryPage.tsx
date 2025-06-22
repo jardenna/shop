@@ -76,10 +76,10 @@ const ViewSubCategoryPage = () => {
           heading={`${language.category} ${category.subCategoryName}`}
           linkText={language.createNewCategory}
           linkTo={MainPath.AdminSubCategoryCreate}
-          onReset={() => refetch}
+          onReset={() => refetch()}
         >
           <CategoryCard
-            onReset={() => refetch}
+            onReset={() => refetch()}
             onDeleteSubCategory={handleDeleteSubCategory}
             categoryId={category.id}
             subCategoryName={category.subCategoryName}

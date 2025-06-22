@@ -12,13 +12,13 @@ const CreateProductPage = () => {
       {subCategories && (
         <PageContainer
           heading={language.createNewProduct}
-          onReset={() => refetch}
+          onReset={() => refetch()}
         >
           <ProductForm
             selectedProduct={null}
             id={null}
             parentCategories={subCategories}
-            onReset={() => refetch}
+            onReset={() => refetch()}
           />
         </PageContainer>
       )}

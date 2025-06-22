@@ -26,19 +26,19 @@ const UpdateProductPage = () => {
 
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
-        onReset={() => refetch}
+        onReset={() => refetch()}
       >
         {product && subCategories && (
           <PageContainer
             heading={`${language.update} ${product.productName}`}
-            onReset={() => refetch}
+            onReset={() => refetch()}
           >
             <ProductForm
               selectedProduct={product}
               images={product.images}
               id={params.id || null}
               parentCategories={subCategories}
-              onReset={() => refetch}
+              onReset={() => refetch()}
             />
           </PageContainer>
         )}

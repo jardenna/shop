@@ -108,10 +108,10 @@ const UserPage = () => {
         heading={language.users}
         linkText={isAdmin ? language.createNewUser : undefined}
         linkTo={isAdmin ? MainPath.AdminUserCreate : undefined}
-        onReset={() => refetch}
+        onReset={() => refetch()}
       >
         <Table
-          onReset={() => refetch}
+          onReset={() => refetch()}
           data={allUsers || []}
           columns={tableHeaders}
           tableCaption={language.customersList}

@@ -69,10 +69,10 @@ const ProductPage = () => {
         heading={language.products}
         linkText={language.createNewProduct}
         linkTo={MainPath.AdminProductCreate}
-        onReset={() => refetch}
+        onReset={() => refetch()}
       >
         <Table
-          onReset={() => refetch}
+          onReset={() => refetch()}
           isLoading={isLoading}
           data={allProducts?.products ?? []}
           columns={tableHeaders}
