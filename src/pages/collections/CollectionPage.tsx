@@ -75,8 +75,8 @@ const CollectionPage = () => {
                     src={`/images/collections/${category}/banner.jpg`}
                     alt=""
                   />
-                  <section className="collection-filter">
-                    <div className="filter-icons">
+                  <div className="collection-filter">
+                    <section className="filter-icons">
                       <IconContent
                         iconName={IconName.LayoutList}
                         title={language.list}
@@ -94,26 +94,26 @@ const CollectionPage = () => {
                           {products.productCount} {language.products}
                         </span>
                       )}
-                    </div>
-                    <div className="filter-text">
+                    </section>
+                    <section className="filter-text">
                       <span>{language.filter}</span>
                       <Icon
                         iconName={IconName.Filter}
                         title={language.filter}
                       />
-                    </div>
-                  </section>
-                  <section className="product-card-list">
+                    </section>
+                  </div>
+                  <div className="product-card-list">
                     {products?.products.map((product) => (
-                      <div key={product.id} className="product-card">
+                      <section key={product.id} className="product-card">
                         <Img
                           alt=""
                           src={product.images[0]}
                           className="product-card-img"
                         />
-                      </div>
+                      </section>
                     ))}
-                  </section>
+                  </div>
                 </div>
               </ErrorBoundary>
             </div>
