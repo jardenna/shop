@@ -99,13 +99,13 @@
   }
 }
 
-.product-img {
+.product-card-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.product-card-img {
   border-radius: 0;
   height: rem(432px);
   object-fit: cover;
-}
-
-.product-list {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
 }
