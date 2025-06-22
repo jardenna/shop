@@ -29,7 +29,6 @@ const CollectionPage = () => {
     pageSize: '100',
     mainCategory: category,
   });
-  console.log(products);
 
   const { data: subMenu } = useGetShopMenuQuery(category || 'women');
 
@@ -104,7 +103,13 @@ const CollectionPage = () => {
                       />
                     </div>
                   </section>
-                  <section className="collection-list">Products</section>
+                  <section className="collection-list">
+                    {products?.products.map((product) => (
+                      <div key={product.id}>
+                        <Img alt="" src={product.images[0]} />
+                      </div>
+                    ))}
+                  </section>
                 </div>
               </ErrorBoundary>
             </div>
