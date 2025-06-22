@@ -103,10 +103,14 @@ const CollectionPage = () => {
                       />
                     </div>
                   </section>
-                  <section className="collection-list">
+                  <section className="product-list">
                     {products?.products.map((product) => (
-                      <div key={product.id}>
-                        <Img alt="" src={product.images[0]} />
+                      <div key={product.id} className="product-container">
+                        <Img
+                          alt=""
+                          src={product.images[0]}
+                          className="product-img"
+                        />
                       </div>
                     ))}
                   </section>

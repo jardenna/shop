@@ -98,3 +98,12 @@
     gap: 8px;
   }
 }
+
+.product-img {
+  border-radius: 0;
+}
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
