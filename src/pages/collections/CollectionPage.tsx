@@ -87,6 +87,7 @@ const CollectionPage = () => {
                         iconName={IconName.LayoutList}
                         title={language.list}
                         ariaLabel={language.viewAsList}
+                        size="16"
                       />
 
                       {products?.productCount && (
