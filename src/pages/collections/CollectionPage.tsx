@@ -79,17 +79,17 @@ const CollectionPage = () => {
                   <section className="collection-filter">
                     <div className="filter-icons">
                       <IconContent
-                        iconName={IconName.LayoutGrid}
-                        title={language.grid}
-                        ariaLabel={language.viewAsGrid}
-                      />
-                      <IconContent
                         iconName={IconName.LayoutList}
                         title={language.list}
                         ariaLabel={language.viewAsList}
+                        size="18"
+                      />
+                      <IconContent
+                        iconName={IconName.LayoutGrid}
+                        title={language.grid}
+                        ariaLabel={language.viewAsGrid}
                         size="16"
                       />
-
                       {products?.productCount && (
                         <span>
                           {products.productCount} {language.products}
