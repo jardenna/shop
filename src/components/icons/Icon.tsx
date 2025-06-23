@@ -22,7 +22,7 @@ import FilterIcon from './FilterIcon';
 import GridIcon from './GridIcon';
 import GridLargeIcon from './GridLargeIcon';
 import GridSmallIcon from './GridSmallIcon';
-import HartIcon from './HartIcon';
+import HeartIcon from './HeartIcon';
 import ImageIcon from './ImageIcon';
 import InfoIcon from './InfoIcon';
 import LanguageIcon from './LanguageIcon';
@@ -83,7 +83,7 @@ const iconMapping = {
   gridSmall: GridSmallIcon,
   image: ImageIcon,
   info: InfoIcon,
-  hart: HartIcon,
+  heart: HeartIcon,
   language: LanguageIcon,
   layoutGrid: LayoutGridIcon,
   layoutList: LayoutListIcon,

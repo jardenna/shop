@@ -111,8 +111,8 @@ const CollectionPage = () => {
                         <div className="img-container">
                           <span className="product-favorite-icon">
                             <Icon
-                              title={language.hart}
-                              iconName={IconName.Hart}
+                              title={language.heart}
+                              iconName={IconName.Heart}
                             />
                           </span>
                           {product.discount > 0 && (

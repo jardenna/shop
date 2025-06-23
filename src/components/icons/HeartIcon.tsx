@@ -1,6 +1,11 @@
 import type { IconDefaultProps } from './Icon';
 
-const HartIcon = ({ size, title, className, ariaHidden }: IconDefaultProps) => (
+const HeartIcon = ({
+  size,
+  title,
+  className,
+  ariaHidden,
+}: IconDefaultProps) => (
   <svg
     role="img"
     xmlns="http://www.w3.org/2000/svg"
@@ -31,4 +36,4 @@ const HartIcon = ({ size, title, className, ariaHidden }: IconDefaultProps) => (
   </svg>
 );
 
-export default HartIcon;
+export default HeartIcon;
