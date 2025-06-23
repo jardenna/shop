@@ -15,6 +15,7 @@ import {
 import LayoutElement from '../../layout/LayoutElement';
 import MetaTags from '../../layout/nav/MetaTags';
 import { IconName } from '../../types/enums';
+import ProductDiscountPrice from '../product/ProductDiscountPrice';
 import './_collection-page.scss';
 
 const CollectionPage = () => {
@@ -111,6 +112,13 @@ const CollectionPage = () => {
                           src={product.images[0]}
                           className="product-card-img"
                         />
+                        <h1>{product.productName}</h1>
+                        <p>
+                          <ProductDiscountPrice
+                            price={product.price}
+                            discount={product.discount || 0}
+                          />
+                        </p>
                       </section>
                     ))}
                   </div>
