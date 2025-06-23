@@ -16,8 +16,11 @@ const ProductColorList = ({
   optionSize = '',
 }: ProductColorListProps) => {
   const { language } = useLanguage();
-  const colorsMaxLength = count ? colours.length - count : 0;
-  const drop = (arr: string[], n = 1) => arr.slice(n);
+
+  // Calculate how many colors to show and how many are hidden
+  const visibleCount = count && count > 0 ? count : colours.length;
+  const visibleColors = colours.slice(0, visibleCount);
+  const hiddenColorsCount = Math.max(colours.length - visibleCount, 0);
 
   return (
     <div>
@@ -25,7 +28,7 @@ const ProductColorList = ({
         className={`color-list ${optionSize}`}
         aria-label={language.availableColors}
       >
-        {drop(colours, colorsMaxLength || 0).map((colour) => (
+        {visibleColors.map((colour) => (
           <li
             key={colour}
             style={{
@@ -38,7 +41,7 @@ const ProductColorList = ({
           </li>
         ))}
       </ul>
-      <span>{colorsMaxLength > 0 && `+ ${colorsMaxLength}`}</span>
+      {hiddenColorsCount > 0 && <span>{`+ ${hiddenColorsCount}`}</span>}
     </div>
   );
 };
