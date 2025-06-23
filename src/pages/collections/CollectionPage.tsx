@@ -113,7 +113,7 @@ const CollectionPage = () => {
                           src={product.images[0]}
                           className="product-card-img"
                         />
-                        <h1>{product.productName}</h1>
+                        <h2>{product.productName}</h2>
                         <div>
                           <ProductDiscountPrice
                             price={product.price}
