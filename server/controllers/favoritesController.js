@@ -7,14 +7,11 @@ import User from '../models/userModel.js';
 // @method  Post
 // @access  Public
 const toggleFavorite = asyncHandler(async (req, res) => {
-  const userId = req.user;
   const productId = req.params.id;
 
-  if (!userId) {
-    return res.status(404).json({ success: false, message: 'User not found' });
-  }
+  const user = await User.findById(req.user);
+  console.log(user);
 
-  const user = await User.findById(userId);
   if (!user) {
     return res.status(404).json({ success: false, message: 'User not found' });
   }
