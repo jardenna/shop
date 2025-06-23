@@ -6,6 +6,7 @@ import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import IconContent from '../../components/IconContent';
 import Icon from '../../components/icons/Icon';
 import Img from '../../components/Img';
+import ProductColorList from '../../components/ProductColorList';
 import Skeleton from '../../components/skeleton/Skeleton';
 import useLanguage from '../../features/language/useLanguage';
 import {
@@ -117,6 +118,10 @@ const CollectionPage = () => {
                           <ProductDiscountPrice
                             price={product.price}
                             discount={product.discount || 0}
+                          />
+                          <ProductColorList
+                            colours={product.colors}
+                            count={3}
                           />
                         </p>
                       </section>
