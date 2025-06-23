@@ -84,6 +84,7 @@ export enum IconName {
   Grid = 'grid',
   GridLarge = 'gridLarge',
   GridSmall = 'gridSmall',
+  Hart = 'hart',
   Image = 'image',
   Info = 'info',
   Language = 'language',
