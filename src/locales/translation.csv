@@ -10,6 +10,9 @@ addToStock;Add to stock;Tilføj til lager
 admin;Admin;Admin
 adminCannotBeDeleted;Administrator cannot be deleted;Administrator kan ikke slettes
 allowedFormats;Allowed formats;Tilladte formater
+available;Available;Tilgængelig
+unavailable;Unavailable;Ikke tilgængelig
+availableColors;Available colors;Tilgængelige farver
 asc;ascending;stigende
 bag;Bag;Indkøbskurv
 black;Black;Sort
@@ -241,6 +244,7 @@ signup;Sign up;Opret bruger
 signupFailed;Sign up failed;Registrering mislykkedes
 signupSucceeded;Sign up succeeded;Registrering lykkedes
 sizeRequired;Please select at least one size;Vælg mindst 1 størrelse
+size;Size;Størrelse
 sizes;Sizes;Størrelser
 somethingWentWrong;Something went wrong, please try again;Noget gik galt, forsøg venligst igen
 sort;Sort;Sorter

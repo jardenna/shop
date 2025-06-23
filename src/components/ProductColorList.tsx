@@ -1,4 +1,6 @@
+import useLanguage from '../features/language/useLanguage';
 import variables from '../scss/variables.module.scss';
+import VisuallyHidden from './VisuallyHidden';
 
 type OptionSize = 'small' | '';
 
@@ -14,9 +16,13 @@ const ProductColorList = ({
   optionSize = '',
 }: ProductColorListProps) => {
   console.log(colours.length, count);
+  const { language } = useLanguage();
 
   return (
-    <ul className="color-list">
+    <ul
+      className={`color-list ${optionSize}`}
+      aria-label={language.availableColors}
+    >
       {colours.map((colour) => (
         <li
           key={colour}
@@ -24,8 +30,10 @@ const ProductColorList = ({
             backgroundColor: colour,
             borderColor: colour === 'white' ? variables.colorIconBorder : '',
           }}
-          className={`option-box ${optionSize}`}
-        />
+          className="option-box"
+        >
+          <VisuallyHidden>{colour}</VisuallyHidden>
+        </li>
       ))}
     </ul>
   );
