@@ -15,27 +15,31 @@ const ProductColorList = ({
   count,
   optionSize = '',
 }: ProductColorListProps) => {
-  console.log(colours.length, count);
   const { language } = useLanguage();
+  const colorsMaxLength = count ? colours.length - count : 0;
+  const drop = (arr: string[], n = 1) => arr.slice(n);
 
   return (
-    <ul
-      className={`color-list ${optionSize}`}
-      aria-label={language.availableColors}
-    >
-      {colours.map((colour) => (
-        <li
-          key={colour}
-          style={{
-            backgroundColor: colour,
-            borderColor: colour === 'white' ? variables.colorIconBorder : '',
-          }}
-          className="option-box"
-        >
-          <VisuallyHidden>{colour}</VisuallyHidden>
-        </li>
-      ))}
-    </ul>
+    <div>
+      <ul
+        className={`color-list ${optionSize}`}
+        aria-label={language.availableColors}
+      >
+        {drop(colours, colorsMaxLength || 0).map((colour) => (
+          <li
+            key={colour}
+            style={{
+              backgroundColor: colour,
+              borderColor: colour === 'white' ? variables.colorIconBorder : '',
+            }}
+            className="option-box"
+          >
+            <VisuallyHidden>{colour}</VisuallyHidden>
+          </li>
+        ))}
+      </ul>
+      <span>{colorsMaxLength > 0 && `+ ${colorsMaxLength}`}</span>
+    </div>
   );
 };
 

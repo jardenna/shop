@@ -114,7 +114,7 @@ const CollectionPage = () => {
                           className="product-card-img"
                         />
                         <h1>{product.productName}</h1>
-                        <p>
+                        <div>
                           <ProductDiscountPrice
                             price={product.price}
                             discount={product.discount || 0}
@@ -124,7 +124,7 @@ const CollectionPage = () => {
                             count={3}
                             optionSize="small"
                           />
-                        </p>
+                        </div>
                       </section>
                     ))}
                   </div>
