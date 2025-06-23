@@ -108,11 +108,25 @@ const CollectionPage = () => {
                   <div className="product-card-list">
                     {products?.products.map((product) => (
                       <section key={product.id} className="product-card">
-                        <Img
-                          alt=""
-                          src={product.images[0]}
-                          className="product-card-img"
-                        />
+                        <div className="img-container">
+                          <span className="product-favorite-icon">
+                            <Icon
+                              title={language.hart}
+                              iconName={IconName.Hart}
+                            />
+                          </span>
+                          {product.discount > 0 && (
+                            <span className="product-badge">
+                              {language.sale}
+                            </span>
+                          )}
+                          <Img
+                            alt=""
+                            src={product.images[0]}
+                            className="product-card-img"
+                          />
+                        </div>
+
                         <div className="product-card-content">
                           <h2 className="product-card-title">
                             {product.productName}

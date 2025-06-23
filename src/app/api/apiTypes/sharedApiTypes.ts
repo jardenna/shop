@@ -28,6 +28,7 @@ export type BaseProduct = DefaultResponseType & {
   colors: string[];
   countInStock: number;
   description: string;
+  discount: number;
   id: string;
   images: string[];
   material: string;
@@ -38,7 +39,6 @@ export type BaseProduct = DefaultResponseType & {
   rating: number;
   reviews: ReviewResponse[];
   sizes: ProductSizes[];
-  discount?: number;
 };
 
 export type BaseProductParams = {
