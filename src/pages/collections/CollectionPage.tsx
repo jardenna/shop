@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 import { routeBreadcrumbs } from '../../components/breadcrumbs/breadcrumbsRoutes';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
+import Favorite from '../../components/favorites/Favorite';
 import IconContent from '../../components/IconContent';
 import Icon from '../../components/icons/Icon';
 import Img from '../../components/Img';
@@ -109,12 +110,7 @@ const CollectionPage = () => {
                     {products?.products.map((product) => (
                       <section key={product.id} className="product-card">
                         <div className="img-container">
-                          <span className="product-favorite-icon">
-                            <Icon
-                              title={language.heart}
-                              iconName={IconName.Heart}
-                            />
-                          </span>
+                          <Favorite id={product.id} />
                           {product.discount > 0 && (
                             <span className="product-badge">
                               {language.sale}
