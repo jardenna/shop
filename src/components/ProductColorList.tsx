@@ -1,15 +1,22 @@
 import variables from '../scss/variables.module.scss';
 
+type OptionSize = 'small' | '';
+
 type ProductColorListProps = {
   colours: string[];
   count?: number;
+  optionSize?: OptionSize;
 };
 
-const ProductColorList = ({ colours, count }: ProductColorListProps) => {
+const ProductColorList = ({
+  colours,
+  count,
+  optionSize = '',
+}: ProductColorListProps) => {
   console.log(colours.length, count);
 
   return (
-    <ul className="product-color-list">
+    <ul className="color-list">
       {colours.map((colour) => (
         <li
           key={colour}
@@ -17,7 +24,7 @@ const ProductColorList = ({ colours, count }: ProductColorListProps) => {
             backgroundColor: colour,
             borderColor: colour === 'white' ? variables.colorIconBorder : '',
           }}
-          className="option-icon"
+          className={`option-box ${optionSize}`}
         />
       ))}
     </ul>
