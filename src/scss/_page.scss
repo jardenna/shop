@@ -94,6 +94,22 @@
 .product-card-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 8px 0;
+}
+
+.product-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  .color-list {
+    max-height: 12px;
+  }
+
+  .product-card-title {
+    font-size: rem(16px);
+    font-family: $font-primary-bold;
+  }
 }
 
 .product-card-img {
