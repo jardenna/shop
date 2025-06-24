@@ -20,7 +20,7 @@ const Favorites = ({ id }: FavoritesProps) => {
 
   return (
     <div className="favorites">
-      <label htmlFor={id}>
+      <label htmlFor={id} className="favorites-label">
         <Icon
           title={language.heart}
           iconName={IconName.Heart}
