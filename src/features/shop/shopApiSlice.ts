@@ -1,10 +1,10 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import type {
-  GetFavoritesResponse,
-  PostFavoritesResponse,
+  Favorites,
   ProductMenuResponse,
   ShopProductResponse,
   ShopProductsParams,
+  ToggleFavoriteResponse,
 } from '../../app/api/apiTypes/shopApiTypes';
 import {
   favoritesUrl,
@@ -27,11 +27,11 @@ const shopApiSlice = apiSlice.injectEndpoints({
       query: (params) => `${subCategoryMenuUrl}${params}`,
       providesTags: [TagTypesEnum.Products],
     }),
-    getFavorites: builder.query<GetFavoritesResponse, void>({
+    getFavorites: builder.query<Favorites[], void>({
       query: () => favoritesUrl,
       providesTags: [TagTypesEnum.Favorites],
     }),
-    updateFavorites: builder.mutation<PostFavoritesResponse, string>({
+    toggleFavorite: builder.mutation<ToggleFavoriteResponse, string>({
       query: (id) => ({
         url: `${favoritesUrl}/${id}`,
         method: 'POST',
@@ -45,5 +45,5 @@ export const {
   useGetProductsQuery,
   useGetShopMenuQuery,
   useGetFavoritesQuery,
-  useUpdateFavoritesMutation,
+  useToggleFavoriteMutation,
 } = shopApiSlice;
