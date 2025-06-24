@@ -1,4 +1,4 @@
-import { UserResponse } from '../../../app/api/apiTypes';
+import type { UserResponse } from '../../../app/api/apiTypes/adminApiTypes';
 import { ValidationMessage } from '../../../types/enums';
 import { emailRegex } from '../../../utils/regex';
 

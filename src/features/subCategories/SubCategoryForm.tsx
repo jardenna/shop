@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router';
-import {
+import type {
   Category,
   CreateSubCategoryRequest,
   SubCategoryResponse,
-} from '../../app/api/apiTypes';
+} from '../../app/api/apiTypes/adminApiTypes';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/form/Form';
@@ -15,7 +15,7 @@ import StatusOptions from '../../components/selectbox/StatusOptions';
 import SharedCategoryInputs from '../../components/SharedCategoryInputs';
 import useFormValidation from '../../hooks/useFormValidation';
 import { MainPath } from '../../layout/nav/enums';
-import { OptionType } from '../../types/types';
+import type { OptionType } from '../../types/types';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 import useLanguage from '../language/useLanguage';
 import {

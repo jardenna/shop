@@ -1,5 +1,5 @@
-import { MainPath, LinkText } from '../../layout/nav/enums';
-import { RouteListProps } from './Breadcrumbs';
+import { LinkText, MainPath } from '../../layout/nav/enums';
+import type { RouteListProps } from './Breadcrumbs';
 
 const routeBreadcrumbs: RouteListProps[] = [
   {

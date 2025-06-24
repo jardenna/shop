@@ -1,8 +1,8 @@
 import { DropdownItem } from '../../components/dropdownBtn/DropdownBtn';
-import { SecondaryActionBtnProps } from '../../components/modal/Modal';
+import type { SecondaryActionBtnProps } from '../../components/modal/Modal';
 import TogglePanel from '../../components/togglePanel/TogglePanel';
-import { SelectedLanguage } from '../../features/language/languageSlice';
-import { ChangeInputType, OptionType } from '../../types/types';
+import type { SelectedLanguage } from '../../features/language/languageSlice';
+import type { ChangeInputType, OptionType } from '../../types/types';
 import HeaderIcons from '../headerIcons/HeaderIcons';
 import LayoutElement from '../LayoutElement';
 import { MainPath } from '../nav/enums';

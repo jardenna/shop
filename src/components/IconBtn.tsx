@@ -1,5 +1,5 @@
 import { BtnVariant, IconName } from '../types/enums';
-import { ButtonType } from '../types/types';
+import type { ButtonType } from '../types/types';
 import Button from './Button';
 import IconContent from './IconContent';
 

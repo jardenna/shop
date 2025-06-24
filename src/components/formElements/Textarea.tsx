@@ -1,6 +1,6 @@
-import { ChangeInputType } from '../../types/types';
+import type { ChangeInputType } from '../../types/types';
 import FormLabel from './FormLabel';
-import { InputProps } from './Input';
+import type { InputProps } from './Input';
 
 type OmittedProps = Omit<
   InputProps,

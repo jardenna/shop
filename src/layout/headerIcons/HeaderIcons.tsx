@@ -2,11 +2,11 @@ import { Link } from 'react-router';
 import DropdownBtn from '../../components/dropdownBtn/DropdownBtn';
 import IconContent from '../../components/IconContent';
 import Icon from '../../components/icons/Icon';
-import { PrimaryActionBtnProps } from '../../components/modal/Modal';
+import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
 import useLanguage from '../../features/language/useLanguage';
 import { BtnVariant, IconName, SizeVariant } from '../../types/enums';
-import { HeaderProps } from '../header/Header';
+import type { HeaderProps } from '../header/Header';
 import { MainPath } from '../nav/enums';
 import LanguageCurrencyPreferences from './LanguageCurrencyPreferences';
 

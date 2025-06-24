@@ -1,4 +1,4 @@
-import { SelectedLanguage } from '../features/language/languageSlice';
+import type { SelectedLanguage } from '../features/language/languageSlice';
 import Locales from './locales';
 
 const dateToLocaleMap: Record<SelectedLanguage, Locales> = {

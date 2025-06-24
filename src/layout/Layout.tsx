@@ -1,8 +1,7 @@
-import { ReactNode } from 'react';
 import { Outlet, useNavigate } from 'react-router';
 import { DropdownItem } from '../components/dropdownBtn/DropdownBtn';
 import Icon from '../components/icons/Icon';
-import { SecondaryActionBtnProps } from '../components/modal/Modal';
+import type { SecondaryActionBtnProps } from '../components/modal/Modal';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
 import useAuth from '../features/auth/hooks/useAuth';
@@ -11,16 +10,10 @@ import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
 import useMediaQuery from '../hooks/useMediaQuery ';
 import { IconName } from '../types/enums';
-import { OptionType } from '../types/types';
+import type { OptionType } from '../types/types';
 import Header from './header/Header';
 import { MainPath } from './nav/enums';
 import MetaTags from './nav/MetaTags';
-
-export type LayoutElementProps = {
-  ariaLabel: string;
-  children: ReactNode;
-  className?: string;
-};
 
 const Layout = () => {
   const navigate = useNavigate();

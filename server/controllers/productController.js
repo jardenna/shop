@@ -336,7 +336,7 @@ const getSortedProducts = asyncHandler(async (req, res) => {
     ),
     page,
     pages: Math.ceil(count / pageSize),
-    total: count,
+    productCount: count,
   });
 });
 

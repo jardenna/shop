@@ -2,7 +2,10 @@ import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import { BtnVariant, SizeVariant } from '../../types/enums';
 import LinkButton from '../LinkButton';
-import { PrimaryActionBtnProps, SecondaryActionBtnProps } from '../modal/Modal';
+import type {
+  PrimaryActionBtnProps,
+  SecondaryActionBtnProps,
+} from '../modal/Modal';
 import ModalContainer from '../modal/ModalContainer';
 
 type CardFooterProps = {

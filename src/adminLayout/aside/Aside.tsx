@@ -1,9 +1,9 @@
-import { UserResponse } from '../../app/api/apiTypes';
+import type { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
 import NavContainer from '../../layout/nav/NavContainer';
 import { adminNavList } from '../../layout/nav/navList';
 import './_aside.scss';
 
-export type AsideProps = {
+type AsideProps = {
   ariaLabel: string;
   currentUser: UserResponse | null;
   isShown: boolean;

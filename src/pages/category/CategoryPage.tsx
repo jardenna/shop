@@ -1,4 +1,4 @@
-import { Category } from '../../app/api/apiTypes';
+import type { Category } from '../../app/api/apiTypes/adminApiTypes';
 import Table from '../../components/sortTable/Table';
 import {
   useGetAllCategoriesQuery,

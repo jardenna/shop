@@ -4,7 +4,7 @@ import Icon from '../../components/icons/Icon';
 import useLanguage from '../../features/language/useLanguage';
 import useKeyPress from '../../hooks/useKeyPress';
 import { KeyCode } from '../../types/enums';
-import { NavItemsProps } from './Nav';
+import type { NavItemsProps } from './Nav';
 import SubNav from './subNav/SubNav';
 
 const NavItem = ({

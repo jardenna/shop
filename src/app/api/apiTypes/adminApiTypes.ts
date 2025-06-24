@@ -1,24 +1,15 @@
+import type {
+  BasePagination,
+  BaseProduct,
+  BaseProductParams,
+  DefaultResponse,
+  DefaultResponseType,
+} from './sharedApiTypes';
+
 export type RoleTypes = 'Employee' | 'User';
 export type Status = 'Published' | 'Inactive' | 'Scheduled';
 
-export type CurrencyResponse = {
-  data: Record<string, { value: number }>;
-};
-
-export type DefaultResponse = {
-  message: string;
-  success: boolean;
-};
-
-export type DefaultResponseType = {
-  createdAt: Date;
-  reviews: ReviewResponse[];
-  updatedAt: Date;
-  message?: string;
-  success?: boolean;
-};
-
-// --- Base user fields shared across types ---
+// --- Users ---
 type EditableUserFields = {
   email: string;
   username: string;
@@ -29,7 +20,6 @@ type BaseUser = Required<EditableUserFields> & {
   id: string;
 };
 
-// --- Users ---
 export type UserResponse = BaseUser & {
   isAdmin: boolean;
 };
@@ -156,26 +146,6 @@ export type UpdateSubCategoryRequest = {
 };
 
 // Products
-export type ProductSizes = 'S' | 'M' | 'L' | 'XL' | 'Onesize';
-
-export type BaseProduct = DefaultResponseType & {
-  brand: string;
-  colors: string[];
-  countInStock: number;
-  description: string;
-  id: string;
-  images: string[];
-  material: string;
-  numReviews: number;
-  price: number;
-  productName: string;
-  productStatus: Status;
-  rating: number;
-  reviews: ReviewResponse[];
-  sizes: ProductSizes[];
-  discount?: number;
-};
-
 export type Product = BaseProduct & {
   category: Category;
   quantity: number;
@@ -183,7 +153,7 @@ export type Product = BaseProduct & {
   scheduledDate?: Date;
 };
 
-type OmittedAdminProduct = Omit<
+type OmittedProduct = Omit<
   Product,
   | 'createdAt'
   | 'reviews'
@@ -196,47 +166,12 @@ type OmittedAdminProduct = Omit<
   | 'subCategory'
 >;
 
-export type ProductBaseParams = {
-  maxPrice?: string;
-  maxStock?: string;
-  minPrice?: string;
-  minStock?: string;
-  page?: string;
-  pageSize?: string;
-  productName?: string;
-};
-
-export type ProductMenu = {
-  categoryId: string;
-  label: string;
-};
-
-export type ProductMenuResponse = {
-  data: ProductMenu[];
-  success: boolean;
-};
-
-export type ProductsParams = ProductBaseParams & {
+export type ProductsParams = BaseProductParams & {
   productStatus?: Status;
   subCategory?: string;
 };
 
-export type ShopProductsParams = ProductBaseParams & {
-  mainCategory?: string;
-  subCategoryId?: string;
-};
-
-export type ShopProductResponse = BaseProduct & {
-  categoryData: Category;
-
-  subCategory: {
-    category: string;
-    id: string;
-    name: string;
-  };
-};
-
-export type ProductRequest = OmittedAdminProduct & {
+export type ProductRequest = OmittedProduct & {
   subCategory: string;
 };
 
@@ -245,30 +180,7 @@ export type UpdateProductRequest = {
   product: ProductRequest;
 };
 
-export type ReviewResponse = DefaultResponseType & {
-  comment: string;
-  id: string;
-  name: string;
-  rating: number;
-  user: string;
-};
-
-export type ReviewRequest = {
-  comment: string;
-  rating: number;
-};
-
-export type AllPaginatedProductsResponse = {
-  hasMore: boolean;
-  page: number;
-  pages: number;
-  products: Product[];
-};
-
-export type AllSortedProductsResponse = Omit<
-  AllPaginatedProductsResponse,
-  'page' | 'pages' | 'hasMore'
->;
+export type ProductsResponse = BasePagination & { products: Product[] };
 
 export type GetSortedProductsResponse = DefaultResponseType & {
   category: Category;

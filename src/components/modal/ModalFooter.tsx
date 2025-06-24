@@ -1,7 +1,7 @@
 import LayoutElement from '../../layout/LayoutElement';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
-import { PrimaryActionBtnProps, SecondaryActionBtnProps } from './Modal';
+import type { PrimaryActionBtnProps, SecondaryActionBtnProps } from './Modal';
 
 type modalFooterProps = {
   primaryActionBtn: PrimaryActionBtnProps;

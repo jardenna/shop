@@ -1,11 +1,11 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
-import {
+import type {
   CategoriesResponse,
   CategoryItemResponse,
   CreateCategoryRequest,
   ScheduledResponse,
   UpdateCategoryRequest,
-} from '../../app/api/apiTypes';
+} from '../../app/api/apiTypes/adminApiTypes';
 import { categoryUrl } from '../../app/endpoints';
 
 const categoryApiSlice = apiSlice.injectEndpoints({

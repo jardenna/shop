@@ -1,9 +1,9 @@
 import useLanguage from '../../features/language/useLanguage';
-import { ChangeInputType, OptionType } from '../../types/types';
+import type { ChangeInputType, OptionType } from '../../types/types';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 import Input from './Input';
 
-export type CheckboxVariant = 'checkbox' | 'toggle-switch';
+type CheckboxVariant = 'checkbox' | 'toggle-switch';
 
 type CheckboxProps = {
   checkBoxList: OptionType[];

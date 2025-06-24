@@ -1,5 +1,9 @@
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
-import { BlurEventType, ChangeInputType, FormEventType } from '../types/types';
+import type {
+  BlurEventType,
+  ChangeInputType,
+  FormEventType,
+} from '../types/types';
 
 export type KeyValuePair<T> = {
   [key: string]: T;
@@ -15,7 +19,7 @@ export type FormValues = {
   [key: string]: string | number | string[];
 };
 
-export type FormValidationProps<T extends KeyValuePair<unknown>> = {
+type FormValidationProps<T extends KeyValuePair<unknown>> = {
   initialState: T;
   isArray?: boolean;
   isLoading?: boolean;

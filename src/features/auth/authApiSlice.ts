@@ -1,10 +1,10 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
-import {
+import type {
   AuthRequest,
   AuthResponse,
-  DefaultResponse,
   OmittedUserRequest,
-} from '../../app/api/apiTypes';
+} from '../../app/api/apiTypes/adminApiTypes';
+import { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import { authEndpoints } from '../../app/endpoints';
 import { store } from '../../app/store';
 import { logout } from './authSlice';

@@ -1,4 +1,4 @@
-import { ValidationErrors } from '../../../hooks/useFormValidation';
+import type { ValidationErrors } from '../../../hooks/useFormValidation';
 import { ValidationMessage } from '../../../types/enums';
 import { emailRegex } from '../../../utils/regex';
 

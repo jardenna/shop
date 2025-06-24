@@ -1,4 +1,4 @@
-import { SubCategoryResponse } from '../../app/api/apiTypes';
+import type { SubCategoryResponse } from '../../app/api/apiTypes/adminApiTypes';
 import Table from '../../components/sortTable/Table';
 import useLanguage from '../../features/language/useLanguage';
 import {

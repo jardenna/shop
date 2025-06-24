@@ -1,14 +1,14 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
-import {
+import type {
   CreateSubCategoryRequest,
-  DefaultResponse,
   ScheduledResponse,
   SubCategoriesResponse,
   SubCategoriesWithParent,
   SubCategoryResponse,
   UpdateSubCategoryRequest,
   UpdateSubCategoryResponse,
-} from '../../app/api/apiTypes';
+} from '../../app/api/apiTypes/adminApiTypes';
+import type { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import { subCategoryUrl } from '../../app/endpoints';
 
 const subCategoryApiSlice = apiSlice.injectEndpoints({

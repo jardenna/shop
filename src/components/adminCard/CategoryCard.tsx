@@ -1,4 +1,4 @@
-import { Status } from '../../app/api/apiTypes';
+import type { Status } from '../../app/api/apiTypes/adminApiTypes';
 import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
@@ -6,7 +6,7 @@ import { BtnVariant } from '../../types/enums';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 import CardFooter from '../card/CardFooter';
 import CardRight from '../card/CardRight';
-import { PrimaryActionBtnProps } from '../modal/Modal';
+import type { PrimaryActionBtnProps } from '../modal/Modal';
 import CategoryCardLeft from './CategoryCardLeft';
 
 type CategoryCardProps = {

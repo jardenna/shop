@@ -1,6 +1,6 @@
 import { FormEvent } from 'react';
 import useLanguage from '../../features/language/useLanguage';
-import { ChangeInputType } from '../../types/types';
+import type { ChangeInputType } from '../../types/types';
 import Input from '../formElements/Input';
 
 type TableSearchProps = {

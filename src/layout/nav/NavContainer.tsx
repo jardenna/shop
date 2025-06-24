@@ -1,17 +1,10 @@
-import { UserResponse } from '../../app/api/apiTypes';
+import type { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
 import IconBtn from '../../components/IconBtn';
 import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import './_nav.scss';
 import Nav, { NavItemsProps } from './Nav';
 import NavUser from './NavUser';
-
-export type ActionBtnProps = {
-  ariaLabel?: string;
-  className?: string;
-  label?: string;
-  onClick?: () => void;
-};
 
 type NavContainerProps = {
   navList: NavItemsProps[];

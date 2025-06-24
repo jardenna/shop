@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
-import { ChangeInputType, InputType } from '../../types/types';
+import type { ChangeInputType, InputType } from '../../types/types';
 import Input from '../formElements/Input';
 import IconBtn from '../IconBtn';
 

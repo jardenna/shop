@@ -1,11 +1,11 @@
 /* eslint-disable no-underscore-dangle */
 import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
-import {
+import type {
   Product,
   ProductRequest,
   SubCategoriesWithParent,
-} from '../../app/api/apiTypes';
+} from '../../app/api/apiTypes/adminApiTypes';
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import Form from '../../components/form/Form';
 import Checkbox from '../../components/formElements/Checkbox';
@@ -23,7 +23,7 @@ import StatusInputs from '../../components/StatusInputs';
 import useFormValidation from '../../hooks/useFormValidation';
 import { MainPath } from '../../layout/nav/enums';
 import variables from '../../scss/variables.module.scss';
-import { OptionType } from '../../types/types';
+import type { OptionType } from '../../types/types';
 import {
   discountCalculation,
   getlowerCaseFirstLetter,

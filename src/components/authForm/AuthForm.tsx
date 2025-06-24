@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router';
-import { RoleTypes } from '../../app/api/apiTypes';
+import type { RoleTypes } from '../../app/api/apiTypes/adminApiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import RoleRadioBtn from '../../features/users/RoleRadioBtn';
-import { KeyValuePair } from '../../hooks/useFormValidation';
-import { RegisterUserProps } from '../../pages/RegisterUser';
+import type { KeyValuePair } from '../../hooks/useFormValidation';
+import type { RegisterUserProps } from '../../pages/RegisterUser';
 import { BtnVariant } from '../../types/enums';
-import {
+import type {
   BlurEventType,
   ChangeInputType,
   FormEventType,
@@ -15,7 +15,7 @@ import FieldSet from '../fieldset/FieldSet';
 import Form from '../form/Form';
 import Input from '../formElements/Input';
 import PasswordInput from '../formElements/password/PasswordInput';
-import { PasswordRulesProps } from '../formElements/password/PasswordPopupList';
+import type { PasswordRulesProps } from '../formElements/password/PasswordPopupList';
 import './_auth-form.scss';
 
 type UserFields = {

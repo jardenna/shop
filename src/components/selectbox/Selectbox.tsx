@@ -6,11 +6,11 @@ import Select, {
   SingleValue,
 } from 'react-select';
 import useLanguage from '../../features/language/useLanguage';
-import { OptionType } from '../../types/types';
+import type { OptionType } from '../../types/types';
 import FormLabel from '../formElements/FormLabel';
 import './_select-box.scss';
 
-export type SelectedOption = SingleValue<OptionType> | MultiValue<OptionType>;
+type SelectedOption = SingleValue<OptionType> | MultiValue<OptionType>;
 
 type SelectboxProps = {
   id: string;

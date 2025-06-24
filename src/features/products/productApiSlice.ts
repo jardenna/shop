@@ -1,21 +1,23 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
-import {
-  AllSortedProductsResponse,
-  DefaultResponse,
+import type {
   Product,
-  ProductMenuResponse,
   ProductRequest,
   ProductsParams,
+  ProductsResponse,
   ScheduledResponse,
+  UpdateProductRequest,
+} from '../../app/api/apiTypes/adminApiTypes';
+import type { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
+import {
+  ProductMenuResponse,
   ShopProductResponse,
   ShopProductsParams,
-  UpdateProductRequest,
-} from '../../app/api/apiTypes';
+} from '../../app/api/apiTypes/shopApiTypes';
 import { productUrl, subCategoryMenuUrl } from '../../app/endpoints';
 
 const productApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getAllProducts: builder.query<AllSortedProductsResponse, ProductsParams>({
+    getAllProducts: builder.query<ProductsResponse, ProductsParams>({
       query: (params) => {
         const query = new URLSearchParams(
           params as unknown as Record<string, string>,

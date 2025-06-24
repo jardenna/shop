@@ -1,5 +1,5 @@
 import Selectbox from '../../../components/selectbox/Selectbox';
-import { HeaderProps } from '../../../layout/header/Header';
+import type { HeaderProps } from '../../../layout/header/Header';
 
 type OmittedHeaderProps = Omit<
   HeaderProps,

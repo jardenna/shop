@@ -1,6 +1,6 @@
 import { format, setHours, setMinutes } from 'date-fns';
 import { useState } from 'react';
-import { ChangeInputType } from '../../types/types';
+import type { ChangeInputType } from '../../types/types';
 
 const useDatePicker = ({ initialTime }: { initialTime?: Date } = {}) => {
   const initTime = initialTime || new Date();

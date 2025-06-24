@@ -1,4 +1,4 @@
-import { SkeletonProps } from './Skeleton';
+import type { SkeletonProps } from './Skeleton';
 import SkeletonList from './SkeletonList';
 
 const SkeletonBadge = ({
