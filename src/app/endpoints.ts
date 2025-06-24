@@ -11,6 +11,7 @@ const authEndpoints = {
 const userUrl = '/users';
 const categoryUrl = '/categories';
 const subCategoryUrl = '/subcategories';
+const favoritesUrl = '/favorites';
 const subCategoryMenuUrl = '/subcategories/menu/?parentCategoryName=';
 const productUrl = '/products';
 const uploadUrl = '/upload';
@@ -18,6 +19,7 @@ const uploadUrl = '/upload';
 export {
   authEndpoints,
   categoryUrl,
+  favoritesUrl,
   productUrl,
   subCategoryMenuUrl,
   subCategoryUrl,
