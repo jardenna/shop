@@ -1,8 +1,10 @@
 import { Link } from 'react-router';
 import DropdownBtn from '../../components/dropdownBtn/DropdownBtn';
+import useFavorites from '../../components/favorites/useFavorites';
 import IconContent from '../../components/IconContent';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
+import VisuallyHidden from '../../components/VisuallyHidden';
 import useLanguage from '../../features/language/useLanguage';
 import { BtnVariant, IconName, SizeVariant } from '../../types/enums';
 import type { HeaderProps } from '../header/Header';
@@ -29,6 +31,7 @@ const HeaderIcons = ({
   secondaryActionBtn,
 }: HeaderIconsProps) => {
   const { language } = useLanguage();
+  const { favorites } = useFavorites();
 
   return (
     <ul className="header-icon-list">
@@ -92,9 +95,14 @@ const HeaderIcons = ({
           <IconContent
             iconName={IconName.Heart}
             title={language.heart}
-            ariaLabel={language.viewCart}
+            ariaLabel={language.viewYourFavorites}
           />
-          <span className="favorites-count">4</span>
+          {favorites.length > 0 && (
+            <span className="favorites-count">
+              {favorites.length}
+              <VisuallyHidden> {language.productPlural}</VisuallyHidden>
+            </span>
+          )}
         </Link>
       </li>
     </ul>
@@ -102,3 +110,5 @@ const HeaderIcons = ({
 };
 
 export default HeaderIcons;
+
+// Wish list, 8 Items

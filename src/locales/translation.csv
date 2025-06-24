@@ -202,6 +202,7 @@ productNameRequired;Please insert product name;Indsæt venligst produktnavn
 productNotFound;Product not found;Produktet findes ikke
 productQuantity;Product quantity;Produkt antal
 products;Products;Produkter
+productPlural;Product(s);Produkt(er)
 productsInStock;Products in stock;Antal produkter på lager
 productsInSubcategory;Products linked to subcategory;Produkter tilknyttet denne underkategori
 productStatus;Product status;Produkt status
