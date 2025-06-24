@@ -56,7 +56,7 @@ const HeaderIcons = ({
       <li>
         <Link to={MainPath.ShoppingCart} className="btn btn-ghost">
           <IconContent
-            iconName={IconName.ShoppingBack}
+            iconName={IconName.ShoppingBag}
             title={language.bag}
             ariaLabel={language.viewCart}
           />

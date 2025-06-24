@@ -34,7 +34,7 @@ import LogoutIcon from './LogoutIcon';
 import OrdersIcon from './OrdersIcon';
 import ProductsIcon from './ProductsIcon';
 import SearchIcon from './SearchIcon';
-import ShoppingBackIcon from './ShoppingBackIcon';
+import ShoppingBagIcon from './ShoppingBagIcon';
 import SubCategoriesIcon from './SubCategoriesIcon';
 import SubtractIcon from './SubtractIcon';
 import SuccessIcon from './SuccessIcon';
@@ -94,7 +94,7 @@ const iconMapping = {
   orders: OrdersIcon,
   products: ProductsIcon,
   search: SearchIcon,
-  shoppingBack: ShoppingBackIcon,
+  shoppingBag: ShoppingBagIcon,
   subCategories: SubCategoriesIcon,
   subtract: SubtractIcon,
   success: SuccessIcon,

@@ -97,7 +97,7 @@ export enum IconName {
   Orders = 'orders',
   Products = 'products',
   Search = 'search',
-  ShoppingBack = 'shoppingBack',
+  ShoppingBag = 'shoppingBag',
   SubCategories = 'subCategories',
   Subtract = 'subtract',
   Success = 'success',
