@@ -10,6 +10,11 @@
     align-items: flex-start;
   }
 
+  svg {
+    height: 24px;
+    width: 24px;
+  }
+
   .logo {
     svg {
       height: rem(24px);
@@ -45,6 +50,25 @@
 .header-icon-list {
   display: flex;
   gap: 16px;
+
+  .favorite-link {
+    position: relative;
+  }
+
+  .favorites-count {
+    font-size: rem(12px);
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    display: flex;
+    background-color: $color-blue-30;
+    color: $color-white;
+    align-items: center;
+    justify-content: center;
+    width: rem(16px);
+    height: rem(16px);
+    border-radius: 50%;
+  }
 }
 
 .preferences {

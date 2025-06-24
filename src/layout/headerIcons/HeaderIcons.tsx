@@ -88,12 +88,13 @@ const HeaderIcons = ({
         </ModalContainer>
       </li>
       <li>
-        <Link to={ShopPath.Favorites} className="btn btn-ghost">
+        <Link to={ShopPath.Favorites} className="btn btn-ghost favorite-link">
           <IconContent
             iconName={IconName.Heart}
             title={language.heart}
             ariaLabel={language.viewCart}
           />
+          <span className="favorites-count">4</span>
         </Link>
       </li>
     </ul>
