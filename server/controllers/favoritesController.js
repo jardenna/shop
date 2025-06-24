@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Product from '../models/productModel.js';
 import User from '../models/userModel.js';
+import formatMongoData from '../utils/formatMongoData.js';
 import { toggleItemInArray } from '../utils/toggleItemInArray.js';
 
 // @desc    Toggle favorite
@@ -36,13 +37,16 @@ const toggleFavorite = asyncHandler(async (req, res) => {
   user.favorites = toggleItemInArray(user.favorites, productId);
   await user.save();
 
-  const userWithFavorites = await User.findById(user).populate({
-    path: 'favorites',
-    select: 'productName price discount sizes colors',
-  });
-  const favorites = userWithFavorites.favorites;
+  const userWithFavorites = await User.findById(user)
+    .populate({
+      path: 'favorites',
+      select: 'productName price discount sizes colors',
+    })
+    .lean();
 
-  res.status(200).json({ favorites: favorites });
+  const formattedFavorites = formatMongoData(userWithFavorites.favorites);
+
+  res.status(200).json({ favorites: formattedFavorites });
 });
 
 export { toggleFavorite };
