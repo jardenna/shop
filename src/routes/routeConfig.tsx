@@ -2,7 +2,7 @@ import { createBrowserRouter } from 'react-router';
 import AdminLayout from '../adminLayout/AdminLayout';
 import Layout from '../layout/Layout';
 import { FrontPath, LinkText, MainPath } from '../layout/nav/enums';
-import About from '../pages/About';
+import AboutPage from '../pages/AboutPage';
 import MyAccount from '../pages/account/MyAccount';
 import Orders from '../pages/account/Orders';
 import CreateUserPage from '../pages/admin/CreateUserPage';
@@ -15,7 +15,7 @@ import CreateCategoryPage from '../pages/category/CreateCategoryPage';
 import UpdateCategoryPage from '../pages/category/UpdateCategoryPage';
 import CollectionLandingPage from '../pages/collections/CollectionLandingPage';
 import CollectionPage from '../pages/collections/CollectionPage';
-import Contact from '../pages/Contact';
+import ContactPage from '../pages/ContactPage';
 import ErrorPage from '../pages/ErrorPage';
 import FavoritesPage from '../pages/FavoritesPage';
 import HomePage from '../pages/home/HomePage';
@@ -25,7 +25,7 @@ import ProductPage from '../pages/product/ProductPage';
 import UpdateProductPage from '../pages/product/UpdateProductPage';
 import ViewProductPage from '../pages/product/ViewProductPage';
 import ProtectedRoute from '../pages/ProtectedRoute';
-import ShoppingChart from '../pages/ShoppingChart';
+import ShoppingChartPage from '../pages/ShoppingChartPage';
 import SignupPage from '../pages/SignupPage';
 import CreateSubCategoryPage from '../pages/subCategory/CreateSubCategoryPage';
 import SubCategoryPage from '../pages/subCategory/SubCategoryPage';
@@ -50,12 +50,12 @@ const routeList = [
   },
   {
     path: MainPath.About,
-    element: <About />,
+    element: <AboutPage />,
     label: LinkText.About,
   },
   {
     path: MainPath.Contact,
-    element: <Contact />,
+    element: <ContactPage />,
     label: LinkText.Contact,
   },
   {
@@ -80,7 +80,7 @@ const routeList = [
   },
   {
     path: MainPath.ShoppingCart,
-    element: <ShoppingChart />,
+    element: <ShoppingChartPage />,
     label: LinkText.Kids,
   },
   {
