@@ -10,14 +10,15 @@ import { toggleItemInArray } from '../utils/toggleItemInArray.js';
 // @method  Get
 // @access  Public
 const getFavorites = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.user);
+  const userId = req.user.id;
 
-  const userWithFavorites = await User.findById(user)
+  const userWithFavorites = await User.findById(userId)
     .populate({
       path: 'favorites',
       select: 'productName price discount sizes colors',
     })
     .lean();
+
   const formattedFavorites = formatMongoData(userWithFavorites.favorites);
 
   res.status(200).json({ favorites: formattedFavorites });
