@@ -1,4 +1,8 @@
-import type { BaseProduct, BaseProductParams } from './sharedApiTypes';
+import type {
+  BaseProduct,
+  BaseProductParams,
+  ProductSizes,
+} from './sharedApiTypes';
 
 export type ShopProductsParams = BaseProductParams & {
   mainCategory?: string;
@@ -21,4 +25,18 @@ type ProductMenu = {
 export type ProductMenuResponse = {
   data: ProductMenu[];
   success: boolean;
+};
+
+export type FavoritesResponse = {
+  isFavorite: boolean;
+};
+
+export type Favorites = {
+  colors: string[];
+  discount: number;
+  id: string;
+  images: string[];
+  price: number;
+  productName: string;
+  sizes: ProductSizes[];
 };
