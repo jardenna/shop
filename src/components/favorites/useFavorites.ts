@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   useGetFavoritesQuery,
   useToggleFavoriteMutation,
@@ -5,6 +6,7 @@ import {
 
 export const useFavorites = () => {
   const { data: favorites = [], isLoading, isError } = useGetFavoritesQuery();
+  const [animate, setAnimate] = useState(false);
   const [toggleFavorite, { isLoading: isTogglingLoading }] =
     useToggleFavoriteMutation();
 
@@ -12,6 +14,7 @@ export const useFavorites = () => {
     favorites.some((product) => product.id === productId);
 
   const handleToggle = async (productId: string) => {
+    setAnimate(!animate);
     try {
       await toggleFavorite(productId).unwrap();
     } catch (err) {
@@ -26,6 +29,7 @@ export const useFavorites = () => {
     isLoading,
     isTogglingLoading,
     isError,
+    animate,
   };
 };
 

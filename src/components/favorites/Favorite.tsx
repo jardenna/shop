@@ -11,9 +11,10 @@ type FavoriteProps = {
 
 const Favorite = ({ id }: FavoriteProps) => {
   const { language } = useLanguage();
-  const { isFavorite, toggleFavorite, isTogglingLoading } = useFavorites();
+  const { isFavorite, toggleFavorite, isTogglingLoading, animate } =
+    useFavorites();
 
-  const handleChange = (id: string) => {
+  const handleChange = () => {
     toggleFavorite(id);
   };
 
@@ -23,7 +24,7 @@ const Favorite = ({ id }: FavoriteProps) => {
         <Icon
           title={language.heart}
           iconName={IconName.Heart}
-          className={`heart-icon ${isFavorite(id) ? 'animate' : ''}`}
+          className={`heart-icon ${animate ? 'animate' : 'animate-back'}`}
         />
         <VisuallyHidden>{language.heart}</VisuallyHidden>
       </label>
@@ -31,9 +32,7 @@ const Favorite = ({ id }: FavoriteProps) => {
         type="checkbox"
         id={id}
         className="visually-hidden"
-        onChange={() => {
-          handleChange(id);
-        }}
+        onChange={handleChange}
         checked={isFavorite(id)}
         disabled={isTogglingLoading}
       />
