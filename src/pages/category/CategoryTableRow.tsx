@@ -4,7 +4,7 @@ import Badge from '../../components/badge/Badge';
 import DateDisplay from '../../components/datePicker/DateDisplay';
 import MoreLink from '../../components/MoreLink';
 import useLanguage from '../../features/language/useLanguage';
-import { MainPath } from '../../layout/nav/enums';
+import { AdminPath } from '../../layout/nav/enums';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 
 type CategoryTableRowProps = {
@@ -39,7 +39,7 @@ const CategoryTableRow = ({
       <td>
         <MoreLink
           linkText={language.update}
-          linkTo={`${MainPath.AdminCategoryUpdate}/${id}`}
+          linkTo={`${AdminPath.AdminCategoryUpdate}/${id}`}
         />
       </td>
     </tr>

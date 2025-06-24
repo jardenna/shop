@@ -7,7 +7,7 @@ import {
   useGetAllProductsQuery,
   useGetHasScheduledDataQuery,
 } from '../../features/products/productApiSlice';
-import { MainPath } from '../../layout/nav/enums';
+import { AdminPath } from '../../layout/nav/enums';
 import { oneDay } from '../../utils/utils';
 import PageContainer from '../pageContainer/PageContainer';
 import './_product-page.scss';
@@ -68,7 +68,7 @@ const ProductPage = () => {
       <PageContainer
         heading={language.products}
         linkText={language.createNewProduct}
-        linkTo={MainPath.AdminProductCreate}
+        linkTo={AdminPath.AdminProductCreate}
         onReset={() => refetch()}
       >
         <Table

@@ -15,7 +15,7 @@ import {
 } from '../../features/users/usersApiSlice';
 import useTableEditField from '../../hooks/useTableEditField';
 import useTrapFocus from '../../hooks/useTrapFocus';
-import { MainPath } from '../../layout/nav/enums';
+import { AdminPath } from '../../layout/nav/enums';
 import { BtnVariant, IconName } from '../../types/enums';
 import PageContainer from '../pageContainer/PageContainer';
 import DeleteUser from './DeleteUser';
@@ -107,7 +107,7 @@ const UserPage = () => {
       <PageContainer
         heading={language.users}
         linkText={isAdmin ? language.createNewUser : undefined}
-        linkTo={isAdmin ? MainPath.AdminUserCreate : undefined}
+        linkTo={isAdmin ? AdminPath.AdminUserCreate : undefined}
         onReset={() => refetch()}
       >
         <Table

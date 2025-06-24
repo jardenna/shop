@@ -8,7 +8,7 @@ import {
   useDeleteSubCategoryMutation,
   useGetSubCategoryByIdQuery,
 } from '../../features/subCategories/subCategoryApiSlice';
-import { MainPath } from '../../layout/nav/enums';
+import { AdminPath } from '../../layout/nav/enums';
 import { getErrorMessage, getlowerCaseFirstLetter } from '../../utils/utils';
 import PageContainer from '../pageContainer/PageContainer';
 
@@ -40,7 +40,7 @@ const ViewSubCategoryPage = () => {
       const result = await deleteSubCategory(params.id || '').unwrap();
 
       if (result.success) {
-        navigate(MainPath.AdminSubCategories);
+        navigate(AdminPath.AdminSubCategories);
         onAddMessagePopup({
           messagePopupType: 'success',
           message: language.categoryDeleted,
@@ -75,7 +75,7 @@ const ViewSubCategoryPage = () => {
         <PageContainer
           heading={`${language.category} ${category.subCategoryName}`}
           linkText={language.createNewCategory}
-          linkTo={MainPath.AdminSubCategoryCreate}
+          linkTo={AdminPath.AdminSubCategoryCreate}
           onReset={() => refetch()}
         >
           <CategoryCard

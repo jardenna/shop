@@ -10,7 +10,7 @@ import useMessagePopup from '../components/messagePopup/useMessagePopup';
 import { useSignupMutation } from '../features/auth/authApiSlice';
 import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
-import { MainPath } from '../layout/nav/enums';
+import { AdminPath } from '../layout/nav/enums';
 import passwordRules from '../utils/passwordRules';
 
 export type RegisterUserProps = {
@@ -79,7 +79,7 @@ const RegisterUser = ({ navigateTo, currentUser }: RegisterUserProps) => {
       passwordRules={passwordRules}
       isFocused={isFocused}
       onFocus={onFocus}
-      navigateTo={MainPath.Login}
+      navigateTo={AdminPath.Login}
       navigateToText={language.loginHere}
       currentUser={currentUser}
     />

@@ -1,116 +1,116 @@
-import { FrontPath, LinkText, MainPath } from '../../layout/nav/enums';
+import { AdminPath, LinkText, ShopPath } from '../../layout/nav/enums';
 import type { RouteListProps } from './Breadcrumbs';
 
 const routeBreadcrumbs: RouteListProps[] = [
   {
-    path: MainPath.Root,
+    path: AdminPath.Root,
     label: LinkText.Home,
   },
   {
-    path: MainPath.Collection,
+    path: AdminPath.Collection,
     label: LinkText.Collection,
   },
   {
-    path: `${MainPath.Collection}/:category`,
+    path: `${AdminPath.Collection}/:category`,
     label: '',
   },
   {
-    path: MainPath.About,
+    path: AdminPath.About,
     label: LinkText.About,
   },
   {
-    path: MainPath.Contact,
+    path: AdminPath.Contact,
     label: LinkText.Contact,
   },
   {
-    path: MainPath.Login,
+    path: AdminPath.Login,
     label: LinkText.Kids,
   },
   {
-    path: MainPath.Signup,
+    path: AdminPath.Signup,
     label: LinkText.Kids,
   },
   {
-    path: MainPath.MyAccount,
+    path: AdminPath.MyAccount,
     label: LinkText.Kids,
   },
   {
-    path: MainPath.Orders,
+    path: AdminPath.Orders,
     label: LinkText.Kids,
   },
   {
-    path: MainPath.ShoppingCart,
+    path: AdminPath.ShoppingCart,
     label: LinkText.Kids,
   },
   {
-    path: FrontPath.Favorites,
+    path: ShopPath.Favorites,
     label: LinkText.Favorites,
   },
 ];
 
 const adminBreadcrumbs: RouteListProps[] = [
   {
-    path: MainPath.Root,
+    path: AdminPath.Root,
     label: LinkText.Dashboard,
   },
   {
-    path: MainPath.Users,
+    path: AdminPath.Users,
     label: LinkText.Users,
   },
   {
-    path: MainPath.AdminUserCreate,
+    path: AdminPath.AdminUserCreate,
     label: LinkText.CreateNewUser,
   },
   {
-    path: MainPath.AdminCategoryCreate,
+    path: AdminPath.AdminCategoryCreate,
     label: LinkText.CreateNewCategory,
   },
   {
-    path: MainPath.AdminSubCategoryCreate,
+    path: AdminPath.AdminSubCategoryCreate,
     label: LinkText.CreateNewCategory,
   },
   {
-    path: `${MainPath.AdminCategoryUpdate}/:id`,
+    path: `${AdminPath.AdminCategoryUpdate}/:id`,
     label: '',
   },
   {
-    path: `${MainPath.AdminSubCategoryUpdate}/:id`,
+    path: `${AdminPath.AdminSubCategoryUpdate}/:id`,
     label: '',
   },
   {
-    path: MainPath.AdminSubCategories,
+    path: AdminPath.AdminSubCategories,
     label: LinkText.Categories,
   },
   {
-    path: `${MainPath.AdminSubCategoryView}/:id`,
+    path: `${AdminPath.AdminSubCategoryView}/:id`,
     label: '',
   },
   {
-    path: MainPath.AdminProfile,
+    path: AdminPath.AdminProfile,
     label: LinkText.Profile,
   },
   {
-    path: MainPath.AdminProducts,
+    path: AdminPath.AdminProducts,
     label: LinkText.Products,
   },
   {
-    path: `${MainPath.AdminProductView}/:id`,
+    path: `${AdminPath.AdminProductView}/:id`,
     label: '',
   },
   {
-    path: MainPath.AdminProductCreate,
+    path: AdminPath.AdminProductCreate,
     label: LinkText.CreateNewProduct,
   },
   {
-    path: `${MainPath.AdminProductUpdate}/:id`,
+    path: `${AdminPath.AdminProductUpdate}/:id`,
     label: '',
   },
   {
-    path: MainPath.AdminCategories,
+    path: AdminPath.AdminCategories,
     label: LinkText.Categories,
   },
   {
-    path: MainPath.AdminOrders,
+    path: AdminPath.AdminOrders,
     label: LinkText.Orders,
   },
 ];

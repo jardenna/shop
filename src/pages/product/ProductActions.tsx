@@ -4,7 +4,7 @@ import DropdownBtn, {
 } from '../../components/dropdownBtn/DropdownBtn';
 import Icon from '../../components/icons/Icon';
 import useLanguage from '../../features/language/useLanguage';
-import { MainPath } from '../../layout/nav/enums';
+import { AdminPath } from '../../layout/nav/enums';
 import { IconName } from '../../types/enums';
 
 type ProductActionsProps = {
@@ -20,14 +20,14 @@ const ProductActions = ({ onCopyProduct, id }: ProductActionsProps) => {
     {
       label: language.view,
       onClick: () => {
-        navigate(`${MainPath.AdminProductView}/${id}`);
+        navigate(`${AdminPath.AdminProductView}/${id}`);
       },
       icon: <Icon iconName={IconName.Eye} title={language.eye} />,
     },
     {
       label: language.update,
       onClick: () => {
-        navigate(`${MainPath.AdminProductUpdate}/${id}`);
+        navigate(`${AdminPath.AdminProductUpdate}/${id}`);
       },
       icon: <Icon iconName={IconName.Edit} title={language.pensil} />,
     },

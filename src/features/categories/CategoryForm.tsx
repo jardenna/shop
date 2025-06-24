@@ -7,7 +7,7 @@ import validateCategory from '../../components/formElements/validation/validateC
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import SharedCategoryInputs from '../../components/SharedCategoryInputs';
 import useFormValidation from '../../hooks/useFormValidation';
-import { MainPath } from '../../layout/nav/enums';
+import { AdminPath } from '../../layout/nav/enums';
 import type { OptionType } from '../../types/types';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 import useLanguage from '../language/useLanguage';
@@ -88,7 +88,7 @@ const CategoryForm = ({
         });
       }
 
-      navigate(MainPath.AdminCategories);
+      navigate(AdminPath.AdminCategories);
     } catch (error: any) {
       onAddMessagePopup({
         messagePopupType: 'error',

@@ -1,4 +1,4 @@
-enum MainPath {
+enum AdminPath {
   About = 'about',
   Admin = 'admin',
   AdminCategories = '/admin/categories',
@@ -28,7 +28,7 @@ enum MainPath {
   Users = '/admin/users',
 }
 
-enum FrontPath {
+enum ShopPath {
   Favorites = '/favorites',
   Kids = '/collection/kids',
   Men = '/collection/men',
@@ -64,4 +64,4 @@ enum LinkText {
   Women = 'women',
 }
 
-export { FrontPath, LinkText, MainPath };
+export { AdminPath, LinkText, ShopPath };

@@ -1,5 +1,5 @@
 import useLanguage from '../features/language/useLanguage';
-import { MainPath } from '../layout/nav/enums';
+import { AdminPath } from '../layout/nav/enums';
 import MainPageContainer from './pageContainer/MainPageContainer';
 import RegisterUser from './RegisterUser';
 
@@ -8,7 +8,7 @@ const SignupPage = () => {
 
   return (
     <MainPageContainer heading={language.signup} className="page-small">
-      <RegisterUser navigateTo={MainPath.Root} />
+      <RegisterUser navigateTo={AdminPath.Root} />
     </MainPageContainer>
   );
 };

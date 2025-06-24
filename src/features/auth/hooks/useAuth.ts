@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { MainPath } from '../../../layout/nav/enums';
+import { AdminPath } from '../../../layout/nav/enums';
 import { useCheckAuthQuery, useLogoutMutation } from '../authApiSlice';
 import { selectUser, setUser } from '../authSlice';
 
@@ -21,7 +21,7 @@ const useAuth = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      navigate(MainPath.Root);
+      navigate(AdminPath.Root);
     }
   }, [isSuccess, navigate]);
 

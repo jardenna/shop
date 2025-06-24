@@ -2,7 +2,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { Link, matchPath, useLocation } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
-import { LinkText, MainPath } from '../../layout/nav/enums';
+import { AdminPath, LinkText } from '../../layout/nav/enums';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import BreadcrumbItem from './BreadcrumbItem';
 import './_breadcrumbs.scss';
@@ -68,7 +68,7 @@ const Breadcrumbs = ({
       >
         <ul className="breadcrumbs">
           <li>
-            <Link to={MainPath.Root}>{language.home}</Link>
+            <Link to={AdminPath.Root}>{language.home}</Link>
           </li>
           {breadcrumbItems}
         </ul>
