@@ -29,11 +29,10 @@ const getFavorites = asyncHandler(async (req, res) => {
 // @method  Post
 // @access  Public
 const toggleFavorite = asyncHandler(async (req, res) => {
-  const { ObjectId } = mongoose.Types;
-
+  const userId = req.user.id;
   const productId = req.params.id;
 
-  if (!ObjectId.isValid(productId)) {
+  if (!mongoose.Types.ObjectId.isValid(productId)) {
     return res
       .status(400)
       .json({ success: false, message: 'Invalid product ID' });
@@ -47,22 +46,19 @@ const toggleFavorite = asyncHandler(async (req, res) => {
       .json({ success: false, message: 'Product not found' });
   }
 
-  const user = await User.findById(req.user);
-
+  const user = await User.findById(userId);
   if (!user) {
     return res.status(404).json({ success: false, message: 'User not found' });
   }
 
+  const alreadyInFavorites = user.favorites.includes(productId);
   user.favorites = toggleItemInArray(user.favorites, productId);
   await user.save();
 
-  const userWithFavorites = await User.findById(user).populate({
-    path: 'favorites',
-    select: 'productName price discount sizes colors',
+  res.status(200).json({
+    success: true,
+    isFavorite: !alreadyInFavorites,
   });
-  const favorites = userWithFavorites.favorites;
-
-  res.status(200).json({ favorites: favorites });
 });
 
 export { getFavorites, toggleFavorite };
