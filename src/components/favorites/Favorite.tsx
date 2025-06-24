@@ -2,6 +2,7 @@ import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import Icon from '../icons/Icon';
 import VisuallyHidden from '../VisuallyHidden';
+import './_favorites.scss';
 import useFavorites from './useFavorites';
 
 type FavoriteProps = {
@@ -19,7 +20,11 @@ const Favorite = ({ id }: FavoriteProps) => {
   return (
     <div className="checkbox-item">
       <label htmlFor={id}>
-        <Icon title={language.heart} iconName={IconName.Heart} />
+        <Icon
+          title={language.heart}
+          iconName={IconName.Heart}
+          className={`heart-icon ${isFavorite(id) ? 'animate' : ''}`}
+        />
         <VisuallyHidden>{language.heart}</VisuallyHidden>
       </label>
       <input
