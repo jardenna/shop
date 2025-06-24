@@ -3,15 +3,15 @@ import type { RouteListProps } from './Breadcrumbs';
 
 const routeBreadcrumbs: RouteListProps[] = [
   {
-    path: AdminPath.Root,
+    path: ShopPath.Root,
     label: LinkText.Home,
   },
   {
-    path: AdminPath.Collection,
+    path: ShopPath.Collection,
     label: LinkText.Collection,
   },
   {
-    path: `${AdminPath.Collection}/:category`,
+    path: `${ShopPath.Collection}/:category`,
     label: '',
   },
   {
@@ -19,27 +19,27 @@ const routeBreadcrumbs: RouteListProps[] = [
     label: LinkText.About,
   },
   {
-    path: AdminPath.Contact,
+    path: ShopPath.Contact,
     label: LinkText.Contact,
   },
   {
-    path: AdminPath.Login,
+    path: ShopPath.Login,
     label: LinkText.Kids,
   },
   {
-    path: AdminPath.Signup,
+    path: ShopPath.Signup,
     label: LinkText.Kids,
   },
   {
-    path: AdminPath.MyAccount,
+    path: ShopPath.MyAccount,
     label: LinkText.Kids,
   },
   {
-    path: AdminPath.Orders,
+    path: ShopPath.MyOrders,
     label: LinkText.Kids,
   },
   {
-    path: AdminPath.ShoppingCart,
+    path: ShopPath.ShoppingCart,
     label: LinkText.Kids,
   },
   {
@@ -50,11 +50,11 @@ const routeBreadcrumbs: RouteListProps[] = [
 
 const adminBreadcrumbs: RouteListProps[] = [
   {
-    path: AdminPath.Root,
+    path: ShopPath.Root,
     label: LinkText.Dashboard,
   },
   {
-    path: AdminPath.Users,
+    path: ShopPath.Users,
     label: LinkText.Users,
   },
   {

@@ -5,7 +5,7 @@ import useAuth from '../features/auth/hooks/useAuth';
 import useLanguage from '../features/language/useLanguage';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
 import useMediaQuery from '../hooks/useMediaQuery ';
-import { AdminPath } from '../layout/nav/enums';
+import { ShopPath } from '../layout/nav/enums';
 import MetaTags from '../layout/nav/MetaTags';
 import './_admin-layout.scss';
 import AdminHeader from './AdminHeader';
@@ -26,7 +26,7 @@ const AdminLayout = () => {
 
   const handleLogout = () => {
     logout();
-    navigate(AdminPath.Root);
+    navigate(ShopPath.Root);
   };
 
   const handleCollapseMenu = () => {

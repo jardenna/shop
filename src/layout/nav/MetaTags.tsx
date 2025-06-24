@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
-import { AdminPath } from './enums';
+import { ShopPath } from './enums';
 
 type MetaTagsProps = {
   description?: string;
@@ -14,7 +14,7 @@ const MetaTags = ({ description, keywords, metaTitle }: MetaTagsProps) => {
   const { language } = useLanguage();
 
   const getTitle = (pathname: string): string => {
-    if (pathname === `/${AdminPath.Login}`) {
+    if (pathname === `/${ShopPath.Login}`) {
       return language.login;
     }
     if (pathname === '/') {

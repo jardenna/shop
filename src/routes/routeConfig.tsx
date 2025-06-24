@@ -39,12 +39,12 @@ const routeList = [
     label: LinkText.Home,
   },
   {
-    path: AdminPath.Collection,
+    path: ShopPath.Collection,
     element: <CollectionLandingPage />,
     label: LinkText.Collection,
   },
   {
-    path: `${AdminPath.Collection}/:category`,
+    path: `${ShopPath.Collection}/:category`,
     element: <CollectionPage />,
     label: '',
   },
@@ -54,32 +54,32 @@ const routeList = [
     label: LinkText.About,
   },
   {
-    path: AdminPath.Contact,
+    path: ShopPath.Contact,
     element: <ContactPage />,
     label: LinkText.Contact,
   },
   {
-    path: AdminPath.Login,
+    path: ShopPath.Login,
     element: <LoginPage />,
     label: LinkText.Kids,
   },
   {
-    path: AdminPath.Signup,
+    path: ShopPath.Signup,
     element: <SignupPage />,
     label: LinkText.Kids,
   },
   {
-    path: AdminPath.MyAccount,
+    path: ShopPath.MyAccount,
     element: <MyAccount />,
     label: LinkText.Kids,
   },
   {
-    path: AdminPath.Orders,
+    path: ShopPath.MyOrders,
     element: <Orders />,
     label: LinkText.Kids,
   },
   {
-    path: AdminPath.ShoppingCart,
+    path: ShopPath.ShoppingCart,
     element: <ShoppingChartPage />,
     label: LinkText.Kids,
   },
@@ -97,7 +97,7 @@ export const adminRouteList = [
     label: LinkText.Dashboard,
   },
   {
-    path: AdminPath.Users,
+    path: ShopPath.Users,
     element: <UserPage />,
     label: LinkText.Users,
   },
@@ -175,7 +175,7 @@ export const adminRouteList = [
 
 const routeConfig = createBrowserRouter([
   {
-    path: AdminPath.Root,
+    path: ShopPath.Root,
     errorElement: <ErrorPage />,
     element: <Layout />,
     children: routeList,

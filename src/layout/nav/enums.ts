@@ -15,23 +15,22 @@ enum AdminPath {
   AdminSubCategoryUpdate = '/admin/sub-categories/update',
   AdminSubCategoryView = '/admin/sub-categories/view',
   AdminUserCreate = '/admin/users/create',
-  Collection = 'collection',
-  Contact = 'contact',
-  Home = 'home',
-  Login = 'login',
-  MyAccount = 'myAccount',
-  Orders = 'myOrders',
-  Root = '/',
-  ShoppingCart = 'shopping-cart',
-  Signup = 'signup',
-  Update = 'update',
-  Users = '/admin/users',
 }
 
 enum ShopPath {
+  Collection = 'collection',
+  Contact = 'contact',
   Favorites = '/favorites',
+  Home = 'home',
   Kids = '/collection/kids',
+  Login = 'login',
   Men = '/collection/men',
+  MyAccount = 'myAccount',
+  MyOrders = 'myOrders',
+  Root = '/',
+  ShoppingCart = 'shopping-cart',
+  Signup = 'signup',
+  Users = '/admin/users',
   Women = '/collection/women',
 }
 

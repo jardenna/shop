@@ -4,11 +4,11 @@ import type { NavItemsProps } from './Nav';
 
 const navList: NavItemsProps[] = [
   {
-    path: AdminPath.Root,
+    path: ShopPath.Root,
     linkText: LinkText.Home,
   },
   {
-    path: AdminPath.Collection,
+    path: ShopPath.Collection,
     linkText: LinkText.Collection,
     adHeading: 'discoverLatestTrends',
     subNav: [
@@ -35,18 +35,18 @@ const navList: NavItemsProps[] = [
     linkText: LinkText.About,
   },
   {
-    path: AdminPath.Contact,
+    path: ShopPath.Contact,
     linkText: LinkText.Contact,
   },
 ];
 
 const authItemsList = [
   {
-    path: AdminPath.Login,
+    path: ShopPath.Login,
     linkText: LinkText.Login,
   },
   {
-    path: AdminPath.Signup,
+    path: ShopPath.Signup,
     linkText: LinkText.Signup,
   },
 ];
@@ -74,7 +74,7 @@ const adminNavList: NavItemsProps[] = [
     iconName: IconName.SubCategories,
   },
   {
-    path: AdminPath.Users,
+    path: ShopPath.Users,
     linkText: LinkText.Users,
     iconName: IconName.Users,
   },

@@ -6,7 +6,7 @@ import ModalContainer from '../../components/modal/ModalContainer';
 import useLanguage from '../../features/language/useLanguage';
 import { BtnVariant, IconName, SizeVariant } from '../../types/enums';
 import type { HeaderProps } from '../header/Header';
-import { AdminPath, ShopPath } from '../nav/enums';
+import { ShopPath } from '../nav/enums';
 import LanguageCurrencyPreferences from './LanguageCurrencyPreferences';
 
 type OmittedHeaderProps = Omit<
@@ -54,7 +54,7 @@ const HeaderIcons = ({
         </DropdownBtn>
       </li>
       <li>
-        <Link to={AdminPath.ShoppingCart} className="btn btn-ghost">
+        <Link to={ShopPath.ShoppingCart} className="btn btn-ghost">
           <IconContent
             iconName={IconName.ShoppingBag}
             title={language.bag}
