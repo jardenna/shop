@@ -5,11 +5,11 @@ import VisuallyHidden from '../VisuallyHidden';
 import './_favorites.scss';
 import useFavorites from './useFavorites';
 
-type FavoriteProps = {
+type FavoritesProps = {
   id: string;
 };
 
-const Favorite = ({ id }: FavoriteProps) => {
+const Favorites = ({ id }: FavoritesProps) => {
   const { language } = useLanguage();
   const { isFavorite, toggleFavorite, isTogglingLoading, animate } =
     useFavorites();
@@ -19,7 +19,7 @@ const Favorite = ({ id }: FavoriteProps) => {
   };
 
   return (
-    <div className="checkbox-item">
+    <div className="favorites">
       <label htmlFor={id}>
         <Icon
           title={language.heart}
@@ -40,4 +40,4 @@ const Favorite = ({ id }: FavoriteProps) => {
   );
 };
 
-export default Favorite;
+export default Favorites;
