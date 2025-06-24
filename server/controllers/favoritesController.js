@@ -5,6 +5,24 @@ import User from '../models/userModel.js';
 import formatMongoData from '../utils/formatMongoData.js';
 import { toggleItemInArray } from '../utils/toggleItemInArray.js';
 
+// @desc    Get favorite
+// @route   /api/favorites
+// @method  Get
+// @access  Public
+const getFavorites = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user);
+
+  const userWithFavorites = await User.findById(user)
+    .populate({
+      path: 'favorites',
+      select: 'productName price discount sizes colors',
+    })
+    .lean();
+  const formattedFavorites = formatMongoData(userWithFavorites.favorites);
+
+  res.status(200).json({ favorites: formattedFavorites });
+});
+
 // @desc    Toggle favorite
 // @route   /api/favorites/:id
 // @method  Post
@@ -37,16 +55,13 @@ const toggleFavorite = asyncHandler(async (req, res) => {
   user.favorites = toggleItemInArray(user.favorites, productId);
   await user.save();
 
-  const userWithFavorites = await User.findById(user)
-    .populate({
-      path: 'favorites',
-      select: 'productName price discount sizes colors',
-    })
-    .lean();
+  const userWithFavorites = await User.findById(user).populate({
+    path: 'favorites',
+    select: 'productName price discount sizes colors',
+  });
+  const favorites = userWithFavorites.favorites;
 
-  const formattedFavorites = formatMongoData(userWithFavorites.favorites);
-
-  res.status(200).json({ favorites: formattedFavorites });
+  res.status(200).json({ favorites: favorites });
 });
 
-export { toggleFavorite };
+export { getFavorites, toggleFavorite };
