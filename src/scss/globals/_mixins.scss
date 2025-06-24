@@ -42,7 +42,9 @@ $animation-timing-function: ease-in-out;
   }
 
   @media (prefers-reduced-motion) {
-    animation-name: none;
+    & {
+      animation-name: none;
+    }
   }
 }
 
