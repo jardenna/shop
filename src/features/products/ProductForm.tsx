@@ -281,7 +281,7 @@ const ProductForm = ({
               id="productName"
               name="productName"
               errorText={language[errors.productName]}
-              labelText={language.categoryName}
+              labelText={language.productName}
               onChange={onChange}
               required
             />
