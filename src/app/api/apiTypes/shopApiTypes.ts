@@ -27,7 +27,7 @@ export type ProductMenuResponse = {
   success: boolean;
 };
 
-export type PostFavoritesResponse = {
+export type ToggleFavoriteResponse = {
   isFavorite: boolean;
 };
 
@@ -39,8 +39,4 @@ export type Favorites = {
   price: number;
   productName: string;
   sizes: ProductSizes[];
-};
-
-export type GetFavoritesResponse = {
-  favorites: Favorites[];
 };

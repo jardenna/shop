@@ -21,7 +21,7 @@ const getFavorites = asyncHandler(async (req, res) => {
 
   const formattedFavorites = formatMongoData(userWithFavorites.favorites);
 
-  res.status(200).json({ favorites: formattedFavorites });
+  res.status(200).json(formattedFavorites);
 });
 
 // @desc    Toggle favorite
