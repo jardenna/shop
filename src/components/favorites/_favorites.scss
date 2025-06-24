@@ -1,23 +1,30 @@
 @use '../../scss/globals' as *;
 
-.heart-icon {
-  font-size: 2rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
+.favorites {
+  .heart-icon {
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
 
-.heart-icon.animate {
-  animation: heartbeat 0.3s ease;
-  fill: $color-red-10;
-  stroke: $color-red-10;
+    &.animate {
+      animation: heartbeat 0.3s ease;
+      fill: $color-red-10;
+      stroke: $color-red-10;
+    }
 
-  @include animation(heartbeat);
-}
+    &.animate-back {
+      @include animation(heartbeatback);
+    }
+  }
 
-.heart-icon.animate-back {
-  @include animation(heartbeatback);
+  &:has(input:checked) {
+    .heart-icon {
+      fill: $color-red-10;
+      stroke: $color-red-10;
+    }
+  }
 }
 
 @keyframes heartbeatback {
@@ -53,14 +60,5 @@
 
   100% {
     transform: scale(1);
-  }
-}
-
-.favorites {
-  &:has(input:checked) {
-    .heart-icon {
-      fill: $color-red-10;
-      stroke: $color-red-10;
-    }
   }
 }
