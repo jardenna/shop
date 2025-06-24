@@ -223,12 +223,13 @@ const getProducts = asyncHandler(async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const subCategoryId = req.query.subCategoryId;
   const mainCategory = req.query.mainCategory;
+  const { ObjectId } = mongoose.Types;
 
   const matchStage = [];
 
   if (subCategoryId) {
     matchStage.push({
-      'subCategoryData._id': new mongoose.Types.ObjectId(String(subCategoryId)),
+      'subCategoryData._id': ObjectId(subCategoryId),
     });
   }
 

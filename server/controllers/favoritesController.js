@@ -36,7 +36,12 @@ const toggleFavorite = asyncHandler(async (req, res) => {
   user.favorites = toggleItemInArray(user.favorites, productId);
   await user.save();
 
-  res.status(200).json({ favorites: user.favorites });
+  const userWithFavorites = await User.findById(user).populate('favorites');
+  const favorites = userWithFavorites.favorites; // array af Product-objekter
+
+  console.log(favorites);
+
+  res.status(200).json({ favorites: favorites });
 });
 
 export { toggleFavorite };
