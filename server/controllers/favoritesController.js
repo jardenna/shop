@@ -15,7 +15,7 @@ const getFavorites = asyncHandler(async (req, res) => {
   const userWithFavorites = await User.findById(userId)
     .populate({
       path: 'favorites',
-      select: 'productName price discount sizes colors',
+      select: 'productName price discount sizes colors images',
     })
     .lean();
 
@@ -56,7 +56,6 @@ const toggleFavorite = asyncHandler(async (req, res) => {
   await user.save();
 
   res.status(200).json({
-    success: true,
     isFavorite: !alreadyInFavorites,
   });
 });
