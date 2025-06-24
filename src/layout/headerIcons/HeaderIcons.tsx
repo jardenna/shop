@@ -6,7 +6,7 @@ import ModalContainer from '../../components/modal/ModalContainer';
 import useLanguage from '../../features/language/useLanguage';
 import { BtnVariant, IconName, SizeVariant } from '../../types/enums';
 import type { HeaderProps } from '../header/Header';
-import { MainPath } from '../nav/enums';
+import { FrontPath, MainPath } from '../nav/enums';
 import LanguageCurrencyPreferences from './LanguageCurrencyPreferences';
 
 type OmittedHeaderProps = Omit<
@@ -86,6 +86,15 @@ const HeaderIcons = ({
             onSelectCurrency={onSelectCurrency}
           />
         </ModalContainer>
+      </li>
+      <li>
+        <Link to={FrontPath.Favorites} className="btn btn-ghost">
+          <IconContent
+            iconName={IconName.Heart}
+            title={language.heart}
+            ariaLabel={language.viewCart}
+          />
+        </Link>
       </li>
     </ul>
   );

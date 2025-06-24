@@ -29,6 +29,7 @@ enum MainPath {
 }
 
 enum FrontPath {
+  Favorites = '/favorites',
   Kids = '/collection/kids',
   Men = '/collection/men',
   Women = '/collection/women',
@@ -46,6 +47,7 @@ enum LinkText {
   CreateNewUser = 'createNewUser',
   Dashboard = 'dashboard',
   Edit = 'edit',
+  Favorites = 'favorites',
   Home = 'home',
   Kids = 'kids',
   Login = 'login',

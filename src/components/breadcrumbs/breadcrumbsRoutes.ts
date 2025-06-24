@@ -1,4 +1,4 @@
-import { LinkText, MainPath } from '../../layout/nav/enums';
+import { FrontPath, LinkText, MainPath } from '../../layout/nav/enums';
 import type { RouteListProps } from './Breadcrumbs';
 
 const routeBreadcrumbs: RouteListProps[] = [
@@ -11,7 +11,7 @@ const routeBreadcrumbs: RouteListProps[] = [
     label: LinkText.Collection,
   },
   {
-    path: 'collection/:category',
+    path: `${MainPath.Collection}/:category`,
     label: '',
   },
   {
@@ -41,6 +41,10 @@ const routeBreadcrumbs: RouteListProps[] = [
   {
     path: MainPath.ShoppingCart,
     label: LinkText.Kids,
+  },
+  {
+    path: FrontPath.Favorites,
+    label: LinkText.Favorites,
   },
 ];
 

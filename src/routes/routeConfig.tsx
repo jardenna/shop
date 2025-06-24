@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router';
 import AdminLayout from '../adminLayout/AdminLayout';
 import Layout from '../layout/Layout';
-import { LinkText, MainPath } from '../layout/nav/enums';
+import { FrontPath, LinkText, MainPath } from '../layout/nav/enums';
 import About from '../pages/About';
 import MyAccount from '../pages/account/MyAccount';
 import Orders from '../pages/account/Orders';
@@ -17,6 +17,7 @@ import CollectionLandingPage from '../pages/collections/CollectionLandingPage';
 import CollectionPage from '../pages/collections/CollectionPage';
 import Contact from '../pages/Contact';
 import ErrorPage from '../pages/ErrorPage';
+import FavoritesPage from '../pages/FavoritesPage';
 import HomePage from '../pages/home/HomePage';
 import LoginPage from '../pages/LoginPage';
 import CreateProductPage from '../pages/product/CreateProductPage';
@@ -43,7 +44,7 @@ const routeList = [
     label: LinkText.Collection,
   },
   {
-    path: 'collection/:category',
+    path: `${MainPath.Collection}/:category`,
     element: <CollectionPage />,
     label: '',
   },
@@ -81,6 +82,11 @@ const routeList = [
     path: MainPath.ShoppingCart,
     element: <ShoppingChart />,
     label: LinkText.Kids,
+  },
+  {
+    path: FrontPath.Favorites,
+    element: <FavoritesPage />,
+    label: LinkText.Favorites,
   },
 ];
 

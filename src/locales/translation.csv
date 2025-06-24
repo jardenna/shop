@@ -94,6 +94,7 @@ errorAltText;A really guilty emoji;En meget skyldig emoji
 expandMenu;Expand menu;Udvid menu
 eye;Eye;Øje
 eyeClosed;Closed eye;Lukket øje
+favorites;Favorites;Favoritter
 fileExceedsSize;The selected file exceeds the 1MB limit; Den valgte fil overstiger grænsen på 1 MB. Upload venligst en mindre fil
 filesSuported;Files suported;Tilladte filer
 fillAll;Please fill all inputs;Udfyld venligst alle felter
@@ -282,12 +283,13 @@ username;User name;Brugernavn
 users;Users;Brugere
 userUpdated;User updated;Bruger opdateret
 view;View;Se
-viewCart;View cart;Se indkøbskurv
 viewAsGrid;View as grid;Gridvisning
 viewAsList;View as list;Listevisning
+viewCart;View your cart;Se din indkøbskurv
 viewCategory;View category;Se kategori
 viewProduct;View product;Se produkt
 viewScheduledDate;View scheduled date;Se planlagt dato
+viewYourFavorites;View your favorites;Se dine favoritter
 warning;Warning;Warning
 welcome;Welcome;Velkommen
 white;White;Hvid
