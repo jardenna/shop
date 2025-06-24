@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router';
 import DropdownBtn, {
   DropdownItem,
 } from '../../components/dropdownBtn/DropdownBtn';
-import IconContent from '../../components/IconContent';
 import Icon from '../../components/icons/Icon';
 import useLanguage from '../../features/language/useLanguage';
 import { MainPath } from '../../layout/nav/enums';
@@ -49,10 +48,7 @@ const ProductActions = ({ onCopyProduct, id }: ProductActionsProps) => {
       showArrow
       placement="left-start"
     >
-      <IconContent
-        iconName={IconName.MenuDotsHorizontal}
-        title={language.user}
-      />
+      <Icon iconName={IconName.MenuDotsHorizontal} title={language.user} />
     </DropdownBtn>
   );
 };

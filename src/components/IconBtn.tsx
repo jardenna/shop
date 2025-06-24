@@ -42,7 +42,7 @@ const IconBtn = ({
     <IconContent
       iconName={iconName}
       title={title}
-      ariaLabel={ariaLabel}
+      ariaLabel={ariaLabel || ''}
       size={size}
     />
   </Button>

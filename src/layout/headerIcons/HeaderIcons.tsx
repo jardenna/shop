@@ -1,7 +1,6 @@
 import { Link } from 'react-router';
 import DropdownBtn from '../../components/dropdownBtn/DropdownBtn';
 import IconContent from '../../components/IconContent';
-import Icon from '../../components/icons/Icon';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
 import useLanguage from '../../features/language/useLanguage';
@@ -56,7 +55,11 @@ const HeaderIcons = ({
       </li>
       <li>
         <Link to={MainPath.ShoppingCart} className="btn btn-ghost">
-          <Icon iconName={IconName.ShoppingBack} title={language.bag} />
+          <IconContent
+            iconName={IconName.ShoppingBack}
+            title={language.bag}
+            ariaLabel={language.viewCart}
+          />
         </Link>
       </li>
       <li>
