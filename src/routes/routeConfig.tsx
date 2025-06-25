@@ -31,6 +31,7 @@ import CreateSubCategoryPage from '../pages/subCategory/CreateSubCategoryPage';
 import SubCategoryPage from '../pages/subCategory/SubCategoryPage';
 import UpdateSubCategoryPage from '../pages/subCategory/UpdateSubCategoryPage';
 import ViewSubCategoryPage from '../pages/subCategory/ViewSubCategoryPage';
+import SingleProductPage from '../pages/collections/SingleProductPage';
 
 const routeList = [
   {
@@ -49,6 +50,11 @@ const routeList = [
     label: '',
   },
   {
+    path: `${ShopPath.Collection}/:category/:id`,
+    element: <SingleProductPage />,
+    label: '',
+  },
+  {
     path: AdminPath.About,
     element: <AboutPage />,
     label: LinkText.About,
@@ -61,17 +67,17 @@ const routeList = [
   {
     path: ShopPath.Login,
     element: <LoginPage />,
-    label: LinkText.Kids,
+    label: LinkText.Login,
   },
   {
     path: ShopPath.Signup,
     element: <SignupPage />,
-    label: LinkText.Kids,
+    label: LinkText.Signup,
   },
   {
     path: ShopPath.MyAccount,
     element: <MyAccount />,
-    label: LinkText.Kids,
+    label: LinkText.MyAccount,
   },
   {
     path: ShopPath.MyOrders,
