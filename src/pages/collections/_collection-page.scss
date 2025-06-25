@@ -77,3 +77,151 @@
     width: rem(200px);
   }
 }
+
+.collection-page {
+  .breadcrumbs-container {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.collection-page-container {
+  display: flex;
+  gap: 12px;
+}
+
+.collection-aside {
+  background-color: $color-light-gray-10;
+  min-width: rem(252px);
+}
+
+.collection-nav-list {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  font-size: rem(16px);
+  padding: 20px 16px;
+
+  .collection-nav-item {
+    display: flex;
+    align-items: center;
+
+    &::marker {
+      content: '';
+    }
+
+    &::before {
+      content: '▪▪\A▪▪';
+      white-space: pre;
+      display: inline-block;
+      line-height: 0.4;
+      font-size: 16px;
+      margin-right: 8px;
+    }
+  }
+}
+
+.collection-header {
+  background-color: $color-light-gray-20;
+  border-bottom: 4px solid $color-gray-40;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
+}
+
+.product-toolbar {
+  display: flex;
+  justify-content: space-between;
+  margin-block: 8px 24px;
+
+  .product-views-container,
+  .product-filter {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .product-views-container {
+    gap: 8px;
+  }
+}
+
+.img-container {
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    .product-badge {
+      bottom: 12px;
+    }
+
+    .test {
+      transform: translateY(-100%);
+    }
+  }
+}
+
+.product-card-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.product-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-block: 8px 16px;
+
+  .color-list {
+    max-height: 12px;
+  }
+
+  .text-line-through {
+    font-size: rem(12px);
+  }
+
+  .product-card-title {
+    font-size: rem(16px);
+    font-family: $font-primary-bold;
+  }
+}
+
+.product-card-img {
+  border-radius: 0;
+  height: rem(512px);
+  width: 100%;
+  object-fit: cover;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.product-badge {
+  position: relative;
+  left: 12px;
+  bottom: 36px;
+  background: $color-dust-red-20;
+  color: $color-white;
+  display: flex;
+  padding: 4px 8px;
+  border-radius: 2px;
+  width: fit-content;
+}
+
+.size-overlay {
+  gap: 30px;
+  display: flex;
+  background-color: rgb($color-white, 0.8);
+  width: 100%;
+  padding: 12px 4px;
+  justify-content: center;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.test {
+  position: absolute;
+  transform: translateY(100%);
+  width: 100%;
+
+  @include transition($what: transform);
+}

@@ -4,7 +4,6 @@ import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 import { routeBreadcrumbs } from '../../components/breadcrumbs/breadcrumbsRoutes';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import Favorites from '../../components/favorites/Favorites';
-import IconContent from '../../components/IconContent';
 import Icon from '../../components/icons/Icon';
 import Img from '../../components/Img';
 import ProductColorList from '../../components/ProductColorList';
@@ -19,6 +18,7 @@ import MetaTags from '../../layout/nav/MetaTags';
 import { IconName } from '../../types/enums';
 import ProductDiscountPrice from '../product/ProductDiscountPrice';
 import './_collection-page.scss';
+import ProductViews from './ProductViews';
 
 const CollectionPage = () => {
   const { language } = useLanguage();
@@ -79,34 +79,19 @@ const CollectionPage = () => {
                     alt=""
                   />
 
-                  <div className="collection-filter">
-                    <section className="filter-icons">
-                      <IconContent
-                        iconName={IconName.LayoutList}
-                        title={language.list}
-                        ariaLabel={language.viewAsList}
-                        size="18"
-                      />
-                      <IconContent
-                        iconName={IconName.LayoutGrid}
-                        title={language.grid}
-                        ariaLabel={language.viewAsGrid}
-                        size="16"
-                      />
-                      {products?.productCount && (
-                        <span>
-                          {products.productCount} {language.products}
-                        </span>
-                      )}
-                    </section>
-                    <section className="filter-text">
+                  <section className="product-toolbar">
+                    <ProductViews
+                      productCount={products?.productCount || null}
+                    />
+
+                    <div className="product-filter">
                       <span>{language.filter}</span>
                       <Icon
                         iconName={IconName.Filter}
                         title={language.filter}
                       />
-                    </section>
-                  </div>
+                    </div>
+                  </section>
                   <div className="product-card-list">
                     {products?.products.map((product) => (
                       <section key={product.id} className="product-card">
