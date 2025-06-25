@@ -87,6 +87,7 @@ const CollectionPage = () => {
                     <TogglePanel
                       ariaControls="filter-products"
                       triggerBtnClassName="product-filter"
+                      showCloseIcon
                       triggerBtnContent={
                         <>
                           <span>{language.filter}</span>
@@ -99,13 +100,6 @@ const CollectionPage = () => {
                     >
                       Filter
                     </TogglePanel>
-                    {/* <div className="product-filter">
-                      <span>{language.filter}</span>
-                      <Icon
-                        iconName={IconName.Filter}
-                        title={language.filter}
-                      />
-                    </div> */}
                   </section>
                   <div className="product-card-list">
                     {products?.products.map((product) => (

@@ -13,6 +13,7 @@ type TogglePanelProps = {
   children: ReactNode;
   className?: string;
   panelPosition?: PanelPosition;
+  showCloseIcon?: boolean;
   triggerBtnClassName?: string;
   triggerBtnContent?: ReactNode;
 };
@@ -24,6 +25,7 @@ const TogglePanel = ({
   className = '',
   triggerBtnClassName = 'menu-burger',
   triggerBtnContent,
+  showCloseIcon,
 }: TogglePanelProps) => {
   const { language } = useLanguage();
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
@@ -51,8 +53,9 @@ const TogglePanel = ({
         className={`toggle-panel ${panelPosition} ${className} ${isPanelShown ? 'shown' : ''}`}
         id={ariaControls}
       >
-        <BtnClose onClick={onHidePanel} />
         {children}
+
+        {showCloseIcon && <BtnClose onClick={onHidePanel} />}
       </div>
     </>
   );
