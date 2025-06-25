@@ -4,11 +4,9 @@ import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 import { routeBreadcrumbs } from '../../components/breadcrumbs/breadcrumbsRoutes';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import Favorites from '../../components/favorites/Favorites';
-import Icon from '../../components/icons/Icon';
 import Img from '../../components/Img';
 import ProductColorList from '../../components/ProductColorList';
 import Skeleton from '../../components/skeleton/Skeleton';
-import TogglePanel from '../../components/togglePanel/TogglePanel';
 import useLanguage from '../../features/language/useLanguage';
 import {
   useGetProductsQuery,
@@ -16,10 +14,10 @@ import {
 } from '../../features/shop/shopApiSlice';
 import LayoutElement from '../../layout/LayoutElement';
 import MetaTags from '../../layout/nav/MetaTags';
-import { IconName } from '../../types/enums';
 import ProductDiscountPrice from '../product/ProductDiscountPrice';
 import './_collection-page.scss';
 import ProductViews from './ProductViews';
+import FilterPanel from './FilterPanel';
 
 const CollectionPage = () => {
   const { language } = useLanguage();
@@ -84,22 +82,7 @@ const CollectionPage = () => {
                     <ProductViews
                       productCount={products?.productCount || null}
                     />
-                    <TogglePanel
-                      ariaControls="filter-products"
-                      triggerBtnClassName="product-filter"
-                      showCloseIcon
-                      triggerBtnContent={
-                        <>
-                          <span>{language.filter}</span>
-                          <Icon
-                            iconName={IconName.Filter}
-                            title={language.filter}
-                          />
-                        </>
-                      }
-                    >
-                      Filter
-                    </TogglePanel>
+                    <FilterPanel />
                   </section>
                   <div className="product-card-list">
                     {products?.products.map((product) => (
