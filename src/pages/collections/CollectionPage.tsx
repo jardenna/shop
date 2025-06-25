@@ -1,5 +1,5 @@
 import { ErrorBoundary } from 'react-error-boundary';
-import { useParams } from 'react-router';
+import { Link, useParams } from 'react-router';
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 import { routeBreadcrumbs } from '../../components/breadcrumbs/breadcrumbsRoutes';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
@@ -16,12 +16,18 @@ import LayoutElement from '../../layout/LayoutElement';
 import MetaTags from '../../layout/nav/MetaTags';
 import ProductDiscountPrice from '../product/ProductDiscountPrice';
 import './_collection-page.scss';
-import ProductViews from './ProductViews';
 import FilterPanel from './FilterPanel';
+import ProductViews from './ProductViews';
 
 const CollectionPage = () => {
+  // const params = useParams();
+  // const navigate = useNavigate();
   const { language } = useLanguage();
   const { category } = useParams();
+
+  // Redux hooks
+  // const { data: product } = useGetProductByIdQuery(params.id || '');
+  // console.log(params);
 
   const {
     data: products,
@@ -84,17 +90,20 @@ const CollectionPage = () => {
                     />
                     <FilterPanel />
                   </section>
+
                   <div className="product-card-list">
                     {products?.products.map((product) => (
-                      <section key={product.id} className="product-card">
-                        <div className="img-container">
-                          <Favorites id={product.id} />
-                          <div>
-                            <Img
-                              alt=""
-                              src={product.images[0]}
-                              className="product-card-img"
-                            />
+                      <div key={product.id}>
+                        <section className="product-card">
+                          <div className="img-container">
+                            <Favorites id={product.id} />
+                            <Link to={product.id}>
+                              <Img
+                                alt=""
+                                src={product.images[0]}
+                                className="product-card-img"
+                              />
+                            </Link>
                             <div className="test">
                               {product.discount > 0 && (
                                 <span className="product-badge">
@@ -108,24 +117,24 @@ const CollectionPage = () => {
                               </ul>
                             </div>
                           </div>
-                        </div>
 
-                        <div className="product-card-content">
-                          <h2 className="product-card-title">
-                            {product.productName}
-                          </h2>
+                          <div className="product-card-content">
+                            <h2 className="product-card-title">
+                              {product.productName}
+                            </h2>
 
-                          <ProductDiscountPrice
-                            price={product.price}
-                            discount={product.discount || 0}
-                          />
-                          <ProductColorList
-                            colours={product.colors}
-                            count={3}
-                            optionSize="small"
-                          />
-                        </div>
-                      </section>
+                            <ProductDiscountPrice
+                              price={product.price}
+                              discount={product.discount || 0}
+                            />
+                            <ProductColorList
+                              colours={product.colors}
+                              count={3}
+                              optionSize="small"
+                            />
+                          </div>
+                        </section>
+                      </div>
                     ))}
                   </div>
                 </div>

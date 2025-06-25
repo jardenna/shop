@@ -1,4 +1,5 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
+import { BaseProduct } from '../../app/api/apiTypes/sharedApiTypes';
 import type {
   Favorites,
   ProductMenuResponse,
@@ -38,6 +39,9 @@ const shopApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.Favorites],
     }),
+    getProductById: builder.query<BaseProduct, string>({
+      query: (id) => `${productUrl}${id}`,
+    }),
   }),
 });
 
@@ -46,4 +50,5 @@ export const {
   useGetShopMenuQuery,
   useGetFavoritesQuery,
   useToggleFavoriteMutation,
+  useGetProductByIdQuery,
 } = shopApiSlice;

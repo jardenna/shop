@@ -1,3 +1,4 @@
+import { ChangeEvent } from 'react';
 import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import Icon from '../icons/Icon';
@@ -13,7 +14,8 @@ const Favorites = ({ id }: FavoritesProps) => {
   const { language } = useLanguage();
   const { isFavorite, toggleFavorite, isTogglingLoading } = useFavorites();
 
-  const handleChange = () => {
+  const handleChange = (event: ChangeEvent) => {
+    event.stopPropagation();
     toggleFavorite(id);
   };
 
