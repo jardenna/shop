@@ -93,18 +93,29 @@
 
 .img-container {
   position: relative;
+  overflow: hidden;
+
+  &:hover {
+    .product-badge {
+      bottom: 12px;
+    }
+
+    .test {
+      transform: translateY(-100%);
+    }
+  }
 }
 
 .product-card-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px 0;
 }
 
 .product-card-content {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  margin-block: 8px 16px;
 
   .color-list {
     max-height: 12px;
@@ -127,14 +138,33 @@
   object-fit: cover;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 .product-badge {
-  position: absolute;
-  z-index: 2;
+  position: relative;
   left: 12px;
-  bottom: 12px;
+  bottom: 36px;
   background: $color-dust-red-20;
-  color: #fff;
+  color: $color-white;
   display: flex;
   padding: 4px 8px;
   border-radius: 2px;
+  width: fit-content;
+}
+
+.size-overlay {
+  gap: 30px;
+  display: flex;
+  background-color: rgb($color-white, 0.8);
+  width: 100%;
+  padding: 12px 4px;
+  justify-content: center;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.test {
+  position: absolute;
+  transform: translateY(100%);
+  width: 100%;
+
+  @include transition($what: transform);
 }

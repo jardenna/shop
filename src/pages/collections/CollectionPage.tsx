@@ -78,6 +78,7 @@ const CollectionPage = () => {
                     src={`/images/collections/${category}/banner.jpg`}
                     alt=""
                   />
+
                   <div className="collection-filter">
                     <section className="filter-icons">
                       <IconContent
@@ -111,16 +112,25 @@ const CollectionPage = () => {
                       <section key={product.id} className="product-card">
                         <div className="img-container">
                           <Favorites id={product.id} />
-                          {product.discount > 0 && (
-                            <span className="product-badge">
-                              {language.sale}
-                            </span>
-                          )}
-                          <Img
-                            alt=""
-                            src={product.images[0]}
-                            className="product-card-img"
-                          />
+                          <div>
+                            <Img
+                              alt=""
+                              src={product.images[0]}
+                              className="product-card-img"
+                            />
+                            <div className="test">
+                              {product.discount > 0 && (
+                                <span className="product-badge">
+                                  {language.sale}
+                                </span>
+                              )}
+                              <ul className="size-overlay">
+                                {product.sizes.map((size) => (
+                                  <li key={size}>{size}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
                         </div>
 
                         <div className="product-card-content">
