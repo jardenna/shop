@@ -40,7 +40,7 @@ const shopApiSlice = apiSlice.injectEndpoints({
       invalidatesTags: [TagTypesEnum.Favorites],
     }),
     getProductById: builder.query<BaseProduct, string>({
-      query: (id) => `${productUrl}${id}`,
+      query: (id) => `${productUrl}/${id}`,
     }),
   }),
 });
