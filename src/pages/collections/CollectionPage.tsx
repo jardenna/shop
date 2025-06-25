@@ -8,6 +8,7 @@ import Icon from '../../components/icons/Icon';
 import Img from '../../components/Img';
 import ProductColorList from '../../components/ProductColorList';
 import Skeleton from '../../components/skeleton/Skeleton';
+import TogglePanel from '../../components/togglePanel/TogglePanel';
 import useLanguage from '../../features/language/useLanguage';
 import {
   useGetProductsQuery,
@@ -83,14 +84,28 @@ const CollectionPage = () => {
                     <ProductViews
                       productCount={products?.productCount || null}
                     />
-
-                    <div className="product-filter">
+                    <TogglePanel
+                      ariaControls="filter-products"
+                      triggerBtnClassName="product-filter"
+                      triggerBtnContent={
+                        <>
+                          <span>{language.filter}</span>
+                          <Icon
+                            iconName={IconName.Filter}
+                            title={language.filter}
+                          />
+                        </>
+                      }
+                    >
+                      Filter
+                    </TogglePanel>
+                    {/* <div className="product-filter">
                       <span>{language.filter}</span>
                       <Icon
                         iconName={IconName.Filter}
                         title={language.filter}
                       />
-                    </div>
+                    </div> */}
                   </section>
                   <div className="product-card-list">
                     {products?.products.map((product) => (

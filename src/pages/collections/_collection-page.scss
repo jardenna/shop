@@ -136,6 +136,10 @@
   justify-content: space-between;
   margin-block: 8px 24px;
 
+  .toggle-panel {
+    max-width: rem(300px);
+  }
+
   .product-views-container,
   .product-filter {
     display: flex;
