@@ -1,6 +1,7 @@
 import { useParams } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetProductByIdQuery } from '../../features/shop/shopApiSlice';
+import MainPageContainer from '../pageContainer/MainPageContainer';
 
 const SingleProductPage = () => {
   const params = useParams();
@@ -10,7 +11,15 @@ const SingleProductPage = () => {
 
   const { language } = useLanguage();
 
-  return <section>{language.add}</section>;
+  return (
+    <MainPageContainer
+      heading={language.login}
+      className="page-small"
+      currentLabel={product?.productName}
+    >
+      {language.add}
+    </MainPageContainer>
+  );
 };
 
 export default SingleProductPage;

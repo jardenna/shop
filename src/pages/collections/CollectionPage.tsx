@@ -20,14 +20,10 @@ import FilterPanel from './FilterPanel';
 import ProductViews from './ProductViews';
 
 const CollectionPage = () => {
-  // const params = useParams();
-  // const navigate = useNavigate();
   const { language } = useLanguage();
   const { category } = useParams();
 
   // Redux hooks
-  // const { data: product } = useGetProductByIdQuery(params.id || '');
-  // console.log(params);
 
   const {
     data: products,
