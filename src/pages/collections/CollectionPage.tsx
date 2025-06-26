@@ -61,7 +61,7 @@ const CollectionPage = () => {
                 </LayoutElement>
                 <LayoutElement as="nav" ariaLabel={language.page}>
                   <ul className="collection-nav-list">
-                    {subMenu?.data.map(({ label }) => (
+                    {subMenu?.map(({ label }) => (
                       <li className="collection-nav-item" key={label}>
                         {label}
                       </li>
@@ -113,7 +113,6 @@ const CollectionPage = () => {
                               </ul>
                             </div>
                           </div>
-
                           <div className="product-card-content">
                             <h2 className="product-card-title">
                               {product.productName}

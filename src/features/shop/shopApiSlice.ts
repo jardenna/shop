@@ -24,7 +24,7 @@ const shopApiSlice = apiSlice.injectEndpoints({
       },
       providesTags: [TagTypesEnum.Products],
     }),
-    getShopMenu: builder.query<ProductMenuResponse, string>({
+    getShopMenu: builder.query<ProductMenuResponse[], string>({
       query: (params) => `${subCategoryMenuUrl}${params}`,
       providesTags: [TagTypesEnum.Products],
     }),
