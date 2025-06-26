@@ -100,7 +100,7 @@ const CollectionPage = () => {
                                 className="product-card-img"
                               />
                             </Link>
-                            <div className="test">
+                            <div className="product-overlay-items">
                               {product.discount > 0 && (
                                 <span className="product-badge">
                                   {language.sale}

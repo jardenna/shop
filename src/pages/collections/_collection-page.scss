@@ -161,7 +161,7 @@
       bottom: 12px;
     }
 
-    .test {
+    .product-overlay-items {
       transform: translateY(-100%);
     }
   }
@@ -222,7 +222,7 @@
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-.test {
+.product-overlay-items {
   position: absolute;
   transform: translateY(100%);
   width: 100%;
