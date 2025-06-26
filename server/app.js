@@ -7,6 +7,7 @@ import path from 'path';
 import errorHandler from './middleware/errorHandler.js';
 import authRoutes from './routes/authRoutes.js';
 import categoryRoutes from './routes/categoryRoutes.js';
+import favoritesRoutes from './routes/favoritesRoutes.js';
 import productRoutes from './routes/productRoutes.js';
 import subCategoryRoutes from './routes/subCategoryRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
@@ -47,6 +48,7 @@ app.use('/api/categories', categoryRoutes);
 app.use('/api/subcategories', subCategoryRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/upload', uploadRoutes);
+app.use('/api/favorites', favoritesRoutes);
 
 // Global error handler
 app.use(errorHandler);

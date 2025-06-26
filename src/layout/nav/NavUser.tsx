@@ -4,13 +4,14 @@ import { IconName } from '../../types/enums';
 
 type NavUserProps = {
   currentUser: UserResponse;
+  iconTitle: string;
 };
 
-const NavUser = ({ currentUser }: NavUserProps) => (
+const NavUser = ({ currentUser, iconTitle }: NavUserProps) => (
   <div className="user-container">
     <span className="user">
       <span className="user-icon">
-        <Icon title="" iconName={IconName.User} />
+        <Icon title={iconTitle} iconName={IconName.User} />
       </span>
       <span className="user-text nav-text">
         <span className="text-bold">{currentUser.username}</span>

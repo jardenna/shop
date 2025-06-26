@@ -13,7 +13,7 @@ import {
   useDeleteProductMutation,
   useGetProductByIdQuery,
 } from '../../features/products/productApiSlice';
-import { MainPath } from '../../layout/nav/enums';
+import { AdminPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
 import { getErrorMessage } from '../../utils/utils';
 import PageContainer from '../pageContainer/PageContainer';
@@ -44,7 +44,7 @@ const ViewProductPage = () => {
       const result = await deleteProduct(params.id || '').unwrap();
 
       if (result.success) {
-        navigate(MainPath.AdminProducts);
+        navigate(AdminPath.AdminProducts);
         onAddMessagePopup({
           messagePopupType: 'success',
           message: language.productDeleted,
@@ -94,8 +94,8 @@ const ViewProductPage = () => {
         <PageContainer
           heading={product.productName}
           linkText={language.createNewProduct}
-          linkTo={MainPath.AdminProductCreate}
-          onReset={() => refetch}
+          linkTo={AdminPath.AdminProductCreate}
+          onReset={() => refetch()}
         >
           <article className="three-col admin-card-container">
             <ProductCardLeft
@@ -106,7 +106,7 @@ const ViewProductPage = () => {
               images={product.images}
               price={product.price}
               discount={product.discount || 0}
-              onReset={() => refetch}
+              onReset={() => refetch()}
             />
             <ProductCardCenter
               countInStock={product.countInStock}
@@ -116,12 +116,12 @@ const ViewProductPage = () => {
               material={product.material}
               price={product.price}
               sizes={product.sizes}
-              onReset={() => refetch}
+              onReset={() => refetch()}
             />
             <CardRight
-              linkTo={MainPath.AdminSubCategories}
+              linkTo={AdminPath.AdminSubCategories}
               heading={heading}
-              onReset={() => refetch}
+              onReset={() => refetch()}
               name={product.productName}
               showStatusMessage={
                 product.subCategory.categoryStatus !== 'Published'
@@ -133,7 +133,7 @@ const ViewProductPage = () => {
               primaryActionBtn={primaryActionBtn}
               name={product.productName}
               modalHeaderText={language.deleteProduct}
-              linkTo={`${MainPath.AdminProductUpdate}/${params.id}`}
+              linkTo={`${AdminPath.AdminProductUpdate}/${params.id}`}
               allowedToDelete={!!isAdmin}
             />
           </article>

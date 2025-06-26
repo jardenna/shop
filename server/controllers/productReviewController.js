@@ -10,7 +10,10 @@ const createProductReviews = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
 
   if (!product) {
-    return res.status(404).json(errorResponse);
+    return res.status(404).json({
+      success: false,
+      message: 'Product not found',
+    });
   }
 
   const alreadyReviewed = product.reviews.find(

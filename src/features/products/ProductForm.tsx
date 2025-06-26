@@ -21,7 +21,7 @@ import Selectbox from '../../components/selectbox/Selectbox';
 import StatusOptions from '../../components/selectbox/StatusOptions';
 import StatusInputs from '../../components/StatusInputs';
 import useFormValidation from '../../hooks/useFormValidation';
-import { MainPath } from '../../layout/nav/enums';
+import { AdminPath } from '../../layout/nav/enums';
 import variables from '../../scss/variables.module.scss';
 import type { OptionType } from '../../types/types';
 import {
@@ -226,7 +226,7 @@ const ProductForm = ({
         });
       }
 
-      navigate(MainPath.AdminProducts);
+      navigate(AdminPath.AdminProducts);
     } catch (error: any) {
       onAddMessagePopup({
         messagePopupType: 'error',
@@ -281,7 +281,7 @@ const ProductForm = ({
               id="productName"
               name="productName"
               errorText={language[errors.productName]}
-              labelText={language.categoryName}
+              labelText={language.productName}
               onChange={onChange}
               required
             />

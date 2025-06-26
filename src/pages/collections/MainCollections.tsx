@@ -1,5 +1,5 @@
 import useLanguage from '../../features/language/useLanguage';
-import { FrontPath } from '../../layout/nav/enums';
+import { ShopPath } from '../../layout/nav/enums';
 import MainCollectionsItem, {
   MainCollectionsItemProps,
 } from './MainCollectionsItem';
@@ -10,13 +10,13 @@ const MainCollections = () => {
     {
       title: language.men,
       src: ['/images/collections/men.jpg'],
-      linkTo: FrontPath.Men,
+      linkTo: ShopPath.Men,
       linkText: language.discoverCollection,
     },
     {
       title: language.kids,
       src: ['/images/collections/kids.jpg'],
-      linkTo: FrontPath.Kids,
+      linkTo: ShopPath.Kids,
       linkText: language.discoverCollection,
     },
     {
@@ -26,7 +26,7 @@ const MainCollections = () => {
         '/images/collections/women_2.jpg',
         '/images/collections/women_3.jpg',
       ],
-      linkTo: FrontPath.Women,
+      linkTo: ShopPath.Women,
       linkText: language.discoverCollection,
     },
   ];

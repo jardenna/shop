@@ -1,12 +1,14 @@
 import useLanguage from '../features/language/useLanguage';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
-const ShoppingChart = () => {
+const FavoritesPage = () => {
   const { language } = useLanguage();
 
   return (
-    <MainPageContainer heading={language.shopCart}>Kurv</MainPageContainer>
+    <MainPageContainer heading={language.favorites}>
+      Favorites
+    </MainPageContainer>
   );
 };
 
-export default ShoppingChart;
+export default FavoritesPage;

@@ -38,7 +38,7 @@ const UpdateCategoryPage = () => {
       {category && (
         <PageContainer
           heading={`${language.updateCategory} ${category.categoryName}`}
-          onReset={() => refetch}
+          onReset={() => refetch()}
         >
           <CategoryForm
             selectedCategory={category}

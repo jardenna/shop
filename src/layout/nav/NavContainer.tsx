@@ -45,7 +45,9 @@ const NavContainer = ({
           ariaExpanded={!isMenuCollapsed}
         />
       )}
-      {currentUser && <NavUser currentUser={currentUser} />}
+      {currentUser && (
+        <NavUser currentUser={currentUser} iconTitle={language.user} />
+      )}
     </section>
   );
 };

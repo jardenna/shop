@@ -12,6 +12,7 @@ type MainPageContainerProps = {
   children: ReactNode;
   heading: string;
   className?: string;
+  currentLabel?: string;
   onReset?: () => void;
 };
 
@@ -20,6 +21,7 @@ const MainPageContainer = ({
   heading,
   onReset,
   className = '',
+  currentLabel,
 }: MainPageContainerProps) => {
   const { language } = useLanguage();
   return (
@@ -31,7 +33,10 @@ const MainPageContainer = ({
           as="header"
           className="main-page-header"
         >
-          <Breadcrumbs routeList={routeBreadcrumbs} />
+          <Breadcrumbs
+            routeList={routeBreadcrumbs}
+            currentLabel={currentLabel || ''}
+          />
           <h1>{heading}</h1>
         </LayoutElement>
 

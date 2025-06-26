@@ -1,7 +1,7 @@
 import Button from '../components/Button';
 import Logo from '../layout/header/Logo';
 import LayoutElement from '../layout/LayoutElement';
-import { MainPath } from '../layout/nav/enums';
+import { AdminPath } from '../layout/nav/enums';
 
 type AdminHeaderProps = {
   ariaLabel: string;
@@ -19,7 +19,7 @@ const AdminHeader = ({
 }: AdminHeaderProps) => (
   <LayoutElement as="header" className="admin-header" ariaLabel={ariaLabel}>
     <div className="container main-header-container">
-      <Logo linkTo={`/${MainPath.Admin}`} />
+      <Logo linkTo={`/${AdminPath.Admin}`} />
       {!isMobileSize && (
         <>
           <span>{welcomeMessage && welcomeMessage}</span>

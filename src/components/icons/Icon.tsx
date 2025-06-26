@@ -22,6 +22,7 @@ import FilterIcon from './FilterIcon';
 import GridIcon from './GridIcon';
 import GridLargeIcon from './GridLargeIcon';
 import GridSmallIcon from './GridSmallIcon';
+import HeartIcon from './HeartIcon';
 import ImageIcon from './ImageIcon';
 import InfoIcon from './InfoIcon';
 import LanguageIcon from './LanguageIcon';
@@ -33,7 +34,7 @@ import LogoutIcon from './LogoutIcon';
 import OrdersIcon from './OrdersIcon';
 import ProductsIcon from './ProductsIcon';
 import SearchIcon from './SearchIcon';
-import ShoppingBackIcon from './ShoppingBackIcon';
+import ShoppingBagIcon from './ShoppingBagIcon';
 import SubCategoriesIcon from './SubCategoriesIcon';
 import SubtractIcon from './SubtractIcon';
 import SuccessIcon from './SuccessIcon';
@@ -48,7 +49,6 @@ import WarningIcon from './WarningIcon';
 export type IconDefaultProps = {
   title: string;
   ariaHidden?: boolean;
-  ariaLabel?: string;
   className?: string;
   size?: string;
 };
@@ -83,6 +83,7 @@ const iconMapping = {
   gridSmall: GridSmallIcon,
   image: ImageIcon,
   info: InfoIcon,
+  heart: HeartIcon,
   language: LanguageIcon,
   layoutGrid: LayoutGridIcon,
   layoutList: LayoutListIcon,
@@ -93,7 +94,7 @@ const iconMapping = {
   orders: OrdersIcon,
   products: ProductsIcon,
   search: SearchIcon,
-  shoppingBack: ShoppingBackIcon,
+  shoppingBag: ShoppingBagIcon,
   subCategories: SubCategoriesIcon,
   subtract: SubtractIcon,
   success: SuccessIcon,
@@ -111,7 +112,6 @@ const Icon = ({
   title,
   className = '',
   ariaHidden,
-  ariaLabel,
 }: IconProps) => {
   const IconComponent = iconMapping[iconName];
   return (
@@ -120,7 +120,6 @@ const Icon = ({
       title={title}
       className={className}
       ariaHidden={ariaHidden === undefined ? true : undefined}
-      ariaLabel={ariaLabel}
     />
   );
 };

@@ -8,12 +8,7 @@ import type {
   UpdateProductRequest,
 } from '../../app/api/apiTypes/adminApiTypes';
 import type { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
-import {
-  ProductMenuResponse,
-  ShopProductResponse,
-  ShopProductsParams,
-} from '../../app/api/apiTypes/shopApiTypes';
-import { productUrl, subCategoryMenuUrl } from '../../app/endpoints';
+import { productUrl } from '../../app/endpoints';
 
 const productApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -24,19 +19,6 @@ const productApiSlice = apiSlice.injectEndpoints({
         ).toString();
         return `${productUrl}/allProducts?${query}`;
       },
-      providesTags: [TagTypesEnum.Products],
-    }),
-    getShopProducts: builder.query<ShopProductResponse, ShopProductsParams>({
-      query: (params) => {
-        const query = new URLSearchParams(
-          params as Record<string, string>,
-        ).toString();
-        return `${productUrl}?${query}`;
-      },
-      providesTags: [TagTypesEnum.Products],
-    }),
-    getShopMenu: builder.query<ProductMenuResponse, string>({
-      query: (params) => `${subCategoryMenuUrl}${params}`,
       providesTags: [TagTypesEnum.Products],
     }),
     getProductById: builder.query<Product, string>({
@@ -82,12 +64,10 @@ const productApiSlice = apiSlice.injectEndpoints({
 
 export const {
   useGetAllProductsQuery,
-  useGetShopProductsQuery,
   useGetProductByIdQuery,
   useUpdateProductMutation,
   useCreateProductMutation,
   useDeleteProductMutation,
   useGetHasScheduledDataQuery,
   useDuplicateProductMutation,
-  useGetShopMenuQuery,
 } = productApiSlice;

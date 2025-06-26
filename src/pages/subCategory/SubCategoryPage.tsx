@@ -5,7 +5,7 @@ import {
   useGetAllSubCategoriesQuery,
   useGetHasSubCatScheduledQuery,
 } from '../../features/subCategories/subCategoryApiSlice';
-import { MainPath } from '../../layout/nav/enums';
+import { AdminPath } from '../../layout/nav/enums';
 import { oneDay } from '../../utils/utils';
 import PageContainer from '../pageContainer/PageContainer';
 import SubCategoryTableRows from './SubCategoryTableRows';
@@ -52,11 +52,11 @@ const SubCategoryPage = () => {
       <PageContainer
         heading={language.subCategories}
         linkText={language.createNewCategory}
-        linkTo={MainPath.AdminSubCategoryCreate}
-        onReset={() => refetch}
+        linkTo={AdminPath.AdminSubCategoryCreate}
+        onReset={() => refetch()}
       >
         <Table
-          onReset={() => refetch}
+          onReset={() => refetch()}
           data={allSubcategories?.subCategories || []}
           columns={tableHeaders}
           tableCaption={language.subCategoryList}

@@ -5,7 +5,7 @@ import type { SelectedLanguage } from '../../features/language/languageSlice';
 import type { ChangeInputType, OptionType } from '../../types/types';
 import HeaderIcons from '../headerIcons/HeaderIcons';
 import LayoutElement from '../LayoutElement';
-import { MainPath } from '../nav/enums';
+import { ShopPath } from '../nav/enums';
 import NavContainer from '../nav/NavContainer';
 import { navList } from '../nav/navList';
 import './_header.scss';
@@ -42,7 +42,7 @@ const Header = ({
 }: HeaderProps) => (
   <LayoutElement as="header" className="main-header" ariaLabel={ariaLabel}>
     <div className="container main-header-container">
-      <Logo linkTo={MainPath.Root} />
+      <Logo linkTo={ShopPath.Root} />
       {!isMobileSize ? (
         <NavContainer navList={navList} />
       ) : (

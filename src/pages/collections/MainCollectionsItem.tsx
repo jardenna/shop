@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router';
 import Img from '../../components/Img';
-import { FrontPath } from '../../layout/nav/enums';
+import { ShopPath } from '../../layout/nav/enums';
 
 export type MainCollectionsItemProps = {
   linkText: string;
-  linkTo: FrontPath;
+  linkTo: ShopPath;
   src: string[];
   title: string;
 };

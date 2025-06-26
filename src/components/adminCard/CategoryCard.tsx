@@ -1,7 +1,7 @@
 import type { Status } from '../../app/api/apiTypes/adminApiTypes';
 import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
-import { MainPath } from '../../layout/nav/enums';
+import { AdminPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 import CardFooter from '../card/CardFooter';
@@ -55,7 +55,7 @@ const CategoryCard = ({
         onReset={onReset}
       />
       <CardRight
-        linkTo={MainPath.AdminCategories}
+        linkTo={AdminPath.AdminCategories}
         heading={`${language.mainCategoryName}: ${mainCategoryName}`}
         name={subCategoryName}
         showStatusMessage={showStatusMessage}
@@ -67,7 +67,7 @@ const CategoryCard = ({
         primaryActionBtn={primaryActionBtn}
         name={subCategoryName}
         modalHeaderText={language.deleteCategory}
-        linkTo={`${MainPath.AdminSubCategoryUpdate}/${categoryId}`}
+        linkTo={`${AdminPath.AdminSubCategoryUpdate}/${categoryId}`}
         allowedToDelete={!!isAdmin}
         triggerModalDisabled={triggerModalDisabled}
       />

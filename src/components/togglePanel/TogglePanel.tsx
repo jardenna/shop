@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import useLanguage from '../../features/language/useLanguage';
 import { BtnVariant } from '../../types/enums';
+import BtnClose from '../BtnClose';
 import Button from '../Button';
 import './_toggle-panel.scss';
 import useTogglePanel from './useTogglePanel';
@@ -12,6 +13,9 @@ type TogglePanelProps = {
   children: ReactNode;
   className?: string;
   panelPosition?: PanelPosition;
+  showCloseIcon?: boolean;
+  triggerBtnClassName?: string;
+  triggerBtnContent?: ReactNode;
 };
 
 const TogglePanel = ({
@@ -19,14 +23,18 @@ const TogglePanel = ({
   ariaControls,
   panelPosition = 'right',
   className = '',
+  triggerBtnClassName = 'menu-burger',
+  triggerBtnContent,
+  showCloseIcon,
 }: TogglePanelProps) => {
   const { language } = useLanguage();
-  const { isPanelShown, onTogglePanel, panelRef } = useTogglePanel();
+  const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
+    useTogglePanel();
 
   return (
     <>
       <Button
-        className="menu-burger"
+        className={triggerBtnClassName}
         variant={BtnVariant.Ghost}
         ariaExpanded={isPanelShown}
         onClick={onTogglePanel}
@@ -34,7 +42,11 @@ const TogglePanel = ({
         ariaHasPopup
         ariaControls={ariaControls}
       >
-        <span className="menu-burger-item" aria-hidden={true} />
+        {triggerBtnContent ? (
+          triggerBtnContent
+        ) : (
+          <span className="menu-burger-item" aria-hidden={true} />
+        )}
       </Button>
       <div
         ref={panelRef}
@@ -42,6 +54,8 @@ const TogglePanel = ({
         id={ariaControls}
       >
         {children}
+
+        {showCloseIcon && <BtnClose onClick={onHidePanel} />}
       </div>
     </>
   );

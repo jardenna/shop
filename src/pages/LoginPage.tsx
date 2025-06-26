@@ -5,7 +5,7 @@ import useMessagePopup from '../components/messagePopup/useMessagePopup';
 import { useLoginMutation } from '../features/auth/authApiSlice';
 import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
-import { MainPath } from '../layout/nav/enums';
+import { ShopPath } from '../layout/nav/enums';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const LoginPage = () => {
@@ -19,7 +19,7 @@ const LoginPage = () => {
   };
 
   const { onAddMessagePopup } = useMessagePopup();
-  const from = location.state?.from?.pathname || MainPath.Root;
+  const from = location.state?.from?.pathname || ShopPath.Root;
 
   const { values, errors, onChange, onBlur, onSubmit } = useFormValidation({
     initialState,
@@ -54,7 +54,7 @@ const LoginPage = () => {
         onChange={onChange}
         errors={errors}
         onBlur={onBlur}
-        navigateTo={MainPath.Signup}
+        navigateTo={ShopPath.Signup}
         navigateToText={language.createAccount}
       />
     </MainPageContainer>

@@ -12,7 +12,7 @@ import useMediaQuery from '../hooks/useMediaQuery ';
 import { IconName } from '../types/enums';
 import type { OptionType } from '../types/types';
 import Header from './header/Header';
-import { MainPath } from './nav/enums';
+import { AdminPath, ShopPath } from './nav/enums';
 import MetaTags from './nav/MetaTags';
 
 const Layout = () => {
@@ -27,7 +27,7 @@ const Layout = () => {
 
   const handleLogout = () => {
     logout();
-    navigate(MainPath.Root);
+    navigate(ShopPath.Root);
   };
 
   const handleSelectCurrency = (name: string, selectedOptions: OptionType) => {
@@ -64,7 +64,7 @@ const Layout = () => {
   const isEmployee = currentUser && currentUser.role === 'Employee';
   const authDropdownItem: DropdownItem = {
     label: currentUser ? language.logout : language.login,
-    onClick: currentUser ? handleLogout : () => navigate(`/${MainPath.Login}`),
+    onClick: currentUser ? handleLogout : () => navigate(`/${ShopPath.Login}`),
     icon: (
       <Icon
         iconName={currentUser ? IconName.Logout : IconName.Login}
@@ -79,7 +79,7 @@ const Layout = () => {
       label: language.admin,
       icon: <Icon iconName={IconName.Admin} title={language.lock} />,
       onClick: () => {
-        navigate(`/${MainPath.Admin}`);
+        navigate(`/${AdminPath.Admin}`);
       },
     },
     authDropdownItem,
@@ -91,9 +91,9 @@ const Layout = () => {
       label: language.myAccount,
       onClick: () => {
         if (currentUser) {
-          navigate(`/${MainPath.MyAccount}`);
+          navigate(`/${ShopPath.MyAccount}`);
         } else {
-          navigate(`/${MainPath.Login}`);
+          navigate(`/${ShopPath.Login}`);
         }
       },
       icon: (
@@ -105,9 +105,9 @@ const Layout = () => {
       icon: <Icon iconName={IconName.Orders} title={language.myOrders} />,
       onClick: () => {
         if (currentUser) {
-          navigate(`/${MainPath.Orders}`);
+          navigate(`/${ShopPath.MyOrders}`);
         } else {
-          navigate(`/${MainPath.Login}`);
+          navigate(`/${ShopPath.Login}`);
         }
       },
     },

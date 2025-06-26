@@ -6,12 +6,15 @@ $color-blue-20: #dce4e7;
 $color-blue-25: #94afba;
 $color-blue-30: #2f6d8f;
 
-// Red colors
-$color-red-10: #a0738f;
+// Red dust colors
+$color-dust-red-10: #a0738f;
+$color-dust-red-20: #793e5f;
+$color-dust-red-40: #583247;
+
+// Red  colors
+$color-red-10: #db1139;
 $color-red-15: #b82845;
 $color-red-20: #88001b;
-$color-red-30: #793e5f;
-$color-red-40: #583247;
 
 // Gray colors
 $color-gray-20: #dbe0dc;
@@ -46,5 +49,5 @@ $color-warning: #fec901;
 
 // Badge colors
 $color-badge-scheduled: $color-gray-60;
-$color-badge-inactive: $color-red-10;
+$color-badge-inactive: $color-dust-red-10;
 $color-badge-default: $color-blue-30;

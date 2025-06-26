@@ -5,7 +5,7 @@ import {
   useGetHasCategoriesScheduledQuery,
 } from '../../features/categories/categoriyApiSlice';
 import useLanguage from '../../features/language/useLanguage';
-import { MainPath } from '../../layout/nav/enums';
+import { AdminPath } from '../../layout/nav/enums';
 import { oneDay } from '../../utils/utils';
 import PageContainer from '../pageContainer/PageContainer';
 import CategoryTableRow from './CategoryTableRow';
@@ -43,11 +43,11 @@ const CategoryPage = () => {
       <PageContainer
         heading={language.categories}
         linkText={language.createNewCategory}
-        linkTo={MainPath.AdminCategoryCreate}
-        onReset={() => refetch}
+        linkTo={AdminPath.AdminCategoryCreate}
+        onReset={() => refetch()}
       >
         <Table
-          onReset={() => refetch}
+          onReset={() => refetch()}
           data={allCategories?.categories || []}
           columns={tableHeaders}
           tableCaption={language.categoryList}

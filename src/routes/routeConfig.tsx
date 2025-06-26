@@ -1,8 +1,8 @@
 import { createBrowserRouter } from 'react-router';
 import AdminLayout from '../adminLayout/AdminLayout';
 import Layout from '../layout/Layout';
-import { LinkText, MainPath } from '../layout/nav/enums';
-import About from '../pages/About';
+import { AdminPath, LinkText, ShopPath } from '../layout/nav/enums';
+import AboutPage from '../pages/AboutPage';
 import MyAccount from '../pages/account/MyAccount';
 import Orders from '../pages/account/Orders';
 import CreateUserPage from '../pages/admin/CreateUserPage';
@@ -15,8 +15,9 @@ import CreateCategoryPage from '../pages/category/CreateCategoryPage';
 import UpdateCategoryPage from '../pages/category/UpdateCategoryPage';
 import CollectionLandingPage from '../pages/collections/CollectionLandingPage';
 import CollectionPage from '../pages/collections/CollectionPage';
-import Contact from '../pages/Contact';
+import ContactPage from '../pages/ContactPage';
 import ErrorPage from '../pages/ErrorPage';
+import FavoritesPage from '../pages/FavoritesPage';
 import HomePage from '../pages/home/HomePage';
 import LoginPage from '../pages/LoginPage';
 import CreateProductPage from '../pages/product/CreateProductPage';
@@ -24,12 +25,13 @@ import ProductPage from '../pages/product/ProductPage';
 import UpdateProductPage from '../pages/product/UpdateProductPage';
 import ViewProductPage from '../pages/product/ViewProductPage';
 import ProtectedRoute from '../pages/ProtectedRoute';
-import ShoppingChart from '../pages/ShoppingChart';
+import ShoppingChartPage from '../pages/ShoppingChartPage';
 import SignupPage from '../pages/SignupPage';
 import CreateSubCategoryPage from '../pages/subCategory/CreateSubCategoryPage';
 import SubCategoryPage from '../pages/subCategory/SubCategoryPage';
 import UpdateSubCategoryPage from '../pages/subCategory/UpdateSubCategoryPage';
 import ViewSubCategoryPage from '../pages/subCategory/ViewSubCategoryPage';
+import SingleProductPage from '../pages/collections/SingleProductPage';
 
 const routeList = [
   {
@@ -38,49 +40,59 @@ const routeList = [
     label: LinkText.Home,
   },
   {
-    path: MainPath.Collection,
+    path: ShopPath.Collection,
     element: <CollectionLandingPage />,
     label: LinkText.Collection,
   },
   {
-    path: 'collection/:category',
+    path: `${ShopPath.Collection}/:category`,
     element: <CollectionPage />,
     label: '',
   },
   {
-    path: MainPath.About,
-    element: <About />,
+    path: `${ShopPath.Collection}/:category/:id`,
+    element: <SingleProductPage />,
+    label: '',
+  },
+  {
+    path: AdminPath.About,
+    element: <AboutPage />,
     label: LinkText.About,
   },
   {
-    path: MainPath.Contact,
-    element: <Contact />,
+    path: ShopPath.Contact,
+    element: <ContactPage />,
     label: LinkText.Contact,
   },
   {
-    path: MainPath.Login,
+    path: ShopPath.Login,
     element: <LoginPage />,
-    label: LinkText.Kids,
+    label: LinkText.Login,
   },
   {
-    path: MainPath.Signup,
+    path: ShopPath.Signup,
     element: <SignupPage />,
-    label: LinkText.Kids,
+    label: LinkText.Signup,
   },
   {
-    path: MainPath.MyAccount,
+    path: ShopPath.MyAccount,
     element: <MyAccount />,
-    label: LinkText.Kids,
+    label: LinkText.MyAccount,
   },
   {
-    path: MainPath.Orders,
+    path: ShopPath.MyOrders,
     element: <Orders />,
     label: LinkText.Kids,
   },
   {
-    path: MainPath.ShoppingCart,
-    element: <ShoppingChart />,
+    path: ShopPath.ShoppingCart,
+    element: <ShoppingChartPage />,
     label: LinkText.Kids,
+  },
+  {
+    path: ShopPath.Favorites,
+    element: <FavoritesPage />,
+    label: LinkText.Favorites,
   },
 ];
 
@@ -91,77 +103,77 @@ export const adminRouteList = [
     label: LinkText.Dashboard,
   },
   {
-    path: MainPath.Users,
+    path: ShopPath.Users,
     element: <UserPage />,
     label: LinkText.Users,
   },
   {
-    path: MainPath.AdminUserCreate,
+    path: AdminPath.AdminUserCreate,
     element: <CreateUserPage />,
     label: LinkText.CreateNewUser,
   },
   {
-    path: MainPath.AdminCategoryCreate,
+    path: AdminPath.AdminCategoryCreate,
     element: <CreateCategoryPage />,
     label: LinkText.CreateNewCategory,
   },
   {
-    path: MainPath.AdminSubCategoryCreate,
+    path: AdminPath.AdminSubCategoryCreate,
     element: <CreateSubCategoryPage />,
     label: LinkText.CreateNewCategory,
   },
   {
-    path: `${MainPath.AdminCategoryUpdate}/:id`,
+    path: `${AdminPath.AdminCategoryUpdate}/:id`,
     element: <UpdateCategoryPage />,
     label: '',
   },
   {
-    path: `${MainPath.AdminSubCategoryUpdate}/:id`,
+    path: `${AdminPath.AdminSubCategoryUpdate}/:id`,
     element: <UpdateSubCategoryPage />,
     label: '',
   },
   {
-    path: MainPath.AdminSubCategories,
+    path: AdminPath.AdminSubCategories,
     element: <SubCategoryPage />,
     label: LinkText.Categories,
   },
   {
-    path: `${MainPath.AdminSubCategoryView}/:id`,
+    path: `${AdminPath.AdminSubCategoryView}/:id`,
     element: <ViewSubCategoryPage />,
     label: '',
   },
   {
-    path: MainPath.AdminProfile,
+    path: AdminPath.AdminProfile,
     element: <ProfilePage />,
     label: LinkText.Profile,
   },
   {
-    path: MainPath.AdminProducts,
+    path: AdminPath.AdminProducts,
     element: <ProductPage />,
     label: LinkText.Products,
   },
   {
-    path: `${MainPath.AdminProductView}/:id`,
+    path: `${AdminPath.AdminProductView}/:id`,
     element: <ViewProductPage />,
     label: '',
   },
   {
-    path: MainPath.AdminProductCreate,
+    path: AdminPath.AdminProductCreate,
     element: <CreateProductPage />,
     label: LinkText.CreateNewProduct,
   },
   {
-    path: `${MainPath.AdminProductUpdate}/:id`,
+    path: `${AdminPath.AdminProductUpdate}/:id`,
     element: <UpdateProductPage />,
     label: '',
   },
   {
-    path: MainPath.AdminCategories,
+    path: AdminPath.AdminCategories,
     element: <CategoryPage />,
     label: LinkText.Categories,
   },
   {
-    path: MainPath.AdminOrders,
+    path: AdminPath.AdminOrders,
     element: <OrderPage />,
     label: LinkText.Orders,
   },
@@ -169,7 +181,7 @@ export const adminRouteList = [
 
 const routeConfig = createBrowserRouter([
   {
-    path: MainPath.Root,
+    path: ShopPath.Root,
     errorElement: <ErrorPage />,
     element: <Layout />,
     children: routeList,
@@ -178,7 +190,7 @@ const routeConfig = createBrowserRouter([
     element: <ProtectedRoute />,
     children: [
       {
-        path: MainPath.Admin,
+        path: AdminPath.Admin,
         element: <AdminLayout />,
         children: adminRouteList,
       },

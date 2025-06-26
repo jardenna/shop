@@ -14,7 +14,7 @@ import Selectbox from '../../components/selectbox/Selectbox';
 import StatusOptions from '../../components/selectbox/StatusOptions';
 import SharedCategoryInputs from '../../components/SharedCategoryInputs';
 import useFormValidation from '../../hooks/useFormValidation';
-import { MainPath } from '../../layout/nav/enums';
+import { AdminPath } from '../../layout/nav/enums';
 import type { OptionType } from '../../types/types';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 import useLanguage from '../language/useLanguage';
@@ -114,7 +114,7 @@ const SubCategoryForm = ({
           message: language.categoryCreated,
         });
       }
-      navigate(MainPath.AdminSubCategories);
+      navigate(AdminPath.AdminSubCategories);
     } catch (error: any) {
       onAddMessagePopup({
         messagePopupType: 'error',

@@ -1,8 +1,9 @@
 @forward 'globals';
-@forward 'main';
+@forward 'base';
 @forward 'page';
 @forward 'buttons';
-@forward 'helper_classes';
+@forward 'utilities';
+@forward 'components';
 @forward 'popup';
 @forward 'animation';
 @forward 'error';

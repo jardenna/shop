@@ -1,85 +1,85 @@
 import { IconName } from '../../types/enums';
-import { FrontPath, LinkText, MainPath } from './enums';
+import { AdminPath, LinkText, ShopPath } from './enums';
 import type { NavItemsProps } from './Nav';
 
 const navList: NavItemsProps[] = [
   {
-    path: MainPath.Root,
+    path: ShopPath.Root,
     linkText: LinkText.Home,
   },
   {
-    path: MainPath.Collection,
+    path: ShopPath.Collection,
     linkText: LinkText.Collection,
     adHeading: 'discoverLatestTrends',
     subNav: [
       {
-        path: FrontPath.Women,
+        path: ShopPath.Women,
         linkText: LinkText.Women,
         infoText: 'collectionSubWomenText',
       },
       {
-        path: FrontPath.Men,
+        path: ShopPath.Men,
         linkText: LinkText.Men,
         infoText: 'collectionSubMenText',
         className: 'background-gray',
       },
       {
-        path: FrontPath.Kids,
+        path: ShopPath.Kids,
         linkText: LinkText.Kids,
         infoText: 'collectionSubKidsText',
       },
     ],
   },
   {
-    path: MainPath.About,
+    path: AdminPath.About,
     linkText: LinkText.About,
   },
   {
-    path: MainPath.Contact,
+    path: ShopPath.Contact,
     linkText: LinkText.Contact,
   },
 ];
 
 const authItemsList = [
   {
-    path: MainPath.Login,
+    path: ShopPath.Login,
     linkText: LinkText.Login,
   },
   {
-    path: MainPath.Signup,
+    path: ShopPath.Signup,
     linkText: LinkText.Signup,
   },
 ];
 
 const adminNavList: NavItemsProps[] = [
   {
-    path: MainPath.AdminProfile,
+    path: AdminPath.AdminProfile,
     linkText: LinkText.Account,
     iconName: IconName.Account,
     iconSize: '24',
   },
   {
-    path: MainPath.AdminProducts,
+    path: AdminPath.AdminProducts,
     linkText: LinkText.Products,
     iconName: IconName.Products,
   },
   {
-    path: MainPath.AdminCategories,
+    path: AdminPath.AdminCategories,
     linkText: LinkText.Categories,
     iconName: IconName.Categories,
   },
   {
-    path: MainPath.AdminSubCategories,
+    path: AdminPath.AdminSubCategories,
     linkText: LinkText.SubCategories,
     iconName: IconName.SubCategories,
   },
   {
-    path: MainPath.Users,
+    path: ShopPath.Users,
     linkText: LinkText.Users,
     iconName: IconName.Users,
   },
   {
-    path: MainPath.AdminOrders,
+    path: AdminPath.AdminOrders,
     linkText: LinkText.Orders,
     iconName: IconName.Orders,
   },

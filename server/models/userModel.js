@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import { ALLOWED_ROLES } from '../config/constants.js';
+const { ObjectId } = mongoose.Schema;
 
 const UserSchema = new mongoose.Schema(
   {
@@ -27,7 +28,14 @@ const UserSchema = new mongoose.Schema(
       type: String,
       default: 'User',
     },
+    favorites: [
+      {
+        type: ObjectId,
+        ref: 'Product',
+      },
+    ],
   },
+
   { timestamps: true },
 );
 

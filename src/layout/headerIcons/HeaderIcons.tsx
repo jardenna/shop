@@ -1,13 +1,14 @@
 import { Link } from 'react-router';
 import DropdownBtn from '../../components/dropdownBtn/DropdownBtn';
+import useFavorites from '../../components/favorites/useFavorites';
 import IconContent from '../../components/IconContent';
-import Icon from '../../components/icons/Icon';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
+import VisuallyHidden from '../../components/VisuallyHidden';
 import useLanguage from '../../features/language/useLanguage';
 import { BtnVariant, IconName, SizeVariant } from '../../types/enums';
 import type { HeaderProps } from '../header/Header';
-import { MainPath } from '../nav/enums';
+import { ShopPath } from '../nav/enums';
 import LanguageCurrencyPreferences from './LanguageCurrencyPreferences';
 
 type OmittedHeaderProps = Omit<
@@ -30,6 +31,7 @@ const HeaderIcons = ({
   secondaryActionBtn,
 }: HeaderIconsProps) => {
   const { language } = useLanguage();
+  const { favorites } = useFavorites();
 
   return (
     <ul className="header-icon-list">
@@ -55,8 +57,12 @@ const HeaderIcons = ({
         </DropdownBtn>
       </li>
       <li>
-        <Link to={MainPath.ShoppingCart} className="btn btn-ghost">
-          <Icon iconName={IconName.ShoppingBack} title={language.bag} />
+        <Link to={ShopPath.ShoppingCart} className="btn btn-ghost">
+          <IconContent
+            iconName={IconName.ShoppingBag}
+            title={language.bag}
+            ariaLabel={language.viewCart}
+          />
         </Link>
       </li>
       <li>
@@ -84,8 +90,25 @@ const HeaderIcons = ({
           />
         </ModalContainer>
       </li>
+      <li>
+        <Link to={ShopPath.Favorites} className="btn btn-ghost favorite-link">
+          <IconContent
+            iconName={IconName.Heart}
+            title={language.heart}
+            ariaLabel={language.viewYourFavorites}
+          />
+          {favorites.length > 0 && (
+            <span className="favorites-count">
+              {favorites.length}
+              <VisuallyHidden> {language.productPlural}</VisuallyHidden>
+            </span>
+          )}
+        </Link>
+      </li>
     </ul>
   );
 };
 
 export default HeaderIcons;
+
+// Wish list, 8 Items

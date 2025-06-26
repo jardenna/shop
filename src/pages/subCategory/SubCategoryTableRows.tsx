@@ -3,7 +3,7 @@ import type { Status } from '../../app/api/apiTypes/adminApiTypes';
 import Badge from '../../components/badge/Badge';
 import MoreLink from '../../components/MoreLink';
 import useLanguage from '../../features/language/useLanguage';
-import { MainPath } from '../../layout/nav/enums';
+import { AdminPath } from '../../layout/nav/enums';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 
 type SubCategoryTableRowsProps = {
@@ -37,7 +37,7 @@ const SubCategoryTableRows = ({
       <td>
         <MoreLink
           linkText={language.viewCategory}
-          linkTo={`${MainPath.AdminSubCategoryView}/${id}`}
+          linkTo={`${AdminPath.AdminSubCategoryView}/${id}`}
         />
       </td>
     </tr>

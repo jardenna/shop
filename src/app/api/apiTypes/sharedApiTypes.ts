@@ -1,3 +1,5 @@
+import { MainCategory } from './adminApiTypes';
+
 export type RoleTypes = 'Employee' | 'User';
 export type Status = 'Published' | 'Inactive' | 'Scheduled';
 
@@ -26,6 +28,7 @@ export type BaseProduct = DefaultResponseType & {
   colors: string[];
   countInStock: number;
   description: string;
+  discount: number;
   id: string;
   images: string[];
   material: string;
@@ -36,7 +39,6 @@ export type BaseProduct = DefaultResponseType & {
   rating: number;
   reviews: ReviewResponse[];
   sizes: ProductSizes[];
-  discount?: number;
 };
 
 export type BaseProductParams = {
@@ -65,4 +67,12 @@ export type ReviewRequest = {
 export type BasePagination = {
   page: number;
   pages: number;
+};
+
+export type BaseSubCategory = DefaultResponseType & {
+  _id: string;
+  category: MainCategory;
+  categoryStatus: Status;
+  subCategoryName: string;
+  translationKey: string;
 };

@@ -2,7 +2,7 @@ import ProductPrice from '../features/currency/components/ProductPrice';
 import useLanguage from '../features/language/useLanguage';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
-const About = () => {
+const AboutPage = () => {
   const { language } = useLanguage();
 
   return (
@@ -15,4 +15,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AboutPage;

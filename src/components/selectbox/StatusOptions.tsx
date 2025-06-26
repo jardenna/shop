@@ -18,7 +18,7 @@ const StatusOptions = (props: OptionProps<Status>) => {
       render={(data) => (
         <>
           <span
-            className={`option-icon status-option ${data.status.toLowerCase()}`}
+            className={`option-box status-option ${data.status.toLowerCase()}`}
           >
             {getlowerCaseFirstLetter(data.status, language).substring(0, 1)}
           </span>

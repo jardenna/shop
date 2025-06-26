@@ -23,7 +23,7 @@ const CreateSubCategoryPage = () => {
       {isLoading && <SkeletonForm count={3} />}
       <PageContainer
         heading={language.createNewCategory}
-        onReset={() => refetch}
+        onReset={() => refetch()}
       >
         {allCategories && (
           <SubCategoryForm

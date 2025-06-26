@@ -1,4 +1,4 @@
-enum MainPath {
+enum AdminPath {
   About = 'about',
   Admin = 'admin',
   AdminCategories = '/admin/categories',
@@ -15,22 +15,22 @@ enum MainPath {
   AdminSubCategoryUpdate = '/admin/sub-categories/update',
   AdminSubCategoryView = '/admin/sub-categories/view',
   AdminUserCreate = '/admin/users/create',
+}
+
+enum ShopPath {
   Collection = 'collection',
   Contact = 'contact',
+  Favorites = '/favorites',
   Home = 'home',
+  Kids = '/collection/kids',
   Login = 'login',
+  Men = '/collection/men',
   MyAccount = 'myAccount',
-  Orders = 'myOrders',
+  MyOrders = 'myOrders',
   Root = '/',
   ShoppingCart = 'shopping-cart',
   Signup = 'signup',
-  Update = 'update',
   Users = '/admin/users',
-}
-
-enum FrontPath {
-  Kids = '/collection/kids',
-  Men = '/collection/men',
   Women = '/collection/women',
 }
 
@@ -46,6 +46,7 @@ enum LinkText {
   CreateNewUser = 'createNewUser',
   Dashboard = 'dashboard',
   Edit = 'edit',
+  Favorites = 'favorites',
   Home = 'home',
   Kids = 'kids',
   Login = 'login',
@@ -62,4 +63,4 @@ enum LinkText {
   Women = 'women',
 }
 
-export { FrontPath, LinkText, MainPath };
+export { AdminPath, LinkText, ShopPath };

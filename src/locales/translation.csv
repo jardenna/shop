@@ -10,6 +10,9 @@ addToStock;Add to stock;Tilføj til lager
 admin;Admin;Admin
 adminCannotBeDeleted;Administrator cannot be deleted;Administrator kan ikke slettes
 allowedFormats;Allowed formats;Tilladte formater
+available;Available;Tilgængelig
+unavailable;Unavailable;Ikke tilgængelig
+availableColors;Available colors;Tilgængelige farver
 asc;ascending;stigende
 bag;Bag;Indkøbskurv
 black;Black;Sort
@@ -91,10 +94,12 @@ errorAltText;A really guilty emoji;En meget skyldig emoji
 expandMenu;Expand menu;Udvid menu
 eye;Eye;Øje
 eyeClosed;Closed eye;Lukket øje
+favorites;Favorites;Favoritter
 fileExceedsSize;The selected file exceeds the 1MB limit; Den valgte fil overstiger grænsen på 1 MB. Upload venligst en mindre fil
 filesSuported;Files suported;Tilladte filer
 fillAll;Please fill all inputs;Udfyld venligst alle felter
 filter;Filter;Filtrer
+filterProducts;Filter products;Filtrer produkter
 filterRow;Filter row;Filtrer række
 filtersApplied;Filters applied;Filtre anvendt
 globe;Globe;Globus
@@ -104,6 +109,7 @@ grey;Grey;Grå
 grid;Grid;Grid
 gridLarge; Large grid;Bredt grid
 gridSmall; Small grid;Smalt grid
+heart;Heart;Hjerte
 heroText;Upgrade your wardrobe with exclusive deals!;Opgradér din garderobe med eksklusive tilbud!
 heroText1;For a limited time, enjoy incredible discounts on the latest fashion trends;I en begrænset periode kan du få fantastiske rabatter på de nyeste modetrends
 heroTitle;Exclusive Fashion Sale;Eksklusivt Modesalg
@@ -119,6 +125,7 @@ invalidUserData;Invalid user data;Ugyldig bruger data
 items;items;stk
 kids;Kids;Børn
 language;Language;Sprog
+list;List;Liste
 loading;Loading;Loading
 lock;Lock;Hængelås
 loggedOut;Logged out successfully;Logget ud
@@ -195,6 +202,7 @@ productNameRequired;Please insert product name;Indsæt venligst produktnavn
 productNotFound;Product not found;Produktet findes ikke
 productQuantity;Product quantity;Produkt antal
 products;Products;Produkter
+productPlural;Product(s);Produkt(er)
 productsInStock;Products in stock;Antal produkter på lager
 productsInSubcategory;Products linked to subcategory;Produkter tilknyttet denne underkategori
 productStatus;Product status;Produkt status
@@ -208,10 +216,13 @@ publishTime;Publish time;Udgivelsestidspunkt
 purple;Purple;Lilla
 qty;Qty;Antal
 red;Red;Rød
+removeFromFavorit;Remove  from favorite;Fjern fra favorit
 resetFiltersAndSorting;Reset filters and sorting;Nulstil filtre og sortering
 retry;Retry;Forsøg igen
 role;Role;Rolle
+sale;Sale;Udsalg
 save;Save;Gem
+saveAsFavorit;Save as favorite;Gem som favorit
 scheduled;Scheduled;Planlagt
 scheduledDate;Scheduled date;Planlagt dato
 scheduledDateMustBeFuture;Scheduled date must be after now;Planlagt dato skal være efter nu
@@ -239,6 +250,7 @@ signup;Sign up;Opret bruger
 signupFailed;Sign up failed;Registrering mislykkedes
 signupSucceeded;Sign up succeeded;Registrering lykkedes
 sizeRequired;Please select at least one size;Vælg mindst 1 størrelse
+size;Size;Størrelse
 sizes;Sizes;Størrelser
 somethingWentWrong;Something went wrong, please try again;Noget gik galt, forsøg venligst igen
 sort;Sort;Sorter
@@ -272,9 +284,13 @@ username;User name;Brugernavn
 users;Users;Brugere
 userUpdated;User updated;Bruger opdateret
 view;View;Se
+viewAsGrid;View as grid;Gridvisning
+viewAsList;View as list;Listevisning
+viewCart;View your cart;Se din indkøbskurv
 viewCategory;View category;Se kategori
 viewProduct;View product;Se produkt
 viewScheduledDate;View scheduled date;Se planlagt dato
+viewYourFavorites;View your favorites;Se dine favoritter
 warning;Warning;Warning
 welcome;Welcome;Velkommen
 white;White;Hvid
