@@ -253,7 +253,7 @@ const getMenuByParentCategory = asyncHandler(async (req, res) => {
     })
     .map(({ label, categoryId }) => ({ label, categoryId }));
 
-  res.status(200).json({ success: true, data: menu });
+  res.status(200).json(menu);
 });
 
 // @desc    Update SubCategory
