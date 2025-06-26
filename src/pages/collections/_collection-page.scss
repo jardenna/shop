@@ -224,7 +224,7 @@
 /* stylelint-disable-next-line no-descending-specificity */
 .product-overlay-items {
   position: absolute;
-  transform: translateY(100%);
+  transform: translateY(0);
   width: 100%;
 
   @include transition($what: transform);
