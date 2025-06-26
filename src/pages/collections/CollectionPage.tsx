@@ -1,5 +1,5 @@
 import { ErrorBoundary } from 'react-error-boundary';
-import { Link, useParams } from 'react-router';
+import { Link, NavLink, useParams } from 'react-router';
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 import { routeBreadcrumbs } from '../../components/breadcrumbs/breadcrumbsRoutes';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
@@ -13,6 +13,7 @@ import {
   useGetShopMenuQuery,
 } from '../../features/shop/shopApiSlice';
 import LayoutElement from '../../layout/LayoutElement';
+import { ShopPath } from '../../layout/nav/enums';
 import MetaTags from '../../layout/nav/MetaTags';
 import ProductDiscountPrice from '../product/ProductDiscountPrice';
 import './_collection-page.scss';
@@ -21,7 +22,7 @@ import ProductViews from './ProductViews';
 
 const CollectionPage = () => {
   const { language } = useLanguage();
-  const { category } = useParams();
+  const { category, categoryId } = useParams();
 
   // Redux hooks
 
@@ -32,6 +33,7 @@ const CollectionPage = () => {
   } = useGetProductsQuery({
     pageSize: '100',
     mainCategory: category,
+    subCategoryId: categoryId || '',
   });
 
   const { data: subMenu } = useGetShopMenuQuery(category || 'women');
@@ -61,9 +63,18 @@ const CollectionPage = () => {
                 </LayoutElement>
                 <LayoutElement as="nav" ariaLabel={language.page}>
                   <ul className="collection-nav-list">
-                    {subMenu?.map(({ label }) => (
+                    <li className="collection-nav-item">
+                      <NavLink to={`/${ShopPath.Collection}/${category}`}>
+                        Vis alle
+                      </NavLink>
+                    </li>
+                    {subMenu?.map(({ label, categoryId }) => (
                       <li className="collection-nav-item" key={label}>
-                        {label}
+                        <NavLink
+                          to={`/${ShopPath.Collection}/${category}/${categoryId}`}
+                        >
+                          {label}
+                        </NavLink>
                       </li>
                     ))}
                   </ul>

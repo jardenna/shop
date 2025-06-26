@@ -15,6 +15,7 @@ import CreateCategoryPage from '../pages/category/CreateCategoryPage';
 import UpdateCategoryPage from '../pages/category/UpdateCategoryPage';
 import CollectionLandingPage from '../pages/collections/CollectionLandingPage';
 import CollectionPage from '../pages/collections/CollectionPage';
+import SingleProductPage from '../pages/collections/SingleProductPage';
 import ContactPage from '../pages/ContactPage';
 import ErrorPage from '../pages/ErrorPage';
 import FavoritesPage from '../pages/FavoritesPage';
@@ -31,7 +32,6 @@ import CreateSubCategoryPage from '../pages/subCategory/CreateSubCategoryPage';
 import SubCategoryPage from '../pages/subCategory/SubCategoryPage';
 import UpdateSubCategoryPage from '../pages/subCategory/UpdateSubCategoryPage';
 import ViewSubCategoryPage from '../pages/subCategory/ViewSubCategoryPage';
-import SingleProductPage from '../pages/collections/SingleProductPage';
 
 const routeList = [
   {
@@ -46,6 +46,11 @@ const routeList = [
   },
   {
     path: `${ShopPath.Collection}/:category`,
+    element: <CollectionPage />,
+    label: '',
+  },
+  {
+    path: `${ShopPath.Collection}/:category/:categoryId`,
     element: <CollectionPage />,
     label: '',
   },
