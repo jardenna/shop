@@ -40,7 +40,17 @@ app.use(cors(corsOptions)); // Use the CORS middleware with options
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.json()); // Ensure this is before the routes
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+app.use(
+  express.static(path.join(__dirname, 'public'), {
+    setHeaders: (res, filePath) => {
+      // Kun sæt cache headers på uploads
+      if (filePath.includes('/images/uploads')) {
+        res.setHeader('Cache-Control', 'public, max-age=2592000, immutable');
+      }
+    },
+  }),
+);
 
 app.use('/api/users', userRoutes);
 app.use('/api/auth', authRoutes);
