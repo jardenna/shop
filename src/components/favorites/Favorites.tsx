@@ -12,7 +12,8 @@ type FavoritesProps = {
 
 const Favorites = ({ id }: FavoritesProps) => {
   const { language } = useLanguage();
-  const { isFavorite, toggleFavorite, isTogglingLoading } = useFavorites();
+  const { isFavorite, toggleFavorite, isTogglingLoading, animate } =
+    useFavorites({ id });
 
   const handleChange = (event: ChangeEvent) => {
     event.stopPropagation();
@@ -25,10 +26,12 @@ const Favorites = ({ id }: FavoritesProps) => {
         <Icon
           title={language.heart}
           iconName={IconName.Heart}
-          className={`heart-icon ${isFavorite(id) ? 'animate' : 'animate-back'}`}
+          className={`heart-icon ${animate ? 'animate' : ''}`}
         />
         <VisuallyHidden>
-          {isFavorite(id) ? language.removeFromFavorit : language.saveAsFavorit}
+          {animate || isFavorite(id)
+            ? language.removeFromFavorit
+            : language.saveAsFavorit}
         </VisuallyHidden>
       </label>
       <input
