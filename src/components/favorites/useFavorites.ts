@@ -23,7 +23,7 @@ export const useFavorites = ({ id }: { id?: string }) => {
         if (favorite.id === productId) {
           return {
             ...favorite,
-            isLiked: !favorite.id,
+            isFavorite: !favorite.id,
           };
         }
         return favorite;
