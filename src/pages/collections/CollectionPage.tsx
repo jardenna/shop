@@ -12,6 +12,7 @@ import {
   useGetProductsQuery,
   useGetShopMenuQuery,
 } from '../../features/shop/shopApiSlice';
+import useLocalStorage, { localStorageKeys } from '../../hooks/useLocalStorage';
 import LayoutElement from '../../layout/LayoutElement';
 import { ShopPath } from '../../layout/nav/enums';
 import MetaTags from '../../layout/nav/MetaTags';
@@ -25,7 +26,6 @@ const CollectionPage = () => {
   const { category, categoryId } = useParams();
 
   // Redux hooks
-
   const {
     data: products,
     isLoading,
@@ -39,6 +39,11 @@ const CollectionPage = () => {
   const { data: subMenu } = useGetShopMenuQuery(category || 'women');
 
   const categoryText = category ? language[category] : '';
+
+  const [prouctView, setProuctView] = useLocalStorage(
+    localStorageKeys.prouctView,
+    'grid',
+  );
 
   return (
     <>
@@ -94,11 +99,12 @@ const CollectionPage = () => {
                   <section className="product-toolbar">
                     <ProductViews
                       productCount={products?.productCount || null}
+                      onSelectProductView={setProuctView}
                     />
                     <FilterPanel />
                   </section>
 
-                  <div className="product-card-list">
+                  <div className={`product-card-list ${prouctView}`}>
                     {products?.products.map((product) => (
                       <div key={product.id}>
                         <section className="product-card">

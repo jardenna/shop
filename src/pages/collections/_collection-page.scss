@@ -170,6 +170,21 @@
 .product-card-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+
+  &.list {
+    grid-template-columns: repeat(1, 1fr);
+
+    .product-card {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .product-card-img {
+      width: rem(300px);
+      height: rem(352px);
+    }
+  }
 }
 
 .product-card-content {
