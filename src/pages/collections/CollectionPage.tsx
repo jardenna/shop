@@ -109,50 +109,48 @@ const CollectionPage = () => {
                     className={`product-card-list ${productView === 'list' ? 'list' : ''}`}
                   >
                     {products?.products.map((product) => (
-                      <div key={product.id}>
-                        <section className="product-card">
-                          <div className="img-container">
-                            <Favorites id={product.id} />
-                            {product.discount > 0 && (
-                              <span className="product-badge">
-                                {language.sale}
-                              </span>
-                            )}
-                            <Link to={product.id}>
-                              <Img
-                                alt=""
-                                src={product.images[0]}
-                                className="product-card-img"
-                              />
-                            </Link>
-                            {productView === 'grid' && (
-                              <div className="product-overlay-items">
-                                <ProductSizeList sizes={product.sizes} />
-                              </div>
-                            )}
-                          </div>
-                          <div className="product-card-content">
-                            <h2 className="product-card-title">
-                              {product.productName}
-                            </h2>
-                            {productView === 'list' && (
-                              <p>{product.description}</p>
-                            )}
-                            <ProductDiscountPrice
-                              price={product.price}
-                              discount={product.discount || 0}
+                      <section className="product-card" key={product.id}>
+                        <div className="img-container">
+                          <Favorites id={product.id} />
+                          {product.discount > 0 && (
+                            <span className="product-badge">
+                              {language.sale}
+                            </span>
+                          )}
+                          <Link to={product.id}>
+                            <Img
+                              alt=""
+                              src={product.images[0]}
+                              className="product-card-img"
                             />
-                            {productView === 'list' && (
+                          </Link>
+                          {productView === 'grid' && (
+                            <div className="product-overlay-items">
                               <ProductSizeList sizes={product.sizes} />
-                            )}
-                            <ProductColorList
-                              colours={product.colors}
-                              count={3}
-                              optionSize={productView === 'grid' ? 'small' : ''}
-                            />
-                          </div>
-                        </section>
-                      </div>
+                            </div>
+                          )}
+                        </div>
+                        <div className="product-card-content">
+                          <h2 className="product-card-title">
+                            {product.productName}
+                          </h2>
+                          {productView === 'list' && (
+                            <p>{product.description}</p>
+                          )}
+                          <ProductDiscountPrice
+                            price={product.price}
+                            discount={product.discount || 0}
+                          />
+                          {productView === 'list' && (
+                            <ProductSizeList sizes={product.sizes} />
+                          )}
+                          <ProductColorList
+                            colours={product.colors}
+                            count={3}
+                            optionSize={productView === 'grid' ? 'small' : ''}
+                          />
+                        </div>
+                      </section>
                     ))}
                   </div>
                 </div>
