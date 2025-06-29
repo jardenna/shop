@@ -1,13 +1,11 @@
-import { startTransition, useOptimistic, useState } from 'react';
-import { Favorites } from '../../app/api/apiTypes/shopApiTypes';
+import { useState } from 'react';
 import {
   useGetFavoritesQuery,
   useToggleFavoriteMutation,
 } from '../../features/shop/shopApiSlice';
 
-const useFavorites = ({ id }: { id?: string }) => {
+export const useFavorites = ({ id }: { id?: string }) => {
   const { data: favorites = [], isLoading, isError } = useGetFavoritesQuery();
-
   const [toggleFavorite, { isLoading: isTogglingLoading }] =
     useToggleFavoriteMutation();
 
@@ -16,35 +14,17 @@ const useFavorites = ({ id }: { id?: string }) => {
 
   const [animate, setAnimate] = useState(isFavorite(id || ''));
 
-  const [optimisticFavorites, setOptimisticFavorites] = useOptimistic(
-    favorites,
-    (favorites: Favorites[], productId: string) =>
-      favorites.map((favorite) => {
-        if (favorite.id === productId) {
-          return {
-            ...favorite,
-            isFavorite: !favorite.id,
-          };
-        }
-        return favorite;
-      }),
-  );
-
-  const handleToggle = (productId: string) => {
+  const handleToggle = async (productId: string) => {
+    setAnimate(!animate);
     try {
-      startTransition(async () => {
-        setOptimisticFavorites(productId);
-        await toggleFavorite(productId).unwrap();
-      });
-
-      setAnimate(!animate);
-    } catch (error) {
-      console.error(error);
+      await toggleFavorite(productId).unwrap();
+    } catch (err) {
+      console.error('Failed to toggle favorite:', err);
     }
   };
 
   return {
-    favorites: optimisticFavorites,
+    favorites,
     isFavorite,
     toggleFavorite: handleToggle,
     isLoading,
