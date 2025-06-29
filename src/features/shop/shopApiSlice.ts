@@ -48,19 +48,18 @@ const shopApiSlice = apiSlice.injectEndpoints({
             undefined,
             (draft) => {
               // draft is the current favorites array
-              // We need to toggle productId inside draft optimistically
-              const index = draft.findIndex((fav) => fav.id === productId);
+              const partialDraft = draft as unknown as Array<{ id: string }>;
+              const index = partialDraft.findIndex(
+                (fav) => fav.id === productId,
+              );
               if (index === -1) {
-                // not in favorites, add it
-                draft.push({ productId } as any); // adjust type accordingly
+                partialDraft.push({ id: productId });
               } else {
-                // already in favorites, remove it
                 draft.splice(index, 1);
               }
             },
           ),
         );
-
         try {
           await queryFulfilled;
         } catch {
