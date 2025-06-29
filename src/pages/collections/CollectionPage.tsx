@@ -19,6 +19,7 @@ import MetaTags from '../../layout/nav/MetaTags';
 import ProductDiscountPrice from '../product/ProductDiscountPrice';
 import './_collection-page.scss';
 import FilterPanel from './FilterPanel';
+import ProductSizeList from './ProductSizeList';
 import ProductViews from './ProductViews';
 
 const CollectionPage = () => {
@@ -122,14 +123,11 @@ const CollectionPage = () => {
                                 className="product-card-img"
                               />
                             </Link>
-
-                            <div className="product-overlay-items">
-                              <ul className="size-overlay">
-                                {product.sizes.map((size) => (
-                                  <li key={size}>{size}</li>
-                                ))}
-                              </ul>
-                            </div>
+                            {productView === 'grid' && (
+                              <div className="product-overlay-items">
+                                <ProductSizeList sizes={product.sizes} />
+                              </div>
+                            )}
                           </div>
                           <div className="product-card-content">
                             <h2 className="product-card-title">
@@ -142,10 +140,13 @@ const CollectionPage = () => {
                               price={product.price}
                               discount={product.discount || 0}
                             />
+                            {productView === 'list' && (
+                              <ProductSizeList sizes={product.sizes} />
+                            )}
                             <ProductColorList
                               colours={product.colors}
                               count={3}
-                              optionSize="small"
+                              optionSize={productView === 'grid' ? 'small' : ''}
                             />
                           </div>
                         </section>

@@ -156,6 +156,14 @@
   position: relative;
   overflow: hidden;
 
+  .product-overlay-items {
+    position: absolute;
+    transform: translateY(0);
+    width: 100%;
+
+    @include transition($what: transform);
+  }
+
   &:hover {
     .product-overlay-items {
       transform: translateY(-100%);
@@ -230,13 +238,4 @@
   width: 100%;
   padding: 12px 4px;
   justify-content: center;
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-.product-overlay-items {
-  position: absolute;
-  transform: translateY(0);
-  width: 100%;
-
-  @include transition($what: transform);
 }
