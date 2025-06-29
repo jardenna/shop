@@ -173,7 +173,8 @@
 
 .product-card-list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+
+  @include grid-template-column;
 
   .product-card-img {
     border-radius: 0;
@@ -183,7 +184,7 @@
   }
 
   &.list {
-    grid-template-columns: repeat(1, 1fr);
+    @include grid-template-column(600);
 
     .product-card {
       display: flex;

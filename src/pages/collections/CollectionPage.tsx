@@ -105,7 +105,9 @@ const CollectionPage = () => {
                     <FilterPanel />
                   </section>
 
-                  <div className={`product-card-list ${productView}`}>
+                  <div
+                    className={`product-card-list ${productView === 'list' ? 'list' : ''}`}
+                  >
                     {products?.products.map((product) => (
                       <div key={product.id}>
                         <section className="product-card">
