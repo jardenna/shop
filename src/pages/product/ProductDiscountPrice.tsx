@@ -11,7 +11,7 @@ const ProductDiscountPrice = ({
   discount,
 }: ProductDiscountPriceProps) => (
   <span className="product-discont-price">
-    {discount && (
+    {!!discount && (
       <>
         <ProductPrice price={discountCalculation(price, discount)} />
         <span> / </span>
