@@ -12,19 +12,18 @@ const ProductDiscountPrice = ({
 }: ProductDiscountPriceProps) => {
   const productHasDiscount = discount && discount > 0;
   return (
-    <span className="product-price">
-      <ProductPrice
-        price={price}
-        className={productHasDiscount ? 'text-line-through' : ''}
-      />
+    <span className="product-discont-price">
       {productHasDiscount ? (
         <span>
-          {' '}
-          / <ProductPrice price={discountCalculation(price, discount)} />
+          <ProductPrice price={discountCalculation(price, discount)} /> /
         </span>
       ) : (
         ''
       )}
+      <ProductPrice
+        price={price}
+        className={productHasDiscount ? 'text-line-through' : ''}
+      />
     </span>
   );
 };

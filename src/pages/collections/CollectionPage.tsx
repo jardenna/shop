@@ -139,7 +139,7 @@ const CollectionPage = () => {
                           )}
                           <ProductDiscountPrice
                             price={product.price}
-                            discount={product.discount || 0}
+                            discount={product.discount}
                           />
                           {productView === 'list' && (
                             <ProductSizeList sizes={product.sizes} />
