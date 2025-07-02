@@ -5,30 +5,13 @@
   align-items: center;
   gap: 4px;
 
-  input {
-    appearance: none;
-    background-color: $color-white;
-    color: currentcolor;
-    width: rem(24px);
-    height: rem(24px);
-    border: 2px solid $color-border-secondary;
-    transform: translateY(-1.2px);
-    display: flex;
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-
-    &:focus-visible {
-      box-shadow: $box-shadow-input;
-      outline: transparent;
-    }
-
-    @include transition($time: 0.22s);
+  .form-label-container {
+    margin: 0;
   }
 
-  .form-label-container {
-    order: 2;
+  input {
+    appearance: none;
+    cursor: pointer;
   }
 
   label {
@@ -70,8 +53,29 @@
   display: flex;
   gap: 4px;
 
+  .form-label-container {
+    order: 2;
+  }
+
   input[type='radio'] {
     border-radius: 50%;
+    background-color: $color-white;
+    color: currentcolor;
+    width: rem(24px);
+    height: rem(24px);
+    border: 2px solid $color-border-secondary;
+    transform: translateY(-1.2px);
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+
+    &:focus-visible {
+      box-shadow: $box-shadow-input;
+      outline: transparent;
+    }
+
+    @include transition($time: 0.22s);
 
     &::before {
       content: '';
@@ -95,7 +99,10 @@
 }
 
 input[type='checkbox'] {
-  border-radius: 4px;
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
 
   &:checked {
     border-color: $color-border-secondary;
@@ -117,6 +124,19 @@ input[type='checkbox'] {
 .checkbox-list {
   display: flex;
   gap: 20px;
+
+  .checkbox-item {
+    border: 1px solid $color-border;
+    border-right-color: transparent;
+
+    &:last-child {
+      border-right-color: $color-border;
+    }
+
+    &:has(input:checked) {
+      background-color: $color-background;
+    }
+  }
 }
 
 .form-span-container {
