@@ -114,7 +114,7 @@ const CollectionPage = () => {
                           <Favorites id={product.id} />
                           {product.discount > 0 && (
                             <span className="product-badge">
-                              {language.sale}
+                              - {product.discount} %
                             </span>
                           )}
                           <Link to={product.id}>
