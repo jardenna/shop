@@ -3,7 +3,7 @@ import type { ChangeInputType, OptionType } from '../../types/types';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 import Input from './Input';
 
-export type RadioBtnVariant = 'card';
+type RadioBtnVariant = 'card';
 
 type RadioButtonProps = {
   initialChecked: string;
