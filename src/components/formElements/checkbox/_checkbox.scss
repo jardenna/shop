@@ -1,0 +1,56 @@
+@use '../../../scss/globals' as *;
+
+input[type='checkbox'] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+
+  &:checked {
+    border-color: $color-border-secondary;
+    background-color: $color-background-secondary;
+
+    &::before {
+      content: '';
+      position: relative;
+      top: -2px;
+      transform: rotate(45deg);
+      width: rem(3px);
+      height: rem(8px);
+      border-bottom: 2px solid $color-white;
+      border-right: 2px solid $color-white;
+    }
+  }
+}
+
+.checkbox-list {
+  display: flex;
+
+  .checkbox-item {
+    border: 1px solid $color-border;
+    border-right-color: transparent;
+
+    .form-label-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+
+      label {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 8px;
+      }
+    }
+
+    &:last-child {
+      border-right-color: $color-border;
+    }
+
+    &:has(input:checked) {
+      background-color: $color-background;
+    }
+  }
+}

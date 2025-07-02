@@ -24,6 +24,27 @@ input[type='number'] {
   opacity: 1;
 }
 
+.checkbox-radio-container {
+  display: flex;
+  min-width: 60px;
+  align-items: center;
+  height: 60px;
+  justify-content: center;
+
+  .form-label-container {
+    margin: 0;
+  }
+
+  input {
+    appearance: none;
+    cursor: pointer;
+  }
+
+  label {
+    cursor: pointer;
+  }
+}
+
 textarea {
   resize: none;
   min-height: rem(128px);

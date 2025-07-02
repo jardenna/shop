@@ -1,5 +1,5 @@
 import type { RoleTypes } from '../../app/api/apiTypes/adminApiTypes';
-import RadioButton from '../../components/formElements/RadioButton';
+import RadioButton from '../../components/formElements/radiobuttons/RadioButton';
 import type { ChangeInputType } from '../../types/types';
 import { roleButtonList } from '../../utils/utils';
 

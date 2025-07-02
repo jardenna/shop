@@ -1,7 +1,8 @@
-import useLanguage from '../../features/language/useLanguage';
-import type { ChangeInputType, OptionType } from '../../types/types';
-import { getlowerCaseFirstLetter } from '../../utils/utils';
-import Input from './Input';
+import useLanguage from '../../../features/language/useLanguage';
+import type { ChangeInputType, OptionType } from '../../../types/types';
+import { getlowerCaseFirstLetter } from '../../../utils/utils';
+import Input from '../Input';
+import './_radio-button.scss';
 
 type RadioBtnVariant = 'card';
 
