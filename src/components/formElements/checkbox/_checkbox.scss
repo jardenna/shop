@@ -11,8 +11,8 @@ input[type='checkbox'] {
   display: flex;
 
   .checkbox-radio-container {
-    min-width: 60px;
-    height: 60px;
+    min-width: rem(60px);
+    height: rem(60px);
     justify-content: center;
   }
 

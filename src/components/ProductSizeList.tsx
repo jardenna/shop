@@ -14,7 +14,7 @@ const ProductSizeList = ({ sizes }: ProductSizeListProps) => {
     <ul className="product-size-list" aria-label={language.sizes}>
       {sizeList.map((size) => (
         <li
-          className={`product-size-list-item ${sizes.includes(size) ? 'available' : 'unavailable'}`}
+          className={`product-size-item ${sizes.includes(size) ? 'available' : 'unavailable'}`}
           key={size}
         >
           {size}

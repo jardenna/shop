@@ -39,21 +39,22 @@
 
 .product-size-list {
   display: flex;
-  gap: 8px;
 
-  .product-size-list-item {
-    background-color: $color-secondary;
-    height: rem(40px);
-    min-width: rem(40px);
-    padding: 8px;
+  .product-size-item {
+    border: 1px solid $color-border;
+    border-right-color: transparent;
+    background-color: $color-background;
+    color: $color-gray-60;
+    min-width: rem(60px);
+    height: rem(60px);
     display: flex;
-    align-items: center;
     justify-content: center;
-    border-radius: 8px;
-    color: $color-gray-40;
+    align-items: center;
+    padding: 0 8px;
 
     &.available {
-      color: $color-primary;
+      background-color: $color-background-secondary;
+      color: $color-white;
     }
   }
 }
