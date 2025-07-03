@@ -47,6 +47,8 @@ const CollectionPage = () => {
     'grid',
   );
 
+  const displayList = productView === 'list';
+
   return (
     <>
       <MetaTags metaTitle={category} />
@@ -107,7 +109,7 @@ const CollectionPage = () => {
                   </section>
 
                   <div
-                    className={`product-card-list ${productView === 'list' ? 'list' : ''}`}
+                    className={`product-card-list ${displayList ? 'list' : ''}`}
                   >
                     {products?.products.map((product) => (
                       <section className="product-card" key={product.id}>
@@ -125,7 +127,7 @@ const CollectionPage = () => {
                               className="product-card-img"
                             />
                           </Link>
-                          {productView === 'grid' && (
+                          {!displayList && (
                             <div className="product-overlay-items">
                               <SizeOverlay sizes={product.sizes} />
                             </div>
@@ -136,14 +138,12 @@ const CollectionPage = () => {
                             {product.productName}
                           </h2>
 
-                          {productView === 'list' && (
-                            <p>{product.description}</p>
-                          )}
+                          {displayList && <p>{product.description}</p>}
                           <ProductDiscountPrice
                             price={product.price}
                             discount={product.discount || null}
                           />
-                          {productView === 'list' && (
+                          {displayList && (
                             <ProductSizeList
                               sizes={product.sizes}
                               variant="shop-product"
@@ -152,7 +152,7 @@ const CollectionPage = () => {
                           <ProductColorList
                             colours={product.colors}
                             count={3}
-                            optionSize={productView === 'grid' ? 'small' : ''}
+                            optionSize={displayList ? '' : 'small'}
                           />
                         </div>
                       </section>
