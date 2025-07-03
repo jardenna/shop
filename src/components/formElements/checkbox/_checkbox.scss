@@ -5,22 +5,6 @@ input[type='checkbox'] {
   opacity: 0;
   width: 0;
   height: 0;
-
-  &:checked {
-    border-color: $color-border-secondary;
-    background-color: $color-background-secondary;
-
-    &::before {
-      content: '';
-      position: relative;
-      top: -2px;
-      transform: rotate(45deg);
-      width: rem(3px);
-      height: rem(8px);
-      border-bottom: 2px solid $color-white;
-      border-right: 2px solid $color-white;
-    }
-  }
 }
 
 .checkbox-list {
