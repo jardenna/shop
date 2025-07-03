@@ -8,7 +8,7 @@ import Skeleton from '../components/skeleton/Skeleton';
 import useLanguage from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
 import FilterPanel from '../features/shop/components/FilterPanel';
-import ProductCard from '../features/shop/components/ProductCard';
+import ProductCardList from '../features/shop/components/ProductCardList';
 import ProductViews from '../features/shop/components/ProductViews';
 import {
   useGetProductsQuery,
@@ -45,8 +45,6 @@ const CollectionPage = () => {
     localStorageKeys.productView,
     'grid',
   );
-
-  const displayList = productView === 'list';
 
   return (
     <>
@@ -87,17 +85,12 @@ const CollectionPage = () => {
                     <FilterPanel />
                   </section>
 
-                  <div
-                    className={`product-card-list ${displayList ? 'list' : ''}`}
-                  >
-                    {products?.products.map((product) => (
-                      <ProductCard
-                        product={product}
-                        key={product.id}
-                        displayList={productView === 'list'}
-                      />
-                    ))}
-                  </div>
+                  {products && (
+                    <ProductCardList
+                      products={products.products}
+                      displayList={productView === 'list'}
+                    />
+                  )}
                 </div>
               </ErrorBoundary>
             </div>
