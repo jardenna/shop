@@ -57,6 +57,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/subcategories', subCategoryRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/collections', productRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api/favorites', favoritesRoutes);
 
