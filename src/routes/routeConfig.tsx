@@ -13,13 +13,13 @@ import UserPage from '../pages/admin/UserPage';
 import CategoryPage from '../pages/category/CategoryPage';
 import CreateCategoryPage from '../pages/category/CreateCategoryPage';
 import UpdateCategoryPage from '../pages/category/UpdateCategoryPage';
-import CollectionLandingPage from '../pages/CollectionLandingPage';
 import CollectionPage from '../pages/CollectionPage';
 import ContactPage from '../pages/ContactPage';
 import ErrorPage from '../pages/ErrorPage';
 import FavoritesPage from '../pages/FavoritesPage';
 import HomePage from '../pages/home/HomePage';
 import LoginPage from '../pages/LoginPage';
+import MainCollectionsPage from '../pages/MainCollectionsPage';
 import CreateProductPage from '../pages/product/CreateProductPage';
 import ProductPage from '../pages/product/ProductPage';
 import UpdateProductPage from '../pages/product/UpdateProductPage';
@@ -41,7 +41,7 @@ const routeList = [
   },
   {
     path: ShopPath.Collection,
-    element: <CollectionLandingPage />,
+    element: <MainCollectionsPage />,
     label: LinkText.Collection,
   },
   {
