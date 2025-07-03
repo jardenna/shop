@@ -1,5 +1,5 @@
-import useLanguage from '../../features/language/useLanguage';
-import MainPageContainer from '../pageContainer/MainPageContainer';
+import useLanguage from '../../../features/language/useLanguage';
+import MainPageContainer from '../../pageContainer/MainPageContainer';
 import './_collection-page.scss';
 import MainCollections from './MainCollections';
 

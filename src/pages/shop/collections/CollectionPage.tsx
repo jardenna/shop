@@ -1,26 +1,29 @@
 import { ErrorBoundary } from 'react-error-boundary';
-import { Link, NavLink, useParams } from 'react-router';
-import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
-import { routeBreadcrumbs } from '../../components/breadcrumbs/breadcrumbsRoutes';
-import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
-import Favorites from '../../components/favorites/Favorites';
-import Img from '../../components/Img';
-import ProductColorList from '../../components/ProductColorList';
-import ProductSizeList from '../../components/productSizeList/ProductSizeList';
-import Skeleton from '../../components/skeleton/Skeleton';
-import useLanguage from '../../features/language/useLanguage';
+import { Link, useParams } from 'react-router';
+import Breadcrumbs from '../../../components/breadcrumbs/Breadcrumbs';
+import { routeBreadcrumbs } from '../../../components/breadcrumbs/breadcrumbsRoutes';
+import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
+import Favorites from '../../../components/favorites/Favorites';
+import Img from '../../../components/Img';
+import ProductColorList from '../../../components/ProductColorList';
+import ProductSizeList from '../../../components/productSizeList/ProductSizeList';
+import Skeleton from '../../../components/skeleton/Skeleton';
+import useLanguage from '../../../features/language/useLanguage';
 import {
   useGetProductsQuery,
   useGetShopMenuQuery,
-} from '../../features/shop/shopApiSlice';
-import useLocalStorage, { localStorageKeys } from '../../hooks/useLocalStorage';
-import LayoutElement from '../../layout/LayoutElement';
-import { ShopPath } from '../../layout/nav/enums';
-import MetaTags from '../../layout/nav/MetaTags';
-import ProductDiscountPrice from '../product/ProductDiscountPrice';
+} from '../../../features/shop/shopApiSlice';
+import useLocalStorage, {
+  localStorageKeys,
+} from '../../../hooks/useLocalStorage';
+import LayoutElement from '../../../layout/LayoutElement';
+import { ShopPath } from '../../../layout/nav/enums';
+import MetaTags from '../../../layout/nav/MetaTags';
+import ProductDiscountPrice from '../../product/ProductDiscountPrice';
+import ProductViews from '../shopProducts/ProductViews';
 import './_collection-page.scss';
+import CollectionNav from './CollectionNav';
 import FilterPanel from './FilterPanel';
-import ProductViews from './ProductViews';
 import SizeOverlay from './SizeOverlay';
 
 const CollectionPage = () => {
@@ -38,7 +41,11 @@ const CollectionPage = () => {
     subCategoryId: categoryId || '',
   });
 
-  const { data: subMenu } = useGetShopMenuQuery(category || 'women');
+  const {
+    data: subMenu,
+    isLoading: subMenuLoading,
+    refetch: refetchSubMenu,
+  } = useGetShopMenuQuery(category || 'women');
 
   const categoryText = category ? language[category] : '';
 
@@ -70,24 +77,16 @@ const CollectionPage = () => {
                 >
                   <h1>{categoryText}</h1>
                 </LayoutElement>
-                <LayoutElement as="nav" ariaLabel={language.page}>
-                  <ul className="collection-nav-list">
-                    <li className="collection-nav-item">
-                      <NavLink to={`/${ShopPath.Collection}/${category}`}>
-                        Vis alle
-                      </NavLink>
-                    </li>
-                    {subMenu?.map(({ label, categoryId }) => (
-                      <li className="collection-nav-item" key={label}>
-                        <NavLink
-                          to={`/${ShopPath.Collection}/${category}/${categoryId}`}
-                        >
-                          {label}
-                        </NavLink>
-                      </li>
-                    ))}
-                  </ul>
-                </LayoutElement>
+                {subMenu && (
+                  <CollectionNav
+                    subMenu={subMenu}
+                    category={category || 'women'}
+                    showAllText={language.showAll}
+                    ariaLabel={language.page}
+                    isLoading={subMenuLoading}
+                    onReset={() => refetchSubMenu()}
+                  />
+                )}
               </aside>
 
               <ErrorBoundary

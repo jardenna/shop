@@ -1,6 +1,6 @@
-import IconBtn from '../../components/IconBtn';
-import useLanguage from '../../features/language/useLanguage';
-import { IconName } from '../../types/enums';
+import IconBtn from '../../../components/IconBtn';
+import useLanguage from '../../../features/language/useLanguage';
+import { IconName } from '../../../types/enums';
 
 type ProductViews = 'grid' | 'list';
 

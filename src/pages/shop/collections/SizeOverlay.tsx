@@ -1,4 +1,4 @@
-import { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
+import { ProductSizes } from '../../../app/api/apiTypes/sharedApiTypes';
 
 type SizeOverlayProps = {
   sizes: ProductSizes[];
