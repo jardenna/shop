@@ -24,7 +24,7 @@ import ProductViews from '../shopProducts/ProductViews';
 import './_collection-page.scss';
 import CollectionNav from './CollectionNav';
 import FilterPanel from './FilterPanel';
-import SizeOverlay from './SizeOverlay';
+import SizeOverlay from './sizeOverlay/SizeOverlay';
 
 const CollectionPage = () => {
   const { language } = useLanguage();
