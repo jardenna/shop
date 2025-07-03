@@ -17,11 +17,11 @@ const ProductSizeList = ({ sizes }: ProductSizeListProps) => {
           className={`product-size-list-item ${sizes.includes(size) ? 'available' : 'unavailable'}`}
           key={size}
         >
+          {size}
           <VisuallyHidden>
             {!sizes.includes(size) ? language.unavailable : language.available}{' '}
             {language.size}
           </VisuallyHidden>
-          {size}
         </li>
       ))}
     </ul>

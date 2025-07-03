@@ -10,6 +10,12 @@ input[type='checkbox'] {
 .checkbox-list {
   display: flex;
 
+  .checkbox-radio-container {
+    min-width: 60px;
+    height: 60px;
+    justify-content: center;
+  }
+
   .checkbox-item {
     border: 1px solid $color-border;
     border-right-color: transparent;
