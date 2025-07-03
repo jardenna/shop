@@ -13,6 +13,7 @@ input[type='checkbox'] {
   .checkbox-item {
     border: 1px solid $color-border;
     border-right-color: transparent;
+    background-color: $color-background;
 
     .form-label-container {
       width: 100%;
@@ -34,7 +35,8 @@ input[type='checkbox'] {
     }
 
     &:has(input:checked) {
-      background-color: $color-background;
+      background-color: $color-background-secondary;
+      color: $color-white;
     }
   }
 }
