@@ -1,24 +1,24 @@
 import { useParams } from 'react-router';
-import useLanguage from '../../features/language/useLanguage';
+import Img from '../../components/Img';
 import { useGetProductByIdQuery } from '../../features/shop/shopApiSlice';
-import MainPageContainer from '../pageContainer/MainPageContainer';
 
 const SingleProductPage = () => {
   const params = useParams();
 
   const { data: product } = useGetProductByIdQuery(params.id ?? '');
-  console.log(product);
 
-  const { language } = useLanguage();
+  // const { language } = useLanguage();
 
   return (
-    <MainPageContainer
-      heading={language.login}
-      className="page-small"
-      currentLabel={product?.productName}
-    >
-      {language.add}
-    </MainPageContainer>
+    <div>
+      <ul>
+        {product?.images.map((image) => (
+          <li key={image}>
+            <Img src={image} alt="" />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
