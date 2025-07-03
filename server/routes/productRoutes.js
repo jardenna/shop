@@ -4,7 +4,6 @@ import {
   createProduct,
   deleteProduct,
   duplicateProduct,
-  getCollectionById,
   getNewProducts,
   getProductById,
   getProducts,
@@ -29,7 +28,6 @@ router
   .post(languageMiddleware, authenticate, authorizeEmployee, createProduct);
 
 router.get('/scheduled', checkScheduled);
-router.get('/:id', getCollectionById);
 router.get('/allProducts', paginatedProducts, getSortedProducts);
 router.post('/:id/reviews', authenticate, checkId, createProductReviews);
 router.get('/top', getTopProducts);

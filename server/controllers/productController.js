@@ -388,21 +388,7 @@ const getProductById = asyncHandler(async (req, res) => {
       message: t('couldNotFindInfo', req.lang),
     });
   }
-});
 
-// @desc    Get Shop Product By ID
-// @route   /api/collections/:id
-// @method  Get
-// @access  Public
-const getCollectionById = asyncHandler(async (req, res) => {
-  const product = await Product.findById(req.params.id).lean();
-
-  if (!product) {
-    res.status(404).json({
-      success: false,
-      message: 'product not found',
-    });
-  }
   res.status(200).json(formatMongoData(product));
 });
 
@@ -426,7 +412,6 @@ export {
   createProduct,
   deleteProduct,
   duplicateProduct,
-  getCollectionById,
   getNewProducts,
   getProductById,
   getProducts,

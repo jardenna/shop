@@ -46,6 +46,10 @@ const routeBreadcrumbs: RouteListProps[] = [
     path: ShopPath.Favorites,
     label: LinkText.Favorites,
   },
+  {
+    path: ShopPath.Product,
+    label: LinkText.Products,
+  },
 ];
 
 const adminBreadcrumbs: RouteListProps[] = [
