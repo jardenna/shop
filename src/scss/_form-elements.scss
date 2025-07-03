@@ -24,6 +24,24 @@ input[type='number'] {
   opacity: 1;
 }
 
+.checkbox-radio-container {
+  display: flex;
+  align-items: center;
+
+  .form-label-container {
+    margin: 0;
+  }
+
+  input {
+    appearance: none;
+    cursor: pointer;
+  }
+
+  label {
+    cursor: pointer;
+  }
+}
+
 textarea {
   resize: none;
   min-height: rem(128px);
@@ -87,5 +105,5 @@ textarea {
   gap: 4px;
   display: flex;
   align-items: center;
-  margin-top: 4px;
+  margin-top: -14px;
 }

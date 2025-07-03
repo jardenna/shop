@@ -1,0 +1,10 @@
+@use '../../../../scss/globals' as *;
+
+.size-overlay {
+  gap: 30px;
+  display: flex;
+  background-color: rgb($color-white, 0.8);
+  width: 100%;
+  padding: 12px 4px;
+  justify-content: center;
+}

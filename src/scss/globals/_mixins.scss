@@ -1,5 +1,7 @@
 @use './colors' as *;
 @use './variables' as *;
+@use './functions' as *;
+@use 'sass:math';
 
 $animation-duration: 0.5s;
 $animation-timing-function: ease-in-out;
@@ -50,4 +52,12 @@ $animation-timing-function: ease-in-out;
 
 @mixin outline($color: $color-blue-30, $size: 2px) {
   outline: $size solid $color;
+}
+
+@mixin grid-template-column($size: 300px) {
+  @if math.is-unitless($size) or math.unit($size) == 'px' {
+    $size: rem($size);
+  }
+
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, $size), 1fr));
 }

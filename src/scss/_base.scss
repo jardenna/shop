@@ -2,7 +2,6 @@
 
 * {
   box-sizing: border-box;
-  font-family: $font-primary;
 
   $color-background: $color-background;
   $color-foreground: $color-gray-30;
@@ -42,6 +41,7 @@ body {
   font-size: $font-small;
   color: $color-primary;
   letter-spacing: rem(0.5px);
+  font-family: $font-primary;
 }
 
 h1,

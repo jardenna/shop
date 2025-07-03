@@ -17,14 +17,9 @@ export type ShopProductResponse = {
   success: boolean;
 };
 
-type ProductMenu = {
+export type ProductMenuResponse = {
   categoryId: string;
   label: string;
-};
-
-export type ProductMenuResponse = {
-  data: ProductMenu[];
-  success: boolean;
 };
 
 export type ToggleFavoriteResponse = {

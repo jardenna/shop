@@ -24,7 +24,7 @@ const shopApiSlice = apiSlice.injectEndpoints({
       },
       providesTags: [TagTypesEnum.Products],
     }),
-    getShopMenu: builder.query<ProductMenuResponse, string>({
+    getShopMenu: builder.query<ProductMenuResponse[], string>({
       query: (params) => `${subCategoryMenuUrl}${params}`,
       providesTags: [TagTypesEnum.Products],
     }),
@@ -37,8 +37,37 @@ const shopApiSlice = apiSlice.injectEndpoints({
         url: `${favoritesUrl}/${id}`,
         method: 'POST',
       }),
+      // Invalidate only if mutation succeeds, but we’ll optimistically update cache first
       invalidatesTags: [TagTypesEnum.Favorites],
+
+      async onQueryStarted(productId, { dispatch, queryFulfilled }) {
+        // Get current favorites cache value
+        const patchResult = dispatch(
+          shopApiSlice.util.updateQueryData(
+            'getFavorites',
+            undefined,
+            (draft) => {
+              // draft is the current favorites array
+              const partialDraft = draft as unknown as Array<{ id: string }>;
+              const index = partialDraft.findIndex(
+                (fav) => fav.id === productId,
+              );
+              if (index === -1) {
+                partialDraft.push({ id: productId });
+              } else {
+                draft.splice(index, 1);
+              }
+            },
+          ),
+        );
+        try {
+          await queryFulfilled;
+        } catch {
+          patchResult.undo(); // rollback on error
+        }
+      },
     }),
+
     getProductById: builder.query<BaseProduct, string>({
       query: (id) => `${productUrl}/${id}`,
     }),

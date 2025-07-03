@@ -31,7 +31,7 @@ const HeaderIcons = ({
   secondaryActionBtn,
 }: HeaderIconsProps) => {
   const { language } = useLanguage();
-  const { favorites } = useFavorites();
+  const { favorites } = useFavorites({});
 
   return (
     <ul className="header-icon-list">

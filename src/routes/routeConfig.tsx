@@ -13,8 +13,6 @@ import UserPage from '../pages/admin/UserPage';
 import CategoryPage from '../pages/category/CategoryPage';
 import CreateCategoryPage from '../pages/category/CreateCategoryPage';
 import UpdateCategoryPage from '../pages/category/UpdateCategoryPage';
-import CollectionLandingPage from '../pages/collections/CollectionLandingPage';
-import CollectionPage from '../pages/collections/CollectionPage';
 import ContactPage from '../pages/ContactPage';
 import ErrorPage from '../pages/ErrorPage';
 import FavoritesPage from '../pages/FavoritesPage';
@@ -25,13 +23,15 @@ import ProductPage from '../pages/product/ProductPage';
 import UpdateProductPage from '../pages/product/UpdateProductPage';
 import ViewProductPage from '../pages/product/ViewProductPage';
 import ProtectedRoute from '../pages/ProtectedRoute';
+import CollectionLandingPage from '../pages/shop/collections/CollectionLandingPage';
+import CollectionPage from '../pages/shop/collections/CollectionPage';
+import SingleProductPage from '../pages/shop/shopProducts/SingleProductPage';
 import ShoppingChartPage from '../pages/ShoppingChartPage';
 import SignupPage from '../pages/SignupPage';
 import CreateSubCategoryPage from '../pages/subCategory/CreateSubCategoryPage';
 import SubCategoryPage from '../pages/subCategory/SubCategoryPage';
 import UpdateSubCategoryPage from '../pages/subCategory/UpdateSubCategoryPage';
 import ViewSubCategoryPage from '../pages/subCategory/ViewSubCategoryPage';
-import SingleProductPage from '../pages/collections/SingleProductPage';
 
 const routeList = [
   {
@@ -50,7 +50,12 @@ const routeList = [
     label: '',
   },
   {
-    path: `${ShopPath.Collection}/:category/:id`,
+    path: `${ShopPath.Collection}/:category/:categoryId`,
+    element: <CollectionPage />,
+    label: '',
+  },
+  {
+    path: `${ShopPath.Product}/:id`,
     element: <SingleProductPage />,
     label: '',
   },

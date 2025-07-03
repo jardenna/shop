@@ -1,9 +1,10 @@
+import { useState } from 'react';
 import {
   useGetFavoritesQuery,
   useToggleFavoriteMutation,
 } from '../../features/shop/shopApiSlice';
 
-export const useFavorites = () => {
+export const useFavorites = ({ id }: { id?: string }) => {
   const { data: favorites = [], isLoading, isError } = useGetFavoritesQuery();
   const [toggleFavorite, { isLoading: isTogglingLoading }] =
     useToggleFavoriteMutation();
@@ -11,7 +12,10 @@ export const useFavorites = () => {
   const isFavorite = (productId: string) =>
     favorites.some((product) => product.id === productId);
 
+  const [animate, setAnimate] = useState(isFavorite(id || ''));
+
   const handleToggle = async (productId: string) => {
+    setAnimate(!animate);
     try {
       await toggleFavorite(productId).unwrap();
     } catch (err) {
@@ -26,6 +30,7 @@ export const useFavorites = () => {
     isLoading,
     isTogglingLoading,
     isError,
+    animate,
   };
 };
 

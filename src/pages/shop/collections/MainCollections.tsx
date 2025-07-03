@@ -1,5 +1,5 @@
-import useLanguage from '../../features/language/useLanguage';
-import { ShopPath } from '../../layout/nav/enums';
+import useLanguage from '../../../features/language/useLanguage';
+import { ShopPath } from '../../../layout/nav/enums';
 import MainCollectionsItem, {
   MainCollectionsItemProps,
 } from './MainCollectionsItem';

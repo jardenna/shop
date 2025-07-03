@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router';
-import Img from '../../components/Img';
-import { ShopPath } from '../../layout/nav/enums';
+import Img from '../../../components/Img';
+import { ShopPath } from '../../../layout/nav/enums';
 
 export type MainCollectionsItemProps = {
   linkText: string;

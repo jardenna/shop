@@ -31,10 +31,8 @@ const FormLabel = ({
       ) : (
         <label htmlFor={id} className={className}>
           {iconName && <Icon iconName={iconName} title={iconName} />}
-          <span>
-            {labelText}
-            {required && <span aria-hidden="true">*</span>}
-          </span>
+          {labelText}
+          {required && <span aria-hidden="true">*</span>}
         </label>
       )}
       {errorText && <FormError errorText={errorText} ariaErrorId={id} />}

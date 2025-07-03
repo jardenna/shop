@@ -74,46 +74,48 @@ const Input = ({
     }
   };
   return (
-    <div className={inputClassName}>
-      <FormLabel
-        required={required}
-        labelText={labelText}
-        id={id}
-        inputHasNoLabel={inputHasNoLabel}
-        errorText={errorText}
-      />
-      <input
-        ref={ref}
-        multiple={multiple}
-        type={type || 'text'}
-        name={name}
-        checked={checked}
-        onChange={onChange}
-        className={className}
-        value={value}
-        autoFocus={autoFocus}
-        id={id}
-        aria-disabled={disabled}
-        aria-invalid={errorText ? true : undefined}
-        aria-required={required && !disabled}
-        aria-errormessage={errorText ? `err-${id}` : undefined}
-        onBlur={onBlur}
-        placeholder={placeholder}
-        min={min}
-        max={max}
-        autoComplete={autoComplete}
-        onInput={handleOnInput}
-        onFocus={onFocus}
-        disabled={disabled}
-      />
-      {inputSuffix && <span className="input-suffix">{inputSuffix}</span>}
+    <>
+      <div className={inputClassName}>
+        <FormLabel
+          required={required}
+          labelText={labelText}
+          id={id}
+          inputHasNoLabel={inputHasNoLabel}
+          errorText={errorText}
+        />
+        <input
+          ref={ref}
+          multiple={multiple}
+          type={type || 'text'}
+          name={name}
+          checked={checked}
+          onChange={onChange}
+          className={className}
+          value={value}
+          autoFocus={autoFocus}
+          id={id}
+          aria-disabled={disabled}
+          aria-invalid={errorText ? true : undefined}
+          aria-required={required && !disabled}
+          aria-errormessage={errorText ? `err-${id}` : undefined}
+          onBlur={onBlur}
+          placeholder={placeholder}
+          min={min}
+          max={max}
+          autoComplete={autoComplete}
+          onInput={handleOnInput}
+          onFocus={onFocus}
+          disabled={disabled}
+        />
+        {inputSuffix && <span className="input-suffix">{inputSuffix}</span>}
+      </div>
       {inputHelpText && (
         <span className="input-help-text">
           <Icon iconName={IconName.Info} title="info" />
           <span>{inputHelpText}</span>
         </span>
       )}
-    </div>
+    </>
   );
 };
 

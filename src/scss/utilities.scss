@@ -60,7 +60,6 @@
 }
 
 .text-line-through {
-  color: $color-red-15;
   text-decoration: line-through;
 }
 
@@ -70,14 +69,6 @@
   &.grid-two-col {
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
-  }
-
-  &.grid-three-col {
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-
-    @include max-size($small) {
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
   }
 }
 

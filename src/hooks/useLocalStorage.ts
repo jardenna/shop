@@ -23,6 +23,7 @@ export const localStorageKeys = {
   currencyApiError: 'currency_api_error',
   tableCellPadding: 'padding',
   menuCollapsed: 'menuCollapsed',
+  productView: 'productView',
 };
 
 export default useLocalStorage;
