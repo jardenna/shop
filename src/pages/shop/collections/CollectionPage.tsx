@@ -16,13 +16,12 @@ import {
 import useLocalStorage, {
   localStorageKeys,
 } from '../../../hooks/useLocalStorage';
-import LayoutElement from '../../../layout/LayoutElement';
 import { ShopPath } from '../../../layout/nav/enums';
 import MetaTags from '../../../layout/nav/MetaTags';
 import ProductDiscountPrice from '../../product/ProductDiscountPrice';
 import ProductViews from '../shopProducts/ProductViews';
 import './_collection-page.scss';
-import CollectionNav from './CollectionNav';
+import CollectionAside from './collectionAside/CollectionAside';
 import FilterPanel from './FilterPanel';
 import SizeOverlay from './sizeOverlay/SizeOverlay';
 
@@ -69,25 +68,13 @@ const CollectionPage = () => {
               currentLabel={categoryText}
             />
             <div className="collection-page-container">
-              <aside className="collection-aside">
-                <LayoutElement
-                  ariaLabel={language.page}
-                  as="header"
-                  className="collection-header"
-                >
-                  <h1>{categoryText}</h1>
-                </LayoutElement>
-                {subMenu && (
-                  <CollectionNav
-                    subMenu={subMenu}
-                    category={category || 'women'}
-                    showAllText={language.showAll}
-                    ariaLabel={language.page}
-                    isLoading={subMenuLoading}
-                    onReset={() => refetchSubMenu()}
-                  />
-                )}
-              </aside>
+              <CollectionAside
+                subMenu={subMenu || null}
+                category={category || 'women'}
+                isLoading={subMenuLoading}
+                onReset={() => refetchSubMenu()}
+                asideHeading={categoryText}
+              />
 
               <ErrorBoundary
                 FallbackComponent={ErrorBoundaryFallback}

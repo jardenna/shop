@@ -91,46 +91,6 @@
   gap: 12px;
 }
 
-.collection-aside {
-  background-color: $color-light-gray-10;
-  min-width: rem(252px);
-}
-
-.collection-nav-list {
-  display: flex;
-  gap: 20px;
-  flex-direction: column;
-  font-size: rem(16px);
-  padding: 20px 16px;
-
-  .collection-nav-item {
-    display: flex;
-    align-items: center;
-
-    &::marker {
-      content: '';
-    }
-
-    &::before {
-      content: '▪▪\A▪▪';
-      white-space: pre;
-      display: inline-block;
-      line-height: 0.4;
-      font-size: 16px;
-      margin-right: 8px;
-    }
-  }
-}
-
-.collection-header {
-  background-color: $color-light-gray-20;
-  border-bottom: 4px solid $color-gray-40;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 32px;
-}
-
 .product-toolbar {
   display: flex;
   justify-content: space-between;
