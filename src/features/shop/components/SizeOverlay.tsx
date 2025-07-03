@@ -1,5 +1,5 @@
 import { ProductSizes } from '../../../app/api/apiTypes/sharedApiTypes';
-import './CollectionAside.styles.scss';
+import './SizeOverlay.styles.scss';
 
 type SizeOverlayProps = {
   sizes: ProductSizes[];
