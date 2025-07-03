@@ -55,7 +55,7 @@ const routeList = [
     label: '',
   },
   {
-    path: `${ShopPath.Collection}/:category/:id`,
+    path: `${ShopPath.Product}/:id`,
     element: <SingleProductPage />,
     label: '',
   },

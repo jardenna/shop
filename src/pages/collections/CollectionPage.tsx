@@ -118,7 +118,7 @@ const CollectionPage = () => {
                               - {product.discount} %
                             </span>
                           )}
-                          <Link to={product.id}>
+                          <Link to={`/${ShopPath.Product}/${product.id}`}>
                             <Img
                               alt=""
                               src={product.images[0]}
