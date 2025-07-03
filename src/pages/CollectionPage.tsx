@@ -1,29 +1,27 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { Link, useParams } from 'react-router';
-import Breadcrumbs from '../../../components/breadcrumbs/Breadcrumbs';
-import { routeBreadcrumbs } from '../../../components/breadcrumbs/breadcrumbsRoutes';
-import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
-import Favorites from '../../../components/favorites/Favorites';
-import Img from '../../../components/Img';
-import ProductColorList from '../../../components/ProductColorList';
-import ProductSizeList from '../../../components/productSizeList/ProductSizeList';
-import Skeleton from '../../../components/skeleton/Skeleton';
-import useLanguage from '../../../features/language/useLanguage';
+import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
+import { routeBreadcrumbs } from '../components/breadcrumbs/breadcrumbsRoutes';
+import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
+import Favorites from '../components/favorites/Favorites';
+import Img from '../components/Img';
+import ProductColorList from '../components/ProductColorList';
+import ProductSizeList from '../components/productSizeList/ProductSizeList';
+import Skeleton from '../components/skeleton/Skeleton';
+import useLanguage from '../features/language/useLanguage';
+import CollectionAside from '../features/shop/components/CollectionAside';
+import FilterPanel from '../features/shop/components/FilterPanel';
+import ProductViews from '../features/shop/components/ProductViews';
+import SizeOverlay from '../features/shop/components/SizeOverlay';
 import {
   useGetProductsQuery,
   useGetShopMenuQuery,
-} from '../../../features/shop/shopApiSlice';
-import useLocalStorage, {
-  localStorageKeys,
-} from '../../../hooks/useLocalStorage';
-import { ShopPath } from '../../../layout/nav/enums';
-import MetaTags from '../../../layout/nav/MetaTags';
-import ProductDiscountPrice from '../../product/ProductDiscountPrice';
-import ProductViews from '../shopProducts/ProductViews';
+} from '../features/shop/shopApiSlice';
+import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
+import { ShopPath } from '../layout/nav/enums';
+import MetaTags from '../layout/nav/MetaTags';
 import './_collection-page.scss';
-import CollectionAside from './collectionAside/CollectionAside';
-import FilterPanel from './FilterPanel';
-import SizeOverlay from './sizeOverlay/SizeOverlay';
+import ProductDiscountPrice from './product/ProductDiscountPrice';
 
 const CollectionPage = () => {
   const { language } = useLanguage();

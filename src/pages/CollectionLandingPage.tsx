@@ -1,7 +1,7 @@
-import useLanguage from '../../../features/language/useLanguage';
-import MainPageContainer from '../../pageContainer/MainPageContainer';
+import useLanguage from '../features/language/useLanguage';
+import MainCollections from '../features/shop/components/MainCollections';
 import './_collection-page.scss';
-import MainCollections from './MainCollections';
+import MainPageContainer from './pageContainer/MainPageContainer';
 
 const CollectionLandingPage = () => {
   const { language } = useLanguage();

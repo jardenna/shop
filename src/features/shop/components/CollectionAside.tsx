@@ -1,8 +1,8 @@
-import { ProductMenuResponse } from '../../../../app/api/apiTypes/shopApiTypes';
-import useLanguage from '../../../../features/language/useLanguage';
-import LayoutElement from '../../../../layout/LayoutElement';
+import { ProductMenuResponse } from '../../../app/api/apiTypes/shopApiTypes';
+import LayoutElement from '../../../layout/LayoutElement';
+import useLanguage from '../../language/useLanguage';
+import './CollectionAside.styles.scss';
 import CollectionNav from './CollectionNav';
-import './_collection-aside.scss';
 
 type CollectionAsideProps = {
   asideHeading: string;
