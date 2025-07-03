@@ -6,6 +6,7 @@ import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import Favorites from '../../components/favorites/Favorites';
 import Img from '../../components/Img';
 import ProductColorList from '../../components/ProductColorList';
+import ProductSizeList from '../../components/productSizeList/ProductSizeList';
 import Skeleton from '../../components/skeleton/Skeleton';
 import useLanguage from '../../features/language/useLanguage';
 import {
@@ -19,8 +20,8 @@ import MetaTags from '../../layout/nav/MetaTags';
 import ProductDiscountPrice from '../product/ProductDiscountPrice';
 import './_collection-page.scss';
 import FilterPanel from './FilterPanel';
-import ProductSizeList from './ProductSizeList';
 import ProductViews from './ProductViews';
+import SizeOverlay from './SizeOverlay';
 
 const CollectionPage = () => {
   const { language } = useLanguage();
@@ -126,7 +127,7 @@ const CollectionPage = () => {
                           </Link>
                           {productView === 'grid' && (
                             <div className="product-overlay-items">
-                              <ProductSizeList sizes={product.sizes} />
+                              <SizeOverlay sizes={product.sizes} />
                             </div>
                           )}
                         </div>
@@ -134,6 +135,7 @@ const CollectionPage = () => {
                           <h2 className="product-card-title">
                             {product.productName}
                           </h2>
+
                           {productView === 'list' && (
                             <p>{product.description}</p>
                           )}
@@ -142,7 +144,10 @@ const CollectionPage = () => {
                             discount={product.discount || null}
                           />
                           {productView === 'list' && (
-                            <ProductSizeList sizes={product.sizes} />
+                            <ProductSizeList
+                              sizes={product.sizes}
+                              variant="shop-product"
+                            />
                           )}
                           <ProductColorList
                             colours={product.colors}

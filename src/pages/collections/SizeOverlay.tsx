@@ -1,10 +1,10 @@
 import { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
 
-type ProductSizesProps = {
+type SizeOverlayProps = {
   sizes: ProductSizes[];
 };
 
-const ProductSizeList = ({ sizes }: ProductSizesProps) => (
+const SizeOverlay = ({ sizes }: SizeOverlayProps) => (
   <ul className="size-overlay">
     {sizes.map((size) => (
       <li key={size}>{size}</li>
@@ -12,4 +12,4 @@ const ProductSizeList = ({ sizes }: ProductSizesProps) => (
   </ul>
 );
 
-export default ProductSizeList;
+export default SizeOverlay;

@@ -19,7 +19,7 @@ const ProductDiscountPrice = ({
     )}
     <ProductPrice
       price={price}
-      className={discount ? 'text-line-through' : ''}
+      className={discount ? 'text-line-through' : 'product-price'}
     />
   </span>
 );

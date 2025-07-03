@@ -223,10 +223,6 @@
   margin-block: 8px 16px;
   font-size: rem(16px);
 
-  .color-list {
-    max-height: 12px;
-  }
-
   .text-line-through {
     font-size: rem(12px);
     color: $color-primary;
@@ -235,6 +231,10 @@
   .product-discont-price {
     color: $color-red-15;
     font-family: $font-primary-bold;
+  }
+
+  .product-price {
+    color: $color-primary;
   }
 
   .product-card-title {

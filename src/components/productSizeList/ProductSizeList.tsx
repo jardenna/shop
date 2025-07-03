@@ -6,19 +6,20 @@ import './_product-size-list.scss';
 
 type ProductSizeListProps = {
   sizes: ProductSizes[];
+  variant?: string;
 };
 
-const ProductSizeList = ({ sizes }: ProductSizeListProps) => {
+const ProductSizeList = ({ sizes, variant = '' }: ProductSizeListProps) => {
   const { language } = useLanguage();
 
   return (
-    <ul className="product-size-list" aria-label={language.sizes}>
+    <ul className={`product-size-list ${variant}`} aria-label={language.sizes}>
       {sizeList.map((size) => (
         <li
           className={`product-size-item ${sizes.includes(size) ? 'available' : 'unavailable'}`}
           key={size}
         >
-          {size}
+          <span className="product-size">{size}</span>
           <VisuallyHidden>
             {!sizes.includes(size) ? language.unavailable : language.available}{' '}
             {language.size}
