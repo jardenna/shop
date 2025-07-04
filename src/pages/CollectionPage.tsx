@@ -66,7 +66,6 @@ const CollectionPage = () => {
                 onReset={() => refetchSubMenu()}
                 asideHeading={categoryText}
               />
-
               <ErrorBoundary
                 FallbackComponent={ErrorBoundaryFallback}
                 onReset={() => refetch()}
@@ -76,7 +75,6 @@ const CollectionPage = () => {
                     src={`/images/collections/${category}/banner.jpg`}
                     alt=""
                   />
-
                   <section className="product-toolbar">
                     <ProductViews
                       productCount={products?.productCount || null}
@@ -84,7 +82,6 @@ const CollectionPage = () => {
                     />
                     <FilterPanel />
                   </section>
-
                   {products && (
                     <ProductCardList
                       products={products.products}

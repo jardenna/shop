@@ -101,7 +101,7 @@ const routeList = [
   },
 ];
 
-export const adminRouteList = [
+const adminRouteList = [
   {
     index: true,
     element: <Dashboard />,
