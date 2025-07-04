@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
-import FieldSet from '../../components/fieldset/FieldSet';
+import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
+import FieldSet from '../../../components/fieldset/FieldSet';
 
 type FormCardProps = {
   children: ReactNode;
