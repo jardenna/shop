@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router';
 import DropdownBtn, {
   DropdownItem,
-} from '../../components/dropdownBtn/DropdownBtn';
-import Icon from '../../components/icons/Icon';
-import useLanguage from '../../features/language/useLanguage';
-import { AdminPath } from '../../layout/nav/enums';
-import { IconName } from '../../types/enums';
+} from '../../../components/dropdownBtn/DropdownBtn';
+import Icon from '../../../components/icons/Icon';
+import { AdminPath } from '../../../layout/nav/enums';
+import { IconName } from '../../../types/enums';
+import useLanguage from '../../language/useLanguage';
 
 type ProductActionsProps = {
   id: string;

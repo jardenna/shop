@@ -1,7 +1,7 @@
 import type { Status } from '../../app/api/apiTypes/adminApiTypes';
 import ProductPrice from '../../features/currency/components/ProductPrice';
 import useLanguage from '../../features/language/useLanguage';
-import ProductDiscountPrice from '../../pages/product/ProductDiscountPrice';
+import ProductDiscountPrice from '../../features/products/components/ProductDiscountPrice';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 import CardContent from '../card/CardContent';
 import MissingImage from '../formElements/fileInput/MissingImage';

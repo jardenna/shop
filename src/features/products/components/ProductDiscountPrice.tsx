@@ -1,5 +1,5 @@
-import ProductPrice from '../../features/currency/components/ProductPrice';
-import { discountCalculation } from '../../utils/utils';
+import { discountCalculation } from '../../../utils/utils';
+import ProductPrice from '../../currency/components/ProductPrice';
 
 type ProductDiscountPriceProps = {
   discount: number | null;

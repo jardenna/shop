@@ -1,8 +1,8 @@
 import { memo } from 'react';
-import type { Status } from '../../app/api/apiTypes/adminApiTypes';
-import Badge from '../../components/badge/Badge';
-import useLanguage from '../../features/language/useLanguage';
-import { formatNumber, getlowerCaseFirstLetter } from '../../utils/utils';
+import { Status } from '../../../app/api/apiTypes/sharedApiTypes';
+import Badge from '../../../components/badge/Badge';
+import { formatNumber, getlowerCaseFirstLetter } from '../../../utils/utils';
+import useLanguage from '../../language/useLanguage';
 import ProductActions from './ProductActions';
 import ProductDiscountPrice from './ProductDiscountPrice';
 import ProductOverviewCell from './ProductOverviewCell';

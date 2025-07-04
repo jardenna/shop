@@ -5,7 +5,7 @@ import Img from '../../../components/Img';
 import ProductColorList from '../../../components/ProductColorList';
 import ProductSizeList from '../../../components/productSizeList/ProductSizeList';
 import { ShopPath } from '../../../layout/nav/enums';
-import ProductDiscountPrice from '../../../pages/product/ProductDiscountPrice';
+import ProductDiscountPrice from '../../products/components/ProductDiscountPrice';
 import './ProductCardList.styles.scss';
 import SizeOverlay from './SizeOverlay';
 

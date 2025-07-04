@@ -2,6 +2,7 @@ import type { Product } from '../../app/api/apiTypes/adminApiTypes';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Table, { Column } from '../../components/sortTable/Table';
 import useLanguage from '../../features/language/useLanguage';
+import ProductTableRow from '../../features/products/components/ProductTableRow';
 import {
   useDuplicateProductMutation,
   useGetAllProductsQuery,
@@ -11,7 +12,6 @@ import { AdminPath } from '../../layout/nav/enums';
 import { oneDay } from '../../utils/utils';
 import PageContainer from '../pageContainer/PageContainer';
 import './_product-page.scss';
-import ProductTableRow from './ProductTableRow';
 
 const tableHeaders: Column<Product>[] = [
   { key: 'productName', label: 'name', name: 'image' },
