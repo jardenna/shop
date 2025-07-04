@@ -392,6 +392,23 @@ const getProductById = asyncHandler(async (req, res) => {
   res.status(200).json(formatMongoData(product));
 });
 
+// @desc    Get shop product by ID
+// @route   /api/products/shop/:id
+// @method  Get
+// @access  Public
+const getShopProductById = asyncHandler(async (req, res) => {
+  const product = await Product.findById(req.params.id).lean();
+
+  if (!product) {
+    return res.status(404).json({
+      success: false,
+      message: t('couldNotFindInfo', req.lang),
+    });
+  }
+
+  res.status(200).json(formatMongoData(product));
+});
+
 // @desc    Check Scheduled Products
 // @route   /api/products/scheduled
 // @method  Get
@@ -415,6 +432,7 @@ export {
   getNewProducts,
   getProductById,
   getProducts,
+  getShopProductById,
   getSortedProducts,
   getTopProducts,
   updateProduct,
