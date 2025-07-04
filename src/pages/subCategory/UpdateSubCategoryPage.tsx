@@ -3,8 +3,8 @@ import ErrorContent from '../../components/ErrorContent';
 import SkeletonForm from '../../components/skeleton/SkeletonForm';
 import { useGetAllCategoriesQuery } from '../../features/categories/categoriyApiSlice';
 import useLanguage from '../../features/language/useLanguage';
+import SubCategoryForm from '../../features/subCategories/components/SubCategoryForm';
 import { useGetSubCategoryByIdQuery } from '../../features/subCategories/subCategoryApiSlice';
-import SubCategoryForm from '../../features/subCategories/SubCategoryForm';
 import { getErrorMessage } from '../../utils/utils';
 import PageContainer from '../pageContainer/PageContainer';
 
