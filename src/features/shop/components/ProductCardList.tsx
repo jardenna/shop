@@ -4,7 +4,6 @@ import Favorites from '../../../components/favorites/Favorites';
 import Img from '../../../components/Img';
 import ProductColorList from '../../../components/ProductColorList';
 import ProductSizeList from '../../../components/productSizeList/ProductSizeList';
-import { ShopPath } from '../../../layout/nav/enums';
 import ProductDiscountPrice from '../../products/components/ProductDiscountPrice';
 import './ProductCardList.styles.scss';
 import SizeOverlay from './SizeOverlay';
@@ -23,7 +22,7 @@ const ProductCardList = ({ displayList, products }: ProductCardListProps) => (
           {product.discount > 0 && (
             <span className="product-badge">- {product.discount} %</span>
           )}
-          <Link to={`/${ShopPath.Product}/${product.id}`}>
+          <Link to={product.id}>
             <Img alt="" src={product.images[0]} className="product-card-img" />
           </Link>
           {!displayList && (
