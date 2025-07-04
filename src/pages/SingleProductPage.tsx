@@ -2,13 +2,13 @@ import { useParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { routeBreadcrumbs } from '../components/breadcrumbs/breadcrumbsRoutes';
 import Img from '../components/Img';
-import { useGetProductByIdQuery } from '../features/shop/shopApiSlice';
 import MetaTags from '../layout/nav/MetaTags';
+import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
 
 const SingleProductPage = () => {
   const params = useParams();
 
-  const { data: product } = useGetProductByIdQuery(params.id ?? '');
+  const { data: product } = useGetSingleProductQuery(params.id ?? '');
 
   // const { language } = useLanguage();
 

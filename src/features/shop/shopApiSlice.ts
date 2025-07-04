@@ -1,8 +1,8 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
-import { BaseProduct } from '../../app/api/apiTypes/sharedApiTypes';
 import type {
   Favorites,
   ProductMenuResponse,
+  ShopAllProductsResponse,
   ShopProductResponse,
   ShopProductsParams,
   ToggleFavoriteResponse,
@@ -15,13 +15,17 @@ import {
 
 const shopApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getProducts: builder.query<ShopProductResponse, ShopProductsParams>({
+    getProducts: builder.query<ShopAllProductsResponse, ShopProductsParams>({
       query: (params) => {
         const query = new URLSearchParams(
           params as Record<string, string>,
         ).toString();
         return `${productUrl}?${query}`;
       },
+      providesTags: [TagTypesEnum.Products],
+    }),
+    getSingleProduct: builder.query<ShopProductResponse, string>({
+      query: (id) => `${productUrl}/shop/${id}`,
       providesTags: [TagTypesEnum.Products],
     }),
     getShopMenu: builder.query<ProductMenuResponse[], string>({
@@ -67,10 +71,6 @@ const shopApiSlice = apiSlice.injectEndpoints({
         }
       },
     }),
-
-    getProductById: builder.query<BaseProduct, string>({
-      query: (id) => `${productUrl}/${id}`,
-    }),
   }),
 });
 
@@ -79,5 +79,5 @@ export const {
   useGetShopMenuQuery,
   useGetFavoritesQuery,
   useToggleFavoriteMutation,
-  useGetProductByIdQuery,
+  useGetSingleProductQuery,
 } = shopApiSlice;
