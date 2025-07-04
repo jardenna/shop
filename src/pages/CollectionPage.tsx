@@ -16,7 +16,7 @@ import {
 } from '../features/shop/shopApiSlice';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
 import MetaTags from '../layout/nav/MetaTags';
-import './_collection-page.scss';
+import './CollectionPage.styles.scss';
 
 const CollectionPage = () => {
   const { language } = useLanguage();
