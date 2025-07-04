@@ -11,7 +11,7 @@ import {
 import { AdminPath } from '../../layout/nav/enums';
 import { oneDay } from '../../utils/utils';
 import PageContainer from '../pageContainer/PageContainer';
-import './_product-page.scss';
+import './ProductPage.styles.scss';
 
 const tableHeaders: Column<Product>[] = [
   { key: 'productName', label: 'name', name: 'image' },
