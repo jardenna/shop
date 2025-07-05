@@ -1,22 +1,27 @@
 import { Link, useLocation } from 'react-router';
 
 import { Fragment } from 'react';
+import { ProductMenuResponse } from '../../app/api/apiTypes/shopApiTypes';
 import { routeBreadcrumbs } from './breadcrumbsRoutes';
 
-const BreCrumbs = () => {
+const BreCrumbs = ({ subMenu }: { subMenu: ProductMenuResponse[] }) => {
   const { pathname } = useLocation();
   const pathParts = pathname.split('/').filter(Boolean);
-
+  const productName = 'test';
   const generatePaths = () =>
     pathParts.map((_, i) => `/${pathParts.slice(0, i + 1).join('/')}`);
 
   const getBreadcrumbLabel = (path: string) => {
+    const parts = path.split('/').filter(Boolean);
+
     const match = routeBreadcrumbs.find((r) => {
       if (!r.path) {
         return false;
       }
+
       const routeParts = r.path.split('/').filter(Boolean);
       const pathParts = path.split('/').filter(Boolean);
+
       if (routeParts.length !== pathParts.length) {
         return false;
       }
@@ -26,11 +31,31 @@ const BreCrumbs = () => {
       );
     });
 
-    if (!match || !match.label) {
-      return decodeURIComponent(path.split('/').pop() || '');
+    // Fallback if no route matched
+    if (!match || !match.path) {
+      return decodeURIComponent(
+        parts.length > 0 ? parts[parts.length - 1] : '',
+      );
     }
 
-    return match.label;
+    // Special case: categoryId (subMenu match)
+    if (match.path.includes(':categoryId')) {
+      const categoryId = parts[2]; // Assumes index 3
+      const found = subMenu.find((s) => s.categoryId === categoryId);
+
+      return found?.label || categoryId;
+    }
+
+    // Special case: productId (RTK query match)
+    if (match.path.includes(':id')) {
+      return productName;
+    }
+
+    // Default: static label or fallback
+    return (
+      match.label ||
+      decodeURIComponent(parts.length > 0 ? parts[parts.length - 1] : '')
+    );
   };
 
   const paths = generatePaths();
@@ -61,5 +86,4 @@ const BreCrumbs = () => {
     </nav>
   );
 };
-
 export default BreCrumbs;

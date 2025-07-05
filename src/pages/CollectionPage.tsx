@@ -61,7 +61,7 @@ const CollectionPage = () => {
               subMenu={subMenu}
               params={{ category, categoryId }}
             />
-            <BreCrumbs />
+            {subMenu && <BreCrumbs subMenu={subMenu} />}
             <div className="collection-page-container">
               <CollectionAside
                 subMenu={subMenu || null}
