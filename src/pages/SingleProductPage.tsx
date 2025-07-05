@@ -2,8 +2,8 @@ import { useParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { routeBreadcrumbs } from '../components/breadcrumbs/breadcrumbsRoutes';
 import Img from '../components/Img';
-import MetaTags from '../layout/nav/MetaTags';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
+import MetaTags from '../layout/nav/MetaTags';
 
 const SingleProductPage = () => {
   const params = useParams();
@@ -18,6 +18,7 @@ const SingleProductPage = () => {
       <Breadcrumbs
         routeList={routeBreadcrumbs}
         currentLabel={product?.productName}
+        params={params}
       />
       aaa
       <ul>

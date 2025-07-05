@@ -57,6 +57,8 @@ const CollectionPage = () => {
             <Breadcrumbs
               routeList={routeBreadcrumbs}
               currentLabel={categoryText}
+              subMenu={subMenu}
+              params={{ category, categoryId }}
             />
             <div className="collection-page-container">
               <CollectionAside

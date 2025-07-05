@@ -2,54 +2,21 @@ import { AdminPath, LinkText, ShopPath } from '../../layout/nav/enums';
 import type { RouteListProps } from './Breadcrumbs';
 
 const routeBreadcrumbs: RouteListProps[] = [
-  {
-    path: ShopPath.Root,
-    label: LinkText.Home,
-  },
-  {
-    path: ShopPath.Collection,
-    label: LinkText.Collection,
-  },
-  {
-    path: `${ShopPath.Collection}/:category`,
-    label: '',
-  },
-  {
-    path: AdminPath.About,
-    label: LinkText.About,
-  },
-  {
-    path: ShopPath.Contact,
-    label: LinkText.Contact,
-  },
-  {
-    path: ShopPath.Login,
-    label: LinkText.Kids,
-  },
-  {
-    path: ShopPath.Signup,
-    label: LinkText.Kids,
-  },
-  {
-    path: ShopPath.MyAccount,
-    label: LinkText.Kids,
-  },
-  {
-    path: ShopPath.MyOrders,
-    label: LinkText.Kids,
-  },
-  {
-    path: ShopPath.ShoppingCart,
-    label: LinkText.Kids,
-  },
-  {
-    path: ShopPath.Favorites,
-    label: LinkText.Favorites,
-  },
-  {
-    path: ShopPath.Product,
-    label: LinkText.Products,
-  },
+  { path: ShopPath.Root, label: LinkText.Home },
+  { path: ShopPath.Collection, label: LinkText.Collection },
+
+  { path: `${ShopPath.Collection}/:category`, label: '' },
+  { path: `${ShopPath.Collection}/:category/:categoryId`, label: '' },
+  { path: `${ShopPath.Collection}/:category/:categoryId/:id`, label: '' },
+
+  { path: AdminPath.About, label: LinkText.About },
+  { path: ShopPath.Contact, label: LinkText.Contact },
+  { path: ShopPath.Login, label: LinkText.Login },
+  { path: ShopPath.Signup, label: LinkText.Signup },
+  { path: ShopPath.MyAccount, label: LinkText.MyAccount },
+  { path: ShopPath.MyOrders, label: LinkText.Orders },
+  { path: ShopPath.ShoppingCart, label: LinkText.Dashboard },
+  { path: ShopPath.Favorites, label: LinkText.Favorites },
 ];
 
 const adminBreadcrumbs: RouteListProps[] = [
