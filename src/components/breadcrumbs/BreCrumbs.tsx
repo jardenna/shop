@@ -1,14 +1,17 @@
 import { Fragment } from 'react';
 import { Link, useLocation, useParams } from 'react-router';
 import { useGetShopMenuQuery } from '../../features/shop/shopApiSlice';
+import { ShopPath } from '../../layout/nav/enums';
 import { IconName } from '../../types/enums';
 import Icon from '../icons/Icon';
 import './_breadcrumbs.scss';
 import { routeBreadcrumbs } from './breadcrumbsRoutes';
+import useLanguage from '../../features/language/useLanguage';
 
 const BreCrumbs = ({ productName }: { productName?: string }) => {
   const { pathname } = useLocation();
   const { category, categoryId } = useParams();
+  const { language } = useLanguage();
   const pathParts = pathname.split('/').filter(Boolean);
 
   const generatePaths = () =>
@@ -16,9 +19,37 @@ const BreCrumbs = ({ productName }: { productName?: string }) => {
 
   const { data: subMenu } = useGetShopMenuQuery(category || 'women');
 
-  const getBreadcrumbLabel = (path: string) => {
-    const parts = path.split('/').filter(Boolean);
+  const resolveLabel = ({
+    path,
+    match,
+  }: {
+    path: string;
+    match?: { label?: string; path?: string };
+  }) => {
+    if (!match || !match.path) {
+      const parts = path.split('/').filter(Boolean);
+      return decodeURIComponent(
+        parts.length > 0 ? parts[parts.length - 1] : '',
+      );
+    }
 
+    if (match.path.includes(':id')) {
+      return productName;
+    }
+    if (match.path.includes(':categoryId')) {
+      const found = subMenu?.find((s) => s.categoryId === categoryId);
+      return found?.label || categoryId;
+    }
+
+    if (match.label) {
+      return match.label;
+    }
+
+    const parts = path.split('/').filter(Boolean);
+    return decodeURIComponent(parts.at(-1) || '');
+  };
+
+  const getBreadcrumbLabel = (path: string) => {
     const match = routeBreadcrumbs.find((r) => {
       if (!r.path) {
         return false;
@@ -26,7 +57,6 @@ const BreCrumbs = ({ productName }: { productName?: string }) => {
 
       const routeParts = r.path.split('/').filter(Boolean);
       const pathParts = path.split('/').filter(Boolean);
-
       if (routeParts.length !== pathParts.length) {
         return false;
       }
@@ -36,28 +66,7 @@ const BreCrumbs = ({ productName }: { productName?: string }) => {
       );
     });
 
-    // Fallback if no route matched
-    if (!match || !match.path) {
-      return decodeURIComponent(
-        parts.length > 0 ? parts[parts.length - 1] : '',
-      );
-    }
-    // Special case: productId (RTK query match)
-    if (match.path.includes(':id')) {
-      return productName;
-    }
-
-    // Special case: categoryId (subMenu match)
-    if (match.path.includes(':categoryId')) {
-      const found = subMenu?.find((s) => s.categoryId === categoryId);
-      return found?.label || categoryId;
-    }
-
-    // Default: static label or fallback
-    return (
-      match.label ||
-      decodeURIComponent(parts.length > 0 ? parts[parts.length - 1] : '')
-    );
+    return resolveLabel({ path, match });
   };
 
   const paths = generatePaths();
@@ -66,7 +75,7 @@ const BreCrumbs = ({ productName }: { productName?: string }) => {
     <nav aria-label="breadcrumbs" className="breadcrumbs-container">
       <ul className="breadcrumbs">
         <li>
-          <Link to="/">Home</Link>
+          <Link to={ShopPath.Root}>{language.home}</Link>
         </li>
         {paths.map((path) => (
           <Fragment key={path}>
@@ -80,4 +89,5 @@ const BreCrumbs = ({ productName }: { productName?: string }) => {
     </nav>
   );
 };
+
 export default BreCrumbs;
