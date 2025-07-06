@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { Link, useLocation, useParams } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
-import { useGetShopMenuQuery } from '../../features/shop/shopApiSlice';
+import useSubMenu from '../../features/shop/hooks/useSubMenu';
 import { ShopPath } from '../../layout/nav/enums';
 import { IconName } from '../../types/enums';
 import Icon from '../icons/Icon';
@@ -17,7 +17,7 @@ const BreCrumbs = ({ productName }: { productName?: string }) => {
   const generatePaths = () =>
     pathParts.map((_, index) => `/${pathParts.slice(0, index + 1).join('/')}`);
 
-  const { data: subMenu } = useGetShopMenuQuery(category || 'women');
+  const { subMenu } = useSubMenu({ category });
 
   const splitPath = (path: string) => path.split('/').filter(Boolean);
 

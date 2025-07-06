@@ -1,19 +1,16 @@
 import { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
-import { routeBreadcrumbs } from '../../components/breadcrumbs/breadcrumbsRoutes';
+import BreCrumbs from '../../components/breadcrumbs/BreCrumbs';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import MetaTags from '../../layout/nav/MetaTags';
 import './_page-container.scss';
-import BreCrumbs from '../../components/breadcrumbs/BreCrumbs';
 
 type MainPageContainerProps = {
   children: ReactNode;
   heading: string;
   className?: string;
-  currentLabel?: string;
   onReset?: () => void;
 };
 
@@ -22,7 +19,6 @@ const MainPageContainer = ({
   heading,
   onReset,
   className = '',
-  currentLabel,
 }: MainPageContainerProps) => {
   const { language } = useLanguage();
   return (
@@ -34,10 +30,6 @@ const MainPageContainer = ({
           as="header"
           className="main-page-header"
         >
-          <Breadcrumbs
-            routeList={routeBreadcrumbs}
-            currentLabel={currentLabel || ''}
-          />{' '}
           <BreCrumbs />
           <h1>{heading}</h1>
         </LayoutElement>

@@ -9,10 +9,8 @@ import CollectionAside from '../features/shop/components/CollectionAside';
 import FilterPanel from '../features/shop/components/FilterPanel';
 import ProductCardList from '../features/shop/components/ProductCardList';
 import ProductViews from '../features/shop/components/ProductViews';
-import {
-  useGetProductsQuery,
-  useGetShopMenuQuery,
-} from '../features/shop/shopApiSlice';
+import useSubMenu from '../features/shop/hooks/useSubMenu';
+import { useGetProductsQuery } from '../features/shop/shopApiSlice';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
 import MetaTags from '../layout/nav/MetaTags';
 import './CollectionPage.styles.scss';
@@ -32,11 +30,7 @@ const CollectionPage = () => {
     subCategoryId: categoryId || '',
   });
 
-  const {
-    data: subMenu,
-    isLoading: subMenuLoading,
-    refetch: refetchSubMenu,
-  } = useGetShopMenuQuery(category || 'women');
+  const { subMenu, subMenuLoading, refetchSubMenu } = useSubMenu({ category });
 
   const categoryText = category ? language[category] : '';
 
@@ -53,12 +47,6 @@ const CollectionPage = () => {
           <Skeleton />
         ) : (
           <>
-            {/* <Breadcrumbs
-              routeList={routeBreadcrumbs}
-              currentLabel={categoryText}
-              subMenu={subMenu}
-              params={{ category, categoryId }}
-            /> */}
             <BreCrumbs />
             <div className="collection-page-container">
               <CollectionAside

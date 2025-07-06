@@ -14,11 +14,7 @@ const SingleProductPage = () => {
   return (
     <div>
       <MetaTags metaTitle={product?.productName} />
-      {/* <Breadcrumbs
-        routeList={routeBreadcrumbs}
-        currentLabel={product?.productName}
-        params={params}
-      /> */}
+
       {product && <BreCrumbs productName={product.productName} />}
       <ul>
         {product?.images.map((image) => (
