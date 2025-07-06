@@ -1,15 +1,18 @@
-import { Link, useLocation } from 'react-router';
+import { Link, useLocation, useParams } from 'react-router';
 
 import { Fragment } from 'react';
-import { ProductMenuResponse } from '../../app/api/apiTypes/shopApiTypes';
+import { useGetShopMenuQuery } from '../../features/shop/shopApiSlice';
 import { routeBreadcrumbs } from './breadcrumbsRoutes';
 
-const BreCrumbs = ({ subMenu }: { subMenu: ProductMenuResponse[] }) => {
+const BreCrumbs = ({ productName }: { productName?: string }) => {
   const { pathname } = useLocation();
+  const { category, categoryId } = useParams();
   const pathParts = pathname.split('/').filter(Boolean);
-  const productName = 'test';
+
   const generatePaths = () =>
     pathParts.map((_, i) => `/${pathParts.slice(0, i + 1).join('/')}`);
+
+  const { data: subMenu } = useGetShopMenuQuery(category || 'women');
 
   const getBreadcrumbLabel = (path: string) => {
     const parts = path.split('/').filter(Boolean);
@@ -40,14 +43,13 @@ const BreCrumbs = ({ subMenu }: { subMenu: ProductMenuResponse[] }) => {
 
     // Special case: categoryId (subMenu match)
     if (match.path.includes(':categoryId')) {
-      const categoryId = parts[2]; // Assumes index 3
-      const found = subMenu.find((s) => s.categoryId === categoryId);
+      const found = subMenu?.find((s) => s.categoryId === categoryId);
 
       return found?.label || categoryId;
     }
 
     // Special case: productId (RTK query match)
-    if (match.path.includes(':id')) {
+    if (match.path.includes(':categoryId')) {
       return productName;
     }
 

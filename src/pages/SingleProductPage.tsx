@@ -1,6 +1,7 @@
 import { useParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { routeBreadcrumbs } from '../components/breadcrumbs/breadcrumbsRoutes';
+import BreCrumbs from '../components/breadcrumbs/BreCrumbs';
 import Img from '../components/Img';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
 import MetaTags from '../layout/nav/MetaTags';
@@ -20,7 +21,7 @@ const SingleProductPage = () => {
         currentLabel={product?.productName}
         params={params}
       />
-
+      {product && <BreCrumbs productName={product.productName} />}
       <ul>
         {product?.images.map((image) => (
           <li key={image}>
