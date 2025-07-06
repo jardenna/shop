@@ -1,7 +1,9 @@
-import { Link, useLocation, useParams } from 'react-router';
-
 import { Fragment } from 'react';
+import { Link, useLocation, useParams } from 'react-router';
 import { useGetShopMenuQuery } from '../../features/shop/shopApiSlice';
+import { IconName } from '../../types/enums';
+import Icon from '../icons/Icon';
+import './_breadcrumbs.scss';
 import { routeBreadcrumbs } from './breadcrumbsRoutes';
 
 const BreCrumbs = ({ productName }: { productName?: string }) => {
@@ -40,17 +42,15 @@ const BreCrumbs = ({ productName }: { productName?: string }) => {
         parts.length > 0 ? parts[parts.length - 1] : '',
       );
     }
+    // Special case: productId (RTK query match)
+    if (match.path.includes(':id')) {
+      return productName;
+    }
 
     // Special case: categoryId (subMenu match)
     if (match.path.includes(':categoryId')) {
       const found = subMenu?.find((s) => s.categoryId === categoryId);
-
       return found?.label || categoryId;
-    }
-
-    // Special case: productId (RTK query match)
-    if (match.path.includes(':categoryId')) {
-      return productName;
     }
 
     // Default: static label or fallback
@@ -63,28 +63,24 @@ const BreCrumbs = ({ productName }: { productName?: string }) => {
   const paths = generatePaths();
 
   return (
-    <nav aria-label="Breadcrumb" className="text-sm text-gray-600">
-      <ol className="flex space-x-1">
+    <nav aria-label="breadcrumbs" className="breadcrumbs-container">
+      <ul className="breadcrumbs">
         <li>
-          <Link to="/" className="hover:underline">
-            Home
-          </Link>
+          <Link to="/">Home</Link>
         </li>
         {paths.map((path, i) => (
           <Fragment key={path}>
-            <span className="mx-1">/</span>
+            <Icon iconName={IconName.ChevronRight} title="Chevron right" />
             <li>
               {i === paths.length - 1 ? (
                 <span>{getBreadcrumbLabel(path)}</span>
               ) : (
-                <Link to={path} className="hover:underline">
-                  {getBreadcrumbLabel(path)}
-                </Link>
+                <Link to={path}>{getBreadcrumbLabel(path)}</Link>
               )}
             </li>
           </Fragment>
         ))}
-      </ol>
+      </ul>
     </nav>
   );
 };
