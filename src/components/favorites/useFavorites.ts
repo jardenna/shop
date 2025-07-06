@@ -4,7 +4,7 @@ import {
   useToggleFavoriteMutation,
 } from '../../features/shop/shopApiSlice';
 
-export const useFavorites = ({ id }: { id?: string }) => {
+const useFavorites = ({ id }: { id?: string }) => {
   const { data: favorites = [], isLoading, isError } = useGetFavoritesQuery();
   const [toggleFavorite, { isLoading: isTogglingLoading }] =
     useToggleFavoriteMutation();
