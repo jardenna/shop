@@ -39,12 +39,17 @@ const BreCrumbs = ({ productName }: { productName?: string }) => {
     }
 
     if (match.path.includes(':categoryId')) {
-      const found = subMenu?.find((s) => s.categoryId === categoryId);
+      const found = subMenu?.find((menu) => menu.categoryId === categoryId);
+
       return found?.label || '';
     }
 
     if (match.label) {
       return language[match.label];
+    }
+
+    if (match.path.includes(':category') && category) {
+      return language[category] ?? category;
     }
 
     return decodeURIComponent(parts.at(-1) || '');
