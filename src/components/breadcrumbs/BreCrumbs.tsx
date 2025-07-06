@@ -6,9 +6,17 @@ import { ShopPath } from '../../layout/nav/enums';
 import { IconName } from '../../types/enums';
 import Icon from '../icons/Icon';
 import './_breadcrumbs.scss';
-import { routeBreadcrumbs } from './breadcrumbsRoutes';
+import { routeBreadcrumbs, RouteListProps } from './breadcrumbsRoutes';
 
-const BreCrumbs = ({ productName }: { productName?: string }) => {
+type BreadCrumbsProps = {
+  productName?: string;
+  routeList?: RouteListProps[];
+};
+
+const BreCrumbs = ({
+  productName,
+  routeList = routeBreadcrumbs,
+}: BreadCrumbsProps) => {
   const { pathname } = useLocation();
   const { category, categoryId } = useParams();
   const { language } = useLanguage();
@@ -58,7 +66,7 @@ const BreCrumbs = ({ productName }: { productName?: string }) => {
   const getBreadcrumbLabel = (path: string) => {
     const pathParts = splitPath(path);
 
-    const match = routeBreadcrumbs.find((route) => {
+    const match = routeList.find((route) => {
       if (!route.path) {
         return false;
       }
