@@ -1,12 +1,12 @@
 import { Fragment } from 'react';
 import { Link, useLocation, useParams } from 'react-router';
+import useLanguage from '../../features/language/useLanguage';
 import { useGetShopMenuQuery } from '../../features/shop/shopApiSlice';
 import { ShopPath } from '../../layout/nav/enums';
 import { IconName } from '../../types/enums';
 import Icon from '../icons/Icon';
 import './_breadcrumbs.scss';
 import { routeBreadcrumbs } from './breadcrumbsRoutes';
-import useLanguage from '../../features/language/useLanguage';
 
 const BreCrumbs = ({ productName }: { productName?: string }) => {
   const { pathname } = useLocation();
@@ -38,11 +38,12 @@ const BreCrumbs = ({ productName }: { productName?: string }) => {
     }
     if (match.path.includes(':categoryId')) {
       const found = subMenu?.find((s) => s.categoryId === categoryId);
-      return found?.label || categoryId;
+
+      return found?.label || '';
     }
 
     if (match.label) {
-      return match.label;
+      return language[match.label];
     }
 
     const parts = path.split('/').filter(Boolean);

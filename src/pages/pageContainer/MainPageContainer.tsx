@@ -7,6 +7,7 @@ import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import MetaTags from '../../layout/nav/MetaTags';
 import './_page-container.scss';
+import BreCrumbs from '../../components/breadcrumbs/BreCrumbs';
 
 type MainPageContainerProps = {
   children: ReactNode;
@@ -36,7 +37,8 @@ const MainPageContainer = ({
           <Breadcrumbs
             routeList={routeBreadcrumbs}
             currentLabel={currentLabel || ''}
-          />
+          />{' '}
+          <BreCrumbs />
           <h1>{heading}</h1>
         </LayoutElement>
 
