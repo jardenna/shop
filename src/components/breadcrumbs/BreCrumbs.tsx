@@ -15,9 +15,11 @@ const BreCrumbs = ({ productName }: { productName?: string }) => {
   const pathParts = pathname.split('/').filter(Boolean);
 
   const generatePaths = () =>
-    pathParts.map((_, i) => `/${pathParts.slice(0, i + 1).join('/')}`);
+    pathParts.map((_, index) => `/${pathParts.slice(0, index + 1).join('/')}`);
 
   const { data: subMenu } = useGetShopMenuQuery(category || 'women');
+
+  const splitPath = (path: string) => path.split('/').filter(Boolean);
 
   const resolveLabel = ({
     path,
@@ -26,19 +28,18 @@ const BreCrumbs = ({ productName }: { productName?: string }) => {
     path: string;
     match?: { label?: string; path?: string };
   }) => {
+    const parts = splitPath(path);
+
     if (!match || !match.path) {
-      const parts = path.split('/').filter(Boolean);
-      return decodeURIComponent(
-        parts.length > 0 ? parts[parts.length - 1] : '',
-      );
+      return decodeURIComponent(parts.at(-1) || '');
     }
 
     if (match.path.includes(':id')) {
       return productName;
     }
+
     if (match.path.includes(':categoryId')) {
       const found = subMenu?.find((s) => s.categoryId === categoryId);
-
       return found?.label || '';
     }
 
@@ -46,24 +47,24 @@ const BreCrumbs = ({ productName }: { productName?: string }) => {
       return language[match.label];
     }
 
-    const parts = path.split('/').filter(Boolean);
     return decodeURIComponent(parts.at(-1) || '');
   };
 
   const getBreadcrumbLabel = (path: string) => {
-    const match = routeBreadcrumbs.find((r) => {
-      if (!r.path) {
+    const pathParts = splitPath(path);
+
+    const match = routeBreadcrumbs.find((route) => {
+      if (!route.path) {
         return false;
       }
 
-      const routeParts = r.path.split('/').filter(Boolean);
-      const pathParts = path.split('/').filter(Boolean);
+      const routeParts = splitPath(route.path);
       if (routeParts.length !== pathParts.length) {
         return false;
       }
 
       return routeParts.every(
-        (part, i) => part.startsWith(':') || part === pathParts[i],
+        (part, index) => part.startsWith(':') || part === pathParts[index],
       );
     });
 
