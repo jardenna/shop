@@ -68,15 +68,11 @@ const BreCrumbs = ({ productName }: { productName?: string }) => {
         <li>
           <Link to="/">Home</Link>
         </li>
-        {paths.map((path, i) => (
+        {paths.map((path) => (
           <Fragment key={path}>
             <Icon iconName={IconName.ChevronRight} title="Chevron right" />
             <li>
-              {i === paths.length - 1 ? (
-                <span>{getBreadcrumbLabel(path)}</span>
-              ) : (
-                <Link to={path}>{getBreadcrumbLabel(path)}</Link>
-              )}
+              <Link to={path}>{getBreadcrumbLabel(path)}</Link>
             </li>
           </Fragment>
         ))}
