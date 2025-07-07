@@ -20,10 +20,10 @@ const BreCrumbs = ({
   const { pathname } = useLocation();
   const { category, categoryId } = useParams();
   const { language } = useLanguage();
-  const pathParts = pathname.split('/').filter(Boolean);
+  const pathnames = pathname.split('/').filter(Boolean);
 
   const generatePaths = () =>
-    pathParts.map((_, index) => `/${pathParts.slice(0, index + 1).join('/')}`);
+    pathnames.map((_, index) => `/${pathnames.slice(0, index + 1).join('/')}`);
 
   const { subMenu } = useSubMenu({ category });
 
@@ -64,7 +64,7 @@ const BreCrumbs = ({
   };
 
   const getBreadcrumbLabel = (path: string) => {
-    const pathParts = splitPath(path);
+    const pathnames = splitPath(path);
 
     const match = routeList.find((route) => {
       if (!route.path) {
@@ -72,12 +72,12 @@ const BreCrumbs = ({
       }
 
       const routeParts = splitPath(route.path);
-      if (routeParts.length !== pathParts.length) {
+      if (routeParts.length !== pathnames.length) {
         return false;
       }
 
       return routeParts.every(
-        (part, index) => part.startsWith(':') || part === pathParts[index],
+        (part, index) => part.startsWith(':') || part === pathnames[index],
       );
     });
 
