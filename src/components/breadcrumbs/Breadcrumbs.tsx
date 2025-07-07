@@ -24,7 +24,6 @@ const Breadcrumbs = ({ routeList, currentLabel }: BreadCrumbsProps) => {
     const matchedRoute = routeList.find(
       (route) => route.path && matchRoute(route.path, to),
     );
-    console.log(matchedRoute);
 
     if (!matchedRoute) {
       return null;
