@@ -60,6 +60,11 @@ const routeList = [
     label: '',
   },
   {
+    path: `${ShopPath.Collection}/:category/all/:id`,
+    element: <SingleProductPage />,
+    label: '',
+  },
+  {
     path: AdminPath.About,
     element: <AboutPage />,
     label: LinkText.About,
