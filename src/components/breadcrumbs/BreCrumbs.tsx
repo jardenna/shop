@@ -31,32 +31,32 @@ const BreCrumbs = ({
 
   const resolveLabel = ({
     path,
-    match,
+    matchedRoute,
   }: {
     path: string;
-    match?: { label?: string; path?: string };
+    matchedRoute?: { label?: string; path?: string };
   }) => {
     const parts = splitPath(path);
 
-    if (!match || !match.path) {
+    if (!matchedRoute || !matchedRoute.path) {
       return decodeURIComponent(parts.at(-1) || '');
     }
 
-    if (match.path.includes(':id')) {
+    if (matchedRoute.path.includes(':id')) {
       return productName;
     }
 
-    if (match.path.includes(':categoryId')) {
+    if (matchedRoute.path.includes(':categoryId')) {
       const found = subMenu?.find((menu) => menu.categoryId === categoryId);
 
       return found?.label || '';
     }
 
-    if (match.label) {
-      return language[match.label];
+    if (matchedRoute.label) {
+      return language[matchedRoute.label];
     }
 
-    if (match.path.includes(':category') && category) {
+    if (matchedRoute.path.includes(':category') && category) {
       return language[category] ?? category;
     }
 
@@ -66,7 +66,7 @@ const BreCrumbs = ({
   const getBreadcrumbLabel = (path: string) => {
     const pathnames = splitPath(path);
 
-    const match = routeList.find((route) => {
+    const matchedRoute = routeList.find((route) => {
       if (!route.path) {
         return false;
       }
@@ -81,7 +81,7 @@ const BreCrumbs = ({
       );
     });
 
-    return resolveLabel({ path, match });
+    return resolveLabel({ path, matchedRoute });
   };
 
   const paths = generatePaths();
