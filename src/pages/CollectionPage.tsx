@@ -1,6 +1,7 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
-import BreCrumbs from '../components/breadcrumbs/BreCrumbs';
+import { routeBreadcrumbs } from '../components/breadcrumbs/breadcrumbsRoutes';
+import UnifiedBreadcrumbs from '../components/breadcrumbs/UnifiedBreadcrumbs ';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import Img from '../components/Img';
 import Skeleton from '../components/skeleton/Skeleton';
@@ -47,7 +48,13 @@ const CollectionPage = () => {
           <Skeleton />
         ) : (
           <>
-            <BreCrumbs />
+            {subMenu && (
+              <UnifiedBreadcrumbs
+                routeList={routeBreadcrumbs}
+                subMenu={subMenu}
+                productName=""
+              />
+            )}
             <div className="collection-page-container">
               <CollectionAside
                 subMenu={subMenu || null}

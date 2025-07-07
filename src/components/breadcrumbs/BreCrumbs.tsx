@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { Link, useLocation, useParams } from 'react-router';
+import { ProductMenuResponse } from '../../app/api/apiTypes/shopApiTypes';
 import useLanguage from '../../features/language/useLanguage';
-import useSubMenu from '../../features/shop/hooks/useSubMenu';
 import { ShopPath } from '../../layout/nav/enums';
 import { IconName } from '../../types/enums';
 import Icon from '../icons/Icon';
@@ -9,12 +9,14 @@ import './_breadcrumbs.scss';
 import { routeBreadcrumbs, RouteListProps } from './breadcrumbsRoutes';
 
 type BreadCrumbsProps = {
+  subMenu: ProductMenuResponse[];
   productName?: string;
   routeList?: RouteListProps[];
 };
 
 const BreCrumbs = ({
   productName,
+  subMenu,
   routeList = routeBreadcrumbs,
 }: BreadCrumbsProps) => {
   const { pathname } = useLocation();
@@ -24,8 +26,6 @@ const BreCrumbs = ({
 
   const generatePaths = () =>
     pathnames.map((_, index) => `/${pathnames.slice(0, index + 1).join('/')}`);
-
-  const { subMenu } = useSubMenu({ category });
 
   const splitPath = (path: string) => path.split('/').filter(Boolean);
 
@@ -47,7 +47,7 @@ const BreCrumbs = ({
     }
 
     if (matchedRoute.path.includes(':categoryId')) {
-      const found = subMenu?.find((menu) => menu.categoryId === categoryId);
+      const found = subMenu.find((menu) => menu.categoryId === categoryId);
 
       return found?.label || '';
     }
