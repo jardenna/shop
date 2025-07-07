@@ -22,7 +22,7 @@ const ProductCardList = ({ displayList, products }: ProductCardListProps) => (
           {product.discount > 0 && (
             <span className="product-badge">- {product.discount} %</span>
           )}
-          <Link to={`/collection/kids/all/${product.id}`}>
+          <Link to={`all/${product.id}`}>
             <Img alt="" src={product.images[0]} className="product-card-img" />
           </Link>
           {!displayList && (
