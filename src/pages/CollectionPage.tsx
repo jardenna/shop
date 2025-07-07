@@ -76,6 +76,7 @@ const CollectionPage = () => {
                     <ProductCardList
                       products={products.products}
                       displayList={productView === 'list'}
+                      categoryId={categoryId}
                     />
                   )}
                 </div>

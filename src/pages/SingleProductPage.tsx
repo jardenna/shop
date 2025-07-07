@@ -1,5 +1,4 @@
 import { useParams } from 'react-router';
-import BreCrumbs from '../components/breadcrumbs/BreCrumbs';
 import Img from '../components/Img';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
 import MetaTags from '../layout/nav/MetaTags';
@@ -15,7 +14,6 @@ const SingleProductPage = () => {
     <div>
       <MetaTags metaTitle={product?.productName} />
 
-      {product && <BreCrumbs productName={product.productName} />}
       <ul>
         {product?.images.map((image) => (
           <li key={image}>
