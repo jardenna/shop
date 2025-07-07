@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import BreCrumbs from '../../components/breadcrumbs/BreCrumbs';
+import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
+import { routeBreadcrumbs } from '../../components/breadcrumbs/breadcrumbsRoutes';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
@@ -30,7 +31,7 @@ const MainPageContainer = ({
           as="header"
           className="main-page-header"
         >
-          <BreCrumbs />
+          <Breadcrumbs routeList={routeBreadcrumbs} />
           <h1>{heading}</h1>
         </LayoutElement>
 
