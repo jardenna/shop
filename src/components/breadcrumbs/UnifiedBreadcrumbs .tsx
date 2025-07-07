@@ -4,13 +4,14 @@ import useLanguage from '../../features/language/useLanguage';
 import { ShopPath } from '../../layout/nav/enums';
 import { IconName } from '../../types/enums';
 import Icon from '../icons/Icon';
+import './_breadcrumbs.scss';
 import { RouteListProps } from './breadcrumbsRoutes';
 
 type UnifiedBreadcrumbsProps = {
-  routeList: RouteListProps[]; // sammensat shop/admin list
-  currentLabel?: string; // fallback label
-  productName?: string; // valgfri
-  subMenu?: { categoryId: string; label: string }[]; // valgfri
+  routeList: RouteListProps[];
+  currentLabel?: string;
+  productName?: string;
+  subMenu?: { categoryId: string; label: string }[];
 };
 const UnifiedBreadcrumbs = ({
   routeList,
@@ -29,6 +30,11 @@ const UnifiedBreadcrumbs = ({
   );
 
   const split = (path: string) => path.split('/').filter(Boolean);
+
+  const hiddenPathSegments = ['admin', 'create', 'update', 'view'];
+
+  const shouldHideBreadcrumb = (segment: string) =>
+    hiddenPathSegments.includes(segment.toLowerCase());
 
   const resolveLabel = (path: string) => {
     const parts = split(path);
@@ -84,14 +90,24 @@ const UnifiedBreadcrumbs = ({
         <li>
           <Link to={ShopPath.Root}>{language.home}</Link>
         </li>
-        {paths.map((path) => (
-          <Fragment key={path}>
-            <Icon iconName={IconName.ChevronRight} title="Chevron right" />
-            <li>
-              <Link to={path}>{resolveLabel(path)}</Link>
-            </li>
-          </Fragment>
-        ))}
+        {paths.map((path, index) => {
+          const isCurrent = index === pathnames.length - 1;
+          const lastPart = path.split('/').filter(Boolean).at(-1);
+          if (!lastPart || shouldHideBreadcrumb(lastPart)) {
+            return null;
+          }
+
+          return (
+            <Fragment key={path}>
+              <Icon iconName={IconName.ChevronRight} title="Chevron right" />
+              <li>
+                <Link to={path} aria-current={isCurrent ? 'page' : undefined}>
+                  {resolveLabel(path)}
+                </Link>
+              </li>
+            </Fragment>
+          );
+        })}
       </ul>
     </nav>
   );
