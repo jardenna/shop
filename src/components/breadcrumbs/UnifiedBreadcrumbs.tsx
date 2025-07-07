@@ -74,7 +74,7 @@ const UnifiedBreadcrumbs = ({
     }
 
     if (matchedRoute.label) {
-      return language[matchedRoute.label] ?? matchedRoute.label;
+      return language[matchedRoute.label];
     }
 
     if (paths.at(-1) === path && currentLabel) {

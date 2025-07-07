@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { routeBreadcrumbs } from '../../components/breadcrumbs/breadcrumbsRoutes';
-import UnifiedBreadcrumbs from '../../components/breadcrumbs/UnifiedBreadcrumbs ';
+import UnifiedBreadcrumbs from '../../components/breadcrumbs/UnifiedBreadcrumbs';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';

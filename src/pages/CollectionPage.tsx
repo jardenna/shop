@@ -1,7 +1,7 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import { routeBreadcrumbs } from '../components/breadcrumbs/breadcrumbsRoutes';
-import UnifiedBreadcrumbs from '../components/breadcrumbs/UnifiedBreadcrumbs ';
+import UnifiedBreadcrumbs from '../components/breadcrumbs/UnifiedBreadcrumbs';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import Img from '../components/Img';
 import Skeleton from '../components/skeleton/Skeleton';
