@@ -2,7 +2,7 @@ import { AdminPath, LinkText, ShopPath } from '../../layout/nav/enums';
 
 export type RouteListProps = {
   path: string;
-  label?: LinkText;
+  label?: string;
 };
 const routeBreadcrumbs: RouteListProps[] = [
   { path: ShopPath.Root, label: LinkText.Home },
