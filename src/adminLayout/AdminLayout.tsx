@@ -7,8 +7,8 @@ import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
 import useMediaQuery from '../hooks/useMediaQuery ';
 import { ShopPath } from '../layout/nav/enums';
 import MetaTags from '../layout/nav/MetaTags';
-import './_admin-layout.scss';
 import AdminHeader from './AdminHeader';
+import './AdminLayout.styles.scss';
 import Aside from './aside/Aside';
 import MobileNav from './MobileNav';
 

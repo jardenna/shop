@@ -1,10 +1,10 @@
 import { memo } from 'react';
-import type { Status } from '../../app/api/apiTypes/adminApiTypes';
-import Badge from '../../components/badge/Badge';
-import MoreLink from '../../components/MoreLink';
-import useLanguage from '../../features/language/useLanguage';
-import { AdminPath } from '../../layout/nav/enums';
-import { getlowerCaseFirstLetter } from '../../utils/utils';
+import type { Status } from '../../../app/api/apiTypes/adminApiTypes';
+import Badge from '../../../components/badge/Badge';
+import MoreLink from '../../../components/MoreLink';
+import { AdminPath } from '../../../layout/nav/enums';
+import { getlowerCaseFirstLetter } from '../../../utils/utils';
+import useLanguage from '../../language/useLanguage';
 
 type SubCategoryTableRowsProps = {
   id: string;

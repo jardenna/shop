@@ -3,25 +3,25 @@ import type {
   Category,
   CreateSubCategoryRequest,
   SubCategoryResponse,
-} from '../../app/api/apiTypes/adminApiTypes';
-import useDatePicker from '../../components/datePicker/useDatePicker';
-import FieldSet from '../../components/fieldset/FieldSet';
-import Form from '../../components/form/Form';
-import Input from '../../components/formElements/Input';
-import validateSubcategory from '../../components/formElements/validation/validateSubcategory';
-import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-import Selectbox from '../../components/selectbox/Selectbox';
-import StatusOptions from '../../components/selectbox/StatusOptions';
-import SharedCategoryInputs from '../../components/SharedCategoryInputs';
-import useFormValidation from '../../hooks/useFormValidation';
-import { AdminPath } from '../../layout/nav/enums';
-import type { OptionType } from '../../types/types';
-import { getlowerCaseFirstLetter } from '../../utils/utils';
-import useLanguage from '../language/useLanguage';
+} from '../../../app/api/apiTypes/adminApiTypes';
+import useDatePicker from '../../../components/datePicker/useDatePicker';
+import FieldSet from '../../../components/fieldset/FieldSet';
+import Form from '../../../components/form/Form';
+import Input from '../../../components/formElements/Input';
+import validateSubcategory from '../../../components/formElements/validation/validateSubcategory';
+import useMessagePopup from '../../../components/messagePopup/useMessagePopup';
+import Selectbox from '../../../components/selectbox/Selectbox';
+import StatusOptions from '../../../components/selectbox/StatusOptions';
+import SharedCategoryInputs from '../../../components/SharedCategoryInputs';
+import useFormValidation from '../../../hooks/useFormValidation';
+import { AdminPath } from '../../../layout/nav/enums';
+import type { OptionType } from '../../../types/types';
+import { getlowerCaseFirstLetter } from '../../../utils/utils';
+import useLanguage from '../../language/useLanguage';
 import {
   useCreateSubCategoryMutation,
   useUpdateSubCategoryMutation,
-} from './subCategoryApiSlice';
+} from '../subCategoryApiSlice';
 
 type SubCategoryFormProps = {
   id: string | null;

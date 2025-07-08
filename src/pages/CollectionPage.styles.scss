@@ -1,0 +1,35 @@
+@use '../scss/globals' as *;
+
+.collection-page {
+  .breadcrumbs-container {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.collection-page-container {
+  display: flex;
+  gap: 12px;
+}
+
+.product-toolbar {
+  display: flex;
+  justify-content: space-between;
+  margin-block: 8px 24px;
+
+  .toggle-panel {
+    max-width: rem(300px);
+  }
+
+  .product-views-container,
+  .product-filter {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .product-views-container {
+    gap: 8px;
+  }
+}

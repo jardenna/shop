@@ -5,39 +5,39 @@ import type {
   Product,
   ProductRequest,
   SubCategoriesWithParent,
-} from '../../app/api/apiTypes/adminApiTypes';
-import useDatePicker from '../../components/datePicker/useDatePicker';
-import Form from '../../components/form/Form';
-import Checkbox from '../../components/formElements/checkbox/Checkbox';
-import FileInput from '../../components/formElements/fileInput/FileInput';
-import ProductImgList from '../../components/formElements/fileInput/ProductImgList';
-import Input from '../../components/formElements/Input';
-import Textarea from '../../components/formElements/Textarea';
-import ToggleSwitch from '../../components/formElements/toggleSwitch/ToggleSwitch';
-import validateProduct from '../../components/formElements/validation/validateProduct';
-import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-import ColorOptions from '../../components/selectbox/ColorOptions';
-import Selectbox from '../../components/selectbox/Selectbox';
-import StatusOptions from '../../components/selectbox/StatusOptions';
-import StatusInputs from '../../components/StatusInputs';
-import useFormValidation from '../../hooks/useFormValidation';
-import { AdminPath } from '../../layout/nav/enums';
-import variables from '../../scss/variables.module.scss';
-import type { OptionType } from '../../types/types';
+} from '../../../app/api/apiTypes/adminApiTypes';
+import useDatePicker from '../../../components/datePicker/useDatePicker';
+import Form from '../../../components/form/Form';
+import Checkbox from '../../../components/formElements/checkbox/Checkbox';
+import FileInput from '../../../components/formElements/fileInput/FileInput';
+import ProductImgList from '../../../components/formElements/fileInput/ProductImgList';
+import Input from '../../../components/formElements/Input';
+import Textarea from '../../../components/formElements/Textarea';
+import ToggleSwitch from '../../../components/formElements/toggleSwitch/ToggleSwitch';
+import validateProduct from '../../../components/formElements/validation/validateProduct';
+import useMessagePopup from '../../../components/messagePopup/useMessagePopup';
+import ColorOptions from '../../../components/selectbox/ColorOptions';
+import Selectbox from '../../../components/selectbox/Selectbox';
+import StatusOptions from '../../../components/selectbox/StatusOptions';
+import StatusInputs from '../../../components/StatusInputs';
+import useFormValidation from '../../../hooks/useFormValidation';
+import { AdminPath } from '../../../layout/nav/enums';
+import variables from '../../../scss/variables.module.scss';
+import type { OptionType } from '../../../types/types';
 import {
   discountCalculation,
   getlowerCaseFirstLetter,
   sizeList,
-} from '../../utils/utils';
-import ProductPrice from '../currency/components/ProductPrice';
-import useCurrency from '../currency/useCurrency';
-import useLanguage from '../language/useLanguage';
-import { useUploadImageMutation } from '../uploadImageApiSlice';
-import FormCard from './FormCard';
+} from '../../../utils/utils';
+import ProductPrice from '../../currency/components/ProductPrice';
+import useCurrency from '../../currency/useCurrency';
+import useLanguage from '../../language/useLanguage';
+import { useUploadImageMutation } from '../../uploadImageApiSlice';
 import {
   useCreateProductMutation,
   useUpdateProductMutation,
-} from './productApiSlice';
+} from '../productApiSlice';
+import FormCard from './FormCard';
 
 type ProductFormProps = {
   id: string | null;

@@ -1,7 +1,7 @@
 import Icon from '../../../components/icons/Icon';
 import TogglePanel from '../../../components/togglePanel/TogglePanel';
-import useLanguage from '../../../features/language/useLanguage';
 import { IconName } from '../../../types/enums';
+import useLanguage from '../../language/useLanguage';
 
 const FilterPanel = () => {
   const { language } = useLanguage();

@@ -1,5 +1,5 @@
-import MissingImage from '../../components/formElements/fileInput/MissingImage';
-import Img from '../../components/Img';
+import MissingImage from '../../../components/formElements/fileInput/MissingImage';
+import Img from '../../../components/Img';
 
 type ProductOverviewCellProps = {
   images: string[];

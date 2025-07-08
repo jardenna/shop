@@ -1,6 +1,7 @@
 import type { SubCategoryResponse } from '../../app/api/apiTypes/adminApiTypes';
 import Table from '../../components/sortTable/Table';
 import useLanguage from '../../features/language/useLanguage';
+import SubCategoryTableRows from '../../features/subCategories/components/SubCategoryTableRows';
 import {
   useGetAllSubCategoriesQuery,
   useGetHasSubCatScheduledQuery,
@@ -8,7 +9,6 @@ import {
 import { AdminPath } from '../../layout/nav/enums';
 import { oneDay } from '../../utils/utils';
 import PageContainer from '../pageContainer/PageContainer';
-import SubCategoryTableRows from './SubCategoryTableRows';
 
 const tableHeaders: {
   key: keyof SubCategoryResponse;

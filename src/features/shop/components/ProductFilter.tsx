@@ -1,6 +1,6 @@
 import Icon from '../../../components/icons/Icon';
-import useLanguage from '../../../features/language/useLanguage';
 import { IconName } from '../../../types/enums';
+import useLanguage from '../../language/useLanguage';
 
 type ProductFilterProps = {
   name?: string;

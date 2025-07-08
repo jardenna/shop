@@ -1,5 +1,5 @@
-import { ProductSizes } from '../../../../app/api/apiTypes/sharedApiTypes';
-import './_size-overlay.scss';
+import { ProductSizes } from '../../../app/api/apiTypes/sharedApiTypes';
+import './SizeOverlay.styles.scss';
 
 type SizeOverlayProps = {
   sizes: ProductSizes[];

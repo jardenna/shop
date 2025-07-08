@@ -4,11 +4,11 @@ import {
   useGetAllCategoriesQuery,
   useGetHasCategoriesScheduledQuery,
 } from '../../features/categories/categoriyApiSlice';
+import CategoryTableRow from '../../features/categories/components/CategoryTableRow';
 import useLanguage from '../../features/language/useLanguage';
 import { AdminPath } from '../../layout/nav/enums';
 import { oneDay } from '../../utils/utils';
 import PageContainer from '../pageContainer/PageContainer';
-import CategoryTableRow from './CategoryTableRow';
 
 const tableHeaders: { key: keyof Category; label: string; name: string }[] = [
   { key: 'categoryName', label: 'name', name: 'categoryName' },

@@ -1,5 +1,5 @@
 import useLanguage from '../../features/language/useLanguage';
-import ProductForm from '../../features/products/ProductForm';
+import ProductForm from '../../features/products/components/ProductForm';
 import { useGetSubCategoriesWithParentQuery } from '../../features/subCategories/subCategoryApiSlice';
 import PageContainer from '../pageContainer/PageContainer';
 
