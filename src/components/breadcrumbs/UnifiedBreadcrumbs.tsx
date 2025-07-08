@@ -5,14 +5,15 @@ import { ShopPath } from '../../layout/nav/enums';
 import { IconName } from '../../types/enums';
 import Icon from '../icons/Icon';
 import './_breadcrumbs.scss';
-import { RouteListProps } from './breadcrumbsRoutes';
+import { breadcrumbsListProps } from './breadcrumbsLists';
 
 type UnifiedBreadcrumbsProps = {
-  routeList: RouteListProps[];
+  routeList: breadcrumbsListProps[];
   currentLabel?: string;
   productName?: string;
   subMenu?: { categoryId: string; label: string }[];
 };
+
 const UnifiedBreadcrumbs = ({
   routeList,
   subMenu,
@@ -22,7 +23,6 @@ const UnifiedBreadcrumbs = ({
   const { pathname } = useLocation();
   const { category, categoryId } = useParams();
   const { language } = useLanguage();
-
   const pathnames = pathname.split('/').filter(Boolean);
 
   const paths = pathnames.map(
