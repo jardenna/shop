@@ -30,7 +30,7 @@ enum ShopPath {
   Product = 'product',
   Root = '/',
   ShoppingCart = 'shopping-cart',
-  Signup = 'signup',
+  Signup = 'createAccount',
   Users = '/admin/users',
   Women = '/collection/women',
 }
@@ -56,7 +56,7 @@ enum LinkText {
   Orders = 'orders',
   Products = 'products',
   Profile = 'profile',
-  Signup = 'signup',
+  Signup = 'createAccount',
   SubCategories = 'subCategories',
   Update = 'update',
   Users = 'users',

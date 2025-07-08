@@ -69,7 +69,7 @@ const RegisterUser = ({ navigateTo, currentUser }: RegisterUserProps) => {
   return (
     <AuthForm
       values={values}
-      submitBtnLabel={language.signup}
+      submitBtnLabel={language.createAccount}
       onSubmit={onSubmit}
       isLoading={isLoading}
       legendText={language.userInfo}

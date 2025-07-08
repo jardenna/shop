@@ -7,7 +7,7 @@ const SignupPage = () => {
   const { language } = useLanguage();
 
   return (
-    <MainPageContainer heading={language.signup} className="page-small">
+    <MainPageContainer heading={language.createAccount} className="page-small">
       <RegisterUser navigateTo={ShopPath.Root} />
     </MainPageContainer>
   );
