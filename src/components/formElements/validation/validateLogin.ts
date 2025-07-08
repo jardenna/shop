@@ -1,7 +1,7 @@
 import type { ValidationErrors } from '../../../hooks/useFormValidation';
 import { ValidationMessage } from '../../../types/enums';
 import { emailRegex } from '../../../utils/regex';
-import type { AuthFormValues } from './validateSignup';
+import type { AuthFormValues } from './validateCreateAccount';
 
 type OmittedRLoginType = Omit<AuthFormValues, 'username' | 'confirmPassword'>;
 

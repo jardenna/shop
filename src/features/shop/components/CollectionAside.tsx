@@ -20,6 +20,7 @@ const CollectionAside = ({
   onReset,
 }: CollectionAsideProps) => {
   const { language } = useLanguage();
+
   return (
     <aside className="collection-aside">
       <LayoutElement
@@ -32,7 +33,7 @@ const CollectionAside = ({
       {subMenu && (
         <CollectionNav
           subMenu={subMenu}
-          category={category || 'women'}
+          category={category}
           showAllText={language.showAll}
           ariaLabel={language.page}
           isLoading={isLoading}

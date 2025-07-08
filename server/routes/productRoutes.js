@@ -7,6 +7,7 @@ import {
   getNewProducts,
   getProductById,
   getProducts,
+  getShopProductById,
   getSortedProducts,
   getTopProducts,
   updateProduct,
@@ -29,6 +30,7 @@ router
 
 router.get('/scheduled', checkScheduled);
 router.get('/allProducts', paginatedProducts, getSortedProducts);
+router.get('/shop/:id', languageMiddleware, getShopProductById);
 router.post('/:id/reviews', authenticate, checkId, createProductReviews);
 router.get('/top', getTopProducts);
 router.get('/new', getNewProducts);

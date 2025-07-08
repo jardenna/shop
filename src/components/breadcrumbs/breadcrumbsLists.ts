@@ -1,7 +1,10 @@
 import { AdminPath, LinkText, ShopPath } from '../../layout/nav/enums';
-import type { RouteListProps } from './Breadcrumbs';
 
-const routeBreadcrumbs: RouteListProps[] = [
+export type breadcrumbsListProps = {
+  path: string;
+  label?: string;
+};
+const breadcrumbsList: breadcrumbsListProps[] = [
   {
     path: ShopPath.Root,
     label: LinkText.Home,
@@ -12,7 +15,12 @@ const routeBreadcrumbs: RouteListProps[] = [
   },
   {
     path: `${ShopPath.Collection}/:category`,
-    label: '',
+  },
+  {
+    path: `${ShopPath.Collection}/:category/:categoryId`,
+  },
+  {
+    path: `${ShopPath.Collection}/:category/:categoryId/:id`,
   },
   {
     path: AdminPath.About,
@@ -24,35 +32,31 @@ const routeBreadcrumbs: RouteListProps[] = [
   },
   {
     path: ShopPath.Login,
-    label: LinkText.Kids,
+    label: LinkText.Login,
   },
   {
-    path: ShopPath.Signup,
-    label: LinkText.Kids,
+    path: ShopPath.CreateAccount,
+    label: LinkText.CreateAccount,
   },
   {
     path: ShopPath.MyAccount,
-    label: LinkText.Kids,
+    label: LinkText.MyAccount,
   },
   {
     path: ShopPath.MyOrders,
-    label: LinkText.Kids,
+    label: LinkText.Orders,
   },
   {
     path: ShopPath.ShoppingCart,
-    label: LinkText.Kids,
+    label: LinkText.Dashboard,
   },
   {
     path: ShopPath.Favorites,
     label: LinkText.Favorites,
   },
-  {
-    path: ShopPath.Product,
-    label: LinkText.Products,
-  },
 ];
 
-const adminBreadcrumbs: RouteListProps[] = [
+const adminBreadcrumbsList: breadcrumbsListProps[] = [
   {
     path: ShopPath.Root,
     label: LinkText.Dashboard,
@@ -119,4 +123,4 @@ const adminBreadcrumbs: RouteListProps[] = [
   },
 ];
 
-export { adminBreadcrumbs, routeBreadcrumbs };
+export { adminBreadcrumbsList, breadcrumbsList };

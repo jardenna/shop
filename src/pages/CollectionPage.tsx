@@ -1,7 +1,7 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
-import { routeBreadcrumbs } from '../components/breadcrumbs/breadcrumbsRoutes';
+import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import Img from '../components/Img';
 import Skeleton from '../components/skeleton/Skeleton';
@@ -10,10 +10,8 @@ import CollectionAside from '../features/shop/components/CollectionAside';
 import FilterPanel from '../features/shop/components/FilterPanel';
 import ProductCardList from '../features/shop/components/ProductCardList';
 import ProductViews from '../features/shop/components/ProductViews';
-import {
-  useGetProductsQuery,
-  useGetShopMenuQuery,
-} from '../features/shop/shopApiSlice';
+import useSubMenu from '../features/shop/hooks/useSubMenu';
+import { useGetProductsQuery } from '../features/shop/shopApiSlice';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
 import MetaTags from '../layout/nav/MetaTags';
 import './CollectionPage.styles.scss';
@@ -33,11 +31,7 @@ const CollectionPage = () => {
     subCategoryId: categoryId || '',
   });
 
-  const {
-    data: subMenu,
-    isLoading: subMenuLoading,
-    refetch: refetchSubMenu,
-  } = useGetShopMenuQuery(category || 'women');
+  const { subMenu, subMenuLoading, refetchSubMenu } = useSubMenu({ category });
 
   const categoryText = category ? language[category] : '';
 
@@ -54,10 +48,13 @@ const CollectionPage = () => {
           <Skeleton />
         ) : (
           <>
-            <Breadcrumbs
-              routeList={routeBreadcrumbs}
-              currentLabel={categoryText}
-            />
+            {subMenu && (
+              <Breadcrumbs
+                routeList={breadcrumbsList}
+                subMenu={subMenu}
+                productName=""
+              />
+            )}
             <div className="collection-page-container">
               <CollectionAside
                 subMenu={subMenu || null}
@@ -66,7 +63,6 @@ const CollectionPage = () => {
                 onReset={() => refetchSubMenu()}
                 asideHeading={categoryText}
               />
-
               <ErrorBoundary
                 FallbackComponent={ErrorBoundaryFallback}
                 onReset={() => refetch()}
@@ -76,7 +72,6 @@ const CollectionPage = () => {
                     src={`/images/collections/${category}/banner.jpg`}
                     alt=""
                   />
-
                   <section className="product-toolbar">
                     <ProductViews
                       productCount={products?.productCount || null}
@@ -84,11 +79,11 @@ const CollectionPage = () => {
                     />
                     <FilterPanel />
                   </section>
-
                   {products && (
                     <ProductCardList
                       products={products.products}
                       displayList={productView === 'list'}
+                      categoryId={categoryId}
                     />
                   )}
                 </div>

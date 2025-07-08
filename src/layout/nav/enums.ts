@@ -20,6 +20,7 @@ enum AdminPath {
 enum ShopPath {
   Collection = 'collection',
   Contact = 'contact',
+  CreateAccount = 'createAccount',
   Favorites = '/favorites',
   Home = 'home',
   Kids = '/collection/kids',
@@ -30,7 +31,6 @@ enum ShopPath {
   Product = 'product',
   Root = '/',
   ShoppingCart = 'shopping-cart',
-  Signup = 'signup',
   Users = '/admin/users',
   Women = '/collection/women',
 }
@@ -42,6 +42,7 @@ enum LinkText {
   Collection = 'collection',
   Contact = 'contact',
   Create = 'create',
+  CreateAccount = 'createAccount',
   CreateNewCategory = 'createNewCategory',
   CreateNewProduct = 'createNewProduct',
   CreateNewUser = 'createNewUser',
@@ -56,7 +57,6 @@ enum LinkText {
   Orders = 'orders',
   Products = 'products',
   Profile = 'profile',
-  Signup = 'signup',
   SubCategories = 'subCategories',
   Update = 'update',
   Users = 'users',

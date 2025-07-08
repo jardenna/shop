@@ -4,7 +4,6 @@ import Favorites from '../../../components/favorites/Favorites';
 import Img from '../../../components/Img';
 import ProductColorList from '../../../components/ProductColorList';
 import ProductSizeList from '../../../components/productSizeList/ProductSizeList';
-import { ShopPath } from '../../../layout/nav/enums';
 import ProductDiscountPrice from '../../products/components/ProductDiscountPrice';
 import './ProductCardList.styles.scss';
 import SizeOverlay from './SizeOverlay';
@@ -12,9 +11,14 @@ import SizeOverlay from './SizeOverlay';
 type ProductCardListProps = {
   displayList: boolean;
   products: BaseProduct[];
+  categoryId?: string;
 };
 
-const ProductCardList = ({ displayList, products }: ProductCardListProps) => (
+const ProductCardList = ({
+  displayList,
+  products,
+  categoryId,
+}: ProductCardListProps) => (
   <section className={`product-card-list ${displayList ? 'list' : ''}`}>
     {products.map((product) => (
       <div key={product.id} className="product-card">
@@ -23,7 +27,7 @@ const ProductCardList = ({ displayList, products }: ProductCardListProps) => (
           {product.discount > 0 && (
             <span className="product-badge">- {product.discount} %</span>
           )}
-          <Link to={`/${ShopPath.Product}/${product.id}`}>
+          <Link to={categoryId ? product.id : `allProducts/${product.id}`}>
             <Img alt="" src={product.images[0]} className="product-card-img" />
           </Link>
           {!displayList && (

@@ -11,7 +11,7 @@ import { logout } from './authSlice';
 
 export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    signup: builder.mutation<AuthResponse, AuthRequest>({
+    createAccount: builder.mutation<AuthResponse, AuthRequest>({
       query: (user) => {
         const isAdmin = store.getState().auth.user?.user.isAdmin;
         return {
@@ -53,7 +53,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
 });
 
 export const {
-  useSignupMutation,
+  useCreateAccountMutation,
   useLoginMutation,
   useLogoutMutation,
   useCheckAuthQuery,

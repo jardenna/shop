@@ -9,7 +9,7 @@ export type AuthFormValues = {
   username: string;
 };
 
-function validateSignup(values: AuthFormValues) {
+function validateCreateAccount(values: AuthFormValues) {
   const errors: ValidationErrors = {};
   const { username, email, password, confirmPassword } = values;
 
@@ -41,4 +41,4 @@ function validateSignup(values: AuthFormValues) {
   return errors;
 }
 
-export default validateSignup;
+export default validateCreateAccount;

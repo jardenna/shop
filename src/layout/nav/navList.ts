@@ -46,8 +46,8 @@ const authItemsList = [
     linkText: LinkText.Login,
   },
   {
-    path: ShopPath.Signup,
-    linkText: LinkText.Signup,
+    path: ShopPath.CreateAccount,
+    linkText: LinkText.CreateAccount,
   },
 ];
 

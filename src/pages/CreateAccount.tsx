@@ -5,15 +5,15 @@ import type {
   UserResponse,
 } from '../app/api/apiTypes/adminApiTypes';
 import AuthForm from '../components/authForm/AuthForm';
-import validateSignup from '../components/formElements/validation/validateSignup';
+import validateSignup from '../components/formElements/validation/validateCreateAccount';
 import useMessagePopup from '../components/messagePopup/useMessagePopup';
-import { useSignupMutation } from '../features/auth/authApiSlice';
+import { useCreateAccountMutation } from '../features/auth/authApiSlice';
 import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
 import { ShopPath } from '../layout/nav/enums';
 import passwordRules from '../utils/passwordRules';
 
-export type RegisterUserProps = {
+export type CreateAccountProps = {
   navigateTo: string;
   currentUser?: UserResponse;
 };
@@ -22,7 +22,7 @@ export type InitialState = AuthRequest & {
   confirmPassword: string;
 };
 
-const RegisterUser = ({ navigateTo, currentUser }: RegisterUserProps) => {
+const CreateAccount = ({ navigateTo, currentUser }: CreateAccountProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const initialState: InitialState = {
@@ -38,13 +38,13 @@ const RegisterUser = ({ navigateTo, currentUser }: RegisterUserProps) => {
   const { values, errors, onChange, onBlur, isFocused, onFocus, onSubmit } =
     useFormValidation({
       initialState,
-      callback: handleRegisterUser,
+      callback: handleCreateAccount,
       validate: validateSignup,
     });
 
-  const [registerUser, { isLoading }] = useSignupMutation();
+  const [registerUser, { isLoading }] = useCreateAccountMutation();
 
-  async function handleRegisterUser() {
+  async function handleCreateAccount() {
     try {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { confirmPassword, ...rest } = values;
@@ -69,7 +69,7 @@ const RegisterUser = ({ navigateTo, currentUser }: RegisterUserProps) => {
   return (
     <AuthForm
       values={values}
-      submitBtnLabel={language.signup}
+      submitBtnLabel={language.createAccount}
       onSubmit={onSubmit}
       isLoading={isLoading}
       legendText={language.userInfo}
@@ -86,4 +86,4 @@ const RegisterUser = ({ navigateTo, currentUser }: RegisterUserProps) => {
   );
 };
 
-export default RegisterUser;
+export default CreateAccount;

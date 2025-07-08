@@ -5,7 +5,7 @@ import { AdminPath, LinkText, ShopPath } from '../layout/nav/enums';
 import AboutPage from '../pages/AboutPage';
 import MyAccount from '../pages/account/MyAccount';
 import Orders from '../pages/account/Orders';
-import CreateUserPage from '../pages/admin/CreateUserPage';
+import AdminCreateUserPage from '../pages/admin/AdminCreateUserPage';
 import Dashboard from '../pages/admin/Dashboard';
 import OrderPage from '../pages/admin/OrderPage';
 import ProfilePage from '../pages/admin/ProfilePage';
@@ -15,6 +15,7 @@ import CreateCategoryPage from '../pages/category/CreateCategoryPage';
 import UpdateCategoryPage from '../pages/category/UpdateCategoryPage';
 import CollectionPage from '../pages/CollectionPage';
 import ContactPage from '../pages/ContactPage';
+import CreateAccountPage from '../pages/CreateAccountPage';
 import ErrorPage from '../pages/ErrorPage';
 import FavoritesPage from '../pages/FavoritesPage';
 import HomePage from '../pages/home/HomePage';
@@ -26,7 +27,6 @@ import UpdateProductPage from '../pages/product/UpdateProductPage';
 import ViewProductPage from '../pages/product/ViewProductPage';
 import ProtectedRoute from '../pages/ProtectedRoute';
 import ShoppingChartPage from '../pages/ShoppingChartPage';
-import SignupPage from '../pages/SignupPage';
 import SingleProductPage from '../pages/SingleProductPage';
 import CreateSubCategoryPage from '../pages/subCategory/CreateSubCategoryPage';
 import SubCategoryPage from '../pages/subCategory/SubCategoryPage';
@@ -55,7 +55,7 @@ const routeList = [
     label: '',
   },
   {
-    path: `${ShopPath.Product}/:id`,
+    path: `${ShopPath.Collection}/:category/:categoryId/:id`,
     element: <SingleProductPage />,
     label: '',
   },
@@ -75,9 +75,9 @@ const routeList = [
     label: LinkText.Login,
   },
   {
-    path: ShopPath.Signup,
-    element: <SignupPage />,
-    label: LinkText.Signup,
+    path: ShopPath.CreateAccount,
+    element: <CreateAccountPage />,
+    label: LinkText.CreateAccount,
   },
   {
     path: ShopPath.MyAccount,
@@ -101,7 +101,7 @@ const routeList = [
   },
 ];
 
-export const adminRouteList = [
+const adminRouteList = [
   {
     index: true,
     element: <Dashboard />,
@@ -114,7 +114,7 @@ export const adminRouteList = [
   },
   {
     path: AdminPath.AdminUserCreate,
-    element: <CreateUserPage />,
+    element: <AdminCreateUserPage />,
     label: LinkText.CreateNewUser,
   },
   {

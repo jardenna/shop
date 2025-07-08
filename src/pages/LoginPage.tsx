@@ -54,7 +54,7 @@ const LoginPage = () => {
         onChange={onChange}
         errors={errors}
         onBlur={onBlur}
-        navigateTo={ShopPath.Signup}
+        navigateTo={ShopPath.CreateAccount}
         navigateToText={language.createAccount}
       />
     </MainPageContainer>
