@@ -5,19 +5,55 @@ export type breadcrumbsListProps = {
   label?: string;
 };
 const breadcrumbsList: breadcrumbsListProps[] = [
-  { path: ShopPath.Root, label: LinkText.Home },
-  { path: ShopPath.Collection, label: LinkText.Collection },
-  { path: `${ShopPath.Collection}/:category` },
-  { path: `${ShopPath.Collection}/:category/:categoryId` },
-  { path: `${ShopPath.Collection}/:category/:categoryId/:id` },
-  { path: AdminPath.About, label: LinkText.About },
-  { path: ShopPath.Contact, label: LinkText.Contact },
-  { path: ShopPath.Login, label: LinkText.Login },
-  { path: ShopPath.Signup, label: LinkText.Signup },
-  { path: ShopPath.MyAccount, label: LinkText.MyAccount },
-  { path: ShopPath.MyOrders, label: LinkText.Orders },
-  { path: ShopPath.ShoppingCart, label: LinkText.Dashboard },
-  { path: ShopPath.Favorites, label: LinkText.Favorites },
+  {
+    path: ShopPath.Root,
+    label: LinkText.Home,
+  },
+  {
+    path: ShopPath.Collection,
+    label: LinkText.Collection,
+  },
+  {
+    path: `${ShopPath.Collection}/:category`,
+  },
+  {
+    path: `${ShopPath.Collection}/:category/:categoryId`,
+  },
+  {
+    path: `${ShopPath.Collection}/:category/:categoryId/:id`,
+  },
+  {
+    path: AdminPath.About,
+    label: LinkText.About,
+  },
+  {
+    path: ShopPath.Contact,
+    label: LinkText.Contact,
+  },
+  {
+    path: ShopPath.Login,
+    label: LinkText.Login,
+  },
+  {
+    path: ShopPath.Signup,
+    label: LinkText.Signup,
+  },
+  {
+    path: ShopPath.MyAccount,
+    label: LinkText.MyAccount,
+  },
+  {
+    path: ShopPath.MyOrders,
+    label: LinkText.Orders,
+  },
+  {
+    path: ShopPath.ShoppingCart,
+    label: LinkText.Dashboard,
+  },
+  {
+    path: ShopPath.Favorites,
+    label: LinkText.Favorites,
+  },
 ];
 
 const adminBreadcrumbsList: breadcrumbsListProps[] = [
