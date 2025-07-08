@@ -16,7 +16,7 @@ const createUser = asyncHandler(async (req, res) => {
   if (!username || !email || !password) {
     return res.status(400).json({
       success: false,
-      message: 'Please fill all inputs',
+      message: t('fillAll', req.lang),
     });
   }
 

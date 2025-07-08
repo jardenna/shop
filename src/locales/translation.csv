@@ -247,8 +247,6 @@ showContent;Show content;Vis indhold
 showPassword;Show password;Vis adgangskode
 showAll;Show all;Vis alle
 showPrice;Show price;Vis pris
-signup;Sign up;Opret bruger
-signupFailed;Sign up failed;Registrering mislykkedes
 signupSucceeded;Sign up succeeded;Registrering lykkedes
 sizeRequired;Please select at least one size;Vælg mindst 1 størrelse
 size;Size;Størrelse
