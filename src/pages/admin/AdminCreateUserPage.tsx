@@ -4,7 +4,7 @@ import { ShopPath } from '../../layout/nav/enums';
 import CreateAccount from '../CreateAccount';
 import PageContainer from '../pageContainer/PageContainer';
 
-const CreateUserPage = () => {
+const AdminCreateUserPage = () => {
   const { language } = useLanguage();
   const { currentUser } = useAuth();
 
@@ -17,4 +17,4 @@ const CreateUserPage = () => {
   );
 };
 
-export default CreateUserPage;
+export default AdminCreateUserPage;

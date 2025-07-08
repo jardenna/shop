@@ -5,7 +5,7 @@ import { AdminPath, LinkText, ShopPath } from '../layout/nav/enums';
 import AboutPage from '../pages/AboutPage';
 import MyAccount from '../pages/account/MyAccount';
 import Orders from '../pages/account/Orders';
-import CreateUserPage from '../pages/admin/CreateUserPage';
+import AdminCreateUserPage from '../pages/admin/AdminCreateUserPage';
 import Dashboard from '../pages/admin/Dashboard';
 import OrderPage from '../pages/admin/OrderPage';
 import ProfilePage from '../pages/admin/ProfilePage';
@@ -114,7 +114,7 @@ const adminRouteList = [
   },
   {
     path: AdminPath.AdminUserCreate,
-    element: <CreateUserPage />,
+    element: <AdminCreateUserPage />,
     label: LinkText.CreateNewUser,
   },
   {
