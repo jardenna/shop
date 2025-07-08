@@ -6,18 +6,18 @@ import { ShopPath } from '../../layout/nav/enums';
 import { IconName } from '../../types/enums';
 import Icon from '../icons/Icon';
 import './_breadcrumbs.scss';
-import { routeBreadcrumbs, RouteListProps } from './breadcrumbsRoutes';
+import { breadcrumbsList, breadcrumbsListProps } from './breadcrumbsLists';
 
 type BreadCrumbsProps = {
   subMenu: ProductMenuResponse[];
   productName?: string;
-  routeList?: RouteListProps[];
+  routeList?: breadcrumbsListProps[];
 };
 
 const BreCrumbs = ({
   productName,
   subMenu,
-  routeList = routeBreadcrumbs,
+  routeList = breadcrumbsList,
 }: BreadCrumbsProps) => {
   const { pathname } = useLocation();
   const { category, categoryId } = useParams();

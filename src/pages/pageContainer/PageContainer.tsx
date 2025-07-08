@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { adminBreadcrumbs } from '../../components/breadcrumbs/breadcrumbsRoutes';
+import { adminBreadcrumbsList } from '../../components/breadcrumbs/breadcrumbsLists';
 import UnifiedBreadcrumbs from '../../components/breadcrumbs/UnifiedBreadcrumbs';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import PageHeader from '../../components/PageHeader';
@@ -24,7 +24,10 @@ const PageContainer = ({
 }: PageContainerProps) => (
   <>
     <MetaTags metaTitle={heading} />
-    <UnifiedBreadcrumbs routeList={adminBreadcrumbs} currentLabel={heading} />
+    <UnifiedBreadcrumbs
+      routeList={adminBreadcrumbsList}
+      currentLabel={heading}
+    />
     <PageHeader heading={heading} linkText={linkText} linkTo={linkTo} />
     <div className="page-card">
       <ErrorBoundary

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { routeBreadcrumbs } from '../../components/breadcrumbs/breadcrumbsRoutes';
+import { breadcrumbsList } from '../../components/breadcrumbs/breadcrumbsLists';
 import UnifiedBreadcrumbs from '../../components/breadcrumbs/UnifiedBreadcrumbs';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import useLanguage from '../../features/language/useLanguage';
@@ -31,7 +31,7 @@ const MainPageContainer = ({
           as="header"
           className="main-page-header"
         >
-          <UnifiedBreadcrumbs routeList={routeBreadcrumbs} />
+          <UnifiedBreadcrumbs routeList={breadcrumbsList} />
           <h1>{heading}</h1>
         </LayoutElement>
 

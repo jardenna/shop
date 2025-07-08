@@ -3,10 +3,10 @@ import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import { ShopPath } from '../../layout/nav/enums';
 import BreadcrumbItem from './BreadcrumbItem';
-import { RouteListProps } from './breadcrumbsRoutes';
+import { breadcrumbsListProps } from './breadcrumbsLists';
 
 type BreadCrumbsProps = {
-  routeList: RouteListProps[];
+  routeList: breadcrumbsListProps[];
   currentLabel?: string;
 };
 

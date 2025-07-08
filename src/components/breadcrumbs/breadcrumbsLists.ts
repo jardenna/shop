@@ -1,10 +1,10 @@
 import { AdminPath, LinkText, ShopPath } from '../../layout/nav/enums';
 
-export type RouteListProps = {
+export type breadcrumbsListProps = {
   path: string;
   label?: string;
 };
-const routeBreadcrumbs: RouteListProps[] = [
+const breadcrumbsList: breadcrumbsListProps[] = [
   { path: ShopPath.Root, label: LinkText.Home },
   { path: ShopPath.Collection, label: LinkText.Collection },
   { path: `${ShopPath.Collection}/:category` },
@@ -20,7 +20,7 @@ const routeBreadcrumbs: RouteListProps[] = [
   { path: ShopPath.Favorites, label: LinkText.Favorites },
 ];
 
-const adminBreadcrumbs = [
+const adminBreadcrumbsList: breadcrumbsListProps[] = [
   {
     path: ShopPath.Root,
     label: LinkText.Dashboard,
@@ -87,4 +87,4 @@ const adminBreadcrumbs = [
   },
 ];
 
-export { adminBreadcrumbs, routeBreadcrumbs };
+export { adminBreadcrumbsList, breadcrumbsList };

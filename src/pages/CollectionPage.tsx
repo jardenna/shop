@@ -1,6 +1,6 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
-import { routeBreadcrumbs } from '../components/breadcrumbs/breadcrumbsRoutes';
+import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import UnifiedBreadcrumbs from '../components/breadcrumbs/UnifiedBreadcrumbs';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import Img from '../components/Img';
@@ -50,7 +50,7 @@ const CollectionPage = () => {
           <>
             {subMenu && (
               <UnifiedBreadcrumbs
-                routeList={routeBreadcrumbs}
+                routeList={breadcrumbsList}
                 subMenu={subMenu}
                 productName=""
               />
