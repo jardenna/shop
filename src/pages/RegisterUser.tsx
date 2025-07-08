@@ -7,7 +7,7 @@ import type {
 import AuthForm from '../components/authForm/AuthForm';
 import validateSignup from '../components/formElements/validation/validateSignup';
 import useMessagePopup from '../components/messagePopup/useMessagePopup';
-import { useSignupMutation } from '../features/auth/authApiSlice';
+import { useCreateAccountMutation } from '../features/auth/authApiSlice';
 import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
 import { ShopPath } from '../layout/nav/enums';
@@ -42,7 +42,7 @@ const RegisterUser = ({ navigateTo, currentUser }: RegisterUserProps) => {
       validate: validateSignup,
     });
 
-  const [registerUser, { isLoading }] = useSignupMutation();
+  const [registerUser, { isLoading }] = useCreateAccountMutation();
 
   async function handleRegisterUser() {
     try {
