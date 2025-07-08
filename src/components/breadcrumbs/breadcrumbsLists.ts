@@ -35,8 +35,8 @@ const breadcrumbsList: breadcrumbsListProps[] = [
     label: LinkText.Login,
   },
   {
-    path: ShopPath.Signup,
-    label: LinkText.Signup,
+    path: ShopPath.CreateAccount,
+    label: LinkText.CreateAccount,
   },
   {
     path: ShopPath.MyAccount,

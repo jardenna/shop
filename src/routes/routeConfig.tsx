@@ -15,6 +15,7 @@ import CreateCategoryPage from '../pages/category/CreateCategoryPage';
 import UpdateCategoryPage from '../pages/category/UpdateCategoryPage';
 import CollectionPage from '../pages/CollectionPage';
 import ContactPage from '../pages/ContactPage';
+import CreateAccountPage from '../pages/CreateAccountPage';
 import ErrorPage from '../pages/ErrorPage';
 import FavoritesPage from '../pages/FavoritesPage';
 import HomePage from '../pages/home/HomePage';
@@ -26,7 +27,6 @@ import UpdateProductPage from '../pages/product/UpdateProductPage';
 import ViewProductPage from '../pages/product/ViewProductPage';
 import ProtectedRoute from '../pages/ProtectedRoute';
 import ShoppingChartPage from '../pages/ShoppingChartPage';
-import SignupPage from '../pages/SignupPage';
 import SingleProductPage from '../pages/SingleProductPage';
 import CreateSubCategoryPage from '../pages/subCategory/CreateSubCategoryPage';
 import SubCategoryPage from '../pages/subCategory/SubCategoryPage';
@@ -75,9 +75,9 @@ const routeList = [
     label: LinkText.Login,
   },
   {
-    path: ShopPath.Signup,
-    element: <SignupPage />,
-    label: LinkText.Signup,
+    path: ShopPath.CreateAccount,
+    element: <CreateAccountPage />,
+    label: LinkText.CreateAccount,
   },
   {
     path: ShopPath.MyAccount,

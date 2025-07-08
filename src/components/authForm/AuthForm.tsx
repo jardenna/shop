@@ -3,7 +3,7 @@ import type { RoleTypes } from '../../app/api/apiTypes/adminApiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import RoleRadioBtn from '../../features/users/RoleRadioBtn';
 import type { KeyValuePair } from '../../hooks/useFormValidation';
-import type { RegisterUserProps } from '../../pages/RegisterUser';
+import type { CreateAccountProps } from '../../pages/CreateAccount';
 import { BtnVariant } from '../../types/enums';
 import type {
   BlurEventType,
@@ -26,7 +26,7 @@ type UserFields = {
   username?: string;
 };
 
-type AuthFormProps = RegisterUserProps & {
+type AuthFormProps = CreateAccountProps & {
   errors: KeyValuePair<string>;
   isLoading: boolean;
   legendText: string;
