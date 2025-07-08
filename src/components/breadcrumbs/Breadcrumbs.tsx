@@ -6,19 +6,19 @@ import './_breadcrumbs.scss';
 import BreadcrumbItem from './BreadcrumbItem';
 import { breadcrumbsListProps } from './breadcrumbsLists';
 
-type UnifiedBreadcrumbsProps = {
+type BreadcrumbsProps = {
   routeList: breadcrumbsListProps[];
   currentLabel?: string;
   productName?: string;
   subMenu?: { categoryId: string; label: string }[];
 };
 
-const UnifiedBreadcrumbs = ({
+const Breadcrumbs = ({
   routeList,
   subMenu,
   productName,
   currentLabel,
-}: UnifiedBreadcrumbsProps) => {
+}: BreadcrumbsProps) => {
   const { pathname } = useLocation();
   const { category, categoryId } = useParams();
   const { language } = useLanguage();
@@ -119,4 +119,4 @@ const UnifiedBreadcrumbs = ({
   );
 };
 
-export default UnifiedBreadcrumbs;
+export default Breadcrumbs;
