@@ -1,10 +1,9 @@
+import { useCallback, useMemo } from 'react';
 import { Link, useLocation, useParams } from 'react-router';
-import { Fragment } from 'react/jsx-runtime';
 import useLanguage from '../../features/language/useLanguage';
 import { ShopPath } from '../../layout/nav/enums';
-import { IconName } from '../../types/enums';
-import Icon from '../icons/Icon';
 import './_breadcrumbs.scss';
+import BreadcrumbItem from './BreadcrumbItem';
 import { breadcrumbsListProps } from './breadcrumbsLists';
 
 type UnifiedBreadcrumbsProps = {
@@ -23,16 +22,24 @@ const UnifiedBreadcrumbs = ({
   const { pathname } = useLocation();
   const { category, categoryId } = useParams();
   const { language } = useLanguage();
-  const pathnames = pathname.split('/').filter(Boolean);
 
-  const paths = pathnames.map(
-    (_, idx) => `/${pathnames.slice(0, idx + 1).join('/')}`,
+  const pathnames = useMemo(
+    () => pathname.split('/').filter(Boolean),
+    [pathname],
+  );
+  const paths = useMemo(
+    () =>
+      pathnames.map((_, idx) => `/${pathnames.slice(0, idx + 1).join('/')}`),
+    [pathnames],
   );
 
-  const split = (path: string) => path.split('/').filter(Boolean);
+  const split = useCallback(
+    (path: string) => path.split('/').filter(Boolean),
+    [],
+  );
+  const getLastSegment = (path: string) => split(path).at(-1);
 
   const hiddenPathSegments = ['admin', 'create', 'update', 'view'];
-
   const shouldHideBreadcrumb = (segment: string) =>
     hiddenPathSegments.includes(segment.toLowerCase());
 
@@ -43,45 +50,39 @@ const UnifiedBreadcrumbs = ({
       if (!route.path) {
         return false;
       }
-
       const routeParts = split(route.path);
-      if (routeParts.length !== parts.length) {
-        return false;
-      }
-
-      return routeParts.every(
-        (part, i) => part.startsWith(':') || part === parts[i],
+      return (
+        routeParts.length === parts.length &&
+        routeParts.every((part, i) => part.startsWith(':') || part === parts[i])
       );
     });
 
-    if (!matchedRoute) {
-      return decodeURIComponent(parts.at(-1) ?? '');
-    }
-
-    if (matchedRoute.path.includes(':id') && productName) {
-      return productName;
-    }
-
-    if (matchedRoute.path.includes(':categoryId') && categoryId && subMenu) {
-      const found = subMenu.find((m) => m.categoryId === categoryId);
-      if (found) {
-        return found.label;
+    if (matchedRoute) {
+      if (matchedRoute.path.includes(':id') && productName) {
+        return productName;
       }
-    }
 
-    if (matchedRoute.path.includes(':category') && category) {
-      return language[category] ?? category;
-    }
+      if (matchedRoute.path.includes(':categoryId') && categoryId && subMenu) {
+        const found = subMenu.find((m) => m.categoryId === categoryId);
+        if (found) {
+          return found.label;
+        }
+      }
 
-    if (matchedRoute.label) {
-      return language[matchedRoute.label];
+      if (matchedRoute.path.includes(':category') && category) {
+        return language[category] ?? category;
+      }
+
+      if (matchedRoute.label) {
+        return language[matchedRoute.label] ?? matchedRoute.label;
+      }
     }
 
     if (paths.at(-1) === path && currentLabel) {
       return currentLabel;
     }
 
-    return decodeURIComponent(parts.at(-1) ?? '');
+    return decodeURIComponent(getLastSegment(path) ?? '');
   };
 
   return (
@@ -92,20 +93,18 @@ const UnifiedBreadcrumbs = ({
         </li>
         {paths.map((path, index) => {
           const isCurrent = index === pathnames.length - 1;
-          const lastPart = path.split('/').filter(Boolean).at(-1);
+          const lastPart = getLastSegment(path);
           if (!lastPart || shouldHideBreadcrumb(lastPart)) {
             return null;
           }
 
           return (
-            <Fragment key={path}>
-              <Icon iconName={IconName.ChevronRight} title="Chevron right" />
-              <li>
-                <Link to={path} aria-current={isCurrent ? 'page' : undefined}>
-                  {resolveLabel(path)}
-                </Link>
-              </li>
-            </Fragment>
+            <BreadcrumbItem
+              key={path}
+              label={resolveLabel(path)}
+              isCurrent={isCurrent}
+              to={path}
+            />
           );
         })}
       </ul>
