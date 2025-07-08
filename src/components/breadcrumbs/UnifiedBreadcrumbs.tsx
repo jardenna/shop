@@ -84,6 +84,21 @@ const UnifiedBreadcrumbs = ({
 
     return decodeURIComponent(getLastSegment(path) ?? '');
   };
+  const breadcrumbItems = paths
+    .map((path, index) => {
+      const lastPart = getLastSegment(path);
+      if (!lastPart || shouldHideBreadcrumb(lastPart)) {
+        return null;
+      }
+
+      return {
+        path,
+        isCurrent: index === pathnames.length - 1,
+      };
+    })
+    .filter(
+      (item): item is { isCurrent: boolean; path: string } => item !== null,
+    );
 
   return (
     <nav aria-label="breadcrumbs" className="breadcrumbs-container">
@@ -91,22 +106,14 @@ const UnifiedBreadcrumbs = ({
         <li>
           <Link to={ShopPath.Root}>{language.home}</Link>
         </li>
-        {paths.map((path, index) => {
-          const isCurrent = index === pathnames.length - 1;
-          const lastPart = getLastSegment(path);
-          if (!lastPart || shouldHideBreadcrumb(lastPart)) {
-            return null;
-          }
-
-          return (
-            <BreadcrumbItem
-              key={path}
-              label={resolveLabel(path)}
-              isCurrent={isCurrent}
-              to={path}
-            />
-          );
-        })}
+        {breadcrumbItems.map(({ path, isCurrent }) => (
+          <BreadcrumbItem
+            key={path}
+            label={resolveLabel(path)}
+            isCurrent={isCurrent}
+            to={path}
+          />
+        ))}
       </ul>
     </nav>
   );
