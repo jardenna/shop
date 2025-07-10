@@ -38,7 +38,7 @@ const Breadcrumbs = ({
   );
   const getLastSegment = (path: string) => split(path).at(-1);
 
-  const hiddenPathSegments = ['create', 'update', 'view'];
+  const hiddenPathSegments = ['update', 'view'];
   const shouldHideBreadcrumb = (segment: string) =>
     hiddenPathSegments.includes(segment.toLowerCase());
 
