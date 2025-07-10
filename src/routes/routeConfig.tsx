@@ -2,13 +2,11 @@ import { createBrowserRouter } from 'react-router';
 import AdminLayout from '../adminLayout/AdminLayout';
 import Layout from '../layout/Layout';
 import { AdminPath, LinkText, ShopPath } from '../layout/nav/enums';
-import AboutPage from '../pages/AboutPage';
 import MyAccount from '../pages/account/MyAccount';
 import Orders from '../pages/account/Orders';
 import AdminCreateUserPage from '../pages/admin/AdminCreateUserPage';
 import Dashboard from '../pages/admin/Dashboard';
 import OrderPage from '../pages/admin/OrderPage';
-import ProfilePage from '../pages/admin/ProfilePage';
 import UserPage from '../pages/admin/UserPage';
 import CategoryPage from '../pages/category/CategoryPage';
 import CreateCategoryPage from '../pages/category/CreateCategoryPage';
@@ -25,6 +23,7 @@ import CreateProductPage from '../pages/product/CreateProductPage';
 import ProductPage from '../pages/product/ProductPage';
 import UpdateProductPage from '../pages/product/UpdateProductPage';
 import ViewProductPage from '../pages/product/ViewProductPage';
+import ProfilePage from '../pages/ProfilePage';
 import ProtectedRoute from '../pages/ProtectedRoute';
 import ShoppingChartPage from '../pages/ShoppingChartPage';
 import SingleProductPage from '../pages/SingleProductPage';
@@ -60,9 +59,9 @@ const routeList = [
     label: '',
   },
   {
-    path: AdminPath.About,
-    element: <AboutPage />,
-    label: LinkText.About,
+    path: ShopPath.Profile,
+    element: <ProfilePage />,
+    label: LinkText.Profile,
   },
   {
     path: ShopPath.Contact,

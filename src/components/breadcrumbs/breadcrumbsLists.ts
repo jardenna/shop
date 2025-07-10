@@ -23,8 +23,8 @@ const breadcrumbsList: breadcrumbsListProps[] = [
     path: `${ShopPath.Collection}/:category/:categoryId/:id`,
   },
   {
-    path: AdminPath.About,
-    label: LinkText.About,
+    path: ShopPath.Profile,
+    label: LinkText.Profile,
   },
   {
     path: ShopPath.Contact,

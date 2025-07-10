@@ -1,5 +1,4 @@
 enum AdminPath {
-  About = 'about',
   Admin = 'admin',
   AdminCategories = '/admin/categories',
   AdminCategoryCreate = '/admin/categories/create',
@@ -29,6 +28,7 @@ enum ShopPath {
   MyAccount = 'myAccount',
   MyOrders = 'myOrders',
   Product = 'product',
+  Profile = 'profile',
   Root = '/',
   ShoppingCart = 'shopping-cart',
   Users = '/admin/users',
@@ -36,7 +36,6 @@ enum ShopPath {
 }
 
 enum LinkText {
-  About = 'about',
   Account = 'account',
   Categories = 'categories',
   Collection = 'collection',
