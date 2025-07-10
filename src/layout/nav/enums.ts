@@ -18,6 +18,9 @@ enum AdminPath {
 
 enum ShopPath {
   Collection = 'collection',
+  CollectionCategory = 'collection/:category',
+  CollectionCategoryId = 'collection/:category/:categoryId',
+  CollectionSingleProduct = 'collection/:category/:categoryId/:id',
   Contact = 'contact',
   CreateAccount = 'createAccount',
   Favorites = '/favorites',
