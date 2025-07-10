@@ -6,6 +6,9 @@ export type breadcrumbsListProps = {
 };
 const breadcrumbsList: breadcrumbsListProps[] = [
   {
+    path: ShopPath.Root,
+  },
+  {
     path: ShopPath.CollectionCategory,
   },
   {

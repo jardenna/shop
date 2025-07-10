@@ -76,7 +76,7 @@ const Layout = () => {
   // Employee dropdown list
   const employeeDropdownList: DropdownItem[] = [
     {
-      label: language.admin,
+      label: language.dashboard,
       icon: <Icon iconName={IconName.Admin} title={language.lock} />,
       onClick: () => {
         navigate(`/${AdminPath.Admin}`);

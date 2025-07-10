@@ -34,8 +34,8 @@ const AdminLayout = () => {
   };
 
   return (
-    <div className="main-container admin-container">
-      <MetaTags metaTitle={language.admin} />
+    <div className="main-container dashboard-container">
+      <MetaTags metaTitle={language.dashboard} />
       {!isMobileSize && <SkipLink />}
       <AdminHeader
         ariaLabel={language.mainSiteHeader}
@@ -50,7 +50,7 @@ const AdminLayout = () => {
         {isMobileSize ? (
           <MobileNav
             currentUser={currentUser || null}
-            ariaControls="admin-nav"
+            ariaControls="dashboard-nav"
           />
         ) : (
           <Aside

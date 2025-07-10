@@ -1,7 +1,6 @@
 import { useCallback, useMemo } from 'react';
-import { Link, useLocation, useParams } from 'react-router';
+import { useLocation, useParams } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
-import { ShopPath } from '../../layout/nav/enums';
 import './_breadcrumbs.scss';
 import BreadcrumbItem from './BreadcrumbItem';
 import { breadcrumbsListProps } from './breadcrumbsLists';
@@ -39,7 +38,7 @@ const Breadcrumbs = ({
   );
   const getLastSegment = (path: string) => split(path).at(-1);
 
-  const hiddenPathSegments = ['admin', 'create', 'update', 'view'];
+  const hiddenPathSegments = ['create', 'update', 'view'];
   const shouldHideBreadcrumb = (segment: string) =>
     hiddenPathSegments.includes(segment.toLowerCase());
 
@@ -109,9 +108,6 @@ const Breadcrumbs = ({
   return (
     <nav aria-label="breadcrumbs" className="breadcrumbs-container">
       <ul className="breadcrumbs">
-        <li>
-          <Link to={ShopPath.Root}>{language.home}</Link>
-        </li>
         {breadcrumbItems.map(({ path, isCurrent }) => (
           <BreadcrumbItem
             key={path}

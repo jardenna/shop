@@ -13,7 +13,7 @@ const MobileNav = ({ currentUser, ariaControls }: AdminNavProps) => (
     <NavContainer
       ariaControls={ariaControls}
       navList={adminNavList}
-      className="admin-nav"
+      className="dashboard-nav"
       currentUser={currentUser}
     />
   </TogglePanel>
