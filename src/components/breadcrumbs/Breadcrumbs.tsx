@@ -77,10 +77,6 @@ const Breadcrumbs = ({
       if (matchedRoute.path.includes(':category') && category) {
         return language[category] ?? category;
       }
-
-      if (matchedRoute.label) {
-        return language[matchedRoute.label] ?? matchedRoute.label;
-      }
     }
 
     if (paths.at(-1) === path && currentLabel) {
@@ -89,6 +85,7 @@ const Breadcrumbs = ({
 
     return decodeURIComponent(getLastSegment(path) ?? '');
   };
+
   const breadcrumbItems = paths
     .map((path, index) => {
       const lastPart = getLastSegment(path);
