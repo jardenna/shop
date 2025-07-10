@@ -31,8 +31,8 @@ const navList: NavItemsProps[] = [
     ],
   },
   {
-    path: AdminPath.About,
-    linkText: LinkText.About,
+    path: ShopPath.Profile,
+    linkText: LinkText.Profile,
   },
   {
     path: ShopPath.Contact,
@@ -74,7 +74,7 @@ const adminNavList: NavItemsProps[] = [
     iconName: IconName.SubCategories,
   },
   {
-    path: ShopPath.Users,
+    path: AdminPath.Users,
     linkText: LinkText.Users,
     iconName: IconName.Users,
   },

@@ -17,7 +17,7 @@ const AdminHeader = ({
   isMobileSize,
   welcomeMessage,
 }: AdminHeaderProps) => (
-  <LayoutElement as="header" className="admin-header" ariaLabel={ariaLabel}>
+  <LayoutElement as="header" className="dashboard-header" ariaLabel={ariaLabel}>
     <div className="container main-header-container">
       <Logo linkTo={`/${AdminPath.Admin}`} />
       {!isMobileSize && (

@@ -1,10 +1,11 @@
 import { useCallback, useMemo } from 'react';
-import { Link, useLocation, useParams } from 'react-router';
+import { useLocation, useParams } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
-import { ShopPath } from '../../layout/nav/enums';
+import { AdminPath } from '../../layout/nav/enums';
 import './_breadcrumbs.scss';
 import BreadcrumbItem from './BreadcrumbItem';
 import { breadcrumbsListProps } from './breadcrumbsLists';
+import LayoutElement from '../../layout/LayoutElement';
 
 type BreadcrumbsProps = {
   routeList: breadcrumbsListProps[];
@@ -27,10 +28,21 @@ const Breadcrumbs = ({
     () => pathname.split('/').filter(Boolean),
     [pathname],
   );
+
   const paths = useMemo(
     () =>
       pathnames.map((_, idx) => `/${pathnames.slice(0, idx + 1).join('/')}`),
     [pathnames],
+  );
+
+  const isAdmin = useMemo(
+    () => pathname.startsWith(`/${AdminPath.Admin}`),
+    [pathname],
+  );
+
+  const fullPaths = useMemo(
+    () => (isAdmin ? paths : ['/', ...paths]),
+    [isAdmin, paths],
   );
 
   const split = useCallback(
@@ -39,12 +51,21 @@ const Breadcrumbs = ({
   );
   const getLastSegment = (path: string) => split(path).at(-1);
 
-  const hiddenPathSegments = ['admin', 'create', 'update', 'view'];
+  const hiddenPathSegments = ['update', 'view'];
   const shouldHideBreadcrumb = (segment: string) =>
     hiddenPathSegments.includes(segment.toLowerCase());
 
   const resolveLabel = (path: string) => {
+    if (path === '/') {
+      return language.home;
+    }
+
     const parts = split(path);
+    const lastSegment = getLastSegment(path);
+
+    if (lastSegment && language[lastSegment]) {
+      return language[lastSegment];
+    }
 
     const matchedRoute = routeList.find((route) => {
       if (!route.path) {
@@ -72,10 +93,6 @@ const Breadcrumbs = ({
       if (matchedRoute.path.includes(':category') && category) {
         return language[category] ?? category;
       }
-
-      if (matchedRoute.label) {
-        return language[matchedRoute.label] ?? matchedRoute.label;
-      }
     }
 
     if (paths.at(-1) === path && currentLabel) {
@@ -84,16 +101,17 @@ const Breadcrumbs = ({
 
     return decodeURIComponent(getLastSegment(path) ?? '');
   };
-  const breadcrumbItems = paths
+
+  const breadcrumbItems = fullPaths
     .map((path, index) => {
       const lastPart = getLastSegment(path);
-      if (!lastPart || shouldHideBreadcrumb(lastPart)) {
+      if (path !== '/' && (!lastPart || shouldHideBreadcrumb(lastPart))) {
         return null;
       }
 
       return {
         path,
-        isCurrent: index === pathnames.length - 1,
+        isCurrent: index === fullPaths.length - 1,
       };
     })
     .filter(
@@ -101,11 +119,12 @@ const Breadcrumbs = ({
     );
 
   return (
-    <nav aria-label="breadcrumbs" className="breadcrumbs-container">
+    <LayoutElement
+      as="nav"
+      ariaLabel="breadcrumbs"
+      className="breadcrumbs-container"
+    >
       <ul className="breadcrumbs">
-        <li>
-          <Link to={ShopPath.Root}>{language.home}</Link>
-        </li>
         {breadcrumbItems.map(({ path, isCurrent }) => (
           <BreadcrumbItem
             key={path}
@@ -115,7 +134,7 @@ const Breadcrumbs = ({
           />
         ))}
       </ul>
-    </nav>
+    </LayoutElement>
   );
 };
 

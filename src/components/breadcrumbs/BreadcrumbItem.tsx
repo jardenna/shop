@@ -11,8 +11,10 @@ type BreadcrumbItemProps = {
 const BreadcrumbItem = ({ to, label, isCurrent }: BreadcrumbItemProps) => (
   <li>
     <Link to={to} aria-current={isCurrent ? 'page' : undefined}>
-      <Icon iconName={IconName.ChevronRight} title="Chevron right" />
       {label}
+      {!isCurrent && (
+        <Icon iconName={IconName.ChevronRight} title="Chevron right" />
+      )}
     </Link>
   </li>
 );

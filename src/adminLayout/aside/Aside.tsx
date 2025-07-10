@@ -19,7 +19,7 @@ const Aside = ({
   <aside className={`aside ${isShown ? 'collapsed' : ''}`}>
     <NavContainer
       navList={adminNavList}
-      className="admin-nav"
+      className="dashboard-nav"
       isMenuCollapsed={isShown}
       onCollapseMenu={onTogglePanel}
       ariaLabel={ariaLabel}

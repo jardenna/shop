@@ -5,7 +5,7 @@
   justify-content: center;
 }
 
-.admin-container {
+.dashboard-container {
   .container {
     max-width: 100%;
     display: flex;
@@ -24,7 +24,7 @@
     margin-top: 0;
   }
 
-  .admin-header {
+  .dashboard-header {
     min-height: $header-height;
     display: flex;
     align-items: center;

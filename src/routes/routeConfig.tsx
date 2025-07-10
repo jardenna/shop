@@ -1,14 +1,12 @@
 import { createBrowserRouter } from 'react-router';
 import AdminLayout from '../adminLayout/AdminLayout';
 import Layout from '../layout/Layout';
-import { AdminPath, LinkText, ShopPath } from '../layout/nav/enums';
-import AboutPage from '../pages/AboutPage';
+import { AdminPath, ShopPath } from '../layout/nav/enums';
 import MyAccount from '../pages/account/MyAccount';
 import Orders from '../pages/account/Orders';
 import AdminCreateUserPage from '../pages/admin/AdminCreateUserPage';
 import Dashboard from '../pages/admin/Dashboard';
 import OrderPage from '../pages/admin/OrderPage';
-import ProfilePage from '../pages/admin/ProfilePage';
 import UserPage from '../pages/admin/UserPage';
 import CategoryPage from '../pages/category/CategoryPage';
 import CreateCategoryPage from '../pages/category/CreateCategoryPage';
@@ -25,6 +23,7 @@ import CreateProductPage from '../pages/product/CreateProductPage';
 import ProductPage from '../pages/product/ProductPage';
 import UpdateProductPage from '../pages/product/UpdateProductPage';
 import ViewProductPage from '../pages/product/ViewProductPage';
+import ProfilePage from '../pages/ProfilePage';
 import ProtectedRoute from '../pages/ProtectedRoute';
 import ShoppingChartPage from '../pages/ShoppingChartPage';
 import SingleProductPage from '../pages/SingleProductPage';
@@ -37,67 +36,54 @@ const routeList = [
   {
     index: true,
     element: <HomePage />,
-    label: LinkText.Home,
   },
   {
     path: ShopPath.Collection,
     element: <MainCollectionsPage />,
-    label: LinkText.Collection,
   },
   {
-    path: `${ShopPath.Collection}/:category`,
+    path: ShopPath.CollectionCategory,
     element: <CollectionPage />,
-    label: '',
   },
   {
-    path: `${ShopPath.Collection}/:category/:categoryId`,
+    path: ShopPath.CollectionCategoryId,
     element: <CollectionPage />,
-    label: '',
   },
   {
-    path: `${ShopPath.Collection}/:category/:categoryId/:id`,
+    path: ShopPath.CollectionSingleProduct,
     element: <SingleProductPage />,
-    label: '',
   },
   {
-    path: AdminPath.About,
-    element: <AboutPage />,
-    label: LinkText.About,
+    path: ShopPath.Profile,
+    element: <ProfilePage />,
   },
   {
     path: ShopPath.Contact,
     element: <ContactPage />,
-    label: LinkText.Contact,
   },
   {
     path: ShopPath.Login,
     element: <LoginPage />,
-    label: LinkText.Login,
   },
   {
     path: ShopPath.CreateAccount,
     element: <CreateAccountPage />,
-    label: LinkText.CreateAccount,
   },
   {
     path: ShopPath.MyAccount,
     element: <MyAccount />,
-    label: LinkText.MyAccount,
   },
   {
     path: ShopPath.MyOrders,
     element: <Orders />,
-    label: LinkText.Kids,
   },
   {
     path: ShopPath.ShoppingCart,
     element: <ShoppingChartPage />,
-    label: LinkText.Kids,
   },
   {
     path: ShopPath.Favorites,
     element: <FavoritesPage />,
-    label: LinkText.Favorites,
   },
 ];
 
@@ -105,82 +91,66 @@ const adminRouteList = [
   {
     index: true,
     element: <Dashboard />,
-    label: LinkText.Dashboard,
   },
   {
-    path: ShopPath.Users,
+    path: AdminPath.Users,
     element: <UserPage />,
-    label: LinkText.Users,
   },
   {
     path: AdminPath.AdminUserCreate,
     element: <AdminCreateUserPage />,
-    label: LinkText.CreateNewUser,
   },
   {
     path: AdminPath.AdminCategoryCreate,
     element: <CreateCategoryPage />,
-    label: LinkText.CreateNewCategory,
   },
   {
     path: AdminPath.AdminSubCategoryCreate,
     element: <CreateSubCategoryPage />,
-    label: LinkText.CreateNewCategory,
   },
   {
     path: `${AdminPath.AdminCategoryUpdate}/:id`,
     element: <UpdateCategoryPage />,
-    label: '',
   },
   {
     path: `${AdminPath.AdminSubCategoryUpdate}/:id`,
     element: <UpdateSubCategoryPage />,
-    label: '',
   },
   {
     path: AdminPath.AdminSubCategories,
     element: <SubCategoryPage />,
-    label: LinkText.Categories,
   },
   {
     path: `${AdminPath.AdminSubCategoryView}/:id`,
     element: <ViewSubCategoryPage />,
-    label: '',
   },
   {
     path: AdminPath.AdminProfile,
     element: <ProfilePage />,
-    label: LinkText.Profile,
   },
   {
     path: AdminPath.AdminProducts,
     element: <ProductPage />,
-    label: LinkText.Products,
   },
   {
     path: `${AdminPath.AdminProductView}/:id`,
     element: <ViewProductPage />,
-    label: '',
   },
   {
     path: AdminPath.AdminProductCreate,
     element: <CreateProductPage />,
-    label: LinkText.CreateNewProduct,
   },
   {
     path: `${AdminPath.AdminProductUpdate}/:id`,
     element: <UpdateProductPage />,
-    label: '',
   },
   {
     path: AdminPath.AdminCategories,
     element: <CategoryPage />,
-    label: LinkText.Categories,
   },
   {
     path: AdminPath.AdminOrders,
     element: <OrderPage />,
-    label: LinkText.Orders,
   },
 ];
 
