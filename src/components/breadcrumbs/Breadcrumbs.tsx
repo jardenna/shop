@@ -1,6 +1,7 @@
 import { useCallback, useMemo } from 'react';
 import { useLocation, useParams } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
+import { AdminPath } from '../../layout/nav/enums';
 import './_breadcrumbs.scss';
 import BreadcrumbItem from './BreadcrumbItem';
 import { breadcrumbsListProps } from './breadcrumbsLists';
@@ -33,7 +34,10 @@ const Breadcrumbs = ({
     [pathnames],
   );
 
-  const isAdmin = useMemo(() => pathname.startsWith('/dashboard'), [pathname]);
+  const isAdmin = useMemo(
+    () => pathname.startsWith(`/${AdminPath.Admin}`),
+    [pathname],
+  );
 
   const fullPaths = useMemo(
     () => (isAdmin ? paths : ['/', ...paths]),
