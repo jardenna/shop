@@ -26,10 +26,18 @@ const Breadcrumbs = ({
     () => pathname.split('/').filter(Boolean),
     [pathname],
   );
+
   const paths = useMemo(
     () =>
       pathnames.map((_, idx) => `/${pathnames.slice(0, idx + 1).join('/')}`),
     [pathnames],
+  );
+
+  const isAdmin = useMemo(() => pathname.startsWith('/dashboard'), [pathname]);
+
+  const fullPaths = useMemo(
+    () => (isAdmin ? paths : ['/', ...paths]),
+    [isAdmin, paths],
   );
 
   const split = useCallback(
@@ -43,6 +51,10 @@ const Breadcrumbs = ({
     hiddenPathSegments.includes(segment.toLowerCase());
 
   const resolveLabel = (path: string) => {
+    if (path === '/') {
+      return language.home;
+    }
+
     const parts = split(path);
     const lastSegment = getLastSegment(path);
 
@@ -55,7 +67,6 @@ const Breadcrumbs = ({
         return false;
       }
       const routeParts = split(route.path);
-
       return (
         routeParts.length === parts.length &&
         routeParts.every((part, i) => part.startsWith(':') || part === parts[i])
@@ -86,16 +97,16 @@ const Breadcrumbs = ({
     return decodeURIComponent(getLastSegment(path) ?? '');
   };
 
-  const breadcrumbItems = paths
+  const breadcrumbItems = fullPaths
     .map((path, index) => {
       const lastPart = getLastSegment(path);
-      if (!lastPart || shouldHideBreadcrumb(lastPart)) {
+      if (path !== '/' && (!lastPart || shouldHideBreadcrumb(lastPart))) {
         return null;
       }
 
       return {
         path,
-        isCurrent: index === pathnames.length - 1,
+        isCurrent: index === fullPaths.length - 1,
       };
     })
     .filter(
