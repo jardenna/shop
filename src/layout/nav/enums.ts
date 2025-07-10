@@ -9,10 +9,10 @@ enum AdminPath {
   AdminProductUpdate = '/admin/products/update',
   AdminProductView = '/admin/products/view',
   AdminProfile = 'profile',
-  AdminSubCategories = '/admin/sub-categories',
-  AdminSubCategoryCreate = '/admin/sub-categories/create',
-  AdminSubCategoryUpdate = '/admin/sub-categories/update',
-  AdminSubCategoryView = '/admin/sub-categories/view',
+  AdminSubCategories = '/admin/subCategories',
+  AdminSubCategoryCreate = '/admin/subCategories/create',
+  AdminSubCategoryUpdate = '/admin/subCategories/update',
+  AdminSubCategoryView = '/admin/subCategories/view',
   AdminUserCreate = '/admin/users/create',
 }
 
