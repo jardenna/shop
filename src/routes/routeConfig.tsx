@@ -93,7 +93,7 @@ const adminRouteList = [
     element: <Dashboard />,
   },
   {
-    path: ShopPath.Users,
+    path: AdminPath.Users,
     element: <UserPage />,
   },
   {

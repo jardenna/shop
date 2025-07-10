@@ -74,7 +74,7 @@ const adminNavList: NavItemsProps[] = [
     iconName: IconName.SubCategories,
   },
   {
-    path: ShopPath.Users,
+    path: AdminPath.Users,
     linkText: LinkText.Users,
     iconName: IconName.Users,
   },

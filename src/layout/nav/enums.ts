@@ -1,19 +1,20 @@
 enum AdminPath {
   Admin = 'dashboard',
-  AdminCategories = '/dashboard/categories',
+  AdminCategories = 'categories',
   AdminCategoryCreate = '/dashboard/categories/create',
   AdminCategoryUpdate = '/dashboard/categories/update',
-  AdminOrders = '/dashboard/orders',
+  AdminOrders = 'orders',
   AdminProductCreate = '/dashboard/products/create',
-  AdminProducts = '/dashboard/products',
+  AdminProducts = 'products',
   AdminProductUpdate = '/dashboard/products/update',
   AdminProductView = '/dashboard/products/view',
   AdminProfile = 'profile',
-  AdminSubCategories = '/dashboard/subCategories',
+  AdminSubCategories = 'subCategories',
   AdminSubCategoryCreate = '/dashboard/subCategories/create',
   AdminSubCategoryUpdate = '/dashboard/subCategories/update',
   AdminSubCategoryView = '/dashboard/subCategories/view',
   AdminUserCreate = '/dashboard/users/create',
+  Users = 'users',
 }
 
 enum ShopPath {
@@ -34,7 +35,6 @@ enum ShopPath {
   Profile = 'profile',
   Root = '/',
   ShoppingCart = 'shopping-cart',
-  Users = '/dashboard/users',
   Women = '/collection/women',
 }
 
