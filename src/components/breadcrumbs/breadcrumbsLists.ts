@@ -6,14 +6,6 @@ export type breadcrumbsListProps = {
 };
 const breadcrumbsList: breadcrumbsListProps[] = [
   {
-    path: ShopPath.Root,
-    label: LinkText.Home,
-  },
-  {
-    path: ShopPath.Collection,
-    label: LinkText.Collection,
-  },
-  {
     path: `${ShopPath.Collection}/:category`,
   },
   {
@@ -22,48 +14,12 @@ const breadcrumbsList: breadcrumbsListProps[] = [
   {
     path: `${ShopPath.Collection}/:category/:categoryId/:id`,
   },
-  {
-    path: ShopPath.Profile,
-    label: LinkText.Profile,
-  },
-  {
-    path: ShopPath.Contact,
-    label: LinkText.Contact,
-  },
-  {
-    path: ShopPath.Login,
-    label: LinkText.Login,
-  },
-  {
-    path: ShopPath.CreateAccount,
-    label: LinkText.CreateAccount,
-  },
-  {
-    path: ShopPath.MyAccount,
-    label: LinkText.MyAccount,
-  },
-  {
-    path: ShopPath.MyOrders,
-    label: LinkText.Orders,
-  },
-  {
-    path: ShopPath.ShoppingCart,
-    label: LinkText.Dashboard,
-  },
-  {
-    path: ShopPath.Favorites,
-    label: LinkText.Favorites,
-  },
 ];
 
 const adminBreadcrumbsList: breadcrumbsListProps[] = [
   {
     path: ShopPath.Root,
     label: LinkText.Dashboard,
-  },
-  {
-    path: ShopPath.Users,
-    label: LinkText.Users,
   },
   {
     path: AdminPath.AdminUserCreate,
@@ -94,14 +50,6 @@ const adminBreadcrumbsList: breadcrumbsListProps[] = [
     label: '',
   },
   {
-    path: AdminPath.AdminProfile,
-    label: LinkText.Profile,
-  },
-  {
-    path: AdminPath.AdminProducts,
-    label: LinkText.Products,
-  },
-  {
     path: `${AdminPath.AdminProductView}/:id`,
     label: '',
   },
@@ -112,14 +60,6 @@ const adminBreadcrumbsList: breadcrumbsListProps[] = [
   {
     path: `${AdminPath.AdminProductUpdate}/:id`,
     label: '',
-  },
-  {
-    path: AdminPath.AdminCategories,
-    label: LinkText.Categories,
-  },
-  {
-    path: AdminPath.AdminOrders,
-    label: LinkText.Orders,
   },
 ];
 

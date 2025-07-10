@@ -45,12 +45,18 @@ const Breadcrumbs = ({
 
   const resolveLabel = (path: string) => {
     const parts = split(path);
+    const lastSegment = getLastSegment(path);
+
+    if (lastSegment && language[lastSegment]) {
+      return language[lastSegment];
+    }
 
     const matchedRoute = routeList.find((route) => {
       if (!route.path) {
         return false;
       }
       const routeParts = split(route.path);
+
       return (
         routeParts.length === parts.length &&
         routeParts.every((part, i) => part.startsWith(':') || part === parts[i])
