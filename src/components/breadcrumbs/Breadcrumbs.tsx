@@ -5,6 +5,7 @@ import { AdminPath } from '../../layout/nav/enums';
 import './_breadcrumbs.scss';
 import BreadcrumbItem from './BreadcrumbItem';
 import { breadcrumbsListProps } from './breadcrumbsLists';
+import LayoutElement from '../../layout/LayoutElement';
 
 type BreadcrumbsProps = {
   routeList: breadcrumbsListProps[];
@@ -118,7 +119,11 @@ const Breadcrumbs = ({
     );
 
   return (
-    <nav aria-label="breadcrumbs" className="breadcrumbs-container">
+    <LayoutElement
+      as="nav"
+      ariaLabel="breadcrumbs"
+      className="breadcrumbs-container"
+    >
       <ul className="breadcrumbs">
         {breadcrumbItems.map(({ path, isCurrent }) => (
           <BreadcrumbItem
@@ -129,7 +134,7 @@ const Breadcrumbs = ({
           />
         ))}
       </ul>
-    </nav>
+    </LayoutElement>
   );
 };
 
