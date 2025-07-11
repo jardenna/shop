@@ -222,12 +222,22 @@ const getProducts = asyncHandler(async (req, res) => {
   const pageSize = parseInt(req.query.pageSize) || 6;
   const page = parseInt(req.query.page) || 1;
   const subCategoryId = req.query.subCategoryId;
+  const mainCategory = req.query.mainCategory;
 
   const matchStage = [];
 
   if (subCategoryId) {
     matchStage.push({
       'subCategoryData._id': new mongoose.Types.ObjectId(String(subCategoryId)),
+    });
+  }
+
+  if (mainCategory) {
+    matchStage.push({
+      'categoryData.categoryName': {
+        $regex: `^${mainCategory}$`,
+        $options: 'i',
+      },
     });
   }
 
@@ -241,6 +251,15 @@ const getProducts = asyncHandler(async (req, res) => {
       },
     },
     { $unwind: '$subCategoryData' },
+    {
+      $lookup: {
+        from: 'categories',
+        localField: 'subCategoryData.category',
+        foreignField: '_id',
+        as: 'categoryData',
+      },
+    },
+    { $unwind: '$categoryData' },
   ];
 
   if (matchStage.length > 0) {
