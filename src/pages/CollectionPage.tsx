@@ -88,6 +88,7 @@ const CollectionPage = () => {
                           key={product.id}
                           product={product}
                           displayList={productView === 'list'}
+                          categoryId={categoryId}
                         />
                       ))}
                   </section>
