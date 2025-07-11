@@ -20,13 +20,19 @@ const SingleProductPage = () => {
         productName={product?.productName}
         subMenu={subMenu}
       />
-      <ul>
-        {product?.images.map((image) => (
-          <li key={image}>
-            <Img src={image} alt="" />
-          </li>
-        ))}
-      </ul>
+      <article>
+        <ul>
+          {product?.images.map((image) => (
+            <li key={image}>
+              <Img src={image} alt="" />
+            </li>
+          ))}
+        </ul>
+
+        <section>
+          <h1>{product?.productName}</h1>
+        </section>
+      </article>
     </div>
   );
 };

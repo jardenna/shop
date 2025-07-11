@@ -8,7 +8,7 @@ import Skeleton from '../components/skeleton/Skeleton';
 import useLanguage from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
 import FilterPanel from '../features/shop/components/FilterPanel';
-import ProductCardList from '../features/shop/components/ProductCardList';
+import ProductCard from '../features/shop/components/ProductCard';
 import ProductViews from '../features/shop/components/ProductViews';
 import useSubMenu from '../features/shop/hooks/useSubMenu';
 import { useGetProductsQuery } from '../features/shop/shopApiSlice';
@@ -79,13 +79,18 @@ const CollectionPage = () => {
                     />
                     <FilterPanel />
                   </section>
-                  {products && (
-                    <ProductCardList
-                      products={products.products}
-                      displayList={productView === 'list'}
-                      categoryId={categoryId}
-                    />
-                  )}
+                  <section
+                    className={`product-card-list ${productView === 'list' ? 'list' : ''}`}
+                  >
+                    {products &&
+                      products.products.map((product) => (
+                        <ProductCard
+                          key={product.id}
+                          product={product}
+                          displayList={productView === 'list'}
+                        />
+                      ))}
+                  </section>
                 </div>
               </ErrorBoundary>
             </div>
