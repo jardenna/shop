@@ -43,7 +43,6 @@ const ProductCard = ({
       )}
       <ProductColorList
         colours={product.colors}
-        count={3}
         optionSize={displayList ? '' : 'small'}
       />
     </div>

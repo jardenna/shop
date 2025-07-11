@@ -12,15 +12,14 @@ type ProductColorListProps = {
 
 const ProductColorList = ({
   colours,
-  count,
+  count = 3,
   optionSize = '',
 }: ProductColorListProps) => {
   const { language } = useLanguage();
 
   // Calculate how many colors to show and how many are hidden
-  const visibleCount = count && count > 0 ? count : colours.length;
-  const visibleColors = colours.slice(0, visibleCount);
-  const hiddenColorsCount = Math.max(colours.length - visibleCount, 0);
+  const visibleColors = colours.slice(0, count);
+  const hiddenColorsCount = Math.max(colours.length - count, 0);
 
   return (
     <ul

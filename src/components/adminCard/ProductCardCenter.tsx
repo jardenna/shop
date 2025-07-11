@@ -42,7 +42,7 @@ const ProductCardCenter = ({
         <GridTwoCol text={language.material}>{material}</GridTwoCol>
         <div>
           <strong className="product-list-headline">{language.colours}:</strong>
-          <ProductColorList colours={colours} />
+          <ProductColorList colours={colours} count={colours.length} />
         </div>
         <div>
           <strong className="product-list-headline">{language.sizes}:</strong>
