@@ -1,4 +1,5 @@
 import fs from 'fs';
+import mongoose from 'mongoose';
 import path from 'path';
 import asyncHandler from '../middleware/asyncHandler.js';
 import scheduledStatusHandler from '../middleware/scheduledStatusHandler.js';
@@ -220,14 +221,40 @@ const deleteProduct = asyncHandler(async (req, res) => {
 const getProducts = asyncHandler(async (req, res) => {
   const pageSize = parseInt(req.query.pageSize) || 6;
   const page = parseInt(req.query.page) || 1;
+  const subCategoryId = req.query.subCategoryId;
+
+  const matchStage = [];
+
+  if (subCategoryId) {
+    matchStage.push({
+      'subCategoryData._id': new mongoose.Types.ObjectId(String(subCategoryId)),
+    });
+  }
+
+  const basePipeline = [
+    {
+      $lookup: {
+        from: 'subcategories',
+        localField: 'subCategory',
+        foreignField: '_id',
+        as: 'subCategoryData',
+      },
+    },
+    { $unwind: '$subCategoryData' },
+  ];
+
+  if (matchStage.length > 0) {
+    basePipeline.push({ $match: { $and: matchStage } });
+  }
 
   // Count pipeline
-  const countPipeline = [{ $count: 'total' }];
+  const countPipeline = [...basePipeline, { $count: 'total' }];
   const countResult = await Product.aggregate(countPipeline);
   const count = countResult[0]?.total || 0;
 
   // Paginated results
   const paginatedPipeline = [
+    ...basePipeline,
     { $sort: { createdAt: -1 } },
     { $skip: pageSize * (page - 1) },
     { $limit: pageSize },
