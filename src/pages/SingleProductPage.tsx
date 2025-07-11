@@ -2,14 +2,16 @@ import { useParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import Img from '../components/Img';
-import ProductCardListContent from '../features/shop/components/ProductCardListContent';
+import ProductColorList from '../components/ProductColorList';
+import ProductSizeList from '../components/productSizeList/ProductSizeList';
+import ProductDiscountPrice from '../features/products/components/ProductDiscountPrice';
 import useSubMenu from '../features/shop/hooks/useSubMenu';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
 import MetaTags from '../layout/nav/MetaTags';
+import './SingleProductPage.styles.scss';
 
 const SingleProductPage = () => {
   const { id, category } = useParams();
-
   const { data: product } = useGetSingleProductQuery(id ?? '');
   const { subMenu } = useSubMenu({ category });
 
@@ -22,7 +24,7 @@ const SingleProductPage = () => {
         subMenu={subMenu}
       />
 
-      <article>
+      <article className="single-product-container">
         <ul>
           {product?.images.map((image) => (
             <li key={image}>
@@ -30,8 +32,17 @@ const SingleProductPage = () => {
             </li>
           ))}
         </ul>
-        <h1>{product?.productName}</h1>
-        {product && <ProductCardListContent product={product} />}
+        {product && (
+          <section>
+            <h1>{product.productName}</h1>
+            <ProductDiscountPrice
+              price={product.price}
+              discount={product.discount || null}
+            />
+            <ProductColorList colours={product.colors} />
+            <ProductSizeList sizes={product.sizes} variant="shop-product" />
+          </section>
+        )}
       </article>
     </div>
   );
