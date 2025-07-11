@@ -2,10 +2,9 @@ import { Link } from 'react-router';
 import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import Favorites from '../../../components/favorites/Favorites';
 import Img from '../../../components/Img';
-import ProductColorList from '../../../components/ProductColorList';
-import ProductSizeList from '../../../components/productSizeList/ProductSizeList';
-import ProductDiscountPrice from '../../products/components/ProductDiscountPrice';
 import './ProductCard.styles.scss';
+import ProductCardGridContent from './ProductCardGridContent';
+import ProductCardListContent from './ProductCardListContent';
 import SizeOverlay from './SizeOverlay';
 
 type ProductCardProps = {
@@ -32,19 +31,11 @@ const ProductCard = ({
     </div>
     <div className="product-card-content">
       <h2 className="product-card-title">{product.productName}</h2>
-
-      {displayList && <p>{product.description}</p>}
-      <ProductDiscountPrice
-        price={product.price}
-        discount={product.discount || null}
-      />
-      {displayList && (
-        <ProductSizeList sizes={product.sizes} variant="shop-product" />
+      {displayList ? (
+        <ProductCardListContent product={product} />
+      ) : (
+        <ProductCardGridContent product={product} />
       )}
-      <ProductColorList
-        colours={product.colors}
-        optionSize={displayList ? '' : 'small'}
-      />
     </div>
   </div>
 );
