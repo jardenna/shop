@@ -4,16 +4,8 @@
   position: relative;
   overflow: hidden;
 
-  .product-overlay-items {
-    position: absolute;
-    transform: translateY(0);
-    width: 100%;
-
-    @include transition($what: transform);
-  }
-
   &:hover {
-    .product-overlay-items {
+    .size-overlay {
       transform: translateY(-100%);
     }
   }

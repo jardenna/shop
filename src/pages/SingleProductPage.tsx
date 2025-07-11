@@ -1,10 +1,11 @@
 import { useParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
-import Img from '../components/Img';
+import ProductCard from '../features/shop/components/ProductCard';
 import useSubMenu from '../features/shop/hooks/useSubMenu';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
 import MetaTags from '../layout/nav/MetaTags';
+import Img from '../components/Img';
 
 const SingleProductPage = () => {
   const { id, category } = useParams();
@@ -20,6 +21,7 @@ const SingleProductPage = () => {
         productName={product?.productName}
         subMenu={subMenu}
       />
+      {product && <ProductCard product={product} displayList />}
       <article>
         <ul>
           {product?.images.map((image) => (
