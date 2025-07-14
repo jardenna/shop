@@ -13,13 +13,9 @@ type AccordionProps = {
 
 const Accordion = ({ accordionItems }: AccordionProps) => (
   <section className="accordion-container">
-    {accordionItems.map((item) => (
-      <AccordionItem
-        key={item.title}
-        title={item.title}
-        detailsName="product-info"
-      >
-        {item.content}
+    {accordionItems.map(({ title, content }) => (
+      <AccordionItem key={title} title={title} detailsName="product-info">
+        {content}
       </AccordionItem>
     ))}
   </section>
