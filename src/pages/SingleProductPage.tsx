@@ -1,4 +1,5 @@
 import { useParams } from 'react-router';
+import Accordion from '../components/accordion/Accordion';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import Img from '../components/Img';
@@ -16,7 +17,7 @@ const SingleProductPage = () => {
   const { subMenu } = useSubMenu({ category });
 
   return (
-    <div>
+    <div className="container">
       <MetaTags metaTitle={product?.productName} />
       <Breadcrumbs
         routeList={breadcrumbsList}
@@ -41,6 +42,10 @@ const SingleProductPage = () => {
             />
             <ProductColorList colours={product.colors} />
             <ProductSizeList sizes={product.sizes} variant="shop-product" />
+            <Accordion
+              description={product.description}
+              material={product.material}
+            />
           </section>
         )}
       </article>

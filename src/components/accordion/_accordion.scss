@@ -1,0 +1,30 @@
+@use '../../scss/globals' as *;
+
+.accordion-container {
+  max-width: rem(420px);
+
+  .product-care-info {
+    list-style: disc;
+    padding-inline-start: 30px;
+
+    li {
+      margin-top: 12px;
+    }
+  }
+
+  details {
+    padding-block: 16px;
+    border-block-end: 1px solid $color-border-dark;
+  }
+
+  summary {
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+
+    &::marker {
+      content: '';
+    }
+  }
+}
