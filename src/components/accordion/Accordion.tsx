@@ -13,13 +13,13 @@ const Accordion = ({ description, material }: AccordionProps) => {
   const accordionItems = [
     { title: language.description, content: <p>{description}</p> },
     {
-      title: 'Materiale og vaskeanvisning',
+      title: language.materialAndCare,
       content: (
         <>
           <p>
             <strong>{language.material}:</strong> {material}
           </p>
-          <strong>Plejeanvisning:</strong>
+          <strong>{language.care}:</strong>
           <ul className="product-care-info">
             <li>Må ikke bleges</li>
             <li>Ikke egnet til tørretumbler</li>
@@ -29,18 +29,14 @@ const Accordion = ({ description, material }: AccordionProps) => {
       ),
     },
     {
-      title: 'Levering og betaling',
+      title: language.paymentAndDelivery,
       content: (
         <>
           <p>
-            <strong>Levering:</strong> Vi tilbyder sikker levering med
-            omhyggelig emballering. Alle ordrer behandles inden for 1-2
-            hverdage, og du modtager et trackinglink, så snart din ordre er
-            afsendt.
+            <strong>{language.delivery}:</strong> {language.deliveryText}
           </p>
           <p>
-            <strong>Betaling:</strong> Betaling kan ske med kreditkort eller
-            MobilePay. Vi trækker først beløbet, når din ordre er afsendt.
+            <strong>{language.payment}:</strong> {language.paymentText}
           </p>
         </>
       ),
