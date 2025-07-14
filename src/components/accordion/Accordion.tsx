@@ -19,11 +19,11 @@ const Accordion = ({ description, material }: AccordionProps) => {
           <p>
             <strong>{language.material}:</strong> {material}
           </p>
-          <strong>{language.care}:</strong>
+          <strong>{language.care}</strong>
           <ul className="product-care-info">
-            <li>Må ikke bleges</li>
-            <li>Ikke egnet til tørretumbler</li>
-            <li>Maskinvask ved 40 °C</li>
+            <li>{language.doNotBleach}</li>
+            <li>{language.noTumbleDry}</li>
+            <li>{language.machineWash}</li>
           </ul>
         </>
       ),
