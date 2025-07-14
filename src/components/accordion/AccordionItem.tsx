@@ -17,7 +17,8 @@ const AccordionItem = ({
 }: AccordionItemProps) => (
   <details name={detailsName} open={open || undefined}>
     <summary>
-      {title} <Icon iconName={IconName.Add} title="" />
+      {title}
+      <Icon iconName={IconName.Add} title="" className="accordion-icon" />
     </summary>
     <div className="accordion-content">{children}</div>
   </details>

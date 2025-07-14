@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 @use '../../scss/globals' as *;
 
 .accordion-container {
@@ -12,12 +13,48 @@
     }
   }
 
+  details * {
+    margin: 0;
+  }
+
   details {
-    padding-block: 16px;
     border-block-end: 1px solid $color-border-dark;
+    overflow: hidden;
+
+    .accordion-content {
+      padding-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &::details-content {
+      block-size: 0;
+      transition:
+        block-size 0.5s,
+        content-visibility 0.5s;
+      transition-behavior: allow-discrete;
+    }
+
+    .accordion-icon {
+      transform: rotate(0);
+
+      @include transition;
+    }
+
+    &:open {
+      &::details-content {
+        block-size: auto;
+      }
+
+      .accordion-icon {
+        transform: rotate(45deg);
+      }
+    }
   }
 
   summary {
+    padding-block: 16px;
     text-transform: uppercase;
     display: flex;
     justify-content: space-between;

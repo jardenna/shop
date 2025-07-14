@@ -61,4 +61,5 @@ const Accordion = ({ description, material }: AccordionProps) => {
     </section>
   );
 };
+
 export default Accordion;
