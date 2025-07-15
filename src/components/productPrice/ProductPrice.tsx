@@ -1,4 +1,5 @@
 import useCurrency from '../../features/currency/useCurrency';
+import { discountCalculation } from '../../utils/utils';
 import './_product-price.scss';
 
 type ProductPriceProps = {
@@ -11,7 +12,7 @@ const ProductPrice = ({ price, discount }: ProductPriceProps) => {
 
   return (
     <span className={discount ? 'product-price has-discount' : 'product-price'}>
-      {!!discount && <span>{convertedPrice} / </span>}
+      {!!discount && <span> {discountCalculation(price, discount)} / </span>}
       <span className={discount ? 'text-line-through' : undefined}>
         {convertedPrice}
       </span>

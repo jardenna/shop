@@ -3,9 +3,9 @@ import Accordion from '../components/accordion/Accordion';
 import Favorites from '../components/favorites/Favorites';
 import Img from '../components/Img';
 import ProductColorList from '../components/ProductColorList';
-import ProductPrice from '../components/productPrice/ProductPrice';
 import ProductSizeList from '../components/productSizeList/ProductSizeList';
 import useLanguage from '../features/language/useLanguage';
+import ProductDiscountPrice from '../features/products/components/ProductDiscountPrice';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
 import MetaTags from '../layout/nav/MetaTags';
 import './SingleProductPage.styles.scss';
@@ -62,13 +62,16 @@ const SingleProductPage = () => {
             ))}
           </ul>
           <section className="single-product">
+            <span>Spar 230 kr.</span>
             <h1>{product.productName}</h1>
             <Favorites id={product.id} />
-            <ProductPrice price={product.price} discount={product.discount} />
+            <ProductDiscountPrice
+              price={product.price}
+              discount={product.discount}
+            />
             <ProductColorList colours={product.colors} />
             <ProductSizeList sizes={product.sizes} variant="shop-product" />
             <p>Brand: {product.brand}</p>
-
             <p>
               Stock:
               {product.countInStock < 5 ? 'Low in stock' : product.countInStock}
