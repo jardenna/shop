@@ -53,7 +53,7 @@
         a {
           border-bottom: 1px solid $color-gray-60;
           padding: 8px 12px;
-          font-size: rem(14px);
+          font-size: $font-small;
 
           &.active {
             background-color: $color-gray-80;
@@ -113,7 +113,7 @@
   }
 
   .sub-nav-heading {
-    font-size: rem(24px);
+    font-size: $font-large;
   }
 
   .sub-nav-text {

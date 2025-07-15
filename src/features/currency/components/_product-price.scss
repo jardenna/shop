@@ -5,7 +5,7 @@
   gap: 4px;
   align-items: baseline;
   font-family: $font-primary-bold;
-  font-size: rem(16px);
+  font-size: $font-medium;
   color: $color-primary;
 }
 
@@ -14,9 +14,9 @@
 }
 
 .text-line-through {
-  font-size: rem(12px);
+  font-size: $font-mini;
 }
 
 .price-seperator {
-  font-size: rem(14px);
+  font-size: $font-small;
 }
