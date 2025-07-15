@@ -10,14 +10,9 @@ const ProductPrice = ({ price, discount }: ProductPriceProps) => {
   const { convertedPrice } = useCurrency(price);
 
   return (
-    <span className="product-price">
-      {!!discount && (
-        <>
-          <span>{convertedPrice}</span>
-          <span> / </span>
-        </>
-      )}
-      <span className={discount ? 'text-line-through' : 'product-price'}>
+    <span className={discount ? 'product-price has-discount' : 'product-price'}>
+      {!!discount && <span>{convertedPrice} / </span>}
+      <span className={discount ? 'line-through' : undefined}>
         {convertedPrice}
       </span>
     </span>

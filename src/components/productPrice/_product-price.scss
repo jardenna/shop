@@ -1,16 +1,17 @@
 @use '../../scss/globals' as *;
 
 .product-price {
-  color: $color-red-15;
   font-family: $font-primary-bold;
   font-size: rem(16px);
+  color: $color-primary; // default
 
-  .text-line-through {
-    font-size: rem(12px);
-    color: $color-primary;
+  &.has-discount {
+    color: $color-red-15;
   }
+}
 
-  .product-price {
-    color: $color-primary;
-  }
+.line-through {
+  font-size: rem(12px);
+  color: $color-primary;
+  text-decoration: line-through;
 }
