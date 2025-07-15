@@ -6,13 +6,18 @@
 
   .single-product {
     width: 100%;
+    margin-top: 32px;
   }
 
   .product-price {
-    font-size: rem(20px);
+    font-size: rem(24px);
   }
 
   .product-img-list {
     width: 100%;
+
+    .product-img {
+      border-radius: 0;
+    }
   }
 }
