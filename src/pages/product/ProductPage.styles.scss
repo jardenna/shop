@@ -36,19 +36,3 @@
     margin-bottom: 4px;
   }
 }
-
-.product-img-list {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 12px;
-
-  @include max-size($small) {
-    margin: 0;
-  }
-
-  .product-img-item {
-    width: 100%;
-    height: rem(124px);
-    object-fit: cover;
-  }
-}

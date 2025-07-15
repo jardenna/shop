@@ -3,4 +3,18 @@
 .single-product-container {
   display: flex;
   gap: 40px;
+
+  .single-product {
+    width: 100%;
+  }
+
+  // .product-discont-price {
+  //   font-size: rem(20px);
+  //   padding: 16px 0;
+  //   display: flex;
+  // }
+
+  .product-img-list {
+    width: 100%;
+  }
 }

@@ -21,24 +21,25 @@
     margin: 0;
   }
 
+  .product-card-title {
+    font-size: rem(16px);
+    font-family: $font-primary-bold;
+    text-transform: uppercase;
+  }
+}
+
+.product-discont-price {
+  color: $color-red-15;
+  font-family: $font-primary-bold;
+  font-size: rem(16px);
+
   .text-line-through {
     font-size: rem(12px);
     color: $color-primary;
   }
 
-  .product-discont-price {
-    color: $color-red-15;
-    font-family: $font-primary-bold;
-    font-size: rem(16px);
-  }
-
   .product-price {
     color: $color-primary;
-  }
-
-  .product-card-title {
-    font-size: rem(16px);
-    font-family: $font-primary-bold;
   }
 }
 

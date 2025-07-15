@@ -1,5 +1,4 @@
 import type { Status } from '../../app/api/apiTypes/adminApiTypes';
-import ProductPrice from '../../features/currency/components/ProductPrice';
 import useLanguage from '../../features/language/useLanguage';
 import ProductDiscountPrice from '../../features/products/components/ProductDiscountPrice';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
@@ -55,11 +54,7 @@ const ProductCardLeft = ({
       />
       <p>{description}</p>
       <GridTwoCol text={language.price}>
-        {discount !== 0 ? (
-          <ProductDiscountPrice price={price} discount={discount} />
-        ) : (
-          <ProductPrice price={price} />
-        )}
+        <ProductDiscountPrice price={price} discount={discount} />
       </GridTwoCol>
     </CardContent>
   );

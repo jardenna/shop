@@ -24,12 +24,7 @@ import useFormValidation from '../../../hooks/useFormValidation';
 import { AdminPath } from '../../../layout/nav/enums';
 import variables from '../../../scss/variables.module.scss';
 import type { OptionType } from '../../../types/types';
-import {
-  discountCalculation,
-  getlowerCaseFirstLetter,
-  sizeList,
-} from '../../../utils/utils';
-import ProductPrice from '../../currency/components/ProductPrice';
+import { getlowerCaseFirstLetter, sizeList } from '../../../utils/utils';
 import useCurrency from '../../currency/useCurrency';
 import useLanguage from '../../language/useLanguage';
 import { useUploadImageMutation } from '../../uploadImageApiSlice';
@@ -38,6 +33,7 @@ import {
   useUpdateProductMutation,
 } from '../productApiSlice';
 import FormCard from './FormCard';
+import ProductDiscountPrice from './ProductDiscountPrice';
 
 type ProductFormProps = {
   id: string | null;
@@ -392,14 +388,12 @@ const ProductForm = ({
                 onChange={handleShowPrice}
                 labelText="showPrice"
               />
-              {showPrice &&
-                (values.discount ? (
-                  <ProductPrice
-                    price={discountCalculation(values.price, values.discount)}
-                  />
-                ) : (
-                  <ProductPrice price={values.price} />
-                ))}
+              {showPrice && (
+                <ProductDiscountPrice
+                  price={values.price}
+                  discount={values.discount}
+                />
+              )}
             </div>
           </FormCard>
           <FormCard legendText={language.details} onReset={onReset}>

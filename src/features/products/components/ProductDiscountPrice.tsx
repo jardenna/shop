@@ -1,5 +1,4 @@
-import { discountCalculation } from '../../../utils/utils';
-import ProductPrice from '../../currency/components/ProductPrice';
+import useCurrency from '../../currency/useCurrency';
 
 type ProductDiscountPriceProps = {
   discount: number | null;
@@ -9,19 +8,22 @@ type ProductDiscountPriceProps = {
 const ProductDiscountPrice = ({
   price,
   discount,
-}: ProductDiscountPriceProps) => (
-  <span className="product-discont-price">
-    {!!discount && (
-      <>
-        <ProductPrice price={discountCalculation(price, discount)} />
-        <span> / </span>
-      </>
-    )}
-    <ProductPrice
-      price={price}
-      className={discount ? 'text-line-through' : 'product-price'}
-    />
-  </span>
-);
+}: ProductDiscountPriceProps) => {
+  const { convertedPrice } = useCurrency(price);
+
+  return (
+    <span className="product-discont-price">
+      {!!discount && (
+        <>
+          <span>{convertedPrice}</span>
+          <span> / </span>
+        </>
+      )}
+      <span className={discount ? 'text-line-through' : 'product-price'}>
+        {convertedPrice}
+      </span>
+    </span>
+  );
+};
 
 export default ProductDiscountPrice;
