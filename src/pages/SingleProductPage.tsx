@@ -3,12 +3,12 @@ import Accordion from '../components/accordion/Accordion';
 import Favorites from '../components/favorites/Favorites';
 import Img from '../components/Img';
 import ProductColorList from '../components/ProductColorList';
+import ProductPrice from '../components/productPrice/ProductPrice';
 import ProductSizeList from '../components/productSizeList/ProductSizeList';
 import useLanguage from '../features/language/useLanguage';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
 import MetaTags from '../layout/nav/MetaTags';
 import './SingleProductPage.styles.scss';
-import ProductPrice from '../components/productPrice/ProductPrice';
 
 const SingleProductPage = () => {
   const { id } = useParams();
@@ -64,10 +64,7 @@ const SingleProductPage = () => {
           <section className="single-product">
             <h1>{product.productName}</h1>
             <Favorites id={product.id} />
-            <ProductPrice
-              price={product.price}
-              discount={product.discount || null}
-            />
+            <ProductPrice price={product.price} discount={product.discount} />
             <ProductColorList colours={product.colors} />
             <ProductSizeList sizes={product.sizes} variant="shop-product" />
             <p>Brand: {product.brand}</p>

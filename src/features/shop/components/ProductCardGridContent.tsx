@@ -8,7 +8,7 @@ type ProductCardGridContentProps = {
 
 const ProductCardGridContent = ({ product }: ProductCardGridContentProps) => (
   <>
-    <ProductPrice price={product.price} discount={product.discount || null} />
+    <ProductPrice price={product.price} discount={product.discount} />
 
     <ProductColorList colours={product.colors} optionSize="small" />
   </>
