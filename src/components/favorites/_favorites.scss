@@ -1,6 +1,8 @@
 @use '../../scss/globals' as *;
 
 .favorites {
+  position: relative;
+
   .favorites-label {
     position: absolute;
     right: 5px;

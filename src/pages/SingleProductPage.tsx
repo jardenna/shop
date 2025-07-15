@@ -2,6 +2,7 @@ import { useParams } from 'react-router';
 import Accordion from '../components/accordion/Accordion';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
+import Favorites from '../components/favorites/Favorites';
 import Img from '../components/Img';
 import ProductColorList from '../components/ProductColorList';
 import ProductSizeList from '../components/productSizeList/ProductSizeList';
@@ -14,9 +15,9 @@ import './SingleProductPage.styles.scss';
 
 const SingleProductPage = () => {
   const { id, category } = useParams();
+  const { language } = useLanguage();
   const { data: product } = useGetSingleProductQuery(id ?? '');
   const { subMenu } = useSubMenu({ category });
-  const { language } = useLanguage();
 
   const accordionItems = [
     { title: language.description, content: <p>{product?.description}</p> },
@@ -71,12 +72,19 @@ const SingleProductPage = () => {
         {product && (
           <section>
             <h1>{product.productName}</h1>
+            <Favorites id={product.id} />
             <ProductDiscountPrice
               price={product.price}
               discount={product.discount || null}
             />
             <ProductColorList colours={product.colors} />
             <ProductSizeList sizes={product.sizes} variant="shop-product" />
+            <p>Brand: {product.brand}</p>
+
+            <p>
+              Stock:{' '}
+              {product.countInStock < 5 ? 'Low in stock' : product.countInStock}
+            </p>
             <Accordion accordionItems={accordionItems} />
           </section>
         )}
