@@ -1,12 +1,11 @@
 import type { Status } from '../../app/api/apiTypes/adminApiTypes';
 import useLanguage from '../../features/language/useLanguage';
-import ProductDiscountPrice from '../../features/products/components/ProductDiscountPrice';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 import CardContent from '../card/CardContent';
 import MissingImage from '../formElements/fileInput/MissingImage';
 import GridTwoCol from '../GridTwoCol';
-
 import Img from '../Img';
+import ProductPrice from '../productPrice/ProductPrice';
 import AdminCardHeading from './AdminCardHeading';
 
 type ProductCardLeftProps = {
@@ -54,7 +53,7 @@ const ProductCardLeft = ({
       />
       <p>{description}</p>
       <GridTwoCol text={language.price}>
-        <ProductDiscountPrice price={price} discount={discount} />
+        <ProductPrice price={price} discount={discount} />
       </GridTwoCol>
     </CardContent>
   );

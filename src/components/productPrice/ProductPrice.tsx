@@ -1,18 +1,16 @@
-import useCurrency from '../../currency/useCurrency';
+import useCurrency from '../../features/currency/useCurrency';
+import './_product-price.scss';
 
-type ProductDiscountPriceProps = {
+type ProductPriceProps = {
   discount: number | null;
   price: number;
 };
 
-const ProductDiscountPrice = ({
-  price,
-  discount,
-}: ProductDiscountPriceProps) => {
+const ProductPrice = ({ price, discount }: ProductPriceProps) => {
   const { convertedPrice } = useCurrency(price);
 
   return (
-    <span className="product-discont-price">
+    <span className="product-price">
       {!!discount && (
         <>
           <span>{convertedPrice}</span>
@@ -26,4 +24,4 @@ const ProductDiscountPrice = ({
   );
 };
 
-export default ProductDiscountPrice;
+export default ProductPrice;

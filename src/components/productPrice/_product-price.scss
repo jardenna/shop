@@ -1,0 +1,16 @@
+@use '../../scss/globals' as *;
+
+.product-price {
+  color: $color-red-15;
+  font-family: $font-primary-bold;
+  font-size: rem(16px);
+
+  .text-line-through {
+    font-size: rem(12px);
+    color: $color-primary;
+  }
+
+  .product-price {
+    color: $color-primary;
+  }
+}

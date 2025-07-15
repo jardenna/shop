@@ -5,10 +5,10 @@ import Img from '../components/Img';
 import ProductColorList from '../components/ProductColorList';
 import ProductSizeList from '../components/productSizeList/ProductSizeList';
 import useLanguage from '../features/language/useLanguage';
-import ProductDiscountPrice from '../features/products/components/ProductDiscountPrice';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
 import MetaTags from '../layout/nav/MetaTags';
 import './SingleProductPage.styles.scss';
+import ProductPrice from '../components/productPrice/ProductPrice';
 
 const SingleProductPage = () => {
   const { id } = useParams();
@@ -64,7 +64,7 @@ const SingleProductPage = () => {
           <section className="single-product">
             <h1>{product.productName}</h1>
             <Favorites id={product.id} />
-            <ProductDiscountPrice
+            <ProductPrice
               price={product.price}
               discount={product.discount || null}
             />
