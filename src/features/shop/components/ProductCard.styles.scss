@@ -4,6 +4,14 @@
   position: relative;
   overflow: hidden;
 
+  .favorites-label {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    border-radius: 8px;
+    background: rgb(250 250 250 / 60%);
+  }
+
   &:hover {
     .size-overlay {
       transform: translateY(-100%);

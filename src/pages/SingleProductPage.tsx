@@ -62,7 +62,6 @@ const SingleProductPage = () => {
             ))}
           </ul>
           <section className="single-product">
-            <span>Spar 230 kr.</span>
             <h1>{product.productName}</h1>
             <Favorites id={product.id} />
             <ProductDiscountPrice
