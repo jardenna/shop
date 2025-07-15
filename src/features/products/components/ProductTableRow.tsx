@@ -5,7 +5,7 @@ import { formatNumber, getlowerCaseFirstLetter } from '../../../utils/utils';
 import useLanguage from '../../language/useLanguage';
 import ProductActions from './ProductActions';
 import ProductOverviewCell from './ProductOverviewCell';
-import ProductPrice from '../../../components/productPrice/ProductPrice';
+import ProductDiscountPrice from './ProductDiscountPrice';
 
 type ProductTableRowProps = {
   categoryName: string;
@@ -45,7 +45,7 @@ const ProductTableRow = ({
         {subCategoryName} / {categoryName}
       </td>
       <td>
-        <ProductPrice price={price} discount={discount || 0} />
+        <ProductDiscountPrice price={price} discount={discount || 0} />
       </td>
       <td>{formatNumber(countInStock, selectedLanguage)}</td>
       <td>

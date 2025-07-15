@@ -33,7 +33,7 @@ import {
   useUpdateProductMutation,
 } from '../productApiSlice';
 import FormCard from './FormCard';
-import ProductPrice from '../../../components/productPrice/ProductPrice';
+import ProductDiscountPrice from './ProductDiscountPrice';
 
 type ProductFormProps = {
   id: string | null;
@@ -389,7 +389,10 @@ const ProductForm = ({
                 labelText="showPrice"
               />
               {showPrice && (
-                <ProductPrice price={values.price} discount={values.discount} />
+                <ProductDiscountPrice
+                  price={values.price}
+                  discount={values.discount}
+                />
               )}
             </div>
           </FormCard>
