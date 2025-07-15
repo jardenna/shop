@@ -12,10 +12,9 @@ const ProductDiscountPrice = ({
 }: ProductDiscountPriceProps) => (
   <span className="product-discont-price">
     {!!discount && (
-      <>
+      <span>
         <ProductPrice price={discountCalculation(price, discount)} />
-        <span> / </span>
-      </>
+      </span>
     )}
     <ProductPrice
       price={price}
