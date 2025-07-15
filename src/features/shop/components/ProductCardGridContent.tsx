@@ -1,6 +1,6 @@
 import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import ProductColorList from '../../../components/ProductColorList';
-import ProductDiscountPrice from '../../products/components/ProductDiscountPrice';
+import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
 
 type ProductCardGridContentProps = {
   product: BaseProduct;

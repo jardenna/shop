@@ -1,5 +1,5 @@
 import { discountCalculation } from '../../../utils/utils';
-import ProductPrice from '../../currency/components/ProductPrice';
+import ProductPrice from './ProductPrice';
 import './_product-price.scss';
 
 type ProductDiscountPriceProps = {

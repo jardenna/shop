@@ -25,6 +25,7 @@ import { AdminPath } from '../../../layout/nav/enums';
 import variables from '../../../scss/variables.module.scss';
 import type { OptionType } from '../../../types/types';
 import { getlowerCaseFirstLetter, sizeList } from '../../../utils/utils';
+import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
 import useCurrency from '../../currency/useCurrency';
 import useLanguage from '../../language/useLanguage';
 import { useUploadImageMutation } from '../../uploadImageApiSlice';
@@ -33,7 +34,6 @@ import {
   useUpdateProductMutation,
 } from '../productApiSlice';
 import FormCard from './FormCard';
-import ProductDiscountPrice from './ProductDiscountPrice';
 
 type ProductFormProps = {
   id: string | null;
