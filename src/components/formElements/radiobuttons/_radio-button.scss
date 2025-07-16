@@ -44,7 +44,7 @@
     color: currentcolor;
     width: rem(24px);
     height: rem(24px);
-    border: 2px solid $color-border-secondary;
+    border: 2px solid $color-border-radio;
     transform: translateY(-1.2px);
     display: flex;
     position: relative;
@@ -70,7 +70,7 @@
     }
 
     &:checked {
-      border-color: $color-border-secondary;
+      border-color: $color-border-radio;
 
       &::before {
         transform: scale(1);

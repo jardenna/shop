@@ -1,0 +1,22 @@
+@use '../../../scss/globals' as *;
+
+.product-discont-price {
+  display: flex;
+  gap: 4px;
+  align-items: baseline;
+  font-family: $font-primary-bold;
+  font-size: $font-medium;
+  color: $color-primary;
+}
+
+.has-discount {
+  color: $color-red-15;
+}
+
+.text-line-through {
+  font-size: $font-mini;
+}
+
+.price-seperator {
+  font-size: $font-small;
+}

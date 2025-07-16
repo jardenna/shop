@@ -1,0 +1,23 @@
+@use '../scss/globals' as *;
+
+.single-product-container {
+  display: flex;
+  gap: 40px;
+
+  .single-product {
+    width: 100%;
+    margin-top: 32px;
+  }
+
+  .product-discont-price {
+    font-size: $font-large;
+  }
+
+  .product-img-list {
+    width: 100%;
+
+    .product-img {
+      border-radius: 0;
+    }
+  }
+}

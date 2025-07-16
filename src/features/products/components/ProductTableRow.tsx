@@ -2,9 +2,9 @@ import { memo } from 'react';
 import { Status } from '../../../app/api/apiTypes/sharedApiTypes';
 import Badge from '../../../components/badge/Badge';
 import { formatNumber, getlowerCaseFirstLetter } from '../../../utils/utils';
+import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
 import useLanguage from '../../language/useLanguage';
 import ProductActions from './ProductActions';
-import ProductDiscountPrice from './ProductDiscountPrice';
 import ProductOverviewCell from './ProductOverviewCell';
 
 type ProductTableRowProps = {

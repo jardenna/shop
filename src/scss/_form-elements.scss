@@ -100,7 +100,7 @@ textarea {
 }
 
 .input-help-text {
-  font-size: rem(12px);
+  font-size: $font-mini;
   font-style: italic;
   gap: 4px;
   display: flex;

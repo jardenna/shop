@@ -1,4 +1,3 @@
-import ProductPrice from '../features/currency/components/ProductPrice';
 import useLanguage from '../features/language/useLanguage';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
@@ -8,7 +7,7 @@ const ProfilePage = () => {
   return (
     <MainPageContainer heading={language.profile}>
       <section>
-        <ProductPrice price={10200} />
+        {language.profile}
         <p>tet</p>
       </section>
     </MainPageContainer>

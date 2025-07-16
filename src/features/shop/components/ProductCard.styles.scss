@@ -4,16 +4,16 @@
   position: relative;
   overflow: hidden;
 
-  .product-overlay-items {
+  .favorites-label {
     position: absolute;
-    transform: translateY(0);
-    width: 100%;
-
-    @include transition($what: transform);
+    right: 5px;
+    top: 5px;
+    border-radius: 8px;
+    background: rgb(250 250 250 / 60%);
   }
 
   &:hover {
-    .product-overlay-items {
+    .size-overlay {
       transform: translateY(-100%);
     }
   }
@@ -29,24 +29,10 @@
     margin: 0;
   }
 
-  .text-line-through {
-    font-size: rem(12px);
-    color: $color-primary;
-  }
-
-  .product-discont-price {
-    color: $color-red-15;
-    font-family: $font-primary-bold;
-    font-size: rem(16px);
-  }
-
-  .product-price {
-    color: $color-primary;
-  }
-
   .product-card-title {
-    font-size: rem(16px);
+    font-size: $font-medium;
     font-family: $font-primary-bold;
+    text-transform: uppercase;
   }
 }
 
