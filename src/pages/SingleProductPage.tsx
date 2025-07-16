@@ -1,6 +1,7 @@
 import { useParams } from 'react-router';
 import Accordion from '../components/accordion/Accordion';
 import Favorites from '../components/favorites/Favorites';
+import Icon from '../components/icons/Icon';
 import Img from '../components/Img';
 import ProductColorList from '../components/ProductColorList';
 import ProductSizeList from '../components/productSizeList/ProductSizeList';
@@ -8,6 +9,7 @@ import ProductDiscountPrice from '../features/currency/components/ProductDiscoun
 import useLanguage from '../features/language/useLanguage';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
 import MetaTags from '../layout/nav/MetaTags';
+import { IconName } from '../types/enums';
 import './SingleProductPage.styles.scss';
 
 const SingleProductPage = () => {
@@ -68,6 +70,7 @@ const SingleProductPage = () => {
               price={product.price}
               discount={product.discount}
             />
+            <Icon iconName={IconName.Dress} title="" size="70" />
             <ProductColorList colours={product.colors} />
             <ProductSizeList sizes={product.sizes} variant="shop-product" />
             <p>Brand: {product.brand}</p>
