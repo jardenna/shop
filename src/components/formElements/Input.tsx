@@ -20,6 +20,7 @@ export type InputProps = {
   className?: string;
   disabled?: boolean;
   errorText?: string;
+  iconName?: IconName;
   inputHasNoLabel?: boolean;
   inputHelpText?: string;
   inputSuffix?: string;
@@ -60,6 +61,7 @@ const Input = ({
   autoFocus,
   onFocus,
   disabled,
+  iconName,
   inputHelpText,
 }: InputProps) => {
   const inputClassName =
@@ -82,6 +84,7 @@ const Input = ({
           id={id}
           inputHasNoLabel={inputHasNoLabel}
           errorText={errorText}
+          iconName={iconName}
         />
         <input
           ref={ref}

@@ -99,6 +99,7 @@ const SingleProductPage = () => {
                   initialChecked={values.colors}
                   onChange={onChange}
                   radioBtnVariant="card"
+                  iconName={IconName.Woman}
                 />
               )}
             </Form>

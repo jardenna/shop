@@ -1,4 +1,5 @@
 import useLanguage from '../../../features/language/useLanguage';
+import { IconName } from '../../../types/enums';
 import type { ChangeInputType, OptionType } from '../../../types/types';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import Input from '../Input';
@@ -11,6 +12,7 @@ type RadioButtonProps = {
   name: string;
   radioButtonList: OptionType[];
   formInfoText?: string;
+  iconName?: IconName;
   radioBtnVariant?: RadioBtnVariant;
   onChange: (event: ChangeInputType) => void;
 };
@@ -20,6 +22,7 @@ const RadioButton = ({
   radioButtonList,
   onChange,
   name,
+  iconName,
   formInfoText,
   radioBtnVariant,
 }: RadioButtonProps) => {
@@ -39,6 +42,7 @@ const RadioButton = ({
           checked={initialChecked === radio.value}
           onChange={onChange}
           labelText={getlowerCaseFirstLetter(radio.label, language)}
+          iconName={iconName}
         />
       ))}
       {formInfoText && <section className="form-info">{formInfoText}</section>}
