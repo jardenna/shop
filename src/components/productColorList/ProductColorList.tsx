@@ -18,9 +18,11 @@ const ProductColorList = ({
 }: ProductColorListProps) => {
   const { language } = useLanguage();
 
+  const sortedColors = [...colours].sort();
+
   // Calculate how many colors to show and how many are hidden
-  const visibleColors = colours.slice(0, count);
-  const hiddenColorsCount = Math.max(colours.length - count, 0);
+  const visibleColors = sortedColors.slice(0, count);
+  const hiddenColorsCount = Math.max(sortedColors.length - count, 0);
 
   return (
     <ul
