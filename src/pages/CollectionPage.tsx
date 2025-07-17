@@ -67,7 +67,7 @@ const CollectionPage = () => {
                 FallbackComponent={ErrorBoundaryFallback}
                 onReset={() => refetch()}
               >
-                <div>
+                <div className="collection-page-content">
                   <Img
                     src={`/images/collections/${category}/banner.jpg`}
                     alt=""

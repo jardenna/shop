@@ -11,6 +11,11 @@
 .collection-page-container {
   display: flex;
   gap: 12px;
+  width: 100%;
+}
+
+.collection-page-content {
+  width: 100%;
 }
 
 .product-toolbar {
