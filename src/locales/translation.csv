@@ -126,6 +126,7 @@ invalidPassword;Invalid password;Ugyldig adgangskode
 invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for planlagt dato
 invalidUserData;Invalid user data;Ugyldig bruger data
 items;items;stk
+kid;Kid;Barn
 kids;Kids;Børn
 language;Language;Sprog
 list;List;Liste
@@ -145,6 +146,7 @@ material;Material;Materiale
 materialAndCare;Material and care;Materiale and vaskeanvisning
 materialRequired;Please insert material;Indsæt venligst materiale
 maximumFileSize;Maximum file size;Maksimal filstørrelse
+man;Man;Mand
 men;Men;Mænd
 menu;Menu;Menu
 minLength;At least 8 characters;Mindst 8 tegn
@@ -301,6 +303,7 @@ viewYourFavorites;View your favorites;Se dine favoritter
 warning;Warning;Warning
 welcome;Welcome;Velkommen
 white;White;Hvid
+woman;Woman;Dame
 women;Women;Damer
 yellow;Yellow;Gul
 silver;Silver;Sølv

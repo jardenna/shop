@@ -1,5 +1,7 @@
+import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
-import Icon from '../icons/Icon';
+import { getlowerCaseFirstLetter } from '../../utils/utils';
+import IconContent from '../IconContent';
 import VisuallyHidden from '../VisuallyHidden';
 import FormError from './FormError';
 
@@ -21,28 +23,41 @@ const FormLabel = ({
   errorText,
   className = '',
   iconName,
-}: FormLabelErrorProps) => (
-  <>
-    <span className={inputHasNoLabel ? '' : 'form-label-container'}>
-      {inputHasNoLabel ? (
-        <VisuallyHidden htmlFor={id} as="label">
-          {labelText}
-        </VisuallyHidden>
-      ) : (
-        <label htmlFor={id} className={className}>
-          {iconName ? <Icon iconName={iconName} title={iconName} /> : labelText}
+}: FormLabelErrorProps) => {
+  const { language } = useLanguage();
 
-          {required && <span aria-hidden="true">*</span>}
-        </label>
-      )}
-      {errorText && <FormError errorText={errorText} ariaErrorId={id} />}
-    </span>
-    {errorText && (
-      <span className="error-icon" aria-hidden="true">
-        i
+  return (
+    <>
+      <span className={inputHasNoLabel ? '' : 'form-label-container'}>
+        {inputHasNoLabel ? (
+          <VisuallyHidden htmlFor={id} as="label">
+            {labelText}
+          </VisuallyHidden>
+        ) : (
+          <label htmlFor={id} className={className}>
+            {iconName ? (
+              <IconContent
+                iconName={iconName}
+                size="70"
+                title={getlowerCaseFirstLetter(iconName, language)}
+                ariaLabel={getlowerCaseFirstLetter(id, language)}
+              />
+            ) : (
+              labelText
+            )}
+
+            {required && <span aria-hidden="true">*</span>}
+          </label>
+        )}
+        {errorText && <FormError errorText={errorText} ariaErrorId={id} />}
       </span>
-    )}
-  </>
-);
+      {errorText && (
+        <span className="error-icon" aria-hidden="true">
+          i
+        </span>
+      )}
+    </>
+  );
+};
 
 export default FormLabel;
