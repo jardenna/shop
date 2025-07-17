@@ -1,6 +1,8 @@
 import { useParams } from 'react-router';
 import Accordion from '../components/accordion/Accordion';
 import Favorites from '../components/favorites/Favorites';
+import Form from '../components/form/Form';
+import RadioButton from '../components/formElements/radiobuttons/RadioButton';
 import Icon from '../components/icons/Icon';
 import Img from '../components/Img';
 import ProductColorList from '../components/productColorList/ProductColorList';
@@ -8,6 +10,7 @@ import ProductSizeList from '../components/productSizeList/ProductSizeList';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
 import useLanguage from '../features/language/useLanguage';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
+import useFormValidation from '../hooks/useFormValidation';
 import MetaTags from '../layout/nav/MetaTags';
 import { IconName } from '../types/enums';
 import './SingleProductPage.styles.scss';
@@ -16,6 +19,22 @@ const SingleProductPage = () => {
   const { id } = useParams();
   const { language } = useLanguage();
   const { data: product } = useGetSingleProductQuery(id ?? '');
+
+  const colorList = product?.colors.map((color) => ({
+    value: color,
+    label: color,
+  }));
+
+  const initialState = {
+    colors: colorList ? colorList[0].value : '',
+  };
+
+  const { onChange, values, onSubmit } = useFormValidation({
+    initialState,
+    callback: () => {
+      console.log(values);
+    },
+  });
 
   const accordionItems = [
     { title: language.description, content: <p>{product?.description}</p> },
@@ -73,6 +92,17 @@ const SingleProductPage = () => {
             <Icon iconName={IconName.Woman} title="" size="70" />
             <Icon iconName={IconName.Man} title="" size="70" />
             <Icon iconName={IconName.Kid} title="" size="70" />
+            <Form onSubmit={onSubmit} submitBtnLabel={language.create}>
+              {colorList && (
+                <RadioButton
+                  radioButtonList={colorList}
+                  name="colors"
+                  initialChecked={values.colors}
+                  onChange={onChange}
+                  radioBtnVariant="card"
+                />
+              )}
+            </Form>
             <ProductColorList colours={product.colors} />
             <ProductSizeList sizes={product.sizes} variant="shop-product" />
             <p>Brand: {product.brand}</p>
