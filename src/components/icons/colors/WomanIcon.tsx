@@ -1,3 +1,4 @@
+import variables from '../../../scss/variables.module.scss';
 import type { IconDefaultProps } from '../Icon';
 
 const WomanIcon = ({
@@ -14,7 +15,7 @@ const WomanIcon = ({
     className={className}
     viewBox="0 0 25 62"
     fill="currentColor"
-    stroke="none"
+    stroke={variables.colorIconBorder}
     fillRule="evenodd"
     clipRule="evenodd"
     strokeLinejoin="round"
