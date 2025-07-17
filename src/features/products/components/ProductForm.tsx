@@ -8,7 +8,6 @@ import type {
 } from '../../../app/api/apiTypes/adminApiTypes';
 import useDatePicker from '../../../components/datePicker/useDatePicker';
 import Form from '../../../components/form/Form';
-import Checkbox from '../../../components/formElements/checkbox/Checkbox';
 import FileInput from '../../../components/formElements/fileInput/FileInput';
 import ProductImgList from '../../../components/formElements/fileInput/ProductImgList';
 import Input from '../../../components/formElements/Input';
@@ -16,6 +15,7 @@ import Textarea from '../../../components/formElements/Textarea';
 import ToggleSwitch from '../../../components/formElements/toggleSwitch/ToggleSwitch';
 import validateProduct from '../../../components/formElements/validation/validateProduct';
 import useMessagePopup from '../../../components/messagePopup/useMessagePopup';
+import CheckboxSizeList from '../../../components/productSizeList/CheckboxSizeList';
 import ColorOptions from '../../../components/selectbox/ColorOptions';
 import Selectbox from '../../../components/selectbox/Selectbox';
 import StatusOptions from '../../../components/selectbox/StatusOptions';
@@ -42,14 +42,6 @@ type ProductFormProps = {
   images?: string[];
   onReset: () => void;
 };
-
-const checkboxItems = [
-  { value: 'S', label: 'S' },
-  { value: 'M', label: 'M' },
-  { value: 'L', label: 'L' },
-  { value: 'XL', label: 'XL' },
-  { value: 'Onesize', label: 'Onesize' },
-];
 
 const ProductForm = ({
   id,
@@ -330,18 +322,11 @@ const ProductForm = ({
         </div>
         <div className="flex-1">
           <FormCard legendText={language.productVariants} onReset={onReset}>
-            <div>
-              <span className="form-span-container">
-                {language.sizes}
-                <span className="error-message">{language[errors.sizes]}</span>
-              </span>
-              <Checkbox
-                onChange={onChange}
-                values={values.sizes}
-                checkBoxList={checkboxItems}
-                name="sizes"
-              />
-            </div>
+            <CheckboxSizeList
+              errorText={language[errors.sizes]}
+              onChange={onChange}
+              sizes={values.sizes}
+            />
             <Selectbox
               id="colors"
               name="colors"
