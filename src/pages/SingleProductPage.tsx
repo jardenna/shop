@@ -71,6 +71,8 @@ const SingleProductPage = () => {
               discount={product.discount}
             />
             <Icon iconName={IconName.Woman} title="" size="70" />
+            <Icon iconName={IconName.Man} title="" size="70" />
+            <Icon iconName={IconName.Kid} title="" size="70" />
             <ProductColorList colours={product.colors} />
             <ProductSizeList sizes={product.sizes} variant="shop-product" />
             <p>Brand: {product.brand}</p>
