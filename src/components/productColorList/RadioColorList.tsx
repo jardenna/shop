@@ -7,6 +7,7 @@ type RadioColorListProps = {
   iconName: string;
   initialChecked: string;
   radioButtonList: OptionType[];
+
   onChange: (event: ChangeInputType) => void;
 };
 
@@ -16,7 +17,7 @@ const RadioColorList = ({
   onChange,
   iconName,
 }: RadioColorListProps) => {
-  console.log(iconName);
+  console.log(initialChecked);
 
   return (
     <RadioButton

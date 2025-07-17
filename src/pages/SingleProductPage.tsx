@@ -95,7 +95,7 @@ const SingleProductPage = () => {
               {colorList && (
                 <RadioColorList
                   radioButtonList={colorList}
-                  initialChecked={values.colors}
+                  initialChecked={values.colors || colorList[0].value}
                   onChange={onChange}
                   iconName={product.categoryName}
                 />
