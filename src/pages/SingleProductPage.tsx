@@ -5,7 +5,6 @@ import Form from '../components/form/Form';
 import RadioButton from '../components/formElements/radiobuttons/RadioButton';
 import Icon from '../components/icons/Icon';
 import Img from '../components/Img';
-import ProductColorList from '../components/productColorList/ProductColorList';
 import ProductSizeList from '../components/productSizeList/ProductSizeList';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
 import useLanguage from '../features/language/useLanguage';
@@ -103,7 +102,6 @@ const SingleProductPage = () => {
                 />
               )}
             </Form>
-            <ProductColorList colours={product.colors} />
             <ProductSizeList sizes={product.sizes} variant="shop-product" />
             <p>Brand: {product.brand}</p>
             <p>
