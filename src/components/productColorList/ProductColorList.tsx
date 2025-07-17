@@ -30,7 +30,7 @@ const ProductColorList = ({
       {visibleColors.map((colour) => (
         <ProductColorItem
           key={colour}
-          colour={colour}
+          colour={language[colour]}
           style={{
             backgroundColor: colour,
             borderColor: colour === 'white' ? variables.colorIconBorder : '',
