@@ -13,6 +13,7 @@ import ChevronRightIcon from './ChevronRightIcon';
 import CircelChevronRightIcon from './CircelChevronRightIcon';
 import CloseIcon from './CloseIcon';
 import DressIcon from './colors/DressIcon';
+import WomanIcon from './colors/WomanIcon';
 import DashboardIcon from './DashboardIcon';
 import DublicateIcon from './DublicateIcon';
 import EditIcon from './EditIcon';
@@ -106,6 +107,7 @@ const iconMapping = {
   user: UserIcon,
   users: UsersIcon,
   warning: WarningIcon,
+  woman: WomanIcon,
 };
 
 const Icon = ({

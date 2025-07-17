@@ -108,4 +108,5 @@ export enum IconName {
   User = 'user',
   Users = 'users',
   Warning = 'warning',
+  Woman = 'woman',
 }
