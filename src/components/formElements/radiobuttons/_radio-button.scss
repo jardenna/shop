@@ -4,6 +4,11 @@
   display: flex;
   text-transform: uppercase;
 
+  svg {
+    height: rem(70px);
+    width: rem(70px);
+  }
+
   .checkbox-radio-container {
     width: 100%;
     justify-content: center;

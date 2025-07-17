@@ -2,7 +2,6 @@ import { useParams } from 'react-router';
 import Accordion from '../components/accordion/Accordion';
 import Favorites from '../components/favorites/Favorites';
 import Form from '../components/form/Form';
-import Icon from '../components/icons/Icon';
 import Img from '../components/Img';
 import RadioColorList from '../components/productColorList/RadioColorList';
 import ProductSizeList from '../components/productSizeList/ProductSizeList';
@@ -11,7 +10,6 @@ import useLanguage from '../features/language/useLanguage';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
 import useFormValidation from '../hooks/useFormValidation';
 import MetaTags from '../layout/nav/MetaTags';
-import { IconName } from '../types/enums';
 import './SingleProductPage.styles.scss';
 
 const SingleProductPage = () => {
@@ -88,9 +86,7 @@ const SingleProductPage = () => {
               price={product.price}
               discount={product.discount}
             />
-            <Icon iconName={IconName.Woman} title="" size="70" />
-            <Icon iconName={IconName.Man} title="" size="70" />
-            <Icon iconName={IconName.Kid} title="" size="70" />
+
             <Form onSubmit={onSubmit} submitBtnLabel={language.create}>
               {colorList && (
                 <RadioColorList
