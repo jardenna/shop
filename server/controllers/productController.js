@@ -397,7 +397,16 @@ const getProductById = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Public
 const getShopProductById = asyncHandler(async (req, res) => {
-  const product = await Product.findById(req.params.id).lean();
+  const product = await Product.findById(req.params.id)
+    .populate({
+      path: 'subCategory',
+      select: 'subCategoryName category',
+      populate: {
+        path: 'category',
+        select: 'categoryName',
+      },
+    })
+    .lean();
 
   if (!product) {
     return res.status(404).json({
@@ -406,7 +415,16 @@ const getShopProductById = asyncHandler(async (req, res) => {
     });
   }
 
-  res.status(200).json(formatMongoData(product));
+  const subCategoryName = product.subCategory?.subCategoryName || '';
+  const categoryName = product.subCategory?.category?.categoryName || '';
+
+  const { subCategory, ...rest } = formatMongoData(product);
+
+  res.status(200).json({
+    ...rest,
+    subCategoryName,
+    categoryName,
+  });
 });
 
 // @desc    Check Scheduled Products
