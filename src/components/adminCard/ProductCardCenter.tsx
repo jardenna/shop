@@ -3,7 +3,7 @@ import useLanguage from '../../features/language/useLanguage';
 import CardContent from '../card/CardContent';
 
 import GridTwoCol from '../GridTwoCol';
-import ProductColorList from '../ProductColorList';
+import ProductColorList from '../productColorList/ProductColorList';
 import ProductSizeList from '../productSizeList/ProductSizeList';
 
 type ProductCardCenterProps = {

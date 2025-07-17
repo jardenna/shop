@@ -1,6 +1,7 @@
-import useLanguage from '../features/language/useLanguage';
-import variables from '../scss/variables.module.scss';
-import VisuallyHidden from './VisuallyHidden';
+import useLanguage from '../../features/language/useLanguage';
+import variables from '../../scss/variables.module.scss';
+import './_product-color-list.scss';
+import ProductColorItem from './ProductColorItem';
 
 type OptionSize = 'small' | '';
 
@@ -27,16 +28,14 @@ const ProductColorList = ({
       aria-label={language.availableColors}
     >
       {visibleColors.map((colour) => (
-        <li
+        <ProductColorItem
           key={colour}
+          colour={colour}
           style={{
             backgroundColor: colour,
             borderColor: colour === 'white' ? variables.colorIconBorder : '',
           }}
-          className="option-box"
-        >
-          <VisuallyHidden>{colour}</VisuallyHidden>
-        </li>
+        />
       ))}
       {hiddenColorsCount > 0 && <li>{`+ ${hiddenColorsCount}`}</li>}
     </ul>
