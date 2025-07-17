@@ -5,7 +5,7 @@ import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import Input from '../Input';
 import './_radio-button.scss';
 
-type RadioBtnVariant = 'card';
+export type RadioBtnVariant = 'card';
 
 type RadioButtonProps = {
   initialChecked: string;

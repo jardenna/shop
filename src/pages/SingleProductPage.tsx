@@ -2,9 +2,9 @@ import { useParams } from 'react-router';
 import Accordion from '../components/accordion/Accordion';
 import Favorites from '../components/favorites/Favorites';
 import Form from '../components/form/Form';
-import RadioButton from '../components/formElements/radiobuttons/RadioButton';
 import Icon from '../components/icons/Icon';
 import Img from '../components/Img';
+import RadioColorList from '../components/productColorList/RadioColorList';
 import ProductSizeList from '../components/productSizeList/ProductSizeList';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
 import useLanguage from '../features/language/useLanguage';
@@ -93,13 +93,11 @@ const SingleProductPage = () => {
             <Icon iconName={IconName.Kid} title="" size="70" />
             <Form onSubmit={onSubmit} submitBtnLabel={language.create}>
               {colorList && (
-                <RadioButton
+                <RadioColorList
                   radioButtonList={colorList}
-                  name="colors"
                   initialChecked={values.colors}
                   onChange={onChange}
-                  radioBtnVariant="card"
-                  iconName={IconName.Woman}
+                  iconName={product.categoryName}
                 />
               )}
             </Form>
