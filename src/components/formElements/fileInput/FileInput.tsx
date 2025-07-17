@@ -2,7 +2,7 @@ import type { FileName } from '../../../app/api/apiTypes/adminApiTypes';
 import useLanguage from '../../../features/language/useLanguage';
 import { IconName } from '../../../types/enums';
 import type { ChangeInputType } from '../../../types/types';
-import FormLabel from '../FormLabel';
+import Icon from '../../icons/Icon';
 import './_file-input.scss';
 import FileInfo from './FileInfo';
 import Preview, { PreviewProps } from './Preview';
@@ -34,14 +34,10 @@ const FileInput = ({
     <div>
       <div className="file-container">
         <div>
-          <FormLabel
-            required={required}
-            labelText={language.browseImages}
-            id="images"
-            errorText={errorText}
-            className="file-upload-label btn btn-ghost"
-            iconName={IconName.Upload}
-          />
+          <label htmlFor="images" className="file-upload-label btn btn-ghost">
+            <Icon iconName={IconName.Upload} title="iconName" />
+            {language.browseImages}
+          </label>
           <FileInfo />
         </div>
         <input
@@ -50,7 +46,6 @@ const FileInput = ({
           name={name}
           id={id}
           multiple={multiple}
-          required={required}
           className="visually-hidden"
           aria-invalid={errorText ? true : undefined}
           aria-required={required || undefined}
