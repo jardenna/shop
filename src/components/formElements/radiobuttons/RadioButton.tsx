@@ -36,7 +36,7 @@ const RadioButton = ({
         <Input
           type="radio"
           key={radio.value}
-          id={radio.value}
+          id={radio.label}
           name={name}
           value={radio.value}
           checked={initialChecked === radio.value}
