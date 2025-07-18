@@ -8,35 +8,33 @@ function SizeSelector() {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
   return (
-    <div className="checkbox-radio-container">
-      <ul>
-        {sizes.map((size) => {
-          const id = `size-${size}`;
-          return (
-            <li key={size} className="size-option-wrapper">
-              <FormLabel
-                labelText={size}
-                id={id}
-                className={`size-label ${
-                  selectedSize === size ? 'selected' : ''
-                }`}
-              />
+    <ul>
+      {sizes.map((size) => {
+        const id = `size-${size}`;
+        return (
+          <li key={size} className="size-option-wrapper">
+            <FormLabel
+              labelText={size}
+              id={id}
+              className={`size-label ${
+                selectedSize === size ? 'selected' : ''
+              }`}
+            />
 
-              <input
-                type="radio"
-                name="size"
-                id={id}
-                value={size}
-                checked={selectedSize === size}
-                onChange={() => {
-                  setSelectedSize(size);
-                }}
-              />
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+            <input
+              type="radio"
+              name="size"
+              id={id}
+              value={size}
+              checked={selectedSize === size}
+              onChange={() => {
+                setSelectedSize(size);
+              }}
+            />
+          </li>
+        );
+      })}
+    </ul>
   );
 }
 export default SizeSelector;

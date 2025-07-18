@@ -11,16 +11,12 @@
   border: 1px solid #ccc;
 }
 
-.size-label:hover {
-  border-color: black;
-}
-
 .size-label.selected {
   background-color: black;
   color: white;
   border-color: black;
 }
 
-.size-option-wrapper:not(:last-child) .size-label {
-  border-inline-end-color: transparent;
-}
+// .size-option-wrapper:not(:last-child) .size-label {
+//   border-inline-end-color: transparent;
+// }
