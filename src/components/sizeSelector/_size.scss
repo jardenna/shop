@@ -10,9 +10,9 @@
 
 .size-label {
   display: flex;
-  border: 1px solid #ccc;
   padding: 8px 16px;
   cursor: pointer;
+  border: 1px solid #ccc;
 }
 
 .size-label:hover {
@@ -23,6 +23,10 @@
   background-color: black;
   color: white;
   border-color: black;
+}
+
+.size-option-wrapper:not(:last-child) .size-label {
+  border-inline-end-color: transparent;
 }
 
 /* Skjul det visuelle radio input, men behold det for screenreaders */
