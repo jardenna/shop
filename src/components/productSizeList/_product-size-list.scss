@@ -12,15 +12,9 @@
     justify-content: center;
     align-items: center;
     padding: 0 8px;
-  }
 
-  &.shop-product {
-    .product-size-item {
-      &.unavailable {
-        .product-size {
-          text-decoration: line-through;
-        }
-      }
+    &:last-child {
+      border-right-color: $color-border;
     }
   }
 }
