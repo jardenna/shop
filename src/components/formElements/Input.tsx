@@ -6,8 +6,8 @@ import type {
   InputType,
   refInputType,
 } from '../../types/types';
-import Icon from '../icons/Icon';
 import FormLabel from './FormLabel';
+import InputInfo from './InputInfo';
 
 export type InputProps = {
   id: string;
@@ -22,7 +22,7 @@ export type InputProps = {
   errorText?: string;
   iconName?: IconName;
   inputHasNoLabel?: boolean;
-  inputHelpText?: string;
+  inputInfo?: string;
   inputSuffix?: string;
   max?: number;
   maxLength?: number;
@@ -62,7 +62,7 @@ const Input = ({
   onFocus,
   disabled,
   iconName,
-  inputHelpText,
+  inputInfo,
 }: InputProps) => {
   const inputClassName =
     type === 'checkbox' || type === 'radio'
@@ -112,12 +112,7 @@ const Input = ({
         />
         {inputSuffix && <span className="input-suffix">{inputSuffix}</span>}
       </div>
-      {inputHelpText && (
-        <span className="input-help-text">
-          <Icon iconName={IconName.Info} title="info" />
-          <span>{inputHelpText}</span>
-        </span>
-      )}
+      {inputInfo && <InputInfo inputInfo={inputInfo} />}
     </>
   );
 };

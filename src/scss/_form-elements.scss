@@ -49,10 +49,27 @@ textarea {
   min-height: rem(128px);
 }
 
+.input-info {
+  font-size: $font-mini;
+  font-style: italic;
+  gap: 8px;
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+
+  svg {
+    min-width: 20px;
+  }
+}
+
 .input-container {
   width: 100%;
   position: relative;
   border-bottom: 3px solid transparent;
+
+  + .input-info {
+    margin-top: -14px;
+  }
 
   &:has(input:focus-visible) {
     border-color: $color-primary;
@@ -99,13 +116,4 @@ textarea {
   z-index: 1;
   top: 52%;
   right: 12px;
-}
-
-.input-help-text {
-  font-size: $font-mini;
-  font-style: italic;
-  gap: 4px;
-  display: flex;
-  align-items: center;
-  margin-top: -14px;
 }
