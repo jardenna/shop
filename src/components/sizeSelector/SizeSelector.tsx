@@ -7,33 +7,30 @@ function SizeSelector() {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
   return (
-    <ul>
-      {sizes.map((size) => {
-        const id = `size-${size}`;
-        return (
-          <li key={size} className="size-option-wrapper">
-            <label
-              htmlFor={id}
-              className={`size-label ${
-                selectedSize === size ? 'selected' : ''
-              }`}
-            >
-              {size}
-            </label>
+    <ul className="product-size-list">
+      {sizes.map((size) => (
+        <li key={size} className="product-size-item">
+          <label
+            htmlFor={size}
+            className={`product-size ${
+              selectedSize === size ? 'selected' : ''
+            }`}
+          >
+            {size}
+          </label>
 
-            <input
-              type="radio"
-              name="size"
-              id={id}
-              value={size}
-              checked={selectedSize === size}
-              onChange={() => {
-                setSelectedSize(size);
-              }}
-            />
-          </li>
-        );
-      })}
+          <input
+            type="radio"
+            name="size"
+            id={size}
+            value={size}
+            checked={selectedSize === size}
+            onChange={() => {
+              setSelectedSize(size);
+            }}
+          />
+        </li>
+      ))}
     </ul>
   );
 }

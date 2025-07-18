@@ -1,22 +1,13 @@
 @use '../../scss/globals' as *;
 
-.size-options {
-  display: flex;
-}
-
-.size-label {
-  display: flex;
-  padding: 8px 16px;
+label.product-size {
   cursor: pointer;
-  border: 1px solid #ccc;
 }
 
-.size-label.selected {
-  background-color: black;
-  color: white;
-  border-color: black;
+.product-size {
+  &.selected {
+    background-color: black;
+    color: white;
+    border-color: black;
+  }
 }
-
-// .size-option-wrapper:not(:last-child) .size-label {
-//   border-inline-end-color: transparent;
-// }

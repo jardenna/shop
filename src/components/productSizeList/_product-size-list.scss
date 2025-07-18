@@ -6,15 +6,22 @@
   .product-size-item {
     border: 1px solid $color-border;
     border-right-color: transparent;
-    min-width: rem(60px);
-    height: rem(60px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 8px;
+
+    input {
+      clip-path: inset(50%);
+      position: absolute;
+    }
 
     &:last-child {
       border-right-color: $color-border;
     }
+  }
+
+  .product-size {
+    width: rem(68px);
+    height: rem(68px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
