@@ -4,14 +4,11 @@ import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import Input from '../Input';
 import './_checkbox.scss';
 
-type CheckboxVariant = 'checkbox' | 'toggle-switch';
-
 type CheckboxProps = {
   checkBoxList: OptionType[];
   name: string;
   values: string[];
   formInfoText?: string;
-  variant?: CheckboxVariant;
   onChange: (event: ChangeInputType) => void;
 };
 
@@ -21,12 +18,11 @@ const Checkbox = ({
   name,
   values,
   formInfoText,
-  variant = 'checkbox',
 }: CheckboxProps) => {
   const { language } = useLanguage();
 
   return (
-    <ul className={`${variant}-list`}>
+    <ul className="checkbox-list">
       {checkBoxList.map((checkbox) => (
         <li key={checkbox.label} className="checkbox-item">
           <Input
@@ -37,11 +33,6 @@ const Checkbox = ({
             checked={values.includes(checkbox.value)}
             id={checkbox.label}
             labelText={getlowerCaseFirstLetter(checkbox.label, language)}
-            className={
-              variant === 'toggle-switch'
-                ? 'toggle-switch-input visually-hidden'
-                : ''
-            }
           />
         </li>
       ))}
