@@ -1,3 +1,5 @@
+@use '../../scss/globals' as *;
+
 .size-options {
   display: flex;
 }
@@ -21,11 +23,4 @@
 
 .size-option-wrapper:not(:last-child) .size-label {
   border-inline-end-color: transparent;
-}
-
-/* Skjul det visuelle radio input, men behold det for screenreaders */
-.size-option-wrapper input[type='radio'] {
-  appearance: none;
-  pointer-events: none;
-  margin: 0;
 }

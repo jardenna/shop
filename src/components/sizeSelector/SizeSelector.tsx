@@ -1,23 +1,27 @@
 import { useState } from 'react';
+import FormLabel from '../formElements/FormLabel';
 import './_size.scss';
 
 const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
 
-export default function SizeSelector() {
+function SizeSelector() {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
   return (
-    <ul className="size-options">
-      {sizes.map((size) => {
-        const id = `size-${size}`;
-        return (
-          <li key={size} className="size-option-wrapper">
-            <label
-              htmlFor={id}
-              className={`size-label ${
-                selectedSize === size ? 'selected' : ''
-              }`}
-            >
+    <div className="checkbox-radio-container">
+      <ul>
+        {sizes.map((size) => {
+          const id = `size-${size}`;
+          return (
+            <li key={size} className="size-option-wrapper">
+              <FormLabel
+                labelText={size}
+                id={id}
+                className={`size-label ${
+                  selectedSize === size ? 'selected' : ''
+                }`}
+              />
+
               <input
                 type="radio"
                 name="size"
@@ -28,12 +32,11 @@ export default function SizeSelector() {
                   setSelectedSize(size);
                 }}
               />
-
-              {size}
-            </label>
-          </li>
-        );
-      })}
-    </ul>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 }
+export default SizeSelector;
