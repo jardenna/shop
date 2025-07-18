@@ -6,6 +6,7 @@ type IconContentProps = {
   ariaLabel: string;
   iconName: IconName;
   title: string;
+  fill?: string;
   size?: string;
 };
 
@@ -14,9 +15,10 @@ const IconContent = ({
   title,
   ariaLabel,
   size,
+  fill,
 }: IconContentProps) => (
   <>
-    <Icon iconName={iconName} title={title} size={size} />
+    <Icon iconName={iconName} title={title} size={size} fill={fill} />
     {ariaLabel && <VisuallyHidden>{ariaLabel}</VisuallyHidden>}
   </>
 );

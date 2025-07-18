@@ -54,6 +54,7 @@ export type IconDefaultProps = {
   title: string;
   ariaHidden?: boolean;
   className?: string;
+  fill?: string;
   size?: string;
 };
 
@@ -120,6 +121,7 @@ const Icon = ({
   title,
   className = '',
   ariaHidden,
+  fill,
 }: IconProps) => {
   const IconComponent = iconMapping[iconName];
   return (
@@ -128,6 +130,7 @@ const Icon = ({
       title={title}
       className={className}
       ariaHidden={ariaHidden === undefined ? true : undefined}
+      fill={fill}
     />
   );
 };

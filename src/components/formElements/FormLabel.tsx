@@ -38,6 +38,7 @@ const FormLabel = ({
             {iconName ? (
               <IconContent
                 iconName={iconName}
+                fill={id}
                 size="70"
                 title={getlowerCaseFirstLetter(iconName, language)}
                 ariaLabel={getlowerCaseFirstLetter(id, language)}

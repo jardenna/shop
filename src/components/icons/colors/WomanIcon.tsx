@@ -1,4 +1,3 @@
-import variables from '../../../scss/variables.module.scss';
 import type { IconDefaultProps } from '../Icon';
 
 const WomanIcon = ({
@@ -6,6 +5,7 @@ const WomanIcon = ({
   title,
   className,
   ariaHidden,
+  fill,
 }: IconDefaultProps) => (
   <svg
     role="img"
@@ -14,8 +14,8 @@ const WomanIcon = ({
     height={size}
     className={className}
     viewBox="0 0 25 62"
-    fill="currentColor"
-    stroke={variables.colorIconBorder}
+    fill={fill || 'currentColor'}
+    stroke="none"
     fillRule="evenodd"
     clipRule="evenodd"
     strokeLinejoin="round"

@@ -1,6 +1,12 @@
 import type { IconDefaultProps } from '../Icon';
 
-const ManIcon = ({ size, title, className, ariaHidden }: IconDefaultProps) => (
+const ManIcon = ({
+  size,
+  title,
+  className,
+  ariaHidden,
+  fill,
+}: IconDefaultProps) => (
   <svg
     role="img"
     xmlns="http://www.w3.org/2000/svg"
@@ -8,7 +14,7 @@ const ManIcon = ({ size, title, className, ariaHidden }: IconDefaultProps) => (
     height={size}
     className={className}
     viewBox="0 0 27 65"
-    fill="currentColor"
+    fill={fill || 'currentColor'}
     stroke="none"
     fillRule="evenodd"
     clipRule="evenodd"
