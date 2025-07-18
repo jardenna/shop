@@ -27,6 +27,7 @@ input[type='number'] {
 .checkbox-radio-container {
   display: flex;
   align-items: center;
+  gap: 4px;
 
   .form-label-container {
     margin: 0;
@@ -35,6 +36,7 @@ input[type='number'] {
   input {
     appearance: none;
     cursor: pointer;
+    margin: 0;
   }
 
   label {

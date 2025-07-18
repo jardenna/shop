@@ -18,9 +18,9 @@ type CheckboxProps = {
 const Checkbox = ({
   checkBoxList,
   onChange,
+  name,
   values,
   formInfoText,
-  name,
   variant = 'checkbox',
 }: CheckboxProps) => {
   const { language } = useLanguage();

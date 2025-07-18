@@ -18,13 +18,13 @@ type RadioButtonProps = {
 };
 
 const RadioButton = ({
-  initialChecked,
   radioButtonList,
   onChange,
   name,
   iconName,
   formInfoText,
   radioBtnVariant,
+  initialChecked,
 }: RadioButtonProps) => {
   const { language } = useLanguage();
 
