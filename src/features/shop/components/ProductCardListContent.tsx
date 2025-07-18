@@ -11,7 +11,7 @@ const ProductCardListContent = ({ product }: ProductCardListContentProps) => (
   <>
     <p>{product.description}</p>
     <ProductDiscountPrice price={product.price} discount={product.discount} />
-    <ProductSizeList sizes={product.sizes} variant="shop-product" />
+    <ProductSizeList sizes={product.sizes} />
     <ProductColorList colours={product.colors} />
   </>
 );

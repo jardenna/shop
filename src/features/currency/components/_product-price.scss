@@ -7,14 +7,14 @@
   font-family: $font-primary-bold;
   font-size: $font-medium;
   color: $color-primary;
+
+  .text-line-through {
+    font-size: $font-mini;
+  }
 }
 
 .has-discount {
   color: $color-red-15;
-}
-
-.text-line-through {
-  font-size: $font-mini;
 }
 
 .price-seperator {

@@ -99,7 +99,7 @@ const SingleProductPage = () => {
                 />
               )}
             </Form>
-            <ProductSizeList sizes={product.sizes} variant="shop-product" />
+            <ProductSizeList sizes={product.sizes} />
             <p>Brand: {product.brand}</p>
             <p>
               Stock:

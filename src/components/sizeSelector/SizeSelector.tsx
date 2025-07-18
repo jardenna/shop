@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import FormLabel from '../formElements/FormLabel';
 import './_size.scss';
 
 const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
@@ -13,13 +12,14 @@ function SizeSelector() {
         const id = `size-${size}`;
         return (
           <li key={size} className="size-option-wrapper">
-            <FormLabel
-              labelText={size}
-              id={id}
+            <label
+              htmlFor={id}
               className={`size-label ${
                 selectedSize === size ? 'selected' : ''
               }`}
-            />
+            >
+              {size}
+            </label>
 
             <input
               type="radio"

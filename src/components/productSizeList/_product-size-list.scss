@@ -6,29 +6,16 @@
   .product-size-item {
     border: 1px solid $color-border;
     border-right-color: transparent;
-    background-color: $color-background;
     min-width: rem(60px);
     height: rem(60px);
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0 8px;
-
-    &.available {
-      background-color: $color-background-secondary;
-      color: $color-white;
-    }
   }
 
   &.shop-product {
     .product-size-item {
-      background-color: $color-white;
-
-      &.available {
-        background-color: $color-white;
-        color: $color-primary;
-      }
-
       &.unavailable {
         .product-size {
           text-decoration: line-through;
