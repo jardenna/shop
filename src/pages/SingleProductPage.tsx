@@ -5,6 +5,7 @@ import Form from '../components/form/Form';
 import Img from '../components/Img';
 import RadioColorList from '../components/productColorList/RadioColorList';
 import ProductSizeList from '../components/productSizeList/ProductSizeList';
+import SizeSelector from '../components/sizeSelector/SizeSelector';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
 import useLanguage from '../features/language/useLanguage';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
@@ -88,6 +89,7 @@ const SingleProductPage = () => {
             />
 
             <Form onSubmit={onSubmit} submitBtnLabel={language.create}>
+              <SizeSelector />
               {colorList && (
                 <RadioColorList
                   radioButtonList={colorList}

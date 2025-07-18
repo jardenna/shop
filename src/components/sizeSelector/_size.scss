@@ -1,0 +1,33 @@
+.size-selector {
+  font-family: sans-serif;
+  border: none;
+  padding: 0;
+}
+
+.size-options {
+  display: flex;
+}
+
+.size-label {
+  display: flex;
+  border: 1px solid #ccc;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.size-label:hover {
+  border-color: black;
+}
+
+.size-label.selected {
+  background-color: black;
+  color: white;
+  border-color: black;
+}
+
+/* Skjul det visuelle radio input, men behold det for screenreaders */
+.size-option-wrapper input[type='radio'] {
+  appearance: none;
+  pointer-events: none;
+  margin: 0;
+}

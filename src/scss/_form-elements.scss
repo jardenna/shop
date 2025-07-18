@@ -35,7 +35,7 @@ input[type='number'] {
 
   input {
     appearance: none;
-    cursor: pointer;
+    pointer-events: none;
     margin: 0;
   }
 
