@@ -19,9 +19,27 @@ input[type='number'] {
   appearance: textfield;
 }
 
+input[type='radio'],
+input[type='checkbox'] {
+  appearance: none;
+  pointer-events: none;
+  margin: 0;
+}
+
 ::placeholder {
   color: $color-gray-60;
   opacity: 1;
+}
+
+.option-group-title,
+.form-label-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.option-group-title {
+  margin-top: 0;
 }
 
 .checkbox-radio-container {
@@ -30,12 +48,6 @@ input[type='number'] {
   gap: 4px;
 
   .form-label-container {
-    margin: 0;
-  }
-
-  input {
-    appearance: none;
-    pointer-events: none;
     margin: 0;
   }
 

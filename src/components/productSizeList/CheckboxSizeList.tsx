@@ -2,6 +2,7 @@ import { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import { ChangeInputType } from '../../types/types';
 import Checkbox from '../formElements/checkbox/Checkbox';
+import OptionGroupTitle from '../formElements/radiobuttons/OptionGroupTitle';
 
 type CheckboxSizeListProps = {
   errorText: string;
@@ -25,10 +26,7 @@ const CheckboxSizeList = ({
   ];
   return (
     <div>
-      <span className="form-span-container">
-        {language.sizes}
-        <span className="error-message">{errorText}</span>
-      </span>
+      <OptionGroupTitle errorText={errorText} text={language.sizes} />
       <Checkbox
         onChange={onChange}
         values={sizes}
