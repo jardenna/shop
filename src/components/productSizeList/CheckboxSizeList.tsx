@@ -1,35 +1,53 @@
 import { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
-import useLanguage from '../../features/language/useLanguage';
 import { ChangeInputType } from '../../types/types';
-import { sizeList } from '../../utils/utils';
-import Checkbox from '../formElements/checkbox/Checkbox';
 import OptionGroupTitle from '../formElements/radiobuttons/OptionGroupTitle';
 
+type SizeList = {
+  label: ProductSizes;
+  value: ProductSizes;
+};
+
 type CheckboxSizeListProps = {
-  errorText: string;
-  sizes: ProductSizes[];
+  name: string;
+  optionGroupTitle: string;
+  sizeList: SizeList[];
+  values: ProductSizes[];
+  errorText?: string;
   onChange: (event: ChangeInputType) => void;
 };
 
 const CheckboxSizeList = ({
   onChange,
-  sizes,
+  values,
   errorText,
-}: CheckboxSizeListProps) => {
-  const { language } = useLanguage();
-  const checkBoxList = sizeList.map((size) => ({ value: size, label: size }));
-
-  return (
-    <div>
-      <OptionGroupTitle errorText={errorText} text={language.sizes} />
-      <Checkbox
-        onChange={onChange}
-        values={sizes}
-        checkBoxList={checkBoxList}
-        name="sizes"
-      />
-    </div>
-  );
-};
+  sizeList,
+  optionGroupTitle,
+  name,
+}: CheckboxSizeListProps) => (
+  <div>
+    <OptionGroupTitle
+      errorText={errorText}
+      text={optionGroupTitle}
+      id="sizes"
+    />
+    <ul className="product-size-list" id="sizes">
+      {sizeList.map((checkbox) => (
+        <li key={checkbox.label} className="product-size-item">
+          <label htmlFor={checkbox.label} className="product-size">
+            {checkbox.label}
+          </label>
+          <input
+            type="checkbox"
+            name={name}
+            value={checkbox.value}
+            onChange={onChange}
+            checked={values.includes(checkbox.value)}
+            id={checkbox.label}
+          />
+        </li>
+      ))}
+    </ul>
+  </div>
+);
 
 export default CheckboxSizeList;

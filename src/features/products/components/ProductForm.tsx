@@ -214,6 +214,10 @@ const ProductForm = ({
       });
     }
   }
+  const checkBoxSizeList = sizeList.map((size) => ({
+    value: size,
+    label: size,
+  }));
 
   return (
     <Form
@@ -316,7 +320,10 @@ const ProductForm = ({
             <CheckboxSizeList
               errorText={language[errors.sizes]}
               onChange={onChange}
-              sizes={values.sizes}
+              values={values.sizes}
+              sizeList={checkBoxSizeList}
+              optionGroupTitle={language.sizes}
+              name="sizes"
             />
             <Selectbox
               id="colors"
