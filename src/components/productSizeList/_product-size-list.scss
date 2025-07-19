@@ -3,6 +3,10 @@
 .product-size-list {
   display: flex;
 
+  label.product-size {
+    cursor: pointer;
+  }
+
   .product-size-item {
     border: 1px solid $color-border;
     border-right-color: transparent;
@@ -14,6 +18,14 @@
 
     &:last-child {
       border-right-color: $color-border;
+    }
+
+    &:has(input:checked) {
+      border-color: $color-black;
+
+      &:last-child {
+        border-color: $color-black;
+      }
     }
   }
 

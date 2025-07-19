@@ -1,7 +1,6 @@
 import { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
 import { ChangeInputType } from '../../types/types';
 import OptionGroupTitle from '../formElements/radiobuttons/OptionGroupTitle';
-import './_size.scss';
 
 type SizeSelectortProps = {
   initialChecked: string;
