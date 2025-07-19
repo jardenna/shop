@@ -25,7 +25,7 @@ import { AdminPath } from '../../../layout/nav/enums';
 import variables from '../../../scss/variables.module.scss';
 import type { OptionType } from '../../../types/types';
 import {
-  colorKeys,
+  colorList,
   getlowerCaseFirstLetter,
   sizeList,
 } from '../../../utils/utils';
@@ -67,7 +67,7 @@ const ProductForm = ({
     }),
   );
 
-  const sortedColorOptions = colorKeys
+  const sortedColorOptions = colorList
     .map((color) => ({
       label: language[color],
       value: color,

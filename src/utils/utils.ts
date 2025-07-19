@@ -6,7 +6,7 @@ const currencyCacheKey = 'exchangeRates';
 
 const sizeList: ProductSizes[] = ['S', 'M', 'L', 'XL', 'Onesize'];
 
-const colorKeys = [
+const colorList = [
   'black',
   'grey',
   'brown',
@@ -56,7 +56,7 @@ const getlowerCaseFirstLetter = (
 ) => language[key[0].toLowerCase() + key.slice(1)] || key;
 
 export {
-  colorKeys,
+  colorList,
   currencyCacheKey,
   discountCalculation,
   formatNumber,
