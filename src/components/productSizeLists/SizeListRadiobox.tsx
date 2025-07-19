@@ -1,8 +1,8 @@
 import { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
 import { ChangeInputType } from '../../types/types';
 import OptionGroupTitle from '../formElements/radiobuttons/OptionGroupTitle';
+import ProductSizeItem from './ProductSizeItem';
 import ProductSizeList from './ProductSizeList';
-import ProductSizeText from './ProductSizeText';
 
 type SizeListRadioboxtProps = {
   initialChecked: string;
@@ -31,8 +31,7 @@ const SizeListRadiobox = ({
     )}
     <ProductSizeList ariaId={name}>
       {sizeList.map((size) => (
-        <li key={size} className="product-size-item">
-          <ProductSizeText htmlFor={size} text={size} />
+        <ProductSizeItem key={size} htmlFor={size} text={size}>
           <input
             type="radio"
             name={name}
@@ -41,7 +40,7 @@ const SizeListRadiobox = ({
             checked={initialChecked === size}
             onChange={onChange}
           />
-        </li>
+        </ProductSizeItem>
       ))}
     </ProductSizeList>
   </>

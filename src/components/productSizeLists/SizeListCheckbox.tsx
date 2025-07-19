@@ -1,8 +1,8 @@
 import { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
 import { ChangeInputType } from '../../types/types';
 import OptionGroupTitle from '../formElements/radiobuttons/OptionGroupTitle';
+import ProductSizeItem from './ProductSizeItem';
 import ProductSizeList from './ProductSizeList';
-import ProductSizeText from './ProductSizeText';
 
 type SizeList = {
   label: ProductSizes;
@@ -36,8 +36,7 @@ const SizeListCheckbox = ({
     )}
     <ProductSizeList ariaId={name}>
       {sizeList.map(({ label, value }) => (
-        <li key={label} className="product-size-item">
-          <ProductSizeText htmlFor={label} text={label} />
+        <ProductSizeItem key={label} htmlFor={label} text={label}>
           <input
             type="checkbox"
             name={name}
@@ -46,7 +45,7 @@ const SizeListCheckbox = ({
             checked={values.includes(value)}
             id={label}
           />
-        </li>
+        </ProductSizeItem>
       ))}
     </ProductSizeList>
   </div>
