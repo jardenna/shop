@@ -3,7 +3,7 @@ import Accordion from '../components/accordion/Accordion';
 import Favorites from '../components/favorites/Favorites';
 import Form from '../components/form/Form';
 import Img from '../components/Img';
-import SizeSelector from '../components/productSizeLists/SizeSelector';
+import SizeListRadiobox from '../components/productSizeLists/SizeListRadiobox';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
 import useLanguage from '../features/language/useLanguage';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
@@ -87,7 +87,7 @@ const SingleProductPage = () => {
               discount={product.discount}
             />
             <Form onSubmit={onSubmit} submitBtnLabel={language.create}>
-              <SizeSelector
+              <SizeListRadiobox
                 sizeList={product.sizes}
                 initialChecked={values.sizes}
                 onChange={onChange}

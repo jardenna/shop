@@ -4,7 +4,7 @@ import CardContent from '../card/CardContent';
 
 import GridTwoCol from '../GridTwoCol';
 import ProductColorList from '../productColorList/ProductColorList';
-import ProductSizeList from '../productSizeLists/ProductSizeList';
+import SizeListReadOnly from '../productSizeLists/SizeListReadOnly';
 
 type ProductCardCenterProps = {
   brand: string;
@@ -46,7 +46,7 @@ const ProductCardCenter = ({
         </div>
         <div>
           <strong className="product-list-headline">{language.sizes}:</strong>
-          <ProductSizeList sizes={sizes} />
+          <SizeListReadOnly sizes={sizes} />
         </div>
       </div>
     </CardContent>

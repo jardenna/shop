@@ -4,7 +4,7 @@ import { sizeList } from '../../utils/utils';
 import VisuallyHidden from '../VisuallyHidden';
 import './_product-size-list.scss';
 
-const ProductSizeList = ({ sizes }: { sizes: ProductSizes[] }) => {
+const SizeListReadOnly = ({ sizes }: { sizes: ProductSizes[] }) => {
   const { language } = useLanguage();
 
   return (
@@ -25,4 +25,4 @@ const ProductSizeList = ({ sizes }: { sizes: ProductSizes[] }) => {
   );
 };
 
-export default ProductSizeList;
+export default SizeListReadOnly;

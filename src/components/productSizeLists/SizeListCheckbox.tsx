@@ -7,7 +7,7 @@ type SizeList = {
   value: ProductSizes;
 };
 
-type CheckboxSizeListProps = {
+type SizeListCheckboxProps = {
   name: string;
   sizeList: SizeList[];
   values: ProductSizes[];
@@ -16,14 +16,14 @@ type CheckboxSizeListProps = {
   onChange: (event: ChangeInputType) => void;
 };
 
-const CheckboxSizeList = ({
+const SizeListCheckbox = ({
   onChange,
   values,
   errorText,
   sizeList,
   optionGroupTitle,
   name,
-}: CheckboxSizeListProps) => (
+}: SizeListCheckboxProps) => (
   <div>
     {optionGroupTitle && (
       <OptionGroupTitle
@@ -52,4 +52,4 @@ const CheckboxSizeList = ({
   </div>
 );
 
-export default CheckboxSizeList;
+export default SizeListCheckbox;
