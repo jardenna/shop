@@ -33,7 +33,7 @@ const CardFooter = ({
   };
 
   return (
-    <LayoutElement className="footer" ariaLabel="card">
+    <LayoutElement as="footer" className="footer" ariaLabel="card">
       {allowedToDelete && (
         <ModalContainer
           triggerModalBtnContent={language.delete}

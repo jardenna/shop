@@ -25,7 +25,11 @@ const DeleteUser = ({
         <p>{language.sureToDelete}</p>
         <p>{username}?</p>
       </span>
-      <LayoutElement className="footer" ariaLabel={language.deleteUser}>
+      <LayoutElement
+        as="footer"
+        className="footer"
+        ariaLabel={language.deleteUser}
+      >
         <Button variant={BtnVariant.Secondary} onClick={onSecondaryClick}>
           {language.cancel}
         </Button>

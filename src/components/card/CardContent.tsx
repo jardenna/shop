@@ -21,7 +21,7 @@ const CardContent = ({
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
       <section className="admin-card-content">
         {heading && (
-          <LayoutElement as="header" ariaLabel="card">
+          <LayoutElement ariaLabel="card">
             <h2 className="flex-align-right admin-card-title">{heading}</h2>
           </LayoutElement>
         )}

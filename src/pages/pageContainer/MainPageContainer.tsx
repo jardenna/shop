@@ -26,11 +26,7 @@ const MainPageContainer = ({
     <>
       <MetaTags metaTitle={heading} />
       <article className={`container page ${className}`}>
-        <LayoutElement
-          ariaLabel={language.page}
-          as="header"
-          className="main-page-header"
-        >
+        <LayoutElement ariaLabel={language.page} className="main-page-header">
           <Breadcrumbs routeList={breadcrumbsList} />
           <h1>{heading}</h1>
         </LayoutElement>

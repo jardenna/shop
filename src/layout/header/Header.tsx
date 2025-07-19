@@ -40,7 +40,7 @@ const Header = ({
   secondaryActionBtn,
   isMobileSize,
 }: HeaderProps) => (
-  <LayoutElement as="header" className="main-header" ariaLabel={ariaLabel}>
+  <LayoutElement className="main-header" ariaLabel={ariaLabel}>
     <div className="container main-header-container">
       <Logo linkTo={ShopPath.Root} />
       {!isMobileSize ? (

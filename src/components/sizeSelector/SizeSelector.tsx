@@ -32,4 +32,5 @@ const SizeSelector = ({
     ))}
   </ul>
 );
+
 export default SizeSelector;

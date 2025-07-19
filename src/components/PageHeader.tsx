@@ -11,11 +11,7 @@ type PageHeaderProps = {
 const PageHeader = ({ heading, linkTo, linkText }: PageHeaderProps) => {
   const { language } = useLanguage();
   return (
-    <LayoutElement
-      as="header"
-      className="page-header"
-      ariaLabel={language.page}
-    >
+    <LayoutElement className="page-header" ariaLabel={language.page}>
       <h1>{heading}</h1>
       {linkTo && <Link to={linkTo}>{linkText}</Link>}
     </LayoutElement>

@@ -24,4 +24,5 @@ const ProductSizeList = ({ sizes }: { sizes: ProductSizes[] }) => {
     </ul>
   );
 };
+
 export default ProductSizeList;

@@ -10,7 +10,7 @@ type LayoutElementProps = {
 const LayoutElement = ({
   children,
   ariaLabel,
-  as: Tag = 'footer',
+  as: Tag = 'header',
   className = '',
 }: LayoutElementProps) => (
   <Tag className={className} aria-label={ariaLabel}>
