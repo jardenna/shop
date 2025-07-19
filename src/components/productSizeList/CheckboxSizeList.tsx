@@ -1,6 +1,7 @@
 import { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import { ChangeInputType } from '../../types/types';
+import { sizeList } from '../../utils/utils';
 import Checkbox from '../formElements/checkbox/Checkbox';
 import OptionGroupTitle from '../formElements/radiobuttons/OptionGroupTitle';
 
@@ -16,14 +17,8 @@ const CheckboxSizeList = ({
   errorText,
 }: CheckboxSizeListProps) => {
   const { language } = useLanguage();
+  const checkBoxList = sizeList.map((size) => ({ value: size, label: size }));
 
-  const checkBoxList = [
-    { value: 'S', label: 'S' },
-    { value: 'M', label: 'M' },
-    { value: 'L', label: 'L' },
-    { value: 'XL', label: 'XL' },
-    { value: 'Onesize', label: 'Onesize' },
-  ];
   return (
     <div>
       <OptionGroupTitle errorText={errorText} text={language.sizes} />

@@ -6,6 +6,22 @@ const currencyCacheKey = 'exchangeRates';
 
 const sizeList: ProductSizes[] = ['S', 'M', 'L', 'XL', 'Onesize'];
 
+const colorKeys = [
+  'black',
+  'grey',
+  'brown',
+  'white',
+  'blue',
+  'yellow',
+  'orange',
+  'red',
+  'purple',
+  'green',
+  'gold',
+  'silver',
+  'pink',
+];
+
 const roleButtonList = [
   { value: 'Employee', label: 'employee' },
   { value: 'User', label: 'user' },
@@ -40,6 +56,7 @@ const getlowerCaseFirstLetter = (
 ) => language[key[0].toLowerCase() + key.slice(1)] || key;
 
 export {
+  colorKeys,
   currencyCacheKey,
   discountCalculation,
   formatNumber,

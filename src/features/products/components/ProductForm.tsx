@@ -24,7 +24,11 @@ import useFormValidation from '../../../hooks/useFormValidation';
 import { AdminPath } from '../../../layout/nav/enums';
 import variables from '../../../scss/variables.module.scss';
 import type { OptionType } from '../../../types/types';
-import { getlowerCaseFirstLetter, sizeList } from '../../../utils/utils';
+import {
+  colorKeys,
+  getlowerCaseFirstLetter,
+  sizeList,
+} from '../../../utils/utils';
 import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
 import useCurrency from '../../currency/useCurrency';
 import useLanguage from '../../language/useLanguage';
@@ -63,26 +67,13 @@ const ProductForm = ({
     }),
   );
 
-  const colorOptions = [
-    { label: language.black, value: 'black' },
-    { label: language.grey, value: 'grey' },
-    { label: language.brown, value: 'brown' },
-    {
-      label: language.white,
-      value: 'white',
-      border: variables.colorIconBorder,
-    },
-    { label: language.blue, value: 'blue' },
-    { label: language.yellow, value: 'yellow' },
-    { label: language.orange, value: 'orange' },
-    { label: language.red, value: 'red' },
-    { label: language.purple, value: 'purple' },
-    { label: language.blue, value: 'blue' },
-    { label: language.green, value: 'green' },
-    { label: language.gold, value: 'gold' },
-    { label: language.silver, value: 'silver' },
-    { label: language.pink, value: 'pink' },
-  ];
+  const sortedColorOptions = colorKeys
+    .map((color) => ({
+      label: language[color],
+      value: color,
+      ...(color === 'white' && { border: variables.colorIconBorder }),
+    }))
+    .sort((a, b) => a.label.localeCompare(b.label));
 
   const initialState: ProductRequest = {
     brand: selectedProduct?.brand ?? '',
@@ -333,7 +324,7 @@ const ProductForm = ({
               errorText={language[errors.colors]}
               closeMenuOnSelect={false}
               labelText={language.colours}
-              options={colorOptions}
+              options={sortedColorOptions}
               components={{ Option: ColorOptions }}
               isSearchable
               defaultValue={defaultColorValue}
