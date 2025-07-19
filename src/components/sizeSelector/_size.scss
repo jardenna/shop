@@ -7,5 +7,9 @@ label.product-size {
 .product-size-item {
   &:has(input:checked) {
     border-color: black;
+
+    &:last-child {
+      border-color: black;
+    }
   }
 }
