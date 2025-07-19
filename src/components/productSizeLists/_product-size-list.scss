@@ -11,6 +11,10 @@
     border: 1px solid $color-border;
     border-right-color: transparent;
 
+    &.text-line-through {
+      text-decoration-thickness: 2px;
+    }
+
     input {
       clip-path: inset(50%);
       position: absolute;
@@ -35,5 +39,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    white-space: pre;
+
+    &::after,
+    &::before {
+      content: ' ';
+      display: flex;
+    }
   }
 }
