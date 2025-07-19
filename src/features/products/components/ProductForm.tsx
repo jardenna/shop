@@ -15,7 +15,7 @@ import Textarea from '../../../components/formElements/Textarea';
 import ToggleSwitch from '../../../components/formElements/toggleSwitch/ToggleSwitch';
 import validateProduct from '../../../components/formElements/validation/validateProduct';
 import useMessagePopup from '../../../components/messagePopup/useMessagePopup';
-import CheckboxSizeList from '../../../components/productSizeList/CheckboxSizeList';
+import CheckboxSizeList from '../../../components/productSizeLists/CheckboxSizeList';
 import ColorOptions from '../../../components/selectbox/ColorOptions';
 import Selectbox from '../../../components/selectbox/Selectbox';
 import StatusOptions from '../../../components/selectbox/StatusOptions';

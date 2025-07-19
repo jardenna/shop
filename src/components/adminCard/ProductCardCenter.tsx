@@ -4,7 +4,7 @@ import CardContent from '../card/CardContent';
 
 import GridTwoCol from '../GridTwoCol';
 import ProductColorList from '../productColorList/ProductColorList';
-import ProductSizeList from '../productSizeList/ProductSizeList';
+import ProductSizeList from '../productSizeLists/ProductSizeList';
 
 type ProductCardCenterProps = {
   brand: string;
