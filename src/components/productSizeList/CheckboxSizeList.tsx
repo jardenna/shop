@@ -9,10 +9,10 @@ type SizeList = {
 
 type CheckboxSizeListProps = {
   name: string;
-  optionGroupTitle: string;
   sizeList: SizeList[];
   values: ProductSizes[];
   errorText?: string;
+  optionGroupTitle?: string;
   onChange: (event: ChangeInputType) => void;
 };
 
@@ -25,12 +25,14 @@ const CheckboxSizeList = ({
   name,
 }: CheckboxSizeListProps) => (
   <div>
-    <OptionGroupTitle
-      errorText={errorText}
-      text={optionGroupTitle}
-      id="sizes"
-    />
-    <ul className="product-size-list" id="sizes">
+    {optionGroupTitle && (
+      <OptionGroupTitle
+        errorText={errorText}
+        text={optionGroupTitle}
+        id={name}
+      />
+    )}
+    <ul className="product-size-list" id={name}>
       {sizeList.map((checkbox) => (
         <li key={checkbox.label} className="product-size-item">
           <label htmlFor={checkbox.label} className="product-size">
