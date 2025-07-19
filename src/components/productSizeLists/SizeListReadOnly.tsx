@@ -4,6 +4,7 @@ import { sizeList } from '../../utils/utils';
 import VisuallyHidden from '../VisuallyHidden';
 import './_product-size-list.scss';
 import ProductSizeList from './ProductSizeList';
+import ProductSizeText from './ProductSizeText';
 
 const SizeListReadOnly = ({ sizes }: { sizes: ProductSizes[] }) => {
   const { language } = useLanguage();
@@ -15,7 +16,7 @@ const SizeListReadOnly = ({ sizes }: { sizes: ProductSizes[] }) => {
           className={`product-size-item ${sizes.includes(size) ? '' : 'text-line-through'}`}
           key={size}
         >
-          <span className="product-size">{size}</span>
+          <ProductSizeText as="span" text={size} />
           <VisuallyHidden>
             {!sizes.includes(size) ? language.unavailable : language.available}{' '}
             {language.size}
