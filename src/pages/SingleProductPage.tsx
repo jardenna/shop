@@ -21,11 +21,10 @@ const SingleProductPage = () => {
     value: color,
     label: color,
   }));
-  const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
 
   const initialState = {
     colors: colorList ? colorList[0].value : '',
-    sizes: 'S',
+    sizes: '',
   };
 
   const { onChange, values, onSubmit } = useFormValidation({
@@ -88,23 +87,16 @@ const SingleProductPage = () => {
               price={product.price}
               discount={product.discount}
             />
-
             <Form onSubmit={onSubmit} submitBtnLabel={language.create}>
               <SizeSelector
-                radioButtonList={sizes}
+                radioButtonList={product.sizes}
                 initialChecked={values.sizes}
                 onChange={onChange}
               />
-              {/* {colorList && (
-                <RadioColorList
-                  radioButtonList={colorList}
-                  initialChecked={values.colors || colorList[0].value}
-                  onChange={onChange}
-                  iconName={product.categoryName}
-                />
-              )} */}
             </Form>
+
             <ProductSizeList sizes={product.sizes} />
+
             <p>Brand: {product.brand}</p>
             <p>
               Stock:

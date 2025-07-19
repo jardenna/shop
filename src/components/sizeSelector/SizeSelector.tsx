@@ -1,9 +1,10 @@
+import { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
 import { ChangeInputType } from '../../types/types';
 import './_size.scss';
 
 type SizeSelectortProps = {
   initialChecked: string;
-  radioButtonList: string[];
+  radioButtonList: ProductSizes[];
   iconName?: string;
   onChange: (event: ChangeInputType) => void;
 };
@@ -19,7 +20,6 @@ const SizeSelector = ({
         <label htmlFor={size} className="product-size">
           {size}
         </label>
-
         <input
           type="radio"
           name="sizes"
