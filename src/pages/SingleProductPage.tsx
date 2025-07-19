@@ -88,7 +88,7 @@ const SingleProductPage = () => {
             />
             <Form onSubmit={onSubmit} submitBtnLabel={language.create}>
               <SizeSelector
-                radioButtonList={product.sizes}
+                sizeList={product.sizes}
                 initialChecked={values.sizes}
                 onChange={onChange}
                 name="sizes"

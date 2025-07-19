@@ -33,18 +33,18 @@ const CheckboxSizeList = ({
       />
     )}
     <ul className="product-size-list" id={name}>
-      {sizeList.map((checkbox) => (
-        <li key={checkbox.label} className="product-size-item">
-          <label htmlFor={checkbox.label} className="product-size">
-            {checkbox.label}
+      {sizeList.map(({ label, value }) => (
+        <li key={label} className="product-size-item">
+          <label htmlFor={label} className="product-size">
+            {label}
           </label>
           <input
             type="checkbox"
             name={name}
-            value={checkbox.value}
+            value={value}
             onChange={onChange}
-            checked={values.includes(checkbox.value)}
-            id={checkbox.label}
+            checked={values.includes(value)}
+            id={label}
           />
         </li>
       ))}

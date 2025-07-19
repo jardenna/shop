@@ -6,7 +6,7 @@ import './_size.scss';
 type SizeSelectortProps = {
   initialChecked: string;
   name: string;
-  radioButtonList: ProductSizes[];
+  sizeList: ProductSizes[];
   errorText?: string;
   optionGroupTitle?: string;
   onChange: (event: ChangeInputType) => void;
@@ -14,7 +14,7 @@ type SizeSelectortProps = {
 
 const SizeSelector = ({
   initialChecked,
-  radioButtonList,
+  sizeList,
   onChange,
   errorText,
   optionGroupTitle,
@@ -29,7 +29,7 @@ const SizeSelector = ({
       />
     )}
     <ul className="product-size-list">
-      {radioButtonList.map((size) => (
+      {sizeList.map((size) => (
         <li key={size} className="product-size-item">
           <label htmlFor={size} className="product-size">
             {size}
