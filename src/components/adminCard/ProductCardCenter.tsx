@@ -45,7 +45,6 @@ const ProductCardCenter = ({
           <ProductColorList colours={colours} count={colours.length} />
         </div>
         <div>
-          <strong className="product-list-headline">{language.sizes}:</strong>
           <SizeListReadOnly sizes={sizes} />
         </div>
       </div>

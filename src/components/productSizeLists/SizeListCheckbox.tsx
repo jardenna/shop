@@ -1,6 +1,7 @@
 import { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
 import { ChangeInputType } from '../../types/types';
 import OptionGroupTitle from '../formElements/radiobuttons/OptionGroupTitle';
+import ProductSizeList from './ProductSizeList';
 
 type SizeList = {
   label: ProductSizes;
@@ -32,7 +33,7 @@ const SizeListCheckbox = ({
         id={name}
       />
     )}
-    <ul className="product-size-list" id={name}>
+    <ProductSizeList ariaId={name}>
       {sizeList.map(({ label, value }) => (
         <li key={label} className="product-size-item">
           <label htmlFor={label} className="product-size">
@@ -48,7 +49,7 @@ const SizeListCheckbox = ({
           />
         </li>
       ))}
-    </ul>
+    </ProductSizeList>
   </div>
 );
 
