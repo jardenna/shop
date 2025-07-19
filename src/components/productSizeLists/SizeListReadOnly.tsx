@@ -6,11 +6,17 @@ import './_product-size-list.scss';
 import ProductSizeItem from './ProductSizeItem';
 import ProductSizeList from './ProductSizeList';
 
-const SizeListReadOnly = ({ sizes }: { sizes: ProductSizes[] }) => {
+const SizeListReadOnly = ({
+  sizes,
+  optionGroupTitle,
+}: {
+  sizes: ProductSizes[];
+  optionGroupTitle?: string;
+}) => {
   const { language } = useLanguage();
 
   return (
-    <ProductSizeList ariaId="sizes" optionGroupTitle={language.sizes}>
+    <ProductSizeList ariaId="sizes" optionGroupTitle={optionGroupTitle}>
       {sizeList.map((size) => (
         <ProductSizeItem
           as="span"

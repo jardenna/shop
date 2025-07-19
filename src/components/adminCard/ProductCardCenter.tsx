@@ -45,7 +45,7 @@ const ProductCardCenter = ({
           <ProductColorList colours={colours} count={colours.length} />
         </div>
         <div>
-          <SizeListReadOnly sizes={sizes} />
+          <SizeListReadOnly sizes={sizes} optionGroupTitle={language.sizes} />
         </div>
       </div>
     </CardContent>
