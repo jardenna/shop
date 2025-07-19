@@ -24,7 +24,12 @@
       border-right-color: $color-border;
     }
 
-    &:has(input:checked) {
+    &:has(input[type='checkbox']:checked) {
+      background-color: $color-background-secondary;
+      color: $color-white;
+    }
+
+    &:has(input[type='radio']:checked) {
       border-color: $color-black;
 
       &:last-child {
