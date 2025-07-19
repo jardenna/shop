@@ -9,7 +9,7 @@ type SizeList = {
   value: ProductSizes;
 };
 
-type SizeListCheckboxProps = {
+type SizeListChooseMultipleProps = {
   name: string;
   sizeList: SizeList[];
   values: ProductSizes[];
@@ -18,14 +18,14 @@ type SizeListCheckboxProps = {
   onChange: (event: ChangeInputType) => void;
 };
 
-const SizeListCheckbox = ({
+const SizeListChooseMultiple = ({
   onChange,
   values,
   errorText,
   sizeList,
   optionGroupTitle,
   name,
-}: SizeListCheckboxProps) => (
+}: SizeListChooseMultipleProps) => (
   <div>
     {optionGroupTitle && (
       <OptionGroupTitle
@@ -51,4 +51,4 @@ const SizeListCheckbox = ({
   </div>
 );
 
-export default SizeListCheckbox;
+export default SizeListChooseMultiple;

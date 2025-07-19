@@ -6,13 +6,15 @@ import './_product-size-list.scss';
 import ProductSizeItem from './ProductSizeItem';
 import ProductSizeList from './ProductSizeList';
 
+type SizeListReadOnlyProps = {
+  sizes: ProductSizes[];
+  optionGroupTitle?: string;
+};
+
 const SizeListReadOnly = ({
   sizes,
   optionGroupTitle,
-}: {
-  sizes: ProductSizes[];
-  optionGroupTitle?: string;
-}) => {
+}: SizeListReadOnlyProps) => {
   const { language } = useLanguage();
 
   return (

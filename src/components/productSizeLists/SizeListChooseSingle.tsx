@@ -4,7 +4,7 @@ import OptionGroupTitle from '../formElements/radiobuttons/OptionGroupTitle';
 import ProductSizeItem from './ProductSizeItem';
 import ProductSizeList from './ProductSizeList';
 
-type SizeListRadioboxtProps = {
+type SizeListChooseSingletProps = {
   initialChecked: string;
   name: string;
   sizeList: ProductSizes[];
@@ -13,14 +13,14 @@ type SizeListRadioboxtProps = {
   onChange: (event: ChangeInputType) => void;
 };
 
-const SizeListRadiobox = ({
+const SizeListChooseSingle = ({
   initialChecked,
   sizeList,
   onChange,
   errorText,
   optionGroupTitle,
   name,
-}: SizeListRadioboxtProps) => (
+}: SizeListChooseSingletProps) => (
   <>
     {optionGroupTitle && (
       <OptionGroupTitle
@@ -46,4 +46,4 @@ const SizeListRadiobox = ({
   </>
 );
 
-export default SizeListRadiobox;
+export default SizeListChooseSingle;
