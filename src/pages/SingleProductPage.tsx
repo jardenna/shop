@@ -3,7 +3,6 @@ import Accordion from '../components/accordion/Accordion';
 import Favorites from '../components/favorites/Favorites';
 import Form from '../components/form/Form';
 import Img from '../components/Img';
-import RadioColorList from '../components/productColorList/RadioColorList';
 import ProductSizeList from '../components/productSizeList/ProductSizeList';
 import SizeSelector from '../components/sizeSelector/SizeSelector';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
@@ -22,9 +21,11 @@ const SingleProductPage = () => {
     value: color,
     label: color,
   }));
+  const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
 
   const initialState = {
     colors: colorList ? colorList[0].value : '',
+    sizes: 'S',
   };
 
   const { onChange, values, onSubmit } = useFormValidation({
@@ -89,15 +90,19 @@ const SingleProductPage = () => {
             />
 
             <Form onSubmit={onSubmit} submitBtnLabel={language.create}>
-              <SizeSelector />
-              {colorList && (
+              <SizeSelector
+                radioButtonList={sizes}
+                initialChecked={values.sizes}
+                onChange={onChange}
+              />
+              {/* {colorList && (
                 <RadioColorList
                   radioButtonList={colorList}
                   initialChecked={values.colors || colorList[0].value}
                   onChange={onChange}
                   iconName={product.categoryName}
                 />
-              )}
+              )} */}
             </Form>
             <ProductSizeList sizes={product.sizes} />
             <p>Brand: {product.brand}</p>

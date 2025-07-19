@@ -1,37 +1,35 @@
-import { useState } from 'react';
+import { ChangeInputType } from '../../types/types';
 import './_size.scss';
 
-const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+type SizeSelectortProps = {
+  initialChecked: string;
+  radioButtonList: string[];
+  iconName?: string;
+  onChange: (event: ChangeInputType) => void;
+};
 
-function SizeSelector() {
-  const [selectedSize, setSelectedSize] = useState<string | null>(null);
+const SizeSelector = ({
+  initialChecked,
+  radioButtonList,
+  onChange,
+}: SizeSelectortProps) => (
+  <ul className="product-size-list">
+    {radioButtonList.map((size) => (
+      <li key={size} className="product-size-item">
+        <label htmlFor={size} className="product-size">
+          {size}
+        </label>
 
-  return (
-    <ul className="product-size-list">
-      {sizes.map((size) => (
-        <li key={size} className="product-size-item">
-          <label
-            htmlFor={size}
-            className={`product-size ${
-              selectedSize === size ? 'selected' : ''
-            }`}
-          >
-            {size}
-          </label>
-
-          <input
-            type="radio"
-            name="size"
-            id={size}
-            value={size}
-            checked={selectedSize === size}
-            onChange={() => {
-              setSelectedSize(size);
-            }}
-          />
-        </li>
-      ))}
-    </ul>
-  );
-}
+        <input
+          type="radio"
+          name="sizes"
+          id={size}
+          value={size}
+          checked={initialChecked === size}
+          onChange={onChange}
+        />
+      </li>
+    ))}
+  </ul>
+);
 export default SizeSelector;

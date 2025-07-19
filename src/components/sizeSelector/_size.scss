@@ -4,10 +4,8 @@ label.product-size {
   cursor: pointer;
 }
 
-.product-size {
-  &.selected {
-    background-color: black;
-    color: white;
+.product-size-item {
+  &:has(input:checked) {
     border-color: black;
   }
 }
