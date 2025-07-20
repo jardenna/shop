@@ -7,9 +7,9 @@ import ProductList from './ProductList';
 import ProductListItem from './ProductListItem';
 
 type ColorListChooseSingletProps = {
+  colotList: string[];
   initialChecked: string;
   name: string;
-  sizeList: string[];
   errorText?: string;
   iconName?: string;
   optionGroupTitle?: string;
@@ -18,7 +18,7 @@ type ColorListChooseSingletProps = {
 
 const ColorListChooseSingle = ({
   initialChecked,
-  sizeList,
+  colotList,
   onChange,
   errorText,
   optionGroupTitle,
@@ -33,7 +33,7 @@ const ColorListChooseSingle = ({
       optionGroupTitle={optionGroupTitle}
       errorText={errorText}
     >
-      {sizeList.map((color) => (
+      {colotList.map((color) => (
         <ProductListItem
           key={color}
           htmlFor={color}

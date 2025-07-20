@@ -91,7 +91,7 @@ const SingleProductPage = () => {
                 optionGroupTitle={language.selectSize}
               />
               <ColorListChooseSingle
-                sizeList={product.colors}
+                colotList={product.colors}
                 initialChecked={values.colors}
                 onChange={onChange}
                 name="colors"
