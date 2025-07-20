@@ -3,8 +3,8 @@ import { IconName } from '../../types/enums';
 import { ChangeInputType } from '../../types/types';
 import { resolveIconName } from '../../utils/iconHelpers';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
+import ProductList from './ProductList';
 import ProductSizeItem from './ProductSizeItem';
-import ProductSizeList from './ProductSizeList';
 
 type ColorListChooseSingletProps = {
   initialChecked: string;
@@ -28,7 +28,7 @@ const ColorListChooseSingle = ({
   const { language } = useLanguage();
 
   return (
-    <ProductSizeList
+    <ProductList
       ariaId={name}
       optionGroupTitle={optionGroupTitle}
       errorText={errorText}
@@ -51,7 +51,7 @@ const ColorListChooseSingle = ({
           />
         </ProductSizeItem>
       ))}
-    </ProductSizeList>
+    </ProductList>
   );
 };
 

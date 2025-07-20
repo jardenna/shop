@@ -1,19 +1,19 @@
 import { ReactNode } from 'react';
 import OptionGroupTitle from '../formElements/radiobuttons/OptionGroupTitle';
 
-type ProductSizeListProps = {
+type ProductListProps = {
   ariaId: string;
   children: ReactNode;
   errorText?: string;
   optionGroupTitle?: string;
 };
 
-const ProductSizeList = ({
+const ProductList = ({
   children,
   errorText,
   optionGroupTitle,
   ariaId,
-}: ProductSizeListProps) => (
+}: ProductListProps) => (
   <div>
     {optionGroupTitle && (
       <OptionGroupTitle
@@ -28,4 +28,4 @@ const ProductSizeList = ({
   </div>
 );
 
-export default ProductSizeList;
+export default ProductList;

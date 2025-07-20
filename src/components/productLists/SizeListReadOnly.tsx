@@ -3,8 +3,8 @@ import useLanguage from '../../features/language/useLanguage';
 import { sizeList } from '../../utils/utils';
 import VisuallyHidden from '../VisuallyHidden';
 import './_product-size-list.scss';
+import ProductList from './ProductList';
 import ProductSizeItem from './ProductSizeItem';
-import ProductSizeList from './ProductSizeList';
 
 type SizeListReadOnlyProps = {
   sizes: ProductSizes[];
@@ -18,7 +18,7 @@ const SizeListReadOnly = ({
   const { language } = useLanguage();
 
   return (
-    <ProductSizeList ariaId="sizes" optionGroupTitle={optionGroupTitle}>
+    <ProductList ariaId="sizes" optionGroupTitle={optionGroupTitle}>
       {sizeList.map((size) => (
         <ProductSizeItem
           as="span"
@@ -32,7 +32,7 @@ const SizeListReadOnly = ({
           </VisuallyHidden>
         </ProductSizeItem>
       ))}
-    </ProductSizeList>
+    </ProductList>
   );
 };
 

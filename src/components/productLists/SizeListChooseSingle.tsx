@@ -1,7 +1,7 @@
 import { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
 import { ChangeInputType } from '../../types/types';
+import ProductList from './ProductList';
 import ProductSizeItem from './ProductSizeItem';
-import ProductSizeList from './ProductSizeList';
 
 type SizeListChooseSingletProps = {
   initialChecked: string;
@@ -20,7 +20,7 @@ const SizeListChooseSingle = ({
   optionGroupTitle,
   name,
 }: SizeListChooseSingletProps) => (
-  <ProductSizeList
+  <ProductList
     ariaId={name}
     optionGroupTitle={optionGroupTitle}
     errorText={errorText}
@@ -37,7 +37,7 @@ const SizeListChooseSingle = ({
         />
       </ProductSizeItem>
     ))}
-  </ProductSizeList>
+  </ProductList>
 );
 
 export default SizeListChooseSingle;

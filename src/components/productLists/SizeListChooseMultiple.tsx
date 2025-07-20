@@ -1,8 +1,8 @@
 import { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
 import { ChangeInputType } from '../../types/types';
 import OptionGroupTitle from '../formElements/radiobuttons/OptionGroupTitle';
+import ProductList from './ProductList';
 import ProductSizeItem from './ProductSizeItem';
-import ProductSizeList from './ProductSizeList';
 
 type SizeList = {
   label: ProductSizes;
@@ -34,7 +34,7 @@ const SizeListChooseMultiple = ({
         id={name}
       />
     )}
-    <ProductSizeList ariaId={name}>
+    <ProductList ariaId={name}>
       {sizeList.map(({ label, value }) => (
         <ProductSizeItem key={label} htmlFor={label} text={label}>
           <input
@@ -47,7 +47,7 @@ const SizeListChooseMultiple = ({
           />
         </ProductSizeItem>
       ))}
-    </ProductSizeList>
+    </ProductList>
   </div>
 );
 
