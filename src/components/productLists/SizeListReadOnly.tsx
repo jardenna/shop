@@ -2,7 +2,6 @@ import { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import { sizeList } from '../../utils/utils';
 import VisuallyHidden from '../VisuallyHidden';
-import './_product-size-list.scss';
 import ProductList from './ProductList';
 import ProductListItem from './ProductListItem';
 

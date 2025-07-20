@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import OptionGroupTitle from '../formElements/radiobuttons/OptionGroupTitle';
+import './_product-list.scss';
 
 type ProductListProps = {
   ariaId: string;
