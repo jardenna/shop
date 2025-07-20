@@ -41,7 +41,7 @@ const ProductCardCenter = ({
         <GridTwoCol text={language.brand}>{brand}</GridTwoCol>
         <GridTwoCol text={language.material}>{material}</GridTwoCol>
         <div>
-          <strong className="product-list-headline">{language.colours}:</strong>
+          <h3 className="product-list-headline">{language.colours}:</h3>
           <ProductColorList colours={colours} count={colours.length} />
         </div>
         <div>

@@ -5,10 +5,10 @@ type OptionGroupTitleProps = {
 };
 
 const OptionGroupTitle = ({ text, errorText, id }: OptionGroupTitleProps) => (
-  <p className="option-group-title" aria-labelledby={id || undefined}>
-    {text}
+  <div className="option-group-title" aria-labelledby={id || undefined}>
+    <h3 className="title">{text}</h3>
     <span className="error-message">{errorText}</span>
-  </p>
+  </div>
 );
 
 export default OptionGroupTitle;

@@ -26,7 +26,7 @@ const CardRight = ({
       {showStatusMessage && (
         <>
           <div>
-            <h3>{statusMessage}</h3>
+            <h3 className="status-message-title">{statusMessage}</h3>
             <p>
               {name} {language.notVisibleInShop}.
             </p>
