@@ -6,7 +6,7 @@ type OptionGroupTitleProps = {
 
 const OptionGroupTitle = ({ text, errorText, id }: OptionGroupTitleProps) => (
   <p className="option-group-title" aria-labelledby={id || undefined}>
-    <strong>{text}</strong>
+    {text}
     <span className="error-message">{errorText}</span>
   </p>
 );
