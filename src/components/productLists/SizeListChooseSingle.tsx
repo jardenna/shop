@@ -1,7 +1,7 @@
 import { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
 import { ChangeInputType } from '../../types/types';
 import ProductList from './ProductList';
-import ProductSizeItem from './ProductSizeItem';
+import ProductListItem from './ProductListItem';
 
 type SizeListChooseSingletProps = {
   initialChecked: string;
@@ -26,7 +26,7 @@ const SizeListChooseSingle = ({
     errorText={errorText}
   >
     {sizeList.map((size) => (
-      <ProductSizeItem key={size} htmlFor={size} text={size}>
+      <ProductListItem key={size} htmlFor={size} text={size}>
         <input
           type="radio"
           name={name}
@@ -35,7 +35,7 @@ const SizeListChooseSingle = ({
           checked={initialChecked === size}
           onChange={onChange}
         />
-      </ProductSizeItem>
+      </ProductListItem>
     ))}
   </ProductList>
 );

@@ -4,7 +4,7 @@ import { ChangeInputType } from '../../types/types';
 import { resolveIconName } from '../../utils/iconHelpers';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 import ProductList from './ProductList';
-import ProductSizeItem from './ProductSizeItem';
+import ProductListItem from './ProductListItem';
 
 type ColorListChooseSingletProps = {
   initialChecked: string;
@@ -34,7 +34,7 @@ const ColorListChooseSingle = ({
       errorText={errorText}
     >
       {sizeList.map((color) => (
-        <ProductSizeItem
+        <ProductListItem
           key={color}
           htmlFor={color}
           ariaLabel={getlowerCaseFirstLetter(color, language)}
@@ -49,7 +49,7 @@ const ColorListChooseSingle = ({
             checked={initialChecked === color}
             onChange={onChange}
           />
-        </ProductSizeItem>
+        </ProductListItem>
       ))}
     </ProductList>
   );

@@ -2,7 +2,7 @@ import { ElementType, ReactNode } from 'react';
 import { IconName } from '../../types/enums';
 import IconContent from '../IconContent';
 
-type ProductSizeItemProps = {
+type ProductListItemProps = {
   children: ReactNode;
   ariaLabel?: string;
   as?: ElementType;
@@ -12,7 +12,7 @@ type ProductSizeItemProps = {
   text?: string;
 };
 
-const ProductSizeItem = ({
+const ProductListItem = ({
   children,
   className = '',
   as: Tag = 'label',
@@ -20,7 +20,7 @@ const ProductSizeItem = ({
   text,
   iconName,
   ariaLabel,
-}: ProductSizeItemProps) => (
+}: ProductListItemProps) => (
   <li className={`product-size-item ${className}`}>
     <Tag className="product-size" htmlFor={htmlFor || undefined}>
       {iconName ? (
@@ -39,4 +39,4 @@ const ProductSizeItem = ({
   </li>
 );
 
-export default ProductSizeItem;
+export default ProductListItem;

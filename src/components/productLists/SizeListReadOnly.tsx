@@ -4,7 +4,7 @@ import { sizeList } from '../../utils/utils';
 import VisuallyHidden from '../VisuallyHidden';
 import './_product-size-list.scss';
 import ProductList from './ProductList';
-import ProductSizeItem from './ProductSizeItem';
+import ProductListItem from './ProductListItem';
 
 type SizeListReadOnlyProps = {
   sizes: ProductSizes[];
@@ -20,7 +20,7 @@ const SizeListReadOnly = ({
   return (
     <ProductList ariaId="sizes" optionGroupTitle={optionGroupTitle}>
       {sizeList.map((size) => (
-        <ProductSizeItem
+        <ProductListItem
           as="span"
           text={size}
           className={`product-size-item ${sizes.includes(size) ? '' : 'text-line-through'}`}
@@ -30,7 +30,7 @@ const SizeListReadOnly = ({
             {!sizes.includes(size) ? language.unavailable : language.available}{' '}
             {language.size}
           </VisuallyHidden>
-        </ProductSizeItem>
+        </ProductListItem>
       ))}
     </ProductList>
   );
