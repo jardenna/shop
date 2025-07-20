@@ -3,6 +3,10 @@
 .product-list {
   display: flex;
 
+  &:has(.color-list-item) {
+    gap: 16px;
+  }
+
   label.product-label {
     cursor: pointer;
   }
@@ -50,6 +54,16 @@
     &::before {
       content: ' ';
       display: flex;
+    }
+  }
+
+  .color-list-item {
+    border-right-color: $color-border;
+    background-color: $color-light-gray-20;
+
+    .product-label {
+      width: rem(100px);
+      height: rem(128px);
     }
   }
 }

@@ -40,6 +40,7 @@ const ColorListChooseSingle = ({
           ariaLabel={getlowerCaseFirstLetter(color, language)}
           text={color}
           iconName={iconName ? resolveIconName(iconName) : IconName.Woman}
+          className="color-list-item"
         >
           <input
             type="radio"
