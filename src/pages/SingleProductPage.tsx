@@ -19,8 +19,8 @@ const SingleProductPage = () => {
   const { data: product } = useGetSingleProductQuery(id ?? '');
   const colorList = product ? getColorOptions(product.colors, language) : [];
   const initialState = {
-    colors: '',
-    sizes: '',
+    color: '',
+    size: '',
   };
 
   const { onChange, values, onSubmit } = useFormValidation({
@@ -86,16 +86,16 @@ const SingleProductPage = () => {
             <Form onSubmit={onSubmit} submitBtnLabel={language.create}>
               <SizeListChooseSingle
                 sizeList={product.sizes}
-                initialChecked={values.sizes}
+                initialChecked={values.size}
                 onChange={onChange}
-                name="sizes"
+                name="size"
                 optionGroupTitle={language.selectSize}
               />
               <ColorListChooseSingle
                 colorList={colorList}
-                initialChecked={values.colors}
+                initialChecked={values.color}
                 onChange={onChange}
-                name="colors"
+                name="color"
                 optionGroupTitle={language.selectColor}
                 iconName={product.categoryName}
               />
