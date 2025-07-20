@@ -1,13 +1,13 @@
 @use '../../scss/globals' as *;
 
-.product-size-list {
+.product-list {
   display: flex;
 
-  label.product-size {
+  label.product-label {
     cursor: pointer;
   }
 
-  .product-size-item {
+  .product-list-item {
     border: 1px solid $color-border;
     border-right-color: transparent;
 
@@ -38,7 +38,7 @@
     }
   }
 
-  .product-size {
+  .product-label {
     width: rem(68px);
     height: rem(68px);
     display: flex;

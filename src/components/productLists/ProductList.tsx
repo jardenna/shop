@@ -23,7 +23,7 @@ const ProductList = ({
         id={ariaId}
       />
     )}
-    <ul className="product-size-list" id={ariaId}>
+    <ul className="product-list" id={ariaId}>
       {children}
     </ul>
   </div>

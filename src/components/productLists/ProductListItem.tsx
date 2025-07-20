@@ -21,8 +21,8 @@ const ProductListItem = ({
   iconName,
   ariaLabel,
 }: ProductListItemProps) => (
-  <li className={`product-size-item ${className}`}>
-    <Tag className="product-size" htmlFor={htmlFor || undefined}>
+  <li className={`product-list-item ${className}`}>
+    <Tag className="product-label" htmlFor={htmlFor || undefined}>
       {iconName ? (
         <IconContent
           iconName={iconName}

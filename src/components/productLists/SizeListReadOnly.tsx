@@ -22,7 +22,7 @@ const SizeListReadOnly = ({
         <ProductListItem
           as="span"
           text={size}
-          className={`product-size-item ${sizes.includes(size) ? '' : 'text-line-through'}`}
+          className={`product-list-item ${sizes.includes(size) ? '' : 'text-line-through'}`}
           key={size}
         >
           <VisuallyHidden>
