@@ -26,6 +26,7 @@ import variables from '../../../scss/variables.module.scss';
 import type { OptionType } from '../../../types/types';
 import {
   colorList,
+  colorMap,
   getlowerCaseFirstLetter,
   sizeList,
 } from '../../../utils/utils';
@@ -71,6 +72,7 @@ const ProductForm = ({
     .map((color) => ({
       label: language[color],
       value: color,
+      color: colorMap[color], // <-- brug din custom farve her
       ...(color === 'white' && { border: variables.colorIconBorder }),
     }))
     .sort((a, b) => a.label.localeCompare(b.label));

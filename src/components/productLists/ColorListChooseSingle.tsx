@@ -2,12 +2,12 @@ import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import { ChangeInputType } from '../../types/types';
 import { resolveIconName } from '../../utils/iconHelpers';
-import { getlowerCaseFirstLetter } from '../../utils/utils';
+import { ColorOption, getlowerCaseFirstLetter } from '../../utils/utils';
 import ProductList from './ProductList';
 import ProductListItem from './ProductListItem';
 
 type ColorListChooseSingletProps = {
-  colotList: string[];
+  colorList: ColorOption[];
   initialChecked: string;
   name: string;
   errorText?: string;
@@ -18,12 +18,12 @@ type ColorListChooseSingletProps = {
 
 const ColorListChooseSingle = ({
   initialChecked,
-  colotList,
   onChange,
   errorText,
   optionGroupTitle,
   name,
   iconName,
+  colorList,
 }: ColorListChooseSingletProps) => {
   const { language } = useLanguage();
 
@@ -33,24 +33,26 @@ const ColorListChooseSingle = ({
       optionGroupTitle={optionGroupTitle}
       errorText={errorText}
     >
-      {colotList.map((color) => (
-        <ProductListItem
-          key={color}
-          htmlFor={color}
-          ariaLabel={getlowerCaseFirstLetter(color, language)}
-          text={color}
-          iconName={iconName ? resolveIconName(iconName) : IconName.Woman}
-          className="color-list-item"
-        >
-          <input
-            type="radio"
-            name={name}
-            id={color}
-            value={color}
-            checked={initialChecked === color}
-            onChange={onChange}
-          />
-        </ProductListItem>
+      {colorList.map(({ label, value, color }) => (
+        <div key={label}>
+          <ProductListItem
+            key={color}
+            htmlFor={color}
+            ariaLabel={getlowerCaseFirstLetter(color, language)}
+            text={color}
+            iconName={iconName ? resolveIconName(iconName) : IconName.Woman}
+            className="color-list-item"
+          >
+            <input
+              type="radio"
+              name={name}
+              id={color}
+              value={value}
+              checked={initialChecked === value}
+              onChange={onChange}
+            />
+          </ProductListItem>
+        </div>
       ))}
     </ProductList>
   );

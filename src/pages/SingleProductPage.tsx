@@ -10,15 +10,16 @@ import useLanguage from '../features/language/useLanguage';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
 import useFormValidation from '../hooks/useFormValidation';
 import MetaTags from '../layout/nav/MetaTags';
+import { getColorOptions } from '../utils/utils';
 import './SingleProductPage.styles.scss';
 
 const SingleProductPage = () => {
   const { id } = useParams();
   const { language } = useLanguage();
   const { data: product } = useGetSingleProductQuery(id ?? '');
-
+  const colorList = product ? getColorOptions(product.colors, language) : [];
   const initialState = {
-    colors: product?.colors[0] ?? '',
+    colors: '',
     sizes: '',
   };
 
@@ -91,7 +92,7 @@ const SingleProductPage = () => {
                 optionGroupTitle={language.selectSize}
               />
               <ColorListChooseSingle
-                colotList={product.colors}
+                colorList={colorList}
                 initialChecked={values.colors}
                 onChange={onChange}
                 name="colors"

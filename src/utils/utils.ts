@@ -6,6 +6,22 @@ const currencyCacheKey = 'exchangeRates';
 
 const sizeList: ProductSizes[] = ['S', 'M', 'L', 'XL', 'Onesize'];
 
+const colorMap: Record<string, string> = {
+  black: '#1f2937',
+  grey: '#9ca3af',
+  brown: '#8b5e3c',
+  white: '#f9fafb',
+  blue: '#3860a1ff',
+  yellow: '#facc15',
+  orange: '#fb923c',
+  red: '#ef4444',
+  purple: '#a855f7',
+  green: '#10b981',
+  gold: '#fcd34d',
+  silver: '#d1d5db',
+  pink: '#ec4899',
+};
+
 const colorList = [
   'black',
   'grey',
@@ -21,6 +37,28 @@ const colorList = [
   'silver',
   'pink',
 ];
+
+export type ColorOption = {
+  color: string;
+  label: string;
+  value: string;
+  border?: string;
+};
+
+const getColorOptions = (
+  colors: string[],
+  language: Record<string, string>,
+  borderColor?: string,
+): ColorOption[] =>
+  colors
+    .filter((color) => colorMap[color] && language[color])
+    .map((color) => ({
+      label: language[color],
+      value: color,
+      color: colorMap[color],
+      ...(color === 'white' && borderColor && { border: borderColor }),
+    }))
+    .sort((a, b) => a.label.localeCompare(b.label));
 
 const roleButtonList = [
   { value: 'Employee', label: 'employee' },
@@ -57,9 +95,11 @@ const getlowerCaseFirstLetter = (
 
 export {
   colorList,
+  colorMap,
   currencyCacheKey,
   discountCalculation,
   formatNumber,
+  getColorOptions,
   getErrorMessage,
   getlowerCaseFirstLetter,
   oneDay,
