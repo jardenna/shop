@@ -3,6 +3,7 @@ import Accordion from '../components/accordion/Accordion';
 import Favorites from '../components/favorites/Favorites';
 import Form from '../components/form/Form';
 import Img from '../components/Img';
+import ColorListChooseSingle from '../components/productSizeLists/ColorListChooseSingle';
 import SizeListChooseSingle from '../components/productSizeLists/SizeListChooseSingle';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
 import useLanguage from '../features/language/useLanguage';
@@ -16,13 +17,8 @@ const SingleProductPage = () => {
   const { language } = useLanguage();
   const { data: product } = useGetSingleProductQuery(id ?? '');
 
-  const colorList = product?.colors.map((color) => ({
-    value: color,
-    label: color,
-  }));
-
   const initialState = {
-    colors: colorList ? colorList[0].value : '',
+    colors: product?.colors[0] ?? '',
     sizes: '',
   };
 
@@ -93,6 +89,14 @@ const SingleProductPage = () => {
                 onChange={onChange}
                 name="sizes"
                 optionGroupTitle={language.selectSize}
+              />
+              <ColorListChooseSingle
+                sizeList={product.colors}
+                initialChecked={values.colors}
+                onChange={onChange}
+                name="colors"
+                optionGroupTitle={language.selectColor}
+                iconName={product.categoryName}
               />
             </Form>
 
