@@ -2,7 +2,6 @@ import type {
   BasePagination,
   BaseProduct,
   BaseProductParams,
-  BaseSubCategory,
   DefaultResponse,
   DefaultResponseType,
 } from './sharedApiTypes';
@@ -88,6 +87,14 @@ export type UpdateCategoryRequest = {
   id: string;
 };
 
+// MainCategories
+export type MainCategory = DefaultResponseType & {
+  categoryName: string;
+  categoryStatus: Status;
+  id: string;
+  scheduledDate?: Date;
+};
+
 // SubCategories
 export type CreateSubCategoryRequest = {
   category: string;
@@ -97,11 +104,12 @@ export type CreateSubCategoryRequest = {
   scheduledDate?: Date;
 };
 
-export type MainCategory = DefaultResponseType & {
-  categoryName: string;
+export type BaseSubCategory = DefaultResponseType & {
+  _id: string;
+  category: MainCategory;
   categoryStatus: Status;
-  id: string;
-  scheduledDate?: Date;
+  subCategoryName: string;
+  translationKey: string;
 };
 
 export type SubCategoryResponse = BaseSubCategory & {

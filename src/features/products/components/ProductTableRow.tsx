@@ -1,11 +1,11 @@
 import { memo } from 'react';
-import { Status } from '../../../app/api/apiTypes/sharedApiTypes';
 import Badge from '../../../components/badge/Badge';
 import { formatNumber, getlowerCaseFirstLetter } from '../../../utils/utils';
 import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
 import useLanguage from '../../language/useLanguage';
 import ProductActions from './ProductActions';
 import ProductOverviewCell from './ProductOverviewCell';
+import { Status } from '../../../app/api/apiTypes/adminApiTypes';
 
 type ProductTableRowProps = {
   categoryName: string;
