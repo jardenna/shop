@@ -5,20 +5,12 @@
   align-items: center;
   gap: 8px;
 
-  .option-box {
-    width: 24px;
-    height: 24px;
-    border-radius: 4px;
-    border: 1px solid transparent;
-  }
-
   &.small {
     gap: 4px;
 
     .option-box {
       width: 8px;
       height: 8px;
-      border-radius: 0;
     }
   }
 }
