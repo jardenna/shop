@@ -16,8 +16,6 @@ const SizeListReadOnly = ({
 }: SizeListReadOnlyProps) => {
   const { language } = useLanguage();
 
-  console.log(sizes);
-
   return (
     <ProductList ariaId="sizes" optionGroupTitle={optionGroupTitle}>
       {sizeList.map((size) => (
