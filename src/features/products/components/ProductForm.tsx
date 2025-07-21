@@ -24,7 +24,7 @@ import useFormValidation from '../../../hooks/useFormValidation';
 import { AdminPath } from '../../../layout/nav/enums';
 import variables from '../../../scss/variables.module.scss';
 import type { OptionType } from '../../../types/types';
-import { colorList, colorMap } from '../../../utils/colorUtils';
+import { colorList, getColorOptions } from '../../../utils/colorUtils';
 import { sizeList } from '../../../utils/productLists';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
@@ -65,14 +65,11 @@ const ProductForm = ({
     }),
   );
 
-  const sortedColorOptions = colorList
-    .map((color) => ({
-      label: language[color],
-      value: color,
-      color: colorMap[color], // <-- brug din custom farve her
-      ...(color === 'white' && { border: variables.colorIconBorder }),
-    }))
-    .sort((a, b) => a.label.localeCompare(b.label));
+  const sortedColorList = getColorOptions({
+    colors: colorList,
+    language,
+    borderColor: variables.colorIconBorder,
+  });
 
   const initialState: ProductRequest = {
     brand: selectedProduct?.brand ?? '',
@@ -330,7 +327,8 @@ const ProductForm = ({
               errorText={language[errors.colors]}
               closeMenuOnSelect={false}
               labelText={language.colours}
-              options={sortedColorOptions}
+              options={sortedColorList}
+              menuIsOpen
               components={{ Option: ColorOptions }}
               isSearchable
               defaultValue={defaultColorValue}

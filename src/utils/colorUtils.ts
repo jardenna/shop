@@ -11,7 +11,7 @@ const colorMap: Record<string, string> = {
   green: '#3c763d',
   gold: '#d3af37',
   silver: '#d1d5db',
-  pink: '#ec4899',
+  pink: '#de48c6',
 };
 
 const colorList = [
