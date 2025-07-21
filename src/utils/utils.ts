@@ -1,17 +1,7 @@
-import { Roles } from '../app/api/apiTypes/adminApiTypes';
-import type { ProductSizes } from '../app/api/apiTypes/sharedApiTypes';
 import { ValidationMessage } from '../types/enums';
 
 const oneDay = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
 const currencyCacheKey = 'exchangeRates';
-
-const sizeList: ProductSizes[] = ['S', 'M', 'L', 'XL', 'Onesize'];
-const roles: Roles[] = ['Employee', 'User'];
-
-const roleList = roles.map((role) => ({
-  value: role,
-  label: role.toLowerCase(),
-}));
 
 const colorMap: Record<string, string> = {
   black: '#1f2937',
@@ -111,6 +101,4 @@ export {
   getErrorMessage,
   getlowerCaseFirstLetter,
   oneDay,
-  roleList,
-  sizeList,
 };

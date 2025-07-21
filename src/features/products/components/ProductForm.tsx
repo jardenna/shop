@@ -28,7 +28,6 @@ import {
   colorList,
   colorMap,
   getlowerCaseFirstLetter,
-  sizeList,
 } from '../../../utils/utils';
 import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
 import useCurrency from '../../currency/useCurrency';
@@ -39,6 +38,7 @@ import {
   useUpdateProductMutation,
 } from '../productApiSlice';
 import FormCard from './FormCard';
+import { sizeList } from '../../../utils/productLists';
 
 type ProductFormProps = {
   id: string | null;

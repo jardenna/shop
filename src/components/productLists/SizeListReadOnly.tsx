@@ -1,6 +1,6 @@
 import { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
 import useLanguage from '../../features/language/useLanguage';
-import { sizeList } from '../../utils/utils';
+import { sizeList } from '../../utils/productLists';
 import VisuallyHidden from '../VisuallyHidden';
 import ProductList from './ProductList';
 import ProductListItem from './ProductListItem';
