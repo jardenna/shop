@@ -1,8 +1,9 @@
 import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import { ChangeInputType } from '../../types/types';
+import { ColorOption } from '../../utils/colorUtils';
 import { resolveIconName } from '../../utils/iconHelpers';
-import { ColorOption, getlowerCaseFirstLetter } from '../../utils/utils';
+import { getlowerCaseFirstLetter } from '../../utils/utils';
 import ProductList from './ProductList';
 import ProductListItem from './ProductListItem';
 

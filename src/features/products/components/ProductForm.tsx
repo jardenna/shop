@@ -24,11 +24,9 @@ import useFormValidation from '../../../hooks/useFormValidation';
 import { AdminPath } from '../../../layout/nav/enums';
 import variables from '../../../scss/variables.module.scss';
 import type { OptionType } from '../../../types/types';
-import {
-  colorList,
-  colorMap,
-  getlowerCaseFirstLetter,
-} from '../../../utils/utils';
+import { colorList, colorMap } from '../../../utils/colorUtils';
+import { sizeList } from '../../../utils/productLists';
+import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
 import useCurrency from '../../currency/useCurrency';
 import useLanguage from '../../language/useLanguage';
@@ -38,7 +36,6 @@ import {
   useUpdateProductMutation,
 } from '../productApiSlice';
 import FormCard from './FormCard';
-import { sizeList } from '../../../utils/productLists';
 
 type ProductFormProps = {
   id: string | null;
