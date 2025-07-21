@@ -7,7 +7,7 @@ import HeaderIcons from '../headerIcons/HeaderIcons';
 import LayoutElement from '../LayoutElement';
 import { ShopPath } from '../nav/enums';
 import NavContainer from '../nav/NavContainer';
-import { navList } from '../nav/navList';
+import { navList } from '../nav/navLists';
 import './_header.scss';
 import Logo from './Logo';
 
