@@ -46,8 +46,9 @@
   .product-label {
     width: rem(68px);
     height: rem(68px);
-    display: inline-grid;
-    place-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     white-space: pre;
 
     &::after,

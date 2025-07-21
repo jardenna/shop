@@ -34,20 +34,18 @@ const ColorReadOnly = ({
   return (
     <ProductList ariaId={ariaId} optionGroupTitle={optionGroupTitle}>
       {visibleColors.map(({ label, value, color, border }) => (
-        <div key={label}>
-          <ProductListItem
-            key={color}
-            as="span"
-            ariaLabel={getlowerCaseFirstLetter(value, language)}
-            className="color-list-item"
-            style={{
-              backgroundColor: color,
-              borderColor: border,
-            }}
-          >
-            <VisuallyHidden>{label}</VisuallyHidden>
-          </ProductListItem>
-        </div>
+        <ProductListItem
+          key={color}
+          as="span"
+          ariaLabel={getlowerCaseFirstLetter(value, language)}
+          className="option-box"
+          style={{
+            backgroundColor: color,
+            borderColor: border,
+          }}
+        >
+          <VisuallyHidden>{label}</VisuallyHidden>
+        </ProductListItem>
       ))}
       {hiddenColorsCount > 0 && <span>{`+ ${hiddenColorsCount}`}</span>}
     </ProductList>
