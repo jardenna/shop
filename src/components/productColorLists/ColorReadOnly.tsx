@@ -2,6 +2,7 @@ import useLanguage from '../../features/language/useLanguage';
 import variables from '../../scss/variables.module.scss';
 import { getColorOptions } from '../../utils/colorUtils';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
+import { OptionGroupTitle1 } from '../productLists/OptionGroupTitle';
 import ProductList from '../productLists/ProductList';
 import ProductListItem from '../productLists/ProductListItem';
 import VisuallyHidden from '../VisuallyHidden';
@@ -10,6 +11,7 @@ type ColorReadOnlytProps = {
   ariaId: string;
   colors: string[];
   count?: number;
+  groupTitle?: OptionGroupTitle1;
   optionGroupTitle?: string;
 };
 
@@ -18,6 +20,7 @@ const ColorReadOnly = ({
   ariaId,
   count = 3,
   colors,
+  groupTitle,
 }: ColorReadOnlytProps) => {
   const { language } = useLanguage();
 
@@ -32,7 +35,11 @@ const ColorReadOnly = ({
   const hiddenColorsCount = Math.max(colorList1.length - count, 0);
 
   return (
-    <ProductList ariaId={ariaId} optionGroupTitle={optionGroupTitle}>
+    <ProductList
+      ariaId={ariaId}
+      optionGroupTitle={optionGroupTitle}
+      groupTitle={groupTitle}
+    >
       {visibleColors.map(({ label, value, color, border }) => (
         <ProductListItem
           key={color}

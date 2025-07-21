@@ -1,11 +1,12 @@
 import { ReactNode } from 'react';
-import OptionGroupTitle from './OptionGroupTitle';
+import OptionGroupTitle, { OptionGroupTitle1 } from './OptionGroupTitle';
 import './_product-list.scss';
 
 type ProductListProps = {
   ariaId: string;
   children: ReactNode;
   errorText?: string;
+  groupTitle?: OptionGroupTitle1;
   optionGroupTitle?: string;
 };
 
@@ -14,6 +15,7 @@ const ProductList = ({
   errorText,
   optionGroupTitle,
   ariaId,
+  groupTitle,
 }: ProductListProps) => (
   <div>
     {optionGroupTitle && (
@@ -21,6 +23,7 @@ const ProductList = ({
         errorText={errorText}
         text={optionGroupTitle}
         id={ariaId}
+        groupTitle={groupTitle}
       />
     )}
     <ul className="product-list" id={ariaId}>

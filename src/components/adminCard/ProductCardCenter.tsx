@@ -40,14 +40,16 @@ const ProductCardCenter = ({
         )}
         <GridTwoCol text={language.brand}>{brand}</GridTwoCol>
         <GridTwoCol text={language.material}>{material}</GridTwoCol>
-
         <ColorListReadOnly colours={colours} count={colours.length} />
         <ColorReadOnly
           ariaId="colors"
           colors={colours}
           optionGroupTitle={language.colours}
+          groupTitle={{
+            title: language.colors,
+            id: 'view-product',
+          }}
         />
-
         <div>
           <SizeListReadOnly sizes={sizes} optionGroupTitle={language.sizes} />
         </div>
