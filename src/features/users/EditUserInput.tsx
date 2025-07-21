@@ -1,4 +1,4 @@
-import type { RoleTypes } from '../../app/api/apiTypes/adminApiTypes';
+import type { Roles } from '../../app/api/apiTypes/adminApiTypes';
 import IconBtn from '../../components/IconBtn';
 import EditTableInput, {
   BaseEditTableInput,
@@ -12,7 +12,7 @@ import RoleRadioBtn from './RoleRadioBtn';
 type EditUserInputProps = BaseEditTableInput & {
   allowedEditUser: boolean;
   isAdmin: boolean;
-  roleValue: RoleTypes;
+  roleValue: Roles;
   showEditInput: boolean;
   onEditBtnClick: () => void;
 };

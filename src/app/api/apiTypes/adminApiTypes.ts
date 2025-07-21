@@ -6,14 +6,14 @@ import type {
   DefaultResponseType,
 } from './sharedApiTypes';
 
-export type RoleTypes = 'Employee' | 'User';
+export type Roles = 'Employee' | 'User';
 export type Status = 'Published' | 'Inactive' | 'Scheduled';
 
 // --- Users ---
 type EditableUserFields = {
   email: string;
   username: string;
-  role?: RoleTypes;
+  role?: Roles;
 };
 
 type BaseUser = Required<EditableUserFields> & {
@@ -34,7 +34,7 @@ export type UpdateUserByIdRequest = {
 };
 
 export type UpdateUserRole = {
-  role: RoleTypes;
+  role: Roles;
 };
 
 export type UpdateUserRoleRequest = {
