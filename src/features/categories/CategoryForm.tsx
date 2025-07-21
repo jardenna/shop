@@ -100,7 +100,6 @@ const CategoryForm = ({
 
   return (
     <Form
-      className="category-form"
       onSubmit={onSubmit}
       submitBtnLabel={id ? language.save : language.create}
       onCancel={handleGoback}

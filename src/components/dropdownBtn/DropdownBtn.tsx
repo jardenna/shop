@@ -33,7 +33,7 @@ const DropdownBtn = ({
   showArrow,
   placement,
   ariaLabel,
-  triggerBtnClassName = '',
+  triggerBtnClassName,
 }: DropdownBtnProps) => {
   const { popupRef, popupIsOpen, togglePopupList, arrowRef, buttonRef } =
     usePopup({ placement });
