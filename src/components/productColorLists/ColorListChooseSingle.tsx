@@ -4,8 +4,8 @@ import { ChangeInputType } from '../../types/types';
 import { ColorOption } from '../../utils/colorUtils';
 import { resolveIconName } from '../../utils/iconHelpers';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
-import ProductList from './ProductList';
-import ProductListItem from './ProductListItem';
+import ProductList from '../productLists/ProductList';
+import ProductListItem from '../productLists/ProductListItem';
 
 type ColorListChooseSingletProps = {
   colorList: ColorOption[];

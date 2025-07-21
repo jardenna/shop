@@ -3,7 +3,7 @@ import Accordion from '../components/accordion/Accordion';
 import Favorites from '../components/favorites/Favorites';
 import Form from '../components/form/Form';
 import Img from '../components/Img';
-import ColorListChooseSingle from '../components/productLists/ColorListChooseSingle';
+import ColorListChooseSingle from '../components/productColorLists/ColorListChooseSingle';
 import SizeListChooseSingle from '../components/productLists/SizeListChooseSingle';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
 import useLanguage from '../features/language/useLanguage';
