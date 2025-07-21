@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
 
   &.small {
     gap: 4px;

@@ -14,11 +14,14 @@
   }
 
   .select-box__value-container {
-    padding-block: 0;
+    padding: 8px;
   }
 
   .select-box__control {
     @extend %styled-input;
+
+    min-height: $input-height;
+    height: auto;
   }
 
   .select-box__menu {
