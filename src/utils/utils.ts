@@ -8,7 +8,7 @@ const currencyCacheKey = 'exchangeRates';
 const sizeList: ProductSizes[] = ['S', 'M', 'L', 'XL', 'Onesize'];
 const roles: Roles[] = ['Employee', 'User'];
 
-const roleButtonList = roles.map((role) => ({
+const roleList = roles.map((role) => ({
   value: role,
   label: role.toLowerCase(),
 }));
@@ -111,6 +111,6 @@ export {
   getErrorMessage,
   getlowerCaseFirstLetter,
   oneDay,
-  roleButtonList,
+  roleList,
   sizeList,
 };
