@@ -12,7 +12,7 @@ type ProductColorListProps = {
   optionSize?: OptionSize;
 };
 
-const ProductColorList = ({
+const ColorListReadOnly = ({
   colours,
   count = 3,
   optionSize = '',
@@ -49,4 +49,4 @@ const ProductColorList = ({
   );
 };
 
-export default ProductColorList;
+export default ColorListReadOnly;

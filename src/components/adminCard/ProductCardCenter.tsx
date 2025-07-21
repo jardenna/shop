@@ -3,7 +3,7 @@ import useLanguage from '../../features/language/useLanguage';
 import CardContent from '../card/CardContent';
 
 import GridTwoCol from '../GridTwoCol';
-import ProductColorList from '../productColorLists/ProductColorList';
+import ColorListReadOnly from '../productColorLists/ColorListReadOnly';
 import SizeListReadOnly from '../productLists/SizeListReadOnly';
 
 type ProductCardCenterProps = {
@@ -42,7 +42,7 @@ const ProductCardCenter = ({
         <GridTwoCol text={language.material}>{material}</GridTwoCol>
         <div>
           <h3 className="product-list-headline">{language.colours}:</h3>
-          <ProductColorList colours={colours} count={colours.length} />
+          <ColorListReadOnly colours={colours} count={colours.length} />
         </div>
         <div>
           <SizeListReadOnly sizes={sizes} optionGroupTitle={language.sizes} />
