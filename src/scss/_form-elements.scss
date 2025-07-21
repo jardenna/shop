@@ -93,7 +93,7 @@ textarea {
     padding: 12px;
     width: 100%;
     position: relative;
-    font-size: $font-small;
+    font-size: inherit;
 
     @extend %styled-input;
   }
