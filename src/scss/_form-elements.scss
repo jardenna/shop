@@ -58,7 +58,7 @@ input[type='checkbox'] {
 
 textarea {
   resize: none;
-  min-height: rem(128px);
+  field-sizing: content;
 }
 
 .input-info {
