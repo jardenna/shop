@@ -9,7 +9,6 @@ import DropdownList from './DropdownList';
 export type DropdownItem = {
   label: string;
   btnVariant?: BtnVariant;
-  className?: string;
   icon?: ReactNode;
   onClick: () => void;
 };
