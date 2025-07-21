@@ -45,11 +45,17 @@ export type ColorOption = {
   border?: string;
 };
 
-const getColorOptions = (
-  colors: string[],
-  language: Record<string, string>,
-  borderColor?: string,
-): ColorOption[] =>
+type GetColorOptionsParams = {
+  colors: string[];
+  language: Record<string, string>;
+  borderColor?: string;
+};
+
+const getColorOptions = ({
+  colors,
+  language,
+  borderColor,
+}: GetColorOptionsParams): ColorOption[] =>
   colors
     .filter((color) => colorMap[color] && language[color])
     .map((color) => ({

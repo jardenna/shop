@@ -17,7 +17,9 @@ const SingleProductPage = () => {
   const { id } = useParams();
   const { language } = useLanguage();
   const { data: product } = useGetSingleProductQuery(id ?? '');
-  const colorList = product ? getColorOptions(product.colors, language) : [];
+  const colorList = product
+    ? getColorOptions({ colors: product.colors, language })
+    : [];
   const initialState = {
     color: '',
     size: '',
