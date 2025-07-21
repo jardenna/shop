@@ -38,7 +38,7 @@ const ColorListChooseSingle = ({
           <ProductListItem
             key={color}
             htmlFor={color}
-            ariaLabel={getlowerCaseFirstLetter(color, language)}
+            ariaLabel={getlowerCaseFirstLetter(value, language)}
             text={color}
             iconName={iconName ? resolveIconName(iconName) : IconName.Woman}
             className="color-list-item"
