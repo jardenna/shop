@@ -2,10 +2,6 @@
 @use '../../scss/globals' as *;
 
 .date-picker-container {
-  button {
-    font-family: $font-primary;
-  }
-
   .rdp-caption_label {
     z-index: 0;
     text-transform: capitalize;
