@@ -26,7 +26,7 @@ const ProductList = ({
         groupTitle={groupTitle}
       />
     )}
-    <ul className="product-list" id={ariaId}>
+    <ul className="product-list" id={groupTitle?.id}>
       {children}
     </ul>
   </div>

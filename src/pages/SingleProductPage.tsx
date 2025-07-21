@@ -102,6 +102,10 @@ const SingleProductPage = () => {
                 name="color"
                 optionGroupTitle={language.selectColor}
                 iconName={product.categoryName}
+                groupTitle={{
+                  title: language.selectColor,
+                  id: 'choose-product-color',
+                }}
               />
             </Form>
 

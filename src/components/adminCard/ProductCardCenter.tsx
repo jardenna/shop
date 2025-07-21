@@ -46,7 +46,7 @@ const ProductCardCenter = ({
           colors={colours}
           optionGroupTitle={language.colours}
           groupTitle={{
-            title: language.colors,
+            title: language.colours,
             id: 'view-product',
           }}
         />

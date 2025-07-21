@@ -18,13 +18,17 @@ const OptionGroupTitle = ({
 }: OptionGroupTitleProps) => (
   <>
     {groupTitle && (
-      <div className="option-group-title" aria-labelledby={groupTitle.id}>
-        <h3 className="title">{groupTitle.title}</h3>
+      <div className="option-group-title">
+        <h3 className="title" aria-labelledby={groupTitle.id}>
+          {groupTitle.title}
+        </h3>
         <span className="error-message">{errorText}</span>
       </div>
     )}
-    <div className="option-group-title" aria-labelledby={id || undefined}>
-      <h3 className="title">{text}</h3>
+    <div className="option-group-title">
+      <h3 className="title" aria-labelledby={id || undefined}>
+        {text}
+      </h3>
       <span className="error-message">{errorText}</span>
     </div>
   </>

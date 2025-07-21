@@ -4,6 +4,7 @@ import { ChangeInputType } from '../../types/types';
 import { ColorOption } from '../../utils/colorUtils';
 import { resolveIconName } from '../../utils/iconHelpers';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
+import { OptionGroupTitle1 } from '../productLists/OptionGroupTitle';
 import ProductList from '../productLists/ProductList';
 import ProductListItem from '../productLists/ProductListItem';
 
@@ -12,6 +13,7 @@ type ColorListChooseSingletProps = {
   initialChecked: string;
   name: string;
   errorText?: string;
+  groupTitle?: OptionGroupTitle1;
   iconName?: string;
   optionGroupTitle?: string;
   onChange: (event: ChangeInputType) => void;
@@ -22,6 +24,7 @@ const ColorListChooseSingle = ({
   onChange,
   errorText,
   optionGroupTitle,
+  groupTitle,
   name,
   iconName,
   colorList,
@@ -32,6 +35,7 @@ const ColorListChooseSingle = ({
     <ProductList
       ariaId={name}
       optionGroupTitle={optionGroupTitle}
+      groupTitle={groupTitle}
       errorText={errorText}
     >
       {colorList.map(({ label, value, color }) => (
