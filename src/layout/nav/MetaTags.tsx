@@ -18,7 +18,7 @@ const MetaTags = ({ description, keywords, metaTitle }: MetaTagsProps) => {
       return language.login;
     }
     if (pathname === '/') {
-      return language.login;
+      return language.home;
     }
     if (metaTitle) {
       return metaTitle;

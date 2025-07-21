@@ -60,14 +60,13 @@
     position: absolute;
     top: -6px;
     right: -8px;
-    display: flex;
     background-color: $color-blue-30;
     color: $color-white;
-    align-items: center;
-    justify-content: center;
     width: rem(16px);
     height: rem(16px);
     border-radius: 50%;
+    display: inline-grid;
+    place-content: center;
   }
 }
 

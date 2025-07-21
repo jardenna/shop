@@ -20,9 +20,8 @@
   color: $color-white;
   z-index: 1;
   width: rem(20px);
-  display: flex;
+  display: inline-grid;
+  place-content: center;
   border-radius: 50%;
   height: rem(20px);
-  align-items: center;
-  justify-content: center;
 }
