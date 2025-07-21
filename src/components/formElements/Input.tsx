@@ -1,5 +1,4 @@
 import { ChangeEvent } from 'react';
-import { IconName } from '../../types/enums';
 import type {
   BlurEventType,
   ChangeInputType,
@@ -20,7 +19,6 @@ export type InputProps = {
   className?: string;
   disabled?: boolean;
   errorText?: string;
-  iconName?: IconName;
   inputHasNoLabel?: boolean;
   inputInfo?: string;
   inputSuffix?: string;
@@ -61,7 +59,6 @@ const Input = ({
   autoFocus,
   onFocus,
   disabled,
-  iconName,
   inputInfo,
 }: InputProps) => {
   const inputClassName =
@@ -84,7 +81,6 @@ const Input = ({
           id={id}
           inputHasNoLabel={inputHasNoLabel}
           errorText={errorText}
-          iconName={iconName}
         />
         <input
           ref={ref}
