@@ -3,15 +3,15 @@ import MoreLink from '../../../components/MoreLink';
 
 type FashionGridItemProps = {
   children: ReactNode;
+  className: string;
   heading: string;
   linkText: string;
   linkTo: string;
-  className?: string;
   subHading?: string;
 };
 
 const FashionGridItem = ({
-  className = '',
+  className,
   children,
   heading,
   linkTo,

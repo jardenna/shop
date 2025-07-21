@@ -15,7 +15,7 @@ type ProductListItemProps = {
 
 const ProductListItem = ({
   children,
-  className,
+  className = '',
   as: Tag = 'label',
   htmlFor,
   text,

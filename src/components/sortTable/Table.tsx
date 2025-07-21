@@ -40,7 +40,7 @@ const Table = <T,>({
   isLoading,
   emptyHeaderCellText,
   onReset,
-  className = '',
+  className,
 }: TableProps<T>) => {
   const { language } = useLanguage();
   const [searchParams, setSearchParams] = useSearchParams();
