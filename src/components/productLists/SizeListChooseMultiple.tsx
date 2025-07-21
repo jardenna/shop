@@ -1,6 +1,6 @@
 import { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
 import { ChangeInputType } from '../../types/types';
-import OptionGroupTitle from '../formElements/radiobuttons/OptionGroupTitle';
+import OptionGroupTitle from './OptionGroupTitle';
 import ProductList from './ProductList';
 import ProductListItem from './ProductListItem';
 
