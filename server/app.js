@@ -1,6 +1,8 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
-import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
 import path from 'path';
@@ -13,7 +15,6 @@ import subCategoryRoutes from './routes/subCategoryRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import dbConnect from './utils/dbConnect.js';
-dotenv.config();
 
 const app = express();
 const __dirname = path.resolve();

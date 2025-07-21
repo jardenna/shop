@@ -1,20 +1,15 @@
 import { OptionProps } from 'react-select';
+import { ColorOption } from '../../utils/colorUtils';
 import CustomOption from './CustomOption';
 
-type Colors = {
-  label: string;
-  value: string;
-  border?: string;
-};
-
-const ColorOptions = (props: OptionProps<Colors>) => (
+const ColorOptions = (props: OptionProps<ColorOption>) => (
   <CustomOption
     {...props}
     render={(data) => (
       <>
         <span
           className="option-box"
-          style={{ backgroundColor: data.value, borderColor: data.border }}
+          style={{ backgroundColor: data.color, borderColor: data.border }}
         />
         <span>{data.label}</span>
       </>

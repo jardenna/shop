@@ -3,8 +3,8 @@ import useLanguage from '../../features/language/useLanguage';
 import CardContent from '../card/CardContent';
 
 import GridTwoCol from '../GridTwoCol';
-import ProductColorList from '../ProductColorList';
-import ProductSizeList from '../productSizeList/ProductSizeList';
+import ColorListReadOnly from '../productColorLists/ColorListReadOnly';
+import SizeListReadOnly from '../productLists/SizeListReadOnly';
 
 type ProductCardCenterProps = {
   brand: string;
@@ -41,12 +41,11 @@ const ProductCardCenter = ({
         <GridTwoCol text={language.brand}>{brand}</GridTwoCol>
         <GridTwoCol text={language.material}>{material}</GridTwoCol>
         <div>
-          <strong className="product-list-headline">{language.colours}:</strong>
-          <ProductColorList colours={colours} count={colours.length} />
+          <h3 className="product-list-headline">{language.colours}:</h3>
+          <ColorListReadOnly colours={colours} count={colours.length} />
         </div>
         <div>
-          <strong className="product-list-headline">{language.sizes}:</strong>
-          <ProductSizeList sizes={sizes} />
+          <SizeListReadOnly sizes={sizes} optionGroupTitle={language.sizes} />
         </div>
       </div>
     </CardContent>

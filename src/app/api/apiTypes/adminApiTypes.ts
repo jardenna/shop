@@ -2,19 +2,18 @@ import type {
   BasePagination,
   BaseProduct,
   BaseProductParams,
-  BaseSubCategory,
   DefaultResponse,
   DefaultResponseType,
 } from './sharedApiTypes';
 
-export type RoleTypes = 'Employee' | 'User';
+export type Roles = 'Employee' | 'User';
 export type Status = 'Published' | 'Inactive' | 'Scheduled';
 
 // --- Users ---
 type EditableUserFields = {
   email: string;
   username: string;
-  role?: RoleTypes;
+  role?: Roles;
 };
 
 type BaseUser = Required<EditableUserFields> & {
@@ -35,7 +34,7 @@ export type UpdateUserByIdRequest = {
 };
 
 export type UpdateUserRole = {
-  role: RoleTypes;
+  role: Roles;
 };
 
 export type UpdateUserRoleRequest = {
@@ -88,6 +87,14 @@ export type UpdateCategoryRequest = {
   id: string;
 };
 
+// MainCategories
+export type MainCategory = DefaultResponseType & {
+  categoryName: string;
+  categoryStatus: Status;
+  id: string;
+  scheduledDate?: Date;
+};
+
 // SubCategories
 export type CreateSubCategoryRequest = {
   category: string;
@@ -97,11 +104,12 @@ export type CreateSubCategoryRequest = {
   scheduledDate?: Date;
 };
 
-export type MainCategory = DefaultResponseType & {
-  categoryName: string;
+export type BaseSubCategory = DefaultResponseType & {
+  _id: string;
+  category: MainCategory;
   categoryStatus: Status;
-  id: string;
-  scheduledDate?: Date;
+  subCategoryName: string;
+  translationKey: string;
 };
 
 export type SubCategoryResponse = BaseSubCategory & {

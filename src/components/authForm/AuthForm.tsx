@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router';
-import type { RoleTypes } from '../../app/api/apiTypes/adminApiTypes';
+import type { Roles } from '../../app/api/apiTypes/adminApiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import RoleRadioBtn from '../../features/users/RoleRadioBtn';
 import type { KeyValuePair } from '../../hooks/useFormValidation';
@@ -22,7 +22,7 @@ type UserFields = {
   email: string;
   password: string;
   confirmPassword?: string;
-  role?: RoleTypes;
+  role?: Roles;
   username?: string;
 };
 

@@ -1,19 +1,38 @@
 import { useParams } from 'react-router';
 import Accordion from '../components/accordion/Accordion';
 import Favorites from '../components/favorites/Favorites';
+import Form from '../components/form/Form';
 import Img from '../components/Img';
-import ProductColorList from '../components/ProductColorList';
-import ProductSizeList from '../components/productSizeList/ProductSizeList';
+import ColorListChooseSingle from '../components/productColorLists/ColorListChooseSingle';
+import SizeListChooseSingle from '../components/productLists/SizeListChooseSingle';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
 import useLanguage from '../features/language/useLanguage';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
+import useFormValidation from '../hooks/useFormValidation';
 import MetaTags from '../layout/nav/MetaTags';
+import { getColorOptions } from '../utils/colorUtils';
 import './SingleProductPage.styles.scss';
 
 const SingleProductPage = () => {
   const { id } = useParams();
   const { language } = useLanguage();
   const { data: product } = useGetSingleProductQuery(id ?? '');
+
+  const colorList = product
+    ? getColorOptions({ colors: product.colors, language })
+    : [];
+
+  const initialState = {
+    color: '',
+    size: '',
+  };
+
+  const { onChange, values, onSubmit } = useFormValidation({
+    initialState,
+    callback: () => {
+      console.log(values);
+    },
+  });
 
   const accordionItems = [
     { title: language.description, content: <p>{product?.description}</p> },
@@ -68,8 +87,24 @@ const SingleProductPage = () => {
               price={product.price}
               discount={product.discount}
             />
-            <ProductColorList colours={product.colors} />
-            <ProductSizeList sizes={product.sizes} variant="shop-product" />
+            <Form onSubmit={onSubmit} submitBtnLabel={language.create}>
+              <SizeListChooseSingle
+                sizeList={product.sizes}
+                initialChecked={values.size}
+                onChange={onChange}
+                name="size"
+                optionGroupTitle={language.selectSize}
+              />
+              <ColorListChooseSingle
+                colorList={colorList}
+                initialChecked={values.color}
+                onChange={onChange}
+                name="color"
+                optionGroupTitle={language.selectColor}
+                iconName={product.categoryName}
+              />
+            </Form>
+
             <p>Brand: {product.brand}</p>
             <p>
               Stock:

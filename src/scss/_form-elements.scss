@@ -19,22 +19,36 @@ input[type='number'] {
   appearance: textfield;
 }
 
+input[type='radio'],
+input[type='checkbox'] {
+  appearance: none;
+  pointer-events: none;
+  margin: 0;
+}
+
 ::placeholder {
   color: $color-gray-60;
   opacity: 1;
 }
 
+.option-group-title,
+.form-label-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.option-group-title {
+  margin-top: 0;
+}
+
 .checkbox-radio-container {
   display: flex;
   align-items: center;
+  gap: 4px;
 
   .form-label-container {
     margin: 0;
-  }
-
-  input {
-    appearance: none;
-    cursor: pointer;
   }
 
   label {
@@ -47,10 +61,27 @@ textarea {
   min-height: rem(128px);
 }
 
+.input-info {
+  font-size: $font-mini;
+  font-style: italic;
+  gap: 8px;
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+
+  svg {
+    min-width: 20px;
+  }
+}
+
 .input-container {
   width: 100%;
   position: relative;
   border-bottom: 3px solid transparent;
+
+  + .input-info {
+    margin-top: -14px;
+  }
 
   &:has(input:focus-visible) {
     border-color: $color-primary;
@@ -97,13 +128,4 @@ textarea {
   z-index: 1;
   top: 52%;
   right: 12px;
-}
-
-.input-help-text {
-  font-size: $font-mini;
-  font-style: italic;
-  gap: 4px;
-  display: flex;
-  align-items: center;
-  margin-top: -14px;
 }

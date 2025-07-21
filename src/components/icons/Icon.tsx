@@ -12,6 +12,10 @@ import ChevronLeftIcon from './ChevronLeftIcon';
 import ChevronRightIcon from './ChevronRightIcon';
 import CircelChevronRightIcon from './CircelChevronRightIcon';
 import CloseIcon from './CloseIcon';
+import DressIcon from './colors/DressIcon';
+import KidIcon from './colors/KidIcon';
+import ManIcon from './colors/ManIcon';
+import WomanIcon from './colors/WomanIcon';
 import DashboardIcon from './DashboardIcon';
 import DublicateIcon from './DublicateIcon';
 import EditIcon from './EditIcon';
@@ -50,6 +54,7 @@ export type IconDefaultProps = {
   title: string;
   ariaHidden?: boolean;
   className?: string;
+  fill?: string;
   size?: string;
 };
 
@@ -72,6 +77,7 @@ const iconMapping = {
   circelChevronRight: CircelChevronRightIcon,
   close: CloseIcon,
   dashboard: DashboardIcon,
+  dress: DressIcon,
   dublicate: DublicateIcon,
   edit: EditIcon,
   error: ErrorIcon,
@@ -84,12 +90,14 @@ const iconMapping = {
   image: ImageIcon,
   info: InfoIcon,
   heart: HeartIcon,
+  kid: KidIcon,
   language: LanguageIcon,
   layoutGrid: LayoutGridIcon,
   layoutList: LayoutListIcon,
   login: LoginIcon,
   logo: Logo,
   logout: LogoutIcon,
+  man: ManIcon,
   menuDotsHorizontal: ThreeDotsHorizontalIcon,
   orders: OrdersIcon,
   products: ProductsIcon,
@@ -104,6 +112,7 @@ const iconMapping = {
   user: UserIcon,
   users: UsersIcon,
   warning: WarningIcon,
+  woman: WomanIcon,
 };
 
 const Icon = ({
@@ -112,6 +121,7 @@ const Icon = ({
   title,
   className = '',
   ariaHidden,
+  fill,
 }: IconProps) => {
   const IconComponent = iconMapping[iconName];
   return (
@@ -120,6 +130,7 @@ const Icon = ({
       title={title}
       className={className}
       ariaHidden={ariaHidden === undefined ? true : undefined}
+      fill={fill}
     />
   );
 };

@@ -3,11 +3,11 @@
 .radio-card {
   display: flex;
   text-transform: uppercase;
+  gap: 8px;
 
   .checkbox-radio-container {
     width: 100%;
     justify-content: center;
-    gap: 4px;
 
     &:has(input:checked) {
       color: $color-white;

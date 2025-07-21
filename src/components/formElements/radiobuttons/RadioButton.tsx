@@ -2,6 +2,7 @@ import useLanguage from '../../../features/language/useLanguage';
 import type { ChangeInputType, OptionType } from '../../../types/types';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import Input from '../Input';
+import InputInfo from '../InputInfo';
 import './_radio-button.scss';
 
 type RadioBtnVariant = 'card';
@@ -10,7 +11,7 @@ type RadioButtonProps = {
   initialChecked: string;
   name: string;
   radioButtonList: OptionType[];
-  formInfoText?: string;
+  inputInfo?: string;
   radioBtnVariant?: RadioBtnVariant;
   onChange: (event: ChangeInputType) => void;
 };
@@ -20,7 +21,7 @@ const RadioButton = ({
   radioButtonList,
   onChange,
   name,
-  formInfoText,
+  inputInfo,
   radioBtnVariant,
 }: RadioButtonProps) => {
   const { language } = useLanguage();
@@ -33,7 +34,7 @@ const RadioButton = ({
         <Input
           type="radio"
           key={radio.value}
-          id={radio.value}
+          id={radio.label}
           name={name}
           value={radio.value}
           checked={initialChecked === radio.value}
@@ -41,7 +42,7 @@ const RadioButton = ({
           labelText={getlowerCaseFirstLetter(radio.label, language)}
         />
       ))}
-      {formInfoText && <section className="form-info">{formInfoText}</section>}
+      {inputInfo && <InputInfo inputInfo={inputInfo} />}
     </div>
   );
 };

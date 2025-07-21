@@ -126,6 +126,7 @@ invalidPassword;Invalid password;Ugyldig adgangskode
 invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for planlagt dato
 invalidUserData;Invalid user data;Ugyldig bruger data
 items;items;stk
+kid;Kid;Barn
 kids;Kids;Børn
 language;Language;Sprog
 list;List;Liste
@@ -145,6 +146,7 @@ material;Material;Materiale
 materialAndCare;Material and care;Materiale and vaskeanvisning
 materialRequired;Please insert material;Indsæt venligst materiale
 maximumFileSize;Maximum file size;Maksimal filstørrelse
+man;Man;Mand
 men;Men;Mænd
 menu;Menu;Menu
 minLength;At least 8 characters;Mindst 8 tegn
@@ -238,6 +240,8 @@ scheduledDateMustBeFuture;Scheduled date must be after now;Planlagt dato skal v�
 scheduledToBePubliched;is scheduled to be published at;er planlagt til udgivelse den 
 search;Search;Søg
 selectPreferences;Select preferred language and currency;Vælg venligst sprog og valuta
+selectColor;Select color;Vælg farve
+selectSize;Select size;Vælg størrelse
 shoes;Shoes;Sko
 shopCart;Shopping cart;Indkøbskurv
 shopKidsHeading;Playful by Nature;Leg er liv
@@ -301,6 +305,7 @@ viewYourFavorites;View your favorites;Se dine favoritter
 warning;Warning;Warning
 welcome;Welcome;Velkommen
 white;White;Hvid
+woman;Woman;Dame
 women;Women;Damer
 yellow;Yellow;Gul
 silver;Silver;Sølv

@@ -15,7 +15,7 @@ const ModalHeader = ({
 }: ModalHeaderProps) => {
   const { language } = useLanguage();
   return (
-    <LayoutElement as="header" className="modal-header" ariaLabel="Dialog">
+    <LayoutElement className="modal-header" ariaLabel="Dialog">
       <h2 className="modal-title" id="modal-title">
         {modalHeadertext}
       </h2>

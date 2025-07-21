@@ -1,7 +1,4 @@
-import { MainCategory } from './adminApiTypes';
-
-export type RoleTypes = 'Employee' | 'User';
-export type Status = 'Published' | 'Inactive' | 'Scheduled';
+import { Status } from './adminApiTypes';
 
 export type CurrencyResponse = {
   data: Record<string, { value: number }>;
@@ -67,12 +64,4 @@ export type ReviewRequest = {
 export type BasePagination = {
   page: number;
   pages: number;
-};
-
-export type BaseSubCategory = DefaultResponseType & {
-  _id: string;
-  category: MainCategory;
-  categoryStatus: Status;
-  subCategoryName: string;
-  translationKey: string;
 };

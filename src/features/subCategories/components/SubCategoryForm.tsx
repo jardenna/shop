@@ -154,7 +154,7 @@ const SubCategoryForm = ({
           name="translationKey"
           labelText={language.translationKey}
           errorText={language[errors.translationKey]}
-          inputHelpText={language.translationKeyHelpText}
+          inputInfo={language.translationKeyHelpText}
           required
         />
         <SharedCategoryInputs

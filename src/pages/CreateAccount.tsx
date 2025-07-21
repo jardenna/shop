@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router';
 import type {
   AuthRequest,
-  RoleTypes,
+  Roles,
   UserResponse,
 } from '../app/api/apiTypes/adminApiTypes';
 import AuthForm from '../components/authForm/AuthForm';
@@ -51,7 +51,7 @@ const CreateAccount = ({ navigateTo, currentUser }: CreateAccountProps) => {
 
       const result = await registerUser({
         ...rest,
-        role: rest.role as RoleTypes,
+        role: rest.role as Roles,
       }).unwrap();
 
       if (result.success) {

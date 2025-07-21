@@ -1,5 +1,3 @@
-import { IconName } from '../../types/enums';
-import Icon from '../icons/Icon';
 import VisuallyHidden from '../VisuallyHidden';
 import FormError from './FormError';
 
@@ -8,7 +6,6 @@ type FormLabelErrorProps = {
   labelText: string;
   className?: string;
   errorText?: string;
-  iconName?: IconName;
   inputHasNoLabel?: boolean;
   required?: boolean;
 };
@@ -20,7 +17,6 @@ const FormLabel = ({
   inputHasNoLabel,
   errorText,
   className = '',
-  iconName,
 }: FormLabelErrorProps) => (
   <>
     <span className={inputHasNoLabel ? '' : 'form-label-container'}>
@@ -30,7 +26,6 @@ const FormLabel = ({
         </VisuallyHidden>
       ) : (
         <label htmlFor={id} className={className}>
-          {iconName && <Icon iconName={iconName} title={iconName} />}
           {labelText}
           {required && <span aria-hidden="true">*</span>}
         </label>

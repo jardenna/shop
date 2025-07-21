@@ -7,7 +7,7 @@ import HeaderIcons from '../headerIcons/HeaderIcons';
 import LayoutElement from '../LayoutElement';
 import { ShopPath } from '../nav/enums';
 import NavContainer from '../nav/NavContainer';
-import { navList } from '../nav/navList';
+import { navList } from '../nav/navLists';
 import './_header.scss';
 import Logo from './Logo';
 
@@ -40,7 +40,7 @@ const Header = ({
   secondaryActionBtn,
   isMobileSize,
 }: HeaderProps) => (
-  <LayoutElement as="header" className="main-header" ariaLabel={ariaLabel}>
+  <LayoutElement className="main-header" ariaLabel={ariaLabel}>
     <div className="container main-header-container">
       <Logo linkTo={ShopPath.Root} />
       {!isMobileSize ? (

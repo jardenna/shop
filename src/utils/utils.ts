@@ -1,15 +1,7 @@
-import type { ProductSizes } from '../app/api/apiTypes/sharedApiTypes';
 import { ValidationMessage } from '../types/enums';
 
 const oneDay = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
 const currencyCacheKey = 'exchangeRates';
-
-const sizeList: ProductSizes[] = ['S', 'M', 'L', 'XL', 'Onesize'];
-
-const roleButtonList = [
-  { value: 'Employee', label: 'employee' },
-  { value: 'User', label: 'user' },
-];
 
 const formatNumber = (value: number, lang: 'en' | 'da') =>
   new Intl.NumberFormat(lang === 'en' ? 'en-US' : 'da-DK').format(value);
@@ -46,6 +38,4 @@ export {
   getErrorMessage,
   getlowerCaseFirstLetter,
   oneDay,
-  roleButtonList,
-  sizeList,
 };

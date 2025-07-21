@@ -9,6 +9,11 @@ export type ShopProductsParams = BaseProductParams & {
   subCategoryId?: string;
 };
 
+export type Product = BaseProduct & {
+  categoryName: string;
+  subCategoryName: string;
+};
+
 export type ShopAllProductsResponse = {
   page: number;
   pages: number;
@@ -17,7 +22,7 @@ export type ShopAllProductsResponse = {
   success: boolean;
 };
 
-export type ShopProductResponse = BaseProduct & {
+export type ShopProductResponse = Product & {
   subCategory: string;
 };
 

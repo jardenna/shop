@@ -25,7 +25,6 @@ const CollectionAside = ({
     <aside className="collection-aside">
       <LayoutElement
         ariaLabel={language.page}
-        as="header"
         className="collection-aside-header"
       >
         <h1>{asideHeading}</h1>

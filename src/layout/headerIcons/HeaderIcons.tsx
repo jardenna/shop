@@ -110,5 +110,3 @@ const HeaderIcons = ({
 };
 
 export default HeaderIcons;
-
-// Wish list, 8 Items

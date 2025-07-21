@@ -25,18 +25,8 @@ form {
   margin-bottom: 12px;
   width: 100%;
   padding: 16px 24px;
-}
 
-.form-span-container,
-.form-label-container {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 4px;
-}
-
-.form-info {
-  font-style: italic;
-  font-size: $font-mini;
-  line-height: rem(18px);
-  margin-block: 12px;
+  h3 {
+    font-family: $font-primary;
+  }
 }

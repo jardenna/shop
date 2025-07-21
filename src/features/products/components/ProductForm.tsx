@@ -8,7 +8,6 @@ import type {
 } from '../../../app/api/apiTypes/adminApiTypes';
 import useDatePicker from '../../../components/datePicker/useDatePicker';
 import Form from '../../../components/form/Form';
-import Checkbox from '../../../components/formElements/checkbox/Checkbox';
 import FileInput from '../../../components/formElements/fileInput/FileInput';
 import ProductImgList from '../../../components/formElements/fileInput/ProductImgList';
 import Input from '../../../components/formElements/Input';
@@ -16,6 +15,7 @@ import Textarea from '../../../components/formElements/Textarea';
 import ToggleSwitch from '../../../components/formElements/toggleSwitch/ToggleSwitch';
 import validateProduct from '../../../components/formElements/validation/validateProduct';
 import useMessagePopup from '../../../components/messagePopup/useMessagePopup';
+import SizeListChooseMultiple from '../../../components/productLists/SizeListChooseMultiple';
 import ColorOptions from '../../../components/selectbox/ColorOptions';
 import Selectbox from '../../../components/selectbox/Selectbox';
 import StatusOptions from '../../../components/selectbox/StatusOptions';
@@ -24,7 +24,9 @@ import useFormValidation from '../../../hooks/useFormValidation';
 import { AdminPath } from '../../../layout/nav/enums';
 import variables from '../../../scss/variables.module.scss';
 import type { OptionType } from '../../../types/types';
-import { getlowerCaseFirstLetter, sizeList } from '../../../utils/utils';
+import { colorList, getColorOptions } from '../../../utils/colorUtils';
+import { sizeList } from '../../../utils/productLists';
+import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
 import useCurrency from '../../currency/useCurrency';
 import useLanguage from '../../language/useLanguage';
@@ -42,14 +44,6 @@ type ProductFormProps = {
   images?: string[];
   onReset: () => void;
 };
-
-const checkboxItems = [
-  { value: 'S', label: 'S' },
-  { value: 'M', label: 'M' },
-  { value: 'L', label: 'L' },
-  { value: 'XL', label: 'XL' },
-  { value: 'Onesize', label: 'Onesize' },
-];
 
 const ProductForm = ({
   id,
@@ -71,26 +65,11 @@ const ProductForm = ({
     }),
   );
 
-  const colorOptions = [
-    { label: language.black, value: 'black' },
-    { label: language.grey, value: 'grey' },
-    { label: language.brown, value: 'brown' },
-    {
-      label: language.white,
-      value: 'white',
-      border: variables.colorIconBorder,
-    },
-    { label: language.blue, value: 'blue' },
-    { label: language.yellow, value: 'yellow' },
-    { label: language.orange, value: 'orange' },
-    { label: language.red, value: 'red' },
-    { label: language.purple, value: 'purple' },
-    { label: language.blue, value: 'blue' },
-    { label: language.green, value: 'green' },
-    { label: language.gold, value: 'gold' },
-    { label: language.silver, value: 'silver' },
-    { label: language.pink, value: 'pink' },
-  ];
+  const sortedColorList = getColorOptions({
+    colors: colorList,
+    language,
+    borderColor: variables.colorIconBorder,
+  });
 
   const initialState: ProductRequest = {
     brand: selectedProduct?.brand ?? '',
@@ -231,6 +210,10 @@ const ProductForm = ({
       });
     }
   }
+  const checkBoxSizeList = sizeList.map((size) => ({
+    value: size,
+    label: size,
+  }));
 
   return (
     <Form
@@ -330,25 +313,22 @@ const ProductForm = ({
         </div>
         <div className="flex-1">
           <FormCard legendText={language.productVariants} onReset={onReset}>
-            <div>
-              <span className="form-span-container">
-                {language.sizes}
-                <span className="error-message">{language[errors.sizes]}</span>
-              </span>
-              <Checkbox
-                onChange={onChange}
-                values={values.sizes}
-                checkBoxList={checkboxItems}
-                name="sizes"
-              />
-            </div>
+            <SizeListChooseMultiple
+              errorText={language[errors.sizes]}
+              onChange={onChange}
+              values={values.sizes}
+              sizeList={checkBoxSizeList}
+              optionGroupTitle={language.sizes}
+              name="sizes"
+            />
             <Selectbox
               id="colors"
               name="colors"
               errorText={language[errors.colors]}
               closeMenuOnSelect={false}
               labelText={language.colours}
-              options={colorOptions}
+              options={sortedColorList}
+              menuIsOpen
               components={{ Option: ColorOptions }}
               isSearchable
               defaultValue={defaultColorValue}

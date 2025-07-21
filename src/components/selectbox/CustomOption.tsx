@@ -12,7 +12,7 @@ const CustomOption = <OptionType,>({
   isSelected,
   render,
 }: CustomOptionProps<OptionType>) => {
-  const className = `custom-option ${
+  const className = `select-box-menu-list-item  ${
     isSelected ? 'selected' : ''
   } ${isFocused ? 'focused' : ''}`;
 

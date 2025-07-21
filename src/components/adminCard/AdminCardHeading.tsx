@@ -17,10 +17,9 @@ const AdminCardHeading = ({
   ariaLabel,
 }: AdminCardHeadingProps) => (
   <div className="flex-justify-space-between">
-    <LayoutElement as="header" ariaLabel={ariaLabel}>
+    <LayoutElement ariaLabel={ariaLabel}>
       <h2 className="admin-card-title">{name}</h2>
     </LayoutElement>
-
     <Badge
       badgeClassName={badgeClassName}
       badgeText={badgeText}

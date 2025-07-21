@@ -1,6 +1,6 @@
 import type { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
 import NavContainer from '../../layout/nav/NavContainer';
-import { adminNavList } from '../../layout/nav/navList';
+import { adminNavList } from '../../layout/nav/navLists';
 import './_aside.scss';
 
 type AsideProps = {

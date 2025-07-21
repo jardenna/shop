@@ -1,16 +1,16 @@
-import type { RoleTypes } from '../../app/api/apiTypes/adminApiTypes';
+import type { Roles } from '../../app/api/apiTypes/adminApiTypes';
 import RadioButton from '../../components/formElements/radiobuttons/RadioButton';
 import type { ChangeInputType } from '../../types/types';
-import { roleButtonList } from '../../utils/utils';
+import { roleList } from '../../utils/productLists';
 
 type RoleRadioBtnProps = {
-  roleValue: RoleTypes;
+  roleValue: Roles;
   onChange: (event: ChangeInputType) => void;
 };
 
 const RoleRadioBtn = ({ roleValue, onChange }: RoleRadioBtnProps) => (
   <RadioButton
-    radioButtonList={roleButtonList}
+    radioButtonList={roleList}
     name="role"
     initialChecked={roleValue}
     onChange={onChange}
