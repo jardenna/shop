@@ -2,13 +2,13 @@ import { CSSProperties } from 'react';
 import VisuallyHidden from '../VisuallyHidden';
 
 type ProductColorItemProps = {
-  colour: string;
+  ariaLabel: string;
   style: CSSProperties;
 };
 
-const ProductColorItem = ({ colour, style }: ProductColorItemProps) => (
+const ProductColorItem = ({ ariaLabel, style }: ProductColorItemProps) => (
   <li style={style} className="option-box">
-    <VisuallyHidden>{colour}</VisuallyHidden>
+    <VisuallyHidden>{ariaLabel}</VisuallyHidden>
   </li>
 );
 

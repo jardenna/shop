@@ -1,5 +1,6 @@
 import useLanguage from '../../features/language/useLanguage';
 import variables from '../../scss/variables.module.scss';
+import { getColorOptions } from '../../utils/colorUtils';
 import './_product-color-list.scss';
 import ProductColorItem from './ProductColorItem';
 
@@ -18,25 +19,29 @@ const ProductColorList = ({
 }: ProductColorListProps) => {
   const { language } = useLanguage();
 
-  const sortedColors = [...colours].sort();
+  const colorList = getColorOptions({
+    colors: colours,
+    language,
+    borderColor: variables.colorIconBorder,
+  });
 
   // Calculate how many colors to show and how many are hidden
-  const visibleColors = sortedColors.slice(0, count);
-  const hiddenColorsCount = Math.max(sortedColors.length - count, 0);
+  const visibleColors = colorList.slice(0, count);
+  const hiddenColorsCount = Math.max(colorList.length - count, 0);
 
   return (
     <ul
       className={`color-list ${optionSize}`}
       aria-label={language.availableColors}
     >
-      {visibleColors.map((colour) => (
+      {visibleColors.map(({ label, color, border }) => (
         <ProductColorItem
-          key={colour}
-          colour={language[colour]}
+          key={label}
           style={{
-            backgroundColor: colour,
-            borderColor: colour === 'white' ? variables.colorIconBorder : '',
+            backgroundColor: color,
+            borderColor: border,
           }}
+          ariaLabel={label}
         />
       ))}
       {hiddenColorsCount > 0 && <li>{`+ ${hiddenColorsCount}`}</li>}

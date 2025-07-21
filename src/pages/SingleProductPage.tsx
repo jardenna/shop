@@ -10,16 +10,18 @@ import useLanguage from '../features/language/useLanguage';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
 import useFormValidation from '../hooks/useFormValidation';
 import MetaTags from '../layout/nav/MetaTags';
-import './SingleProductPage.styles.scss';
 import { getColorOptions } from '../utils/colorUtils';
+import './SingleProductPage.styles.scss';
 
 const SingleProductPage = () => {
   const { id } = useParams();
   const { language } = useLanguage();
   const { data: product } = useGetSingleProductQuery(id ?? '');
+
   const colorList = product
     ? getColorOptions({ colors: product.colors, language })
     : [];
+
   const initialState = {
     color: '',
     size: '',

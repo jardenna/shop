@@ -3,7 +3,7 @@ const colorMap: Record<string, string> = {
   grey: '#99a4a9',
   brown: '#531e0a',
   white: '#fff',
-  blue: '#165272ff',
+  blue: '#165272',
   yellow: '#facc15',
   orange: '#fb923c',
   red: '#db1139',
@@ -54,7 +54,7 @@ const getColorOptions = ({
       label: language[color],
       value: color,
       color: colorMap[color],
-      ...(color === 'white' && borderColor && { border: borderColor }),
+      ...(colorMap[color] === '#fff' && borderColor && { border: borderColor }),
     }))
     .sort((a, b) => a.label.localeCompare(b.label));
 
