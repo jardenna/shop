@@ -1,5 +1,4 @@
 import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
-import ColorListReadOnly from '../../../components/productColorLists/ColorListReadOnly';
 import ColorReadOnly from '../../../components/productColorLists/ColorReadOnly';
 import SizeListReadOnly from '../../../components/productLists/SizeListReadOnly';
 import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
@@ -13,8 +12,7 @@ const ProductCardListContent = ({ product }: ProductCardListContentProps) => (
     <p>{product.description}</p>
     <ProductDiscountPrice price={product.price} discount={product.discount} />
     <SizeListReadOnly sizes={product.sizes} />
-    <ColorListReadOnly colours={product.colors} />
-    <ColorReadOnly colors={product.colors} ariaId="colors" />
+    <ColorReadOnly colors={product.colors} variant="small" />
   </>
 );
 

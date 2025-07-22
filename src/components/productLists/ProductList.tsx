@@ -1,32 +1,20 @@
 import { ReactNode } from 'react';
-import OptionGroupTitle from '../formElements/radiobuttons/OptionGroupTitle';
+import { OptionGroupHeading } from '../../types/types';
+import OptionGroupTitle from './OptionGroupTitle';
 import './_product-list.scss';
 
 type ProductListProps = {
-  ariaId: string;
   children: ReactNode;
-  errorText?: string;
-  optionGroupTitle?: string;
+  groupTitle?: OptionGroupHeading;
 };
 
-const ProductList = ({
-  children,
-  errorText,
-  optionGroupTitle,
-  ariaId,
-}: ProductListProps) => (
-  <div>
-    {optionGroupTitle && (
-      <OptionGroupTitle
-        errorText={errorText}
-        text={optionGroupTitle}
-        id={ariaId}
-      />
-    )}
-    <ul className="product-list" id={ariaId}>
+const ProductList = ({ children, groupTitle }: ProductListProps) => (
+  <section>
+    {groupTitle && <OptionGroupTitle groupTitle={groupTitle} />}
+    <ul className="product-list" id={groupTitle?.id}>
       {children}
     </ul>
-  </div>
+  </section>
 );
 
 export default ProductList;

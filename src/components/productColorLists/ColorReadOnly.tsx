@@ -1,23 +1,25 @@
 import useLanguage from '../../features/language/useLanguage';
 import variables from '../../scss/variables.module.scss';
+import { OptionGroupHeading } from '../../types/types';
 import { getColorOptions } from '../../utils/colorUtils';
-import { getlowerCaseFirstLetter } from '../../utils/utils';
 import ProductList from '../productLists/ProductList';
-import ProductListItem from '../productLists/ProductListItem';
+import ProductListItem, {
+  ProductLabelVariant,
+} from '../productLists/ProductListItem';
 import VisuallyHidden from '../VisuallyHidden';
 
 type ColorReadOnlytProps = {
-  ariaId: string;
   colors: string[];
   count?: number;
-  optionGroupTitle?: string;
+  groupTitle?: OptionGroupHeading;
+  variant?: ProductLabelVariant;
 };
 
 const ColorReadOnly = ({
-  optionGroupTitle,
-  ariaId,
   count = 3,
   colors,
+  groupTitle,
+  variant,
 }: ColorReadOnlytProps) => {
   const { language } = useLanguage();
 
@@ -32,22 +34,22 @@ const ColorReadOnly = ({
   const hiddenColorsCount = Math.max(colorList1.length - count, 0);
 
   return (
-    <ProductList ariaId={ariaId} optionGroupTitle={optionGroupTitle}>
-      {visibleColors.map(({ label, value, color, border }) => (
+    <ProductList groupTitle={groupTitle}>
+      {visibleColors.map(({ label, color, border }) => (
         <ProductListItem
           key={color}
           as="span"
-          ariaLabel={getlowerCaseFirstLetter(value, language)}
-          className="option-box"
+          variant={variant}
           style={{
             backgroundColor: color,
             borderColor: border,
           }}
+          className="color-list-item"
         >
           <VisuallyHidden>{label}</VisuallyHidden>
         </ProductListItem>
       ))}
-      {hiddenColorsCount > 0 && <span>{`+ ${hiddenColorsCount}`}</span>}
+      {hiddenColorsCount > 0 && <li>{`+ ${hiddenColorsCount}`}</li>}
     </ProductList>
   );
 };

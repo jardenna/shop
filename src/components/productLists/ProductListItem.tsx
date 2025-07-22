@@ -2,36 +2,49 @@ import { CSSProperties, ElementType, ReactNode } from 'react';
 import { IconName } from '../../types/enums';
 import IconContent from '../IconContent';
 
+export type ProductLabelVariant = 'mini' | 'small' | 'medium' | 'large';
+
+export type IconType = {
+  ariaLabel: string;
+  iconName: IconName;
+  title: string;
+};
+
 type ProductListItemProps = {
   children: ReactNode;
-  ariaLabel?: string;
   as?: ElementType;
   className?: string;
   htmlFor?: string;
-  iconName?: IconName;
+  icon?: IconType;
+  isUnavailable?: boolean;
   style?: CSSProperties;
   text?: string;
+  variant?: ProductLabelVariant;
 };
 
 const ProductListItem = ({
   children,
-  className,
   as: Tag = 'label',
   htmlFor,
   text,
-  iconName,
-  ariaLabel,
+  icon,
+  variant = 'medium',
   style,
+  isUnavailable,
+  className = 'size-list-item',
 }: ProductListItemProps) => (
   <li className={`product-list-item ${className}`} style={style}>
-    <Tag className="product-label" htmlFor={htmlFor}>
-      {iconName ? (
+    <Tag
+      htmlFor={htmlFor}
+      className={`product-label ${variant} ${isUnavailable ? 'text-line-through' : ''}`}
+    >
+      {icon ? (
         <IconContent
-          iconName={iconName}
+          iconName={icon.iconName}
           fill={htmlFor}
           size="70"
-          title={iconName}
-          ariaLabel={ariaLabel || ''}
+          title=""
+          ariaLabel={icon.ariaLabel}
         />
       ) : (
         text

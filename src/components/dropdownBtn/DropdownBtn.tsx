@@ -9,7 +9,6 @@ import DropdownList from './DropdownList';
 export type DropdownItem = {
   label: string;
   btnVariant?: BtnVariant;
-  className?: string;
   icon?: ReactNode;
   onClick: () => void;
 };
@@ -33,7 +32,7 @@ const DropdownBtn = ({
   showArrow,
   placement,
   ariaLabel,
-  triggerBtnClassName = '',
+  triggerBtnClassName,
 }: DropdownBtnProps) => {
   const { popupRef, popupIsOpen, togglePopupList, arrowRef, buttonRef } =
     usePopup({ placement });

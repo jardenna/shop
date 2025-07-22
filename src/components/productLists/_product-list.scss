@@ -1,10 +1,16 @@
 @use '../../scss/globals' as *;
 
+/* stylelint-disable-next-line no-descending-specificity */
 .product-list {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
 
   &:has(.color-list-item) {
+    gap: 4px;
+  }
+
+  &:has(.choose-color-list-item) {
     gap: 16px;
   }
 
@@ -13,17 +19,25 @@
   }
 
   .product-list-item {
-    border: 1px solid $color-border;
-    border-right-color: transparent;
-
-    &.text-line-through {
-      text-decoration-thickness: 2px;
-    }
+    border: 1px solid transparent;
 
     input {
       clip-path: inset(50%);
       position: absolute;
     }
+  }
+
+  .choose-color-list-item {
+    border-color: $color-border;
+
+    &:has(input[type='radio']:checked) {
+      border-color: $color-black;
+    }
+  }
+
+  .size-list-item {
+    border-color: $color-border;
+    border-right-color: transparent;
 
     &:last-child {
       border-right-color: $color-border;
@@ -44,27 +58,39 @@
   }
 
   .product-label {
-    width: rem(68px);
-    height: rem(68px);
     display: flex;
     align-items: center;
     justify-content: center;
-    white-space: pre;
 
-    &::after,
-    &::before {
-      content: ' ';
-      display: flex;
+    &.mini {
+      width: rem(12px);
+      height: rem(12px);
     }
-  }
 
-  .color-list-item {
-    border-right-color: $color-border;
-    background-color: $color-light-gray-20;
+    &.small {
+      width: rem(24px);
+      height: rem(24px);
+    }
 
-    .product-label {
+    &.medium {
+      width: rem(68px);
+      height: rem(68px);
+    }
+
+    &.large {
       width: rem(100px);
-      height: rem(128px);
+      height: rem(120px);
+    }
+
+    &.text-line-through {
+      text-decoration-thickness: 2px;
+      white-space: pre;
+
+      &::after,
+      &::before {
+        content: ' ';
+        display: flex;
+      }
     }
   }
 }

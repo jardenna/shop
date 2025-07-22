@@ -15,7 +15,7 @@ import Textarea from '../../../components/formElements/Textarea';
 import ToggleSwitch from '../../../components/formElements/toggleSwitch/ToggleSwitch';
 import validateProduct from '../../../components/formElements/validation/validateProduct';
 import useMessagePopup from '../../../components/messagePopup/useMessagePopup';
-import SizeListChooseMultiple from '../../../components/productLists/SizeListChooseMultiple';
+import SizeListMultiChoice from '../../../components/productLists/SizeListMultiChoice';
 import ColorOptions from '../../../components/selectbox/ColorOptions';
 import Selectbox from '../../../components/selectbox/Selectbox';
 import StatusOptions from '../../../components/selectbox/StatusOptions';
@@ -313,12 +313,15 @@ const ProductForm = ({
         </div>
         <div className="flex-1">
           <FormCard legendText={language.productVariants} onReset={onReset}>
-            <SizeListChooseMultiple
-              errorText={language[errors.sizes]}
+            <SizeListMultiChoice
               onChange={onChange}
               values={values.sizes}
               sizeList={checkBoxSizeList}
-              optionGroupTitle={language.sizes}
+              groupTitle={{
+                title: language.sizes,
+                id: 'choose-product-colors',
+                errorText: language[errors.sizes],
+              }}
               name="sizes"
             />
             <Selectbox

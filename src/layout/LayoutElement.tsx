@@ -11,7 +11,7 @@ const LayoutElement = ({
   children,
   ariaLabel,
   as: Tag = 'header',
-  className = '',
+  className,
 }: LayoutElementProps) => (
   <Tag className={className} aria-label={ariaLabel}>
     {children}

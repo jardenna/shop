@@ -4,7 +4,7 @@ type ImgProps = {
   className?: string;
 };
 
-const Img = ({ className = '', src, alt }: ImgProps) => (
+const Img = ({ className, src, alt }: ImgProps) => (
   <img className={className} src={src} alt={alt} loading="lazy" />
 );
 

@@ -5,7 +5,7 @@ type ProductPriceProps = {
   className?: string;
 };
 
-const ProductPrice = ({ price, className = '' }: ProductPriceProps) => {
+const ProductPrice = ({ price, className }: ProductPriceProps) => {
   const { convertedPrice } = useCurrency(price);
 
   return <span className={className}>{convertedPrice}</span>;

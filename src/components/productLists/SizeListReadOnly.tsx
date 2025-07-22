@@ -1,5 +1,6 @@
 import { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
 import useLanguage from '../../features/language/useLanguage';
+import { OptionGroupHeading } from '../../types/types';
 import { sizeList } from '../../utils/productLists';
 import VisuallyHidden from '../VisuallyHidden';
 import ProductList from './ProductList';
@@ -7,24 +8,19 @@ import ProductListItem from './ProductListItem';
 
 type SizeListReadOnlyProps = {
   sizes: ProductSizes[];
-  optionGroupTitle?: string;
+  groupTitle?: OptionGroupHeading;
 };
 
-const SizeListReadOnly = ({
-  sizes,
-  optionGroupTitle,
-}: SizeListReadOnlyProps) => {
+const SizeListReadOnly = ({ sizes, groupTitle }: SizeListReadOnlyProps) => {
   const { language } = useLanguage();
 
-  console.log(sizes);
-
   return (
-    <ProductList ariaId="sizes" optionGroupTitle={optionGroupTitle}>
+    <ProductList groupTitle={groupTitle}>
       {sizeList.map((size) => (
         <ProductListItem
           as="span"
           text={size}
-          className={sizes.includes(size) ? '' : 'text-line-through'}
+          isUnavailable={!sizes.includes(size)}
           key={size}
         >
           <VisuallyHidden>

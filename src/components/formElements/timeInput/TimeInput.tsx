@@ -19,7 +19,7 @@ const TimeInput = ({
   id,
   labelText,
   name,
-  className = '',
+  className,
   inputHasNoLabel,
   onChange,
   value,

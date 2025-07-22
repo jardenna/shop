@@ -21,7 +21,7 @@ const Form = ({
   children,
   onSubmit,
   submitBtnLabel,
-  className = '',
+  className,
   isLoading,
   ariaLabel,
   onCancel,

@@ -1,30 +1,21 @@
 import { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
-import { ChangeInputType } from '../../types/types';
+import { ProductListChoiceProps } from '../../types/types';
 import ProductList from './ProductList';
 import ProductListItem from './ProductListItem';
 
-type SizeListChooseSingletProps = {
+type SizeListSingleChoiceProps = ProductListChoiceProps & {
   initialChecked: string;
-  name: string;
   sizeList: ProductSizes[];
-  errorText?: string;
-  optionGroupTitle?: string;
-  onChange: (event: ChangeInputType) => void;
 };
 
-const SizeListChooseSingle = ({
+const SizeListSingleChoice = ({
   initialChecked,
   sizeList,
   onChange,
-  errorText,
-  optionGroupTitle,
+  groupTitle,
   name,
-}: SizeListChooseSingletProps) => (
-  <ProductList
-    ariaId={name}
-    optionGroupTitle={optionGroupTitle}
-    errorText={errorText}
-  >
+}: SizeListSingleChoiceProps) => (
+  <ProductList groupTitle={groupTitle}>
     {sizeList.map((size) => (
       <ProductListItem key={size} htmlFor={size} text={size}>
         <input
@@ -40,4 +31,4 @@ const SizeListChooseSingle = ({
   </ProductList>
 );
 
-export default SizeListChooseSingle;
+export default SizeListSingleChoice;

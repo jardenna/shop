@@ -22,7 +22,7 @@ const IconBtn = ({
   iconName,
   title,
   onClick,
-  className = '',
+  className,
   ariaSelected,
   ariaExpanded,
   btnType,
