@@ -1,38 +1,52 @@
-import { FormEvent } from 'react';
 import useLanguage from '../../features/language/useLanguage';
+import { BtnVariant, IconName } from '../../types/enums';
 import type { ChangeInputType } from '../../types/types';
-import Input from '../formElements/Input';
+import Icon from '../icons/Icon';
+import Tooltip from '../tooltip/Tooltip';
+import VisuallyHidden from '../VisuallyHidden';
+import TableSearch from './TableSearchInput';
 
-type TableSearchProps = {
+type TableSearchInputProps = {
+  label: string;
   title: string;
   value: string;
   onFilterRows: (event: ChangeInputType) => void;
 };
 
-const TableSearch = ({ title, onFilterRows, value }: TableSearchProps) => {
+const TableSearchInput = ({
+  title,
+  value,
+  onFilterRows,
+  label,
+}: TableSearchInputProps) => {
   const { language } = useLanguage();
-  const text = `${language.filter} ${language[title]}`;
+
   return (
-    <form
-      onSubmit={(event: FormEvent) => {
-        event.preventDefault();
-      }}
-    >
-      <Input
-        className="table-search"
-        type="search"
-        name={title}
-        id={title}
-        placeholder={text}
-        value={value}
-        onChange={onFilterRows}
-        labelText={text}
-        inputHasNoLabel
-        autoFocus
-        autoComplete="on"
-      />
-    </form>
+    <div className="table-search-input">
+      <Tooltip
+        placement="bottom-start"
+        ariaControls="filter"
+        tooltip={
+          <TableSearch
+            title={title}
+            onFilterRows={onFilterRows}
+            value={value}
+          />
+        }
+        triggerBtnVariant={BtnVariant.Ghost}
+        ariaLabel={`${language.filter} ${label}`}
+      >
+        <Icon title={language.filterRow} iconName={IconName.Filter} />
+
+        {value && (
+          <>
+            <VisuallyHidden>{language.filtersApplied}</VisuallyHidden>
+            <span className="dot" aria-hidden />
+          </>
+        )}
+      </Tooltip>
+    </div>
   );
 };
 
-export default TableSearch;
+export default TableSearchInput;

@@ -12,7 +12,7 @@ import SkeletonList from '../skeleton/SkeletonList';
 import VisuallyHidden from '../VisuallyHidden';
 import './_table.scss';
 import TableGridList from './TableGridList';
-import TableSearchInput from './TableSearchInput';
+import TableSearchInput from './TableSearch';
 
 export type Column<T> = {
   key: keyof T;
