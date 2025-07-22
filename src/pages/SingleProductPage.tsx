@@ -3,8 +3,8 @@ import Accordion from '../components/accordion/Accordion';
 import Favorites from '../components/favorites/Favorites';
 import Form from '../components/form/Form';
 import Img from '../components/Img';
-import ColorListChooseSingle from '../components/productColorLists/ColorListChooseSingle';
-import SizeListChooseSingle from '../components/productLists/SizeListChooseSingle';
+import ColorListSingleChoice from '../components/productColorLists/ColorListSingleChoice';
+import SizeListSingleChoice from '../components/productLists/SizeListSingleChoice';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
 import useLanguage from '../features/language/useLanguage';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
@@ -88,7 +88,7 @@ const SingleProductPage = () => {
               discount={product.discount}
             />
             <Form onSubmit={onSubmit} submitBtnLabel={language.create}>
-              <SizeListChooseSingle
+              <SizeListSingleChoice
                 sizeList={product.sizes}
                 initialChecked={values.size}
                 onChange={onChange}
@@ -98,7 +98,7 @@ const SingleProductPage = () => {
                   id: 'choose-product-size',
                 }}
               />
-              <ColorListChooseSingle
+              <ColorListSingleChoice
                 colorList={colorList}
                 initialChecked={values.color}
                 onChange={onChange}

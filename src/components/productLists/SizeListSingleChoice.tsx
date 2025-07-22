@@ -3,18 +3,18 @@ import { ProductListChoiceProps } from '../../types/types';
 import ProductList from './ProductList';
 import ProductListItem from './ProductListItem';
 
-type SizeListChooseSingleProps = ProductListChoiceProps & {
+type SizeListSingleChoiceProps = ProductListChoiceProps & {
   initialChecked: string;
   sizeList: ProductSizes[];
 };
 
-const SizeListChooseSingle = ({
+const SizeListSingleChoice = ({
   initialChecked,
   sizeList,
   onChange,
   groupTitle,
   name,
-}: SizeListChooseSingleProps) => (
+}: SizeListSingleChoiceProps) => (
   <ProductList groupTitle={groupTitle}>
     {sizeList.map((size) => (
       <ProductListItem key={size} htmlFor={size} text={size}>
@@ -31,4 +31,4 @@ const SizeListChooseSingle = ({
   </ProductList>
 );
 
-export default SizeListChooseSingle;
+export default SizeListSingleChoice;

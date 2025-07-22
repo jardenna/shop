@@ -8,18 +8,18 @@ type SizeList = {
   value: ProductSizes;
 };
 
-type SizeListChooseMultipleProps = ProductListChoiceProps & {
+type SizeListMultiChoiceProps = ProductListChoiceProps & {
   sizeList: SizeList[];
   values: ProductSizes[];
 };
 
-const SizeListChooseMultiple = ({
+const SizeListMultiChoice = ({
   onChange,
   values,
   sizeList,
   name,
   groupTitle,
-}: SizeListChooseMultipleProps) => (
+}: SizeListMultiChoiceProps) => (
   <ProductList groupTitle={groupTitle}>
     {sizeList.map(({ label, value }) => (
       <ProductListItem key={label} htmlFor={label} text={label}>
@@ -36,4 +36,4 @@ const SizeListChooseMultiple = ({
   </ProductList>
 );
 
-export default SizeListChooseMultiple;
+export default SizeListMultiChoice;

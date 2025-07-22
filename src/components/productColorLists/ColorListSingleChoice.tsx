@@ -7,20 +7,20 @@ import { getlowerCaseFirstLetter } from '../../utils/utils';
 import ProductList from '../productLists/ProductList';
 import ProductListItem from '../productLists/ProductListItem';
 
-type ColorListChooseSingleProps = ProductListChoiceProps & {
+type ColorListSingleChoiceProps = ProductListChoiceProps & {
   colorList: ColorOption[];
   initialChecked: string;
   iconName?: string;
 };
 
-const ColorListChooseSingle = ({
+const ColorListSingleChoice = ({
   initialChecked,
   onChange,
   groupTitle,
   name,
   iconName,
   colorList,
-}: ColorListChooseSingleProps) => {
+}: ColorListSingleChoiceProps) => {
   const { language } = useLanguage();
 
   return (
@@ -48,4 +48,4 @@ const ColorListChooseSingle = ({
   );
 };
 
-export default ColorListChooseSingle;
+export default ColorListSingleChoice;
