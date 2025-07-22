@@ -2,7 +2,6 @@ import useLanguage from '../../features/language/useLanguage';
 import variables from '../../scss/variables.module.scss';
 import { OptionGroupHeading } from '../../types/types';
 import { getColorOptions } from '../../utils/colorUtils';
-import { getlowerCaseFirstLetter } from '../../utils/utils';
 import ProductList from '../productLists/ProductList';
 import ProductListItem, {
   ProductLabelVariant,
@@ -36,11 +35,10 @@ const ColorReadOnly = ({
 
   return (
     <ProductList groupTitle={groupTitle}>
-      {visibleColors.map(({ label, value, color, border }) => (
+      {visibleColors.map(({ label, color, border }) => (
         <ProductListItem
           key={color}
           as="span"
-          ariaLabel={getlowerCaseFirstLetter(value, language)}
           variant={variant}
           style={{
             backgroundColor: color,

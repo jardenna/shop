@@ -4,13 +4,18 @@ import IconContent from '../IconContent';
 
 export type ProductLabelVariant = 'mini' | 'small' | 'medium' | 'large';
 
+export type IconType = {
+  ariaLabel: string;
+  iconName: IconName;
+  title: string;
+};
+
 type ProductListItemProps = {
   children: ReactNode;
-  ariaLabel?: string;
   as?: ElementType;
   className?: string;
   htmlFor?: string;
-  iconName?: IconName;
+  icon?: IconType;
   isUnavailable?: boolean;
   style?: CSSProperties;
   text?: string;
@@ -22,8 +27,7 @@ const ProductListItem = ({
   as: Tag = 'label',
   htmlFor,
   text,
-  iconName,
-  ariaLabel,
+  icon,
   variant = 'medium',
   style,
   isUnavailable,
@@ -34,13 +38,13 @@ const ProductListItem = ({
       htmlFor={htmlFor}
       className={`product-label ${variant} ${isUnavailable ? 'text-line-through' : ''}`}
     >
-      {iconName ? (
+      {icon ? (
         <IconContent
-          iconName={iconName}
+          iconName={icon.iconName}
           fill={htmlFor}
           size="70"
           title=""
-          ariaLabel={ariaLabel || ''}
+          ariaLabel={icon.ariaLabel}
         />
       ) : (
         text

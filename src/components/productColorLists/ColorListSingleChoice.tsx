@@ -29,11 +29,14 @@ const ColorListSingleChoice = ({
         <ProductListItem
           key={label}
           htmlFor={color}
-          ariaLabel={getlowerCaseFirstLetter(value, language)}
           text={color}
-          iconName={iconName ? resolveIconName(iconName) : IconName.Woman}
           variant="large"
           className="choose-color-list-item"
+          icon={{
+            iconName: iconName ? resolveIconName(iconName) : IconName.Kid,
+            ariaLabel: getlowerCaseFirstLetter(value, language),
+            title: '',
+          }}
         >
           <input
             type="radio"
