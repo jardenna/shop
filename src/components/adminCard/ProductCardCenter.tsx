@@ -41,6 +41,7 @@ const ProductCardCenter = ({
         <GridTwoCol text={language.material}>{material}</GridTwoCol>
         <ColorReadOnly
           colors={colours}
+          variant="small"
           groupTitle={{
             title: language.colours,
             id: 'view-product-colors',

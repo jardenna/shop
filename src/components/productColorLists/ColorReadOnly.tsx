@@ -4,19 +4,23 @@ import { OptionGroupHeading } from '../../types/types';
 import { getColorOptions } from '../../utils/colorUtils';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 import ProductList from '../productLists/ProductList';
-import ProductListItem from '../productLists/ProductListItem';
+import ProductListItem, {
+  ProductLabelVariant,
+} from '../productLists/ProductListItem';
 import VisuallyHidden from '../VisuallyHidden';
 
 type ColorReadOnlytProps = {
   colors: string[];
   count?: number;
   groupTitle?: OptionGroupHeading;
+  variant?: ProductLabelVariant;
 };
 
 const ColorReadOnly = ({
   count = 3,
   colors,
   groupTitle,
+  variant,
 }: ColorReadOnlytProps) => {
   const { language } = useLanguage();
 
@@ -37,6 +41,7 @@ const ColorReadOnly = ({
           key={color}
           as="span"
           ariaLabel={getlowerCaseFirstLetter(value, language)}
+          variant={variant}
           style={{
             backgroundColor: color,
             borderColor: border,
