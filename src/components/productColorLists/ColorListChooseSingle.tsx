@@ -32,25 +32,23 @@ const ColorListChooseSingle = ({
   return (
     <ProductList groupTitle={groupTitle} errorText={errorText}>
       {colorList.map(({ label, value, color }) => (
-        <div key={label}>
-          <ProductListItem
-            key={color}
-            htmlFor={color}
-            ariaLabel={getlowerCaseFirstLetter(value, language)}
-            text={color}
-            iconName={iconName ? resolveIconName(iconName) : IconName.Woman}
-            className="color-list-item"
-          >
-            <input
-              type="radio"
-              name={name}
-              id={color}
-              value={value}
-              checked={initialChecked === value}
-              onChange={onChange}
-            />
-          </ProductListItem>
-        </div>
+        <ProductListItem
+          key={label}
+          htmlFor={color}
+          ariaLabel={getlowerCaseFirstLetter(value, language)}
+          text={color}
+          iconName={iconName ? resolveIconName(iconName) : IconName.Woman}
+          className="color-list-item"
+        >
+          <input
+            type="radio"
+            name={name}
+            id={color}
+            value={value}
+            checked={initialChecked === value}
+            onChange={onChange}
+          />
+        </ProductListItem>
       ))}
     </ProductList>
   );
