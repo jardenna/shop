@@ -29,6 +29,7 @@ const TableSearch = ({ title, onFilterRows, value }: TableSearchProps) => {
         labelText={text}
         inputHasNoLabel
         autoFocus
+        autoComplete="on"
       />
     </form>
   );
