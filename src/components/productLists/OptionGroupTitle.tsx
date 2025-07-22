@@ -1,10 +1,7 @@
-export type OptionGroupTitle1 = {
-  id: string;
-  title: string;
-};
+import { OptionGroupHeading } from '../../types/types';
 
 type OptionGroupTitleProps = {
-  groupTitle: OptionGroupTitle1;
+  groupTitle: OptionGroupHeading;
   errorText?: string;
 };
 

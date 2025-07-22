@@ -1,10 +1,9 @@
 import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
-import { ChangeInputType } from '../../types/types';
+import { ChangeInputType, OptionGroupHeading } from '../../types/types';
 import { ColorOption } from '../../utils/colorUtils';
 import { resolveIconName } from '../../utils/iconHelpers';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
-import { OptionGroupTitle1 } from '../productLists/OptionGroupTitle';
 import ProductList from '../productLists/ProductList';
 import ProductListItem from '../productLists/ProductListItem';
 
@@ -13,7 +12,7 @@ type ColorListChooseSingletProps = {
   initialChecked: string;
   name: string;
   errorText?: string;
-  groupTitle?: OptionGroupTitle1;
+  groupTitle?: OptionGroupHeading;
   iconName?: string;
   onChange: (event: ChangeInputType) => void;
 };

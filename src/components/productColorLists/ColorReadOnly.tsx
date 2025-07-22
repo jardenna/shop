@@ -1,8 +1,8 @@
 import useLanguage from '../../features/language/useLanguage';
 import variables from '../../scss/variables.module.scss';
+import { OptionGroupHeading } from '../../types/types';
 import { getColorOptions } from '../../utils/colorUtils';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
-import { OptionGroupTitle1 } from '../productLists/OptionGroupTitle';
 import ProductList from '../productLists/ProductList';
 import ProductListItem from '../productLists/ProductListItem';
 import VisuallyHidden from '../VisuallyHidden';
@@ -10,7 +10,7 @@ import VisuallyHidden from '../VisuallyHidden';
 type ColorReadOnlytProps = {
   colors: string[];
   count?: number;
-  groupTitle?: OptionGroupTitle1;
+  groupTitle?: OptionGroupHeading;
 };
 
 const ColorReadOnly = ({

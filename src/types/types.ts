@@ -20,6 +20,18 @@ export type refDivType = RefObject<HTMLDivElement | null>;
 export type refInputType = RefObject<HTMLInputElement | null>;
 export type refFormType = RefObject<HTMLFormElement | null>;
 
+export type OptionGroupHeading = {
+  id: string;
+  title: string;
+};
+
+export type ProductListChooseProps = {
+  name: string;
+  errorText?: string;
+  groupTitle?: OptionGroupHeading;
+  onChange: (event: ChangeInputType) => void;
+};
+
 export type InputType =
   | 'button'
   | 'checkbox'

@@ -1,6 +1,5 @@
 import { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
-import { ChangeInputType } from '../../types/types';
-import { OptionGroupTitle1 } from './OptionGroupTitle';
+import { ChangeInputType, OptionGroupHeading } from '../../types/types';
 import ProductList from './ProductList';
 import ProductListItem from './ProductListItem';
 
@@ -9,7 +8,7 @@ type SizeListChooseSingletProps = {
   name: string;
   sizeList: ProductSizes[];
   errorText?: string;
-  groupTitle?: OptionGroupTitle1;
+  groupTitle?: OptionGroupHeading;
   onChange: (event: ChangeInputType) => void;
 };
 
