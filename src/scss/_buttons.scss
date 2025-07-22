@@ -19,7 +19,7 @@ a[class^='btn-'],
   justify-content: center;
   align-items: center;
   position: relative;
-  font-family: $font-primary;
+  font-family: inherit;
   font-size: clamp($font-small, $clamp-val, rem(16px));
   font-weight: normal;
   padding: 16px;

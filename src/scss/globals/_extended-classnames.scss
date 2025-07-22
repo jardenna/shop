@@ -5,11 +5,11 @@
 %styled-input {
   background-color: $color-secondary;
   border: 0;
-  height: $input-height;
+  min-height: $input-height;
   border-radius: 4px;
   color: $color-primary;
   outline: transparent;
-  font-family: $font-primary;
+  font-family: inherit;
 
   &:disabled {
     pointer-events: none;

@@ -1,4 +1,4 @@
-import { ElementType, ReactNode } from 'react';
+import { CSSProperties, ElementType, ReactNode } from 'react';
 import { IconName } from '../../types/enums';
 import IconContent from '../IconContent';
 
@@ -9,20 +9,22 @@ type ProductListItemProps = {
   className?: string;
   htmlFor?: string;
   iconName?: IconName;
+  style?: CSSProperties;
   text?: string;
 };
 
 const ProductListItem = ({
   children,
-  className = '',
+  className,
   as: Tag = 'label',
   htmlFor,
   text,
   iconName,
   ariaLabel,
+  style,
 }: ProductListItemProps) => (
-  <li className={`product-list-item ${className}`}>
-    <Tag className="product-label" htmlFor={htmlFor || undefined}>
+  <li className={`product-list-item ${className}`} style={style}>
+    <Tag className="product-label" htmlFor={htmlFor}>
       {iconName ? (
         <IconContent
           iconName={iconName}

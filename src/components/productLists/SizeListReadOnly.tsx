@@ -16,13 +16,15 @@ const SizeListReadOnly = ({
 }: SizeListReadOnlyProps) => {
   const { language } = useLanguage();
 
+  console.log(sizes);
+
   return (
     <ProductList ariaId="sizes" optionGroupTitle={optionGroupTitle}>
       {sizeList.map((size) => (
         <ProductListItem
           as="span"
           text={size}
-          className={`product-list-item ${sizes.includes(size) ? '' : 'text-line-through'}`}
+          className={sizes.includes(size) ? '' : 'text-line-through'}
           key={size}
         >
           <VisuallyHidden>

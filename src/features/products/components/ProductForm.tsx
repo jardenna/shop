@@ -328,7 +328,6 @@ const ProductForm = ({
               closeMenuOnSelect={false}
               labelText={language.colours}
               options={sortedColorList}
-              menuIsOpen
               components={{ Option: ColorOptions }}
               isSearchable
               defaultValue={defaultColorValue}

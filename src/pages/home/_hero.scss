@@ -14,14 +14,9 @@
     height: auto;
   }
 
-  h1 {
-    font-family: $font-primary;
-  }
-
   .hero-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    display: inline-grid;
+    place-content: center;
     gap: 20px;
     width: 100%;
     max-width: rem(640px);
