@@ -2,7 +2,6 @@ import type { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import CardContent from '../card/CardContent';
 import GridTwoCol from '../GridTwoCol';
-import ColorListReadOnly from '../productColorLists/ColorListReadOnly';
 import ColorReadOnly from '../productColorLists/ColorReadOnly';
 import SizeListReadOnly from '../productLists/SizeListReadOnly';
 
@@ -40,7 +39,6 @@ const ProductCardCenter = ({
         )}
         <GridTwoCol text={language.brand}>{brand}</GridTwoCol>
         <GridTwoCol text={language.material}>{material}</GridTwoCol>
-        <ColorListReadOnly colours={colours} count={colours.length} />
         <ColorReadOnly
           colors={colours}
           groupTitle={{

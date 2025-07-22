@@ -30,7 +30,7 @@ const ProductListItem = ({
           iconName={iconName}
           fill={htmlFor}
           size="70"
-          title={iconName}
+          title=""
           ariaLabel={ariaLabel || ''}
         />
       ) : (

@@ -37,7 +37,6 @@ const ColorReadOnly = ({
           key={color}
           as="span"
           ariaLabel={getlowerCaseFirstLetter(value, language)}
-          className="option-box"
           style={{
             backgroundColor: color,
             borderColor: border,
