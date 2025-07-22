@@ -20,7 +20,7 @@ const SizeListReadOnly = ({ sizes, groupTitle }: SizeListReadOnlyProps) => {
         <ProductListItem
           as="span"
           text={size}
-          className={sizes.includes(size) ? '' : 'text-line-through'}
+          isUnavailable={!sizes.includes(size)}
           key={size}
         >
           <VisuallyHidden>

@@ -47,15 +47,13 @@ const ProductCardCenter = ({
             id: 'view-product-colors',
           }}
         />
-        <div>
-          <SizeListReadOnly
-            sizes={sizes}
-            groupTitle={{
-              title: language.sizes,
-              id: 'view-product-sizes',
-            }}
-          />
-        </div>
+        <SizeListReadOnly
+          sizes={sizes}
+          groupTitle={{
+            title: language.sizes,
+            id: 'view-product-sizes',
+          }}
+        />
       </div>
     </CardContent>
   );
