@@ -1,5 +1,5 @@
 import { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
-import { ChangeInputType, OptionGroupHeading } from '../../types/types';
+import { ProductListChoiceProps } from '../../types/types';
 import ProductList from './ProductList';
 import ProductListItem from './ProductListItem';
 
@@ -8,13 +8,9 @@ type SizeList = {
   value: ProductSizes;
 };
 
-type SizeListChooseMultipleProps = {
-  name: string;
+type SizeListChooseMultipleProps = ProductListChoiceProps & {
   sizeList: SizeList[];
   values: ProductSizes[];
-  errorText?: string;
-  groupTitle?: OptionGroupHeading;
-  onChange: (event: ChangeInputType) => void;
 };
 
 const SizeListChooseMultiple = ({

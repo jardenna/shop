@@ -1,20 +1,16 @@
 import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
-import { ChangeInputType, OptionGroupHeading } from '../../types/types';
+import { ProductListChoiceProps } from '../../types/types';
 import { ColorOption } from '../../utils/colorUtils';
 import { resolveIconName } from '../../utils/iconHelpers';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 import ProductList from '../productLists/ProductList';
 import ProductListItem from '../productLists/ProductListItem';
 
-type ColorListChooseSingletProps = {
+type ColorListChooseSingleProps = ProductListChoiceProps & {
   colorList: ColorOption[];
   initialChecked: string;
-  name: string;
-  errorText?: string;
-  groupTitle?: OptionGroupHeading;
   iconName?: string;
-  onChange: (event: ChangeInputType) => void;
 };
 
 const ColorListChooseSingle = ({
@@ -25,7 +21,7 @@ const ColorListChooseSingle = ({
   name,
   iconName,
   colorList,
-}: ColorListChooseSingletProps) => {
+}: ColorListChooseSingleProps) => {
   const { language } = useLanguage();
 
   return (

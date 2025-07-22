@@ -1,15 +1,11 @@
 import { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
-import { ChangeInputType, OptionGroupHeading } from '../../types/types';
+import { ProductListChoiceProps } from '../../types/types';
 import ProductList from './ProductList';
 import ProductListItem from './ProductListItem';
 
-type SizeListChooseSingletProps = {
+type SizeListChooseSingleProps = ProductListChoiceProps & {
   initialChecked: string;
-  name: string;
   sizeList: ProductSizes[];
-  errorText?: string;
-  groupTitle?: OptionGroupHeading;
-  onChange: (event: ChangeInputType) => void;
 };
 
 const SizeListChooseSingle = ({
@@ -19,7 +15,7 @@ const SizeListChooseSingle = ({
   errorText,
   groupTitle,
   name,
-}: SizeListChooseSingletProps) => (
+}: SizeListChooseSingleProps) => (
   <ProductList errorText={errorText} groupTitle={groupTitle}>
     {sizeList.map((size) => (
       <ProductListItem key={size} htmlFor={size} text={size}>

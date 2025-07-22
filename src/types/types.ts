@@ -25,10 +25,10 @@ export type OptionGroupHeading = {
   title: string;
 };
 
-export type ProductListChooseProps = {
+export type ProductListChoiceProps = {
+  groupTitle: OptionGroupHeading;
   name: string;
   errorText?: string;
-  groupTitle?: OptionGroupHeading;
   onChange: (event: ChangeInputType) => void;
 };
 
