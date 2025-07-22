@@ -12,11 +12,10 @@ const SizeListChooseSingle = ({
   initialChecked,
   sizeList,
   onChange,
-  errorText,
   groupTitle,
   name,
 }: SizeListChooseSingleProps) => (
-  <ProductList errorText={errorText} groupTitle={groupTitle}>
+  <ProductList groupTitle={groupTitle}>
     {sizeList.map((size) => (
       <ProductListItem key={size} htmlFor={size} text={size}>
         <input

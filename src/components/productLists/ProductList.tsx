@@ -5,16 +5,12 @@ import './_product-list.scss';
 
 type ProductListProps = {
   children: ReactNode;
-  errorText?: string;
   groupTitle?: OptionGroupHeading;
 };
 
-const ProductList = ({ children, errorText, groupTitle }: ProductListProps) => (
+const ProductList = ({ children, groupTitle }: ProductListProps) => (
   <div>
-    {groupTitle && (
-      <OptionGroupTitle errorText={errorText} groupTitle={groupTitle} />
-    )}
-
+    {groupTitle && <OptionGroupTitle groupTitle={groupTitle} />}
     <ul className="product-list" id={groupTitle?.id}>
       {children}
     </ul>

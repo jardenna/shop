@@ -23,12 +23,12 @@ export type refFormType = RefObject<HTMLFormElement | null>;
 export type OptionGroupHeading = {
   id: string;
   title: string;
+  errorText?: string;
 };
 
 export type ProductListChoiceProps = {
   groupTitle: OptionGroupHeading;
   name: string;
-  errorText?: string;
   onChange: (event: ChangeInputType) => void;
 };
 

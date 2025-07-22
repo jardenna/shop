@@ -16,7 +16,6 @@ type ColorListChooseSingleProps = ProductListChoiceProps & {
 const ColorListChooseSingle = ({
   initialChecked,
   onChange,
-  errorText,
   groupTitle,
   name,
   iconName,
@@ -25,7 +24,7 @@ const ColorListChooseSingle = ({
   const { language } = useLanguage();
 
   return (
-    <ProductList groupTitle={groupTitle} errorText={errorText}>
+    <ProductList groupTitle={groupTitle}>
       {colorList.map(({ label, value, color }) => (
         <ProductListItem
           key={label}

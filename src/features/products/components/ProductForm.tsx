@@ -314,13 +314,13 @@ const ProductForm = ({
         <div className="flex-1">
           <FormCard legendText={language.productVariants} onReset={onReset}>
             <SizeListChooseMultiple
-              errorText={language[errors.sizes]}
               onChange={onChange}
               values={values.sizes}
               sizeList={checkBoxSizeList}
               groupTitle={{
                 title: language.sizes,
                 id: 'choose-product-colors',
+                errorText: language[errors.sizes],
               }}
               name="sizes"
             />

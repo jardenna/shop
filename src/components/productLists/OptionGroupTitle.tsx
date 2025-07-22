@@ -2,15 +2,14 @@ import { OptionGroupHeading } from '../../types/types';
 
 type OptionGroupTitleProps = {
   groupTitle: OptionGroupHeading;
-  errorText?: string;
 };
 
-const OptionGroupTitle = ({ errorText, groupTitle }: OptionGroupTitleProps) => (
+const OptionGroupTitle = ({ groupTitle }: OptionGroupTitleProps) => (
   <div className="option-group-title">
     <h3 className="title" aria-labelledby={groupTitle.id}>
       {groupTitle.title}
     </h3>
-    <span className="error-message">{errorText}</span>
+    <span className="error-message">{groupTitle.errorText}</span>
   </div>
 );
 
