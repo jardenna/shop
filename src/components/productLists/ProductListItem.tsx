@@ -15,7 +15,7 @@ type ProductListItemProps = {
 
 const ProductListItem = ({
   children,
-  className = '',
+  className = 'test',
   as: Tag = 'label',
   htmlFor,
   text,
@@ -23,8 +23,8 @@ const ProductListItem = ({
   ariaLabel,
   style,
 }: ProductListItemProps) => (
-  <li className={`product-list-item ${className}`} style={style}>
-    <Tag className="product-label" htmlFor={htmlFor}>
+  <li className="product-list-item" style={style}>
+    <Tag htmlFor={htmlFor} className={`product-label ${className}`}>
       {iconName ? (
         <IconContent
           iconName={iconName}
