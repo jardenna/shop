@@ -33,6 +33,7 @@ const ColorListSingleChoice = ({
           text={color}
           iconName={iconName ? resolveIconName(iconName) : IconName.Woman}
           variant="large"
+          className="choose-color-list-item"
         >
           <input
             type="radio"

@@ -1,25 +1,42 @@
 @use '../../scss/globals' as *;
 
+/* stylelint-disable-next-line no-descending-specificity */
 .product-list {
   display: flex;
   flex-wrap: wrap;
 
-  // &:has(.color-list-item) {
-  //   gap: 16px;
-  // }
+  &:has(.color-list-item) {
+    gap: 4px;
+  }
+
+  &:has(.choose-color-list-item) {
+    gap: 16px;
+  }
 
   label.product-label {
     cursor: pointer;
   }
 
   .product-list-item {
-    border: 1px solid $color-border;
-    border-right-color: transparent;
+    border: 1px solid transparent;
 
     input {
       clip-path: inset(50%);
       position: absolute;
     }
+  }
+
+  .choose-color-list-item {
+    border-color: $color-border;
+
+    &:has(input[type='radio']:checked) {
+      border-color: $color-black;
+    }
+  }
+
+  .size-list-item {
+    border-color: $color-border;
+    border-right-color: transparent;
 
     &:last-child {
       border-right-color: $color-border;

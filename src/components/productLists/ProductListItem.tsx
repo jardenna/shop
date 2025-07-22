@@ -8,6 +8,7 @@ type ProductListItemProps = {
   children: ReactNode;
   ariaLabel?: string;
   as?: ElementType;
+  className?: string;
   htmlFor?: string;
   iconName?: IconName;
   isUnavailable?: boolean;
@@ -26,8 +27,9 @@ const ProductListItem = ({
   variant = 'medium',
   style,
   isUnavailable,
+  className = 'size-list-item',
 }: ProductListItemProps) => (
-  <li className="product-list-item" style={style}>
+  <li className={`product-list-item ${className}`} style={style}>
     <Tag
       htmlFor={htmlFor}
       className={`product-label ${variant} ${isUnavailable ? 'text-line-through' : ''}`}

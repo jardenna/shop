@@ -46,6 +46,7 @@ const ColorReadOnly = ({
             backgroundColor: color,
             borderColor: border,
           }}
+          className="color-list-item"
         >
           <VisuallyHidden>{label}</VisuallyHidden>
         </ProductListItem>
