@@ -3,13 +3,17 @@ import useLanguage from '../../features/language/useLanguage';
 import type { ChangeInputType } from '../../types/types';
 import Input from '../formElements/Input';
 
-type TableSearchProps = {
+type TableSearchInputProps = {
   title: string;
   value: string;
   onFilterRows: (event: ChangeInputType) => void;
 };
 
-const TableSearch = ({ title, onFilterRows, value }: TableSearchProps) => {
+const TableSearchInput = ({
+  title,
+  onFilterRows,
+  value,
+}: TableSearchInputProps) => {
   const { language } = useLanguage();
   const text = `${language.filter} ${language[title]}`;
   return (
@@ -35,4 +39,4 @@ const TableSearch = ({ title, onFilterRows, value }: TableSearchProps) => {
   );
 };
 
-export default TableSearch;
+export default TableSearchInput;

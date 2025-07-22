@@ -4,21 +4,21 @@ import type { ChangeInputType } from '../../types/types';
 import Icon from '../icons/Icon';
 import Tooltip from '../tooltip/Tooltip';
 import VisuallyHidden from '../VisuallyHidden';
-import TableSearch from './TableSearchInput';
+import TableSearchInput from './TableSearchInput';
 
-type TableSearchInputProps = {
+type TableSearchProps = {
   label: string;
   title: string;
   value: string;
   onFilterRows: (event: ChangeInputType) => void;
 };
 
-const TableSearchInput = ({
+const TableSearch = ({
   title,
   value,
   onFilterRows,
   label,
-}: TableSearchInputProps) => {
+}: TableSearchProps) => {
   const { language } = useLanguage();
 
   return (
@@ -27,7 +27,7 @@ const TableSearchInput = ({
         placement="bottom-start"
         ariaControls="filter"
         tooltip={
-          <TableSearch
+          <TableSearchInput
             title={title}
             onFilterRows={onFilterRows}
             value={value}
@@ -49,4 +49,4 @@ const TableSearchInput = ({
   );
 };
 
-export default TableSearchInput;
+export default TableSearch;

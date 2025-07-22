@@ -12,7 +12,7 @@ import SkeletonList from '../skeleton/SkeletonList';
 import VisuallyHidden from '../VisuallyHidden';
 import './_table.scss';
 import TableGridList from './TableGridList';
-import TableSearchInput from './TableSearch';
+import TableSearch from './TableSearch';
 
 export type Column<T> = {
   key: keyof T;
@@ -92,10 +92,15 @@ const Table = <T,>({
   };
 
   const handleFilter = (field: keyof T, value: string) => {
-    setSearchParams({
-      ...Object.fromEntries(searchParams.entries()),
-      [field as string]: value,
-    });
+    const newParams = new URLSearchParams(searchParams.toString());
+
+    if (value) {
+      newParams.set(field as string, value);
+    } else {
+      newParams.delete(field as string);
+    }
+
+    setSearchParams(Object.fromEntries(newParams.entries()));
   };
 
   const handleClearAll = () => {
@@ -179,7 +184,7 @@ const Table = <T,>({
                           )}
 
                           {!col.hideTableControls && (
-                            <TableSearchInput
+                            <TableSearch
                               onFilterRows={(e) => {
                                 handleFilter(col.key, e.target.value);
                               }}
