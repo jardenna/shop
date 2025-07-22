@@ -1,6 +1,6 @@
 import { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
 import { ChangeInputType } from '../../types/types';
-import OptionGroupTitle from './OptionGroupTitle';
+import { OptionGroupTitle1 } from './OptionGroupTitle';
 import ProductList from './ProductList';
 import ProductListItem from './ProductListItem';
 
@@ -14,6 +14,7 @@ type SizeListChooseMultipleProps = {
   sizeList: SizeList[];
   values: ProductSizes[];
   errorText?: string;
+  groupTitle?: OptionGroupTitle1;
   optionGroupTitle?: string;
   onChange: (event: ChangeInputType) => void;
 };
@@ -23,32 +24,23 @@ const SizeListChooseMultiple = ({
   values,
   errorText,
   sizeList,
-  optionGroupTitle,
   name,
+  groupTitle,
 }: SizeListChooseMultipleProps) => (
-  <div>
-    {optionGroupTitle && (
-      <OptionGroupTitle
-        errorText={errorText}
-        text={optionGroupTitle}
-        id={name}
-      />
-    )}
-    <ProductList ariaId={name}>
-      {sizeList.map(({ label, value }) => (
-        <ProductListItem key={label} htmlFor={label} text={label}>
-          <input
-            type="checkbox"
-            name={name}
-            value={value}
-            onChange={onChange}
-            checked={values.includes(value)}
-            id={label}
-          />
-        </ProductListItem>
-      ))}
-    </ProductList>
-  </div>
+  <ProductList ariaId={name} groupTitle={groupTitle} errorText={errorText}>
+    {sizeList.map(({ label, value }) => (
+      <ProductListItem key={label} htmlFor={label} text={label}>
+        <input
+          type="checkbox"
+          name={name}
+          value={value}
+          onChange={onChange}
+          checked={values.includes(value)}
+          id={label}
+        />
+      </ProductListItem>
+    ))}
+  </ProductList>
 );
 
 export default SizeListChooseMultiple;

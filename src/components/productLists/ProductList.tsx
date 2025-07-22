@@ -10,22 +10,16 @@ type ProductListProps = {
   optionGroupTitle?: string;
 };
 
-const ProductList = ({
-  children,
-  errorText,
-  optionGroupTitle,
-  ariaId,
-  groupTitle,
-}: ProductListProps) => (
+const ProductList = ({ children, errorText, groupTitle }: ProductListProps) => (
   <div>
-    {optionGroupTitle && (
+    {groupTitle && (
       <OptionGroupTitle
         errorText={errorText}
-        text={optionGroupTitle}
-        id={ariaId}
+        text={groupTitle.title}
         groupTitle={groupTitle}
       />
     )}
+
     <ul className="product-list" id={groupTitle?.id}>
       {children}
     </ul>

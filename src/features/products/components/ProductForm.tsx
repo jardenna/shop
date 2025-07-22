@@ -319,6 +319,10 @@ const ProductForm = ({
               values={values.sizes}
               sizeList={checkBoxSizeList}
               optionGroupTitle={language.sizes}
+              groupTitle={{
+                title: language.sizes,
+                id: 'choose-product-colors',
+              }}
               name="sizes"
             />
             <Selectbox

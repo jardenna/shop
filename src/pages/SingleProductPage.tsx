@@ -94,6 +94,10 @@ const SingleProductPage = () => {
                 onChange={onChange}
                 name="size"
                 optionGroupTitle={language.selectSize}
+                groupTitle={{
+                  title: language.selectSize,
+                  id: 'choose-product-size',
+                }}
               />
               <ColorListChooseSingle
                 colorList={colorList}
