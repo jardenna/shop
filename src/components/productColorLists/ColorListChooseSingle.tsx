@@ -15,7 +15,6 @@ type ColorListChooseSingletProps = {
   errorText?: string;
   groupTitle?: OptionGroupTitle1;
   iconName?: string;
-  optionGroupTitle?: string;
   onChange: (event: ChangeInputType) => void;
 };
 
@@ -23,7 +22,6 @@ const ColorListChooseSingle = ({
   initialChecked,
   onChange,
   errorText,
-  optionGroupTitle,
   groupTitle,
   name,
   iconName,
@@ -32,12 +30,7 @@ const ColorListChooseSingle = ({
   const { language } = useLanguage();
 
   return (
-    <ProductList
-      ariaId={name}
-      optionGroupTitle={optionGroupTitle}
-      groupTitle={groupTitle}
-      errorText={errorText}
-    >
+    <ProductList groupTitle={groupTitle} errorText={errorText}>
       {colorList.map(({ label, value, color }) => (
         <div key={label}>
           <ProductListItem

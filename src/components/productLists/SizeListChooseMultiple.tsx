@@ -15,7 +15,6 @@ type SizeListChooseMultipleProps = {
   values: ProductSizes[];
   errorText?: string;
   groupTitle?: OptionGroupTitle1;
-  optionGroupTitle?: string;
   onChange: (event: ChangeInputType) => void;
 };
 
@@ -27,7 +26,7 @@ const SizeListChooseMultiple = ({
   name,
   groupTitle,
 }: SizeListChooseMultipleProps) => (
-  <ProductList ariaId={name} groupTitle={groupTitle} errorText={errorText}>
+  <ProductList groupTitle={groupTitle} errorText={errorText}>
     {sizeList.map(({ label, value }) => (
       <ProductListItem key={label} htmlFor={label} text={label}>
         <input

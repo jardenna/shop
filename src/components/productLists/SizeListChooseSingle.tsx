@@ -10,7 +10,6 @@ type SizeListChooseSingletProps = {
   sizeList: ProductSizes[];
   errorText?: string;
   groupTitle?: OptionGroupTitle1;
-  optionGroupTitle?: string;
   onChange: (event: ChangeInputType) => void;
 };
 
@@ -19,16 +18,10 @@ const SizeListChooseSingle = ({
   sizeList,
   onChange,
   errorText,
-  optionGroupTitle,
   groupTitle,
   name,
 }: SizeListChooseSingletProps) => (
-  <ProductList
-    ariaId={name}
-    optionGroupTitle={optionGroupTitle}
-    errorText={errorText}
-    groupTitle={groupTitle}
-  >
+  <ProductList errorText={errorText} groupTitle={groupTitle}>
     {sizeList.map((size) => (
       <ProductListItem key={size} htmlFor={size} text={size}>
         <input

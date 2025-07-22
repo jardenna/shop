@@ -93,7 +93,6 @@ const SingleProductPage = () => {
                 initialChecked={values.size}
                 onChange={onChange}
                 name="size"
-                optionGroupTitle={language.selectSize}
                 groupTitle={{
                   title: language.selectSize,
                   id: 'choose-product-size',
@@ -104,7 +103,6 @@ const SingleProductPage = () => {
                 initialChecked={values.color}
                 onChange={onChange}
                 name="color"
-                optionGroupTitle={language.selectColor}
                 iconName={product.categoryName}
                 groupTitle={{
                   title: language.selectColor,

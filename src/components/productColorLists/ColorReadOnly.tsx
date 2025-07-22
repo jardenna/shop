@@ -8,16 +8,12 @@ import ProductListItem from '../productLists/ProductListItem';
 import VisuallyHidden from '../VisuallyHidden';
 
 type ColorReadOnlytProps = {
-  ariaId: string;
   colors: string[];
   count?: number;
   groupTitle?: OptionGroupTitle1;
-  optionGroupTitle?: string;
 };
 
 const ColorReadOnly = ({
-  optionGroupTitle,
-  ariaId,
   count = 3,
   colors,
   groupTitle,
@@ -35,11 +31,7 @@ const ColorReadOnly = ({
   const hiddenColorsCount = Math.max(colorList1.length - count, 0);
 
   return (
-    <ProductList
-      ariaId={ariaId}
-      optionGroupTitle={optionGroupTitle}
-      groupTitle={groupTitle}
-    >
+    <ProductList groupTitle={groupTitle}>
       {visibleColors.map(({ label, value, color, border }) => (
         <ProductListItem
           key={color}

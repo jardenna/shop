@@ -9,22 +9,13 @@ import ProductListItem from './ProductListItem';
 type SizeListReadOnlyProps = {
   sizes: ProductSizes[];
   groupTitle?: OptionGroupTitle1;
-  optionGroupTitle?: string;
 };
 
-const SizeListReadOnly = ({
-  sizes,
-  optionGroupTitle,
-  groupTitle,
-}: SizeListReadOnlyProps) => {
+const SizeListReadOnly = ({ sizes, groupTitle }: SizeListReadOnlyProps) => {
   const { language } = useLanguage();
 
   return (
-    <ProductList
-      ariaId="sizes"
-      optionGroupTitle={optionGroupTitle}
-      groupTitle={groupTitle}
-    >
+    <ProductList groupTitle={groupTitle}>
       {sizeList.map((size) => (
         <ProductListItem
           as="span"
