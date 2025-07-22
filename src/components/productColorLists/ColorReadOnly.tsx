@@ -51,7 +51,7 @@ const ColorReadOnly = ({
           <VisuallyHidden>{label}</VisuallyHidden>
         </ProductListItem>
       ))}
-      {hiddenColorsCount > 0 && <span>{`+ ${hiddenColorsCount}`}</span>}
+      {hiddenColorsCount > 0 && <li>{`+ ${hiddenColorsCount}`}</li>}
     </ProductList>
   );
 };
