@@ -45,13 +45,13 @@ const CollectionPage = () => {
     {
       iconName: IconName.LayoutList,
       title: language.list,
-      ariaLabel: language.viewAsList,
+      ariaLabel: language.list,
       display: 'list',
     },
     {
       iconName: IconName.LayoutGrid,
       title: language.grid,
-      ariaLabel: language.viewAsGrid,
+      ariaLabel: language.grid,
       display: 'grid',
     },
   ];
@@ -93,7 +93,7 @@ const CollectionPage = () => {
                       onSetDisplay={setProuctView}
                       displayControlList={productViewIconList}
                       isActive={productView}
-                      ariaLabel={language.displayDensity}
+                      ariaLabel={language.productDisplay}
                     />
                     <FilterPanel />
                   </section>

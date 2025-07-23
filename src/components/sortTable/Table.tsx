@@ -147,7 +147,7 @@ const Table = <T,>({
           onSetDisplay={setPadding}
           displayControlList={tableGridIconList}
           isActive={padding}
-          ariaLabel={language.displayDensity} // Produkt visning
+          ariaLabel={language.displayDensity}
         />
       </div>
       <div className="fixed-table">
