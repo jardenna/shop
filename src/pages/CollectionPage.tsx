@@ -46,13 +46,13 @@ const CollectionPage = () => {
       iconName: IconName.LayoutList,
       title: language.list,
       ariaLabel: language.viewAsList,
-      padding: 'list',
+      display: 'list',
     },
     {
       iconName: IconName.LayoutGrid,
       title: language.grid,
       ariaLabel: language.viewAsGrid,
-      padding: 'grid',
+      display: 'grid',
     },
   ];
 
@@ -90,9 +90,10 @@ const CollectionPage = () => {
                   />
                   <section className="product-toolbar">
                     <DisplayControls
-                      onSetPadding={setProuctView}
-                      tableGridIconList={productViewIconList}
+                      onSetDisplay={setProuctView}
+                      displayControlList={productViewIconList}
                       isActive={productView}
+                      ariaLabel={language.displayDensity}
                     />
                     <FilterPanel />
                   </section>

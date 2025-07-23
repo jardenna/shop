@@ -54,19 +54,19 @@ const Table = <T,>({
 
   const tableGridIconList = [
     {
-      padding: paddingBlockSmall,
+      display: paddingBlockSmall,
       iconName: IconName.GridSmall,
       title: language.gridSmall,
       ariaLabel: language.compact,
     },
     {
-      padding: paddingBlockMedium,
+      display: paddingBlockMedium,
       iconName: IconName.Grid,
       title: language.grid,
       ariaLabel: language.standard,
     },
     {
-      padding: paddingBlockLarge,
+      display: paddingBlockLarge,
       iconName: IconName.GridLarge,
       title: language.gridLarge,
       ariaLabel: language.expanded,
@@ -131,9 +131,11 @@ const Table = <T,>({
     }
     return 0;
   });
+
   const sortIcon = sortOrder === 'asc' ? '↑' : '↓';
   const ariaSort = sortOrder !== 'asc' ? 'descending' : 'ascending';
-  const ariaLabel = sortOrder !== 'asc' ? language.desc : language.asc;
+  const ariaLabel =
+    sortOrder !== 'asc' ? language.descending : language.ascending;
 
   return (
     <>
@@ -142,9 +144,10 @@ const Table = <T,>({
           {language.clearFilters}
         </Button>
         <DisplayControls
-          onSetPadding={setPadding}
-          tableGridIconList={tableGridIconList}
+          onSetDisplay={setPadding}
+          displayControlList={tableGridIconList}
           isActive={padding}
+          ariaLabel={language.displayDensity} // Produkt visning
         />
       </div>
       <div className="fixed-table">

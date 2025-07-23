@@ -9,7 +9,7 @@ addToStock;Add to stock;Tilføj til lager
 admin;Admin;Admin
 adminCannotBeDeleted;Administrator cannot be deleted;Administrator kan ikke slettes
 allowedFormats;Allowed formats;Tilladte formater
-asc;ascending;stigende
+ascending;ascending;stigende
 available;Available;Tilgængelig
 availableColors;Available colors;Tilgængelige farver
 bag;Bag;Indkøbskurv
@@ -78,7 +78,7 @@ deleteProduct;Delete product;Slet produkt
 deleteUser;Delete user;Slet bruger
 delivery;Delivery;Levering
 deliveryText;We offer secure delivery with careful packaging. All orders are processed within 1–2 business days, and you'll receive a tracking link as soon as your order is shipped.;Vi tilbyder sikker levering med omhyggelig emballering. Alle ordrer behandles inden for 1-2 hverdage, og du modtager et trackinglink, så snart din ordre er afsendt.
-desc;descending;faldende
+descending;descending;faldende
 description;Description;Beskrivelse
 details;Details;Detaljer
 discount;Discount;Rabat

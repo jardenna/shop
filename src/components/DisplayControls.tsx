@@ -1,43 +1,41 @@
-import useLanguage from '../features/language/useLanguage';
 import { IconName } from '../types/enums';
 import IconBtn from './IconBtn';
 
 type DisplayControls = {
   ariaLabel: string;
+  display: string;
   iconName: IconName;
-  padding: string;
   title: string;
 };
 
 type DisplayControlsProps = {
+  ariaLabel: string;
+  displayControlList: DisplayControls[];
   isActive: string;
-  tableGridIconList: DisplayControls[];
-  onSetPadding: (id: string) => void;
+  onSetDisplay: (id: string) => void;
 };
 
 const DisplayControls = ({
-  tableGridIconList,
-  onSetPadding,
+  displayControlList,
+  onSetDisplay,
   isActive,
-}: DisplayControlsProps) => {
-  const { language } = useLanguage();
-  return (
-    <div className="display-controls" aria-label={language.displayDensity}>
-      {tableGridIconList.map(({ padding, iconName, title, ariaLabel }) => (
-        <IconBtn
-          key={padding}
-          iconName={iconName}
-          title={language[title]}
-          ariaLabel={ariaLabel}
-          onClick={() => {
-            onSetPadding(padding);
-          }}
-          disabled={isActive === padding}
-          ariaSelected={isActive === padding}
-        />
-      ))}
-    </div>
-  );
-};
+  ariaLabel,
+}: DisplayControlsProps) => (
+  <div className="display-controls" aria-label={ariaLabel}>
+    {displayControlList.map(({ display, iconName, title, ariaLabel }) => (
+      <IconBtn
+        key={display}
+        iconName={iconName}
+        title={title}
+        ariaLabel={ariaLabel}
+        onClick={() => {
+          onSetDisplay(display);
+        }}
+        disabled={isActive === display}
+        ariaSelected={isActive === display}
+      />
+    ))}
+  </div>
+);
 
 export default DisplayControls;
