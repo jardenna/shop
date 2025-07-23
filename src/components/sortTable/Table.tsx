@@ -46,6 +46,7 @@ const Table = <T,>({
   const [searchParams, setSearchParams] = useSearchParams();
   const { paddingBlockSmall, paddingBlockMedium, paddingBlockLarge } =
     variables;
+
   const [padding, setPadding] = useLocalStorage(
     localStorageKeys.tableCellPadding,
     paddingBlockMedium,

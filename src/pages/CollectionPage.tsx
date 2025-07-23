@@ -5,15 +5,16 @@ import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import Img from '../components/Img';
 import Skeleton from '../components/skeleton/Skeleton';
+import TableGridList from '../components/sortTable/TableGridList';
 import useLanguage from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
 import FilterPanel from '../features/shop/components/FilterPanel';
 import ProductCard from '../features/shop/components/ProductCard';
-import ProductViews from '../features/shop/components/ProductViews';
 import useSubMenu from '../features/shop/hooks/useSubMenu';
 import { useGetProductsQuery } from '../features/shop/shopApiSlice';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
 import MetaTags from '../layout/nav/MetaTags';
+import { IconName } from '../types/enums';
 import './CollectionPage.styles.scss';
 
 const CollectionPage = () => {
@@ -39,6 +40,21 @@ const CollectionPage = () => {
     localStorageKeys.productView,
     'grid',
   );
+
+  const productViewIconList = [
+    {
+      iconName: IconName.LayoutList,
+      title: language.list,
+      ariaLabel: language.viewAsList,
+      padding: 'grid',
+    },
+    {
+      iconName: IconName.LayoutGrid,
+      title: language.grid,
+      ariaLabel: language.viewAsGrid,
+      padding: 'list',
+    },
+  ];
 
   return (
     <>
@@ -73,9 +89,10 @@ const CollectionPage = () => {
                     alt=""
                   />
                   <section className="product-toolbar">
-                    <ProductViews
-                      productCount={products?.productCount || null}
-                      onSelectProductView={setProuctView}
+                    <TableGridList
+                      onSetPadding={setProuctView}
+                      tableGridIconList={productViewIconList}
+                      isActive={productView}
                     />
                     <FilterPanel />
                   </section>
