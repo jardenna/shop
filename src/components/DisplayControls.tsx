@@ -1,28 +1,28 @@
-import useLanguage from '../../features/language/useLanguage';
-import { IconName } from '../../types/enums';
-import IconBtn from '../IconBtn';
+import useLanguage from '../features/language/useLanguage';
+import { IconName } from '../types/enums';
+import IconBtn from './IconBtn';
 
-type TableGridList = {
+type DisplayControls = {
   ariaLabel: string;
   iconName: IconName;
   padding: string;
   title: string;
 };
 
-type TableGridIconListProps = {
+type DisplayControlsProps = {
   isActive: string;
-  tableGridIconList: TableGridList[];
+  tableGridIconList: DisplayControls[];
   onSetPadding: (id: string) => void;
 };
 
-const TableGridList = ({
+const DisplayControls = ({
   tableGridIconList,
   onSetPadding,
   isActive,
-}: TableGridIconListProps) => {
+}: DisplayControlsProps) => {
   const { language } = useLanguage();
   return (
-    <div className="table-grid-icons" aria-label={language.displayDensity}>
+    <div className="display-controls" aria-label={language.displayDensity}>
       {tableGridIconList.map(({ padding, iconName, title, ariaLabel }) => (
         <IconBtn
           key={padding}
@@ -40,4 +40,4 @@ const TableGridList = ({
   );
 };
 
-export default TableGridList;
+export default DisplayControls;

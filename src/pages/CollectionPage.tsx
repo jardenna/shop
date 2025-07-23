@@ -2,10 +2,10 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
+import DisplayControls from '../components/DisplayControls';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import Img from '../components/Img';
 import Skeleton from '../components/skeleton/Skeleton';
-import TableGridList from '../components/sortTable/TableGridList';
 import useLanguage from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
 import FilterPanel from '../features/shop/components/FilterPanel';
@@ -46,13 +46,13 @@ const CollectionPage = () => {
       iconName: IconName.LayoutList,
       title: language.list,
       ariaLabel: language.viewAsList,
-      padding: 'grid',
+      padding: 'list',
     },
     {
       iconName: IconName.LayoutGrid,
       title: language.grid,
       ariaLabel: language.viewAsGrid,
-      padding: 'list',
+      padding: 'grid',
     },
   ];
 
@@ -89,7 +89,7 @@ const CollectionPage = () => {
                     alt=""
                   />
                   <section className="product-toolbar">
-                    <TableGridList
+                    <DisplayControls
                       onSetPadding={setProuctView}
                       tableGridIconList={productViewIconList}
                       isActive={productView}

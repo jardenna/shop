@@ -7,11 +7,11 @@ import variables from '../../scss/variables.module.scss';
 import { BtnVariant, IconName } from '../../types/enums';
 import type { SortOrderType } from '../../types/types';
 import Button from '../Button';
+import DisplayControls from '../DisplayControls';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import SkeletonList from '../skeleton/SkeletonList';
 import VisuallyHidden from '../VisuallyHidden';
 import './_table.scss';
-import TableGridList from './TableGridList';
 import TableSearch from './TableSearch';
 
 export type Column<T> = {
@@ -141,7 +141,7 @@ const Table = <T,>({
         <Button onClick={handleClearAll} variant={BtnVariant.Default}>
           {language.clearFilters}
         </Button>
-        <TableGridList
+        <DisplayControls
           onSetPadding={setPadding}
           tableGridIconList={tableGridIconList}
           isActive={padding}
