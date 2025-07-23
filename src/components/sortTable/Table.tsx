@@ -56,16 +56,19 @@ const Table = <T,>({
       padding: paddingBlockSmall,
       iconName: IconName.GridSmall,
       title: language.gridSmall,
+      ariaLabel: language.compact,
     },
     {
       padding: paddingBlockMedium,
       iconName: IconName.Grid,
       title: language.grid,
+      ariaLabel: language.standard,
     },
     {
       padding: paddingBlockLarge,
       iconName: IconName.GridLarge,
       title: language.gridLarge,
+      ariaLabel: language.expanded,
     },
   ];
 

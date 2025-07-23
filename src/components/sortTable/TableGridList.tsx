@@ -3,6 +3,7 @@ import { IconName } from '../../types/enums';
 import IconBtn from '../IconBtn';
 
 type TableGridList = {
+  ariaLabel: string;
   iconName: IconName;
   padding: string;
   title: string;
@@ -21,13 +22,13 @@ const TableGridList = ({
 }: TableGridIconListProps) => {
   const { language } = useLanguage();
   return (
-    <div className="table-grid-icons">
-      {tableGridIconList.map(({ padding, iconName, title }) => (
+    <div className="table-grid-icons" aria-label={language.displayDensity}>
+      {tableGridIconList.map(({ padding, iconName, title, ariaLabel }) => (
         <IconBtn
           key={padding}
           iconName={iconName}
           title={language[title]}
-          ariaLabel={language[title]}
+          ariaLabel={ariaLabel}
           onClick={() => {
             onSetPadding(padding);
           }}
