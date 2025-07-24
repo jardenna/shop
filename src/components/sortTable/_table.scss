@@ -127,6 +127,14 @@ table {
         @include max-size($small) {
           flex-direction: column;
         }
+
+        .radio-btn-container {
+          .radio-btn-label {
+            text-transform: none;
+            min-height: auto;
+            padding-inline: 8px;
+          }
+        }
       }
     }
 
