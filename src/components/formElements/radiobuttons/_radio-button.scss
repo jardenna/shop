@@ -1,80 +1,27 @@
 @use '../../../scss/globals' as *;
 
-.radio-card {
+.radio-btn-container {
   display: flex;
-  text-transform: uppercase;
   gap: 8px;
-
-  .checkbox-radio-container {
-    width: 100%;
-    justify-content: center;
-
-    &:has(input:checked) {
-      color: $color-white;
-    }
-
-    .form-label-container {
-      z-index: 1;
-      position: absolute;
-    }
-  }
-
-  input[type='radio'] {
-    width: 100%;
-
-    @extend %styled-input;
-
-    &:checked {
-      background-color: $color-background-secondary;
-    }
-  }
 }
 
-.radio-btn-container:not(.radio-card) {
-  display: flex;
-  gap: 4px;
+.radio-btn-content {
+  width: 100%;
 
-  .form-label-container {
-    order: 2;
-  }
-
-  input[type='radio'] {
-    border-radius: 50%;
-    background-color: $color-white;
-    color: currentcolor;
-    width: rem(24px);
-    height: rem(24px);
-    border: 2px solid $color-border-radio;
-    transform: translateY(-1.2px);
-    position: relative;
-    align-items: center;
+  .radio-btn-label {
+    width: 100%;
     display: inline-grid;
     place-content: center;
+    cursor: pointer;
+    text-transform: uppercase;
 
-    &:focus-visible {
-      box-shadow: $box-shadow-input;
-      outline: transparent;
-    }
+    @extend %styled-input;
+  }
 
-    @include transition($time: 0.22s);
-
-    &::before {
-      content: '';
-      width: rem(8px);
-      height: rem(8px);
-      border-radius: 50%;
-      transform: scale(0);
-      box-shadow: inset 16px 0 $color-background-secondary;
-
-      @include transition($time: 0.12s);
-    }
-
-    &:checked {
-      border-color: $color-border-radio;
-
-      &::before {
-        transform: scale(1);
-      }
+  &:has(input[type='radio']:checked) {
+    .radio-btn-label {
+      background-color: $color-background-secondary;
+      color: $color-white;
     }
   }
 }

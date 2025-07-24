@@ -87,8 +87,7 @@ textarea {
     border-color: $color-primary;
   }
 
-  /* stylelint-disable-next-line selector-class-pattern */
-  input:not(.select-box__input),
+  input,
   textarea {
     padding: 12px;
     width: 100%;

@@ -2,6 +2,15 @@
 
 /* stylelint-disable selector-class-pattern */
 
+.input-container {
+  .select-box,
+  .select-box__menu-portal {
+    input {
+      min-height: auto;
+    }
+  }
+}
+
 .select-box__menu-portal,
 .select-box {
   &:has(input[aria-invalid='true']) {
@@ -11,10 +20,6 @@
       border-color: $color-danger;
       outline: transparent;
     }
-  }
-
-  .select-box__value-container {
-    padding: 8px;
   }
 
   .select-box__control {
