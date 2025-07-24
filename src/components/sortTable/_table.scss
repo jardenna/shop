@@ -10,12 +10,6 @@
   .btn-default {
     font-size: $font-small;
   }
-
-  .table-grid-icons {
-    display: flex;
-    gap: 8px;
-    justify-content: flex-end;
-  }
 }
 
 .table-actions {
@@ -110,14 +104,36 @@ table {
     overflow: auto;
   }
 
+  .padding-20 {
+    img {
+      height: rem(128px);
+    }
+  }
+
+  img {
+    max-width: rem(136px);
+    min-width: rem(136px);
+    height: rem(96px);
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .missing-img {
+    max-width: rem(136px);
+    min-width: rem(136px);
+    height: auto;
+    padding: 8px 0;
+    margin: 0;
+
+    svg {
+      width: rem(36px);
+    }
+  }
+
   table {
     .edit-cell {
       display: flex;
       justify-content: space-between;
-
-      .checkbox-radio-container {
-        margin: 0;
-      }
 
       .input-container {
         width: auto;
@@ -137,26 +153,14 @@ table {
         @include max-size($small) {
           flex-direction: column;
         }
-      }
-    }
 
-    img {
-      max-width: rem(136px);
-      min-width: rem(136px);
-      height: rem(96px);
-      object-fit: cover;
-      object-position: center;
-    }
-
-    .missing-img {
-      max-width: rem(136px);
-      min-width: rem(136px);
-      height: auto;
-      padding: 8px 0;
-      margin: 0;
-
-      svg {
-        width: rem(36px);
+        .radio-btn-container {
+          .radio-btn-label {
+            text-transform: none;
+            min-height: auto;
+            padding-inline: 8px;
+          }
+        }
       }
     }
 

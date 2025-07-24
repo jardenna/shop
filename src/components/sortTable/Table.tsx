@@ -7,12 +7,12 @@ import variables from '../../scss/variables.module.scss';
 import { BtnVariant, IconName } from '../../types/enums';
 import type { SortOrderType } from '../../types/types';
 import Button from '../Button';
+import DisplayControls from '../DisplayControls';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import SkeletonList from '../skeleton/SkeletonList';
 import VisuallyHidden from '../VisuallyHidden';
 import './_table.scss';
-import TableGridList from './TableGridList';
-import TableSearchInput from './TableSearchInput';
+import TableSearch from './TableSearch';
 
 export type Column<T> = {
   key: keyof T;
@@ -46,6 +46,7 @@ const Table = <T,>({
   const [searchParams, setSearchParams] = useSearchParams();
   const { paddingBlockSmall, paddingBlockMedium, paddingBlockLarge } =
     variables;
+
   const [padding, setPadding] = useLocalStorage(
     localStorageKeys.tableCellPadding,
     paddingBlockMedium,
@@ -53,19 +54,22 @@ const Table = <T,>({
 
   const tableGridIconList = [
     {
-      padding: paddingBlockSmall,
+      display: paddingBlockSmall,
       iconName: IconName.GridSmall,
       title: language.gridSmall,
+      ariaLabel: language.compact,
     },
     {
-      padding: paddingBlockMedium,
+      display: paddingBlockMedium,
       iconName: IconName.Grid,
       title: language.grid,
+      ariaLabel: language.standard,
     },
     {
-      padding: paddingBlockLarge,
+      display: paddingBlockLarge,
       iconName: IconName.GridLarge,
       title: language.gridLarge,
+      ariaLabel: language.expanded,
     },
   ];
 
@@ -92,10 +96,15 @@ const Table = <T,>({
   };
 
   const handleFilter = (field: keyof T, value: string) => {
-    setSearchParams({
-      ...Object.fromEntries(searchParams.entries()),
-      [field as string]: value,
-    });
+    const newParams = new URLSearchParams(searchParams.toString());
+
+    if (value) {
+      newParams.set(field as string, value);
+    } else {
+      newParams.delete(field as string);
+    }
+
+    setSearchParams(Object.fromEntries(newParams.entries()));
   };
 
   const handleClearAll = () => {
@@ -122,9 +131,11 @@ const Table = <T,>({
     }
     return 0;
   });
+
   const sortIcon = sortOrder === 'asc' ? '↑' : '↓';
   const ariaSort = sortOrder !== 'asc' ? 'descending' : 'ascending';
-  const ariaLabel = sortOrder !== 'asc' ? language.desc : language.asc;
+  const ariaLabel =
+    sortOrder !== 'asc' ? language.descending : language.ascending;
 
   return (
     <>
@@ -132,10 +143,11 @@ const Table = <T,>({
         <Button onClick={handleClearAll} variant={BtnVariant.Default}>
           {language.clearFilters}
         </Button>
-        <TableGridList
-          onSetPadding={setPadding}
-          tableGridIconList={tableGridIconList}
+        <DisplayControls
+          onSetDisplay={setPadding}
+          displayControlList={tableGridIconList}
           isActive={padding}
+          ariaLabel={language.displayDensity}
         />
       </div>
       <div className="fixed-table">
@@ -179,7 +191,7 @@ const Table = <T,>({
                           )}
 
                           {!col.hideTableControls && (
-                            <TableSearchInput
+                            <TableSearch
                               onFilterRows={(e) => {
                                 handleFilter(col.key, e.target.value);
                               }}

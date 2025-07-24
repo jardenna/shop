@@ -2,6 +2,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
+import DisplayControls from '../components/DisplayControls';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import Img from '../components/Img';
 import Skeleton from '../components/skeleton/Skeleton';
@@ -9,11 +10,11 @@ import useLanguage from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
 import FilterPanel from '../features/shop/components/FilterPanel';
 import ProductCard from '../features/shop/components/ProductCard';
-import ProductViews from '../features/shop/components/ProductViews';
 import useSubMenu from '../features/shop/hooks/useSubMenu';
 import { useGetProductsQuery } from '../features/shop/shopApiSlice';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
 import MetaTags from '../layout/nav/MetaTags';
+import { IconName } from '../types/enums';
 import './CollectionPage.styles.scss';
 
 const CollectionPage = () => {
@@ -39,6 +40,21 @@ const CollectionPage = () => {
     localStorageKeys.productView,
     'grid',
   );
+
+  const productViewIconList = [
+    {
+      iconName: IconName.LayoutList,
+      title: language.list,
+      ariaLabel: language.list,
+      display: 'list',
+    },
+    {
+      iconName: IconName.LayoutGrid,
+      title: language.grid,
+      ariaLabel: language.grid,
+      display: 'grid',
+    },
+  ];
 
   return (
     <>
@@ -73,9 +89,11 @@ const CollectionPage = () => {
                     alt=""
                   />
                   <section className="product-toolbar">
-                    <ProductViews
-                      productCount={products?.productCount || null}
-                      onSelectProductView={setProuctView}
+                    <DisplayControls
+                      onSetDisplay={setProuctView}
+                      displayControlList={productViewIconList}
+                      isActive={productView}
+                      ariaLabel={language.productDisplay}
                     />
                     <FilterPanel />
                   </section>

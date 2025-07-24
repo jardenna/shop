@@ -1,5 +1,4 @@
 import useLanguage from '../../features/language/useLanguage';
-import { IconName } from '../../types/enums';
 import { ProductListChoiceProps } from '../../types/types';
 import { ColorOption } from '../../utils/colorUtils';
 import { resolveIconName } from '../../utils/iconHelpers';
@@ -9,8 +8,8 @@ import ProductListItem from '../productLists/ProductListItem';
 
 type ColorListSingleChoiceProps = ProductListChoiceProps & {
   colorList: ColorOption[];
+  iconName: string;
   initialChecked: string;
-  iconName?: string;
 };
 
 const ColorListSingleChoice = ({
@@ -33,7 +32,7 @@ const ColorListSingleChoice = ({
           variant="large"
           className="choose-color-list-item"
           icon={{
-            iconName: iconName ? resolveIconName(iconName) : IconName.Kid,
+            iconName: resolveIconName(iconName),
             ariaLabel: getlowerCaseFirstLetter(value, language),
             title: '',
           }}

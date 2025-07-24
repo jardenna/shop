@@ -42,20 +42,6 @@ input[type='checkbox'] {
   margin-top: 0;
 }
 
-.checkbox-radio-container {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-
-  .form-label-container {
-    margin: 0;
-  }
-
-  label {
-    cursor: pointer;
-  }
-}
-
 textarea {
   resize: none;
   field-sizing: content;
@@ -87,8 +73,7 @@ textarea {
     border-color: $color-primary;
   }
 
-  /* stylelint-disable-next-line selector-class-pattern */
-  input:not(.select-box__input),
+  input,
   textarea {
     padding: 12px;
     width: 100%;

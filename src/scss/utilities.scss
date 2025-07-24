@@ -114,3 +114,9 @@
   height: 24px;
   border: 1px solid transparent;
 }
+
+.display-controls {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}

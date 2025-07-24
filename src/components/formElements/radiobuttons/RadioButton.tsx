@@ -1,18 +1,12 @@
 import useLanguage from '../../../features/language/useLanguage';
 import type { ChangeInputType, OptionType } from '../../../types/types';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
-import Input from '../Input';
-import InputInfo from '../InputInfo';
 import './_radio-button.scss';
-
-type RadioBtnVariant = 'card';
 
 type RadioButtonProps = {
   initialChecked: string;
   name: string;
   radioButtonList: OptionType[];
-  inputInfo?: string;
-  radioBtnVariant?: RadioBtnVariant;
   onChange: (event: ChangeInputType) => void;
 };
 
@@ -21,29 +15,27 @@ const RadioButton = ({
   radioButtonList,
   onChange,
   name,
-  inputInfo,
-  radioBtnVariant,
 }: RadioButtonProps) => {
   const { language } = useLanguage();
 
   return (
-    <div
-      className={`radio-btn-container ${radioBtnVariant ? `radio-${radioBtnVariant}` : ''}`}
-    >
+    <ul className="radio-btn-container">
       {radioButtonList.map((radio) => (
-        <Input
-          type="radio"
-          key={radio.value}
-          id={radio.label}
-          name={name}
-          value={radio.value}
-          checked={initialChecked === radio.value}
-          onChange={onChange}
-          labelText={getlowerCaseFirstLetter(radio.label, language)}
-        />
+        <li key={radio.value} className="radio-btn-content">
+          <label htmlFor={radio.label} className="radio-btn-label">
+            {getlowerCaseFirstLetter(radio.label, language)}
+          </label>
+          <input
+            type="radio"
+            id={radio.label}
+            name={name}
+            value={radio.value}
+            checked={initialChecked === radio.value}
+            onChange={onChange}
+          />
+        </li>
       ))}
-      {inputInfo && <InputInfo inputInfo={inputInfo} />}
-    </div>
+    </ul>
   );
 };
 

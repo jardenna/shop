@@ -14,8 +14,8 @@ import PageContainer from '../pageContainer/PageContainer';
 import './ProductPage.styles.scss';
 
 const tableHeaders: Column<Product>[] = [
-  { key: 'productName', label: 'name', name: 'image' },
-  { key: 'subCategory', label: 'category', name: 'subCategory' },
+  { key: 'productName', label: 'name', name: 'productName' },
+  { key: 'category', label: 'category', name: 'category' },
   { key: 'price', label: 'price', name: 'price' },
   { key: 'countInStock', label: 'countInStock', name: 'countInStock' },
   { key: 'productStatus', label: 'status', name: 'productStatus' },

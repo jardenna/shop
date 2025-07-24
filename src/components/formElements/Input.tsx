@@ -55,16 +55,12 @@ const Input = ({
   inputSuffix,
   placeholder,
   maxLength,
-  autoComplete,
+  autoComplete = 'off',
   autoFocus,
   onFocus,
   disabled,
   inputInfo,
 }: InputProps) => {
-  const inputClassName =
-    type === 'checkbox' || type === 'radio'
-      ? 'checkbox-radio-container'
-      : 'input-container';
   const handleOnInput = (event: ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
     if (maxLength && inputValue.length > maxLength) {
@@ -74,7 +70,7 @@ const Input = ({
   };
   return (
     <>
-      <div className={inputClassName}>
+      <div className="input-container">
         <FormLabel
           required={required}
           labelText={labelText}

@@ -9,12 +9,12 @@ addToStock;Add to stock;Tilføj til lager
 admin;Admin;Admin
 adminCannotBeDeleted;Administrator cannot be deleted;Administrator kan ikke slettes
 allowedFormats;Allowed formats;Tilladte formater
+ascending;ascending;stigende
 available;Available;Tilgængelig
-unavailable;Unavailable;Ikke tilgængelig
 availableColors;Available colors;Tilgængelige farver
-asc;ascending;stigende
 bag;Bag;Indkøbskurv
 black;Black;Sort
+blue;Blue;Blå
 blue;Blue;Blå
 brand;Brand;Mærke
 brandRequired;Please insert brand;Indsæt venligst mærke
@@ -23,8 +23,8 @@ browseImages;Browse images;Vælg produkt billeder
 calendar;Calendar;Kalender
 cancel;Cancel;Annuller
 cannotDeleteAdmin;This action is not allowed for admin;Admin bruger kan ikke slettes
-categories;Categories;Kategorier
 care;Care;Vaskeanvisning
+categories;Categories;Kategorier
 category;Category;Kategori
 categoryAlreadyExist;Category already exist;Kategori findes allerede
 categoryCard;Category card;Kategori card
@@ -50,6 +50,7 @@ collectionSubMenText;From everyday looks to formal, everything for the modern ma
 collectionSubWomenText;Discover stylish news, must-haves and trends of the season.;Opdag stilfulde nyheder, must-haves og sæsonens trends.
 colorRequired;Please select at least one color;Vælg mindst 1 farve
 colours;Colours;Farver
+compact;Compact;Kompakt
 confirmPassword;Confirm password;Gentag adgangskode
 contact;Contact;Kontakt
 copy;Copy;Kopier
@@ -71,19 +72,20 @@ dashboard;Dashboard;Dashboard
 date;Date;Dato
 delete;Delete;Slet
 deleteCategory;Delete category;Slet kategori
-deleteProduct;Delete product;Slet produkt
 deleted;deleted;slettet
 deleteOrReassignCategory;Cannot be deleted. Category has linked products;Kan ikke slettes. Kategori har tilknyttede produkter
+deleteProduct;Delete product;Slet produkt
+deleteUser;Delete user;Slet bruger
 delivery;Delivery;Levering
 deliveryText;We offer secure delivery with careful packaging. All orders are processed within 1–2 business days, and you'll receive a tracking link as soon as your order is shipped.;Vi tilbyder sikker levering med omhyggelig emballering. Alle ordrer behandles inden for 1-2 hverdage, og du modtager et trackinglink, så snart din ordre er afsendt.
-deleteUser;Delete user;Slet bruger
-desc;descending;faldende
+descending;descending;faldende
 description;Description;Beskrivelse
 details;Details;Detaljer
 discount;Discount;Rabat
 discoverCollection;Discover Collection;Se kollektionen
 discoverLatestTrends;Discover latest trends;Udforsk de nyeste tendenser
 discoverLatestTrendsAltText;A man playfully surprises a woman by covering her eyes from behinds.;En mand overrasker legende en kvinde ved at dække hendes øjne bagfra.
+displayDensity;Display density;Visningstæthed
 doNotBleach;Do not bleach;Må ikke bleges
 edit;Edit;Opdater
 editCategory;Edit category;Opdater kategori
@@ -94,6 +96,7 @@ email;Email;E-mail
 employee;Employee;Ansat
 error;Error;Fejl
 errorAltText;A really guilty emoji;En meget skyldig emoji
+expanded;Expanded;Udvidet
 expandMenu;Expand menu;Udvid menu
 eye;Eye;Øje
 eyeClosed;Closed eye;Lukket øje
@@ -107,7 +110,9 @@ filterRow;Filter row;Filtrer række
 filtersApplied;Filters applied;Filtre anvendt
 globe;Globe;Globus
 goBack;Go back;Gå tilbage
+gold;Gold;Guld
 goToContent;Go to content;Gå til indhold
+green;Green;Grøn
 grey;Grey;Grå
 grid;Grid;Grid
 gridLarge; Large grid;Bredt grid
@@ -138,15 +143,15 @@ loginFailed;Login failed;Login mislykkedes
 loginHere;Log in here;Log ind her
 loginSucceeded;Login succeeded;Login lykkedes
 logout;Log out;Log ud
+machineWash;Machine wash at 40 °C;Maskinvask ved 40 °C
 main;Main;Primær
 mainCategoryName;Parent category;Hovedkategori
 mainSiteHeader;Main site;Primær site
-machineWash;Machine wash at 40 °C;Maskinvask ved 40 °C
+man;Man;Mand
 material;Material;Materiale
-materialAndCare;Material and care;Materiale and vaskeanvisning
+materialAndCare;Material and care;Materiale og vaskeanvisning
 materialRequired;Please insert material;Indsæt venligst materiale
 maximumFileSize;Maximum file size;Maksimal filstørrelse
-man;Man;Mand
 men;Men;Mænd
 menu;Menu;Menu
 minLength;At least 8 characters;Mindst 8 tegn
@@ -169,8 +174,8 @@ noProduct;Product not found;Produkt blev ikke fundet
 notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 
 notAuthorizedNoToken;Not authorized, no token;Ikke autoriseret, ingen token
 notAuthorizedTokenFailed;Not authorized, token failed;Ikke autoriseret, token mislykkedes
-notVisibleInShop;is not visible in the shop until the main category is published;bliver først synlig i shoppen, når hovedkategorien er udgivet
 noTumbleDry;Not suitable for tumble drying;Ikke egnet til tørretumbler
+notVisibleInShop;is not visible in the shop until the main category is published;bliver først synlig i shoppen, når hovedkategorien er udgivet
 noUser;User not found. Please sign up first;Bruger blev ikke fundet. Opret dig først
 orange;Orange;Orange
 orders;Orders;Ordrer
@@ -187,6 +192,7 @@ payment;Payment;Betaling
 paymentAndDelivery;Payment and delivery;Betaling og levering
 paymentText;You can pay by credit card or MobilePay. We only charge your payment once your order has been shipped;Betaling kan ske med kreditkort eller MobilePay. Vi trækker først beløbet, når din ordre er afsendt
 pensil;Pensil;Blyant
+pink;Pink;Pink
 pleaseEnter;Please enter;Indsæt venligst
 pleaseEnterCategoryName;Please enter a name for category;Indsæt venligst navn på kategori
 pleaseEnterName;Please enter name;Indsæt venligst navn
@@ -205,15 +211,16 @@ productCopied;Product copied;Produkt blev kopieret
 productCreated;Product created;Produkt blev tilføjet
 productDeleted;Product deleted;Produkt blev slettet
 productDescriptionRequired;Please insert product description;Indsæt venligst produktbeskrivelse
+productDisplay;Product Display;Produktvisning
 productImages;Product images;Produkt billeder
 productInformation;Product information;Produkt oplysninger
 productList;Product list;Produktliste
 productName;Product name;Produkt navn
 productNameRequired;Please insert product name;Indsæt venligst produktnavn
 productNotFound;Product not found;Produktet findes ikke
+productPlural;Product(s);Produkt(er)
 productQuantity;Product quantity;Produkt antal
 products;Products;Produkter
-productPlural;Product(s);Produkt(er)
 productsInStock;Products in stock;Antal produkter på lager
 productsInSubcategory;Products linked to subcategory;Produkter tilknyttet denne underkategori
 productStatus;Product status;Produkt status
@@ -239,8 +246,8 @@ scheduledDate;Scheduled date;Planlagt dato
 scheduledDateMustBeFuture;Scheduled date must be after now;Planlagt dato skal være efter nu
 scheduledToBePubliched;is scheduled to be published at;er planlagt til udgivelse den 
 search;Search;Søg
-selectPreferences;Select preferred language and currency;Vælg venligst sprog og valuta
 selectColor;Select color;Vælg farve
+selectPreferences;Select preferred language and currency;Vælg venligst sprog og valuta
 selectSize;Select size;Vælg størrelse
 shoes;Shoes;Sko
 shopCart;Shopping cart;Indkøbskurv
@@ -256,15 +263,17 @@ shopNow;Shop now;Shop nu
 shopWomanHeading;Empower Your Everyday;Styrke i din stil
 shopWomanLink;Shop Women;Shop dame
 shopWomanText;Find pieces that inspire self-expression—effortless, bold, and made to move with you;Udtryk dig selv med styles, der er ubesværede, modige og med dig i bevægelse
+showAll;Show all;Vis alle
 showContent;Show content;Vis indhold
 showPassword;Show password;Vis adgangskode
-showAll;Show all;Vis alle
 showPrice;Show price;Vis pris
-sizeRequired;Please select at least one size;Vælg mindst 1 størrelse
+silver;Silver;Sølv
 size;Size;Størrelse
+sizeRequired;Please select at least one size;Vælg mindst 1 størrelse
 sizes;Sizes;Størrelser
 somethingWentWrong;Something went wrong, please try again;Noget gik galt, forsøg venligst igen
 sort;Sort;Sorter
+standard;Standard;Standard
 status;Status;Status
 sub;Sub;Sekundær
 subCategories;Subcategories;Underkategorier
@@ -279,6 +288,7 @@ totalProducts;Total products;Antal produkter
 translationKey;Translation key;Oversættelsesnøgle
 translationKeyHelpText;Enter the exact key used for translation in your CSV file;Skriv den præcise nøgle, som bruges til oversættelsen i din CSV-fil
 trashCan;Trash can;Skraldespand
+unavailable;Unavailable;Ikke tilgængelig
 unknownError;Unknown error;Ukendt fejl
 unsupportedFile;is not supported type;er ikke understøttet
 update;Update;Opdater
@@ -295,8 +305,6 @@ username;User name;Brugernavn
 users;Users;Brugere
 userUpdated;User updated;Bruger opdateret
 view;View;Se
-viewAsGrid;View as grid;Gridvisning
-viewAsList;View as list;Listevisning
 viewCart;View your cart;Se din indkøbskurv
 viewCategory;View category;Se kategori
 viewProduct;View product;Se produkt
@@ -308,9 +316,3 @@ white;White;Hvid
 woman;Woman;Dame
 women;Women;Damer
 yellow;Yellow;Gul
-silver;Silver;Sølv
-silver;Silver;Sølv
-gold;Gold;Guld
-green;Green;Grøn
-blue;Blue;Blå
-pink;Pink;Pink
