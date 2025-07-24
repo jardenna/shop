@@ -4,10 +4,10 @@ import Favorites from '../components/favorites/Favorites';
 import Img from '../components/Img';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
 import useLanguage from '../features/language/useLanguage';
+import ShopProductForm from '../features/shop/components/ShopProductForm';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
 import MetaTags from '../layout/nav/MetaTags';
 import { getColorOptions } from '../utils/colorUtils';
-import ShopProductForm from './ShopProductForm';
 import './SingleProductPage.styles.scss';
 
 const SingleProductPage = () => {

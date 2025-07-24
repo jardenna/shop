@@ -1,10 +1,10 @@
-import { ShopProductResponse } from '../app/api/apiTypes/shopApiTypes';
-import Form from '../components/form/Form';
-import ColorListSingleChoice from '../components/productColorLists/ColorListSingleChoice';
-import SizeListSingleChoice from '../components/productLists/SizeListSingleChoice';
-import useLanguage from '../features/language/useLanguage';
-import useFormValidation from '../hooks/useFormValidation';
-import { ColorOption } from '../utils/colorUtils';
+import { ShopProductResponse } from '../../../app/api/apiTypes/shopApiTypes';
+import Form from '../../../components/form/Form';
+import ColorListSingleChoice from '../../../components/productColorLists/ColorListSingleChoice';
+import SizeListSingleChoice from '../../../components/productLists/SizeListSingleChoice';
+import useFormValidation from '../../../hooks/useFormValidation';
+import { ColorOption } from '../../../utils/colorUtils';
+import useLanguage from '../../language/useLanguage';
 
 type ShopProductFormProps = {
   colorList: ColorOption[];
