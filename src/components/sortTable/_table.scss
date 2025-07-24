@@ -104,6 +104,32 @@ table {
     overflow: auto;
   }
 
+  .padding-20 {
+    img {
+      height: rem(128px);
+    }
+  }
+
+  img {
+    max-width: rem(136px);
+    min-width: rem(136px);
+    height: rem(96px);
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .missing-img {
+    max-width: rem(136px);
+    min-width: rem(136px);
+    height: auto;
+    padding: 8px 0;
+    margin: 0;
+
+    svg {
+      width: rem(36px);
+    }
+  }
+
   table {
     .edit-cell {
       display: flex;
@@ -135,26 +161,6 @@ table {
             padding-inline: 8px;
           }
         }
-      }
-    }
-
-    img {
-      max-width: rem(136px);
-      min-width: rem(136px);
-      height: rem(96px);
-      object-fit: cover;
-      object-position: center;
-    }
-
-    .missing-img {
-      max-width: rem(136px);
-      min-width: rem(136px);
-      height: auto;
-      padding: 8px 0;
-      margin: 0;
-
-      svg {
-        width: rem(36px);
       }
     }
 
