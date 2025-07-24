@@ -1,7 +1,10 @@
+import { Link } from 'react-router';
 import MissingImage from '../../../components/formElements/fileInput/MissingImage';
 import Img from '../../../components/Img';
+import { AdminPath } from '../../../layout/nav/enums';
 
 type ProductOverviewCellProps = {
+  id: string;
   images: string[];
   productName: string;
 };
@@ -9,11 +12,15 @@ type ProductOverviewCellProps = {
 const ProductOverviewCell = ({
   images,
   productName,
+  id,
 }: ProductOverviewCellProps) => (
-  <div className="product-overview-cell">
+  <Link
+    to={`${AdminPath.AdminProductView}/${id}`}
+    className="product-overview-cell"
+  >
     {images.length > 0 ? <Img src={images[0]} alt="" /> : <MissingImage />}
     <span className="product-name">{productName}</span>
-  </div>
+  </Link>
 );
 
 export default ProductOverviewCell;

@@ -16,7 +16,7 @@ const ProductActions = ({ onCopyProduct, id }: ProductActionsProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
 
-  const ActionsDropdownList: DropdownItem[] = [
+  const actionsDropdownList: DropdownItem[] = [
     {
       label: language.view,
       onClick: () => {
@@ -42,7 +42,7 @@ const ProductActions = ({ onCopyProduct, id }: ProductActionsProps) => {
 
   return (
     <DropdownBtn
-      dropdownList={ActionsDropdownList}
+      dropdownList={actionsDropdownList}
       ariaControls="product-actions"
       ariaLabel={language.productActions}
       showArrow
