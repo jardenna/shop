@@ -16,6 +16,7 @@ import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
 import MetaTags from '../layout/nav/MetaTags';
 import { IconName } from '../types/enums';
 import './CollectionPage.styles.scss';
+import { sizeList } from '../utils/productLists';
 
 const CollectionPage = () => {
   const { language } = useLanguage();
@@ -55,7 +56,7 @@ const CollectionPage = () => {
       display: 'grid',
     },
   ];
-
+  console.log(sizeList);
   return (
     <>
       <MetaTags metaTitle={category} />
@@ -97,7 +98,7 @@ const CollectionPage = () => {
                     />
                     <FilterPanel />
                   </section>
-                  <section
+                  <article
                     className={`product-card-list ${productView === 'list' ? 'list' : ''}`}
                   >
                     {products &&
@@ -109,7 +110,7 @@ const CollectionPage = () => {
                           categoryId={categoryId}
                         />
                       ))}
-                  </section>
+                  </article>
                 </div>
               </ErrorBoundary>
             </div>
