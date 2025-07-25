@@ -1,4 +1,4 @@
-import { ShopProductResponse } from '../../../app/api/apiTypes/shopApiTypes';
+import { SingleProduct } from '../../../app/api/apiTypes/shopApiTypes';
 import Form from '../../../components/form/Form';
 import ColorListSingleChoice from '../../../components/productColorLists/ColorListSingleChoice';
 import SizeListSingleChoice from '../../../components/productLists/SizeListSingleChoice';
@@ -8,7 +8,7 @@ import useLanguage from '../../language/useLanguage';
 
 type ShopProductFormProps = {
   colorList: ColorOption[];
-  selectedProduct: ShopProductResponse;
+  selectedProduct: SingleProduct;
 };
 
 const ShopProductForm = ({

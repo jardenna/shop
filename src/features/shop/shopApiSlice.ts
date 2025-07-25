@@ -3,8 +3,8 @@ import type {
   Favorites,
   ProductMenuResponse,
   ShopAllProductsResponse,
-  ShopProductResponse,
   ShopProductsParams,
+  SingleProduct,
   ToggleFavoriteResponse,
 } from '../../app/api/apiTypes/shopApiTypes';
 import {
@@ -24,7 +24,7 @@ const shopApiSlice = apiSlice.injectEndpoints({
       },
       providesTags: [TagTypesEnum.Products],
     }),
-    getSingleProduct: builder.query<ShopProductResponse, string>({
+    getSingleProduct: builder.query<SingleProduct, string>({
       query: (id) => `${productUrl}/shop/${id}`,
       providesTags: [TagTypesEnum.Products],
     }),

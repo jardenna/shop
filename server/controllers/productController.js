@@ -280,11 +280,17 @@ const getProducts = asyncHandler(async (req, res) => {
     {
       $addFields: {
         id: '$_id',
+        subCategoryId: '$subCategory',
+        subCategoryName: '$subCategoryData.subCategoryName',
       },
     },
     {
       $project: {
         _id: 0,
+        subCategoryData: 0,
+        categoryData: 0,
+        __v: 0,
+        subCategory: 0, // this hides the original if you don't want it twice
       },
     },
   ];
