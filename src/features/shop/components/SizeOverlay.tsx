@@ -1,8 +1,7 @@
-import { ProductSizes } from '../../../app/api/apiTypes/sharedApiTypes';
 import './SizeOverlay.styles.scss';
 
 type SizeOverlayProps = {
-  sizes: ProductSizes[];
+  sizes: string[];
 };
 
 const SizeOverlay = ({ sizes }: SizeOverlayProps) => (

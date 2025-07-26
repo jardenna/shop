@@ -1,4 +1,3 @@
-import { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import { OptionGroupHeading } from '../../types/types';
 import { sizeList } from '../../utils/productLists';
@@ -7,7 +6,7 @@ import ProductList from './ProductList';
 import ProductListItem from './ProductListItem';
 
 type SizeListReadOnlyProps = {
-  sizes: ProductSizes[];
+  sizes: string[];
   groupTitle?: OptionGroupHeading;
 };
 

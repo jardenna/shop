@@ -1,8 +1,4 @@
-import type {
-  BaseProduct,
-  BaseProductParams,
-  ProductSizes,
-} from './sharedApiTypes';
+import type { BaseProduct, BaseProductParams } from './sharedApiTypes';
 
 export type ShopProductsParams = BaseProductParams & {
   mainCategory?: string;
@@ -42,5 +38,5 @@ export type Favorites = {
   images: string[];
   price: number;
   productName: string;
-  sizes: ProductSizes[];
+  sizes: string[];
 };

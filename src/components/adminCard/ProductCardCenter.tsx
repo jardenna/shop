@@ -1,4 +1,3 @@
-import type { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import CardContent from '../card/CardContent';
 import GridTwoCol from '../GridTwoCol';
@@ -12,7 +11,7 @@ type ProductCardCenterProps = {
   discount: number;
   material: string;
   price: number;
-  sizes: ProductSizes[];
+  sizes: string[];
   onReset: () => void;
 };
 
