@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 import { STATUS } from '../config/constants.js';
+import Category from './categoryModel.js';
+
 const { ObjectId } = mongoose.Schema;
 
 const subCategorySchema = new mongoose.Schema(
@@ -19,19 +21,44 @@ const subCategorySchema = new mongoose.Schema(
     scheduledDate: {
       type: Date,
     },
+
+    allowedSizes: {
+      type: [String],
+      default: [],
+    },
   },
   { timestamps: true },
 );
 
-// Drop the old single-field index on subCategoryName if it exists
 subCategorySchema.pre('save', async function (next) {
-  const collection = mongoose.connection.collections['subcategories'];
-  if (collection) {
-    const indexes = await collection.indexes();
-    if (indexes.some((index) => index.name === 'subCategoryName_1')) {
-      await collection.dropIndex('subCategoryName_1');
-    }
+  if (!this.isModified('category')) return next(); // only if new is changed
+
+  const cat = await Category.findById(this.category);
+  if (!cat) return next(new Error('Invalid main category'));
+
+  const name = cat.categoryName.toLowerCase();
+
+  if (name === 'accessories') {
+    this.allowedSizes = [];
+  } else if (this.subCategoryName.toLowerCase() === 'shoes') {
+    this.allowedSizes = [
+      '36',
+      '37',
+      '38',
+      '39',
+      '40',
+      '41',
+      '42',
+      '43',
+      '44',
+      '45',
+      '46',
+      'Onesize',
+    ];
+  } else {
+    this.allowedSizes = ['S', 'M', 'L', 'XL'];
   }
+
   next();
 });
 
