@@ -19,6 +19,7 @@ const CreateProductPage = () => {
             id={null}
             parentCategories={subCategories}
             onReset={() => refetch()}
+            allowedSizes={[]}
           />
         </PageContainer>
       )}

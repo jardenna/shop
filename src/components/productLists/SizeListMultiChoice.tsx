@@ -1,16 +1,15 @@
-import { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
 import { ProductListChoiceProps } from '../../types/types';
 import ProductList from './ProductList';
 import ProductListItem from './ProductListItem';
 
 type SizeList = {
-  label: ProductSizes;
-  value: ProductSizes;
+  label: string;
+  value: string;
 };
 
 type SizeListMultiChoiceProps = ProductListChoiceProps & {
   sizeList: SizeList[];
-  values: ProductSizes[];
+  values: string[];
 };
 
 const SizeListMultiChoice = ({

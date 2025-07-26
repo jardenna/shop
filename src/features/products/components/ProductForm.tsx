@@ -25,7 +25,6 @@ import { AdminPath } from '../../../layout/nav/enums';
 import variables from '../../../scss/variables.module.scss';
 import type { OptionType } from '../../../types/types';
 import { colorList, getColorOptions } from '../../../utils/colorUtils';
-import { sizeList } from '../../../utils/productLists';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
 import useCurrency from '../../currency/useCurrency';
@@ -38,10 +37,10 @@ import {
 import FormCard from './FormCard';
 
 type ProductFormProps = {
+  allowedSizes: string[];
   id: string | null;
   parentCategories: SubCategoriesWithParent[];
   selectedProduct: Product | null;
-  allowedSizes?: string[];
   images?: string[];
   onReset: () => void;
 };
@@ -66,8 +65,6 @@ const ProductForm = ({
       status: categoryStatus,
     }),
   );
-
-  console.log(allowedSizes);
 
   const sortedColorList = getColorOptions({
     colors: colorList,
@@ -214,11 +211,13 @@ const ProductForm = ({
       });
     }
   }
-  const checkBoxSizeList = sizeList.map((size) => ({
+
+  // allowedSizes
+  const checkBoxSizeList = allowedSizes.map((size) => ({
     value: size,
     label: size,
   }));
-
+  console.log(values.subCategory);
   return (
     <Form
       onSubmit={onSubmit}
@@ -327,7 +326,8 @@ const ProductForm = ({
                 errorText: language[errors.sizes],
               }}
               name="sizes"
-            />
+            />{' '}
+            Vælg en kategori for at se størrelser
             <Selectbox
               id="colors"
               name="colors"

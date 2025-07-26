@@ -213,6 +213,7 @@ const getSubCategoriesWithParent = asyncHandler(async (req, res) => {
       $project: {
         categoryStatus: '$categoryStatus',
         label: '$subCategoryName',
+        allowedSizes: '$allowedSizes',
         categoryId: '$_id',
         parentCategoryName: '$parentCategory.categoryName',
         _id: 0,
