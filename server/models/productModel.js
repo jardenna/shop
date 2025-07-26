@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 import { SIZES, STATUS } from '../config/constants.js';
+import SubCategory from './subCategoryModel.js';
+
 const { ObjectId } = mongoose.Schema;
 
 const reviewSchema = new mongoose.Schema(
@@ -47,9 +49,8 @@ const productSchema = new mongoose.Schema(
     countInStock: { type: Number, required: true, default: 0 },
     sizes: {
       type: [String],
-      required: true,
       enum: SIZES,
-      default: ['S', 'M', 'L', 'XL', 'Onesize'],
+      default: undefined,
     },
     colors: {
       type: [String],
@@ -58,6 +59,43 @@ const productSchema = new mongoose.Schema(
   },
   { timestamps: true },
 );
+
+// Custom logic for dynamic size validation
+productSchema.pre('validate', async function (next) {
+  try {
+    if (!this.subCategory) return next(); // Intet at validere
+
+    const subCat = await SubCategory.findById(this.subCategory).populate(
+      'category',
+    );
+    if (!subCat || !subCat.category) {
+      return next(new Error('Invalid subCategory or category'));
+    }
+
+    const categoryName = subCat.subCategoryName.toLowerCase();
+    console.log(categoryName);
+
+    if (categoryName === 'accessories') {
+      this.sizes = []; // nulstil hvis accessories
+    } else {
+      // Kræv sizes for andre kategorier
+      if (!this.sizes || this.sizes.length === 0) {
+        return next(
+          new Error(`Sizes are required for category: ${categoryName}`),
+        );
+      }
+
+      const invalidSizes = this.sizes.filter((s) => !SIZES.includes(s));
+      if (invalidSizes.length > 0) {
+        return next(new Error(`Invalid sizes: ${invalidSizes.join(', ')}`));
+      }
+    }
+
+    next();
+  } catch (err) {
+    next(err);
+  }
+});
 
 const Product = mongoose.model('Product', productSchema);
 export default Product;
