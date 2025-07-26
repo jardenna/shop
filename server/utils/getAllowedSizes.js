@@ -1,3 +1,5 @@
+// If creating a new sub category with special sizes be sure to add it here
+
 const getAllowedSizes = (name = '') => {
   if (name === 'shoes') {
     return [
