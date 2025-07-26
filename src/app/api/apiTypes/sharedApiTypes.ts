@@ -18,7 +18,23 @@ export type DefaultResponseType = {
 };
 
 // Products
-export type ProductSizes = 'S' | 'M' | 'L' | 'XL' | 'Onesize';
+export type ProductSizes =
+  | 'S'
+  | 'M'
+  | 'L'
+  | 'XL'
+  | 'Onesize'
+  | '36'
+  | '37'
+  | '38'
+  | '39'
+  | '40'
+  | '41'
+  | '42'
+  | '43'
+  | '44'
+  | '45'
+  | '46';
 
 export type BaseProduct = DefaultResponseType & {
   brand: string;
