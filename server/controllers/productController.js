@@ -147,38 +147,28 @@ const updateProduct = [
           }
         });
       });
+
+      existingProduct.images = images;
     }
 
-    let updatedCountInStock = existingProduct.countInStock;
     if (quantity && quantity > 0) {
-      updatedCountInStock += Number(quantity);
+      existingProduct.countInStock += Number(quantity);
     }
 
-    const product = await Product.findByIdAndUpdate(
-      req.params.id,
-      {
-        subCategory,
-        countInStock: updatedCountInStock,
-        images,
-        productStatus: req.body.productStatus,
-        scheduledDate: req.body.scheduledDate,
-        ...rest,
-      },
-      { new: true },
-    );
+    existingProduct.subCategory = subCategory;
+    existingProduct.productStatus = rest.productStatus;
+    existingProduct.scheduledDate = scheduledDate;
 
-    if (!product) {
-      return res
-        .status(404)
-        .json({ success: false, message: t('productNotFound', req.lang) });
-    }
+    Object.assign(existingProduct, rest);
+
+    await existingProduct.save();
 
     res.status(200).json({
-      id: product._id,
-      productName: product.productName,
-      countInStock: product.countInStock,
-      quantity: product.quantity,
-      images: product.images,
+      id: existingProduct._id,
+      productName: existingProduct.productName,
+      countInStock: existingProduct.countInStock,
+      quantity: quantity || 0,
+      images: existingProduct.images,
       ...rest,
     });
   }),
@@ -280,11 +270,17 @@ const getProducts = asyncHandler(async (req, res) => {
     {
       $addFields: {
         id: '$_id',
+        subCategoryId: '$subCategory',
+        subCategoryName: '$subCategoryData.subCategoryName',
       },
     },
     {
       $project: {
         _id: 0,
+        subCategoryData: 0,
+        categoryData: 0,
+        __v: 0,
+        subCategory: 0, // this hides the original if you don't want it twice
       },
     },
   ];

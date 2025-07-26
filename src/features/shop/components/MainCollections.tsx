@@ -9,22 +9,22 @@ const MainCollections = () => {
   const mainCollectionsList: MainCollectionsItemProps[] = [
     {
       title: language.men,
-      src: ['/images/collections/men.jpg'],
+      src: ['/images/collections/men/men.jpg'],
       linkTo: ShopPath.Men,
       linkText: language.discoverCollection,
     },
     {
       title: language.kids,
-      src: ['/images/collections/kids.jpg'],
+      src: ['/images/collections/kids/kids.jpg'],
       linkTo: ShopPath.Kids,
       linkText: language.discoverCollection,
     },
     {
       title: language.women,
       src: [
-        '/images/collections/women.jpg',
-        '/images/collections/women_2.jpg',
-        '/images/collections/women_3.jpg',
+        '/images/collections/women/women.jpg',
+        '/images/collections/women/women_2.jpg',
+        '/images/collections/women/women_3.jpg',
       ],
       linkTo: ShopPath.Women,
       linkText: language.discoverCollection,

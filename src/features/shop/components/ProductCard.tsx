@@ -18,7 +18,7 @@ const ProductCard = ({
   product,
   categoryId,
 }: ProductCardProps) => (
-  <div className="product-card">
+  <section className="product-card">
     <div className="product-img-container">
       <Favorites id={product.id} />
       {product.discount > 0 && (
@@ -37,7 +37,7 @@ const ProductCard = ({
         <ProductCardGridContent product={product} />
       )}
     </div>
-  </div>
+  </section>
 );
 
 export default ProductCard;

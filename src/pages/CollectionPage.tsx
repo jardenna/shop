@@ -95,9 +95,10 @@ const CollectionPage = () => {
                       isActive={productView}
                       ariaLabel={language.productDisplay}
                     />
+                    <span>{products?.productCount}</span>
                     <FilterPanel />
                   </section>
-                  <section
+                  <article
                     className={`product-card-list ${productView === 'list' ? 'list' : ''}`}
                   >
                     {products &&
@@ -109,7 +110,7 @@ const CollectionPage = () => {
                           categoryId={categoryId}
                         />
                       ))}
-                  </section>
+                  </article>
                 </div>
               </ErrorBoundary>
             </div>
