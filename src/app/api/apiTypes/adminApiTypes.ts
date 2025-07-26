@@ -106,6 +106,7 @@ export type CreateSubCategoryRequest = {
 
 export type BaseSubCategory = DefaultResponseType & {
   _id: string;
+  allowedSizes: string[];
   category: MainCategory;
   categoryStatus: Status;
   subCategoryName: string;

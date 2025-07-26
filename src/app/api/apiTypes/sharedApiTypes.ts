@@ -24,6 +24,8 @@ export type ProductSizes =
   | 'L'
   | 'XL'
   | 'Onesize'
+  | '34'
+  | '35'
   | '36'
   | '37'
   | '38'

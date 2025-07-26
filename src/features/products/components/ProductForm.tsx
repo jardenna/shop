@@ -41,6 +41,7 @@ type ProductFormProps = {
   id: string | null;
   parentCategories: SubCategoriesWithParent[];
   selectedProduct: Product | null;
+  allowedSizes?: string[];
   images?: string[];
   onReset: () => void;
 };
@@ -51,6 +52,7 @@ const ProductForm = ({
   parentCategories,
   onReset,
   images,
+  allowedSizes,
 }: ProductFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
@@ -64,6 +66,8 @@ const ProductForm = ({
       status: categoryStatus,
     }),
   );
+
+  console.log(allowedSizes);
 
   const sortedColorList = getColorOptions({
     colors: colorList,
@@ -82,7 +86,7 @@ const ProductForm = ({
     discount: selectedProduct?.discount ?? 0,
     productName: selectedProduct?.productName ?? '',
     productStatus: selectedProduct?.productStatus ?? 'Inactive',
-    sizes: selectedProduct?.sizes ?? sizeList,
+    sizes: selectedProduct?.sizes ?? [],
     subCategory: selectedProduct?.subCategory._id ?? '',
   };
 
