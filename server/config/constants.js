@@ -18,6 +18,7 @@ const SIZES = [
   '45',
   '46',
 ];
+
 const MAX_FILE_SIZE = 1 * 1000 * 1000; // 1 MB file size limit
 
 export { ALLOWED_ROLES, MAX_FILE_SIZE, SIZES, STATUS };
