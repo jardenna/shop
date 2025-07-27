@@ -226,6 +226,8 @@ const ProductForm = ({
     label: size,
   }));
 
+  console.log(values.sizes);
+
   return (
     <Form
       onSubmit={onSubmit}

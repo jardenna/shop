@@ -35,20 +35,22 @@ const ImageUpload = ({
   return (
     <div>
       <div className="upload-img-container">
-        <ul className="img-list">
-          {images.map((img, index) => (
-            <ImgListItem
-              key={index}
-              onClick={() => {
-                onToggleImage(img);
-              }}
-              isImgDisabled={disabledImages.includes(img)}
-              img={img}
-              ariaLabel={ariaLabel}
-              title={language.trash}
-            />
-          ))}
-        </ul>
+        {images.length > 0 && (
+          <ul className="img-list">
+            {images.map((img, index) => (
+              <ImgListItem
+                key={index}
+                onClick={() => {
+                  onToggleImage(img);
+                }}
+                isImgDisabled={disabledImages.includes(img)}
+                img={img}
+                ariaLabel={ariaLabel}
+                title={language.trash}
+              />
+            ))}
+          </ul>
+        )}
         <FileInput
           onChange={onChange}
           multiple
@@ -61,9 +63,8 @@ const ImageUpload = ({
             onRemovePreviewImage(name);
           }}
         />
-        <InputInfo inputInfo={inputInfoText} />
       </div>
-
+      <InputInfo inputInfo={inputInfoText} />
       {previewData.length > 0 && (
         <Preview
           previewData={previewData}
