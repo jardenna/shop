@@ -221,7 +221,7 @@ productNotFound;Product not found;Produktet findes ikke
 productPlural;Product(s);Produkt(er)
 productQuantity;Product quantity;Produkt antal
 products;Products;Produkter
-productsInStock;Products in stock;Antal produkter på lager
+productsInStock;Products in stock;Produkter på lager
 productsInSubcategory;Products linked to subcategory;Produkter tilknyttet denne underkategori
 productStatus;Product status;Produkt status
 productUpdated;Product updated;Produkt blev opdateret
@@ -271,6 +271,8 @@ silver;Silver;Sølv
 size;Size;Størrelse
 sizeRequired;Please select at least one size;Vælg mindst 1 størrelse
 sizes;Sizes;Størrelser
+sizesDependOnSelectedCategory;Sizes depend on the selected category;Størrelser afhænger af den valgte kategori
+sizesNotRelevant;Sizes are not relevant for this category;Størrelser er ikke relevante for denne kategori
 somethingWentWrong;Something went wrong, please try again;Noget gik galt, forsøg venligst igen
 sort;Sort;Sorter
 standard;Standard;Standard

@@ -8,12 +8,11 @@ import type {
 } from '../../../app/api/apiTypes/adminApiTypes';
 import useDatePicker from '../../../components/datePicker/useDatePicker';
 import Form from '../../../components/form/Form';
-import FileInput from '../../../components/formElements/fileInput/FileInput';
-import ProductImgList from '../../../components/formElements/fileInput/ProductImgList';
 import Input from '../../../components/formElements/Input';
 import Textarea from '../../../components/formElements/Textarea';
 import ToggleSwitch from '../../../components/formElements/toggleSwitch/ToggleSwitch';
 import validateProduct from '../../../components/formElements/validation/validateProduct';
+import GridTwoCol from '../../../components/GridTwoCol';
 import useMessagePopup from '../../../components/messagePopup/useMessagePopup';
 import SizeListMultiChoice from '../../../components/productLists/SizeListMultiChoice';
 import ColorOptions from '../../../components/selectbox/ColorOptions';
@@ -35,6 +34,7 @@ import {
   useUpdateProductMutation,
 } from '../productApiSlice';
 import FormCard from './FormCard';
+import ImageUpload from './ImageUpload';
 
 type ProductFormProps = {
   allowedSizes: string[];
@@ -213,11 +213,19 @@ const ProductForm = ({
   }
 
   // allowedSizes
-  const checkBoxSizeList = allowedSizes.map((size) => ({
+  const selectedCategory = parentCategories.find(
+    (category) => values.subCategory === category.categoryId,
+  );
+
+  const selectedSizes = selectedCategory
+    ? selectedCategory.allowedSizes
+    : allowedSizes;
+
+  const checkBoxSizeList = selectedSizes.map((size) => ({
     value: size,
     label: size,
   }));
-  console.log(values.subCategory);
+
   return (
     <Form
       onSubmit={onSubmit}
@@ -227,35 +235,37 @@ const ProductForm = ({
     >
       <div className="form-container">
         <div className="flex-2">
-          <FormCard legendText={language.productImages} onReset={onReset}>
-            {images && images.length > 0 && (
-              <ul className="preview-list uploaded-img">
-                {images.map((img, index) => (
-                  <ProductImgList
-                    key={index}
-                    onClick={() => {
-                      handleToggleImage(img);
-                    }}
-                    isImgDisabled={disabledImages.includes(img)}
-                    img={img}
-                    ariaLabel={`${language.delete} ${language.image}`}
-                    title={language.trash}
-                  />
-                ))}
-              </ul>
-            )}
-            <FileInput
-              onChange={onChange}
-              multiple
-              name="images"
-              id="images"
-              previewData={previewData}
-              title={language.delete}
-              ariaLabel={language.delete}
-              onRemoveImg={(name: string) => {
-                removePreviewImage(name);
+          <FormCard legendText={language.category} onReset={onReset}>
+            <Selectbox
+              errorText={language[errors.subCategory]}
+              id="subCategory"
+              name="subCategory"
+              labelText={language.category}
+              options={parentCategoryOptions}
+              components={{ Option: StatusOptions }}
+              defaultValue={defaultCategoryValue}
+              isSearchable
+              onChange={(selectedOptions: OptionType) => {
+                handleSelectCategory('subCategory', selectedOptions);
               }}
             />
+          </FormCard>
+          <FormCard legendText={language.productImages} onReset={onReset}>
+            {images && (
+              <ImageUpload
+                images={images}
+                ariaLabel={`${language.delete} ${language.image}`}
+                onChange={onChange}
+                previewData={previewData}
+                onRemovePreviewImage={(name: string) => {
+                  removePreviewImage(name);
+                }}
+                onToggleImage={(id) => {
+                  handleToggleImage(id);
+                }}
+                disabledImages={disabledImages}
+              />
+            )}
           </FormCard>
           <FormCard legendText={language.productInformation} onReset={onReset}>
             <Input
@@ -296,22 +306,6 @@ const ProductForm = ({
                 required
               />
             </div>
-          </FormCard>
-          <FormCard legendText={language.productQuantity} onReset={onReset}>
-            <Input
-              value={values.quantity || ''}
-              type="number"
-              id="quantity"
-              name="quantity"
-              labelText={language.addToStock}
-              onChange={onChange}
-            />
-            {selectedProduct && (
-              <span>
-                <strong>{language.productsInStock}: </strong>
-                {selectedProduct.countInStock}
-              </span>
-            )}
           </FormCard>
         </div>
         <div className="flex-1">
@@ -383,21 +377,6 @@ const ProductForm = ({
             </div>
           </FormCard>
           <FormCard legendText={language.details} onReset={onReset}>
-            <div className="flex">
-              <Selectbox
-                errorText={language[errors.subCategory]}
-                id="subCategory"
-                name="subCategory"
-                labelText={language.category}
-                options={parentCategoryOptions}
-                components={{ Option: StatusOptions }}
-                defaultValue={defaultCategoryValue}
-                isSearchable
-                onChange={(selectedOptions: OptionType) => {
-                  handleSelectCategory('subCategory', selectedOptions);
-                }}
-              />
-            </div>
             <StatusInputs
               labelText={language.productStatus}
               ref={formRef}
@@ -414,6 +393,21 @@ const ProductForm = ({
               timeValue={timeValue}
               onTimeChange={handleTimeChange}
             />
+            <div>
+              <Input
+                value={values.quantity || ''}
+                type="number"
+                id="quantity"
+                name="quantity"
+                labelText={language.addToStock}
+                onChange={onChange}
+              />
+              {selectedProduct && (
+                <GridTwoCol text={language.productsInStock}>
+                  {selectedProduct.countInStock} {language.items}
+                </GridTwoCol>
+              )}
+            </div>
           </FormCard>
         </div>
       </div>
