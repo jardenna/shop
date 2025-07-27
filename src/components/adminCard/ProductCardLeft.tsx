@@ -1,7 +1,6 @@
 import type { Status } from '../../app/api/apiTypes/adminApiTypes';
 import ProductDiscountPrice from '../../features/currency/components/ProductDiscountPrice';
 import useLanguage from '../../features/language/useLanguage';
-import { getlowerCaseFirstLetter } from '../../utils/utils';
 import CardContent from '../card/CardContent';
 import MissingImage from '../formElements/fileInput/MissingImage';
 import GridTwoCol from '../GridTwoCol';
@@ -45,8 +44,7 @@ const ProductCardLeft = ({
         <MissingImage />
       )}
       <AdminCardHeading
-        badgeClassName={status.toLowerCase()}
-        badgeText={getlowerCaseFirstLetter(status, language)}
+        status={status}
         scheduledDate={scheduledDate || null}
         name={name}
         ariaLabel={language.productCard}

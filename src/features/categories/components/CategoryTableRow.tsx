@@ -4,7 +4,6 @@ import Badge from '../../../components/badge/Badge';
 import DateDisplay from '../../../components/datePicker/DateDisplay';
 import MoreLink from '../../../components/MoreLink';
 import { AdminPath } from '../../../layout/nav/enums';
-import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import useLanguage from '../../language/useLanguage';
 
 type CategoryTableRowProps = {
@@ -27,11 +26,7 @@ const CategoryTableRow = ({
     <tr>
       <td>{categoryName}</td>
       <td>
-        <Badge
-          badgeClassName={status.toLowerCase()}
-          badgeText={getlowerCaseFirstLetter(status, language)}
-          scheduledDate={scheduledDate || null}
-        />
+        <Badge status={status} scheduledDate={scheduledDate || null} />
       </td>
       <td>
         <DateDisplay date={createdAt} />

@@ -3,7 +3,6 @@ import type { Status } from '../../../app/api/apiTypes/adminApiTypes';
 import Badge from '../../../components/badge/Badge';
 import MoreLink from '../../../components/MoreLink';
 import { AdminPath } from '../../../layout/nav/enums';
-import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import useLanguage from '../../language/useLanguage';
 
 type SubCategoryTableRowsProps = {
@@ -28,11 +27,7 @@ const SubCategoryTableRows = ({
       <td>{mainCategoryName}</td>
       <td>{subCategoryName}</td>
       <td>
-        <Badge
-          badgeClassName={status.toLowerCase()}
-          badgeText={getlowerCaseFirstLetter(status, language)}
-          scheduledDate={scheduledDate || null}
-        />
+        <Badge status={status} scheduledDate={scheduledDate || null} />
       </td>
       <td>
         <MoreLink

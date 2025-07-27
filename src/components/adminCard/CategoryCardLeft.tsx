@@ -1,6 +1,5 @@
 import type { Status } from '../../app/api/apiTypes/adminApiTypes';
 import useLanguage from '../../features/language/useLanguage';
-import { getlowerCaseFirstLetter } from '../../utils/utils';
 import CardContent from '../card/CardContent';
 import AdminCardHeading from './AdminCardHeading';
 
@@ -24,11 +23,10 @@ const CategoryCardLeft = ({
   return (
     <CardContent className="left" heading={null} onReset={onReset}>
       <AdminCardHeading
-        badgeClassName={status.toLowerCase()}
-        badgeText={getlowerCaseFirstLetter(status, language)}
         scheduledDate={scheduledDate || null}
         name={name}
         ariaLabel={language.categoryCard}
+        status={status}
       />
       <span>
         {language.productsInSubcategory}: {productsInSubcategory}{' '}
