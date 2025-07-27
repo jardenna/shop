@@ -1,5 +1,5 @@
 import FileInput from '../../../components/formElements/fileInput/FileInput';
-import ImgList from '../../../components/formElements/fileInput/ImgList';
+import ImgListItem from '../../../components/formElements/fileInput/ImgListItem';
 import Preview from '../../../components/formElements/fileInput/Preview';
 import InputInfo from '../../../components/formElements/InputInfo';
 import { PreviewImg } from '../../../hooks/useFormValidation';
@@ -35,9 +35,9 @@ const ImageUpload = ({
   return (
     <div>
       <div className="upload-img-container">
-        <ul className="preview-img-container">
+        <ul className="img-list">
           {images.map((img, index) => (
-            <ImgList
+            <ImgListItem
               key={index}
               onClick={() => {
                 onToggleImage(img);

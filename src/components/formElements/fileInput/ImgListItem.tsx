@@ -3,7 +3,7 @@ import { IconName } from '../../../types/enums';
 import IconBtn from '../../IconBtn';
 import Img from '../../Img';
 
-type ImgListProps = {
+type ImgListItemProps = {
   ariaLabel: string;
   img: string;
   title: string;
@@ -12,14 +12,14 @@ type ImgListProps = {
   onClick: () => void;
 };
 
-const ImgList = ({
+const ImgListItem = ({
   ariaLabel,
   img,
   title,
   isImgDisabled,
   onClick,
   children,
-}: ImgListProps) => (
+}: ImgListItemProps) => (
   <li className={`img-list-item ${isImgDisabled ? 'gray-scaled' : ''}`}>
     <Img src={img} alt="" className="img-list-img" />
     <IconBtn
@@ -34,4 +34,4 @@ const ImgList = ({
   </li>
 );
 
-export default ImgList;
+export default ImgListItem;

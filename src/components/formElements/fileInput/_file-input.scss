@@ -15,7 +15,12 @@
   }
 }
 
-.preview-img-container {
+.preview-list {
+  margin-top: 8px;
+  gap: 12px;
+}
+
+.img-list {
   display: flex;
 
   .img-list-item {
