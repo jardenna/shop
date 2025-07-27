@@ -310,19 +310,6 @@ const ProductForm = ({
         </div>
         <div className="flex-1">
           <FormCard legendText={language.productVariants} onReset={onReset}>
-            <SizeListMultiChoice
-              onChange={onChange}
-              infoText={language[sizeInfoText]}
-              values={values.sizes}
-              sizeList={checkBoxSizeList}
-              name="sizes"
-              groupTitle={{
-                title: language.sizes,
-                id: 'choose-product-colors',
-                errorText: language[errors.sizes],
-              }}
-            />
-
             <Selectbox
               id="colors"
               name="colors"
@@ -336,6 +323,18 @@ const ProductForm = ({
               isMulti
               onChange={(values: OptionType[]) => {
                 handleSelectColors('colors', values);
+              }}
+            />
+            <SizeListMultiChoice
+              onChange={onChange}
+              infoText={language[sizeInfoText]}
+              values={values.sizes}
+              sizeList={checkBoxSizeList}
+              name="sizes"
+              groupTitle={{
+                title: language.sizes,
+                id: 'choose-product-colors',
+                errorText: language[errors.sizes],
               }}
             />
           </FormCard>
