@@ -11,6 +11,18 @@ const discountCalculation = (price: number, discount: number) => {
   return price - discountPrice;
 };
 
+const maxSizeInBytes = 1024 * 1024;
+const maxFileSize = 1 * maxSizeInBytes;
+
+const allowedExtensions = ['jpg', 'jpeg', 'png', 'webp', 'avif'];
+
+// const extension = preview?.name.split('.').pop()?.toLowerCase();
+// const isExtensionValid = extension && allowedExtensions.includes(extension);
+// const isSizeValid =
+//   typeof preview?.size === 'number' && preview.size <= maxFileSize;
+
+// console.log({ isExtensionValid, isSizeValid });
+
 const getErrorMessage = (error: unknown): string => {
   if (
     error &&
@@ -32,10 +44,12 @@ const getlowerCaseFirstLetter = (
 ) => language[key[0].toLowerCase() + key.slice(1)] || key;
 
 export {
+  allowedExtensions,
   currencyCacheKey,
   discountCalculation,
   formatNumber,
   getErrorMessage,
   getlowerCaseFirstLetter,
+  maxFileSize,
   oneDay,
 };
