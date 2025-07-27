@@ -3,7 +3,7 @@ import { IconName } from '../../../types/enums';
 import IconBtn from '../../IconBtn';
 import Img from '../../Img';
 
-type ProductImgListProps = {
+type ImgListProps = {
   ariaLabel: string;
   img: string;
   title: string;
@@ -12,19 +12,19 @@ type ProductImgListProps = {
   onClick: () => void;
 };
 
-const ProductImgList = ({
+const ImgList = ({
   ariaLabel,
   img,
   title,
   isImgDisabled,
   onClick,
   children,
-}: ProductImgListProps) => (
-  <li className={`preview-img-item ${isImgDisabled ? 'gray-scaled' : ''}`}>
-    <Img src={img} alt="" className="preview-img" />
+}: ImgListProps) => (
+  <li className={`img-list-item ${isImgDisabled ? 'gray-scaled' : ''}`}>
+    <Img src={img} alt="" className="img-list-img" />
     <IconBtn
       onClick={onClick}
-      className="delete-preview-btn"
+      className="delete-img-list-btn"
       iconName={isImgDisabled ? IconName.Undo : IconName.Trash}
       title={title}
       ariaLabel={ariaLabel}
@@ -34,4 +34,4 @@ const ProductImgList = ({
   </li>
 );
 
-export default ProductImgList;
+export default ImgList;

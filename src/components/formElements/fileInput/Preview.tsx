@@ -1,5 +1,5 @@
 import type { PreviewImg } from '../../../hooks/useFormValidation';
-import ProductImgList from './ProductImgList';
+import ProductImgList from './ImgList';
 
 export type PreviewProps = {
   ariaLabel: string;

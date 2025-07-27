@@ -18,7 +18,7 @@
 .preview-img-container {
   display: flex;
 
-  .preview-img-item {
+  .img-list-item {
     position: relative;
     max-width: fit-content;
     max-height: fit-content;
@@ -33,7 +33,7 @@
   gap: 12px;
 }
 
-.delete-preview-btn {
+.delete-img-list-btn {
   &.btn {
     position: absolute;
     bottom: 4px;
@@ -44,7 +44,7 @@
   }
 }
 
-.preview-img {
+.img-list-img {
   width: rem(192px);
   height: rem(98px);
   object-fit: cover;
