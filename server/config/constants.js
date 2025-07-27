@@ -33,7 +33,8 @@ const KIDS_SHOE_SIZES = [
 
 const CLOTHING_SIZES = ['S', 'M', 'L', 'XL'];
 
-const MAX_FILE_SIZE = 1 * 1000 * 1000; // 1 MB file size limit
+const MB = 1024 * 1024;
+const MAX_FILE_SIZE = 1 * MB;
 
 export {
   ALLOWED_ROLES,
