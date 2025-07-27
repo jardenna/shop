@@ -39,9 +39,9 @@ import ImageUpload from './ImageUpload';
 type ProductFormProps = {
   allowedSizes: string[];
   id: string | null;
+  images: string[];
   parentCategories: SubCategoriesWithParent[];
   selectedProduct: Product | null;
-  images?: string[];
   onReset: () => void;
 };
 
@@ -251,21 +251,19 @@ const ProductForm = ({
             />
           </FormCard>
           <FormCard legendText={language.productImages} onReset={onReset}>
-            {images && (
-              <ImageUpload
-                images={images}
-                ariaLabel={`${language.delete} ${language.image}`}
-                onChange={onChange}
-                previewData={previewData}
-                onRemovePreviewImage={(name: string) => {
-                  removePreviewImage(name);
-                }}
-                onToggleImage={(id) => {
-                  handleToggleImage(id);
-                }}
-                disabledImages={disabledImages}
-              />
-            )}
+            <ImageUpload
+              images={images}
+              ariaLabel={`${language.delete} ${language.image}`}
+              onChange={onChange}
+              previewData={previewData}
+              onRemovePreviewImage={(name: string) => {
+                removePreviewImage(name);
+              }}
+              onToggleImage={(id) => {
+                handleToggleImage(id);
+              }}
+              disabledImages={disabledImages}
+            />
           </FormCard>
           <FormCard legendText={language.productInformation} onReset={onReset}>
             <Input

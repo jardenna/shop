@@ -16,6 +16,7 @@ const CreateProductPage = () => {
         >
           <ProductForm
             selectedProduct={null}
+            images={[]}
             id={null}
             parentCategories={subCategories}
             onReset={() => refetch()}

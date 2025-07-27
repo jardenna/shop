@@ -55,7 +55,7 @@ const Input = ({
   inputSuffix,
   placeholder,
   maxLength,
-  autoComplete = 'off',
+  autoComplete = 'on',
   autoFocus,
   onFocus,
   disabled,

@@ -4,8 +4,7 @@ import { IconName } from '../../../types/enums';
 import type { ChangeInputType } from '../../../types/types';
 import Icon from '../../icons/Icon';
 import './_file-input.scss';
-import FileInfo from './FileInfo';
-import Preview, { PreviewProps } from './Preview';
+import { PreviewProps } from './Preview';
 
 type FileInputProps = PreviewProps & {
   id: string;
@@ -22,44 +21,27 @@ const FileInput = ({
   id,
   multiple,
   required,
-  onRemoveImg,
-  ariaLabel,
-  title,
-  previewData,
   errorText,
 }: FileInputProps) => {
   const { language } = useLanguage();
 
   return (
     <div>
-      <div className="file-container">
-        <div>
-          <label htmlFor="images" className="file-upload-label btn btn-ghost">
-            <Icon iconName={IconName.Upload} title="iconName" />
-            {language.browseImages}
-          </label>
-          <FileInfo />
-        </div>
-        <input
-          type="file"
-          onChange={onChange}
-          name={name}
-          id={id}
-          multiple={multiple}
-          className="visually-hidden"
-          aria-invalid={errorText ? true : undefined}
-          aria-required={required || undefined}
-          aria-errormessage={errorText ? `err-${id}` : undefined}
-        />
-        {previewData.length > 0 && (
-          <Preview
-            previewData={previewData}
-            title={title}
-            ariaLabel={ariaLabel}
-            onRemoveImg={onRemoveImg}
-          />
-        )}
-      </div>
+      <label htmlFor="images" className="file-upload-label btn btn-primary">
+        <Icon iconName={IconName.Upload} title="iconName" />
+        {language.browseImages}
+      </label>
+      <input
+        type="file"
+        onChange={onChange}
+        name={name}
+        id={id}
+        multiple={multiple}
+        className="visually-hidden"
+        aria-invalid={errorText ? true : undefined}
+        aria-required={required || undefined}
+        aria-errormessage={errorText ? `err-${id}` : undefined}
+      />
     </div>
   );
 };

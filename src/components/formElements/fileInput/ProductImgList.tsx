@@ -13,22 +13,24 @@ type ProductImgListProps = {
 };
 
 const ProductImgList = ({
-  img,
-  onClick,
-  children,
   ariaLabel,
+  img,
   title,
   isImgDisabled,
+  onClick,
+  children,
 }: ProductImgListProps) => (
-  <li className={`preview-item ${isImgDisabled ? 'gray-scaled' : ''}`}>
+  <li className={`preview-img-item ${isImgDisabled ? 'gray-scaled' : ''}`}>
     <Img src={img} alt="" className="preview-img" />
-    {children && children}
     <IconBtn
       onClick={onClick}
+      className="delete-preview-btn"
       iconName={isImgDisabled ? IconName.Undo : IconName.Trash}
       title={title}
       ariaLabel={ariaLabel}
     />
+
+    {children && children}
   </li>
 );
 

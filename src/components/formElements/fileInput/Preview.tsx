@@ -14,7 +14,7 @@ const Preview = ({
   title,
   previewData,
 }: PreviewProps) => (
-  <ul className="preview-list">
+  <ul className="preview-img-container">
     {previewData.map((preview, index) => (
       <ProductImgList
         key={index}
@@ -24,12 +24,7 @@ const Preview = ({
         img={preview.url}
         ariaLabel={`${ariaLabel} ${preview.name}`}
         title={title}
-      >
-        <div className="preview-info">
-          <span className="text-ellipsis">{preview.name}</span>
-          <span className="preview-size">{preview.size}</span>
-        </div>
-      </ProductImgList>
+      />
     ))}
   </ul>
 );
