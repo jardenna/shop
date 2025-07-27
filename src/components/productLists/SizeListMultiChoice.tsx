@@ -10,6 +10,7 @@ type SizeList = {
 type SizeListMultiChoiceProps = ProductListChoiceProps & {
   sizeList: SizeList[];
   values: string[];
+  infoText?: string;
 };
 
 const SizeListMultiChoice = ({
@@ -17,6 +18,7 @@ const SizeListMultiChoice = ({
   values,
   sizeList,
   name,
+  infoText,
   groupTitle,
 }: SizeListMultiChoiceProps) => (
   <ProductList groupTitle={groupTitle}>
@@ -32,6 +34,7 @@ const SizeListMultiChoice = ({
         />
       </ProductListItem>
     ))}
+    {infoText && infoText}
   </ProductList>
 );
 

@@ -24,7 +24,7 @@ import { AdminPath } from '../../../layout/nav/enums';
 import variables from '../../../scss/variables.module.scss';
 import type { OptionType } from '../../../types/types';
 import { colorList, getColorOptions } from '../../../utils/colorUtils';
-import { getlowerCaseFirstLetter } from '../../../utils/utils';
+import { getlowerCaseFirstLetter, getSizeInfoText } from '../../../utils/utils';
 import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
 import useCurrency from '../../currency/useCurrency';
 import useLanguage from '../../language/useLanguage';
@@ -226,7 +226,7 @@ const ProductForm = ({
     label: size,
   }));
 
-  console.log(values.sizes);
+  const sizeInfoText = getSizeInfoText(selectedCategory);
 
   return (
     <Form
@@ -312,16 +312,17 @@ const ProductForm = ({
           <FormCard legendText={language.productVariants} onReset={onReset}>
             <SizeListMultiChoice
               onChange={onChange}
+              infoText={language[sizeInfoText]}
               values={values.sizes}
               sizeList={checkBoxSizeList}
+              name="sizes"
               groupTitle={{
                 title: language.sizes,
                 id: 'choose-product-colors',
                 errorText: language[errors.sizes],
               }}
-              name="sizes"
-            />{' '}
-            Vælg en kategori for at se størrelser
+            />
+
             <Selectbox
               id="colors"
               name="colors"
