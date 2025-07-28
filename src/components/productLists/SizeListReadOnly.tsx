@@ -29,16 +29,9 @@ const SizeListReadOnly = ({
     subKey: subCategoryName,
   });
 
-  const shouldFilterSizeList =
-    sizeList.length > 1 && sizeList.includes('Onesize');
-
-  const filteredSizeList = shouldFilterSizeList
-    ? sizeList.filter((a) => a !== 'Onesize')
-    : sizeList;
-
   return (
     <ProductList groupTitle={groupTitle}>
-      {filteredSizeList.map((size) => (
+      {sizeList.map((size) => (
         <ProductListItem
           as="span"
           text={size}
