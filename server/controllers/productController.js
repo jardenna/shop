@@ -272,6 +272,7 @@ const getProducts = asyncHandler(async (req, res) => {
         id: '$_id',
         subCategoryId: '$subCategory',
         subCategoryName: '$subCategoryData.subCategoryName',
+        categoryName: '$categoryData.categoryName',
       },
     },
     {
