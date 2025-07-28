@@ -34,6 +34,10 @@
     font-family: $font-primary-bold;
     text-transform: uppercase;
   }
+
+  .product-card-description {
+    max-width: rem(652px);
+  }
 }
 
 .product-card-list {
@@ -48,6 +52,10 @@
     grid-row: span 2;
     display: grid;
     grid-template-rows: subgrid;
+
+    .product-list {
+      max-width: rem(400px);
+    }
   }
 
   .product-card-img {
@@ -68,7 +76,7 @@
     .product-card {
       grid-column: span 3;
       grid-row: span 1;
-      grid-auto-columns: rem(270px) rem(520px);
+      grid-auto-columns: rem(270px) auto;
       gap: 32px;
       align-items: center;
 
