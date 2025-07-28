@@ -148,7 +148,9 @@ export type Product = BaseProduct & {
   category: Category;
   quantity: number;
   subCategory: BaseSubCategory;
+  categoryName?: string;
   scheduledDate?: Date;
+  subCategoryName?: string;
 };
 
 type OmittedProduct = Omit<
