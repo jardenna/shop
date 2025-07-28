@@ -20,7 +20,7 @@ const resolveAllowedSizes = ({ subKey, mainKey }) => {
   if (subKey === 'shoes') return SHOE_SIZES;
 
   // Accessories don't have sizes
-  if (subKey === 'accessories') return [];
+  if (subKey.includes('accessories')) return [];
 
   // All others
   return CLOTHING_SIZES;
