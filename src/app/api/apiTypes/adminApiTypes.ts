@@ -148,9 +148,7 @@ export type Product = BaseProduct & {
   category: Category;
   quantity: number;
   subCategory: BaseSubCategory;
-  categoryName?: string;
   scheduledDate?: Date;
-  subCategoryName?: string;
 };
 
 type OmittedProduct = Omit<
@@ -164,6 +162,8 @@ type OmittedProduct = Omit<
   | 'numReviews'
   | 'rating'
   | 'subCategory'
+  | 'subCategoryName'
+  | 'CategoryName'
 >;
 
 export type ProductsParams = BaseProductParams & {
