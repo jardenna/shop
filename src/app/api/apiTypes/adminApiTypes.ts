@@ -4,6 +4,7 @@ import type {
   BaseProductParams,
   DefaultResponse,
   DefaultResponseType,
+  Size,
 } from './sharedApiTypes';
 
 export type Roles = 'Employee' | 'User';
@@ -151,28 +152,25 @@ export type Product = BaseProduct & {
   scheduledDate?: Date;
 };
 
-type OmittedProduct = Omit<
-  Product,
-  | 'createdAt'
-  | 'reviews'
-  | 'updatedAt'
-  | 'id'
-  | 'category'
-  | 'countInStock'
-  | 'numReviews'
-  | 'rating'
-  | 'subCategory'
-  | 'subCategoryName'
-  | 'categoryName'
->;
-
 export type ProductsParams = BaseProductParams & {
   productStatus?: Status;
   subCategory?: string;
 };
 
-export type ProductRequest = OmittedProduct & {
+export type ProductRequest = {
+  brand: string;
+  colors: string[];
+  description: string;
+  discount: number;
+  images: string[];
+  material: string;
+  price: number;
+  productName: string;
+  productStatus: Status;
+  quantity: number;
+  sizes: Size[];
   subCategory: string;
+  scheduledDate?: Date;
 };
 
 export type UpdateProductRequest = {
