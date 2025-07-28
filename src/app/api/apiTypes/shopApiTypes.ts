@@ -10,16 +10,11 @@ export type SingleProduct = BaseProduct & {
   subCategoryName: string;
 };
 
-export type AllProducts = BaseProduct & {
-  subCategoryId: string;
-  subCategoryName: string;
-};
-
 export type ShopAllProductsResponse = {
   page: number;
   pages: number;
   productCount: number;
-  products: AllProducts[];
+  products: SingleProduct[];
 };
 
 export type ProductMenuResponse = {
