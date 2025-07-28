@@ -1,5 +1,4 @@
 import { Status } from './adminApiTypes';
-import { MainKey, SubKey } from './shopApiTypes';
 
 export type CurrencyResponse = {
   data: Record<string, { value: number }>;
@@ -60,6 +59,8 @@ export type Size =
   | ClothingSizes;
 
 export type ClothingSizes = 'S' | 'M' | 'L' | 'XL';
+export type MainKey = 'Men' | 'Women' | 'Kids';
+export type SubKey = 'Shoes' | 'Accessories' | 'Clothing';
 
 export type BaseProduct = DefaultResponseType & {
   brand: string;

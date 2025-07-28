@@ -1,11 +1,12 @@
 import {
   ClothingSizes,
   KidsShoesSizes,
+  MainKey,
   MenShoesSizes,
   Size,
+  SubKey,
   WomenShoesSizes,
 } from '../app/api/apiTypes/sharedApiTypes';
-import { MainKey, SubKey } from '../app/api/apiTypes/shopApiTypes';
 
 const clothingSizes: ClothingSizes[] = ['S', 'M', 'L', 'XL'];
 const womenShoeSizes: WomenShoesSizes[] = [
