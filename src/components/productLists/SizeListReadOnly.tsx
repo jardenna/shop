@@ -1,22 +1,30 @@
-import { Size } from '../../app/api/apiTypes/sharedApiTypes';
+import { MainKey, SubKey } from '../../app/api/apiTypes/sharedApiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import { OptionGroupHeading } from '../../types/types';
+import { resolveAllowedSizes } from '../../utils/sizeUtils';
 import VisuallyHidden from '../VisuallyHidden';
 import ProductList from './ProductList';
 import ProductListItem from './ProductListItem';
 
 type SizeListReadOnlyProps = {
-  sizeList: Size[];
+  categoryName: MainKey;
   sizes: string[];
+  subCategoryName: SubKey;
   groupTitle?: OptionGroupHeading;
 };
 
 const SizeListReadOnly = ({
   sizes,
   groupTitle,
-  sizeList,
+  categoryName,
+  subCategoryName,
 }: SizeListReadOnlyProps) => {
   const { language } = useLanguage();
+
+  const sizeList = resolveAllowedSizes({
+    mainKey: categoryName,
+    subKey: subCategoryName,
+  });
 
   return (
     <ProductList groupTitle={groupTitle}>

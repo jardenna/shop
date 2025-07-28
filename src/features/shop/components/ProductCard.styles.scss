@@ -68,7 +68,7 @@
     .product-card {
       grid-column: span 3;
       grid-row: span 1;
-      grid-auto-columns: 270px auto;
+      grid-auto-columns: rem(270px) rem(520px);
       gap: 32px;
       align-items: center;
 

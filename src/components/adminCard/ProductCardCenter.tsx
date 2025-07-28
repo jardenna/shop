@@ -1,6 +1,5 @@
-import { Size } from '../../app/api/apiTypes/sharedApiTypes';
+import { MainKey, Size, SubKey } from '../../app/api/apiTypes/sharedApiTypes';
 import useLanguage from '../../features/language/useLanguage';
-import { clothingSizes } from '../../utils/sizeUtils';
 import CardContent from '../card/CardContent';
 import GridTwoCol from '../GridTwoCol';
 import ColorReadOnly from '../productColorLists/ColorReadOnly';
@@ -8,12 +7,14 @@ import SizeListReadOnly from '../productLists/SizeListReadOnly';
 
 type ProductCardCenterProps = {
   brand: string;
+  categoryName: MainKey;
   colours: string[];
   countInStock: number;
   discount: number;
   material: string;
   price: number;
   sizes: Size[];
+  subCategoryName: SubKey;
   onReset: () => void;
 };
 
@@ -25,6 +26,8 @@ const ProductCardCenter = ({
   sizes,
   onReset,
   countInStock,
+  categoryName,
+  subCategoryName,
 }: ProductCardCenterProps) => {
   const { language } = useLanguage();
 
@@ -50,7 +53,8 @@ const ProductCardCenter = ({
         />
         <SizeListReadOnly
           sizes={sizes}
-          sizeList={clothingSizes}
+          categoryName={categoryName}
+          subCategoryName={subCategoryName}
           groupTitle={{
             title: language.sizes,
             id: 'view-product-sizes',
