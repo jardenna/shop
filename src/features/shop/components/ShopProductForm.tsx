@@ -1,4 +1,5 @@
 import { SingleProduct } from '../../../app/api/apiTypes/shopApiTypes';
+import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/form/Form';
 import ColorListSingleChoice from '../../../components/productColorLists/ColorListSingleChoice';
 import SizeListSingleChoice from '../../../components/productLists/SizeListSingleChoice';
@@ -31,27 +32,29 @@ const ShopProductForm = ({
 
   return (
     <Form onSubmit={onSubmit} submitBtnLabel={language.create}>
-      <SizeListSingleChoice
-        sizeList={selectedProduct.sizes}
-        initialChecked={values.size}
-        onChange={onChange}
-        name="size"
-        groupTitle={{
-          title: language.selectSize,
-          id: 'choose-product-size',
-        }}
-      />
-      <ColorListSingleChoice
-        colorList={colorList}
-        initialChecked={values.color}
-        onChange={onChange}
-        name="color"
-        iconName={selectedProduct.categoryName}
-        groupTitle={{
-          title: language.selectColor,
-          id: 'choose-product-color',
-        }}
-      />
+      <FieldSet legendText={language.productVariants} hideLegendText>
+        <ColorListSingleChoice
+          colorList={colorList}
+          initialChecked={values.color}
+          onChange={onChange}
+          name="color"
+          iconName={selectedProduct.categoryName}
+          groupTitle={{
+            title: language.selectColor,
+            id: 'choose-product-color',
+          }}
+        />
+        <SizeListSingleChoice
+          sizeList={selectedProduct.sizes}
+          initialChecked={values.size}
+          onChange={onChange}
+          name="size"
+          groupTitle={{
+            title: language.selectSize,
+            id: 'choose-product-size',
+          }}
+        />
+      </FieldSet>
     </Form>
   );
 };
