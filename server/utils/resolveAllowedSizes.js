@@ -12,6 +12,7 @@ const resolveAllowedSizes = ({ subKey, mainKey }) => {
   }
 
   if (mainKey === 'Men' && subKey === 'shoes') {
+    // Special case for Mens shoes
     return MEN_SHOE_SIZES;
   }
 

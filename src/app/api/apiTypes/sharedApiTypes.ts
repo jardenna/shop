@@ -18,14 +18,31 @@ export type DefaultResponseType = {
 };
 
 // Products
-export type ProductSizes =
-  | 'S'
-  | 'M'
-  | 'L'
-  | 'XL'
-  | 'Onesize'
+export type KidsShoesSizes =
+  | '24'
+  | '25'
+  | '26'
+  | '27'
+  | '28'
+  | '29'
+  | '30'
+  | '31'
+  | '32'
+  | '33'
   | '34'
-  | '35'
+  | 'Onesize';
+
+export type MenShoesSizes =
+  | '40'
+  | '41'
+  | '42'
+  | '43'
+  | '44'
+  | '45'
+  | '46'
+  | 'Onesize';
+
+export type WomenShoesSizes =
   | '36'
   | '37'
   | '38'
@@ -33,10 +50,15 @@ export type ProductSizes =
   | '40'
   | '41'
   | '42'
-  | '43'
-  | '44'
-  | '45'
-  | '46';
+  | 'Onesize';
+
+export type Size =
+  | KidsShoesSizes
+  | MenShoesSizes
+  | WomenShoesSizes
+  | ClothingSizes;
+
+export type ClothingSizes = 'S' | 'M' | 'L' | 'XL';
 
 export type BaseProduct = DefaultResponseType & {
   brand: string;
@@ -53,7 +75,7 @@ export type BaseProduct = DefaultResponseType & {
   productStatus: Status;
   rating: number;
   reviews: ReviewResponse[];
-  sizes: ProductSizes[];
+  sizes: Size[];
 };
 
 export type BaseProductParams = {
