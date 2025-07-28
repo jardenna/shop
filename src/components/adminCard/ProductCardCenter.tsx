@@ -1,4 +1,6 @@
+import { Size } from '../../app/api/apiTypes/sharedApiTypes';
 import useLanguage from '../../features/language/useLanguage';
+import { clothingSizes } from '../../utils/sizeUtils';
 import CardContent from '../card/CardContent';
 import GridTwoCol from '../GridTwoCol';
 import ColorReadOnly from '../productColorLists/ColorReadOnly';
@@ -11,7 +13,7 @@ type ProductCardCenterProps = {
   discount: number;
   material: string;
   price: number;
-  sizes: string[];
+  sizes: Size[];
   onReset: () => void;
 };
 
@@ -48,6 +50,7 @@ const ProductCardCenter = ({
         />
         <SizeListReadOnly
           sizes={sizes}
+          sizeList={clothingSizes}
           groupTitle={{
             title: language.sizes,
             id: 'view-product-sizes',

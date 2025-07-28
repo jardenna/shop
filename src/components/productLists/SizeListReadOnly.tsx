@@ -1,16 +1,21 @@
+import { Size } from '../../app/api/apiTypes/sharedApiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import { OptionGroupHeading } from '../../types/types';
-import { sizeList } from '../../utils/productLists';
 import VisuallyHidden from '../VisuallyHidden';
 import ProductList from './ProductList';
 import ProductListItem from './ProductListItem';
 
 type SizeListReadOnlyProps = {
+  sizeList: Size[];
   sizes: string[];
   groupTitle?: OptionGroupHeading;
 };
 
-const SizeListReadOnly = ({ sizes, groupTitle }: SizeListReadOnlyProps) => {
+const SizeListReadOnly = ({
+  sizes,
+  groupTitle,
+  sizeList,
+}: SizeListReadOnlyProps) => {
   const { language } = useLanguage();
 
   return (

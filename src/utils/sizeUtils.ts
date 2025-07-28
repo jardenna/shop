@@ -5,6 +5,7 @@ import {
   Size,
   WomenShoesSizes,
 } from '../app/api/apiTypes/sharedApiTypes';
+import { MainKey, SubKey } from '../app/api/apiTypes/shopApiTypes';
 
 const clothingSizes: ClothingSizes[] = ['S', 'M', 'L', 'XL'];
 const womenShoeSizes: WomenShoesSizes[] = [
@@ -43,9 +44,6 @@ const kidsShoesSizes: KidsShoesSizes[] = [
   'Onesize',
 ];
 
-type MainKey = 'Men' | 'Women' | 'Kids';
-type SubKey = 'shoes' | 'accessories' | 'clothing';
-
 const resolveAllowedSizes = ({
   subKey,
   mainKey,
@@ -53,20 +51,20 @@ const resolveAllowedSizes = ({
   mainKey: MainKey;
   subKey: SubKey;
 }): Size[] => {
-  if (mainKey === 'Kids' && subKey === 'shoes') {
+  if (mainKey === 'Kids' && subKey === 'Shoes') {
     return kidsShoesSizes;
   }
 
-  if (mainKey === 'Men' && subKey === 'shoes') {
+  if (mainKey === 'Men' && subKey === 'Shoes') {
     return menShoesSizes;
   }
 
-  if (subKey === 'shoes') {
+  if (subKey === 'Shoes') {
     return womenShoeSizes;
   }
 
-  if (subKey === 'accessories') {
-    return [];
+  if (subKey.includes('Accessories')) {
+    return ['Onesize'];
   }
 
   return clothingSizes;

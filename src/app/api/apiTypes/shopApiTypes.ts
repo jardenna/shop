@@ -1,13 +1,16 @@
 import type { BaseProduct, BaseProductParams } from './sharedApiTypes';
 
+export type MainKey = 'Men' | 'Women' | 'Kids';
+export type SubKey = 'Shoes' | 'Accessories' | 'Clothing';
+
 export type ShopProductsParams = BaseProductParams & {
   mainCategory?: string;
   subCategoryId?: string;
 };
 
 export type SingleProduct = BaseProduct & {
-  categoryName: string;
-  subCategoryName: string;
+  categoryName: MainKey;
+  subCategoryName: SubKey;
 };
 
 export type ShopAllProductsResponse = {
