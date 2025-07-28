@@ -1,10 +1,10 @@
 import {
   ClothingSizes,
   KidsShoesSizes,
-  MainKey,
+  MainCategoryNames,
   MenShoesSizes,
   Size,
-  SubKey,
+  SubCategoryNames,
   WomenShoesSizes,
 } from '../app/api/apiTypes/sharedApiTypes';
 
@@ -49,8 +49,8 @@ const resolveAllowedSizes = ({
   subKey,
   mainKey,
 }: {
-  mainKey: MainKey;
-  subKey: SubKey;
+  mainKey: MainCategoryNames;
+  subKey: SubCategoryNames;
 }): Size[] => {
   if (mainKey === 'Kids' && subKey === 'Shoes') {
     return kidsShoesSizes;

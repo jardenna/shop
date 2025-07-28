@@ -1,4 +1,7 @@
-import { MainKey, SubKey } from '../../app/api/apiTypes/sharedApiTypes';
+import {
+  MainCategoryNames,
+  SubCategoryNames,
+} from '../../app/api/apiTypes/sharedApiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import { OptionGroupHeading } from '../../types/types';
 import { resolveAllowedSizes } from '../../utils/sizeUtils';
@@ -7,9 +10,9 @@ import ProductList from './ProductList';
 import ProductListItem from './ProductListItem';
 
 type SizeListReadOnlyProps = {
-  categoryName: MainKey;
+  categoryName: MainCategoryNames;
   sizes: string[];
-  subCategoryName: SubKey;
+  subCategoryName: SubCategoryNames;
   groupTitle?: OptionGroupHeading;
 };
 

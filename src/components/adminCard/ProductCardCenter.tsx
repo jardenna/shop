@@ -1,4 +1,8 @@
-import { MainKey, Size, SubKey } from '../../app/api/apiTypes/sharedApiTypes';
+import {
+  MainCategoryNames,
+  Size,
+  SubCategoryNames,
+} from '../../app/api/apiTypes/sharedApiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import CardContent from '../card/CardContent';
 import GridTwoCol from '../GridTwoCol';
@@ -7,14 +11,14 @@ import SizeListReadOnly from '../productLists/SizeListReadOnly';
 
 type ProductCardCenterProps = {
   brand: string;
-  categoryName: MainKey;
+  categoryName: MainCategoryNames;
   colours: string[];
   countInStock: number;
   discount: number;
   material: string;
   price: number;
   sizes: Size[];
-  subCategoryName: SubKey;
+  subCategoryName: SubCategoryNames;
   onReset: () => void;
 };
 

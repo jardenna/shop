@@ -59,12 +59,12 @@ export type Size =
   | ClothingSizes;
 
 export type ClothingSizes = 'S' | 'M' | 'L' | 'XL';
-export type MainKey = 'Men' | 'Women' | 'Kids';
-export type SubKey = 'Shoes' | 'Accessories' | 'Clothing';
+export type MainCategoryNames = 'Men' | 'Women' | 'Kids';
+export type SubCategoryNames = 'Shoes' | 'Accessories' | 'Clothing';
 
 export type BaseProduct = DefaultResponseType & {
   brand: string;
-  categoryName: MainKey;
+  categoryName: MainCategoryNames;
   colors: string[];
   countInStock: number;
   description: string;
@@ -79,7 +79,7 @@ export type BaseProduct = DefaultResponseType & {
   rating: number;
   reviews: ReviewResponse[];
   sizes: Size[];
-  subCategoryName: SubKey;
+  subCategoryName: SubCategoryNames;
 };
 
 export type BaseProductParams = {
