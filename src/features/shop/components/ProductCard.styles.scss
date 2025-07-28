@@ -52,10 +52,6 @@
     grid-row: span 2;
     display: grid;
     grid-template-rows: subgrid;
-
-    .product-list {
-      max-width: rem(400px);
-    }
   }
 
   .product-card-img {
