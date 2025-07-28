@@ -4,6 +4,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  max-width: rem(468px);
 
   &:has(.color-list-item) {
     gap: 4px;
