@@ -1,5 +1,6 @@
 import {
   MainCategoryNames,
+  Size,
   SubCategoryNames,
 } from '../../app/api/apiTypes/sharedApiTypes';
 import useLanguage from '../../features/language/useLanguage';
@@ -11,7 +12,7 @@ import ProductListItem from './ProductListItem';
 
 type SizeListReadOnlyProps = {
   categoryName: MainCategoryNames;
-  sizes: string[];
+  sizes: Size[];
   subCategoryName: SubCategoryNames;
   groupTitle?: OptionGroupHeading;
 };
@@ -29,9 +30,17 @@ const SizeListReadOnly = ({
     subKey: subCategoryName,
   });
 
+  const shouldShowOnlyOnesize = sizes.length === 1 && sizes[0] === 'Onesize';
+
+  const result: Size[] = shouldShowOnlyOnesize
+    ? ['Onesize']
+    : sizeList.filter(
+        (size): size is Exclude<Size, 'Onesize'> => size !== 'Onesize',
+      );
+
   return (
     <ProductList groupTitle={groupTitle}>
-      {sizeList.map((size) => (
+      {result.map((size) => (
         <ProductListItem
           as="span"
           text={size}

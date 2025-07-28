@@ -1,3 +1,4 @@
+import { Size } from '../../app/api/apiTypes/sharedApiTypes';
 import { ProductListChoiceProps } from '../../types/types';
 import ProductList from './ProductList';
 import ProductListItem from './ProductListItem';
@@ -5,6 +6,7 @@ import ProductListItem from './ProductListItem';
 type SizeListSingleChoiceProps = ProductListChoiceProps & {
   initialChecked: string;
   sizeList: string[];
+  sizes: Size[];
 };
 
 const SizeListSingleChoice = ({

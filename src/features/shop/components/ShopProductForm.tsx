@@ -47,6 +47,7 @@ const ShopProductForm = ({
         <SizeListSingleChoice
           sizeList={selectedProduct.sizes}
           initialChecked={values.size}
+          sizes={selectedProduct.sizes}
           onChange={onChange}
           name="size"
           groupTitle={{
