@@ -398,6 +398,9 @@ const getProductById = asyncHandler(async (req, res) => {
     });
   }
 
+  product.subCategoryName = product.subCategory?.subCategoryName || '';
+  product.categoryName = product.subCategory?.category?.categoryName || '';
+
   res.status(200).json(formatMongoData(product));
 });
 
