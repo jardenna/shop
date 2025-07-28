@@ -1,11 +1,11 @@
-import { SingleProduct } from '../../../app/api/apiTypes/shopApiTypes';
+import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import ColorReadOnly from '../../../components/productColorLists/ColorReadOnly';
 import SizeListReadOnly from '../../../components/productLists/SizeListReadOnly';
 import { resolveAllowedSizes } from '../../../utils/sizeUtils';
 import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
 
 type ProductCardListContentProps = {
-  product: SingleProduct;
+  product: BaseProduct;
 };
 
 const ProductCardListContent = ({ product }: ProductCardListContentProps) => {

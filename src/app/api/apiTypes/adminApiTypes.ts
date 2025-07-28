@@ -163,7 +163,7 @@ type OmittedProduct = Omit<
   | 'rating'
   | 'subCategory'
   | 'subCategoryName'
-  | 'CategoryName'
+  | 'categoryName'
 >;
 
 export type ProductsParams = BaseProductParams & {

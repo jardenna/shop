@@ -63,7 +63,7 @@ export type ClothingSizes = 'S' | 'M' | 'L' | 'XL';
 
 export type BaseProduct = DefaultResponseType & {
   brand: string;
-  CategoryName: MainKey;
+  categoryName: MainKey;
   colors: string[];
   countInStock: number;
   description: string;

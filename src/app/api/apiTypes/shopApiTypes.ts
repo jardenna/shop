@@ -8,16 +8,11 @@ export type ShopProductsParams = BaseProductParams & {
   subCategoryId?: string;
 };
 
-export type SingleProduct = BaseProduct & {
-  categoryName: MainKey;
-  subCategoryName: SubKey;
-};
-
 export type ShopAllProductsResponse = {
   page: number;
   pages: number;
   productCount: number;
-  products: SingleProduct[];
+  products: BaseProduct[];
 };
 
 export type ProductMenuResponse = {

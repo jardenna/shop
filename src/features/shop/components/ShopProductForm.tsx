@@ -1,4 +1,4 @@
-import { SingleProduct } from '../../../app/api/apiTypes/shopApiTypes';
+import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/form/Form';
 import ColorListSingleChoice from '../../../components/productColorLists/ColorListSingleChoice';
@@ -9,7 +9,7 @@ import useLanguage from '../../language/useLanguage';
 
 type ShopProductFormProps = {
   colorList: ColorOption[];
-  selectedProduct: SingleProduct;
+  selectedProduct: BaseProduct;
 };
 
 const ShopProductForm = ({

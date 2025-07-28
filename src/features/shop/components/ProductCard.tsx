@@ -1,15 +1,15 @@
 import { Link } from 'react-router';
-import { SingleProduct } from '../../../app/api/apiTypes/shopApiTypes';
 import Favorites from '../../../components/favorites/Favorites';
 import Img from '../../../components/Img';
 import './ProductCard.styles.scss';
 import ProductCardGridContent from './ProductCardGridContent';
 import ProductCardListContent from './ProductCardListContent';
 import SizeOverlay from './SizeOverlay';
+import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 
 type ProductCardProps = {
   displayList: boolean;
-  product: SingleProduct;
+  product: BaseProduct;
 };
 
 const ProductCard = ({ displayList, product }: ProductCardProps) => (
