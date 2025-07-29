@@ -9,10 +9,9 @@ import ProductList from './ProductList';
 import ProductListItem from './ProductListItem';
 
 type SizeListSingleChoiceProps = ProductListChoiceProps & {
+  availableSizeList: Size[];
   categoryName: MainCategoryNames;
   initialChecked: string;
-  sizeList: string[];
-  sizes: Size[];
   subCategoryName: SubCategoryNames;
 };
 
@@ -21,31 +20,34 @@ const SizeListSingleChoice = ({
   onChange,
   groupTitle,
   name,
-  sizes,
+  availableSizeList,
   categoryName,
   subCategoryName,
 }: SizeListSingleChoiceProps) => {
-  const sizeList = resolveAllowedSizes({
+  const allProductSizes = resolveAllowedSizes({
     mainKey: categoryName,
     subKey: subCategoryName,
   });
 
-  const shouldShowOnlyOnesize = sizes.length === 1 && sizes[0] === 'Onesize';
+  const oneSize = 'Onesize';
 
-  const result: Size[] = shouldShowOnlyOnesize
-    ? ['Onesize']
-    : sizeList.filter(
-        (size): size is Exclude<Size, 'Onesize'> => size !== 'Onesize',
+  const hasOnlyOneSize =
+    availableSizeList.length === 1 && availableSizeList[0] === oneSize;
+
+  const displaySizes: Size[] = hasOnlyOneSize
+    ? [oneSize]
+    : allProductSizes.filter(
+        (size): size is Exclude<Size, 'Onesize'> => size !== oneSize,
       );
 
   return (
     <ProductList groupTitle={groupTitle}>
-      {result.map((size) => (
+      {displaySizes.map((size) => (
         <ProductListItem
           key={size}
           htmlFor={size}
           text={size}
-          isUnavailable={!sizes.includes(size)}
+          isUnavailable={!availableSizeList.includes(size)}
         >
           <input
             type="radio"
@@ -55,7 +57,7 @@ const SizeListSingleChoice = ({
             checked={initialChecked === size}
             onChange={onChange}
           />
-          {!sizes.includes(size) && initialChecked === size && (
+          {!availableSizeList.includes(size) && initialChecked === size && (
             <div>Notify me</div>
           )}
         </ProductListItem>

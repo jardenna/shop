@@ -10,6 +10,7 @@ import ColorReadOnly from '../productColorLists/ColorReadOnly';
 import SizeListReadOnly from '../productLists/SizeListReadOnly';
 
 type ProductCardCenterProps = {
+  availableSizeList: Size[];
   brand: string;
   categoryName: MainCategoryNames;
   colours: string[];
@@ -17,7 +18,6 @@ type ProductCardCenterProps = {
   discount: number;
   material: string;
   price: number;
-  sizes: Size[];
   subCategoryName: SubCategoryNames;
   onReset: () => void;
 };
@@ -27,7 +27,7 @@ const ProductCardCenter = ({
   colours,
   discount,
   material,
-  sizes,
+  availableSizeList,
   onReset,
   countInStock,
   categoryName,
@@ -56,12 +56,12 @@ const ProductCardCenter = ({
           }}
         />
         <SizeListReadOnly
-          sizes={sizes}
+          availableSizeList={availableSizeList}
           categoryName={categoryName}
           subCategoryName={subCategoryName}
           groupTitle={{
-            title: language.sizes,
-            id: 'view-product-sizes',
+            title: language.availableSizeList,
+            id: 'view-product-availableSizeList',
           }}
         />
       </div>

@@ -11,14 +11,14 @@ import ProductList from './ProductList';
 import ProductListItem from './ProductListItem';
 
 type SizeListReadOnlyProps = {
+  availableSizeList: Size[];
   categoryName: MainCategoryNames;
-  sizes: Size[];
   subCategoryName: SubCategoryNames;
   groupTitle?: OptionGroupHeading;
 };
 
 const SizeListReadOnly = ({
-  sizes,
+  availableSizeList,
   groupTitle,
   categoryName,
   subCategoryName,
@@ -30,9 +30,10 @@ const SizeListReadOnly = ({
     subKey: subCategoryName,
   });
 
-  const shouldShowOnlyOnesize = sizes.length === 1 && sizes[0] === 'Onesize';
+  const hasOnlyOneSize =
+    availableSizeList.length === 1 && availableSizeList[0] === 'Onesize';
 
-  const result: Size[] = shouldShowOnlyOnesize
+  const displaySizes: Size[] = hasOnlyOneSize
     ? ['Onesize']
     : sizeList.filter(
         (size): size is Exclude<Size, 'Onesize'> => size !== 'Onesize',
@@ -40,15 +41,17 @@ const SizeListReadOnly = ({
 
   return (
     <ProductList groupTitle={groupTitle}>
-      {result.map((size) => (
+      {displaySizes.map((size) => (
         <ProductListItem
           as="span"
           text={size}
-          isUnavailable={!sizes.includes(size)}
+          isUnavailable={!availableSizeList.includes(size)}
           key={size}
         >
           <VisuallyHidden>
-            {!sizes.includes(size) ? language.unavailable : language.available}{' '}
+            {!availableSizeList.includes(size)
+              ? language.unavailable
+              : language.available}{' '}
             {language.size}
           </VisuallyHidden>
         </ProductListItem>

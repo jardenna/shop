@@ -115,7 +115,7 @@ const ViewProductPage = () => {
               discount={product.discount || 0}
               material={product.material}
               price={product.price}
-              sizes={product.sizes}
+              availableSizeList={product.sizes}
               onReset={() => refetch()}
               categoryName={product.categoryName}
               subCategoryName={product.subCategoryName}

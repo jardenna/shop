@@ -45,9 +45,8 @@ const ShopProductForm = ({
           }}
         />
         <SizeListSingleChoice
-          sizeList={selectedProduct.sizes}
           initialChecked={values.size}
-          sizes={selectedProduct.sizes}
+          availableSizeList={selectedProduct.sizes}
           categoryName={selectedProduct.categoryName}
           subCategoryName={selectedProduct.subCategoryName}
           onChange={onChange}
