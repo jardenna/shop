@@ -38,9 +38,12 @@
 
   .separator {
     height: 100px;
+    min-height: rem(258px);
     width: 1px;
     position: absolute;
-    top: 30%;
+    top: 50px;
+    left: 7px;
+    background-color: $color-gray-60;
   }
 
   .admin-card-title {
@@ -118,6 +121,13 @@
     }
   }
 
+  &.center {
+    .admin-card-content {
+      padding: 24px;
+      gap: 12px;
+    }
+  }
+
   &.right {
     background-color: $color-gray-20;
     padding-right: 12px;
@@ -149,22 +159,5 @@
       padding: 0 32px;
       margin-top: 8px;
     }
-  }
-}
-
-.product-list-container {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 24px;
-  padding-bottom: 0;
-
-  @include max-size($small) {
-    padding: 0;
-  }
-
-  .product-list-headline {
-    display: flex;
-    margin-bottom: 4px;
   }
 }

@@ -36,35 +36,33 @@ const ProductCardCenter = ({
   const { language } = useLanguage();
 
   return (
-    <CardContent heading={null} onReset={onReset}>
+    <CardContent heading={null} onReset={onReset} className="center">
       <span className="separator" aria-hidden={true} />
-      <div className="product-list-container">
-        <GridTwoCol text={language.productsInStock}>
-          {countInStock} {language.items}.
-        </GridTwoCol>
-        {discount !== 0 && (
-          <GridTwoCol text={language.discount}>{discount}%</GridTwoCol>
-        )}
-        <GridTwoCol text={language.brand}>{brand}</GridTwoCol>
-        <GridTwoCol text={language.material}>{material}</GridTwoCol>
-        <ColorReadOnly
-          colors={colours}
-          variant="small"
-          groupTitle={{
-            title: language.colours,
-            id: 'view-product-colors',
-          }}
-        />
-        <SizeListReadOnly
-          availableSizeList={availableSizeList}
-          categoryName={categoryName}
-          subCategoryName={subCategoryName}
-          groupTitle={{
-            title: language.sizes,
-            id: 'view-product-availableSizeList',
-          }}
-        />
-      </div>
+      <GridTwoCol text={language.productsInStock}>
+        {countInStock} {language.items}.
+      </GridTwoCol>
+      {discount !== 0 && (
+        <GridTwoCol text={language.discount}>{discount}%</GridTwoCol>
+      )}
+      <GridTwoCol text={language.brand}>{brand}</GridTwoCol>
+      <GridTwoCol text={language.material}>{material}</GridTwoCol>
+      <ColorReadOnly
+        colors={colours}
+        variant="small"
+        groupTitle={{
+          title: language.colours,
+          id: 'view-product-colors',
+        }}
+      />
+      <SizeListReadOnly
+        availableSizeList={availableSizeList}
+        categoryName={categoryName}
+        subCategoryName={subCategoryName}
+        groupTitle={{
+          title: language.sizes,
+          id: 'view-product-availableSizeList',
+        }}
+      />
     </CardContent>
   );
 };
