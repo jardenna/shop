@@ -151,3 +151,20 @@
     }
   }
 }
+
+.product-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  padding-bottom: 0;
+
+  @include max-size($small) {
+    padding: 0;
+  }
+
+  .product-list-headline {
+    display: flex;
+    margin-bottom: 4px;
+  }
+}
