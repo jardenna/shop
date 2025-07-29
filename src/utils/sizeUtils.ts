@@ -71,18 +71,6 @@ const resolveAllowedSizes = ({
   return clothingSizes;
 };
 
-// const displaySizeFunc = (sizes: Size[], test) => {
-//   const oneSize = 'Onesize';
-
-//   const hasOnlyOneSize = sizes.length === 1 && sizes[0] === oneSize;
-
-//   const displaySizes: Size[] = hasOnlyOneSize
-//     ? [oneSize]
-//     : test.filter((size): size is Exclude<Size, 'Onesize'> => size !== oneSize);
-
-//   return displaySizes;
-// };
-
 export {
   clothingSizes,
   kidsShoesSizes,
