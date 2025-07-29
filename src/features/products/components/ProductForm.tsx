@@ -84,7 +84,7 @@ const ProductForm = ({
     discount: selectedProduct?.discount ?? 0,
     productName: selectedProduct?.productName ?? '',
     productStatus: selectedProduct?.productStatus ?? 'Inactive',
-    sizes: selectedProduct?.sizes ?? [],
+    sizes: selectedProduct?.sizes ?? ['Onesize'],
     subCategory: selectedProduct?.subCategory._id ?? '',
   };
 
