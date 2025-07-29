@@ -51,9 +51,7 @@ const getSizeInfoText = (
   if (!category) {
     return 'sizesDependOnSelectedCategory';
   }
-  if (category.allowedSizes.length === 0) {
-    return 'sizesNotRelevant';
-  }
+
   return '';
 };
 
