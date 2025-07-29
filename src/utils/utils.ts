@@ -1,4 +1,3 @@
-import { SubCategoriesWithParent } from '../app/api/apiTypes/adminApiTypes';
 import { ValidationMessage } from '../types/enums';
 
 const oneDay = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
@@ -10,18 +9,6 @@ const formatNumber = (value: number, lang: 'en' | 'da') =>
 const discountCalculation = (price: number, discount: number) => {
   const discountPrice = (price * discount) / 100;
   return price - discountPrice;
-};
-
-const getSizeInfoText = (
-  category: SubCategoriesWithParent | undefined,
-): string => {
-  if (!category) {
-    return 'sizesDependOnSelectedCategory';
-  }
-  if (category.allowedSizes.length === 0) {
-    return 'sizesNotRelevant';
-  }
-  return '';
 };
 
 const maxSizeInBytes = 1024 * 1024;
@@ -63,7 +50,6 @@ export {
   formatNumber,
   getErrorMessage,
   getlowerCaseFirstLetter,
-  getSizeInfoText,
   maxFileSize,
   oneDay,
 };
