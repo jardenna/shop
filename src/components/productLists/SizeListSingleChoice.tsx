@@ -4,7 +4,7 @@ import {
   SubCategoryNames,
 } from '../../app/api/apiTypes/sharedApiTypes';
 import { ProductListChoiceProps } from '../../types/types';
-import { resolveAllowedSizes } from '../../utils/sizeUtils';
+import { getDisplaySizes } from '../../utils/sizeUtils';
 import ProductList from './ProductList';
 import ProductListItem from './ProductListItem';
 
@@ -24,25 +24,15 @@ const SizeListSingleChoice = ({
   categoryName,
   subCategoryName,
 }: SizeListSingleChoiceProps) => {
-  const allProductSizes = resolveAllowedSizes({
+  const displaySizeList = getDisplaySizes({
     mainKey: categoryName,
     subKey: subCategoryName,
+    availableSizes: availableSizeList,
   });
-
-  const oneSize = 'Onesize';
-
-  const hasOnlyOneSize =
-    availableSizeList.length === 1 && availableSizeList[0] === oneSize;
-
-  const displaySizes: Size[] = hasOnlyOneSize
-    ? [oneSize]
-    : allProductSizes.filter(
-        (size): size is Exclude<Size, 'Onesize'> => size !== oneSize,
-      );
 
   return (
     <ProductList groupTitle={groupTitle}>
-      {displaySizes.map((size) => (
+      {displaySizeList.map((size) => (
         <ProductListItem
           key={size}
           htmlFor={size}

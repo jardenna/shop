@@ -45,36 +45,70 @@ const kidsShoesSizes: KidsShoesSizes[] = [
   'Onesize',
 ];
 
-const resolveAllowedSizes = ({
-  subKey,
+const oneSize = 'Onesize';
+
+// Returns the allowed sizes based on the main and sub category
+const getAllowedSizesForCategory = ({
   mainKey,
+  subKey,
 }: {
   mainKey: MainCategoryNames;
   subKey: SubCategoryNames;
 }): Size[] => {
+  // Special case for kids shoes
   if (mainKey === 'Kids' && subKey === 'Shoes') {
     return kidsShoesSizes;
   }
 
+  // Special case for Mens shoes
   if (mainKey === 'Men' && subKey === 'Shoes') {
     return menShoesSizes;
   }
 
+  // If it's a shoe subcategory but not for kids or men, use women’s shoe sizes
   if (subKey === 'Shoes') {
     return womenShoeSizes;
   }
 
+  // Accessories are always "Onesize"
   if (subKey.includes('Accessories')) {
-    return ['Onesize'];
+    return [oneSize];
   }
 
+  // Default to general sizes (used by most other categories)
   return clothingSizes;
+};
+
+// Utility function to get display sizes, optionally filtering out Onesize
+const getDisplaySizes = ({
+  mainKey,
+  subKey,
+  availableSizes,
+}: {
+  availableSizes: Size[];
+  mainKey: MainCategoryNames;
+  subKey: SubCategoryNames;
+}): Size[] => {
+  const allProductSizes = getAllowedSizesForCategory({ mainKey, subKey });
+
+  const hasOnlyOneSize =
+    availableSizes.length === 1 && availableSizes[0] === oneSize;
+
+  // If only Onesize is available, just return that
+  if (hasOnlyOneSize) {
+    return [oneSize];
+  }
+
+  // Otherwise filter Onesize out from the allowed sizes
+  return allProductSizes.filter(
+    (size): size is Exclude<Size, 'Onesize'> => size !== oneSize,
+  );
 };
 
 export {
   clothingSizes,
+  getDisplaySizes,
   kidsShoesSizes,
   menShoesSizes,
-  resolveAllowedSizes,
   womenShoeSizes,
 };
