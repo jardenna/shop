@@ -28,7 +28,7 @@ const ProductListItem = ({
   htmlFor,
   text,
   icon,
-  variant = 'medium',
+  variant,
   style,
   isUnavailable,
   className = 'size-list-item',
