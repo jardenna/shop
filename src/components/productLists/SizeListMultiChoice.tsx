@@ -11,6 +11,7 @@ type SizeListMultiChoiceProps = ProductListChoiceProps & {
   availableSizeList: SizeList[];
   values: string[];
   infoText?: string;
+  required?: boolean;
 };
 
 const SizeListMultiChoice = ({
@@ -20,8 +21,9 @@ const SizeListMultiChoice = ({
   name,
   infoText,
   groupTitle,
+  required,
 }: SizeListMultiChoiceProps) => (
-  <ProductList groupTitle={groupTitle}>
+  <ProductList groupTitle={groupTitle} required={required}>
     {availableSizeList.map(({ label, value }) => (
       <ProductListItem key={label} htmlFor={label} text={label}>
         <input

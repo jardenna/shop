@@ -1,3 +1,4 @@
+import RequiredIcon from '../RequiredIcon';
 import VisuallyHidden from '../VisuallyHidden';
 import FormError from './FormError';
 
@@ -25,7 +26,7 @@ const FormLabel = ({
       ) : (
         <label htmlFor={id}>
           {labelText}
-          {required && <span aria-hidden="true">*</span>}
+          {required && <RequiredIcon />}
         </label>
       )}
       {errorText && <FormError errorText={errorText} ariaErrorId={id} />}

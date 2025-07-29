@@ -251,6 +251,7 @@ const ProductForm = ({
               onChange={(selectedOptions: OptionType) => {
                 handleSelectCategory('subCategory', selectedOptions);
               }}
+              required
             />
           </FormCard>
           <FormCard legendText={language.productImages} onReset={onReset}>
@@ -325,6 +326,7 @@ const ProductForm = ({
               onChange={(values: OptionType[]) => {
                 handleSelectColors('colors', values);
               }}
+              required
             />
             <SizeListMultiChoice
               onChange={onChange}
@@ -332,6 +334,7 @@ const ProductForm = ({
               values={values.sizes}
               availableSizeList={checkBoxSizeList}
               name="sizes"
+              required
               groupTitle={{
                 title: language.sizes,
                 id: 'choose-product-colors',
