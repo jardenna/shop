@@ -9,7 +9,9 @@ const OptionGroupTitle = ({ groupTitle }: OptionGroupTitleProps) => (
     <h3 className="title" aria-labelledby={groupTitle.id}>
       {groupTitle.title}
     </h3>
-    <span className="error-message">{groupTitle.errorText}</span>
+    {groupTitle.errorText && (
+      <span className="error-message">{groupTitle.errorText}</span>
+    )}
   </div>
 );
 
