@@ -31,7 +31,7 @@ const ProductCardLeft = ({
   const { language } = useLanguage();
 
   return (
-    <CardContent className="left" heading={null} onReset={onReset}>
+    <CardContent heading={null} onReset={onReset}>
       {images.length > 0 ? (
         <ul className="product-img-list">
           {images.map((url) => (

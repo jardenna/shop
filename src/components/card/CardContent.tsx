@@ -16,7 +16,7 @@ const CardContent = ({
   heading,
   onReset,
 }: CardContentProps) => (
-  <div className={`admin-card card-${className}`}>
+  <div className={`admin-card ${className}`}>
     <span className="card-top-line" aria-hidden={true} />
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
       <section className="admin-card-content">
