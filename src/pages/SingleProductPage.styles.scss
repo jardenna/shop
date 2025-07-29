@@ -8,8 +8,12 @@
     width: 100%;
     margin-top: 32px;
 
-    h3 {
+    .title {
       text-transform: uppercase;
+      font-family: $font-primary-bold;
+      font-size: $font-small;
+      font-weight: normal;
+      margin: 0;
     }
   }
 
