@@ -5,6 +5,7 @@ import {
   SHOE_SIZES,
 } from '../config/constants.js';
 
+// Returns the allowed sizes based on the main and sub category
 const resolveAllowedSizes = ({ subKey, mainKey }) => {
   // Special case for kids shoes
   if (mainKey === 'Kids' && subKey === 'shoes') {
@@ -16,13 +17,13 @@ const resolveAllowedSizes = ({ subKey, mainKey }) => {
     return MEN_SHOE_SIZES;
   }
 
-  // Default shoes
+  // If it's a shoe subcategory but not for kids or men, use women’s shoe sizes
   if (subKey === 'shoes') return SHOE_SIZES;
 
-  // Accessories don't have sizes
+  // Accessories are always "Onesize"
   if (subKey.includes('accessories')) return [];
 
-  // All others
+  // Default to general sizes (used by most other categories)
   return CLOTHING_SIZES;
 };
 
