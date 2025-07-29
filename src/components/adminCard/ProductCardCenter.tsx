@@ -60,7 +60,7 @@ const ProductCardCenter = ({
           categoryName={categoryName}
           subCategoryName={subCategoryName}
           groupTitle={{
-            title: language.availableSizeList,
+            title: language.sizes,
             id: 'view-product-availableSizeList',
           }}
         />
