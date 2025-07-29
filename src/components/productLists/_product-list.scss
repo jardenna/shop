@@ -1,10 +1,13 @@
 @use '../../scss/globals' as *;
 
+.product-list-container {
+  max-width: rem(468px);
+}
+
 .product-list {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  max-width: rem(468px);
 
   &:has(.color-list-item) {
     gap: 4px;

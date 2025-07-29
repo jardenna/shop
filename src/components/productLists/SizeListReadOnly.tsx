@@ -43,7 +43,7 @@ const SizeListReadOnly = ({
           <VisuallyHidden>
             {!availableSizeList.includes(size)
               ? language.unavailable
-              : language.available}{' '}
+              : language.available}
             {language.size}
           </VisuallyHidden>
         </ProductListItem>
