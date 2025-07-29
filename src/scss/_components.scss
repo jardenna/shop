@@ -6,10 +6,45 @@
   margin-top: 12px;
 }
 
-.page-small {
-  max-width: $page-width-small;
+.more-link {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  &:focus-visible {
+    @include outline(currentcolor);
+  }
 }
 
-.page-medium {
-  max-width: $page-width-medium;
+.btn-close {
+  position: absolute;
+  right: 9px;
+  top: 12px;
+}
+
+.option-box {
+  width: 24px;
+  height: 24px;
+  border: 1px solid transparent;
+}
+
+.display-controls {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.missing-img {
+  width: rem(200px);
+  height: rem(112px);
+  background: $color-light-gray-30;
+  display: inline-grid;
+  place-content: center;
+  border-radius: 4px;
+  margin-bottom: 12px;
+
+  svg {
+    fill: $color-gray-40;
+    stroke: $color-gray-40;
+  }
 }
