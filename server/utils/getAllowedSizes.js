@@ -23,7 +23,7 @@ const getAllowedSizes = (name = '') => {
   }
 
   if (name.includes('accessories')) {
-    return []; // Accessories have no sizes
+    return ['Onesize']; // Accessories have no sizes
   }
 
   // Default

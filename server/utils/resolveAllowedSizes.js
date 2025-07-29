@@ -21,7 +21,7 @@ const resolveAllowedSizes = ({ subKey, mainKey }) => {
   if (subKey === 'shoes') return SHOE_SIZES;
 
   // Accessories are always "Onesize"
-  if (subKey.includes('accessories')) return [];
+  if (subKey.includes('accessories')) return ['Onesize'];
 
   // Default to general sizes (used by most other categories)
   return CLOTHING_SIZES;
