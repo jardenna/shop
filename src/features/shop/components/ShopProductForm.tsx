@@ -30,6 +30,11 @@ const ShopProductForm = ({
     },
   });
 
+  const title =
+    values.size === ''
+      ? language.selectSize
+      : `${language.selectedSize}: ${values.size}`;
+
   return (
     <Form onSubmit={onSubmit} submitBtnLabel={language.create}>
       <FieldSet legendText={language.productVariants} hideLegendText>
@@ -52,7 +57,7 @@ const ShopProductForm = ({
           onChange={onChange}
           name="size"
           groupTitle={{
-            title: language.selectSize,
+            title,
             id: 'choose-product-size',
           }}
         />

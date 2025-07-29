@@ -15,7 +15,6 @@ availableColors;Available colors;Tilgængelige farver
 bag;Bag;Indkøbskurv
 black;Black;Sort
 blue;Blue;Blå
-blue;Blue;Blå
 brand;Brand;Mærke
 brandRequired;Please insert brand;Indsæt venligst mærke
 brown;Brown;Brun
@@ -66,7 +65,7 @@ createNewUser;Create new user;Opret ny bruger
 criterionMet;Criterion met;Kriterium opfyldt
 criterionNotMet;Criterion not met;Kriterium ikke opfyldt
 currency;Currency;Valuta
-currency;Currency;Valuta
+currentlyUnavailable;is currently unavailable;er udsolgt
 customersList;Customers list;Kundeliste
 dashboard;Dashboard;Dashboard
 date;Date;Dato
@@ -108,6 +107,7 @@ filter;Filter;Filtrer
 filterProducts;Filter products;Filtrer produkter
 filterRow;Filter row;Filtrer række
 filtersApplied;Filters applied;Filtre anvendt
+getNotifiedForProducts;Do you want to be notified if it's back in stock;Vil du have besked, hvis varen kommer på lager igen
 globe;Globe;Globus
 goBack;Go back;Gå tilbage
 gold;Gold;Guld
@@ -174,6 +174,7 @@ noProduct;Product not found;Produkt blev ikke fundet
 notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 
 notAuthorizedNoToken;Not authorized, no token;Ikke autoriseret, ingen token
 notAuthorizedTokenFailed;Not authorized, token failed;Ikke autoriseret, token mislykkedes
+notiftyMe;Notify me;Giv mig besked
 noTumbleDry;Not suitable for tumble drying;Ikke egnet til tørretumbler
 notVisibleInShop;is not visible in the shop until the main category is published;bliver først synlig i shoppen, når hovedkategorien er udgivet
 noUser;User not found. Please sign up first;Bruger blev ikke fundet. Opret dig først
@@ -249,6 +250,7 @@ search;Search;Søg
 selectColor;Select color;Vælg farve
 selectPreferences;Select preferred language and currency;Vælg venligst sprog og valuta
 selectSize;Select size;Vælg størrelse
+selectedSize;Selected size;Valgt størrelse
 shoes;Shoes;Sko
 shopCart;Shopping cart;Indkøbskurv
 shopKidsHeading;Playful by Nature;Leg er liv
