@@ -11,7 +11,7 @@ adminCannotBeDeleted;Administrator cannot be deleted;Administrator kan ikke slet
 allowedFormats;Allowed formats;Tilladte formater
 ascending;ascending;stigende
 available;Available;Tilgængelig
-availableColors;Available colors;Tilgængelige farver
+availableColors;Available colours;Tilgængelige farver
 bag;Bag;Indkøbskurv
 black;Black;Sort
 blue;Blue;Blå
@@ -47,7 +47,7 @@ collection;Collection;Kollektion
 collectionSubKidsText;Comfortable and fun clothes for play, school and adventures.;Komfortabelt og sjovt tøj til leg, skole og eventyr.
 collectionSubMenText;From everyday looks to formal, everything for the modern man.;Fra hverdagslook til formelt, alt til den moderne mand.
 collectionSubWomenText;Discover stylish news, must-haves and trends of the season.;Opdag stilfulde nyheder, must-haves og sæsonens trends.
-colorRequired;Please select at least one color;Vælg mindst 1 farve
+colorRequired;Please select at least one Colour;Vælg mindst 1 farve
 colours;Colours;Farver
 compact;Compact;Kompakt
 confirmPassword;Confirm password;Gentag adgangskode
@@ -155,7 +155,7 @@ maximumFileSize;Maximum file size;Maksimal filstørrelse
 men;Men;Mænd
 menu;Menu;Menu
 minLength;At least 8 characters;Mindst 8 tegn
-multiColor;MultiColor;Flerfarvet
+multiColor;MultiColour;Flerfarvet
 mustHaveLowercase;At least one lowercase letter;Mindst ét lille bogstav
 mustHaveNumber;At least one number;Mindst ét tal
 mustHaveSymbol;At least one special character;Mindst ét specialtegn
@@ -247,7 +247,7 @@ scheduledDate;Scheduled date;Planlagt dato
 scheduledDateMustBeFuture;Scheduled date must be after now;Planlagt dato skal være efter nu
 scheduledToBePubliched;is scheduled to be published at;er planlagt til udgivelse den 
 search;Search;Søg
-selectColor;Select color;Vælg farve
+selectColor;Select colour;Vælg farve
 selectPreferences;Select preferred language and currency;Vælg venligst sprog og valuta
 selectSize;Select size;Vælg størrelse
 selectedSize;Selected size;Valgt størrelse
