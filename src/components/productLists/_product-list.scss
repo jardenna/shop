@@ -39,6 +39,14 @@
     border-color: $color-border;
     border-right-color: transparent;
 
+    .btn {
+      border-radius: 0;
+
+      &:hover {
+        color: inherit;
+      }
+    }
+
     &:last-child {
       border-right-color: $color-border;
     }
