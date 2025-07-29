@@ -329,7 +329,7 @@ const ProductForm = ({
               onChange={onChange}
               infoText={language[sizeInfoText]}
               values={values.sizes}
-              sizeList={checkBoxSizeList}
+              availableSizeList={checkBoxSizeList}
               name="sizes"
               groupTitle={{
                 title: language.sizes,

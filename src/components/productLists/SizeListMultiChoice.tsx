@@ -8,7 +8,7 @@ type SizeList = {
 };
 
 type SizeListMultiChoiceProps = ProductListChoiceProps & {
-  sizeList: SizeList[];
+  availableSizeList: SizeList[];
   values: string[];
   infoText?: string;
 };
@@ -16,13 +16,13 @@ type SizeListMultiChoiceProps = ProductListChoiceProps & {
 const SizeListMultiChoice = ({
   onChange,
   values,
-  sizeList,
+  availableSizeList,
   name,
   infoText,
   groupTitle,
 }: SizeListMultiChoiceProps) => (
   <ProductList groupTitle={groupTitle}>
-    {sizeList.map(({ label, value }) => (
+    {availableSizeList.map(({ label, value }) => (
       <ProductListItem key={label} htmlFor={label} text={label}>
         <input
           type="checkbox"
