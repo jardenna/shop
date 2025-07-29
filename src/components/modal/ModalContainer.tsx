@@ -8,6 +8,7 @@ import Modal, { ModalProps } from './Modal';
 type ModalContainerProps = ModalProps & {
   triggerModalBtnContent: ReactNode | string;
   triggerModalBtnVariant?: BtnVariant;
+  triggerModalClassName?: string;
   triggerModalDisabled?: boolean;
 };
 
@@ -16,11 +17,12 @@ const ModalContainer = ({
   children,
   primaryActionBtn,
   secondaryActionBtn,
+  modalSize,
+  className,
   triggerModalBtnVariant,
   triggerModalBtnContent,
   modalHeaderText,
-  modalSize,
-  className,
+  triggerModalClassName,
   triggerModalDisabled,
 }: ModalContainerProps) => {
   const dispatch = useAppDispatch();
@@ -35,6 +37,7 @@ const ModalContainer = ({
       <Button
         variant={triggerModalBtnVariant}
         onClick={handleOpenModal}
+        className={triggerModalClassName}
         disabled={triggerModalDisabled}
       >
         {triggerModalBtnContent}
