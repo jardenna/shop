@@ -41,6 +41,7 @@ const SizeListSingleChoice = ({
     label: language.notiftyMe,
     variant: BtnVariant.Primary,
   };
+
   return (
     <ProductList groupTitle={groupTitle}>
       {displaySizeList.map((size) => (
