@@ -24,7 +24,6 @@ import { AdminPath } from '../../../layout/nav/enums';
 import variables from '../../../scss/variables.module.scss';
 import type { OptionType } from '../../../types/types';
 import { colorList, getColorOptions } from '../../../utils/colorUtils';
-import { getSizeInfoText } from '../../../utils/sizeUtils';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
 import useCurrency from '../../currency/useCurrency';
@@ -84,7 +83,7 @@ const ProductForm = ({
     discount: selectedProduct?.discount ?? 0,
     productName: selectedProduct?.productName ?? '',
     productStatus: selectedProduct?.productStatus ?? 'Inactive',
-    sizes: selectedProduct?.sizes ?? ['Onesize'],
+    sizes: selectedProduct?.sizes ?? [],
     subCategory: selectedProduct?.subCategory._id ?? '',
   };
 
@@ -227,8 +226,6 @@ const ProductForm = ({
     label: size,
   }));
 
-  const sizeInfoText = getSizeInfoText(selectedCategory);
-
   return (
     <Form
       onSubmit={onSubmit}
@@ -330,7 +327,7 @@ const ProductForm = ({
             />
             <SizeListMultiChoice
               onChange={onChange}
-              infoText={language[sizeInfoText]}
+              infoText={!selectedCategory ? language.sizeInfoText : ''}
               values={values.sizes}
               availableSizeList={checkBoxSizeList}
               name="sizes"

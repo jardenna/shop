@@ -273,7 +273,7 @@ silver;Silver;Sølv
 size;Size;Størrelse
 sizeRequired;Please select at least one size;Vælg mindst 1 størrelse
 sizes;Sizes;Størrelser
-sizesDependOnSelectedCategory;Sizes depend on the selected category;Størrelser afhænger af den valgte kategori
+sizeInfoText;Sizes depend on the selected category;Størrelser afhænger af den valgte kategori
 somethingWentWrong;Something went wrong, please try again;Noget gik galt, forsøg venligst igen
 sort;Sort;Sorter
 standard;Standard;Standard
