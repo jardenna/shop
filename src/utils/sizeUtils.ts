@@ -1,4 +1,3 @@
-import { SubCategoriesWithParent } from '../app/api/apiTypes/adminApiTypes';
 import {
   ClothingSizes,
   KidsShoesSizes,
@@ -45,15 +44,6 @@ const kidsShoesSizes: KidsShoesSizes[] = [
   '34',
   'Onesize',
 ];
-const getSizeInfoText = (
-  category: SubCategoriesWithParent | undefined,
-): string => {
-  if (!category) {
-    return 'sizesDependOnSelectedCategory';
-  }
-
-  return '';
-};
 
 const oneSize = 'Onesize';
 
@@ -118,7 +108,6 @@ const getDisplaySizes = ({
 export {
   clothingSizes,
   getDisplaySizes,
-  getSizeInfoText,
   kidsShoesSizes,
   menShoesSizes,
   womenShoeSizes,
