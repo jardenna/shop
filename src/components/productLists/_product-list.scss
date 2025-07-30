@@ -2,6 +2,10 @@
 
 .product-list-container {
   max-width: rem(468px);
+
+  h2 {
+    font-size: rem(14px);
+  }
 }
 
 .product-list {

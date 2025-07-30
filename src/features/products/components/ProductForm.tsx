@@ -72,6 +72,10 @@ const ProductForm = ({
     borderColor: variables.colorIconBorder,
   });
 
+  const handleSelectCategory = (name: string, selectedOptions: OptionType) => {
+    onCustomChange(name, selectedOptions.value);
+  };
+
   const initialState: ProductRequest = {
     brand: selectedProduct?.brand ?? '',
     colors: selectedProduct?.colors ?? [],
@@ -126,10 +130,6 @@ const ProductForm = ({
   const handleSelectColors = (name: string, selectedOptions: OptionType[]) => {
     const selectedValues = selectedOptions.map((option) => option.value);
     onCustomChange(name, selectedValues);
-  };
-
-  const handleSelectCategory = (name: string, selectedOptions: OptionType) => {
-    onCustomChange(name, selectedOptions.value);
   };
 
   // Hooks
@@ -217,11 +217,11 @@ const ProductForm = ({
     (category) => values.subCategory === category.categoryId,
   );
 
-  const selectedSizes = selectedCategory
+  const availableSizes = selectedCategory
     ? selectedCategory.allowedSizes
     : allowedSizes;
 
-  const checkBoxSizeList = selectedSizes.map((size) => ({
+  const checkBoxSizeList = availableSizes.map((size) => ({
     value: size,
     label: size,
   }));
