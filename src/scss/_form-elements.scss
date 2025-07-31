@@ -7,44 +7,6 @@
   transition: background-color 5000s ease-in-out 0s;
 }
 
-.checkbox-list {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  border-inline-start: 1px solid $color-border;
-
-  input {
-    clip-path: inset(50%);
-    position: absolute;
-  }
-
-  .checkbox-item {
-    border-inline-end: 1px solid $color-border;
-    border-block-end: 1px solid $color-border;
-    border-block-start: 1px solid $color-border;
-    background: #fff;
-    margin-top: -0.5px;
-
-    &:last-child {
-      border-right-color: $color-border;
-    }
-
-    &:has(input[type='checkbox']:checked) {
-      background-color: $color-background-secondary;
-      color: $color-white;
-    }
-
-    label {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: rem(68px);
-      height: rem(68px);
-      cursor: pointer;
-    }
-  }
-}
-
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

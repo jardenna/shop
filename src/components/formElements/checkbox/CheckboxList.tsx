@@ -1,4 +1,5 @@
 import { ChangeInputType } from '../../../types/types';
+import './_checkbox-list.scss';
 
 type CheckboxListProps = {
   name: string;

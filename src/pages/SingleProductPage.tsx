@@ -1,20 +1,42 @@
 import { useParams } from 'react-router';
+import { Size } from '../app/api/apiTypes/sharedApiTypes';
 import Accordion from '../components/accordion/Accordion';
-import CheckboxForm from '../components/CheckboxForm';
 import Favorites from '../components/favorites/Favorites';
+import CheckboxList from '../components/formElements/checkbox/CheckboxList';
 import Img from '../components/Img';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
 import useLanguage from '../features/language/useLanguage';
 import ShopProductForm from '../features/shop/components/ShopProductForm';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
+import useFormValidation from '../hooks/useFormValidation';
 import MetaTags from '../layout/nav/MetaTags';
 import { getColorOptions } from '../utils/colorUtils';
 import { getDisplaySizes } from '../utils/sizeUtils';
 import './SingleProductPage.styles.scss';
 
+type InitialValues = {
+  email: string;
+  sizes: Size[];
+};
+
 const SingleProductPage = () => {
   const { id } = useParams();
   const { language } = useLanguage();
+  const initialState: InitialValues = {
+    sizes: [],
+    email: '',
+  };
+
+  const { onChange, values, onSubmit } = useFormValidation<{
+    email: string;
+    sizes: Size[];
+  }>({
+    initialState,
+    callback: () => {
+      console.log(values);
+    },
+  });
+
   const { data: product } = useGetSingleProductQuery(id ?? '');
 
   const colorList = product
@@ -53,6 +75,7 @@ const SingleProductPage = () => {
       ),
     },
   ];
+
   const displaySizeList = product
     ? getDisplaySizes({
         mainKey: product.categoryName,
@@ -91,7 +114,15 @@ const SingleProductPage = () => {
               displaySizeList={displaySizeList}
             /> */}
 
-            <CheckboxForm options={displaySizeList} />
+            <form onSubmit={onSubmit}>
+              <CheckboxList
+                options={displaySizeList}
+                name="sizes"
+                onChange={onChange}
+                values={values.sizes}
+              />
+              <button type="submit">Submit</button>
+            </form>
 
             <p>Brand: {product.brand}</p>
             <p>
