@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/form/Form';
@@ -9,10 +10,12 @@ import useFormValidation from '../../../hooks/useFormValidation';
 import { BtnVariant } from '../../../types/enums';
 import { ColorOption } from '../../../utils/colorUtils';
 import useLanguage from '../../language/useLanguage';
+import NotiFyMe from './NotiFyMe';
 
 export type NotifyMeModalProps = TriggerModalProps & {
   modalHeaderText: string;
   modalId: string;
+  modalText: ReactNode;
 };
 
 type ShopProductFormProps = {
@@ -56,6 +59,7 @@ const ShopProductForm = ({
     triggerModalBtnVariant: BtnVariant.Ghost,
     modalHeaderText: `${language.size}  ${language.currentlyUnavailable}`,
     modalId: selectedProduct.productName,
+    modalText: <NotiFyMe />,
   };
 
   return (

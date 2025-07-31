@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import useLanguage from '../../features/language/useLanguage';
 import { NotifyMeModalProps } from '../../features/shop/components/ShopProductForm';
 import { SizeVariant } from '../../types/enums';
 import { OptionGroupHeading } from '../../types/types';
@@ -22,31 +21,28 @@ const ProductList = ({
   required,
   primaryActionBtn,
   triggerModal,
-}: ProductListProps) => {
-  const { language } = useLanguage();
-  return (
-    <section className="product-list-container">
-      {groupTitle && (
-        <OptionGroupTitle groupTitle={groupTitle} required={required} />
-      )}
+}: ProductListProps) => (
+  <section className="product-list-container">
+    {groupTitle && (
+      <OptionGroupTitle groupTitle={groupTitle} required={required} />
+    )}
 
-      <ul className="product-list" id={groupTitle?.id}>
-        {children}
-      </ul>
-      {triggerModal && (
-        <ModalContainer
-          triggerModalBtnContent={triggerModal.triggerModalBtnContent}
-          triggerModalBtnVariant={triggerModal.triggerModalBtnVariant}
-          id={triggerModal.modalId}
-          primaryActionBtn={primaryActionBtn}
-          modalSize={SizeVariant.Sm}
-          modalHeaderText={triggerModal.modalHeaderText}
-        >
-          {language.getNotifiedForProducts}?
-        </ModalContainer>
-      )}
-    </section>
-  );
-};
+    <ul className="product-list" id={groupTitle?.id}>
+      {children}
+    </ul>
+    {triggerModal && (
+      <ModalContainer
+        triggerModalBtnContent={triggerModal.triggerModalBtnContent}
+        triggerModalBtnVariant={triggerModal.triggerModalBtnVariant}
+        id={triggerModal.modalId}
+        primaryActionBtn={primaryActionBtn}
+        modalSize={SizeVariant.Sm}
+        modalHeaderText={triggerModal.modalHeaderText}
+      >
+        {triggerModal.modalText}
+      </ModalContainer>
+    )}
+  </section>
+);
 
 export default ProductList;
