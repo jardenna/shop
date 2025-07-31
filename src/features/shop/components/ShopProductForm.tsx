@@ -2,12 +2,17 @@ import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/form/Form';
 import { PrimaryActionBtnProps } from '../../../components/modal/Modal';
+import { TriggerModalProps } from '../../../components/modal/ModalContainer';
 import ColorListSingleChoice from '../../../components/productColorLists/ColorListSingleChoice';
 import SizeListSingleChoice from '../../../components/productLists/SizeListSingleChoice';
 import useFormValidation from '../../../hooks/useFormValidation';
 import { BtnVariant } from '../../../types/enums';
 import { ColorOption } from '../../../utils/colorUtils';
 import useLanguage from '../../language/useLanguage';
+
+export type ModalContainerProps = TriggerModalProps & {
+  modalHeaderText: string;
+};
 
 type ShopProductFormProps = {
   colorList: ColorOption[];
@@ -45,6 +50,12 @@ const ShopProductForm = ({
     variant: BtnVariant.Primary,
   };
 
+  const triggerModal: ModalContainerProps = {
+    triggerModalBtnContent: 'Notify me when missing sizes are back in stock',
+    triggerModalBtnVariant: BtnVariant.Ghost,
+    modalHeaderText: `${language.size}  ${language.currentlyUnavailable}`,
+  };
+
   return (
     <Form onSubmit={onSubmit} submitBtnLabel={language.create}>
       <FieldSet legendText={language.productVariants} hideLegendText>
@@ -61,6 +72,8 @@ const ShopProductForm = ({
         />
         <SizeListSingleChoice
           primaryActionBtn={primaryActionBtn}
+          triggerModal={triggerModal}
+          modalId={selectedProduct.productName}
           initialChecked={values.size}
           availableSizeList={selectedProduct.sizes}
           categoryName={selectedProduct.categoryName}

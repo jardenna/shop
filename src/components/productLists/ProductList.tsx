@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import useLanguage from '../../features/language/useLanguage';
-import { BtnVariant, SizeVariant } from '../../types/enums';
+import { ModalContainerProps } from '../../features/shop/components/ShopProductForm';
+import { SizeVariant } from '../../types/enums';
 import { OptionGroupHeading } from '../../types/types';
 import { PrimaryActionBtnProps } from '../modal/Modal';
 import ModalContainer from '../modal/ModalContainer';
@@ -9,10 +10,11 @@ import './_product-list.scss';
 
 type ProductListProps = {
   children: ReactNode;
-  categoryName?: string;
   groupTitle?: OptionGroupHeading;
+  modalId?: string;
   primaryActionBtn?: PrimaryActionBtnProps;
   required?: boolean;
+  triggerModal?: ModalContainerProps;
 };
 
 const ProductList = ({
@@ -20,7 +22,8 @@ const ProductList = ({
   groupTitle,
   required,
   primaryActionBtn,
-  categoryName,
+  modalId,
+  triggerModal,
 }: ProductListProps) => {
   const { language } = useLanguage();
   return (
@@ -32,14 +35,14 @@ const ProductList = ({
       <ul className="product-list" id={groupTitle?.id}>
         {children}
       </ul>
-      {categoryName && (
+      {modalId && triggerModal && (
         <ModalContainer
-          triggerModalBtnContent="Notify me when missing sizes are back in stock"
-          triggerModalBtnVariant={BtnVariant.Ghost}
-          id={categoryName}
+          triggerModalBtnContent={triggerModal.triggerModalBtnContent}
+          triggerModalBtnVariant={triggerModal.triggerModalBtnVariant}
+          id={modalId}
           primaryActionBtn={primaryActionBtn}
           modalSize={SizeVariant.Sm}
-          modalHeaderText={`${language.size}  ${language.currentlyUnavailable}`}
+          modalHeaderText={triggerModal.modalHeaderText}
         >
           {language.getNotifiedForProducts}?
         </ModalContainer>

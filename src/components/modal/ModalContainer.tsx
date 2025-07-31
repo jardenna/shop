@@ -5,12 +5,14 @@ import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import Modal, { ModalProps } from './Modal';
 
-type ModalContainerProps = ModalProps & {
+export type TriggerModalProps = {
   triggerModalBtnContent: ReactNode | string;
   triggerModalBtnVariant?: BtnVariant;
   triggerModalClassName?: string;
   triggerModalDisabled?: boolean;
 };
+
+type ModalContainerProps = ModalProps & TriggerModalProps;
 
 const ModalContainer = ({
   id,
