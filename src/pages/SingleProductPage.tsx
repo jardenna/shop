@@ -1,10 +1,10 @@
 import { useParams } from 'react-router';
 import Accordion from '../components/accordion/Accordion';
+import CheckboxForm from '../components/CheckboxForm';
 import Favorites from '../components/favorites/Favorites';
 import Img from '../components/Img';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
 import useLanguage from '../features/language/useLanguage';
-import NotiFyMe from '../features/shop/components/NotiFyMe';
 import ShopProductForm from '../features/shop/components/ShopProductForm';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
 import MetaTags from '../layout/nav/MetaTags';
@@ -86,10 +86,12 @@ const SingleProductPage = () => {
               colorList={colorList}
               displaySizeList={displaySizeList}
             />
-            <NotiFyMe
+            {/* <NotiFyMe
               selectedProduct={product}
               displaySizeList={displaySizeList}
-            />
+            /> */}
+
+            <CheckboxForm options={displaySizeList} />
 
             <p>Brand: {product.brand}</p>
             <p>

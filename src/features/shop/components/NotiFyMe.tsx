@@ -19,7 +19,7 @@ const NotiFyMe = ({ selectedProduct, displaySizeList }: NotifiMeProps) => {
   );
 
   const initialState = {
-    sizdes: [],
+    sizes: [],
     email: '',
   };
 
@@ -51,7 +51,7 @@ const NotiFyMe = ({ selectedProduct, displaySizeList }: NotifiMeProps) => {
       >
         <SizeListMultiChoice
           onChange={onChange}
-          values={values.sizdes}
+          values={values.sizes}
           availableSizeList={availableSizeList}
           name="sizes"
           required
