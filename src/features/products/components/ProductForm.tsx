@@ -24,6 +24,7 @@ import { AdminPath } from '../../../layout/nav/enums';
 import variables from '../../../scss/variables.module.scss';
 import type { OptionType } from '../../../types/types';
 import { colorList, getColorOptions } from '../../../utils/colorUtils';
+import { checkBoxSizeList } from '../../../utils/sizeUtils';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
 import useCurrency from '../../currency/useCurrency';
@@ -221,10 +222,7 @@ const ProductForm = ({
     ? selectedCategory.allowedSizes
     : allowedSizes;
 
-  const checkBoxSizeList = availableSizes.map((size) => ({
-    value: size,
-    label: size,
-  }));
+  const availableSizeList = checkBoxSizeList(availableSizes);
 
   return (
     <Form
@@ -329,7 +327,7 @@ const ProductForm = ({
               onChange={onChange}
               infoText={!selectedCategory ? language.sizeInfoText : ''}
               values={values.sizes}
-              availableSizeList={checkBoxSizeList}
+              availableSizeList={availableSizeList}
               name="sizes"
               required
               groupTitle={{

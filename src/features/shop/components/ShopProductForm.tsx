@@ -1,22 +1,16 @@
-import { ReactNode } from 'react';
 import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/form/Form';
 import { PrimaryActionBtnProps } from '../../../components/modal/Modal';
-import { TriggerModalProps } from '../../../components/modal/ModalContainer';
+import ModalContainer from '../../../components/modal/ModalContainer';
 import ColorListSingleChoice from '../../../components/productColorLists/ColorListSingleChoice';
 import SizeListSingleChoice from '../../../components/productLists/SizeListSingleChoice';
 import useFormValidation from '../../../hooks/useFormValidation';
-import { BtnVariant } from '../../../types/enums';
+import { BtnVariant, SizeVariant } from '../../../types/enums';
 import { ColorOption } from '../../../utils/colorUtils';
+import { getDisplaySizes } from '../../../utils/sizeUtils';
 import useLanguage from '../../language/useLanguage';
 import NotiFyMe from './NotiFyMe';
-
-export type NotifyMeModalProps = TriggerModalProps & {
-  modalHeaderText: string;
-  modalId: string;
-  modalText: ReactNode;
-};
 
 type ShopProductFormProps = {
   colorList: ColorOption[];
@@ -54,13 +48,15 @@ const ShopProductForm = ({
     variant: BtnVariant.Primary,
   };
 
-  const triggerModal: NotifyMeModalProps = {
-    triggerModalBtnContent: 'Notify me when missing sizes are back in stock',
-    triggerModalBtnVariant: BtnVariant.Ghost,
-    modalHeaderText: `${language.size}  ${language.currentlyUnavailable}`,
-    modalId: selectedProduct.productName,
-    modalText: <NotiFyMe />,
-  };
+  const displaySizeList = getDisplaySizes({
+    mainKey: selectedProduct.categoryName,
+    subKey: selectedProduct.subCategoryName,
+    availableSizes: selectedProduct.sizes,
+  });
+
+  const missingSizes = displaySizeList.filter(
+    (size) => !selectedProduct.sizes.includes(size),
+  );
 
   return (
     <Form onSubmit={onSubmit} submitBtnLabel={language.create}>
@@ -77,13 +73,10 @@ const ShopProductForm = ({
           }}
         />
         <SizeListSingleChoice
-          primaryActionBtn={primaryActionBtn}
-          triggerModal={triggerModal}
           initialChecked={values.size}
           availableSizeList={selectedProduct.sizes}
-          categoryName={selectedProduct.categoryName}
-          subCategoryName={selectedProduct.subCategoryName}
           onChange={onChange}
+          displaySizeList={displaySizeList}
           name="size"
           groupTitle={{
             title,
@@ -91,6 +84,18 @@ const ShopProductForm = ({
           }}
         />
       </FieldSet>
+      <div>
+        <ModalContainer
+          triggerModalBtnContent="Notify me when missing sizes are back in stock"
+          triggerModalBtnVariant={BtnVariant.Ghost}
+          id={selectedProduct.productName}
+          primaryActionBtn={primaryActionBtn}
+          modalSize={SizeVariant.Sm}
+          modalHeaderText={`${language.size}   ${language.currentlyUnavailable}`}
+        >
+          <NotiFyMe sizeList={missingSizes} />
+        </ModalContainer>
+      </div>
     </Form>
   );
 };
