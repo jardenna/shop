@@ -11,6 +11,7 @@ type FormProps = {
   submitBtnLabel: string;
   ariaLabel?: string;
   className?: string;
+  disabled?: boolean;
   isLoading?: boolean;
   ref?: refFormType;
   onCancel?: () => void;
@@ -26,6 +27,7 @@ const Form = ({
   ariaLabel,
   onCancel,
   ref,
+  disabled,
 }: FormProps) => {
   const { language } = useLanguage();
 
@@ -43,7 +45,12 @@ const Form = ({
             {language.cancel}
           </Button>
         )}
-        <Button type="submit" isLoading={isLoading} ariaLabel={ariaLabel}>
+        <Button
+          type="submit"
+          isLoading={isLoading}
+          ariaLabel={ariaLabel}
+          disabled={disabled}
+        >
           {submitBtnLabel}
         </Button>
       </LayoutElement>
