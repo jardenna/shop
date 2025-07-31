@@ -34,12 +34,7 @@ const SizeListReadOnly = ({
   return (
     <ProductList groupTitle={groupTitle}>
       {displaySizeList.map((size) => (
-        <ProductListItem
-          as="span"
-          text={size}
-          isUnavailable={!availableSizeList.includes(size)}
-          key={size}
-        >
+        <ProductListItem as="span" text={size} key={size}>
           <VisuallyHidden>
             {!availableSizeList.includes(size)
               ? language.unavailable

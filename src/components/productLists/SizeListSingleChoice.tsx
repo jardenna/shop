@@ -3,12 +3,9 @@ import {
   Size,
   SubCategoryNames,
 } from '../../app/api/apiTypes/sharedApiTypes';
-import useLanguage from '../../features/language/useLanguage';
-import { BtnVariant, SizeVariant } from '../../types/enums';
 import { ProductListChoiceProps } from '../../types/types';
 import { getDisplaySizes } from '../../utils/sizeUtils';
 import { PrimaryActionBtnProps } from '../modal/Modal';
-import ModalContainer from '../modal/ModalContainer';
 import ProductList from './ProductList';
 
 type SizeListSingleChoiceProps = ProductListChoiceProps & {
@@ -16,6 +13,7 @@ type SizeListSingleChoiceProps = ProductListChoiceProps & {
   categoryName: MainCategoryNames;
   initialChecked: string;
   subCategoryName: SubCategoryNames;
+  primaryActionBtn?: PrimaryActionBtnProps;
 };
 
 const SizeListSingleChoice = ({
@@ -26,53 +24,34 @@ const SizeListSingleChoice = ({
   availableSizeList,
   categoryName,
   subCategoryName,
+  primaryActionBtn,
 }: SizeListSingleChoiceProps) => {
-  const { language } = useLanguage();
-
   const displaySizeList = getDisplaySizes({
     mainKey: categoryName,
     subKey: subCategoryName,
     availableSizes: availableSizeList,
   });
-  const primaryActionBtn: PrimaryActionBtnProps = {
-    onClick: () => {
-      console.log(12);
-    },
-    label: language.notiftyMe,
-    variant: BtnVariant.Primary,
-  };
 
   return (
-    <ProductList groupTitle={groupTitle}>
+    <ProductList
+      groupTitle={groupTitle}
+      primaryActionBtn={primaryActionBtn}
+      categoryName={categoryName}
+    >
       {displaySizeList.map((size) => (
         <li key={size} className="product-list-item size-list-item">
-          {availableSizeList.includes(size) ? (
-            <>
-              <label htmlFor={size} className="product-label">
-                {size}
-              </label>
-              <input
-                type="radio"
-                name={name}
-                id={size}
-                value={size}
-                checked={initialChecked === size}
-                onChange={onChange}
-              />
-            </>
-          ) : (
-            <ModalContainer
-              triggerModalBtnContent={size}
-              triggerModalBtnVariant={BtnVariant.Ghost}
-              triggerModalClassName="product-label text-line-through"
-              id={size}
-              primaryActionBtn={primaryActionBtn}
-              modalSize={SizeVariant.Sm}
-              modalHeaderText={`${language.size} ${size} ${language.currentlyUnavailable}`}
-            >
-              {language.getNotifiedForProducts}?
-            </ModalContainer>
-          )}
+          <label htmlFor={size} className="product-label">
+            {size}
+          </label>
+          <input
+            type="radio"
+            name={name}
+            id={size}
+            value={size}
+            checked={initialChecked === size}
+            onChange={onChange}
+            disabled={!availableSizeList.includes(size)}
+          />
         </li>
       ))}
     </ProductList>

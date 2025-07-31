@@ -1,9 +1,11 @@
 import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/form/Form';
+import { PrimaryActionBtnProps } from '../../../components/modal/Modal';
 import ColorListSingleChoice from '../../../components/productColorLists/ColorListSingleChoice';
 import SizeListSingleChoice from '../../../components/productLists/SizeListSingleChoice';
 import useFormValidation from '../../../hooks/useFormValidation';
+import { BtnVariant } from '../../../types/enums';
 import { ColorOption } from '../../../utils/colorUtils';
 import useLanguage from '../../language/useLanguage';
 
@@ -35,6 +37,14 @@ const ShopProductForm = ({
       ? language.selectSize
       : `${language.selectedSize}: ${values.size}`;
 
+  const primaryActionBtn: PrimaryActionBtnProps = {
+    onClick: () => {
+      console.log(12);
+    },
+    label: language.notiftyMe,
+    variant: BtnVariant.Primary,
+  };
+
   return (
     <Form onSubmit={onSubmit} submitBtnLabel={language.create}>
       <FieldSet legendText={language.productVariants} hideLegendText>
@@ -50,6 +60,7 @@ const ShopProductForm = ({
           }}
         />
         <SizeListSingleChoice
+          primaryActionBtn={primaryActionBtn}
           initialChecked={values.size}
           availableSizeList={selectedProduct.sizes}
           categoryName={selectedProduct.categoryName}
