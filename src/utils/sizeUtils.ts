@@ -104,8 +104,16 @@ const getDisplaySizes = ({
     (size): size is Exclude<Size, 'Onesize'> => size !== oneSize,
   );
 };
+const checkBoxSizeList = (availableSizes: string[]) => {
+  const checkBoxSizeList = availableSizes.map((size) => ({
+    value: size,
+    label: size,
+  }));
+  return checkBoxSizeList;
+};
 
 export {
+  checkBoxSizeList,
   clothingSizes,
   getDisplaySizes,
   kidsShoesSizes,
