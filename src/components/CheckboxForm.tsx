@@ -1,45 +1,51 @@
-import React, { useState } from 'react';
 import { Size } from '../app/api/apiTypes/sharedApiTypes';
+import useFormValidation from '../hooks/useFormValidation';
 
 type CheckboxFormProps = {
   options: Size[];
 };
+
+type InitialValues = {
+  email: string;
+  sizes: Size[];
+};
+
 const CheckboxForm = ({ options }: CheckboxFormProps) => {
-  const [checkedItems, setCheckedItems] = useState<string[]>([]);
-
-  // Handle checkbox change
-  const handleChange = (value: string) => {
-    setCheckedItems((prev) =>
-      prev.includes(value)
-        ? prev.filter((item) => item !== value)
-        : [...prev, value],
-    );
+  const initialState: InitialValues = {
+    sizes: [],
+    email: '',
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Selected items:', checkedItems);
-  };
+  const { onChange, values, onSubmit } = useFormValidation<{
+    email: string;
+    sizes: Size[];
+  }>({
+    initialState,
+    callback: () => {
+      console.log(values);
+    },
+  });
 
   return (
-    <form onSubmit={handleSubmit}>
-      {options.map((label, index) => {
-        const id = `${index}`;
-        return (
-          <div key={label}>
-            <label htmlFor={id}>{label}</label>
-            <input
-              type="checkbox"
-              id={id}
-              value={label}
-              checked={checkedItems.includes(label)}
-              onChange={() => {
-                handleChange(label);
-              }}
-            />
-          </div>
-        );
-      })}
+    <form onSubmit={onSubmit}>
+      <ul className="checkbox-list">
+        {options.map((label, index) => {
+          const id = `${index}`;
+          return (
+            <li key={label} className="checkbox-item">
+              <label htmlFor={id}>{label}</label>
+              <input
+                type="checkbox"
+                id={id}
+                name="sizes"
+                value={label}
+                checked={values.sizes.includes(label)}
+                onChange={onChange}
+              />
+            </li>
+          );
+        })}
+      </ul>
 
       <button type="submit">Submit</button>
     </form>

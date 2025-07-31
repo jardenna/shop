@@ -332,7 +332,7 @@ const ProductForm = ({
               required
               groupTitle={{
                 title: language.sizes,
-                id: 'choose-product-colors',
+                id: 'choose-product-sizes',
                 errorText: language[errors.sizes],
               }}
             />
