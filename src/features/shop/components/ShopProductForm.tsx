@@ -10,8 +10,9 @@ import { BtnVariant } from '../../../types/enums';
 import { ColorOption } from '../../../utils/colorUtils';
 import useLanguage from '../../language/useLanguage';
 
-export type ModalContainerProps = TriggerModalProps & {
+export type NotifyMeModalProps = TriggerModalProps & {
   modalHeaderText: string;
+  modalId: string;
 };
 
 type ShopProductFormProps = {
@@ -50,10 +51,11 @@ const ShopProductForm = ({
     variant: BtnVariant.Primary,
   };
 
-  const triggerModal: ModalContainerProps = {
+  const triggerModal: NotifyMeModalProps = {
     triggerModalBtnContent: 'Notify me when missing sizes are back in stock',
     triggerModalBtnVariant: BtnVariant.Ghost,
     modalHeaderText: `${language.size}  ${language.currentlyUnavailable}`,
+    modalId: selectedProduct.productName,
   };
 
   return (
@@ -73,7 +75,6 @@ const ShopProductForm = ({
         <SizeListSingleChoice
           primaryActionBtn={primaryActionBtn}
           triggerModal={triggerModal}
-          modalId={selectedProduct.productName}
           initialChecked={values.size}
           availableSizeList={selectedProduct.sizes}
           categoryName={selectedProduct.categoryName}

@@ -3,7 +3,7 @@ import {
   Size,
   SubCategoryNames,
 } from '../../app/api/apiTypes/sharedApiTypes';
-import { ModalContainerProps } from '../../features/shop/components/ShopProductForm';
+import { NotifyMeModalProps } from '../../features/shop/components/ShopProductForm';
 import { ProductListChoiceProps } from '../../types/types';
 import { getDisplaySizes } from '../../utils/sizeUtils';
 import { PrimaryActionBtnProps } from '../modal/Modal';
@@ -13,10 +13,9 @@ type SizeListSingleChoiceProps = ProductListChoiceProps & {
   availableSizeList: Size[];
   categoryName: MainCategoryNames;
   initialChecked: string;
-  modalId: string;
   subCategoryName: SubCategoryNames;
   primaryActionBtn?: PrimaryActionBtnProps;
-  triggerModal?: ModalContainerProps;
+  triggerModal?: NotifyMeModalProps;
 };
 
 const SizeListSingleChoice = ({
@@ -28,7 +27,6 @@ const SizeListSingleChoice = ({
   categoryName,
   subCategoryName,
   primaryActionBtn,
-  modalId,
   triggerModal,
 }: SizeListSingleChoiceProps) => {
   const displaySizeList = getDisplaySizes({
@@ -41,7 +39,6 @@ const SizeListSingleChoice = ({
     <ProductList
       groupTitle={groupTitle}
       primaryActionBtn={primaryActionBtn}
-      modalId={modalId}
       triggerModal={triggerModal}
     >
       {displaySizeList.map((size) => (
