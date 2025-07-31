@@ -32,6 +32,20 @@
       border-color: $color-black;
     }
 
+    &:has(input[type='radio']:disabled) {
+      label {
+        text-decoration-line: line-through;
+        text-decoration-thickness: 2px;
+        white-space: pre;
+
+        &::after,
+        &::before {
+          content: ' ';
+          display: flex;
+        }
+      }
+    }
+
     label {
       display: flex;
       align-items: center;

@@ -1,11 +1,17 @@
 import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
-import { ProductListChoiceProps } from '../../../types/types';
-import ProductList from '../../productLists/ProductList';
+import {
+  OptionGroupHeading,
+  ProductListChoiceProps,
+} from '../../../types/types';
+import OptionGroupTitle from '../../productLists/OptionGroupTitle';
+import ControlInputField from './ControlInputField';
 
 type RadioBtnListProps = ProductListChoiceProps & {
   availableSizeList: Size[];
   displaySizeList: Size[];
   initialChecked: string;
+  groupTitle?: OptionGroupHeading;
+  required?: boolean;
 };
 
 const RadioBtnList = ({
@@ -14,15 +20,17 @@ const RadioBtnList = ({
   groupTitle,
   name,
   availableSizeList,
+
+  required,
   displaySizeList,
 }: RadioBtnListProps) => (
-  <ProductList groupTitle={groupTitle}>
-    {displaySizeList.map((size) => (
-      <li key={size} className="product-list-item size-list-item">
-        <label htmlFor={size} className="product-label">
-          {size}
-        </label>
-        <input
+  <section>
+    <OptionGroupTitle groupTitle={groupTitle} required={required} />
+
+    <ul className="checkbox-list">
+      {displaySizeList.map((size) => (
+        <ControlInputField
+          key={size}
           type="radio"
           name={name}
           id={size}
@@ -30,10 +38,11 @@ const RadioBtnList = ({
           checked={initialChecked === size}
           onChange={onChange}
           disabled={!availableSizeList.includes(size)}
+          label={size}
         />
-      </li>
-    ))}
-  </ProductList>
+      ))}
+    </ul>
+  </section>
 );
 
 export default RadioBtnList;
