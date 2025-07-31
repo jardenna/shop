@@ -51,6 +51,16 @@ const ShopProductForm = ({
             id: 'choose-product-color',
           }}
         />
+        {/* <CheckboxList
+          options={displaySizeList}
+          name="sizes"
+          onChange={onChange}
+          values={values.size}
+          groupTitle={{
+            title,
+            id: 'choose-product-size',
+          }}
+        /> */}
         <SizeListSingleChoice
           initialChecked={values.size}
           availableSizeList={selectedProduct.sizes}

@@ -12,6 +12,7 @@
   }
 
   .checkbox-item {
+    border: 1px solid transparent;
     border-inline-end: 1px solid $color-border;
     border-block-end: 1px solid $color-border;
     border-block-start: 1px solid $color-border;
@@ -25,6 +26,10 @@
     &:has(input[type='checkbox']:checked) {
       background-color: $color-background-secondary;
       color: $color-white;
+    }
+
+    &:has(input[type='radio']:checked) {
+      border-color: $color-black;
     }
 
     label {
