@@ -1,5 +1,6 @@
 import { Size } from '../app/api/apiTypes/sharedApiTypes';
 import useFormValidation from '../hooks/useFormValidation';
+import CheckboxList from './formElements/checkbox/CheckboxList';
 
 type CheckboxFormProps = {
   options: Size[];
@@ -28,25 +29,12 @@ const CheckboxForm = ({ options }: CheckboxFormProps) => {
 
   return (
     <form onSubmit={onSubmit}>
-      <ul className="checkbox-list">
-        {options.map((label, index) => {
-          const id = `${index}`;
-          return (
-            <li key={label} className="checkbox-item">
-              <label htmlFor={id}>{label}</label>
-              <input
-                type="checkbox"
-                id={id}
-                name="sizes"
-                value={label}
-                checked={values.sizes.includes(label)}
-                onChange={onChange}
-              />
-            </li>
-          );
-        })}
-      </ul>
-
+      <CheckboxList
+        options={options}
+        name="sizes"
+        onChange={onChange}
+        values={values.sizes}
+      />
       <button type="submit">Submit</button>
     </form>
   );
