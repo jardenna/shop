@@ -3,11 +3,11 @@ import { ChangeInputType } from '../../../types/types';
 type InputType = 'checkbox' | 'radio';
 
 type ControlInputFieldProps = {
-  checked: boolean;
+  checked: any;
   id: string;
-  inputType: InputType;
   label: string;
   name: string;
+  type: InputType;
   value: string;
   disabled?: boolean;
   onChange: (event: ChangeInputType) => void;
@@ -19,13 +19,13 @@ const ControlInputField = ({
   label,
   checked,
   disabled,
-  inputType,
+  type,
   onChange,
 }: ControlInputFieldProps) => (
   <li className="checkbox-item">
     <label htmlFor={id}>{label}</label>
     <input
-      type={inputType}
+      type={type}
       id={id}
       name={name}
       value={label}

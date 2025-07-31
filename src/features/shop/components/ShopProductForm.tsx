@@ -1,8 +1,8 @@
 import { BaseProduct, Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/form/Form';
+import RadioBtnList from '../../../components/formElements/checkbox/RadioBtnList';
 import ColorListSingleChoice from '../../../components/productColorLists/ColorListSingleChoice';
-import SizeListSingleChoice from '../../../components/productLists/SizeListSingleChoice';
 import useFormValidation from '../../../hooks/useFormValidation';
 import { ColorOption } from '../../../utils/colorUtils';
 import useLanguage from '../../language/useLanguage';
@@ -51,17 +51,8 @@ const ShopProductForm = ({
             id: 'choose-product-color',
           }}
         />
-        {/* <CheckboxList
-          options={displaySizeList}
-          name="sizes"
-          onChange={onChange}
-          values={values.size}
-          groupTitle={{
-            title,
-            id: 'choose-product-size',
-          }}
-        /> */}
-        <SizeListSingleChoice
+
+        <RadioBtnList
           initialChecked={values.size}
           availableSizeList={selectedProduct.sizes}
           onChange={onChange}

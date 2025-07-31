@@ -1,21 +1,21 @@
-import { Size } from '../../app/api/apiTypes/sharedApiTypes';
-import { ProductListChoiceProps } from '../../types/types';
-import ProductList from './ProductList';
+import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
+import { ProductListChoiceProps } from '../../../types/types';
+import ProductList from '../../productLists/ProductList';
 
-type SizeListSingleChoiceProps = ProductListChoiceProps & {
+type RadioBtnListProps = ProductListChoiceProps & {
   availableSizeList: Size[];
   displaySizeList: Size[];
   initialChecked: string;
 };
 
-const SizeListSingleChoice = ({
+const RadioBtnList = ({
   initialChecked,
   onChange,
   groupTitle,
   name,
   availableSizeList,
   displaySizeList,
-}: SizeListSingleChoiceProps) => (
+}: RadioBtnListProps) => (
   <ProductList groupTitle={groupTitle}>
     {displaySizeList.map((size) => (
       <li key={size} className="product-list-item size-list-item">
@@ -36,4 +36,4 @@ const SizeListSingleChoice = ({
   </ProductList>
 );
 
-export default SizeListSingleChoice;
+export default RadioBtnList;

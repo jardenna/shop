@@ -2,6 +2,7 @@ import { ChangeInputType, OptionGroupHeading } from '../../../types/types';
 import OptionGroupTitle from '../../productLists/OptionGroupTitle';
 import InputInfo from '../InputInfo';
 import './_checkbox-list.scss';
+import ControlInputField from './ControlInputField';
 
 type CheckboxListProps = {
   name: string;
@@ -30,20 +31,19 @@ const CheckboxList = ({
     )}
     <ul className="checkbox-list">
       {options.map((label, index) => {
-        const id = `${index}`;
+        const id = `input-${index}`;
         return (
-          <li key={label} className="checkbox-item">
-            <label htmlFor={id}>{label}</label>
-            <input
-              type="checkbox"
-              id={id}
-              name={name}
-              value={label}
-              checked={values.includes(label)}
-              onChange={onChange}
-              disabled={disabled}
-            />
-          </li>
+          <ControlInputField
+            key={label}
+            type="checkbox"
+            id={id}
+            name={name}
+            value={label}
+            checked={values.includes(label)}
+            onChange={onChange}
+            disabled={disabled}
+            label={label}
+          />
         );
       })}
     </ul>
