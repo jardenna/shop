@@ -1,4 +1,15 @@
-import ControlGroup, { BaseControlGroupProps } from './ControlGroup';
+import { OptionGroupHeading, ChangeInputType } from '../../../types/types';
+import ControlGroup from './ControlGroup';
+
+export type BaseControlGroupProps = {
+  name: string;
+  options: string[];
+  disabledList?: string[];
+  groupTitle?: OptionGroupHeading;
+  inputInfo?: string;
+  required?: boolean;
+  onChange: (event: ChangeInputType) => void;
+};
 
 type CheckboxControlsProps = BaseControlGroupProps & {
   values: string[];

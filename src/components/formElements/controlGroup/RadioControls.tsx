@@ -1,4 +1,5 @@
-import ControlGroup, { BaseControlGroupProps } from './ControlGroup';
+import { BaseControlGroupProps } from './CheckboxControls';
+import ControlGroup from './ControlGroup';
 
 type RadioControlsProps = BaseControlGroupProps & {
   initialChecked: string;

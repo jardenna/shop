@@ -1,18 +1,8 @@
-import type { ChangeInputType, OptionGroupHeading } from '../../../types/types';
 import OptionGroupTitle from '../../productLists/OptionGroupTitle';
 import InputInfo from '../InputInfo';
+import { BaseControlGroupProps } from './CheckboxControls';
 import ControlInputField from './ControlInputField';
 import './_control-group.scss';
-
-export type BaseControlGroupProps = {
-  name: string;
-  options: string[];
-  disabledList?: string[];
-  groupTitle?: OptionGroupHeading;
-  inputInfo?: string;
-  required?: boolean;
-  onChange: (event: ChangeInputType) => void;
-};
 
 type ControlGroupProps = BaseControlGroupProps & {
   initialChecked?: string;
