@@ -2,10 +2,10 @@ import { useParams } from 'react-router';
 import { Size } from '../app/api/apiTypes/sharedApiTypes';
 import Accordion from '../components/accordion/Accordion';
 import Favorites from '../components/favorites/Favorites';
-import CheckboxList from '../components/formElements/controlGroup/CheckboxList';
 import Img from '../components/Img';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
 import useLanguage from '../features/language/useLanguage';
+import NotiFyMe from '../features/shop/components/NotiFyMe';
 import ShopProductForm from '../features/shop/components/ShopProductForm';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
 import useFormValidation from '../hooks/useFormValidation';
@@ -84,6 +84,10 @@ const SingleProductPage = () => {
       })
     : [];
 
+  const missingSizes = displaySizeList.filter(
+    (size) => !product?.sizes.includes(size),
+  );
+
   return (
     <div className="container">
       <MetaTags metaTitle={product?.productName} />
@@ -109,20 +113,12 @@ const SingleProductPage = () => {
               colorList={colorList}
               displaySizeList={displaySizeList}
             />
-            {/* <NotiFyMe
-              selectedProduct={product}
-              displaySizeList={displaySizeList}
-            /> */}
-
-            <form onSubmit={onSubmit}>
-              <CheckboxList
-                options={displaySizeList}
-                name="sizes"
-                onChange={onChange}
-                values={values.sizes}
-              />
-              <button type="submit">Submit</button>
-            </form>
+            <NotiFyMe
+              options={missingSizes}
+              onChange={onChange}
+              values={values.sizes}
+              onSubmit={onSubmit}
+            />
 
             <p>Brand: {product.brand}</p>
             <p>

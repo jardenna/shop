@@ -1,45 +1,39 @@
-import { PrimaryActionBtnProps } from '../../../components/modal/Modal';
+import CheckboxList from '../../../components/formElements/controlGroup/CheckboxList';
 import ModalContainer from '../../../components/modal/ModalContainer';
 import { BtnVariant, SizeVariant } from '../../../types/enums';
+import { ChangeInputType, FormEventType } from '../../../types/types';
 import useLanguage from '../../language/useLanguage';
 
 type NotifiMeProps = {
-  name?: string;
+  options: string[];
+  values: string[];
+  onChange: (event: ChangeInputType) => void;
+  onSubmit: (event: FormEventType) => void;
 };
-const NotiFyMe = ({ name }: NotifiMeProps) => {
+const NotiFyMe = ({ onSubmit, options, onChange, values }: NotifiMeProps) => {
   const { language } = useLanguage();
 
-  // const missingSizes = displaySizeList.filter(
-  //   (size) => !selectedProduct.sizes.includes(size),
-  // );
-
-  // const initialState = {
-  //   sizes: [],
-  //   email: '',
-  // };
-
-  const primaryActionBtn: PrimaryActionBtnProps = {
-    onClick: () => {
-      console.log(12);
-    },
+  const primaryActionBtn = {
+    onClick: onSubmit,
     label: language.notiftyMe,
-    variant: BtnVariant.Primary,
+    buttonType: 'submit',
   };
-
   return (
     <div>
       <ModalContainer
         triggerModalBtnContent="Notify me when missing sizes are back in stock"
         triggerModalBtnVariant={BtnVariant.Ghost}
-        id="hh"
+        id="sizes"
         primaryActionBtn={primaryActionBtn}
         modalSize={SizeVariant.Sm}
-        modalHeaderText={`${language.size}   ${language.currentlyUnavailable}`}
+        modalHeaderText={`${language.size}  ${language.currentlyUnavailable}`}
       >
-        <p>{language.getNotifiedForProducts}</p>
-        <div>size multiChoise list</div>
-        {name && name}
-        <div>email form</div>
+        <CheckboxList
+          options={options}
+          name="sizes"
+          onChange={onChange}
+          values={values}
+        />
       </ModalContainer>
     </div>
   );
