@@ -14,10 +14,11 @@ const NotiFyMe = ({ onSubmit, options, onChange, values }: NotifiMeProps) => {
   const { language } = useLanguage();
 
   const primaryActionBtn = {
-    onClick: onSubmit,
+    onSubmit,
     label: language.notiftyMe,
     buttonType: BtnType.Submit,
   };
+
   return (
     <div>
       <ModalContainer

@@ -52,7 +52,7 @@ const Layout = () => {
 
   // Button configurations
   const primaryActionBtn = {
-    onClick: onSubmit,
+    onSubmit,
     label: language.updatePreferences,
     buttonType: BtnType.Submit,
   };

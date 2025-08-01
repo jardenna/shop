@@ -4,6 +4,7 @@ import { selectModalId } from '../../features/modalSlice';
 import useClickOutside from '../../hooks/useClickOutside';
 import useMediaQuery from '../../hooks/useMediaQuery ';
 import { BtnType, BtnVariant, PopupRole, SizeVariant } from '../../types/enums';
+import { FormEventType } from '../../types/types';
 import Overlay from '../overlay/Overlay';
 import Portal from '../Portal';
 import SwipeContainer from '../SwipeContainer';
@@ -15,11 +16,12 @@ import useVisibility from './useVisibility';
 
 export type PrimaryActionBtnProps = {
   label: string | null;
-  onClick: any;
   buttonType?: BtnType;
   className?: string;
   disabled?: boolean;
   variant?: BtnVariant;
+  onClick?: () => void;
+  onSubmit?: (event: FormEventType) => void;
 };
 
 export type SecondaryActionBtnProps = {
@@ -92,7 +94,7 @@ const Modal = ({
         <form
           method="modal"
           className="modal-form"
-          onSubmit={primaryActionBtn.onClick}
+          onSubmit={primaryActionBtn.onSubmit}
         >
           {children}
           <ModalFooter

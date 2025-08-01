@@ -1,5 +1,5 @@
 import LayoutElement from '../../layout/LayoutElement';
-import { BtnType, BtnVariant } from '../../types/enums';
+import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import type { PrimaryActionBtnProps, SecondaryActionBtnProps } from './Modal';
 
@@ -19,7 +19,7 @@ const ModalFooter = ({
       return;
     }
 
-    if (primaryActionBtn.buttonType === BtnType.Submit) {
+    if (!primaryActionBtn.onClick) {
       onCloseModal();
     } else {
       primaryActionBtn.onClick();
