@@ -3,7 +3,7 @@ import { ChangeInputType } from '../../../types/types';
 type InputType = 'checkbox' | 'radio';
 
 type ControlInputFieldProps = {
-  checked: any;
+  checked: boolean;
   id: string;
   label: string;
   name: string;
