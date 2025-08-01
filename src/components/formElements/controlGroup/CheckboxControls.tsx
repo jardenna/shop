@@ -1,5 +1,5 @@
-import { OptionGroupHeading, ChangeInputType } from '../../../types/types';
-import ControlGroup from './ControlGroup';
+import { ChangeInputType, OptionGroupHeading } from '../../../types/types';
+import ControlList from './ControlList';
 
 export type BaseControlGroupProps = {
   name: string;
@@ -24,7 +24,7 @@ const CheckboxControls = ({
   required,
   inputInfo,
 }: CheckboxControlsProps) => (
-  <ControlGroup
+  <ControlList
     name={name}
     options={options}
     values={values}

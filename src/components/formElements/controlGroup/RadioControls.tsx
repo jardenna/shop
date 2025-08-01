@@ -1,5 +1,5 @@
 import { BaseControlGroupProps } from './CheckboxControls';
-import ControlGroup from './ControlGroup';
+import ControlList from './ControlList';
 
 type RadioControlsProps = BaseControlGroupProps & {
   initialChecked: string;
@@ -14,7 +14,7 @@ const RadioControls = ({
   required,
   options,
 }: RadioControlsProps) => (
-  <ControlGroup
+  <ControlList
     type="radio"
     name={name}
     options={options}

@@ -2,15 +2,15 @@ import OptionGroupTitle from '../../productLists/OptionGroupTitle';
 import InputInfo from '../InputInfo';
 import { BaseControlGroupProps } from './CheckboxControls';
 import ControlInputField from './ControlInputField';
-import './_control-group.scss';
+import './_control-list.scss';
 
-type ControlGroupProps = BaseControlGroupProps & {
+type ControlList = BaseControlGroupProps & {
   initialChecked?: string;
   type?: 'checkbox' | 'radio';
   values?: string[];
 };
 
-const ControlGroup = ({
+const ControlList = ({
   name,
   options,
   groupTitle,
@@ -21,7 +21,7 @@ const ControlGroup = ({
   initialChecked,
   disabledList,
   onChange,
-}: ControlGroupProps) => (
+}: ControlList) => (
   <section>
     {groupTitle && (
       <OptionGroupTitle groupTitle={groupTitle} required={required} />
@@ -53,4 +53,4 @@ const ControlGroup = ({
   </section>
 );
 
-export default ControlGroup;
+export default ControlList;
