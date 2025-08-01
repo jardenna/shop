@@ -1,3 +1,4 @@
+import { IconName } from '../../../types/enums';
 import { ChangeInputType, OptionGroupHeading } from '../../../types/types';
 import OptionGroupTitle from '../../productLists/OptionGroupTitle';
 import InputInfo from '../InputInfo';
@@ -9,7 +10,7 @@ export type BaseControlGroupProps = {
   options: string[];
   disabledList?: string[];
   groupTitle?: OptionGroupHeading;
-  icon?: any;
+  icon?: IconName;
   inputInfo?: string;
   required?: boolean;
   onChange: (event: ChangeInputType) => void;

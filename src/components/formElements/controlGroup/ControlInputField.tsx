@@ -1,7 +1,6 @@
 import { IconName } from '../../../types/enums';
 import type { ChangeInputType } from '../../../types/types';
 import { colorMap } from '../../../utils/colorUtils';
-import { resolveIconName } from '../../../utils/iconHelpers';
 import IconContent from '../../IconContent';
 
 type InputType = 'checkbox' | 'radio';
@@ -32,11 +31,11 @@ const ControlInputField = ({
     <label htmlFor={id}>
       {icon ? (
         <IconContent
-          iconName={resolveIconName(icon)}
+          iconName={icon}
           fill={colorMap[label]}
           size="70"
           title=""
-          ariaLabel={resolveIconName(icon)}
+          ariaLabel={label}
         />
       ) : (
         label

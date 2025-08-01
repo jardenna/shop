@@ -9,4 +9,4 @@ const categoryToIconName: Record<string, IconName> = {
 const resolveIconName = (category: string): IconName =>
   categoryToIconName[category] ?? IconName.Woman;
 
-export { categoryToIconName, resolveIconName };
+export default resolveIconName;

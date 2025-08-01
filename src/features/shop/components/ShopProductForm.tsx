@@ -5,6 +5,7 @@ import RadioControls from '../../../components/formElements/controlGroup/RadioCo
 import ColorListSingleChoice from '../../../components/productColorLists/ColorListSingleChoice';
 import useFormValidation from '../../../hooks/useFormValidation';
 import { ColorOption } from '../../../utils/colorUtils';
+import resolveIconName from '../../../utils/iconHelpers';
 import useLanguage from '../../language/useLanguage';
 
 type ShopProductFormProps = {
@@ -61,12 +62,13 @@ const ShopProductForm = ({
           onChange={onChange}
           options={sortedColorList}
           name="color"
-          icon={selectedProduct.categoryName}
+          icon={resolveIconName(selectedProduct.categoryName)}
           groupTitle={{
             title: language.selectColor,
             id: 'choose-product-color',
           }}
         />
+
         <RadioControls
           initialChecked={values.size}
           disabledList={selectedProduct.sizes}
