@@ -1,6 +1,5 @@
-import OptionGroupTitle from '../../productLists/OptionGroupTitle';
 import { BaseCheckboxList } from './CheckboxList';
-import ControlInputField from './ControlInputField';
+import ControlGroup from './ControlInput';
 
 type RadioBtnListProps = BaseCheckboxList & {
   initialChecked: string;
@@ -15,29 +14,16 @@ const RadioBtnList = ({
   required,
   options,
 }: RadioBtnListProps) => (
-  <section>
-    {groupTitle && (
-      <OptionGroupTitle groupTitle={groupTitle} required={required} />
-    )}
-    <ul className="control-list">
-      {options.map((label, index) => {
-        const id = `radio-${index}`;
-        return (
-          <ControlInputField
-            key={label}
-            id={id}
-            type="radio"
-            name={name}
-            value={label}
-            checked={initialChecked === label}
-            disabled={disabledList ? !disabledList.includes(label) : undefined}
-            onChange={onChange}
-            label={label}
-          />
-        );
-      })}
-    </ul>
-  </section>
+  <ControlGroup
+    type="radio"
+    name={name}
+    options={options}
+    groupTitle={groupTitle}
+    required={required}
+    initialChecked={initialChecked}
+    disabledList={disabledList}
+    onChange={onChange}
+  />
 );
 
 export default RadioBtnList;

@@ -1,8 +1,6 @@
 import { ChangeInputType, OptionGroupHeading } from '../../../types/types';
-import OptionGroupTitle from '../../productLists/OptionGroupTitle';
-import InputInfo from '../InputInfo';
 import './_checkbox-list.scss';
-import ControlInputField from './ControlInputField';
+import ControlGroup from './ControlInput';
 
 export type BaseCheckboxList = {
   name: string;
@@ -26,30 +24,18 @@ const CheckboxList = ({
   groupTitle,
   required,
   inputInfo,
-  disabledList,
 }: CheckboxListProps) => (
   <section>
-    {groupTitle && (
-      <OptionGroupTitle groupTitle={groupTitle} required={required} />
-    )}
-    <ul className="control-list">
-      {options.map((label, index) => {
-        const id = `checkbox-${index}`;
-        return (
-          <ControlInputField
-            key={label}
-            id={id}
-            name={name}
-            value={label}
-            checked={values.includes(label)}
-            disabled={disabledList ? !disabledList.includes(label) : undefined}
-            onChange={onChange}
-            label={label}
-          />
-        );
-      })}
-    </ul>
-    {inputInfo && <InputInfo inputInfo={inputInfo} />}
+    <ControlGroup
+      type="checkbox"
+      name={name}
+      options={options}
+      values={values}
+      onChange={onChange}
+      inputInfo={inputInfo}
+      required={required}
+      groupTitle={groupTitle}
+    />
   </section>
 );
 
