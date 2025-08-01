@@ -1,4 +1,4 @@
-import CheckboxList from '../../../components/formElements/controlGroup/CheckboxList';
+import CheckboxList from '../../../components/formElements/controlGroup/CheckboxControls';
 import ModalContainer from '../../../components/modal/ModalContainer';
 import { BtnType, BtnVariant, SizeVariant } from '../../../types/enums';
 import type { ChangeInputType, FormEventType } from '../../../types/types';

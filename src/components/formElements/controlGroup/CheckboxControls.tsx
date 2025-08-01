@@ -1,10 +1,10 @@
 import ControlGroup, { BaseControlGroupProps } from './ControlGroup';
 
-type CheckboxListProps = BaseControlGroupProps & {
+type CheckboxControlsProps = BaseControlGroupProps & {
   values: string[];
 };
 
-const CheckboxList = ({
+const CheckboxControls = ({
   options,
   values,
   onChange,
@@ -12,7 +12,7 @@ const CheckboxList = ({
   groupTitle,
   required,
   inputInfo,
-}: CheckboxListProps) => (
+}: CheckboxControlsProps) => (
   <ControlGroup
     name={name}
     options={options}
@@ -24,4 +24,4 @@ const CheckboxList = ({
   />
 );
 
-export default CheckboxList;
+export default CheckboxControls;

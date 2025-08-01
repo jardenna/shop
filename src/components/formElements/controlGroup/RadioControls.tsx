@@ -1,10 +1,10 @@
 import ControlGroup, { BaseControlGroupProps } from './ControlGroup';
 
-type RadioBtnListProps = BaseControlGroupProps & {
+type RadioControlsProps = BaseControlGroupProps & {
   initialChecked: string;
 };
 
-const RadioBtnList = ({
+const RadioControls = ({
   initialChecked,
   onChange,
   groupTitle,
@@ -12,7 +12,7 @@ const RadioBtnList = ({
   disabledList,
   required,
   options,
-}: RadioBtnListProps) => (
+}: RadioControlsProps) => (
   <ControlGroup
     type="radio"
     name={name}
@@ -25,4 +25,4 @@ const RadioBtnList = ({
   />
 );
 
-export default RadioBtnList;
+export default RadioControls;
