@@ -4,17 +4,20 @@ import InputInfo from '../InputInfo';
 import ControlInputField from './ControlInputField';
 import './_checkbox-list.scss';
 
-type ControlGroupProps = {
+export type BaseControlGroupProps = {
   name: string;
   options: string[];
   disabledList?: string[];
   groupTitle?: OptionGroupHeading;
-  initialChecked?: string; // for radio
   inputInfo?: string;
   required?: boolean;
-  type?: 'checkbox' | 'radio';
-  values?: string[]; // for checkbox
   onChange: (event: ChangeInputType) => void;
+};
+
+type ControlGroupProps = BaseControlGroupProps & {
+  initialChecked?: string;
+  type?: 'checkbox' | 'radio';
+  values?: string[];
 };
 
 const ControlGroup = ({

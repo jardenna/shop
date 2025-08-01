@@ -1,17 +1,6 @@
-import { ChangeInputType, OptionGroupHeading } from '../../../types/types';
-import ControlGroup from './ControlGroup';
+import ControlGroup, { BaseControlGroupProps } from './ControlGroup';
 
-export type BaseCheckboxList = {
-  name: string;
-  options: string[];
-  disabledList?: string[];
-  groupTitle?: OptionGroupHeading;
-  inputInfo?: string;
-  required?: boolean;
-  onChange: (event: ChangeInputType) => void;
-};
-
-export type CheckboxListProps = BaseCheckboxList & {
+type CheckboxListProps = BaseControlGroupProps & {
   values: string[];
 };
 
@@ -24,17 +13,15 @@ const CheckboxList = ({
   required,
   inputInfo,
 }: CheckboxListProps) => (
-  <section>
-    <ControlGroup
-      name={name}
-      options={options}
-      values={values}
-      onChange={onChange}
-      inputInfo={inputInfo}
-      required={required}
-      groupTitle={groupTitle}
-    />
-  </section>
+  <ControlGroup
+    name={name}
+    options={options}
+    values={values}
+    onChange={onChange}
+    inputInfo={inputInfo}
+    required={required}
+    groupTitle={groupTitle}
+  />
 );
 
 export default CheckboxList;
