@@ -1,4 +1,4 @@
-import { OptionGroupHeading } from '../../types/types';
+import type { OptionGroupHeading } from '../../types/types';
 import RequiredIcon from '../RequiredIcon';
 
 type OptionGroupTitleProps = {

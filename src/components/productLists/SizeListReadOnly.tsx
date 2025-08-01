@@ -4,7 +4,7 @@ import {
   SubCategoryNames,
 } from '../../app/api/apiTypes/sharedApiTypes';
 import useLanguage from '../../features/language/useLanguage';
-import { OptionGroupHeading } from '../../types/types';
+import type { OptionGroupHeading } from '../../types/types';
 import { getDisplaySizes } from '../../utils/sizeUtils';
 import VisuallyHidden from '../VisuallyHidden';
 import ProductList from './ProductList';

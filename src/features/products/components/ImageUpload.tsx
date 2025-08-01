@@ -3,7 +3,7 @@ import ImgListItem from '../../../components/formElements/fileInput/ImgListItem'
 import Preview from '../../../components/formElements/fileInput/Preview';
 import InputInfo from '../../../components/formElements/InputInfo';
 import { PreviewImg } from '../../../hooks/useFormValidation';
-import { ChangeInputType } from '../../../types/types';
+import type { ChangeInputType } from '../../../types/types';
 import { allowedExtensions } from '../../../utils/utils';
 import useLanguage from '../../language/useLanguage';
 

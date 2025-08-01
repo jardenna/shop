@@ -1,4 +1,4 @@
-import { ChangeInputType, OptionGroupHeading } from '../../../types/types';
+import type { ChangeInputType, OptionGroupHeading } from '../../../types/types';
 import OptionGroupTitle from '../../productLists/OptionGroupTitle';
 import InputInfo from '../InputInfo';
 import ControlInputField from './ControlInputField';

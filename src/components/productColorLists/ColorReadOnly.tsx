@@ -1,6 +1,6 @@
 import useLanguage from '../../features/language/useLanguage';
 import variables from '../../scss/variables.module.scss';
-import { OptionGroupHeading } from '../../types/types';
+import type { OptionGroupHeading } from '../../types/types';
 import { getColorOptions } from '../../utils/colorUtils';
 import ProductList from '../productLists/ProductList';
 import ProductListItem, {

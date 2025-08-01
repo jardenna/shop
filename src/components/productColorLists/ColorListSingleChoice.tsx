@@ -1,5 +1,5 @@
 import useLanguage from '../../features/language/useLanguage';
-import { ProductListChoiceProps } from '../../types/types';
+import type { ProductListChoiceProps } from '../../types/types';
 import { ColorOption } from '../../utils/colorUtils';
 import { resolveIconName } from '../../utils/iconHelpers';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
