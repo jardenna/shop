@@ -1,5 +1,5 @@
 import { BaseCheckboxList } from './CheckboxList';
-import ControlGroup from './ControlInput';
+import ControlGroup from './ControlGroup';
 
 type RadioBtnListProps = BaseCheckboxList & {
   initialChecked: string;

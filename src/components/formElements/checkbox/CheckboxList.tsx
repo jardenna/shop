@@ -1,6 +1,5 @@
 import { ChangeInputType, OptionGroupHeading } from '../../../types/types';
-import './_checkbox-list.scss';
-import ControlGroup from './ControlInput';
+import ControlGroup from './ControlGroup';
 
 export type BaseCheckboxList = {
   name: string;
@@ -27,7 +26,6 @@ const CheckboxList = ({
 }: CheckboxListProps) => (
   <section>
     <ControlGroup
-      type="checkbox"
       name={name}
       options={options}
       values={values}
