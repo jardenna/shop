@@ -25,13 +25,13 @@ const RadioBtnList = ({
         return (
           <ControlInputField
             key={label}
+            id={id}
             type="radio"
             name={name}
-            id={id}
             value={label}
             checked={initialChecked === label}
-            onChange={onChange}
             disabled={disabledList ? !disabledList.includes(label) : undefined}
+            onChange={onChange}
             label={label}
           />
         );
