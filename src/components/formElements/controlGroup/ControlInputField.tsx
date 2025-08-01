@@ -14,7 +14,7 @@ type ControlInputFieldProps = {
   name: string;
   value: string;
   disabled?: boolean;
-  icon?: IconName;
+  iconName?: IconName;
   type?: InputType;
   onChange: (event: ChangeInputType) => void;
 };
@@ -27,16 +27,16 @@ const ControlInputField = ({
   disabled,
   type = 'checkbox',
   onChange,
-  icon,
+  iconName,
 }: ControlInputFieldProps) => {
   const { language } = useLanguage();
 
   return (
     <li className="control-item">
       <label htmlFor={id}>
-        {icon ? (
+        {iconName ? (
           <IconContent
-            iconName={icon}
+            iconName={iconName}
             fill={colorMap[label]}
             size="70"
             title=""

@@ -62,7 +62,7 @@ const ShopProductForm = ({
           onChange={onChange}
           options={sortedColorList}
           name="color"
-          icon={resolveIconName(selectedProduct.categoryName)}
+          iconName={resolveIconName(selectedProduct.categoryName)}
           groupTitle={{
             title: language.selectColor,
             id: 'choose-product-color',

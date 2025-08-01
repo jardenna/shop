@@ -10,7 +10,7 @@ export type BaseControlGroupProps = {
   options: string[];
   disabledList?: string[];
   groupTitle?: OptionGroupHeading;
-  icon?: IconName;
+  iconName?: IconName;
   inputInfo?: string;
   required?: boolean;
   onChange: (event: ChangeInputType) => void;
@@ -33,7 +33,7 @@ const ControlList = ({
   initialChecked,
   disabledList,
   onChange,
-  icon,
+  iconName,
 }: ControlList) => (
   <section>
     {groupTitle && (
@@ -50,7 +50,7 @@ const ControlList = ({
         return (
           <ControlInputField
             key={label}
-            icon={icon}
+            iconName={iconName}
             id={id}
             type={type}
             name={name}
