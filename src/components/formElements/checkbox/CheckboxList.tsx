@@ -38,7 +38,6 @@ const CheckboxList = ({
         return (
           <ControlInputField
             key={label}
-            type="checkbox"
             id={id}
             name={name}
             value={label}

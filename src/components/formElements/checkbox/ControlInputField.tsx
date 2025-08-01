@@ -7,9 +7,9 @@ type ControlInputFieldProps = {
   id: string;
   label: string;
   name: string;
-  type: InputType;
   value: string;
   disabled?: boolean;
+  type?: InputType;
   onChange: (event: ChangeInputType) => void;
 };
 
@@ -19,7 +19,7 @@ const ControlInputField = ({
   label,
   checked,
   disabled,
-  type,
+  type = 'checkbox',
   onChange,
 }: ControlInputFieldProps) => (
   <li className="control-item">
