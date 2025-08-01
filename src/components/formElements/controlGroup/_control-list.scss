@@ -6,9 +6,13 @@
   align-items: center;
   border-inline-start: 1px solid $color-border;
 
-  input {
-    clip-path: inset(50%);
-    position: absolute;
+  label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: rem(68px);
+    height: rem(68px);
+    cursor: pointer;
   }
 
   .control-item {
@@ -23,13 +27,18 @@
       border-right-color: $color-border;
     }
 
-    label {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: rem(68px);
-      height: rem(68px);
-      cursor: pointer;
+    &.large {
+      gap: 12px;
+
+      .control-item {
+        border: 1px solid $color-border;
+      }
+
+      label {
+        width: rem(100px);
+        height: rem(120px);
+        background-color: $color-light-gray-30;
+      }
     }
 
     &:has(input[type='checkbox']:checked) {
@@ -54,5 +63,10 @@
         }
       }
     }
+  }
+
+  input {
+    clip-path: inset(50%);
+    position: absolute;
   }
 }

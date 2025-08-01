@@ -37,6 +37,10 @@ const ShopProductForm = ({
       ? language.selectSize
       : `${language.selectedSize}: ${values.size}`;
 
+  const sortedColorList = [...selectedProduct.colors].sort((a, b) =>
+    a.toLowerCase().localeCompare(b.toLowerCase()),
+  );
+
   return (
     <Form onSubmit={onSubmit} submitBtnLabel={language.create}>
       <FieldSet legendText={language.productVariants} hideLegendText>
@@ -52,6 +56,17 @@ const ShopProductForm = ({
           }}
         />
 
+        <RadioControls
+          initialChecked={values.color}
+          onChange={onChange}
+          options={sortedColorList}
+          name="color"
+          icon={selectedProduct.categoryName}
+          groupTitle={{
+            title: language.selectColor,
+            id: 'choose-product-color',
+          }}
+        />
         <RadioControls
           initialChecked={values.size}
           disabledList={selectedProduct.sizes}

@@ -12,9 +12,11 @@ const RadioControls = ({
   disabledList,
   required,
   options,
+  icon,
 }: RadioControlsProps) => (
   <ControlList
     type="radio"
+    icon={icon}
     name={name}
     options={options}
     groupTitle={groupTitle}

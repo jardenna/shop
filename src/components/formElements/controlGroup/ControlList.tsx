@@ -9,6 +9,7 @@ export type BaseControlGroupProps = {
   options: string[];
   disabledList?: string[];
   groupTitle?: OptionGroupHeading;
+  icon?: any;
   inputInfo?: string;
   required?: boolean;
   onChange: (event: ChangeInputType) => void;
@@ -31,6 +32,7 @@ const ControlList = ({
   initialChecked,
   disabledList,
   onChange,
+  icon,
 }: ControlList) => (
   <section>
     {groupTitle && (
@@ -38,7 +40,7 @@ const ControlList = ({
     )}
     <ul className="control-list">
       {options.map((label, index) => {
-        const id = `${type}-${index}`;
+        const id = `${name}-${index}`;
         const checked =
           type === 'checkbox'
             ? values.includes(label)
@@ -47,6 +49,7 @@ const ControlList = ({
         return (
           <ControlInputField
             key={label}
+            icon={icon}
             id={id}
             type={type}
             name={name}
