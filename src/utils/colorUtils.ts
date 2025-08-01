@@ -58,4 +58,20 @@ const getColorOptions = ({
     }))
     .sort((a, b) => a.label.localeCompare(b.label));
 
-export { colorList, colorMap, getColorOptions };
+// Sort colors based on their translated names
+const sortColorsByTranslation = (
+  colors: string[],
+  language: Record<string, string>,
+) =>
+  [...colors].sort((a, b) => {
+    // Fallback to original if translation is missing
+    const aTranslated = language[a.toLowerCase()] || a;
+    const bTranslated = language[b.toLowerCase()] || b;
+
+    // Compare using localeCompare for proper alphabetical sorting
+    return aTranslated.localeCompare(bTranslated, undefined, {
+      sensitivity: 'base',
+    });
+  });
+
+export { colorList, colorMap, getColorOptions, sortColorsByTranslation };

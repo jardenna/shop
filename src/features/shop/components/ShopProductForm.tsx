@@ -4,7 +4,10 @@ import Form from '../../../components/form/Form';
 import RadioControls from '../../../components/formElements/controlGroup/RadioControls';
 import ColorListSingleChoice from '../../../components/productColorLists/ColorListSingleChoice';
 import useFormValidation from '../../../hooks/useFormValidation';
-import { ColorOption } from '../../../utils/colorUtils';
+import {
+  ColorOption,
+  sortColorsByTranslation,
+} from '../../../utils/colorUtils';
 import resolveIconName from '../../../utils/iconHelpers';
 import useLanguage from '../../language/useLanguage';
 
@@ -38,8 +41,9 @@ const ShopProductForm = ({
       ? language.selectSize
       : `${language.selectedSize}: ${values.size}`;
 
-  const sortedColorList = [...selectedProduct.colors].sort((a, b) =>
-    a.toLowerCase().localeCompare(b.toLowerCase()),
+  const sortedTranslatedColors = sortColorsByTranslation(
+    selectedProduct.colors,
+    language,
   );
 
   return (
@@ -60,7 +64,7 @@ const ShopProductForm = ({
         <RadioControls
           initialChecked={values.color}
           onChange={onChange}
-          options={sortedColorList}
+          options={sortedTranslatedColors}
           name="color"
           iconName={resolveIconName(selectedProduct.categoryName)}
           groupTitle={{
