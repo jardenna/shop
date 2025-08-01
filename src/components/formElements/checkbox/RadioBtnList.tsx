@@ -1,17 +1,9 @@
-import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
-import {
-  OptionGroupHeading,
-  ProductListChoiceProps,
-} from '../../../types/types';
 import OptionGroupTitle from '../../productLists/OptionGroupTitle';
+import { BaseCheckboxList } from './CheckboxList';
 import ControlInputField from './ControlInputField';
 
-type RadioBtnListProps = ProductListChoiceProps & {
-  availableSizeList: Size[];
-  displaySizeList: Size[];
+type RadioBtnListProps = BaseCheckboxList & {
   initialChecked: string;
-  groupTitle?: OptionGroupHeading;
-  required?: boolean;
 };
 
 const RadioBtnList = ({
@@ -19,28 +11,32 @@ const RadioBtnList = ({
   onChange,
   groupTitle,
   name,
-  availableSizeList,
-
+  disabledList,
   required,
-  displaySizeList,
+  options,
 }: RadioBtnListProps) => (
   <section>
-    <OptionGroupTitle groupTitle={groupTitle} required={required} />
+    {groupTitle && (
+      <OptionGroupTitle groupTitle={groupTitle} required={required} />
+    )}
 
     <ul className="checkbox-list">
-      {displaySizeList.map((size) => (
-        <ControlInputField
-          key={size}
-          type="radio"
-          name={name}
-          id={size}
-          value={size}
-          checked={initialChecked === size}
-          onChange={onChange}
-          disabled={!availableSizeList.includes(size)}
-          label={size}
-        />
-      ))}
+      {options.map((label, index) => {
+        const id = `radio-${index}`;
+        return (
+          <ControlInputField
+            key={label}
+            type="radio"
+            name={name}
+            id={id}
+            value={label}
+            checked={initialChecked === label}
+            onChange={onChange}
+            disabled={disabledList ? !disabledList.includes(label) : undefined}
+            label={label}
+          />
+        );
+      })}
     </ul>
   </section>
 );

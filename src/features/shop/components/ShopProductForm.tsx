@@ -54,9 +54,9 @@ const ShopProductForm = ({
 
         <RadioBtnList
           initialChecked={values.size}
-          availableSizeList={selectedProduct.sizes}
+          disabledList={selectedProduct.sizes}
           onChange={onChange}
-          displaySizeList={displaySizeList}
+          options={displaySizeList}
           name="size"
           groupTitle={{
             title,

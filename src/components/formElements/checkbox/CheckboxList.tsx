@@ -4,15 +4,18 @@ import InputInfo from '../InputInfo';
 import './_checkbox-list.scss';
 import ControlInputField from './ControlInputField';
 
-type CheckboxListProps = {
+export type BaseCheckboxList = {
   name: string;
   options: string[];
-  values: string[];
-  disabled?: boolean;
+  disabledList?: string[];
   groupTitle?: OptionGroupHeading;
   inputInfo?: string;
   required?: boolean;
   onChange: (event: ChangeInputType) => void;
+};
+
+export type CheckboxListProps = BaseCheckboxList & {
+  values: string[];
 };
 
 const CheckboxList = ({
@@ -20,10 +23,10 @@ const CheckboxList = ({
   values,
   onChange,
   name,
-  disabled,
   groupTitle,
   required,
   inputInfo,
+  disabledList,
 }: CheckboxListProps) => (
   <section>
     {groupTitle && (
@@ -31,7 +34,7 @@ const CheckboxList = ({
     )}
     <ul className="checkbox-list">
       {options.map((label, index) => {
-        const id = `input-${index}`;
+        const id = `checkbox-${index}`;
         return (
           <ControlInputField
             key={label}
@@ -40,8 +43,8 @@ const CheckboxList = ({
             name={name}
             value={label}
             checked={values.includes(label)}
+            disabled={disabledList ? !disabledList.includes(label) : undefined}
             onChange={onChange}
-            disabled={disabled}
             label={label}
           />
         );
