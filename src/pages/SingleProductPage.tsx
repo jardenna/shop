@@ -2,7 +2,7 @@ import { useParams } from 'react-router';
 import { Size } from '../app/api/apiTypes/sharedApiTypes';
 import Accordion from '../components/accordion/Accordion';
 import Favorites from '../components/favorites/Favorites';
-import CheckboxList from '../components/formElements/checkbox/CheckboxList';
+import CheckboxList from '../components/formElements/controlGroup/CheckboxList';
 import Img from '../components/Img';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
 import useLanguage from '../features/language/useLanguage';

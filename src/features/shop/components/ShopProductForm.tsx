@@ -1,7 +1,7 @@
 import { BaseProduct, Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/form/Form';
-import RadioBtnList from '../../../components/formElements/checkbox/RadioBtnList';
+import RadioBtnList from '../../../components/formElements/controlGroup/RadioBtnList';
 import ColorListSingleChoice from '../../../components/productColorLists/ColorListSingleChoice';
 import useFormValidation from '../../../hooks/useFormValidation';
 import { ColorOption } from '../../../utils/colorUtils';

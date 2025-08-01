@@ -8,7 +8,7 @@ import type {
 } from '../../../app/api/apiTypes/adminApiTypes';
 import useDatePicker from '../../../components/datePicker/useDatePicker';
 import Form from '../../../components/form/Form';
-import CheckboxList from '../../../components/formElements/checkbox/CheckboxList';
+import CheckboxList from '../../../components/formElements/controlGroup/CheckboxList';
 import Input from '../../../components/formElements/Input';
 import Textarea from '../../../components/formElements/Textarea';
 import ToggleSwitch from '../../../components/formElements/toggleSwitch/ToggleSwitch';

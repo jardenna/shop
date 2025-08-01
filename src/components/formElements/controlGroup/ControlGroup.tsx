@@ -2,7 +2,7 @@ import { ChangeInputType, OptionGroupHeading } from '../../../types/types';
 import OptionGroupTitle from '../../productLists/OptionGroupTitle';
 import InputInfo from '../InputInfo';
 import ControlInputField from './ControlInputField';
-import './_checkbox-list.scss';
+import './_control-group.scss';
 
 export type BaseControlGroupProps = {
   name: string;
