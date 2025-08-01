@@ -32,7 +32,7 @@ const CheckboxList = ({
     {groupTitle && (
       <OptionGroupTitle groupTitle={groupTitle} required={required} />
     )}
-    <ul className="checkbox-list">
+    <ul className="control-list">
       {options.map((label, index) => {
         const id = `checkbox-${index}`;
         return (

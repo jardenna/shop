@@ -1,6 +1,6 @@
 @use '../../../scss/globals' as *;
 
-.checkbox-list {
+.control-list {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -11,7 +11,7 @@
     position: absolute;
   }
 
-  .checkbox-item {
+  .control-item {
     border: 1px solid transparent;
     border-inline-end: 1px solid $color-border;
     border-block-end: 1px solid $color-border;
@@ -21,6 +21,15 @@
 
     &:last-child {
       border-right-color: $color-border;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: rem(68px);
+      height: rem(68px);
+      cursor: pointer;
     }
 
     &:has(input[type='checkbox']:checked) {
@@ -44,15 +53,6 @@
           display: flex;
         }
       }
-    }
-
-    label {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: rem(68px);
-      height: rem(68px);
-      cursor: pointer;
     }
   }
 }

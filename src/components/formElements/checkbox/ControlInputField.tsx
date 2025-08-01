@@ -22,7 +22,7 @@ const ControlInputField = ({
   type,
   onChange,
 }: ControlInputFieldProps) => (
-  <li className="checkbox-item">
+  <li className="control-item">
     <label htmlFor={id}>{label}</label>
     <input
       type={type}
