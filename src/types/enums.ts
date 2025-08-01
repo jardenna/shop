@@ -60,6 +60,12 @@ export enum BtnVariant {
   Secondary = 'secondary',
 }
 
+export enum BtnType {
+  Button = 'button',
+  Reset = 'reset',
+  Submit = 'submit',
+}
+
 export enum IconName {
   Account = 'account',
   Add = 'add',

@@ -3,8 +3,7 @@ import { useAppSelector } from '../../app/hooks';
 import { selectModalId } from '../../features/modalSlice';
 import useClickOutside from '../../hooks/useClickOutside';
 import useMediaQuery from '../../hooks/useMediaQuery ';
-import { BtnVariant, PopupRole, SizeVariant } from '../../types/enums';
-import type { ButtonType } from '../../types/types';
+import { BtnType, BtnVariant, PopupRole, SizeVariant } from '../../types/enums';
 import Overlay from '../overlay/Overlay';
 import Portal from '../Portal';
 import SwipeContainer from '../SwipeContainer';
@@ -16,11 +15,11 @@ import useVisibility from './useVisibility';
 
 export type PrimaryActionBtnProps = {
   label: string | null;
-  buttonType?: ButtonType;
+  onClick: any;
+  buttonType?: BtnType;
   className?: string;
   disabled?: boolean;
   variant?: BtnVariant;
-  onClick: () => void;
 };
 
 export type SecondaryActionBtnProps = {
@@ -78,7 +77,7 @@ const Modal = ({
         onCloseModal={onCloseModal}
         showCloseIcon={showCloseIcon}
       />
-      {primaryActionBtn?.buttonType !== 'submit' ? (
+      {primaryActionBtn?.buttonType !== BtnType.Submit ? (
         <>
           <div className="modal-body">{children}</div>
           {primaryActionBtn && (

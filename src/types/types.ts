@@ -12,7 +12,6 @@ export type OptionType<T = string> = {
   value: T;
 };
 
-export type ButtonType = 'submit' | 'reset' | 'button';
 export type BlurEventType = { target: { name: string } };
 export type FormEventType = FormEvent<HTMLFormElement>;
 export type refElementType = RefObject<HTMLElement | null>;
@@ -33,23 +32,19 @@ export type ProductListChoiceProps = {
 };
 
 export type InputType =
-  | 'button'
   | 'checkbox'
   | 'color'
   | 'date'
   | 'datetime-local'
   | 'email'
   | 'file'
-  | 'hidden'
   | 'image'
   | 'month'
   | 'number'
   | 'password'
   | 'radio'
   | 'range'
-  | 'reset'
   | 'search'
-  | 'submit'
   | 'tel'
   | 'text'
   | 'time'

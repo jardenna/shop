@@ -9,7 +9,7 @@ import useCurrency from '../features/currency/useCurrency';
 import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
 import useMediaQuery from '../hooks/useMediaQuery ';
-import { IconName } from '../types/enums';
+import { BtnType, IconName } from '../types/enums';
 import type { OptionType } from '../types/types';
 import Header from './header/Header';
 import { AdminPath, ShopPath } from './nav/enums';
@@ -54,7 +54,7 @@ const Layout = () => {
   const primaryActionBtn = {
     onClick: onSubmit,
     label: language.updatePreferences,
-    buttonType: 'submit',
+    buttonType: BtnType.Submit,
   };
 
   const secondaryActionBtn: SecondaryActionBtnProps = {

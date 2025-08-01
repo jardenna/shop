@@ -1,7 +1,7 @@
 import CheckboxList from '../../../components/formElements/controlGroup/CheckboxList';
 import ModalContainer from '../../../components/modal/ModalContainer';
-import { BtnVariant, SizeVariant } from '../../../types/enums';
-import { ChangeInputType, FormEventType } from '../../../types/types';
+import { BtnType, BtnVariant, SizeVariant } from '../../../types/enums';
+import type { ChangeInputType, FormEventType } from '../../../types/types';
 import useLanguage from '../../language/useLanguage';
 
 type NotifiMeProps = {
@@ -16,7 +16,7 @@ const NotiFyMe = ({ onSubmit, options, onChange, values }: NotifiMeProps) => {
   const primaryActionBtn = {
     onClick: onSubmit,
     label: language.notiftyMe,
-    buttonType: 'submit',
+    buttonType: BtnType.Submit,
   };
   return (
     <div>

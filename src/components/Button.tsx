@@ -1,8 +1,8 @@
 /* eslint-disable react/button-has-type */
 
 import { ReactNode, RefObject } from 'react';
-import { BtnVariant } from '../types/enums';
-import type { ButtonEventType, ButtonType } from '../types/types';
+import { BtnType, BtnVariant } from '../types/enums';
+import type { ButtonEventType } from '../types/types';
 import Loader from './loader/Loader';
 import VisuallyHidden from './VisuallyHidden';
 
@@ -23,7 +23,7 @@ type ButtonProps = {
   role?: string;
   tabIndex?: 0 | -1;
   tooltipRef?: RefObject<HTMLButtonElement | null>;
-  type?: ButtonType;
+  type?: BtnType;
   variant?: BtnVariant;
   onClick?: (event: ButtonEventType | string) => void;
   ref?: (el: HTMLButtonElement | null) => void;
@@ -31,7 +31,7 @@ type ButtonProps = {
 
 const Button = ({
   children,
-  type = 'button',
+  type = BtnType.Button,
   id,
   tabIndex,
   variant = BtnVariant.Primary,

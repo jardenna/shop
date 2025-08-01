@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import useLanguage from '../../features/language/useLanguage';
-import { IconName } from '../../types/enums';
+import { BtnType, IconName } from '../../types/enums';
 import type { ChangeInputType, InputType } from '../../types/types';
 import Input from '../formElements/Input';
 import IconBtn from '../IconBtn';
@@ -68,7 +68,7 @@ const EditTableInput = ({
           title="Check"
           ariaLabel={language.save}
           size="16"
-          btnType="submit"
+          btnType={BtnType.Submit}
         />
       </div>
     </form>
