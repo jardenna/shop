@@ -43,16 +43,16 @@ const CollectionPage = () => {
 
   const productViewIconList = [
     {
-      iconName: IconName.LayoutList,
-      title: language.list,
-      ariaLabel: language.list,
-      display: 'list',
-    },
-    {
       iconName: IconName.LayoutGrid,
       title: language.grid,
       ariaLabel: language.grid,
       display: 'grid',
+    },
+    {
+      iconName: IconName.LayoutList,
+      title: language.list,
+      ariaLabel: language.list,
+      display: 'list',
     },
   ];
 
