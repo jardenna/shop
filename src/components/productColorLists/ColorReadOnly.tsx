@@ -22,15 +22,15 @@ const ColorReadOnly = ({
 }: ColorReadOnlytProps) => {
   const { language } = useLanguage();
 
-  const colorList1 = getColorOptions({
+  const colorList = getColorOptions({
     colors,
     language,
     borderColor: variables.colorIconBorder,
   });
 
   // Calculate how many colors to show and how many are hidden
-  const visibleColors = colorList1.slice(0, count);
-  const hiddenColorsCount = Math.max(colorList1.length - count, 0);
+  const visibleColors = colorList.slice(0, count);
+  const hiddenColorsCount = Math.max(colorList.length - count, 0);
 
   return (
     <ProductList groupTitle={groupTitle}>
