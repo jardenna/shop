@@ -1,5 +1,18 @@
 @use '../../../scss/globals' as *;
 
+.size-overlay {
+  gap: 30px;
+  display: flex;
+  background-color: rgb($color-white, 0.8);
+  padding: 12px 4px;
+  justify-content: center;
+  position: absolute;
+  transform: translateY(0);
+  width: 100%;
+
+  @include transition($what: transform);
+}
+
 .product-img-container {
   position: relative;
   overflow: hidden;

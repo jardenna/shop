@@ -2,6 +2,7 @@ import useLanguage from '../../features/language/useLanguage';
 import variables from '../../scss/variables.module.scss';
 import type { OptionGroupHeading } from '../../types/types';
 import { getColorOptions } from '../../utils/colorUtils';
+import { sliceAndCountHidden } from '../../utils/utils';
 import ProductList from './ProductList';
 import ProductListItem, { ProductLabelVariant } from './ProductListItem';
 
@@ -12,12 +13,7 @@ type ColorListProps = {
   variant?: ProductLabelVariant;
 };
 
-const ColorList = ({
-  count = 3,
-  colors,
-  groupTitle,
-  variant,
-}: ColorListProps) => {
+const ColorList = ({ count, colors, groupTitle, variant }: ColorListProps) => {
   const { language } = useLanguage();
 
   const colorList = getColorOptions({
@@ -27,12 +23,15 @@ const ColorList = ({
   });
 
   // Calculate how many colors to show and how many are hidden
-  const visibleColors = colorList.slice(0, count);
-  const hiddenColorsCount = Math.max(colorList.length - count, 0);
+  const shownColorLength = count ? count : colorList.length;
+  const { visibleItems, hiddenCount } = sliceAndCountHidden(
+    colorList,
+    shownColorLength,
+  );
 
   return (
     <ProductList groupTitle={groupTitle} className="color-list">
-      {visibleColors.map(({ label, color, border }) => (
+      {visibleItems.map(({ label, color, border }) => (
         <ProductListItem
           key={color}
           ariaLabel={label}
@@ -43,7 +42,7 @@ const ColorList = ({
           }}
         />
       ))}
-      {hiddenColorsCount > 0 && <li>{`+ ${hiddenColorsCount}`}</li>}
+      {hiddenCount > 0 && <li>{`+ ${hiddenCount}`}</li>}
     </ProductList>
   );
 };
