@@ -17,7 +17,7 @@ const ProductListItem = ({
   ariaLabel,
 }: ProductListItemProps) => (
   <li className="product-list-item" style={style}>
-    <span className={`product-content ${variant}`}>{text}</span>
+    <span className={`product-list-content ${variant}`}>{text}</span>
     <VisuallyHidden>{ariaLabel}</VisuallyHidden>
   </li>
 );
