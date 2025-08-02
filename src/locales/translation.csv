@@ -65,7 +65,7 @@ createNewUser;Create new user;Opret ny bruger
 criterionMet;Criterion met;Kriterium opfyldt
 criterionNotMet;Criterion not met;Kriterium ikke opfyldt
 currency;Currency;Valuta
-currentlyUnavailable;is currently unavailable;er udsolgt
+currentlyUnavailable;is currently unavailable;er midlertidigt udsolgt
 customersList;Customers list;Kundeliste
 dashboard;Dashboard;Dashboard
 date;Date;Dato

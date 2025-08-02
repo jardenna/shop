@@ -33,7 +33,10 @@ const ControlInputField = ({
 
   return (
     <li className="control-item">
-      <label htmlFor={id} className="control-label">
+      <label
+        htmlFor={id}
+        className={`control-label ${disabled ? 'unavailable' : ''}`}
+      >
         {iconName ? (
           <IconContent
             iconName={iconName}

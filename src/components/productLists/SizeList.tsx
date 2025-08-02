@@ -35,6 +35,7 @@ const SizeList = ({
       {displaySizeList.map((size) => (
         <ProductListItem
           key={size}
+          unavailable={!availableSizeList.includes(size)}
           ariaLabel={
             !availableSizeList.includes(size)
               ? language.unavailable
