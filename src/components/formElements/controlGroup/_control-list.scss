@@ -1,5 +1,11 @@
 @use '../../../scss/globals' as *;
 
+.size-list {
+  .control-item {
+    @extend %stacked-item-border;
+  }
+}
+
 .control-list {
   display: flex;
   flex-wrap: wrap;
@@ -30,8 +36,6 @@
   }
 
   .control-item {
-    @extend %stacked-item-border;
-
     &:has(input[type='checkbox']:checked) {
       background-color: $color-background-secondary;
       color: $color-white;

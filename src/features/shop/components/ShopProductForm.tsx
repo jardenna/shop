@@ -64,6 +64,7 @@ const ShopProductForm = ({
         <RadioControls
           initialChecked={values.size}
           disabledList={selectedProduct.sizes}
+          className="size-list"
           onChange={onChange}
           options={displaySizeList}
           name="size"
