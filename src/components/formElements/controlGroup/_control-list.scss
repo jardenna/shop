@@ -50,7 +50,7 @@
     }
 
     &:has(input:focus-visible) {
-      @include outline($color-blue-30);
+      @include outline;
     }
 
     &:has(input[type='radio']:disabled) {

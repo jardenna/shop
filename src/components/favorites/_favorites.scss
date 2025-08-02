@@ -5,7 +5,7 @@
 
   &:has(input:focus-visible) {
     svg {
-      @include outline($color-blue-30);
+      @include outline;
     }
   }
 
