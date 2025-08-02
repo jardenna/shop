@@ -7,7 +7,7 @@ import useLanguage from '../../features/language/useLanguage';
 import CardContent from '../card/CardContent';
 import GridTwoCol from '../GridTwoCol';
 import ColorList from '../productLists/ColorList';
-import SizeListReadOnly from '../productLists/SizeListReadOnly';
+import SizeList from '../productLists/SizeList';
 
 type ProductCardCenterProps = {
   availableSizeList: Size[];
@@ -54,7 +54,7 @@ const ProductCardCenter = ({
           id: 'view-product-colors',
         }}
       />
-      <SizeListReadOnly
+      <SizeList
         availableSizeList={availableSizeList}
         categoryName={categoryName}
         subCategoryName={subCategoryName}
