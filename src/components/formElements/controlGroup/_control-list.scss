@@ -35,7 +35,6 @@
     border-inline-end: 1px solid $color-border;
     border-block-end: 1px solid $color-border;
     border-block-start: 1px solid $color-border;
-    background: $color-white;
     margin-top: -1px;
 
     &:last-child {
@@ -49,6 +48,10 @@
 
     &:has(input[type='radio']:checked) {
       border-color: $color-black;
+    }
+
+    &:has(input:focus-visible) {
+      @include outline($color-blue-30);
     }
 
     &:has(input[type='radio']:disabled) {
