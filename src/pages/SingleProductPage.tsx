@@ -123,14 +123,16 @@ const SingleProductPage = () => {
               {product.countInStock < 5 ? 'Low in stock' : product.countInStock}
             </p>
             <Accordion accordionItems={accordionItems} />
-            <NotiFyMe
-              options={missingSizes}
-              onChange={onChange}
-              values={values}
-              onSubmit={onSubmit}
-              id={product.id}
-              currentEmail={currentUser?.email || ''}
-            />
+            {missingSizes.length > 0 && (
+              <NotiFyMe
+                options={missingSizes}
+                onChange={onChange}
+                values={values}
+                onSubmit={onSubmit}
+                id={product.id}
+                currentEmail={currentUser?.email || ''}
+              />
+            )}
           </section>
         </article>
       )}
