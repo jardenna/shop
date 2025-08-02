@@ -52,44 +52,16 @@
 
   .product-list-item {
     border: 1px solid transparent;
-
-    &:has(input[type='radio']:disabled) {
-      .product-label {
-        text-decoration-line: line-through;
-        text-decoration-thickness: 2px;
-        white-space: pre;
-
-        &::after,
-        &::before {
-          content: ' ';
-          display: flex;
-        }
-      }
-    }
-
-    input {
-      clip-path: inset(50%);
-      position: absolute;
-    }
   }
 
   .choose-color-list-item {
     border-color: $color-border;
-
-    &:has(input[type='radio']:checked) {
-      border-color: $color-black;
-    }
-
-    &:has(input[type='radio']:focus-visible) {
-      @include outline($color-blue-30);
-    }
   }
 
   .size-list-item {
     border-inline-end: 1px solid $color-border;
     border-block-end: 1px solid $color-border;
     border-block-start: 1px solid $color-border;
-    background: #fff;
     margin-top: -0.5px;
 
     .btn {
@@ -102,19 +74,6 @@
 
     &:last-child {
       border-right-color: $color-border;
-    }
-
-    &:has(input[type='checkbox']:checked) {
-      background-color: $color-background-secondary;
-      color: $color-white;
-    }
-
-    &:has(input[type='radio']:checked) {
-      border: 1px solid $color-black;
-
-      &:last-child {
-        border: 1px solid $color-black;
-      }
     }
   }
 }
