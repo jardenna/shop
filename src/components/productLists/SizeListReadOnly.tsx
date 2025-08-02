@@ -31,7 +31,7 @@ const SizeListReadOnly = ({
   });
 
   return (
-    <ProductList groupTitle={groupTitle}>
+    <ProductList groupTitle={groupTitle} className="size-list">
       {displaySizeList.map((size) => (
         <ProductListItem
           key={size}

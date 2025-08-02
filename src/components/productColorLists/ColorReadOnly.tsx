@@ -33,7 +33,7 @@ const ColorReadOnly = ({
   const hiddenColorsCount = Math.max(colorList.length - count, 0);
 
   return (
-    <ProductList groupTitle={groupTitle}>
+    <ProductList groupTitle={groupTitle} className="color-list">
       {visibleColors.map(({ label, color, border }) => (
         <ProductListItem
           key={color}
