@@ -5,7 +5,6 @@ export type ProductLabelVariant = 'mini' | 'small' | 'medium';
 
 type ProductListItemProps = {
   ariaLabel?: string;
-  className?: string;
   style?: CSSProperties;
   text?: string;
   variant?: ProductLabelVariant;
@@ -16,9 +15,8 @@ const ProductListItem = ({
   variant = 'medium',
   style,
   ariaLabel,
-  className = 'size-list-item',
 }: ProductListItemProps) => (
-  <li className={`product-list-item ${className}`} style={style}>
+  <li className="product-list-item  size-list-item" style={style}>
     <span className={`product-label ${variant}`}>{text}</span>
     <VisuallyHidden>{ariaLabel}</VisuallyHidden>
   </li>

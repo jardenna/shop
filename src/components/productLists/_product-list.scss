@@ -1,26 +1,10 @@
 @use '../../scss/globals' as *;
 
-.product-list-container {
-  max-width: rem(468px);
-
-  h2 {
-    font-size: rem(14px);
-  }
-}
-
 .product-list {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  border-inline-start: 1px solid $color-border;
-
-  &:has(.color-list-item) {
-    gap: 4px;
-  }
-
-  &:has(.choose-color-list-item) {
-    gap: 16px;
-  }
+  gap: 4px;
 
   .product-label {
     display: flex;
@@ -44,23 +28,12 @@
     border: 1px solid transparent;
   }
 
-  .choose-color-list-item {
-    border-color: $color-border;
-  }
-
   .size-list-item {
+    border-inline-start: 1px solid $color-border;
     border-inline-end: 1px solid $color-border;
     border-block-end: 1px solid $color-border;
     border-block-start: 1px solid $color-border;
     margin-top: -0.5px;
-
-    .btn {
-      border-radius: 0;
-
-      &:hover {
-        color: inherit;
-      }
-    }
 
     &:last-child {
       border-right-color: $color-border;

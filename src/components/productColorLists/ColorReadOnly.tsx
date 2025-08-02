@@ -43,7 +43,6 @@ const ColorReadOnly = ({
             backgroundColor: color,
             borderColor: border,
           }}
-          className="color-list-item"
         />
       ))}
       {hiddenColorsCount > 0 && <li>{`+ ${hiddenColorsCount}`}</li>}

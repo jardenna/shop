@@ -9,7 +9,7 @@ type ProductListProps = {
 };
 
 const ProductList = ({ children, groupTitle }: ProductListProps) => (
-  <section className="product-list-container">
+  <section>
     {groupTitle && <OptionGroupTitle groupTitle={groupTitle} />}
 
     <ul className="product-list" id={groupTitle?.id}>
