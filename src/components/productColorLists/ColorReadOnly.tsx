@@ -36,8 +36,8 @@ const ColorReadOnly = ({
     <ProductList groupTitle={groupTitle}>
       {visibleColors.map(({ label, color, border }) => (
         <ProductListItem
-          ariaLabel={label}
           key={color}
+          ariaLabel={label}
           variant={variant}
           style={{
             backgroundColor: color,

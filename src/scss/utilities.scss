@@ -100,3 +100,16 @@
   background-color: transparent;
   color: $color-danger;
 }
+
+.stacked-border-item {
+  border: 1px solid transparent;
+  border-inline-end: 1px solid $color-border;
+  border-block-end: 1px solid $color-border;
+  border-block-start: 1px solid $color-border;
+  margin-top: -1px;
+  background: $color-white;
+
+  &:last-child {
+    border-right-color: $color-border;
+  }
+}

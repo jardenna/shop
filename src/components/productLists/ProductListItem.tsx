@@ -4,7 +4,7 @@ import VisuallyHidden from '../VisuallyHidden';
 export type ProductLabelVariant = 'mini' | 'small' | 'medium';
 
 type ProductListItemProps = {
-  ariaLabel?: string;
+  ariaLabel: string;
   style?: CSSProperties;
   text?: string;
   variant?: ProductLabelVariant;
@@ -16,7 +16,10 @@ const ProductListItem = ({
   style,
   ariaLabel,
 }: ProductListItemProps) => (
-  <li className="product-list-item  size-list-item" style={style}>
+  <li
+    className="product-list-item  size-list-item stacked-border-item"
+    style={style}
+  >
     <span className={`product-label ${variant}`}>{text}</span>
     <VisuallyHidden>{ariaLabel}</VisuallyHidden>
   </li>

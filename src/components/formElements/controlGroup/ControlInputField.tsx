@@ -32,7 +32,7 @@ const ControlInputField = ({
   const { language } = useLanguage();
 
   return (
-    <li className="control-item">
+    <li className="control-item stacked-border-item">
       <label htmlFor={id} className="control-label">
         {iconName ? (
           <IconContent

@@ -27,16 +27,4 @@
   .product-list-item {
     border: 1px solid transparent;
   }
-
-  .size-list-item {
-    border-inline-start: 1px solid $color-border;
-    border-inline-end: 1px solid $color-border;
-    border-block-end: 1px solid $color-border;
-    border-block-start: 1px solid $color-border;
-    margin-top: -0.5px;
-
-    &:last-child {
-      border-right-color: $color-border;
-    }
-  }
 }

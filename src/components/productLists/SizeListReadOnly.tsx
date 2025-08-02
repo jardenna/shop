@@ -34,13 +34,13 @@ const SizeListReadOnly = ({
     <ProductList groupTitle={groupTitle}>
       {displaySizeList.map((size) => (
         <ProductListItem
-          text={size}
           key={size}
           ariaLabel={
             !availableSizeList.includes(size)
               ? language.unavailable
               : language.available
           }
+          text={size}
         />
       ))}
     </ProductList>

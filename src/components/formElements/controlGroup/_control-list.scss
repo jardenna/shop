@@ -29,18 +29,7 @@
     }
   }
 
-  /* stylelint-disable-next-line no-descending-specificity */
   .control-item {
-    border: 1px solid transparent;
-    border-inline-end: 1px solid $color-border;
-    border-block-end: 1px solid $color-border;
-    border-block-start: 1px solid $color-border;
-    margin-top: -1px;
-
-    &:last-child {
-      border-right-color: $color-border;
-    }
-
     &:has(input[type='checkbox']:checked) {
       background-color: $color-background-secondary;
       color: $color-white;
