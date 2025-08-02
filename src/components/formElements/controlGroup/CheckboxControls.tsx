@@ -21,6 +21,7 @@ const CheckboxControls = ({
     inputInfo={inputInfo}
     required={required}
     groupTitle={groupTitle}
+    className="size-list"
   />
 );
 

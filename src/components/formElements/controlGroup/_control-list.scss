@@ -1,5 +1,11 @@
 @use '../../../scss/globals' as *;
 
+.size-list {
+  .control-item {
+    @extend %stacked-item-border;
+  }
+}
+
 .control-list {
   display: flex;
   flex-wrap: wrap;
@@ -30,11 +36,13 @@
   }
 
   .control-item {
-    @extend %stacked-item-border;
-
     &:has(input[type='checkbox']:checked) {
       background-color: $color-background-secondary;
       color: $color-white;
+
+      &:has(input:focus-visible) {
+        @include outline($color-gray-80);
+      }
     }
 
     &:has(input[type='radio']:checked) {
@@ -42,20 +50,12 @@
     }
 
     &:has(input:focus-visible) {
-      @include outline($color-blue-30);
+      @include outline;
     }
 
     &:has(input[type='radio']:disabled) {
       .control-label {
-        text-decoration-line: line-through;
-        text-decoration-thickness: 2px;
-        white-space: pre;
-
-        &::after,
-        &::before {
-          content: ' ';
-          display: flex;
-        }
+        cursor: default;
       }
     }
   }

@@ -109,7 +109,7 @@ a[class^='btn-'],
   &:focus-visible {
     color: $color-blue-30;
 
-    @include outline($color-blue-30);
+    @include outline;
 
     svg {
       stroke: $color-blue-30;

@@ -27,7 +27,7 @@ const ProductCard = ({
       <Link to={categoryId ? product.id : `allProducts/${product.id}`}>
         <Img alt="" src={product.images[0]} className="product-card-img" />
       </Link>
-      {!displayList && <SizeOverlay sizes={product.sizes} />}
+      {!displayList && <SizeOverlay sizes={product.sizes} count={5} />}
     </div>
     <div className="product-card-content">
       <h2 className="product-card-title">{product.productName}</h2>

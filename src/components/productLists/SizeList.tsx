@@ -9,19 +9,19 @@ import { getDisplaySizes } from '../../utils/sizeUtils';
 import ProductList from './ProductList';
 import ProductListItem from './ProductListItem';
 
-type SizeListReadOnlyProps = {
+type SizeListProps = {
   availableSizeList: Size[];
   categoryName: MainCategoryNames;
   subCategoryName: SubCategoryNames;
   groupTitle?: OptionGroupHeading;
 };
 
-const SizeListReadOnly = ({
+const SizeList = ({
   availableSizeList,
   groupTitle,
   categoryName,
   subCategoryName,
-}: SizeListReadOnlyProps) => {
+}: SizeListProps) => {
   const { language } = useLanguage();
 
   const displaySizeList = getDisplaySizes({
@@ -35,6 +35,7 @@ const SizeListReadOnly = ({
       {displaySizeList.map((size) => (
         <ProductListItem
           key={size}
+          unavailable={!availableSizeList.includes(size)}
           ariaLabel={
             !availableSizeList.includes(size)
               ? language.unavailable
@@ -47,4 +48,4 @@ const SizeListReadOnly = ({
   );
 };
 
-export default SizeListReadOnly;
+export default SizeList;

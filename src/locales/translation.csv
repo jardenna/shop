@@ -47,7 +47,7 @@ collection;Collection;Kollektion
 collectionSubKidsText;Comfortable and fun clothes for play, school and adventures.;Komfortabelt og sjovt tøj til leg, skole og eventyr.
 collectionSubMenText;From everyday looks to formal, everything for the modern man.;Fra hverdagslook til formelt, alt til den moderne mand.
 collectionSubWomenText;Discover stylish news, must-haves and trends of the season.;Opdag stilfulde nyheder, must-haves og sæsonens trends.
-colorRequired;Please select at least one colour;Vælg mindst 1 farve
+colorRequired;Please select a colour;Vælg venligst farve
 colours;Colours;Farver
 compact;Compact;Kompakt
 confirmPassword;Confirm password;Gentag adgangskode
@@ -65,7 +65,7 @@ createNewUser;Create new user;Opret ny bruger
 criterionMet;Criterion met;Kriterium opfyldt
 criterionNotMet;Criterion not met;Kriterium ikke opfyldt
 currency;Currency;Valuta
-currentlyUnavailable;is currently unavailable;er udsolgt
+currentlyUnavailableSizes;Currently unavailable sizes;Midlertidigt udsolgte størrelser
 customersList;Customers list;Kundeliste
 dashboard;Dashboard;Dashboard
 date;Date;Dato
@@ -107,7 +107,6 @@ filter;Filter;Filtrer
 filterProducts;Filter products;Filtrer produkter
 filterRow;Filter row;Filtrer række
 filtersApplied;Filters applied;Filtre anvendt
-getNotifiedForProducts;Do you want to be notified if it's back in stock;Vil du have besked, hvis varen kommer på lager igen
 globe;Globe;Globus
 goBack;Go back;Gå tilbage
 gold;Gold;Guld
@@ -155,6 +154,7 @@ maximumFileSize;Maximum file size;Maksimal filstørrelse
 men;Men;Mænd
 menu;Menu;Menu
 minLength;At least 8 characters;Mindst 8 tegn
+missingYourSize;Missing your size;Mangler vi din størrelse
 multiColor;MultiColour;Flerfarvet
 mustHaveLowercase;At least one lowercase letter;Mindst ét lille bogstav
 mustHaveNumber;At least one number;Mindst ét tal
@@ -174,6 +174,7 @@ noProduct;Product not found;Produkt blev ikke fundet
 notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 
 notAuthorizedNoToken;Not authorized, no token;Ikke autoriseret, ingen token
 notAuthorizedTokenFailed;Not authorized, token failed;Ikke autoriseret, token mislykkedes
+notiftyMeMessage;Choose below, and we’ll notify you when it’s restocked; Vælg herunder, så får du en e-mail, når varen igen er på lager
 notiftyMe;Notify me;Giv mig besked
 noTumbleDry;Not suitable for tumble drying;Ikke egnet til tørretumbler
 notVisibleInShop;is not visible in the shop until the main category is published;bliver først synlig i shoppen, når hovedkategorien er udgivet
@@ -247,9 +248,9 @@ scheduledDate;Scheduled date;Planlagt dato
 scheduledDateMustBeFuture;Scheduled date must be after now;Planlagt dato skal være efter nu
 scheduledToBePubliched;is scheduled to be published at;er planlagt til udgivelse den 
 search;Search;Søg
-selectColor;Select colour;Vælg farve
 selectPreferences;Select preferred language and currency;Vælg venligst sprog og valuta
 selectSize;Select size;Vælg størrelse
+selectedColor;Selected colour;Valgt farve
 selectedSize;Selected size;Valgt størrelse
 shoes;Shoes;Sko
 shopCart;Shopping cart;Indkøbskurv
@@ -271,7 +272,7 @@ showPassword;Show password;Vis adgangskode
 showPrice;Show price;Vis pris
 silver;Silver;Sølv
 size;Size;Størrelse
-sizeRequired;Please select at least one size;Vælg mindst 1 størrelse
+sizeRequired;Please select a size;Vælg venligst størrelse
 sizes;Sizes;Størrelser
 sizeInfoText;Sizes depend on the selected category;Størrelser afhænger af den valgte kategori
 somethingWentWrong;Something went wrong, please try again;Noget gik galt, forsøg venligst igen

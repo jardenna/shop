@@ -3,6 +3,12 @@
 .favorites {
   position: relative;
 
+  &:has(input:focus-visible) {
+    svg {
+      @include outline;
+    }
+  }
+
   .favorites-label {
     padding: 12px;
     font-size: 0;

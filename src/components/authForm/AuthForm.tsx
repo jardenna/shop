@@ -89,6 +89,7 @@ const AuthForm = ({
           required
           errorText={language[errors.email]}
           onBlur={onBlur}
+          type="email"
         />
         <PasswordInput
           name="password"

@@ -332,19 +332,6 @@ const ProductForm = ({
                 errorText: language[errors.sizes],
               }}
             />
-            {/* <SizeListMultiChoice
-              onChange={onChange}
-              infoText={!selectedCategory ? language.sizeInfoText : ''}
-              values={values.sizes}
-              availableSizeList={availableSizeList}
-              name="sizes"
-              required
-              groupTitle={{
-                title: language.sizes,
-                id: 'choose-product-sizes',
-                errorText: language[errors.sizes],
-              }}
-            /> */}
           </FormCard>
           <FormCard legendText={language.pricing} onReset={onReset}>
             <div className="flex">

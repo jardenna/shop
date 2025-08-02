@@ -6,8 +6,8 @@ import {
 import useLanguage from '../../features/language/useLanguage';
 import CardContent from '../card/CardContent';
 import GridTwoCol from '../GridTwoCol';
-import ColorReadOnly from '../productLists/ColorReadOnly';
-import SizeListReadOnly from '../productLists/SizeListReadOnly';
+import ColorList from '../productLists/ColorList';
+import SizeList from '../productLists/SizeList';
 
 type ProductCardCenterProps = {
   availableSizeList: Size[];
@@ -46,7 +46,7 @@ const ProductCardCenter = ({
       )}
       <GridTwoCol text={language.brand}>{brand}</GridTwoCol>
       <GridTwoCol text={language.material}>{material}</GridTwoCol>
-      <ColorReadOnly
+      <ColorList
         colors={colours}
         variant="small"
         groupTitle={{
@@ -54,7 +54,7 @@ const ProductCardCenter = ({
           id: 'view-product-colors',
         }}
       />
-      <SizeListReadOnly
+      <SizeList
         availableSizeList={availableSizeList}
         categoryName={categoryName}
         subCategoryName={subCategoryName}
