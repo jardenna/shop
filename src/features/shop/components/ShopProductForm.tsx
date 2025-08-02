@@ -2,7 +2,6 @@ import { BaseProduct, Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/form/Form';
 import RadioControls from '../../../components/formElements/controlGroup/RadioControls';
-import ColorListSingleChoice from '../../../components/productColorLists/ColorListSingleChoice';
 import useFormValidation from '../../../hooks/useFormValidation';
 import {
   ColorOption,
@@ -49,18 +48,6 @@ const ShopProductForm = ({
   return (
     <Form onSubmit={onSubmit} submitBtnLabel={language.create}>
       <FieldSet legendText={language.productVariants} hideLegendText>
-        <ColorListSingleChoice
-          colorList={colorList}
-          initialChecked={values.color}
-          onChange={onChange}
-          name="color"
-          iconName={selectedProduct.categoryName}
-          groupTitle={{
-            title: language.selectColor,
-            id: 'choose-product-color',
-          }}
-        />
-
         <RadioControls
           initialChecked={values.color}
           className="with-icon"
