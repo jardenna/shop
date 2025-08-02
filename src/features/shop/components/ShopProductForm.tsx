@@ -8,6 +8,7 @@ import {
   sortColorsByTranslation,
 } from '../../../utils/colorUtils';
 import resolveIconName from '../../../utils/iconHelpers';
+import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import useLanguage from '../../language/useLanguage';
 
 type ShopProductFormProps = {
@@ -35,10 +36,15 @@ const ShopProductForm = ({
     },
   });
 
-  const title =
+  const titleSize =
     values.size === ''
       ? language.selectSize
       : `${language.selectedSize}: ${values.size}`;
+
+  const titleColor =
+    values.color === ''
+      ? language.selectColor
+      : `${language.selectedSize}: ${getlowerCaseFirstLetter(values.color, language)}`;
 
   const sortedTranslatedColors = sortColorsByTranslation(
     selectedProduct.colors,
@@ -51,25 +57,27 @@ const ShopProductForm = ({
         <RadioControls
           initialChecked={values.color}
           className="with-icon"
+          required={values.color === ''}
           onChange={onChange}
           options={sortedTranslatedColors}
           name="color"
           iconName={resolveIconName(selectedProduct.categoryName)}
           groupTitle={{
-            title: language.selectColor,
+            title: titleColor,
             id: 'choose-product-color',
           }}
         />
 
         <RadioControls
           initialChecked={values.size}
+          required={values.size === ''}
           disabledList={selectedProduct.sizes}
           className="size-list"
           onChange={onChange}
           options={displaySizeList}
           name="size"
           groupTitle={{
-            title,
+            title: titleSize,
             id: 'choose-product-size',
           }}
         />
