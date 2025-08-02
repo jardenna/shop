@@ -18,6 +18,7 @@
 }
 
 %stacked-item-border {
+  border: 1px solid transparent;
   border-inline-end: 1px solid $color-border;
   border-block-end: 1px solid $color-border;
   border-block-start: 1px solid $color-border;

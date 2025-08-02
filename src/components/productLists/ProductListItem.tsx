@@ -16,7 +16,7 @@ const ProductListItem = ({
   style,
   ariaLabel,
 }: ProductListItemProps) => (
-  <li className="stacked-border-item" style={style}>
+  <li className="product-list-item" style={style}>
     <span className={`product-content ${variant}`}>{text}</span>
     <VisuallyHidden>{ariaLabel}</VisuallyHidden>
   </li>

@@ -30,6 +30,8 @@
   }
 
   .control-item {
+    @extend %stacked-item-border;
+
     &:has(input[type='checkbox']:checked) {
       background-color: $color-background-secondary;
       color: $color-white;

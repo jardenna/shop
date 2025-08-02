@@ -28,4 +28,14 @@
   .product-list {
     gap: 4px;
   }
+
+  .product-list-item {
+    border: 1px solid transparent;
+  }
+}
+
+.size-list {
+  .product-list-item {
+    @extend %stacked-item-border;
+  }
 }
