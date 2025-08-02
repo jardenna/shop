@@ -19,7 +19,7 @@ const ModalFooter = ({
       return;
     }
 
-    if (primaryActionBtn.buttonType === 'submit') {
+    if (!primaryActionBtn.onClick) {
       onCloseModal();
     } else {
       primaryActionBtn.onClick();

@@ -1,5 +1,8 @@
 import { DropdownItem } from '../../components/dropdownBtn/DropdownBtn';
-import type { SecondaryActionBtnProps } from '../../components/modal/Modal';
+import type {
+  PrimaryActionBtnProps,
+  SecondaryActionBtnProps,
+} from '../../components/modal/Modal';
 import TogglePanel from '../../components/togglePanel/TogglePanel';
 import type { SelectedLanguage } from '../../features/language/languageSlice';
 import type { ChangeInputType, OptionType } from '../../types/types';
@@ -20,7 +23,7 @@ export type HeaderProps = {
   currencyOptions: OptionType[];
   defaultValue: OptionType;
   isMobileSize: boolean;
-  primaryActionBtn: any;
+  primaryActionBtn: PrimaryActionBtnProps;
   secondaryActionBtn: SecondaryActionBtnProps;
   userDropdownList: DropdownItem[];
   values: Values;

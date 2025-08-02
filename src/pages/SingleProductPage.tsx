@@ -1,4 +1,5 @@
 import { useParams } from 'react-router';
+import { Size } from '../app/api/apiTypes/sharedApiTypes';
 import Accordion from '../components/accordion/Accordion';
 import Favorites from '../components/favorites/Favorites';
 import Img from '../components/Img';
@@ -7,14 +8,35 @@ import useLanguage from '../features/language/useLanguage';
 import NotiFyMe from '../features/shop/components/NotiFyMe';
 import ShopProductForm from '../features/shop/components/ShopProductForm';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
+import useFormValidation from '../hooks/useFormValidation';
 import MetaTags from '../layout/nav/MetaTags';
 import { getColorOptions } from '../utils/colorUtils';
 import { getDisplaySizes } from '../utils/sizeUtils';
 import './SingleProductPage.styles.scss';
 
+type InitialValues = {
+  email: string;
+  sizes: Size[];
+};
+
 const SingleProductPage = () => {
   const { id } = useParams();
   const { language } = useLanguage();
+  const initialState: InitialValues = {
+    sizes: [],
+    email: '',
+  };
+
+  const { onChange, values, onSubmit } = useFormValidation<{
+    email: string;
+    sizes: Size[];
+  }>({
+    initialState,
+    callback: () => {
+      console.log(values);
+    },
+  });
+
   const { data: product } = useGetSingleProductQuery(id ?? '');
 
   const colorList = product
@@ -53,6 +75,7 @@ const SingleProductPage = () => {
       ),
     },
   ];
+
   const displaySizeList = product
     ? getDisplaySizes({
         mainKey: product.categoryName,
@@ -60,6 +83,10 @@ const SingleProductPage = () => {
         availableSizes: product.sizes,
       })
     : [];
+
+  const missingSizes = displaySizeList.filter(
+    (size) => !product?.sizes.includes(size),
+  );
 
   return (
     <div className="container">
@@ -87,8 +114,10 @@ const SingleProductPage = () => {
               displaySizeList={displaySizeList}
             />
             <NotiFyMe
-              selectedProduct={product}
-              displaySizeList={displaySizeList}
+              options={missingSizes}
+              onChange={onChange}
+              values={values.sizes}
+              onSubmit={onSubmit}
             />
 
             <p>Brand: {product.brand}</p>

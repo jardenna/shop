@@ -1,12 +1,9 @@
 import useLanguage from '../../features/language/useLanguage';
 import variables from '../../scss/variables.module.scss';
-import { OptionGroupHeading } from '../../types/types';
+import type { OptionGroupHeading } from '../../types/types';
 import { getColorOptions } from '../../utils/colorUtils';
-import ProductList from '../productLists/ProductList';
-import ProductListItem, {
-  ProductLabelVariant,
-} from '../productLists/ProductListItem';
-import VisuallyHidden from '../VisuallyHidden';
+import ProductList from './ProductList';
+import ProductListItem, { ProductLabelVariant } from './ProductListItem';
 
 type ColorReadOnlytProps = {
   colors: string[];
@@ -23,31 +20,28 @@ const ColorReadOnly = ({
 }: ColorReadOnlytProps) => {
   const { language } = useLanguage();
 
-  const colorList1 = getColorOptions({
+  const colorList = getColorOptions({
     colors,
     language,
     borderColor: variables.colorIconBorder,
   });
 
   // Calculate how many colors to show and how many are hidden
-  const visibleColors = colorList1.slice(0, count);
-  const hiddenColorsCount = Math.max(colorList1.length - count, 0);
+  const visibleColors = colorList.slice(0, count);
+  const hiddenColorsCount = Math.max(colorList.length - count, 0);
 
   return (
-    <ProductList groupTitle={groupTitle}>
+    <ProductList groupTitle={groupTitle} className="color-list">
       {visibleColors.map(({ label, color, border }) => (
         <ProductListItem
           key={color}
-          as="span"
+          ariaLabel={label}
           variant={variant}
           style={{
             backgroundColor: color,
             borderColor: border,
           }}
-          className="color-list-item"
-        >
-          <VisuallyHidden>{label}</VisuallyHidden>
-        </ProductListItem>
+        />
       ))}
       {hiddenColorsCount > 0 && <li>{`+ ${hiddenColorsCount}`}</li>}
     </ProductList>

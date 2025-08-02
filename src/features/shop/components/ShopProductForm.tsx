@@ -1,10 +1,13 @@
 import { BaseProduct, Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/form/Form';
-import ColorListSingleChoice from '../../../components/productColorLists/ColorListSingleChoice';
-import SizeListSingleChoice from '../../../components/productLists/SizeListSingleChoice';
+import RadioControls from '../../../components/formElements/controlGroup/RadioControls';
 import useFormValidation from '../../../hooks/useFormValidation';
-import { ColorOption } from '../../../utils/colorUtils';
+import {
+  ColorOption,
+  sortColorsByTranslation,
+} from '../../../utils/colorUtils';
+import resolveIconName from '../../../utils/iconHelpers';
 import useLanguage from '../../language/useLanguage';
 
 type ShopProductFormProps = {
@@ -37,25 +40,32 @@ const ShopProductForm = ({
       ? language.selectSize
       : `${language.selectedSize}: ${values.size}`;
 
+  const sortedTranslatedColors = sortColorsByTranslation(
+    selectedProduct.colors,
+    language,
+  );
+
   return (
     <Form onSubmit={onSubmit} submitBtnLabel={language.create}>
       <FieldSet legendText={language.productVariants} hideLegendText>
-        <ColorListSingleChoice
-          colorList={colorList}
+        <RadioControls
           initialChecked={values.color}
+          className="with-icon"
           onChange={onChange}
+          options={sortedTranslatedColors}
           name="color"
-          iconName={selectedProduct.categoryName}
+          iconName={resolveIconName(selectedProduct.categoryName)}
           groupTitle={{
             title: language.selectColor,
             id: 'choose-product-color',
           }}
         />
-        <SizeListSingleChoice
+
+        <RadioControls
           initialChecked={values.size}
-          availableSizeList={selectedProduct.sizes}
+          disabledList={selectedProduct.sizes}
           onChange={onChange}
-          displaySizeList={displaySizeList}
+          options={displaySizeList}
           name="size"
           groupTitle={{
             title,

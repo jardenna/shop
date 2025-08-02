@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
-import { BtnVariant } from '../../types/enums';
+import { BtnType, BtnVariant } from '../../types/enums';
 import type { FormEventType, refFormType } from '../../types/types';
 import Button from '../Button';
 import './_form.scss';
@@ -11,6 +11,7 @@ type FormProps = {
   submitBtnLabel: string;
   ariaLabel?: string;
   className?: string;
+  disabled?: boolean;
   isLoading?: boolean;
   ref?: refFormType;
   onCancel?: () => void;
@@ -26,6 +27,7 @@ const Form = ({
   ariaLabel,
   onCancel,
   ref,
+  disabled,
 }: FormProps) => {
   const { language } = useLanguage();
 
@@ -43,7 +45,12 @@ const Form = ({
             {language.cancel}
           </Button>
         )}
-        <Button type="submit" isLoading={isLoading} ariaLabel={ariaLabel}>
+        <Button
+          type={BtnType.Submit}
+          isLoading={isLoading}
+          ariaLabel={ariaLabel}
+          disabled={disabled}
+        >
           {submitBtnLabel}
         </Button>
       </LayoutElement>

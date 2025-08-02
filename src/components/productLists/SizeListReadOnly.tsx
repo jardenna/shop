@@ -4,9 +4,8 @@ import {
   SubCategoryNames,
 } from '../../app/api/apiTypes/sharedApiTypes';
 import useLanguage from '../../features/language/useLanguage';
-import { OptionGroupHeading } from '../../types/types';
+import type { OptionGroupHeading } from '../../types/types';
 import { getDisplaySizes } from '../../utils/sizeUtils';
-import VisuallyHidden from '../VisuallyHidden';
 import ProductList from './ProductList';
 import ProductListItem from './ProductListItem';
 
@@ -32,16 +31,17 @@ const SizeListReadOnly = ({
   });
 
   return (
-    <ProductList groupTitle={groupTitle}>
+    <ProductList groupTitle={groupTitle} className="size-list">
       {displaySizeList.map((size) => (
-        <ProductListItem as="span" text={size} key={size}>
-          <VisuallyHidden>
-            {!availableSizeList.includes(size)
+        <ProductListItem
+          key={size}
+          ariaLabel={
+            !availableSizeList.includes(size)
               ? language.unavailable
-              : language.available}
-            {language.size}
-          </VisuallyHidden>
-        </ProductListItem>
+              : language.available
+          }
+          text={size}
+        />
       ))}
     </ProductList>
   );

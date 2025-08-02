@@ -8,13 +8,13 @@ import type {
 } from '../../../app/api/apiTypes/adminApiTypes';
 import useDatePicker from '../../../components/datePicker/useDatePicker';
 import Form from '../../../components/form/Form';
+import CheckboxControls from '../../../components/formElements/controlGroup/CheckboxControls';
 import Input from '../../../components/formElements/Input';
 import Textarea from '../../../components/formElements/Textarea';
 import ToggleSwitch from '../../../components/formElements/toggleSwitch/ToggleSwitch';
 import validateProduct from '../../../components/formElements/validation/validateProduct';
 import GridTwoCol from '../../../components/GridTwoCol';
 import useMessagePopup from '../../../components/messagePopup/useMessagePopup';
-import SizeListMultiChoice from '../../../components/productLists/SizeListMultiChoice';
 import ColorOptions from '../../../components/selectbox/ColorOptions';
 import Selectbox from '../../../components/selectbox/Selectbox';
 import StatusOptions from '../../../components/selectbox/StatusOptions';
@@ -24,7 +24,6 @@ import { AdminPath } from '../../../layout/nav/enums';
 import variables from '../../../scss/variables.module.scss';
 import type { OptionType } from '../../../types/types';
 import { colorList, getColorOptions } from '../../../utils/colorUtils';
-import { checkBoxSizeList } from '../../../utils/sizeUtils';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
 import useCurrency from '../../currency/useCurrency';
@@ -222,8 +221,6 @@ const ProductForm = ({
     ? selectedCategory.allowedSizes
     : allowedSizes;
 
-  const availableSizeList = checkBoxSizeList(availableSizes);
-
   return (
     <Form
       onSubmit={onSubmit}
@@ -323,7 +320,19 @@ const ProductForm = ({
               }}
               required
             />
-            <SizeListMultiChoice
+            <CheckboxControls
+              options={availableSizes}
+              name="sizes"
+              onChange={onChange}
+              values={values.sizes}
+              required
+              groupTitle={{
+                title: language.sizes,
+                id: 'choose-product-sizes',
+                errorText: language[errors.sizes],
+              }}
+            />
+            {/* <SizeListMultiChoice
               onChange={onChange}
               infoText={!selectedCategory ? language.sizeInfoText : ''}
               values={values.sizes}
@@ -332,10 +341,10 @@ const ProductForm = ({
               required
               groupTitle={{
                 title: language.sizes,
-                id: 'choose-product-colors',
+                id: 'choose-product-sizes',
                 errorText: language[errors.sizes],
               }}
-            />
+            /> */}
           </FormCard>
           <FormCard legendText={language.pricing} onReset={onReset}>
             <div className="flex">

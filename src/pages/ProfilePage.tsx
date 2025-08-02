@@ -6,10 +6,7 @@ const ProfilePage = () => {
 
   return (
     <MainPageContainer heading={language.profile}>
-      <section>
-        {language.profile}
-        <p>tet</p>
-      </section>
+      <section>{language.profile}</section>
     </MainPageContainer>
   );
 };

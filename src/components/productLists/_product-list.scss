@@ -1,31 +1,14 @@
 @use '../../scss/globals' as *;
 
-.product-list-container {
-  max-width: rem(468px);
-
-  h2 {
-    font-size: rem(14px);
-  }
-}
-
 .product-list {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  border-inline-start: 1px solid $color-border;
 
-  &:has(.color-list-item) {
-    gap: 4px;
-  }
-
-  &:has(.choose-color-list-item) {
-    gap: 16px;
-  }
-
-  .product-label {
+  .product-list-content {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     width: rem(68px);
     height: rem(68px);
 
@@ -38,83 +21,21 @@
       width: rem(24px);
       height: rem(24px);
     }
-
-    &.large {
-      width: rem(100px);
-      height: rem(120px);
-      background-color: $color-light-gray-30;
-    }
   }
+}
 
-  label.product-label {
-    cursor: pointer;
+.color-list {
+  .product-list {
+    gap: 4px;
   }
 
   .product-list-item {
     border: 1px solid transparent;
-
-    &:has(input[type='radio']:disabled) {
-      .product-label {
-        text-decoration-line: line-through;
-        text-decoration-thickness: 2px;
-        white-space: pre;
-
-        &::after,
-        &::before {
-          content: ' ';
-          display: flex;
-        }
-      }
-    }
-
-    input {
-      clip-path: inset(50%);
-      position: absolute;
-    }
   }
+}
 
-  .choose-color-list-item {
-    border-color: $color-border;
-
-    &:has(input[type='radio']:checked) {
-      border-color: $color-black;
-    }
-
-    &:has(input[type='radio']:focus-visible) {
-      @include outline($color-blue-30);
-    }
-  }
-
-  .size-list-item {
-    border-inline-end: 1px solid $color-border;
-    border-block-end: 1px solid $color-border;
-    border-block-start: 1px solid $color-border;
-    background: #fff;
-    margin-top: -0.5px;
-
-    .btn {
-      border-radius: 0;
-
-      &:hover {
-        color: inherit;
-      }
-    }
-
-    &:last-child {
-      border-right-color: $color-border;
-    }
-
-    &:has(input[type='checkbox']:checked) {
-      background-color: $color-background-secondary;
-      color: $color-white;
-    }
-
-    &:has(input[type='radio']:checked) {
-      border: 1px solid $color-black;
-
-      &:last-child {
-        border: 1px solid $color-black;
-      }
-    }
+.size-list {
+  .product-list-item {
+    @extend %stacked-item-border;
   }
 }

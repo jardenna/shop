@@ -89,7 +89,6 @@ const Input = ({
           value={value}
           autoFocus={autoFocus}
           id={id}
-          aria-disabled={disabled}
           aria-invalid={errorText ? true : undefined}
           aria-required={required && !disabled}
           aria-errormessage={errorText ? `err-${id}` : undefined}

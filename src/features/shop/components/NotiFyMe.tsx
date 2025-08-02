@@ -1,42 +1,22 @@
-import { BaseProduct, Size } from '../../../app/api/apiTypes/sharedApiTypes';
-import { PrimaryActionBtnProps } from '../../../components/modal/Modal';
+import CheckboxList from '../../../components/formElements/controlGroup/CheckboxControls';
 import ModalContainer from '../../../components/modal/ModalContainer';
-import SizeListMultiChoice from '../../../components/productLists/SizeListMultiChoice';
-import useFormValidation from '../../../hooks/useFormValidation';
-import { BtnVariant, SizeVariant } from '../../../types/enums';
-import { checkBoxSizeList } from '../../../utils/sizeUtils';
+import { BtnType, BtnVariant, SizeVariant } from '../../../types/enums';
+import type { ChangeInputType, FormEventType } from '../../../types/types';
 import useLanguage from '../../language/useLanguage';
 
 type NotifiMeProps = {
-  displaySizeList: Size[];
-  selectedProduct: BaseProduct;
+  options: string[];
+  values: string[];
+  onChange: (event: ChangeInputType) => void;
+  onSubmit: (event: FormEventType) => void;
 };
-const NotiFyMe = ({ selectedProduct, displaySizeList }: NotifiMeProps) => {
+const NotiFyMe = ({ onSubmit, options, onChange, values }: NotifiMeProps) => {
   const { language } = useLanguage();
 
-  const missingSizes = displaySizeList.filter(
-    (size) => !selectedProduct.sizes.includes(size),
-  );
-
-  const initialState = {
-    sizdes: [],
-    email: '',
-  };
-
-  const { onChange, values } = useFormValidation({
-    initialState,
-    callback: () => {
-      console.log(values);
-    },
-  });
-
-  const availableSizeList = checkBoxSizeList(missingSizes);
-  const primaryActionBtn: PrimaryActionBtnProps = {
-    onClick: () => {
-      console.log(12);
-    },
+  const primaryActionBtn = {
+    onSubmit,
     label: language.notiftyMe,
-    variant: BtnVariant.Primary,
+    buttonType: BtnType.Submit,
   };
 
   return (
@@ -44,26 +24,17 @@ const NotiFyMe = ({ selectedProduct, displaySizeList }: NotifiMeProps) => {
       <ModalContainer
         triggerModalBtnContent="Notify me when missing sizes are back in stock"
         triggerModalBtnVariant={BtnVariant.Ghost}
-        id="hh"
+        id="sizes"
         primaryActionBtn={primaryActionBtn}
         modalSize={SizeVariant.Sm}
-        modalHeaderText={`${language.size}   ${language.currentlyUnavailable}`}
+        modalHeaderText={`${language.size}  ${language.currentlyUnavailable}`}
       >
-        <SizeListMultiChoice
-          onChange={onChange}
-          values={values.sizdes}
-          availableSizeList={availableSizeList}
+        <CheckboxList
+          options={options}
           name="sizes"
-          required
-          groupTitle={{
-            title: language.sizes,
-            id: 'choose-product-colors',
-          }}
+          onChange={onChange}
+          values={values}
         />
-        <p>{language.getNotifiedForProducts}</p>
-        <div>size multiChoise list</div>
-
-        <div>email form</div>
       </ModalContainer>
     </div>
   );
