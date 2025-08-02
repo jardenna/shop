@@ -34,6 +34,10 @@
     font-family: $font-primary-bold;
     text-transform: uppercase;
   }
+
+  .product-card-description {
+    max-width: rem(652px);
+  }
 }
 
 .product-card-list {
@@ -68,7 +72,7 @@
     .product-card {
       grid-column: span 3;
       grid-row: span 1;
-      grid-auto-columns: 270px auto;
+      grid-auto-columns: rem(270px) auto;
       gap: 32px;
       align-items: center;
 

@@ -1,5 +1,8 @@
 import mongoose from 'mongoose';
 import { STATUS } from '../config/constants.js';
+import resolveAllowedSizes from '../utils/resolveAllowedSizes.js';
+import Category from './categoryModel.js';
+
 const { ObjectId } = mongoose.Schema;
 
 const subCategorySchema = new mongoose.Schema(
@@ -19,19 +22,27 @@ const subCategorySchema = new mongoose.Schema(
     scheduledDate: {
       type: Date,
     },
+
+    allowedSizes: {
+      type: [String],
+      default: [],
+    },
   },
   { timestamps: true },
 );
 
-// Drop the old single-field index on subCategoryName if it exists
 subCategorySchema.pre('save', async function (next) {
-  const collection = mongoose.connection.collections['subcategories'];
-  if (collection) {
-    const indexes = await collection.indexes();
-    if (indexes.some((index) => index.name === 'subCategoryName_1')) {
-      await collection.dropIndex('subCategoryName_1');
-    }
-  }
+  if (!this.isModified('category')) return next();
+
+  const cat = await Category.findById(this.category);
+
+  if (!cat) return next(new Error('Invalid main category'));
+
+  this.allowedSizes = resolveAllowedSizes({
+    subKey: this.translationKey,
+    mainKey: cat.categoryName,
+  });
+
   next();
 });
 

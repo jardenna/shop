@@ -1,27 +1,30 @@
-import { ProductSizes } from '../../app/api/apiTypes/sharedApiTypes';
 import { ProductListChoiceProps } from '../../types/types';
 import ProductList from './ProductList';
 import ProductListItem from './ProductListItem';
 
 type SizeList = {
-  label: ProductSizes;
-  value: ProductSizes;
+  label: string;
+  value: string;
 };
 
 type SizeListMultiChoiceProps = ProductListChoiceProps & {
-  sizeList: SizeList[];
-  values: ProductSizes[];
+  availableSizeList: SizeList[];
+  values: string[];
+  infoText?: string;
+  required?: boolean;
 };
 
 const SizeListMultiChoice = ({
   onChange,
   values,
-  sizeList,
+  availableSizeList,
   name,
+  infoText,
   groupTitle,
+  required,
 }: SizeListMultiChoiceProps) => (
-  <ProductList groupTitle={groupTitle}>
-    {sizeList.map(({ label, value }) => (
+  <ProductList groupTitle={groupTitle} required={required}>
+    {availableSizeList.map(({ label, value }) => (
       <ProductListItem key={label} htmlFor={label} text={label}>
         <input
           type="checkbox"
@@ -33,7 +36,7 @@ const SizeListMultiChoice = ({
         />
       </ProductListItem>
     ))}
+    {infoText && infoText}
   </ProductList>
 );
-
 export default SizeListMultiChoice;

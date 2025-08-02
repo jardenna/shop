@@ -4,6 +4,7 @@ import Category from '../models/categoryModel.js';
 import Product from '../models/productModel.js';
 import SubCategory from '../models/subCategoryModel.js';
 import formatMongoData from '../utils/formatMongoData.js';
+import getAllowedSizes from '../utils/getAllowedSizes.js';
 import { t } from '../utils/translator.js';
 import { updateScheduledItems } from '../utils/UpdateScheduledItemsOptions.js';
 import validateSubCategory from '../utils/validateSubCategory.js';
@@ -35,7 +36,17 @@ const createSubCategory = [
     if (!validationResult.success) {
       return res.status(400).json(validationResult);
     }
-    const subCategoryData = { subCategoryName, category, ...req.body };
+
+    const allowedSizes = getAllowedSizes(translationKey);
+
+    const subCategoryData = {
+      subCategoryName,
+      category,
+      categoryStatus,
+      scheduledDate,
+      translationKey,
+      allowedSizes,
+    };
 
     const subCategory = new SubCategory(subCategoryData);
     await subCategory.save();
@@ -202,6 +213,7 @@ const getSubCategoriesWithParent = asyncHandler(async (req, res) => {
       $project: {
         categoryStatus: '$categoryStatus',
         label: '$subCategoryName',
+        allowedSizes: '$allowedSizes',
         categoryId: '$_id',
         parentCategoryName: '$parentCategory.categoryName',
         _id: 0,
@@ -284,15 +296,21 @@ const updateSubCategory = [
       return res.status(400).json(validationResult);
     }
 
+    const updateData = {
+      ...(subCategoryName && { subCategoryName }),
+      ...(category && { category }),
+      ...(categoryStatus && { categoryStatus }),
+      translationKey,
+      scheduledDate,
+    };
+
+    if (subCategoryName) {
+      updateData.allowedSizes = getAllowedSizes(translationKey);
+    }
+
     const updatedSubCategory = await SubCategory.findByIdAndUpdate(
       req.params.id,
-      {
-        ...(subCategoryName && { subCategoryName }),
-        ...(category && { category }),
-        ...(categoryStatus && { categoryStatus }),
-        translationKey,
-        scheduledDate,
-      },
+      updateData,
       { new: true },
     );
 
@@ -312,6 +330,7 @@ const updateSubCategory = [
         category: updatedSubCategory.category,
         categoryStatus: updatedSubCategory.categoryStatus,
         scheduledDate: updatedSubCategory.scheduledDate,
+        allowedSizes: updatedSubCategory.allowedSizes,
         createdAt: updatedSubCategory.createdAt,
         updatedAt: updatedSubCategory.updatedAt,
       },

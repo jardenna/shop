@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { Status } from '../../../app/api/apiTypes/adminApiTypes';
 import Badge from '../../../components/badge/Badge';
-import { formatNumber, getlowerCaseFirstLetter } from '../../../utils/utils';
+import { formatNumber } from '../../../utils/utils';
 import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
 import useLanguage from '../../language/useLanguage';
 import ProductActions from './ProductActions';
@@ -34,7 +34,7 @@ const ProductTableRow = ({
   discount,
   onCopyProduct,
 }: ProductTableRowProps) => {
-  const { language, selectedLanguage } = useLanguage();
+  const { selectedLanguage } = useLanguage();
 
   return (
     <tr>
@@ -53,11 +53,7 @@ const ProductTableRow = ({
       </td>
       <td>{formatNumber(countInStock, selectedLanguage)}</td>
       <td>
-        <Badge
-          badgeClassName={status.toLowerCase()}
-          badgeText={getlowerCaseFirstLetter(status, language)}
-          scheduledDate={scheduledDate || null}
-        />
+        <Badge status={status} scheduledDate={scheduledDate || null} />
       </td>
       <td>
         <ProductActions id={id} onCopyProduct={onCopyProduct} />

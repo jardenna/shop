@@ -1,15 +1,21 @@
 import { OptionGroupHeading } from '../../types/types';
+import RequiredIcon from '../RequiredIcon';
 
 type OptionGroupTitleProps = {
   groupTitle: OptionGroupHeading;
+  required?: boolean;
 };
 
-const OptionGroupTitle = ({ groupTitle }: OptionGroupTitleProps) => (
+const OptionGroupTitle = ({ groupTitle, required }: OptionGroupTitleProps) => (
   <div className="option-group-title">
-    <h3 className="title" aria-labelledby={groupTitle.id}>
+    <h2 className="title" aria-labelledby={groupTitle.id}>
       {groupTitle.title}
-    </h3>
-    <span className="error-message">{groupTitle.errorText}</span>
+      {required && <RequiredIcon />}
+    </h2>
+
+    {groupTitle.errorText && (
+      <span className="error-message">{groupTitle.errorText}</span>
+    )}
   </div>
 );
 

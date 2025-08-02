@@ -5,22 +5,26 @@ import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import Modal, { ModalProps } from './Modal';
 
-type ModalContainerProps = ModalProps & {
+export type TriggerModalProps = {
   triggerModalBtnContent: ReactNode | string;
   triggerModalBtnVariant?: BtnVariant;
+  triggerModalClassName?: string;
   triggerModalDisabled?: boolean;
 };
+
+type ModalContainerProps = ModalProps & TriggerModalProps;
 
 const ModalContainer = ({
   id,
   children,
   primaryActionBtn,
   secondaryActionBtn,
+  modalSize,
+  className,
   triggerModalBtnVariant,
   triggerModalBtnContent,
   modalHeaderText,
-  modalSize,
-  className,
+  triggerModalClassName,
   triggerModalDisabled,
 }: ModalContainerProps) => {
   const dispatch = useAppDispatch();
@@ -35,6 +39,7 @@ const ModalContainer = ({
       <Button
         variant={triggerModalBtnVariant}
         onClick={handleOpenModal}
+        className={triggerModalClassName}
         disabled={triggerModalDisabled}
       >
         {triggerModalBtnContent}

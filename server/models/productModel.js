@@ -1,9 +1,10 @@
 import mongoose from 'mongoose';
-import { SIZES, STATUS } from '../config/constants.js';
+import { STATUS } from '../config/constants.js';
 import SubCategory from './subCategoryModel.js';
 
 const { ObjectId } = mongoose.Schema;
 
+// Review schema
 const reviewSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
@@ -18,6 +19,7 @@ const reviewSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
+// Product schema
 const productSchema = new mongoose.Schema(
   {
     productName: { type: String, required: true },
@@ -47,11 +49,12 @@ const productSchema = new mongoose.Schema(
     discount: { type: Number, default: 0 },
     material: { type: String, required: true, default: 0 },
     countInStock: { type: Number, required: true, default: 0 },
+
     sizes: {
       type: [String],
-      enum: SIZES,
       default: undefined,
     },
+
     colors: {
       type: [String],
       required: true,
@@ -63,32 +66,28 @@ const productSchema = new mongoose.Schema(
 // Custom logic for dynamic size validation
 productSchema.pre('validate', async function (next) {
   try {
-    if (!this.subCategory) return next(); // Intet at validere
+    if (!this.subCategory) return next();
 
-    const subCat = await SubCategory.findById(this.subCategory).populate(
-      'category',
-    );
-    if (!subCat || !subCat.category) {
-      return next(new Error('Invalid subCategory or category'));
+    const subCat = await SubCategory.findById(this.subCategory);
+    if (!subCat) {
+      return next(new Error('Invalid subCategory'));
     }
 
-    const categoryName = subCat.subCategoryName.toLowerCase();
-    console.log(categoryName);
+    const allowedSizes = subCat.allowedSizes ?? [];
 
-    if (categoryName === 'accessories') {
-      this.sizes = []; // nulstil hvis accessories
-    } else {
-      // Kræv sizes for andre kategorier
-      if (!this.sizes || this.sizes.length === 0) {
-        return next(
-          new Error(`Sizes are required for category: ${categoryName}`),
-        );
-      }
+    if (allowedSizes.length === 0) {
+      // if no sizes are allowed, reset
+      this.sizes = [];
+      return next();
+    }
 
-      const invalidSizes = this.sizes.filter((s) => !SIZES.includes(s));
-      if (invalidSizes.length > 0) {
-        return next(new Error(`Invalid sizes: ${invalidSizes.join(', ')}`));
-      }
+    if (!this.sizes || this.sizes.length === 0) {
+      return next(new Error('Sizes are required for this subCategory'));
+    }
+
+    const invalidSizes = this.sizes.filter((s) => !allowedSizes.includes(s));
+    if (invalidSizes.length > 0) {
+      return next(new Error(`Invalid sizes: ${invalidSizes.join(', ')}`));
     }
 
     next();

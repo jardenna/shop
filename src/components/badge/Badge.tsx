@@ -1,23 +1,24 @@
+import { Status } from '../../app/api/apiTypes/adminApiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import { BtnVariant, IconName } from '../../types/enums';
+import { getlowerCaseFirstLetter } from '../../utils/utils';
 import DateDisplay from '../datePicker/DateDisplay';
 import Icon from '../icons/Icon';
 import Tooltip from '../tooltip/Tooltip';
 import './_badge.scss';
 
 type BadgeProps = {
-  badgeClassName: string;
-  badgeText: string;
   scheduledDate: Date | null;
+  status: Status;
 };
 
-const Badge = ({ badgeText, badgeClassName, scheduledDate }: BadgeProps) => {
+const Badge = ({ scheduledDate, status }: BadgeProps) => {
   const { language } = useLanguage();
 
   return (
     <div className="badge-container">
-      <span className={`badge ${badgeClassName}`}>
-        <span>{badgeText}</span>
+      <span className={`badge ${status.toLowerCase()}`}>
+        <span>{getlowerCaseFirstLetter(status, language)}</span>
       </span>
       {scheduledDate && (
         <div>

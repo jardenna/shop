@@ -16,7 +16,6 @@ type ProductListItemProps = {
   className?: string;
   htmlFor?: string;
   icon?: IconType;
-  isUnavailable?: boolean;
   style?: CSSProperties;
   text?: string;
   variant?: ProductLabelVariant;
@@ -30,14 +29,10 @@ const ProductListItem = ({
   icon,
   variant = 'medium',
   style,
-  isUnavailable,
   className = 'size-list-item',
 }: ProductListItemProps) => (
   <li className={`product-list-item ${className}`} style={style}>
-    <Tag
-      htmlFor={htmlFor}
-      className={`product-label ${variant} ${isUnavailable ? 'text-line-through' : ''}`}
-    >
+    <Tag htmlFor={htmlFor} className={`product-label ${variant}`}>
       {icon ? (
         <IconContent
           iconName={icon.iconName}

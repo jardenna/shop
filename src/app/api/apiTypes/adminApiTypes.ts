@@ -4,6 +4,7 @@ import type {
   BaseProductParams,
   DefaultResponse,
   DefaultResponseType,
+  Size,
 } from './sharedApiTypes';
 
 export type Roles = 'Employee' | 'User';
@@ -106,6 +107,7 @@ export type CreateSubCategoryRequest = {
 
 export type BaseSubCategory = DefaultResponseType & {
   _id: string;
+  allowedSizes: string[];
   category: MainCategory;
   categoryStatus: Status;
   subCategoryName: string;
@@ -125,6 +127,7 @@ export type SubCategoriesResponse = DefaultResponseType & {
 };
 
 export type SubCategoriesWithParent = {
+  allowedSizes: string[];
   categoryId: string;
   categoryStatus: Status;
   label: string;
@@ -149,26 +152,25 @@ export type Product = BaseProduct & {
   scheduledDate?: Date;
 };
 
-type OmittedProduct = Omit<
-  Product,
-  | 'createdAt'
-  | 'reviews'
-  | 'updatedAt'
-  | 'id'
-  | 'category'
-  | 'countInStock'
-  | 'numReviews'
-  | 'rating'
-  | 'subCategory'
->;
-
 export type ProductsParams = BaseProductParams & {
   productStatus?: Status;
   subCategory?: string;
 };
 
-export type ProductRequest = OmittedProduct & {
+export type ProductRequest = {
+  brand: string;
+  colors: string[];
+  description: string;
+  discount: number;
+  images: string[];
+  material: string;
+  price: number;
+  productName: string;
+  productStatus: Status;
+  quantity: number;
+  sizes: Size[];
   subCategory: string;
+  scheduledDate?: Date;
 };
 
 export type UpdateProductRequest = {

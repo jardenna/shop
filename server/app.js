@@ -45,7 +45,7 @@ app.use(express.json()); // Ensure this is before the routes
 app.use(
   express.static(path.join(__dirname, 'public'), {
     setHeaders: (res, filePath) => {
-      // Kun sæt cache headers på uploads
+      // Only set cache headers for uploads
       if (filePath.includes('/images/uploads')) {
         res.setHeader('Cache-Control', 'public, max-age=2592000, immutable');
       }

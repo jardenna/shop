@@ -71,8 +71,8 @@ const ViewProductPage = () => {
     variant: BtnVariant.Danger,
   };
 
-  const mainCategory = product ? product.subCategory.category.categoryName : '';
-  const subCategory = product ? product.subCategory.subCategoryName : '';
+  const mainCategory = product ? product.categoryName : '';
+  const subCategory = product ? product.subCategoryName : '';
   const heading = `${language.category}: ${subCategory} / ${mainCategory}`;
   const subCategoryStatus = product
     ? language[product.subCategory.categoryStatus.toLowerCase()]
@@ -115,8 +115,10 @@ const ViewProductPage = () => {
               discount={product.discount || 0}
               material={product.material}
               price={product.price}
-              sizes={product.sizes}
+              availableSizeList={product.sizes}
               onReset={() => refetch()}
+              categoryName={product.categoryName}
+              subCategoryName={product.subCategoryName}
             />
             <CardRight
               linkTo={AdminPath.AdminSubCategories}

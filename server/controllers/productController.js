@@ -272,6 +272,7 @@ const getProducts = asyncHandler(async (req, res) => {
         id: '$_id',
         subCategoryId: '$subCategory',
         subCategoryName: '$subCategoryData.subCategoryName',
+        categoryName: '$categoryData.categoryName',
       },
     },
     {
@@ -326,9 +327,21 @@ const getSortedProducts = asyncHandler(async (req, res) => {
   res.status(200).json({
     success: true,
     products: formatMongoData(
-      products.map(({ subCategoryName, scheduledDate, ...rest }) =>
-        rest.productStatus === 'Scheduled' ? { ...rest, scheduledDate } : rest,
-      ),
+      products.map(({ scheduledDate, ...rest }) => {
+        const subCategory = rest.subCategory;
+        const subCategoryName = subCategory?.subCategoryName;
+        const categoryName = subCategory?.category?.categoryName;
+
+        const base = {
+          ...rest,
+          subCategoryName,
+          categoryName,
+        };
+
+        return rest.productStatus === 'Scheduled'
+          ? { ...base, scheduledDate }
+          : base;
+      }),
     ),
     page,
     pages: Math.ceil(count / pageSize),
@@ -384,6 +397,9 @@ const getProductById = asyncHandler(async (req, res) => {
       message: t('couldNotFindInfo', req.lang),
     });
   }
+
+  product.subCategoryName = product.subCategory?.subCategoryName || '';
+  product.categoryName = product.subCategory?.category?.categoryName || '';
 
   res.status(200).json(formatMongoData(product));
 });

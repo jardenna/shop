@@ -4,10 +4,12 @@ import Favorites from '../components/favorites/Favorites';
 import Img from '../components/Img';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
 import useLanguage from '../features/language/useLanguage';
+import NotiFyMe from '../features/shop/components/NotiFyMe';
 import ShopProductForm from '../features/shop/components/ShopProductForm';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
 import MetaTags from '../layout/nav/MetaTags';
 import { getColorOptions } from '../utils/colorUtils';
+import { getDisplaySizes } from '../utils/sizeUtils';
 import './SingleProductPage.styles.scss';
 
 const SingleProductPage = () => {
@@ -51,6 +53,13 @@ const SingleProductPage = () => {
       ),
     },
   ];
+  const displaySizeList = product
+    ? getDisplaySizes({
+        mainKey: product.categoryName,
+        subKey: product.subCategoryName,
+        availableSizes: product.sizes,
+      })
+    : [];
 
   return (
     <div className="container">
@@ -72,7 +81,15 @@ const SingleProductPage = () => {
               price={product.price}
               discount={product.discount}
             />
-            <ShopProductForm selectedProduct={product} colorList={colorList} />
+            <ShopProductForm
+              selectedProduct={product}
+              colorList={colorList}
+              displaySizeList={displaySizeList}
+            />
+            <NotiFyMe
+              selectedProduct={product}
+              displaySizeList={displaySizeList}
+            />
 
             <p>Brand: {product.brand}</p>
             <p>

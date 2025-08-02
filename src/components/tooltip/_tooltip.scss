@@ -5,7 +5,8 @@
 }
 
 .tooltip-content {
-  max-width: rem(216px);
+  max-width: fit-content;
+  min-width: rem(216px);
 
   p {
     margin: 0;

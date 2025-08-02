@@ -1,29 +1,15 @@
-import type {
-  BaseProduct,
-  BaseProductParams,
-  ProductSizes,
-} from './sharedApiTypes';
+import type { BaseProduct, BaseProductParams } from './sharedApiTypes';
 
 export type ShopProductsParams = BaseProductParams & {
   mainCategory?: string;
   subCategoryId?: string;
 };
 
-export type SingleProduct = BaseProduct & {
-  categoryName: string;
-  subCategoryName: string;
-};
-
-export type AllProducts = BaseProduct & {
-  subCategoryId: string;
-  subCategoryName: string;
-};
-
 export type ShopAllProductsResponse = {
   page: number;
   pages: number;
   productCount: number;
-  products: AllProducts[];
+  products: BaseProduct[];
 };
 
 export type ProductMenuResponse = {
@@ -42,5 +28,5 @@ export type Favorites = {
   images: string[];
   price: number;
   productName: string;
-  sizes: ProductSizes[];
+  sizes: string[];
 };

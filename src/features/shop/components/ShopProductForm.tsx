@@ -1,4 +1,5 @@
-import { SingleProduct } from '../../../app/api/apiTypes/shopApiTypes';
+import { BaseProduct, Size } from '../../../app/api/apiTypes/sharedApiTypes';
+import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/form/Form';
 import ColorListSingleChoice from '../../../components/productColorLists/ColorListSingleChoice';
 import SizeListSingleChoice from '../../../components/productLists/SizeListSingleChoice';
@@ -8,12 +9,14 @@ import useLanguage from '../../language/useLanguage';
 
 type ShopProductFormProps = {
   colorList: ColorOption[];
-  selectedProduct: SingleProduct;
+  displaySizeList: Size[];
+  selectedProduct: BaseProduct;
 };
 
 const ShopProductForm = ({
   selectedProduct,
   colorList,
+  displaySizeList,
 }: ShopProductFormProps) => {
   const { language } = useLanguage();
 
@@ -29,29 +32,37 @@ const ShopProductForm = ({
     },
   });
 
+  const title =
+    values.size === ''
+      ? language.selectSize
+      : `${language.selectedSize}: ${values.size}`;
+
   return (
     <Form onSubmit={onSubmit} submitBtnLabel={language.create}>
-      <SizeListSingleChoice
-        sizeList={selectedProduct.sizes}
-        initialChecked={values.size}
-        onChange={onChange}
-        name="size"
-        groupTitle={{
-          title: language.selectSize,
-          id: 'choose-product-size',
-        }}
-      />
-      <ColorListSingleChoice
-        colorList={colorList}
-        initialChecked={values.color}
-        onChange={onChange}
-        name="color"
-        iconName={selectedProduct.categoryName}
-        groupTitle={{
-          title: language.selectColor,
-          id: 'choose-product-color',
-        }}
-      />
+      <FieldSet legendText={language.productVariants} hideLegendText>
+        <ColorListSingleChoice
+          colorList={colorList}
+          initialChecked={values.color}
+          onChange={onChange}
+          name="color"
+          iconName={selectedProduct.categoryName}
+          groupTitle={{
+            title: language.selectColor,
+            id: 'choose-product-color',
+          }}
+        />
+        <SizeListSingleChoice
+          initialChecked={values.size}
+          availableSizeList={selectedProduct.sizes}
+          onChange={onChange}
+          displaySizeList={displaySizeList}
+          name="size"
+          groupTitle={{
+            title,
+            id: 'choose-product-size',
+          }}
+        />
+      </FieldSet>
     </Form>
   );
 };

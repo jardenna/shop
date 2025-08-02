@@ -33,7 +33,6 @@ const TableSearchInput = ({
         labelText={text}
         inputHasNoLabel
         autoFocus
-        autoComplete="on"
       />
     </form>
   );
