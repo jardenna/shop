@@ -38,16 +38,6 @@
       width: rem(24px);
       height: rem(24px);
     }
-
-    &.large {
-      width: rem(100px);
-      height: rem(120px);
-      background-color: $color-light-gray-30;
-    }
-  }
-
-  label.product-label {
-    cursor: pointer;
   }
 
   .product-list-item {
