@@ -8,7 +8,7 @@ type OptionGroupTitleProps = {
 
 const OptionGroupTitle = ({ groupTitle, required }: OptionGroupTitleProps) => (
   <div className="option-group-title">
-    <h2 aria-labelledby={groupTitle.id}>
+    <h2 className="title" aria-labelledby={groupTitle.id}>
       {groupTitle.title}
       {required && <RequiredIcon />}
     </h2>
