@@ -3,6 +3,7 @@ import { Size } from '../app/api/apiTypes/sharedApiTypes';
 import Accordion from '../components/accordion/Accordion';
 import Favorites from '../components/favorites/Favorites';
 import Img from '../components/Img';
+import useAuth from '../features/auth/hooks/useAuth';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
 import useLanguage from '../features/language/useLanguage';
 import NotiFyMe from '../features/shop/components/NotiFyMe';
@@ -21,6 +22,7 @@ export type InitialValues = {
 
 const SingleProductPage = () => {
   const { id } = useParams();
+  const { currentUser } = useAuth();
   const { language } = useLanguage();
   const initialState: InitialValues = {
     sizes: [],
@@ -127,6 +129,7 @@ const SingleProductPage = () => {
               values={values}
               onSubmit={onSubmit}
               id={product.id}
+              currentEmail={currentUser?.email || ''}
             />
           </section>
         </article>

@@ -7,6 +7,7 @@ import type { ChangeInputType, FormEventType } from '../../../types/types';
 import useLanguage from '../../language/useLanguage';
 
 type NotifiMeProps = {
+  currentEmail: string;
   id: string;
   options: string[];
   values: InitialValues;
@@ -20,6 +21,7 @@ const NotiFyMe = ({
   onChange,
   values,
   id,
+  currentEmail,
 }: NotifiMeProps) => {
   const { language } = useLanguage();
 
@@ -56,12 +58,11 @@ const NotiFyMe = ({
       <Input
         name="email"
         id="email"
-        value={values.email}
+        value={values.email || currentEmail}
         labelText={language.email}
         onChange={onChange}
         required
         type="email"
-        // errorText={language[errors.email]}
       />
     </ModalContainer>
   );
