@@ -1,5 +1,5 @@
 import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
-import ColorReadOnly from '../../../components/productLists/ColorReadOnly';
+import ColorList from '../../../components/productLists/ColorList';
 import SizeListReadOnly from '../../../components/productLists/SizeListReadOnly';
 import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
 
@@ -16,7 +16,7 @@ const ProductCardListContent = ({ product }: ProductCardListContentProps) => (
       subCategoryName={product.subCategoryName}
       categoryName={product.categoryName}
     />
-    <ColorReadOnly colors={product.colors} variant="small" />
+    <ColorList colors={product.colors} variant="small" />
   </>
 );
 

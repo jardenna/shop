@@ -5,19 +5,19 @@ import { getColorOptions } from '../../utils/colorUtils';
 import ProductList from './ProductList';
 import ProductListItem, { ProductLabelVariant } from './ProductListItem';
 
-type ColorReadOnlytProps = {
+type ColorListProps = {
   colors: string[];
   count?: number;
   groupTitle?: OptionGroupHeading;
   variant?: ProductLabelVariant;
 };
 
-const ColorReadOnly = ({
+const ColorList = ({
   count = 3,
   colors,
   groupTitle,
   variant,
-}: ColorReadOnlytProps) => {
+}: ColorListProps) => {
   const { language } = useLanguage();
 
   const colorList = getColorOptions({
@@ -48,4 +48,4 @@ const ColorReadOnly = ({
   );
 };
 
-export default ColorReadOnly;
+export default ColorList;
