@@ -6,7 +6,6 @@ import {
 import useLanguage from '../../features/language/useLanguage';
 import type { OptionGroupHeading } from '../../types/types';
 import { getDisplaySizes } from '../../utils/sizeUtils';
-import VisuallyHidden from '../VisuallyHidden';
 import ProductList from './ProductList';
 import ProductListItem from './ProductListItem';
 
@@ -34,14 +33,15 @@ const SizeListReadOnly = ({
   return (
     <ProductList groupTitle={groupTitle}>
       {displaySizeList.map((size) => (
-        <ProductListItem as="span" text={size} key={size}>
-          <VisuallyHidden>
-            {!availableSizeList.includes(size)
+        <ProductListItem
+          text={size}
+          key={size}
+          ariaLabel={
+            !availableSizeList.includes(size)
               ? language.unavailable
-              : language.available}
-            {language.size}
-          </VisuallyHidden>
-        </ProductListItem>
+              : language.available
+          }
+        />
       ))}
     </ProductList>
   );

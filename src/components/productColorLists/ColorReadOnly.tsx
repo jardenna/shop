@@ -6,7 +6,6 @@ import ProductList from '../productLists/ProductList';
 import ProductListItem, {
   ProductLabelVariant,
 } from '../productLists/ProductListItem';
-import VisuallyHidden from '../VisuallyHidden';
 
 type ColorReadOnlytProps = {
   colors: string[];
@@ -37,17 +36,15 @@ const ColorReadOnly = ({
     <ProductList groupTitle={groupTitle}>
       {visibleColors.map(({ label, color, border }) => (
         <ProductListItem
+          ariaLabel={label}
           key={color}
-          as="span"
           variant={variant}
           style={{
             backgroundColor: color,
             borderColor: border,
           }}
           className="color-list-item"
-        >
-          <VisuallyHidden>{label}</VisuallyHidden>
-        </ProductListItem>
+        />
       ))}
       {hiddenColorsCount > 0 && <li>{`+ ${hiddenColorsCount}`}</li>}
     </ProductList>

@@ -1,51 +1,26 @@
-import { CSSProperties, ElementType, ReactNode } from 'react';
-import { IconName } from '../../types/enums';
-import IconContent from '../IconContent';
+import { CSSProperties } from 'react';
+import VisuallyHidden from '../VisuallyHidden';
 
-export type ProductLabelVariant = 'mini' | 'small' | 'medium' | 'large';
-
-export type IconType = {
-  ariaLabel: string;
-  iconName: IconName;
-  title: string;
-};
+export type ProductLabelVariant = 'mini' | 'small' | 'medium';
 
 type ProductListItemProps = {
-  children: ReactNode;
-  as?: ElementType;
+  ariaLabel?: string;
   className?: string;
-  htmlFor?: string;
-  icon?: IconType;
   style?: CSSProperties;
   text?: string;
   variant?: ProductLabelVariant;
 };
 
 const ProductListItem = ({
-  children,
-  as: Tag = 'label',
-  htmlFor,
   text,
-  icon,
   variant = 'medium',
   style,
+  ariaLabel,
   className = 'size-list-item',
 }: ProductListItemProps) => (
   <li className={`product-list-item ${className}`} style={style}>
-    <Tag htmlFor={htmlFor} className={`product-label ${variant}`}>
-      {icon ? (
-        <IconContent
-          iconName={icon.iconName}
-          fill={htmlFor}
-          size="70"
-          title=""
-          ariaLabel={icon.ariaLabel}
-        />
-      ) : (
-        text
-      )}
-    </Tag>
-    {children}
+    <span className={`product-label ${variant}`}>{text}</span>
+    <VisuallyHidden>{ariaLabel}</VisuallyHidden>
   </li>
 );
 
