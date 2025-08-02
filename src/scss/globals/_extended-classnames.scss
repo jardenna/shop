@@ -16,3 +16,15 @@
     opacity: 0.6;
   }
 }
+
+%stacked-item-border {
+  border-inline-end: 1px solid $color-border;
+  border-block-end: 1px solid $color-border;
+  border-block-start: 1px solid $color-border;
+  margin-top: -1px;
+  background: $color-white;
+
+  &:last-child {
+    border-right-color: $color-border;
+  }
+}
