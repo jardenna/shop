@@ -65,7 +65,7 @@ createNewUser;Create new user;Opret ny bruger
 criterionMet;Criterion met;Kriterium opfyldt
 criterionNotMet;Criterion not met;Kriterium ikke opfyldt
 currency;Currency;Valuta
-currentlyUnavailable;is currently unavailable;er midlertidigt udsolgt
+currentlyUnavailableSizes;Currently unavailable sizes;Midlertidigt udsolgte størrelser
 customersList;Customers list;Kundeliste
 dashboard;Dashboard;Dashboard
 date;Date;Dato
@@ -155,6 +155,7 @@ maximumFileSize;Maximum file size;Maksimal filstørrelse
 men;Men;Mænd
 menu;Menu;Menu
 minLength;At least 8 characters;Mindst 8 tegn
+missingYourSize;Missing your size;Mangler vi din størrelse
 multiColor;MultiColour;Flerfarvet
 mustHaveLowercase;At least one lowercase letter;Mindst ét lille bogstav
 mustHaveNumber;At least one number;Mindst ét tal
@@ -174,6 +175,7 @@ noProduct;Product not found;Produkt blev ikke fundet
 notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 
 notAuthorizedNoToken;Not authorized, no token;Ikke autoriseret, ingen token
 notAuthorizedTokenFailed;Not authorized, token failed;Ikke autoriseret, token mislykkedes
+notiftyMeMessage;Choose below, and we’ll notify you when it’s restocked; Vælg herunder, så får du en e-mail, når varen igen er på lager
 notiftyMe;Notify me;Giv mig besked
 noTumbleDry;Not suitable for tumble drying;Ikke egnet til tørretumbler
 notVisibleInShop;is not visible in the shop until the main category is published;bliver først synlig i shoppen, når hovedkategorien er udgivet

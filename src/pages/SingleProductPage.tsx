@@ -104,6 +104,7 @@ const SingleProductPage = () => {
           <section className="single-product">
             <h1>{product.productName}</h1>
             <Favorites id={product.id} />
+
             <ProductDiscountPrice
               price={product.price}
               discount={product.discount}
@@ -113,12 +114,6 @@ const SingleProductPage = () => {
               colorList={colorList}
               displaySizeList={displaySizeList}
             />
-            <NotiFyMe
-              options={missingSizes}
-              onChange={onChange}
-              values={values.sizes}
-              onSubmit={onSubmit}
-            />
 
             <p>Brand: {product.brand}</p>
             <p>
@@ -126,6 +121,12 @@ const SingleProductPage = () => {
               {product.countInStock < 5 ? 'Low in stock' : product.countInStock}
             </p>
             <Accordion accordionItems={accordionItems} />
+            <NotiFyMe
+              options={missingSizes}
+              onChange={onChange}
+              values={values.sizes}
+              onSubmit={onSubmit}
+            />
           </section>
         </article>
       )}

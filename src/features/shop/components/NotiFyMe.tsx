@@ -1,4 +1,4 @@
-import CheckboxList from '../../../components/formElements/controlGroup/CheckboxControls';
+import CheckboxControls from '../../../components/formElements/controlGroup/CheckboxControls';
 import ModalContainer from '../../../components/modal/ModalContainer';
 import { BtnType, BtnVariant, SizeVariant } from '../../../types/enums';
 import type { ChangeInputType, FormEventType } from '../../../types/types';
@@ -20,23 +20,29 @@ const NotiFyMe = ({ onSubmit, options, onChange, values }: NotifiMeProps) => {
   };
 
   return (
-    <div>
-      <ModalContainer
-        triggerModalBtnContent="Notify me when missing sizes are back in stock"
-        triggerModalBtnVariant={BtnVariant.Ghost}
-        id="sizes"
-        primaryActionBtn={primaryActionBtn}
-        modalSize={SizeVariant.Sm}
-        modalHeaderText={`${language.size}  ${language.currentlyUnavailable}`}
-      >
-        <CheckboxList
-          options={options}
-          name="sizes"
-          onChange={onChange}
-          values={values}
-        />
-      </ModalContainer>
-    </div>
+    <ModalContainer
+      triggerModalBtnContent="Missing sizes"
+      triggerModalBtnVariant={BtnVariant.Ghost}
+      id="sizes"
+      primaryActionBtn={primaryActionBtn}
+      modalSize={SizeVariant.Sm}
+      modalHeaderText={language.currentlyUnavailableSizes}
+    >
+      <p>
+        {language.missingYourSize}? {language.notiftyMeMessage}.
+      </p>
+
+      <CheckboxControls
+        options={options}
+        name="sizes"
+        onChange={onChange}
+        values={values}
+        groupTitle={{
+          title: language.sizes,
+          id: 'missing-sizes',
+        }}
+      />
+    </ModalContainer>
   );
 };
 
