@@ -2,6 +2,7 @@ import { BaseProduct, Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/form/Form';
 import RadioControls from '../../../components/formElements/controlGroup/RadioControls';
+import validateShopProduct from '../../../components/formElements/validation/validateShopProduct';
 import useFormValidation from '../../../hooks/useFormValidation';
 import {
   ColorOption,
@@ -17,6 +18,11 @@ type ShopProductFormProps = {
   selectedProduct: BaseProduct;
 };
 
+export type InitialShopValues = {
+  color: string;
+  size: string;
+};
+
 const ShopProductForm = ({
   selectedProduct,
   colorList,
@@ -24,16 +30,17 @@ const ShopProductForm = ({
 }: ShopProductFormProps) => {
   const { language } = useLanguage();
 
-  const initialState = {
+  const initialState: InitialShopValues = {
     color: colorList[0].value,
     size: '',
   };
 
-  const { onChange, values, onSubmit } = useFormValidation({
+  const { onChange, values, onSubmit, errors } = useFormValidation({
     initialState,
     callback: () => {
       console.log(values);
     },
+    validate: validateShopProduct,
   });
 
   const titleSize =
@@ -43,8 +50,8 @@ const ShopProductForm = ({
 
   const titleColor =
     values.color === ''
-      ? language.selectColor
-      : `${language.selectedSize}: ${getlowerCaseFirstLetter(values.color, language)}`;
+      ? language.selectedColor
+      : `${language.selectedColor}: ${getlowerCaseFirstLetter(values.color, language)}`;
 
   const sortedTranslatedColors = sortColorsByTranslation(
     selectedProduct.colors,
@@ -65,6 +72,7 @@ const ShopProductForm = ({
           groupTitle={{
             title: titleColor,
             id: 'choose-product-color',
+            errorText: language[errors.colors],
           }}
         />
 
@@ -79,6 +87,7 @@ const ShopProductForm = ({
           groupTitle={{
             title: titleSize,
             id: 'choose-product-size',
+            errorText: language[errors.sizes],
           }}
         />
       </FieldSet>

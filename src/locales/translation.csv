@@ -47,7 +47,7 @@ collection;Collection;Kollektion
 collectionSubKidsText;Comfortable and fun clothes for play, school and adventures.;Komfortabelt og sjovt tøj til leg, skole og eventyr.
 collectionSubMenText;From everyday looks to formal, everything for the modern man.;Fra hverdagslook til formelt, alt til den moderne mand.
 collectionSubWomenText;Discover stylish news, must-haves and trends of the season.;Opdag stilfulde nyheder, must-haves og sæsonens trends.
-colorRequired;Please select at least one colour;Vælg mindst 1 farve
+colorRequired;Please select a colour;Vælg venligst farve
 colours;Colours;Farver
 compact;Compact;Kompakt
 confirmPassword;Confirm password;Gentag adgangskode
@@ -248,9 +248,9 @@ scheduledDate;Scheduled date;Planlagt dato
 scheduledDateMustBeFuture;Scheduled date must be after now;Planlagt dato skal være efter nu
 scheduledToBePubliched;is scheduled to be published at;er planlagt til udgivelse den 
 search;Search;Søg
-selectColor;Select colour;Vælg farve
 selectPreferences;Select preferred language and currency;Vælg venligst sprog og valuta
 selectSize;Select size;Vælg størrelse
+selectedColor;Selected colour;Valgt farve
 selectedSize;Selected size;Valgt størrelse
 shoes;Shoes;Sko
 shopCart;Shopping cart;Indkøbskurv
@@ -272,7 +272,7 @@ showPassword;Show password;Vis adgangskode
 showPrice;Show price;Vis pris
 silver;Silver;Sølv
 size;Size;Størrelse
-sizeRequired;Please select at least one size;Vælg mindst 1 størrelse
+sizeRequired;Please select a size;Vælg venligst størrelse
 sizes;Sizes;Størrelser
 sizeInfoText;Sizes depend on the selected category;Størrelser afhænger af den valgte kategori
 somethingWentWrong;Something went wrong, please try again;Noget gik galt, forsøg venligst igen
