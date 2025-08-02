@@ -14,7 +14,7 @@ import { getColorOptions } from '../utils/colorUtils';
 import { getDisplaySizes } from '../utils/sizeUtils';
 import './SingleProductPage.styles.scss';
 
-type InitialValues = {
+export type InitialValues = {
   email: string;
   sizes: Size[];
 };
@@ -124,8 +124,9 @@ const SingleProductPage = () => {
             <NotiFyMe
               options={missingSizes}
               onChange={onChange}
-              values={values.sizes}
+              values={values}
               onSubmit={onSubmit}
+              id={product.id}
             />
           </section>
         </article>

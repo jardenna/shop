@@ -7,12 +7,20 @@ import type { ChangeInputType, FormEventType } from '../../../types/types';
 import useLanguage from '../../language/useLanguage';
 
 type NotifiMeProps = {
+  id: string;
   options: string[];
   values: InitialValues;
   onChange: (event: ChangeInputType) => void;
   onSubmit: (event: FormEventType) => void;
 };
-const NotiFyMe = ({ onSubmit, options, onChange, values }: NotifiMeProps) => {
+
+const NotiFyMe = ({
+  onSubmit,
+  options,
+  onChange,
+  values,
+  id,
+}: NotifiMeProps) => {
   const { language } = useLanguage();
 
   const primaryActionBtn = {
@@ -25,7 +33,7 @@ const NotiFyMe = ({ onSubmit, options, onChange, values }: NotifiMeProps) => {
     <ModalContainer
       triggerModalBtnContent="Missing sizes"
       triggerModalBtnVariant={BtnVariant.Ghost}
-      id="sizes"
+      id={id}
       primaryActionBtn={primaryActionBtn}
       modalSize={SizeVariant.Sm}
       modalHeaderText={language.currentlyUnavailableSizes}
