@@ -8,6 +8,7 @@ import './_control-list.scss';
 export type BaseControlGroupProps = {
   name: string;
   options: string[];
+  className?: string;
   disabledList?: string[];
   groupTitle?: OptionGroupHeading;
   iconName?: IconName;
@@ -34,12 +35,13 @@ const ControlList = ({
   disabledList,
   onChange,
   iconName,
+  className = '',
 }: ControlList) => (
   <section>
     {groupTitle && (
       <OptionGroupTitle groupTitle={groupTitle} required={required} />
     )}
-    <ul className="control-list">
+    <ul className={`control-list ${className}`}>
       {options.map((label, index) => {
         const id = `${name}-${index}`;
         const checked =

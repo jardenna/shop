@@ -13,6 +13,7 @@ const RadioControls = ({
   required,
   options,
   iconName,
+  className,
 }: RadioControlsProps) => (
   <ControlList
     type="radio"
@@ -24,6 +25,7 @@ const RadioControls = ({
     initialChecked={initialChecked}
     disabledList={disabledList}
     onChange={onChange}
+    className={className}
   />
 );
 

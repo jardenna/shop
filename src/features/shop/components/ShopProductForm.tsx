@@ -63,6 +63,7 @@ const ShopProductForm = ({
 
         <RadioControls
           initialChecked={values.color}
+          className="with-icon"
           onChange={onChange}
           options={sortedTranslatedColors}
           name="color"

@@ -33,7 +33,7 @@ const ControlInputField = ({
 
   return (
     <li className="control-item">
-      <label htmlFor={id}>
+      <label htmlFor={id} className="control-label">
         {iconName ? (
           <IconContent
             iconName={iconName}
