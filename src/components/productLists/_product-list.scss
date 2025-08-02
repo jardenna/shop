@@ -5,13 +5,10 @@
   flex-wrap: wrap;
   align-items: center;
 
-  .product-list-item {
-    border: 1px solid transparent;
-  }
-
   .product-content {
-    display: inline-grid;
-    place-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: rem(68px);
     height: rem(68px);
 
