@@ -1,5 +1,5 @@
 import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
-import ColorReadOnly from '../../../components/productColorLists/ColorReadOnly';
+import ColorReadOnly from '../../../components/productLists/ColorReadOnly';
 import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
 
 type ProductCardGridContentProps = {

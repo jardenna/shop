@@ -1,5 +1,5 @@
 import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
-import ColorReadOnly from '../../../components/productColorLists/ColorReadOnly';
+import ColorReadOnly from '../../../components/productLists/ColorReadOnly';
 import SizeListReadOnly from '../../../components/productLists/SizeListReadOnly';
 import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
 

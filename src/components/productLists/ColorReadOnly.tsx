@@ -2,10 +2,8 @@ import useLanguage from '../../features/language/useLanguage';
 import variables from '../../scss/variables.module.scss';
 import type { OptionGroupHeading } from '../../types/types';
 import { getColorOptions } from '../../utils/colorUtils';
-import ProductList from '../productLists/ProductList';
-import ProductListItem, {
-  ProductLabelVariant,
-} from '../productLists/ProductListItem';
+import ProductList from './ProductList';
+import ProductListItem, { ProductLabelVariant } from './ProductListItem';
 
 type ColorReadOnlytProps = {
   colors: string[];

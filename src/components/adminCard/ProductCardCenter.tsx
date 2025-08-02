@@ -6,7 +6,7 @@ import {
 import useLanguage from '../../features/language/useLanguage';
 import CardContent from '../card/CardContent';
 import GridTwoCol from '../GridTwoCol';
-import ColorReadOnly from '../productColorLists/ColorReadOnly';
+import ColorReadOnly from '../productLists/ColorReadOnly';
 import SizeListReadOnly from '../productLists/SizeListReadOnly';
 
 type ProductCardCenterProps = {
