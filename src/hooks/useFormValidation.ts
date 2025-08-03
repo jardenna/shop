@@ -55,20 +55,58 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
   const handleFileChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       const selectedFiles = event.target.files;
+      if (!selectedFiles) {
+        return;
+      }
 
-      if (selectedFiles) {
-        const fileArray = Array.from(selectedFiles);
-        setFilesData(fileArray);
-        const formatBytes = (bytes: number) => `${Math.round(bytes / 1000)} KB`;
+      const allowedExtensions = ['jpg', 'jpeg', 'png', 'webp'];
+      const maxSizeInBytes = 2 * 1024 * 1024; // 2 MB
+      const maxFiles = 5;
+      const formatBytes = (bytes: number) => `${Math.round(bytes / 1000)} KB`;
 
-        const previews = fileArray.map((file) => ({
+      const { validFiles, rejectedFiles } = Array.from(selectedFiles)
+        .slice(0, maxFiles) // Enforce max count here
+        .reduce(
+          (acc, file) => {
+            const ext = file.name.split('.').pop()?.toLowerCase();
+            const isValidExt = ext && allowedExtensions.includes(ext);
+            const isValidSize = file.size <= maxSizeInBytes;
+
+            if (isValidExt && isValidSize) {
+              acc.validFiles.push(file);
+            } else {
+              acc.rejectedFiles.push({
+                name: file.name,
+                reason: !isValidExt ? 'Invalid file type' : 'File too large',
+              });
+            }
+
+            return acc;
+          },
+          {
+            validFiles: [] as File[],
+            rejectedFiles: [] as { name: string; reason: string }[],
+          },
+        );
+
+      // Handle additional overflow files (if user selected more than allowed)
+      const overflowCount = selectedFiles.length - maxFiles;
+      if (overflowCount > 0) {
+        rejectedFiles.push({
+          name: `+${overflowCount} file${overflowCount > 1 ? 's' : ''}`,
+          reason: `Maximum of ${maxFiles} files allowed`,
+        });
+      }
+
+      setFilesData(validFiles);
+
+      setPreviewData(
+        validFiles.map((file) => ({
           url: URL.createObjectURL(file),
           name: file.name,
           size: formatBytes(file.size),
-        }));
-
-        setPreviewData(previews);
-      }
+        })),
+      );
     },
     [],
   );
