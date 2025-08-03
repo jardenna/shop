@@ -13,6 +13,7 @@ const discountCalculation = (price: number, discount: number) => {
 
 const maxSizeInBytes = 1024 * 1024;
 const maxFileSize = 1 * maxSizeInBytes;
+const maxFiles = 5;
 
 const allowedExtensions = ['jpg', 'jpeg', 'png', 'webp', 'avif'];
 
@@ -30,18 +31,6 @@ const getErrorMessage = (error: unknown): string => {
 
   return ValidationMessage.UnknownError;
 };
-
-// const str = previewData[0]?.size;
-
-// const sizeInBytes = parseFloat(str) * 1024;
-
-// const extension = previewData[0]?.name
-//   ? previewData[0].name
-//       .substring(previewData[0].name.lastIndexOf('.') + 1)
-//       .toLowerCase()
-//   : '';
-
-// console.log(sizeInBytes > maxFileSize, extension);
 
 const getlowerCaseFirstLetter = (
   key: string,
@@ -63,6 +52,7 @@ export {
   formatNumber,
   getErrorMessage,
   getlowerCaseFirstLetter,
+  maxFiles,
   maxFileSize,
   oneDay,
   sliceAndCountHidden,

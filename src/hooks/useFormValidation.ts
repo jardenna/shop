@@ -4,6 +4,7 @@ import type {
   ChangeInputType,
   FormEventType,
 } from '../types/types';
+import { allowedExtensions, maxFiles, maxFileSize } from '../utils/utils';
 
 export type KeyValuePair<T> = {
   [key: string]: T;
@@ -60,9 +61,6 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
         return;
       }
 
-      const allowedExtensions = ['jpg', 'jpeg', 'png', 'webp'];
-      const maxSizeInBytes = 2 * 1024 * 1024; // 2 MB
-      const maxFiles = 5;
       const formatBytes = (bytes: number) => `${Math.round(bytes / 1000)} KB`;
 
       const allFiles = Array.from(selectedFiles);
@@ -73,7 +71,7 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
           .substring(file.name.lastIndexOf('.') + 1)
           .toLowerCase();
         const isValidExt = allowedExtensions.includes(ext);
-        const isValidSize = file.size <= maxSizeInBytes;
+        const isValidSize = file.size <= maxFileSize;
 
         let reason = '';
         if (!isValidExt) {
