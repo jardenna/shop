@@ -3,7 +3,7 @@ import ImgListItem from '../../../components/formElements/fileInput/ImgListItem'
 import Preview from '../../../components/formElements/fileInput/Preview';
 import InputInfo from '../../../components/formElements/InputInfo';
 import { PreviewImg } from '../../../hooks/useFormValidation';
-import type { BlurEventType, ChangeInputType } from '../../../types/types';
+import { ChangePureInputType } from '../../../types/types';
 import { allowedExtensions } from '../../../utils/utils';
 import useLanguage from '../../language/useLanguage';
 
@@ -12,11 +12,11 @@ type ImageUploadProps = {
   disabledImages: string[];
   images: string[];
   previewData: PreviewImg[];
-  onBlur: (event: BlurEventType) => void;
-  onChange: (event: ChangeInputType) => void;
+  onChange: (event: ChangePureInputType) => void;
   onRemovePreviewImage: (id: string) => void;
   onToggleImage: (id: string) => void;
 };
+
 const ImageUpload = ({
   images,
   onRemovePreviewImage,

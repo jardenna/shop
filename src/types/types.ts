@@ -7,6 +7,8 @@ export type ChangeInputType = ChangeEvent<
   HTMLInputElement | HTMLTextAreaElement
 >;
 
+export type ChangePureInputType = ChangeEvent<HTMLInputElement>;
+
 export type OptionType<T = string> = {
   label: string;
   value: T;
