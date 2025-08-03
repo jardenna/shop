@@ -17,6 +17,8 @@ router.post(
   authorizeEmployee,
   (req, res) => {
     upload.array('images', MAX_FILES)(req, res, (err) => {
+      // Moved to errorHandler
+
       if (err && err.code === 'LIMIT_FILE_SIZE') {
         return res.status(400).send({
           message: t('fileExceedsSize', req.lang),
