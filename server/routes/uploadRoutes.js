@@ -1,4 +1,5 @@
 import express from 'express';
+import { MAX_FILES } from '../config/constants.js';
 import { upload } from '../config/multerConfig.js';
 import {
   authenticate,
@@ -15,9 +16,7 @@ router.post(
   authenticate,
   authorizeEmployee,
   (req, res) => {
-    upload.array('images', 5)(req, res, (err) => {
-      // '5' is the max files limit
-
+    upload.array('images', MAX_FILES)(req, res, (err) => {
       if (err && err.code === 'LIMIT_FILE_SIZE') {
         return res.status(400).send({
           message: t('fileExceedsSize', req.lang),

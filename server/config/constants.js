@@ -23,12 +23,14 @@ const CLOTHING_SIZES = ['S', 'M', 'L', 'XL'];
 
 const MB = 1024 * 1024;
 const MAX_FILE_SIZE = 1 * MB;
+const MAX_FILES = 5;
 
 export {
   ALLOWED_ROLES,
   CLOTHING_SIZES,
   KIDS_SHOE_SIZES,
   MAX_FILE_SIZE,
+  MAX_FILES,
   MEN_SHOE_SIZES,
   SHOE_SIZES,
   STATUS,
