@@ -100,7 +100,8 @@ expandMenu;Expand menu;Udvid menu
 eye;Eye;Øje
 eyeClosed;Closed eye;Lukket øje
 favorites;Favorites;Favoritter
-fileExceedsSize;The selected file exceeds the 1MB limit; Den valgte fil overstiger grænsen på 1 MB. Upload venligst en mindre fil
+fileExceedsSize;Selected file(s) exceeds the 1MB limit; Valgte fil(er) overstiger grænsen på 1 MB. Upload venligst en mindre fil
+fileTooLarge;File too large;Filen er for stor
 filesSuported;Files suported;Tilladte filer
 fillAll;Please fill all inputs;Udfyld venligst alle felter
 filter;Filter;Filtrer
@@ -126,6 +127,7 @@ home;Home;Hjem
 image;Image;Foto
 imageRequired;Please insert image(s);Indsæt venligst billede(r)
 inactive;Inactive;Inaktiv
+invalidFileType;Invalid file type;Ugyldig fil type
 invalidPassword;Invalid password;Ugyldig adgangskode
 invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for planlagt dato
 invalidUserData;Invalid user data;Ugyldig bruger data
@@ -150,6 +152,7 @@ man;Man;Mand
 material;Material;Materiale
 materialAndCare;Material and care;Materiale og vaskeanvisning
 materialRequired;Please insert material;Indsæt venligst materiale
+maximumFileLimitExceeded;Maximum file limit exceeded;Maksimalt antal filer er overskredet
 maximumFileSize;Maximum file size;Maksimal filstørrelse
 men;Men;Mænd
 menu;Menu;Menu

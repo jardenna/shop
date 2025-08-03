@@ -76,9 +76,9 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
 
         let reason = '';
         if (!isValidExt) {
-          reason = 'Invalid file type';
+          reason = 'invalidFileType';
         } else if (!isValidSize) {
-          reason = 'File too large';
+          reason = 'fileTooLarge';
         }
 
         return {
@@ -109,7 +109,7 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
       overflow.forEach((f) =>
         rejectedFiles.push({
           name: f.file.name,
-          reason: `Maximum of ${maxFiles} files allowed`,
+          reason: `maximumFileLimitExceeded`,
         }),
       );
 
