@@ -12,7 +12,6 @@ type ImageUploadProps = {
   disabledImages: string[];
   images: string[];
   previewData: PreviewImg[];
-  errors?: any;
   onBlur: (event: BlurEventType) => void;
   onChange: (event: ChangeInputType) => void;
   onRemovePreviewImage: (id: string) => void;
@@ -26,7 +25,6 @@ const ImageUpload = ({
   ariaLabel,
   onChange,
   previewData,
-  errors,
 }: ImageUploadProps) => {
   const { language } = useLanguage();
 
@@ -34,7 +32,6 @@ const ImageUpload = ({
     .map((ext) => ext.toUpperCase())
     .join(', ');
   const inputInfoText = `${language.filesSuported}  ${allowedImages} | ${language.maximumFileSize} 1MB`;
-  console.log(errors);
 
   return (
     <div>
