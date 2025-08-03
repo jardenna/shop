@@ -16,13 +16,6 @@ const maxFileSize = 1 * maxSizeInBytes;
 
 const allowedExtensions = ['jpg', 'jpeg', 'png', 'webp', 'avif'];
 
-// const extension = preview?.name.split('.').pop()?.toLowerCase();
-// const isExtensionValid = extension && allowedExtensions.includes(extension);
-// const isSizeValid =
-//   typeof preview?.size === 'number' && preview.size <= maxFileSize;
-
-// console.log({ isExtensionValid, isSizeValid });
-
 const getErrorMessage = (error: unknown): string => {
   if (
     error &&
@@ -37,6 +30,18 @@ const getErrorMessage = (error: unknown): string => {
 
   return ValidationMessage.UnknownError;
 };
+
+// const str = previewData[0]?.size;
+
+// const sizeInBytes = parseFloat(str) * 1024;
+
+// const extension = previewData[0]?.name
+//   ? previewData[0].name
+//       .substring(previewData[0].name.lastIndexOf('.') + 1)
+//       .toLowerCase()
+//   : '';
+
+// console.log(sizeInBytes > maxFileSize, extension);
 
 const getlowerCaseFirstLetter = (
   key: string,

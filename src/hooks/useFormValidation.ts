@@ -64,39 +64,54 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
       const maxFiles = 5;
       const formatBytes = (bytes: number) => `${Math.round(bytes / 1000)} KB`;
 
-      const { validFiles, rejectedFiles } = Array.from(selectedFiles)
-        .slice(0, maxFiles) // Enforce max count here
-        .reduce(
-          (acc, file) => {
-            const ext = file.name.split('.').pop()?.toLowerCase();
-            const isValidExt = ext && allowedExtensions.includes(ext);
-            const isValidSize = file.size <= maxSizeInBytes;
+      const allFiles = Array.from(selectedFiles);
 
-            if (isValidExt && isValidSize) {
-              acc.validFiles.push(file);
-            } else {
-              acc.rejectedFiles.push({
-                name: file.name,
-                reason: !isValidExt ? 'Invalid file type' : 'File too large',
-              });
-            }
+      // Validate files first
+      const validationResults = allFiles.map((file) => {
+        const ext = file.name
+          .substring(file.name.lastIndexOf('.') + 1)
+          .toLowerCase();
+        const isValidExt = allowedExtensions.includes(ext);
+        const isValidSize = file.size <= maxSizeInBytes;
 
-            return acc;
-          },
-          {
-            validFiles: [] as File[],
-            rejectedFiles: [] as { name: string; reason: string }[],
-          },
-        );
+        let reason = '';
+        if (!isValidExt) {
+          reason = 'Invalid file type';
+        } else if (!isValidSize) {
+          reason = 'File too large';
+        }
 
-      // Handle additional overflow files (if user selected more than allowed)
-      const overflowCount = selectedFiles.length - maxFiles;
-      if (overflowCount > 0) {
+        return {
+          file,
+          isValid: isValidExt && isValidSize,
+          reason,
+        };
+      });
+
+      // Separate valid and rejected files
+      const validFiles = validationResults
+        .filter((f) => f.isValid)
+        .slice(0, maxFiles)
+        .map((f) => f.file);
+
+      const rejectedFiles = [
+        ...validationResults
+          .filter((f) => !f.isValid)
+          .map((f) => ({
+            name: f.file.name,
+            reason: f.reason,
+          })),
+      ];
+
+      const overflow = validationResults
+        .filter((f) => f.isValid)
+        .slice(maxFiles);
+      overflow.forEach((f) =>
         rejectedFiles.push({
-          name: `+${overflowCount} file${overflowCount > 1 ? 's' : ''}`,
+          name: f.file.name,
           reason: `Maximum of ${maxFiles} files allowed`,
-        });
-      }
+        }),
+      );
 
       setFilesData(validFiles);
 
@@ -107,8 +122,14 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
           size: formatBytes(file.size),
         })),
       );
+
+      const errorsForFiles = rejectedFiles.reduce<Record<string, string>>(
+        (acc, cur) => ({ ...acc, [cur.name]: cur.reason }),
+        {},
+      );
+      setErrors(errorsForFiles);
     },
-    [],
+    [setFilesData, setPreviewData, setErrors],
   );
 
   function onChange(event: ChangeInputType) {
@@ -201,11 +222,11 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
   const onBlur = (event: BlurEventType) => {
     setIsFocused(false);
     const { name } = event.target;
-    if (!touched.includes(name)) {
-      setTouched([...touched, name]);
-    }
 
-    // Validate the specific field on blur
+    // Update touched state safely
+    setTouched((prev) => (prev.includes(name) ? prev : [...prev, name]));
+
+    // Validate only the blurred field
     if (validate) {
       const validationErrors = validate(values);
       setErrors((prevErrors) => ({

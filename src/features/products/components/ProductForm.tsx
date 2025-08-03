@@ -142,6 +142,7 @@ const ProductForm = ({
     filesData,
     previewData,
     removePreviewImage,
+    onBlur,
   } = useFormValidation({
     initialState,
     validate: validateProduct,
@@ -249,6 +250,8 @@ const ProductForm = ({
           <FormCard legendText={language.productImages} onReset={onReset}>
             <ImageUpload
               images={images}
+              onBlur={onBlur}
+              errors={errors}
               ariaLabel={`${language.delete} ${language.image}`}
               onChange={onChange}
               previewData={previewData}

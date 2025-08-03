@@ -3,7 +3,7 @@ import ImgListItem from '../../../components/formElements/fileInput/ImgListItem'
 import Preview from '../../../components/formElements/fileInput/Preview';
 import InputInfo from '../../../components/formElements/InputInfo';
 import { PreviewImg } from '../../../hooks/useFormValidation';
-import type { ChangeInputType } from '../../../types/types';
+import type { BlurEventType, ChangeInputType } from '../../../types/types';
 import { allowedExtensions } from '../../../utils/utils';
 import useLanguage from '../../language/useLanguage';
 
@@ -12,6 +12,8 @@ type ImageUploadProps = {
   disabledImages: string[];
   images: string[];
   previewData: PreviewImg[];
+  errors?: any;
+  onBlur: (event: BlurEventType) => void;
   onChange: (event: ChangeInputType) => void;
   onRemovePreviewImage: (id: string) => void;
   onToggleImage: (id: string) => void;
@@ -24,6 +26,7 @@ const ImageUpload = ({
   ariaLabel,
   onChange,
   previewData,
+  errors,
 }: ImageUploadProps) => {
   const { language } = useLanguage();
 
@@ -31,6 +34,7 @@ const ImageUpload = ({
     .map((ext) => ext.toUpperCase())
     .join(', ');
   const inputInfoText = `${language.filesSuported}  ${allowedImages} | ${language.maximumFileSize} 1MB`;
+  console.log(errors);
 
   return (
     <div>
