@@ -41,6 +41,7 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
   const [isFocused, setIsFocused] = useState(false);
   const [filesData, setFilesData] = useState<File[]>([]);
   const [previewData, setPreviewData] = useState<PreviewImg[]>([]);
+  const [fileErrors, setFileErrors] = useState<KeyValuePair<string>>({});
 
   useEffect(() => {
     if (isSubmitting) {
@@ -127,14 +128,14 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
         (acc, cur) => ({ ...acc, [cur.name]: cur.reason }),
         {},
       );
-      setErrors(errorsForFiles);
+
+      setFileErrors(errorsForFiles);
     },
-    [setFilesData, setPreviewData, setErrors],
+    [],
   );
 
   function onChange(event: ChangeInputType) {
-    const { name, value, type, checked, files } =
-      event.target as HTMLInputElement;
+    const { name, value, type, checked } = event.target as HTMLInputElement;
 
     setValues({
       ...values,
@@ -159,14 +160,6 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
 
     if (!touched.includes(name)) {
       setTouched([...touched, name]);
-    }
-
-    const file = files?.[0];
-
-    if (file) {
-      if (event.target instanceof HTMLInputElement) {
-        handleFileChange(event as ChangeEvent<HTMLInputElement>);
-      }
     }
 
     // Clear the error message when typing
@@ -286,6 +279,8 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
     filesData,
     previewData,
     removePreviewImage,
+    handleFileChange,
+    fileErrors,
   };
 }
 
