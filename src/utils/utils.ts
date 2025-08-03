@@ -11,12 +11,14 @@ const discountCalculation = (price: number, discount: number) => {
   return price - discountPrice;
 };
 
+// File upload utils
 const maxSizeInBytes = 1024 * 1024;
 const maxFileSize = 1 * maxSizeInBytes;
 const maxFiles = 5;
 
 const allowedExtensions = ['jpg', 'jpeg', 'png', 'webp', 'avif'];
 
+// Error messages
 const getErrorMessage = (error: unknown): string => {
   if (
     error &&
@@ -32,6 +34,7 @@ const getErrorMessage = (error: unknown): string => {
   return ValidationMessage.UnknownError;
 };
 
+// Translation
 const getlowerCaseFirstLetter = (
   key: string,
   language: Record<string, string>,
