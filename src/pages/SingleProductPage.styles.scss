@@ -4,17 +4,18 @@
   display: flex;
   gap: 40px;
 
+  .single-product-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
   .single-product {
     width: 100%;
-    margin-top: 32px;
+  }
 
-    // .title {
-    //   text-transform: uppercase;
-    //   font-family: $font-primary-bold;
-    //   font-size: $font-small;
-    //   font-weight: normal;
-    //   margin: 0;
-    // }
+  .single-product-content {
+    max-width: rem(500px);
   }
 
   .product-discont-price {

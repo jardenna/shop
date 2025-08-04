@@ -2,8 +2,6 @@
 @use '../../scss/globals' as *;
 
 .accordion-container {
-  max-width: rem(420px);
-
   .product-care-info {
     list-style: disc;
     padding-inline-start: 30px;
