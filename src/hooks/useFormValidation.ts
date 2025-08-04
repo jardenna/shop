@@ -4,6 +4,7 @@ import type {
   ChangeInputType,
   FormEventType,
 } from '../types/types';
+import { allowedExtensions, maxFileSize } from '../utils/utils';
 
 export type KeyValuePair<T> = {
   [key: string]: T;
@@ -41,6 +42,9 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
   const [isFocused, setIsFocused] = useState(false);
   const [filesData, setFilesData] = useState<File[]>([]);
   const [previewData, setPreviewData] = useState<PreviewImg[]>([]);
+  const [validationResults, setValidationResults] = useState<
+    { file: File; reason: string }[]
+  >([]);
 
   useEffect(() => {
     if (isSubmitting) {
@@ -55,23 +59,53 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
   const handleFileChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       const selectedFiles = event.target.files;
-
-      if (selectedFiles) {
-        const fileArray = Array.from(selectedFiles);
-        setFilesData(fileArray);
-        const formatBytes = (bytes: number) => `${Math.round(bytes / 1000)} KB`;
-
-        const previews = fileArray.map((file) => ({
-          url: URL.createObjectURL(file),
-          name: file.name,
-          size: formatBytes(file.size),
-        }));
-
-        setPreviewData(previews);
+      if (!selectedFiles) {
+        return;
       }
+
+      const formatBytes = (bytes: number) => `${Math.round(bytes / 1000)} KB`;
+      const fileArray = Array.from(selectedFiles);
+
+      const invalidResults = fileArray
+        .map((file) => {
+          const ext = file.name
+            .substring(file.name.lastIndexOf('.') + 1)
+            .toLowerCase();
+          const isValidExt = allowedExtensions.includes(ext);
+          const isValidSize = file.size <= maxFileSize;
+
+          if (!isValidExt) {
+            return { file, reason: 'invalidFileType' };
+          }
+          if (!isValidSize) {
+            return { file, reason: 'fileTooLarge' };
+          }
+          return null;
+        })
+        .filter((res): res is { file: File; reason: string } => res !== null);
+
+      setValidationResults(invalidResults);
+      setFilesData(fileArray); // <-- behold ALLE filer
+
+      const previews = fileArray.map((file) => ({
+        url: URL.createObjectURL(file),
+        name: file.name,
+        size: formatBytes(file.size),
+      }));
+
+      setPreviewData(previews);
     },
     [],
   );
+
+  const removePreviewImage = (name: string) => {
+    setPreviewData((prev) => prev.filter((img) => img.name !== name));
+    setFilesData((prev) => prev.filter((file) => file.name !== name));
+    setValidationResults((prev) =>
+      prev.filter((result) => result.file.name !== name),
+    );
+  };
+  console.log(validationResults, previewData);
 
   function onChange(event: ChangeInputType) {
     const { name, value, type, checked } = event.target as HTMLInputElement;
@@ -193,15 +227,6 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
       setErrors(validationErrors);
       scrollToFirstError(validationErrors);
     }
-  };
-
-  const removePreviewImage = (name: string) => {
-    setPreviewData((prevPreviewData) =>
-      prevPreviewData.filter((img) => img.name !== name),
-    );
-
-    const updatedFilesData = filesData.filter((file) => file.name !== name);
-    setFilesData(updatedFilesData);
   };
 
   return {
