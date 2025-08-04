@@ -27,7 +27,14 @@ type FormValidationProps<T extends KeyValuePair<unknown>> = {
   callback?: (values: T) => void;
   validate?: (values: T) => ValidationErrors;
 };
-
+type ValidatedFile = {
+  file: File;
+  isValid: boolean;
+  name: string;
+  size: string;
+  url: string;
+  reason?: 'invalidFileType' | 'fileTooLarge';
+};
 function useFormValidation<T extends KeyValuePair<unknown>>({
   initialState,
   callback,
@@ -41,10 +48,9 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [filesData, setFilesData] = useState<File[]>([]);
-  const [previewData, setPreviewData] = useState<PreviewImg[]>([]);
-  const [validationResults, setValidationResults] = useState<
-    { file: File; reason: string }[]
-  >([]);
+  const [validationResults, setValidationResults] = useState<ValidatedFile[]>(
+    [],
+  );
 
   useEffect(() => {
     if (isSubmitting) {
@@ -66,46 +72,43 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
       const formatBytes = (bytes: number) => `${Math.round(bytes / 1000)} KB`;
       const fileArray = Array.from(selectedFiles);
 
-      const invalidResults = fileArray
-        .map((file) => {
-          const ext = file.name
-            .substring(file.name.lastIndexOf('.') + 1)
-            .toLowerCase();
-          const isValidExt = allowedExtensions.includes(ext);
-          const isValidSize = file.size <= maxFileSize;
+      const results: ValidatedFile[] = fileArray.map((file) => {
+        const ext = file.name
+          .substring(file.name.lastIndexOf('.') + 1)
+          .toLowerCase();
+        const isValidExt = allowedExtensions.includes(ext);
+        const isValidSize = file.size <= maxFileSize;
 
-          if (!isValidExt) {
-            return { file, reason: 'invalidFileType' };
-          }
-          if (!isValidSize) {
-            return { file, reason: 'fileTooLarge' };
-          }
-          return null;
-        })
-        .filter((res): res is { file: File; reason: string } => res !== null);
+        const isValid = isValidExt && isValidSize;
+        let reason: ValidatedFile['reason'];
 
-      setValidationResults(invalidResults);
-      setFilesData(fileArray); // <-- behold ALLE filer
+        if (!isValidExt) {
+          reason = 'invalidFileType';
+        } else if (!isValidSize) {
+          reason = 'fileTooLarge';
+        }
 
-      const previews = fileArray.map((file) => ({
-        url: URL.createObjectURL(file),
-        name: file.name,
-        size: formatBytes(file.size),
-      }));
+        return {
+          file,
+          name: file.name,
+          size: formatBytes(file.size),
+          url: URL.createObjectURL(file),
+          isValid,
+          reason,
+        };
+      });
 
-      setPreviewData(previews);
+      setValidationResults(results);
     },
     [],
   );
 
   const removePreviewImage = (name: string) => {
-    setPreviewData((prev) => prev.filter((img) => img.name !== name));
     setFilesData((prev) => prev.filter((file) => file.name !== name));
     setValidationResults((prev) =>
       prev.filter((result) => result.file.name !== name),
     );
   };
-  console.log(validationResults, previewData);
 
   function onChange(event: ChangeInputType) {
     const { name, value, type, checked } = event.target as HTMLInputElement;
@@ -241,7 +244,7 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
     errors,
     onClearAllValues,
     filesData,
-    previewData,
+    previewData: validationResults,
     removePreviewImage,
     handleFileChange,
   };
