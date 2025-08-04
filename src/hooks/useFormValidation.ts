@@ -10,8 +10,6 @@ export type KeyValuePair<T> = {
   [key: string]: T;
 };
 
-export type PreviewImg = { name: string; size: string; url: string };
-
 export type ValidationErrors = {
   [key: string]: string;
 };
@@ -48,9 +46,7 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [filesData, setFilesData] = useState<File[]>([]);
-  const [validationResults, setValidationResults] = useState<ValidatedFile[]>(
-    [],
-  );
+  const [previewData, setPreviewData] = useState<ValidatedFile[]>([]);
 
   useEffect(() => {
     if (isSubmitting) {
@@ -61,54 +57,6 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
       setIsSubmitting(false);
     }
   }, [errors]);
-
-  const handleFileChange = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
-      const selectedFiles = event.target.files;
-      if (!selectedFiles) {
-        return;
-      }
-
-      const formatBytes = (bytes: number) => `${Math.round(bytes / 1000)} KB`;
-      const fileArray = Array.from(selectedFiles);
-
-      const results: ValidatedFile[] = fileArray.map((file) => {
-        const ext = file.name
-          .substring(file.name.lastIndexOf('.') + 1)
-          .toLowerCase();
-        const isValidExt = allowedExtensions.includes(ext);
-        const isValidSize = file.size <= maxFileSize;
-
-        const isValid = isValidExt && isValidSize;
-        let reason: ValidatedFile['reason'];
-
-        if (!isValidExt) {
-          reason = 'invalidFileType';
-        } else if (!isValidSize) {
-          reason = 'fileTooLarge';
-        }
-
-        return {
-          file,
-          name: file.name,
-          size: formatBytes(file.size),
-          url: URL.createObjectURL(file),
-          isValid,
-          reason,
-        };
-      });
-
-      setValidationResults(results);
-    },
-    [],
-  );
-
-  const removePreviewImage = (name: string) => {
-    setFilesData((prev) => prev.filter((file) => file.name !== name));
-    setValidationResults((prev) =>
-      prev.filter((result) => result.file.name !== name),
-    );
-  };
 
   function onChange(event: ChangeInputType) {
     const { name, value, type, checked } = event.target as HTMLInputElement;
@@ -146,6 +94,55 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
       return updatedErrors;
     });
   }
+
+  const handleFileChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const selectedFiles = event.target.files;
+      if (!selectedFiles) {
+        return;
+      }
+
+      const formatBytes = (bytes: number) => `${Math.round(bytes / 1000)} KB`;
+      const fileArray = Array.from(selectedFiles);
+
+      const results: ValidatedFile[] = fileArray.map((file) => {
+        const ext = file.name
+          .substring(file.name.lastIndexOf('.') + 1)
+          .toLowerCase();
+        const isValidExt = allowedExtensions.includes(ext);
+        const isValidSize = file.size <= maxFileSize;
+
+        const isValid = isValidExt && isValidSize;
+        let reason: ValidatedFile['reason'];
+
+        if (!isValidExt) {
+          reason = 'invalidFileType';
+        } else if (!isValidSize) {
+          reason = 'fileTooLarge';
+        }
+
+        return {
+          file,
+          name: file.name,
+          size: formatBytes(file.size),
+          url: URL.createObjectURL(file),
+          isValid,
+          reason,
+        };
+      });
+
+      setPreviewData(results);
+    },
+    [],
+  );
+
+  const removePreviewImage = (name: string) => {
+    setFilesData((prev) => prev.filter((file) => file.name !== name));
+    //  currentValues.filter((item) => item !== value),
+    setPreviewData((prev) =>
+      prev.filter((result) => result.file.name !== name),
+    );
+  };
 
   const onCustomChange = (
     name: string,
@@ -244,7 +241,7 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
     errors,
     onClearAllValues,
     filesData,
-    previewData: validationResults,
+    previewData,
     removePreviewImage,
     handleFileChange,
   };

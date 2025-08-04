@@ -1,8 +1,9 @@
 import FileInput from '../../../components/formElements/fileInput/FileInput';
 import ImgListItem from '../../../components/formElements/fileInput/ImgListItem';
-import Preview from '../../../components/formElements/fileInput/Preview';
+import Preview, {
+  PreviewImg,
+} from '../../../components/formElements/fileInput/Preview';
 import InputInfo from '../../../components/formElements/InputInfo';
-import { PreviewImg } from '../../../hooks/useFormValidation';
 import { ChangePureInputType } from '../../../types/types';
 import { allowedExtensions } from '../../../utils/utils';
 import useLanguage from '../../language/useLanguage';
