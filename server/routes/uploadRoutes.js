@@ -27,7 +27,7 @@ router.post(
 
       if (err && err.code === 'LIMIT_UNEXPECTED_FILE') {
         return res.status(400).send({
-          message: t('fileExceedsSize', req.lang),
+          message: t('maximumFileLimitExceeded', req.lang),
         });
       }
 
