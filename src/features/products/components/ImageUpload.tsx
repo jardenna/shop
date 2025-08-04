@@ -5,7 +5,7 @@ import Preview, {
 } from '../../../components/formElements/fileInput/Preview';
 import InputInfo from '../../../components/formElements/InputInfo';
 import { ChangePureInputType } from '../../../types/types';
-import { allowedExtensions } from '../../../utils/utils';
+import { allowedExtensions, maxFiles } from '../../../utils/utils';
 import useLanguage from '../../language/useLanguage';
 
 type ImageUploadProps = {
@@ -33,6 +33,9 @@ const ImageUpload = ({
     .map((ext) => ext.toUpperCase())
     .join(', ');
   const inputInfoText = `${language.filesSuported}  ${allowedImages} | ${language.maximumFileSize} 1MB`;
+
+  // Error text for too many img files
+  const errorText = `${language.maximum}  ${maxFiles} ${language.filesCanBeUploaded} ${language.pleaseRemoveOneOrMore}`;
 
   return (
     <div>
@@ -66,7 +69,9 @@ const ImageUpload = ({
           }}
         />
       </div>
+
       <InputInfo inputInfo={inputInfoText} />
+      {previewData.length > maxFiles && <p>{errorText}</p>}
       {previewData.length > 0 && (
         <Preview
           previewData={previewData}

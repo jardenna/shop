@@ -100,6 +100,7 @@ expandMenu;Expand menu;Udvid menu
 eye;Eye;Øje
 eyeClosed;Closed eye;Lukket øje
 favorites;Favorites;Favoritter
+filesCanBeUploaded;files can be uploaded;filer kan uploades
 fileExceedsSize;Selected file(s) exceeds the 1MB limit; Valgte fil(er) overstiger grænsen på 1 MB. Upload venligst en mindre fil
 fileTooLarge;File too large;Filen er for stor
 filesSuported;Files suported;Tilladte filer
@@ -152,6 +153,8 @@ man;Man;Mand
 material;Material;Materiale
 materialAndCare;Material and care;Materiale og vaskeanvisning
 materialRequired;Please insert material;Indsæt venligst materiale
+max;Max;Max
+maximum;Maximum;Maksimalt
 maximumFileLimitExceeded;Maximum file limit exceeded;Maksimalt antal filer er overskredet
 maximumFileSize;Maximum file size;Maksimal filstørrelse
 men;Men;Mænd
@@ -205,6 +208,7 @@ pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
 pleaseEnterTranslationKey;Please enter a translation key;Indsæt venligst oversættelsesnøgle
 pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
 pleaseProvideScheduledDate;Please provide a scheduled date;Angiv venligst en planlagt dato
+pleaseRemoveOneOrMore;please remove one or more;fjern venligst en eller flere
 pleaseSelectParentCategory;Please select parent category;Vælg venligst hovedkategori
 preferences;Preferences;Præferencer
 price;Price;Pris
