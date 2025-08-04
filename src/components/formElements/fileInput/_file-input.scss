@@ -5,6 +5,9 @@
 }
 
 .gray-scaled {
+  display: flex;
+  justify-content: center;
+
   img {
     opacity: 0.4;
     filter: grayscale(1);
@@ -12,6 +15,17 @@
 
   .btn-ghost {
     color: $color-primary;
+  }
+
+  .invalid-file {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    position: absolute;
+    top: 12px;
+    z-index: 2;
   }
 }
 

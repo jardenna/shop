@@ -1,6 +1,11 @@
 import ImgListItem from './ImgListItem';
 
-export type PreviewImg = { name: string; size: string; url: string };
+export type PreviewImg = {
+  name: string;
+  size: string;
+  url: string;
+  reason?: string;
+};
 
 export type PreviewProps = {
   ariaLabel: string;
@@ -14,24 +19,22 @@ const Preview = ({
   ariaLabel,
   title,
   previewData,
-}: PreviewProps) => {
-  console.log(previewData);
-
-  return (
-    <ul className="img-list preview-list">
-      {previewData.map(({ name, url }) => (
+}: PreviewProps) => (
+  <ul className="img-list preview-list">
+    {previewData.map(({ name, url, reason }) => (
+      <div key={url}>
         <ImgListItem
-          key={url}
           onClick={() => {
             onRemoveImg(name);
           }}
           img={url}
+          reason={reason}
           ariaLabel={`${ariaLabel} ${name}`}
           title={title}
         />
-      ))}
-    </ul>
-  );
-};
+      </div>
+    ))}
+  </ul>
+);
 
 export default Preview;

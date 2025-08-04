@@ -27,12 +27,12 @@ type FormValidationProps<T extends KeyValuePair<unknown>> = {
 };
 type ValidatedFile = {
   file: File;
-  isValid: boolean;
   name: string;
   size: string;
   url: string;
   reason?: 'invalidFileType' | 'fileTooLarge';
 };
+
 function useFormValidation<T extends KeyValuePair<unknown>>({
   initialState,
   callback,
@@ -104,6 +104,7 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
 
       const formatBytes = (bytes: number) => `${Math.round(bytes / 1000)} KB`;
       const fileArray = Array.from(selectedFiles);
+      setFilesData(fileArray);
 
       const results: ValidatedFile[] = fileArray.map((file) => {
         const ext = file.name
@@ -112,7 +113,6 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
         const isValidExt = allowedExtensions.includes(ext);
         const isValidSize = file.size <= maxFileSize;
 
-        const isValid = isValidExt && isValidSize;
         let reason: ValidatedFile['reason'];
 
         if (!isValidExt) {
@@ -126,7 +126,6 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
           name: file.name,
           size: formatBytes(file.size),
           url: URL.createObjectURL(file),
-          isValid,
           reason,
         };
       });
