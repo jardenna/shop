@@ -17,9 +17,15 @@ router.post(
   authorizeEmployee,
   (req, res) => {
     upload.array('images', MAX_FILES)(req, res, (err) => {
-      // Moved to errorHandler
+      // '5' is the max files limit
 
       if (err && err.code === 'LIMIT_FILE_SIZE') {
+        return res.status(400).send({
+          message: t('fileExceedsSize', req.lang),
+        });
+      }
+
+      if (err && err.code === 'LIMIT_UNEXPECTED_FILE') {
         return res.status(400).send({
           message: t('fileExceedsSize', req.lang),
         });

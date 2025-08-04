@@ -74,8 +74,7 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
   );
 
   function onChange(event: ChangeInputType) {
-    const { name, value, type, checked, files } =
-      event.target as HTMLInputElement;
+    const { name, value, type, checked } = event.target as HTMLInputElement;
 
     setValues({
       ...values,
@@ -100,14 +99,6 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
 
     if (!touched.includes(name)) {
       setTouched([...touched, name]);
-    }
-
-    const file = files?.[0];
-
-    if (file) {
-      if (event.target instanceof HTMLInputElement) {
-        handleFileChange(event as ChangeEvent<HTMLInputElement>);
-      }
     }
 
     // Clear the error message when typing
@@ -227,6 +218,7 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
     filesData,
     previewData,
     removePreviewImage,
+    handleFileChange,
   };
 }
 

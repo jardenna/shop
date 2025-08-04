@@ -34,17 +34,6 @@ const errorHandler = (error, req, res, next) => {
       .join(', ');
   }
 
-  // Multer specific error handling
-  if (error.code === 'LIMIT_FILE_SIZE') {
-    statusCode = 400;
-    message = t('fileExceedsSize', req.lang);
-  }
-
-  if (error.code === 'LIMIT_UNEXPECTED_FILE') {
-    statusCode = 400;
-    message = t('invalidFileType', req.lang);
-  }
-
   // Custom "no files" error
   if (error.message === t('noImagesProvided', req.lang)) {
     statusCode = 400;
