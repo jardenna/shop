@@ -4,7 +4,6 @@ import type {
   ChangeInputType,
   FormEventType,
 } from '../types/types';
-import { allowedExtensions, maxFiles, maxFileSize } from '../utils/utils';
 
 export type KeyValuePair<T> = {
   [key: string]: T;
@@ -42,7 +41,6 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
   const [isFocused, setIsFocused] = useState(false);
   const [filesData, setFilesData] = useState<File[]>([]);
   const [previewData, setPreviewData] = useState<PreviewImg[]>([]);
-  const [fileErrors, setFileErrors] = useState<KeyValuePair<string>>({});
 
   useEffect(() => {
     if (isSubmitting) {
@@ -57,83 +55,27 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
   const handleFileChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       const selectedFiles = event.target.files;
-      if (!selectedFiles) {
-        return;
-      }
 
-      const formatBytes = (bytes: number) => `${Math.round(bytes / 1000)} KB`;
+      if (selectedFiles) {
+        const fileArray = Array.from(selectedFiles);
+        setFilesData(fileArray);
+        const formatBytes = (bytes: number) => `${Math.round(bytes / 1000)} KB`;
 
-      const allFiles = Array.from(selectedFiles);
-
-      // Validate files first
-      const validationResults = allFiles.map((file) => {
-        const ext = file.name
-          .substring(file.name.lastIndexOf('.') + 1)
-          .toLowerCase();
-        const isValidExt = allowedExtensions.includes(ext);
-        const isValidSize = file.size <= maxFileSize;
-
-        let reason = '';
-        if (!isValidExt) {
-          reason = 'invalidFileType';
-        } else if (!isValidSize) {
-          reason = 'fileTooLarge';
-        }
-
-        return {
-          file,
-          isValid: isValidExt && isValidSize,
-          reason,
-        };
-      });
-
-      // Separate valid and rejected files
-      const validFiles = validationResults
-        .filter((f) => f.isValid)
-        .slice(0, maxFiles)
-        .map((f) => f.file);
-
-      const rejectedFiles = [
-        ...validationResults
-          .filter((f) => !f.isValid)
-          .map((f) => ({
-            name: f.file.name,
-            reason: f.reason,
-          })),
-      ];
-
-      const overflow = validationResults
-        .filter((f) => f.isValid)
-        .slice(maxFiles);
-      overflow.forEach((f) =>
-        rejectedFiles.push({
-          name: f.file.name,
-          reason: `maximumFileLimitExceeded`,
-        }),
-      );
-
-      setFilesData(validFiles);
-
-      setPreviewData(
-        validFiles.map((file) => ({
+        const previews = fileArray.map((file) => ({
           url: URL.createObjectURL(file),
           name: file.name,
           size: formatBytes(file.size),
-        })),
-      );
+        }));
 
-      const errorsForFiles = rejectedFiles.reduce<Record<string, string>>(
-        (acc, cur) => ({ ...acc, [cur.name]: cur.reason }),
-        {},
-      );
-
-      setFileErrors(errorsForFiles);
+        setPreviewData(previews);
+      }
     },
     [],
   );
 
   function onChange(event: ChangeInputType) {
-    const { name, value, type, checked } = event.target as HTMLInputElement;
+    const { name, value, type, checked, files } =
+      event.target as HTMLInputElement;
 
     setValues({
       ...values,
@@ -158,6 +100,14 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
 
     if (!touched.includes(name)) {
       setTouched([...touched, name]);
+    }
+
+    const file = files?.[0];
+
+    if (file) {
+      if (event.target instanceof HTMLInputElement) {
+        handleFileChange(event as ChangeEvent<HTMLInputElement>);
+      }
     }
 
     // Clear the error message when typing
@@ -213,11 +163,11 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
   const onBlur = (event: BlurEventType) => {
     setIsFocused(false);
     const { name } = event.target;
+    if (!touched.includes(name)) {
+      setTouched([...touched, name]);
+    }
 
-    // Update touched state safely
-    setTouched((prev) => (prev.includes(name) ? prev : [...prev, name]));
-
-    // Validate only the blurred field
+    // Validate the specific field on blur
     if (validate) {
       const validationErrors = validate(values);
       setErrors((prevErrors) => ({
@@ -277,8 +227,6 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
     filesData,
     previewData,
     removePreviewImage,
-    handleFileChange,
-    fileErrors,
   };
 }
 

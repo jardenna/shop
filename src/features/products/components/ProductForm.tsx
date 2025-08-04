@@ -139,8 +139,6 @@ const ProductForm = ({
     onSubmit,
     errors,
     onCustomChange,
-    handleFileChange,
-    fileErrors,
     filesData,
     previewData,
     removePreviewImage,
@@ -163,7 +161,6 @@ const ProductForm = ({
   const [uploadImages] = useUploadImageMutation();
   const [createProduct] = useCreateProductMutation();
   const [updateProduct] = useUpdateProductMutation();
-  console.log(fileErrors);
 
   // Submit handler
   async function handleSubmitProduct() {
@@ -253,7 +250,7 @@ const ProductForm = ({
             <ImageUpload
               images={images}
               ariaLabel={`${language.delete} ${language.image}`}
-              onChange={handleFileChange}
+              onChange={onChange}
               previewData={previewData}
               onRemovePreviewImage={(name: string) => {
                 removePreviewImage(name);
