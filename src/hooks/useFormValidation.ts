@@ -4,12 +4,11 @@ import type {
   ChangeInputType,
   FormEventType,
 } from '../types/types';
+import { allowedExtensions, maxFileSize } from '../utils/utils';
 
 export type KeyValuePair<T> = {
   [key: string]: T;
 };
-
-export type PreviewImg = { name: string; size: string; url: string };
 
 export type ValidationErrors = {
   [key: string]: string;
@@ -26,6 +25,13 @@ type FormValidationProps<T extends KeyValuePair<unknown>> = {
   callback?: (values: T) => void;
   validate?: (values: T) => ValidationErrors;
 };
+type ValidatedFile = {
+  file: File;
+  name: string;
+  size: string;
+  url: string;
+  reason?: 'invalidFileType' | 'fileTooLarge';
+};
 
 function useFormValidation<T extends KeyValuePair<unknown>>({
   initialState,
@@ -40,7 +46,7 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [filesData, setFilesData] = useState<File[]>([]);
-  const [previewData, setPreviewData] = useState<PreviewImg[]>([]);
+  const [previewData, setPreviewData] = useState<ValidatedFile[]>([]);
 
   useEffect(() => {
     if (isSubmitting) {
@@ -52,30 +58,8 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
     }
   }, [errors]);
 
-  const handleFileChange = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
-      const selectedFiles = event.target.files;
-
-      if (selectedFiles) {
-        const fileArray = Array.from(selectedFiles);
-        setFilesData(fileArray);
-        const formatBytes = (bytes: number) => `${Math.round(bytes / 1000)} KB`;
-
-        const previews = fileArray.map((file) => ({
-          url: URL.createObjectURL(file),
-          name: file.name,
-          size: formatBytes(file.size),
-        }));
-
-        setPreviewData(previews);
-      }
-    },
-    [],
-  );
-
   function onChange(event: ChangeInputType) {
-    const { name, value, type, checked, files } =
-      event.target as HTMLInputElement;
+    const { name, value, type, checked } = event.target as HTMLInputElement;
 
     setValues({
       ...values,
@@ -102,14 +86,6 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
       setTouched([...touched, name]);
     }
 
-    const file = files?.[0];
-
-    if (file) {
-      if (event.target instanceof HTMLInputElement) {
-        handleFileChange(event as ChangeEvent<HTMLInputElement>);
-      }
-    }
-
     // Clear the error message when typing
     setErrors((prevErrors) => {
       const updatedErrors = { ...prevErrors };
@@ -118,6 +94,54 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
       return updatedErrors;
     });
   }
+
+  const handleFileChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const selectedFiles = event.target.files;
+      if (!selectedFiles) {
+        return;
+      }
+
+      const formatBytes = (bytes: number) => `${Math.round(bytes / 1000)} KB`;
+      const fileArray = Array.from(selectedFiles);
+      setFilesData(fileArray);
+
+      const results: ValidatedFile[] = fileArray.map((file) => {
+        const ext = file.name
+          .substring(file.name.lastIndexOf('.') + 1)
+          .toLowerCase();
+        const isValidExt = allowedExtensions.includes(ext);
+        const isValidSize = file.size <= maxFileSize;
+
+        let reason: ValidatedFile['reason'];
+
+        if (!isValidExt) {
+          reason = 'invalidFileType';
+        } else if (!isValidSize) {
+          reason = 'fileTooLarge';
+        }
+
+        return {
+          file,
+          name: file.name,
+          size: formatBytes(file.size),
+          url: URL.createObjectURL(file),
+          reason,
+        };
+      });
+
+      setPreviewData(results);
+    },
+    [],
+  );
+
+  const removePreviewImage = (name: string) => {
+    setFilesData((prev) => prev.filter((file) => file.name !== name));
+    //  currentValues.filter((item) => item !== value),
+    setPreviewData((prev) =>
+      prev.filter((result) => result.file.name !== name),
+    );
+  };
 
   const onCustomChange = (
     name: string,
@@ -204,15 +228,6 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
     }
   };
 
-  const removePreviewImage = (name: string) => {
-    setPreviewData((prevPreviewData) =>
-      prevPreviewData.filter((img) => img.name !== name),
-    );
-
-    const updatedFilesData = filesData.filter((file) => file.name !== name);
-    setFilesData(updatedFilesData);
-  };
-
   return {
     onSubmit,
     onChange,
@@ -227,6 +242,7 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
     filesData,
     previewData,
     removePreviewImage,
+    handleFileChange,
   };
 }
 

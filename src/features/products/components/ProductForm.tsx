@@ -24,7 +24,7 @@ import { AdminPath } from '../../../layout/nav/enums';
 import variables from '../../../scss/variables.module.scss';
 import type { OptionType } from '../../../types/types';
 import { colorList, getColorOptions } from '../../../utils/colorUtils';
-import { getlowerCaseFirstLetter } from '../../../utils/utils';
+import { getlowerCaseFirstLetter, maxFiles } from '../../../utils/utils';
 import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
 import useCurrency from '../../currency/useCurrency';
 import useLanguage from '../../language/useLanguage';
@@ -142,6 +142,7 @@ const ProductForm = ({
     filesData,
     previewData,
     removePreviewImage,
+    handleFileChange,
   } = useFormValidation({
     initialState,
     validate: validateProduct,
@@ -246,11 +247,14 @@ const ProductForm = ({
               required
             />
           </FormCard>
-          <FormCard legendText={language.productImages} onReset={onReset}>
+          <FormCard
+            legendText={`${language.productImages} (${language.max} ${maxFiles})`}
+            onReset={onReset}
+          >
             <ImageUpload
               images={images}
               ariaLabel={`${language.delete} ${language.image}`}
-              onChange={onChange}
+              onChange={handleFileChange}
               previewData={previewData}
               onRemovePreviewImage={(name: string) => {
                 removePreviewImage(name);

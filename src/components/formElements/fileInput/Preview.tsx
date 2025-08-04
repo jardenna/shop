@@ -1,5 +1,11 @@
-import type { PreviewImg } from '../../../hooks/useFormValidation';
 import ImgListItem from './ImgListItem';
+
+export type PreviewImg = {
+  name: string;
+  size: string;
+  url: string;
+  reason?: string;
+};
 
 export type PreviewProps = {
   ariaLabel: string;
@@ -15,16 +21,18 @@ const Preview = ({
   previewData,
 }: PreviewProps) => (
   <ul className="img-list preview-list">
-    {previewData.map((preview, index) => (
-      <ImgListItem
-        key={index}
-        onClick={() => {
-          onRemoveImg(preview.name);
-        }}
-        img={preview.url}
-        ariaLabel={`${ariaLabel} ${preview.name}`}
-        title={title}
-      />
+    {previewData.map(({ name, url, reason }) => (
+      <div key={url}>
+        <ImgListItem
+          onClick={() => {
+            onRemoveImg(name);
+          }}
+          img={url}
+          reason={reason}
+          ariaLabel={`${ariaLabel} ${name}`}
+          title={title}
+        />
+      </div>
     ))}
   </ul>
 );

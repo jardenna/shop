@@ -34,6 +34,11 @@ const errorHandler = (error, req, res, next) => {
       .join(', ');
   }
 
+  // Custom "no files" error
+  if (error.message === t('noImagesProvided', req.lang)) {
+    statusCode = 400;
+  }
+
   res.status(statusCode).json({
     success: false,
     message,

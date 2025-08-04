@@ -1,10 +1,11 @@
 import FileInput from '../../../components/formElements/fileInput/FileInput';
 import ImgListItem from '../../../components/formElements/fileInput/ImgListItem';
-import Preview from '../../../components/formElements/fileInput/Preview';
+import Preview, {
+  PreviewImg,
+} from '../../../components/formElements/fileInput/Preview';
 import InputInfo from '../../../components/formElements/InputInfo';
-import { PreviewImg } from '../../../hooks/useFormValidation';
-import type { ChangeInputType } from '../../../types/types';
-import { allowedExtensions } from '../../../utils/utils';
+import { ChangePureInputType } from '../../../types/types';
+import { allowedExtensions, maxFiles } from '../../../utils/utils';
 import useLanguage from '../../language/useLanguage';
 
 type ImageUploadProps = {
@@ -12,10 +13,11 @@ type ImageUploadProps = {
   disabledImages: string[];
   images: string[];
   previewData: PreviewImg[];
-  onChange: (event: ChangeInputType) => void;
+  onChange: (event: ChangePureInputType) => void;
   onRemovePreviewImage: (id: string) => void;
   onToggleImage: (id: string) => void;
 };
+
 const ImageUpload = ({
   images,
   onRemovePreviewImage,
@@ -31,6 +33,9 @@ const ImageUpload = ({
     .map((ext) => ext.toUpperCase())
     .join(', ');
   const inputInfoText = `${language.filesSuported}  ${allowedImages} | ${language.maximumFileSize} 1MB`;
+
+  // Error text for too many img files
+  const errorText = `${language.maximum}  ${maxFiles} ${language.filesCanBeUploaded} ${language.pleaseRemoveOneOrMore}`;
 
   return (
     <div>
@@ -64,7 +69,9 @@ const ImageUpload = ({
           }}
         />
       </div>
+
       <InputInfo inputInfo={inputInfoText} />
+      {previewData.length > maxFiles && <p>{errorText}</p>}
       {previewData.length > 0 && (
         <Preview
           previewData={previewData}
