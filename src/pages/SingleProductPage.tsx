@@ -115,14 +115,7 @@ const SingleProductPage = () => {
               <ProductDiscountPrice
                 price={product.price}
                 discount={product.discount}
-              />{' '}
-              <p>
-                Low stock: 5 left
-                {product.countInStock < 5
-                  ? 'Low in stock'
-                  : product.countInStock}
-                100 in stock , Delivery by Aug 14, 2025
-              </p>
+              />
               <ShopProductForm
                 selectedProduct={product}
                 colorList={colorList}
