@@ -31,8 +31,8 @@
       left: 40px;
       padding: 12px;
 
-      @include max-size($large) {
-        position: static;
+      @include max-size($medium) {
+        left: auto;
       }
     }
 
@@ -54,6 +54,10 @@
         order: 2;
         left: auto;
         right: 20%;
+
+        @include max-size($large) {
+          right: auto;
+        }
 
         @include max-size($small) {
           order: initial;
