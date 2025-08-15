@@ -1,6 +1,6 @@
-import { Link } from 'react-router';
 import { IconName } from '../../types/enums';
 import Icon from '../icons/Icon';
+import LinkButton from '../LinkButton';
 
 type BreadcrumbItemProps = {
   isCurrent: boolean;
@@ -10,13 +10,12 @@ type BreadcrumbItemProps = {
 
 const BreadcrumbItem = ({ to, label, isCurrent }: BreadcrumbItemProps) => (
   <li className="breadcrumbs-item">
-    <Link
-      to={to}
-      aria-current={isCurrent ? 'page' : undefined}
-      className="btn btn-ghost"
-    >
-      {label}
-    </Link>
+    <LinkButton
+      linkTo={to}
+      linkText={label}
+      ariaCurrent={isCurrent ? 'page' : undefined}
+    />
+
     {!isCurrent && (
       <Icon iconName={IconName.ChevronRight} title="Chevron right" size="16" />
     )}

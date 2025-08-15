@@ -1,4 +1,5 @@
 import useLanguage from '../../features/language/useLanguage';
+import { BtnVariant } from '../../types/enums';
 import LinkButton from '../LinkButton';
 import CardContent from './CardContent';
 
@@ -31,7 +32,11 @@ const CardRight = ({
               {name} {language.notVisibleInShop}.
             </p>
           </div>
-          <LinkButton linkTo={linkTo} linkText={language.publish} />
+          <LinkButton
+            linkTo={linkTo}
+            linkText={language.publish}
+            variant={BtnVariant.Primary}
+          />
         </>
       )}
     </CardContent>
