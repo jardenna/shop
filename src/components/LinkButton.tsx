@@ -4,8 +4,8 @@ import { BtnVariant } from '../types/enums';
 type LinkButtonProps = {
   linkText: string;
   linkTo: string;
-  variant?: BtnVariant;
   ariaCurrent?: any;
+  variant?: BtnVariant;
 };
 
 const LinkButton = ({
