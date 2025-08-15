@@ -102,14 +102,17 @@ const CollectionPage = () => {
                     className={`product-card-list ${productView === 'list' ? 'list' : ''}`}
                   >
                     {products &&
-                      products.products.map((product) => (
-                        <ProductCard
-                          key={product.id}
-                          product={product}
-                          displayList={productView === 'list'}
-                          categoryId={categoryId}
-                        />
-                      ))}
+                      products.products.map(
+                        (product) =>
+                          product.countInStock !== 0 && (
+                            <ProductCard
+                              key={product.id}
+                              product={product}
+                              displayList={productView === 'list'}
+                              categoryId={categoryId}
+                            />
+                          ),
+                      )}
                   </article>
                 </div>
               </ErrorBoundary>
