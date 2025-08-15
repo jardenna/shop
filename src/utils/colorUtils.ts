@@ -1,5 +1,5 @@
 const colorMap: Record<string, string> = {
-  black: '#1f2937',
+  black: '#020101',
   grey: '#99a4a9',
   brown: '#531e0a',
   white: '#fff',
