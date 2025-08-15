@@ -7,18 +7,24 @@
 .breadcrumbs {
   color: $color-gray-70;
   display: flex;
-  align-items: center;
   font-size: $font-medium;
 
+  .breadcrumbs-item {
+    display: flex;
+    align-items: center;
+  }
+
   svg {
-    width: rem(16px);
-    margin: 0 12px;
-    stroke: $color-gray-70;
+    stroke: currentcolor;
   }
 
   a {
     color: currentcolor;
     display: flex;
+
+    &:hover {
+      color: $color-gray-60;
+    }
   }
 
   [aria-current] {

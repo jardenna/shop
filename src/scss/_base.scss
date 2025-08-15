@@ -80,19 +80,6 @@ a {
   }
 }
 
-a:not(.btn) {
-  @include transition;
-
-  &:hover {
-    color: $color-gray-60;
-  }
-
-  &::after {
-    content: '';
-    inset: -10px;
-  }
-}
-
 img {
   max-width: 100%;
   border-radius: 4px;
