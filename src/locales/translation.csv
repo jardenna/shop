@@ -132,10 +132,12 @@ invalidFileType;Invalid file type;Ugyldig fil type
 invalidPassword;Invalid password;Ugyldig adgangskode
 invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for planlagt dato
 invalidUserData;Invalid user data;Ugyldig bruger data
+inStock;In stock;På lager
 items;items;stk
 kid;Kid;Barn
 kids;Kids;Børn
 language;Language;Sprog
+left;left;tilbage
 list;List;Liste
 loading;Loading;Loading
 lock;Lock;Hængelås
@@ -145,6 +147,7 @@ loginFailed;Login failed;Login mislykkedes
 loginHere;Log in here;Log ind her
 loginSucceeded;Login succeeded;Login lykkedes
 logout;Log out;Log ud
+lowStock;Low stock;Få på lager
 machineWash;Machine wash at 40 °C;Maskinvask ved 40 °C
 main;Main;Primær
 mainCategoryName;Parent category;Hovedkategori
@@ -187,6 +190,7 @@ notVisibleInShop;is not visible in the shop until the main category is published
 noUser;User not found. Please sign up first;Bruger blev ikke fundet. Opret dig først
 orange;Orange;Orange
 orders;Orders;Ordrer
+oytOfStock;Out of stock;Udsolgt
 page;Page;Side
 parentCategoryIs;Parent category is;Hovedkategori er
 password;Password;Adgangskode

@@ -5,6 +5,7 @@ import Favorites from '../components/favorites/Favorites';
 import Img from '../components/Img';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
 import useLanguage from '../features/language/useLanguage';
+import InStock from '../features/shop/components/InStock';
 import NotiFyMe from '../features/shop/components/NotiFyMe';
 import ShopProductForm from '../features/shop/components/ShopProductForm';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
@@ -23,6 +24,7 @@ export type InitialNotifyValues = {
 const SingleProductPage = () => {
   const { id } = useParams();
   const { language } = useLanguage();
+
   const initialState: InitialNotifyValues = {
     sizes: [],
     email: '',
@@ -116,6 +118,7 @@ const SingleProductPage = () => {
                 price={product.price}
                 discount={product.discount}
               />
+              <InStock stock={product.countInStock} />
               <ShopProductForm
                 selectedProduct={product}
                 colorList={colorList}
