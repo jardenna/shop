@@ -38,10 +38,10 @@ body,
 
 body {
   margin: 0;
+  font-family: $font-primary;
   font-size: $font-small;
   color: $color-primary;
   letter-spacing: rem(0.5px);
-  font-family: $font-primary;
 
   // Interpolation calculates intermediate values to enable smooth transitions between states
   interpolate-size: allow-keywords;
