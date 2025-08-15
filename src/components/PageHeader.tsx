@@ -13,7 +13,11 @@ const PageHeader = ({ heading, linkTo, linkText }: PageHeaderProps) => {
   return (
     <LayoutElement className="page-header" ariaLabel={language.page}>
       <h1>{heading}</h1>
-      {linkTo && <Link to={linkTo}>{linkText}</Link>}
+      {linkTo && (
+        <Link to={linkTo} className="btn btn-ghost">
+          {linkText}
+        </Link>
+      )}
     </LayoutElement>
   );
 };

@@ -10,7 +10,11 @@ type BreadcrumbItemProps = {
 
 const BreadcrumbItem = ({ to, label, isCurrent }: BreadcrumbItemProps) => (
   <li className="breadcrumbs-item">
-    <Link to={to} aria-current={isCurrent ? 'page' : undefined}>
+    <Link
+      to={to}
+      aria-current={isCurrent ? 'page' : undefined}
+      className="btn btn-ghost"
+    >
       {label}
     </Link>
     {!isCurrent && (

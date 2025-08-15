@@ -24,10 +24,7 @@ const ProductCard = ({
       {product.discount > 0 && (
         <span className="product-badge">- {product.discount} %</span>
       )}
-      <Link
-        className="product-card-link"
-        to={categoryId ? product.id : `allProducts/${product.id}`}
-      >
+      <Link to={categoryId ? product.id : `allProducts/${product.id}`}>
         <Img alt="" src={product.images[0]} className="product-card-img" />
       </Link>
       {!displayList && <SizeOverlay sizes={product.sizes} count={5} />}

@@ -10,10 +10,6 @@
   display: flex;
   gap: 8px;
   align-items: center;
-
-  &:focus-visible {
-    @include outline(currentcolor);
-  }
 }
 
 .btn-close {
