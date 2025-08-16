@@ -5,10 +5,12 @@ import Favorites from '../components/favorites/Favorites';
 import Img from '../components/Img';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
 import useLanguage from '../features/language/useLanguage';
+import InStock from '../features/shop/components/InStock';
 import NotiFyMe from '../features/shop/components/NotiFyMe';
 import ShopProductForm from '../features/shop/components/ShopProductForm';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
 import useFormValidation from '../hooks/useFormValidation';
+import LayoutElement from '../layout/LayoutElement';
 import MetaTags from '../layout/nav/MetaTags';
 import { getColorOptions } from '../utils/colorUtils';
 import { getDisplaySizes } from '../utils/sizeUtils';
@@ -22,6 +24,7 @@ export type InitialNotifyValues = {
 const SingleProductPage = () => {
   const { id } = useParams();
   const { language } = useLanguage();
+
   const initialState: InitialNotifyValues = {
     sizes: [],
     email: '',
@@ -102,35 +105,37 @@ const SingleProductPage = () => {
             ))}
           </ul>
           <section className="single-product">
-            <h1>{product.productName}</h1>
-            <Favorites id={product.id} />
-
-            <ProductDiscountPrice
-              price={product.price}
-              discount={product.discount}
-            />
-            <ShopProductForm
-              selectedProduct={product}
-              colorList={colorList}
-              displaySizeList={displaySizeList}
-            />
-
-            <p>Brand: {product.brand}</p>
-            <p>
-              Stock:
-              {product.countInStock < 5 ? 'Low in stock' : product.countInStock}
-            </p>
-            <Accordion accordionItems={accordionItems} />
-            {missingSizes.length > 0 && (
-              <NotiFyMe
-                options={missingSizes}
-                onChange={onChange}
-                values={values}
-                onSubmit={onSubmit}
-                id={product.id}
-                errors={errors}
+            <div className="single-product-content">
+              <p>Brand: {product.brand}</p>
+              <LayoutElement
+                ariaLabel={language.product}
+                className="single-product-header"
+              >
+                <h1>{product.productName}</h1>
+                <Favorites id={product.id} />
+              </LayoutElement>
+              <ProductDiscountPrice
+                price={product.price}
+                discount={product.discount}
               />
-            )}
+              <InStock stock={product.countInStock} />
+              <ShopProductForm
+                selectedProduct={product}
+                colorList={colorList}
+                displaySizeList={displaySizeList}
+              />
+              <Accordion accordionItems={accordionItems} />
+              {missingSizes.length > 0 && (
+                <NotiFyMe
+                  options={missingSizes}
+                  onChange={onChange}
+                  values={values}
+                  onSubmit={onSubmit}
+                  id={product.id}
+                  errors={errors}
+                />
+              )}
+            </div>
           </section>
         </article>
       )}

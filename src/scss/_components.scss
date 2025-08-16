@@ -10,10 +10,6 @@
   display: flex;
   gap: 8px;
   align-items: center;
-
-  &:focus-visible {
-    @include outline(currentcolor);
-  }
 }
 
 .btn-close {
@@ -54,4 +50,10 @@
     margin-bottom: 4px;
     font-size: 0.875rem;
   }
+}
+
+.in-stock {
+  display: flex;
+  gap: 4px;
+  align-items: center;
 }

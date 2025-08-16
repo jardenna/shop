@@ -38,10 +38,10 @@ body,
 
 body {
   margin: 0;
+  font-family: $font-primary;
   font-size: $font-small;
   color: $color-primary;
   letter-spacing: rem(0.5px);
-  font-family: $font-primary;
 
   // Interpolation calculates intermediate values to enable smooth transitions between states
   interpolate-size: allow-keywords;
@@ -74,22 +74,10 @@ h3 {
 a {
   text-decoration: none;
   color: $color-dust-red-20;
+  position: relative;
 
   &:focus-visible {
     outline: 2px solid currentcolor;
-  }
-}
-
-a:not(.btn) {
-  @include transition;
-
-  &:hover {
-    color: $color-gray-60;
-  }
-
-  &::after {
-    content: '';
-    inset: -10px;
   }
 }
 

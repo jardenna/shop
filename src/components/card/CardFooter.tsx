@@ -48,7 +48,11 @@ const CardFooter = ({
           {language.sureToDelete} {name}
         </ModalContainer>
       )}
-      <LinkButton linkTo={linkTo} linkText={language.edit} />
+      <LinkButton
+        linkTo={linkTo}
+        linkText={language.edit}
+        variant={BtnVariant.Primary}
+      />
     </LayoutElement>
   );
 };
