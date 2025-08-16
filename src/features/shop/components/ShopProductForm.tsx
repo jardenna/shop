@@ -9,6 +9,7 @@ import {
   sortColorsByTranslation,
 } from '../../../utils/colorUtils';
 import resolveIconName from '../../../utils/iconHelpers';
+import { oneSize } from '../../../utils/sizeUtils';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import useLanguage from '../../language/useLanguage';
 
@@ -32,7 +33,7 @@ const ShopProductForm = ({
 
   const initialState: InitialShopValues = {
     color: colorList[0].value,
-    size: '',
+    size: selectedProduct.sizes.length === 1 ? oneSize : '',
   };
 
   const { onChange, values, onSubmit, errors } = useFormValidation({
