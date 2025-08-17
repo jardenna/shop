@@ -71,6 +71,7 @@ const Selectbox = ({
       return false;
     }
   };
+  const ariaErrorId = `${id}-error`;
 
   return (
     <div className="input-container">
@@ -78,6 +79,7 @@ const Selectbox = ({
         errorText={errorText}
         required={required}
         labelText={labelText}
+        ariaErrorId={ariaErrorId}
         id={id}
         inputHasNoLabel={inputHasNoLabel}
       />
@@ -96,6 +98,7 @@ const Selectbox = ({
               primary50: '#DCE4E7',
             },
           })}
+          aria-errormessage={errorText ? ariaErrorId : undefined}
           classNamePrefix="select-box"
           closeMenuOnScroll={closeMenuOnScroll}
           isMulti={isMulti}
