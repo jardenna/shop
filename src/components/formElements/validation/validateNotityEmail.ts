@@ -1,18 +1,21 @@
 import type { ValidationErrors } from '../../../hooks/useFormValidation';
 import { InitialNotifyValues } from '../../../pages/SingleProductPage';
-import { ValidationMessage } from '../../../types/enums';
-import { emailRegex } from '../../../utils/regex';
+import validateEmail from './CommonFieldValidation';
 
 function validateNEmail(values: InitialNotifyValues) {
   const errors: ValidationErrors = {};
   const { email } = values;
 
   // Email Errors
-  if (!email) {
-    errors.email = ValidationMessage.PleaseEnterValidEmail;
-  } else if (typeof email === 'string' && !emailRegex.test(email)) {
-    errors.email = ValidationMessage.PleaseEnterValidEmail;
+  const emailError = validateEmail(email);
+  if (emailError) {
+    errors.email = emailError;
   }
+  // if (!email) {
+  //   errors.email = ValidationMessage.PleaseEnterValidEmail;
+  // } else if (typeof email === 'string' && !emailRegex.test(email)) {
+  //   errors.email = ValidationMessage.PleaseEnterValidEmail;
+  // }
 
   return errors;
 }

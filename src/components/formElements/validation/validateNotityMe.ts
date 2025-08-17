@@ -1,17 +1,16 @@
 import type { ValidationErrors } from '../../../hooks/useFormValidation';
 import { InitialNotifyValues } from '../../../pages/SingleProductPage';
 import { ValidationMessage } from '../../../types/enums';
-import { emailRegex } from '../../../utils/regex';
+import validateEmail from './CommonFieldValidation';
 
 function validateNotityMe(values: InitialNotifyValues) {
   const errors: ValidationErrors = {};
   const { email, sizes } = values;
 
   // Email Errors
-  if (!email) {
-    errors.email = ValidationMessage.PleaseEnterValidEmail;
-  } else if (typeof email === 'string' && !emailRegex.test(email)) {
-    errors.email = ValidationMessage.PleaseEnterValidEmail;
+  const emailError = validateEmail(email);
+  if (emailError) {
+    errors.email = emailError;
   }
 
   if (sizes.length === 0) {
