@@ -330,6 +330,9 @@ const ProductForm = ({
               onChange={onChange}
               values={values.sizes}
               required
+              inputInfo={
+                availableSizes.length === 0 ? language.sizeInfoText : undefined
+              }
               groupTitle={{
                 title: language.sizes,
                 id: 'choose-product-sizes',
