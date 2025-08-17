@@ -41,7 +41,10 @@ const ControlList = ({
     {groupTitle && (
       <OptionGroupTitle groupTitle={groupTitle} required={required} />
     )}
-    <ul className={`control-list ${className}`}>
+    <ul
+      className={`control-list ${className}`}
+      aria-labelledby={groupTitle ? groupTitle.id : undefined}
+    >
       {options.map((label, index) => {
         const id = `${name}-${index}`;
         const checked =

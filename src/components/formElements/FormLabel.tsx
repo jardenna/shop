@@ -5,6 +5,7 @@ import FormError from './FormError';
 type FormLabelErrorProps = {
   id: string;
   labelText: string;
+  ariaErrorId?: string;
   errorText?: string;
   inputHasNoLabel?: boolean;
   required?: boolean;
@@ -16,6 +17,7 @@ const FormLabel = ({
   required,
   inputHasNoLabel,
   errorText,
+  ariaErrorId,
 }: FormLabelErrorProps) => (
   <>
     <span className={inputHasNoLabel ? '' : 'form-label-container'}>
@@ -29,7 +31,9 @@ const FormLabel = ({
           {required && <RequiredIcon />}
         </label>
       )}
-      {errorText && <FormError errorText={errorText} ariaErrorId={id} />}
+      {errorText && (
+        <FormError errorText={errorText} ariaErrorId={ariaErrorId} />
+      )}
     </span>
     {errorText && (
       <span className="error-icon" aria-hidden="true">
