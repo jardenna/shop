@@ -5,6 +5,7 @@ account;Account;Konto
 actionOnlyAllowedForAdmin;This action is only allowed for administrator;Denne handling er kun tilladt for administrator
 add;Add;Tilføj
 additionalInfo;Additional info;Supplerende information
+addToBag;Add to bag;Læg i indkøbskurv
 addToStock;Add to stock;Tilføj til lager
 admin;Admin;Admin
 adminCannotBeDeleted;Administrator cannot be deleted;Administrator kan ikke slettes

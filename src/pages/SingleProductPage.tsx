@@ -124,8 +124,7 @@ const SingleProductPage = () => {
                 colorList={colorList}
                 displaySizeList={displaySizeList}
               />
-              <Accordion accordionItems={accordionItems} />
-              {missingSizes.length > 0 && (
+              {(missingSizes.length > 0 || product.countInStock === 0) && (
                 <NotiFyMe
                   options={missingSizes}
                   onChange={onChange}
@@ -135,6 +134,7 @@ const SingleProductPage = () => {
                   errors={errors}
                 />
               )}
+              <Accordion accordionItems={accordionItems} />
             </div>
           </section>
         </article>

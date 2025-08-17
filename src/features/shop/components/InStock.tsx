@@ -14,7 +14,6 @@ const InStock = ({ stock }: InStockProps) => {
       return {
         icon: IconName.Error,
         message: language.oytOfStock,
-        showNotify: true,
       };
     }
 
@@ -36,7 +35,6 @@ const InStock = ({ stock }: InStockProps) => {
   return (
     <div className="in-stock">
       <Icon iconName={status.icon} title="" /> {status.message}
-      {status.showNotify && <span>{language.notiftyMe}</span>}
     </div>
   );
 };

@@ -31,9 +31,11 @@ const ShopProductForm = ({
 }: ShopProductFormProps) => {
   const { language } = useLanguage();
 
+  const { sizes, countInStock, categoryName, colors } = selectedProduct;
+
   const initialState: InitialShopValues = {
     color: colorList[0].value,
-    size: selectedProduct.sizes.length === 1 ? oneSize : '',
+    size: sizes.length === 1 ? oneSize : '',
   };
 
   const { onChange, values, onSubmit, errors } = useFormValidation({
@@ -54,13 +56,15 @@ const ShopProductForm = ({
       ? language.selectedColor
       : `${language.selectedColor}: ${getlowerCaseFirstLetter(values.color, language)}`;
 
-  const sortedTranslatedColors = sortColorsByTranslation(
-    selectedProduct.colors,
-    language,
-  );
+  const sortedTranslatedColors = sortColorsByTranslation(colors, language);
 
   return (
-    <Form onSubmit={onSubmit} submitBtnLabel={language.create}>
+    <Form
+      onSubmit={onSubmit}
+      submitBtnLabel={
+        countInStock === 0 ? language.notiftyMe : language.addToBag
+      }
+    >
       <FieldSet legendText={language.productVariants} hideLegendText>
         <RadioControls
           initialChecked={values.color}
@@ -69,7 +73,7 @@ const ShopProductForm = ({
           onChange={onChange}
           options={sortedTranslatedColors}
           name="color"
-          iconName={resolveIconName(selectedProduct.categoryName)}
+          iconName={resolveIconName(categoryName)}
           groupTitle={{
             title: titleColor,
             id: 'choose-product-color',
@@ -80,7 +84,7 @@ const ShopProductForm = ({
         <RadioControls
           initialChecked={values.size}
           required={values.size === ''}
-          disabledList={selectedProduct.sizes}
+          disabledList={sizes}
           className="size-list"
           onChange={onChange}
           options={displaySizeList}
