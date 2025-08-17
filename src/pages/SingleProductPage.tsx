@@ -128,6 +128,7 @@ const SingleProductPage = () => {
                     onSubmit={onSubmit}
                     id={product.id}
                     errors={errors}
+                    sizesIsRequered={missingSizes.length > 0}
                   />
                 )}
               </div>

@@ -300,6 +300,8 @@ subCategoryList;Subcategory list;Underkategori-liste
 subCategoryName;Subcategory name;Underkategori navn
 success;Success;Succes
 sureToDelete;Do you want to delete;Vil du slette
+temporarilyOutOfStock;This item is temporarily out of stock;Varen er midlertidigt udsolgt
+temporarilyOutOfStockText;Get notified when the item is back in stock;Få besked, når varen er tilbage på lager
 title;Title;Titel
 totalProducts;Total products;Antal produkter
 translationKey;Translation key;Oversættelsesnøgle

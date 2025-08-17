@@ -31,7 +31,7 @@ const ShopProductForm = ({
 }: ShopProductFormProps) => {
   const { language } = useLanguage();
 
-  const { sizes, countInStock, categoryName, colors } = selectedProduct;
+  const { sizes, categoryName, colors } = selectedProduct;
 
   const initialState: InitialShopValues = {
     color: colorList[0].value,
@@ -59,12 +59,7 @@ const ShopProductForm = ({
   const sortedTranslatedColors = sortColorsByTranslation(colors, language);
 
   return (
-    <Form
-      onSubmit={onSubmit}
-      submitBtnLabel={
-        countInStock === 0 ? language.notiftyMe : language.addToBag
-      }
-    >
+    <Form onSubmit={onSubmit} submitBtnLabel={language.addToBag}>
       <FieldSet legendText={language.productVariants} hideLegendText>
         <RadioControls
           initialChecked={values.color}
