@@ -341,7 +341,7 @@ const ProductForm = ({
             />
           </FormCard>
           <FormCard legendText={language.pricing} onReset={onReset}>
-            <div className="flex">
+            <div className="flex price-inputs">
               <Input
                 type="number"
                 value={values.price || ''}

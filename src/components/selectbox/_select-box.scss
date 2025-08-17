@@ -9,6 +9,12 @@
       min-height: auto;
     }
   }
+
+  &.select-box-container {
+    .error-icon {
+      right: 32px;
+    }
+  }
 }
 
 .select-box__menu-portal,

@@ -74,7 +74,7 @@ const Selectbox = ({
   const ariaErrorId = `${id}-error`;
 
   return (
-    <div className="input-container">
+    <div className="input-container select-box-container">
       <FormLabel
         errorText={errorText}
         required={required}
