@@ -38,7 +38,6 @@ const Form = ({
         {onCancel && (
           <Button
             onClick={onCancel}
-            isLoading={isLoading}
             ariaLabel={ariaLabel}
             variant={BtnVariant.Secondary}
           >

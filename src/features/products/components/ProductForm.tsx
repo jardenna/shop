@@ -160,8 +160,9 @@ const ProductForm = ({
 
   // Redux hooks
   const [uploadImages] = useUploadImageMutation();
-  const [createProduct] = useCreateProductMutation();
-  const [updateProduct] = useUpdateProductMutation();
+  const [createProduct, { isLoading: isCreateLoading }] =
+    useCreateProductMutation();
+  const [updateProduct, { isLoading }] = useUpdateProductMutation();
 
   // Submit handler
   async function handleSubmitProduct() {
@@ -228,6 +229,7 @@ const ProductForm = ({
       submitBtnLabel={id ? language.save : language.create}
       ref={formRef}
       onCancel={handleGoback}
+      isLoading={isLoading || isCreateLoading}
     >
       <div className="form-container">
         <div className="flex-2">
