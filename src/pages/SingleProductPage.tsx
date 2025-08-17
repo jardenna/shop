@@ -118,22 +118,25 @@ const SingleProductPage = () => {
                 price={product.price}
                 discount={product.discount}
               />
-              <InStock stock={product.countInStock} />
+              <div className="flex">
+                <InStock stock={product.countInStock} />
+                {(missingSizes.length > 0 || product.countInStock === 0) && (
+                  <NotiFyMe
+                    options={missingSizes}
+                    onChange={onChange}
+                    values={values}
+                    onSubmit={onSubmit}
+                    id={product.id}
+                    errors={errors}
+                  />
+                )}
+              </div>
               <ShopProductForm
                 selectedProduct={product}
                 colorList={colorList}
                 displaySizeList={displaySizeList}
               />
-              {(missingSizes.length > 0 || product.countInStock === 0) && (
-                <NotiFyMe
-                  options={missingSizes}
-                  onChange={onChange}
-                  values={values}
-                  onSubmit={onSubmit}
-                  id={product.id}
-                  errors={errors}
-                />
-              )}
+
               <Accordion accordionItems={accordionItems} />
             </div>
           </section>
