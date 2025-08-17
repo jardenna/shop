@@ -69,6 +69,12 @@ textarea {
     border-color: $color-primary;
   }
 
+  &:has(.input-suffix) {
+    .error-icon {
+      right: 36px;
+    }
+  }
+
   input,
   textarea {
     padding: 12px;

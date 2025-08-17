@@ -9,6 +9,7 @@ import {
   sortColorsByTranslation,
 } from '../../../utils/colorUtils';
 import resolveIconName from '../../../utils/iconHelpers';
+import { oneSize } from '../../../utils/sizeUtils';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import useLanguage from '../../language/useLanguage';
 
@@ -30,9 +31,11 @@ const ShopProductForm = ({
 }: ShopProductFormProps) => {
   const { language } = useLanguage();
 
+  const { sizes, categoryName, colors } = selectedProduct;
+
   const initialState: InitialShopValues = {
     color: colorList[0].value,
-    size: '',
+    size: sizes.length === 1 ? oneSize : '',
   };
 
   const { onChange, values, onSubmit, errors } = useFormValidation({
@@ -53,13 +56,10 @@ const ShopProductForm = ({
       ? language.selectedColor
       : `${language.selectedColor}: ${getlowerCaseFirstLetter(values.color, language)}`;
 
-  const sortedTranslatedColors = sortColorsByTranslation(
-    selectedProduct.colors,
-    language,
-  );
+  const sortedTranslatedColors = sortColorsByTranslation(colors, language);
 
   return (
-    <Form onSubmit={onSubmit} submitBtnLabel={language.create}>
+    <Form onSubmit={onSubmit} submitBtnLabel={language.addToBag}>
       <FieldSet legendText={language.productVariants} hideLegendText>
         <RadioControls
           initialChecked={values.color}
@@ -68,7 +68,7 @@ const ShopProductForm = ({
           onChange={onChange}
           options={sortedTranslatedColors}
           name="color"
-          iconName={resolveIconName(selectedProduct.categoryName)}
+          iconName={resolveIconName(categoryName)}
           groupTitle={{
             title: titleColor,
             id: 'choose-product-color',
@@ -79,7 +79,7 @@ const ShopProductForm = ({
         <RadioControls
           initialChecked={values.size}
           required={values.size === ''}
-          disabledList={selectedProduct.sizes}
+          disabledList={sizes}
           className="size-list"
           onChange={onChange}
           options={displaySizeList}

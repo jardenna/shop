@@ -1,10 +1,11 @@
 type FormErrorProps = {
   errorText: string;
   ariaErrorId?: string;
+  role?: string;
 };
 
-const FormError = ({ errorText, ariaErrorId }: FormErrorProps) => (
-  <span id={`err-${ariaErrorId}`} className="error-message">
+const FormError = ({ errorText, ariaErrorId, role }: FormErrorProps) => (
+  <span id={ariaErrorId} className="error-message" role={role}>
     {errorText}
   </span>
 );

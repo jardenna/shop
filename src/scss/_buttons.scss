@@ -18,7 +18,7 @@ a[class^='btn-'],
   align-items: center;
   position: relative;
   font-family: inherit;
-  font-size: clamp($font-small, $clamp-val, rem(16px));
+  font-size: $font-medium;
   font-weight: normal;
   padding: 16px;
   border-radius: 4px;
@@ -87,13 +87,13 @@ a[class^='btn-'],
 }
 
 // Ghost button
-
 .btn-ghost {
   background-color: transparent;
   color: $color-primary;
   width: fit-content;
   min-height: auto;
   padding: 0;
+  font-size: $font-small;
 
   &:hover,
   &:focus-visible {

@@ -3,13 +3,13 @@ import { Size } from '../app/api/apiTypes/sharedApiTypes';
 import Accordion from '../components/accordion/Accordion';
 import Favorites from '../components/favorites/Favorites';
 import Img from '../components/Img';
+import useAuth from '../features/auth/hooks/useAuth';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
 import useLanguage from '../features/language/useLanguage';
 import InStock from '../features/shop/components/InStock';
 import NotiFyMe from '../features/shop/components/NotiFyMe';
 import ShopProductForm from '../features/shop/components/ShopProductForm';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
-import useFormValidation from '../hooks/useFormValidation';
 import LayoutElement from '../layout/LayoutElement';
 import MetaTags from '../layout/nav/MetaTags';
 import { getColorOptions } from '../utils/colorUtils';
@@ -22,23 +22,9 @@ export type InitialNotifyValues = {
 };
 
 const SingleProductPage = () => {
+  const { currentUser } = useAuth();
   const { id } = useParams();
   const { language } = useLanguage();
-
-  const initialState: InitialNotifyValues = {
-    sizes: [],
-    email: '',
-  };
-
-  const { onChange, values, onSubmit, errors } = useFormValidation<{
-    email: string;
-    sizes: Size[];
-  }>({
-    initialState,
-    callback: () => {
-      console.log(values);
-    },
-  });
 
   const { data: product } = useGetSingleProductQuery(id ?? '');
 
@@ -118,23 +104,24 @@ const SingleProductPage = () => {
                 price={product.price}
                 discount={product.discount}
               />
-              <InStock stock={product.countInStock} />
+              <div className="flex">
+                <InStock stock={product.countInStock} />
+                {(missingSizes.length > 0 || product.countInStock === 0) && (
+                  <NotiFyMe
+                    options={missingSizes}
+                    id="notifyMe"
+                    sizesIsRequered={missingSizes.length > 0}
+                    currentUser={currentUser}
+                  />
+                )}
+              </div>
               <ShopProductForm
                 selectedProduct={product}
                 colorList={colorList}
                 displaySizeList={displaySizeList}
               />
+
               <Accordion accordionItems={accordionItems} />
-              {missingSizes.length > 0 && (
-                <NotiFyMe
-                  options={missingSizes}
-                  onChange={onChange}
-                  values={values}
-                  onSubmit={onSubmit}
-                  id={product.id}
-                  errors={errors}
-                />
-              )}
             </div>
           </section>
         </article>

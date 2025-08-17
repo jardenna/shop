@@ -160,8 +160,9 @@ const ProductForm = ({
 
   // Redux hooks
   const [uploadImages] = useUploadImageMutation();
-  const [createProduct] = useCreateProductMutation();
-  const [updateProduct] = useUpdateProductMutation();
+  const [createProduct, { isLoading: isCreateLoading }] =
+    useCreateProductMutation();
+  const [updateProduct, { isLoading }] = useUpdateProductMutation();
 
   // Submit handler
   async function handleSubmitProduct() {
@@ -228,6 +229,7 @@ const ProductForm = ({
       submitBtnLabel={id ? language.save : language.create}
       ref={formRef}
       onCancel={handleGoback}
+      isLoading={isLoading || isCreateLoading}
     >
       <div className="form-container">
         <div className="flex-2">
@@ -330,6 +332,9 @@ const ProductForm = ({
               onChange={onChange}
               values={values.sizes}
               required
+              inputInfo={
+                availableSizes.length === 0 ? language.sizeInfoText : undefined
+              }
               groupTitle={{
                 title: language.sizes,
                 id: 'choose-product-sizes',
@@ -338,7 +343,7 @@ const ProductForm = ({
             />
           </FormCard>
           <FormCard legendText={language.pricing} onReset={onReset}>
-            <div className="flex">
+            <div className="flex price-inputs">
               <Input
                 type="number"
                 value={values.price || ''}

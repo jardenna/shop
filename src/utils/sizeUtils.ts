@@ -9,6 +9,7 @@ import {
 } from '../app/api/apiTypes/sharedApiTypes';
 
 const clothingSizes: ClothingSizes[] = ['S', 'M', 'L', 'XL'];
+export const oneSize = 'Onesize';
 const womenShoeSizes: WomenShoesSizes[] = [
   '36',
   '37',
@@ -44,8 +45,6 @@ const kidsShoesSizes: KidsShoesSizes[] = [
   '34',
   'Onesize',
 ];
-
-const oneSize = 'Onesize';
 
 // Returns the allowed sizes based on the main and sub category
 const getAllowedSizesForCategory = ({

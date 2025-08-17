@@ -1,4 +1,5 @@
 import type { OptionGroupHeading } from '../../types/types';
+import FormError from '../formElements/FormError';
 import RequiredIcon from '../RequiredIcon';
 
 type OptionGroupTitleProps = {
@@ -7,14 +8,14 @@ type OptionGroupTitleProps = {
 };
 
 const OptionGroupTitle = ({ groupTitle, required }: OptionGroupTitleProps) => (
-  <div className="option-group-title">
-    <h2 className="title" aria-labelledby={groupTitle.id}>
+  <div className="form-label-container">
+    <span className="title" id={groupTitle.id}>
       {groupTitle.title}
       {required && <RequiredIcon />}
-    </h2>
+    </span>
 
     {groupTitle.errorText && (
-      <span className="error-message">{groupTitle.errorText}</span>
+      <FormError errorText={groupTitle.errorText} role="alert" />
     )}
   </div>
 );

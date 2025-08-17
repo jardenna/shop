@@ -68,6 +68,9 @@ const Input = ({
       event.target.value = inputValue.slice(0, maxLength);
     }
   };
+
+  const ariaErrorId = `${id}-error`;
+
   return (
     <>
       <div className="input-container">
@@ -75,6 +78,7 @@ const Input = ({
           required={required}
           labelText={labelText}
           id={id}
+          ariaErrorId={ariaErrorId}
           inputHasNoLabel={inputHasNoLabel}
           errorText={errorText}
         />
@@ -91,7 +95,7 @@ const Input = ({
           id={id}
           aria-invalid={errorText ? true : undefined}
           aria-required={required && !disabled}
-          aria-errormessage={errorText ? `err-${id}` : undefined}
+          aria-errormessage={errorText ? ariaErrorId : undefined}
           onBlur={onBlur}
           placeholder={placeholder}
           min={min}

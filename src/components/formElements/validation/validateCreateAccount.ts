@@ -1,6 +1,6 @@
 import type { ValidationErrors } from '../../../hooks/useFormValidation';
 import { ValidationMessage } from '../../../types/enums';
-import { emailRegex } from '../../../utils/regex';
+import validateEmail from './CommonFieldValidation';
 
 export type AuthFormValues = {
   confirmPassword: string;
@@ -19,10 +19,9 @@ function validateCreateAccount(values: AuthFormValues) {
   }
 
   // Email Errors
-  if (!email) {
-    errors.email = ValidationMessage.PleaseEnterValidEmail;
-  } else if (!emailRegex.test(email)) {
-    errors.email = ValidationMessage.PleaseEnterValidEmail;
+  const emailError = validateEmail(email);
+  if (emailError) {
+    errors.email = emailError;
   }
   // Password Errors
   if (!password) {
