@@ -6,7 +6,7 @@ import type { PrimaryActionBtnProps, SecondaryActionBtnProps } from './Modal';
 type ModalFooterProps = {
   primaryActionBtn: PrimaryActionBtnProps & { closeOnClick?: boolean }; // new prop
   secondaryActionBtn?: SecondaryActionBtnProps;
-  onCloseModal?: () => void;
+  onCloseModal: () => void;
 };
 
 const ModalFooter = ({
@@ -19,7 +19,7 @@ const ModalFooter = ({
       primaryActionBtn.onClick();
     }
 
-    if (primaryActionBtn.closeOnClick !== false && onCloseModal) {
+    if (primaryActionBtn.closeOnClick !== false) {
       onCloseModal();
     }
   };
