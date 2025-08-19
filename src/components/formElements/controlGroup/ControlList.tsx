@@ -37,7 +37,7 @@ const ControlList = ({
   iconName,
   className = '',
 }: ControlList) => (
-  <section>
+  <div>
     {groupTitle && (
       <OptionGroupTitle groupTitle={groupTitle} required={required} />
     )}
@@ -69,7 +69,7 @@ const ControlList = ({
       })}
     </ul>
     {inputInfo && <InputInfo inputInfo={inputInfo} />}
-  </section>
+  </div>
 );
 
 export default ControlList;
