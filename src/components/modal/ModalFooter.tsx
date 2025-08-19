@@ -3,26 +3,23 @@ import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import type { PrimaryActionBtnProps, SecondaryActionBtnProps } from './Modal';
 
-type modalFooterProps = {
-  primaryActionBtn: PrimaryActionBtnProps;
+type ModalFooterProps = {
+  primaryActionBtn: PrimaryActionBtnProps & { closeOnClick?: boolean }; // new prop
   secondaryActionBtn?: SecondaryActionBtnProps;
   onCloseModal?: () => void;
 };
 
 const ModalFooter = ({
   primaryActionBtn,
-  onCloseModal,
   secondaryActionBtn,
-}: modalFooterProps) => {
-  const handlePrimaryBtnClick = () => {
-    if (!onCloseModal) {
-      return;
+  onCloseModal,
+}: ModalFooterProps) => {
+  const handlePrimaryClick = () => {
+    if (primaryActionBtn.onClick) {
+      primaryActionBtn.onClick();
     }
 
-    if (!primaryActionBtn.onClick) {
-      onCloseModal();
-    } else {
-      primaryActionBtn.onClick();
+    if (primaryActionBtn.closeOnClick !== false && onCloseModal) {
       onCloseModal();
     }
   };
@@ -38,7 +35,7 @@ const ModalFooter = ({
         </Button>
       )}
       <Button
-        onClick={handlePrimaryBtnClick}
+        onClick={handlePrimaryClick}
         type={primaryActionBtn.buttonType}
         disabled={primaryActionBtn.disabled}
         className={primaryActionBtn.className}

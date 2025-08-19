@@ -45,12 +45,12 @@ const NotiFyMe = ({
     onSubmit,
     label: language.notiftyMe,
     buttonType: BtnType.Submit,
+    closeOnClick: false,
   };
 
   const secondaryActionBtn: SecondaryActionBtnProps = {
     label: language.cancel,
   };
-  console.log(errors);
 
   return (
     <ModalContainer

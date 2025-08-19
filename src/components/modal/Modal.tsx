@@ -18,6 +18,7 @@ export type PrimaryActionBtnProps = {
   label: string | null;
   buttonType?: BtnType;
   className?: string;
+  closeOnClick?: boolean;
   disabled?: boolean;
   variant?: BtnVariant;
   onClick?: () => void;
@@ -34,11 +35,11 @@ export type ModalProps = {
   children: ReactNode;
   id: string;
   modalHeaderText: string;
+  primaryActionBtn: PrimaryActionBtnProps;
   className?: string;
   isAlert?: boolean;
   modalInfo?: ReactNode;
   modalSize?: SizeVariant;
-  primaryActionBtn?: PrimaryActionBtnProps;
   secondaryActionBtn?: SecondaryActionBtnProps;
   showCloseIcon?: boolean;
 };
@@ -47,12 +48,12 @@ const Modal = ({
   id,
   modalHeaderText,
   children,
-  isAlert,
+  primaryActionBtn,
+  secondaryActionBtn,
+  showCloseIcon,
   modalSize = SizeVariant.Sm,
   className = '',
-  showCloseIcon,
-  secondaryActionBtn,
-  primaryActionBtn,
+  isAlert,
   modalInfo,
 }: ModalProps) => {
   const { isMobileSize } = useMediaQuery();
@@ -79,31 +80,26 @@ const Modal = ({
         onCloseModal={onCloseModal}
         showCloseIcon={showCloseIcon}
       />
-      {primaryActionBtn?.buttonType !== BtnType.Submit ? (
-        <>
-          <div className="modal-body">{children}</div>
-          {primaryActionBtn && (
-            <ModalFooter
-              onCloseModal={onCloseModal}
-              primaryActionBtn={primaryActionBtn}
-              secondaryActionBtn={secondaryActionBtn}
-            />
-          )}
-        </>
-      ) : (
-        <form
-          method="modal"
-          className="modal-form"
-          onSubmit={primaryActionBtn.onSubmit}
-        >
+      {primaryActionBtn.buttonType === BtnType.Submit ? (
+        <form className="modal-form" onSubmit={primaryActionBtn.onSubmit}>
           {children}
           <ModalFooter
-            onCloseModal={onCloseModal}
             primaryActionBtn={primaryActionBtn}
             secondaryActionBtn={secondaryActionBtn}
+            onCloseModal={onCloseModal}
           />
         </form>
+      ) : (
+        <>
+          <div className="modal-body">{children}</div>
+          <ModalFooter
+            primaryActionBtn={primaryActionBtn}
+            secondaryActionBtn={secondaryActionBtn}
+            onCloseModal={onCloseModal}
+          />
+        </>
       )}
+
       {modalInfo && modalInfo}
     </article>
   );
@@ -112,7 +108,9 @@ const Modal = ({
     <Portal portalId="modal">
       <dialog
         ref={popupRef}
-        className={`modal modal-${modalSize} ${className} ${popupClass} ${isMobileSize ? 'animate-top-right' : 'animate-top-center'}`}
+        className={`modal modal-${modalSize} ${className} ${popupClass} ${
+          isMobileSize ? 'animate-top-right' : 'animate-top-center'
+        }`}
         role={isAlert ? PopupRole.Alert : undefined}
       >
         {isMobileSize ? (
