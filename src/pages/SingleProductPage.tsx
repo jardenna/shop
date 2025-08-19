@@ -92,7 +92,9 @@ const SingleProductPage = () => {
           </ul>
           <section className="single-product">
             <div className="single-product-content">
-              <p>Brand: {product.brand}</p>
+              <p>
+                {language.brand}: {product.brand}
+              </p>
               <LayoutElement
                 ariaLabel={language.product}
                 className="single-product-header"

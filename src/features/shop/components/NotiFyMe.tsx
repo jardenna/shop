@@ -96,6 +96,7 @@ const NotiFyMe = ({
         onChange={onChange}
         required
         type="email"
+        autoFocus
         errorText={language[errors.email]}
       />
     </ModalContainer>
