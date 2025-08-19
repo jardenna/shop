@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { UserResponse } from '../../../app/api/apiTypes/adminApiTypes';
 import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import CheckboxControls from '../../../components/formElements/controlGroup/CheckboxControls';
@@ -25,6 +26,7 @@ const NotiFyMe = ({
   sizesIsRequered,
 }: NotifiMeProps) => {
   const { language } = useLanguage();
+  const [first, setFirst] = useState<string | null>(null);
   const initialState: InitialNotifyValues = {
     sizes: [],
     email: currentUser?.email ?? '',
@@ -35,17 +37,19 @@ const NotiFyMe = ({
     sizes: Size[];
   }>({
     initialState,
-    callback: () => {
-      console.log(values);
-    },
+    callback: handleSendEmail,
     validate: sizesIsRequered ? validateNotityMe : validateNEmail,
   });
 
+  function handleSendEmail() {
+    setFirst('We got your request. Hopefully we’ll be in touch soon!');
+  }
+
   const primaryActionBtn = {
     onSubmit,
-    label: language.notiftyMe,
+    label: first ? 'Continue shopping' : language.notiftyMe,
     buttonType: BtnType.Submit,
-    closeOnClick: false,
+    closeOnClick: !!first,
   };
 
   const secondaryActionBtn: SecondaryActionBtnProps = {
@@ -66,39 +70,45 @@ const NotiFyMe = ({
           : language.temporarilyOutOfStock
       }
     >
-      {sizesIsRequered ? (
-        <>
-          <p>
-            {language.missingYourSize}? {language.notiftyMeMessage}.
-          </p>
-          <CheckboxControls
-            options={options}
-            autoFocus
-            name="sizes"
-            onChange={onChange}
-            values={values.sizes}
-            required
-            groupTitle={{
-              title: language.sizes,
-              id: 'missing-sizes',
-              errorText: language[errors.sizes],
-            }}
-          />
-        </>
+      {first ? (
+        <div>{first}</div>
       ) : (
-        <p>{language.temporarilyOutOfStockText}.</p>
+        <div>
+          {sizesIsRequered ? (
+            <>
+              <p>
+                {language.missingYourSize}? {language.notiftyMeMessage}.
+              </p>
+              <CheckboxControls
+                options={options}
+                autoFocus
+                name="sizes"
+                onChange={onChange}
+                values={values.sizes}
+                required
+                groupTitle={{
+                  title: language.sizes,
+                  id: 'missing-sizes',
+                  errorText: language[errors.sizes],
+                }}
+              />
+            </>
+          ) : (
+            <p>{language.temporarilyOutOfStockText}.</p>
+          )}
+          <Input
+            name="email"
+            id="email"
+            value={values.email}
+            labelText={language.email}
+            onChange={onChange}
+            required
+            type="email"
+            autoFocus
+            errorText={language[errors.email]}
+          />
+        </div>
       )}
-      <Input
-        name="email"
-        id="email"
-        value={values.email}
-        labelText={language.email}
-        onChange={onChange}
-        required
-        type="email"
-        autoFocus
-        errorText={language[errors.email]}
-      />
     </ModalContainer>
   );
 };
