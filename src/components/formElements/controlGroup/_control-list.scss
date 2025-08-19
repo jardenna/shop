@@ -39,10 +39,6 @@
     &:has(input[type='checkbox']:checked) {
       background-color: $color-background-secondary;
       color: $color-white;
-
-      &:has(input:focus-visible) {
-        @include outline($color-gray-80);
-      }
     }
 
     &:has(input[type='radio']:checked) {

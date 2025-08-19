@@ -73,6 +73,15 @@ const Modal = ({
     return null;
   }
 
+  const handlePrimaryClick = () => {
+    if (primaryActionBtn.onClick) {
+      primaryActionBtn.onClick();
+    }
+
+    if (primaryActionBtn.closeOnClick !== false) {
+      onCloseModal();
+    }
+  };
   const ModalContent = (
     <article>
       <ModalHeader
@@ -80,6 +89,7 @@ const Modal = ({
         onCloseModal={onCloseModal}
         showCloseIcon={showCloseIcon}
       />
+      {/* Is modal body a form? */}
       {primaryActionBtn.buttonType === BtnType.Submit ? (
         <form className="modal-form" onSubmit={primaryActionBtn.onSubmit}>
           {children}
@@ -87,6 +97,7 @@ const Modal = ({
             primaryActionBtn={primaryActionBtn}
             secondaryActionBtn={secondaryActionBtn}
             onCloseModal={onCloseModal}
+            onPrimaryClick={handlePrimaryClick}
           />
         </form>
       ) : (
@@ -99,7 +110,6 @@ const Modal = ({
           />
         </>
       )}
-
       {modalInfo && modalInfo}
     </article>
   );

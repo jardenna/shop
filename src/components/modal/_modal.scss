@@ -29,6 +29,14 @@ dialog {
     }
   }
 
+  .control-list {
+    .control-item {
+      &:has(input:focus) {
+        @include outline;
+      }
+    }
+  }
+
   &.modal-sm {
     max-width: rem(500px);
 
