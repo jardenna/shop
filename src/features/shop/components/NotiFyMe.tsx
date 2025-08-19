@@ -73,6 +73,7 @@ const NotiFyMe = ({
           </p>
           <CheckboxControls
             options={options}
+            autoFocus
             name="sizes"
             onChange={onChange}
             values={values.sizes}

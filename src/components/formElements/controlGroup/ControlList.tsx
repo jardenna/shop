@@ -8,6 +8,7 @@ import './_control-list.scss';
 export type BaseControlGroupProps = {
   name: string;
   options: string[];
+  autoFocus?: boolean;
   className?: string;
   disabledList?: string[];
   groupTitle?: OptionGroupHeading;
@@ -36,6 +37,7 @@ const ControlList = ({
   onChange,
   iconName,
   className = '',
+  autoFocus,
 }: ControlList) => (
   <div>
     {groupTitle && (
@@ -55,6 +57,7 @@ const ControlList = ({
         return (
           <ControlInputField
             key={label}
+            autoFocus={autoFocus}
             iconName={iconName}
             id={id}
             type={type}

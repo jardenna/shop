@@ -13,6 +13,7 @@ type ControlInputFieldProps = {
   label: string;
   name: string;
   value: string;
+  autoFocus?: boolean;
   disabled?: boolean;
   iconName?: IconName;
   type?: InputType;
@@ -28,6 +29,7 @@ const ControlInputField = ({
   type = 'checkbox',
   onChange,
   iconName,
+  autoFocus,
 }: ControlInputFieldProps) => {
   const { language } = useLanguage();
 
@@ -57,6 +59,7 @@ const ControlInputField = ({
         checked={checked}
         onChange={onChange}
         disabled={disabled}
+        autoFocus={autoFocus}
       />
     </li>
   );
