@@ -49,7 +49,6 @@ const Layout = () => {
     initialState,
   });
 
-  // Button configurations
   const primaryActionBtn = {
     onSubmit,
     label: language.updatePreferences,

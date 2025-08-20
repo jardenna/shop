@@ -8,6 +8,10 @@
 .radio-btn-content {
   width: 100%;
 
+  &:has(input:focus-visible) {
+    @include outline;
+  }
+
   .radio-btn-label {
     width: 100%;
     display: inline-grid;

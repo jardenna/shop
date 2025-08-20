@@ -4,9 +4,12 @@
   display: flex;
   gap: 18px;
 
+  @include max-size($medium) {
+    gap: 2px;
+  }
+
   @include max-size($small) {
     flex-direction: column;
-    gap: 2px;
   }
 
   .nav-item {

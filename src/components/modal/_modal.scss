@@ -33,6 +33,12 @@
     }
   }
 
+  .radio-btn-content {
+    &:has(input:focus) {
+      @include outline;
+    }
+  }
+
   &.modal-sm {
     max-width: rem(400px);
 
