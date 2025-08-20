@@ -81,10 +81,6 @@ const routeList = [
     path: ShopPath.ShoppingCart,
     element: <ShoppingChartPage />,
   },
-  {
-    path: ShopPath.Favorites,
-    element: <FavoritesPage />,
-  },
 ];
 
 const adminRouteList = [
@@ -164,6 +160,10 @@ const routeConfig = createBrowserRouter([
   {
     element: <ProtectedRoute />,
     children: [
+      {
+        path: ShopPath.Favorites,
+        element: <FavoritesPage />,
+      },
       {
         path: AdminPath.Admin,
         element: <AdminLayout />,
