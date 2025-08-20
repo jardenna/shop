@@ -61,7 +61,7 @@ const EditUserInput = ({
           {!isAdmin && (
             <IconBtn
               onClick={onEditBtnClick}
-              iconName={IconName.Edit}
+              iconName={IconName.Pencil}
               title={language.pencil}
               ariaLabel={language.updateUser}
             />

@@ -29,7 +29,7 @@ const ProductActions = ({ onCopyProduct, id }: ProductActionsProps) => {
       onClick: () => {
         navigate(`${AdminPath.AdminProductUpdate}/${id}`);
       },
-      icon: <Icon iconName={IconName.Edit} title={language.pencil} />,
+      icon: <Icon iconName={IconName.Pencil} title={language.pencil} />,
     },
     {
       label: language.copy,

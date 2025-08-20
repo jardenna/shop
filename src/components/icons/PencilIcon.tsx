@@ -1,6 +1,11 @@
 import type { IconDefaultProps } from './Icon';
 
-const EditIcon = ({ size, title, className, ariaHidden }: IconDefaultProps) => (
+const PencilIcon = ({
+  size,
+  title,
+  className,
+  ariaHidden,
+}: IconDefaultProps) => (
   <svg
     role="img"
     xmlns="http://www.w3.org/2000/svg"
@@ -22,4 +27,4 @@ const EditIcon = ({ size, title, className, ariaHidden }: IconDefaultProps) => (
   </svg>
 );
 
-export default EditIcon;
+export default PencilIcon;
