@@ -15,7 +15,8 @@ const getFavorites = asyncHandler(async (req, res) => {
   const userWithFavorites = await User.findById(userId)
     .populate({
       path: 'favorites',
-      select: 'productName price discount sizes colors images',
+      select:
+        'productName price discount sizes colors images brand countInStock',
     })
     .lean();
 
