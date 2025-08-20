@@ -30,7 +30,7 @@ const Favorites = ({ id }: FavoritesProps) => {
         />
         <VisuallyHidden>
           {animate || isFavorite(id)
-            ? language.removeFromFavorit
+            ? language.removeFromFavorite
             : language.saveAsFavorit}
         </VisuallyHidden>
       </label>

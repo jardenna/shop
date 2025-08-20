@@ -143,7 +143,7 @@ const logoutCurrentUser = asyncHandler(async (req, res) => {
 
   res.status(200).json({
     success: true,
-    message: t('loggedOut', req.lang),
+    message: t('logOutSucceeded', req.lang),
   });
 });
 

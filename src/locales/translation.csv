@@ -1,6 +1,6 @@
 ﻿key;en;da
 accessories;Accessories;Accessories
-accessoriesAndToys;Accessories & toys;Accessories & legetøj
+accessoriesAndToys;Accessories & Toys;Accessories & legetøj
 account;Account;Konto
 actionOnlyAllowedForAdmin;This action is only allowed for administrator;Denne handling er kun tilladt for administrator
 add;Add;Tilføj
@@ -36,7 +36,7 @@ categoryNotFound;Category not found;Kategorien findes ikke
 categoryRequired;Please select a category;Vælg venligst kategori
 categoryStatus;Category status;Kategori status
 categoryUpdated;Category updated;Kategori opdateret
-circleChevronRight;Circle chevronRight;Circle chevronRight
+circleChevronRight;Circle chevron right;Circle chevron right
 clearFilters;Clear filters;Ryd filtre
 clearSort;Clear sort;Ryd sortering
 close;Close;Luk
@@ -98,7 +98,7 @@ favorites;Favorites;Favoritter
 filesCanBeUploaded;files can be uploaded;filer kan uploades
 fileExceedsSize;Selected file(s) exceeds the 1MB limit; Valgte fil(er) overstiger grænsen på 1 MB. Upload venligst en mindre fil
 fileTooLarge;File too large;Filen er for stor
-filesSupported;Files suported;Tilladte filer
+filesSupported;Files supported;Tilladte filer
 fillAll;Please fill all inputs;Udfyld venligst alle felter
 filter;Filter;Filtrer
 filterProducts;Filter products;Filtrer produkter
@@ -136,7 +136,7 @@ left;left;tilbage
 list;List;Liste
 loading;Loading;Loading
 lock;Lock;Hængelås
-loggedOut;Logged out successfully;Logget ud
+logOutSucceeded;Logout succeeded;Log ud lykkedes
 login;Log in;Log ind
 loginFailed;Login failed;Login mislykkedes
 loginHere;Log in here;Log ind her
@@ -151,7 +151,6 @@ man;Man;Mand
 material;Material;Materiale
 materialAndCare;Material and care;Materiale og vaskeanvisning
 materialRequired;Please insert material;Indsæt venligst materiale
-max;Max;Max
 maximum;Maximum;Maksimalt
 maximumFileLimitExceeded;Maximum file limit exceeded;Maksimalt antal filer er overskredet
 maximumFileSize;Maximum file size;Maksimal filstørrelse
@@ -171,7 +170,7 @@ name;Name;Navn
 newPrice;New price;Ny pris
 noData;No data found;Ingen data fundet
 noEmail;Please enter an email;Indtast venligst en e-mail
-noOptions;No optionsl;Ingen valgmuligheder
+noOptions;No options;Ingen valgmuligheder
 noPassword;Please enter a password;Indtast venligst en adgangskode
 noProduct;Product not found;Produkt blev ikke fundet
 notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 
@@ -214,7 +213,7 @@ price;Price;Pris
 priceRequired;Please insert price;Indsæt venligst pris
 pricing;Pricing;Prissætning
 product;Product;Produkt
-productActions;Product actions;Produkt aktioner
+productActions;Product actions;Produkt handlinger
 productCard;Product card;Produkt card
 productCopied;Product copied;Produkt blev kopieret
 productCreated;Product created;Produkt blev tilføjet
@@ -243,7 +242,7 @@ publishTime;Publish time;Udgivelsestidspunkt
 purple;Purple;Lilla
 qty;Qty;Antal
 red;Red;Rød
-removeFromFavorit;Remove  from favorite;Fjern fra favorit
+removeFromFavorite;Remove  from favorite;Fjern fra favorit
 resetFiltersAndSorting;Reset filters and sorting;Nulstil filtre og sortering
 retry;Retry;Forsøg igen
 role;Role;Rolle
@@ -253,7 +252,7 @@ saveAsFavorit;Save as favorite;Gem som favorit
 scheduled;Scheduled;Planlagt
 scheduledDate;Scheduled date;Planlagt dato
 scheduledDateMustBeFuture;Scheduled date must be after now;Planlagt dato skal være efter nu
-scheduledToBePubliched;is scheduled to be published at;er planlagt til udgivelse den 
+scheduledToBePublished;is scheduled to be published at;er planlagt til udgivelse den 
 search;Search;Søg
 selectPreferences;Select preferred language and currency;Vælg venligst sprog og valuta
 selectSize;Select size;Vælg størrelse
@@ -323,7 +322,7 @@ viewCategory;View category;Se kategori
 viewProduct;View product;Se produkt
 viewScheduledDate;View scheduled date;Se planlagt dato
 viewYourFavorites;View your favorites;Se dine favoritter
-warning;Warning;Warning
+warning;Warning;Advarsel
 welcome;Welcome;Velkommen
 white;White;Hvid
 woman;Woman;Dame
