@@ -48,14 +48,16 @@ const NotifyMe = ({
 
   const primaryActionBtn: PrimaryActionBtnProps = {
     onSubmit,
-    label: successMessage ? 'Continue shopping' : language.notiftyMe,
+    label: successMessage ? 'Continue shopping' : language.notifyMe,
     buttonType: BtnType.Submit,
     closeOnClick: !!successMessage,
   };
 
   return (
     <ModalContainer
-      triggerModalBtnContent="Missing sizes"
+      triggerModalBtnContent={
+        sizesIsRequered ? language.currentlyUnavailableSizes : language.notifyMe
+      }
       triggerModalBtnVariant={BtnVariant.Ghost}
       id={id}
       onClearAllValues={onClearAllValues}

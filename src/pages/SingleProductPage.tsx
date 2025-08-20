@@ -106,7 +106,7 @@ const SingleProductPage = () => {
                 price={product.price}
                 discount={product.discount}
               />
-              <div className="flex">
+              <div className="in-stock-container">
                 <InStock stock={product.countInStock} />
                 {(missingSizes.length > 0 || product.countInStock === 0) && (
                   <NotifyMe
