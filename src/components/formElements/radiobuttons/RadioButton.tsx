@@ -7,6 +7,7 @@ type RadioButtonProps = {
   initialChecked: string;
   name: string;
   radioButtonList: OptionType[];
+  autoFocus?: boolean;
   onChange: (event: ChangeInputType) => void;
 };
 
@@ -15,6 +16,7 @@ const RadioButton = ({
   radioButtonList,
   onChange,
   name,
+  autoFocus,
 }: RadioButtonProps) => {
   const { language } = useLanguage();
 
@@ -26,6 +28,7 @@ const RadioButton = ({
             {getlowerCaseFirstLetter(radio.label, language)}
           </label>
           <input
+            autoFocus={autoFocus}
             type="radio"
             id={radio.label}
             name={name}
