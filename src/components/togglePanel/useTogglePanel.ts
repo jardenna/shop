@@ -4,7 +4,11 @@ import useClickOutside from '../../hooks/useClickOutside';
 import useKeyPress from '../../hooks/useKeyPress';
 import { KeyCode } from '../../types/enums';
 
-const useTogglePanel = () => {
+const useTogglePanel = ({
+  preventClickOutside,
+}: {
+  preventClickOutside: boolean;
+}) => {
   const location = useLocation();
   const [isPanelShown, setIsPanelShown] = useState(false);
 
@@ -19,7 +23,9 @@ const useTogglePanel = () => {
   const panelRef = useRef<HTMLDivElement>(null);
 
   useClickOutside(panelRef, () => {
-    handleHidePanel();
+    if (!preventClickOutside) {
+      handleHidePanel();
+    }
   }, [panelRef]);
 
   const handleTogglePanel = () => {

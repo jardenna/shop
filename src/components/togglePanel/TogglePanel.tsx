@@ -13,6 +13,7 @@ type TogglePanelProps = {
   children: ReactNode;
   className?: string;
   panelPosition?: PanelPosition;
+  preventClickOutside?: boolean;
   showCloseIcon?: boolean;
   triggerBtnClassName?: string;
   triggerBtnContent?: ReactNode;
@@ -26,10 +27,12 @@ const TogglePanel = ({
   triggerBtnClassName = 'menu-burger',
   triggerBtnContent,
   showCloseIcon,
+  preventClickOutside = false,
 }: TogglePanelProps) => {
   const { language } = useLanguage();
-  const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
-    useTogglePanel();
+  const { isPanelShown, onTogglePanel, panelRef, onHidePanel } = useTogglePanel(
+    { preventClickOutside },
+  );
 
   return (
     <>
