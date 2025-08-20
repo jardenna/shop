@@ -51,12 +51,6 @@
   }
 }
 
-.in-stock {
-  display: flex;
-  gap: 4px;
-  align-items: center;
-}
-
 .price-inputs {
   @include max-size($large) {
     flex-direction: column;

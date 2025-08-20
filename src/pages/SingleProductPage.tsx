@@ -7,7 +7,7 @@ import useAuth from '../features/auth/hooks/useAuth';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
 import useLanguage from '../features/language/useLanguage';
 import InStock from '../features/shop/components/InStock';
-import NotiFyMe from '../features/shop/components/NotiFyMe';
+import NotifyMe from '../features/shop/components/NotifyMe';
 import ShopProductForm from '../features/shop/components/ShopProductForm';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
 import LayoutElement from '../layout/LayoutElement';
@@ -92,7 +92,9 @@ const SingleProductPage = () => {
           </ul>
           <section className="single-product">
             <div className="single-product-content">
-              <p>Brand: {product.brand}</p>
+              <p>
+                {language.brand}: {product.brand}
+              </p>
               <LayoutElement
                 ariaLabel={language.product}
                 className="single-product-header"
@@ -104,10 +106,10 @@ const SingleProductPage = () => {
                 price={product.price}
                 discount={product.discount}
               />
-              <div className="flex">
+              <div className="in-stock-container">
                 <InStock stock={product.countInStock} />
                 {(missingSizes.length > 0 || product.countInStock === 0) && (
-                  <NotiFyMe
+                  <NotifyMe
                     options={missingSizes}
                     id="notifyMe"
                     sizesIsRequered={missingSizes.length > 0}

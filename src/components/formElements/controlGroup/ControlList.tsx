@@ -8,6 +8,7 @@ import './_control-list.scss';
 export type BaseControlGroupProps = {
   name: string;
   options: string[];
+  autoFocus?: boolean;
   className?: string;
   disabledList?: string[];
   groupTitle?: OptionGroupHeading;
@@ -36,8 +37,9 @@ const ControlList = ({
   onChange,
   iconName,
   className = '',
+  autoFocus,
 }: ControlList) => (
-  <section>
+  <div>
     {groupTitle && (
       <OptionGroupTitle groupTitle={groupTitle} required={required} />
     )}
@@ -55,6 +57,7 @@ const ControlList = ({
         return (
           <ControlInputField
             key={label}
+            autoFocus={autoFocus}
             iconName={iconName}
             id={id}
             type={type}
@@ -69,7 +72,7 @@ const ControlList = ({
       })}
     </ul>
     {inputInfo && <InputInfo inputInfo={inputInfo} />}
-  </section>
+  </div>
 );
 
 export default ControlList;

@@ -3,51 +3,37 @@ import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import type { PrimaryActionBtnProps, SecondaryActionBtnProps } from './Modal';
 
-type modalFooterProps = {
-  primaryActionBtn: PrimaryActionBtnProps;
+type ModalFooterProps = {
+  primaryActionBtn: PrimaryActionBtnProps & { closeOnClick?: boolean }; // new prop
   secondaryActionBtn?: SecondaryActionBtnProps;
-  onCloseModal?: () => void;
+  onCloseModal: () => void;
+  onPrimaryClick?: () => void;
 };
 
 const ModalFooter = ({
   primaryActionBtn,
-  onCloseModal,
   secondaryActionBtn,
-}: modalFooterProps) => {
-  const handlePrimaryBtnClick = () => {
-    if (!onCloseModal) {
-      return;
-    }
-
-    if (!primaryActionBtn.onClick) {
-      onCloseModal();
-    } else {
-      primaryActionBtn.onClick();
-      onCloseModal();
-    }
-  };
-
-  return (
-    <LayoutElement as="footer" className="footer" ariaLabel="dialog">
-      {secondaryActionBtn && (
-        <Button
-          onClick={secondaryActionBtn.onClick || onCloseModal}
-          variant={secondaryActionBtn.variant || BtnVariant.Secondary}
-        >
-          {secondaryActionBtn.label}
-        </Button>
-      )}
+  onCloseModal,
+  onPrimaryClick,
+}: ModalFooterProps) => (
+  <LayoutElement as="footer" className="footer" ariaLabel="dialog">
+    {secondaryActionBtn && (
       <Button
-        onClick={handlePrimaryBtnClick}
-        type={primaryActionBtn.buttonType}
-        disabled={primaryActionBtn.disabled}
-        className={primaryActionBtn.className}
-        variant={primaryActionBtn.variant || BtnVariant.Primary}
+        onClick={secondaryActionBtn.onClick || onCloseModal}
+        variant={secondaryActionBtn.variant || BtnVariant.Secondary}
       >
-        {primaryActionBtn.label}
+        {secondaryActionBtn.label}
       </Button>
-    </LayoutElement>
-  );
-};
-
+    )}
+    <Button
+      onClick={onPrimaryClick}
+      type={primaryActionBtn.buttonType}
+      disabled={primaryActionBtn.disabled}
+      className={primaryActionBtn.className}
+      variant={primaryActionBtn.variant || BtnVariant.Primary}
+    >
+      {primaryActionBtn.label}
+    </Button>
+  </LayoutElement>
+);
 export default ModalFooter;

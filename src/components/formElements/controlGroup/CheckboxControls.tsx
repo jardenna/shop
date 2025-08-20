@@ -12,11 +12,13 @@ const CheckboxControls = ({
   groupTitle,
   required,
   inputInfo,
+  autoFocus,
 }: CheckboxControlsProps) => (
   <ControlList
     name={name}
     options={options}
     values={values}
+    autoFocus={autoFocus}
     onChange={onChange}
     inputInfo={inputInfo}
     required={required}

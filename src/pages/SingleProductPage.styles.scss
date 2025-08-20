@@ -19,6 +19,22 @@
     max-width: rem(500px);
   }
 
+  .in-stock-container {
+    display: flex;
+    gap: 12px;
+    margin-block: 16px;
+
+    .btn-ghost {
+      border-bottom: 1px solid currentcolor;
+    }
+  }
+
+  .in-stock {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+
   .product-discont-price {
     font-size: $font-large;
   }
@@ -29,5 +45,11 @@
     .product-img {
       border-radius: 0;
     }
+  }
+}
+
+.notify {
+  .input-container {
+    margin-top: 14px;
   }
 }

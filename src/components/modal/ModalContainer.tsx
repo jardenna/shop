@@ -26,8 +26,10 @@ const ModalContainer = ({
   modalHeaderText,
   triggerModalClassName,
   triggerModalDisabled,
+  onClearAllValues,
 }: ModalContainerProps) => {
   const dispatch = useAppDispatch();
+
   const handleOpenModal = () => {
     if (id) {
       dispatch(toggleModal(id));
@@ -53,6 +55,7 @@ const ModalContainer = ({
           secondaryActionBtn={secondaryActionBtn}
           modalSize={modalSize}
           className={className}
+          onClearAllValues={onClearAllValues}
         >
           {children}
         </Modal>
