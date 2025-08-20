@@ -55,7 +55,6 @@ const EditTableInput = ({
         ) : (
           alternativeInput
         )}
-
         <IconBtn
           onClick={onCancel}
           iconName={IconName.Close}
