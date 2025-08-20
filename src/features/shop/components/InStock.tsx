@@ -13,7 +13,7 @@ const InStock = ({ stock }: InStockProps) => {
     if (stock === 0) {
       return {
         icon: IconName.Error,
-        message: language.oytOfStock,
+        message: language.outOfStock,
       };
     }
 
