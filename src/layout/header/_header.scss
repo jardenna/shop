@@ -57,7 +57,7 @@
   display: flex;
   gap: 16px;
 
-  @include max-size($small) {
+  @include max-size($medium) {
     gap: 12px;
   }
 

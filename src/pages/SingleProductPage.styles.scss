@@ -5,6 +5,12 @@
   gap: 40px;
   margin-top: 40px;
 
+  @include max-size($mini) {
+    flex-direction: column;
+    margin-top: 0;
+    gap: 0;
+  }
+
   .single-product-header {
     display: flex;
     align-items: flex-end;
@@ -23,6 +29,10 @@
     display: flex;
     gap: 12px;
     margin-block: 16px;
+
+    @include max-size($small) {
+      flex-direction: column;
+    }
 
     .btn-ghost {
       border-bottom: 1px solid currentcolor;

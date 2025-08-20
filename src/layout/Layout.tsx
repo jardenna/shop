@@ -22,7 +22,7 @@ const Layout = () => {
   const { currentUser } = useAuth();
   const { currencyOptions, onChangePrice, exchangeRate } = useCurrency();
   const [logout] = useLogoutMutation();
-  const { isMobileSize, isTabletSize } = useMediaQuery();
+  const { isMobileSize } = useMediaQuery();
 
   const handleLogout = () => {
     logout();
@@ -120,7 +120,7 @@ const Layout = () => {
         userDropdownList={isEmployee ? employeeDropdownList : userDropdownList}
         primaryActionBtn={primaryActionBtn}
         secondaryActionBtn={secondaryActionBtn}
-        isMobileSize={isTabletSize}
+        isMobileSize={isMobileSize}
         defaultValue={{
           label: exchangeRate,
           value: exchangeRate,
