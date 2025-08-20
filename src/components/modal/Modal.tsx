@@ -42,6 +42,7 @@ export type ModalProps = {
   modalSize?: SizeVariant;
   secondaryActionBtn?: SecondaryActionBtnProps;
   showCloseIcon?: boolean;
+  onClearAllValues?: () => void;
 };
 
 const Modal = ({
@@ -55,6 +56,7 @@ const Modal = ({
   className = '',
   isAlert,
   modalInfo,
+  onClearAllValues,
 }: ModalProps) => {
   const { isMobileSize } = useMediaQuery();
   const modalId = useAppSelector(selectModalId);
@@ -63,10 +65,14 @@ const Modal = ({
   const { onCloseModal, popupClass } = useVisibility(
     modalId === id,
     onClosePopup,
+    onClearAllValues,
   );
 
   useClickOutside(popupRef, () => {
     onCloseModal();
+    if (onClearAllValues) {
+      onClearAllValues();
+    }
   }, [popupRef]);
 
   if (modalId !== id || !modalId) {
@@ -80,6 +86,9 @@ const Modal = ({
 
     if (primaryActionBtn.closeOnClick !== false) {
       onCloseModal();
+      if (onClearAllValues) {
+        onClearAllValues();
+      }
     }
   };
 

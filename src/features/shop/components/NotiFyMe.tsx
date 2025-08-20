@@ -3,6 +3,7 @@ import { UserResponse } from '../../../app/api/apiTypes/adminApiTypes';
 import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import validateNEmail from '../../../components/formElements/validation/validateNotityEmail';
 import validateNotityMe from '../../../components/formElements/validation/validateNotityMe';
+import { PrimaryActionBtnProps } from '../../../components/modal/Modal';
 import ModalContainer from '../../../components/modal/ModalContainer';
 import useFormValidation from '../../../hooks/useFormValidation';
 import { InitialNotifyValues } from '../../../pages/SingleProductPage';
@@ -30,20 +31,22 @@ const NotifyMe = ({
     email: currentUser?.email ?? '',
   };
 
-  const { onChange, values, onSubmit, errors } = useFormValidation<{
-    email: string;
-    sizes: Size[];
-  }>({
-    initialState,
-    callback: handleSendEmail,
-    validate: sizesIsRequered ? validateNotityMe : validateNEmail,
-  });
+  const { onChange, values, onSubmit, errors, onClearAllValues } =
+    useFormValidation<{
+      email: string;
+      sizes: Size[];
+    }>({
+      initialState,
+      callback: handleSendEmail,
+      validate: sizesIsRequered ? validateNotityMe : validateNEmail,
+    });
 
   function handleSendEmail() {
     setSuccessMessage(language.notiftySuccessMeMessage);
+    onClearAllValues();
   }
 
-  const primaryActionBtn = {
+  const primaryActionBtn: PrimaryActionBtnProps = {
     onSubmit,
     label: successMessage ? 'Continue shopping' : language.notiftyMe,
     buttonType: BtnType.Submit,
@@ -55,6 +58,7 @@ const NotifyMe = ({
       triggerModalBtnContent="Missing sizes"
       triggerModalBtnVariant={BtnVariant.Ghost}
       id={id}
+      onClearAllValues={onClearAllValues}
       primaryActionBtn={primaryActionBtn}
       modalSize={SizeVariant.Sm}
       modalHeaderText={

@@ -5,6 +5,7 @@ import { KeyCode } from '../../types/enums';
 const useVisibility = (
   isOpen: boolean,
   closeCallback: () => void,
+  onClearAllValues?: () => void,
   duration?: number, // Auto-dismiss duration in milliseconds
   transitionDuration = 500, // Animation duration in milliseconds
 ) => {
@@ -14,6 +15,9 @@ const useVisibility = (
   const handleCloseModal = () => {
     setIsVisible(false);
     timeoutRef.current = window.setTimeout(closeCallback, transitionDuration);
+    if (onClearAllValues) {
+      onClearAllValues();
+    }
   };
 
   useKeyPress(handleCloseModal, [KeyCode.Esc]);
