@@ -10,7 +10,7 @@ import CategoriesIcon from './CategoriesIcon';
 import CheckIcon from './CheckIcon';
 import ChevronLeftIcon from './ChevronLeftIcon';
 import ChevronRightIcon from './ChevronRightIcon';
-import CircelChevronRightIcon from './CircelChevronRightIcon';
+import CircleChevronRightIcon from './CircleChevronRightIcon';
 import CloseIcon from './CloseIcon';
 import DressIcon from './colors/DressIcon';
 import KidIcon from './colors/KidIcon';
@@ -74,7 +74,7 @@ const iconMapping = {
   check: CheckIcon,
   chevronLeft: ChevronLeftIcon,
   chevronRight: ChevronRightIcon,
-  circelChevronRight: CircelChevronRightIcon,
+  circleChevronRight: CircleChevronRightIcon,
   close: CloseIcon,
   dashboard: DashboardIcon,
   dress: DressIcon,

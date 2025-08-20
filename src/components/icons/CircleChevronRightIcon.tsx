@@ -1,6 +1,6 @@
 import type { IconDefaultProps } from './Icon';
 
-const CircelChevronRightIcon = ({
+const CircleChevronRightIcon = ({
   ariaHidden,
   size,
   title,
@@ -26,4 +26,4 @@ const CircelChevronRightIcon = ({
   </svg>
 );
 
-export default CircelChevronRightIcon;
+export default CircleChevronRightIcon;

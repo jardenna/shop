@@ -78,7 +78,7 @@ export enum IconName {
   Check = 'check',
   ChevronLeft = 'chevronLeft',
   ChevronRight = 'chevronRight',
-  CircelChevronRight = 'circelChevronRight',
+  CircleChevronRight = 'circleChevronRight',
   Close = 'close',
   Dashboard = 'dashboard',
   Dress = 'dress',
