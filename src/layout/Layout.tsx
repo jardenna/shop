@@ -13,7 +13,6 @@ import { BtnType, IconName } from '../types/enums';
 import type { OptionType } from '../types/types';
 import Header from './header/Header';
 import { AdminPath, ShopPath } from './nav/enums';
-import MetaTags from './nav/MetaTags';
 
 const Layout = () => {
   const navigate = useNavigate();
@@ -116,7 +115,6 @@ const Layout = () => {
 
   return (
     <div className="main-container">
-      <MetaTags />
       {!isMobileSize && <SkipLink />}
       <Header
         ariaLabel={language.mainSiteHeader}
