@@ -50,7 +50,7 @@ const CardFooter = ({
       )}
       <LinkButton
         linkTo={linkTo}
-        linkText={language.edit}
+        linkText={language.update}
         variant={BtnVariant.Primary}
       />
     </LayoutElement>
