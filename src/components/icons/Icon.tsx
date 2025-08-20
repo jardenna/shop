@@ -10,7 +10,7 @@ import CategoriesIcon from './CategoriesIcon';
 import CheckIcon from './CheckIcon';
 import ChevronLeftIcon from './ChevronLeftIcon';
 import ChevronRightIcon from './ChevronRightIcon';
-import CircelChevronRightIcon from './CircelChevronRightIcon';
+import CircleChevronRightIcon from './CircleChevronRightIcon';
 import CloseIcon from './CloseIcon';
 import DressIcon from './colors/DressIcon';
 import KidIcon from './colors/KidIcon';
@@ -18,7 +18,6 @@ import ManIcon from './colors/ManIcon';
 import WomanIcon from './colors/WomanIcon';
 import DashboardIcon from './DashboardIcon';
 import DublicateIcon from './DublicateIcon';
-import EditIcon from './EditIcon';
 import ErrorIcon from './ErrorIcon';
 import EyeIcon from './EyeIcon';
 import EyeOffIcon from './EyeOffIcon';
@@ -36,6 +35,7 @@ import LoginIcon from './LoginIcon';
 import Logo from './Logo';
 import LogoutIcon from './LogoutIcon';
 import OrdersIcon from './OrdersIcon';
+import PencilIcon from './PencilIcon';
 import ProductsIcon from './ProductsIcon';
 import SearchIcon from './SearchIcon';
 import ShoppingBagIcon from './ShoppingBagIcon';
@@ -74,12 +74,11 @@ const iconMapping = {
   check: CheckIcon,
   chevronLeft: ChevronLeftIcon,
   chevronRight: ChevronRightIcon,
-  circelChevronRight: CircelChevronRightIcon,
+  circleChevronRight: CircleChevronRightIcon,
   close: CloseIcon,
   dashboard: DashboardIcon,
   dress: DressIcon,
   dublicate: DublicateIcon,
-  edit: EditIcon,
   error: ErrorIcon,
   eye: EyeIcon,
   eyeOff: EyeOffIcon,
@@ -100,6 +99,7 @@ const iconMapping = {
   man: ManIcon,
   menuDotsHorizontal: ThreeDotsHorizontalIcon,
   orders: OrdersIcon,
+  pencil: PencilIcon,
   products: ProductsIcon,
   search: SearchIcon,
   shoppingBag: ShoppingBagIcon,

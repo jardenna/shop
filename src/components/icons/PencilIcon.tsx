@@ -1,10 +1,10 @@
 import type { IconDefaultProps } from './Icon';
 
-const CircelChevronRightIcon = ({
-  ariaHidden,
+const PencilIcon = ({
   size,
   title,
   className,
+  ariaHidden,
 }: IconDefaultProps) => (
   <svg
     role="img"
@@ -21,9 +21,10 @@ const CircelChevronRightIcon = ({
     aria-hidden={ariaHidden}
   >
     <title>{title}</title>
-    <circle cx="12" cy="12" r="10" />
-    <path d="m10 8 4 4-4 4" />
+    <path d="M12 20h9" />
+    <path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z" />
+    <path d="m15 5 3 3" />
   </svg>
 );
 
-export default CircelChevronRightIcon;
+export default PencilIcon;

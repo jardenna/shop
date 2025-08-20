@@ -32,7 +32,7 @@ const ImageUpload = ({
   const allowedImages = allowedExtensions
     .map((ext) => ext.toUpperCase())
     .join(', ');
-  const inputInfoText = `${language.filesSuported}  ${allowedImages} | ${language.maximumFileSize} 1MB`;
+  const inputInfoText = `${language.filesSupported}  ${allowedImages} | ${language.maximumFileSize} 1MB`;
 
   // Error text for too many img files
   const errorText = `${language.maximum}  ${maxFiles} ${language.filesCanBeUploaded} ${language.pleaseRemoveOneOrMore}`;

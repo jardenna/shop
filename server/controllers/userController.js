@@ -114,7 +114,7 @@ const deleteUserById = asyncHandler(async (req, res) => {
     if (user.isAdmin) {
       return res.status(400).json({
         success: false,
-        message: t('cannotDeleteAdmin', req.lang),
+        message: t('adminCannotBeDeleted', req.lang),
       });
     }
 

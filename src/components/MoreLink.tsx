@@ -14,8 +14,8 @@ const MoreLink = ({ linkText, linkTo }: MoreLinkProps) => {
     <Link to={linkTo} className="more-link btn btn-ghost">
       {linkText}
       <Icon
-        iconName={IconName.CircelChevronRight}
-        title={language.circelChevronRight}
+        iconName={IconName.CircleChevronRight}
+        title={language.circleChevronRight}
       />
     </Link>
   );
