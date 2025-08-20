@@ -82,6 +82,7 @@ const Modal = ({
       onCloseModal();
     }
   };
+
   const ModalContent = (
     <article>
       <ModalHeader

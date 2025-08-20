@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { UserResponse } from '../../../app/api/apiTypes/adminApiTypes';
 import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
-import CheckboxControls from '../../../components/formElements/controlGroup/CheckboxControls';
-import Input from '../../../components/formElements/Input';
 import validateNEmail from '../../../components/formElements/validation/validateNotityEmail';
 import validateNotityMe from '../../../components/formElements/validation/validateNotityMe';
 import ModalContainer from '../../../components/modal/ModalContainer';
@@ -10,6 +8,7 @@ import useFormValidation from '../../../hooks/useFormValidation';
 import { InitialNotifyValues } from '../../../pages/SingleProductPage';
 import { BtnType, BtnVariant, SizeVariant } from '../../../types/enums';
 import useLanguage from '../../language/useLanguage';
+import NotifyMeForm from './NotifyMeForm';
 
 type NotifiMeProps = {
   currentUser: UserResponse | undefined;
@@ -67,41 +66,13 @@ const NotifyMe = ({
       {successMessage ? (
         <p>{successMessage}</p>
       ) : (
-        <div className="notify">
-          {sizesIsRequered ? (
-            <>
-              <p>
-                {language.missingYourSize}? {language.notiftyMeMessage}.
-              </p>
-              <CheckboxControls
-                options={options}
-                autoFocus
-                name="sizes"
-                onChange={onChange}
-                values={values.sizes}
-                required
-                groupTitle={{
-                  title: language.sizes,
-                  id: 'missing-sizes',
-                  errorText: language[errors.sizes],
-                }}
-              />
-            </>
-          ) : (
-            <p>{language.temporarilyOutOfStockText}.</p>
-          )}
-          <Input
-            name="email"
-            id="email"
-            value={values.email}
-            labelText={language.email}
-            onChange={onChange}
-            required
-            type="email"
-            autoFocus={!sizesIsRequered}
-            errorText={language[errors.email]}
-          />
-        </div>
+        <NotifyMeForm
+          options={options}
+          values={values}
+          errors={errors}
+          onChange={onChange}
+          sizesIsRequered={sizesIsRequered}
+        />
       )}
     </ModalContainer>
   );
