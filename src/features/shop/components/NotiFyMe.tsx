@@ -5,7 +5,6 @@ import CheckboxControls from '../../../components/formElements/controlGroup/Chec
 import Input from '../../../components/formElements/Input';
 import validateNEmail from '../../../components/formElements/validation/validateNotityEmail';
 import validateNotityMe from '../../../components/formElements/validation/validateNotityMe';
-import { SecondaryActionBtnProps } from '../../../components/modal/Modal';
 import ModalContainer from '../../../components/modal/ModalContainer';
 import useFormValidation from '../../../hooks/useFormValidation';
 import { InitialNotifyValues } from '../../../pages/SingleProductPage';
@@ -19,14 +18,14 @@ type NotifiMeProps = {
   sizesIsRequered?: boolean;
 };
 
-const NotiFyMe = ({
+const NotifyMe = ({
   options,
   id,
   currentUser,
   sizesIsRequered,
 }: NotifiMeProps) => {
   const { language } = useLanguage();
-  const [first, setFirst] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const initialState: InitialNotifyValues = {
     sizes: [],
     email: currentUser?.email ?? '',
@@ -42,18 +41,14 @@ const NotiFyMe = ({
   });
 
   function handleSendEmail() {
-    setFirst('We got your request. Hopefully we’ll be in touch soon!');
+    setSuccessMessage(language.notiftySuccessMeMessage);
   }
 
   const primaryActionBtn = {
     onSubmit,
-    label: first ? 'Continue shopping' : language.notiftyMe,
+    label: successMessage ? 'Continue shopping' : language.notiftyMe,
     buttonType: BtnType.Submit,
-    closeOnClick: !!first,
-  };
-
-  const secondaryActionBtn: SecondaryActionBtnProps = {
-    label: language.cancel,
+    closeOnClick: !!successMessage,
   };
 
   return (
@@ -62,7 +57,6 @@ const NotiFyMe = ({
       triggerModalBtnVariant={BtnVariant.Ghost}
       id={id}
       primaryActionBtn={primaryActionBtn}
-      secondaryActionBtn={secondaryActionBtn}
       modalSize={SizeVariant.Sm}
       modalHeaderText={
         sizesIsRequered
@@ -70,10 +64,10 @@ const NotiFyMe = ({
           : language.temporarilyOutOfStock
       }
     >
-      {first ? (
-        <div>{first}</div>
+      {successMessage ? (
+        <p>{successMessage}</p>
       ) : (
-        <div>
+        <div className="notify">
           {sizesIsRequered ? (
             <>
               <p>
@@ -104,7 +98,7 @@ const NotiFyMe = ({
             onChange={onChange}
             required
             type="email"
-            autoFocus
+            autoFocus={!sizesIsRequered}
             errorText={language[errors.email]}
           />
         </div>
@@ -113,4 +107,4 @@ const NotiFyMe = ({
   );
 };
 
-export default NotiFyMe;
+export default NotifyMe;

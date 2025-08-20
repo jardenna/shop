@@ -92,17 +92,19 @@ const Modal = ({
       {/* Is modal body a form? */}
       {primaryActionBtn.buttonType === BtnType.Submit ? (
         <form className="modal-form" onSubmit={primaryActionBtn.onSubmit}>
-          {children}
-          <ModalFooter
-            primaryActionBtn={primaryActionBtn}
-            secondaryActionBtn={secondaryActionBtn}
-            onCloseModal={onCloseModal}
-            onPrimaryClick={handlePrimaryClick}
-          />
+          <section>
+            {children}
+            <ModalFooter
+              primaryActionBtn={primaryActionBtn}
+              secondaryActionBtn={secondaryActionBtn}
+              onCloseModal={onCloseModal}
+              onPrimaryClick={handlePrimaryClick}
+            />
+          </section>
         </form>
       ) : (
         <>
-          <div className="modal-body">{children}</div>
+          {children}
           <ModalFooter
             primaryActionBtn={primaryActionBtn}
             secondaryActionBtn={secondaryActionBtn}
