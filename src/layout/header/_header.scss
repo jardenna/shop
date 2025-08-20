@@ -8,6 +8,12 @@
 
   @include max-size($small) {
     align-items: flex-start;
+    gap: 16px;
+    justify-content: flex-start;
+
+    &.container {
+      padding-inline: 12px;
+    }
   }
 
   svg {
@@ -50,6 +56,10 @@
 .header-icon-list {
   display: flex;
   gap: 16px;
+
+  @include max-size($small) {
+    gap: 12px;
+  }
 
   .favorite-link {
     position: relative;
