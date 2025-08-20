@@ -63,7 +63,7 @@ const EditUserInput = ({
               onClick={onEditBtnClick}
               iconName={IconName.Edit}
               title={language.pencil}
-              ariaLabel={language.editUser}
+              ariaLabel={language.updateUser}
             />
           )}
         </>

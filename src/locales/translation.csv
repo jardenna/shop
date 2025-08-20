@@ -85,10 +85,7 @@ discoverLatestTrends;Discover latest trends;Udforsk de nyeste tendenser
 discoverLatestTrendsAltText;A man playfully surprises a woman by covering her eyes from behinds.;En mand overrasker legende en kvinde ved at dække hendes øjne bagfra.
 displayDensity;Display density;Visningstæthed
 doNotBleach;Do not bleach;Må ikke bleges
-editCategory;Edit category;Opdater kategori
-editProduct;Edit product;Opdater produkt
-editSubCategory;Edit subcategory;Opdater underkategori
-editUser;Edit user;Opdater bruger
+updateUser;Update user;Opdater bruger
 email;Email;E-mail
 employee;Employee;Ansat
 error;Error;Fejl
