@@ -26,3 +26,13 @@
     max-width: rem(300px);
   }
 }
+
+@include max-size($small) {
+  .collection-page-container {
+    flex-direction: column;
+  }
+
+  .collection-aside-header {
+    padding: 12px;
+  }
+}
