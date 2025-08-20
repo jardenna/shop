@@ -42,7 +42,7 @@ const NotifyMe = ({
     });
 
   function handleSendEmail() {
-    setSuccessMessage(language.notiftySuccessMeMessage);
+    setSuccessMessage(language.notifySuccessMeMessage);
     onClearAllValues();
   }
 

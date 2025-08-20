@@ -26,7 +26,7 @@ const NotifyMeForm = ({
       {sizesIsRequered ? (
         <>
           <p>
-            {language.missingYourSize}? {language.notiftyMeMessage}.
+            {language.missingYourSize}? {language.notifyMeMessage}.
           </p>
           <CheckboxControls
             options={options}
