@@ -57,7 +57,6 @@ couldNotFindInfo;Sorry, We couldn’t find the information you’re looking for;
 countInStock;Items in stock;Antal på lager
 create;Create;Opret
 createAccount;Create account;Opret konto
-created;Created;Tilføjet
 createdAt;Created at;Tilføjet den
 createNewCategory;Create new category;Opret ny kategori
 createNewProduct;Create new product;Opret nyt produkt
@@ -172,7 +171,6 @@ myAccount;My account;Min brugerkonto
 myBag;My bag;Min indkøbskurv
 myOrders;My orders;Mine ordrer
 name;Name;Navn
-newCategoryCreated;New category created;Ny kategori blev oprettet
 newPrice;New price;Ny pris
 noData;No data found;Ingen data fundet
 noEmail;Please enter an email;Indtast venligst en e-mail
