@@ -161,8 +161,13 @@ const routeConfig = createBrowserRouter([
     element: <ProtectedRoute />,
     children: [
       {
-        path: ShopPath.Favorites,
-        element: <FavoritesPage />,
+        element: <Layout />,
+        children: [
+          {
+            path: ShopPath.Favorites,
+            element: <FavoritesPage />,
+          },
+        ],
       },
       {
         path: AdminPath.Admin,

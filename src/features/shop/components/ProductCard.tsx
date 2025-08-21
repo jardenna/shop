@@ -1,5 +1,4 @@
 import { Link } from 'react-router';
-import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import Favorites from '../../../components/favorites/Favorites';
 import Img from '../../../components/Img';
 import './ProductCard.styles.scss';
@@ -9,7 +8,7 @@ import SizeOverlay from './SizeOverlay';
 
 type ProductCardProps = {
   displayList: boolean;
-  product: BaseProduct;
+  product: any;
   categoryId?: string;
 };
 
