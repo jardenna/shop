@@ -21,7 +21,7 @@ export type ToggleFavoriteResponse = {
   isFavorite: boolean;
 };
 
-export type Favorites = {
+export type ProductPreview = {
   brand: string;
   colors: string[];
   countInStock: number;

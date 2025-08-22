@@ -1,8 +1,8 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import { BaseProduct } from '../../app/api/apiTypes/sharedApiTypes';
 import type {
-  Favorites,
   ProductMenuResponse,
+  ProductPreview,
   ShopAllProductsResponse,
   ShopProductsParams,
   ToggleFavoriteResponse,
@@ -32,7 +32,7 @@ const shopApiSlice = apiSlice.injectEndpoints({
       query: (params) => `${subCategoryMenuUrl}${params}`,
       providesTags: [TagTypesEnum.Products],
     }),
-    getFavorites: builder.query<Favorites[], void>({
+    getFavorites: builder.query<ProductPreview[], void>({
       query: () => favoritesUrl,
       providesTags: [TagTypesEnum.Favorites],
     }),

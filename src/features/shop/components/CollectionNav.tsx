@@ -1,6 +1,6 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { NavLink } from 'react-router';
-import { ProductMenuResponse } from '../../../app/api/apiTypes/shopApiTypes';
+import type { ProductMenuResponse } from '../../../app/api/apiTypes/shopApiTypes';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import Skeleton from '../../../components/skeleton/Skeleton';
 import LayoutElement from '../../../layout/LayoutElement';
