@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { Link } from 'react-router';
-import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import { Favorites } from '../../../app/api/apiTypes/shopApiTypes';
 import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import Img from '../../../components/Img';
@@ -9,7 +8,7 @@ import SizeOverlay from './SizeOverlay';
 
 type ProductCardProps = {
   children: ReactNode;
-  product: BaseProduct | Favorites;
+  product: Favorites;
   categoryId?: string;
   displayList?: boolean;
 };
