@@ -1,6 +1,5 @@
 import { Link } from 'react-router';
 import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
-import { Favorites } from '../../../app/api/apiTypes/shopApiTypes';
 import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import Img from '../../../components/Img';
 import './ProductCard.styles.scss';
@@ -9,7 +8,7 @@ import ProductCardListContent from './ProductCardListContent';
 import SizeOverlay from './SizeOverlay';
 
 type ProductCardProps = {
-  product: BaseProduct | Favorites;
+  product: BaseProduct;
   categoryId?: string;
   displayList?: boolean;
 };
