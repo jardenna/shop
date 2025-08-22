@@ -11,7 +11,7 @@ const FavoritesPage = () => {
     <MainPageContainer heading={language.favorites}>
       <article className="product-card-list">
         {favorites.map((product) => (
-          <ProductCard key={product.id} product={product} displayList={false} />
+          <ProductCard key={product.id} product={product} />
         ))}
       </article>
     </MainPageContainer>

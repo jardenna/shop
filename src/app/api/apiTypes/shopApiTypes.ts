@@ -22,7 +22,9 @@ export type ToggleFavoriteResponse = {
 };
 
 export type Favorites = {
+  brand: string;
   colors: string[];
+  countInStock: number;
   discount: number;
   id: string;
   images: string[];

@@ -7,9 +7,9 @@ import ProductCardListContent from './ProductCardListContent';
 import SizeOverlay from './SizeOverlay';
 
 type ProductCardProps = {
-  displayList: boolean;
   product: any;
   categoryId?: string;
+  displayList?: boolean;
 };
 
 const ProductCard = ({
