@@ -1,14 +1,15 @@
+import { ReactNode } from 'react';
 import { Link } from 'react-router';
 import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
+import { Favorites } from '../../../app/api/apiTypes/shopApiTypes';
 import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import Img from '../../../components/Img';
 import './ProductCard.styles.scss';
-import ProductCardGridContent from './ProductCardGridContent';
-import ProductCardListContent from './ProductCardListContent';
 import SizeOverlay from './SizeOverlay';
 
 type ProductCardProps = {
-  product: BaseProduct;
+  children: ReactNode;
+  product: BaseProduct | Favorites;
   categoryId?: string;
   displayList?: boolean;
 };
@@ -17,6 +18,7 @@ const ProductCard = ({
   displayList,
   product,
   categoryId,
+  children,
 }: ProductCardProps) => (
   <section className="product-card">
     <div className="product-img-container">
@@ -31,11 +33,7 @@ const ProductCard = ({
     </div>
     <div className="product-card-content">
       <h2 className="product-card-title">{product.productName}</h2>
-      {displayList ? (
-        <ProductCardListContent product={product} />
-      ) : (
-        <ProductCardGridContent product={product} />
-      )}
+      {children}
     </div>
   </section>
 );
