@@ -3,14 +3,14 @@ import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import Icon from '../icons/Icon';
 import VisuallyHidden from '../VisuallyHidden';
-import './_favorites.scss';
+import './_favorites-heart.scss';
 import useFavorites from './useFavorites';
 
-type FavoritesProps = {
+type FavoriteHeartProps = {
   id: string;
 };
 
-const Favorites = ({ id }: FavoritesProps) => {
+const FavoriteHeart = ({ id }: FavoriteHeartProps) => {
   const { language } = useLanguage();
   const { isFavorite, toggleFavorite, isTogglingLoading, animate } =
     useFavorites({ id });
@@ -46,4 +46,4 @@ const Favorites = ({ id }: FavoritesProps) => {
   );
 };
 
-export default Favorites;
+export default FavoriteHeart;

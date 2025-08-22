@@ -1,5 +1,7 @@
 import { Link } from 'react-router';
-import Favorites from '../../../components/favorites/Favorites';
+import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
+import { Favorites } from '../../../app/api/apiTypes/shopApiTypes';
+import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import Img from '../../../components/Img';
 import './ProductCard.styles.scss';
 import ProductCardGridContent from './ProductCardGridContent';
@@ -7,7 +9,7 @@ import ProductCardListContent from './ProductCardListContent';
 import SizeOverlay from './SizeOverlay';
 
 type ProductCardProps = {
-  product: any;
+  product: BaseProduct | Favorites;
   categoryId?: string;
   displayList?: boolean;
 };
@@ -19,7 +21,7 @@ const ProductCard = ({
 }: ProductCardProps) => (
   <section className="product-card">
     <div className="product-img-container">
-      <Favorites id={product.id} />
+      <FavoriteHeart id={product.id} />
       {product.discount > 0 && (
         <span className="product-badge">- {product.discount} %</span>
       )}
