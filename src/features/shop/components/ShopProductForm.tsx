@@ -1,4 +1,7 @@
-import { BaseProduct, Size } from '../../../app/api/apiTypes/sharedApiTypes';
+import type {
+  BaseProduct,
+  Size,
+} from '../../../app/api/apiTypes/sharedApiTypes';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/form/Form';
 import RadioControls from '../../../components/formElements/controlGroup/RadioControls';

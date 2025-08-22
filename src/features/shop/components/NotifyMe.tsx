@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { UserResponse } from '../../../app/api/apiTypes/adminApiTypes';
-import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
+import type { UserResponse } from '../../../app/api/apiTypes/adminApiTypes';
+import type { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import validateNEmail from '../../../components/formElements/validation/validateNotityEmail';
 import validateNotityMe from '../../../components/formElements/validation/validateNotityMe';
 import { PrimaryActionBtnProps } from '../../../components/modal/Modal';

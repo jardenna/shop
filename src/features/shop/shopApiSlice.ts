@@ -1,5 +1,5 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
-import { BaseProduct } from '../../app/api/apiTypes/sharedApiTypes';
+import type { BaseProduct } from '../../app/api/apiTypes/sharedApiTypes';
 import type {
   ProductMenuResponse,
   ProductPreview,

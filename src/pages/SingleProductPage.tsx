@@ -1,5 +1,5 @@
 import { useParams } from 'react-router';
-import { Size } from '../app/api/apiTypes/sharedApiTypes';
+import type { Size } from '../app/api/apiTypes/sharedApiTypes';
 import Accordion from '../components/accordion/Accordion';
 import FavoriteHeart from '../components/favorites/FavoriteHeart';
 import Img from '../components/Img';
