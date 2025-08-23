@@ -12,12 +12,14 @@ type FavoriteHeartProps = {
 
 const FavoriteHeart = ({ id }: FavoriteHeartProps) => {
   const { language } = useLanguage();
-  const { isFavorite, toggleFavorite, isTogglingLoading, animate } =
+  const { isFavorite, toggleFavorite, animate, isTogglingLoading } =
     useFavorites({ id });
 
   const handleChange = (event: ChangeEvent) => {
     event.stopPropagation();
-    toggleFavorite(id);
+    if (!isTogglingLoading) {
+      toggleFavorite(id);
+    }
   };
 
   return (
@@ -40,7 +42,7 @@ const FavoriteHeart = ({ id }: FavoriteHeartProps) => {
         className="visually-hidden"
         onChange={handleChange}
         checked={isFavorite(id)}
-        disabled={isTogglingLoading}
+        aria-disabled={isTogglingLoading || undefined}
       />
     </div>
   );

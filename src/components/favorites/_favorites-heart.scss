@@ -9,6 +9,14 @@
     }
   }
 
+  &:has(input[aria-disabled='true']) {
+    pointer-events: none;
+
+    svg {
+      opacity: 0.2;
+    }
+  }
+
   .favorites-label {
     padding: 12px;
     font-size: 0;

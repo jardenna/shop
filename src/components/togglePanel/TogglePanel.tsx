@@ -58,7 +58,7 @@ const TogglePanel = ({
       >
         {children}
 
-        {showCloseIcon && <BtnClose onClick={onHidePanel} />}
+        {showCloseIcon && isPanelShown && <BtnClose onClick={onHidePanel} />}
       </div>
     </>
   );
