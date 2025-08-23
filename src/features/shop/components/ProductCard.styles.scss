@@ -66,6 +66,7 @@
     grid-row: span 2;
     display: grid;
     grid-template-rows: subgrid;
+    position: relative;
   }
 
   .product-card-img {

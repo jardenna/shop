@@ -108,7 +108,7 @@ const CollectionPage = () => {
                         <ProductCard
                           key={product.id}
                           product={product}
-                          displayList={productView === 'list'}
+                          showSizeOverlay={productView !== 'list'}
                           categoryId={categoryId}
                         >
                           {productView === 'list' ? (
