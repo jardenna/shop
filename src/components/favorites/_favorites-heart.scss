@@ -47,16 +47,3 @@
     transform: scale(1);
   }
 }
-
-.shopping-bag-container {
-  position: absolute;
-  top: 470px;
-  z-index: 2;
-  right: 8px;
-  border-radius: 4px;
-
-  .btn-primary {
-    padding: 12px;
-    min-height: auto;
-  }
-}
