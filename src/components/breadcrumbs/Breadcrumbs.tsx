@@ -1,11 +1,11 @@
 import { useCallback, useMemo } from 'react';
 import { useLocation, useParams } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
+import LayoutElement from '../../layout/LayoutElement';
 import { AdminPath } from '../../layout/nav/enums';
 import './_breadcrumbs.scss';
 import BreadcrumbItem from './BreadcrumbItem';
 import { breadcrumbsListProps } from './breadcrumbsLists';
-import LayoutElement from '../../layout/LayoutElement';
 
 type BreadcrumbsProps = {
   routeList: breadcrumbsListProps[];
@@ -130,7 +130,7 @@ const Breadcrumbs = ({
             key={path}
             label={resolveLabel(path)}
             isCurrent={isCurrent}
-            to={path}
+            linkTo={path}
           />
         ))}
       </ul>

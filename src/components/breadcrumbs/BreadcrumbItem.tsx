@@ -5,13 +5,13 @@ import LinkButton from '../LinkButton';
 type BreadcrumbItemProps = {
   isCurrent: boolean;
   label: string;
-  to: string;
+  linkTo: string;
 };
 
-const BreadcrumbItem = ({ to, label, isCurrent }: BreadcrumbItemProps) => (
+const BreadcrumbItem = ({ linkTo, label, isCurrent }: BreadcrumbItemProps) => (
   <li className="breadcrumbs-item">
     <LinkButton
-      linkTo={to}
+      linkTo={linkTo}
       linkText={label}
       ariaCurrent={isCurrent ? 'page' : undefined}
     />
