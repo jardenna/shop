@@ -55,7 +55,7 @@ $animation-timing-function: ease-in-out;
   outline-offset: 2px;
 }
 
-@mixin grid-template-column($size: 300px) {
+@mixin grid-template-column($size: 292px) {
   @if math.is-unitless($size) or math.unit($size) == 'px' {
     $size: rem($size);
   }
