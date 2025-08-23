@@ -100,9 +100,7 @@ const CollectionPage = () => {
                     <span>{products?.productCount}</span>
                     <FilterPanel />
                   </section>
-                  <article
-                    className={`product-card-list ${productView === 'list' ? 'list' : ''}`}
-                  >
+                  <article className={`product-card-list ${productView}`}>
                     {products &&
                       products.products.map((product) => (
                         <ProductCard
