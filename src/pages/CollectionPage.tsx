@@ -105,9 +105,13 @@ const CollectionPage = () => {
                       products.products.map((product) => (
                         <ProductCard
                           key={product.id}
+                          linkTo={
+                            categoryId
+                              ? product.id
+                              : `allProducts/${product.id}`
+                          }
                           product={product}
                           showSizeOverlay={productView !== 'list'}
-                          categoryId={categoryId}
                         >
                           {productView === 'list' ? (
                             <ProductCardListContent product={product} />

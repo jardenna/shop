@@ -8,15 +8,15 @@ import SizeOverlay from './SizeOverlay';
 
 type ProductCardProps = {
   children: ReactNode;
+  linkTo: string;
   product: ProductPreview;
-  categoryId?: string;
   showSizeOverlay?: boolean;
 };
 
 const ProductCard = ({
   showSizeOverlay,
   product,
-  categoryId,
+  linkTo,
   children,
 }: ProductCardProps) => (
   <section className="product-card">
@@ -25,7 +25,7 @@ const ProductCard = ({
       {product.discount > 0 && (
         <span className="product-badge">- {product.discount} %</span>
       )}
-      <Link to={categoryId ? product.id : `allProducts/${product.id}`}>
+      <Link to={linkTo}>
         <Img alt="" src={product.images[0]} className="product-card-img" />
       </Link>
       {showSizeOverlay && <SizeOverlay sizes={product.sizes} count={5} />}
