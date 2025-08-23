@@ -97,7 +97,9 @@ const CollectionPage = () => {
                       isActive={productView}
                       ariaLabel={language.productDisplay}
                     />
-                    <span>{products?.productCount}</span>
+                    <span>
+                      {products?.productCount} {language.itemLabel}
+                    </span>
                     <FilterPanel />
                   </section>
                   <article className={`product-card-list ${productView}`}>

@@ -39,7 +39,7 @@ const ProductCardCenter = ({
     <CardContent heading={null} onReset={onReset} className="center">
       <span className="separator" aria-hidden={true} />
       <GridTwoCol text={language.productsInStock}>
-        {countInStock} {language.items}.
+        {countInStock} {language.pcs}
       </GridTwoCol>
       {discount !== 0 && (
         <GridTwoCol text={language.discount}>{discount}%</GridTwoCol>
