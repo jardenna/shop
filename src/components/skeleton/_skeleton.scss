@@ -29,7 +29,8 @@
 
   &.skeleton-img {
     width: 100%;
-    height: rem(600px);
+    min-width: 100%;
+    height: rem(500px);
   }
 
   &.skeleton-primary {
@@ -37,6 +38,28 @@
   }
 
   @include animation(skeleton-animation, 1.5s infinite, linear);
+}
+
+.skeleton-card-list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 21.875rem), 1fr));
+
+  .skeleton {
+    border-radius: 0;
+  }
+}
+
+.skeleton-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 25%;
+  margin-bottom: 12px;
+
+  .flex {
+    gap: 4px;
+  }
 }
 
 .skeleton-badge {

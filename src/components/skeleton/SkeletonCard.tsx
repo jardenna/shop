@@ -1,15 +1,14 @@
-import SkeletonBadge from './SkeletonBadge';
-import SkeletonList from './SkeletonList';
+import Skeleton from './Skeleton';
 import SkeletonParagraph from './SkeletonParagraph';
 
 const SkeletonCard = () => (
-  <div className="flex column justify-space-between" style={{ height: '100%' }}>
+  <div className="skeleton-card">
+    <Skeleton variant="img" />
+    <SkeletonParagraph count={1} height="2" width="18" />
+    <SkeletonParagraph width="8" count={1} height="1.5" />
     <div className="flex">
-      <SkeletonParagraph height="1.5" count={1} />
-      <SkeletonBadge />
+      <Skeleton count={3} width="0.75" height="0.75" />
     </div>
-    <SkeletonParagraph />
-    <SkeletonList />
   </div>
 );
 
