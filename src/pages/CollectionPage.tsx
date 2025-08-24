@@ -95,7 +95,7 @@ const CollectionPage = () => {
                   {products?.productCount} {language.itemLabel}
                 </span>
                 <FilterPanel />
-              </section>{' '}
+              </section>
               {isLoading ? (
                 <SkeletonCardList count={8} />
               ) : (
