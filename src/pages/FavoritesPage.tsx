@@ -17,7 +17,7 @@ const FavoritesPage = () => {
   };
 
   return (
-    <MainPageContainer heading={language.favorites}>
+    <MainPageContainer heading={language.favorites} className="favorites-page">
       <article className="product-card-list">
         {favorites.map((product) => (
           <ProductCard

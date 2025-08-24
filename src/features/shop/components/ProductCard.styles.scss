@@ -33,6 +33,14 @@
   }
 }
 
+.favorites-page {
+  .product-card-list {
+    .product-card {
+      max-width: rem(400px);
+    }
+  }
+}
+
 .product-card-content {
   display: flex;
   flex-direction: column;
