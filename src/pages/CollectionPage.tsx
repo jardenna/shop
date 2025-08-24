@@ -10,6 +10,8 @@ import useLanguage from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
 import FilterPanel from '../features/shop/components/FilterPanel';
 import ProductCard from '../features/shop/components/ProductCard';
+import ProductCardGridContent from '../features/shop/components/ProductCardGridContent';
+import ProductCardListContent from '../features/shop/components/ProductCardListContent';
 import useSubMenu from '../features/shop/hooks/useSubMenu';
 import { useGetProductsQuery } from '../features/shop/shopApiSlice';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
@@ -95,20 +97,30 @@ const CollectionPage = () => {
                       isActive={productView}
                       ariaLabel={language.productDisplay}
                     />
-                    <span>{products?.productCount}</span>
+                    <span>
+                      {products?.productCount} {language.itemLabel}
+                    </span>
                     <FilterPanel />
                   </section>
-                  <article
-                    className={`product-card-list ${productView === 'list' ? 'list' : ''}`}
-                  >
+                  <article className={`product-card-list ${productView}`}>
                     {products &&
                       products.products.map((product) => (
                         <ProductCard
                           key={product.id}
+                          linkTo={
+                            categoryId
+                              ? product.id
+                              : `allProducts/${product.id}`
+                          }
                           product={product}
-                          displayList={productView === 'list'}
-                          categoryId={categoryId}
-                        />
+                          showSizeOverlay={productView !== 'list'}
+                        >
+                          {productView === 'list' ? (
+                            <ProductCardListContent product={product} />
+                          ) : (
+                            <ProductCardGridContent product={product} />
+                          )}
+                        </ProductCard>
                       ))}
                   </article>
                 </div>

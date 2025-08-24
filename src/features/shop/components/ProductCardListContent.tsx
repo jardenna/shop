@@ -1,4 +1,4 @@
-import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
+import type { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import ColorList from '../../../components/productLists/ColorList';
 import SizeList from '../../../components/productLists/SizeList';
 import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';

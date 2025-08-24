@@ -1,4 +1,4 @@
-import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
+import type { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import CheckboxControls from '../../../components/formElements/controlGroup/CheckboxControls';
 import Input from '../../../components/formElements/Input';
 import { ChangeInputType } from '../../../types/types';

@@ -1,9 +1,9 @@
-import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
+import type { ProductPreview } from '../../../app/api/apiTypes/shopApiTypes';
 import ColorList from '../../../components/productLists/ColorList';
 import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
 
 type ProductCardGridContentProps = {
-  product: BaseProduct;
+  product: ProductPreview;
 };
 
 const ProductCardGridContent = ({ product }: ProductCardGridContentProps) => (

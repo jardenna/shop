@@ -128,7 +128,7 @@ invalidPassword;Invalid password;Ugyldig adgangskode
 invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for planlagt dato
 invalidUserData;Invalid user data;Ugyldig bruger data
 inStock;In stock;På lager
-items;items;stk
+itemLabel;Items;Varer
 kid;Kid;Barn
 kids;Kids;Børn
 language;Language;Sprog
@@ -197,6 +197,7 @@ passwordUppercase;Password should contain at least one uppercase letter;Adgangsk
 payment;Payment;Betaling
 paymentAndDelivery;Payment and delivery;Betaling og levering
 paymentText;You can pay by credit card or MobilePay. We only charge your payment once your order has been shipped;Betaling kan ske med kreditkort eller MobilePay. Vi trækker først beløbet, når din ordre er afsendt
+pcs;pcs;stk.
 pencil;Pencil;Blyant
 pink;Pink;Pink
 pleaseEnter;Please enter;Indsæt venligst

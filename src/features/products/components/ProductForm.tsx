@@ -408,7 +408,7 @@ const ProductForm = ({
               />
               {selectedProduct && (
                 <GridTwoCol text={language.productsInStock}>
-                  {selectedProduct.countInStock} {language.items}
+                  {selectedProduct.countInStock} {language.pcs}
                 </GridTwoCol>
               )}
             </div>

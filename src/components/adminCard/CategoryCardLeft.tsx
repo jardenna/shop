@@ -29,8 +29,7 @@ const CategoryCardLeft = ({
         status={status}
       />
       <span>
-        {language.productsInSubcategory}: {productsInSubcategory}{' '}
-        {language.items}.
+        {language.productsInSubcategory}: {productsInSubcategory} {language.pcs}
       </span>
     </CardContent>
   );

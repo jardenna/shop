@@ -1,7 +1,7 @@
 import { useParams } from 'react-router';
-import { Size } from '../app/api/apiTypes/sharedApiTypes';
+import type { Size } from '../app/api/apiTypes/sharedApiTypes';
 import Accordion from '../components/accordion/Accordion';
-import Favorites from '../components/favorites/Favorites';
+import FavoriteHeart from '../components/favorites/FavoriteHeart';
 import Img from '../components/Img';
 import useAuth from '../features/auth/hooks/useAuth';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
@@ -100,7 +100,7 @@ const SingleProductPage = () => {
                 className="single-product-header"
               >
                 <h1>{product.productName}</h1>
-                <Favorites id={product.id} />
+                <FavoriteHeart id={product.id} />
               </LayoutElement>
               <ProductDiscountPrice
                 price={product.price}

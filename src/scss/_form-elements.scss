@@ -94,6 +94,10 @@ textarea {
     }
   }
 
+  input[aria-disabled='true'] {
+    pointer-events: none;
+  }
+
   input[aria-invalid='true'] {
     @include outline($color-danger);
 

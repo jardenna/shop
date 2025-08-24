@@ -1,4 +1,4 @@
-import type { BaseProduct, BaseProductParams } from './sharedApiTypes';
+import type { BaseProduct, BaseProductParams, Size } from './sharedApiTypes';
 
 export type ShopProductsParams = BaseProductParams & {
   mainCategory?: string;
@@ -21,12 +21,14 @@ export type ToggleFavoriteResponse = {
   isFavorite: boolean;
 };
 
-export type Favorites = {
+export type ProductPreview = {
+  brand: string;
   colors: string[];
+  countInStock: number;
   discount: number;
   id: string;
   images: string[];
   price: number;
   productName: string;
-  sizes: string[];
+  sizes: Size[];
 };

@@ -1,4 +1,4 @@
-import { ProductMenuResponse } from '../../../app/api/apiTypes/shopApiTypes';
+import type { ProductMenuResponse } from '../../../app/api/apiTypes/shopApiTypes';
 import LayoutElement from '../../../layout/LayoutElement';
 import useLanguage from '../../language/useLanguage';
 import './CollectionAside.styles.scss';

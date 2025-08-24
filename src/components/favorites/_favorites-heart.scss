@@ -1,11 +1,19 @@
 @use '../../scss/globals' as *;
 
-.favorites {
+.favorite-heart {
   position: relative;
 
   &:has(input:focus-visible) {
     svg {
       @include outline;
+    }
+  }
+
+  &:has(input[aria-disabled='true']) {
+    pointer-events: none;
+
+    svg {
+      opacity: 0.2;
     }
   }
 
