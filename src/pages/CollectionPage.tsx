@@ -6,6 +6,7 @@ import DisplayControls from '../components/DisplayControls';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import Img from '../components/Img';
 import Skeleton from '../components/skeleton/Skeleton';
+import SkeletonThreeCards from '../components/skeleton/SkeletonThreeCards';
 import useLanguage from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
 import FilterPanel from '../features/shop/components/FilterPanel';
@@ -73,6 +74,7 @@ const CollectionPage = () => {
                 productName=""
               />
             )}
+            <SkeletonThreeCards />
             <div className="collection-page-container">
               <CollectionAside
                 subMenu={subMenu || null}
