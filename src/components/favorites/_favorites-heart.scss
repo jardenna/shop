@@ -1,6 +1,6 @@
 @use '../../scss/globals' as *;
 
-.favorites {
+.favorite-heart {
   position: relative;
 
   &:has(input:focus-visible) {

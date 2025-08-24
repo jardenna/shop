@@ -23,7 +23,7 @@ const FavoriteHeart = ({ id }: FavoriteHeartProps) => {
   };
 
   return (
-    <div className="favorites">
+    <div className="favorite-heart">
       <label htmlFor={id} className="favorites-label">
         <Icon
           title={language.heart}
