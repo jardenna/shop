@@ -5,7 +5,12 @@ import {
 } from '../../features/shop/shopApiSlice';
 
 const useFavorites = ({ id }: { id?: string }) => {
-  const { data: favorites = [], isLoading, isError } = useGetFavoritesQuery();
+  const {
+    data: favorites = [],
+    isLoading,
+    isError,
+    refetch,
+  } = useGetFavoritesQuery();
   const [toggleFavorite, { isLoading: isTogglingLoading }] =
     useToggleFavoriteMutation();
 
@@ -31,6 +36,7 @@ const useFavorites = ({ id }: { id?: string }) => {
     isTogglingLoading,
     isError,
     animate,
+    onReset: () => refetch(),
   };
 };
 
