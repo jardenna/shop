@@ -1,4 +1,5 @@
 import type { ProductMenuResponse } from '../../../app/api/apiTypes/shopApiTypes';
+import Skeleton from '../../../components/skeleton/Skeleton';
 import LayoutElement from '../../../layout/LayoutElement';
 import useLanguage from '../../language/useLanguage';
 import './CollectionAside.styles.scss';
@@ -29,13 +30,17 @@ const CollectionAside = ({
       >
         <h1>{asideHeading}</h1>
       </LayoutElement>
+      {isLoading && (
+        <div className="flex column">
+          <Skeleton count={4} />
+        </div>
+      )}
       {subMenu && (
         <CollectionNav
           subMenu={subMenu}
           category={category}
           showAllText={language.showAll}
           ariaLabel={language.page}
-          isLoading={isLoading}
           onReset={() => {
             onReset();
           }}
