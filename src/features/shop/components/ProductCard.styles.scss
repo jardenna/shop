@@ -107,10 +107,6 @@
   .product-card-list {
     .product-card {
       max-width: rem(400px);
-
-      // @include max-size($medium) {
-      //   max-width: 100%;
-      // }
     }
   }
 }
