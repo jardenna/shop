@@ -6,12 +6,13 @@ import SkeletonParagraph from './SkeletonParagraph';
 
 const SkeletonTwoCards = () => (
   <div className="skeleton-column">
+    <SkeletonParagraph count={1} width="24" />
     <SkeletonHeader />
     <div className="page-card">
       <div className="flex">
         <div className="page-card flex-1">
           <div
-            className="flex column justify-space-between"
+            className="column flex-justify-space-between"
             style={{ height: '100%' }}
           >
             <div className="flex">
@@ -22,7 +23,7 @@ const SkeletonTwoCards = () => (
             <SkeletonList />
           </div>
         </div>
-        <Skeleton height="46" width="25" />
+        <Skeleton height="27" width="25" />
       </div>
     </div>
   </div>
