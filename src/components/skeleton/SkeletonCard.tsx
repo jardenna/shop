@@ -1,6 +1,6 @@
 import Skeleton from './Skeleton';
+import SkeletonControlList from './SkeletonControlList';
 import SkeletonParagraph from './SkeletonParagraph';
-import SkeletonControlList from './TempFile';
 
 const SkeletonCard = () => (
   <div className="skeleton-card">

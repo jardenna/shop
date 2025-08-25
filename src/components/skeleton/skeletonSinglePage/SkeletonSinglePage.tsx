@@ -1,5 +1,5 @@
 import Skeleton from '../Skeleton';
-import SkeletonControlList from '../TempFile';
+import SkeletonControlList from '../SkeletonControlList';
 
 const SkeletonSinglePage = () => (
   <div className="flex">
