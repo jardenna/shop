@@ -2,7 +2,6 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { NavLink } from 'react-router';
 import type { ProductMenuResponse } from '../../../app/api/apiTypes/shopApiTypes';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
-import Skeleton from '../../../components/skeleton/Skeleton';
 import LayoutElement from '../../../layout/LayoutElement';
 import { ShopPath } from '../../../layout/nav/enums';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
@@ -11,7 +10,6 @@ import useLanguage from '../../language/useLanguage';
 type CollectionNavProps = {
   ariaLabel: string;
   category: string;
-  isLoading: boolean;
   showAllText: string;
   subMenu: ProductMenuResponse[];
   onReset: () => void;
@@ -22,7 +20,6 @@ const CollectionNav = ({
   ariaLabel,
   category,
   showAllText,
-  isLoading,
   onReset,
 }: CollectionNavProps) => {
   const { language } = useLanguage();
@@ -36,26 +33,22 @@ const CollectionNav = ({
           </NavLink>
         </li>
 
-        {isLoading ? (
-          <Skeleton />
-        ) : (
-          <ErrorBoundary
-            FallbackComponent={ErrorBoundaryFallback}
-            onReset={onReset}
-          >
-            <>
-              {subMenu.map(({ label, categoryId }) => (
-                <li className="collection-nav-item" key={categoryId}>
-                  <NavLink
-                    to={`/${ShopPath.Collection}/${category}/${categoryId}`}
-                  >
-                    {getlowerCaseFirstLetter(label, language)}
-                  </NavLink>
-                </li>
-              ))}
-            </>
-          </ErrorBoundary>
-        )}
+        <ErrorBoundary
+          FallbackComponent={ErrorBoundaryFallback}
+          onReset={onReset}
+        >
+          <>
+            {subMenu.map(({ label, categoryId }) => (
+              <li className="collection-nav-item" key={categoryId}>
+                <NavLink
+                  to={`/${ShopPath.Collection}/${category}/${categoryId}`}
+                >
+                  {getlowerCaseFirstLetter(label, language)}
+                </NavLink>
+              </li>
+            ))}
+          </>
+        </ErrorBoundary>
       </ul>
     </LayoutElement>
   );

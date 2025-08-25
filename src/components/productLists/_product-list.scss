@@ -10,18 +10,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: rem(68px);
-    height: rem(68px);
-
-    &.mini {
-      width: rem(12px);
-      height: rem(12px);
-    }
-
-    &.small {
-      width: rem(24px);
-      height: rem(24px);
-    }
   }
 }
 

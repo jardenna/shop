@@ -1,6 +1,6 @@
 import './_skeleton.scss';
 
-type SkeletonType = 'primary' | 'img';
+type SkeletonType = 'primary' | 'img' | 'default';
 
 export type SkeletonProps = {
   className?: string;
@@ -10,7 +10,10 @@ export type SkeletonProps = {
   width?: string;
 };
 
-export type PickedSkeletonTypes = Pick<SkeletonProps, 'count' | 'height'>;
+export type PickedSkeletonTypes = Pick<
+  SkeletonProps,
+  'count' | 'height' | 'width'
+>;
 
 const Skeleton = ({
   className = '',
@@ -28,7 +31,7 @@ const Skeleton = ({
     Array.from({ length: count }).map((_, index) => (
       <span
         key={index}
-        style={{ height: `${height}rem` }}
+        style={{ height: `${height}rem`, width: `${width}rem` }}
         className={`skeleton skeleton-${variant} ${className}`}
       />
     ))

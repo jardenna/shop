@@ -4,6 +4,7 @@ import type { ChangeInputType } from '../../../types/types';
 import { colorMap } from '../../../utils/colorUtils';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import IconContent from '../../IconContent';
+import { ProductLabelVariant } from '../../productLists/ProductListItem';
 
 type InputType = 'checkbox' | 'radio';
 
@@ -17,6 +18,7 @@ type ControlInputFieldProps = {
   disabled?: boolean;
   iconName?: IconName;
   type?: InputType;
+  variant?: ProductLabelVariant;
   onChange: (event: ChangeInputType) => void;
 };
 
@@ -30,6 +32,7 @@ const ControlInputField = ({
   onChange,
   iconName,
   autoFocus,
+  variant,
 }: ControlInputFieldProps) => {
   const { language } = useLanguage();
 
@@ -37,7 +40,7 @@ const ControlInputField = ({
     <li className="control-item">
       <label
         htmlFor={id}
-        className={`control-label ${disabled ? 'unavailable' : ''}`}
+        className={`control-label ${variant}-item ${disabled ? 'unavailable' : ''}`}
       >
         {iconName ? (
           <IconContent

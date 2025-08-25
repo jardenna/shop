@@ -1,6 +1,5 @@
 import Skeleton from './Skeleton';
 import SkeletonBadge from './SkeletonBadge';
-import SkeletonCard from './SkeletonCard';
 import SkeletonGrid from './SkeletonGrid';
 import SkeletonHeader from './SkeletonHeader';
 import SkeletonList from './SkeletonList';
@@ -28,7 +27,7 @@ const SkeletonThreeCards = () => (
           <Skeleton width="5" height=".75" />
           <SkeletonList width="2" height="2" count={4} />
         </div>
-        <SkeletonCard />
+        <Skeleton height="46" width="25" />
       </div>
     </div>
   </div>

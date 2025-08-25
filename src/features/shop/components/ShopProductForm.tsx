@@ -71,6 +71,7 @@ const ShopProductForm = ({
           onChange={onChange}
           options={sortedTranslatedColors}
           name="color"
+          variant="large"
           iconName={resolveIconName(categoryName)}
           groupTitle={{
             title: titleColor,
@@ -87,6 +88,7 @@ const ShopProductForm = ({
           onChange={onChange}
           options={displaySizeList}
           name="size"
+          variant="medium"
           groupTitle={{
             title: titleSize,
             id: 'choose-product-size',

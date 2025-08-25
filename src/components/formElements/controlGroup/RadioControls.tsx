@@ -15,10 +15,12 @@ const RadioControls = ({
   iconName,
   className,
   autoFocus,
+  variant,
 }: RadioControlsProps) => (
   <ControlList
     autoFocus={autoFocus}
     type="radio"
+    variant={variant}
     iconName={iconName}
     name={name}
     options={options}

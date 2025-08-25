@@ -8,9 +8,9 @@ import ProductListItem, { ProductLabelVariant } from './ProductListItem';
 
 type ColorListProps = {
   colors: string[];
+  variant: ProductLabelVariant;
   count?: number;
   groupTitle?: OptionGroupHeading;
-  variant?: ProductLabelVariant;
 };
 
 const ColorList = ({ count, colors, groupTitle, variant }: ColorListProps) => {

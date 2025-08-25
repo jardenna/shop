@@ -5,7 +5,7 @@ import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import DisplayControls from '../components/DisplayControls';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import Img from '../components/Img';
-import Skeleton from '../components/skeleton/Skeleton';
+import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import useLanguage from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
 import FilterPanel from '../features/shop/components/FilterPanel';
@@ -62,72 +62,68 @@ const CollectionPage = () => {
     <>
       <MetaTags metaTitle={category} />
       <article className="container page collection-page">
-        {isLoading ? (
-          <Skeleton />
-        ) : (
-          <>
-            {subMenu && (
-              <Breadcrumbs
-                routeList={breadcrumbsList}
-                subMenu={subMenu}
-                productName=""
-              />
-            )}
-            <div className="collection-page-container">
-              <CollectionAside
-                subMenu={subMenu || null}
-                category={category || 'women'}
-                isLoading={subMenuLoading}
-                onReset={() => refetchSubMenu()}
-                asideHeading={categoryText}
-              />
-              <ErrorBoundary
-                FallbackComponent={ErrorBoundaryFallback}
-                onReset={() => refetch()}
-              >
-                <div className="collection-page-content">
-                  <Img
-                    src={`/images/collections/${category}/banner.jpg`}
-                    alt=""
-                  />
-                  <section className="product-toolbar">
-                    <DisplayControls
-                      onSetDisplay={setProuctView}
-                      displayControlList={productViewIconList}
-                      isActive={productView}
-                      ariaLabel={language.productDisplay}
-                    />
-                    <span>
-                      {products?.productCount} {language.itemLabel}
-                    </span>
-                    <FilterPanel />
-                  </section>
-                  <article className={`product-card-list ${productView}`}>
-                    {products &&
-                      products.products.map((product) => (
-                        <ProductCard
-                          key={product.id}
-                          linkTo={
-                            categoryId
-                              ? product.id
-                              : `allProducts/${product.id}`
-                          }
-                          product={product}
-                          showSizeOverlay={productView !== 'list'}
-                        >
-                          {productView === 'list' ? (
-                            <ProductCardListContent product={product} />
-                          ) : (
-                            <ProductCardGridContent product={product} />
-                          )}
-                        </ProductCard>
-                      ))}
-                  </article>
-                </div>
-              </ErrorBoundary>
-            </div>
-          </>
+        {subMenu && (
+          <Breadcrumbs
+            routeList={breadcrumbsList}
+            subMenu={subMenu}
+            productName=""
+          />
         )}
+
+        <div className="collection-page-container">
+          <CollectionAside
+            subMenu={subMenu || null}
+            category={category || 'women'}
+            isLoading={subMenuLoading}
+            onReset={() => refetchSubMenu()}
+            asideHeading={categoryText}
+          />
+          <ErrorBoundary
+            FallbackComponent={ErrorBoundaryFallback}
+            onReset={() => refetch()}
+          >
+            <div className="collection-page-content">
+              <Img src={`/images/collections/${category}/banner.jpg`} alt="" />
+              <section className="product-toolbar">
+                <DisplayControls
+                  onSetDisplay={setProuctView}
+                  displayControlList={productViewIconList}
+                  isActive={productView}
+                  ariaLabel={language.productDisplay}
+                />
+                <span>
+                  {products?.productCount} {language.itemLabel}
+                </span>
+                <FilterPanel />
+              </section>
+              {isLoading ? (
+                <SkeletonCardList count={8} />
+              ) : (
+                <article
+                  className={`product-card-list ${productView === 'list' ? 'list' : ''}`}
+                >
+                  {products &&
+                    products.products.map((product) => (
+                      <ProductCard
+                        key={product.id}
+                        linkTo={
+                          categoryId ? product.id : `allProducts/${product.id}`
+                        }
+                        product={product}
+                        showSizeOverlay={productView !== 'list'}
+                      >
+                        {productView === 'list' ? (
+                          <ProductCardListContent product={product} />
+                        ) : (
+                          <ProductCardGridContent product={product} />
+                        )}
+                      </ProductCard>
+                    ))}
+                </article>
+              )}
+            </div>
+          </ErrorBoundary>
+        </div>
       </article>
     </>
   );

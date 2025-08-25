@@ -1,5 +1,5 @@
+import Skeleton from './Skeleton';
 import SkeletonBadge from './SkeletonBadge';
-import SkeletonCard from './SkeletonCard';
 import SkeletonHeader from './SkeletonHeader';
 import SkeletonList from './SkeletonList';
 import SkeletonParagraph from './SkeletonParagraph';
@@ -22,7 +22,7 @@ const SkeletonTwoCards = () => (
             <SkeletonList />
           </div>
         </div>
-        <SkeletonCard />
+        <Skeleton height="46" width="25" />
       </div>
     </div>
   </div>

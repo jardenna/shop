@@ -112,3 +112,23 @@
     display: flex;
   }
 }
+
+.mini-item {
+  width: rem(12px);
+  height: rem(12px);
+}
+
+.small-item {
+  width: rem(24px);
+  height: rem(24px);
+}
+
+.medium-item {
+  width: rem(68px);
+  height: rem(68px);
+}
+
+.large-item {
+  width: rem(100px);
+  height: rem(120px);
+}
