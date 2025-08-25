@@ -37,6 +37,10 @@
   min-height: $header-height;
   display: flex;
   align-items: center;
+  position: sticky;
+  z-index: 1000;
+  top: 0;
+  background: $color-white;
 
   .main-header-container {
     padding-block: 30px;
