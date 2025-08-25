@@ -9,7 +9,6 @@ import './_control-list.scss';
 export type BaseControlGroupProps = {
   name: string;
   options: string[];
-  variant: ProductLabelVariant;
   autoFocus?: boolean;
   className?: string;
   disabledList?: string[];
@@ -17,6 +16,7 @@ export type BaseControlGroupProps = {
   iconName?: IconName;
   inputInfo?: string;
   required?: boolean;
+  variant?: ProductLabelVariant;
   onChange: (event: ChangeInputType) => void;
 };
 

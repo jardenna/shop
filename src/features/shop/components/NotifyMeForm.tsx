@@ -30,7 +30,6 @@ const NotifyMeForm = ({
           </p>
           <CheckboxControls
             options={options}
-            variant="medium"
             autoFocus
             name="sizes"
             onChange={onChange}

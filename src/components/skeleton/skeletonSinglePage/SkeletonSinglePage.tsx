@@ -6,7 +6,7 @@ const SkeletonSinglePage = () => (
     <Skeleton variant="img" />
     <div>
       <SkeletonControlList count={4} variant="large" />
-      <SkeletonControlList count={5} variant="medium" />
+      <SkeletonControlList count={5} />
     </div>
   </div>
 );

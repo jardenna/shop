@@ -13,7 +13,7 @@ const CheckboxControls = ({
   required,
   inputInfo,
   autoFocus,
-  variant,
+  variant = 'medium',
 }: CheckboxControlsProps) => (
   <ControlList
     name={name}

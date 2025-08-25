@@ -14,11 +14,11 @@ type ControlInputFieldProps = {
   label: string;
   name: string;
   value: string;
-  variant: ProductLabelVariant;
   autoFocus?: boolean;
   disabled?: boolean;
   iconName?: IconName;
   type?: InputType;
+  variant?: ProductLabelVariant;
   onChange: (event: ChangeInputType) => void;
 };
 

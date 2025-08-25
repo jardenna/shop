@@ -3,12 +3,15 @@ import Skeleton from './Skeleton';
 
 type SkeletonControlListProps = {
   count: number;
-  variant: ProductLabelVariant;
   height?: string;
+  variant?: ProductLabelVariant;
   width?: string;
 };
 
-const SkeletonControlList = ({ variant, count }: SkeletonControlListProps) => (
+const SkeletonControlList = ({
+  variant = 'medium',
+  count,
+}: SkeletonControlListProps) => (
   <div className="skeleton-control-list">
     <Skeleton height="0.7" width="10" />
     <div className="skeleton-control-item">

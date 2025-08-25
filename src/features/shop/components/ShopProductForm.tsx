@@ -87,7 +87,6 @@ const ShopProductForm = ({
           className="size-list"
           onChange={onChange}
           options={displaySizeList}
-          variant="medium"
           name="size"
           groupTitle={{
             title: titleSize,
