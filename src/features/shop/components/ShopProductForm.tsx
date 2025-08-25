@@ -88,6 +88,7 @@ const ShopProductForm = ({
           onChange={onChange}
           options={displaySizeList}
           name="size"
+          variant="medium"
           groupTitle={{
             title: titleSize,
             id: 'choose-product-size',

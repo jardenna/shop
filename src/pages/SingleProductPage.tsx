@@ -2,7 +2,7 @@ import { useParams } from 'react-router';
 import type { Size } from '../app/api/apiTypes/sharedApiTypes';
 import Accordion from '../components/accordion/Accordion';
 import FavoriteHeart from '../components/favorites/FavoriteHeart';
-import Img from '../components/Img';
+import ImgList from '../components/ImgList';
 import SkeletonSinglePage from '../components/skeleton/skeletonSinglePage/SkeletonSinglePage';
 import useAuth from '../features/auth/hooks/useAuth';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
@@ -27,7 +27,9 @@ const SingleProductPage = () => {
   const { id } = useParams();
   const { language } = useLanguage();
 
-  const { data: product } = useGetSingleProductQuery(id ?? '');
+  const { data: product, isLoading } = useGetSingleProductQuery(id ?? '');
+
+  console.log(isLoading);
 
   const colorList = product
     ? getColorOptions({ colors: product.colors, language })
@@ -84,13 +86,7 @@ const SingleProductPage = () => {
       <SkeletonSinglePage />
       {product && (
         <article className="single-product-container">
-          <ul className="product-img-list">
-            {product.images.map((image) => (
-              <li key={image}>
-                <Img src={image} alt="" className="product-img" />
-              </li>
-            ))}
-          </ul>
+          <ImgList images={product.images} />
           <section className="single-product">
             <div className="single-product-content">
               <p>

@@ -4,7 +4,7 @@ import useLanguage from '../../features/language/useLanguage';
 import CardContent from '../card/CardContent';
 import MissingImage from '../formElements/fileInput/MissingImage';
 import GridTwoCol from '../GridTwoCol';
-import Img from '../Img';
+import ImgList from '../ImgList';
 import AdminCardHeading from './AdminCardHeading';
 
 type ProductCardLeftProps = {
@@ -32,17 +32,7 @@ const ProductCardLeft = ({
 
   return (
     <CardContent heading={null} onReset={onReset}>
-      {images.length > 0 ? (
-        <ul className="product-img-list">
-          {images.map((url) => (
-            <li key={url}>
-              <Img src={url} alt="" className="product-img-item" />
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <MissingImage />
-      )}
+      {images.length > 0 ? <ImgList images={images} /> : <MissingImage />}
       <AdminCardHeading
         status={status}
         scheduledDate={scheduledDate || null}
