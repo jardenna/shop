@@ -83,7 +83,7 @@ const SingleProductPage = () => {
   return (
     <div className="container">
       <MetaTags metaTitle={product?.productName} />
-      <SkeletonSinglePage />
+      {isLoading && <SkeletonSinglePage />}
       {product && (
         <article className="single-product-container">
           <ImgList images={product.images} />

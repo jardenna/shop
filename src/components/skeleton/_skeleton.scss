@@ -130,6 +130,16 @@
   }
 }
 
+.width-100 {
+  width: 100%;
+}
+
+.single-product-container {
+  .skeleton-img {
+    max-width: rem(591px);
+  }
+}
+
 @keyframes skeleton-animation {
   0% {
     background-position: 100%;
