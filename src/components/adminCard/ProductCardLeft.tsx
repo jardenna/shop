@@ -32,7 +32,11 @@ const ProductCardLeft = ({
 
   return (
     <CardContent heading={null} onReset={onReset}>
-      {images.length > 0 ? <ImgList images={images} /> : <MissingImage />}
+      {images.length > 0 ? (
+        <ImgList images={images} onReset={onReset} />
+      ) : (
+        <MissingImage />
+      )}
       <AdminCardHeading
         status={status}
         scheduledDate={scheduledDate || null}

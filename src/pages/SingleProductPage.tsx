@@ -1,6 +1,8 @@
+import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import type { Size } from '../app/api/apiTypes/sharedApiTypes';
 import Accordion from '../components/accordion/Accordion';
+import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import FavoriteHeart from '../components/favorites/FavoriteHeart';
 import ImgList from '../components/ImgList';
 import SkeletonSinglePage from '../components/skeleton/skeletonSinglePage/SkeletonSinglePage';
@@ -27,9 +29,11 @@ const SingleProductPage = () => {
   const { id } = useParams();
   const { language } = useLanguage();
 
-  const { data: product, isLoading } = useGetSingleProductQuery(id ?? '');
-
-  console.log(isLoading);
+  const {
+    data: product,
+    isLoading,
+    refetch,
+  } = useGetSingleProductQuery(id ?? '');
 
   const colorList = product
     ? getColorOptions({ colors: product.colors, language })
@@ -86,43 +90,47 @@ const SingleProductPage = () => {
       {isLoading && <SkeletonSinglePage />}
       {product && (
         <article className="single-product-container">
-          <ImgList images={product.images} />
-          <section className="single-product">
-            <div className="single-product-content">
-              <p>
-                {language.brand}: {product.brand}
-              </p>
-              <LayoutElement
-                ariaLabel={language.product}
-                className="single-product-header"
-              >
-                <h1>{product.productName}</h1>
-                <FavoriteHeart id={product.id} />
-              </LayoutElement>
-              <ProductDiscountPrice
-                price={product.price}
-                discount={product.discount}
-              />
-              <div className="in-stock-container">
-                <InStock stock={product.countInStock} />
-                {(missingSizes.length > 0 || product.countInStock === 0) && (
-                  <NotifyMe
-                    options={missingSizes}
-                    id="notifyMe"
-                    sizesIsRequered={missingSizes.length > 0}
-                    currentUser={currentUser}
-                  />
-                )}
+          <ImgList images={product.images} onReset={() => refetch} />
+          <ErrorBoundary
+            FallbackComponent={ErrorBoundaryFallback}
+            onReset={() => refetch}
+          >
+            <section className="single-product">
+              <div className="single-product-content">
+                <p>
+                  {language.brand}: {product.brand}
+                </p>
+                <LayoutElement
+                  ariaLabel={language.product}
+                  className="single-product-header"
+                >
+                  <h1>{product.productName}</h1>
+                  <FavoriteHeart id={product.id} />
+                </LayoutElement>
+                <ProductDiscountPrice
+                  price={product.price}
+                  discount={product.discount}
+                />
+                <div className="in-stock-container">
+                  <InStock stock={product.countInStock} />
+                  {(missingSizes.length > 0 || product.countInStock === 0) && (
+                    <NotifyMe
+                      options={missingSizes}
+                      id="notifyMe"
+                      sizesIsRequered={missingSizes.length > 0}
+                      currentUser={currentUser}
+                    />
+                  )}
+                </div>
+                <ShopProductForm
+                  selectedProduct={product}
+                  colorList={colorList}
+                  displaySizeList={displaySizeList}
+                />
+                <Accordion accordionItems={accordionItems} />
               </div>
-              <ShopProductForm
-                selectedProduct={product}
-                colorList={colorList}
-                displaySizeList={displaySizeList}
-              />
-
-              <Accordion accordionItems={accordionItems} />
-            </div>
-          </section>
+            </section>
+          </ErrorBoundary>
         </article>
       )}
     </div>
