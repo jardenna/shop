@@ -17,6 +17,10 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+
+    // &:has(input:focus-visible) {
+    //   @include outline;
+    // }
   }
 
   &.with-icon {
@@ -34,7 +38,7 @@
   }
 
   .control-item {
-    &:has(input[type='checkbox']:checked) {
+    &:has(input:checked) {
       background-color: $color-background-secondary;
       color: $color-white;
     }
