@@ -1,6 +1,6 @@
 import './_skeleton.scss';
 
-type SkeletonType = 'primary' | 'img';
+type SkeletonType = 'primary' | 'img' | 'default';
 
 export type SkeletonProps = {
   className?: string;

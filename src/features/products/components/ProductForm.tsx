@@ -331,6 +331,7 @@ const ProductForm = ({
               name="sizes"
               onChange={onChange}
               values={values.sizes}
+              variant="medium"
               required
               inputInfo={
                 availableSizes.length === 0 ? language.sizeInfoText : undefined

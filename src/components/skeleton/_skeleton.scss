@@ -28,8 +28,6 @@
   display: flex;
 
   &.skeleton-img {
-    width: 100%;
-    min-width: 100%;
     height: rem(500px);
   }
 
@@ -38,6 +36,18 @@
   }
 
   @include animation(skeleton-animation, 1.5s infinite, linear);
+}
+
+.skeleton-control-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.skeleton-control-item {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 12px;
 }
 
 .skeleton-card-list {

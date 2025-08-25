@@ -1,7 +1,7 @@
 import { CSSProperties } from 'react';
 import VisuallyHidden from '../VisuallyHidden';
 
-export type ProductLabelVariant = 'mini' | 'small' | 'medium';
+export type ProductLabelVariant = 'mini' | 'small' | 'medium' | 'large';
 
 type ProductListItemProps = {
   ariaLabel: string;
@@ -20,7 +20,7 @@ const ProductListItem = ({
 }: ProductListItemProps) => (
   <li className="product-list-item" style={style}>
     <span
-      className={`product-list-content ${variant} ${unavailable ? 'unavailable' : ''}`}
+      className={`product-list-content ${variant}-item ${unavailable ? 'unavailable' : ''}`}
     >
       {text}
     </span>

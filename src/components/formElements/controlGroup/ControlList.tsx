@@ -1,6 +1,7 @@
 import { IconName } from '../../../types/enums';
 import { ChangeInputType, OptionGroupHeading } from '../../../types/types';
 import OptionGroupTitle from '../../productLists/OptionGroupTitle';
+import { ProductLabelVariant } from '../../productLists/ProductListItem';
 import InputInfo from '../InputInfo';
 import ControlInputField from './ControlInputField';
 import './_control-list.scss';
@@ -8,6 +9,7 @@ import './_control-list.scss';
 export type BaseControlGroupProps = {
   name: string;
   options: string[];
+  variant: ProductLabelVariant;
   autoFocus?: boolean;
   className?: string;
   disabledList?: string[];
@@ -38,6 +40,7 @@ const ControlList = ({
   iconName,
   className = '',
   autoFocus,
+  variant,
 }: ControlList) => (
   <div>
     {groupTitle && (
@@ -67,6 +70,7 @@ const ControlList = ({
             disabled={disabledList ? !disabledList.includes(label) : undefined}
             onChange={onChange}
             label={label}
+            variant={variant}
           />
         );
       })}

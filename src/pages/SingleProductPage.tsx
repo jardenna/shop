@@ -3,6 +3,7 @@ import type { Size } from '../app/api/apiTypes/sharedApiTypes';
 import Accordion from '../components/accordion/Accordion';
 import FavoriteHeart from '../components/favorites/FavoriteHeart';
 import Img from '../components/Img';
+import SkeletonSinglePage from '../components/skeleton/skeletonSinglePage/SkeletonSinglePage';
 import useAuth from '../features/auth/hooks/useAuth';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
 import useLanguage from '../features/language/useLanguage';
@@ -80,7 +81,7 @@ const SingleProductPage = () => {
   return (
     <div className="container">
       <MetaTags metaTitle={product?.productName} />
-
+      <SkeletonSinglePage />
       {product && (
         <article className="single-product-container">
           <ul className="product-img-list">
