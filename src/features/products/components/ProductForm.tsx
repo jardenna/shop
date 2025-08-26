@@ -250,7 +250,7 @@ const ProductForm = ({
             />
           </FormCard>
           <FormCard
-            legendText={`${language.productImages} (${language.max} ${maxFiles})`}
+            legendText={`${language.productImages} (${language.maximum} ${maxFiles})`}
             onReset={onReset}
           >
             <ImageUpload

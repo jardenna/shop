@@ -14,7 +14,7 @@ const SkeletonControlList = ({
   count,
 }: SkeletonControlListProps) => (
   <div className="skeleton-control-list">
-    <SkeletonParagraph width="10" count={1} />
+    <SkeletonParagraph width="5" count={1} />
     <div className="skeleton-control-item">
       <Skeleton count={count} className={`${variant}-item`} variant="default" />
     </div>

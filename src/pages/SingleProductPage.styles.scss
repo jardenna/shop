@@ -51,6 +51,8 @@
 
   .product-img-list {
     width: 100%;
+    flex-direction: column;
+    gap: 0;
 
     .product-img {
       border-radius: 0;
