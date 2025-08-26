@@ -4,7 +4,7 @@ import Img from './Img';
 
 type ImgListProps = {
   images: string[];
-  onReset: () => void;
+  onReset?: () => void;
 };
 
 const ImgList = ({ images, onReset }: ImgListProps) => (
