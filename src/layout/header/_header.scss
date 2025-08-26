@@ -1,5 +1,8 @@
 @use '../../scss/globals/' as *;
 
+$animation-starts-after: 20vh;
+$animation-distance: 500px;
+
 .main-header-container {
   display: flex;
   justify-content: space-between;
@@ -36,11 +39,33 @@
 .main-header {
   min-height: $header-height;
   display: flex;
+  width: 100%;
   align-items: center;
   position: sticky;
   z-index: 1000;
   top: 0;
   background: $color-white;
+
+  @supports (animation-timeline: view()) {
+    top: -80px;
+    border-radius: 14px;
+    padding-inline: 24px;
+    margin-inline: auto;
+    animation: sticky-nav linear forwards;
+    animation-timeline: view();
+    animation-range-start: calc(100dvh + $animation-starts-after);
+    animation-range-end: calc(
+      100dvh + $animation-starts-after + $animation-distance
+    );
+
+    @media (prefers-reduced-motion) {
+      top: 0;
+
+      & {
+        animation: none;
+      }
+    }
+  }
 
   .main-header-container {
     padding-block: 30px;
@@ -101,5 +126,15 @@
   /* stylelint-disable-next-line selector-class-pattern */
   .select-box__menu-list {
     max-height: rem(100px);
+  }
+}
+
+@keyframes sticky-nav {
+  100% {
+    width: 70%;
+    top: 16px;
+    box-shadow:
+      inset 0 0 0.5rem hsl(0deg 0% 100% / 10%),
+      0 0 0.75rem hsl(0deg 0% 0% / 30%);
   }
 }
