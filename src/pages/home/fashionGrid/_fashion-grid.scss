@@ -76,6 +76,10 @@
     display: flex;
     flex-direction: column;
     max-width: rem(400px);
+
+    p {
+      text-wrap: pretty;
+    }
   }
 
   .grid-item-1 {
