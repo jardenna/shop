@@ -5,6 +5,7 @@ import {
   deleteCategory,
   getAllCategories,
   getCategoryById,
+  getPublishedCategories,
   updateCategory,
 } from '../controllers/categoryController.js';
 import {
@@ -25,6 +26,7 @@ router.post(
 
 // Always define specific routes before dynamic ones
 router.get('/scheduled', checkScheduled);
+router.get('/published', getPublishedCategories);
 
 router
   .route('/')

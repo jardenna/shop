@@ -107,6 +107,28 @@ const getCategoryById = asyncHandler(async (req, res) => {
   res.status(200).json({ success: true, category: formattedCategory });
 });
 
+// @desc    Get all published main categories (array of strings)
+// @route   /api/category/published
+// @method  Get
+// @access  Public
+const getPublishedCategories = asyncHandler(async (req, res) => {
+  const publishedCategories = await Category.find(
+    { categoryStatus: 'Published' },
+    'categoryName',
+  ).lean();
+
+  if (!publishedCategories?.length) {
+    return res
+      .status(404)
+      .json({ success: false, message: t('noData', req.lang) });
+  }
+
+  // Return only an array of category names
+  const categories = publishedCategories.map((cat) => cat.categoryName);
+
+  res.status(200).json(categories);
+});
+
 // @desc    Update category
 // @route   /api/category/id
 // @method  Put
@@ -183,5 +205,6 @@ export {
   deleteCategory,
   getAllCategories,
   getCategoryById,
+  getPublishedCategories,
   updateCategory,
 };
