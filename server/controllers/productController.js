@@ -250,8 +250,17 @@ const getProducts = asyncHandler(async (req, res) => {
       },
     },
     { $unwind: '$categoryData' },
+
+    // Only return products where both category and subcategory are Published
+    {
+      $match: {
+        'subCategoryData.categoryStatus': 'Published',
+        'categoryData.categoryStatus': 'Published',
+      },
+    },
   ];
 
+  // Add dynamic filters (subCategoryId, mainCategory)
   if (matchStage.length > 0) {
     basePipeline.push({ $match: { $and: matchStage } });
   }
@@ -281,7 +290,7 @@ const getProducts = asyncHandler(async (req, res) => {
         subCategoryData: 0,
         categoryData: 0,
         __v: 0,
-        subCategory: 0, // this hides the original if you don't want it twice
+        subCategory: 0, // hide original reference if not needed
       },
     },
   ];
