@@ -20,6 +20,7 @@ const categoryApiSlice = apiSlice.injectEndpoints({
     }),
     getCategoryById: builder.query<UpdateCategoryRequest, string>({
       query: (id) => `${categoryUrl}/${id}`,
+      providesTags: [TagTypesEnum.Categories],
     }),
     createCategory: builder.mutation<CategoriesResponse, CreateCategoryRequest>(
       {
