@@ -3,12 +3,6 @@
   "ignoreFiles": ["**/variables.module.scss", "dist/**", "**/_select-box.scss"],
   "rules": {
     "scss/at-extend-no-missing-placeholder": null,
-    "selector-pseudo-class-no-unknown": [
-      true,
-      {
-        "ignoreTypes": ["target-current"]
-      }
-    ],
     "selector-pseudo-element-no-unknown": [
       true,
       {
@@ -19,7 +13,6 @@
         ]
       }
     ],
-
     "selector-type-no-unknown": [
       true,
       {
@@ -33,6 +26,12 @@
           "inline-start",
           "inline-end"
         ]
+      }
+    ],
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignoreTypes": ["target-current"]
       }
     ]
   }
