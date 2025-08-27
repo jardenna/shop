@@ -1,22 +1,30 @@
+@use '../../scss/globals' as *;
+
 .carousel {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: 40%;
+  grid-auto-columns: 24%;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  gap: 32px;
-  margin: 30px;
-  padding: 16px;
-  border: 3px solid;
+  width: fit-content;
+  margin-bottom: 12px;
   anchor-name: --carousel;
+  scroll-snap-type: x mandatory;
   scroll-marker-group: after;
   scroll-behavior: smooth;
 
   .carousel-item {
     scroll-snap-align: center;
     scroll-snap-stop: always;
+
+    img {
+      width: 100%;
+      height: rem(500px);
+      object-fit: cover;
+      object-position: top;
+    }
   }
 
+  // Scroll Marker
   .carousel-item::scroll-marker {
     content: ' ';
     border-radius: 50%;
@@ -37,6 +45,7 @@
     justify-content: center;
   }
 
+  // Scroll Buttons
   &::scroll-button(*) {
     position: fixed;
     position-anchor: --carousel;
