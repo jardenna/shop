@@ -1,0 +1,103 @@
+@use '../../scss/globals' as *;
+
+.carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 24%;
+  overflow-x: auto;
+  width: fit-content;
+  anchor-name: --carousel;
+  scroll-snap-type: x mandatory;
+  scroll-marker-group: after;
+  scroll-behavior: smooth;
+
+  @include max-size($medium) {
+    grid-auto-columns: 40%;
+  }
+
+  @include max-size($mini) {
+    grid-auto-columns: 100%;
+    gap: 2px;
+  }
+
+  .carousel-item {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+
+    img {
+      width: 100%;
+      height: rem(500px);
+      object-fit: cover;
+      object-position: top;
+      border-radius: 0;
+    }
+  }
+
+  // Scroll Marker
+  .carousel-item::scroll-marker {
+    content: ' ';
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: $color-gray-30;
+    display: grid;
+
+    @include transition;
+  }
+
+  .carousel-item::scroll-marker:hover {
+    background-color: $color-gray-60;
+  }
+
+  .carousel-item::scroll-marker:focus-visible {
+    @include outline($color-gray-60, 3px, 4px);
+  }
+
+  /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+  .carousel-item::scroll-marker:target-current {
+    background-color: $color-gray-60;
+  }
+
+  &::scroll-marker-group {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 12px;
+  }
+
+  // Scroll Buttons
+  &::scroll-button(*) {
+    position: fixed;
+    position-anchor: --carousel;
+    background-color: $color-white;
+    display: inline-grid;
+    place-content: center;
+    border: 1px solid $color-gray-30;
+    border-radius: 50%;
+    cursor: pointer;
+    width: rem(40px);
+    height: rem(40px);
+  }
+
+  &::scroll-button(*):focus-visible {
+    @include outline($color-gray-60, 3px, 4px);
+  }
+
+  &::scroll-button(*):hover {
+    background-color: $color-light-gray-30;
+
+    @include transition;
+  }
+
+  &::scroll-button(left) {
+    content: '\276E' / 'Scroll Left';
+    position-area: center left;
+    transform: translateX(19px);
+  }
+
+  &::scroll-button(right) {
+    content: '\276F' / 'Scroll Right';
+    position-area: center right;
+    transform: translateX(-19px);
+  }
+}

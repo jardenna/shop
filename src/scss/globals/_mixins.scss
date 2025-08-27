@@ -50,9 +50,9 @@ $animation-timing-function: ease-in-out;
   }
 }
 
-@mixin outline($color: $color-blue-30, $size: 2px) {
+@mixin outline($color: $color-blue-30, $size: 2px, $offSet: 2px) {
   outline: $size solid $color;
-  outline-offset: 2px;
+  outline-offset: $offSet;
 }
 
 @mixin grid-template-column($size: 350px) {

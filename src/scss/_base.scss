@@ -36,6 +36,12 @@ body,
   width: 100%;
 }
 
+html {
+  color-scheme: light dark;
+
+  // scrollbar-gutter: stable;
+}
+
 body {
   margin: 0;
   font-family: $font-primary;
