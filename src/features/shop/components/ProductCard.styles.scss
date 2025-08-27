@@ -23,7 +23,7 @@
     right: 5px;
     top: 5px;
     border-radius: 8px;
-    background: rgb(250 250 250 / 60%);
+    background-color: rgb(250 250 250 / 60%);
   }
 
   &:hover {
@@ -129,7 +129,7 @@
   position: absolute;
   left: 12px;
   top: 12px;
-  background: $color-dust-red-20;
+  background-color: $color-dust-red-20;
   color: $color-white;
   display: flex;
   padding: 8px 12px;
