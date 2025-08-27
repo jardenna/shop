@@ -119,6 +119,7 @@ const Modal = ({
             primaryActionBtn={primaryActionBtn}
             secondaryActionBtn={secondaryActionBtn}
             onCloseModal={onCloseModal}
+            onPrimaryClick={handlePrimaryClick}
           />
         </>
       )}
