@@ -23,9 +23,7 @@ const MainCollectionsItem = ({
       </NavLink>
     </div>
 
-    <div
-      className={`collections-img-container ${src.length > 1 ? 'gallery' : ''}`}
-    >
+    <div className="collections-img-container">
       {src.map((s) => (
         <Img key={s} src={s} alt="" />
       ))}
