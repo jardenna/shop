@@ -1,0 +1,54 @@
+/* stylelint-disable selector-pseudo-class-no-unknown */
+.carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 40%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 32px;
+  margin: 30px;
+  padding: 16px;
+  border: 3px solid;
+  anchor-name: --carousel;
+  scroll-marker-group: after;
+  scroll-behavior: smooth;
+
+  li::scroll-marker {
+    content: ' ';
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #366894;
+    display: grid;
+  }
+
+  li::scroll-marker:target-current {
+    background: red;
+  }
+
+  &::scroll-marker-group {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  &::scroll-button(*) {
+    position: fixed;
+    position-anchor: --carousel;
+  }
+
+  &::scroll-button(left) {
+    content: '⬅' / 'Scroll Left';
+    position-area: center left;
+  }
+
+  &::scroll-button(right) {
+    content: '⮕' / 'Scroll Right';
+    position-area: center right;
+  }
+
+  .carousel-item {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+  }
+}
