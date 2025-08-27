@@ -3,7 +3,32 @@
   "ignoreFiles": ["**/variables.module.scss", "dist/**"],
   "rules": {
     "scss/at-extend-no-missing-placeholder": null,
-    "selector-pseudo-element-no-unknown": null,
-    "selector-type-no-unknown": null
+
+    "selector-pseudo-element-no-unknown": [
+      true,
+      {
+        "ignorePseudoElements": [
+          "scroll-button",
+          "scroll-marker-group",
+          "scroll-marker"
+        ]
+      }
+    ],
+
+    "selector-type-no-unknown": [
+      true,
+      {
+        "ignoreTypes": [
+          "left",
+          "right",
+          "up",
+          "down",
+          "block-start",
+          "block-end",
+          "inline-start",
+          "inline-end"
+        ]
+      }
+    ]
   }
 }
