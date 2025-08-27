@@ -12,7 +12,12 @@
   scroll-marker-group: after;
   scroll-behavior: smooth;
 
-  li::scroll-marker {
+  .carousel-item {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+  }
+
+  .carousel-item::scroll-marker {
     content: ' ';
     border-radius: 50%;
     width: 20px;
@@ -21,7 +26,8 @@
     display: grid;
   }
 
-  li::scroll-marker:target-current {
+  /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+  .carousel-item::scroll-marker:target-current {
     background: red;
   }
 
@@ -44,10 +50,5 @@
   &::scroll-button(right) {
     content: '⮕' / 'Scroll Right';
     position-area: center right;
-  }
-
-  .carousel-item {
-    scroll-snap-align: center;
-    scroll-snap-stop: always;
   }
 }
