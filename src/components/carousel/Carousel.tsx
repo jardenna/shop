@@ -2,12 +2,12 @@ import Img from '../Img';
 import './_carousel.scss';
 
 type CarouselProps = {
-  galleryList: string[];
+  carouselList: string[];
 };
 
-const Carousel = ({ galleryList }: CarouselProps) => (
+const Carousel = ({ carouselList }: CarouselProps) => (
   <ul className="carousel">
-    {galleryList.map((item, index) => (
+    {carouselList.map((item, index) => (
       <li className="carousel-item" key={index}>
         <Img src={item} alt="" />
       </li>

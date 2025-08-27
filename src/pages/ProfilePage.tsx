@@ -1,11 +1,11 @@
-import Carousel from '../components/gallery/Carousel';
+import Carousel from '../components/carousel/Carousel';
 import useLanguage from '../features/language/useLanguage';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const ProfilePage = () => {
   const { language } = useLanguage();
 
-  const galleryList = [
+  const carouselList = [
     '/images/collections/women/women.jpg',
     '/images/collections/women/women_2.jpg',
     '/images/collections/women/women_3.jpg',
@@ -18,7 +18,7 @@ const ProfilePage = () => {
   return (
     <MainPageContainer heading={language.profile}>
       <section>{language.profile}</section>
-      <Carousel galleryList={galleryList} />
+      <Carousel carouselList={carouselList} />
     </MainPageContainer>
   );
 };
