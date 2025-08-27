@@ -41,6 +41,16 @@
     height: 20px;
     background-color: $color-gray-30;
     display: grid;
+
+    @include transition;
+  }
+
+  .carousel-item::scroll-marker:hover {
+    background-color: $color-gray-60;
+  }
+
+  .carousel-item::scroll-marker:focus-visible {
+    @include outline($color-gray-60, 3px, 4px);
   }
 
   /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
@@ -67,6 +77,16 @@
     cursor: pointer;
     width: rem(40px);
     height: rem(40px);
+  }
+
+  &::scroll-button(*):focus-visible {
+    @include outline($color-gray-60, 3px, 4px);
+  }
+
+  &::scroll-button(*):hover {
+    background-color: $color-light-gray-30;
+
+    @include transition;
   }
 
   &::scroll-button(left) {
