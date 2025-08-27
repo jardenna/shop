@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router';
-import ImgList from '../../../components/ImgList';
+import Img from '../../../components/Img';
 import { ShopPath } from '../../../layout/nav/enums';
 
 export type MainCollectionsItemProps = {
@@ -23,7 +23,11 @@ const MainCollectionsItem = ({
       </NavLink>
     </div>
 
-    <ImgList images={src} />
+    <div className="collections-img-container">
+      {src.map((s) => (
+        <Img key={s} src={s} alt="" />
+      ))}
+    </div>
   </section>
 );
 
