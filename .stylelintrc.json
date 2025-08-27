@@ -1,9 +1,14 @@
 {
   "extends": ["stylelint-config-standard-scss"],
-  "ignoreFiles": ["**/variables.module.scss", "dist/**"],
+  "ignoreFiles": ["**/variables.module.scss", "dist/**", "**/_select-box.scss"],
   "rules": {
     "scss/at-extend-no-missing-placeholder": null,
-
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignoreTypes": ["target-current"]
+      }
+    ],
     "selector-pseudo-element-no-unknown": [
       true,
       {
