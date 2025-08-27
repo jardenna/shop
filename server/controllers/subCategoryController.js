@@ -43,10 +43,15 @@ const createSubCategory = [
       subCategoryName,
       category,
       categoryStatus,
-      scheduledDate,
       translationKey,
       allowedSizes,
     };
+
+    if (categoryStatus === 'Scheduled') {
+      subCategoryData.scheduledDate = scheduledDate;
+    } else {
+      subCategoryData.scheduledDate = null; // clear if not scheduled
+    }
 
     const subCategory = new SubCategory(subCategoryData);
     await subCategory.save();
@@ -301,8 +306,13 @@ const updateSubCategory = [
       ...(category && { category }),
       ...(categoryStatus && { categoryStatus }),
       translationKey,
-      scheduledDate,
     };
+
+    if (categoryStatus === 'Scheduled') {
+      updateData.scheduledDate = scheduledDate;
+    } else {
+      updateData.scheduledDate = null; // clear if not scheduled
+    }
 
     if (subCategoryName) {
       updateData.allowedSizes = getAllowedSizes(translationKey);
