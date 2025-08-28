@@ -2,7 +2,6 @@ import { memo } from 'react';
 import { Status } from '../../../app/api/apiTypes/adminApiTypes';
 import Badge from '../../../components/badge/Badge';
 import { formatNumber } from '../../../utils/utils';
-import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
 import useLanguage from '../../language/useLanguage';
 import ProductActions from './ProductActions';
 import ProductOverviewCell from './ProductOverviewCell';
@@ -12,12 +11,10 @@ type ProductTableRowProps = {
   countInStock: number;
   id: string;
   images: string[];
-  price: number;
   productName: string;
   scheduledDate: Date | null;
   status: Status;
   subCategoryName: string;
-  discount?: number;
   onCopyProduct: (id: string) => void;
 };
 
@@ -25,13 +22,11 @@ const ProductTableRow = ({
   id,
   productName,
   images,
-  price,
   subCategoryName,
   categoryName,
   countInStock,
   status,
   scheduledDate,
-  discount,
   onCopyProduct,
 }: ProductTableRowProps) => {
   const { selectedLanguage } = useLanguage();
@@ -46,10 +41,8 @@ const ProductTableRow = ({
         />
       </td>
       <td>
-        {subCategoryName} / {categoryName}
-      </td>
-      <td>
-        <ProductDiscountPrice price={price} discount={discount || 0} />
+        {subCategoryName}
+        <span className="text-small text-italic"> ({categoryName})</span>
       </td>
       <td>{formatNumber(countInStock, selectedLanguage)}</td>
       <td>

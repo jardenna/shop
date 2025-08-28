@@ -69,7 +69,7 @@ const NavItem = ({
         <SubNav
           subNav={navItem.subNav}
           adHeading={navItem.adHeading}
-          className={`sub-nav-container ${isSubNavShown ? 'shown' : ''}`}
+          className={isSubNavShown ? 'shown' : ''}
         />
       )}
     </li>

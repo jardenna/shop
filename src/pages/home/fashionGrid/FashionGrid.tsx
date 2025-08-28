@@ -1,4 +1,5 @@
 import useLanguage from '../../../features/language/useLanguage';
+import { ShopPath } from '../../../layout/nav/enums';
 import './_fashion-grid.scss';
 import FashionGridItem from './FashionGridItem';
 
@@ -20,7 +21,7 @@ const FashionGrid = () => {
         <FashionGridItem
           className="grid-item-2"
           heading={language.shopMenHeading}
-          linkTo="/"
+          linkTo={ShopPath.Men}
           linkText={language.shopMenLink}
         >
           <p>{language.shopMenText}</p>
@@ -30,7 +31,7 @@ const FashionGrid = () => {
           <FashionGridItem
             className="grid-item-3"
             heading={language.shopWomanHeading}
-            linkTo="/"
+            linkTo={ShopPath.Women}
             linkText={language.shopWomanLink}
           >
             <p>{language.shopWomanText}</p>
@@ -38,7 +39,7 @@ const FashionGrid = () => {
           <FashionGridItem
             className="grid-item-4"
             heading={language.shopKidsHeading}
-            linkTo="/"
+            linkTo={ShopPath.Kids}
             linkText={language.shopKidsLink}
           >
             <p>{language.shopKidsText}</p>

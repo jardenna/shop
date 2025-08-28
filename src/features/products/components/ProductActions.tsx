@@ -32,7 +32,7 @@ const ProductActions = ({ onCopyProduct, id }: ProductActionsProps) => {
       icon: <Icon iconName={IconName.Pencil} title={language.pencil} />,
     },
     {
-      label: language.copy,
+      label: language.copyAction,
       onClick: () => {
         onCopyProduct(id);
       },

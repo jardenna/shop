@@ -20,6 +20,11 @@ const categoryApiSlice = apiSlice.injectEndpoints({
     }),
     getCategoryById: builder.query<UpdateCategoryRequest, string>({
       query: (id) => `${categoryUrl}/${id}`,
+      providesTags: [TagTypesEnum.Categories],
+    }),
+    getPublishedCategories: builder.query<string[], void>({
+      query: () => `${categoryUrl}/published`,
+      providesTags: [TagTypesEnum.Categories],
     }),
     createCategory: builder.mutation<CategoriesResponse, CreateCategoryRequest>(
       {
@@ -51,4 +56,5 @@ export const {
   useCreateCategoryMutation,
   useGetCategoryByIdQuery,
   useGetHasCategoriesScheduledQuery,
+  useGetPublishedCategoriesQuery,
 } = categoryApiSlice;

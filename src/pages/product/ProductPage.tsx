@@ -16,7 +16,6 @@ import './ProductPage.styles.scss';
 const tableHeaders: Column<Product>[] = [
   { key: 'productName', label: 'name', name: 'productName' },
   { key: 'subCategoryName', label: 'category', name: 'subCategoryName' },
-  { key: 'price', label: 'price', name: 'price' },
   { key: 'countInStock', label: 'countInStock', name: 'countInStock' },
   { key: 'productStatus', label: 'status', name: 'productStatus' },
   { key: 'id', label: '', name: '' },
@@ -86,9 +85,7 @@ const ProductPage = () => {
                 id,
                 countInStock,
                 images,
-                price,
                 productName,
-                discount,
                 productStatus,
                 subCategory,
                 scheduledDate,
@@ -98,8 +95,6 @@ const ProductPage = () => {
                   id={id}
                   countInStock={countInStock}
                   images={images}
-                  price={price}
-                  discount={discount}
                   productName={productName}
                   status={productStatus}
                   categoryName={subCategory.category.categoryName}

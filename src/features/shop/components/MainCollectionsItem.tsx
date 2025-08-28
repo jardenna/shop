@@ -5,8 +5,8 @@ import { ShopPath } from '../../../layout/nav/enums';
 export type MainCollectionsItemProps = {
   linkText: string;
   linkTo: ShopPath;
-  src: string[];
   title: string;
+  src?: string[];
 };
 
 const MainCollectionsItem = ({
@@ -23,11 +23,13 @@ const MainCollectionsItem = ({
       </NavLink>
     </div>
 
-    <div className="collections-img-container">
-      {src.map((s) => (
-        <Img key={s} src={s} alt="" />
-      ))}
-    </div>
+    {src && (
+      <div className="collections-img-container">
+        {src.map((s) => (
+          <Img key={s} src={s} alt="" />
+        ))}
+      </div>
+    )}
   </section>
 );
 
