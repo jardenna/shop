@@ -82,6 +82,7 @@ const Modal = ({
   const handlePrimaryClick = () => {
     if (primaryActionBtn.onClick) {
       primaryActionBtn.onClick();
+      onClosePopup();
     }
 
     if (primaryActionBtn.closeOnClick !== false) {
