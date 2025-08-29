@@ -48,6 +48,9 @@ const sliceAndCountHidden = <T>(list: T[], visibleCount: number) => {
   return { visibleItems, hiddenCount };
 };
 
+const optionsList = (count: number) =>
+  [...Array(count).keys()].map((i) => (i + 1).toString());
+
 export {
   allowedExtensions,
   currencyCacheKey,
@@ -58,5 +61,6 @@ export {
   maxFiles,
   maxFileSize,
   oneDay,
+  optionsList,
   sliceAndCountHidden,
 };

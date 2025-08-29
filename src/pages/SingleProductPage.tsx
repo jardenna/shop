@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import type { Size } from '../app/api/apiTypes/sharedApiTypes';
@@ -9,13 +10,15 @@ import SkeletonSinglePage from '../components/skeleton/skeletonSinglePage/Skelet
 import useAuth from '../features/auth/hooks/useAuth';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
 import useLanguage from '../features/language/useLanguage';
-import Reviews from '../features/products/components/starRating/Reviews';
+import Ratings from '../features/products/components/starRating/Ratings';
+import StarRating from '../features/products/components/starRating/StarRaiting';
 import InStock from '../features/shop/components/InStock';
 import NotifyMe from '../features/shop/components/NotifyMe';
 import ShopProductForm from '../features/shop/components/ShopProductForm';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
 import LayoutElement from '../layout/LayoutElement';
 import MetaTags from '../layout/nav/MetaTags';
+import { FormEventType } from '../types/types';
 import { getColorOptions } from '../utils/colorUtils';
 import { getDisplaySizes } from '../utils/sizeUtils';
 import './SingleProductPage.styles.scss';
@@ -84,6 +87,13 @@ const SingleProductPage = () => {
   const missingSizes = displaySizeList.filter(
     (size) => !product?.sizes.includes(size),
   );
+  const [rating, setRating] = useState(0);
+
+  const handleSubmit = (e: FormEventType) => {
+    e.preventDefault();
+    console.log('Rating submitted:', rating);
+    // call your custom hook function here, e.g. send to API
+  };
 
   return (
     <div className="container">
@@ -123,7 +133,16 @@ const SingleProductPage = () => {
                     />
                   )}
                 </div>
-                <Reviews rating={2} />
+                <form onSubmit={handleSubmit}>
+                  <h2>Rate your experience</h2>
+                  <StarRating
+                    name="review"
+                    value={rating}
+                    onChange={setRating}
+                  />
+                  <button type="submit">Submit</button>
+                </form>
+                <Ratings />
                 <ShopProductForm
                   selectedProduct={product}
                   colorList={colorList}
