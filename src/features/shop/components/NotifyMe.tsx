@@ -26,8 +26,10 @@ const NotifyMe = ({
 }: NotifiMeProps) => {
   const { language } = useLanguage();
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+
+  const sizes: Size[] = options.length === 1 ? [options[0] as Size] : [];
   const initialState: InitialNotifyValues = {
-    sizes: [],
+    sizes,
     email: currentUser?.email ?? '',
   };
 
