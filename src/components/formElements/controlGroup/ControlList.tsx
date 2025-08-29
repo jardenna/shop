@@ -21,8 +21,8 @@ export type BaseControlGroupProps = {
 };
 
 type ControlList = BaseControlGroupProps & {
+  type: 'checkbox' | 'radio';
   initialChecked?: string;
-  type?: 'checkbox' | 'radio';
   values?: string[];
 };
 
@@ -32,15 +32,15 @@ const ControlList = ({
   groupTitle,
   required,
   inputInfo,
-  type = 'checkbox',
+  type,
   values = [],
   initialChecked,
   disabledList,
   onChange,
   iconName,
-  className = '',
+  className = 'size-list',
   autoFocus,
-  variant,
+  variant = 'medium',
 }: ControlList) => (
   <div>
     {groupTitle && (

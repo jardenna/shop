@@ -4,7 +4,7 @@ import type {
 } from '../../../app/api/apiTypes/sharedApiTypes';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/form/Form';
-import RadioControls from '../../../components/formElements/controlGroup/RadioControls';
+import ControlList from '../../../components/formElements/controlGroup/ControlList';
 import validateShopProduct from '../../../components/formElements/validation/validateShopProduct';
 import useFormValidation from '../../../hooks/useFormValidation';
 import {
@@ -64,8 +64,9 @@ const ShopProductForm = ({
   return (
     <Form onSubmit={onSubmit} submitBtnLabel={language.addToBag}>
       <FieldSet legendText={language.productVariants} hideLegendText>
-        <RadioControls
+        <ControlList
           initialChecked={values.color}
+          type="radio"
           className="with-icon"
           required={values.color === ''}
           onChange={onChange}
@@ -80,15 +81,14 @@ const ShopProductForm = ({
           }}
         />
 
-        <RadioControls
+        <ControlList
+          type="radio"
           initialChecked={values.size}
           required={values.size === ''}
           disabledList={sizes}
-          className="size-list"
           onChange={onChange}
           options={displaySizeList}
           name="size"
-          variant="medium"
           groupTitle={{
             title: titleSize,
             id: 'choose-product-size',
