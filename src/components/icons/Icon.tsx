@@ -25,6 +25,7 @@ import FilterIcon from './FilterIcon';
 import GridIcon from './GridIcon';
 import GridLargeIcon from './GridLargeIcon';
 import GridSmallIcon from './GridSmallIcon';
+import HalfStarIcon from './HalfStarIcon';
 import HeartIcon from './HeartIcon';
 import ImageIcon from './ImageIcon';
 import InfoIcon from './InfoIcon';
@@ -39,6 +40,7 @@ import PencilIcon from './PencilIcon';
 import ProductsIcon from './ProductsIcon';
 import SearchIcon from './SearchIcon';
 import ShoppingBagIcon from './ShoppingBagIcon';
+import StarIcon from './StarIcon';
 import SubCategoriesIcon from './SubCategoriesIcon';
 import SubtractIcon from './SubtractIcon';
 import SuccessIcon from './SuccessIcon';
@@ -86,9 +88,10 @@ const iconMapping = {
   grid: GridIcon,
   gridLarge: GridLargeIcon,
   gridSmall: GridSmallIcon,
+  halfStar: HalfStarIcon,
+  heart: HeartIcon,
   image: ImageIcon,
   info: InfoIcon,
-  heart: HeartIcon,
   kid: KidIcon,
   language: LanguageIcon,
   layoutGrid: LayoutGridIcon,
@@ -103,6 +106,7 @@ const iconMapping = {
   products: ProductsIcon,
   search: SearchIcon,
   shoppingBag: ShoppingBagIcon,
+  star: StarIcon,
   subCategories: SubCategoriesIcon,
   subtract: SubtractIcon,
   success: SuccessIcon,

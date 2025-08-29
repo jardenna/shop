@@ -2,6 +2,8 @@
 
 .review {
   display: flex;
+  position: relative;
+  color: $color-warning;
 }
 
 .star {
@@ -11,4 +13,11 @@
 
 .star.filled {
   color: $color-warning;
+}
+
+.half-star-right {
+  transform: scaleX(-1);
+  position: absolute;
+  left: 20px;
+  fill: $color-gray-70;
 }
