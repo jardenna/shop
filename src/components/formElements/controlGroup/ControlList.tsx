@@ -60,7 +60,7 @@ const ControlList = ({
         return (
           <ControlInputField
             key={label}
-            autoFocus={autoFocus}
+            autoFocus={autoFocus && index === 0}
             iconName={iconName}
             id={id}
             type={type}
