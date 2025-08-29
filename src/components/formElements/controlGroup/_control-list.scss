@@ -1,6 +1,8 @@
 @use '../../../scss/globals' as *;
 
 .size-list {
+  border-inline-start: 1px solid $color-border;
+
   .control-item {
     @extend %stacked-item-border;
   }
@@ -10,17 +12,12 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  border-inline-start: 1px solid $color-border;
 
   .control-label {
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-
-    // &:has(input:focus-visible) {
-    //   @include outline;
-    // }
   }
 
   &.with-icon {
