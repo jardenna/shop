@@ -1,5 +1,5 @@
 import type { Size } from '../../../app/api/apiTypes/sharedApiTypes';
-import CheckboxControls from '../../../components/formElements/controlGroup/CheckboxControls';
+import ControlList from '../../../components/formElements/controlGroup/ControlList';
 import Input from '../../../components/formElements/Input';
 import { ChangeInputType } from '../../../types/types';
 import useLanguage from '../../language/useLanguage';
@@ -28,8 +28,9 @@ const NotifyMeForm = ({
           <p>
             {language.missingYourSize}? {language.notifyMeMessage}.
           </p>
-          <CheckboxControls
+          <ControlList
             options={options}
+            type="checkbox"
             autoFocus
             name="sizes"
             onChange={onChange}

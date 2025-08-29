@@ -8,7 +8,7 @@ import type {
 } from '../../../app/api/apiTypes/adminApiTypes';
 import useDatePicker from '../../../components/datePicker/useDatePicker';
 import Form from '../../../components/form/Form';
-import CheckboxControls from '../../../components/formElements/controlGroup/CheckboxControls';
+import ControlList from '../../../components/formElements/controlGroup/ControlList';
 import Input from '../../../components/formElements/Input';
 import Textarea from '../../../components/formElements/Textarea';
 import ToggleSwitch from '../../../components/formElements/toggleSwitch/ToggleSwitch';
@@ -326,9 +326,10 @@ const ProductForm = ({
               }}
               required
             />
-            <CheckboxControls
+            <ControlList
               options={availableSizes}
               name="sizes"
+              type="checkbox"
               onChange={onChange}
               values={values.sizes}
               required

@@ -1,0 +1,14 @@
+@use '../../../../scss/globals' as *;
+
+.review {
+  display: flex;
+}
+
+.star {
+  font-size: rem(24px);
+  color: $color-gray-70;
+}
+
+.star.filled {
+  color: $color-warning;
+}
