@@ -73,7 +73,7 @@ const ControlList = ({
             onChange={onChange}
             label={label}
             variant={variant}
-            className={`star-icon ${Number(label) <= Number(values[0]) ? 'filled' : ''}`}
+            className={Number(label) <= Number(values[0]) ? 'filled' : ''}
           />
         );
       })}

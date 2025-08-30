@@ -16,7 +16,7 @@ type ControlInputFieldProps = {
   autoFocus?: boolean;
   className?: string;
   disabled?: boolean;
-  fill?: any;
+  fill?: string;
   iconName?: IconName;
   type?: InputType;
   variant?: ProductLabelVariant;
