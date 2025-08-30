@@ -15,6 +15,7 @@ export type BaseControlGroupProps = {
   disabledList?: string[];
   groupTitle?: OptionGroupHeading;
   iconName?: IconName;
+  iconSize?: string;
   inputInfo?: string;
   required?: boolean;
   variant?: ProductLabelVariant;
@@ -42,6 +43,7 @@ const ControlList = ({
   className = 'size-list',
   autoFocus,
   variant = 'medium',
+  iconSize,
 }: ControlList) => (
   <div>
     {groupTitle && (
@@ -61,6 +63,7 @@ const ControlList = ({
         return (
           <ControlInputField
             key={label}
+            iconSize={iconSize}
             autoFocus={autoFocus && index === 0}
             iconName={iconName}
             fill={iconName ? colorMap[label] : ''}

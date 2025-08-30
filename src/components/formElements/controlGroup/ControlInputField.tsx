@@ -18,6 +18,7 @@ type ControlInputFieldProps = {
   disabled?: boolean;
   fill?: string;
   iconName?: IconName;
+  iconSize?: string;
   type?: InputType;
   variant?: ProductLabelVariant;
   onChange: (event: ChangeInputType) => void;
@@ -36,6 +37,7 @@ const ControlInputField = ({
   variant,
   className = '',
   fill,
+  iconSize,
 }: ControlInputFieldProps) => {
   const { language } = useLanguage();
 
@@ -49,7 +51,7 @@ const ControlInputField = ({
           <IconContent
             iconName={iconName}
             fill={fill}
-            size="70"
+            size={iconSize}
             title=""
             ariaLabel={getlowerCaseFirstLetter(label, language)}
             className={className}

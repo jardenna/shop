@@ -73,6 +73,7 @@ const ShopProductForm = ({
           options={sortedTranslatedColors}
           name="color"
           variant="large"
+          iconSize="70"
           iconName={resolveIconName(categoryName)}
           groupTitle={{
             title: titleColor,
