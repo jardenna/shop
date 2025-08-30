@@ -1,5 +1,6 @@
 import { IconName } from '../../../types/enums';
 import { ChangeInputType, OptionGroupHeading } from '../../../types/types';
+import { colorMap } from '../../../utils/colorUtils';
 import OptionGroupTitle from '../../productLists/OptionGroupTitle';
 import { ProductLabelVariant } from '../../productLists/ProductListItem';
 import InputInfo from '../InputInfo';
@@ -62,6 +63,7 @@ const ControlList = ({
             key={label}
             autoFocus={autoFocus && index === 0}
             iconName={iconName}
+            fill={colorMap[label]}
             id={id}
             type={type}
             name={name}
@@ -71,6 +73,7 @@ const ControlList = ({
             onChange={onChange}
             label={label}
             variant={variant}
+            className={`star-icon ${Number(label) <= Number(values[0]) ? 'filled' : ''}`}
           />
         );
       })}

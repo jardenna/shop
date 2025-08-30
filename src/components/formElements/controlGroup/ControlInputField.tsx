@@ -1,7 +1,6 @@
 import useLanguage from '../../../features/language/useLanguage';
 import { IconName } from '../../../types/enums';
 import type { ChangeInputType } from '../../../types/types';
-import { colorMap } from '../../../utils/colorUtils';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import IconContent from '../../IconContent';
 import { ProductLabelVariant } from '../../productLists/ProductListItem';
@@ -15,7 +14,9 @@ type ControlInputFieldProps = {
   name: string;
   value: string;
   autoFocus?: boolean;
+  className?: string;
   disabled?: boolean;
+  fill?: any;
   iconName?: IconName;
   type?: InputType;
   variant?: ProductLabelVariant;
@@ -33,6 +34,8 @@ const ControlInputField = ({
   iconName,
   autoFocus,
   variant,
+  className = '',
+  fill,
 }: ControlInputFieldProps) => {
   const { language } = useLanguage();
 
@@ -45,10 +48,11 @@ const ControlInputField = ({
         {iconName ? (
           <IconContent
             iconName={iconName}
-            fill={colorMap[label]}
+            fill={fill}
             size="70"
             title=""
             ariaLabel={getlowerCaseFirstLetter(label, language)}
+            className={className}
           />
         ) : (
           label
