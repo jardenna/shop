@@ -16,6 +16,7 @@ type OmittedProps = Omit<
   | 'multiple'
 >;
 type TextareaProps = OmittedProps & {
+  rows?: number;
   onChange: (event: ChangeInputType) => void;
 };
 
@@ -28,6 +29,7 @@ const Textarea = ({
   labelText,
   onChange,
   errorText,
+  rows = 3,
 }: TextareaProps) => {
   const ariaErrorId = `${id}-error`;
   return (
@@ -48,6 +50,7 @@ const Textarea = ({
         value={value}
         onChange={onChange}
         aria-invalid={errorText ? true : undefined}
+        rows={rows}
       />
     </div>
   );
