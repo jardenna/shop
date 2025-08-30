@@ -67,7 +67,7 @@ const ShopProductForm = ({
         <ControlList
           initialChecked={values.color}
           type="radio"
-          className="with-icon"
+          className="color-list"
           required={values.color === ''}
           onChange={onChange}
           options={sortedTranslatedColors}

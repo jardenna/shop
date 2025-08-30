@@ -14,7 +14,7 @@ interface StarRatingProps {
 const StarRating = ({
   totalStars = 5,
   name,
-  initialRating = 0,
+  initialRating = 1,
 }: StarRatingProps) => {
   const [rating, setRating] = useState(initialRating);
 
