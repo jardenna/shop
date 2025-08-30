@@ -87,12 +87,17 @@ const SingleProductPage = () => {
   const missingSizes = displaySizeList.filter(
     (size) => !product?.sizes.includes(size),
   );
+
+  // Reviews
   const [rating, setRating] = useState(0);
+
+  const handleChange = (value: number) => {
+    setRating(value);
+  };
 
   const handleSubmit = (e: FormEventType) => {
     e.preventDefault();
     console.log('Rating submitted:', rating);
-    // call your custom hook function here, e.g. send to API
   };
 
   return (
@@ -138,7 +143,7 @@ const SingleProductPage = () => {
                   <StarRating
                     name="review"
                     value={rating}
-                    onChange={setRating}
+                    onChange={handleChange}
                   />
                   <button type="submit">Submit</button>
                 </form>
