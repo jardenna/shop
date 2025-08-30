@@ -117,7 +117,7 @@ const SingleProductPage = () => {
                     />
                   )}
                 </div>
-                <StarRating name="review" />
+                <StarRating />
                 <ShopProductForm
                   selectedProduct={product}
                   colorList={colorList}

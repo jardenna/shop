@@ -1,49 +1,47 @@
-import { FormEvent, useState } from 'react';
-
+import Form from '../../../../components/form/Form';
 import ControlList from '../../../../components/formElements/controlGroup/ControlList';
+import useFormValidation from '../../../../hooks/useFormValidation';
 import { IconName } from '../../../../types/enums';
-import { ChangeInputType } from '../../../../types/types';
 import { optionsList } from '../../../../utils/utils';
 import './_reviews.scss';
 
 interface StarRatingProps {
-  name: string;
   initialRating?: number;
   totalStars?: number;
 }
 
-const StarRating = ({
-  totalStars = 5,
-  name,
-  initialRating = 1,
-}: StarRatingProps) => {
-  const [rating, setRating] = useState(initialRating);
-
-  const handleChange = (e: ChangeInputType) => {
-    setRating(Number(e.target.value)); // value from ControlList is string
+const StarRating = ({ totalStars = 5, initialRating = 1 }: StarRatingProps) => {
+  const initialState = {
+    rating: initialRating,
   };
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    console.log('Rating submitted:', rating);
-  };
+  const { values, onChange, onSubmit } = useFormValidation({
+    initialState,
+    callback: handleSubmit,
+  });
+
+  function handleSubmit() {
+    console.log('Rating submitted:', values);
+  }
 
   return (
-    <form className="star-rating" aria-label="Rating" onSubmit={handleSubmit}>
+    <Form className="star-rating" onSubmit={onSubmit} submitBtnLabel="Rate">
       <ControlList
-        name={name}
+        name="rating"
         options={optionsList(totalStars)}
         type="radio"
-        initialChecked={String(rating)}
-        onChange={handleChange}
+        initialChecked={String(values.rating)}
+        onChange={onChange}
         className="star-rating"
         iconName={IconName.Star}
-        values={[String(rating)]}
+        values={[String(values.rating)]}
         variant="small"
+        groupTitle={{
+          title: 'Ratings',
+          id: 'ratings',
+        }}
       />
-
-      <button type="submit">Submit</button>
-    </form>
+    </Form>
   );
 };
 
