@@ -5,10 +5,10 @@ import { IconName } from '../../../../types/enums';
 import { optionsList } from '../../../../utils/utils';
 import './_reviews.scss';
 
-interface StarRatingProps {
+type StarRatingProps = {
   initialRating?: number;
   totalStars?: number;
-}
+};
 
 const StarRating = ({ totalStars = 5, initialRating = 1 }: StarRatingProps) => {
   const initialState = {
@@ -37,8 +37,8 @@ const StarRating = ({ totalStars = 5, initialRating = 1 }: StarRatingProps) => {
         values={[String(values.rating)]}
         variant="small"
         groupTitle={{
-          title: 'Ratings',
-          id: 'ratings',
+          title: 'Rate product',
+          id: 'rate-product',
         }}
       />
     </Form>
