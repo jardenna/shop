@@ -1,8 +1,8 @@
 import { IconName } from '../../../types/enums';
-import { ChangeInputType, OptionGroupHeading } from '../../../types/types';
+import type { ChangeInputType, OptionGroupHeading } from '../../../types/types';
 import { colorMap } from '../../../utils/colorUtils';
 import OptionGroupTitle from '../../productLists/OptionGroupTitle';
-import { ProductLabelVariant } from '../../productLists/ProductListItem';
+import type { ProductLabelVariant } from '../../productLists/ProductListItem';
 import InputInfo from '../InputInfo';
 import ControlInputField from './ControlInputField';
 import './_control-list.scss';
@@ -63,7 +63,7 @@ const ControlList = ({
             key={label}
             autoFocus={autoFocus && index === 0}
             iconName={iconName}
-            fill={colorMap[label]}
+            fill={iconName ? colorMap[label] : ''}
             id={id}
             type={type}
             name={name}
@@ -73,7 +73,9 @@ const ControlList = ({
             onChange={onChange}
             label={label}
             variant={variant}
-            className={Number(label) <= Number(values[0]) ? 'filled' : ''}
+            className={
+              Number(label) <= Number(values[0]) && iconName ? 'filled' : ''
+            }
           />
         );
       })}
