@@ -1,5 +1,6 @@
 $color-white: #fff;
 $color-black: #000;
+$color-yellow: #fec901;
 
 // Blue colors
 $color-blue-20: #dce4e7;
@@ -45,7 +46,7 @@ $color-overlay: rgb($color-gray-80, 0.6);
 $color-danger: $color-red-20;
 $color-success: $color-blue-30;
 $color-info: #4e8673;
-$color-warning: #fec901;
+$color-warning: $color-yellow;
 
 // Badge colors
 $color-badge-scheduled: $color-gray-60;

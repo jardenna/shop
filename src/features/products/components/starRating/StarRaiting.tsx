@@ -3,6 +3,7 @@ import { FormEvent, useState } from 'react';
 import ControlList from '../../../../components/formElements/controlGroup/ControlList';
 import { IconName } from '../../../../types/enums';
 import { ChangeInputType } from '../../../../types/types';
+import { optionsList } from '../../../../utils/utils';
 import './_reviews.scss';
 
 interface StarRatingProps {
@@ -31,13 +32,14 @@ const StarRating = ({
     <form className="star-rating" aria-label="Rating" onSubmit={handleSubmit}>
       <ControlList
         name={name}
-        options={Array.from({ length: totalStars }, (_, i) => String(i + 1))}
+        options={optionsList(totalStars)}
         type="radio"
         initialChecked={String(rating)}
         onChange={handleChange}
         className="star-rating"
         iconName={IconName.Star}
         values={[String(rating)]}
+        variant="small"
       />
 
       <button type="submit">Submit</button>

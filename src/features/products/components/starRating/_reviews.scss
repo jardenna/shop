@@ -1,46 +1,33 @@
 @use '../../../../scss/globals' as *;
 
-.review,
-.ratings {
-  position: relative;
-  color: $color-warning;
-}
+// .review,
+// .ratings {
+//   position: relative;
+//   color: $color-warning;
+// }
 
-.star {
-  font-size: rem(24px);
-  color: $color-gray-70;
-}
+// .star {
+//   font-size: rem(24px);
+//   color: $color-gray-70;
+// }
 
-.star.filled {
-  color: $color-warning;
-}
+// .star.filled {
+//   color: $color-yellow;
+// }
 
-.half-star-right {
-  transform: scaleX(-1);
-  position: absolute;
-  left: 20px;
-  fill: $color-gray-70;
-}
+// .half-star-right {
+//   transform: scaleX(-1);
+//   position: absolute;
+//   left: 20px;
+//   fill: $color-gray-70;
+// }
 
 .star-rating {
-  display: flex;
-  gap: 5px;
-
   svg {
-    font-size: 2rem;
-    color: #ccc;
-    transition: color 0.2s;
+    @include transition($time: 0.2s);
 
     &.filled {
-      color: gold;
+      color: $color-yellow;
     }
-  }
-
-  input {
-    display: none;
-  }
-
-  label {
-    cursor: pointer;
   }
 }
