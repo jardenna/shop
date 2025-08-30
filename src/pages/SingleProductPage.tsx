@@ -8,7 +8,6 @@ import SkeletonSinglePage from '../components/skeleton/skeletonSinglePage/Skelet
 import useAuth from '../features/auth/hooks/useAuth';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
 import useLanguage from '../features/language/useLanguage';
-import Ratings from '../features/products/components/starRating/Ratings';
 import StarRating from '../features/products/components/starRating/StarRaiting';
 import InStock from '../features/shop/components/InStock';
 import NotifyMe from '../features/shop/components/NotifyMe';
@@ -119,7 +118,6 @@ const SingleProductPage = () => {
                   )}
                 </div>
                 <StarRating name="review" />
-                <Ratings />
                 <ShopProductForm
                   selectedProduct={product}
                   colorList={colorList}
