@@ -1,5 +1,6 @@
 import Form from '../../../../components/form/Form';
 import ControlList from '../../../../components/formElements/controlGroup/ControlList';
+import Textarea from '../../../../components/formElements/Textarea';
 import useFormValidation from '../../../../hooks/useFormValidation';
 import { IconName } from '../../../../types/enums';
 import { optionsList } from '../../../../utils/utils';
@@ -13,6 +14,7 @@ type StarRatingProps = {
 const StarRating = ({ totalStars = 5, initialRating = 1 }: StarRatingProps) => {
   const initialState = {
     rating: initialRating,
+    description: '',
   };
 
   const { values, onChange, onSubmit } = useFormValidation({
@@ -40,6 +42,14 @@ const StarRating = ({ totalStars = 5, initialRating = 1 }: StarRatingProps) => {
           title: 'Rate product',
           id: 'rate-product',
         }}
+      />
+
+      <Textarea
+        value={values.description}
+        name="description"
+        id="description"
+        labelText="Fortæl os om din oplevelse"
+        onChange={onChange}
       />
     </Form>
   );
