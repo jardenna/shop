@@ -1,5 +1,5 @@
+import type { InitialNotifyValues } from '../../../features/shop/components/NotifyMe';
 import type { ValidationErrors } from '../../../hooks/useFormValidation';
-import { InitialNotifyValues } from '../../../pages/SingleProductPage';
 import { ValidationMessage } from '../../../types/enums';
 import validateEmail from './CommonFieldValidation';
 

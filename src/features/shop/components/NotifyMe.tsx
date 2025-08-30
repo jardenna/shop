@@ -6,10 +6,14 @@ import validateNotityMe from '../../../components/formElements/validation/valida
 import { PrimaryActionBtnProps } from '../../../components/modal/Modal';
 import ModalContainer from '../../../components/modal/ModalContainer';
 import useFormValidation from '../../../hooks/useFormValidation';
-import { InitialNotifyValues } from '../../../pages/SingleProductPage';
 import { BtnType, BtnVariant, SizeVariant } from '../../../types/enums';
 import useLanguage from '../../language/useLanguage';
 import NotifyMeForm from './NotifyMeForm';
+
+export type InitialNotifyValues = {
+  email: string;
+  sizes: Size[];
+};
 
 type NotifiMeProps = {
   currentUser: UserResponse | undefined;

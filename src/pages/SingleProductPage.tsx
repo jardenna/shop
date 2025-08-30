@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
-import type { Size } from '../app/api/apiTypes/sharedApiTypes';
 import Accordion from '../components/accordion/Accordion';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import FavoriteHeart from '../components/favorites/FavoriteHeart';
@@ -22,11 +21,6 @@ import { FormEventType } from '../types/types';
 import { getColorOptions } from '../utils/colorUtils';
 import { getDisplaySizes } from '../utils/sizeUtils';
 import './SingleProductPage.styles.scss';
-
-export type InitialNotifyValues = {
-  email: string;
-  sizes: Size[];
-};
 
 const SingleProductPage = () => {
   const { currentUser } = useAuth();
