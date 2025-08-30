@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import Accordion from '../components/accordion/Accordion';
@@ -17,7 +16,6 @@ import ShopProductForm from '../features/shop/components/ShopProductForm';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
 import LayoutElement from '../layout/LayoutElement';
 import MetaTags from '../layout/nav/MetaTags';
-import { FormEventType } from '../types/types';
 import { getColorOptions } from '../utils/colorUtils';
 import { getDisplaySizes } from '../utils/sizeUtils';
 import './SingleProductPage.styles.scss';
@@ -82,18 +80,6 @@ const SingleProductPage = () => {
     (size) => !product?.sizes.includes(size),
   );
 
-  // Reviews
-  const [rating, setRating] = useState(0);
-
-  const handleChange = (value: number) => {
-    setRating(value);
-  };
-
-  const handleSubmit = (e: FormEventType) => {
-    e.preventDefault();
-    console.log('Rating submitted:', rating);
-  };
-
   return (
     <div className="container">
       <MetaTags metaTitle={product?.productName} />
@@ -132,15 +118,7 @@ const SingleProductPage = () => {
                     />
                   )}
                 </div>
-                <form onSubmit={handleSubmit}>
-                  <h2>Rate your experience</h2>
-                  <StarRating
-                    name="review"
-                    value={rating}
-                    onChange={handleChange}
-                  />
-                  <button type="submit">Submit</button>
-                </form>
+                <StarRating name="review" />
                 <Ratings />
                 <ShopProductForm
                   selectedProduct={product}
