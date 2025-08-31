@@ -6,6 +6,7 @@ import Icon from './icons/Icon';
 type BtnCloseProps = {
   ariaLabel?: string;
   autoFocus?: boolean;
+  tabIndex?: number;
   onClick: () => void;
 };
 
@@ -13,6 +14,7 @@ const BtnClose = ({
   onClick,
   ariaLabel = 'Close',
   autoFocus,
+  tabIndex,
 }: BtnCloseProps) => {
   const { language } = useLanguage();
 
@@ -23,6 +25,7 @@ const BtnClose = ({
       ariaLabel={ariaLabel || language.close}
       autoFocus={autoFocus}
       className="btn-close"
+      tabIndex={tabIndex === 0 || tabIndex === -1 ? tabIndex : undefined}
     >
       <Icon iconName={IconName.Close} title={language.close} />
     </Button>
