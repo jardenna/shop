@@ -12,6 +12,21 @@ export type ShopAllProductsResponse = {
   products: BaseProduct[];
 };
 
+export type ReviewsResponse = {
+  rating: number;
+  success: boolean;
+};
+
+type Reviews = {
+  comment: string;
+  message: string;
+};
+
+export type ReviewsRequest = {
+  id: string;
+  reviews: Reviews;
+};
+
 export type ProductMenuResponse = {
   categoryId: string;
   label: string;
