@@ -5,9 +5,10 @@ import { IconName } from '../../types/enums';
 type NavUserProps = {
   currentUser: UserResponse;
   iconTitle: string;
+  isMenuCollapsed?: boolean;
 };
 
-const NavUser = ({ currentUser, iconTitle }: NavUserProps) => (
+const NavUser = ({ currentUser, iconTitle, isMenuCollapsed }: NavUserProps) => (
   <div className="user-container">
     <span className="user">
       <span className="user-icon">
@@ -15,9 +16,11 @@ const NavUser = ({ currentUser, iconTitle }: NavUserProps) => (
       </span>
       <span className="user-text nav-text">
         <span className="text-bold">{currentUser.username}</span>
-        <span>
-          <a href={`mailto:${currentUser.email}`}>{currentUser.email}</a>
-        </span>
+        {!isMenuCollapsed && (
+          <span>
+            <a href={`mailto:${currentUser.email}`}>{currentUser.email}</a>
+          </span>
+        )}
       </span>
     </span>
   </div>
