@@ -12,17 +12,17 @@ import useLanguage from '../../../language/useLanguage';
 import { usePostReviewsMutation } from '../../../shop/shopApiSlice';
 import './_reviews.scss';
 
-type ReviewsProps = {
+type ReviewsFormProps = {
   productId: string;
   initialRating?: number;
   totalStars?: number;
 };
 
-const Reviews = ({
+const ReviewsForm = ({
   totalStars = 5,
   initialRating = 1,
   productId,
-}: ReviewsProps) => {
+}: ReviewsFormProps) => {
   const { language } = useLanguage();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -70,7 +70,7 @@ const Reviews = ({
   }, [visible]);
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className="review-form">
       <FieldSet legendText={language.rateProduct}>
         <ControlList
           name="rating"
@@ -110,4 +110,4 @@ const Reviews = ({
   );
 };
 
-export default Reviews;
+export default ReviewsForm;
