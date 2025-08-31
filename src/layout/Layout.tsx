@@ -21,7 +21,7 @@ const Layout = () => {
   // Hooks
   const { currentUser } = useAuth();
   const { currencyOptions, onChangePrice, exchangeRate } = useCurrency();
-  const [logout] = useLogoutMutation();
+  const [logout, { isLoading }] = useLogoutMutation();
   const { isMobileSize } = useMediaQuery();
 
   const handleLogout = () => {
@@ -63,6 +63,7 @@ const Layout = () => {
   const authDropdownItem: DropdownItem = {
     label: currentUser ? language.logout : language.login,
     onClick: currentUser ? handleLogout : () => navigate(`/${ShopPath.Login}`),
+    disabled: isLoading,
     icon: (
       <Icon
         iconName={currentUser ? IconName.Logout : IconName.Login}

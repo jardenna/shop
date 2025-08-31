@@ -16,25 +16,28 @@ const DropdownList = ({ dropdownList, defaultIndex }: DropdownListProps) => {
 
   return (
     <ul>
-      {dropdownList.map(({ label, onClick, icon, btnVariant }, index) => (
-        <li
-          key={label}
-          className={`dropdown-item ${index === selectedListItemIndex ? 'active' : ''}`}
-        >
-          <Button
-            variant={btnVariant || BtnVariant.Ghost}
-            onClick={onClick}
-            tabIndex={index === selectedListItemIndex ? 0 : -1}
-            ref={(el) => {
-              listRefs.current[index] = el;
-            }}
-            ariaSelected={index === selectedListItemIndex}
+      {dropdownList.map(
+        ({ label, onClick, icon, btnVariant, disabled }, index) => (
+          <li
+            key={label}
+            className={`dropdown-item ${index === selectedListItemIndex ? 'active' : ''}`}
           >
-            {label}
-            {icon}
-          </Button>
-        </li>
-      ))}
+            <Button
+              variant={btnVariant || BtnVariant.Ghost}
+              onClick={onClick}
+              disabled={disabled}
+              tabIndex={index === selectedListItemIndex ? 0 : -1}
+              ref={(el) => {
+                listRefs.current[index] = el;
+              }}
+              ariaSelected={index === selectedListItemIndex}
+            >
+              {label}
+              {icon}
+            </Button>
+          </li>
+        ),
+      )}
     </ul>
   );
 };
