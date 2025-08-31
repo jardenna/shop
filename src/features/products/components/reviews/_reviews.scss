@@ -37,9 +37,14 @@
   opacity: 0;
   transform: translateY(0);
   transition: max-height 0.4s ease;
+  overflow: hidden;
 
   &.visible {
-    @include animation($name: textbox-reveal, $duration: 1.45s);
+    @include animation($name: textbox-reveal, $duration: 1s);
+  }
+
+  .form-label-container {
+    margin-block: 16px 4px;
   }
 }
 
