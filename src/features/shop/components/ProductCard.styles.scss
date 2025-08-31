@@ -58,7 +58,7 @@
 .product-card-list {
   display: grid;
 
-  @include grid-template-column;
+  @include grid-template-column();
 
   grid-auto-rows: rem(520px) auto;
   container-type: inline-size;
@@ -70,7 +70,7 @@
     position: relative;
 
     &:has(a:focus-visible) {
-      @include outline;
+      @include outline();
     }
   }
 

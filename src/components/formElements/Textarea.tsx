@@ -1,4 +1,4 @@
-import type { ChangeInputType } from '../../types/types';
+import type { refTextareaType } from '../../types/types';
 import FormLabel from './FormLabel';
 import type { InputProps } from './Input';
 
@@ -9,15 +9,15 @@ type OmittedProps = Omit<
   | 'checked'
   | 'placeholder'
   | 'autoComplete'
-  | 'onChange'
   | 'min'
   | 'max'
   | 'maxLength'
   | 'multiple'
+  | 'ref'
 >;
 type TextareaProps = OmittedProps & {
+  ref?: refTextareaType;
   rows?: number;
-  onChange: (event: ChangeInputType) => void;
 };
 
 const Textarea = ({
@@ -30,6 +30,7 @@ const Textarea = ({
   onChange,
   errorText,
   rows = 3,
+  ref,
 }: TextareaProps) => {
   const ariaErrorId = `${id}-error`;
   return (
@@ -46,6 +47,7 @@ const Textarea = ({
       <textarea
         aria-errormessage={errorText ? ariaErrorId : undefined}
         name={name}
+        ref={ref}
         id={id}
         value={value}
         onChange={onChange}

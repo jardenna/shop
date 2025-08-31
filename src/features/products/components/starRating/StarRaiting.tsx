@@ -1,9 +1,11 @@
+import { useEffect, useRef, useState } from 'react';
+import Button from '../../../../components/Button';
 import FieldSet from '../../../../components/fieldset/FieldSet';
-import Form from '../../../../components/form/Form';
 import ControlList from '../../../../components/formElements/controlGroup/ControlList';
 import Textarea from '../../../../components/formElements/Textarea';
 import useFormValidation from '../../../../hooks/useFormValidation';
-import { IconName } from '../../../../types/enums';
+import { BtnType, IconName } from '../../../../types/enums';
+import type { ChangeInputType } from '../../../../types/types';
 import { optionsList } from '../../../../utils/utils';
 import useLanguage from '../../../language/useLanguage';
 import './_reviews.scss';
@@ -15,9 +17,12 @@ type StarRatingProps = {
 
 const StarRating = ({ totalStars = 5, initialRating = 1 }: StarRatingProps) => {
   const { language } = useLanguage();
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  const [visible, setVisible] = useState('');
   const initialState = {
     rating: initialRating,
-    description: '',
+    review: '',
   };
 
   const { values, onChange, onSubmit } = useFormValidation({
@@ -29,30 +34,45 @@ const StarRating = ({ totalStars = 5, initialRating = 1 }: StarRatingProps) => {
     console.log('Rating submitted:', values);
   }
 
+  const handleChange = (event: ChangeInputType) => {
+    onChange(event);
+    setVisible('visible');
+  };
+
+  useEffect(() => {
+    if (visible === 'visible' && textareaRef.current) {
+      setTimeout(() => textareaRef.current?.focus(), 0);
+    }
+  }, [visible]);
+
   return (
-    <Form className="star-rating" onSubmit={onSubmit} submitBtnLabel="Rate">
+    <form className="star-rating" onSubmit={onSubmit}>
       <FieldSet legendText={language.rateProduct}>
         <ControlList
           name="rating"
           options={optionsList(totalStars)}
           type="radio"
           initialChecked={String(values.rating)}
-          onChange={onChange}
+          onChange={handleChange}
           className="star-rating"
           iconName={IconName.Star}
           values={[String(values.rating)]}
           variant="small"
         />
       </FieldSet>
-      <Textarea
-        value={values.description}
-        name="description"
-        id="description"
-        labelText={language.shareYourexperience}
-        onChange={onChange}
-        rows={8}
-      />
-    </Form>
+      <div className={`review-textbox ${visible}`}>
+        <Textarea
+          value={values.review}
+          ref={textareaRef}
+          name="review"
+          id="review"
+          labelText={language.shareYourExperience}
+          onChange={onChange}
+          rows={8}
+        />
+        <Button type={BtnType.Submit}>{language.shareReview}</Button>
+      </div>
+    </form>
   );
 };
 
