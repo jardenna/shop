@@ -48,7 +48,7 @@ const StarRating = ({ totalStars = 5, initialRating = 1 }: StarRatingProps) => {
         value={values.description}
         name="description"
         id="description"
-        labelText="Fortæl os om din oplevelse"
+        labelText={language.shareYourexperience}
         onChange={onChange}
         rows={8}
       />

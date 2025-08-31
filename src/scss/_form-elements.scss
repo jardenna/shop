@@ -42,6 +42,10 @@ textarea {
   resize: none;
 }
 
+input {
+  min-height: $input-height;
+}
+
 .input-info {
   font-size: $font-mini;
   font-style: italic;
@@ -77,9 +81,6 @@ textarea {
   input,
   textarea {
     padding: 12px;
-    width: 100%;
-    position: relative;
-    font-size: inherit;
 
     @extend %styled-input;
   }
