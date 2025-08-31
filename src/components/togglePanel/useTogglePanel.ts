@@ -33,23 +33,17 @@ const useTogglePanel = ({
   };
 
   useEffect(() => {
-    const scrollBarWidth =
-      window.innerWidth - document.documentElement.clientWidth;
-
     if (isPanelShown) {
       document.body.style.overflow = 'hidden';
       document.body.style.touchAction = 'none';
-      document.body.style.paddingRight = `${scrollBarWidth}px`;
     } else {
       document.body.style.overflow = '';
       document.body.style.touchAction = '';
-      document.body.style.paddingRight = '';
     }
 
     return () => {
       document.body.style.overflow = '';
       document.body.style.touchAction = '';
-      document.body.style.paddingRight = '';
     };
   }, [isPanelShown]);
 
