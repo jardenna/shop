@@ -160,6 +160,7 @@ menu;Menu;Menu
 minLength;At least 8 characters;Mindst 8 tegn
 missingYourSize;Missing your size;Mangler vi din størrelse
 multiColor;MultiColour;Flerfarvet
+multipleReviewsNotPermitted;You can't review a product multiple times;Du kan ikke anmelde det samme produkt flere gange
 mustHaveLowercase;At least one lowercase letter;Mindst ét lille bogstav
 mustHaveNumber;At least one number;Mindst ét tal
 mustHaveSymbol;At least one special character;Mindst ét specialtegn
@@ -243,6 +244,7 @@ published;Published;Udgivet
 publishTime;Publish time;Udgivelsestidspunkt
 purple;Purple;Lilla
 qty;Qty;Antal
+rateProduct;Rate product;Bedøm produkt
 red;Red;Rød
 removeFromFavorite;Remove  from favorite;Fjern fra favorit
 resetFiltersAndSorting;Reset filters and sorting;Nulstil filtre og sortering
@@ -260,6 +262,8 @@ selectPreferences;Select preferred language and currency;Vælg venligst sprog og
 selectSize;Select size;Vælg størrelse
 selectedColor;Selected colour;Valgt farve
 selectedSize;Selected size;Valgt størrelse
+shareReview;Share review;Del anmeldelse
+shareYourExperience;Share your experience;Del din oplevelse
 shoes;Shoes;Sko
 shopCart;Shopping cart;Indkøbskurv
 shopKidsHeading;Playful by Nature;Leg er liv

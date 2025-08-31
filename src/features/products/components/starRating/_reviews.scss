@@ -1,14 +1,59 @@
 @use '../../../../scss/globals' as *;
 
-.review {
-  display: flex;
+// .review,
+// .ratings {
+//   position: relative;
+//   color: $color-warning;
+// }
+
+// .star {
+//   font-size: rem(24px);
+//   color: $color-gray-70;
+// }
+
+// .star.filled {
+//   color: $color-yellow;
+// }
+
+// .half-star-right {
+//   transform: scaleX(-1);
+//   position: absolute;
+//   left: 20px;
+//   fill: $color-gray-70;
+// }
+
+.star-rating {
+  svg {
+    @include transition($time: 0.2s);
+
+    &.filled {
+      color: $color-yellow;
+    }
+  }
+
+  .review-textbox {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(0);
+    transition: max-height 0.4s ease;
+
+    &.visible {
+      @include animation($name: textbox-reveal, $duration: 1.45s);
+    }
+  }
 }
 
-.star {
-  font-size: rem(24px);
-  color: $color-gray-70;
-}
+// keyframes for reveal
+@keyframes textbox-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+    max-height: 0;
+  }
 
-.star.filled {
-  color: $color-warning;
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 999px;
+  }
 }

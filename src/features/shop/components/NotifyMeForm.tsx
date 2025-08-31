@@ -1,7 +1,7 @@
 import type { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import ControlList from '../../../components/formElements/controlGroup/ControlList';
 import Input from '../../../components/formElements/Input';
-import { ChangeInputType } from '../../../types/types';
+import type { ChangeInputType } from '../../../types/types';
 import useLanguage from '../../language/useLanguage';
 
 type NotifyMeFormProps = {

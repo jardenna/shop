@@ -3,6 +3,8 @@ import type { BaseProduct } from '../../app/api/apiTypes/sharedApiTypes';
 import type {
   ProductMenuResponse,
   ProductPreview,
+  ReviewsRequest,
+  ReviewsResponse,
   ShopAllProductsResponse,
   ShopProductsParams,
   ToggleFavoriteResponse,
@@ -32,6 +34,14 @@ const shopApiSlice = apiSlice.injectEndpoints({
       query: (params) => `${subCategoryMenuUrl}${params}`,
       providesTags: [TagTypesEnum.Products],
     }),
+    postReviews: builder.mutation<ReviewsResponse, ReviewsRequest>({
+      query: ({ productId, reviews }) => ({
+        url: `${productUrl}/${productId}/reviews`,
+        method: 'POST',
+        body: reviews,
+      }),
+      invalidatesTags: [TagTypesEnum.Products],
+    }),
     getFavorites: builder.query<ProductPreview[], void>({
       query: () => favoritesUrl,
       providesTags: [TagTypesEnum.Favorites],
@@ -41,9 +51,8 @@ const shopApiSlice = apiSlice.injectEndpoints({
         url: `${favoritesUrl}/${id}`,
         method: 'POST',
       }),
-      // Invalidate only if mutation succeeds, but we’ll optimistically update cache first
       invalidatesTags: [TagTypesEnum.Favorites],
-
+      // Favorites cach value
       async onQueryStarted(productId, { dispatch, queryFulfilled }) {
         // Get current favorites cache value
         const patchResult = dispatch(
@@ -80,4 +89,5 @@ export const {
   useGetFavoritesQuery,
   useToggleFavoriteMutation,
   useGetSingleProductQuery,
+  usePostReviewsMutation,
 } = shopApiSlice;

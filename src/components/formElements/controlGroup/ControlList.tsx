@@ -1,7 +1,8 @@
 import { IconName } from '../../../types/enums';
-import { ChangeInputType, OptionGroupHeading } from '../../../types/types';
+import type { ChangeInputType, OptionGroupHeading } from '../../../types/types';
+import { colorMap } from '../../../utils/colorUtils';
 import OptionGroupTitle from '../../productLists/OptionGroupTitle';
-import { ProductLabelVariant } from '../../productLists/ProductListItem';
+import type { ProductLabelVariant } from '../../productLists/ProductListItem';
 import InputInfo from '../InputInfo';
 import ControlInputField from './ControlInputField';
 import './_control-list.scss';
@@ -14,6 +15,7 @@ export type BaseControlGroupProps = {
   disabledList?: string[];
   groupTitle?: OptionGroupHeading;
   iconName?: IconName;
+  iconSize?: string;
   inputInfo?: string;
   required?: boolean;
   variant?: ProductLabelVariant;
@@ -41,6 +43,7 @@ const ControlList = ({
   className = 'size-list',
   autoFocus,
   variant = 'medium',
+  iconSize,
 }: ControlList) => (
   <div>
     {groupTitle && (
@@ -60,8 +63,10 @@ const ControlList = ({
         return (
           <ControlInputField
             key={label}
+            iconSize={iconSize}
             autoFocus={autoFocus && index === 0}
             iconName={iconName}
+            fill={iconName ? colorMap[label] : ''}
             id={id}
             type={type}
             name={name}
@@ -71,6 +76,9 @@ const ControlList = ({
             onChange={onChange}
             label={label}
             variant={variant}
+            className={
+              Number(label) <= Number(values[0]) && iconName ? 'filled' : ''
+            }
           />
         );
       })}

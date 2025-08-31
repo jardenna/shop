@@ -1,5 +1,5 @@
+import type { InitialNotifyValues } from '../../../features/shop/components/NotifyMe';
 import type { ValidationErrors } from '../../../hooks/useFormValidation';
-import { InitialNotifyValues } from '../../../pages/SingleProductPage';
 import validateEmail from './CommonFieldValidation';
 
 function validateNEmail(values: InitialNotifyValues) {

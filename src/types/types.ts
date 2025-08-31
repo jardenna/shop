@@ -19,6 +19,7 @@ export type FormEventType = FormEvent<HTMLFormElement>;
 export type refElementType = RefObject<HTMLElement | null>;
 export type refDivType = RefObject<HTMLDivElement | null>;
 export type refInputType = RefObject<HTMLInputElement | null>;
+export type refTextareaType = RefObject<HTMLTextAreaElement | null>;
 export type refFormType = RefObject<HTMLFormElement | null>;
 
 export type OptionGroupHeading = {

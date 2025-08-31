@@ -40,7 +40,11 @@ input[type='checkbox'] {
 
 textarea {
   resize: none;
-  field-sizing: content;
+  line-height: rem(24px);
+}
+
+input {
+  min-height: $input-height;
 }
 
 .input-info {
@@ -78,9 +82,6 @@ textarea {
   input,
   textarea {
     padding: 12px;
-    width: 100%;
-    position: relative;
-    font-size: inherit;
 
     @extend %styled-input;
   }
