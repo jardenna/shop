@@ -12,7 +12,7 @@
   display: none;
 
   @include min-size($medium) {
-    overflow: hidden;
+    overflow: clip;
     max-height: 0;
     opacity: 0;
     transform: translateY(-10px);

@@ -16,7 +16,7 @@
 
   details {
     border-block-end: 1px solid $color-border-dark;
-    overflow: hidden;
+    overflow: clip;
 
     .accordion-content {
       padding-bottom: 12px;
