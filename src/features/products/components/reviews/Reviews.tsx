@@ -84,8 +84,12 @@ const Reviews = ({
           variant="small"
         />
       </FieldSet>
-      <div className={`review-textbox ${visible}`}>
+      <div
+        className={`review-textbox ${visible}`}
+        aria-hidden={visible === '' ? true : undefined}
+      >
         <Textarea
+          tabIndex={visible === '' ? -1 : undefined}
           value={values.comment}
           ref={textareaRef}
           name="comment"
@@ -94,7 +98,11 @@ const Reviews = ({
           onChange={onChange}
           rows={8}
         />
-        <Button type={BtnType.Submit} disabled={isLoading}>
+        <Button
+          type={BtnType.Submit}
+          disabled={isLoading}
+          tabIndex={visible === '' ? -1 : undefined}
+        >
           {language.shareReview}
         </Button>
       </div>
