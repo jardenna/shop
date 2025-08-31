@@ -160,6 +160,7 @@ menu;Menu;Menu
 minLength;At least 8 characters;Mindst 8 tegn
 missingYourSize;Missing your size;Mangler vi din størrelse
 multiColor;MultiColour;Flerfarvet
+multipleReviewsNotPermitted;You can't review a product multiple times;Du kan ikke anmelde det samme produkt flere gange
 mustHaveLowercase;At least one lowercase letter;Mindst ét lille bogstav
 mustHaveNumber;At least one number;Mindst ét tal
 mustHaveSymbol;At least one special character;Mindst ét specialtegn

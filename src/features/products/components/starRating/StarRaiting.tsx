@@ -3,26 +3,33 @@ import Button from '../../../../components/Button';
 import FieldSet from '../../../../components/fieldset/FieldSet';
 import ControlList from '../../../../components/formElements/controlGroup/ControlList';
 import Textarea from '../../../../components/formElements/Textarea';
+import useMessagePopup from '../../../../components/messagePopup/useMessagePopup';
 import useFormValidation from '../../../../hooks/useFormValidation';
 import { BtnType, IconName } from '../../../../types/enums';
 import type { ChangeInputType } from '../../../../types/types';
 import { optionsList } from '../../../../utils/utils';
 import useLanguage from '../../../language/useLanguage';
+import { usePostReviewsMutation } from '../../../shop/shopApiSlice';
 import './_reviews.scss';
 
 type StarRatingProps = {
+  productId: string;
   initialRating?: number;
   totalStars?: number;
 };
 
-const StarRating = ({ totalStars = 5, initialRating = 1 }: StarRatingProps) => {
+const StarRating = ({
+  totalStars = 5,
+  initialRating = 1,
+  productId,
+}: StarRatingProps) => {
   const { language } = useLanguage();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const [visible, setVisible] = useState('');
   const initialState = {
     rating: initialRating,
-    review: '',
+    comment: '',
   };
 
   const { values, onChange, onSubmit } = useFormValidation({
@@ -30,8 +37,25 @@ const StarRating = ({ totalStars = 5, initialRating = 1 }: StarRatingProps) => {
     callback: handleSubmit,
   });
 
-  function handleSubmit() {
-    console.log('Rating submitted:', values);
+  const { onAddMessagePopup } = useMessagePopup();
+
+  // Redux hooks
+  const [createReview, { isLoading }] = usePostReviewsMutation();
+
+  // Submit handler
+  async function handleSubmit() {
+    try {
+      await createReview({
+        productId,
+        reviews: values,
+      }).unwrap();
+    } catch (error: any) {
+      onAddMessagePopup({
+        messagePopupType: 'error',
+        message: error.data.message,
+        componentType: 'notification',
+      });
+    }
   }
 
   const handleChange = (event: ChangeInputType) => {
@@ -62,15 +86,17 @@ const StarRating = ({ totalStars = 5, initialRating = 1 }: StarRatingProps) => {
       </FieldSet>
       <div className={`review-textbox ${visible}`}>
         <Textarea
-          value={values.review}
+          value={values.comment}
           ref={textareaRef}
-          name="review"
-          id="review"
+          name="comment"
+          id="comment"
           labelText={language.shareYourExperience}
           onChange={onChange}
           rows={8}
         />
-        <Button type={BtnType.Submit}>{language.shareReview}</Button>
+        <Button type={BtnType.Submit} disabled={isLoading}>
+          {language.shareReview}
+        </Button>
       </div>
     </form>
   );

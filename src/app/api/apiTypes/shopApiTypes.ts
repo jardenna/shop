@@ -13,17 +13,17 @@ export type ShopAllProductsResponse = {
 };
 
 export type ReviewsResponse = {
-  rating: number;
+  message: string;
   success: boolean;
 };
 
 type Reviews = {
   comment: string;
-  message: string;
+  rating: number;
 };
 
 export type ReviewsRequest = {
-  id: string;
+  productId: string;
   reviews: Reviews;
 };
 

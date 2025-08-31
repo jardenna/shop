@@ -1,5 +1,6 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import Product from '../models/productModel.js';
+import { t } from '../utils/translator.js';
 
 // @desc    Create Product Reviews
 // @route   /api/products/:id/reviews
@@ -21,9 +22,10 @@ const createProductReviews = asyncHandler(async (req, res) => {
   );
 
   if (alreadyReviewed) {
-    return res
-      .status(400)
-      .json({ success: false, message: 'Product already reviewed' });
+    return res.status(400).json({
+      success: false,
+      message: t('multipleReviewsNotPermitted', req.lang),
+    });
   }
 
   const review = {

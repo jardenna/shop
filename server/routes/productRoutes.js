@@ -31,7 +31,13 @@ router
 router.get('/scheduled', checkScheduled);
 router.get('/allProducts', paginatedProducts, getSortedProducts);
 router.get('/shop/:id', languageMiddleware, getShopProductById);
-router.post('/:id/reviews', authenticate, checkId, createProductReviews);
+router.post(
+  '/:id/reviews',
+  authenticate,
+  checkId,
+  languageMiddleware,
+  createProductReviews,
+);
 router.get('/top', getTopProducts);
 router.get('/new', getNewProducts);
 router.post(

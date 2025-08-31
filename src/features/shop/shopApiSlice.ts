@@ -35,8 +35,8 @@ const shopApiSlice = apiSlice.injectEndpoints({
       providesTags: [TagTypesEnum.Products],
     }),
     postReviews: builder.mutation<ReviewsResponse, ReviewsRequest>({
-      query: ({ id, reviews }) => ({
-        url: `${productUrl}/${id}/reviews`,
+      query: ({ productId, reviews }) => ({
+        url: `${productUrl}/${productId}/reviews`,
         method: 'POST',
         body: reviews,
       }),

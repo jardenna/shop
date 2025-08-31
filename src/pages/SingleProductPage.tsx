@@ -117,7 +117,7 @@ const SingleProductPage = () => {
                     />
                   )}
                 </div>
-                <StarRating />
+                {id && <StarRating productId={id} />}
                 <ShopProductForm
                   selectedProduct={product}
                   colorList={colorList}
