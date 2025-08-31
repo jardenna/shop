@@ -46,7 +46,11 @@ const NavContainer = ({
         />
       )}
       {currentUser && (
-        <NavUser currentUser={currentUser} iconTitle={language.user} />
+        <NavUser
+          currentUser={currentUser}
+          iconTitle={language.user}
+          isMenuCollapsed={isMenuCollapsed}
+        />
       )}
     </section>
   );

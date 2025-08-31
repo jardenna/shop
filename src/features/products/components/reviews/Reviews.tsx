@@ -12,17 +12,17 @@ import useLanguage from '../../../language/useLanguage';
 import { usePostReviewsMutation } from '../../../shop/shopApiSlice';
 import './_reviews.scss';
 
-type StarRatingProps = {
+type ReviewsProps = {
   productId: string;
   initialRating?: number;
   totalStars?: number;
 };
 
-const StarRating = ({
+const Reviews = ({
   totalStars = 5,
   initialRating = 1,
   productId,
-}: StarRatingProps) => {
+}: ReviewsProps) => {
   const { language } = useLanguage();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -70,7 +70,7 @@ const StarRating = ({
   }, [visible]);
 
   return (
-    <form className="star-rating" onSubmit={onSubmit}>
+    <form onSubmit={onSubmit}>
       <FieldSet legendText={language.rateProduct}>
         <ControlList
           name="rating"
@@ -78,14 +78,18 @@ const StarRating = ({
           type="radio"
           initialChecked={String(values.rating)}
           onChange={handleChange}
-          className="star-rating"
+          className="reviews"
           iconName={IconName.Star}
           values={[String(values.rating)]}
           variant="small"
         />
       </FieldSet>
-      <div className={`review-textbox ${visible}`}>
+      <div
+        className={`review-textbox ${visible}`}
+        aria-hidden={visible === '' ? true : undefined}
+      >
         <Textarea
+          tabIndex={visible === '' ? -1 : undefined}
           value={values.comment}
           ref={textareaRef}
           name="comment"
@@ -94,7 +98,11 @@ const StarRating = ({
           onChange={onChange}
           rows={8}
         />
-        <Button type={BtnType.Submit} disabled={isLoading}>
+        <Button
+          type={BtnType.Submit}
+          disabled={isLoading}
+          tabIndex={visible === '' ? -1 : undefined}
+        >
           {language.shareReview}
         </Button>
       </div>
@@ -102,4 +110,4 @@ const StarRating = ({
   );
 };
 
-export default StarRating;
+export default Reviews;

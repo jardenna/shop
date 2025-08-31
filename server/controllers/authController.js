@@ -20,13 +20,6 @@ const createUser = asyncHandler(async (req, res) => {
     });
   }
 
-  if (!req.user?.isAdmin && role) {
-    return res.status(403).json({
-      success: false,
-      message: t('actionOnlyAllowedForAdmin', req.lang),
-    });
-  }
-
   const userExists = await User.findOne({ email });
   if (userExists) {
     return res.status(400).json({

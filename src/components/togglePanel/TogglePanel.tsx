@@ -55,9 +55,9 @@ const TogglePanel = ({
         ref={panelRef}
         className={`toggle-panel ${panelPosition} ${className} ${isPanelShown ? 'shown' : ''}`}
         id={ariaControls}
+        aria-hidden={isPanelShown ? undefined : true}
       >
-        {children}
-
+        {isPanelShown ? children : ''}
         {showCloseIcon && isPanelShown && <BtnClose onClick={onHidePanel} />}
       </div>
     </>

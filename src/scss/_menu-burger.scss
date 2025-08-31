@@ -18,7 +18,7 @@ $burger-expanded-width: rem(20px);
   &.btn-ghost {
     &:hover,
     &:focus-visible {
-      outline: transparent;
+      outline-offset: 20px;
     }
   }
 

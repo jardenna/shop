@@ -8,7 +8,7 @@ import SkeletonSinglePage from '../components/skeleton/skeletonSinglePage/Skelet
 import useAuth from '../features/auth/hooks/useAuth';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
 import useLanguage from '../features/language/useLanguage';
-import StarRating from '../features/products/components/starRating/StarRaiting';
+import Reviews from '../features/products/components/reviews/Reviews';
 import InStock from '../features/shop/components/InStock';
 import NotifyMe from '../features/shop/components/NotifyMe';
 import ShopProductForm from '../features/shop/components/ShopProductForm';
@@ -117,7 +117,7 @@ const SingleProductPage = () => {
                     />
                   )}
                 </div>
-                {id && <StarRating productId={id} />}
+                {id && <Reviews productId={id} />}
                 <ShopProductForm
                   selectedProduct={product}
                   colorList={colorList}

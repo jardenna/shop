@@ -18,10 +18,12 @@ type OmittedProps = Omit<
 type TextareaProps = OmittedProps & {
   ref?: refTextareaType;
   rows?: number;
+  tabIndex?: number;
 };
 
 const Textarea = ({
   value,
+  tabIndex,
   id,
   name,
   inputHasNoLabel,
@@ -51,6 +53,7 @@ const Textarea = ({
         id={id}
         value={value}
         onChange={onChange}
+        tabIndex={tabIndex}
         aria-invalid={errorText ? true : undefined}
         rows={rows}
       />

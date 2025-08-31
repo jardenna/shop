@@ -22,7 +22,7 @@
 //   fill: $color-gray-70;
 // }
 
-.star-rating {
+.reviews {
   svg {
     @include transition($time: 0.2s);
 
@@ -30,16 +30,21 @@
       color: $color-yellow;
     }
   }
+}
 
-  .review-textbox {
-    max-height: 0;
-    opacity: 0;
-    transform: translateY(0);
-    transition: max-height 0.4s ease;
+.review-textbox {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(0);
+  transition: max-height 0.4s ease;
+  overflow: clip;
 
-    &.visible {
-      @include animation($name: textbox-reveal, $duration: 1.45s);
-    }
+  &.visible {
+    @include animation($name: textbox-reveal, $duration: 1s);
+  }
+
+  .form-label-container {
+    margin-block: 16px 4px;
   }
 }
 
