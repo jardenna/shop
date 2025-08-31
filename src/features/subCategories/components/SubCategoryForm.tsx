@@ -81,8 +81,9 @@ const SubCategoryForm = ({
     useDatePicker({ initialTime: selectedTime });
 
   // Redux hooks
-  const [updateSubCategory] = useUpdateSubCategoryMutation();
-  const [createSubCategory] = useCreateSubCategoryMutation();
+  const [updateSubCategory, { isLoading }] = useUpdateSubCategoryMutation();
+  const [createSubCategory, { isLoading: isCreateLoading }] =
+    useCreateSubCategoryMutation();
 
   // Submit handler
   async function handleSubmitCategory() {
@@ -129,6 +130,7 @@ const SubCategoryForm = ({
       onSubmit={onSubmit}
       submitBtnLabel={id ? language.save : language.create}
       onCancel={handleGoback}
+      isLoading={isLoading || isCreateLoading}
     >
       <FieldSet legendText={language.categories} hideLegendText>
         <Selectbox

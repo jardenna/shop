@@ -60,8 +60,9 @@ const CategoryForm = ({
     useDatePicker({ initialTime: selectedTime });
 
   // Redux hooks
-  const [updateCategory] = useUpdateCategoryMutation();
-  const [createCategory] = useCreateCategoryMutation();
+  const [updateCategory, { isLoading }] = useUpdateCategoryMutation();
+  const [createCategory, { isLoading: isCreateLoading }] =
+    useCreateCategoryMutation();
 
   // Submit handler
   async function handleSubmitCategory() {
@@ -103,6 +104,7 @@ const CategoryForm = ({
       onSubmit={onSubmit}
       submitBtnLabel={id ? language.save : language.create}
       onCancel={handleGoback}
+      isLoading={isLoading || isCreateLoading}
     >
       <FieldSet legendText={language.categories} hideLegendText>
         <SharedCategoryInputs
