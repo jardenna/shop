@@ -8,6 +8,8 @@ import { t } from '../utils/translator.js';
 // @access  Public for logged-in users
 const createProductReviews = asyncHandler(async (req, res) => {
   const { rating, comment } = req.body;
+
+  // Find product by id
   const product = await Product.findById(req.params.id);
 
   if (!product) {
@@ -17,6 +19,7 @@ const createProductReviews = asyncHandler(async (req, res) => {
     });
   }
 
+  // Prevent multiple reviews from same user
   const alreadyReviewed = product.reviews.find(
     (review) => review.user.toString() === req.user._id.toString(),
   );
@@ -28,29 +31,23 @@ const createProductReviews = asyncHandler(async (req, res) => {
     });
   }
 
+  // Create review object
   const review = {
     name: req.user.username,
-    id: req.user._id,
+    user: req.user._id, // keep this as user reference
     rating: Number(rating),
     comment,
-    user: req.user._id,
   };
 
+  // Push review and recalculate
   product.reviews.push(review);
   product.numReviews = product.reviews.length;
   product.rating =
-    product.reviews.reduce((acc, item) => item.rating + acc, 0) /
+    product.reviews.reduce((acc, item) => acc + item.rating, 0) /
     product.reviews.length;
 
-  await Product.findByIdAndUpdate(
-    req.params.id,
-    {
-      reviews: product.reviews,
-      numReviews: product.numReviews,
-      rating: product.rating,
-    },
-    { new: true },
-  );
+  // Save product with updated values
+  await product.save();
 
   res.status(201).json({ message: 'Review added' });
 });
