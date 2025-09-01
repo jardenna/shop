@@ -16,7 +16,7 @@
   .half-star-right {
     transform: scaleX(-1);
     position: absolute;
-    left: 20px;
+    left: -1px;
     fill: $color-gray-70;
   }
 }
