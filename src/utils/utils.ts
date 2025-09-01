@@ -49,9 +49,13 @@ const sliceAndCountHidden = <T>(list: T[], visibleCount: number) => {
   return { visibleItems, hiddenCount };
 };
 
+//  Generic function that generates an array of string numbers from 1 up to `count`.
 const optionsList = (count: number) =>
   [...Array(count).keys()].map((i) => (i + 1).toString());
 
+//  Generic function that returns an accessible label for a given `count`:
+//   - If a custom label exists in `ariaLabels`, it uses that.
+//   - Otherwise, it falls back to a default format like "3 stars" using the `unit`.
 function getAriaLabel(count: number, ariaLabelData: AriaLabelData): string {
   const { ariaLabels, unit } = ariaLabelData;
   return ariaLabels[count - 1] ?? `${count} ${unit}`;
