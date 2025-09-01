@@ -7,10 +7,10 @@ const ReviewStarsInfo = ({ rating }: { rating: number }) => {
   const { language } = useLanguage();
   const selectedLanguage = useAppSelector(selectSelectedLanguage);
   return (
-    <div>
+    <>
       {language.rated} {numberConvert(rating, selectedLanguage)}{' '}
       {language.outOf} 5 {language.stars}
-    </div>
+    </>
   );
 };
 
