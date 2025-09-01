@@ -32,6 +32,14 @@ const ReviewsForm = ({
     comment: '',
   };
 
+  const starAriaLabels = [
+    '1 stjerne: Dårlig',
+    '2 stjerner: Under middel',
+    '3 stjerner: Middel',
+    '4 stjerner: God',
+    '5 stjerner: Fremragende',
+  ];
+
   const { values, onChange, onSubmit } = useFormValidation({
     initialState,
     callback: handleSubmit,
@@ -81,7 +89,7 @@ const ReviewsForm = ({
           className="reviews"
           iconName={IconName.Star}
           values={[String(values.rating)]}
-          variant="small"
+          ariaLabels={starAriaLabels}
         />
       </FieldSet>
       <div

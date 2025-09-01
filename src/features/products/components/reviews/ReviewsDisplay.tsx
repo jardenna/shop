@@ -1,5 +1,5 @@
 import type { DisplyReviews } from '../../../../app/api/apiTypes/shopApiTypes';
-import IconContent from '../../../../components/IconContent';
+import Icon from '../../../../components/icons/Icon';
 import variables from '../../../../scss/variables.module.scss';
 import { IconName } from '../../../../types/enums';
 import './_reviews.scss';
@@ -28,35 +28,24 @@ const ReviewsDisplay = ({
   return (
     <div>
       <section className="review-display">
+        Bedømt til 2 ud af 5 stjerner
         <div className="stars">
           {stars.map((type, index) => (
             <span key={index} className="star">
               {type === 'full' && (
-                <IconContent
+                <Icon
                   iconName={IconName.Star}
                   title=""
-                  ariaLabel="full"
                   fill={variables.colorYellow}
                 />
               )}
               {type === 'half' && (
-                <IconContent
-                  iconName={IconName.HalfStar}
-                  title=""
-                  ariaLabel="half"
-                />
+                <Icon iconName={IconName.HalfStar} title="" />
               )}
-              {type === 'empty' && (
-                <IconContent
-                  iconName={IconName.Star}
-                  title=""
-                  ariaLabel="empty"
-                />
-              )}
+              {type === 'empty' && <Icon iconName={IconName.Star} title="" />}
             </span>
           ))}
         </div>
-
         <span>{rating}</span>
         <span>{numOfReviews}</span>
       </section>

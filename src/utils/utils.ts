@@ -51,11 +51,16 @@ const sliceAndCountHidden = <T>(list: T[], visibleCount: number) => {
 const optionsList = (count: number) =>
   [...Array(count).keys()].map((i) => (i + 1).toString());
 
+function getAriaLabel(count: number, ariaLabels: string[]): string {
+  return ariaLabels[count];
+}
+
 export {
   allowedExtensions,
   currencyCacheKey,
   discountCalculation,
   formatNumber,
+  getAriaLabel,
   getErrorMessage,
   getlowerCaseFirstLetter,
   maxFiles,
