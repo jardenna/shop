@@ -11,6 +11,7 @@ export const currencyToLocaleMap: Record<CurrencyCode, Locales> = {
   SEK: 'sv-SE',
   NOK: 'no-No',
 };
+
 export const currencyToText: Record<CurrencyCode, CurrencyText> = {
   USD: '$',
   GBP: '£',

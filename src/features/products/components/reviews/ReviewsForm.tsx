@@ -42,7 +42,7 @@ const ReviewsForm = ({
 
   const starAriaLabelData: AriaLabelData = {
     ariaLabels: starAriaLabels,
-    unit: 'stjerner',
+    unit: language.stars,
   };
 
   const { values, onChange, onSubmit } = useFormValidation({
