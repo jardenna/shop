@@ -1,27 +1,24 @@
 @use '../../../../scss/globals' as *;
 
 .review-display {
-  position: relative;
-  color: $color-warning;
-
-  .star {
-    font-size: rem(24px);
-    color: $color-gray-70;
-  }
-
   .star.filled {
     color: $color-yellow;
-  }
-
-  .half-star-right {
-    transform: scaleX(-1);
-    position: absolute;
-    left: -1px;
-    fill: $color-gray-70;
   }
 }
 
 .review-form {
+  .control-list {
+    .control-item {
+      &:has(input[type='radio']:checked) {
+        border: none;
+      }
+    }
+
+    .control-label {
+      display: inline;
+    }
+  }
+
   .reviews {
     svg {
       @include transition($time: 0.2s);
