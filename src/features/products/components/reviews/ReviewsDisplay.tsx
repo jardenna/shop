@@ -1,5 +1,6 @@
 import type { DisplyReviews } from '../../../../app/api/apiTypes/shopApiTypes';
 import './_reviews.scss';
+import ReviewList from './ReviewList';
 import ReviewStars from './ReviewStars';
 
 type ReviewsDisplayProps = {
@@ -30,6 +31,7 @@ const ReviewsDisplay = ({
         <ReviewStars stars={stars} rating={rating} />
         <span>antal reviews {numOfReviews}</span>
       </section>
+      <ReviewList reviewList={reviewList} />
       {reviewList.map((review, index) => (
         <div key={index}>
           {review.comment}
