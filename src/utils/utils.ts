@@ -1,4 +1,5 @@
 import { ValidationMessage } from '../types/enums';
+import type { AriaLabelData } from '../types/types';
 
 const oneDay = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
 const currencyCacheKey = 'exchangeRates';
@@ -51,11 +52,8 @@ const sliceAndCountHidden = <T>(list: T[], visibleCount: number) => {
 const optionsList = (count: number) =>
   [...Array(count).keys()].map((i) => (i + 1).toString());
 
-function getAriaLabel(
-  count: number,
-  ariaLabels: string[],
-  unit: string,
-): string {
+function getAriaLabel(count: number, ariaLabelData: AriaLabelData): string {
+  const { ariaLabels, unit } = ariaLabelData;
   return ariaLabels[count - 1] ?? `${count} ${unit}`;
 }
 

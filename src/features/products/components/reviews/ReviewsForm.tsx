@@ -6,7 +6,7 @@ import Textarea from '../../../../components/formElements/Textarea';
 import useMessagePopup from '../../../../components/messagePopup/useMessagePopup';
 import useFormValidation from '../../../../hooks/useFormValidation';
 import { BtnType, IconName } from '../../../../types/enums';
-import type { ChangeInputType } from '../../../../types/types';
+import type { AriaLabelData, ChangeInputType } from '../../../../types/types';
 import { optionsList } from '../../../../utils/utils';
 import useLanguage from '../../../language/useLanguage';
 import { usePostReviewsMutation } from '../../../shop/shopApiSlice';
@@ -40,7 +40,7 @@ const ReviewsForm = ({
     '5 stjerner: Fremragende',
   ];
 
-  const starAriaLabelData = {
+  const starAriaLabelData: AriaLabelData = {
     ariaLabels: starAriaLabels,
     unit: 'stjerner',
   };
@@ -94,7 +94,7 @@ const ReviewsForm = ({
           className="reviews"
           iconName={IconName.Star}
           values={[String(values.rating)]}
-          ariaLabels={starAriaLabelData}
+          ariaLabelData={starAriaLabelData}
         />
       </FieldSet>
       <div

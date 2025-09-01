@@ -1,5 +1,9 @@
 import { IconName } from '../../../types/enums';
-import type { ChangeInputType, OptionGroupHeading } from '../../../types/types';
+import type {
+  AriaLabelData,
+  ChangeInputType,
+  OptionGroupHeading,
+} from '../../../types/types';
 import { colorMap } from '../../../utils/colorUtils';
 import { getAriaLabel } from '../../../utils/utils';
 import OptionGroupTitle from '../../productLists/OptionGroupTitle';
@@ -23,14 +27,9 @@ export type BaseControlGroupProps = {
   onChange: (event: ChangeInputType) => void;
 };
 
-type AriaLabelData = {
-  ariaLabels: string[];
-  unit: string;
-};
-
 type ControlList = BaseControlGroupProps & {
   type: 'checkbox' | 'radio';
-  ariaLabels?: AriaLabelData;
+  ariaLabelData?: AriaLabelData;
   initialChecked?: string;
   values?: string[];
 };
@@ -49,7 +48,7 @@ const ControlList = ({
   iconName,
   className = 'size-list',
   autoFocus,
-  ariaLabels,
+  ariaLabelData,
   variant = 'medium',
   iconSize,
 }: ControlList) => (
@@ -64,8 +63,8 @@ const ControlList = ({
       {options.map((label, index) => {
         const id = `${name}-${index}`;
 
-        const ariaLabel = ariaLabels
-          ? getAriaLabel(index + 1, ariaLabels.ariaLabels, ariaLabels.unit)
+        const ariaLabel = ariaLabelData
+          ? getAriaLabel(index + 1, ariaLabelData)
           : undefined;
 
         const checked =
