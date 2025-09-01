@@ -13,7 +13,6 @@ const HalfStarIcon = ({
     width={size}
     height={size}
     className={className}
-    fill="currentcolor"
     stroke="none"
     viewBox="0 0 24 24"
     fillRule="evenodd"

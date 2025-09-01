@@ -3,15 +3,16 @@ import IconContent from '../../../../components/IconContent';
 import variables from '../../../../scss/variables.module.scss';
 import { IconName } from '../../../../types/enums';
 import './_reviews.scss';
+
 type ReviewsDisplayProps = {
   numOfReviews: number;
   rating: number;
-  reviews: DisplyReviews[];
+  reviewList: DisplyReviews[];
 };
 
 const ReviewsDisplay = ({
   rating,
-  reviews,
+  reviewList,
   numOfReviews,
 }: ReviewsDisplayProps) => {
   const stars = [...Array(5).keys()].map((star) => {
@@ -25,7 +26,7 @@ const ReviewsDisplay = ({
   });
 
   return (
-    <article>
+    <div>
       <section className="review-display">
         <div className="stars">
           {stars.map((type, index) => (
@@ -59,14 +60,14 @@ const ReviewsDisplay = ({
         <span>{rating}</span>
         <span>{numOfReviews}</span>
       </section>
-      {reviews.map((review, index) => (
+      {reviewList.map((review, index) => (
         <div key={index}>
           {review.comment}
           <span>{review.rating}</span>
           <p>{review.name}</p>
         </div>
       ))}
-    </article>
+    </div>
   );
 };
 

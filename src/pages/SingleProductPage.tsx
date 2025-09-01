@@ -120,7 +120,7 @@ const SingleProductPage = () => {
 
                 <ReviewsDisplay
                   rating={product.rating}
-                  reviews={product.reviews}
+                  reviewList={product.reviews}
                   numOfReviews={product.numReviews}
                 />
                 {/* {id && <ReviewsForm productId={id} />} */}
