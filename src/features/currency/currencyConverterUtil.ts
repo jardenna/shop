@@ -1,4 +1,4 @@
-import Locales from '../../utils/locales';
+import type Locales from '../../utils/locales';
 
 export type CurrencyCode = 'USD' | 'GBP' | 'EUR' | 'DKK' | 'SEK' | 'NOK';
 type CurrencyText = '$' | '£' | '€' | 'Kr.';

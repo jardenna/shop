@@ -1,7 +1,11 @@
 import type { DisplyReviews } from '../../../../app/api/apiTypes/shopApiTypes';
+import { useAppSelector } from '../../../../app/hooks';
 import Icon from '../../../../components/icons/Icon';
 import variables from '../../../../scss/variables.module.scss';
 import { IconName } from '../../../../types/enums';
+import { numberConvert } from '../../../../utils/numberConverter';
+import { selectSelectedLanguage } from '../../../language/languageSlice';
+import useLanguage from '../../../language/useLanguage';
 import './_reviews.scss';
 
 type ReviewsDisplayProps = {
@@ -15,6 +19,8 @@ const ReviewsDisplay = ({
   reviewList,
   numOfReviews,
 }: ReviewsDisplayProps) => {
+  const { language } = useLanguage();
+  const selectedLanguage = useAppSelector(selectSelectedLanguage);
   const stars = [...Array(5).keys()].map((star) => {
     const diff = rating - star;
 
@@ -30,7 +36,8 @@ const ReviewsDisplay = ({
   return (
     <div>
       <section className="review-display">
-        Bedømt til 2 ud af 5 stjerner
+        {language.rated} {numberConvert(rating, selectedLanguage)}{' '}
+        {language.outOf} 5 {language.stars}
         <div className="stars">
           {stars.map((type, index) => (
             <span key={index} className="star">
@@ -48,8 +55,7 @@ const ReviewsDisplay = ({
             </span>
           ))}
         </div>
-        <span>{rating}</span>
-        <span>{numOfReviews}</span>
+        <span>antal reviews {numOfReviews}</span>
       </section>
       {reviewList.map((review, index) => (
         <div key={index}>
