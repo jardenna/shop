@@ -17,7 +17,11 @@ const ReviewsDisplay = ({
 }: ReviewsDisplayProps) => (
   <div>
     <div className="review-display">
-      <ReviewStars stars={getStarsArray(rating)} rating={rating} />
+      <ReviewStars
+        stars={getStarsArray(rating)}
+        rating={rating}
+        showReviewStarInfo
+      />
       <span>antal reviews {numOfReviews}</span>
     </div>
     <ReviewList reviewList={reviewList} />
