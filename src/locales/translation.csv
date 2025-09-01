@@ -245,6 +245,11 @@ publishTime;Publish time;Udgivelsestidspunkt
 purple;Purple;Lilla
 qty;Qty;Antal
 rateProduct;Rate product;Bedøm produkt
+rating1;1 star: Poor;1 stjerne: Dårlig
+rating2;2 stars: Below average;2 stjerner: Under middel
+rating3;3 stars: Average;3 stjerner: Middel
+rating4;4 stars: Good;4 stjerner: God
+rating5;5 stars: Excellent;5 stjerner: Fremragende
 red;Red;Rød
 removeFromFavorite;Remove  from favorite;Fjern fra favorit
 resetFiltersAndSorting;Reset filters and sorting;Nulstil filtre og sortering

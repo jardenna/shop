@@ -33,11 +33,11 @@ const ReviewsForm = ({
   };
 
   const starAriaLabels = [
-    '1 stjerne: Dårlig',
-    '2 stjerner: Under middel',
-    '3 stjerner: Middel',
-    '4 stjerner: God',
-    '5 stjerner: Fremragende',
+    language.rating1,
+    language.rating2,
+    language.rating3,
+    language.rating4,
+    language.rating5,
   ];
 
   const starAriaLabelData: AriaLabelData = {
