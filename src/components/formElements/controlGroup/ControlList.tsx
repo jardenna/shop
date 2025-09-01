@@ -23,9 +23,14 @@ export type BaseControlGroupProps = {
   onChange: (event: ChangeInputType) => void;
 };
 
+type AriaLabelData = {
+  ariaLabels: string[];
+  unit: string;
+};
+
 type ControlList = BaseControlGroupProps & {
   type: 'checkbox' | 'radio';
-  ariaLabels?: string[];
+  ariaLabels?: AriaLabelData;
   initialChecked?: string;
   values?: string[];
 };
@@ -60,7 +65,7 @@ const ControlList = ({
         const id = `${name}-${index}`;
 
         const ariaLabel = ariaLabels
-          ? getAriaLabel(index, ariaLabels)
+          ? getAriaLabel(index + 1, ariaLabels.ariaLabels, ariaLabels.unit)
           : undefined;
 
         const checked =
