@@ -16,10 +16,12 @@ const ReviewsDisplay = ({
   numOfReviews,
 }: ReviewsDisplayProps) => {
   const stars = [...Array(5).keys()].map((star) => {
-    if (star + 1 <= rating) {
+    const diff = rating - star;
+
+    if (diff > 0.75) {
       return 'full';
     }
-    if (star < rating) {
+    if (diff >= 0.25) {
       return 'half';
     }
     return 'empty';
