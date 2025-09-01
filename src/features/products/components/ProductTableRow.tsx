@@ -1,10 +1,11 @@
 import { memo } from 'react';
 import { Status } from '../../../app/api/apiTypes/adminApiTypes';
+import { useAppSelector } from '../../../app/hooks';
 import Badge from '../../../components/badge/Badge';
-import { formatNumber } from '../../../utils/utils';
-import useLanguage from '../../language/useLanguage';
+import { selectSelectedLanguage } from '../../language/languageSlice';
 import ProductActions from './ProductActions';
 import ProductOverviewCell from './ProductOverviewCell';
+import { numberConvert } from '../../../utils/numberConverter';
 
 type ProductTableRowProps = {
   categoryName: string;
@@ -29,7 +30,7 @@ const ProductTableRow = ({
   scheduledDate,
   onCopyProduct,
 }: ProductTableRowProps) => {
-  const { selectedLanguage } = useLanguage();
+  const selectedLanguage = useAppSelector(selectSelectedLanguage);
 
   return (
     <tr>
@@ -44,7 +45,7 @@ const ProductTableRow = ({
         {subCategoryName}
         <span className="text-small text-italic"> ({categoryName})</span>
       </td>
-      <td>{formatNumber(countInStock, selectedLanguage)}</td>
+      <td>{numberConvert(countInStock, selectedLanguage)}</td>
       <td>
         <Badge status={status} scheduledDate={scheduledDate || null} />
       </td>

@@ -1,9 +1,9 @@
-// HtmlLangSetter.tsx
 import { useEffect } from 'react';
-import useLanguage from '../features/language/useLanguage';
+import { useAppSelector } from '../app/hooks';
+import { selectSelectedLanguage } from '../features/language/languageSlice';
 
 const HtmlLangSetter = () => {
-  const { selectedLanguage } = useLanguage();
+  const selectedLanguage = useAppSelector(selectSelectedLanguage);
 
   useEffect(() => {
     document.documentElement.lang = selectedLanguage;

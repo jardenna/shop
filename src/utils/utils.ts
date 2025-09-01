@@ -4,9 +4,6 @@ import type { AriaLabelData } from '../types/types';
 const oneDay = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
 const currencyCacheKey = 'exchangeRates';
 
-const formatNumber = (value: number, lang: 'en' | 'da') =>
-  new Intl.NumberFormat(lang === 'en' ? 'en-US' : 'da-DK').format(value);
-
 const discountCalculation = (price: number, discount: number) => {
   const discountPrice = (price * discount) / 100;
   return price - discountPrice;
@@ -60,7 +57,7 @@ function getAriaLabel(count: number, ariaLabelData: AriaLabelData): string {
   const { ariaLabels, unit } = ariaLabelData;
 
   // Ensure the value is a string before returning, fallback to default
-  const label = ariaLabels?.[count - 1];
+  const label = ariaLabels[count - 1];
   return typeof label === 'string' ? label : `${count} ${unit}`;
 }
 
@@ -68,7 +65,6 @@ export {
   allowedExtensions,
   currencyCacheKey,
   discountCalculation,
-  formatNumber,
   getAriaLabel,
   getErrorMessage,
   getlowerCaseFirstLetter,
