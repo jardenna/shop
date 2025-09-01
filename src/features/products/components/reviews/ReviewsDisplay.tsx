@@ -25,13 +25,6 @@ const ReviewsDisplay = ({
       <span>antal reviews {numOfReviews}</span>
     </div>
     <ReviewList reviewList={reviewList} />
-    {reviewList.map((review, index) => (
-      <div key={index}>
-        {review.comment}
-        <span>{review.rating}</span>
-        <p>{review.name}</p>
-      </div>
-    ))}
   </div>
 );
 
