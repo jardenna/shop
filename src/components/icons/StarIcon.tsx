@@ -1,13 +1,19 @@
 import type { IconDefaultProps } from './Icon';
 
-const StarIcon = ({ size, title, className, ariaHidden }: IconDefaultProps) => (
+const StarIcon = ({
+  size,
+  title,
+  className,
+  ariaHidden,
+  fill = 'currentcolor',
+}: IconDefaultProps) => (
   <svg
     role="img"
     xmlns="http://www.w3.org/2000/svg"
     width={size}
     height={size}
     className={className}
-    fill="currentcolor"
+    fill={fill}
     stroke="none"
     viewBox="0 0 24 24"
     fillRule="evenodd"

@@ -1,5 +1,6 @@
 import type { DisplyReviews } from '../../../../app/api/apiTypes/shopApiTypes';
-import Icon from '../../../../components/icons/Icon';
+import IconContent from '../../../../components/IconContent';
+import variables from '../../../../scss/variables.module.scss';
 import { IconName } from '../../../../types/enums';
 import './_reviews.scss';
 type ReviewsDisplayProps = {
@@ -29,11 +30,28 @@ const ReviewsDisplay = ({
         <div className="stars">
           {stars.map((type, index) => (
             <span key={index} className="star">
-              {type === 'full' && <Icon iconName={IconName.Star} title="" />}
-              {type === 'half' && (
-                <Icon iconName={IconName.HalfStar} title="" />
+              {type === 'full' && (
+                <IconContent
+                  iconName={IconName.Star}
+                  title=""
+                  ariaLabel="full"
+                  fill={variables.colorYellow}
+                />
               )}
-              {type === 'empty' && <Icon iconName={IconName.Star} title="" />}
+              {type === 'half' && (
+                <IconContent
+                  iconName={IconName.HalfStar}
+                  title=""
+                  ariaLabel="half"
+                />
+              )}
+              {type === 'empty' && (
+                <IconContent
+                  iconName={IconName.Star}
+                  title=""
+                  ariaLabel="empty"
+                />
+              )}
             </span>
           ))}
         </div>
