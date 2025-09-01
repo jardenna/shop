@@ -13,11 +13,11 @@ const ReviewsDisplay = ({
   reviews,
   numOfReviews,
 }: ReviewsDisplayProps) => {
-  const stars = [0, 1, 2, 3, 4].map((i) => {
-    if (i + 1 <= rating) {
+  const stars = [...Array(5).keys()].map((star) => {
+    if (star + 1 <= rating) {
       return 'full';
     }
-    if (i < rating) {
+    if (star < rating) {
       return 'half';
     }
     return 'empty';
@@ -28,7 +28,7 @@ const ReviewsDisplay = ({
       <section className="review-display">
         <div className="stars">
           {stars.map((type, index) => (
-            <span key={index} className="star" aria-hidden="true">
+            <span key={index} className="star">
               {type === 'full' && <Icon iconName={IconName.Star} title="" />}
               {type === 'half' && (
                 <Icon iconName={IconName.HalfStar} title="" />
