@@ -58,7 +58,10 @@ const optionsList = (count: number) =>
 //   - Otherwise, it falls back to a default format like "3 stars" using the `unit`.
 function getAriaLabel(count: number, ariaLabelData: AriaLabelData): string {
   const { ariaLabels, unit } = ariaLabelData;
-  return ariaLabels[count - 1] ?? `${count} ${unit}`;
+
+  // Ensure the value is a string before returning, fallback to default
+  const label = ariaLabels?.[count - 1];
+  return typeof label === 'string' ? label : `${count} ${unit}`;
 }
 
 export {
