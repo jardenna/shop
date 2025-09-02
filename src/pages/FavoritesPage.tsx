@@ -18,6 +18,7 @@ const FavoritesPage = () => {
   const handleAddToBag = (id: string) => {
     console.log(id);
   };
+  console.log(favorites);
 
   return (
     <MainPageContainer heading={language.favorites} className="favorites-page">
@@ -30,7 +31,7 @@ const FavoritesPage = () => {
             onReset={onReset}
           >
             <div>
-              {favorites ? (
+              {favorites && favorites.length > 0 ? (
                 favorites.map((product) => (
                   <ProductCard
                     key={product.id}

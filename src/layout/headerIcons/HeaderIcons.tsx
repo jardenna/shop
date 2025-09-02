@@ -100,7 +100,7 @@ const HeaderIcons = ({
               title={language.heart}
               ariaLabel={language.viewYourFavorites}
             />
-            {favorites && (
+            {favorites && favorites.length > 0 && (
               <span className="favorites-count">
                 {favorites.length}
                 <VisuallyHidden> {language.productPlural}</VisuallyHidden>
