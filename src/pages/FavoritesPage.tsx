@@ -18,7 +18,6 @@ const FavoritesPage = () => {
   const handleAddToBag = (id: string) => {
     console.log(id);
   };
-  console.log(favorites);
 
   return (
     <MainPageContainer heading={language.favorites} className="favorites-page">

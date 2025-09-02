@@ -1,3 +1,5 @@
+import { differenceInCalendarDays } from 'date-fns';
+
 export type StarType = 'full' | 'half' | 'empty';
 
 const getStarsArray = (rating: number): StarType[] => {
@@ -13,4 +15,16 @@ const getStarsArray = (rating: number): StarType[] => {
   ];
 };
 
-export { getStarsArray };
+const getDaysAgo = (date: Date): string => {
+  const days = differenceInCalendarDays(new Date(), date);
+
+  if (days === 0) {
+    return 'Today';
+  }
+  if (days === 1) {
+    return 'Yesterday';
+  }
+  return `${days} days ago`;
+};
+
+export { getDaysAgo, getStarsArray };

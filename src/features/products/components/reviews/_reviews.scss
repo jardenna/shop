@@ -6,6 +6,34 @@
   }
 }
 
+.review-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  p {
+    margin: 0;
+  }
+
+  .review-content {
+    p {
+      margin-top: 12px;
+    }
+  }
+
+  .review-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .review-item {
+    padding: 12px 24px;
+    background-color: $color-background;
+    border-radius: 4px;
+  }
+}
+
 .review-form {
   .control-list {
     .control-item {

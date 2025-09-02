@@ -1,25 +1,30 @@
 import { DisplyReviews } from '../../../../app/api/apiTypes/shopApiTypes';
-import DateDisplay from '../../../../components/datePicker/DateDisplay';
 import ReviewStars from './ReviewStars';
-import { getStarsArray } from './reviewsUtil.';
+import { getDaysAgo, getStarsArray } from './reviewsUtil.';
 
 type ReviewList = {
   reviewList: DisplyReviews[];
 };
 
 const ReviewList = ({ reviewList }: ReviewList) => (
-  <section>
+  <ul className="review-list">
     {reviewList.map((review, index) => (
-      <div key={index}>
-        <ReviewStars
-          stars={getStarsArray(review.rating)}
-          rating={review.rating}
-        />
-        <h2>{review.name}</h2>
-        {review.comment}
-        <DateDisplay date={review.createdAt} />
-      </div>
+      <li key={index} className="review-item">
+        <div className="review-header">
+          <ReviewStars
+            stars={getStarsArray(review.rating)}
+            rating={review.rating}
+          />
+          <p className="text-small text-italic">
+            {getDaysAgo(review.createdAt)}
+          </p>
+        </div>
+        <div className="review-content">
+          <p>{review.comment}</p>
+          <p>{review.name} </p>
+        </div>
+      </li>
     ))}
-  </section>
+  </ul>
 );
 export default ReviewList;
