@@ -69,6 +69,7 @@ currentlyUnavailableSizes;Currently unavailable sizes;Midlertidigt udsolgte stø
 customersList;Customers list;Kundeliste
 dashboard;Dashboard;Dashboard
 date;Date;Dato
+daysAgo;days ago;dage siden
 delete;Delete;Slet
 deleteCategory;Delete category;Slet kategori
 deleted;deleted;slettet
@@ -311,6 +312,7 @@ sureToDelete;Do you want to delete;Vil du slette
 temporarilyOutOfStock;This item is temporarily out of stock;Varen er midlertidigt udsolgt
 temporarilyOutOfStockText;Get notified when the item is back in stock;Få besked, når varen er tilbage på lager
 title;Title;Titel
+today;Today;I dag
 totalProducts;Total products;Antal produkter
 translationKey;Translation key;Oversættelsesnøgle
 translationKeyHelpText;Enter the exact key used for translation in your CSV file;Skriv den præcise nøgle, som bruges til oversættelsen i din CSV-fil
@@ -344,3 +346,4 @@ white;White;Hvid
 woman;Woman;Dame
 women;Women;Damer
 yellow;Yellow;Gul
+yesterday;Yesterday;I går

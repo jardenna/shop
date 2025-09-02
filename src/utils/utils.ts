@@ -52,7 +52,7 @@ const optionsList = (count: number) =>
 
 //  Generic function that returns an accessible label for a given `count`:
 //   - If a custom label exists in `ariaLabels`, it uses that.
-//   - Otherwise, it falls back to a default format like "3 stars" using the `unit`.
+//   - Otherwise, it falls back to a default format using the `unit`.
 function getAriaLabel(count: number, ariaLabelData: AriaLabelData): string {
   const { ariaLabels, unit } = ariaLabelData;
 

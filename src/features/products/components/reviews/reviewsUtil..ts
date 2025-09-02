@@ -15,16 +15,16 @@ const getStarsArray = (rating: number): StarType[] => {
   ];
 };
 
-const getDaysAgo = (date: Date): string => {
+const getDaysAgo = (date: Date, language: Record<string, string>): string => {
   const days = differenceInCalendarDays(new Date(), date);
 
   if (days === 0) {
-    return 'Today';
+    return language.today;
   }
   if (days === 1) {
-    return 'Yesterday';
+    return language.yesterday;
   }
-  return `${days} days ago`;
+  return `${days} ${language.daysAgo}`;
 };
 
 export { getDaysAgo, getStarsArray };
