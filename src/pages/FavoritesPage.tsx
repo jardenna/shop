@@ -30,7 +30,7 @@ const FavoritesPage = () => {
             onReset={onReset}
           >
             <div>
-              {favorites &&
+              {favorites ? (
                 favorites.map((product) => (
                   <ProductCard
                     key={product.id}
@@ -50,7 +50,13 @@ const FavoritesPage = () => {
                     </div>
                     <ProductCardGridContent product={product} />
                   </ProductCard>
-                ))}
+                ))
+              ) : (
+                <div>
+                  <h2>{language.noFavoritesYet}</h2>
+                  <p>{language.noFavorites}</p>
+                </div>
+              )}
             </div>
           </ErrorBoundary>
         )}

@@ -171,6 +171,8 @@ name;Name;Navn
 newPrice;New price;Ny pris
 noData;No data found;Ingen data fundet
 noEmail;Please enter an email;Indtast venligst en e-mail
+noFavorites;Find your must-haves and save them here, so you can easily come back to them;Find dine must-haves og gem dem her, så du nemt kan vende tilbage til dem
+noFavoritesYet;No favorites yet;Ingen favoritter endnu
 noOptions;No options;Ingen valgmuligheder
 noPassword;Please enter a password;Indtast venligst en adgangskode
 noProduct;Product not found;Produkt blev ikke fundet
