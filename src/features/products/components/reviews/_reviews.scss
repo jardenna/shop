@@ -6,6 +6,15 @@
   }
 }
 
+.stars {
+  display: flex;
+  gap: 8px;
+}
+
+.star-list {
+  display: flex;
+}
+
 .review-list {
   display: flex;
   flex-direction: column;
@@ -28,7 +37,7 @@
   }
 
   .review-item {
-    padding: 12px 24px;
+    padding: 12px 16px;
     background-color: $color-background;
     border-radius: 4px;
   }

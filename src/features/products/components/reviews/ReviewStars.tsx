@@ -24,19 +24,21 @@ const ReviewStars = ({
         <ReviewStarsInfo rating={rating} />
       </VisuallyHidden>
     )}
-    {stars.map((type, index) => (
-      <span key={index} className="star" aria-hidden={true}>
-        {type === 'full' && (
-          <Icon
-            iconName={IconName.Star}
-            title=""
-            fill={variables.colorYellow}
-          />
-        )}
-        {type === 'half' && <Icon iconName={IconName.HalfStar} title="" />}
-        {type === 'empty' && <Icon iconName={IconName.Star} title="" />}
-      </span>
-    ))}
+    <ul className="star-list">
+      {stars.map((type, index) => (
+        <li key={index} className="star-item" aria-hidden={true}>
+          {type === 'full' && (
+            <Icon
+              iconName={IconName.Star}
+              title=""
+              fill={variables.colorYellow}
+            />
+          )}
+          {type === 'half' && <Icon iconName={IconName.HalfStar} title="" />}
+          {type === 'empty' && <Icon iconName={IconName.Star} title="" />}
+        </li>
+      ))}
+    </ul>
   </div>
 );
 
