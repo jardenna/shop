@@ -66,6 +66,19 @@ const SingleProductPage = () => {
         </>
       ),
     },
+    {
+      title: language.reviews,
+      content:
+        product && product.rating > 0 ? (
+          <ReviewsDisplay
+            rating={product.rating}
+            reviewList={product.reviews}
+            numOfReviews={product.numReviews}
+          />
+        ) : (
+          <span>{language.noReview}</span>
+        ),
+    },
   ];
 
   const displaySizeList = product
@@ -119,11 +132,6 @@ const SingleProductPage = () => {
                   )}
                 </div>
 
-                <ReviewsDisplay
-                  rating={product.rating}
-                  reviewList={product.reviews}
-                  numOfReviews={product.numReviews}
-                />
                 {id && <ReviewsForm productId={id} />}
                 <ShopProductForm
                   selectedProduct={product}

@@ -176,6 +176,7 @@ noFavorites;Find your must-haves and save them here, so you can easily come back
 noFavoritesYet;No favorites yet;Ingen favoritter endnu
 noOptions;No options;Ingen valgmuligheder
 noPassword;Please enter a password;Indtast venligst en adgangskode
+noReview;Be the first to review this product;Bliv den første til at anmelde dette produkt
 noProduct;Product not found;Produkt blev ikke fundet
 notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 
 notAuthorizedNoToken;Not authorized, no token;Ikke autoriseret, ingen token
@@ -258,6 +259,7 @@ red;Red;Rød
 removeFromFavorite;Remove  from favorite;Fjern fra favorit
 resetFiltersAndSorting;Reset filters and sorting;Nulstil filtre og sortering
 retry;Retry;Forsøg igen
+reviews;Reviews;Anmeldelser
 role;Role;Rolle
 sale;Sale;Udsalg
 save;Save;Gem
