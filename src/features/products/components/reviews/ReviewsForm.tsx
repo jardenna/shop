@@ -20,7 +20,7 @@ type ReviewsFormProps = {
 
 const ReviewsForm = ({
   totalStars = 5,
-  initialRating = 1,
+  initialRating = 0,
   productId,
 }: ReviewsFormProps) => {
   const { language } = useLanguage();
