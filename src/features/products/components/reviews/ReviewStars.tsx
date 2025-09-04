@@ -30,7 +30,7 @@ const ReviewStars = ({ stars, rating }: ReviewStarsProps) => (
         </li>
       ))}
     </ul>
-    <span>{rating}</span>
+    <span>{Math.round(rating * 10) / 10}</span>
   </div>
 );
 

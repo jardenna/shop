@@ -44,6 +44,7 @@ const shopApiSlice = apiSlice.injectEndpoints({
     }),
     checkReviewed: builder.query<{ reviewed: boolean }, string>({
       query: (productId) => `${productUrl}/${productId}/reviewed`,
+      providesTags: [TagTypesEnum.Products],
     }),
     getFavorites: builder.query<ProductPreview[], void>({
       query: () => favoritesUrl,
