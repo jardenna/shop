@@ -16,6 +16,7 @@ type OmittedProps = Omit<
   | 'ref'
 >;
 type TextareaProps = OmittedProps & {
+  ariaHidden?: boolean;
   ref?: refTextareaType;
   rows?: number;
   tabIndex?: number;
@@ -32,6 +33,7 @@ const Textarea = ({
   onChange,
   errorText,
   rows = 3,
+  ariaHidden,
   ref,
 }: TextareaProps) => {
   const ariaErrorId = `${id}-error`;
@@ -56,6 +58,7 @@ const Textarea = ({
         tabIndex={tabIndex}
         aria-invalid={errorText ? true : undefined}
         rows={rows}
+        aria-hidden={ariaHidden}
       />
     </div>
   );

@@ -9,7 +9,10 @@ import { BtnType, IconName } from '../../../../types/enums';
 import type { AriaLabelData, ChangeInputType } from '../../../../types/types';
 import { optionsList } from '../../../../utils/utils';
 import useLanguage from '../../../language/useLanguage';
-import { usePostReviewsMutation } from '../../../shop/shopApiSlice';
+import {
+  useCheckReviewedQuery,
+  usePostReviewsMutation,
+} from '../../../shop/shopApiSlice';
 import './_reviews.scss';
 
 type ReviewsFormProps = {
@@ -26,7 +29,7 @@ const ReviewsForm = ({
   const { language } = useLanguage();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  const [visible, setVisible] = useState('');
+  const [visible, setVisible] = useState<string | null>(null);
   const initialState = {
     rating: initialRating,
     comment: '',
@@ -54,6 +57,7 @@ const ReviewsForm = ({
 
   // Redux hooks
   const [createReview, { isLoading }] = usePostReviewsMutation();
+  const { data: hasReviewed } = useCheckReviewedQuery(productId);
 
   // Submit handler
   async function handleSubmit() {
@@ -62,12 +66,14 @@ const ReviewsForm = ({
         productId,
         reviews: values,
       }).unwrap();
+      setVisible(null);
     } catch (error: any) {
       onAddMessagePopup({
         messagePopupType: 'error',
         message: error.data.message,
         componentType: 'notification',
       });
+      setVisible(null);
     }
   }
 
@@ -83,43 +89,43 @@ const ReviewsForm = ({
   }, [visible]);
 
   return (
-    <form onSubmit={onSubmit} className="review-form">
-      <FieldSet legendText={language.rateProduct}>
-        <ControlList
-          name="rating"
-          options={optionsList(totalStars)}
-          type="radio"
-          initialChecked={String(values.rating)}
-          onChange={handleChange}
-          className="reviews"
-          iconName={IconName.Star}
-          values={[String(values.rating)]}
-          ariaLabelData={starAriaLabelData}
-        />
-      </FieldSet>
-      <div
-        className={`review-textbox ${visible}`}
-        aria-hidden={visible === '' ? true : undefined}
-      >
-        <Textarea
-          tabIndex={visible === '' ? -1 : undefined}
-          value={values.comment}
-          ref={textareaRef}
-          name="comment"
-          id="comment"
-          labelText={language.shareYourExperience}
-          onChange={onChange}
-          rows={8}
-        />
-        <Button
-          type={BtnType.Submit}
-          disabled={isLoading}
-          tabIndex={visible === '' ? -1 : undefined}
-        >
-          {language.shareReview}
-        </Button>
-      </div>
-    </form>
+    !hasReviewed?.reviewed && (
+      <form onSubmit={onSubmit} className="review-form">
+        <FieldSet legendText={language.rateProduct}>
+          <ControlList
+            name="rating"
+            options={optionsList(totalStars)}
+            type="radio"
+            initialChecked={String(values.rating)}
+            onChange={handleChange}
+            className="reviews"
+            iconName={IconName.Star}
+            values={[String(values.rating)]}
+            ariaLabelData={starAriaLabelData}
+          />
+        </FieldSet>
+        <div className={`review-textbox ${visible ? 'visible' : null}`}>
+          <Textarea
+            tabIndex={visible === '' ? -1 : undefined}
+            ariaHidden={visible === '' ? true : undefined}
+            value={values.comment}
+            ref={textareaRef}
+            name="comment"
+            id="comment"
+            labelText={language.shareYourExperience}
+            onChange={onChange}
+            rows={8}
+          />
+          <Button
+            type={BtnType.Submit}
+            disabled={isLoading}
+            tabIndex={visible === '' ? -1 : undefined}
+          >
+            {language.shareReview}
+          </Button>
+        </div>
+      </form>
+    )
   );
 };
 

@@ -52,4 +52,24 @@ const createProductReviews = asyncHandler(async (req, res) => {
   res.status(201).json({ message: 'Review added' });
 });
 
-export default createProductReviews;
+// @desc    Create Product Reviews
+// @route   /api/products/:id/reviewed
+// @method  Get
+// @access  Public for logged-in users
+const hasReviewed = asyncHandler(async (req, res) => {
+  const product = await Product.findById(req.params.id);
+
+  if (!product) {
+    return res
+      .status(404)
+      .json({ success: false, message: 'Product not found' });
+  }
+
+  const reviewed = product.reviews.some(
+    (review) => review.user.toString() === req.user._id.toString(),
+  );
+
+  res.json({ reviewed });
+});
+
+export { createProductReviews, hasReviewed };
