@@ -25,12 +25,11 @@ $animation-timing-function: ease-in-out;
 }
 
 @mixin transition($what: all, $time: 0.3s, $how: $animation-timing-function) {
-  & {
-    transition: $what $time $how;
-  }
-
-  @media (prefers-reduced-motion) {
-    transition: none;
+  // only apply transition if user allows motion
+  @media (prefers-reduced-motion: no-preference) {
+    & {
+      transition: $what $time $how;
+    }
   }
 }
 
@@ -39,13 +38,10 @@ $animation-timing-function: ease-in-out;
   $duration: $animation-duration,
   $timing: $animation-timing-function
 ) {
-  & {
-    animation: $name $duration $timing forwards;
-  }
-
-  @media (prefers-reduced-motion) {
+  // only apply animation if user allows motion
+  @media (prefers-reduced-motion: no-preference) {
     & {
-      animation-name: none;
+      animation: $name $duration $timing forwards;
     }
   }
 }
