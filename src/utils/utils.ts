@@ -1,10 +1,8 @@
 import { ValidationMessage } from '../types/enums';
+import type { AriaLabelData } from '../types/types';
 
 const oneDay = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
 const currencyCacheKey = 'exchangeRates';
-
-const formatNumber = (value: number, lang: 'en' | 'da') =>
-  new Intl.NumberFormat(lang === 'en' ? 'en-US' : 'da-DK').format(value);
 
 const discountCalculation = (price: number, discount: number) => {
   const discountPrice = (price * discount) / 100;
@@ -48,14 +46,26 @@ const sliceAndCountHidden = <T>(list: T[], visibleCount: number) => {
   return { visibleItems, hiddenCount };
 };
 
+//  Generic function that generates an array of string numbers from 1 up to `count`.
 const optionsList = (count: number) =>
   [...Array(count).keys()].map((i) => (i + 1).toString());
+
+//  Generic function that returns an accessible label for a given `count`:
+//   - If a custom label exists in `ariaLabels`, it uses that.
+//   - Otherwise, it falls back to a default format using the `unit`.
+function getAriaLabel(count: number, ariaLabelData: AriaLabelData): string {
+  const { ariaLabels, unit } = ariaLabelData;
+
+  // Ensure the value is a string before returning, fallback to default
+  const label = ariaLabels[count - 1];
+  return typeof label === 'string' ? label : `${count} ${unit}`;
+}
 
 export {
   allowedExtensions,
   currencyCacheKey,
   discountCalculation,
-  formatNumber,
+  getAriaLabel,
   getErrorMessage,
   getlowerCaseFirstLetter,
   maxFiles,

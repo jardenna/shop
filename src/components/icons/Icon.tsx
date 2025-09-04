@@ -121,7 +121,7 @@ const iconMapping = {
 
 const Icon = ({
   iconName,
-  size = '20',
+  size = '1.25em',
   title,
   className = '',
   ariaHidden,

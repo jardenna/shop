@@ -12,7 +12,10 @@ import {
   getTopProducts,
   updateProduct,
 } from '../controllers/productController.js';
-import createProductReviews from '../controllers/productReviewController.js';
+import {
+  createProductReviews,
+  hasReviewed,
+} from '../controllers/productReviewController.js';
 import {
   authenticate,
   authorizeAdmin,
@@ -38,6 +41,7 @@ router.post(
   languageMiddleware,
   createProductReviews,
 );
+router.get('/:id/reviewed', authenticate, checkId, hasReviewed);
 router.get('/top', getTopProducts);
 router.get('/new', getNewProducts);
 router.post(

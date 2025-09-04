@@ -96,7 +96,11 @@ const Layout = () => {
         }
       },
       icon: (
-        <Icon iconName={IconName.Auth} title={language.myAccount} size="25" />
+        <Icon
+          iconName={IconName.Auth}
+          title={language.myAccount}
+          size="1.5rem"
+        />
       ),
     },
     {

@@ -13,6 +13,7 @@ type ControlInputFieldProps = {
   label: string;
   name: string;
   value: string;
+  ariaLabel?: string;
   autoFocus?: boolean;
   className?: string;
   disabled?: boolean;
@@ -37,6 +38,7 @@ const ControlInputField = ({
   variant,
   className = '',
   fill,
+  ariaLabel,
   iconSize,
 }: ControlInputFieldProps) => {
   const { language } = useLanguage();
@@ -53,7 +55,7 @@ const ControlInputField = ({
             fill={fill}
             size={iconSize}
             title=""
-            ariaLabel={getlowerCaseFirstLetter(label, language)}
+            ariaLabel={ariaLabel || getlowerCaseFirstLetter(label, language)}
             className={className}
           />
         ) : (

@@ -22,6 +22,11 @@ export type refInputType = RefObject<HTMLInputElement | null>;
 export type refTextareaType = RefObject<HTMLTextAreaElement | null>;
 export type refFormType = RefObject<HTMLFormElement | null>;
 
+export type AriaLabelData = {
+  ariaLabels: string[];
+  unit: string;
+};
+
 export type OptionGroupHeading = {
   id: string;
   title: string;

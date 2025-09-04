@@ -42,6 +42,10 @@ const shopApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.Products],
     }),
+    checkReviewed: builder.query<{ reviewed: boolean }, string>({
+      query: (productId) => `${productUrl}/${productId}/reviewed`,
+      providesTags: [TagTypesEnum.Products],
+    }),
     getFavorites: builder.query<ProductPreview[], void>({
       query: () => favoritesUrl,
       providesTags: [TagTypesEnum.Favorites],
@@ -90,4 +94,5 @@ export const {
   useToggleFavoriteMutation,
   useGetSingleProductQuery,
   usePostReviewsMutation,
+  useCheckReviewedQuery,
 } = shopApiSlice;

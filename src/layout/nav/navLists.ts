@@ -56,7 +56,7 @@ const adminNavList: NavItemsProps[] = [
     path: AdminPath.AdminProfile,
     linkText: LinkText.Account,
     iconName: IconName.Account,
-    iconSize: '24',
+    iconSize: '1.5rem',
   },
   {
     path: AdminPath.AdminProducts,

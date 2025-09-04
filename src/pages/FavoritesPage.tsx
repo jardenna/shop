@@ -1,3 +1,5 @@
+import { ErrorBoundary } from 'react-error-boundary';
+import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import useFavorites from '../components/favorites/useFavorites';
 import IconBtn from '../components/IconBtn';
 import SkeletonCardList from '../components/skeleton/SkeletonCardList';
@@ -11,7 +13,7 @@ import MainPageContainer from './pageContainer/MainPageContainer';
 
 const FavoritesPage = () => {
   const { language } = useLanguage();
-  const { favorites, isLoading } = useFavorites({});
+  const { favorites, isLoading, onReset } = useFavorites({});
 
   const handleAddToBag = (id: string) => {
     console.log(id);
@@ -23,26 +25,40 @@ const FavoritesPage = () => {
         {isLoading ? (
           <SkeletonCardList count={4} />
         ) : (
-          favorites.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              linkTo={`${ShopPath.FavoritesProduct}/${product.id}`}
-            >
-              <div className="shopping-bag-container">
-                <IconBtn
-                  variant={BtnVariant.Primary}
-                  onClick={() => {
-                    handleAddToBag(product.id);
-                  }}
-                  iconName={IconName.ShoppingBag}
-                  title="title"
-                  ariaLabel="ariaLabel"
-                />
-              </div>
-              <ProductCardGridContent product={product} />
-            </ProductCard>
-          ))
+          <ErrorBoundary
+            FallbackComponent={ErrorBoundaryFallback}
+            onReset={onReset}
+          >
+            <div>
+              {favorites && favorites.length > 0 ? (
+                favorites.map((product) => (
+                  <ProductCard
+                    key={product.id}
+                    product={product}
+                    linkTo={`${ShopPath.FavoritesProduct}/${product.id}`}
+                  >
+                    <div className="shopping-bag-container">
+                      <IconBtn
+                        variant={BtnVariant.Primary}
+                        onClick={() => {
+                          handleAddToBag(product.id);
+                        }}
+                        iconName={IconName.ShoppingBag}
+                        title="title"
+                        ariaLabel="ariaLabel"
+                      />
+                    </div>
+                    <ProductCardGridContent product={product} />
+                  </ProductCard>
+                ))
+              ) : (
+                <div>
+                  <h2>{language.noFavoritesYet}</h2>
+                  <p>{language.noFavorites}</p>
+                </div>
+              )}
+            </div>
+          </ErrorBoundary>
         )}
       </article>
     </MainPageContainer>

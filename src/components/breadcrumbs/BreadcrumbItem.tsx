@@ -17,7 +17,7 @@ const BreadcrumbItem = ({ linkTo, label, isCurrent }: BreadcrumbItemProps) => (
     />
 
     {!isCurrent && (
-      <Icon iconName={IconName.ChevronRight} title="Chevron right" size="16" />
+      <Icon iconName={IconName.ChevronRight} title="Chevron right" size="1em" />
     )}
   </li>
 );

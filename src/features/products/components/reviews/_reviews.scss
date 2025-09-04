@@ -1,54 +1,88 @@
 @use '../../../../scss/globals' as *;
 
-// .review,
-// .ratings {
-//   position: relative;
-//   color: $color-warning;
-// }
+.review-display {
+  .star.filled {
+    color: $color-yellow;
+  }
+}
 
-// .star {
-//   font-size: rem(24px);
-//   color: $color-gray-70;
-// }
+.stars {
+  display: flex;
+  gap: 8px;
+}
 
-// .star.filled {
-//   color: $color-yellow;
-// }
+.star-list {
+  display: flex;
+}
 
-// .half-star-right {
-//   transform: scaleX(-1);
-//   position: absolute;
-//   left: 20px;
-//   fill: $color-gray-70;
-// }
+.review-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 
-.reviews {
-  svg {
-    @include transition($time: 0.2s);
+  p {
+    margin: 0;
+  }
 
-    &.filled {
-      color: $color-yellow;
+  .review-content {
+    p {
+      margin-top: 12px;
+    }
+  }
+
+  .review-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .review-item {
+    padding: 12px 16px;
+    background-color: $color-background;
+    border-radius: 4px;
+  }
+}
+
+.review-form {
+  .control-list {
+    .control-item {
+      &:has(input[type='radio']:checked) {
+        border: none;
+      }
+    }
+
+    .control-label {
+      display: inline;
+    }
+  }
+
+  .reviews {
+    svg {
+      @include transition($time: 0.2s);
+
+      &.filled {
+        color: $color-yellow;
+      }
+    }
+  }
+
+  .review-textbox {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(0);
+    transition: max-height 0.4s ease;
+    overflow: clip;
+
+    &.visible {
+      @include animation($name: textbox-reveal, $duration: 1s);
+    }
+
+    .form-label-container {
+      margin-block: 16px 4px;
     }
   }
 }
 
-.review-textbox {
-  max-height: 0;
-  opacity: 0;
-  transform: translateY(0);
-  transition: max-height 0.4s ease;
-  overflow: clip;
-
-  &.visible {
-    @include animation($name: textbox-reveal, $duration: 1s);
-  }
-
-  .form-label-container {
-    margin-block: 16px 4px;
-  }
-}
-
-// keyframes for reveal
 @keyframes textbox-reveal {
   0% {
     opacity: 0;

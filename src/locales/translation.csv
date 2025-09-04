@@ -69,6 +69,7 @@ currentlyUnavailableSizes;Currently unavailable sizes;Midlertidigt udsolgte stø
 customersList;Customers list;Kundeliste
 dashboard;Dashboard;Dashboard
 date;Date;Dato
+daysAgo;days ago;dage siden
 delete;Delete;Slet
 deleteCategory;Delete category;Slet kategori
 deleted;deleted;slettet
@@ -86,7 +87,6 @@ discoverLatestTrends;Discover latest trends;Udforsk de nyeste tendenser
 discoverLatestTrendsAltText;A man playfully surprises a woman by covering her eyes from behinds.;En mand overrasker legende en kvinde ved at dække hendes øjne bagfra.
 displayDensity;Display density;Visningstæthed
 doNotBleach;Do not bleach;Må ikke bleges
-updateUser;Update user;Opdater bruger
 email;Email;E-mail
 employee;Employee;Ansat
 error;Error;Fejl
@@ -96,10 +96,10 @@ expandMenu;Expand menu;Udvid menu
 eye;Eye;Øje
 eyeClosed;Closed eye;Lukket øje
 favorites;Favorites;Favoritter
-filesCanBeUploaded;files can be uploaded;filer kan uploades
 fileExceedsSize;Selected file(s) exceeds the 1MB limit; Valgte fil(er) overstiger grænsen på 1 MB. Upload venligst en mindre fil
-fileTooLarge;File too large;Filen er for stor
+filesCanBeUploaded;files can be uploaded;filer kan uploades
 filesSupported;Files supported;Tilladte filer
+fileTooLarge;File too large;Filen er for stor
 fillAll;Please fill all inputs;Udfyld venligst alle felter
 filter;Filter;Filtrer
 filterProducts;Filter products;Filtrer produkter
@@ -124,11 +124,11 @@ home;Home;Hjem
 image;Image;Foto
 imageRequired;Please insert image(s);Indsæt venligst billede(r)
 inactive;Inactive;Inaktiv
+inStock;In stock;På lager
 invalidFileType;Invalid file type;Ugyldig fil type
 invalidPassword;Invalid password;Ugyldig adgangskode
 invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for planlagt dato
 invalidUserData;Invalid user data;Ugyldig bruger data
-inStock;In stock;På lager
 itemLabel;Items;Varer
 kid;Kid;Barn
 kids;Kids;Børn
@@ -137,12 +137,12 @@ left;left;tilbage
 list;List;Liste
 loading;Loading;Loading
 lock;Lock;Hængelås
-logOutSucceeded;Logout succeeded;Log ud lykkedes
 login;Log in;Log ind
 loginFailed;Login failed;Login mislykkedes
 loginHere;Log in here;Log ind her
 loginSucceeded;Login succeeded;Login lykkedes
 logout;Log out;Log ud
+logOutSucceeded;Logout succeeded;Log ud lykkedes
 lowStock;Low stock;Få på lager
 machineWash;Machine wash at 40 °C;Maskinvask ved 40 °C
 main;Main;Primær
@@ -172,20 +172,24 @@ name;Name;Navn
 newPrice;New price;Ny pris
 noData;No data found;Ingen data fundet
 noEmail;Please enter an email;Indtast venligst en e-mail
+noFavorites;Find your must-haves and save them here, so you can easily come back to them;Find dine must-haves og gem dem her, så du nemt kan vende tilbage til dem
+noFavoritesYet;No favorites yet;Ingen favoritter endnu
 noOptions;No options;Ingen valgmuligheder
 noPassword;Please enter a password;Indtast venligst en adgangskode
+noReview;Be the first to review this product;Bliv den første til at anmelde dette produkt
 noProduct;Product not found;Produkt blev ikke fundet
 notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 
 notAuthorizedNoToken;Not authorized, no token;Ikke autoriseret, ingen token
 notAuthorizedTokenFailed;Not authorized, token failed;Ikke autoriseret, token mislykkedes
-notifyMeMessage;Choose below, and we’ll notify you when it’s restocked; Vælg herunder, så får du en e-mail, når varen igen er på lager
 notifyMe;Notify me;Giv mig besked
+notifyMeMessage;Choose below, and we’ll notify you when it’s restocked; Vælg herunder, så får du en e-mail, når varen igen er på lager
 notifySuccessMeMessage;We got your request. Hopefully we’ll be in touch soon;Vi har modtaget din forespørgsel. Forhåbentlig hører du snart fra os
 noTumbleDry;Not suitable for tumble drying;Ikke egnet til tørretumbler
 notVisibleInShop;is not visible in the shop until the main category is published;bliver først synlig i shoppen, når hovedkategorien er udgivet
 noUser;User not found. Please sign up first;Bruger blev ikke fundet. Opret dig først
 orange;Orange;Orange
 orders;Orders;Ordrer
+outOf;out of;ud af
 outOfStock;Out of stock;Udsolgt
 page;Page;Side
 parentCategoryIs;Parent category is;Hovedkategori er
@@ -244,11 +248,18 @@ published;Published;Udgivet
 publishTime;Publish time;Udgivelsestidspunkt
 purple;Purple;Lilla
 qty;Qty;Antal
+rated;Rated;Bedømt til
 rateProduct;Rate product;Bedøm produkt
+rating1;1 star: Poor;1 stjerne: Dårlig
+rating2;2 stars: Below average;2 stjerner: Under middel
+rating3;3 stars: Average;3 stjerner: Middel
+rating4;4 stars: Good;4 stjerner: God
+rating5;5 stars: Excellent;5 stjerner: Fremragende
 red;Red;Rød
 removeFromFavorite;Remove  from favorite;Fjern fra favorit
 resetFiltersAndSorting;Reset filters and sorting;Nulstil filtre og sortering
 retry;Retry;Forsøg igen
+reviews;Reviews;Anmeldelser
 role;Role;Rolle
 sale;Sale;Udsalg
 save;Save;Gem
@@ -258,10 +269,10 @@ scheduledDate;Scheduled date;Planlagt dato
 scheduledDateMustBeFuture;Scheduled date must be after now;Planlagt dato skal være efter nu
 scheduledToBePublished;is scheduled to be published at;er planlagt til udgivelse den 
 search;Search;Søg
-selectPreferences;Select preferred language and currency;Vælg venligst sprog og valuta
-selectSize;Select size;Vælg størrelse
 selectedColor;Selected colour;Valgt farve
 selectedSize;Selected size;Valgt størrelse
+selectPreferences;Select preferred language and currency;Vælg venligst sprog og valuta
+selectSize;Select size;Vælg størrelse
 shareReview;Share review;Del anmeldelse
 shareYourExperience;Share your experience;Del din oplevelse
 shoes;Shoes;Sko
@@ -284,12 +295,13 @@ showPassword;Show password;Vis adgangskode
 showPrice;Show price;Vis pris
 silver;Silver;Sølv
 size;Size;Størrelse
+sizeInfoText;Sizes depend on the selected category;Størrelser afhænger af den valgte kategori
 sizeRequired;Please select a size;Vælg venligst størrelse
 sizes;Sizes;Størrelser
-sizeInfoText;Sizes depend on the selected category;Størrelser afhænger af den valgte kategori
 somethingWentWrong;Something went wrong, please try again;Noget gik galt, forsøg venligst igen
 sort;Sort;Sorter
 standard;Standard;Standard
+stars;stars;stjerner
 status;Status;Status
 sub;Sub;Sekundær
 subCategories;Subcategories;Underkategorier
@@ -302,6 +314,7 @@ sureToDelete;Do you want to delete;Vil du slette
 temporarilyOutOfStock;This item is temporarily out of stock;Varen er midlertidigt udsolgt
 temporarilyOutOfStockText;Get notified when the item is back in stock;Få besked, når varen er tilbage på lager
 title;Title;Titel
+today;Today;I dag
 totalProducts;Total products;Antal produkter
 translationKey;Translation key;Oversættelsesnøgle
 translationKeyHelpText;Enter the exact key used for translation in your CSV file;Skriv den præcise nøgle, som bruges til oversættelsen i din CSV-fil
@@ -315,6 +328,7 @@ updatedAt;Updated at;Opdateret
 updatePreferences;Update Preferences;Opdater præferencer
 updateProduct;Update product;Opdater produkt
 updateSubCategory;Update subcategory;Opdater underkategori
+updateUser;Update user;Opdater bruger
 user;User;Bruger
 userAlreadyExist;A profile with this email already exists. Try logging in instead;Der findes en profil med denne e-mail. Prøv at logge ind i stedet
 userDeleted;User deleted;Bruger slettet
@@ -334,3 +348,4 @@ white;White;Hvid
 woman;Woman;Dame
 women;Women;Damer
 yellow;Yellow;Gul
+yesterday;Yesterday;I går

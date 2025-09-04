@@ -1,4 +1,9 @@
-import type { BaseProduct, BaseProductParams, Size } from './sharedApiTypes';
+import type {
+  BaseProduct,
+  BaseProductParams,
+  DefaultResponseType,
+  Size,
+} from './sharedApiTypes';
 
 export type ShopProductsParams = BaseProductParams & {
   mainCategory?: string;
@@ -17,8 +22,15 @@ export type ReviewsResponse = {
   success: boolean;
 };
 
-type Reviews = {
+export type Reviews = {
   comment: string;
+  rating: number;
+};
+
+export type DisplyReviews = DefaultResponseType & {
+  comment: string;
+  createdAt: Date;
+  name: string;
   rating: number;
 };
 

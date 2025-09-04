@@ -1,5 +1,7 @@
+import { ErrorBoundary } from 'react-error-boundary';
 import { Link } from 'react-router';
 import DropdownBtn from '../../components/dropdownBtn/DropdownBtn';
+import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import useFavorites from '../../components/favorites/useFavorites';
 import IconContent from '../../components/IconContent';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
@@ -31,81 +33,83 @@ const HeaderIcons = ({
   secondaryActionBtn,
 }: HeaderIconsProps) => {
   const { language } = useLanguage();
-  const { favorites } = useFavorites({});
+  const { favorites, onReset } = useFavorites({});
 
   return (
-    <ul className="header-icon-list">
-      {/* <li>
-          <IconBtn
-            iconName={IconName.Search}
-            title={language.search}
-            onClick={handleSearch}
-            ariaLabel={language.search}
-          />
-        </li> */}
-      <li>
-        <DropdownBtn
-          dropdownList={userDropdownList}
-          ariaControls="user-dropdown"
-          placement="bottom-start"
-        >
-          <IconContent
-            ariaLabel={language.myAccount}
-            iconName={IconName.User}
-            title={language.user}
-          />
-        </DropdownBtn>
-      </li>
-      <li>
-        <Link to={ShopPath.ShoppingCart} className="btn btn-ghost">
-          <IconContent
-            iconName={IconName.ShoppingBag}
-            title={language.bag}
-            ariaLabel={language.viewCart}
-          />
-        </Link>
-      </li>
-      <li>
-        <ModalContainer
-          triggerModalBtnContent={
-            <IconContent
-              iconName={IconName.Language}
-              title={language.globe}
-              ariaLabel={language.selectPreferences}
+    <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
+      <ul className="header-icon-list">
+        {/* <li>
+            <IconBtn
+              iconName={IconName.Search}
+              title={language.search}
+              onClick={handleSearch}
+              ariaLabel={language.search}
             />
-          }
-          triggerModalBtnVariant={BtnVariant.Ghost}
-          id="languageId"
-          primaryActionBtn={primaryActionBtn}
-          secondaryActionBtn={secondaryActionBtn}
-          modalSize={SizeVariant.Md}
-          modalHeaderText={language.preferences}
-        >
-          <LanguageCurrencyPreferences
-            values={values}
-            onChange={onChange}
-            currencyOptions={currencyOptions}
-            defaultValue={defaultValue}
-            onSelectCurrency={onSelectCurrency}
-          />
-        </ModalContainer>
-      </li>
-      <li>
-        <Link to={ShopPath.Favorites} className="btn btn-ghost favorite-link">
-          <IconContent
-            iconName={IconName.Heart}
-            title={language.heart}
-            ariaLabel={language.viewYourFavorites}
-          />
-          {favorites.length > 0 && (
-            <span className="favorites-count">
-              {favorites.length}
-              <VisuallyHidden> {language.productPlural}</VisuallyHidden>
-            </span>
-          )}
-        </Link>
-      </li>
-    </ul>
+          </li> */}
+        <li>
+          <DropdownBtn
+            dropdownList={userDropdownList}
+            ariaControls="user-dropdown"
+            placement="bottom-start"
+          >
+            <IconContent
+              ariaLabel={language.myAccount}
+              iconName={IconName.User}
+              title={language.user}
+            />
+          </DropdownBtn>
+        </li>
+        <li>
+          <Link to={ShopPath.ShoppingCart} className="btn btn-ghost">
+            <IconContent
+              iconName={IconName.ShoppingBag}
+              title={language.bag}
+              ariaLabel={language.viewCart}
+            />
+          </Link>
+        </li>
+        <li>
+          <ModalContainer
+            triggerModalBtnContent={
+              <IconContent
+                iconName={IconName.Language}
+                title={language.globe}
+                ariaLabel={language.selectPreferences}
+              />
+            }
+            triggerModalBtnVariant={BtnVariant.Ghost}
+            id="languageId"
+            primaryActionBtn={primaryActionBtn}
+            secondaryActionBtn={secondaryActionBtn}
+            modalSize={SizeVariant.Md}
+            modalHeaderText={language.preferences}
+          >
+            <LanguageCurrencyPreferences
+              values={values}
+              onChange={onChange}
+              currencyOptions={currencyOptions}
+              defaultValue={defaultValue}
+              onSelectCurrency={onSelectCurrency}
+            />
+          </ModalContainer>
+        </li>
+        <li>
+          <Link to={ShopPath.Favorites} className="btn btn-ghost favorite-link">
+            <IconContent
+              iconName={IconName.Heart}
+              title={language.heart}
+              ariaLabel={language.viewYourFavorites}
+            />
+            {favorites && favorites.length > 0 && (
+              <span className="favorites-count">
+                {favorites.length}
+                <VisuallyHidden> {language.productPlural}</VisuallyHidden>
+              </span>
+            )}
+          </Link>
+        </li>
+      </ul>
+    </ErrorBoundary>
   );
 };
 

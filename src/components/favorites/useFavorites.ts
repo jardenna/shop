@@ -6,7 +6,7 @@ import {
 
 const useFavorites = ({ id }: { id?: string }) => {
   const {
-    data: favorites = [],
+    data: favorites,
     isLoading,
     isError,
     refetch,
@@ -15,7 +15,7 @@ const useFavorites = ({ id }: { id?: string }) => {
     useToggleFavoriteMutation();
 
   const isFavorite = (productId: string) =>
-    favorites.some((product) => product.id === productId);
+    favorites?.some((product) => product.id === productId);
 
   const [animate, setAnimate] = useState(isFavorite(id || ''));
 
