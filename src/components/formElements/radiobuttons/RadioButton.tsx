@@ -22,13 +22,13 @@ const RadioButton = ({
 
   return (
     <ul className="radio-btn-container">
-      {radioButtonList.map((radio) => (
+      {radioButtonList.map((radio, index) => (
         <li key={radio.value} className="radio-btn-content">
           <label htmlFor={radio.label} className="radio-btn-label">
             {getlowerCaseFirstLetter(radio.label, language)}
           </label>
           <input
-            autoFocus={autoFocus}
+            autoFocus={autoFocus && index === 0}
             type="radio"
             id={radio.label}
             name={name}
