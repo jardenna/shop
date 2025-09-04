@@ -10,6 +10,8 @@ import ProductDiscountPrice from '../features/currency/components/ProductDiscoun
 import useLanguage from '../features/language/useLanguage';
 import ReviewsDisplay from '../features/products/components/reviews/ReviewsDisplay';
 import ReviewsForm from '../features/products/components/reviews/ReviewsForm';
+import ReviewStars from '../features/products/components/reviews/ReviewStars';
+import { getStarsArray } from '../features/products/components/reviews/reviewsUtil.';
 import InStock from '../features/shop/components/InStock';
 import NotifyMe from '../features/shop/components/NotifyMe';
 import ShopProductForm from '../features/shop/components/ShopProductForm';
@@ -71,7 +73,6 @@ const SingleProductPage = () => {
       content:
         product && product.rating > 0 ? (
           <ReviewsDisplay
-            rating={product.rating}
             reviewList={product.reviews}
             numOfReviews={product.numReviews}
           />
@@ -109,6 +110,7 @@ const SingleProductPage = () => {
                 <p>
                   {language.brand}: {product.brand}
                 </p>
+
                 <LayoutElement
                   ariaLabel={language.product}
                   className="single-product-header"
@@ -116,6 +118,10 @@ const SingleProductPage = () => {
                   <h1>{product.productName}</h1>
                   <FavoriteHeart id={product.id} />
                 </LayoutElement>
+                <ReviewStars
+                  stars={getStarsArray(product.rating)}
+                  rating={product.rating}
+                />
                 <ProductDiscountPrice
                   price={product.price}
                   discount={product.discount}
@@ -131,7 +137,6 @@ const SingleProductPage = () => {
                     />
                   )}
                 </div>
-
                 {id && <ReviewsForm productId={id} />}
                 <ShopProductForm
                   selectedProduct={product}

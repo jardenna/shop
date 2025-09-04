@@ -8,22 +8,13 @@ import { StarType } from './reviewsUtil.';
 type ReviewStarsProps = {
   rating: number;
   stars: StarType[];
-  showReviewStarInfo?: boolean;
 };
 
-const ReviewStars = ({
-  stars,
-  rating,
-  showReviewStarInfo,
-}: ReviewStarsProps) => (
+const ReviewStars = ({ stars, rating }: ReviewStarsProps) => (
   <div className="stars">
-    {showReviewStarInfo ? (
+    <VisuallyHidden>
       <ReviewStarsInfo rating={rating} />
-    ) : (
-      <VisuallyHidden>
-        <ReviewStarsInfo rating={rating} />
-      </VisuallyHidden>
-    )}
+    </VisuallyHidden>
     <ul className="star-list">
       {stars.map((type, index) => (
         <li key={index} className="star-item" aria-hidden={true}>
@@ -39,6 +30,7 @@ const ReviewStars = ({
         </li>
       ))}
     </ul>
+    <span>{rating}</span>
   </div>
 );
 
