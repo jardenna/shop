@@ -26,7 +26,8 @@
       margin-right: 8px;
     }
 
-    &:has(a:hover) {
+    &:has(a:hover),
+    &:has(a.active) {
       background-color: $color-light-gray-30;
     }
 
@@ -35,10 +36,6 @@
       display: flex;
       padding: 12px 0;
       border-radius: 8px;
-
-      &.active {
-        background-color: $color-light-gray-30;
-      }
     }
   }
 }
