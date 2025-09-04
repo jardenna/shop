@@ -37,7 +37,6 @@ $animation-distance: 500px;
 }
 
 .main-header {
-  min-height: $header-height;
   display: flex;
   width: 100%;
   align-items: center;
@@ -123,6 +122,6 @@ $animation-distance: 500px;
 
 @keyframes sticky-header {
   100% {
-    top: 16px;
+    top: 4px;
   }
 }

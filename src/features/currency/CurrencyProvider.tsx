@@ -1,6 +1,5 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { useAppDispatch } from '../../app/hooks';
-import SkeletonList from '../../components/skeleton/SkeletonList';
 import { localStorageKeys } from '../../hooks/useLocalStorage';
 import { currencyCacheKey, oneDay } from '../../utils/utils';
 import { setRates } from './currencySlice';
@@ -29,7 +28,7 @@ const CurrencyProvider = ({ children }: { children: ReactNode }) => {
 
   const {
     data: currency,
-    isLoading,
+
     error,
   } = useGetExchangeRatesQuery(undefined, {
     pollingInterval: shouldFetch ? oneDay : undefined,
@@ -62,10 +61,6 @@ const CurrencyProvider = ({ children }: { children: ReactNode }) => {
       setShouldFetch(false);
     }
   }, [error, dispatch]);
-
-  if (isLoading) {
-    return <SkeletonList />;
-  }
 
   return children;
 };
