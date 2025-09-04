@@ -2,9 +2,10 @@ import { ReactNode } from 'react';
 import './_accordion.scss';
 import AccordionItem from './AccordionItem';
 
-type AccordionItem = {
+export type AccordionItem = {
   content: ReactNode;
   title: string;
+  additionalTitle?: string | number;
 };
 
 type AccordionProps = {
@@ -13,8 +14,13 @@ type AccordionProps = {
 
 const Accordion = ({ accordionItems }: AccordionProps) => (
   <section className="accordion-container">
-    {accordionItems.map(({ title, content }) => (
-      <AccordionItem key={title} title={title} detailsName="product-info">
+    {accordionItems.map(({ title, content, additionalTitle }) => (
+      <AccordionItem
+        key={title}
+        title={title}
+        detailsName="product-info"
+        additionalTitle={additionalTitle}
+      >
         {content}
       </AccordionItem>
     ))}

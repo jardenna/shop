@@ -1,6 +1,6 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
-import Accordion from '../components/accordion/Accordion';
+import Accordion, { AccordionItem } from '../components/accordion/Accordion';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import FavoriteHeart from '../components/favorites/FavoriteHeart';
 import ImgList from '../components/ImgList';
@@ -37,7 +37,7 @@ const SingleProductPage = () => {
     ? getColorOptions({ colors: product.colors, language })
     : [];
 
-  const accordionItems = [
+  const accordionItems: AccordionItem[] = [
     { title: language.description, content: <p>{product?.description}</p> },
     {
       title: language.materialAndCare,
@@ -70,6 +70,7 @@ const SingleProductPage = () => {
     },
     {
       title: language.reviews,
+      additionalTitle: product ? `(${product.numReviews})` : '',
       content:
         product && product.rating > 0 ? (
           <ReviewsDisplay
