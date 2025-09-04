@@ -96,7 +96,10 @@ a[class^='btn-'],
   font-size: $font-small;
   border-radius: 0;
 
-  &:hover,
+  &:hover {
+    color: $color-blue-30;
+  }
+
   &:focus-visible {
     color: $color-blue-30;
 
