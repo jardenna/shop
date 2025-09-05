@@ -43,7 +43,10 @@ a[class^='btn-'],
   background-color: $color-primary;
   color: $color-secondary;
 
-  &:hover,
+  &:hover {
+    background-color: $color-gray-70;
+  }
+
   &:focus-visible {
     @include outline($color-primary);
   }
