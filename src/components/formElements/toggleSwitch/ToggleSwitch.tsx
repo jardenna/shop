@@ -29,6 +29,7 @@ const ToggleSwitch = ({
           className="toggle-switch-input visually-hidden"
           onChange={onChange}
           checked={checked}
+          role="switch"
         />
       </div>
     </div>

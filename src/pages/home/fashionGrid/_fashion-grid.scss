@@ -67,6 +67,10 @@
       font-size: $font-medium;
       color: $color-dust-red-40;
       justify-content: flex-end;
+
+      &:hover {
+        color: $color-link-hover;
+      }
     }
   }
 

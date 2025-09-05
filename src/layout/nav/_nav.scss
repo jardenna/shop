@@ -16,6 +16,10 @@
     text-transform: uppercase;
     padding: 8px;
 
+    &:hover {
+      color: $color-link-hover;
+    }
+
     &:focus-visible {
       @include outline;
     }

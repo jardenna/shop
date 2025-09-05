@@ -6,15 +6,12 @@
 }
 
 .collection-nav-list {
-  display: flex;
-  gap: 20px;
-  flex-direction: column;
   font-size: $font-medium;
-  padding: 20px 16px;
 
   .collection-nav-item {
     display: flex;
     align-items: center;
+    padding-left: 8px;
 
     &::marker {
       content: '';
@@ -27,6 +24,18 @@
       line-height: 0.4;
       font-size: 16px;
       margin-right: 8px;
+    }
+
+    &:has(a:hover),
+    &:has(a.active) {
+      background-color: $color-light-gray-30;
+    }
+
+    a {
+      width: 100%;
+      display: flex;
+      padding: 12px 0;
+      border-radius: 8px;
     }
   }
 }
