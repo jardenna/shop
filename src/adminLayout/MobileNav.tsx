@@ -9,7 +9,7 @@ export type AdminNavProps = {
 };
 
 const MobileNav = ({ currentUser, ariaControls }: AdminNavProps) => (
-  <TogglePanel ariaControls={ariaControls}>
+  <TogglePanel ariaControls={ariaControls} preventClickOutside>
     <NavContainer
       ariaControls={ariaControls}
       navList={adminNavList}
