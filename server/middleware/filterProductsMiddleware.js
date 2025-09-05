@@ -20,6 +20,16 @@ function filterProductsMiddleware(req, res, next) {
     filter.colors = { $in: colors.map((c) => new RegExp(`^${c}$`, 'i')) };
   }
 
+  if (req.query.brand) {
+    const brand = req.query.brand.split(',').map((b) => b.trim());
+    filter.brand = { $in: brand.map((b) => new RegExp(`^${b}$`, 'i')) };
+  }
+
+  if (req.query.sizes) {
+    const sizes = req.query.sizes.split(',').map((s) => s.trim());
+    filter.sizes = { $in: sizes.map((s) => new RegExp(`^${s}$`, 'i')) };
+  }
+
   // Exact match on subCategory (assuming it's an ID or slug)
   if (req.query.subCategory) {
     filter.subCategory = req.query.subCategory;
