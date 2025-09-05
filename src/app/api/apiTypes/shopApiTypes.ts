@@ -7,6 +7,8 @@ import type {
 
 export type ShopProductsParams = BaseProductParams & {
   mainCategory?: string;
+  maxPrice?: string;
+  minPrice?: string;
   subCategoryId?: string;
 };
 
