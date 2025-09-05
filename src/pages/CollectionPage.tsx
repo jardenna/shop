@@ -91,10 +91,17 @@ const CollectionPage = () => {
                   isActive={productView}
                   ariaLabel={language.productDisplay}
                 />
-                <span>
-                  {products?.productCount} {language.itemLabel}
-                </span>
-                <FilterPanel />
+                {products && (
+                  <>
+                    <span>
+                      {products.productCount} {language.itemLabel}
+                    </span>
+                    <FilterPanel
+                      availableBrands={products.availableBrands}
+                      availableSizes={products.availableSizes}
+                    />
+                  </>
+                )}
               </section>
               {isLoading ? (
                 <SkeletonCardList count={8} />
