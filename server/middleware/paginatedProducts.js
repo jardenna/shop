@@ -12,6 +12,14 @@ function paginatedProducts(req, res, next) {
     filter.productName = { $regex: req.query.productName, $options: 'i' };
   }
 
+  // Filter by colors (OR for multiple colors)
+  if (req.query.colors) {
+    const colors = req.query.colors.split(',').map((color) => color.trim());
+
+    // Match array elements case-insensitively
+    filter.colors = { $in: colors.map((c) => new RegExp(`^${c}$`, 'i')) };
+  }
+
   // Exact match on subCategory (assuming it's an ID or slug)
   if (req.query.subCategory) {
     filter.subCategory = req.query.subCategory;

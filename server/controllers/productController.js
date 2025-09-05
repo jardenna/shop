@@ -260,9 +260,25 @@ const getProducts = asyncHandler(async (req, res) => {
     },
   ];
 
-  // Add dynamic filters (subCategoryId, mainCategory)
+  // Add filters from paginatedProducts (colors, price, productName, etc.)
+  const combinedMatch = {};
+
+  if (req.filter && Object.keys(req.filter).length > 0) {
+    Object.assign(combinedMatch, req.filter);
+  }
+
+  // Combine matchStage (joined fields) with combinedMatch
   if (matchStage.length > 0) {
-    basePipeline.push({ $match: { $and: matchStage } });
+    if (Object.keys(combinedMatch).length > 0) {
+      combinedMatch.$and = matchStage;
+    } else {
+      Object.assign(combinedMatch, { $and: matchStage });
+    }
+  }
+
+  // Push combined match to pipeline
+  if (Object.keys(combinedMatch).length > 0) {
+    basePipeline.push({ $match: combinedMatch });
   }
 
   // Count pipeline
