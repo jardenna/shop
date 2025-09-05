@@ -28,7 +28,7 @@ const CollectionNav = ({
     <LayoutElement as="nav" ariaLabel={ariaLabel}>
       <ul className="collection-nav-list">
         <li className="collection-nav-item">
-          <NavLink to={`/${ShopPath.Collection}/${category}`}>
+          <NavLink to={`/${ShopPath.Collection}/${category}`} end>
             {showAllText}
           </NavLink>
         </li>
