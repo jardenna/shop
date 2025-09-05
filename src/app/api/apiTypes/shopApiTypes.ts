@@ -16,6 +16,8 @@ export type ShopProductsParams = BaseProductParams & {
 };
 
 export type ShopAllProductsResponse = {
+  availableBrands: string[];
+  availableSizes: Size[];
   page: number;
   pages: number;
   productCount: number;
