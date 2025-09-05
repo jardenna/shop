@@ -72,7 +72,10 @@ a[class^='btn-'],
   min-height: auto;
   width: auto;
 
-  &:hover,
+  &:hover {
+    @include outline($color-gray-40, $offSet: 1px);
+  }
+
   &:focus-visible {
     @include outline($color-gray-40);
   }
@@ -83,7 +86,10 @@ a[class^='btn-'],
   background-color: $color-danger;
   color: $color-white;
 
-  &:hover,
+  &:hover {
+    background-color: $color-dust-red-30;
+  }
+
   &:focus-visible {
     @include outline($color-danger);
   }
