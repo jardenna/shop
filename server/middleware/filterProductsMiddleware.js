@@ -1,4 +1,4 @@
-function paginatedProducts(req, res, next) {
+function filterProductsMiddleware(req, res, next) {
   let page = parseInt(req.query.page);
   let pageSize = parseInt(req.query.pageSize);
 
@@ -54,4 +54,4 @@ function paginatedProducts(req, res, next) {
   next();
 }
 
-export default paginatedProducts;
+export default filterProductsMiddleware;

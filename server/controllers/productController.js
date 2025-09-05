@@ -260,7 +260,7 @@ const getProducts = asyncHandler(async (req, res) => {
     },
   ];
 
-  // Add filters from paginatedProducts (colors, price, productName, etc.)
+  // Add filters from filterProductsMiddleware (colors, price, productName, etc.)
   const combinedMatch = {};
 
   if (req.filter && Object.keys(req.filter).length > 0) {
