@@ -104,7 +104,7 @@ const ReviewsForm = ({
             ariaLabelData={starAriaLabelData}
           />
         </FieldSet>
-        <div className={`review-textbox ${visible ? 'visible' : null}`}>
+        <div className={`review-textbox ${visible ? 'visible' : ''}`}>
           <Textarea
             tabIndex={visible === '' ? -1 : undefined}
             ariaHidden={visible === '' ? true : undefined}
