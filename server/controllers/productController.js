@@ -313,12 +313,56 @@ const getProducts = asyncHandler(async (req, res) => {
 
   const products = await Product.aggregate(paginatedPipeline);
 
+  // Extra aggregation for unique sizes & brands
+  const metaPipeline = [
+    ...basePipeline,
+    {
+      $group: {
+        _id: null,
+        brands: { $addToSet: '$brand' }, // assumes brand field
+        sizes: { $addToSet: '$sizes' }, // assumes sizes is array
+      },
+    },
+    { $project: { _id: 0, brands: 1, sizes: 1 } },
+  ];
+
+  const metaResult = await Product.aggregate(metaPipeline);
+
+  // Flatten & unique sizes
+  const availableSizesRaw = metaResult[0]?.sizes?.flat() || [];
+  const availableSizesSet = [...new Set(availableSizesRaw)];
+
+  // Sort sizes numerically, Onesize last
+  function sortSizes(sizes) {
+    const numeric = [];
+    const nonNumeric = [];
+
+    sizes.forEach((s) => {
+      if (!isNaN(s)) numeric.push(Number(s));
+      else nonNumeric.push(s);
+    });
+
+    numeric.sort((a, b) => a - b);
+    return [...numeric.map(String), ...nonNumeric];
+  }
+
+  const availableSizes = sortSizes(availableSizesSet);
+
+  // Unique & alphabetically sorted brands
+  const availableBrandsRaw = metaResult[0]?.brands || [];
+  const availableBrandsSet = [...new Set(availableBrandsRaw)];
+  const availableBrands = availableBrandsSet.sort((a, b) =>
+    a.localeCompare(b, undefined, { sensitivity: 'base' }),
+  );
+
   res.status(200).json({
     success: true,
     products,
     page,
     pages: Math.ceil(count / pageSize),
     productCount: count,
+    availableBrands,
+    availableSizes,
   });
 });
 
