@@ -14,12 +14,15 @@ type OmittedProps = Omit<
   | 'maxLength'
   | 'multiple'
   | 'ref'
+  | 'onChange'
 >;
+
 type TextareaProps = OmittedProps & {
   ariaHidden?: boolean;
   ref?: refTextareaType;
   rows?: number;
   tabIndex?: number;
+  onChange: (event: any) => void;
 };
 
 const Textarea = ({
