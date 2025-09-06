@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router';
-import DropdownBtn, {
-  DropdownItem,
-} from '../../../components/dropdownBtn/DropdownBtn';
+import type { DropdownItem } from '../../../components/dropdownBtn/DropdownBtn';
+import DropdownBtn from '../../../components/dropdownBtn/DropdownBtn';
 import Icon from '../../../components/icons/Icon';
 import { AdminPath } from '../../../layout/nav/enums';
 import { IconName } from '../../../types/enums';

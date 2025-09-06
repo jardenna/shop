@@ -1,6 +1,7 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
-import Accordion, { AccordionItem } from '../components/accordion/Accordion';
+import type { AccordionItem } from '../components/accordion/Accordion';
+import Accordion from '../components/accordion/Accordion';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import FavoriteHeart from '../components/favorites/FavoriteHeart';
 import ImgList from '../components/ImgList';
