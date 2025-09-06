@@ -6,12 +6,12 @@ import type {
 } from './sharedApiTypes';
 
 export type ShopProductsParams = BaseProductParams & {
-  brand?: string;
-  colors?: string;
+  brand?: string[];
+  colors?: string[];
   mainCategory?: string;
   maxPrice?: string;
   minPrice?: string;
-  sizes?: string;
+  sizes?: string[];
   subCategoryId?: string;
 };
 

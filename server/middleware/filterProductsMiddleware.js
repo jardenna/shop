@@ -12,23 +12,43 @@ function filterProductsMiddleware(req, res, next) {
     filter.productName = { $regex: req.query.productName, $options: 'i' };
   }
 
-  // Filter by colors (OR for multiple colors)
-  if (req.query.colors) {
-    const colors = req.query.colors.split(',').map((color) => color.trim());
+  // Helper to normalize query param into array, optional type casting
+  const parseToArray = (param, cast = 'string') => {
+    if (!param) return [];
+    const arr = Array.isArray(param)
+      ? param.map((v) => v.trim())
+      : param.split(',').map((v) => v.trim());
 
-    // Match array elements case-insensitively
-    filter.colors = { $in: colors.map((c) => new RegExp(`^${c}$`, 'i')) };
-  }
+    if (cast === 'number') {
+      return arr.map((v) => Number(v)).filter((n) => !isNaN(n));
+    }
 
-  if (req.query.brand) {
-    const brand = req.query.brand.split(',').map((b) => b.trim());
-    filter.brand = { $in: brand.map((b) => new RegExp(`^${b}$`, 'i')) };
-  }
+    return arr;
+  };
 
-  if (req.query.sizes) {
-    const sizes = req.query.sizes.split(',').map((s) => s.trim());
-    filter.sizes = { $in: sizes.map((s) => new RegExp(`^${s}$`, 'i')) };
-  }
+  // Config: field -> cast type
+  const filterConfig = {
+    colors: 'string',
+    brand: 'string',
+    sizes: 'string',
+  };
+
+  // Apply filters dynamically
+  Object.entries(filterConfig).forEach(([field, cast]) => {
+    if (req.query[field]) {
+      const values = parseToArray(req.query[field], cast);
+
+      // For string-based fields use regex matching (case-insensitive)
+      if (cast === 'string') {
+        filter[field] = { $in: values.map((v) => new RegExp(`^${v}$`, 'i')) };
+      }
+
+      // For number-based fields use direct values
+      if (cast === 'number') {
+        filter[field] = { $in: values };
+      }
+    }
+  });
 
   // Exact match on subCategory (assuming it's an ID or slug)
   if (req.query.subCategory) {
