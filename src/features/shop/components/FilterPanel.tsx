@@ -2,27 +2,28 @@ import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import Checkbox from '../../../components/formElements/checkbox/Checkbox';
 import Icon from '../../../components/icons/Icon';
 import TogglePanel from '../../../components/togglePanel/TogglePanel';
-import useFormValidation from '../../../hooks/useFormValidation';
+import { FilterValues } from '../../../pages/CollectionPage';
 import { IconName } from '../../../types/enums';
+import { ChangeInputType } from '../../../types/types';
 import useLanguage from '../../language/useLanguage';
 
 type FilterPanelProps = {
   availableBrands: string[];
   availableSizes: Size[];
+  values: FilterValues;
+  onChange: (event: ChangeInputType) => void;
 };
-const FilterPanel = ({ availableSizes, availableBrands }: FilterPanelProps) => {
+const FilterPanel = ({
+  availableSizes,
+  availableBrands,
+  onChange,
+  values,
+}: FilterPanelProps) => {
   const { language } = useLanguage();
   // const sortedColorList = getColorOptions({
   //   language,
   //   borderColor: variables.colorIconBorder,
   // });
-
-  const initialState = {
-    sizes: [],
-    brand: [],
-  };
-  const { onChange, values } = useFormValidation({ initialState });
-  console.log(values);
 
   return (
     <TogglePanel

@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { useParams } from 'react-router';
+import { useParams, useSearchParams } from 'react-router';
+import { Size } from '../app/api/apiTypes/sharedApiTypes';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import DisplayControls from '../components/DisplayControls';
@@ -17,11 +19,25 @@ import { useGetProductsQuery } from '../features/shop/shopApiSlice';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
 import MetaTags from '../layout/nav/MetaTags';
 import { IconName } from '../types/enums';
+import { ChangeInputType } from '../types/types';
 import './CollectionPage.styles.scss';
 
+export type FilterValues = {
+  brand: string[];
+  sizes: Size[];
+  [key: string]: string[] | Size[];
+};
+
 const CollectionPage = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const { language } = useLanguage();
   const { category, categoryId } = useParams();
+  const initialState: FilterValues = {
+    sizes: [],
+    colors: [],
+    brand: [],
+  };
+  const [filterValues, setFilterValues] = useState<FilterValues>(initialState);
 
   // Redux hooks
   const {
@@ -30,13 +46,40 @@ const CollectionPage = () => {
     refetch,
   } = useGetProductsQuery({
     pageSize: '100',
-    colors: ['silver', 'black'],
+    // colors: ['silver', 'black'],
+    brand: filterValues.brand,
+    sizes: filterValues.sizes,
     mainCategory: category,
     subCategoryId: categoryId || '',
   });
 
   const { subMenu, subMenuLoading, refetchSubMenu } = useSubMenu({ category });
   const categoryText = category ? language[category] : '';
+
+  const handleFilterProducts = (event: ChangeInputType) => {
+    const { name, value, checked } = event.target as HTMLInputElement;
+    const newParams = new URLSearchParams(searchParams);
+
+    setFilterValues(() => {
+      const currentValues = filterValues[name];
+      if (checked) {
+        const updatedValues = [...currentValues, value];
+        newParams.set(name, JSON.stringify(updatedValues));
+        return {
+          ...filterValues,
+          [name]: updatedValues,
+        };
+      } else {
+        newParams.delete(name);
+      }
+      return {
+        ...filterValues,
+        [name]: currentValues.filter((item) => item !== value),
+      };
+    });
+
+    setSearchParams(Object.fromEntries(newParams.entries()));
+  };
 
   const [productView, setProuctView] = useLocalStorage(
     localStorageKeys.productView,
@@ -97,6 +140,8 @@ const CollectionPage = () => {
                       {products.productCount} {language.itemLabel}
                     </span>
                     <FilterPanel
+                      onChange={handleFilterProducts}
+                      values={filterValues}
                       availableBrands={products.availableBrands}
                       availableSizes={products.availableSizes}
                     />
