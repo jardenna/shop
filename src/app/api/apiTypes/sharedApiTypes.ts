@@ -83,10 +83,6 @@ export type BaseProduct = DefaultResponseType & {
 };
 
 export type BaseProductParams = {
-  maxPrice?: string;
-  maxStock?: string;
-  minPrice?: string;
-  minStock?: string;
   page?: string;
   pageSize?: string;
   productName?: string;

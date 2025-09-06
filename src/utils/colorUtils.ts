@@ -1,3 +1,10 @@
+export type ColorOption = {
+  color: string;
+  label: string;
+  value: string;
+  border?: string;
+};
+
 const colorMap: Record<string, string> = {
   black: '#020101',
   grey: '#99a4a9',
@@ -30,21 +37,14 @@ const colorList = [
   'pink',
 ];
 
-export type ColorOption = {
-  color: string;
-  label: string;
-  value: string;
-  border?: string;
-};
-
 type GetColorOptionsParams = {
-  colors: string[];
   language: Record<string, string>;
   borderColor?: string;
+  colors?: string[];
 };
 
 const getColorOptions = ({
-  colors,
+  colors = colorList,
   language,
   borderColor,
 }: GetColorOptionsParams): ColorOption[] =>

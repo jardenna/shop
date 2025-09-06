@@ -22,17 +22,17 @@ import {
   authorizeEmployee,
 } from '../middleware/authMiddleware.js';
 import checkId from '../middleware/checkId.js';
+import filterProductsMiddleware from '../middleware/filterProductsMiddleware.js';
 import languageMiddleware from '../middleware/languageMiddleware.js';
-import paginatedProducts from '../middleware/paginatedProducts.js';
 
 const router = express.Router();
 router
   .route('/')
-  .get(languageMiddleware, paginatedProducts, getProducts)
+  .get(languageMiddleware, filterProductsMiddleware, getProducts)
   .post(languageMiddleware, authenticate, authorizeEmployee, createProduct);
 
 router.get('/scheduled', checkScheduled);
-router.get('/allProducts', paginatedProducts, getSortedProducts);
+router.get('/allProducts', filterProductsMiddleware, getSortedProducts);
 router.get('/shop/:id', languageMiddleware, getShopProductById);
 router.post(
   '/:id/reviews',

@@ -15,6 +15,7 @@ import ProductCardListContent from '../features/shop/components/ProductCardListC
 import useSubMenu from '../features/shop/hooks/useSubMenu';
 import { useGetProductsQuery } from '../features/shop/shopApiSlice';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
+import userFilterParams, { FilterValuesType } from '../hooks/userFilterParams';
 import MetaTags from '../layout/nav/MetaTags';
 import { IconName } from '../types/enums';
 import './CollectionPage.styles.scss';
@@ -22,6 +23,13 @@ import './CollectionPage.styles.scss';
 const CollectionPage = () => {
   const { language } = useLanguage();
   const { category, categoryId } = useParams();
+  const initialState: FilterValuesType = {
+    sizes: [],
+    colors: [],
+    brand: [],
+  };
+
+  const { filterValues, handleFilterChange } = userFilterParams(initialState);
 
   // Redux hooks
   const {
@@ -30,12 +38,14 @@ const CollectionPage = () => {
     refetch,
   } = useGetProductsQuery({
     pageSize: '100',
+    // colors: ['silver', 'black'],
+    brand: filterValues.brand,
+    sizes: filterValues.sizes,
     mainCategory: category,
     subCategoryId: categoryId || '',
   });
 
   const { subMenu, subMenuLoading, refetchSubMenu } = useSubMenu({ category });
-
   const categoryText = category ? language[category] : '';
 
   const [productView, setProuctView] = useLocalStorage(
@@ -91,10 +101,19 @@ const CollectionPage = () => {
                   isActive={productView}
                   ariaLabel={language.productDisplay}
                 />
-                <span>
-                  {products?.productCount} {language.itemLabel}
-                </span>
-                <FilterPanel />
+                {products && (
+                  <>
+                    <span>
+                      {products.productCount} {language.itemLabel}
+                    </span>
+                    <FilterPanel
+                      onChange={handleFilterChange}
+                      values={filterValues}
+                      availableBrands={products.availableBrands}
+                      availableSizes={products.availableSizes}
+                    />
+                  </>
+                )}
               </section>
               {isLoading ? (
                 <SkeletonCardList count={8} />

@@ -2,7 +2,7 @@ import { RefObject, useEffect } from 'react';
 
 type useTrapFocusProps = {
   id: string | null;
-  popupRef: RefObject<HTMLDialogElement | null>;
+  popupRef: RefObject<HTMLElement | null>;
 };
 
 const useTrapFocus = ({ id, popupRef }: useTrapFocusProps) => {

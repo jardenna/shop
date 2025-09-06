@@ -1,4 +1,4 @@
-function paginatedProducts(req, res, next) {
+function filterProductsMiddleware(req, res, next) {
   let page = parseInt(req.query.page);
   let pageSize = parseInt(req.query.pageSize);
 
@@ -11,6 +11,44 @@ function paginatedProducts(req, res, next) {
   if (req.query.productName) {
     filter.productName = { $regex: req.query.productName, $options: 'i' };
   }
+
+  // Helper to normalize query param into array, optional type casting
+  const parseToArray = (param, cast = 'string') => {
+    if (!param) return [];
+    const arr = Array.isArray(param)
+      ? param.map((v) => v.trim())
+      : param.split(',').map((v) => v.trim());
+
+    if (cast === 'number') {
+      return arr.map((v) => Number(v)).filter((n) => !isNaN(n));
+    }
+
+    return arr;
+  };
+
+  // Config: field -> cast type
+  const filterConfig = {
+    colors: 'string',
+    brand: 'string',
+    sizes: 'string',
+  };
+
+  // Apply filters dynamically
+  Object.entries(filterConfig).forEach(([field, cast]) => {
+    if (req.query[field]) {
+      const values = parseToArray(req.query[field], cast);
+
+      // For string-based fields use regex matching (case-insensitive)
+      if (cast === 'string') {
+        filter[field] = { $in: values.map((v) => new RegExp(`^${v}$`, 'i')) };
+      }
+
+      // For number-based fields use direct values
+      if (cast === 'number') {
+        filter[field] = { $in: values };
+      }
+    }
+  });
 
   // Exact match on subCategory (assuming it's an ID or slug)
   if (req.query.subCategory) {
@@ -46,4 +84,4 @@ function paginatedProducts(req, res, next) {
   next();
 }
 
-export default paginatedProducts;
+export default filterProductsMiddleware;

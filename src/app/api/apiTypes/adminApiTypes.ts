@@ -153,6 +153,8 @@ export type Product = BaseProduct & {
 };
 
 export type ProductsParams = BaseProductParams & {
+  maxStock?: string;
+  minStock?: string;
   productStatus?: Status;
   subCategory?: string;
 };
