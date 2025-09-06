@@ -30,7 +30,7 @@ const CollectionPage = () => {
     brand: [],
   };
 
-  const { filterValues, handleFilterChange } = useFilterParams(initialState);
+  const { filterValues, onFilterChange } = useFilterParams(initialState);
 
   // Redux hooks
   const {
@@ -108,7 +108,7 @@ const CollectionPage = () => {
                       {products.productCount} {language.itemLabel}
                     </span>
                     <FilterPanel
-                      onChange={handleFilterChange}
+                      onChange={onFilterChange}
                       values={filterValues}
                       availableBrands={products.availableBrands}
                       availableSizes={products.availableSizes}

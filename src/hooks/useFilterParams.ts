@@ -66,7 +66,7 @@ const useFilterParams = (initialFilters: FilterValuesType) => {
     });
   };
 
-  return { filterValues, handleFilterChange };
+  return { filterValues, onFilterChange: handleFilterChange };
 };
 
 export default useFilterParams;
