@@ -29,7 +29,6 @@ const FilterPanel = ({ availableSizes, availableBrands }: FilterPanelProps) => {
       ariaControls="filter-products"
       triggerBtnClassName="product-filter"
       showCloseIcon
-      className="filter-panel"
       triggerBtnContent={
         <>
           <span>{language.filter}</span>

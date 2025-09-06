@@ -5,46 +5,58 @@
   flex-direction: column;
   gap: 12px;
   margin-bottom: 12px;
-}
 
-.checkbox-item {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
+  .checkbox-item {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding: 8px;
+    padding-left: 20px;
 
-label {
-  cursor: pointer;
-}
-
-input[type='checkbox'] {
-  min-height: auto;
-  width: rem(24px);
-  height: rem(24px);
-  border: 2px solid $color-gray-60;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  padding-bottom: 5px;
-
-  &:checked {
-    background-color: $color-gray-80;
-    border-color: $color-gray-80;
+    &:has(input:focus-visible) {
+      background-color: $color-background;
+    }
   }
 
-  &::before {
-    content: '';
-    border-bottom: 3px solid $color-white;
-    border-right: 3px solid $color-white;
-    width: 6px;
-    height: 12px;
-    transform: scale(0) rotate(45deg);
-
-    @include transition($time: 0.2s);
+  label {
+    cursor: pointer;
+    display: flex;
+    width: 100%;
   }
 
-  &:checked::before {
-    transform: scale(1) rotate(45deg);
+  input[type='checkbox'] {
+    min-height: auto;
+    width: rem(24px);
+    height: rem(24px);
+    border: 2px solid $color-gray-60;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding-bottom: 5px;
+
+    &:focus-visible {
+      outline: transparent;
+    }
+
+    &:checked {
+      background-color: $color-gray-80;
+      border-color: $color-gray-80;
+    }
+
+    &::before {
+      content: '';
+      border-bottom: 3px solid $color-white;
+      border-right: 3px solid $color-white;
+      width: 6px;
+      height: 12px;
+      transform: scale(0) rotate(45deg);
+
+      @include transition($time: 0.2s);
+    }
+
+    &:checked::before {
+      transform: scale(1) rotate(45deg);
+    }
   }
 }
