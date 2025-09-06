@@ -11,32 +11,35 @@
   display: flex;
   gap: 8px;
   align-items: center;
-
-  input[type='checkbox'] {
-    min-height: auto;
-    width: rem(24px);
-    height: rem(24px);
-    border: 2px solid #617886;
-    position: relative;
-  }
 }
 
-input[type='checkbox']:checked {
-  background-color: black;
-  border-color: black;
+label {
+  cursor: pointer;
+}
+
+input[type='checkbox'] {
+  min-height: auto;
+  width: rem(24px);
+  height: rem(24px);
+  border: 2px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding-bottom: 5px;
 
   &::before {
     content: '';
     border-bottom: 3px solid green;
     border-right: 3px solid green;
-    width: 5px;
-    left: 6px;
-    top: 3px;
-    position: absolute;
-    height: 10px;
-    display: flex;
+    width: 6px;
+    height: 12px;
+    transform: scale(0) rotate(45deg);
 
-    /* transform: translate(3px, 3px); */
-    transform: rotate(45deg);
+    @include transition($time: 0.2s);
+  }
+
+  &:checked::before {
+    transform: scale(1) rotate(45deg);
   }
 }
