@@ -4,7 +4,7 @@ import Icon from '../../../components/icons/Icon';
 import TogglePanel from '../../../components/togglePanel/TogglePanel';
 import { FilterValuesType } from '../../../hooks/userFilterParams';
 import { IconName } from '../../../types/enums';
-import { ChangeInputType } from '../../../types/types';
+import type { ChangeInputType } from '../../../types/types';
 import useLanguage from '../../language/useLanguage';
 
 type FilterPanelProps = {

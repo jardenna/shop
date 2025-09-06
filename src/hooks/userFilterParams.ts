@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router';
-import { ChangeInputType } from '../types/types';
+import type { ChangeInputType } from '../types/types';
 
 export type FilterValuesType = {
   brand: string[];
