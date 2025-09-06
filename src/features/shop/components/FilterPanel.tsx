@@ -2,7 +2,7 @@ import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import Checkbox from '../../../components/formElements/checkbox/Checkbox';
 import Icon from '../../../components/icons/Icon';
 import TogglePanel from '../../../components/togglePanel/TogglePanel';
-import { FilterValuesType } from '../../../hooks/userFilterParams';
+import { FilterValuesType } from '../../../hooks/useFilterParams';
 import { IconName } from '../../../types/enums';
 import type { ChangeInputType } from '../../../types/types';
 import useLanguage from '../../language/useLanguage';
