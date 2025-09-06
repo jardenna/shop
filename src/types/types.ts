@@ -4,6 +4,7 @@ export type SortOrderType = 'asc' | 'desc';
 
 export type ButtonEventType = MouseEvent<HTMLButtonElement>;
 export type ChangeInputType = ChangeEvent<HTMLInputElement>;
+export type ChangeTextAreaType = ChangeEvent<HTMLTextAreaElement>;
 export type BlurEventType = { target: { name: string } };
 export type FormEventType = FormEvent<HTMLFormElement>;
 export type refElementType = RefObject<HTMLElement | null>;

@@ -5,6 +5,7 @@ import type {
   FormEventType,
 } from '../types/types';
 import { allowedExtensions, maxFileSize } from '../utils/utils';
+import { ChangeTextAreaType } from './../types/types';
 
 export type KeyValuePair<T> = {
   [key: string]: T;
@@ -92,6 +93,14 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
       // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
       delete updatedErrors[name];
       return updatedErrors;
+    });
+  }
+
+  function handleChangeTextArea(event: ChangeTextAreaType) {
+    const { name, value } = event.target;
+    setValues({
+      ...values,
+      [name]: value,
     });
   }
 
@@ -231,6 +240,7 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
   return {
     onSubmit,
     onChange,
+    onChangeTextArea: handleChangeTextArea,
     onCustomChange,
     onClearInput: handleClearInput,
     isFocused,

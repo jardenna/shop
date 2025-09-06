@@ -138,6 +138,7 @@ const ProductForm = ({
     onSubmit,
     errors,
     onCustomChange,
+    onChangeTextArea,
     filesData,
     previewData,
     removePreviewImage,
@@ -282,7 +283,7 @@ const ProductForm = ({
               name="description"
               id="description"
               labelText={language.description}
-              onChange={onChange}
+              onChange={onChangeTextArea}
               required
             />
             <div className="flex">

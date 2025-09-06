@@ -48,7 +48,7 @@ const ReviewsForm = ({
     unit: language.stars,
   };
 
-  const { values, onChange, onSubmit } = useFormValidation({
+  const { values, onChange, onChangeTextArea, onSubmit } = useFormValidation({
     initialState,
     callback: handleSubmit,
   });
@@ -113,7 +113,7 @@ const ReviewsForm = ({
             name="comment"
             id="comment"
             labelText={language.shareYourExperience}
-            onChange={onChange}
+            onChange={onChangeTextArea}
             rows={8}
           />
           <Button

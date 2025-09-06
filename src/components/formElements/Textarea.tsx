@@ -1,4 +1,4 @@
-import type { refTextareaType } from '../../types/types';
+import type { ChangeTextAreaType, refTextareaType } from '../../types/types';
 import FormLabel from './FormLabel';
 import type { InputProps } from './Input';
 
@@ -22,7 +22,7 @@ type TextareaProps = OmittedProps & {
   ref?: refTextareaType;
   rows?: number;
   tabIndex?: number;
-  onChange: (event: any) => void;
+  onChange: (event: ChangeTextAreaType) => void;
 };
 
 const Textarea = ({
