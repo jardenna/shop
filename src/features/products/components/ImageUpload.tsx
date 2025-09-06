@@ -1,8 +1,7 @@
 import FileInput from '../../../components/formElements/fileInput/FileInput';
 import ImgListItem from '../../../components/formElements/fileInput/ImgListItem';
-import Preview, {
-  PreviewImg,
-} from '../../../components/formElements/fileInput/Preview';
+import type { PreviewImg } from '../../../components/formElements/fileInput/Preview';
+import Preview from '../../../components/formElements/fileInput/Preview';
 import InputInfo from '../../../components/formElements/InputInfo';
 import type { ChangeInputType } from '../../../types/types';
 import { allowedExtensions, maxFiles } from '../../../utils/utils';
