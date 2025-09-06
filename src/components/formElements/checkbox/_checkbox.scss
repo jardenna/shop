@@ -21,17 +21,22 @@ input[type='checkbox'] {
   min-height: auto;
   width: rem(24px);
   height: rem(24px);
-  border: 2px solid black;
+  border: 2px solid $color-gray-60;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   padding-bottom: 5px;
 
+  &:checked {
+    background-color: $color-gray-80;
+    border-color: $color-gray-80;
+  }
+
   &::before {
     content: '';
-    border-bottom: 3px solid green;
-    border-right: 3px solid green;
+    border-bottom: 3px solid $color-white;
+    border-right: 3px solid $color-white;
     width: 6px;
     height: 12px;
     transform: scale(0) rotate(45deg);
