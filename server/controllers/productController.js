@@ -214,16 +214,17 @@ const getProducts = asyncHandler(async (req, res) => {
   const subCategoryId = req.query.subCategoryId;
   const mainCategory = req.query.mainCategory;
 
-  const matchStage = [];
+  // --- Build category/subcategory match stage for joins ---
+  const categoryMatchStage = [];
 
   if (subCategoryId) {
-    matchStage.push({
+    categoryMatchStage.push({
       'subCategoryData._id': new mongoose.Types.ObjectId(String(subCategoryId)),
     });
   }
 
   if (mainCategory) {
-    matchStage.push({
+    categoryMatchStage.push({
       'categoryData.categoryName': {
         $regex: `^${mainCategory}$`,
         $options: 'i',
@@ -231,7 +232,8 @@ const getProducts = asyncHandler(async (req, res) => {
     });
   }
 
-  const basePipeline = [
+  // --- Meta pipeline (unfiltered for product filters) ---
+  const metaPipeline = [
     {
       $lookup: {
         from: 'subcategories',
@@ -250,8 +252,6 @@ const getProducts = asyncHandler(async (req, res) => {
       },
     },
     { $unwind: '$categoryData' },
-
-    // Only return products where both category and subcategory are Published
     {
       $match: {
         'subCategoryData.categoryStatus': 'Published',
@@ -260,35 +260,93 @@ const getProducts = asyncHandler(async (req, res) => {
     },
   ];
 
-  // Add filters from filterProductsMiddleware (colors, price, productName, etc.)
-  const combinedMatch = {};
+  if (categoryMatchStage.length > 0) {
+    metaPipeline.push({ $match: { $and: categoryMatchStage } });
+  }
 
+  metaPipeline.push({
+    $group: {
+      _id: null,
+      brands: { $addToSet: '$brand' },
+      sizes: { $addToSet: '$sizes' },
+    },
+  });
+
+  metaPipeline.push({ $project: { _id: 0, brands: 1, sizes: 1 } });
+
+  const metaResult = await Product.aggregate(metaPipeline);
+
+  // --- Flatten & sort meta ---
+  const availableSizesRaw = metaResult[0]?.sizes?.flat() || [];
+  const uniqueSizes = [...new Set(availableSizesRaw)];
+  const numericSizes = [];
+  const nonNumericSizes = [];
+  uniqueSizes.forEach((s) => {
+    if (!isNaN(s)) numericSizes.push(Number(s));
+    else nonNumericSizes.push(s);
+  });
+  numericSizes.sort((a, b) => a - b);
+  const availableSizes = [...numericSizes.map(String), ...nonNumericSizes];
+
+  const availableBrandsRaw = metaResult[0]?.brands || [];
+  const availableBrands = [...new Set(availableBrandsRaw)].sort((a, b) =>
+    a.localeCompare(b, undefined, { sensitivity: 'base' }),
+  );
+
+  // --- Product pipeline (filtered by query params) ---
+  const combinedMatch = {};
   if (req.filter && Object.keys(req.filter).length > 0) {
     Object.assign(combinedMatch, req.filter);
   }
 
-  // Combine matchStage (joined fields) with combinedMatch
-  if (matchStage.length > 0) {
+  if (categoryMatchStage.length > 0) {
     if (Object.keys(combinedMatch).length > 0) {
-      combinedMatch.$and = matchStage;
+      combinedMatch.$and = categoryMatchStage;
     } else {
-      Object.assign(combinedMatch, { $and: matchStage });
+      Object.assign(combinedMatch, { $and: categoryMatchStage });
     }
   }
 
-  // Push combined match to pipeline
+  const productPipeline = [
+    {
+      $lookup: {
+        from: 'subcategories',
+        localField: 'subCategory',
+        foreignField: '_id',
+        as: 'subCategoryData',
+      },
+    },
+    { $unwind: '$subCategoryData' },
+    {
+      $lookup: {
+        from: 'categories',
+        localField: 'subCategoryData.category',
+        foreignField: '_id',
+        as: 'categoryData',
+      },
+    },
+    { $unwind: '$categoryData' },
+    {
+      $match: {
+        'subCategoryData.categoryStatus': 'Published',
+        'categoryData.categoryStatus': 'Published',
+      },
+    },
+  ];
+
   if (Object.keys(combinedMatch).length > 0) {
-    basePipeline.push({ $match: combinedMatch });
+    productPipeline.push({ $match: combinedMatch });
   }
 
-  // Count pipeline
-  const countPipeline = [...basePipeline, { $count: 'total' }];
-  const countResult = await Product.aggregate(countPipeline);
+  // Count total filtered products
+  const countResult = await Product.aggregate([
+    ...productPipeline,
+    { $count: 'total' },
+  ]);
   const count = countResult[0]?.total || 0;
 
-  // Paginated results
-  const paginatedPipeline = [
-    ...basePipeline,
+  // Fetch paginated filtered products
+  productPipeline.push(
     { $sort: { createdAt: -1 } },
     { $skip: pageSize * (page - 1) },
     { $limit: pageSize },
@@ -306,55 +364,14 @@ const getProducts = asyncHandler(async (req, res) => {
         subCategoryData: 0,
         categoryData: 0,
         __v: 0,
-        subCategory: 0, // hide original reference if not needed
+        subCategory: 0,
       },
     },
-  ];
-
-  const products = await Product.aggregate(paginatedPipeline);
-
-  // Extra aggregation for unique sizes & brands
-  const metaPipeline = [
-    ...basePipeline,
-    {
-      $group: {
-        _id: null,
-        brands: { $addToSet: '$brand' }, // assumes brand field
-        sizes: { $addToSet: '$sizes' }, // assumes sizes is array
-      },
-    },
-    { $project: { _id: 0, brands: 1, sizes: 1 } },
-  ];
-
-  const metaResult = await Product.aggregate(metaPipeline);
-
-  // Flatten & unique sizes
-  const availableSizesRaw = metaResult[0]?.sizes?.flat() || [];
-  const availableSizesSet = [...new Set(availableSizesRaw)];
-
-  // Sort sizes numerically, Onesize last
-  function sortSizes(sizes) {
-    const numeric = [];
-    const nonNumeric = [];
-
-    sizes.forEach((s) => {
-      if (!isNaN(s)) numeric.push(Number(s));
-      else nonNumeric.push(s);
-    });
-
-    numeric.sort((a, b) => a - b);
-    return [...numeric.map(String), ...nonNumeric];
-  }
-
-  const availableSizes = sortSizes(availableSizesSet);
-
-  // Unique & alphabetically sorted brands
-  const availableBrandsRaw = metaResult[0]?.brands || [];
-  const availableBrandsSet = [...new Set(availableBrandsRaw)];
-  const availableBrands = availableBrandsSet.sort((a, b) =>
-    a.localeCompare(b, undefined, { sensitivity: 'base' }),
   );
 
+  const products = await Product.aggregate(productPipeline);
+
+  // --- Respond ---
   res.status(200).json({
     success: true,
     products,
