@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { useParams, useSearchParams } from 'react-router';
+import { useParams } from 'react-router';
 import { Size } from '../app/api/apiTypes/sharedApiTypes';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
@@ -29,7 +29,6 @@ export type FilterValues = {
 };
 
 const CollectionPage = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
   const { language } = useLanguage();
   const { category, categoryId } = useParams();
   const initialState: FilterValues = {
@@ -58,33 +57,28 @@ const CollectionPage = () => {
 
   const handleFilterProducts = (event: ChangeInputType) => {
     const { name, value, checked } = event.target as HTMLInputElement;
-    const newParams = new URLSearchParams(searchParams);
 
     setFilterValues(() => {
       const currentValues = filterValues[name];
       if (checked) {
         const updatedValues = [...currentValues, value];
-        newParams.set(name, JSON.stringify(updatedValues));
         return {
           ...filterValues,
           [name]: updatedValues,
         };
-      } else {
-        newParams.delete(name);
       }
       return {
         ...filterValues,
         [name]: currentValues.filter((item) => item !== value),
       };
     });
-
-    setSearchParams(Object.fromEntries(newParams.entries()));
   };
 
   const [productView, setProuctView] = useLocalStorage(
     localStorageKeys.productView,
     'grid',
   );
+  console.log(filterValues);
 
   const productViewIconList = [
     {
