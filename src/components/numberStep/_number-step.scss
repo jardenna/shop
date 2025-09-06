@@ -1,0 +1,40 @@
+@use '../../../scss/globals' as *;
+
+.number-step {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 8px 20px;
+  border: 1px solid $color-border;
+  gap: 20px;
+
+  .number-step-container {
+    display: flex;
+    max-width: rem(140px);
+    gap: 2px;
+  }
+
+  .input-container {
+    margin-bottom: 0;
+    flex-direction: row;
+
+    input {
+      text-align: center;
+      border: 0;
+
+      &:focus-visible {
+        background-color: transparent;
+      }
+    }
+  }
+
+  .btn-primary {
+    min-width: auto;
+    padding: 12px;
+
+    svg {
+      max-width: rem(12px);
+    }
+  }
+}
