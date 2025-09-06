@@ -37,6 +37,7 @@ $animation-distance: 500px;
 }
 
 .main-header {
+  min-height: $header-height;
   display: flex;
   width: 100%;
   align-items: center;
