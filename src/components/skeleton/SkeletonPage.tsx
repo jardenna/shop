@@ -1,4 +1,5 @@
-import Skeleton, { PickedSkeletonTypes } from './Skeleton';
+import type { PickedSkeletonTypes } from './Skeleton';
+import Skeleton from './Skeleton';
 import SkeletonHeader from './SkeletonHeader';
 
 const SkeletonPage = ({ count = 2, height = '' }: PickedSkeletonTypes) => (

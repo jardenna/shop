@@ -1,6 +1,7 @@
 import type { ChangeInputType } from '../types/types';
 import Input from './formElements/Input';
-import StatusInputs, { StatusInputsProps } from './StatusInputs';
+import type { StatusInputsProps } from './StatusInputs';
+import StatusInputs from './StatusInputs';
 
 type SharedCategoryInputsProps = StatusInputsProps & {
   categoryNameErrorText: string;

@@ -2,9 +2,11 @@ import { useState } from 'react';
 import useLanguage from '../../../features/language/useLanguage';
 import { IconName } from '../../../types/enums';
 import IconBtn from '../../IconBtn';
-import Input, { InputProps } from '../Input';
+import type { InputProps } from '../Input';
+import Input from '../Input';
 import './_password-input.scss';
-import PasswordPopupList, { PasswordRulesProps } from './PasswordPopupList';
+import type { PasswordRulesProps } from './PasswordPopupList';
+import PasswordPopupList from './PasswordPopupList';
 
 type OmittedInputProps = Omit<
   InputProps,

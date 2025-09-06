@@ -1,4 +1,5 @@
-import Skeleton, { SkeletonProps } from './Skeleton';
+import type { SkeletonProps } from './Skeleton';
+import Skeleton from './Skeleton';
 
 const SkeletonList = ({
   count = 2,

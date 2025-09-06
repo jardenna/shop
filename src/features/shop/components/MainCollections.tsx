@@ -2,9 +2,8 @@ import { ShopPath } from '../../../layout/nav/enums';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import { useGetPublishedCategoriesQuery } from '../../categories/categoriyApiSlice';
 import useLanguage from '../../language/useLanguage';
-import MainCollectionsItem, {
-  MainCollectionsItemProps,
-} from './MainCollectionsItem';
+import type { MainCollectionsItemProps } from './MainCollectionsItem';
+import MainCollectionsItem from './MainCollectionsItem';
 
 type MainCollectionsProps = {
   categoryOrder: string[];
