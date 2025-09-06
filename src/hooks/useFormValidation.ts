@@ -252,7 +252,7 @@ function useFormValidation<T extends KeyValuePair<unknown>>({
     filesData,
     previewData,
     removePreviewImage,
-    handleFileChange,
+    onFileChange: handleFileChange,
   };
 }
 

@@ -142,7 +142,7 @@ const ProductForm = ({
     filesData,
     previewData,
     removePreviewImage,
-    handleFileChange,
+    onFileChange,
   } = useFormValidation({
     initialState,
     validate: validateProduct,
@@ -256,7 +256,7 @@ const ProductForm = ({
             <ImageUpload
               images={images}
               ariaLabel={`${language.delete} ${language.image}`}
-              onChange={handleFileChange}
+              onChange={onFileChange}
               previewData={previewData}
               onRemovePreviewImage={(name: string) => {
                 removePreviewImage(name);
