@@ -2,7 +2,7 @@ import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import Checkbox from '../../../components/formElements/checkbox/Checkbox';
 import Icon from '../../../components/icons/Icon';
 import TogglePanel from '../../../components/togglePanel/TogglePanel';
-import { FilterValues } from '../../../pages/CollectionPage';
+import { FilterValuesType } from '../../../hooks/userFilterParams';
 import { IconName } from '../../../types/enums';
 import { ChangeInputType } from '../../../types/types';
 import useLanguage from '../../language/useLanguage';
@@ -10,7 +10,7 @@ import useLanguage from '../../language/useLanguage';
 type FilterPanelProps = {
   availableBrands: string[];
   availableSizes: Size[];
-  values: FilterValues;
+  values: FilterValuesType;
   onChange: (event: ChangeInputType) => void;
 };
 const FilterPanel = ({
