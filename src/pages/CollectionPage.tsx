@@ -15,7 +15,8 @@ import ProductCardListContent from '../features/shop/components/ProductCardListC
 import useSubMenu from '../features/shop/hooks/useSubMenu';
 import { useGetProductsQuery } from '../features/shop/shopApiSlice';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
-import userFilterParams, { FilterValuesType } from '../hooks/userFilterParams';
+import type { FilterValuesType } from '../hooks/userFilterParams';
+import userFilterParams from '../hooks/userFilterParams';
 import MetaTags from '../layout/nav/MetaTags';
 import { IconName } from '../types/enums';
 import './CollectionPage.styles.scss';
