@@ -22,6 +22,19 @@ import './CollectionPage.styles.scss';
 const CollectionPage = () => {
   const { language } = useLanguage();
   const { category, categoryId } = useParams();
+  // const [searchParams, setSearchParams] = useSearchParams();
+
+  // const handleFilter = (name: string, value: string) => {
+  //   const newParams = new URLSearchParams(searchParams.toString());
+
+  //   if (value) {
+  //     newParams.set(name, value);
+  //   } else {
+  //     newParams.delete(name);
+  //   }
+
+  //   setSearchParams(Object.fromEntries(newParams.entries()));
+  // };
 
   // Redux hooks
   const {
@@ -30,6 +43,7 @@ const CollectionPage = () => {
     refetch,
   } = useGetProductsQuery({
     pageSize: '100',
+    colors: 'silver, black',
     mainCategory: category,
     subCategoryId: categoryId || '',
   });
