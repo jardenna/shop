@@ -1,5 +1,4 @@
 import type {
-  ClothingSizes,
   KidsShoesSizes,
   MainCategoryNames,
   MenShoesSizes,
@@ -8,7 +7,7 @@ import type {
   WomenShoesSizes,
 } from '../app/api/apiTypes/sharedApiTypes';
 
-const clothingSizes: ClothingSizes[] = ['S', 'M', 'L', 'XL'];
+const clothingSizes: Size[] = ['S', 'M', 'L', 'XL'];
 export const oneSize = 'Onesize';
 const womenShoeSizes: WomenShoesSizes[] = [
   '36',
@@ -45,6 +44,21 @@ const kidsShoesSizes: KidsShoesSizes[] = [
   '34',
   'Onesize',
 ];
+
+// Sort a dynamic array of sizes in a logical order
+function sortSizesDynamic(sizes: Size[]) {
+  const numericSizes = sizes
+    .filter((s) => /^\d+$/.test(s))
+    .sort((a, b) => Number(a) - Number(b));
+  const letterSizes = sizes
+    .filter((s) => /^[SMLX]+$/.test(s))
+    .sort((a, b) => clothingSizes.indexOf(a) - clothingSizes.indexOf(b));
+  const otherSizes = sizes.filter(
+    (s) => !numericSizes.includes(s) && !letterSizes.includes(s),
+  );
+
+  return [...numericSizes, ...letterSizes, ...otherSizes];
+}
 
 // Returns the allowed sizes based on the main and sub category
 const getAllowedSizesForCategory = ({
@@ -117,5 +131,6 @@ export {
   getDisplaySizes,
   kidsShoesSizes,
   menShoesSizes,
+  sortSizesDynamic,
   womenShoeSizes,
 };

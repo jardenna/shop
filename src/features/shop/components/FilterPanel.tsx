@@ -5,6 +5,7 @@ import TogglePanel from '../../../components/togglePanel/TogglePanel';
 import { FilterValuesType } from '../../../hooks/useFilterParams';
 import { IconName } from '../../../types/enums';
 import type { ChangeInputType } from '../../../types/types';
+import { sortSizesDynamic } from '../../../utils/sizeUtils';
 import useLanguage from '../../language/useLanguage';
 
 type FilterPanelProps = {
@@ -25,11 +26,7 @@ const FilterPanel = ({
   //   borderColor: variables.colorIconBorder,
   // });
 
-  const clothingSizes = ['S', 'M', 'L', 'XL', 'Onesize'];
-  const sortedSizes = [...availableSizes].sort(
-    (a, b) => clothingSizes.indexOf(a) - clothingSizes.indexOf(b),
-  );
-
+  const sortedColorList = sortSizesDynamic(availableSizes);
   return (
     <TogglePanel
       ariaControls="filter-products"
@@ -43,7 +40,7 @@ const FilterPanel = ({
       }
     >
       <Checkbox
-        checkBoxList={sortedSizes}
+        checkBoxList={sortedColorList}
         name="sizes"
         onChange={onChange}
         values={values.sizes}
