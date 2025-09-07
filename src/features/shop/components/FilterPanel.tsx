@@ -25,6 +25,11 @@ const FilterPanel = ({
   //   borderColor: variables.colorIconBorder,
   // });
 
+  const clothingSizes = ['S', 'M', 'L', 'XL', 'Onesize'];
+  const sortedSizes = [...availableSizes].sort(
+    (a, b) => clothingSizes.indexOf(a) - clothingSizes.indexOf(b),
+  );
+
   return (
     <TogglePanel
       ariaControls="filter-products"
@@ -38,7 +43,7 @@ const FilterPanel = ({
       }
     >
       <Checkbox
-        checkBoxList={availableSizes}
+        checkBoxList={sortedSizes}
         name="sizes"
         onChange={onChange}
         values={values.sizes}

@@ -272,26 +272,6 @@ const getProducts = asyncHandler(async (req, res) => {
 
   const metaResult = await Product.aggregate(metaPipeline);
 
-  const sizeOrders = {
-    clothes: ['S', 'M', 'L', 'XL', 'Onesize'],
-    womenShoes: ['36', '37', '38', '39', '40', '41', '42', 'Onesize'],
-    menShoes: ['40', '41', '42', '43', '44', '45', '46', 'Onesize'],
-    kidsShoes: [
-      '24',
-      '25',
-      '26',
-      '27',
-      '28',
-      '29',
-      '30',
-      '31',
-      '32',
-      '33',
-      '34',
-      'Onesize',
-    ],
-  };
-
   // Fallback: numeric first, then alphabetical
   const defaultSort = (sizes) => {
     const nums = [];
@@ -303,19 +283,8 @@ const getProducts = asyncHandler(async (req, res) => {
     return [...nums.map(String), ...nonNums.sort()];
   };
 
-  // Apply correct sort
-  function sortSizes(category, sizes) {
-    const order = sizeOrders[category];
-    if (!order) return defaultSort(sizes);
-    return order.filter((s) => sizes.includes(s));
-  }
-
-  // --- Inside your code ---
   const availableSizesRaw = metaResult[0]?.sizes?.flat() || [];
-  const uniqueSizes = [...new Set(availableSizesRaw)];
-
-  // Use mainCategory (or subCategoryName if you prefer)
-  const availableSizes = sortSizes(mainCategory, uniqueSizes);
+  const availableSizes = [...new Set(availableSizesRaw)];
 
   const availableBrandsRaw = metaResult[0]?.brands || [];
   const availableBrands = [...new Set(availableBrandsRaw)].sort((a, b) =>
