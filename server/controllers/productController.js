@@ -272,16 +272,50 @@ const getProducts = asyncHandler(async (req, res) => {
 
   const metaResult = await Product.aggregate(metaPipeline);
 
+  const sizeOrders = {
+    clothes: ['S', 'M', 'L', 'XL', 'Onesize'],
+    womenShoes: ['36', '37', '38', '39', '40', '41', '42', 'Onesize'],
+    menShoes: ['40', '41', '42', '43', '44', '45', '46', 'Onesize'],
+    kidsShoes: [
+      '24',
+      '25',
+      '26',
+      '27',
+      '28',
+      '29',
+      '30',
+      '31',
+      '32',
+      '33',
+      '34',
+      'Onesize',
+    ],
+  };
+
+  // Fallback: numeric first, then alphabetical
+  const defaultSort = (sizes) => {
+    const nums = [];
+    const nonNums = [];
+    sizes.forEach((s) =>
+      isNaN(Number(s)) ? nonNums.push(s) : nums.push(Number(s)),
+    );
+    nums.sort((a, b) => a - b);
+    return [...nums.map(String), ...nonNums.sort()];
+  };
+
+  // Apply correct sort
+  function sortSizes(category, sizes) {
+    const order = sizeOrders[category];
+    if (!order) return defaultSort(sizes);
+    return order.filter((s) => sizes.includes(s));
+  }
+
+  // --- Inside your code ---
   const availableSizesRaw = metaResult[0]?.sizes?.flat() || [];
   const uniqueSizes = [...new Set(availableSizesRaw)];
-  const numericSizes = [];
-  const nonNumericSizes = [];
-  uniqueSizes.forEach((s) => {
-    if (!isNaN(s)) numericSizes.push(Number(s));
-    else nonNumericSizes.push(s);
-  });
-  numericSizes.sort((a, b) => a - b);
-  const availableSizes = [...numericSizes.map(String), ...nonNumericSizes];
+
+  // Use mainCategory (or subCategoryName if you prefer)
+  const availableSizes = sortSizes(mainCategory, uniqueSizes);
 
   const availableBrandsRaw = metaResult[0]?.brands || [];
   const availableBrands = [...new Set(availableBrandsRaw)].sort((a, b) =>
