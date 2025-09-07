@@ -30,10 +30,7 @@ const CollectionPage = () => {
     brand: [],
   };
 
-  const { filterValues, onFilterChange } = useFilterParams(
-    initialState,
-    categoryId || '',
-  );
+  const { filterValues, onFilterChange } = useFilterParams(initialState);
 
   // Redux hooks
   const {

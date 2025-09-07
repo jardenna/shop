@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useSearchParams } from 'react-router';
+import { useLocation, useSearchParams } from 'react-router';
 import type { ChangeInputType } from '../types/types';
 
 export type FilterValuesType = {
@@ -8,24 +8,31 @@ export type FilterValuesType = {
   sizes: string[];
 };
 
-const useFilterParams = (
-  initialFilters: FilterValuesType,
-  categoryId: string,
-) => {
+const useFilterParams = (initialFilters: FilterValuesType) => {
   const [filterValues, setFilterValues] =
     useState<FilterValuesType>(initialFilters);
   const [searchParams, setSearchParams] = useSearchParams();
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const location = useLocation();
+  const prevPathRef = useRef(location.pathname);
 
-  // Reset filters on categoryId change
+  // Reset filters on categoryId change or when query params are removed
   useEffect(() => {
-    setFilterValues({
-      brand: [],
-      colors: [],
-      sizes: [],
-    });
-    setSearchParams({});
-  }, [categoryId]);
+    const paramsKeys = Array.from(searchParams.keys());
+    const noParamsLeft = Object.keys(initialFilters).every(
+      (key) => !paramsKeys.includes(key),
+    );
+
+    // Reset if category changed or all filter params are gone
+    if (prevPathRef.current !== location.pathname || noParamsLeft) {
+      setFilterValues({
+        brand: [],
+        colors: [],
+        sizes: [],
+      });
+      prevPathRef.current = location.pathname;
+    }
+  }, [location.pathname, searchParams]);
 
   // Sync initial filters from URL on mount
   useEffect(() => {
