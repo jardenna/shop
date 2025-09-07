@@ -1,7 +1,7 @@
 import type { FileName } from '../../../app/api/apiTypes/adminApiTypes';
 import useLanguage from '../../../features/language/useLanguage';
 import { IconName } from '../../../types/enums';
-import { ChangePureInputType } from '../../../types/types';
+import { ChangeInputType } from '../../../types/types';
 import Icon from '../../icons/Icon';
 import './_file-input.scss';
 import { PreviewProps } from './Preview';
@@ -12,7 +12,7 @@ type FileInputProps = PreviewProps & {
   errorText?: string;
   multiple?: boolean;
   required?: boolean;
-  onChange: (event: ChangePureInputType) => void;
+  onChange: (event: ChangeInputType) => void;
 };
 
 const FileInput = ({

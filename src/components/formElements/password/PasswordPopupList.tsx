@@ -1,40 +1,34 @@
 import useLanguage from '../../../features/language/useLanguage';
+import passwordRules from '../../../utils/passwordRules';
 import ProgressBar from '../../progressbar/ProgressBar';
 import PasswordPopupItem from './PasswordPopupItem';
 
-export type PasswordRulesProps = {
-  isValid: boolean;
-  text: string;
-};
-
 type PasswordPopupListProps = {
-  inputValue: string;
-  passwordRules: (value: string) => PasswordRulesProps[];
+  value: string;
 };
 
-const PasswordPopupList = ({
-  passwordRules,
-  inputValue,
-}: PasswordPopupListProps) => {
+const PasswordPopupList = ({ value }: PasswordPopupListProps) => {
   const { language } = useLanguage();
-  const passwordRulesList = passwordRules(inputValue);
-
+  const passwordRulesList = passwordRules(value);
   const validCount = passwordRulesList.filter((item) => item.isValid).length;
   const progressPercentage = (validCount / passwordRulesList.length) * 100;
+  const hiddenPasswordRules = passwordRulesList.every((item) => item.isValid);
 
   return (
-    <div className="password-popup-container">
-      <ul className="popup-list">
-        {passwordRules(inputValue).map((rule) => (
-          <PasswordPopupItem
-            key={rule.text}
-            isValid={rule.isValid}
-            text={language[rule.text]}
-          />
-        ))}
-      </ul>
-      <ProgressBar progressPercentage={progressPercentage} />
-    </div>
+    !hiddenPasswordRules && (
+      <div className="password-popup-container">
+        <ul className="popup-list">
+          {passwordRulesList.map((rule) => (
+            <PasswordPopupItem
+              key={rule.text}
+              isValid={rule.isValid}
+              text={language[rule.text]}
+            />
+          ))}
+        </ul>
+        <ProgressBar progressPercentage={progressPercentage} />
+      </div>
+    )
   );
 };
 

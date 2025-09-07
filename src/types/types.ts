@@ -3,17 +3,8 @@ import { ChangeEvent, FormEvent, MouseEvent, RefObject } from 'react';
 export type SortOrderType = 'asc' | 'desc';
 
 export type ButtonEventType = MouseEvent<HTMLButtonElement>;
-export type ChangeInputType = ChangeEvent<
-  HTMLInputElement | HTMLTextAreaElement
->;
-
-export type ChangePureInputType = ChangeEvent<HTMLInputElement>;
-
-export type OptionType<T = string> = {
-  label: string;
-  value: T;
-};
-
+export type ChangeInputType = ChangeEvent<HTMLInputElement>;
+export type ChangeTextAreaType = ChangeEvent<HTMLTextAreaElement>;
 export type BlurEventType = { target: { name: string } };
 export type FormEventType = FormEvent<HTMLFormElement>;
 export type refElementType = RefObject<HTMLElement | null>;
@@ -21,6 +12,11 @@ export type refDivType = RefObject<HTMLDivElement | null>;
 export type refInputType = RefObject<HTMLInputElement | null>;
 export type refTextareaType = RefObject<HTMLTextAreaElement | null>;
 export type refFormType = RefObject<HTMLFormElement | null>;
+
+export type OptionType<T = string> = {
+  label: string;
+  value: T;
+};
 
 export type AriaLabelData = {
   ariaLabels: string[];

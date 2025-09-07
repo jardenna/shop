@@ -54,7 +54,7 @@ const useFilterParams = (initialFilters: FilterValuesType) => {
   }, [filterValues]);
 
   const handleFilterChange = (event: ChangeInputType) => {
-    const { name, value, checked } = event.target as HTMLInputElement;
+    const { name, value, checked } = event.target;
     const current = filterValues[name as keyof FilterValuesType];
     const updated = checked
       ? [...current, value]
@@ -66,7 +66,7 @@ const useFilterParams = (initialFilters: FilterValuesType) => {
     });
   };
 
-  return { filterValues, handleFilterChange };
+  return { filterValues, onFilterChange: handleFilterChange };
 };
 
 export default useFilterParams;

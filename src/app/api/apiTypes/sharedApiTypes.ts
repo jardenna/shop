@@ -1,4 +1,4 @@
-import { Status } from './adminApiTypes';
+import type { Status } from './adminApiTypes';
 
 export type CurrencyResponse = {
   data: Record<string, { value: number }>;

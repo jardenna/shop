@@ -3,7 +3,8 @@ import IconBtn from '../../components/IconBtn';
 import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import './_nav.scss';
-import Nav, { NavItemsProps } from './Nav';
+import type { NavItemsProps } from './Nav';
+import Nav from './Nav';
 import NavUser from './NavUser';
 
 type NavContainerProps = {

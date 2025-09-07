@@ -4,7 +4,8 @@ import type { OptionGroupHeading } from '../../types/types';
 import { getColorOptions } from '../../utils/colorUtils';
 import { sliceAndCountHidden } from '../../utils/utils';
 import ProductList from './ProductList';
-import ProductListItem, { ProductLabelVariant } from './ProductListItem';
+import type { ProductLabelVariant } from './ProductListItem';
+import ProductListItem from './ProductListItem';
 
 type ColorListProps = {
   colors: string[];

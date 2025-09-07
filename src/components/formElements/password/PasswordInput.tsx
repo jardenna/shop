@@ -2,9 +2,10 @@ import { useState } from 'react';
 import useLanguage from '../../../features/language/useLanguage';
 import { IconName } from '../../../types/enums';
 import IconBtn from '../../IconBtn';
-import Input, { InputProps } from '../Input';
+import type { InputProps } from '../Input';
+import Input from '../Input';
 import './_password-input.scss';
-import PasswordPopupList, { PasswordRulesProps } from './PasswordPopupList';
+import PasswordPopupList from './PasswordPopupList';
 
 type OmittedInputProps = Omit<
   InputProps,
@@ -12,8 +13,7 @@ type OmittedInputProps = Omit<
 >;
 
 type PasswordInputProps = OmittedInputProps & {
-  isFocused?: boolean;
-  passwordRules?: (value: string) => PasswordRulesProps[];
+  showPopUpRules?: boolean;
 };
 
 const PasswordInput = ({
@@ -29,8 +29,7 @@ const PasswordInput = ({
   autoComplete,
   autoFocus,
   required,
-  passwordRules,
-  isFocused,
+  showPopUpRules,
   onFocus,
 }: PasswordInputProps) => {
   const { language } = useLanguage();
@@ -42,12 +41,7 @@ const PasswordInput = ({
 
   return (
     <div className="password-input-container">
-      {passwordRules && isFocused && (
-        <PasswordPopupList
-          passwordRules={passwordRules}
-          inputValue={String(value)}
-        />
-      )}
+      {showPopUpRules && <PasswordPopupList value={String(value)} />}
       <Input
         id={id}
         labelText={labelText}

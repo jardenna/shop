@@ -11,7 +11,6 @@ import { useCreateAccountMutation } from '../features/auth/authApiSlice';
 import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
 import { ShopPath } from '../layout/nav/enums';
-import passwordRules from '../utils/passwordRules';
 
 export type CreateAccountProps = {
   navigateTo: string;
@@ -76,8 +75,7 @@ const CreateAccount = ({ navigateTo, currentUser }: CreateAccountProps) => {
       onChange={onChange}
       errors={errors}
       onBlur={onBlur}
-      passwordRules={passwordRules}
-      isFocused={isFocused}
+      showPopUpRules={isFocused}
       onFocus={onFocus}
       navigateTo={ShopPath.Login}
       navigateToText={language.loginHere}

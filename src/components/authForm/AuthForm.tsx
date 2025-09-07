@@ -15,7 +15,6 @@ import FieldSet from '../fieldset/FieldSet';
 import Form from '../form/Form';
 import Input from '../formElements/Input';
 import PasswordInput from '../formElements/password/PasswordInput';
-import type { PasswordRulesProps } from '../formElements/password/PasswordPopupList';
 import './_auth-form.scss';
 
 type UserFields = {
@@ -33,12 +32,11 @@ type AuthFormProps = CreateAccountProps & {
   navigateToText: string;
   submitBtnLabel: string;
   values: UserFields;
-  isFocused?: boolean;
+  showPopUpRules?: boolean;
   onBlur: (event: BlurEventType) => void;
   onChange: (event: ChangeInputType) => void;
   onFocus?: () => void;
   onSubmit: (event: FormEventType) => void;
-  passwordRules?: (value: string) => PasswordRulesProps[];
 };
 
 const AuthForm = ({
@@ -51,8 +49,7 @@ const AuthForm = ({
   legendText,
   errors,
   onBlur,
-  passwordRules,
-  isFocused,
+  showPopUpRules,
   onFocus,
   navigateToText,
   currentUser,
@@ -98,9 +95,8 @@ const AuthForm = ({
           labelText={language.password}
           onChange={onChange}
           required
-          passwordRules={passwordRules}
           onFocus={onFocus}
-          isFocused={isFocused}
+          showPopUpRules={showPopUpRules}
           onBlur={onBlur}
           errorText={language[errors.password]}
         />

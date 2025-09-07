@@ -1,10 +1,11 @@
 import { RefObject } from 'react';
-import Select, {
+import type {
   GroupBase,
   MultiValue,
   OptionsOrGroups,
   SingleValue,
 } from 'react-select';
+import Select from 'react-select';
 import useLanguage from '../../features/language/useLanguage';
 import type { OptionType } from '../../types/types';
 import FormLabel from '../formElements/FormLabel';

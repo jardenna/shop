@@ -14,8 +14,9 @@ import ProductCardGridContent from '../features/shop/components/ProductCardGridC
 import ProductCardListContent from '../features/shop/components/ProductCardListContent';
 import useSubMenu from '../features/shop/hooks/useSubMenu';
 import { useGetProductsQuery } from '../features/shop/shopApiSlice';
+import type { FilterValuesType } from '../hooks/useFilterParams';
+import useFilterParams from '../hooks/useFilterParams';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
-import userFilterParams, { FilterValuesType } from '../hooks/userFilterParams';
 import MetaTags from '../layout/nav/MetaTags';
 import { IconName } from '../types/enums';
 import './CollectionPage.styles.scss';
@@ -29,7 +30,7 @@ const CollectionPage = () => {
     brand: [],
   };
 
-  const { filterValues, handleFilterChange } = userFilterParams(initialState);
+  const { filterValues, onFilterChange } = useFilterParams(initialState);
 
   // Redux hooks
   const {
@@ -107,7 +108,7 @@ const CollectionPage = () => {
                       {products.productCount} {language.itemLabel}
                     </span>
                     <FilterPanel
-                      onChange={handleFilterChange}
+                      onChange={onFilterChange}
                       values={filterValues}
                       availableBrands={products.availableBrands}
                       availableSizes={products.availableSizes}

@@ -1,8 +1,7 @@
 import type { Roles } from '../../app/api/apiTypes/adminApiTypes';
 import IconBtn from '../../components/IconBtn';
-import EditTableInput, {
-  BaseEditTableInput,
-} from '../../components/sortTable/EditTableInput';
+import type { BaseEditTableInput } from '../../components/sortTable/EditTableInput';
+import EditTableInput from '../../components/sortTable/EditTableInput';
 import EditTableText from '../../components/sortTable/EditTableText';
 import { IconName } from '../../types/enums';
 import { getlowerCaseFirstLetter } from '../../utils/utils';

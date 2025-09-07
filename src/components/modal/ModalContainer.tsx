@@ -3,7 +3,8 @@ import { useAppDispatch } from '../../app/hooks';
 import { toggleModal } from '../../features/modalSlice';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
-import Modal, { ModalProps } from './Modal';
+import type { ModalProps } from './Modal';
+import Modal from './Modal';
 
 export type TriggerModalProps = {
   triggerModalBtnContent: ReactNode | string;
