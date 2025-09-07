@@ -8,11 +8,24 @@ export type FilterValuesType = {
   sizes: string[];
 };
 
-const useFilterParams = (initialFilters: FilterValuesType) => {
+const useFilterParams = (
+  initialFilters: FilterValuesType,
+  categoryId: string,
+) => {
   const [filterValues, setFilterValues] =
     useState<FilterValuesType>(initialFilters);
   const [searchParams, setSearchParams] = useSearchParams();
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Reset filters on categoryId change
+  useEffect(() => {
+    setFilterValues({
+      brand: [],
+      colors: [],
+      sizes: [],
+    });
+    setSearchParams({});
+  }, [categoryId]);
 
   // Sync initial filters from URL on mount
   useEffect(() => {
