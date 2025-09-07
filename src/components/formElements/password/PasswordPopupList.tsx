@@ -18,7 +18,7 @@ const PasswordPopupList = ({ value }: PasswordPopupListProps) => {
     !hiddenPasswordRules && (
       <div className="password-popup-container">
         <ul className="popup-list">
-          {passwordRules(value).map((rule) => (
+          {passwordRulesList.map((rule) => (
             <PasswordPopupItem
               key={rule.text}
               isValid={rule.isValid}
