@@ -5,7 +5,6 @@ import IconBtn from '../../IconBtn';
 import type { InputProps } from '../Input';
 import Input from '../Input';
 import './_password-input.scss';
-import type { PasswordRulesProps } from './PasswordPopupList';
 import PasswordPopupList from './PasswordPopupList';
 
 type OmittedInputProps = Omit<
@@ -15,7 +14,6 @@ type OmittedInputProps = Omit<
 
 type PasswordInputProps = OmittedInputProps & {
   isFocused?: boolean;
-  passwordRules?: (value: string) => PasswordRulesProps[];
 };
 
 const PasswordInput = ({
@@ -31,7 +29,6 @@ const PasswordInput = ({
   autoComplete,
   autoFocus,
   required,
-  passwordRules,
   isFocused,
   onFocus,
 }: PasswordInputProps) => {
@@ -44,12 +41,7 @@ const PasswordInput = ({
 
   return (
     <div className="password-input-container">
-      {passwordRules && isFocused && (
-        <PasswordPopupList
-          passwordRules={passwordRules}
-          inputValue={String(value)}
-        />
-      )}
+      {isFocused && <PasswordPopupList value={String(value)} />}
       <Input
         id={id}
         labelText={labelText}
