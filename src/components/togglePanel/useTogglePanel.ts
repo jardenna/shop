@@ -54,6 +54,7 @@ const useTogglePanel = ({
       prevPathname.current = location.pathname; // update ref
     }
   }, [location.pathname]);
+
   return {
     isPanelShown,
     onTogglePanel: handleTogglePanel,
