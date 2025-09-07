@@ -13,7 +13,7 @@ type OmittedInputProps = Omit<
 >;
 
 type PasswordInputProps = OmittedInputProps & {
-  isFocused?: boolean;
+  showPopUpRules?: boolean;
 };
 
 const PasswordInput = ({
@@ -29,7 +29,7 @@ const PasswordInput = ({
   autoComplete,
   autoFocus,
   required,
-  isFocused,
+  showPopUpRules,
   onFocus,
 }: PasswordInputProps) => {
   const { language } = useLanguage();
@@ -41,7 +41,7 @@ const PasswordInput = ({
 
   return (
     <div className="password-input-container">
-      {isFocused && <PasswordPopupList value={String(value)} />}
+      {showPopUpRules && <PasswordPopupList value={String(value)} />}
       <Input
         id={id}
         labelText={labelText}

@@ -32,7 +32,7 @@ type AuthFormProps = CreateAccountProps & {
   navigateToText: string;
   submitBtnLabel: string;
   values: UserFields;
-  isFocused?: boolean;
+  showPopUpRules?: boolean;
   onBlur: (event: BlurEventType) => void;
   onChange: (event: ChangeInputType) => void;
   onFocus?: () => void;
@@ -49,7 +49,7 @@ const AuthForm = ({
   legendText,
   errors,
   onBlur,
-  isFocused,
+  showPopUpRules,
   onFocus,
   navigateToText,
   currentUser,
@@ -96,7 +96,7 @@ const AuthForm = ({
           onChange={onChange}
           required
           onFocus={onFocus}
-          isFocused={isFocused}
+          showPopUpRules={showPopUpRules}
           onBlur={onBlur}
           errorText={language[errors.password]}
         />

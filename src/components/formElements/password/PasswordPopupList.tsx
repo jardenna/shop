@@ -12,11 +12,10 @@ const PasswordPopupList = ({ value }: PasswordPopupListProps) => {
   const passwordRulesList = passwordRules(value);
   const validCount = passwordRulesList.filter((item) => item.isValid).length;
   const progressPercentage = (validCount / passwordRulesList.length) * 100;
-
-  const showPopup = passwordRulesList.every((item) => item.isValid);
+  const hiddenPasswordRules = passwordRulesList.every((item) => item.isValid);
 
   return (
-    !showPopup && (
+    !hiddenPasswordRules && (
       <div className="password-popup-container">
         <ul className="popup-list">
           {passwordRules(value).map((rule) => (

@@ -75,7 +75,7 @@ const CreateAccount = ({ navigateTo, currentUser }: CreateAccountProps) => {
       onChange={onChange}
       errors={errors}
       onBlur={onBlur}
-      isFocused={isFocused}
+      showPopUpRules={isFocused}
       onFocus={onFocus}
       navigateTo={ShopPath.Login}
       navigateToText={language.loginHere}
