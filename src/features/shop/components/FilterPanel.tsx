@@ -35,34 +35,38 @@ const FilterPanel = ({
       </>
     }
   >
-    <Checkbox
-      checkBoxList={colors}
-      name="colors"
-      onChange={onChange}
-      values={values.colors}
-      language={language}
-      renderExtra={(checkbox) => (
-        <div
-          className="small-item"
-          style={{
-            backgroundColor: colorMap[checkbox],
-            borderColor: checkbox === 'white' ? variables.colorIconBorder : '',
-          }}
-        />
-      )}
-    />
-    <Checkbox
-      checkBoxList={availableSizes}
-      name="sizes"
-      onChange={onChange}
-      values={values.sizes}
-    />
-    <Checkbox
-      checkBoxList={availableBrands}
-      name="brand"
-      onChange={onChange}
-      values={values.brand}
-    />
+    <section>
+      <h2>{language.filter}</h2>
+      <Checkbox
+        checkBoxList={colors}
+        name="colors"
+        onChange={onChange}
+        values={values.colors}
+        language={language}
+        renderExtra={(checkbox) => (
+          <div
+            className="small-item"
+            style={{
+              backgroundColor: colorMap[checkbox],
+              borderColor:
+                checkbox === 'white' ? variables.colorIconBorder : '',
+            }}
+          />
+        )}
+      />
+      <Checkbox
+        checkBoxList={availableSizes}
+        name="sizes"
+        onChange={onChange}
+        values={values.sizes}
+      />
+      <Checkbox
+        checkBoxList={availableBrands}
+        name="brand"
+        onChange={onChange}
+        values={values.brand}
+      />
+    </section>
   </TogglePanel>
 );
 
