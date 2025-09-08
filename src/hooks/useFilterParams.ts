@@ -2,12 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router';
 import type { ChangeInputType } from '../types/types';
 
-// export type FilterValuesType = {
-//   brand: string[];
-//   colors: string[];
-//   sizes: string[];
-// };
-
 export type FilterValuesType = {
   [key: string]: string[];
 };
@@ -22,7 +16,6 @@ const useFilterParams = (initialFilters: FilterValuesType) => {
   const location = useLocation();
   const prevPathRef = useRef(location.pathname);
 
-  // Reset missing filters when pathname changes or filter params disappear
   useEffect(() => {
     const paramsKeys = Array.from(searchParams.keys());
     const updatedFilters: Partial<FilterValuesType> = {};

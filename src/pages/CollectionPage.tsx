@@ -20,19 +20,19 @@ import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
 import MetaTags from '../layout/nav/MetaTags';
 import { IconName } from '../types/enums';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
-import './CollectionPage.styles.scss';
 import { sortSizesDynamic } from '../utils/sizeUtils';
+import './CollectionPage.styles.scss';
 
 const CollectionPage = () => {
   const { language } = useLanguage();
   const { category, categoryId } = useParams();
-  const initialState: FilterValuesType = {
+  const initialFilters: FilterValuesType = {
     sizes: [],
     colors: [],
     brand: [],
   };
 
-  const { filterValues, onFilterChange } = useFilterParams(initialState);
+  const { filterValues, onFilterChange } = useFilterParams(initialFilters);
   const sortedTranslatedColors = sortColorsByTranslation(colorList, language);
 
   // Redux hooks
