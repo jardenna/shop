@@ -38,7 +38,7 @@ const FilterPanel = ({
           language={language}
           renderExtra={(checkbox) => (
             <div
-              className="small-item"
+              className="color-icons small-item"
               style={{
                 backgroundColor: colorMap[checkbox],
                 borderColor:
@@ -78,6 +78,7 @@ const FilterPanel = ({
       ariaControls="filter-products"
       triggerBtnClassName="product-filter"
       showCloseIcon
+      className="filter-panel"
       triggerBtnContent={
         <>
           <span>{language.filter}</span>
@@ -85,39 +86,10 @@ const FilterPanel = ({
         </>
       }
     >
-      <section>
+      <article>
         <h2>{language.filter}</h2>
         <Accordion accordionList={accordionList} />
-        {/* <Checkbox
-          checkBoxList={colors}
-          name="colors"
-          onChange={onChange}
-          values={values.colors}
-          language={language}
-          renderExtra={(checkbox) => (
-            <div
-              className="small-item"
-              style={{
-                backgroundColor: colorMap[checkbox],
-                borderColor:
-                  checkbox === 'white' ? variables.colorIconBorder : '',
-              }}
-            />
-          )}
-        />
-        <Checkbox
-          checkBoxList={availableSizes}
-          name="sizes"
-          onChange={onChange}
-          values={values.sizes}
-        />
-        <Checkbox
-          checkBoxList={availableBrands}
-          name="brand"
-          onChange={onChange}
-          values={values.brand}
-        /> */}
-      </section>
+      </article>
     </TogglePanel>
   );
 };

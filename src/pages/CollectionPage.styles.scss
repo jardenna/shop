@@ -17,16 +17,23 @@
   width: 100%;
 }
 
-.product-toolbar {
-  display: flex;
-  justify-content: space-between;
-  margin-block: 8px 24px;
-
-  .toggle-panel {
+.filter-panel {
+  &.toggle-panel {
     max-width: rem(500px);
     overflow: hidden auto;
     padding: 28px;
   }
+
+  .color-icons {
+    display: flex;
+    border: 1px solid transparent;
+  }
+}
+
+.product-toolbar {
+  display: flex;
+  justify-content: space-between;
+  margin-block: 8px 24px;
 }
 
 @include max-size($small) {
