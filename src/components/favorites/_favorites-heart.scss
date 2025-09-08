@@ -9,9 +9,7 @@
     }
   }
 
-  &:has(input[aria-disabled='true']) {
-    pointer-events: none;
-
+  &:has(input:disabled) {
     svg {
       opacity: 0.2;
     }

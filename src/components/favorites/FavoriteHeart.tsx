@@ -49,7 +49,7 @@ const FavoriteHeart = ({ id }: FavoriteHeartProps) => {
           className="visually-hidden"
           onChange={handleChange}
           checked={isFavorite(id)}
-          aria-disabled={isTogglingLoading || undefined}
+          disabled={isTogglingLoading || undefined}
         />
       </ErrorBoundary>
     </div>

@@ -1,6 +1,6 @@
 @use './globals' as *;
 
-button[aria-disabled='true'] {
+button:disabled {
   pointer-events: none;
   background-color: $color-secondary;
   color: $color-gray-60;
