@@ -1,12 +1,14 @@
 import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import type { AccordionList } from '../../../components/accordion/Accordion';
 import Accordion from '../../../components/accordion/Accordion';
+import Button from '../../../components/Button';
 import Checkbox from '../../../components/formElements/checkbox/Checkbox';
+import IconContent from '../../../components/IconContent';
 import Icon from '../../../components/icons/Icon';
 import TogglePanel from '../../../components/togglePanel/TogglePanel';
 import { FilterValuesType } from '../../../hooks/useFilterParams';
 import variables from '../../../scss/variables.module.scss';
-import { IconName } from '../../../types/enums';
+import { BtnVariant, IconName } from '../../../types/enums';
 import type { ChangeInputType } from '../../../types/types';
 import { colorMap } from '../../../utils/colorUtils';
 
@@ -37,7 +39,7 @@ const FilterPanel = ({
           values={values.colors}
           language={language}
           renderExtra={(checkbox) => (
-            <div
+            <span
               className="color-icons small-item"
               style={{
                 backgroundColor: colorMap[checkbox],
@@ -88,6 +90,29 @@ const FilterPanel = ({
     >
       <article>
         <h2>{language.filter}</h2>
+        <div>
+          {values.brand.map((brand) => (
+            <Button variant={BtnVariant.WidthIcon} key={brand}>
+              {brand}
+              <IconContent
+                iconName={IconName.Close}
+                title=""
+                size="16"
+                ariaLabel={language.removeFilter}
+              />
+            </Button>
+          ))}
+        </div>
+        <div>
+          {values.colors.map((brand) => (
+            <Button key={brand}>{brand}</Button>
+          ))}
+        </div>
+        <div>
+          {values.sizes.map((brand) => (
+            <Button key={brand}>{brand}</Button>
+          ))}
+        </div>
         <Accordion accordionList={accordionList} />
       </article>
     </TogglePanel>

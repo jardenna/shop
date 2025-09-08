@@ -256,7 +256,8 @@ rating3;3 stars: Average;3 stjerner: Middel
 rating4;4 stars: Good;4 stjerner: God
 rating5;5 stars: Excellent;5 stjerner: Fremragende
 red;Red;Rød
-removeFromFavorite;Remove  from favorite;Fjern fra favorit
+removeFilter;Remove filter;Fjern filter
+removeFromFavorite;Remove from favorite;Fjern fra favorit
 resetFiltersAndSorting;Reset filters and sorting;Nulstil filtre og sortering
 retry;Retry;Forsøg igen
 reviews;Reviews;Anmeldelser
