@@ -23,7 +23,7 @@ const DropdownList = ({ dropdownList, defaultIndex }: DropdownListProps) => {
             className={`dropdown-item ${index === selectedListItemIndex ? 'active' : ''}`}
           >
             <Button
-              variant={btnVariant || BtnVariant.Ghost}
+              variant={btnVariant || BtnVariant.WidthIcon}
               onClick={onClick}
               disabled={disabled}
               tabIndex={index === selectedListItemIndex ? 0 : -1}
@@ -32,8 +32,8 @@ const DropdownList = ({ dropdownList, defaultIndex }: DropdownListProps) => {
               }}
               ariaSelected={index === selectedListItemIndex}
             >
-              {label}
-              {icon}
+              <span>{label}</span>
+              <span>{icon}</span>
             </Button>
           </li>
         ),
