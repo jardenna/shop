@@ -1,7 +1,6 @@
 import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
-import Accordion, {
-  AccordionItem,
-} from '../../../components/accordion/Accordion';
+import type { AccordionList } from '../../../components/accordion/Accordion';
+import Accordion from '../../../components/accordion/Accordion';
 import Checkbox from '../../../components/formElements/checkbox/Checkbox';
 import Icon from '../../../components/icons/Icon';
 import TogglePanel from '../../../components/togglePanel/TogglePanel';
@@ -27,7 +26,7 @@ const FilterPanel = ({
   values,
   language,
 }: FilterPanelProps) => {
-  const accordionItems: AccordionItem[] = [
+  const accordionList: AccordionList[] = [
     {
       title: language.colours,
       content: (
@@ -88,7 +87,7 @@ const FilterPanel = ({
     >
       <section>
         <h2>{language.filter}</h2>
-        <Accordion accordionItems={accordionItems} />
+        <Accordion accordionList={accordionList} />
         {/* <Checkbox
           checkBoxList={colors}
           name="colors"
