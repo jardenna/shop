@@ -121,3 +121,15 @@ a[class^='btn-'],
     }
   }
 }
+
+// Button with icon
+.btn-with-icon {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-block: 0;
+  min-height: auto;
+  background-color: transparent;
+}
