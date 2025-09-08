@@ -1,4 +1,7 @@
 import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
+import Accordion, {
+  AccordionItem,
+} from '../../../components/accordion/Accordion';
 import Checkbox from '../../../components/formElements/checkbox/Checkbox';
 import Icon from '../../../components/icons/Icon';
 import TogglePanel from '../../../components/togglePanel/TogglePanel';
@@ -23,51 +26,101 @@ const FilterPanel = ({
   onChange,
   values,
   language,
-}: FilterPanelProps) => (
-  <TogglePanel
-    ariaControls="filter-products"
-    triggerBtnClassName="product-filter"
-    showCloseIcon
-    triggerBtnContent={
-      <>
-        <span>{language.filter}</span>
-        <Icon iconName={IconName.Filter} title={language.filter} />
-      </>
-    }
-  >
-    <section>
-      <h2>{language.filter}</h2>
-      <Checkbox
-        checkBoxList={colors}
-        name="colors"
-        onChange={onChange}
-        values={values.colors}
-        language={language}
-        renderExtra={(checkbox) => (
-          <div
-            className="small-item"
-            style={{
-              backgroundColor: colorMap[checkbox],
-              borderColor:
-                checkbox === 'white' ? variables.colorIconBorder : '',
-            }}
-          />
-        )}
-      />
-      <Checkbox
-        checkBoxList={availableSizes}
-        name="sizes"
-        onChange={onChange}
-        values={values.sizes}
-      />
-      <Checkbox
-        checkBoxList={availableBrands}
-        name="brand"
-        onChange={onChange}
-        values={values.brand}
-      />
-    </section>
-  </TogglePanel>
-);
+}: FilterPanelProps) => {
+  const accordionItems: AccordionItem[] = [
+    {
+      title: language.colours,
+      content: (
+        <Checkbox
+          checkBoxList={colors}
+          name="colors"
+          onChange={onChange}
+          values={values.colors}
+          language={language}
+          renderExtra={(checkbox) => (
+            <div
+              className="small-item"
+              style={{
+                backgroundColor: colorMap[checkbox],
+                borderColor:
+                  checkbox === 'white' ? variables.colorIconBorder : '',
+              }}
+            />
+          )}
+        />
+      ),
+    },
+    {
+      title: language.sizes,
+      content: (
+        <Checkbox
+          checkBoxList={availableSizes}
+          name="sizes"
+          onChange={onChange}
+          values={values.sizes}
+        />
+      ),
+    },
+    {
+      title: language.brand,
+      content: (
+        <Checkbox
+          checkBoxList={availableBrands}
+          name="brand"
+          onChange={onChange}
+          values={values.brand}
+        />
+      ),
+    },
+  ];
+
+  return (
+    <TogglePanel
+      ariaControls="filter-products"
+      triggerBtnClassName="product-filter"
+      showCloseIcon
+      triggerBtnContent={
+        <>
+          <span>{language.filter}</span>
+          <Icon iconName={IconName.Filter} title={language.filter} />
+        </>
+      }
+    >
+      <section>
+        <h2>{language.filter}</h2>
+        <Accordion accordionItems={accordionItems} />
+        {/* <Checkbox
+          checkBoxList={colors}
+          name="colors"
+          onChange={onChange}
+          values={values.colors}
+          language={language}
+          renderExtra={(checkbox) => (
+            <div
+              className="small-item"
+              style={{
+                backgroundColor: colorMap[checkbox],
+                borderColor:
+                  checkbox === 'white' ? variables.colorIconBorder : '',
+              }}
+            />
+          )}
+        />
+        <Checkbox
+          checkBoxList={availableSizes}
+          name="sizes"
+          onChange={onChange}
+          values={values.sizes}
+        />
+        <Checkbox
+          checkBoxList={availableBrands}
+          name="brand"
+          onChange={onChange}
+          values={values.brand}
+        /> */}
+      </section>
+    </TogglePanel>
+  );
+};
 
 export default FilterPanel;
