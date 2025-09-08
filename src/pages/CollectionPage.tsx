@@ -19,6 +19,7 @@ import useFilterParams from '../hooks/useFilterParams';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
 import MetaTags from '../layout/nav/MetaTags';
 import { IconName } from '../types/enums';
+import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import './CollectionPage.styles.scss';
 
 const CollectionPage = () => {
@@ -31,6 +32,7 @@ const CollectionPage = () => {
   };
 
   const { filterValues, onFilterChange } = useFilterParams(initialState);
+  const sortedTranslatedColors = sortColorsByTranslation(colorList, language);
 
   // Redux hooks
   const {
@@ -112,6 +114,7 @@ const CollectionPage = () => {
                       values={filterValues}
                       availableBrands={products.availableBrands}
                       availableSizes={products.availableSizes}
+                      colors={sortedTranslatedColors}
                     />
                   </>
                 )}

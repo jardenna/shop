@@ -11,22 +11,20 @@ import useLanguage from '../../language/useLanguage';
 type FilterPanelProps = {
   availableBrands: string[];
   availableSizes: Size[];
+  colors: string[];
   values: FilterValuesType;
   onChange: (event: ChangeInputType) => void;
 };
 const FilterPanel = ({
   availableSizes,
   availableBrands,
+  colors,
   onChange,
   values,
 }: FilterPanelProps) => {
   const { language } = useLanguage();
-  // const sortedColorList = getColorOptions({
-  //   language,
-  //   borderColor: variables.colorIconBorder,
-  // });
 
-  const sortedColorList = sortSizesDynamic(availableSizes);
+  const sortedSizeList = sortSizesDynamic(availableSizes);
   return (
     <TogglePanel
       ariaControls="filter-products"
@@ -40,7 +38,14 @@ const FilterPanel = ({
       }
     >
       <Checkbox
-        checkBoxList={sortedColorList}
+        checkBoxList={colors}
+        name="colors"
+        onChange={onChange}
+        values={values.colors}
+      />
+
+      <Checkbox
+        checkBoxList={sortedSizeList}
         name="sizes"
         onChange={onChange}
         values={values.sizes}

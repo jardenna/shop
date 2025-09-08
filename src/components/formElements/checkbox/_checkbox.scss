@@ -10,7 +10,6 @@
     display: flex;
     gap: 8px;
     align-items: center;
-    padding: 8px;
     padding-left: 20px;
 
     &:has(input:focus-visible) {
@@ -22,6 +21,7 @@
     cursor: pointer;
     display: flex;
     width: 100%;
+    padding-block: 8px;
   }
 
   input[type='checkbox'] {
