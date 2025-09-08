@@ -21,6 +21,7 @@ import MetaTags from '../layout/nav/MetaTags';
 import { IconName } from '../types/enums';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import './CollectionPage.styles.scss';
+import { sortSizesDynamic } from '../utils/sizeUtils';
 
 const CollectionPage = () => {
   const { language } = useLanguage();
@@ -41,7 +42,7 @@ const CollectionPage = () => {
     refetch,
   } = useGetProductsQuery({
     pageSize: '100',
-    // colors: ['silver', 'black'],
+    colors: filterValues.colors,
     brand: filterValues.brand,
     sizes: filterValues.sizes,
     mainCategory: category,
@@ -113,8 +114,9 @@ const CollectionPage = () => {
                       onChange={onFilterChange}
                       values={filterValues}
                       availableBrands={products.availableBrands}
-                      availableSizes={products.availableSizes}
+                      availableSizes={sortSizesDynamic(products.availableSizes)}
                       colors={sortedTranslatedColors}
+                      language={language}
                     />
                   </>
                 )}

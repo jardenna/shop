@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { IconName } from '../../types/enums';
 import Button from '../Button';
 import Input from '../formElements/Input';
@@ -17,9 +16,8 @@ interface NumberStepProps {
   onNumberStepChange: (event: any, count: number) => void;
 }
 
-const NumberStep: FC<NumberStepProps> = ({
+const NumberStep = ({
   onChange,
-  // onNumberStepChange,
   value,
   initCount = 1,
   min = 0,
@@ -27,7 +25,7 @@ const NumberStep: FC<NumberStepProps> = ({
   labelText,
   id,
   name,
-}) => (
+}: NumberStepProps) => (
   <article className="number-step">
     <label htmlFor={id}>{labelText}</label>
     <div className="number-step-container">
