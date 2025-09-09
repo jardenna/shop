@@ -138,11 +138,12 @@ const updateProduct = [
       );
 
       imagesToDelete.forEach((imagePath) => {
-        // Add "public" back to reach the real file path
         const fullPath = path.join(process.cwd(), 'public', imagePath);
         fs.unlink(fullPath, (error) => {
           if (error) {
-            console.error(`Failed to delete image: ${fullPath}`, error);
+            return res
+              .status(500)
+              .json({ message: `Failed to delete image: ${fullPath}`, error });
           }
         });
       });
