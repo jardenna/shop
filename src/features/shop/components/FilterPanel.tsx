@@ -2,6 +2,7 @@ import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import type { AccordionList } from '../../../components/accordion/Accordion';
 import Accordion from '../../../components/accordion/Accordion';
 import Checkbox from '../../../components/formElements/checkbox/Checkbox';
+import IconContent from '../../../components/IconContent';
 import Icon from '../../../components/icons/Icon';
 import TogglePanel from '../../../components/togglePanel/TogglePanel';
 import { FilterValuesType } from '../../../hooks/useFilterParams';
@@ -94,14 +95,21 @@ const FilterPanel = ({
           ([key, values]) =>
             values.length > 0 && (
               <Checkbox
-                variant="tag-list"
+                className="tag-list"
                 language={language}
                 key={key}
                 checkBoxList={values}
                 name={key}
                 onChange={onChange}
                 values={values}
-              />
+              >
+                <IconContent
+                  iconName={IconName.Close}
+                  title=""
+                  size="16"
+                  ariaLabel="language.removeFilter"
+                />
+              </Checkbox>
             ),
         )}
         <Accordion accordionList={accordionList} />

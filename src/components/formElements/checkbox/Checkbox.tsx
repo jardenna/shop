@@ -1,29 +1,30 @@
-import { IconName } from '../../../types/enums';
+import { ReactNode } from 'react';
 import { ChangeInputType } from '../../../types/types';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
-import IconContent from '../../IconContent';
 import './_checkbox.scss';
 
 interface CheckboxProps {
   checkBoxList: string[];
   name: string;
   values: string[];
+  children?: ReactNode;
+  className?: string;
   language?: Record<string, string>;
-  variant?: string;
   onChange: (event: ChangeInputType) => void;
   renderExtra?: (checkbox: string) => React.ReactNode;
 }
 
 const Checkbox = ({
   checkBoxList,
+  children,
   onChange,
   values,
   name,
   language,
-  variant = '',
+  className = '',
   renderExtra,
 }: CheckboxProps) => (
-  <ul className={`checkbox-list ${variant}`}>
+  <ul className={`checkbox-list ${className}`}>
     {checkBoxList.map((checkbox, index) => (
       <li key={checkbox} className="checkbox-item">
         <input
@@ -37,14 +38,7 @@ const Checkbox = ({
         <label htmlFor={`${name}-${index}`} className="checkbox-label">
           {language ? getlowerCaseFirstLetter(checkbox, language) : checkbox}
           {renderExtra && renderExtra(checkbox)}
-          {variant && (
-            <IconContent
-              iconName={IconName.Close}
-              title=""
-              size="16"
-              ariaLabel="language.removeFilter"
-            />
-          )}
+          {children}
         </label>
       </li>
     ))}
