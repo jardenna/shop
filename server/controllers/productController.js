@@ -138,12 +138,11 @@ const updateProduct = [
       );
 
       imagesToDelete.forEach((imagePath) => {
-        const fullPath = path.join(process.cwd(), imagePath);
+        // Add "public" back to reach the real file path
+        const fullPath = path.join(process.cwd(), 'public', imagePath);
         fs.unlink(fullPath, (error) => {
           if (error) {
-            return res
-              .status(500)
-              .json({ message: `Failed to delete image: ${fullPath}`, error });
+            console.error(`Failed to delete image: ${fullPath}`, error);
           }
         });
       });
@@ -190,7 +189,8 @@ const deleteProduct = asyncHandler(async (req, res) => {
   // Delete associated images
   if (product.images && product.images.length > 0) {
     const deleteImagePromises = product.images.map((imagePath) => {
-      const fullPath = path.join(process.cwd(), imagePath);
+      // Add "public" back when deleting from disk
+      const fullPath = path.join(process.cwd(), 'public', imagePath);
       return fs.promises.unlink(fullPath).catch((error) => {
         console.error(`Failed to delete image: ${fullPath}`, error);
       });
