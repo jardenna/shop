@@ -1,6 +1,6 @@
 import express from 'express';
 import { MAX_FILES } from '../config/constants.js';
-import { upload } from '../config/multerConfig.js';
+import upload from '../config/multerConfig.js';
 import {
   authenticate,
   authorizeEmployee,
