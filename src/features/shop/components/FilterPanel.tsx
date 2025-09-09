@@ -1,16 +1,16 @@
 import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import type { AccordionList } from '../../../components/accordion/Accordion';
 import Accordion from '../../../components/accordion/Accordion';
-import Button from '../../../components/Button';
 import Checkbox from '../../../components/formElements/checkbox/Checkbox';
-import IconContent from '../../../components/IconContent';
 import Icon from '../../../components/icons/Icon';
 import TogglePanel from '../../../components/togglePanel/TogglePanel';
 import { FilterValuesType } from '../../../hooks/useFilterParams';
 import variables from '../../../scss/variables.module.scss';
-import { BtnVariant, IconName } from '../../../types/enums';
+import { IconName } from '../../../types/enums';
 import type { ChangeInputType } from '../../../types/types';
 import { colorMap } from '../../../utils/colorUtils';
+import FilterPanelTagsList from './FilterPanelTagsList';
+import './filterPanel.styles.scss';
 
 type FilterPanelProps = {
   availableBrands: string[];
@@ -91,28 +91,16 @@ const FilterPanel = ({
     >
       <article>
         <h2>{language.filter}</h2>
-
         {Object.entries(values).map(
           ([key, values]) =>
             values.length > 0 && (
-              <ul key={key}>
-                {values.map((value) => (
-                  <li key={value}>
-                    <Button variant={BtnVariant.WidthIcon} key={value}>
-                      {value}
-                      <IconContent
-                        iconName={IconName.Close}
-                        title=""
-                        size="16"
-                        ariaLabel={language.removeFilter}
-                      />
-                    </Button>
-                  </li>
-                ))}
-              </ul>
+              <FilterPanelTagsList
+                key={key}
+                language={language}
+                values={values}
+              />
             ),
         )}
-
         <Accordion accordionList={accordionList} />
       </article>
     </TogglePanel>

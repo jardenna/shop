@@ -17,19 +17,6 @@
   width: 100%;
 }
 
-.filter-panel {
-  &.toggle-panel {
-    max-width: rem(500px);
-    overflow: hidden auto;
-    padding: 28px;
-  }
-
-  .color-icons {
-    display: flex;
-    border: 1px solid transparent;
-  }
-}
-
 .product-toolbar {
   display: flex;
   justify-content: space-between;
