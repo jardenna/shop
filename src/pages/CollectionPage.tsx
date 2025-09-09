@@ -23,6 +23,21 @@ import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { sortSizesDynamic } from '../utils/sizeUtils';
 import './CollectionPage.styles.scss';
 
+// // Define allowed filter keys
+// type FilterKeys = 'sizes' | 'colors' | 'brand';
+
+// // Generic filter type restricted to FilterKeys
+// type FilterValuesType<T> = {
+//   [K in FilterKeys]: T[];
+// };
+
+// // Initialize filters
+// const initialFilters: FilterValuesType<string> = {
+//   sizes: [],
+//   colors: [],
+//   brand: [],
+// };
+
 const CollectionPage = () => {
   const { language } = useLanguage();
   const { category, categoryId } = useParams();

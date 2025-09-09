@@ -91,28 +91,27 @@ const FilterPanel = ({
       <article>
         <h2>{language.filter}</h2>
         <div>
-          {values.brand.map((brand) => (
-            <Button variant={BtnVariant.WidthIcon} key={brand}>
-              {brand}
-              <IconContent
-                iconName={IconName.Close}
-                title=""
-                size="16"
-                ariaLabel={language.removeFilter}
-              />
-            </Button>
+          {Object.entries(values).map(([key, values]) => (
+            <div key={key}>
+              <ul>
+                {values.map((value) => (
+                  <li key={value}>
+                    <Button variant={BtnVariant.WidthIcon} key={value}>
+                      {value}
+                      <IconContent
+                        iconName={IconName.Close}
+                        title=""
+                        size="16"
+                        ariaLabel={language.removeFilter}
+                      />
+                    </Button>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
-        <div>
-          {values.colors.map((brand) => (
-            <Button key={brand}>{brand}</Button>
-          ))}
-        </div>
-        <div>
-          {values.sizes.map((brand) => (
-            <Button key={brand}>{brand}</Button>
-          ))}
-        </div>
+
         <Accordion accordionList={accordionList} />
       </article>
     </TogglePanel>
