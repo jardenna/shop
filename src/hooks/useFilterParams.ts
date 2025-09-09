@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router';
+import type { FilterKeys } from '../pages/CollectionPage';
 import type { ChangeInputType } from '../types/types';
 
-export type FilterValuesType = {
-  [key: string]: string[];
+export type FilterValuesType<T> = {
+  [K in FilterKeys]: T[];
 };
 
-const useFilterParams = (initialFilters: FilterValuesType) => {
+const useFilterParams = (initialFilters: FilterValuesType<string>) => {
   const initialFiltersRef = useRef(initialFilters);
-  const [filterValues, setFilterValues] = useState<FilterValuesType>(
+  const [filterValues, setFilterValues] = useState<FilterValuesType<string>>(
     initialFiltersRef.current,
   );
   const [searchParams, setSearchParams] = useSearchParams();
@@ -18,11 +19,11 @@ const useFilterParams = (initialFilters: FilterValuesType) => {
 
   useEffect(() => {
     const paramsKeys = Array.from(searchParams.keys());
-    const updatedFilters: Partial<FilterValuesType> = {};
+    const updatedFilters: Partial<FilterValuesType<string>> = {};
 
     Object.keys(initialFiltersRef.current).forEach((key) => {
       if (!paramsKeys.includes(key)) {
-        updatedFilters[key as keyof FilterValuesType] = [];
+        updatedFilters[key as keyof FilterValuesType<string>] = [];
       }
     });
 
@@ -33,18 +34,20 @@ const useFilterParams = (initialFilters: FilterValuesType) => {
       setFilterValues({
         ...filterValues,
         ...updatedFilters,
-      } as FilterValuesType);
+      } as FilterValuesType<string>);
       prevPathRef.current = location.pathname;
     }
   }, [location.pathname, searchParams]);
 
   // Sync initial filters from URL on mount
   useEffect(() => {
-    const newFilters: FilterValuesType = { ...initialFiltersRef.current };
+    const newFilters: FilterValuesType<string> = {
+      ...initialFiltersRef.current,
+    };
     Object.keys(initialFiltersRef.current).forEach((key) => {
       const value = searchParams.get(key);
       if (value) {
-        newFilters[key as keyof FilterValuesType] = value.split(',');
+        newFilters[key as keyof FilterValuesType<string>] = value.split(',');
       }
     });
     setFilterValues(newFilters);
@@ -79,7 +82,7 @@ const useFilterParams = (initialFilters: FilterValuesType) => {
 
   const handleFilterChange = (event: ChangeInputType) => {
     const { name, value, checked } = event.target;
-    const current = filterValues[name as keyof FilterValuesType];
+    const current = filterValues[name as keyof FilterValuesType<string>];
     const updated = checked
       ? [...current, value]
       : current.filter((val) => val !== value);

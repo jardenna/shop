@@ -17,9 +17,10 @@ type FilterPanelProps = {
   availableSizes: Size[];
   colors: string[];
   language: Record<string, string>;
-  values: FilterValuesType;
+  values: FilterValuesType<string>;
   onChange: (event: ChangeInputType) => void;
 };
+
 const FilterPanel = ({
   availableSizes,
   availableBrands,
