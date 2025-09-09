@@ -17,18 +17,20 @@
     gap: 4px;
     flex-wrap: wrap;
     margin-bottom: 8px;
-  }
 
-  .tag-item {
-    max-width: fit-content;
-    border: 1px solid $color-border;
-    padding: 4px 8px;
-
-    .btn {
+    .checkbox-label {
+      max-width: fit-content;
+      border: 1px solid $color-border;
+      padding: 4px 8px;
       text-transform: uppercase;
       display: flex;
       gap: 8px;
       white-space: nowrap;
+    }
+
+    input {
+      clip-path: inset(50%);
+      position: absolute;
     }
   }
 }

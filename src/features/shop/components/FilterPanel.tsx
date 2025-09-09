@@ -9,7 +9,6 @@ import variables from '../../../scss/variables.module.scss';
 import { IconName } from '../../../types/enums';
 import type { ChangeInputType } from '../../../types/types';
 import { colorMap } from '../../../utils/colorUtils';
-import FilterPanelTagsList from './FilterPanelTagsList';
 import './filterPanel.styles.scss';
 
 type FilterPanelProps = {
@@ -94,9 +93,13 @@ const FilterPanel = ({
         {Object.entries(values).map(
           ([key, values]) =>
             values.length > 0 && (
-              <FilterPanelTagsList
-                key={key}
+              <Checkbox
+                variant="tag-list"
                 language={language}
+                key={key}
+                checkBoxList={values}
+                name={key}
+                onChange={onChange}
                 values={values}
               />
             ),

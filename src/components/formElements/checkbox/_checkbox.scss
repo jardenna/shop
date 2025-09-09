@@ -2,9 +2,12 @@
 
 .checkbox-list {
   display: flex;
-  flex-direction: column;
   gap: 12px;
   margin-bottom: 12px;
+
+  &:not(.tag-list) {
+    flex-direction: column;
+  }
 
   .checkbox-item {
     display: flex;
