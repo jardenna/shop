@@ -1,6 +1,6 @@
 import express from 'express';
 import { MAX_FILES } from '../config/constants.js';
-import { upload } from '../config/multerConfig.js';
+import upload from '../config/multerConfig.js';
 import {
   authenticate,
   authorizeEmployee,
@@ -17,8 +17,6 @@ router.post(
   authorizeEmployee,
   (req, res) => {
     upload.array('images', MAX_FILES)(req, res, (err) => {
-      // '5' is the max files limit
-
       if (err && err.code === 'LIMIT_FILE_SIZE') {
         return res.status(400).send({
           message: t('fileExceedsSize', req.lang),
@@ -32,17 +30,23 @@ router.post(
       }
 
       if (err) {
-        res.status(400).send({ message: err.message });
-      } else if (req.files) {
-        const filePaths = req.files.map((file) => `/${file.path}`);
-        res.status(200).send({
+        return res.status(400).send({ message: err.message });
+      }
+
+      if (req.files && req.files.length > 0) {
+        // Normalize file paths -> /images/uploads/... instead of /public/images/uploads...
+        const filePaths = req.files.map((file) =>
+          file.path.replace(/\\/g, '/').replace(/^.*public/, ''),
+        );
+
+        return res.status(200).send({
           success: true,
           message: 'Images uploaded successfully',
           images: filePaths,
         });
-      } else {
-        res.status(400).send({ message: 'No image files provided' });
       }
+
+      return res.status(400).send({ message: 'No image files provided' });
     });
   },
 );

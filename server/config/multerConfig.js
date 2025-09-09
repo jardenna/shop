@@ -4,7 +4,9 @@ import { t } from '../utils/translator.js';
 import { MAX_FILE_SIZE } from './constants.js';
 
 const storage = multer.diskStorage({
-  destination: './public/images/uploads',
+  destination: function (req, file, cb) {
+    cb(null, path.join(process.cwd(), 'public/images/uploads'));
+  },
   filename: function (req, file, cb) {
     cb(
       null,
@@ -25,7 +27,7 @@ const fileFilter = (req, file, cb) => {
   if (filetypes.test(extname) && mimetypes.test(mimetype)) {
     cb(null, true);
   } else {
-    return cb(
+    cb(
       new Error(
         `${extension} ${t('unsupportedFile', req.lang)}. ` +
           `${t('allowedFormats', req.lang)}: JPEG, JPG, PNG, WEBP, AVIF.`,
@@ -36,4 +38,10 @@ const fileFilter = (req, file, cb) => {
 
 const fileSize = MAX_FILE_SIZE;
 
-export const upload = multer({ storage, fileFilter, limits: { fileSize } });
+const upload = multer({
+  storage,
+  fileFilter,
+  limits: { fileSize },
+});
+
+export default upload;
