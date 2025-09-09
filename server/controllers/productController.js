@@ -137,16 +137,19 @@ const updateProduct = [
         (oldImage) => !images.includes(oldImage),
       );
 
-      imagesToDelete.forEach((imagePath) => {
-        const fullPath = path.join(process.cwd(), 'public', imagePath);
-        fs.unlink(fullPath, (error) => {
-          if (error) {
-            return res
-              .status(500)
-              .json({ message: `Failed to delete image: ${fullPath}`, error });
+      // Delete images safely
+      await Promise.all(
+        imagesToDelete.map(async (imagePath) => {
+          const cleanPath = imagePath.replace(/^\/+/, ''); // remove leading slash
+          const fullPath = path.join(process.cwd(), 'public', cleanPath);
+
+          try {
+            await fs.promises.unlink(fullPath);
+          } catch (error) {
+            console.error(`Failed to delete image: ${fullPath}`, error);
           }
-        });
-      });
+        }),
+      );
 
       existingProduct.images = images;
     }
@@ -189,15 +192,18 @@ const deleteProduct = asyncHandler(async (req, res) => {
 
   // Delete associated images
   if (product.images && product.images.length > 0) {
-    const deleteImagePromises = product.images.map((imagePath) => {
-      // Add "public" back when deleting from disk
-      const fullPath = path.join(process.cwd(), 'public', imagePath);
-      return fs.promises.unlink(fullPath).catch((error) => {
-        console.error(`Failed to delete image: ${fullPath}`, error);
-      });
-    });
+    await Promise.all(
+      product.images.map(async (imagePath) => {
+        const cleanPath = imagePath.replace(/^\/+/, ''); // remove leading slash
+        const fullPath = path.join(process.cwd(), 'public', cleanPath);
 
-    await Promise.all(deleteImagePromises); // Wait for all deletions to complete
+        try {
+          await fs.promises.unlink(fullPath);
+        } catch (error) {
+          console.error(`Failed to delete image: ${fullPath}`, error);
+        }
+      }),
+    );
   }
 
   res
