@@ -2,19 +2,19 @@ import { ReactNode } from 'react';
 import './_accordion.scss';
 import AccordionItem from './AccordionItem';
 
-export type AccordionItem = {
+export type AccordionList = {
   content: ReactNode;
   title: string;
   additionalTitle?: string | number;
 };
 
 type AccordionProps = {
-  accordionItems: AccordionItem[];
+  accordionList: AccordionList[];
 };
 
-const Accordion = ({ accordionItems }: AccordionProps) => (
+const Accordion = ({ accordionList }: AccordionProps) => (
   <section className="accordion-container">
-    {accordionItems.map(({ title, content, additionalTitle }) => (
+    {accordionList.map(({ title, content, additionalTitle }) => (
       <AccordionItem
         key={title}
         title={title}

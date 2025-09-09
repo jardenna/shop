@@ -19,18 +19,24 @@ import useFilterParams from '../hooks/useFilterParams';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
 import MetaTags from '../layout/nav/MetaTags';
 import { IconName } from '../types/enums';
+import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
+import { sortSizesDynamic } from '../utils/sizeUtils';
 import './CollectionPage.styles.scss';
+
+export type FilterKeys = 'sizes' | 'colors' | 'brand';
 
 const CollectionPage = () => {
   const { language } = useLanguage();
   const { category, categoryId } = useParams();
-  const initialState: FilterValuesType = {
+
+  const initialFilters: FilterValuesType<string> = {
     sizes: [],
     colors: [],
     brand: [],
   };
 
-  const { filterValues, onFilterChange } = useFilterParams(initialState);
+  const { filterValues, onFilterChange } = useFilterParams(initialFilters);
+  const sortedTranslatedColors = sortColorsByTranslation(colorList, language);
 
   // Redux hooks
   const {
@@ -39,7 +45,7 @@ const CollectionPage = () => {
     refetch,
   } = useGetProductsQuery({
     pageSize: '100',
-    // colors: ['silver', 'black'],
+    colors: filterValues.colors,
     brand: filterValues.brand,
     sizes: filterValues.sizes,
     mainCategory: category,
@@ -111,7 +117,9 @@ const CollectionPage = () => {
                       onChange={onFilterChange}
                       values={filterValues}
                       availableBrands={products.availableBrands}
-                      availableSizes={products.availableSizes}
+                      availableSizes={sortSizesDynamic(products.availableSizes)}
+                      colors={sortedTranslatedColors}
+                      language={language}
                     />
                   </>
                 )}

@@ -17,21 +17,4 @@
     border-color: $color-blue-25;
     background-color: $color-background;
   }
-
-  .btn {
-    display: flex;
-    gap: 8px;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding-block: 0;
-    min-height: auto;
-  }
-
-  .btn-ghost {
-    &:hover,
-    &:focus-visible {
-      outline: transparent;
-    }
-  }
 }

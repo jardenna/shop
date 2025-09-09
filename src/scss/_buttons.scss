@@ -1,6 +1,6 @@
 @use './globals' as *;
 
-button[aria-disabled='true'] {
+button:disabled {
   pointer-events: none;
   background-color: $color-secondary;
   color: $color-gray-60;
@@ -120,4 +120,15 @@ a[class^='btn-'],
       @include transition;
     }
   }
+}
+
+// Button with icon
+.btn-with-icon {
+  justify-content: space-between;
+  padding-block: 0;
+  background-color: transparent;
+  min-height: auto;
+  padding: 0;
+  font-size: 0.875rem;
+  border-radius: 0;
 }

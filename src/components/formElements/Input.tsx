@@ -96,7 +96,6 @@ const Input = ({
           aria-invalid={errorText ? true : undefined}
           aria-required={required && !disabled}
           aria-errormessage={errorText ? ariaErrorId : undefined}
-          aria-disabled={disabled || undefined}
           onBlur={onBlur}
           placeholder={placeholder}
           min={min}

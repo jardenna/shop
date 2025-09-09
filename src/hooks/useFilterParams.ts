@@ -1,20 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router';
+import type { FilterKeys } from '../pages/CollectionPage';
 import type { ChangeInputType } from '../types/types';
 
-// export type FilterValuesType = {
-//   brand: string[];
-//   colors: string[];
-//   sizes: string[];
-// };
-
-export type FilterValuesType = {
-  [key: string]: string[];
+export type FilterValuesType<T> = {
+  [K in FilterKeys]: T[];
 };
 
-const useFilterParams = (initialFilters: FilterValuesType) => {
+const useFilterParams = (initialFilters: FilterValuesType<string>) => {
   const initialFiltersRef = useRef(initialFilters);
-  const [filterValues, setFilterValues] = useState<FilterValuesType>(
+  const [filterValues, setFilterValues] = useState<FilterValuesType<string>>(
     initialFiltersRef.current,
   );
   const [searchParams, setSearchParams] = useSearchParams();
@@ -22,14 +17,13 @@ const useFilterParams = (initialFilters: FilterValuesType) => {
   const location = useLocation();
   const prevPathRef = useRef(location.pathname);
 
-  // Reset missing filters when pathname changes or filter params disappear
   useEffect(() => {
     const paramsKeys = Array.from(searchParams.keys());
-    const updatedFilters: Partial<FilterValuesType> = {};
+    const updatedFilters: Partial<FilterValuesType<string>> = {};
 
-    Object.keys(initialFiltersRef.current).forEach((key) => {
+    (Object.keys(initialFiltersRef.current) as FilterKeys[]).forEach((key) => {
       if (!paramsKeys.includes(key)) {
-        updatedFilters[key as keyof FilterValuesType] = [];
+        updatedFilters[key] = [];
       }
     });
 
@@ -40,18 +34,20 @@ const useFilterParams = (initialFilters: FilterValuesType) => {
       setFilterValues({
         ...filterValues,
         ...updatedFilters,
-      } as FilterValuesType);
+      } as FilterValuesType<string>);
       prevPathRef.current = location.pathname;
     }
   }, [location.pathname, searchParams]);
 
-  // Sync initial filters from URL on mount
+  // Sync filters from URL on mount
   useEffect(() => {
-    const newFilters: FilterValuesType = { ...initialFiltersRef.current };
-    Object.keys(initialFiltersRef.current).forEach((key) => {
+    const newFilters: FilterValuesType<string> = {
+      ...initialFiltersRef.current,
+    };
+    (Object.keys(initialFiltersRef.current) as FilterKeys[]).forEach((key) => {
       const value = searchParams.get(key);
       if (value) {
-        newFilters[key as keyof FilterValuesType] = value.split(',');
+        newFilters[key] = value.split(',');
       }
     });
     setFilterValues(newFilters);
@@ -64,15 +60,15 @@ const useFilterParams = (initialFilters: FilterValuesType) => {
     }
 
     debounceRef.current = setTimeout(() => {
-      const params = new URLSearchParams(searchParams);
+      const params = new URLSearchParams();
 
-      Object.entries(filterValues).forEach(([key, values]) => {
-        if (values.length) {
-          params.set(key, values.join(','));
-        } else {
-          params.delete(key);
-        }
-      });
+      (Object.entries(filterValues) as [FilterKeys, string[]][]).forEach(
+        ([key, values]) => {
+          if (values.length) {
+            params.set(key, values.join(','));
+          }
+        },
+      );
 
       setSearchParams(params, { replace: true });
     }, 300);
@@ -82,11 +78,12 @@ const useFilterParams = (initialFilters: FilterValuesType) => {
         clearTimeout(debounceRef.current);
       }
     };
-  }, [filterValues, searchParams, setSearchParams]);
+  }, [filterValues, setSearchParams]);
 
   const handleFilterChange = (event: ChangeInputType) => {
     const { name, value, checked } = event.target;
-    const current = filterValues[name as keyof FilterValuesType];
+    const key = name as FilterKeys;
+    const current = filterValues[key];
     const updated = checked
       ? [...current, value]
       : current.filter((val) => val !== value);

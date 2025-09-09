@@ -69,7 +69,6 @@ const ControlInputField = ({
         value={label}
         checked={checked}
         onChange={onChange}
-        aria-disabled={disabled || undefined}
         disabled={disabled}
         autoFocus={autoFocus}
       />

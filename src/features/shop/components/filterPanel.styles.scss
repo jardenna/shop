@@ -1,0 +1,34 @@
+@use '../../../scss/globals' as *;
+
+.filter-panel {
+  &.toggle-panel {
+    max-width: rem(500px);
+    overflow: hidden auto;
+    padding: 28px;
+  }
+
+  .color-icons {
+    display: flex;
+    border: 1px solid transparent;
+  }
+
+  .tag-list {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .tag-item {
+    max-width: fit-content;
+    border: 1px solid $color-border;
+    padding: 4px 8px;
+
+    .btn {
+      text-transform: uppercase;
+      display: flex;
+      gap: 8px;
+      white-space: nowrap;
+    }
+  }
+}
