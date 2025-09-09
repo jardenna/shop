@@ -21,9 +21,9 @@ const useFilterParams = (initialFilters: FilterValuesType<string>) => {
     const paramsKeys = Array.from(searchParams.keys());
     const updatedFilters: Partial<FilterValuesType<string>> = {};
 
-    Object.keys(initialFiltersRef.current).forEach((key) => {
+    (Object.keys(initialFiltersRef.current) as FilterKeys[]).forEach((key) => {
       if (!paramsKeys.includes(key)) {
-        updatedFilters[key as keyof FilterValuesType<string>] = [];
+        updatedFilters[key] = [];
       }
     });
 
@@ -39,15 +39,15 @@ const useFilterParams = (initialFilters: FilterValuesType<string>) => {
     }
   }, [location.pathname, searchParams]);
 
-  // Sync initial filters from URL on mount
+  // Sync filters from URL on mount
   useEffect(() => {
     const newFilters: FilterValuesType<string> = {
       ...initialFiltersRef.current,
     };
-    Object.keys(initialFiltersRef.current).forEach((key) => {
+    (Object.keys(initialFiltersRef.current) as FilterKeys[]).forEach((key) => {
       const value = searchParams.get(key);
       if (value) {
-        newFilters[key as keyof FilterValuesType<string>] = value.split(',');
+        newFilters[key] = value.split(',');
       }
     });
     setFilterValues(newFilters);
@@ -60,15 +60,15 @@ const useFilterParams = (initialFilters: FilterValuesType<string>) => {
     }
 
     debounceRef.current = setTimeout(() => {
-      const params = new URLSearchParams(searchParams);
+      const params = new URLSearchParams();
 
-      Object.entries(filterValues).forEach(([key, values]) => {
-        if (values.length) {
-          params.set(key, values.join(','));
-        } else {
-          params.delete(key);
-        }
-      });
+      (Object.entries(filterValues) as [FilterKeys, string[]][]).forEach(
+        ([key, values]) => {
+          if (values.length) {
+            params.set(key, values.join(','));
+          }
+        },
+      );
 
       setSearchParams(params, { replace: true });
     }, 300);
@@ -78,11 +78,12 @@ const useFilterParams = (initialFilters: FilterValuesType<string>) => {
         clearTimeout(debounceRef.current);
       }
     };
-  }, [filterValues, searchParams, setSearchParams]);
+  }, [filterValues, setSearchParams]);
 
   const handleFilterChange = (event: ChangeInputType) => {
     const { name, value, checked } = event.target;
-    const current = filterValues[name as keyof FilterValuesType<string>];
+    const key = name as FilterKeys;
+    const current = filterValues[key];
     const updated = checked
       ? [...current, value]
       : current.filter((val) => val !== value);
