@@ -91,10 +91,11 @@ const FilterPanel = ({
     >
       <article>
         <h2>{language.filter}</h2>
-        <div>
-          {Object.entries(values).map(([key, values]) => (
-            <div key={key}>
-              <ul>
+
+        {Object.entries(values).map(
+          ([key, values]) =>
+            values.length > 0 && (
+              <ul key={key}>
                 {values.map((value) => (
                   <li key={value}>
                     <Button variant={BtnVariant.WidthIcon} key={value}>
@@ -109,9 +110,8 @@ const FilterPanel = ({
                   </li>
                 ))}
               </ul>
-            </div>
-          ))}
-        </div>
+            ),
+        )}
 
         <Accordion accordionList={accordionList} />
       </article>
