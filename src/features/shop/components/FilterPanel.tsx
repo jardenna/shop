@@ -107,7 +107,7 @@ const FilterPanel = ({
                   iconName={IconName.Close}
                   title=""
                   size="16"
-                  ariaLabel="language.removeFilter"
+                  ariaLabel={language.removeFilter}
                 />
               </Checkbox>
             ),
