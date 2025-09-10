@@ -7,9 +7,10 @@ import useLanguage from '../../../language/useLanguage';
 const ReviewStarsInfo = ({ rating }: { rating: number }) => {
   const { language } = useLanguage();
   const selectedLanguage = useAppSelector(selectSelectedLanguage);
+
   return (
     <span>
-      {numberConvert(rating, selectedLanguage)}
+      {rating ? numberConvert(rating, selectedLanguage) : language.notRatedYet}
       <VisuallyHidden>
         {language.outOf} 5 {language.stars}
       </VisuallyHidden>
