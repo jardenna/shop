@@ -17,7 +17,7 @@ const TagList = ({ language, values, onChange, name }: TagListProps) => (
     onChange={onChange}
     values={values}
     iconName={IconName.Close}
-    ariaLabel={language?.close}
+    ariaLabel={language?.removeFilter}
   />
 );
 
