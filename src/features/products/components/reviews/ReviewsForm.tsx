@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import Button from '../../../../components/Button';
 import FieldSet from '../../../../components/fieldset/FieldSet';
 import RadioButtonList from '../../../../components/formElements/radiobuttons/RadioButtonList';
@@ -27,7 +27,6 @@ const ReviewsForm = ({
   productId,
 }: ReviewsFormProps) => {
   const { language } = useLanguage();
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const [visible, setVisible] = useState<string | null>(null);
   const initialState = {
@@ -69,12 +68,6 @@ const ReviewsForm = ({
     setVisible('visible');
   };
 
-  useEffect(() => {
-    if (visible === 'visible' && textareaRef.current) {
-      setTimeout(() => textareaRef.current?.focus(), 0);
-    }
-  }, [visible]);
-
   return (
     !hasReviewed?.reviewed && (
       <form onSubmit={onSubmit} className="review-form">
@@ -94,7 +87,6 @@ const ReviewsForm = ({
             tabIndex={!visible ? -1 : undefined}
             ariaHidden={!visible}
             value={values.comment}
-            ref={textareaRef}
             name="comment"
             id="comment"
             labelText={language.shareYourExperience}
