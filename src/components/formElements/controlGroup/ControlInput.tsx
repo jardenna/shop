@@ -48,8 +48,8 @@ const ControlInput = ({
     <>
       <input
         type={type}
-        id={id}
         name={name}
+        id={id}
         value={label}
         checked={checked}
         onChange={onChange}

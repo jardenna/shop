@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { ChangeInputType, InputType } from '../../types/types';
 
 type ControlProps = {
@@ -8,8 +9,9 @@ type ControlProps = {
   value: string;
   autoFocus?: boolean;
   className?: string;
+  disabled?: boolean;
   language?: Record<string, string>;
-  renderExtra?: any;
+  renderExtra?: ReactNode;
   type?: InputType;
   onChange: (event: ChangeInputType) => void;
 };
@@ -22,6 +24,7 @@ const Control = ({
   label,
   renderExtra,
   autoFocus,
+  disabled,
   className = 'checkbox-label',
   type = 'checkbox',
 }: ControlProps) => (
@@ -31,8 +34,9 @@ const Control = ({
       name={name}
       id={id}
       value={value}
-      onChange={onChange}
       checked={checked}
+      onChange={onChange}
+      disabled={disabled}
       autoFocus={autoFocus}
     />
     <label htmlFor={id} className={className}>

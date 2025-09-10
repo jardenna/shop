@@ -12,7 +12,7 @@ type CheckboxListProps = {
   className?: string;
   language?: Record<string, string>;
   onChange: (event: ChangeInputType) => void;
-  renderExtra?: (checkbox: string) => React.ReactNode;
+  renderExtra?: (checkbox: string) => ReactNode;
 };
 
 const CheckboxList = ({
