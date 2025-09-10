@@ -4,7 +4,6 @@ import type { ChangeInputType } from '../../../types/types';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import IconContent from '../../IconContent';
 import { ProductLabelVariant } from '../../productLists/ProductListItem';
-import VisuallyHidden from '../../VisuallyHidden';
 
 type InputType = 'checkbox' | 'radio';
 
@@ -69,7 +68,6 @@ const ControlInputField = ({
         ) : (
           label
         )}
-        <VisuallyHidden>{ariaLabel}</VisuallyHidden>
       </label>
     </>
   );
