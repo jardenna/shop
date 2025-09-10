@@ -112,6 +112,10 @@ $animation-distance: 500px;
     gap: 0;
   }
 
+  .radio-btn-content {
+    height: $input-height;
+  }
+
   legend {
     margin-bottom: 8px;
     position: static;
