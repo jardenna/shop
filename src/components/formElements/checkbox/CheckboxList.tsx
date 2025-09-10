@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 import { ChangeInputType } from '../../../types/types';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
+import Control from '../Control';
 import './_checkbox.scss';
-import Control from './Control';
 
 type CheckboxListProps = {
   checkBoxList: string[];

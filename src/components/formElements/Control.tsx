@@ -1,4 +1,4 @@
-import { ChangeInputType, InputType } from '../../../types/types';
+import { ChangeInputType, InputType } from '../../types/types';
 
 type ControlProps = {
   checked: boolean;
