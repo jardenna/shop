@@ -3,7 +3,7 @@ import { ChangeInputType } from '../../../types/types';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import './_checkbox.scss';
 
-interface CheckboxListProps {
+type CheckboxListProps = {
   checkBoxList: string[];
   name: string;
   values: string[];
@@ -12,7 +12,7 @@ interface CheckboxListProps {
   language?: Record<string, string>;
   onChange: (event: ChangeInputType) => void;
   renderExtra?: (checkbox: string) => React.ReactNode;
-}
+};
 
 const CheckboxList = ({
   checkBoxList,
