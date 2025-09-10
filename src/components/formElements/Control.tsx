@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
+import { IconName } from '../../types/enums';
 import { ChangeInputType, InputType } from '../../types/types';
+import IconContent from '../IconContent';
 
 type ControlProps = {
   checked: boolean;
@@ -7,9 +9,11 @@ type ControlProps = {
   label: string;
   name: string;
   value: string;
+  ariaLabel?: string;
   autoFocus?: boolean;
   className?: string;
   disabled?: boolean;
+  iconName?: IconName;
   language?: Record<string, string>;
   renderExtra?: ReactNode;
   type?: InputType;
@@ -24,6 +28,8 @@ const Control = ({
   label,
   renderExtra,
   autoFocus,
+  iconName,
+  ariaLabel,
   disabled,
   className = 'checkbox-label',
   type = 'checkbox',
@@ -42,6 +48,15 @@ const Control = ({
     <label htmlFor={id} className={className}>
       {label}
       {renderExtra}
+
+      {iconName && (
+        <IconContent
+          iconName={iconName}
+          title=""
+          size="16"
+          ariaLabel={ariaLabel || ''}
+        />
+      )}
     </label>
   </>
 );
