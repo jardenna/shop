@@ -16,9 +16,9 @@ type ControlInputProps = {
   value: string;
   ariaLabel?: string;
   autoFocus?: boolean;
-  className?: string;
   disabled?: boolean;
   fill?: string;
+  iconClassName?: string;
   iconName?: IconName;
   iconSize?: string;
   type?: InputType;
@@ -37,7 +37,7 @@ const ControlInput = ({
   iconName,
   autoFocus,
   variant,
-  className = '',
+  iconClassName,
   fill,
   ariaLabel,
   iconSize,
@@ -64,7 +64,7 @@ const ControlInput = ({
             size={iconSize}
             title=""
             ariaLabel={ariaLabel || getlowerCaseFirstLetter(label, language)}
-            className={className}
+            className={iconClassName}
           />
         ) : (
           <span>

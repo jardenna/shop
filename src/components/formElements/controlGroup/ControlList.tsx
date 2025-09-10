@@ -82,7 +82,7 @@ const ControlList = ({
               label={label}
               ariaLabel={ariaLabel}
               variant={variant}
-              className={
+              iconClassName={
                 Number(label) <= Number(values[0]) && iconName ? 'filled' : ''
               }
             />
