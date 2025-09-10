@@ -13,6 +13,7 @@ type ControlProps = {
   autoFocus?: boolean;
   className?: string;
   disabled?: boolean;
+  iconClassName?: string;
   iconName?: IconName;
   language?: Record<string, string>;
   renderExtra?: ReactNode;
@@ -31,6 +32,7 @@ const Control = ({
   iconName,
   ariaLabel,
   disabled,
+  iconClassName,
   className = 'checkbox-label',
   type = 'checkbox',
 }: ControlProps) => (
@@ -55,6 +57,7 @@ const Control = ({
           title=""
           size="16"
           ariaLabel={ariaLabel || ''}
+          className={iconClassName}
         />
       )}
     </label>

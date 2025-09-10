@@ -47,6 +47,9 @@ const RadioButtonList = ({
             }
             className="radio-btn-label"
             iconName={iconName}
+            iconClassName={
+              Number(radio.value) <= Number(initialChecked) ? 'filled' : ''
+            }
           />
         </li>
       ))}
