@@ -3,7 +3,7 @@ import { ChangeInputType } from '../../../types/types';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import './_checkbox.scss';
 
-interface CheckboxProps {
+interface CheckboxListProps {
   checkBoxList: string[];
   name: string;
   values: string[];
@@ -14,7 +14,7 @@ interface CheckboxProps {
   renderExtra?: (checkbox: string) => React.ReactNode;
 }
 
-const Checkbox = ({
+const CheckboxList = ({
   checkBoxList,
   children,
   onChange,
@@ -23,7 +23,7 @@ const Checkbox = ({
   language,
   className = '',
   renderExtra,
-}: CheckboxProps) => (
+}: CheckboxListProps) => (
   <ul className={`checkbox-list ${className}`}>
     {checkBoxList.map((checkbox, index) => (
       <li key={checkbox} className="checkbox-item">
@@ -45,4 +45,4 @@ const Checkbox = ({
   </ul>
 );
 
-export default Checkbox;
+export default CheckboxList;

@@ -7,10 +7,6 @@
   overflow: auto;
   max-height: 500px;
 
-  &:not(.tag-list) {
-    flex-direction: column;
-  }
-
   .checkbox-item {
     display: flex;
     gap: 8px;
@@ -63,6 +59,15 @@
 
     &:checked::before {
       transform: scale(1) rotate(45deg);
+    }
+  }
+
+  &:not(.tag-list) {
+    flex-direction: column;
+
+    input[type='checkbox'] {
+      position: static;
+      clip-path: none;
     }
   }
 }

@@ -1,7 +1,7 @@
 import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import type { AccordionList } from '../../../components/accordion/Accordion';
 import Accordion from '../../../components/accordion/Accordion';
-import Checkbox from '../../../components/formElements/checkbox/Checkbox';
+import CheckboxList from '../../../components/formElements/checkbox/CheckboxList';
 import IconContent from '../../../components/IconContent';
 import Icon from '../../../components/icons/Icon';
 import TogglePanel from '../../../components/togglePanel/TogglePanel';
@@ -33,7 +33,7 @@ const FilterPanel = ({
     {
       title: language.colours,
       content: (
-        <Checkbox
+        <CheckboxList
           checkBoxList={colors}
           name="colors"
           onChange={onChange}
@@ -55,7 +55,7 @@ const FilterPanel = ({
     {
       title: language.sizes,
       content: (
-        <Checkbox
+        <CheckboxList
           checkBoxList={availableSizes}
           name="sizes"
           onChange={onChange}
@@ -66,7 +66,7 @@ const FilterPanel = ({
     {
       title: language.brand,
       content: (
-        <Checkbox
+        <CheckboxList
           checkBoxList={availableBrands}
           name="brand"
           onChange={onChange}
@@ -94,7 +94,7 @@ const FilterPanel = ({
         {Object.entries(values).map(
           ([key, values]) =>
             values.length > 0 && (
-              <Checkbox
+              <CheckboxList
                 className="tag-list"
                 language={language}
                 key={key}
@@ -109,7 +109,7 @@ const FilterPanel = ({
                   size="16"
                   ariaLabel={language.removeFilter}
                 />
-              </Checkbox>
+              </CheckboxList>
             ),
         )}
         <Accordion accordionList={accordionList} />
