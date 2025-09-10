@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { ChangeInputType } from '../../../types/types';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import './_checkbox.scss';
+import Checkbox from './Checkbox';
 
 type CheckboxListProps = {
   checkBoxList: string[];
@@ -27,19 +28,18 @@ const CheckboxList = ({
   <ul className={`checkbox-list ${className}`}>
     {checkBoxList.map((checkbox, index) => (
       <li key={checkbox} className="checkbox-item">
-        <input
-          type="checkbox"
+        <Checkbox
           name={name}
           id={`${name}-${index}`}
           value={checkbox}
           onChange={onChange}
           checked={values.includes(checkbox)}
+          label={
+            language ? getlowerCaseFirstLetter(checkbox, language) : checkbox
+          }
+          renderExtra={renderExtra ? renderExtra(checkbox) : undefined}
         />
-        <label htmlFor={`${name}-${index}`} className="checkbox-label">
-          {language ? getlowerCaseFirstLetter(checkbox, language) : checkbox}
-          {renderExtra && renderExtra(checkbox)}
-          {children}
-        </label>
+        {children}
       </li>
     ))}
   </ul>
