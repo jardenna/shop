@@ -4,7 +4,7 @@ import { colorMap } from '../../../utils/colorUtils';
 import OptionGroupTitle from '../../productLists/OptionGroupTitle';
 import type { ProductLabelVariant } from '../../productLists/ProductListItem';
 import InputInfo from '../InputInfo';
-import ControlInputField from './ControlInputField';
+import ControlInput from './ControlInput';
 import './_control-list.scss';
 
 export type BaseControlGroupProps = {
@@ -65,7 +65,7 @@ const ControlList = ({
 
         return (
           <li key={label} className="control-item">
-            <ControlInputField
+            <ControlInput
               iconSize={iconSize}
               autoFocus={autoFocus && index === 0}
               iconName={iconName}

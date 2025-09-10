@@ -8,7 +8,7 @@ import VisuallyHidden from '../../VisuallyHidden';
 
 type InputType = 'checkbox' | 'radio';
 
-type ControlInputFieldProps = {
+type ControlInputProps = {
   checked: boolean;
   id: string;
   label: string;
@@ -26,7 +26,7 @@ type ControlInputFieldProps = {
   onChange: (event: ChangeInputType) => void;
 };
 
-const ControlInputField = ({
+const ControlInput = ({
   id,
   name,
   label,
@@ -41,7 +41,7 @@ const ControlInputField = ({
   fill,
   ariaLabel,
   iconSize,
-}: ControlInputFieldProps) => {
+}: ControlInputProps) => {
   const { language } = useLanguage();
 
   return (
@@ -76,4 +76,4 @@ const ControlInputField = ({
   );
 };
 
-export default ControlInputField;
+export default ControlInput;
