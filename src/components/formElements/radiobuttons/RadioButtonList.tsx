@@ -1,7 +1,7 @@
 import useLanguage from '../../../features/language/useLanguage';
 import type { ChangeInputType, OptionType } from '../../../types/types';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
-import Checkbox from '../checkbox/Checkbox';
+import Control from '../checkbox/Control';
 import './_radio-button.scss';
 
 type RadioButtonListProps = {
@@ -25,7 +25,7 @@ const RadioButtonList = ({
     <ul className="radio-btn-container">
       {radioButtonList.map((radio, index) => (
         <li key={radio.value} className="radio-btn-content">
-          <Checkbox
+          <Control
             type="radio"
             id={radio.label}
             name={name}

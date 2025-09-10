@@ -1,6 +1,6 @@
 import { ChangeInputType, InputType } from '../../../types/types';
 
-type CheckboxProps = {
+type ControlProps = {
   checked: boolean;
   id: string;
   label: string;
@@ -13,7 +13,7 @@ type CheckboxProps = {
   type?: InputType;
   onChange: (event: ChangeInputType) => void;
 };
-const Checkbox = ({
+const Control = ({
   onChange,
   checked,
   name,
@@ -24,7 +24,7 @@ const Checkbox = ({
   autoFocus,
   className = 'checkbox-label',
   type = 'checkbox',
-}: CheckboxProps) => (
+}: ControlProps) => (
   <>
     <input
       type={type}
@@ -42,4 +42,4 @@ const Checkbox = ({
   </>
 );
 
-export default Checkbox;
+export default Control;
