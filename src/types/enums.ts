@@ -77,6 +77,7 @@ export enum IconName {
   Calendar = 'calendar',
   Categories = 'categories',
   Check = 'check',
+  ChevronDown = 'chevronDown',
   ChevronLeft = 'chevronLeft',
   ChevronRight = 'chevronRight',
   CircleChevronRight = 'circleChevronRight',

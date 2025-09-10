@@ -8,6 +8,7 @@ import AuthIcon from './AuthIcon';
 import CalendarIcon from './CalendarIcon';
 import CategoriesIcon from './CategoriesIcon';
 import CheckIcon from './CheckIcon';
+import ChevronDownIcon from './ChevronDownIcon';
 import ChevronLeftIcon from './ChevronLeftIcon';
 import ChevronRightIcon from './ChevronRightIcon';
 import CircleChevronRightIcon from './CircleChevronRightIcon';
@@ -74,6 +75,7 @@ const iconMapping = {
   calendar: CalendarIcon,
   categories: CategoriesIcon,
   check: CheckIcon,
+  chevronDown: ChevronDownIcon,
   chevronLeft: ChevronLeftIcon,
   chevronRight: ChevronRightIcon,
   circleChevronRight: CircleChevronRightIcon,
