@@ -6,6 +6,7 @@ type CheckboxProps = {
   label: string;
   name: string;
   value: string;
+  autoFocus?: boolean;
   className?: string;
   language?: Record<string, string>;
   renderExtra?: any;
@@ -20,6 +21,8 @@ const Checkbox = ({
   value,
   label,
   renderExtra,
+  autoFocus,
+  className = 'checkbox-label',
   type = 'checkbox',
 }: CheckboxProps) => (
   <>
@@ -30,8 +33,9 @@ const Checkbox = ({
       value={value}
       onChange={onChange}
       checked={checked}
+      autoFocus={autoFocus}
     />
-    <label htmlFor={id} className="checkbox-label">
+    <label htmlFor={id} className={className}>
       {label}
       {renderExtra}
     </label>

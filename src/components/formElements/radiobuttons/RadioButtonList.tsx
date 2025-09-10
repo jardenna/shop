@@ -1,9 +1,10 @@
 import useLanguage from '../../../features/language/useLanguage';
 import type { ChangeInputType, OptionType } from '../../../types/types';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
+import Checkbox from '../checkbox/Checkbox';
 import './_radio-button.scss';
 
-type RadioButtonProps = {
+type RadioButtonListProps = {
   initialChecked: string;
   name: string;
   radioButtonList: OptionType[];
@@ -11,35 +12,34 @@ type RadioButtonProps = {
   onChange: (event: ChangeInputType) => void;
 };
 
-const RadioButton = ({
+const RadioButtonList = ({
   initialChecked,
   radioButtonList,
   onChange,
   name,
   autoFocus,
-}: RadioButtonProps) => {
+}: RadioButtonListProps) => {
   const { language } = useLanguage();
 
   return (
     <ul className="radio-btn-container">
       {radioButtonList.map((radio, index) => (
         <li key={radio.value} className="radio-btn-content">
-          <input
-            autoFocus={autoFocus && index === 0}
+          <Checkbox
             type="radio"
             id={radio.label}
             name={name}
             value={radio.value}
             checked={initialChecked === radio.value}
             onChange={onChange}
+            label={getlowerCaseFirstLetter(radio.label, language)}
+            autoFocus={autoFocus && index === 0}
+            className="radio-btn-label"
           />
-          <label htmlFor={radio.label} className="radio-btn-label">
-            {getlowerCaseFirstLetter(radio.label, language)}
-          </label>
         </li>
       ))}
     </ul>
   );
 };
 
-export default RadioButton;
+export default RadioButtonList;

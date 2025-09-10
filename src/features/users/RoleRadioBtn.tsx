@@ -1,5 +1,5 @@
 import type { Roles } from '../../app/api/apiTypes/adminApiTypes';
-import RadioButton from '../../components/formElements/radiobuttons/RadioButton';
+import RadioButtonList from '../../components/formElements/radiobuttons/RadioButtonList';
 import type { ChangeInputType } from '../../types/types';
 import { roleList } from '../../utils/productLists';
 
@@ -9,7 +9,7 @@ type RoleRadioBtnProps = {
 };
 
 const RoleRadioBtn = ({ roleValue, onChange }: RoleRadioBtnProps) => (
-  <RadioButton
+  <RadioButtonList
     radioButtonList={roleList}
     name="role"
     initialChecked={roleValue}
