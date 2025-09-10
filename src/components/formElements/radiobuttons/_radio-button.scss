@@ -5,22 +5,22 @@
   gap: 8px;
 }
 
+.radio-btn-label {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-transform: uppercase;
+
+  @extend %styled-input;
+}
+
 .radio-btn-content {
   width: 100%;
 
   &:has(input:focus-visible) {
     @include outline;
-  }
-
-  .radio-btn-label {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    text-transform: uppercase;
-
-    @extend %styled-input;
   }
 
   &:has(input[type='radio']:checked) {

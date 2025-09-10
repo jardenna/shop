@@ -24,7 +24,7 @@ const RadioButtonList = ({
   name,
   autoFocus,
   iconName,
-  className,
+  className = '',
   hideLabel,
 }: RadioButtonListProps) => {
   const { language } = useLanguage();

@@ -57,7 +57,6 @@ const Control = ({
         <IconContent
           iconName={iconName}
           title=""
-          size="16"
           ariaLabel={ariaLabel || ''}
           className={iconClassName}
         />

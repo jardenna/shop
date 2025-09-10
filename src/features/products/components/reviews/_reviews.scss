@@ -44,19 +44,26 @@
 }
 
 .review-form {
-  .control-list {
-    .control-item {
+  .reviews {
+    &.radio-btn-container {
+      gap: 0;
+    }
+
+    .radio-btn-label {
+      background-color: transparent;
+      width: auto;
+    }
+
+    .radio-btn-content {
+      width: auto;
+
       &:has(input[type='radio']:checked) {
-        border: none;
+        .radio-btn-label {
+          background-color: transparent;
+        }
       }
     }
 
-    .control-label {
-      display: inline;
-    }
-  }
-
-  .reviews {
     svg {
       @include transition($time: 0.2s);
 
