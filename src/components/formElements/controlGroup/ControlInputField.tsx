@@ -44,7 +44,7 @@ const ControlInputField = ({
   const { language } = useLanguage();
 
   return (
-    <div>
+    <>
       <input
         type={type}
         id={id}
@@ -72,7 +72,7 @@ const ControlInputField = ({
           label
         )}
       </label>
-    </div>
+    </>
   );
 };
 
