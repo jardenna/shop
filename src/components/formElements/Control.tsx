@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { IconName } from '../../types/enums';
 import { ChangeInputType, ControlInputType } from '../../types/types';
 import IconContent from '../IconContent';
+
 type ControlProps = {
   checked: boolean;
   id: string;
@@ -20,6 +21,7 @@ type ControlProps = {
   type?: ControlInputType;
   onChange: (event: ChangeInputType) => void;
 };
+
 const Control = ({
   onChange,
   checked,
