@@ -1,12 +1,10 @@
 import useLanguage from '../../../features/language/useLanguage';
 import { IconName } from '../../../types/enums';
-import type { ChangeInputType } from '../../../types/types';
+import type { ChangeInputType, ControlInputType } from '../../../types/types';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import IconContent from '../../IconContent';
 import { ProductLabelVariant } from '../../productLists/ProductListItem';
 import VisuallyHidden from '../../VisuallyHidden';
-
-type InputType = 'checkbox' | 'radio';
 
 type ControlInputProps = {
   checked: boolean;
@@ -21,7 +19,7 @@ type ControlInputProps = {
   iconClassName?: string;
   iconName?: IconName;
   iconSize?: string;
-  type?: InputType;
+  type?: ControlInputType;
   variant?: ProductLabelVariant;
   onChange: (event: ChangeInputType) => void;
 };

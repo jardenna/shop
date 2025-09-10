@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import useLanguage from '../../features/language/useLanguage';
 import { BtnType, IconName } from '../../types/enums';
-import type { ChangeInputType, InputType } from '../../types/types';
+import type { ChangeInputType } from '../../types/types';
 import Input from '../formElements/Input';
 import IconBtn from '../IconBtn';
 
@@ -16,13 +16,11 @@ export type BaseEditTableInput = {
 
 type EditTableInputProps = BaseEditTableInput & {
   alternativeInput?: ReactElement;
-  inputType?: InputType;
   isAlterntiveInput?: boolean;
 };
 
 const EditTableInput = ({
   id,
-  inputType,
   value,
   cellContent,
   onCancel,
@@ -48,7 +46,6 @@ const EditTableInput = ({
             onChange={onEditChange}
             value={value}
             labelText={cellContent}
-            type={inputType}
             inputHasNoLabel
             autoFocus
           />

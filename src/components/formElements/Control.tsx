@@ -1,8 +1,7 @@
 import { ReactNode } from 'react';
 import { IconName } from '../../types/enums';
-import { ChangeInputType, InputType } from '../../types/types';
+import { ChangeInputType, ControlInputType } from '../../types/types';
 import IconContent from '../IconContent';
-
 type ControlProps = {
   checked: boolean;
   id: string;
@@ -18,7 +17,7 @@ type ControlProps = {
   iconName?: IconName;
   language?: Record<string, string>;
   renderExtra?: ReactNode;
-  type?: InputType;
+  type?: ControlInputType;
   onChange: (event: ChangeInputType) => void;
 };
 const Control = ({
