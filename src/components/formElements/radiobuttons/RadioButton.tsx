@@ -24,9 +24,6 @@ const RadioButton = ({
     <ul className="radio-btn-container">
       {radioButtonList.map((radio, index) => (
         <li key={radio.value} className="radio-btn-content">
-          <label htmlFor={radio.label} className="radio-btn-label">
-            {getlowerCaseFirstLetter(radio.label, language)}
-          </label>
           <input
             autoFocus={autoFocus && index === 0}
             type="radio"
@@ -36,6 +33,9 @@ const RadioButton = ({
             checked={initialChecked === radio.value}
             onChange={onChange}
           />
+          <label htmlFor={radio.label} className="radio-btn-label">
+            {getlowerCaseFirstLetter(radio.label, language)}
+          </label>
         </li>
       ))}
     </ul>

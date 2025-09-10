@@ -22,6 +22,8 @@ input[type='number'] {
 input[type='radio'],
 input[type='checkbox'] {
   appearance: none;
+  clip-path: inset(50%);
+  position: absolute;
   margin: 0;
 }
 

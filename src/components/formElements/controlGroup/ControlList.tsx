@@ -73,26 +73,29 @@ const ControlList = ({
             : initialChecked === label;
 
         return (
-          <ControlInputField
-            key={label}
-            iconSize={iconSize}
-            autoFocus={autoFocus && index === 0}
-            iconName={iconName}
-            fill={iconName ? colorMap[label] : ''}
-            id={id}
-            type={type}
-            name={name}
-            value={label}
-            checked={checked}
-            disabled={disabledList ? !disabledList.includes(label) : undefined}
-            onChange={onChange}
-            label={label}
-            ariaLabel={ariaLabel}
-            variant={variant}
-            className={
-              Number(label) <= Number(values[0]) && iconName ? 'filled' : ''
-            }
-          />
+          <li key={label} className="control-item">
+            <ControlInputField
+              iconSize={iconSize}
+              autoFocus={autoFocus && index === 0}
+              iconName={iconName}
+              fill={iconName ? colorMap[label] : ''}
+              id={id}
+              type={type}
+              name={name}
+              value={label}
+              checked={checked}
+              disabled={
+                disabledList ? !disabledList.includes(label) : undefined
+              }
+              onChange={onChange}
+              label={label}
+              ariaLabel={ariaLabel}
+              variant={variant}
+              className={
+                Number(label) <= Number(values[0]) && iconName ? 'filled' : ''
+              }
+            />
+          </li>
         );
       })}
     </ul>

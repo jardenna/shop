@@ -44,7 +44,17 @@ const ControlInputField = ({
   const { language } = useLanguage();
 
   return (
-    <li className="control-item">
+    <>
+      <input
+        type={type}
+        id={id}
+        name={name}
+        value={label}
+        checked={checked}
+        onChange={onChange}
+        disabled={disabled}
+        autoFocus={autoFocus}
+      />
       <label
         htmlFor={id}
         className={`control-label ${variant}-item ${disabled ? 'unavailable' : ''}`}
@@ -62,17 +72,7 @@ const ControlInputField = ({
           label
         )}
       </label>
-      <input
-        type={type}
-        id={id}
-        name={name}
-        value={label}
-        checked={checked}
-        onChange={onChange}
-        disabled={disabled}
-        autoFocus={autoFocus}
-      />
-    </li>
+    </>
   );
 };
 
