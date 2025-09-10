@@ -44,6 +44,14 @@
 }
 
 .review-form {
+  margin-bottom: 16px;
+
+  .fieldset {
+    legend {
+      margin-bottom: 8px;
+    }
+  }
+
   .reviews {
     &.radio-btn-container {
       gap: 0;

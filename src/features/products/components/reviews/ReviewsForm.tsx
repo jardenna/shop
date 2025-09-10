@@ -82,25 +82,23 @@ const ReviewsForm = ({
             hideLabel
           />
         </FieldSet>
-        <div className={`review-textbox ${visible ? 'visible' : ''}`}>
-          <Textarea
-            tabIndex={!visible ? -1 : undefined}
-            ariaHidden={!visible}
-            value={values.comment}
-            name="comment"
-            id="comment"
-            labelText={language.shareYourExperience}
-            onChange={onChangeTextArea}
-            rows={8}
-          />
-          <Button
-            type={BtnType.Submit}
-            disabled={isLoading}
-            tabIndex={!visible ? -1 : undefined}
-          >
-            {language.shareReview}
-          </Button>
-        </div>
+
+        {visible && (
+          <div className={`review-textbox ${visible ? 'visible' : ''}`}>
+            <Textarea
+              ariaHidden={!visible}
+              value={values.comment}
+              name="comment"
+              id="comment"
+              labelText={language.shareYourExperience}
+              onChange={onChangeTextArea}
+              rows={8}
+            />
+            <Button type={BtnType.Submit} disabled={isLoading}>
+              {language.shareReview}
+            </Button>
+          </div>
+        )}
       </form>
     )
   );
