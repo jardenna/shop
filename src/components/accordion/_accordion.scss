@@ -10,10 +10,6 @@
     }
   }
 
-  details * {
-    margin: 0;
-  }
-
   details {
     border-block-end: 1px solid $color-border-dark;
     overflow: clip;
@@ -45,7 +41,7 @@
       }
 
       .accordion-icon {
-        transform: rotate(45deg);
+        transform: rotate(180deg);
       }
     }
   }
