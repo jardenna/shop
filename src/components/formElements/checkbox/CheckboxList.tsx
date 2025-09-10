@@ -10,6 +10,7 @@ type CheckboxListProps = {
   name: string;
   values: string[];
   ariaLabel?: string;
+  autoFocus?: boolean;
   className?: string;
   iconName?: IconName;
   language?: Record<string, string>;
@@ -27,6 +28,7 @@ const CheckboxList = ({
   iconName,
   renderExtra,
   ariaLabel,
+  autoFocus,
 }: CheckboxListProps) => (
   <ul className={`checkbox-list ${className}`}>
     {checkBoxList.map((checkbox, index) => (
@@ -38,6 +40,7 @@ const CheckboxList = ({
           id={`${name}-${index}`}
           value={checkbox}
           onChange={onChange}
+          autoFocus={autoFocus && index === 0}
           checked={values.includes(checkbox)}
           label={
             language ? getlowerCaseFirstLetter(checkbox, language) : checkbox

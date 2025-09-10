@@ -46,7 +46,7 @@ const Control = ({
       autoFocus={autoFocus}
     />
     <label htmlFor={id} className={className}>
-      {label}
+      {!ariaLabel && label}
       {renderExtra}
 
       {iconName && (

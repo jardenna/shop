@@ -11,4 +11,12 @@ const roleList: OptionType[] = roles.map((role) => ({
   label: role.toLowerCase(),
 }));
 
-export { roleList, roles, sizeList };
+const raitingList: OptionType[] = [
+  { value: '1', label: 'rating1', ariaLabel: true },
+  { value: '2', label: 'rating2', ariaLabel: true },
+  { value: '3', label: 'rating3', ariaLabel: true },
+  { value: '4', label: 'rating4', ariaLabel: true },
+  { value: '5', label: 'rating5', ariaLabel: true },
+];
+
+export { raitingList, roleList, roles, sizeList };

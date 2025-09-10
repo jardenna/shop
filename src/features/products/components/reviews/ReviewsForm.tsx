@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import Button from '../../../../components/Button';
 import FieldSet from '../../../../components/fieldset/FieldSet';
-import ControlList from '../../../../components/formElements/controlGroup/ControlList';
+import RadioButtonList from '../../../../components/formElements/radiobuttons/RadioButtonList';
 import Textarea from '../../../../components/formElements/Textarea';
 import useMessagePopup from '../../../../components/messagePopup/useMessagePopup';
 import useFormValidation from '../../../../hooks/useFormValidation';
 import { BtnType, IconName } from '../../../../types/enums';
 import type { ChangeInputType } from '../../../../types/types';
-import { optionsList } from '../../../../utils/utils';
+import { raitingList } from '../../../../utils/productLists';
 import useLanguage from '../../../language/useLanguage';
 import {
   useCheckReviewedQuery,
@@ -49,6 +49,7 @@ const ReviewsForm = ({
   });
 
   const { onAddMessagePopup } = useMessagePopup();
+  console.log(totalStars);
 
   // Redux hooks
   const [createReview, { isLoading }] = usePostReviewsMutation();
@@ -87,22 +88,19 @@ const ReviewsForm = ({
     !hasReviewed?.reviewed && (
       <form onSubmit={onSubmit} className="review-form">
         <FieldSet legendText={language.rateProduct}>
-          <ControlList
+          <RadioButtonList
             name="rating"
-            options={optionsList(totalStars)}
-            type="radio"
+            radioButtonList={raitingList}
             initialChecked={String(values.rating)}
             onChange={handleChange}
             className="reviews"
             iconName={IconName.Star}
-            values={[String(values.rating)]}
-            ariaLabel="star"
           />
         </FieldSet>
         <div className={`review-textbox ${visible ? 'visible' : ''}`}>
           <Textarea
-            tabIndex={visible === '' ? -1 : undefined}
-            ariaHidden={visible === '' ? true : undefined}
+            tabIndex={!visible ? -1 : undefined}
+            ariaHidden={!visible}
             value={values.comment}
             ref={textareaRef}
             name="comment"
@@ -114,7 +112,7 @@ const ReviewsForm = ({
           <Button
             type={BtnType.Submit}
             disabled={isLoading}
-            tabIndex={visible === '' ? -1 : undefined}
+            tabIndex={!visible ? -1 : undefined}
           >
             {language.shareReview}
           </Button>
