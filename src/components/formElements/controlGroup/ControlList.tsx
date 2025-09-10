@@ -23,7 +23,7 @@ export type BaseControlGroupProps = {
   onChange: (event: ChangeInputType) => void;
 };
 
-type ControlList = BaseControlGroupProps & {
+type ControlListProps = BaseControlGroupProps & {
   type: 'checkbox' | 'radio';
   initialChecked?: string;
   values?: string[];
@@ -46,7 +46,7 @@ const ControlList = ({
   variant = 'medium',
   iconSize,
   ariaLabel,
-}: ControlList) => (
+}: ControlListProps) => (
   <div>
     {groupTitle && (
       <OptionGroupTitle groupTitle={groupTitle} required={required} />
