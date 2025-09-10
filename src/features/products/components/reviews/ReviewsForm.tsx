@@ -7,13 +7,13 @@ import useMessagePopup from '../../../../components/messagePopup/useMessagePopup
 import useFormValidation from '../../../../hooks/useFormValidation';
 import { BtnType, IconName } from '../../../../types/enums';
 import type { ChangeInputType } from '../../../../types/types';
-import { raitingList } from '../../../../utils/productLists';
 import useLanguage from '../../../language/useLanguage';
 import {
   useCheckReviewedQuery,
   usePostReviewsMutation,
 } from '../../../shop/shopApiSlice';
 import './_reviews.scss';
+import { createRatingList } from '../../../../utils/productLists';
 
 type ReviewsFormProps = {
   productId: string;
@@ -35,21 +35,12 @@ const ReviewsForm = ({
     comment: '',
   };
 
-  // const starAriaLabels = [
-  //   language.rating1,
-  //   language.rating2,
-  //   language.rating3,
-  //   language.rating4,
-  //   language.rating5,
-  // ];
-
   const { values, onChange, onChangeTextArea, onSubmit } = useFormValidation({
     initialState,
     callback: handleSubmit,
   });
 
   const { onAddMessagePopup } = useMessagePopup();
-  console.log(totalStars);
 
   // Redux hooks
   const [createReview, { isLoading }] = usePostReviewsMutation();
@@ -90,7 +81,7 @@ const ReviewsForm = ({
         <FieldSet legendText={language.rateProduct}>
           <RadioButtonList
             name="rating"
-            radioButtonList={raitingList}
+            radioButtonList={createRatingList(totalStars)}
             initialChecked={String(values.rating)}
             onChange={handleChange}
             className="reviews"
