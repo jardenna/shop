@@ -36,7 +36,7 @@ const SizeList = ({
         <ProductListItem
           key={size}
           unavailable={!availableSizeList.includes(size)}
-          ariaLabel={
+          screenReaderText={
             !availableSizeList.includes(size)
               ? language.unavailable
               : language.available

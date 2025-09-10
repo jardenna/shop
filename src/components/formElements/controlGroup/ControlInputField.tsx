@@ -4,6 +4,7 @@ import type { ChangeInputType } from '../../../types/types';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import IconContent from '../../IconContent';
 import { ProductLabelVariant } from '../../productLists/ProductListItem';
+import VisuallyHidden from '../../VisuallyHidden';
 
 type InputType = 'checkbox' | 'radio';
 
@@ -55,10 +56,7 @@ const ControlInputField = ({
         disabled={disabled}
         autoFocus={autoFocus}
       />
-      <label
-        htmlFor={id}
-        className={`control-label ${variant}-item ${disabled ? 'unavailable' : ''}`}
-      >
+      <label htmlFor={id} className={`control-label ${variant}-item`}>
         {iconName ? (
           <IconContent
             iconName={iconName}
@@ -71,6 +69,7 @@ const ControlInputField = ({
         ) : (
           label
         )}
+        <VisuallyHidden>{ariaLabel}</VisuallyHidden>
       </label>
     </>
   );
