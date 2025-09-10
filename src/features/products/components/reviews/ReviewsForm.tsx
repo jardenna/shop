@@ -6,7 +6,7 @@ import Textarea from '../../../../components/formElements/Textarea';
 import useMessagePopup from '../../../../components/messagePopup/useMessagePopup';
 import useFormValidation from '../../../../hooks/useFormValidation';
 import { BtnType, IconName } from '../../../../types/enums';
-import type { AriaLabelData, ChangeInputType } from '../../../../types/types';
+import type { ChangeInputType } from '../../../../types/types';
 import { optionsList } from '../../../../utils/utils';
 import useLanguage from '../../../language/useLanguage';
 import {
@@ -35,18 +35,13 @@ const ReviewsForm = ({
     comment: '',
   };
 
-  const starAriaLabels = [
-    language.rating1,
-    language.rating2,
-    language.rating3,
-    language.rating4,
-    language.rating5,
-  ];
-
-  const starAriaLabelData: AriaLabelData = {
-    ariaLabels: starAriaLabels,
-    unit: language.stars,
-  };
+  // const starAriaLabels = [
+  //   language.rating1,
+  //   language.rating2,
+  //   language.rating3,
+  //   language.rating4,
+  //   language.rating5,
+  // ];
 
   const { values, onChange, onChangeTextArea, onSubmit } = useFormValidation({
     initialState,
@@ -101,7 +96,7 @@ const ReviewsForm = ({
             className="reviews"
             iconName={IconName.Star}
             values={[String(values.rating)]}
-            ariaLabelData={starAriaLabelData}
+            ariaLabel="star"
           />
         </FieldSet>
         <div className={`review-textbox ${visible ? 'visible' : ''}`}>
