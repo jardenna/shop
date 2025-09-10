@@ -13,6 +13,7 @@ type ControlProps = {
   autoFocus?: boolean;
   className?: string;
   disabled?: boolean;
+  hideLabel?: boolean;
   iconClassName?: string;
   iconName?: IconName;
   language?: Record<string, string>;
@@ -27,6 +28,7 @@ const Control = ({
   id,
   value,
   label,
+  hideLabel,
   renderExtra,
   autoFocus,
   iconName,
@@ -48,7 +50,7 @@ const Control = ({
       autoFocus={autoFocus}
     />
     <label htmlFor={id} className={className}>
-      {!ariaLabel && label}
+      {!hideLabel && label}
       {renderExtra}
 
       {iconName && (

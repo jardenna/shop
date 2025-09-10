@@ -95,6 +95,7 @@ const ReviewsForm = ({
             onChange={handleChange}
             className="reviews"
             iconName={IconName.Star}
+            hideLabel
           />
         </FieldSet>
         <div className={`review-textbox ${visible ? 'visible' : ''}`}>

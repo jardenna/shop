@@ -12,6 +12,7 @@ type RadioButtonListProps = {
   ariaLabel?: string;
   autoFocus?: boolean;
   className?: string;
+  hideLabel?: boolean;
   iconName?: IconName;
   onChange: (event: ChangeInputType) => void;
 };
@@ -24,6 +25,7 @@ const RadioButtonList = ({
   autoFocus,
   iconName,
   className,
+  hideLabel,
 }: RadioButtonListProps) => {
   const { language } = useLanguage();
 
@@ -34,17 +36,14 @@ const RadioButtonList = ({
           <Control
             type="radio"
             id={radio.label}
+            hideLabel={hideLabel}
             name={name}
             value={radio.value}
             checked={initialChecked === radio.value}
             onChange={onChange}
             label={getlowerCaseFirstLetter(radio.label, language)}
             autoFocus={autoFocus && index === 0}
-            ariaLabel={
-              radio.ariaLabel
-                ? getlowerCaseFirstLetter(radio.label, language)
-                : undefined
-            }
+            ariaLabel={getlowerCaseFirstLetter(radio.label, language)}
             className="radio-btn-label"
             iconName={iconName}
             iconClassName={

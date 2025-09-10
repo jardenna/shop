@@ -16,7 +16,6 @@ export type refFormType = RefObject<HTMLFormElement | null>;
 export type OptionType<T = string> = {
   label: string;
   value: T;
-  ariaLabel?: boolean;
 };
 
 export type AriaLabelData = {

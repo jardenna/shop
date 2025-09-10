@@ -15,6 +15,7 @@ export type BaseControlGroupProps = {
   className?: string;
   disabledList?: string[];
   groupTitle?: OptionGroupHeading;
+  iconClassName?: string;
   iconName?: IconName;
   iconSize?: string;
   inputInfo?: string;
@@ -46,6 +47,7 @@ const ControlList = ({
   variant = 'medium',
   iconSize,
   ariaLabel,
+  iconClassName,
 }: ControlListProps) => (
   <div>
     {groupTitle && (
@@ -82,9 +84,7 @@ const ControlList = ({
               label={label}
               ariaLabel={ariaLabel}
               variant={variant}
-              iconClassName={
-                Number(label) <= Number(values[0]) && iconName ? 'filled' : ''
-              }
+              iconClassName={iconClassName}
             />
           </li>
         );

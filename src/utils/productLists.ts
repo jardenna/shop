@@ -12,11 +12,11 @@ const roleList: OptionType[] = roles.map((role) => ({
 }));
 
 const raitingList: OptionType[] = [
-  { value: '1', label: 'rating1', ariaLabel: true },
-  { value: '2', label: 'rating2', ariaLabel: true },
-  { value: '3', label: 'rating3', ariaLabel: true },
-  { value: '4', label: 'rating4', ariaLabel: true },
-  { value: '5', label: 'rating5', ariaLabel: true },
+  { value: '1', label: 'rating1' },
+  { value: '2', label: 'rating2' },
+  { value: '3', label: 'rating3' },
+  { value: '4', label: 'rating4' },
+  { value: '5', label: 'rating5' },
 ];
 
 export { raitingList, roleList, roles, sizeList };
