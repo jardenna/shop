@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react';
 import type {
   BlurEventType,
-  ChangeInputType,
+  InputChangeHandler,
   InputType,
   refInputType,
 } from '../../types/types';
@@ -12,6 +12,7 @@ export type InputProps = {
   id: string;
   labelText: string;
   name: string;
+  onChange: InputChangeHandler;
   value: string | number;
   autoComplete?: string;
   autoFocus?: boolean;
@@ -31,7 +32,6 @@ export type InputProps = {
   required?: boolean;
   type?: InputType;
   onBlur?: (event: BlurEventType) => void;
-  onChange: (event: ChangeInputType) => void;
   onFocus?: () => void;
 };
 

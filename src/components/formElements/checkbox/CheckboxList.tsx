@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { IconName } from '../../../types/enums';
-import { ChangeInputType } from '../../../types/types';
+import type { InputChangeHandler } from '../../../types/types';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import Control from '../Control';
 import './_checkbox.scss';
@@ -8,13 +8,13 @@ import './_checkbox.scss';
 type CheckboxListProps = {
   checkBoxList: string[];
   name: string;
+  onChange: InputChangeHandler;
   values: string[];
   ariaLabel?: string;
   autoFocus?: boolean;
   className?: string;
   iconName?: IconName;
   language?: Record<string, string>;
-  onChange: (event: ChangeInputType) => void;
   renderExtra?: (checkbox: string) => ReactNode;
 };
 

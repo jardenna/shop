@@ -7,8 +7,8 @@ import type { CreateAccountProps } from '../../pages/CreateAccount';
 import { BtnVariant } from '../../types/enums';
 import type {
   BlurEventType,
-  ChangeInputType,
   FormEventType,
+  InputChangeHandler,
 } from '../../types/types';
 import Button from '../Button';
 import FieldSet from '../fieldset/FieldSet';
@@ -30,11 +30,11 @@ type AuthFormProps = CreateAccountProps & {
   isLoading: boolean;
   legendText: string;
   navigateToText: string;
+  onChange: InputChangeHandler;
   submitBtnLabel: string;
   values: UserFields;
   showPopUpRules?: boolean;
   onBlur: (event: BlurEventType) => void;
-  onChange: (event: ChangeInputType) => void;
   onFocus?: () => void;
   onSubmit: (event: FormEventType) => void;
 };

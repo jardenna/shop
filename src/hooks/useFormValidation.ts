@@ -2,10 +2,10 @@ import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import type {
   BlurEventType,
   ChangeInputType,
+  ChangeTextAreaType,
   FormEventType,
 } from '../types/types';
 import { allowedExtensions, maxFileSize } from '../utils/utils';
-import { ChangeTextAreaType } from './../types/types';
 
 export type KeyValuePair<T> = {
   [key: string]: T;

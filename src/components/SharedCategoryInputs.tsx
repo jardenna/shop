@@ -1,4 +1,4 @@
-import type { ChangeInputType } from '../types/types';
+import type { InputChangeHandler } from '../types/types';
 import Input from './formElements/Input';
 import type { StatusInputsProps } from './StatusInputs';
 import StatusInputs from './StatusInputs';
@@ -8,8 +8,8 @@ type SharedCategoryInputsProps = StatusInputsProps & {
   categoryNameId: string;
   categoryNameLabelText: string;
   categoryNamevalue: string;
+  onCategoryNameChange: InputChangeHandler;
   allowedUpdateCategory?: boolean;
-  onCategoryNameChange: (event: ChangeInputType) => void;
 };
 
 const SharedCategoryInputs = ({

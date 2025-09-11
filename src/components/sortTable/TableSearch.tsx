@@ -1,6 +1,6 @@
 import useLanguage from '../../features/language/useLanguage';
 import { BtnVariant, IconName } from '../../types/enums';
-import type { ChangeInputType } from '../../types/types';
+import type { InputChangeHandler } from '../../types/types';
 import Icon from '../icons/Icon';
 import Tooltip from '../tooltip/Tooltip';
 import VisuallyHidden from '../VisuallyHidden';
@@ -8,9 +8,9 @@ import TableSearchInput from './TableSearchInput';
 
 type TableSearchProps = {
   label: string;
+  onFilterRows: InputChangeHandler;
   title: string;
   value: string;
-  onFilterRows: (event: ChangeInputType) => void;
 };
 
 const TableSearch = ({

@@ -5,7 +5,7 @@ import type {
 } from '../../components/modal/Modal';
 import TogglePanel from '../../components/togglePanel/TogglePanel';
 import type { SelectedLanguage } from '../../features/language/languageSlice';
-import type { ChangeInputType, OptionType } from '../../types/types';
+import type { InputChangeHandler, OptionType } from '../../types/types';
 import HeaderIcons from '../headerIcons/HeaderIcons';
 import LayoutElement from '../LayoutElement';
 import { ShopPath } from '../nav/enums';
@@ -23,11 +23,11 @@ export type HeaderProps = {
   currencyOptions: OptionType[];
   defaultValue: OptionType;
   isMobileSize: boolean;
+  onChange: InputChangeHandler;
   primaryActionBtn: PrimaryActionBtnProps;
   secondaryActionBtn: SecondaryActionBtnProps;
   userDropdownList: DropdownItem[];
   values: Values;
-  onChange: (event: ChangeInputType) => void;
   onSelectCurrency: (selectedOptions: OptionType) => void;
 };
 

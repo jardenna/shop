@@ -1,16 +1,16 @@
 import { ReactElement } from 'react';
 import useLanguage from '../../features/language/useLanguage';
 import { BtnType, IconName } from '../../types/enums';
-import type { ChangeInputType } from '../../types/types';
+import type { InputChangeHandler } from '../../types/types';
 import Input from '../formElements/Input';
 import IconBtn from '../IconBtn';
 
 export type BaseEditTableInput = {
   cellContent: string;
   id: string;
+  onEditChange: InputChangeHandler;
   value: string;
   onCancel: () => void;
-  onEditChange: (event: ChangeInputType) => void;
   onSave: () => void;
 };
 

@@ -29,10 +29,12 @@ export type OptionGroupHeading = {
   errorText?: string;
 };
 
+export type InputChangeHandler = (event: ChangeInputType) => void;
+
 export type ProductListChoiceProps = {
   groupTitle: OptionGroupHeading;
   name: string;
-  onChange: (event: ChangeInputType) => void;
+  onChange: InputChangeHandler;
 };
 
 export type InputType =

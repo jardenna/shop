@@ -3,7 +3,7 @@ import ImgListItem from '../../../components/formElements/fileInput/ImgListItem'
 import type { PreviewImg } from '../../../components/formElements/fileInput/Preview';
 import Preview from '../../../components/formElements/fileInput/Preview';
 import InputInfo from '../../../components/formElements/InputInfo';
-import type { ChangeInputType } from '../../../types/types';
+import type { InputChangeHandler } from '../../../types/types';
 import { allowedExtensions, maxFiles } from '../../../utils/utils';
 import useLanguage from '../../language/useLanguage';
 
@@ -11,8 +11,8 @@ type ImageUploadProps = {
   ariaLabel: string;
   disabledImages: string[];
   images: string[];
+  onChange: InputChangeHandler;
   previewData: PreviewImg[];
-  onChange: (event: ChangeInputType) => void;
   onRemovePreviewImage: (id: string) => void;
   onToggleImage: (id: string) => void;
 };

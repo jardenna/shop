@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { IconName } from '../../types/enums';
-import { ChangeInputType, ControlInputType } from '../../types/types';
+import type { ControlInputType, InputChangeHandler } from '../../types/types';
 import IconContent from '../IconContent';
 
 type ControlProps = {
@@ -8,6 +8,7 @@ type ControlProps = {
   id: string;
   label: string;
   name: string;
+  onChange: InputChangeHandler;
   value: string;
   ariaLabel?: string;
   autoFocus?: boolean;
@@ -19,7 +20,6 @@ type ControlProps = {
   language?: Record<string, string>;
   renderExtra?: ReactNode;
   type?: ControlInputType;
-  onChange: (event: ChangeInputType) => void;
 };
 
 const Control = ({

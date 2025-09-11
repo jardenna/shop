@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import useLocalStorage, { localStorageKeys } from '../../hooks/useLocalStorage';
-import { OptionType } from '../../types/types';
+import type { OptionType } from '../../types/types';
 import {
   SelectedLanguage,
   selectLanguage,

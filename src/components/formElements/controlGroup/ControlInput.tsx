@@ -1,6 +1,9 @@
 import useLanguage from '../../../features/language/useLanguage';
 import { IconName } from '../../../types/enums';
-import type { ChangeInputType, ControlInputType } from '../../../types/types';
+import type {
+  ControlInputType,
+  InputChangeHandler,
+} from '../../../types/types';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import IconContent from '../../IconContent';
 import { ProductLabelVariant } from '../../productLists/ProductListItem';
@@ -11,6 +14,7 @@ type ControlInputProps = {
   id: string;
   label: string;
   name: string;
+  onChange: InputChangeHandler;
   value: string;
   ariaLabel?: string;
   autoFocus?: boolean;
@@ -21,7 +25,6 @@ type ControlInputProps = {
   iconSize?: string;
   type?: ControlInputType;
   variant?: ProductLabelVariant;
-  onChange: (event: ChangeInputType) => void;
 };
 
 const ControlInput = ({

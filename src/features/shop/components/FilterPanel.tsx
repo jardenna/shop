@@ -8,7 +8,7 @@ import TogglePanel from '../../../components/togglePanel/TogglePanel';
 import { FilterValuesType } from '../../../hooks/useFilterParams';
 import variables from '../../../scss/variables.module.scss';
 import { IconName } from '../../../types/enums';
-import type { ChangeInputType } from '../../../types/types';
+import type { InputChangeHandler } from '../../../types/types';
 import { colorMap } from '../../../utils/colorUtils';
 import './filterPanel.styles.scss';
 
@@ -17,8 +17,8 @@ type FilterPanelProps = {
   availableSizes: Size[];
   colors: string[];
   language: Record<string, string>;
+  onChange: InputChangeHandler;
   values: FilterValuesType<string>;
-  onChange: (event: ChangeInputType) => void;
 };
 
 const FilterPanel = ({

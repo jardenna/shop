@@ -1,12 +1,12 @@
 import { IconName } from '../types/enums';
-import { ChangeInputType } from '../types/types';
+import type { InputChangeHandler } from '../types/types';
 import CheckboxList from './formElements/checkbox/CheckboxList';
 
 type TagListProps = {
   name: string;
+  onChange: InputChangeHandler;
   values: string[];
   language?: Record<string, string>;
-  onChange: (event: ChangeInputType) => void;
 };
 const TagList = ({ language, values, onChange, name }: TagListProps) => (
   <CheckboxList

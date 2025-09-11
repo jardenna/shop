@@ -1,5 +1,8 @@
 import { IconName } from '../../../types/enums';
-import type { ChangeInputType, OptionGroupHeading } from '../../../types/types';
+import type {
+  InputChangeHandler,
+  OptionGroupHeading,
+} from '../../../types/types';
 import { colorMap } from '../../../utils/colorUtils';
 import OptionGroupTitle from '../../productLists/OptionGroupTitle';
 import type { ProductLabelVariant } from '../../productLists/ProductListItem';
@@ -9,6 +12,7 @@ import './_control-list.scss';
 
 export type BaseControlGroupProps = {
   name: string;
+  onChange: InputChangeHandler;
   options: string[];
   ariaLabel?: string;
   autoFocus?: boolean;
@@ -21,7 +25,6 @@ export type BaseControlGroupProps = {
   inputInfo?: string;
   required?: boolean;
   variant?: ProductLabelVariant;
-  onChange: (event: ChangeInputType) => void;
 };
 
 type ControlListProps = BaseControlGroupProps & {
