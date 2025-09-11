@@ -18,7 +18,7 @@ const TagList = ({
   ariaLabel,
   language,
 }: TagListProps) => (
-  <ul className="tag-list">
+  <ul className="tag-list" aria-relevant="removals" aria-live="assertive">
     {values.map((value) => (
       <li key={value} className="tag-item">
         <span>{value}</span>
