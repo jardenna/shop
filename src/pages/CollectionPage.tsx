@@ -36,7 +36,14 @@ const CollectionPage = () => {
   };
 
   const { filterValues, onFilterChange } = useFilterParams(initialFilters);
+  const { subMenu, subMenuLoading, refetchSubMenu } = useSubMenu({ category });
+  const [productView, setProuctView] = useLocalStorage(
+    localStorageKeys.productView,
+    'grid',
+  );
+
   const sortedTranslatedColors = sortColorsByTranslation(colorList, language);
+  const categoryText = category ? language[category] : '';
 
   // Redux hooks
   const {
@@ -51,14 +58,6 @@ const CollectionPage = () => {
     mainCategory: category,
     subCategoryId: categoryId || '',
   });
-
-  const { subMenu, subMenuLoading, refetchSubMenu } = useSubMenu({ category });
-  const categoryText = category ? language[category] : '';
-
-  const [productView, setProuctView] = useLocalStorage(
-    localStorageKeys.productView,
-    'grid',
-  );
 
   const productViewIconList = [
     {
