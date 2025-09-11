@@ -21,6 +21,7 @@ import MetaTags from '../layout/nav/MetaTags';
 import { IconName } from '../types/enums';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { sortSizesDynamic } from '../utils/sizeUtils';
+import { getFilterSummary } from '../utils/utils';
 import './CollectionPage.styles.scss';
 
 export type FilterKeys = 'sizes' | 'colors' | 'brand';
@@ -74,6 +75,9 @@ const CollectionPage = () => {
       display: 'list',
     },
   ];
+
+  const x = getFilterSummary(filterValues);
+  console.log(x.filterSummary);
 
   return (
     <>

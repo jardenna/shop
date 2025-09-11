@@ -61,12 +61,29 @@ function getAriaLabel(count: number, ariaLabelData: AriaLabelData): string {
   return typeof label === 'string' ? label : `${count} ${unit}`;
 }
 
+// show filters count
+type Filters = Record<string, string[]>;
+
+const getFilterSummary = (filters: Filters) => {
+  const filterSummary = Object.fromEntries(
+    Object.entries(filters).map(([key, values]) => [key, values.length]),
+  );
+
+  const totalFilters = Object.values(filterSummary).reduce(
+    (sum, count) => sum + count,
+    0,
+  );
+
+  return { filterSummary, totalFilters };
+};
+
 export {
   allowedExtensions,
   currencyCacheKey,
   discountCalculation,
   getAriaLabel,
   getErrorMessage,
+  getFilterSummary,
   getlowerCaseFirstLetter,
   maxFiles,
   maxFileSize,
