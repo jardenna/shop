@@ -17,7 +17,7 @@ export type BaseControlProps = {
   type?: ControlInputType;
 };
 
-type ControlProps = BaseControlProps & {
+type ControlInputProps = BaseControlProps & {
   checked: boolean;
   id: string;
   label: string;
@@ -25,7 +25,7 @@ type ControlProps = BaseControlProps & {
   renderExtra?: ReactNode;
 };
 
-const Control = ({
+const ControlInput = ({
   onChange,
   checked,
   name,
@@ -41,7 +41,7 @@ const Control = ({
   iconClassName,
   className = 'checkbox-label',
   type = 'checkbox',
-}: ControlProps) => (
+}: ControlInputProps) => (
   <>
     <input
       type={type}
@@ -68,4 +68,4 @@ const Control = ({
   </>
 );
 
-export default Control;
+export default ControlInput;
