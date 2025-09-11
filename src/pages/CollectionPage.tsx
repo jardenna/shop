@@ -35,7 +35,8 @@ const CollectionPage = () => {
     brand: [],
   };
 
-  const { filterValues, onFilterChange } = useFilterParams(initialFilters);
+  const { filterValues, onFilterChange, onRemoveFilterTag } =
+    useFilterParams(initialFilters);
   const { subMenu, subMenuLoading, refetchSubMenu } = useSubMenu({ category });
   const [productView, setProuctView] = useLocalStorage(
     localStorageKeys.productView,
@@ -119,6 +120,7 @@ const CollectionPage = () => {
                       availableSizes={sortSizesDynamic(products.availableSizes)}
                       colors={sortedTranslatedColors}
                       language={language}
+                      onRemoveFilterTag={onRemoveFilterTag}
                     />
                   </>
                 )}

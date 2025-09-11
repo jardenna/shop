@@ -6,6 +6,7 @@ import Icon from '../../../components/icons/Icon';
 import TagList from '../../../components/TagList';
 import TogglePanel from '../../../components/togglePanel/TogglePanel';
 import { FilterValuesType } from '../../../hooks/useFilterParams';
+import type { FilterKeys } from '../../../pages/CollectionPage';
 import variables from '../../../scss/variables.module.scss';
 import { IconName } from '../../../types/enums';
 import type { InputChangeHandler } from '../../../types/types';
@@ -19,6 +20,7 @@ type FilterPanelProps = {
   language: Record<string, string>;
   onChange: InputChangeHandler;
   values: FilterValuesType<string>;
+  onRemoveFilterTag: (key: FilterKeys, value: string) => void;
 };
 
 const FilterPanel = ({
@@ -28,6 +30,7 @@ const FilterPanel = ({
   onChange,
   values,
   language,
+  onRemoveFilterTag,
 }: FilterPanelProps) => {
   const accordionList: AccordionList[] = [
     {
@@ -95,11 +98,10 @@ const FilterPanel = ({
           ([key, values]) =>
             values.length > 0 && (
               <TagList
-                language={language}
                 key={key}
-                name={key}
-                onChange={onChange}
                 values={values}
+                filterKey={key}
+                onClick={onRemoveFilterTag}
               />
             ),
         )}

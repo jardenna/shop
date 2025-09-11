@@ -1,24 +1,29 @@
+import { FilterKeys } from '../pages/CollectionPage';
 import { IconName } from '../types/enums';
-import type { InputChangeHandler } from '../types/types';
-import CheckboxList from './formElements/checkbox/CheckboxList';
+import IconBtn from './IconBtn';
 
 type TagListProps = {
-  name: string;
-  onChange: InputChangeHandler;
+  filterKey: string;
   values: string[];
-  language?: Record<string, string>;
+  onClick: (key: FilterKeys, value: string) => void;
 };
-const TagList = ({ language, values, onChange, name }: TagListProps) => (
-  <CheckboxList
-    className="tag-list"
-    language={language}
-    checkBoxList={values}
-    name={name}
-    onChange={onChange}
-    values={values}
-    iconName={IconName.Close}
-    ariaLabel={language?.removeFilter}
-  />
+const TagList = ({ values, onClick, filterKey }: TagListProps) => (
+  <div>
+    {values.map((value) => (
+      <div key={value} className="tag">
+        <p>{value}</p>
+
+        <IconBtn
+          onClick={() => {
+            onClick(filterKey as FilterKeys, value);
+          }}
+          iconName={IconName.Close}
+          title="ff"
+          ariaLabel="s"
+        />
+      </div>
+    ))}
+  </div>
 );
 
 export default TagList;
