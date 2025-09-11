@@ -98,10 +98,12 @@ const FilterPanel = ({
           ([key, values]) =>
             values.length > 0 && (
               <TagList
+                language={language}
                 key={key}
                 values={values}
                 filterKey={key}
                 onClick={onRemoveFilterTag}
+                ariaLabel={language.removeFilter}
               />
             ),
         )}
