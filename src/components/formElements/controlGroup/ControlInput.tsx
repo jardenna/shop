@@ -1,22 +1,19 @@
-import useLanguage from '../../../features/language/useLanguage';
 import { IconName } from '../../../types/enums';
 import type {
   ControlInputType,
   InputChangeHandler,
 } from '../../../types/types';
-import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import IconContent from '../../IconContent';
 import { ProductLabelVariant } from '../../productLists/ProductListItem';
-import VisuallyHidden from '../../VisuallyHidden';
 
 type ControlInputProps = {
+  ariaLabel: string;
   checked: boolean;
   id: string;
   label: string;
   name: string;
   onChange: InputChangeHandler;
   value: string;
-  ariaLabel?: string;
   autoFocus?: boolean;
   disabled?: boolean;
   fill?: string;
@@ -43,39 +40,33 @@ const ControlInput = ({
   fill,
   ariaLabel,
   iconSize,
-}: ControlInputProps) => {
-  const { language } = useLanguage();
-
-  return (
-    <>
-      <input
-        type={type}
-        name={name}
-        id={id}
-        value={value}
-        checked={checked}
-        onChange={onChange}
-        disabled={disabled}
-        autoFocus={autoFocus}
-      />
-      <label htmlFor={id} className={`control-label ${variant}-item`}>
-        {iconName ? (
-          <IconContent
-            iconName={iconName}
-            fill={fill}
-            size={iconSize}
-            title=""
-            ariaLabel={ariaLabel || getlowerCaseFirstLetter(label, language)}
-            className={iconClassName}
-          />
-        ) : (
-          <span>
-            {label} {ariaLabel && <VisuallyHidden>{ariaLabel}</VisuallyHidden>}
-          </span>
-        )}
-      </label>
-    </>
-  );
-};
+}: ControlInputProps) => (
+  <>
+    <input
+      type={type}
+      name={name}
+      id={id}
+      value={value}
+      checked={checked}
+      onChange={onChange}
+      disabled={disabled}
+      autoFocus={autoFocus}
+    />
+    <label htmlFor={id} className={`control-label ${variant}-item`}>
+      {iconName ? (
+        <IconContent
+          iconName={iconName}
+          fill={fill}
+          size={iconSize}
+          title=""
+          ariaLabel={ariaLabel}
+          className={iconClassName}
+        />
+      ) : (
+        <span>{label}</span>
+      )}
+    </label>
+  </>
+);
 
 export default ControlInput;
