@@ -13,13 +13,12 @@ import InputInfo from '../InputInfo';
 import ControlInput from './ControlInput';
 import './_control-list.scss';
 
-type BaseControlGroupProps = {
+export type BaseControlGroupProps = {
   name: string;
   onChange: InputChangeHandler;
-  options: string[];
+  type: ControlInputType;
   autoFocus?: boolean;
   className?: string;
-  disabledList?: string[];
   groupTitle?: OptionGroupHeading;
   iconClassName?: string;
   iconName?: IconName;
@@ -30,7 +29,9 @@ type BaseControlGroupProps = {
 };
 
 type ControlListProps = BaseControlGroupProps & {
-  type: ControlInputType;
+  options: string[];
+
+  disabledList?: string[];
   initialChecked?: string;
   values?: string[];
 };
