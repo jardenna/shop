@@ -23,6 +23,7 @@ const TagList = ({
       <li key={value} className="tag-item">
         <span>{value}</span>
         <IconBtn
+          size="1em"
           onClick={() => {
             onClick(filterKey as FilterKeys, value);
           }}
