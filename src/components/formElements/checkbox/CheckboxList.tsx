@@ -1,20 +1,12 @@
 import { ReactNode } from 'react';
-import { IconName } from '../../../types/enums';
-import type { InputChangeHandler } from '../../../types/types';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
+import type { BaseControlProps } from '../Control';
 import Control from '../Control';
 import './_checkbox.scss';
 
-type CheckboxListProps = {
+type CheckboxListProps = BaseControlProps & {
   checkBoxList: string[];
-  name: string;
-  onChange: InputChangeHandler;
   values: string[];
-  ariaLabel?: string;
-  autoFocus?: boolean;
-  className?: string;
-  iconName?: IconName;
-  language?: Record<string, string>;
   renderExtra?: (checkbox: string) => ReactNode;
 };
 

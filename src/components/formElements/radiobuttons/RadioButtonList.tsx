@@ -1,20 +1,13 @@
 import useLanguage from '../../../features/language/useLanguage';
-import { IconName } from '../../../types/enums';
-import type { InputChangeHandler, OptionType } from '../../../types/types';
+import type { OptionType } from '../../../types/types';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
+import type { BaseControlProps } from '../Control';
 import Control from '../Control';
 import './_radio-button.scss';
 
-type RadioButtonListProps = {
+type RadioButtonListProps = BaseControlProps & {
   initialChecked: string;
-  name: string;
-  onChange: InputChangeHandler;
   radioButtonList: OptionType[];
-  ariaLabel?: string;
-  autoFocus?: boolean;
-  className?: string;
-  hideLabel?: boolean;
-  iconName?: IconName;
 };
 
 const RadioButtonList = ({
