@@ -31,6 +31,7 @@ const ControlInput = ({
   id,
   name,
   label,
+  value,
   checked,
   disabled,
   type = 'checkbox',
@@ -51,7 +52,7 @@ const ControlInput = ({
         type={type}
         name={name}
         id={id}
-        value={label}
+        value={value}
         checked={checked}
         onChange={onChange}
         disabled={disabled}

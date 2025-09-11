@@ -56,7 +56,6 @@ const Control = ({
     <label htmlFor={id} className={className}>
       {!hideLabel && label}
       {renderExtra}
-
       {iconName && (
         <IconContent
           iconName={iconName}
