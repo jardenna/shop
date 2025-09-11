@@ -4,7 +4,7 @@ import { selectModalId } from '../../features/modalSlice';
 import useClickOutside from '../../hooks/useClickOutside';
 import useMediaQuery from '../../hooks/useMediaQuery ';
 import { BtnType, BtnVariant, PopupRole, SizeVariant } from '../../types/enums';
-import { FormEventType } from '../../types/types';
+import type { FormEventType } from '../../types/types';
 import Overlay from '../overlay/Overlay';
 import Portal from '../Portal';
 import SwipeContainer from '../SwipeContainer';

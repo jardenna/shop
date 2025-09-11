@@ -42,7 +42,6 @@ const FavoriteHeart = ({ id }: FavoriteHeartProps) => {
               : language.saveAsFavorit}
           </VisuallyHidden>
         </label>
-
         <input
           type="checkbox"
           id={id}

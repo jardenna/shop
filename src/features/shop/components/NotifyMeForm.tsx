@@ -1,15 +1,15 @@
 import type { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import ControlList from '../../../components/formElements/controlGroup/ControlList';
 import Input from '../../../components/formElements/Input';
-import type { ChangeInputType } from '../../../types/types';
+import type { InputChangeHandler } from '../../../types/types';
 import useLanguage from '../../language/useLanguage';
 
 type NotifyMeFormProps = {
   errors: Record<string, string>;
+  onChange: InputChangeHandler;
   options: string[];
   values: { email: string; sizes: Size[] };
   sizesIsRequered?: boolean;
-  onChange: (event: ChangeInputType) => void;
 };
 
 const NotifyMeForm = ({

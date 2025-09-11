@@ -4,7 +4,7 @@ import Input from '../formElements/Input';
 import Icon from '../icons/Icon';
 import './_number-step.scss';
 
-interface NumberStepProps {
+type NumberStepProps = {
   id: string;
   labelText: string;
   name: string;
@@ -14,7 +14,7 @@ interface NumberStepProps {
   min?: number;
   onChange: (event?: any) => void;
   onNumberStepChange: (event: any, count: number) => void;
-}
+};
 
 const NumberStep = ({
   onChange,

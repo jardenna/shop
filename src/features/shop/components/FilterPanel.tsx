@@ -1,14 +1,14 @@
 import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import type { AccordionList } from '../../../components/accordion/Accordion';
 import Accordion from '../../../components/accordion/Accordion';
-import Checkbox from '../../../components/formElements/checkbox/Checkbox';
-import IconContent from '../../../components/IconContent';
+import CheckboxList from '../../../components/formElements/checkbox/CheckboxList';
 import Icon from '../../../components/icons/Icon';
+import TagList from '../../../components/TagList';
 import TogglePanel from '../../../components/togglePanel/TogglePanel';
 import { FilterValuesType } from '../../../hooks/useFilterParams';
 import variables from '../../../scss/variables.module.scss';
 import { IconName } from '../../../types/enums';
-import type { ChangeInputType } from '../../../types/types';
+import type { InputChangeHandler } from '../../../types/types';
 import { colorMap } from '../../../utils/colorUtils';
 import './filterPanel.styles.scss';
 
@@ -17,8 +17,8 @@ type FilterPanelProps = {
   availableSizes: Size[];
   colors: string[];
   language: Record<string, string>;
+  onChange: InputChangeHandler;
   values: FilterValuesType<string>;
-  onChange: (event: ChangeInputType) => void;
 };
 
 const FilterPanel = ({
@@ -33,7 +33,7 @@ const FilterPanel = ({
     {
       title: language.colours,
       content: (
-        <Checkbox
+        <CheckboxList
           checkBoxList={colors}
           name="colors"
           onChange={onChange}
@@ -55,7 +55,7 @@ const FilterPanel = ({
     {
       title: language.sizes,
       content: (
-        <Checkbox
+        <CheckboxList
           checkBoxList={availableSizes}
           name="sizes"
           onChange={onChange}
@@ -66,7 +66,7 @@ const FilterPanel = ({
     {
       title: language.brand,
       content: (
-        <Checkbox
+        <CheckboxList
           checkBoxList={availableBrands}
           name="brand"
           onChange={onChange}
@@ -94,22 +94,13 @@ const FilterPanel = ({
         {Object.entries(values).map(
           ([key, values]) =>
             values.length > 0 && (
-              <Checkbox
-                className="tag-list"
+              <TagList
                 language={language}
                 key={key}
-                checkBoxList={values}
                 name={key}
                 onChange={onChange}
                 values={values}
-              >
-                <IconContent
-                  iconName={IconName.Close}
-                  title=""
-                  size="16"
-                  ariaLabel={language.removeFilter}
-                />
-              </Checkbox>
+              />
             ),
         )}
         <Accordion accordionList={accordionList} />

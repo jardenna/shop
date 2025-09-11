@@ -13,7 +13,6 @@ import ChevronLeftIcon from './ChevronLeftIcon';
 import ChevronRightIcon from './ChevronRightIcon';
 import CircleChevronRightIcon from './CircleChevronRightIcon';
 import CloseIcon from './CloseIcon';
-import DressIcon from './colors/DressIcon';
 import KidIcon from './colors/KidIcon';
 import ManIcon from './colors/ManIcon';
 import WomanIcon from './colors/WomanIcon';
@@ -81,7 +80,6 @@ const iconMapping = {
   circleChevronRight: CircleChevronRightIcon,
   close: CloseIcon,
   dashboard: DashboardIcon,
-  dress: DressIcon,
   dublicate: DublicateIcon,
   error: ErrorIcon,
   eye: EyeIcon,

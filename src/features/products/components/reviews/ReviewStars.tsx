@@ -1,5 +1,4 @@
 import Icon from '../../../../components/icons/Icon';
-import VisuallyHidden from '../../../../components/VisuallyHidden';
 import variables from '../../../../scss/variables.module.scss';
 import { IconName } from '../../../../types/enums';
 import ReviewStarsInfo from './ReviewStarsInfo';
@@ -12,12 +11,9 @@ type ReviewStarsProps = {
 
 const ReviewStars = ({ stars, rating }: ReviewStarsProps) => (
   <div className="stars">
-    <VisuallyHidden>
-      <ReviewStarsInfo rating={rating} />
-    </VisuallyHidden>
-    <ul className="star-list">
+    <ul className="star-list" aria-hidden={true}>
       {stars.map((type, index) => (
-        <li key={index} className="star-item" aria-hidden={true}>
+        <li key={index} className="star-item">
           {type === 'full' && (
             <Icon
               iconName={IconName.Star}
@@ -30,7 +26,7 @@ const ReviewStars = ({ stars, rating }: ReviewStarsProps) => (
         </li>
       ))}
     </ul>
-    <span>{Math.round(rating * 10) / 10}</span>
+    <ReviewStarsInfo rating={rating} />
   </div>
 );
 

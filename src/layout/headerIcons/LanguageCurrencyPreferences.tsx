@@ -1,5 +1,5 @@
 import FieldSet from '../../components/fieldset/FieldSet';
-import RadioButton from '../../components/formElements/radiobuttons/RadioButton';
+import RadioButtonList from '../../components/formElements/radiobuttons/RadioButtonList';
 import CurrencySelect from '../../features/currency/components/CurrencySelect';
 import useLanguage, {
   languageOptions,
@@ -27,12 +27,13 @@ const LanguageCurrencyPreferences = ({
   return (
     <div className="preferences">
       <FieldSet legendText={language.language}>
-        <RadioButton
+        <RadioButtonList
           radioButtonList={languageOptions}
           name="languageOption"
           initialChecked={values.languageOption}
           onChange={onChange}
           autoFocus
+          className="language-options"
         />
       </FieldSet>
       <FieldSet legendText={language.currency}>

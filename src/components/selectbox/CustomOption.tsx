@@ -1,7 +1,8 @@
+import { ReactNode } from 'react';
 import { OptionProps } from 'react-select';
 
 type CustomOptionProps<OptionType> = OptionProps<OptionType> & {
-  render: (data: OptionType) => React.ReactNode;
+  render: (data: OptionType) => ReactNode;
 };
 
 const CustomOption = <OptionType,>({

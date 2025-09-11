@@ -17,7 +17,7 @@ const IconContent = ({
   ariaLabel,
   size,
   fill,
-  className = '',
+  className,
 }: IconContentProps) => (
   <>
     <Icon

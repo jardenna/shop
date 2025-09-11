@@ -1,6 +1,10 @@
 import type { Status } from '../app/api/apiTypes/adminApiTypes';
 import useLanguage from '../features/language/useLanguage';
-import type { ChangeInputType, OptionType, refFormType } from '../types/types';
+import type {
+  InputChangeHandler,
+  OptionType,
+  refFormType,
+} from '../types/types';
 import DatePicker from './datePicker/DatePicker';
 import TimeInput from './formElements/timeInput/TimeInput';
 import Selectbox from './selectbox/Selectbox';
@@ -13,6 +17,7 @@ type StatusOptions = {
 export type StatusInputsProps = {
   defaultStatusValue: StatusOptions;
   labelText: string;
+  onTimeChange: InputChangeHandler;
   selectedDate: Date;
   status: string;
   timeValue: string;
@@ -21,7 +26,6 @@ export type StatusInputsProps = {
   ref?: refFormType;
   onSelectDate: (date: Date) => void;
   onSelectStatus: (selectedOptions: OptionType) => void;
-  onTimeChange: (event: ChangeInputType) => void;
 };
 
 const StatusInputs = ({

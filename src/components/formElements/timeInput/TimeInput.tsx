@@ -1,10 +1,11 @@
-import type { ChangeInputType } from '../../../types/types';
+import type { InputChangeHandler } from '../../../types/types';
 import Input from '../Input';
 
 type TimeInputProps = {
   id: string;
   labelText: string;
   name: string;
+  onChange: InputChangeHandler;
   value: string;
   className?: string;
   errorText?: string;
@@ -12,7 +13,6 @@ type TimeInputProps = {
   max?: number;
   min?: number;
   required?: boolean;
-  onChange: (event: ChangeInputType) => void;
 };
 
 const TimeInput = ({

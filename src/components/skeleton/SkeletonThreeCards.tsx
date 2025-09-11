@@ -25,8 +25,8 @@ const SkeletonThreeCards = () => (
         </div>
         <div className="flex column page-card flex-1">
           <SkeletonGrid />
-          <SkeletonControlList count={4} variant="medium" />
-          <SkeletonControlList count={5} variant="small" />
+          <SkeletonControlList count={4} variant="small" />
+          <SkeletonControlList count={5} variant="medium" />
         </div>
         <Skeleton height="27" width="25" />
       </div>

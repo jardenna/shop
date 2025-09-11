@@ -30,3 +30,15 @@
     border-right-color: $color-border;
   }
 }
+
+%disabled-item {
+  text-decoration-line: line-through;
+  text-decoration-thickness: 2px;
+  white-space: pre;
+
+  &::after,
+  &::before {
+    content: ' ';
+    display: flex;
+  }
+}

@@ -4,7 +4,10 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  border-inline-start: 1px solid $color-border;
+
+  &.color-list {
+    gap: 4px;
+  }
 
   .product-list-content {
     display: flex;

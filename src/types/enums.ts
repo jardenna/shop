@@ -83,7 +83,6 @@ export enum IconName {
   CircleChevronRight = 'circleChevronRight',
   Close = 'close',
   Dashboard = 'dashboard',
-  Dress = 'dress',
   Dublicate = 'dublicate',
   Error = 'error',
   Eye = 'eye',

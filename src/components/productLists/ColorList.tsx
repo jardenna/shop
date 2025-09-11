@@ -2,7 +2,10 @@ import useLanguage from '../../features/language/useLanguage';
 import variables from '../../scss/variables.module.scss';
 import type { OptionGroupHeading } from '../../types/types';
 import { getColorOptions } from '../../utils/colorUtils';
-import { sliceAndCountHidden } from '../../utils/utils';
+import {
+  getlowerCaseFirstLetter,
+  sliceAndCountHidden,
+} from '../../utils/utils';
 import ProductList from './ProductList';
 import type { ProductLabelVariant } from './ProductListItem';
 import ProductListItem from './ProductListItem';
@@ -32,11 +35,11 @@ const ColorList = ({ count, colors, groupTitle, variant }: ColorListProps) => {
 
   return (
     <ProductList groupTitle={groupTitle} className="color-list">
-      {visibleItems.map(({ label, color, border }) => (
+      {visibleItems.map(({ color, border, value }) => (
         <ProductListItem
           key={color}
-          ariaLabel={label}
           variant={variant}
+          screenReaderText={getlowerCaseFirstLetter(value, language)}
           style={{
             backgroundColor: color,
             borderColor: border,

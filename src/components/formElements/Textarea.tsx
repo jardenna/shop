@@ -61,7 +61,7 @@ const Textarea = ({
         tabIndex={tabIndex}
         aria-invalid={errorText ? true : undefined}
         rows={rows}
-        aria-hidden={ariaHidden}
+        aria-hidden={ariaHidden || undefined}
       />
     </div>
   );

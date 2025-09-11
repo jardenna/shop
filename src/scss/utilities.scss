@@ -105,16 +105,8 @@
   color: $color-danger;
 }
 
-.unavailable {
-  text-decoration-line: line-through;
-  text-decoration-thickness: 2px;
-  white-space: pre;
-
-  &::after,
-  &::before {
-    content: ' ';
-    display: flex;
-  }
+.disabled-item {
+  @extend %disabled-item;
 }
 
 .mini-item {

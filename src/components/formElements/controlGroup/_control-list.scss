@@ -41,15 +41,12 @@
       @include outline;
     }
 
-    &:has(input[type='radio']:disabled) {
+    &:has(input:disabled) {
       .control-label {
-        cursor: default;
+        pointer-events: none;
+
+        @extend %disabled-item;
       }
     }
-  }
-
-  input {
-    clip-path: inset(50%);
-    position: absolute;
   }
 }
