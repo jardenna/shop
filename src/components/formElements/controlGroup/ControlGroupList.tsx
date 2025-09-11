@@ -28,14 +28,14 @@ export type BaseControlGroupProps = {
   variant?: ProductLabelVariant;
 };
 
-type ControlListProps = BaseControlGroupProps & {
+type ControlGroupListProps = BaseControlGroupProps & {
   options: string[];
   disabledList?: string[];
   initialChecked?: string;
   values?: string[];
 };
 
-const ControlList = ({
+const ControlGroupList = ({
   name,
   options,
   groupTitle,
@@ -52,7 +52,7 @@ const ControlList = ({
   variant = 'medium',
   iconSize,
   iconClassName,
-}: ControlListProps) => {
+}: ControlGroupListProps) => {
   const { language } = useLanguage();
   const checked = (label: string) =>
     type === 'checkbox' ? values.includes(label) : initialChecked === label;
@@ -95,4 +95,4 @@ const ControlList = ({
   );
 };
 
-export default ControlList;
+export default ControlGroupList;

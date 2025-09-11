@@ -1,5 +1,5 @@
 import IconContent from '../../IconContent';
-import type { BaseControlGroupProps } from './ControlList';
+import type { BaseControlGroupProps } from './ControlGroupList';
 
 type ControlInputProps = BaseControlGroupProps & {
   ariaLabel: string;
