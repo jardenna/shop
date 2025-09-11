@@ -104,10 +104,15 @@ const useFilterParams = (initialFilters: FilterValuesType<string>) => {
     });
   };
 
+  const handleClearAllFilters = () => {
+    setFilterValues(initialFilters);
+  };
+
   return {
     filterValues,
     onFilterChange: handleFilterChange,
     onRemoveFilterTag: handleRemoveFilterTag,
+    onClearAllFilters: handleClearAllFilters,
   };
 };
 

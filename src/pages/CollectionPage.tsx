@@ -35,7 +35,7 @@ const CollectionPage = () => {
     brand: [],
   };
 
-  const { filterValues, onFilterChange, onRemoveFilterTag } =
+  const { filterValues, onFilterChange, onRemoveFilterTag, onClearAllFilters } =
     useFilterParams(initialFilters);
   const { subMenu, subMenuLoading, refetchSubMenu } = useSubMenu({ category });
   const [productView, setProuctView] = useLocalStorage(
@@ -121,6 +121,8 @@ const CollectionPage = () => {
                       colors={sortedTranslatedColors}
                       language={language}
                       onRemoveFilterTag={onRemoveFilterTag}
+                      onClearAllFilters={onClearAllFilters}
+                      productCount={products.productCount}
                     />
                   </>
                 )}
