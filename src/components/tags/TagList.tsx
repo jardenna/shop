@@ -28,7 +28,7 @@ const TagList = ({
           }}
           iconName={IconName.Close}
           title=""
-          ariaLabel={`${ariaLabel}  ${getlowerCaseFirstLetter(value, language)}`}
+          ariaLabel={`${ariaLabel} ${getlowerCaseFirstLetter(value, language)}`}
         />
       </li>
     ))}
