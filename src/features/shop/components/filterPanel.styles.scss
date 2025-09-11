@@ -12,19 +12,4 @@
     border: 1px solid transparent;
     margin-right: 8px;
   }
-
-  .tag-list {
-    gap: 4px;
-    flex-wrap: wrap;
-    margin-bottom: 8px;
-
-    .checkbox-label {
-      max-width: fit-content;
-      border: 1px solid $color-border;
-      padding: 4px 8px;
-      text-transform: uppercase;
-      gap: 8px;
-      white-space: nowrap;
-    }
-  }
 }

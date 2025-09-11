@@ -1,6 +1,7 @@
-import { FilterKeys } from '../pages/CollectionPage';
-import { IconName } from '../types/enums';
-import IconBtn from './IconBtn';
+import { FilterKeys } from '../../pages/CollectionPage';
+import { IconName } from '../../types/enums';
+import IconBtn from '../IconBtn';
+import './_tag-list.scss';
 
 type TagListProps = {
   filterKey: string;
@@ -8,11 +9,10 @@ type TagListProps = {
   onClick: (key: FilterKeys, value: string) => void;
 };
 const TagList = ({ values, onClick, filterKey }: TagListProps) => (
-  <div>
+  <article className="tag-list">
     {values.map((value) => (
-      <div key={value} className="tag-list">
-        <p>{value}</p>
-
+      <section key={value} className="tag-item">
+        <div>{value}</div>
         <IconBtn
           onClick={() => {
             onClick(filterKey as FilterKeys, value);
@@ -21,9 +21,9 @@ const TagList = ({ values, onClick, filterKey }: TagListProps) => (
           title="ff"
           ariaLabel="s"
         />
-      </div>
+      </section>
     ))}
-  </div>
+  </article>
 );
 
 export default TagList;

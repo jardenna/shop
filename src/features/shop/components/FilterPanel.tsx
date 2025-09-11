@@ -3,7 +3,7 @@ import type { AccordionList } from '../../../components/accordion/Accordion';
 import Accordion from '../../../components/accordion/Accordion';
 import CheckboxList from '../../../components/formElements/checkbox/CheckboxList';
 import Icon from '../../../components/icons/Icon';
-import TagList from '../../../components/TagList';
+import TagList from '../../../components/tags/TagList';
 import TogglePanel from '../../../components/togglePanel/TogglePanel';
 import { FilterValuesType } from '../../../hooks/useFilterParams';
 import type { FilterKeys } from '../../../pages/CollectionPage';
