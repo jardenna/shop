@@ -10,7 +10,7 @@ import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import OptionGroupTitle from '../../productLists/OptionGroupTitle';
 import type { ProductLabelVariant } from '../../productLists/ProductListItem';
 import InputInfo from '../InputInfo';
-import ControlInput from './ControlInput';
+import ControlGroupInput from './ControlGroupInput';
 import './_control-list.scss';
 
 export type BaseControlGroupProps = {
@@ -68,7 +68,7 @@ const ControlGroupList = ({
       >
         {options.map((label, index) => (
           <li key={label} className="control-item">
-            <ControlInput
+            <ControlGroupInput
               iconSize={iconSize}
               autoFocus={autoFocus && index === 0}
               iconName={iconName}

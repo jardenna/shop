@@ -1,7 +1,7 @@
 import IconContent from '../../IconContent';
 import type { BaseControlGroupProps } from './ControlGroupList';
 
-type ControlInputProps = BaseControlGroupProps & {
+type ControlGroupInputProps = BaseControlGroupProps & {
   ariaLabel: string;
   checked: boolean;
   id: string;
@@ -11,7 +11,7 @@ type ControlInputProps = BaseControlGroupProps & {
   fill?: string;
 };
 
-const ControlInput = ({
+const ControlGroupInput = ({
   id,
   name,
   label,
@@ -27,7 +27,7 @@ const ControlInput = ({
   fill,
   ariaLabel,
   iconSize,
-}: ControlInputProps) => (
+}: ControlGroupInputProps) => (
   <>
     <input
       type={type}
@@ -56,4 +56,4 @@ const ControlInput = ({
   </>
 );
 
-export default ControlInput;
+export default ControlGroupInput;
