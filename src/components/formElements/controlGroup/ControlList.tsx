@@ -30,7 +30,6 @@ export type BaseControlGroupProps = {
 
 type ControlListProps = BaseControlGroupProps & {
   options: string[];
-
   disabledList?: string[];
   initialChecked?: string;
   values?: string[];
