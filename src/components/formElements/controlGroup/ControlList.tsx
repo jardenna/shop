@@ -1,5 +1,6 @@
 import { IconName } from '../../../types/enums';
 import type {
+  ControlInputType,
   InputChangeHandler,
   OptionGroupHeading,
 } from '../../../types/types';
@@ -28,7 +29,7 @@ export type BaseControlGroupProps = {
 };
 
 type ControlListProps = BaseControlGroupProps & {
-  type: 'checkbox' | 'radio';
+  type: ControlInputType;
   initialChecked?: string;
   values?: string[];
 };
