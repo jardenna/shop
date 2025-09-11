@@ -76,8 +76,8 @@ const CollectionPage = () => {
     },
   ];
 
-  const x = getFilterSummary(filterValues);
-  console.log(x.filterSummary);
+  const filterSummery = getFilterSummary(filterValues);
+  console.log(filterSummery.totalFilters);
 
   return (
     <>
@@ -117,17 +117,22 @@ const CollectionPage = () => {
                     <span>
                       {products.productCount} {language.itemLabel}
                     </span>
-                    <FilterPanel
-                      onChange={onFilterChange}
-                      values={filterValues}
-                      availableBrands={products.availableBrands}
-                      availableSizes={sortSizesDynamic(products.availableSizes)}
-                      colors={sortedTranslatedColors}
-                      language={language}
-                      onRemoveFilterTag={onRemoveFilterTag}
-                      onClearAllFilters={onClearAllFilters}
-                      productCount={products.productCount}
-                    />
+                    <div>
+                      <span>[{filterSummery.totalFilters}]</span>
+                      <FilterPanel
+                        onChange={onFilterChange}
+                        values={filterValues}
+                        availableBrands={products.availableBrands}
+                        availableSizes={sortSizesDynamic(
+                          products.availableSizes,
+                        )}
+                        colors={sortedTranslatedColors}
+                        language={language}
+                        onRemoveFilterTag={onRemoveFilterTag}
+                        onClearAllFilters={onClearAllFilters}
+                        productCount={products.productCount}
+                      />
+                    </div>
                   </>
                 )}
               </section>
