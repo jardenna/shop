@@ -1,7 +1,6 @@
 import useKeyboardListNav from '../../hooks/useKeyboardListNav';
-import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
-import { DropdownItem } from './DropdownBtn';
+import type { DropdownItem } from './DropdownBtn';
 
 type DropdownListProps = {
   dropdownList: DropdownItem[];
@@ -23,7 +22,7 @@ const DropdownList = ({ dropdownList, defaultIndex }: DropdownListProps) => {
             className={`dropdown-item ${index === selectedListItemIndex ? 'active' : ''}`}
           >
             <Button
-              variant={btnVariant || BtnVariant.WidthIcon}
+              variant={btnVariant}
               onClick={onClick}
               disabled={disabled}
               tabIndex={index === selectedListItemIndex ? 0 : -1}

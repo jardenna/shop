@@ -9,7 +9,7 @@ import useCurrency from '../features/currency/useCurrency';
 import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
 import useMediaQuery from '../hooks/useMediaQuery ';
-import { BtnType, IconName } from '../types/enums';
+import { BtnType, BtnVariant, IconName } from '../types/enums';
 import type { OptionType } from '../types/types';
 import Header from './header/Header';
 import { AdminPath, ShopPath } from './nav/enums';
@@ -62,6 +62,7 @@ const Layout = () => {
   const isEmployee = currentUser && currentUser.role === 'Employee';
   const authDropdownItem: DropdownItem = {
     label: currentUser ? language.logout : language.login,
+    btnVariant: BtnVariant.WidthIcon,
     onClick: currentUser ? handleLogout : () => navigate(`/${ShopPath.Login}`),
     disabled: isLoading,
     icon: (
@@ -76,6 +77,7 @@ const Layout = () => {
   const employeeDropdownList: DropdownItem[] = [
     {
       label: language.dashboard,
+      btnVariant: BtnVariant.WidthIcon,
       icon: <Icon iconName={IconName.Admin} title={language.lock} />,
       onClick: () => {
         navigate(`/${AdminPath.Admin}`);
@@ -88,6 +90,7 @@ const Layout = () => {
   const userDropdownList: DropdownItem[] = [
     {
       label: language.myAccount,
+      btnVariant: BtnVariant.WidthIcon,
       onClick: () => {
         if (currentUser) {
           navigate(`/${ShopPath.MyAccount}`);
@@ -105,6 +108,7 @@ const Layout = () => {
     },
     {
       label: language.myOrders,
+      btnVariant: BtnVariant.WidthIcon,
       icon: <Icon iconName={IconName.Orders} title={language.myOrders} />,
       onClick: () => {
         if (currentUser) {
