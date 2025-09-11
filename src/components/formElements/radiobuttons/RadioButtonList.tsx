@@ -18,7 +18,6 @@ const RadioButtonList = ({
   autoFocus,
   iconName,
   className = '',
-  hideLabel,
 }: RadioButtonListProps) => {
   const { language } = useLanguage();
 
@@ -29,7 +28,6 @@ const RadioButtonList = ({
           <ControlInput
             type="radio"
             id={radio.label}
-            hideLabel={hideLabel}
             name={name}
             value={radio.value}
             checked={initialChecked === radio.value}

@@ -10,7 +10,6 @@ export type BaseControlProps = {
   autoFocus?: boolean;
   className?: string;
   disabled?: boolean;
-  hideLabel?: boolean;
   iconClassName?: string;
   iconName?: IconName;
   language?: Record<string, string>;
@@ -32,7 +31,6 @@ const ControlInput = ({
   id,
   value,
   label,
-  hideLabel,
   renderExtra,
   autoFocus,
   iconName,
@@ -54,15 +52,16 @@ const ControlInput = ({
       autoFocus={autoFocus}
     />
     <label htmlFor={id} className={className}>
-      {!hideLabel && label}
       {renderExtra}
-      {iconName && (
+      {iconName ? (
         <IconContent
           iconName={iconName}
           title=""
           ariaLabel={ariaLabel || ''}
           className={iconClassName}
         />
+      ) : (
+        <span>{label}</span>
       )}
     </label>
   </>

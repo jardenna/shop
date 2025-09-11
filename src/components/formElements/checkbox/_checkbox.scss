@@ -2,6 +2,7 @@
 
 .checkbox-list {
   display: flex;
+  flex-direction: column;
   gap: 12px;
   margin-bottom: 12px;
   overflow: auto;
@@ -59,15 +60,6 @@
 
     &:checked::before {
       transform: scale(1) rotate(45deg);
-    }
-  }
-
-  &:not(.tag-list) {
-    flex-direction: column;
-
-    input[type='checkbox'] {
-      position: static;
-      clip-path: none;
     }
   }
 }
