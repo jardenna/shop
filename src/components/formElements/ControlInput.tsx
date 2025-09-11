@@ -52,7 +52,6 @@ const ControlInput = ({
       autoFocus={autoFocus}
     />
     <label htmlFor={id} className={className}>
-      {renderExtra}
       {iconName ? (
         <IconContent
           iconName={iconName}
@@ -63,6 +62,7 @@ const ControlInput = ({
       ) : (
         <span>{label}</span>
       )}
+      {renderExtra}
     </label>
   </>
 );

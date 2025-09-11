@@ -2,11 +2,11 @@
 
 .checkbox-list {
   display: flex;
-  flex-direction: column;
   gap: 12px;
   margin-bottom: 12px;
   overflow: auto;
   max-height: 500px;
+  flex-direction: column;
 
   .checkbox-item {
     display: flex;
@@ -37,6 +37,8 @@
     justify-content: center;
     cursor: pointer;
     padding-bottom: 5px;
+    position: static;
+    clip-path: none;
 
     &:focus-visible {
       outline: transparent;

@@ -10,7 +10,7 @@ type TagListProps = {
 const TagList = ({ values, onClick, filterKey }: TagListProps) => (
   <div>
     {values.map((value) => (
-      <div key={value} className="tag">
+      <div key={value} className="tag-list">
         <p>{value}</p>
 
         <IconBtn
