@@ -92,15 +92,16 @@ const FilterPanel = ({
       ariaControls="filter-products"
       showCloseIcon
       className="filter-panel"
+      triggerBtnClassName="filter-btn"
       triggerBtnContent={
-        <span className="filter-info">
-          [{totalFilterCount}] {language.filter}{' '}
+        <>
+          {totalFilterCount > 0 && `[${totalFilterCount}]`} {language.filter}{' '}
           <Icon iconName={IconName.Filter} title={language.filter} />
-        </span>
+        </>
       }
     >
       <section>
-        <LayoutElement as="header" ariaLabel="filter">
+        <LayoutElement ariaLabel="filter">
           <h2>{language.filter}</h2>
         </LayoutElement>
         {Object.entries(values).map(
@@ -117,7 +118,7 @@ const FilterPanel = ({
             ),
         )}
         <Accordion accordionList={accordionList} />
-        <LayoutElement ariaLabel="filter" className="footer">
+        <LayoutElement as="footer" ariaLabel="filter" className="footer">
           <Button variant={BtnVariant.Secondary} onClick={onClearAllFilters}>
             Ryd
           </Button>
