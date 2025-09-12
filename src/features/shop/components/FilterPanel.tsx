@@ -1,8 +1,8 @@
+import { ReactNode } from 'react';
 import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import type { AccordionList } from '../../../components/accordion/Accordion';
 import Accordion from '../../../components/accordion/Accordion';
 import Button from '../../../components/Button';
-
 import CheckboxList from '../../../components/formElements/checkbox/CheckboxList';
 import Icon from '../../../components/icons/Icon';
 import TagList from '../../../components/tags/TagList';
@@ -18,6 +18,13 @@ import type {
 } from '../../../types/types';
 import { colorMap } from '../../../utils/colorUtils';
 import './filterPanel.styles.scss';
+
+type AccordionConfigItem<K extends FilterKeys = FilterKeys> = {
+  key: K;
+  list: string[];
+  title: string;
+  renderExtra?: (checkbox: string) => ReactNode;
+};
 
 type FilterPanelProps = {
   availableBrands: string[];
@@ -50,63 +57,50 @@ const FilterPanel = ({
   const countsByKey = filtersCount.countsByKey;
   const x = countsByKey;
 
-  const accordionList: AccordionList[] = [
+  const accordionConfig: AccordionConfigItem[] = [
     {
+      key: 'colors',
       title: language.colours,
-      additionalTitle: x.colors,
-      content: (
-        <div>
-          <Button
-            variant={BtnVariant.Default}
-            onClick={() => {
-              onClearSingleFilter('colors');
-            }}
-          >
-            Ryd colors
-          </Button>
-          <CheckboxList
-            checkBoxList={colors}
-            name="colors"
-            onChange={onChange}
-            values={values.colors}
-            language={language}
-            renderExtra={(checkbox) => (
-              <span
-                className="color-icons small-item"
-                style={{
-                  backgroundColor: colorMap[checkbox],
-                  borderColor:
-                    checkbox === 'white' ? variables.colorIconBorder : '',
-                }}
-              />
-            )}
-          />
-        </div>
-      ),
-    },
-    {
-      title: language.sizes,
-      content: (
-        <CheckboxList
-          checkBoxList={availableSizes}
-          name="sizes"
-          onChange={onChange}
-          values={values.sizes}
+      list: colors,
+      renderExtra: (checkbox: string) => (
+        <span
+          className="color-icons small-item"
+          style={{
+            backgroundColor: colorMap[checkbox],
+            borderColor: checkbox === 'white' ? variables.colorIconBorder : '',
+          }}
         />
       ),
     },
-    {
-      title: language.brand,
-      content: (
-        <CheckboxList
-          checkBoxList={availableBrands}
-          name="brand"
-          onChange={onChange}
-          values={values.brand}
-        />
-      ),
-    },
+    { key: 'sizes', title: language.sizes, list: availableSizes },
+    { key: 'brand', title: language.brand, list: availableBrands },
   ];
+
+  // Type assertion for values access
+  const accordionList: AccordionList[] = accordionConfig.map((item) => ({
+    title: item.title,
+    additionalTitle: x[item.key],
+    content: (
+      <div>
+        <Button
+          variant={BtnVariant.Default}
+          onClick={() => {
+            onClearSingleFilter(item.key);
+          }}
+        >
+          Ryd {item.key}
+        </Button>
+        <CheckboxList
+          checkBoxList={item.list}
+          name={item.key}
+          onChange={onChange}
+          values={values[item.key]}
+          language={language}
+          renderExtra={item.renderExtra}
+        />
+      </div>
+    ),
+  }));
 
   return (
     <TogglePanel
