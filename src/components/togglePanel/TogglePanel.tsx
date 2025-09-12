@@ -37,6 +37,11 @@ const TogglePanel = ({
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } = useTogglePanel(
     { preventClickOutside },
   );
+  const defaultAriaLabel = !isPanelShown
+    ? language.showContent
+    : language.hideContent;
+
+  const ariaLabel = triggerBtnContent ? undefined : defaultAriaLabel;
 
   useTrapFocus({ id: 'togglePanel', popupRef: panelRef });
 
@@ -47,7 +52,7 @@ const TogglePanel = ({
         variant={BtnVariant.Ghost}
         ariaExpanded={isPanelShown}
         onClick={onTogglePanel}
-        ariaLabel={!isPanelShown ? language.showContent : language.hideContent}
+        ariaLabel={ariaLabel}
         ariaHasPopup
         ariaControls={ariaControls}
       >
