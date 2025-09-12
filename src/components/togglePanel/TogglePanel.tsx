@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import useLanguage from '../../features/language/useLanguage';
+import useMediaQuery from '../../hooks/useMediaQuery ';
 import useTrapFocus from '../../hooks/useTrapFocus';
 import { BtnVariant } from '../../types/enums';
 import BtnClose from '../BtnClose';
@@ -32,6 +33,7 @@ const TogglePanel = ({
   preventClickOutside = false,
 }: TogglePanelProps) => {
   const { language } = useLanguage();
+  const { isMobileSize } = useMediaQuery();
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } = useTogglePanel(
     { preventClickOutside },
   );
@@ -64,7 +66,7 @@ const TogglePanel = ({
         {isPanelShown ? children : ''}
         {showCloseIcon && isPanelShown && <BtnClose onClick={onHidePanel} />}
       </div>
-      {isPanelShown && <Overlay />}
+      {isPanelShown && !isMobileSize && <Overlay />}
     </>
   );
 };
