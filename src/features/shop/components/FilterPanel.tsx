@@ -11,20 +11,29 @@ import LayoutElement from '../../../layout/LayoutElement';
 import type { FilterKeys } from '../../../pages/CollectionPage';
 import variables from '../../../scss/variables.module.scss';
 import { BtnVariant, IconName } from '../../../types/enums';
-import type { InputChangeHandler } from '../../../types/types';
+import type {
+  FiltersCountResult,
+  InputChangeHandler,
+} from '../../../types/types';
 import { colorMap } from '../../../utils/colorUtils';
 import './filterPanel.styles.scss';
 
+// {
+//     "sizes": ,
+//     "colors": 3,
+//     "brand": 6
+// }
 type FilterPanelProps = {
   availableBrands: string[];
   availableSizes: Size[];
   colors: string[];
+  filtersCount: FiltersCountResult;
   language: Record<string, string>;
   onChange: InputChangeHandler;
   productCount: number;
-  totalFilterCount: number;
   values: FilterValuesType<string>;
   onClearAllFilters: () => void;
+  onClearSingleFilter: (filterKey: FilterKeys) => void;
   onRemoveFilterTag: (key: FilterKeys, value: string) => void;
 };
 
@@ -38,8 +47,11 @@ const FilterPanel = ({
   onRemoveFilterTag,
   onClearAllFilters,
   productCount,
-  totalFilterCount,
+  filtersCount,
+  onClearSingleFilter,
 }: FilterPanelProps) => {
+  const totalFiltersCount = filtersCount.totalCount;
+
   const accordionList: AccordionList[] = [
     {
       title: language.colours,
@@ -95,7 +107,7 @@ const FilterPanel = ({
       triggerBtnClassName="filter-btn"
       triggerBtnContent={
         <>
-          {totalFilterCount > 0 && `[${totalFilterCount}]`} {language.filter}{' '}
+          {totalFiltersCount > 0 && `[${totalFiltersCount}]`} {language.filter}{' '}
           <Icon iconName={IconName.Filter} title={language.filter} />
         </>
       }
@@ -108,10 +120,12 @@ const FilterPanel = ({
           ([key, values]) =>
             values.length > 0 && (
               <TagList
-                language={language}
+                onClearSingleFilter={onClearSingleFilter}
                 key={key}
+                countsByKey={filtersCount.countsByKey}
+                language={language}
                 values={values}
-                filterKey={key}
+                filterKey={key as FilterKeys}
                 onClick={onRemoveFilterTag}
                 ariaLabel={language.removeFilter}
               />

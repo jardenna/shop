@@ -36,8 +36,13 @@ const CollectionPage = () => {
     brand: [],
   };
 
-  const { filterValues, onFilterChange, onRemoveFilterTag, onClearAllFilters } =
-    useFilterParams(initialFilters);
+  const {
+    filterValues,
+    onFilterChange,
+    onRemoveFilterTag,
+    onClearAllFilters,
+    handleClearSingleFilter,
+  } = useFilterParams(initialFilters);
   const { subMenu, subMenuLoading, refetchSubMenu } = useSubMenu({ category });
   const [productView, setProuctView] = useLocalStorage(
     localStorageKeys.productView,
@@ -76,8 +81,7 @@ const CollectionPage = () => {
     },
   ];
 
-  const filterSummery = getFilterSummary(filterValues);
-  console.log(filterSummery.totalFilters);
+  const filtersCount = getFilterSummary(filterValues);
 
   return (
     <>
@@ -118,7 +122,8 @@ const CollectionPage = () => {
                       {products.productCount} {language.itemLabel}
                     </span>
                     <FilterPanel
-                      totalFilterCount={filterSummery.totalFilters}
+                      onClearSingleFilter={handleClearSingleFilter}
+                      filtersCount={filtersCount}
                       onChange={onFilterChange}
                       values={filterValues}
                       availableBrands={products.availableBrands}

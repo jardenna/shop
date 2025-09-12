@@ -1,6 +1,10 @@
 @use '../../../scss/globals' as *;
 
 .filter-panel {
+  .tag-list {
+    align-items: baseline;
+  }
+
   &.toggle-panel {
     max-width: rem(500px);
     overflow: hidden auto;

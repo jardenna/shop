@@ -108,11 +108,20 @@ const useFilterParams = (initialFilters: FilterValuesType<string>) => {
     setFilterValues(initialFilters);
   };
 
+  const handleClearSingleFilter = (filterKey: FilterKeys) => {
+    const updatedFilters = {
+      ...filterValues,
+      [filterKey]: [],
+    };
+    setFilterValues(updatedFilters);
+  };
+
   return {
     filterValues,
     onFilterChange: handleFilterChange,
     onRemoveFilterTag: handleRemoveFilterTag,
     onClearAllFilters: handleClearAllFilters,
+    handleClearSingleFilter,
   };
 };
 
