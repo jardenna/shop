@@ -117,22 +117,18 @@ const CollectionPage = () => {
                     <span>
                       {products.productCount} {language.itemLabel}
                     </span>
-                    <div>
-                      <span>[{filterSummery.totalFilters}]</span>
-                      <FilterPanel
-                        onChange={onFilterChange}
-                        values={filterValues}
-                        availableBrands={products.availableBrands}
-                        availableSizes={sortSizesDynamic(
-                          products.availableSizes,
-                        )}
-                        colors={sortedTranslatedColors}
-                        language={language}
-                        onRemoveFilterTag={onRemoveFilterTag}
-                        onClearAllFilters={onClearAllFilters}
-                        productCount={products.productCount}
-                      />
-                    </div>
+                    <FilterPanel
+                      totalFilterCount={filterSummery.totalFilters}
+                      onChange={onFilterChange}
+                      values={filterValues}
+                      availableBrands={products.availableBrands}
+                      availableSizes={sortSizesDynamic(products.availableSizes)}
+                      colors={sortedTranslatedColors}
+                      language={language}
+                      onRemoveFilterTag={onRemoveFilterTag}
+                      onClearAllFilters={onClearAllFilters}
+                      productCount={products.productCount}
+                    />
                   </>
                 )}
               </section>

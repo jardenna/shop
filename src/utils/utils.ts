@@ -61,7 +61,7 @@ function getAriaLabel(count: number, ariaLabelData: AriaLabelData): string {
   return typeof label === 'string' ? label : `${count} ${unit}`;
 }
 
-// show filters count
+// Filters count
 type Filters = Record<string, string[]>;
 
 const getFilterSummary = (filters: Filters) => {

@@ -22,6 +22,7 @@ type FilterPanelProps = {
   language: Record<string, string>;
   onChange: InputChangeHandler;
   productCount: number;
+  totalFilterCount: number;
   values: FilterValuesType<string>;
   onClearAllFilters: () => void;
   onRemoveFilterTag: (key: FilterKeys, value: string) => void;
@@ -37,6 +38,7 @@ const FilterPanel = ({
   onRemoveFilterTag,
   onClearAllFilters,
   productCount,
+  totalFilterCount,
 }: FilterPanelProps) => {
   const accordionList: AccordionList[] = [
     {
@@ -88,14 +90,13 @@ const FilterPanel = ({
   return (
     <TogglePanel
       ariaControls="filter-products"
-      triggerBtnClassName="product-filter"
       showCloseIcon
       className="filter-panel"
       triggerBtnContent={
-        <>
-          <span>{language.filter}</span>
+        <span className="filter-info">
+          [{totalFilterCount}] {language.filter}{' '}
           <Icon iconName={IconName.Filter} title={language.filter} />
-        </>
+        </span>
       }
     >
       <section>

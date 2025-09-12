@@ -27,7 +27,7 @@ const TogglePanel = ({
   ariaControls,
   panelPosition = 'right',
   className = '',
-  triggerBtnClassName = 'menu-burger',
+  triggerBtnClassName,
   triggerBtnContent,
   showCloseIcon,
   preventClickOutside = false,

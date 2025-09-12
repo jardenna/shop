@@ -53,6 +53,7 @@ const Header = ({
           ariaControls="nav"
           preventClickOutside
           className="main-panel"
+          triggerBtnClassName="menu-burger"
         >
           <NavContainer navList={navList} hideAria />
         </TogglePanel>
