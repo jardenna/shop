@@ -6,6 +6,7 @@ import useLanguage from '../features/language/useLanguage';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
 import useMediaQuery from '../hooks/useMediaQuery ';
 import { ShopPath } from '../layout/nav/enums';
+import { adminNavList } from '../layout/nav/navLists';
 import AdminHeader from './AdminHeader';
 import './AdminLayout.styles.scss';
 import Aside from './aside/Aside';
@@ -46,10 +47,7 @@ const AdminLayout = () => {
       />
       <main className="main">
         {isMobileSize ? (
-          <MobileNav
-            currentUser={currentUser || null}
-            ariaControls="dashboard-nav"
-          />
+          <MobileNav navList={adminNavList} />
         ) : (
           <Aside
             isShown={isMenuCollapsed}
