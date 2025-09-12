@@ -41,7 +41,7 @@ const CollectionPage = () => {
     onFilterChange,
     onRemoveFilterTag,
     onClearAllFilters,
-    handleClearSingleFilter,
+    onClearSingleFilter,
   } = useFilterParams(initialFilters);
   const { subMenu, subMenuLoading, refetchSubMenu } = useSubMenu({ category });
   const [productView, setProuctView] = useLocalStorage(
@@ -122,7 +122,7 @@ const CollectionPage = () => {
                       {products.productCount} {language.itemLabel}
                     </span>
                     <FilterPanel
-                      onClearSingleFilter={handleClearSingleFilter}
+                      onClearSingleFilter={onClearSingleFilter}
                       filtersCount={filtersCount}
                       onChange={onFilterChange}
                       values={filterValues}

@@ -120,7 +120,7 @@ const useFilterParams = (initialFilters: FilterValuesType<string>) => {
     onFilterChange: handleFilterChange,
     onRemoveFilterTag: handleRemoveFilterTag,
     onClearAllFilters: handleClearAllFilters,
-    handleClearSingleFilter,
+    onClearSingleFilter: handleClearSingleFilter,
   };
 };
 

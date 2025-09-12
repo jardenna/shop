@@ -2,6 +2,7 @@ import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import type { AccordionList } from '../../../components/accordion/Accordion';
 import Accordion from '../../../components/accordion/Accordion';
 import Button from '../../../components/Button';
+
 import CheckboxList from '../../../components/formElements/checkbox/CheckboxList';
 import Icon from '../../../components/icons/Icon';
 import TagList from '../../../components/tags/TagList';
@@ -18,11 +19,6 @@ import type {
 import { colorMap } from '../../../utils/colorUtils';
 import './filterPanel.styles.scss';
 
-// {
-//     "sizes": ,
-//     "colors": 3,
-//     "brand": 6
-// }
 type FilterPanelProps = {
   availableBrands: string[];
   availableSizes: Size[];
@@ -51,28 +47,41 @@ const FilterPanel = ({
   onClearSingleFilter,
 }: FilterPanelProps) => {
   const totalFiltersCount = filtersCount.totalCount;
+  const countsByKey = filtersCount.countsByKey;
+  const x = countsByKey;
 
   const accordionList: AccordionList[] = [
     {
       title: language.colours,
+      additionalTitle: x.colors,
       content: (
-        <CheckboxList
-          checkBoxList={colors}
-          name="colors"
-          onChange={onChange}
-          values={values.colors}
-          language={language}
-          renderExtra={(checkbox) => (
-            <span
-              className="color-icons small-item"
-              style={{
-                backgroundColor: colorMap[checkbox],
-                borderColor:
-                  checkbox === 'white' ? variables.colorIconBorder : '',
-              }}
-            />
-          )}
-        />
+        <div>
+          <Button
+            variant={BtnVariant.Default}
+            onClick={() => {
+              onClearSingleFilter('colors');
+            }}
+          >
+            Ryd colors
+          </Button>
+          <CheckboxList
+            checkBoxList={colors}
+            name="colors"
+            onChange={onChange}
+            values={values.colors}
+            language={language}
+            renderExtra={(checkbox) => (
+              <span
+                className="color-icons small-item"
+                style={{
+                  backgroundColor: colorMap[checkbox],
+                  borderColor:
+                    checkbox === 'white' ? variables.colorIconBorder : '',
+                }}
+              />
+            )}
+          />
+        </div>
       ),
     },
     {
@@ -120,9 +129,7 @@ const FilterPanel = ({
           ([key, values]) =>
             values.length > 0 && (
               <TagList
-                onClearSingleFilter={onClearSingleFilter}
                 key={key}
-                countsByKey={filtersCount.countsByKey}
                 language={language}
                 values={values}
                 filterKey={key as FilterKeys}
