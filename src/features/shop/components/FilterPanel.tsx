@@ -22,7 +22,6 @@ import './filterPanel.styles.scss';
 type AccordionConfigItem<K extends FilterKeys = FilterKeys> = {
   key: K;
   list: string[];
-  title: string;
   renderExtra?: (checkbox: string) => ReactNode;
 };
 
@@ -60,7 +59,6 @@ const FilterPanel = ({
   const accordionConfig: AccordionConfigItem[] = [
     {
       key: 'colors',
-      title: language.colours,
       list: colors,
       renderExtra: (checkbox: string) => (
         <span
@@ -72,13 +70,13 @@ const FilterPanel = ({
         />
       ),
     },
-    { key: 'sizes', title: language.sizes, list: availableSizes },
-    { key: 'brand', title: language.brand, list: availableBrands },
+    { key: 'sizes', list: availableSizes },
+    { key: 'brand', list: availableBrands },
   ];
 
   // Type assertion for values access
   const accordionList: AccordionList[] = accordionConfig.map((item) => ({
-    title: item.title,
+    title: language[item.key],
     additionalTitle: x[item.key],
     content: (
       <div>
