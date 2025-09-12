@@ -54,7 +54,6 @@ const FilterPanel = ({
 }: FilterPanelProps) => {
   const totalFiltersCount = filtersCount.totalCount;
   const countsByKey = filtersCount.countsByKey;
-  const x = countsByKey;
 
   const accordionConfig: AccordionConfigItem[] = [
     {
@@ -74,19 +73,18 @@ const FilterPanel = ({
     { key: 'brand', list: availableBrands },
   ];
 
-  // Type assertion for values access
   const accordionList: AccordionList[] = accordionConfig.map((item) => ({
     title: language[item.key],
-    additionalTitle: x[item.key],
+    additionalTitle: countsByKey[item.key] > 0 ? countsByKey[item.key] : '',
     content: (
-      <div>
+      <>
         <Button
           variant={BtnVariant.Default}
           onClick={() => {
             onClearSingleFilter(item.key);
           }}
         >
-          Ryd {item.key}
+          {language.clearFilters}
         </Button>
         <CheckboxList
           checkBoxList={item.list}
@@ -96,7 +94,7 @@ const FilterPanel = ({
           language={language}
           renderExtra={item.renderExtra}
         />
-      </div>
+      </>
     ),
   }));
 
@@ -133,9 +131,11 @@ const FilterPanel = ({
         <Accordion accordionList={accordionList} />
         <LayoutElement as="footer" ariaLabel="filter" className="footer">
           <Button variant={BtnVariant.Secondary} onClick={onClearAllFilters}>
-            Ryd
+            {language.clearAllFilters}
           </Button>
-          <Button>Vis {productCount} varer</Button>
+          <Button>
+            {language.show} {productCount} {language.itemLabel}
+          </Button>
         </LayoutElement>
       </section>
     </TogglePanel>

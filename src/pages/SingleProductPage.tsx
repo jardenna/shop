@@ -71,7 +71,7 @@ const SingleProductPage = () => {
     },
     {
       title: language.reviews,
-      additionalTitle: product ? `(${product.numReviews})` : '',
+      additionalTitle: product ? product.numReviews : '',
       content:
         product && product.rating > 0 ? (
           <ReviewsDisplay

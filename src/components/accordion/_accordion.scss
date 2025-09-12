@@ -29,6 +29,11 @@
       transition-behavior: allow-discrete;
     }
 
+    .accordion-title {
+      display: flex;
+      gap: 4px;
+    }
+
     .accordion-icon {
       transform: rotate(0);
 
