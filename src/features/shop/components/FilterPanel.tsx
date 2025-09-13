@@ -79,13 +79,13 @@ const FilterPanel = ({
     content: (
       <>
         <Button
-          variant={BtnVariant.WidthIcon}
+          variant={BtnVariant.Ghost}
+          className="clear-filter-btn"
           onClick={() => {
             onClearSingleFilter(item.key);
           }}
         >
           {language.clearFilters}
-          <Icon iconName={IconName.Trash} title="" />
         </Button>
         <CheckboxList
           checkBoxList={item.list}

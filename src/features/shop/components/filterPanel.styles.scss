@@ -5,6 +5,11 @@
     align-items: baseline;
   }
 
+  .clear-filter-btn {
+    justify-content: flex-end;
+    width: 100%;
+  }
+
   &.toggle-panel {
     max-width: rem(500px);
     overflow: hidden auto;
