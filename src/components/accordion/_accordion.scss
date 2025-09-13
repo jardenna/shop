@@ -6,6 +6,9 @@
     overflow: clip;
 
     .accordion-content {
+      overflow: hidden auto;
+      max-height: rem(400px);
+      padding-right: 4px;
       padding-bottom: 12px;
       display: flex;
       flex-direction: column;
