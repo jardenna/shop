@@ -134,6 +134,12 @@ a[class^='btn-'],
 
   &:hover {
     color: $color-link-hover;
+
+    svg {
+      stroke: $color-blue-30;
+
+      @include transition;
+    }
   }
 
   &:focus-visible {
