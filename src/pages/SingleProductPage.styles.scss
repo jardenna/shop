@@ -8,10 +8,9 @@
   .product-care-info {
     list-style: disc;
     padding-inline-start: 30px;
-
-    li {
-      margin-top: 12px;
-    }
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 
   @include max-size($mini) {

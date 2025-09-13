@@ -3,6 +3,7 @@ import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import type { AccordionList } from '../../../components/accordion/Accordion';
 import Accordion from '../../../components/accordion/Accordion';
 import Button from '../../../components/Button';
+import ColorItem from '../../../components/ColorItem';
 import CheckboxList from '../../../components/formElements/checkbox/CheckboxList';
 import Icon from '../../../components/icons/Icon';
 import TagList from '../../../components/tags/TagList';
@@ -11,13 +12,11 @@ import TogglePanel from '../../../components/togglePanel/TogglePanel';
 import { FilterValuesType } from '../../../hooks/useFilterParams';
 import LayoutElement from '../../../layout/LayoutElement';
 import type { FilterKeys } from '../../../pages/CollectionPage';
-import variables from '../../../scss/variables.module.scss';
 import { BtnVariant, IconName } from '../../../types/enums';
 import type {
   FiltersCountResult,
   InputChangeHandler,
 } from '../../../types/types';
-import { colorMap } from '../../../utils/colorUtils';
 import './filterPanel.styles.scss';
 
 type AccordionConfigItem<K extends FilterKeys = FilterKeys> = {
@@ -61,13 +60,7 @@ const FilterPanel = ({
       key: 'colors',
       list: colors,
       renderExtra: (checkbox: string) => (
-        <span
-          className="color-icons small-item"
-          style={{
-            backgroundColor: colorMap[checkbox],
-            borderColor: checkbox === 'white' ? variables.colorIconBorder : '',
-          }}
-        />
+        <ColorItem colorKey={checkbox} hasBorderColor={checkbox === 'white'} />
       ),
     },
     { key: 'sizes', list: availableSizes },
