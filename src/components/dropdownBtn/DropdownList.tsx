@@ -17,13 +17,14 @@ const DropdownList = ({ dropdownList, defaultIndex }: DropdownListProps) => {
   return (
     <ul>
       {dropdownList.map(
-        ({ label, onClick, icon, btnVariant, disabled }, index) => (
+        ({ label, onClick, icon, btnVariant, disabled, isActive }, index) => (
           <li
             key={label}
             className={`dropdown-item ${index === selectedListItemIndex ? 'active' : ''}`}
           >
             <Button
               variant={btnVariant || BtnVariant.WidthIcon}
+              className={isActive ? 'active' : ''}
               onClick={onClick}
               disabled={disabled}
               tabIndex={index === selectedListItemIndex ? 0 : -1}
