@@ -1,8 +1,9 @@
 @use '../../../scss/globals' as *;
 
 .filter-panel {
-  .tag-list {
-    align-items: baseline;
+  .tag-list-container {
+    max-height: rem(112px);
+    overflow: hidden;
   }
 
   .filter-panel-content {

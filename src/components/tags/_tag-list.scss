@@ -4,11 +4,12 @@
   display: flex;
   gap: 4px;
   flex-wrap: wrap;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 
   .tag-item {
     display: flex;
     max-width: fit-content;
+    align-items: baseline;
     border: 1px solid $color-border-dark;
     padding: 4px 8px;
     text-transform: uppercase;

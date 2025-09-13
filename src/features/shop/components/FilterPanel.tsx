@@ -117,21 +117,24 @@ const FilterPanel = ({
         <LayoutElement ariaLabel="filter">
           <h2>{language.filter}</h2>
         </LayoutElement>
-
-        {Object.entries(values).map(
-          ([key, values]) =>
-            values.length > 0 && (
-              <TagList
-                key={key}
-                language={language}
-                values={values}
-                filterKey={key as FilterKeys}
-                onClick={onRemoveFilterTag}
-                ariaLabel={language.removeFilter}
-              />
-            ),
-        )}
-
+        <div>
+          <div className="tag-list-container">
+            {Object.entries(values).map(
+              ([key, values]) =>
+                values.length > 0 && (
+                  <TagList
+                    key={key}
+                    language={language}
+                    values={values}
+                    filterKey={key as FilterKeys}
+                    onClick={onRemoveFilterTag}
+                    ariaLabel={language.removeFilter}
+                  />
+                ),
+            )}
+          </div>
+          <Button variant={BtnVariant.Default}>Vis alle tags</Button>
+        </div>
         <Accordion accordionList={accordionList} />
         <LayoutElement as="footer" ariaLabel="filter" className="footer">
           <Button variant={BtnVariant.Secondary} onClick={onClearAllFilters}>

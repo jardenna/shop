@@ -68,6 +68,8 @@ a[class^='btn-'],
 // Default button
 .btn-default {
   background-color: $color-secondary;
+  text-transform: uppercase;
+  font-size: $font-small;
   padding: 8px 32px;
   min-height: auto;
   width: auto;
