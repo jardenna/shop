@@ -1,11 +1,5 @@
 @use '../../../../scss/globals' as *;
 
-.review-display {
-  .star.filled {
-    color: $color-yellow;
-  }
-}
-
 .stars {
   display: flex;
   gap: 8px;

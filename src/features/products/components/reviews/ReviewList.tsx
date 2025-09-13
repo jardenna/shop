@@ -5,30 +5,34 @@ import { getDaysAgo, getStarsArray } from './reviewsUtil.';
 
 type ReviewList = {
   reviewList: DisplyReviews[];
+  title: string;
 };
 
-const ReviewList = ({ reviewList }: ReviewList) => {
+const ReviewList = ({ reviewList, title }: ReviewList) => {
   const { language } = useLanguage();
   return (
-    <ul className="review-list">
-      {reviewList.map((review, index) => (
-        <li key={index} className="review-item">
-          <div className="review-header">
-            <ReviewStars
-              stars={getStarsArray(review.rating)}
-              rating={review.rating}
-            />
-            <p className="text-small text-italic">
-              {getDaysAgo(review.createdAt, language)}
-            </p>
-          </div>
-          <div className="review-content">
-            <p>{review.comment}</p>
-            <p>{review.name} </p>
-          </div>
-        </li>
-      ))}
-    </ul>
+    <>
+      <span>{title}</span>
+      <ul className="review-list">
+        {reviewList.map((review, index) => (
+          <li key={index} className="review-item">
+            <div className="review-header">
+              <ReviewStars
+                stars={getStarsArray(review.rating)}
+                rating={review.rating}
+              />
+              <p className="text-small text-italic">
+                {getDaysAgo(review.createdAt, language)}
+              </p>
+            </div>
+            <div className="review-content">
+              <p>{review.comment}</p>
+              <p>{review.name} </p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };
 export default ReviewList;

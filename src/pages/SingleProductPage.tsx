@@ -10,7 +10,7 @@ import useAuth from '../features/auth/hooks/useAuth';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
 import useLanguage from '../features/language/useLanguage';
 import ProductCareList from '../features/products/components/reviews/ProductCareList';
-import ReviewsDisplay from '../features/products/components/reviews/ReviewsDisplay';
+import ReviewList from '../features/products/components/reviews/ReviewList';
 import ReviewsForm from '../features/products/components/reviews/ReviewsForm';
 import ReviewStars from '../features/products/components/reviews/ReviewStars';
 import { getStarsArray } from '../features/products/components/reviews/reviewsUtil.';
@@ -74,12 +74,13 @@ const SingleProductPage = () => {
     },
     {
       title: language.reviews,
-      additionalTitle: product ? product.numReviews : '',
+      additionalTitle:
+        product && product.numReviews > 0 ? product.numReviews : '',
       content:
         product && product.rating > 0 ? (
-          <ReviewsDisplay
+          <ReviewList
             reviewList={product.reviews}
-            numOfReviews={product.numReviews}
+            title={`${language.numberOfReviews} ${product.numReviews}`}
           />
         ) : (
           <span>{language.noReview}</span>
