@@ -7,7 +7,6 @@ import messagePopupReducer, {
   addMessagePopup,
 } from '../features/messagePopupSlice';
 import modalSlice from '../features/modalSlice';
-import toggleSlice from '../features/toggleSlice';
 import apiSlice from './api/apiSlice';
 import currencyApiSlice from './api/currencyApiSlice';
 
@@ -44,7 +43,6 @@ export const store = configureStore({
     messagePopup: messagePopupReducer,
     language: languageReducer,
     modal: modalSlice,
-    toggle: toggleSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(

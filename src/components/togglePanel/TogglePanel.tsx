@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import useLanguage from '../../features/language/useLanguage';
 import useMediaQuery from '../../hooks/useMediaQuery ';
 import useTrapFocus from '../../hooks/useTrapFocus';
+import LayoutElement from '../../layout/LayoutElement';
 import { BtnVariant } from '../../types/enums';
 import BtnClose from '../BtnClose';
 import Button from '../Button';
@@ -11,10 +12,17 @@ import useTogglePanel from './useTogglePanel';
 
 type PanelPosition = 'right' | 'left' | 'bottom' | 'top';
 
+type ActionBtnsProps = {
+  primaryBtnText: string;
+  secondaryBtnText: string;
+  secondaryAction: () => void;
+};
+
 type TogglePanelProps = {
   ariaControls: string;
   children: ReactNode;
   className?: string;
+  footer?: ActionBtnsProps;
   panelPosition?: PanelPosition;
   preventClickOutside?: boolean;
   showCloseIcon?: boolean;
@@ -31,6 +39,7 @@ const TogglePanel = ({
   triggerBtnContent,
   showCloseIcon,
   preventClickOutside = false,
+  footer,
 }: TogglePanelProps) => {
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
@@ -70,6 +79,18 @@ const TogglePanel = ({
       >
         {isPanelShown ? children : ''}
         {showCloseIcon && isPanelShown && <BtnClose onClick={onHidePanel} />}
+
+        {isPanelShown && footer && (
+          <LayoutElement as="footer" ariaLabel="panel" className="footer">
+            <Button
+              variant={BtnVariant.Secondary}
+              onClick={footer.secondaryAction}
+            >
+              {language.clearAllFilters}
+            </Button>
+            <Button onClick={onHidePanel}>{footer.primaryBtnText}</Button>
+          </LayoutElement>
+        )}
       </div>
       {isPanelShown && !isMobileSize && <Overlay />}
     </>

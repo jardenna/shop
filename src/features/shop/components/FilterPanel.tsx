@@ -103,6 +103,11 @@ const FilterPanel = ({
 
   return (
     <TogglePanel
+      footer={{
+        primaryBtnText: `${language.show} ${productCount} ${language.itemLabel}`,
+        secondaryAction: onClearAllFilters,
+        secondaryBtnText: language.clearAllFilters,
+      }}
       ariaControls="filter-products"
       showCloseIcon
       className="filter-panel"
@@ -136,14 +141,6 @@ const FilterPanel = ({
         </ToggleContent>
 
         <Accordion accordionList={accordionList} />
-        <LayoutElement as="footer" ariaLabel="filter" className="footer">
-          <Button variant={BtnVariant.Secondary} onClick={onClearAllFilters}>
-            {language.clearAllFilters}
-          </Button>
-          <Button>
-            {language.show} {productCount} {language.itemLabel}
-          </Button>
-        </LayoutElement>
       </section>
     </TogglePanel>
   );
