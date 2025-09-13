@@ -10,8 +10,8 @@ import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import OptionGroupTitle from '../../productLists/OptionGroupTitle';
 import type { ProductLabelVariant } from '../../productLists/ProductListItem';
 import InputInfo from '../InputInfo';
-import ControlInput from './ControlInput';
-import './_control-list.scss';
+import ControlGroupInput from './ControlGroupInput';
+import './_control-group-list.scss';
 
 export type BaseControlGroupProps = {
   name: string;
@@ -28,14 +28,14 @@ export type BaseControlGroupProps = {
   variant?: ProductLabelVariant;
 };
 
-type ControlListProps = BaseControlGroupProps & {
+type ControlGroupListProps = BaseControlGroupProps & {
   options: string[];
   disabledList?: string[];
   initialChecked?: string;
   values?: string[];
 };
 
-const ControlList = ({
+const ControlGroupList = ({
   name,
   options,
   groupTitle,
@@ -52,7 +52,7 @@ const ControlList = ({
   variant = 'medium',
   iconSize,
   iconClassName,
-}: ControlListProps) => {
+}: ControlGroupListProps) => {
   const { language } = useLanguage();
   const checked = (label: string) =>
     type === 'checkbox' ? values.includes(label) : initialChecked === label;
@@ -68,7 +68,7 @@ const ControlList = ({
       >
         {options.map((label, index) => (
           <li key={label} className="control-item">
-            <ControlInput
+            <ControlGroupInput
               iconSize={iconSize}
               autoFocus={autoFocus && index === 0}
               iconName={iconName}
@@ -95,4 +95,4 @@ const ControlList = ({
   );
 };
 
-export default ControlList;
+export default ControlGroupList;

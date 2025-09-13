@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
-import type { BaseControlProps } from '../Control';
-import Control from '../Control';
+import type { BaseControlProps } from '../ControlInput';
+import ControlInput from '../ControlInput';
 import './_checkbox.scss';
 
 type CheckboxListProps = BaseControlProps & {
@@ -25,7 +25,7 @@ const CheckboxList = ({
   <ul className={`checkbox-list ${className}`}>
     {checkBoxList.map((checkbox, index) => (
       <li key={checkbox} className="checkbox-item">
-        <Control
+        <ControlInput
           ariaLabel={ariaLabel}
           name={name}
           iconName={iconName}

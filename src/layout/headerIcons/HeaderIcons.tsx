@@ -23,7 +23,7 @@ type HeaderIconsProps = OmittedHeaderProps & {
 };
 
 const HeaderIcons = ({
-  userDropdownList,
+  dropdownBtnList,
   primaryActionBtn,
   onChange,
   values,
@@ -48,7 +48,7 @@ const HeaderIcons = ({
           </li> */}
         <li>
           <DropdownBtn
-            dropdownList={userDropdownList}
+            dropdownList={dropdownBtnList}
             ariaControls="user-dropdown"
             placement="bottom-start"
           >

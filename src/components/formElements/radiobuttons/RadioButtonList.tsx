@@ -1,8 +1,8 @@
 import useLanguage from '../../../features/language/useLanguage';
 import type { OptionType } from '../../../types/types';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
-import type { BaseControlProps } from '../Control';
-import Control from '../Control';
+import type { BaseControlProps } from '../ControlInput';
+import ControlInput from '../ControlInput';
 import './_radio-button.scss';
 
 type RadioButtonListProps = BaseControlProps & {
@@ -18,7 +18,6 @@ const RadioButtonList = ({
   autoFocus,
   iconName,
   className = '',
-  hideLabel,
 }: RadioButtonListProps) => {
   const { language } = useLanguage();
 
@@ -26,10 +25,9 @@ const RadioButtonList = ({
     <ul className={`radio-btn-container ${className}`}>
       {radioButtonList.map((radio, index) => (
         <li key={radio.value} className="radio-btn-content">
-          <Control
+          <ControlInput
             type="radio"
             id={radio.label}
-            hideLabel={hideLabel}
             name={name}
             value={radio.value}
             checked={initialChecked === radio.value}

@@ -10,14 +10,13 @@ export type BaseControlProps = {
   autoFocus?: boolean;
   className?: string;
   disabled?: boolean;
-  hideLabel?: boolean;
   iconClassName?: string;
   iconName?: IconName;
   language?: Record<string, string>;
   type?: ControlInputType;
 };
 
-type ControlProps = BaseControlProps & {
+type ControlInputProps = BaseControlProps & {
   checked: boolean;
   id: string;
   label: string;
@@ -25,14 +24,13 @@ type ControlProps = BaseControlProps & {
   renderExtra?: ReactNode;
 };
 
-const Control = ({
+const ControlInput = ({
   onChange,
   checked,
   name,
   id,
   value,
   label,
-  hideLabel,
   renderExtra,
   autoFocus,
   iconName,
@@ -41,7 +39,7 @@ const Control = ({
   iconClassName,
   className = 'checkbox-label',
   type = 'checkbox',
-}: ControlProps) => (
+}: ControlInputProps) => (
   <>
     <input
       type={type}
@@ -54,18 +52,19 @@ const Control = ({
       autoFocus={autoFocus}
     />
     <label htmlFor={id} className={className}>
-      {!hideLabel && label}
-      {renderExtra}
-      {iconName && (
+      {iconName ? (
         <IconContent
           iconName={iconName}
           title=""
           ariaLabel={ariaLabel || ''}
           className={iconClassName}
         />
+      ) : (
+        <span>{label}</span>
       )}
+      {renderExtra}
     </label>
   </>
 );
 
-export default Control;
+export default ControlInput;

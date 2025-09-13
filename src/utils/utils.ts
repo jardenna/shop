@@ -1,5 +1,9 @@
 import { ValidationMessage } from '../types/enums';
-import type { AriaLabelData } from '../types/types';
+import type {
+  AriaLabelData,
+  Filters,
+  FiltersCountResult,
+} from '../types/types';
 
 const oneDay = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
 const currencyCacheKey = 'exchangeRates';
@@ -61,12 +65,27 @@ function getAriaLabel(count: number, ariaLabelData: AriaLabelData): string {
   return typeof label === 'string' ? label : `${count} ${unit}`;
 }
 
+// Filters count
+const getFilterSummary = (filters: Filters): FiltersCountResult => {
+  const countsByKey = Object.fromEntries(
+    Object.entries(filters).map(([key, values]) => [key, values.length]),
+  ) as Record<string, number>;
+
+  const totalCount = Object.values(countsByKey).reduce(
+    (sum, count) => sum + count,
+    0,
+  );
+
+  return { countsByKey, totalCount };
+};
+
 export {
   allowedExtensions,
   currencyCacheKey,
   discountCalculation,
   getAriaLabel,
   getErrorMessage,
+  getFilterSummary,
   getlowerCaseFirstLetter,
   maxFiles,
   maxFileSize,

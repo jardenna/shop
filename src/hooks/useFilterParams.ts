@@ -94,7 +94,34 @@ const useFilterParams = (initialFilters: FilterValuesType<string>) => {
     });
   };
 
-  return { filterValues, onFilterChange: handleFilterChange };
+  const handleRemoveFilterTag = (key: FilterKeys, value: string) => {
+    const current = filterValues[key];
+    const updated = current.filter((val) => val !== value);
+
+    setFilterValues({
+      ...filterValues,
+      [key]: updated,
+    });
+  };
+
+  const handleClearAllFilters = () => {
+    setFilterValues(initialFilters);
+  };
+
+  const handleClearSingleFilter = (filterKey: FilterKeys) => {
+    setFilterValues({
+      ...filterValues,
+      [filterKey]: [],
+    });
+  };
+
+  return {
+    filterValues,
+    onFilterChange: handleFilterChange,
+    onRemoveFilterTag: handleRemoveFilterTag,
+    onClearAllFilters: handleClearAllFilters,
+    onClearSingleFilter: handleClearSingleFilter,
+  };
 };
 
 export default useFilterParams;

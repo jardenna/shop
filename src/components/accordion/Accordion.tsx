@@ -13,7 +13,7 @@ type AccordionProps = {
 };
 
 const Accordion = ({ accordionList }: AccordionProps) => (
-  <section className="accordion-container">
+  <section className="accordion">
     {accordionList.map(({ title, content, additionalTitle }) => (
       <AccordionItem
         key={title}

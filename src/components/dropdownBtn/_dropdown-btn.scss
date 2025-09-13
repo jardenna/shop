@@ -8,13 +8,19 @@
   display: flex;
   min-width: rem(200px);
 
+  @include transition;
+
   &:last-child {
     border-bottom: 0;
   }
 
-  &:hover,
-  &.active {
+  &:has(.btn.active),
+  &:has(.btn:hover) {
     border-color: $color-blue-25;
     background-color: $color-background;
+  }
+
+  .btn-with-icon {
+    justify-content: space-between;
   }
 }

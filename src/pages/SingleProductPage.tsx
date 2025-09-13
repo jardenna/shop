@@ -9,6 +9,7 @@ import SkeletonSinglePage from '../components/skeleton/skeletonSinglePage/Skelet
 import useAuth from '../features/auth/hooks/useAuth';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
 import useLanguage from '../features/language/useLanguage';
+import ProductCareList from '../features/products/components/reviews/ProductCareList';
 import ReviewsDisplay from '../features/products/components/reviews/ReviewsDisplay';
 import ReviewsForm from '../features/products/components/reviews/ReviewsForm';
 import ReviewStars from '../features/products/components/reviews/ReviewStars';
@@ -47,12 +48,14 @@ const SingleProductPage = () => {
           <p>
             <strong>{language.material}:</strong> {product?.material}
           </p>
-          <strong>{language.care}</strong>
-          <ul className="product-care-info">
-            <li>{language.doNotBleach}</li>
-            <li>{language.noTumbleDry}</li>
-            <li>{language.machineWash}</li>
-          </ul>
+          <ProductCareList
+            title={language.care}
+            careList={[
+              language.doNotBleach,
+              language.noTumbleDry,
+              language.machineWash,
+            ]}
+          />
         </>
       ),
     },
@@ -71,7 +74,7 @@ const SingleProductPage = () => {
     },
     {
       title: language.reviews,
-      additionalTitle: product ? `(${product.numReviews})` : '',
+      additionalTitle: product ? product.numReviews : '',
       content:
         product && product.rating > 0 ? (
           <ReviewsDisplay

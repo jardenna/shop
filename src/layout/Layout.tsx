@@ -1,4 +1,4 @@
-import { Outlet, useNavigate } from 'react-router';
+import { Outlet, useLocation, useNavigate } from 'react-router';
 import { DropdownItem } from '../components/dropdownBtn/DropdownBtn';
 import Icon from '../components/icons/Icon';
 import type { SecondaryActionBtnProps } from '../components/modal/Modal';
@@ -16,6 +16,7 @@ import { AdminPath, ShopPath } from './nav/enums';
 
 const Layout = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { language, switchLanguage, selectedLanguage } = useLanguage();
 
   // Hooks
@@ -76,6 +77,7 @@ const Layout = () => {
   const employeeDropdownList: DropdownItem[] = [
     {
       label: language.dashboard,
+
       icon: <Icon iconName={IconName.Admin} title={language.lock} />,
       onClick: () => {
         navigate(`/${AdminPath.Admin}`);
@@ -85,9 +87,10 @@ const Layout = () => {
   ];
 
   // User dropdown list
-  const userDropdownList: DropdownItem[] = [
+  const userDropdownBtnList: DropdownItem[] = [
     {
       label: language.myAccount,
+      isActive: location.pathname === `/${ShopPath.MyAccount}`,
       onClick: () => {
         if (currentUser) {
           navigate(`/${ShopPath.MyAccount}`);
@@ -99,12 +102,13 @@ const Layout = () => {
         <Icon
           iconName={IconName.Auth}
           title={language.myAccount}
-          size="1.5rem"
+          size="2.5em"
         />
       ),
     },
     {
       label: language.myOrders,
+      isActive: location.pathname === `/${ShopPath.MyOrders}`,
       icon: <Icon iconName={IconName.Orders} title={language.myOrders} />,
       onClick: () => {
         if (currentUser) {
@@ -122,7 +126,9 @@ const Layout = () => {
       {!isMobileSize && <SkipLink />}
       <Header
         ariaLabel={language.mainSiteHeader}
-        userDropdownList={isEmployee ? employeeDropdownList : userDropdownList}
+        dropdownBtnList={
+          isEmployee ? employeeDropdownList : userDropdownBtnList
+        }
         primaryActionBtn={primaryActionBtn}
         secondaryActionBtn={secondaryActionBtn}
         isMobileSize={isMobileSize}

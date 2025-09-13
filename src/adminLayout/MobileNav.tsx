@@ -1,22 +1,30 @@
-import type { UserResponse } from '../app/api/apiTypes/adminApiTypes';
 import TogglePanel from '../components/togglePanel/TogglePanel';
+import useAuth from '../features/auth/hooks/useAuth';
+import { NavItemsProps } from '../layout/nav/Nav';
 import NavContainer from '../layout/nav/NavContainer';
-import { adminNavList } from '../layout/nav/navLists';
 
 export type AdminNavProps = {
-  ariaControls: string;
-  currentUser: UserResponse | null;
+  navList: NavItemsProps[];
 };
 
-const MobileNav = ({ currentUser, ariaControls }: AdminNavProps) => (
-  <TogglePanel ariaControls={ariaControls} preventClickOutside>
-    <NavContainer
+const MobileNav = ({ navList }: AdminNavProps) => {
+  const { currentUser } = useAuth();
+  const ariaControls = 'nav';
+
+  return (
+    <TogglePanel
       ariaControls={ariaControls}
-      navList={adminNavList}
-      className="dashboard-nav"
-      currentUser={currentUser}
-    />
-  </TogglePanel>
-);
+      preventClickOutside
+      triggerBtnClassName="menu-burger"
+    >
+      <NavContainer
+        ariaControls={ariaControls}
+        navList={navList}
+        className="dashboard-nav"
+        currentUser={currentUser}
+      />
+    </TogglePanel>
+  );
+};
 
 export default MobileNav;

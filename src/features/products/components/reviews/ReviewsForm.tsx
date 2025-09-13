@@ -79,7 +79,6 @@ const ReviewsForm = ({
             onChange={handleChange}
             className="reviews"
             iconName={IconName.Star}
-            hideLabel
           />
         </FieldSet>
 

@@ -21,6 +21,7 @@ import MetaTags from '../layout/nav/MetaTags';
 import { IconName } from '../types/enums';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { sortSizesDynamic } from '../utils/sizeUtils';
+import { getFilterSummary } from '../utils/utils';
 import './CollectionPage.styles.scss';
 
 export type FilterKeys = 'sizes' | 'colors' | 'brand';
@@ -35,8 +36,21 @@ const CollectionPage = () => {
     brand: [],
   };
 
-  const { filterValues, onFilterChange } = useFilterParams(initialFilters);
+  const {
+    filterValues,
+    onFilterChange,
+    onRemoveFilterTag,
+    onClearAllFilters,
+    onClearSingleFilter,
+  } = useFilterParams(initialFilters);
+  const { subMenu, subMenuLoading, refetchSubMenu } = useSubMenu({ category });
+  const [productView, setProuctView] = useLocalStorage(
+    localStorageKeys.productView,
+    'grid',
+  );
+
   const sortedTranslatedColors = sortColorsByTranslation(colorList, language);
+  const categoryText = category ? language[category] : '';
 
   // Redux hooks
   const {
@@ -52,14 +66,6 @@ const CollectionPage = () => {
     subCategoryId: categoryId || '',
   });
 
-  const { subMenu, subMenuLoading, refetchSubMenu } = useSubMenu({ category });
-  const categoryText = category ? language[category] : '';
-
-  const [productView, setProuctView] = useLocalStorage(
-    localStorageKeys.productView,
-    'grid',
-  );
-
   const productViewIconList = [
     {
       iconName: IconName.LayoutGrid,
@@ -74,6 +80,8 @@ const CollectionPage = () => {
       display: 'list',
     },
   ];
+
+  const filtersCount = getFilterSummary(filterValues);
 
   return (
     <>
@@ -114,12 +122,17 @@ const CollectionPage = () => {
                       {products.productCount} {language.itemLabel}
                     </span>
                     <FilterPanel
+                      onClearSingleFilter={onClearSingleFilter}
+                      filtersCount={filtersCount}
                       onChange={onFilterChange}
                       values={filterValues}
                       availableBrands={products.availableBrands}
                       availableSizes={sortSizesDynamic(products.availableSizes)}
                       colors={sortedTranslatedColors}
                       language={language}
+                      onRemoveFilterTag={onRemoveFilterTag}
+                      onClearAllFilters={onClearAllFilters}
+                      productCount={products.productCount}
                     />
                   </>
                 )}

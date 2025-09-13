@@ -1,15 +1,6 @@
 @use '../../scss/globals' as *;
 
-.accordion-container {
-  .product-care-info {
-    list-style: disc;
-    padding-inline-start: 30px;
-
-    li {
-      margin-top: 12px;
-    }
-  }
-
+.accordion {
   details {
     border-block-end: 1px solid $color-border-dark;
     overflow: clip;
@@ -18,7 +9,6 @@
       padding-bottom: 12px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
     }
 
     &::details-content {
@@ -27,6 +17,11 @@
         block-size 0.5s,
         content-visibility 0.5s;
       transition-behavior: allow-discrete;
+    }
+
+    .accordion-title {
+      display: flex;
+      gap: 4px;
     }
 
     .accordion-icon {
@@ -47,7 +42,7 @@
   }
 
   summary {
-    padding-block: 16px;
+    padding-block: 12px;
     text-transform: uppercase;
     display: flex;
     justify-content: space-between;

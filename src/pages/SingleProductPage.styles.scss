@@ -5,6 +5,15 @@
   gap: 40px;
   margin-top: 40px;
 
+  .product-care-info {
+    list-style: disc;
+    padding-inline-start: 30px;
+
+    li {
+      margin-top: 12px;
+    }
+  }
+
   @include max-size($mini) {
     flex-direction: column;
     margin-top: 0;

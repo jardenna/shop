@@ -37,6 +37,7 @@ categoryRequired;Please select a category;Vælg venligst kategori
 categoryStatus;Category status;Kategori status
 categoryUpdated;Category updated;Kategori opdateret
 circleChevronRight;Circle chevron right;Circle chevron right
+clearAllFilters;Clear all filters;Ryd alle filtre
 clearFilters;Clear filters;Ryd filtre
 clearSort;Clear sort;Ryd sortering
 close;Close;Luk
@@ -48,6 +49,7 @@ collectionSubKidsText;Comfortable and fun clothes for play, school and adventure
 collectionSubMenText;From everyday looks to formal, everything for the modern man.;Fra hverdagslook til formelt, alt til den moderne mand.
 collectionSubWomenText;Discover stylish news, must-haves and trends of the season.;Opdag stilfulde nyheder, must-haves og sæsonens trends.
 colorRequired;Please select a colour;Vælg venligst farve
+colors;Colours;Farver
 colours;Colours;Farver
 compact;Compact;Kompakt
 confirmPassword;Confirm password;Gentag adgangskode
@@ -291,8 +293,11 @@ shopNow;Shop now;Shop nu
 shopWomanHeading;Empower Your Everyday;Styrke i din stil
 shopWomanLink;Shop Women;Shop dame
 shopWomanText;Find pieces that inspire self-expression—effortless, bold, and made to move with you;Udtryk dig selv med styles, der er ubesværede, modige og med dig i bevægelse
+show;Show;Vis
 showAll;Show all;Vis alle
+showAllTags;Show all tags;Vis alle tags
 showContent;Show content;Vis indhold
+showLessTags;Show less tags;Vis færre tags
 showPassword;Show password;Vis adgangskode
 showPrice;Show price;Vis pris
 silver;Silver;Sølv

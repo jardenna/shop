@@ -3,9 +3,10 @@
 .checkbox-list {
   display: flex;
   gap: 12px;
-  margin-bottom: 12px;
+  margin-block: 8px;
   overflow: auto;
-  max-height: 500px;
+  max-height: rem(400px);
+  flex-direction: column;
 
   .checkbox-item {
     display: flex;
@@ -21,7 +22,6 @@
     cursor: pointer;
     display: flex;
     width: 100%;
-    padding-block: 8px;
     justify-content: space-between;
     align-items: center;
   }
@@ -35,7 +35,8 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    padding-bottom: 5px;
+    position: static;
+    clip-path: none;
 
     &:focus-visible {
       outline: transparent;
@@ -53,21 +54,13 @@
       width: 6px;
       height: 12px;
       transform: scale(0) rotate(45deg);
+      margin-bottom: 5px;
 
       @include transition($time: 0.2s);
     }
 
     &:checked::before {
       transform: scale(1) rotate(45deg);
-    }
-  }
-
-  &:not(.tag-list) {
-    flex-direction: column;
-
-    input[type='checkbox'] {
-      position: static;
-      clip-path: none;
     }
   }
 }

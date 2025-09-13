@@ -68,6 +68,8 @@ a[class^='btn-'],
 // Default button
 .btn-default {
   background-color: $color-secondary;
+  text-transform: uppercase;
+  font-size: $font-small;
   padding: 8px 32px;
   min-height: auto;
   width: auto;
@@ -124,11 +126,33 @@ a[class^='btn-'],
 
 // Button with icon
 .btn-with-icon {
-  justify-content: space-between;
+  gap: 4px;
   padding-block: 0;
   background-color: transparent;
   min-height: auto;
   padding: 0;
   font-size: 0.875rem;
   border-radius: 0;
+
+  &:hover {
+    color: $color-link-hover;
+
+    svg {
+      stroke: $color-blue-30;
+
+      @include transition;
+    }
+  }
+
+  &:focus-visible {
+    color: $color-blue-30;
+
+    @include outline;
+
+    svg {
+      stroke: $color-blue-30;
+
+      @include transition;
+    }
+  }
 }

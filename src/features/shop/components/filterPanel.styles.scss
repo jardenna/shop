@@ -1,10 +1,21 @@
 @use '../../../scss/globals' as *;
 
 .filter-panel {
+  .clear-filter-btn {
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  .filter-panel-content {
+    flex-grow: 1;
+  }
+
   &.toggle-panel {
     max-width: rem(500px);
     overflow: hidden auto;
-    padding: 28px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
   }
 
   .color-icons {
@@ -12,19 +23,18 @@
     border: 1px solid transparent;
     margin-right: 8px;
   }
+}
 
-  .tag-list {
-    gap: 4px;
-    flex-wrap: wrap;
-    margin-bottom: 8px;
+.filter-btn {
+  display: flex;
+  gap: 4px;
+}
 
-    .checkbox-label {
-      max-width: fit-content;
-      border: 1px solid $color-border;
-      padding: 4px 8px;
-      text-transform: uppercase;
-      gap: 8px;
-      white-space: nowrap;
-    }
+.toggle-content {
+  overflow: hidden;
+  max-height: rem(1000px);
+
+  &.collapsed {
+    max-height: rem(112px);
   }
 }

@@ -19,10 +19,10 @@ const AccordionItem = ({
 }: AccordionItemProps) => (
   <details name={detailsName} open={open || undefined}>
     <summary>
-      <div>
+      <span className="accordion-title">
         {title}
-        {additionalTitle && <span>{additionalTitle}</span>}
-      </div>
+        {additionalTitle && <span>[{additionalTitle}]</span>}
+      </span>
       <Icon
         iconName={IconName.ChevronDown}
         title=""

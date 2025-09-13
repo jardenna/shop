@@ -4,7 +4,7 @@ import type {
 } from '../../../app/api/apiTypes/sharedApiTypes';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/form/Form';
-import ControlList from '../../../components/formElements/controlGroup/ControlList';
+import ControlGroupList from '../../../components/formElements/controlGroup/ControlGroupList';
 import validateShopProduct from '../../../components/formElements/validation/validateShopProduct';
 import useFormValidation from '../../../hooks/useFormValidation';
 import {
@@ -64,7 +64,7 @@ const ShopProductForm = ({
   return (
     <Form onSubmit={onSubmit} submitBtnLabel={language.addToBag}>
       <FieldSet legendText={language.productVariants} hideLegendText>
-        <ControlList
+        <ControlGroupList
           initialChecked={values.color}
           type="radio"
           className="color-list"
@@ -73,7 +73,7 @@ const ShopProductForm = ({
           options={sortedTranslatedColors}
           name="color"
           variant="large"
-          iconSize="70"
+          iconSize="5em"
           iconName={resolveIconName(categoryName)}
           groupTitle={{
             title: titleColor,
@@ -82,7 +82,7 @@ const ShopProductForm = ({
           }}
         />
 
-        <ControlList
+        <ControlGroupList
           type="radio"
           initialChecked={values.size}
           required={values.size === ''}

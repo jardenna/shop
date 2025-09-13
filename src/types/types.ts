@@ -58,3 +58,10 @@ export type InputType =
   | 'week';
 
 export type ControlInputType = Extract<InputType, 'checkbox' | 'radio'>;
+
+export type Filters = Record<string, string[]>;
+
+export type FiltersCountResult = {
+  countsByKey: Record<string, number>;
+  totalCount: number;
+};

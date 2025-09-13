@@ -29,5 +29,3 @@ const Aside = ({
 );
 
 export default Aside;
-
-// useTogglePanel or just togglepanel
