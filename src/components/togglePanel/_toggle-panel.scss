@@ -11,8 +11,6 @@
 
   @include transition;
 
-  // transform: translate(0);
-
   &.left {
     left: 0;
     top: $header-height;

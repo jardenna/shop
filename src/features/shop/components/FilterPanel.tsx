@@ -6,6 +6,7 @@ import Button from '../../../components/Button';
 import CheckboxList from '../../../components/formElements/checkbox/CheckboxList';
 import Icon from '../../../components/icons/Icon';
 import TagList from '../../../components/tags/TagList';
+import ToggleContent from '../../../components/ToggleContent';
 import TogglePanel from '../../../components/togglePanel/TogglePanel';
 import { FilterValuesType } from '../../../hooks/useFilterParams';
 import LayoutElement from '../../../layout/LayoutElement';
@@ -117,24 +118,23 @@ const FilterPanel = ({
         <LayoutElement ariaLabel="filter">
           <h2>{language.filter}</h2>
         </LayoutElement>
-        <div>
-          <div className="tag-list-container">
-            {Object.entries(values).map(
-              ([key, values]) =>
-                values.length > 0 && (
-                  <TagList
-                    key={key}
-                    language={language}
-                    values={values}
-                    filterKey={key as FilterKeys}
-                    onClick={onRemoveFilterTag}
-                    ariaLabel={language.removeFilter}
-                  />
-                ),
-            )}
-          </div>
-          <Button variant={BtnVariant.Default}>Vis alle tags</Button>
-        </div>
+
+        <ToggleContent btnVariant={BtnVariant.Default}>
+          {Object.entries(values).map(
+            ([key, values]) =>
+              values.length > 0 && (
+                <TagList
+                  key={key}
+                  language={language}
+                  values={values}
+                  filterKey={key as FilterKeys}
+                  onClick={onRemoveFilterTag}
+                  ariaLabel={language.removeFilter}
+                />
+              ),
+          )}
+        </ToggleContent>
+
         <Accordion accordionList={accordionList} />
         <LayoutElement as="footer" ariaLabel="filter" className="footer">
           <Button variant={BtnVariant.Secondary} onClick={onClearAllFilters}>

@@ -1,11 +1,6 @@
 @use '../../../scss/globals' as *;
 
 .filter-panel {
-  .tag-list-container {
-    max-height: rem(112px);
-    overflow: hidden;
-  }
-
   .filter-panel-content {
     height: 100%;
     display: flex;
@@ -37,4 +32,13 @@
 .filter-btn {
   display: flex;
   gap: 4px;
+}
+
+.toggle-content {
+  overflow: hidden;
+  max-height: 1000px;
+
+  &.collapsed {
+    max-height: 102px;
+  }
 }
