@@ -1,4 +1,4 @@
-import { FilterKeys } from '../../pages/CollectionPage';
+import type { FilterKeys } from '../../pages/CollectionPage';
 import { IconName } from '../../types/enums';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 import IconBtn from '../IconBtn';
