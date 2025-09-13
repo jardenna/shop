@@ -22,18 +22,18 @@ export type HeaderProps = {
   ariaLabel: string;
   currencyOptions: OptionType[];
   defaultValue: OptionType;
+  dropdownBtnList: DropdownItem[];
   isMobileSize: boolean;
   onChange: InputChangeHandler;
   primaryActionBtn: PrimaryActionBtnProps;
   secondaryActionBtn: SecondaryActionBtnProps;
-  userDropdownList: DropdownItem[];
   values: Values;
   onSelectCurrency: (selectedOptions: OptionType) => void;
 };
 
 const Header = ({
   ariaLabel,
-  userDropdownList,
+  dropdownBtnList,
   primaryActionBtn,
   onChange,
   values,
@@ -52,7 +52,7 @@ const Header = ({
         <MobileNav navList={navList} />
       )}
       <HeaderIcons
-        userDropdownList={userDropdownList}
+        dropdownBtnList={dropdownBtnList}
         primaryActionBtn={primaryActionBtn}
         onChange={onChange}
         values={values}

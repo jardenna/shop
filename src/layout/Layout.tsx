@@ -86,7 +86,7 @@ const Layout = () => {
   ];
 
   // User dropdown list
-  const userDropdownList: DropdownItem[] = [
+  const dropdownBtnList: DropdownItem[] = [
     {
       label: language.myAccount,
 
@@ -107,7 +107,6 @@ const Layout = () => {
     },
     {
       label: language.myOrders,
-
       icon: <Icon iconName={IconName.Orders} title={language.myOrders} />,
       onClick: () => {
         if (currentUser) {
@@ -125,7 +124,7 @@ const Layout = () => {
       {!isMobileSize && <SkipLink />}
       <Header
         ariaLabel={language.mainSiteHeader}
-        userDropdownList={isEmployee ? employeeDropdownList : userDropdownList}
+        dropdownBtnList={isEmployee ? employeeDropdownList : dropdownBtnList}
         primaryActionBtn={primaryActionBtn}
         secondaryActionBtn={secondaryActionBtn}
         isMobileSize={isMobileSize}

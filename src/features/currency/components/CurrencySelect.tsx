@@ -6,7 +6,7 @@ type OmittedHeaderProps = Omit<
   | 'primaryActionBtn'
   | 'secondaryActionBtn'
   | 'ariaLabel'
-  | 'userDropdownList'
+  | 'dropdownBtnList'
   | 'values'
   | 'onChange'
   | 'isMobileSize'
