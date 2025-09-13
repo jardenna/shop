@@ -17,10 +17,9 @@
   top: 12px;
 }
 
-.option-box {
-  width: rem(24px);
-  height: rem(24px);
+.color-item {
   border: 1px solid transparent;
+  display: flex;
 }
 
 .display-controls {
