@@ -22,7 +22,6 @@
     cursor: pointer;
     display: flex;
     width: 100%;
-    padding-block: 8px;
     justify-content: space-between;
     align-items: center;
   }
@@ -36,7 +35,6 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    padding-bottom: 5px;
     position: static;
     clip-path: none;
 
@@ -56,6 +54,7 @@
       width: 6px;
       height: 12px;
       transform: scale(0) rotate(45deg);
+      margin-bottom: 5px;
 
       @include transition($time: 0.2s);
     }

@@ -18,7 +18,6 @@
       padding-bottom: 12px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
 
       .btn {
         justify-content: flex-end;
@@ -56,7 +55,7 @@
   }
 
   summary {
-    padding-block: 16px;
+    padding-block: 12px;
     text-transform: uppercase;
     display: flex;
     justify-content: space-between;
