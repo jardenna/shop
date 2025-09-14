@@ -3,7 +3,7 @@
 @use './fonts' as *;
 
 %styled-input {
-  background-color: $color-secondary;
+  background-color: $color-input-background;
   border: 0;
   border-radius: 4px;
   color: $color-primary;

@@ -135,8 +135,10 @@ table {
       display: flex;
       justify-content: space-between;
 
-      .radio-btn-content {
+      .control-item {
         max-height: rem(36px);
+        padding: 4px;
+        border-radius: 4px;
       }
 
       .input-container {
@@ -158,7 +160,7 @@ table {
           flex-direction: column;
         }
 
-        .radio-btn-container {
+        .control-list {
           .radio-btn-label {
             text-transform: none;
             min-height: auto;

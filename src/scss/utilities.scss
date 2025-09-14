@@ -1,12 +1,15 @@
 @use './globals' as *;
 
 .visually-hidden {
-  clip: rect(1px, 1px, 1px, 1px);
-  overflow: clip;
   position: absolute !important;
-  white-space: nowrap;
-  height: 1px;
   width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 0;
+  clip-path: inset(50%);
 }
 
 .main-container {

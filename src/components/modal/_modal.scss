@@ -33,7 +33,7 @@
     }
   }
 
-  .radio-btn-content {
+  .control-item {
     &:has(input:focus) {
       @include outline;
     }

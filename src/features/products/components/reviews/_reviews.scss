@@ -47,22 +47,14 @@
   }
 
   .reviews {
-    &.radio-btn-container {
-      gap: 0;
-    }
-
     .radio-btn-label {
       background-color: transparent;
-      width: auto;
     }
 
-    .radio-btn-content {
-      width: auto;
-
-      &:has(input[type='radio']:checked) {
-        .radio-btn-label {
-          background-color: transparent;
-        }
+    .control-item {
+      &:has(input:checked) {
+        background-color: transparent;
+        color: currentcolor;
       }
     }
 

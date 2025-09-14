@@ -11,7 +11,6 @@ import OptionGroupTitle from '../../productLists/OptionGroupTitle';
 import type { ProductLabelVariant } from '../../productLists/ProductListItem';
 import InputInfo from '../InputInfo';
 import ControlGroupInput from './ControlGroupInput';
-import './_control-group-list.scss';
 
 export type BaseControlGroupProps = {
   name: string;

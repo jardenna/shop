@@ -16,13 +16,12 @@ const CheckboxList = ({
   values,
   name,
   language,
-  className = '',
   iconName,
   renderExtra,
   ariaLabel,
   autoFocus,
 }: CheckboxListProps) => (
-  <ul className={`checkbox-list ${className}`}>
+  <ul className="checkbox-list">
     {checkBoxList.map((checkbox, index) => (
       <li key={checkbox} className="checkbox-item">
         <ControlInput
