@@ -34,7 +34,7 @@ const AdminLayout = () => {
   };
 
   return (
-    <div className="main-container dashboard-container">
+    <div className="main-container admin-container">
       {!isMobileSize && <SkipLink />}
       <AdminHeader
         ariaLabel={language.mainSiteHeader}
