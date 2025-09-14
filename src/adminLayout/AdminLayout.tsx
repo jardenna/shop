@@ -47,7 +47,7 @@ const AdminLayout = () => {
       />
       <main className="main">
         {isMobileSize ? (
-          <MobileNav navList={adminNavList} className="dashboard-nav" />
+          <MobileNav navList={adminNavList} className="aside-nav" />
         ) : (
           <Aside
             isShown={isMenuCollapsed}

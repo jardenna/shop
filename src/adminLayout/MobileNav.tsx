@@ -8,7 +8,7 @@ export type AdminNavProps = {
   className?: string;
 };
 
-const MobileNav = ({ navList, className }: AdminNavProps) => {
+const MobileNav = ({ navList, className = '' }: AdminNavProps) => {
   const { currentUser } = useAuth();
   const ariaControls = 'nav';
 

@@ -1,20 +1,11 @@
 @use '../../scss/globals' as *;
 
-.nav-list {
-  display: flex;
-  gap: 18px;
-
+// Main nav
+.main-nav {
   .nav-item {
-    text-transform: uppercase;
     padding: 8px;
-
-    &:hover {
-      color: $color-link-hover;
-    }
-
-    &:focus-visible {
-      @include outline;
-    }
+    text-transform: uppercase;
+    border: 2px solid transparent;
 
     &.active {
       color: $color-gray-70;
@@ -23,7 +14,14 @@
   }
 }
 
+// Admin nav
 .aside-nav {
+  .nav-item {
+    &.active {
+      background-color: $color-background;
+    }
+  }
+
   .btn-ghost {
     position: absolute;
     z-index: 3;
@@ -36,7 +34,23 @@
   }
 }
 
-.dashboard-nav {
+.nav-list {
+  display: flex;
+  gap: 18px;
+
+  .nav-item {
+    &:hover {
+      color: $color-link-hover;
+    }
+
+    &:focus-visible {
+      @include outline;
+    }
+  }
+}
+
+// Shared nav
+.mobile-nav {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -53,8 +67,6 @@
 
     .nav-item {
       font-size: $font-medium;
-      border: 2px solid transparent;
-      text-transform: none;
       width: 100%;
       display: flex;
       gap: 20px;
