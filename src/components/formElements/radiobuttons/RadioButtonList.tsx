@@ -3,7 +3,7 @@ import type { OptionType } from '../../../types/types';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import type { BaseControlProps } from '../ControlInput';
 import ControlInput from '../ControlInput';
-import './_radio-button.scss';
+// import './_radio-button.scss';
 
 type RadioButtonListProps = BaseControlProps & {
   initialChecked: string;
@@ -22,9 +22,9 @@ const RadioButtonList = ({
   const { language } = useLanguage();
 
   return (
-    <ul className={`radio-btn-container ${className}`}>
+    <ul className={`control-list ${className}`}>
       {radioButtonList.map((radio, index) => (
-        <li key={radio.value} className="radio-btn-content">
+        <li key={radio.value} className="control-item">
           <ControlInput
             type="radio"
             id={radio.label}
@@ -35,7 +35,7 @@ const RadioButtonList = ({
             label={getlowerCaseFirstLetter(radio.label, language)}
             autoFocus={autoFocus && index === 0}
             ariaLabel={getlowerCaseFirstLetter(radio.label, language)}
-            className="radio-btn-label"
+            className="control-label"
             iconName={iconName}
             iconClassName={
               Number(radio.value) <= Number(initialChecked) ? 'filled' : ''

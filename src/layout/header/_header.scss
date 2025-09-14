@@ -112,8 +112,20 @@ $animation-distance: 500px;
     gap: 0;
   }
 
-  .radio-btn-content {
+  .control-list {
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+
+  .control-item {
     height: $input-height;
+    background-color: $color-input-background;
+    border-radius: 4px;
+    width: 100%;
+
+    .control-label {
+      height: 100%;
+    }
   }
 
   legend {

@@ -33,7 +33,6 @@ const LanguageCurrencyPreferences = ({
           initialChecked={values.languageOption}
           onChange={onChange}
           autoFocus
-          className="language-options"
         />
       </FieldSet>
       <FieldSet legendText={language.currency}>
