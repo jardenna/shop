@@ -4,14 +4,6 @@
   display: flex;
   gap: 18px;
 
-  @include max-size($medium) {
-    gap: 2px;
-  }
-
-  @include max-size($small) {
-    flex-direction: column;
-  }
-
   .nav-item {
     text-transform: uppercase;
     padding: 8px;
@@ -27,28 +19,6 @@
     &.active {
       color: $color-gray-70;
       border-bottom: 2px solid currentcolor;
-    }
-  }
-}
-
-// Main nav
-.main-nav {
-  .nav-list {
-    @include max-size($small) {
-      .nav-item {
-        padding: 12px 20px;
-        background-color: $color-light-gray-20;
-        color: inherit;
-        font-size: $font-medium;
-        display: flex;
-        width: 100%;
-
-        &.active {
-          border-color: transparent;
-          background-color: $color-gray-60;
-          color: $color-white;
-        }
-      }
     }
   }
 }
