@@ -23,17 +23,7 @@
   }
 }
 
-// Admin nav
-.dashboard-nav {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden auto;
-
-  .nav {
-    flex-grow: 1;
-  }
-
+.aside-nav {
   .btn-ghost {
     position: absolute;
     z-index: 3;
@@ -44,8 +34,20 @@
     transform: translate(-50%);
     right: -21px;
   }
+}
+
+.dashboard-nav {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden auto;
+
+  .nav {
+    flex-grow: 1;
+  }
 
   .nav-list {
+    display: flex;
     flex-direction: column;
     gap: 0;
 
