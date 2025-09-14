@@ -48,14 +48,12 @@ $animation-distance: 500px;
 
   @supports (animation-timeline: view()) {
     @media (prefers-reduced-motion: no-preference) {
-      & {
-        animation: sticky-header linear forwards;
-        animation-timeline: view();
-        animation-range-start: calc(100dvh + $animation-starts-after);
-        animation-range-end: calc(
-          100dvh + $animation-starts-after + $animation-distance
-        );
-      }
+      animation: sticky-header linear forwards;
+      animation-timeline: view();
+      animation-range-start: calc(100dvh + $animation-starts-after);
+      animation-range-end: calc(
+        100dvh + $animation-starts-after + $animation-distance
+      );
     }
   }
 

@@ -3,7 +3,6 @@ import type { OptionType } from '../../../types/types';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import type { BaseControlProps } from '../ControlInput';
 import ControlInput from '../ControlInput';
-// import './_radio-button.scss';
 
 type RadioButtonListProps = BaseControlProps & {
   initialChecked: string;
