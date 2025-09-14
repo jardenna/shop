@@ -1,3 +1,4 @@
+/* stylelint-disable block-no-redundant-nested-style-rules */
 @use './colors' as *;
 @use './variables' as *;
 @use './functions' as *;
@@ -24,20 +25,24 @@ $animation-timing-function: ease-in-out;
   }
 }
 
-@mixin animation($name, $duration: $animation-duration, $timing: ease-in-out) {
-  animation: $name $duration $timing forwards;
-
-  @media (prefers-reduced-motion: reduce) {
-    #{&} {
-      animation: none !important;
+@mixin transition($what: all, $time: 0.3s, $how: $animation-timing-function) {
+  // only apply transition if user allows motion
+  @media (prefers-reduced-motion: no-preference) {
+    & {
+      transition: $what $time $how;
     }
   }
 }
 
-@mixin transition($what: all, $time: 0.3s, $how: ease-in-out) {
+@mixin animation(
+  $name,
+  $duration: $animation-duration,
+  $timing: $animation-timing-function
+) {
+  // only apply animation if user allows motion
   @media (prefers-reduced-motion: no-preference) {
-    #{&} {
-      transition: $what $time $how;
+    & {
+      animation: $name $duration $timing forwards;
     }
   }
 }
