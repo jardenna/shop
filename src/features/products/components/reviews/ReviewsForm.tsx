@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Button from '../../../../components/Button';
 import FieldSet from '../../../../components/fieldset/FieldSet';
-import RadioButtonList from '../../../../components/formElements/radiobuttons/RadioButtonList';
+import RadioButtonList from '../../../../components/formElements/RadioButtonList';
 import Textarea from '../../../../components/formElements/Textarea';
 import useMessagePopup from '../../../../components/messagePopup/useMessagePopup';
 import useFormValidation from '../../../../hooks/useFormValidation';
