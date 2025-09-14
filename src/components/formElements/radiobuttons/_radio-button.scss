@@ -23,7 +23,7 @@
     @include outline;
   }
 
-  &:has(input[type='radio']:checked) {
+  &:has(input:checked) {
     .radio-btn-label {
       background-color: $color-background-secondary;
       color: $color-white;

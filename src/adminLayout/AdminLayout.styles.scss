@@ -3,15 +3,6 @@
 .admin {
   background-color: $color-background;
   justify-content: center;
-
-  .control-list {
-    .control-item {
-      &:has(input:checked) {
-        background-color: $color-background-secondary;
-        color: $color-white;
-      }
-    }
-  }
 }
 
 .dashboard-container {

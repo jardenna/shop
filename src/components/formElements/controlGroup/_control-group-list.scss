@@ -33,8 +33,9 @@
   }
 
   .control-item {
-    &:has(input[type='radio']:checked) {
-      border-color: $color-gray-80;
+    &:has(input:checked) {
+      background-color: $color-background-secondary;
+      color: $color-white;
     }
 
     &:has(input:focus-visible) {
