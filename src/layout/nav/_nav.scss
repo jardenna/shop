@@ -59,22 +59,6 @@
       padding: 20px;
 
       @include transition;
-
-      &.active {
-        background-color: $color-gray-70;
-        color: $color-white;
-        border-color: transparent;
-      }
-
-      &:focus-visible {
-        outline: transparent;
-        background-color: $color-gray-70;
-        color: $color-white;
-
-        &.active {
-          background-color: $color-gray-80;
-        }
-      }
     }
   }
 }

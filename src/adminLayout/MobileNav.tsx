@@ -5,9 +5,10 @@ import NavContainer from '../layout/nav/NavContainer';
 
 export type AdminNavProps = {
   navList: NavItemsProps[];
+  className?: string;
 };
 
-const MobileNav = ({ navList }: AdminNavProps) => {
+const MobileNav = ({ navList, className }: AdminNavProps) => {
   const { currentUser } = useAuth();
   const ariaControls = 'nav';
 
@@ -20,7 +21,7 @@ const MobileNav = ({ navList }: AdminNavProps) => {
       <NavContainer
         ariaControls={ariaControls}
         navList={navList}
-        className="dashboard-nav"
+        className={className}
         currentUser={currentUser}
       />
     </TogglePanel>

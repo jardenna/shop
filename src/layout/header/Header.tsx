@@ -49,7 +49,7 @@ const Header = ({
       {!isMobileSize ? (
         <NavContainer navList={navList} />
       ) : (
-        <MobileNav navList={navList} />
+        <MobileNav navList={navList} className="dashboard-nav" />
       )}
       <HeaderIcons
         dropdownBtnList={dropdownBtnList}
