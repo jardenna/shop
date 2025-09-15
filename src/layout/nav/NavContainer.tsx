@@ -1,5 +1,5 @@
-import type { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
 import IconBtn from '../../components/IconBtn';
+import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import './_nav.scss';
@@ -12,7 +12,6 @@ type NavContainerProps = {
   ariaControls?: string;
   ariaLabel?: string;
   className?: string;
-  currentUser?: UserResponse | null;
   hideAria?: boolean;
   isMenuCollapsed?: boolean;
   onCollapseMenu?: () => void;
@@ -24,11 +23,11 @@ const NavContainer = ({
   onCollapseMenu,
   className = 'main-nav-container',
   ariaLabel,
-  currentUser,
   ariaControls,
   hideAria,
 }: NavContainerProps) => {
   const { language } = useLanguage();
+  const { currentUser } = useAuth();
 
   return (
     <section

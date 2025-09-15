@@ -55,7 +55,6 @@ const AdminLayout = () => {
             ariaLabel={
               isMenuCollapsed ? language.expandMenu : language.collapseMenu
             }
-            currentUser={currentUser || null}
           />
         )}
 

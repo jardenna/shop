@@ -1,5 +1,4 @@
 import TogglePanel from '../components/togglePanel/TogglePanel';
-import useAuth from '../features/auth/hooks/useAuth';
 import { NavItemsProps } from '../layout/nav/Nav';
 import NavContainer from '../layout/nav/NavContainer';
 
@@ -9,7 +8,6 @@ export type AdminNavProps = {
 };
 
 const MobileNav = ({ navList, className }: AdminNavProps) => {
-  const { currentUser } = useAuth();
   const ariaControls = 'nav';
 
   return (
@@ -22,7 +20,6 @@ const MobileNav = ({ navList, className }: AdminNavProps) => {
         ariaControls={ariaControls}
         navList={navList}
         className={className}
-        currentUser={currentUser}
       />
     </TogglePanel>
   );
