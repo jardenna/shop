@@ -24,22 +24,30 @@
   .nav-list {
     @include min-size($medium) {
       display: flex;
+
+      .nav-item {
+        border: 2px solid transparent;
+
+        &:hover,
+        &.active {
+          color: $color-gray-70;
+          border-bottom: 2px solid currentcolor;
+          background-color: transparent;
+        }
+
+        &:focus-visible {
+          @include outline;
+        }
+      }
     }
   }
 
   .nav-item {
     padding: 8px;
     text-transform: uppercase;
-    border: 2px solid transparent;
 
-    &:focus-visible {
-      @include outline;
-    }
-
-    &:hover,
     &.active {
-      color: $color-gray-70;
-      border-bottom: 2px solid currentcolor;
+      background-color: $color-background;
     }
   }
 }
