@@ -32,7 +32,6 @@ const CollectionNav = ({
             {showAllText}
           </NavLink>
         </li>
-
         <ErrorBoundary
           FallbackComponent={ErrorBoundaryFallback}
           onReset={onReset}
