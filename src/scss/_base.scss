@@ -38,7 +38,10 @@ body,
 
 html {
   color-scheme: light dark;
-  scrollbar-gutter: stable;
+
+  @include min-size($medium) {
+    scrollbar-gutter: stable;
+  }
 }
 
 body {
