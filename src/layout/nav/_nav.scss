@@ -7,10 +7,6 @@
   flex-direction: column;
   overflow: hidden auto;
 
-  .nav {
-    flex-grow: 1;
-  }
-
   .nav-item {
     font-size: $font-medium;
     width: 100%;
@@ -63,16 +59,5 @@
       background-color: $color-light-gray-40;
       outline: transparent;
     }
-  }
-
-  .btn-ghost {
-    position: absolute;
-    z-index: 3;
-    background-color: $color-gray-40;
-    height: rem(60px);
-    padding: 2px;
-    top: 50%;
-    transform: translate(-50%);
-    right: -21px;
   }
 }

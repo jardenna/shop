@@ -8,6 +8,16 @@
   width: rem(350px);
   box-shadow: rgb($color-gray-80, 0.3) 0 2px 4px -1px;
 
+  .btn-ghost {
+    position: absolute;
+    z-index: 3;
+    background-color: $color-gray-40;
+    height: rem(60px);
+    padding: 2px;
+    top: 40%;
+    right: -12px;
+  }
+
   @include transition($what: width, $time: 0.2s);
 
   &.collapsed {

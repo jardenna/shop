@@ -1,7 +1,5 @@
-import IconBtn from '../../components/IconBtn';
-import useAuth from '../../features/auth/hooks/useAuth';
+import { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
 import useLanguage from '../../features/language/useLanguage';
-import { IconName } from '../../types/enums';
 import './_nav.scss';
 import type { NavItemsProps } from './Nav';
 import Nav from './Nav';
@@ -11,6 +9,7 @@ type NavContainerProps = {
   navList: NavItemsProps[];
   ariaLabel?: string;
   className?: string;
+  currentUser?: UserResponse | null;
   hideAria?: boolean;
   isMenuCollapsed?: boolean;
   onCollapseMenu?: () => void;
@@ -19,30 +18,20 @@ type NavContainerProps = {
 const NavContainer = ({
   navList,
   isMenuCollapsed,
-  onCollapseMenu,
+  currentUser,
   className = 'main-nav-container',
-  ariaLabel,
   hideAria,
 }: NavContainerProps) => {
   const { language } = useLanguage();
-  const { currentUser } = useAuth();
 
   return (
-    <section className={`nav-container ${className || 'main-nav-container'}`}>
+    <>
       <Nav
         navItemsList={navList}
         ariaLabel={language.main}
         hideAria={hideAria}
+        className={`nav-container ${className || 'main-nav-container'}`}
       />
-      {onCollapseMenu && (
-        <IconBtn
-          onClick={onCollapseMenu}
-          ariaLabel={ariaLabel}
-          iconName={IconName.ChevronLeft}
-          title="Chevron left"
-          ariaExpanded={!isMenuCollapsed}
-        />
-      )}
       {currentUser && (
         <NavUser
           currentUser={currentUser}
@@ -50,7 +39,7 @@ const NavContainer = ({
           isMenuCollapsed={isMenuCollapsed}
         />
       )}
-    </section>
+    </>
   );
 };
 
