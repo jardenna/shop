@@ -17,6 +17,7 @@ import { useGetProductsQuery } from '../features/shop/shopApiSlice';
 import type { FilterValuesType } from '../hooks/useFilterParams';
 import useFilterParams from '../hooks/useFilterParams';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
+import { LinkText } from '../layout/nav/enums';
 import MetaTags from '../layout/nav/MetaTags';
 import { IconName } from '../types/enums';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
@@ -44,7 +45,7 @@ const CollectionPage = () => {
     onClearSingleFilter,
   } = useFilterParams(initialFilters);
   const { subMenu, subMenuLoading, refetchSubMenu } = useSubMenu(
-    category || 'women',
+    category as LinkText,
   );
   const [productView, setProuctView] = useLocalStorage(
     localStorageKeys.productView,

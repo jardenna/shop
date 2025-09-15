@@ -1,6 +1,7 @@
+import { LinkText } from '../../../layout/nav/enums';
 import { useGetShopMenuQuery } from '../shopApiSlice';
 
-const useSubMenu = (category: string) => {
+const useSubMenu = (category: LinkText) => {
   const {
     data: subMenu,
     isLoading: subMenuLoading,

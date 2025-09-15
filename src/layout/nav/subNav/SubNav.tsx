@@ -6,6 +6,7 @@ import CollectionNav from '../../../features/shop/components/CollectionNav';
 import useSubMenu from '../../../features/shop/hooks/useSubMenu';
 import useMediaQuery from '../../../hooks/useMediaQuery ';
 import { BtnVariant } from '../../../types/enums';
+import { LinkText } from '../enums';
 import type { BaseNav } from '../Nav';
 import './_sub-nav.scss';
 
@@ -17,15 +18,19 @@ type SubNavProps = {
 
 const SubNav = ({ subNav, adHeading, className = '' }: SubNavProps) => {
   const { category } = useParams();
-  const [selectedCategory, setSelectedCategory] = useState(category || 'women');
+  const [selectedCategory, setSelectedCategory] = useState<LinkText>(
+    category as LinkText,
+  );
 
   const { subMenu, refetchSubMenu } = useSubMenu(selectedCategory);
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
 
-  const handleClick = (id: string) => {
+  const handleClick = (id: LinkText) => {
     setSelectedCategory(id);
   };
+  const filePath = `/images/adImages/${selectedCategory}.jpg`;
+  console.log(filePath.includes('undefined'));
 
   return (
     <div className={`sub-nav-container ${className}`}>
@@ -34,6 +39,7 @@ const SubNav = ({ subNav, adHeading, className = '' }: SubNavProps) => {
           isMobileSize ? (
             <li key={linkText} className="sub-nav-item">
               <Button
+                className={`nav-btn ${selectedCategory === linkText ? 'active' : ''}`}
                 variant={BtnVariant.Ghost}
                 onClick={() => {
                   handleClick(linkText);
@@ -58,21 +64,29 @@ const SubNav = ({ subNav, adHeading, className = '' }: SubNavProps) => {
             </li>
           ),
         )}
-        <li className="sub-nav-item sub-nav-ad">
+
+        <li className="test">
+          {subMenu && (
+            <CollectionNav
+              subMenu={subMenu}
+              category={selectedCategory}
+              showAllText={language.showAll}
+              ariaLabel={language.page}
+              onReset={() => {
+                refetchSubMenu();
+              }}
+            />
+          )}
+        </li>
+        <li
+          className="sub-nav-item sub-nav-ad"
+          style={{
+            backgroundImage: `url(${filePath})`,
+          }}
+        >
           <p className="ad-heading">{language[adHeading]}.</p>
         </li>
       </ul>
-      {subMenu && (
-        <CollectionNav
-          subMenu={subMenu}
-          category={selectedCategory}
-          showAllText={language.showAll}
-          ariaLabel={language.page}
-          onReset={() => {
-            refetchSubMenu();
-          }}
-        />
-      )}
     </div>
   );
 };

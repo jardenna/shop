@@ -1,5 +1,23 @@
 @use '../../../scss/globals' as *;
 
+.test {
+  grid-column: span 3;
+  border-top: 1px solid #918585;
+}
+
+.nav-btn {
+  &.btn-ghost {
+    padding: 8px 12px;
+    font-size: $font-medium;
+    text-transform: uppercase;
+    border-bottom: 2px solid transparent;
+
+    &.active {
+      border-color: gray;
+    }
+  }
+}
+
 .sub-nav-container {
   box-shadow: $box-shadow;
   position: absolute;
