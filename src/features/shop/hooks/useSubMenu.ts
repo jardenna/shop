@@ -1,11 +1,11 @@
 import { useGetShopMenuQuery } from '../shopApiSlice';
 
-const useSubMenu = ({ category }: { category?: string }) => {
+const useSubMenu = (category: string) => {
   const {
     data: subMenu,
     isLoading: subMenuLoading,
     refetch: refetchSubMenu,
-  } = useGetShopMenuQuery(category || 'women');
+  } = useGetShopMenuQuery(category);
 
   return { subMenu, subMenuLoading, refetchSubMenu };
 };

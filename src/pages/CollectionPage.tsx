@@ -43,7 +43,9 @@ const CollectionPage = () => {
     onClearAllFilters,
     onClearSingleFilter,
   } = useFilterParams(initialFilters);
-  const { subMenu, subMenuLoading, refetchSubMenu } = useSubMenu({ category });
+  const { subMenu, subMenuLoading, refetchSubMenu } = useSubMenu(
+    category || 'women',
+  );
   const [productView, setProuctView] = useLocalStorage(
     localStorageKeys.productView,
     'grid',

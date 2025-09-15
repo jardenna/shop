@@ -17,11 +17,9 @@ type SubNavProps = {
 
 const SubNav = ({ subNav, adHeading, className = '' }: SubNavProps) => {
   const { category } = useParams();
-  const [selectedCategory, setSelectedCategory] = useState<any>(category);
+  const [selectedCategory, setSelectedCategory] = useState(category || 'women');
 
-  const { subMenu, refetchSubMenu } = useSubMenu({
-    category: selectedCategory,
-  });
+  const { subMenu, refetchSubMenu } = useSubMenu(selectedCategory);
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
 
