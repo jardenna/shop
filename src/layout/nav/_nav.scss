@@ -1,7 +1,7 @@
 @use '../../scss/globals' as *;
 
 // Main nav
-.main-nav {
+.main-nav-container {
   .nav-list {
     display: flex;
     gap: 18px;
@@ -25,7 +25,7 @@
 }
 
 // Admin nav
-.admin-nav {
+.admin-nav-container {
   .nav-item {
     &.active {
       background-color: $color-background;

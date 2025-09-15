@@ -47,9 +47,9 @@ const Header = ({
     <div className="container main-header-container">
       <Logo linkTo={ShopPath.Root} />
       {!isMobileSize ? (
-        <NavContainer navList={navList} className="main-nav" />
+        <NavContainer navList={navList} />
       ) : (
-        <MobileNav navList={navList} className="main-nav" />
+        <MobileNav navList={navList} />
       )}
       <HeaderIcons
         dropdownBtnList={dropdownBtnList}
