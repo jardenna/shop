@@ -31,7 +31,10 @@ const NavContainer = ({
   const { language } = useLanguage();
 
   return (
-    <section className={className} id={ariaControls}>
+    <section
+      className={`nav-container ${className || 'main-nav-container'}`}
+      id={ariaControls}
+    >
       <Nav
         navItemsList={navList}
         ariaLabel={language.main}

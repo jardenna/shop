@@ -8,7 +8,7 @@ export type AdminNavProps = {
   className?: string;
 };
 
-const MobileNav = ({ navList, className = '' }: AdminNavProps) => {
+const MobileNav = ({ navList, className }: AdminNavProps) => {
   const { currentUser } = useAuth();
   const ariaControls = 'nav';
 
@@ -21,7 +21,7 @@ const MobileNav = ({ navList, className = '' }: AdminNavProps) => {
       <NavContainer
         ariaControls={ariaControls}
         navList={navList}
-        className={`nav-container ${className || 'main-nav-container'}`}
+        className={className}
         currentUser={currentUser}
       />
     </TogglePanel>
