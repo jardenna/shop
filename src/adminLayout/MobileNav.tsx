@@ -7,22 +7,14 @@ export type AdminNavProps = {
   className?: string;
 };
 
-const MobileNav = ({ navList, className }: AdminNavProps) => {
-  const ariaControls = 'nav';
-
-  return (
-    <TogglePanel
-      ariaControls={ariaControls}
-      preventClickOutside
-      triggerBtnClassName="menu-burger"
-    >
-      <NavContainer
-        ariaControls={ariaControls}
-        navList={navList}
-        className={className}
-      />
-    </TogglePanel>
-  );
-};
+const MobileNav = ({ navList, className }: AdminNavProps) => (
+  <TogglePanel
+    ariaControls="nav"
+    preventClickOutside
+    triggerBtnClassName="menu-burger"
+  >
+    <NavContainer navList={navList} className={className} />
+  </TogglePanel>
+);
 
 export default MobileNav;

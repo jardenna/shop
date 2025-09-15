@@ -9,7 +9,6 @@ import NavUser from './NavUser';
 
 type NavContainerProps = {
   navList: NavItemsProps[];
-  ariaControls?: string;
   ariaLabel?: string;
   className?: string;
   hideAria?: boolean;
@@ -23,17 +22,13 @@ const NavContainer = ({
   onCollapseMenu,
   className = 'main-nav-container',
   ariaLabel,
-  ariaControls,
   hideAria,
 }: NavContainerProps) => {
   const { language } = useLanguage();
   const { currentUser } = useAuth();
 
   return (
-    <section
-      className={`nav-container ${className || 'main-nav-container'}`}
-      id={ariaControls}
-    >
+    <section className={`nav-container ${className || 'main-nav-container'}`}>
       <Nav
         navItemsList={navList}
         ariaLabel={language.main}
