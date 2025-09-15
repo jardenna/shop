@@ -106,6 +106,10 @@ $animation-distance: 500px;
   gap: 24px;
   margin-block: 24px 56px;
 
+  @include max-size($small) {
+    flex-direction: column;
+  }
+
   .input-container {
     gap: 0;
   }
