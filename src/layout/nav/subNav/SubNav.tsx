@@ -48,21 +48,24 @@ const SubNav = ({ subNav, adHeading, className = '' }: SubNavProps) => {
   return (
     <div className={`sub-nav-container ${className}`}>
       <ul className="sub-nav">
-        {subNav.map((item, index) =>
+        {subNav.map(({ linkText, infoText, path }) =>
           isMobileSize ? (
             <SubNavMobile
-              key={index}
-              onSelectedCategory={handleUpdateCategory}
-              btnText={item.linkText}
+              key={linkText}
+              onClick={() => {
+                handleUpdateCategory(linkText);
+              }}
+              btnText={linkText}
+              className={selectedCategory === linkText ? 'active' : ''}
             />
           ) : (
             <SubNavDesktop
-              key={index}
+              key={linkText}
               className={className}
-              subNavHeading={language[item.linkText]}
-              subNavText={item.infoText ? language[item.infoText] : ''}
-              linkText={language[item.linkText]}
-              linkTo={item.path}
+              subNavHeading={language[linkText]}
+              subNavText={infoText ? language[infoText] : ''}
+              linkText={language[linkText]}
+              linkTo={path}
             />
           ),
         )}
