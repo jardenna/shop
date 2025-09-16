@@ -6,8 +6,8 @@ import useMediaQuery from '../../../hooks/useMediaQuery ';
 import { LinkText } from '../enums';
 import type { BaseNav } from '../Nav';
 import './_sub-nav.scss';
-import SubNavDesktopList from './SubNavDesktopList';
-import SubNavMobileList from './SubNavMobileList';
+import SubNavListDesktop from './SubNavListDesktop';
+import SubNavListMobile from './SubNavListMobile';
 
 type SubNavProps = {
   adHeading: string;
@@ -37,7 +37,7 @@ const SubNav = ({ subNavList, adHeading, isSubNavShown }: SubNavProps) => {
     <div className={`sub-nav-container ${isSubNavShown ? 'shown' : ''}`}>
       {isMobileSize ? (
         subMenu && (
-          <SubNavMobileList
+          <SubNavListMobile
             subNavList={subNavList}
             onClick={handleUpdateCategory}
             subMenu={subMenu}
@@ -47,7 +47,7 @@ const SubNav = ({ subNavList, adHeading, isSubNavShown }: SubNavProps) => {
           />
         )
       ) : (
-        <SubNavDesktopList
+        <SubNavListDesktop
           subNavList={subNavList}
           heading={adHeading}
           language={language}

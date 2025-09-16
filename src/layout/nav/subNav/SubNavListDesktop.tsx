@@ -2,17 +2,17 @@ import { NavLink } from 'react-router';
 import { BaseNav } from '../Nav';
 import NavAd from '../NavAd';
 
-type SubNavDesktopListProps = {
+type SubNavListDesktoptProps = {
   heading: string;
   language: Record<string, string>;
   subNavList: BaseNav[];
 };
 
-const SubNavDesktopList = ({
+const SubNavListDesktop = ({
   subNavList,
   heading,
   language,
-}: SubNavDesktopListProps) => (
+}: SubNavListDesktoptProps) => (
   <ul className="sub-nav">
     {subNavList.map(({ linkText, infoText, path, className = '' }) => (
       <li className={`sub-nav-item ${className}`} key={linkText}>
@@ -31,4 +31,4 @@ const SubNavDesktopList = ({
   </ul>
 );
 
-export default SubNavDesktopList;
+export default SubNavListDesktop;

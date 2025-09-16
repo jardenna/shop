@@ -6,7 +6,7 @@ import { LinkText } from '../enums';
 import { BaseNav } from '../Nav';
 import NavAd from '../NavAd';
 
-type SubNavMobileListProps = {
+type SubNavListMobileProps = {
   category: LinkText;
   language: Record<string, string>;
   subMenu: ProductMenuResponse[];
@@ -20,14 +20,14 @@ type CategoryConfigItem = {
   textKey: string;
 };
 
-const SubNavMobileList = ({
+const SubNavListMobile = ({
   subNavList,
   onClick,
   category,
   onReset,
   subMenu,
   language,
-}: SubNavMobileListProps) => {
+}: SubNavListMobileProps) => {
   const categoryConfig: Record<string, CategoryConfigItem> = {
     kids: {
       headingKey: 'shopKidsHeading',
@@ -77,4 +77,4 @@ const SubNavMobileList = ({
   );
 };
 
-export default SubNavMobileList;
+export default SubNavListMobile;
