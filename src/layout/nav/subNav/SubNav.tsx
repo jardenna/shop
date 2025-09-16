@@ -58,10 +58,7 @@ const SubNav = ({ subNavList, adHeading, isSubNavShown }: SubNavProps) => {
               linkTo={path}
             />
           ))}
-          <NavAd
-            heading={language[adHeading]}
-            filePath="/images/adImages/ad.png"
-          />
+          <NavAd heading={language[adHeading]} imageName="ad" />
         </ul>
       )}
     </div>

@@ -46,7 +46,6 @@ const SubNavMobileList = ({
   };
 
   const { headingKey, textKey } = categoryConfig[category];
-  const filePath = `/images/adImages/${category}.jpg`;
 
   return (
     <ul className="sub-nav">
@@ -74,7 +73,7 @@ const SubNavMobileList = ({
       <NavAd
         heading={language[headingKey]}
         text={language[textKey]}
-        filePath={filePath}
+        imageName={category}
       />
     </ul>
   );
