@@ -1,8 +1,7 @@
 import { NavLink } from 'react-router';
-import { LinkText } from '../enums';
 
 type SubNavDesktopProps = {
-  linkText: LinkText;
+  linkText: string;
   linkTo: string;
   subNavHeading: string;
   subNavText: string;

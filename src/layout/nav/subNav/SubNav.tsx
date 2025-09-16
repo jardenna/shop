@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import useLanguage from '../../../features/language/useLanguage';
 import CollectionNav from '../../../features/shop/components/CollectionNav';
 import useSubMenu from '../../../features/shop/hooks/useSubMenu';
@@ -7,6 +7,7 @@ import useMediaQuery from '../../../hooks/useMediaQuery ';
 import { LinkText } from '../enums';
 import type { BaseNav } from '../Nav';
 import './_sub-nav.scss';
+import SubNavDesktop from './SubNavDesktop';
 import SubNavMobile from './SubNavMobile';
 
 export type SubNavItemProps = {
@@ -41,29 +42,8 @@ const SubNav = ({ subNav, adHeading, className = '' }: SubNavProps) => {
 
   const { subMenu, refetchSubMenu } = useSubMenu(selectedCategory);
   const handleUpdateCategory = (id: LinkText) => {
-    console.log(id);
-
     setSelectedCategory(id);
   };
-
-  const renderDesktopItem = ({
-    linkText,
-    path,
-    infoText,
-    className = '',
-  }: SubNavItemProps) => (
-    <li className={`sub-nav-item ${className}`} key={linkText}>
-      <section className="sub-nav-content">
-        <h2 className="sub-nav-heading">{language[linkText]}</h2>
-        <p className="sub-nav-text">{infoText ? language[infoText] : ''}</p>
-      </section>
-      <div className="sub-nav-link">
-        <NavLink to={path} className="btn btn-primary">
-          {language.shopNow}
-        </NavLink>
-      </div>
-    </li>
-  );
 
   return (
     <div className={`sub-nav-container ${className}`}>
@@ -76,7 +56,14 @@ const SubNav = ({ subNav, adHeading, className = '' }: SubNavProps) => {
               btnText={item.linkText}
             />
           ) : (
-            renderDesktopItem(item)
+            <SubNavDesktop
+              key={index}
+              className={className}
+              subNavHeading={language[item.linkText]}
+              subNavText={item.infoText ? language[item.infoText] : ''}
+              linkText={language[item.linkText]}
+              linkTo={item.path}
+            />
           ),
         )}
 
