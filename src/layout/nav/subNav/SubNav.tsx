@@ -5,9 +5,8 @@ import useSubMenu from '../../../features/shop/hooks/useSubMenu';
 import useMediaQuery from '../../../hooks/useMediaQuery ';
 import { LinkText } from '../enums';
 import type { BaseNav } from '../Nav';
-import NavAd from '../NavAd';
 import './_sub-nav.scss';
-import SubNavDesktop from './SubNavDesktop';
+import SubNavDesktopList from './SubNavDesktopList';
 import SubNavMobileList from './SubNavMobileList';
 
 type SubNavProps = {
@@ -44,22 +43,15 @@ const SubNav = ({ subNavList, adHeading, isSubNavShown }: SubNavProps) => {
             subMenu={subMenu}
             category={selectedCategory}
             onReset={refetchSubMenu}
+            language={language}
           />
         )
       ) : (
-        <ul className="sub-nav">
-          {subNavList.map(({ linkText, infoText, path, className = '' }) => (
-            <SubNavDesktop
-              key={linkText}
-              className={className}
-              subNavHeading={language[linkText]}
-              subNavText={infoText ? language[infoText] : ''}
-              linkText={language[linkText]}
-              linkTo={path}
-            />
-          ))}
-          <NavAd heading={language[adHeading]} imageName="ad" />
-        </ul>
+        <SubNavDesktopList
+          subNavList={subNavList}
+          adHeading={adHeading}
+          language={language}
+        />
       )}
     </div>
   );

@@ -1,6 +1,5 @@
 import { ProductMenuResponse } from '../../../app/api/apiTypes/shopApiTypes';
 import Button from '../../../components/Button';
-import useLanguage from '../../../features/language/useLanguage';
 import CollectionNav from '../../../features/shop/components/CollectionNav';
 import { BtnVariant } from '../../../types/enums';
 import { LinkText } from '../enums';
@@ -9,6 +8,7 @@ import NavAd from '../NavAd';
 
 type SubNavMobileListProps = {
   category: LinkText;
+  language: Record<string, string>;
   subMenu: ProductMenuResponse[];
   subNavList: BaseNav[];
   className?: string;
@@ -27,9 +27,8 @@ const SubNavMobileList = ({
   category,
   onReset,
   subMenu,
+  language,
 }: SubNavMobileListProps) => {
-  const { language } = useLanguage();
-
   const categoryConfig: Record<string, CategoryConfigItem> = {
     kids: {
       headingKey: 'shopKidsHeading',
