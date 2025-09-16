@@ -5,6 +5,7 @@ import useSubMenu from '../../../features/shop/hooks/useSubMenu';
 import useMediaQuery from '../../../hooks/useMediaQuery ';
 import { LinkText } from '../enums';
 import type { BaseNav } from '../Nav';
+import NavAd from '../NavAd';
 import './_sub-nav.scss';
 import SubNavDesktop from './SubNavDesktop';
 import SubNavMobileList from './SubNavMobileList';
@@ -57,9 +58,10 @@ const SubNav = ({ subNavList, adHeading, isSubNavShown }: SubNavProps) => {
               linkTo={path}
             />
           ))}
-          <li className="sub-nav-item sub-nav-ad">
-            <p className="ad-heading">{language[adHeading]}.</p>
-          </li>
+          <NavAd
+            heading={language[adHeading]}
+            filePath="/images/adImages/ad.png"
+          />
         </ul>
       )}
     </div>

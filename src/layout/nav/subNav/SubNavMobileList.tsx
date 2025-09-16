@@ -5,6 +5,7 @@ import CollectionNav from '../../../features/shop/components/CollectionNav';
 import { BtnVariant } from '../../../types/enums';
 import { LinkText } from '../enums';
 import { BaseNav } from '../Nav';
+import NavAd from '../NavAd';
 
 type SubNavMobileListProps = {
   category: LinkText;
@@ -13,6 +14,11 @@ type SubNavMobileListProps = {
   className?: string;
   onClick: (id: LinkText) => void;
   onReset: () => void;
+};
+
+type CategoryConfigItem = {
+  headingKey: string;
+  textKey: string;
 };
 
 const SubNavMobileList = ({
@@ -24,7 +30,7 @@ const SubNavMobileList = ({
 }: SubNavMobileListProps) => {
   const { language } = useLanguage();
 
-  const categoryConfig: any = {
+  const categoryConfig: Record<string, CategoryConfigItem> = {
     kids: {
       headingKey: 'shopKidsHeading',
       textKey: 'shopKidsMenuText',
@@ -65,14 +71,11 @@ const SubNavMobileList = ({
           onReset={onReset}
         />
       </li>
-
-      <li
-        className="sub-nav-item sub-nav-ad"
-        style={{ backgroundImage: `url(${filePath})` }}
-      >
-        <p className="ad-heading">{language[headingKey]}</p>
-        <p className="ad-text">{language[textKey]}</p>
-      </li>
+      <NavAd
+        heading={language[headingKey]}
+        text={language[textKey]}
+        filePath={filePath}
+      />
     </ul>
   );
 };
