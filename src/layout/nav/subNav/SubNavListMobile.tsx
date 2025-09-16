@@ -5,6 +5,7 @@ import { BtnVariant } from '../../../types/enums';
 import { LinkText } from '../enums';
 import { BaseNav } from '../Nav';
 import NavAd from '../NavAd';
+import subNavConfig from './subnavConfig';
 
 type SubNavListMobileProps = {
   category: LinkText;
@@ -15,11 +16,6 @@ type SubNavListMobileProps = {
   onReset: () => void;
 };
 
-type CategoryConfigItem = {
-  headingKey: string;
-  textKey: string;
-};
-
 const SubNavListMobile = ({
   subNavList,
   onClick,
@@ -28,22 +24,7 @@ const SubNavListMobile = ({
   subMenu,
   language,
 }: SubNavListMobileProps) => {
-  const categoryConfig: Record<string, CategoryConfigItem> = {
-    kids: {
-      headingKey: 'shopKidsHeading',
-      textKey: 'shopKidsMenuText',
-    },
-    men: {
-      headingKey: 'shopMenHeading',
-      textKey: 'shopMenMenuText',
-    },
-    women: {
-      headingKey: 'shopWomenHeading',
-      textKey: 'shopWomenMenuText',
-    },
-  };
-
-  const { headingKey, textKey } = categoryConfig[category];
+  const { headingKey, textKey } = subNavConfig[category];
 
   return (
     <ul className="sub-nav">
