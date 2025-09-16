@@ -33,7 +33,7 @@ const SubNav = ({ subNav, adHeading, className = '' }: SubNavProps) => {
 
   const { subMenu, refetchSubMenu } = useSubMenu(selectedCategory);
 
-  const handleClick = (id: LinkText) => {
+  const handleUpdateCategory = (id: LinkText) => {
     setSelectedCategory(id);
   };
 
@@ -47,7 +47,7 @@ const SubNav = ({ subNav, adHeading, className = '' }: SubNavProps) => {
                 className={`nav-btn ${selectedCategory === linkText ? 'active' : ''}`}
                 variant={BtnVariant.Ghost}
                 onClick={() => {
-                  handleClick(linkText);
+                  handleUpdateCategory(linkText);
                 }}
               >
                 {language[linkText]}
