@@ -69,7 +69,7 @@ const NavItem = ({
         <SubNav
           subNavList={navItem.subNavList}
           adHeading={navItem.adHeading}
-          className={isSubNavShown ? 'shown' : ''}
+          isSubNavShown={isSubNavShown}
         />
       )}
     </li>

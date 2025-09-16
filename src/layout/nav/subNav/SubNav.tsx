@@ -9,20 +9,13 @@ import './_sub-nav.scss';
 import SubNavDesktop from './SubNavDesktop';
 import SubNavMobileList from './SubNavMobileList';
 
-export type SubNavItemProps = {
-  linkText: LinkText; // enum value for the link/category
-  path: string; // URL path for desktop NavLink
-  className?: string; // optional extra CSS class
-  infoText?: any; // optional translation key for info text
-};
-
 type SubNavProps = {
   adHeading: string;
+  isSubNavShown: boolean;
   subNavList: BaseNav[];
-  className?: string;
 };
 
-const SubNav = ({ subNavList, adHeading, className = '' }: SubNavProps) => {
+const SubNav = ({ subNavList, adHeading, isSubNavShown }: SubNavProps) => {
   const { category } = useParams();
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
@@ -45,7 +38,7 @@ const SubNav = ({ subNavList, adHeading, className = '' }: SubNavProps) => {
   };
 
   return (
-    <div className={`sub-nav-container ${className}`}>
+    <div className={`sub-nav-container ${isSubNavShown ? 'shown' : ''}`}>
       {isMobileSize && subMenu && (
         <SubNavMobileList
           subNavList={subNavList}
@@ -57,7 +50,7 @@ const SubNav = ({ subNavList, adHeading, className = '' }: SubNavProps) => {
       )}
       <ul className="sub-nav">
         {!isMobileSize &&
-          subNavList.map(({ linkText, infoText, path }) => (
+          subNavList.map(({ linkText, infoText, path, className = '' }) => (
             <SubNavDesktop
               key={linkText}
               className={className}
