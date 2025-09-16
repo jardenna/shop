@@ -14,20 +14,20 @@ export type BaseNav = {
 };
 
 export type NavItemsProps = BaseNav & {
-  subNav?: BaseNav[];
+  subNavList?: BaseNav[];
 };
 
 type NavProps = {
   ariaLabel: string;
-  navItemsList: NavItemsProps[];
+  navList: NavItemsProps[];
   className?: string;
   hideAria?: boolean;
 };
 
-const Nav = ({ navItemsList, ariaLabel, hideAria, className }: NavProps) => (
+const Nav = ({ navList, ariaLabel, hideAria, className }: NavProps) => (
   <LayoutElement as="nav" ariaLabel={ariaLabel} className={className}>
     <ul className="nav-list">
-      {navItemsList.map((navItem) => (
+      {navList.map((navItem) => (
         <NavItem key={navItem.linkText} navItem={navItem} hideAria={hideAria} />
       ))}
     </ul>

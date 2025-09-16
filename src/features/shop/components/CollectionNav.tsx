@@ -10,7 +10,6 @@ import useLanguage from '../../language/useLanguage';
 type CollectionNavProps = {
   ariaLabel: string;
   category: string;
-  showAllText: string;
   subMenu: ProductMenuResponse[];
   onReset: () => void;
 };
@@ -19,7 +18,6 @@ const CollectionNav = ({
   subMenu,
   ariaLabel,
   category,
-  showAllText,
   onReset,
 }: CollectionNavProps) => {
   const { language } = useLanguage();
@@ -29,7 +27,7 @@ const CollectionNav = ({
       <ul className="collection-nav-list">
         <li className="collection-nav-item">
           <NavLink to={`/${ShopPath.Collection}/${category}`} end>
-            {showAllText}
+            {language.showAll}
           </NavLink>
         </li>
         <ErrorBoundary

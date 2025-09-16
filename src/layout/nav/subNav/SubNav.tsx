@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import { useParams } from 'react-router';
 import useLanguage from '../../../features/language/useLanguage';
-import CollectionNav from '../../../features/shop/components/CollectionNav';
 import useSubMenu from '../../../features/shop/hooks/useSubMenu';
 import useMediaQuery from '../../../hooks/useMediaQuery ';
 import { LinkText } from '../enums';
 import type { BaseNav } from '../Nav';
 import './_sub-nav.scss';
 import SubNavDesktop from './SubNavDesktop';
-import SubNavMobile from './SubNavMobile';
+import SubNavMobileList from './SubNavMobileList';
 
 export type SubNavItemProps = {
   linkText: LinkText; // enum value for the link/category
@@ -19,11 +18,11 @@ export type SubNavItemProps = {
 
 type SubNavProps = {
   adHeading: string;
-  subNav: BaseNav[];
+  subNavList: BaseNav[];
   className?: string;
 };
 
-const SubNav = ({ subNav, adHeading, className = '' }: SubNavProps) => {
+const SubNav = ({ subNavList, adHeading, className = '' }: SubNavProps) => {
   const { category } = useParams();
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
@@ -47,18 +46,18 @@ const SubNav = ({ subNav, adHeading, className = '' }: SubNavProps) => {
 
   return (
     <div className={`sub-nav-container ${className}`}>
+      {isMobileSize && subMenu && (
+        <SubNavMobileList
+          subNavList={subNavList}
+          onClick={handleUpdateCategory}
+          subMenu={subMenu}
+          category={selectedCategory}
+          onReset={refetchSubMenu}
+        />
+      )}
       <ul className="sub-nav">
-        {subNav.map(({ linkText, infoText, path }) =>
-          isMobileSize ? (
-            <SubNavMobile
-              key={linkText}
-              onClick={() => {
-                handleUpdateCategory(linkText);
-              }}
-              btnText={linkText}
-              className={selectedCategory === linkText ? 'active' : ''}
-            />
-          ) : (
+        {!isMobileSize &&
+          subNavList.map(({ linkText, infoText, path }) => (
             <SubNavDesktop
               key={linkText}
               className={className}
@@ -67,20 +66,7 @@ const SubNav = ({ subNav, adHeading, className = '' }: SubNavProps) => {
               linkText={language[linkText]}
               linkTo={path}
             />
-          ),
-        )}
-
-        {isMobileSize && subMenu && (
-          <li className="mobile-sub-item">
-            <CollectionNav
-              subMenu={subMenu}
-              category={selectedCategory}
-              showAllText={language.showAll}
-              ariaLabel={language.page}
-              onReset={refetchSubMenu}
-            />
-          </li>
-        )}
+          ))}
 
         <li
           className="sub-nav-item sub-nav-ad"

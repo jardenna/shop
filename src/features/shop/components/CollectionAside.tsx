@@ -39,7 +39,6 @@ const CollectionAside = ({
         <CollectionNav
           subMenu={subMenu}
           category={category}
-          showAllText={language.showAll}
           ariaLabel={language.page}
           onReset={() => {
             onReset();

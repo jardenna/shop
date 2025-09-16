@@ -11,7 +11,7 @@ const navList: NavItemsProps[] = [
     path: ShopPath.Collection,
     linkText: LinkText.Collection,
     adHeading: 'discoverLatestTrends',
-    subNav: [
+    subNavList: [
       {
         path: ShopPath.Women,
         linkText: LinkText.Women,
