@@ -18,19 +18,21 @@ type SubNavProps = {
 
 const SubNav = ({ subNav, adHeading, className = '' }: SubNavProps) => {
   const { category } = useParams();
-  const [selectedCategory, setSelectedCategory] = useState<LinkText>(
-    category as LinkText,
-  );
-
-  const { subMenu, refetchSubMenu } = useSubMenu(selectedCategory);
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
+
+  const [selectedCategory, setSelectedCategory] = useState<LinkText>(() => {
+    if (category && Object.values(LinkText).includes(category as LinkText)) {
+      return category as LinkText;
+    }
+    return LinkText.Women;
+  });
+  const filePath = `/images/adImages/${selectedCategory}.jpg`;
+  const { subMenu, refetchSubMenu } = useSubMenu(selectedCategory);
 
   const handleClick = (id: LinkText) => {
     setSelectedCategory(id);
   };
-  const filePath = `/images/adImages/${selectedCategory}.jpg`;
-  console.log(filePath.includes('undefined'));
 
   return (
     <div className={`sub-nav-container ${className}`}>
