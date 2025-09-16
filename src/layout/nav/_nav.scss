@@ -7,7 +7,7 @@
   flex-direction: column;
   overflow: hidden auto;
 
-  .nav-item {
+  .nav-link {
     font-size: $font-medium;
     width: 100%;
     display: flex;
@@ -25,7 +25,7 @@
     @include min-size($medium) {
       display: flex;
 
-      .nav-item {
+      .nav-link {
         border: 2px solid transparent;
 
         &:hover,
@@ -42,9 +42,13 @@
     }
   }
 
-  .nav-item {
+  .nav-link {
     padding: 8px;
     text-transform: uppercase;
+
+    @include max-size($small) {
+      padding-inline: 20px;
+    }
 
     &.active {
       background-color: $color-background;
@@ -54,7 +58,7 @@
 
 // Admin nav
 .admin-nav-container {
-  .nav-item {
+  .nav-link {
     &.active {
       background-color: $color-background;
     }

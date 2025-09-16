@@ -37,7 +37,7 @@ const NavItem = ({
 
   return (
     <li
-      className={navItem.subNav ? 'has-sub-nav' : ''}
+      className={`nav-item ${navItem.subNav ? 'has-sub-nav' : ''}`}
       onMouseEnter={handleShowSubNav}
       onMouseLeave={handleHideSubNav}
       onFocus={handleShowSubNav}
@@ -50,7 +50,7 @@ const NavItem = ({
     >
       <NavLink
         to={navItem.path}
-        className="nav-item"
+        className="nav-link"
         aria-haspopup={aria ? true : undefined}
         aria-expanded={aria ? isSubNavShown : undefined}
       >

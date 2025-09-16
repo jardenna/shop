@@ -3,6 +3,8 @@
 .mobile-sub-item {
   grid-column: span 3;
   border-top: 1px solid #918585;
+  padding: 12px 8px;
+  margin-inline: 20px;
 }
 
 .nav-btn {
@@ -58,6 +60,10 @@
   .sub-nav-item {
     display: flex;
     flex-direction: column;
+
+    @include max-size($small) {
+      padding-inline: 20px;
+    }
 
     p {
       margin: 0;
