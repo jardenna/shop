@@ -16,7 +16,7 @@ $placements: (
   box-shadow: $box-shadow;
   background-color: $color-light-gray-10;
   border-radius: 4px;
-  z-index: 2;
+  z-index: 20;
 
   @each $placement, $side in $placements {
     &[data-popper-placement^='#{$placement}'] > .popup-arrow {

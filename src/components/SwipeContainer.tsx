@@ -52,7 +52,6 @@ const SwipeContainer = ({
 
   return (
     <div
-      className="swipe-container"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}

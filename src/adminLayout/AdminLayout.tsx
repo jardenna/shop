@@ -34,7 +34,7 @@ const AdminLayout = () => {
   };
 
   return (
-    <div className="main-container dashboard-container">
+    <div className="main-container admin-container">
       {!isMobileSize && <SkipLink />}
       <AdminHeader
         ariaLabel={language.mainSiteHeader}
@@ -47,7 +47,7 @@ const AdminLayout = () => {
       />
       <main className="main">
         {isMobileSize ? (
-          <MobileNav navList={adminNavList} />
+          <MobileNav navList={adminNavList} className="admin-nav-container" />
         ) : (
           <Aside
             isShown={isMenuCollapsed}
@@ -55,7 +55,6 @@ const AdminLayout = () => {
             ariaLabel={
               isMenuCollapsed ? language.expandMenu : language.collapseMenu
             }
-            currentUser={currentUser || null}
           />
         )}
 

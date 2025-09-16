@@ -1,7 +1,5 @@
-import type { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
-import IconBtn from '../../components/IconBtn';
+import { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
 import useLanguage from '../../features/language/useLanguage';
-import { IconName } from '../../types/enums';
 import './_nav.scss';
 import type { NavItemsProps } from './Nav';
 import Nav from './Nav';
@@ -9,7 +7,6 @@ import NavUser from './NavUser';
 
 type NavContainerProps = {
   navList: NavItemsProps[];
-  ariaControls?: string;
   ariaLabel?: string;
   className?: string;
   currentUser?: UserResponse | null;
@@ -21,31 +18,20 @@ type NavContainerProps = {
 const NavContainer = ({
   navList,
   isMenuCollapsed,
-  onCollapseMenu,
-  className = 'main-nav',
-  ariaLabel,
   currentUser,
-  ariaControls,
+  className = 'main-nav-container',
   hideAria,
 }: NavContainerProps) => {
   const { language } = useLanguage();
 
   return (
-    <section className={className} id={ariaControls}>
+    <>
       <Nav
         navItemsList={navList}
         ariaLabel={language.main}
         hideAria={hideAria}
+        className={`nav-container ${className || 'main-nav-container'}`}
       />
-      {onCollapseMenu && (
-        <IconBtn
-          onClick={onCollapseMenu}
-          ariaLabel={ariaLabel}
-          iconName={IconName.ChevronLeft}
-          title="Chevron left"
-          ariaExpanded={!isMenuCollapsed}
-        />
-      )}
       {currentUser && (
         <NavUser
           currentUser={currentUser}
@@ -53,7 +39,7 @@ const NavContainer = ({
           isMenuCollapsed={isMenuCollapsed}
         />
       )}
-    </section>
+    </>
   );
 };
 

@@ -1,29 +1,42 @@
 @use '../../scss/globals' as *;
 
-.nav-list {
+// Shared nav
+.nav-container {
+  height: 100%;
   display: flex;
-  gap: 18px;
+  flex-direction: column;
+  overflow: hidden auto;
 
-  @include max-size($medium) {
-    gap: 2px;
+  .nav-item {
+    font-size: $font-medium;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+
+    @include transition;
   }
+}
 
-  @include max-size($small) {
-    flex-direction: column;
+// Main nav
+.main-nav-container {
+  .nav-list {
+    @include min-size($medium) {
+      display: flex;
+    }
   }
 
   .nav-item {
-    text-transform: uppercase;
     padding: 8px;
-
-    &:hover {
-      color: $color-link-hover;
-    }
+    text-transform: uppercase;
+    border: 2px solid transparent;
 
     &:focus-visible {
       @include outline;
     }
 
+    &:hover,
     &.active {
       color: $color-gray-70;
       border-bottom: 2px solid currentcolor;
@@ -31,80 +44,20 @@
   }
 }
 
-// Main nav
-.main-nav {
-  .nav-list {
-    @include max-size($small) {
-      .nav-item {
-        padding: 12px 20px;
-        background-color: $color-light-gray-20;
-        color: inherit;
-        font-size: $font-medium;
-        display: flex;
-        width: 100%;
-
-        &.active {
-          border-color: transparent;
-          background-color: $color-gray-60;
-          color: $color-white;
-        }
-      }
-    }
-  }
-}
-
 // Admin nav
-.dashboard-nav {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden auto;
+.admin-nav-container {
+  .nav-item {
+    &.active {
+      background-color: $color-background;
+    }
 
-  .nav {
-    flex-grow: 1;
-  }
+    &:hover {
+      background-color: $color-light-gray-40;
+    }
 
-  .btn-ghost {
-    position: absolute;
-    z-index: 3;
-    background-color: $color-gray-40;
-    height: rem(60px);
-    padding: 2px;
-    top: 50%;
-    transform: translate(-50%);
-    right: -21px;
-  }
-
-  .nav-list {
-    flex-direction: column;
-    gap: 0;
-
-    .nav-item {
-      font-size: $font-medium;
-      border: 2px solid transparent;
-      text-transform: none;
-      width: 100%;
-      display: flex;
-      gap: 20px;
-      padding: 20px;
-
-      @include transition;
-
-      &.active {
-        background-color: $color-gray-70;
-        color: $color-white;
-        border-color: transparent;
-      }
-
-      &:focus-visible {
-        outline: transparent;
-        background-color: $color-gray-70;
-        color: $color-white;
-
-        &.active {
-          background-color: $color-gray-80;
-        }
-      }
+    &:focus-visible {
+      background-color: $color-light-gray-40;
+      outline: transparent;
     }
   }
 }
