@@ -27,7 +27,10 @@ const SubNav = ({ subNav, adHeading, className = '' }: SubNavProps) => {
     }
     return LinkText.Women;
   });
-  const filePath = `/images/adImages/${selectedCategory}.jpg`;
+  const filePath = isMobileSize
+    ? `/images/adImages/${selectedCategory}.jpg`
+    : '/images/ad.png';
+
   const { subMenu, refetchSubMenu } = useSubMenu(selectedCategory);
 
   const handleClick = (id: LinkText) => {
@@ -67,19 +70,21 @@ const SubNav = ({ subNav, adHeading, className = '' }: SubNavProps) => {
           ),
         )}
 
-        <li className="test">
-          {subMenu && (
-            <CollectionNav
-              subMenu={subMenu}
-              category={selectedCategory}
-              showAllText={language.showAll}
-              ariaLabel={language.page}
-              onReset={() => {
-                refetchSubMenu();
-              }}
-            />
-          )}
-        </li>
+        {isMobileSize && (
+          <li className="mobile-sub-item">
+            {subMenu && (
+              <CollectionNav
+                subMenu={subMenu}
+                category={selectedCategory}
+                showAllText={language.showAll}
+                ariaLabel={language.page}
+                onReset={() => {
+                  refetchSubMenu();
+                }}
+              />
+            )}
+          </li>
+        )}
         <li
           className="sub-nav-item sub-nav-ad"
           style={{
