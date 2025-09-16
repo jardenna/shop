@@ -49,7 +49,7 @@ const SubNav = ({ subNavList, adHeading, isSubNavShown }: SubNavProps) => {
       ) : (
         <SubNavDesktopList
           subNavList={subNavList}
-          adHeading={adHeading}
+          heading={adHeading}
           language={language}
         />
       )}

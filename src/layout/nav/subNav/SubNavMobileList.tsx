@@ -11,7 +11,6 @@ type SubNavMobileListProps = {
   language: Record<string, string>;
   subMenu: ProductMenuResponse[];
   subNavList: BaseNav[];
-  className?: string;
   onClick: (id: LinkText) => void;
   onReset: () => void;
 };

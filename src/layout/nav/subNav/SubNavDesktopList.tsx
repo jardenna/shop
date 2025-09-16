@@ -3,14 +3,14 @@ import { BaseNav } from '../Nav';
 import NavAd from '../NavAd';
 
 type SubNavDesktopListProps = {
-  adHeading: string;
+  heading: string;
   language: Record<string, string>;
   subNavList: BaseNav[];
 };
 
 const SubNavDesktopList = ({
   subNavList,
-  adHeading,
+  heading,
   language,
 }: SubNavDesktopListProps) => (
   <ul className="sub-nav">
@@ -27,7 +27,7 @@ const SubNavDesktopList = ({
         </div>
       </li>
     ))}
-    <NavAd heading={language[adHeading]} imageName="ad" />
+    <NavAd heading={language[heading]} imageName="ad" />
   </ul>
 );
 
