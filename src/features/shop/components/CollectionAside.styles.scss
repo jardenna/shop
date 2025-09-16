@@ -3,6 +3,11 @@
 .collection-aside {
   background-color: $color-light-gray-10;
   min-width: rem(252px);
+
+  .collection-aside-header {
+    border-bottom: 4px solid $color-gray-40;
+    padding: 32px;
+  }
 }
 
 .collection-nav-list {
@@ -38,13 +43,4 @@
       border-radius: 8px;
     }
   }
-}
-
-.collection-aside-header {
-  background-color: $color-light-gray-20;
-  border-bottom: 4px solid $color-gray-40;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 32px;
 }

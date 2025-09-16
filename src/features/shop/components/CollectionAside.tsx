@@ -1,14 +1,14 @@
 import type { ProductMenuResponse } from '../../../app/api/apiTypes/shopApiTypes';
 import Skeleton from '../../../components/skeleton/Skeleton';
-import LayoutElement from '../../../layout/LayoutElement';
-import useLanguage from '../../language/useLanguage';
 import './CollectionAside.styles.scss';
 import CollectionNav from './CollectionNav';
+import CollectionPageHeader from './CollectionPageHeader';
 
 type CollectionAsideProps = {
   asideHeading: string;
   category: string;
   isLoading: boolean;
+  language: Record<string, string>;
   subMenu: ProductMenuResponse[] | null;
   onReset: () => void;
 };
@@ -19,34 +19,26 @@ const CollectionAside = ({
   category,
   isLoading,
   onReset,
-}: CollectionAsideProps) => {
-  const { language } = useLanguage();
-
-  return (
-    <aside className="collection-aside">
-      <LayoutElement
+  language,
+}: CollectionAsideProps) => (
+  <aside className="collection-aside">
+    <CollectionPageHeader ariaLabel={language.page} headerText={asideHeading} />
+    {isLoading && (
+      <div className="flex column">
+        <Skeleton count={4} />
+      </div>
+    )}
+    {subMenu && (
+      <CollectionNav
+        subMenu={subMenu}
+        category={category}
         ariaLabel={language.page}
-        className="collection-aside-header"
-      >
-        <h1>{asideHeading}</h1>
-      </LayoutElement>
-      {isLoading && (
-        <div className="flex column">
-          <Skeleton count={4} />
-        </div>
-      )}
-      {subMenu && (
-        <CollectionNav
-          subMenu={subMenu}
-          category={category}
-          ariaLabel={language.page}
-          onReset={() => {
-            onReset();
-          }}
-        />
-      )}
-    </aside>
-  );
-};
+        onReset={() => {
+          onReset();
+        }}
+      />
+    )}
+  </aside>
+);
 
 export default CollectionAside;
