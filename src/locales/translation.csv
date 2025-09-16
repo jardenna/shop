@@ -179,8 +179,8 @@ noFavoritesYet;No favorites yet;Ingen favoritter endnu
 noImagesProvided;No images provided;Ingen billeder
 noOptions;No options;Ingen valgmuligheder
 noPassword;Please enter a password;Indtast venligst en adgangskode
-noReview;Be the first to review this product;Bliv den første til at anmelde dette produkt
 noProduct;Product not found;Produkt blev ikke fundet
+noReview;Be the first to review this product;Bliv den første til at anmelde dette produkt
 notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 
 notAuthorizedNoToken;Not authorized, no token;Ikke autoriseret, ingen token
 notAuthorizedTokenFailed;Not authorized, token failed;Ikke autoriseret, token mislykkedes
@@ -284,16 +284,20 @@ shoes;Shoes;Sko
 shopCart;Shopping cart;Indkøbskurv
 shopKidsHeading;Playful by Nature;Leg er liv
 shopKidsLink;Shop kids;Shop børn
+shopKidsMenuText;Adventure-ready styles for every playday;Eventyrklare styles til hver legedag
 shopKidsText;Fun, functional, and built for adventure-styles kids love and parents trust;Sjove og funktionelle styles til børn på farten og forældre med krav til kvalitet
 shopMenHeading;Luxury begins with the feeling;Luksus starter med følelsen
 shopMenLink;Shop men;Shop herre
+shopMenMenuText;Refined essentials for modern living;Raffinerede essentials til den moderne mand
 shopMenText;Premium materials and considered design. For the man who knows that calm is a kind of strength;Eksklusive materialer og gennemtænkt design. Til manden der forstår, at ro også er styrke
 shopNewHeading;Celebrating Life;Celebrating Life
 shopNewText;Discover style made to move with your passions and celebrate what makes you unique;Opdag stil skabt til at følge dine passioner og hyld det, der gør dig unik
 shopNow;Shop now;Shop nu
 shopWomanHeading;Empower Your Everyday;Styrke i din stil
 shopWomanLink;Shop Women;Shop dame
-shopWomanText;Find pieces that inspire self-expression—effortless, bold, and made to move with you;Udtryk dig selv med styles, der er ubesværede, modige og med dig i bevægelse
+shopWomanText;Find pieces that inspire self-expression, effortless, bold, and made to move with you;Udtryk dig selv med styles, der er ubesværede, modige og med dig i bevægelse
+shopWomenMenuText;Effortless looks that move with you;Ubesejrede looks der bevæger sig med dig
+shopWomenHeading;Empower Your Everyday;Styrke i din stil
 show;Show;Vis
 showAll;Show all;Vis alle
 showAllTags;Show all tags;Vis alle tags

@@ -82,7 +82,7 @@
       background-position: top right;
 
       @include max-size($small) {
-        height: 200px;
+        height: rem(230px);
         width: 100%;
         grid-column: span 3;
       }
