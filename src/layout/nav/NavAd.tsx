@@ -10,7 +10,7 @@ const NavAd = ({ heading, text, imageName }: NavAdProps) => (
     style={{ backgroundImage: `url(/images/adImages/${imageName}.avif` }}
   >
     <p className="ad-heading">{heading}</p>
-    {text && <p>{text}</p>}
+    {text && <p className="ad-text">{text}.</p>}
   </li>
 );
 

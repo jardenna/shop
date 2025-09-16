@@ -96,8 +96,14 @@
     position: absolute;
     top: 24px;
     left: 24px;
-    max-width: 40%;
+    max-width: 44%;
     font-size: 24px;
+    text-wrap: pretty;
+  }
+
+  .ad-text {
+    max-width: rem(232px);
+    text-wrap: pretty;
   }
 
   .sub-nav-heading {
