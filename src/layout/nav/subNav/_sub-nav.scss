@@ -2,7 +2,7 @@
 
 .mobile-sub-item {
   grid-column: span 3;
-  border-top: 1px solid #918585;
+  border-top: 1px solid $color-gray-70;
   padding: 12px 8px;
   margin-inline: 20px;
 }
@@ -15,7 +15,7 @@
     border-bottom: 2px solid transparent;
 
     &.active {
-      border-color: gray;
+      border-color: $color-gray-70;
     }
   }
 }

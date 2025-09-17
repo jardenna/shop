@@ -8,18 +8,19 @@ $color-blue-25: #94afba;
 $color-blue-30: #2f6d8f;
 
 // Red dust colors
-$color-dust-red-10: #a0738f;
-$color-dust-red-20: #793e5f;
-$color-dust-red-30: #b21534;
+$color-dust-red-10: #faf0ef;
+$color-dust-red-20: #a0738f;
+$color-dust-red-30: #793e5f;
 $color-dust-red-40: #583247;
 
 // Red  colors
 $color-red-10: #db1139;
 $color-red-15: #b82845;
 $color-red-20: #88001b;
+$color-red-30: #b21534;
 
 // Gray colors
-$color-gray-20: #dbe0dc;
+$color-gray-20: #d6dcda;
 $color-gray-30: #e5e5e5;
 $color-gray-40: #d9d6d6;
 $color-gray-60: #99a4a9;
@@ -51,6 +52,6 @@ $color-info: #4e8673;
 $color-warning: $color-yellow;
 
 // Badge colors
-$color-badge-scheduled: $color-gray-60;
-$color-badge-inactive: $color-dust-red-10;
+$color-badge-scheduled: $color-gray-70;
+$color-badge-inactive: $color-dust-red-20;
 $color-badge-default: $color-blue-30;
