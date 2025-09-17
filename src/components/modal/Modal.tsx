@@ -2,12 +2,10 @@ import { ReactNode } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { selectModalId } from '../../features/modalSlice';
 import useClickOutside from '../../hooks/useClickOutside';
-import useMediaQuery from '../../hooks/useMediaQuery ';
 import { BtnType, BtnVariant, PopupRole, SizeVariant } from '../../types/enums';
 import type { FormEventType } from '../../types/types';
 import Overlay from '../overlay/Overlay';
 import Portal from '../Portal';
-import SwipeContainer from '../SwipeContainer';
 import './_modal.scss';
 import ModalFooter from './ModalFooter';
 import ModalHeader from './ModalHeader';
@@ -58,7 +56,6 @@ const Modal = ({
   modalInfo,
   onClearAllValues,
 }: ModalProps) => {
-  const { isMobileSize } = useMediaQuery();
   const modalId = useAppSelector(selectModalId);
   const { onClosePopup, popupRef } = useModal(modalId);
 
@@ -133,13 +130,7 @@ const Modal = ({
         className={`modal modal-${modalSize} ${className} ${popupClass} animate-top-center`}
         role={isAlert ? PopupRole.Alert : undefined}
       >
-        {isMobileSize ? (
-          <SwipeContainer onSwipeRight={onCloseModal}>
-            {ModalContent}
-          </SwipeContainer>
-        ) : (
-          ModalContent
-        )}
+        {ModalContent}
       </dialog>
       <Overlay />
     </Portal>
