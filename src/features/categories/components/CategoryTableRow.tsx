@@ -1,10 +1,10 @@
 import { memo } from 'react';
 import type { Status } from '../../../app/api/apiTypes/adminApiTypes';
-import AdminBadge from '../../../components/adminBadge/AdminBadge';
 import DateDisplay from '../../../components/datePicker/DateDisplay';
 import MoreLink from '../../../components/MoreLink';
 import { AdminPath } from '../../../layout/nav/enums';
 import useLanguage from '../../language/useLanguage';
+import AdminBadge from '../../products/components/AdminBadge';
 
 type CategoryTableRowProps = {
   categoryName: string;

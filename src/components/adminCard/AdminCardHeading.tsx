@@ -1,6 +1,6 @@
 import { Status } from '../../app/api/apiTypes/adminApiTypes';
+import AdminBadge from '../../features/products/components/AdminBadge';
 import LayoutElement from '../../layout/LayoutElement';
-import AdminBadge from '../adminBadge/AdminBadge';
 
 type AdminCardHeadingProps = {
   ariaLabel: string;

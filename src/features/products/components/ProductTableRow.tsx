@@ -1,9 +1,9 @@
 import { memo } from 'react';
 import { Status } from '../../../app/api/apiTypes/adminApiTypes';
 import { useAppSelector } from '../../../app/hooks';
-import AdminBadge from '../../../components/adminBadge/AdminBadge';
 import { numberConvert } from '../../../utils/numberConverter';
 import { selectSelectedLanguage } from '../../language/languageSlice';
+import AdminBadge from './AdminBadge';
 import ProductActions from './ProductActions';
 import ProductOverviewCell from './ProductOverviewCell';
 
