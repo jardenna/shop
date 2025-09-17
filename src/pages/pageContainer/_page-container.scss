@@ -26,6 +26,7 @@
 .page-card {
   max-height: 78lvh;
   overflow: auto;
+  overflow-x: clip;
   background-color: $color-white;
   border-radius: 4px;
   box-shadow: $box-shadow;
