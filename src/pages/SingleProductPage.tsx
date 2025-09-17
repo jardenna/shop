@@ -9,13 +9,13 @@ import SkeletonSinglePage from '../components/skeleton/skeletonSinglePage/Skelet
 import useAuth from '../features/auth/hooks/useAuth';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
 import useLanguage from '../features/language/useLanguage';
-import ProductCareList from '../features/products/components/reviews/ProductCareList';
-import ReviewList from '../features/products/components/reviews/ReviewList';
-import ReviewsForm from '../features/products/components/reviews/ReviewsForm';
-import ReviewStars from '../features/products/components/reviews/ReviewStars';
-import { getStarsArray } from '../features/products/components/reviews/reviewsUtil.';
 import InStock from '../features/shop/components/InStock';
 import NotifyMe from '../features/shop/components/NotifyMe';
+import ProductCareList from '../features/shop/components/ProductCareList';
+import ReviewList from '../features/shop/components/reviews/ReviewList';
+import ReviewsForm from '../features/shop/components/reviews/ReviewsForm';
+import ReviewStars from '../features/shop/components/reviews/ReviewStars';
+import { getStarsArray } from '../features/shop/components/reviews/reviewsUtil.';
 import ShopProductForm from '../features/shop/components/ShopProductForm';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
 import LayoutElement from '../layout/LayoutElement';
