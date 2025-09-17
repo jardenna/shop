@@ -14,17 +14,6 @@
     top: 30%;
   }
 
-  @include max-size($small) {
-    border-radius: 0;
-    position: fixed;
-    height: 100%;
-    width: 100%;
-
-    &.animate-top-right {
-      top: 0;
-    }
-  }
-
   .control-list {
     .control-item {
       &:has(input:focus) {
@@ -43,7 +32,7 @@
     max-width: rem(400px);
 
     @include max-size($medium) {
-      min-width: 100%;
+      min-width: 90%;
     }
   }
 
@@ -51,7 +40,7 @@
     width: 50%;
 
     @include max-size($medium) {
-      min-width: 100%;
+      min-width: 90%;
     }
   }
 
@@ -59,6 +48,10 @@
     width: 90%;
 
     @include max-size($large) {
+      min-width: 90%;
+    }
+
+    @include max-size($small) {
       min-width: 100%;
     }
   }
@@ -71,6 +64,10 @@
 
   .modal-title {
     margin-bottom: 12px;
+  }
+
+  .modal-content {
+    padding-block: 12px;
   }
 
   .modal-info {

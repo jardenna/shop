@@ -103,19 +103,17 @@ const Modal = ({
       {/* Is modal body a form? */}
       {primaryActionBtn.buttonType === BtnType.Submit ? (
         <form className="modal-form" onSubmit={primaryActionBtn.onSubmit}>
-          <section>
-            {children}
-            <ModalFooter
-              primaryActionBtn={primaryActionBtn}
-              secondaryActionBtn={secondaryActionBtn}
-              onCloseModal={onCloseModal}
-              onPrimaryClick={handlePrimaryClick}
-            />
-          </section>
+          {children}
+          <ModalFooter
+            primaryActionBtn={primaryActionBtn}
+            secondaryActionBtn={secondaryActionBtn}
+            onCloseModal={onCloseModal}
+            onPrimaryClick={handlePrimaryClick}
+          />
         </form>
       ) : (
         <>
-          {children}
+          <div className="modal-content">{children}</div>
           <ModalFooter
             primaryActionBtn={primaryActionBtn}
             secondaryActionBtn={secondaryActionBtn}
@@ -132,9 +130,7 @@ const Modal = ({
     <Portal portalId="modal">
       <dialog
         ref={popupRef}
-        className={`modal modal-${modalSize} ${className} ${popupClass} ${
-          isMobileSize ? 'animate-top-right' : 'animate-top-center'
-        }`}
+        className={`modal modal-${modalSize} ${className} ${popupClass} animate-top-center`}
         role={isAlert ? PopupRole.Alert : undefined}
       >
         {isMobileSize ? (
