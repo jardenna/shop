@@ -49,6 +49,7 @@
 
     @include max-size($small) {
       grid-template-columns: repeat(3, 1fr);
+      margin-top: 8px;
     }
   }
 
@@ -60,6 +61,15 @@
   .sub-nav-item {
     display: flex;
     flex-direction: column;
+
+    .btn {
+      text-transform: none;
+      width: auto;
+
+      &::after {
+        inset: -8px;
+      }
+    }
 
     @include max-size($small) {
       padding-inline: 20px;
