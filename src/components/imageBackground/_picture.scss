@@ -1,0 +1,21 @@
+.picture {
+  display: grid;
+  width: 100%;
+  height: 291px;
+}
+
+.picture > * {
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+}
+
+img {
+  object-fit: cover;
+  height: 400px;
+  width: 100%;
+}
+
+.test {
+  text-align: center;
+  color: #fff;
+}
