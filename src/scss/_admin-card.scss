@@ -47,8 +47,11 @@
   }
 
   .admin-card-title {
-    @include max-size($small) {
-      justify-content: flex-start;
+    text-wrap: balance;
+
+    @include min-size($medium) {
+      display: flex;
+      justify-content: flex-end;
     }
   }
 

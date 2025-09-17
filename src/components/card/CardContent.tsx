@@ -5,8 +5,8 @@ import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 
 type CardContentProps = {
   children: ReactNode;
-  heading: string | null;
   className?: string;
+  heading?: string;
   onReset?: () => void;
 };
 
@@ -22,7 +22,7 @@ const CardContent = ({
       <section className="admin-card-content">
         {heading && (
           <LayoutElement ariaLabel="card">
-            <h2 className="flex-align-right admin-card-title">{heading}</h2>
+            <h2 className="admin-card-title">{heading}</h2>
           </LayoutElement>
         )}
         {children}

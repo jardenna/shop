@@ -36,7 +36,7 @@ const ProductCardCenter = ({
   const { language } = useLanguage();
 
   return (
-    <CardContent heading={null} onReset={onReset} className="center">
+    <CardContent onReset={onReset} className="center">
       <span className="separator" aria-hidden={true} />
       <GridTwoCol text={language.productsInStock}>
         {countInStock} {language.pcs}
