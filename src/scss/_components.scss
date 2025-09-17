@@ -65,3 +65,32 @@
     margin: 0;
   }
 }
+
+.badge {
+  width: fit-content;
+  border-radius: 50px;
+  background-color: $color-badge-default;
+  color: $color-light-gray-30;
+  display: flex;
+  padding: 2px 12px;
+  align-items: center;
+  gap: 8px;
+
+  .btn-ghost {
+    color: currentcolor;
+  }
+
+  &.scheduled {
+    background-color: $color-badge-scheduled;
+  }
+
+  &.inactive {
+    background-color: $color-badge-inactive;
+  }
+
+  &.discount {
+    background-color: $color-dust-red-30;
+    padding-block: 8px;
+    border-radius: 4px;
+  }
+}

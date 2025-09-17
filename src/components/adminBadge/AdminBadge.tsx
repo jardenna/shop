@@ -7,12 +7,12 @@ import Icon from '../icons/Icon';
 import Tooltip from '../tooltip/Tooltip';
 import './_badge.scss';
 
-type BadgeProps = {
+type AdminBadgeProps = {
   scheduledDate: Date | null;
   status: Status;
 };
 
-const Badge = ({ scheduledDate, status }: BadgeProps) => {
+const AdminBadge = ({ scheduledDate, status }: AdminBadgeProps) => {
   const { language } = useLanguage();
 
   return (
@@ -42,4 +42,4 @@ const Badge = ({ scheduledDate, status }: BadgeProps) => {
   );
 };
 
-export default Badge;
+export default AdminBadge;

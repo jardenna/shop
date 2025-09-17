@@ -1,11 +1,11 @@
 import { memo } from 'react';
 import { Status } from '../../../app/api/apiTypes/adminApiTypes';
 import { useAppSelector } from '../../../app/hooks';
-import Badge from '../../../components/badge/Badge';
+import AdminBadge from '../../../components/adminBadge/AdminBadge';
+import { numberConvert } from '../../../utils/numberConverter';
 import { selectSelectedLanguage } from '../../language/languageSlice';
 import ProductActions from './ProductActions';
 import ProductOverviewCell from './ProductOverviewCell';
-import { numberConvert } from '../../../utils/numberConverter';
 
 type ProductTableRowProps = {
   categoryName: string;
@@ -47,7 +47,7 @@ const ProductTableRow = ({
       </td>
       <td>{numberConvert(countInStock, selectedLanguage)}</td>
       <td>
-        <Badge status={status} scheduledDate={scheduledDate || null} />
+        <AdminBadge status={status} scheduledDate={scheduledDate || null} />
       </td>
       <td>
         <ProductActions id={id} onCopyProduct={onCopyProduct} />

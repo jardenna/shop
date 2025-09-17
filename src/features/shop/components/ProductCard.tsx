@@ -27,7 +27,7 @@ const ProductCard = ({
       <div className="product-img-container">
         <FavoriteHeart id={product.id} />
         {product.discount > 0 && (
-          <span className="product-badge">- {product.discount} %</span>
+          <span className="badge discount">- {product.discount} %</span>
         )}
         <Link to={linkTo}>
           <VisuallyHidden>

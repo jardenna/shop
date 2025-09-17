@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import type { Status } from '../../../app/api/apiTypes/adminApiTypes';
-import Badge from '../../../components/badge/Badge';
+import AdminBadge from '../../../components/adminBadge/AdminBadge';
 import DateDisplay from '../../../components/datePicker/DateDisplay';
 import MoreLink from '../../../components/MoreLink';
 import { AdminPath } from '../../../layout/nav/enums';
@@ -26,7 +26,7 @@ const CategoryTableRow = ({
     <tr>
       <td>{categoryName}</td>
       <td>
-        <Badge status={status} scheduledDate={scheduledDate || null} />
+        <AdminBadge status={status} scheduledDate={scheduledDate || null} />
       </td>
       <td>
         <DateDisplay date={createdAt} />
