@@ -22,7 +22,7 @@
 // Main nav
 .main-nav-container {
   .nav-list {
-    @include min-size($medium) {
+    @include min-size($small) {
       display: flex;
 
       .nav-link {

@@ -6,6 +6,7 @@
   justify-content: space-between;
   align-items: flex-end;
   margin-bottom: 8px;
+  overflow: clip;
 
   .btn-default {
     font-size: $font-small;
