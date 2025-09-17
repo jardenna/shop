@@ -37,8 +37,8 @@
   .carousel-item::scroll-marker {
     content: ' ';
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
+    width: rem(20px);
+    height: rem(20px);
     background-color: $color-gray-30;
     display: grid;
 
