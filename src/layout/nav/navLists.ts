@@ -4,14 +4,10 @@ import type { NavItemsProps } from './Nav';
 
 const navList: NavItemsProps[] = [
   {
-    path: ShopPath.Root,
-    linkText: LinkText.Home,
-  },
-  {
     path: ShopPath.Collection,
     linkText: LinkText.Collection,
     adHeading: 'discoverLatestTrends',
-    subNav: [
+    subNavList: [
       {
         path: ShopPath.Women,
         linkText: LinkText.Women,

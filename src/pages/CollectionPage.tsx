@@ -8,6 +8,7 @@ import Img from '../components/Img';
 import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import useLanguage from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
+import CollectionPageHeader from '../features/shop/components/CollectionPageHeader';
 import FilterPanel from '../features/shop/components/FilterPanel';
 import ProductCard from '../features/shop/components/ProductCard';
 import ProductCardGridContent from '../features/shop/components/ProductCardGridContent';
@@ -17,6 +18,8 @@ import { useGetProductsQuery } from '../features/shop/shopApiSlice';
 import type { FilterValuesType } from '../hooks/useFilterParams';
 import useFilterParams from '../hooks/useFilterParams';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
+import useMediaQuery from '../hooks/useMediaQuery ';
+import { LinkText } from '../layout/nav/enums';
 import MetaTags from '../layout/nav/MetaTags';
 import { IconName } from '../types/enums';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
@@ -27,8 +30,9 @@ import './CollectionPage.styles.scss';
 export type FilterKeys = 'sizes' | 'colors' | 'brand';
 
 const CollectionPage = () => {
-  const { language } = useLanguage();
   const { category, categoryId } = useParams();
+  const { language } = useLanguage();
+  const { isMobileSize } = useMediaQuery();
 
   const initialFilters: FilterValuesType<string> = {
     sizes: [],
@@ -43,7 +47,9 @@ const CollectionPage = () => {
     onClearAllFilters,
     onClearSingleFilter,
   } = useFilterParams(initialFilters);
-  const { subMenu, subMenuLoading, refetchSubMenu } = useSubMenu({ category });
+  const { subMenu, subMenuLoading, refetchSubMenu } = useSubMenu(
+    category as LinkText,
+  );
   const [productView, setProuctView] = useLocalStorage(
     localStorageKeys.productView,
     'grid',
@@ -96,19 +102,32 @@ const CollectionPage = () => {
         )}
 
         <div className="collection-page-container">
-          <CollectionAside
-            subMenu={subMenu || null}
-            category={category || 'women'}
-            isLoading={subMenuLoading}
-            onReset={() => refetchSubMenu()}
-            asideHeading={categoryText}
-          />
+          {isMobileSize ? (
+            <CollectionPageHeader
+              ariaLabel={language.page}
+              headerText={categoryText}
+            />
+          ) : (
+            <CollectionAside
+              subMenu={subMenu || null}
+              category={category || 'women'}
+              isLoading={subMenuLoading}
+              onReset={() => refetchSubMenu()}
+              asideHeading={categoryText}
+              language={language}
+            />
+          )}
           <ErrorBoundary
             FallbackComponent={ErrorBoundaryFallback}
             onReset={() => refetch()}
           >
             <div className="collection-page-content">
-              <Img src={`/images/collections/${category}/banner.jpg`} alt="" />
+              {!isMobileSize && (
+                <Img
+                  src={`/images/collections/${category}/banner.jpg`}
+                  alt=""
+                />
+              )}
               <section className="product-toolbar">
                 <DisplayControls
                   onSetDisplay={setProuctView}

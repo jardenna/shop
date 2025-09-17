@@ -85,6 +85,13 @@
     object-fit: cover;
   }
 
+  .badge {
+    position: absolute;
+    z-index: 2;
+    left: 12px;
+    top: 12px;
+  }
+
   &.favorite-list {
     display: flex;
     flex-wrap: wrap;
@@ -133,16 +140,4 @@
       background-color: rgba($color-gray-70, 70%);
     }
   }
-}
-
-.product-badge {
-  position: absolute;
-  left: 12px;
-  top: 12px;
-  background-color: $color-dust-red-20;
-  color: $color-white;
-  display: flex;
-  padding: 8px 12px;
-  border-radius: 2px;
-  width: fit-content;
 }

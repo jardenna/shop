@@ -1,6 +1,6 @@
 import { Status } from '../../app/api/apiTypes/adminApiTypes';
+import AdminBadge from '../../features/products/components/AdminBadge';
 import LayoutElement from '../../layout/LayoutElement';
-import Badge from '../badge/Badge';
 
 type AdminCardHeadingProps = {
   ariaLabel: string;
@@ -19,7 +19,7 @@ const AdminCardHeading = ({
     <LayoutElement ariaLabel={ariaLabel}>
       <h2 className="admin-card-title">{name}</h2>
     </LayoutElement>
-    <Badge status={status} scheduledDate={scheduledDate || null} />
+    <AdminBadge status={status} scheduledDate={scheduledDate || null} />
   </div>
 );
 

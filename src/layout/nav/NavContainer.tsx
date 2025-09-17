@@ -27,7 +27,7 @@ const NavContainer = ({
   return (
     <>
       <Nav
-        navItemsList={navList}
+        navList={navList}
         ariaLabel={language.main}
         hideAria={hideAria}
         className={`nav-container ${className || 'main-nav-container'}`}

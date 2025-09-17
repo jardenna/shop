@@ -17,7 +17,7 @@ const NavItem = ({
   const location = useLocation();
   const { language } = useLanguage();
   const [isSubNavShown, setIsSubNavShown] = useState(false);
-  const aria = navItem.subNav && !hideAria;
+  const aria = navItem.subNavList && !hideAria;
 
   const handleShowSubNav = () => {
     setIsSubNavShown(true);
@@ -37,7 +37,7 @@ const NavItem = ({
 
   return (
     <li
-      className={navItem.subNav ? 'has-sub-nav' : ''}
+      className={`nav-item ${navItem.subNavList ? 'has-sub-nav' : ''}`}
       onMouseEnter={handleShowSubNav}
       onMouseLeave={handleHideSubNav}
       onFocus={handleShowSubNav}
@@ -50,7 +50,7 @@ const NavItem = ({
     >
       <NavLink
         to={navItem.path}
-        className="nav-item"
+        className="nav-link"
         aria-haspopup={aria ? true : undefined}
         aria-expanded={aria ? isSubNavShown : undefined}
       >
@@ -65,11 +65,11 @@ const NavItem = ({
         )}
         <span className="nav-text">{language[navItem.linkText]}</span>
       </NavLink>
-      {navItem.subNav && navItem.adHeading && (
+      {navItem.subNavList && navItem.adHeading && (
         <SubNav
-          subNav={navItem.subNav}
+          subNavList={navItem.subNavList}
           adHeading={navItem.adHeading}
-          className={isSubNavShown ? 'shown' : ''}
+          isSubNavShown={isSubNavShown}
         />
       )}
     </li>

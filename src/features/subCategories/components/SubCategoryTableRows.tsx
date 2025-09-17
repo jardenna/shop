@@ -1,9 +1,9 @@
 import { memo } from 'react';
 import type { Status } from '../../../app/api/apiTypes/adminApiTypes';
-import Badge from '../../../components/badge/Badge';
 import MoreLink from '../../../components/MoreLink';
 import { AdminPath } from '../../../layout/nav/enums';
 import useLanguage from '../../language/useLanguage';
+import AdminBadge from '../../products/components/AdminBadge';
 
 type SubCategoryTableRowsProps = {
   id: string;
@@ -27,7 +27,7 @@ const SubCategoryTableRows = ({
       <td>{mainCategoryName}</td>
       <td>{subCategoryName}</td>
       <td>
-        <Badge status={status} scheduledDate={scheduledDate || null} />
+        <AdminBadge status={status} scheduledDate={scheduledDate || null} />
       </td>
       <td>
         <MoreLink

@@ -1,48 +1,60 @@
-import { NavLink } from 'react-router';
+import { useState } from 'react';
+import { useParams } from 'react-router';
 import useLanguage from '../../../features/language/useLanguage';
+import useSubMenu from '../../../features/shop/hooks/useSubMenu';
 import useMediaQuery from '../../../hooks/useMediaQuery ';
+import { LinkText } from '../enums';
 import type { BaseNav } from '../Nav';
 import './_sub-nav.scss';
+import SubNavListDesktop from './SubNavListDesktop';
+import SubNavListMobile from './SubNavListMobile';
 
 type SubNavProps = {
   adHeading: string;
-  subNav: BaseNav[];
-  className?: string;
+  isSubNavShown: boolean;
+  subNavList: BaseNav[];
 };
 
-const SubNav = ({ subNav, adHeading, className = '' }: SubNavProps) => {
+const SubNav = ({ subNavList, adHeading, isSubNavShown }: SubNavProps) => {
+  const { category } = useParams();
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
 
+  const initialCategory =
+    category && Object.values(LinkText).includes(category as LinkText)
+      ? (category as LinkText)
+      : LinkText.Women;
+
+  const [selectedCategory, setSelectedCategory] =
+    useState<LinkText>(initialCategory);
+
+  const { subMenu, refetchSubMenu } = useSubMenu(selectedCategory);
+  const handleUpdateCategory = (id: LinkText) => {
+    setSelectedCategory(id);
+  };
+
   return (
-    <div className={`sub-nav-container ${className}`}>
-      <ul className="sub-nav">
-        {subNav.map(({ linkText, path, infoText, className = '' }) =>
-          isMobileSize ? (
-            <li key={linkText} className="sub-nav-item">
-              <NavLink to={path}>{language[linkText]}</NavLink>
-            </li>
-          ) : (
-            <li className={`sub-nav-item ${className}`} key={linkText}>
-              <section className="sub-nav-content">
-                <h2 className="sub-nav-heading">{language[linkText]}</h2>
-                <p className="sub-nav-text">
-                  {infoText ? language[infoText] : ''}
-                </p>
-              </section>
-              <div className="sub-nav-link">
-                <NavLink to={path} className="btn btn-primary">
-                  {language.shopNow}
-                </NavLink>
-              </div>
-            </li>
-          ),
-        )}
-        <li className="sub-nav-item sub-nav-ad">
-          <p className="ad-heading">{language[adHeading]}.</p>
-        </li>
-      </ul>
+    <div className={`sub-nav-container ${isSubNavShown ? 'shown' : ''}`}>
+      {isMobileSize ? (
+        subMenu && (
+          <SubNavListMobile
+            subNavList={subNavList}
+            onClick={handleUpdateCategory}
+            subMenu={subMenu}
+            category={selectedCategory}
+            onReset={refetchSubMenu}
+            language={language}
+          />
+        )
+      ) : (
+        <SubNavListDesktop
+          subNavList={subNavList}
+          heading={adHeading}
+          language={language}
+        />
+      )}
     </div>
   );
 };
+
 export default SubNav;

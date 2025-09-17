@@ -89,7 +89,7 @@ a[class^='btn-'],
   color: $color-white;
 
   &:hover {
-    background-color: $color-dust-red-30;
+    background-color: $color-red-30;
   }
 
   &:focus-visible {
@@ -100,7 +100,7 @@ a[class^='btn-'],
 // Ghost button
 .btn-ghost {
   background-color: transparent;
-  color: $color-dust-red-20;
+  color: $color-dust-red-30;
   width: fit-content;
   min-height: auto;
   padding: 0;

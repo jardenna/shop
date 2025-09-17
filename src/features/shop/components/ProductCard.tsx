@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { Link } from 'react-router';
 import type { ProductPreview } from '../../../app/api/apiTypes/shopApiTypes';
+import Badge from '../../../components/Badge';
 import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import Img from '../../../components/Img';
 import VisuallyHidden from '../../../components/VisuallyHidden';
@@ -27,7 +28,7 @@ const ProductCard = ({
       <div className="product-img-container">
         <FavoriteHeart id={product.id} />
         {product.discount > 0 && (
-          <span className="product-badge">- {product.discount} %</span>
+          <Badge badgeText={`- ${product.discount} %`} className="discount" />
         )}
         <Link to={linkTo}>
           <VisuallyHidden>

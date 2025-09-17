@@ -133,11 +133,11 @@
     background-image: url('/images/home/men.png');
     background-size: contain;
     background-position: right bottom;
-    background-color: #d6dcda;
+    background-color: $color-gray-20;
   }
 
   .grid-item-3 {
-    background-color: #faf0ef;
+    background-color: $color-dust-red-10;
     background-image: url('/images/home/women.png');
     background-size: 250px;
     background-position-y: bottom;

@@ -4,6 +4,7 @@
   .breadcrumbs-container {
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 4px;
   }
 }
 
@@ -27,8 +28,12 @@
   .collection-page-container {
     flex-direction: column;
   }
+}
 
-  .collection-aside-header {
-    padding: 12px;
-  }
+.collection-page-header {
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-light-gray-20;
 }
