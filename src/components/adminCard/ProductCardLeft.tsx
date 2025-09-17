@@ -31,7 +31,7 @@ const ProductCardLeft = ({
   const { language } = useLanguage();
 
   return (
-    <CardContent heading={null} onReset={onReset}>
+    <CardContent onReset={onReset}>
       {images.length > 0 ? (
         <ImgList images={images} onReset={onReset} />
       ) : (

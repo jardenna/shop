@@ -34,7 +34,7 @@
     font-size: $font-small;
 
     &:disabled {
-      pointer-events: none;
+      background: none;
     }
 
     &:focus-visible {

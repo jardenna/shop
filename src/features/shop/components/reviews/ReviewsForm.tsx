@@ -12,7 +12,7 @@ import useLanguage from '../../../language/useLanguage';
 import {
   useCheckReviewedQuery,
   usePostReviewsMutation,
-} from '../../../shop/shopApiSlice';
+} from '../../shopApiSlice';
 import './_reviews.scss';
 
 type ReviewsFormProps = {

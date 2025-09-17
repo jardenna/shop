@@ -21,7 +21,7 @@ const CategoryCardLeft = ({
   const { language } = useLanguage();
 
   return (
-    <CardContent heading={null} onReset={onReset}>
+    <CardContent onReset={onReset}>
       <AdminCardHeading
         scheduledDate={scheduledDate || null}
         name={name}

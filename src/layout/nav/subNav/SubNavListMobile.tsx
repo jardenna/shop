@@ -37,7 +37,7 @@ const SubNavListMobile = ({
               onClick(linkText);
             }}
           >
-            {linkText}
+            {language[linkText]}
           </Button>
         </li>
       ))}

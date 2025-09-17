@@ -129,12 +129,14 @@ const CollectionPage = () => {
                 />
               )}
               <section className="product-toolbar">
-                <DisplayControls
-                  onSetDisplay={setProuctView}
-                  displayControlList={productViewIconList}
-                  isActive={productView}
-                  ariaLabel={language.productDisplay}
-                />
+                {!isMobileSize && (
+                  <DisplayControls
+                    onSetDisplay={setProuctView}
+                    displayControlList={productViewIconList}
+                    isActive={productView}
+                    ariaLabel={language.productDisplay}
+                  />
+                )}
                 {products && (
                   <>
                     <span>

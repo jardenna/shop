@@ -46,10 +46,6 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     width: 100%;
-
-    @include max-size($small) {
-      grid-template-columns: repeat(3, 1fr);
-    }
   }
 
   .sub-nav-content {
@@ -61,8 +57,13 @@
     display: flex;
     flex-direction: column;
 
-    @include max-size($small) {
-      padding-inline: 20px;
+    .btn {
+      text-transform: none;
+      width: auto;
+
+      &::after {
+        inset: -8px;
+      }
     }
 
     p {
@@ -79,12 +80,6 @@
       background-size: contain;
       background-repeat: no-repeat;
       background-position: top right;
-
-      @include max-size($small) {
-        height: rem(230px);
-        width: 100%;
-        grid-column: span 3;
-      }
     }
 
     &.background-gray {
@@ -136,5 +131,20 @@
     flex-direction: column;
     box-shadow: none;
     background-color: inherit;
+
+    .sub-nav {
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 8px;
+    }
+
+    .sub-nav-item {
+      padding-inline: 20px;
+    }
+
+    .sub-nav-ad {
+      height: rem(230px);
+      width: 100%;
+      grid-column: span 3;
+    }
   }
 }
