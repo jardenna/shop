@@ -16,9 +16,7 @@ const FashionGrid = () => {
           linkText={language.discoverCollection}
           subHading="NewArrivals"
           text={language.shopNewText}
-        >
-          ss
-        </FashionGridItem>
+        />
         <FashionGridItem
           className="grid-item-2"
           heading={language.shopMenHeading}
@@ -26,9 +24,7 @@ const FashionGrid = () => {
           linkText={language.shopMenLink}
           text={language.shopMenText}
           backgroundImageName="men"
-        >
-          ss
-        </FashionGridItem>
+        />
         <div className="grid-bottom">
           <FashionGridItem
             className="grid-item-3"
@@ -37,9 +33,7 @@ const FashionGrid = () => {
             linkText={language.shopWomanLink}
             text={language.shopWomanText}
             backgroundImageName="women"
-          >
-            xx
-          </FashionGridItem>
+          />
           <FashionGridItem
             className="grid-item-4"
             heading={language.shopKidsHeading}
@@ -47,9 +41,7 @@ const FashionGrid = () => {
             linkText={language.shopKidsLink}
             text={language.shopKidsText}
             backgroundImageName="kids"
-          >
-            aa
-          </FashionGridItem>
+          />
         </div>
       </article>
     </section>

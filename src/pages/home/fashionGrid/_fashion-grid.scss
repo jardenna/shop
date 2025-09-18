@@ -26,12 +26,6 @@
     }
   }
 
-  .fashion-grid-text {
-    p {
-      text-wrap: pretty;
-    }
-  }
-
   // Item 1: spans two rows in col 1
   .grid-item-1 {
     grid-column: 1;
@@ -41,6 +35,26 @@
     h2 {
       font-size: $font-xlarge;
       line-height: $font-xlarge;
+
+      @include max-size($large) {
+        font-size: rem(40px);
+      }
+    }
+
+    .fashion-grid-content {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    @include max-size($large) {
+      .fashion-grid-text {
+        background-color: rgb($color-white, 0.5);
+        padding: 21px 28px;
+        border-radius: 4px;
+        max-width: rem(400px);
+      }
     }
   }
 
@@ -49,6 +63,19 @@
     grid-column: 2;
     grid-row: 1;
     background-color: $color-gray-20;
+
+    &.image-background > picture {
+      place-self: end end;
+    }
+
+    &.image-background .img-fallback {
+      max-width: 780px;
+    }
+
+    .fashion-grid-text {
+      max-width: rem(460px);
+      padding: 32px;
+    }
   }
 
   // Nested grid for bottom items (3 + 4)
@@ -61,10 +88,26 @@
 
     .grid-item-3 {
       background-color: $color-dust-red-10;
+
+      &.image-background > picture {
+        place-self: end end;
+      }
+
+      &.image-background .img-fallback {
+        max-width: 230px;
+      }
     }
 
     .grid-item-4 {
       background-color: $color-gray-30;
+
+      &.image-background > picture {
+        place-self: end end;
+      }
+
+      &.image-background .img-fallback {
+        max-width: 230px;
+      }
     }
   }
 }
