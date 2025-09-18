@@ -97,7 +97,7 @@
     grid-column: 2;
     grid-row: 2;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 32px;
 
     @include max-size($medium) {
@@ -140,6 +140,26 @@
       //     padding: 30px;
       //   }
       // }
+    }
+  }
+}
+
+@include max-size($medium) {
+  .fashion-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 20px;
+
+    .fashion-grid-item,
+    .grid-bottom {
+      grid-column: 1;
+      grid-row: auto;
+      min-height: auto;
+    }
+
+    .grid-bottom {
+      grid-template-columns: 1fr;
+      gap: 20px;
     }
   }
 }
