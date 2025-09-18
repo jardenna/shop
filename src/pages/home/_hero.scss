@@ -3,9 +3,14 @@
 .hero {
   background-color: $color-light-gray;
 
+  &.image-background {
+    picture {
+      place-self: end end;
+    }
+  }
+
   .img-fallback {
     max-height: 412px;
-    max-width: 100%;
   }
 
   .hero-content {
@@ -22,7 +27,7 @@
       padding-inline: 32px;
     }
 
-    @include between-size($small, 1150px) {
+    @include between-size($small, rem(1150px)) {
       max-width: rem(448px);
       padding: 16px 28px;
     }
