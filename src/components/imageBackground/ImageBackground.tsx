@@ -19,9 +19,10 @@ const ImageBackground = ({
   <div className={`image-background ${className}`}>
     <picture>
       <source srcSet={srcSet} type="image/avif" />
-      <img src={src} alt={alt} loading="lazy" />
+      <img className="img-fallback" src={src} alt={alt} loading="lazy" />
     </picture>
-    <div className="wrapper">{children}</div>
+    {children}
   </div>
 );
+
 export default ImageBackground;

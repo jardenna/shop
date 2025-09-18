@@ -2,7 +2,7 @@
   display: grid;
   width: 100%;
 
-  img {
+  .img-fallback {
     object-fit: cover;
     object-position: top;
     max-height: 412px;
