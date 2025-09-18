@@ -57,6 +57,11 @@
       @include max-size($large) {
         font-size: rem(40px);
       }
+
+      @include max-size($small) {
+        font-size: rem(20px);
+        line-height: auto;
+      }
     }
 
     .fashion-grid-content {
@@ -64,6 +69,10 @@
       justify-content: flex-end;
       align-items: center;
       padding: 0 20px;
+
+      @include max-size($small) {
+        padding: 0;
+      }
     }
 
     @include between-size($medium, rem(1550px)) {
@@ -82,13 +91,26 @@
     grid-row: 1;
     background-color: $color-gray-20;
 
-    &.image-background .img-fallback {
-      max-width: rem(780px);
+    &.image-background {
+      @include max-size($small) {
+        @include max-size($small) {
+          display: flex;
+          flex-direction: column-reverse;
+        }
+      }
+
+      .img-fallback {
+        max-width: rem(780px);
+      }
     }
 
     .fashion-grid-text {
       max-width: rem(460px);
       padding: 32px;
+
+      @include max-size($small) {
+        padding-bottom: 0;
+      }
     }
   }
 
@@ -111,6 +133,10 @@
 
       .img-fallback {
         max-width: rem(230px);
+
+        @include max-size($small) {
+          max-width: 100%;
+        }
       }
 
       .fashion-grid-text {
