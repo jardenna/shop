@@ -142,10 +142,6 @@
     background-size: 250px;
     background-position-y: bottom;
 
-    // @include between-size($small, $large) {
-    //   background-size: contain;
-    // }
-
     .fashion-grid-text {
       max-width: rem(212px);
       padding-top: 20px;
