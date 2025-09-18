@@ -8,19 +8,8 @@
 
   // Common item styles
   .fashion-grid-item {
-    display: flex;
-    justify-content: flex-end;
-    background-repeat: no-repeat;
     width: 100%;
-    padding: 28px;
-
-    @include max-size($medium) {
-      padding: 12px;
-    }
-
-    &.grid-item-2 {
-      justify-content: flex-start;
-    }
+    position: relative;
 
     h2 {
       font-size: $font-large;
@@ -28,11 +17,8 @@
     }
 
     a {
-      width: 100%;
-      display: flex;
       font-size: $font-medium;
       color: $color-dust-red-40;
-      justify-content: flex-end;
 
       &:hover {
         color: $color-link-hover;
@@ -41,12 +27,6 @@
   }
 
   .fashion-grid-text {
-    position: relative;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    max-width: rem(400px);
-
     p {
       text-wrap: pretty;
     }
@@ -57,28 +37,10 @@
     grid-column: 1;
     grid-row: span 2;
     background-color: $color-light-gray;
-    background-image: url('/images/home/sale.png');
-    background-size: contain;
-    min-height: rem(760px);
-
-    .fashion-grid-text {
-      justify-content: center;
-      padding-bottom: 80px;
-
-      // @include max-size($small) {
-      //   padding-bottom: 30px;
-      //   max-width: rem(164px);
-      // }
-    }
 
     h2 {
       font-size: $font-xlarge;
       line-height: $font-xlarge;
-
-      // @include max-size($small) {
-      //   font-size: $font-large;
-      //   line-height: $font-large;
-      // }
     }
   }
 
@@ -86,9 +48,6 @@
   .grid-item-2 {
     grid-column: 2;
     grid-row: 1;
-    background-image: url('/images/home/men.png');
-    background-size: contain;
-    background-position: right bottom;
     background-color: $color-gray-20;
   }
 
@@ -100,46 +59,12 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 32px;
 
-    @include max-size($medium) {
-      grid-template-columns: 1fr; // stack for small screens
-      gap: 20px;
-    }
-
     .grid-item-3 {
       background-color: $color-dust-red-10;
-      background-image: url('/images/home/women.png');
-      background-size: 250px;
-      background-position-y: bottom;
-
-      .fashion-grid-text {
-        max-width: rem(212px);
-        padding-top: 20px;
-
-        // @include max-size($large) {
-        //   max-width: rem(412px);
-        // }
-
-        // @include max-size($small) {
-        //   max-width: rem(296px);
-        // }
-
-        // @include max-size($mini) {
-        //   max-width: rem(164px);
-        // }
-      }
     }
 
     .grid-item-4 {
-      background-image: url('/images/home/kids.png');
-      background-size: cover;
       background-color: $color-gray-30;
-
-      // .fashion-grid-text {
-      //   @include max-size($small) {
-      //     max-width: 100%;
-      //     padding: 30px;
-      //   }
-      // }
     }
   }
 }
@@ -154,7 +79,6 @@
     .grid-bottom {
       grid-column: 1;
       grid-row: auto;
-      min-height: auto;
     }
 
     .grid-bottom {
