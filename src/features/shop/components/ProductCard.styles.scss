@@ -3,7 +3,7 @@
 .size-overlay {
   gap: 30px;
   display: flex;
-  background-color: rgb($color-white, 0.8);
+  background-color: rgb($color-white, 80%);
   padding: 12px 4px;
   justify-content: center;
   position: absolute;
@@ -23,7 +23,7 @@
     right: 5px;
     top: 5px;
     border-radius: 8px;
-    background-color: rgb($color-white, 0.6);
+    background-color: rgb($color-white, 60%);
 
     &:hover {
       background-color: rgb($color-gray-70, 70%);
@@ -137,7 +137,7 @@
     min-height: auto;
 
     &:hover {
-      background-color: rgb($color-gray-70, 0.7);
+      background-color: rgb($color-gray-70, 70%);
     }
   }
 }
