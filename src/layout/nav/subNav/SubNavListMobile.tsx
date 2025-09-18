@@ -25,7 +25,6 @@ const SubNavListMobile = ({
   language,
 }: SubNavListMobileProps) => {
   const { headingKey, textKey } = subNavConfig[category];
-
   return (
     <ul className="sub-nav">
       {subNavList.map(({ linkText }) => (
