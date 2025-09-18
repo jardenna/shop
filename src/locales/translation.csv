@@ -97,6 +97,10 @@ expanded;Expanded;Udvidet
 expandMenu;Expand menu;Udvid menu
 eye;Eye;Øje
 eyeClosed;Closed eye;Lukket øje
+fashionGridSaleAlt;"Young woman wearing a short, white 1960s-inspired dress";"Ung kvinde i kort hvid 60’er-inspireret kjole"
+fashionGridMenAlt;"Man wearing sunglasses, reclining and looking up with a cheerful smile";"Mand med solbriller ligger afslappet og kigger glad op"
+fashionGridWomenAlt;"Woman in a colorful outfit, wearing a beret that matches her sweater";"Kvinde i farverigt outfit og en alpehue der matcher til hendes sweater"
+fashionGridKidsAlt;"Two girls sitting side by side, one in a red polka dot dress and the other in a yellow polka dot dress";"To søde piger sidder ned, den ene i rød prikket kjole, den anden i gul prikket kjole"
 favorites;Favorites;Favoritter
 fileExceedsSize;Selected file(s) exceeds the 1MB limit; Valgte fil(er) overstiger grænsen på 1 MB. Upload venligst en mindre fil
 filesCanBeUploaded;files can be uploaded;filer kan uploades
@@ -117,6 +121,7 @@ grid;Grid;Grid
 gridLarge; Large grid;Bredt grid
 gridSmall; Small grid;Smalt grid
 heart;Heart;Hjerte
+heroAlt;"Two women dressed in matching blazers, posing fashionably";"To kvinder iført smarte matchende blazere"
 heroText;Upgrade your wardrobe with exclusive deals!;Opgradér din garderobe med eksklusive tilbud!
 heroText1;For a limited time, enjoy incredible discounts on the latest fashion trends;I en begrænset periode kan du få fantastiske rabatter på de nyeste modetrends
 heroTitle;Exclusive Fashion Sale;Eksklusivt Modesalg

@@ -83,7 +83,7 @@
     background-color: $color-gray-20;
 
     &.image-background .img-fallback {
-      max-width: 780px;
+      max-width: rem(780px);
     }
 
     .fashion-grid-text {
@@ -135,12 +135,12 @@
 
     .grid-item-4 {
       background-color: $color-gray-30;
-
-      .fashion-grid-content {
-        flex-direction: row-reverse;
-      }
     }
   }
+}
+
+section.fashion-grid-item.image-background.grid-item-4 {
+  flex-direction: row-reverse;
 }
 
 @include max-size($medium) {

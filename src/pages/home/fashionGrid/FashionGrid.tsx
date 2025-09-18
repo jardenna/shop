@@ -16,6 +16,7 @@ const FashionGrid = () => {
           linkText={language.discoverCollection}
           subHading="NewArrivals"
           text={language.shopNewText}
+          alt={language.fashionGridSaleAlt}
         />
         <FashionGridItem
           className="grid-item-2"
@@ -24,6 +25,7 @@ const FashionGrid = () => {
           linkText={language.shopMenLink}
           text={language.shopMenText}
           backgroundImageName="men"
+          alt={language.fashionGridMenAlt}
         />
         <div className="grid-bottom">
           <FashionGridItem
@@ -33,6 +35,7 @@ const FashionGrid = () => {
             linkText={language.shopWomanLink}
             text={language.shopWomanText}
             backgroundImageName="women"
+            alt={language.fashionGridWomenAlt}
           />
           <FashionGridItem
             className="grid-item-4"
@@ -41,6 +44,7 @@ const FashionGrid = () => {
             linkText={language.shopKidsLink}
             text={language.shopKidsText}
             backgroundImageName="kids"
+            alt={language.fashionGridKidsAlt}
           />
         </div>
       </article>

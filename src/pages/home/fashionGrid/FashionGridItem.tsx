@@ -1,6 +1,7 @@
 import MoreLink from '../../../components/MoreLink';
 
 type FashionGridItemProps = {
+  alt: string;
   className: string;
   heading: string;
   linkText: string;
@@ -18,6 +19,7 @@ const FashionGridItem = ({
   subHading,
   backgroundImageName = 'sale',
   text,
+  alt,
 }: FashionGridItemProps) => (
   <section className={`fashion-grid-item image-background ${className}`}>
     <picture>
@@ -28,7 +30,7 @@ const FashionGridItem = ({
       <img
         className="img-fallback"
         src={`/images/home/${backgroundImageName}.png`}
-        alt="alt"
+        alt={alt}
         loading="lazy"
       />
     </picture>
