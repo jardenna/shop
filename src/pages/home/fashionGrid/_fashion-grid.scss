@@ -52,7 +52,6 @@
 
     h2 {
       font-size: clamp($font-large, $clamp-val, $font-xlarge);
-      line-height: $font-large;
     }
 
     .fashion-grid-content {
@@ -132,6 +131,10 @@
 
       .fashion-grid-text {
         padding: 20px;
+
+        h3 {
+          margin-top: 8px;
+        }
       }
 
       @include max-size($medium) {
