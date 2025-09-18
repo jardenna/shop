@@ -27,7 +27,7 @@ const FashionGrid = () => {
           <p>{language.shopMenText}</p>
         </FashionGridItem>
 
-        <div className="grid-flex">
+        <div className="grid-bottom">
           <FashionGridItem
             className="grid-item-3"
             heading={language.shopWomanHeading}
