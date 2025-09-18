@@ -1,3 +1,4 @@
+import ImageBackground from '../../../components/imageBackground/ImageBackground';
 import MoreLink from '../../../components/MoreLink';
 
 type FashionGridItemProps = {
@@ -21,19 +22,12 @@ const FashionGridItem = ({
   text,
   alt,
 }: FashionGridItemProps) => (
-  <section className={`fashion-grid-item image-background ${className}`}>
-    <picture>
-      <source
-        srcSet={`/images/home/${backgroundImageName}.avif`}
-        type="image/avif"
-      />
-      <img
-        className="img-fallback"
-        src={`/images/home/${backgroundImageName}.png`}
-        alt={alt}
-        loading="lazy"
-      />
-    </picture>
+  <ImageBackground
+    className={`fashion-grid-item  ${className}`}
+    srcSet={`/images/home/${backgroundImageName}.avif`}
+    src={`/images/home/${backgroundImageName}.png`}
+    alt={alt}
+  >
     <div className="fashion-grid-content">
       <div className="fashion-grid-text">
         <h2>{heading}</h2>
@@ -42,7 +36,7 @@ const FashionGridItem = ({
         <MoreLink linkText={linkText} linkTo={linkTo} />
       </div>
     </div>
-  </section>
+  </ImageBackground>
 );
 
 export default FashionGridItem;

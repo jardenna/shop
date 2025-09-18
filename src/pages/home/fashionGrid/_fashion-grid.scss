@@ -135,12 +135,12 @@
 
     .grid-item-4 {
       background-color: $color-gray-30;
+
+      @include max-size($medium) {
+        flex-direction: row-reverse;
+      }
     }
   }
-}
-
-section.fashion-grid-item.image-background.grid-item-4 {
-  flex-direction: row-reverse;
 }
 
 @include max-size($medium) {
