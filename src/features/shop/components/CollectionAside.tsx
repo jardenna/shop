@@ -1,5 +1,6 @@
 import type { ProductMenuResponse } from '../../../app/api/apiTypes/shopApiTypes';
 import Skeleton from '../../../components/skeleton/Skeleton';
+import LayoutElement from '../../../layout/LayoutElement';
 import './CollectionAside.styles.scss';
 import CollectionNav from './CollectionNav';
 import CollectionPageHeader from './CollectionPageHeader';
@@ -29,14 +30,15 @@ const CollectionAside = ({
       </div>
     )}
     {subMenu && (
-      <CollectionNav
-        subMenu={subMenu}
-        category={category}
-        ariaLabel={language.page}
-        onReset={() => {
-          onReset();
-        }}
-      />
+      <LayoutElement as="nav" ariaLabel={language.page}>
+        <CollectionNav
+          subMenu={subMenu}
+          category={category}
+          onReset={() => {
+            onReset();
+          }}
+        />
+      </LayoutElement>
     )}
   </aside>
 );

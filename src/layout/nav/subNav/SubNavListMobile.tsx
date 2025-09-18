@@ -45,7 +45,6 @@ const SubNavListMobile = ({
         <CollectionNav
           subMenu={subMenu}
           category={category}
-          ariaLabel="language.page"
           onReset={onReset}
         />
       </li>
