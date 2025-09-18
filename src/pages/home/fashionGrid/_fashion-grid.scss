@@ -11,6 +11,12 @@
     width: 100%;
     position: relative;
 
+    &.image-background {
+      picture {
+        place-self: end end;
+      }
+    }
+
     h2 {
       font-size: $font-large;
       line-height: $font-large;
@@ -32,6 +38,18 @@
     grid-row: span 2;
     background-color: $color-light-gray;
 
+    @include max-size($medium) {
+      &.image-background {
+        display: flex;
+      }
+    }
+
+    &.image-background {
+      picture {
+        place-self: end start;
+      }
+    }
+
     h2 {
       font-size: $font-xlarge;
       line-height: $font-xlarge;
@@ -48,7 +66,7 @@
       padding: 0 20px;
     }
 
-    @include max-size($large) {
+    @include between-size($small, 1550px) {
       .fashion-grid-text {
         background-color: rgb($color-white, 0.5);
         padding: 21px 28px;
@@ -63,10 +81,6 @@
     grid-column: 2;
     grid-row: 1;
     background-color: $color-gray-20;
-
-    &.image-background > picture {
-      place-self: end end;
-    }
 
     &.image-background .img-fallback {
       max-width: 780px;
@@ -86,27 +100,44 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 32px;
 
+    .fashion-grid-item {
+      picture {
+        margin-top: 20px;
+
+        @include min-size($medium) {
+          margin-top: 70px;
+        }
+      }
+
+      .img-fallback {
+        max-width: rem(230px);
+      }
+
+      .fashion-grid-text {
+        padding: 20px;
+      }
+
+      @include max-size($medium) {
+        .fashion-grid-content {
+          display: flex;
+          align-items: center;
+        }
+
+        &.image-background {
+          display: flex;
+        }
+      }
+    }
+
     .grid-item-3 {
       background-color: $color-dust-red-10;
-
-      &.image-background > picture {
-        place-self: end end;
-      }
-
-      &.image-background .img-fallback {
-        max-width: 230px;
-      }
     }
 
     .grid-item-4 {
       background-color: $color-gray-30;
 
-      &.image-background > picture {
-        place-self: end end;
-      }
-
-      &.image-background .img-fallback {
-        max-width: 230px;
+      .fashion-grid-content {
+        flex-direction: row-reverse;
       }
     }
   }
