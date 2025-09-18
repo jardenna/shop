@@ -1,8 +1,3 @@
-type PictureTypes = {
-  fallbackImg: string;
-  img: string;
-};
-
 const Picture = () => (
   <picture>
     <source

@@ -2,11 +2,6 @@
 
 .hero {
   background-color: $color-light-gray;
-  background-image: url('/images/fashion_fusion_banner.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: rem(372px);
-  padding: 40px;
   padding-left: 130px;
 
   @include max-size($large) {

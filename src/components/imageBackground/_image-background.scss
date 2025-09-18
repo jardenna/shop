@@ -1,0 +1,17 @@
+.image-background {
+  display: grid;
+  width: 100%;
+
+  img {
+    object-fit: cover;
+    object-position: top;
+    max-height: 412px;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.image-background > * {
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+}
