@@ -23,10 +23,10 @@
     right: 5px;
     top: 5px;
     border-radius: 8px;
-    background-color: rgb(250 250 250 / 60%);
+    background-color: rgb($color-white, 0.6);
 
     &:hover {
-      background-color: rgba($color-gray-70, 70%);
+      background-color: rgb($color-gray-70, 70%);
     }
   }
 
@@ -137,7 +137,7 @@
     min-height: auto;
 
     &:hover {
-      background-color: rgba($color-gray-70, 70%);
+      background-color: rgb($color-gray-70, 0.7);
     }
   }
 }
