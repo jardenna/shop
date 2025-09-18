@@ -5,7 +5,7 @@ const ContactPage = () => {
   const { language } = useLanguage();
 
   return (
-    <MainPageContainer heading={language.contact}>Contact</MainPageContainer>
+    <MainPageContainer heading={language.contact}>contact</MainPageContainer>
   );
 };
 

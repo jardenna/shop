@@ -11,39 +11,41 @@ const FashionGrid = () => {
       <article className="fashion-grid">
         <FashionGridItem
           className="grid-item-1"
-          heading={language.shopNewHeading}
+          heading={language.fashionGridNewHeading}
           linkTo="/"
           linkText={language.discoverCollection}
           subHading="NewArrivals"
-        >
-          <p>{language.shopNewText}</p>
-        </FashionGridItem>
+          text={language.fashionGridNewText}
+          alt={language.fashionGridSaleAlt}
+        />
         <FashionGridItem
           className="grid-item-2"
-          heading={language.shopMenHeading}
+          heading={language.fashionGridMenHeading}
           linkTo={ShopPath.Men}
-          linkText={language.shopMenLink}
-        >
-          <p>{language.shopMenText}</p>
-        </FashionGridItem>
-
-        <div className="grid-flex">
+          linkText={language.fashionGridMenLink}
+          text={language.fashionGridMenText}
+          backgroundImageName="men"
+          alt={language.fashionGridMenAlt}
+        />
+        <div className="grid-bottom">
           <FashionGridItem
             className="grid-item-3"
-            heading={language.shopWomanHeading}
+            heading={language.fashionGridWomanHeading}
             linkTo={ShopPath.Women}
-            linkText={language.shopWomanLink}
-          >
-            <p>{language.shopWomanText}</p>
-          </FashionGridItem>
+            linkText={language.fashionGridWomanLink}
+            text={language.fashionGridWomanText}
+            backgroundImageName="women"
+            alt={language.fashionGridWomenAlt}
+          />
           <FashionGridItem
             className="grid-item-4"
-            heading={language.shopKidsHeading}
+            heading={language.fashionGridKidsHeading}
             linkTo={ShopPath.Kids}
-            linkText={language.shopKidsLink}
-          >
-            <p>{language.shopKidsText}</p>
-          </FashionGridItem>
+            linkText={language.fashionGridKidsLink}
+            text={language.fashionGridKidsText}
+            backgroundImageName="kids"
+            alt={language.fashionGridKidsAlt}
+          />
         </div>
       </article>
     </section>

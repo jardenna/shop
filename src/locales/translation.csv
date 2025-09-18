@@ -97,6 +97,26 @@ expanded;Expanded;Udvidet
 expandMenu;Expand menu;Udvid menu
 eye;Eye;Øje
 eyeClosed;Closed eye;Lukket øje
+fashionGridKidsAlt;"Two girls sitting side by side, one in a red polka dot dress and the other in a yellow polka dot dress";"To søde piger sidder ned, den ene i rød prikket kjole, den anden i gul prikket kjole"
+fashionGridKidsHeading;Playful by Nature;Leg er liv
+fashionGridKidsLink;Shop kids;Shop børn
+fashionGridKidsMenuText;Turn every playday into a magical adventure with our colorful and imaginative outfits;Gør hver legedag til et eventyr med vores farverige og fantasifulde outfits
+fashionGridKidsText;Fun, functional, and built for adventure-styles kids love and parents trust;Sjove og funktionelle styles til børn på farten og forældre med krav til kvalitet
+fashionGridMenAlt;"Man wearing sunglasses, reclining and looking up with a cheerful smile";"Mand med solbriller ligger afslappet og kigger glad op"
+fashionGridMenHeading;Luxury for men;Luksus til mænd
+fashionGridMenLink;Shop men;Shop herre
+fashionGridMenMenuText;Effortless style starts with our curated essentials for the modern gentleman;Træd ind i stil med vores tidløse essentials for manden, der værdsætter kvalitet
+fashionGridMenText;Premium materials and considered design. For the man who knows that calm is a kind of strength;Eksklusive materialer og gennemtænkt design. Til manden der forstår, at ro også er styrke
+fashionGridNewHeading;Celebrating Life;Celebrating Life
+fashionGridNewText;Discover style made to move with your passions and celebrate what makes you unique;Opdag stil skabt til at følge dine passioner og hyld det, der gør dig unik
+fashionGridNewText;Discover style made to move with your passions and celebrate what makes you unique;Opdag stil skabt til at følge dine passioner og hyld det, der gør dig unik
+fashionGridSaleAlt;"Young woman wearing a short, white 1960s-inspired dress";"Ung kvinde i kort hvid 60’er-inspireret kjole"
+fashionGridWomanHeading;Empower Your Everyday;Styrke i din stil
+fashionGridWomanLink;Shop Women;Shop dame
+fashionGridWomanText;Find pieces that inspire self-expression, effortless, bold, and made to move with you;Udtryk dig selv med styles, der er ubesværede, modige og med dig i bevægelse
+fashionGridWomenAlt;"Woman in a colorful outfit, wearing a beret that matches her sweater";"Kvinde i farverigt outfit og en alpehue der matcher til hendes sweater"
+fashionGridWomenHeading;Empower Your Everyday;Styrke i din stil
+fashionGridWomenMenuText;Express yourself in every step—effortless, fearless, and made to move. Grab your favorites today;Udtryk dig i hvert skridt, ubesværet, frygtløs og skabt til bevægelse. Find dine favoritter i dag
 favorites;Favorites;Favoritter
 fileExceedsSize;Selected file(s) exceeds the 1MB limit; Valgte fil(er) overstiger grænsen på 1 MB. Upload venligst en mindre fil
 filesCanBeUploaded;files can be uploaded;filer kan uploades
@@ -117,6 +137,7 @@ grid;Grid;Grid
 gridLarge; Large grid;Bredt grid
 gridSmall; Small grid;Smalt grid
 heart;Heart;Hjerte
+heroAlt;"Two women dressed in matching blazers, posing fashionably";"To kvinder iført smarte matchende blazere"
 heroText;Upgrade your wardrobe with exclusive deals!;Opgradér din garderobe med eksklusive tilbud!
 heroText1;For a limited time, enjoy incredible discounts on the latest fashion trends;I en begrænset periode kan du få fantastiske rabatter på de nyeste modetrends
 heroTitle;Exclusive Fashion Sale;Eksklusivt Modesalg
@@ -282,22 +303,7 @@ shareReview;Share review;Del anmeldelse
 shareYourExperience;Share your experience;Del din oplevelse
 shoes;Shoes;Sko
 shopCart;Shopping cart;Indkøbskurv
-shopKidsHeading;Playful by Nature;Leg er liv
-shopKidsLink;Shop kids;Shop børn
-shopKidsMenuText;Turn every playday into a magical adventure with our colorful and imaginative outfits;Gør hver legedag til et eventyr med vores farverige og fantasifulde outfits
-shopKidsText;Fun, functional, and built for adventure-styles kids love and parents trust;Sjove og funktionelle styles til børn på farten og forældre med krav til kvalitet
-shopMenHeading;Luxury for men;Luksus til mænd
-shopMenLink;Shop men;Shop herre
-shopMenMenuText;Effortless style starts with our curated essentials for the modern gentleman;Træd ind i stil med vores tidløse essentials for manden, der værdsætter kvalitet
-shopMenText;Premium materials and considered design. For the man who knows that calm is a kind of strength;Eksklusive materialer og gennemtænkt design. Til manden der forstår, at ro også er styrke
-shopNewHeading;Celebrating Life;Celebrating Life
-shopNewText;Discover style made to move with your passions and celebrate what makes you unique;Opdag stil skabt til at følge dine passioner og hyld det, der gør dig unik
 shopNow;Shop now;Shop nu
-shopWomanHeading;Empower Your Everyday;Styrke i din stil
-shopWomanLink;Shop Women;Shop dame
-shopWomanText;Find pieces that inspire self-expression, effortless, bold, and made to move with you;Udtryk dig selv med styles, der er ubesværede, modige og med dig i bevægelse
-shopWomenMenuText;Express yourself in every step—effortless, fearless, and made to move. Grab your favorites today;Udtryk dig i hvert skridt, ubesværet, frygtløs og skabt til bevægelse. Find dine favoritter i dag
-shopWomenHeading;Empower Your Everyday;Styrke i din stil
 show;Show;Vis
 showAll;Show all;Vis alle
 showAllTags;Show all tags;Vis alle tags
