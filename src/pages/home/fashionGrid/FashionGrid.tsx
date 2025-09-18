@@ -20,7 +20,7 @@ const FashionGrid = () => {
         />
         <FashionGridItem
           className="grid-item-2"
-          heading={language.fashionGridMenHeading}
+          heading={language.shopMenHeading}
           linkTo={ShopPath.Men}
           linkText={language.fashionGridMenLink}
           text={language.fashionGridMenText}
@@ -30,7 +30,7 @@ const FashionGrid = () => {
         <div className="grid-bottom">
           <FashionGridItem
             className="grid-item-3"
-            heading={language.fashionGridWomanHeading}
+            heading={language.shopWomenHeading}
             linkTo={ShopPath.Women}
             linkText={language.fashionGridWomanLink}
             text={language.fashionGridWomanText}
@@ -39,7 +39,7 @@ const FashionGrid = () => {
           />
           <FashionGridItem
             className="grid-item-4"
-            heading={language.fashionGridKidsHeading}
+            heading={language.shopKidsHeading}
             linkTo={ShopPath.Kids}
             linkText={language.fashionGridKidsLink}
             text={language.fashionGridKidsText}
