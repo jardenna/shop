@@ -2,12 +2,6 @@
 
 .hero {
   background-color: $color-light-gray;
-  padding-left: 130px;
-
-  @include max-size($large) {
-    padding-left: 40px;
-    padding-block: 24px;
-  }
 
   .hero-content {
     display: inline-grid;
@@ -16,9 +10,20 @@
     width: 100%;
     max-width: rem(640px);
     height: 100%;
+    padding-inline: 72px 40px;
 
-    @include max-size($large) {
-      max-width: rem(400px);
+    @include max-size($medium) {
+      max-width: rem(500px);
+      padding-inline: 32px;
+    }
+
+    @include max-size($small) {
+      max-width: 100%;
+      padding: 40px 72px;
+    }
+
+    @include max-size($mini) {
+      padding: 16px 28px;
     }
   }
 
@@ -54,7 +59,6 @@
     font-size: inherit;
     font-weight: bold;
     text-transform: uppercase;
-    color: currentcolor;
     min-width: rem(80px);
   }
 }

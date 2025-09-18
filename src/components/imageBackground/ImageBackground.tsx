@@ -7,6 +7,7 @@ type PictureTypes = {
   src: string;
   srcSet: `${string}.avif`;
   className?: string;
+  hidePicture?: boolean;
 };
 
 const ImageBackground = ({
@@ -14,13 +15,16 @@ const ImageBackground = ({
   alt,
   srcSet,
   src,
+  hidePicture,
   className = '',
 }: PictureTypes) => (
   <div className={`image-background ${className}`}>
-    <picture>
-      <source srcSet={srcSet} type="image/avif" />
-      <img className="img-fallback" src={src} alt={alt} loading="lazy" />
-    </picture>
+    {!hidePicture && (
+      <picture>
+        <source srcSet={srcSet} type="image/avif" />
+        <img className="img-fallback" src={src} alt={alt} loading="lazy" />
+      </picture>
+    )}
     {children}
   </div>
 );

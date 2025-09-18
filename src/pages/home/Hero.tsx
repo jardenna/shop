@@ -1,12 +1,21 @@
 import Button from '../../components/Button';
+import ImageBackground from '../../components/imageBackground/ImageBackground';
 import useLanguage from '../../features/language/useLanguage';
+import useMediaQuery from '../../hooks/useMediaQuery ';
 import { BtnVariant } from '../../types/enums';
 import './_hero.scss';
 
 const Hero = () => {
   const { language } = useLanguage();
+  const { isMobileSize } = useMediaQuery();
   return (
-    <div className="hero">
+    <ImageBackground
+      alt="kids"
+      src="/images/fashion_fusion_banner.png"
+      srcSet="/images/fashion_fusion_banner.avif"
+      className="hero"
+      hidePicture={isMobileSize}
+    >
       <section className="hero-content">
         <h1 className="hero-title">{language.heroTitle}</h1>
         <div className="hero-text">
@@ -20,7 +29,7 @@ const Hero = () => {
           </Button>
         </div>
       </section>
-    </div>
+    </ImageBackground>
   );
 };
 
