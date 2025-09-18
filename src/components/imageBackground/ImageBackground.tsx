@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ElementType, ReactNode } from 'react';
 import './_image-background.scss';
 
 type PictureTypes = {
@@ -6,6 +6,7 @@ type PictureTypes = {
   children: ReactNode;
   src: string;
   srcSet: `${string}.avif`;
+  as?: ElementType;
   className?: string;
   hidePicture?: boolean;
 };
@@ -15,10 +16,11 @@ const ImageBackground = ({
   alt,
   srcSet,
   src,
+  as: Tag = 'div',
   hidePicture,
   className = '',
 }: PictureTypes) => (
-  <div className={`image-background ${className}`}>
+  <Tag className={`image-background ${className}`}>
     {!hidePicture && (
       <picture>
         <source srcSet={srcSet} type="image/avif" />
@@ -26,7 +28,7 @@ const ImageBackground = ({
       </picture>
     )}
     {children}
-  </div>
+  </Tag>
 );
 
 export default ImageBackground;
