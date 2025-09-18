@@ -1,18 +1,17 @@
-import { ReactNode } from 'react';
 import MoreLink from '../../../components/MoreLink';
 
 type FashionGridItemProps = {
-  children: ReactNode;
   className: string;
   heading: string;
   linkText: string;
   linkTo: string;
+  text: string;
   subHading?: string;
 };
 
 const FashionGridItem = ({
   className,
-  children,
+  text,
   heading,
   linkTo,
   linkText,
@@ -22,7 +21,7 @@ const FashionGridItem = ({
     <div className="fashion-grid-text">
       <h2>{heading}</h2>
       {subHading && <h3>{subHading}</h3>}
-      {children}
+      <p>{text}</p>
       <MoreLink linkText={linkText} linkTo={linkTo} />
     </div>
   </section>

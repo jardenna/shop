@@ -15,35 +15,30 @@ const FashionGrid = () => {
           linkTo="/"
           linkText={language.discoverCollection}
           subHading="NewArrivals"
-        >
-          <p>{language.shopNewText}</p>
-        </FashionGridItem>
+          text={language.shopNewText}
+        />
         <FashionGridItem
           className="grid-item-2"
           heading={language.shopMenHeading}
           linkTo={ShopPath.Men}
           linkText={language.shopMenLink}
-        >
-          <p>{language.shopMenText}</p>
-        </FashionGridItem>
-
+          text={language.shopMenText}
+        />
         <div className="grid-bottom">
           <FashionGridItem
             className="grid-item-3"
             heading={language.shopWomanHeading}
             linkTo={ShopPath.Women}
             linkText={language.shopWomanLink}
-          >
-            <p>{language.shopWomanText}</p>
-          </FashionGridItem>
+            text={language.shopWomanText}
+          />
           <FashionGridItem
             className="grid-item-4"
             heading={language.shopKidsHeading}
             linkTo={ShopPath.Kids}
             linkText={language.shopKidsLink}
-          >
-            <p>{language.shopKidsText}</p>
-          </FashionGridItem>
+            text={language.shopKidsText}
+          />
         </div>
       </article>
     </section>
