@@ -3,6 +3,10 @@
 .hero {
   background-color: $color-light-gray;
 
+  .img-fallback {
+    max-height: 412px;
+  }
+
   .hero-content {
     display: inline-grid;
     place-content: center;
