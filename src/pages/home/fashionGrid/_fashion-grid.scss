@@ -51,17 +51,8 @@
     }
 
     h2 {
-      font-size: $font-xlarge;
-      line-height: $font-xlarge;
-
-      @include max-size($large) {
-        font-size: rem(40px);
-      }
-
-      @include max-size($small) {
-        font-size: rem(20px);
-        line-height: auto;
-      }
+      font-size: clamp($font-large, $clamp-val, $font-xlarge);
+      line-height: $font-large;
     }
 
     .fashion-grid-content {
