@@ -1,4 +1,4 @@
-type ImgProps = {
+export type ImgProps = {
   alt: string;
   src: string;
   className?: string;

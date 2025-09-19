@@ -1,10 +1,8 @@
+import type { ImgProps } from './Img';
 import Img from './Img';
 
-type PictureProps = {
-  alt: string;
-  src: string;
+type PictureProps = ImgProps & {
   srcSet: `${string}.avif`;
-  className?: string;
 };
 
 const Picture = ({ alt, srcSet, src, className }: PictureProps) => (
