@@ -1,10 +1,11 @@
 import ImageBackground from '../../components/imageBackground/ImageBackground';
+import type { ImgExtention } from '../../types/types';
 
 type NavAdProps = {
   alt: string;
   heading: string;
   imageName: string;
-  imgExtention?: 'png' | 'jpg' | 'WebP';
+  imgExtention?: ImgExtention;
   text?: string;
 };
 
