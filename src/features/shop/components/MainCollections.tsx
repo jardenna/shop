@@ -29,6 +29,7 @@ const MainCollections = ({
       linkText: language.discoverCollection,
     }),
   );
+  console.log(collectionImages);
 
   return (
     <div className="main-collection-container">

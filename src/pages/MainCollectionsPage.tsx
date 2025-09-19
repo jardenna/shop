@@ -7,12 +7,12 @@ const CollectionLandingPage = () => {
   const { language } = useLanguage();
   const collectionImages: Record<string, string[]> = {
     Women: [
-      '/images/collections/women/women.jpg',
+      '/images/adImages/women.jpg',
       '/images/collections/women/women_2.jpg',
       '/images/collections/women/women_3.jpg',
     ],
-    Men: ['/images/collections/men/men.jpg'],
-    Kids: ['/images/collections/kids/kids.jpg'],
+    Men: ['/images/adImages/men.jpg'],
+    Kids: ['/images/adImages/kids.jpg'],
   };
 
   const categoryOrder = ['Kids', 'Men', 'Women', 'Sofa'];
