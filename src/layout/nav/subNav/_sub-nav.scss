@@ -46,6 +46,19 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     width: 100%;
+
+    .image-background {
+      background-color: $color-gray-20;
+
+      picture {
+        place-self: end end;
+      }
+
+      .img-fallback {
+        max-height: rem(248px);
+        border-radius: 0;
+      }
+    }
   }
 
   .sub-nav-content {
@@ -54,12 +67,10 @@
   }
 
   .sub-nav-item {
-    display: flex;
-    flex-direction: column;
+    padding-left: 20px;
 
     .btn {
       text-transform: none;
-      width: auto;
 
       &::after {
         inset: -8px;
@@ -71,29 +82,32 @@
       margin-top: 8px;
     }
 
-    &.sub-nav-ad {
-      flex-direction: row;
-      align-items: center;
-      gap: 28px;
-      position: relative;
-      background-color: $color-gray-20;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: top right;
-    }
-
     &.background-gray {
       background-color: $color-light-gray-30;
     }
   }
 
-  .ad-heading {
-    position: absolute;
-    top: 24px;
-    left: 24px;
-    max-width: 44%;
-    font-size: 24px;
-    text-wrap: pretty;
+  .nav-ad-content {
+    max-width: rem(240px);
+    min-height: rem(230px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    padding: 20px;
+
+    h3 {
+      font-size: $font-large;
+      font-family: $font-primary;
+
+      @include max-size($small) {
+        font-size: $font-medium;
+      }
+    }
+
+    p {
+      margin: 0;
+    }
   }
 
   .ad-text {
@@ -137,13 +151,7 @@
       margin-top: 8px;
     }
 
-    .sub-nav-item {
-      padding-inline: 20px;
-    }
-
     .sub-nav-ad {
-      height: rem(230px);
-      width: 100%;
       grid-column: span 3;
     }
   }

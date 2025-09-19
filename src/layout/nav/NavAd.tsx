@@ -1,3 +1,5 @@
+import ImageBackground from '../../components/imageBackground/ImageBackground';
+
 type NavAdProps = {
   heading: string;
   imageName: string;
@@ -5,13 +7,18 @@ type NavAdProps = {
 };
 
 const NavAd = ({ heading, text, imageName }: NavAdProps) => (
-  <li
-    className="sub-nav-item sub-nav-ad"
-    style={{ backgroundImage: `url(/images/adImages/${imageName}.avif` }}
+  <ImageBackground
+    className="sub-nav-ad"
+    as="li"
+    srcSet={`/images/adImages/${imageName}.avif`}
+    src={`/images/adImages/${imageName}.png`}
+    alt="alt"
   >
-    <p className="ad-heading">{heading}</p>
-    {text && <p className="ad-text">{text}.</p>}
-  </li>
+    <div className="nav-ad-content">
+      <h3>{heading}</h3>
+      {text && <p>{text}.</p>}
+    </div>
+  </ImageBackground>
 );
 
 export default NavAd;
