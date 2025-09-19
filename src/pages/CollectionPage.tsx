@@ -4,7 +4,7 @@ import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import DisplayControls from '../components/DisplayControls';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
-import Img from '../components/Img';
+import Picture from '../components/Picture';
 import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import useLanguage from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
@@ -88,6 +88,8 @@ const CollectionPage = () => {
   ];
 
   const filtersCount = getFilterSummary(filterValues);
+  const altText = `${category}BannerAltText`;
+  console.log(altText);
 
   return (
     <>
@@ -123,9 +125,10 @@ const CollectionPage = () => {
           >
             <div className="collection-page-content">
               {!isMobileSize && (
-                <Img
-                  src={`/images/collections/${category}/banner.jpg`}
-                  alt=""
+                <Picture
+                  src={`/images/banners/${category}_banner.jpg`}
+                  srcSet={`/images/banners/${category}_banner.avif`}
+                  alt={language[altText]}
                 />
               )}
               <section className="product-toolbar">
