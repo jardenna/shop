@@ -11,8 +11,8 @@ const Hero = () => {
   return (
     <ImageBackground
       alt={language.heroAlt}
-      src="/images/fashion_fusion_banner.png"
-      srcSet="/images/fashion_fusion_banner.avif"
+      src="/images/banners/home_banner.png"
+      srcSet="/images/banners/home_banner.avif"
       className="hero"
       hidePicture={isMobileSize}
     >
