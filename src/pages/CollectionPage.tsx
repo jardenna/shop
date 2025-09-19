@@ -89,7 +89,6 @@ const CollectionPage = () => {
 
   const filtersCount = getFilterSummary(filterValues);
   const altText = `${category}BannerAltText`;
-  console.log(altText);
 
   return (
     <>
