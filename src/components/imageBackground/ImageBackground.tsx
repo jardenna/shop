@@ -1,7 +1,8 @@
 import { ElementType, ReactNode } from 'react';
+import Picture from '../Picture';
 import './_image-background.scss';
 
-type PictureTypes = {
+type ImageBackgroundProps = {
   alt: string;
   children: ReactNode;
   src: string;
@@ -19,14 +20,9 @@ const ImageBackground = ({
   as: Tag = 'div',
   hidePicture,
   className = '',
-}: PictureTypes) => (
+}: ImageBackgroundProps) => (
   <Tag className={`image-background ${className}`}>
-    {!hidePicture && (
-      <picture>
-        <source srcSet={srcSet} type="image/avif" />
-        <img className="img-fallback" src={src} alt={alt} loading="lazy" />
-      </picture>
-    )}
+    {!hidePicture && <Picture srcSet={srcSet} alt={alt} src={src} />}
     {children}
   </Tag>
 );
