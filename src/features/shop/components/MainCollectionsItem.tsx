@@ -40,7 +40,7 @@ const MainCollectionsItem = ({
             <Picture
               key={imgSrc}
               srcSet={`${imgPath}/${imgSrc}.avif`}
-              alt={language[`${imgSrc}AdAltText`]}
+              alt={language[`${imgSrc}AltText`]}
               src={`${imgPath}/${imgSrc}.${imgExtention}`}
             />
           ))}
