@@ -1,36 +1,53 @@
 import { NavLink } from 'react-router';
-import Img from '../../../components/Img';
+import Picture from '../../../components/Picture';
 import { ShopPath } from '../../../layout/nav/enums';
+import { ImgExtention } from '../../../types/types';
+import useLanguage from '../../language/useLanguage';
 
-export type MainCollectionsItemProps = {
+export type MainCollectionsBaseProps = {
   linkText: string;
   linkTo: ShopPath;
   title: string;
-  src?: string[];
+  imgExtention?: ImgExtention;
+  imgList?: string[];
+};
+
+type MainCollectionsItemProps = MainCollectionsBaseProps & {
+  imgPath: string;
 };
 
 const MainCollectionsItem = ({
   title,
-  src,
+  imgList,
   linkTo,
   linkText,
-}: MainCollectionsItemProps) => (
-  <section className="collections-item">
-    <div className="collections-content">
-      <h2 className="collections-title">{title}</h2>
-      <NavLink className="btn btn-primary" to={linkTo}>
-        {linkText}
-      </NavLink>
-    </div>
+  imgPath,
+  imgExtention = 'jpg',
+}: MainCollectionsItemProps) => {
+  const { language } = useLanguage();
 
-    {src && (
-      <div className="collections-img-container">
-        {src.map((s) => (
-          <Img key={s} src={s} alt="" />
-        ))}
+  return (
+    <section className="collections-item">
+      <div className="collections-content">
+        <h2 className="collections-title">{title}</h2>
+        <NavLink className="btn btn-primary" to={linkTo}>
+          {linkText}
+        </NavLink>
       </div>
-    )}
-  </section>
-);
+      {imgList && (
+        <div className="collections-img-container">
+          {imgList.map((imgSrc) => (
+            <Picture
+              key={imgSrc}
+              srcSet={`${imgPath}/${imgSrc}.avif`}
+              alt={language[`${imgSrc}AdAltText`]}
+              src={`${imgPath}/${imgSrc}.${imgExtention}`}
+            />
+          ))}
+        </div>
+      )}
+    </section>
+  );
+};
 
 export default MainCollectionsItem;

@@ -2,8 +2,9 @@ import { ShopPath } from '../../../layout/nav/enums';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import { useGetPublishedCategoriesQuery } from '../../categories/categoriyApiSlice';
 import useLanguage from '../../language/useLanguage';
-import type { MainCollectionsItemProps } from './MainCollectionsItem';
-import MainCollectionsItem from './MainCollectionsItem';
+import MainCollectionsItem, {
+  MainCollectionsBaseProps,
+} from './MainCollectionsItem';
 
 type MainCollectionsProps = {
   categoryOrder: string[];
@@ -21,23 +22,23 @@ const MainCollections = ({
     publishedCategories?.length ? [...publishedCategories] : ['Women']
   ).sort((a, b) => categoryOrder.indexOf(a) - categoryOrder.indexOf(b));
 
-  const mainCollectionsList: MainCollectionsItemProps[] = sortedCategories.map(
+  const mainCollectionsList: MainCollectionsBaseProps[] = sortedCategories.map(
     (item) => ({
       title: getlowerCaseFirstLetter(item, language),
-      src: collectionImages[item],
+      imgList: collectionImages[item],
       linkTo: ShopPath[item as keyof typeof ShopPath],
       linkText: language.discoverCollection,
     }),
   );
-  console.log(collectionImages);
 
   return (
     <div className="main-collection-container">
-      {mainCollectionsList.map(({ title, src, linkTo, linkText }) => (
+      {mainCollectionsList.map(({ title, imgList, linkTo, linkText }) => (
         <MainCollectionsItem
           key={title}
+          imgPath="/images/adImages"
           title={title}
-          src={src}
+          imgList={imgList}
           linkTo={linkTo}
           linkText={linkText}
         />

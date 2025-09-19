@@ -6,13 +6,9 @@ import MainPageContainer from './pageContainer/MainPageContainer';
 const CollectionLandingPage = () => {
   const { language } = useLanguage();
   const collectionImages: Record<string, string[]> = {
-    Women: [
-      '/images/adImages/women.jpg',
-      '/images/adImages/women_2.jpg',
-      '/images/adImages/women_3.jpg',
-    ],
-    Men: ['/images/adImages/men.jpg'],
-    Kids: ['/images/adImages/kids.jpg'],
+    Women: ['women', 'women_2', 'women_3'],
+    Men: ['men'],
+    Kids: ['kids'],
   };
 
   const categoryOrder = ['Kids', 'Men', 'Women'];
