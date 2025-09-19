@@ -26,7 +26,7 @@ const SubNavListMobile = ({
 }: SubNavListMobileProps) => {
   const { headingKey, textKey } = subNavConfig[category];
 
-  const altText = `${category}AdAltText`;
+  const altText = `${category}AltText`;
 
   return (
     <ul className="sub-nav">

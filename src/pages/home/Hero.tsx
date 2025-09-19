@@ -10,7 +10,7 @@ const Hero = () => {
   const { isMobileSize } = useMediaQuery();
   return (
     <ImageBackground
-      alt={language.heroAlt}
+      alt={language.heroAltText}
       src="/images/banners/home_banner.png"
       srcSet="/images/banners/home_banner.avif"
       className="hero"

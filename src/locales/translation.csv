@@ -82,6 +82,7 @@ delivery;Delivery;Levering
 deliveryText;We offer secure delivery with careful packaging. All orders are processed within 1–2 business days, and you'll receive a tracking link as soon as your order is shipped.;Vi tilbyder sikker levering med omhyggelig emballering. Alle ordrer behandles inden for 1-2 hverdage, og du modtager et trackinglink, så snart din ordre er afsendt.
 descending;descending;faldende
 description;Description;Beskrivelse
+desktopAltText;A young woman smiles in surprise, elegantly delighted by a young man.;En ung kvinde smiler af overraskelse, elegant overrasket af en ung mand.
 details;Details;Detaljer
 discount;Discount;Rabat
 discoverCollection;Discover Collection;Se kollektionen
@@ -97,19 +98,18 @@ expanded;Expanded;Udvidet
 expandMenu;Expand menu;Udvid menu
 eye;Eye;Øje
 eyeClosed;Closed eye;Lukket øje
-fashionGridKidsAlt;"Two girls sitting side by side, one in a red polka dot dress and the other in a yellow polka dot dress";"To søde piger sidder ned, den ene i rød prikket kjole, den anden i gul prikket kjole"
+fashionGridKidsAltText;"Two girls sitting side by side, one in a red polka dot dress and the other in a yellow polka dot dress.";"To søde piger sidder ned, den ene i rød prikket kjole, den anden i gul prikket kjole."
 fashionGridKidsLink;Shop kids;Shop børn
-fashionGridKidsText;Fun, functional, and built for adventure-styles kids love and parents trust;Sjove og funktionelle styles til børn på farten og forældre med krav til kvalitet
-fashionGridMenAlt;"Man wearing sunglasses, reclining and looking up with a cheerful smile";"Mand med solbriller ligger afslappet og kigger glad op"
+fashionGridKidsText;Fun, functional, and built for adventure-styles kids love and parents trust.;Sjove og funktionelle styles til børn på farten og forældre med krav til kvalitet.
+fashionGridMenAltText;"Man wearing sunglasses, reclining and looking up with a cheerful smile.";"Mand med solbriller ligger afslappet og kigger glad op."
 fashionGridMenLink;Shop men;Shop herre
-fashionGridMenText;Premium materials and considered design. For the man who knows that calm is a kind of strength;Eksklusive materialer og gennemtænkt design. Til manden der forstår, at ro også er styrke
+fashionGridMenText;Premium materials and considered design. For the man who knows that calm is a kind of strength.;Eksklusive materialer og gennemtænkt design. Til manden der forstår, at ro også er styrke.
 fashionGridNewHeading;Celebrating Life;Celebrating Life
-fashionGridNewText;Discover style made to move with your passions and celebrate what makes you unique;Opdag stil skabt til at følge dine passioner og hyld det, der gør dig unik
-fashionGridNewText;Discover style made to move with your passions and celebrate what makes you unique;Opdag stil skabt til at følge dine passioner og hyld det, der gør dig unik
-fashionGridSaleAlt;"Young woman wearing a short, white 1960s-inspired dress";"Ung kvinde i kort hvid 60’er-inspireret kjole"
+fashionGridNewText;Discover style made to move with your passions and celebrate what makes you unique.;Opdag stil skabt til at følge dine passioner og hyld det, der gør dig unik.
+fashionGridSaleAltText;"Young woman wearing a short, white 1960s-inspired dress.";"Ung kvinde i kort hvid 60’er-inspireret kjole."
 fashionGridWomanLink;Shop Women;Shop dame
-fashionGridWomanText;Find pieces that inspire self-expression, effortless, bold, and made to move with you;Udtryk dig selv med styles, der er ubesværede, modige og med dig i bevægelse
-fashionGridWomenAlt;"Woman in a colorful outfit, wearing a beret that matches her sweater";"Kvinde i farverigt outfit og en alpehue der matcher til hendes sweater"
+fashionGridWomanText;Find pieces that inspire self-expression, effortless, bold, and made to move with you.;Udtryk dig selv med styles, der er ubesværede, modige og med dig i bevægelse.
+fashionGridWomenAltText;"Woman in a colorful outfit, wearing a beret that matches her sweater.";"Kvinde i farverigt outfit og en alpehue der matcher til hendes sweater."
 favorites;Favorites;Favoritter
 fileExceedsSize;Selected file(s) exceeds the 1MB limit; Valgte fil(er) overstiger grænsen på 1 MB. Upload venligst en mindre fil
 filesCanBeUploaded;files can be uploaded;filer kan uploades
@@ -130,9 +130,9 @@ grid;Grid;Grid
 gridLarge; Large grid;Bredt grid
 gridSmall; Small grid;Smalt grid
 heart;Heart;Hjerte
-heroAlt;"Two women dressed in matching blazers, posing fashionably";"To kvinder iført smarte matchende blazere"
+heroAltText;"Two women dressed in matching blazers, posing fashionably.";"To kvinder iført smarte matchende blazere."
 heroText;Upgrade your wardrobe with exclusive deals!;Opgradér din garderobe med eksklusive tilbud!
-heroText1;For a limited time, enjoy incredible discounts on the latest fashion trends;I en begrænset periode kan du få fantastiske rabatter på de nyeste modetrends
+heroText1;For a limited time, enjoy incredible discounts on the latest fashion trends.;I en begrænset periode kan du få fantastiske rabatter på de nyeste modetrends.
 heroTitle;Exclusive Fashion Sale;Eksklusivt Modesalg
 hideContent;Hide content;Skjul indhold
 hidePassword;Hide password;Skjul adgangskode
@@ -148,6 +148,8 @@ invalidUserData;Invalid user data;Ugyldig bruger data
 itemLabel;Items;Varer
 kid;Kid;Barn
 kids;Kids;Børn
+kidsAltText;Stylish children, a girl in a white sleeveless top with a matching hat and a boy in a colorful shirt, sitting together in a playful yet elegant pose.;Stilfulde børn, en pige i hvid ærmeløs top med matchende hat og en dreng i farverig skjorte, sidder sammen i et legende men elegant udtryk.
+kidsBannerAltText;Four classically dressed children in tartan outfits smile warmly while holding hands.;Fire klassisk klædte børn i skotskternede outfits smiler varmt, mens de holder hinanden i hånden.
 language;Language;Sprog
 left;left;tilbage
 list;List;Liste
@@ -172,6 +174,8 @@ maximum;Maximum;Maksimalt
 maximumFileLimitExceeded;Maximum file limit exceeded;Maksimalt antal filer er overskredet
 maximumFileSize;Maximum file size;Maksimal filstørrelse
 men;Men;Mænd
+menAltText;Elegant man with a hat, suspenders, and a burgundy shirt, lifts his hand to remove his sunglasses.;Elegant mand med hat, seler og bordeaux skjorte, løfter hånden for at tage sine solbriller af.
+menBannerAltText;Stylish man wearing an exclusive jacket and dark sunglasses, exuding timeless confidence.;Stilfuld mand iført eksklusiv jakke og mørke solbriller, udstråler tidløs selvsikkerhed.
 menu;Menu;Menu
 minLength;At least 8 characters;Mindst 8 tegn
 missingYourSize;Missing your size;Mangler vi din størrelse
@@ -363,18 +367,10 @@ warning;Warning;Advarsel
 welcome;Welcome;Velkommen
 white;White;Hvid
 woman;Woman;Dame
+women_2AltText;Two women in exclusive outfits with elegant trousers and cropped jackets.;To kvinder i eksklusive outfits med elegante bukser og korte jakker.
+women_3AltText;Woman in a red blazer and stylish high heels leaning against a matching red telephone booth.;Kvinde i rød blazer og stilfulde stiletter læner sig op ad en matchende rød telefonboks.
 women;Women;Damer
+womenAltText;Glamorous woman in a black dress with a large silver buckle, dancing and radiating sophisticated joy.;Glamourøs kvinde i sort kjole med stort sølvspænde danser og udstråler sofistikeret glæde.
+womenBannerAltText;Sophisticated woman in a matching jacket and trousers with a bag and red flowers behind her, completing an elegant tableau.;Sofistikeret kvinde i matchende jakke og bukser med taske og røde blomster bag sig fuldender et elegant tableau.
 yellow;Yellow;Gul
 yesterday;Yesterday;I går
-desktopAdAltText;A young woman smiles in surprise, elegantly delighted by a young man;En ung kvinde smiler af overraskelse, elegant overrasket af en ung mand
-kidsAdAltText;Stylish children, a girl in a white sleeveless top with a matching hat and a boy in a colorful shirt, sitting together in a playful yet elegant pose;Stilfulde børn, en pige i hvid ærmeløs top med matchende hat og en dreng i farverig skjorte, sidder sammen i et legende men elegant udtryk
-menAdAltText;Elegant man with a hat, suspenders, and a burgundy shirt, lifts his hand to remove his sunglasses;Elegant mand med hat, seler og bordeaux skjorte, løfter hånden for at tage sine solbriller af
-womenAdAltText;Glamorous woman in a black dress with a large silver buckle, dancing and radiating sophisticated joy;Glamourøs kvinde i sort kjole med stort sølvspænde danser og udstråler sofistikeret glæde
-kidsBannerAltText;Four classically dressed children in tartan outfits smile warmly while holding hands;Fire klassisk klædte børn i skotskternede outfits smiler varmt, mens de holder hinanden i hånden
-menBannerAltText;Stylish man wearing an exclusive jacket and dark sunglasses, exuding timeless confidence;Stilfuld mand iført eksklusiv jakke og mørke solbriller, udstråler tidløs selvsikkerhed
-womenBannerAltText;Sophisticated woman in a matching jacket and trousers with a bag and red flowers behind her, completing an elegant tableau;Sofistikeret kvinde i matchende jakke og bukser med taske og røde blomster bag sig fuldender et elegant tableau
-kidsBannerAltText;Four classically dressed children in tartan outfits smile warmly while holding hands;Fire klassisk klædte børn i skotskternede outfits smiler varmt, mens de holder hinanden i hånden
-menBannerAltText;Stylish man wearing an exclusive jacket and dark sunglasses, exuding timeless confidence;Stilfuld mand iført eksklusiv jakke og mørke solbriller, udstråler tidløs selvsikkerhed
-womenBannerAltText;Sophisticated woman in a matching jacket and trousers with a bag and red flowers behind her, completing an elegant tableau;Sofistikeret kvinde i matchende jakke og bukser med taske og røde blomster bag sig fuldender et elegant tableau
-women_2AdAltText;Two women in exclusive outfits with elegant trousers and cropped jackets.;To kvinder i eksklusive outfits med elegante bukser og korte jakker.
-women_3AdAltText;Woman in a red blazer and stylish high heels leaning against a matching red telephone booth.;Kvinde i rød blazer og stilfulde stiletter læner sig op ad en matchende rød telefonboks.
