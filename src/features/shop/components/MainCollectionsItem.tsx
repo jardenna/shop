@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router';
 import Picture from '../../../components/Picture';
 import { ShopPath } from '../../../layout/nav/enums';
-import { ImgExtention } from '../../../types/types';
+import type { ImgExtention } from '../../../types/types';
 import useLanguage from '../../language/useLanguage';
 
 export type MainCollectionsBaseProps = {
