@@ -2,7 +2,7 @@
 
 .collection-aside {
   background-color: $color-light-gray-10;
-  min-width: rem(252px);
+  min-width: rem(300px);
 
   .collection-aside-header {
     border-bottom: 4px solid $color-gray-40;
@@ -11,7 +11,12 @@
 }
 
 .collection-nav-list {
+  margin-top: 12px;
   font-size: $font-medium;
+
+  @include max-size($small) {
+    margin: 0;
+  }
 
   .collection-nav-item {
     display: flex;
