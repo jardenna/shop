@@ -14,7 +14,7 @@ type CarouselProps = {
 
 const Carousel = ({ carouselList }: CarouselProps) => (
   <ul className="carousel">
-    {carouselList.map(({ alt, imgName, imgExtention }, index) => (
+    {carouselList.map(({ alt, imgName, imgExtention = 'jpg' }, index) => (
       <li className="carousel-item" key={index}>
         <Picture
           srcSet={`${imgName}.avif`}

@@ -8,14 +8,14 @@ const CollectionLandingPage = () => {
   const collectionImages: Record<string, string[]> = {
     Women: [
       '/images/adImages/women.jpg',
-      '/images/collections/women/women_2.jpg',
-      '/images/collections/women/women_3.jpg',
+      '/images/adImages/women_2.jpg',
+      '/images/adImages/women_3.jpg',
     ],
     Men: ['/images/adImages/men.jpg'],
     Kids: ['/images/adImages/kids.jpg'],
   };
 
-  const categoryOrder = ['Kids', 'Men', 'Women', 'Sofa'];
+  const categoryOrder = ['Kids', 'Men', 'Women'];
 
   return (
     <MainPageContainer heading={language.collection}>

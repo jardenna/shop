@@ -7,11 +7,11 @@ const ProfilePage = () => {
   const { language } = useLanguage();
 
   const carouselList: CarouselList[] = [
-    { imgName: '/images/gallery/women', alt: '' },
-    { imgName: '/images/gallery/women_2', alt: '' },
-    { imgName: '/images/gallery/women_3', alt: '' },
-    { imgName: '/images/gallery/women', alt: '' },
-    { imgName: '/images/gallery/women_2', alt: '' },
+    { imgName: '/images/adImages/women', alt: '' },
+    { imgName: '/images/adImages/women_2', alt: '' },
+    { imgName: '/images/adImages/women_3', alt: '' },
+    { imgName: '/images/adImages/women', alt: '' },
+    { imgName: '/images/adImages/women_2', alt: '' },
   ];
 
   return (
