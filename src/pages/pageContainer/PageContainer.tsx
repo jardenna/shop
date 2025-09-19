@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 import { adminBreadcrumbsList } from '../../components/breadcrumbs/breadcrumbsLists';

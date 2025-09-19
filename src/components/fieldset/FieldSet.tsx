@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import VisuallyHidden from '../VisuallyHidden';
 import './_fieldset.scss';
 

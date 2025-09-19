@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { IconName } from '../../types/enums';
 import Icon from '../icons/Icon';
 

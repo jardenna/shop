@@ -1,4 +1,5 @@
-import { ReactNode, useEffect, useState } from 'react';
+import type { ReactNode } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppDispatch } from '../../app/hooks';
 import { localStorageKeys } from '../../hooks/useLocalStorage';
 import { currencyCacheKey, oneDay } from '../../utils/utils';

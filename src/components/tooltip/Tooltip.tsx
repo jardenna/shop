@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import usePopup from '../../hooks/usePopup';
 import Button from '../Button';
 import { DropdownBtnProps } from '../dropdownBtn/DropdownBtn';

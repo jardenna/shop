@@ -1,4 +1,5 @@
-import { ElementType, HTMLAttributes, ReactNode } from 'react';
+import type { ElementType, ReactNode } from 'react';
+import { HTMLAttributes } from 'react';
 
 type VisuallyHiddenProps = HTMLAttributes<HTMLElement> & {
   children: ReactNode;
