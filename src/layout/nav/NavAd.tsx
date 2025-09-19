@@ -1,17 +1,33 @@
+import ImageBackground from '../../components/imageBackground/ImageBackground';
+import type { ImgExtention } from '../../types/types';
+
 type NavAdProps = {
+  alt: string;
   heading: string;
   imageName: string;
+  imgExtention?: ImgExtention;
   text?: string;
 };
 
-const NavAd = ({ heading, text, imageName }: NavAdProps) => (
-  <li
-    className="sub-nav-item sub-nav-ad"
-    style={{ backgroundImage: `url(/images/adImages/${imageName}.avif` }}
+const NavAd = ({
+  heading,
+  text,
+  imageName,
+  alt,
+  imgExtention = 'jpg',
+}: NavAdProps) => (
+  <ImageBackground
+    className="sub-nav-ad"
+    as="li"
+    srcSet={`/images/${imageName}.avif`}
+    src={`/images/${imageName}.${imgExtention}`}
+    alt={alt}
   >
-    <p className="ad-heading">{heading}</p>
-    {text && <p className="ad-text">{text}.</p>}
-  </li>
+    <div className="nav-ad-content">
+      <h3>{heading}</h3>
+      {text && <p>{text}.</p>}
+    </div>
+  </ImageBackground>
 );
 
 export default NavAd;

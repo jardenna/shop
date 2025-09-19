@@ -1,15 +1,26 @@
-import Img from '../Img';
+import type { ImgExtention } from '../../types/types';
+import Picture from '../Picture';
 import './_carousel.scss';
 
+export type CarouselList = {
+  alt: string;
+  imgName: string;
+  imgExtention?: ImgExtention;
+};
+
 type CarouselProps = {
-  carouselList: string[];
+  carouselList: CarouselList[];
 };
 
 const Carousel = ({ carouselList }: CarouselProps) => (
   <ul className="carousel">
-    {carouselList.map((item, index) => (
+    {carouselList.map(({ alt, imgName, imgExtention = 'jpg' }, index) => (
       <li className="carousel-item" key={index}>
-        <Img src={item} alt="" />
+        <Picture
+          srcSet={`${imgName}.avif`}
+          alt={alt}
+          src={`${imgName}.${imgExtention}`}
+        />
       </li>
     ))}
   </ul>

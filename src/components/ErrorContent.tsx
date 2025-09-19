@@ -1,6 +1,6 @@
 import useLanguage from '../features/language/useLanguage';
 import Button from './Button';
-import Img from './Img';
+import Picture from './Picture';
 
 type ErrorContentProps = {
   btnLabel: string;
@@ -13,11 +13,12 @@ const ErrorContent = ({ onClick, errorText, btnLabel }: ErrorContentProps) => {
   const { language } = useLanguage();
   return (
     <section className="error-content">
-      <Img
-        className="emoji"
-        src="/images/sad_smiley.png"
+      <Picture
+        srcSet="/images/icons/sad_smiley.avif"
         alt={language.errorAltText}
+        src="/images/icons/sad_smiley.png"
       />
+
       <p className="error-info">{errorText}</p>
       <Button onClick={onClick}>{btnLabel}</Button>
     </section>

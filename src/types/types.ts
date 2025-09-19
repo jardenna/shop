@@ -31,6 +31,8 @@ export type OptionGroupHeading = {
 
 export type InputChangeHandler = (event: ChangeInputType) => void;
 
+export type ImgExtention = 'png' | 'jpg' | 'WebP';
+
 export type ProductListChoiceProps = {
   groupTitle: OptionGroupHeading;
   name: string;

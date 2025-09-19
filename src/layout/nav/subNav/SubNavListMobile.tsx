@@ -25,6 +25,9 @@ const SubNavListMobile = ({
   language,
 }: SubNavListMobileProps) => {
   const { headingKey, textKey } = subNavConfig[category];
+
+  const altText = `${category}AdAltText`;
+
   return (
     <ul className="sub-nav">
       {subNavList.map(({ linkText }) => (
@@ -51,6 +54,7 @@ const SubNavListMobile = ({
         heading={language[headingKey]}
         text={language[textKey]}
         imageName={category}
+        alt={language[altText]}
       />
     </ul>
   );

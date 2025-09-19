@@ -1,12 +1,12 @@
-import { ReactNode } from 'react';
+import { ElementType, ReactNode } from 'react';
+import type { ImgProps } from '../Img';
+import Picture from '../Picture';
 import './_image-background.scss';
 
-type PictureTypes = {
-  alt: string;
+type ImageBackgroundProps = ImgProps & {
   children: ReactNode;
-  src: string;
   srcSet: `${string}.avif`;
-  className?: string;
+  as?: ElementType;
   hidePicture?: boolean;
 };
 
@@ -15,18 +15,14 @@ const ImageBackground = ({
   alt,
   srcSet,
   src,
+  as: Tag = 'div',
   hidePicture,
   className = '',
-}: PictureTypes) => (
-  <div className={`image-background ${className}`}>
-    {!hidePicture && (
-      <picture>
-        <source srcSet={srcSet} type="image/avif" />
-        <img className="img-fallback" src={src} alt={alt} loading="lazy" />
-      </picture>
-    )}
+}: ImageBackgroundProps) => (
+  <Tag className={`image-background ${className}`}>
+    {!hidePicture && <Picture srcSet={srcSet} alt={alt} src={src} />}
     {children}
-  </div>
+  </Tag>
 );
 
 export default ImageBackground;

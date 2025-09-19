@@ -1,14 +1,14 @@
-const Picture = () => (
-  <picture>
-    <source
-      srcSet="https://assets.codepen.io/429997/abstract_space.jpeg?width=896&height=539&format=avif"
-      type="image/avif"
-    />
-    <img
-      src="https://assets.codepen.io/429997/abstract_space.jpeg?width=896&height=539&format=auto"
-      alt=""
-      loading="lazy"
-    />
+import type { ImgProps } from './Img';
+import Img from './Img';
+
+type PictureProps = ImgProps & {
+  srcSet: `${string}.avif`;
+};
+
+const Picture = ({ alt, srcSet, src, className }: PictureProps) => (
+  <picture className={className}>
+    <source srcSet={srcSet} type="image/avif" />
+    <Img className="img-fallback" src={src} alt={alt} />
   </picture>
 );
 

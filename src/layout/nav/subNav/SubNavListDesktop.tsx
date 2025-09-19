@@ -27,7 +27,12 @@ const SubNavListDesktop = ({
         </div>
       </li>
     ))}
-    <NavAd heading={language[heading]} imageName="ad" />
+    <NavAd
+      heading={language[heading]}
+      imageName="ad"
+      alt={language.desktopAdAltText}
+      imgExtention="png"
+    />
   </ul>
 );
 
