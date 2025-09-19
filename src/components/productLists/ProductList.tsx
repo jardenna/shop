@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import type { OptionGroupHeading } from '../../types/types';
 import OptionGroupTitle from './OptionGroupTitle';
 import './_product-list.scss';

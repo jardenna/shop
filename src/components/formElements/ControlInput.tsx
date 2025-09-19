@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { IconName } from '../../types/enums';
 import type { ControlInputType, InputChangeHandler } from '../../types/types';
 import IconContent from '../IconContent';

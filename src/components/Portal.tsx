@@ -1,4 +1,5 @@
-import { ReactNode, useLayoutEffect, useState } from 'react';
+import type { ReactNode } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 function createWrapperAndAppendToBody(portalId: string) {

@@ -1,4 +1,5 @@
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import type { ReactNode } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useLanguage from '../features/language/useLanguage';
 import { BtnVariant } from '../types/enums';
 import Button from './Button';

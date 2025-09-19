@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import useLanguage from '../../features/language/useLanguage';
 import useMediaQuery from '../../hooks/useMediaQuery ';
 import useTrapFocus from '../../hooks/useTrapFocus';

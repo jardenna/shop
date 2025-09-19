@@ -1,4 +1,4 @@
-import { ElementType, ReactNode } from 'react';
+import type { ElementType, ReactNode } from 'react';
 import type { ImgProps } from '../Img';
 import Picture from '../Picture';
 import './_image-background.scss';

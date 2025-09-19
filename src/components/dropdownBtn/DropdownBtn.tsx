@@ -1,5 +1,5 @@
 import { Placement } from '@popperjs/core';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import usePopup from '../../hooks/usePopup';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';

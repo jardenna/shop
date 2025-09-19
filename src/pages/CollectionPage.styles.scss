@@ -10,7 +10,7 @@
 
 .collection-page-container {
   display: flex;
-  gap: 12px;
+  gap: 20px;
   width: 100%;
 }
 
@@ -31,9 +31,15 @@
 }
 
 .collection-page-header {
-  padding: 12px;
+  padding: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: $color-light-gray-20;
+  border-bottom: 4px solid $color-gray-30;
+
+  @include max-size($small) {
+    border-bottom: 0;
+    padding: 12px;
+  }
 }
