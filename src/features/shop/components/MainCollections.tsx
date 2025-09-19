@@ -10,7 +10,7 @@ const MainCollections = ({ mainCollectionList }: MainCollectionsProps) => (
     {mainCollectionList.map(({ title, imgList, linkTo, linkText }) => (
       <MainCollectionsItem
         key={title}
-        imgPath="/images/adImages"
+        imgPath="/images"
         title={title}
         imgList={imgList}
         linkTo={linkTo}

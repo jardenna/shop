@@ -19,8 +19,8 @@ const NavAd = ({
   <ImageBackground
     className="sub-nav-ad"
     as="li"
-    srcSet={`/images/adImages/${imageName}.avif`}
-    src={`/images/adImages/${imageName}.${imgExtention}`}
+    srcSet={`/images/${imageName}.avif`}
+    src={`/images/${imageName}.${imgExtention}`}
     alt={alt}
   >
     <div className="nav-ad-content">
