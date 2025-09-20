@@ -51,7 +51,7 @@ const LoginPage = () => {
       heading={!currentUser ? language.login : language.alreadyLoggedIn}
       className="page-small"
     >
-      {currentUser?.username ? (
+      {currentUser ? (
         <div>
           {language.alreadyLoggedInAs} {currentUser.username}
           <p>{language.toContinue}</p>
@@ -70,7 +70,7 @@ const LoginPage = () => {
             >
               {language.switchAccount}
             </Button>
-            <Button onClick={() => navigate(ShopPath.CreateAccount)}>
+            <Button onClick={() => navigate(`/${ShopPath.CreateAccount}`)}>
               {language.createNewAccount}
             </Button>
           </div>
