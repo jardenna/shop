@@ -10,6 +10,8 @@ addToStock;Add to stock;Tilføj til lager
 admin;Admin;Admin
 adminCannotBeDeleted;Administrator cannot be deleted;Administrator kan ikke slettes
 allowedFormats;Allowed formats;Tilladte formater
+alreadyLoggedIn;You are already logged in;Du er allerede logget ind
+alreadyLoggedInAs;You are already logged in as;Du er allerede logget ind som
 ascending;ascending;stigende
 available;Available;Tilgængelig
 availableColors;Available colours;Tilgængelige farver
@@ -60,6 +62,7 @@ couldNotFindInfo;Sorry, We couldn’t find the information you’re looking for;
 countInStock;Items in stock;Antal på lager
 create;Create;Opret
 createAccount;Create account;Opret konto
+createNewAccount;Create new account;Oprette en ny konto
 createdAt;Created at;Tilføjet den
 createNewCategory;Create new category;Opret ny kategori
 createNewProduct;Create new product;Opret nyt produkt
@@ -160,6 +163,7 @@ loginFailed;Login failed;Login mislykkedes
 loginHere;Log in here;Log ind her
 loginSucceeded;Login succeeded;Login lykkedes
 logout;Log out;Log ud
+logoutOfAccount;Log out of this account;Logge ud af denne konto
 logOutSucceeded;Logout succeeded;Log ud lykkedes
 lowStock;Low stock;Få på lager
 machineWash;Machine wash at 40 °C;Maskinvask ved 40 °C
@@ -332,9 +336,11 @@ subCategoryList;Subcategory list;Underkategori-liste
 subCategoryName;Subcategory name;Underkategori navn
 success;Success;Succes
 sureToDelete;Do you want to delete;Vil du slette
+switchAccount;Switch to a different account;Skifte til en anden konto
 temporarilyOutOfStock;This item is temporarily out of stock;Varen er midlertidigt udsolgt
 temporarilyOutOfStockText;Get notified when the item is back in stock;Få besked, når varen er tilbage på lager
 title;Title;Titel
+toContinue;To continue, you can;Du kan vælge at
 today;Today;I dag
 totalProducts;Total products;Antal produkter
 translationKey;Translation key;Oversættelsesnøgle

@@ -16,7 +16,6 @@ const LoginPage = () => {
   const { language } = useLanguage();
   const [loginUser, { isLoading }] = useLoginMutation();
   const { onAddMessagePopup } = useMessagePopup();
-
   const { currentUser, isLoading: isUserLoading } = useAuth();
   const initialState = { email: '', password: '' };
   const from = location.state?.from?.pathname || ShopPath.Root;
@@ -42,33 +41,37 @@ const LoginPage = () => {
     }
   }
 
-  // Show nothing (or a spinner) while we are checking auth from cookie
+  // Show nothing (or a skeleton)
   if (isUserLoading) {
     return null;
   }
 
   return (
-    <MainPageContainer heading={language.login} className="page-small">
+    <MainPageContainer
+      heading={!currentUser ? language.login : language.alreadyLoggedIn}
+      className="page-small"
+    >
       {currentUser?.username ? (
         <div>
-          You are already logged in as {currentUser.username}
+          {language.alreadyLoggedInAs} {currentUser.username}
+          <p>{language.toContinue}</p>
           <div>
             <Button
               onClick={() => {
                 /* logout logic */
               }}
             >
-              Log out
+              {language.logoutOfAccount}
             </Button>
             <Button
               onClick={() => {
                 /* switch account logic */
               }}
             >
-              Switch account
+              {language.switchAccount}
             </Button>
             <Button onClick={() => navigate(ShopPath.CreateAccount)}>
-              {language.createAccount}
+              {language.createNewAccount}
             </Button>
           </div>
         </div>
