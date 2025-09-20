@@ -5,18 +5,18 @@
   gap: 40px;
   margin-top: 40px;
 
+  @include max-size($small) {
+    flex-direction: column;
+    margin-top: 0;
+    gap: 0;
+  }
+
   .product-care-info {
     list-style: disc;
     padding-inline-start: 30px;
     display: flex;
     flex-direction: column;
     gap: 8px;
-  }
-
-  @include max-size($mini) {
-    flex-direction: column;
-    margin-top: 0;
-    gap: 0;
   }
 
   .single-product-header {
@@ -30,7 +30,9 @@
   }
 
   .single-product-content {
-    max-width: rem(500px);
+    @include min-size($medium) {
+      max-width: rem(500px);
+    }
   }
 
   .in-stock-container {
@@ -61,6 +63,11 @@
     width: 100%;
     flex-direction: column;
     gap: 0;
+
+    .product-img-item {
+      display: flex;
+      justify-content: center;
+    }
 
     .product-img {
       border-radius: 0;

@@ -6,7 +6,7 @@
   $color-background: $color-background;
   $color-foreground: $color-gray-30;
 
-  @include min-size($small) {
+  @include min-size($mini) {
     ::-webkit-scrollbar {
       width: 8px;
       height: 8px;
