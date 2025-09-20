@@ -10,7 +10,9 @@ $animation-distance: 500px;
   border-bottom: 1px solid $color-border;
 
   .toggle-panel {
-    top: calc($header-height + 26px);
+    @include max-size($mini) {
+      top: calc($header-height + 26px);
+    }
   }
 
   .logo {
