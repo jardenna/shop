@@ -30,7 +30,7 @@ const NavContainer = ({
         navList={navList}
         ariaLabel={language.main}
         hideAria={hideAria}
-        className={`nav-container ${className || 'main-nav-container'}`}
+        className={className || 'main-nav-container'}
       />
       {currentUser && (
         <NavUser
