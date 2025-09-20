@@ -8,12 +8,12 @@
   width: 100%;
   overflow: auto;
   padding-bottom: 4px;
+  top: $header-height;
 
   @include transition;
 
   &.left {
     left: 0;
-    top: $header-height;
     transform: translateX(-100%);
 
     &.shown {
@@ -23,7 +23,6 @@
 
   &.right {
     right: 0;
-    top: $header-height;
     transform: translateX(100%);
 
     &.shown {
@@ -32,7 +31,6 @@
   }
 
   &.top {
-    top: $header-height;
     left: 0;
     transform: translateY(-100%);
 

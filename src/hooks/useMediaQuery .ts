@@ -6,12 +6,19 @@ const stripUnit = (value: string): number =>
 
 // variables
 const mq = {
+  mini: stripUnit(variables.mini) * 16,
   small: stripUnit(variables.small) * 16,
   medium: stripUnit(variables.medium) * 16,
 };
 
-const useMediaQuery = (mobileSize = mq.small, tabletSize = mq.medium) => {
+const useMediaQuery = (
+  smallMobileSize = mq.mini,
+  mobileSize = mq.small,
+  tabletSize = mq.medium,
+) => {
   const getMatches = () => ({
+    isSmallMobileSize: window.matchMedia(`(max-width: ${smallMobileSize}px)`)
+      .matches,
     isMobileSize: window.matchMedia(`(max-width: ${mobileSize}px)`).matches,
     isTabletSize: window.matchMedia(`(max-width: ${tabletSize}px)`).matches,
   });
@@ -22,17 +29,26 @@ const useMediaQuery = (mobileSize = mq.small, tabletSize = mq.medium) => {
     const updateMatches = () => {
       setMatches(getMatches());
     };
+
+    // create queries for all breakpoints
+    const smallMobileQuery = window.matchMedia(
+      `(max-width: ${smallMobileSize}px)`,
+    );
     const mobileQuery = window.matchMedia(`(max-width: ${mobileSize}px)`);
     const tabletQuery = window.matchMedia(`(max-width: ${tabletSize}px)`);
 
+    // add listeners
+    smallMobileQuery.addEventListener('change', updateMatches);
     mobileQuery.addEventListener('change', updateMatches);
     tabletQuery.addEventListener('change', updateMatches);
 
+    // cleanup
     return () => {
+      smallMobileQuery.removeEventListener('change', updateMatches);
       mobileQuery.removeEventListener('change', updateMatches);
       tabletQuery.removeEventListener('change', updateMatches);
     };
-  }, [mobileSize, tabletSize]);
+  }, [smallMobileSize, mobileSize, tabletSize]);
 
   return matches;
 };

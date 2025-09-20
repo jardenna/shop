@@ -29,14 +29,6 @@
     display: flex;
     align-items: center;
 
-    .logo {
-      svg {
-        @include max-size($small) {
-          width: rem(260px);
-        }
-      }
-    }
-
     .btn {
       max-width: rem(100px);
       padding-block: 12px;

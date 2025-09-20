@@ -32,7 +32,7 @@ export type FilterKeys = 'sizes' | 'colors' | 'brand';
 const CollectionPage = () => {
   const { category, categoryId } = useParams();
   const { language } = useLanguage();
-  const { isMobileSize } = useMediaQuery();
+  const { isMobileSize, isSmallMobileSize } = useMediaQuery();
 
   const initialFilters: FilterValuesType<string> = {
     sizes: [],
@@ -131,14 +131,13 @@ const CollectionPage = () => {
                 />
               )}
               <section className="product-toolbar">
-                {!isMobileSize && (
-                  <DisplayControls
-                    onSetDisplay={setProuctView}
-                    displayControlList={productViewIconList}
-                    isActive={productView}
-                    ariaLabel={language.productDisplay}
-                  />
-                )}
+                <DisplayControls
+                  onSetDisplay={setProuctView}
+                  displayControlList={productViewIconList}
+                  isActive={productView}
+                  ariaLabel={language.productDisplay}
+                />
+
                 {products && (
                   <>
                     <span>
@@ -164,7 +163,7 @@ const CollectionPage = () => {
                 <SkeletonCardList count={8} />
               ) : (
                 <article
-                  className={`product-card-list ${productView === 'list' ? 'list' : ''}`}
+                  className={`product-card-list ${productView === 'list' && !isSmallMobileSize ? 'list' : ''}`}
                 >
                   {products &&
                     products.products.map((product) => (

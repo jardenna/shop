@@ -57,6 +57,10 @@
       .img-fallback {
         max-height: rem(248px);
         border-radius: 0;
+
+        @include max-size($mini) {
+          max-height: rem(160px);
+        }
       }
     }
   }
@@ -88,7 +92,7 @@
   }
 
   .nav-ad-content {
-    max-width: rem(240px);
+    max-width: rem(320px);
     min-height: rem(230px);
     display: flex;
     flex-direction: column;
@@ -99,14 +103,19 @@
     h3 {
       font-size: $font-large;
       font-family: $font-primary;
-
-      @include max-size($small) {
-        font-size: $font-medium;
-      }
     }
 
     p {
       margin: 0;
+    }
+
+    @include max-size($mini) {
+      min-height: auto;
+      max-width: 16rem;
+
+      h3 {
+        font-size: rem(20px);
+      }
     }
   }
 
