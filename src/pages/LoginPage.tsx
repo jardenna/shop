@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from 'react-router';
+import { useLocation, useNavigate, useSearchParams } from 'react-router';
 import AuthForm from '../components/authForm/AuthForm';
 import Button from '../components/Button';
 import validateLogin from '../components/formElements/validation/validateLogin';
@@ -16,9 +16,17 @@ const LoginPage = () => {
   const { language } = useLanguage();
   const [loginUser, { isLoading }] = useLoginMutation();
   const { onAddMessagePopup } = useMessagePopup();
-  const { currentUser, isLoading: isUserLoading } = useAuth();
+  const { currentUser, isLoading: isUserLoading, logout } = useAuth();
   const initialState = { email: '', password: '' };
   const from = location.state?.from?.pathname || ShopPath.Root;
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const addQuery = () => {
+    searchParams.set('mode', 'switchAccount');
+    setSearchParams(searchParams);
+  };
+
+  const mode = searchParams.get('mode');
 
   const { values, errors, onChange, onBlur, onSubmit } = useFormValidation({
     initialState,
@@ -41,35 +49,34 @@ const LoginPage = () => {
     }
   }
 
-  // Show nothing (or a skeleton)
   if (isUserLoading) {
     return null;
-  }
+  } // or a skeleton/loading spinner
 
+  let heading = language.login;
+
+  if (currentUser) {
+    if (mode) {
+      heading = language[mode];
+    } else {
+      heading = language.alreadyLoggedIn;
+    }
+  }
   return (
-    <MainPageContainer
-      heading={!currentUser ? language.login : language.alreadyLoggedIn}
-      className="page-small"
-    >
-      {currentUser ? (
+    <MainPageContainer heading={heading} className="page-small">
+      {currentUser && !mode ? (
         <div>
           {language.alreadyLoggedInAs} {currentUser.username}
           <p>{language.toContinue}</p>
           <div>
             <Button
               onClick={() => {
-                /* logout logic */
+                logout();
               }}
             >
               {language.logoutOfAccount}
             </Button>
-            <Button
-              onClick={() => {
-                /* switch account logic */
-              }}
-            >
-              {language.switchAccount}
-            </Button>
+            <Button onClick={addQuery}>{language.switchAccount}</Button>
             <Button onClick={() => navigate(`/${ShopPath.CreateAccount}`)}>
               {language.createNewAccount}
             </Button>
