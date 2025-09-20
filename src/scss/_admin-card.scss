@@ -6,7 +6,7 @@
     grid-template-columns: 1fr 0.7fr;
 
     @include max-size($mini) {
-      grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(rem(235px), 1fr));
 
       .card-top-line {
         display: none;
@@ -19,16 +19,12 @@
     grid-template-columns: 1fr 1fr 0.8fr;
 
     @include max-size($small) {
-      grid-template-columns: repeat(auto-fit, minmax(352px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(rem(400px), 1fr));
 
       .separator,
       .card-top-line {
         display: none;
       }
-    }
-
-    @include max-size($mini) {
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     }
   }
 

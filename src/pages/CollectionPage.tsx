@@ -33,7 +33,6 @@ const CollectionPage = () => {
   const { category, categoryId } = useParams();
   const { language } = useLanguage();
   const { isMobileSize, isSmallMobileSize } = useMediaQuery();
-  console.log(isSmallMobileSize);
 
   const initialFilters: FilterValuesType<string> = {
     sizes: [],
