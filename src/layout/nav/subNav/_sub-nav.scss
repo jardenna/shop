@@ -57,6 +57,10 @@
       .img-fallback {
         max-height: rem(248px);
         border-radius: 0;
+
+        @include max-size($mini) {
+          max-height: rem(160px);
+        }
       }
     }
   }
@@ -103,6 +107,15 @@
 
     p {
       margin: 0;
+    }
+
+    @include max-size($mini) {
+      min-height: auto;
+      max-width: 16rem;
+
+      h3 {
+        font-size: rem(20px);
+      }
     }
   }
 
