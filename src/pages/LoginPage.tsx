@@ -3,10 +3,8 @@ import AuthForm from '../components/authForm/AuthForm';
 import Button from '../components/Button';
 import validateLogin from '../components/formElements/validation/validateLogin';
 import useMessagePopup from '../components/messagePopup/useMessagePopup';
-import {
-  useCheckAuthQuery,
-  useLoginMutation,
-} from '../features/auth/authApiSlice';
+import { useLoginMutation } from '../features/auth/authApiSlice';
+import useAuth from '../features/auth/hooks/useAuth';
 import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
 import { ShopPath } from '../layout/nav/enums';
@@ -16,10 +14,10 @@ const LoginPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { language } = useLanguage();
-  const { data: userProfile, isLoading: userIsLoading } = useCheckAuthQuery();
   const [loginUser, { isLoading }] = useLoginMutation();
   const { onAddMessagePopup } = useMessagePopup();
 
+  const { currentUser, isLoading: isUserLoading } = useAuth();
   const initialState = { email: '', password: '' };
   const from = location.state?.from?.pathname || ShopPath.Root;
 
@@ -45,15 +43,15 @@ const LoginPage = () => {
   }
 
   // Show nothing (or a spinner) while we are checking auth from cookie
-  if (userIsLoading) {
+  if (isUserLoading) {
     return null;
   }
 
   return (
     <MainPageContainer heading={language.login} className="page-small">
-      {userProfile?.user ? (
+      {currentUser?.username ? (
         <div>
-          You are already logged in as {userProfile.user.username}
+          You are already logged in as {currentUser.username}
           <div>
             <Button
               onClick={() => {
