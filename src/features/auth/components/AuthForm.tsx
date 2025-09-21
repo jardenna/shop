@@ -51,6 +51,7 @@ const AuthForm = ({
   onFocus,
   navigateToText,
   currentUser,
+  canAssignRoles,
 }: AuthFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
@@ -116,7 +117,7 @@ const AuthForm = ({
           onClick={() => navigate(`/${navigateTo}`)}
         />
       )}
-      {currentUser?.isAdmin && values.role && (
+      {canAssignRoles && values.role && (
         <RoleRadioBtn onChange={onChange} roleValue={values.role} />
       )}
     </Form>

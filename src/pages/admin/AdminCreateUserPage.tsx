@@ -11,7 +11,11 @@ const AdminCreateUserPage = () => {
   return (
     <article className="page page-small">
       <PageContainer heading={language.createNewUser}>
-        <CreateAccount navigateTo={AdminPath.Users} currentUser={currentUser} />
+        <CreateAccount
+          navigateTo={AdminPath.Users}
+          currentUser={currentUser}
+          canAssignRoles={currentUser?.isAdmin}
+        />
       </PageContainer>
     </article>
   );
