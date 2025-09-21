@@ -1,21 +1,19 @@
 import { useNavigate } from 'react-router';
-import type { Roles } from '../../app/api/apiTypes/adminApiTypes';
-import useLanguage from '../../features/language/useLanguage';
-import RoleRadioBtn from '../../features/users/RoleRadioBtn';
-import type { KeyValuePair } from '../../hooks/useFormValidation';
-import type { CreateAccountProps } from '../../pages/CreateAccount';
-import { BtnVariant } from '../../types/enums';
+import type { Roles } from '../../../app/api/apiTypes/adminApiTypes';
+import FieldSet from '../../../components/fieldset/FieldSet';
+import Form from '../../../components/form/Form';
+import Input from '../../../components/formElements/Input';
+import PasswordInput from '../../../components/formElements/password/PasswordInput';
+import type { KeyValuePair } from '../../../hooks/useFormValidation';
+import type { CreateAccountProps } from '../../../pages/CreateAccount';
 import type {
   BlurEventType,
   FormEventType,
   InputChangeHandler,
-} from '../../types/types';
-import Button from '../Button';
-import FieldSet from '../fieldset/FieldSet';
-import Form from '../form/Form';
-import Input from '../formElements/Input';
-import PasswordInput from '../formElements/password/PasswordInput';
-import './_auth-form.scss';
+} from '../../../types/types';
+import useLanguage from '../../language/useLanguage';
+import RoleRadioBtn from '../../users/RoleRadioBtn';
+import AuthBtn from './AuthBtn';
 
 type UserFields = {
   email: string;
@@ -62,7 +60,6 @@ const AuthForm = ({
       submitBtnLabel={submitBtnLabel}
       onSubmit={onSubmit}
       isLoading={isLoading}
-      className="auth-form"
     >
       <FieldSet legendText={legendText} hideLegendText>
         {values.username !== undefined && (
@@ -114,14 +111,10 @@ const AuthForm = ({
         )}
       </FieldSet>
       {!currentUser && (
-        <div className="auth-btn">
-          <Button
-            onClick={() => navigate(`/${navigateTo}`)}
-            variant={BtnVariant.Ghost}
-          >
-            {navigateToText}
-          </Button>
-        </div>
+        <AuthBtn
+          text={navigateToText}
+          onClick={() => navigate(`/${navigateTo}`)}
+        />
       )}
       {currentUser?.isAdmin && values.role && (
         <RoleRadioBtn onChange={onChange} roleValue={values.role} />

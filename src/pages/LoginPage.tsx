@@ -1,13 +1,14 @@
 import { useLocation, useNavigate, useSearchParams } from 'react-router';
-import AuthForm from '../components/authForm/AuthForm';
 import Button from '../components/Button';
 import validateLogin from '../components/formElements/validation/validateLogin';
 import useMessagePopup from '../components/messagePopup/useMessagePopup';
 import { useLoginMutation } from '../features/auth/authApiSlice';
+import AuthForm from '../features/auth/components/AuthForm';
 import useAuth from '../features/auth/hooks/useAuth';
 import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
 import { ShopPath } from '../layout/nav/enums';
+import { BtnVariant } from '../types/enums';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const LoginPage = () => {
@@ -67,9 +68,12 @@ const LoginPage = () => {
     <MainPageContainer heading={heading} className="page-small">
       {currentUser && !mode ? (
         <div>
-          {language.alreadyLoggedInAs} {currentUser.username}
-          <div>
+          <p>
+            {language.alreadyLoggedInAs} {currentUser.username}
+          </p>
+          <div className="flex">
             <Button
+              variant={BtnVariant.Secondary}
               onClick={() => {
                 logout();
               }}
