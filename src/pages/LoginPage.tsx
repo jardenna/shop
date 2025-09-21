@@ -23,7 +23,7 @@ const LoginPage = () => {
   const paramKey = 'mode';
 
   const handleSwitchAccount = () => {
-    searchParams.set(paramKey, 'switchAccount');
+    searchParams.set(paramKey, 'switchUser');
     setSearchParams(searchParams);
   };
 
@@ -68,18 +68,15 @@ const LoginPage = () => {
       {currentUser && !mode ? (
         <div>
           {language.alreadyLoggedInAs} {currentUser.username}
-          <p>{language.toContinue}</p>
           <div>
             <Button
               onClick={() => {
                 logout();
               }}
             >
-              {language.logoutOfAccount}
+              {language.logout}
             </Button>
-            <Button onClick={handleSwitchAccount}>
-              {language.switchAccount}
-            </Button>
+            <Button onClick={handleSwitchAccount}>{language.switchUser}</Button>
             <Button onClick={() => navigate(`/${ShopPath.CreateAccount}`)}>
               {language.createNewAccount}
             </Button>
