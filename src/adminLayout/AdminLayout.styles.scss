@@ -20,10 +20,6 @@
     height: calc(100svh - $header-height);
   }
 
-  .auth-form {
-    margin-top: 0;
-  }
-
   .admin-header {
     min-height: $header-height;
     display: flex;

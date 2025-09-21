@@ -94,3 +94,13 @@
     border-radius: 4px;
   }
 }
+
+.auth-btn {
+  display: flex;
+  justify-content: flex-end;
+
+  .btn {
+    padding: 0;
+    margin-block: 12px 4px;
+  }
+}

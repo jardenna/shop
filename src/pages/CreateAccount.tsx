@@ -4,10 +4,10 @@ import type {
   Roles,
   UserResponse,
 } from '../app/api/apiTypes/adminApiTypes';
-import AuthForm from '../components/authForm/AuthForm';
 import validateSignup from '../components/formElements/validation/validateCreateAccount';
 import useMessagePopup from '../components/messagePopup/useMessagePopup';
 import { useCreateAccountMutation } from '../features/auth/authApiSlice';
+import AuthForm from '../features/auth/components/AuthForm';
 import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
 import { ShopPath } from '../layout/nav/enums';
