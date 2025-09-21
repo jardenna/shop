@@ -117,8 +117,8 @@ const AuthForm = ({
           onClick={() => navigate(`/${navigateTo}`)}
         />
       )}
-      {canAssignRoles && values.role && (
-        <RoleRadioBtn onChange={onChange} roleValue={values.role} />
+      {canAssignRoles && (
+        <RoleRadioBtn onChange={onChange} roleValue={values.role || null} />
       )}
     </Form>
   );

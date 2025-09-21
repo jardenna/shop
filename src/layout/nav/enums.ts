@@ -13,6 +13,7 @@ enum AdminPath {
   AdminSubCategoryCreate = '/dashboard/subCategories/create',
   AdminSubCategoryUpdate = '/dashboard/subCategories/update',
   AdminSubCategoryView = '/dashboard/subCategories/view',
+  AdminUser = '/dashboard/users',
   AdminUserCreate = '/dashboard/users/create',
   Users = 'users',
 }

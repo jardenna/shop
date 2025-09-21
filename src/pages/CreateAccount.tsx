@@ -29,12 +29,13 @@ const CreateAccount = ({
 }: CreateAccountProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
+
   const initialState: InitialState = {
     username: '',
     email: '',
     password: '',
     confirmPassword: '',
-    role: 'User',
+    role: canAssignRoles ? 'User' : undefined,
   };
 
   const { onAddMessagePopup } = useMessagePopup();

@@ -5,14 +5,14 @@ import { roleList } from '../../utils/productLists';
 
 type RoleRadioBtnProps = {
   onChange: InputChangeHandler;
-  roleValue: Roles;
+  roleValue: Roles | null;
 };
 
 const RoleRadioBtn = ({ roleValue, onChange }: RoleRadioBtnProps) => (
   <RadioButtonList
     radioButtonList={roleList}
     name="role"
-    initialChecked={roleValue}
+    initialChecked={roleValue ?? ''}
     onChange={onChange}
   />
 );
