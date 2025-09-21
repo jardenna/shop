@@ -20,13 +20,14 @@ const LoginPage = () => {
   const initialState = { email: '', password: '' };
   const from = location.state?.from?.pathname || ShopPath.Root;
   const [searchParams, setSearchParams] = useSearchParams();
+  const paramKey = 'mode';
 
-  const addQuery = () => {
-    searchParams.set('mode', 'switchAccount');
+  const handleSwitchAccount = () => {
+    searchParams.set(paramKey, 'switchAccount');
     setSearchParams(searchParams);
   };
 
-  const mode = searchParams.get('mode');
+  const mode = searchParams.get(paramKey);
 
   const { values, errors, onChange, onBlur, onSubmit } = useFormValidation({
     initialState,
@@ -76,7 +77,9 @@ const LoginPage = () => {
             >
               {language.logoutOfAccount}
             </Button>
-            <Button onClick={addQuery}>{language.switchAccount}</Button>
+            <Button onClick={handleSwitchAccount}>
+              {language.switchAccount}
+            </Button>
             <Button onClick={() => navigate(`/${ShopPath.CreateAccount}`)}>
               {language.createNewAccount}
             </Button>
