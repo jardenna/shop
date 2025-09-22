@@ -14,7 +14,7 @@ import type {
 } from '../../../types/types';
 import { roleList } from '../../../utils/productLists';
 import useLanguage from '../../language/useLanguage';
-import AuthBtn from './AuthBtn';
+import AuthBtnContainer from './AuthBtnContainer';
 
 type UserFields = {
   email: string;
@@ -113,7 +113,7 @@ const AuthForm = ({
         )}
       </FieldSet>
       {!currentUser && (
-        <AuthBtn
+        <AuthBtnContainer
           text={navigateToText}
           onClick={() => navigate(`/${navigateTo}`)}
         />
