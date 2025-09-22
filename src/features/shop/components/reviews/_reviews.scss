@@ -40,10 +40,9 @@
 .review-form {
   margin-bottom: 16px;
 
-  .fieldset {
-    legend {
-      margin-bottom: 8px;
-    }
+  legend {
+    padding-bottom: 6px;
+    border-bottom: 2px solid $color-border;
   }
 
   .reviews {

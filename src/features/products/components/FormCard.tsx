@@ -11,7 +11,7 @@ type FormCardProps = {
 
 const FormCard = ({ children, legendText, onReset }: FormCardProps) => (
   <section className="form-card">
-    <FieldSet legendText={legendText}>
+    <FieldSet legendText={legendText} hideLegendText>
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={onReset}

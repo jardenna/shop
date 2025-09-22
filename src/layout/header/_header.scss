@@ -108,40 +108,10 @@ $animation-distance: 500px;
 .preferences {
   display: flex;
   gap: 24px;
-  margin-block: 24px 56px;
+  margin-block: 24px 16px;
 
   @include max-size($mini) {
     flex-direction: column;
-  }
-
-  .input-container {
-    gap: 0;
-  }
-
-  .control-list {
-    flex-wrap: nowrap;
-    gap: 8px;
-  }
-
-  .control-item {
-    height: $input-height;
-    background-color: $color-input-background;
-    border-radius: 4px;
-    width: 100%;
-
-    .control-label {
-      height: 100%;
-    }
-  }
-
-  legend {
-    margin-bottom: 8px;
-    position: static;
-  }
-
-  /* stylelint-disable-next-line selector-class-pattern */
-  .select-box__menu-list {
-    max-height: rem(100px);
   }
 }
 

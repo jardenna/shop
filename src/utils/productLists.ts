@@ -4,7 +4,7 @@ import type { OptionType } from '../types/types';
 
 const sizeList: Size[] = ['S', 'M', 'L', 'XL', 'Onesize'];
 
-const roles: Roles[] = ['Employee', 'User'];
+const roles: Roles[] = ['User', 'Employee'];
 
 const roleList: OptionType[] = roles.map((role) => ({
   value: role,

@@ -14,6 +14,7 @@ import { ShopPath } from '../layout/nav/enums';
 
 export type CreateAccountProps = {
   navigateTo: string;
+  canAssignRoles?: boolean;
   currentUser?: UserResponse;
 };
 
@@ -21,9 +22,14 @@ export type InitialState = AuthRequest & {
   confirmPassword: string;
 };
 
-const CreateAccount = ({ navigateTo, currentUser }: CreateAccountProps) => {
+const CreateAccount = ({
+  navigateTo,
+  currentUser,
+  canAssignRoles,
+}: CreateAccountProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
+
   const initialState: InitialState = {
     username: '',
     email: '',
@@ -80,6 +86,7 @@ const CreateAccount = ({ navigateTo, currentUser }: CreateAccountProps) => {
       navigateTo={ShopPath.Login}
       navigateToText={language.loginHere}
       currentUser={currentUser}
+      canAssignRoles={canAssignRoles}
     />
   );
 };

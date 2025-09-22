@@ -26,6 +26,10 @@ form {
   width: 100%;
   padding: 16px 24px;
 
+  .fieldset {
+    margin-bottom: 0;
+  }
+
   h3 {
     font-family: $font-primary;
   }
