@@ -112,6 +112,7 @@ const AuthForm = ({
           />
         )}
       </FieldSet>
+
       {!currentUser && (
         <AuthBtnContainer
           text={navigateToText}
