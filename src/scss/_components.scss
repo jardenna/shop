@@ -99,3 +99,11 @@
   display: flex;
   gap: 8px;
 }
+
+.size-list {
+  border-inline-start: 1px solid $color-border;
+
+  .control-item {
+    @extend %stacked-item-border;
+  }
+}

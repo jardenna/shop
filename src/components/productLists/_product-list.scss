@@ -27,8 +27,6 @@
 }
 
 .size-list {
-  border-inline-start: 1px solid $color-border;
-
   .product-list-item {
     @extend %stacked-item-border;
   }
