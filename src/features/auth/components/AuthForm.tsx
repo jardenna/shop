@@ -7,7 +7,6 @@ import Input from '../../../components/formElements/Input';
 import PasswordInput from '../../../components/formElements/password/PasswordInput';
 import RadioButtonList from '../../../components/formElements/RadioButtonList';
 import type { KeyValuePair } from '../../../hooks/useFormValidation';
-import type { CreateAccountProps } from '../../../pages/CreateAccount';
 import { BtnVariant } from '../../../types/enums';
 import type {
   BlurEventType,
@@ -16,6 +15,7 @@ import type {
 } from '../../../types/types';
 import { roleList } from '../../../utils/productLists';
 import useLanguage from '../../language/useLanguage';
+import type { CreateAccountProps } from './CreateAccount';
 
 type UserFields = {
   email: string;
