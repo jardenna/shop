@@ -1,13 +1,5 @@
 @use './globals' as *;
 
-.size-list {
-  border-inline-start: 1px solid $color-border;
-
-  .control-item {
-    @extend %stacked-item-border;
-  }
-}
-
 .control-list {
   display: flex;
   flex-wrap: wrap;
@@ -18,6 +10,32 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+  }
+
+  &.secondary {
+    &.control-list {
+      flex-wrap: nowrap;
+      gap: 8px;
+    }
+
+    .control-item {
+      height: $input-height;
+      background-color: $color-input-background;
+      border-radius: 4px;
+      width: 100%;
+
+      .control-label {
+        height: 100%;
+      }
+    }
+  }
+
+  &.size-list {
+    border-inline-start: 1px solid $color-border;
+
+    .control-item {
+      @extend %stacked-item-border;
+    }
   }
 
   &.color-list {
