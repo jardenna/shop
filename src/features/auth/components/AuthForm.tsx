@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router';
 import type { Roles } from '../../../app/api/apiTypes/adminApiTypes';
+import Button from '../../../components/Button';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/form/Form';
 import Input from '../../../components/formElements/Input';
@@ -7,6 +8,7 @@ import PasswordInput from '../../../components/formElements/password/PasswordInp
 import RadioButtonList from '../../../components/formElements/RadioButtonList';
 import type { KeyValuePair } from '../../../hooks/useFormValidation';
 import type { CreateAccountProps } from '../../../pages/CreateAccount';
+import { BtnVariant } from '../../../types/enums';
 import type {
   BlurEventType,
   FormEventType,
@@ -14,7 +16,6 @@ import type {
 } from '../../../types/types';
 import { roleList } from '../../../utils/productLists';
 import useLanguage from '../../language/useLanguage';
-import AuthBtnContainer from './AuthBtnContainer';
 
 type UserFields = {
   email: string;
@@ -114,10 +115,14 @@ const AuthForm = ({
       </FieldSet>
 
       {!currentUser && (
-        <AuthBtnContainer
-          text={navigateToText}
-          onClick={() => navigate(`/${navigateTo}`)}
-        />
+        <div className="flex-align-right">
+          <Button
+            onClick={() => navigate(`/${navigateTo}`)}
+            variant={BtnVariant.Ghost}
+          >
+            {navigateToText}
+          </Button>
+        </div>
       )}
       {canAssignRoles && values.role && (
         <FieldSet legendText={language.assignRole}>
