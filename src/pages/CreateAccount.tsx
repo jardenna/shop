@@ -35,7 +35,7 @@ const CreateAccount = ({
     email: '',
     password: '',
     confirmPassword: '',
-    role: canAssignRoles ? 'User' : undefined,
+    role: 'User',
   };
 
   const { onAddMessagePopup } = useMessagePopup();

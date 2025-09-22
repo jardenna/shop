@@ -118,12 +118,12 @@ const AuthForm = ({
           onClick={() => navigate(`/${navigateTo}`)}
         />
       )}
-      {canAssignRoles && (
-        <FieldSet legendText="Tildel rolle">
+      {canAssignRoles && values.role && (
+        <FieldSet legendText={language.assignRole}>
           <RadioButtonList
             radioButtonList={roleList}
             name="role"
-            initialChecked={values.role ?? ''}
+            initialChecked={values.role}
             variant="secondary"
             onChange={onChange}
             autoFocus
