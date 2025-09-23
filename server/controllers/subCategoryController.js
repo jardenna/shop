@@ -261,8 +261,12 @@ const getMenuByParentCategory = asyncHandler(async (req, res) => {
       const aInPriority = aIndex !== -1;
       const bInPriority = bIndex !== -1;
 
-      if (aInPriority && bInPriority) return aIndex - bIndex;
-      if (aInPriority) return -1;
+      if (aInPriority && bInPriority) {
+        return aIndex - bIndex;
+      }
+      if (aInPriority) {
+        return -1;
+      }
       if (bInPriority) return 1;
 
       // fallback: sort by translated label
