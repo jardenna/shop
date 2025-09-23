@@ -1,3 +1,4 @@
+import { PUBLISHED, SCHEDULED } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import scheduledStatusHandler from '../middleware/scheduledStatusHandler.js';
 import Category from '../models/categoryModel.js';
@@ -47,7 +48,7 @@ const createSubCategory = [
       allowedSizes,
     };
 
-    if (categoryStatus === 'Scheduled') {
+    if (categoryStatus === SCHEDULED) {
       subCategoryData.scheduledDate = scheduledDate;
     } else {
       subCategoryData.scheduledDate = null; // clear if not scheduled
@@ -153,7 +154,7 @@ const checkScheduled = asyncHandler(async (req, res) => {
   const now = new Date();
 
   const hasScheduled = await SubCategory.exists({
-    categoryStatus: 'Scheduled',
+    categoryStatus: SCHEDULED,
     scheduledDate: { $lte: now },
   });
 
@@ -236,7 +237,7 @@ const getSubCategoriesWithParent = asyncHandler(async (req, res) => {
 const getMenuByParentCategory = asyncHandler(async (req, res) => {
   const { parentCategoryName } = req.query;
 
-  const subCategories = await SubCategory.find({ categoryStatus: 'Published' })
+  const subCategories = await SubCategory.find({ categoryStatus: PUBLISHED })
     .populate('category', 'categoryName')
     .lean();
 
@@ -312,7 +313,7 @@ const updateSubCategory = [
       translationKey,
     };
 
-    if (categoryStatus === 'Scheduled') {
+    if (categoryStatus === SCHEDULED) {
       updateData.scheduledDate = scheduledDate;
     } else {
       updateData.scheduledDate = null; // clear if not scheduled

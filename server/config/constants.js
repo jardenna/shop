@@ -1,5 +1,12 @@
 const ALLOWED_ROLES = ['Employee', 'User'];
-const STATUS = ['Published', 'Inactive', 'Scheduled'];
+
+const STATUS = {
+  PUBLISHED: 'Published',
+  INACTIVE: 'Inactive',
+  SCHEDULED: 'Scheduled',
+};
+
+const { PUBLISHED, INACTIVE, SCHEDULED } = STATUS;
 
 const SHOE_SIZES = ['36', '37', '38', '39', '40', '41', '42', 'Onesize'];
 const MEN_SHOE_SIZES = ['40', '41', '42', '43', '44', '45', '46', 'Onesize'];
@@ -28,10 +35,13 @@ const MAX_FILES = 5;
 export {
   ALLOWED_ROLES,
   CLOTHING_SIZES,
+  INACTIVE,
   KIDS_SHOE_SIZES,
   MAX_FILE_SIZE,
   MAX_FILES,
   MEN_SHOE_SIZES,
+  PUBLISHED,
+  SCHEDULED,
   SHOE_SIZES,
   STATUS,
 };
