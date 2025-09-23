@@ -7,7 +7,7 @@ import type {
 } from '../types/types';
 import { allowedExtensions, maxFileSize } from '../utils/utils';
 
-export type KeyValuePair<T> = {
+export type KeyValuePair<T = unknown> = {
   [key: string]: T;
 };
 
@@ -19,13 +19,14 @@ export type FormValues = {
   [key: string]: string | number | string[];
 };
 
-type FormValidationProps<T extends KeyValuePair<unknown>> = {
+type FormValidationProps<T extends KeyValuePair> = {
   initialState: T;
   isArray?: boolean;
   isLoading?: boolean;
   callback?: (values: T) => void;
   validate?: (values: T) => ValidationErrors;
 };
+
 type ValidatedFile = {
   file: File;
   name: string;
@@ -34,7 +35,7 @@ type ValidatedFile = {
   reason?: 'invalidFileType' | 'fileTooLarge';
 };
 
-function useFormValidation<T extends KeyValuePair<unknown>>({
+function useFormValidation<T extends KeyValuePair>({
   initialState,
   callback,
   validate,
