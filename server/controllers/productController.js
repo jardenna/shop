@@ -250,19 +250,27 @@ const getProducts = asyncHandler(async (req, res) => {
   ];
 
   const categoryMatchStage = [];
-  if (subCategoryId)
-    categoryMatchStage.push({
-      'subCategoryData._id': new mongoose.Types.ObjectId(String(subCategoryId)),
-    });
-  if (mainCategory)
+  if (subCategoryId) {
+    {
+      categoryMatchStage.push({
+        'subCategoryData._id': new mongoose.Types.ObjectId(
+          String(subCategoryId),
+        ),
+      });
+    }
+  }
+
+  if (mainCategory) {
     categoryMatchStage.push({
       'categoryData.categoryName': {
         $regex: `^${mainCategory}$`,
         $options: 'i',
       },
     });
-  if (categoryMatchStage.length)
+  }
+  if (categoryMatchStage.length) {
     categoryJoinPipeline.push({ $match: { $and: categoryMatchStage } });
+  }
 
   // --- Meta aggregation (brands/sizes unfiltered by product filters) ---
   const metaPipeline = [
@@ -291,14 +299,17 @@ const getProducts = asyncHandler(async (req, res) => {
   const combinedMatch =
     req.filter && Object.keys(req.filter).length ? { ...req.filter } : {};
   if (categoryMatchStage.length) {
-    if (Object.keys(combinedMatch).length)
+    if (Object.keys(combinedMatch).length) {
       combinedMatch.$and = categoryMatchStage;
-    else Object.assign(combinedMatch, { $and: categoryMatchStage });
+    } else {
+      Object.assign(combinedMatch, { $and: categoryMatchStage });
+    }
   }
 
   const productPipeline = [...categoryJoinPipeline];
-  if (Object.keys(combinedMatch).length)
+  if (Object.keys(combinedMatch).length) {
     productPipeline.push({ $match: combinedMatch });
+  }
 
   const countResult = await Product.aggregate([
     ...productPipeline,
