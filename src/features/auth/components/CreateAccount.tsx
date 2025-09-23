@@ -3,14 +3,14 @@ import type {
   AuthRequest,
   Roles,
   UserResponse,
-} from '../app/api/apiTypes/adminApiTypes';
-import validateSignup from '../components/formElements/validation/validateCreateAccount';
-import useMessagePopup from '../components/messagePopup/useMessagePopup';
-import { useCreateAccountMutation } from '../features/auth/authApiSlice';
-import AuthForm from '../features/auth/components/AuthForm';
-import useLanguage from '../features/language/useLanguage';
-import useFormValidation from '../hooks/useFormValidation';
-import { ShopPath } from '../layout/nav/enums';
+} from '../../../app/api/apiTypes/adminApiTypes';
+import validateSignup from '../../../components/formElements/validation/validateCreateAccount';
+import useMessagePopup from '../../../components/messagePopup/useMessagePopup';
+import useFormValidation from '../../../hooks/useFormValidation';
+import { ShopPath } from '../../../layout/nav/enums';
+import useLanguage from '../../language/useLanguage';
+import { useCreateAccountMutation } from '../authApiSlice';
+import AuthForm from './AuthForm';
 
 export type CreateAccountProps = {
   navigateTo: string;

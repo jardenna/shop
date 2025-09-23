@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 import type {
   Product,
@@ -177,14 +177,21 @@ const ProductForm = ({
         const uploadResponse = await uploadImages(formData).unwrap();
         const currentUploadedImages = uploadResponse.images;
 
-        // Combine existing images with newly uploaded images
         values.images = [...activeImages, ...currentUploadedImages];
       } else {
-        // Retain existing images if no new files are uploaded
         values.images = activeImages;
       }
 
-      const productData = { ...values, scheduledDate: selectedDate };
+      // Filtering of sizes before sending
+      const filteredSizes = values.sizes.filter((size) =>
+        availableSizes.includes(size),
+      );
+
+      const productData = {
+        ...values,
+        sizes: filteredSizes,
+        scheduledDate: selectedDate,
+      };
 
       if (id) {
         await updateProduct({
@@ -222,6 +229,18 @@ const ProductForm = ({
   const availableSizes = selectedCategory
     ? selectedCategory.allowedSizes
     : allowedSizes;
+
+  useEffect(() => {
+    // Only keep sizes that are still allowed in the new category
+    if (availableSizes.length) {
+      const filteredSizes = values.sizes.filter((size) =>
+        availableSizes.includes(size),
+      );
+      if (filteredSizes.length !== values.sizes.length) {
+        onCustomChange('sizes', filteredSizes);
+      }
+    }
+  }, [availableSizes, values.sizes, onCustomChange]);
 
   return (
     <Form

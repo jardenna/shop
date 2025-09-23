@@ -279,17 +279,6 @@ const getProducts = asyncHandler(async (req, res) => {
 
   const metaResult = await Product.aggregate(metaPipeline);
 
-  // Fallback: numeric first, then alphabetical
-  const defaultSort = (sizes) => {
-    const nums = [];
-    const nonNums = [];
-    sizes.forEach((s) =>
-      isNaN(Number(s)) ? nonNums.push(s) : nums.push(Number(s)),
-    );
-    nums.sort((a, b) => a - b);
-    return [...nums.map(String), ...nonNums.sort()];
-  };
-
   const availableSizesRaw = metaResult[0]?.sizes?.flat() || [];
   const availableSizes = [...new Set(availableSizesRaw)];
 

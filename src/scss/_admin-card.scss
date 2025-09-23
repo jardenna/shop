@@ -71,11 +71,6 @@
   background-color: $color-white;
   padding-top: 42px;
 
-  .badge-container {
-    display: flex;
-    gap: 8px;
-  }
-
   @include max-size($small) {
     padding-top: 0;
   }

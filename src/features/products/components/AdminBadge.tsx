@@ -22,22 +22,16 @@ const AdminBadge = ({ scheduledDate, status }: AdminBadgeProps) => {
         className={status.toLowerCase()}
       />
       {scheduledDate && (
-        <div>
-          <Tooltip
-            ariaControls="scheduled-date"
-            ariaLabel={language.viewScheduledDate}
-            triggerBtnVariant={BtnVariant.Ghost}
-            tooltip={
-              <DateDisplay
-                date={scheduledDate}
-                hour="2-digit"
-                minute="2-digit"
-              />
-            }
-          >
-            <Icon iconName={IconName.Calendar} title={language.calendar} />
-          </Tooltip>
-        </div>
+        <Tooltip
+          ariaControls="scheduled-date"
+          ariaLabel={language.viewScheduledDate}
+          triggerBtnVariant={BtnVariant.Ghost}
+          tooltip={
+            <DateDisplay date={scheduledDate} hour="2-digit" minute="2-digit" />
+          }
+        >
+          <Icon iconName={IconName.Calendar} title={language.calendar} />
+        </Tooltip>
       )}
     </div>
   );

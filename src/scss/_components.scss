@@ -95,12 +95,15 @@
   }
 }
 
-.auth-btn {
+.badge-container {
   display: flex;
-  justify-content: flex-end;
+  gap: 8px;
+}
 
-  .btn {
-    padding: 0;
-    margin-block: 12px 4px;
+.size-list {
+  border-inline-start: 1px solid $color-border;
+
+  .control-item {
+    @extend %stacked-item-border;
   }
 }
