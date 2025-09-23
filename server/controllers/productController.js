@@ -1,6 +1,7 @@
 import fs from 'fs';
 import mongoose from 'mongoose';
 import path from 'path';
+import { PUBLISHED, SCHEDULED } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import scheduledStatusHandler from '../middleware/scheduledStatusHandler.js';
 import Product from '../models/productModel.js';
@@ -222,7 +223,7 @@ const getProducts = asyncHandler(async (req, res) => {
   const mainCategory = req.query.mainCategory;
 
   // --- Only published products ---
-  const STATUS = ['Published']; // all others are ignored
+  const STATUS = [PUBLISHED]; // all others are ignored
 
   // --- Common category/subcategory join ---
   const categoryJoinPipeline = [
@@ -246,8 +247,8 @@ const getProducts = asyncHandler(async (req, res) => {
     { $unwind: '$categoryData' },
     {
       $match: {
-        'subCategoryData.categoryStatus': 'Published',
-        'categoryData.categoryStatus': 'Published',
+        'subCategoryData.categoryStatus': PUBLISHED,
+        'categoryData.categoryStatus': PUBLISHED,
       },
     },
   ];
@@ -345,7 +346,7 @@ const getProducts = asyncHandler(async (req, res) => {
 // @access  Public
 const getSortedProducts = asyncHandler(async (req, res) => {
   await updateScheduledItems({
-    items: await Product.find({ productStatus: 'Scheduled' }).lean(),
+    items: await Product.find({ productStatus: SCHEDULED }).lean(),
     model: Product,
     statusKey: 'productStatus',
   });
@@ -380,7 +381,7 @@ const getSortedProducts = asyncHandler(async (req, res) => {
           categoryName,
         };
 
-        return rest.productStatus === 'Scheduled'
+        return rest.productStatus === SCHEDULED
           ? { ...base, scheduledDate }
           : base;
       }),
@@ -489,7 +490,7 @@ const checkScheduled = asyncHandler(async (req, res) => {
   const now = new Date();
 
   const hasScheduled = await Product.exists({
-    productStatus: 'Scheduled',
+    productStatus: SCHEDULED,
     scheduledDate: { $lte: now },
   });
 
