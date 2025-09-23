@@ -1,3 +1,5 @@
+import { PUBLISHED } from '../config/constants.js';
+
 async function updateScheduledItems({
   items,
   model,
@@ -13,11 +15,11 @@ async function updateScheduledItems({
         item[dateKey] <= now
       ) {
         await model.findByIdAndUpdate(item._id, {
-          $set: { [statusKey]: 'Published' },
+          $set: { [statusKey]: PUBLISHED },
           $unset: { [dateKey]: '' },
         });
 
-        item[statusKey] = 'Published';
+        item[statusKey] = PUBLISHED;
         item[dateKey] = undefined;
       }
       return item;

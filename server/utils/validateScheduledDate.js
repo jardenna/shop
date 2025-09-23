@@ -1,7 +1,8 @@
+import { SCHEDULED } from '../config/constants.js';
 import { t } from '../utils/translator.js';
 
 const validateScheduledDate = (categoryStatus, scheduledDate, lang) => {
-  if (categoryStatus === 'Scheduled') {
+  if (categoryStatus === SCHEDULED) {
     if (!scheduledDate) {
       return {
         success: false,

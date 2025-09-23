@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { STATUS } from '../config/constants.js';
+import { INACTIVE, STATUS } from '../config/constants.js';
 
 const CategorySchema = new mongoose.Schema(
   {
@@ -14,7 +14,7 @@ const CategorySchema = new mongoose.Schema(
     categoryStatus: {
       type: String,
       enum: STATUS,
-      default: 'Inactive',
+      default: INACTIVE,
     },
     scheduledDate: {
       type: Date,

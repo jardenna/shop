@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { STATUS } from '../config/constants.js';
+import { INACTIVE, STATUS } from '../config/constants.js';
 import SubCategory from './subCategoryModel.js';
 
 const { ObjectId } = mongoose.Schema;
@@ -41,7 +41,7 @@ const productSchema = new mongoose.Schema(
     productStatus: {
       type: String,
       enum: STATUS,
-      default: 'Inactive',
+      default: INACTIVE,
     },
     scheduledDate: {
       type: Date,

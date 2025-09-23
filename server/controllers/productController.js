@@ -1,6 +1,7 @@
 import fs from 'fs';
 import mongoose from 'mongoose';
 import path from 'path';
+import { PUBLISHED, SCHEDULED } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import scheduledStatusHandler from '../middleware/scheduledStatusHandler.js';
 import Product from '../models/productModel.js';
@@ -221,7 +222,10 @@ const getProducts = asyncHandler(async (req, res) => {
   const subCategoryId = req.query.subCategoryId;
   const mainCategory = req.query.mainCategory;
 
-  // --- Helper: common pipeline for category/subcategory joins ---
+  // --- Only published products ---
+  const STATUS = [PUBLISHED]; // all others are ignored
+
+  // --- Common category/subcategory join ---
   const categoryJoinPipeline = [
     {
       $lookup: {
@@ -243,23 +247,19 @@ const getProducts = asyncHandler(async (req, res) => {
     { $unwind: '$categoryData' },
     {
       $match: {
-        'subCategoryData.categoryStatus': 'Published',
-        'categoryData.categoryStatus': 'Published',
+        'subCategoryData.categoryStatus': PUBLISHED,
+        'categoryData.categoryStatus': PUBLISHED,
       },
     },
   ];
 
+  // --- Category/Subcategory filters ---
   const categoryMatchStage = [];
   if (subCategoryId) {
-    {
-      categoryMatchStage.push({
-        'subCategoryData._id': new mongoose.Types.ObjectId(
-          String(subCategoryId),
-        ),
-      });
-    }
+    categoryMatchStage.push({
+      'subCategoryData._id': new mongoose.Types.ObjectId(String(subCategoryId)),
+    });
   }
-
   if (mainCategory) {
     categoryMatchStage.push({
       'categoryData.categoryName': {
@@ -275,6 +275,7 @@ const getProducts = asyncHandler(async (req, res) => {
   // --- Meta aggregation (brands/sizes unfiltered by product filters) ---
   const metaPipeline = [
     ...categoryJoinPipeline,
+    { $match: { productStatus: { $in: STATUS } } }, // filter only Published for meta too
     {
       $group: {
         _id: null,
@@ -287,29 +288,15 @@ const getProducts = asyncHandler(async (req, res) => {
 
   const metaResult = await Product.aggregate(metaPipeline);
 
-  const availableSizesRaw = metaResult[0]?.sizes?.flat() || [];
-  const availableSizes = [...new Set(availableSizesRaw)];
-
-  const availableBrandsRaw = metaResult[0]?.brands || [];
-  const availableBrands = [...new Set(availableBrandsRaw)].sort((a, b) =>
-    a.localeCompare(b, undefined, { sensitivity: 'base' }),
+  const availableSizes = [...new Set(metaResult[0]?.sizes?.flat() || [])];
+  const availableBrands = [...new Set(metaResult[0]?.brands || [])].sort(
+    (a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }),
   );
 
-  // --- Product pipeline (filtered) ---
-  const combinedMatch =
-    req.filter && Object.keys(req.filter).length ? { ...req.filter } : {};
-  if (categoryMatchStage.length) {
-    if (Object.keys(combinedMatch).length) {
-      combinedMatch.$and = categoryMatchStage;
-    } else {
-      Object.assign(combinedMatch, { $and: categoryMatchStage });
-    }
-  }
+  // --- Product filters ---
+  const combinedMatch = { productStatus: { $in: STATUS } }; // only Published
 
-  const productPipeline = [...categoryJoinPipeline];
-  if (Object.keys(combinedMatch).length) {
-    productPipeline.push({ $match: combinedMatch });
-  }
+  const productPipeline = [...categoryJoinPipeline, { $match: combinedMatch }];
 
   const countResult = await Product.aggregate([
     ...productPipeline,
@@ -359,7 +346,7 @@ const getProducts = asyncHandler(async (req, res) => {
 // @access  Public
 const getSortedProducts = asyncHandler(async (req, res) => {
   await updateScheduledItems({
-    items: await Product.find({ productStatus: 'Scheduled' }).lean(),
+    items: await Product.find({ productStatus: SCHEDULED }).lean(),
     model: Product,
     statusKey: 'productStatus',
   });
@@ -394,7 +381,7 @@ const getSortedProducts = asyncHandler(async (req, res) => {
           categoryName,
         };
 
-        return rest.productStatus === 'Scheduled'
+        return rest.productStatus === SCHEDULED
           ? { ...base, scheduledDate }
           : base;
       }),
@@ -503,7 +490,7 @@ const checkScheduled = asyncHandler(async (req, res) => {
   const now = new Date();
 
   const hasScheduled = await Product.exists({
-    productStatus: 'Scheduled',
+    productStatus: SCHEDULED,
     scheduledDate: { $lte: now },
   });
 

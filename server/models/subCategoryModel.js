@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { STATUS } from '../config/constants.js';
+import { INACTIVE, STATUS } from '../config/constants.js';
 import resolveAllowedSizes from '../utils/resolveAllowedSizes.js';
 import Category from './categoryModel.js';
 
@@ -17,7 +17,7 @@ const subCategorySchema = new mongoose.Schema(
     categoryStatus: {
       type: String,
       enum: STATUS,
-      default: 'Inactive',
+      default: INACTIVE,
     },
     scheduledDate: {
       type: Date,

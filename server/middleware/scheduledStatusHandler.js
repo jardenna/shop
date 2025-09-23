@@ -1,8 +1,10 @@
+import { INACTIVE, PUBLISHED, SCHEDULED } from '../config/constants.js';
+
 const scheduledStatusHandler = (statusField) => (req, res, next) => {
   const status = req.body[statusField];
   const { scheduledDate } = req.body;
 
-  if (status === 'Scheduled') {
+  if (status === SCHEDULED) {
     if (!scheduledDate) {
       return res.status(400).json({
         success: false,
@@ -10,7 +12,7 @@ const scheduledStatusHandler = (statusField) => (req, res, next) => {
       });
     }
     req.body.scheduledDate = scheduledDate; // Keep the scheduledDate
-  } else if (status === 'Inactive' || status === 'Published') {
+  } else if (status === INACTIVE || status === PUBLISHED) {
     req.body.scheduledDate = undefined; // Clear the scheduledDate
   }
 

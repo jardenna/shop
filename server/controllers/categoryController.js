@@ -1,3 +1,4 @@
+import { INACTIVE, PUBLISHED, SCHEDULED } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import scheduledStatusHandler from '../middleware/scheduledStatusHandler.js';
 import Category from '../models/categoryModel.js';
@@ -30,7 +31,7 @@ const createCategory = asyncHandler(async (req, res) => {
   }
 
   const categoryData = { categoryName, categoryStatus };
-  if (categoryStatus === 'Scheduled') {
+  if (categoryStatus === SCHEDULED) {
     categoryData.scheduledDate = scheduledDate;
   }
 
@@ -41,7 +42,7 @@ const createCategory = asyncHandler(async (req, res) => {
     message: 'New category created',
     id: category._id,
     categoryName: category.categoryName,
-    categoryStatus: category.categoryStatus || 'Inactive',
+    categoryStatus: category.categoryStatus || INACTIVE,
     scheduledDate: category.scheduledDate, // Ensure this field is included
     createdAt: category.createdAt,
   });
@@ -83,7 +84,7 @@ const checkScheduled = asyncHandler(async (req, res) => {
   const now = new Date();
 
   const hasScheduled = await Category.exists({
-    categoryStatus: 'Scheduled',
+    categoryStatus: SCHEDULED,
     scheduledDate: { $lte: now },
   });
 
@@ -113,7 +114,7 @@ const getCategoryById = asyncHandler(async (req, res) => {
 // @access  Public
 const getPublishedCategories = asyncHandler(async (req, res) => {
   const publishedCategories = await Category.find(
-    { categoryStatus: 'Published' },
+    { categoryStatus: PUBLISHED },
     'categoryName',
   ).lean();
 
