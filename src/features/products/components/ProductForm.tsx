@@ -182,7 +182,7 @@ const ProductForm = ({
         values.images = activeImages;
       }
 
-      // 🔒 Strict filtering of sizes before sending
+      // Filtering of sizes before sending
       const filteredSizes = values.sizes.filter((size) =>
         availableSizes.includes(size),
       );
