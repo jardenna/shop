@@ -8,7 +8,6 @@ enum AdminPath {
   AdminProducts = '/dashboard/products',
   AdminProductUpdate = '/dashboard/products/update',
   AdminProductView = '/dashboard/products/view',
-  AdminProfile = 'profile',
   AdminSubCategories = '/dashboard/subCategories',
   AdminSubCategoryCreate = '/dashboard/subCategories/create',
   AdminSubCategoryUpdate = '/dashboard/subCategories/update',

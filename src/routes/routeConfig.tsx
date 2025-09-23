@@ -120,10 +120,7 @@ const adminRouteList = [
     path: `${AdminPath.AdminSubCategoryView}/:id`,
     element: <ViewSubCategoryPage />,
   },
-  {
-    path: AdminPath.AdminProfile,
-    element: <ProfilePage />,
-  },
+
   {
     path: AdminPath.AdminProducts,
     element: <ProductPage />,

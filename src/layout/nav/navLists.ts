@@ -49,11 +49,6 @@ const authItemsList = [
 
 const adminNavList: NavItemsProps[] = [
   {
-    path: AdminPath.AdminProfile,
-    linkText: LinkText.Account,
-    iconName: IconName.Account,
-  },
-  {
     path: AdminPath.AdminProducts,
     linkText: LinkText.Products,
     iconName: IconName.Products,
