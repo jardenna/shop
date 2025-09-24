@@ -1,3 +1,4 @@
+import Img from '../components/Img';
 import useLanguage from '../features/language/useLanguage';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
@@ -6,7 +7,9 @@ const AboutUsPage = () => {
 
   return (
     <MainPageContainer heading={language.aboutUs}>
-      <section>{language.aboutUs}</section>
+      <section>
+        <Img src="/images/about/about.jpg" alt="" />
+      </section>
     </MainPageContainer>
   );
 };
