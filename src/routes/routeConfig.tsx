@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router';
 import AdminLayout from '../adminLayout/AdminLayout';
 import Layout from '../layout/Layout';
 import { AdminPath, ShopPath } from '../layout/nav/enums';
+import AboutUsPage from '../pages/AboutUsPage';
 import MyAccount from '../pages/account/MyAccount';
 import Orders from '../pages/account/Orders';
 import AdminCreateUserPage from '../pages/admin/AdminCreateUserPage';
@@ -23,7 +24,6 @@ import CreateProductPage from '../pages/product/CreateProductPage';
 import ProductPage from '../pages/product/ProductPage';
 import UpdateProductPage from '../pages/product/UpdateProductPage';
 import ViewProductPage from '../pages/product/ViewProductPage';
-import ProfilePage from '../pages/ProfilePage';
 import ProtectedRoute from '../pages/ProtectedRoute';
 import ShoppingChartPage from '../pages/ShoppingChartPage';
 import SingleProductPage from '../pages/SingleProductPage';
@@ -54,8 +54,8 @@ const routeList = [
     element: <SingleProductPage />,
   },
   {
-    path: ShopPath.Profile,
-    element: <ProfilePage />,
+    path: ShopPath.AboutUs,
+    element: <AboutUsPage />,
   },
   {
     path: ShopPath.Contact,

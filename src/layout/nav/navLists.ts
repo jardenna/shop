@@ -27,8 +27,8 @@ const navList: NavItemsProps[] = [
     ],
   },
   {
-    path: ShopPath.Profile,
-    linkText: LinkText.Profile,
+    path: ShopPath.AboutUs,
+    linkText: LinkText.AboutUs,
   },
   {
     path: ShopPath.Contact,

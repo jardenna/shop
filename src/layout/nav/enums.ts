@@ -18,6 +18,7 @@ enum AdminPath {
 }
 
 enum ShopPath {
+  AboutUs = 'aboutUs',
   Collection = 'collection',
   CollectionCategory = 'collection/:category',
   CollectionCategoryId = 'collection/:category/:categoryId',
@@ -33,13 +34,13 @@ enum ShopPath {
   MyAccount = 'myAccount',
   MyOrders = 'myOrders',
   Product = 'product',
-  Profile = 'profile',
   Root = '/',
   ShoppingCart = 'shopping-cart',
   Women = '/collection/women',
 }
 
 enum LinkText {
+  AboutUs = 'aboutUs',
   Account = 'account',
   Categories = 'categories',
   Collection = 'collection',
