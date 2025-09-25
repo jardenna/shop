@@ -2,15 +2,18 @@ import { Outlet, useLocation } from 'react-router';
 import Img from '../components/Img';
 import useLanguage from '../features/language/useLanguage';
 import FullSizePageContainer from '../pages/pageContainer/FullSizePageContainer';
+import { getPathInfo } from '../utils/utils';
 import LayoutElement from './LayoutElement';
 
 const AccountLayout = () => {
   const { language } = useLanguage();
-  const location = useLocation();
-  console.log(location.pathname);
+  const { pathname } = useLocation();
+
+  const info = getPathInfo(pathname);
+  console.log(info.title);
 
   return (
-    <FullSizePageContainer heading={language.myAccount}>
+    <FullSizePageContainer metaTitle={language.myAccount}>
       <section className="account">
         <div className="test">
           <LayoutElement as="nav" ariaLabel="brugerkonto">

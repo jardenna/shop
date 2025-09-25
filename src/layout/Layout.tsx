@@ -16,7 +16,7 @@ import { AdminPath, ShopPath } from './nav/enums';
 
 const Layout = () => {
   const navigate = useNavigate();
-  const location = useLocation();
+  const { pathname } = useLocation();
   const { language, switchLanguage, selectedLanguage } = useLanguage();
 
   // Hooks
@@ -90,7 +90,7 @@ const Layout = () => {
   const userDropdownBtnList: DropdownItem[] = [
     {
       label: language.myAccount,
-      isActive: location.pathname === `/${ShopPath.MyAccount}`,
+      isActive: pathname === `/${ShopPath.MyAccount}`,
       onClick: () => {
         if (currentUser) {
           navigate(`/${ShopPath.MyAccount}`);
@@ -108,7 +108,7 @@ const Layout = () => {
     },
     {
       label: language.myOrders,
-      isActive: location.pathname === `/${ShopPath.MyOrders}`,
+      isActive: pathname === `/${ShopPath.MyOrders}`,
       icon: <Icon iconName={IconName.Orders} title={language.myOrders} />,
       onClick: () => {
         if (currentUser) {

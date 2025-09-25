@@ -10,7 +10,7 @@ type MetaTagsProps = {
 };
 
 const MetaTags = ({ description, keywords, metaTitle }: MetaTagsProps) => {
-  const location = useLocation();
+  const { pathname } = useLocation();
   const { language } = useLanguage();
 
   const getTitle = (pathname: string): string => {
@@ -26,11 +26,11 @@ const MetaTags = ({ description, keywords, metaTitle }: MetaTagsProps) => {
     return '';
   };
 
-  const title = getTitle(location.pathname);
+  const title = getTitle(pathname);
 
   useEffect(() => {
     document.title = `Fashion Fusion | ${title}`;
-  }, [location, title]);
+  }, [pathname, title]);
 
   return (
     <>

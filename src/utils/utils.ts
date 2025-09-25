@@ -79,6 +79,16 @@ const getFilterSummary = (filters: Filters): FiltersCountResult => {
   return { countsByKey, totalCount };
 };
 
+function getPathInfo(pathname: string) {
+  // Normalize: remove empty segments
+  const parts = pathname.split('/').filter(Boolean);
+
+  return {
+    title: parts[parts.length - 1] || '',
+    startsWith: (segment: string) => parts[0] === segment,
+  };
+}
+
 export {
   allowedExtensions,
   currencyCacheKey,
@@ -87,6 +97,7 @@ export {
   getErrorMessage,
   getFilterSummary,
   getlowerCaseFirstLetter,
+  getPathInfo,
   maxFiles,
   maxFileSize,
   oneDay,

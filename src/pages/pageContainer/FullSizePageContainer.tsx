@@ -6,19 +6,19 @@ import './_page-container.scss';
 
 type FullSizePageContainerProps = {
   children: ReactNode;
-  heading: string;
+  metaTitle: string;
   className?: string;
   onReset?: () => void;
 };
 
 const FullSizePageContainer = ({
   children,
-  heading,
+  metaTitle,
   onReset,
   className,
 }: FullSizePageContainerProps) => (
   <>
-    <MetaTags metaTitle={heading} />
+    <MetaTags metaTitle={metaTitle} />
     <article className={className}>
       <div className="main-page">
         <ErrorBoundary
