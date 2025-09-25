@@ -1,3 +1,4 @@
+import { AdminPath } from '../layout/nav/enums';
 import { ValidationMessage } from '../types/enums';
 import type {
   AriaLabelData,
@@ -88,6 +89,9 @@ function getPathInfo(pathname: string) {
     startsWith: (segment: string) => parts[0] === segment,
   };
 }
+
+export const isAdminPath = (pathname: string) =>
+  pathname.startsWith(`/${AdminPath.Admin}`);
 
 export {
   allowedExtensions,
