@@ -25,8 +25,8 @@ const MetaTags = ({ description, keywords, metaTitle }: MetaTagsProps) => {
     }
     return '';
   };
-
-  const title = getTitle(pathname);
+  const pathInfo = getTitle(pathname);
+  const title = language[pathInfo];
 
   useEffect(() => {
     document.title = `Fashion Fusion | ${title}`;
