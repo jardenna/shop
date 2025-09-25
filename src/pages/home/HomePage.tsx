@@ -1,5 +1,5 @@
 import FashionGrid from './fashionGrid/FashionGrid';
-import Hero from './Hero';
+import Hero from './hero/Hero';
 
 const HomePage = () => (
   <section className="container home-page">

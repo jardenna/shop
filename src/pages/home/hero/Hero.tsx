@@ -1,8 +1,8 @@
-import Button from '../../components/Button';
-import ImageBackground from '../../components/imageBackground/ImageBackground';
-import useLanguage from '../../features/language/useLanguage';
-import useMediaQuery from '../../hooks/useMediaQuery ';
-import { BtnVariant } from '../../types/enums';
+import Button from '../../../components/Button';
+import ImageBackground from '../../../components/imageBackground/ImageBackground';
+import useLanguage from '../../../features/language/useLanguage';
+import useMediaQuery from '../../../hooks/useMediaQuery ';
+import { BtnVariant } from '../../../types/enums';
 import './_hero.scss';
 
 const Hero = () => {
