@@ -1,8 +1,10 @@
 import { createBrowserRouter } from 'react-router';
 import AdminLayout from '../adminLayout/AdminLayout';
+import AccountLayout from '../layout/AccountLayout';
 import Layout from '../layout/Layout';
 import { AdminPath, ShopPath } from '../layout/nav/enums';
 import AboutUsPage from '../pages/AboutUsPage';
+import AddressPage from '../pages/account/AddressPage';
 import MyAccountPage from '../pages/account/MyAccountPage';
 import OrdersPage from '../pages/account/OrdersPage';
 import AdminCreateUserPage from '../pages/admin/AdminCreateUserPage';
@@ -71,12 +73,23 @@ const routeList = [
   },
   {
     path: ShopPath.MyAccount,
-    element: <MyAccountPage />,
+    element: <AccountLayout />,
+    children: [
+      {
+        path: '',
+        element: <MyAccountPage />,
+      },
+      {
+        path: ShopPath.MyOrders,
+        element: <OrdersPage />,
+      },
+      {
+        path: ShopPath.MyAddresses,
+        element: <AddressPage />,
+      },
+    ],
   },
-  {
-    path: ShopPath.MyOrders,
-    element: <OrdersPage />,
-  },
+
   {
     path: ShopPath.ShoppingCart,
     element: <ShoppingChartPage />,

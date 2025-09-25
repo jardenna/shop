@@ -25,18 +25,19 @@ enum ShopPath {
   CollectionSingleProduct = 'collection/:category/:categoryId/:id',
   Contact = 'contact',
   CreateAccount = 'createAccount',
-  Favorites = '/favorites',
-  FavoritesProduct = '/collection/product/allProducts',
+  Favorites = 'favorites',
+  FavoritesProduct = 'collection/product/allProducts',
   Home = 'home',
   Kids = '/collection/kids',
   Login = 'login',
   Men = '/collection/men',
   MyAccount = 'myAccount',
+  MyAddresses = 'myAddresses',
   MyOrders = 'myOrders',
   Product = 'product',
   Root = '/',
   ShoppingCart = 'shopping-cart',
-  Women = '/collection/women',
+  Women = 'collection/women',
 }
 
 enum LinkText {
