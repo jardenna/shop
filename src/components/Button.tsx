@@ -13,7 +13,7 @@ type ButtonProps = {
   ariaExpanded?: boolean;
   ariaHasPopup?: boolean;
   ariaLabel?: string;
-  ariaSelected?: boolean;
+  ariaPressed?: boolean;
   autoFocus?: boolean;
   className?: string;
   disabled?: boolean;
@@ -37,7 +37,7 @@ const Button = ({
   variant = BtnVariant.Primary,
   onClick,
   ref,
-  ariaSelected,
+  ariaPressed,
   ariaExpanded,
   ariaControls,
   ariaLabel,
@@ -58,7 +58,7 @@ const Button = ({
     type={type}
     ref={ref || tooltipRef}
     onClick={onClick}
-    aria-pressed={ariaSelected || undefined}
+    aria-pressed={ariaPressed || undefined}
     aria-expanded={ariaExpanded || undefined}
     aria-controls={ariaControls}
     aria-haspopup={ariaHasPopup}
