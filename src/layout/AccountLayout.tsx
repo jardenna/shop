@@ -9,10 +9,11 @@ const AccountLayout = () => {
   const { language } = useLanguage();
   const { pathname } = useLocation();
 
-  const metaTitle = getPathInfo(pathname);
+  const pathInfo = getPathInfo(pathname);
+  const title = language[pathInfo];
 
   return (
-    <FullSizePageContainer metaTitle={language[metaTitle]}>
+    <FullSizePageContainer metaTitle={title}>
       <section className="account">
         <div className="test">
           <LayoutElement as="nav" ariaLabel="brugerkonto">
@@ -23,6 +24,7 @@ const AccountLayout = () => {
             </ul>
           </LayoutElement>
           <div className="content-test">
+            <h1>{title}</h1>
             <Outlet />
           </div>
         </div>
