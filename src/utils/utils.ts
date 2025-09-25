@@ -80,16 +80,15 @@ const getFilterSummary = (filters: Filters): FiltersCountResult => {
   return { countsByKey, totalCount };
 };
 
-function getPathInfo(pathname: string) {
+const getPathInfo = (pathname: string) => {
   // Normalize: remove empty segments
   const parts = pathname.split('/').filter(Boolean);
 
   return parts[parts.length - 1] || '';
-}
+};
 
-function pathEquals(path: string | undefined, enumVal: ShopPath | AdminPath) {
-  return `/${path}` === `/${enumVal}`;
-}
+const pathEquals = (path: string | undefined, enumVal: ShopPath | AdminPath) =>
+  `/${path}` === `/${enumVal}`;
 
 export const isAdminPath = (pathname: string) =>
   pathname.startsWith(`/${AdminPath.Admin}`);
