@@ -1,4 +1,3 @@
-import MobileNav from '../../adminLayout/MobileNav';
 import { DropdownItem } from '../../components/dropdownBtn/DropdownBtn';
 import type {
   PrimaryActionBtnProps,
@@ -9,6 +8,7 @@ import type { InputChangeHandler, OptionType } from '../../types/types';
 import HeaderIcons from '../headerIcons/HeaderIcons';
 import LayoutElement from '../LayoutElement';
 import { ShopPath } from '../nav/enums';
+import MobileNav from '../nav/MobileNav';
 import NavContainer from '../nav/NavContainer';
 import { navList } from '../nav/navLists';
 import './_header.scss';
