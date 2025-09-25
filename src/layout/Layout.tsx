@@ -11,6 +11,7 @@ import useFormValidation from '../hooks/useFormValidation';
 import useMediaQuery from '../hooks/useMediaQuery ';
 import { BtnType, IconName } from '../types/enums';
 import type { OptionType } from '../types/types';
+import { getPathInfo, pathEquals } from '../utils/utils';
 import Header from './header/Header';
 import { AdminPath, ShopPath } from './nav/enums';
 
@@ -86,11 +87,13 @@ const Layout = () => {
     authDropdownItem,
   ];
 
+  const pathInfo = getPathInfo(pathname);
+
   // User dropdown list
   const userDropdownBtnList: DropdownItem[] = [
     {
       label: language.myAccount,
-      isActive: pathname === `/${ShopPath.MyAccount}`,
+      isActive: pathEquals(pathInfo, ShopPath.MyAccount),
       onClick: () => {
         if (currentUser) {
           navigate(`/${ShopPath.MyAccount}`);
@@ -108,7 +111,7 @@ const Layout = () => {
     },
     {
       label: language.myOrders,
-      isActive: pathname === `/${ShopPath.MyOrders}`,
+      isActive: pathEquals(pathInfo, ShopPath.MyOrders),
       icon: <Icon iconName={IconName.Orders} title={language.myOrders} />,
       onClick: () => {
         if (currentUser) {

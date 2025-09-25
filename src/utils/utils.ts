@@ -1,4 +1,4 @@
-import { AdminPath } from '../layout/nav/enums';
+import { AdminPath, ShopPath } from '../layout/nav/enums';
 import { ValidationMessage } from '../types/enums';
 import type {
   AriaLabelData,
@@ -87,6 +87,10 @@ function getPathInfo(pathname: string) {
   return parts[parts.length - 1] || '';
 }
 
+function pathEquals(path: string | undefined, enumVal: ShopPath | AdminPath) {
+  return `/${path}` === `/${enumVal}`;
+}
+
 export const isAdminPath = (pathname: string) =>
   pathname.startsWith(`/${AdminPath.Admin}`);
 
@@ -103,5 +107,6 @@ export {
   maxFileSize,
   oneDay,
   optionsList,
+  pathEquals,
   sliceAndCountHidden,
 };
