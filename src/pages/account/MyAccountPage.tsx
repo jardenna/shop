@@ -4,7 +4,7 @@ import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import FullSizePageContainer from '../pageContainer/FullSizePageContainer';
 
-const MyAccount = () => {
+const MyAccountPage = () => {
   const { language } = useLanguage();
   const { currentUser } = useAuth();
 
@@ -21,7 +21,6 @@ const MyAccount = () => {
           </LayoutElement>
           <div className="content-test">
             <h1>{language.myAccount}</h1>
-
             <div>
               <p>{currentUser?.username}</p>
               <p>{currentUser?.email}</p>
@@ -36,4 +35,4 @@ const MyAccount = () => {
   );
 };
 
-export default MyAccount;
+export default MyAccountPage;

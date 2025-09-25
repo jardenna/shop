@@ -3,8 +3,8 @@ import AdminLayout from '../adminLayout/AdminLayout';
 import Layout from '../layout/Layout';
 import { AdminPath, ShopPath } from '../layout/nav/enums';
 import AboutUsPage from '../pages/AboutUsPage';
-import MyAccount from '../pages/account/MyAccount';
-import Orders from '../pages/account/Orders';
+import MyAccountPage from '../pages/account/MyAccountPage';
+import OrdersPage from '../pages/account/OrdersPage';
 import AdminCreateUserPage from '../pages/admin/AdminCreateUserPage';
 import Dashboard from '../pages/admin/Dashboard';
 import OrderPage from '../pages/admin/OrderPage';
@@ -71,11 +71,11 @@ const routeList = [
   },
   {
     path: ShopPath.MyAccount,
-    element: <MyAccount />,
+    element: <MyAccountPage />,
   },
   {
     path: ShopPath.MyOrders,
-    element: <Orders />,
+    element: <OrdersPage />,
   },
   {
     path: ShopPath.ShoppingCart,
