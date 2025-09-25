@@ -84,10 +84,7 @@ function getPathInfo(pathname: string) {
   // Normalize: remove empty segments
   const parts = pathname.split('/').filter(Boolean);
 
-  return {
-    title: parts[parts.length - 1] || '',
-    startsWith: (segment: string) => parts[0] === segment,
-  };
+  return parts[parts.length - 1] || '';
 }
 
 export const isAdminPath = (pathname: string) =>

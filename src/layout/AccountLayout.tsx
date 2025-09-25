@@ -9,11 +9,10 @@ const AccountLayout = () => {
   const { language } = useLanguage();
   const { pathname } = useLocation();
 
-  const info = getPathInfo(pathname);
-  console.log(info.title);
+  const metaTitle = getPathInfo(pathname);
 
   return (
-    <FullSizePageContainer metaTitle={language.myAccount}>
+    <FullSizePageContainer metaTitle={language[metaTitle]}>
       <section className="account">
         <div className="test">
           <LayoutElement as="nav" ariaLabel="brugerkonto">
