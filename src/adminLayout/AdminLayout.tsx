@@ -37,7 +37,7 @@ const AdminLayout = () => {
     <div className="main-container admin-container">
       {!isMobileSize && <SkipLink />}
       <AdminHeader
-        ariaLabel={language.mainSiteHeader}
+        ariaLabel={language.main}
         onLogout={handleLogout}
         btnLabel={language.logout}
         welcomeMessage={
