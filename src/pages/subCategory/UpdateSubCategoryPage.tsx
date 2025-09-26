@@ -20,7 +20,7 @@ const UpdateSubCategoryPage = () => {
 
   return (
     <>
-      {!isLoading && <SkeletonForm count={3} />}
+      {isLoading && <SkeletonForm count={3} />}
       {allCategories && category && (
         <AdminPageContainer
           variant="small"
