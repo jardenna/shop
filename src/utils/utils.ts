@@ -1,5 +1,4 @@
 import { AdminPath, ShopPath } from '../layout/nav/enums';
-import { ValidationMessage } from '../types/enums';
 import type {
   AriaLabelData,
   Filters,
@@ -20,22 +19,6 @@ const maxFileSize = 1 * maxSizeInBytes;
 const maxFiles = 5;
 
 const allowedExtensions = ['jpg', 'jpeg', 'png', 'webp', 'avif'];
-
-// Error messages
-const getErrorMessage = (error: unknown): string => {
-  if (
-    error &&
-    typeof error === 'object' &&
-    'data' in error &&
-    error.data &&
-    typeof error.data === 'object' &&
-    'message' in error.data
-  ) {
-    return (error.data as { message: string }).message;
-  }
-
-  return ValidationMessage.UnknownError;
-};
 
 // Translation
 const getlowerCaseFirstLetter = (
@@ -98,12 +81,11 @@ export {
   currencyCacheKey,
   discountCalculation,
   getAriaLabel,
-  getErrorMessage,
   getFilterSummary,
-  getlowerCaseFirstLetter,
   getPathInfo,
-  maxFiles,
+  getlowerCaseFirstLetter,
   maxFileSize,
+  maxFiles,
   oneDay,
   optionsList,
   pathEquals,

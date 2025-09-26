@@ -1,5 +1,4 @@
 import { useNavigate, useParams } from 'react-router';
-import ErrorContent from '../../components/ErrorContent';
 import CategoryCard from '../../components/adminCard/CategoryCard';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import SkeletonTwoCards from '../../components/skeleton/SkeletonTwoCards';
@@ -9,17 +8,13 @@ import {
   useGetSubCategoryByIdQuery,
 } from '../../features/subCategories/subCategoryApiSlice';
 import { AdminPath } from '../../layout/nav/enums';
-import { getErrorMessage, getlowerCaseFirstLetter } from '../../utils/utils';
+import { getlowerCaseFirstLetter } from '../../utils/utils';
 import PageContainer from '../pageContainer/PageContainer';
 
 const ViewSubCategoryPage = () => {
   const params = useParams();
   const navigate = useNavigate();
   const { language } = useLanguage();
-
-  const handleGoback = () => {
-    navigate(-1);
-  };
 
   const { onAddMessagePopup } = useMessagePopup();
 
@@ -28,7 +23,6 @@ const ViewSubCategoryPage = () => {
     data: category,
     isLoading,
     refetch,
-    error,
   } = useGetSubCategoryByIdQuery(params.id || '', {
     refetchOnMountOrArgChange: true,
   });
@@ -63,13 +57,6 @@ const ViewSubCategoryPage = () => {
 
   return (
     <article className="admin-page page-medium">
-      {error && (
-        <ErrorContent
-          onClick={handleGoback}
-          errorText={getErrorMessage(error)}
-          btnLabel={language.goBack}
-        />
-      )}
       {isLoading && <SkeletonTwoCards />}
       {category && (
         <PageContainer

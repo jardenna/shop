@@ -1,5 +1,4 @@
 import { useNavigate, useParams } from 'react-router';
-import ErrorContent from '../../components/ErrorContent';
 import ProductCardCenter from '../../components/adminCard/ProductCardCenter';
 import ProductCardLeft from '../../components/adminCard/ProductCardLeft';
 import CardFooter from '../../components/card/CardFooter';
@@ -15,7 +14,6 @@ import {
 } from '../../features/products/productApiSlice';
 import { AdminPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
-import { getErrorMessage } from '../../utils/utils';
 import PageContainer from '../pageContainer/PageContainer';
 
 const ViewProductPage = () => {
@@ -24,9 +22,6 @@ const ViewProductPage = () => {
   const { language } = useLanguage();
   const { isAdmin } = useAuth();
 
-  const handleGoback = () => {
-    navigate(-1);
-  };
   const { onAddMessagePopup } = useMessagePopup();
 
   // Redux hooks
@@ -34,7 +29,6 @@ const ViewProductPage = () => {
     data: product,
     isLoading,
     refetch,
-    error,
   } = useGetProductByIdQuery(params.id || '');
 
   const [deleteProduct] = useDeleteProductMutation();
@@ -83,13 +77,7 @@ const ViewProductPage = () => {
   return (
     <article className="admin-page">
       {isLoading && <SkeletonThreeCards />}
-      {error && (
-        <ErrorContent
-          onClick={handleGoback}
-          errorText={getErrorMessage(error)}
-          btnLabel={language.goBack}
-        />
-      )}
+
       {product && (
         <PageContainer
           heading={product.productName}
