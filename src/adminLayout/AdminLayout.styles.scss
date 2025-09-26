@@ -11,13 +11,13 @@
   align-items: center;
   width: 100%;
   max-width: $page-width-large;
-  padding-block: 32px;
 }
 
 .admin-container {
   .container {
     max-width: 100%;
     display: flex;
+    padding-top: 32px;
   }
 
   .main {
