@@ -14,8 +14,8 @@ const useFilterParams = (initialFilters: FilterValuesType<string>) => {
   );
   const [searchParams, setSearchParams] = useSearchParams();
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const location = useLocation();
-  const prevPathRef = useRef(location.pathname);
+  const { pathname } = useLocation();
+  const prevPathRef = useRef(pathname);
 
   useEffect(() => {
     const paramsKeys = Array.from(searchParams.keys());
@@ -28,16 +28,16 @@ const useFilterParams = (initialFilters: FilterValuesType<string>) => {
     });
 
     if (
-      prevPathRef.current !== location.pathname ||
+      prevPathRef.current !== pathname ||
       Object.keys(updatedFilters).length > 0
     ) {
       setFilterValues({
         ...filterValues,
         ...updatedFilters,
       } as FilterValuesType<string>);
-      prevPathRef.current = location.pathname;
+      prevPathRef.current = pathname;
     }
-  }, [location.pathname, searchParams]);
+  }, [pathname, searchParams]);
 
   // Sync filters from URL on mount
   useEffect(() => {

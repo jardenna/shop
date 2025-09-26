@@ -15,6 +15,7 @@
   }
 
   &:has(.btn.active),
+  &:has(.btn:focus-visible),
   &:has(.btn:hover) {
     border-color: $color-blue-25;
     background-color: $color-background;
@@ -22,5 +23,9 @@
 
   .btn-with-icon {
     justify-content: space-between;
+
+    &:focus-visible {
+      outline: transparent;
+    }
   }
 }

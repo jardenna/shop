@@ -9,7 +9,7 @@ type DropdownListProps = {
 };
 
 const DropdownList = ({ dropdownList, defaultIndex }: DropdownListProps) => {
-  const { selectedListItemIndex, listRefs } = useKeyboardListNav({
+  const { listRefs } = useKeyboardListNav({
     defaultIndex,
     dropdownList,
   });
@@ -18,20 +18,15 @@ const DropdownList = ({ dropdownList, defaultIndex }: DropdownListProps) => {
     <ul>
       {dropdownList.map(
         ({ label, onClick, icon, btnVariant, disabled, isActive }, index) => (
-          <li
-            key={label}
-            className={`dropdown-item ${index === selectedListItemIndex ? 'active' : ''}`}
-          >
+          <li key={label} className="dropdown-item">
             <Button
               variant={btnVariant || BtnVariant.WidthIcon}
               className={isActive ? 'active' : ''}
               onClick={onClick}
               disabled={disabled}
-              tabIndex={index === selectedListItemIndex ? 0 : -1}
               ref={(el) => {
                 listRefs.current[index] = el;
               }}
-              ariaSelected={index === selectedListItemIndex}
             >
               <span>{label}</span>
               <span>{icon}</span>

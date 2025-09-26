@@ -2,7 +2,7 @@ import { useCallback, useMemo } from 'react';
 import { useLocation, useParams } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
-import { AdminPath } from '../../layout/nav/enums';
+import { isAdminPath } from '../../utils/utils';
 import './_breadcrumbs.scss';
 import BreadcrumbItem from './BreadcrumbItem';
 import { breadcrumbsListProps } from './breadcrumbsLists';
@@ -35,10 +35,7 @@ const Breadcrumbs = ({
     [pathnames],
   );
 
-  const isAdmin = useMemo(
-    () => pathname.startsWith(`/${AdminPath.Admin}`),
-    [pathname],
-  );
+  const isAdmin = isAdminPath(pathname);
 
   const fullPaths = useMemo(
     () => (isAdmin ? paths : ['/', ...paths]),

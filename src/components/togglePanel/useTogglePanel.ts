@@ -9,8 +9,8 @@ const useTogglePanel = ({
 }: {
   preventClickOutside: boolean;
 }) => {
-  const location = useLocation();
-  const prevPathname = useRef(location.pathname);
+  const { pathname } = useLocation();
+  const prevPathname = useRef(pathname);
   const [isPanelShown, setIsPanelShown] = useState(false);
 
   const handleHidePanel = () => {
@@ -49,11 +49,11 @@ const useTogglePanel = ({
   }, [isPanelShown]);
 
   useEffect(() => {
-    if (prevPathname.current !== location.pathname) {
+    if (prevPathname.current !== pathname) {
       handleHidePanel();
-      prevPathname.current = location.pathname; // update ref
+      prevPathname.current = pathname; // update ref
     }
-  }, [location.pathname]);
+  }, [pathname]);
 
   return {
     isPanelShown,

@@ -7,7 +7,6 @@ export type IconBtnProps = {
   title: string;
   ariaExpanded?: boolean;
   ariaLabel?: string;
-  ariaSelected?: boolean;
   btnType?: BtnType;
   className?: string;
   disabled?: boolean;
@@ -22,7 +21,6 @@ const IconBtn = ({
   title,
   onClick,
   className,
-  ariaSelected,
   ariaExpanded,
   btnType,
   variant = BtnVariant.Ghost,
@@ -33,7 +31,6 @@ const IconBtn = ({
     variant={variant}
     onClick={onClick}
     className={className}
-    ariaSelected={ariaSelected}
     ariaExpanded={ariaExpanded}
     type={btnType}
     disabled={disabled}

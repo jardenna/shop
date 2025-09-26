@@ -1,6 +1,6 @@
-import TogglePanel from '../components/togglePanel/TogglePanel';
-import type { NavItemsProps } from '../layout/nav/Nav';
-import NavContainer from '../layout/nav/NavContainer';
+import TogglePanel from '../../components/togglePanel/TogglePanel';
+import { NavItemsProps } from './Nav';
+import NavContainer from './NavContainer';
 
 export type AdminNavProps = {
   navList: NavItemsProps[];
@@ -13,7 +13,7 @@ const MobileNav = ({ navList, className }: AdminNavProps) => (
     preventClickOutside
     triggerBtnClassName="menu-burger"
   >
-    <NavContainer navList={navList} className={className} />
+    <NavContainer navList={navList} className={className} hideAria />
   </TogglePanel>
 );
 

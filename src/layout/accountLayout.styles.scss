@@ -1,0 +1,36 @@
+@use '../scss/globals' as *;
+
+.account {
+  height: 90vh;
+  overflow: hidden;
+  display: flex;
+  gap: 52px;
+  justify-content: center;
+
+  .nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    text-transform: uppercase;
+  }
+
+  .content-test {
+    background-color: $color-background;
+    padding: 42px;
+    min-height: rem(400px);
+  }
+
+  .test {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: rem(700px);
+    gap: 4px;
+  }
+
+  img {
+    height: 100%;
+    border-radius: 0;
+  }
+}

@@ -27,8 +27,8 @@ const navList: NavItemsProps[] = [
     ],
   },
   {
-    path: ShopPath.Profile,
-    linkText: LinkText.Profile,
+    path: ShopPath.AboutUs,
+    linkText: LinkText.AboutUs,
   },
   {
     path: ShopPath.Contact,
@@ -36,23 +36,7 @@ const navList: NavItemsProps[] = [
   },
 ];
 
-const authItemsList = [
-  {
-    path: ShopPath.Login,
-    linkText: LinkText.Login,
-  },
-  {
-    path: ShopPath.CreateAccount,
-    linkText: LinkText.CreateAccount,
-  },
-];
-
 const adminNavList: NavItemsProps[] = [
-  {
-    path: AdminPath.AdminProfile,
-    linkText: LinkText.Account,
-    iconName: IconName.Account,
-  },
   {
     path: AdminPath.AdminProducts,
     linkText: LinkText.Products,
@@ -80,4 +64,20 @@ const adminNavList: NavItemsProps[] = [
   },
 ];
 
-export { adminNavList, authItemsList, navList };
+const accountNavList = [
+  {
+    path: '',
+    linkText: LinkText.MyAccount,
+    end: true,
+  },
+  {
+    path: ShopPath.MyAddresses,
+    linkText: LinkText.MyAddresses,
+  },
+  {
+    path: ShopPath.MyOrders,
+    linkText: LinkText.MyOrders,
+  },
+];
+
+export { accountNavList, adminNavList, navList };

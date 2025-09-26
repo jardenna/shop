@@ -5,7 +5,6 @@ import useKeyPress from './useKeyPress';
 
 type UseKeyboardListNavProps = {
   dropdownList: DropdownItem[];
-
   defaultIndex?: number;
 };
 
@@ -51,7 +50,7 @@ const useKeyboardListNav = ({
   useKeyPress(handleGotoFirstListItem, [KeyCode.Home]);
   useKeyPress(handleGotoLastListItem, [KeyCode.End]);
 
-  return { selectedListItemIndex, listRefs };
+  return { listRefs };
 };
 
 export default useKeyboardListNav;

@@ -32,7 +32,6 @@ const DisplayControls = ({
           onSetDisplay(display);
         }}
         disabled={isActive === display}
-        ariaSelected={isActive === display}
       />
     ))}
   </div>

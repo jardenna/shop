@@ -10,7 +10,7 @@ import { adminNavList } from '../layout/nav/navLists';
 import AdminHeader from './AdminHeader';
 import './AdminLayout.styles.scss';
 import Aside from './aside/Aside';
-import MobileNav from './MobileNav';
+import MobileNav from '../layout/nav/MobileNav';
 
 const AdminLayout = () => {
   const navigate = useNavigate();

@@ -1,3 +1,4 @@
+import { AdminPath, ShopPath } from '../layout/nav/enums';
 import { ValidationMessage } from '../types/enums';
 import type {
   AriaLabelData,
@@ -79,6 +80,19 @@ const getFilterSummary = (filters: Filters): FiltersCountResult => {
   return { countsByKey, totalCount };
 };
 
+const getPathInfo = (pathname: string) => {
+  // Normalize: remove empty segments
+  const parts = pathname.split('/').filter(Boolean);
+
+  return parts[parts.length - 1] || '';
+};
+
+const pathEquals = (path: string | undefined, enumVal: ShopPath | AdminPath) =>
+  `/${path}` === `/${enumVal}`;
+
+export const isAdminPath = (pathname: string) =>
+  pathname.startsWith(`/${AdminPath.Admin}`);
+
 export {
   allowedExtensions,
   currencyCacheKey,
@@ -87,9 +101,11 @@ export {
   getErrorMessage,
   getFilterSummary,
   getlowerCaseFirstLetter,
+  getPathInfo,
   maxFiles,
   maxFileSize,
   oneDay,
   optionsList,
+  pathEquals,
   sliceAndCountHidden,
 };

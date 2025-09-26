@@ -1,9 +1,12 @@
 import { createBrowserRouter } from 'react-router';
 import AdminLayout from '../adminLayout/AdminLayout';
+import AccountLayout from '../layout/AccountLayout';
 import Layout from '../layout/Layout';
 import { AdminPath, ShopPath } from '../layout/nav/enums';
-import MyAccount from '../pages/account/MyAccount';
-import Orders from '../pages/account/Orders';
+import AboutUsPage from '../pages/AboutUsPage';
+import AddressPage from '../pages/account/AddressPage';
+import MyAccountPage from '../pages/account/MyAccountPage';
+import OrdersPage from '../pages/account/OrdersPage';
 import AdminCreateUserPage from '../pages/admin/AdminCreateUserPage';
 import Dashboard from '../pages/admin/Dashboard';
 import OrderPage from '../pages/admin/OrderPage';
@@ -23,7 +26,6 @@ import CreateProductPage from '../pages/product/CreateProductPage';
 import ProductPage from '../pages/product/ProductPage';
 import UpdateProductPage from '../pages/product/UpdateProductPage';
 import ViewProductPage from '../pages/product/ViewProductPage';
-import ProfilePage from '../pages/ProfilePage';
 import ProtectedRoute from '../pages/ProtectedRoute';
 import ShoppingChartPage from '../pages/ShoppingChartPage';
 import SingleProductPage from '../pages/SingleProductPage';
@@ -54,8 +56,8 @@ const routeList = [
     element: <SingleProductPage />,
   },
   {
-    path: ShopPath.Profile,
-    element: <ProfilePage />,
+    path: ShopPath.AboutUs,
+    element: <AboutUsPage />,
   },
   {
     path: ShopPath.Contact,
@@ -71,12 +73,23 @@ const routeList = [
   },
   {
     path: ShopPath.MyAccount,
-    element: <MyAccount />,
+    element: <AccountLayout />,
+    children: [
+      {
+        path: '',
+        element: <MyAccountPage />,
+      },
+      {
+        path: ShopPath.MyOrders,
+        element: <OrdersPage />,
+      },
+      {
+        path: ShopPath.MyAddresses,
+        element: <AddressPage />,
+      },
+    ],
   },
-  {
-    path: ShopPath.MyOrders,
-    element: <Orders />,
-  },
+
   {
     path: ShopPath.ShoppingCart,
     element: <ShoppingChartPage />,
@@ -119,10 +132,6 @@ const adminRouteList = [
   {
     path: `${AdminPath.AdminSubCategoryView}/:id`,
     element: <ViewSubCategoryPage />,
-  },
-  {
-    path: AdminPath.AdminProfile,
-    element: <ProfilePage />,
   },
   {
     path: AdminPath.AdminProducts,
