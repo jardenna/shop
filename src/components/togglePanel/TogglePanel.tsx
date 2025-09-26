@@ -81,7 +81,11 @@ const TogglePanel = ({
         {showCloseIcon && isPanelShown && <BtnClose onClick={onHidePanel} />}
 
         {isPanelShown && footer && (
-          <LayoutElement as="footer" ariaLabel="panel" className="footer">
+          <LayoutElement
+            as="footer"
+            ariaLabel={language.panel}
+            className="footer"
+          >
             <Button
               variant={BtnVariant.Secondary}
               onClick={footer.secondaryAction}

@@ -21,6 +21,7 @@ const NavContainer = ({
   currentUser,
   className = 'main-nav-container',
   hideAria,
+  ariaLabel,
 }: NavContainerProps) => {
   const { language } = useLanguage();
 
@@ -28,7 +29,7 @@ const NavContainer = ({
     <>
       <Nav
         navList={navList}
-        ariaLabel={language.main}
+        ariaLabel={ariaLabel || language.main}
         hideAria={hideAria}
         className={className || 'main-nav-container'}
       />

@@ -43,8 +43,8 @@ const FavoritesPage = () => {
                         handleAddToBag(product.id);
                       }}
                       iconName={IconName.ShoppingBag}
-                      title="title"
-                      ariaLabel="ariaLabel"
+                      title=""
+                      ariaLabel={language.bag}
                     />
                   </div>
                   <ProductCardGridContent product={product} />
