@@ -6,7 +6,6 @@ import { breadcrumbsList } from '../../components/breadcrumbs/breadcrumbsLists';
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import MetaTags from '../../layout/nav/MetaTags';
-import './_page-container.scss';
 
 type MainPageContainerProps = {
   children: ReactNode;

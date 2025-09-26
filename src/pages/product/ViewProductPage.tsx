@@ -14,7 +14,7 @@ import {
 } from '../../features/products/productApiSlice';
 import { AdminPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
-import PageContainer from '../pageContainer/PageContainer';
+import PageContainer from '../pageContainer/AdminPageContainer';
 
 const ViewProductPage = () => {
   const params = useParams();

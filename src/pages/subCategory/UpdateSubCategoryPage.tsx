@@ -4,7 +4,7 @@ import { useGetAllCategoriesQuery } from '../../features/categories/categoriyApi
 import useLanguage from '../../features/language/useLanguage';
 import SubCategoryForm from '../../features/subCategories/components/SubCategoryForm';
 import { useGetSubCategoryByIdQuery } from '../../features/subCategories/subCategoryApiSlice';
-import PageContainer from '../pageContainer/PageContainer';
+import PageContainer from '../pageContainer/AdminPageContainer';
 
 const UpdateSubCategoryPage = () => {
   const params = useParams();

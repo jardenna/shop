@@ -11,7 +11,7 @@ import {
 } from '../../features/products/productApiSlice';
 import { AdminPath } from '../../layout/nav/enums';
 import { oneDay } from '../../utils/utils';
-import PageContainer from '../pageContainer/PageContainer';
+import PageContainer from '../pageContainer/AdminPageContainer';
 import './ProductPage.styles.scss';
 
 const tableHeaders: Column<Product>[] = [

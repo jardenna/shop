@@ -9,7 +9,7 @@ import {
 } from '../../features/subCategories/subCategoryApiSlice';
 import { AdminPath } from '../../layout/nav/enums';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
-import PageContainer from '../pageContainer/PageContainer';
+import PageContainer from '../pageContainer/AdminPageContainer';
 
 const ViewSubCategoryPage = () => {
   const params = useParams();

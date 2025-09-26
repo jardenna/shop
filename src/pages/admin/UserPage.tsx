@@ -17,7 +17,7 @@ import useTableEditField from '../../hooks/useTableEditField';
 import useTrapFocus from '../../hooks/useTrapFocus';
 import { AdminPath } from '../../layout/nav/enums';
 import { BtnVariant, IconName } from '../../types/enums';
-import PageContainer from '../pageContainer/PageContainer';
+import PageContainer from '../pageContainer/AdminPageContainer';
 import DeleteUser from './DeleteUser';
 
 const tableHeaders: { key: keyof UserResponse; label: string; name: string }[] =

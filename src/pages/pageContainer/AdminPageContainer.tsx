@@ -7,7 +7,7 @@ import PageHeader from '../../components/PageHeader';
 import MetaTags from '../../layout/nav/MetaTags';
 import './_page-container.scss';
 
-type PageContainerProps = {
+type AdminPageContainerProps = {
   children: ReactNode;
   heading: string;
   linkText?: string;
@@ -15,13 +15,13 @@ type PageContainerProps = {
   onReset?: () => void;
 };
 
-const PageContainer = ({
+const AdminPageContainer = ({
   children,
   heading,
   linkText,
   linkTo,
   onReset,
-}: PageContainerProps) => (
+}: AdminPageContainerProps) => (
   <>
     <MetaTags metaTitle={heading} />
     <Breadcrumbs routeList={adminBreadcrumbsList} currentLabel={heading} />
@@ -37,4 +37,4 @@ const PageContainer = ({
   </>
 );
 
-export default PageContainer;
+export default AdminPageContainer;

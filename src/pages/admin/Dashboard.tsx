@@ -1,5 +1,5 @@
 import useLanguage from '../../features/language/useLanguage';
-import PageContainer from '../pageContainer/PageContainer';
+import PageContainer from '../pageContainer/AdminPageContainer';
 
 const Dashboard = () => {
   const { language } = useLanguage();
