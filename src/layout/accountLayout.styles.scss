@@ -14,19 +14,19 @@
     text-transform: uppercase;
   }
 
-  .content-test {
-    background-color: $color-background;
-    padding: 42px;
-    min-height: rem(400px);
-  }
-
-  .test {
+  .account-page-container {
     flex: 2;
     display: flex;
     flex-direction: column;
     justify-content: center;
     max-width: rem(700px);
     gap: 4px;
+  }
+
+  .account-page-content {
+    background-color: $color-background;
+    padding: 42px;
+    min-height: rem(400px);
   }
 
   img {
