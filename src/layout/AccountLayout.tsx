@@ -18,7 +18,7 @@ const AccountLayout = () => {
     <>
       <MetaTags metaTitle={title} />
       <article className="container">
-        <section className="account">
+        <section className="account-page">
           <div className="test">
             <NavContainer navList={accountNavList} ariaLabel="brugerkonto" />
             <div className="content-test">
