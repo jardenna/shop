@@ -13,7 +13,6 @@ const DropdownList = ({ dropdownList, defaultIndex }: DropdownListProps) => {
     defaultIndex,
     dropdownList,
   });
-  // console.log(dropdownList);
 
   return (
     <ul>
