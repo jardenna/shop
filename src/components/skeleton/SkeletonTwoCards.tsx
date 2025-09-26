@@ -1,16 +1,17 @@
 import Skeleton from './Skeleton';
 import SkeletonBadge from './SkeletonBadge';
+import SkeletonBreadCrumbs from './SkeletonBreadCrumbs';
 import SkeletonHeader from './SkeletonHeader';
 import SkeletonList from './SkeletonList';
 import SkeletonParagraph from './SkeletonParagraph';
 
 const SkeletonTwoCards = () => (
-  <div className="skeleton-column">
-    <SkeletonParagraph count={1} width="24" />
+  <div className="skeleton-column  page-medium">
+    <SkeletonBreadCrumbs />
     <SkeletonHeader />
     <div className="page-card">
       <div className="flex">
-        <div className="page-card flex-1">
+        <div className="flex-1">
           <div
             className="column flex-justify-space-between"
             style={{ height: '100%' }}
@@ -23,7 +24,7 @@ const SkeletonTwoCards = () => (
             <SkeletonList />
           </div>
         </div>
-        <Skeleton height="27" width="25" />
+        <Skeleton height="22" width="25" />
       </div>
     </div>
   </div>
