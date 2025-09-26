@@ -17,7 +17,7 @@ export type NavItemsProps = BaseNav & {
   subNavList?: BaseNav[];
 };
 
-type NavProps = {
+export type NavProps = {
   ariaLabel: string;
   navList: NavItemsProps[];
   className?: string;

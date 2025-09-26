@@ -1,16 +1,15 @@
 import { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import './_nav.scss';
-import type { NavItemsProps } from './Nav';
+import type { NavProps } from './Nav';
 import Nav from './Nav';
 import NavUser from './NavUser';
 
-type NavContainerProps = {
-  navList: NavItemsProps[];
+type OmittedNavProps = Omit<NavProps, 'ariaLabel'>;
+
+type NavContainerProps = OmittedNavProps & {
   ariaLabel?: string;
-  className?: string;
   currentUser?: UserResponse | null;
-  hideAriaHasPopup?: boolean;
   isMenuCollapsed?: boolean;
   onCollapseMenu?: () => void;
 };
