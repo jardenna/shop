@@ -3,7 +3,7 @@ import LayoutElement from '../../layout/LayoutElement';
 import Breadcrumbs from '../breadcrumbs/Breadcrumbs';
 import { breadcrumbsListProps } from '../breadcrumbs/breadcrumbsLists';
 import LinkButton from '../LinkButton';
-import './_page-container.scss';
+import './_page-header.scss';
 
 type PageHeaderProps = {
   heading: string;
