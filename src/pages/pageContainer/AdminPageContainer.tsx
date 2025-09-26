@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import PageHeader from '../../adminLayout/PageHeader';
+import AdminPageHeader from '../../adminLayout/AdminPageHeader';
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 import { adminBreadcrumbsList } from '../../components/breadcrumbs/breadcrumbsLists';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
@@ -27,7 +27,7 @@ const AdminPageContainer = ({
   <article className={`admin-page page-${variant}`}>
     <MetaTags metaTitle={heading} />
     <Breadcrumbs routeList={adminBreadcrumbsList} currentLabel={heading} />
-    <PageHeader heading={heading} linkText={linkText} linkTo={linkTo} />
+    <AdminPageHeader heading={heading} linkText={linkText} linkTo={linkTo} />
     <div className="page-card">
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
