@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import AdminPageHeader from '../../adminLayout/AdminPageHeader';
+import PageHeader from '../../adminLayout/PageHeader';
+import { breadcrumbsList } from '../../components/breadcrumbs/breadcrumbsLists';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import MetaTags from '../../layout/nav/MetaTags';
 
@@ -20,7 +21,7 @@ const MainPageContainer = ({
   <>
     <MetaTags metaTitle={heading} />
     <article className={`container ${className}`}>
-      <AdminPageHeader heading={heading} />
+      <PageHeader heading={heading} routeList={breadcrumbsList} />
 
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
