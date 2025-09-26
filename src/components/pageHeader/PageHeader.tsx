@@ -1,27 +1,20 @@
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import Breadcrumbs from '../breadcrumbs/Breadcrumbs';
-import { breadcrumbsListProps } from '../breadcrumbs/breadcrumbsLists';
 import LinkButton from '../LinkButton';
 import './_page-header.scss';
 
 type PageHeaderProps = {
   heading: string;
-  routeList: breadcrumbsListProps[];
   linkText?: string;
   linkTo?: string;
 };
 
-const PageHeader = ({
-  heading,
-  linkTo,
-  linkText,
-  routeList,
-}: PageHeaderProps) => {
+const PageHeader = ({ heading, linkTo, linkText }: PageHeaderProps) => {
   const { language } = useLanguage();
   return (
     <div className="page-header-container">
-      <Breadcrumbs routeList={routeList} currentLabel={heading} />
+      <Breadcrumbs currentLabel={heading} />
       <LayoutElement className="page-header" ariaLabel={language.page}>
         <h1>{heading}</h1>
         {linkTo && linkText && (

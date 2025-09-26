@@ -8,9 +8,9 @@ import BreadcrumbItem from './BreadcrumbItem';
 import { breadcrumbsListProps } from './breadcrumbsLists';
 
 type BreadcrumbsProps = {
-  routeList: breadcrumbsListProps[];
   currentLabel?: string;
   productName?: string;
+  routeList?: breadcrumbsListProps[];
   subMenu?: { categoryId: string; label: string }[];
 };
 
@@ -64,7 +64,7 @@ const Breadcrumbs = ({
       return language[lastSegment];
     }
 
-    const matchedRoute = routeList.find((route) => {
+    const matchedRoute = routeList?.find((route) => {
       if (!route.path) {
         return false;
       }
