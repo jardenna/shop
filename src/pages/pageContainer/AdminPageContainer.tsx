@@ -1,10 +1,9 @@
 import type { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import PageHeader from '../../adminLayout/PageHeader';
 import { adminBreadcrumbsList } from '../../components/breadcrumbs/breadcrumbsLists';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
+import PageHeader from '../../components/pageHeader/PageHeader';
 import MetaTags from '../../layout/nav/MetaTags';
-import './_page-container.scss';
 
 type AdminPageContainerProps = {
   children: ReactNode;

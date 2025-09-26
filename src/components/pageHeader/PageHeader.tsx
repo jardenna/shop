@@ -1,8 +1,9 @@
-import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
-import { breadcrumbsListProps } from '../components/breadcrumbs/breadcrumbsLists';
-import LinkButton from '../components/LinkButton';
-import useLanguage from '../features/language/useLanguage';
-import LayoutElement from '../layout/LayoutElement';
+import useLanguage from '../../features/language/useLanguage';
+import LayoutElement from '../../layout/LayoutElement';
+import Breadcrumbs from '../breadcrumbs/Breadcrumbs';
+import { breadcrumbsListProps } from '../breadcrumbs/breadcrumbsLists';
+import LinkButton from '../LinkButton';
+import './_page-container.scss';
 
 type PageHeaderProps = {
   heading: string;
