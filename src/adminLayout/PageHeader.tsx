@@ -1,6 +1,6 @@
+import LinkButton from '../components/LinkButton';
 import useLanguage from '../features/language/useLanguage';
 import LayoutElement from '../layout/LayoutElement';
-import LinkButton from './LinkButton';
 
 type PageHeaderProps = {
   heading: string;
