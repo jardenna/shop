@@ -3,7 +3,7 @@
 $animation-starts-after: 20vh;
 $animation-distance: 500px;
 
-.main-header-container {
+.main-header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -50,7 +50,7 @@ $animation-distance: 500px;
   top: 0;
   background-color: $color-white;
 
-  .main-header-container {
+  .main-header-content {
     padding-block: 30px;
 
     @include max-size($mini) {
