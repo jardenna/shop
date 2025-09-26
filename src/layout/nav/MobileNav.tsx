@@ -15,6 +15,6 @@ const MobileNav = ({ navList, className }: AdminNavProps) => (
   >
     <NavContainer navList={navList} className={className} hideAria />
   </TogglePanel>
-);
+); //
 
 export default MobileNav;
