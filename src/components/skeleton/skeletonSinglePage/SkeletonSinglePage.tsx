@@ -5,8 +5,8 @@ import SkeletonParagraph from '../SkeletonParagraph';
 
 const SkeletonSinglePage = () => (
   <div className="single-product-container">
-    <div className="width-100">
-      <Skeleton height="45" />
+    <div className="width-100 product-img-item ">
+      <Skeleton height="45" width="44" />
     </div>
     <div className="flex column">
       <SkeletonParagraph width="4" count={1} />

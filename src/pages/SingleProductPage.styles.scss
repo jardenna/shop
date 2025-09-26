@@ -63,15 +63,15 @@
     width: 100%;
     flex-direction: column;
     gap: 0;
+  }
 
-    .product-img-item {
-      display: flex;
-      justify-content: center;
-    }
+  .product-img-item {
+    display: flex;
+    justify-content: center;
+  }
 
-    .product-img {
-      border-radius: 0;
-    }
+  .product-img {
+    border-radius: 0;
   }
 }
 

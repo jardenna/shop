@@ -20,7 +20,7 @@ const CreateSubCategoryPage = () => {
 
   return (
     <>
-      {isLoading && <SkeletonForm count={3} />}
+      {isLoading && <SkeletonForm count={4} />}
       <AdminPageContainer
         heading={language.createNewCategory}
         onReset={() => refetch()}
