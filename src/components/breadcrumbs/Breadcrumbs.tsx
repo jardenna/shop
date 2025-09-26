@@ -118,7 +118,7 @@ const Breadcrumbs = ({
   return (
     <LayoutElement
       as="nav"
-      ariaLabel="breadcrumbs"
+      ariaLabel={language.breadcrumbs}
       className="breadcrumbs-container"
     >
       <ul className="breadcrumbs">

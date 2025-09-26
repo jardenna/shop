@@ -4,6 +4,7 @@ import Button from '../Button';
 import type { PrimaryActionBtnProps, SecondaryActionBtnProps } from './Modal';
 
 type ModalFooterProps = {
+  ariaLabel: string;
   primaryActionBtn: PrimaryActionBtnProps & { closeOnClick?: boolean }; // new prop
   secondaryActionBtn?: SecondaryActionBtnProps;
   onCloseModal: () => void;
@@ -15,8 +16,9 @@ const ModalFooter = ({
   secondaryActionBtn,
   onCloseModal,
   onPrimaryClick,
+  ariaLabel,
 }: ModalFooterProps) => (
-  <LayoutElement as="footer" className="footer" ariaLabel="dialog">
+  <LayoutElement as="footer" className="footer" ariaLabel={ariaLabel}>
     {secondaryActionBtn && (
       <Button
         onClick={secondaryActionBtn.onClick || onCloseModal}

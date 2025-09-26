@@ -113,7 +113,7 @@ const FilterPanel = ({
       }
     >
       <section className="filter-panel-content">
-        <LayoutElement ariaLabel="filter">
+        <LayoutElement ariaLabel={language.filter}>
           <h2>{language.filter}</h2>
         </LayoutElement>
 

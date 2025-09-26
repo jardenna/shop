@@ -22,6 +22,7 @@ black;Black;Sort
 blue;Blue;Blå
 brand;Brand;Brand
 brandRequired;Please insert brand;Indsæt venligst brand
+breadcrumbs;Breadcrumbs;Breadcrumbs
 brown;Brown;Brun
 browseImages;Browse images;Tilføj produkt billeder
 calendar;Calendar;Kalender
@@ -89,6 +90,7 @@ descending;descending;faldende
 description;Description;Beskrivelse
 desktopAltText;A young woman smiles in surprise, elegantly delighted by a young man.;En ung kvinde smiler af overraskelse, elegant overrasket af en ung mand.
 details;Details;Detaljer
+dialog;Dialog;Dialog
 discount;Discount;Rabat
 discoverCollection;Discover Collection;Se kollektionen
 discoverLatestTrends;Discover latest trends;Udforsk de nyeste tendenser
@@ -222,6 +224,7 @@ orders;Orders;Ordrer
 outOf;out of;ud af
 outOfStock;Out of stock;Udsolgt
 page;Page;Side
+panel;Panel;Panel
 parentCategoryIs;Parent category is;Hovedkategori er
 password;Password;Adgangskode
 passwordDoNotMatch;The passwords do not match;Adgangskoderne stemmer ikke overens
