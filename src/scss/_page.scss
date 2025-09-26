@@ -1,14 +1,5 @@
 @use './globals' as *;
 
-.page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: $page-width-large;
-  padding-block: 32px;
-}
-
 .home-page-container {
   padding-block: 32px;
 }
