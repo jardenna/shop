@@ -10,7 +10,6 @@ type NavContainerProps = {
   ariaLabel?: string;
   className?: string;
   currentUser?: UserResponse | null;
-  hideAria?: boolean;
   isMenuCollapsed?: boolean;
   onCollapseMenu?: () => void;
 };
@@ -20,7 +19,6 @@ const NavContainer = ({
   isMenuCollapsed,
   currentUser,
   className = 'main-nav-container',
-  hideAria,
   ariaLabel,
 }: NavContainerProps) => {
   const { language } = useLanguage();
@@ -30,7 +28,6 @@ const NavContainer = ({
       <Nav
         navList={navList}
         ariaLabel={ariaLabel || language.main}
-        hideAria={hideAria}
         className={className || 'main-nav-container'}
       />
       {currentUser && (

@@ -7,17 +7,10 @@ import { KeyCode } from '../../types/enums';
 import type { NavItemsProps } from './Nav';
 import SubNav from './subNav/SubNav';
 
-const NavItem = ({
-  navItem,
-  hideAria,
-}: {
-  navItem: NavItemsProps;
-  hideAria?: boolean;
-}) => {
+const NavItem = ({ navItem }: { navItem: NavItemsProps }) => {
   const location = useLocation();
   const { language } = useLanguage();
   const [isSubNavShown, setIsSubNavShown] = useState(false);
-  const aria = navItem.subNavList && !hideAria;
 
   const handleShowSubNav = () => {
     setIsSubNavShown(true);
@@ -51,8 +44,8 @@ const NavItem = ({
       <NavLink
         to={navItem.path}
         className="nav-link"
-        aria-haspopup={aria ? true : undefined}
-        aria-expanded={aria ? isSubNavShown : undefined}
+        aria-haspopup={navItem.subNavList ? true : undefined}
+        aria-expanded={isSubNavShown ? isSubNavShown : undefined}
       >
         {navItem.iconName && (
           <span>

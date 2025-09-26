@@ -21,14 +21,13 @@ type NavProps = {
   ariaLabel: string;
   navList: NavItemsProps[];
   className?: string;
-  hideAria?: boolean;
 };
 
-const Nav = ({ navList, ariaLabel, hideAria, className }: NavProps) => (
+const Nav = ({ navList, ariaLabel, className }: NavProps) => (
   <LayoutElement as="nav" ariaLabel={ariaLabel} className={className}>
     <ul className="nav-list">
       {navList.map((navItem) => (
-        <NavItem key={navItem.linkText} navItem={navItem} hideAria={hideAria} />
+        <NavItem key={navItem.linkText} navItem={navItem} />
       ))}
     </ul>
   </LayoutElement>
