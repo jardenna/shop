@@ -1,22 +1,14 @@
-import type { ProductLabelVariant } from '../productLists/ProductListItem';
-import Skeleton from './Skeleton';
+import Skeleton, { SkeletonProps } from './Skeleton';
 import SkeletonParagraph from './SkeletonParagraph';
 
-type SkeletonControlListProps = {
-  count: number;
-  height?: string;
-  variant?: ProductLabelVariant;
-  width?: string;
-};
-
 const SkeletonControlList = ({
-  variant = 'medium',
   count,
-}: SkeletonControlListProps) => (
+  className = 'small-item',
+}: SkeletonProps) => (
   <div className="skeleton-control-list">
     <SkeletonParagraph width="5" count={1} />
     <div className="skeleton-control-item">
-      <Skeleton count={count} className={`${variant}-item`} variant="default" />
+      <Skeleton count={count} className={className} />
     </div>
   </div>
 );

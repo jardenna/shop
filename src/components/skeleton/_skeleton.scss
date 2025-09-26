@@ -22,17 +22,10 @@
     $color-light-gray-30 75%
   );
   background-size: 200% 100%;
+  height: rem(36px);
   width: 100%;
   border-radius: 8px;
   display: flex;
-
-  &.skeleton-img {
-    height: rem(500px);
-  }
-
-  &.skeleton-primary {
-    height: rem(36px);
-  }
 
   @include animation(skeleton-animation, 1.5s infinite, linear);
 }
@@ -79,6 +72,7 @@
 
 .skeleton-column {
   width: 100%;
+  max-width: $page-width-large;
   display: flex;
   gap: 16px;
   flex-direction: column;
@@ -145,6 +139,6 @@
   }
 
   100% {
-    background-position: -100%;
+    background-position: 100%;
   }
 }
