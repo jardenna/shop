@@ -59,6 +59,8 @@ enum LinkText {
   Login = 'login',
   Men = 'men',
   MyAccount = 'myAccount',
+  MyAddresses = 'myAddresses',
+  MyOrders = 'myOrders',
   Orders = 'orders',
   Products = 'products',
   Profile = 'profile',

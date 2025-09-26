@@ -192,6 +192,7 @@ mustHaveNumber;At least one number;Mindst ét tal
 mustHaveSymbol;At least one special character;Mindst ét specialtegn
 mustHaveUppercase;At least one uppercase letter;Mindst ét stort bogstav
 myAccount;My account;Min brugerkonto
+myAddresses;My addresses;Mine adresser
 myBag;My bag;Min indkøbskurv
 myOrders;My orders;Mine ordrer
 name;Name;Navn

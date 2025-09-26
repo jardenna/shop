@@ -3,8 +3,9 @@ import Img from '../components/Img';
 import useLanguage from '../features/language/useLanguage';
 import { getPathInfo } from '../utils/utils';
 import './accountLayout.styles.scss';
-import LayoutElement from './LayoutElement';
 import MetaTags from './nav/MetaTags';
+import NavContainer from './nav/NavContainer';
+import { accountNavList } from './nav/navLists';
 
 const AccountLayout = () => {
   const { language } = useLanguage();
@@ -19,13 +20,7 @@ const AccountLayout = () => {
       <article>
         <section className="main-page account">
           <div className="test">
-            <LayoutElement as="nav" ariaLabel="brugerkonto">
-              <ul className="nav">
-                <li>Personlige oplysninger</li>
-                <li>Adresser</li>
-                <li>Ordrer</li>
-              </ul>
-            </LayoutElement>
+            <NavContainer navList={accountNavList} ariaLabel="brugerkonto" />
             <div className="content-test">
               <h1>{title}</h1>
               <Outlet />
