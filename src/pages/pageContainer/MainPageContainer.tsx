@@ -24,12 +24,11 @@ const MainPageContainer = ({
   return (
     <>
       <MetaTags metaTitle={heading} />
-      <article className={`container page ${className}`}>
+      <article className={`container ${className}`}>
         <LayoutElement ariaLabel={language.page} className="main-page-header">
           <Breadcrumbs routeList={breadcrumbsList} />
           <h1>{heading}</h1>
         </LayoutElement>
-
         <ErrorBoundary
           FallbackComponent={ErrorBoundaryFallback}
           onReset={onReset}
