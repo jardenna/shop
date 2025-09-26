@@ -11,24 +11,21 @@
     display: flex;
   }
 
-  .main-header-container {
-    border: 0;
-  }
-
   .main {
     display: flex;
     height: calc(100svh - $header-height);
   }
 
-  .admin-header {
-    min-height: $header-height;
-    display: flex;
-    align-items: center;
-
+  .main-header {
     .btn {
       max-width: rem(100px);
       padding-block: 12px;
       min-height: auto;
+    }
+
+    .main-header-container {
+      border: 0;
+      padding-block: 0;
     }
   }
 }
