@@ -44,7 +44,7 @@ const Header = ({
   isMobileSize,
 }: HeaderProps) => (
   <LayoutElement className="main-header" ariaLabel={ariaLabel}>
-    <div className="container main-header-container">
+    <div className="container main-header-content">
       <Logo linkTo={ShopPath.Root} />
       {!isMobileSize ? (
         <NavContainer navList={navList} />

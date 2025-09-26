@@ -3,7 +3,6 @@ import ProductCardCenter from '../../components/adminCard/ProductCardCenter';
 import ProductCardLeft from '../../components/adminCard/ProductCardLeft';
 import CardFooter from '../../components/card/CardFooter';
 import CardRight from '../../components/card/CardRight';
-import ErrorContent from '../../components/ErrorContent';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import SkeletonThreeCards from '../../components/skeleton/SkeletonThreeCards';
@@ -15,8 +14,7 @@ import {
 } from '../../features/products/productApiSlice';
 import { AdminPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
-import { getErrorMessage } from '../../utils/utils';
-import PageContainer from '../pageContainer/PageContainer';
+import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const ViewProductPage = () => {
   const params = useParams();
@@ -24,9 +22,6 @@ const ViewProductPage = () => {
   const { language } = useLanguage();
   const { isAdmin } = useAuth();
 
-  const handleGoback = () => {
-    navigate(-1);
-  };
   const { onAddMessagePopup } = useMessagePopup();
 
   // Redux hooks
@@ -34,7 +29,6 @@ const ViewProductPage = () => {
     data: product,
     isLoading,
     refetch,
-    error,
   } = useGetProductByIdQuery(params.id || '');
 
   const [deleteProduct] = useDeleteProductMutation();
@@ -81,17 +75,11 @@ const ViewProductPage = () => {
   const statusMessage = `${language.categoryIs} ${subCategoryStatus}`;
 
   return (
-    <article className="page">
+    <>
       {isLoading && <SkeletonThreeCards />}
-      {error && (
-        <ErrorContent
-          onClick={handleGoback}
-          errorText={getErrorMessage(error)}
-          btnLabel={language.goBack}
-        />
-      )}
+
       {product && (
-        <PageContainer
+        <AdminPageContainer
           heading={product.productName}
           linkText={language.createNewProduct}
           linkTo={AdminPath.AdminProductCreate}
@@ -139,9 +127,9 @@ const ViewProductPage = () => {
               allowedToDelete={!!isAdmin}
             />
           </article>
-        </PageContainer>
+        </AdminPageContainer>
       )}
-    </article>
+    </>
   );
 };
 

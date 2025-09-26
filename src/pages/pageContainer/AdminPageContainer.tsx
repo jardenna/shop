@@ -7,22 +7,24 @@ import PageHeader from '../../components/PageHeader';
 import MetaTags from '../../layout/nav/MetaTags';
 import './_page-container.scss';
 
-type PageContainerProps = {
+type AdminPageContainerProps = {
   children: ReactNode;
   heading: string;
   linkText?: string;
   linkTo?: string;
+  variant?: 'small' | 'medium' | 'large';
   onReset?: () => void;
 };
 
-const PageContainer = ({
+const AdminPageContainer = ({
   children,
   heading,
   linkText,
   linkTo,
   onReset,
-}: PageContainerProps) => (
-  <>
+  variant = 'large',
+}: AdminPageContainerProps) => (
+  <article className={`admin-page page-${variant}`}>
     <MetaTags metaTitle={heading} />
     <Breadcrumbs routeList={adminBreadcrumbsList} currentLabel={heading} />
     <PageHeader heading={heading} linkText={linkText} linkTo={linkTo} />
@@ -34,7 +36,7 @@ const PageContainer = ({
         {children}
       </ErrorBoundary>
     </div>
-  </>
+  </article>
 );
 
-export default PageContainer;
+export default AdminPageContainer;

@@ -14,7 +14,7 @@ const SkeletonThreeCards = () => (
       <div className="flex">
         <div className="page-card flex-1">
           <div className="flex column">
-            <Skeleton variant="img" height="12" />
+            <Skeleton height="12" />
             <div className="flex">
               <SkeletonParagraph height="1.5" count={1} />
               <SkeletonBadge />
@@ -25,8 +25,8 @@ const SkeletonThreeCards = () => (
         </div>
         <div className="flex column page-card flex-1">
           <SkeletonGrid />
-          <SkeletonControlList count={4} variant="small" />
-          <SkeletonControlList count={5} variant="medium" />
+          <SkeletonControlList count={4} />
+          <SkeletonControlList count={5} className="medium-item" />
         </div>
         <Skeleton height="27" width="25" />
       </div>

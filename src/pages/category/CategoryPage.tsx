@@ -8,7 +8,7 @@ import CategoryTableRow from '../../features/categories/components/CategoryTable
 import useLanguage from '../../features/language/useLanguage';
 import { AdminPath } from '../../layout/nav/enums';
 import { oneDay } from '../../utils/utils';
-import PageContainer from '../pageContainer/PageContainer';
+import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const tableHeaders: { key: keyof Category; label: string; name: string }[] = [
   { key: 'categoryName', label: 'name', name: 'categoryName' },
@@ -39,44 +39,43 @@ const CategoryPage = () => {
   });
 
   return (
-    <article className="page page-medium">
-      <PageContainer
-        heading={language.categories}
-        linkText={language.createNewCategory}
-        linkTo={AdminPath.AdminCategoryCreate}
+    <AdminPageContainer
+      heading={language.categories}
+      linkText={language.createNewCategory}
+      linkTo={AdminPath.AdminCategoryCreate}
+      onReset={() => refetch()}
+      variant="medium"
+    >
+      <Table
         onReset={() => refetch()}
+        data={allCategories?.categories || []}
+        columns={tableHeaders}
+        tableCaption={language.categoryList}
+        isLoading={isLoading}
+        emptyHeaderCellText={language.updateCategory}
       >
-        <Table
-          onReset={() => refetch()}
-          data={allCategories?.categories || []}
-          columns={tableHeaders}
-          tableCaption={language.categoryList}
-          isLoading={isLoading}
-          emptyHeaderCellText={language.updateCategory}
-        >
-          {(data) =>
-            data.map(
-              ({
-                id,
-                scheduledDate,
-                categoryName,
-                createdAt,
-                categoryStatus,
-              }) => (
-                <CategoryTableRow
-                  key={id}
-                  id={id}
-                  status={categoryStatus}
-                  scheduledDate={scheduledDate || null}
-                  categoryName={categoryName}
-                  createdAt={createdAt}
-                />
-              ),
-            )
-          }
-        </Table>
-      </PageContainer>
-    </article>
+        {(data) =>
+          data.map(
+            ({
+              id,
+              scheduledDate,
+              categoryName,
+              createdAt,
+              categoryStatus,
+            }) => (
+              <CategoryTableRow
+                key={id}
+                id={id}
+                status={categoryStatus}
+                scheduledDate={scheduledDate || null}
+                categoryName={categoryName}
+                createdAt={createdAt}
+              />
+            ),
+          )
+        }
+      </Table>
+    </AdminPageContainer>
   );
 };
 

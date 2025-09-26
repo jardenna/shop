@@ -1,13 +1,13 @@
 import useLanguage from '../../features/language/useLanguage';
-import PageContainer from '../pageContainer/PageContainer';
+import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const OrderPage = () => {
   const { language } = useLanguage();
 
   return (
-    <article className="page">
-      <PageContainer heading={language.orders}>{language.orders}</PageContainer>
-    </article>
+    <AdminPageContainer heading={language.orders}>
+      {language.orders}
+    </AdminPageContainer>
   );
 };
 

@@ -1,12 +1,11 @@
 import type { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
+import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../../components/breadcrumbs/breadcrumbsLists';
-import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import MetaTags from '../../layout/nav/MetaTags';
-import './_page-container.scss';
 
 type MainPageContainerProps = {
   children: ReactNode;
@@ -31,14 +30,12 @@ const MainPageContainer = ({
           <h1>{heading}</h1>
         </LayoutElement>
 
-        <div className="main-page">
-          <ErrorBoundary
-            FallbackComponent={ErrorBoundaryFallback}
-            onReset={onReset}
-          >
-            {children}
-          </ErrorBoundary>
-        </div>
+        <ErrorBoundary
+          FallbackComponent={ErrorBoundaryFallback}
+          onReset={onReset}
+        >
+          {children}
+        </ErrorBoundary>
       </article>
     </>
   );

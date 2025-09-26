@@ -1,7 +1,7 @@
 import useAuth from '../../features/auth/hooks/useAuth';
 import CategoryForm from '../../features/categories/CategoryForm';
 import useLanguage from '../../features/language/useLanguage';
-import PageContainer from '../pageContainer/PageContainer';
+import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 export type CategoryState = {
   categoryName: string;
@@ -14,15 +14,13 @@ const CreateCategoryPage = () => {
   const allowedUpdateCategory = !!isAdmin;
 
   return (
-    <article className="page page-small">
-      <PageContainer heading={language.createNewCategory}>
-        <CategoryForm
-          selectedCategory={null}
-          id={null}
-          allowedUpdateCategory={allowedUpdateCategory}
-        />
-      </PageContainer>
-    </article>
+    <AdminPageContainer heading={language.createNewCategory} variant="small">
+      <CategoryForm
+        selectedCategory={null}
+        id={null}
+        allowedUpdateCategory={allowedUpdateCategory}
+      />
+    </AdminPageContainer>
   );
 };
 

@@ -17,19 +17,17 @@ const AccountLayout = () => {
   return (
     <>
       <MetaTags metaTitle={title} />
-      <article>
-        <section className="main-page account">
-          <div className="test">
-            <NavContainer navList={accountNavList} ariaLabel="brugerkonto" />
-            <div className="content-test">
-              <h1>{title}</h1>
-              <Outlet />
-            </div>
+      <article className="container account-page">
+        <div className="account-page-container">
+          <NavContainer navList={accountNavList} ariaLabel="brugerkonto" />
+          <div className="account-page-content">
+            <h1>{title}</h1>
+            <Outlet />
           </div>
-          <div className="img-wrapper">
-            <Img src="/images/about/woman.jpg" alt="" />
-          </div>
-        </section>
+        </div>
+        <div>
+          <Img src="/images/about/woman.jpg" alt="" />
+        </div>
       </article>
     </>
   );

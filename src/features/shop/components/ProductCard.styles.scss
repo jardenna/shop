@@ -95,6 +95,7 @@
   &.favorite-list {
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
 
     .product-card-img {
       height: rem(640px);

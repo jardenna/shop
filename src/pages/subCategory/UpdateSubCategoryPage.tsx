@@ -1,21 +1,14 @@
-import { useNavigate, useParams } from 'react-router';
-import ErrorContent from '../../components/ErrorContent';
+import { useParams } from 'react-router';
 import SkeletonForm from '../../components/skeleton/SkeletonForm';
 import { useGetAllCategoriesQuery } from '../../features/categories/categoriyApiSlice';
 import useLanguage from '../../features/language/useLanguage';
 import SubCategoryForm from '../../features/subCategories/components/SubCategoryForm';
 import { useGetSubCategoryByIdQuery } from '../../features/subCategories/subCategoryApiSlice';
-import { getErrorMessage } from '../../utils/utils';
-import PageContainer from '../pageContainer/PageContainer';
+import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const UpdateSubCategoryPage = () => {
   const params = useParams();
-  const navigate = useNavigate();
   const { language } = useLanguage();
-
-  const handleGoback = () => {
-    navigate(-1);
-  };
 
   // Redux hooks
   const { data: allCategories } = useGetAllCategoriesQuery();
@@ -23,22 +16,14 @@ const UpdateSubCategoryPage = () => {
     data: category,
     isLoading,
     refetch,
-    error,
   } = useGetSubCategoryByIdQuery(params.id || '');
 
   return (
-    <article className="page page-small">
+    <>
       {isLoading && <SkeletonForm count={3} />}
-      {error && (
-        <ErrorContent
-          onClick={handleGoback}
-          errorText={getErrorMessage(error)}
-          btnLabel={language.goBack}
-        />
-      )}
-
       {allCategories && category && (
-        <PageContainer
+        <AdminPageContainer
+          variant="small"
           heading={`${language.update} ${language.category} ${category.subCategoryName}`}
           onReset={() => refetch()}
         >
@@ -47,9 +32,9 @@ const UpdateSubCategoryPage = () => {
             id={params.id || ''}
             parentCategories={allCategories.categories}
           />
-        </PageContainer>
+        </AdminPageContainer>
       )}
-    </article>
+    </>
   );
 };
 

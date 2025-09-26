@@ -17,7 +17,7 @@ import useTableEditField from '../../hooks/useTableEditField';
 import useTrapFocus from '../../hooks/useTrapFocus';
 import { AdminPath } from '../../layout/nav/enums';
 import { BtnVariant, IconName } from '../../types/enums';
-import PageContainer from '../pageContainer/PageContainer';
+import AdminPageContainer from '../pageContainer/AdminPageContainer';
 import DeleteUser from './DeleteUser';
 
 const tableHeaders: { key: keyof UserResponse; label: string; name: string }[] =
@@ -103,83 +103,79 @@ const UserPage = () => {
   };
 
   return (
-    <article className="page page-medium">
-      <PageContainer
-        heading={language.users}
-        linkText={isAdmin ? language.createNewUser : undefined}
-        linkTo={isAdmin ? AdminPath.AdminUserCreate : undefined}
+    <AdminPageContainer
+      heading={language.users}
+      linkText={isAdmin ? language.createNewUser : undefined}
+      linkTo={isAdmin ? AdminPath.AdminUserCreate : undefined}
+      onReset={() => refetch()}
+      variant="medium"
+    >
+      <Table
         onReset={() => refetch()}
+        data={allUsers || []}
+        columns={tableHeaders}
+        tableCaption={language.customersList}
+        isLoading={isLoading}
+        emptyHeaderCellText={language.deleteUser}
       >
-        <Table
-          onReset={() => refetch()}
-          data={allUsers || []}
-          columns={tableHeaders}
-          tableCaption={language.customersList}
-          isLoading={isLoading}
-          emptyHeaderCellText={language.deleteUser}
-        >
-          {(data) =>
-            data.map(({ id, username, isAdmin }) => (
-              <tr key={id}>
-                {columnKeys.map((columnKey) => (
-                  <td key={columnKey}>
-                    <EditUserInput
-                      isAdmin={isAdmin}
-                      allowedEditUser={allowedEditUser}
-                      onSave={() => {
-                        handleSaveEdit();
-                      }}
-                      showEditInput={
-                        editRowId === id && editingField === columnKey
-                      }
-                      onCancel={handleCancelEdit}
-                      onEditChange={handleEditChange}
-                      onEditBtnClick={() => {
-                        handleShowEditInput(id, columnKey);
-                      }}
-                      id={columnKey}
-                      value={String(editValues[columnKey] || '')}
-                      roleValue={editValues.role || 'User'}
-                      cellContent={String(
-                        allUsers?.find((item) => item.id === id)?.[columnKey] ||
-                          '',
-                      )}
-                    />
-                  </td>
-                ))}
-                <td>
-                  {allowedEditUser && !isAdmin && (
-                    <Tooltip
-                      placement="left-start"
-                      ariaControls="delete-user"
-                      tooltip={({ close }) => (
-                        <DeleteUser
-                          onPrimaryClick={() => {
-                            handleDeleteUser(id, username);
-                            close();
-                          }}
-                          onSecondaryClick={close}
-                          username={username}
-                          ref={popupRef}
-                        />
-                      )}
-                      triggerBtnVariant={BtnVariant.Ghost}
-                      triggerBtnClassName="danger"
-                      ariaLabel={language.deleteUser}
-                    >
-                      <Icon
-                        iconName={IconName.Trash}
-                        title={language.trashCan}
-                      />
-                    </Tooltip>
-                  )}
+        {(data) =>
+          data.map(({ id, username, isAdmin }) => (
+            <tr key={id}>
+              {columnKeys.map((columnKey) => (
+                <td key={columnKey}>
+                  <EditUserInput
+                    isAdmin={isAdmin}
+                    allowedEditUser={allowedEditUser}
+                    onSave={() => {
+                      handleSaveEdit();
+                    }}
+                    showEditInput={
+                      editRowId === id && editingField === columnKey
+                    }
+                    onCancel={handleCancelEdit}
+                    onEditChange={handleEditChange}
+                    onEditBtnClick={() => {
+                      handleShowEditInput(id, columnKey);
+                    }}
+                    id={columnKey}
+                    value={String(editValues[columnKey] || '')}
+                    roleValue={editValues.role || 'User'}
+                    cellContent={String(
+                      allUsers?.find((item) => item.id === id)?.[columnKey] ||
+                        '',
+                    )}
+                  />
                 </td>
-              </tr>
-            ))
-          }
-        </Table>
-      </PageContainer>
-    </article>
+              ))}
+              <td>
+                {allowedEditUser && !isAdmin && (
+                  <Tooltip
+                    placement="left-start"
+                    ariaControls="delete-user"
+                    tooltip={({ close }) => (
+                      <DeleteUser
+                        onPrimaryClick={() => {
+                          handleDeleteUser(id, username);
+                          close();
+                        }}
+                        onSecondaryClick={close}
+                        username={username}
+                        ref={popupRef}
+                      />
+                    )}
+                    triggerBtnVariant={BtnVariant.Ghost}
+                    triggerBtnClassName="danger"
+                    ariaLabel={language.deleteUser}
+                  >
+                    <Icon iconName={IconName.Trash} title={language.trashCan} />
+                  </Tooltip>
+                )}
+              </td>
+            </tr>
+          ))
+        }
+      </Table>
+    </AdminPageContainer>
   );
 };
 
