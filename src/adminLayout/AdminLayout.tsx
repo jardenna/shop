@@ -6,8 +6,6 @@ import useLanguage from '../features/language/useLanguage';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
 import useMediaQuery from '../hooks/useMediaQuery ';
 import { ShopPath } from '../layout/nav/enums';
-import MobileNav from '../layout/nav/MobileNav';
-import { adminNavList } from '../layout/nav/navLists';
 import AdminHeader from './AdminHeader';
 import './AdminLayout.styles.scss';
 import Aside from './aside/Aside';
@@ -46,9 +44,7 @@ const AdminLayout = () => {
         isMobileSize={isMobileSize}
       />
       <main className="main">
-        {isMobileSize ? (
-          <MobileNav navList={adminNavList} className="admin-nav-container" />
-        ) : (
+        {!isMobileSize && (
           <Aside
             isShown={isMenuCollapsed}
             onTogglePanel={handleCollapseMenu}
@@ -57,7 +53,6 @@ const AdminLayout = () => {
             }
           />
         )}
-
         <div id="main" className="admin">
           <Outlet />
         </div>
