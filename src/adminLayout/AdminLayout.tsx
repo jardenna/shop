@@ -6,11 +6,11 @@ import useLanguage from '../features/language/useLanguage';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
 import useMediaQuery from '../hooks/useMediaQuery ';
 import { ShopPath } from '../layout/nav/enums';
+import MobileNav from '../layout/nav/MobileNav';
 import { adminNavList } from '../layout/nav/navLists';
 import AdminHeader from './AdminHeader';
 import './AdminLayout.styles.scss';
 import Aside from './aside/Aside';
-import MobileNav from '../layout/nav/MobileNav';
 
 const AdminLayout = () => {
   const navigate = useNavigate();
@@ -58,7 +58,7 @@ const AdminLayout = () => {
           />
         )}
 
-        <div id="main" className="admin container">
+        <div id="main" className="admin">
           <Outlet />
         </div>
       </main>
