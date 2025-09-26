@@ -1,9 +1,9 @@
 import { useNavigate, useParams } from 'react-router';
+import ErrorContent from '../../components/ErrorContent';
 import ProductCardCenter from '../../components/adminCard/ProductCardCenter';
 import ProductCardLeft from '../../components/adminCard/ProductCardLeft';
 import CardFooter from '../../components/card/CardFooter';
 import CardRight from '../../components/card/CardRight';
-import ErrorContent from '../../components/ErrorContent';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import SkeletonThreeCards from '../../components/skeleton/SkeletonThreeCards';
@@ -81,7 +81,7 @@ const ViewProductPage = () => {
   const statusMessage = `${language.categoryIs} ${subCategoryStatus}`;
 
   return (
-    <article className="page">
+    <article className="admin-page">
       {isLoading && <SkeletonThreeCards />}
       {error && (
         <ErrorContent

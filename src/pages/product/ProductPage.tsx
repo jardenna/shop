@@ -64,7 +64,7 @@ const ProductPage = () => {
   }
 
   return (
-    <article className="page">
+    <article className="admin-page">
       <PageContainer
         heading={language.products}
         linkText={language.createNewProduct}

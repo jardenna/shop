@@ -39,7 +39,7 @@ const CategoryPage = () => {
   });
 
   return (
-    <article className="page page-medium">
+    <article className="admin-page page-medium">
       <PageContainer
         heading={language.categories}
         linkText={language.createNewCategory}

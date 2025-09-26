@@ -48,7 +48,7 @@ const SubCategoryPage = () => {
   });
 
   return (
-    <article className="page page-medium">
+    <article className="admin-page page-medium">
       <PageContainer
         heading={language.subCategories}
         linkText={language.createNewCategory}

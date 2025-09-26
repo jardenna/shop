@@ -5,7 +5,7 @@ const OrderPage = () => {
   const { language } = useLanguage();
 
   return (
-    <article className="page">
+    <article className="admin-page">
       <PageContainer heading={language.orders}>{language.orders}</PageContainer>
     </article>
   );

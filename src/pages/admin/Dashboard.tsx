@@ -5,7 +5,7 @@ const Dashboard = () => {
   const { language } = useLanguage();
 
   return (
-    <article className="page">
+    <article className="admin-page">
       <PageContainer heading={language.dashboard}>
         {language.dashboard}
       </PageContainer>

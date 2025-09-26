@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from 'react-router';
-import CategoryCard from '../../components/adminCard/CategoryCard';
 import ErrorContent from '../../components/ErrorContent';
+import CategoryCard from '../../components/adminCard/CategoryCard';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import SkeletonTwoCards from '../../components/skeleton/SkeletonTwoCards';
 import useLanguage from '../../features/language/useLanguage';
@@ -62,7 +62,7 @@ const ViewSubCategoryPage = () => {
   };
 
   return (
-    <article className="page page-medium">
+    <article className="admin-page page-medium">
       {error && (
         <ErrorContent
           onClick={handleGoback}

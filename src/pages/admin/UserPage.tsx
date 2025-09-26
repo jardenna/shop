@@ -103,7 +103,7 @@ const UserPage = () => {
   };
 
   return (
-    <article className="page page-medium">
+    <article className="admin-page page-medium">
       <PageContainer
         heading={language.users}
         linkText={isAdmin ? language.createNewUser : undefined}

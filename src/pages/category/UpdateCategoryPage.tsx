@@ -26,7 +26,7 @@ const UpdateCategoryPage = () => {
   };
 
   return (
-    <article className="page page-small">
+    <article className="admin-page page-small">
       {isLoading && <SkeletonForm />}
       {error && (
         <ErrorContent

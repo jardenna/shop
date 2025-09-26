@@ -14,7 +14,7 @@ const CreateCategoryPage = () => {
   const allowedUpdateCategory = !!isAdmin;
 
   return (
-    <article className="page page-small">
+    <article className="admin-page page-small">
       <PageContainer heading={language.createNewCategory}>
         <CategoryForm
           selectedCategory={null}

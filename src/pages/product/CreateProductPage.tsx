@@ -8,7 +8,7 @@ const CreateProductPage = () => {
   const { data: subCategories, refetch } = useGetSubCategoriesWithParentQuery();
 
   return (
-    <article className="page">
+    <article className="admin-page">
       {subCategories && (
         <PageContainer
           heading={language.createNewProduct}

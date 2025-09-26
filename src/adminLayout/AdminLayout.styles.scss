@@ -5,19 +5,19 @@
   justify-content: center;
 }
 
+.admin-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: $page-width-large;
+  padding-block: 32px;
+}
+
 .admin-container {
   .container {
     max-width: 100%;
     display: flex;
-  }
-
-  .page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: $page-width-large;
-    padding-block: 32px;
   }
 
   .main {

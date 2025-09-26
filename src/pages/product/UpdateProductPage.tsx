@@ -21,7 +21,7 @@ const UpdateProductPage = () => {
   const { data: subCategories } = useGetSubCategoriesWithParentQuery();
 
   return (
-    <article className="page">
+    <article className="admin-page">
       {isLoading && <SkeletonPage count={3} height="14" />}
 
       <ErrorBoundary
