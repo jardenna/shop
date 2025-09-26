@@ -10,6 +10,7 @@ type NavContainerProps = {
   ariaLabel?: string;
   className?: string;
   currentUser?: UserResponse | null;
+  hideAriaHasPopup?: boolean;
   isMenuCollapsed?: boolean;
   onCollapseMenu?: () => void;
 };
@@ -20,6 +21,7 @@ const NavContainer = ({
   currentUser,
   className = 'main-nav-container',
   ariaLabel,
+  hideAriaHasPopup,
 }: NavContainerProps) => {
   const { language } = useLanguage();
 
@@ -29,6 +31,7 @@ const NavContainer = ({
         navList={navList}
         ariaLabel={ariaLabel || language.main}
         className={className || 'main-nav-container'}
+        hideAriaHasPopup={hideAriaHasPopup}
       />
       {currentUser && (
         <NavUser

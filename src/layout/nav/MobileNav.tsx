@@ -13,7 +13,7 @@ const MobileNav = ({ navList, className }: AdminNavProps) => (
     preventClickOutside
     triggerBtnClassName="menu-burger"
   >
-    <NavContainer navList={navList} className={className} />
+    <NavContainer navList={navList} className={className} hideAriaHasPopup />
   </TogglePanel>
 );
 

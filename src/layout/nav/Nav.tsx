@@ -21,13 +21,18 @@ type NavProps = {
   ariaLabel: string;
   navList: NavItemsProps[];
   className?: string;
+  hideAriaHasPopup?: boolean;
 };
 
-const Nav = ({ navList, ariaLabel, className }: NavProps) => (
+const Nav = ({ navList, ariaLabel, className, hideAriaHasPopup }: NavProps) => (
   <LayoutElement as="nav" ariaLabel={ariaLabel} className={className}>
     <ul className="nav-list">
       {navList.map((navItem) => (
-        <NavItem key={navItem.linkText} navItem={navItem} />
+        <NavItem
+          key={navItem.linkText}
+          navItem={navItem}
+          hideAriaHasPopup={hideAriaHasPopup}
+        />
       ))}
     </ul>
   </LayoutElement>
