@@ -11,7 +11,7 @@ import {
 } from '../../features/products/productApiSlice';
 import { AdminPath } from '../../layout/nav/enums';
 import { oneDay } from '../../utils/utils';
-import PageContainer from '../pageContainer/AdminPageContainer';
+import AdminPageContainer from '../pageContainer/AdminPageContainer';
 import './ProductPage.styles.scss';
 
 const tableHeaders: Column<Product>[] = [
@@ -64,51 +64,49 @@ const ProductPage = () => {
   }
 
   return (
-    <article className="admin-page">
-      <PageContainer
-        heading={language.products}
-        linkText={language.createNewProduct}
-        linkTo={AdminPath.AdminProductCreate}
+    <AdminPageContainer
+      heading={language.products}
+      linkText={language.createNewProduct}
+      linkTo={AdminPath.AdminProductCreate}
+      onReset={() => refetch()}
+    >
+      <Table
         onReset={() => refetch()}
+        isLoading={isLoading}
+        data={allProducts?.products ?? []}
+        columns={tableHeaders}
+        tableCaption={language.productList}
+        emptyHeaderCellText={language.updateProduct}
+        className="product-table"
       >
-        <Table
-          onReset={() => refetch()}
-          isLoading={isLoading}
-          data={allProducts?.products ?? []}
-          columns={tableHeaders}
-          tableCaption={language.productList}
-          emptyHeaderCellText={language.updateProduct}
-          className="product-table"
-        >
-          {(data) =>
-            data.map(
-              ({
-                id,
-                countInStock,
-                images,
-                productName,
-                productStatus,
-                subCategory,
-                scheduledDate,
-              }) => (
-                <ProductTableRow
-                  key={id}
-                  id={id}
-                  countInStock={countInStock}
-                  images={images}
-                  productName={productName}
-                  status={productStatus}
-                  categoryName={subCategory.category.categoryName}
-                  scheduledDate={scheduledDate || null}
-                  subCategoryName={subCategory.subCategoryName}
-                  onCopyProduct={handleCopyProduct}
-                />
-              ),
-            )
-          }
-        </Table>
-      </PageContainer>
-    </article>
+        {(data) =>
+          data.map(
+            ({
+              id,
+              countInStock,
+              images,
+              productName,
+              productStatus,
+              subCategory,
+              scheduledDate,
+            }) => (
+              <ProductTableRow
+                key={id}
+                id={id}
+                countInStock={countInStock}
+                images={images}
+                productName={productName}
+                status={productStatus}
+                categoryName={subCategory.category.categoryName}
+                scheduledDate={scheduledDate || null}
+                subCategoryName={subCategory.subCategoryName}
+                onCopyProduct={handleCopyProduct}
+              />
+            ),
+          )
+        }
+      </Table>
+    </AdminPageContainer>
   );
 };
 

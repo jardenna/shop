@@ -4,7 +4,7 @@ import useAuth from '../../features/auth/hooks/useAuth';
 import CategoryForm from '../../features/categories/CategoryForm';
 import { useGetCategoryByIdQuery } from '../../features/categories/categoriyApiSlice';
 import useLanguage from '../../features/language/useLanguage';
-import PageContainer from '../pageContainer/AdminPageContainer';
+import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const UpdateCategoryPage = () => {
   const params = useParams();
@@ -18,22 +18,23 @@ const UpdateCategoryPage = () => {
   } = useGetCategoryByIdQuery(params.id || '');
 
   return (
-    <article className="admin-page page-small">
+    <>
       {isLoading && <SkeletonForm />}
 
       {category && (
-        <PageContainer
+        <AdminPageContainer
           heading={`${language.updateCategory} ${category.categoryName}`}
           onReset={() => refetch()}
+          variant="small"
         >
           <CategoryForm
             selectedCategory={category}
             id={params.id || ''}
             allowedUpdateCategory={!!isAdmin}
           />
-        </PageContainer>
+        </AdminPageContainer>
       )}
-    </article>
+    </>
   );
 };
 

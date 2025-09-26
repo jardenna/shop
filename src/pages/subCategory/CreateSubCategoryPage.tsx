@@ -2,7 +2,7 @@ import SkeletonForm from '../../components/skeleton/SkeletonForm';
 import { useGetAllCategoriesQuery } from '../../features/categories/categoriyApiSlice';
 import useLanguage from '../../features/language/useLanguage';
 import SubCategoryForm from '../../features/subCategories/components/SubCategoryForm';
-import PageContainer from '../pageContainer/AdminPageContainer';
+import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 export type SubCategoryState = {
   category: string;
@@ -19,11 +19,12 @@ const CreateSubCategoryPage = () => {
   } = useGetAllCategoriesQuery();
 
   return (
-    <article className="admin-page page-small">
+    <>
       {isLoading && <SkeletonForm count={3} />}
-      <PageContainer
+      <AdminPageContainer
         heading={language.createNewCategory}
         onReset={() => refetch()}
+        variant="small"
       >
         {allCategories && (
           <SubCategoryForm
@@ -32,8 +33,8 @@ const CreateSubCategoryPage = () => {
             parentCategories={allCategories.categories}
           />
         )}
-      </PageContainer>
-    </article>
+      </AdminPageContainer>
+    </>
   );
 };
 

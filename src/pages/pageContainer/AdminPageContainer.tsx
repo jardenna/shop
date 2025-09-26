@@ -12,6 +12,7 @@ type AdminPageContainerProps = {
   heading: string;
   linkText?: string;
   linkTo?: string;
+  variant?: 'small' | 'medium' | 'large';
   onReset?: () => void;
 };
 
@@ -21,8 +22,9 @@ const AdminPageContainer = ({
   linkText,
   linkTo,
   onReset,
+  variant = 'large',
 }: AdminPageContainerProps) => (
-  <>
+  <article className={`admin-page page-${variant}`}>
     <MetaTags metaTitle={heading} />
     <Breadcrumbs routeList={adminBreadcrumbsList} currentLabel={heading} />
     <PageHeader heading={heading} linkText={linkText} linkTo={linkTo} />
@@ -34,7 +36,7 @@ const AdminPageContainer = ({
         {children}
       </ErrorBoundary>
     </div>
-  </>
+  </article>
 );
 
 export default AdminPageContainer;

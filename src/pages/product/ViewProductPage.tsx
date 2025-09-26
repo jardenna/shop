@@ -14,7 +14,7 @@ import {
 } from '../../features/products/productApiSlice';
 import { AdminPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
-import PageContainer from '../pageContainer/AdminPageContainer';
+import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const ViewProductPage = () => {
   const params = useParams();
@@ -75,11 +75,11 @@ const ViewProductPage = () => {
   const statusMessage = `${language.categoryIs} ${subCategoryStatus}`;
 
   return (
-    <article className="admin-page">
+    <>
       {isLoading && <SkeletonThreeCards />}
 
       {product && (
-        <PageContainer
+        <AdminPageContainer
           heading={product.productName}
           linkText={language.createNewProduct}
           linkTo={AdminPath.AdminProductCreate}
@@ -127,9 +127,9 @@ const ViewProductPage = () => {
               allowedToDelete={!!isAdmin}
             />
           </article>
-        </PageContainer>
+        </AdminPageContainer>
       )}
-    </article>
+    </>
   );
 };
 

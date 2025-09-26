@@ -1,15 +1,13 @@
 import useLanguage from '../../features/language/useLanguage';
-import PageContainer from '../pageContainer/AdminPageContainer';
+import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const Dashboard = () => {
   const { language } = useLanguage();
 
   return (
-    <article className="admin-page">
-      <PageContainer heading={language.dashboard}>
-        {language.dashboard}
-      </PageContainer>
-    </article>
+    <AdminPageContainer heading={language.dashboard}>
+      {language.dashboard}
+    </AdminPageContainer>
   );
 };
 

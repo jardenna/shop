@@ -4,7 +4,7 @@ import { useGetAllCategoriesQuery } from '../../features/categories/categoriyApi
 import useLanguage from '../../features/language/useLanguage';
 import SubCategoryForm from '../../features/subCategories/components/SubCategoryForm';
 import { useGetSubCategoryByIdQuery } from '../../features/subCategories/subCategoryApiSlice';
-import PageContainer from '../pageContainer/AdminPageContainer';
+import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const UpdateSubCategoryPage = () => {
   const params = useParams();
@@ -19,11 +19,11 @@ const UpdateSubCategoryPage = () => {
   } = useGetSubCategoryByIdQuery(params.id || '');
 
   return (
-    <article className="admin-page page-small">
-      {isLoading && <SkeletonForm count={3} />}
-
+    <>
+      {!isLoading && <SkeletonForm count={3} />}
       {allCategories && category && (
-        <PageContainer
+        <AdminPageContainer
+          variant="small"
           heading={`${language.update} ${language.category} ${category.subCategoryName}`}
           onReset={() => refetch()}
         >
@@ -32,9 +32,9 @@ const UpdateSubCategoryPage = () => {
             id={params.id || ''}
             parentCategories={allCategories.categories}
           />
-        </PageContainer>
+        </AdminPageContainer>
       )}
-    </article>
+    </>
   );
 };
 

@@ -9,7 +9,7 @@ import {
 } from '../../features/subCategories/subCategoryApiSlice';
 import { AdminPath } from '../../layout/nav/enums';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
-import PageContainer from '../pageContainer/AdminPageContainer';
+import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const ViewSubCategoryPage = () => {
   const params = useParams();
@@ -56,14 +56,15 @@ const ViewSubCategoryPage = () => {
   };
 
   return (
-    <article className="admin-page page-medium">
+    <>
       {isLoading && <SkeletonTwoCards />}
       {category && (
-        <PageContainer
+        <AdminPageContainer
           heading={`${language.category} ${category.subCategoryName}`}
           linkText={language.createNewCategory}
           linkTo={AdminPath.AdminSubCategoryCreate}
           onReset={() => refetch()}
+          variant="medium"
         >
           <CategoryCard
             onReset={() => refetch()}
@@ -82,9 +83,9 @@ const ViewSubCategoryPage = () => {
             )}
             status={category.categoryStatus}
           />
-        </PageContainer>
+        </AdminPageContainer>
       )}
-    </article>
+    </>
   );
 };
 
