@@ -93,7 +93,7 @@ const CollectionPage = () => {
   return (
     <>
       {category && <MetaTags metaTitle={language[category]} />}
-      <article className="container page collection-page">
+      <article className="container collection-page">
         {subMenu && (
           <Breadcrumbs
             routeList={breadcrumbsList}
