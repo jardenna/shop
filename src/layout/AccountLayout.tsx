@@ -17,6 +17,13 @@ const AccountLayout = () => {
   const imgName = pathInfo.replace('my-', '');
   const src = `/images/account/${imgName}`;
 
+  const altTextMap: Record<string, string> = {
+    account: 'accountAlttext',
+    orders: 'orderAlttext',
+    addresses: 'addressAlttext',
+  };
+  const altText = altTextMap[imgName];
+
   return (
     <>
       <MetaTags metaTitle={title} />
@@ -29,7 +36,11 @@ const AccountLayout = () => {
           </section>
         </article>
         <div>
-          <Picture src={`${src}.jpg`} srcSet={`${src}.avif`} alt="" />
+          <Picture
+            src={`${src}.jpg`}
+            srcSet={`${src}.avif`}
+            alt={language[altText]}
+          />
         </div>
       </article>
     </>
