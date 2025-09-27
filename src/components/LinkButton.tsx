@@ -1,10 +1,11 @@
 import { Link } from 'react-router';
 import { BtnVariant } from '../types/enums';
 
-export type LinkButtonProps = {
+type LinkButtonProps = {
   linkText: string;
   linkTo: string;
-  ariaCurrent?: any;
+  ariaCurrent?: 'page';
+
   variant?: BtnVariant;
 };
 
