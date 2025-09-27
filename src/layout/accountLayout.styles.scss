@@ -1,8 +1,7 @@
 @use '../scss/globals' as *;
 
 .account-page {
-  height: 90vh;
-  overflow: hidden;
+  height: calc(100svh - $header-height);
   display: flex;
   gap: 24px;
 

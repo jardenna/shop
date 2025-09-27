@@ -26,7 +26,9 @@ const AccountLayout = () => {
           </section>
         </article>
         <div>
-          <Img src="/images/about/woman.jpg" alt="" />
+          <Img src="/images/account/account.jpg" alt="" />
+          <Img src="/images/account/order.jpg" alt="" />
+          <Img src="/images/account/address.jpg" alt="" />
         </div>
       </article>
     </>
