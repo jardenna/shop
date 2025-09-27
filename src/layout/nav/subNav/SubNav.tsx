@@ -4,18 +4,18 @@ import useLanguage from '../../../features/language/useLanguage';
 import useSubMenu from '../../../features/shop/hooks/useSubMenu';
 import useMediaQuery from '../../../hooks/useMediaQuery ';
 import { LinkText } from '../enums';
-import type { BaseNav } from '../Nav';
+import type { SubBaseNav } from '../Nav';
 import './_sub-nav.scss';
 import SubNavListDesktop from './SubNavListDesktop';
 import SubNavListMobile from './SubNavListMobile';
 
 type SubNavProps = {
-  adHeading: string;
+  heading: string;
   isSubNavShown: boolean;
-  subNavList: BaseNav[];
+  subNavList: SubBaseNav[];
 };
 
-const SubNav = ({ subNavList, adHeading, isSubNavShown }: SubNavProps) => {
+const SubNav = ({ subNavList, heading, isSubNavShown }: SubNavProps) => {
   const { category } = useParams();
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
@@ -49,7 +49,7 @@ const SubNav = ({ subNavList, adHeading, isSubNavShown }: SubNavProps) => {
       ) : (
         <SubNavListDesktop
           subNavList={subNavList}
-          heading={adHeading}
+          heading={heading}
           language={language}
         />
       )}

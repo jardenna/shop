@@ -1,12 +1,12 @@
 import { IconName } from '../../types/enums';
 import { AdminPath, LinkText, ShopPath } from './enums';
-import type { NavItemsProps } from './Nav';
+import type { BaseNav, NavItemsProps } from './Nav';
 
 const navList: NavItemsProps[] = [
   {
     path: ShopPath.Collection,
     linkText: LinkText.Collection,
-    adHeading: 'discoverLatestTrends',
+    heading: 'discoverLatestTrends',
     subNavList: [
       {
         path: ShopPath.Women,
@@ -36,7 +36,7 @@ const navList: NavItemsProps[] = [
   },
 ];
 
-const adminNavList: NavItemsProps[] = [
+const adminNavList: BaseNav[] = [
   {
     path: AdminPath.AdminProducts,
     linkText: LinkText.Products,
@@ -64,7 +64,7 @@ const adminNavList: NavItemsProps[] = [
   },
 ];
 
-const accountNavList = [
+const accountNavList: BaseNav[] = [
   {
     path: '',
     linkText: LinkText.MyAccount,
