@@ -5,6 +5,13 @@ import {
 } from '../config/constants.js';
 const { ObjectId } = mongoose.Schema;
 
+const AddressSchema = new mongoose.Schema({
+  street: { type: String, required: true },
+  zipCode: { type: String, required: true },
+  city: { type: String, required: true },
+  country: { type: String, default: 'Denmark' },
+});
+
 const UserSchema = new mongoose.Schema(
   {
     username: {
@@ -21,14 +28,14 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    addresses: {
+      type: [AddressSchema],
+    },
     phoneNo: {
       type: String,
     },
     dateOfBirth: {
       type: Date,
-    },
-    addresses: {
-      type: [String],
     },
     isAdmin: {
       type: Boolean,
