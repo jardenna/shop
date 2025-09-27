@@ -1,4 +1,5 @@
 import { IconName } from '../../types/enums';
+import type { ChangeInputType } from '../../types/types';
 import Button from '../Button';
 import Input from '../formElements/Input';
 import Icon from '../icons/Icon';
@@ -12,7 +13,7 @@ type NumberStepProps = {
   initCount?: number;
   max?: number;
   min?: number;
-  onChange: (event?: any) => void;
+  onChange: (event?: ChangeInputType) => void;
   onNumberStepChange: (event: any, count: number) => void;
 };
 
