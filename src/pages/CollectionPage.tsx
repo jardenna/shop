@@ -88,6 +88,7 @@ const CollectionPage = () => {
   ];
 
   const filtersCount = getFilterSummary(filterValues);
+  const src = `/images/banners/${category}_banner`;
   const altText = `${category}BannerAltText`;
 
   return (
@@ -125,8 +126,8 @@ const CollectionPage = () => {
             <div className="collection-page-content">
               {!isMobileSize && (
                 <Picture
-                  src={`/images/banners/${category}_banner.jpg`}
-                  srcSet={`/images/banners/${category}_banner.avif`}
+                  src={`${src}.jpg`}
+                  srcSet={`${src}.avif`}
                   alt={language[altText]}
                 />
               )}
