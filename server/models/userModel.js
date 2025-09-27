@@ -1,5 +1,8 @@
 import mongoose from 'mongoose';
-import { ALLOWED_ROLES } from '../config/constants.js';
+import {
+  ALLOWED_FASHION_PREFERENCES,
+  ALLOWED_ROLES,
+} from '../config/constants.js';
 const { ObjectId } = mongoose.Schema;
 
 const UserSchema = new mongoose.Schema(
@@ -18,10 +21,23 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    phoneNo: {
+      type: String,
+    },
+    dateOfBirth: {
+      type: Date,
+    },
+    addresses: {
+      type: [String],
+    },
     isAdmin: {
       type: Boolean,
       required: true,
       default: false,
+    },
+    preferredFashion: {
+      enum: ALLOWED_FASHION_PREFERENCES,
+      type: String,
     },
     role: {
       enum: ALLOWED_ROLES,
