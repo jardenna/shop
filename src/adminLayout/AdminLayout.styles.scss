@@ -23,18 +23,17 @@
     height: calc(100svh - $header-height);
   }
 
-  .main-header {
-    margin: 0;
+  .admin-header {
+    min-height: $header-height;
+    display: flex;
+    align-items: center;
+    padding-inline: 20px;
+    justify-content: space-between;
 
     .btn-primary {
       max-width: rem(100px);
       padding-block: 12px;
       min-height: auto;
-    }
-
-    .main-header-content {
-      border: 0;
-      padding-block: 0;
     }
   }
 }

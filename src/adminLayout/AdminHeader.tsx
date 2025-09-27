@@ -19,8 +19,8 @@ const AdminHeader = ({
   isMobileSize,
   welcomeMessage,
 }: AdminHeaderProps) => (
-  <LayoutElement className="main-header" ariaLabel={ariaLabel}>
-    <div className="container main-header-content">
+  <LayoutElement ariaLabel={ariaLabel} className="admin-header">
+    <>
       <Logo linkTo={`/${AdminPath.Admin}`} />
       {!isMobileSize ? (
         <>
@@ -30,7 +30,7 @@ const AdminHeader = ({
       ) : (
         <MobileNav navList={adminNavList} className="admin-nav-container" />
       )}
-    </div>
+    </>
   </LayoutElement>
 );
 

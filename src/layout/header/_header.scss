@@ -3,6 +3,13 @@
 $animation-starts-after: 20vh;
 $animation-distance: 500px;
 
+.logo {
+  svg {
+    height: rem(24px);
+    width: rem(260px);
+  }
+}
+
 .main-header-content {
   display: flex;
   justify-content: space-between;
@@ -12,13 +19,6 @@ $animation-distance: 500px;
   .toggle-panel {
     @include max-size($mini) {
       top: calc($header-height + 26px);
-    }
-  }
-
-  .logo {
-    svg {
-      height: rem(24px);
-      width: rem(260px);
     }
   }
 
