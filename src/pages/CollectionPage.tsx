@@ -159,31 +159,29 @@ const CollectionPage = () => {
                   </>
                 )}
               </section>
-              {isLoading ? (
-                <SkeletonCardList count={8} />
-              ) : (
-                <article
-                  className={`product-card-list ${productView === 'list' && !isSmallMobileSize ? 'list' : ''}`}
-                >
-                  {products &&
-                    products.products.map((product) => (
-                      <ProductCard
-                        key={product.id}
-                        linkTo={
-                          categoryId ? product.id : `allProducts/${product.id}`
-                        }
-                        product={product}
-                        showSizeOverlay={productView !== 'list'}
-                      >
-                        {productView === 'list' ? (
-                          <ProductCardListContent product={product} />
-                        ) : (
-                          <ProductCardGridContent product={product} />
-                        )}
-                      </ProductCard>
-                    ))}
-                </article>
-              )}
+              {isLoading && <SkeletonCardList count={8} />}
+
+              <article
+                className={`product-card-list ${productView === 'list' && !isSmallMobileSize ? 'list' : ''}`}
+              >
+                {products &&
+                  products.products.map((product) => (
+                    <ProductCard
+                      key={product.id}
+                      linkTo={
+                        categoryId ? product.id : `allProducts/${product.id}`
+                      }
+                      product={product}
+                      showSizeOverlay={productView !== 'list'}
+                    >
+                      {productView === 'list' ? (
+                        <ProductCardListContent product={product} />
+                      ) : (
+                        <ProductCardGridContent product={product} />
+                      )}
+                    </ProductCard>
+                  ))}
+              </article>
             </div>
           </ErrorBoundary>
         </article>

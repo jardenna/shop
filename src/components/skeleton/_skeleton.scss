@@ -59,6 +59,11 @@
   min-width: 25%;
   margin-bottom: 12px;
 
+  .img {
+    width: 100%;
+    height: rem(520px);
+  }
+
   .flex {
     gap: 4px;
   }
