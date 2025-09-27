@@ -42,7 +42,6 @@ enum ShopPath {
 
 enum LinkText {
   AboutUs = 'aboutUs',
-  Account = 'account',
   Categories = 'categories',
   Collection = 'collection',
   Contact = 'contact',
