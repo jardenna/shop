@@ -24,12 +24,13 @@ router.get(
   getAllUsers,
 );
 
+// User routes
 router
   .route('/profile')
   .get(languageMiddleware, authenticate, getCurrentUserProfile)
   .put(languageMiddleware, authenticate, updateCurrentUserProfile);
 
-// EMPLOYEE ROUTES
+// Employee routes
 router
   .route('/:id')
   .delete(languageMiddleware, authenticate, authorizeAdmin, deleteUserById)

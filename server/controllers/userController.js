@@ -35,8 +35,6 @@ const getCurrentUserProfile = asyncHandler(async (req, res) => {
       id: user._id,
       username: user.username,
       email: user.email,
-      role: user.role,
-      isAdmin: user.isAdmin,
     });
   } else {
     return res.status(404).json({
@@ -88,11 +86,12 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
 
     const updatedUser = await user.save();
 
+    console.log(updatedUser);
+
     res.status(200).json({
       id: updatedUser._id,
       username: updatedUser.username,
       email: updatedUser.email,
-      isAdmin: updatedUser.isAdmin,
     });
   } else {
     return res.status(404).json({
