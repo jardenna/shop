@@ -11,7 +11,7 @@ $animation-distance: 500px;
 
   .toggle-panel {
     @include max-size($mini) {
-      top: calc($header-height + 26px);
+      top: calc($header-height + rem(12px));
     }
   }
 
