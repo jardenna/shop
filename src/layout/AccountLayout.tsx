@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from 'react-router';
-import Img from '../components/Img';
+import Picture from '../components/Picture';
 import useLanguage from '../features/language/useLanguage';
 import { getPathName, titleToCamelCase } from '../utils/utils';
 import './accountLayout.styles.scss';
@@ -15,7 +15,7 @@ const AccountLayout = () => {
   const createdTitle = titleToCamelCase(pathInfo);
   const title = language[createdTitle];
   const imgName = pathInfo.replace('my-', '');
-  const src = `/images/account/${imgName}.jpg`;
+  const src = `/images/account/${imgName}`;
 
   return (
     <>
@@ -29,7 +29,7 @@ const AccountLayout = () => {
           </section>
         </article>
         <div>
-          <Img src={src} alt="" />
+          <Picture src={`${src}.jpg`} srcSet={`${src}.avif`} alt="" />
         </div>
       </article>
     </>
