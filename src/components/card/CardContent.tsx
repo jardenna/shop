@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import LayoutElement from '../../layout/LayoutElement';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 
 type CardContentProps = {
@@ -20,11 +19,7 @@ const CardContent = ({
     <span className="card-top-line" aria-hidden={true} />
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
       <section className="admin-card-content">
-        {heading && (
-          <LayoutElement ariaLabel="card">
-            <h2 className="admin-card-title">{heading}</h2>
-          </LayoutElement>
-        )}
+        {heading && <h2 className="admin-card-title">{heading}</h2>}
         {children}
       </section>
     </ErrorBoundary>

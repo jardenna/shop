@@ -4,7 +4,8 @@ import { BtnVariant } from '../types/enums';
 type LinkButtonProps = {
   linkText: string;
   linkTo: string;
-  ariaCurrent?: any;
+  ariaCurrent?: 'page';
+
   variant?: BtnVariant;
 };
 

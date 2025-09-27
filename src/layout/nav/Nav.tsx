@@ -17,18 +17,22 @@ export type NavItemsProps = BaseNav & {
   subNavList?: BaseNav[];
 };
 
-type NavProps = {
+export type NavProps = {
   ariaLabel: string;
   navList: NavItemsProps[];
   className?: string;
-  hideAria?: boolean;
+  hideAriaHasPopup?: boolean;
 };
 
-const Nav = ({ navList, ariaLabel, hideAria, className }: NavProps) => (
+const Nav = ({ navList, ariaLabel, className, hideAriaHasPopup }: NavProps) => (
   <LayoutElement as="nav" ariaLabel={ariaLabel} className={className}>
     <ul className="nav-list">
       {navList.map((navItem) => (
-        <NavItem key={navItem.linkText} navItem={navItem} hideAria={hideAria} />
+        <NavItem
+          key={navItem.linkText}
+          navItem={navItem}
+          hideAriaHasPopup={hideAriaHasPopup}
+        />
       ))}
     </ul>
   </LayoutElement>

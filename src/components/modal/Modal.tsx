@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { useAppSelector } from '../../app/hooks';
+import useLanguage from '../../features/language/useLanguage';
 import { selectModalId } from '../../features/modalSlice';
 import useClickOutside from '../../hooks/useClickOutside';
 import { BtnType, BtnVariant, PopupRole, SizeVariant } from '../../types/enums';
@@ -56,6 +57,7 @@ const Modal = ({
   modalInfo,
   onClearAllValues,
 }: ModalProps) => {
+  const { language } = useLanguage();
   const modalId = useAppSelector(selectModalId);
   const { onClosePopup, popupRef } = useModal(modalId);
 
@@ -96,6 +98,7 @@ const Modal = ({
         modalHeadertext={modalHeaderText}
         onCloseModal={onCloseModal}
         showCloseIcon={showCloseIcon}
+        ariaLabel={language.dialog}
       />
       {/* Is modal body a form? */}
       {primaryActionBtn.buttonType === BtnType.Submit ? (
@@ -106,6 +109,7 @@ const Modal = ({
             secondaryActionBtn={secondaryActionBtn}
             onCloseModal={onCloseModal}
             onPrimaryClick={handlePrimaryClick}
+            ariaLabel={language.dialog}
           />
         </form>
       ) : (
@@ -116,6 +120,7 @@ const Modal = ({
             secondaryActionBtn={secondaryActionBtn}
             onCloseModal={onCloseModal}
             onPrimaryClick={handlePrimaryClick}
+            ariaLabel={language.dialog}
           />
         </>
       )}

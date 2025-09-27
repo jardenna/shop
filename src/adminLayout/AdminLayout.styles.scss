@@ -2,7 +2,11 @@
 
 .admin {
   background-color: $color-background;
+  display: flex;
+  width: 100%;
   justify-content: center;
+  padding: 20px;
+  padding-top: 32px;
 }
 
 .admin-page {
@@ -14,27 +18,22 @@
 }
 
 .admin-container {
-  .container {
-    max-width: 100%;
-    display: flex;
-    padding-top: 32px;
-  }
-
   .main {
     display: flex;
     height: calc(100svh - $header-height);
   }
 
-  .main-header {
-    .btn {
+  .admin-header {
+    min-height: $header-height;
+    display: flex;
+    align-items: center;
+    padding-inline: 20px;
+    justify-content: space-between;
+
+    .btn-primary {
       max-width: rem(100px);
       padding-block: 12px;
       min-height: auto;
-    }
-
-    .main-header-content {
-      border: 0;
-      padding-block: 0;
     }
   }
 }

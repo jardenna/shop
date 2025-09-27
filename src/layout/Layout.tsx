@@ -128,7 +128,7 @@ const Layout = () => {
     <div className="main-container">
       {!isMobileSize && <SkipLink />}
       <Header
-        ariaLabel={language.mainSiteHeader}
+        ariaLabel={language.main}
         dropdownBtnList={
           isEmployee ? employeeDropdownList : userDropdownBtnList
         }

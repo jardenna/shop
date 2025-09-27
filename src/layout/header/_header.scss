@@ -15,13 +15,6 @@ $animation-distance: 500px;
     }
   }
 
-  .logo {
-    svg {
-      height: rem(24px);
-      width: rem(260px);
-    }
-  }
-
   .btn > svg {
     height: rem(24px);
     width: rem(24px);
@@ -49,6 +42,7 @@ $animation-distance: 500px;
   z-index: 1000;
   top: 0;
   background-color: $color-white;
+  margin-bottom: 20px;
 
   .main-header-content {
     padding-block: 30px;

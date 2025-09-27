@@ -1,5 +1,12 @@
 @use './globals' as *;
 
+.logo {
+  svg {
+    height: rem(24px);
+    width: rem(260px);
+  }
+}
+
 .footer {
   display: flex;
   gap: 12px;
@@ -105,5 +112,21 @@
 
   .control-item {
     @extend %stacked-item-border;
+  }
+}
+
+.page-card {
+  max-height: 78lvh;
+  overflow: auto;
+  overflow-x: clip;
+  background-color: $color-white;
+  border-radius: 4px;
+  box-shadow: $box-shadow;
+  width: 100%;
+  padding: 24px;
+
+  @include max-size($medium) {
+    max-height: 100%;
+    padding: 12px;
   }
 }

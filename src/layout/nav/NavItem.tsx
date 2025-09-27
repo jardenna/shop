@@ -9,15 +9,14 @@ import SubNav from './subNav/SubNav';
 
 const NavItem = ({
   navItem,
-  hideAria,
+  hideAriaHasPopup,
 }: {
   navItem: NavItemsProps;
-  hideAria?: boolean;
+  hideAriaHasPopup?: boolean;
 }) => {
   const location = useLocation();
   const { language } = useLanguage();
   const [isSubNavShown, setIsSubNavShown] = useState(false);
-  const aria = navItem.subNavList && !hideAria;
 
   const handleShowSubNav = () => {
     setIsSubNavShown(true);
@@ -51,8 +50,10 @@ const NavItem = ({
       <NavLink
         to={navItem.path}
         className="nav-link"
-        aria-haspopup={aria ? true : undefined}
-        aria-expanded={aria ? isSubNavShown : undefined}
+        aria-haspopup={
+          navItem.subNavList && !hideAriaHasPopup ? true : undefined
+        }
+        aria-expanded={isSubNavShown ? isSubNavShown : undefined}
       >
         {navItem.iconName && (
           <span>
