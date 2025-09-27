@@ -1,8 +1,14 @@
-const Orders = () => (
-  // const { language } = useLanguage();
+import useLanguage from '../../features/language/useLanguage';
 
-  <div>
-    Når du bestiller varer hos Fashion Fusion vil du kunne se dine ordrer her
-  </div>
-);
+const Orders = () => {
+  const { language } = useLanguage();
+
+  return (
+    <div>
+      <p>{language.viewAndTrackOrders}</p>
+      <p>{language.whenOrderViewAndTrack}</p>
+    </div>
+  );
+};
+
 export default Orders;
