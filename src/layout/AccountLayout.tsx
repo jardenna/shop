@@ -14,9 +14,7 @@ const AccountLayout = () => {
   const pathInfo = getPathName(pathname);
   const createdTitle = titleToCamelCase(pathInfo);
   const title = language[createdTitle];
-
   const imgName = pathInfo.replace('my-', '');
-
   const src = `/images/account/${imgName}.jpg`;
 
   return (
