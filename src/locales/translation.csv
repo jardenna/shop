@@ -151,7 +151,6 @@ imageRequired;Please insert image(s);Indsæt venligst billede(r)
 inactive;Inactive;Inaktiv
 inStock;In stock;På lager
 invalidFileType;Invalid file type;Ugyldig fil type
-invalidPassword;Invalid password;Ugyldig adgangskode
 invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for planlagt dato
 invalidUserData;Invalid user data;Ugyldig bruger data
 itemLabel;Items;Varer

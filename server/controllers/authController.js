@@ -86,7 +86,7 @@ const loginUser = asyncHandler(async (req, res) => {
     if (!isPasswordValid) {
       return res.status(400).json({
         success: false,
-        message: t('invalidPassword', req.lang),
+        message: t('noUser', req.lang),
       });
     }
   }
@@ -113,15 +113,18 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 
   createToken(res, existingUser._id);
+
+  const { _id, username, isAdmin, role } = existingUser;
+  const user = {
+    id: _id,
+    username,
+    email,
+    ...(isAdmin && { isAdmin, role }), // only add if isAdmin is true
+  };
+
   res.status(201).json({
     success: true,
-    user: {
-      id: existingUser._id,
-      username: existingUser.username,
-      email: existingUser.email,
-      isAdmin: existingUser.isAdmin,
-      role: existingUser.role,
-    },
+    user,
   });
 });
 
