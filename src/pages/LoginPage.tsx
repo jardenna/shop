@@ -67,7 +67,7 @@ const LoginPage = () => {
   return (
     <MainPageContainer heading={heading} className="page-small">
       {currentUser && !mode ? (
-        <div>
+        <section>
           <p>
             {language.alreadyLoggedInAs} {currentUser.username}
           </p>
@@ -85,7 +85,7 @@ const LoginPage = () => {
               {language.createNewAccount}
             </Button>
           </div>
-        </div>
+        </section>
       ) : (
         <AuthForm
           values={values}
