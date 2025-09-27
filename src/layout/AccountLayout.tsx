@@ -8,13 +8,16 @@ import NavContainer from './nav/NavContainer';
 import { accountNavList } from './nav/navLists';
 
 const AccountLayout = () => {
-  const { language } = useLanguage();
   const { pathname } = useLocation();
+  const { language } = useLanguage();
 
   const pathInfo = getPathName(pathname);
-
   const createdTitle = titleToCamelCase(pathInfo);
   const title = language[createdTitle];
+
+  const imgName = pathInfo.replace('my-', '');
+
+  const src = `/images/account/${imgName}.jpg`;
 
   return (
     <>
@@ -28,9 +31,7 @@ const AccountLayout = () => {
           </section>
         </article>
         <div>
-          <Img src="/images/account/account.jpg" alt="" />
-          <Img src="/images/account/order.jpg" alt="" />
-          <Img src="/images/account/address.jpg" alt="" />
+          <Img src={src} alt="" />
         </div>
       </article>
     </>
