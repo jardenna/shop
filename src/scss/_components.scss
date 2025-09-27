@@ -1,5 +1,12 @@
 @use './globals' as *;
 
+.logo {
+  svg {
+    height: rem(24px);
+    width: rem(260px);
+  }
+}
+
 .footer {
   display: flex;
   gap: 12px;

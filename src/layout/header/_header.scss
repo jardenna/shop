@@ -3,13 +3,6 @@
 $animation-starts-after: 20vh;
 $animation-distance: 500px;
 
-.logo {
-  svg {
-    height: rem(24px);
-    width: rem(260px);
-  }
-}
-
 .main-header-content {
   display: flex;
   justify-content: space-between;
