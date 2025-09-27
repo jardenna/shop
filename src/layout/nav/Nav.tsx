@@ -8,6 +8,7 @@ export type BaseNav = {
   path: string;
   adHeading?: string;
   className?: string;
+  end?: boolean;
   iconName?: IconName;
   iconSize?: string;
   infoText?: string;

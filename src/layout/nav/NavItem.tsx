@@ -49,6 +49,7 @@ const NavItem = ({
     >
       <NavLink
         to={navItem.path}
+        end={navItem.end}
         className="nav-link"
         aria-haspopup={
           navItem.subNavList && !hideAriaHasPopup ? true : undefined
