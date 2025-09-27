@@ -1,7 +1,7 @@
 import { Outlet, useLocation } from 'react-router';
 import Img from '../components/Img';
 import useLanguage from '../features/language/useLanguage';
-import { getPathName } from '../utils/utils';
+import { getPathName, titleToCamelCase } from '../utils/utils';
 import './accountLayout.styles.scss';
 import MetaTags from './nav/MetaTags';
 import NavContainer from './nav/NavContainer';
@@ -12,11 +12,9 @@ const AccountLayout = () => {
   const { pathname } = useLocation();
 
   const pathInfo = getPathName(pathname);
-  const title = language[pathInfo];
 
-  //   const pathInfo = getPathName(pathname).replace(/[-_](\w)/g, (_, c: string) =>
-  //   c.toUpperCase(),
-  // );
+  const createdTitle = titleToCamelCase(pathInfo);
+  const title = language[createdTitle];
 
   return (
     <>

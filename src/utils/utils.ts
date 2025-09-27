@@ -70,6 +70,9 @@ const getPathName = (pathname: string) => {
   return pathnameList[pathnameList.length - 1] || '';
 };
 
+const titleToCamelCase = (title: string) =>
+  title.replace(/[-_](\w)/g, (_, c: string) => c.toUpperCase());
+
 const pathEquals = (path: string | undefined, enumVal: ShopPath | AdminPath) =>
   `/${path}` === `/${enumVal}`;
 
@@ -90,4 +93,5 @@ export {
   optionsList,
   pathEquals,
   sliceAndCountHidden,
+  titleToCamelCase,
 };
