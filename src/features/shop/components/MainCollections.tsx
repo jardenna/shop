@@ -6,7 +6,7 @@ type MainCollectionsProps = {
   mainCollectionList: MainCollectionsBaseProps[];
 };
 const MainCollections = ({ mainCollectionList }: MainCollectionsProps) => (
-  <div className="main-collection-container">
+  <article className="main-collection-container">
     {mainCollectionList.map(({ title, imgList, linkTo, linkText }) => (
       <MainCollectionsItem
         key={title}
@@ -17,7 +17,7 @@ const MainCollections = ({ mainCollectionList }: MainCollectionsProps) => (
         linkText={linkText}
       />
     ))}
-  </div>
+  </article>
 );
 
 export default MainCollections;

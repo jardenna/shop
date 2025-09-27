@@ -18,13 +18,13 @@ const AccountLayout = () => {
     <>
       <MetaTags metaTitle={title} />
       <article className="container account-page">
-        <div className="account-page-container">
+        <article className="account-page-container">
           <NavContainer navList={accountNavList} ariaLabel={language.account} />
-          <div className="account-page-content">
+          <section className="account-page-content">
             <h1>{title}</h1>
             <Outlet />
-          </div>
-        </div>
+          </section>
+        </article>
         <div>
           <Img src="/images/about/woman.jpg" alt="" />
         </div>

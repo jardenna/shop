@@ -102,7 +102,7 @@ const CollectionPage = () => {
           />
         )}
 
-        <div className="collection-page-container">
+        <article className="collection-page-container">
           {isMobileSize ? (
             <CollectionPageHeader
               ariaLabel={language.page}
@@ -186,7 +186,7 @@ const CollectionPage = () => {
               )}
             </div>
           </ErrorBoundary>
-        </div>
+        </article>
       </article>
     </>
   );
