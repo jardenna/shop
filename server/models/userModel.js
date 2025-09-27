@@ -51,8 +51,18 @@ const UserSchema = new mongoose.Schema(
       },
     ],
   },
-
-  { timestamps: true },
+  {
+    timestamps: true,
+    toJSON: {
+      virtuals: true,
+      versionKey: false,
+      transform: (_, ret) => {
+        ret.id = ret._id; // rename _id to id
+        delete ret._id; // remove _id
+      },
+    },
+    toObject: { virtuals: true },
+  },
 );
 
 const User = mongoose.model('User', UserSchema);

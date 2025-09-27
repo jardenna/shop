@@ -31,11 +31,7 @@ const getAllUsers = asyncHandler(async (req, res) => {
 const getCurrentUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
   if (user) {
-    res.status(200).json({
-      id: user._id,
-      username: user.username,
-      email: user.email,
-    });
+    res.status(200).json(user);
   } else {
     return res.status(404).json({
       success: false,
@@ -49,12 +45,24 @@ const getCurrentUserProfile = asyncHandler(async (req, res) => {
 // @method  Put
 // @access  Private for logged in user
 const updateCurrentUserProfile = asyncHandler(async (req, res) => {
-  const { password, email, username } = req.body;
+  const {
+    password,
+    email,
+    username,
+    phoneNo,
+    dateOfBirth,
+    preferredFashion,
+    addresses,
+  } = req.body;
   const user = await User.findById(req.user._id);
 
   if (user) {
     user.username = username || user.username;
     user.email = email || user.email;
+    user.phoneNo = phoneNo || user.phoneNo;
+    user.dateOfBirth = dateOfBirth || user.dateOfBirth;
+    user.preferredFashion = preferredFashion || user.preferredFashion;
+    user.addresses = addresses || user.addresses;
 
     if (email) {
       // Validate email
@@ -86,13 +94,7 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
 
     const updatedUser = await user.save();
 
-    console.log(updatedUser);
-
-    res.status(200).json({
-      id: updatedUser._id,
-      username: updatedUser.username,
-      email: updatedUser.email,
-    });
+    res.status(200).json(updatedUser);
   } else {
     return res.status(404).json({
       success: false,
@@ -173,12 +175,7 @@ const updateUserById = asyncHandler(async (req, res) => {
 
     const updatedUser = await user.save();
 
-    res.status(200).json({
-      id: updatedUser._id,
-      username: updatedUser.username,
-      email: updatedUser.email,
-      role: updatedUser.role,
-    });
+    res.status(200).json(updatedUser);
   } else {
     res.status(404).json({
       success: false,
