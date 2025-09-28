@@ -12,7 +12,7 @@ import {
   useDeleteUserMutation,
   useGetAllUsersQuery,
   useUpdateUserMutation,
-} from '../../features/users/authApiSlice';
+} from '../../features/users/userApiSlice';
 import useTableEditField from '../../hooks/useTableEditField';
 import useTrapFocus from '../../hooks/useTrapFocus';
 import { AdminPath } from '../../layout/nav/enums';

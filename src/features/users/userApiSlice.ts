@@ -7,7 +7,7 @@ import type {
 import type { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import { userUrl } from '../../app/endpoints';
 
-export const authApiSlice = apiSlice.injectEndpoints({
+export const userApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllUsers: builder.query<UserResponse[], void>({
       query: () => userUrl,
@@ -37,4 +37,4 @@ export const {
   useGetAllUsersQuery,
   useDeleteUserMutation,
   useUpdateUserMutation,
-} = authApiSlice;
+} = userApiSlice;
