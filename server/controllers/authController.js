@@ -5,17 +5,28 @@ import createToken from '../utils/createToken.js';
 import { t } from '../utils/translator.js';
 import { validateEmail, validatePassword } from '../utils/validateAuth.js';
 
-// @desc    Register a new user
+// @desc    Create a new user (used for both self-registration and admin creation)
 // @route   /api/auth/register
 // @method   POST
-// @access  Public
+// @access  Public (register) / Admin (create-user)
+
 const createUser = asyncHandler(async (req, res) => {
   const { username, email, password, role } = req.body;
+  const currentUser = req.user;
+  const isAdmin = currentUser?.isAdmin === true;
 
   if (!username || !email || !password) {
     return res.status(400).json({
       success: false,
       message: t('fillAll', req.lang),
+    });
+  }
+
+  // Non-admins are not allowed to set role
+  if (!isAdmin && role) {
+    return res.status(403).json({
+      success: false,
+      message: t('onlyAdminsAssignRole', req.lang),
     });
   }
 
@@ -46,12 +57,12 @@ const createUser = asyncHandler(async (req, res) => {
     username,
     email,
     password: hashPassword,
-    role,
+    role: isAdmin ? role : 'User', // enforce "User" role if not admin
   });
 
   await newUser.save();
 
-  if (!req.user?.isAdmin) {
+  if (!isAdmin) {
     createToken(res, newUser._id);
   }
 
