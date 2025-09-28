@@ -1,7 +1,7 @@
-import type { Roles } from '../../app/api/apiTypes/adminApiTypes';
-import RadioButtonList from '../../components/formElements/RadioButtonList';
-import type { InputChangeHandler } from '../../types/types';
-import { roleList } from '../../utils/productLists';
+import type { Roles } from '../../../app/api/apiTypes/adminApiTypes';
+import RadioButtonList from '../../../components/formElements/RadioButtonList';
+import type { InputChangeHandler } from '../../../types/types';
+import { roleList } from '../../../utils/productLists';
 
 type RoleRadioBtnProps = {
   onChange: InputChangeHandler;

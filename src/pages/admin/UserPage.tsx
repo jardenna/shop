@@ -6,9 +6,9 @@ import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Table from '../../components/sortTable/Table';
 import Tooltip from '../../components/tooltip/Tooltip';
 import { useGetAllUsersQuery } from '../../features/adminUsers/adminUserApiSlice';
+import EditUserInput from '../../features/adminUsers/components/EditUserInput';
 import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
-import EditUserInput from '../../features/users/EditUserInput';
 import {
   useDeleteUserMutation,
   useUpdateUserMutation,
