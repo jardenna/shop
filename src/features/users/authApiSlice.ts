@@ -13,9 +13,6 @@ export const authApiSlice = apiSlice.injectEndpoints({
       query: () => userUrl,
       providesTags: [TagTypesEnum.Auth],
     }),
-    getUserByd: builder.query<UserResponse, number>({
-      query: (id) => `${userUrl}/${id}`,
-    }),
     updateUser: builder.mutation<UpdateUserByIdResponse, UpdateUserByIdRequest>(
       {
         query: ({ user, id }) => ({
@@ -38,7 +35,6 @@ export const authApiSlice = apiSlice.injectEndpoints({
 
 export const {
   useGetAllUsersQuery,
-  useGetUserBydQuery,
   useDeleteUserMutation,
   useUpdateUserMutation,
 } = authApiSlice;
