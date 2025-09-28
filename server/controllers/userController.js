@@ -54,6 +54,7 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
     preferredFashion,
     addresses,
   } = req.body;
+
   const user = await User.findById(req.user._id);
 
   if (user) {
@@ -62,7 +63,6 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
     user.phoneNo = phoneNo || user.phoneNo;
     user.dateOfBirth = dateOfBirth || user.dateOfBirth;
     user.preferredFashion = preferredFashion || user.preferredFashion;
-    user.addresses = addresses || user.addresses;
 
     if (email) {
       // Validate email
@@ -71,6 +71,7 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
         return res.status(emailResult.status).json(emailResult.payload);
       }
     }
+
     if (password) {
       const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS) || 10;
       const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
@@ -90,6 +91,43 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
         });
       }
       user.password = hashedPassword;
+    }
+
+    if (addresses) {
+      // Add new addresses
+      if (addresses.add && addresses.add.length) {
+        addresses.add.forEach((address) => user.addresses.push(address));
+      }
+
+      // Update existing addresses
+      if (addresses.update && addresses.update.length) {
+        addresses.update.forEach((address) => {
+          const existing = user.addresses.id(address._id);
+          if (existing) {
+            existing.street = address.street || existing.street;
+            existing.zipCode = address.zipCode || existing.zipCode;
+            existing.city = address.city || existing.city;
+            existing.country = address.country || existing.country;
+          }
+        });
+      }
+
+      // Remove addresses
+      if (addresses.remove && addresses.remove.length) {
+        addresses.remove.forEach((addrId) => {
+          // first try Mongoose subdocument method
+          const existing = user.addresses.id ? user.addresses.id(addrId) : null;
+
+          if (existing && typeof existing.remove === 'function') {
+            existing.remove(); // works for subdocuments
+          } else {
+            // fallback for plain objects
+            user.addresses = user.addresses.filter(
+              (addr) => addr._id?.toString() !== addrId,
+            );
+          }
+        });
+      }
     }
 
     const updatedUser = await user.save();
