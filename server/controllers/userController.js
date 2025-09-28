@@ -1,10 +1,12 @@
 import bcrypt from 'bcryptjs';
+import mongoose from 'mongoose';
 import asyncHandler from '../middleware/asyncHandler.js';
 import User from '../models/userModel.js';
 import formatMongoData from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 import { validateCreateAddress } from '../utils/validateAddress.js';
 import { validateEmail, validatePassword } from '../utils/validateAuth.js';
+const { ObjectId } = mongoose.Types;
 
 // @desc    Get all users
 // @route   /api/users
@@ -97,19 +99,39 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
     if (addresses) {
       // Add new addresses
       if (addresses.add && addresses.add.length) {
+        const error = validateCreateAddress(addresses.add);
+
+        if (error) {
+          return res.status(400).json({
+            message: error,
+          });
+        }
+
         addresses.add.forEach((address) => {
-          const error = validateCreateAddress(address);
-          if (error) {
-            return res.status(400).json({
-              message: error,
-            });
-          }
           user.addresses.push(user.addresses.create(address));
         });
       }
 
       // Update existing addresses
       if (addresses.update && addresses.update.length) {
+        const missing = addresses.update.filter((address) => {
+          // cast string _id to ObjectId safely
+          const id =
+            typeof address._id === 'string'
+              ? ObjectId.createFromHexString(address._id)
+              : address._id;
+          return !user.addresses.id(id);
+        });
+
+        console.log({ missing });
+
+        if (missing.length > 0) {
+          // Stop processing and send response immediately
+          return res.status(404).json({
+            message: t('noUser', req.lang),
+          });
+        }
+
         addresses.update.forEach((address) => {
           const existing = user.addresses.id(address._id);
           if (existing) {
@@ -123,8 +145,8 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
 
       // Remove addresses
       if (addresses.remove && addresses.remove.length) {
-        addresses.remove.forEach((addrId) => {
-          const existing = user.addresses.id(addrId);
+        addresses.remove.forEach((addressId) => {
+          const existing = user.addresses.id(addressId);
           if (existing) {
             existing.deleteOne();
           }
