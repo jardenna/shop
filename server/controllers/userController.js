@@ -1,10 +1,10 @@
 import bcrypt from 'bcryptjs';
 import asyncHandler from '../middleware/asyncHandler.js';
 import User from '../models/userModel.js';
-import { validateEmail } from '../utils/emailValidator.js';
 import formatMongoData from '../utils/formatMongoData.js';
-import { validatePassword } from '../utils/passwordValidator.js';
 import { t } from '../utils/translator.js';
+import { validateCreateAddress } from '../utils/validateAddress.js';
+import { validateEmail, validatePassword } from '../utils/validateAuth.js';
 
 // @desc    Get all users
 // @route   /api/users
@@ -93,10 +93,17 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
       user.password = hashedPassword;
     }
 
+    // Addresses
     if (addresses) {
       // Add new addresses
       if (addresses.add && addresses.add.length) {
         addresses.add.forEach((address) => {
+          const error = validateCreateAddress(address);
+          if (error) {
+            return res.status(400).json({
+              message: error,
+            });
+          }
           user.addresses.push(user.addresses.create(address));
         });
       }
