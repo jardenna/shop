@@ -7,8 +7,6 @@ const MyAccountPage = () => {
   const { language } = useLanguage();
   const { data: profile, isLoading } = useGetUserProfileQuery();
 
-  console.log(profile);
-
   return (
     <div>
       {isLoading && <SkeletonParagraph />}
