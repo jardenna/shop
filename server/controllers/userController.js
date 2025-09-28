@@ -96,7 +96,7 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
     // Addresses
     if (addresses) {
       // Add new addresses
-      if (addresses.add && addresses.add.length) {
+      if (addresses.add?.length) {
         const error = validateCreateAddress(addresses.add);
 
         if (error) {
@@ -133,7 +133,7 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
       }
 
       // Remove addresses
-      if (addresses.remove && addresses.remove.length) {
+      if (addresses.remove?.length) {
         addresses.remove.forEach((addressId) => {
           const existing = user.addresses.id(addressId);
           if (existing) {
