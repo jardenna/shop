@@ -114,19 +114,17 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
 
       // Update existing addresses
       if (addresses.update && addresses.update.length) {
-        const missing = addresses.update.filter((address) => {
+        const existingAddress = addresses.update.find((address) => {
           // cast string _id to ObjectId safely
           const id =
             typeof address._id === 'string'
               ? ObjectId.createFromHexString(address._id)
               : address._id;
-          return !user.addresses.id(id);
+
+          return user.addresses.id(id);
         });
 
-        console.log({ missing });
-
-        if (missing.length > 0) {
-          // Stop processing and send response immediately
+        if (!existingAddress) {
           return res.status(404).json({
             message: t('noUser', req.lang),
           });
