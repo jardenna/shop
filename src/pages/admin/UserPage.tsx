@@ -5,12 +5,12 @@ import Icon from '../../components/icons/Icon';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Table from '../../components/sortTable/Table';
 import Tooltip from '../../components/tooltip/Tooltip';
+import { useGetAllUsersQuery } from '../../features/adminUsers/adminUserApiSlice';
 import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
 import EditUserInput from '../../features/users/EditUserInput';
 import {
   useDeleteUserMutation,
-  useGetAllUsersQuery,
   useUpdateUserMutation,
 } from '../../features/users/userApiSlice';
 import useTableEditField from '../../hooks/useTableEditField';
