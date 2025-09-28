@@ -175,10 +175,6 @@ const routeConfig = createBrowserRouter([
             path: ShopPath.Favorites,
             element: <FavoritesPage />,
           },
-          {
-            path: ShopPath.MyOrders,
-            element: <OrdersPage />,
-          },
         ],
       },
       {
