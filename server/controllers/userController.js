@@ -1,12 +1,10 @@
 import bcrypt from 'bcryptjs';
-import mongoose from 'mongoose';
 import asyncHandler from '../middleware/asyncHandler.js';
 import User from '../models/userModel.js';
 import formatMongoData from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 import { validateCreateAddress } from '../utils/validateAddress.js';
 import { validateEmail, validatePassword } from '../utils/validateAuth.js';
-const { ObjectId } = mongoose.Types;
 
 // @desc    Get all users
 // @route   /api/users
@@ -114,15 +112,9 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
 
       // Update existing addresses
       if (addresses.update && addresses.update.length) {
-        const existingAddress = addresses.update.find((address) => {
-          // cast string _id to ObjectId safely
-          const id =
-            typeof address._id === 'string'
-              ? ObjectId.createFromHexString(address._id)
-              : address._id;
-
-          return user.addresses.id(id);
-        });
+        const existingAddress = addresses.update.find((address) =>
+          user.addresses.id(address._id),
+        );
 
         if (!existingAddress) {
           return res.status(404).json({
