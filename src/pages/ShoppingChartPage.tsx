@@ -5,7 +5,9 @@ const ShoppingChartPage = () => {
   const { language } = useLanguage();
 
   return (
-    <MainPageContainer heading={language.shopCart}>Kurv</MainPageContainer>
+    <MainPageContainer heading={language.shopCart}>
+      <section>Kurv</section>
+    </MainPageContainer>
   );
 };
 

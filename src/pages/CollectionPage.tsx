@@ -88,6 +88,7 @@ const CollectionPage = () => {
   ];
 
   const filtersCount = getFilterSummary(filterValues);
+  const src = `/images/banners/${category}_banner`;
   const altText = `${category}BannerAltText`;
 
   return (
@@ -102,7 +103,7 @@ const CollectionPage = () => {
           />
         )}
 
-        <div className="collection-page-container">
+        <article className="collection-page-container">
           {isMobileSize ? (
             <CollectionPageHeader
               ariaLabel={language.page}
@@ -125,8 +126,8 @@ const CollectionPage = () => {
             <div className="collection-page-content">
               {!isMobileSize && (
                 <Picture
-                  src={`/images/banners/${category}_banner.jpg`}
-                  srcSet={`/images/banners/${category}_banner.avif`}
+                  src={`${src}.jpg`}
+                  srcSet={`${src}.avif`}
                   alt={language[altText]}
                 />
               )}
@@ -159,34 +160,32 @@ const CollectionPage = () => {
                   </>
                 )}
               </section>
-              {isLoading ? (
-                <SkeletonCardList count={8} />
-              ) : (
-                <article
-                  className={`product-card-list ${productView === 'list' && !isSmallMobileSize ? 'list' : ''}`}
-                >
-                  {products &&
-                    products.products.map((product) => (
-                      <ProductCard
-                        key={product.id}
-                        linkTo={
-                          categoryId ? product.id : `allProducts/${product.id}`
-                        }
-                        product={product}
-                        showSizeOverlay={productView !== 'list'}
-                      >
-                        {productView === 'list' ? (
-                          <ProductCardListContent product={product} />
-                        ) : (
-                          <ProductCardGridContent product={product} />
-                        )}
-                      </ProductCard>
-                    ))}
-                </article>
-              )}
+              {isLoading && <SkeletonCardList count={8} />}
+
+              <article
+                className={`product-card-list ${productView === 'list' && !isSmallMobileSize ? 'list' : ''}`}
+              >
+                {products &&
+                  products.products.map((product) => (
+                    <ProductCard
+                      key={product.id}
+                      linkTo={
+                        categoryId ? product.id : `allProducts/${product.id}`
+                      }
+                      product={product}
+                      showSizeOverlay={productView !== 'list'}
+                    >
+                      {productView === 'list' ? (
+                        <ProductCardListContent product={product} />
+                      ) : (
+                        <ProductCardGridContent product={product} />
+                      )}
+                    </ProductCard>
+                  ))}
+              </article>
             </div>
           </ErrorBoundary>
-        </div>
+        </article>
       </article>
     </>
   );

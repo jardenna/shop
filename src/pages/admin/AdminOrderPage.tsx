@@ -1,7 +1,7 @@
 import useLanguage from '../../features/language/useLanguage';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
-const OrderPage = () => {
+const AdminOrderPage = () => {
   const { language } = useLanguage();
 
   return (
@@ -11,4 +11,4 @@ const OrderPage = () => {
   );
 };
 
-export default OrderPage;
+export default AdminOrderPage;

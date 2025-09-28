@@ -18,22 +18,22 @@ enum AdminPath {
 }
 
 enum ShopPath {
-  AboutUs = 'aboutUs',
+  AboutUs = 'about-us',
   Collection = 'collection',
   CollectionCategory = 'collection/:category',
   CollectionCategoryId = 'collection/:category/:categoryId',
   CollectionSingleProduct = 'collection/:category/:categoryId/:id',
   Contact = 'contact',
-  CreateAccount = 'createAccount',
+  CreateAccount = 'create-account',
   Favorites = 'favorites',
-  FavoritesProduct = 'collection/product/allProducts',
+  FavoritesProduct = 'collection/product/all-products',
   Home = 'home',
   Kids = '/collection/kids',
   Login = 'login',
   Men = '/collection/men',
-  MyAccount = 'myAccount',
-  MyAddresses = 'myAddresses',
-  MyOrders = 'myOrders',
+  MyAccount = 'my-account',
+  MyAddresses = 'my-addresses',
+  MyOrders = 'my-orders',
   Product = 'product',
   Root = '/',
   ShoppingCart = 'shopping-cart',
@@ -42,7 +42,6 @@ enum ShopPath {
 
 enum LinkText {
   AboutUs = 'aboutUs',
-  Account = 'account',
   Categories = 'categories',
   Collection = 'collection',
   Contact = 'contact',

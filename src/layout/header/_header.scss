@@ -11,7 +11,7 @@ $animation-distance: 500px;
 
   .toggle-panel {
     @include max-size($mini) {
-      top: calc($header-height + 26px);
+      top: calc($header-height + rem(12px));
     }
   }
 
@@ -42,7 +42,6 @@ $animation-distance: 500px;
   z-index: 1000;
   top: 0;
   background-color: $color-white;
-  margin-bottom: 20px;
 
   .main-header-content {
     padding-block: 30px;

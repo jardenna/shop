@@ -11,7 +11,7 @@ import useFormValidation from '../hooks/useFormValidation';
 import useMediaQuery from '../hooks/useMediaQuery ';
 import { BtnType, IconName } from '../types/enums';
 import type { OptionType } from '../types/types';
-import { getPathInfo, pathEquals } from '../utils/utils';
+import { getPathName, pathEquals } from '../utils/utils';
 import Header from './header/Header';
 import { AdminPath, ShopPath } from './nav/enums';
 
@@ -87,7 +87,7 @@ const Layout = () => {
     authDropdownItem,
   ];
 
-  const pathInfo = getPathInfo(pathname);
+  const pathInfo = getPathName(pathname);
 
   // User dropdown list
   const userDropdownBtnList: DropdownItem[] = [

@@ -1,11 +1,9 @@
 @use '../scss/globals' as *;
 
 .account-page {
-  height: 90vh;
-  overflow: hidden;
+  height: calc(100svh - $header-height);
   display: flex;
-  gap: 52px;
-  justify-content: center;
+  gap: 24px;
 
   .nav {
     display: flex;
@@ -19,7 +17,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: rem(700px);
     gap: 4px;
   }
 

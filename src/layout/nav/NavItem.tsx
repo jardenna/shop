@@ -49,6 +49,7 @@ const NavItem = ({
     >
       <NavLink
         to={navItem.path}
+        end={navItem.end}
         className="nav-link"
         aria-haspopup={
           navItem.subNavList && !hideAriaHasPopup ? true : undefined
@@ -60,16 +61,15 @@ const NavItem = ({
             <Icon
               iconName={navItem.iconName}
               title={language[navItem.linkText]}
-              size={navItem.iconSize}
             />
           </span>
         )}
         <span className="nav-text">{language[navItem.linkText]}</span>
       </NavLink>
-      {navItem.subNavList && navItem.adHeading && (
+      {navItem.subNavList && navItem.heading && (
         <SubNav
           subNavList={navItem.subNavList}
-          adHeading={navItem.adHeading}
+          heading={navItem.heading}
           isSubNavShown={isSubNavShown}
         />
       )}

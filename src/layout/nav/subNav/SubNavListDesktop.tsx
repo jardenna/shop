@@ -1,11 +1,11 @@
 import { NavLink } from 'react-router';
-import { BaseNav } from '../Nav';
+import type { SubBaseNav } from '../Nav';
 import NavAd from '../NavAd';
 
 type SubNavListDesktoptProps = {
   heading: string;
   language: Record<string, string>;
-  subNavList: BaseNav[];
+  subNavList: SubBaseNav[];
 };
 
 const SubNavListDesktop = ({
@@ -18,7 +18,7 @@ const SubNavListDesktop = ({
       <li className={`sub-nav-item ${className}`} key={linkText}>
         <section className="sub-nav-content">
           <h2 className="sub-nav-heading">{language[linkText]}</h2>
-          <p className="sub-nav-text">{infoText ? language[infoText] : ''}</p>
+          <p className="sub-nav-text">{language[infoText]}</p>
         </section>
         <div className="sub-nav-link">
           <NavLink to={path} className="btn btn-primary">

@@ -6,15 +6,20 @@ import NavItem from './NavItem';
 export type BaseNav = {
   linkText: LinkText;
   path: string;
-  adHeading?: string;
   className?: string;
+  end?: boolean;
+  heading?: string;
   iconName?: IconName;
-  iconSize?: string;
-  infoText?: string;
+};
+
+type OmittedBaseNav = Omit<BaseNav, 'end' | 'heading' | 'iconName'>;
+
+export type SubBaseNav = OmittedBaseNav & {
+  infoText: string;
 };
 
 export type NavItemsProps = BaseNav & {
-  subNavList?: BaseNav[];
+  subNavList?: SubBaseNav[];
 };
 
 export type NavProps = {

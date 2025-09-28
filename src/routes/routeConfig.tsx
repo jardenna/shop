@@ -8,8 +8,8 @@ import AddressPage from '../pages/account/AddressPage';
 import MyAccountPage from '../pages/account/MyAccountPage';
 import OrdersPage from '../pages/account/OrdersPage';
 import AdminCreateUserPage from '../pages/admin/AdminCreateUserPage';
+import AdminOrderPage from '../pages/admin/AdminOrderPage';
 import Dashboard from '../pages/admin/Dashboard';
-import OrderPage from '../pages/admin/OrderPage';
 import UserPage from '../pages/admin/UserPage';
 import CategoryPage from '../pages/category/CategoryPage';
 import CreateCategoryPage from '../pages/category/CreateCategoryPage';
@@ -155,7 +155,7 @@ const adminRouteList = [
   },
   {
     path: AdminPath.AdminOrders,
-    element: <OrderPage />,
+    element: <AdminOrderPage />,
   },
 ];
 

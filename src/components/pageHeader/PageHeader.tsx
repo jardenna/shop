@@ -13,7 +13,7 @@ type PageHeaderProps = {
 const PageHeader = ({ heading, linkTo, linkText }: PageHeaderProps) => {
   const { language } = useLanguage();
   return (
-    <div className="page-header-container">
+    <section className="page-header-container">
       <Breadcrumbs currentLabel={heading} />
       <LayoutElement className="page-header" ariaLabel={language.page}>
         <h1>{heading}</h1>
@@ -21,7 +21,7 @@ const PageHeader = ({ heading, linkTo, linkText }: PageHeaderProps) => {
           <LinkButton linkTo={linkTo} linkText={linkText} />
         )}
       </LayoutElement>
-    </div>
+    </section>
   );
 };
 

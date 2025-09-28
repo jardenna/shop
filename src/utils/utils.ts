@@ -63,12 +63,15 @@ const getFilterSummary = (filters: Filters): FiltersCountResult => {
   return { countsByKey, totalCount };
 };
 
-const getPathInfo = (pathname: string) => {
+const getPathName = (pathname: string) => {
   // Normalize: remove empty segments
-  const parts = pathname.split('/').filter(Boolean);
+  const pathnameList = pathname.split('/').filter(Boolean);
 
-  return parts[parts.length - 1] || '';
+  return pathnameList[pathnameList.length - 1] || '';
 };
+
+const titleToCamelCase = (title: string) =>
+  title.replace(/[-_](\w)/g, (_, c: string) => c.toUpperCase());
 
 const pathEquals = (path: string | undefined, enumVal: ShopPath | AdminPath) =>
   `/${path}` === `/${enumVal}`;
@@ -82,12 +85,13 @@ export {
   discountCalculation,
   getAriaLabel,
   getFilterSummary,
-  getPathInfo,
   getlowerCaseFirstLetter,
-  maxFileSize,
+  getPathName,
   maxFiles,
+  maxFileSize,
   oneDay,
   optionsList,
   pathEquals,
   sliceAndCountHidden,
+  titleToCamelCase,
 };
