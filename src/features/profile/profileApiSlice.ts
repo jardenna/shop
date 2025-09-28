@@ -1,10 +1,10 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
-import type { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
+import { UserProfileResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import { profileUrl } from '../../app/endpoints';
 
 export const profileApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getUserProfile: builder.query<UserResponse[], void>({
+    getUserProfile: builder.query<UserProfileResponse, void>({
       query: () => profileUrl,
       providesTags: [TagTypesEnum.Profile],
     }),
