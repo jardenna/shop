@@ -96,7 +96,9 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
     if (addresses) {
       // Add new addresses
       if (addresses.add && addresses.add.length) {
-        addresses.add.forEach((address) => user.addresses.push(address));
+        addresses.add.forEach((address) => {
+          user.addresses.push(user.addresses.create(address));
+        });
       }
 
       // Update existing addresses
@@ -115,16 +117,9 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
       // Remove addresses
       if (addresses.remove && addresses.remove.length) {
         addresses.remove.forEach((addrId) => {
-          // first try Mongoose subdocument method
-          const existing = user.addresses.id ? user.addresses.id(addrId) : null;
-
-          if (existing && typeof existing.remove === 'function') {
-            existing.remove(); // works for subdocuments
-          } else {
-            // fallback for plain objects
-            user.addresses = user.addresses.filter(
-              (addr) => addr._id?.toString() !== addrId,
-            );
+          const existing = user.addresses.id(addrId);
+          if (existing) {
+            existing.deleteOne();
           }
         });
       }
