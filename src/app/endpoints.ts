@@ -9,7 +9,7 @@ const authEndpoints = {
 };
 
 const userUrl = '/users';
-const profileUrl = '/profile';
+const profileUrl = '/users/profile';
 const categoryUrl = '/categories';
 const subCategoryUrl = '/subcategories';
 const favoritesUrl = '/favorites';

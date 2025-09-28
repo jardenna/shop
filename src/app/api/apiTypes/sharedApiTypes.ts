@@ -106,7 +106,28 @@ export type BasePagination = {
   pages: number;
 };
 
+export type Address = {
+  _id: string;
+  city: string;
+  street: string;
+  zipCode: string;
+  country?: string;
+};
+
+export type PreferredFashion =
+  | 'MensFashion'
+  | 'WomensFashion'
+  | 'KidsFashion'
+  | 'NoPreference';
+
+// Main user object
 export type UserProfileResponse = {
+  addresses: Address[];
   email: string;
+  favorites: string[];
+  id: string;
+  password: string;
   username: string;
+  phoneNo?: string;
+  preferredFashion?: PreferredFashion;
 };
