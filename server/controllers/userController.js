@@ -111,26 +111,25 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
       }
 
       // Update existing addresses
-      if (addresses.update && addresses.update.length) {
-        const existingAddress = addresses.update.find((address) =>
-          user.addresses.id(address._id),
-        );
+      if (addresses.update?.length) {
+        let found = false;
 
-        if (!existingAddress) {
-          return res.status(404).json({
-            message: t('noUser', req.lang),
-          });
-        }
-
-        addresses.update.forEach((address) => {
-          const existing = user.addresses.id(address._id);
+        addresses.update.forEach(({ _id, street, zipCode, city, country }) => {
+          const existing = user.addresses.id(_id);
           if (existing) {
-            existing.street = address.street || existing.street;
-            existing.zipCode = address.zipCode || existing.zipCode;
-            existing.city = address.city || existing.city;
-            existing.country = address.country || existing.country;
+            found = true;
+            existing.street = street ?? existing.street;
+            existing.zipCode = zipCode ?? existing.zipCode;
+            existing.city = city ?? existing.city;
+            existing.country = country ?? existing.country;
           }
         });
+
+        if (!found) {
+          return res
+            .status(404)
+            .json({ message: t('noAddressData', req.lang) });
+        }
       }
 
       // Remove addresses
