@@ -121,13 +121,14 @@ export type PreferredFashion =
   | 'NoPreference';
 
 // Main user object
-export type UserProfileResponse = {
+export type UserProfileResponse = DefaultResponseType & {
   addresses: Address[];
+  dateOfBirth: Date;
   email: string;
   favorites: string[];
   id: string;
   password: string;
+  phoneNo: string;
   username: string;
-  phoneNo?: string;
   preferredFashion?: PreferredFashion;
 };
