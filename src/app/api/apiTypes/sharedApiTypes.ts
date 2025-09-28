@@ -105,3 +105,8 @@ export type BasePagination = {
   page: number;
   pages: number;
 };
+
+export type UserProfileResponse = {
+  email: string;
+  username: string;
+};
