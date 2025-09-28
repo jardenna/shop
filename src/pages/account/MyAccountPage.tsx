@@ -15,7 +15,7 @@ const MyAccountPage = () => {
         <>
           <p>{profile.username}</p>
           <p>{profile.email}</p>
-          <p>{profile.preferredFashion}</p>
+          <p>{language[profile.preferredFashion]}</p>
           <p>{profile.phoneNo}</p>
           <p>
             <DateDisplay date={profile.createdAt} />

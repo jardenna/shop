@@ -158,6 +158,7 @@ kid;Kid;Barn
 kids;Kids;Børn
 kidsAltText;Stylish children, a girl in a white sleeveless top with a matching hat and a boy in a colorful shirt, sitting together in a playful yet elegant pose.;Stilfulde børn, en pige i hvid ærmeløs top med matchende hat og en dreng i farverig skjorte, sidder sammen i et legende men elegant udtryk.
 kidsBannerAltText;Four classically dressed children in tartan outfits smile warmly while holding hands.;Fire klassisk klædte børn i skotskternede outfits smiler varmt, mens de holder hinanden i hånden.
+kidsFashion;Kids’s fashion;Børne mode
 language;Language;Sprog
 left;left;tilbage
 list;List;Liste
@@ -184,6 +185,7 @@ maximumFileSize;Maximum file size;Maksimal filstørrelse
 men;Men;Mænd
 menAltText;Elegant man with a hat, suspenders, and a burgundy shirt, lifts his hand to remove his sunglasses.;Elegant mand med hat, seler og bordeaux skjorte, løfter hånden for at tage sine solbriller af.
 menBannerAltText;Stylish man wearing an exclusive jacket and dark sunglasses, exuding timeless confidence.;Stilfuld mand iført eksklusiv jakke og mørke solbriller, udstråler tidløs selvsikkerhed.
+mensFashion;Men’s fashion;Heremode
 menu;Menu;Menu
 minLength;At least 8 characters;Mindst 8 tegn
 missingYourSize;Missing your size;Mangler vi din størrelse
@@ -215,6 +217,7 @@ notAuthorizedTokenFailed;Not authorized, token failed;Ikke autoriseret, token mi
 notifyMe;Notify me;Giv mig besked
 notifyMeMessage;Choose below, and we’ll notify you when it’s restocked; Vælg herunder, så får du en e-mail, når varen igen er på lager
 notifySuccessMeMessage;We got your request. Hopefully we’ll be in touch soon;Vi har modtaget din forespørgsel. Forhåbentlig hører du snart fra os
+noPreference;No preference;Ingen præference
 notRatedYet;Not srated yet;Ikke bedømt endnu
 noTumbleDry;Not suitable for tumble drying;Ikke egnet til tørretumbler
 notVisibleInShop;is not visible in the shop until the main category is published;bliver først synlig i shoppen, når hovedkategorien er udgivet
@@ -389,5 +392,6 @@ women_3AltText;Woman in a red blazer and stylish high heels leaning against a ma
 women;Women;Damer
 womenAltText;Glamorous woman in a black dress with a large silver buckle, dancing and radiating sophisticated joy.;Glamourøs kvinde i sort kjole med stort sølvspænde danser og udstråler sofistikeret glæde.
 womenBannerAltText;Sophisticated woman in a matching jacket and trousers with a bag and red flowers behind her, completing an elegant tableau.;Sofistikeret kvinde i matchende jakke og bukser med taske og røde blomster bag sig fuldender et elegant tableau.
+womensFashion;Women’s fashion;Damemode
 yellow;Yellow;Gul
 yesterday;Yesterday;I går

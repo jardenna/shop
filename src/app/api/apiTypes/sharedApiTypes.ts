@@ -115,10 +115,10 @@ export type Address = {
 };
 
 export type PreferredFashion =
-  | 'MensFashion'
-  | 'WomensFashion'
-  | 'KidsFashion'
-  | 'NoPreference';
+  | 'mensFashion'
+  | 'womensFashion'
+  | 'kidsFashion'
+  | 'noPreference';
 
 // Main user object
 export type UserProfileResponse = DefaultResponseType & {
@@ -129,6 +129,6 @@ export type UserProfileResponse = DefaultResponseType & {
   id: string;
   password: string;
   phoneNo: string;
+  preferredFashion: PreferredFashion;
   username: string;
-  preferredFashion?: PreferredFashion;
 };
