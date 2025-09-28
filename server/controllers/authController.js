@@ -2,9 +2,8 @@ import bcrypt from 'bcryptjs';
 import asyncHandler from '../middleware/asyncHandler.js';
 import User from '../models/userModel.js';
 import createToken from '../utils/createToken.js';
-import { validateEmail } from '../utils/emailValidator.js';
-import { validatePassword } from '../utils/passwordValidator.js';
 import { t } from '../utils/translator.js';
+import { validateEmail, validatePassword } from '../utils/validateAuth.js';
 
 // @desc    Register a new user
 // @route   /api/auth/register

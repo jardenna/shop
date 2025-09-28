@@ -1,3 +1,17 @@
+import { emailRegex } from './regex.js';
+import { t } from './translator.js';
+
+const validateEmail = (email, lang) => {
+  if (!emailRegex.test(email)) {
+    return {
+      isValid: false,
+      status: 422,
+      payload: { success: false, message: t('pleaseEnterValidEmail', lang) },
+    };
+  }
+  return { isValid: true };
+};
+
 const passwordPolicy = {
   minLength: 8,
   minLowercase: 1,
@@ -25,4 +39,4 @@ const validatePassword = (password) => {
   return null; // Valid password
 };
 
-export { passwordPolicy, validatePassword };
+export { passwordPolicy, validateEmail, validatePassword };
