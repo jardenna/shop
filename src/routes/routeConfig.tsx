@@ -89,7 +89,6 @@ const routeList = [
       },
     ],
   },
-
   {
     path: ShopPath.ShoppingCart,
     element: <ShoppingChartPage />,
@@ -175,6 +174,10 @@ const routeConfig = createBrowserRouter([
           {
             path: ShopPath.Favorites,
             element: <FavoritesPage />,
+          },
+          {
+            path: ShopPath.MyOrders,
+            element: <OrdersPage />,
           },
         ],
       },
