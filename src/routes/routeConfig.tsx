@@ -72,24 +72,6 @@ const routeList = [
     element: <CreateAccountPage />,
   },
   {
-    path: ShopPath.MyAccount,
-    element: <AccountLayout />,
-    children: [
-      {
-        path: '',
-        element: <MyAccountPage />,
-      },
-      {
-        path: ShopPath.MyOrders,
-        element: <OrdersPage />,
-      },
-      {
-        path: ShopPath.MyAddresses,
-        element: <AddressPage />,
-      },
-    ],
-  },
-  {
     path: ShopPath.ShoppingCart,
     element: <ShoppingChartPage />,
   },
@@ -174,6 +156,24 @@ const routeConfig = createBrowserRouter([
           {
             path: ShopPath.Favorites,
             element: <FavoritesPage />,
+          },
+          {
+            path: ShopPath.MyAccount,
+            element: <AccountLayout />,
+            children: [
+              {
+                path: '',
+                element: <MyAccountPage />,
+              },
+              {
+                path: ShopPath.MyOrders,
+                element: <OrdersPage />,
+              },
+              {
+                path: ShopPath.MyAddresses,
+                element: <AddressPage />,
+              },
+            ],
           },
         ],
       },
