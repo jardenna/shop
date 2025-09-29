@@ -1,6 +1,8 @@
 import DateDisplay from '../../components/datePicker/DateDisplay';
 import Icon from '../../components/icons/Icon';
 import LabelValueGrid from '../../components/LabelValueGrid';
+import { PrimaryActionBtnProps } from '../../components/modal/Modal';
+import ModalContainer from '../../components/modal/ModalContainer';
 import SkeletonParagraph from '../../components/skeleton/SkeletonParagraph';
 import Tooltip from '../../components/tooltip/Tooltip';
 import useLanguage from '../../features/language/useLanguage';
@@ -12,6 +14,11 @@ const MyAccountPage = () => {
   const { language } = useLanguage();
   const { data: profile, isLoading } = useGetUserProfileQuery();
   const notProvided = language.notProvided;
+
+  const primaryActionBtn: PrimaryActionBtnProps = {
+    label: 'ok',
+  };
+
   return (
     <>
       {isLoading && <SkeletonParagraph />}
@@ -49,6 +56,14 @@ const MyAccountPage = () => {
             )}
           </LabelValueGrid>
           <LabelValueGrid text={language.email}>{profile.email}</LabelValueGrid>
+          <ModalContainer
+            triggerModalBtnContent={language.notifyMe}
+            id="id"
+            primaryActionBtn={primaryActionBtn}
+            modalHeaderText={language.temporarilyOutOfStock}
+          >
+            modal
+          </ModalContainer>
         </div>
       )}
     </>
