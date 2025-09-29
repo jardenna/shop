@@ -1,4 +1,5 @@
 import DateDisplay from '../../components/datePicker/DateDisplay';
+import GridTwoCol from '../../components/GridTwoCol';
 import SkeletonParagraph from '../../components/skeleton/SkeletonParagraph';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetUserProfileQuery } from '../../features/profile/profileApiSlice';
@@ -10,17 +11,22 @@ const MyAccountPage = () => {
   return (
     <div>
       {isLoading && <SkeletonParagraph />}
-      <p>{language.verifyAndUpdateInfo}</p>
+      <div>{language.verifyAndUpdateInfo}</div>
+
       {profile && (
-        <>
-          <p>{profile.username}</p>
-          <p>{profile.email}</p>
-          <p>{language[profile.preferredFashion]}</p>
-          <p>{profile.phoneNo}</p>
-          <p>
+        <div>
+          <GridTwoCol text={language.name}>{profile.username}</GridTwoCol>
+          <GridTwoCol text="Mobil">
+            {profile.phoneNo || 'Ikke oplyst'}
+          </GridTwoCol>
+          <GridTwoCol text="Din foretrukne mode">
+            {language[profile.preferredFashion] || 'Ikke oplyst'}
+          </GridTwoCol>
+          <GridTwoCol text="Fødselsdag">
             <DateDisplay date={profile.createdAt} />
-          </p>
-        </>
+          </GridTwoCol>
+          <GridTwoCol text="Email">{profile.email}</GridTwoCol>
+        </div>
       )}
     </div>
   );
