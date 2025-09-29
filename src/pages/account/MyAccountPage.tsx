@@ -1,8 +1,11 @@
 import DateDisplay from '../../components/datePicker/DateDisplay';
+import Icon from '../../components/icons/Icon';
 import LabelValueGrid from '../../components/LabelValueGrid';
 import SkeletonParagraph from '../../components/skeleton/SkeletonParagraph';
+import Tooltip from '../../components/tooltip/Tooltip';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetUserProfileQuery } from '../../features/profile/profileApiSlice';
+import { BtnVariant, IconName } from '../../types/enums';
 import './_my-account.scss';
 
 const MyAccountPage = () => {
@@ -19,10 +22,19 @@ const MyAccountPage = () => {
           <LabelValueGrid text={language.name}>
             {profile.username}
           </LabelValueGrid>
+
           <LabelValueGrid text={language.phone}>
-            {language.phoneInfo}
+            <Tooltip
+              ariaControls="scheduled-date"
+              ariaLabel={language.viewScheduledDate}
+              triggerBtnVariant={BtnVariant.Ghost}
+              tooltip={language.phoneInfo}
+            >
+              <Icon iconName={IconName.Calendar} title={language.calendar} />
+            </Tooltip>
             {profile.phoneNo || notProvided}
           </LabelValueGrid>
+
           <LabelValueGrid text={language.fashionPreference}>
             {language[profile.preferredFashion]}
           </LabelValueGrid>
