@@ -139,4 +139,13 @@
     display: flex;
     justify-content: flex-end;
   }
+
+  .tooltip-container {
+    display: flex;
+    gap: 4px;
+  }
+
+  .popup-container {
+    max-width: rem(280px);
+  }
 }

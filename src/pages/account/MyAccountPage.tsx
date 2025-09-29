@@ -23,14 +23,18 @@ const MyAccountPage = () => {
             {profile.username}
           </LabelValueGrid>
 
-          <LabelValueGrid text={language.phone}>
-            <Tooltip
-              ariaControls="scheduled-date"
-              ariaLabel={language.viewScheduledDate}
-              tooltip={language.phoneInfo}
-            >
-              <Icon iconName={IconName.Calendar} title={language.calendar} />
-            </Tooltip>
+          <LabelValueGrid
+            text={language.phone}
+            tooltip={
+              <Tooltip
+                ariaControls="phone"
+                ariaLabel={language.viewScheduledDate}
+                tooltip={language.phoneInfo}
+              >
+                <Icon iconName={IconName.Info} title="" />
+              </Tooltip>
+            }
+          >
             {profile.phoneNo || notProvided}
           </LabelValueGrid>
 

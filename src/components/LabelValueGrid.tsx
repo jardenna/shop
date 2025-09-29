@@ -3,11 +3,20 @@ import type { ReactNode } from 'react';
 type LabelValueGridProps = {
   children: ReactNode;
   text: string;
+  tooltip?: ReactNode;
 };
 
-const LabelValueGrid = ({ children, text }: LabelValueGridProps) => (
+const LabelValueGrid = ({ children, text, tooltip }: LabelValueGridProps) => (
   <div className="label-value-grid">
-    <strong className="label">{text}:</strong>
+    {tooltip ? (
+      <div className="tooltip-container">
+        <strong className="label">{text}:</strong>
+        {tooltip}
+      </div>
+    ) : (
+      <strong className="label">{text}:</strong>
+    )}
+
     <span className="text">{children}</span>
   </div>
 );
