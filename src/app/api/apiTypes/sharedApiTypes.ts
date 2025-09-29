@@ -123,7 +123,6 @@ export type PreferredFashion =
 // Main user object
 export type UserProfileResponse = DefaultResponseType & {
   addresses: Address[];
-  dateOfBirth: Date;
   email: string;
   favorites: string[];
   id: string;
@@ -131,4 +130,5 @@ export type UserProfileResponse = DefaultResponseType & {
   phoneNo: string;
   preferredFashion: PreferredFashion;
   username: string;
+  dateOfBirth?: Date;
 };

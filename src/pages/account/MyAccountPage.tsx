@@ -1,34 +1,41 @@
 import DateDisplay from '../../components/datePicker/DateDisplay';
-import GridTwoCol from '../../components/GridTwoCol';
+import LabelValueGrid from '../../components/LabelValueGrid';
 import SkeletonParagraph from '../../components/skeleton/SkeletonParagraph';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetUserProfileQuery } from '../../features/profile/profileApiSlice';
+import './_my-account.scss';
 
 const MyAccountPage = () => {
   const { language } = useLanguage();
   const { data: profile, isLoading } = useGetUserProfileQuery();
 
   return (
-    <div>
+    <>
       {isLoading && <SkeletonParagraph />}
-      <div>{language.verifyAndUpdateInfo}</div>
+      <p>{language.verifyAndUpdateInfo}</p>
 
       {profile && (
-        <div>
-          <GridTwoCol text={language.name}>{profile.username}</GridTwoCol>
-          <GridTwoCol text="Mobil">
+        <div className="my-account">
+          <LabelValueGrid text={language.name}>
+            {profile.username}
+          </LabelValueGrid>
+          <LabelValueGrid text="Mobil">
             {profile.phoneNo || 'Ikke oplyst'}
-          </GridTwoCol>
-          <GridTwoCol text="Din foretrukne mode">
-            {language[profile.preferredFashion] || 'Ikke oplyst'}
-          </GridTwoCol>
-          <GridTwoCol text="Fødselsdag">
-            <DateDisplay date={profile.createdAt} />
-          </GridTwoCol>
-          <GridTwoCol text="Email">{profile.email}</GridTwoCol>
+          </LabelValueGrid>
+          <LabelValueGrid text="Din foretrukne mode">
+            {language[profile.preferredFashion]}
+          </LabelValueGrid>
+          <LabelValueGrid text="Fødselsdag">
+            {profile.dateOfBirth ? (
+              <DateDisplay date={profile.dateOfBirth} />
+            ) : (
+              'Ikke oplyst'
+            )}
+          </LabelValueGrid>
+          <LabelValueGrid text="Email">{profile.email}</LabelValueGrid>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
