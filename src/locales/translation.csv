@@ -79,6 +79,7 @@ currentlyUnavailableSizes;Currently unavailable sizes;Midlertidigt udsolgte stø
 customersList;Customers list;Kundeliste
 dashboard;Dashboard;Dashboard
 date;Date;Dato
+dateOfBirth;Date of birth;Fødselsdag
 daysAgo;days ago;dage siden
 delete;Delete;Slet
 deleteCategory;Delete category;Slet kategori
@@ -120,6 +121,7 @@ fashionGridWomanLink;Shop Women;Shop dame
 fashionGridWomanText;Find pieces that inspire self-expression, effortless, bold, and made to move with you.;Udtryk dig selv med styles, der er ubesværede, modige og med dig i bevægelse.
 fashionGridWomenAltText;"Woman in a colorful outfit, wearing a beret that matches her sweater.";"Kvinde i farverigt outfit og en alpehue der matcher til hendes sweater."
 favorites;Favorites;Favoritter
+fashionPreference;Fashion preference;Foretrukne mode
 fileExceedsSize;Selected file(s) exceeds the 1MB limit; Valgte fil(er) overstiger grænsen på 1 MB. Upload venligst en mindre fil
 filesCanBeUploaded;files can be uploaded;filer kan uploades
 filesSupported;Files supported;Tilladte filer
@@ -218,7 +220,8 @@ notifyMe;Notify me;Giv mig besked
 notifyMeMessage;Choose below, and we’ll notify you when it’s restocked; Vælg herunder, så får du en e-mail, når varen igen er på lager
 notifySuccessMeMessage;We got your request. Hopefully we’ll be in touch soon;Vi har modtaget din forespørgsel. Forhåbentlig hører du snart fra os
 noPreference;No preference;Ingen præference
-notRatedYet;Not srated yet;Ikke bedømt endnu
+notProvided;Not provided;Ikke oplyst
+notRatedYet;Not rated yet;Ikke bedømt endnu
 noTumbleDry;Not suitable for tumble drying;Ikke egnet til tørretumbler
 notVisibleInShop;is not visible in the shop until the main category is published;bliver først synlig i shoppen, når hovedkategorien er udgivet
 noUser;User not found. Please sign up first;Bruger blev ikke fundet. Opret dig først
@@ -244,6 +247,8 @@ paymentAndDelivery;Payment and delivery;Betaling og levering
 paymentText;You can pay by credit card or MobilePay. We only charge your payment once your order has been shipped;Betaling kan ske med kreditkort eller MobilePay. Vi trækker først beløbet, når din ordre er afsendt
 pcs;pcs;stk.
 pencil;Pencil;Blyant
+phone;Phone;Telefon
+phoneInfo;We’ll only contact you when needed, for instance, to update you on your order or reply to a customer service question.;Vi kontakter dig kun, når det er påkrævet, eksempelvis ved vigtige ændringer i din ordre eller for at svare på en henvendelse til kundeservice.
 pink;Pink;Pink
 pleaseEnter;Please enter;Indsæt venligst
 pleaseEnterCategoryName;Please enter a name for category;Indsæt venligst navn på kategori

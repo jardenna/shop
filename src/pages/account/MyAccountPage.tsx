@@ -8,7 +8,7 @@ import './_my-account.scss';
 const MyAccountPage = () => {
   const { language } = useLanguage();
   const { data: profile, isLoading } = useGetUserProfileQuery();
-
+  const notProvided = language.notProvided;
   return (
     <>
       {isLoading && <SkeletonParagraph />}
@@ -19,20 +19,21 @@ const MyAccountPage = () => {
           <LabelValueGrid text={language.name}>
             {profile.username}
           </LabelValueGrid>
-          <LabelValueGrid text="Mobil">
-            {profile.phoneNo || 'Ikke oplyst'}
+          <LabelValueGrid text={language.phone}>
+            {language.phoneInfo}
+            {profile.phoneNo || notProvided}
           </LabelValueGrid>
-          <LabelValueGrid text="Din foretrukne mode">
+          <LabelValueGrid text={language.fashionPreference}>
             {language[profile.preferredFashion]}
           </LabelValueGrid>
-          <LabelValueGrid text="Fødselsdag">
+          <LabelValueGrid text={language.dateOfBirth}>
             {profile.dateOfBirth ? (
               <DateDisplay date={profile.dateOfBirth} />
             ) : (
-              'Ikke oplyst'
+              notProvided
             )}
           </LabelValueGrid>
-          <LabelValueGrid text="Email">{profile.email}</LabelValueGrid>
+          <LabelValueGrid text={language.email}>{profile.email}</LabelValueGrid>
         </div>
       )}
     </>
