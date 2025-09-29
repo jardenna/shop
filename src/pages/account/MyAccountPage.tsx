@@ -31,7 +31,7 @@ const MyAccountPage = () => {
                 ariaLabel={language.viewScheduledDate}
                 tooltip={language.phoneInfo}
               >
-                <Icon iconName={IconName.Info} title="" />
+                <Icon iconName={IconName.Info} title="" size="1em" />
               </Tooltip>
             }
           >

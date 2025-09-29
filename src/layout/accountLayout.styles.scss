@@ -5,6 +5,11 @@
   display: flex;
   gap: 24px;
 
+  .label-value-grid {
+    border-bottom: 1px solid $color-gray-40;
+    padding-block: 12px;
+  }
+
   .nav {
     display: flex;
     justify-content: flex-end;
@@ -35,6 +40,7 @@
       object-position: top;
       height: 100%;
       width: 100%;
+      max-height: max-content;
       border-radius: 0;
     }
   }
