@@ -35,7 +35,7 @@ const AccountLayout = () => {
             <Outlet />
           </section>
         </article>
-        <div>
+        <div className="account-img-container">
           <Picture
             src={`${src}.jpg`}
             srcSet={`${src}.avif`}

@@ -13,11 +13,12 @@
   }
 
   .account-page-container {
-    flex: 2;
     display: flex;
+    flex: 1;
     flex-direction: column;
     justify-content: center;
     gap: 4px;
+    max-width: rem(720px);
   }
 
   .account-page-content {
@@ -26,8 +27,15 @@
     min-height: rem(400px);
   }
 
-  img {
-    height: 100%;
-    border-radius: 0;
+  .account-img-container {
+    flex: 1;
+
+    img {
+      object-fit: cover;
+      object-position: top;
+      height: 100%;
+      width: 100%;
+      border-radius: 0;
+    }
   }
 }
