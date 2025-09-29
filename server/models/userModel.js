@@ -43,6 +43,7 @@ const UserSchema = new mongoose.Schema(
     preferredFashion: {
       enum: ALLOWED_FASHION_PREFERENCES,
       type: String,
+      default: 'noPreference',
     },
     role: {
       enum: ALLOWED_ROLES,
