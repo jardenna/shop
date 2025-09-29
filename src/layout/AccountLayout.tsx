@@ -29,7 +29,11 @@ const AccountLayout = () => {
       <MetaTags metaTitle={title} />
       <article className="container account-page">
         <article className="account-page-container">
-          <NavContainer navList={accountNavList} ariaLabel={language.account} />
+          <NavContainer
+            navList={accountNavList}
+            ariaLabel={language.account}
+            className="account-nav"
+          />
           <section className="account-page-content">
             <h1>{title}</h1>
             <Outlet />

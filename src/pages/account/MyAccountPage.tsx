@@ -57,7 +57,7 @@ const MyAccountPage = () => {
           </LabelValueGrid>
           <LabelValueGrid text={language.email}>{profile.email}</LabelValueGrid>
           <ModalContainer
-            triggerModalBtnContent={language.notifyMe}
+            triggerModalBtnContent={language.update}
             id="id"
             primaryActionBtn={primaryActionBtn}
             modalHeaderText={language.temporarilyOutOfStock}
