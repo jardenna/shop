@@ -3,11 +3,6 @@
 // Shared nav
 .nav-link {
   font-size: $font-medium;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 20px;
 
   @include transition;
 }
@@ -54,6 +49,12 @@
   flex-grow: 1;
 
   .nav-link {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+
     &.active {
       background-color: $color-background;
     }
