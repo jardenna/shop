@@ -16,7 +16,7 @@ import {
 import useTableEditField from '../../hooks/useTableEditField';
 import useTrapFocus from '../../hooks/useTrapFocus';
 import { AdminPath } from '../../layout/nav/enums';
-import { BtnVariant, IconName } from '../../types/enums';
+import { IconName } from '../../types/enums';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 import DeleteUser from './DeleteUser';
 
@@ -163,7 +163,6 @@ const UserPage = () => {
                         ref={popupRef}
                       />
                     )}
-                    triggerBtnVariant={BtnVariant.Ghost}
                     triggerBtnClassName="danger"
                     ariaLabel={language.deleteUser}
                   >

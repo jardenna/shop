@@ -3,7 +3,7 @@ import Badge from '../../../components/Badge';
 import DateDisplay from '../../../components/datePicker/DateDisplay';
 import Icon from '../../../components/icons/Icon';
 import Tooltip from '../../../components/tooltip/Tooltip';
-import { BtnVariant, IconName } from '../../../types/enums';
+import { IconName } from '../../../types/enums';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import useLanguage from '../../language/useLanguage';
 
@@ -25,7 +25,6 @@ const AdminBadge = ({ scheduledDate, status }: AdminBadgeProps) => {
         <Tooltip
           ariaControls="scheduled-date"
           ariaLabel={language.viewScheduledDate}
-          triggerBtnVariant={BtnVariant.Ghost}
           tooltip={
             <DateDisplay date={scheduledDate} hour="2-digit" minute="2-digit" />
           }

@@ -1,5 +1,5 @@
 import useLanguage from '../../features/language/useLanguage';
-import { BtnVariant, IconName } from '../../types/enums';
+import { IconName } from '../../types/enums';
 import type { InputChangeHandler } from '../../types/types';
 import Icon from '../icons/Icon';
 import Tooltip from '../tooltip/Tooltip';
@@ -33,7 +33,6 @@ const TableSearch = ({
             value={value}
           />
         }
-        triggerBtnVariant={BtnVariant.Ghost}
         ariaLabel={`${language.filter} ${label}`}
       >
         <Icon title={language.filterRow} iconName={IconName.Filter} />
