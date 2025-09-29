@@ -5,7 +5,7 @@ import type {
 } from '../../app/api/apiTypes/sharedApiTypes';
 import useLanguage from '../../features/language/useLanguage';
 import CardContent from '../card/CardContent';
-import GridTwoCol from '../GridTwoCol';
+import LabelValueGrid from '../LabelValueGrid';
 import ColorList from '../productLists/ColorList';
 import SizeList from '../productLists/SizeList';
 
@@ -38,14 +38,14 @@ const ProductCardCenter = ({
   return (
     <CardContent onReset={onReset} className="center">
       <span className="separator" aria-hidden={true} />
-      <GridTwoCol text={language.productsInStock}>
+      <LabelValueGrid text={language.productsInStock}>
         {countInStock} {language.pcs}
-      </GridTwoCol>
+      </LabelValueGrid>
       {discount !== 0 && (
-        <GridTwoCol text={language.discount}>{discount}%</GridTwoCol>
+        <LabelValueGrid text={language.discount}>{discount}%</LabelValueGrid>
       )}
-      <GridTwoCol text={language.brand}>{brand}</GridTwoCol>
-      <GridTwoCol text={language.material}>{material}</GridTwoCol>
+      <LabelValueGrid text={language.brand}>{brand}</LabelValueGrid>
+      <LabelValueGrid text={language.material}>{material}</LabelValueGrid>
       <ColorList
         colors={colours}
         variant="small"

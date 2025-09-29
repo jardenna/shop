@@ -13,7 +13,7 @@ import Input from '../../../components/formElements/Input';
 import Textarea from '../../../components/formElements/Textarea';
 import ToggleSwitch from '../../../components/formElements/toggleSwitch/ToggleSwitch';
 import validateProduct from '../../../components/formElements/validation/validateProduct';
-import GridTwoCol from '../../../components/GridTwoCol';
+import LabelValueGrid from '../../../components/LabelValueGrid';
 import useMessagePopup from '../../../components/messagePopup/useMessagePopup';
 import ColorOptions from '../../../components/selectbox/ColorOptions';
 import Selectbox from '../../../components/selectbox/Selectbox';
@@ -427,9 +427,9 @@ const ProductForm = ({
                 onChange={onChange}
               />
               {selectedProduct && (
-                <GridTwoCol text={language.productsInStock}>
+                <LabelValueGrid text={language.productsInStock}>
                   {selectedProduct.countInStock} {language.pcs}
-                </GridTwoCol>
+                </LabelValueGrid>
               )}
             </div>
           </FormCard>

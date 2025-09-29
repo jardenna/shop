@@ -3,8 +3,8 @@ import ProductDiscountPrice from '../../features/currency/components/ProductDisc
 import useLanguage from '../../features/language/useLanguage';
 import CardContent from '../card/CardContent';
 import MissingImage from '../formElements/fileInput/MissingImage';
-import GridTwoCol from '../GridTwoCol';
 import ImgList from '../ImgList';
+import LabelValueGrid from '../LabelValueGrid';
 import AdminCardHeading from './AdminCardHeading';
 
 type ProductCardLeftProps = {
@@ -44,9 +44,9 @@ const ProductCardLeft = ({
         ariaLabel={language.productCard}
       />
       <p>{description}</p>
-      <GridTwoCol text={language.price}>
+      <LabelValueGrid text={language.price}>
         <ProductDiscountPrice price={price} discount={discount} />
-      </GridTwoCol>
+      </LabelValueGrid>
     </CardContent>
   );
 };
