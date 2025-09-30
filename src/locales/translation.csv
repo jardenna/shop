@@ -32,7 +32,6 @@ cancel;Cancel;Annuller
 care;Care;Vaskeanvisning
 categories;Categories;Kategorier
 category;Category;Kategori
-categoryAlreadyExist;Category already exist;Kategori findes allerede
 categoryCard;Category card;Kategori card
 categoryCreated;Category created;Kategori tilføjet
 categoryDeleted;Category deleted;Kategori blev slettet
@@ -379,6 +378,7 @@ userInfo;User info;Bruger info
 username;User name;Brugernavn
 users;Users;Brugere
 userUpdated;User updated;Bruger opdateret
+alreadyInUse;Value already in use;Værdien er allerede i brug
 view;View;Se
 viewAndTrackOrders;View and track your orders.;Tjek og følg dine ordrer.
 viewInfo;View info;Se info

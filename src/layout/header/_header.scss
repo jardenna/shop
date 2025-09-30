@@ -66,6 +66,10 @@ $animation-distance: 500px;
   display: flex;
   gap: 16px;
 
+  .popup-container {
+    padding: 0;
+  }
+
   .favorite-link {
     position: relative;
   }

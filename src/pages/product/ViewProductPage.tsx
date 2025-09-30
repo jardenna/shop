@@ -14,6 +14,7 @@ import {
 } from '../../features/products/productApiSlice';
 import { AdminPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
+import handleApiError from '../../utils/handleApiError';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const ViewProductPage = () => {
@@ -51,11 +52,7 @@ const ViewProductPage = () => {
         });
       }
     } catch (error: any) {
-      onAddMessagePopup({
-        messagePopupType: 'error',
-        message: error.data.message,
-        componentType: 'notification',
-      });
+      handleApiError(error, onAddMessagePopup);
     }
   };
 

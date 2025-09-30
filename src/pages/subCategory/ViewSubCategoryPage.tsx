@@ -8,6 +8,7 @@ import {
   useGetSubCategoryByIdQuery,
 } from '../../features/subCategories/subCategoryApiSlice';
 import { AdminPath } from '../../layout/nav/enums';
+import handleApiError from '../../utils/handleApiError';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
@@ -47,11 +48,7 @@ const ViewSubCategoryPage = () => {
         });
       }
     } catch (error: any) {
-      onAddMessagePopup({
-        messagePopupType: 'error',
-        message: error.data.message,
-        componentType: 'notification',
-      });
+      handleApiError(error, onAddMessagePopup);
     }
   };
 

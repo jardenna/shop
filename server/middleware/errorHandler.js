@@ -22,8 +22,10 @@ const errorHandler = (error, req, res, next) => {
 
   // Duplicate key error
   if (error.code === 11000) {
+    console.log(error);
+
     statusCode = 400;
-    message = t('categoryAlreadyExist', req.lang);
+    message = t('alreadyInUse', req.lang);
   }
 
   // Mongoose validation error

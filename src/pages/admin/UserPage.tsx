@@ -17,6 +17,7 @@ import useTableEditField from '../../hooks/useTableEditField';
 import useTrapFocus from '../../hooks/useTrapFocus';
 import { AdminPath } from '../../layout/nav/enums';
 import { IconName } from '../../types/enums';
+import handleApiError from '../../utils/handleApiError';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 import DeleteUser from './DeleteUser';
 
@@ -78,11 +79,7 @@ const UserPage = () => {
         message: language.userUpdated,
       });
     } catch (error: any) {
-      onAddMessagePopup({
-        messagePopupType: 'error',
-        message: error.data.message,
-        componentType: 'notification',
-      });
+      handleApiError(error, onAddMessagePopup);
     }
   }
 
@@ -94,11 +91,7 @@ const UserPage = () => {
         message: `${username} ${language.deleted}`,
       });
     } catch (error: any) {
-      onAddMessagePopup({
-        messagePopupType: 'error',
-        message: error.data.message,
-        componentType: 'notification',
-      });
+      handleApiError(error, onAddMessagePopup);
     }
   };
 

@@ -23,11 +23,8 @@ const createUser = asyncHandler(async (req, res) => {
   }
 
   // Non-admins are not allowed to set role
-  if (!isAdmin && role) {
-    return res.status(403).json({
-      success: false,
-      message: t('onlyAdminsAssignRole', req.lang),
-    });
+  if (!isAdmin) {
+    delete req.body.role;
   }
 
   const userExists = await User.findOne({ email });

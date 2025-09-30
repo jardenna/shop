@@ -11,6 +11,7 @@ import { ShopPath } from '../../../layout/nav/enums';
 import useLanguage from '../../language/useLanguage';
 import { useCreateAccountMutation } from '../authApiSlice';
 import AuthForm from './AuthForm';
+import handleApiError from '../../../utils/handleApiError';
 
 export type CreateAccountProps = {
   navigateTo: string;
@@ -63,11 +64,7 @@ const CreateAccount = ({
         navigate(navigateTo);
       }
     } catch (error: any) {
-      onAddMessagePopup({
-        messagePopupType: 'error',
-        message: error.data.message,
-        componentType: 'notification',
-      });
+      handleApiError(error, onAddMessagePopup);
     }
   }
 

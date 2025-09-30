@@ -9,6 +9,7 @@ import SharedCategoryInputs from '../../components/SharedCategoryInputs';
 import useFormValidation from '../../hooks/useFormValidation';
 import { AdminPath } from '../../layout/nav/enums';
 import type { OptionType } from '../../types/types';
+import handleApiError from '../../utils/handleApiError';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
 import useLanguage from '../language/useLanguage';
 import {
@@ -91,11 +92,7 @@ const CategoryForm = ({
 
       navigate(AdminPath.AdminCategories);
     } catch (error: any) {
-      onAddMessagePopup({
-        messagePopupType: 'error',
-        message: error.data.message,
-        componentType: 'notification',
-      });
+      handleApiError(error, onAddMessagePopup);
     }
   }
 

@@ -10,6 +10,7 @@ import {
   useGetHasScheduledDataQuery,
 } from '../../features/products/productApiSlice';
 import { AdminPath } from '../../layout/nav/enums';
+import handleApiError from '../../utils/handleApiError';
 import { oneDay } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 import './ProductPage.styles.scss';
@@ -55,11 +56,7 @@ const ProductPage = () => {
         message: language.productCopied,
       });
     } catch (error: any) {
-      onAddMessagePopup({
-        messagePopupType: 'error',
-        message: error.data.message,
-        componentType: 'notification',
-      });
+      handleApiError(error, onAddMessagePopup);
     }
   }
 
