@@ -9,6 +9,7 @@ import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
 import { ShopPath } from '../layout/nav/enums';
 import { BtnVariant } from '../types/enums';
+import handleApiError from '../utils/handleApiError';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const LoginPage = () => {
@@ -43,11 +44,7 @@ const LoginPage = () => {
         navigate(from, { replace: true });
       }
     } catch (error: any) {
-      onAddMessagePopup({
-        messagePopupType: 'error',
-        message: error.data.message,
-        componentType: 'notification',
-      });
+      handleApiError(error, onAddMessagePopup);
     }
   }
 
