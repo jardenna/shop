@@ -5,6 +5,11 @@
   gap: 32px;
 
   .label-value-grid {
+    .tooltip {
+      display: flex;
+      gap: 4px;
+    }
+
     .text {
       justify-content: flex-start;
     }

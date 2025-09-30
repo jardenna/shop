@@ -9,14 +9,13 @@ type LabelValueGridProps = {
 const LabelValueGrid = ({ children, text, tooltip }: LabelValueGridProps) => (
   <div className="label-value-grid">
     {tooltip ? (
-      <div>
+      <div className="tooltip">
         <strong className="label">{text}:</strong>
         {tooltip}
       </div>
     ) : (
       <strong className="label">{text}:</strong>
     )}
-
     <span className="text">{children}</span>
   </div>
 );

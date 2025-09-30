@@ -26,6 +26,10 @@
 }
 
 .table-search-input {
+  .popup-container {
+    padding: 0;
+  }
+
   .input-container {
     .table-search {
       background-color: $color-white;
