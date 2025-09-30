@@ -3,7 +3,9 @@ import ModalContainer from '../../components/modal/ModalContainer';
 import SkeletonParagraph from '../../components/skeleton/SkeletonParagraph';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetUserProfileQuery } from '../../features/profile/profileApiSlice';
+import { SizeVariant } from '../../types/enums';
 import './_my-account.scss';
+import AccountForm from './AccountForm';
 import AccountInfoList from './AccountInfoList';
 
 const MyAccountPage = () => {
@@ -26,10 +28,11 @@ const MyAccountPage = () => {
           <ModalContainer
             triggerModalBtnContent={language.update}
             id="id"
+            modalSize={SizeVariant.Md}
             primaryActionBtn={primaryActionBtn}
             modalHeaderText={language.temporarilyOutOfStock}
           >
-            modal
+            <AccountForm profile={profile} />
           </ModalContainer>
         </div>
       )}

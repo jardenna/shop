@@ -127,8 +127,17 @@ export type UserProfileResponse = DefaultResponseType & {
   favorites: string[];
   id: string;
   password: string;
-  phoneNo: string;
   preferredFashion: PreferredFashion;
   username: string;
+  dateOfBirth?: any;
+  phoneNo?: string;
+};
+
+export type UserProfileRequest = {
+  email: string;
+  username: string;
+  addresses?: Address[];
   dateOfBirth?: Date;
+  phoneNo?: string;
+  preferredFashion?: PreferredFashion;
 };
