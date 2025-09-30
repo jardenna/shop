@@ -11,19 +11,23 @@ const useAuth = () => {
   const currentUser = useAppSelector(selectUser);
   const [sendLogout, { isSuccess }] = useLogoutMutation();
 
+  const protectedRoutes = ['/dashboard', '/users'];
+  const requiresAuth = protectedRoutes.includes(location.pathname);
+
   const {
     data: userProfile,
     isLoading,
     error,
   } = useCheckAuthQuery(undefined, {
+    skip: !requiresAuth, // skip query for public routes
     refetchOnMountOrArgChange: true,
   });
 
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess && requiresAuth) {
       navigate(ShopPath.Root);
     }
-  }, [isSuccess, navigate]);
+  }, [isSuccess, navigate, requiresAuth]);
 
   useEffect(() => {
     if (!isLoading) {
