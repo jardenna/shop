@@ -130,3 +130,22 @@
     padding: 12px;
   }
 }
+
+.label-value-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  .text {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .tooltip-container {
+    display: flex;
+    gap: 4px;
+  }
+
+  .popup-container {
+    max-width: rem(280px);
+  }
+}

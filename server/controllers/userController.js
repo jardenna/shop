@@ -29,7 +29,8 @@ const getAllUsers = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Private for logged in user
 const getCurrentUserProfile = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.user._id);
+  const user = await User.findById(req.user?._id).select('-isAdmin -role');
+
   if (user) {
     res.status(200).json(user);
   } else {
@@ -97,7 +98,14 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
     if (addresses) {
       // Add new addresses
       if (addresses.add?.length) {
-        const error = validateCreateAddress(addresses.add);
+        if (addresses.add.length > 1) {
+          return res.status(400).json({
+            message: 'You can only add one address at a time',
+          });
+        }
+
+        const address = addresses.add[0];
+        const error = validateCreateAddress(address);
 
         if (error) {
           return res.status(400).json({
@@ -105,9 +113,7 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
           });
         }
 
-        addresses.add.forEach((address) => {
-          user.addresses.push(user.addresses.create(address));
-        });
+        user.addresses.push(user.addresses.create(address));
       }
 
       // Update existing addresses

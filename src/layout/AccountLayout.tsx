@@ -28,14 +28,18 @@ const AccountLayout = () => {
     <>
       <MetaTags metaTitle={title} />
       <article className="container account-page">
-        <article className="account-page-container">
-          <NavContainer navList={accountNavList} ariaLabel={language.account} />
+        <article className="account-content-container">
+          <NavContainer
+            navList={accountNavList}
+            ariaLabel={language.account}
+            className="account-nav"
+          />
           <section className="account-page-content">
             <h1>{title}</h1>
             <Outlet />
           </section>
         </article>
-        <div>
+        <div className="account-img-container">
           <Picture
             src={`${src}.jpg`}
             srcSet={`${src}.avif`}

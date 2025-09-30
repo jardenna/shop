@@ -3,6 +3,7 @@ import usePopup from '../../hooks/usePopup';
 import Button from '../Button';
 import { DropdownBtnProps } from '../dropdownBtn/DropdownBtn';
 import './_tooltip.scss';
+import { BtnVariant } from '../../types/enums';
 
 type OmittedDropdownBtnProps = Omit<
   DropdownBtnProps,
@@ -18,7 +19,7 @@ const Tooltip = ({
   tooltip,
   ariaControls,
   ariaLabel,
-  triggerBtnVariant,
+  triggerBtnVariant = BtnVariant.Ghost,
   triggerBtnClassName = '',
   placement,
 }: TooltipProps) => {

@@ -1,0 +1,12 @@
+.my-account {
+  padding-inline: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  .label-value-grid {
+    .text {
+      justify-content: flex-start;
+    }
+  }
+}

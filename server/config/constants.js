@@ -1,10 +1,10 @@
 const ALLOWED_ROLES = ['Employee', 'User'];
 
 const ALLOWED_FASHION_PREFERENCES = [
-  'MensFashion',
-  'WomensFashion',
-  'KidsFashion',
-  'NoPreference',
+  'mensFashion',
+  'womensFashion',
+  'kidsFashion',
+  'noPreference',
 ];
 
 const STATUS = {

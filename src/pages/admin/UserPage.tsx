@@ -5,18 +5,18 @@ import Icon from '../../components/icons/Icon';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Table from '../../components/sortTable/Table';
 import Tooltip from '../../components/tooltip/Tooltip';
+import { useGetAllUsersQuery } from '../../features/adminUsers/adminUserApiSlice';
+import EditUserInput from '../../features/adminUsers/components/EditUserInput';
 import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
-import EditUserInput from '../../features/users/EditUserInput';
 import {
   useDeleteUserMutation,
-  useGetAllUsersQuery,
   useUpdateUserMutation,
-} from '../../features/users/authApiSlice';
+} from '../../features/users/userApiSlice';
 import useTableEditField from '../../hooks/useTableEditField';
 import useTrapFocus from '../../hooks/useTrapFocus';
 import { AdminPath } from '../../layout/nav/enums';
-import { BtnVariant, IconName } from '../../types/enums';
+import { IconName } from '../../types/enums';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 import DeleteUser from './DeleteUser';
 
@@ -163,7 +163,6 @@ const UserPage = () => {
                         ref={popupRef}
                       />
                     )}
-                    triggerBtnVariant={BtnVariant.Ghost}
                     triggerBtnClassName="danger"
                     ariaLabel={language.deleteUser}
                   >

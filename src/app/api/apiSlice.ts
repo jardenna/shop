@@ -4,6 +4,7 @@ export enum TagTypesEnum {
   Categories = 'Categories',
   Favorites = 'Favorites',
   Products = 'Products',
+  Profile = 'Profile',
   SubCategories = 'SubCategories',
   Users = 'Users',
 }
@@ -27,6 +28,7 @@ const apiSlice = createApi({
     TagTypesEnum.SubCategories,
     TagTypesEnum.Products,
     TagTypesEnum.Favorites,
+    TagTypesEnum.Profile,
   ],
   endpoints: () => ({}),
 });

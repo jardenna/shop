@@ -5,16 +5,26 @@
   display: flex;
   gap: 24px;
 
-  .nav {
-    display: flex;
-    justify-content: flex-end;
-    gap: 20px;
-    text-transform: uppercase;
+  .label-value-grid {
+    border-bottom: 1px solid $color-gray-40;
+    padding-block: 12px;
   }
 
-  .account-page-container {
-    flex: 2;
+  .account-nav {
+    .nav-list {
+      display: flex;
+      gap: 12px;
+
+      .nav-link {
+        text-transform: uppercase;
+        font-size: $font-small;
+      }
+    }
+  }
+
+  .account-content-container {
     display: flex;
+    flex: 1;
     flex-direction: column;
     justify-content: center;
     gap: 4px;
@@ -26,8 +36,16 @@
     min-height: rem(400px);
   }
 
-  img {
-    height: 100%;
-    border-radius: 0;
+  .account-img-container {
+    flex: 1;
+
+    img {
+      object-fit: cover;
+      object-position: top;
+      height: 100%;
+      width: 100%;
+      max-height: max-content;
+      border-radius: 0;
+    }
   }
 }

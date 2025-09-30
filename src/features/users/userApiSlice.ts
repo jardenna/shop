@@ -2,20 +2,12 @@ import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import type {
   UpdateUserByIdRequest,
   UpdateUserByIdResponse,
-  UserResponse,
 } from '../../app/api/apiTypes/adminApiTypes';
 import type { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import { userUrl } from '../../app/endpoints';
 
-export const authApiSlice = apiSlice.injectEndpoints({
+export const userApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getAllUsers: builder.query<UserResponse[], void>({
-      query: () => userUrl,
-      providesTags: [TagTypesEnum.Auth],
-    }),
-    getUserByd: builder.query<UserResponse, number>({
-      query: (id) => `${userUrl}/${id}`,
-    }),
     updateUser: builder.mutation<UpdateUserByIdResponse, UpdateUserByIdRequest>(
       {
         query: ({ user, id }) => ({
@@ -36,9 +28,4 @@ export const authApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const {
-  useGetAllUsersQuery,
-  useGetUserBydQuery,
-  useDeleteUserMutation,
-  useUpdateUserMutation,
-} = authApiSlice;
+export const { useDeleteUserMutation, useUpdateUserMutation } = userApiSlice;

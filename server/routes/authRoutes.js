@@ -9,10 +9,16 @@ import languageMiddleware from '../middleware/languageMiddleware.js';
 
 const router = express.Router();
 
+// @desc    Public registration
+// @route   POST /api/auth/register
+// @access  Public
 router.post('/register', languageMiddleware, createUser);
 router.post('/login', languageMiddleware, loginUser);
 router.post('/logout', languageMiddleware, logoutCurrentUser);
 
+// @desc    Admin creates a new user
+// @route   POST /api/auth/admin/create-user
+// @access  Admin
 router.post(
   '/admin/create-user',
   languageMiddleware,
