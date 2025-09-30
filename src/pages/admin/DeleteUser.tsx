@@ -21,10 +21,10 @@ const DeleteUser = ({
 
   return (
     <section className="delete-user-popup" ref={ref}>
-      <span>
+      <div>
         <p>{language.sureToDelete}</p>
         <p>{username}?</p>
-      </span>
+      </div>
       <LayoutElement
         as="footer"
         className="footer"

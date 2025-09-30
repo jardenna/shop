@@ -102,8 +102,8 @@ const FilterPanel = ({
         secondaryAction: onClearAllFilters,
         secondaryBtnText: language.clearAllFilters,
       }}
-      ariaHasPopup="dialog"
       ariaControls="filter-products"
+      role="dialog"
       showCloseIcon
       className="filter-panel"
       triggerBtnClassName="filter-btn"

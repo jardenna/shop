@@ -21,12 +21,13 @@ type ActionBtnsProps = {
 
 type TogglePanelProps = {
   ariaControls: string;
-  ariaHasPopup: AriaHasPopup;
   children: ReactNode;
+  ariaHasPopup?: AriaHasPopup;
   className?: string;
   footer?: ActionBtnsProps;
   panelPosition?: PanelPosition;
   preventClickOutside?: boolean;
+  role?: string;
   showCloseIcon?: boolean;
   triggerBtnClassName?: string;
   triggerBtnContent?: ReactNode;
@@ -43,6 +44,7 @@ const TogglePanel = ({
   preventClickOutside = false,
   ariaHasPopup,
   footer,
+  role,
 }: TogglePanelProps) => {
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
@@ -75,8 +77,8 @@ const TogglePanel = ({
         )}
       </Button>
       <div
-        role="region"
         ref={panelRef}
+        role={role}
         className={`toggle-panel ${panelPosition} ${className} ${isPanelShown ? 'shown' : ''}`}
         id={ariaControls}
         aria-hidden={isPanelShown ? undefined : true}
