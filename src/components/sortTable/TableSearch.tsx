@@ -2,7 +2,7 @@ import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import type { InputChangeHandler } from '../../types/types';
 import Icon from '../icons/Icon';
-import Tooltip from '../tooltip/Tooltip';
+import Tooltip from '../popup/Popup';
 import VisuallyHidden from '../VisuallyHidden';
 import TableSearchInput from './TableSearchInput';
 

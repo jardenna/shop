@@ -2,7 +2,7 @@ import { Status } from '../../../app/api/apiTypes/adminApiTypes';
 import Badge from '../../../components/Badge';
 import DateDisplay from '../../../components/datePicker/DateDisplay';
 import Icon from '../../../components/icons/Icon';
-import Tooltip from '../../../components/tooltip/Tooltip';
+import Tooltip from '../../../components/popup/Popup';
 import { IconName } from '../../../types/enums';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import useLanguage from '../../language/useLanguage';

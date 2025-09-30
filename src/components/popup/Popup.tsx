@@ -1,9 +1,9 @@
 import type { ReactNode } from 'react';
 import usePopup from '../../hooks/usePopup';
+import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import { DropdownBtnProps } from '../dropdownBtn/DropdownBtn';
-import './_tooltip.scss';
-import { BtnVariant } from '../../types/enums';
+import './_popup.scss';
 
 type OmittedDropdownBtnProps = Omit<
   DropdownBtnProps,

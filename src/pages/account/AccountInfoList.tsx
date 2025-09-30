@@ -2,7 +2,7 @@ import { UserProfileResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import DateDisplay from '../../components/datePicker/DateDisplay';
 import Icon from '../../components/icons/Icon';
 import LabelValueGrid from '../../components/LabelValueGrid';
-import Tooltip from '../../components/tooltip/Tooltip';
+import Tooltip from '../../components/popup/Popup';
 import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 
