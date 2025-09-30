@@ -4,6 +4,7 @@ import { BtnVariant } from '../../types/enums';
 import { AriaHasPopup } from '../../types/types';
 import Button from '../Button';
 import { DropdownBtnProps } from '../dropdownBtn/DropdownBtn';
+import './_popup.scss';
 
 type OmittedDropdownBtnProps = Omit<
   DropdownBtnProps,
