@@ -35,6 +35,7 @@ import {
 } from '../productApiSlice';
 import FormCard from './FormCard';
 import ImageUpload from './ImageUpload';
+import handleApiError from '../../../utils/handleApiError';
 
 type ProductFormProps = {
   allowedSizes: string[];
@@ -213,11 +214,7 @@ const ProductForm = ({
 
       navigate(AdminPath.AdminProducts);
     } catch (error: any) {
-      onAddMessagePopup({
-        messagePopupType: 'error',
-        message: error.data.message,
-        componentType: 'notification',
-      });
+      handleApiError(error, onAddMessagePopup);
     }
   }
 
