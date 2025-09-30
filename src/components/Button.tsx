@@ -2,7 +2,7 @@
 
 import { ReactNode, RefObject } from 'react';
 import { BtnType, BtnVariant } from '../types/enums';
-import type { ButtonEventType } from '../types/types';
+import type { AriaHasPopup, ButtonEventType } from '../types/types';
 import Loader from './loader/Loader';
 import VisuallyHidden from './VisuallyHidden';
 
@@ -11,7 +11,7 @@ type ButtonProps = {
   ariaControls?: string;
   ariaDescribedby?: string;
   ariaExpanded?: boolean;
-  ariaHasPopup?: boolean;
+  ariaHasPopup?: AriaHasPopup;
   ariaLabel?: string;
   ariaPressed?: boolean;
   autoFocus?: boolean;

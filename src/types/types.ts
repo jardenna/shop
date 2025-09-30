@@ -59,6 +59,14 @@ export type InputType =
   | 'url'
   | 'week';
 
+export type AriaHasPopup =
+  | boolean
+  | 'menu'
+  | 'listbox'
+  | 'tree'
+  | 'grid'
+  | 'dialog';
+
 export type ControlInputType = Extract<InputType, 'checkbox' | 'radio'>;
 
 export type Filters = Record<string, string[]>;

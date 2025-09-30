@@ -45,7 +45,7 @@ const DropdownBtn = ({
         variant={triggerBtnVariant}
         onClick={togglePopupList}
         ariaExpanded={popupIsOpen}
-        ariaHasPopup
+        ariaHasPopup="menu"
         ariaControls={ariaControls}
         ariaLabel={ariaLabel}
         className={triggerBtnClassName}
