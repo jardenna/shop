@@ -40,7 +40,7 @@ const DropdownBtn = ({
     usePopup({ placement });
 
   return (
-    <div className="popup">
+    <div>
       <Button
         variant={triggerBtnVariant}
         onClick={togglePopupList}

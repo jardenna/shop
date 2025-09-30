@@ -20,9 +20,9 @@ type ButtonProps = {
   id?: string;
   isLoading?: boolean;
   name?: string;
+  popupRef?: RefObject<HTMLButtonElement | null>;
   role?: string;
   tabIndex?: 0 | -1;
-  tooltipRef?: RefObject<HTMLButtonElement | null>;
   type?: BtnType;
   variant?: BtnVariant;
   onClick?: (event: ButtonEventType | string) => void;
@@ -49,14 +49,14 @@ const Button = ({
   name,
   ariaDescribedby,
   isLoading,
-  tooltipRef,
+  popupRef,
 }: ButtonProps) => (
   <button
     id={id}
     tabIndex={tabIndex}
     role={role}
     type={type}
-    ref={ref || tooltipRef}
+    ref={ref || popupRef}
     onClick={onClick}
     aria-pressed={ariaPressed || undefined}
     aria-expanded={ariaExpanded || undefined}

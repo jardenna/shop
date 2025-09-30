@@ -130,3 +130,22 @@
   width: rem(100px);
   height: rem(120px);
 }
+
+.delete-user-popup {
+  max-width: fit-content;
+  min-width: rem(216px);
+
+  p {
+    margin: 0;
+  }
+
+  .footer {
+    margin-top: 4px;
+
+    .btn {
+      min-height: auto;
+      font-size: $font-small;
+      padding: 8px;
+    }
+  }
+}

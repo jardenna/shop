@@ -1,10 +1,5 @@
 @use './globals' as *;
 
-.popup {
-  display: flex;
-  justify-content: center;
-}
-
 $placements: (
   top: bottom,
   bottom: top,
