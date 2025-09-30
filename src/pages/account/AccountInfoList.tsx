@@ -2,7 +2,7 @@ import { UserProfileResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import DateDisplay from '../../components/datePicker/DateDisplay';
 import Icon from '../../components/icons/Icon';
 import LabelValueGrid from '../../components/LabelValueGrid';
-import Tooltip from '../../components/tooltip/Tooltip';
+import Popup from '../../components/popup/Popup';
 import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 
@@ -20,13 +20,13 @@ const AccountInfoList = ({ profile }: AccountInfoListProps) => {
       <LabelValueGrid
         text={language.phone}
         tooltip={
-          <Tooltip
+          <Popup
             ariaControls="phone"
             ariaLabel={language.viewInfo}
-            tooltip={language.phoneInfo}
+            popupContent={language.phoneInfo}
           >
             <Icon iconName={IconName.Info} title="" size="1em" />
-          </Tooltip>
+          </Popup>
         }
       >
         {profile.phoneNo || notProvided}

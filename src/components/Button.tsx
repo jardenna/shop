@@ -2,7 +2,7 @@
 
 import { ReactNode, RefObject } from 'react';
 import { BtnType, BtnVariant } from '../types/enums';
-import type { ButtonEventType } from '../types/types';
+import type { AriaHasPopup, ButtonEventType } from '../types/types';
 import Loader from './loader/Loader';
 import VisuallyHidden from './VisuallyHidden';
 
@@ -11,7 +11,7 @@ type ButtonProps = {
   ariaControls?: string;
   ariaDescribedby?: string;
   ariaExpanded?: boolean;
-  ariaHasPopup?: boolean;
+  ariaHasPopup?: AriaHasPopup;
   ariaLabel?: string;
   ariaPressed?: boolean;
   autoFocus?: boolean;
@@ -20,9 +20,9 @@ type ButtonProps = {
   id?: string;
   isLoading?: boolean;
   name?: string;
+  popupRef?: RefObject<HTMLButtonElement | null>;
   role?: string;
   tabIndex?: 0 | -1;
-  tooltipRef?: RefObject<HTMLButtonElement | null>;
   type?: BtnType;
   variant?: BtnVariant;
   onClick?: (event: ButtonEventType | string) => void;
@@ -49,14 +49,14 @@ const Button = ({
   name,
   ariaDescribedby,
   isLoading,
-  tooltipRef,
+  popupRef,
 }: ButtonProps) => (
   <button
     id={id}
     tabIndex={tabIndex}
     role={role}
     type={type}
-    ref={ref || tooltipRef}
+    ref={ref || popupRef}
     onClick={onClick}
     aria-pressed={ariaPressed || undefined}
     aria-expanded={ariaExpanded || undefined}

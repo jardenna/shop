@@ -3,8 +3,8 @@ import type { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
 import validateUpdateUser from '../../components/formElements/validation/validateUpdateUser';
 import Icon from '../../components/icons/Icon';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
+import Popup from '../../components/popup/Popup';
 import Table from '../../components/sortTable/Table';
-import Tooltip from '../../components/tooltip/Tooltip';
 import { useGetAllUsersQuery } from '../../features/adminUsers/adminUserApiSlice';
 import EditUserInput from '../../features/adminUsers/components/EditUserInput';
 import useAuth from '../../features/auth/hooks/useAuth';
@@ -149,10 +149,10 @@ const UserPage = () => {
               ))}
               <td>
                 {allowedEditUser && !isAdmin && (
-                  <Tooltip
+                  <Popup
                     placement="left-start"
                     ariaControls="delete-user"
-                    tooltip={({ close }) => (
+                    popupContent={({ close }) => (
                       <DeleteUser
                         onPrimaryClick={() => {
                           handleDeleteUser(id, username);
@@ -167,7 +167,7 @@ const UserPage = () => {
                     ariaLabel={language.deleteUser}
                   >
                     <Icon iconName={IconName.Trash} title={language.trashCan} />
-                  </Tooltip>
+                  </Popup>
                 )}
               </td>
             </tr>

@@ -20,11 +20,11 @@ const DeleteUser = ({
   const { language } = useLanguage();
 
   return (
-    <section className="tooltip-content" ref={ref}>
-      <span>
+    <section className="delete-user-popup" ref={ref}>
+      <div>
         <p>{language.sureToDelete}</p>
         <p>{username}?</p>
-      </span>
+      </div>
       <LayoutElement
         as="footer"
         className="footer"

@@ -1,28 +1,31 @@
 import type { ReactNode } from 'react';
 import usePopup from '../../hooks/usePopup';
+import { BtnVariant } from '../../types/enums';
+import { AriaHasPopup } from '../../types/types';
 import Button from '../Button';
 import { DropdownBtnProps } from '../dropdownBtn/DropdownBtn';
-import './_tooltip.scss';
-import { BtnVariant } from '../../types/enums';
+import './_popup.scss';
 
 type OmittedDropdownBtnProps = Omit<
   DropdownBtnProps,
   'dropdownList' | 'showArrow'
 >;
 
-type TooltipProps = OmittedDropdownBtnProps & {
-  tooltip: ReactNode | ((helpers: { close: () => void }) => ReactNode);
+type PopupProps = OmittedDropdownBtnProps & {
+  popupContent: ReactNode | ((helpers: { close: () => void }) => ReactNode);
+  ariaHasPopup?: AriaHasPopup;
 };
 
-const Tooltip = ({
+const Popup = ({
   children,
-  tooltip,
+  popupContent,
   ariaControls,
   ariaLabel,
+  ariaHasPopup,
   triggerBtnVariant = BtnVariant.Ghost,
   triggerBtnClassName = '',
   placement,
-}: TooltipProps) => {
+}: PopupProps) => {
   const { popupRef, buttonRef, popupIsOpen, togglePopupList, arrowRef } =
     usePopup({ placement });
 
@@ -32,25 +35,20 @@ const Tooltip = ({
         variant={triggerBtnVariant}
         onClick={togglePopupList}
         ariaExpanded={popupIsOpen}
-        ariaHasPopup
+        ariaHasPopup={ariaHasPopup}
         ariaControls={ariaControls}
         ariaLabel={ariaLabel}
         className={triggerBtnClassName}
-        tooltipRef={buttonRef}
+        popupRef={buttonRef}
       >
         {children}
       </Button>
 
       {popupIsOpen && (
-        <div
-          role="tooltip"
-          ref={popupRef}
-          className="tooltip popup-container"
-          id={ariaControls}
-        >
-          {typeof tooltip === 'function'
-            ? tooltip({ close: togglePopupList })
-            : tooltip}
+        <div ref={popupRef} className="popup popup-container" id={ariaControls}>
+          {typeof popupContent === 'function'
+            ? popupContent({ close: togglePopupList })
+            : popupContent}
           <span ref={arrowRef} className="popup-arrow" aria-hidden={true} />
         </div>
       )}
@@ -58,4 +56,4 @@ const Tooltip = ({
   );
 };
 
-export default Tooltip;
+export default Popup;

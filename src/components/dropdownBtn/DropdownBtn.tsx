@@ -40,12 +40,12 @@ const DropdownBtn = ({
     usePopup({ placement });
 
   return (
-    <div className="popup">
+    <div>
       <Button
         variant={triggerBtnVariant}
         onClick={togglePopupList}
         ariaExpanded={popupIsOpen}
-        ariaHasPopup
+        ariaHasPopup="menu"
         ariaControls={ariaControls}
         ariaLabel={ariaLabel}
         className={triggerBtnClassName}

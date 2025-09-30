@@ -2,7 +2,7 @@ import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import type { InputChangeHandler } from '../../types/types';
 import Icon from '../icons/Icon';
-import Tooltip from '../tooltip/Tooltip';
+import Popup from '../popup/Popup';
 import VisuallyHidden from '../VisuallyHidden';
 import TableSearchInput from './TableSearchInput';
 
@@ -23,10 +23,10 @@ const TableSearch = ({
 
   return (
     <div className="table-search-input">
-      <Tooltip
+      <Popup
         placement="bottom-start"
         ariaControls="filter"
-        tooltip={
+        popupContent={
           <TableSearchInput
             title={title}
             onFilterRows={onFilterRows}
@@ -43,7 +43,7 @@ const TableSearch = ({
             <span className="dot" aria-hidden />
           </>
         )}
-      </Tooltip>
+      </Popup>
     </div>
   );
 };
