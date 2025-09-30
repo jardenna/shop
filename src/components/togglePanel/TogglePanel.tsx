@@ -4,6 +4,7 @@ import useMediaQuery from '../../hooks/useMediaQuery ';
 import useTrapFocus from '../../hooks/useTrapFocus';
 import LayoutElement from '../../layout/LayoutElement';
 import { BtnVariant } from '../../types/enums';
+import type { AriaHasPopup } from '../../types/types';
 import BtnClose from '../BtnClose';
 import Button from '../Button';
 import Overlay from '../overlay/Overlay';
@@ -20,6 +21,7 @@ type ActionBtnsProps = {
 
 type TogglePanelProps = {
   ariaControls: string;
+  ariaHasPopup: AriaHasPopup;
   children: ReactNode;
   className?: string;
   footer?: ActionBtnsProps;
@@ -39,6 +41,7 @@ const TogglePanel = ({
   triggerBtnContent,
   showCloseIcon,
   preventClickOutside = false,
+  ariaHasPopup,
   footer,
 }: TogglePanelProps) => {
   const { language } = useLanguage();
@@ -62,7 +65,7 @@ const TogglePanel = ({
         ariaExpanded={isPanelShown}
         onClick={onTogglePanel}
         ariaLabel={ariaLabel}
-        ariaHasPopup
+        ariaHasPopup={ariaHasPopup}
         ariaControls={ariaControls}
       >
         {triggerBtnContent ? (
@@ -72,6 +75,7 @@ const TogglePanel = ({
         )}
       </Button>
       <div
+        role="region"
         ref={panelRef}
         className={`toggle-panel ${panelPosition} ${className} ${isPanelShown ? 'shown' : ''}`}
         id={ariaControls}

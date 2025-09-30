@@ -9,6 +9,7 @@ import Icon from '../../../components/icons/Icon';
 import TagList from '../../../components/tags/TagList';
 import ToggleContent from '../../../components/ToggleContent';
 import TogglePanel from '../../../components/togglePanel/TogglePanel';
+import VisuallyHidden from '../../../components/VisuallyHidden';
 import { FilterValuesType } from '../../../hooks/useFilterParams';
 import LayoutElement from '../../../layout/LayoutElement';
 import type { FilterKeys } from '../../../pages/CollectionPage';
@@ -101,6 +102,7 @@ const FilterPanel = ({
         secondaryAction: onClearAllFilters,
         secondaryBtnText: language.clearAllFilters,
       }}
+      ariaHasPopup="dialog"
       ariaControls="filter-products"
       showCloseIcon
       className="filter-panel"
@@ -109,6 +111,7 @@ const FilterPanel = ({
         <>
           {totalFiltersCount > 0 && `[${totalFiltersCount}]`} {language.filter}{' '}
           <Icon iconName={IconName.Filter} title={language.filter} />
+          <VisuallyHidden>{language.filtersApplied}</VisuallyHidden>
         </>
       }
     >
