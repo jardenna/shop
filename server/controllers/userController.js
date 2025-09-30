@@ -1,10 +1,10 @@
 import bcrypt from 'bcryptjs';
 import asyncHandler from '../middleware/asyncHandler.js';
 import User from '../models/userModel.js';
-import { validateEmail } from '../utils/emailValidator.js';
 import formatMongoData from '../utils/formatMongoData.js';
-import { validatePassword } from '../utils/passwordValidator.js';
 import { t } from '../utils/translator.js';
+import { validateCreateAddress } from '../utils/validateAddress.js';
+import { validateEmail, validatePassword } from '../utils/validateAuth.js';
 
 // @desc    Get all users
 // @route   /api/users
@@ -31,13 +31,7 @@ const getAllUsers = asyncHandler(async (req, res) => {
 const getCurrentUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
   if (user) {
-    res.status(200).json({
-      id: user._id,
-      username: user.username,
-      email: user.email,
-      role: user.role,
-      isAdmin: user.isAdmin,
-    });
+    res.status(200).json(user);
   } else {
     return res.status(404).json({
       success: false,
@@ -51,12 +45,24 @@ const getCurrentUserProfile = asyncHandler(async (req, res) => {
 // @method  Put
 // @access  Private for logged in user
 const updateCurrentUserProfile = asyncHandler(async (req, res) => {
-  const { password, email, username } = req.body;
+  const {
+    password,
+    email,
+    username,
+    phoneNo,
+    dateOfBirth,
+    preferredFashion,
+    addresses,
+  } = req.body;
+
   const user = await User.findById(req.user._id);
 
   if (user) {
     user.username = username || user.username;
     user.email = email || user.email;
+    user.phoneNo = phoneNo || user.phoneNo;
+    user.dateOfBirth = dateOfBirth || user.dateOfBirth;
+    user.preferredFashion = preferredFashion || user.preferredFashion;
 
     if (email) {
       // Validate email
@@ -65,6 +71,7 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
         return res.status(emailResult.status).json(emailResult.payload);
       }
     }
+
     if (password) {
       const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS) || 10;
       const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
@@ -86,14 +93,59 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
       user.password = hashedPassword;
     }
 
+    // Addresses
+    if (addresses) {
+      // Add new addresses
+      if (addresses.add?.length) {
+        const error = validateCreateAddress(addresses.add);
+
+        if (error) {
+          return res.status(400).json({
+            message: error,
+          });
+        }
+
+        addresses.add.forEach((address) => {
+          user.addresses.push(user.addresses.create(address));
+        });
+      }
+
+      // Update existing addresses
+      if (addresses.update?.length) {
+        let found = false;
+
+        addresses.update.forEach(({ _id, street, zipCode, city, country }) => {
+          const existing = user.addresses.id(_id);
+          if (existing) {
+            found = true;
+            existing.street = street ?? existing.street;
+            existing.zipCode = zipCode ?? existing.zipCode;
+            existing.city = city ?? existing.city;
+            existing.country = country ?? existing.country;
+          }
+        });
+
+        if (!found) {
+          return res
+            .status(404)
+            .json({ message: t('noAddressData', req.lang) });
+        }
+      }
+
+      // Remove addresses
+      if (addresses.remove?.length) {
+        addresses.remove.forEach((addressId) => {
+          const existing = user.addresses.id(addressId);
+          if (existing) {
+            existing.deleteOne();
+          }
+        });
+      }
+    }
+
     const updatedUser = await user.save();
 
-    res.status(200).json({
-      id: updatedUser._id,
-      username: updatedUser.username,
-      email: updatedUser.email,
-      isAdmin: updatedUser.isAdmin,
-    });
+    res.status(200).json(updatedUser);
   } else {
     return res.status(404).json({
       success: false,
@@ -174,12 +226,7 @@ const updateUserById = asyncHandler(async (req, res) => {
 
     const updatedUser = await user.save();
 
-    res.status(200).json({
-      id: updatedUser._id,
-      username: updatedUser.username,
-      email: updatedUser.email,
-      role: updatedUser.role,
-    });
+    res.status(200).json(updatedUser);
   } else {
     res.status(404).json({
       success: false,

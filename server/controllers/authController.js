@@ -2,9 +2,8 @@ import bcrypt from 'bcryptjs';
 import asyncHandler from '../middleware/asyncHandler.js';
 import User from '../models/userModel.js';
 import createToken from '../utils/createToken.js';
-import { validateEmail } from '../utils/emailValidator.js';
-import { validatePassword } from '../utils/passwordValidator.js';
 import { t } from '../utils/translator.js';
+import { validateEmail, validatePassword } from '../utils/validateAuth.js';
 
 // @desc    Register a new user
 // @route   /api/auth/register
@@ -86,7 +85,7 @@ const loginUser = asyncHandler(async (req, res) => {
     if (!isPasswordValid) {
       return res.status(400).json({
         success: false,
-        message: t('invalidPassword', req.lang),
+        message: t('noUser', req.lang),
       });
     }
   }
@@ -113,15 +112,18 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 
   createToken(res, existingUser._id);
+
+  const { _id, username, isAdmin, role } = existingUser;
+  const user = {
+    id: _id,
+    username,
+    email,
+    ...(isAdmin && { isAdmin, role }), // only add if isAdmin is true
+  };
+
   res.status(201).json({
     success: true,
-    user: {
-      id: existingUser._id,
-      username: existingUser.username,
-      email: existingUser.email,
-      isAdmin: existingUser.isAdmin,
-      role: existingUser.role,
-    },
+    user,
   });
 });
 

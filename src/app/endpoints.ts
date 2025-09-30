@@ -9,6 +9,7 @@ const authEndpoints = {
 };
 
 const userUrl = '/users';
+const profileUrl = '/profile';
 const categoryUrl = '/categories';
 const subCategoryUrl = '/subcategories';
 const favoritesUrl = '/favorites';
@@ -21,6 +22,7 @@ export {
   categoryUrl,
   favoritesUrl,
   productUrl,
+  profileUrl,
   subCategoryMenuUrl,
   subCategoryUrl,
   uploadUrl,

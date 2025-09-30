@@ -151,7 +151,6 @@ imageRequired;Please insert image(s);Indsæt venligst billede(r)
 inactive;Inactive;Inaktiv
 inStock;In stock;På lager
 invalidFileType;Invalid file type;Ugyldig fil type
-invalidPassword;Invalid password;Ugyldig adgangskode
 invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for planlagt dato
 invalidUserData;Invalid user data;Ugyldig bruger data
 itemLabel;Items;Varer
@@ -201,6 +200,7 @@ myOrders;My orders;Mine ordrer
 name;Name;Navn
 newPrice;New price;Ny pris
 noData;No data found;Ingen data fundet
+noAddressData;No matching address found;Ingen matchende adresse
 noEmail;Please enter an email;Indtast venligst en e-mail
 noFavorites;Find your must-haves and save them here, so you can easily come back to them;Find dine must-haves og gem dem her, så du nemt kan vende tilbage til dem
 noFavoritesYet;No favorites yet;Ingen favoritter endnu

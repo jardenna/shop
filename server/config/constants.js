@@ -1,5 +1,12 @@
 const ALLOWED_ROLES = ['Employee', 'User'];
 
+const ALLOWED_FASHION_PREFERENCES = [
+  'MensFashion',
+  'WomensFashion',
+  'KidsFashion',
+  'NoPreference',
+];
+
 const STATUS = {
   PUBLISHED: 'Published',
   INACTIVE: 'Inactive',
@@ -33,6 +40,7 @@ const MAX_FILE_SIZE = 1 * MB;
 const MAX_FILES = 5;
 
 export {
+  ALLOWED_FASHION_PREFERENCES,
   ALLOWED_ROLES,
   CLOTHING_SIZES,
   INACTIVE,
