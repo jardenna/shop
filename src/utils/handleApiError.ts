@@ -6,6 +6,7 @@ type AddMessagePopupFn = ({
   componentType,
 }: MessagePopupWithoutId) => void;
 
+// Global error handler for try/catch
 const handleApiError = (error: any, onAddMessagePopup: AddMessagePopupFn) => {
   const status = error?.status;
 
