@@ -63,6 +63,9 @@ const messagePopupSlice = createSlice({
         (messagePopup) => messagePopup.id !== action.payload,
       );
     },
+    clearMessagePopups: (state) => {
+      state.messagePopups = [];
+    },
     setMessagePopupDuration: (
       state,
       action: PayloadAction<MessagePopupState['autoHideDuration']>,
@@ -72,8 +75,12 @@ const messagePopupSlice = createSlice({
   },
 });
 
-export const { addMessagePopup, dismissMessagePopup, setMessagePopupDuration } =
-  messagePopupSlice.actions;
+export const {
+  addMessagePopup,
+  dismissMessagePopup,
+  clearMessagePopups,
+  setMessagePopupDuration,
+} = messagePopupSlice.actions;
 
 export const selectMessagePopups = (state: RootState) =>
   state.messagePopup.messagePopups;

@@ -1,8 +1,11 @@
-import { Outlet, useNavigate } from 'react-router';
+import { useEffect } from 'react';
+import { Outlet, useLocation, useNavigate } from 'react-router';
+import { useAppDispatch } from '../app/hooks';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
 import useAuth from '../features/auth/hooks/useAuth';
 import useLanguage from '../features/language/useLanguage';
+import { clearMessagePopups } from '../features/messagePopupSlice';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
 import useMediaQuery from '../hooks/useMediaQuery ';
 import { ShopPath } from '../layout/nav/enums';
@@ -11,11 +14,19 @@ import './AdminLayout.styles.scss';
 import Aside from './aside/Aside';
 
 const AdminLayout = () => {
+  const { pathname } = useLocation();
   const navigate = useNavigate();
   const { language } = useLanguage();
   const [logout] = useLogoutMutation();
   const { currentUser } = useAuth();
   const { isMobileSize } = useMediaQuery();
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    // Clear all popups whenever the user navigates
+    dispatch(clearMessagePopups());
+  }, [pathname, dispatch]);
 
   const [isMenuCollapsed, setIsMenuCollapsed] = useLocalStorage(
     localStorageKeys.menuCollapsed,

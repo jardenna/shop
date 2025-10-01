@@ -1,4 +1,4 @@
-import { MessagePopup } from '../../features/messagePopupSlice';
+import type { MessagePopup } from '../../features/messagePopupSlice';
 import Portal from '../Portal';
 import './_message-popup.scss';
 import MessagePopupListItem from './MessagePopupListItem';

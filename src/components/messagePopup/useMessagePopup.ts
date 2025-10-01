@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
+
+import type { MessagePopupWithoutId } from '../../features/messagePopupSlice';
 import {
-  MessagePopupWithoutId,
   addMessagePopup,
   dismissMessagePopup,
   selectDuration,
@@ -37,28 +38,42 @@ const useMessagePopup = (messagePopupId?: string) => {
   useKeyPress(handleDeleteMessagePopup, [KeyCode.Esc]);
 
   useEffect(() => {
-    if (messagePopups[0]?.componentType !== 'toast') {
+    if (!messagePopupId) {
       return;
     }
 
-    if (isVisible) {
-      // Start the auto-dismiss timer
-      const timer = setTimeout(() => {
+    const currentPopup = messagePopups.find(
+      (messagePopup) => messagePopup.id === messagePopupId,
+    );
+    if (!currentPopup) {
+      return;
+    }
+
+    let autoDismissTimer: ReturnType<typeof setTimeout>;
+    let removeTimer: ReturnType<typeof setTimeout>;
+
+    if (currentPopup.componentType === 'toast' && isVisible) {
+      // Auto-hide toast after duration
+      autoDismissTimer = setTimeout(() => {
         setIsVisible(false);
       }, autoHideDuration);
-      return () => {
-        clearTimeout(timer);
-      };
     }
-    // Start the removal timer after the dismissal animation completes
-    const timer = setTimeout(
-      () => dispatch(dismissMessagePopup(messagePopupId || '')),
-      500,
-    );
+
+    if (!isVisible) {
+      removeTimer = setTimeout(() => {
+        dispatch(dismissMessagePopup(messagePopupId));
+      }, 500);
+    }
+
     return () => {
-      clearTimeout(timer);
+      if (autoDismissTimer) {
+        clearTimeout(autoDismissTimer);
+      }
+      if (removeTimer) {
+        clearTimeout(removeTimer);
+      }
     };
-  }, [isVisible, autoHideDuration, dispatch, messagePopupId]);
+  }, [isVisible, autoHideDuration, dispatch, messagePopupId, messagePopups]);
 
   const popupClass = isVisible ? 'is-visible' : 'dismissed';
 
