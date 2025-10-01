@@ -66,7 +66,7 @@ const usePopup = ({ callback, placement }: usePopupProps) => {
   }, [popupIsOpen]);
 
   const togglePopupList = () => {
-    setPopupIsOpen((prev) => !prev);
+    setPopupIsOpen(!popupIsOpen);
   };
 
   const handleCallback = () => {
