@@ -4,6 +4,10 @@
   flex-direction: column;
   gap: 32px;
 
+  &.modal.animate-top-center {
+    top: 15%;
+  }
+
   .label-value-grid {
     .tooltip {
       display: flex;

@@ -78,7 +78,7 @@ currentlyUnavailableSizes;Currently unavailable sizes;Midlertidigt udsolgte stø
 customersList;Customers list;Kundeliste
 dashboard;Dashboard;Dashboard
 date;Date;Dato
-dateOfBirth;Date of birth;Fødselsdag
+dateOfBirth;Date of birth;Fødselsdato
 daysAgo;days ago;dage siden
 delete;Delete;Slet
 deleteCategory;Delete category;Slet kategori
@@ -371,6 +371,7 @@ updatePreferences;Update Preferences;Opdater præferencer
 updateProduct;Update product;Opdater produkt
 updateSubCategory;Update subcategory;Opdater underkategori
 updateUser;Update user;Opdater bruger
+updateYourInfo;Update your details;Opdatér dine oplysninger
 user;User;Bruger
 userAlreadyExist;A profile with this email already exists. Try logging in instead;Der findes en profil med denne e-mail. Prøv at logge ind i stedet
 userDeleted;User deleted;Bruger slettet
