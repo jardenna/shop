@@ -5,15 +5,18 @@ import {
 import FieldSet from '../../components/fieldset/FieldSet';
 import Input from '../../components/formElements/Input';
 import RadioButtonList from '../../components/formElements/RadioButtonList';
+import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import type {
   PrimaryActionBtnProps,
   SecondaryActionBtnProps,
 } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
 import useLanguage from '../../features/language/useLanguage';
+import { useUpdateUserProfileMutation } from '../../features/profile/profileApiSlice';
 import useFormValidation from '../../hooks/useFormValidation';
 import { BtnType, SizeVariant } from '../../types/enums';
 import { OptionType } from '../../types/types';
+import handleApiError from '../../utils/handleApiError';
 
 type AccountFormProps = {
   profile: UserProfileResponse;
@@ -21,6 +24,8 @@ type AccountFormProps = {
 
 const AccountForm = ({ profile }: AccountFormProps) => {
   const { language } = useLanguage();
+
+  const { onAddMessagePopup } = useMessagePopup();
 
   const preferredFashion: PreferredFashion[] = [
     'mensFashion',
@@ -40,7 +45,7 @@ const AccountForm = ({ profile }: AccountFormProps) => {
     username: profile.username,
     email: profile.email,
     phoneNo: profile.phoneNo ?? '',
-    dateOfBirth: profile.dateOfBirth ?? '',
+    dateOfBirth: profile.dateOfBirth ? profile.dateOfBirth.split('T')[0] : '',
     preferredFashion: profile.preferredFashion,
   };
 
@@ -49,8 +54,18 @@ const AccountForm = ({ profile }: AccountFormProps) => {
     callback: handleSubmit,
   });
 
-  function handleSubmit() {
-    console.log(values);
+  const [updateProfile] = useUpdateUserProfileMutation();
+
+  async function handleSubmit() {
+    try {
+      await updateProfile(values).unwrap();
+      onAddMessagePopup({
+        messagePopupType: 'success',
+        message: language.yourDetailsUpdated,
+      });
+    } catch (error) {
+      handleApiError(error, onAddMessagePopup);
+    }
   }
 
   const primaryActionBtn: PrimaryActionBtnProps = {
