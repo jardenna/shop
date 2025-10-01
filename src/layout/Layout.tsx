@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router';
+import { useAppDispatch } from '../app/hooks';
 import { DropdownItem } from '../components/dropdownBtn/DropdownBtn';
 import Icon from '../components/icons/Icon';
 import type { SecondaryActionBtnProps } from '../components/modal/Modal';
@@ -16,12 +17,19 @@ import type { OptionType } from '../types/types';
 import { getPathName, pathEquals } from '../utils/utils';
 import Header from './header/Header';
 import { AdminPath, ShopPath } from './nav/enums';
+import { clearMessagePopups } from '../features/messagePopupSlice';
 
 const Layout = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const pathInfo = getPathName(pathname);
   const { language, switchLanguage, selectedLanguage } = useLanguage();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    // Clear all popups whenever the user navigates
+    dispatch(clearMessagePopups());
+  }, [pathname, dispatch]);
 
   // Hooks
   const { currentUser } = useAuth();
