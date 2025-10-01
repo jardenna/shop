@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router';
 import { DropdownItem } from '../components/dropdownBtn/DropdownBtn';
 import Icon from '../components/icons/Icon';
@@ -7,6 +8,7 @@ import { useLogoutMutation } from '../features/auth/authApiSlice';
 import useAuth from '../features/auth/hooks/useAuth';
 import useCurrency from '../features/currency/useCurrency';
 import useLanguage from '../features/language/useLanguage';
+import { useGetFavoritesQuery } from '../features/shop/shopApiSlice';
 import useFormValidation from '../hooks/useFormValidation';
 import useMediaQuery from '../hooks/useMediaQuery ';
 import { BtnType, IconName } from '../types/enums';
@@ -26,6 +28,16 @@ const Layout = () => {
   const { currencyOptions, onChangePrice, exchangeRate } = useCurrency();
   const [logout, { isLoading }] = useLogoutMutation();
   const { isMobileSize } = useMediaQuery();
+
+  const { data: favorites = [], refetch } = useGetFavoritesQuery(undefined, {
+    skip: !currentUser, // only fetch if user exists
+  });
+
+  useEffect(() => {
+    if (currentUser && favorites.length === 0) {
+      refetch();
+    }
+  }, [currentUser, refetch, favorites.length]);
 
   const handleLogout = () => {
     logout();
