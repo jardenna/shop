@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router';
 import { DropdownItem } from '../components/dropdownBtn/DropdownBtn';
 import Icon from '../components/icons/Icon';
@@ -7,6 +8,7 @@ import { useLogoutMutation } from '../features/auth/authApiSlice';
 import useAuth from '../features/auth/hooks/useAuth';
 import useCurrency from '../features/currency/useCurrency';
 import useLanguage from '../features/language/useLanguage';
+import { useGetFavoritesQuery } from '../features/shop/shopApiSlice';
 import useFormValidation from '../hooks/useFormValidation';
 import useMediaQuery from '../hooks/useMediaQuery ';
 import { BtnType, IconName } from '../types/enums';
@@ -18,6 +20,7 @@ import { AdminPath, ShopPath } from './nav/enums';
 const Layout = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const pathInfo = getPathName(pathname);
   const { language, switchLanguage, selectedLanguage } = useLanguage();
 
   // Hooks
@@ -25,6 +28,16 @@ const Layout = () => {
   const { currencyOptions, onChangePrice, exchangeRate } = useCurrency();
   const [logout, { isLoading }] = useLogoutMutation();
   const { isMobileSize } = useMediaQuery();
+
+  const { data: favorites = [], refetch } = useGetFavoritesQuery(undefined, {
+    skip: !currentUser, // only fetch if user exists
+  });
+
+  useEffect(() => {
+    if (currentUser && favorites.length === 0) {
+      refetch();
+    }
+  }, [currentUser, refetch, favorites.length]);
 
   const handleLogout = () => {
     logout();
@@ -62,6 +75,25 @@ const Layout = () => {
   };
 
   const isEmployee = currentUser && currentUser.role === 'Employee';
+  const isAdmin = currentUser && currentUser.isAdmin;
+
+  // Helper to generate account-related links (for users, employees, admins)
+  const getAccountLinks = (): DropdownItem[] => [
+    {
+      label: language.myAccount,
+      isActive: pathEquals(pathInfo, ShopPath.MyAccount),
+      onClick: () =>
+        navigate(currentUser ? `/${ShopPath.MyAccount}` : `/${ShopPath.Login}`),
+      icon: (
+        <Icon
+          iconName={IconName.Auth}
+          title={language.myAccount}
+          size="2.5em"
+        />
+      ),
+    },
+  ];
+  // Auth dropdown item
   const authDropdownItem: DropdownItem = {
     label: currentUser ? language.logout : language.login,
     onClick: currentUser ? handleLogout : () => navigate(`/${ShopPath.Login}`),
@@ -74,53 +106,22 @@ const Layout = () => {
     ),
   };
 
-  // Employee dropdown list
-  const employeeDropdownList: DropdownItem[] = [
-    {
-      label: language.dashboard,
+  const dropdownItems: DropdownItem[] = [
+    // Account links visible to everyone
+    ...getAccountLinks(),
 
-      icon: <Icon iconName={IconName.Admin} title={language.lock} />,
-      onClick: () => {
-        navigate(`/${AdminPath.Admin}`);
-      },
-    },
-    authDropdownItem,
-  ];
+    // Dashboard only for employees and admins
+    ...(isEmployee || isAdmin
+      ? [
+          {
+            label: language.dashboard,
+            icon: <Icon iconName={IconName.Admin} title={language.lock} />,
+            onClick: () => navigate(`/${AdminPath.Admin}`),
+          },
+        ]
+      : []),
 
-  const pathInfo = getPathName(pathname);
-
-  // User dropdown list
-  const userDropdownBtnList: DropdownItem[] = [
-    {
-      label: language.myAccount,
-      isActive: pathEquals(pathInfo, ShopPath.MyAccount),
-      onClick: () => {
-        if (currentUser) {
-          navigate(`/${ShopPath.MyAccount}`);
-        } else {
-          navigate(`/${ShopPath.Login}`);
-        }
-      },
-      icon: (
-        <Icon
-          iconName={IconName.Auth}
-          title={language.myAccount}
-          size="2.5em"
-        />
-      ),
-    },
-    {
-      label: language.myOrders,
-      isActive: pathEquals(pathInfo, ShopPath.MyOrders),
-      icon: <Icon iconName={IconName.Orders} title={language.myOrders} />,
-      onClick: () => {
-        if (currentUser) {
-          navigate(`/${ShopPath.MyAccount}/${ShopPath.MyOrders}`);
-        } else {
-          navigate(`/${ShopPath.Login}`);
-        }
-      },
-    },
+    // Auth/logout always
     authDropdownItem,
   ];
 
@@ -129,9 +130,7 @@ const Layout = () => {
       {!isMobileSize && <SkipLink />}
       <Header
         ariaLabel={language.main}
-        dropdownBtnList={
-          isEmployee ? employeeDropdownList : userDropdownBtnList
-        }
+        dropdownBtnList={dropdownItems}
         primaryActionBtn={primaryActionBtn}
         secondaryActionBtn={secondaryActionBtn}
         isMobileSize={isMobileSize}

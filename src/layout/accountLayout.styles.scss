@@ -19,6 +19,7 @@
         text-transform: uppercase;
         font-size: $font-small;
 
+        &.active,
         &:hover {
           color: $color-link-hover;
         }
