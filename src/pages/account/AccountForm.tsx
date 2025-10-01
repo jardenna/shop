@@ -1,6 +1,10 @@
-import { UserProfileResponse } from '../../app/api/apiTypes/sharedApiTypes';
+import {
+  PreferredFashion,
+  UserProfileResponse,
+} from '../../app/api/apiTypes/sharedApiTypes';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Input from '../../components/formElements/Input';
+import RadioButtonList from '../../components/formElements/RadioButtonList';
 import type {
   PrimaryActionBtnProps,
   SecondaryActionBtnProps,
@@ -9,13 +13,28 @@ import ModalContainer from '../../components/modal/ModalContainer';
 import useLanguage from '../../features/language/useLanguage';
 import useFormValidation from '../../hooks/useFormValidation';
 import { BtnType, SizeVariant } from '../../types/enums';
+import { OptionType } from '../../types/types';
 
-export type AccountFormProps = {
+type AccountFormProps = {
   profile: UserProfileResponse;
 };
 
 const AccountForm = ({ profile }: AccountFormProps) => {
   const { language } = useLanguage();
+
+  const preferredFashion: PreferredFashion[] = [
+    'mensFashion',
+    'womensFashion',
+    'kidsFashion',
+    'noPreference',
+  ];
+
+  const preferredFashionList: OptionType[] = preferredFashion.map(
+    (fashion) => ({
+      value: fashion,
+      label: fashion,
+    }),
+  );
 
   const initialState = {
     username: profile.username,
@@ -84,6 +103,15 @@ const AccountForm = ({ profile }: AccountFormProps) => {
           labelText={language.dateOfBirth}
           onChange={onChange}
           type="date"
+        />
+      </FieldSet>
+      <FieldSet legendText={language.fashionPreference}>
+        <RadioButtonList
+          radioButtonList={preferredFashionList}
+          name="preferredFashion"
+          initialChecked={values.preferredFashion}
+          onChange={onChange}
+          variant="secondary"
         />
       </FieldSet>
     </ModalContainer>
