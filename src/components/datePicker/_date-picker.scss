@@ -25,6 +25,14 @@
     border-bottom: 1px solid $color-gray-70;
   }
 
+  .rdp-dropdowns {
+    text-transform: capitalize;
+  }
+
+  #select-popover-options {
+    padding: 20px;
+  }
+
   .rdp-weekday {
     text-transform: capitalize;
   }
