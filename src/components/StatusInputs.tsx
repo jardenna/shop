@@ -1,3 +1,4 @@
+import { isBefore, startOfDay } from 'date-fns';
 import type { Status } from '../app/api/apiTypes/adminApiTypes';
 import useLanguage from '../features/language/useLanguage';
 import type {
@@ -57,6 +58,8 @@ const StatusInputs = ({
     },
   ];
 
+  const today = startOfDay(new Date());
+
   return (
     <>
       <Selectbox
@@ -83,6 +86,9 @@ const StatusInputs = ({
             onSelectDate={onSelectDate}
             selectedDate={selectedDate}
             labelText={language.publishDate}
+            disabled={(date: Date) => isBefore(date, today)}
+            startMonth={new Date()}
+            captionLayout="label"
           />
         </>
       )}

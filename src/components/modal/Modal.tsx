@@ -102,7 +102,10 @@ const Modal = ({
       />
       {/* Is modal body a form? */}
       {primaryActionBtn.buttonType === BtnType.Submit ? (
-        <form className="modal-form" onSubmit={primaryActionBtn.onSubmit}>
+        <form
+          className="modal-form modal-content"
+          onSubmit={primaryActionBtn.onSubmit}
+        >
           {children}
           <ModalFooter
             primaryActionBtn={primaryActionBtn}

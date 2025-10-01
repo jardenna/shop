@@ -1,4 +1,3 @@
-import { isBefore, startOfDay } from 'date-fns';
 import { DayPicker, OnSelectHandler } from 'react-day-picker';
 import { da, enGB } from 'react-day-picker/locale';
 import 'react-day-picker/style.css';
@@ -6,27 +5,38 @@ import useLanguage from '../../features/language/useLanguage';
 import VisuallyHidden from '../VisuallyHidden';
 import './_date-picker.scss';
 
+type CaptionLayout =
+  | 'label'
+  | 'dropdown'
+  | 'dropdown-months'
+  | 'dropdown-years';
+
 type DatePickerProps = {
   labelText: string;
   onSelectDate: OnSelectHandler<Date>;
   selectedDate: Date;
+  captionLayout?: CaptionLayout;
   errorText?: string;
   inputHasNoLabel?: boolean;
   required?: boolean;
+  startMonth?: Date;
+  disabled?: (date: Date) => boolean;
 };
 
-function DatePicker({
+const DatePicker = ({
   onSelectDate,
   selectedDate,
   labelText,
   required,
+  disabled,
   inputHasNoLabel,
   errorText,
-}: DatePickerProps) {
+  startMonth,
+  captionLayout = 'dropdown',
+}: DatePickerProps) => {
   const { selectedLanguage } = useLanguage();
 
   const locales = selectedLanguage === 'en' ? enGB : da;
-  const today = startOfDay(new Date());
 
   return (
     <div className="input-container date-picker-container">
@@ -44,8 +54,9 @@ function DatePicker({
       <DayPicker
         fixedWeeks
         required
-        disabled={(date) => isBefore(date, today)}
-        startMonth={new Date()}
+        disabled={disabled}
+        captionLayout={captionLayout}
+        startMonth={startMonth}
         mode="single"
         selected={selectedDate}
         onSelect={onSelectDate}
@@ -54,6 +65,6 @@ function DatePicker({
       />
     </div>
   );
-}
+};
 
 export default DatePicker;
