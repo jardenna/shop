@@ -1,4 +1,4 @@
-import { UserProfileResponse } from '../../app/api/apiTypes/sharedApiTypes';
+import type { UserProfileResponse } from '../../app/api/apiTypes/shopApiTypes';
 import DateDisplay from '../../components/datePicker/DateDisplay';
 import Icon from '../../components/icons/Icon';
 import LabelValueGrid from '../../components/LabelValueGrid';

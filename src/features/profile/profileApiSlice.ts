@@ -2,7 +2,7 @@ import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import type {
   UserProfileRequest,
   UserProfileResponse,
-} from '../../app/api/apiTypes/sharedApiTypes';
+} from '../../app/api/apiTypes/shopApiTypes';
 import { profileUrl } from '../../app/endpoints';
 
 export const profileApiSlice = apiSlice.injectEndpoints({
