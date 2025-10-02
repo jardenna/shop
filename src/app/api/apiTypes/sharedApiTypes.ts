@@ -127,10 +127,9 @@ export type UserProfileResponse = DefaultResponseType & {
   email: string;
   favorites: string[];
   id: string;
-  password: string;
   preferredFashion: PreferredFashion;
   username: string;
-  dateOfBirth?: any;
+  dateOfBirth?: string;
   phoneNo?: string;
 };
 
@@ -138,7 +137,7 @@ export type UserProfileRequest = {
   email: string;
   username: string;
   addresses?: Address[];
-  dateOfBirth?: Date;
+  dateOfBirth?: string;
   phoneNo?: string;
   preferredFashion?: PreferredFashion;
 };

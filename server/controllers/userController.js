@@ -29,7 +29,9 @@ const getAllUsers = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Private for logged in user
 const getCurrentUserProfile = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.user?._id).select('-isAdmin -role');
+  const user = await User.findById(req.user?._id).select(
+    '-isAdmin -role -password',
+  );
 
   if (user) {
     res.status(200).json(user);
