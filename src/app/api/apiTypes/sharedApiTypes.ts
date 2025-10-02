@@ -107,8 +107,8 @@ export type BasePagination = {
 };
 
 export type Address = {
-  _id: string;
   city: string;
+  id: string;
   street: string;
   zipCode: string;
   country?: string;
