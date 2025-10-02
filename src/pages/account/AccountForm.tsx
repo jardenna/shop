@@ -1,7 +1,8 @@
-import {
+import type {
+  BaseProfile,
   PreferredFashion,
   UserProfileResponse,
-} from '../../app/api/apiTypes/sharedApiTypes';
+} from '../../app/api/apiTypes/shopApiTypes';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Input from '../../components/formElements/Input';
 import RadioButtonList from '../../components/formElements/RadioButtonList';
@@ -24,7 +25,6 @@ type AccountFormProps = {
 
 const AccountForm = ({ profile }: AccountFormProps) => {
   const { language } = useLanguage();
-
   const { onAddMessagePopup } = useMessagePopup();
 
   const preferredFashion: PreferredFashion[] = [
@@ -41,10 +41,10 @@ const AccountForm = ({ profile }: AccountFormProps) => {
     }),
   );
 
-  const initialState = {
+  const initialState: BaseProfile = {
     username: profile.username,
     email: profile.email,
-    phoneNo: profile.phoneNo ?? '',
+    phoneNo: profile.phoneNo,
     dateOfBirth: profile.dateOfBirth ? profile.dateOfBirth.split('T')[0] : '',
     preferredFashion: profile.preferredFashion,
   };

@@ -105,39 +105,3 @@ export type BasePagination = {
   page: number;
   pages: number;
 };
-
-export type Address = {
-  city: string;
-  id: string;
-  street: string;
-  zipCode: string;
-  country?: string;
-  name?: string;
-};
-
-export type PreferredFashion =
-  | 'mensFashion'
-  | 'womensFashion'
-  | 'kidsFashion'
-  | 'noPreference';
-
-// Main user object
-export type UserProfileResponse = DefaultResponseType & {
-  addresses: Address[];
-  email: string;
-  favorites: string[];
-  id: string;
-  preferredFashion: PreferredFashion;
-  username: string;
-  dateOfBirth?: string;
-  phoneNo?: string;
-};
-
-export type UserProfileRequest = {
-  email: string;
-  username: string;
-  addresses?: Address[];
-  dateOfBirth?: string;
-  phoneNo?: string;
-  preferredFashion?: PreferredFashion;
-};

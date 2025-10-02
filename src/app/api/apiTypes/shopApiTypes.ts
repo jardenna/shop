@@ -66,3 +66,38 @@ export type ProductPreview = {
   productName: string;
   sizes: Size[];
 };
+
+// Profile
+export type PreferredFashion =
+  | 'mensFashion'
+  | 'womensFashion'
+  | 'kidsFashion'
+  | 'noPreference';
+
+export type Address = {
+  city: string;
+  id: string;
+  street: string;
+  zipCode: string;
+  country?: string;
+  name?: string;
+};
+
+export type UserProfileResponse = DefaultResponseType &
+  BaseProfile & {
+    addresses: Address[];
+    favorites: string[];
+    id: string;
+  };
+
+export type BaseProfile = {
+  dateOfBirth: string;
+  email: string;
+  phoneNo: string;
+  preferredFashion: PreferredFashion;
+  username: string;
+};
+
+export type UserProfileRequest = BaseProfile & {
+  addresses?: Address[];
+};
