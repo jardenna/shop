@@ -90,17 +90,6 @@
     top: 12px;
   }
 
-  &.favorite-list {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-
-    .product-card-img {
-      height: rem(640px);
-      width: rem(440px);
-    }
-  }
-
   &.list {
     grid-auto-rows: rem(320px) auto;
     gap: 30px;
