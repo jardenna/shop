@@ -16,14 +16,16 @@ import useLanguage from '../../features/language/useLanguage';
 import { useUpdateUserProfileMutation } from '../../features/profile/profileApiSlice';
 import useFormValidation from '../../hooks/useFormValidation';
 import { BtnType, SizeVariant } from '../../types/enums';
-import { OptionType } from '../../types/types';
+import type { OptionType } from '../../types/types';
 import handleApiError from '../../utils/handleApiError';
+import { ProfileList } from './MyAccountPage';
 
 type AccountFormProps = {
   profile: UserProfileResponse;
+  profileList: ProfileList[];
 };
 
-const AccountForm = ({ profile }: AccountFormProps) => {
+const AccountForm = ({ profile, profileList }: AccountFormProps) => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
 
@@ -88,37 +90,17 @@ const AccountForm = ({ profile }: AccountFormProps) => {
       className="my-account"
     >
       <FieldSet legendText={language.userInfo} hideLegendText>
-        <Input
-          value={values.username}
-          name="username"
-          id="username"
-          labelText={language.name}
-          onChange={onChange}
-        />
-        <Input
-          value={values.phoneNo}
-          name="phoneNo"
-          id="phoneNo"
-          labelText={language.phone}
-          onChange={onChange}
-          type="number"
-        />
-        <Input
-          value={values.email}
-          name="email"
-          id="email"
-          labelText={language.email}
-          onChange={onChange}
-          type="email"
-        />
-        <Input
-          value={values.dateOfBirth}
-          name="dateOfBirth"
-          id="dateOfBirth"
-          labelText={language.dateOfBirth}
-          onChange={onChange}
-          type="date"
-        />
+        {profileList.map((input, index) => (
+          <Input
+            key={index}
+            value={values[input.name]}
+            name={input.name}
+            id={input.name}
+            labelText={language[input.label]}
+            onChange={onChange}
+            type={input.type}
+          />
+        ))}
       </FieldSet>
       <FieldSet legendText={language.fashionPreference}>
         <RadioButtonList
