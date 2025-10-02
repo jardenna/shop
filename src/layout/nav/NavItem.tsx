@@ -1,60 +1,45 @@
-import { useEffect, useState } from 'react';
-import { NavLink, useLocation } from 'react-router';
+import { NavLink } from 'react-router';
 import Icon from '../../components/icons/Icon';
 import useLanguage from '../../features/language/useLanguage';
-import useKeyPress from '../../hooks/useKeyPress';
-import { KeyCode } from '../../types/enums';
 import type { NavItemsProps } from './Nav';
 import SubNav from './subNav/SubNav';
 
 const NavItem = ({
   navItem,
   hideAriaHasPopup,
+  onMouseEnter,
+  onMouseLeave,
+  onFocus,
+  ariaExpanded,
+  onBlur,
 }: {
   navItem: NavItemsProps;
+  ariaExpanded?: any;
   hideAriaHasPopup?: boolean;
+  onFocus?: any;
+  onMouseEnter?: any;
+  onMouseLeave?: any;
+  onBlur: (event: React.FocusEvent<HTMLLIElement>) => void;
 }) => {
-  const location = useLocation();
   const { language } = useLanguage();
-  const [isSubNavShown, setIsSubNavShown] = useState(false);
-
-  const handleShowSubNav = () => {
-    setIsSubNavShown(true);
-  };
-
-  const handleHideSubNav = () => {
-    setIsSubNavShown(false);
-  };
-
-  useEffect(() => {
-    handleHideSubNav();
-  }, [location]);
-
-  useKeyPress(() => {
-    handleHideSubNav();
-  }, [KeyCode.Esc]);
 
   return (
     <li
       className={`nav-item ${navItem.subNavList ? 'has-sub-nav' : ''}`}
-      onMouseEnter={handleShowSubNav}
-      onMouseLeave={handleHideSubNav}
-      onFocus={handleShowSubNav}
-      onBlur={(e) => {
-        if (!e.currentTarget.contains(e.relatedTarget)) {
-          // ensures that focus inside the submenu won't immediately close it
-          handleHideSubNav();
-        }
-      }}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      onFocus={onFocus}
+      onBlur={onBlur}
     >
       <NavLink
         to={navItem.path}
         end={navItem.end}
         className="nav-link"
+        aria-controls="sub-menu"
         aria-haspopup={
-          navItem.subNavList && !hideAriaHasPopup ? true : undefined
+          navItem.subNavList && !hideAriaHasPopup ? 'menu' : undefined
         }
-        aria-expanded={isSubNavShown ? isSubNavShown : undefined}
+        aria-expanded={ariaExpanded}
       >
         {navItem.iconName && (
           <span>
@@ -70,7 +55,8 @@ const NavItem = ({
         <SubNav
           subNavList={navItem.subNavList}
           heading={navItem.heading}
-          isSubNavShown={isSubNavShown}
+          isSubNavShown={ariaExpanded}
+          id="sub-menu"
         />
       )}
     </li>
