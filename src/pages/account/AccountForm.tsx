@@ -90,15 +90,15 @@ const AccountForm = ({ profile, profileFieldList }: AccountFormProps) => {
       className="my-account"
     >
       <FieldSet legendText={language.userInfo} hideLegendText>
-        {profileFieldList.map((input, index) => (
+        {profileFieldList.map(({ name, label, type }) => (
           <Input
-            key={index}
-            value={values[input.name]}
-            name={input.name}
-            id={input.name}
-            labelText={language[input.label]}
+            key={name}
+            value={values[name]}
+            name={name}
+            id={name}
+            labelText={language[label]}
             onChange={onChange}
-            type={input.type}
+            type={type}
           />
         ))}
       </FieldSet>

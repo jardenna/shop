@@ -26,12 +26,12 @@ const AccountInfoList = ({
 
   return (
     <div>
-      {profileFieldList.map((profie, index) => (
+      {profileFieldList.map(({ name, label, type, tooltip }) => (
         <LabelValueGrid
-          key={index}
-          text={language[profie.label]}
+          key={name}
+          text={language[label]}
           tooltip={
-            profie.tooltip && (
+            tooltip && (
               <Popup
                 ariaControls="phone"
                 ariaLabel={language.viewInfo}
@@ -42,7 +42,7 @@ const AccountInfoList = ({
             )
           }
         >
-          {profie.type === 'date' ? profileDateOfBirth : profile[profie.name]}
+          {type === 'date' ? profileDateOfBirth : profile[name]}
         </LabelValueGrid>
       ))}
 
