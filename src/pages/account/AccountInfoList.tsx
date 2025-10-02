@@ -5,26 +5,28 @@ import LabelValueGrid from '../../components/LabelValueGrid';
 import Popup from '../../components/popup/Popup';
 import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
-import type { ProfileList } from './MyAccountPage';
+import type { ProfileFieldListProps } from './MyAccountPage';
 
 type AccountInfoListProps = {
   profile: UserProfileResponse;
-  profileList: ProfileList[];
+  profileFieldList: ProfileFieldListProps[];
 };
 
-const AccountInfoList = ({ profile, profileList }: AccountInfoListProps) => {
+const AccountInfoList = ({
+  profile,
+  profileFieldList,
+}: AccountInfoListProps) => {
   const { language } = useLanguage();
-  const notProvided = language.notProvided;
 
   const profileDateOfBirth = profile.dateOfBirth ? (
     <DateDisplay date={profile.dateOfBirth} />
   ) : (
-    notProvided
+    language.notProvided
   );
 
   return (
     <div>
-      {profileList.map((profie, index) => (
+      {profileFieldList.map((profie, index) => (
         <LabelValueGrid
           key={index}
           text={language[profie.label]}

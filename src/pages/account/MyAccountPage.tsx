@@ -7,7 +7,7 @@ import './_my-account.scss';
 import AccountForm from './AccountForm';
 import AccountInfoList from './AccountInfoList';
 
-export type ProfileList = {
+export type ProfileFieldListProps = {
   label: string;
   name: keyof BaseProfile;
   tooltip?: boolean;
@@ -18,7 +18,7 @@ const MyAccountPage = () => {
   const { language } = useLanguage();
   const { data: profile, isLoading } = useGetUserProfileQuery();
 
-  const profileList: ProfileList[] = [
+  const profileFieldList: ProfileFieldListProps[] = [
     {
       name: 'username',
       label: 'name',
@@ -48,8 +48,11 @@ const MyAccountPage = () => {
 
       {profile && (
         <div className="my-account">
-          <AccountInfoList profile={profile} profileList={profileList} />
-          <AccountForm profile={profile} profileList={profileList} />
+          <AccountInfoList
+            profile={profile}
+            profileFieldList={profileFieldList}
+          />
+          <AccountForm profile={profile} profileFieldList={profileFieldList} />
         </div>
       )}
     </>

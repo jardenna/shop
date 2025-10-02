@@ -18,14 +18,14 @@ import useFormValidation from '../../hooks/useFormValidation';
 import { BtnType, SizeVariant } from '../../types/enums';
 import type { OptionType } from '../../types/types';
 import handleApiError from '../../utils/handleApiError';
-import { ProfileList } from './MyAccountPage';
+import type { ProfileFieldListProps } from './MyAccountPage';
 
 type AccountFormProps = {
   profile: UserProfileResponse;
-  profileList: ProfileList[];
+  profileFieldList: ProfileFieldListProps[];
 };
 
-const AccountForm = ({ profile, profileList }: AccountFormProps) => {
+const AccountForm = ({ profile, profileFieldList }: AccountFormProps) => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
 
@@ -90,7 +90,7 @@ const AccountForm = ({ profile, profileList }: AccountFormProps) => {
       className="my-account"
     >
       <FieldSet legendText={language.userInfo} hideLegendText>
-        {profileList.map((input, index) => (
+        {profileFieldList.map((input, index) => (
           <Input
             key={index}
             value={values[input.name]}
