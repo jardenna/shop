@@ -34,13 +34,11 @@ export type NavProps = {
 
 const Nav = ({ navList, ariaLabel, className, hideAriaHasPopup }: NavProps) => {
   const location = useLocation();
-
   const [isSubNavShown, setIsSubNavShown] = useState(false);
 
   const handleShowSubNav = () => {
     setIsSubNavShown(true);
   };
-
   const handleHideSubNav = () => {
     setIsSubNavShown(false);
   };
@@ -56,29 +54,33 @@ const Nav = ({ navList, ariaLabel, className, hideAriaHasPopup }: NavProps) => {
   return (
     <LayoutElement as="nav" ariaLabel={ariaLabel} className={className}>
       <ul className="nav-list">
-        {navList.map((navItem) => (
-          <NavItem
-            key={navItem.linkText}
-            navItem={navItem}
-            ariaControls={navItem.subNavList ? 'sub-menu' : undefined}
-            ariaHasPopup={
-              navItem.subNavList && !hideAriaHasPopup ? 'menu' : undefined
-            }
-            onMouseEnter={navItem.subNavList && handleShowSubNav}
-            onMouseLeave={navItem.subNavList && handleHideSubNav}
-            onFocus={navItem.subNavList && handleShowSubNav}
-            ariaExpanded={isSubNavShown ? isSubNavShown : undefined}
-            onBlur={(event: React.FocusEvent<HTMLLIElement>) => {
-              if (
-                !event.currentTarget.contains(event.relatedTarget) &&
-                navItem.subNavList
-              ) {
-                // ensures that focus inside the submenu won't immediately close it
-                handleHideSubNav();
+        {navList.map((navItem) => {
+          const hasSubNav = Boolean(navItem.subNavList);
+
+          const eventHandlers = hasSubNav
+            ? {
+                onMouseEnter: handleShowSubNav,
+                onMouseLeave: handleHideSubNav,
+                onFocus: handleShowSubNav,
+                onBlur: (event: React.FocusEvent<HTMLLIElement>) => {
+                  if (!event.currentTarget.contains(event.relatedTarget)) {
+                    handleHideSubNav();
+                  }
+                },
               }
-            }}
-          />
-        ))}
+            : {};
+
+          return (
+            <NavItem
+              key={navItem.linkText}
+              navItem={navItem}
+              ariaControls={hasSubNav ? 'sub-menu' : undefined}
+              ariaHasPopup={hasSubNav && !hideAriaHasPopup ? 'menu' : undefined}
+              ariaExpanded={(hasSubNav && isSubNavShown) || undefined}
+              {...eventHandlers}
+            />
+          );
+        })}
       </ul>
     </LayoutElement>
   );
