@@ -25,7 +25,7 @@ const AddressSchema = new Schema(
     },
     country: {
       type: String,
-      default: 'Denmark',
+      default: 'denmark',
     },
   },
   {
