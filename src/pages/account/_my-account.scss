@@ -1,3 +1,5 @@
+@use '../../scss/globals' as *;
+
 .my-account {
   padding-inline: 32px;
   display: flex;
@@ -18,4 +20,24 @@
       justify-content: flex-start;
     }
   }
+}
+
+.my-address-list {
+  @include grid-template-column(250px);
+
+  gap: 12px;
+  grid-auto-rows: 17.5rem auto;
+}
+
+.my-address-item {
+  place-content: center;
+  grid-row: span 2;
+  display: grid;
+  border: 1px solid $color-gray-40;
+}
+
+.my-address-title {
+  font-family: $font-primary-bold;
+  font-size: rem(16px);
+  margin: 0;
 }

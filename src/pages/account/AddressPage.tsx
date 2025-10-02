@@ -12,19 +12,21 @@ const AddressPage = () => {
       <p>{language.addOrManageAddress}</p>
 
       {profile && (
-        <div>
+        <ul className="my-address-list ">
           {profile.addresses.map((address) => (
-            <div key={address.id}>
-              <h2>{address.name || profile.username}</h2>
+            <li key={address.id} className="my-address-item">
+              <p className="my-address-title">
+                {address.name || profile.username}
+              </p>
               <div>{address.street}</div>
 
               <div>
                 {address.zipCode} {address.city}
               </div>
               <div>{address.country}</div>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
     </>
   );
