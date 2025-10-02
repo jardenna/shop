@@ -1,11 +1,11 @@
-import mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
 import { INACTIVE, STATUS } from '../config/constants.js';
 import resolveAllowedSizes from '../utils/resolveAllowedSizes.js';
 import Category from './categoryModel.js';
 
-const { ObjectId } = mongoose.Schema;
+const { ObjectId } = Schema;
 
-const subCategorySchema = new mongoose.Schema(
+const subCategorySchema = new Schema(
   {
     subCategoryName: { type: String, required: true },
     translationKey: { type: String },
@@ -50,5 +50,5 @@ subCategorySchema.pre('save', async function (next) {
 subCategorySchema.set('collation', { locale: 'en', strength: 2 });
 subCategorySchema.index({ subCategoryName: 1, category: 1 }, { unique: true });
 
-const SubCategory = mongoose.model('SubCategory', subCategorySchema);
+const SubCategory = model('SubCategory', subCategorySchema);
 export default SubCategory;
