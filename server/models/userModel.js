@@ -8,6 +8,9 @@ const { ObjectId } = Schema;
 
 const AddressSchema = new Schema(
   {
+    name: {
+      type: String,
+    },
     street: {
       type: String,
       required: true,

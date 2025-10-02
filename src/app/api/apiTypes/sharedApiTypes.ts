@@ -112,6 +112,7 @@ export type Address = {
   street: string;
   zipCode: string;
   country?: string;
+  name?: string;
 };
 
 export type PreferredFashion =
