@@ -7,7 +7,10 @@ const { ObjectId } = Schema;
 
 const subCategorySchema = new Schema(
   {
-    subCategoryName: { type: String, required: true },
+    subCategoryName: {
+      type: String,
+      required: true,
+    },
     translationKey: { type: String },
     category: {
       type: ObjectId,
