@@ -16,7 +16,6 @@ const AccountInfoList = ({ profile }: AccountInfoListProps) => {
   return (
     <div>
       <LabelValueGrid text={language.name}>{profile.username}</LabelValueGrid>
-
       <LabelValueGrid
         text={language.phone}
         tooltip={
@@ -31,7 +30,6 @@ const AccountInfoList = ({ profile }: AccountInfoListProps) => {
       >
         {profile.phoneNo || notProvided}
       </LabelValueGrid>
-
       <LabelValueGrid text={language.fashionPreference}>
         {language[profile.preferredFashion]}
       </LabelValueGrid>

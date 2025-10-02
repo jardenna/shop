@@ -5,7 +5,6 @@ import { useGetUserProfileQuery } from '../../features/profile/profileApiSlice';
 const AddressPage = () => {
   const { language } = useLanguage();
   const { data: profile, isLoading } = useGetUserProfileQuery();
-  console.log(profile?.addresses);
 
   return (
     <>
@@ -15,7 +14,15 @@ const AddressPage = () => {
       {profile && (
         <div>
           {profile.addresses.map((address) => (
-            <div key={address.id}>{address.city}</div>
+            <div key={address.id}>
+              <h2>{address.name || profile.username}</h2>
+              <div>{address.street}</div>
+
+              <div>
+                {address.zipCode} {address.city}
+              </div>
+              <div>{address.country}</div>
+            </div>
           ))}
         </div>
       )}
