@@ -1,9 +1,9 @@
 import TogglePanel from '../../components/togglePanel/TogglePanel';
-import { NavItemsProps } from './Nav';
+import { NavListProps } from './Nav';
 import NavContainer from './NavContainer';
 
 export type AdminNavProps = {
-  navList: NavItemsProps[];
+  navList: NavListProps[];
   className?: string;
 };
 

@@ -21,13 +21,13 @@ export type SubBaseNav = OmittedBaseNav & {
   infoText: string;
 };
 
-export type NavItemsProps = BaseNav & {
+export type NavListProps = BaseNav & {
   subNavList?: SubBaseNav[];
 };
 
 export type NavProps = {
   ariaLabel: string;
-  navList: NavItemsProps[];
+  navList: NavListProps[];
   className?: string;
   hideAriaHasPopup?: boolean;
 };
@@ -53,8 +53,6 @@ const Nav = ({ navList, ariaLabel, className, hideAriaHasPopup }: NavProps) => {
     handleHideSubNav();
   }, [KeyCode.Esc]);
 
-  // aria-controls="sub-menu"
-
   return (
     <LayoutElement as="nav" ariaLabel={ariaLabel} className={className}>
       <ul className="nav-list">
@@ -62,7 +60,10 @@ const Nav = ({ navList, ariaLabel, className, hideAriaHasPopup }: NavProps) => {
           <NavItem
             key={navItem.linkText}
             navItem={navItem}
-            hideAriaHasPopup={hideAriaHasPopup}
+            ariaControls={navItem.subNavList ? 'sub-menu' : undefined}
+            ariaHasPopup={
+              navItem.subNavList && !hideAriaHasPopup ? 'menu' : undefined
+            }
             onMouseEnter={navItem.subNavList && handleShowSubNav}
             onMouseLeave={navItem.subNavList && handleHideSubNav}
             onFocus={navItem.subNavList && handleShowSubNav}
