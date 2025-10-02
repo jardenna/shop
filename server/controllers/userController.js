@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import asyncHandler from '../middleware/asyncHandler.js';
 import User from '../models/userModel.js';
-import formatMongoData from '../utils/formatMongoData.js';
+import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 import { validateCreateAddress } from '../utils/validateAddress.js';
 import { validateEmail, validatePassword } from '../utils/validateAuth.js';
