@@ -9,6 +9,7 @@ type IconContentProps = {
   className?: string;
   fill?: string;
   size?: string;
+  withLabel?: boolean;
 };
 
 const IconContent = ({
@@ -18,6 +19,7 @@ const IconContent = ({
   size,
   fill,
   className,
+  withLabel,
 }: IconContentProps) => (
   <>
     <Icon
@@ -27,7 +29,7 @@ const IconContent = ({
       fill={fill}
       className={className}
     />
-    {ariaLabel && <VisuallyHidden>{ariaLabel}</VisuallyHidden>}
+    {withLabel ? ariaLabel : <VisuallyHidden>{ariaLabel}</VisuallyHidden>}
   </>
 );
 

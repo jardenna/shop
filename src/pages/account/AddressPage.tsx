@@ -1,10 +1,9 @@
 import { Address } from '../../app/api/apiTypes/shopApiTypes';
-import Button from '../../components/Button';
-import Icon from '../../components/icons/Icon';
+import IconBtn from '../../components/IconBtn';
 import SkeletonParagraph from '../../components/skeleton/SkeletonParagraph';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetUserProfileQuery } from '../../features/profile/profileApiSlice';
-import { BtnVariant, IconName } from '../../types/enums';
+import { IconName } from '../../types/enums';
 import { InputType } from '../../types/types';
 import AddressInfoList from './AddressInfoList';
 
@@ -27,10 +26,12 @@ const AddressPage = () => {
         <ul className="my-address-list">
           <li className="my-address-item">
             <div className="my-address-content">
-              <Button variant={BtnVariant.Ghost}>
-                <Icon iconName={IconName.Add} title="" />
-                {language.add} adresse
-              </Button>
+              <IconBtn
+                iconName={IconName.Add}
+                title=""
+                ariaLabel={language.addAddress}
+                withLabel
+              />
             </div>
           </li>
           {profile.addresses.map((address) => (

@@ -3,15 +3,16 @@ import Button from './Button';
 import IconContent from './IconContent';
 
 export type IconBtnProps = {
+  ariaLabel: string;
   iconName: IconName;
   title: string;
   ariaExpanded?: boolean;
-  ariaLabel?: string;
   btnType?: BtnType;
   className?: string;
   disabled?: boolean;
   size?: string;
   variant?: BtnVariant;
+  withLabel?: boolean;
   onClick?: () => void;
 };
 
@@ -26,6 +27,7 @@ const IconBtn = ({
   variant = BtnVariant.Ghost,
   size,
   disabled,
+  withLabel,
 }: IconBtnProps) => (
   <Button
     variant={variant}
@@ -38,7 +40,8 @@ const IconBtn = ({
     <IconContent
       iconName={iconName}
       title={title}
-      ariaLabel={ariaLabel || ''}
+      ariaLabel={ariaLabel}
+      withLabel={withLabel}
       size={size}
     />
   </Button>
