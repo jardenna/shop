@@ -30,7 +30,7 @@ const AddressPage = () => {
                 iconName={IconName.Add}
                 title=""
                 ariaLabel={language.addAddress}
-                withLabel
+                showLabel
               />
             </div>
           </li>

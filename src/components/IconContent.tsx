@@ -14,7 +14,7 @@ const IconContent = ({
   size,
   fill,
   className,
-  withLabel,
+  showLabel,
 }: IconContentProps) => (
   <>
     <Icon
@@ -24,7 +24,7 @@ const IconContent = ({
       fill={fill}
       className={className}
     />
-    {withLabel ? ariaLabel : <VisuallyHidden>{ariaLabel}</VisuallyHidden>}
+    {showLabel ? ariaLabel : <VisuallyHidden>{ariaLabel}</VisuallyHidden>}
   </>
 );
 

@@ -7,8 +7,8 @@ export type BaseIconBtn = {
   iconName: IconName;
   title: string;
   className?: string;
+  showLabel?: boolean;
   size?: string;
-  withLabel?: boolean;
 };
 
 type IconBtnProps = BaseIconBtn & {
@@ -30,7 +30,7 @@ const IconBtn = ({
   variant = BtnVariant.Ghost,
   size,
   disabled,
-  withLabel,
+  showLabel,
 }: IconBtnProps) => (
   <Button
     variant={variant}
@@ -44,7 +44,7 @@ const IconBtn = ({
       iconName={iconName}
       title={title}
       ariaLabel={ariaLabel}
-      withLabel={withLabel}
+      showLabel={showLabel}
       size={size}
     />
   </Button>
