@@ -21,8 +21,9 @@
     background-color: $color-background;
   }
 
-  .btn-with-icon {
+  .btn-ghost {
     justify-content: space-between;
+    width: 100%;
 
     &:focus-visible {
       outline: transparent;

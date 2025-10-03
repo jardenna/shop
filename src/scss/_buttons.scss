@@ -123,35 +123,3 @@ a[class^='btn-'],
     }
   }
 }
-
-// Button with icon
-.btn-with-icon {
-  gap: 4px;
-  background-color: transparent;
-  min-height: auto;
-  padding: 0;
-  font-size: 0.875rem;
-  border-radius: 0;
-
-  &:hover {
-    color: $color-link-hover;
-
-    svg {
-      stroke: $color-blue-30;
-
-      @include transition;
-    }
-  }
-
-  &:focus-visible {
-    color: $color-blue-30;
-
-    @include outline;
-
-    svg {
-      stroke: $color-blue-30;
-
-      @include transition;
-    }
-  }
-}

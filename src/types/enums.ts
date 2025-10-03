@@ -58,7 +58,6 @@ export enum BtnVariant {
   Ghost = 'ghost',
   Primary = 'primary',
   Secondary = 'secondary',
-  WidthIcon = 'with-icon',
 }
 
 export enum BtnType {
