@@ -26,18 +26,35 @@
   @include grid-template-column(250px);
 
   gap: 12px;
-  grid-auto-rows: 17.5rem auto;
+  grid-auto-rows: rem(248px) auto;
 }
 
 .my-address-item {
-  place-content: center;
-  grid-row: span 2;
+  border: 1px solid #d9d6d6;
   display: grid;
-  border: 1px solid $color-gray-40;
+  grid-row: span 2;
+}
+
+.my-address-content {
+  place-content: center;
+  display: grid;
+  gap: 4px;
+
+  p {
+    margin: 0;
+  }
 }
 
 .my-address-title {
   font-family: $font-primary-bold;
   font-size: rem(16px);
   margin: 0;
+}
+
+.my-address-footer {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  padding: 20px;
+  justify-content: flex-end;
 }
