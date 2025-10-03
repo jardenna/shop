@@ -1,15 +1,10 @@
-import { IconName } from '../types/enums';
+import type { BaseIconBtn } from './IconBtn';
 import Icon from './icons/Icon';
 import VisuallyHidden from './VisuallyHidden';
 
-type IconContentProps = {
-  ariaLabel: string;
-  iconName: IconName;
-  title: string;
-  className?: string;
+type IconContentProps = BaseIconBtn & {
   fill?: string;
   size?: string;
-  withLabel?: boolean;
 };
 
 const IconContent = ({

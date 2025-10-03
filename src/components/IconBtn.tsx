@@ -2,17 +2,20 @@ import { BtnType, BtnVariant, IconName } from '../types/enums';
 import Button from './Button';
 import IconContent from './IconContent';
 
-export type IconBtnProps = {
+export type BaseIconBtn = {
   ariaLabel: string;
   iconName: IconName;
   title: string;
+  className?: string;
+  size?: string;
+  withLabel?: boolean;
+};
+
+type IconBtnProps = BaseIconBtn & {
   ariaExpanded?: boolean;
   btnType?: BtnType;
-  className?: string;
   disabled?: boolean;
-  size?: string;
   variant?: BtnVariant;
-  withLabel?: boolean;
   onClick?: () => void;
 };
 
