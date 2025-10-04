@@ -2,6 +2,7 @@ import { Address } from '../../app/api/apiTypes/shopApiTypes';
 import IconBtn from '../../components/IconBtn';
 import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
+import AddressInfoListContent from './AddressInfoListContent';
 
 // const addressFieldList: AddressFieldListProps[] = [
 //   {
@@ -36,14 +37,7 @@ const AddressInfoList = ({ address, username }: AddressInforListProps) => {
 
   return (
     <li className="my-address-item">
-      <div className="my-address-content">
-        <p className="my-address-title">{address.name || username}</p>
-        <p>{address.street}</p>
-        <p>
-          {address.zipCode} {address.city}
-        </p>
-        <p>{address.country}</p>
-      </div>
+      <AddressInfoListContent address={address} username={username} />
       <div className="my-address-footer">
         <IconBtn
           iconName={IconName.Trash}
