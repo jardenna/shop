@@ -8,6 +8,7 @@ import {
   useAddAddressMutation,
   useDeleteAddressMutation,
   useGetUserProfileQuery,
+  useUpdateAddressMutation,
 } from '../../features/profile/profileApiSlice';
 import { IconName } from '../../types/enums';
 import { InputType } from '../../types/types';
@@ -30,6 +31,7 @@ const AddressPage = () => {
 
   const [deleteAddress] = useDeleteAddressMutation();
   const [addAddress] = useAddAddressMutation();
+  const [updateAddress] = useUpdateAddressMutation();
 
   const handleDeleteAddress = async (id: string) => {
     try {
@@ -45,8 +47,21 @@ const AddressPage = () => {
     }
   };
 
-  const handleUpdateAddress = (id: string) => {
-    console.log(id);
+  const handleUpdateAddress = async (id: string) => {
+    try {
+      await updateAddress({
+        addresses: {
+          id,
+          street: 'Allegadé 16',
+        },
+      }).unwrap();
+      onAddMessagePopup({
+        messagePopupType: 'success',
+        message: 'address was updated',
+      });
+    } catch (error) {
+      handleApiError(error, onAddMessagePopup);
+    }
   };
 
   const HandleAddAddress = async () => {
