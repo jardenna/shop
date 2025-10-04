@@ -1,8 +1,6 @@
 import useLanguage from '../../features/language/useLanguage';
-import {
-  MessagePopup,
-  MessagePopupTypes,
-} from '../../features/messagePopupSlice';
+import type { MessagePopupTypes } from '../../features/messagePopupSlice';
+import { MessagePopup } from '../../features/messagePopupSlice';
 import { IconName, PopupRole } from '../../types/enums';
 import BtnClose from '../BtnClose';
 import Icon from '../icons/Icon';
