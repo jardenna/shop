@@ -12,6 +12,7 @@ import { useGetUserProfileQuery } from '../../features/profile/profileApiSlice';
 import { BtnVariant, IconName } from '../../types/enums';
 import { InputType } from '../../types/types';
 import AddressInfoListContent from './AddressInfoListContent';
+import DeleteAddressModal from './DeleteAddressModal';
 
 export type AddressFieldListProps = {
   label: string;
@@ -35,6 +36,9 @@ const AddressPage = () => {
     label: language.cancel,
   };
 
+  const handleDeleteAddress = (id: string) => {
+    console.log(id);
+  };
   return (
     <>
       {isLoading && <SkeletonParagraph />}
@@ -59,22 +63,12 @@ const AddressPage = () => {
                 username={profile.username}
               />
               <div className="my-address-footer">
-                <ModalContainer
-                  triggerModalBtnContent={
-                    <IconContent
-                      iconName={IconName.Trash}
-                      title=""
-                      ariaLabel={language.deleteAddress}
-                    />
-                  }
-                  triggerModalBtnVariant={BtnVariant.Ghost}
-                  id={`delete-${address.id}`}
-                  primaryActionBtn={primaryActionBtn}
-                  secondaryActionBtn={secondaryActionBtn}
-                  modalHeaderText={language.deleteAddress}
-                >
-                  {language.sureToDelete} {address.street}
-                </ModalContainer>
+                <DeleteAddressModal
+                  id={address.id}
+                  modalMessage={address.street}
+                  onDeleteAddress={handleDeleteAddress}
+                />
+
                 <ModalContainer
                   triggerModalBtnContent={
                     <IconContent
