@@ -22,6 +22,14 @@ export const profileApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.Profile],
     }),
+    addAddress: builder.mutation<any, any>({
+      query: (address) => ({
+        url: profileUrl,
+        method: 'put',
+        body: address,
+      }),
+      invalidatesTags: [TagTypesEnum.Profile],
+    }),
     updateAddress: builder.mutation<any, any>({
       query: (address) => ({
         url: profileUrl,
@@ -46,4 +54,5 @@ export const {
   useUpdateUserProfileMutation,
   useUpdateAddressMutation,
   useDeleteAddressMutation,
+  useAddAddressMutation,
 } = profileApiSlice;
