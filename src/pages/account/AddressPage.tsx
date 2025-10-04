@@ -33,14 +33,20 @@ const AddressPage = () => {
   const [addAddress] = useAddAddressMutation();
   const [updateAddress] = useUpdateAddressMutation();
 
-  const handleDeleteAddress = async (id: string) => {
+  const handleAddAddress = async () => {
     try {
-      await deleteAddress({
-        addresses: id,
+      await addAddress({
+        addresses: {
+          name: 'Petras',
+          street: 'Sortedamsvej 12B',
+          zipCode: '2720',
+          city: 'Vanløse',
+        },
       }).unwrap();
+
       onAddMessagePopup({
         messagePopupType: 'success',
-        message: language.addressDeleted,
+        message: 'address was created',
       });
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
@@ -64,20 +70,14 @@ const AddressPage = () => {
     }
   };
 
-  const HandleAddAddress = async () => {
+  const handleDeleteAddress = async (id: string) => {
     try {
-      await addAddress({
-        addresses: {
-          name: 'Petras',
-          street: 'Sortedamsvej 12B',
-          zipCode: '2720',
-          city: 'Vanløse',
-        },
+      await deleteAddress({
+        addresses: id,
       }).unwrap();
-
       onAddMessagePopup({
         messagePopupType: 'success',
-        message: 'address was created',
+        message: language.addressDeleted,
       });
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
@@ -98,7 +98,7 @@ const AddressPage = () => {
                 title=""
                 ariaLabel={language.addAddress}
                 showLabel
-                onClick={HandleAddAddress}
+                onClick={handleAddAddress}
               />
             </div>
           </li>
