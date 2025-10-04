@@ -1,5 +1,6 @@
 import { Address } from '../../app/api/apiTypes/shopApiTypes';
 import IconBtn from '../../components/IconBtn';
+
 import SkeletonParagraph from '../../components/skeleton/SkeletonParagraph';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetUserProfileQuery } from '../../features/profile/profileApiSlice';
@@ -17,10 +18,20 @@ export type AddressFieldListProps = {
 
 const AddressPage = () => {
   const { language } = useLanguage();
+
+  // const { onAddMessagePopup } = useMessagePopup();
   const { data: profile, isLoading } = useGetUserProfileQuery();
+
+  // const [deleteAddress] = useDeleteAddressMutation();
 
   const handleDeleteAddress = (id: string) => {
     console.log(id);
+
+    // try {
+    //   await deleteAddress(id).unwrap();
+    // } catch (error) {
+    //   handleApiError(error, onAddMessagePopup);
+    // }
   };
 
   const handleUpdateAddress = (id: string) => {
