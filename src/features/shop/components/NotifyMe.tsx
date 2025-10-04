@@ -6,7 +6,7 @@ import validateNotityMe from '../../../components/formElements/validation/valida
 import { PrimaryActionBtnProps } from '../../../components/modal/Modal';
 import ModalContainer from '../../../components/modal/ModalContainer';
 import useFormValidation from '../../../hooks/useFormValidation';
-import { BtnType, BtnVariant, SizeVariant } from '../../../types/enums';
+import { BtnType, BtnVariant } from '../../../types/enums';
 import useLanguage from '../../language/useLanguage';
 import NotifyMeForm from './NotifyMeForm';
 
@@ -68,7 +68,6 @@ const NotifyMe = ({
       id={id}
       onClearAllValues={onClearAllValues}
       primaryActionBtn={primaryActionBtn}
-      modalSize={SizeVariant.Sm}
       modalHeaderText={
         sizesIsRequered
           ? language.currentlyUnavailableSizes

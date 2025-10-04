@@ -1,6 +1,6 @@
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
-import { BtnVariant, SizeVariant } from '../../types/enums';
+import { BtnVariant } from '../../types/enums';
 import LinkButton from '../LinkButton';
 import type {
   PrimaryActionBtnProps,
@@ -45,7 +45,6 @@ const CardFooter = ({
           id={id}
           primaryActionBtn={primaryActionBtn}
           secondaryActionBtn={secondaryActionBtn}
-          modalSize={SizeVariant.Sm}
           modalHeaderText={modalHeaderText}
           triggerModalDisabled={triggerModalDisabled}
         >
