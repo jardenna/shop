@@ -45,7 +45,6 @@ const AddressPage = () => {
       }).unwrap();
 
       onAddMessagePopup({
-        messagePopupType: 'success',
         message: 'address was created',
       });
     } catch (error) {
@@ -62,7 +61,6 @@ const AddressPage = () => {
         },
       }).unwrap();
       onAddMessagePopup({
-        messagePopupType: 'success',
         message: 'address was updated',
       });
     } catch (error) {
@@ -76,7 +74,6 @@ const AddressPage = () => {
         addresses: id,
       }).unwrap();
       onAddMessagePopup({
-        messagePopupType: 'success',
         message: language.addressDeleted,
       });
     } catch (error) {

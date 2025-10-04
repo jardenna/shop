@@ -15,9 +15,9 @@ export type MessagePopupPosition =
 export type MessagePopup = {
   id: string;
   message: string;
-  messagePopupType: MessagePopupTypes;
   componentType?: ComponentType;
   count?: number;
+  messagePopupType?: MessagePopupTypes;
   onClose?: () => void;
 };
 
