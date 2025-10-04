@@ -102,7 +102,6 @@ const SubCategoryForm = ({
         }).unwrap();
 
         onAddMessagePopup({
-          messagePopupType: 'success',
           message: language.categoryUpdated,
         });
       } else {
@@ -112,7 +111,6 @@ const SubCategoryForm = ({
         }).unwrap();
 
         onAddMessagePopup({
-          messagePopupType: 'success',
           message: language.categoryCreated,
         });
       }

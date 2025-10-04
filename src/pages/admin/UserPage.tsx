@@ -75,7 +75,6 @@ const UserPage = () => {
         user: editValues,
       }).unwrap();
       onAddMessagePopup({
-        messagePopupType: 'success',
         message: language.userUpdated,
       });
     } catch (error) {
@@ -87,7 +86,6 @@ const UserPage = () => {
     try {
       await deleteUser(id).unwrap();
       onAddMessagePopup({
-        messagePopupType: 'success',
         message: `${username} ${language.deleted}`,
       });
     } catch (error) {

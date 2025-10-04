@@ -41,7 +41,6 @@ const ViewProductPage = () => {
       if (result.success) {
         navigate(AdminPath.AdminProducts);
         onAddMessagePopup({
-          messagePopupType: 'success',
           message: language.productDeleted,
         });
       } else {

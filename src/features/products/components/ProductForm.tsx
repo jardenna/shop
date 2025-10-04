@@ -201,13 +201,11 @@ const ProductForm = ({
         }).unwrap();
 
         onAddMessagePopup({
-          messagePopupType: 'success',
           message: language.productUpdated,
         });
       } else {
         await createProduct(productData).unwrap();
         onAddMessagePopup({
-          messagePopupType: 'success',
           message: language.productCreated,
         });
       }

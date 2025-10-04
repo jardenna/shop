@@ -62,7 +62,6 @@ const AccountForm = ({ profile, profileFieldList }: AccountFormProps) => {
     try {
       await updateProfile(values).unwrap();
       onAddMessagePopup({
-        messagePopupType: 'success',
         message: language.yourDetailsUpdated,
       });
     } catch (error) {

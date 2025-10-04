@@ -75,7 +75,6 @@ const CategoryForm = ({
         }).unwrap();
 
         onAddMessagePopup({
-          messagePopupType: 'success',
           message: language.categoryUpdated,
         });
       } else {
@@ -85,7 +84,6 @@ const CategoryForm = ({
         }).unwrap();
 
         onAddMessagePopup({
-          messagePopupType: 'success',
           message: language.categoryCreated,
         });
       }
