@@ -12,7 +12,7 @@ const useClickOutside = (
         return;
       }
 
-      // Ignore click if it was on any of the ignored refs (like the button)
+      // Ignore click if it was on ignored refs (like the button)
       if (
         ignoreRefs.some((ignoreRef) =>
           ignoreRef.current?.contains(event.target as Node),

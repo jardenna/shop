@@ -26,7 +26,7 @@ const getlowerCaseFirstLetter = (
   language: Record<string, string>,
 ) => language[key[0].toLowerCase() + key.slice(1)] || key;
 
-// Generic function to get visible items and count of hidden items from any list
+// Generic function to get visible items and count of hidden items from a list
 const sliceAndCountHidden = <T>(list: T[], visibleCount: number) => {
   const visibleItems = list.slice(0, visibleCount);
   const hiddenCount = Math.max(list.length - visibleCount, 0);
