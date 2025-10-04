@@ -18,9 +18,9 @@ const AccountLayout = () => {
   const src = `/images/account/${imgName}`;
 
   const altTextMap: Record<string, string> = {
-    account: 'accountAlttext',
-    orders: 'orderAlttext',
-    addresses: 'addressAlttext',
+    account: 'accountAltText',
+    orders: 'orderAltText',
+    addresses: 'addressAltText',
   };
   const altText = altTextMap[imgName];
 

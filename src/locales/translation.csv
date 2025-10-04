@@ -3,13 +3,13 @@ aboutUs;About us;Om os
 accessories;Accessories;Accessories
 accessoriesAndToys;Accessories & Toys;Accessories & legetøj
 account;Account;Konto
-accountAlttext;Elegant woman in a black coat and matching hat, radiating timeless style. A bold red stripe decorates the background.;Elegant kvinde i sort frakke og matchende hat, der udstråler tidløs stil. En markant rød stribe pryder baggrunden.
+accountAltText;Elegant woman in a black coat and matching hat, radiating timeless style. A bold red stripe decorates the background.;Elegant kvinde i sort frakke og matchende hat, der udstråler tidløs stil. En markant rød stribe pryder baggrunden.
 actionOnlyAllowedForAdmin;This action is only allowed for administrator;Denne handling er kun tilladt for administrator
 add;Add;Tilføj
 addAddress;Add address;Tilføj adresse
 additionalInfo;Additional info;Supplerende information
 addOrManageAddress;Add or manage your addresses;Tilføj eller ret dine adresser
-addressAlttext;Man in a tailored suit walking confidently down a wide, stepped staircase.;Mand i skræddersyet jakkesæt, der går selvsikkert ned ad en bred trappe.
+addressAltText;Man in a tailored suit walking confidently down a wide, stepped staircase.;Mand i skræddersyet jakkesæt, der går selvsikkert ned ad en bred trappe.
 addToBag;Add to bag;Læg i indkøbskurv
 addToStock;Add to stock;Tilføj til lager
 admin;Admin;Admin
@@ -83,6 +83,7 @@ date;Date;Dato
 dateOfBirth;Date of birth;Fødselsdato
 daysAgo;days ago;dage siden
 delete;Delete;Slet
+deleteAddress;Delete address;Slet adresse
 deleteCategory;Delete category;Slet kategori
 deleted;deleted;slettet
 deleteOrReassignCategory;Cannot be deleted. Category has linked products;Kan ikke slettes. Kategori har tilknyttede produkter
@@ -230,7 +231,7 @@ numberOfReviews;Number of reviews;Antal reviews
 onlyAdminsAssignRole;Only admins can assign roles;Kun administratorer kan tildele roller
 orange;Orange;Orange
 orders;Orders;Ordrer
-orderAlttext;Young boy in black jeans and a white T-shirt layered with a blue-checkered shirt, looking expectant.;Ung dreng i sorte jeans og hvid T-shirt kombineret med en blåternet skjorte, ser forventningsfuld ud.
+orderAltText;Young boy in black jeans and a white T-shirt layered with a blue-checkered shirt, looking expectant.;Ung dreng i sorte jeans og hvid T-shirt kombineret med en blåternet skjorte, ser forventningsfuld ud.
 outOf;out of;ud af
 outOfStock;Out of stock;Udsolgt
 page;Page;Side
