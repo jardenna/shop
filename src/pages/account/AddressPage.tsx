@@ -1,18 +1,13 @@
 import { Address } from '../../app/api/apiTypes/shopApiTypes';
 import IconBtn from '../../components/IconBtn';
-import IconContent from '../../components/IconContent';
-import {
-  PrimaryActionBtnProps,
-  SecondaryActionBtnProps,
-} from '../../components/modal/Modal';
-import ModalContainer from '../../components/modal/ModalContainer';
 import SkeletonParagraph from '../../components/skeleton/SkeletonParagraph';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetUserProfileQuery } from '../../features/profile/profileApiSlice';
-import { BtnVariant, IconName } from '../../types/enums';
+import { IconName } from '../../types/enums';
 import { InputType } from '../../types/types';
 import AddressInfoListContent from './AddressInfoListContent';
 import DeleteAddressModal from './DeleteAddressModal';
+import UpdateAddressModal from './UpdateAddressModal';
 
 export type AddressFieldListProps = {
   label: string;
@@ -24,21 +19,14 @@ const AddressPage = () => {
   const { language } = useLanguage();
   const { data: profile, isLoading } = useGetUserProfileQuery();
 
-  const primaryActionBtn: PrimaryActionBtnProps = {
-    onClick: () => {
-      console.log(123);
-    },
-    label: language.delete,
-    variant: BtnVariant.Danger,
-  };
-
-  const secondaryActionBtn: SecondaryActionBtnProps = {
-    label: language.cancel,
-  };
-
   const handleDeleteAddress = (id: string) => {
     console.log(id);
   };
+
+  const handleUpdateAddress = (id: string) => {
+    console.log(id);
+  };
+
   return (
     <>
       {isLoading && <SkeletonParagraph />}
@@ -68,23 +56,11 @@ const AddressPage = () => {
                   modalMessage={address.street}
                   onDeleteAddress={handleDeleteAddress}
                 />
-
-                <ModalContainer
-                  triggerModalBtnContent={
-                    <IconContent
-                      iconName={IconName.Pencil}
-                      title=""
-                      ariaLabel={language.update}
-                    />
-                  }
-                  triggerModalBtnVariant={BtnVariant.Ghost}
-                  id={`update-${address.id}`}
-                  primaryActionBtn={primaryActionBtn}
-                  secondaryActionBtn={secondaryActionBtn}
-                  modalHeaderText={language.updateAddress}
-                >
-                  {language.update} {address.street}
-                </ModalContainer>
+                <UpdateAddressModal
+                  id={address.id}
+                  modalMessage={address.street}
+                  onUpdateAddress={handleUpdateAddress}
+                />
               </div>
             </li>
           ))}
