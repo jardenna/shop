@@ -98,56 +98,37 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
 
     // Addresses
     if (addresses) {
-      // Add new addresses
-      if (addresses.add?.length) {
-        if (addresses.add.length > 1) {
-          return res.status(400).json({
-            message: 'You can only add one address at a time',
-          });
-        }
-
-        const address = addresses.add[0];
-        const error = validateCreateAddress(address);
-
-        if (error) {
-          return res.status(400).json({
-            message: error,
-          });
-        }
-
-        user.addresses.push(user.addresses.create(address));
-      }
-
-      // Update existing addresses
-      if (addresses.update?.length) {
-        let found = false;
-
-        addresses.update.forEach(({ _id, street, zipCode, city, country }) => {
-          const existing = user.addresses.id(_id);
-          if (existing) {
-            found = true;
-            existing.street = street ?? existing.street;
-            existing.zipCode = zipCode ?? existing.zipCode;
-            existing.city = city ?? existing.city;
-            existing.country = country ?? existing.country;
-          }
-        });
-
-        if (!found) {
+      // Delete address
+      if (typeof addresses === 'string') {
+        const existing = user.addresses.id(addresses);
+        if (!existing) {
           return res
             .status(404)
             .json({ message: t('noAddressData', req.lang) });
         }
+        existing.deleteOne();
       }
-
-      // Remove addresses
-      if (addresses.remove?.length) {
-        addresses.remove.forEach((addressId) => {
-          const existing = user.addresses.id(addressId);
-          if (existing) {
-            existing.deleteOne();
-          }
-        });
+      // Update address
+      else if (addresses.id) {
+        const existing = user.addresses.id(addresses.id);
+        if (!existing) {
+          return res
+            .status(404)
+            .json({ message: t('noAddressData', req.lang) });
+        }
+        existing.name = addresses.name ?? existing.name;
+        existing.street = addresses.street ?? existing.street;
+        existing.zipCode = addresses.zipCode ?? existing.zipCode;
+        existing.city = addresses.city ?? existing.city;
+        existing.country = addresses.country ?? existing.country;
+      }
+      // Add new address
+      else {
+        const error = validateCreateAddress(addresses);
+        if (error) {
+          return res.status(400).json({ message: error });
+        }
+        user.addresses.push(user.addresses.create(addresses));
       }
     }
 
