@@ -30,9 +30,14 @@ import AddressInfoListContent from './AddressInfoListContent';
 type AddressInforListProps = {
   address: Address;
   username: string;
+  onDeleteAddress: (id: string) => void;
 };
 
-const AddressInfoList = ({ address, username }: AddressInforListProps) => {
+const AddressInfoList = ({
+  address,
+  username,
+  onDeleteAddress,
+}: AddressInforListProps) => {
   const { language } = useLanguage();
 
   return (
@@ -43,6 +48,9 @@ const AddressInfoList = ({ address, username }: AddressInforListProps) => {
           iconName={IconName.Trash}
           title=""
           ariaLabel={language.delete}
+          onClick={() => {
+            onDeleteAddress(address.id);
+          }}
         />
         <IconBtn
           iconName={IconName.Pencil}

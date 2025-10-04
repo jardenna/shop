@@ -1,11 +1,14 @@
 import { Address } from '../../app/api/apiTypes/shopApiTypes';
 import IconBtn from '../../components/IconBtn';
+import IconContent from '../../components/IconContent';
+import { PrimaryActionBtnProps } from '../../components/modal/Modal';
+import ModalContainer from '../../components/modal/ModalContainer';
 import SkeletonParagraph from '../../components/skeleton/SkeletonParagraph';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetUserProfileQuery } from '../../features/profile/profileApiSlice';
-import { IconName } from '../../types/enums';
+import { BtnVariant, IconName } from '../../types/enums';
 import { InputType } from '../../types/types';
-import AddressInfoList from './AddressInfoList';
+import AddressInfoListContent from './AddressInfoListContent';
 
 export type AddressFieldListProps = {
   label: string;
@@ -16,6 +19,14 @@ export type AddressFieldListProps = {
 const AddressPage = () => {
   const { language } = useLanguage();
   const { data: profile, isLoading } = useGetUserProfileQuery();
+
+  const primaryActionBtn: PrimaryActionBtnProps = {
+    onClick: () => {
+      console.log(123);
+    },
+    label: language.delete,
+    variant: BtnVariant.Danger,
+  };
 
   return (
     <>
@@ -35,11 +46,34 @@ const AddressPage = () => {
             </div>
           </li>
           {profile.addresses.map((address) => (
-            <AddressInfoList
-              key={address.id}
-              address={address}
-              username={profile.username}
-            />
+            <li key={address.id} className="my-address-item">
+              <AddressInfoListContent
+                address={address}
+                username={profile.username}
+              />
+              <div className="my-address-footer">
+                <ModalContainer
+                  triggerModalBtnContent={
+                    <IconContent
+                      iconName={IconName.Trash}
+                      title=""
+                      ariaLabel={language.deleteAddress}
+                    />
+                  }
+                  triggerModalBtnVariant={BtnVariant.Ghost}
+                  id={address.id}
+                  primaryActionBtn={primaryActionBtn}
+                  modalHeaderText={language.deleteAddress}
+                >
+                  {language.sureToDelete} {address.street}
+                </ModalContainer>
+                <IconBtn
+                  iconName={IconName.Pencil}
+                  title=""
+                  ariaLabel={language.update}
+                />
+              </div>
+            </li>
           ))}
         </ul>
       )}
