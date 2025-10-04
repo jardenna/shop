@@ -20,6 +20,10 @@ $placements: (
       #{$side}: 4px;
     }
   }
+
+  &:has(.dropdown-item) {
+    padding: 0;
+  }
 }
 
 .popup-arrow {
