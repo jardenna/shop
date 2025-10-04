@@ -1,7 +1,10 @@
 import { Address } from '../../app/api/apiTypes/shopApiTypes';
 import IconBtn from '../../components/IconBtn';
 import IconContent from '../../components/IconContent';
-import { PrimaryActionBtnProps } from '../../components/modal/Modal';
+import {
+  PrimaryActionBtnProps,
+  SecondaryActionBtnProps,
+} from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
 import SkeletonParagraph from '../../components/skeleton/SkeletonParagraph';
 import useLanguage from '../../features/language/useLanguage';
@@ -26,6 +29,10 @@ const AddressPage = () => {
     },
     label: language.delete,
     variant: BtnVariant.Danger,
+  };
+
+  const secondaryActionBtn: SecondaryActionBtnProps = {
+    label: language.cancel,
   };
 
   return (
@@ -61,17 +68,29 @@ const AddressPage = () => {
                     />
                   }
                   triggerModalBtnVariant={BtnVariant.Ghost}
-                  id={address.id}
+                  id={`delete-${address.id}`}
                   primaryActionBtn={primaryActionBtn}
+                  secondaryActionBtn={secondaryActionBtn}
                   modalHeaderText={language.deleteAddress}
                 >
                   {language.sureToDelete} {address.street}
                 </ModalContainer>
-                <IconBtn
-                  iconName={IconName.Pencil}
-                  title=""
-                  ariaLabel={language.update}
-                />
+                <ModalContainer
+                  triggerModalBtnContent={
+                    <IconContent
+                      iconName={IconName.Pencil}
+                      title=""
+                      ariaLabel={language.update}
+                    />
+                  }
+                  triggerModalBtnVariant={BtnVariant.Ghost}
+                  id={`update-${address.id}`}
+                  primaryActionBtn={primaryActionBtn}
+                  secondaryActionBtn={secondaryActionBtn}
+                  modalHeaderText={language.updateAddress}
+                >
+                  {language.update} {address.street}
+                </ModalContainer>
               </div>
             </li>
           ))}
