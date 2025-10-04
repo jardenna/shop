@@ -117,7 +117,7 @@ const SubCategoryForm = ({
         });
       }
       navigate(AdminPath.AdminSubCategories);
-    } catch (error: any) {
+    } catch (error) {
       handleApiError(error, onAddMessagePopup);
     }
   }

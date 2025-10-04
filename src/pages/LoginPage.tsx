@@ -43,7 +43,7 @@ const LoginPage = () => {
       if (result.success) {
         navigate(from, { replace: true });
       }
-    } catch (error: any) {
+    } catch (error) {
       handleApiError(error, onAddMessagePopup);
     }
   }

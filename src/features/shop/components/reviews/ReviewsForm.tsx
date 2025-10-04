@@ -7,6 +7,7 @@ import useMessagePopup from '../../../../components/messagePopup/useMessagePopup
 import useFormValidation from '../../../../hooks/useFormValidation';
 import { BtnType, IconName } from '../../../../types/enums';
 import type { ChangeInputType } from '../../../../types/types';
+import handleApiError from '../../../../utils/handleApiError';
 import { createRatingList } from '../../../../utils/productLists';
 import useLanguage from '../../../language/useLanguage';
 import {
@@ -52,15 +53,11 @@ const ReviewsForm = ({
         productId,
         reviews: values,
       }).unwrap();
-      setVisible(null);
-    } catch (error: any) {
-      onAddMessagePopup({
-        messagePopupType: 'error',
-        message: error.data.message,
-        componentType: 'notification',
-      });
-      setVisible(null);
+    } catch (error) {
+      handleApiError(error, onAddMessagePopup);
     }
+
+    setVisible(null);
   }
 
   const handleChange = (event: ChangeInputType) => {

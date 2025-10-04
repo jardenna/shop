@@ -51,7 +51,7 @@ const ViewProductPage = () => {
           componentType: 'notification',
         });
       }
-    } catch (error: any) {
+    } catch (error) {
       handleApiError(error, onAddMessagePopup);
     }
   };

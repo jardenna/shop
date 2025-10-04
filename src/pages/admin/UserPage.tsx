@@ -78,7 +78,7 @@ const UserPage = () => {
         messagePopupType: 'success',
         message: language.userUpdated,
       });
-    } catch (error: any) {
+    } catch (error) {
       handleApiError(error, onAddMessagePopup);
     }
   }
@@ -90,7 +90,7 @@ const UserPage = () => {
         messagePopupType: 'success',
         message: `${username} ${language.deleted}`,
       });
-    } catch (error: any) {
+    } catch (error) {
       handleApiError(error, onAddMessagePopup);
     }
   };

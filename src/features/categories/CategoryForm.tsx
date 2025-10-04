@@ -91,7 +91,7 @@ const CategoryForm = ({
       }
 
       navigate(AdminPath.AdminCategories);
-    } catch (error: any) {
+    } catch (error) {
       handleApiError(error, onAddMessagePopup);
     }
   }
