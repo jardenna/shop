@@ -7,7 +7,6 @@ accountAltText;Elegant woman in a black coat and matching hat, radiating timeles
 actionOnlyAllowedForAdmin;This action is only allowed for administrator;Denne handling er kun tilladt for administrator
 add;Add;Tilføj
 address;Address;Adresse
-addAddress;Add address;Tilføj adresse
 addressCreated;Address was created;Adresse blev tilføjet
 addressUpdated;Address was updated;Adresse blev opdateret
 additionalInfo;Additional info;Supplerende information
@@ -77,6 +76,7 @@ create;Create;Opret
 createAccount;Create account;Opret konto
 createNewAccount;Create new account;Opret en ny konto
 createdAt;Created at;Tilføjet den
+createNewAddress;Create new address;Opret ny adresse
 createNewCategory;Create new category;Opret ny kategori
 createNewProduct;Create new product;Opret nyt produkt
 createNewUser;Create new user;Opret ny bruger

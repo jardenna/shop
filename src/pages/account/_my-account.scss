@@ -33,6 +33,10 @@
   border: 1px solid #d9d6d6;
   display: grid;
   grid-row: span 2;
+
+  &.add-address {
+    place-content: center;
+  }
 }
 
 .my-address-content {

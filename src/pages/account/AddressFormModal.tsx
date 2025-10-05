@@ -23,11 +23,23 @@ import { addressInputs } from './AddressPage';
 
 type AddressFormModalProps = {
   id: string | null;
+  modalHeaderText: string;
+  modalId: string;
+  popupMessage: string;
+  primaryActionBtnLabel: string;
   username: string;
   address?: Address;
 };
 
-const AddressFormModal = ({ id, address, username }: AddressFormModalProps) => {
+const AddressFormModal = ({
+  id,
+  address,
+  username,
+  modalHeaderText,
+  primaryActionBtnLabel,
+  modalId,
+  popupMessage,
+}: AddressFormModalProps) => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
 
@@ -64,7 +76,7 @@ const AddressFormModal = ({ id, address, username }: AddressFormModalProps) => {
       }
 
       onAddMessagePopup({
-        message: id ? language.addressUpdated : language.addressCreated,
+        message: popupMessage,
       });
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
@@ -74,7 +86,7 @@ const AddressFormModal = ({ id, address, username }: AddressFormModalProps) => {
   const primaryActionBtn: PrimaryActionBtnProps = {
     onSubmit,
     buttonType: BtnType.Submit,
-    label: language.update,
+    label: primaryActionBtnLabel,
     disabled: isLoading || addAddressIsLoading,
     showBtnLoader: isLoading || addAddressIsLoading,
   };
@@ -87,17 +99,26 @@ const AddressFormModal = ({ id, address, username }: AddressFormModalProps) => {
     <ModalContainer
       modalSize={SizeVariant.Md}
       triggerModalBtnContent={
-        <IconContent
-          iconName={IconName.Pencil}
-          title=""
-          ariaLabel={language.updateAddress}
-        />
+        id ? (
+          <IconContent
+            iconName={IconName.Pencil}
+            title=""
+            ariaLabel={language.updateAddress}
+          />
+        ) : (
+          <IconContent
+            iconName={IconName.Add}
+            title=""
+            ariaLabel={language.createNewAddress}
+            showLabel
+          />
+        )
       }
       triggerModalBtnVariant={BtnVariant.Ghost}
-      id={`update-${id}`}
+      id={modalId}
       primaryActionBtn={primaryActionBtn}
       secondaryActionBtn={secondaryActionBtn}
-      modalHeaderText={language.updateAddress}
+      modalHeaderText={modalHeaderText}
       className="address-modal"
     >
       <FieldSet legendText={language.address} hideLegendText>
