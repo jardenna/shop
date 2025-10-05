@@ -4,6 +4,7 @@ import type {
 } from '../../app/api/apiTypes/shopApiTypes';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Input from '../../components/formElements/Input';
+import validateAddress from '../../components/formElements/validation/validateAddress';
 import IconContent from '../../components/IconContent';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import {
@@ -64,9 +65,10 @@ const AddressFormModal = ({
     id: id || null,
   };
 
-  const { values, onChange, onSubmit } = useFormValidation({
+  const { values, onChange, onSubmit, errors } = useFormValidation({
     initialState,
     callback: handleUpdateAddress,
+    validate: validateAddress,
   });
 
   const [updateAddress, { isLoading }] = useUpdateAddressMutation();
@@ -144,6 +146,7 @@ const AddressFormModal = ({
             value={values[name] ?? ''}
             labelText={language[name]}
             type={type}
+            errorText={language[errors[name]]}
           />
         ))}
       </FieldSet>
