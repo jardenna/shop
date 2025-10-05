@@ -236,6 +236,7 @@ notVisibleInShop;is not visible in the shop until the main category is published
 noUser;User not found. Please sign up first;Bruger blev ikke fundet. Opret dig først
 numberOfReviews;Number of reviews;Antal reviews
 onlyAdminsAssignRole;Only admins can assign roles;Kun administratorer kan tildele roller
+onlyFourAddresses;You may have up to 4 addresses;Du kan højst have 4 adresser
 orange;Orange;Orange
 orders;Orders;Ordrer
 orderAltText;Young boy in black jeans and a white T-shirt layered with a blue-checkered shirt, looking expectant.;Ung dreng i sorte jeans og hvid T-shirt kombineret med en blåternet skjorte, ser forventningsfuld ud.
@@ -261,10 +262,13 @@ phoneInfo;We’ll only contact you when needed, for instance, to update you on y
 pink;Pink;Pink
 pleaseEnter;Please enter;Indsæt venligst
 pleaseEnterCategoryName;Please enter a name for category;Indsæt venligst navn på kategori
+pleaseEnterCity;Please enter city;Indsæt venligst by
 pleaseEnterName;Please enter name;Indsæt venligst navn
 pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
+pleaseEnterStreet;Please enter  street;Indsæt venligst gade
 pleaseEnterTranslationKey;Please enter a translation key;Indsæt venligst oversættelsesnøgle
 pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
+pleaseEnterZipcode;Please enter zipcode;Indsæt venligst postnummer
 pleaseProvideScheduledDate;Please provide a scheduled date;Angiv venligst en planlagt dato
 pleaseRemoveOneOrMore;please remove one or more;fjern venligst en eller flere
 pleaseSelectParentCategory;Please select parent category;Vælg venligst hovedkategori

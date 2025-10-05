@@ -129,19 +129,18 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
           return res.status(400).json({ message: error });
         }
 
+        if (user.addresses.length >= 4) {
+          return res.status(400).json({
+            success: false,
+            message: 'You may have up to 4 addresses',
+          });
+        }
+
         user.addresses.push(user.addresses.create(addresses));
       }
     }
 
     const updatedUser = await user.save();
-
-    if (updatedUser.addresses.length > 4) {
-      return res.status(400).json({
-        success: false,
-        message: 'You cannot add more than 4 addresses',
-      });
-    }
-
     res.status(200).json(updatedUser);
   } else {
     return res.status(404).json({
