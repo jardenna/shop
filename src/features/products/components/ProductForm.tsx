@@ -203,11 +203,10 @@ const ProductForm = ({
         await createProduct(productData).unwrap();
       }
 
-      setTimeout(() => {
-        onAddMessagePopup({
-          message: id ? language.productUpdated : language.productCreated,
-        });
-      }, 50);
+      onAddMessagePopup({
+        message: id ? language.productUpdated : language.productCreated,
+        withDelay: true,
+      });
 
       navigate(AdminPath.AdminProducts);
     } catch (error) {

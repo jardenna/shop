@@ -21,14 +21,27 @@ const useMessagePopup = (messagePopupId?: string) => {
     message,
     messagePopupType,
     componentType = 'toast',
-  }: MessagePopupWithoutId) => {
-    dispatch(
-      addMessagePopup({
-        message,
-        messagePopupType,
-        componentType,
-      }),
-    );
+    withDelay = false,
+  }: MessagePopupWithoutId & { withDelay?: boolean }) => {
+    if (withDelay) {
+      setTimeout(() => {
+        dispatch(
+          addMessagePopup({
+            message,
+            messagePopupType,
+            componentType,
+          }),
+        );
+      }, 50);
+    } else {
+      dispatch(
+        addMessagePopup({
+          message,
+          messagePopupType,
+          componentType,
+        }),
+      );
+    }
   };
 
   const handleDeleteMessagePopup = () => {

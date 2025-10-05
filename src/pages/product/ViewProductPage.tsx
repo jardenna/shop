@@ -42,6 +42,7 @@ const ViewProductPage = () => {
         navigate(AdminPath.AdminProducts);
         onAddMessagePopup({
           message: language.productDeleted,
+          withDelay: true,
         });
       } else {
         onAddMessagePopup({
