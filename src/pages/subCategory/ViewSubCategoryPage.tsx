@@ -38,6 +38,7 @@ const ViewSubCategoryPage = () => {
         navigate(AdminPath.AdminSubCategories);
         onAddMessagePopup({
           message: language.categoryDeleted,
+          withDelay: true,
         });
       } else {
         onAddMessagePopup({
