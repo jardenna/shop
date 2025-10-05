@@ -56,7 +56,7 @@ const AccountForm = ({ profile, profileFieldList }: AccountFormProps) => {
     callback: handleSubmit,
   });
 
-  const [updateProfile] = useUpdateUserProfileMutation();
+  const [updateProfile, { isLoading }] = useUpdateUserProfileMutation();
 
   async function handleSubmit() {
     try {
@@ -73,6 +73,7 @@ const AccountForm = ({ profile, profileFieldList }: AccountFormProps) => {
     onSubmit,
     label: language.update,
     buttonType: BtnType.Submit,
+    disabled: isLoading,
   };
 
   const secondaryActionBtn: SecondaryActionBtnProps = {

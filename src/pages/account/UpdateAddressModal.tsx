@@ -43,7 +43,7 @@ const UpdateAddressModal = ({
     callback: handleUpdateAddress,
   });
 
-  const [updateAddress] = useUpdateAddressMutation();
+  const [updateAddress, { isLoading }] = useUpdateAddressMutation();
 
   const updatedAddress = { ...values, id };
 
@@ -64,6 +64,7 @@ const UpdateAddressModal = ({
     onSubmit,
     buttonType: BtnType.Submit,
     label: language.update,
+    disabled: isLoading,
   };
 
   const secondaryActionBtn: SecondaryActionBtnProps = {
