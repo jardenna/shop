@@ -8,6 +8,7 @@ actionOnlyAllowedForAdmin;This action is only allowed for administrator;Denne ha
 add;Add;Tilføj
 address;Address;Adresse
 addAddress;Add address;Tilføj adresse
+addressCreated;Address was created;Adresse blev tilføjet
 addressUpdated;Address was updated;Adresse blev opdateret
 additionalInfo;Additional info;Supplerende information
 addOrManageAddress;Add or manage your addresses;Tilføj eller ret dine adresser
@@ -38,7 +39,7 @@ care;Care;Vaskeanvisning
 categories;Categories;Kategorier
 category;Category;Kategori
 categoryCard;Category card;Kategori card
-categoryCreated;Category created;Kategori tilføjet
+categoryCreated;Category was created;Kategori blev tilføjet
 categoryDeleted;Category deleted;Kategori blev slettet
 categoryIs;Category is;Kategori er
 categoryList;Category list;Kategori-liste
@@ -275,7 +276,7 @@ product;Product;Produkt
 productActions;Product actions;Produkt handlinger
 productCard;Product card;Produkt card
 productCopied;Product copied;Produkt blev kopieret
-productCreated;Product created;Produkt blev tilføjet
+productCreated;Product was created;Produkt blev tilføjet
 productDeleted;Product deleted;Produkt blev slettet
 productDescriptionRequired;Please insert product description;Indsæt venligst produktbeskrivelse
 productDisplay;Product Display;Produktvisning

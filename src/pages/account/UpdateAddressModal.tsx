@@ -68,7 +68,7 @@ const UpdateAddressModal = ({
       }
 
       onAddMessagePopup({
-        message: id ? language.addressUpdated : 'Address was Created',
+        message: id ? language.addressUpdated : language.addressCreated,
       });
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
