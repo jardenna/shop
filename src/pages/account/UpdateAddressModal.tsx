@@ -1,4 +1,7 @@
-import type { Address } from '../../app/api/apiTypes/shopApiTypes';
+import type {
+  Address,
+  AddressInput,
+} from '../../app/api/apiTypes/shopApiTypes';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Input from '../../components/formElements/Input';
 import IconContent from '../../components/IconContent';
@@ -9,16 +12,19 @@ import {
 } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
 import useLanguage from '../../features/language/useLanguage';
-import { useUpdateAddressMutation } from '../../features/profile/profileApiSlice';
+import {
+  useAddAddressMutation,
+  useUpdateAddressMutation,
+} from '../../features/profile/profileApiSlice';
 import useFormValidation from '../../hooks/useFormValidation';
 import { BtnType, BtnVariant, IconName, SizeVariant } from '../../types/enums';
 import handleApiError from '../../utils/handleApiError';
 import { addressInputs } from './AddressPage';
 
 type UpdateAddressModalProps = {
-  address: Address;
-  id: string;
+  id: string | null;
   username: string;
+  address?: Address;
 };
 
 const UpdateAddressModal = ({
@@ -29,13 +35,13 @@ const UpdateAddressModal = ({
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
 
-  const initialState: Address = {
-    name: address.name || username,
-    street: address.street,
-    zipCode: address.zipCode,
-    city: address.city,
-    country: address.country,
-    id,
+  const initialState: AddressInput = {
+    name: address?.name || username,
+    street: address?.street ?? '',
+    zipCode: address?.zipCode ?? '',
+    city: address?.city ?? '',
+    country: address?.country ?? 'Danmark',
+    id: id || null,
   };
 
   const { values, onChange, onSubmit } = useFormValidation({
@@ -44,16 +50,25 @@ const UpdateAddressModal = ({
   });
 
   const [updateAddress, { isLoading }] = useUpdateAddressMutation();
+  const [addAddress, { isLoading: addAddressIsLoading }] =
+    useAddAddressMutation();
 
-  const updatedAddress = { ...values, id };
+  const updatedAddress = id ? { ...values, id } : { ...values };
 
   async function handleUpdateAddress() {
     try {
-      await updateAddress({
-        addresses: updatedAddress,
-      }).unwrap();
+      if (id) {
+        await updateAddress({
+          addresses: updatedAddress,
+        }).unwrap();
+      } else {
+        await addAddress({
+          addresses: updatedAddress,
+        }).unwrap();
+      }
+
       onAddMessagePopup({
-        message: language.addressUpdated,
+        message: id ? language.addressUpdated : 'Address was Created',
       });
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
@@ -64,8 +79,8 @@ const UpdateAddressModal = ({
     onSubmit,
     buttonType: BtnType.Submit,
     label: language.update,
-    disabled: isLoading,
-    showBtnLoader: isLoading,
+    disabled: isLoading || addAddressIsLoading,
+    showBtnLoader: isLoading || addAddressIsLoading,
   };
 
   const secondaryActionBtn: SecondaryActionBtnProps = {

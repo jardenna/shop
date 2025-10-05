@@ -74,13 +74,20 @@ export type PreferredFashion =
   | 'kidsFashion'
   | 'noPreference';
 
-export type Address = {
+export type BaseAddress = {
   city: string;
-  id: string;
   street: string;
   zipCode: string;
   country?: string;
   name?: string;
+};
+
+export type Address = BaseAddress & {
+  id: string;
+};
+
+export type AddressInput = BaseAddress & {
+  id: string | null;
 };
 
 export type UserProfileResponse = DefaultResponseType &

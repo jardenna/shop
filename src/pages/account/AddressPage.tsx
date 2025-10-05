@@ -1,15 +1,12 @@
 import { Address } from '../../app/api/apiTypes/shopApiTypes';
-import IconBtn from '../../components/IconBtn';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 
 import SkeletonParagraph from '../../components/skeleton/SkeletonParagraph';
 import useLanguage from '../../features/language/useLanguage';
 import {
-  useAddAddressMutation,
   useDeleteAddressMutation,
   useGetUserProfileQuery,
 } from '../../features/profile/profileApiSlice';
-import { IconName } from '../../types/enums';
 import { InputType } from '../../types/types';
 import handleApiError from '../../utils/handleApiError';
 import AddressInfoListContent from './AddressInfoListContent';
@@ -37,26 +34,6 @@ const AddressPage = () => {
   const { data: profile, isLoading } = useGetUserProfileQuery();
 
   const [deleteAddress] = useDeleteAddressMutation();
-  const [addAddress] = useAddAddressMutation();
-
-  const handleAddAddress = async () => {
-    try {
-      await addAddress({
-        addresses: {
-          name: 'Petras',
-          street: 'Sortedamsvej 12B',
-          zipCode: '2720',
-          city: 'Vanløse',
-        },
-      }).unwrap();
-
-      onAddMessagePopup({
-        message: 'address was created',
-      });
-    } catch (error) {
-      handleApiError(error, onAddMessagePopup);
-    }
-  };
 
   const handleDeleteAddress = async (id: string) => {
     try {
@@ -79,15 +56,7 @@ const AddressPage = () => {
       {profile && (
         <ul className="my-address-list">
           <li className="my-address-item">
-            <div className="my-address-content">
-              <IconBtn
-                iconName={IconName.Add}
-                title=""
-                ariaLabel={language.addAddress}
-                showLabel
-                onClick={handleAddAddress}
-              />
-            </div>
+            <UpdateAddressModal id={null} username={profile.username} />
           </li>
           {profile.addresses.map((address) => (
             <li key={address.id} className="my-address-item">
