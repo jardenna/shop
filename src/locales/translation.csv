@@ -6,7 +6,9 @@ account;Account;Konto
 accountAltText;Elegant woman in a black coat and matching hat, radiating timeless style. A bold red stripe decorates the background.;Elegant kvinde i sort frakke og matchende hat, der udstråler tidløs stil. En markant rød stribe pryder baggrunden.
 actionOnlyAllowedForAdmin;This action is only allowed for administrator;Denne handling er kun tilladt for administrator
 add;Add;Tilføj
+address;Address;Adresse
 addAddress;Add address;Tilføj adresse
+addressUpdated;Address was updated;Adresse blev opdateret
 additionalInfo;Additional info;Supplerende information
 addOrManageAddress;Add or manage your addresses;Tilføj eller ret dine adresser
 addressAltText;Man in a tailored suit walking confidently down a wide, stepped staircase.;Mand i skræddersyet jakkesæt, der går selvsikkert ned ad en bred trappe.
@@ -44,7 +46,7 @@ categoryName;Category name;Kategori navn
 categoryNotFound;Category not found;Kategorien findes ikke
 categoryRequired;Please select a category;Vælg venligst kategori
 categoryStatus;Category status;Kategori status
-categoryUpdated;Category updated;Kategori opdateret
+categoryUpdated;Category was updated;Kategori blev opdateret
 circleChevronRight;Circle chevron right;Circle chevron right
 city;City;By
 clearAllFilters;Clear all filters;Ryd alle filtre
@@ -288,7 +290,7 @@ products;Products;Produkter
 productsInStock;Products in stock;Produkter på lager
 productsInSubcategory;Products linked to subcategory;Produkter tilknyttet denne underkategori
 productStatus;Product status;Produkt status
-productUpdated;Product updated;Produkt blev opdateret
+productUpdated;Product was updated;Produkt blev opdateret
 productVariants;Product Variants;Produkt varianter
 profile;Profile;Profil
 publish;Publish;Udgiv
@@ -386,7 +388,7 @@ userDeleted;User deleted;Bruger slettet
 userInfo;User info;Bruger info
 username;User name;Brugernavn
 users;Users;Brugere
-userUpdated;User updated;Bruger opdateret
+userUpdated;User was updated;Bruger blev opdateret
 alreadyInUse;Value already in use;Værdien er allerede i brug
 view;View;Se
 viewAndTrackOrders;View and track your orders.;Tjek og følg dine ordrer.

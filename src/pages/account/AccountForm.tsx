@@ -74,6 +74,7 @@ const AccountForm = ({ profile, profileFieldList }: AccountFormProps) => {
     label: language.update,
     buttonType: BtnType.Submit,
   };
+
   const secondaryActionBtn: SecondaryActionBtnProps = {
     label: language.cancel,
   };

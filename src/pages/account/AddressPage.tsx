@@ -8,7 +8,6 @@ import {
   useAddAddressMutation,
   useDeleteAddressMutation,
   useGetUserProfileQuery,
-  useUpdateAddressMutation,
 } from '../../features/profile/profileApiSlice';
 import { IconName } from '../../types/enums';
 import { InputType } from '../../types/types';
@@ -23,6 +22,14 @@ export type AddressFieldListProps = {
   type?: InputType;
 };
 
+export const addressInputs: (keyof Address)[] = [
+  'name',
+  'street',
+  'zipCode',
+  'city',
+  'country',
+];
+
 const AddressPage = () => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
@@ -31,7 +38,6 @@ const AddressPage = () => {
 
   const [deleteAddress] = useDeleteAddressMutation();
   const [addAddress] = useAddAddressMutation();
-  const [updateAddress] = useUpdateAddressMutation();
 
   const handleAddAddress = async () => {
     try {
@@ -46,22 +52,6 @@ const AddressPage = () => {
 
       onAddMessagePopup({
         message: 'address was created',
-      });
-    } catch (error) {
-      handleApiError(error, onAddMessagePopup);
-    }
-  };
-
-  const handleUpdateAddress = async (id: string) => {
-    try {
-      await updateAddress({
-        addresses: {
-          id,
-          street: 'Allegadé 16',
-        },
-      }).unwrap();
-      onAddMessagePopup({
-        message: 'address was updated',
       });
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
@@ -113,7 +103,6 @@ const AddressPage = () => {
                 />
                 <UpdateAddressModal
                   id={address.id}
-                  onUpdateAddress={handleUpdateAddress}
                   address={address}
                   username={profile.username}
                 />

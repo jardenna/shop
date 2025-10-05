@@ -2,43 +2,32 @@ import type { Address } from '../../app/api/apiTypes/shopApiTypes';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Input from '../../components/formElements/Input';
 import IconContent from '../../components/IconContent';
+import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import {
   PrimaryActionBtnProps,
   SecondaryActionBtnProps,
 } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
 import useLanguage from '../../features/language/useLanguage';
+import { useUpdateAddressMutation } from '../../features/profile/profileApiSlice';
 import useFormValidation from '../../hooks/useFormValidation';
-import { BtnVariant, IconName, SizeVariant } from '../../types/enums';
+import { BtnType, BtnVariant, IconName, SizeVariant } from '../../types/enums';
+import handleApiError from '../../utils/handleApiError';
+import { addressInputs } from './AddressPage';
 
-const addressInputs: (keyof Address)[] = [
-  'name',
-  'street',
-  'zipCode',
-  'city',
-  'country',
-];
-
-export type UpdateAddressModalProps = {
+type UpdateAddressModalProps = {
   address: Address;
   id: string;
   username: string;
-  onUpdateAddress: (id: string) => void;
 };
 
 const UpdateAddressModal = ({
   id,
   address,
   username,
-  onUpdateAddress,
 }: UpdateAddressModalProps) => {
   const { language } = useLanguage();
-  const primaryActionBtn: PrimaryActionBtnProps = {
-    onClick: () => {
-      onUpdateAddress(id);
-    },
-    label: language.update,
-  };
+  const { onAddMessagePopup } = useMessagePopup();
 
   const initialState: Address = {
     name: address.name || username,
@@ -49,14 +38,33 @@ const UpdateAddressModal = ({
     id,
   };
 
-  const { values, onChange } = useFormValidation({
+  const { values, onChange, onSubmit } = useFormValidation({
     initialState,
-    callback: handleSubmit,
+    callback: handleUpdateAddress,
   });
 
-  function handleSubmit() {
-    console.log(123);
+  const [updateAddress] = useUpdateAddressMutation();
+
+  const updatedAddress = { ...values, id };
+
+  async function handleUpdateAddress() {
+    try {
+      await updateAddress({
+        addresses: updatedAddress,
+      }).unwrap();
+      onAddMessagePopup({
+        message: language.addressUpdated,
+      });
+    } catch (error) {
+      handleApiError(error, onAddMessagePopup);
+    }
   }
+
+  const primaryActionBtn: PrimaryActionBtnProps = {
+    onSubmit,
+    buttonType: BtnType.Submit,
+    label: language.update,
+  };
 
   const secondaryActionBtn: SecondaryActionBtnProps = {
     label: language.cancel,
@@ -79,7 +87,7 @@ const UpdateAddressModal = ({
       modalHeaderText={language.updateAddress}
       className="address-modal"
     >
-      <FieldSet legendText="Enter your address details" hideLegendText>
+      <FieldSet legendText={language.address} hideLegendText>
         {addressInputs.map((input) => (
           <Input
             key={input}
