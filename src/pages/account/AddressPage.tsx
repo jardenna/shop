@@ -9,9 +9,9 @@ import {
 } from '../../features/profile/profileApiSlice';
 import { InputType } from '../../types/types';
 import handleApiError from '../../utils/handleApiError';
+import AddressFormModal from './AddressFormModal';
 import AddressInfoListContent from './AddressInfoListContent';
 import DeleteAddressModal from './DeleteAddressModal';
-import UpdateAddressModal from './UpdateAddressModal';
 
 export type AddressFieldListProps = {
   label: string;
@@ -56,7 +56,7 @@ const AddressPage = () => {
       {profile && (
         <ul className="my-address-list">
           <li className="my-address-item">
-            <UpdateAddressModal id={null} username={profile.username} />
+            <AddressFormModal id={null} username={profile.username} />
           </li>
           {profile.addresses.map((address) => (
             <li key={address.id} className="my-address-item">
@@ -70,7 +70,7 @@ const AddressPage = () => {
                   modalMessage={address.street}
                   onDeleteAddress={handleDeleteAddress}
                 />
-                <UpdateAddressModal
+                <AddressFormModal
                   id={address.id}
                   address={address}
                   username={profile.username}

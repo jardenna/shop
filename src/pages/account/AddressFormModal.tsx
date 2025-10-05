@@ -21,17 +21,13 @@ import { BtnType, BtnVariant, IconName, SizeVariant } from '../../types/enums';
 import handleApiError from '../../utils/handleApiError';
 import { addressInputs } from './AddressPage';
 
-type UpdateAddressModalProps = {
+type AddressFormModalProps = {
   id: string | null;
   username: string;
   address?: Address;
 };
 
-const UpdateAddressModal = ({
-  id,
-  address,
-  username,
-}: UpdateAddressModalProps) => {
+const AddressFormModal = ({ id, address, username }: AddressFormModalProps) => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
 
@@ -120,4 +116,4 @@ const UpdateAddressModal = ({
   );
 };
 
-export default UpdateAddressModal;
+export default AddressFormModal;
