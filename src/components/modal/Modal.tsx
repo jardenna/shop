@@ -19,6 +19,7 @@ export type PrimaryActionBtnProps = {
   className?: string;
   closeOnClick?: boolean;
   disabled?: boolean;
+  showBtnLoader?: boolean;
   variant?: BtnVariant;
   onClick?: () => void;
   onSubmit?: (event: FormEventType) => void;

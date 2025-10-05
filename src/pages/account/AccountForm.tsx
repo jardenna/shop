@@ -74,6 +74,7 @@ const AccountForm = ({ profile, profileFieldList }: AccountFormProps) => {
     label: language.update,
     buttonType: BtnType.Submit,
     disabled: isLoading,
+    showBtnLoader: isLoading,
   };
 
   const secondaryActionBtn: SecondaryActionBtnProps = {

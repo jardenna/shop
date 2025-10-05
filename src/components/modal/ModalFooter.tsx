@@ -31,6 +31,7 @@ const ModalFooter = ({
       onClick={onPrimaryClick}
       type={primaryActionBtn.buttonType}
       disabled={primaryActionBtn.disabled}
+      showBtnLoader={primaryActionBtn.showBtnLoader}
       className={primaryActionBtn.className}
       variant={primaryActionBtn.variant || BtnVariant.Primary}
     >

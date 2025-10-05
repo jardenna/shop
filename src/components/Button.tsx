@@ -18,10 +18,10 @@ type ButtonProps = {
   className?: string;
   disabled?: boolean;
   id?: string;
-  isLoading?: boolean;
   name?: string;
   popupRef?: RefObject<HTMLButtonElement | null>;
   role?: string;
+  showBtnLoader?: boolean;
   tabIndex?: 0 | -1;
   type?: BtnType;
   variant?: BtnVariant;
@@ -48,7 +48,7 @@ const Button = ({
   disabled,
   name,
   ariaDescribedby,
-  isLoading,
+  showBtnLoader,
   popupRef,
 }: ButtonProps) => (
   <button
@@ -63,13 +63,13 @@ const Button = ({
     aria-controls={ariaControls}
     aria-haspopup={ariaHasPopup}
     autoFocus={autoFocus}
-    disabled={disabled || isLoading ? true : undefined}
+    disabled={disabled || showBtnLoader ? true : undefined}
     className={`btn btn-${variant} ${className}`}
     name={name}
     aria-describedby={ariaDescribedby || undefined}
   >
     {ariaLabel && <VisuallyHidden>{ariaLabel}</VisuallyHidden>}
-    {!isLoading ? (
+    {!showBtnLoader ? (
       children
     ) : (
       <>

@@ -65,6 +65,7 @@ const UpdateAddressModal = ({
     buttonType: BtnType.Submit,
     label: language.update,
     disabled: isLoading,
+    showBtnLoader: isLoading,
   };
 
   const secondaryActionBtn: SecondaryActionBtnProps = {
