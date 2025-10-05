@@ -18,18 +18,31 @@ import {
 } from '../../features/profile/profileApiSlice';
 import useFormValidation from '../../hooks/useFormValidation';
 import { BtnType, BtnVariant, IconName, SizeVariant } from '../../types/enums';
+import type { InputType } from '../../types/types';
 import handleApiError from '../../utils/handleApiError';
-import { addressInputs } from './AddressPage';
 
 type AddressFormModalProps = {
   id: string | null;
   modalHeaderText: string;
-  modalId: string;
   popupMessage: string;
   primaryActionBtnLabel: string;
   username: string;
   address?: Address;
 };
+
+type AddressFieldListProps = {
+  name: keyof Address;
+  required?: boolean;
+  type?: InputType;
+};
+
+const addressInputList: AddressFieldListProps[] = [
+  { name: 'name' },
+  { name: 'street', required: true },
+  { name: 'zipCode', required: true, type: 'number' },
+  { name: 'city', required: true },
+  { name: 'country' },
+];
 
 const AddressFormModal = ({
   id,
@@ -37,7 +50,6 @@ const AddressFormModal = ({
   username,
   modalHeaderText,
   primaryActionBtnLabel,
-  modalId,
   popupMessage,
 }: AddressFormModalProps) => {
   const { language } = useLanguage();
@@ -115,21 +127,23 @@ const AddressFormModal = ({
         )
       }
       triggerModalBtnVariant={BtnVariant.Ghost}
-      id={modalId}
+      id={id ? `update-${id}` : 'create'}
       primaryActionBtn={primaryActionBtn}
       secondaryActionBtn={secondaryActionBtn}
       modalHeaderText={modalHeaderText}
       className="address-modal"
     >
       <FieldSet legendText={language.address} hideLegendText>
-        {addressInputs.map((input) => (
+        {addressInputList.map(({ name, required, type }) => (
           <Input
-            key={input}
+            key={name}
             onChange={onChange}
-            name={input}
-            id={input}
-            value={values[input] ?? ''}
-            labelText={language[input]}
+            required={required}
+            name={name}
+            id={name}
+            value={values[name] ?? ''}
+            labelText={language[name]}
+            type={type}
           />
         ))}
       </FieldSet>

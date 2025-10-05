@@ -1,5 +1,3 @@
-import { id } from 'date-fns/locale';
-import { Address } from '../../app/api/apiTypes/shopApiTypes';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 
 import SkeletonParagraph from '../../components/skeleton/SkeletonParagraph';
@@ -8,25 +6,10 @@ import {
   useDeleteAddressMutation,
   useGetUserProfileQuery,
 } from '../../features/profile/profileApiSlice';
-import { InputType } from '../../types/types';
 import handleApiError from '../../utils/handleApiError';
 import AddressFormModal from './AddressFormModal';
 import AddressInfoListContent from './AddressInfoListContent';
 import DeleteAddressModal from './DeleteAddressModal';
-
-export type AddressFieldListProps = {
-  label: string;
-  name: keyof Address;
-  type?: InputType;
-};
-
-export const addressInputs: (keyof Address)[] = [
-  'name',
-  'street',
-  'zipCode',
-  'city',
-  'country',
-];
 
 const AddressPage = () => {
   const { language } = useLanguage();
@@ -60,7 +43,6 @@ const AddressPage = () => {
               username={profile.username}
               modalHeaderText={language.createNewAddress}
               primaryActionBtnLabel={language.createNewAddress}
-              modalId="create"
               popupMessage={language.addressCreated}
             />
           </li>
@@ -82,7 +64,6 @@ const AddressPage = () => {
                   username={profile.username}
                   modalHeaderText={language.updateAddress}
                   primaryActionBtnLabel={language.update}
-                  modalId={`update-${id}`}
                   popupMessage={language.addressUpdated}
                 />
               </div>
