@@ -54,7 +54,7 @@ const NotifyMe = ({
 
   const primaryActionBtn: PrimaryActionBtnProps = {
     onSubmit,
-    label: successMessage ? 'Continue shopping' : language.notifyMe,
+    label: successMessage ? language.continueShopping : language.notifyMe,
     buttonType: BtnType.Submit,
     closeOnClick: !!successMessage,
   };
