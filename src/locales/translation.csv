@@ -46,6 +46,7 @@ categoryRequired;Please select a category;Vælg venligst kategori
 categoryStatus;Category status;Kategori status
 categoryUpdated;Category updated;Kategori opdateret
 circleChevronRight;Circle chevron right;Circle chevron right
+city;City;By
 clearAllFilters;Clear all filters;Ryd alle filtre
 clearFilters;Clear filters;Ryd filtre
 clearSort;Clear sort;Ryd sortering
@@ -62,6 +63,7 @@ colors;Colours;Farver
 colours;Colours;Farver
 compact;Compact;Kompakt
 confirmPassword;Confirm password;Gentag adgangskode
+country;Country;Land
 contact;Contact;Kontakt
 copy;Copy;Kopi
 copyAction;Copy;Kopier
@@ -348,6 +350,7 @@ sort;Sort;Sorter
 standard;Standard;Standard
 stars;stars;stjerner
 status;Status;Status
+street;Street;Gade
 sub;Sub;Sekundær
 subCategories;Subcategories;Underkategorier
 subCategory;Subcategory;Underkategori
@@ -408,3 +411,4 @@ womensFashion;Women’s fashion;Damemode
 yellow;Yellow;Gul
 yesterday;Yesterday;I går
 yourDetailsUpdated;Your details was updated;Dine detaljer blev opdaterede
+zipCode;ZipCode;Postnummer

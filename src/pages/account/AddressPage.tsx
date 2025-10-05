@@ -113,8 +113,9 @@ const AddressPage = () => {
                 />
                 <UpdateAddressModal
                   id={address.id}
-                  modalMessage={address.street}
                   onUpdateAddress={handleUpdateAddress}
+                  address={address}
+                  username={profile.username}
                 />
               </div>
             </li>

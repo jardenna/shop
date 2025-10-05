@@ -4,29 +4,6 @@ import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import AddressInfoListContent from './AddressInfoListContent';
 
-// const addressFieldList: AddressFieldListProps[] = [
-//   {
-//     name: 'name',
-//     label: 'name',
-//   },
-//   {
-//     name: 'street',
-//     label: 'street',
-//   },
-//   {
-//     name: 'zipCode',
-//     label: 'zipCode',
-//   },
-//   {
-//     name: 'city',
-//     label: 'city',
-//   },
-//   {
-//     name: 'country',
-//     label: 'country',
-//   },
-// ];
-
 type AddressInforListProps = {
   address: Address;
   username: string;

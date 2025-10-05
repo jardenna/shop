@@ -1,3 +1,6 @@
+import type { Address } from '../../app/api/apiTypes/shopApiTypes';
+import FieldSet from '../../components/fieldset/FieldSet';
+import Input from '../../components/formElements/Input';
 import IconContent from '../../components/IconContent';
 import {
   PrimaryActionBtnProps,
@@ -5,17 +8,28 @@ import {
 } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
 import useLanguage from '../../features/language/useLanguage';
-import { BtnVariant, IconName } from '../../types/enums';
+import useFormValidation from '../../hooks/useFormValidation';
+import { BtnVariant, IconName, SizeVariant } from '../../types/enums';
+
+const addressInputs: (keyof Address)[] = [
+  'name',
+  'street',
+  'zipCode',
+  'city',
+  'country',
+];
 
 export type UpdateAddressModalProps = {
+  address: Address;
   id: string;
-  modalMessage: string;
+  username: string;
   onUpdateAddress: (id: string) => void;
 };
 
 const UpdateAddressModal = ({
   id,
-  modalMessage,
+  address,
+  username,
   onUpdateAddress,
 }: UpdateAddressModalProps) => {
   const { language } = useLanguage();
@@ -26,12 +40,31 @@ const UpdateAddressModal = ({
     label: language.update,
   };
 
+  const initialState: Address = {
+    name: address.name || username,
+    street: address.street,
+    zipCode: address.zipCode,
+    city: address.city,
+    country: address.country,
+    id,
+  };
+
+  const { values, onChange } = useFormValidation({
+    initialState,
+    callback: handleSubmit,
+  });
+
+  function handleSubmit() {
+    console.log(123);
+  }
+
   const secondaryActionBtn: SecondaryActionBtnProps = {
     label: language.cancel,
   };
 
   return (
     <ModalContainer
+      modalSize={SizeVariant.Md}
       triggerModalBtnContent={
         <IconContent
           iconName={IconName.Pencil}
@@ -44,8 +77,20 @@ const UpdateAddressModal = ({
       primaryActionBtn={primaryActionBtn}
       secondaryActionBtn={secondaryActionBtn}
       modalHeaderText={language.updateAddress}
+      className="address-modal"
     >
-      {language.sureToDelete} {modalMessage}
+      <FieldSet legendText="Enter your address details" hideLegendText>
+        {addressInputs.map((input) => (
+          <Input
+            key={input}
+            onChange={onChange}
+            name={input}
+            id={input}
+            value={values[input] ?? ''}
+            labelText={language[input]}
+          />
+        ))}
+      </FieldSet>
     </ModalContainer>
   );
 };

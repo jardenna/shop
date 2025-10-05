@@ -22,6 +22,12 @@
   }
 }
 
+.address-modal {
+  &.modal.animate-top-center {
+    top: 15%;
+  }
+}
+
 .my-address-list {
   @include grid-template-column(230px);
 
@@ -59,4 +65,19 @@
   padding: 20px;
   padding-top: 0;
   justify-content: flex-end;
+}
+
+.address-modal {
+  .fieldset {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    .input-container {
+      grid-column: 1 / -1;
+
+      &:has(input[name='zipCode'], input[name='city']) {
+        grid-column: span 1;
+      }
+    }
+  }
 }
