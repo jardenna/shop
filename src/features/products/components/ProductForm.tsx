@@ -199,16 +199,15 @@ const ProductForm = ({
           id,
           product: productData,
         }).unwrap();
-
-        onAddMessagePopup({
-          message: language.productUpdated,
-        });
       } else {
         await createProduct(productData).unwrap();
-        onAddMessagePopup({
-          message: language.productCreated,
-        });
       }
+
+      setTimeout(() => {
+        onAddMessagePopup({
+          message: id ? language.productUpdated : language.productCreated,
+        });
+      }, 50);
 
       navigate(AdminPath.AdminProducts);
     } catch (error) {
