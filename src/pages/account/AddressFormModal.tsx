@@ -55,7 +55,7 @@ const AddressFormModal = ({ id, address, username }: AddressFormModalProps) => {
     try {
       if (id) {
         await updateAddress({
-          addresses: updatedAddress,
+          address: updatedAddress,
         }).unwrap();
       } else {
         await addAddress({

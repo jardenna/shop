@@ -90,6 +90,12 @@ export type AddressInput = BaseAddress & {
   id: string | null;
 };
 
+export type AddAddressRequest = {
+  addresses: Address;
+};
+
+export type UpdateAddressRequest = { address: AddressInput };
+
 export type UserProfileResponse = DefaultResponseType &
   BaseProfile & {
     addresses: Address[];
