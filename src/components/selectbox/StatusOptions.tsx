@@ -1,15 +1,15 @@
 import { OptionProps } from 'react-select';
+import type { Status } from '../../app/api/apiTypes/adminApiTypes';
 import useLanguage from '../../features/language/useLanguage';
-import { getlowerCaseFirstLetter } from '../../utils/utils';
 import CustomOption from './CustomOption';
 
-type Status = {
+type StatusProps = {
   label: string;
-  status: string;
+  status: Status;
   value: string;
 };
 
-const StatusOptions = (props: OptionProps<Status>) => {
+const StatusOptions = (props: OptionProps<StatusProps>) => {
   const { language } = useLanguage();
 
   return (
@@ -17,12 +17,10 @@ const StatusOptions = (props: OptionProps<Status>) => {
       {...props}
       render={(data) => (
         <>
-          <span
-            className={`color-item  status-option ${data.status.toLowerCase()}`}
-          >
-            {getlowerCaseFirstLetter(data.status, language).substring(0, 1)}
+          <span>{data.label}</span>{' '}
+          <span className="text-italic">
+            {data.status !== 'Published' && `(${language.notPublished})`}
           </span>
-          <span>{data.label}</span>
         </>
       )}
     />
