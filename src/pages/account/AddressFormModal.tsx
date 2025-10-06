@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import type {
   Address,
   AddressInput,
 } from '../../app/api/apiTypes/shopApiTypes';
+import { useAppDispatch } from '../../app/hooks';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Input from '../../components/formElements/Input';
 import validateAddress from '../../components/formElements/validation/validateAddress';
@@ -14,6 +15,7 @@ import {
 } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
 import useLanguage from '../../features/language/useLanguage';
+import { closeModal } from '../../features/modalSlice';
 import {
   useAddAddressMutation,
   useUpdateAddressMutation,
@@ -33,13 +35,11 @@ type AddressFormModalProps = {
   triggerModalDisabled?: boolean;
 };
 
-type AddressFieldListProps = {
+const addressInputList: {
   name: keyof Address;
   required?: boolean;
   type?: InputType;
-};
-
-const addressInputList: AddressFieldListProps[] = [
+}[] = [
   { name: 'name' },
   { name: 'street', required: true },
   { name: 'zipCode', required: true, type: 'number' },
@@ -58,6 +58,7 @@ const AddressFormModal = ({
 }: AddressFormModalProps) => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
+  const dispatch = useAppDispatch();
 
   const initialState: AddressInput = {
     name: address?.name || username,
@@ -78,41 +79,48 @@ const AddressFormModal = ({
   const [updateAddress, { isLoading }] = useUpdateAddressMutation();
   const [addAddress, { isLoading: addAddressIsLoading }] =
     useAddAddressMutation();
+  const [resultSuccess, setResultSuccess] = useState<boolean | null>(null);
 
   const updatedAddress = id ? { ...values, id } : { ...values };
-  const [resultSuccess, setResultSuccess] = useState<boolean | null>(null);
 
   async function handleSubmitAddress() {
     try {
       if (id) {
-        await updateAddress({
-          address: updatedAddress,
-        }).unwrap();
+        await updateAddress({ address: updatedAddress }).unwrap();
       } else {
-        await addAddress({
-          address: updatedAddress,
-        }).unwrap();
+        await addAddress({ address: updatedAddress }).unwrap();
       }
 
-      onAddMessagePopup({
-        message: popupMessage,
-      });
+      onAddMessagePopup({ message: popupMessage });
       setResultSuccess(true);
       onClearAllValues();
+
+      // only close modal when success
+      dispatch(closeModal());
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
       setResultSuccess(false);
+      // do not close modal on error
     }
   }
 
-  const primaryActionBtn: PrimaryActionBtnProps = {
-    onSubmit,
-    buttonType: BtnType.Submit,
-    label: primaryActionBtnLabel,
-    disabled: isLoading || addAddressIsLoading,
-    showBtnLoader: isLoading || addAddressIsLoading,
-    resultSuccess,
-  };
+  const primaryActionBtn = useMemo<PrimaryActionBtnProps>(
+    () => ({
+      onSubmit,
+      buttonType: BtnType.Submit,
+      label: primaryActionBtnLabel,
+      disabled: isLoading || addAddressIsLoading,
+      showBtnLoader: isLoading || addAddressIsLoading,
+      resultSuccess,
+    }),
+    [
+      onSubmit,
+      primaryActionBtnLabel,
+      isLoading,
+      addAddressIsLoading,
+      resultSuccess,
+    ],
+  );
 
   const secondaryActionBtn: SecondaryActionBtnProps = {
     label: language.cancel,

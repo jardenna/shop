@@ -1,4 +1,4 @@
-import { useEffect, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import useLanguage from '../../features/language/useLanguage';
 import { selectModalId } from '../../features/modalSlice';
@@ -71,68 +71,18 @@ const Modal = ({
 
   useClickOutside(popupRef, () => {
     closeModalAnimated();
-    if (onClearAllValues) {
-      onClearAllValues();
-    }
+    onClearAllValues?.();
   }, [popupRef]);
-
-  // Auto-close if the form reports success
-  useEffect(() => {
-    if (primaryActionBtn.resultSuccess && (modalId === id || !modalId)) {
-      closeModalAnimated();
-      if (onClearAllValues) {
-        onClearAllValues();
-      }
-    }
-  }, [primaryActionBtn.resultSuccess, closeModalAnimated, onClearAllValues]);
 
   if (modalId !== id || !modalId) {
     return null;
   }
+
   const handlePrimaryClick = () => {
     if (primaryActionBtn.onClick) {
       primaryActionBtn.onClick();
     }
   };
-
-  const ModalContent = (
-    <article>
-      <ModalHeader
-        modalHeadertext={modalHeaderText}
-        onCloseModal={closeModalAnimated}
-        showCloseIcon={showCloseIcon}
-        ariaLabel={language.dialog}
-      />
-      {/* Is modal body a form? */}
-      {primaryActionBtn.buttonType === BtnType.Submit ? (
-        <form
-          className="modal-form modal-content"
-          onSubmit={primaryActionBtn.onSubmit}
-        >
-          {children}
-          <ModalFooter
-            primaryActionBtn={primaryActionBtn}
-            secondaryActionBtn={secondaryActionBtn}
-            onCloseModal={closeModalAnimated}
-            onPrimaryClick={handlePrimaryClick}
-            ariaLabel={language.dialog}
-          />
-        </form>
-      ) : (
-        <>
-          <div className="modal-content">{children}</div>
-          <ModalFooter
-            primaryActionBtn={primaryActionBtn}
-            secondaryActionBtn={secondaryActionBtn}
-            onCloseModal={closeModalAnimated}
-            onPrimaryClick={handlePrimaryClick}
-            ariaLabel={language.dialog}
-          />
-        </>
-      )}
-      {modalInfo && modalInfo}
-    </article>
-  );
 
   return (
     <Portal portalId="modal">
@@ -141,7 +91,42 @@ const Modal = ({
         className={`modal modal-${modalSize} ${className} ${popupClass} animate-top-center`}
         role={isAlert ? PopupRole.Alert : undefined}
       >
-        {ModalContent}
+        <article>
+          <ModalHeader
+            modalHeadertext={modalHeaderText}
+            onCloseModal={closeModalAnimated}
+            showCloseIcon={showCloseIcon}
+            ariaLabel={language.dialog}
+          />
+          {/* Is modal body a form? */}
+          {primaryActionBtn.buttonType === BtnType.Submit ? (
+            <form
+              className="modal-form modal-content"
+              onSubmit={primaryActionBtn.onSubmit}
+            >
+              {children}
+              <ModalFooter
+                primaryActionBtn={primaryActionBtn}
+                secondaryActionBtn={secondaryActionBtn}
+                onCloseModal={closeModalAnimated}
+                onPrimaryClick={handlePrimaryClick}
+                ariaLabel={language.dialog}
+              />
+            </form>
+          ) : (
+            <>
+              <div className="modal-content">{children}</div>
+              <ModalFooter
+                primaryActionBtn={primaryActionBtn}
+                secondaryActionBtn={secondaryActionBtn}
+                onCloseModal={closeModalAnimated}
+                onPrimaryClick={handlePrimaryClick}
+                ariaLabel={language.dialog}
+              />
+            </>
+          )}
+          {modalInfo && modalInfo}
+        </article>
       </dialog>
       <Overlay />
     </Portal>
