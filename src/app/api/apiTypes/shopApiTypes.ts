@@ -74,7 +74,7 @@ export type PreferredFashion =
   | 'kidsFashion'
   | 'noPreference';
 
-export type BaseAddress = {
+type BaseAddress = {
   city: string;
   street: string;
   zipCode: string;
@@ -91,7 +91,11 @@ export type AddressInput = BaseAddress & {
 };
 
 export type AddAddressRequest = {
-  addresses: Address;
+  address: AddressInput;
+};
+
+export type DeleteAddressRequest = {
+  address: string;
 };
 
 export type UpdateAddressRequest = { address: AddressInput };

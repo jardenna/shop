@@ -55,7 +55,7 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
     phoneNo,
     dateOfBirth,
     preferredFashion,
-    addresses,
+    address,
   } = req.body;
 
   const user = await User.findById(req.user._id);
@@ -97,10 +97,10 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
     }
 
     // Addresses
-    if (addresses) {
-      // Delete address
-      if (typeof addresses === 'string') {
-        const existing = user.addresses.id(addresses);
+    if (address) {
+      // Delete
+      if (typeof address === 'string') {
+        const existing = user.addresses.id(address);
         if (!existing) {
           return res
             .status(404)
@@ -108,23 +108,23 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
         }
         existing.deleteOne();
       }
-      // Update address
-      else if (addresses.id) {
-        const existing = user.addresses.id(addresses.id);
+      // Update
+      else if (address.id) {
+        const existing = user.addresses.id(address.id);
         if (!existing) {
           return res
             .status(404)
             .json({ message: t('noAddressData', req.lang) });
         }
-        existing.name = addresses.name ?? existing.name;
-        existing.street = addresses.street ?? existing.street;
-        existing.zipCode = addresses.zipCode ?? existing.zipCode;
-        existing.city = addresses.city ?? existing.city;
-        existing.country = addresses.country ?? existing.country;
+        existing.name = address.name ?? existing.name;
+        existing.street = address.street ?? existing.street;
+        existing.zipCode = address.zipCode ?? existing.zipCode;
+        existing.city = address.city ?? existing.city;
+        existing.country = address.country ?? existing.country;
       }
-      // Add new address
+      // Add new
       else {
-        const error = validateCreateAddress(addresses);
+        const error = validateCreateAddress(address);
         if (error) {
           return res.status(400).json({ message: error });
         }
@@ -136,7 +136,7 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
           });
         }
 
-        user.addresses.push(user.addresses.create(addresses));
+        user.addresses.push(user.addresses.create(address));
       }
     }
 

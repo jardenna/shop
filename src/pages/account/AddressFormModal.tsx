@@ -87,7 +87,7 @@ const AddressFormModal = ({
         }).unwrap();
       } else {
         await addAddress({
-          addresses: updatedAddress,
+          address: updatedAddress,
         }).unwrap();
       }
 
@@ -99,15 +99,12 @@ const AddressFormModal = ({
     }
   }
 
-  const formHasError = Object.keys(errors).length !== 0;
-
   const primaryActionBtn: PrimaryActionBtnProps = {
     onSubmit,
     buttonType: BtnType.Submit,
     label: primaryActionBtnLabel,
     disabled: isLoading || addAddressIsLoading,
     showBtnLoader: isLoading || addAddressIsLoading,
-    closeOnClick: formHasError,
   };
 
   const secondaryActionBtn: SecondaryActionBtnProps = {

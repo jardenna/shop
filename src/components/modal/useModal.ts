@@ -36,23 +36,28 @@ const useModal = (modalId: string | null) => {
 
   // Make background inert (unfocusable and non-interactable) while modal is open
   useEffect(() => {
-    const root = document.getElementById('root'); // main app wrapper
+    const root = document.getElementById('root');
     if (!root) {
       return;
     }
 
+    const children = Array.from(root.children);
+
     if (modalId) {
-      Array.from(root.children).forEach((child) => {
+      children.forEach((child) => {
         if (child !== popupRef.current) {
           child.setAttribute('inert', '');
         }
       });
-    } else {
-      Array.from(root.children).forEach((child) => {
+    }
+
+    return () => {
+      // Always remove inert when effect cleans up
+      children.forEach((child) => {
         child.removeAttribute('inert');
       });
-    }
-  }, [modalId, popupRef]);
+    };
+  }, [modalId, popupRef.current]);
 
   // Trap focus inside modal (keyboard users cannot tab out)
   useTrapFocus({ id: modalId, popupRef });
