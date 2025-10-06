@@ -69,7 +69,7 @@ const AddressFormModal = ({
 
   const { values, onChange, onSubmit, errors } = useFormValidation({
     initialState,
-    callback: handleUpdateAddress,
+    callback: handleSubmitAddress,
     validate: validateAddress,
   });
 
@@ -79,7 +79,7 @@ const AddressFormModal = ({
 
   const updatedAddress = id ? { ...values, id } : { ...values };
 
-  async function handleUpdateAddress() {
+  async function handleSubmitAddress() {
     try {
       if (id) {
         await updateAddress({

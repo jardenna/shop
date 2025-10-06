@@ -19,6 +19,7 @@ const CreateCategoryPage = () => {
         selectedCategory={null}
         id={null}
         allowedUpdateCategory={allowedUpdateCategory}
+        popupMessage={language.categoryCreated}
       />
     </AdminPageContainer>
   );

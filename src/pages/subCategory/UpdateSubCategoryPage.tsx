@@ -31,6 +31,7 @@ const UpdateSubCategoryPage = () => {
             selectedCategory={category}
             id={params.id || ''}
             parentCategories={allCategories.categories}
+            popupMessage={language.categoryUpdated}
           />
         </AdminPageContainer>
       )}

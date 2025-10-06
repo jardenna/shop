@@ -27,6 +27,7 @@ import {
 type SubCategoryFormProps = {
   id: string | null;
   parentCategories: Category[];
+  popupMessage: string;
   selectedCategory: SubCategoryResponse | null;
 };
 
@@ -34,6 +35,7 @@ const SubCategoryForm = ({
   selectedCategory,
   id,
   parentCategories,
+  popupMessage,
 }: SubCategoryFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
@@ -50,7 +52,7 @@ const SubCategoryForm = ({
   // Options and initial state
   const parentCategoriesOptions = parentCategories.map(
     ({ categoryName, id, categoryStatus }) => ({
-      label: categoryName,
+      label: getlowerCaseFirstLetter(categoryName, language) || categoryName,
       value: id,
       status: categoryStatus,
     }),
@@ -109,11 +111,13 @@ const SubCategoryForm = ({
           ...values,
           scheduledDate: selectedDate,
         }).unwrap();
-
-        onAddMessagePopup({
-          message: language.categoryCreated,
-        });
       }
+
+      onAddMessagePopup({
+        message: popupMessage,
+        withDelay: true,
+      });
+
       navigate(AdminPath.AdminSubCategories);
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
@@ -131,7 +135,9 @@ const SubCategoryForm = ({
         <Selectbox
           id="category"
           defaultValue={{
-            label: values.category,
+            label: values.category
+              ? getlowerCaseFirstLetter(values.category, language)
+              : values.category,
             value: values.category,
           }}
           options={parentCategoriesOptions}

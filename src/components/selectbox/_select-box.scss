@@ -92,16 +92,4 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-  &.published {
-    background-color: $color-badge-default;
-  }
-
-  &.scheduled {
-    background-color: $color-badge-scheduled;
-  }
-
-  &.inactive {
-    background-color: $color-badge-inactive;
-  }
 }

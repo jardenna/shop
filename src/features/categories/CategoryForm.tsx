@@ -19,6 +19,7 @@ import {
 
 type CategoryFormProps = {
   id: string | null;
+  popupMessage: string;
   selectedCategory: CreateCategoryRequest | null;
   allowedUpdateCategory?: boolean;
 };
@@ -27,6 +28,7 @@ const CategoryForm = ({
   selectedCategory,
   id,
   allowedUpdateCategory,
+  popupMessage,
 }: CategoryFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
@@ -73,21 +75,16 @@ const CategoryForm = ({
           id,
           category: { ...values, scheduledDate: selectedDate },
         }).unwrap();
-
-        onAddMessagePopup({
-          message: language.categoryUpdated,
-        });
       } else {
         await createCategory({
           ...values,
           scheduledDate: selectedDate,
         }).unwrap();
-
-        onAddMessagePopup({
-          message: language.categoryCreated,
-        });
       }
-
+      onAddMessagePopup({
+        message: popupMessage,
+        withDelay: true,
+      });
       navigate(AdminPath.AdminCategories);
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
