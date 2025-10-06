@@ -24,6 +24,7 @@ import { AdminPath } from '../../../layout/nav/enums';
 import variables from '../../../scss/variables.module.scss';
 import type { OptionType } from '../../../types/types';
 import { getColorOptions } from '../../../utils/colorUtils';
+import handleApiError from '../../../utils/handleApiError';
 import { getlowerCaseFirstLetter, maxFiles } from '../../../utils/utils';
 import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
 import useCurrency from '../../currency/useCurrency';
@@ -35,7 +36,6 @@ import {
 } from '../productApiSlice';
 import FormCard from './FormCard';
 import ImageUpload from './ImageUpload';
-import handleApiError from '../../../utils/handleApiError';
 
 type ProductFormProps = {
   allowedSizes: string[];
@@ -199,21 +199,17 @@ const ProductForm = ({
           id,
           product: productData,
         }).unwrap();
-
-        onAddMessagePopup({
-          messagePopupType: 'success',
-          message: language.productUpdated,
-        });
       } else {
         await createProduct(productData).unwrap();
-        onAddMessagePopup({
-          messagePopupType: 'success',
-          message: language.productCreated,
-        });
       }
 
+      onAddMessagePopup({
+        message: id ? language.productUpdated : language.productCreated,
+        withDelay: true,
+      });
+
       navigate(AdminPath.AdminProducts);
-    } catch (error: any) {
+    } catch (error) {
       handleApiError(error, onAddMessagePopup);
     }
   }

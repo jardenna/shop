@@ -20,7 +20,7 @@ const DropdownList = ({ dropdownList, defaultIndex }: DropdownListProps) => {
         ({ label, onClick, icon, btnVariant, disabled, isActive }, index) => (
           <li key={label} className="dropdown-item">
             <Button
-              variant={btnVariant || BtnVariant.WidthIcon}
+              variant={btnVariant || BtnVariant.Ghost}
               className={isActive ? 'active' : ''}
               onClick={onClick}
               disabled={disabled}

@@ -12,12 +12,15 @@ export enum ValidationMessage {
   PasswordUppercase = 'passwordUppercase',
   PleaseEnter = 'pleaseEnter',
   PleaseEnterCategoryName = 'pleaseEnterCategoryName',
+  PleaseEnterCity = 'pleaseEnterCity',
   PleaseEnterEmail = 'noEmail',
   PleaseEnterName = 'pleaseEnterName',
   PleaseEnterPassword = 'pleaseEnterPassword',
+  PleaseEnterStreet = 'pleaseEnterStreet',
   PleaseEnterSubCategoryName = 'pleaseEnterSubCategoryName',
   PleaseEnterTranslationKey = 'pleaseEnterTranslationKey',
   PleaseEnterValidEmail = 'pleaseEnterValidEmail',
+  PleaseEnterZipcode = 'pleaseEnterZipcode',
   PleaseSelectParentCategory = 'pleaseSelectParentCategory',
   PriceRequired = 'priceRequired',
   ProductDescriptionRequired = 'productDescriptionRequired',
@@ -58,7 +61,6 @@ export enum BtnVariant {
   Ghost = 'ghost',
   Primary = 'primary',
   Secondary = 'secondary',
-  WidthIcon = 'with-icon',
 }
 
 export enum BtnType {

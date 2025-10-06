@@ -1,8 +1,9 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import type {
+  UpdateAddressRequest,
   UserProfileRequest,
   UserProfileResponse,
-} from '../../app/api/apiTypes/sharedApiTypes';
+} from '../../app/api/apiTypes/shopApiTypes';
 import { profileUrl } from '../../app/endpoints';
 
 export const profileApiSlice = apiSlice.injectEndpoints({
@@ -15,15 +16,44 @@ export const profileApiSlice = apiSlice.injectEndpoints({
       UserProfileResponse,
       UserProfileRequest
     >({
-      query: (params) => ({
+      query: (address) => ({
         url: profileUrl,
         method: 'PUT',
-        body: params,
+        body: address,
+      }),
+      invalidatesTags: [TagTypesEnum.Profile],
+    }),
+    addAddress: builder.mutation<UserProfileResponse, any>({
+      query: (address) => ({
+        url: profileUrl,
+        method: 'put',
+        body: address,
+      }),
+      invalidatesTags: [TagTypesEnum.Profile],
+    }),
+    updateAddress: builder.mutation<UserProfileResponse, UpdateAddressRequest>({
+      query: (address) => ({
+        url: profileUrl,
+        method: 'PUT',
+        body: address,
+      }),
+      invalidatesTags: [TagTypesEnum.Profile],
+    }),
+    deleteAddress: builder.mutation<any, any>({
+      query: (id) => ({
+        url: profileUrl,
+        method: 'PUT',
+        body: id,
       }),
       invalidatesTags: [TagTypesEnum.Profile],
     }),
   }),
 });
 
-export const { useGetUserProfileQuery, useUpdateUserProfileMutation } =
-  profileApiSlice;
+export const {
+  useGetUserProfileQuery,
+  useUpdateUserProfileMutation,
+  useUpdateAddressMutation,
+  useDeleteAddressMutation,
+  useAddAddressMutation,
+} = profileApiSlice;

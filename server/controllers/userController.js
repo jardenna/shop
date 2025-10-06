@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import asyncHandler from '../middleware/asyncHandler.js';
 import User from '../models/userModel.js';
-import formatMongoData from '../utils/formatMongoData.js';
+import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 import { validateCreateAddress } from '../utils/validateAddress.js';
 import { validateEmail, validatePassword } from '../utils/validateAuth.js';
@@ -29,7 +29,9 @@ const getAllUsers = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Private for logged in user
 const getCurrentUserProfile = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.user?._id).select('-isAdmin -role');
+  const user = await User.findById(req.user?._id).select(
+    '-isAdmin -role -password',
+  );
 
   if (user) {
     res.status(200).json(user);
@@ -96,61 +98,49 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
 
     // Addresses
     if (addresses) {
-      // Add new addresses
-      if (addresses.add?.length) {
-        if (addresses.add.length > 1) {
-          return res.status(400).json({
-            message: 'You can only add one address at a time',
-          });
-        }
-
-        const address = addresses.add[0];
-        const error = validateCreateAddress(address);
-
-        if (error) {
-          return res.status(400).json({
-            message: error,
-          });
-        }
-
-        user.addresses.push(user.addresses.create(address));
-      }
-
-      // Update existing addresses
-      if (addresses.update?.length) {
-        let found = false;
-
-        addresses.update.forEach(({ _id, street, zipCode, city, country }) => {
-          const existing = user.addresses.id(_id);
-          if (existing) {
-            found = true;
-            existing.street = street ?? existing.street;
-            existing.zipCode = zipCode ?? existing.zipCode;
-            existing.city = city ?? existing.city;
-            existing.country = country ?? existing.country;
-          }
-        });
-
-        if (!found) {
+      // Delete address
+      if (typeof addresses === 'string') {
+        const existing = user.addresses.id(addresses);
+        if (!existing) {
           return res
             .status(404)
             .json({ message: t('noAddressData', req.lang) });
         }
+        existing.deleteOne();
       }
+      // Update address
+      else if (addresses.id) {
+        const existing = user.addresses.id(addresses.id);
+        if (!existing) {
+          return res
+            .status(404)
+            .json({ message: t('noAddressData', req.lang) });
+        }
+        existing.name = addresses.name ?? existing.name;
+        existing.street = addresses.street ?? existing.street;
+        existing.zipCode = addresses.zipCode ?? existing.zipCode;
+        existing.city = addresses.city ?? existing.city;
+        existing.country = addresses.country ?? existing.country;
+      }
+      // Add new address
+      else {
+        const error = validateCreateAddress(addresses);
+        if (error) {
+          return res.status(400).json({ message: error });
+        }
 
-      // Remove addresses
-      if (addresses.remove?.length) {
-        addresses.remove.forEach((addressId) => {
-          const existing = user.addresses.id(addressId);
-          if (existing) {
-            existing.deleteOne();
-          }
-        });
+        if (user.addresses.length >= 4) {
+          return res.status(400).json({
+            success: false,
+            message: 'You may have up to 4 addresses',
+          });
+        }
+
+        user.addresses.push(user.addresses.create(addresses));
       }
     }
 
     const updatedUser = await user.save();
-
     res.status(200).json(updatedUser);
   } else {
     return res.status(404).json({
@@ -215,7 +205,7 @@ const getUserById = asyncHandler(async (req, res) => {
 // @access  Private
 const updateUserById = asyncHandler(async (req, res) => {
   const { username, email, role } = req.body;
-  const user = await User.findById(req.params.id);
+  const user = await User.findById(req.params.id).select('-password');
 
   if (user) {
     user.username = username || user.username;

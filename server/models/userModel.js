@@ -1,18 +1,45 @@
-import mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
 import {
   ALLOWED_FASHION_PREFERENCES,
   ALLOWED_ROLES,
 } from '../config/constants.js';
-const { ObjectId } = mongoose.Schema;
+import { renameIdTransform } from '../utils/formatMongoData.js';
+const { ObjectId } = Schema;
 
-const AddressSchema = new mongoose.Schema({
-  street: { type: String, required: true },
-  zipCode: { type: String, required: true },
-  city: { type: String, required: true },
-  country: { type: String, default: 'Denmark' },
-});
+const AddressSchema = new Schema(
+  {
+    name: {
+      type: String,
+    },
+    street: {
+      type: String,
+      required: true,
+    },
+    zipCode: {
+      type: String,
+      required: true,
+    },
+    city: {
+      type: String,
+      required: true,
+    },
+    country: {
+      type: String,
+      default: 'Danmark',
+    },
+  },
+  {
+    toJSON: {
+      virtuals: true,
+      transform: renameIdTransform,
+    },
+    toObject: {
+      virtuals: true,
+    },
+  },
+);
 
-const UserSchema = new mongoose.Schema(
+const UserSchema = new Schema(
   {
     username: {
       type: String,
@@ -28,7 +55,10 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    addresses: [AddressSchema],
+    addresses: {
+      type: [AddressSchema],
+      default: [],
+    },
     phoneNo: {
       type: String,
     },
@@ -41,13 +71,13 @@ const UserSchema = new mongoose.Schema(
       default: false,
     },
     preferredFashion: {
-      enum: ALLOWED_FASHION_PREFERENCES,
       type: String,
+      enum: ALLOWED_FASHION_PREFERENCES,
       default: 'noPreference',
     },
     role: {
-      enum: ALLOWED_ROLES,
       type: String,
+      enum: ALLOWED_ROLES,
       default: 'User',
     },
     favorites: [
@@ -61,16 +91,14 @@ const UserSchema = new mongoose.Schema(
     timestamps: true,
     toJSON: {
       virtuals: true,
-      versionKey: false,
-      transform: (_, ret) => {
-        ret.id = ret._id; // rename _id to id
-        delete ret._id; // remove _id
-      },
+      transform: renameIdTransform,
     },
-    toObject: { virtuals: true },
+    toObject: {
+      virtuals: true,
+    },
   },
 );
 
-const User = mongoose.model('User', UserSchema);
+const User = model('User', UserSchema);
 
 export default User;

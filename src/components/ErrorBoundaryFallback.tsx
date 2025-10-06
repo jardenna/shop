@@ -2,7 +2,7 @@ import useLanguage from '../features/language/useLanguage';
 import ErrorContent from './ErrorContent';
 
 type FallbackProps = {
-  error?: any; // <- her modtager vi fejlen
+  error?: any;
   resetErrorBoundary: () => void;
 };
 

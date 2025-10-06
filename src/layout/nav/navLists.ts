@@ -1,8 +1,8 @@
 import { IconName } from '../../types/enums';
 import { AdminPath, LinkText, ShopPath } from './enums';
-import type { BaseNav, NavItemsProps } from './Nav';
+import type { BaseNav, NavListProps } from './Nav';
 
-const navList: NavItemsProps[] = [
+const navList: NavListProps[] = [
   {
     path: ShopPath.Collection,
     linkText: LinkText.Collection,

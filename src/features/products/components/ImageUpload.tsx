@@ -34,7 +34,7 @@ const ImageUpload = ({
   const inputInfoText = `${language.filesSupported}  ${allowedImages} | ${language.maximumFileSize} 1MB`;
 
   // Error text for too many img files
-  const errorText = `${language.maximum}  ${maxFiles} ${language.filesCanBeUploaded} ${language.pleaseRemoveOneOrMore}`;
+  const errorText = `${language.maximum} ${maxFiles} ${language.filesCanBeUploaded} ${language.pleaseRemoveOneOrMore}`;
 
   return (
     <div>

@@ -12,4 +12,10 @@ const formatMongoData = (data) => {
   return data; // Return as-is if it's not an object or array
 };
 
-export default formatMongoData;
+const renameIdTransform = (_, ret) => {
+  ret.id = ret._id; // add id
+  delete ret._id; // remove _id
+  return ret;
+};
+
+export { formatMongoData, renameIdTransform };

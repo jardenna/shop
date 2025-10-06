@@ -1,12 +1,8 @@
-import { IconName } from '../types/enums';
+import type { BaseIconBtn } from './IconBtn';
 import Icon from './icons/Icon';
 import VisuallyHidden from './VisuallyHidden';
 
-type IconContentProps = {
-  ariaLabel: string;
-  iconName: IconName;
-  title: string;
-  className?: string;
+type IconContentProps = BaseIconBtn & {
   fill?: string;
   size?: string;
 };
@@ -18,6 +14,7 @@ const IconContent = ({
   size,
   fill,
   className,
+  showLabel,
 }: IconContentProps) => (
   <>
     <Icon
@@ -27,7 +24,7 @@ const IconContent = ({
       fill={fill}
       className={className}
     />
-    {ariaLabel && <VisuallyHidden>{ariaLabel}</VisuallyHidden>}
+    {showLabel ? ariaLabel : <VisuallyHidden>{ariaLabel}</VisuallyHidden>}
   </>
 );
 

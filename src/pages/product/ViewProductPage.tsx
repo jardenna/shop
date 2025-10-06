@@ -41,8 +41,8 @@ const ViewProductPage = () => {
       if (result.success) {
         navigate(AdminPath.AdminProducts);
         onAddMessagePopup({
-          messagePopupType: 'success',
           message: language.productDeleted,
+          withDelay: true,
         });
       } else {
         onAddMessagePopup({
@@ -51,7 +51,7 @@ const ViewProductPage = () => {
           componentType: 'notification',
         });
       }
-    } catch (error: any) {
+    } catch (error) {
       handleApiError(error, onAddMessagePopup);
     }
   };

@@ -1,7 +1,8 @@
-import {
+import type {
+  BaseProfile,
   PreferredFashion,
   UserProfileResponse,
-} from '../../app/api/apiTypes/sharedApiTypes';
+} from '../../app/api/apiTypes/shopApiTypes';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Input from '../../components/formElements/Input';
 import RadioButtonList from '../../components/formElements/RadioButtonList';
@@ -15,16 +16,17 @@ import useLanguage from '../../features/language/useLanguage';
 import { useUpdateUserProfileMutation } from '../../features/profile/profileApiSlice';
 import useFormValidation from '../../hooks/useFormValidation';
 import { BtnType, SizeVariant } from '../../types/enums';
-import { OptionType } from '../../types/types';
+import type { OptionType } from '../../types/types';
 import handleApiError from '../../utils/handleApiError';
+import type { ProfileFieldListProps } from './MyAccountPage';
 
 type AccountFormProps = {
   profile: UserProfileResponse;
+  profileFieldList: ProfileFieldListProps[];
 };
 
-const AccountForm = ({ profile }: AccountFormProps) => {
+const AccountForm = ({ profile, profileFieldList }: AccountFormProps) => {
   const { language } = useLanguage();
-
   const { onAddMessagePopup } = useMessagePopup();
 
   const preferredFashion: PreferredFashion[] = [
@@ -41,10 +43,10 @@ const AccountForm = ({ profile }: AccountFormProps) => {
     }),
   );
 
-  const initialState = {
+  const initialState: BaseProfile = {
     username: profile.username,
     email: profile.email,
-    phoneNo: profile.phoneNo ?? '',
+    phoneNo: profile.phoneNo,
     dateOfBirth: profile.dateOfBirth ? profile.dateOfBirth.split('T')[0] : '',
     preferredFashion: profile.preferredFashion,
   };
@@ -54,13 +56,12 @@ const AccountForm = ({ profile }: AccountFormProps) => {
     callback: handleSubmit,
   });
 
-  const [updateProfile] = useUpdateUserProfileMutation();
+  const [updateProfile, { isLoading }] = useUpdateUserProfileMutation();
 
   async function handleSubmit() {
     try {
       await updateProfile(values).unwrap();
       onAddMessagePopup({
-        messagePopupType: 'success',
         message: language.yourDetailsUpdated,
       });
     } catch (error) {
@@ -72,7 +73,10 @@ const AccountForm = ({ profile }: AccountFormProps) => {
     onSubmit,
     label: language.update,
     buttonType: BtnType.Submit,
+    disabled: isLoading,
+    showBtnLoader: isLoading,
   };
+
   const secondaryActionBtn: SecondaryActionBtnProps = {
     label: language.cancel,
   };
@@ -88,37 +92,17 @@ const AccountForm = ({ profile }: AccountFormProps) => {
       className="my-account"
     >
       <FieldSet legendText={language.userInfo} hideLegendText>
-        <Input
-          value={values.username}
-          name="username"
-          id="username"
-          labelText={language.name}
-          onChange={onChange}
-        />
-        <Input
-          value={values.phoneNo}
-          name="phoneNo"
-          id="phoneNo"
-          labelText={language.phone}
-          onChange={onChange}
-          type="number"
-        />
-        <Input
-          value={values.email}
-          name="email"
-          id="email"
-          labelText={language.email}
-          onChange={onChange}
-          type="email"
-        />
-        <Input
-          value={values.dateOfBirth}
-          name="dateOfBirth"
-          id="dateOfBirth"
-          labelText={language.dateOfBirth}
-          onChange={onChange}
-          type="date"
-        />
+        {profileFieldList.map(({ name, label, type }) => (
+          <Input
+            key={name}
+            value={values[name]}
+            name={name}
+            id={name}
+            labelText={language[label]}
+            onChange={onChange}
+            type={type}
+          />
+        ))}
       </FieldSet>
       <FieldSet legendText={language.fashionPreference}>
         <RadioButtonList

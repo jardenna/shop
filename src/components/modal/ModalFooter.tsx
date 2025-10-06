@@ -5,7 +5,7 @@ import type { PrimaryActionBtnProps, SecondaryActionBtnProps } from './Modal';
 
 type ModalFooterProps = {
   ariaLabel: string;
-  primaryActionBtn: PrimaryActionBtnProps & { closeOnClick?: boolean }; // new prop
+  primaryActionBtn: PrimaryActionBtnProps & { closeOnClick?: boolean };
   secondaryActionBtn?: SecondaryActionBtnProps;
   onCloseModal: () => void;
   onPrimaryClick?: () => void;
@@ -31,6 +31,7 @@ const ModalFooter = ({
       onClick={onPrimaryClick}
       type={primaryActionBtn.buttonType}
       disabled={primaryActionBtn.disabled}
+      showBtnLoader={primaryActionBtn.showBtnLoader}
       className={primaryActionBtn.className}
       variant={primaryActionBtn.variant || BtnVariant.Primary}
     >
@@ -38,4 +39,5 @@ const ModalFooter = ({
     </Button>
   </LayoutElement>
 );
+
 export default ModalFooter;

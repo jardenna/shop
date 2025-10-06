@@ -1,11 +1,11 @@
-import mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
 import { INACTIVE, STATUS } from '../config/constants.js';
 import SubCategory from './subCategoryModel.js';
 
-const { ObjectId } = mongoose.Schema;
+const { ObjectId } = Schema;
 
 // Review schema
-const reviewSchema = new mongoose.Schema(
+const reviewSchema = new Schema(
   {
     name: { type: String, required: true },
     rating: { type: Number, required: true },
@@ -20,7 +20,7 @@ const reviewSchema = new mongoose.Schema(
 );
 
 // Product schema
-const productSchema = new mongoose.Schema(
+const productSchema = new Schema(
   {
     productName: { type: String, required: true },
     images: { type: [String], required: true },
@@ -96,5 +96,5 @@ productSchema.pre('validate', async function (next) {
   }
 });
 
-const Product = mongoose.model('Product', productSchema);
+const Product = model('Product', productSchema);
 export default Product;

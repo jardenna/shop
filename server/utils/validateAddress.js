@@ -1,17 +1,14 @@
 const validateCreateAddress = (address) => {
   switch (true) {
     case !address.street:
-      return 'Please insert street';
+      return 'Please enter street';
     case !address.zipCode:
-      return 'Please insert zipcode';
+      return 'Please enter zipcode';
     case !address.city:
-      return 'Please insert city';
+      return 'Please enter city';
     default:
       return null; // No errors
   }
 };
 
 export { validateCreateAddress };
-
-// update address
-// skal være et id som matcher users address _id

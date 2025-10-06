@@ -13,9 +13,15 @@ type SubNavProps = {
   heading: string;
   isSubNavShown: boolean;
   subNavList: SubBaseNav[];
+  ariaControls?: string;
 };
 
-const SubNav = ({ subNavList, heading, isSubNavShown }: SubNavProps) => {
+const SubNav = ({
+  subNavList,
+  heading,
+  isSubNavShown,
+  ariaControls,
+}: SubNavProps) => {
   const { category } = useParams();
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
@@ -34,7 +40,10 @@ const SubNav = ({ subNavList, heading, isSubNavShown }: SubNavProps) => {
   };
 
   return (
-    <div className={`sub-nav-container ${isSubNavShown ? 'shown' : ''}`}>
+    <div
+      className={`sub-nav-container ${isSubNavShown ? 'shown' : ''}`}
+      id={ariaControls}
+    >
       {isMobileSize ? (
         subMenu && (
           <SubNavListMobile

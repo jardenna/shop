@@ -4,7 +4,7 @@ import scheduledStatusHandler from '../middleware/scheduledStatusHandler.js';
 import Category from '../models/categoryModel.js';
 import Product from '../models/productModel.js';
 import SubCategory from '../models/subCategoryModel.js';
-import formatMongoData from '../utils/formatMongoData.js';
+import { formatMongoData } from '../utils/formatMongoData.js';
 import getAllowedSizes from '../utils/getAllowedSizes.js';
 import { t } from '../utils/translator.js';
 import { updateScheduledItems } from '../utils/UpdateScheduledItemsOptions.js';
@@ -360,7 +360,7 @@ const updateSubCategory = [
 const deleteSubCategory = asyncHandler(async (req, res) => {
   const subCategoryId = req.params.id;
 
-  // Check if any products are associated with this subcategory
+  // Check if  products are associated with this subcategory
   const products = await Product.find({ subCategory: subCategoryId });
   if (products.length > 0) {
     return res.status(400).json({

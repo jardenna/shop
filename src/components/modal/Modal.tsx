@@ -19,6 +19,7 @@ export type PrimaryActionBtnProps = {
   className?: string;
   closeOnClick?: boolean;
   disabled?: boolean;
+  showBtnLoader?: boolean;
   variant?: BtnVariant;
   onClick?: () => void;
   onSubmit?: (event: FormEventType) => void;
@@ -59,16 +60,16 @@ const Modal = ({
 }: ModalProps) => {
   const { language } = useLanguage();
   const modalId = useAppSelector(selectModalId);
-  const { onClosePopup, popupRef } = useModal(modalId);
+  const { closeModalState, popupRef } = useModal(modalId);
 
-  const { onCloseModal, popupClass } = useVisibility(
+  const { closeModalAnimated, popupClass } = useVisibility(
     modalId === id,
-    onClosePopup,
+    closeModalState,
     onClearAllValues,
   );
 
   useClickOutside(popupRef, () => {
-    onCloseModal();
+    closeModalAnimated();
     if (onClearAllValues) {
       onClearAllValues();
     }
@@ -81,11 +82,11 @@ const Modal = ({
   const handlePrimaryClick = () => {
     if (primaryActionBtn.onClick) {
       primaryActionBtn.onClick();
-      onClosePopup();
+      closeModalAnimated();
     }
 
     if (primaryActionBtn.closeOnClick !== false) {
-      onCloseModal();
+      closeModalAnimated();
       if (onClearAllValues) {
         onClearAllValues();
       }
@@ -96,7 +97,7 @@ const Modal = ({
     <article>
       <ModalHeader
         modalHeadertext={modalHeaderText}
-        onCloseModal={onCloseModal}
+        onCloseModal={closeModalAnimated}
         showCloseIcon={showCloseIcon}
         ariaLabel={language.dialog}
       />
@@ -110,7 +111,7 @@ const Modal = ({
           <ModalFooter
             primaryActionBtn={primaryActionBtn}
             secondaryActionBtn={secondaryActionBtn}
-            onCloseModal={onCloseModal}
+            onCloseModal={closeModalAnimated}
             onPrimaryClick={handlePrimaryClick}
             ariaLabel={language.dialog}
           />
@@ -121,7 +122,7 @@ const Modal = ({
           <ModalFooter
             primaryActionBtn={primaryActionBtn}
             secondaryActionBtn={secondaryActionBtn}
-            onCloseModal={onCloseModal}
+            onCloseModal={closeModalAnimated}
             onPrimaryClick={handlePrimaryClick}
             ariaLabel={language.dialog}
           />

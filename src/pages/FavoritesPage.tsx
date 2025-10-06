@@ -21,9 +21,8 @@ const FavoritesPage = () => {
 
   return (
     <MainPageContainer heading={language.favorites}>
-      <article className="product-card-list favorite-list">
-        {isLoading && <SkeletonCardList count={4} />}
-
+      {isLoading && <SkeletonCardList count={4} />}
+      <article className="product-card-list">
         <ErrorBoundary
           FallbackComponent={ErrorBoundaryFallback}
           onReset={onReset}

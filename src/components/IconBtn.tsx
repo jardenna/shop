@@ -2,15 +2,19 @@ import { BtnType, BtnVariant, IconName } from '../types/enums';
 import Button from './Button';
 import IconContent from './IconContent';
 
-export type IconBtnProps = {
+export type BaseIconBtn = {
+  ariaLabel: string;
   iconName: IconName;
   title: string;
-  ariaExpanded?: boolean;
-  ariaLabel?: string;
-  btnType?: BtnType;
   className?: string;
-  disabled?: boolean;
+  showLabel?: boolean;
   size?: string;
+};
+
+type IconBtnProps = BaseIconBtn & {
+  ariaExpanded?: boolean;
+  btnType?: BtnType;
+  disabled?: boolean;
   variant?: BtnVariant;
   onClick?: () => void;
 };
@@ -26,6 +30,7 @@ const IconBtn = ({
   variant = BtnVariant.Ghost,
   size,
   disabled,
+  showLabel,
 }: IconBtnProps) => (
   <Button
     variant={variant}
@@ -38,7 +43,8 @@ const IconBtn = ({
     <IconContent
       iconName={iconName}
       title={title}
-      ariaLabel={ariaLabel || ''}
+      ariaLabel={ariaLabel}
+      showLabel={showLabel}
       size={size}
     />
   </Button>

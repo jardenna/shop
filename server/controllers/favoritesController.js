@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Product from '../models/productModel.js';
 import User from '../models/userModel.js';
-import formatMongoData from '../utils/formatMongoData.js';
+import { formatMongoData } from '../utils/formatMongoData.js';
 import { toggleItemInArray } from '../utils/toggleItemInArray.js';
 
 // @desc    Get favorite

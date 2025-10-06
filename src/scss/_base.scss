@@ -84,6 +84,14 @@ a {
   color: $color-dust-red-30;
   position: relative;
 
+  @include transition;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -9px;
+  }
+
   &:focus-visible {
     outline: 2px solid currentcolor;
   }

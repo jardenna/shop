@@ -37,8 +37,8 @@ const ViewSubCategoryPage = () => {
       if (result.success) {
         navigate(AdminPath.AdminSubCategories);
         onAddMessagePopup({
-          messagePopupType: 'success',
           message: language.categoryDeleted,
+          withDelay: true,
         });
       } else {
         onAddMessagePopup({
@@ -47,7 +47,7 @@ const ViewSubCategoryPage = () => {
           componentType: 'notification',
         });
       }
-    } catch (error: any) {
+    } catch (error) {
       handleApiError(error, onAddMessagePopup);
     }
   };

@@ -1,4 +1,5 @@
 import type { Size } from '../../../app/api/apiTypes/sharedApiTypes';
+import FieldSet from '../../../components/fieldset/FieldSet';
 import ControlGroupList from '../../../components/formElements/controlGroup/ControlGroupList';
 import Input from '../../../components/formElements/Input';
 import type { InputChangeHandler } from '../../../types/types';
@@ -24,7 +25,7 @@ const NotifyMeForm = ({
   return (
     <div className="notify">
       {sizesIsRequered ? (
-        <>
+        <FieldSet legendText={language.sizes} hideLegendText>
           <p>
             {language.missingYourSize}? {language.notifyMeMessage}.
           </p>
@@ -42,21 +43,23 @@ const NotifyMeForm = ({
               errorText: language[errors.sizes],
             }}
           />
-        </>
+        </FieldSet>
       ) : (
         <p>{language.temporarilyOutOfStockText}.</p>
       )}
-      <Input
-        name="email"
-        id="email"
-        value={values.email}
-        labelText={language.email}
-        onChange={onChange}
-        required
-        type="email"
-        autoFocus={!sizesIsRequered}
-        errorText={language[errors.email]}
-      />
+      <FieldSet legendText={language.email} hideLegendText>
+        <Input
+          name="email"
+          id="email"
+          value={values.email}
+          labelText={language.email}
+          onChange={onChange}
+          required
+          type="email"
+          autoFocus={!sizesIsRequered}
+          errorText={language[errors.email]}
+        />
+      </FieldSet>
     </div>
   );
 };

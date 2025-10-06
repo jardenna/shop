@@ -3,11 +3,16 @@ aboutUs;About us;Om os
 accessories;Accessories;Accessories
 accessoriesAndToys;Accessories & Toys;Accessories & legetøj
 account;Account;Konto
-accountAlttext;Elegant woman in a black coat and matching hat, radiating timeless style. A bold red stripe decorates the background.;Elegant kvinde i sort frakke og matchende hat, der udstråler tidløs stil. En markant rød stribe pryder baggrunden.
+accountAltText;Elegant woman in a black coat and matching hat, radiating timeless style. A bold red stripe decorates the background.;Elegant kvinde i sort frakke og matchende hat, der udstråler tidløs stil. En markant rød stribe pryder baggrunden.
 actionOnlyAllowedForAdmin;This action is only allowed for administrator;Denne handling er kun tilladt for administrator
 add;Add;Tilføj
+address;Address;Adresse
+addressCreated;Address was created;Adresse blev tilføjet
+addressUpdated;Address was updated;Adresse blev opdateret
 additionalInfo;Additional info;Supplerende information
-addressAlttext;Man in a tailored suit walking confidently down a wide, stepped staircase.;Mand i skræddersyet jakkesæt, der går selvsikkert ned ad en bred trappe.
+addOrManageAddress;Add or manage your addresses;Tilføj eller ret dine adresser
+addressAltText;Man in a tailored suit walking confidently down a wide, stepped staircase.;Mand i skræddersyet jakkesæt, der går selvsikkert ned ad en bred trappe.
+addressDeleted;Address deleted;Addresse blev slettet
 addToBag;Add to bag;Læg i indkøbskurv
 addToStock;Add to stock;Tilføj til lager
 admin;Admin;Admin
@@ -33,7 +38,7 @@ care;Care;Vaskeanvisning
 categories;Categories;Kategorier
 category;Category;Kategori
 categoryCard;Category card;Kategori card
-categoryCreated;Category created;Kategori tilføjet
+categoryCreated;Category was created;Kategori blev tilføjet
 categoryDeleted;Category deleted;Kategori blev slettet
 categoryIs;Category is;Kategori er
 categoryList;Category list;Kategori-liste
@@ -41,8 +46,9 @@ categoryName;Category name;Kategori navn
 categoryNotFound;Category not found;Kategorien findes ikke
 categoryRequired;Please select a category;Vælg venligst kategori
 categoryStatus;Category status;Kategori status
-categoryUpdated;Category updated;Kategori opdateret
+categoryUpdated;Category was updated;Kategori blev opdateret
 circleChevronRight;Circle chevron right;Circle chevron right
+city;City;By
 clearAllFilters;Clear all filters;Ryd alle filtre
 clearFilters;Clear filters;Ryd filtre
 clearSort;Clear sort;Ryd sortering
@@ -60,14 +66,17 @@ colours;Colours;Farver
 compact;Compact;Kompakt
 confirmPassword;Confirm password;Gentag adgangskode
 contact;Contact;Kontakt
+continueShopping;Continue shopping;Fortsæt med at handle
 copy;Copy;Kopi
 copyAction;Copy;Kopier
 couldNotFindInfo;Sorry, We couldn’t find the information you’re looking for;Vi kunne desværre ikke finde den information, du søger
+country;Country;Land
 countInStock;Items in stock;Antal på lager
 create;Create;Opret
 createAccount;Create account;Opret konto
 createNewAccount;Create new account;Opret en ny konto
 createdAt;Created at;Tilføjet den
+createNewAddress;Create new address;Opret ny adresse
 createNewCategory;Create new category;Opret ny kategori
 createNewProduct;Create new product;Opret nyt produkt
 createNewUser;Create new user;Opret ny bruger
@@ -81,6 +90,7 @@ date;Date;Dato
 dateOfBirth;Date of birth;Fødselsdato
 daysAgo;days ago;dage siden
 delete;Delete;Slet
+deleteAddress;Delete address;Slet adresse
 deleteCategory;Delete category;Slet kategori
 deleted;deleted;slettet
 deleteOrReassignCategory;Cannot be deleted. Category has linked products;Kan ikke slettes. Kategori har tilknyttede produkter
@@ -226,9 +236,10 @@ notVisibleInShop;is not visible in the shop until the main category is published
 noUser;User not found. Please sign up first;Bruger blev ikke fundet. Opret dig først
 numberOfReviews;Number of reviews;Antal reviews
 onlyAdminsAssignRole;Only admins can assign roles;Kun administratorer kan tildele roller
+onlyFourAddresses;You may have up to 4 addresses;Du kan højst have 4 adresser
 orange;Orange;Orange
 orders;Orders;Ordrer
-orderAlttext;Young boy in black jeans and a white T-shirt layered with a blue-checkered shirt, looking expectant.;Ung dreng i sorte jeans og hvid T-shirt kombineret med en blåternet skjorte, ser forventningsfuld ud.
+orderAltText;Young boy in black jeans and a white T-shirt layered with a blue-checkered shirt, looking expectant.;Ung dreng i sorte jeans og hvid T-shirt kombineret med en blåternet skjorte, ser forventningsfuld ud.
 outOf;out of;ud af
 outOfStock;Out of stock;Udsolgt
 page;Page;Side
@@ -251,10 +262,13 @@ phoneInfo;We’ll only contact you when needed, for instance, to update you on y
 pink;Pink;Pink
 pleaseEnter;Please enter;Indsæt venligst
 pleaseEnterCategoryName;Please enter a name for category;Indsæt venligst navn på kategori
+pleaseEnterCity;Please enter city;Indsæt venligst by
 pleaseEnterName;Please enter name;Indsæt venligst navn
 pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
+pleaseEnterStreet;Please enter  street;Indsæt venligst gade
 pleaseEnterTranslationKey;Please enter a translation key;Indsæt venligst oversættelsesnøgle
 pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
+pleaseEnterZipcode;Please enter zipcode;Indsæt venligst postnummer
 pleaseProvideScheduledDate;Please provide a scheduled date;Angiv venligst en planlagt dato
 pleaseRemoveOneOrMore;please remove one or more;fjern venligst en eller flere
 pleaseSelectParentCategory;Please select parent category;Vælg venligst hovedkategori
@@ -266,7 +280,7 @@ product;Product;Produkt
 productActions;Product actions;Produkt handlinger
 productCard;Product card;Produkt card
 productCopied;Product copied;Produkt blev kopieret
-productCreated;Product created;Produkt blev tilføjet
+productCreated;Product was created;Produkt blev tilføjet
 productDeleted;Product deleted;Produkt blev slettet
 productDescriptionRequired;Please insert product description;Indsæt venligst produktbeskrivelse
 productDisplay;Product Display;Produktvisning
@@ -282,7 +296,7 @@ products;Products;Produkter
 productsInStock;Products in stock;Produkter på lager
 productsInSubcategory;Products linked to subcategory;Produkter tilknyttet denne underkategori
 productStatus;Product status;Produkt status
-productUpdated;Product updated;Produkt blev opdateret
+productUpdated;Product was updated;Produkt blev opdateret
 productVariants;Product Variants;Produkt varianter
 profile;Profile;Profil
 publish;Publish;Udgiv
@@ -344,6 +358,7 @@ sort;Sort;Sorter
 standard;Standard;Standard
 stars;stars;stjerner
 status;Status;Status
+street;Street;Gade
 sub;Sub;Sekundær
 subCategories;Subcategories;Underkategorier
 subCategory;Subcategory;Underkategori
@@ -365,6 +380,7 @@ unavailable;Unavailable;Ikke tilgængelig
 unknownError;Unknown error;Ukendt fejl
 unsupportedFile;is not supported type;er ikke understøttet
 update;Update;Opdater
+updateAddress;Update address;Opdater adresse
 updateCategory;Update category;Opdater kategori
 updatedAt;Updated at;Opdateret
 updatePreferences;Update Preferences;Opdater præferencer
@@ -378,7 +394,7 @@ userDeleted;User deleted;Bruger slettet
 userInfo;User info;Bruger info
 username;User name;Brugernavn
 users;Users;Brugere
-userUpdated;User updated;Bruger opdateret
+userUpdated;User was updated;Bruger blev opdateret
 alreadyInUse;Value already in use;Værdien er allerede i brug
 view;View;Se
 viewAndTrackOrders;View and track your orders.;Tjek og følg dine ordrer.
@@ -403,3 +419,4 @@ womensFashion;Women’s fashion;Damemode
 yellow;Yellow;Gul
 yesterday;Yesterday;I går
 yourDetailsUpdated;Your details was updated;Dine detaljer blev opdaterede
+zipCode;ZipCode;Postnummer

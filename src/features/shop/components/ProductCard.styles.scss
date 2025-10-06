@@ -60,8 +60,6 @@
 }
 
 .product-card-list {
-  display: grid;
-
   @include grid-template-column;
 
   grid-auto-rows: rem(520px) auto;
@@ -90,17 +88,6 @@
     z-index: 2;
     left: 12px;
     top: 12px;
-  }
-
-  &.favorite-list {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-
-    .product-card-img {
-      height: rem(640px);
-      width: rem(440px);
-    }
   }
 
   &.list {

@@ -1,60 +1,48 @@
-import { useEffect, useState } from 'react';
-import { NavLink, useLocation } from 'react-router';
+import { NavLink } from 'react-router';
 import Icon from '../../components/icons/Icon';
 import useLanguage from '../../features/language/useLanguage';
-import useKeyPress from '../../hooks/useKeyPress';
-import { KeyCode } from '../../types/enums';
-import type { NavItemsProps } from './Nav';
+import type { AriaHasPopup } from '../../types/types';
+import type { NavListProps } from './Nav';
 import SubNav from './subNav/SubNav';
+
+type NavItemProps = {
+  navItem: NavListProps;
+  ariaControls?: string;
+  ariaExpanded?: boolean;
+  ariaHasPopup?: AriaHasPopup;
+  onBlur?: (event: React.FocusEvent<HTMLLIElement>) => void;
+  onFocus?: () => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+};
 
 const NavItem = ({
   navItem,
-  hideAriaHasPopup,
-}: {
-  navItem: NavItemsProps;
-  hideAriaHasPopup?: boolean;
-}) => {
-  const location = useLocation();
+  onMouseEnter,
+  onMouseLeave,
+  onFocus,
+  ariaExpanded,
+  ariaHasPopup,
+  onBlur,
+  ariaControls,
+}: NavItemProps) => {
   const { language } = useLanguage();
-  const [isSubNavShown, setIsSubNavShown] = useState(false);
-
-  const handleShowSubNav = () => {
-    setIsSubNavShown(true);
-  };
-
-  const handleHideSubNav = () => {
-    setIsSubNavShown(false);
-  };
-
-  useEffect(() => {
-    handleHideSubNav();
-  }, [location]);
-
-  useKeyPress(() => {
-    handleHideSubNav();
-  }, [KeyCode.Esc]);
 
   return (
     <li
       className={`nav-item ${navItem.subNavList ? 'has-sub-nav' : ''}`}
-      onMouseEnter={handleShowSubNav}
-      onMouseLeave={handleHideSubNav}
-      onFocus={handleShowSubNav}
-      onBlur={(e) => {
-        if (!e.currentTarget.contains(e.relatedTarget)) {
-          // ensures that focus inside the submenu won't immediately close it
-          handleHideSubNav();
-        }
-      }}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      onFocus={onFocus}
+      onBlur={onBlur}
     >
       <NavLink
         to={navItem.path}
         end={navItem.end}
         className="nav-link"
-        aria-haspopup={
-          navItem.subNavList && !hideAriaHasPopup ? true : undefined
-        }
-        aria-expanded={isSubNavShown ? isSubNavShown : undefined}
+        aria-controls={ariaControls}
+        aria-haspopup={ariaHasPopup || undefined}
+        aria-expanded={ariaExpanded}
       >
         {navItem.iconName && (
           <span>
@@ -70,7 +58,8 @@ const NavItem = ({
         <SubNav
           subNavList={navItem.subNavList}
           heading={navItem.heading}
-          isSubNavShown={isSubNavShown}
+          isSubNavShown={ariaExpanded || false}
+          ariaControls={ariaControls}
         />
       )}
     </li>

@@ -1,3 +1,5 @@
+@use '../../scss/globals' as *;
+
 .my-account {
   padding-inline: 32px;
   display: flex;
@@ -16,6 +18,68 @@
 
     .text {
       justify-content: flex-start;
+    }
+  }
+}
+
+.my-address-list {
+  @include grid-template-column(230px);
+
+  gap: 12px;
+  grid-auto-rows: rem(248px) auto;
+}
+
+.my-address-item {
+  border: 1px solid #d9d6d6;
+  display: grid;
+  grid-row: span 2;
+
+  &.add-address {
+    place-content: center;
+  }
+}
+
+.my-address-content {
+  place-content: center;
+  display: grid;
+  grid-row: span 3;
+  gap: 4px;
+
+  p {
+    margin: 0;
+  }
+}
+
+.my-address-title {
+  font-family: $font-primary-bold;
+  font-size: rem(16px);
+  margin-top: 20px;
+}
+
+.my-address-footer {
+  display: flex;
+  align-items: flex-end;
+  gap: 32px;
+  padding: 20px;
+  padding-top: 0;
+  justify-content: flex-end;
+}
+
+.address-modal {
+  &.modal.animate-top-center {
+    top: 15%;
+  }
+
+  .fieldset {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    .input-container {
+      grid-column: 1 / -1;
+
+      &:has(input[name='zipCode'], input[name='city']) {
+        grid-column: span 1;
+      }
     }
   }
 }

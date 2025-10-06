@@ -75,7 +75,6 @@ const CategoryForm = ({
         }).unwrap();
 
         onAddMessagePopup({
-          messagePopupType: 'success',
           message: language.categoryUpdated,
         });
       } else {
@@ -85,13 +84,12 @@ const CategoryForm = ({
         }).unwrap();
 
         onAddMessagePopup({
-          messagePopupType: 'success',
           message: language.categoryCreated,
         });
       }
 
       navigate(AdminPath.AdminCategories);
-    } catch (error: any) {
+    } catch (error) {
       handleApiError(error, onAddMessagePopup);
     }
   }

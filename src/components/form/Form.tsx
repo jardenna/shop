@@ -46,7 +46,7 @@ const Form = ({
         )}
         <Button
           type={BtnType.Submit}
-          isLoading={isLoading}
+          showBtnLoader={isLoading}
           ariaLabel={ariaLabel}
           disabled={disabled}
         >

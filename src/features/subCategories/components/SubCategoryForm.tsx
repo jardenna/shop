@@ -102,7 +102,6 @@ const SubCategoryForm = ({
         }).unwrap();
 
         onAddMessagePopup({
-          messagePopupType: 'success',
           message: language.categoryUpdated,
         });
       } else {
@@ -112,12 +111,11 @@ const SubCategoryForm = ({
         }).unwrap();
 
         onAddMessagePopup({
-          messagePopupType: 'success',
           message: language.categoryCreated,
         });
       }
       navigate(AdminPath.AdminSubCategories);
-    } catch (error: any) {
+    } catch (error) {
       handleApiError(error, onAddMessagePopup);
     }
   }

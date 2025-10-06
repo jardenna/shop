@@ -75,10 +75,9 @@ const UserPage = () => {
         user: editValues,
       }).unwrap();
       onAddMessagePopup({
-        messagePopupType: 'success',
         message: language.userUpdated,
       });
-    } catch (error: any) {
+    } catch (error) {
       handleApiError(error, onAddMessagePopup);
     }
   }
@@ -87,10 +86,9 @@ const UserPage = () => {
     try {
       await deleteUser(id).unwrap();
       onAddMessagePopup({
-        messagePopupType: 'success',
         message: `${username} ${language.deleted}`,
       });
-    } catch (error: any) {
+    } catch (error) {
       handleApiError(error, onAddMessagePopup);
     }
   };

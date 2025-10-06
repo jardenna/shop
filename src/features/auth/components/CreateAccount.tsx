@@ -8,10 +8,10 @@ import validateSignup from '../../../components/formElements/validation/validate
 import useMessagePopup from '../../../components/messagePopup/useMessagePopup';
 import useFormValidation from '../../../hooks/useFormValidation';
 import { ShopPath } from '../../../layout/nav/enums';
+import handleApiError from '../../../utils/handleApiError';
 import useLanguage from '../../language/useLanguage';
 import { useCreateAccountMutation } from '../authApiSlice';
 import AuthForm from './AuthForm';
-import handleApiError from '../../../utils/handleApiError';
 
 export type CreateAccountProps = {
   navigateTo: string;
@@ -63,7 +63,7 @@ const CreateAccount = ({
       if (result.success) {
         navigate(navigateTo);
       }
-    } catch (error: any) {
+    } catch (error) {
       handleApiError(error, onAddMessagePopup);
     }
   }
