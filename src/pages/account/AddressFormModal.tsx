@@ -1,9 +1,8 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import type {
   Address,
   AddressInput,
 } from '../../app/api/apiTypes/shopApiTypes';
-import { useAppDispatch } from '../../app/hooks';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Input from '../../components/formElements/Input';
 import validateAddress from '../../components/formElements/validation/validateAddress';
@@ -15,7 +14,6 @@ import {
 } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
 import useLanguage from '../../features/language/useLanguage';
-import { closeModal } from '../../features/modalSlice';
 import {
   useAddAddressMutation,
   useUpdateAddressMutation,
@@ -35,11 +33,13 @@ type AddressFormModalProps = {
   triggerModalDisabled?: boolean;
 };
 
-const addressInputList: {
+type AddressFieldListProps = {
   name: keyof Address;
   required?: boolean;
   type?: InputType;
-}[] = [
+};
+
+const addressInputList: AddressFieldListProps[] = [
   { name: 'name' },
   { name: 'street', required: true },
   { name: 'zipCode', required: true, type: 'number' },
@@ -58,7 +58,6 @@ const AddressFormModal = ({
 }: AddressFormModalProps) => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
-  const dispatch = useAppDispatch();
 
   const initialState: AddressInput = {
     name: address?.name || username,
@@ -79,9 +78,23 @@ const AddressFormModal = ({
   const [updateAddress, { isLoading }] = useUpdateAddressMutation();
   const [addAddress, { isLoading: addAddressIsLoading }] =
     useAddAddressMutation();
+
   const [resultSuccess, setResultSuccess] = useState<boolean | null>(null);
 
   const updatedAddress = id ? { ...values, id } : { ...values };
+
+  // Reset resultSuccess when modal closes
+  useEffect(() => {
+    if (!resultSuccess) {
+      return;
+    }
+    const timer = setTimeout(() => {
+      setResultSuccess(null);
+    }, 300); // matches close animation duration
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [resultSuccess]);
 
   async function handleSubmitAddress() {
     try {
@@ -94,13 +107,9 @@ const AddressFormModal = ({
       onAddMessagePopup({ message: popupMessage });
       setResultSuccess(true);
       onClearAllValues();
-
-      // only close modal when success
-      dispatch(closeModal());
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
       setResultSuccess(false);
-      // do not close modal on error
     }
   }
 
