@@ -68,11 +68,12 @@ const AddressFormModal = ({
     id: id || null,
   };
 
-  const { values, onChange, onSubmit, errors } = useFormValidation({
-    initialState,
-    callback: handleSubmitAddress,
-    validate: validateAddress,
-  });
+  const { values, onChange, onSubmit, errors, onClearAllValues } =
+    useFormValidation({
+      initialState,
+      callback: handleSubmitAddress,
+      validate: validateAddress,
+    });
 
   const [updateAddress, { isLoading }] = useUpdateAddressMutation();
   const [addAddress, { isLoading: addAddressIsLoading }] =
@@ -97,6 +98,7 @@ const AddressFormModal = ({
         message: popupMessage,
       });
       setResultSuccess(true);
+      onClearAllValues();
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
       setResultSuccess(false);
@@ -119,6 +121,7 @@ const AddressFormModal = ({
   return (
     <ModalContainer
       triggerModalDisabled={triggerModalDisabled}
+      onClearAllValues={onClearAllValues}
       modalSize={SizeVariant.Md}
       triggerModalBtnContent={
         id ? (

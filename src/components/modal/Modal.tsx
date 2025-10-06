@@ -78,7 +78,7 @@ const Modal = ({
 
   // Auto-close if the form reports success
   useEffect(() => {
-    if (primaryActionBtn.resultSuccess && modalId === id) {
+    if (primaryActionBtn.resultSuccess && (modalId === id || !modalId)) {
       closeModalAnimated();
       if (onClearAllValues) {
         onClearAllValues();
