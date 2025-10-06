@@ -91,7 +91,11 @@ export type AddressInput = BaseAddress & {
 };
 
 export type AddAddressRequest = {
-  addresses: Address;
+  address: AddressInput;
+};
+
+export type DeleteAddressRequest = {
+  address: string;
 };
 
 export type UpdateAddressRequest = { address: AddressInput };

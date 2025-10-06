@@ -1,5 +1,7 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import type {
+  AddAddressRequest,
+  DeleteAddressRequest,
   UpdateAddressRequest,
   UserProfileRequest,
   UserProfileResponse,
@@ -23,7 +25,7 @@ export const profileApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.Profile],
     }),
-    addAddress: builder.mutation<UserProfileResponse, any>({
+    addAddress: builder.mutation<UserProfileResponse, AddAddressRequest>({
       query: (address) => ({
         url: profileUrl,
         method: 'put',
@@ -39,7 +41,7 @@ export const profileApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.Profile],
     }),
-    deleteAddress: builder.mutation<any, any>({
+    deleteAddress: builder.mutation<UserProfileResponse, DeleteAddressRequest>({
       query: (id) => ({
         url: profileUrl,
         method: 'PUT',
