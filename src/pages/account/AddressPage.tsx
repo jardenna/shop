@@ -44,6 +44,7 @@ const AddressPage = () => {
               modalHeaderText={language.createNewAddress}
               primaryActionBtnLabel={language.createNewAddress}
               popupMessage={language.addressCreated}
+              triggerModalDisabled={profile.addresses.length === 4}
             />
           </li>
           {profile.addresses.map((address) => (
