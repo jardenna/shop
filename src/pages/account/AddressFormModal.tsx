@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type {
   Address,
   AddressInput,
@@ -78,6 +79,7 @@ const AddressFormModal = ({
     useAddAddressMutation();
 
   const updatedAddress = id ? { ...values, id } : { ...values };
+  const [resultSuccess, setResultSuccess] = useState<boolean | null>(null);
 
   async function handleSubmitAddress() {
     try {
@@ -94,8 +96,10 @@ const AddressFormModal = ({
       onAddMessagePopup({
         message: popupMessage,
       });
+      setResultSuccess(true);
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
+      setResultSuccess(false);
     }
   }
 
@@ -105,6 +109,7 @@ const AddressFormModal = ({
     label: primaryActionBtnLabel,
     disabled: isLoading || addAddressIsLoading,
     showBtnLoader: isLoading || addAddressIsLoading,
+    resultSuccess,
   };
 
   const secondaryActionBtn: SecondaryActionBtnProps = {

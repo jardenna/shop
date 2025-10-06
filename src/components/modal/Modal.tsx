@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { useEffect, type ReactNode } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import useLanguage from '../../features/language/useLanguage';
 import { selectModalId } from '../../features/modalSlice';
@@ -19,6 +19,7 @@ export type PrimaryActionBtnProps = {
   className?: string;
   closeOnClick?: boolean;
   disabled?: boolean;
+  resultSuccess?: boolean | null;
   showBtnLoader?: boolean;
   variant?: BtnVariant;
   onClick?: () => void;
@@ -75,21 +76,22 @@ const Modal = ({
     }
   }, [popupRef]);
 
-  if (modalId !== id || !modalId) {
-    return null;
-  }
-
-  const handlePrimaryClick = () => {
-    if (primaryActionBtn.onClick) {
-      primaryActionBtn.onClick();
-      closeModalAnimated();
-    }
-
-    if (primaryActionBtn.closeOnClick !== false) {
+  // Auto-close if the form reports success
+  useEffect(() => {
+    if (primaryActionBtn.resultSuccess && modalId === id) {
       closeModalAnimated();
       if (onClearAllValues) {
         onClearAllValues();
       }
+    }
+  }, [primaryActionBtn.resultSuccess, closeModalAnimated, onClearAllValues]);
+
+  if (modalId !== id || !modalId) {
+    return null;
+  }
+  const handlePrimaryClick = () => {
+    if (primaryActionBtn.onClick) {
+      primaryActionBtn.onClick();
     }
   };
 
