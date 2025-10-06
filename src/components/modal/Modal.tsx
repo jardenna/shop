@@ -94,6 +94,7 @@ const Modal = ({
   const handlePrimaryClick = () => {
     if (primaryActionBtn.onClick) {
       primaryActionBtn.onClick();
+      closeModalAnimated();
     }
   };
 
