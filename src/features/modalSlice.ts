@@ -16,12 +16,9 @@ const modalSlice = createSlice({
     toggleModal: (state, action: PayloadAction<string | null>) => {
       state.modalId = action.payload; // Set the modal ID to open
     },
-    closeModal: (state) => {
-      state.modalId = null;
-    },
   },
 });
 
-export const { toggleModal, closeModal } = modalSlice.actions;
+export const { toggleModal } = modalSlice.actions;
 export const selectModalId = (state: RootState) => state.modal.modalId;
 export default modalSlice.reducer;
