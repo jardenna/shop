@@ -31,6 +31,7 @@ const UpdateCategoryPage = () => {
             selectedCategory={category}
             id={params.id || ''}
             allowedUpdateCategory={!!isAdmin}
+            popupMessage={language.categoryUpdated}
           />
         </AdminPageContainer>
       )}

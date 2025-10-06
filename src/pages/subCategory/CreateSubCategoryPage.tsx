@@ -31,6 +31,7 @@ const CreateSubCategoryPage = () => {
             selectedCategory={null}
             id={null}
             parentCategories={allCategories.categories}
+            popupMessage={language.categoryCreated}
           />
         )}
       </AdminPageContainer>

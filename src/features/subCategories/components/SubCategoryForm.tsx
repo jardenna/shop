@@ -27,6 +27,7 @@ import {
 type SubCategoryFormProps = {
   id: string | null;
   parentCategories: Category[];
+  popupMessage: string;
   selectedCategory: SubCategoryResponse | null;
 };
 
@@ -34,6 +35,7 @@ const SubCategoryForm = ({
   selectedCategory,
   id,
   parentCategories,
+  popupMessage,
 }: SubCategoryFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
@@ -109,11 +111,13 @@ const SubCategoryForm = ({
           ...values,
           scheduledDate: selectedDate,
         }).unwrap();
-
-        onAddMessagePopup({
-          message: language.categoryCreated,
-        });
       }
+
+      onAddMessagePopup({
+        message: popupMessage,
+        withDelay: true,
+      });
+
       navigate(AdminPath.AdminSubCategories);
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
