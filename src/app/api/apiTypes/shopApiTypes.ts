@@ -94,7 +94,7 @@ export type AddAddressRequest = {
   addresses: Address;
 };
 
-export type UpdateAddressRequest = { address: AddressInput };
+export type UpdateAddressRequest = { addresses: AddressInput };
 
 export type UserProfileResponse = DefaultResponseType &
   BaseProfile & {

@@ -83,7 +83,7 @@ const AddressFormModal = ({
     try {
       if (id) {
         await updateAddress({
-          address: updatedAddress,
+          addresses: updatedAddress,
         }).unwrap();
       } else {
         await addAddress({
@@ -99,15 +99,12 @@ const AddressFormModal = ({
     }
   }
 
-  const formHasError = Object.keys(errors).length !== 0;
-
   const primaryActionBtn: PrimaryActionBtnProps = {
     onSubmit,
     buttonType: BtnType.Submit,
     label: primaryActionBtnLabel,
     disabled: isLoading || addAddressIsLoading,
     showBtnLoader: isLoading || addAddressIsLoading,
-    closeOnClick: formHasError,
   };
 
   const secondaryActionBtn: SecondaryActionBtnProps = {
