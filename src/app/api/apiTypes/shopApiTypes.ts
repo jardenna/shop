@@ -74,7 +74,7 @@ export type PreferredFashion =
   | 'kidsFashion'
   | 'noPreference';
 
-export type BaseAddress = {
+type BaseAddress = {
   city: string;
   street: string;
   zipCode: string;
