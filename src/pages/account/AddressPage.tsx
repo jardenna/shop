@@ -20,7 +20,7 @@ const AddressPage = () => {
   const handleDeleteAddress = async (id: string) => {
     try {
       await deleteAddress({
-        addresses: id,
+        address: id,
       }).unwrap();
       onAddMessagePopup({
         message: language.addressDeleted,

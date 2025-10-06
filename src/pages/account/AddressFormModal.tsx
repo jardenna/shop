@@ -83,11 +83,11 @@ const AddressFormModal = ({
     try {
       if (id) {
         await updateAddress({
-          addresses: updatedAddress,
+          address: updatedAddress,
         }).unwrap();
       } else {
         await addAddress({
-          addresses: updatedAddress,
+          address: updatedAddress,
         }).unwrap();
       }
 
