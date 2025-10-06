@@ -71,6 +71,7 @@ const SubCategoryPage = () => {
               subCategoryName,
               categoryStatus,
               mainCategoryName,
+              translationKey,
             }) => (
               <SubCategoryTableRows
                 key={id}
@@ -78,6 +79,7 @@ const SubCategoryPage = () => {
                 status={categoryStatus}
                 scheduledDate={scheduledDate || null}
                 subCategoryName={subCategoryName}
+                translationKey={translationKey}
                 mainCategoryName={mainCategoryName}
               />
             ),
