@@ -61,11 +61,12 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
 
   if (user) {
-    user.username = username || user.username;
-    user.email = email || user.email;
-    user.phoneNo = phoneNo || user.phoneNo;
-    user.dateOfBirth = dateOfBirth || user.dateOfBirth;
-    user.preferredFashion = preferredFashion || user.preferredFashion;
+    if (username !== undefined) user.username = username;
+    if (email !== undefined) user.email = email;
+    if (phoneNo !== undefined) user.phoneNo = phoneNo;
+    if (dateOfBirth !== undefined) user.dateOfBirth = dateOfBirth;
+    if (preferredFashion !== undefined)
+      user.preferredFashion = preferredFashion;
 
     if (email) {
       // Validate email

@@ -90,7 +90,7 @@ const AddressFormModal = ({
     }
     const timer = setTimeout(() => {
       setResultSuccess(null);
-    }, 300); // matches close animation duration
+    }, 300);
     return () => {
       clearTimeout(timer);
     };
