@@ -6,8 +6,30 @@ type AddMessagePopupFn = ({
   componentType,
 }: MessagePopupWithoutId) => void;
 
-// Global error handler for try/catch
-const handleApiError = (error: any, onAddMessagePopup: AddMessagePopupFn) => {
+// Global error handler for try/catch and manual API responses
+const handleApiError = (
+  error: any,
+  onAddMessagePopup: AddMessagePopupFn,
+): void => {
+  // If a simple string or message object is passed
+  if (typeof error === 'string') {
+    onAddMessagePopup({
+      messagePopupType: 'error',
+      message: error,
+      componentType: 'notification',
+    });
+    return;
+  }
+
+  if (error?.message && !error.status) {
+    onAddMessagePopup({
+      messagePopupType: 'error',
+      message: error.message,
+      componentType: 'notification',
+    });
+    return;
+  }
+
   const status = error?.status;
 
   // Network error or no status → treat as critical
