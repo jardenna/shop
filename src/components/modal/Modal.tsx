@@ -118,6 +118,7 @@ const Modal = ({
       {/* Is modal body a form? */}
       {primaryActionBtn.buttonType === BtnType.Submit ? (
         <form
+          noValidate
           className="modal-form modal-content"
           onSubmit={primaryActionBtn.onSubmit}
         >

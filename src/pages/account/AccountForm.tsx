@@ -102,7 +102,6 @@ const AccountForm = ({ profile, profileFieldList }: AccountFormProps) => {
   const secondaryActionBtn: SecondaryActionBtnProps = {
     label: language.cancel,
   };
-  console.log(errors);
 
   return (
     <ModalContainer
