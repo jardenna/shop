@@ -75,7 +75,7 @@ const Modal = ({
   }, [popupRef]);
 
   useEffect(() => {
-    if (primaryActionBtn.resultSuccess && modalId === id) {
+    if (primaryActionBtn.resultSuccess === true && modalId === id) {
       closeModalAnimated();
       onClearAllValues?.();
     }
@@ -95,6 +95,15 @@ const Modal = ({
     if (primaryActionBtn.onClick) {
       primaryActionBtn.onClick();
       closeModalAnimated();
+    }
+    if (
+      primaryActionBtn.closeOnClick !== false &&
+      primaryActionBtn.resultSuccess === undefined
+    ) {
+      closeModalAnimated();
+      if (onClearAllValues) {
+        onClearAllValues();
+      }
     }
   };
 
