@@ -58,6 +58,7 @@ const AddressFormModal = ({
 }: AddressFormModalProps) => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
+  const [resultSuccess, setResultSuccess] = useState<boolean | null>(null);
 
   const initialState: AddressInput = {
     name: address?.name || username,
@@ -78,8 +79,6 @@ const AddressFormModal = ({
   const [updateAddress, { isLoading }] = useUpdateAddressMutation();
   const [addAddress, { isLoading: addAddressIsLoading }] =
     useAddAddressMutation();
-
-  const [resultSuccess, setResultSuccess] = useState<boolean | null>(null);
 
   const updatedAddress = id ? { ...values, id } : { ...values };
 

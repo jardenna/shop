@@ -10,6 +10,7 @@ import AccountInfoList from './AccountInfoList';
 export type ProfileFieldListProps = {
   label: string;
   name: keyof BaseProfile;
+  required?: boolean;
   tooltip?: boolean;
   type?: InputType;
 };
@@ -22,6 +23,7 @@ const MyAccountPage = () => {
     {
       name: 'username',
       label: 'name',
+      required: true,
     },
     {
       name: 'dateOfBirth',
@@ -32,6 +34,7 @@ const MyAccountPage = () => {
       name: 'email',
       label: 'email',
       type: 'email',
+      required: true,
     },
     {
       name: 'phoneNo',
