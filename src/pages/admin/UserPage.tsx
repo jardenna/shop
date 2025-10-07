@@ -1,6 +1,5 @@
 import { useRef } from 'react';
 import type { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
-import validateUpdateUser from '../../components/formElements/validation/validateUpdateUser';
 import Icon from '../../components/icons/Icon';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import Popup from '../../components/popup/Popup';
@@ -18,6 +17,7 @@ import useTrapFocus from '../../hooks/useTrapFocus';
 import { AdminPath } from '../../layout/nav/enums';
 import { IconName } from '../../types/enums';
 import handleApiError from '../../utils/handleApiError';
+import validateUpdateUser from '../../utils/validation/validateUpdateUser';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 import DeleteUser from './DeleteUser';
 

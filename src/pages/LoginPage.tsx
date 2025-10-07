@@ -1,6 +1,5 @@
 import { useLocation, useNavigate, useSearchParams } from 'react-router';
 import Button from '../components/Button';
-import validateLogin from '../components/formElements/validation/validateLogin';
 import useMessagePopup from '../components/messagePopup/useMessagePopup';
 import { useLoginMutation } from '../features/auth/authApiSlice';
 import AuthForm from '../features/auth/components/AuthForm';
@@ -10,6 +9,7 @@ import useFormValidation from '../hooks/useFormValidation';
 import { ShopPath } from '../layout/nav/enums';
 import { BtnVariant } from '../types/enums';
 import handleApiError from '../utils/handleApiError';
+import validateLogin from '../utils/validation/validateLogin';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const LoginPage = () => {

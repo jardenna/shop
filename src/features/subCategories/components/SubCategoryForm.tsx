@@ -8,7 +8,6 @@ import useDatePicker from '../../../components/datePicker/useDatePicker';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/form/Form';
 import Input from '../../../components/formElements/Input';
-import validateSubcategory from '../../../components/formElements/validation/validateSubcategory';
 import useMessagePopup from '../../../components/messagePopup/useMessagePopup';
 import Selectbox from '../../../components/selectbox/Selectbox';
 import StatusOptions from '../../../components/selectbox/StatusOptions';
@@ -18,6 +17,7 @@ import { AdminPath } from '../../../layout/nav/enums';
 import type { OptionType } from '../../../types/types';
 import handleApiError from '../../../utils/handleApiError';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
+import validateSubcategory from '../../../utils/validation/validateSubcategory';
 import useLanguage from '../../language/useLanguage';
 import {
   useCreateSubCategoryMutation,

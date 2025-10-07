@@ -4,11 +4,11 @@ import type {
   Roles,
   UserResponse,
 } from '../../../app/api/apiTypes/adminApiTypes';
-import validateSignup from '../../../components/formElements/validation/validateCreateAccount';
 import useMessagePopup from '../../../components/messagePopup/useMessagePopup';
 import useFormValidation from '../../../hooks/useFormValidation';
 import { ShopPath } from '../../../layout/nav/enums';
 import handleApiError from '../../../utils/handleApiError';
+import validateSignup from '../../../utils/validation/validateCreateAccount';
 import useLanguage from '../../language/useLanguage';
 import { useCreateAccountMutation } from '../authApiSlice';
 import AuthForm from './AuthForm';

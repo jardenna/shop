@@ -5,7 +5,6 @@ import type {
 } from '../../app/api/apiTypes/shopApiTypes';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Input from '../../components/formElements/Input';
-import validateAddress from '../../components/formElements/validation/validateAddress';
 import IconContent from '../../components/IconContent';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import {
@@ -22,6 +21,7 @@ import useFormValidation from '../../hooks/useFormValidation';
 import { BtnType, BtnVariant, IconName, SizeVariant } from '../../types/enums';
 import type { InputType } from '../../types/types';
 import handleApiError from '../../utils/handleApiError';
+import validateAddress from '../../utils/validation/validateAddress';
 
 type AddressFormModalProps = {
   id: string | null;

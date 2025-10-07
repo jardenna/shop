@@ -7,7 +7,6 @@ import type {
 import FieldSet from '../../components/fieldset/FieldSet';
 import Input from '../../components/formElements/Input';
 import RadioButtonList from '../../components/formElements/RadioButtonList';
-import validateProfile from '../../components/formElements/validation/validateProfile';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import type {
   PrimaryActionBtnProps,
@@ -20,6 +19,7 @@ import useFormValidation from '../../hooks/useFormValidation';
 import { BtnType, SizeVariant } from '../../types/enums';
 import type { OptionType } from '../../types/types';
 import handleApiError from '../../utils/handleApiError';
+import validateProfile from '../../utils/validation/validateProfile';
 import type { ProfileFieldListProps } from './MyAccountPage';
 
 type AccountFormProps = {
