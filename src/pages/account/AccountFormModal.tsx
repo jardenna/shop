@@ -22,7 +22,7 @@ import handleApiError from '../../utils/handleApiError';
 import validateProfile from '../../utils/validation/validateProfile';
 import type { ProfileFieldListProps } from './MyAccountPage';
 
-type AccountFormProps = {
+type AccountFormModalProps = {
   profile: UserProfileResponse;
   profileFieldList: ProfileFieldListProps[];
 };
@@ -34,7 +34,10 @@ const preferredFashion: PreferredFashion[] = [
   'noPreference',
 ];
 
-const AccountForm = ({ profile, profileFieldList }: AccountFormProps) => {
+const AccountFormModal = ({
+  profile,
+  profileFieldList,
+}: AccountFormModalProps) => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
   const [resultSuccess, setResultSuccess] = useState<boolean | null>(null);
@@ -145,4 +148,4 @@ const AccountForm = ({ profile, profileFieldList }: AccountFormProps) => {
   );
 };
 
-export default AccountForm;
+export default AccountFormModal;

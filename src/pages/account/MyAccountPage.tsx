@@ -5,7 +5,7 @@ import useLanguage from '../../features/language/useLanguage';
 import { useGetUserProfileQuery } from '../../features/profile/profileApiSlice';
 import type { InputType } from '../../types/types';
 import './_my-account.scss';
-import AccountForm from './AccountForm';
+import AccountFormModal from './AccountFormModal';
 import AccountInfoList from './AccountInfoList';
 
 export type ProfileFieldListProps = {
@@ -62,7 +62,7 @@ const MyAccountPage = () => {
               profile={profile}
               profileFieldList={profileFieldList}
             />
-            <AccountForm
+            <AccountFormModal
               profile={profile}
               profileFieldList={profileFieldList}
             />
