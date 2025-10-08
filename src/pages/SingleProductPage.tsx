@@ -113,43 +113,66 @@ const SingleProductPage = () => {
           >
             <section className="single-product">
               <div className="single-product-content">
-                <p>
-                  {language.brand}: {product.brand}
-                </p>
-
-                <LayoutElement
-                  ariaLabel={language.product}
-                  className="single-product-header"
+                <ErrorBoundary
+                  FallbackComponent={ErrorBoundaryFallback}
+                  onReset={() => refetch}
                 >
-                  <h1>{product.productName}</h1>
-                  <FavoriteHeart id={product.id} />
-                </LayoutElement>
-                <ReviewStars
-                  stars={getStarsArray(product.rating)}
-                  rating={product.rating}
-                />
-                <ProductDiscountPrice
-                  price={product.price}
-                  discount={product.discount}
-                />
-                <div className="in-stock-container">
-                  <InStock stock={product.countInStock} />
-                  {(missingSizes.length > 0 || product.countInStock === 0) && (
-                    <NotifyMe
-                      options={missingSizes}
-                      id="notifyMe"
-                      sizesIsRequered={missingSizes.length > 0}
-                      currentUser={currentUser}
-                    />
-                  )}
-                </div>
-                {id && currentUser && <ReviewsForm productId={id} />}
-                <ShopProductForm
-                  selectedProduct={product}
-                  colorList={colorList}
-                  displaySizeList={displaySizeList}
-                />
-                <Accordion accordionList={accordionList} />
+                  {' '}
+                  <p>
+                    {language.brand}: {product.brand}
+                  </p>
+                  <LayoutElement
+                    ariaLabel={language.product}
+                    className="single-product-header"
+                  >
+                    <h1>{product.productName}</h1>
+                    <FavoriteHeart id={product.id} />
+                  </LayoutElement>
+                </ErrorBoundary>
+
+                <ErrorBoundary
+                  FallbackComponent={ErrorBoundaryFallback}
+                  onReset={() => refetch}
+                >
+                  <ReviewStars
+                    stars={getStarsArray(product.rating)}
+                    rating={product.rating}
+                  />
+                  <ProductDiscountPrice
+                    price={product.price}
+                    discount={product.discount}
+                  />
+                  <div className="in-stock-container">
+                    <InStock stock={product.countInStock} />
+                    {(missingSizes.length > 0 ||
+                      product.countInStock === 0) && (
+                      <NotifyMe
+                        options={missingSizes}
+                        id="notifyMe"
+                        sizesIsRequered={missingSizes.length > 0}
+                        currentUser={currentUser}
+                      />
+                    )}
+                  </div>
+                  {id && currentUser && <ReviewsForm productId={id} />}
+                </ErrorBoundary>
+
+                <ErrorBoundary
+                  FallbackComponent={ErrorBoundaryFallback}
+                  onReset={() => refetch}
+                >
+                  <ShopProductForm
+                    selectedProduct={product}
+                    colorList={colorList}
+                    displaySizeList={displaySizeList}
+                  />
+                </ErrorBoundary>
+                <ErrorBoundary
+                  FallbackComponent={ErrorBoundaryFallback}
+                  onReset={() => refetch}
+                >
+                  <Accordion accordionList={accordionList} />
+                </ErrorBoundary>
               </div>
             </section>
           </ErrorBoundary>
