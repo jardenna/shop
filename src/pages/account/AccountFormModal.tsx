@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import type {
   BaseProfile,
   PreferredFashion,
@@ -13,6 +12,7 @@ import type {
   SecondaryActionBtnProps,
 } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
+import useResultSuccess from '../../components/modal/useSetResult';
 import useLanguage from '../../features/language/useLanguage';
 import { useUpdateUserProfileMutation } from '../../features/profile/profileApiSlice';
 import useFormValidation from '../../hooks/useFormValidation';
@@ -40,7 +40,7 @@ const AccountFormModal = ({
 }: AccountFormModalProps) => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
-  const [resultSuccess, setResultSuccess] = useState<boolean | null>(null);
+  const { resultSuccess, setResultSuccess } = useResultSuccess();
 
   const preferredFashionList: OptionType[] = preferredFashion.map(
     (fashion) => ({
@@ -66,19 +66,6 @@ const AccountFormModal = ({
 
   const [updateProfile, { isLoading, reset }] = useUpdateUserProfileMutation();
 
-  // Reset resultSuccess when modal closes
-  useEffect(() => {
-    if (!resultSuccess) {
-      return;
-    }
-    const timer = setTimeout(() => {
-      setResultSuccess(null);
-    }, 300);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [resultSuccess]);
-
   async function handleSubmit() {
     try {
       await updateProfile(values).unwrap();
@@ -92,7 +79,6 @@ const AccountFormModal = ({
       setResultSuccess(false);
     }
   }
-
   const primaryActionBtn: PrimaryActionBtnProps = {
     onSubmit,
     label: language.update,
