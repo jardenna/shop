@@ -81,6 +81,7 @@ const SingleProductPage = () => {
           <ReviewList
             reviewList={product.reviews}
             title={`${language.numberOfReviews} ${product.numReviews}`}
+            onReset={() => refetch}
           />
         ) : (
           <span>{language.noReview}</span>
@@ -117,7 +118,6 @@ const SingleProductPage = () => {
                   FallbackComponent={ErrorBoundaryFallback}
                   onReset={() => refetch}
                 >
-                  {' '}
                   <p>
                     {language.brand}: {product.brand}
                   </p>
@@ -130,32 +130,27 @@ const SingleProductPage = () => {
                   </LayoutElement>
                 </ErrorBoundary>
 
-                <ErrorBoundary
-                  FallbackComponent={ErrorBoundaryFallback}
+                <ReviewStars
+                  stars={getStarsArray(product.rating)}
+                  rating={product.rating}
                   onReset={() => refetch}
-                >
-                  <ReviewStars
-                    stars={getStarsArray(product.rating)}
-                    rating={product.rating}
-                  />
-                  <ProductDiscountPrice
-                    price={product.price}
-                    discount={product.discount}
-                  />
-                  <div className="in-stock-container">
-                    <InStock stock={product.countInStock} />
-                    {(missingSizes.length > 0 ||
-                      product.countInStock === 0) && (
-                      <NotifyMe
-                        options={missingSizes}
-                        id="notifyMe"
-                        sizesIsRequered={missingSizes.length > 0}
-                        currentUser={currentUser}
-                      />
-                    )}
-                  </div>
-                  {id && currentUser && <ReviewsForm productId={id} />}
-                </ErrorBoundary>
+                />
+                <ProductDiscountPrice
+                  price={product.price}
+                  discount={product.discount}
+                />
+                <div className="in-stock-container">
+                  <InStock stock={product.countInStock} />
+                  {(missingSizes.length > 0 || product.countInStock === 0) && (
+                    <NotifyMe
+                      options={missingSizes}
+                      id="notifyMe"
+                      sizesIsRequered={missingSizes.length > 0}
+                      currentUser={currentUser}
+                    />
+                  )}
+                </div>
+                {id && currentUser && <ReviewsForm productId={id} />}
 
                 <ErrorBoundary
                   FallbackComponent={ErrorBoundaryFallback}

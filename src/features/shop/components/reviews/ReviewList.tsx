@@ -6,9 +6,10 @@ import { getDaysAgo, getStarsArray } from './reviewsUtil.';
 type ReviewList = {
   reviewList: DisplyReviews[];
   title: string;
+  onReset: () => void;
 };
 
-const ReviewList = ({ reviewList, title }: ReviewList) => {
+const ReviewList = ({ reviewList, title, onReset }: ReviewList) => {
   const { language } = useLanguage();
   return (
     <>
@@ -18,6 +19,7 @@ const ReviewList = ({ reviewList, title }: ReviewList) => {
           <li key={index} className="review-item">
             <div className="review-header">
               <ReviewStars
+                onReset={onReset}
                 stars={getStarsArray(review.rating)}
                 rating={review.rating}
               />
@@ -35,4 +37,5 @@ const ReviewList = ({ reviewList, title }: ReviewList) => {
     </>
   );
 };
+
 export default ReviewList;
