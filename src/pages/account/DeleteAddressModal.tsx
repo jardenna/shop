@@ -6,7 +6,6 @@ import {
 } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
 import useLanguage from '../../features/language/useLanguage';
-
 import { useDeleteAddressMutation } from '../../features/profile/profileApiSlice';
 import { BtnVariant, IconName } from '../../types/enums';
 import handleApiError from '../../utils/handleApiError';
