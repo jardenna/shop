@@ -3,7 +3,7 @@ import type { SubCategoryState } from '../../pages/subCategory/CreateSubCategory
 import { ValidationMessage } from '../../types/enums';
 
 function validateSubcategory(values: SubCategoryState) {
-  const errors: ValidationErrors = {};
+  const errors: ValidationErrors<SubCategoryState> = {};
   const { category, subCategoryName, translationKey } = values;
 
   if (!subCategoryName) {

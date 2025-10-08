@@ -3,7 +3,7 @@ import type { ValidationErrors } from '../../hooks/useFormValidation';
 import validateEmail from './CommonFieldValidation';
 
 function validateNEmail(values: InitialNotifyValues) {
-  const errors: ValidationErrors = {};
+  const errors: ValidationErrors<InitialNotifyValues> = {};
   const { email } = values;
 
   // Email Errors

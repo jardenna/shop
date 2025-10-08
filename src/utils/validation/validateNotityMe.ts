@@ -4,7 +4,7 @@ import { ValidationMessage } from '../../types/enums';
 import validateEmail from './CommonFieldValidation';
 
 function validateNotityMe(values: InitialNotifyValues) {
-  const errors: ValidationErrors = {};
+  const errors: ValidationErrors<InitialNotifyValues> = {};
   const { email, sizes } = values;
 
   // Email Errors

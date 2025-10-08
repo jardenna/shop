@@ -11,9 +11,9 @@ export type KeyValuePair<T = unknown> = {
   [key: string]: T;
 };
 
-export type ValidationErrors = {
-  [key: string]: string;
-};
+export type ValidationErrors<T extends Record<string, any>> = Partial<
+  Record<keyof T, string>
+>;
 
 export type FormValues = {
   [key: string]: string | number | string[];
@@ -24,7 +24,7 @@ type FormValidationProps<T extends KeyValuePair> = {
   isArray?: boolean;
   isLoading?: boolean;
   callback?: (values: T) => void;
-  validate?: (values: T) => ValidationErrors;
+  validate?: (values: T) => ValidationErrors<T>;
 };
 
 type ValidatedFile = {
@@ -199,7 +199,7 @@ function useFormValidation<T extends KeyValuePair>({
     setIsFocused(false);
     const { name } = event.target;
     if (!touched.includes(name)) {
-      setTouched([...touched, name]);
+      setTouched((prev) => [...prev, name]);
     }
 
     // Validate the specific field on blur
@@ -207,7 +207,7 @@ function useFormValidation<T extends KeyValuePair>({
       const validationErrors = validate(values);
       setErrors((prevErrors) => ({
         ...prevErrors,
-        [name]: validationErrors[name],
+        [name]: validationErrors[name as keyof T] ?? '',
       }));
     }
   };

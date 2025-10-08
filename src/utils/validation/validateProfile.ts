@@ -4,7 +4,7 @@ import { ValidationMessage } from '../../types/enums';
 import validateEmail from './CommonFieldValidation';
 
 function validateProfile(values: BaseProfile) {
-  const errors: ValidationErrors = {};
+  const errors: ValidationErrors<BaseProfile> = {};
   const { username, email } = values;
 
   if (!username) {
