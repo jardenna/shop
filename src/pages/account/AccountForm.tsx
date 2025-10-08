@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import type {
   BaseProfile,
   PreferredFashion,
@@ -6,6 +7,7 @@ import type {
 import FieldSet from '../../components/fieldset/FieldSet';
 import Input from '../../components/formElements/Input';
 import RadioButtonList from '../../components/formElements/RadioButtonList';
+import validateProfile from '../../components/formElements/validation/validateProfile';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import type {
   PrimaryActionBtnProps,
@@ -25,16 +27,17 @@ type AccountFormProps = {
   profileFieldList: ProfileFieldListProps[];
 };
 
+const preferredFashion: PreferredFashion[] = [
+  'mensFashion',
+  'womensFashion',
+  'kidsFashion',
+  'noPreference',
+];
+
 const AccountForm = ({ profile, profileFieldList }: AccountFormProps) => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
-
-  const preferredFashion: PreferredFashion[] = [
-    'mensFashion',
-    'womensFashion',
-    'kidsFashion',
-    'noPreference',
-  ];
+  const [resultSuccess, setResultSuccess] = useState<boolean | null>(null);
 
   const preferredFashionList: OptionType[] = preferredFashion.map(
     (fashion) => ({
@@ -51,12 +54,27 @@ const AccountForm = ({ profile, profileFieldList }: AccountFormProps) => {
     preferredFashion: profile.preferredFashion,
   };
 
-  const { values, onChange, onSubmit } = useFormValidation({
-    initialState,
-    callback: handleSubmit,
-  });
+  const { values, onChange, onSubmit, onClearAllValues, errors } =
+    useFormValidation({
+      initialState,
+      callback: handleSubmit,
+      validate: validateProfile,
+    });
 
   const [updateProfile, { isLoading }] = useUpdateUserProfileMutation();
+
+  // Reset resultSuccess when modal closes
+  useEffect(() => {
+    if (!resultSuccess) {
+      return;
+    }
+    const timer = setTimeout(() => {
+      setResultSuccess(null);
+    }, 300);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [resultSuccess]);
 
   async function handleSubmit() {
     try {
@@ -64,8 +82,11 @@ const AccountForm = ({ profile, profileFieldList }: AccountFormProps) => {
       onAddMessagePopup({
         message: language.yourDetailsUpdated,
       });
+      setResultSuccess(true);
+      onClearAllValues();
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
+      setResultSuccess(false);
     }
   }
 
@@ -75,11 +96,13 @@ const AccountForm = ({ profile, profileFieldList }: AccountFormProps) => {
     buttonType: BtnType.Submit,
     disabled: isLoading,
     showBtnLoader: isLoading,
+    resultSuccess,
   };
 
   const secondaryActionBtn: SecondaryActionBtnProps = {
     label: language.cancel,
   };
+  console.log(errors);
 
   return (
     <ModalContainer
@@ -92,7 +115,7 @@ const AccountForm = ({ profile, profileFieldList }: AccountFormProps) => {
       className="my-account"
     >
       <FieldSet legendText={language.userInfo} hideLegendText>
-        {profileFieldList.map(({ name, label, type }) => (
+        {profileFieldList.map(({ name, label, type, required }) => (
           <Input
             key={name}
             value={values[name]}
@@ -101,6 +124,8 @@ const AccountForm = ({ profile, profileFieldList }: AccountFormProps) => {
             labelText={language[label]}
             onChange={onChange}
             type={type}
+            required={required}
+            errorText={language[errors[name]]}
           />
         ))}
       </FieldSet>

@@ -48,19 +48,17 @@ const ModalContainer = ({
         {triggerModalBtnContent}
       </Button>
 
-      {id && (
-        <Modal
-          id={id}
-          modalHeaderText={modalHeaderText}
-          primaryActionBtn={primaryActionBtn}
-          secondaryActionBtn={secondaryActionBtn}
-          modalSize={modalSize}
-          className={className}
-          onClearAllValues={onClearAllValues}
-        >
-          {children}
-        </Modal>
-      )}
+      <Modal
+        id={id}
+        modalHeaderText={modalHeaderText}
+        primaryActionBtn={primaryActionBtn}
+        secondaryActionBtn={secondaryActionBtn}
+        modalSize={modalSize}
+        className={className}
+        onClearAllValues={onClearAllValues}
+      >
+        {children}
+      </Modal>
     </>
   );
 };

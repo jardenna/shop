@@ -9,6 +9,7 @@ import { useLogoutMutation } from '../features/auth/authApiSlice';
 import useAuth from '../features/auth/hooks/useAuth';
 import useCurrency from '../features/currency/useCurrency';
 import useLanguage from '../features/language/useLanguage';
+import { clearMessagePopups } from '../features/messagePopupSlice';
 import { useGetFavoritesQuery } from '../features/shop/shopApiSlice';
 import useFormValidation from '../hooks/useFormValidation';
 import useMediaQuery from '../hooks/useMediaQuery ';
@@ -17,7 +18,6 @@ import type { OptionType } from '../types/types';
 import { getPathName, pathEquals } from '../utils/utils';
 import Header from './header/Header';
 import { AdminPath, ShopPath } from './nav/enums';
-import { clearMessagePopups } from '../features/messagePopupSlice';
 
 const Layout = () => {
   const navigate = useNavigate();

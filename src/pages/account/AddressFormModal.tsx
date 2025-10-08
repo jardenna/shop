@@ -1,3 +1,4 @@
+import { useEffect, useMemo, useState } from 'react';
 import type {
   Address,
   AddressInput,
@@ -57,6 +58,7 @@ const AddressFormModal = ({
 }: AddressFormModalProps) => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
+  const [resultSuccess, setResultSuccess] = useState<boolean | null>(null);
 
   const initialState: AddressInput = {
     name: address?.name || username,
@@ -67,11 +69,12 @@ const AddressFormModal = ({
     id: id || null,
   };
 
-  const { values, onChange, onSubmit, errors } = useFormValidation({
-    initialState,
-    callback: handleSubmitAddress,
-    validate: validateAddress,
-  });
+  const { values, onChange, onSubmit, errors, onClearAllValues } =
+    useFormValidation({
+      initialState,
+      callback: handleSubmitAddress,
+      validate: validateAddress,
+    });
 
   const [updateAddress, { isLoading }] = useUpdateAddressMutation();
   const [addAddress, { isLoading: addAddressIsLoading }] =
@@ -79,33 +82,53 @@ const AddressFormModal = ({
 
   const updatedAddress = id ? { ...values, id } : { ...values };
 
+  // Reset resultSuccess when modal closes
+  useEffect(() => {
+    if (!resultSuccess) {
+      return;
+    }
+    const timer = setTimeout(() => {
+      setResultSuccess(null);
+    }, 300);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [resultSuccess]);
+
   async function handleSubmitAddress() {
     try {
       if (id) {
-        await updateAddress({
-          address: updatedAddress,
-        }).unwrap();
+        await updateAddress({ address: updatedAddress }).unwrap();
       } else {
-        await addAddress({
-          address: updatedAddress,
-        }).unwrap();
+        await addAddress({ address: updatedAddress }).unwrap();
       }
 
-      onAddMessagePopup({
-        message: popupMessage,
-      });
+      onAddMessagePopup({ message: popupMessage });
+      setResultSuccess(true);
+      onClearAllValues();
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
+      setResultSuccess(false);
     }
   }
 
-  const primaryActionBtn: PrimaryActionBtnProps = {
-    onSubmit,
-    buttonType: BtnType.Submit,
-    label: primaryActionBtnLabel,
-    disabled: isLoading || addAddressIsLoading,
-    showBtnLoader: isLoading || addAddressIsLoading,
-  };
+  const primaryActionBtn = useMemo<PrimaryActionBtnProps>(
+    () => ({
+      onSubmit,
+      buttonType: BtnType.Submit,
+      label: primaryActionBtnLabel,
+      disabled: isLoading || addAddressIsLoading,
+      showBtnLoader: isLoading || addAddressIsLoading,
+      resultSuccess,
+    }),
+    [
+      onSubmit,
+      primaryActionBtnLabel,
+      isLoading,
+      addAddressIsLoading,
+      resultSuccess,
+    ],
+  );
 
   const secondaryActionBtn: SecondaryActionBtnProps = {
     label: language.cancel,
@@ -114,6 +137,7 @@ const AddressFormModal = ({
   return (
     <ModalContainer
       triggerModalDisabled={triggerModalDisabled}
+      onClearAllValues={onClearAllValues}
       modalSize={SizeVariant.Md}
       triggerModalBtnContent={
         id ? (

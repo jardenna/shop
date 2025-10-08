@@ -188,6 +188,7 @@ function useFormValidation<T extends KeyValuePair>({
 
   const onClearAllValues = () => {
     setValues(initialState);
+    setErrors({});
   };
 
   const onFocus = () => {

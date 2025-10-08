@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { useEffect, type ReactNode } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import useLanguage from '../../features/language/useLanguage';
 import { selectModalId } from '../../features/modalSlice';
@@ -19,6 +19,7 @@ export type PrimaryActionBtnProps = {
   className?: string;
   closeOnClick?: boolean;
   disabled?: boolean;
+  resultSuccess?: boolean | null;
   showBtnLoader?: boolean;
   variant?: BtnVariant;
   onClick?: () => void;
@@ -70,10 +71,21 @@ const Modal = ({
 
   useClickOutside(popupRef, () => {
     closeModalAnimated();
-    if (onClearAllValues) {
-      onClearAllValues();
-    }
+    onClearAllValues?.();
   }, [popupRef]);
+
+  useEffect(() => {
+    if (primaryActionBtn.resultSuccess === true && modalId === id) {
+      closeModalAnimated();
+      onClearAllValues?.();
+    }
+  }, [
+    primaryActionBtn.resultSuccess,
+    modalId,
+    id,
+    closeModalAnimated,
+    onClearAllValues,
+  ]);
 
   if (modalId !== id || !modalId) {
     return null;
@@ -84,8 +96,10 @@ const Modal = ({
       primaryActionBtn.onClick();
       closeModalAnimated();
     }
-
-    if (primaryActionBtn.closeOnClick !== false) {
+    if (
+      primaryActionBtn.closeOnClick !== false &&
+      primaryActionBtn.resultSuccess === undefined
+    ) {
       closeModalAnimated();
       if (onClearAllValues) {
         onClearAllValues();

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-
 import type { MessagePopupWithoutId } from '../../features/messagePopupSlice';
 import {
   addMessagePopup,

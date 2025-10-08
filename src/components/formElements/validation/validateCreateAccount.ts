@@ -23,6 +23,7 @@ function validateCreateAccount(values: AuthFormValues) {
   if (emailError) {
     errors.email = emailError;
   }
+
   // Password Errors
   if (!password) {
     errors.password = ValidationMessage.PleaseEnterPassword;
