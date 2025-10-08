@@ -1,39 +1,23 @@
-import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-
-import SkeletonParagraph from '../../components/skeleton/SkeletonParagraph';
+import Skeleton from '../../components/skeleton/Skeleton';
+import SkeletonCardList from '../../components/skeleton/SkeletonCardList';
 import useLanguage from '../../features/language/useLanguage';
-import {
-  useDeleteAddressMutation,
-  useGetUserProfileQuery,
-} from '../../features/profile/profileApiSlice';
-import handleApiError from '../../utils/handleApiError';
+import { useGetUserProfileQuery } from '../../features/profile/profileApiSlice';
 import AddressFormModal from './AddressFormModal';
 import AddressInfoListContent from './AddressInfoListContent';
 import DeleteAddressModal from './DeleteAddressModal';
 
 const AddressPage = () => {
   const { language } = useLanguage();
-  const { onAddMessagePopup } = useMessagePopup();
   const { data: profile, isLoading } = useGetUserProfileQuery();
-  const [deleteAddress] = useDeleteAddressMutation();
-
-  const handleDeleteAddress = async (id: string) => {
-    try {
-      await deleteAddress({
-        address: id,
-      }).unwrap();
-      onAddMessagePopup({
-        message: language.addressDeleted,
-      });
-    } catch (error) {
-      handleApiError(error, onAddMessagePopup);
-    }
-  };
 
   return (
     <>
-      {isLoading && <SkeletonParagraph />}
       <p>{language.addOrManageAddress}</p>
+      {isLoading && (
+        <SkeletonCardList count={3} className="small-card">
+          <Skeleton />
+        </SkeletonCardList>
+      )}
 
       {profile && (
         <ul className="my-address-list">
@@ -57,7 +41,6 @@ const AddressPage = () => {
                 <DeleteAddressModal
                   id={address.id}
                   modalMessage={address.street}
-                  onDeleteAddress={handleDeleteAddress}
                 />
                 <AddressFormModal
                   id={address.id}

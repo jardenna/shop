@@ -5,7 +5,6 @@ import type {
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/form/Form';
 import ControlGroupList from '../../../components/formElements/controlGroup/ControlGroupList';
-import validateShopProduct from '../../../components/formElements/validation/validateShopProduct';
 import useFormValidation from '../../../hooks/useFormValidation';
 import {
   ColorOption,
@@ -14,6 +13,7 @@ import {
 import resolveIconName from '../../../utils/iconHelpers';
 import { oneSize } from '../../../utils/sizeUtils';
 import { getlowerCaseFirstLetter } from '../../../utils/utils';
+import validateShopProduct from '../../../utils/validation/validateShopProduct';
 import useLanguage from '../../language/useLanguage';
 
 type ShopProductFormProps = {
@@ -63,7 +63,7 @@ const ShopProductForm = ({
 
   return (
     <Form onSubmit={onSubmit} submitBtnLabel={language.addToBag}>
-      <FieldSet legendText={language.productVariants} hideLegendText>
+      <FieldSet legendText={language.productVariants}>
         <ControlGroupList
           initialChecked={values.color}
           type="radio"

@@ -1,6 +1,6 @@
-import type { ProductRequest } from '../../../app/api/apiTypes/adminApiTypes';
-import type { ValidationErrors } from '../../../hooks/useFormValidation';
-import { ValidationMessage } from '../../../types/enums';
+import type { ProductRequest } from '../../app/api/apiTypes/adminApiTypes';
+import type { ValidationErrors } from '../../hooks/useFormValidation';
+import { ValidationMessage } from '../../types/enums';
 
 function validateProduct(values: ProductRequest) {
   const errors: ValidationErrors = {};

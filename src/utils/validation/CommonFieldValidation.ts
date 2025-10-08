@@ -1,5 +1,5 @@
-import { ValidationMessage } from '../../../types/enums';
-import { emailRegex } from '../../../utils/regex';
+import { ValidationMessage } from '../../types/enums';
+import { emailRegex } from '../regex';
 
 const validateEmail = (email: string) => {
   if (!email) {

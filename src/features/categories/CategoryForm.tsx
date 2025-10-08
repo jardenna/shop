@@ -3,7 +3,6 @@ import type { CreateCategoryRequest } from '../../app/api/apiTypes/adminApiTypes
 import useDatePicker from '../../components/datePicker/useDatePicker';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/form/Form';
-import validateCategory from '../../components/formElements/validation/validateCategory';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import SharedCategoryInputs from '../../components/SharedCategoryInputs';
 import useFormValidation from '../../hooks/useFormValidation';
@@ -11,6 +10,7 @@ import { AdminPath } from '../../layout/nav/enums';
 import type { OptionType } from '../../types/types';
 import handleApiError from '../../utils/handleApiError';
 import { getlowerCaseFirstLetter } from '../../utils/utils';
+import validateCategory from '../../utils/validation/validateCategory';
 import useLanguage from '../language/useLanguage';
 import {
   useCreateCategoryMutation,
@@ -98,7 +98,7 @@ const CategoryForm = ({
       onCancel={handleGoback}
       isLoading={isLoading || isCreateLoading}
     >
-      <FieldSet legendText={language.categories} hideLegendText>
+      <FieldSet legendText={language.categories}>
         <SharedCategoryInputs
           labelText={language.categoryStatus}
           allowedUpdateCategory={allowedUpdateCategory}

@@ -5,12 +5,12 @@ import './_fieldset.scss';
 type FieldSetProps = {
   children: ReactNode;
   legendText: string;
-  hideLegendText?: boolean;
+  showLegendText?: boolean;
 };
 
-const FieldSet = ({ children, legendText, hideLegendText }: FieldSetProps) => (
+const FieldSet = ({ children, legendText, showLegendText }: FieldSetProps) => (
   <fieldset className="fieldset">
-    {hideLegendText ? (
+    {!showLegendText ? (
       <VisuallyHidden as="legend">{legendText}</VisuallyHidden>
     ) : (
       <legend>{legendText}</legend>

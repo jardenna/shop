@@ -81,15 +81,17 @@ const ReviewsForm = ({
 
         {visible && (
           <div className={`review-textbox ${visible ? 'visible' : ''}`}>
-            <Textarea
-              ariaHidden={!visible}
-              value={values.comment}
-              name="comment"
-              id="comment"
-              labelText={language.shareYourExperience}
-              onChange={onChangeTextArea}
-              rows={8}
-            />
+            <FieldSet legendText={language.describeProduct}>
+              <Textarea
+                ariaHidden={!visible}
+                value={values.comment}
+                name="comment"
+                id="comment"
+                labelText={language.shareYourExperience}
+                onChange={onChangeTextArea}
+                rows={8}
+              />
+            </FieldSet>
             <Button type={BtnType.Submit} disabled={isLoading}>
               {language.shareReview}
             </Button>

@@ -1,11 +1,10 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import type {
   Address,
   AddressInput,
 } from '../../app/api/apiTypes/shopApiTypes';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Input from '../../components/formElements/Input';
-import validateAddress from '../../components/formElements/validation/validateAddress';
 import IconContent from '../../components/IconContent';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import {
@@ -13,6 +12,7 @@ import {
   SecondaryActionBtnProps,
 } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
+import useSubmitStatus from '../../components/modal/useSubmitStatus';
 import useLanguage from '../../features/language/useLanguage';
 import {
   useAddAddressMutation,
@@ -22,6 +22,7 @@ import useFormValidation from '../../hooks/useFormValidation';
 import { BtnType, BtnVariant, IconName, SizeVariant } from '../../types/enums';
 import type { InputType } from '../../types/types';
 import handleApiError from '../../utils/handleApiError';
+import validateAddress from '../../utils/validation/validateAddress';
 
 type AddressFormModalProps = {
   id: string | null;
@@ -58,7 +59,7 @@ const AddressFormModal = ({
 }: AddressFormModalProps) => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
-  const [resultSuccess, setResultSuccess] = useState<boolean | null>(null);
+  const { resultSuccess, setResultSuccess } = useSubmitStatus();
 
   const initialState: AddressInput = {
     name: address?.name || username,
@@ -76,35 +77,24 @@ const AddressFormModal = ({
       validate: validateAddress,
     });
 
-  const [updateAddress, { isLoading }] = useUpdateAddressMutation();
-  const [addAddress, { isLoading: addAddressIsLoading }] =
+  const [updateAddress, { isLoading, reset }] = useUpdateAddressMutation();
+  const [addAddress, { isLoading: addIsLoading, reset: addReset }] =
     useAddAddressMutation();
 
   const updatedAddress = id ? { ...values, id } : { ...values };
-
-  // Reset resultSuccess when modal closes
-  useEffect(() => {
-    if (!resultSuccess) {
-      return;
-    }
-    const timer = setTimeout(() => {
-      setResultSuccess(null);
-    }, 300);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [resultSuccess]);
 
   async function handleSubmitAddress() {
     try {
       if (id) {
         await updateAddress({ address: updatedAddress }).unwrap();
+        setResultSuccess(true);
       } else {
         await addAddress({ address: updatedAddress }).unwrap();
+        setResultSuccess(true);
       }
 
       onAddMessagePopup({ message: popupMessage });
-      setResultSuccess(true);
+
       onClearAllValues();
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
@@ -117,17 +107,11 @@ const AddressFormModal = ({
       onSubmit,
       buttonType: BtnType.Submit,
       label: primaryActionBtnLabel,
-      disabled: isLoading || addAddressIsLoading,
-      showBtnLoader: isLoading || addAddressIsLoading,
+      disabled: isLoading || addIsLoading,
+      showBtnLoader: isLoading || addIsLoading,
       resultSuccess,
     }),
-    [
-      onSubmit,
-      primaryActionBtnLabel,
-      isLoading,
-      addAddressIsLoading,
-      resultSuccess,
-    ],
+    [onSubmit, primaryActionBtnLabel, isLoading, addIsLoading, resultSuccess],
   );
 
   const secondaryActionBtn: SecondaryActionBtnProps = {
@@ -138,6 +122,7 @@ const AddressFormModal = ({
     <ModalContainer
       triggerModalDisabled={triggerModalDisabled}
       onClearAllValues={onClearAllValues}
+      onBoundaryReset={id ? reset : addReset}
       modalSize={SizeVariant.Md}
       triggerModalBtnContent={
         id ? (
@@ -162,7 +147,7 @@ const AddressFormModal = ({
       modalHeaderText={modalHeaderText}
       className="address-modal"
     >
-      <FieldSet legendText={language.address} hideLegendText>
+      <FieldSet legendText={language.address}>
         {addressInputList.map(({ name, required, type }) => (
           <Input
             key={name}

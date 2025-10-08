@@ -12,7 +12,6 @@ import ControlGroupList from '../../../components/formElements/controlGroup/Cont
 import Input from '../../../components/formElements/Input';
 import Textarea from '../../../components/formElements/Textarea';
 import ToggleSwitch from '../../../components/formElements/toggleSwitch/ToggleSwitch';
-import validateProduct from '../../../components/formElements/validation/validateProduct';
 import LabelValueGrid from '../../../components/LabelValueGrid';
 import useMessagePopup from '../../../components/messagePopup/useMessagePopup';
 import ColorOptions from '../../../components/selectbox/ColorOptions';
@@ -26,6 +25,7 @@ import type { OptionType } from '../../../types/types';
 import { getColorOptions } from '../../../utils/colorUtils';
 import handleApiError from '../../../utils/handleApiError';
 import { getlowerCaseFirstLetter, maxFiles } from '../../../utils/utils';
+import validateProduct from '../../../utils/validation/validateProduct';
 import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
 import useCurrency from '../../currency/useCurrency';
 import useLanguage from '../../language/useLanguage';

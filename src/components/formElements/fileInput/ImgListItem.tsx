@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import useLanguage from '../../../features/language/useLanguage';
 import { IconName } from '../../../types/enums';
 import IconBtn from '../../IconBtn';

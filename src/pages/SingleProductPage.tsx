@@ -81,6 +81,7 @@ const SingleProductPage = () => {
           <ReviewList
             reviewList={product.reviews}
             title={`${language.numberOfReviews} ${product.numReviews}`}
+            onReset={() => refetch}
           />
         ) : (
           <span>{language.noReview}</span>
@@ -113,20 +114,26 @@ const SingleProductPage = () => {
           >
             <section className="single-product">
               <div className="single-product-content">
-                <p>
-                  {language.brand}: {product.brand}
-                </p>
-
-                <LayoutElement
-                  ariaLabel={language.product}
-                  className="single-product-header"
+                <ErrorBoundary
+                  FallbackComponent={ErrorBoundaryFallback}
+                  onReset={() => refetch}
                 >
-                  <h1>{product.productName}</h1>
-                  <FavoriteHeart id={product.id} />
-                </LayoutElement>
+                  <p>
+                    {language.brand}: {product.brand}
+                  </p>
+                  <LayoutElement
+                    ariaLabel={language.product}
+                    className="single-product-header"
+                  >
+                    <h1>{product.productName}</h1>
+                    <FavoriteHeart id={product.id} />
+                  </LayoutElement>
+                </ErrorBoundary>
+
                 <ReviewStars
                   stars={getStarsArray(product.rating)}
                   rating={product.rating}
+                  onReset={() => refetch}
                 />
                 <ProductDiscountPrice
                   price={product.price}
@@ -144,12 +151,23 @@ const SingleProductPage = () => {
                   )}
                 </div>
                 {id && currentUser && <ReviewsForm productId={id} />}
-                <ShopProductForm
-                  selectedProduct={product}
-                  colorList={colorList}
-                  displaySizeList={displaySizeList}
-                />
-                <Accordion accordionList={accordionList} />
+
+                <ErrorBoundary
+                  FallbackComponent={ErrorBoundaryFallback}
+                  onReset={() => refetch}
+                >
+                  <ShopProductForm
+                    selectedProduct={product}
+                    colorList={colorList}
+                    displaySizeList={displaySizeList}
+                  />
+                </ErrorBoundary>
+                <ErrorBoundary
+                  FallbackComponent={ErrorBoundaryFallback}
+                  onReset={() => refetch}
+                >
+                  <Accordion accordionList={accordionList} />
+                </ErrorBoundary>
               </div>
             </section>
           </ErrorBoundary>

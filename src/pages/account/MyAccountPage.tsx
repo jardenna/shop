@@ -1,10 +1,13 @@
+import { ErrorBoundary } from 'react-error-boundary';
 import type { BaseProfile } from '../../app/api/apiTypes/shopApiTypes';
-import SkeletonParagraph from '../../components/skeleton/SkeletonParagraph';
+import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
+import Skeleton from '../../components/skeleton/Skeleton';
+import SkeletonGrid from '../../components/skeleton/SkeletonGrid';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetUserProfileQuery } from '../../features/profile/profileApiSlice';
 import type { InputType } from '../../types/types';
 import './_my-account.scss';
-import AccountForm from './AccountForm';
+import AccountFormModal from './AccountFormModal';
 import AccountInfoList from './AccountInfoList';
 
 export type ProfileFieldListProps = {
@@ -17,7 +20,7 @@ export type ProfileFieldListProps = {
 
 const MyAccountPage = () => {
   const { language } = useLanguage();
-  const { data: profile, isLoading } = useGetUserProfileQuery();
+  const { data: profile, isLoading, refetch } = useGetUserProfileQuery();
 
   const profileFieldList: ProfileFieldListProps[] = [
     {
@@ -46,18 +49,33 @@ const MyAccountPage = () => {
 
   return (
     <>
-      {isLoading && <SkeletonParagraph />}
       <p>{language.verifyAndUpdateInfo}</p>
 
-      {profile && (
-        <div className="my-account">
-          <AccountInfoList
-            profile={profile}
-            profileFieldList={profileFieldList}
-          />
-          <AccountForm profile={profile} profileFieldList={profileFieldList} />
-        </div>
-      )}
+      <div className="my-account">
+        {isLoading && (
+          <>
+            <SkeletonGrid width="12" height="1.4" />
+            <Skeleton height="3.2" />
+          </>
+        )}
+        <ErrorBoundary
+          FallbackComponent={ErrorBoundaryFallback}
+          onReset={() => refetch}
+        >
+          {profile && (
+            <>
+              <AccountInfoList
+                profile={profile}
+                profileFieldList={profileFieldList}
+              />
+              <AccountFormModal
+                profile={profile}
+                profileFieldList={profileFieldList}
+              />
+            </>
+          )}
+        </ErrorBoundary>
+      </div>
     </>
   );
 };

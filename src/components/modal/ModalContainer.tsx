@@ -28,6 +28,7 @@ const ModalContainer = ({
   triggerModalClassName,
   triggerModalDisabled,
   onClearAllValues,
+  onBoundaryReset,
 }: ModalContainerProps) => {
   const dispatch = useAppDispatch();
 
@@ -56,6 +57,7 @@ const ModalContainer = ({
         modalSize={modalSize}
         className={className}
         onClearAllValues={onClearAllValues}
+        onBoundaryReset={onBoundaryReset}
       >
         {children}
       </Modal>

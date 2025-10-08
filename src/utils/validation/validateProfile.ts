@@ -1,6 +1,6 @@
-import { BaseProfile } from '../../../app/api/apiTypes/shopApiTypes';
-import type { ValidationErrors } from '../../../hooks/useFormValidation';
-import { ValidationMessage } from '../../../types/enums';
+import { BaseProfile } from '../../app/api/apiTypes/shopApiTypes';
+import type { ValidationErrors } from '../../hooks/useFormValidation';
+import { ValidationMessage } from '../../types/enums';
 import validateEmail from './CommonFieldValidation';
 
 function validateProfile(values: BaseProfile) {
