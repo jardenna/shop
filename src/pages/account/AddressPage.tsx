@@ -33,7 +33,7 @@ const AddressPage = () => {
   return (
     <>
       <p>{language.addOrManageAddress}</p>
-      {!isLoading && (
+      {isLoading && (
         <SkeletonCardList count={3} className="small-card">
           <Skeleton />
         </SkeletonCardList>

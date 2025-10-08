@@ -1,5 +1,6 @@
 import type { BaseProfile } from '../../app/api/apiTypes/shopApiTypes';
-import SkeletonParagraph from '../../components/skeleton/SkeletonParagraph';
+import Skeleton from '../../components/skeleton/Skeleton';
+import SkeletonGrid from '../../components/skeleton/SkeletonGrid';
 import useLanguage from '../../features/language/useLanguage';
 import { useGetUserProfileQuery } from '../../features/profile/profileApiSlice';
 import type { InputType } from '../../types/types';
@@ -46,18 +47,28 @@ const MyAccountPage = () => {
 
   return (
     <>
-      {isLoading && <SkeletonParagraph />}
       <p>{language.verifyAndUpdateInfo}</p>
 
-      {profile && (
-        <div className="my-account">
-          <AccountInfoList
-            profile={profile}
-            profileFieldList={profileFieldList}
-          />
-          <AccountForm profile={profile} profileFieldList={profileFieldList} />
-        </div>
-      )}
+      <div className="my-account">
+        {isLoading && (
+          <>
+            <SkeletonGrid width="12" height="1.4" />
+            <Skeleton height="3.2" />
+          </>
+        )}
+        {profile && (
+          <>
+            <AccountInfoList
+              profile={profile}
+              profileFieldList={profileFieldList}
+            />
+            <AccountForm
+              profile={profile}
+              profileFieldList={profileFieldList}
+            />
+          </>
+        )}
+      </div>
     </>
   );
 };

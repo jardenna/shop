@@ -1,14 +1,18 @@
 import type { PickedSkeletonTypes } from './Skeleton';
 import Skeleton from './Skeleton';
 
-const SkeletonGrid = ({ count = 5 }: PickedSkeletonTypes) => {
+const SkeletonGrid = ({
+  count = 5,
+  height = '1',
+  width = '5',
+}: PickedSkeletonTypes) => {
   const skeletons = Array.from({ length: count });
   return (
     <div className="skeleton-column">
       {skeletons.map((_, index) => (
         <div key={index} className="grid grid-two-col">
-          <Skeleton height="1" width="5" />
-          <Skeleton height="1" />
+          <Skeleton height={height} width={width} />
+          <Skeleton height={height} />
         </div>
       ))}
     </div>
