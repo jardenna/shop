@@ -63,7 +63,7 @@ const ShopProductForm = ({
 
   return (
     <Form onSubmit={onSubmit} submitBtnLabel={language.addToBag}>
-      <FieldSet legendText={language.productVariants} hideLegendText>
+      <FieldSet legendText={language.productVariants}>
         <ControlGroupList
           initialChecked={values.color}
           type="radio"

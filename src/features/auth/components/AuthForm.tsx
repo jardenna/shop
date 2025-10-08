@@ -64,7 +64,7 @@ const AuthForm = ({
       onSubmit={onSubmit}
       isLoading={isLoading}
     >
-      <FieldSet legendText={legendText} hideLegendText>
+      <FieldSet legendText={legendText}>
         {values.username !== undefined && (
           <Input
             name="username"

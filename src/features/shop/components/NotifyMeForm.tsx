@@ -25,7 +25,7 @@ const NotifyMeForm = ({
   return (
     <div className="notify">
       {sizesIsRequered ? (
-        <FieldSet legendText={language.sizes} hideLegendText>
+        <FieldSet legendText={language.sizes}>
           <p>
             {language.missingYourSize}? {language.notifyMeMessage}.
           </p>
@@ -47,7 +47,7 @@ const NotifyMeForm = ({
       ) : (
         <p>{language.temporarilyOutOfStockText}.</p>
       )}
-      <FieldSet legendText={language.email} hideLegendText>
+      <FieldSet legendText={language.email}>
         <Input
           name="email"
           id="email"

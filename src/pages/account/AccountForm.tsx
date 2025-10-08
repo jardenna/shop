@@ -114,7 +114,7 @@ const AccountForm = ({ profile, profileFieldList }: AccountFormProps) => {
       secondaryActionBtn={secondaryActionBtn}
       className="my-account"
     >
-      <FieldSet legendText={language.userInfo} hideLegendText>
+      <FieldSet legendText={language.userInfo}>
         {profileFieldList.map(({ name, label, type, required }) => (
           <Input
             key={name}

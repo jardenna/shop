@@ -131,7 +131,7 @@ const SubCategoryForm = ({
       onCancel={handleGoback}
       isLoading={isLoading || isCreateLoading}
     >
-      <FieldSet legendText={language.categories} hideLegendText>
+      <FieldSet legendText={language.categories}>
         <Selectbox
           id="category"
           defaultValue={{

@@ -98,7 +98,7 @@ const CategoryForm = ({
       onCancel={handleGoback}
       isLoading={isLoading || isCreateLoading}
     >
-      <FieldSet legendText={language.categories} hideLegendText>
+      <FieldSet legendText={language.categories}>
         <SharedCategoryInputs
           labelText={language.categoryStatus}
           allowedUpdateCategory={allowedUpdateCategory}
