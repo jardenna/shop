@@ -1,10 +1,12 @@
 import { useEffect, type ReactNode } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { useAppSelector } from '../../app/hooks';
 import useLanguage from '../../features/language/useLanguage';
 import { selectModalId } from '../../features/modalSlice';
 import useClickOutside from '../../hooks/useClickOutside';
 import { BtnType, BtnVariant, PopupRole, SizeVariant } from '../../types/enums';
 import type { FormEventType } from '../../types/types';
+import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import Overlay from '../overlay/Overlay';
 import Portal from '../Portal';
 import './_modal.scss';
@@ -43,6 +45,7 @@ export type ModalProps = {
   modalSize?: SizeVariant;
   secondaryActionBtn?: SecondaryActionBtnProps;
   showCloseIcon?: boolean;
+  onBoundaryReset?: () => void;
   onClearAllValues?: () => void;
 };
 
@@ -58,6 +61,7 @@ const Modal = ({
   isAlert,
   modalInfo,
   onClearAllValues,
+  onBoundaryReset,
 }: ModalProps) => {
   const { language } = useLanguage();
   const modalId = useAppSelector(selectModalId);
@@ -147,6 +151,11 @@ const Modal = ({
     </article>
   );
 
+  const handleErrorBoundaryReset = () => {
+    closeModalAnimated();
+    onBoundaryReset?.();
+  };
+
   return (
     <Portal portalId="modal">
       <dialog
@@ -154,7 +163,12 @@ const Modal = ({
         className={`modal modal-${modalSize} ${className} ${popupClass} animate-top-center`}
         role={isAlert ? PopupRole.Alert : undefined}
       >
-        {ModalContent}
+        <ErrorBoundary
+          FallbackComponent={ErrorBoundaryFallback}
+          onReset={handleErrorBoundaryReset}
+        >
+          {ModalContent}
+        </ErrorBoundary>
       </dialog>
       <Overlay />
     </Portal>

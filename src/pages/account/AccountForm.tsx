@@ -61,7 +61,7 @@ const AccountForm = ({ profile, profileFieldList }: AccountFormProps) => {
       validate: validateProfile,
     });
 
-  const [updateProfile, { isLoading }] = useUpdateUserProfileMutation();
+  const [updateProfile, { isLoading, reset }] = useUpdateUserProfileMutation();
 
   // Reset resultSuccess when modal closes
   useEffect(() => {
@@ -112,6 +112,9 @@ const AccountForm = ({ profile, profileFieldList }: AccountFormProps) => {
       primaryActionBtn={primaryActionBtn}
       modalHeaderText={language.updateYourInfo}
       secondaryActionBtn={secondaryActionBtn}
+      onBoundaryReset={() => {
+        reset();
+      }}
       className="my-account"
     >
       <FieldSet legendText={language.userInfo}>

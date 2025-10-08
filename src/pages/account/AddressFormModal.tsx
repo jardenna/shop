@@ -76,8 +76,8 @@ const AddressFormModal = ({
       validate: validateAddress,
     });
 
-  const [updateAddress, { isLoading }] = useUpdateAddressMutation();
-  const [addAddress, { isLoading: addAddressIsLoading }] =
+  const [updateAddress, { isLoading, reset }] = useUpdateAddressMutation();
+  const [addAddress, { isLoading: addIsLoading, reset: addReset }] =
     useAddAddressMutation();
 
   const updatedAddress = id ? { ...values, id } : { ...values };
@@ -117,17 +117,11 @@ const AddressFormModal = ({
       onSubmit,
       buttonType: BtnType.Submit,
       label: primaryActionBtnLabel,
-      disabled: isLoading || addAddressIsLoading,
-      showBtnLoader: isLoading || addAddressIsLoading,
+      disabled: isLoading || addIsLoading,
+      showBtnLoader: isLoading || addIsLoading,
       resultSuccess,
     }),
-    [
-      onSubmit,
-      primaryActionBtnLabel,
-      isLoading,
-      addAddressIsLoading,
-      resultSuccess,
-    ],
+    [onSubmit, primaryActionBtnLabel, isLoading, addIsLoading, resultSuccess],
   );
 
   const secondaryActionBtn: SecondaryActionBtnProps = {
@@ -138,6 +132,7 @@ const AddressFormModal = ({
     <ModalContainer
       triggerModalDisabled={triggerModalDisabled}
       onClearAllValues={onClearAllValues}
+      onBoundaryReset={id ? reset : addReset}
       modalSize={SizeVariant.Md}
       triggerModalBtnContent={
         id ? (
