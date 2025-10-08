@@ -6,7 +6,7 @@ import type { AuthFormValues } from './validateCreateAccount';
 type OmittedRLoginType = Omit<AuthFormValues, 'username' | 'confirmPassword'>;
 
 function validateLogin(values: OmittedRLoginType) {
-  const errors: ValidationErrors = {};
+  const errors: ValidationErrors<OmittedRLoginType> = {};
   const { email, password } = values;
 
   // Email Errors

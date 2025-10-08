@@ -8,7 +8,7 @@ export type ColorOption = {
 const colorMap: Record<string, string> = {
   black: '#020101',
   grey: '#99a4a9',
-  brown: '#531e0a',
+  brown: '#694132',
   white: '#fff',
   blue: '#165272',
   yellow: '#facc15',

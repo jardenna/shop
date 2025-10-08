@@ -3,7 +3,7 @@ import type { CategoryState } from '../../pages/category/CreateCategoryPage';
 import { ValidationMessage } from '../../types/enums';
 
 function validateCategory(values: CategoryState) {
-  const errors: ValidationErrors = {};
+  const errors: ValidationErrors<CategoryState> = {};
   const { categoryName } = values;
 
   if (!categoryName) {

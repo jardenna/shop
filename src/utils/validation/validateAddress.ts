@@ -3,7 +3,7 @@ import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
 
 function validateAddress(values: AddressInput) {
-  const errors: ValidationErrors = {};
+  const errors: ValidationErrors<AddressInput> = {};
   const { street, city, zipCode } = values;
 
   if (!street) {

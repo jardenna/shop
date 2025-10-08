@@ -78,7 +78,7 @@ const ShopProductForm = ({
           groupTitle={{
             title: titleColor,
             id: 'choose-product-color',
-            errorText: language[errors.colors],
+            errorText: language[errors.color],
           }}
         />
 
@@ -93,7 +93,7 @@ const ShopProductForm = ({
           groupTitle={{
             title: titleSize,
             id: 'choose-product-size',
-            errorText: language[errors.sizes],
+            errorText: language[errors.size],
           }}
         />
       </FieldSet>

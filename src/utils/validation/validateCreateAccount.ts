@@ -10,7 +10,7 @@ export type AuthFormValues = {
 };
 
 function validateCreateAccount(values: AuthFormValues) {
-  const errors: ValidationErrors = {};
+  const errors: ValidationErrors<AuthFormValues> = {};
   const { username, email, password, confirmPassword } = values;
 
   // Name Errors

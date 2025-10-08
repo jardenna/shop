@@ -3,7 +3,7 @@ import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
 
 function validateProduct(values: ProductRequest) {
-  const errors: ValidationErrors = {};
+  const errors: ValidationErrors<ProductRequest> = {};
   const {
     brand,
     colors,
