@@ -12,7 +12,7 @@ import type {
   SecondaryActionBtnProps,
 } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
-import useResultSuccess from '../../components/modal/useSetResult';
+import useSubmitStatus from '../../components/modal/useSubmitStatus';
 import useLanguage from '../../features/language/useLanguage';
 import { useUpdateUserProfileMutation } from '../../features/profile/profileApiSlice';
 import useFormValidation from '../../hooks/useFormValidation';
@@ -40,7 +40,7 @@ const AccountFormModal = ({
 }: AccountFormModalProps) => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
-  const { resultSuccess, setResultSuccess } = useResultSuccess();
+  const { resultSuccess, setResultSuccess } = useSubmitStatus();
 
   const preferredFashionList: OptionType[] = preferredFashion.map(
     (fashion) => ({
