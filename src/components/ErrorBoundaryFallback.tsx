@@ -1,6 +1,7 @@
 import useLanguage from '../features/language/useLanguage';
 import ErrorContent from './ErrorContent';
 
+// Props are automatically injected by react-error-boundary
 type FallbackProps = {
   error?: any;
   resetErrorBoundary: () => void;
@@ -12,7 +13,7 @@ const ErrorBoundaryFallback = ({
 }: FallbackProps) => {
   const { language } = useLanguage();
 
-  console.error('Caught error in ErrorBoundary:', error); // optional logging
+  console.error('Caught error in ErrorBoundary:', error);
 
   const errorText = error?.data?.message ?? language.somethingWentWrong; // brug RTKQ message hvis den findes
 
