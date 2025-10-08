@@ -106,6 +106,7 @@ const AccountForm = ({ profile, profileFieldList }: AccountFormProps) => {
   return (
     <ModalContainer
       triggerModalBtnContent={language.update}
+      onClearAllValues={onClearAllValues}
       id="id"
       modalSize={SizeVariant.Md}
       primaryActionBtn={primaryActionBtn}
