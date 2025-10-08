@@ -87,12 +87,14 @@ const AddressFormModal = ({
     try {
       if (id) {
         await updateAddress({ address: updatedAddress }).unwrap();
+        setResultSuccess(true);
       } else {
         await addAddress({ address: updatedAddress }).unwrap();
+        setResultSuccess(true);
       }
 
       onAddMessagePopup({ message: popupMessage });
-      setResultSuccess(true);
+
       onClearAllValues();
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
