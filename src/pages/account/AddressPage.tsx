@@ -1,6 +1,6 @@
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-
-import SkeletonParagraph from '../../components/skeleton/SkeletonParagraph';
+import Skeleton from '../../components/skeleton/Skeleton';
+import SkeletonCardList from '../../components/skeleton/SkeletonCardList';
 import useLanguage from '../../features/language/useLanguage';
 import {
   useDeleteAddressMutation,
@@ -32,8 +32,12 @@ const AddressPage = () => {
 
   return (
     <>
-      {isLoading && <SkeletonParagraph />}
       <p>{language.addOrManageAddress}</p>
+      {!isLoading && (
+        <SkeletonCardList count={3} className="small-card">
+          <Skeleton />
+        </SkeletonCardList>
+      )}
 
       {profile && (
         <ul className="my-address-list">

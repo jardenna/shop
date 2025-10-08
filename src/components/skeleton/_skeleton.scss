@@ -45,10 +45,23 @@
 .skeleton-card-list {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 21.875rem), 1fr));
+
+  @include grid-template-column(350px);
 
   .skeleton {
     border-radius: 0;
+    height: 100%;
+  }
+
+  &.small-card {
+    @include grid-template-column(230px);
+
+    grid-auto-rows: rem(248px) auto;
+    gap: 12px;
+
+    .skeleton {
+      min-height: rem(240px);
+    }
   }
 }
 
