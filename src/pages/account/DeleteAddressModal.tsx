@@ -46,7 +46,7 @@ const DeleteAddressModal = ({ id, modalMessage }: DeleteAddressModalProps) => {
 
   return (
     <ModalContainer
-      onBoundaryReset={() => reset}
+      onBoundaryReset={reset}
       triggerModalBtnContent={
         <IconContent
           iconName={IconName.Trash}
