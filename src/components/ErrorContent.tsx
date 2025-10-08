@@ -15,6 +15,7 @@ const ErrorContent = ({ onClick, errorText, btnLabel }: ErrorContentProps) => {
   return (
     <section className="error-content">
       <Picture
+        className="emoji"
         src={`${src}.png`}
         srcSet={`${src}.avif`}
         alt={language.errorAltText}
