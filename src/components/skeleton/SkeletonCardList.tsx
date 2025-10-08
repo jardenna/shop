@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import type { SkeletonProps } from './Skeleton';
 import SkeletonCard from './SkeletonCard';
 
