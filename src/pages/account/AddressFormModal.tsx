@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import type {
   Address,
   AddressInput,
@@ -12,6 +12,7 @@ import {
   SecondaryActionBtnProps,
 } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
+import useSubmitStatus from '../../components/modal/useSubmitStatus';
 import useLanguage from '../../features/language/useLanguage';
 import {
   useAddAddressMutation,
@@ -58,7 +59,7 @@ const AddressFormModal = ({
 }: AddressFormModalProps) => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
-  const [resultSuccess, setResultSuccess] = useState<boolean | null>(null);
+  const { resultSuccess, setResultSuccess } = useSubmitStatus();
 
   const initialState: AddressInput = {
     name: address?.name || username,
@@ -81,19 +82,6 @@ const AddressFormModal = ({
     useAddAddressMutation();
 
   const updatedAddress = id ? { ...values, id } : { ...values };
-
-  // Reset resultSuccess when modal closes
-  useEffect(() => {
-    if (!resultSuccess) {
-      return;
-    }
-    const timer = setTimeout(() => {
-      setResultSuccess(null);
-    }, 300);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [resultSuccess]);
 
   async function handleSubmitAddress() {
     try {
