@@ -11,6 +11,8 @@ import CheckIcon from './CheckIcon';
 import ChevronDownIcon from './ChevronDownIcon';
 import ChevronLeftIcon from './ChevronLeftIcon';
 import ChevronRightIcon from './ChevronRightIcon';
+import ChevronsLeftIcon from './ChevronsLeftIcon';
+import ChevronsRightIcon from './ChevronsRightIcon';
 import CircleChevronRightIcon from './CircleChevronRightIcon';
 import CloseIcon from './CloseIcon';
 import KidIcon from './colors/KidIcon';
@@ -35,6 +37,7 @@ import LayoutListIcon from './LayoutListIcon';
 import LoginIcon from './LoginIcon';
 import Logo from './Logo';
 import LogoutIcon from './LogoutIcon';
+import MoreIcon from './MoreIcon';
 import OrdersIcon from './OrdersIcon';
 import PencilIcon from './PencilIcon';
 import ProductsIcon from './ProductsIcon';
@@ -77,6 +80,8 @@ const iconMapping = {
   chevronDown: ChevronDownIcon,
   chevronLeft: ChevronLeftIcon,
   chevronRight: ChevronRightIcon,
+  chevronsLeft: ChevronsLeftIcon,
+  chevronsRight: ChevronsRightIcon,
   circleChevronRight: CircleChevronRightIcon,
   close: CloseIcon,
   dashboard: DashboardIcon,
@@ -101,6 +106,7 @@ const iconMapping = {
   logout: LogoutIcon,
   man: ManIcon,
   menuDotsHorizontal: ThreeDotsHorizontalIcon,
+  more: MoreIcon,
   orders: OrdersIcon,
   pencil: PencilIcon,
   products: ProductsIcon,

@@ -1,0 +1,55 @@
+﻿@use '../../scss/globals' as *;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+
+  .pagination-item {
+    display: flex;
+    align-items: center;
+
+    .btn {
+      padding: 8px 15px;
+      border: 1px solid $color-gray-40;
+      border-right: 0;
+      color: inherit;
+      min-width: 48px;
+      border-radius: 0;
+
+      &.last-pagination-item {
+        border-right: 1px solid $color-gray-40;
+      }
+
+      &:disabled {
+        color: $color-gray-40;
+      }
+
+      &:hover {
+        background-color: $color-blue;
+        color: $color-white;
+      }
+
+      &:focus {
+        @include outline($color-green, 1px);
+      }
+
+      &.active {
+        background-color: $color-blue;
+        color: $color-white;
+        pointer-events: none;
+      }
+    }
+  }
+
+  .pagination-item-content {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+
+    svg {
+      width: rem(14px);
+      height: rem(14px);
+    }
+  }
+}
