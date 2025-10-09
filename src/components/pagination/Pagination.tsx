@@ -39,7 +39,6 @@ const Pagination = ({
   productsPerPage,
   totalCount,
 }: PaginationProps) => {
-  const [pageNumber, setPageNumber] = useState(currentPage);
   const totalBtns = Math.ceil(totalCount / productsPerPage);
 
   const paginationBtnList = calculateBtnsRange(
@@ -47,15 +46,17 @@ const Pagination = ({
     totalBtns,
     maxPaginationBtns,
   );
-
+  const [pageNumber, setPageNumber] = useState(currentPage);
   const handleGotoPrevPage = () => {
-    console.log(123);
-
-    setPageNumber(currentPage - 1);
+    if (pageNumber > 1) {
+      setPageNumber(pageNumber - 1);
+    }
   };
 
   const handleGotoNextPage = () => {
-    setPageNumber(currentPage + 1);
+    if (pageNumber < totalBtns) {
+      setPageNumber(pageNumber + 1);
+    }
   };
 
   const handleFirstPage = () => {
@@ -77,6 +78,7 @@ const Pagination = ({
             title=""
             ariaLabel="first"
             onClick={handleFirstPage}
+            disabled={pageNumber === 1}
           />
         </li>
         <li>
@@ -85,6 +87,7 @@ const Pagination = ({
             title=""
             ariaLabel="prev"
             onClick={handleGotoPrevPage}
+            disabled={pageNumber === 1}
           />
         </li>
         {paginationBtnList.map((paginationBtn) => (
@@ -98,6 +101,7 @@ const Pagination = ({
             title=""
             ariaLabel="next"
             onClick={handleGotoNextPage}
+            disabled={pageNumber === totalBtns}
           />
         </li>
         <li>
@@ -106,6 +110,7 @@ const Pagination = ({
             title=""
             ariaLabel="last"
             onClick={handleGotoLastPage}
+            disabled={pageNumber === totalBtns}
           />
         </li>
       </ul>
