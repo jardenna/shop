@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import IconContent from '../IconContent';
@@ -6,23 +6,23 @@ import './_pagination.scss';
 import PaginationItem from './PaginationItem';
 import usePagination, { PaginationActionEnum } from './usePagination';
 
-export interface PaginationProps {
+export type PaginationProps = {
   currentPage: number;
   pageLimit: number;
   rowsPerPage: number;
   selectedPage: number;
   setCurrentPage: Dispatch<SetStateAction<number>>;
   totalCount: number;
-}
+};
 
-const Pagination: FC<PaginationProps> = ({
+const Pagination = ({
   currentPage,
   totalCount,
   pageLimit,
   selectedPage,
   setCurrentPage,
   rowsPerPage,
-}) => {
+}: PaginationProps) => {
   const { language } = useLanguage();
   const {
     pageRange,

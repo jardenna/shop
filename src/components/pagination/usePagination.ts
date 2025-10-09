@@ -11,11 +11,11 @@ export enum PaginationActionEnum {
   PrevPaginationItem = 'jump-prev',
 }
 
-export type OmittedPaginationProps = Omit<PaginationProps, 'selectedPage'>;
+type OmittedPaginationProps = Omit<PaginationProps, 'selectedPage'>;
 
-interface UsePaginationProps extends OmittedPaginationProps {
+type UsePaginationProps = OmittedPaginationProps & {
   addCurrentPageToParams?: boolean;
-}
+};
 
 const usePagination = ({
   totalCount,

@@ -1,7 +1,6 @@
-import { FC } from 'react';
 import { IconDefaultProps } from './Icon';
 
-const MoreIcon: FC<IconDefaultProps> = ({ size, title, className }) => (
+const MoreIcon = ({ size, title, className, ariaHidden }: IconDefaultProps) => (
   <svg
     role="img"
     xmlns="http://www.w3.org/2000/svg"
@@ -14,6 +13,7 @@ const MoreIcon: FC<IconDefaultProps> = ({ size, title, className }) => (
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
+    aria-hidden={ariaHidden}
   >
     <title>{title}</title>
     <circle cx="12" cy="12" r="1" />

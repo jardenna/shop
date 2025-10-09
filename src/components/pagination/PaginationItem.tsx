@@ -1,8 +1,8 @@
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 
-interface PaginationItemProps {
+type PaginationItemProps = {
   ariaDescribedby?: string;
   ariaLabel?: string;
   className?: string;
@@ -11,9 +11,9 @@ interface PaginationItemProps {
   isBtnSelected?: boolean;
   paginationCount?: number;
   onSetCurrentPage: () => void;
-}
+};
 
-const PaginationItem: FC<PaginationItemProps> = ({
+const PaginationItem = ({
   content,
   onSetCurrentPage,
   paginationCount,
@@ -22,7 +22,7 @@ const PaginationItem: FC<PaginationItemProps> = ({
   ariaDescribedby,
   disabled,
   className = '',
-}) => (
+}: PaginationItemProps) => (
   <li className="pagination-item">
     <Button
       variant={BtnVariant.Ghost}
