@@ -4,6 +4,7 @@ import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import DisplayControls from '../components/DisplayControls';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
+import Pagination from '../components/pagination/Pagination';
 import Picture from '../components/Picture';
 import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import useLanguage from '../features/language/useLanguage';
@@ -102,7 +103,6 @@ const CollectionPage = () => {
             productName=""
           />
         )}
-
         <article className="collection-page-container">
           {isMobileSize ? (
             <CollectionPageHeader
@@ -161,7 +161,6 @@ const CollectionPage = () => {
                 )}
               </section>
               {isLoading && <SkeletonCardList count={8} />}
-
               <article
                 className={`product-card-list ${productView === 'list' && !isSmallMobileSize ? 'list' : ''}`}
               >
@@ -183,6 +182,13 @@ const CollectionPage = () => {
                     </ProductCard>
                   ))}
               </article>
+              {products && (
+                <Pagination
+                  currentPage={1}
+                  productsPerPage={10}
+                  totalCount={products.products.length}
+                />
+              )}
             </div>
           </ErrorBoundary>
         </article>

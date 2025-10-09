@@ -1,151 +1,115 @@
-import { Dispatch, SetStateAction } from 'react';
-import useLanguage from '../../features/language/useLanguage';
+import { useState } from 'react';
+import LayoutElement from '../../layout/LayoutElement';
 import { IconName } from '../../types/enums';
-import IconContent from '../IconContent';
+import Button from '../Button';
+import IconBtn from '../IconBtn';
 import './_pagination.scss';
-import PaginationItem from './PaginationItem';
-import usePagination, { PaginationActionEnum } from './usePagination';
 
-export type PaginationProps = {
+type PaginationProps = {
   currentPage: number;
-  pageLimit: number;
-  rowsPerPage: number;
-  selectedPage: number;
-  setCurrentPage: Dispatch<SetStateAction<number>>;
+  productsPerPage: number;
   totalCount: number;
+  maxPaginationBtns?: number;
 };
+
+// Creates an array of pagination button numbers to display in the UI
+function calculateBtnsRange(
+  currentPage: number,
+  totalBtns: number,
+  maxPaginationBtns: number,
+) {
+  // Determine which "button group" the current page belongs to
+  const startBtn =
+    Math.floor((currentPage - 1) / maxPaginationBtns) * maxPaginationBtns + 1;
+
+  // Find the last button number in the current visible group
+  const endBtn = Math.min(startBtn + maxPaginationBtns - 1, totalBtns);
+
+  const range = Array.from(
+    { length: endBtn - startBtn + 1 },
+    (_, i) => startBtn + i,
+  );
+
+  return range;
+}
 
 const Pagination = ({
   currentPage,
+  maxPaginationBtns = 5,
+  productsPerPage,
   totalCount,
-  pageLimit,
-  selectedPage,
-  setCurrentPage,
-  rowsPerPage,
 }: PaginationProps) => {
-  const { language } = useLanguage();
-  const {
-    pageRange,
-    totalPageCount,
-    onPaginationItemClick,
-    onPaginationAction,
-  } = usePagination({
-    totalCount,
-    rowsPerPage,
-    pageLimit,
-    currentPage: selectedPage,
-    setCurrentPage,
-    addCurrentPageToParams: true,
-  });
+  const [pageNumber, setPageNumber] = useState(currentPage);
+  const totalBtns = Math.ceil(totalCount / productsPerPage);
+
+  const paginationBtnList = calculateBtnsRange(
+    currentPage,
+    totalBtns,
+    maxPaginationBtns,
+  );
+
+  const handleGotoPrevPage = () => {
+    console.log(123);
+
+    setPageNumber(currentPage - 1);
+  };
+
+  const handleGotoNextPage = () => {
+    setPageNumber(currentPage + 1);
+  };
+
+  const handleFirstPage = () => {
+    setPageNumber(1);
+  };
+
+  const handleGotoLastPage = () => {
+    setPageNumber(totalBtns);
+  };
+
+  console.log(pageNumber);
 
   return (
-    <ul className="pagination">
-      {/* First Page */}
-      <PaginationItem
-        onSetCurrentPage={() => {
-          onPaginationAction(PaginationActionEnum.First);
-        }}
-        disabled={currentPage === 1}
-        content={
-          <IconContent
+    <LayoutElement as="nav" ariaLabel="pagination">
+      <ul className="pagination-btn-list">
+        <li>
+          <IconBtn
+            iconName={IconName.ChevronsLeft}
+            title=""
+            ariaLabel="first"
+            onClick={handleFirstPage}
+          />
+        </li>
+        <li>
+          <IconBtn
             iconName={IconName.ChevronLeft}
-            title={language.chevronLeft}
-            ariaLabel={language.gotoFirstPage}
+            title=""
+            ariaLabel="prev"
+            onClick={handleGotoPrevPage}
           />
-        }
-      />
-
-      {/* Prev Page */}
-      <PaginationItem
-        onSetCurrentPage={() => {
-          onPaginationAction(PaginationActionEnum.Prev);
-        }}
-        disabled={currentPage === 1}
-        content={
-          <IconContent
-            iconName={IconName.ChevronLeft}
-            title={language.chevronsLeft}
-            ariaLabel={language.gotoPrevPage}
-          />
-        }
-      />
-
-      {/* Jump Previous */}
-      <PaginationItem
-        disabled={currentPage < pageLimit}
-        onSetCurrentPage={() => {
-          onPaginationAction(PaginationActionEnum.PrevPaginationItem);
-        }}
-        content={
-          <IconContent
-            iconName={IconName.More}
-            title={language.threeVerticalDots}
-            ariaLabel={language.jumpPagesBack}
-          />
-        }
-      />
-
-      {/* Page Numbers */}
-      {pageRange.map((page) => (
-        <PaginationItem
-          key={page}
-          onSetCurrentPage={() => {
-            onPaginationItemClick(page);
-          }}
-          paginationCount={page}
-          ariaLabel={`${language.page} ${page} ${language.of} ${totalPageCount}`}
-          isBtnSelected={page === currentPage}
-          ariaDescribedby="current-status"
-          disabled={page === currentPage}
-        />
-      ))}
-
-      {/* Jump Next */}
-      <PaginationItem
-        onSetCurrentPage={() => {
-          onPaginationAction(PaginationActionEnum.NextPaginationItem);
-        }}
-        disabled={currentPage > totalPageCount - pageLimit}
-        content={
-          <IconContent
-            iconName={IconName.More}
-            title={language.threeVerticalDots}
-            ariaLabel={language.jumpPagesForth}
-          />
-        }
-      />
-
-      {/* Next Page */}
-      <PaginationItem
-        onSetCurrentPage={() => {
-          onPaginationAction(PaginationActionEnum.Next);
-        }}
-        disabled={currentPage === totalPageCount}
-        content={
-          <IconContent
+        </li>
+        {paginationBtnList.map((paginationBtn) => (
+          <li key={paginationBtn}>
+            <Button>{paginationBtn}</Button>
+          </li>
+        ))}
+        <li>
+          <IconBtn
             iconName={IconName.ChevronRight}
-            title={language.chevronRight}
-            ariaLabel={language.gotoNextPage}
+            title=""
+            ariaLabel="next"
+            onClick={handleGotoNextPage}
           />
-        }
-      />
-
-      {/* Last Page */}
-      <PaginationItem
-        onSetCurrentPage={() => {
-          onPaginationAction(PaginationActionEnum.Last);
-        }}
-        disabled={currentPage === totalPageCount}
-        className="last-pagination-item"
-        content={
-          <IconContent
+        </li>
+        <li>
+          <IconBtn
             iconName={IconName.ChevronsRight}
-            title={language.chevronsRight}
-            ariaLabel={language.gotoLastPage}
+            title=""
+            ariaLabel="last"
+            onClick={handleGotoLastPage}
           />
-        }
-      />
-    </ul>
+        </li>
+      </ul>
+    </LayoutElement>
   );
 };
 
