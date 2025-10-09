@@ -67,7 +67,9 @@ const Pagination = ({
     setPageNumber(totalBtns);
   };
 
-  console.log(pageNumber);
+  const handlePagination = (id: number) => {
+    setPageNumber(id);
+  };
 
   return (
     <LayoutElement as="nav" ariaLabel="pagination">
@@ -92,7 +94,15 @@ const Pagination = ({
         </li>
         {paginationBtnList.map((paginationBtn) => (
           <li key={paginationBtn}>
-            <Button>{paginationBtn}</Button>
+            <Button
+              onClick={() => {
+                handlePagination(paginationBtn);
+              }}
+              className={paginationBtn === pageNumber ? 'current' : ''}
+              ariaCurrent={paginationBtn === pageNumber ? 'page' : undefined}
+            >
+              {paginationBtn}
+            </Button>
           </li>
         ))}
         <li>

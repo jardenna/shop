@@ -1,3 +1,5 @@
+@use '../../scss/globals' as *;
+
 .pagination-btn-list {
   display: flex;
   gap: 18px;
@@ -9,5 +11,15 @@
     height: 40px;
     padding: 8px 12px;
     border-radius: 0;
+
+    &:disabled {
+      svg {
+        stroke: $color-gray-60;
+      }
+    }
+
+    &.current {
+      background-color: $color-blue-30;
+    }
   }
 }

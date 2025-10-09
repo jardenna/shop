@@ -8,10 +8,6 @@ button:disabled {
   &.btn-ghost {
     background-color: transparent;
     color: $color-gray-60;
-
-    svg {
-      stroke: $color-gray-60;
-    }
   }
 }
 
