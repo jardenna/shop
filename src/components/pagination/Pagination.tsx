@@ -97,7 +97,6 @@ const Pagination = ({
             disabled={page === 1}
           />
         </li>
-
         {paginationBtnList.map((paginationBtn) => (
           <li key={paginationBtn}>
             <Button
