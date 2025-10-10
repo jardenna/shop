@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useSearchParams } from 'react-router';
 import LayoutElement from '../../layout/LayoutElement';
 import { IconName } from '../../types/enums';
@@ -41,42 +40,39 @@ const Pagination = ({
   totalCount,
 }: PaginationProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const page = searchParams.get('page') ?? currentPage;
+  const pageParam = searchParams.get('page');
+  const page = pageParam ? Number(pageParam) : currentPage;
 
   const totalBtns = Math.ceil(totalCount / productsPerPage);
-
   const paginationBtnList = calculateBtnsRange(
-    Number(page),
+    page,
     totalBtns,
     maxPaginationBtns,
   );
-  const [pageNumber, setPageNumber] = useState(Number(page));
+
+  const handlePagination = (id: number) => {
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set('page', id.toString());
+    setSearchParams(Object.fromEntries(newParams.entries()));
+  };
 
   const handleGotoPrevPage = () => {
-    if (pageNumber > 1) {
-      setPageNumber(pageNumber - 1);
+    if (page > 1) {
+      handlePagination(page - 1);
     }
   };
 
   const handleGotoNextPage = () => {
-    if (pageNumber < totalBtns) {
-      setPageNumber(pageNumber + 1);
+    if (page < totalBtns) {
+      handlePagination(page + 1);
     }
   };
 
   const handleFirstPage = () => {
-    setPageNumber(1);
+    handlePagination(1);
   };
-
   const handleGotoLastPage = () => {
-    setPageNumber(totalBtns);
-  };
-
-  const handlePagination = (id: number) => {
-    setPageNumber(id);
-    const newParams = new URLSearchParams(searchParams.toString());
-    newParams.set('page', id.toString());
-    setSearchParams(Object.fromEntries(newParams.entries()));
+    handlePagination(totalBtns);
   };
 
   return (
@@ -88,7 +84,7 @@ const Pagination = ({
             title=""
             ariaLabel="first"
             onClick={handleFirstPage}
-            disabled={pageNumber === 1}
+            disabled={page === 1}
           />
         </li>
         <li>
@@ -97,29 +93,31 @@ const Pagination = ({
             title=""
             ariaLabel="prev"
             onClick={handleGotoPrevPage}
-            disabled={pageNumber === 1}
+            disabled={page === 1}
           />
         </li>
+
         {paginationBtnList.map((paginationBtn) => (
           <li key={paginationBtn}>
             <Button
               onClick={() => {
                 handlePagination(paginationBtn);
               }}
-              className={paginationBtn === pageNumber ? 'current' : ''}
-              ariaCurrent={paginationBtn === pageNumber ? 'page' : undefined}
+              className={paginationBtn === page ? 'current' : ''}
+              ariaCurrent={paginationBtn === page ? 'page' : undefined}
             >
               {paginationBtn}
             </Button>
           </li>
         ))}
+
         <li>
           <IconBtn
             iconName={IconName.ChevronRight}
             title=""
             ariaLabel="next"
             onClick={handleGotoNextPage}
-            disabled={pageNumber === totalBtns}
+            disabled={page === totalBtns}
           />
         </li>
         <li>
@@ -128,7 +126,7 @@ const Pagination = ({
             title=""
             ariaLabel="last"
             onClick={handleGotoLastPage}
-            disabled={pageNumber === totalBtns}
+            disabled={page === totalBtns}
           />
         </li>
       </ul>
