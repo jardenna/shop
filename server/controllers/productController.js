@@ -1,7 +1,7 @@
 import fs from 'fs';
 import mongoose from 'mongoose';
 import path from 'path';
-import { PUBLISHED } from '../config/constants.js';
+import { PUBLISHED, SCHEDULED } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import scheduledStatusHandler from '../middleware/scheduledStatusHandler.js';
 import Product from '../models/productModel.js';
@@ -253,13 +253,9 @@ const getProducts = asyncHandler(async (req, res) => {
   // Category/Subcategory filters
   const categoryMatchStage = [];
   if (subCategoryId) {
-    {
-      categoryMatchStage.push({
-        'subCategoryData._id': new mongoose.Types.ObjectId(
-          String(subCategoryId),
-        ),
-      });
-    }
+    categoryMatchStage.push({
+      'subCategoryData._id': new mongoose.Types.ObjectId(String(subCategoryId)),
+    });
   }
 
   if (mainCategory) {
@@ -270,6 +266,7 @@ const getProducts = asyncHandler(async (req, res) => {
       },
     });
   }
+
   if (categoryMatchStage.length) {
     categoryJoinPipeline.push({ $match: { $and: categoryMatchStage } });
   }
@@ -277,6 +274,7 @@ const getProducts = asyncHandler(async (req, res) => {
   // Meta aggregation (brands/sizes unfiltered by product filters)
   const metaPipeline = [
     ...categoryJoinPipeline,
+    { $match: { productStatus: PUBLISHED } }, // only published products in meta
     {
       $group: {
         _id: null,
@@ -299,9 +297,16 @@ const getProducts = asyncHandler(async (req, res) => {
   // Product filter
   const combinedMatch =
     req.filter && Object.keys(req.filter).length ? { ...req.filter } : {};
+
+  // Always only published products
+  combinedMatch.productStatus = PUBLISHED;
+
   if (categoryMatchStage.length) {
     if (Object.keys(combinedMatch).length) {
-      combinedMatch.$and = categoryMatchStage;
+      combinedMatch.$and = [
+        ...(combinedMatch.$and || []),
+        ...categoryMatchStage,
+      ];
     } else {
       Object.assign(combinedMatch, { $and: categoryMatchStage });
     }
