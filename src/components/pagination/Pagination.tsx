@@ -1,6 +1,7 @@
 import { useSearchParams } from 'react-router';
 import LayoutElement from '../../layout/LayoutElement';
 import { IconName } from '../../types/enums';
+import { pageParamKey } from '../../utils/utils';
 import Button from '../Button';
 import IconBtn from '../IconBtn';
 import './_pagination.scss';
@@ -40,7 +41,7 @@ const Pagination = ({
   totalCount,
 }: PaginationProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const pageParam = searchParams.get('page');
+  const pageParam = searchParams.get(pageParamKey);
   const page = pageParam ? Number(pageParam) : currentPage;
 
   const totalBtns = Math.ceil(totalCount / productsPerPage);
@@ -52,7 +53,7 @@ const Pagination = ({
 
   const handlePagination = (id: number) => {
     const newParams = new URLSearchParams(searchParams);
-    newParams.set('page', id.toString());
+    newParams.set(pageParamKey, id.toString());
     setSearchParams(Object.fromEntries(newParams.entries()));
   };
 

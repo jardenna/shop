@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router';
 import type { FilterKeys } from '../pages/CollectionPage';
 import type { ChangeInputType } from '../types/types';
+import { pageParamKey } from '../utils/utils';
 
 export type FilterValuesType<T> = {
   [K in FilterKeys]: T[];
@@ -91,7 +92,7 @@ const useFilterParams = (initialFilters: FilterValuesType<string>) => {
 
       // Only reset page if filters actually changed
       if (filtersChanged) {
-        params.set('page', '1');
+        params.set(pageParamKey, '1');
       }
 
       // Save new filters as the last known

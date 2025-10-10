@@ -7,6 +7,7 @@ import type {
 
 const oneDay = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
 const currencyCacheKey = 'exchangeRates';
+const pageParamKey = 'page';
 
 const discountCalculation = (price: number, discount: number) => {
   const discountPrice = (price * discount) / 100;
@@ -91,6 +92,7 @@ export {
   maxFileSize,
   oneDay,
   optionsList,
+  pageParamKey,
   pathEquals,
   sliceAndCountHidden,
   titleToCamelCase,
