@@ -96,6 +96,13 @@ const CollectionPage = () => {
 
   return (
     <>
+      {products && (
+        <Pagination
+          currentPage={1}
+          productsPerPage={10}
+          totalCount={products.products.length}
+        />
+      )}
       {category && <MetaTags metaTitle={language[category]} />}
       <article className="container collection-page">
         {subMenu && (
@@ -184,13 +191,6 @@ const CollectionPage = () => {
                     </ProductCard>
                   ))}
               </article>
-              {products && (
-                <Pagination
-                  currentPage={1}
-                  productsPerPage={10}
-                  totalCount={products.products.length}
-                />
-              )}
             </div>
           </ErrorBoundary>
         </article>
