@@ -14,6 +14,9 @@ const useFilterParams = (initialFilters: FilterValuesType<string>) => {
   );
   const [searchParams, setSearchParams] = useSearchParams();
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const prevFiltersRef = useRef<FilterValuesType<string>>(
+    initialFiltersRef.current,
+  );
   const { pathname } = useLocation();
   const prevPathRef = useRef(pathname);
 
@@ -79,7 +82,22 @@ const useFilterParams = (initialFilters: FilterValuesType<string>) => {
         },
       );
 
-      setSearchParams(params, { replace: true });
+      // Compare with previous filter values
+      const prevFilters = prevFiltersRef.current;
+
+      const filtersChanged = (Object.keys(filterValues) as FilterKeys[]).some(
+        (key) => prevFilters[key].join(',') !== filterValues[key].join(','),
+      );
+
+      // Only reset page if filters actually changed
+      if (filtersChanged) {
+        params.set('page', '1');
+      }
+
+      // Save new filters as the last known
+      prevFiltersRef.current = filterValues;
+
+      setSearchParams(Object.fromEntries(params.entries()), { replace: true });
     }, 300);
 
     return () => {
@@ -87,7 +105,7 @@ const useFilterParams = (initialFilters: FilterValuesType<string>) => {
         clearTimeout(debounceRef.current);
       }
     };
-  }, [filterValues, searchParams, setSearchParams]);
+  }, [filterValues, setSearchParams]);
 
   const handleFilterChange = (event: ChangeInputType) => {
     const { name, value, checked } = event.target;
