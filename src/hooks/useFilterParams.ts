@@ -60,8 +60,17 @@ const useFilterParams = (initialFilters: FilterValuesType<string>) => {
     }
 
     debounceRef.current = setTimeout(() => {
-      const params = new URLSearchParams();
+      // Start from current params so unrelated keys (like "page") stay intact
+      const params = new URLSearchParams(searchParams);
 
+      // Remove all known filter keys before re-adding active ones
+      (Object.keys(initialFiltersRef.current) as FilterKeys[]).forEach(
+        (key) => {
+          params.delete(key);
+        },
+      );
+
+      // Add active filters again
       (Object.entries(filterValues) as [FilterKeys, string[]][]).forEach(
         ([key, values]) => {
           if (values.length) {
@@ -78,7 +87,7 @@ const useFilterParams = (initialFilters: FilterValuesType<string>) => {
         clearTimeout(debounceRef.current);
       }
     };
-  }, [filterValues, setSearchParams]);
+  }, [filterValues, searchParams, setSearchParams]);
 
   const handleFilterChange = (event: ChangeInputType) => {
     const { name, value, checked } = event.target;
