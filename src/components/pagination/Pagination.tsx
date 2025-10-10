@@ -12,7 +12,7 @@ type PaginationProps = {
   maxPaginationBtns?: number;
 };
 
-// Creates an array of pagination button numbers to display in the UI
+// Creates an array of pagination button numbers
 function calculateBtnsRange(
   currentPage: number,
   totalBtns: number,

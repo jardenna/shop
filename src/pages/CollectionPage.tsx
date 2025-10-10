@@ -48,9 +48,11 @@ const CollectionPage = () => {
     onClearAllFilters,
     onClearSingleFilter,
   } = useFilterParams(initialFilters);
+
   const { subMenu, subMenuLoading, refetchSubMenu } = useSubMenu(
     category as LinkText,
   );
+
   const [productView, setProuctView] = useLocalStorage(
     localStorageKeys.productView,
     'grid',
