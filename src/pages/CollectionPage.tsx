@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams, useSearchParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
@@ -96,6 +97,7 @@ const CollectionPage = () => {
   const filtersCount = getFilterSummary(filterValues);
   const src = `/images/banners/${category}_banner`;
   const altText = `${category}BannerAltText`;
+  const headingRef = useRef<HTMLHeadingElement>(null);
 
   return (
     <>
@@ -146,8 +148,9 @@ const CollectionPage = () => {
 
                 {products && (
                   <>
-                    <span>
-                      {products.productCount} {language.itemLabel}
+                    <span ref={headingRef}>
+                      {products.productCount} {language.itemLabel} Page 3 of 10
+                      loaded, showing 41–60 of 200.
                     </span>
                     <FilterPanel
                       onClearSingleFilter={onClearSingleFilter}
@@ -191,6 +194,7 @@ const CollectionPage = () => {
                 <Pagination
                   productsPerPage={10}
                   productsCount={products.productCount}
+                  headingRef={headingRef}
                 />
               )}
             </div>

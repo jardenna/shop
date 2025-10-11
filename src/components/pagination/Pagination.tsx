@@ -7,11 +7,16 @@ import IconBtn from '../IconBtn';
 import './_pagination.scss';
 
 type PaginationProps = {
+  headingRef: React.RefObject<HTMLElement | null>;
   productsCount: number;
   productsPerPage: number;
 };
 
-const Pagination = ({ productsPerPage, productsCount }: PaginationProps) => {
+const Pagination = ({
+  productsPerPage,
+  productsCount,
+  headingRef,
+}: PaginationProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const pageParam = searchParams.get(pageParamKey);
   const page = Number(pageParam) || 1;
@@ -22,6 +27,8 @@ const Pagination = ({ productsPerPage, productsCount }: PaginationProps) => {
     const newParams = new URLSearchParams(searchParams);
     newParams.set(pageParamKey, id.toString());
     setSearchParams(Object.fromEntries(newParams.entries()));
+
+    headingRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const handleGotoPrevPage = () => {
@@ -45,6 +52,7 @@ const Pagination = ({ productsPerPage, productsCount }: PaginationProps) => {
 
   return (
     <LayoutElement as="nav" ariaLabel="pagination">
+      Page 3 of 10 loaded, showing 41–60 of 200.
       <ul className="pagination-btn-list">
         <li>
           <IconBtn
