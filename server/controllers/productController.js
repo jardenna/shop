@@ -286,7 +286,6 @@ const getProducts = asyncHandler(async (req, res) => {
   ];
 
   const metaResult = await Product.aggregate(metaPipeline);
-
   const availableSizesRaw = metaResult[0]?.sizes?.flat() || [];
   const availableSizes = [...new Set(availableSizesRaw)];
   const availableBrandsRaw = metaResult[0]?.brands || [];
@@ -294,7 +293,7 @@ const getProducts = asyncHandler(async (req, res) => {
     a.localeCompare(b, undefined, { sensitivity: 'base' }),
   );
 
-  // Product filter
+  // Product filters
   const combinedMatch =
     req.filter && Object.keys(req.filter).length ? { ...req.filter } : {};
 
@@ -312,18 +311,30 @@ const getProducts = asyncHandler(async (req, res) => {
     }
   }
 
-  const productPipeline = [...categoryJoinPipeline];
-  if (Object.keys(combinedMatch).length) {
-    productPipeline.push({ $match: combinedMatch });
-  }
+  // Count all published products in same category scope (before filters)
+  const baseCategoryPipeline = [
+    ...categoryJoinPipeline,
+    {
+      $match: { productStatus: PUBLISHED },
+    },
+  ];
 
-  const countResult = await Product.aggregate([
-    ...productPipeline,
+  const totalCountResult = await Product.aggregate([
+    ...baseCategoryPipeline,
     { $count: 'total' },
   ]);
-  const count = countResult[0]?.total || 0;
+  const totalCount = totalCountResult[0]?.total || 0;
 
-  productPipeline.push(
+  const filteredCountResult = await Product.aggregate([
+    ...categoryJoinPipeline,
+    { $match: combinedMatch },
+    { $count: 'total' },
+  ]);
+  const filteredCount = filteredCountResult[0]?.total || 0;
+
+  const productPipeline = [
+    ...categoryJoinPipeline,
+    { $match: combinedMatch },
     { $sort: { createdAt: -1 } },
     { $skip: pageSize * (page - 1) },
     { $limit: pageSize },
@@ -344,7 +355,7 @@ const getProducts = asyncHandler(async (req, res) => {
         subCategory: 0,
       },
     },
-  );
+  ];
 
   const products = await Product.aggregate(productPipeline);
 
@@ -352,8 +363,9 @@ const getProducts = asyncHandler(async (req, res) => {
     success: true,
     products,
     page,
-    pages: Math.ceil(count / pageSize),
-    productCount: count,
+    pages: Math.ceil(filteredCount / pageSize),
+    productCount: filteredCount, // for pagination
+    totalCount, // all products within same category scope
     availableBrands,
     availableSizes,
   });
@@ -384,7 +396,8 @@ const getSortedProducts = asyncHandler(async (req, res) => {
     .limit(pageSize)
     .lean();
 
-  const count = await Product.countDocuments(filter);
+  const productCount = await Product.countDocuments(filter);
+  const totalCount = await Product.countDocuments();
 
   res.status(200).json({
     success: true,
@@ -406,8 +419,9 @@ const getSortedProducts = asyncHandler(async (req, res) => {
       }),
     ),
     page,
-    pages: Math.ceil(count / pageSize),
-    productCount: count,
+    pages: Math.ceil(productCount / pageSize),
+    productCount,
+    totalCount,
   });
 });
 
