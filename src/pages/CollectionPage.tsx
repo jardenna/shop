@@ -189,9 +189,8 @@ const CollectionPage = () => {
               </article>
               {products && (
                 <Pagination
-                  currentPage={1}
                   productsPerPage={10}
-                  totalCount={products.products.length}
+                  productsCount={products.productCount}
                 />
               )}
             </div>

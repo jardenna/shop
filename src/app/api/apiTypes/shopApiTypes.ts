@@ -22,6 +22,7 @@ export type ShopAllProductsResponse = {
   pages: number;
   productCount: number;
   products: BaseProduct[];
+  totalCount: number;
 };
 
 export type ReviewsResponse = {

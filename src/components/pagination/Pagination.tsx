@@ -7,9 +7,8 @@ import IconBtn from '../IconBtn';
 import './_pagination.scss';
 
 type PaginationProps = {
-  currentPage: number;
+  productsCount: number;
   productsPerPage: number;
-  totalCount: number;
   maxPaginationBtns?: number;
 };
 
@@ -35,15 +34,14 @@ function calculateBtnsRange(
 }
 
 const Pagination = ({
-  currentPage,
   maxPaginationBtns = 5,
   productsPerPage,
-  totalCount,
+  productsCount,
 }: PaginationProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const pageParam = searchParams.get(pageParamKey);
-  const page = pageParam ? Number(pageParam) : currentPage;
-  const totalBtns = Math.ceil(totalCount / productsPerPage);
+  const page = Number(pageParam) || 1;
+  const totalBtns = Math.ceil(productsCount / productsPerPage);
 
   const paginationBtnList = calculateBtnsRange(
     page,
