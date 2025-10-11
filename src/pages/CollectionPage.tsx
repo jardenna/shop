@@ -1,5 +1,5 @@
 import { ErrorBoundary } from 'react-error-boundary';
-import { useParams } from 'react-router';
+import { useParams, useSearchParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import DisplayControls from '../components/DisplayControls';
@@ -25,7 +25,7 @@ import MetaTags from '../layout/nav/MetaTags';
 import { IconName } from '../types/enums';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { sortSizesDynamic } from '../utils/sizeUtils';
-import { getFilterSummary } from '../utils/utils';
+import { getFilterSummary, pageParamKey } from '../utils/utils';
 import './CollectionPage.styles.scss';
 
 export type FilterKeys = 'sizes' | 'colors' | 'brand';
@@ -34,6 +34,8 @@ const CollectionPage = () => {
   const { category, categoryId } = useParams();
   const { language } = useLanguage();
   const { isMobileSize, isSmallMobileSize } = useMediaQuery();
+  const [searchParams] = useSearchParams();
+  const pageParam = searchParams.get(pageParamKey);
 
   const initialFilters: FilterValuesType<string> = {
     sizes: [],
@@ -67,7 +69,8 @@ const CollectionPage = () => {
     isLoading,
     refetch,
   } = useGetProductsQuery({
-    pageSize: '100',
+    pageSize: '10',
+    page: pageParam || '1',
     colors: filterValues.colors,
     brand: filterValues.brand,
     sizes: filterValues.sizes,
@@ -96,13 +99,6 @@ const CollectionPage = () => {
 
   return (
     <>
-      {products && (
-        <Pagination
-          currentPage={1}
-          productsPerPage={10}
-          totalCount={products.products.length}
-        />
-      )}
       {category && <MetaTags metaTitle={language[category]} />}
       <article className="container collection-page">
         {subMenu && (
@@ -191,6 +187,13 @@ const CollectionPage = () => {
                     </ProductCard>
                   ))}
               </article>
+              {products && (
+                <Pagination
+                  currentPage={1}
+                  productsPerPage={10}
+                  totalCount={products.products.length}
+                />
+              )}
             </div>
           </ErrorBoundary>
         </article>

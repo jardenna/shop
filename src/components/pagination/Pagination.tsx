@@ -43,8 +43,8 @@ const Pagination = ({
   const [searchParams, setSearchParams] = useSearchParams();
   const pageParam = searchParams.get(pageParamKey);
   const page = pageParam ? Number(pageParam) : currentPage;
-
   const totalBtns = Math.ceil(totalCount / productsPerPage);
+
   const paginationBtnList = calculateBtnsRange(
     page,
     totalBtns,
