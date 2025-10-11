@@ -80,8 +80,30 @@ const pathEquals = (path: string | undefined, enumVal: ShopPath | AdminPath) =>
 export const isAdminPath = (pathname: string) =>
   pathname.startsWith(`/${AdminPath.Admin}`);
 
+// Creates an array of pagination button numbers
+function calculateBtnsRange(
+  currentPage: number,
+  totalBtns: number,
+  maxPaginationBtns: number,
+) {
+  // Determine which "button group" the current page belongs to
+  const startBtn =
+    Math.floor((currentPage - 1) / maxPaginationBtns) * maxPaginationBtns + 1;
+
+  // Find the last button number in the current visible group
+  const endBtn = Math.min(startBtn + maxPaginationBtns - 1, totalBtns);
+
+  const range = Array.from(
+    { length: endBtn - startBtn + 1 },
+    (_, i) => startBtn + i,
+  );
+
+  return range;
+}
+
 export {
   allowedExtensions,
+  calculateBtnsRange,
   currencyCacheKey,
   discountCalculation,
   getAriaLabel,

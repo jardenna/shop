@@ -9,45 +9,14 @@ import './_pagination.scss';
 type PaginationProps = {
   productsCount: number;
   productsPerPage: number;
-  maxPaginationBtns?: number;
 };
 
-// Creates an array of pagination button numbers
-function calculateBtnsRange(
-  currentPage: number,
-  totalBtns: number,
-  maxPaginationBtns: number,
-) {
-  // Determine which "button group" the current page belongs to
-  const startBtn =
-    Math.floor((currentPage - 1) / maxPaginationBtns) * maxPaginationBtns + 1;
-
-  // Find the last button number in the current visible group
-  const endBtn = Math.min(startBtn + maxPaginationBtns - 1, totalBtns);
-
-  const range = Array.from(
-    { length: endBtn - startBtn + 1 },
-    (_, i) => startBtn + i,
-  );
-
-  return range;
-}
-
-const Pagination = ({
-  maxPaginationBtns = 5,
-  productsPerPage,
-  productsCount,
-}: PaginationProps) => {
+const Pagination = ({ productsPerPage, productsCount }: PaginationProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const pageParam = searchParams.get(pageParamKey);
   const page = Number(pageParam) || 1;
   const totalBtns = Math.ceil(productsCount / productsPerPage);
-
-  const paginationBtnList = calculateBtnsRange(
-    page,
-    totalBtns,
-    maxPaginationBtns,
-  );
+  const paginationBtnList = Array.from({ length: totalBtns }, (_, i) => i + 1);
 
   const handlePagination = (id: number) => {
     const newParams = new URLSearchParams(searchParams);
