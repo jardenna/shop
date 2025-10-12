@@ -8,6 +8,7 @@ import './_pagination.scss';
 
 type PaginationProps = {
   headingRef: React.RefObject<HTMLElement | null>;
+  page: number;
   productsCount: number;
   productsPerPage: number;
 };
@@ -16,10 +17,9 @@ const Pagination = ({
   productsPerPage,
   productsCount,
   headingRef,
+  page,
 }: PaginationProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const pageParam = searchParams.get(pageParamKey);
-  const page = Number(pageParam) || 1;
   const totalBtns = Math.ceil(productsCount / productsPerPage);
   const paginationBtnList = Array.from({ length: totalBtns }, (_, i) => i + 1);
 
@@ -50,11 +50,9 @@ const Pagination = ({
   const handleGotoLastPage = () => {
     handlePagination(totalBtns);
   };
-  const startItem = (page - 1) * productsPerPage + 1;
-  const endItem = Math.min(page * productsPerPage, productsCount);
+
   return (
     <LayoutElement as="nav" ariaLabel="pagination">
-      Showing {startItem}–{endItem} of {productsCount} products
       <ul className="pagination-btn-list">
         <li>
           <IconBtn

@@ -37,6 +37,7 @@ const CollectionPage = () => {
   const { isMobileSize, isSmallMobileSize } = useMediaQuery();
   const [searchParams] = useSearchParams();
   const pageParam = searchParams.get(pageParamKey);
+  const page = Number(pageParam) || 1;
 
   const initialFilters: FilterValuesType<string> = {
     sizes: [],
@@ -98,6 +99,9 @@ const CollectionPage = () => {
   const src = `/images/banners/${category}_banner`;
   const altText = `${category}BannerAltText`;
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const productCount = products ? products.productCount : 1;
+  const startItem = (page - 1) * productsPerPage + 1;
+  const endItem = Math.min(page * productsPerPage, productCount);
 
   return (
     <>
@@ -149,8 +153,7 @@ const CollectionPage = () => {
                 {products && (
                   <>
                     <span>
-                      {products.productCount} {language.itemLabel} howing 41–60
-                      of 200 Viser 6 ud af 132 produkter
+                      Showing {startItem}–{endItem} of {productCount} products
                     </span>
                     <FilterPanel
                       onClearSingleFilter={onClearSingleFilter}
@@ -195,6 +198,7 @@ const CollectionPage = () => {
                   productsPerPage={productsPerPage}
                   productsCount={products.productCount}
                   headingRef={headingRef}
+                  page={page}
                 />
               )}
             </div>
