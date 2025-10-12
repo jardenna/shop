@@ -7,20 +7,19 @@ import IconBtn from '../IconBtn';
 import './_pagination.scss';
 
 type PaginationProps = {
+  ariaDescribedby: string;
   headingRef: React.RefObject<HTMLElement | null>;
   page: number;
-  productsCount: number;
-  productsPerPage: number;
+  totalBtns: number;
 };
 
 const Pagination = ({
-  productsPerPage,
-  productsCount,
+  ariaDescribedby,
   headingRef,
   page,
+  totalBtns,
 }: PaginationProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const totalBtns = Math.ceil(productsCount / productsPerPage);
   const paginationBtnList = Array.from({ length: totalBtns }, (_, i) => i + 1);
 
   const handlePagination = (id: number) => {
@@ -53,7 +52,7 @@ const Pagination = ({
 
   return (
     <LayoutElement as="nav" ariaLabel="pagination">
-      <ul className="pagination-btn-list">
+      <ul className="pagination-btn-list" aria-describedby={ariaDescribedby}>
         <li>
           <IconBtn
             iconName={IconName.ChevronsLeft}

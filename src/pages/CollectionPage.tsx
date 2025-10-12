@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams, useSearchParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
@@ -8,6 +8,7 @@ import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import Pagination from '../components/pagination/Pagination';
 import Picture from '../components/Picture';
 import SkeletonCardList from '../components/skeleton/SkeletonCardList';
+import VisuallyHidden from '../components/VisuallyHidden';
 import useLanguage from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
 import CollectionPageHeader from '../features/shop/components/CollectionPageHeader';
@@ -32,12 +33,29 @@ import './CollectionPage.styles.scss';
 export type FilterKeys = 'sizes' | 'colors' | 'brand';
 
 const CollectionPage = () => {
+  const headingRef = useRef<HTMLHeadingElement>(null);
   const { category, categoryId } = useParams();
   const { language } = useLanguage();
   const { isMobileSize, isSmallMobileSize } = useMediaQuery();
   const [searchParams] = useSearchParams();
   const pageParam = searchParams.get(pageParamKey);
   const page = Number(pageParam) || 1;
+  const hasMounted = useRef(false);
+  const [announce, setAnnounce] = useState(false);
+
+  useEffect(() => {
+    if (hasMounted.current) {
+      // Page actually changed after first render
+      setAnnounce(true);
+      const timer = setTimeout(() => {
+        setAnnounce(false);
+      }, 1000);
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+    hasMounted.current = true;
+  }, [page]);
 
   const initialFilters: FilterValuesType<string> = {
     sizes: [],
@@ -98,10 +116,14 @@ const CollectionPage = () => {
   const filtersCount = getFilterSummary(filterValues);
   const src = `/images/banners/${category}_banner`;
   const altText = `${category}BannerAltText`;
-  const headingRef = useRef<HTMLHeadingElement>(null);
   const productCount = products ? products.productCount : 1;
   const startItem = (page - 1) * productsPerPage + 1;
   const endItem = Math.min(page * productsPerPage, productCount);
+  const totalBtns = Math.ceil(productCount / productsPerPage);
+  const ariaDescribedby = 'result-info';
+
+  const peoductsLoadedText = `${language.page} ${page} ${language.of} ${totalBtns} ${language.loaded}`;
+  const infoText = `${language.showing} ${startItem}–${endItem}  ${language.of} ${productCount} ${language.products.toLowerCase()}.`;
 
   return (
     <>
@@ -142,35 +164,39 @@ const CollectionPage = () => {
                   alt={language[altText]}
                 />
               )}
-              <section className="product-toolbar">
+              <article className="product-toolbar">
                 <DisplayControls
                   onSetDisplay={setProuctView}
                   displayControlList={productViewIconList}
                   isActive={productView}
                   ariaLabel={language.productDisplay}
                 />
+                <p id={ariaDescribedby}>{infoText}</p>
+
+                {announce && (
+                  <VisuallyHidden as="p">
+                    <span aria-live="polite">
+                      {peoductsLoadedText} {infoText}
+                    </span>
+                  </VisuallyHidden>
+                )}
 
                 {products && (
-                  <>
-                    <span>
-                      Showing {startItem}–{endItem} of {productCount} products
-                    </span>
-                    <FilterPanel
-                      onClearSingleFilter={onClearSingleFilter}
-                      filtersCount={filtersCount}
-                      onChange={onFilterChange}
-                      values={filterValues}
-                      availableBrands={products.availableBrands}
-                      availableSizes={sortSizesDynamic(products.availableSizes)}
-                      colors={sortedTranslatedColors}
-                      language={language}
-                      onRemoveFilterTag={onRemoveFilterTag}
-                      onClearAllFilters={onClearAllFilters}
-                      productCount={products.productCount}
-                    />
-                  </>
+                  <FilterPanel
+                    onClearSingleFilter={onClearSingleFilter}
+                    filtersCount={filtersCount}
+                    onChange={onFilterChange}
+                    values={filterValues}
+                    availableBrands={products.availableBrands}
+                    availableSizes={sortSizesDynamic(products.availableSizes)}
+                    colors={sortedTranslatedColors}
+                    language={language}
+                    onRemoveFilterTag={onRemoveFilterTag}
+                    onClearAllFilters={onClearAllFilters}
+                    productCount={productCount}
+                  />
                 )}
-              </section>
+              </article>
               {isLoading && <SkeletonCardList count={8} />}
               <article
                 className={`product-card-list ${productView === 'list' && !isSmallMobileSize ? 'list' : ''}`}
@@ -195,10 +221,10 @@ const CollectionPage = () => {
               </article>
               {products && (
                 <Pagination
-                  productsPerPage={productsPerPage}
-                  productsCount={products.productCount}
+                  totalBtns={totalBtns}
                   headingRef={headingRef}
                   page={page}
+                  ariaDescribedby={ariaDescribedby}
                 />
               )}
             </div>
