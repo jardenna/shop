@@ -102,7 +102,7 @@ const CollectionPage = () => {
   return (
     <>
       {category && <MetaTags metaTitle={language[category]} />}
-      <article className="container collection-page">
+      <article className="container collection-page" ref={headingRef}>
         {subMenu && (
           <Breadcrumbs
             routeList={breadcrumbsList}
@@ -148,9 +148,9 @@ const CollectionPage = () => {
 
                 {products && (
                   <>
-                    <span ref={headingRef}>
-                      {products.productCount} {language.itemLabel} Page 3 of 10
-                      loaded, showing 41–60 of 200.
+                    <span>
+                      {products.productCount} {language.itemLabel} howing 41–60
+                      of 200 Viser 6 ud af 132 produkter
                     </span>
                     <FilterPanel
                       onClearSingleFilter={onClearSingleFilter}

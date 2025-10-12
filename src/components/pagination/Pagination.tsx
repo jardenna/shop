@@ -46,6 +46,7 @@ const Pagination = ({
   const handleFirstPage = () => {
     handlePagination(1);
   };
+
   const handleGotoLastPage = () => {
     handlePagination(totalBtns);
   };
