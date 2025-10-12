@@ -50,10 +50,11 @@ const Pagination = ({
   const handleGotoLastPage = () => {
     handlePagination(totalBtns);
   };
-
+  const startItem = (page - 1) * productsPerPage + 1;
+  const endItem = Math.min(page * productsPerPage, productsCount);
   return (
     <LayoutElement as="nav" ariaLabel="pagination">
-      Page 3 of 10 loaded, showing 41–60 of 200.
+      Showing {startItem}–{endItem} of {productsCount} products
       <ul className="pagination-btn-list">
         <li>
           <IconBtn

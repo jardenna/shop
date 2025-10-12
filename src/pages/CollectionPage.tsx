@@ -63,14 +63,14 @@ const CollectionPage = () => {
 
   const sortedTranslatedColors = sortColorsByTranslation(colorList, language);
   const categoryText = category ? language[category] : '';
-
+  const pageSize = 8;
   // Redux hooks
   const {
     data: products,
     isLoading,
     refetch,
   } = useGetProductsQuery({
-    pageSize: '8',
+    pageSize: pageSize.toString(),
     page: pageParam || '1',
     colors: filterValues.colors,
     brand: filterValues.brand,
@@ -192,7 +192,7 @@ const CollectionPage = () => {
               </article>
               {products && (
                 <Pagination
-                  productsPerPage={10}
+                  productsPerPage={pageSize}
                   productsCount={products.productCount}
                   headingRef={headingRef}
                 />
