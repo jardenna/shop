@@ -1,9 +1,10 @@
 function filterProductsMiddleware(req, res, next) {
   let page = parseInt(req.query.page);
-  let pageSize = parseInt(req.query.pageSize);
+  let productsPerPage = parseInt(req.query.productsPerPage);
 
   if (isNaN(page) || page < 1) page = 1;
-  if (isNaN(pageSize) || pageSize < 1 || pageSize > 100) pageSize = 12;
+  if (isNaN(productsPerPage) || productsPerPage < 1 || productsPerPage > 100)
+    productsPerPage = 12;
 
   const filter = {};
 
@@ -78,7 +79,7 @@ function filterProductsMiddleware(req, res, next) {
     filter.productStatus = { $in: statuses };
   }
 
-  req.pagination = { page, pageSize };
+  req.pagination = { page, productsPerPage };
   req.filter = filter;
 
   next();

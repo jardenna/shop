@@ -217,7 +217,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Public
 const getProducts = asyncHandler(async (req, res) => {
-  const pageSize = parseInt(req.query.pageSize) || 6;
+  const productsPerPage = parseInt(req.query.productsPerPage) || 6;
   const page = parseInt(req.query.page) || 1;
   const subCategoryId = req.query.subCategoryId;
   const mainCategory = req.query.mainCategory;
@@ -336,8 +336,8 @@ const getProducts = asyncHandler(async (req, res) => {
     ...categoryJoinPipeline,
     { $match: combinedMatch },
     { $sort: { createdAt: -1 } },
-    { $skip: pageSize * (page - 1) },
-    { $limit: pageSize },
+    { $skip: productsPerPage * (page - 1) },
+    { $limit: productsPerPage },
     {
       $addFields: {
         id: '$_id',
@@ -363,7 +363,7 @@ const getProducts = asyncHandler(async (req, res) => {
     success: true,
     products,
     page,
-    pages: Math.ceil(filteredCount / pageSize),
+    pages: Math.ceil(filteredCount / productsPerPage),
     productCount: filteredCount, // for pagination
     totalCount, // all products within same category scope
     availableBrands,
@@ -382,7 +382,7 @@ const getSortedProducts = asyncHandler(async (req, res) => {
     statusKey: 'productStatus',
   });
 
-  const { page, pageSize } = req.pagination;
+  const { page, productsPerPage } = req.pagination;
   const filter = req.filter;
   const sort = req.sort;
 
@@ -392,8 +392,8 @@ const getSortedProducts = asyncHandler(async (req, res) => {
       populate: { path: 'category', model: 'Category' },
     })
     .sort(sort)
-    .skip(pageSize * (page - 1))
-    .limit(pageSize)
+    .skip(productsPerPage * (page - 1))
+    .limit(productsPerPage)
     .lean();
 
   const productCount = await Product.countDocuments(filter);
@@ -419,7 +419,7 @@ const getSortedProducts = asyncHandler(async (req, res) => {
       }),
     ),
     page,
-    pages: Math.ceil(productCount / pageSize),
+    pages: Math.ceil(productCount / productsPerPage),
     productCount,
     totalCount,
   });
