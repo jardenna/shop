@@ -2,13 +2,18 @@
 
 import { type ReactNode, RefObject } from 'react';
 import { BtnType, BtnVariant } from '../types/enums';
-import type { AriaHasPopup, ButtonEventType } from '../types/types';
+import type {
+  AriaCurrentType,
+  AriaHasPopup,
+  ButtonEventType,
+} from '../types/types';
 import Loader from './loader/Loader';
 import VisuallyHidden from './VisuallyHidden';
 
 type ButtonProps = {
   children: ReactNode;
   ariaControls?: string;
+  ariaCurrent?: AriaCurrentType;
   ariaDescribedby?: string;
   ariaExpanded?: boolean;
   ariaHasPopup?: AriaHasPopup;
@@ -40,6 +45,7 @@ const Button = ({
   ariaPressed,
   ariaExpanded,
   ariaControls,
+  ariaCurrent,
   ariaLabel,
   ariaHasPopup,
   role,
@@ -60,6 +66,7 @@ const Button = ({
     onClick={onClick}
     aria-pressed={ariaPressed || undefined}
     aria-expanded={ariaExpanded || undefined}
+    aria-current={ariaCurrent || undefined}
     aria-controls={ariaControls}
     aria-haspopup={ariaHasPopup}
     autoFocus={autoFocus}

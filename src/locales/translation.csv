@@ -84,6 +84,7 @@ criterionMet;Criterion met;Kriterium opfyldt
 criterionNotMet;Criterion not met;Kriterium ikke opfyldt
 currency;Currency;Valuta
 currentlyUnavailableSizes;Currently unavailable sizes;Midlertidigt udsolgte størrelser
+currentPage;Current page;Nuværende side
 customersList;Customers list;Kundeliste
 dashboard;Dashboard;Dashboard
 date;Date;Dato
@@ -144,7 +145,12 @@ filtersApplied;Filters applied;Filtre anvendt
 globe;Globe;Globus
 goBack;Go back;Gå tilbage
 gold;Gold;Guld
+gotoPage;Go to page;Gå til side
 goToContent;Go to content;Gå til indhold
+gotoFirstPage;Go to first page;Gå til første side
+gotoLastPage;Go to last page;Gå til sidste side
+gotoNextPage;Go to next page;Gå til næste side
+gotoPrevPage;Go to previous page;Gå til forrige side
 green;Green;Grøn
 grey;Grey;Grå
 grid;Grid;Grid
@@ -174,6 +180,7 @@ kidsFashion;Kids’s fashion;Børnemode
 language;Language;Sprog
 left;left;tilbage
 list;List;Liste
+loaded;loaded;indlæst
 loading;Loading;Loading
 lock;Lock;Hængelås
 login;Sign in;Log ind
@@ -237,6 +244,7 @@ noTumbleDry;Not suitable for tumble drying;Ikke egnet til tørretumbler
 notVisibleInShop;is not visible in the shop until the main category is published;bliver først synlig i shoppen, når hovedkategorien er udgivet
 noUser;User not found. Please sign up first;Bruger blev ikke fundet. Opret dig først
 numberOfReviews;Number of reviews;Antal reviews
+of;of;af
 onlyAdminsAssignRole;Only admins can assign roles;Kun administratorer kan tildele roller
 onlyFourAddresses;You may have up to 4 addresses;Du kan højst have 4 adresser
 orange;Orange;Orange
@@ -245,6 +253,7 @@ orderAltText;Young boy in black jeans and a white T-shirt layered with a blue-ch
 outOf;out of;ud af
 outOfStock;Out of stock;Udsolgt
 page;Page;Side
+pagination;Pagination;sideinddeling
 panel;Panel;Panel
 parentCategoryIs;Parent category is;Hovedkategori er
 password;Password;Adgangskode
@@ -348,6 +357,7 @@ showAll;Show all;Vis alle
 showAllTags;Show all tags;Vis alle tags
 showContent;Show content;Vis indhold
 showLessTags;Show less tags;Vis færre tags
+showing;Showing;Viser
 showPassword;Show password;Vis adgangskode
 showPrice;Show price;Vis pris
 silver;Silver;Sølv

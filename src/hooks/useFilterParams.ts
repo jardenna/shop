@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router';
 import type { FilterKeys } from '../pages/CollectionPage';
 import type { ChangeInputType } from '../types/types';
+import { pageParamKey } from '../utils/utils';
 
 export type FilterValuesType<T> = {
   [K in FilterKeys]: T[];
@@ -14,6 +15,9 @@ const useFilterParams = (initialFilters: FilterValuesType<string>) => {
   );
   const [searchParams, setSearchParams] = useSearchParams();
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const prevFiltersRef = useRef<FilterValuesType<string>>(
+    initialFiltersRef.current,
+  );
   const { pathname } = useLocation();
   const prevPathRef = useRef(pathname);
 
@@ -60,8 +64,17 @@ const useFilterParams = (initialFilters: FilterValuesType<string>) => {
     }
 
     debounceRef.current = setTimeout(() => {
-      const params = new URLSearchParams();
+      // Start from current params so unrelated keys (like "page") stay intact
+      const params = new URLSearchParams(searchParams);
 
+      // Remove all known filter keys before re-adding active ones
+      (Object.keys(initialFiltersRef.current) as FilterKeys[]).forEach(
+        (key) => {
+          params.delete(key);
+        },
+      );
+
+      // Add active filters again
       (Object.entries(filterValues) as [FilterKeys, string[]][]).forEach(
         ([key, values]) => {
           if (values.length) {
@@ -70,7 +83,23 @@ const useFilterParams = (initialFilters: FilterValuesType<string>) => {
         },
       );
 
-      setSearchParams(params, { replace: true });
+      // Compare with previous filter values
+      const prevFilters = prevFiltersRef.current;
+
+      const normalize = (arr: string[]) => [...arr].sort().join('|');
+      const filtersChanged = (Object.keys(filterValues) as FilterKeys[]).some(
+        (key) => normalize(prevFilters[key]) !== normalize(filterValues[key]),
+      );
+
+      // Only reset page if filters actually changed
+      if (filtersChanged) {
+        params.set(pageParamKey, '1');
+      }
+
+      // Save new filters as the last known
+      prevFiltersRef.current = filterValues;
+
+      setSearchParams(Object.fromEntries(params.entries()), { replace: true });
     }, 300);
 
     return () => {

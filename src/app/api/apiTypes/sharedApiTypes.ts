@@ -84,8 +84,8 @@ export type BaseProduct = DefaultResponseType & {
 
 export type BaseProductParams = {
   page?: string;
-  pageSize?: string;
   productName?: string;
+  productsPerPage?: number;
 };
 
 export type ReviewResponse = DefaultResponseType & {

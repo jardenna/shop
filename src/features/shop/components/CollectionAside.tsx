@@ -9,6 +9,7 @@ type CollectionAsideProps = {
   asideHeading: string;
   category: string;
   isLoading: boolean;
+  isMobileSize: boolean;
   language: Record<string, string>;
   subMenu: ProductMenuResponse[] | null;
   onReset: () => void;
@@ -21,26 +22,33 @@ const CollectionAside = ({
   isLoading,
   onReset,
   language,
-}: CollectionAsideProps) => (
-  <aside className="collection-aside">
+  isMobileSize,
+}: CollectionAsideProps) =>
+  isMobileSize ? (
     <CollectionPageHeader ariaLabel={language.page} headerText={asideHeading} />
-    {isLoading && (
-      <div className="flex column">
-        <Skeleton count={4} />
-      </div>
-    )}
-    {subMenu && (
-      <LayoutElement as="nav" ariaLabel={language.page}>
-        <CollectionNav
-          subMenu={subMenu}
-          category={category}
-          onReset={() => {
-            onReset();
-          }}
-        />
-      </LayoutElement>
-    )}
-  </aside>
-);
+  ) : (
+    <aside className="collection-aside">
+      <CollectionPageHeader
+        ariaLabel={language.page}
+        headerText={asideHeading}
+      />
+      {isLoading && (
+        <div className="flex column">
+          <Skeleton count={4} />
+        </div>
+      )}
+      {subMenu && (
+        <LayoutElement as="nav" ariaLabel={language.page}>
+          <CollectionNav
+            subMenu={subMenu}
+            category={category}
+            onReset={() => {
+              onReset();
+            }}
+          />
+        </LayoutElement>
+      )}
+    </aside>
+  );
 
 export default CollectionAside;

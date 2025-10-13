@@ -1,11 +1,11 @@
 import { Link } from 'react-router';
 import { BtnVariant } from '../types/enums';
+import { AriaCurrentType } from '../types/types';
 
 type LinkButtonProps = {
   linkText: string;
   linkTo: string;
-  ariaCurrent?: 'page';
-
+  ariaCurrent?: AriaCurrentType;
   variant?: BtnVariant;
 };
 

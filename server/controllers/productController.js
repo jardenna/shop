@@ -217,15 +217,12 @@ const deleteProduct = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Public
 const getProducts = asyncHandler(async (req, res) => {
-  const pageSize = parseInt(req.query.pageSize) || 6;
+  const productsPerPage = parseInt(req.query.productsPerPage) || 6;
   const page = parseInt(req.query.page) || 1;
   const subCategoryId = req.query.subCategoryId;
   const mainCategory = req.query.mainCategory;
 
-  // --- Only published products ---
-  const STATUS = [PUBLISHED]; // all others are ignored
-
-  // --- Common category/subcategory join ---
+  // Helper: common pipeline for category/subcategory joins
   const categoryJoinPipeline = [
     {
       $lookup: {
@@ -253,13 +250,14 @@ const getProducts = asyncHandler(async (req, res) => {
     },
   ];
 
-  // --- Category/Subcategory filters ---
+  // Category/Subcategory filters
   const categoryMatchStage = [];
   if (subCategoryId) {
     categoryMatchStage.push({
       'subCategoryData._id': new mongoose.Types.ObjectId(String(subCategoryId)),
     });
   }
+
   if (mainCategory) {
     categoryMatchStage.push({
       'categoryData.categoryName': {
@@ -268,14 +266,15 @@ const getProducts = asyncHandler(async (req, res) => {
       },
     });
   }
+
   if (categoryMatchStage.length) {
     categoryJoinPipeline.push({ $match: { $and: categoryMatchStage } });
   }
 
-  // --- Meta aggregation (brands/sizes unfiltered by product filters) ---
+  // Meta aggregation (brands/sizes unfiltered by product filters)
   const metaPipeline = [
     ...categoryJoinPipeline,
-    { $match: { productStatus: { $in: STATUS } } }, // filter only Published for meta too
+    { $match: { productStatus: PUBLISHED } }, // only published products in meta
     {
       $group: {
         _id: null,
@@ -287,27 +286,58 @@ const getProducts = asyncHandler(async (req, res) => {
   ];
 
   const metaResult = await Product.aggregate(metaPipeline);
-
-  const availableSizes = [...new Set(metaResult[0]?.sizes?.flat() || [])];
-  const availableBrands = [...new Set(metaResult[0]?.brands || [])].sort(
-    (a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }),
+  const availableSizesRaw = metaResult[0]?.sizes?.flat() || [];
+  const availableSizes = [...new Set(availableSizesRaw)];
+  const availableBrandsRaw = metaResult[0]?.brands || [];
+  const availableBrands = [...new Set(availableBrandsRaw)].sort((a, b) =>
+    a.localeCompare(b, undefined, { sensitivity: 'base' }),
   );
 
-  // --- Product filters ---
-  const combinedMatch = { productStatus: { $in: STATUS } }; // only Published
+  // Product filters
+  const combinedMatch =
+    req.filter && Object.keys(req.filter).length ? { ...req.filter } : {};
 
-  const productPipeline = [...categoryJoinPipeline, { $match: combinedMatch }];
+  // Always only published products
+  combinedMatch.productStatus = PUBLISHED;
 
-  const countResult = await Product.aggregate([
-    ...productPipeline,
+  if (categoryMatchStage.length) {
+    if (Object.keys(combinedMatch).length) {
+      combinedMatch.$and = [
+        ...(combinedMatch.$and || []),
+        ...categoryMatchStage,
+      ];
+    } else {
+      Object.assign(combinedMatch, { $and: categoryMatchStage });
+    }
+  }
+
+  // Count all published products in same category scope (before filters)
+  const baseCategoryPipeline = [
+    ...categoryJoinPipeline,
+    {
+      $match: { productStatus: PUBLISHED },
+    },
+  ];
+
+  const totalCountResult = await Product.aggregate([
+    ...baseCategoryPipeline,
     { $count: 'total' },
   ]);
-  const count = countResult[0]?.total || 0;
+  const totalCount = totalCountResult[0]?.total || 0;
 
-  productPipeline.push(
+  const filteredCountResult = await Product.aggregate([
+    ...categoryJoinPipeline,
+    { $match: combinedMatch },
+    { $count: 'total' },
+  ]);
+  const filteredCount = filteredCountResult[0]?.total || 0;
+
+  const productPipeline = [
+    ...categoryJoinPipeline,
+    { $match: combinedMatch },
     { $sort: { createdAt: -1 } },
-    { $skip: pageSize * (page - 1) },
-    { $limit: pageSize },
+    { $skip: productsPerPage * (page - 1) },
+    { $limit: productsPerPage },
     {
       $addFields: {
         id: '$_id',
@@ -325,7 +355,7 @@ const getProducts = asyncHandler(async (req, res) => {
         subCategory: 0,
       },
     },
-  );
+  ];
 
   const products = await Product.aggregate(productPipeline);
 
@@ -333,8 +363,9 @@ const getProducts = asyncHandler(async (req, res) => {
     success: true,
     products,
     page,
-    pages: Math.ceil(count / pageSize),
-    productCount: count,
+    pages: Math.ceil(filteredCount / productsPerPage),
+    productCount: filteredCount, // for pagination
+    totalCount, // all products within same category scope
     availableBrands,
     availableSizes,
   });
@@ -351,7 +382,7 @@ const getSortedProducts = asyncHandler(async (req, res) => {
     statusKey: 'productStatus',
   });
 
-  const { page, pageSize } = req.pagination;
+  const { page, productsPerPage } = req.pagination;
   const filter = req.filter;
   const sort = req.sort;
 
@@ -361,11 +392,12 @@ const getSortedProducts = asyncHandler(async (req, res) => {
       populate: { path: 'category', model: 'Category' },
     })
     .sort(sort)
-    .skip(pageSize * (page - 1))
-    .limit(pageSize)
+    .skip(productsPerPage * (page - 1))
+    .limit(productsPerPage)
     .lean();
 
-  const count = await Product.countDocuments(filter);
+  const productCount = await Product.countDocuments(filter);
+  const totalCount = await Product.countDocuments();
 
   res.status(200).json({
     success: true,
@@ -387,8 +419,9 @@ const getSortedProducts = asyncHandler(async (req, res) => {
       }),
     ),
     page,
-    pages: Math.ceil(count / pageSize),
-    productCount: count,
+    pages: Math.ceil(productCount / productsPerPage),
+    productCount,
+    totalCount,
   });
 });
 

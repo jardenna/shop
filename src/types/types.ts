@@ -61,6 +61,15 @@ export type InputType =
 
 export type AriaHasPopup = boolean | 'menu' | 'listbox' | 'tree' | 'grid';
 
+export type AriaCurrentType =
+  | 'page'
+  | 'step'
+  | 'location'
+  | 'date'
+  | 'time'
+  | 'true'
+  | 'false';
+
 export type ControlInputType = Extract<InputType, 'checkbox' | 'radio'>;
 
 export type Filters = Record<string, string[]>;
