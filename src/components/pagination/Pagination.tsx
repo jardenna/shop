@@ -26,7 +26,6 @@ const Pagination = ({
     const newParams = new URLSearchParams(searchParams);
     newParams.set(pageParamKey, id.toString());
     setSearchParams(Object.fromEntries(newParams.entries()));
-
     headingRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
@@ -42,14 +41,6 @@ const Pagination = ({
     }
   };
 
-  const handleFirstPage = () => {
-    handlePagination(1);
-  };
-
-  const handleGotoLastPage = () => {
-    handlePagination(totalBtns);
-  };
-
   return (
     <LayoutElement as="nav" ariaLabel="pagination">
       <ul className="pagination-btn-list" aria-describedby={ariaDescribedby}>
@@ -58,7 +49,9 @@ const Pagination = ({
             iconName={IconName.ChevronsLeft}
             title=""
             ariaLabel="first"
-            onClick={handleFirstPage}
+            onClick={() => {
+              handlePagination(1);
+            }}
             disabled={page === 1}
           />
         </li>
@@ -84,7 +77,6 @@ const Pagination = ({
             </Button>
           </li>
         ))}
-
         <li>
           <IconBtn
             iconName={IconName.ChevronRight}
@@ -99,7 +91,9 @@ const Pagination = ({
             iconName={IconName.ChevronsRight}
             title=""
             ariaLabel="last"
-            onClick={handleGotoLastPage}
+            onClick={() => {
+              handlePagination(totalBtns);
+            }}
             disabled={page === totalBtns}
           />
         </li>

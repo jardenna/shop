@@ -197,13 +197,13 @@ const CollectionPage = () => {
                       )}
                     </ProductCard>
                   ))}
-                <Pagination
-                  totalBtns={totalBtns}
-                  headingRef={headingRef}
-                  page={page}
-                  ariaDescribedby={ariaDescribedby}
-                />
               </article>
+              <Pagination
+                totalBtns={totalBtns}
+                headingRef={headingRef}
+                page={page}
+                ariaDescribedby={ariaDescribedby}
+              />
             </div>
           </ErrorBoundary>
         </article>
