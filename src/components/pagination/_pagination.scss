@@ -25,6 +25,10 @@
 
     &.current {
       background-color: $color-blue-30;
+
+      &:hover {
+        background-color: $color-blue-25;
+      }
     }
   }
 }
