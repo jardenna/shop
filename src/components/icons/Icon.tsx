@@ -60,6 +60,7 @@ export type IconDefaultProps = {
   ariaHidden?: boolean;
   className?: string;
   fill?: string;
+  focusable?: boolean;
   size?: string;
 };
 
@@ -132,6 +133,7 @@ const Icon = ({
   className = '',
   ariaHidden,
   fill,
+  focusable = false,
 }: IconProps) => {
   const IconComponent = iconMapping[iconName];
   return (
@@ -139,6 +141,7 @@ const Icon = ({
       size={size}
       title={title}
       className={className}
+      focusable={focusable}
       ariaHidden={ariaHidden === undefined ? true : undefined}
       fill={fill}
     />
