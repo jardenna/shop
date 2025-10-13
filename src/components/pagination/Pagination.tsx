@@ -1,3 +1,4 @@
+import { useLayoutEffect } from 'react';
 import { useSearchParams } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
@@ -24,17 +25,14 @@ const Pagination = ({
   const { language } = useLanguage();
   const paginationBtnList = Array.from({ length: totalBtns }, (_, i) => i + 1);
 
+  useLayoutEffect(() => {
+    headingRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, [page]);
+
   const handlePagination = (id: number) => {
     const newParams = new URLSearchParams(searchParams);
     newParams.set(pageParamKey, id.toString());
     setSearchParams(Object.fromEntries(newParams.entries()));
-
-    setTimeout(() => {
-      headingRef.current?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
-    }, 100);
   };
 
   const handleGotoPrevPage = () => {
@@ -84,6 +82,7 @@ const Pagination = ({
               }}
               className={paginationBtn === page ? 'current' : ''}
               ariaCurrent={paginationBtn === page ? 'page' : undefined}
+              ariaLabel={`${language.gotoPage} ${paginationBtn}`}
             >
               {paginationBtn}
             </Button>
