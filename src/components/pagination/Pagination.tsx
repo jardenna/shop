@@ -78,11 +78,19 @@ const Pagination = ({
           <li key={paginationBtn}>
             <Button
               onClick={() => {
+                // Early exit so current page doesn't spam history or rerender
+                if (paginationBtn === page) {
+                  return;
+                }
                 handlePagination(paginationBtn);
               }}
               className={paginationBtn === page ? 'current' : ''}
               ariaCurrent={paginationBtn === page ? 'page' : undefined}
-              ariaLabel={`${language.gotoPage} ${paginationBtn}`}
+              ariaLabel={
+                paginationBtn === page
+                  ? `${language.currentPage} ${paginationBtn}`
+                  : `${language.gotoPage} ${paginationBtn}`
+              }
             >
               {paginationBtn}
             </Button>

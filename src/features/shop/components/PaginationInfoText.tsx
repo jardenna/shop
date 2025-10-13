@@ -13,7 +13,9 @@ const PaginationInfoText = ({
   productsLoadedText,
 }: PaginationInfoTextProps) => (
   <>
-    <p id={ariaDescribedby}>{infoText}</p>
+    <p id={ariaDescribedby} aria-live="polite">
+      {infoText}
+    </p>
     {announce && (
       <VisuallyHidden as="p">
         <span aria-live="polite">

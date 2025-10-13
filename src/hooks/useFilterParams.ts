@@ -86,8 +86,9 @@ const useFilterParams = (initialFilters: FilterValuesType<string>) => {
       // Compare with previous filter values
       const prevFilters = prevFiltersRef.current;
 
+      const normalize = (arr: string[]) => [...arr].sort().join('|');
       const filtersChanged = (Object.keys(filterValues) as FilterKeys[]).some(
-        (key) => prevFilters[key].join(',') !== filterValues[key].join(','),
+        (key) => normalize(prevFilters[key]) !== normalize(filterValues[key]),
       );
 
       // Only reset page if filters actually changed
