@@ -1,4 +1,5 @@
 import { useSearchParams } from 'react-router';
+import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import { IconName } from '../../types/enums';
 import { pageParamKey } from '../../utils/utils';
@@ -20,6 +21,7 @@ const Pagination = ({
   totalBtns,
 }: PaginationProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { language } = useLanguage();
   const paginationBtnList = Array.from({ length: totalBtns }, (_, i) => i + 1);
 
   const handlePagination = (id: number) => {
@@ -48,7 +50,7 @@ const Pagination = ({
           <IconBtn
             iconName={IconName.ChevronsLeft}
             title=""
-            ariaLabel="first"
+            ariaLabel={language.gotoFirstPage}
             onClick={() => {
               handlePagination(1);
             }}
@@ -59,7 +61,7 @@ const Pagination = ({
           <IconBtn
             iconName={IconName.ChevronLeft}
             title=""
-            ariaLabel="prev"
+            ariaLabel={language.gotoPrevPage}
             onClick={handleGotoPrevPage}
             disabled={page === 1}
           />
@@ -81,7 +83,7 @@ const Pagination = ({
           <IconBtn
             iconName={IconName.ChevronRight}
             title=""
-            ariaLabel="next"
+            ariaLabel={language.gotoNextPage}
             onClick={handleGotoNextPage}
             disabled={page === totalBtns}
           />
@@ -90,7 +92,7 @@ const Pagination = ({
           <IconBtn
             iconName={IconName.ChevronsRight}
             title=""
-            ariaLabel="last"
+            ariaLabel={language.gotoLastPage}
             onClick={() => {
               handlePagination(totalBtns);
             }}
