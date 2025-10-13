@@ -28,7 +28,13 @@ const Pagination = ({
     const newParams = new URLSearchParams(searchParams);
     newParams.set(pageParamKey, id.toString());
     setSearchParams(Object.fromEntries(newParams.entries()));
-    headingRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    setTimeout(() => {
+      headingRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }, 100);
   };
 
   const handleGotoPrevPage = () => {
