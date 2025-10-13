@@ -13,7 +13,7 @@ const LinkButton = ({
   variant = BtnVariant.Ghost,
   linkTo,
   linkText,
-  ariaCurrent = 'page',
+  ariaCurrent,
 }: LinkButtonProps) => (
   <Link className={`btn btn-${variant}`} to={linkTo} aria-current={ariaCurrent}>
     <span className="btn-text">{linkText}</span>

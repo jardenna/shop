@@ -21,7 +21,6 @@ const MainPageContainer = ({
     <MetaTags metaTitle={heading} />
     <article className={`container ${className}`}>
       <PageHeader heading={heading} />
-
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={onReset}
