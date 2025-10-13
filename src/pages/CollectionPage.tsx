@@ -86,7 +86,7 @@ const CollectionPage = () => {
     isLoading,
     refetch,
   } = useGetProductsQuery({
-    productsPerPage: productsPerPage.toString(),
+    productsPerPage,
     page: pageParam || '1',
     colors: filterValues.colors,
     brand: filterValues.brand,

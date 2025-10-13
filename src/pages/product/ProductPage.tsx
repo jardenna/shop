@@ -40,7 +40,7 @@ const ProductPage = () => {
     isLoading,
     refetch,
   } = useGetAllProductsQuery(
-    { productsPerPage: '100' },
+    { productsPerPage: 100 },
     {
       pollingInterval: shouldPollFullList ? 15000 : undefined,
       refetchOnMountOrArgChange: true,
