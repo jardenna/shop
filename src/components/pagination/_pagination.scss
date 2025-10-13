@@ -1,16 +1,21 @@
 @use '../../scss/globals' as *;
 
+.pagination {
+  display: grid;
+  place-content: center;
+  margin-block: 24px;
+}
+
 .pagination-btn-list {
   display: flex;
-  gap: 18px;
+  gap: 8px;
   align-items: center;
 
   .btn {
     min-height: auto;
-    width: 40px;
-    height: 40px;
-    padding: 8px 12px;
-    border-radius: 0;
+    width: rem(48px);
+    height: rem(48px);
+    padding: 0;
 
     &:disabled {
       svg {
