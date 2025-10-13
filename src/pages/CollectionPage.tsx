@@ -3,19 +3,16 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useParams, useSearchParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
-import DisplayControls from '../components/DisplayControls';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import Pagination from '../components/pagination/Pagination';
 import Picture from '../components/Picture';
 import SkeletonCardList from '../components/skeleton/SkeletonCardList';
-import VisuallyHidden from '../components/VisuallyHidden';
 import useLanguage from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
-import CollectionPageHeader from '../features/shop/components/CollectionPageHeader';
-import FilterPanel from '../features/shop/components/FilterPanel';
 import ProductCard from '../features/shop/components/ProductCard';
 import ProductCardGridContent from '../features/shop/components/ProductCardGridContent';
 import ProductCardListContent from '../features/shop/components/ProductCardListContent';
+import ProductToolbar from '../features/shop/components/ProductToolbar';
 import useSubMenu from '../features/shop/hooks/useSubMenu';
 import { useGetProductsQuery } from '../features/shop/shopApiSlice';
 import type { FilterValuesType } from '../hooks/useFilterParams';
@@ -35,9 +32,9 @@ export type FilterKeys = 'sizes' | 'colors' | 'brand';
 const CollectionPage = () => {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const { category, categoryId } = useParams();
+  const [searchParams] = useSearchParams();
   const { language } = useLanguage();
   const { isMobileSize, isSmallMobileSize } = useMediaQuery();
-  const [searchParams] = useSearchParams();
   const pageParam = searchParams.get(pageParamKey);
   const page = Number(pageParam) || 1;
   const hasMounted = useRef(false);
@@ -122,7 +119,7 @@ const CollectionPage = () => {
   const totalBtns = Math.ceil(productCount / productsPerPage);
   const ariaDescribedby = 'result-info';
 
-  const peoductsLoadedText = `${language.page} ${page} ${language.of} ${totalBtns} ${language.loaded}`;
+  const productsLoadedText = `${language.page} ${page} ${language.of} ${totalBtns} ${language.loaded}`;
   const infoText = `${language.showing} ${startItem}–${endItem}  ${language.of} ${productCount} ${language.products.toLowerCase()}.`;
 
   return (
@@ -137,21 +134,15 @@ const CollectionPage = () => {
           />
         )}
         <article className="collection-page-container">
-          {isMobileSize ? (
-            <CollectionPageHeader
-              ariaLabel={language.page}
-              headerText={categoryText}
-            />
-          ) : (
-            <CollectionAside
-              subMenu={subMenu || null}
-              category={category || 'women'}
-              isLoading={subMenuLoading}
-              onReset={() => refetchSubMenu()}
-              asideHeading={categoryText}
-              language={language}
-            />
-          )}
+          <CollectionAside
+            subMenu={subMenu || null}
+            category={category || 'women'}
+            isLoading={subMenuLoading}
+            onReset={() => refetchSubMenu()}
+            asideHeading={categoryText}
+            language={language}
+            isMobileSize={isMobileSize}
+          />
           <ErrorBoundary
             FallbackComponent={ErrorBoundaryFallback}
             onReset={() => refetch()}
@@ -164,39 +155,27 @@ const CollectionPage = () => {
                   alt={language[altText]}
                 />
               )}
-              <article className="product-toolbar">
-                <DisplayControls
+              {products && (
+                <ProductToolbar
                   onSetDisplay={setProuctView}
                   displayControlList={productViewIconList}
                   isActive={productView}
-                  ariaLabel={language.productDisplay}
+                  onClearSingleFilter={onClearSingleFilter}
+                  filtersCount={filtersCount}
+                  onChange={onFilterChange}
+                  values={filterValues}
+                  availableBrands={products.availableBrands}
+                  availableSizes={sortSizesDynamic(products.availableSizes)}
+                  colors={sortedTranslatedColors}
+                  onRemoveFilterTag={onRemoveFilterTag}
+                  onClearAllFilters={onClearAllFilters}
+                  productCount={productCount}
+                  announce={announce}
+                  productsLoadedText={productsLoadedText}
+                  infoText={infoText}
+                  ariaDescribedby={ariaDescribedby}
                 />
-                <p id={ariaDescribedby}>{infoText}</p>
-
-                {announce && (
-                  <VisuallyHidden as="p">
-                    <span aria-live="polite">
-                      {peoductsLoadedText} {infoText}
-                    </span>
-                  </VisuallyHidden>
-                )}
-
-                {products && (
-                  <FilterPanel
-                    onClearSingleFilter={onClearSingleFilter}
-                    filtersCount={filtersCount}
-                    onChange={onFilterChange}
-                    values={filterValues}
-                    availableBrands={products.availableBrands}
-                    availableSizes={sortSizesDynamic(products.availableSizes)}
-                    colors={sortedTranslatedColors}
-                    language={language}
-                    onRemoveFilterTag={onRemoveFilterTag}
-                    onClearAllFilters={onClearAllFilters}
-                    productCount={productCount}
-                  />
-                )}
-              </article>
+              )}
               {isLoading && <SkeletonCardList count={8} />}
               <article
                 className={`product-card-list ${productView === 'list' && !isSmallMobileSize ? 'list' : ''}`}
@@ -218,15 +197,13 @@ const CollectionPage = () => {
                       )}
                     </ProductCard>
                   ))}
-              </article>
-              {products && (
                 <Pagination
                   totalBtns={totalBtns}
                   headingRef={headingRef}
                   page={page}
                   ariaDescribedby={ariaDescribedby}
                 />
-              )}
+              </article>
             </div>
           </ErrorBoundary>
         </article>
