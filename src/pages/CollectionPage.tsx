@@ -25,7 +25,11 @@ import MetaTags from '../layout/nav/MetaTags';
 import { IconName } from '../types/enums';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { sortSizesDynamic } from '../utils/sizeUtils';
-import { getFilterSummary, pageParamKey } from '../utils/utils';
+import {
+  getFilterSummary,
+  pageParamKey,
+  productsPerPageParamKey,
+} from '../utils/utils';
 import './CollectionPage.styles.scss';
 
 export type FilterKeys = 'sizes' | 'colors' | 'brand';
@@ -37,6 +41,7 @@ const CollectionPage = () => {
   const { language } = useLanguage();
   const { isMobileSize, isSmallMobileSize } = useMediaQuery();
   const pageParam = searchParams.get(pageParamKey);
+  const productPerPageParam = searchParams.get(productsPerPageParamKey);
   const page = Number(pageParam) || 1;
   const hasMounted = useRef(false);
   const [announce, setAnnounce] = useState(false);
@@ -80,7 +85,7 @@ const CollectionPage = () => {
 
   const sortedTranslatedColors = sortColorsByTranslation(colorList, language);
   const categoryText = category ? language[category] : '';
-  const productsPerPage = 8;
+  const productsPerPage = Number(productPerPageParam);
 
   // Redux hooks
   const {
@@ -88,7 +93,7 @@ const CollectionPage = () => {
     isLoading,
     refetch,
   } = useGetProductsQuery({
-    productsPerPage,
+    productsPerPage: Number(productPerPageParam),
     page: pageParam || '1',
     colors: filterValues.colors,
     brand: filterValues.brand,
@@ -214,8 +219,16 @@ const CollectionPage = () => {
             ariaDescribedby={ariaDescribedby}
           />
           <ProductCountSelect
-            totalCount={productCount}
             labelText={language.selectNumber}
+            defaultValue={{
+              value: productsPerPage.toString(),
+              label: productsPerPage.toString(),
+            }}
+            options={[
+              { value: '8', label: '8' },
+              { value: '16', label: '16' },
+              { value: productCount.toString(), label: language.all },
+            ]}
           />
           <p>{language.productPerPage}</p>
         </section>

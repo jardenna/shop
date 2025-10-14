@@ -1,7 +1,7 @@
 import { useSearchParams } from 'react-router';
+import { productsPerPageParamKey } from '../utils/utils';
 import FieldSet from './fieldset/FieldSet';
 import Selectbox from './selectbox/Selectbox';
-// import './_record-select.scss';
 
 export type PageCountOptions = {
   label: string;
@@ -9,38 +9,34 @@ export type PageCountOptions = {
 };
 
 type ProductCountSelectProps = {
+  defaultValue: PageCountOptions;
   labelText: string;
-  totalCount: number;
+  options: PageCountOptions[];
 };
 
 const ProductCountSelect = ({
   labelText,
-  totalCount,
+  options,
+  defaultValue,
 }: ProductCountSelectProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleSelectCount = (option: PageCountOptions) => {
     const newParams = new URLSearchParams(searchParams);
-    newParams.set('productsPerPage', option.value);
+    newParams.set(productsPerPageParamKey, option.value);
     setSearchParams(Object.fromEntries(newParams.entries()));
   };
-
-  const pageCountOptions: PageCountOptions[] = [
-    { value: '8', label: '8' },
-    { value: '16', label: '16' },
-    { value: totalCount.toString(), label: 'All' },
-  ];
 
   return (
     <form className="product-navigation-form">
       <FieldSet legendText="displayOptions">
         <Selectbox
           name="productCount"
-          options={pageCountOptions}
+          options={options}
           id="productCount"
           onChange={handleSelectCount}
           labelText={labelText}
-          defaultValue={pageCountOptions[0]}
+          defaultValue={defaultValue}
           inputHasNoLabel
         />
       </FieldSet>
