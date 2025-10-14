@@ -6,6 +6,7 @@ import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import Pagination from '../components/pagination/Pagination';
 import Picture from '../components/Picture';
+import ProductCountSelect from '../components/productCountSelect/ProductCountSelect';
 import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import useLanguage from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
@@ -198,15 +199,18 @@ const CollectionPage = () => {
                     </ProductCard>
                   ))}
               </article>
-              <Pagination
-                totalBtns={totalBtns}
-                headingRef={headingRef}
-                page={page}
-                ariaDescribedby={ariaDescribedby}
-              />
             </div>
           </ErrorBoundary>
         </article>
+        <div>
+          <Pagination
+            totalBtns={totalBtns}
+            headingRef={headingRef}
+            page={page}
+            ariaDescribedby={ariaDescribedby}
+          />
+          <ProductCountSelect totalCount={productCount} labelText="Select" />
+        </div>
       </article>
     </>
   );

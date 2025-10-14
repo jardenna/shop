@@ -1,3 +1,5 @@
+import { useSearchParams } from 'react-router';
+import FieldSet from '../fieldset/FieldSet';
 import Selectbox from '../selectbox/Selectbox';
 // import './_record-select.scss';
 
@@ -9,33 +11,39 @@ type PageCountOptions = {
 type ProductCountSelectProps = {
   labelText: string;
   totalCount: number;
-  onSelectCount: (value: PageCountOptions) => void;
 };
+
 const ProductCountSelect = ({
-  onSelectCount,
   labelText,
   totalCount,
 }: ProductCountSelectProps) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const handleSelectCount = (id: any) => {
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set('productsPerPage', id.value);
+    setSearchParams(Object.fromEntries(newParams.entries()));
+  };
+
   const pageCountOptions: PageCountOptions[] = [
     { value: '8', label: '8' },
-    { value: '20', label: '20' },
-    { value: '50', label: '50' },
+    { value: '16', label: '16' },
     { value: totalCount.toString(), label: 'All' },
   ];
+
   return (
-    <div className="record-select-container">
-      <form>
+    <form>
+      <FieldSet legendText="Select product per page">
         <Selectbox
-          name="limit"
+          name="productCount"
           options={pageCountOptions}
-          id="limit"
-          onChange={onSelectCount}
+          id="productCount"
+          onChange={handleSelectCount}
           labelText={labelText}
-          inputHasNoLabel
           defaultValue={pageCountOptions[0]}
         />
-      </form>
-    </div>
+      </FieldSet>
+    </form>
   );
 };
 
