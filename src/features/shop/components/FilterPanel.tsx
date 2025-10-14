@@ -95,6 +95,8 @@ const FilterPanel = ({
     ),
   }));
 
+  const ariaLabelledby = 'filter-title';
+
   return (
     <TogglePanel
       footer={{
@@ -116,8 +118,8 @@ const FilterPanel = ({
       }
     >
       <section className="filter-panel-content">
-        <LayoutElement ariaLabel={language.filter}>
-          <h2>{language.filter}</h2>
+        <LayoutElement ariaLabelledby={ariaLabelledby}>
+          <h2 id={ariaLabelledby}>{language.filter}</h2>
         </LayoutElement>
 
         <ToggleContent btnVariant={BtnVariant.Default}>
