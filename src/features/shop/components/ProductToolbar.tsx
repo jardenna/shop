@@ -49,7 +49,7 @@ const ProductToolbar = ({
   const { language } = useLanguage();
 
   return (
-    <article className="product-toolbar">
+    <section className="product-toolbar">
       <DisplayControls
         onSetDisplay={onSetDisplay}
         displayControlList={displayControlList}
@@ -75,7 +75,7 @@ const ProductToolbar = ({
         onClearAllFilters={onClearAllFilters}
         productCount={productCount}
       />
-    </article>
+    </section>
   );
 };
 
