@@ -26,7 +26,7 @@ const ProductCountSelect = ({
   const handleSelectCount = (option: PageCountOptions) => {
     const newParams = new URLSearchParams(searchParams);
     newParams.set(productsPerPageParamKey, option.value);
-    setSearchParams(Object.fromEntries(newParams.entries()));
+    setSearchParams(newParams);
   };
 
   return (

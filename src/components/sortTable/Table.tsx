@@ -104,7 +104,7 @@ const Table = <T,>({
       newParams.delete(field as string);
     }
 
-    setSearchParams(Object.fromEntries(newParams.entries()));
+    setSearchParams(newParams);
   };
 
   const handleClearAll = () => {
