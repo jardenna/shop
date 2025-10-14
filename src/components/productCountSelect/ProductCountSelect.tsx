@@ -6,16 +6,16 @@ type PageCountOptions = {
   value: string;
 };
 
-type PageSelectProps = {
+type ProductCountSelectProps = {
   labelText: string;
   totalCount: number;
   onSelectCount: (value: PageCountOptions) => void;
 };
-const RecordSelect = ({
+const ProductCountSelect = ({
   onSelectCount,
   labelText,
   totalCount,
-}: PageSelectProps) => {
+}: ProductCountSelectProps) => {
   const pageCountOptions: PageCountOptions[] = [
     { value: '8', label: '8' },
     { value: '20', label: '20' },
@@ -39,4 +39,4 @@ const RecordSelect = ({
   );
 };
 
-export default RecordSelect;
+export default ProductCountSelect;
