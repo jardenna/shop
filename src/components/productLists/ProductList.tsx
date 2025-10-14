@@ -10,12 +10,12 @@ type ProductListProps = {
 };
 
 const ProductList = ({ children, groupTitle, className }: ProductListProps) => (
-  <section>
+  <div>
     {groupTitle && <OptionGroupTitle groupTitle={groupTitle} />}
     <ul className={`product-list ${className}`} id={groupTitle?.id}>
       {children}
     </ul>
-  </section>
+  </div>
 );
 
 export default ProductList;

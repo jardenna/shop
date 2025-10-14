@@ -3,52 +3,40 @@ import Skeleton from '../../../components/skeleton/Skeleton';
 import LayoutElement from '../../../layout/LayoutElement';
 import './CollectionAside.styles.scss';
 import CollectionNav from './CollectionNav';
-import CollectionPageHeader from './CollectionPageHeader';
 
 type CollectionAsideProps = {
-  asideHeading: string;
   category: string;
   isLoading: boolean;
-  isMobileSize: boolean;
   language: Record<string, string>;
   subMenu: ProductMenuResponse[] | null;
   onReset: () => void;
 };
 
 const CollectionAside = ({
-  asideHeading,
   subMenu,
   category,
   isLoading,
   onReset,
   language,
-  isMobileSize,
-}: CollectionAsideProps) =>
-  isMobileSize ? (
-    <CollectionPageHeader ariaLabel={language.page} headerText={asideHeading} />
-  ) : (
-    <aside className="collection-aside">
-      <CollectionPageHeader
-        ariaLabel={language.page}
-        headerText={asideHeading}
-      />
-      {isLoading && (
-        <div className="flex column">
-          <Skeleton count={4} />
-        </div>
-      )}
-      {subMenu && (
-        <LayoutElement as="nav" ariaLabel={language.page}>
-          <CollectionNav
-            subMenu={subMenu}
-            category={category}
-            onReset={() => {
-              onReset();
-            }}
-          />
-        </LayoutElement>
-      )}
-    </aside>
-  );
+}: CollectionAsideProps) => (
+  <aside className="collection-aside">
+    {isLoading && (
+      <div className="flex column">
+        <Skeleton count={4} />
+      </div>
+    )}
+    {subMenu && (
+      <LayoutElement as="nav" ariaLabel={language.categoryNavigation}>
+        <CollectionNav
+          subMenu={subMenu}
+          category={category}
+          onReset={() => {
+            onReset();
+          }}
+        />
+      </LayoutElement>
+    )}
+  </aside>
+);
 
 export default CollectionAside;

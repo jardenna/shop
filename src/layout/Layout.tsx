@@ -137,7 +137,6 @@ const Layout = () => {
     <div className="main-container">
       {!isMobileSize && <SkipLink />}
       <Header
-        ariaLabel={language.main}
         dropdownBtnList={dropdownItems}
         primaryActionBtn={primaryActionBtn}
         secondaryActionBtn={secondaryActionBtn}

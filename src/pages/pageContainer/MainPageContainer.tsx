@@ -19,7 +19,7 @@ const MainPageContainer = ({
 }: MainPageContainerProps) => (
   <>
     <MetaTags metaTitle={heading} />
-    <article className={`container ${className}`}>
+    <div className={`container ${className}`}>
       <PageHeader heading={heading} />
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
@@ -27,7 +27,7 @@ const MainPageContainer = ({
       >
         {children}
       </ErrorBoundary>
-    </article>
+    </div>
   </>
 );
 
