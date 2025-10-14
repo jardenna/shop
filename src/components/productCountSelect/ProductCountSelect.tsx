@@ -33,7 +33,7 @@ const ProductCountSelect = ({
 
   return (
     <form>
-      <FieldSet legendText="Select product per page">
+      <FieldSet legendText="displayOptions">
         <Selectbox
           name="productCount"
           options={pageCountOptions}
@@ -41,6 +41,7 @@ const ProductCountSelect = ({
           onChange={handleSelectCount}
           labelText={labelText}
           defaultValue={pageCountOptions[0]}
+          inputHasNoLabel
         />
       </FieldSet>
     </form>

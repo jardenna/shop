@@ -126,7 +126,7 @@ const CollectionPage = () => {
   return (
     <>
       {category && <MetaTags metaTitle={language[category]} />}
-      <article className="container collection-page" ref={headingRef}>
+      <section className="container collection-page" ref={headingRef}>
         {subMenu && (
           <Breadcrumbs
             routeList={breadcrumbsList}
@@ -134,7 +134,7 @@ const CollectionPage = () => {
             productName=""
           />
         )}
-        <article className="collection-page-container">
+        <div className="collection-page-container">
           <CollectionAside
             subMenu={subMenu || null}
             category={category || 'women'}
@@ -178,7 +178,7 @@ const CollectionPage = () => {
                 />
               )}
               {isLoading && <SkeletonCardList count={8} />}
-              <article
+              <section
                 className={`product-card-list ${productView === 'list' && !isSmallMobileSize ? 'list' : ''}`}
               >
                 {products &&
@@ -198,20 +198,24 @@ const CollectionPage = () => {
                       )}
                     </ProductCard>
                   ))}
-              </article>
+              </section>
             </div>
           </ErrorBoundary>
-        </article>
-        <div>
+        </div>
+        <section aria-label={language.productNavigation}>
           <Pagination
             totalBtns={totalBtns}
             headingRef={headingRef}
             page={page}
             ariaDescribedby={ariaDescribedby}
           />
-          <ProductCountSelect totalCount={productCount} labelText="Select" />
-        </div>
-      </article>
+          <ProductCountSelect
+            totalCount={productCount}
+            labelText={language.selectNumber}
+          />
+          <p>{language.productPerPage}</p>
+        </section>
+      </section>
     </>
   );
 };
