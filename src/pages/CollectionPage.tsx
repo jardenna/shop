@@ -220,6 +220,7 @@ const CollectionPage = () => {
           />
           <ProductCountSelect
             labelText={language.selectNumber}
+            legendText={language.displayOptions}
             defaultValue={{
               value: productsPerPage.toString(),
               label: productsPerPage.toString(),

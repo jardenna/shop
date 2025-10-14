@@ -11,6 +11,7 @@ export type PageCountOptions = {
 type ProductCountSelectProps = {
   defaultValue: PageCountOptions;
   labelText: string;
+  legendText: string;
   options: PageCountOptions[];
 };
 
@@ -18,6 +19,7 @@ const ProductCountSelect = ({
   labelText,
   options,
   defaultValue,
+  legendText,
 }: ProductCountSelectProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -29,7 +31,7 @@ const ProductCountSelect = ({
 
   return (
     <form className="product-navigation-form">
-      <FieldSet legendText="displayOptions">
+      <FieldSet legendText={legendText}>
         <Selectbox
           name="productCount"
           options={options}
