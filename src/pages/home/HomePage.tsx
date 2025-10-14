@@ -2,10 +2,10 @@ import FashionGrid from './fashionGrid/FashionGrid';
 import Hero from './hero/Hero';
 
 const HomePage = () => (
-  <section className="container">
+  <div className="container">
     <Hero />
     <FashionGrid />
-  </section>
+  </div>
 );
 
 export default HomePage;
