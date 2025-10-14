@@ -3,7 +3,7 @@ import FieldSet from './fieldset/FieldSet';
 import Selectbox from './selectbox/Selectbox';
 // import './_record-select.scss';
 
-type PageCountOptions = {
+export type PageCountOptions = {
   label: string;
   value: string;
 };
@@ -19,9 +19,9 @@ const ProductCountSelect = ({
 }: ProductCountSelectProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const handleSelectCount = (id: any) => {
+  const handleSelectCount = (option: PageCountOptions) => {
     const newParams = new URLSearchParams(searchParams);
-    newParams.set('productsPerPage', id.value);
+    newParams.set('productsPerPage', option.value);
     setSearchParams(Object.fromEntries(newParams.entries()));
   };
 

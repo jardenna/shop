@@ -81,6 +81,7 @@ const CollectionPage = () => {
   const sortedTranslatedColors = sortColorsByTranslation(colorList, language);
   const categoryText = category ? language[category] : '';
   const productsPerPage = 8;
+
   // Redux hooks
   const {
     data: products,
