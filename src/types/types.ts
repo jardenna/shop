@@ -7,11 +7,9 @@ export type ChangeInputType = ChangeEvent<HTMLInputElement>;
 export type ChangeTextAreaType = ChangeEvent<HTMLTextAreaElement>;
 export type BlurEventType = { target: { name: string } };
 export type FormEventType = FormEvent<HTMLFormElement>;
-export type refElementType = RefObject<HTMLElement | null>;
-export type refDivType = RefObject<HTMLDivElement | null>;
-export type refInputType = RefObject<HTMLInputElement | null>;
-export type refTextareaType = RefObject<HTMLTextAreaElement | null>;
-export type refFormType = RefObject<HTMLFormElement | null>;
+export type RefElementType = RefObject<HTMLElement | null>;
+export type RefInputType = RefObject<HTMLInputElement | null>;
+export type RefFormType = RefObject<HTMLFormElement | null>;
 
 export type OptionType<T = string> = {
   label: string;

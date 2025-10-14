@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
-import type { refElementType } from '../types/types';
+import type { RefElementType } from '../types/types';
 
 const useClickOutside = (
-  ref: refElementType,
+  ref: RefElementType,
   handleOnClickOutside: (event: MouseEvent | TouchEvent) => void,
-  ignoreRefs: refElementType[] = [],
+  ignoreRefs: RefElementType[] = [],
 ) => {
   useEffect(() => {
     const listener = (event: MouseEvent | TouchEvent) => {

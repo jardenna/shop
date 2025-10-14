@@ -2,10 +2,10 @@ import Button from '../../components/Button';
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import { BtnVariant } from '../../types/enums';
-import type { refElementType } from '../../types/types';
+import type { RefElementType } from '../../types/types';
 
 type DeleteUserProps = {
-  ref: refElementType;
+  ref: RefElementType;
   username: string;
   onPrimaryClick: () => void;
   onSecondaryClick?: () => void;

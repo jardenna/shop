@@ -1,4 +1,3 @@
-import { RefObject } from 'react';
 import type {
   GroupBase,
   MultiValue,
@@ -7,7 +6,7 @@ import type {
 } from 'react-select';
 import Select from 'react-select';
 import useLanguage from '../../features/language/useLanguage';
-import type { OptionType } from '../../types/types';
+import type { OptionType, RefElementType } from '../../types/types';
 import FormLabel from '../formElements/FormLabel';
 import './_select-box.scss';
 
@@ -30,7 +29,7 @@ type SelectboxProps = {
   isMulti?: boolean;
   isSearchable?: boolean;
   menuIsOpen?: boolean;
-  ref?: RefObject<HTMLFormElement | null>;
+  ref?: RefElementType;
   required?: boolean;
   onChange: (value: any) => void;
 };

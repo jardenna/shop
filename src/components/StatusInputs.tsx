@@ -4,7 +4,7 @@ import useLanguage from '../features/language/useLanguage';
 import type {
   InputChangeHandler,
   OptionType,
-  refFormType,
+  RefElementType,
 } from '../types/types';
 import DatePicker from './datePicker/DatePicker';
 import TimeInput from './formElements/timeInput/TimeInput';
@@ -24,7 +24,7 @@ export type StatusInputsProps = {
   timeValue: string;
   max?: number;
   min?: number;
-  ref?: refFormType;
+  ref?: RefElementType;
   onSelectDate: (date: Date) => void;
   onSelectStatus: (selectedOptions: OptionType) => void;
 };

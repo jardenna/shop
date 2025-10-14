@@ -3,7 +3,7 @@ import type {
   BlurEventType,
   InputChangeHandler,
   InputType,
-  refInputType,
+  RefInputType,
 } from '../../types/types';
 import FormLabel from './FormLabel';
 import InputInfo from './InputInfo';
@@ -28,7 +28,7 @@ export type InputProps = {
   min?: number;
   multiple?: boolean;
   placeholder?: string;
-  ref?: refInputType;
+  ref?: RefInputType;
   required?: boolean;
   type?: InputType;
   onBlur?: (event: BlurEventType) => void;

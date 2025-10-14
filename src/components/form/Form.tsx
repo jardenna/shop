@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import { BtnType, BtnVariant } from '../../types/enums';
-import type { FormEventType, refFormType } from '../../types/types';
+import type { FormEventType, RefFormType } from '../../types/types';
 import Button from '../Button';
 import './_form.scss';
 
@@ -13,7 +13,7 @@ type FormProps = {
   className?: string;
   disabled?: boolean;
   isLoading?: boolean;
-  ref?: refFormType;
+  ref?: RefFormType;
   onCancel?: () => void;
   onSubmit: (event: FormEventType) => void;
 };

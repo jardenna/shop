@@ -1,4 +1,4 @@
-import type { ChangeTextAreaType, refTextareaType } from '../../types/types';
+import type { ChangeTextAreaType } from '../../types/types';
 import FormLabel from './FormLabel';
 import type { InputProps } from './Input';
 
@@ -19,7 +19,6 @@ type OmittedProps = Omit<
 
 type TextareaProps = OmittedProps & {
   ariaHidden?: boolean;
-  ref?: refTextareaType;
   rows?: number;
   tabIndex?: number;
   onChange: (event: ChangeTextAreaType) => void;
@@ -37,7 +36,6 @@ const Textarea = ({
   errorText,
   rows = 3,
   ariaHidden,
-  ref,
 }: TextareaProps) => {
   const ariaErrorId = `${id}-error`;
   return (
@@ -54,7 +52,6 @@ const Textarea = ({
       <textarea
         aria-errormessage={errorText ? ariaErrorId : undefined}
         name={name}
-        ref={ref}
         id={id}
         value={value}
         onChange={onChange}
