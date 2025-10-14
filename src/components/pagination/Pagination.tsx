@@ -32,7 +32,7 @@ const Pagination = ({
   const handlePagination = (id: number) => {
     const newParams = new URLSearchParams(searchParams);
     newParams.set(pageParamKey, id.toString());
-    setSearchParams(Object.fromEntries(newParams.entries()));
+    setSearchParams(newParams);
   };
 
   const handleGotoPrevPage = () => {

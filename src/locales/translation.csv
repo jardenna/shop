@@ -17,6 +17,7 @@ addToBag;Add to bag;Læg i indkøbskurv
 addToStock;Add to stock;Tilføj til lager
 admin;Admin;Admin
 adminCannotBeDeleted;Administrator cannot be deleted;Administrator kan ikke slettes
+all;All;Alle
 allowedFormats;Allowed formats;Tilladte formater
 alreadyLoggedIn;You are already logged in;Du er allerede logget ind
 alreadyLoggedInAs;You are already logged in as;Du er allerede logget ind som
@@ -110,6 +111,7 @@ discoverCollection;Discover Collection;Se kollektionen
 discoverLatestTrends;Discover latest trends;Udforsk de nyeste tendenser
 discoverLatestTrendsAltText;A man playfully surprises a woman by covering her eyes from behinds.;En mand overrasker legende en kvinde ved at dække hendes øjne bagfra.
 displayDensity;Display density;Visningstæthed
+displayOptions;Display options;Visningsindstillinger
 doNotBleach;Do not bleach;Må ikke bleges
 email;Email;E-mail
 employee;Employee;Ansat
@@ -300,7 +302,9 @@ productInformation;Product information;Produkt oplysninger
 productList;Product list;Produktliste
 productName;Product name;Produkt navn
 productNameRequired;Please insert product name;Indsæt venligst produktnavn
+productNavigation;Produkt navigation;Produkt navigation
 productNotFound;Product not found;Produktet findes ikke
+productPerPage;products per page;produkter pr. side
 productPlural;Product(s);Produkt(er)
 productQuantity;Product quantity;Produkt antal
 products;Products;Produkter
@@ -339,6 +343,7 @@ scheduledToBePublished;is scheduled to be published at;er planlagt til udgivelse
 search;Search;Søg
 selectedColor;Selected colour;Valgt farve
 selectedSize;Selected size;Valgt størrelse
+selectNumber;Select number;Vælg antal
 selectPreferences;Select preferred language and currency;Vælg venligst sprog og valuta
 selectSize;Select size;Vælg størrelse
 shareReview;Share review;Del anmeldelse

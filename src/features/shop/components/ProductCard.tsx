@@ -24,7 +24,7 @@ const ProductCard = ({
 }: ProductCardProps) => {
   const { language } = useLanguage();
   return (
-    <section className="product-card">
+    <article className="product-card">
       <div className="product-img-container">
         <FavoriteHeart id={product.id} />
         {product.discount > 0 && (
@@ -42,7 +42,7 @@ const ProductCard = ({
         <h2 className="product-card-title">{product.productName}</h2>
         {children}
       </div>
-    </section>
+    </article>
   );
 };
 

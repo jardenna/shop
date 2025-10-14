@@ -6,6 +6,7 @@ import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import Pagination from '../components/pagination/Pagination';
 import Picture from '../components/Picture';
+import ProductCountSelect from '../components/ProductCountSelect';
 import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import useLanguage from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
@@ -24,7 +25,11 @@ import MetaTags from '../layout/nav/MetaTags';
 import { IconName } from '../types/enums';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { sortSizesDynamic } from '../utils/sizeUtils';
-import { getFilterSummary, pageParamKey } from '../utils/utils';
+import {
+  getFilterSummary,
+  pageParamKey,
+  productsPerPageParamKey,
+} from '../utils/utils';
 import './CollectionPage.styles.scss';
 
 export type FilterKeys = 'sizes' | 'colors' | 'brand';
@@ -36,6 +41,7 @@ const CollectionPage = () => {
   const { language } = useLanguage();
   const { isMobileSize, isSmallMobileSize } = useMediaQuery();
   const pageParam = searchParams.get(pageParamKey);
+  const productPerPageParam = searchParams.get(productsPerPageParamKey);
   const page = Number(pageParam) || 1;
   const hasMounted = useRef(false);
   const [announce, setAnnounce] = useState(false);
@@ -79,14 +85,15 @@ const CollectionPage = () => {
 
   const sortedTranslatedColors = sortColorsByTranslation(colorList, language);
   const categoryText = category ? language[category] : '';
-  const productsPerPage = 8;
+  const productsPerPage = Number(productPerPageParam) || 8;
+
   // Redux hooks
   const {
     data: products,
     isLoading,
     refetch,
   } = useGetProductsQuery({
-    productsPerPage,
+    productsPerPage: Number(productPerPageParam),
     page: pageParam || '1',
     colors: filterValues.colors,
     brand: filterValues.brand,
@@ -118,6 +125,7 @@ const CollectionPage = () => {
   const endItem = Math.min(page * productsPerPage, productCount);
   const totalBtns = Math.ceil(productCount / productsPerPage);
   const ariaDescribedby = 'result-info';
+  console.log(totalBtns);
 
   const productsLoadedText = `${language.page} ${page} ${language.of} ${totalBtns} ${language.loaded}`;
   const infoText = `${language.showing} ${startItem}–${endItem}  ${language.of} ${productCount} ${language.products.toLowerCase()}.`;
@@ -125,7 +133,7 @@ const CollectionPage = () => {
   return (
     <>
       {category && <MetaTags metaTitle={language[category]} />}
-      <article className="container collection-page" ref={headingRef}>
+      <section className="container collection-page" ref={headingRef}>
         {subMenu && (
           <Breadcrumbs
             routeList={breadcrumbsList}
@@ -133,7 +141,7 @@ const CollectionPage = () => {
             productName=""
           />
         )}
-        <article className="collection-page-container">
+        <div className="collection-page-container">
           <CollectionAside
             subMenu={subMenu || null}
             category={category || 'women'}
@@ -177,7 +185,7 @@ const CollectionPage = () => {
                 />
               )}
               {isLoading && <SkeletonCardList count={8} />}
-              <article
+              <section
                 className={`product-card-list ${productView === 'list' && !isSmallMobileSize ? 'list' : ''}`}
               >
                 {products &&
@@ -197,17 +205,36 @@ const CollectionPage = () => {
                       )}
                     </ProductCard>
                   ))}
-              </article>
-              <Pagination
-                totalBtns={totalBtns}
-                headingRef={headingRef}
-                page={page}
-                ariaDescribedby={ariaDescribedby}
-              />
+              </section>
             </div>
           </ErrorBoundary>
-        </article>
-      </article>
+        </div>
+        <section
+          className="product-navigation"
+          aria-label={language.productNavigation}
+        >
+          <Pagination
+            totalBtns={totalBtns}
+            headingRef={headingRef}
+            page={page}
+            ariaDescribedby={ariaDescribedby}
+          />
+          <ProductCountSelect
+            labelText={language.selectNumber}
+            legendText={language.displayOptions}
+            defaultValue={{
+              value: productsPerPage.toString(),
+              label: productsPerPage.toString(),
+            }}
+            options={[
+              { value: '8', label: '8' },
+              { value: '16', label: '16' },
+              { value: productCount.toString(), label: language.all },
+            ]}
+          />
+          <p>{language.productPerPage}</p>
+        </section>
+      </section>
     </>
   );
 };
