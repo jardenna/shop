@@ -85,7 +85,7 @@ const CollectionPage = () => {
 
   const sortedTranslatedColors = sortColorsByTranslation(colorList, language);
   const categoryText = category ? language[category] : '';
-  const productsPerPage = Number(productPerPageParam);
+  const productsPerPage = Number(productPerPageParam) || 8;
 
   // Redux hooks
   const {
@@ -125,6 +125,7 @@ const CollectionPage = () => {
   const endItem = Math.min(page * productsPerPage, productCount);
   const totalBtns = Math.ceil(productCount / productsPerPage);
   const ariaDescribedby = 'result-info';
+  console.log(totalBtns);
 
   const productsLoadedText = `${language.page} ${page} ${language.of} ${totalBtns} ${language.loaded}`;
   const infoText = `${language.showing} ${startItem}–${endItem}  ${language.of} ${productCount} ${language.products.toLowerCase()}.`;
