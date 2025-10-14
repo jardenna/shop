@@ -6,7 +6,7 @@ import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import Pagination from '../components/pagination/Pagination';
 import Picture from '../components/Picture';
-import ProductCountSelect from '../components/productCountSelect/ProductCountSelect';
+import ProductCountSelect from '../components/ProductCountSelect';
 import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import useLanguage from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';

@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router';
-import FieldSet from '../fieldset/FieldSet';
-import Selectbox from '../selectbox/Selectbox';
+import FieldSet from './fieldset/FieldSet';
+import Selectbox from './selectbox/Selectbox';
 // import './_record-select.scss';
 
 type PageCountOptions = {
