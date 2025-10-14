@@ -202,7 +202,10 @@ const CollectionPage = () => {
             </div>
           </ErrorBoundary>
         </div>
-        <section aria-label={language.productNavigation}>
+        <section
+          className="product-navigation"
+          aria-label={language.productNavigation}
+        >
           <Pagination
             totalBtns={totalBtns}
             headingRef={headingRef}

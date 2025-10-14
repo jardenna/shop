@@ -1,6 +1,21 @@
+/* stylelint-disable selector-class-pattern */
 @use '../scss/globals' as *;
 
 .collection-page {
+  .collection-page-header {
+    padding: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-light-gray-20;
+    border-bottom: 4px solid $color-gray-30;
+
+    @include max-size($small) {
+      border-bottom: 0;
+      padding: 12px;
+    }
+  }
+
   .breadcrumbs-container {
     display: flex;
     justify-content: flex-end;
@@ -12,6 +27,10 @@
   display: flex;
   gap: 20px;
   width: 100%;
+
+  @include max-size($small) {
+    flex-direction: column;
+  }
 }
 
 .collection-page-content {
@@ -28,22 +47,23 @@
   }
 }
 
-@include max-size($small) {
-  .collection-page-container {
-    flex-direction: column;
-  }
-}
-
-.collection-page-header {
-  padding: 32px;
+.product-navigation {
   display: flex;
-  justify-content: center;
   align-items: center;
-  background-color: $color-light-gray-20;
-  border-bottom: 4px solid $color-gray-30;
+  justify-content: center;
+  gap: 8px;
 
-  @include max-size($small) {
-    border-bottom: 0;
-    padding: 12px;
+  .product-navigation-form {
+    max-width: rem(100px);
+
+    .fieldset {
+      margin-bottom: 0;
+    }
+
+    .select-box__control {
+      min-height: auto;
+      background-color: $color-white;
+      border: 1px solid $color-border-dark;
+    }
   }
 }

@@ -32,7 +32,7 @@ const ProductCountSelect = ({
   ];
 
   return (
-    <form>
+    <form className="product-navigation-form">
       <FieldSet legendText="displayOptions">
         <Selectbox
           name="productCount"
