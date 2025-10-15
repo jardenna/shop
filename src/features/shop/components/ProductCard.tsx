@@ -23,8 +23,11 @@ const ProductCard = ({
   children,
 }: ProductCardProps) => {
   const { language } = useLanguage();
+
+  const ariaLabelledby = `product-card-title-${product.id}`;
+
   return (
-    <article className="product-card">
+    <article className="product-card" aria-labelledby={ariaLabelledby}>
       <div className="product-img-container">
         <FavoriteHeart id={product.id} />
         {product.discount > 0 && (
@@ -39,7 +42,9 @@ const ProductCard = ({
         {showSizeOverlay && <SizeOverlay sizes={product.sizes} count={5} />}
       </div>
       <div className="product-card-content">
-        <h2 className="product-card-title">{product.productName}</h2>
+        <h2 id={ariaLabelledby} className="product-card-title">
+          {product.productName}
+        </h2>
         {children}
       </div>
     </article>
