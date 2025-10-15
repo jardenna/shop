@@ -6,20 +6,18 @@ import MobileNav from '../layout/nav/MobileNav';
 import { adminNavList } from '../layout/nav/navLists';
 
 type AdminHeaderProps = {
-  ariaLabel: string;
   btnLabel: string;
   isMobileSize: boolean;
   welcomeMessage: string | null;
   onLogout: () => void;
 };
 const AdminHeader = ({
-  ariaLabel,
   onLogout,
   btnLabel,
   isMobileSize,
   welcomeMessage,
 }: AdminHeaderProps) => (
-  <LayoutElement ariaLabel={ariaLabel} className="admin-header">
+  <LayoutElement className="admin-header">
     <>
       <Logo linkTo={`/${AdminPath.Admin}`} />
       {!isMobileSize ? (

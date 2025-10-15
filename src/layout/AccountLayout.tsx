@@ -27,18 +27,21 @@ const AccountLayout = () => {
   return (
     <>
       <MetaTags metaTitle={title} />
-      <article className="container account-page">
-        <article className="account-content-container">
+      <section className="container account-page">
+        <div className="account-content-container">
           <NavContainer
             navList={accountNavList}
             ariaLabel={language.account}
             className="account-nav"
           />
-          <section className="account-page-content">
-            <h1>{title}</h1>
+          <section
+            className="account-page-content"
+            aria-labelledby="user-account"
+          >
+            <h1 id="user-account">{title}</h1>
             <Outlet />
           </section>
-        </article>
+        </div>
         <div className="account-img-container">
           <Picture
             src={`${src}.jpg`}
@@ -46,7 +49,7 @@ const AccountLayout = () => {
             alt={language[altText]}
           />
         </div>
-      </article>
+      </section>
     </>
   );
 };

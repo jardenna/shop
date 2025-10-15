@@ -21,9 +21,8 @@ const AdminPageContainer = ({
   onReset,
   variant = 'large',
 }: AdminPageContainerProps) => (
-  <article className={`admin-page page-${variant}`}>
+  <section className={`admin-page page-${variant}`}>
     <MetaTags metaTitle={heading} />
-
     <PageHeader heading={heading} linkText={linkText} linkTo={linkTo} />
     <div className="page-card">
       <ErrorBoundary
@@ -33,7 +32,7 @@ const AdminPageContainer = ({
         {children}
       </ErrorBoundary>
     </div>
-  </article>
+  </section>
 );
 
 export default AdminPageContainer;
