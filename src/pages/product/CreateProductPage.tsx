@@ -12,6 +12,7 @@ const CreateProductPage = () => {
       <AdminPageContainer
         heading={language.createNewProduct}
         onReset={() => refetch()}
+        ariaLabelledby="create-product"
       >
         <ProductForm
           selectedProduct={null}

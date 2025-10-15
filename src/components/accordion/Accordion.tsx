@@ -18,7 +18,6 @@ const Accordion = ({ accordionList }: AccordionProps) => (
       <AccordionItem
         key={title}
         title={title}
-        detailsName="product-info"
         additionalTitle={additionalTitle}
       >
         {content}

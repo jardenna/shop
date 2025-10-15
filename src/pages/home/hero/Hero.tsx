@@ -8,16 +8,22 @@ import './_hero.scss';
 const Hero = () => {
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
+  const ariaLabeldBy = 'hero';
+
   return (
     <ImageBackground
       alt={language.heroAltText}
       src="/images/banners/home_banner.png"
       srcSet="/images/banners/home_banner.avif"
       className="hero"
+      as="section"
       hidePicture={isMobileSize}
+      ariaLabelledby={ariaLabeldBy}
     >
-      <section className="hero-content">
-        <h1 className="hero-title">{language.heroTitle}</h1>
+      <div className="hero-content">
+        <h1 className="hero-title" id={ariaLabeldBy}>
+          {language.heroTitle}
+        </h1>
         <div className="hero-text">
           <p>{language.heroText}</p>
           <p>{language.heroText1}</p>
@@ -28,7 +34,7 @@ const Hero = () => {
             <span>{language.shopNow}</span>
           </Button>
         </div>
-      </section>
+      </div>
     </ImageBackground>
   );
 };

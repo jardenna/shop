@@ -1,15 +1,15 @@
 import LayoutElement from '../../../layout/LayoutElement';
 
 type CollectionPageHeaderProps = {
-  ariaLabel: string;
+  ariaLabelledby: string;
   headerText: string;
 };
 const CollectionPageHeader = ({
-  ariaLabel,
   headerText,
+  ariaLabelledby,
 }: CollectionPageHeaderProps) => (
-  <LayoutElement ariaLabel={ariaLabel} className="collection-page-header">
-    <h1>{headerText}</h1>
+  <LayoutElement className="collection-page-header">
+    <h1 id={ariaLabelledby}>{headerText}</h1>
   </LayoutElement>
 );
 

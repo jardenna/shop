@@ -8,6 +8,7 @@ export type MainCollectionsBaseProps = {
   linkText: string;
   linkTo: ShopPath;
   title: string;
+  ariaLabelledby?: string;
   imgExtention?: ImgExtention;
   imgList?: string[];
 };
@@ -21,15 +22,18 @@ const MainCollectionsItem = ({
   imgList,
   linkTo,
   linkText,
+  ariaLabelledby,
   imgPath,
   imgExtention = 'jpg',
 }: MainCollectionsItemProps) => {
   const { language } = useLanguage();
 
   return (
-    <section className="collections-item">
+    <article className="collections-item" aria-labelledby={ariaLabelledby}>
       <div className="collections-content">
-        <h2 className="collections-title">{title}</h2>
+        <h2 id={ariaLabelledby} className="collections-title">
+          {title}
+        </h2>
         <NavLink className="btn btn-primary" to={linkTo}>
           {linkText}
         </NavLink>
@@ -46,7 +50,7 @@ const MainCollectionsItem = ({
           ))}
         </div>
       )}
-    </section>
+    </article>
   );
 };
 

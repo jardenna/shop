@@ -1,28 +1,28 @@
-import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import Breadcrumbs from '../breadcrumbs/Breadcrumbs';
 import LinkButton from '../LinkButton';
 import './_page-header.scss';
 
 type PageHeaderProps = {
+  ariaLabelledby: string;
   heading: string;
   linkText?: string;
   linkTo?: string;
 };
 
-const PageHeader = ({ heading, linkTo, linkText }: PageHeaderProps) => {
-  const { language } = useLanguage();
-  return (
-    <section className="page-header-container">
+const PageHeader = ({
+  heading,
+  linkTo,
+  linkText,
+  ariaLabelledby,
+}: PageHeaderProps) => (
+  <LayoutElement className="page-header">
+    <div>
       <Breadcrumbs currentLabel={heading} />
-      <LayoutElement className="page-header" ariaLabel={language.page}>
-        <h1>{heading}</h1>
-        {linkTo && linkText && (
-          <LinkButton linkTo={linkTo} linkText={linkText} />
-        )}
-      </LayoutElement>
-    </section>
-  );
-};
+      <h1 id={ariaLabelledby}>{heading}</h1>
+    </div>
+    {linkTo && linkText && <LinkButton linkTo={linkTo} linkText={linkText} />}
+  </LayoutElement>
+);
 
 export default PageHeader;

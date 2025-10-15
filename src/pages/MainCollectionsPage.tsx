@@ -35,11 +35,12 @@ const CollectionLandingPage = () => {
       imgList: collectionImages[item],
       linkTo: ShopPath[item as keyof typeof ShopPath],
       linkText: language.discoverCollection,
+      ariaLabelledby: `collection-${item.toLowerCase()}-title`,
     }),
   );
 
   return (
-    <MainPageContainer heading={language.collection}>
+    <MainPageContainer heading="collection">
       <MainCollections mainCollectionList={mainCollectionsList} />
     </MainPageContainer>
   );

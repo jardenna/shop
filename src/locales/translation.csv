@@ -1,5 +1,5 @@
 ﻿key;en;da
-aboutUs;About us;Om os
+about;About us;Om os
 accessories;Accessories;Accessories
 accessoriesAndToys;Accessories & Toys;Accessories & legetøj
 account;Account;Konto
@@ -44,6 +44,7 @@ categoryDeleted;Category deleted;Kategori blev slettet
 categoryIs;Category is;Kategori er
 categoryList;Category list;Kategori-liste
 categoryName;Category name;Kategori navn
+categoryNavigation;Category navigation;Kategorinavigation
 categoryNotFound;Category not found;Kategorien findes ikke
 categoryRequired;Please select a category;Vælg venligst kategori
 categoryStatus;Category status;Kategori status
@@ -196,6 +197,7 @@ lowStock;Low stock;Få på lager
 machineWash;Machine wash at 40 °C;Maskinvask ved 40 °C
 main;Main;Primær
 mainCategoryName;Parent category;Hovedkategori
+mainMenu;Main menu;Hovedmenu
 man;Man;Mand
 material;Material;Materiale
 materialAndCare;Material and care;Materiale og vaskeanvisning
@@ -255,7 +257,7 @@ orderAltText;Young boy in black jeans and a white T-shirt layered with a blue-ch
 outOf;out of;ud af
 outOfStock;Out of stock;Udsolgt
 page;Page;Side
-pagination;Pagination;sideinddeling
+pagination;Pagination;Sideinddeling
 panel;Panel;Panel
 parentCategoryIs;Parent category is;Hovedkategori er
 password;Password;Adgangskode

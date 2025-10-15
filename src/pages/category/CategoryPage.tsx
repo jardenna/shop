@@ -45,6 +45,7 @@ const CategoryPage = () => {
       linkTo={AdminPath.AdminCategoryCreate}
       onReset={() => refetch()}
       variant="medium"
+      ariaLabelledby="categories-list"
     >
       <Table
         onReset={() => refetch()}

@@ -3,6 +3,7 @@ import type { SubBaseNav } from '../Nav';
 import NavAd from '../NavAd';
 
 type SubNavListDesktoptProps = {
+  ariaLabelledby: string;
   heading: string;
   language: Record<string, string>;
   subNavList: SubBaseNav[];
@@ -12,12 +13,15 @@ const SubNavListDesktop = ({
   subNavList,
   heading,
   language,
+  ariaLabelledby,
 }: SubNavListDesktoptProps) => (
   <ul className="sub-nav">
     {subNavList.map(({ linkText, infoText, path, className = '' }) => (
       <li className={`sub-nav-item ${className}`} key={linkText}>
-        <section className="sub-nav-content">
-          <h2 className="sub-nav-heading">{language[linkText]}</h2>
+        <section className="sub-nav-content" aria-labelledby={ariaLabelledby}>
+          <h2 id={ariaLabelledby} className="sub-nav-heading">
+            {language[linkText]}
+          </h2>
           <p className="sub-nav-text">{language[infoText]}</p>
         </section>
         <div className="sub-nav-link">

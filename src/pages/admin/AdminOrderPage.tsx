@@ -5,7 +5,7 @@ const AdminOrderPage = () => {
   const { language } = useLanguage();
 
   return (
-    <AdminPageContainer heading={language.orders}>
+    <AdminPageContainer heading={language.orders} ariaLabelledby="orders">
       {language.orders}
     </AdminPageContainer>
   );

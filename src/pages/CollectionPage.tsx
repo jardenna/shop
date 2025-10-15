@@ -10,6 +10,7 @@ import ProductCountSelect from '../components/ProductCountSelect';
 import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import useLanguage from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
+import CollectionPageHeader from '../features/shop/components/CollectionPageHeader';
 import ProductCard from '../features/shop/components/ProductCard';
 import ProductCardGridContent from '../features/shop/components/ProductCardGridContent';
 import ProductCardListContent from '../features/shop/components/ProductCardListContent';
@@ -125,15 +126,18 @@ const CollectionPage = () => {
   const endItem = Math.min(page * productsPerPage, productCount);
   const totalBtns = Math.ceil(productCount / productsPerPage);
   const ariaDescribedby = 'result-info';
-  console.log(totalBtns);
 
   const productsLoadedText = `${language.page} ${page} ${language.of} ${totalBtns} ${language.loaded}`;
   const infoText = `${language.showing} ${startItem}–${endItem}  ${language.of} ${productCount} ${language.products.toLowerCase()}.`;
-
+  const ariaLabelledby = `${category || 'women'}-title`;
   return (
     <>
       {category && <MetaTags metaTitle={language[category]} />}
-      <section className="container collection-page" ref={headingRef}>
+      <section
+        className="container collection-page"
+        ref={headingRef}
+        aria-labelledby={ariaLabelledby}
+      >
         {subMenu && (
           <Breadcrumbs
             routeList={breadcrumbsList}
@@ -142,15 +146,19 @@ const CollectionPage = () => {
           />
         )}
         <div className="collection-page-container">
-          <CollectionAside
-            subMenu={subMenu || null}
-            category={category || 'women'}
-            isLoading={subMenuLoading}
-            onReset={() => refetchSubMenu()}
-            asideHeading={categoryText}
-            language={language}
-            isMobileSize={isMobileSize}
-          />
+          <div>
+            <CollectionPageHeader
+              headerText={categoryText}
+              ariaLabelledby={ariaLabelledby}
+            />
+            <CollectionAside
+              subMenu={subMenu || null}
+              category={category || 'women'}
+              isLoading={subMenuLoading}
+              onReset={() => refetchSubMenu()}
+              language={language}
+            />
+          </div>
           <ErrorBoundary
             FallbackComponent={ErrorBoundaryFallback}
             onReset={() => refetch()}

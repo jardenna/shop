@@ -5,19 +5,23 @@ import MainCollectionsItem, {
 type MainCollectionsProps = {
   mainCollectionList: MainCollectionsBaseProps[];
 };
+
 const MainCollections = ({ mainCollectionList }: MainCollectionsProps) => (
-  <article className="main-collection-container">
-    {mainCollectionList.map(({ title, imgList, linkTo, linkText }) => (
-      <MainCollectionsItem
-        key={title}
-        imgPath="/images"
-        title={title}
-        imgList={imgList}
-        linkTo={linkTo}
-        linkText={linkText}
-      />
-    ))}
-  </article>
+  <section className="main-collection-container">
+    {mainCollectionList.map(
+      ({ title, imgList, linkTo, linkText, ariaLabelledby }) => (
+        <MainCollectionsItem
+          key={title}
+          ariaLabelledby={ariaLabelledby}
+          imgPath="/images"
+          title={title}
+          imgList={imgList}
+          linkTo={linkTo}
+          linkText={linkText}
+        />
+      ),
+    )}
+  </section>
 );
 
 export default MainCollections;

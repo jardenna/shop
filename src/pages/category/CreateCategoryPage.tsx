@@ -14,7 +14,11 @@ const CreateCategoryPage = () => {
   const allowedUpdateCategory = !!isAdmin;
 
   return (
-    <AdminPageContainer heading={language.createNewCategory} variant="small">
+    <AdminPageContainer
+      heading={language.createNewCategory}
+      variant="small"
+      ariaLabelledby="create-new-category"
+    >
       <CategoryForm
         selectedCategory={null}
         id={null}

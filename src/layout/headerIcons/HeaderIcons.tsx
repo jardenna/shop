@@ -51,6 +51,7 @@ const HeaderIcons = ({
             dropdownList={dropdownBtnList}
             ariaControls="user-dropdown"
             placement="bottom-start"
+            ariaHasPopup="menu"
           >
             <IconContent
               ariaLabel={language.myAccount}

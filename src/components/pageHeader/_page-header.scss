@@ -1,17 +1,9 @@
 @use '../../scss/globals' as *;
 
-.page-header-container {
-  margin-block: 20px 12px;
-  width: 100%;
-}
-
 .page-header {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  margin-block: 20px 12px;
   align-items: flex-end;
-
-  @include max-size($mini) {
-    align-items: flex-start;
-  }
 }

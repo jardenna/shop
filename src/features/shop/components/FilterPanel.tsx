@@ -95,8 +95,11 @@ const FilterPanel = ({
     ),
   }));
 
+  const ariaLabelledby = 'filter-title';
+
   return (
     <TogglePanel
+      ariaHasPopup="dialog"
       footer={{
         primaryBtnText: `${language.show} ${productCount} ${language.itemLabel}`,
         secondaryAction: onClearAllFilters,
@@ -115,9 +118,12 @@ const FilterPanel = ({
         </>
       }
     >
-      <section className="filter-panel-content">
-        <LayoutElement ariaLabel={language.filter}>
-          <h2>{language.filter}</h2>
+      <section
+        className="filter-panel-content"
+        aria-labelledby={ariaLabelledby}
+      >
+        <LayoutElement>
+          <h2 id={ariaLabelledby}>{language.filter}</h2>
         </LayoutElement>
 
         <ToggleContent btnVariant={BtnVariant.Default}>

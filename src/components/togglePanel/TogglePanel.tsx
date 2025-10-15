@@ -21,8 +21,8 @@ type ActionBtnsProps = {
 
 type TogglePanelProps = {
   ariaControls: string;
+  ariaHasPopup: AriaHasPopup;
   children: ReactNode;
-  ariaHasPopup?: AriaHasPopup;
   className?: string;
   footer?: ActionBtnsProps;
   panelPosition?: PanelPosition;

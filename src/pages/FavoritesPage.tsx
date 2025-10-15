@@ -20,7 +20,7 @@ const FavoritesPage = () => {
   };
 
   return (
-    <MainPageContainer heading={language.favorites}>
+    <MainPageContainer heading="favorites">
       {isLoading && <SkeletonCardList count={4} />}
       <article className="product-card-list">
         <ErrorBoundary

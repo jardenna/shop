@@ -25,6 +25,7 @@ const CreateSubCategoryPage = () => {
         heading={language.createNewCategory}
         onReset={() => refetch()}
         variant="small"
+        ariaLabelledby="create-sub-category"
       >
         {allCategories && (
           <SubCategoryForm

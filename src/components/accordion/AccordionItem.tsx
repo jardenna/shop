@@ -6,18 +6,16 @@ type AccordionItemProps = {
   children: ReactNode | string;
   title: string;
   additionalTitle?: string | number;
-  detailsName?: string;
   open?: boolean;
 };
 
 const AccordionItem = ({
-  detailsName,
   title,
   children,
   additionalTitle,
   open,
 }: AccordionItemProps) => (
-  <details name={detailsName} open={open || undefined}>
+  <details open={open || undefined}>
     <summary>
       <span className="accordion-title">
         {title}

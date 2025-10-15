@@ -19,7 +19,7 @@ const NavContainer = ({
   isMenuCollapsed,
   currentUser,
   className = 'main-nav-container',
-  ariaLabel,
+  ariaLabel = 'mainMenu',
   hideAriaHasPopup,
 }: NavContainerProps) => {
   const { language } = useLanguage();
@@ -28,7 +28,7 @@ const NavContainer = ({
     <>
       <Nav
         navList={navList}
-        ariaLabel={ariaLabel || language.main}
+        ariaLabel={language[ariaLabel]}
         className={className || 'main-nav-container'}
         hideAriaHasPopup={hideAriaHasPopup}
       />

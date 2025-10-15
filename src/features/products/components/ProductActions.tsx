@@ -46,6 +46,7 @@ const ProductActions = ({ onCopyProduct, id }: ProductActionsProps) => {
       ariaLabel={language.productActions}
       showArrow
       placement="left-start"
+      ariaHasPopup="menu"
     >
       <Icon iconName={IconName.MenuDotsHorizontal} title={language.user} />
     </DropdownBtn>

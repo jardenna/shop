@@ -19,7 +19,6 @@ export type Values = {
 };
 
 export type HeaderProps = {
-  ariaLabel: string;
   currencyOptions: OptionType[];
   defaultValue: OptionType;
   dropdownBtnList: DropdownItem[];
@@ -32,7 +31,6 @@ export type HeaderProps = {
 };
 
 const Header = ({
-  ariaLabel,
   dropdownBtnList,
   primaryActionBtn,
   onChange,
@@ -43,7 +41,7 @@ const Header = ({
   secondaryActionBtn,
   isMobileSize,
 }: HeaderProps) => (
-  <LayoutElement className="main-header" ariaLabel={ariaLabel}>
+  <LayoutElement className="main-header">
     <div className="container main-header-content">
       <Logo linkTo={ShopPath.Root} />
       {!isMobileSize ? (

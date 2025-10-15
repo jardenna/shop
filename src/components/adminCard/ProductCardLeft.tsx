@@ -31,7 +31,7 @@ const ProductCardLeft = ({
   const { language } = useLanguage();
 
   return (
-    <CardContent onReset={onReset}>
+    <CardContent onReset={onReset} className="left">
       {images.length > 0 ? (
         <ImgList images={images} onReset={onReset} />
       ) : (
@@ -41,7 +41,6 @@ const ProductCardLeft = ({
         status={status}
         scheduledDate={scheduledDate || null}
         name={name}
-        ariaLabel={language.productCard}
       />
       <p>{description}</p>
       <LabelValueGrid text={language.price}>
