@@ -25,7 +25,6 @@ const CategoryCardLeft = ({
       <AdminCardHeading
         scheduledDate={scheduledDate || null}
         name={name}
-        ariaLabel={language.categoryCard}
         status={status}
       />
       <span>

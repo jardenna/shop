@@ -14,6 +14,16 @@
     }
   }
 
+  .admin-card-left-content {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .admin-card-left-title {
+    margin: 0;
+    font-size: rem(20px);
+  }
+
   &.three-col {
     display: grid;
     grid-template-columns: 1fr 1fr 0.8fr;

@@ -18,10 +18,10 @@ const CardContent = ({
   <article className={`admin-card ${className}`}>
     <span className="card-top-line" aria-hidden={true} />
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
-      <section className="admin-card-content">
-        {heading && <h2 className="admin-card-title">{heading}</h2>}
+      <div className="admin-card-content">
+        {heading && <p className="admin-card-title">{heading}</p>}
         {children}
-      </section>
+      </div>
     </ErrorBoundary>
   </article>
 );
