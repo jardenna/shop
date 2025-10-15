@@ -46,7 +46,7 @@ const CategoryCard = ({
   };
 
   return (
-    <article className="two-col admin-card-container">
+    <section className="two-col admin-card-container">
       <CategoryCardLeft
         name={subCategoryName}
         status={status}
@@ -71,7 +71,7 @@ const CategoryCard = ({
         allowedToDelete={!!isAdmin}
         triggerModalDisabled={triggerModalDisabled}
       />
-    </article>
+    </section>
   );
 };
 export default CategoryCard;

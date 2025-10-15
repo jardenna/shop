@@ -83,7 +83,7 @@ const ViewProductPage = () => {
           onReset={() => refetch()}
           ariaLabelledby="product"
         >
-          <article className="three-col admin-card-container">
+          <section className="three-col admin-card-container">
             <ProductCardLeft
               name={product.productName}
               scheduledDate={product.scheduledDate || null}
@@ -124,7 +124,7 @@ const ViewProductPage = () => {
               linkTo={`${AdminPath.AdminProductUpdate}/${params.id}`}
               allowedToDelete={!!isAdmin}
             />
-          </article>
+          </section>
         </AdminPageContainer>
       )}
     </>

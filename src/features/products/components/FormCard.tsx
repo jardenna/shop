@@ -10,7 +10,7 @@ type FormCardProps = {
 };
 
 const FormCard = ({ children, legendText, onReset }: FormCardProps) => (
-  <section className="form-card">
+  <div className="form-card">
     <FieldSet legendText={legendText}>
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
@@ -19,7 +19,7 @@ const FormCard = ({ children, legendText, onReset }: FormCardProps) => (
         {children}
       </ErrorBoundary>
     </FieldSet>
-  </section>
+  </div>
 );
 
 export default FormCard;

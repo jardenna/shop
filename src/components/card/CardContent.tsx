@@ -15,7 +15,7 @@ const CardContent = ({
   heading,
   onReset,
 }: CardContentProps) => (
-  <div className={`admin-card ${className}`}>
+  <article className={`admin-card ${className}`}>
     <span className="card-top-line" aria-hidden={true} />
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
       <section className="admin-card-content">
@@ -23,7 +23,7 @@ const CardContent = ({
         {children}
       </section>
     </ErrorBoundary>
-  </div>
+  </article>
 );
 
 export default CardContent;

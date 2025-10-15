@@ -22,7 +22,7 @@ const AdminHeader = ({
       <Logo linkTo={`/${AdminPath.Admin}`} />
       {!isMobileSize ? (
         <>
-          <span>{welcomeMessage && welcomeMessage}</span>
+          <p>{welcomeMessage && welcomeMessage}</p>
           <Button onClick={onLogout}>{btnLabel}</Button>
         </>
       ) : (
