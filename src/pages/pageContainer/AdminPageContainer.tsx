@@ -5,6 +5,7 @@ import PageHeader from '../../components/pageHeader/PageHeader';
 import MetaTags from '../../layout/nav/MetaTags';
 
 type AdminPageContainerProps = {
+  ariaLabelledby: string;
   children: ReactNode;
   heading: string;
   linkText?: string;
@@ -20,19 +21,32 @@ const AdminPageContainer = ({
   linkTo,
   onReset,
   variant = 'large',
-}: AdminPageContainerProps) => (
-  <section className={`admin-page page-${variant}`}>
-    <MetaTags metaTitle={heading} />
-    <PageHeader heading={heading} linkText={linkText} linkTo={linkTo} />
-    <div className="page-card">
-      <ErrorBoundary
-        FallbackComponent={ErrorBoundaryFallback}
-        onReset={onReset}
-      >
-        {children}
-      </ErrorBoundary>
-    </div>
-  </section>
-);
+  ariaLabelledby,
+}: AdminPageContainerProps) => {
+  const ariaTitle = `${ariaLabelledby}-title`;
+
+  return (
+    <section
+      className={`admin-page page-${variant}`}
+      aria-labelledby={ariaTitle}
+    >
+      <MetaTags metaTitle={heading} />
+      <PageHeader
+        heading={heading}
+        linkText={linkText}
+        linkTo={linkTo}
+        ariaLabelledby={ariaTitle}
+      />
+      <div className="page-card">
+        <ErrorBoundary
+          FallbackComponent={ErrorBoundaryFallback}
+          onReset={onReset}
+        >
+          {children}
+        </ErrorBoundary>
+      </div>
+    </section>
+  );
+};
 
 export default AdminPageContainer;

@@ -16,19 +16,26 @@ const MainPageContainer = ({
   heading,
   onReset,
   className = '',
-}: MainPageContainerProps) => (
-  <>
-    <MetaTags metaTitle={heading} />
-    <div className={`container ${className}`}>
-      <PageHeader heading={heading} />
-      <ErrorBoundary
-        FallbackComponent={ErrorBoundaryFallback}
-        onReset={onReset}
+}: MainPageContainerProps) => {
+  const ariaLabelledby = `${heading}-title`;
+
+  return (
+    <>
+      <MetaTags metaTitle={heading} />
+      <section
+        className={`container ${className}`}
+        aria-labelledby={ariaLabelledby}
       >
-        {children}
-      </ErrorBoundary>
-    </div>
-  </>
-);
+        <PageHeader heading={heading} ariaLabelledby={ariaLabelledby} />
+        <ErrorBoundary
+          FallbackComponent={ErrorBoundaryFallback}
+          onReset={onReset}
+        >
+          {children}
+        </ErrorBoundary>
+      </section>
+    </>
+  );
+};
 
 export default MainPageContainer;
