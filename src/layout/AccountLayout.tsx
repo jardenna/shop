@@ -23,25 +23,28 @@ const AccountLayout = () => {
     addresses: 'addressAltText',
   };
   const altText = altTextMap[imgName];
+  const ariaLabelledby = `${pathInfo}-title`;
 
   return (
     <>
       <MetaTags metaTitle={title} />
-      <section className="container account-page">
-        <div className="account-content-container">
+      <div className="container account-page">
+        <section
+          className="account-content-container"
+          aria-labelledby={ariaLabelledby}
+        >
           <NavContainer
             navList={accountNavList}
             ariaLabel={language.account}
             className="account-nav"
           />
-          <section
-            className="account-page-content"
-            aria-labelledby="user-account"
-          >
-            <h1 id="user-account">{title}</h1>
+          <div className="account-page-content">
+            <header>
+              <h1 id={ariaLabelledby}>{title}</h1>
+            </header>
             <Outlet />
-          </section>
-        </div>
+          </div>
+        </section>
         <div className="account-img-container">
           <Picture
             src={`${src}.jpg`}
@@ -49,7 +52,7 @@ const AccountLayout = () => {
             alt={language[altText]}
           />
         </div>
-      </section>
+      </div>
     </>
   );
 };
