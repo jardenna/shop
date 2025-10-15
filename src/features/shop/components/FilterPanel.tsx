@@ -118,8 +118,11 @@ const FilterPanel = ({
         </>
       }
     >
-      <section className="filter-panel-content">
-        <LayoutElement ariaLabelledby={ariaLabelledby}>
+      <section
+        className="filter-panel-content"
+        aria-labelledby={ariaLabelledby}
+      >
+        <LayoutElement>
           <h2 id={ariaLabelledby}>{language.filter}</h2>
         </LayoutElement>
 

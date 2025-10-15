@@ -60,6 +60,7 @@ const SubNav = ({
           subNavList={subNavList}
           heading={heading}
           language={language}
+          ariaLabelledby={`${selectedCategory}-menu`}
         />
       )}
     </div>

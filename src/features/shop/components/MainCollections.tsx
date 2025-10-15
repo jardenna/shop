@@ -8,16 +8,19 @@ type MainCollectionsProps = {
 
 const MainCollections = ({ mainCollectionList }: MainCollectionsProps) => (
   <section className="main-collection-container">
-    {mainCollectionList.map(({ title, imgList, linkTo, linkText }) => (
-      <MainCollectionsItem
-        key={title}
-        imgPath="/images"
-        title={title}
-        imgList={imgList}
-        linkTo={linkTo}
-        linkText={linkText}
-      />
-    ))}
+    {mainCollectionList.map(
+      ({ title, imgList, linkTo, linkText, ariaLabelledby }) => (
+        <MainCollectionsItem
+          key={title}
+          ariaLabelledby={ariaLabelledby}
+          imgPath="/images"
+          title={title}
+          imgList={imgList}
+          linkTo={linkTo}
+          linkText={linkText}
+        />
+      ),
+    )}
   </section>
 );
 
