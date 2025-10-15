@@ -99,6 +99,7 @@ const FilterPanel = ({
 
   return (
     <TogglePanel
+      ariaHasPopup="dialog"
       footer={{
         primaryBtnText: `${language.show} ${productCount} ${language.itemLabel}`,
         secondaryAction: onClearAllFilters,

@@ -5,6 +5,7 @@ import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import './_dropdown-btn.scss';
 import DropdownList from './DropdownList';
+import { AriaHasPopup } from '../../types/types';
 
 export type DropdownItem = {
   label: string;
@@ -17,6 +18,7 @@ export type DropdownItem = {
 
 export type DropdownBtnProps = {
   ariaControls: string;
+  ariaHasPopup: AriaHasPopup;
   children: ReactNode;
   dropdownList: DropdownItem[];
   ariaLabel?: string;
@@ -34,6 +36,7 @@ const DropdownBtn = ({
   showArrow,
   placement,
   ariaLabel,
+  ariaHasPopup,
   triggerBtnClassName,
 }: DropdownBtnProps) => {
   const { popupRef, popupIsOpen, togglePopupList, arrowRef, buttonRef } =
@@ -44,8 +47,8 @@ const DropdownBtn = ({
       <Button
         variant={triggerBtnVariant}
         onClick={togglePopupList}
-        ariaExpanded={popupIsOpen}
-        ariaHasPopup="menu"
+        ariaExpanded={popupIsOpen || false}
+        ariaHasPopup={ariaHasPopup}
         ariaControls={ariaControls}
         ariaLabel={ariaLabel}
         className={triggerBtnClassName}

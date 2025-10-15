@@ -24,6 +24,7 @@ const AdminBadge = ({ scheduledDate, status }: AdminBadgeProps) => {
       {scheduledDate && (
         <Popup
           ariaControls="scheduled-date"
+          ariaHasPopup="dialog"
           ariaLabel={language.viewScheduledDate}
           popupContent={
             <DateDisplay date={scheduledDate} hour="2-digit" minute="2-digit" />

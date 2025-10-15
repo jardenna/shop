@@ -36,6 +36,7 @@ const AccountInfoList = ({
                 ariaControls="phone"
                 ariaLabel={language.viewInfo}
                 popupContent={language.phoneInfo}
+                ariaHasPopup="dialog"
               >
                 <Icon iconName={IconName.Info} title="" size="1em" />
               </Popup>

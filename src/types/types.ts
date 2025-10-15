@@ -57,7 +57,13 @@ export type InputType =
   | 'url'
   | 'week';
 
-export type AriaHasPopup = boolean | 'menu' | 'listbox' | 'tree' | 'grid';
+export type AriaHasPopup =
+  | boolean
+  | 'menu'
+  | 'listbox'
+  | 'tree'
+  | 'grid'
+  | 'dialog';
 
 export type AriaCurrentType =
   | 'page'

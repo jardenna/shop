@@ -143,6 +143,7 @@ const UserPage = () => {
                   <Popup
                     placement="left-start"
                     ariaControls="delete-user"
+                    ariaHasPopup="dialog"
                     popupContent={({ close }) => (
                       <DeleteUser
                         onPrimaryClick={() => {
