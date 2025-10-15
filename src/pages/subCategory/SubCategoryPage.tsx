@@ -54,6 +54,7 @@ const SubCategoryPage = () => {
       linkTo={AdminPath.AdminSubCategoryCreate}
       onReset={() => refetch()}
       variant="medium"
+      ariaLabelledby="sub-categories-list"
     >
       <Table
         onReset={() => refetch()}

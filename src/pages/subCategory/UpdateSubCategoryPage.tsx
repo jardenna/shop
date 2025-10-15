@@ -26,6 +26,7 @@ const UpdateSubCategoryPage = () => {
           variant="small"
           heading={`${language.update} ${language.category} ${category.subCategoryName}`}
           onReset={() => refetch()}
+          ariaLabelledby={category.subCategoryName}
         >
           <SubCategoryForm
             selectedCategory={category}

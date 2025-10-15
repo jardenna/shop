@@ -65,6 +65,7 @@ const ProductPage = () => {
       linkText={language.createNewProduct}
       linkTo={AdminPath.AdminProductCreate}
       onReset={() => refetch()}
+      ariaLabelledby="product-list"
     >
       <Table
         onReset={() => refetch()}

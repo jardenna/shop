@@ -100,6 +100,7 @@ const UserPage = () => {
       linkTo={isAdmin ? AdminPath.AdminUserCreate : undefined}
       onReset={() => refetch()}
       variant="medium"
+      ariaLabelledby="users"
     >
       <Table
         onReset={() => refetch()}

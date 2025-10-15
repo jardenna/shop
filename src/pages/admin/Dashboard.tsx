@@ -5,7 +5,7 @@ const Dashboard = () => {
   const { language } = useLanguage();
 
   return (
-    <AdminPageContainer heading={language.dashboard}>
+    <AdminPageContainer heading={language.dashboard} ariaLabelledby="dashboard">
       {language.dashboard}
     </AdminPageContainer>
   );

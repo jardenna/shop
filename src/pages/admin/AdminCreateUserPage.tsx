@@ -9,7 +9,11 @@ const AdminCreateUserPage = () => {
   const { currentUser } = useAuth();
 
   return (
-    <AdminPageContainer heading={language.createNewUser} variant="small">
+    <AdminPageContainer
+      heading={language.createNewUser}
+      variant="small"
+      ariaLabelledby="create-user"
+    >
       <CreateAccount
         navigateTo={AdminPath.AdminUser}
         currentUser={currentUser}

@@ -81,6 +81,7 @@ const ViewProductPage = () => {
           linkText={language.createNewProduct}
           linkTo={AdminPath.AdminProductCreate}
           onReset={() => refetch()}
+          ariaLabelledby="product"
         >
           <article className="three-col admin-card-container">
             <ProductCardLeft
