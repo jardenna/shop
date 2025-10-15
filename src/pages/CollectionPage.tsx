@@ -129,11 +129,15 @@ const CollectionPage = () => {
 
   const productsLoadedText = `${language.page} ${page} ${language.of} ${totalBtns} ${language.loaded}`;
   const infoText = `${language.showing} ${startItem}–${endItem}  ${language.of} ${productCount} ${language.products.toLowerCase()}.`;
-
+  const ariaLabelledby = `${category || 'women'}-title`;
   return (
     <>
       {category && <MetaTags metaTitle={language[category]} />}
-      <section className="container collection-page" ref={headingRef}>
+      <section
+        className="container collection-page"
+        ref={headingRef}
+        aria-labelledby={ariaLabelledby}
+      >
         {subMenu && (
           <Breadcrumbs
             routeList={breadcrumbsList}
@@ -143,7 +147,10 @@ const CollectionPage = () => {
         )}
         <div className="collection-page-container">
           <div>
-            <CollectionPageHeader headerText={categoryText} />
+            <CollectionPageHeader
+              headerText={categoryText}
+              ariaLabelledby={ariaLabelledby}
+            />
             <CollectionAside
               subMenu={subMenu || null}
               category={category || 'women'}
