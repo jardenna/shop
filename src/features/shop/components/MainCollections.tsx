@@ -5,8 +5,9 @@ import MainCollectionsItem, {
 type MainCollectionsProps = {
   mainCollectionList: MainCollectionsBaseProps[];
 };
+
 const MainCollections = ({ mainCollectionList }: MainCollectionsProps) => (
-  <article className="main-collection-container">
+  <section className="main-collection-container">
     {mainCollectionList.map(({ title, imgList, linkTo, linkText }) => (
       <MainCollectionsItem
         key={title}
@@ -17,7 +18,7 @@ const MainCollections = ({ mainCollectionList }: MainCollectionsProps) => (
         linkText={linkText}
       />
     ))}
-  </article>
+  </section>
 );
 
 export default MainCollections;

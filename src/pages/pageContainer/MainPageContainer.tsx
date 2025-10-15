@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import PageHeader from '../../components/pageHeader/PageHeader';
+import useLanguage from '../../features/language/useLanguage';
 import MetaTags from '../../layout/nav/MetaTags';
 
 type MainPageContainerProps = {
@@ -18,15 +19,21 @@ const MainPageContainer = ({
   className = '',
 }: MainPageContainerProps) => {
   const ariaLabelledby = `${heading}-title`;
+  const { language } = useLanguage();
+
+  console.log(heading);
 
   return (
     <>
-      <MetaTags metaTitle={heading} />
+      <MetaTags metaTitle={language[heading]} />
       <section
         className={`container ${className}`}
         aria-labelledby={ariaLabelledby}
       >
-        <PageHeader heading={heading} ariaLabelledby={ariaLabelledby} />
+        <PageHeader
+          heading={language[heading]}
+          ariaLabelledby={ariaLabelledby}
+        />
         <ErrorBoundary
           FallbackComponent={ErrorBoundaryFallback}
           onReset={onReset}

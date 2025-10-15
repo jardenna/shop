@@ -39,7 +39,7 @@ const CollectionLandingPage = () => {
   );
 
   return (
-    <MainPageContainer heading={language.collection}>
+    <MainPageContainer heading="collection">
       <MainCollections mainCollectionList={mainCollectionsList} />
     </MainPageContainer>
   );

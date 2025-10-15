@@ -27,7 +27,7 @@ const MainCollectionsItem = ({
   const { language } = useLanguage();
 
   return (
-    <section className="collections-item">
+    <article className="collections-item">
       <div className="collections-content">
         <h2 className="collections-title">{title}</h2>
         <NavLink className="btn btn-primary" to={linkTo}>
@@ -46,7 +46,7 @@ const MainCollectionsItem = ({
           ))}
         </div>
       )}
-    </section>
+    </article>
   );
 };
 
