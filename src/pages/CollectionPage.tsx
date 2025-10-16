@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
@@ -31,6 +31,7 @@ import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { sortSizesDynamic } from '../utils/sizeUtils';
 import { getFilterSummary } from '../utils/utils';
 import './CollectionPage.styles.scss';
+import useAnnouncement from '../hooks/useAnnouncement';
 
 export type FilterKeys = 'sizes' | 'colors' | 'brand';
 
@@ -42,22 +43,7 @@ const CollectionPage = () => {
   const { page, productsPerPage, setPage, setProductsPerPage, resetPage } =
     usePaginationParams();
 
-  const hasMounted = useRef(false);
-  const [announce, setAnnounce] = useState(false);
-
-  useEffect(() => {
-    if (hasMounted.current) {
-      // Page actually changed after first render
-      setAnnounce(true);
-      const timer = setTimeout(() => {
-        setAnnounce(false);
-      }, 1000);
-      return () => {
-        clearTimeout(timer);
-      };
-    }
-    hasMounted.current = true;
-  }, [page]);
+  const announce = useAnnouncement([page]);
 
   const initialFilters: FilterValuesType<string> = {
     sizes: [],

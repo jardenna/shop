@@ -6,6 +6,7 @@ type PaginationInfoTextProps = {
   infoText: string;
   productsLoadedText: string;
 };
+
 const PaginationInfoText = ({
   announce,
   ariaDescribedby,
