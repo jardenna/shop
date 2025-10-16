@@ -22,7 +22,7 @@ import { useGetProductsQuery } from '../features/shop/shopApiSlice';
 import type { FilterValuesType } from '../hooks/useFilterParams';
 import useFilterParams from '../hooks/useFilterParams';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
-import useMediaQuery from '../hooks/useMediaQuery ';
+import useMediaQuery from '../hooks/useMediaQuery';
 import { LinkText } from '../layout/nav/enums';
 import MetaTags from '../layout/nav/MetaTags';
 import { IconName } from '../types/enums';
@@ -81,7 +81,7 @@ const CollectionPage = () => {
     category as LinkText,
   );
 
-  const [productView, setProuctView] = useLocalStorage(
+  const [productView, setProductView] = useLocalStorage(
     localStorageKeys.productView,
     'grid',
   );
@@ -215,7 +215,7 @@ const CollectionPage = () => {
               )}
               {products && (
                 <ProductToolbar
-                  onSetDisplay={setProuctView}
+                  onSetDisplay={setProductView}
                   displayControlList={productViewIconList}
                   isActive={productView}
                   onClearSingleFilter={onClearSingleFilter}
@@ -234,7 +234,7 @@ const CollectionPage = () => {
                   ariaDescribedby={ariaDescribedby}
                 />
               )}
-              {isLoading && <SkeletonCardList count={8} />}
+              {isLoading && <SkeletonCardList count={productsPerPage} />}
               <section
                 className={`product-card-list ${productView === 'list' && !isSmallMobileSize ? 'list' : ''}`}
               >
