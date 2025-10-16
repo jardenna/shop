@@ -252,6 +252,7 @@ const CollectionPage = () => {
             labelText={language.selectNumber}
             legendText={language.displayOptions}
             onSelectCount={handleSelectCount}
+            headingRef={headingRef}
             defaultValue={{
               value: productsPerPage.toString(),
               label: productsPerPage.toString(),
