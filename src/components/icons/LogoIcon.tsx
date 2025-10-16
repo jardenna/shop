@@ -1,8 +1,8 @@
 import type { IconDefaultProps } from './Icon';
 
-const Logo = ({ size, className, ariaHidden }: IconDefaultProps) => (
+const LogoIcon = ({ size, className, ariaHidden, title }: IconDefaultProps) => (
   <svg
-    role="img"
+    role={title ? 'img' : undefined}
     xmlns="http://www.w3.org/2000/svg"
     width={size}
     height={size}
@@ -14,7 +14,7 @@ const Logo = ({ size, className, ariaHidden }: IconDefaultProps) => (
     strokeMiterlimit="2"
     aria-hidden={ariaHidden}
   >
-    <title>Logo</title>
+    <title>{title}</title>
     <path
       d="M.036-.712v-.007h.455v.084H.484v-.003L.483-.641C.476-.666.467-.681.456-.687a.146.146 0 0 0-.054-.008H.17v.317h.216a.113.113 0 0 0 .038-.004c.007-.003.011-.01.012-.02h.007v.069H.436c0-.017-.011-.025-.033-.025H.17v.287c0 .027.004.044.012.052.009.008.023.012.043.012V0H.036v-.007c.022 0 .036-.005.042-.013.006-.008.009-.02.009-.036v-.591a.103.103 0 0 0-.01-.051C.07-.707.056-.712.036-.712Z"
       transform="matrix(18 0 0 18 -.65 13.14)"
@@ -77,4 +77,4 @@ const Logo = ({ size, className, ariaHidden }: IconDefaultProps) => (
   </svg>
 );
 
-export default Logo;
+export default LogoIcon;

@@ -35,7 +35,7 @@ import LanguageIcon from './LanguageIcon';
 import LayoutGridIcon from './LayoutGridIcon';
 import LayoutListIcon from './LayoutListIcon';
 import LoginIcon from './LoginIcon';
-import Logo from './Logo';
+import LogoIcon from './LogoIcon';
 import LogoutIcon from './LogoutIcon';
 import MoreIcon from './MoreIcon';
 import OrdersIcon from './OrdersIcon';
@@ -104,7 +104,7 @@ const iconMapping = {
   layoutGrid: LayoutGridIcon,
   layoutList: LayoutListIcon,
   login: LoginIcon,
-  logo: Logo,
+  logo: LogoIcon,
   logout: LogoutIcon,
   man: ManIcon,
   menuDotsHorizontal: ThreeDotsHorizontalIcon,
