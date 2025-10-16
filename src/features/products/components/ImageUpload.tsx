@@ -50,7 +50,6 @@ const ImageUpload = ({
                 isImgDisabled={disabledImages.includes(img)}
                 img={img}
                 ariaLabel={ariaLabel}
-                title={language.trash}
               />
             ))}
           </ul>
@@ -61,7 +60,6 @@ const ImageUpload = ({
           name="images"
           id="images"
           previewData={previewData}
-          title={language.delete}
           ariaLabel={language.delete}
           onRemoveImg={(name: string) => {
             onRemovePreviewImage(name);
@@ -74,7 +72,6 @@ const ImageUpload = ({
       {previewData.length > 0 && (
         <Preview
           previewData={previewData}
-          title="title"
           ariaLabel={ariaLabel}
           onRemoveImg={(name: string) => {
             onRemovePreviewImage(name);

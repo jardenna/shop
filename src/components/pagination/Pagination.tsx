@@ -57,7 +57,6 @@ const Pagination = ({
         <li>
           <IconBtn
             iconName={IconName.ChevronsLeft}
-            title=""
             ariaLabel={language.gotoFirstPage}
             onClick={() => {
               handlePagination(1);
@@ -68,7 +67,6 @@ const Pagination = ({
         <li>
           <IconBtn
             iconName={IconName.ChevronLeft}
-            title=""
             ariaLabel={language.gotoPrevPage}
             onClick={handleGotoPrevPage}
             disabled={page === 1}
@@ -99,7 +97,6 @@ const Pagination = ({
         <li>
           <IconBtn
             iconName={IconName.ChevronRight}
-            title=""
             ariaLabel={language.gotoNextPage}
             onClick={handleGotoNextPage}
             disabled={page === totalBtns}
@@ -108,7 +105,6 @@ const Pagination = ({
         <li>
           <IconBtn
             iconName={IconName.ChevronsRight}
-            title=""
             ariaLabel={language.gotoLastPage}
             onClick={() => {
               handlePagination(totalBtns);

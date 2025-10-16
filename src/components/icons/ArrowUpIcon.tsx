@@ -1,13 +1,7 @@
 import type { IconDefaultProps } from './Icon';
 
-const ArrowUpIcon = ({
-  size,
-  title,
-  className,
-  ariaHidden,
-}: IconDefaultProps) => (
+const ArrowUpIcon = ({ size, className, ariaHidden }: IconDefaultProps) => (
   <svg
-    role="img"
     xmlns="http://www.w3.org/2000/svg"
     width={size}
     height={size}
@@ -20,7 +14,6 @@ const ArrowUpIcon = ({
     strokeLinejoin="round"
     aria-hidden={ariaHidden}
   >
-    <title>{title}</title>
     <path d="m5 12 7-7 7 7" />
     <path d="M12 19V5" />
   </svg>

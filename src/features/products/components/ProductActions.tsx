@@ -21,21 +21,21 @@ const ProductActions = ({ onCopyProduct, id }: ProductActionsProps) => {
       onClick: () => {
         navigate(`${AdminPath.AdminProductView}/${id}`);
       },
-      icon: <Icon iconName={IconName.Eye} title={language.eye} />,
+      icon: <Icon iconName={IconName.Eye} />,
     },
     {
       label: language.update,
       onClick: () => {
         navigate(`${AdminPath.AdminProductUpdate}/${id}`);
       },
-      icon: <Icon iconName={IconName.Pencil} title={language.pencil} />,
+      icon: <Icon iconName={IconName.Pencil} />,
     },
     {
       label: language.copyAction,
       onClick: () => {
         onCopyProduct(id);
       },
-      icon: <Icon iconName={IconName.Dublicate} title={language.copy} />,
+      icon: <Icon iconName={IconName.Dublicate} />,
     },
   ];
 
@@ -48,7 +48,7 @@ const ProductActions = ({ onCopyProduct, id }: ProductActionsProps) => {
       placement="left-start"
       ariaHasPopup="menu"
     >
-      <Icon iconName={IconName.MenuDotsHorizontal} title={language.user} />
+      <Icon iconName={IconName.MenuDotsHorizontal} />
     </DropdownBtn>
   );
 };

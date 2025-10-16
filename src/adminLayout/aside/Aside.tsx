@@ -27,7 +27,6 @@ const Aside = ({ onTogglePanel, isShown, ariaLabel }: AsideProps) => {
         onClick={onTogglePanel}
         ariaLabel={ariaLabel}
         iconName={IconName.ChevronLeft}
-        title="Chevron left"
         ariaExpanded={!isShown}
       />
     </aside>

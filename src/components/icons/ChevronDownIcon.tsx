@@ -1,13 +1,7 @@
 import type { IconDefaultProps } from './Icon';
 
-const ChevronDownIcon = ({
-  size,
-  title,
-  className,
-  ariaHidden,
-}: IconDefaultProps) => (
+const ChevronDownIcon = ({ size, className, ariaHidden }: IconDefaultProps) => (
   <svg
-    role="img"
     xmlns="http://www.w3.org/2000/svg"
     width={size}
     height={size}
@@ -20,7 +14,6 @@ const ChevronDownIcon = ({
     strokeLinejoin="round"
     aria-hidden={ariaHidden}
   >
-    <title>{title}</title>
     <path d="m6 9 6 6 6-6" />
   </svg>
 );

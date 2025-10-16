@@ -1,4 +1,3 @@
-import useLanguage from '../../features/language/useLanguage';
 import type { MessagePopupTypes } from '../../features/messagePopupSlice';
 import { MessagePopup } from '../../features/messagePopupSlice';
 import { IconName, PopupRole } from '../../types/enums';
@@ -11,35 +10,30 @@ type MessagePopupListItemProps = {
 };
 
 const MessagePopupListItem = ({ messagePopup }: MessagePopupListItemProps) => {
-  const { language } = useLanguage();
   const { deleteMessagePopup, popupClass } = useMessagePopup(messagePopup.id);
   const messagePopupTypeConfig: Record<
     MessagePopupTypes,
-    { iconName: IconName; role: PopupRole; title: string }
+    { iconName: IconName; role: PopupRole }
   > = {
     success: {
       iconName: IconName.Success,
-      title: language.success,
       role: PopupRole.Status,
     },
     info: {
       iconName: IconName.Info,
-      title: language.information,
       role: PopupRole.Status,
     },
     warning: {
       iconName: IconName.Warning,
-      title: language.warning,
       role: PopupRole.Alert,
     },
     error: {
       iconName: IconName.Error,
-      title: language.error,
       role: PopupRole.Alert,
     },
   };
 
-  const { iconName, title, role } =
+  const { iconName, role } =
     messagePopupTypeConfig[messagePopup.messagePopupType ?? 'success'];
 
   return (
@@ -48,7 +42,7 @@ const MessagePopupListItem = ({ messagePopup }: MessagePopupListItemProps) => {
       className={`message-popup-item ${messagePopup.componentType || ''} animate-bottom-center ${popupClass} ${messagePopup.messagePopupType}`}
     >
       <span className="message-popup-item-info">
-        <Icon iconName={iconName} title={title} />
+        <Icon iconName={iconName} />
         <p className="message-popup-message">
           {messagePopup.message}{' '}
           {messagePopup.count && messagePopup.count > 1 && messagePopup.count}

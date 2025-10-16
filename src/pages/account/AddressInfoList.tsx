@@ -23,17 +23,12 @@ const AddressInfoList = ({
       <div className="my-address-footer">
         <IconBtn
           iconName={IconName.Trash}
-          title=""
           ariaLabel={language.delete}
           onClick={() => {
             onDeleteAddress(address.id);
           }}
         />
-        <IconBtn
-          iconName={IconName.Pencil}
-          title=""
-          ariaLabel={language.update}
-        />
+        <IconBtn iconName={IconName.Pencil} ariaLabel={language.update} />
       </div>
     </li>
   );

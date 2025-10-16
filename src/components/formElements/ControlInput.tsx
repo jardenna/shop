@@ -55,7 +55,6 @@ const ControlInput = ({
       {iconName ? (
         <IconContent
           iconName={iconName}
-          title=""
           ariaLabel={ariaLabel || ''}
           className={iconClassName}
         />

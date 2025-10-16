@@ -1,13 +1,7 @@
 import type { IconDefaultProps } from './Icon';
 
-const ArroDownIcon = ({
-  size,
-  title,
-  className,
-  ariaHidden,
-}: IconDefaultProps) => (
+const ArroDownIcon = ({ size, className, ariaHidden }: IconDefaultProps) => (
   <svg
-    role="img"
     xmlns="http://www.w3.org/2000/svg"
     width={size}
     height={size}
@@ -20,7 +14,6 @@ const ArroDownIcon = ({
     strokeLinejoin="round"
     aria-hidden={ariaHidden}
   >
-    <title>{title}</title>
     <path d="M12 5v14" />
     <path d="m19 12-7 7-7-7" />
   </svg>

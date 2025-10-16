@@ -22,14 +22,10 @@ const ReviewStars = ({ stars, rating, onReset }: ReviewStarsProps) => (
         {stars.map((type, index) => (
           <li key={index} className="star-item">
             {type === 'full' && (
-              <Icon
-                iconName={IconName.Star}
-                title=""
-                fill={variables.colorYellow}
-              />
+              <Icon iconName={IconName.Star} fill={variables.colorYellow} />
             )}
-            {type === 'half' && <Icon iconName={IconName.HalfStar} title="" />}
-            {type === 'empty' && <Icon iconName={IconName.Star} title="" />}
+            {type === 'half' && <Icon iconName={IconName.HalfStar} />}
+            {type === 'empty' && <Icon iconName={IconName.Star} />}
           </li>
         ))}
       </ErrorBoundary>

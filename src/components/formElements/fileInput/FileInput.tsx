@@ -28,7 +28,7 @@ const FileInput = ({
   return (
     <div>
       <label htmlFor="images" className="file-upload-label btn btn-primary">
-        <Icon iconName={IconName.Upload} title="iconName" />
+        <Icon iconName={IconName.Upload} />
         {language.browseImages}
       </label>
       <input

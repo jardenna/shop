@@ -8,7 +8,6 @@ import Icon from '../../icons/Icon';
 type ImgListItemProps = {
   ariaLabel: string;
   img: string;
-  title: string;
   children?: ReactNode;
   isImgDisabled?: boolean;
   reason?: string;
@@ -18,7 +17,6 @@ type ImgListItemProps = {
 const ImgListItem = ({
   ariaLabel,
   img,
-  title,
   isImgDisabled,
   onClick,
   children,
@@ -32,7 +30,7 @@ const ImgListItem = ({
     >
       {reason && (
         <div className="invalid-file">
-          <Icon iconName={IconName.Error} title="" />
+          <Icon iconName={IconName.Error} />
           <span>{language[reason]}</span>
         </div>
       )}
@@ -41,7 +39,6 @@ const ImgListItem = ({
         onClick={onClick}
         className="delete-img-list-btn"
         iconName={isImgDisabled ? IconName.Undo : IconName.Trash}
-        title={title}
         ariaLabel={ariaLabel}
       />
 

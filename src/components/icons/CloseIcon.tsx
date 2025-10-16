@@ -1,13 +1,7 @@
 import type { IconDefaultProps } from './Icon';
 
-const CloseIcon = ({
-  size,
-  title,
-  className,
-  ariaHidden,
-}: IconDefaultProps) => (
+const CloseIcon = ({ size, className, ariaHidden }: IconDefaultProps) => (
   <svg
-    role="img"
     xmlns="http://www.w3.org/2000/svg"
     width={size}
     height={size}
@@ -20,8 +14,6 @@ const CloseIcon = ({
     strokeLinejoin="round"
     aria-hidden={ariaHidden}
   >
-    <title>{title}</title>
-
     <path d="M18 6 6 18" />
     <path d="m6 6 12 12" />
   </svg>

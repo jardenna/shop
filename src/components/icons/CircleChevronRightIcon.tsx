@@ -3,11 +3,9 @@ import type { IconDefaultProps } from './Icon';
 const CircleChevronRightIcon = ({
   ariaHidden,
   size,
-  title,
   className,
 }: IconDefaultProps) => (
   <svg
-    role="img"
     xmlns="http://www.w3.org/2000/svg"
     width={size}
     height={size}
@@ -20,7 +18,6 @@ const CircleChevronRightIcon = ({
     strokeLinejoin="round"
     aria-hidden={ariaHidden}
   >
-    <title>{title}</title>
     <circle cx="12" cy="12" r="10" />
     <path d="m10 8 4 4-4 4" />
   </svg>

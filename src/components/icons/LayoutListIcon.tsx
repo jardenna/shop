@@ -1,13 +1,7 @@
 import type { IconDefaultProps } from './Icon';
 
-const LayoutListIcon = ({
-  ariaHidden,
-  className,
-  size,
-  title,
-}: IconDefaultProps) => (
+const LayoutListIcon = ({ ariaHidden, className, size }: IconDefaultProps) => (
   <svg
-    role="img"
     xmlns="http://www.w3.org/2000/svg"
     width={size}
     height={size}
@@ -17,7 +11,6 @@ const LayoutListIcon = ({
     stroke="none"
     aria-hidden={ariaHidden}
   >
-    <title>{title}</title>
     <rect x="6.09106" y="1.36353" width="9.54545" height="1.36364" />
     <rect x="6.09106" y="6.81812" width="9.54545" height="1.36364" />
     <rect x="6.09106" y="12.2727" width="9.54545" height="1.36364" />

@@ -34,7 +34,7 @@ const InStock = ({ stock }: InStockProps) => {
 
   return (
     <div className="in-stock">
-      <Icon iconName={status.icon} title="" /> {status.message}
+      <Icon iconName={status.icon} /> {status.message}
     </div>
   );
 };

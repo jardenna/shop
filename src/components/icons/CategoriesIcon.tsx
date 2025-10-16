@@ -1,13 +1,7 @@
 import type { IconDefaultProps } from './Icon';
 
-const CategoriesIcon = ({
-  size,
-  title,
-  className,
-  ariaHidden,
-}: IconDefaultProps) => (
+const CategoriesIcon = ({ size, className, ariaHidden }: IconDefaultProps) => (
   <svg
-    role="img"
     xmlns="http://www.w3.org/2000/svg"
     width={size}
     height={size}
@@ -20,7 +14,6 @@ const CategoriesIcon = ({
     strokeLinejoin="round"
     aria-hidden={ariaHidden}
   >
-    <title>{title}</title>
     <path d="M11 13v4" />
     <path d="M15 5v4" />
     <path d="M3 3v16a2 2 0 0 0 2 2h16" />

@@ -92,13 +92,7 @@ const Layout = () => {
       isActive: pathEquals(pathInfo, ShopPath.MyAccount),
       onClick: () =>
         navigate(currentUser ? `/${ShopPath.MyAccount}` : `/${ShopPath.Login}`),
-      icon: (
-        <Icon
-          iconName={IconName.Auth}
-          title={language.myAccount}
-          size="2.5em"
-        />
-      ),
+      icon: <Icon iconName={IconName.Auth} size="2.5em" />,
     },
   ];
   // Auth dropdown item
@@ -106,12 +100,7 @@ const Layout = () => {
     label: currentUser ? language.logout : language.login,
     onClick: currentUser ? handleLogout : () => navigate(`/${ShopPath.Login}`),
     disabled: isLoading,
-    icon: (
-      <Icon
-        iconName={currentUser ? IconName.Logout : IconName.Login}
-        title={currentUser ? language.logout : language.login}
-      />
-    ),
+    icon: <Icon iconName={currentUser ? IconName.Logout : IconName.Login} />,
   };
 
   const dropdownItems: DropdownItem[] = [
@@ -123,7 +112,7 @@ const Layout = () => {
       ? [
           {
             label: language.dashboard,
-            icon: <Icon iconName={IconName.Admin} title={language.lock} />,
+            icon: <Icon iconName={IconName.Admin} />,
             onClick: () => navigate(`/${AdminPath.Admin}`),
           },
         ]

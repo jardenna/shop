@@ -113,7 +113,7 @@ const FilterPanel = ({
       triggerBtnContent={
         <>
           {totalFiltersCount > 0 && `[${totalFiltersCount}]`} {language.filter}{' '}
-          <Icon iconName={IconName.Filter} title={language.filter} />
+          <Icon iconName={IconName.Filter} />
           <VisuallyHidden>{language.filtersApplied}</VisuallyHidden>
         </>
       }

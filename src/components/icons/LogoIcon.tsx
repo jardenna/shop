@@ -1,8 +1,8 @@
 import type { IconDefaultProps } from './Icon';
 
-const Logo = ({ size, title, className, ariaHidden }: IconDefaultProps) => (
+const LogoIcon = ({ size, className, ariaHidden, title }: IconDefaultProps) => (
   <svg
-    role="img"
+    role={title ? 'img' : undefined}
     xmlns="http://www.w3.org/2000/svg"
     width={size}
     height={size}
@@ -77,4 +77,4 @@ const Logo = ({ size, title, className, ariaHidden }: IconDefaultProps) => (
   </svg>
 );
 
-export default Logo;
+export default LogoIcon;

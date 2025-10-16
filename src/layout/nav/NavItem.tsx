@@ -46,10 +46,7 @@ const NavItem = ({
       >
         {navItem.iconName && (
           <span>
-            <Icon
-              iconName={navItem.iconName}
-              title={language[navItem.linkText]}
-            />
+            <Icon iconName={navItem.iconName} />
           </span>
         )}
         <span className="nav-text">{language[navItem.linkText]}</span>

@@ -5,7 +5,6 @@ type DisplayControls = {
   ariaLabel: string;
   display: string;
   iconName: IconName;
-  title: string;
 };
 
 type DisplayControlsProps = {
@@ -22,11 +21,10 @@ const DisplayControls = ({
   ariaLabel,
 }: DisplayControlsProps) => (
   <div className="display-controls" aria-label={ariaLabel}>
-    {displayControlList.map(({ display, iconName, title, ariaLabel }) => (
+    {displayControlList.map(({ display, iconName, ariaLabel }) => (
       <IconBtn
         key={display}
         iconName={iconName}
-        title={title}
         ariaLabel={ariaLabel}
         onClick={() => {
           onSetDisplay(display);

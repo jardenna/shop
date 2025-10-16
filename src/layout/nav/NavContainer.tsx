@@ -33,11 +33,7 @@ const NavContainer = ({
         hideAriaHasPopup={hideAriaHasPopup}
       />
       {currentUser && (
-        <NavUser
-          currentUser={currentUser}
-          iconTitle={language.user}
-          isMenuCollapsed={isMenuCollapsed}
-        />
+        <NavUser currentUser={currentUser} isMenuCollapsed={isMenuCollapsed} />
       )}
     </>
   );

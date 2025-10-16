@@ -13,10 +13,7 @@ const PasswordPopupItem = ({ text, isValid }: PasswordPopupItemProps) => {
 
   return (
     <li className={`popup-item ${!isValid ? 'error' : ''}`}>
-      <Icon
-        iconName={isValid ? IconName.Success : IconName.Error}
-        title={isValid ? language.success : language.error}
-      />
+      <Icon iconName={isValid ? IconName.Success : IconName.Error} />
       <span>{text}</span>
       <VisuallyHidden>
         {isValid ? language.criterionMet : language.criterionNotMet}

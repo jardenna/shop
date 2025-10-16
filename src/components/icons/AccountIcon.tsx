@@ -1,13 +1,7 @@
 import type { IconDefaultProps } from './Icon';
 
-const AccountIcon = ({
-  size,
-  title,
-  className,
-  ariaHidden,
-}: IconDefaultProps) => (
+const AccountIcon = ({ size, className, ariaHidden }: IconDefaultProps) => (
   <svg
-    role="img"
     xmlns="http://www.w3.org/2000/svg"
     width={size}
     height={size}
@@ -18,7 +12,6 @@ const AccountIcon = ({
     strokeWidth="1"
     aria-hidden={ariaHidden}
   >
-    <title>{title}</title>
     <path d="M2 21a8 8 0 0 1 10.434-7.62" />
     <circle cx="10" cy="8" r="5" />
     <circle cx="18" cy="18" r="3" />

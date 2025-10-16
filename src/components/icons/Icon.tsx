@@ -35,7 +35,7 @@ import LanguageIcon from './LanguageIcon';
 import LayoutGridIcon from './LayoutGridIcon';
 import LayoutListIcon from './LayoutListIcon';
 import LoginIcon from './LoginIcon';
-import Logo from './Logo';
+import LogoIcon from './LogoIcon';
 import LogoutIcon from './LogoutIcon';
 import MoreIcon from './MoreIcon';
 import OrdersIcon from './OrdersIcon';
@@ -56,12 +56,13 @@ import UsersIcon from './UsersIcon';
 import WarningIcon from './WarningIcon';
 
 export type IconDefaultProps = {
-  title: string;
   ariaHidden?: boolean;
   className?: string;
   fill?: string;
   focusable?: boolean;
+  role?: 'img';
   size?: string;
+  title?: string;
 };
 
 type IconProps = IconDefaultProps & {
@@ -103,7 +104,7 @@ const iconMapping = {
   layoutGrid: LayoutGridIcon,
   layoutList: LayoutListIcon,
   login: LoginIcon,
-  logo: Logo,
+  logo: LogoIcon,
   logout: LogoutIcon,
   man: ManIcon,
   menuDotsHorizontal: ThreeDotsHorizontalIcon,
@@ -129,21 +130,23 @@ const iconMapping = {
 const Icon = ({
   iconName,
   size = '1.5em',
-  title,
   className = '',
   ariaHidden,
+  title,
   fill,
+  role = 'img',
   focusable = false,
 }: IconProps) => {
   const IconComponent = iconMapping[iconName];
   return (
     <IconComponent
       size={size}
-      title={title}
       className={className}
       focusable={focusable}
       ariaHidden={ariaHidden === undefined ? true : undefined}
       fill={fill}
+      title={title}
+      role={role}
     />
   );
 };

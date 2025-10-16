@@ -1,11 +1,6 @@
 import type { IconDefaultProps } from './Icon';
 
-const GridLargeIcon = ({
-  size,
-  title,
-  className,
-  ariaHidden,
-}: IconDefaultProps) => (
+const GridLargeIcon = ({ size, className, ariaHidden }: IconDefaultProps) => (
   <svg
     role="img"
     xmlns="http://www.w3.org/2000/svg"
@@ -20,8 +15,6 @@ const GridLargeIcon = ({
     strokeLinejoin="round"
     aria-hidden={ariaHidden}
   >
-    <title>{title}</title>
-
     <path d="M3 4h18" />
     <path d="M3 10h18" />
     <path d="M3 16h18" />
