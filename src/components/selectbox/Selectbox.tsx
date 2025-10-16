@@ -32,6 +32,7 @@ type SelectboxProps = {
   menuIsOpen?: boolean;
   ref?: RefElementType;
   required?: boolean;
+  selectKey?: string;
   onChange: (value: any) => void;
 };
 
@@ -51,6 +52,7 @@ const Selectbox = ({
   errorText,
   inputHasNoLabel,
   ref,
+  selectKey,
   components,
   isFixed = true,
   isLoading,
@@ -119,6 +121,7 @@ const Selectbox = ({
           components={components}
           menuIsOpen={menuIsOpen}
           isOptionDisabled={isOptionDisabled}
+          key={selectKey}
         />
       </div>
     </div>

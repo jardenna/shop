@@ -1,4 +1,5 @@
 import { useLayoutEffect } from 'react';
+import { useLocation } from 'react-router';
 import type { RefElementType } from '../types/types';
 import FieldSet from './fieldset/FieldSet';
 import Selectbox from './selectbox/Selectbox';
@@ -27,6 +28,8 @@ const ProductCountSelect = ({
   headingRef,
   isOptionDisabled,
 }: ProductCountSelectProps) => {
+  const { pathname } = useLocation();
+
   useLayoutEffect(() => {
     headingRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, [options]);
@@ -35,6 +38,7 @@ const ProductCountSelect = ({
     <form className="product-navigation-form">
       <FieldSet legendText={legendText}>
         <Selectbox
+          selectKey={`perpage-${pathname}`}
           name="productCount"
           options={options}
           id="productCount"
