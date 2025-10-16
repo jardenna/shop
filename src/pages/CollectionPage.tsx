@@ -267,7 +267,7 @@ const CollectionPage = () => {
           />
           <p>
             {productCount < productPerPageParam
-              ? `Viser alle ${productCount} produkter.`
+              ? `language.showingAllProducts  (${productCount})`
               : language.productPerPage}
           </p>
         </section>
