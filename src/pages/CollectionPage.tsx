@@ -96,7 +96,7 @@ const CollectionPage = () => {
     isLoading,
     refetch,
   } = useGetProductsQuery({
-    productsPerPage: productPerPageParam,
+    productsPerPage,
     page: pageParam || '1',
     colors: filterValues.colors,
     brand: filterValues.brand,
@@ -105,9 +105,18 @@ const CollectionPage = () => {
     subCategoryId: categoryId || '',
   });
 
+  // Reset page when selecting "all" or value exceeding available product count
   const handleSelectCount = (option: PageCountOptions) => {
     const newParams = new URLSearchParams(searchParams);
     newParams.set(productsPerPageParamKey, option.value);
+
+    const selectedValue = Number(option.value);
+    const productCount = products ? products.productCount : 0;
+
+    if (selectedValue >= productCount) {
+      newParams.set(pageParamKey, '1');
+    }
+
     setSearchParams(newParams);
   };
 
@@ -122,9 +131,16 @@ const CollectionPage = () => {
   const ariaDescribedby = 'result-info';
   const filtersCount = getFilterSummary(filterValues);
   const productCount = products ? products.productCount : 1;
-  const startItem = (page - 1) * productsPerPage + 1;
-  const endItem = Math.min(page * productsPerPage, productCount);
-  const totalBtns = Math.ceil(productCount / productsPerPage);
+
+  const totalBtns = products?.pages ?? 1;
+
+  // Determine if we’re showing all products
+  const isShowingAll = productsPerPage >= productCount;
+
+  const startItem = isShowingAll ? 1 : (page - 1) * productsPerPage + 1;
+  const endItem = isShowingAll
+    ? productCount
+    : Math.min(page * productsPerPage, productCount);
 
   const productViewIconList = [
     {
@@ -153,8 +169,9 @@ const CollectionPage = () => {
   };
 
   const productsLoadedText = `${language.page} ${page} ${language.of} ${totalBtns} ${language.loaded}`;
-  const infoText = `${language.showing} ${startItem}–${endItem}  ${language.of} ${productCount} ${language.products.toLowerCase()}.`;
+  const infoText = `${language.showing} ${startItem}–${endItem} ${language.of} ${productCount} ${language.products.toLowerCase()}.`;
   const ariaLabelledby = `${category || 'women'}-title`;
+
   return (
     <>
       {category && <MetaTags metaTitle={language[category]} />}
@@ -266,8 +283,8 @@ const CollectionPage = () => {
             options={options}
           />
           <p>
-            {productCount < productPerPageParam
-              ? `language.showingAllProducts  (${productCount})`
+            {isShowingAll
+              ? `${language.showingAllProducts} (${productCount})`
               : language.productPerPage}
           </p>
         </section>
