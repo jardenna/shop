@@ -44,7 +44,7 @@ const CollectionPage = () => {
   const { language } = useLanguage();
   const { isMobileSize, isSmallMobileSize } = useMediaQuery();
   const pageParam = searchParams.get(pageParamKey);
-  const productPerPageParam = searchParams.get(productsPerPageParamKey);
+  const productPerPageParam = Number(searchParams.get(productsPerPageParamKey));
   const page = Number(pageParam) || 1;
   const hasMounted = useRef(false);
   const [announce, setAnnounce] = useState(false);
@@ -88,7 +88,7 @@ const CollectionPage = () => {
 
   const sortedTranslatedColors = sortColorsByTranslation(colorList, language);
   const categoryText = category ? language[category] : '';
-  const productsPerPage = Number(productPerPageParam) || 8;
+  const productsPerPage = productPerPageParam || 8;
 
   // Redux hooks
   const {
@@ -96,7 +96,7 @@ const CollectionPage = () => {
     isLoading,
     refetch,
   } = useGetProductsQuery({
-    productsPerPage: Number(productPerPageParam),
+    productsPerPage: productPerPageParam,
     page: pageParam || '1',
     colors: filterValues.colors,
     brand: filterValues.brand,
@@ -266,7 +266,7 @@ const CollectionPage = () => {
             options={options}
           />
           <p>
-            {productCount < Number(productPerPageParam)
+            {productCount < productPerPageParam
               ? `Viser alle ${productCount} produkter.`
               : language.productPerPage}
           </p>
