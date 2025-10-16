@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import useLanguage from '../../features/language/useLanguage';
-import useMediaQuery from '../../hooks/useMediaQuery ';
+import useMediaQuery from '../../hooks/useMediaQuery';
 import useTrapFocus from '../../hooks/useTrapFocus';
 import LayoutElement from '../../layout/LayoutElement';
 import { BtnVariant } from '../../types/enums';

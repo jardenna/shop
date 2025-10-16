@@ -12,7 +12,7 @@ import useLanguage from '../features/language/useLanguage';
 import { clearMessagePopups } from '../features/messagePopupSlice';
 import { useGetFavoritesQuery } from '../features/shop/shopApiSlice';
 import useFormValidation from '../hooks/useFormValidation';
-import useMediaQuery from '../hooks/useMediaQuery ';
+import useMediaQuery from '../hooks/useMediaQuery';
 import { BtnType, IconName } from '../types/enums';
 import type { OptionType } from '../types/types';
 import { getPathName, pathEquals } from '../utils/utils';

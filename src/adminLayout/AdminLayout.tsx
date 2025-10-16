@@ -7,7 +7,7 @@ import useAuth from '../features/auth/hooks/useAuth';
 import useLanguage from '../features/language/useLanguage';
 import { clearMessagePopups } from '../features/messagePopupSlice';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
-import useMediaQuery from '../hooks/useMediaQuery ';
+import useMediaQuery from '../hooks/useMediaQuery';
 import { ShopPath } from '../layout/nav/enums';
 import AdminHeader from './AdminHeader';
 import './AdminLayout.styles.scss';
