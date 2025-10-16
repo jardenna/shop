@@ -20,14 +20,16 @@ const AccountInfoList = ({
 }: AccountInfoListProps) => {
   const { language } = useLanguage();
 
-  const profileDateOfBirth = profile.dateOfBirth ? (
-    <DateDisplay date={profile.dateOfBirth} />
-  ) : (
-    fallbackText
-  );
-
-  const getDisplayValue = (value: string | number | undefined) =>
-    value !== undefined && value !== '' ? value : fallbackText;
+  const getProfileValue = (
+    value: string | number | undefined,
+    fallbackInfo: string,
+    type?: string,
+  ) => {
+    if (type === 'date') {
+      return value ? <DateDisplay date={String(value)} /> : fallbackInfo;
+    }
+    return value !== undefined && value !== '' ? value : fallbackInfo;
+  };
 
   return (
     <div>
@@ -48,9 +50,7 @@ const AccountInfoList = ({
             )
           }
         >
-          {type === 'date'
-            ? profileDateOfBirth
-            : getDisplayValue(profile[name])}
+          {getProfileValue(profile[name], fallbackText, type)}
         </LabelValueGrid>
       ))}
 
