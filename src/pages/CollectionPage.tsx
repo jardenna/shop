@@ -142,10 +142,15 @@ const CollectionPage = () => {
   ];
 
   const options = [
-    { value: '8', label: '8', isDisabled: productCount <= 8 },
-    { value: '16', label: '16', isDisabled: productCount <= 16 },
-    { value: productCount.toString(), label: language.all, isDisabled: true },
+    { value: '8', label: '8' },
+    { value: '16', label: '16' },
+    { value: productCount.toString(), label: language.all },
   ];
+
+  const isOptionDisabled = (option: { value: string }) => {
+    const value = Number(option.value);
+    return value > productCount;
+  };
 
   const productsLoadedText = `${language.page} ${page} ${language.of} ${totalBtns} ${language.loaded}`;
   const infoText = `${language.showing} ${startItem}–${endItem}  ${language.of} ${productCount} ${language.products.toLowerCase()}.`;
@@ -252,6 +257,7 @@ const CollectionPage = () => {
             labelText={language.selectNumber}
             legendText={language.displayOptions}
             onSelectCount={handleSelectCount}
+            isOptionDisabled={isOptionDisabled}
             headingRef={headingRef}
             defaultValue={{
               value: productsPerPage.toString(),

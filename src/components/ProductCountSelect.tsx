@@ -5,7 +5,6 @@ import Selectbox from './selectbox/Selectbox';
 export type PageCountOptions = {
   label: string;
   value: string;
-  isDisabled?: boolean;
 };
 
 type ProductCountSelectProps = {
@@ -14,6 +13,7 @@ type ProductCountSelectProps = {
   labelText: string;
   legendText: string;
   options: PageCountOptions[];
+  isOptionDisabled?: (option: { value: string }) => boolean;
   onSelectCount: (option: PageCountOptions) => void;
 };
 
@@ -24,6 +24,7 @@ const ProductCountSelect = ({
   legendText,
   onSelectCount,
   headingRef,
+  isOptionDisabled,
 }: ProductCountSelectProps) => {
   useLayoutEffect(() => {
     headingRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -40,10 +41,11 @@ const ProductCountSelect = ({
           labelText={labelText}
           defaultValue={defaultValue}
           inputHasNoLabel
-          isOptionDisabled={(option: PageCountOptions) => !!option.isDisabled}
+          isOptionDisabled={isOptionDisabled}
         />
       </FieldSet>
     </form>
   );
 };
+
 export default ProductCountSelect;
