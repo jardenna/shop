@@ -27,6 +27,7 @@ type SelectboxProps = {
   isFixed?: boolean;
   isLoading?: boolean;
   isMulti?: boolean;
+  isOptionDisabled?: any;
   isSearchable?: boolean;
   menuIsOpen?: boolean;
   ref?: RefElementType;
@@ -54,6 +55,7 @@ const Selectbox = ({
   isFixed = true,
   isLoading,
   isClearable,
+  isOptionDisabled,
 }: SelectboxProps) => {
   const { language } = useLanguage();
   const handleChange = (newValue: SelectedOption) => {
@@ -116,6 +118,7 @@ const Selectbox = ({
           noOptionsMessage={() => language.noOptions}
           components={components}
           menuIsOpen={menuIsOpen}
+          isOptionDisabled={isOptionDisabled}
         />
       </div>
     </div>

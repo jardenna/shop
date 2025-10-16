@@ -6,7 +6,9 @@ import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import Pagination from '../components/pagination/Pagination';
 import Picture from '../components/Picture';
-import ProductCountSelect from '../components/ProductCountSelect';
+import ProductCountSelect, {
+  PageCountOptions,
+} from '../components/ProductCountSelect';
 import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import useLanguage from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
@@ -36,9 +38,9 @@ import './CollectionPage.styles.scss';
 export type FilterKeys = 'sizes' | 'colors' | 'brand';
 
 const CollectionPage = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const headingRef = useRef<HTMLHeadingElement>(null);
   const { category, categoryId } = useParams();
-  const [searchParams] = useSearchParams();
   const { language } = useLanguage();
   const { isMobileSize, isSmallMobileSize } = useMediaQuery();
   const pageParam = searchParams.get(pageParamKey);
@@ -103,6 +105,27 @@ const CollectionPage = () => {
     subCategoryId: categoryId || '',
   });
 
+  const handleSelectCount = (option: PageCountOptions) => {
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set(productsPerPageParamKey, option.value);
+    setSearchParams(newParams);
+  };
+
+  const handlePagination = (id: number) => {
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set(pageParamKey, id.toString());
+    setSearchParams(newParams);
+  };
+
+  const src = `/images/banners/${category}_banner`;
+  const altText = `${category}BannerAltText`;
+  const ariaDescribedby = 'result-info';
+  const filtersCount = getFilterSummary(filterValues);
+  const productCount = products ? products.productCount : 1;
+  const startItem = (page - 1) * productsPerPage + 1;
+  const endItem = Math.min(page * productsPerPage, productCount);
+  const totalBtns = Math.ceil(productCount / productsPerPage);
+
   const productViewIconList = [
     {
       iconName: IconName.LayoutGrid,
@@ -118,14 +141,11 @@ const CollectionPage = () => {
     },
   ];
 
-  const filtersCount = getFilterSummary(filterValues);
-  const src = `/images/banners/${category}_banner`;
-  const altText = `${category}BannerAltText`;
-  const productCount = products ? products.productCount : 1;
-  const startItem = (page - 1) * productsPerPage + 1;
-  const endItem = Math.min(page * productsPerPage, productCount);
-  const totalBtns = Math.ceil(productCount / productsPerPage);
-  const ariaDescribedby = 'result-info';
+  const options = [
+    { value: '8', label: '8', isDisabled: productCount <= 8 },
+    { value: '16', label: '16', isDisabled: productCount <= 16 },
+    { value: productCount.toString(), label: language.all, isDisabled: true },
+  ];
 
   const productsLoadedText = `${language.page} ${page} ${language.of} ${totalBtns} ${language.loaded}`;
   const infoText = `${language.showing} ${startItem}–${endItem}  ${language.of} ${productCount} ${language.products.toLowerCase()}.`;
@@ -226,21 +246,23 @@ const CollectionPage = () => {
             headingRef={headingRef}
             page={page}
             ariaDescribedby={ariaDescribedby}
+            handlePagination={handlePagination}
           />
           <ProductCountSelect
             labelText={language.selectNumber}
             legendText={language.displayOptions}
+            onSelectCount={handleSelectCount}
             defaultValue={{
               value: productsPerPage.toString(),
               label: productsPerPage.toString(),
             }}
-            options={[
-              { value: '8', label: '8' },
-              { value: '16', label: '16' },
-              { value: productCount.toString(), label: language.all },
-            ]}
+            options={options}
           />
-          <p>{language.productPerPage}</p>
+          <p>
+            {productCount < Number(productPerPageParam)
+              ? `Viser alle ${productCount} produkter.`
+              : language.productPerPage}
+          </p>
         </section>
       </section>
     </>

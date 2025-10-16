@@ -1,11 +1,10 @@
-import { useSearchParams } from 'react-router';
-import { productsPerPageParamKey } from '../utils/utils';
 import FieldSet from './fieldset/FieldSet';
 import Selectbox from './selectbox/Selectbox';
 
 export type PageCountOptions = {
   label: string;
   value: string;
+  isDisabled?: boolean;
 };
 
 type ProductCountSelectProps = {
@@ -13,6 +12,7 @@ type ProductCountSelectProps = {
   labelText: string;
   legendText: string;
   options: PageCountOptions[];
+  onSelectCount: (option: PageCountOptions) => void;
 };
 
 const ProductCountSelect = ({
@@ -20,30 +20,22 @@ const ProductCountSelect = ({
   options,
   defaultValue,
   legendText,
-}: ProductCountSelectProps) => {
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const handleSelectCount = (option: PageCountOptions) => {
-    const newParams = new URLSearchParams(searchParams);
-    newParams.set(productsPerPageParamKey, option.value);
-    setSearchParams(newParams);
-  };
-
-  return (
-    <form className="product-navigation-form">
-      <FieldSet legendText={legendText}>
-        <Selectbox
-          name="productCount"
-          options={options}
-          id="productCount"
-          onChange={handleSelectCount}
-          labelText={labelText}
-          defaultValue={defaultValue}
-          inputHasNoLabel
-        />
-      </FieldSet>
-    </form>
-  );
-};
+  onSelectCount,
+}: ProductCountSelectProps) => (
+  <form className="product-navigation-form">
+    <FieldSet legendText={legendText}>
+      <Selectbox
+        name="productCount"
+        options={options}
+        id="productCount"
+        onChange={onSelectCount}
+        labelText={labelText}
+        defaultValue={defaultValue}
+        inputHasNoLabel
+        isOptionDisabled={(option: PageCountOptions) => !!option.isDisabled}
+      />
+    </FieldSet>
+  </form>
+);
 
 export default ProductCountSelect;
