@@ -47,7 +47,6 @@ const MyAccountPage = () => {
     },
   ];
 
-  const fallbackText = language.notProvided;
   return (
     <>
       <p>{language.verifyAndUpdateInfo}</p>
@@ -68,7 +67,6 @@ const MyAccountPage = () => {
               <AccountInfoList
                 profile={profile}
                 profileFieldList={profileFieldList}
-                fallbackText={fallbackText}
               />
               <AccountFormModal
                 profile={profile}

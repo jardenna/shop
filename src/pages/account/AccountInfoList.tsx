@@ -8,7 +8,6 @@ import { IconName } from '../../types/enums';
 import type { ProfileFieldListProps } from './MyAccountPage';
 
 type AccountInfoListProps = {
-  fallbackText: string;
   profile: UserProfileResponse;
   profileFieldList: ProfileFieldListProps[];
 };
@@ -16,15 +15,16 @@ type AccountInfoListProps = {
 const AccountInfoList = ({
   profile,
   profileFieldList,
-  fallbackText,
 }: AccountInfoListProps) => {
   const { language } = useLanguage();
 
-  const getProfileValue = (
-    value: string | number | undefined,
-    fallbackInfo: string,
-    type?: string,
-  ) => {
+  type ProfileProps = {
+    fallbackInfo: string;
+    value: string | number | undefined;
+    type?: string;
+  };
+
+  const getProfileValue = ({ fallbackInfo, value, type }: ProfileProps) => {
     if (type === 'date') {
       return value ? <DateDisplay date={String(value)} /> : fallbackInfo;
     }
@@ -50,7 +50,11 @@ const AccountInfoList = ({
             )
           }
         >
-          {getProfileValue(profile[name], fallbackText, type)}
+          {getProfileValue({
+            value: profile[name],
+            fallbackInfo: language.notProvided,
+            type,
+          })}
         </LabelValueGrid>
       ))}
 
