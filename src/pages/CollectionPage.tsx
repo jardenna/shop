@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { useParams, useSearchParams } from 'react-router';
+import { useParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import Pagination from '../components/pagination/Pagination';
+import usePaginationParams from '../components/pagination/usePaginationParams';
 import Picture from '../components/Picture';
 import ProductCountSelect, {
   PageCountOptions,
@@ -28,24 +29,19 @@ import MetaTags from '../layout/nav/MetaTags';
 import { IconName } from '../types/enums';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { sortSizesDynamic } from '../utils/sizeUtils';
-import {
-  getFilterSummary,
-  pageParamKey,
-  productsPerPageParamKey,
-} from '../utils/utils';
+import { getFilterSummary } from '../utils/utils';
 import './CollectionPage.styles.scss';
 
 export type FilterKeys = 'sizes' | 'colors' | 'brand';
 
 const CollectionPage = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
   const headingRef = useRef<HTMLHeadingElement>(null);
   const { category, categoryId } = useParams();
   const { language } = useLanguage();
   const { isMobileSize, isSmallMobileSize } = useMediaQuery();
-  const pageParam = searchParams.get(pageParamKey);
-  const productPerPageParam = Number(searchParams.get(productsPerPageParamKey));
-  const page = Number(pageParam) || 1;
+  const { page, productsPerPage, setPage, setProductsPerPage, resetPage } =
+    usePaginationParams();
+
   const hasMounted = useRef(false);
   const [announce, setAnnounce] = useState(false);
 
@@ -88,7 +84,6 @@ const CollectionPage = () => {
 
   const sortedTranslatedColors = sortColorsByTranslation(colorList, language);
   const categoryText = category ? language[category] : '';
-  const productsPerPage = productPerPageParam || 8;
 
   // Redux hooks
   const {
@@ -97,7 +92,7 @@ const CollectionPage = () => {
     refetch,
   } = useGetProductsQuery({
     productsPerPage,
-    page: pageParam || '1',
+    page: page.toString(),
     colors: filterValues.colors,
     brand: filterValues.brand,
     sizes: filterValues.sizes,
@@ -105,38 +100,29 @@ const CollectionPage = () => {
     subCategoryId: categoryId || '',
   });
 
-  // Reset page when selecting "all" or value exceeding available product count
+  const productCount = products ? products.productCount : 0;
+  const totalBtns = products?.pages ?? 1;
+
   const handleSelectCount = (option: PageCountOptions) => {
-    const newParams = new URLSearchParams(searchParams);
-    newParams.set(productsPerPageParamKey, option.value);
+    const newCount = Number(option.value);
+    setProductsPerPage(newCount);
 
-    const selectedValue = Number(option.value);
-    const productCount = products ? products.productCount : 0;
-
-    if (selectedValue >= productCount) {
-      newParams.set(pageParamKey, '1');
+    // Reset page if current page exceeds total backend pages
+    if (page > totalBtns) {
+      resetPage();
     }
-
-    setSearchParams(newParams);
   };
 
   const handlePagination = (id: number) => {
-    const newParams = new URLSearchParams(searchParams);
-    newParams.set(pageParamKey, id.toString());
-    setSearchParams(newParams);
+    setPage(id);
   };
 
   const src = `/images/banners/${category}_banner`;
   const altText = `${category}BannerAltText`;
   const ariaDescribedby = 'result-info';
   const filtersCount = getFilterSummary(filterValues);
-  const productCount = products ? products.productCount : 1;
 
-  const totalBtns = products?.pages ?? 1;
-
-  // Determine if we’re showing all products
-  const isShowingAll = productsPerPage >= productCount;
-
+  const isShowingAll = productsPerPage >= productCount && productCount > 0;
   const startItem = isShowingAll ? 1 : (page - 1) * productsPerPage + 1;
   const endItem = isShowingAll
     ? productCount
@@ -163,10 +149,8 @@ const CollectionPage = () => {
     { value: productCount.toString(), label: language.all },
   ];
 
-  const isOptionDisabled = (option: { value: string }) => {
-    const value = Number(option.value);
-    return value > productCount;
-  };
+  const isOptionDisabled = (option: { value: string }) =>
+    Number(option.value) > productCount;
 
   const productsLoadedText = `${language.page} ${page} ${language.of} ${totalBtns} ${language.loaded}`;
   const infoText = `${language.showing} ${startItem}–${endItem} ${language.of} ${productCount} ${language.products.toLowerCase()}.`;
@@ -282,7 +266,7 @@ const CollectionPage = () => {
             }}
             options={options}
           />
-          <p>
+          <p id={ariaDescribedby}>
             {isShowingAll
               ? `${language.showingAllProducts} (${productCount})`
               : language.productPerPage}
