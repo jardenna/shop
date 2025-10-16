@@ -8,6 +8,7 @@ import { IconName } from '../../types/enums';
 import type { ProfileFieldListProps } from './MyAccountPage';
 
 type AccountInfoListProps = {
+  fallbackText: string;
   profile: UserProfileResponse;
   profileFieldList: ProfileFieldListProps[];
 };
@@ -15,14 +16,18 @@ type AccountInfoListProps = {
 const AccountInfoList = ({
   profile,
   profileFieldList,
+  fallbackText,
 }: AccountInfoListProps) => {
   const { language } = useLanguage();
 
   const profileDateOfBirth = profile.dateOfBirth ? (
     <DateDisplay date={profile.dateOfBirth} />
   ) : (
-    language.notProvided
+    fallbackText
   );
+
+  const getDisplayValue = (value: string | number | undefined) =>
+    value !== undefined && value !== '' ? value : fallbackText;
 
   return (
     <div>
@@ -33,7 +38,7 @@ const AccountInfoList = ({
           tooltip={
             tooltip && (
               <Popup
-                ariaControls="phone"
+                ariaControls={`${name}-info`}
                 ariaLabel={language.viewInfo}
                 popupContent={language.phoneInfo}
                 ariaHasPopup="dialog"
@@ -43,7 +48,9 @@ const AccountInfoList = ({
             )
           }
         >
-          {type === 'date' ? profileDateOfBirth : profile[name]}
+          {type === 'date'
+            ? profileDateOfBirth
+            : getDisplayValue(profile[name])}
         </LabelValueGrid>
       ))}
 
