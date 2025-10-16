@@ -41,7 +41,6 @@ const HeaderIcons = ({
         {/* <li>
             <IconBtn
               iconName={IconName.Search}
-              title={language.search}
               onClick={handleSearch}
               ariaLabel={language.search}
             />
@@ -56,7 +55,6 @@ const HeaderIcons = ({
             <IconContent
               ariaLabel={language.myAccount}
               iconName={IconName.User}
-              title={language.user}
             />
           </DropdownBtn>
         </li>
@@ -64,7 +62,6 @@ const HeaderIcons = ({
           <Link to={ShopPath.ShoppingCart} className="btn btn-ghost">
             <IconContent
               iconName={IconName.ShoppingBag}
-              title={language.bag}
               ariaLabel={language.viewCart}
             />
           </Link>
@@ -74,7 +71,6 @@ const HeaderIcons = ({
             triggerModalBtnContent={
               <IconContent
                 iconName={IconName.Language}
-                title={language.globe}
                 ariaLabel={language.selectPreferences}
               />
             }
@@ -98,7 +94,6 @@ const HeaderIcons = ({
           <Link to={ShopPath.Favorites} className="btn btn-ghost favorite-link">
             <IconContent
               iconName={IconName.Heart}
-              title={language.heart}
               ariaLabel={language.viewYourFavorites}
             />
             {favorites && favorites.length > 0 && (

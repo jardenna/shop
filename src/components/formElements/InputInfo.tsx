@@ -7,7 +7,7 @@ type InputInfoProps = {
 
 const InputInfo = ({ inputInfo }: InputInfoProps) => (
   <span className="input-info">
-    <Icon iconName={IconName.Info} title="info" />
+    <Icon iconName={IconName.Info} />
     <span>{inputInfo}</span>
   </span>
 );

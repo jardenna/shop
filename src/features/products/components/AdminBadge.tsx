@@ -30,7 +30,7 @@ const AdminBadge = ({ scheduledDate, status }: AdminBadgeProps) => {
             <DateDisplay date={scheduledDate} hour="2-digit" minute="2-digit" />
           }
         >
-          <Icon iconName={IconName.Calendar} title={language.calendar} />
+          <Icon iconName={IconName.Calendar} />
         </Popup>
       )}
     </div>

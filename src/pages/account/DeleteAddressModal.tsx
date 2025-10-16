@@ -50,7 +50,6 @@ const DeleteAddressModal = ({ id, modalMessage }: DeleteAddressModalProps) => {
       triggerModalBtnContent={
         <IconContent
           iconName={IconName.Trash}
-          title=""
           ariaLabel={language.deleteAddress}
         />
       }

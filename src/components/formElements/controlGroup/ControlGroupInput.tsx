@@ -45,7 +45,6 @@ const ControlGroupInput = ({
           iconName={iconName}
           fill={fill}
           size={iconSize}
-          title=""
           ariaLabel={ariaLabel}
           className={iconClassName}
         />

@@ -5,7 +5,6 @@ import IconContent from './IconContent';
 export type BaseIconBtn = {
   ariaLabel: string;
   iconName: IconName;
-  title: string;
   className?: string;
   showLabel?: boolean;
   size?: string;
@@ -22,7 +21,6 @@ type IconBtnProps = BaseIconBtn & {
 const IconBtn = ({
   ariaLabel,
   iconName,
-  title,
   onClick,
   className,
   ariaExpanded,
@@ -42,7 +40,6 @@ const IconBtn = ({
   >
     <IconContent
       iconName={iconName}
-      title={title}
       ariaLabel={ariaLabel}
       showLabel={showLabel}
       size={size}

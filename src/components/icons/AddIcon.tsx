@@ -1,8 +1,7 @@
 import type { IconDefaultProps } from './Icon';
 
-const AddIcon = ({ size, title, className, ariaHidden }: IconDefaultProps) => (
+const AddIcon = ({ size, className, ariaHidden }: IconDefaultProps) => (
   <svg
-    role="img"
     xmlns="http://www.w3.org/2000/svg"
     width={size}
     height={size}
@@ -15,7 +14,6 @@ const AddIcon = ({ size, title, className, ariaHidden }: IconDefaultProps) => (
     strokeLinejoin="round"
     aria-hidden={ariaHidden}
   >
-    <title>{title}</title>
     <path d="M5 12h14" />
     <path d="M12 5v14" />
   </svg>

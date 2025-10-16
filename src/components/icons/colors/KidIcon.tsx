@@ -1,14 +1,7 @@
 import type { IconDefaultProps } from '../Icon';
 
-const KidIcon = ({
-  size,
-  title,
-  className,
-  ariaHidden,
-  fill,
-}: IconDefaultProps) => (
+const KidIcon = ({ size, className, ariaHidden, fill }: IconDefaultProps) => (
   <svg
-    role="img"
     xmlns="http://www.w3.org/2000/svg"
     width={size}
     height={size}
@@ -22,7 +15,6 @@ const KidIcon = ({
     strokeMiterlimit="2"
     aria-hidden={ariaHidden}
   >
-    <title>{title}</title>
     <path
       d="M175.973 129.872c-.091-.999-.147-1.649-.147-1.649 0-.487.564-.75 1.258-1.017l2.438-.946 1.943 1.225 1.818-1.255 2.516.976c.694.267 1.258.475 1.258 1.017 0 0-.056.65-.147 1.649h-10.937Z"
       transform="translate(-170.022 -117.367)"

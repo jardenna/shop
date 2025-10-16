@@ -36,7 +36,7 @@ const TableSearch = ({
         ariaLabel={`${language.filter} ${label}`}
         ariaHasPopup="dialog"
       >
-        <Icon title={language.filterRow} iconName={IconName.Filter} />
+        <Icon iconName={IconName.Filter} />
 
         {value && (
           <>

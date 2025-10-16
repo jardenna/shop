@@ -128,13 +128,11 @@ const AddressFormModal = ({
         id ? (
           <IconContent
             iconName={IconName.Pencil}
-            title=""
             ariaLabel={language.updateAddress}
           />
         ) : (
           <IconContent
             iconName={IconName.Add}
-            title=""
             ariaLabel={language.createNewAddress}
             showLabel
           />

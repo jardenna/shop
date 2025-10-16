@@ -61,7 +61,6 @@ const EditUserInput = ({
             <IconBtn
               onClick={onEditBtnClick}
               iconName={IconName.Pencil}
-              title={language.pencil}
               ariaLabel={`${language.update} ${getlowerCaseFirstLetter(id, language)}`}
             />
           )}

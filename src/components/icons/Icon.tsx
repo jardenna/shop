@@ -56,12 +56,13 @@ import UsersIcon from './UsersIcon';
 import WarningIcon from './WarningIcon';
 
 export type IconDefaultProps = {
-  title: string;
   ariaHidden?: boolean;
   className?: string;
   fill?: string;
   focusable?: boolean;
+  role?: 'img';
   size?: string;
+  title?: string;
 };
 
 type IconProps = IconDefaultProps & {
@@ -129,21 +130,23 @@ const iconMapping = {
 const Icon = ({
   iconName,
   size = '1.5em',
-  title,
   className = '',
   ariaHidden,
+  title,
   fill,
+  role = 'img',
   focusable = false,
 }: IconProps) => {
   const IconComponent = iconMapping[iconName];
   return (
     <IconComponent
       size={size}
-      title={title}
       className={className}
       focusable={focusable}
       ariaHidden={ariaHidden === undefined ? true : undefined}
       fill={fill}
+      title={title}
+      role={role}
     />
   );
 };

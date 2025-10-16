@@ -39,7 +39,7 @@ const NumberStep = ({
         //   onNumberStepChange(event, value !== Number(min) ? -initCount : 0);
         // }}
       >
-        <Icon iconName={IconName.Subtract} title="Subtract" />
+        <Icon iconName={IconName.Subtract} />
       </Button>
       <Input
         type="number"
@@ -61,7 +61,7 @@ const NumberStep = ({
         id="subtract"
         name={id}
       >
-        <Icon iconName={IconName.Add} title="Add" />
+        <Icon iconName={IconName.Add} />
       </Button>
     </div>
   </article>

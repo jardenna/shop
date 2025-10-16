@@ -159,7 +159,7 @@ const UserPage = () => {
                     triggerBtnClassName="danger"
                     ariaLabel={language.deleteUser}
                   >
-                    <Icon iconName={IconName.Trash} title={language.trashCan} />
+                    <Icon iconName={IconName.Trash} />
                   </Popup>
                 )}
               </td>

@@ -1,13 +1,7 @@
 import type { IconDefaultProps } from './Icon';
 
-const SearchIcon = ({
-  ariaHidden,
-  className,
-  size,
-  title,
-}: IconDefaultProps) => (
+const SearchIcon = ({ ariaHidden, className, size }: IconDefaultProps) => (
   <svg
-    role="img"
     xmlns="http://www.w3.org/2000/svg"
     width={size}
     height={size}
@@ -20,7 +14,6 @@ const SearchIcon = ({
     strokeLinejoin="round"
     aria-hidden={ariaHidden}
   >
-    <title>{title}</title>
     <circle cx="11" cy="11" r="8" />
     <path d="m21 21-4.3-4.3" />
   </svg>

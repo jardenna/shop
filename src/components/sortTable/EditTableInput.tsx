@@ -55,13 +55,11 @@ const EditTableInput = ({
         <IconBtn
           onClick={onCancel}
           iconName={IconName.Close}
-          title={language.cancel}
           ariaLabel={language.cancel}
           size="12"
         />
         <IconBtn
           iconName={IconName.Check}
-          title="Check"
           ariaLabel={language.save}
           size="16"
           btnType={BtnType.Submit}

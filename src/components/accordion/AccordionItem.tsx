@@ -21,11 +21,7 @@ const AccordionItem = ({
         {title}
         {additionalTitle && <span>[{additionalTitle}]</span>}
       </span>
-      <Icon
-        iconName={IconName.ChevronDown}
-        title=""
-        className="accordion-icon"
-      />
+      <Icon iconName={IconName.ChevronDown} className="accordion-icon" />
     </summary>
     <div className="accordion-content">{children}</div>
   </details>

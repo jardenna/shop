@@ -63,7 +63,6 @@ const PasswordInput = ({
           onClick={handleShowPassword}
           className="toggle-icon-btn"
           iconName={showPassword ? IconName.EyeOff : IconName.Eye}
-          title={showPassword ? language.eyeClosed : language.eye}
           ariaLabel={
             showPassword ? language.showPassword : language.hidePassword
           }

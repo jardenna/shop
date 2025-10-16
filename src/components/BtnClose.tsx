@@ -24,7 +24,7 @@ const BtnClose = ({
       autoFocus={autoFocus}
       className="btn-close"
     >
-      <Icon iconName={IconName.Close} title={language.close} />
+      <Icon iconName={IconName.Close} />
     </Button>
   );
 };

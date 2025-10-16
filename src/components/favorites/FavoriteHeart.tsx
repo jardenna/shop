@@ -32,7 +32,6 @@ const FavoriteHeart = ({ id }: FavoriteHeartProps) => {
       >
         <label htmlFor={id} className="favorites-label">
           <Icon
-            title={language.heart}
             iconName={IconName.Heart}
             className={`heart-icon ${animate ? 'animate' : ''}`}
           />

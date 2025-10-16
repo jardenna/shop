@@ -9,7 +9,6 @@ type IconContentProps = BaseIconBtn & {
 
 const IconContent = ({
   iconName,
-  title,
   ariaLabel,
   size,
   fill,
@@ -17,13 +16,7 @@ const IconContent = ({
   showLabel,
 }: IconContentProps) => (
   <>
-    <Icon
-      iconName={iconName}
-      title={title}
-      size={size}
-      fill={fill}
-      className={className}
-    />
+    <Icon iconName={iconName} size={size} fill={fill} className={className} />
     {showLabel ? ariaLabel : <VisuallyHidden>{ariaLabel}</VisuallyHidden>}
   </>
 );

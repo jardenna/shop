@@ -9,7 +9,6 @@ const MissingImage = () => {
       <IconContent
         iconName={IconName.Image}
         size="50"
-        title={language.trashCan}
         ariaLabel={language.adminCannotBeDeleted}
       />
     </span>

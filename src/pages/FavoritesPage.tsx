@@ -41,7 +41,6 @@ const FavoritesPage = () => {
                       handleAddToBag(product.id);
                     }}
                     iconName={IconName.ShoppingBag}
-                    title=""
                     ariaLabel={language.bag}
                   />
                 </div>
