@@ -2,13 +2,14 @@ import { useLayoutEffect } from 'react';
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import { IconName } from '../../types/enums';
+import type { RefElementType } from '../../types/types';
 import Button from '../Button';
 import IconBtn from '../IconBtn';
 import './_pagination.scss';
 
 type PaginationProps = {
   ariaDescribedby: string;
-  headingRef: React.RefObject<HTMLElement | null>;
+  headingRef: RefElementType;
   page: number;
   totalBtns: number;
   handlePagination: (id: number) => void;

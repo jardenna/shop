@@ -1,4 +1,5 @@
 import { useLayoutEffect } from 'react';
+import type { RefElementType } from '../types/types';
 import FieldSet from './fieldset/FieldSet';
 import Selectbox from './selectbox/Selectbox';
 
@@ -9,7 +10,7 @@ export type PageCountOptions = {
 
 type ProductCountSelectProps = {
   defaultValue: PageCountOptions;
-  headingRef: React.RefObject<HTMLElement | null>;
+  headingRef: RefElementType;
   labelText: string;
   legendText: string;
   options: PageCountOptions[];
