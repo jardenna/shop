@@ -27,11 +27,11 @@ import useMediaQuery from '../hooks/useMediaQuery';
 import { LinkText } from '../layout/nav/enums';
 import MetaTags from '../layout/nav/MetaTags';
 import { IconName } from '../types/enums';
+import announce from '../utils/announce';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { sortSizesDynamic } from '../utils/sizeUtils';
 import { getFilterSummary } from '../utils/utils';
 import './CollectionPage.styles.scss';
-import useAnnouncement from '../hooks/useAnnouncement';
 
 export type FilterKeys = 'sizes' | 'colors' | 'brand';
 
@@ -42,8 +42,6 @@ const CollectionPage = () => {
   const { isMobileSize, isSmallMobileSize } = useMediaQuery();
   const { page, productsPerPage, setPage, setProductsPerPage, resetPage } =
     usePaginationParams();
-
-  const announce = useAnnouncement([page]);
 
   const initialFilters: FilterValuesType<string> = {
     sizes: [],
@@ -89,20 +87,6 @@ const CollectionPage = () => {
   const productCount = products ? products.productCount : 0;
   const totalBtns = products?.pages ?? 1;
 
-  const handleSelectCount = (option: PageCountOptions) => {
-    const newCount = Number(option.value);
-    setProductsPerPage(newCount);
-
-    // Reset page if current page exceeds total backend pages
-    if (page > totalBtns) {
-      resetPage();
-    }
-  };
-
-  const handlePagination = (id: number) => {
-    setPage(id);
-  };
-
   const src = `/images/banners/${category}_banner`;
   const altText = `${category}BannerAltText`;
   const ariaDescribedby = 'result-info';
@@ -113,6 +97,33 @@ const CollectionPage = () => {
   const endItem = isShowingAll
     ? productCount
     : Math.min(page * productsPerPage, productCount);
+
+  const productsText = language.products.toLowerCase();
+  const showingText = language.showing;
+  const ofText = language.of;
+
+  const infoText = `${showingText} ${startItem}–${endItem} ${ofText} ${productCount} ${productsText}.`;
+
+  const handleSelectCount = (option: PageCountOptions) => {
+    const newCount = Number(option.value);
+    setProductsPerPage(newCount);
+    const announceText = `${showingText} ${option.label} ${productsText} ${language.perPage}`;
+
+    announce(announceText);
+
+    // Reset page if current page exceeds total backend pages
+    if (page > totalBtns) {
+      resetPage();
+    }
+  };
+
+  const handlePagination = (id: number) => {
+    setPage(id);
+    const productsLoadedText = `${language.page} ${id} ${ofText} ${totalBtns} ${language.loaded}`;
+    const announceText = `${productsLoadedText}. ${infoText}`;
+
+    announce(announceText);
+  };
 
   const productViewIconList = [
     {
@@ -138,8 +149,6 @@ const CollectionPage = () => {
   const isOptionDisabled = (option: { value: string }) =>
     Number(option.value) > productCount;
 
-  const productsLoadedText = `${language.page} ${page} ${language.of} ${totalBtns} ${language.loaded}`;
-  const infoText = `${language.showing} ${startItem}–${endItem} ${language.of} ${productCount} ${language.products.toLowerCase()}.`;
   const ariaLabelledby = `${category || 'women'}-title`;
 
   return (
@@ -198,8 +207,6 @@ const CollectionPage = () => {
                   onRemoveFilterTag={onRemoveFilterTag}
                   onClearAllFilters={onClearAllFilters}
                   productCount={productCount}
-                  announce={announce}
-                  productsLoadedText={productsLoadedText}
                   infoText={infoText}
                   ariaDescribedby={ariaDescribedby}
                 />

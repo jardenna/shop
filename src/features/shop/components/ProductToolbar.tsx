@@ -8,7 +8,6 @@ import FilterPanel from './FilterPanel';
 import PaginationInfoText from './PaginationInfoText';
 
 type ProductToolbar = {
-  announce: boolean;
   ariaDescribedby: string;
   availableBrands: string[];
   availableSizes: Size[];
@@ -19,7 +18,6 @@ type ProductToolbar = {
   isActive: string;
   onChange: InputChangeHandler;
   productCount: number;
-  productsLoadedText: string;
   values: FilterValuesType<string>;
   onClearAllFilters: () => void;
   onClearSingleFilter: (filterKey: FilterKeys) => void;
@@ -43,8 +41,6 @@ const ProductToolbar = ({
   onRemoveFilterTag,
   ariaDescribedby,
   infoText,
-  announce,
-  productsLoadedText,
 }: ProductToolbar) => {
   const { language } = useLanguage();
 
@@ -58,9 +54,7 @@ const ProductToolbar = ({
       />
       <PaginationInfoText
         infoText={infoText}
-        announce={announce}
         ariaDescribedby={ariaDescribedby}
-        productsLoadedText={productsLoadedText}
       />
       <FilterPanel
         onClearSingleFilter={onClearSingleFilter}
