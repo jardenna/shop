@@ -18,11 +18,18 @@ const AccountInfoList = ({
 }: AccountInfoListProps) => {
   const { language } = useLanguage();
 
-  const profileDateOfBirth = profile.dateOfBirth ? (
-    <DateDisplay date={profile.dateOfBirth} />
-  ) : (
-    language.notProvided
-  );
+  type ProfileProps = {
+    fallbackInfo: string;
+    value: string | number | undefined;
+    type?: string;
+  };
+
+  const getProfileValue = ({ fallbackInfo, value, type }: ProfileProps) => {
+    if (type === 'date') {
+      return value ? <DateDisplay date={String(value)} /> : fallbackInfo;
+    }
+    return value !== undefined && value !== '' ? value : fallbackInfo;
+  };
 
   return (
     <div>
@@ -33,7 +40,7 @@ const AccountInfoList = ({
           tooltip={
             tooltip && (
               <Popup
-                ariaControls="phone"
+                ariaControls={`${name}-info`}
                 ariaLabel={language.viewInfo}
                 popupContent={language.phoneInfo}
                 ariaHasPopup="dialog"
@@ -43,7 +50,11 @@ const AccountInfoList = ({
             )
           }
         >
-          {type === 'date' ? profileDateOfBirth : profile[name]}
+          {getProfileValue({
+            value: profile[name],
+            fallbackInfo: language.notProvided,
+            type,
+          })}
         </LabelValueGrid>
       ))}
 

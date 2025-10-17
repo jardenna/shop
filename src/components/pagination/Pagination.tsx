@@ -1,18 +1,18 @@
 import { useLayoutEffect } from 'react';
-import { useSearchParams } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import { IconName } from '../../types/enums';
-import { pageParamKey } from '../../utils/utils';
+import type { RefElementType } from '../../types/types';
 import Button from '../Button';
 import IconBtn from '../IconBtn';
 import './_pagination.scss';
 
 type PaginationProps = {
   ariaDescribedby: string;
-  headingRef: React.RefObject<HTMLElement | null>;
+  headingRef: RefElementType;
   page: number;
   totalBtns: number;
+  handlePagination: (id: number) => void;
 };
 
 const Pagination = ({
@@ -20,20 +20,14 @@ const Pagination = ({
   headingRef,
   page,
   totalBtns,
+  handlePagination,
 }: PaginationProps) => {
-  const [searchParams, setSearchParams] = useSearchParams();
   const { language } = useLanguage();
   const paginationBtnList = Array.from({ length: totalBtns }, (_, i) => i + 1);
 
   useLayoutEffect(() => {
     headingRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, [page]);
-
-  const handlePagination = (id: number) => {
-    const newParams = new URLSearchParams(searchParams);
-    newParams.set(pageParamKey, id.toString());
-    setSearchParams(newParams);
-  };
 
   const handleGotoPrevPage = () => {
     if (page > 1) {

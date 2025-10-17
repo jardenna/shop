@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useParams } from 'react-router';
 import useLanguage from '../../../features/language/useLanguage';
 import useSubMenu from '../../../features/shop/hooks/useSubMenu';
-import useMediaQuery from '../../../hooks/useMediaQuery ';
+import useMediaQuery from '../../../hooks/useMediaQuery';
 import { LinkText } from '../enums';
 import type { SubBaseNav } from '../Nav';
 import './_sub-nav.scss';

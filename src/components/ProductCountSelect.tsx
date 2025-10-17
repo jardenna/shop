@@ -1,5 +1,6 @@
-import { useSearchParams } from 'react-router';
-import { productsPerPageParamKey } from '../utils/utils';
+import { useLayoutEffect } from 'react';
+import { useLocation } from 'react-router';
+import type { RefElementType } from '../types/types';
 import FieldSet from './fieldset/FieldSet';
 import Selectbox from './selectbox/Selectbox';
 
@@ -10,9 +11,12 @@ export type PageCountOptions = {
 
 type ProductCountSelectProps = {
   defaultValue: PageCountOptions;
+  headingRef: RefElementType;
   labelText: string;
   legendText: string;
   options: PageCountOptions[];
+  isOptionDisabled?: (option: { value: string }) => boolean;
+  onSelectCount: (option: PageCountOptions) => void;
 };
 
 const ProductCountSelect = ({
@@ -20,26 +24,29 @@ const ProductCountSelect = ({
   options,
   defaultValue,
   legendText,
+  onSelectCount,
+  headingRef,
+  isOptionDisabled,
 }: ProductCountSelectProps) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const { pathname } = useLocation();
 
-  const handleSelectCount = (option: PageCountOptions) => {
-    const newParams = new URLSearchParams(searchParams);
-    newParams.set(productsPerPageParamKey, option.value);
-    setSearchParams(newParams);
-  };
+  useLayoutEffect(() => {
+    headingRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, [options]);
 
   return (
     <form className="product-navigation-form">
       <FieldSet legendText={legendText}>
         <Selectbox
+          selectKey={`perpage-${pathname}`}
           name="productCount"
           options={options}
           id="productCount"
-          onChange={handleSelectCount}
+          onChange={onSelectCount}
           labelText={labelText}
           defaultValue={defaultValue}
           inputHasNoLabel
+          isOptionDisabled={isOptionDisabled}
         />
       </FieldSet>
     </form>

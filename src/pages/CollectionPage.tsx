@@ -1,12 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { useParams, useSearchParams } from 'react-router';
+import { useParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import Pagination from '../components/pagination/Pagination';
+import usePaginationParams from '../components/pagination/usePaginationParams';
 import Picture from '../components/Picture';
-import ProductCountSelect from '../components/ProductCountSelect';
+import ProductCountSelect, {
+  PageCountOptions,
+} from '../components/ProductCountSelect';
 import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import useLanguage from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
@@ -20,17 +23,13 @@ import { useGetProductsQuery } from '../features/shop/shopApiSlice';
 import type { FilterValuesType } from '../hooks/useFilterParams';
 import useFilterParams from '../hooks/useFilterParams';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
-import useMediaQuery from '../hooks/useMediaQuery ';
+import useMediaQuery from '../hooks/useMediaQuery';
 import { LinkText } from '../layout/nav/enums';
 import MetaTags from '../layout/nav/MetaTags';
 import { IconName } from '../types/enums';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { sortSizesDynamic } from '../utils/sizeUtils';
-import {
-  getFilterSummary,
-  pageParamKey,
-  productsPerPageParamKey,
-} from '../utils/utils';
+import { getFilterSummary } from '../utils/utils';
 import './CollectionPage.styles.scss';
 
 export type FilterKeys = 'sizes' | 'colors' | 'brand';
@@ -38,28 +37,10 @@ export type FilterKeys = 'sizes' | 'colors' | 'brand';
 const CollectionPage = () => {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const { category, categoryId } = useParams();
-  const [searchParams] = useSearchParams();
   const { language } = useLanguage();
   const { isMobileSize, isSmallMobileSize } = useMediaQuery();
-  const pageParam = searchParams.get(pageParamKey);
-  const productPerPageParam = searchParams.get(productsPerPageParamKey);
-  const page = Number(pageParam) || 1;
-  const hasMounted = useRef(false);
-  const [announce, setAnnounce] = useState(false);
-
-  useEffect(() => {
-    if (hasMounted.current) {
-      // Page actually changed after first render
-      setAnnounce(true);
-      const timer = setTimeout(() => {
-        setAnnounce(false);
-      }, 1000);
-      return () => {
-        clearTimeout(timer);
-      };
-    }
-    hasMounted.current = true;
-  }, [page]);
+  const { page, productsPerPage, setPage, setProductsPerPage, resetPage } =
+    usePaginationParams();
 
   const initialFilters: FilterValuesType<string> = {
     sizes: [],
@@ -79,14 +60,13 @@ const CollectionPage = () => {
     category as LinkText,
   );
 
-  const [productView, setProuctView] = useLocalStorage(
+  const [productView, setProductView] = useLocalStorage(
     localStorageKeys.productView,
     'grid',
   );
 
   const sortedTranslatedColors = sortColorsByTranslation(colorList, language);
   const categoryText = category ? language[category] : '';
-  const productsPerPage = Number(productPerPageParam) || 8;
 
   // Redux hooks
   const {
@@ -94,8 +74,8 @@ const CollectionPage = () => {
     isLoading,
     refetch,
   } = useGetProductsQuery({
-    productsPerPage: Number(productPerPageParam),
-    page: pageParam || '1',
+    productsPerPage,
+    page: page.toString(),
     colors: filterValues.colors,
     brand: filterValues.brand,
     sizes: filterValues.sizes,
@@ -103,6 +83,55 @@ const CollectionPage = () => {
     subCategoryId: categoryId || '',
   });
 
+  const productCount = products ? products.productCount : 0;
+  const totalBtns = products?.pages ?? 1;
+
+  const src = `/images/banners/${category}_banner`;
+  const altText = `${category}BannerAltText`;
+  const ariaDescribedby = 'result-info';
+  const filtersCount = getFilterSummary(filterValues);
+
+  const isShowingAll = productsPerPage >= productCount && productCount > 0;
+  const startItem = isShowingAll ? 1 : (page - 1) * productsPerPage + 1;
+  const endItem = isShowingAll
+    ? productCount
+    : Math.min(page * productsPerPage, productCount);
+
+  const productsText = language.products.toLowerCase();
+  const showingText = language.showing;
+  const ofText = language.of;
+  const infoText = `${showingText} ${startItem}–${endItem} ${ofText} ${productCount} ${productsText}.`;
+
+  const handleSelectCount = (option: PageCountOptions) => {
+    const newCount = Number(option.value);
+    setProductsPerPage(newCount);
+
+    // Reset page if current page exceeds total backend pages
+    if (page > totalBtns) {
+      resetPage();
+    }
+  };
+  const hasMounted = useRef(false);
+  const [announce, setAnnounce] = useState(false);
+
+  useEffect(() => {
+    if (hasMounted.current) {
+      // Page actually changed after first render
+      setAnnounce(true);
+      const timer = setTimeout(() => {
+        setAnnounce(false);
+      }, 1000);
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+    hasMounted.current = true;
+  }, [page, productsPerPage, filterValues]);
+
+  const handlePagination = (id: number) => {
+    setPage(id);
+  };
+  const productsLoadedText = `${language.page} ${page} ${language.of} ${totalBtns} ${language.loaded}`;
   const productViewIconList = [
     {
       iconName: IconName.LayoutGrid,
@@ -118,18 +147,17 @@ const CollectionPage = () => {
     },
   ];
 
-  const filtersCount = getFilterSummary(filterValues);
-  const src = `/images/banners/${category}_banner`;
-  const altText = `${category}BannerAltText`;
-  const productCount = products ? products.productCount : 1;
-  const startItem = (page - 1) * productsPerPage + 1;
-  const endItem = Math.min(page * productsPerPage, productCount);
-  const totalBtns = Math.ceil(productCount / productsPerPage);
-  const ariaDescribedby = 'result-info';
+  const options = [
+    { value: '8', label: '8' },
+    { value: '16', label: '16' },
+    { value: productCount.toString(), label: language.all },
+  ];
 
-  const productsLoadedText = `${language.page} ${page} ${language.of} ${totalBtns} ${language.loaded}`;
-  const infoText = `${language.showing} ${startItem}–${endItem}  ${language.of} ${productCount} ${language.products.toLowerCase()}.`;
+  const isOptionDisabled = (option: { value: string }) =>
+    Number(option.value) > productCount;
+
   const ariaLabelledby = `${category || 'women'}-title`;
+
   return (
     <>
       {category && <MetaTags metaTitle={language[category]} />}
@@ -173,7 +201,7 @@ const CollectionPage = () => {
               )}
               {products && (
                 <ProductToolbar
-                  onSetDisplay={setProuctView}
+                  onSetDisplay={setProductView}
                   displayControlList={productViewIconList}
                   isActive={productView}
                   onClearSingleFilter={onClearSingleFilter}
@@ -186,13 +214,13 @@ const CollectionPage = () => {
                   onRemoveFilterTag={onRemoveFilterTag}
                   onClearAllFilters={onClearAllFilters}
                   productCount={productCount}
-                  announce={announce}
-                  productsLoadedText={productsLoadedText}
                   infoText={infoText}
                   ariaDescribedby={ariaDescribedby}
+                  announce={announce}
+                  productsLoadedText={productsLoadedText}
                 />
               )}
-              {isLoading && <SkeletonCardList count={8} />}
+              {isLoading && <SkeletonCardList count={productsPerPage} />}
               <section
                 className={`product-card-list ${productView === 'list' && !isSmallMobileSize ? 'list' : ''}`}
               >
@@ -226,21 +254,25 @@ const CollectionPage = () => {
             headingRef={headingRef}
             page={page}
             ariaDescribedby={ariaDescribedby}
+            handlePagination={handlePagination}
           />
           <ProductCountSelect
             labelText={language.selectNumber}
             legendText={language.displayOptions}
+            onSelectCount={handleSelectCount}
+            isOptionDisabled={isOptionDisabled}
+            headingRef={headingRef}
             defaultValue={{
               value: productsPerPage.toString(),
               label: productsPerPage.toString(),
             }}
-            options={[
-              { value: '8', label: '8' },
-              { value: '16', label: '16' },
-              { value: productCount.toString(), label: language.all },
-            ]}
+            options={options}
           />
-          <p>{language.productPerPage}</p>
+          <p id={ariaDescribedby}>
+            {isShowingAll
+              ? `${language.showingAllProducts} (${productCount})`
+              : language.productPerPage}
+          </p>
         </section>
       </section>
     </>
