@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
@@ -27,7 +27,6 @@ import useMediaQuery from '../hooks/useMediaQuery';
 import { LinkText } from '../layout/nav/enums';
 import MetaTags from '../layout/nav/MetaTags';
 import { IconName } from '../types/enums';
-import announce from '../utils/announce';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { sortSizesDynamic } from '../utils/sizeUtils';
 import { getFilterSummary } from '../utils/utils';
@@ -101,30 +100,38 @@ const CollectionPage = () => {
   const productsText = language.products.toLowerCase();
   const showingText = language.showing;
   const ofText = language.of;
-
   const infoText = `${showingText} ${startItem}–${endItem} ${ofText} ${productCount} ${productsText}.`;
 
   const handleSelectCount = (option: PageCountOptions) => {
     const newCount = Number(option.value);
     setProductsPerPage(newCount);
-    const announceText = `${showingText} ${option.label} ${productsText} ${language.perPage}`;
-
-    announce(announceText);
 
     // Reset page if current page exceeds total backend pages
     if (page > totalBtns) {
       resetPage();
     }
   };
+  const hasMounted = useRef(false);
+  const [announce, setAnnounce] = useState(false);
+
+  useEffect(() => {
+    if (hasMounted.current) {
+      // Page actually changed after first render
+      setAnnounce(true);
+      const timer = setTimeout(() => {
+        setAnnounce(false);
+      }, 1000);
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+    hasMounted.current = true;
+  }, [page]);
 
   const handlePagination = (id: number) => {
     setPage(id);
-    const productsLoadedText = `${language.page} ${id} ${ofText} ${totalBtns} ${language.loaded}`;
-    const announceText = `${productsLoadedText}. ${infoText}`;
-
-    announce(announceText);
   };
-
+  const productsLoadedText = `${language.page} ${page} ${language.of} ${totalBtns} ${language.loaded}`;
   const productViewIconList = [
     {
       iconName: IconName.LayoutGrid,
@@ -209,6 +216,8 @@ const CollectionPage = () => {
                   productCount={productCount}
                   infoText={infoText}
                   ariaDescribedby={ariaDescribedby}
+                  announce={announce}
+                  productsLoadedText={productsLoadedText}
                 />
               )}
               {isLoading && <SkeletonCardList count={productsPerPage} />}
