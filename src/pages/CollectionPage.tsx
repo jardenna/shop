@@ -126,7 +126,7 @@ const CollectionPage = () => {
       };
     }
     hasMounted.current = true;
-  }, [page]);
+  }, [page, productsPerPage, filterValues]);
 
   const handlePagination = (id: number) => {
     setPage(id);
