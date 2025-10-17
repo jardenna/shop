@@ -5,7 +5,6 @@ import { FilterKeys } from '../../../pages/CollectionPage';
 import { FiltersCountResult, InputChangeHandler } from '../../../types/types';
 import useLanguage from '../../language/useLanguage';
 import FilterPanel from './FilterPanel';
-import PaginationInfoText from './PaginationInfoText';
 
 type ProductToolbar = {
   ariaDescribedby: string;
@@ -52,10 +51,7 @@ const ProductToolbar = ({
         isActive={isActive}
         ariaLabel={language.productDisplay}
       />
-      <PaginationInfoText
-        infoText={infoText}
-        ariaDescribedby={ariaDescribedby}
-      />
+      <p id={ariaDescribedby}>{infoText}</p>;
       <FilterPanel
         onClearSingleFilter={onClearSingleFilter}
         filtersCount={filtersCount}
