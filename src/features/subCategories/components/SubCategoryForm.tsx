@@ -31,7 +31,7 @@ type SubCategoryFormProps = {
   parentCategories: Category[];
   popupMessage: string;
   selectedCategory: SubCategoryResponse | null;
-  onReset?: () => void;
+  onReset: () => void;
 };
 
 const SubCategoryForm = ({

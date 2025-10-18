@@ -12,7 +12,11 @@ export type SubCategoryState = {
 
 const CreateSubCategoryPage = () => {
   const { language } = useLanguage();
-  const { data: allCategories, isLoading } = useGetAllCategoriesQuery();
+  const {
+    data: allCategories,
+    isLoading,
+    refetch,
+  } = useGetAllCategoriesQuery();
 
   return (
     <>
@@ -24,6 +28,7 @@ const CreateSubCategoryPage = () => {
       >
         {allCategories && (
           <SubCategoryForm
+            onReset={() => refetch}
             selectedCategory={null}
             id={null}
             parentCategories={allCategories.categories}
