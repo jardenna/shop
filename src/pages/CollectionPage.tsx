@@ -88,7 +88,7 @@ const CollectionPage = () => {
 
   const src = `/images/banners/${category}_banner`;
   const altText = `${category}BannerAltText`;
-  const ariaDescribedby = 'result-info';
+  const ariaText = 'product-results-status';
   const filtersCount = getFilterSummary(filterValues);
 
   const isShowingAll = productsPerPage >= productCount && productCount > 0;
@@ -216,7 +216,7 @@ const CollectionPage = () => {
                   onClearAllFilters={onClearAllFilters}
                   productCount={productCount}
                   infoText={infoText}
-                  ariaDescribedby={ariaDescribedby}
+                  ariaText={ariaText}
                   announce={announce}
                   productsLoadedText={productsLoadedText}
                 />
@@ -255,7 +255,7 @@ const CollectionPage = () => {
             totalBtns={totalBtns}
             headingRef={headingRef}
             page={page}
-            ariaDescribedby={ariaDescribedby}
+            ariaText={ariaText}
             handlePagination={handlePagination}
           />
           <ProductCountSelect
@@ -270,7 +270,7 @@ const CollectionPage = () => {
             }}
             options={options}
           />
-          <p id={ariaDescribedby}>
+          <p id={ariaText}>
             {isShowingAll
               ? `${language.showingAllProducts} (${productCount})`
               : language.productPerPage}

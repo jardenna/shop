@@ -3,20 +3,20 @@ import HeadingElement from '../../../layout/HeadingElement';
 
 type ProductsLiveAnnouncementProps = {
   announce: boolean;
-  ariaDescribedby: string;
+  ariaText: string;
   infoText: string;
   productsLoadedText: string;
 };
 
 const ProductsLiveAnnouncement = ({
   announce,
-  ariaDescribedby,
+  ariaText,
   infoText,
   productsLoadedText,
 }: ProductsLiveAnnouncementProps) => (
   <>
     <HeadingElement
-      ariaLabelledby={ariaDescribedby}
+      ariaLabelledby={ariaText}
       ariaLive="polite"
       className="products-heading"
     >

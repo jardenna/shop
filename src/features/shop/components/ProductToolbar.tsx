@@ -9,7 +9,7 @@ import ProductsLiveAnnouncement from './ProductsLiveAnnouncement';
 
 type ProductToolbar = {
   announce: boolean;
-  ariaDescribedby: string;
+  ariaText: string;
   availableBrands: string[];
   availableSizes: Size[];
   colors: string[];
@@ -42,7 +42,7 @@ const ProductToolbar = ({
   isActive,
   colors,
   onRemoveFilterTag,
-  ariaDescribedby,
+  ariaText,
   infoText,
   announce,
   onReset,
@@ -51,7 +51,7 @@ const ProductToolbar = ({
   const { language } = useLanguage();
 
   return (
-    <section className="product-toolbar" aria-labelledby={ariaDescribedby}>
+    <section className="product-toolbar" aria-labelledby={ariaText}>
       <DisplayControls
         onSetDisplay={onSetDisplay}
         displayControlList={displayControlList}
@@ -60,7 +60,7 @@ const ProductToolbar = ({
       <ProductsLiveAnnouncement
         infoText={infoText}
         announce={announce}
-        ariaDescribedby={ariaDescribedby}
+        ariaText={ariaText}
         productsLoadedText={productsLoadedText}
       />
       <FilterPanel
