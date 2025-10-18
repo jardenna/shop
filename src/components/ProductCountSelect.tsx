@@ -1,6 +1,4 @@
-import { useLayoutEffect } from 'react';
 import { useLocation } from 'react-router';
-import type { RefElementType } from '../types/types';
 import FieldSet from './fieldset/FieldSet';
 import Selectbox from './selectbox/Selectbox';
 
@@ -11,7 +9,6 @@ export type PageCountOptions = {
 
 type ProductCountSelectProps = {
   defaultValue: PageCountOptions;
-  headingRef: RefElementType;
   labelText: string;
   legendText: string;
   options: PageCountOptions[];
@@ -25,14 +22,9 @@ const ProductCountSelect = ({
   defaultValue,
   legendText,
   onSelectCount,
-  headingRef,
   isOptionDisabled,
 }: ProductCountSelectProps) => {
   const { pathname } = useLocation();
-
-  useLayoutEffect(() => {
-    headingRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, [options]);
 
   return (
     <form className="product-navigation-form">

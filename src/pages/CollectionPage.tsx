@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
@@ -14,6 +14,7 @@ import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import useLanguage from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
 import CollectionPageHeader from '../features/shop/components/CollectionPageHeader';
+import NoProductsFound from '../features/shop/components/NoProductsFound';
 import ProductCard from '../features/shop/components/ProductCard';
 import ProductCardGridContent from '../features/shop/components/ProductCardGridContent';
 import ProductCardListContent from '../features/shop/components/ProductCardListContent';
@@ -102,17 +103,28 @@ const CollectionPage = () => {
   const ofText = language.of;
   const infoText = `${showingText} ${startItem}–${endItem} ${ofText} ${productCount} ${productsText}.`;
 
+  const hasMounted = useRef(false);
+  const [announce, setAnnounce] = useState(false);
+  const [shouldScroll, setShouldScroll] = useState(false);
+
+  useLayoutEffect(() => {
+    if (!shouldScroll) {
+      return;
+    }
+    headingRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setShouldScroll(false);
+  }, [shouldScroll]);
+
   const handleSelectCount = (option: PageCountOptions) => {
     const newCount = Number(option.value);
     setProductsPerPage(newCount);
+    setShouldScroll(true);
 
     // Reset page if current page exceeds total backend pages
     if (page > totalBtns) {
       resetPage();
     }
   };
-  const hasMounted = useRef(false);
-  const [announce, setAnnounce] = useState(false);
 
   useEffect(() => {
     if (hasMounted.current) {
@@ -130,6 +142,7 @@ const CollectionPage = () => {
 
   const handlePagination = (id: number) => {
     setPage(id);
+    setShouldScroll(true);
   };
   const productsLoadedText = `${language.page} ${page} ${language.of} ${totalBtns} ${language.loaded}`;
   const productViewIconList = [
@@ -146,10 +159,13 @@ const CollectionPage = () => {
       display: 'list',
     },
   ];
+  const selectProductCountList = ['8', '16'];
 
   const options = [
-    { value: '8', label: '8' },
-    { value: '16', label: '16' },
+    ...selectProductCountList.map((count) => ({
+      value: count,
+      label: count,
+    })),
     { value: productCount.toString(), label: language.all },
   ];
 
@@ -221,29 +237,37 @@ const CollectionPage = () => {
             <section
               className={`product-card-list ${productView === 'list' && !isSmallMobileSize ? 'list' : ''}`}
             >
-              <ErrorBoundary
-                FallbackComponent={ErrorBoundaryFallback}
-                onReset={() => refetch()}
-              >
-                {products &&
-                  products.products.map((product) => (
-                    <ProductCard
-                      as="h3"
-                      key={product.id}
-                      linkTo={
-                        categoryId ? product.id : `allProducts/${product.id}`
-                      }
-                      product={product}
-                      showSizeOverlay={productView !== 'list'}
-                    >
-                      {productView === 'list' ? (
-                        <ProductCardListContent product={product} />
-                      ) : (
-                        <ProductCardGridContent product={product} />
-                      )}
-                    </ProductCard>
-                  ))}
-              </ErrorBoundary>
+              {productCount > 0 ? (
+                <ErrorBoundary
+                  FallbackComponent={ErrorBoundaryFallback}
+                  onReset={() => refetch()}
+                >
+                  {products &&
+                    products.products.map((product) => (
+                      <ProductCard
+                        as="h3"
+                        key={product.id}
+                        linkTo={
+                          categoryId ? product.id : `allProducts/${product.id}`
+                        }
+                        product={product}
+                        showSizeOverlay={productView !== 'list'}
+                      >
+                        {productView === 'list' ? (
+                          <ProductCardListContent product={product} />
+                        ) : (
+                          <ProductCardGridContent product={product} />
+                        )}
+                      </ProductCard>
+                    ))}
+                </ErrorBoundary>
+              ) : (
+                <NoProductsFound
+                  noProductText={language.noProductResult}
+                  resetFilters={onClearAllFilters}
+                  resetBtnText={language.clearAllFilters}
+                />
+              )}
             </section>
           </div>
         </div>
@@ -253,7 +277,6 @@ const CollectionPage = () => {
         >
           <Pagination
             totalBtns={totalBtns}
-            headingRef={headingRef}
             page={page}
             ariaText={ariaText}
             handlePagination={handlePagination}
@@ -263,7 +286,6 @@ const CollectionPage = () => {
             legendText={language.displayOptions}
             onSelectCount={handleSelectCount}
             isOptionDisabled={isOptionDisabled}
-            headingRef={headingRef}
             defaultValue={{
               value: productsPerPage.toString(),
               label: productsPerPage.toString(),

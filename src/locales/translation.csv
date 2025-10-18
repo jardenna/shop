@@ -142,6 +142,7 @@ filesSupported;Files supported;Tilladte filer
 fileTooLarge;File too large;Filen er for stor
 fillAll;Please fill all inputs;Udfyld venligst alle felter
 filter;Filter;Filtrer
+filterHeading;Filter;Filter
 filterProducts;Filter products;Filtrer produkter
 filterRow;Filter row;Filtrer række
 filtersApplied;Filters applied;Filtre anvendt
@@ -174,7 +175,7 @@ inStock;In stock;På lager
 invalidFileType;Invalid file type;Ugyldig fil type
 invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for planlagt dato
 invalidUserData;Invalid user data;Ugyldig bruger data
-itemLabel;Items;Varer
+itemLabel;item(s);vare(r)
 kid;Kid;Barn
 kids;Kids;Børn
 kidsAltText;Stylish children, a girl in a white sleeveless top with a matching hat and a boy in a colorful shirt, sitting together in a playful yet elegant pose.;Stilfulde børn, en pige i hvid ærmeløs top med matchende hat og en dreng i farverig skjorte, sidder sammen i et legende men elegant udtryk.
@@ -230,9 +231,11 @@ noEmail;Please enter an email;Indtast venligst en e-mail
 noFavorites;Find your must-haves and save them here, so you can easily come back to them;Find dine must-haves og gem dem her, så du nemt kan vende tilbage til dem
 noFavoritesYet;No favorites yet;Ingen favoritter endnu
 noImagesProvided;No images provided;Ingen billeder
+noItemsToShow;No items to show;Ingen varer at vise
 noOptions;No options;Ingen valgmuligheder
 noPassword;Please enter a password;Indtast venligst en adgangskode
 noProduct;Product not found;Produkt blev ikke fundet
+noProductResult;No products match your filters. Try removing some filters or reset to see all products again.;Der er ingen produkter, der matcher dine filtre. Prøv at fjerne nogle filtre eller nulstil for at se alle produkter igen.
 noReview;Be the first to review this product;Bliv den første til at anmelde dette produkt
 notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 
 notAuthorizedNoToken;Not authorized, no token;Ikke autoriseret, ingen token

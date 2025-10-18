@@ -1,15 +1,12 @@
-import { useLayoutEffect } from 'react';
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import { IconName } from '../../types/enums';
-import type { RefElementType } from '../../types/types';
 import Button from '../Button';
 import IconBtn from '../IconBtn';
 import './_pagination.scss';
 
 type PaginationProps = {
   ariaText: string;
-  headingRef: RefElementType;
   page: number;
   totalBtns: number;
   handlePagination: (id: number) => void;
@@ -17,17 +14,12 @@ type PaginationProps = {
 
 const Pagination = ({
   ariaText,
-  headingRef,
   page,
   totalBtns,
   handlePagination,
 }: PaginationProps) => {
   const { language } = useLanguage();
   const paginationBtnList = Array.from({ length: totalBtns }, (_, i) => i + 1);
-
-  useLayoutEffect(() => {
-    headingRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, [page]);
 
   const handleGotoPrevPage = () => {
     if (page > 1) {
