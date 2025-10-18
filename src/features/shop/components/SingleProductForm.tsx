@@ -14,7 +14,7 @@ import {
 } from '../../../utils/colorUtils';
 import resolveIconName from '../../../utils/iconHelpers';
 import { oneSize } from '../../../utils/sizeUtils';
-import { getlowerCaseFirstLetter } from '../../../utils/utils';
+import { translateKey } from '../../../utils/utils';
 import validateShopProduct from '../../../utils/validation/validateShopProduct';
 import useLanguage from '../../language/useLanguage';
 
@@ -61,7 +61,7 @@ const SingleProductForm = ({
   const titleColor =
     values.color === ''
       ? language.selectedColor
-      : `${language.selectedColor}: ${getlowerCaseFirstLetter(values.color, language)}`;
+      : `${language.selectedColor}: ${translateKey(values.color, language)}`;
 
   const sortedTranslatedColors = sortColorsByTranslation(colors, language);
 

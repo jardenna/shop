@@ -7,7 +7,7 @@ import {
   useGetHasSubCatScheduledQuery,
 } from '../../features/subCategories/subCategoryApiSlice';
 import { AdminPath } from '../../layout/nav/enums';
-import { getlowerCaseFirstLetter, oneDay } from '../../utils/utils';
+import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const tableHeaders: {
@@ -80,8 +80,7 @@ const SubCategoryPage = () => {
                 scheduledDate={scheduledDate || null}
                 subCategoryName={language[translationKey] || subCategoryName}
                 mainCategoryName={
-                  getlowerCaseFirstLetter(mainCategoryName, language) ||
-                  mainCategoryName
+                  translateKey(mainCategoryName, language) || mainCategoryName
                 }
                 linkText={language.viewCategory}
               />

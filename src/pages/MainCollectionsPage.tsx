@@ -5,7 +5,7 @@ import MainCollections from '../features/shop/components/MainCollections';
 
 import { MainCollectionsBaseProps } from '../features/shop/components/MainCollectionsItem';
 import { ShopPath } from '../layout/nav/enums';
-import { getlowerCaseFirstLetter } from '../utils/utils';
+import { translateKey } from '../utils/utils';
 import './MainCollectionPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
@@ -36,7 +36,7 @@ const CollectionLandingPage = () => {
 
   const mainCollectionList: MainCollectionsBaseProps[] = sortedCategories.map(
     (item) => ({
-      title: getlowerCaseFirstLetter(item, language),
+      title: translateKey(item, language),
       imgList: collectionImages[item],
       linkTo: ShopPath[item as keyof typeof ShopPath],
       linkText: language.discoverCollection,

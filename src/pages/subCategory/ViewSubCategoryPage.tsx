@@ -9,7 +9,7 @@ import {
 } from '../../features/subCategories/subCategoryApiSlice';
 import { AdminPath } from '../../layout/nav/enums';
 import handleApiError from '../../utils/handleApiError';
-import { getlowerCaseFirstLetter } from '../../utils/utils';
+import { translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const ViewSubCategoryPage = () => {
@@ -76,7 +76,7 @@ const ViewSubCategoryPage = () => {
               category.mainCategory.categoryStatus !== 'Published'
             }
             scheduledDate={category.scheduledDate || null}
-            statusMessage={getlowerCaseFirstLetter(
+            statusMessage={translateKey(
               category.mainCategory.categoryStatus,
               language,
             )}

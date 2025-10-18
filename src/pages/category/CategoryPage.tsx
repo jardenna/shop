@@ -7,7 +7,7 @@ import {
 import CategoryTableRow from '../../features/categories/components/CategoryTableRow';
 import useLanguage from '../../features/language/useLanguage';
 import { AdminPath } from '../../layout/nav/enums';
-import { getlowerCaseFirstLetter, oneDay } from '../../utils/utils';
+import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const tableHeaders: { key: keyof Category; label: string; name: string }[] = [
@@ -69,8 +69,7 @@ const CategoryPage = () => {
                 status={categoryStatus}
                 scheduledDate={scheduledDate || null}
                 categoryName={
-                  getlowerCaseFirstLetter(categoryName, language) ||
-                  categoryName
+                  translateKey(categoryName, language) || categoryName
                 }
                 createdAt={createdAt}
                 linkText={language.update}

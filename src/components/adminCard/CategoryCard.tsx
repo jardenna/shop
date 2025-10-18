@@ -3,7 +3,7 @@ import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
 import { AdminPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
-import { getlowerCaseFirstLetter } from '../../utils/utils';
+import { translateKey } from '../../utils/utils';
 import CardFooter from '../card/CardFooter';
 import CardRight from '../card/CardRight';
 import type { PrimaryActionBtnProps } from '../modal/Modal';
@@ -56,10 +56,10 @@ const CategoryCard = ({
       />
       <CardRight
         linkTo={AdminPath.AdminCategories}
-        heading={`${language.mainCategoryName}: ${getlowerCaseFirstLetter(mainCategoryName, language)}`}
+        heading={`${language.mainCategoryName}: ${translateKey(mainCategoryName, language)}`}
         name={subCategoryName}
         showStatusMessage={showStatusMessage}
-        statusMessage={`${language.parentCategoryIs} ${getlowerCaseFirstLetter(statusMessage, language)}`}
+        statusMessage={`${language.parentCategoryIs} ${translateKey(statusMessage, language)}`}
         onReset={onReset}
       />
       <CardFooter

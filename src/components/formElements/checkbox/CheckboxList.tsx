@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { getlowerCaseFirstLetter } from '../../../utils/utils';
+import { translateKey } from '../../../utils/utils';
 import type { BaseControlProps } from '../ControlInput';
 import ControlInput from '../ControlInput';
 import './_checkbox.scss';
@@ -33,9 +33,7 @@ const CheckboxList = ({
           onChange={onChange}
           autoFocus={autoFocus && index === 0}
           checked={values.includes(checkbox)}
-          label={
-            language ? getlowerCaseFirstLetter(checkbox, language) : checkbox
-          }
+          label={language ? translateKey(checkbox, language) : checkbox}
           renderExtra={renderExtra ? renderExtra(checkbox) : undefined}
         />
       </li>

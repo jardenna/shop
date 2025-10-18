@@ -6,7 +6,7 @@ import type {
   OptionGroupHeading,
 } from '../../../types/types';
 import { colorMap } from '../../../utils/colorUtils';
-import { getlowerCaseFirstLetter } from '../../../utils/utils';
+import { translateKey } from '../../../utils/utils';
 import OptionGroupTitle from '../../productLists/OptionGroupTitle';
 import type { ProductLabelVariant } from '../../productLists/ProductListItem';
 import InputInfo from '../InputInfo';
@@ -77,7 +77,7 @@ const ControlGroupList = ({
               name={name}
               value={label}
               checked={checked(label)}
-              ariaLabel={getlowerCaseFirstLetter(label, language)}
+              ariaLabel={translateKey(label, language)}
               disabled={
                 disabledList ? !disabledList.includes(label) : undefined
               }

@@ -4,7 +4,7 @@ import useAuth from '../../features/auth/hooks/useAuth';
 import CategoryForm from '../../features/categories/CategoryForm';
 import { useGetCategoryByIdQuery } from '../../features/categories/categoriyApiSlice';
 import useLanguage from '../../features/language/useLanguage';
-import { getlowerCaseFirstLetter } from '../../utils/utils';
+import { translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const UpdateCategoryPage = () => {
@@ -24,7 +24,7 @@ const UpdateCategoryPage = () => {
 
       {category && (
         <AdminPageContainer
-          heading={`${language.updateCategory} ${getlowerCaseFirstLetter(category.categoryName, language) || category.categoryName}`}
+          heading={`${language.updateCategory} ${translateKey(category.categoryName, language)}`}
           variant="small"
           ariaLabelledby="update-category"
         >

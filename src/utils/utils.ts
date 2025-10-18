@@ -23,12 +23,7 @@ const maxFiles = 5;
 const allowedExtensions = ['jpg', 'jpeg', 'png', 'webp', 'avif'];
 
 // Translation
-const getlowerCaseFirstLetter = (
-  key: string,
-  language: Record<string, string>,
-) => language[key[0].toLowerCase() + key.slice(1)] || key;
-
-export const translateKey = (
+const translateKey = (
   key: string | undefined,
   language: Record<string, string>,
 ) => {
@@ -120,7 +115,6 @@ export {
   discountCalculation,
   getAriaLabel,
   getFilterSummary,
-  getlowerCaseFirstLetter,
   getPathName,
   maxFiles,
   maxFileSize,
@@ -131,4 +125,5 @@ export {
   productsPerPageParamKey,
   sliceAndCountHidden,
   titleToCamelCase,
+  translateKey,
 };

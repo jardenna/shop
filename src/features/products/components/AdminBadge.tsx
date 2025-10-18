@@ -4,7 +4,7 @@ import DateDisplay from '../../../components/datePicker/DateDisplay';
 import Icon from '../../../components/icons/Icon';
 import Popup from '../../../components/popup/Popup';
 import { IconName } from '../../../types/enums';
-import { getlowerCaseFirstLetter } from '../../../utils/utils';
+import { translateKey } from '../../../utils/utils';
 import useLanguage from '../../language/useLanguage';
 
 type AdminBadgeProps = {
@@ -18,7 +18,7 @@ const AdminBadge = ({ scheduledDate, status }: AdminBadgeProps) => {
   return (
     <div className="badge-container">
       <Badge
-        badgeText={getlowerCaseFirstLetter(status, language)}
+        badgeText={translateKey(status, language)}
         className={status.toLowerCase()}
       />
       {scheduledDate && (

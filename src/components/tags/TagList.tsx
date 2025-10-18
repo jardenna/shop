@@ -1,6 +1,6 @@
 import type { FilterKeys } from '../../pages/CollectionPage';
 import { IconName } from '../../types/enums';
-import { getlowerCaseFirstLetter } from '../../utils/utils';
+import { translateKey } from '../../utils/utils';
 import IconBtn from '../IconBtn';
 import './_tag-list.scss';
 
@@ -28,7 +28,7 @@ const TagList = ({
             onClick(filterKey, value);
           }}
           iconName={IconName.Close}
-          ariaLabel={`${ariaLabel} ${getlowerCaseFirstLetter(value, language)}`}
+          ariaLabel={`${ariaLabel} ${translateKey(value, language)}`}
         />
       </li>
     ))}
