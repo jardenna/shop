@@ -38,6 +38,7 @@ type FilterPanelProps = {
   onClearAllFilters: () => void;
   onClearSingleFilter: (filterKey: FilterKeys) => void;
   onRemoveFilterTag: (key: FilterKeys, value: string) => void;
+  onReset: () => void;
 };
 
 const FilterPanel = ({
@@ -45,6 +46,7 @@ const FilterPanel = ({
   availableBrands,
   colors,
   onChange,
+  onReset,
   values,
   language,
   onRemoveFilterTag,
@@ -142,7 +144,7 @@ const FilterPanel = ({
           )}
         </ToggleContent>
 
-        <Accordion accordionList={accordionList} />
+        <Accordion accordionList={accordionList} onReset={onReset} />
       </section>
     </TogglePanel>
   );

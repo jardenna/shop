@@ -106,72 +106,64 @@ const SingleProductPage = () => {
       <MetaTags metaTitle={product?.productName} />
       {isLoading && <SkeletonSinglePage />}
       {product && (
-        <article className="single-product-container">
+        <section className="single-product-container">
           <ImgList images={product.images} onReset={() => refetch} />
-          <ErrorBoundary
-            FallbackComponent={ErrorBoundaryFallback}
-            onReset={() => refetch}
-          >
-            <section className="single-product">
-              <div className="single-product-content">
-                <ErrorBoundary
-                  FallbackComponent={ErrorBoundaryFallback}
-                  onReset={() => refetch}
-                >
-                  <p>
-                    {language.brand}: {product.brand}
-                  </p>
-                  <LayoutElement
-                    ariaLabel={language.product}
-                    className="single-product-header"
-                  >
-                    <h1>{product.productName}</h1>
-                    <FavoriteHeart id={product.id} />
-                  </LayoutElement>
-                </ErrorBoundary>
 
-                <ReviewStars
-                  stars={getStarsArray(product.rating)}
-                  rating={product.rating}
-                  onReset={() => refetch}
-                />
-                <ProductDiscountPrice
-                  price={product.price}
-                  discount={product.discount}
-                />
-                <div className="in-stock-container">
-                  <InStock stock={product.countInStock} />
-                  {(missingSizes.length > 0 || product.countInStock === 0) && (
-                    <NotifyMe
-                      options={missingSizes}
-                      id="notifyMe"
-                      sizesIsRequered={missingSizes.length > 0}
-                      currentUser={currentUser}
-                    />
-                  )}
-                </div>
-                {id && currentUser && <ReviewsForm productId={id} />}
-
-                <ErrorBoundary
-                  FallbackComponent={ErrorBoundaryFallback}
-                  onReset={() => refetch}
+          <section className="single-product">
+            <div className="single-product-content">
+              <ErrorBoundary
+                FallbackComponent={ErrorBoundaryFallback}
+                onReset={() => refetch}
+              >
+                <p>
+                  {language.brand}: {product.brand}
+                </p>
+                <LayoutElement
+                  ariaLabel={language.product}
+                  className="single-product-header"
                 >
-                  <ShopProductForm
-                    selectedProduct={product}
-                    colorList={colorList}
-                    displaySizeList={displaySizeList}
+                  <h1>{product.productName}</h1>
+                  <FavoriteHeart id={product.id} />
+                </LayoutElement>
+              </ErrorBoundary>
+
+              <ReviewStars
+                stars={getStarsArray(product.rating)}
+                rating={product.rating}
+                onReset={() => refetch}
+              />
+              <ProductDiscountPrice
+                price={product.price}
+                discount={product.discount}
+              />
+              <div className="in-stock-container">
+                <InStock stock={product.countInStock} />
+                {(missingSizes.length > 0 || product.countInStock === 0) && (
+                  <NotifyMe
+                    options={missingSizes}
+                    id="notifyMe"
+                    sizesIsRequered={missingSizes.length > 0}
+                    currentUser={currentUser}
                   />
-                </ErrorBoundary>
-                <ErrorBoundary
-                  FallbackComponent={ErrorBoundaryFallback}
-                  onReset={() => refetch}
-                >
-                  <Accordion accordionList={accordionList} />
-                </ErrorBoundary>
+                )}
               </div>
-            </section>
-          </ErrorBoundary>
-        </article>
+              {id && currentUser && (
+                <ReviewsForm productId={id} onReset={() => refetch} />
+              )}
+
+              <ShopProductForm
+                onReset={() => refetch}
+                selectedProduct={product}
+                colorList={colorList}
+                displaySizeList={displaySizeList}
+              />
+              <Accordion
+                accordionList={accordionList}
+                onReset={() => refetch}
+              />
+            </div>
+          </section>
+        </section>
       )}
     </div>
   );

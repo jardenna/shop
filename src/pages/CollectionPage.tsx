@@ -201,6 +201,7 @@ const CollectionPage = () => {
               )}
               {products && (
                 <ProductToolbar
+                  onReset={() => refetch()}
                   onSetDisplay={setProductView}
                   displayControlList={productViewIconList}
                   isActive={productView}

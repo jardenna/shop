@@ -24,6 +24,7 @@ type ProductToolbar = {
   onClearAllFilters: () => void;
   onClearSingleFilter: (filterKey: FilterKeys) => void;
   onRemoveFilterTag: (key: FilterKeys, value: string) => void;
+  onReset: () => void;
   onSetDisplay: (id: string) => void;
 };
 
@@ -44,6 +45,7 @@ const ProductToolbar = ({
   ariaDescribedby,
   infoText,
   announce,
+  onReset,
   productsLoadedText,
 }: ProductToolbar) => {
   const { language } = useLanguage();
@@ -74,6 +76,7 @@ const ProductToolbar = ({
         onRemoveFilterTag={onRemoveFilterTag}
         onClearAllFilters={onClearAllFilters}
         productCount={productCount}
+        onReset={onReset}
       />
     </section>
   );
