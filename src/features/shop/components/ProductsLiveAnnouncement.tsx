@@ -1,17 +1,18 @@
 import VisuallyHidden from '../../../components/VisuallyHidden';
 
-type PaginationInfoTextProps = {
+type ProductsLiveAnnouncementProps = {
   announce: boolean;
   ariaDescribedby: string;
   infoText: string;
   productsLoadedText: string;
 };
-const PaginationInfoText = ({
+
+const ProductsLiveAnnouncement = ({
   announce,
   ariaDescribedby,
   infoText,
   productsLoadedText,
-}: PaginationInfoTextProps) => (
+}: ProductsLiveAnnouncementProps) => (
   <>
     <p id={ariaDescribedby} aria-live="polite">
       {infoText}
@@ -26,4 +27,4 @@ const PaginationInfoText = ({
   </>
 );
 
-export default PaginationInfoText;
+export default ProductsLiveAnnouncement;

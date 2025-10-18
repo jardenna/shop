@@ -5,7 +5,7 @@ import { FilterKeys } from '../../../pages/CollectionPage';
 import { FiltersCountResult, InputChangeHandler } from '../../../types/types';
 import useLanguage from '../../language/useLanguage';
 import FilterPanel from './FilterPanel';
-import PaginationInfoText from './PaginationInfoText';
+import ProductsLiveAnnouncement from './ProductsLiveAnnouncement';
 
 type ProductToolbar = {
   announce: boolean;
@@ -56,7 +56,7 @@ const ProductToolbar = ({
         isActive={isActive}
         ariaLabel={language.productDisplay}
       />
-      <PaginationInfoText
+      <ProductsLiveAnnouncement
         infoText={infoText}
         announce={announce}
         ariaDescribedby={ariaDescribedby}
