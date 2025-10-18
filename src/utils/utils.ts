@@ -28,14 +28,13 @@ const getlowerCaseFirstLetter = (
   language: Record<string, string>,
 ) => language[key[0].toLowerCase() + key.slice(1)] || key;
 
-export const getCategoryTranslation = (
+export const translateKey = (
   key: string | undefined,
   language: Record<string, string>,
 ) => {
   if (!key) {
     return '';
-  } // or whatever default you want
-
+  }
   const normalized = key[0].toLowerCase() + key.slice(1);
   return language[normalized] ?? key;
 };
