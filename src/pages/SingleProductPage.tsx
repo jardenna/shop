@@ -106,10 +106,13 @@ const SingleProductPage = () => {
       <MetaTags metaTitle={product?.productName} />
       {isLoading && <SkeletonSinglePage />}
       {product && (
-        <section className="single-product-container">
+        <div className="single-product-container">
           <ImgList images={product.images} onReset={() => refetch} />
 
-          <section className="single-product">
+          <section
+            className="single-product"
+            aria-labelledby={`product-${product.id}-title`}
+          >
             <div className="single-product-content">
               <ErrorBoundary
                 FallbackComponent={ErrorBoundaryFallback}
@@ -118,11 +121,10 @@ const SingleProductPage = () => {
                 <p>
                   {language.brand}: {product.brand}
                 </p>
-                <LayoutElement
-                  ariaLabel={language.product}
-                  className="single-product-header"
-                >
-                  <h1>{product.productName}</h1>
+                <LayoutElement className="single-product-header">
+                  <h1 id={`product-${product.id}-title`}>
+                    {product.productName}
+                  </h1>
                   <FavoriteHeart id={product.id} />
                 </LayoutElement>
               </ErrorBoundary>
@@ -163,7 +165,7 @@ const SingleProductPage = () => {
               />
             </div>
           </section>
-        </section>
+        </div>
       )}
     </div>
   );
