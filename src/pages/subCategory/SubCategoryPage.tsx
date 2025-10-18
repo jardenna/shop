@@ -79,9 +79,7 @@ const SubCategoryPage = () => {
                 status={categoryStatus}
                 scheduledDate={scheduledDate || null}
                 subCategoryName={language[translationKey] || subCategoryName}
-                mainCategoryName={
-                  translateKey(mainCategoryName, language) || mainCategoryName
-                }
+                mainCategoryName={translateKey(mainCategoryName, language)}
                 linkText={language.viewCategory}
               />
             ),

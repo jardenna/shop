@@ -68,9 +68,7 @@ const CategoryPage = () => {
                 id={id}
                 status={categoryStatus}
                 scheduledDate={scheduledDate || null}
-                categoryName={
-                  translateKey(categoryName, language) || categoryName
-                }
+                categoryName={translateKey(categoryName, language)}
                 createdAt={createdAt}
                 linkText={language.update}
               />
