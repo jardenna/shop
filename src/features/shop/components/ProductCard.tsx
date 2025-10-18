@@ -5,6 +5,8 @@ import Badge from '../../../components/Badge';
 import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import Img from '../../../components/Img';
 import VisuallyHidden from '../../../components/VisuallyHidden';
+import HeadingElement from '../../../layout/HeadingElement';
+import type { HeadingTag } from '../../../types/types';
 import useLanguage from '../../language/useLanguage';
 import './ProductCard.styles.scss';
 import SizeOverlay from './SizeOverlay';
@@ -13,6 +15,7 @@ type ProductCardProps = {
   children: ReactNode;
   linkTo: string;
   product: ProductPreview;
+  as?: HeadingTag;
   showSizeOverlay?: boolean;
 };
 
@@ -20,6 +23,7 @@ const ProductCard = ({
   showSizeOverlay,
   product,
   linkTo,
+  as,
   children,
 }: ProductCardProps) => {
   const { language } = useLanguage();
@@ -42,9 +46,13 @@ const ProductCard = ({
         {showSizeOverlay && <SizeOverlay sizes={product.sizes} count={5} />}
       </div>
       <div className="product-card-content">
-        <h2 id={ariaLabelledby} className="product-card-title">
+        <HeadingElement
+          ariaLabelledby={ariaLabelledby}
+          as={as}
+          className="product-card-title"
+        >
           {product.productName}
-        </h2>
+        </HeadingElement>
         {children}
       </div>
     </article>

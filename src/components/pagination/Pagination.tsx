@@ -8,7 +8,7 @@ import IconBtn from '../IconBtn';
 import './_pagination.scss';
 
 type PaginationProps = {
-  ariaDescribedby: string;
+  ariaText: string;
   headingRef: RefElementType;
   page: number;
   totalBtns: number;
@@ -16,7 +16,7 @@ type PaginationProps = {
 };
 
 const Pagination = ({
-  ariaDescribedby,
+  ariaText,
   headingRef,
   page,
   totalBtns,
@@ -47,7 +47,7 @@ const Pagination = ({
       ariaLabel={language.pagination}
       className="pagination"
     >
-      <ul className="pagination-btn-list" aria-describedby={ariaDescribedby}>
+      <ul className="pagination-btn-list" aria-describedby={ariaText}>
         <li>
           <IconBtn
             iconName={IconName.ChevronsLeft}

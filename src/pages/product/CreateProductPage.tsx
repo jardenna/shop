@@ -11,7 +11,6 @@ const CreateProductPage = () => {
     subCategories && (
       <AdminPageContainer
         heading={language.createNewProduct}
-        onReset={() => refetch()}
         ariaLabelledby="create-product"
       >
         <ProductForm

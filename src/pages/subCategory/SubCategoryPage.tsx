@@ -52,7 +52,6 @@ const SubCategoryPage = () => {
       heading={language.subCategories}
       linkText={language.createNewCategory}
       linkTo={AdminPath.AdminSubCategoryCreate}
-      onReset={() => refetch()}
       variant="medium"
       ariaLabelledby="sub-categories-list"
     >

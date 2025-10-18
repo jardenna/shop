@@ -88,7 +88,7 @@ const CollectionPage = () => {
 
   const src = `/images/banners/${category}_banner`;
   const altText = `${category}BannerAltText`;
-  const ariaDescribedby = 'result-info';
+  const ariaText = 'product-results-status';
   const filtersCount = getFilterSummary(filterValues);
 
   const isShowingAll = productsPerPage >= productCount && productCount > 0;
@@ -187,46 +187,48 @@ const CollectionPage = () => {
               language={language}
             />
           </div>
-          <ErrorBoundary
-            FallbackComponent={ErrorBoundaryFallback}
-            onReset={() => refetch()}
-          >
-            <div className="collection-page-content">
-              {!isMobileSize && (
-                <Picture
-                  src={`${src}.jpg`}
-                  srcSet={`${src}.avif`}
-                  alt={language[altText]}
-                />
-              )}
-              {products && (
-                <ProductToolbar
-                  onSetDisplay={setProductView}
-                  displayControlList={productViewIconList}
-                  isActive={productView}
-                  onClearSingleFilter={onClearSingleFilter}
-                  filtersCount={filtersCount}
-                  onChange={onFilterChange}
-                  values={filterValues}
-                  availableBrands={products.availableBrands}
-                  availableSizes={sortSizesDynamic(products.availableSizes)}
-                  colors={sortedTranslatedColors}
-                  onRemoveFilterTag={onRemoveFilterTag}
-                  onClearAllFilters={onClearAllFilters}
-                  productCount={productCount}
-                  infoText={infoText}
-                  ariaDescribedby={ariaDescribedby}
-                  announce={announce}
-                  productsLoadedText={productsLoadedText}
-                />
-              )}
-              {isLoading && <SkeletonCardList count={productsPerPage} />}
-              <section
-                className={`product-card-list ${productView === 'list' && !isSmallMobileSize ? 'list' : ''}`}
+          <div className="collection-page-content">
+            {!isMobileSize && (
+              <Picture
+                src={`${src}.jpg`}
+                srcSet={`${src}.avif`}
+                alt={language[altText]}
+              />
+            )}
+            {products && (
+              <ProductToolbar
+                onReset={() => refetch()}
+                onSetDisplay={setProductView}
+                displayControlList={productViewIconList}
+                isActive={productView}
+                onClearSingleFilter={onClearSingleFilter}
+                filtersCount={filtersCount}
+                onChange={onFilterChange}
+                values={filterValues}
+                availableBrands={products.availableBrands}
+                availableSizes={sortSizesDynamic(products.availableSizes)}
+                colors={sortedTranslatedColors}
+                onRemoveFilterTag={onRemoveFilterTag}
+                onClearAllFilters={onClearAllFilters}
+                productCount={productCount}
+                infoText={infoText}
+                ariaText={ariaText}
+                announce={announce}
+                productsLoadedText={productsLoadedText}
+              />
+            )}
+            {isLoading && <SkeletonCardList count={productsPerPage} />}
+            <section
+              className={`product-card-list ${productView === 'list' && !isSmallMobileSize ? 'list' : ''}`}
+            >
+              <ErrorBoundary
+                FallbackComponent={ErrorBoundaryFallback}
+                onReset={() => refetch()}
               >
                 {products &&
                   products.products.map((product) => (
                     <ProductCard
+                      as="h3"
                       key={product.id}
                       linkTo={
                         categoryId ? product.id : `allProducts/${product.id}`
@@ -241,9 +243,9 @@ const CollectionPage = () => {
                       )}
                     </ProductCard>
                   ))}
-              </section>
-            </div>
-          </ErrorBoundary>
+              </ErrorBoundary>
+            </section>
+          </div>
         </div>
         <section
           className="product-navigation"
@@ -253,7 +255,7 @@ const CollectionPage = () => {
             totalBtns={totalBtns}
             headingRef={headingRef}
             page={page}
-            ariaDescribedby={ariaDescribedby}
+            ariaText={ariaText}
             handlePagination={handlePagination}
           />
           <ProductCountSelect
@@ -268,7 +270,7 @@ const CollectionPage = () => {
             }}
             options={options}
           />
-          <p id={ariaDescribedby}>
+          <p id={ariaText}>
             {isShowingAll
               ? `${language.showingAllProducts} (${productCount})`
               : language.productPerPage}

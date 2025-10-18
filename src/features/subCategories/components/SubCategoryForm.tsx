@@ -1,3 +1,4 @@
+import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate } from 'react-router';
 import type {
   Category,
@@ -5,6 +6,7 @@ import type {
   SubCategoryResponse,
 } from '../../../app/api/apiTypes/adminApiTypes';
 import useDatePicker from '../../../components/datePicker/useDatePicker';
+import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/form/Form';
 import Input from '../../../components/formElements/Input';
@@ -29,11 +31,13 @@ type SubCategoryFormProps = {
   parentCategories: Category[];
   popupMessage: string;
   selectedCategory: SubCategoryResponse | null;
+  onReset?: () => void;
 };
 
 const SubCategoryForm = ({
   selectedCategory,
   id,
+  onReset,
   parentCategories,
   popupMessage,
 }: SubCategoryFormProps) => {
@@ -125,64 +129,66 @@ const SubCategoryForm = ({
   }
 
   return (
-    <Form
-      onSubmit={onSubmit}
-      submitBtnLabel={id ? language.save : language.create}
-      onCancel={handleGoback}
-      isLoading={isLoading || isCreateLoading}
-    >
-      <FieldSet legendText={language.categories}>
-        <Selectbox
-          id="category"
-          defaultValue={{
-            label: values.category
-              ? getlowerCaseFirstLetter(values.category, language)
-              : values.category,
-            value: values.category,
-          }}
-          options={parentCategoriesOptions}
-          components={{ Option: StatusOptions }}
-          onChange={(selectedOptions: OptionType) => {
-            handleSelectStatus('category', selectedOptions);
-          }}
-          name="category"
-          labelText={language.mainCategoryName}
-          errorText={language[errors.category]}
-          required
-        />
-        <Input
-          onChange={onChange}
-          value={values.translationKey}
-          id="translationKey"
-          name="translationKey"
-          labelText={language.translationKey}
-          errorText={language[errors.translationKey]}
-          inputInfo={language.translationKeyHelpText}
-          required
-        />
-        <SharedCategoryInputs
-          labelText={language.categoryStatus}
-          categoryNamevalue={values.subCategoryName}
-          categoryNameId="subCategoryName"
-          categoryNameErrorText={language[errors.subCategoryName]}
-          categoryNameLabelText={language.categoryName}
-          onCategoryNameChange={onChange}
-          allowedUpdateCategory
-          defaultStatusValue={{
-            label: getlowerCaseFirstLetter(values.categoryStatus, language),
-            value: values.categoryStatus,
-          }}
-          onSelectStatus={(selectedOptions: OptionType) => {
-            handleSelectStatus('categoryStatus', selectedOptions);
-          }}
-          status={values.categoryStatus}
-          onSelectDate={handleDaySelect}
-          selectedDate={selectedDate}
-          timeValue={timeValue}
-          onTimeChange={handleTimeChange}
-        />
-      </FieldSet>
-    </Form>
+    <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
+      <Form
+        onSubmit={onSubmit}
+        submitBtnLabel={id ? language.save : language.create}
+        onCancel={handleGoback}
+        isLoading={isLoading || isCreateLoading}
+      >
+        <FieldSet legendText={language.categories}>
+          <Selectbox
+            id="category"
+            defaultValue={{
+              label: values.category
+                ? getlowerCaseFirstLetter(values.category, language)
+                : values.category,
+              value: values.category,
+            }}
+            options={parentCategoriesOptions}
+            components={{ Option: StatusOptions }}
+            onChange={(selectedOptions: OptionType) => {
+              handleSelectStatus('category', selectedOptions);
+            }}
+            name="category"
+            labelText={language.mainCategoryName}
+            errorText={language[errors.category]}
+            required
+          />
+          <Input
+            onChange={onChange}
+            value={values.translationKey}
+            id="translationKey"
+            name="translationKey"
+            labelText={language.translationKey}
+            errorText={language[errors.translationKey]}
+            inputInfo={language.translationKeyHelpText}
+            required
+          />
+          <SharedCategoryInputs
+            labelText={language.categoryStatus}
+            categoryNamevalue={values.subCategoryName}
+            categoryNameId="subCategoryName"
+            categoryNameErrorText={language[errors.subCategoryName]}
+            categoryNameLabelText={language.categoryName}
+            onCategoryNameChange={onChange}
+            allowedUpdateCategory
+            defaultStatusValue={{
+              label: getlowerCaseFirstLetter(values.categoryStatus, language),
+              value: values.categoryStatus,
+            }}
+            onSelectStatus={(selectedOptions: OptionType) => {
+              handleSelectStatus('categoryStatus', selectedOptions);
+            }}
+            status={values.categoryStatus}
+            onSelectDate={handleDaySelect}
+            selectedDate={selectedDate}
+            timeValue={timeValue}
+            onTimeChange={handleTimeChange}
+          />
+        </FieldSet>
+      </Form>
+    </ErrorBoundary>
   );
 };
 

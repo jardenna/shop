@@ -25,11 +25,11 @@ const UpdateSubCategoryPage = () => {
         <AdminPageContainer
           variant="small"
           heading={`${language.update} ${language.category} ${category.subCategoryName}`}
-          onReset={() => refetch()}
           ariaLabelledby={category.subCategoryName}
         >
           <SubCategoryForm
             selectedCategory={category}
+            onReset={() => refetch()}
             id={params.id || ''}
             parentCategories={allCategories.categories}
             popupMessage={language.categoryUpdated}

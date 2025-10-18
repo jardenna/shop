@@ -5,11 +5,11 @@ import { FilterKeys } from '../../../pages/CollectionPage';
 import { FiltersCountResult, InputChangeHandler } from '../../../types/types';
 import useLanguage from '../../language/useLanguage';
 import FilterPanel from './FilterPanel';
-import PaginationInfoText from './PaginationInfoText';
+import ProductsLiveAnnouncement from './ProductsLiveAnnouncement';
 
 type ProductToolbar = {
   announce: boolean;
-  ariaDescribedby: string;
+  ariaText: string;
   availableBrands: string[];
   availableSizes: Size[];
   colors: string[];
@@ -24,6 +24,7 @@ type ProductToolbar = {
   onClearAllFilters: () => void;
   onClearSingleFilter: (filterKey: FilterKeys) => void;
   onRemoveFilterTag: (key: FilterKeys, value: string) => void;
+  onReset: () => void;
   onSetDisplay: (id: string) => void;
 };
 
@@ -41,25 +42,25 @@ const ProductToolbar = ({
   isActive,
   colors,
   onRemoveFilterTag,
-  ariaDescribedby,
+  ariaText,
   infoText,
   announce,
+  onReset,
   productsLoadedText,
 }: ProductToolbar) => {
   const { language } = useLanguage();
 
   return (
-    <section className="product-toolbar">
+    <section className="product-toolbar" aria-labelledby={ariaText}>
       <DisplayControls
         onSetDisplay={onSetDisplay}
         displayControlList={displayControlList}
         isActive={isActive}
-        ariaLabel={language.productDisplay}
       />
-      <PaginationInfoText
+      <ProductsLiveAnnouncement
         infoText={infoText}
         announce={announce}
-        ariaDescribedby={ariaDescribedby}
+        ariaText={ariaText}
         productsLoadedText={productsLoadedText}
       />
       <FilterPanel
@@ -74,6 +75,7 @@ const ProductToolbar = ({
         onRemoveFilterTag={onRemoveFilterTag}
         onClearAllFilters={onClearAllFilters}
         productCount={productCount}
+        onReset={onReset}
       />
     </section>
   );

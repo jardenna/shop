@@ -1,7 +1,9 @@
+import { ErrorBoundary } from 'react-error-boundary';
 import type {
   BaseProduct,
   Size,
 } from '../../../app/api/apiTypes/sharedApiTypes';
+import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/form/Form';
 import ControlGroupList from '../../../components/formElements/controlGroup/ControlGroupList';
@@ -16,10 +18,11 @@ import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import validateShopProduct from '../../../utils/validation/validateShopProduct';
 import useLanguage from '../../language/useLanguage';
 
-type ShopProductFormProps = {
+type SingleProductFormProps = {
   colorList: ColorOption[];
   displaySizeList: Size[];
   selectedProduct: BaseProduct;
+  onReset: () => void;
 };
 
 export type InitialShopValues = {
@@ -27,11 +30,12 @@ export type InitialShopValues = {
   size: string;
 };
 
-const ShopProductForm = ({
+const SingleProductForm = ({
   selectedProduct,
   colorList,
   displaySizeList,
-}: ShopProductFormProps) => {
+  onReset,
+}: SingleProductFormProps) => {
   const { language } = useLanguage();
 
   const { sizes, categoryName, colors } = selectedProduct;
@@ -62,43 +66,45 @@ const ShopProductForm = ({
   const sortedTranslatedColors = sortColorsByTranslation(colors, language);
 
   return (
-    <Form onSubmit={onSubmit} submitBtnLabel={language.addToBag}>
-      <FieldSet legendText={language.productVariants}>
-        <ControlGroupList
-          initialChecked={values.color}
-          type="radio"
-          className="color-list"
-          required={values.color === ''}
-          onChange={onChange}
-          options={sortedTranslatedColors}
-          name="color"
-          variant="large"
-          iconSize="5em"
-          iconName={resolveIconName(categoryName)}
-          groupTitle={{
-            title: titleColor,
-            id: 'choose-product-color',
-            errorText: language[errors.color],
-          }}
-        />
+    <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
+      <Form onSubmit={onSubmit} submitBtnLabel={language.addToBag}>
+        <FieldSet legendText={language.productVariants}>
+          <ControlGroupList
+            initialChecked={values.color}
+            type="radio"
+            className="color-list"
+            required={values.color === ''}
+            onChange={onChange}
+            options={sortedTranslatedColors}
+            name="color"
+            variant="large"
+            iconSize="5em"
+            iconName={resolveIconName(categoryName)}
+            groupTitle={{
+              title: titleColor,
+              id: 'choose-product-color',
+              errorText: language[errors.color],
+            }}
+          />
 
-        <ControlGroupList
-          type="radio"
-          initialChecked={values.size}
-          required={values.size === ''}
-          disabledList={sizes}
-          onChange={onChange}
-          options={displaySizeList}
-          name="size"
-          groupTitle={{
-            title: titleSize,
-            id: 'choose-product-size',
-            errorText: language[errors.size],
-          }}
-        />
-      </FieldSet>
-    </Form>
+          <ControlGroupList
+            type="radio"
+            initialChecked={values.size}
+            required={values.size === ''}
+            disabledList={sizes}
+            onChange={onChange}
+            options={displaySizeList}
+            name="size"
+            groupTitle={{
+              title: titleSize,
+              id: 'choose-product-size',
+              errorText: language[errors.size],
+            }}
+          />
+        </FieldSet>
+      </Form>
+    </ErrorBoundary>
   );
 };
 
-export default ShopProductForm;
+export default SingleProductForm;

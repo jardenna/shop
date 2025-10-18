@@ -2,6 +2,7 @@ import { MainCategoryNames } from '../app/api/apiTypes/sharedApiTypes';
 import { useGetPublishedCategoriesQuery } from '../features/categories/categoriyApiSlice';
 import useLanguage from '../features/language/useLanguage';
 import MainCollections from '../features/shop/components/MainCollections';
+
 import { MainCollectionsBaseProps } from '../features/shop/components/MainCollectionsItem';
 import { ShopPath } from '../layout/nav/enums';
 import { getlowerCaseFirstLetter } from '../utils/utils';
@@ -23,13 +24,17 @@ const CollectionLandingPage = () => {
 
   const categoryOrder = ['Kids', 'Men', 'Women'];
 
-  const { data: publishedCategories } = useGetPublishedCategoriesQuery();
+  const {
+    data: publishedCategories,
+    isLoading,
+    refetch,
+  } = useGetPublishedCategoriesQuery();
 
   const sortedCategories = (
     publishedCategories?.length ? [...publishedCategories] : ['Women']
   ).sort((a, b) => categoryOrder.indexOf(a) - categoryOrder.indexOf(b));
 
-  const mainCollectionsList: MainCollectionsBaseProps[] = sortedCategories.map(
+  const mainCollectionList: MainCollectionsBaseProps[] = sortedCategories.map(
     (item) => ({
       title: getlowerCaseFirstLetter(item, language),
       imgList: collectionImages[item],
@@ -41,7 +46,11 @@ const CollectionLandingPage = () => {
 
   return (
     <MainPageContainer heading="collection">
-      <MainCollections mainCollectionList={mainCollectionsList} />
+      <MainCollections
+        mainCollectionList={mainCollectionList}
+        onReset={refetch}
+        isLoading={isLoading}
+      />
     </MainPageContainer>
   );
 };

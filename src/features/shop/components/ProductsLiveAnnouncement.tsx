@@ -1,21 +1,27 @@
 import VisuallyHidden from '../../../components/VisuallyHidden';
+import HeadingElement from '../../../layout/HeadingElement';
 
-type PaginationInfoTextProps = {
+type ProductsLiveAnnouncementProps = {
   announce: boolean;
-  ariaDescribedby: string;
+  ariaText: string;
   infoText: string;
   productsLoadedText: string;
 };
-const PaginationInfoText = ({
+
+const ProductsLiveAnnouncement = ({
   announce,
-  ariaDescribedby,
+  ariaText,
   infoText,
   productsLoadedText,
-}: PaginationInfoTextProps) => (
+}: ProductsLiveAnnouncementProps) => (
   <>
-    <p id={ariaDescribedby} aria-live="polite">
+    <HeadingElement
+      ariaLabelledby={ariaText}
+      ariaLive="polite"
+      className="products-heading"
+    >
       {infoText}
-    </p>
+    </HeadingElement>
     {announce && (
       <VisuallyHidden as="p">
         <span aria-live="polite">
@@ -26,4 +32,4 @@ const PaginationInfoText = ({
   </>
 );
 
-export default PaginationInfoText;
+export default ProductsLiveAnnouncement;
