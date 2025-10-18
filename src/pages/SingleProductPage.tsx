@@ -1,13 +1,11 @@
-import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import type { AccordionList } from '../components/accordion/Accordion';
 import Accordion from '../components/accordion/Accordion';
-import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
-import FavoriteHeart from '../components/favorites/FavoriteHeart';
 import ImgList from '../components/ImgList';
 import SkeletonSinglePage from '../components/skeleton/skeletonSinglePage/SkeletonSinglePage';
 import useAuth from '../features/auth/hooks/useAuth';
 import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
+import SingleProductHeader from '../features/currency/components/SingleProductHeader';
 import useLanguage from '../features/language/useLanguage';
 import InStock from '../features/shop/components/InStock';
 import NotifyMe from '../features/shop/components/NotifyMe';
@@ -18,7 +16,6 @@ import ReviewStars from '../features/shop/components/reviews/ReviewStars';
 import { getStarsArray } from '../features/shop/components/reviews/reviewsUtil.';
 import SingleProductForm from '../features/shop/components/SingleProductForm';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
-import LayoutElement from '../layout/LayoutElement';
 import MetaTags from '../layout/nav/MetaTags';
 import { getColorOptions } from '../utils/colorUtils';
 import { getDisplaySizes } from '../utils/sizeUtils';
@@ -108,27 +105,12 @@ const SingleProductPage = () => {
       {product && (
         <div className="single-product-container">
           <ImgList images={product.images} onReset={() => refetch} />
-
           <section
             className="single-product"
             aria-labelledby={`product-${product.id}-title`}
           >
             <div className="single-product-content">
-              <ErrorBoundary
-                FallbackComponent={ErrorBoundaryFallback}
-                onReset={() => refetch}
-              >
-                <p>
-                  {language.brand}: {product.brand}
-                </p>
-                <LayoutElement className="single-product-header">
-                  <h1 id={`product-${product.id}-title`}>
-                    {product.productName}
-                  </h1>
-                  <FavoriteHeart id={product.id} />
-                </LayoutElement>
-              </ErrorBoundary>
-
+              <SingleProductHeader onReset={() => refetch} product={product} />
               <ReviewStars
                 stars={getStarsArray(product.rating)}
                 rating={product.rating}
@@ -152,7 +134,6 @@ const SingleProductPage = () => {
               {id && currentUser && (
                 <ReviewsForm productId={id} onReset={() => refetch} />
               )}
-
               <SingleProductForm
                 onReset={() => refetch}
                 selectedProduct={product}
