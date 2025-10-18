@@ -228,8 +228,8 @@ const CollectionPage = () => {
                 {products &&
                   products.products.map((product) => (
                     <ProductCard
+                      as="h3"
                       key={product.id}
-                      tag="h3"
                       linkTo={
                         categoryId ? product.id : `allProducts/${product.id}`
                       }

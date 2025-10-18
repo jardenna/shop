@@ -1,11 +1,11 @@
-import type { ElementType, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { Link } from 'react-router';
 import type { ProductPreview } from '../../../app/api/apiTypes/shopApiTypes';
 import Badge from '../../../components/Badge';
 import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import Img from '../../../components/Img';
 import VisuallyHidden from '../../../components/VisuallyHidden';
-import LayoutElement from '../../../layout/LayoutElement';
+import HeadingElement, { HeadingTag } from '../../../layout/HeadingElement';
 import useLanguage from '../../language/useLanguage';
 import './ProductCard.styles.scss';
 import SizeOverlay from './SizeOverlay';
@@ -14,16 +14,16 @@ type ProductCardProps = {
   children: ReactNode;
   linkTo: string;
   product: ProductPreview;
+  as?: HeadingTag;
   showSizeOverlay?: boolean;
-  tag?: ElementType;
 };
 
 const ProductCard = ({
   showSizeOverlay,
   product,
   linkTo,
+  as,
   children,
-  tag = 'h2',
 }: ProductCardProps) => {
   const { language } = useLanguage();
 
@@ -45,13 +45,13 @@ const ProductCard = ({
         {showSizeOverlay && <SizeOverlay sizes={product.sizes} count={5} />}
       </div>
       <div className="product-card-content">
-        <LayoutElement
-          as={tag}
+        <HeadingElement
           ariaLabelledby={ariaLabelledby}
+          as={as}
           className="product-card-title"
         >
           {product.productName}
-        </LayoutElement>
+        </HeadingElement>
         {children}
       </div>
     </article>
