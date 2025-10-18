@@ -1,30 +1,23 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
-import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { useAppDispatch } from '../../../app/hooks';
 import { ShopPath } from '../../../layout/nav/enums';
 import { useCheckAuthQuery, useLogoutMutation } from '../authApiSlice';
-import { selectUser, setUser } from '../authSlice';
+import { setUser } from '../authSlice';
 
 const useAuth = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const currentUser = useAppSelector(selectUser);
-  const [sendLogout, { isSuccess }] = useLogoutMutation();
 
   const {
     data: userProfile,
     isLoading,
-    error,
     refetch,
   } = useCheckAuthQuery(undefined, {
     refetchOnMountOrArgChange: true,
   });
 
-  useEffect(() => {
-    if (isSuccess) {
-      navigate(ShopPath.Root);
-    }
-  }, [isSuccess, navigate]);
+  const [sendLogout, { isSuccess: logoutSuccess }] = useLogoutMutation();
 
   useEffect(() => {
     if (!isLoading) {
@@ -34,11 +27,25 @@ const useAuth = () => {
         dispatch(setUser(null));
       }
     }
-  }, [userProfile, isLoading, error, dispatch]);
+  }, [userProfile, isLoading, dispatch]);
+
+  useEffect(() => {
+    if (logoutSuccess) {
+      navigate(ShopPath.Root, { replace: true });
+    }
+  }, [logoutSuccess, navigate]);
+
+  const currentUser = userProfile?.user ?? null;
+
+  const role = currentUser?.role ?? null;
+  const isAdmin = !!currentUser?.isAdmin;
+  const isEmployee = role === 'Employee';
 
   return {
-    currentUser: currentUser?.user,
-    isAdmin: currentUser?.user.isAdmin,
+    currentUser,
+    role,
+    isAdmin,
+    isEmployee,
     isLoading,
     logout: sendLogout,
     onReset: refetch,

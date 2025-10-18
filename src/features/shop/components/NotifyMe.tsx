@@ -16,7 +16,7 @@ export type InitialNotifyValues = {
 };
 
 type NotifiMeProps = {
-  currentUser: UserResponse | undefined;
+  currentUser: UserResponse | null;
   id: string;
   options: string[];
   sizesIsRequered?: boolean;

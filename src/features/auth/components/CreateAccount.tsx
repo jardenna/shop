@@ -16,7 +16,7 @@ import AuthForm from './AuthForm';
 export type CreateAccountProps = {
   navigateTo: string;
   canAssignRoles?: boolean;
-  currentUser?: UserResponse;
+  currentUser?: UserResponse | null;
 };
 
 export type InitialState = AuthRequest & {

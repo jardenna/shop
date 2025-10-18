@@ -49,9 +49,7 @@ const AdminLayout = () => {
         onLogout={handleLogout}
         btnLabel={language.logout}
         onReset={() => onReset()}
-        welcomeMessage={
-          currentUser ? `${language.welcome} ${currentUser.username}` : null
-        }
+        welcomeMessage={`${language.welcome} ${currentUser?.username}`}
         isMobileSize={isMobileSize}
       />
       <main className="main">
