@@ -147,10 +147,13 @@ const CollectionPage = () => {
       display: 'list',
     },
   ];
+  const selectProductCountList = ['8', '16'];
 
   const options = [
-    { value: '8', label: '8' },
-    { value: '16', label: '16' },
+    ...selectProductCountList.map((count) => ({
+      value: count,
+      label: count,
+    })),
     { value: productCount.toString(), label: language.all },
   ];
 
