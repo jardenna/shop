@@ -8,7 +8,6 @@ type DisplayControls = {
 };
 
 type DisplayControlsProps = {
-  ariaLabel: string;
   displayControlList: DisplayControls[];
   isActive: string;
   onSetDisplay: (id: string) => void;
@@ -18,9 +17,8 @@ const DisplayControls = ({
   displayControlList,
   onSetDisplay,
   isActive,
-  ariaLabel,
 }: DisplayControlsProps) => (
-  <div className="display-controls" aria-label={ariaLabel}>
+  <div className="display-controls">
     {displayControlList.map(({ display, iconName, ariaLabel }) => (
       <IconBtn
         key={display}

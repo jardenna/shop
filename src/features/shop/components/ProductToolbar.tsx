@@ -51,12 +51,11 @@ const ProductToolbar = ({
   const { language } = useLanguage();
 
   return (
-    <section className="product-toolbar">
+    <section className="product-toolbar" aria-labelledby={ariaDescribedby}>
       <DisplayControls
         onSetDisplay={onSetDisplay}
         displayControlList={displayControlList}
         isActive={isActive}
-        ariaLabel={language.productDisplay}
       />
       <ProductsLiveAnnouncement
         infoText={infoText}
