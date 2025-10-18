@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
@@ -103,17 +103,28 @@ const CollectionPage = () => {
   const ofText = language.of;
   const infoText = `${showingText} ${startItem}–${endItem} ${ofText} ${productCount} ${productsText}.`;
 
+  const hasMounted = useRef(false);
+  const [announce, setAnnounce] = useState(false);
+  const [shouldScroll, setShouldScroll] = useState(false);
+
+  useLayoutEffect(() => {
+    if (!shouldScroll) {
+      return;
+    }
+    headingRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setShouldScroll(false);
+  }, [shouldScroll]);
+
   const handleSelectCount = (option: PageCountOptions) => {
     const newCount = Number(option.value);
     setProductsPerPage(newCount);
+    setShouldScroll(true);
 
     // Reset page if current page exceeds total backend pages
     if (page > totalBtns) {
       resetPage();
     }
   };
-  const hasMounted = useRef(false);
-  const [announce, setAnnounce] = useState(false);
 
   useEffect(() => {
     if (hasMounted.current) {
@@ -131,6 +142,7 @@ const CollectionPage = () => {
 
   const handlePagination = (id: number) => {
     setPage(id);
+    setShouldScroll(true);
   };
   const productsLoadedText = `${language.page} ${page} ${language.of} ${totalBtns} ${language.loaded}`;
   const productViewIconList = [
@@ -264,7 +276,6 @@ const CollectionPage = () => {
         >
           <Pagination
             totalBtns={totalBtns}
-            headingRef={headingRef}
             page={page}
             ariaText={ariaText}
             handlePagination={handlePagination}
@@ -274,7 +285,6 @@ const CollectionPage = () => {
             legendText={language.displayOptions}
             onSelectCount={handleSelectCount}
             isOptionDisabled={isOptionDisabled}
-            headingRef={headingRef}
             defaultValue={{
               value: productsPerPage.toString(),
               label: productsPerPage.toString(),
