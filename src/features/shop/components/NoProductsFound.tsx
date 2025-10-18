@@ -2,21 +2,13 @@ import Button from '../../../components/Button';
 
 type NoProductsFound = {
   noProductText: string;
-  openFilterPanel?: () => void;
   resetFilters: () => void;
 };
 
-const NoProductsFound = ({
-  openFilterPanel,
-  resetFilters,
-  noProductText,
-}: NoProductsFound) => (
-  <div role="status" className="no-results">
+const NoProductsFound = ({ resetFilters, noProductText }: NoProductsFound) => (
+  <div role="status">
     <p>{noProductText}</p>
-    <div className="no-results-actions">
-      <Button onClick={openFilterPanel}>Åbn filtrene</Button>
-      <Button onClick={resetFilters}>Nulstil</Button>
-    </div>
+    <Button onClick={resetFilters}>Nulstil</Button>
   </div>
 );
 
