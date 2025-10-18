@@ -2,13 +2,18 @@ import Button from '../../../components/Button';
 
 type NoProductsFound = {
   noProductText: string;
+  resetBtnText: string;
   resetFilters: () => void;
 };
 
-const NoProductsFound = ({ resetFilters, noProductText }: NoProductsFound) => (
+const NoProductsFound = ({
+  resetFilters,
+  noProductText,
+  resetBtnText,
+}: NoProductsFound) => (
   <div role="status">
     <p>{noProductText}</p>
-    <Button onClick={resetFilters}>Nulstil</Button>
+    <Button onClick={resetFilters}>{resetBtnText}</Button>
   </div>
 );
 

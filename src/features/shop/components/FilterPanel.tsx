@@ -103,9 +103,13 @@ const FilterPanel = ({
     <TogglePanel
       ariaHasPopup="dialog"
       footer={{
-        primaryBtnText: `${language.show} ${productCount} ${language.itemLabel}`,
+        primaryBtnText:
+          productCount > 0
+            ? `${language.show} ${productCount} ${language.itemLabel}`
+            : language.noItemsToShow,
         secondaryAction: onClearAllFilters,
         secondaryBtnText: language.clearAllFilters,
+        primaryBtnDisabled: productCount === 0,
       }}
       ariaControls="filter-products"
       role="dialog"
@@ -124,8 +128,8 @@ const FilterPanel = ({
         className="filter-panel-content"
         aria-labelledby={ariaLabelledby}
       >
-        <LayoutElement>
-          <h2 id={ariaLabelledby}>{language.filter}</h2>
+        <LayoutElement className="filter-panel-heading">
+          <h2 id={ariaLabelledby}>{language.filterHeading}</h2>
         </LayoutElement>
 
         <ToggleContent btnVariant={BtnVariant.Default}>

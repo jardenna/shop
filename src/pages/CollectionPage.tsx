@@ -265,6 +265,7 @@ const CollectionPage = () => {
                 <NoProductsFound
                   noProductText={language.noProductResult}
                   resetFilters={onClearAllFilters}
+                  resetBtnText={language.clearAllFilters}
                 />
               )}
             </section>
