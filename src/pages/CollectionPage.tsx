@@ -14,6 +14,7 @@ import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import useLanguage from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
 import CollectionPageHeader from '../features/shop/components/CollectionPageHeader';
+import NoProductsFound from '../features/shop/components/NoProductsFound';
 import ProductCard from '../features/shop/components/ProductCard';
 import ProductCardGridContent from '../features/shop/components/ProductCardGridContent';
 import ProductCardListContent from '../features/shop/components/ProductCardListContent';
@@ -221,29 +222,36 @@ const CollectionPage = () => {
             <section
               className={`product-card-list ${productView === 'list' && !isSmallMobileSize ? 'list' : ''}`}
             >
-              <ErrorBoundary
-                FallbackComponent={ErrorBoundaryFallback}
-                onReset={() => refetch()}
-              >
-                {products &&
-                  products.products.map((product) => (
-                    <ProductCard
-                      as="h3"
-                      key={product.id}
-                      linkTo={
-                        categoryId ? product.id : `allProducts/${product.id}`
-                      }
-                      product={product}
-                      showSizeOverlay={productView !== 'list'}
-                    >
-                      {productView === 'list' ? (
-                        <ProductCardListContent product={product} />
-                      ) : (
-                        <ProductCardGridContent product={product} />
-                      )}
-                    </ProductCard>
-                  ))}
-              </ErrorBoundary>
+              {productCount > 0 ? (
+                <ErrorBoundary
+                  FallbackComponent={ErrorBoundaryFallback}
+                  onReset={() => refetch()}
+                >
+                  {products &&
+                    products.products.map((product) => (
+                      <ProductCard
+                        as="h3"
+                        key={product.id}
+                        linkTo={
+                          categoryId ? product.id : `allProducts/${product.id}`
+                        }
+                        product={product}
+                        showSizeOverlay={productView !== 'list'}
+                      >
+                        {productView === 'list' ? (
+                          <ProductCardListContent product={product} />
+                        ) : (
+                          <ProductCardGridContent product={product} />
+                        )}
+                      </ProductCard>
+                    ))}
+                </ErrorBoundary>
+              ) : (
+                <NoProductsFound
+                  noProductText={language.noProductResult}
+                  resetFilters={onClearAllFilters}
+                />
+              )}
             </section>
           </div>
         </div>

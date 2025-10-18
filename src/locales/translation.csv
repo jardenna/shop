@@ -233,6 +233,7 @@ noImagesProvided;No images provided;Ingen billeder
 noOptions;No options;Ingen valgmuligheder
 noPassword;Please enter a password;Indtast venligst en adgangskode
 noProduct;Product not found;Produkt blev ikke fundet
+noProductResult;No products match your filters. Try removing some filters or reset to see all products again.;Der er ingen produkter, der matcher dine filtre. Prøv at fjerne nogle filtre eller nulstil for at se alle produkter igen.
 noReview;Be the first to review this product;Bliv den første til at anmelde dette produkt
 notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 
 notAuthorizedNoToken;Not authorized, no token;Ikke autoriseret, ingen token
