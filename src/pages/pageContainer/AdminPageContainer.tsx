@@ -1,6 +1,4 @@
 import type { ReactNode } from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
-import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import PageHeader from '../../components/pageHeader/PageHeader';
 import MetaTags from '../../layout/nav/MetaTags';
 
@@ -11,7 +9,6 @@ type AdminPageContainerProps = {
   linkText?: string;
   linkTo?: string;
   variant?: 'small' | 'medium' | 'large';
-  onReset?: () => void;
 };
 
 const AdminPageContainer = ({
@@ -19,7 +16,6 @@ const AdminPageContainer = ({
   heading,
   linkText,
   linkTo,
-  onReset,
   variant = 'large',
   ariaLabelledby,
 }: AdminPageContainerProps) => {
@@ -37,14 +33,7 @@ const AdminPageContainer = ({
         linkTo={linkTo}
         ariaLabelledby={ariaTitle}
       />
-      <div className="page-card">
-        <ErrorBoundary
-          FallbackComponent={ErrorBoundaryFallback}
-          onReset={onReset}
-        >
-          {children}
-        </ErrorBoundary>
-      </div>
+      <div className="page-card">{children}</div>
     </section>
   );
 };

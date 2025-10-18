@@ -80,7 +80,6 @@ const ViewProductPage = () => {
           heading={product.productName}
           linkText={language.createNewProduct}
           linkTo={AdminPath.AdminProductCreate}
-          onReset={() => refetch()}
           ariaLabelledby="product"
         >
           <section className="three-col admin-card-container">

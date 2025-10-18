@@ -98,7 +98,6 @@ const UserPage = () => {
       heading={language.users}
       linkText={isAdmin ? language.createNewUser : undefined}
       linkTo={isAdmin ? AdminPath.AdminUserCreate : undefined}
-      onReset={() => refetch()}
       variant="medium"
       ariaLabelledby="users"
     >

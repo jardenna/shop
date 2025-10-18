@@ -43,7 +43,6 @@ const CategoryPage = () => {
       heading={language.categories}
       linkText={language.createNewCategory}
       linkTo={AdminPath.AdminCategoryCreate}
-      onReset={() => refetch()}
       variant="medium"
       ariaLabelledby="categories-list"
     >

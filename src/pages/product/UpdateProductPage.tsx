@@ -25,7 +25,6 @@ const UpdateProductPage = () => {
       {product && subCategories && (
         <AdminPageContainer
           heading={`${language.update} ${product.productName}`}
-          onReset={() => refetch()}
           ariaLabelledby="update-product"
         >
           <ProductForm

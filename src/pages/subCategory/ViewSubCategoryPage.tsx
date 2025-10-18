@@ -61,7 +61,6 @@ const ViewSubCategoryPage = () => {
           ariaLabelledby="sub-category"
           linkText={language.createNewCategory}
           linkTo={AdminPath.AdminSubCategoryCreate}
-          onReset={() => refetch()}
           variant="medium"
         >
           <CategoryCard

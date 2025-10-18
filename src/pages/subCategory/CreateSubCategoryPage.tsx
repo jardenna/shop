@@ -12,18 +12,13 @@ export type SubCategoryState = {
 
 const CreateSubCategoryPage = () => {
   const { language } = useLanguage();
-  const {
-    data: allCategories,
-    isLoading,
-    refetch,
-  } = useGetAllCategoriesQuery();
+  const { data: allCategories, isLoading } = useGetAllCategoriesQuery();
 
   return (
     <>
       {isLoading && <SkeletonForm count={4} />}
       <AdminPageContainer
         heading={language.createNewCategory}
-        onReset={() => refetch()}
         variant="small"
         ariaLabelledby="create-sub-category"
       >

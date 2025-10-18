@@ -24,12 +24,12 @@ const UpdateCategoryPage = () => {
       {category && (
         <AdminPageContainer
           heading={`${language.updateCategory} ${category.categoryName}`}
-          onReset={() => refetch()}
           variant="small"
           ariaLabelledby="update-category"
         >
           <CategoryForm
             selectedCategory={category}
+            onReset={() => refetch()}
             id={params.id || ''}
             allowedUpdateCategory={!!isAdmin}
             popupMessage={language.categoryUpdated}
