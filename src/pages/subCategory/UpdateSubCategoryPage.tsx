@@ -4,6 +4,7 @@ import { useGetAllCategoriesQuery } from '../../features/categories/categoriyApi
 import useLanguage from '../../features/language/useLanguage';
 import SubCategoryForm from '../../features/subCategories/components/SubCategoryForm';
 import { useGetSubCategoryByIdQuery } from '../../features/subCategories/subCategoryApiSlice';
+import { getlowerCaseFirstLetter } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const UpdateSubCategoryPage = () => {
@@ -24,7 +25,7 @@ const UpdateSubCategoryPage = () => {
       {allCategories && category && (
         <AdminPageContainer
           variant="small"
-          heading={`${language.update} ${language.category} ${category.subCategoryName}`}
+          heading={`${language.update} ${getlowerCaseFirstLetter(category.subCategoryName, language) || category.subCategoryName}`}
           ariaLabelledby={category.subCategoryName}
         >
           <SubCategoryForm
