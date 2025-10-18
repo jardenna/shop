@@ -187,43 +187,43 @@ const CollectionPage = () => {
               language={language}
             />
           </div>
-          <ErrorBoundary
-            FallbackComponent={ErrorBoundaryFallback}
-            onReset={() => refetch()}
-          >
-            <div className="collection-page-content">
-              {!isMobileSize && (
-                <Picture
-                  src={`${src}.jpg`}
-                  srcSet={`${src}.avif`}
-                  alt={language[altText]}
-                />
-              )}
-              {products && (
-                <ProductToolbar
-                  onReset={() => refetch()}
-                  onSetDisplay={setProductView}
-                  displayControlList={productViewIconList}
-                  isActive={productView}
-                  onClearSingleFilter={onClearSingleFilter}
-                  filtersCount={filtersCount}
-                  onChange={onFilterChange}
-                  values={filterValues}
-                  availableBrands={products.availableBrands}
-                  availableSizes={sortSizesDynamic(products.availableSizes)}
-                  colors={sortedTranslatedColors}
-                  onRemoveFilterTag={onRemoveFilterTag}
-                  onClearAllFilters={onClearAllFilters}
-                  productCount={productCount}
-                  infoText={infoText}
-                  ariaText={ariaText}
-                  announce={announce}
-                  productsLoadedText={productsLoadedText}
-                />
-              )}
-              {isLoading && <SkeletonCardList count={productsPerPage} />}
-              <section
-                className={`product-card-list ${productView === 'list' && !isSmallMobileSize ? 'list' : ''}`}
+          <div className="collection-page-content">
+            {!isMobileSize && (
+              <Picture
+                src={`${src}.jpg`}
+                srcSet={`${src}.avif`}
+                alt={language[altText]}
+              />
+            )}
+            {products && (
+              <ProductToolbar
+                onReset={() => refetch()}
+                onSetDisplay={setProductView}
+                displayControlList={productViewIconList}
+                isActive={productView}
+                onClearSingleFilter={onClearSingleFilter}
+                filtersCount={filtersCount}
+                onChange={onFilterChange}
+                values={filterValues}
+                availableBrands={products.availableBrands}
+                availableSizes={sortSizesDynamic(products.availableSizes)}
+                colors={sortedTranslatedColors}
+                onRemoveFilterTag={onRemoveFilterTag}
+                onClearAllFilters={onClearAllFilters}
+                productCount={productCount}
+                infoText={infoText}
+                ariaText={ariaText}
+                announce={announce}
+                productsLoadedText={productsLoadedText}
+              />
+            )}
+            {isLoading && <SkeletonCardList count={productsPerPage} />}
+            <section
+              className={`product-card-list ${productView === 'list' && !isSmallMobileSize ? 'list' : ''}`}
+            >
+              <ErrorBoundary
+                FallbackComponent={ErrorBoundaryFallback}
+                onReset={() => refetch()}
               >
                 {products &&
                   products.products.map((product) => (
@@ -243,9 +243,9 @@ const CollectionPage = () => {
                       )}
                     </ProductCard>
                   ))}
-              </section>
-            </div>
-          </ErrorBoundary>
+              </ErrorBoundary>
+            </section>
+          </div>
         </div>
         <section
           className="product-navigation"
