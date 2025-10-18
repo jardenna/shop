@@ -36,16 +36,17 @@ const useAuth = () => {
   }, [logoutSuccess, navigate]);
 
   const currentUser = userProfile?.user ?? null;
-
   const role = currentUser?.role ?? null;
   const isAdmin = !!currentUser?.isAdmin;
   const isEmployee = role === 'Employee';
+  const isStaff = isAdmin || isEmployee;
 
   return {
     currentUser,
     role,
     isAdmin,
     isEmployee,
+    isStaff,
     isLoading,
     logout: sendLogout,
     onReset: refetch,

@@ -5,7 +5,7 @@ import { isAdminPath } from '../utils/utils';
 
 const ProtectedRoute = () => {
   const location = useLocation();
-  const { currentUser, isAdmin, isEmployee, isLoading } = useAuth();
+  const { currentUser, isStaff, isLoading } = useAuth();
 
   if (isLoading) {
     return null;
@@ -17,7 +17,7 @@ const ProtectedRoute = () => {
 
   const isTryingToAccessAdmin = isAdminPath(location.pathname);
 
-  if (isTryingToAccessAdmin && !isAdmin && !isEmployee) {
+  if (isTryingToAccessAdmin && !isStaff) {
     return <Navigate to={ShopPath.Root} replace />;
   }
 

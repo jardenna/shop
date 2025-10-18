@@ -32,7 +32,7 @@ const Layout = () => {
   }, [pathname, dispatch]);
 
   // Hooks
-  const { currentUser } = useAuth();
+  const { currentUser, isStaff } = useAuth();
   const { currencyOptions, onChangePrice, exchangeRate } = useCurrency();
   const [logout, { isLoading }] = useLogoutMutation();
   const { isMobileSize } = useMediaQuery();
@@ -82,9 +82,6 @@ const Layout = () => {
     label: language.cancel,
   };
 
-  const isEmployee = currentUser && currentUser.role === 'Employee';
-  const isAdmin = currentUser && currentUser.isAdmin;
-
   // Helper to generate account-related links (for users, employees, admins)
   const getAccountLinks = (): DropdownItem[] => [
     {
@@ -108,7 +105,7 @@ const Layout = () => {
     ...getAccountLinks(),
 
     // Dashboard only for employees and admins
-    ...(isEmployee || isAdmin
+    ...(isStaff
       ? [
           {
             label: language.dashboard,
