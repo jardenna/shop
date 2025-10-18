@@ -17,7 +17,7 @@ type AccordionProps = {
 
 const Accordion = ({ accordionList, onReset }: AccordionProps) => (
   <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
-    <section className="accordion">
+    <div className="accordion">
       {accordionList.map(({ title, content, additionalTitle }) => (
         <AccordionItem
           key={title}
@@ -27,7 +27,7 @@ const Accordion = ({ accordionList, onReset }: AccordionProps) => (
           {content}
         </AccordionItem>
       ))}
-    </section>
+    </div>
   </ErrorBoundary>
 );
 
