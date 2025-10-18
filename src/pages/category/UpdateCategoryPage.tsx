@@ -31,7 +31,7 @@ const UpdateCategoryPage = () => {
             selectedCategory={category}
             onReset={() => refetch()}
             id={params.id || ''}
-            allowedUpdateCategory={!!isAdmin}
+            allowedUpdateCategory={isAdmin}
             popupMessage={language.categoryUpdated}
           />
         </AdminPageContainer>

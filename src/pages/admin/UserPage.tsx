@@ -39,7 +39,7 @@ const UserPage = () => {
   const [deleteUser] = useDeleteUserMutation();
   const [updateUser] = useUpdateUserMutation();
 
-  const allowedEditUser = !!isAdmin;
+  const allowedEditUser = isAdmin;
 
   const popupRef = useRef<HTMLDialogElement | null>(null);
   useTrapFocus({ id: 'deleteUser', popupRef });
@@ -115,7 +115,7 @@ const UserPage = () => {
               {columnKeys.map((columnKey) => (
                 <td key={columnKey}>
                   <EditUserInput
-                    isAdmin={isAdmin}
+                    userCanBeDeleted={isAdmin}
                     allowedEditUser={allowedEditUser}
                     onSave={() => {
                       handleSaveEdit();

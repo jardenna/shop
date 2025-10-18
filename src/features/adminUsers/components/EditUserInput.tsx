@@ -10,9 +10,9 @@ import RoleRadioBtn from './RoleRadioBtn';
 
 type EditUserInputProps = BaseEditTableInput & {
   allowedEditUser: boolean;
-  isAdmin: boolean;
   roleValue: Roles;
   showEditInput: boolean;
+  userCanBeDeleted: boolean;
   onEditBtnClick: () => void;
 };
 
@@ -20,13 +20,14 @@ const EditUserInput = ({
   showEditInput,
   id,
   allowedEditUser,
+  userCanBeDeleted,
   onEditChange,
   onSave,
   onCancel,
   value,
   cellContent,
   onEditBtnClick,
-  isAdmin,
+
   roleValue,
 }: EditUserInputProps) => {
   const { language } = useLanguage();
@@ -57,7 +58,7 @@ const EditUserInput = ({
             cellContent={cellContent}
             text={getlowerCaseFirstLetter(cellContent, language)}
           />
-          {!isAdmin && (
+          {!userCanBeDeleted && (
             <IconBtn
               onClick={onEditBtnClick}
               iconName={IconName.Pencil}

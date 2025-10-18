@@ -68,7 +68,7 @@ const CategoryCard = ({
         name={subCategoryName}
         modalHeaderText={language.deleteCategory}
         linkTo={`${AdminPath.AdminSubCategoryUpdate}/${categoryId}`}
-        allowedToDelete={!!isAdmin}
+        allowedToDelete={isAdmin}
         triggerModalDisabled={triggerModalDisabled}
       />
     </section>
