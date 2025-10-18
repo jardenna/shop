@@ -27,7 +27,7 @@
   border-radius: 8px;
   display: flex;
 
-  @include animation(skeleton-animation, 1.5s infinite, linear);
+  // @include animation(skeleton-animation, 1.5s infinite, linear);
 }
 
 .skeleton-control-list {
