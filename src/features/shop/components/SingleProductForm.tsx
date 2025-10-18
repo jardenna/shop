@@ -18,7 +18,7 @@ import { getlowerCaseFirstLetter } from '../../../utils/utils';
 import validateShopProduct from '../../../utils/validation/validateShopProduct';
 import useLanguage from '../../language/useLanguage';
 
-type ShopProductFormProps = {
+type SingleProductFormProps = {
   colorList: ColorOption[];
   displaySizeList: Size[];
   selectedProduct: BaseProduct;
@@ -30,12 +30,12 @@ export type InitialShopValues = {
   size: string;
 };
 
-const ShopProductForm = ({
+const SingleProductForm = ({
   selectedProduct,
   colorList,
   displaySizeList,
   onReset,
-}: ShopProductFormProps) => {
+}: SingleProductFormProps) => {
   const { language } = useLanguage();
 
   const { sizes, categoryName, colors } = selectedProduct;
@@ -107,4 +107,4 @@ const ShopProductForm = ({
   );
 };
 
-export default ShopProductForm;
+export default SingleProductForm;

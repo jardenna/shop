@@ -16,7 +16,7 @@ import ReviewList from '../features/shop/components/reviews/ReviewList';
 import ReviewsForm from '../features/shop/components/reviews/ReviewsForm';
 import ReviewStars from '../features/shop/components/reviews/ReviewStars';
 import { getStarsArray } from '../features/shop/components/reviews/reviewsUtil.';
-import ShopProductForm from '../features/shop/components/ShopProductForm';
+import SingleProductForm from '../features/shop/components/SingleProductForm';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
 import LayoutElement from '../layout/LayoutElement';
 import MetaTags from '../layout/nav/MetaTags';
@@ -153,7 +153,7 @@ const SingleProductPage = () => {
                 <ReviewsForm productId={id} onReset={() => refetch} />
               )}
 
-              <ShopProductForm
+              <SingleProductForm
                 onReset={() => refetch}
                 selectedProduct={product}
                 colorList={colorList}

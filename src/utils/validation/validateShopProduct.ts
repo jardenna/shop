@@ -1,4 +1,4 @@
-import { InitialShopValues } from '../../features/shop/components/ShopProductForm';
+import { InitialShopValues } from '../../features/shop/components/SingleProductForm';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
 
