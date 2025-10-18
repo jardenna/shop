@@ -16,11 +16,22 @@ const UpdateProductPage = () => {
     refetch,
   } = useGetProductByIdQuery(params.id || '');
 
-  const { data: subCategories } = useGetSubCategoriesWithParentQuery();
+  const {
+    data: subCategories,
+    refetch: refetchSubCategories,
+    isLoading: isSubCategoriesLoading,
+  } = useGetSubCategoriesWithParentQuery();
+
+  const handleReset = () => {
+    refetch(); // refetch product
+    refetchSubCategories(); // refetch subcategories
+  };
 
   return (
     <>
-      {isLoading && <SkeletonPage count={3} height="14" />}
+      {(isLoading || isSubCategoriesLoading) && (
+        <SkeletonPage count={3} height="14" />
+      )}
 
       {product && subCategories && (
         <AdminPageContainer
@@ -33,7 +44,7 @@ const UpdateProductPage = () => {
             id={params.id || null}
             parentCategories={subCategories}
             allowedSizes={product.subCategory.allowedSizes}
-            onReset={() => refetch()}
+            onReset={handleReset}
           />
         </AdminPageContainer>
       )}

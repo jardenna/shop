@@ -12,7 +12,7 @@ import type { ProfileFieldListProps } from './MyAccountPage';
 type AccountInfoListProps = {
   profile: UserProfileResponse;
   profileFieldList: ProfileFieldListProps[];
-  onReset?: () => void;
+  onReset: () => void;
 };
 
 const AccountInfoList = ({

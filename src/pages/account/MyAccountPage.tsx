@@ -18,7 +18,7 @@ export type ProfileFieldListProps = {
 
 const MyAccountPage = () => {
   const { language } = useLanguage();
-  const { data: profile, isLoading } = useGetUserProfileQuery();
+  const { data: profile, isLoading, refetch } = useGetUserProfileQuery();
 
   const profileFieldList: ProfileFieldListProps[] = [
     {
@@ -48,7 +48,6 @@ const MyAccountPage = () => {
   return (
     <>
       <p>{language.verifyAndUpdateInfo}</p>
-
       <div className="my-account">
         {isLoading && (
           <>
@@ -56,12 +55,12 @@ const MyAccountPage = () => {
             <Skeleton height="3.2" />
           </>
         )}
-
         {profile && (
           <>
             <AccountInfoList
               profile={profile}
               profileFieldList={profileFieldList}
+              onReset={() => refetch}
             />
             <AccountFormModal
               profile={profile}
