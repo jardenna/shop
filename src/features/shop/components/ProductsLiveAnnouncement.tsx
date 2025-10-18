@@ -1,4 +1,5 @@
 import VisuallyHidden from '../../../components/VisuallyHidden';
+import HeadingElement from '../../../layout/HeadingElement';
 
 type ProductsLiveAnnouncementProps = {
   announce: boolean;
@@ -14,9 +15,13 @@ const ProductsLiveAnnouncement = ({
   productsLoadedText,
 }: ProductsLiveAnnouncementProps) => (
   <>
-    <p id={ariaDescribedby} aria-live="polite">
+    <HeadingElement
+      ariaLabelledby={ariaDescribedby}
+      ariaLive="polite"
+      className="products-heading"
+    >
       {infoText}
-    </p>
+    </HeadingElement>
     {announce && (
       <VisuallyHidden as="p">
         <span aria-live="polite">
