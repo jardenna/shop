@@ -56,7 +56,7 @@ const CategoryCard = ({
       />
       <CardRight
         linkTo={AdminPath.AdminCategories}
-        heading={`${language.mainCategoryName}: ${mainCategoryName}`}
+        heading={`${language.mainCategoryName}: ${getlowerCaseFirstLetter(mainCategoryName, language)}`}
         name={subCategoryName}
         showStatusMessage={showStatusMessage}
         statusMessage={`${language.parentCategoryIs} ${getlowerCaseFirstLetter(statusMessage, language)}`}

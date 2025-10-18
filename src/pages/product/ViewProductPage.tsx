@@ -15,6 +15,7 @@ import {
 import { AdminPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
 import handleApiError from '../../utils/handleApiError';
+import { getCategoryTranslation } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const ViewProductPage = () => {
@@ -64,7 +65,8 @@ const ViewProductPage = () => {
 
   const mainCategory = product ? product.categoryName : '';
   const subCategory = product ? product.subCategoryName : '';
-  const heading = `${language.category}: ${subCategory} / ${mainCategory}`;
+  const heading = `${language.category}: ${getCategoryTranslation(subCategory, language)} / ${getCategoryTranslation(mainCategory, language)}`;
+
   const subCategoryStatus = product
     ? language[product.subCategory.categoryStatus.toLowerCase()]
     : '';

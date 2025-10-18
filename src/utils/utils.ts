@@ -28,6 +28,18 @@ const getlowerCaseFirstLetter = (
   language: Record<string, string>,
 ) => language[key[0].toLowerCase() + key.slice(1)] || key;
 
+export const getCategoryTranslation = (
+  key: string | undefined,
+  language: Record<string, string>,
+) => {
+  if (!key) {
+    return '';
+  } // or whatever default you want
+
+  const normalized = key[0].toLowerCase() + key.slice(1);
+  return language[normalized] ?? key;
+};
+
 // Generic function to get visible items and count of hidden items from a list
 const sliceAndCountHidden = <T>(list: T[], visibleCount: number) => {
   const visibleItems = list.slice(0, visibleCount);
