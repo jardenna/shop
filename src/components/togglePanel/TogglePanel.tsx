@@ -16,6 +16,7 @@ type PanelPosition = 'right' | 'left' | 'bottom' | 'top';
 type ActionBtnsProps = {
   primaryBtnText: string;
   secondaryBtnText: string;
+  primaryBtnDisabled?: boolean;
   secondaryAction: () => void;
 };
 
@@ -98,7 +99,9 @@ const TogglePanel = ({
             >
               {language.clearAllFilters}
             </Button>
-            <Button onClick={onHidePanel}>{footer.primaryBtnText}</Button>
+            <Button onClick={onHidePanel} disabled={footer.primaryBtnDisabled}>
+              {footer.primaryBtnText}
+            </Button>
           </LayoutElement>
         )}
       </div>
