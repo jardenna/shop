@@ -15,6 +15,7 @@ const useAuth = () => {
     data: userProfile,
     isLoading,
     error,
+    refetch,
   } = useCheckAuthQuery(undefined, {
     refetchOnMountOrArgChange: true,
   });
@@ -39,8 +40,8 @@ const useAuth = () => {
     currentUser: currentUser?.user,
     isAdmin: currentUser?.user.isAdmin,
     isLoading,
-    error,
     logout: sendLogout,
+    onReset: refetch,
   };
 };
 

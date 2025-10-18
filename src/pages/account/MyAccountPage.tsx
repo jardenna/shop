@@ -1,6 +1,4 @@
-import { ErrorBoundary } from 'react-error-boundary';
 import type { BaseProfile } from '../../app/api/apiTypes/shopApiTypes';
-import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import Skeleton from '../../components/skeleton/Skeleton';
 import SkeletonGrid from '../../components/skeleton/SkeletonGrid';
 import useLanguage from '../../features/language/useLanguage';
@@ -20,7 +18,7 @@ export type ProfileFieldListProps = {
 
 const MyAccountPage = () => {
   const { language } = useLanguage();
-  const { data: profile, isLoading, refetch } = useGetUserProfileQuery();
+  const { data: profile, isLoading } = useGetUserProfileQuery();
 
   const profileFieldList: ProfileFieldListProps[] = [
     {
@@ -58,23 +56,19 @@ const MyAccountPage = () => {
             <Skeleton height="3.2" />
           </>
         )}
-        <ErrorBoundary
-          FallbackComponent={ErrorBoundaryFallback}
-          onReset={() => refetch}
-        >
-          {profile && (
-            <>
-              <AccountInfoList
-                profile={profile}
-                profileFieldList={profileFieldList}
-              />
-              <AccountFormModal
-                profile={profile}
-                profileFieldList={profileFieldList}
-              />
-            </>
-          )}
-        </ErrorBoundary>
+
+        {profile && (
+          <>
+            <AccountInfoList
+              profile={profile}
+              profileFieldList={profileFieldList}
+            />
+            <AccountFormModal
+              profile={profile}
+              profileFieldList={profileFieldList}
+            />
+          </>
+        )}
       </div>
     </>
   );
