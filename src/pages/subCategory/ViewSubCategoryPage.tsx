@@ -52,12 +52,14 @@ const ViewSubCategoryPage = () => {
     }
   };
 
+  const subCategoryName = category ? language[category.translationKey] : '';
+
   return (
     <>
       {isLoading && <SkeletonTwoCards />}
       {category && (
         <AdminPageContainer
-          heading={`${language.category} ${category.subCategoryName}`}
+          heading={`${language.category} ${subCategoryName || category.subCategoryName}`}
           ariaLabelledby="sub-category"
           linkText={language.createNewCategory}
           linkTo={AdminPath.AdminSubCategoryCreate}
@@ -67,7 +69,7 @@ const ViewSubCategoryPage = () => {
             onReset={() => refetch()}
             onDeleteSubCategory={handleDeleteSubCategory}
             categoryId={category.id}
-            subCategoryName={category.subCategoryName}
+            subCategoryName={subCategoryName || category.subCategoryName}
             productsInSubcategory={category.productCount}
             mainCategoryName={category.mainCategory.categoryName}
             showStatusMessage={
