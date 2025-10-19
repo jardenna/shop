@@ -6,7 +6,6 @@ import CardRight from '../../components/card/CardRight';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import SkeletonThreeCards from '../../components/skeleton/SkeletonThreeCards';
-import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
 import {
   useDeleteProductMutation,
@@ -22,7 +21,6 @@ const ViewProductPage = () => {
   const params = useParams();
   const navigate = useNavigate();
   const { language } = useLanguage();
-  const { isAdmin } = useAuth();
 
   const { onAddMessagePopup } = useMessagePopup();
 
@@ -123,7 +121,6 @@ const ViewProductPage = () => {
               name={product.productName}
               modalHeaderText={language.deleteProduct}
               linkTo={`${AdminPath.AdminProductUpdate}/${params.id}`}
-              allowedToDelete={isAdmin}
             />
           </section>
         </AdminPageContainer>

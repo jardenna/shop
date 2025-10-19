@@ -1,5 +1,4 @@
 import type { Status } from '../../app/api/apiTypes/adminApiTypes';
-import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
 import { AdminPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
@@ -37,7 +36,6 @@ const CategoryCard = ({
   triggerModalDisabled,
 }: CategoryCardProps) => {
   const { language } = useLanguage();
-  const { isAdmin } = useAuth();
 
   const primaryActionBtn: PrimaryActionBtnProps = {
     onClick: onDeleteSubCategory,
@@ -68,7 +66,6 @@ const CategoryCard = ({
         name={subCategoryName}
         modalHeaderText={language.deleteCategory}
         linkTo={`${AdminPath.AdminSubCategoryUpdate}/${categoryId}`}
-        allowedToDelete={isAdmin}
         triggerModalDisabled={triggerModalDisabled}
       />
     </section>
