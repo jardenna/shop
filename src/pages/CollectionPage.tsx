@@ -234,13 +234,13 @@ const CollectionPage = () => {
               />
             )}
             {isLoading && <SkeletonCardList count={productsPerPage} />}
-            <section
-              className={`product-card-list ${productView === 'list' && !isSmallMobileSize ? 'list' : ''}`}
-            >
-              {productCount > 0 ? (
-                <ErrorBoundary
-                  FallbackComponent={ErrorBoundaryFallback}
-                  onReset={() => refetch()}
+            {productCount > 0 ? (
+              <ErrorBoundary
+                FallbackComponent={ErrorBoundaryFallback}
+                onReset={() => refetch()}
+              >
+                <ul
+                  className={`product-card-list ${productView === 'list' && !isSmallMobileSize ? 'list' : ''}`}
                 >
                   {products &&
                     products.products.map((product) => (
@@ -260,15 +260,15 @@ const CollectionPage = () => {
                         )}
                       </ProductCard>
                     ))}
-                </ErrorBoundary>
-              ) : (
-                <NoProductsFound
-                  noProductText={language.noProductResult}
-                  resetFilters={onClearAllFilters}
-                  resetBtnText={language.clearAllFilters}
-                />
-              )}
-            </section>
+                </ul>
+              </ErrorBoundary>
+            ) : (
+              <NoProductsFound
+                noProductText={language.noProductResult}
+                resetFilters={onClearAllFilters}
+                resetBtnText={language.clearAllFilters}
+              />
+            )}
           </div>
         </div>
         <section

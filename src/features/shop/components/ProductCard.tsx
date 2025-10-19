@@ -31,7 +31,7 @@ const ProductCard = ({
   const ariaLabelledby = `product-card-title-${product.id}`;
 
   return (
-    <article className="product-card" aria-labelledby={ariaLabelledby}>
+    <li className="product-card" aria-labelledby={ariaLabelledby}>
       <div className="product-img-container">
         <FavoriteHeart id={product.id} />
         {product.discount > 0 && (
@@ -55,7 +55,7 @@ const ProductCard = ({
         </HeadingElement>
         {children}
       </div>
-    </article>
+    </li>
   );
 };
 
