@@ -27,7 +27,6 @@ const EditUserInput = ({
   value,
   cellContent,
   onEditBtnClick,
-
   roleValue,
 }: EditUserInputProps) => {
   const { language } = useLanguage();
