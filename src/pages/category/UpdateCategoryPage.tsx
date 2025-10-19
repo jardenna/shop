@@ -21,7 +21,6 @@ const UpdateCategoryPage = () => {
   return (
     <>
       {isLoading && <SkeletonForm />}
-
       {category && (
         <AdminPageContainer
           heading={`${language.updateCategory} ${translateKey(category.categoryName, language)}`}
