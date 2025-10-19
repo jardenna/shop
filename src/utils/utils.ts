@@ -108,8 +108,11 @@ function calculateBtnsRange(
   return range;
 }
 
+const ariaInfoTitle = (info: string) => `${info}-title`;
+
 export {
   allowedExtensions,
+  ariaInfoTitle,
   calculateBtnsRange,
   currencyCacheKey,
   discountCalculation,

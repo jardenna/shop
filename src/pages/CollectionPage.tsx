@@ -30,7 +30,7 @@ import MetaTags from '../layout/nav/MetaTags';
 import { IconName } from '../types/enums';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { sortSizesDynamic } from '../utils/sizeUtils';
-import { getFilterSummary } from '../utils/utils';
+import { ariaInfoTitle, getFilterSummary } from '../utils/utils';
 import './CollectionPage.styles.scss';
 
 export type FilterKeys = 'sizes' | 'colors' | 'brand';
@@ -172,7 +172,7 @@ const CollectionPage = () => {
   const isOptionDisabled = (option: { value: string }) =>
     Number(option.value) > productCount;
 
-  const ariaLabelledby = `${category || 'women'}-title`;
+  const ariaLabelledby = ariaInfoTitle(category || 'women');
 
   return (
     <>

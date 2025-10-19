@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import PageHeader from '../../components/pageHeader/PageHeader';
 import useLanguage from '../../features/language/useLanguage';
 import MetaTags from '../../layout/nav/MetaTags';
+import { ariaInfoTitle } from '../../utils/utils';
 
 type MainPageContainerProps = {
   children: ReactNode;
@@ -14,8 +15,8 @@ const MainPageContainer = ({
   heading,
   className = '',
 }: MainPageContainerProps) => {
-  const ariaLabelledby = `${heading}-title`;
   const { language } = useLanguage();
+  const ariaLabelledby = ariaInfoTitle(heading);
 
   return (
     <>
