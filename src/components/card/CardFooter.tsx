@@ -1,3 +1,4 @@
+import useAuth from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import { BtnVariant } from '../../types/enums';
@@ -14,7 +15,6 @@ type CardFooterProps = {
   modalHeaderText: string;
   name: string;
   primaryActionBtn: PrimaryActionBtnProps;
-  allowedToDelete?: boolean;
   triggerModalDisabled?: boolean;
 };
 
@@ -24,10 +24,10 @@ const CardFooter = ({
   name,
   primaryActionBtn,
   modalHeaderText,
-  allowedToDelete,
   triggerModalDisabled,
 }: CardFooterProps) => {
   const { language } = useLanguage();
+  const { isAdmin } = useAuth();
   const secondaryActionBtn: SecondaryActionBtnProps = {
     label: language.cancel,
   };
@@ -38,7 +38,7 @@ const CardFooter = ({
       className="footer"
       ariaLabel={language.productCard}
     >
-      {allowedToDelete && (
+      {isAdmin && (
         <ModalContainer
           triggerModalBtnContent={language.delete}
           triggerModalBtnVariant={BtnVariant.Danger}
