@@ -1,8 +1,11 @@
-import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
+import type { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import DisplayControls from '../../../components/DisplayControls';
-import { FilterValuesType } from '../../../hooks/useFilterParams';
-import { FilterKeys } from '../../../pages/CollectionPage';
-import { FiltersCountResult, InputChangeHandler } from '../../../types/types';
+import type { FilterValuesType } from '../../../hooks/useFilterParams';
+import type { FilterKeys } from '../../../pages/CollectionPage';
+import type {
+  FiltersCountResult,
+  InputChangeHandler,
+} from '../../../types/types';
 import useLanguage from '../../language/useLanguage';
 import FilterPanel from './FilterPanel';
 import ProductsLiveAnnouncement from './ProductsLiveAnnouncement';
