@@ -23,7 +23,6 @@ type CategoryFormProps = {
   id: string | null;
   popupMessage: string;
   selectedCategory: CreateCategoryRequest | null;
-  allowedUpdateCategory?: boolean;
   onReset?: () => void;
 };
 
@@ -31,7 +30,6 @@ const CategoryForm = ({
   selectedCategory,
   id,
   onReset,
-  allowedUpdateCategory,
   popupMessage,
 }: CategoryFormProps) => {
   const navigate = useNavigate();
@@ -106,7 +104,6 @@ const CategoryForm = ({
         <FieldSet legendText={language.categories}>
           <SharedCategoryInputs
             labelText={language.categoryStatus}
-            allowedUpdateCategory={allowedUpdateCategory}
             onCategoryNameChange={onChange}
             categoryNamevalue={values.categoryName}
             categoryNameId="categoryName"

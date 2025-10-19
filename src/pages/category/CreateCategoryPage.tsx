@@ -1,4 +1,3 @@
-import useAuth from '../../features/auth/hooks/useAuth';
 import CategoryForm from '../../features/categories/CategoryForm';
 import useLanguage from '../../features/language/useLanguage';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
@@ -9,7 +8,6 @@ export type CategoryState = {
 
 const CreateCategoryPage = () => {
   const { language } = useLanguage();
-  const { isAdmin } = useAuth();
 
   return (
     <AdminPageContainer
@@ -20,7 +18,6 @@ const CreateCategoryPage = () => {
       <CategoryForm
         selectedCategory={null}
         id={null}
-        allowedUpdateCategory={isAdmin}
         popupMessage={language.categoryCreated}
       />
     </AdminPageContainer>
