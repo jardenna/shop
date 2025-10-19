@@ -39,7 +39,7 @@ const UserPage = () => {
   const [deleteUser] = useDeleteUserMutation();
   const [updateUser] = useUpdateUserMutation();
 
-  const allowedEditUser = !!isAdmin;
+  const allowedEditUser = isAdmin;
 
   const popupRef = useRef<HTMLDialogElement | null>(null);
   useTrapFocus({ id: 'deleteUser', popupRef });

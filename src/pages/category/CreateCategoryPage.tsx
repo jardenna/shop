@@ -11,8 +11,6 @@ const CreateCategoryPage = () => {
   const { language } = useLanguage();
   const { isAdmin } = useAuth();
 
-  const allowedUpdateCategory = !!isAdmin;
-
   return (
     <AdminPageContainer
       heading={language.createNewCategory}
@@ -22,7 +20,7 @@ const CreateCategoryPage = () => {
       <CategoryForm
         selectedCategory={null}
         id={null}
-        allowedUpdateCategory={allowedUpdateCategory}
+        allowedUpdateCategory={isAdmin}
         popupMessage={language.categoryCreated}
       />
     </AdminPageContainer>

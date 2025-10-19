@@ -1,27 +1,24 @@
 import { Navigate, Outlet, useLocation } from 'react-router';
-import { useCheckAuthQuery } from '../features/auth/authApiSlice';
+import useAuth from '../features/auth/hooks/useAuth';
 import { ShopPath } from '../layout/nav/enums';
 import { isAdminPath } from '../utils/utils';
 
 const ProtectedRoute = () => {
   const location = useLocation();
-  const { data: userProfile, isLoading } = useCheckAuthQuery();
-
-  const isAuthenticated = !!userProfile;
-  const isUser = userProfile?.user.role === 'User';
+  const { currentUser, isStaff, isLoading } = useAuth();
 
   if (isLoading) {
     return null;
   }
 
-  if (!isAuthenticated) {
+  if (!currentUser) {
     return <Navigate to={ShopPath.Login} state={{ from: location }} replace />;
   }
 
   const isTryingToAccessAdmin = isAdminPath(location.pathname);
 
-  if (isTryingToAccessAdmin && isUser) {
-    return <Navigate to={ShopPath.Root} state={{ from: location }} replace />;
+  if (isTryingToAccessAdmin && !isStaff) {
+    return <Navigate to={ShopPath.Root} replace />;
   }
 
   return <Outlet />;

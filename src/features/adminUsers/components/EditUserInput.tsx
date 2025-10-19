@@ -20,13 +20,14 @@ const EditUserInput = ({
   showEditInput,
   id,
   allowedEditUser,
+  isAdmin,
   onEditChange,
   onSave,
   onCancel,
   value,
   cellContent,
   onEditBtnClick,
-  isAdmin,
+
   roleValue,
 }: EditUserInputProps) => {
   const { language } = useLanguage();

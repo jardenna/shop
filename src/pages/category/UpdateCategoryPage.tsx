@@ -20,7 +20,6 @@ const UpdateCategoryPage = () => {
   return (
     <>
       {isLoading && <SkeletonForm />}
-
       {category && (
         <AdminPageContainer
           heading={`${language.updateCategory} ${category.categoryName}`}
@@ -31,7 +30,7 @@ const UpdateCategoryPage = () => {
             selectedCategory={category}
             onReset={() => refetch()}
             id={params.id || ''}
-            allowedUpdateCategory={!!isAdmin}
+            allowedUpdateCategory={isAdmin}
             popupMessage={language.categoryUpdated}
           />
         </AdminPageContainer>

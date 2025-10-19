@@ -121,7 +121,7 @@ const ViewProductPage = () => {
               name={product.productName}
               modalHeaderText={language.deleteProduct}
               linkTo={`${AdminPath.AdminProductUpdate}/${params.id}`}
-              allowedToDelete={!!isAdmin}
+              allowedToDelete={isAdmin}
             />
           </section>
         </AdminPageContainer>
