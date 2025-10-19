@@ -1,5 +1,5 @@
 import useLanguage from '../../../features/language/useLanguage';
-import { getlowerCaseFirstLetter } from '../../../utils/utils';
+import { translateKey } from '../../../utils/utils';
 import './_toggle-switch.scss';
 
 type ToggleSwitchProps = {
@@ -21,7 +21,7 @@ const ToggleSwitch = ({
     <div className="toggle-switch-list">
       <div className="toggle-switch-item">
         <label htmlFor={id}>
-          <span>{getlowerCaseFirstLetter(labelText, language)}</span>
+          <span>{translateKey(labelText, language)}</span>
         </label>
         <input
           type="checkbox"

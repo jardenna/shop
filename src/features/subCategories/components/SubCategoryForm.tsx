@@ -18,7 +18,7 @@ import useFormValidation from '../../../hooks/useFormValidation';
 import { AdminPath } from '../../../layout/nav/enums';
 import type { OptionType } from '../../../types/types';
 import handleApiError from '../../../utils/handleApiError';
-import { getlowerCaseFirstLetter } from '../../../utils/utils';
+import { translateKey } from '../../../utils/utils';
 import validateSubcategory from '../../../utils/validation/validateSubcategory';
 import useLanguage from '../../language/useLanguage';
 import {
@@ -56,7 +56,7 @@ const SubCategoryForm = ({
   // Options and initial state
   const parentCategoriesOptions = parentCategories.map(
     ({ categoryName, id, categoryStatus }) => ({
-      label: getlowerCaseFirstLetter(categoryName, language) || categoryName,
+      label: translateKey(categoryName, language) || categoryName,
       value: id,
       status: categoryStatus,
     }),
@@ -141,7 +141,7 @@ const SubCategoryForm = ({
             id="category"
             defaultValue={{
               label: values.category
-                ? getlowerCaseFirstLetter(values.category, language)
+                ? translateKey(values.category, language)
                 : values.category,
               value: values.category,
             }}
@@ -174,7 +174,7 @@ const SubCategoryForm = ({
             onCategoryNameChange={onChange}
             allowedUpdateCategory
             defaultStatusValue={{
-              label: getlowerCaseFirstLetter(values.categoryStatus, language),
+              label: translateKey(values.categoryStatus, language),
               value: values.categoryStatus,
             }}
             onSelectStatus={(selectedOptions: OptionType) => {

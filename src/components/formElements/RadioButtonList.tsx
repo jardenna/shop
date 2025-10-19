@@ -1,6 +1,6 @@
 import useLanguage from '../../features/language/useLanguage';
 import type { OptionType } from '../../types/types';
-import { getlowerCaseFirstLetter } from '../../utils/utils';
+import { translateKey } from '../../utils/utils';
 import type { BaseControlProps } from './ControlInput';
 import ControlInput from './ControlInput';
 
@@ -33,9 +33,9 @@ const RadioButtonList = ({
             value={radio.value}
             checked={initialChecked === radio.value}
             onChange={onChange}
-            label={getlowerCaseFirstLetter(radio.label, language)}
+            label={translateKey(radio.label, language)}
             autoFocus={autoFocus && index === 0}
-            ariaLabel={getlowerCaseFirstLetter(radio.label, language)}
+            ariaLabel={translateKey(radio.label, language)}
             className="control-label"
             iconName={iconName}
             iconClassName={

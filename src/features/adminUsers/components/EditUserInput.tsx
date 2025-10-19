@@ -4,7 +4,7 @@ import type { BaseEditTableInput } from '../../../components/sortTable/EditTable
 import EditTableInput from '../../../components/sortTable/EditTableInput';
 import EditTableText from '../../../components/sortTable/EditTableText';
 import { IconName } from '../../../types/enums';
-import { getlowerCaseFirstLetter } from '../../../utils/utils';
+import { translateKey } from '../../../utils/utils';
 import useLanguage from '../../language/useLanguage';
 import RoleRadioBtn from './RoleRadioBtn';
 
@@ -35,7 +35,7 @@ const EditUserInput = ({
   return !allowedEditUser ? (
     <EditTableText
       cellContent={cellContent}
-      text={getlowerCaseFirstLetter(cellContent, language)}
+      text={translateKey(cellContent, language)}
     />
   ) : (
     <div className="edit-cell">
@@ -56,13 +56,13 @@ const EditUserInput = ({
         <>
           <EditTableText
             cellContent={cellContent}
-            text={getlowerCaseFirstLetter(cellContent, language)}
+            text={translateKey(cellContent, language)}
           />
           {!isAdmin && (
             <IconBtn
               onClick={onEditBtnClick}
               iconName={IconName.Pencil}
-              ariaLabel={`${language.update} ${getlowerCaseFirstLetter(id, language)}`}
+              ariaLabel={`${language.update} ${translateKey(id, language)}`}
             />
           )}
         </>

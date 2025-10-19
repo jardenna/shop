@@ -3,7 +3,7 @@ import { NavLink } from 'react-router';
 import type { ProductMenuResponse } from '../../../app/api/apiTypes/shopApiTypes';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import { ShopPath } from '../../../layout/nav/enums';
-import { getlowerCaseFirstLetter } from '../../../utils/utils';
+import { translateKey } from '../../../utils/utils';
 import useLanguage from '../../language/useLanguage';
 
 type CollectionNavProps = {
@@ -30,7 +30,7 @@ const CollectionNav = ({ subMenu, category, onReset }: CollectionNavProps) => {
           {subMenu.map(({ label, categoryId }) => (
             <li className="collection-nav-item" key={categoryId}>
               <NavLink to={`/${ShopPath.Collection}/${category}/${categoryId}`}>
-                {getlowerCaseFirstLetter(label, language)}
+                {translateKey(label, language)}
               </NavLink>
             </li>
           ))}

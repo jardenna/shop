@@ -24,7 +24,7 @@ import variables from '../../../scss/variables.module.scss';
 import type { OptionType } from '../../../types/types';
 import { getColorOptions } from '../../../utils/colorUtils';
 import handleApiError from '../../../utils/handleApiError';
-import { getlowerCaseFirstLetter, maxFiles } from '../../../utils/utils';
+import { maxFiles, translateKey } from '../../../utils/utils';
 import validateProduct from '../../../utils/validation/validateProduct';
 import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
 import useCurrency from '../../currency/useCurrency';
@@ -398,7 +398,7 @@ const ProductForm = ({
               labelText={language.productStatus}
               ref={formRef}
               defaultStatusValue={{
-                label: getlowerCaseFirstLetter(values.productStatus, language),
+                label: translateKey(values.productStatus, language),
                 value: values.productStatus,
               }}
               onSelectStatus={(selectedOptions: OptionType) => {

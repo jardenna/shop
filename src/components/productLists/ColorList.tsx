@@ -2,10 +2,7 @@ import useLanguage from '../../features/language/useLanguage';
 import variables from '../../scss/variables.module.scss';
 import type { OptionGroupHeading } from '../../types/types';
 import { getColorOptions } from '../../utils/colorUtils';
-import {
-  getlowerCaseFirstLetter,
-  sliceAndCountHidden,
-} from '../../utils/utils';
+import { sliceAndCountHidden, translateKey } from '../../utils/utils';
 import ProductList from './ProductList';
 import type { ProductLabelVariant } from './ProductListItem';
 import ProductListItem from './ProductListItem';
@@ -39,7 +36,7 @@ const ColorList = ({ count, colors, groupTitle, variant }: ColorListProps) => {
         <ProductListItem
           key={color}
           variant={variant}
-          screenReaderText={getlowerCaseFirstLetter(value, language)}
+          screenReaderText={translateKey(value, language)}
           style={{
             backgroundColor: color,
             borderColor: border,

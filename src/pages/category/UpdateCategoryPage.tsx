@@ -4,6 +4,7 @@ import useAuth from '../../features/auth/hooks/useAuth';
 import CategoryForm from '../../features/categories/CategoryForm';
 import { useGetCategoryByIdQuery } from '../../features/categories/categoriyApiSlice';
 import useLanguage from '../../features/language/useLanguage';
+import { translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const UpdateCategoryPage = () => {
@@ -22,7 +23,7 @@ const UpdateCategoryPage = () => {
       {isLoading && <SkeletonForm />}
       {category && (
         <AdminPageContainer
-          heading={`${language.updateCategory} ${category.categoryName}`}
+          heading={`${language.updateCategory} ${translateKey(category.categoryName, language)}`}
           variant="small"
           ariaLabelledby="update-category"
         >

@@ -11,7 +11,7 @@ import useFormValidation from '../../hooks/useFormValidation';
 import { AdminPath } from '../../layout/nav/enums';
 import type { OptionType } from '../../types/types';
 import handleApiError from '../../utils/handleApiError';
-import { getlowerCaseFirstLetter } from '../../utils/utils';
+import { translateKey } from '../../utils/utils';
 import validateCategory from '../../utils/validation/validateCategory';
 import useLanguage from '../language/useLanguage';
 import {
@@ -111,7 +111,7 @@ const CategoryForm = ({
             categoryNamevalue={values.categoryName}
             categoryNameId="categoryName"
             defaultStatusValue={{
-              label: getlowerCaseFirstLetter(values.categoryStatus, language),
+              label: translateKey(values.categoryStatus, language),
               value: values.categoryStatus,
             }}
             onSelectStatus={(selectedOptions: OptionType) => {

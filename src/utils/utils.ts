@@ -23,10 +23,16 @@ const maxFiles = 5;
 const allowedExtensions = ['jpg', 'jpeg', 'png', 'webp', 'avif'];
 
 // Translation
-const getlowerCaseFirstLetter = (
-  key: string,
+const translateKey = (
+  key: string | undefined,
   language: Record<string, string>,
-) => language[key[0].toLowerCase() + key.slice(1)] || key;
+) => {
+  if (!key) {
+    return '';
+  }
+  const normalized = key[0].toLowerCase() + key.slice(1);
+  return language[normalized] ?? key;
+};
 
 // Generic function to get visible items and count of hidden items from a list
 const sliceAndCountHidden = <T>(list: T[], visibleCount: number) => {
@@ -109,7 +115,6 @@ export {
   discountCalculation,
   getAriaLabel,
   getFilterSummary,
-  getlowerCaseFirstLetter,
   getPathName,
   maxFiles,
   maxFileSize,
@@ -120,4 +125,5 @@ export {
   productsPerPageParamKey,
   sliceAndCountHidden,
   titleToCamelCase,
+  translateKey,
 };

@@ -9,7 +9,7 @@ import {
 } from '../../features/subCategories/subCategoryApiSlice';
 import { AdminPath } from '../../layout/nav/enums';
 import handleApiError from '../../utils/handleApiError';
-import { getlowerCaseFirstLetter } from '../../utils/utils';
+import { translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const ViewSubCategoryPage = () => {
@@ -52,12 +52,14 @@ const ViewSubCategoryPage = () => {
     }
   };
 
+  const subCategoryName = category ? language[category.translationKey] : '';
+
   return (
     <>
       {isLoading && <SkeletonTwoCards />}
       {category && (
         <AdminPageContainer
-          heading={`${language.category} ${category.subCategoryName}`}
+          heading={`${language.category} ${subCategoryName || category.subCategoryName}`}
           ariaLabelledby="sub-category"
           linkText={language.createNewCategory}
           linkTo={AdminPath.AdminSubCategoryCreate}
@@ -67,14 +69,14 @@ const ViewSubCategoryPage = () => {
             onReset={() => refetch()}
             onDeleteSubCategory={handleDeleteSubCategory}
             categoryId={category.id}
-            subCategoryName={category.subCategoryName}
+            subCategoryName={subCategoryName || category.subCategoryName}
             productsInSubcategory={category.productCount}
             mainCategoryName={category.mainCategory.categoryName}
             showStatusMessage={
               category.mainCategory.categoryStatus !== 'Published'
             }
             scheduledDate={category.scheduledDate || null}
-            statusMessage={getlowerCaseFirstLetter(
+            statusMessage={translateKey(
               category.mainCategory.categoryStatus,
               language,
             )}

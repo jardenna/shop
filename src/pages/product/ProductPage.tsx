@@ -11,7 +11,7 @@ import {
 } from '../../features/products/productApiSlice';
 import { AdminPath } from '../../layout/nav/enums';
 import handleApiError from '../../utils/handleApiError';
-import { oneDay } from '../../utils/utils';
+import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 import './ProductPage.styles.scss';
 
@@ -93,9 +93,15 @@ const ProductPage = () => {
                 images={images}
                 productName={productName}
                 status={productStatus}
-                categoryName={subCategory.category.categoryName}
+                categoryName={
+                  translateKey(subCategory.category.categoryName, language) ||
+                  subCategory.category.categoryName
+                }
+                subCategoryName={
+                  language[subCategory.translationKey] ||
+                  subCategory.subCategoryName
+                }
                 scheduledDate={scheduledDate || null}
-                subCategoryName={subCategory.subCategoryName}
                 onCopyProduct={handleCopyProduct}
               />
             ),
