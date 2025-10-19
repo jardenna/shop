@@ -20,7 +20,6 @@ const UpdateCategoryPage = () => {
   return (
     <>
       {isLoading && <SkeletonForm />}
-
       {category && (
         <AdminPageContainer
           heading={`${language.updateCategory} ${category.categoryName}`}

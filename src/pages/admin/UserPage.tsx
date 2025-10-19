@@ -115,7 +115,7 @@ const UserPage = () => {
               {columnKeys.map((columnKey) => (
                 <td key={columnKey}>
                   <EditUserInput
-                    userCanBeDeleted={isAdmin}
+                    isAdmin={isAdmin}
                     allowedEditUser={allowedEditUser}
                     onSave={() => {
                       handleSaveEdit();
