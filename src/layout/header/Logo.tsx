@@ -6,7 +6,12 @@ import { AdminPath } from '../nav/enums';
 const Logo = ({ linkTo }: { linkTo: AdminPath | string }) => (
   <div className="logo">
     <Link to={linkTo}>
-      <Icon iconName={IconName.Logo} title="Logo" ariaHidden={false} />
+      <Icon
+        iconName={IconName.Logo}
+        title="Fashion Fusion Logo"
+        ariaHidden={false}
+        desc="Logo"
+      />
     </Link>
   </div>
 );

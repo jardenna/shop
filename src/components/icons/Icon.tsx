@@ -55,16 +55,6 @@ import UserIcon from './UserIcon';
 import UsersIcon from './UsersIcon';
 import WarningIcon from './WarningIcon';
 
-export type IconDefaultProps = {
-  ariaHidden?: boolean;
-  className?: string;
-  fill?: string;
-  focusable?: boolean;
-  role?: 'img';
-  size?: string;
-  title?: string;
-};
-
 type IconProps = IconDefaultProps & {
   iconName: IconName;
 };
@@ -127,6 +117,17 @@ const iconMapping = {
   woman: WomanIcon,
 };
 
+export type IconDefaultProps = {
+  ariaHidden?: boolean;
+  className?: string;
+  desc?: string;
+  fill?: string;
+  focusable?: boolean;
+  role?: 'img';
+  size?: string;
+  title?: string;
+};
+
 const Icon = ({
   iconName,
   size = '1.5em',
@@ -134,10 +135,12 @@ const Icon = ({
   ariaHidden,
   title,
   fill,
-  role = 'img',
+  role,
+  desc,
   focusable = false,
 }: IconProps) => {
   const IconComponent = iconMapping[iconName];
+
   return (
     <IconComponent
       size={size}
@@ -147,6 +150,7 @@ const Icon = ({
       fill={fill}
       title={title}
       role={role}
+      desc={desc}
     />
   );
 };
