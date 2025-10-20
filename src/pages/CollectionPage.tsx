@@ -243,6 +243,7 @@ const CollectionPage = () => {
                     ariaLabelledby={ariaLabelledby}
                     showSizeOverlay={productView !== 'list'}
                     productView={productView}
+                    linkText={language.view}
                   />
                 )}
               </ErrorBoundary>

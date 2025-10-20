@@ -5,13 +5,13 @@ import Badge from '../../../components/Badge';
 import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import Img from '../../../components/Img';
 import VisuallyHidden from '../../../components/VisuallyHidden';
-import useLanguage from '../../language/useLanguage';
 import ProductCardGridContent from './ProductCardGridContent';
 import ProductCardListContent from './ProductCardListContent';
 import SizeOverlay from './SizeOverlay';
 
 type ProductCardListProps = {
   ariaLabelledby: string;
+  linkText: string;
   products: BaseProduct[];
   productView: ReactNode;
   showSizeOverlay: boolean;
@@ -22,14 +22,14 @@ const ProductCardList = ({
   ariaLabelledby,
   showSizeOverlay,
   productView,
+  linkText,
 }: ProductCardListProps) => {
   const { categoryId } = useParams();
-  const { language } = useLanguage();
 
   return (
     <ul className={`product-card-list ${productView}`}>
       {products.map((product) => (
-        <li key={product.id} className="product-card-item">
+        <li key={product.id}>
           <article aria-labelledby={ariaLabelledby} className="product-card">
             <FavoriteHeart id={product.id} />
             <Link
@@ -38,7 +38,7 @@ const ProductCardList = ({
               className="product-card-link"
             >
               <VisuallyHidden>
-                {language.view} {product.productName}
+                {linkText} {product.productName}
               </VisuallyHidden>
               <div className="card-img-container">
                 {product.discount > 0 && (
