@@ -32,7 +32,7 @@ const ProductCardList = ({
     <ul className={`product-card-lists ${className}`}>
       {products.map((product) => (
         <li key={product.id} className="product-card-item">
-          <article aria-labelledby={ariaLabelledby}>
+          <article aria-labelledby={ariaLabelledby} className="test">
             <div className="card-img-container">
               <FavoriteHeart id={product.id} />
               {product.discount > 0 && (
@@ -52,12 +52,14 @@ const ProductCardList = ({
               </Link>
             </div>
 
-            <h2>{product.productName}</h2>
-            {productView === 'list' ? (
-              <ProductCardListContent product={product} />
-            ) : (
-              <ProductCardGridContent product={product} />
-            )}
+            <div className='"product-card-contet'>
+              <h2>{product.productName}</h2>
+              {productView === 'list' ? (
+                <ProductCardListContent product={product} />
+              ) : (
+                <ProductCardGridContent product={product} />
+              )}
+            </div>
           </article>
         </li>
       ))}

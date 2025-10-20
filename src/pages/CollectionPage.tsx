@@ -15,9 +15,7 @@ import useLanguage from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
 import CollectionPageHeader from '../features/shop/components/CollectionPageHeader';
 import NoProductsFound from '../features/shop/components/NoProductsFound';
-import ProductCard from '../features/shop/components/ProductCard';
-import ProductCardGridContent from '../features/shop/components/ProductCardGridContent';
-import ProductCardListContent from '../features/shop/components/ProductCardListContent';
+import ProductCardList from '../features/shop/components/ProductCardList';
 import ProductToolbar from '../features/shop/components/ProductToolbar';
 import useSubMenu from '../features/shop/hooks/useSubMenu';
 import { useGetProductsQuery } from '../features/shop/shopApiSlice';
@@ -39,7 +37,7 @@ const CollectionPage = () => {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const { category, categoryId } = useParams();
   const { language } = useLanguage();
-  const { isMobileSize, isSmallMobileSize } = useMediaQuery();
+  const { isMobileSize } = useMediaQuery();
   const { page, productsPerPage, setPage, setProductsPerPage, resetPage } =
     usePaginationParams();
 
@@ -239,7 +237,15 @@ const CollectionPage = () => {
                 FallbackComponent={ErrorBoundaryFallback}
                 onReset={() => refetch()}
               >
-                <ul
+                {products && (
+                  <ProductCardList
+                    products={products.products}
+                    ariaLabelledby={ariaLabelledby}
+                    showSizeOverlay={productView !== 'list'}
+                    productView={productView}
+                  />
+                )}
+                {/* <ul
                   className={`product-card-list ${productView === 'list' && !isSmallMobileSize ? 'list' : ''}`}
                 >
                   {products &&
@@ -260,7 +266,7 @@ const CollectionPage = () => {
                         )}
                       </ProductCard>
                     ))}
-                </ul>
+                </ul> */}
               </ErrorBoundary>
             ) : (
               <NoProductsFound

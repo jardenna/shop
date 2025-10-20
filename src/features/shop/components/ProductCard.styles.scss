@@ -3,6 +3,24 @@
 .product-card-lists {
   @include grid-template-column;
 
+  &.list-view {
+    grid-template-columns: 1fr !important;
+    row-gap: 2rem;
+
+    .test {
+      gap: 20px;
+      display: grid;
+      grid-template-columns: repeat(
+        auto-fill,
+        minmax(min(100%, 23.875rem), 1fr)
+      );
+    }
+
+    .card-img-container {
+      aspect-ratio: 3 / 2;
+    }
+  }
+
   .product-card-item {
     position: relative;
   }
@@ -19,147 +37,133 @@
     left: 12px;
   }
 
-  .size-overlays {
+  .size-overlay {
     gap: 30px;
     display: flex;
     background-color: rgb($color-white, 80%);
     padding: 12px 4px;
     justify-content: center;
     position: absolute;
-    bottom: 0;
+    transform: translateY(0);
     width: 100%;
+
+    @include transition($what: transform);
   }
 
   .card-img-container {
-    aspect-ratio: 3 / 5; // eller 4/5 hvis du vil have dem lidt højere
+    aspect-ratio: 3 / 5;
     width: 100%;
-    overflow: hidden; // clip er fint, men hidden er mere udbredt og stabilt
-    position: relative; // keeps overlays placed correctly
-  }
-
-  .card-img-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; // sørger for stabil højde
-  }
-
-  img {
-    border-radius: 0;
-  }
-}
-
-.size-overlay {
-  gap: 30px;
-  display: flex;
-  background-color: rgb($color-white, 80%);
-  padding: 12px 4px;
-  justify-content: center;
-  position: absolute;
-  transform: translateY(0);
-  width: 100%;
-
-  @include transition($what: transform);
-}
-
-.product-img-container {
-  position: relative;
-  overflow: clip;
-
-  .favorites-label {
-    position: absolute;
-    z-index: 2;
-    right: 5px;
-    top: 5px;
-    border-radius: 8px;
-    background-color: rgb($color-white, 60%);
-
-    &:hover {
-      background-color: rgb($color-gray-70, 70%);
-    }
-  }
-
-  &:hover {
-    .size-overlay {
-      transform: translateY(-100%);
-    }
-  }
-}
-
-.product-card-content {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-block: 8px 16px;
-
-  p {
-    margin: 0;
-  }
-
-  .product-card-title {
-    font-family: $font-primary-bold;
-    font-size: $font-medium;
-    text-transform: uppercase;
-  }
-
-  .product-card-description {
-    max-width: rem(652px);
-    text-wrap: pretty;
-  }
-}
-
-.product-card-list {
-  @include grid-template-column;
-
-  grid-auto-rows: rem(520px) auto;
-  container-type: inline-size;
-
-  .product-card {
-    grid-row: span 2;
-    display: grid;
-    grid-template-rows: subgrid;
+    overflow: clip;
     position: relative;
 
-    &:has(a:focus-visible) {
-      @include outline;
-    }
-  }
-
-  .product-card-img {
-    border-radius: 0;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-  }
-
-  .badge {
-    position: absolute;
-    z-index: 2;
-    left: 12px;
-    top: 12px;
-  }
-
-  &.list {
-    grid-auto-rows: rem(320px) auto;
-    gap: 30px;
-
-    .product-card-img {
-      height: rem(320px);
-    }
-
-    .product-card {
-      grid-column: span 3;
-      grid-row: span 1;
-      grid-auto-columns: rem(270px) auto;
-      gap: 32px;
-      align-items: center;
-
-      .product-card-content,
-      .product-img-container {
-        grid-row: none;
-      }
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+      object-fit: cover;
     }
   }
 }
+
+// .product-img-container {
+//   position: relative;
+//   overflow: clip;
+
+//   .favorites-label {
+//     position: absolute;
+//     z-index: 2;
+//     right: 5px;
+//     top: 5px;
+//     border-radius: 8px;
+//     background-color: rgb($color-white, 60%);
+
+//     &:hover {
+//       background-color: rgb($color-gray-70, 70%);
+//     }
+//   }
+
+//   &:hover {
+//     .size-overlay {
+//       transform: translateY(-100%);
+//     }
+//   }
+// }
+
+// .product-card-content {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 4px;
+//   margin-block: 8px 16px;
+
+//   p {
+//     margin: 0;
+//   }
+
+//   .product-card-title {
+//     font-family: $font-primary-bold;
+//     font-size: $font-medium;
+//     text-transform: uppercase;
+//   }
+
+//   .product-card-description {
+//     max-width: rem(652px);
+//     text-wrap: pretty;
+//   }
+// }
+
+// .product-card-list {
+//   @include grid-template-column;
+
+//   grid-auto-rows: rem(520px) auto;
+//   container-type: inline-size;
+
+//   .product-card {
+//     grid-row: span 2;
+//     display: grid;
+//     grid-template-rows: subgrid;
+//     position: relative;
+
+//     &:has(a:focus-visible) {
+//       @include outline;
+//     }
+//   }
+
+//   .product-card-img {
+//     border-radius: 0;
+//     height: 100%;
+//     width: 100%;
+//     object-fit: cover;
+//   }
+
+//   .badge {
+//     position: absolute;
+//     z-index: 2;
+//     left: 12px;
+//     top: 12px;
+//   }
+
+//   &.list {
+//     grid-auto-rows: rem(320px) auto;
+//     gap: 30px;
+
+//     .product-card-img {
+//       height: rem(320px);
+//     }
+
+//     .product-card {
+//       grid-column: span 3;
+//       grid-row: span 1;
+//       grid-auto-columns: rem(270px) auto;
+//       gap: 32px;
+//       align-items: center;
+
+//       .product-card-content,
+//       .product-img-container {
+//         grid-row: none;
+//       }
+//     }
+//   }
+// }
 
 .shopping-bag-container {
   position: absolute;

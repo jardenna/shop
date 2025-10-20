@@ -31,30 +31,32 @@ const ProductCard = ({
   const ariaLabelledby = `product-card-title-${product.id}`;
 
   return (
-    <li className="product-card" aria-labelledby={ariaLabelledby}>
-      <div className="product-img-container">
-        <FavoriteHeart id={product.id} />
-        {product.discount > 0 && (
-          <Badge badgeText={`- ${product.discount} %`} className="discount" />
-        )}
-        <Link to={linkTo}>
-          <VisuallyHidden>
-            {language.view} {product.productName}
-          </VisuallyHidden>
-          <Img alt="" src={product.images[0]} className="product-card-img" />
-        </Link>
-        {showSizeOverlay && <SizeOverlay sizes={product.sizes} count={5} />}
-      </div>
-      <div className="product-card-content">
-        <HeadingElement
-          ariaLabelledby={ariaLabelledby}
-          as={as}
-          className="product-card-title"
-        >
-          {product.productName}
-        </HeadingElement>
-        {children}
-      </div>
+    <li className="product-card">
+      <article className="product-card" aria-labelledby={ariaLabelledby}>
+        <div className="product-img-container">
+          <FavoriteHeart id={product.id} />
+          {product.discount > 0 && (
+            <Badge badgeText={`- ${product.discount} %`} className="discount" />
+          )}
+          <Link to={linkTo}>
+            <VisuallyHidden>
+              {language.view} {product.productName}
+            </VisuallyHidden>
+            <Img alt="" src={product.images[0]} className="product-card-img" />
+          </Link>
+          {showSizeOverlay && <SizeOverlay sizes={product.sizes} count={5} />}
+        </div>
+        <div className="product-card-content">
+          <HeadingElement
+            ariaLabelledby={ariaLabelledby}
+            as={as}
+            className="product-card-title"
+          >
+            {product.productName}
+          </HeadingElement>
+          {children}
+        </div>
+      </article>
     </li>
   );
 };
