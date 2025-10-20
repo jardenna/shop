@@ -1,9 +1,68 @@
 @use '../../../scss/globals' as *;
 
+$placement-x: 12px;
+$placement-y: 8px;
+
 .product-card-list {
   @include grid-template-column;
 
+  .product-card {
+    position: relative;
+
+    .product-card-content {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-block: 8px 16px;
+
+      p {
+        margin: 0;
+      }
+
+      .product-card-title {
+        font-family: $font-primary-bold;
+        font-size: $font-medium;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .favorites-label {
+    position: absolute;
+    z-index: 2;
+    right: $placement-x;
+    top: $placement-y;
+    border-radius: 8px;
+    background-color: rgb($color-white, 50%);
+
+    &:hover {
+      background-color: rgb($color-gray-70, 60%);
+    }
+  }
+
+  .badge {
+    left: 12px;
+    position: absolute;
+    z-index: 1;
+    top: $placement-y;
+  }
+
   .product-card-link {
+    color: $color-primary;
+
+    .size-overlay {
+      gap: 30px;
+      display: flex;
+      background-color: rgb($color-white, 80%);
+      padding: 12px 4px;
+      justify-content: center;
+      position: absolute;
+      transform: translateY(0);
+      width: 100%;
+
+      @include transition($what: transform);
+    }
+
     &:hover {
       .size-overlay {
         transform: translateY(-100%);
@@ -25,47 +84,34 @@
     }
   }
 
+  // List view
   &.list {
     grid-template-columns: 1fr;
     row-gap: 16px;
 
-    .product-card-link {
-      gap: 20px;
-
-      @include grid-template-column(380px);
-    }
-
-    .card-img-container {
-      aspect-ratio: 3 / 2;
-    }
-  }
-
-  .product-card {
-    position: relative;
-
-    .badge,
-    .favorite-heart {
-      position: absolute;
-      z-index: 1;
-      right: 4px;
-      top: 12px;
+    .favorites-label {
+      left: $placement-x;
+      right: auto;
     }
 
     .badge {
-      left: 12px;
+      left: auto;
+      right: $placement-x;
     }
 
-    .size-overlay {
-      gap: 30px;
-      display: flex;
-      background-color: rgb($color-white, 80%);
-      padding: 12px 4px;
-      justify-content: center;
-      position: absolute;
-      transform: translateY(0);
-      width: 100%;
+    .product-card-link {
+      gap: 20px;
+      align-items: center;
 
-      @include transition($what: transform);
+      @include grid-template-column;
+    }
+
+    .product-card-content {
+      gap: 12px;
+    }
+
+    .card-img-container {
+      aspect-ratio: 3 / 4;
     }
   }
 }

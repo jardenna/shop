@@ -44,8 +44,10 @@ const ProductCard = ({
         <Img alt="" src={product.images[0]} />
         {showSizeOverlay && <SizeOverlay sizes={product.sizes} count={5} />}
       </div>
-      <div className="card-text-container">
-        <h2 id={ariaLabelledby}>{product.productName}</h2>
+      <div className="product-card-content">
+        <h2 className="product-card-title" id={ariaLabelledby}>
+          {product.productName}
+        </h2>
         {productView === 'list' ? (
           <ProductCardListContent product={product} />
         ) : (
