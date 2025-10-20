@@ -1,62 +1,61 @@
-import type { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { Link } from 'react-router';
-import type { ProductPreview } from '../../../app/api/apiTypes/shopApiTypes';
+import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import Badge from '../../../components/Badge';
 import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import Img from '../../../components/Img';
 import VisuallyHidden from '../../../components/VisuallyHidden';
-import HeadingElement from '../../../layout/HeadingElement';
-import type { HeadingTag } from '../../../types/types';
-import useLanguage from '../../language/useLanguage';
 import './ProductCard.styles.scss';
+import ProductCardGridContent from './ProductCardGridContent';
+import ProductCardListContent from './ProductCardListContent';
 import SizeOverlay from './SizeOverlay';
 
-type ProductCardProps = {
-  children: ReactNode;
+export type ProductCardProps = {
+  ariaLabelledby: string;
+  linkText: string;
   linkTo: string;
-  product: ProductPreview;
-  as?: HeadingTag;
-  showSizeOverlay?: boolean;
+  product: BaseProduct;
+  productView: ReactNode;
+  showSizeOverlay: boolean;
 };
 
 const ProductCard = ({
-  showSizeOverlay,
   product,
+  ariaLabelledby,
+  showSizeOverlay,
+  productView,
+  linkText,
   linkTo,
-  as,
-  children,
-}: ProductCardProps) => {
-  const { language } = useLanguage();
-
-  const ariaLabelledby = `product-card-title-${product.id}`;
-
-  return (
-    <article className="product-card" aria-labelledby={ariaLabelledby}>
-      <div className="product-img-container">
-        <FavoriteHeart id={product.id} />
+}: ProductCardProps) => (
+  <article aria-labelledby={ariaLabelledby} className="product-card">
+    <FavoriteHeart id={product.id} />
+    <Link
+      to={linkTo}
+      aria-labelledby={ariaLabelledby}
+      className="product-card-link"
+    >
+      <VisuallyHidden>
+        {linkText} {product.productName}
+      </VisuallyHidden>
+      <div className="card-img-container">
         {product.discount > 0 && (
           <Badge badgeText={`- ${product.discount} %`} className="discount" />
         )}
-        <Link to={linkTo}>
-          <VisuallyHidden>
-            {language.view} {product.productName}
-          </VisuallyHidden>
-          <Img alt="" src={product.images[0]} className="product-card-img" />
-        </Link>
+        <Img alt="" src={product.images[0]} />
         {showSizeOverlay && <SizeOverlay sizes={product.sizes} count={5} />}
       </div>
       <div className="product-card-content">
-        <HeadingElement
-          ariaLabelledby={ariaLabelledby}
-          as={as}
-          className="product-card-title"
-        >
+        <h2 className="product-card-title" id={ariaLabelledby}>
           {product.productName}
-        </HeadingElement>
-        {children}
+        </h2>
+        {productView === 'list' ? (
+          <ProductCardListContent product={product} />
+        ) : (
+          <ProductCardGridContent product={product} />
+        )}
       </div>
-    </article>
-  );
-};
+    </Link>
+  </article>
+);
 
 export default ProductCard;

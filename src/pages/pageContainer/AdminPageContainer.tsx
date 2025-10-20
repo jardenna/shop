@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import PageHeader from '../../components/pageHeader/PageHeader';
 import MetaTags from '../../layout/nav/MetaTags';
+import { ariaInfoTitle } from '../../utils/utils';
 
 type AdminPageContainerProps = {
   ariaLabelledby: string;
@@ -19,7 +20,7 @@ const AdminPageContainer = ({
   variant = 'large',
   ariaLabelledby,
 }: AdminPageContainerProps) => {
-  const ariaTitle = `${ariaLabelledby}-title`;
+  const ariaTitle = ariaInfoTitle(ariaLabelledby);
 
   return (
     <section

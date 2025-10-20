@@ -1,7 +1,7 @@
 import { Outlet, useLocation } from 'react-router';
 import Picture from '../components/Picture';
 import useLanguage from '../features/language/useLanguage';
-import { getPathName, titleToCamelCase } from '../utils/utils';
+import { ariaInfoTitle, getPathName, titleToCamelCase } from '../utils/utils';
 import './accountLayout.styles.scss';
 import MetaTags from './nav/MetaTags';
 import NavContainer from './nav/NavContainer';
@@ -23,7 +23,7 @@ const AccountLayout = () => {
     addresses: 'addressAltText',
   };
   const altText = altTextMap[imgName];
-  const ariaLabelledby = `${pathInfo}-title`;
+  const ariaLabelledby = ariaInfoTitle(pathInfo);
 
   return (
     <>

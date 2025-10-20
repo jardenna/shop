@@ -15,9 +15,7 @@ import useLanguage from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
 import CollectionPageHeader from '../features/shop/components/CollectionPageHeader';
 import NoProductsFound from '../features/shop/components/NoProductsFound';
-import ProductCard from '../features/shop/components/ProductCard';
-import ProductCardGridContent from '../features/shop/components/ProductCardGridContent';
-import ProductCardListContent from '../features/shop/components/ProductCardListContent';
+import ProductCardList from '../features/shop/components/ProductCardList';
 import ProductToolbar from '../features/shop/components/ProductToolbar';
 import useSubMenu from '../features/shop/hooks/useSubMenu';
 import { useGetProductsQuery } from '../features/shop/shopApiSlice';
@@ -30,7 +28,7 @@ import MetaTags from '../layout/nav/MetaTags';
 import { IconName } from '../types/enums';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { sortSizesDynamic } from '../utils/sizeUtils';
-import { getFilterSummary } from '../utils/utils';
+import { ariaInfoTitle, getFilterSummary } from '../utils/utils';
 import './CollectionPage.styles.scss';
 
 export type FilterKeys = 'sizes' | 'colors' | 'brand';
@@ -39,7 +37,7 @@ const CollectionPage = () => {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const { category, categoryId } = useParams();
   const { language } = useLanguage();
-  const { isMobileSize, isSmallMobileSize } = useMediaQuery();
+  const { isMobileSize } = useMediaQuery();
   const { page, productsPerPage, setPage, setProductsPerPage, resetPage } =
     usePaginationParams();
 
@@ -172,7 +170,7 @@ const CollectionPage = () => {
   const isOptionDisabled = (option: { value: string }) =>
     Number(option.value) > productCount;
 
-  const ariaLabelledby = `${category || 'women'}-title`;
+  const ariaLabelledby = ariaInfoTitle(category || 'women');
 
   return (
     <>
@@ -234,41 +232,28 @@ const CollectionPage = () => {
               />
             )}
             {isLoading && <SkeletonCardList count={productsPerPage} />}
-            <section
-              className={`product-card-list ${productView === 'list' && !isSmallMobileSize ? 'list' : ''}`}
-            >
-              {productCount > 0 ? (
-                <ErrorBoundary
-                  FallbackComponent={ErrorBoundaryFallback}
-                  onReset={() => refetch()}
-                >
-                  {products &&
-                    products.products.map((product) => (
-                      <ProductCard
-                        as="h3"
-                        key={product.id}
-                        linkTo={
-                          categoryId ? product.id : `allProducts/${product.id}`
-                        }
-                        product={product}
-                        showSizeOverlay={productView !== 'list'}
-                      >
-                        {productView === 'list' ? (
-                          <ProductCardListContent product={product} />
-                        ) : (
-                          <ProductCardGridContent product={product} />
-                        )}
-                      </ProductCard>
-                    ))}
-                </ErrorBoundary>
-              ) : (
-                <NoProductsFound
-                  noProductText={language.noProductResult}
-                  resetFilters={onClearAllFilters}
-                  resetBtnText={language.clearAllFilters}
-                />
-              )}
-            </section>
+            {productCount > 0 ? (
+              <ErrorBoundary
+                FallbackComponent={ErrorBoundaryFallback}
+                onReset={() => refetch()}
+              >
+                {products && (
+                  <ProductCardList
+                    products={products.products}
+                    ariaLabelledby={ariaLabelledby}
+                    productView={productView}
+                    linkText={language.view}
+                    showSizeOverlay={productView !== 'list'}
+                  />
+                )}
+              </ErrorBoundary>
+            ) : (
+              <NoProductsFound
+                noProductText={language.noProductResult}
+                resetFilters={onClearAllFilters}
+                resetBtnText={language.clearAllFilters}
+              />
+            )}
           </div>
         </div>
         <section
