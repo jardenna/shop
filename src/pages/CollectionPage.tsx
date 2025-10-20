@@ -245,28 +245,6 @@ const CollectionPage = () => {
                     productView={productView}
                   />
                 )}
-                {/* <ul
-                  className={`product-card-list ${productView === 'list' && !isSmallMobileSize ? 'list' : ''}`}
-                >
-                  {products &&
-                    products.products.map((product) => (
-                      <ProductCard
-                        as="h3"
-                        key={product.id}
-                        linkTo={
-                          categoryId ? product.id : `allProducts/${product.id}`
-                        }
-                        product={product}
-                        showSizeOverlay={productView !== 'list'}
-                      >
-                        {productView === 'list' ? (
-                          <ProductCardListContent product={product} />
-                        ) : (
-                          <ProductCardGridContent product={product} />
-                        )}
-                      </ProductCard>
-                    ))}
-                </ul> */}
               </ErrorBoundary>
             ) : (
               <NoProductsFound

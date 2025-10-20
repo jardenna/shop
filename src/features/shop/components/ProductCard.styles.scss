@@ -1,13 +1,13 @@
 @use '../../../scss/globals' as *;
 
-.product-card-lists {
+.product-card-list {
   @include grid-template-column;
 
-  &.list-view {
+  &.list {
     grid-template-columns: 1fr !important;
     row-gap: 2rem;
 
-    .test {
+    .product-card {
       gap: 20px;
       display: grid;
       grid-template-columns: repeat(
@@ -64,106 +64,6 @@
     }
   }
 }
-
-// .product-img-container {
-//   position: relative;
-//   overflow: clip;
-
-//   .favorites-label {
-//     position: absolute;
-//     z-index: 2;
-//     right: 5px;
-//     top: 5px;
-//     border-radius: 8px;
-//     background-color: rgb($color-white, 60%);
-
-//     &:hover {
-//       background-color: rgb($color-gray-70, 70%);
-//     }
-//   }
-
-//   &:hover {
-//     .size-overlay {
-//       transform: translateY(-100%);
-//     }
-//   }
-// }
-
-// .product-card-content {
-//   display: flex;
-//   flex-direction: column;
-//   gap: 4px;
-//   margin-block: 8px 16px;
-
-//   p {
-//     margin: 0;
-//   }
-
-//   .product-card-title {
-//     font-family: $font-primary-bold;
-//     font-size: $font-medium;
-//     text-transform: uppercase;
-//   }
-
-//   .product-card-description {
-//     max-width: rem(652px);
-//     text-wrap: pretty;
-//   }
-// }
-
-// .product-card-list {
-//   @include grid-template-column;
-
-//   grid-auto-rows: rem(520px) auto;
-//   container-type: inline-size;
-
-//   .product-card {
-//     grid-row: span 2;
-//     display: grid;
-//     grid-template-rows: subgrid;
-//     position: relative;
-
-//     &:has(a:focus-visible) {
-//       @include outline;
-//     }
-//   }
-
-//   .product-card-img {
-//     border-radius: 0;
-//     height: 100%;
-//     width: 100%;
-//     object-fit: cover;
-//   }
-
-//   .badge {
-//     position: absolute;
-//     z-index: 2;
-//     left: 12px;
-//     top: 12px;
-//   }
-
-//   &.list {
-//     grid-auto-rows: rem(320px) auto;
-//     gap: 30px;
-
-//     .product-card-img {
-//       height: rem(320px);
-//     }
-
-//     .product-card {
-//       grid-column: span 3;
-//       grid-row: span 1;
-//       grid-auto-columns: rem(270px) auto;
-//       gap: 32px;
-//       align-items: center;
-
-//       .product-card-content,
-//       .product-img-container {
-//         grid-row: none;
-//       }
-//     }
-//   }
-// }
 
 .shopping-bag-container {
   position: absolute;

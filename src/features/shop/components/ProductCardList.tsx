@@ -15,12 +15,10 @@ type ProductCardListProps = {
   products: BaseProduct[];
   productView: ReactNode;
   showSizeOverlay: boolean;
-  className?: string;
 };
 
 const ProductCardList = ({
   products,
-  className = '',
   ariaLabelledby,
   showSizeOverlay,
   productView,
@@ -29,37 +27,40 @@ const ProductCardList = ({
   const { language } = useLanguage();
 
   return (
-    <ul className={`product-card-lists ${className}`}>
+    <ul className={`product-card-list ${productView}`}>
       {products.map((product) => (
         <li key={product.id} className="product-card-item">
-          <article aria-labelledby={ariaLabelledby} className="test">
-            <div className="card-img-container">
-              <FavoriteHeart id={product.id} />
-              {product.discount > 0 && (
-                <Badge
-                  badgeText={`- ${product.discount} %`}
-                  className="discount"
-                />
-              )}
+          <article aria-labelledby={ariaLabelledby} className="product-card">
+            <FavoriteHeart id={product.id} />
+            <Link
+              to={categoryId ? product.id : `allProducts/${product.id}`}
+              aria-labelledby={ariaLabelledby}
+              className="product-card-link"
+            >
               <VisuallyHidden>
                 {language.view} {product.productName}
               </VisuallyHidden>
-              <Link to={categoryId ? product.id : `allProducts/${product.id}`}>
+              <div className="card-img-container">
+                {product.discount > 0 && (
+                  <Badge
+                    badgeText={`- ${product.discount} %`}
+                    className="discount"
+                  />
+                )}
                 <Img alt="" src={product.images[0]} />
                 {showSizeOverlay && (
                   <SizeOverlay sizes={product.sizes} count={5} />
                 )}
-              </Link>
-            </div>
-
-            <div className='"product-card-contet'>
-              <h2>{product.productName}</h2>
-              {productView === 'list' ? (
-                <ProductCardListContent product={product} />
-              ) : (
-                <ProductCardGridContent product={product} />
-              )}
-            </div>
+              </div>
+              <div className="card-text-container">
+                <h2 id={ariaLabelledby}>{product.productName}</h2>
+                {productView === 'list' ? (
+                  <ProductCardListContent product={product} />
+                ) : (
+                  <ProductCardGridContent product={product} />
+                )}
+              </div>
+            </Link>
           </article>
         </li>
       ))}
