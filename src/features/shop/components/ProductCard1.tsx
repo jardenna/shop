@@ -5,6 +5,7 @@ import Badge from '../../../components/Badge';
 import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import Img from '../../../components/Img';
 import VisuallyHidden from '../../../components/VisuallyHidden';
+import './ProductCard.styles.scss';
 import ProductCardGridContent from './ProductCardGridContent';
 import ProductCardListContent from './ProductCardListContent';
 import SizeOverlay from './SizeOverlay';
