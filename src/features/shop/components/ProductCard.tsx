@@ -19,7 +19,7 @@ export type ProductCardProps = {
   showSizeOverlay: boolean;
 };
 
-const ProductCard1 = ({
+const ProductCard = ({
   product,
   ariaLabelledby,
   showSizeOverlay,
@@ -56,4 +56,4 @@ const ProductCard1 = ({
   </article>
 );
 
-export default ProductCard1;
+export default ProductCard;

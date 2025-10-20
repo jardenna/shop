@@ -3,6 +3,14 @@
 .product-card-list {
   @include grid-template-column;
 
+  .product-card-link {
+    &:hover {
+      .size-overlay {
+        transform: translateY(-100%);
+      }
+    }
+  }
+
   .card-img-container {
     aspect-ratio: 3 / 5;
     width: 100%;

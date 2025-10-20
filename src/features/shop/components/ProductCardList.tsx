@@ -1,6 +1,6 @@
 import { useParams } from 'react-router';
 import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
-import ProductCard1, { ProductCardProps } from './ProductCard1';
+import ProductCard, { ProductCardProps } from './ProductCard';
 
 type OmitteProductCardProps = Omit<ProductCardProps, 'product' | 'linkTo'>;
 
@@ -21,7 +21,7 @@ const ProductCardList = ({
     <ul className={`product-card-list ${productView}`}>
       {products.map((product) => (
         <li key={product.id}>
-          <ProductCard1
+          <ProductCard
             ariaLabelledby={ariaLabelledby}
             showSizeOverlay={showSizeOverlay}
             productView={productView}
