@@ -1,6 +1,6 @@
 import { useParams } from 'react-router';
 import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
-import ProductCard, { ProductCardProps } from './ProductCard';
+import ProductCard, { type ProductCardProps } from './ProductCard';
 
 type OmitteProductCardProps = Omit<ProductCardProps, 'product' | 'linkTo'>;
 
