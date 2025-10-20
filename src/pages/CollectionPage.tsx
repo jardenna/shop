@@ -241,9 +241,9 @@ const CollectionPage = () => {
                   <ProductCardList
                     products={products.products}
                     ariaLabelledby={ariaLabelledby}
-                    showSizeOverlay={productView !== 'list'}
                     productView={productView}
                     linkText={language.view}
+                    showSizeOverlay={productView !== 'list'}
                   />
                 )}
               </ErrorBoundary>
