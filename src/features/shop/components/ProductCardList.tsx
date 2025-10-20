@@ -31,9 +31,9 @@ const ProductCardList = ({
   return (
     <ul className={`product-card-lists ${className}`}>
       {products.map((product) => (
-        <li key={product.id}>
+        <li key={product.id} className="product-card-item">
           <article aria-labelledby={ariaLabelledby}>
-            <div>
+            <div className="card-img-container">
               <FavoriteHeart id={product.id} />
               {product.discount > 0 && (
                 <Badge
@@ -41,15 +41,15 @@ const ProductCardList = ({
                   className="discount"
                 />
               )}
+              <VisuallyHidden>
+                {language.view} {product.productName}
+              </VisuallyHidden>
               <Link to={categoryId ? product.id : `allProducts/${product.id}`}>
-                <VisuallyHidden>
-                  {language.view} {product.productName}
-                </VisuallyHidden>
                 <Img alt="" src={product.images[0]} />
+                {showSizeOverlay && (
+                  <SizeOverlay sizes={product.sizes} count={5} />
+                )}
               </Link>
-              {showSizeOverlay && (
-                <SizeOverlay sizes={product.sizes} count={5} />
-              )}
             </div>
 
             <h2>{product.productName}</h2>
