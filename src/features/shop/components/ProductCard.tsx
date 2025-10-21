@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import { Link } from 'react-router';
 import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import Badge from '../../../components/Badge';
@@ -15,8 +14,9 @@ export type ProductCardProps = {
   linkText: string;
   linkTo: string;
   product: BaseProduct;
-  productView: ReactNode;
-  showSizeOverlay: boolean;
+  productView?: string;
+  showSizeOverlay?: boolean;
+  onReset: () => void;
 };
 
 const ProductCard = ({
