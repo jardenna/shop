@@ -1,13 +1,14 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
+import { ProductPreview } from '../../../app/api/apiTypes/shopApiTypes';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import ProductCard, { type ProductCardProps } from './ProductCard';
 
 type OmitteProductCardProps = Omit<ProductCardProps, 'product' | 'linkTo'>;
 
 type ProductCardListProps = OmitteProductCardProps & {
-  products: BaseProduct[];
+  products: Array<BaseProduct | ProductPreview>;
 };
 
 const ProductCardList = ({
@@ -33,7 +34,7 @@ const ProductCardList = ({
               ariaLabelledby={ariaLabelledby}
               showSizeOverlay={showSizeOverlay}
               productView={productView}
-              linkTo={categoryId ? product.id : `allProducts/${product.id}`}
+              linkTo={categoryId ? product.id : `all-products/${product.id}`}
               linkText={linkText}
               product={product}
             />
@@ -43,4 +44,5 @@ const ProductCardList = ({
     </ul>
   );
 };
+
 export default ProductCardList;

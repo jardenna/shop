@@ -26,7 +26,7 @@ enum ShopPath {
   Contact = 'contact',
   CreateAccount = 'create-account',
   Favorites = 'favorites',
-  FavoritesProduct = 'collection/product/all-products',
+  FavoritesProduct = '/collection/product/all-products',
   Home = 'home',
   Kids = '/collection/kids',
   Login = 'login',
