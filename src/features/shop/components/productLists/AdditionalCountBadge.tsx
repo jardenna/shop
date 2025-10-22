@@ -6,10 +6,11 @@ type AdditionalCountBadgeProps = {
 };
 const AdditionalCountBadge = ({ count }: AdditionalCountBadgeProps) => {
   const { language } = useLanguage();
+
   return (
     <span>
       <VisuallyHidden>
-        {language.thereAre} {count} {language.additionalColorsCount}
+        {language.thereAre} {count} {language.additionalOptionsCount}
       </VisuallyHidden>
       <span>{`+ ${count}`}</span>
     </span>

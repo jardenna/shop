@@ -25,10 +25,9 @@ const ColorList = ({ count, colors, groupTitle, variant }: ColorListProps) => {
   });
 
   // Calculate how many colors to show and how many are hidden
-  const shownColorLength = count ? count : colorList.length;
-  const { visibleItems, additionalColorsCount } = sliceAndCountHidden(
+  const { visibleItems, additionalOptionsCount } = sliceAndCountHidden(
     colorList,
-    shownColorLength,
+    count ?? colorList.length,
   );
 
   return (
@@ -44,9 +43,9 @@ const ColorList = ({ count, colors, groupTitle, variant }: ColorListProps) => {
           }}
         />
       ))}
-      {additionalColorsCount > 0 && (
+      {additionalOptionsCount > 0 && (
         <li>
-          <AdditionalCountBadge count={additionalColorsCount} />
+          <AdditionalCountBadge count={additionalOptionsCount} />
         </li>
       )}
     </ProductList>
