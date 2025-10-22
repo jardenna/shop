@@ -1,14 +1,11 @@
 @use '../../../scss/globals' as *;
 
-$placement-x: 12px;
 $placement-y: 8px;
 
 .product-card-list {
   @include grid-template-column;
 
   .product-card {
-    position: relative;
-
     .product-card-content {
       display: flex;
       flex-direction: column;
@@ -30,7 +27,7 @@ $placement-y: 8px;
   .favorites-label {
     position: absolute;
     z-index: 2;
-    right: $placement-x;
+    right: 12px;
     top: $placement-y;
     border-radius: 8px;
     background-color: rgb($color-white, 50%);
@@ -47,26 +44,35 @@ $placement-y: 8px;
     top: $placement-y;
   }
 
+  .size-overlay {
+    gap: 30px;
+    display: flex;
+    background-color: rgb($color-white, 80%);
+    padding: 12px 4px;
+    justify-content: center;
+    position: absolute;
+    transform: translateY(0);
+    width: 100%;
+
+    @include transition($what: transform);
+  }
+
   .product-card-link {
     color: $color-primary;
-
-    .size-overlay {
-      gap: 30px;
-      display: flex;
-      background-color: rgb($color-white, 80%);
-      padding: 12px 4px;
-      justify-content: center;
-      position: absolute;
-      transform: translateY(0);
-      width: 100%;
-
-      @include transition($what: transform);
-    }
+    display: block;
 
     &:hover {
       .size-overlay {
         transform: translateY(-100%);
       }
+
+      .product-card-title {
+        color: $color-gray-60;
+      }
+    }
+
+    &:focus-visible {
+      @include outline($color: $color-gray-60);
     }
   }
 
@@ -89,17 +95,7 @@ $placement-y: 8px;
     grid-template-columns: 1fr;
     row-gap: 16px;
 
-    .favorites-label {
-      left: $placement-x;
-      right: auto;
-    }
-
-    .badge {
-      left: auto;
-      right: $placement-x;
-    }
-
-    .product-card-link {
+    .product-card {
       gap: 20px;
       align-items: center;
 

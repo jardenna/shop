@@ -29,23 +29,33 @@ const ProductCard = ({
   linkTo,
 }: ProductCardProps) => (
   <article aria-labelledby={ariaLabelledby} className="product-card">
-    <FavoriteHeart id={product.id} />
-    <Link
-      to={linkTo}
-      aria-labelledby={ariaLabelledby}
-      className="product-card-link"
-    >
-      <VisuallyHidden>
-        {linkText} {product.productName}
-      </VisuallyHidden>
-      <div className="card-img-container">
-        {product.discount > 0 && (
-          <Badge badgeText={`- ${product.discount} %`} className="discount" />
-        )}
-        <Img alt="" src={product.images[0]} />
-        {showSizeOverlay && <SizeOverlay sizes={product.sizes} count={5} />}
-      </div>
-      <div className="product-card-content">
+    <div>
+      <FavoriteHeart id={product.id} />
+      <Link
+        to={linkTo}
+        aria-labelledby={ariaLabelledby}
+        className="product-card-link"
+      >
+        <VisuallyHidden>
+          {linkText} {product.productName}
+        </VisuallyHidden>
+        <div className="card-img-container">
+          {product.discount > 0 && (
+            <Badge badgeText={`- ${product.discount} %`} className="discount" />
+          )}
+          <Img alt="" src={product.images[0]} />
+          {showSizeOverlay && <SizeOverlay sizes={product.sizes} count={5} />}
+        </div>
+      </Link>
+    </div>
+
+    <div className="product-card-content">
+      <Link
+        to={linkTo}
+        aria-labelledby={ariaLabelledby}
+        className="product-card-link"
+        tabIndex={-1}
+      >
         <h2 className="product-card-title" id={ariaLabelledby}>
           {product.productName}
         </h2>
@@ -54,8 +64,8 @@ const ProductCard = ({
         ) : (
           <ProductCardGridContent product={product} />
         )}
-      </div>
-    </Link>
+      </Link>
+    </div>
   </article>
 );
 
