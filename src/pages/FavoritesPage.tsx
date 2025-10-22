@@ -1,5 +1,4 @@
 import useFavorites from '../components/favorites/useFavorites';
-
 import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import useLanguage from '../features/language/useLanguage';
 import ProductCard from '../features/shop/components/ProductCard';
@@ -8,7 +7,7 @@ import MainPageContainer from './pageContainer/MainPageContainer';
 
 const FavoritesPage = () => {
   const { language } = useLanguage();
-  const { favorites, isLoading, onReset } = useFavorites({});
+  const { favorites, isLoading } = useFavorites({});
 
   return (
     <MainPageContainer heading="favorites">
@@ -22,7 +21,6 @@ const FavoritesPage = () => {
                 product={product}
                 linkText=""
                 linkTo={`${ShopPath.FavoritesProduct}/${product.id}`}
-                onReset={onReset}
               />
             </li>
           ))

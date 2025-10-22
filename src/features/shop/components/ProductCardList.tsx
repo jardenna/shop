@@ -9,11 +9,11 @@ type OmitteProductCardProps = Omit<ProductCardProps, 'product' | 'linkTo'>;
 
 type ProductCardListProps = OmitteProductCardProps & {
   products: Array<BaseProduct | ProductPreview>;
+  onReset: () => void;
 };
 
 const ProductCardList = ({
   products,
-  ariaLabelledby,
   productView = '',
   linkText,
   onReset,
@@ -30,8 +30,6 @@ const ProductCardList = ({
         {products.map((product) => (
           <li key={product.id}>
             <ProductCard
-              onReset={onReset}
-              ariaLabelledby={ariaLabelledby}
               showSizeOverlay={showSizeOverlay}
               productView={productView}
               linkTo={categoryId ? product.id : `all-products/${product.id}`}

@@ -15,10 +15,8 @@ export type ProductCardProps = {
   linkText: string;
   linkTo: string;
   product: BaseProduct | ProductPreview;
-  ariaLabelledby?: string;
   productView?: string;
   showSizeOverlay?: boolean;
-  onReset: () => void;
 };
 
 const ProductCard = ({
