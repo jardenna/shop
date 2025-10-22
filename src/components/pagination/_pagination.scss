@@ -1,11 +1,5 @@
 @use '../../scss/globals' as *;
 
-.pagination {
-  display: grid;
-  place-content: center;
-  margin-block: 24px;
-}
-
 .pagination-btn-list {
   display: flex;
   gap: 8px;

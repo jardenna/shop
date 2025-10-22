@@ -59,11 +59,13 @@ const ProductCard = ({
         <h2 className="product-card-title" id={ariaLabelledby}>
           {product.productName}
         </h2>
-        {productView === 'list' ? (
-          <ProductCardListContent product={product as BaseProduct} />
-        ) : (
-          <ProductCardGridContent product={product} />
-        )}
+        <div className="product-card-info">
+          {productView === 'list' ? (
+            <ProductCardListContent product={product as BaseProduct} />
+          ) : (
+            <ProductCardGridContent product={product} />
+          )}
+        </div>
       </Link>
     </div>
   </article>
