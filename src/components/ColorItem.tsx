@@ -1,6 +1,6 @@
+import { ProductLabelVariant } from '../features/shop/components/productLists/ProductListItem';
 import variables from '../scss/variables.module.scss';
 import { colorMap } from '../utils/colorUtils';
-import { ProductLabelVariant } from './productLists/ProductListItem';
 
 type ColorItemProps = {
   colorKey: string;

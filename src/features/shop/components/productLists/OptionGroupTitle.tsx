@@ -1,6 +1,6 @@
-import type { OptionGroupHeading } from '../../types/types';
-import FormError from '../formElements/FormError';
-import RequiredIcon from '../RequiredIcon';
+import FormError from '../../../../components/formElements/FormError';
+import RequiredIcon from '../../../../components/RequiredIcon';
+import type { OptionGroupHeading } from '../../../../types/types';
 
 type OptionGroupTitleProps = {
   groupTitle: OptionGroupHeading;

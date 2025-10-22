@@ -2,10 +2,10 @@ import type {
   MainCategoryNames,
   Size,
   SubCategoryNames,
-} from '../../app/api/apiTypes/sharedApiTypes';
-import useLanguage from '../../features/language/useLanguage';
-import type { OptionGroupHeading } from '../../types/types';
-import { getDisplaySizes } from '../../utils/sizeUtils';
+} from '../../../../app/api/apiTypes/sharedApiTypes';
+import type { OptionGroupHeading } from '../../../../types/types';
+import { getDisplaySizes } from '../../../../utils/sizeUtils';
+import useLanguage from '../../../language/useLanguage';
 import ProductList from './ProductList';
 import ProductListItem from './ProductListItem';
 

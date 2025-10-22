@@ -1,5 +1,5 @@
 import { CSSProperties } from 'react';
-import VisuallyHidden from '../VisuallyHidden';
+import VisuallyHidden from '../../../../components/VisuallyHidden';
 
 export type ProductLabelVariant = 'mini' | 'small' | 'medium' | 'large';
 

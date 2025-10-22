@@ -1,7 +1,7 @@
 import type { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
-import ColorList from '../../../components/productLists/ColorList';
-import SizeList from '../../../components/productLists/SizeList';
 import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
+import ColorList from './productLists/ColorList';
+import SizeList from './productLists/SizeList';
 
 type ProductCardListContentProps = {
   product: BaseProduct;

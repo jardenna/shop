@@ -4,10 +4,10 @@ import type {
   SubCategoryNames,
 } from '../../app/api/apiTypes/sharedApiTypes';
 import useLanguage from '../../features/language/useLanguage';
+import ColorList from '../../features/shop/components/productLists/ColorList';
+import SizeList from '../../features/shop/components/productLists/SizeList';
 import CardContent from '../card/CardContent';
 import LabelValueGrid from '../LabelValueGrid';
-import ColorList from '../productLists/ColorList';
-import SizeList from '../productLists/SizeList';
 
 type ProductCardCenterProps = {
   availableSizeList: Size[];
