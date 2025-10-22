@@ -37,9 +37,9 @@ const translateKey = (
 // Generic function to get visible items and count of hidden items from a list
 const sliceAndCountHidden = <T>(list: T[], visibleCount: number) => {
   const visibleItems = list.slice(0, visibleCount);
-  const hiddenCount = Math.max(list.length - visibleCount, 0);
+  const additionalColorsCount = Math.max(list.length - visibleCount, 0);
 
-  return { visibleItems, hiddenCount };
+  return { visibleItems, additionalColorsCount };
 };
 
 //  Generic function that generates an array of string numbers from 1 up to `count`.

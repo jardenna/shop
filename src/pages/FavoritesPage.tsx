@@ -1,10 +1,12 @@
 import { ErrorBoundary } from 'react-error-boundary';
+import Button from '../components/Button';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import useFavorites from '../components/favorites/useFavorites';
 import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import useLanguage from '../features/language/useLanguage';
 import ProductCard from '../features/shop/components/ProductCard';
 import { ShopPath } from '../layout/nav/enums';
+import { BtnVariant } from '../types/enums';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const FavoritesPage = () => {
@@ -24,9 +26,9 @@ const FavoritesPage = () => {
               <li key={product.id}>
                 <ProductCard
                   product={product}
-                  linkText=""
                   linkTo={`${ShopPath.FavoritesProduct}/${product.id}`}
                 />
+                <Button variant={BtnVariant.Secondary}>Køb</Button>
               </li>
             ))
           ) : (

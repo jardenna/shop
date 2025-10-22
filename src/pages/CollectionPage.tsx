@@ -235,7 +235,6 @@ const CollectionPage = () => {
                 <ProductCardList
                   products={products.products}
                   productView={productView}
-                  linkText={language.view}
                   showSizeOverlay={productView !== 'list'}
                   onReset={() => refetch()}
                 />

@@ -8,7 +8,7 @@ type SizeOverlayProps = {
 const SizeOverlay = ({ sizes, count }: SizeOverlayProps) => {
   // Calculate how many sizes to show and how many are hidden
   const shownSizeLength = count ? count : sizes.length;
-  const { visibleItems, hiddenCount } = sliceAndCountHidden(
+  const { visibleItems, additionalColorsCount } = sliceAndCountHidden(
     sizes,
     shownSizeLength,
   );
@@ -18,7 +18,9 @@ const SizeOverlay = ({ sizes, count }: SizeOverlayProps) => {
       {visibleItems.map((size) => (
         <li key={size}>{size}</li>
       ))}
-      {hiddenCount > 0 && <li>{`+ ${hiddenCount}`}</li>}
+      {additionalColorsCount > 0 && (
+        <li className="additional-colors-badge">{`+ ${additionalColorsCount}`}</li>
+      )}
     </ul>
   );
 };

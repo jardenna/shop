@@ -15,7 +15,6 @@ type ProductCardListProps = OmitteProductCardProps & {
 const ProductCardList = ({
   products,
   productView = '',
-  linkText,
   onReset,
   showSizeOverlay,
 }: ProductCardListProps) => {
@@ -33,7 +32,6 @@ const ProductCardList = ({
               showSizeOverlay={showSizeOverlay}
               productView={productView}
               linkTo={categoryId ? product.id : `all-products/${product.id}`}
-              linkText={linkText}
               product={product}
             />
           </li>

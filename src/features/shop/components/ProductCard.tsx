@@ -6,13 +6,13 @@ import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import Img from '../../../components/Img';
 import VisuallyHidden from '../../../components/VisuallyHidden';
 import { ariaInfoTitle } from '../../../utils/utils';
+import useLanguage from '../../language/useLanguage';
 import './ProductCard.styles.scss';
 import ProductCardGridContent from './ProductCardGridContent';
 import ProductCardListContent from './ProductCardListContent';
 import SizeOverlay from './SizeOverlay';
 
 export type ProductCardProps = {
-  linkText: string;
   linkTo: string;
   product: BaseProduct | ProductPreview;
   productView?: string;
@@ -23,9 +23,9 @@ const ProductCard = ({
   product,
   showSizeOverlay,
   productView = '',
-  linkText,
   linkTo,
 }: ProductCardProps) => {
+  const { language } = useLanguage();
   const ariaLabelledby = ariaInfoTitle(product.id);
 
   return (
@@ -34,7 +34,7 @@ const ProductCard = ({
         <FavoriteHeart id={product.id} />
         <Link to={linkTo} className="product-card-link">
           <VisuallyHidden>
-            {linkText} {product.productName}
+            {language.view} {product.productName}
           </VisuallyHidden>
           <div className="card-img-container">
             {product.discount > 0 && (
