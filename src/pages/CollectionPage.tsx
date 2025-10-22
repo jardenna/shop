@@ -234,7 +234,6 @@ const CollectionPage = () => {
               products && (
                 <ProductCardList
                   products={products.products}
-                  ariaLabelledby={ariaLabelledby}
                   productView={productView}
                   linkText={language.view}
                   showSizeOverlay={productView !== 'list'}

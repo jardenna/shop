@@ -20,7 +20,6 @@ const FavoritesPage = () => {
             <li key={product.id}>
               <ProductCard
                 product={product}
-                ariaLabelledby=""
                 linkText=""
                 linkTo={`${ShopPath.FavoritesProduct}/${product.id}`}
                 onReset={onReset}
