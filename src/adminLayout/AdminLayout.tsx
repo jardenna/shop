@@ -52,7 +52,7 @@ const AdminLayout = () => {
         welcomeMessage={`${language.welcome} ${currentUser?.username}`}
         isMobileSize={isMobileSize}
       />
-      <main className="main">
+      <div className="main">
         {!isMobileSize && (
           <Aside
             isShown={isMenuCollapsed}
@@ -62,10 +62,10 @@ const AdminLayout = () => {
             }
           />
         )}
-        <div id="main" className="admin">
+        <main id="main" className="admin">
           <Outlet />
-        </div>
-      </main>
+        </main>
+      </div>
     </div>
   );
 };
