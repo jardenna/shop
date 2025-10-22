@@ -25,6 +25,7 @@ const FavoritesPage = () => {
             favorites.map((product) => (
               <li key={product.id}>
                 <ProductCard
+                  showSizeOverlay
                   product={product}
                   linkTo={`${ShopPath.FavoritesProduct}/${product.id}`}
                 />
