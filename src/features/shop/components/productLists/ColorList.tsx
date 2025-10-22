@@ -3,6 +3,7 @@ import type { OptionGroupHeading } from '../../../../types/types';
 import { getColorOptions } from '../../../../utils/colorUtils';
 import { sliceAndCountHidden, translateKey } from '../../../../utils/utils';
 import useLanguage from '../../../language/useLanguage';
+import AdditionalCountBadge from './AdditionalCountBadge';
 import ProductList from './ProductList';
 import type { ProductLabelVariant } from './ProductListItem';
 import ProductListItem from './ProductListItem';
@@ -44,7 +45,9 @@ const ColorList = ({ count, colors, groupTitle, variant }: ColorListProps) => {
         />
       ))}
       {additionalColorsCount > 0 && (
-        <li className="additional-colors-badge">{`+ ${additionalColorsCount}`}</li>
+        <li>
+          <AdditionalCountBadge count={additionalColorsCount} />
+        </li>
       )}
     </ProductList>
   );

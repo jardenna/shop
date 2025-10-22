@@ -1,4 +1,5 @@
 import { sliceAndCountHidden } from '../../../utils/utils';
+import AdditionalCountBadge from './productLists/AdditionalCountBadge';
 
 type SizeOverlayProps = {
   sizes: string[];
@@ -19,7 +20,9 @@ const SizeOverlay = ({ sizes, count }: SizeOverlayProps) => {
         <li key={size}>{size}</li>
       ))}
       {additionalColorsCount > 0 && (
-        <li className="additional-colors-badge">{`+ ${additionalColorsCount}`}</li>
+        <li>
+          <AdditionalCountBadge count={additionalColorsCount} />
+        </li>
       )}
     </ul>
   );
