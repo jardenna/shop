@@ -11,7 +11,7 @@ const ProductDiscountPrice = ({
   price,
   discount,
 }: ProductDiscountPriceProps) => (
-  <span className="product-discont-price">
+  <p className="product-discont-price">
     {!!discount && (
       <>
         <ProductPrice
@@ -25,7 +25,7 @@ const ProductDiscountPrice = ({
       price={price}
       className={discount ? 'text-line-through' : undefined}
     />
-  </span>
+  </p>
 );
 
 export default ProductDiscountPrice;
