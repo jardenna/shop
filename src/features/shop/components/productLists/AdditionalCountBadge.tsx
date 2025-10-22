@@ -7,7 +7,7 @@ type AdditionalCountBadgeProps = {
 const AdditionalCountBadge = ({ count }: AdditionalCountBadgeProps) => {
   const { language } = useLanguage();
   return (
-    <span className="additional-colors-badge">
+    <span>
       <VisuallyHidden>
         {language.thereAre} {count} {language.additionalColorsCount}
       </VisuallyHidden>

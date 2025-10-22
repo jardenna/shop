@@ -4,10 +4,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-
-  .additional-colors-badge {
-    line-height: rem(12px);
-  }
+  line-height: rem(12px);
 
   &.color-list {
     gap: 4px;
