@@ -51,7 +51,7 @@
 .skeleton-card-list {
   width: 100%;
 
-  --grid-size: 21.875rem;
+  --grid-size: rem(350px);
 
   grid-template-columns: repeat(
     auto-fill,
