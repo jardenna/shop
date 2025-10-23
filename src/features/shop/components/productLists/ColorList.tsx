@@ -1,8 +1,9 @@
-import useLanguage from '../../features/language/useLanguage';
-import variables from '../../scss/variables.module.scss';
-import type { OptionGroupHeading } from '../../types/types';
-import { getColorOptions } from '../../utils/colorUtils';
-import { sliceAndCountHidden, translateKey } from '../../utils/utils';
+import variables from '../../../../scss/variables.module.scss';
+import type { OptionGroupHeading } from '../../../../types/types';
+import { getColorOptions } from '../../../../utils/colorUtils';
+import { sliceAndCountHidden, translateKey } from '../../../../utils/utils';
+import useLanguage from '../../../language/useLanguage';
+import AdditionalCountBadge from './AdditionalCountBadge';
 import ProductList from './ProductList';
 import type { ProductLabelVariant } from './ProductListItem';
 import ProductListItem from './ProductListItem';
@@ -24,10 +25,9 @@ const ColorList = ({ count, colors, groupTitle, variant }: ColorListProps) => {
   });
 
   // Calculate how many colors to show and how many are hidden
-  const shownColorLength = count ? count : colorList.length;
-  const { visibleItems, hiddenCount } = sliceAndCountHidden(
+  const { visibleItems, additionalOptionsCount } = sliceAndCountHidden(
     colorList,
-    shownColorLength,
+    count ?? colorList.length,
   );
 
   return (
@@ -43,7 +43,11 @@ const ColorList = ({ count, colors, groupTitle, variant }: ColorListProps) => {
           }}
         />
       ))}
-      {hiddenCount > 0 && <li>{`+ ${hiddenCount}`}</li>}
+      {additionalOptionsCount > 0 && (
+        <li>
+          <AdditionalCountBadge count={additionalOptionsCount} />
+        </li>
+      )}
     </ProductList>
   );
 };

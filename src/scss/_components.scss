@@ -140,3 +140,22 @@
     justify-content: flex-end;
   }
 }
+
+.favorite-page {
+  .product-card-list {
+    @include grid-template-column(rem(400px));
+  }
+
+  .product-card-content {
+    padding-inline: 12px;
+  }
+
+  .card-img-container {
+    aspect-ratio: 4 / 5;
+  }
+
+  .product-card-info {
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+}

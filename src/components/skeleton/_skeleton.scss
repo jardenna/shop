@@ -27,7 +27,13 @@
   border-radius: 8px;
   display: flex;
 
-  // @include animation(skeleton-animation, 1.5s infinite, linear);
+  @include animation(skeleton-animation, 1.5s infinite, linear);
+}
+
+.skeleton-badge {
+  .skeleton {
+    border-radius: 50px;
+  }
 }
 
 .skeleton-control-list {
@@ -44,19 +50,26 @@
 
 .skeleton-card-list {
   width: 100%;
-  display: grid;
 
-  @include grid-template-column(350px);
+  --grid-size: rem(350px);
+
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(100%, var(--grid-size)), 1fr)
+  );
 
   .skeleton {
     border-radius: 0;
     height: 100%;
   }
 
-  &.small-card {
-    @include grid-template-column(230px);
+  &.large {
+    @include set-grid-size(400px);
+  }
 
-    grid-auto-rows: rem(248px) auto;
+  &.small-card {
+    @include set-grid-size(230px);
+
     gap: 12px;
 
     .skeleton {
@@ -79,12 +92,6 @@
 
   .flex {
     gap: 4px;
-  }
-}
-
-.skeleton-badge {
-  .skeleton {
-    border-radius: 50px;
   }
 }
 

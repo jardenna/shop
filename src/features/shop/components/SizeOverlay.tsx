@@ -1,4 +1,5 @@
 import { sliceAndCountHidden } from '../../../utils/utils';
+import AdditionalCountBadge from './productLists/AdditionalCountBadge';
 
 type SizeOverlayProps = {
   sizes: string[];
@@ -7,10 +8,9 @@ type SizeOverlayProps = {
 
 const SizeOverlay = ({ sizes, count }: SizeOverlayProps) => {
   // Calculate how many sizes to show and how many are hidden
-  const shownSizeLength = count ? count : sizes.length;
-  const { visibleItems, hiddenCount } = sliceAndCountHidden(
+  const { visibleItems, additionalOptionsCount } = sliceAndCountHidden(
     sizes,
-    shownSizeLength,
+    count ?? sizes.length,
   );
 
   return (
@@ -18,7 +18,11 @@ const SizeOverlay = ({ sizes, count }: SizeOverlayProps) => {
       {visibleItems.map((size) => (
         <li key={size}>{size}</li>
       ))}
-      {hiddenCount > 0 && <li>{`+ ${hiddenCount}`}</li>}
+      {additionalOptionsCount > 0 && (
+        <li>
+          <AdditionalCountBadge count={additionalOptionsCount} />
+        </li>
+      )}
     </ul>
   );
 };

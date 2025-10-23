@@ -1,4 +1,6 @@
 import useLanguage from '../../../features/language/useLanguage';
+import OptionGroupTitle from '../../../features/shop/components/productLists/OptionGroupTitle';
+import type { ProductLabelVariant } from '../../../features/shop/components/productLists/ProductListItem';
 import { IconName } from '../../../types/enums';
 import type {
   ControlInputType,
@@ -7,8 +9,6 @@ import type {
 } from '../../../types/types';
 import { colorMap } from '../../../utils/colorUtils';
 import { translateKey } from '../../../utils/utils';
-import OptionGroupTitle from '../../productLists/OptionGroupTitle';
-import type { ProductLabelVariant } from '../../productLists/ProductListItem';
 import InputInfo from '../InputInfo';
 import ControlGroupInput from './ControlGroupInput';
 

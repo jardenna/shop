@@ -19,7 +19,7 @@ const CollectionAside = ({
   onReset,
   language,
 }: CollectionAsideProps) => (
-  <aside className="collection-aside">
+  <section className="collection-aside">
     {isLoading && (
       <div className="flex column">
         <Skeleton count={4} />
@@ -36,7 +36,7 @@ const CollectionAside = ({
         />
       </LayoutElement>
     )}
-  </aside>
+  </section>
 );
 
 export default CollectionAside;

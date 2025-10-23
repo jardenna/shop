@@ -1,9 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
-import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import Pagination from '../components/pagination/Pagination';
 import usePaginationParams from '../components/pagination/usePaginationParams';
 import Picture from '../components/Picture';
@@ -233,20 +231,14 @@ const CollectionPage = () => {
             )}
             {isLoading && <SkeletonCardList count={productsPerPage} />}
             {productCount > 0 ? (
-              <ErrorBoundary
-                FallbackComponent={ErrorBoundaryFallback}
-                onReset={() => refetch()}
-              >
-                {products && (
-                  <ProductCardList
-                    products={products.products}
-                    ariaLabelledby={ariaLabelledby}
-                    productView={productView}
-                    linkText={language.view}
-                    showSizeOverlay={productView !== 'list'}
-                  />
-                )}
-              </ErrorBoundary>
+              products && (
+                <ProductCardList
+                  products={products.products}
+                  productView={productView}
+                  showSizeOverlay={productView !== 'list'}
+                  onReset={() => refetch()}
+                />
+              )
             ) : (
               <NoProductsFound
                 noProductText={language.noProductResult}

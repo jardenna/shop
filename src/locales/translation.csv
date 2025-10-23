@@ -6,6 +6,7 @@ account;Account;Konto
 accountAltText;Elegant woman in a black coat and matching hat, radiating timeless style. A bold red stripe decorates the background.;Elegant kvinde i sort frakke og matchende hat, der udstråler tidløs stil. En markant rød stribe pryder baggrunden.
 actionOnlyAllowedForAdmin;This action is only allowed for administrator;Denne handling er kun tilladt for administrator
 add;Add;Tilføj
+additionalOptionsCount;additional options not shown in this preview;ekstra muligheder som ikke vises i denne visning
 address;Address;Adresse
 addressCreated;Address was created;Adresse blev tilføjet
 addressUpdated;Address was updated;Adresse blev opdateret
@@ -15,6 +16,7 @@ addressAltText;Man in a tailored suit walking confidently down a wide, stepped s
 addressDeleted;Address deleted;Addresse blev slettet
 addToBag;Add to bag;Læg i indkøbskurv
 addToStock;Add to stock;Tilføj til lager
+addToCart;Add to cart;Tilføj til kurv
 admin;Admin;Admin
 adminCannotBeDeleted;Administrator cannot be deleted;Administrator kan ikke slettes
 all;All;Alle
@@ -394,6 +396,7 @@ sureToDelete;Do you want to delete;Vil du slette
 switchUser;Switch user;Skift bruger
 temporarilyOutOfStock;This item is temporarily out of stock;Varen er midlertidigt udsolgt
 temporarilyOutOfStockText;Get notified when the item is back in stock;Få besked, når varen er tilbage på lager
+thereAre;There are;Der findes
 title;Title;Titel
 today;Today;I dag
 totalProducts;Total products;Antal produkter

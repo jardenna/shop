@@ -1,71 +1,79 @@
 @use '../../../scss/globals' as *;
 
-$placement-x: 12px;
 $placement-y: 8px;
+$placement-x: 12px;
 
-.product-card-list {
-  @include grid-template-column;
-
-  .product-card {
-    position: relative;
-
-    .product-card-content {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      margin-block: 8px 16px;
-
-      p {
-        margin: 0;
-      }
-
-      .product-card-title {
-        font-family: $font-primary-bold;
-        font-size: $font-medium;
-        text-transform: uppercase;
-      }
-    }
+.product-card {
+  &:has(a:focus-visible) {
+    @include outline($color: $color-gray-60);
   }
 
-  .favorites-label {
+  p {
+    margin: 0;
+  }
+
+  a {
+    color: $color-primary;
+  }
+
+  .product-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .favorite-heart {
     position: absolute;
     z-index: 2;
     right: $placement-x;
     top: $placement-y;
-    border-radius: 8px;
     background-color: rgb($color-white, 50%);
 
     &:hover {
       background-color: rgb($color-gray-70, 60%);
+
+      svg {
+        stroke: $color-light-gray-40;
+      }
     }
   }
 
   .badge {
-    left: 12px;
+    left: $placement-x;
     position: absolute;
     z-index: 1;
     top: $placement-y;
   }
 
-  .product-card-link {
-    color: $color-primary;
+  .size-overlay {
+    gap: 30px;
+    display: flex;
+    background-color: rgb($color-white, 80%);
+    padding: 12px 4px;
+    justify-content: center;
+    position: absolute;
+    transform: translateY(0);
+    width: 100%;
 
-    .size-overlay {
-      gap: 30px;
-      display: flex;
-      background-color: rgb($color-white, 80%);
-      padding: 12px 4px;
-      justify-content: center;
-      position: absolute;
-      transform: translateY(0);
-      width: 100%;
+    @include transition($what: transform);
+  }
 
-      @include transition($what: transform);
+  .product-card-content {
+    margin-block: 8px 16px;
+
+    .product-card-title {
+      font-family: $font-primary-bold;
+      font-size: $font-medium;
+      text-transform: uppercase;
     }
 
     &:hover {
       .size-overlay {
         transform: translateY(-100%);
+      }
+
+      .product-card-title {
+        color: $color-gray-60;
       }
     }
   }
@@ -83,52 +91,29 @@ $placement-y: 8px;
       object-fit: cover;
     }
   }
+}
+
+.product-card-list {
+  @include grid-template-column;
 
   // List view
   &.list {
     grid-template-columns: 1fr;
     row-gap: 16px;
 
-    .favorites-label {
-      left: $placement-x;
-      right: auto;
-    }
-
-    .badge {
-      left: auto;
-      right: $placement-x;
-    }
-
-    .product-card-link {
+    .product-card {
       gap: 20px;
       align-items: center;
 
       @include grid-template-column;
-    }
 
-    .product-card-content {
-      gap: 12px;
+      .product-card-info {
+        gap: 12px;
+      }
     }
 
     .card-img-container {
       aspect-ratio: 3 / 4;
-    }
-  }
-}
-
-.shopping-bag-container {
-  position: absolute;
-  bottom: 92px;
-  z-index: 2;
-  right: 8px;
-  border-radius: 4px;
-
-  .btn-primary {
-    padding: 12px;
-    min-height: auto;
-
-    &:hover {
-      background-color: rgb($color-gray-70, 70%);
     }
   }
 }

@@ -3,28 +3,32 @@ import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import useFavorites from '../components/favorites/useFavorites';
 import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import useLanguage from '../features/language/useLanguage';
-
+import ProductCard from '../features/shop/components/ProductCard';
+import { ShopPath } from '../layout/nav/enums';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
-const FavoritesPage = () => {
+const FavoritePage = () => {
   const { language } = useLanguage();
   const { favorites, isLoading, onReset } = useFavorites({});
 
-  // const handleAddToBag = (id: string) => {
-  //   console.log(id);
-  // };
-
   return (
-    <MainPageContainer heading="favorites">
-      {isLoading && <SkeletonCardList count={4} />}
-      <article className="product-card-list">
+    <MainPageContainer heading="favorites" className="favorite-page">
+      {isLoading && <SkeletonCardList count={4} className="large" />}
+      <ul className="product-card-list">
         <ErrorBoundary
           FallbackComponent={ErrorBoundaryFallback}
           onReset={onReset}
         >
           {favorites && favorites.length > 0 ? (
             favorites.map((product) => (
-              <div key={product.id}>{product.brand}</div>
+              <li key={product.id}>
+                <ProductCard
+                  showAdToCartBtn
+                  showSizeOverlay
+                  product={product}
+                  linkTo={`${ShopPath.FavoritesProduct}/${product.id}`}
+                />
+              </li>
             ))
           ) : (
             <div>
@@ -33,9 +37,9 @@ const FavoritesPage = () => {
             </div>
           )}
         </ErrorBoundary>
-      </article>
+      </ul>
     </MainPageContainer>
   );
 };
 
-export default FavoritesPage;
+export default FavoritePage;
