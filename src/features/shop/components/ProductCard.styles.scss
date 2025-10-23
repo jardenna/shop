@@ -3,8 +3,16 @@
 $placement-y: 8px;
 
 .product-card {
+  &:has(a:focus-visible) {
+    @include outline($color: $color-gray-60);
+  }
+
   p {
     margin: 0;
+  }
+
+  a {
+    color: $color-primary;
   }
 
   .product-card-info {
@@ -63,15 +71,6 @@ $placement-y: 8px;
       .product-card-title {
         color: $color-gray-60;
       }
-    }
-  }
-
-  .product-card-link {
-    color: $color-primary;
-    display: block;
-
-    &:focus-visible {
-      @include outline($color: $color-gray-60);
     }
   }
 

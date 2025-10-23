@@ -32,7 +32,7 @@ const ProductCard = ({
     <article aria-labelledby={ariaLabelledby} className="product-card">
       <div>
         <FavoriteHeart id={product.id} />
-        <Link to={linkTo} className="product-card-link">
+        <Link to={linkTo}>
           <VisuallyHidden>
             {language.view} {product.productName}
           </VisuallyHidden>
@@ -50,7 +50,7 @@ const ProductCard = ({
       </div>
 
       <div className="product-card-content">
-        <Link to={linkTo} className="product-card-link" tabIndex={-1}>
+        <Link to={linkTo} tabIndex={-1}>
           <h2 className="product-card-title" id={ariaLabelledby}>
             {product.productName}
           </h2>
