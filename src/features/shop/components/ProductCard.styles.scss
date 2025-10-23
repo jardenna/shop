@@ -2,32 +2,15 @@
 
 $placement-y: 8px;
 
-.product-card-list {
-  @include grid-template-column;
-
-  .product-card {
-    p {
-      margin: 0;
-    }
-
-    .product-card-content {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      margin-block: 8px 16px;
-
-      .product-card-title {
-        font-family: $font-primary-bold;
-        font-size: $font-medium;
-        text-transform: uppercase;
-      }
-    }
+.product-card {
+  p {
+    margin: 0;
   }
 
   .product-card-info {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 4px;
   }
 
   .favorites-label {
@@ -63,6 +46,16 @@ $placement-y: 8px;
     @include transition($what: transform);
   }
 
+  .product-card-content {
+    margin-block: 8px 16px;
+
+    .product-card-title {
+      font-family: $font-primary-bold;
+      font-size: $font-medium;
+      text-transform: uppercase;
+    }
+  }
+
   .product-card-link {
     color: $color-primary;
     display: block;
@@ -95,6 +88,10 @@ $placement-y: 8px;
       object-fit: cover;
     }
   }
+}
+
+.product-card-list {
+  @include grid-template-column;
 
   // List view
   &.list {
@@ -108,29 +105,8 @@ $placement-y: 8px;
       @include grid-template-column;
     }
 
-    .product-card-content {
-      gap: 12px;
-    }
-
     .card-img-container {
       aspect-ratio: 3 / 4;
-    }
-  }
-}
-
-.shopping-bag-container {
-  position: absolute;
-  bottom: 92px;
-  z-index: 2;
-  right: 8px;
-  border-radius: 4px;
-
-  .btn-primary {
-    padding: 12px;
-    min-height: auto;
-
-    &:hover {
-      background-color: rgb($color-gray-70, 70%);
     }
   }
 }
