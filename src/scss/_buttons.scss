@@ -56,12 +56,12 @@ a[class^='btn-'],
 .btn-secondary {
   background-color: $color-white;
   color: $color-primary;
-  border: 1px solid $color-primary;
+  border: 1px solid $color-gray-60;
 
   &:focus-visible,
   &:hover {
-    color: $color-light-gray-10;
-    background-color: $color-gray-70;
+    color: $color-gray-60;
+    border-color: $color-primary;
   }
 }
 
