@@ -54,11 +54,6 @@ $placement-y: 8px;
       font-size: $font-medium;
       text-transform: uppercase;
     }
-  }
-
-  .product-card-link {
-    color: $color-primary;
-    display: block;
 
     &:hover {
       .size-overlay {
@@ -69,6 +64,11 @@ $placement-y: 8px;
         color: $color-gray-60;
       }
     }
+  }
+
+  .product-card-link {
+    color: $color-primary;
+    display: block;
 
     &:focus-visible {
       @include outline($color: $color-gray-60);
