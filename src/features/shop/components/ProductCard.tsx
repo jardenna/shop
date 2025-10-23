@@ -2,9 +2,11 @@ import { Link } from 'react-router';
 import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import { ProductPreview } from '../../../app/api/apiTypes/shopApiTypes';
 import Badge from '../../../components/Badge';
+import Button from '../../../components/Button';
 import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import Img from '../../../components/Img';
 import VisuallyHidden from '../../../components/VisuallyHidden';
+import { BtnVariant } from '../../../types/enums';
 import { ariaInfoTitle } from '../../../utils/utils';
 import useLanguage from '../../language/useLanguage';
 import './ProductCard.styles.scss';
@@ -16,6 +18,7 @@ export type ProductCardProps = {
   linkTo: string;
   product: BaseProduct | ProductPreview;
   productView?: string;
+  showAdToCartBtn?: boolean;
   showSizeOverlay?: boolean;
 };
 
@@ -24,6 +27,7 @@ const ProductCard = ({
   showSizeOverlay,
   productView = '',
   linkTo,
+  showAdToCartBtn,
 }: ProductCardProps) => {
   const { language } = useLanguage();
   const ariaLabelledby = ariaInfoTitle(product.id);
@@ -62,6 +66,9 @@ const ProductCard = ({
             )}
           </div>
         </Link>
+        {showAdToCartBtn && (
+          <Button variant={BtnVariant.Secondary}>{language.addToCart}</Button>
+        )}
       </div>
     </article>
   );

@@ -12,7 +12,7 @@ const FavoritesPage = () => {
   const { favorites, isLoading, onReset } = useFavorites({});
 
   return (
-    <MainPageContainer heading="favorites">
+    <MainPageContainer heading="favorites" className="favorite-page">
       {isLoading && <SkeletonCardList count={4} />}
       <ul className="product-card-list">
         <ErrorBoundary
@@ -23,6 +23,7 @@ const FavoritesPage = () => {
             favorites.map((product) => (
               <li key={product.id}>
                 <ProductCard
+                  showAdToCartBtn
                   showSizeOverlay
                   product={product}
                   linkTo={`${ShopPath.FavoritesProduct}/${product.id}`}

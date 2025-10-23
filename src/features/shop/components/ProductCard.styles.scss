@@ -106,6 +106,10 @@ $placement-x: 12px;
       align-items: center;
 
       @include grid-template-column;
+
+      .product-card-info {
+        gap: 12px;
+      }
     }
 
     .card-img-container {
