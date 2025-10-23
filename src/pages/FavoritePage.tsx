@@ -7,7 +7,7 @@ import ProductCard from '../features/shop/components/ProductCard';
 import { ShopPath } from '../layout/nav/enums';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
-const FavoritesPage = () => {
+const FavoritePage = () => {
   const { language } = useLanguage();
   const { favorites, isLoading, onReset } = useFavorites({});
 
@@ -42,4 +42,4 @@ const FavoritesPage = () => {
   );
 };
 
-export default FavoritesPage;
+export default FavoritePage;

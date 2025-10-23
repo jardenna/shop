@@ -18,7 +18,6 @@ import CollectionPage from '../pages/CollectionPage';
 import ContactPage from '../pages/ContactPage';
 import CreateAccountPage from '../pages/CreateAccountPage';
 import ErrorPage from '../pages/ErrorPage';
-import FavoritesPage from '../pages/FavoritesPage';
 import HomePage from '../pages/home/HomePage';
 import LoginPage from '../pages/LoginPage';
 import MainCollectionsPage from '../pages/MainCollectionsPage';
@@ -33,6 +32,7 @@ import CreateSubCategoryPage from '../pages/subCategory/CreateSubCategoryPage';
 import SubCategoryPage from '../pages/subCategory/SubCategoryPage';
 import UpdateSubCategoryPage from '../pages/subCategory/UpdateSubCategoryPage';
 import ViewSubCategoryPage from '../pages/subCategory/ViewSubCategoryPage';
+import FavoritePage from '../pages/FavoritePage';
 
 const routeList = [
   {
@@ -155,7 +155,7 @@ const routeConfig = createBrowserRouter([
         children: [
           {
             path: ShopPath.Favorites,
-            element: <FavoritesPage />,
+            element: <FavoritePage />,
           },
           {
             path: ShopPath.MyAccount,
