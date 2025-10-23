@@ -30,8 +30,7 @@ const ProductCard = ({
 
   return (
     <article aria-labelledby={ariaLabelledby} className="product-card">
-      <div>
-        <FavoriteHeart id={product.id} />
+      <div className="position-relative">
         <Link to={linkTo}>
           <VisuallyHidden>
             {language.view} {product.productName}
@@ -47,6 +46,7 @@ const ProductCard = ({
             {showSizeOverlay && <SizeOverlay sizes={product.sizes} count={5} />}
           </div>
         </Link>
+        <FavoriteHeart id={product.id} />
       </div>
 
       <div className="product-card-content">

@@ -22,16 +22,19 @@ $placement-x: 12px;
     gap: 4px;
   }
 
-  .favorites-label {
+  .favorite-heart {
     position: absolute;
     z-index: 2;
     right: $placement-x;
     top: $placement-y;
-    border-radius: 8px;
     background-color: rgb($color-white, 50%);
 
     &:hover {
       background-color: rgb($color-gray-70, 60%);
+
+      svg {
+        stroke: $color-light-gray-40;
+      }
     }
   }
 

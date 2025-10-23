@@ -1,24 +1,22 @@
 @use '../../scss/globals' as *;
 
 .favorite-heart {
-  position: relative;
+  line-height: 1px;
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: $color-light-gray-40;
+  }
 
   &:has(input:focus-visible) {
-    svg {
-      @include outline;
-    }
+    @include outline;
   }
 
   &:has(input:disabled) {
-    svg {
-      opacity: 0.2;
-    }
-  }
-
-  .favorites-label {
-    padding: 12px;
-    font-size: 0;
-    cursor: pointer;
+    opacity: 0.2;
+    pointer-events: none;
   }
 
   .heart-icon {
