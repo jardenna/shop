@@ -1,6 +1,7 @@
 @use '../../../scss/globals' as *;
 
 $placement-y: 8px;
+$placement-x: 12px;
 
 .product-card {
   &:has(a:focus-visible) {
@@ -24,7 +25,7 @@ $placement-y: 8px;
   .favorites-label {
     position: absolute;
     z-index: 2;
-    right: 12px;
+    right: $placement-x;
     top: $placement-y;
     border-radius: 8px;
     background-color: rgb($color-white, 50%);
@@ -35,7 +36,7 @@ $placement-y: 8px;
   }
 
   .badge {
-    left: 12px;
+    left: $placement-x;
     position: absolute;
     z-index: 1;
     top: $placement-y;
