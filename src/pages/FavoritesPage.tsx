@@ -13,7 +13,7 @@ const FavoritesPage = () => {
 
   return (
     <MainPageContainer heading="favorites" className="favorite-page">
-      {isLoading && <SkeletonCardList count={4} />}
+      {isLoading && <SkeletonCardList count={4} className="large" />}
       <ul className="product-card-list">
         <ErrorBoundary
           FallbackComponent={ErrorBoundaryFallback}

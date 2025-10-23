@@ -58,3 +58,13 @@ $animation-timing-function: ease-in-out;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, $size), 1fr));
 }
+
+@mixin set-grid-size($size) {
+  @if math.is-unitless($size) or math.unit($size) == 'px' {
+    $size: rem($size);
+  }
+
+  display: grid;
+
+  --grid-size: #{$size};
+}
