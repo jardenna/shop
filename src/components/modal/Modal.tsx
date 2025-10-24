@@ -12,6 +12,7 @@ import Portal from '../Portal';
 import './_modal.scss';
 import ModalFooter from './ModalFooter';
 import ModalHeader from './ModalHeader';
+import resolveSecondaryBtn from './resolveSecondaryBtn ';
 import useModal from './useModal';
 import useVisibility from './useVisibility';
 
@@ -29,24 +30,21 @@ export type PrimaryActionBtnProps = {
 };
 
 export type SecondaryActionBtnProps = {
-  label?: string | null;
+  label?: string;
   variant?: BtnVariant;
   onClick?: () => void;
 };
 
-export type ModalActionBtns = {
-  primaryActionBtn: PrimaryActionBtnProps;
-  secondaryActionBtn?: SecondaryActionBtnProps | null;
-};
-
-export type ModalProps = ModalActionBtns & {
+export type ModalProps = {
   children: ReactNode;
   id: string;
   modalHeaderText: string;
+  primaryActionBtn: PrimaryActionBtnProps;
   className?: string;
   isAlert?: boolean;
   modalInfo?: ReactNode;
   modalSize?: SizeVariant;
+  secondaryActionBtn?: SecondaryActionBtnProps | null;
   showCloseIcon?: boolean;
   onBoundaryReset?: () => void;
   onClearAllValues?: () => void;
@@ -126,6 +124,12 @@ const Modal = ({
     onBoundaryReset?.();
   };
 
+  const secondaryBtn = resolveSecondaryBtn({
+    action: secondaryActionBtn,
+    label: language.cancel,
+    onCloseModal: handleClose,
+  });
+
   const ModalContent = (
     <article>
       <ModalHeader
@@ -144,7 +148,7 @@ const Modal = ({
           {children}
           <ModalFooter
             primaryActionBtn={primaryActionBtn}
-            secondaryActionBtn={secondaryActionBtn}
+            secondaryBtn={secondaryBtn}
             onCloseModal={handleClose}
             onPrimaryClick={handlePrimaryClick}
             ariaLabel={language.dialog}
@@ -155,10 +159,10 @@ const Modal = ({
           <div className="modal-content">{children}</div>
           <ModalFooter
             primaryActionBtn={primaryActionBtn}
-            secondaryActionBtn={secondaryActionBtn}
             onCloseModal={handleClose}
             onPrimaryClick={handlePrimaryClick}
             ariaLabel={language.dialog}
+            secondaryBtn={secondaryBtn}
           />
         </>
       )}
