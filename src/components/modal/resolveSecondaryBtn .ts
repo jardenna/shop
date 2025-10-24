@@ -1,11 +1,9 @@
 import { BtnVariant } from '../../types/enums';
 import type { SecondaryActionBtnProps } from './Modal';
 
-type SecondaryActionConfig = SecondaryActionBtnProps | null;
-
 type ResolveSecondaryBtnProps = {
   label: string;
-  props?: SecondaryActionConfig;
+  props?: SecondaryActionBtnProps | null;
   onCloseModal: () => void;
 };
 
