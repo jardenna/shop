@@ -47,9 +47,15 @@ const NotifyMe = ({
       validate: sizesIsRequered ? validateNotityMe : validateNEmail,
     });
 
+  const handleClearAllValues = () => {
+    onClearAllValues();
+    setTimeout(() => {
+      setSuccessMessage(null);
+    }, 350);
+  };
+
   function handleSendEmail() {
     setSuccessMessage(language.notifySuccessMeMessage);
-    onClearAllValues();
   }
 
   const isSuccess = Boolean(successMessage);
@@ -68,7 +74,7 @@ const NotifyMe = ({
       }
       triggerModalBtnVariant={BtnVariant.Ghost}
       id={id}
-      onClearAllValues={onClearAllValues}
+      onClearAllValues={handleClearAllValues}
       primaryActionBtn={primaryActionBtn}
       secondaryActionBtn={null}
       showCloseIcon
