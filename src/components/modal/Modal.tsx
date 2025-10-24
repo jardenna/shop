@@ -34,16 +34,19 @@ export type SecondaryActionBtnProps = {
   onClick?: () => void;
 };
 
-export type ModalProps = {
+export type ModalActionBtns = {
+  primaryActionBtn: PrimaryActionBtnProps;
+  secondaryActionBtn?: SecondaryActionBtnProps | null;
+};
+
+export type ModalProps = ModalActionBtns & {
   children: ReactNode;
   id: string;
   modalHeaderText: string;
-  primaryActionBtn: PrimaryActionBtnProps;
   className?: string;
   isAlert?: boolean;
   modalInfo?: ReactNode;
   modalSize?: SizeVariant;
-  secondaryActionBtn?: SecondaryActionBtnProps;
   showCloseIcon?: boolean;
   onBoundaryReset?: () => void;
   onClearAllValues?: () => void;
@@ -111,6 +114,18 @@ const Modal = ({
     }
   };
 
+  const handleClose = () => {
+    if (secondaryActionBtn && secondaryActionBtn.onClick) {
+      secondaryActionBtn.onClick();
+    }
+    closeModalAnimated();
+  };
+
+  const handleErrorBoundaryReset = () => {
+    handleClose();
+    onBoundaryReset?.();
+  };
+
   const ModalContent = (
     <article>
       <ModalHeader
@@ -130,7 +145,7 @@ const Modal = ({
           <ModalFooter
             primaryActionBtn={primaryActionBtn}
             secondaryActionBtn={secondaryActionBtn}
-            onCloseModal={closeModalAnimated}
+            onCloseModal={handleClose}
             onPrimaryClick={handlePrimaryClick}
             ariaLabel={language.dialog}
           />
@@ -141,7 +156,7 @@ const Modal = ({
           <ModalFooter
             primaryActionBtn={primaryActionBtn}
             secondaryActionBtn={secondaryActionBtn}
-            onCloseModal={closeModalAnimated}
+            onCloseModal={handleClose}
             onPrimaryClick={handlePrimaryClick}
             ariaLabel={language.dialog}
           />
@@ -150,11 +165,6 @@ const Modal = ({
       {modalInfo && modalInfo}
     </article>
   );
-
-  const handleErrorBoundaryReset = () => {
-    closeModalAnimated();
-    onBoundaryReset?.();
-  };
 
   return (
     <Portal portalId="modal">

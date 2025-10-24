@@ -1,12 +1,11 @@
+import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
-import type { PrimaryActionBtnProps, SecondaryActionBtnProps } from './Modal';
+import type { ModalActionBtns } from './Modal';
 
-type ModalFooterProps = {
+type ModalFooterProps = ModalActionBtns & {
   ariaLabel: string;
-  primaryActionBtn: PrimaryActionBtnProps & { closeOnClick?: boolean };
-  secondaryActionBtn?: SecondaryActionBtnProps;
   onCloseModal: () => void;
   onPrimaryClick?: () => void;
 };
@@ -18,21 +17,16 @@ const ModalFooter = ({
   onPrimaryClick,
   ariaLabel,
 }: ModalFooterProps) => {
-  const handleClose = () => {
-    if (secondaryActionBtn && secondaryActionBtn.onClick) {
-      secondaryActionBtn.onClick();
-    }
-    onCloseModal();
-  };
+  const { language } = useLanguage();
 
   return (
     <LayoutElement as="footer" className="footer" ariaLabel={ariaLabel}>
       {secondaryActionBtn && (
         <Button
-          onClick={handleClose}
+          onClick={onCloseModal}
           variant={secondaryActionBtn.variant || BtnVariant.Secondary}
         >
-          {secondaryActionBtn.label}
+          {secondaryActionBtn.label || language.cancel}
         </Button>
       )}
       <Button
