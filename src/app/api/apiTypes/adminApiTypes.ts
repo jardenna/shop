@@ -1,3 +1,4 @@
+import type { OmitChecked } from '../../../types/types';
 import type {
   BasePagination,
   BaseProduct,
@@ -43,7 +44,7 @@ export type UpdateUserRoleRequest = {
   userId: string;
 };
 
-export type OmittedUserRequest = Omit<AuthRequest, 'username'>;
+export type OmittedUserRequest = OmitChecked<AuthRequest, 'username'>;
 
 // --- Auth ---
 export type AuthRequest = EditableUserFields & {

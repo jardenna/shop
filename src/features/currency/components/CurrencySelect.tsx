@@ -1,11 +1,11 @@
 import Selectbox from '../../../components/selectbox/Selectbox';
 import type { HeaderProps } from '../../../layout/header/Header';
+import type { OmitChecked } from '../../../types/types';
 
-type OmittedHeaderProps = Omit<
+type OmittedHeaderProps = OmitChecked<
   HeaderProps,
   | 'primaryActionBtn'
   | 'secondaryActionBtn'
-  | 'ariaLabel'
   | 'dropdownBtnList'
   | 'values'
   | 'onChange'

@@ -3,9 +3,13 @@ import { useParams } from 'react-router';
 import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import { ProductPreview } from '../../../app/api/apiTypes/shopApiTypes';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
+import type { OmitChecked } from '../../../types/types';
 import ProductCard, { type ProductCardProps } from './ProductCard';
 
-type OmitteProductCardProps = Omit<ProductCardProps, 'product' | 'linkTo'>;
+type OmitteProductCardProps = OmitChecked<
+  ProductCardProps,
+  'product' | 'linkTo'
+>;
 
 type ProductCardListProps = OmitteProductCardProps & {
   products: Array<BaseProduct | ProductPreview>;

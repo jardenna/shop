@@ -4,15 +4,12 @@ import CurrencySelect from '../../features/currency/components/CurrencySelect';
 import useLanguage, {
   languageOptions,
 } from '../../features/language/useLanguage';
+import type { OmitChecked } from '../../types/types';
 import type { HeaderProps } from '../header/Header';
 
-type OmittedHeaderProps = Omit<
+type OmittedHeaderProps = OmitChecked<
   HeaderProps,
-  | 'primaryActionBtn'
-  | 'secondaryActionBtn'
-  | 'ariaLabel'
-  | 'dropdownBtnList'
-  | 'isMobileSize'
+  'primaryActionBtn' | 'secondaryActionBtn' | 'dropdownBtnList' | 'isMobileSize'
 >;
 
 const LanguageCurrencyPreferences = ({

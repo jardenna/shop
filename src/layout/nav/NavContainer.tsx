@@ -1,11 +1,12 @@
 import { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
 import useLanguage from '../../features/language/useLanguage';
+import { OmitChecked } from '../../types/types';
 import './_nav.scss';
 import type { NavProps } from './Nav';
 import Nav from './Nav';
 import NavUser from './NavUser';
 
-type OmittedNavProps = Omit<NavProps, 'ariaLabel'>;
+type OmittedNavProps = OmitChecked<NavProps, 'ariaLabel'>;
 
 type NavContainerProps = OmittedNavProps & {
   ariaLabel?: string;
