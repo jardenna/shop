@@ -21,7 +21,7 @@ const ModalFooter = ({
   const { language } = useLanguage();
 
   const secondaryBtn = resolveSecondaryBtn({
-    props: secondaryActionBtn,
+    action: secondaryActionBtn,
     label: language.cancel,
     onCloseModal,
   });

@@ -3,22 +3,22 @@ import type { SecondaryActionBtnProps } from './Modal';
 
 type ResolveSecondaryBtnProps = {
   label: string;
-  props?: SecondaryActionBtnProps | null;
+  action?: SecondaryActionBtnProps | null;
   onCloseModal: () => void;
 };
 
 const resolveSecondaryBtn = ({
-  props,
+  action,
   label,
   onCloseModal,
 }: ResolveSecondaryBtnProps) => {
   // case 1: null → no button
-  if (props === null) {
+  if (action === null) {
     return null;
   }
 
   // case 2: undefined → default cancel button
-  if (props === undefined) {
+  if (action === undefined) {
     return {
       label,
       variant: BtnVariant.Secondary,
@@ -28,9 +28,9 @@ const resolveSecondaryBtn = ({
 
   // case 3: custom config (empty object counts as custom too)
   return {
-    label: props.label ?? label,
-    variant: props.variant ?? BtnVariant.Secondary,
-    onClick: props.onClick ?? onCloseModal,
+    label: action.label ?? label,
+    variant: action.variant ?? BtnVariant.Secondary,
+    onClick: action.onClick ?? onCloseModal,
   };
 };
 
