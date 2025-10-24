@@ -3,6 +3,7 @@ import LayoutElement from '../../layout/LayoutElement';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import type { ModalActionBtns } from './Modal';
+import resolveSecondaryBtn from './resolveSecondaryBtn ';
 
 type ModalFooterProps = ModalActionBtns & {
   ariaLabel: string;
@@ -19,14 +20,17 @@ const ModalFooter = ({
 }: ModalFooterProps) => {
   const { language } = useLanguage();
 
+  const secondaryBtn = resolveSecondaryBtn(
+    secondaryActionBtn,
+    language.cancel,
+    onCloseModal,
+  );
+
   return (
     <LayoutElement as="footer" className="footer" ariaLabel={ariaLabel}>
-      {secondaryActionBtn && (
-        <Button
-          onClick={onCloseModal}
-          variant={secondaryActionBtn.variant || BtnVariant.Secondary}
-        >
-          {secondaryActionBtn.label || language.cancel}
+      {secondaryBtn && (
+        <Button variant={secondaryBtn.variant} onClick={onCloseModal}>
+          {secondaryBtn.label}
         </Button>
       )}
       <Button

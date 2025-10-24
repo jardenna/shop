@@ -29,7 +29,7 @@ export type PrimaryActionBtnProps = {
 };
 
 export type SecondaryActionBtnProps = {
-  label: string | null;
+  label?: string | null;
   variant?: BtnVariant;
   onClick?: () => void;
 };
