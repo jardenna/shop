@@ -8,11 +8,10 @@ import ModalContainer from '../../components/modal/ModalContainer';
 import VisuallyHidden from '../../components/VisuallyHidden';
 import useLanguage from '../../features/language/useLanguage';
 import { BtnVariant, IconName, SizeVariant } from '../../types/enums';
+import type { OmitChecked } from '../../types/types';
 import type { HeaderProps } from '../header/Header';
 import { ShopPath } from '../nav/enums';
 import LanguageCurrencyPreferences from './LanguageCurrencyPreferences';
-
-type OmitChecked<T, K extends keyof T> = Omit<T, K>;
 
 type OmittedHeaderProps = OmitChecked<HeaderProps, 'isMobileSize'>;
 

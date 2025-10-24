@@ -11,6 +11,8 @@ export type RefElementType = RefObject<HTMLElement | null>;
 export type RefInputType = RefObject<HTMLInputElement | null>;
 export type RefFormType = RefObject<HTMLFormElement | null>;
 
+export type OmitChecked<T, K extends keyof T> = Omit<T, K>;
+
 export type OptionType<T = string> = {
   label: string;
   value: T;
