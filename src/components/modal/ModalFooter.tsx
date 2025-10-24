@@ -20,11 +20,11 @@ const ModalFooter = ({
 }: ModalFooterProps) => {
   const { language } = useLanguage();
 
-  const secondaryBtn = resolveSecondaryBtn(
-    secondaryActionBtn,
-    language.cancel,
+  const secondaryBtn = resolveSecondaryBtn({
+    props: secondaryActionBtn,
+    label: language.cancel,
     onCloseModal,
-  );
+  });
 
   return (
     <LayoutElement as="footer" className="footer" ariaLabel={ariaLabel}>

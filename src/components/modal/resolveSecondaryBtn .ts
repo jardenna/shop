@@ -1,13 +1,19 @@
 import { BtnVariant } from '../../types/enums';
-import { SecondaryActionBtnProps } from './Modal';
+import type { SecondaryActionBtnProps } from './Modal';
 
-export type SecondaryActionConfig = SecondaryActionBtnProps | null | undefined;
+type SecondaryActionConfig = SecondaryActionBtnProps | null;
 
-const resolveSecondaryBtn = (
-  props: SecondaryActionConfig,
-  defaultLabel: string,
-  onClose: () => void,
-) => {
+type ResolveSecondaryBtnProps = {
+  label: string;
+  props?: SecondaryActionConfig;
+  onCloseModal: () => void;
+};
+
+const resolveSecondaryBtn = ({
+  props,
+  label,
+  onCloseModal,
+}: ResolveSecondaryBtnProps) => {
   // case 1: null → no button
   if (props === null) {
     return null;
@@ -16,17 +22,17 @@ const resolveSecondaryBtn = (
   // case 2: undefined → default cancel button
   if (props === undefined) {
     return {
-      label: defaultLabel,
+      label,
       variant: BtnVariant.Secondary,
-      onClick: onClose,
+      onClick: onCloseModal,
     };
   }
 
   // case 3: custom config (empty object counts as custom too)
   return {
-    label: props.label ?? defaultLabel,
+    label: props.label ?? label,
     variant: props.variant ?? BtnVariant.Secondary,
-    onClick: props.onClick ?? onClose,
+    onClick: props.onClick ?? onCloseModal,
   };
 };
 
