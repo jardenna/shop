@@ -4,7 +4,6 @@ import DropdownBtn from '../../components/dropdownBtn/DropdownBtn';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import useFavorites from '../../components/favorites/useFavorites';
 import IconContent from '../../components/IconContent';
-import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
 import VisuallyHidden from '../../components/VisuallyHidden';
 import useLanguage from '../../features/language/useLanguage';
@@ -13,14 +12,9 @@ import type { HeaderProps } from '../header/Header';
 import { ShopPath } from '../nav/enums';
 import LanguageCurrencyPreferences from './LanguageCurrencyPreferences';
 
-type OmittedHeaderProps = Omit<
-  HeaderProps,
-  'primaryActionBtn' | 'ariaLabel' | 'isMobileSize'
->;
+type OmitChecked<T, K extends keyof T> = Omit<T, K>;
 
-type HeaderIconsProps = OmittedHeaderProps & {
-  primaryActionBtn: PrimaryActionBtnProps;
-};
+type OmittedHeaderProps = OmitChecked<HeaderProps, 'isMobileSize'>;
 
 const HeaderIcons = ({
   dropdownBtnList,
@@ -30,7 +24,7 @@ const HeaderIcons = ({
   currencyOptions,
   defaultValue,
   onSelectCurrency,
-}: HeaderIconsProps) => {
+}: OmittedHeaderProps) => {
   const { language } = useLanguage();
   const { favorites, onReset } = useFavorites({});
 
