@@ -1,8 +1,5 @@
 import { DropdownItem } from '../../components/dropdownBtn/DropdownBtn';
-import type {
-  PrimaryActionBtnProps,
-  SecondaryActionBtnProps,
-} from '../../components/modal/Modal';
+import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import type { SelectedLanguage } from '../../features/language/languageSlice';
 import type { InputChangeHandler, OptionType } from '../../types/types';
 import HeaderIcons from '../headerIcons/HeaderIcons';
@@ -25,7 +22,6 @@ export type HeaderProps = {
   isMobileSize: boolean;
   onChange: InputChangeHandler;
   primaryActionBtn: PrimaryActionBtnProps;
-  secondaryActionBtn: SecondaryActionBtnProps;
   values: Values;
   onSelectCurrency: (selectedOptions: OptionType) => void;
 };
@@ -38,7 +34,6 @@ const Header = ({
   currencyOptions,
   onSelectCurrency,
   defaultValue,
-  secondaryActionBtn,
   isMobileSize,
 }: HeaderProps) => (
   <LayoutElement className="main-header">
@@ -57,7 +52,6 @@ const Header = ({
         currencyOptions={currencyOptions}
         onSelectCurrency={onSelectCurrency}
         defaultValue={defaultValue}
-        secondaryActionBtn={secondaryActionBtn}
       />
     </div>
   </LayoutElement>

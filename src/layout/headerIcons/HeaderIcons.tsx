@@ -30,7 +30,6 @@ const HeaderIcons = ({
   currencyOptions,
   defaultValue,
   onSelectCurrency,
-  secondaryActionBtn,
 }: HeaderIconsProps) => {
   const { language } = useLanguage();
   const { favorites, onReset } = useFavorites({});
@@ -77,7 +76,6 @@ const HeaderIcons = ({
             triggerModalBtnVariant={BtnVariant.Ghost}
             id="languageId"
             primaryActionBtn={primaryActionBtn}
-            secondaryActionBtn={secondaryActionBtn}
             modalSize={SizeVariant.Md}
             modalHeaderText={language.preferences}
           >
