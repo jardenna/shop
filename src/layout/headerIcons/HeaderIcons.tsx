@@ -8,12 +8,9 @@ import ModalContainer from '../../components/modal/ModalContainer';
 import VisuallyHidden from '../../components/VisuallyHidden';
 import useLanguage from '../../features/language/useLanguage';
 import { BtnVariant, IconName, SizeVariant } from '../../types/enums';
-import type { OmitChecked } from '../../types/types';
-import type { HeaderProps } from '../header/Header';
+import type { BaseHeaderProps } from '../header/Header';
 import { ShopPath } from '../nav/enums';
 import LanguageCurrencyPreferences from './LanguageCurrencyPreferences';
-
-type OmittedHeaderProps = OmitChecked<HeaderProps, 'isMobileSize'>;
 
 const HeaderIcons = ({
   dropdownBtnList,
@@ -23,7 +20,7 @@ const HeaderIcons = ({
   currencyOptions,
   defaultValue,
   onSelectCurrency,
-}: OmittedHeaderProps) => {
+}: BaseHeaderProps) => {
   const { language } = useLanguage();
   const { favorites, onReset } = useFavorites({});
 

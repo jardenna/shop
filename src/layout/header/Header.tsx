@@ -18,11 +18,14 @@ export type Values = {
   languageOption: SelectedLanguage;
 };
 
-export type HeaderProps = {
+type MobileProps = {
+  isMobileSize: boolean;
+};
+
+export type BaseHeaderProps = {
   currencyOptions: OptionType[];
   defaultValue: OptionType;
   dropdownBtnList: DropdownItem[];
-  isMobileSize: boolean;
   onChange: InputChangeHandler;
   primaryActionBtn: PrimaryActionBtnProps;
   values: Values;
@@ -39,7 +42,7 @@ const Header = ({
   onSelectCurrency,
   defaultValue,
   isMobileSize,
-}: HeaderProps) => (
+}: BaseHeaderProps & MobileProps) => (
   <LayoutElement className="main-header">
     <div className="container main-header-content">
       <Logo linkTo={ShopPath.Root} />

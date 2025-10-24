@@ -5,11 +5,11 @@ import useLanguage, {
   languageOptions,
 } from '../../features/language/useLanguage';
 import type { OmitChecked } from '../../types/types';
-import type { HeaderProps } from '../header/Header';
+import type { BaseHeaderProps } from '../header/Header';
 
 type OmittedHeaderProps = OmitChecked<
-  HeaderProps,
-  'primaryActionBtn' | 'secondaryActionBtn' | 'dropdownBtnList' | 'isMobileSize'
+  BaseHeaderProps,
+  'primaryActionBtn' | 'secondaryActionBtn' | 'dropdownBtnList'
 >;
 
 const LanguageCurrencyPreferences = ({
