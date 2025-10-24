@@ -12,12 +12,12 @@ const resolveSecondaryBtn = ({
   label,
   onCloseModal,
 }: ResolveSecondaryBtnProps) => {
-  // case 1: null → no button
+  // case 1: null → explicitly no button
   if (action === null) {
     return null;
   }
 
-  // case 2: undefined → default cancel button
+  // case 2: undefined → default cancel (close only)
   if (action === undefined) {
     return {
       label,
@@ -30,7 +30,10 @@ const resolveSecondaryBtn = ({
   return {
     label: action.label ?? label,
     variant: action.variant ?? BtnVariant.Secondary,
-    onClick: action.onClick ?? onCloseModal,
+    onClick: () => {
+      action.onClick?.();
+      onCloseModal();
+    },
   };
 };
 

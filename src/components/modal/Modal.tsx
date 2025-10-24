@@ -98,37 +98,27 @@ const Modal = ({
   }
 
   const handlePrimaryClick = () => {
-    if (primaryActionBtn.onClick) {
-      primaryActionBtn.onClick();
-      closeModalAnimated();
-    }
-    if (
-      primaryActionBtn.closeOnClick !== false &&
-      primaryActionBtn.resultSuccess === undefined
-    ) {
-      closeModalAnimated();
-      if (onClearAllValues) {
-        onClearAllValues();
-      }
-    }
-  };
+    const { onClick, closeOnClick, resultSuccess } = primaryActionBtn;
 
-  const handleClose = () => {
-    if (secondaryActionBtn && secondaryActionBtn.onClick) {
-      secondaryActionBtn.onClick();
+    onClick?.();
+
+    const shouldClose = closeOnClick !== false && resultSuccess === undefined;
+
+    if (shouldClose) {
+      onClearAllValues?.();
+      closeModalAnimated();
     }
-    closeModalAnimated();
   };
 
   const handleErrorBoundaryReset = () => {
-    handleClose();
     onBoundaryReset?.();
+    closeModalAnimated();
   };
 
   const secondaryBtn = resolveSecondaryBtn({
     action: secondaryActionBtn,
     label: language.cancel,
-    onCloseModal: handleClose,
+    onCloseModal: closeModalAnimated,
   });
 
   const ModalContent = (
@@ -147,7 +137,6 @@ const Modal = ({
         <ModalFooter
           primaryActionBtn={primaryActionBtn}
           secondaryBtn={secondaryBtn}
-          onCloseModal={handleClose}
           onPrimaryClick={handlePrimaryClick}
           ariaLabel={language.dialog}
         />
