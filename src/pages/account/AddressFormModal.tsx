@@ -7,10 +7,7 @@ import FieldSet from '../../components/fieldset/FieldSet';
 import Input from '../../components/formElements/Input';
 import IconContent from '../../components/IconContent';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-import {
-  PrimaryActionBtnProps,
-  SecondaryActionBtnProps,
-} from '../../components/modal/Modal';
+import { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
 import useSubmitStatus from '../../components/modal/useSubmitStatus';
 import useLanguage from '../../features/language/useLanguage';
@@ -114,10 +111,6 @@ const AddressFormModal = ({
     [onSubmit, primaryActionBtnLabel, isLoading, addIsLoading, resultSuccess],
   );
 
-  const secondaryActionBtn: SecondaryActionBtnProps = {
-    label: language.cancel,
-  };
-
   return (
     <ModalContainer
       triggerModalDisabled={triggerModalDisabled}
@@ -141,7 +134,6 @@ const AddressFormModal = ({
       triggerModalBtnVariant={BtnVariant.Ghost}
       id={id ? `update-${id}` : 'create'}
       primaryActionBtn={primaryActionBtn}
-      secondaryActionBtn={secondaryActionBtn}
       modalHeaderText={modalHeaderText}
       className="address-modal"
     >

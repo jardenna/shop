@@ -7,10 +7,7 @@ import FieldSet from '../../components/fieldset/FieldSet';
 import Input from '../../components/formElements/Input';
 import RadioButtonList from '../../components/formElements/RadioButtonList';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-import type {
-  PrimaryActionBtnProps,
-  SecondaryActionBtnProps,
-} from '../../components/modal/Modal';
+import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
 import useSubmitStatus from '../../components/modal/useSubmitStatus';
 import useLanguage from '../../features/language/useLanguage';
@@ -88,10 +85,6 @@ const AccountFormModal = ({
     resultSuccess,
   };
 
-  const secondaryActionBtn: SecondaryActionBtnProps = {
-    label: language.cancel,
-  };
-
   return (
     <ModalContainer
       triggerModalBtnContent={language.update}
@@ -100,7 +93,6 @@ const AccountFormModal = ({
       modalSize={SizeVariant.Md}
       primaryActionBtn={primaryActionBtn}
       modalHeaderText={language.updateYourInfo}
-      secondaryActionBtn={secondaryActionBtn}
       onBoundaryReset={() => {
         reset();
       }}
