@@ -7,7 +7,10 @@ import FieldSet from '../../components/fieldset/FieldSet';
 import Input from '../../components/formElements/Input';
 import IconContent from '../../components/IconContent';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
-import { PrimaryActionBtnProps } from '../../components/modal/Modal';
+import {
+  PrimaryActionBtnProps,
+  SecondaryActionBtnProps,
+} from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
 import useSubmitStatus from '../../components/modal/useSubmitStatus';
 import useLanguage from '../../features/language/useLanguage';
@@ -28,6 +31,7 @@ type AddressFormModalProps = {
   primaryActionBtnLabel: string;
   username: string;
   address?: Address;
+  secondaryActionBtn?: SecondaryActionBtnProps | null;
   triggerModalDisabled?: boolean;
 };
 
@@ -53,6 +57,7 @@ const AddressFormModal = ({
   primaryActionBtnLabel,
   popupMessage,
   triggerModalDisabled,
+  secondaryActionBtn,
 }: AddressFormModalProps) => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
@@ -134,6 +139,7 @@ const AddressFormModal = ({
       triggerModalBtnVariant={BtnVariant.Ghost}
       id={id ? `update-${id}` : 'create'}
       primaryActionBtn={primaryActionBtn}
+      secondaryActionBtn={secondaryActionBtn}
       modalHeaderText={modalHeaderText}
       className="address-modal"
     >
