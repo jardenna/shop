@@ -10,6 +10,7 @@ import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import Overlay from '../overlay/Overlay';
 import Portal from '../Portal';
 import './_modal.scss';
+import ModalBodyWrapper from './ModalBodyWrapper';
 import ModalFooter from './ModalFooter';
 import ModalHeader from './ModalHeader';
 import resolveSecondaryBtn from './resolveSecondaryBtn ';
@@ -138,34 +139,19 @@ const Modal = ({
         showCloseIcon={showCloseIcon}
         ariaLabel={language.dialog}
       />
-      {/* Is modal body a form? */}
-      {primaryActionBtn.buttonType === BtnType.Submit ? (
-        <form
-          noValidate
-          className="modal-form modal-content"
-          onSubmit={primaryActionBtn.onSubmit}
-        >
-          {children}
-          <ModalFooter
-            primaryActionBtn={primaryActionBtn}
-            secondaryBtn={secondaryBtn}
-            onCloseModal={handleClose}
-            onPrimaryClick={handlePrimaryClick}
-            ariaLabel={language.dialog}
-          />
-        </form>
-      ) : (
-        <>
-          <div className="modal-content">{children}</div>
-          <ModalFooter
-            primaryActionBtn={primaryActionBtn}
-            onCloseModal={handleClose}
-            onPrimaryClick={handlePrimaryClick}
-            ariaLabel={language.dialog}
-            secondaryBtn={secondaryBtn}
-          />
-        </>
-      )}
+      <ModalBodyWrapper
+        isForm={primaryActionBtn.buttonType === BtnType.Submit}
+        onSubmit={primaryActionBtn.onSubmit}
+      >
+        {children}
+        <ModalFooter
+          primaryActionBtn={primaryActionBtn}
+          secondaryBtn={secondaryBtn}
+          onCloseModal={handleClose}
+          onPrimaryClick={handlePrimaryClick}
+          ariaLabel={language.dialog}
+        />
+      </ModalBodyWrapper>
       {modalInfo && modalInfo}
     </article>
   );
