@@ -42,6 +42,9 @@ const DeleteAddressModal = ({ id, modalMessage }: DeleteAddressModalProps) => {
 
   const secondaryActionBtn: SecondaryActionBtnProps = {
     label: language.cancel,
+    onClick: () => {
+      console.log(1);
+    },
   };
 
   return (

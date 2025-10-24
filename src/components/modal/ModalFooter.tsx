@@ -17,27 +17,36 @@ const ModalFooter = ({
   onCloseModal,
   onPrimaryClick,
   ariaLabel,
-}: ModalFooterProps) => (
-  <LayoutElement as="footer" className="footer" ariaLabel={ariaLabel}>
-    {secondaryActionBtn && (
+}: ModalFooterProps) => {
+  const handleClose = () => {
+    if (secondaryActionBtn && secondaryActionBtn.onClick) {
+      secondaryActionBtn.onClick();
+    }
+    onCloseModal();
+  };
+
+  return (
+    <LayoutElement as="footer" className="footer" ariaLabel={ariaLabel}>
+      {secondaryActionBtn && (
+        <Button
+          onClick={handleClose}
+          variant={secondaryActionBtn.variant || BtnVariant.Secondary}
+        >
+          {secondaryActionBtn.label}
+        </Button>
+      )}
       <Button
-        onClick={secondaryActionBtn.onClick || onCloseModal}
-        variant={secondaryActionBtn.variant || BtnVariant.Secondary}
+        onClick={onPrimaryClick}
+        type={primaryActionBtn.buttonType}
+        disabled={primaryActionBtn.disabled}
+        showBtnLoader={primaryActionBtn.showBtnLoader}
+        className={primaryActionBtn.className}
+        variant={primaryActionBtn.variant || BtnVariant.Primary}
       >
-        {secondaryActionBtn.label}
+        {primaryActionBtn.label}
       </Button>
-    )}
-    <Button
-      onClick={onPrimaryClick}
-      type={primaryActionBtn.buttonType}
-      disabled={primaryActionBtn.disabled}
-      showBtnLoader={primaryActionBtn.showBtnLoader}
-      className={primaryActionBtn.className}
-      variant={primaryActionBtn.variant || BtnVariant.Primary}
-    >
-      {primaryActionBtn.label}
-    </Button>
-  </LayoutElement>
-);
+    </LayoutElement>
+  );
+};
 
 export default ModalFooter;
