@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import type { FormEventType } from '../../types/types';
 
-const ModalBodyWrapper = ({
+const ModalContentContainer = ({
   isForm,
   onSubmit,
   children,
@@ -18,4 +18,4 @@ const ModalBodyWrapper = ({
     <div className="modal-content">{children}</div>
   );
 
-export default ModalBodyWrapper;
+export default ModalContentContainer;

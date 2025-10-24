@@ -10,7 +10,7 @@ import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import Overlay from '../overlay/Overlay';
 import Portal from '../Portal';
 import './_modal.scss';
-import ModalBodyWrapper from './ModalBodyWrapper';
+import ModalContentContainer from './ModalContentContainer';
 import ModalFooter from './ModalFooter';
 import ModalHeader from './ModalHeader';
 import resolveSecondaryBtn from './resolveSecondaryBtn ';
@@ -139,7 +139,7 @@ const Modal = ({
         showCloseIcon={showCloseIcon}
         ariaLabel={language.dialog}
       />
-      <ModalBodyWrapper
+      <ModalContentContainer
         isForm={primaryActionBtn.buttonType === BtnType.Submit}
         onSubmit={primaryActionBtn.onSubmit}
       >
@@ -151,7 +151,7 @@ const Modal = ({
           onPrimaryClick={handlePrimaryClick}
           ariaLabel={language.dialog}
         />
-      </ModalBodyWrapper>
+      </ModalContentContainer>
       {modalInfo && modalInfo}
     </article>
   );
