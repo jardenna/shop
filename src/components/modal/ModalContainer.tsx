@@ -22,6 +22,7 @@ const ModalContainer = ({
   secondaryActionBtn,
   modalSize,
   className,
+  showCloseIcon,
   triggerModalBtnVariant,
   triggerModalBtnContent,
   modalHeaderText,
@@ -51,6 +52,7 @@ const ModalContainer = ({
 
       <Modal
         id={id}
+        showCloseIcon={showCloseIcon}
         modalHeaderText={modalHeaderText}
         primaryActionBtn={primaryActionBtn}
         secondaryActionBtn={secondaryActionBtn}

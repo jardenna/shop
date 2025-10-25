@@ -3,10 +3,7 @@ import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import { BtnVariant } from '../../types/enums';
 import LinkButton from '../LinkButton';
-import type {
-  PrimaryActionBtnProps,
-  SecondaryActionBtnProps,
-} from '../modal/Modal';
+import type { PrimaryActionBtnProps } from '../modal/Modal';
 import ModalContainer from '../modal/ModalContainer';
 
 type CardFooterProps = {
@@ -28,9 +25,6 @@ const CardFooter = ({
 }: CardFooterProps) => {
   const { language } = useLanguage();
   const { isAdmin } = useAuth();
-  const secondaryActionBtn: SecondaryActionBtnProps = {
-    label: language.cancel,
-  };
 
   return (
     <LayoutElement
@@ -44,7 +38,6 @@ const CardFooter = ({
           triggerModalBtnVariant={BtnVariant.Danger}
           id={id}
           primaryActionBtn={primaryActionBtn}
-          secondaryActionBtn={secondaryActionBtn}
           modalHeaderText={modalHeaderText}
           triggerModalDisabled={triggerModalDisabled}
         >

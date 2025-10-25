@@ -1,7 +1,5 @@
 import { ChangeEvent, FormEvent, MouseEvent, RefObject } from 'react';
 
-export type SortOrderType = 'asc' | 'desc';
-
 export type ButtonEventType = MouseEvent<HTMLButtonElement>;
 export type ChangeInputType = ChangeEvent<HTMLInputElement>;
 export type ChangeTextAreaType = ChangeEvent<HTMLTextAreaElement>;
@@ -10,6 +8,10 @@ export type FormEventType = FormEvent<HTMLFormElement>;
 export type RefElementType = RefObject<HTMLElement | null>;
 export type RefInputType = RefObject<HTMLInputElement | null>;
 export type RefFormType = RefObject<HTMLFormElement | null>;
+
+export type SortOrderType = 'asc' | 'desc';
+
+export type OmitChecked<T, K extends keyof T> = Omit<T, K>;
 
 export type OptionType<T = string> = {
   label: string;

@@ -4,23 +4,13 @@ import DropdownBtn from '../../components/dropdownBtn/DropdownBtn';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import useFavorites from '../../components/favorites/useFavorites';
 import IconContent from '../../components/IconContent';
-import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
 import VisuallyHidden from '../../components/VisuallyHidden';
 import useLanguage from '../../features/language/useLanguage';
 import { BtnVariant, IconName, SizeVariant } from '../../types/enums';
-import type { HeaderProps } from '../header/Header';
+import type { BaseHeaderProps } from '../header/Header';
 import { ShopPath } from '../nav/enums';
 import LanguageCurrencyPreferences from './LanguageCurrencyPreferences';
-
-type OmittedHeaderProps = Omit<
-  HeaderProps,
-  'primaryActionBtn' | 'ariaLabel' | 'isMobileSize'
->;
-
-type HeaderIconsProps = OmittedHeaderProps & {
-  primaryActionBtn: PrimaryActionBtnProps;
-};
 
 const HeaderIcons = ({
   dropdownBtnList,
@@ -30,8 +20,7 @@ const HeaderIcons = ({
   currencyOptions,
   defaultValue,
   onSelectCurrency,
-  secondaryActionBtn,
-}: HeaderIconsProps) => {
+}: BaseHeaderProps) => {
   const { language } = useLanguage();
   const { favorites, onReset } = useFavorites({});
 
@@ -77,7 +66,6 @@ const HeaderIcons = ({
             triggerModalBtnVariant={BtnVariant.Ghost}
             id="languageId"
             primaryActionBtn={primaryActionBtn}
-            secondaryActionBtn={secondaryActionBtn}
             modalSize={SizeVariant.Md}
             modalHeaderText={language.preferences}
           >

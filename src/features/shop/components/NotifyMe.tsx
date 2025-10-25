@@ -47,16 +47,24 @@ const NotifyMe = ({
       validate: sizesIsRequered ? validateNotityMe : validateNEmail,
     });
 
+  const handleClearAllValues = () => {
+    onClearAllValues();
+    setTimeout(() => {
+      setSuccessMessage(null);
+    }, 350);
+  };
+
   function handleSendEmail() {
     setSuccessMessage(language.notifySuccessMeMessage);
-    onClearAllValues();
   }
 
+  const isSuccess = Boolean(successMessage);
+
   const primaryActionBtn: PrimaryActionBtnProps = {
-    onSubmit,
-    label: successMessage ? language.continueShopping : language.notifyMe,
-    buttonType: BtnType.Submit,
-    closeOnClick: !!successMessage,
+    label: isSuccess ? language.continueShopping : language.notifyMe,
+    buttonType: isSuccess ? BtnType.Button : BtnType.Submit,
+    closeOnClick: isSuccess,
+    onSubmit: isSuccess ? undefined : onSubmit,
   };
 
   return (
@@ -66,8 +74,10 @@ const NotifyMe = ({
       }
       triggerModalBtnVariant={BtnVariant.Ghost}
       id={id}
-      onClearAllValues={onClearAllValues}
+      onClearAllValues={handleClearAllValues}
       primaryActionBtn={primaryActionBtn}
+      secondaryActionBtn={null}
+      showCloseIcon
       modalHeaderText={
         sizesIsRequered
           ? language.currentlyUnavailableSizes

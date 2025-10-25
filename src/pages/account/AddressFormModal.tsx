@@ -31,6 +31,7 @@ type AddressFormModalProps = {
   primaryActionBtnLabel: string;
   username: string;
   address?: Address;
+  secondaryActionBtn?: SecondaryActionBtnProps | null;
   triggerModalDisabled?: boolean;
 };
 
@@ -56,6 +57,7 @@ const AddressFormModal = ({
   primaryActionBtnLabel,
   popupMessage,
   triggerModalDisabled,
+  secondaryActionBtn,
 }: AddressFormModalProps) => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
@@ -113,10 +115,6 @@ const AddressFormModal = ({
     }),
     [onSubmit, primaryActionBtnLabel, isLoading, addIsLoading, resultSuccess],
   );
-
-  const secondaryActionBtn: SecondaryActionBtnProps = {
-    label: language.cancel,
-  };
 
   return (
     <ModalContainer

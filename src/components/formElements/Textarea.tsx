@@ -1,8 +1,8 @@
-import type { ChangeTextAreaType } from '../../types/types';
+import type { ChangeTextAreaType, OmitChecked } from '../../types/types';
 import FormLabel from './FormLabel';
 import type { InputProps } from './Input';
 
-type OmittedProps = Omit<
+type OmittedProps = OmitChecked<
   InputProps,
   | 'className'
   | 'type'

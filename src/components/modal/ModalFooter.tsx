@@ -1,39 +1,43 @@
 import LayoutElement from '../../layout/LayoutElement';
-import { BtnVariant } from '../../types/enums';
+import { BtnType, BtnVariant } from '../../types/enums';
 import Button from '../Button';
-import type { PrimaryActionBtnProps, SecondaryActionBtnProps } from './Modal';
+import { PrimaryActionBtnProps, SecondaryActionBtnProps } from './Modal';
 
 type ModalFooterProps = {
   ariaLabel: string;
-  primaryActionBtn: PrimaryActionBtnProps & { closeOnClick?: boolean };
-  secondaryActionBtn?: SecondaryActionBtnProps;
-  onCloseModal: () => void;
+  primaryActionBtn: PrimaryActionBtnProps;
+  secondaryBtn?: SecondaryActionBtnProps | null;
   onPrimaryClick?: () => void;
 };
 
 const ModalFooter = ({
   primaryActionBtn,
-  secondaryActionBtn,
-  onCloseModal,
+  secondaryBtn,
   onPrimaryClick,
   ariaLabel,
 }: ModalFooterProps) => (
   <LayoutElement as="footer" className="footer" ariaLabel={ariaLabel}>
-    {secondaryActionBtn && (
+    {secondaryBtn && (
       <Button
-        onClick={secondaryActionBtn.onClick || onCloseModal}
-        variant={secondaryActionBtn.variant || BtnVariant.Secondary}
+        variant={secondaryBtn.variant ?? BtnVariant.Secondary}
+        onClick={secondaryBtn.onClick}
       >
-        {secondaryActionBtn.label}
+        {secondaryBtn.label}
       </Button>
     )}
+
     <Button
-      onClick={onPrimaryClick}
       type={primaryActionBtn.buttonType}
+      // Only bind onClick when not submit (WCAG-native behavior)
+      onClick={
+        primaryActionBtn.buttonType === BtnType.Submit
+          ? undefined
+          : onPrimaryClick
+      }
       disabled={primaryActionBtn.disabled}
       showBtnLoader={primaryActionBtn.showBtnLoader}
       className={primaryActionBtn.className}
-      variant={primaryActionBtn.variant || BtnVariant.Primary}
+      variant={primaryActionBtn.variant ?? BtnVariant.Primary}
     >
       {primaryActionBtn.label}
     </Button>

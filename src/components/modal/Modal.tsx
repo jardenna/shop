@@ -10,8 +10,10 @@ import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import Overlay from '../overlay/Overlay';
 import Portal from '../Portal';
 import './_modal.scss';
+import ModalContentContainer from './ModalContentContainer';
 import ModalFooter from './ModalFooter';
 import ModalHeader from './ModalHeader';
+import resolveSecondaryBtn from './resolveSecondaryBtn ';
 import useModal from './useModal';
 import useVisibility from './useVisibility';
 
@@ -29,7 +31,7 @@ export type PrimaryActionBtnProps = {
 };
 
 export type SecondaryActionBtnProps = {
-  label: string | null;
+  label?: string;
   variant?: BtnVariant;
   onClick?: () => void;
 };
@@ -43,7 +45,7 @@ export type ModalProps = {
   isAlert?: boolean;
   modalInfo?: ReactNode;
   modalSize?: SizeVariant;
-  secondaryActionBtn?: SecondaryActionBtnProps;
+  secondaryActionBtn?: SecondaryActionBtnProps | null;
   showCloseIcon?: boolean;
   onBoundaryReset?: () => void;
   onClearAllValues?: () => void;
@@ -96,20 +98,28 @@ const Modal = ({
   }
 
   const handlePrimaryClick = () => {
-    if (primaryActionBtn.onClick) {
-      primaryActionBtn.onClick();
+    const { onClick, closeOnClick, resultSuccess } = primaryActionBtn;
+
+    onClick?.();
+
+    const shouldClose = closeOnClick !== false && resultSuccess === undefined;
+
+    if (shouldClose) {
+      onClearAllValues?.();
       closeModalAnimated();
-    }
-    if (
-      primaryActionBtn.closeOnClick !== false &&
-      primaryActionBtn.resultSuccess === undefined
-    ) {
-      closeModalAnimated();
-      if (onClearAllValues) {
-        onClearAllValues();
-      }
     }
   };
+
+  const handleErrorBoundaryReset = () => {
+    onBoundaryReset?.();
+    closeModalAnimated();
+  };
+
+  const secondaryBtn = resolveSecondaryBtn({
+    action: secondaryActionBtn,
+    label: language.cancel,
+    onCloseModal: closeModalAnimated,
+  });
 
   const ModalContent = (
     <article>
@@ -119,42 +129,21 @@ const Modal = ({
         showCloseIcon={showCloseIcon}
         ariaLabel={language.dialog}
       />
-      {/* Is modal body a form? */}
-      {primaryActionBtn.buttonType === BtnType.Submit ? (
-        <form
-          noValidate
-          className="modal-form modal-content"
-          onSubmit={primaryActionBtn.onSubmit}
-        >
-          {children}
-          <ModalFooter
-            primaryActionBtn={primaryActionBtn}
-            secondaryActionBtn={secondaryActionBtn}
-            onCloseModal={closeModalAnimated}
-            onPrimaryClick={handlePrimaryClick}
-            ariaLabel={language.dialog}
-          />
-        </form>
-      ) : (
-        <>
-          <div className="modal-content">{children}</div>
-          <ModalFooter
-            primaryActionBtn={primaryActionBtn}
-            secondaryActionBtn={secondaryActionBtn}
-            onCloseModal={closeModalAnimated}
-            onPrimaryClick={handlePrimaryClick}
-            ariaLabel={language.dialog}
-          />
-        </>
-      )}
+      <ModalContentContainer
+        isForm={primaryActionBtn.buttonType === BtnType.Submit}
+        onSubmit={primaryActionBtn.onSubmit}
+      >
+        {children}
+        <ModalFooter
+          primaryActionBtn={primaryActionBtn}
+          secondaryBtn={secondaryBtn}
+          onPrimaryClick={handlePrimaryClick}
+          ariaLabel={language.dialog}
+        />
+      </ModalContentContainer>
       {modalInfo && modalInfo}
     </article>
   );
-
-  const handleErrorBoundaryReset = () => {
-    closeModalAnimated();
-    onBoundaryReset?.();
-  };
 
   return (
     <Portal portalId="modal">

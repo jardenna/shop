@@ -1,5 +1,6 @@
 import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../app/store';
+import type { OmitChecked } from '../types/types';
 
 export type MessagePopupTypes = 'success' | 'info' | 'warning' | 'error';
 export type ComponentType = 'notification' | 'toast';
@@ -21,7 +22,7 @@ export type MessagePopup = {
   onClose?: () => void;
 };
 
-export type MessagePopupWithoutId = Omit<MessagePopup, 'id'>;
+export type MessagePopupWithoutId = OmitChecked<MessagePopup, 'id'>;
 
 type MessagePopupState = {
   messagePopups: MessagePopup[];

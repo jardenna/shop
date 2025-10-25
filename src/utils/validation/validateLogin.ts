@@ -1,9 +1,13 @@
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
+import type { OmitChecked } from '../../types/types';
 import validateEmail from './CommonFieldValidation';
 import type { AuthFormValues } from './validateCreateAccount';
 
-type OmittedRLoginType = Omit<AuthFormValues, 'username' | 'confirmPassword'>;
+type OmittedRLoginType = OmitChecked<
+  AuthFormValues,
+  'username' | 'confirmPassword'
+>;
 
 function validateLogin(values: OmittedRLoginType) {
   const errors: ValidationErrors<OmittedRLoginType> = {};

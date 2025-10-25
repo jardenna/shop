@@ -1,21 +1,16 @@
 import Selectbox from '../../../components/selectbox/Selectbox';
-import type { HeaderProps } from '../../../layout/header/Header';
+import type { BaseHeaderProps } from '../../../layout/header/Header';
 
-type OmittedHeaderProps = Omit<
-  HeaderProps,
-  | 'primaryActionBtn'
-  | 'secondaryActionBtn'
-  | 'ariaLabel'
-  | 'dropdownBtnList'
-  | 'values'
-  | 'onChange'
-  | 'isMobileSize'
+type PickedHeaderProps = Pick<
+  BaseHeaderProps,
+  'currencyOptions' | 'defaultValue' | 'onSelectCurrency'
 >;
 
-type CurrencySelectProps = OmittedHeaderProps & {
+type CurrencySelectProps = PickedHeaderProps & {
   inputHasNoLabel: boolean;
   labelText: string;
 };
+
 const CurrencySelect = ({
   currencyOptions,
   defaultValue,
@@ -32,4 +27,5 @@ const CurrencySelect = ({
     inputHasNoLabel
   />
 );
+
 export default CurrencySelect;
