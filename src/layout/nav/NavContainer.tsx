@@ -1,6 +1,6 @@
 import { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
 import useLanguage from '../../features/language/useLanguage';
-import { OmitChecked } from '../../types/types';
+import type { OmitChecked } from '../../types/types';
 import './_nav.scss';
 import type { NavProps } from './Nav';
 import Nav from './Nav';
