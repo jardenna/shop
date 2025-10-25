@@ -5,7 +5,11 @@ import eslint from 'vite-plugin-eslint2';
 
 export default defineConfig({
   plugins: [
-    react(),
+    react({
+      babel: {
+        plugins: ['babel-plugin-react-compiler'],
+      },
+    }),
     checker({
       typescript: {
         tsconfigPath: './tsconfig.app.json',
@@ -21,11 +25,6 @@ export default defineConfig({
     host: true,
   },
   css: {
-    preprocessorOptions: {
-      scss: {
-        api: 'modern-compiler',
-      },
-    },
     devSourcemap: true,
   },
   build: {
