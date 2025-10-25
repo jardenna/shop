@@ -1,7 +1,7 @@
 export type AspectRatio = '2:3' | '3:1' | '4:5' | '1:1' | '16:9';
 
 // Common aspect ratios used across the shop
-const RATIO_MAP: Record<AspectRatio, { height: number; width: number }> = {
+const ratioMap: Record<AspectRatio, { height: number; width: number }> = {
   '2:3': { width: 400, height: 600 }, // thumbnails, product images, collection previews
   '3:1': { width: 1500, height: 500 }, // hero/banners in landscape
   '4:5': { width: 400, height: 500 }, // optional portrait (fashion standard)
@@ -24,7 +24,7 @@ const Img = ({
   ratio = '2:3',
   priority = false,
 }: ImgProps) => {
-  const { width, height } = RATIO_MAP[ratio];
+  const { width, height } = ratioMap[ratio];
 
   return (
     <img
