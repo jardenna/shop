@@ -71,4 +71,5 @@ const CategoryCard = ({
     </section>
   );
 };
+
 export default CategoryCard;

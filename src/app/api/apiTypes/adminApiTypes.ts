@@ -70,6 +70,7 @@ export type Category = DefaultResponseType & {
 export type CategoriesResponse = DefaultResponse & {
   categories: Category[];
 };
+
 export type UploadResponse = DefaultResponse & {
   images: string[];
 };

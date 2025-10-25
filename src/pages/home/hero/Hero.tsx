@@ -19,6 +19,8 @@ const Hero = () => {
       as="section"
       hidePicture={isMobileSize}
       ariaLabelledby={ariaLabeldBy}
+      ratio="16:9"
+      priority
     >
       <div className="hero-content">
         <h1 className="hero-title" id={ariaLabeldBy}>

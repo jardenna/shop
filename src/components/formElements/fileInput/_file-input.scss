@@ -67,7 +67,6 @@
 .img-list-img {
   width: rem(192px);
   height: rem(98px);
-  object-fit: cover;
 
   @include transition;
 }

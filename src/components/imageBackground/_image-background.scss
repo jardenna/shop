@@ -2,10 +2,8 @@
   display: grid;
 
   .img-fallback {
-    object-fit: cover;
     object-position: top;
     height: 100%;
-    width: 100%;
     max-width: max-content;
     max-height: max-content;
   }

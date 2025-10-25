@@ -205,6 +205,8 @@ const CollectionPage = () => {
                 src={`${src}.jpg`}
                 srcSet={`${src}.avif`}
                 alt={language[altText]}
+                ratio="16:9"
+                priority
               />
             )}
             {products && (
