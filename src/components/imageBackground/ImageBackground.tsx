@@ -20,12 +20,22 @@ const ImageBackground = ({
   hidePicture,
   className = '',
   ariaLabelledby,
+  priority,
+  ratio,
 }: ImageBackgroundProps) => (
   <Tag
     className={`image-background ${className}`}
     aria-labelledby={ariaLabelledby}
   >
-    {!hidePicture && <Picture srcSet={srcSet} alt={alt} src={src} />}
+    {!hidePicture && (
+      <Picture
+        srcSet={srcSet}
+        alt={alt}
+        src={src}
+        priority={priority}
+        ratio={ratio}
+      />
+    )}
     {children}
   </Tag>
 );
