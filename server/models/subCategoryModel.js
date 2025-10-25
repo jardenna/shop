@@ -54,4 +54,5 @@ subCategorySchema.set('collation', { locale: 'en', strength: 2 });
 subCategorySchema.index({ subCategoryName: 1, category: 1 }, { unique: true });
 
 const SubCategory = model('SubCategory', subCategorySchema);
+
 export default SubCategory;

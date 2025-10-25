@@ -16,4 +16,5 @@ const SkeletonForm = ({ count = 2 }: PickedSkeletonTypes) => (
     </div>
   </div>
 );
+
 export default SkeletonForm;

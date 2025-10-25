@@ -97,4 +97,5 @@ productSchema.pre('validate', async function (next) {
 });
 
 const Product = model('Product', productSchema);
+
 export default Product;

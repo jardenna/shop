@@ -35,4 +35,5 @@ const ToggleSwitch = ({
     </div>
   );
 };
+
 export default ToggleSwitch;

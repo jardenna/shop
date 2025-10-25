@@ -14,4 +14,5 @@ const SkeletonPage = ({ count = 2, height = '' }: PickedSkeletonTypes) => (
     </div>
   </div>
 );
+
 export default SkeletonPage;

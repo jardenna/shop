@@ -39,4 +39,5 @@ const CollectionNav = ({ subMenu, category, onReset }: CollectionNavProps) => {
     </ul>
   );
 };
+
 export default CollectionNav;

@@ -32,4 +32,5 @@ const Aside = ({ onTogglePanel, isShown, ariaLabel }: AsideProps) => {
     </aside>
   );
 };
+
 export default Aside;
