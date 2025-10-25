@@ -1,4 +1,3 @@
-import { useCallback, useMemo } from 'react';
 import { useLocation, useParams } from 'react-router';
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
@@ -24,28 +23,17 @@ const Breadcrumbs = ({
   const { category, categoryId } = useParams();
   const { language } = useLanguage();
 
-  const pathnames = useMemo(
-    () => pathname.split('/').filter(Boolean),
-    [pathname],
-  );
+  const pathnames = pathname.split('/').filter(Boolean);
 
-  const paths = useMemo(
-    () =>
-      pathnames.map((_, idx) => `/${pathnames.slice(0, idx + 1).join('/')}`),
-    [pathnames],
+  const paths = pathnames.map(
+    (_, idx) => `/${pathnames.slice(0, idx + 1).join('/')}`,
   );
 
   const isAdmin = isAdminPath(pathname);
 
-  const fullPaths = useMemo(
-    () => (isAdmin ? paths : ['/', ...paths]),
-    [isAdmin, paths],
-  );
+  const fullPaths = isAdmin ? paths : ['/', ...paths];
 
-  const split = useCallback(
-    (path: string) => path.split('/').filter(Boolean),
-    [],
-  );
+  const split = (path: string) => path.split('/').filter(Boolean);
   const getLastSegment = (path: string) => split(path).at(-1);
 
   const hiddenPathSegments = ['update', 'view'];

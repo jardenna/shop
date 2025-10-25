@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback, useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import type {
   BlurEventType,
   ChangeInputType,
@@ -105,45 +105,41 @@ function useFormValidation<T extends KeyValuePair>({
     });
   }
 
-  const handleFileChange = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
-      const selectedFiles = event.target.files;
-      if (!selectedFiles) {
-        return;
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const selectedFiles = event.target.files;
+    if (!selectedFiles) {
+      return;
+    }
+
+    const formatBytes = (bytes: number) => `${Math.round(bytes / 1000)} KB`;
+    const fileArray = Array.from(selectedFiles);
+    setFilesData(fileArray);
+
+    const results: ValidatedFile[] = fileArray.map((file) => {
+      const ext = file.name
+        .substring(file.name.lastIndexOf('.') + 1)
+        .toLowerCase();
+      const isValidExt = allowedExtensions.includes(ext);
+      const isValidSize = file.size <= maxFileSize;
+
+      let reason: ValidatedFile['reason'];
+      if (!isValidExt) {
+        reason = 'invalidFileType';
+      } else if (!isValidSize) {
+        reason = 'fileTooLarge';
       }
 
-      const formatBytes = (bytes: number) => `${Math.round(bytes / 1000)} KB`;
-      const fileArray = Array.from(selectedFiles);
-      setFilesData(fileArray);
+      return {
+        file,
+        name: file.name,
+        size: formatBytes(file.size),
+        url: URL.createObjectURL(file),
+        reason,
+      };
+    });
 
-      const results: ValidatedFile[] = fileArray.map((file) => {
-        const ext = file.name
-          .substring(file.name.lastIndexOf('.') + 1)
-          .toLowerCase();
-        const isValidExt = allowedExtensions.includes(ext);
-        const isValidSize = file.size <= maxFileSize;
-
-        let reason: ValidatedFile['reason'];
-
-        if (!isValidExt) {
-          reason = 'invalidFileType';
-        } else if (!isValidSize) {
-          reason = 'fileTooLarge';
-        }
-
-        return {
-          file,
-          name: file.name,
-          size: formatBytes(file.size),
-          url: URL.createObjectURL(file),
-          reason,
-        };
-      });
-
-      setPreviewData(results);
-    },
-    [],
-  );
+    setPreviewData(results);
+  };
 
   const removePreviewImage = (name: string) => {
     setFilesData((prev) => prev.filter((file) => file.name !== name));
