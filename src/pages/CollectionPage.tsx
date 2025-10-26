@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
@@ -15,6 +15,7 @@ import ProductCardList from '../features/shop/components/ProductCardList';
 import ProductToolbar from '../features/shop/components/ProductToolbar';
 import useSubMenu from '../features/shop/hooks/useSubMenu';
 import { useGetProductsQuery } from '../features/shop/shopApiSlice';
+import useAnnounce from '../hooks/useAnnounce';
 import type { FilterValuesType } from '../hooks/useFilterParams';
 import useFilterParams from '../hooks/useFilterParams';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
@@ -98,8 +99,8 @@ const CollectionPage = () => {
   const paginationMobileText = `${language.page} ${page} ${language.of} ${totalBtns}`;
   const productsLoadedText = `${paginationMobileText} ${language.loaded}`;
 
-  const hasMounted = useRef(false);
-  const [announce, setAnnounce] = useState(false);
+  const { announce } = useAnnounce([page, productsPerPage, filterValues]);
+
   const [shouldScroll, setShouldScroll] = useState(false);
 
   useLayoutEffect(() => {
@@ -119,20 +120,6 @@ const CollectionPage = () => {
     updatePagination(1, newCount);
     setShouldScroll(true);
   };
-
-  useEffect(() => {
-    if (hasMounted.current) {
-      // Page actually changed after first render
-      setAnnounce(true);
-      const timer = setTimeout(() => {
-        setAnnounce(false);
-      }, 1000);
-      return () => {
-        clearTimeout(timer);
-      };
-    }
-    hasMounted.current = true;
-  }, [page, productsPerPage, filterValues]);
 
   const handlePagination = (id: number) => {
     // Early exit so current page doesn't spam history or rerender
