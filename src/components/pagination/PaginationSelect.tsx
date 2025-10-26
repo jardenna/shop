@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router';
+import useLanguage from '../../features/language/useLanguage';
 import FieldSet from '../fieldset/FieldSet';
 import Selectbox from '../selectbox/Selectbox';
 import type { BasePaginationSelectProps } from './Pagination';
@@ -10,32 +11,29 @@ export type PageCountOptions = {
 
 type PaginationSelectProps = BasePaginationSelectProps & {
   ariaText: string;
-  labelText: string;
-  legendText: string;
 };
 
 const PaginationSelect = ({
-  labelText,
   options,
   defaultValue,
-  legendText,
   onSelectCount,
   isOptionDisabled,
   selectInfo,
   ariaText,
 }: PaginationSelectProps) => {
   const { pathname } = useLocation();
+  const { language } = useLanguage();
 
   return (
     <form className="pagination-select">
-      <FieldSet legendText={legendText}>
+      <FieldSet legendText={language.displayOptions}>
         <Selectbox
           selectKey={`perpage-${pathname}`}
           name="productCount"
           options={options}
           id="productCount"
           onChange={onSelectCount}
-          labelText={labelText}
+          labelText={language.selectNumber}
           defaultValue={defaultValue}
           inputHasNoLabel
           isOptionDisabled={isOptionDisabled}

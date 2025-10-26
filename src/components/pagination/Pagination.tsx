@@ -44,8 +44,6 @@ const Pagination = ({
         paginationMobileText={paginationMobileText}
       />
       <PaginationSelect
-        labelText={language.selectNumber}
-        legendText={language.displayOptions}
         onSelectCount={onSelectCount}
         isOptionDisabled={isOptionDisabled}
         defaultValue={defaultValue}
