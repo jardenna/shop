@@ -1,9 +1,7 @@
-import useLanguage from '../../features/language/useLanguage';
 import PaginationNav from './PaginationNav';
 import PaginationSelect, { PageCountOptions } from './PaginationSelect';
 
 export type PaginationNavProps = {
-  ariaText: string;
   page: number;
   paginationMobileText: string;
   totalBtns: number;
@@ -21,7 +19,6 @@ export type BasePaginationSelectProps = {
 type PaginationProps = PaginationNavProps & BasePaginationSelectProps;
 
 const Pagination = ({
-  ariaText,
   page,
   totalBtns,
   onPagination,
@@ -31,28 +28,22 @@ const Pagination = ({
   isOptionDisabled,
   selectInfo,
   paginationMobileText,
-}: PaginationProps) => {
-  const { language } = useLanguage();
-
-  return (
-    <section className="pagination" aria-label={language.productNavigation}>
-      <PaginationNav
-        totalBtns={totalBtns}
-        page={page}
-        ariaText={ariaText}
-        onPagination={onPagination}
-        paginationMobileText={paginationMobileText}
-      />
-      <PaginationSelect
-        onSelectCount={onSelectCount}
-        isOptionDisabled={isOptionDisabled}
-        defaultValue={defaultValue}
-        options={options}
-        selectInfo={selectInfo}
-        ariaText={ariaText}
-      />
-    </section>
-  );
-};
+}: PaginationProps) => (
+  <section className="pagination">
+    <PaginationNav
+      totalBtns={totalBtns}
+      page={page}
+      onPagination={onPagination}
+      paginationMobileText={paginationMobileText}
+    />
+    <PaginationSelect
+      onSelectCount={onSelectCount}
+      isOptionDisabled={isOptionDisabled}
+      defaultValue={defaultValue}
+      options={options}
+      selectInfo={selectInfo}
+    />
+  </section>
+);
 
 export default Pagination;

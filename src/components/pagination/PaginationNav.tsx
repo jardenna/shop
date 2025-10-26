@@ -8,7 +8,6 @@ import './_pagination.scss';
 import type { PaginationNavProps } from './Pagination';
 
 const PaginationNav = ({
-  ariaText,
   paginationMobileText,
   page,
   totalBtns,
@@ -32,7 +31,7 @@ const PaginationNav = ({
 
   return (
     <LayoutElement as="nav" ariaLabel={language.pagination}>
-      <ul className="pagination-btn-list" aria-describedby={ariaText}>
+      <ul className="pagination-btn-list">
         {!isMobileSize && (
           <li>
             <IconBtn

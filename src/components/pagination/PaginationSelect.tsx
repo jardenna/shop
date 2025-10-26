@@ -9,18 +9,13 @@ export type PageCountOptions = {
   value: string;
 };
 
-type PaginationSelectProps = BasePaginationSelectProps & {
-  ariaText: string;
-};
-
 const PaginationSelect = ({
   options,
   defaultValue,
   onSelectCount,
   isOptionDisabled,
   selectInfo,
-  ariaText,
-}: PaginationSelectProps) => {
+}: BasePaginationSelectProps) => {
   const { pathname } = useLocation();
   const { language } = useLanguage();
 
@@ -39,7 +34,7 @@ const PaginationSelect = ({
           isOptionDisabled={isOptionDisabled}
         />
       </FieldSet>
-      <p id={ariaText}>{selectInfo}</p>
+      <p>{selectInfo}</p>
     </form>
   );
 };

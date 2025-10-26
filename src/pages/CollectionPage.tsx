@@ -83,7 +83,6 @@ const CollectionPage = () => {
 
   const src = `/images/banners/${category}_banner`;
   const altText = `${category}BannerAltText`;
-  const ariaText = 'product-results-status';
   const filtersCount = getFilterSummary(filterValues);
 
   const isShowingAll = productsPerPage >= productCount && productCount > 0;
@@ -226,7 +225,6 @@ const CollectionPage = () => {
                 onClearAllFilters={onClearAllFilters}
                 productCount={productCount}
                 infoText={infoText}
-                ariaText={ariaText}
                 announce={announce}
                 productsLoadedText={productsLoadedText}
               />
@@ -253,7 +251,6 @@ const CollectionPage = () => {
         <Pagination
           totalBtns={totalBtns}
           page={page}
-          ariaText={ariaText}
           onPagination={handlePagination}
           onSelectCount={handleSelectCount}
           isOptionDisabled={isOptionDisabled}
