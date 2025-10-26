@@ -95,6 +95,8 @@ const CollectionPage = () => {
   const showingText = language.showing;
   const ofText = language.of;
   const infoText = `${showingText} ${startItem}–${endItem} ${ofText} ${productCount} ${productsText}.`;
+  const paginationMobileText = `${language.page} ${page} ${language.of} ${totalBtns}`;
+  const productsLoadedText = `${paginationMobileText} ${language.loaded}`;
 
   const hasMounted = useRef(false);
   const [announce, setAnnounce] = useState(false);
@@ -141,9 +143,6 @@ const CollectionPage = () => {
     setShouldScroll(true);
   };
 
-  const paginationMobileText = `${language.page} ${page} ${language.of} ${totalBtns}`;
-
-  const productsLoadedText = `${paginationMobileText} ${language.loaded}`;
   const productViewIconList = [
     {
       iconName: IconName.LayoutGrid,
