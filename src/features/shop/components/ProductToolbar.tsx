@@ -61,7 +61,7 @@ const ProductToolbar = ({
       <LiveAnnouncement
         infoText={infoText}
         announce={announce}
-        productsLoadedText={productsLoadedText}
+        ariaLiveText={`${productsLoadedText} ${infoText}`}
       />
       <FilterPanel
         onClearSingleFilter={onClearSingleFilter}
