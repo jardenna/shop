@@ -137,7 +137,9 @@ const CollectionPage = () => {
     setPage(id);
     setShouldScroll(true);
   };
-  const productsLoadedText = `${language.page} ${page} ${language.of} ${totalBtns} ${language.loaded}`;
+  const paginationMobileText = `${language.page} ${page} ${language.of} ${totalBtns}`;
+
+  const productsLoadedText = `${paginationMobileText} ${language.loaded}`;
   const productViewIconList = [
     {
       iconName: IconName.LayoutGrid,
@@ -255,6 +257,7 @@ const CollectionPage = () => {
           onPagination={handlePagination}
           onSelectCount={handleSelectCount}
           isOptionDisabled={isOptionDisabled}
+          paginationMobileText={paginationMobileText}
           defaultValue={{
             value: productsPerPage.toString(),
             label: productsPerPage.toString(),

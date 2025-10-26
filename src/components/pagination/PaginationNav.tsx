@@ -1,4 +1,5 @@
 import useLanguage from '../../features/language/useLanguage';
+import useMediaQuery from '../../hooks/useMediaQuery';
 import LayoutElement from '../../layout/LayoutElement';
 import { IconName } from '../../types/enums';
 import Button from '../Button';
@@ -8,17 +9,20 @@ import './_pagination.scss';
 type PaginationNavProps = {
   ariaText: string;
   page: number;
+  paginationMobileText: string;
   totalBtns: number;
   onPagination: (id: number) => void;
 };
 
 const PaginationNav = ({
   ariaText,
+  paginationMobileText,
   page,
   totalBtns,
   onPagination,
 }: PaginationNavProps) => {
   const { language } = useLanguage();
+  const { isMobileSize } = useMediaQuery();
   const paginationBtnList = Array.from({ length: totalBtns }, (_, i) => i + 1);
 
   const handleGotoPrevPage = () => {
@@ -36,16 +40,18 @@ const PaginationNav = ({
   return (
     <LayoutElement as="nav" ariaLabel={language.pagination}>
       <ul className="pagination-btn-list" aria-describedby={ariaText}>
-        <li>
-          <IconBtn
-            iconName={IconName.ChevronsLeft}
-            ariaLabel={language.gotoFirstPage}
-            onClick={() => {
-              onPagination(1);
-            }}
-            disabled={page === 1}
-          />
-        </li>
+        {!isMobileSize && (
+          <li>
+            <IconBtn
+              iconName={IconName.ChevronsLeft}
+              ariaLabel={language.gotoFirstPage}
+              onClick={() => {
+                onPagination(1);
+              }}
+              disabled={page === 1}
+            />
+          </li>
+        )}
         <li>
           <IconBtn
             iconName={IconName.ChevronLeft}
@@ -54,28 +60,33 @@ const PaginationNav = ({
             disabled={page === 1}
           />
         </li>
-        {paginationBtnList.map((paginationBtn) => (
-          <li key={paginationBtn}>
-            <Button
-              onClick={() => {
-                // Early exit so current page doesn't spam history or rerender
-                if (paginationBtn === page) {
-                  return;
+        {isMobileSize ? (
+          <div>{paginationMobileText}</div>
+        ) : (
+          paginationBtnList.map((paginationBtn) => (
+            <li key={paginationBtn}>
+              <Button
+                onClick={() => {
+                  // Early exit so current page doesn't spam history or rerender
+                  if (paginationBtn === page) {
+                    return;
+                  }
+                  onPagination(paginationBtn);
+                }}
+                className={paginationBtn === page ? 'current' : ''}
+                ariaCurrent={paginationBtn === page ? 'page' : undefined}
+                ariaLabel={
+                  paginationBtn === page
+                    ? `${language.currentPage} ${paginationBtn}`
+                    : `${language.gotoPage} ${paginationBtn}`
                 }
-                onPagination(paginationBtn);
-              }}
-              className={paginationBtn === page ? 'current' : ''}
-              ariaCurrent={paginationBtn === page ? 'page' : undefined}
-              ariaLabel={
-                paginationBtn === page
-                  ? `${language.currentPage} ${paginationBtn}`
-                  : `${language.gotoPage} ${paginationBtn}`
-              }
-            >
-              {paginationBtn}
-            </Button>
-          </li>
-        ))}
+              >
+                {paginationBtn}
+              </Button>
+            </li>
+          ))
+        )}
+
         <li>
           <IconBtn
             iconName={IconName.ChevronRight}
@@ -84,16 +95,18 @@ const PaginationNav = ({
             disabled={page === totalBtns}
           />
         </li>
-        <li>
-          <IconBtn
-            iconName={IconName.ChevronsRight}
-            ariaLabel={language.gotoLastPage}
-            onClick={() => {
-              onPagination(totalBtns);
-            }}
-            disabled={page === totalBtns}
-          />
-        </li>
+        {!isMobileSize && (
+          <li>
+            <IconBtn
+              iconName={IconName.ChevronsRight}
+              ariaLabel={language.gotoLastPage}
+              onClick={() => {
+                onPagination(totalBtns);
+              }}
+              disabled={page === totalBtns}
+            />
+          </li>
+        )}
       </ul>
     </LayoutElement>
   );

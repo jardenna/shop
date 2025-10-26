@@ -7,6 +7,7 @@ type PaginationProps = {
   defaultValue: PageCountOptions;
   options: PageCountOptions[];
   page: number;
+  paginationMobileText: string;
   selectInfo: string;
   totalBtns: number;
   isOptionDisabled?: (option: { value: string }) => boolean;
@@ -24,6 +25,7 @@ const Pagination = ({
   onSelectCount,
   isOptionDisabled,
   selectInfo,
+  paginationMobileText,
 }: PaginationProps) => {
   const { language } = useLanguage();
 
@@ -34,6 +36,7 @@ const Pagination = ({
         page={page}
         ariaText={ariaText}
         onPagination={onPagination}
+        paginationMobileText={paginationMobileText}
       />
       <PaginationSelect
         labelText={language.selectNumber}
