@@ -2,10 +2,10 @@ import useLanguage from '../../features/language/useLanguage';
 import useMediaQuery from '../../hooks/useMediaQuery';
 import LayoutElement from '../../layout/LayoutElement';
 import { IconName } from '../../types/enums';
-import Button from '../Button';
 import IconBtn from '../IconBtn';
 import './_pagination.scss';
 import type { PaginationNavProps } from './Pagination';
+import PaginationBtnItems from './PaginationBtnItems';
 
 const PaginationNav = ({
   paginationMobileText,
@@ -55,30 +55,13 @@ const PaginationNav = ({
         {isMobileSize ? (
           <div>{paginationMobileText}</div>
         ) : (
-          paginationBtnList.map((paginationBtn) => (
-            <li key={paginationBtn}>
-              <Button
-                onClick={() => {
-                  // Early exit so current page doesn't spam history or rerender
-                  if (paginationBtn === page) {
-                    return;
-                  }
-                  onPagination(paginationBtn);
-                }}
-                className={paginationBtn === page ? 'current' : ''}
-                ariaCurrent={paginationBtn === page ? 'page' : undefined}
-                ariaLabel={
-                  paginationBtn === page
-                    ? `${language.currentPage} ${paginationBtn}`
-                    : `${language.gotoPage} ${paginationBtn}`
-                }
-              >
-                {paginationBtn}
-              </Button>
-            </li>
-          ))
+          <PaginationBtnItems
+            language={language}
+            paginationBtnList={paginationBtnList}
+            page={page}
+            onPagination={onPagination}
+          />
         )}
-
         <li>
           <IconBtn
             iconName={IconName.ChevronRight}

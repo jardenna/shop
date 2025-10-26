@@ -133,9 +133,14 @@ const CollectionPage = () => {
   }, [page, productsPerPage, filterValues]);
 
   const handlePagination = (id: number) => {
+    // Early exit so current page doesn't spam history or rerender
+    if (id === page) {
+      return;
+    }
     setPage(id);
     setShouldScroll(true);
   };
+
   const paginationMobileText = `${language.page} ${page} ${language.of} ${totalBtns}`;
 
   const productsLoadedText = `${paginationMobileText} ${language.loaded}`;
