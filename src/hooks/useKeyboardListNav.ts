@@ -35,13 +35,13 @@ const useKeyboardListNav = ({
     );
   }, [selectedListItemIndex, dropdownList, handleActivateListItem]);
 
-  const handleGotoFirstListItem = useCallback(() => {
+  const handleGotoFirstListItem = () => {
     handleActivateListItem(0);
-  }, [handleActivateListItem]);
+  };
 
-  const handleGotoLastListItem = useCallback(() => {
+  const handleGotoLastListItem = () => {
     handleActivateListItem(dropdownList.length - 1);
-  }, [dropdownList, handleActivateListItem]);
+  };
 
   useKeyPress(handleNextListItem, [KeyCode.ArrowRight]);
   useKeyPress(handlePrevListItem, [KeyCode.ArrowLeft]);
