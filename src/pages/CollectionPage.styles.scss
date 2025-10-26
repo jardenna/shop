@@ -53,18 +53,31 @@
 
 .product-navigation {
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 8px;
+  align-items: center;
+  gap: 12px;
   border-top: 1px solid $color-border;
   padding-block: 20px 32px;
   margin-top: 20px;
 
-  .product-navigation-form {
-    max-width: rem(100px);
+  @include max-size($small) {
+    flex-direction: column;
+  }
 
-    .fieldset {
-      margin-bottom: 0;
+  .product-navigation-form {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: max-content;
+
+    fieldset,
+    p {
+      width: max-content;
+      margin: 0;
+    }
+
+    .select-box-container {
+      max-width: rem(120px);
     }
 
     .select-box__control {

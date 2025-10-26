@@ -8,10 +8,12 @@ export type PageCountOptions = {
 };
 
 type ProductCountSelectProps = {
+  ariaText: string;
   defaultValue: PageCountOptions;
   labelText: string;
   legendText: string;
   options: PageCountOptions[];
+  selectInfo: string;
   isOptionDisabled?: (option: { value: string }) => boolean;
   onSelectCount: (option: PageCountOptions) => void;
 };
@@ -23,6 +25,8 @@ const ProductCountSelect = ({
   legendText,
   onSelectCount,
   isOptionDisabled,
+  selectInfo,
+  ariaText,
 }: ProductCountSelectProps) => {
   const { pathname } = useLocation();
 
@@ -41,6 +45,7 @@ const ProductCountSelect = ({
           isOptionDisabled={isOptionDisabled}
         />
       </FieldSet>
+      <p id={ariaText}>{selectInfo}</p>
     </form>
   );
 };

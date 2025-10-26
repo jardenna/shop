@@ -270,12 +270,13 @@ const CollectionPage = () => {
               label: productsPerPage.toString(),
             }}
             options={options}
+            selectInfo={
+              isShowingAll
+                ? `${language.showingAllProducts} (${productCount})`
+                : language.productPerPage
+            }
+            ariaText={ariaText}
           />
-          <p id={ariaText}>
-            {isShowingAll
-              ? `${language.showingAllProducts} (${productCount})`
-              : language.productPerPage}
-          </p>
         </section>
       </section>
     </>
