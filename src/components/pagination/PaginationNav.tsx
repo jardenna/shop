@@ -5,14 +5,7 @@ import { IconName } from '../../types/enums';
 import Button from '../Button';
 import IconBtn from '../IconBtn';
 import './_pagination.scss';
-
-type PaginationNavProps = {
-  ariaText: string;
-  page: number;
-  paginationMobileText: string;
-  totalBtns: number;
-  onPagination: (id: number) => void;
-};
+import type { PaginationNavProps } from './Pagination';
 
 const PaginationNav = ({
   ariaText,

@@ -2,18 +2,23 @@ import useLanguage from '../../features/language/useLanguage';
 import PaginationNav from './PaginationNav';
 import PaginationSelect, { PageCountOptions } from './PaginationSelect';
 
-type PaginationProps = {
+export type PaginationNavProps = {
   ariaText: string;
-  defaultValue: PageCountOptions;
-  options: PageCountOptions[];
   page: number;
   paginationMobileText: string;
-  selectInfo: string;
   totalBtns: number;
-  isOptionDisabled?: (option: { value: string }) => boolean;
   onPagination: (id: number) => void;
+};
+
+export type BasePaginationSelectProps = {
+  defaultValue: PageCountOptions;
+  options: PageCountOptions[];
+  selectInfo: string;
+  isOptionDisabled?: (option: { value: string }) => boolean;
   onSelectCount: (option: PageCountOptions) => void;
 };
+
+type PaginationProps = PaginationNavProps & BasePaginationSelectProps;
 
 const Pagination = ({
   ariaText,

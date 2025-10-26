@@ -1,21 +1,17 @@
 import { useLocation } from 'react-router';
 import FieldSet from '../fieldset/FieldSet';
 import Selectbox from '../selectbox/Selectbox';
+import type { BasePaginationSelectProps } from './Pagination';
 
 export type PageCountOptions = {
   label: string;
   value: string;
 };
 
-type PaginationSelectProps = {
+type PaginationSelectProps = BasePaginationSelectProps & {
   ariaText: string;
-  defaultValue: PageCountOptions;
   labelText: string;
   legendText: string;
-  options: PageCountOptions[];
-  selectInfo: string;
-  isOptionDisabled?: (option: { value: string }) => boolean;
-  onSelectCount: (option: PageCountOptions) => void;
 };
 
 const PaginationSelect = ({
