@@ -1,13 +1,13 @@
 import { useLocation } from 'react-router';
-import FieldSet from './fieldset/FieldSet';
-import Selectbox from './selectbox/Selectbox';
+import FieldSet from '../fieldset/FieldSet';
+import Selectbox from '../selectbox/Selectbox';
 
 export type PageCountOptions = {
   label: string;
   value: string;
 };
 
-type ProductCountSelectProps = {
+type PaginationSelectProps = {
   ariaText: string;
   defaultValue: PageCountOptions;
   labelText: string;
@@ -18,7 +18,7 @@ type ProductCountSelectProps = {
   onSelectCount: (option: PageCountOptions) => void;
 };
 
-const ProductCountSelect = ({
+const PaginationSelect = ({
   labelText,
   options,
   defaultValue,
@@ -27,7 +27,7 @@ const ProductCountSelect = ({
   isOptionDisabled,
   selectInfo,
   ariaText,
-}: ProductCountSelectProps) => {
+}: PaginationSelectProps) => {
   const { pathname } = useLocation();
 
   return (
@@ -50,4 +50,4 @@ const ProductCountSelect = ({
   );
 };
 
-export default ProductCountSelect;
+export default PaginationSelect;

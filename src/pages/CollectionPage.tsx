@@ -3,11 +3,11 @@ import { useParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import Pagination from '../components/pagination/Pagination';
+import PaginationSelect, {
+  type PageCountOptions,
+} from '../components/pagination/PaginationSelect';
 import usePaginationParams from '../components/pagination/usePaginationParams';
 import Picture from '../components/Picture';
-import ProductCountSelect, {
-  PageCountOptions,
-} from '../components/ProductCountSelect';
 import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import useLanguage from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
@@ -260,7 +260,7 @@ const CollectionPage = () => {
             ariaText={ariaText}
             handlePagination={handlePagination}
           />
-          <ProductCountSelect
+          <PaginationSelect
             labelText={language.selectNumber}
             legendText={language.displayOptions}
             onSelectCount={handleSelectCount}
