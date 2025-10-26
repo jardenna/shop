@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import type {
   Address,
   AddressInput,
@@ -104,17 +103,14 @@ const AddressFormModal = ({
     }
   }
 
-  const primaryActionBtn = useMemo<PrimaryActionBtnProps>(
-    () => ({
-      onSubmit,
-      buttonType: BtnType.Submit,
-      label: primaryActionBtnLabel,
-      disabled: isLoading || addIsLoading,
-      showBtnLoader: isLoading || addIsLoading,
-      resultSuccess,
-    }),
-    [onSubmit, primaryActionBtnLabel, isLoading, addIsLoading, resultSuccess],
-  );
+  const primaryActionBtn: PrimaryActionBtnProps = {
+    onSubmit,
+    buttonType: BtnType.Submit,
+    label: primaryActionBtnLabel,
+    disabled: isLoading || addIsLoading,
+    showBtnLoader: isLoading || addIsLoading,
+    resultSuccess,
+  };
 
   return (
     <ModalContainer

@@ -27,21 +27,21 @@ const useKeyboardListNav = ({
 
   const handleNextListItem = useCallback(() => {
     handleActivateListItem((selectedListItemIndex + 1) % dropdownList.length);
-  }, [selectedListItemIndex, dropdownList.length, handleActivateListItem]);
+  }, [selectedListItemIndex, dropdownList, handleActivateListItem]);
 
   const handlePrevListItem = useCallback(() => {
     handleActivateListItem(
       (selectedListItemIndex - 1 + dropdownList.length) % dropdownList.length,
     );
-  }, [selectedListItemIndex, dropdownList.length, handleActivateListItem]);
+  }, [selectedListItemIndex, dropdownList, handleActivateListItem]);
 
-  const handleGotoFirstListItem = useCallback(() => {
+  const handleGotoFirstListItem = () => {
     handleActivateListItem(0);
-  }, [handleActivateListItem]);
+  };
 
-  const handleGotoLastListItem = useCallback(() => {
+  const handleGotoLastListItem = () => {
     handleActivateListItem(dropdownList.length - 1);
-  }, [dropdownList.length, handleActivateListItem]);
+  };
 
   useKeyPress(handleNextListItem, [KeyCode.ArrowRight]);
   useKeyPress(handlePrevListItem, [KeyCode.ArrowLeft]);
