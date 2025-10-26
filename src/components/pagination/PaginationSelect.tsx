@@ -31,7 +31,7 @@ const PaginationSelect = ({
   const { pathname } = useLocation();
 
   return (
-    <form className="product-navigation-form">
+    <form className="pagination-select">
       <FieldSet legendText={legendText}>
         <Selectbox
           selectKey={`perpage-${pathname}`}

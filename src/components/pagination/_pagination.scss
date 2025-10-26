@@ -1,5 +1,43 @@
 @use '../../scss/globals' as *;
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid $color-border;
+  padding-block: 20px 32px;
+  margin-top: 20px;
+
+  @include max-size($small) {
+    flex-direction: column;
+  }
+
+  .pagination-select {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: max-content;
+
+    fieldset,
+    p {
+      width: max-content;
+      margin: 0;
+    }
+
+    .select-box-container {
+      max-width: rem(120px);
+    }
+
+    /* stylelint-disable-next-line selector-class-pattern */
+    .select-box__control {
+      min-height: auto;
+      background-color: $color-white;
+      border: 1px solid $color-border-dark;
+    }
+  }
+}
+
 .pagination-btn-list {
   display: flex;
   gap: 8px;

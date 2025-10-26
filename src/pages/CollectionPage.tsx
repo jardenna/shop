@@ -250,10 +250,7 @@ const CollectionPage = () => {
             )}
           </div>
         </div>
-        <section
-          className="product-navigation"
-          aria-label={language.productNavigation}
-        >
+        <section className="pagination" aria-label={language.productNavigation}>
           <Pagination
             totalBtns={totalBtns}
             page={page}

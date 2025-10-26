@@ -34,11 +34,7 @@ const Pagination = ({
   };
 
   return (
-    <LayoutElement
-      as="nav"
-      ariaLabel={language.pagination}
-      className="pagination"
-    >
+    <LayoutElement as="nav" ariaLabel={language.pagination}>
       <ul className="pagination-btn-list" aria-describedby={ariaText}>
         <li>
           <IconBtn
