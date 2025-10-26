@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
-import Pagination from '../components/pagination/Pagination';
+import PaginationNav from '../components/pagination/PaginationNav';
 import PaginationSelect, {
   type PageCountOptions,
 } from '../components/pagination/PaginationSelect';
@@ -251,7 +251,7 @@ const CollectionPage = () => {
           </div>
         </div>
         <section className="pagination" aria-label={language.productNavigation}>
-          <Pagination
+          <PaginationNav
             totalBtns={totalBtns}
             page={page}
             ariaText={ariaText}

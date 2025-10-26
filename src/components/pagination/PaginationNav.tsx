@@ -5,19 +5,19 @@ import Button from '../Button';
 import IconBtn from '../IconBtn';
 import './_pagination.scss';
 
-type PaginationProps = {
+type PaginationNavProps = {
   ariaText: string;
   page: number;
   totalBtns: number;
   handlePagination: (id: number) => void;
 };
 
-const Pagination = ({
+const PaginationNav = ({
   ariaText,
   page,
   totalBtns,
   handlePagination,
-}: PaginationProps) => {
+}: PaginationNavProps) => {
   const { language } = useLanguage();
   const paginationBtnList = Array.from({ length: totalBtns }, (_, i) => i + 1);
 
@@ -99,4 +99,4 @@ const Pagination = ({
   );
 };
 
-export default Pagination;
+export default PaginationNav;
