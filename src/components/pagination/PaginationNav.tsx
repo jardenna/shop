@@ -9,27 +9,27 @@ type PaginationNavProps = {
   ariaText: string;
   page: number;
   totalBtns: number;
-  handlePagination: (id: number) => void;
+  onPagination: (id: number) => void;
 };
 
 const PaginationNav = ({
   ariaText,
   page,
   totalBtns,
-  handlePagination,
+  onPagination,
 }: PaginationNavProps) => {
   const { language } = useLanguage();
   const paginationBtnList = Array.from({ length: totalBtns }, (_, i) => i + 1);
 
   const handleGotoPrevPage = () => {
     if (page > 1) {
-      handlePagination(page - 1);
+      onPagination(page - 1);
     }
   };
 
   const handleGotoNextPage = () => {
     if (page < totalBtns) {
-      handlePagination(page + 1);
+      onPagination(page + 1);
     }
   };
 
@@ -41,7 +41,7 @@ const PaginationNav = ({
             iconName={IconName.ChevronsLeft}
             ariaLabel={language.gotoFirstPage}
             onClick={() => {
-              handlePagination(1);
+              onPagination(1);
             }}
             disabled={page === 1}
           />
@@ -62,7 +62,7 @@ const PaginationNav = ({
                 if (paginationBtn === page) {
                   return;
                 }
-                handlePagination(paginationBtn);
+                onPagination(paginationBtn);
               }}
               className={paginationBtn === page ? 'current' : ''}
               ariaCurrent={paginationBtn === page ? 'page' : undefined}
@@ -89,7 +89,7 @@ const PaginationNav = ({
             iconName={IconName.ChevronsRight}
             ariaLabel={language.gotoLastPage}
             onClick={() => {
-              handlePagination(totalBtns);
+              onPagination(totalBtns);
             }}
             disabled={page === totalBtns}
           />

@@ -2,10 +2,8 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
-import PaginationNav from '../components/pagination/PaginationNav';
-import PaginationSelect, {
-  type PageCountOptions,
-} from '../components/pagination/PaginationSelect';
+import Pagination from '../components/pagination/Pagination';
+import { type PageCountOptions } from '../components/pagination/PaginationSelect';
 import usePaginationParams from '../components/pagination/usePaginationParams';
 import Picture from '../components/Picture';
 import SkeletonCardList from '../components/skeleton/SkeletonCardList';
@@ -250,31 +248,24 @@ const CollectionPage = () => {
             )}
           </div>
         </div>
-        <section className="pagination" aria-label={language.productNavigation}>
-          <PaginationNav
-            totalBtns={totalBtns}
-            page={page}
-            ariaText={ariaText}
-            handlePagination={handlePagination}
-          />
-          <PaginationSelect
-            labelText={language.selectNumber}
-            legendText={language.displayOptions}
-            onSelectCount={handleSelectCount}
-            isOptionDisabled={isOptionDisabled}
-            defaultValue={{
-              value: productsPerPage.toString(),
-              label: productsPerPage.toString(),
-            }}
-            options={options}
-            selectInfo={
-              isShowingAll
-                ? `${language.showingAllProducts} (${productCount})`
-                : language.productPerPage
-            }
-            ariaText={ariaText}
-          />
-        </section>
+        <Pagination
+          totalBtns={totalBtns}
+          page={page}
+          ariaText={ariaText}
+          onPagination={handlePagination}
+          onSelectCount={handleSelectCount}
+          isOptionDisabled={isOptionDisabled}
+          defaultValue={{
+            value: productsPerPage.toString(),
+            label: productsPerPage.toString(),
+          }}
+          options={options}
+          selectInfo={
+            isShowingAll
+              ? `${language.showingAllProducts} (${productCount})`
+              : language.productPerPage
+          }
+        />
       </section>
     </>
   );
