@@ -1,5 +1,6 @@
 import type { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import DisplayControls from '../../../components/DisplayControls';
+import LiveAnnouncement from '../../../components/LiveAnnouncement';
 import type { FilterValuesType } from '../../../hooks/useFilterParams';
 import type { FilterKeys } from '../../../pages/CollectionPage';
 import type {
@@ -8,7 +9,6 @@ import type {
 } from '../../../types/types';
 import useLanguage from '../../language/useLanguage';
 import FilterPanel from './FilterPanel';
-import LiveAnnouncement from './LiveAnnouncement';
 
 type ProductToolbar = {
   announce: boolean;
