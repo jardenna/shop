@@ -1,18 +1,18 @@
 import VisuallyHidden from '../../../components/VisuallyHidden';
 
-type ProductsLiveAnnouncementProps = {
+type LiveAnnouncementProps = {
   announce: boolean;
   infoText: string;
   productsLoadedText: string;
 };
 
-const ProductsLiveAnnouncement = ({
+const LiveAnnouncement = ({
   announce,
   infoText,
   productsLoadedText,
-}: ProductsLiveAnnouncementProps) => (
+}: LiveAnnouncementProps) => (
   <>
-    <p className="products-heading">{infoText}</p>
+    <p>{infoText}</p>
     {announce && (
       <VisuallyHidden as="p">
         <span aria-live="polite">
@@ -23,4 +23,4 @@ const ProductsLiveAnnouncement = ({
   </>
 );
 
-export default ProductsLiveAnnouncement;
+export default LiveAnnouncement;

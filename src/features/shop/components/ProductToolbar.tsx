@@ -8,7 +8,7 @@ import type {
 } from '../../../types/types';
 import useLanguage from '../../language/useLanguage';
 import FilterPanel from './FilterPanel';
-import ProductsLiveAnnouncement from './ProductsLiveAnnouncement';
+import LiveAnnouncement from './LiveAnnouncement';
 
 type ProductToolbar = {
   announce: boolean;
@@ -58,7 +58,7 @@ const ProductToolbar = ({
         displayControlList={displayControlList}
         isActive={isActive}
       />
-      <ProductsLiveAnnouncement
+      <LiveAnnouncement
         infoText={infoText}
         announce={announce}
         productsLoadedText={productsLoadedText}
