@@ -34,7 +34,7 @@ const CollectionPage = () => {
   const { category, categoryId } = useParams();
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
-  const { page, productsPerPage, setPage, setProductsPerPage, resetPage } =
+  const { page, productsPerPage, setPage, updatePagination } =
     usePaginationParams();
 
   const initialFilters: FilterValuesType<string> = {
@@ -102,22 +102,21 @@ const CollectionPage = () => {
   const [shouldScroll, setShouldScroll] = useState(false);
 
   useLayoutEffect(() => {
-    if (!shouldScroll) {
+    if (!shouldScroll || isLoading) {
       return;
     }
-    headingRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    headingRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
     setShouldScroll(false);
-  }, [shouldScroll]);
+  }, [shouldScroll, isLoading]);
 
   const handleSelectCount = (option: PageCountOptions) => {
     const newCount = Number(option.value);
-    setProductsPerPage(newCount);
+    updatePagination(1, newCount);
     setShouldScroll(true);
-
-    // Reset page if current page exceeds total backend pages
-    if (page > totalBtns) {
-      resetPage();
-    }
   };
 
   useEffect(() => {
@@ -163,6 +162,7 @@ const CollectionPage = () => {
     { value: productCount.toString(), label: language.all },
   ];
 
+  // Check when filtering
   const isOptionDisabled = (option: { value: string }) =>
     Number(option.value) > productCount;
 

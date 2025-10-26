@@ -14,15 +14,16 @@ const usePaginationParams = () => {
     setSearchParams(newParams);
   };
 
-  const setProductsPerPage = (count: number) => {
-    const newParams = new URLSearchParams(searchParams);
-    newParams.set(productsPerPageParamKey, count.toString());
-    setSearchParams(newParams);
-  };
-
   const resetPage = () => {
     const newParams = new URLSearchParams(searchParams);
     newParams.set(pageParamKey, '1');
+    setSearchParams(newParams);
+  };
+
+  const updatePagination = (pageNum: number, count: number) => {
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set(pageParamKey, pageNum.toString());
+    newParams.set(productsPerPageParamKey, count.toString());
     setSearchParams(newParams);
   };
 
@@ -30,8 +31,8 @@ const usePaginationParams = () => {
     page,
     productsPerPage,
     setPage,
-    setProductsPerPage,
     resetPage,
+    updatePagination,
     searchParams,
   };
 };
