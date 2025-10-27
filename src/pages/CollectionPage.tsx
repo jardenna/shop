@@ -3,11 +3,9 @@ import { useParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import Pagination from '../components/pagination/Pagination';
+import { type PageCountOptions } from '../components/pagination/PaginationSelect';
 import usePaginationParams from '../components/pagination/usePaginationParams';
 import Picture from '../components/Picture';
-import ProductCountSelect, {
-  PageCountOptions,
-} from '../components/ProductCountSelect';
 import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import useLanguage from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
@@ -36,7 +34,7 @@ const CollectionPage = () => {
   const { category, categoryId } = useParams();
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
-  const { page, productsPerPage, setPage, setProductsPerPage, resetPage } =
+  const { page, productsPerPage, setPage, updatePagination } =
     usePaginationParams();
 
   const initialFilters: FilterValuesType<string> = {
@@ -85,7 +83,6 @@ const CollectionPage = () => {
 
   const src = `/images/banners/${category}_banner`;
   const altText = `${category}BannerAltText`;
-  const ariaText = 'product-results-status';
   const filtersCount = getFilterSummary(filterValues);
 
   const isShowingAll = productsPerPage >= productCount && productCount > 0;
@@ -98,28 +95,29 @@ const CollectionPage = () => {
   const showingText = language.showing;
   const ofText = language.of;
   const infoText = `${showingText} ${startItem}–${endItem} ${ofText} ${productCount} ${productsText}.`;
+  const paginationMobileText = `${language.page} ${page} ${language.of} ${totalBtns}`;
+  const productsLoadedText = `${paginationMobileText} ${language.loaded}`;
 
   const hasMounted = useRef(false);
   const [announce, setAnnounce] = useState(false);
   const [shouldScroll, setShouldScroll] = useState(false);
 
   useLayoutEffect(() => {
-    if (!shouldScroll) {
+    if (!shouldScroll || isLoading) {
       return;
     }
-    headingRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    headingRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
     setShouldScroll(false);
-  }, [shouldScroll]);
+  }, [shouldScroll, isLoading]);
 
   const handleSelectCount = (option: PageCountOptions) => {
     const newCount = Number(option.value);
-    setProductsPerPage(newCount);
+    updatePagination(1, newCount);
     setShouldScroll(true);
-
-    // Reset page if current page exceeds total backend pages
-    if (page > totalBtns) {
-      resetPage();
-    }
   };
 
   useEffect(() => {
@@ -137,10 +135,14 @@ const CollectionPage = () => {
   }, [page, productsPerPage, filterValues]);
 
   const handlePagination = (id: number) => {
+    // Early exit so current page doesn't spam history or rerender
+    if (id === page) {
+      return;
+    }
     setPage(id);
     setShouldScroll(true);
   };
-  const productsLoadedText = `${language.page} ${page} ${language.of} ${totalBtns} ${language.loaded}`;
+
   const productViewIconList = [
     {
       iconName: IconName.LayoutGrid,
@@ -165,6 +167,7 @@ const CollectionPage = () => {
     { value: productCount.toString(), label: language.all },
   ];
 
+  // Check when filtering
   const isOptionDisabled = (option: { value: string }) =>
     Number(option.value) > productCount;
 
@@ -226,7 +229,6 @@ const CollectionPage = () => {
                 onClearAllFilters={onClearAllFilters}
                 productCount={productCount}
                 infoText={infoText}
-                ariaText={ariaText}
                 announce={announce}
                 productsLoadedText={productsLoadedText}
               />
@@ -250,33 +252,24 @@ const CollectionPage = () => {
             )}
           </div>
         </div>
-        <section
-          className="product-navigation"
-          aria-label={language.productNavigation}
-        >
-          <Pagination
-            totalBtns={totalBtns}
-            page={page}
-            ariaText={ariaText}
-            handlePagination={handlePagination}
-          />
-          <ProductCountSelect
-            labelText={language.selectNumber}
-            legendText={language.displayOptions}
-            onSelectCount={handleSelectCount}
-            isOptionDisabled={isOptionDisabled}
-            defaultValue={{
-              value: productsPerPage.toString(),
-              label: productsPerPage.toString(),
-            }}
-            options={options}
-          />
-          <p id={ariaText}>
-            {isShowingAll
+        <Pagination
+          totalBtns={totalBtns}
+          page={page}
+          onPagination={handlePagination}
+          onSelectCount={handleSelectCount}
+          isOptionDisabled={isOptionDisabled}
+          paginationMobileText={paginationMobileText}
+          defaultValue={{
+            value: productsPerPage.toString(),
+            label: productsPerPage.toString(),
+          }}
+          options={options}
+          selectInfo={
+            isShowingAll
               ? `${language.showingAllProducts} (${productCount})`
-              : language.productPerPage}
-          </p>
-        </section>
+              : language.productPerPage
+          }
+        />
       </section>
     </>
   );

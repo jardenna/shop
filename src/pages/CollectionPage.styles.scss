@@ -1,4 +1,3 @@
-/* stylelint-disable selector-class-pattern */
 @use '../scss/globals' as *;
 
 .collection-page {
@@ -48,29 +47,5 @@
 
   p {
     margin: 0;
-  }
-}
-
-.product-navigation {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  border-top: 1px solid $color-border;
-  padding-block: 20px 32px;
-  margin-top: 20px;
-
-  .product-navigation-form {
-    max-width: rem(100px);
-
-    .fieldset {
-      margin-bottom: 0;
-    }
-
-    .select-box__control {
-      min-height: auto;
-      background-color: $color-white;
-      border: 1px solid $color-border-dark;
-    }
   }
 }

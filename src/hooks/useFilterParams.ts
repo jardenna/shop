@@ -93,7 +93,7 @@ const useFilterParams = (initialFilters: FilterValuesType<string>) => {
 
       // Only reset page if filters actually changed
       if (filtersChanged) {
-        params.set(pageParamKey, '1');
+        params.delete(pageParamKey);
       }
 
       // Save new filters as the last known
