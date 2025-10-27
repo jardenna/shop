@@ -97,7 +97,6 @@ const CollectionPage = () => {
   });
 
   const { announce } = useAnnounce([page, productsPerPage, filterValues]);
-  console.log(ariaLiveText);
 
   const { scrollToRef, setShouldScroll } = useScrollOnPagination({
     isLoading,
