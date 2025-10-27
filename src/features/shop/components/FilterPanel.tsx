@@ -26,7 +26,7 @@ type AccordionConfigItem<K extends FilterKeys = FilterKeys> = {
   renderExtra?: (checkbox: string) => ReactNode;
 };
 
-type FilterPanelProps = {
+export type FilterPanelProps = {
   availableBrands: string[];
   availableSizes: Size[];
   colors: string[];

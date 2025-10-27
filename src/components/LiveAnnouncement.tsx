@@ -1,6 +1,6 @@
 import VisuallyHidden from './VisuallyHidden';
 
-type LiveAnnouncementProps = {
+export type LiveAnnouncementProps = {
   announce: boolean;
   infoText: string;
   ariaLiveText?: string;
