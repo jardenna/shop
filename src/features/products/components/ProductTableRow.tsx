@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { Status } from '../../../app/api/apiTypes/adminApiTypes';
 import { useAppSelector } from '../../../app/hooks';
 import { numberConvert } from '../../../utils/numberConverter';
@@ -56,4 +55,4 @@ const ProductTableRow = ({
   );
 };
 
-export default memo(ProductTableRow);
+export default ProductTableRow;
