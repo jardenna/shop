@@ -1,5 +1,5 @@
 import { useSearchParams } from 'react-router';
-import { pageParamKey, productsPerPageParamKey } from '../../utils/utils';
+import { pageParamKey, productsPerPageParamKey } from '../../../utils/utils';
 
 const usePaginationParams = () => {
   const [searchParams, setSearchParams] = useSearchParams();

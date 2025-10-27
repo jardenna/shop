@@ -12,6 +12,7 @@ import FilterPanel from './FilterPanel';
 
 type ProductToolbar = {
   announce: boolean;
+  ariaLiveText: string;
   availableBrands: string[];
   availableSizes: Size[];
   colors: string[];
@@ -21,7 +22,6 @@ type ProductToolbar = {
   isActive: string;
   onChange: InputChangeHandler;
   productCount: number;
-  productsLoadedText: string;
   values: FilterValuesType<string>;
   onClearAllFilters: () => void;
   onClearSingleFilter: (filterKey: FilterKeys) => void;
@@ -47,7 +47,7 @@ const ProductToolbar = ({
   infoText,
   announce,
   onReset,
-  productsLoadedText,
+  ariaLiveText,
 }: ProductToolbar) => {
   const { language } = useLanguage();
 
@@ -61,7 +61,7 @@ const ProductToolbar = ({
       <LiveAnnouncement
         infoText={infoText}
         announce={announce}
-        ariaLiveText={`${productsLoadedText} ${infoText}`}
+        ariaLiveText={ariaLiveText}
       />
       <FilterPanel
         onClearSingleFilter={onClearSingleFilter}

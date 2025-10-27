@@ -1,10 +1,11 @@
 import { useParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
+import usePaginationParams from '../components/pagination/hooks/usePaginationParams';
+import usePaginationText from '../components/pagination/hooks/usePaginationText';
 import useScrollOnPagination from '../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../components/pagination/Pagination';
 import { type PageCountOptions } from '../components/pagination/PaginationSelect';
-import usePaginationParams from '../components/pagination/usePaginationParams';
 import Picture from '../components/Picture';
 import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import useLanguage from '../features/language/useLanguage';
@@ -86,19 +87,17 @@ const CollectionPage = () => {
   const filtersCount = getFilterSummary(filterValues);
 
   const isShowingAll = productsPerPage >= productCount && productCount > 0;
-  const startItem = isShowingAll ? 1 : (page - 1) * productsPerPage + 1;
-  const endItem = isShowingAll
-    ? productCount
-    : Math.min(page * productsPerPage, productCount);
 
-  const productsText = language.products.toLowerCase();
-  const showingText = language.showing;
-  const ofText = language.of;
-  const infoText = `${showingText} ${startItem}–${endItem} ${ofText} ${productCount} ${productsText}.`;
-  const paginationMobileText = `${language.page} ${page} ${language.of} ${totalBtns}`;
-  const productsLoadedText = `${paginationMobileText} ${language.loaded}`;
+  const { infoText, paginationMobileText, ariaLiveText } = usePaginationText({
+    page,
+    productsPerPage,
+    productCount,
+    totalBtns,
+    language,
+  });
 
   const { announce } = useAnnounce([page, productsPerPage, filterValues]);
+  console.log(ariaLiveText);
 
   const { scrollToRef, setShouldScroll } = useScrollOnPagination({
     isLoading,
@@ -194,7 +193,7 @@ const CollectionPage = () => {
                 productCount={productCount}
                 infoText={infoText}
                 announce={announce}
-                productsLoadedText={productsLoadedText}
+                ariaLiveText={ariaLiveText}
               />
             )}
             {isLoading && <SkeletonCardList count={productsPerPage} />}
