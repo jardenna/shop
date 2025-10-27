@@ -1,7 +1,7 @@
-import { useLayoutEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
+import useScrollOnPagination from '../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../components/pagination/Pagination';
 import { type PageCountOptions } from '../components/pagination/PaginationSelect';
 import usePaginationParams from '../components/pagination/usePaginationParams';
@@ -31,7 +31,6 @@ import './CollectionPage.styles.scss';
 export type FilterKeys = 'sizes' | 'colors' | 'brand';
 
 const CollectionPage = () => {
-  const headingRef = useRef<HTMLHeadingElement>(null);
   const { category, categoryId } = useParams();
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
@@ -101,19 +100,9 @@ const CollectionPage = () => {
 
   const { announce } = useAnnounce([page, productsPerPage, filterValues]);
 
-  const [shouldScroll, setShouldScroll] = useState(false);
-
-  useLayoutEffect(() => {
-    if (!shouldScroll || isLoading) {
-      return;
-    }
-
-    headingRef.current?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
-    setShouldScroll(false);
-  }, [shouldScroll, isLoading]);
+  const { scrollToRef, setShouldScroll } = useScrollOnPagination({
+    isLoading,
+  });
 
   const handleSelectCount = (option: PageCountOptions) => {
     const newCount = Number(option.value);
@@ -153,7 +142,7 @@ const CollectionPage = () => {
       {category && <MetaTags metaTitle={language[category]} />}
       <section
         className="container collection-page"
-        ref={headingRef}
+        ref={scrollToRef}
         aria-labelledby={ariaLabelledby}
       >
         {subMenu && (
