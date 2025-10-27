@@ -4,8 +4,14 @@ import LayoutElement from '../../layout/LayoutElement';
 import { IconName } from '../../types/enums';
 import IconBtn from '../IconBtn';
 import './_pagination.scss';
-import type { PaginationNavProps } from './Pagination';
 import PaginationBtnItems from './PaginationBtnItems';
+
+export type PaginationNavProps = {
+  page: number;
+  paginationMobileText: string;
+  totalBtns: number;
+  onPagination: (id: number) => void;
+};
 
 const PaginationNav = ({
   paginationMobileText,

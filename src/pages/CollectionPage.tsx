@@ -146,18 +146,6 @@ const CollectionPage = () => {
   ];
   const selectProductCountList = ['8', '16'];
 
-  const options = [
-    ...selectProductCountList.map((count) => ({
-      value: count,
-      label: count,
-    })),
-    { value: productCount.toString(), label: language.all },
-  ];
-
-  // Check when filtering
-  const isOptionDisabled = (option: { value: string }) =>
-    Number(option.value) > productCount;
-
   const ariaLabelledby = ariaInfoTitle(category || 'women');
 
   return (
@@ -244,13 +232,13 @@ const CollectionPage = () => {
           page={page}
           onPagination={handlePagination}
           onSelectCount={handleSelectCount}
-          isOptionDisabled={isOptionDisabled}
+          totalCount={productCount}
           paginationMobileText={paginationMobileText}
           defaultValue={{
             value: productsPerPage.toString(),
             label: productsPerPage.toString(),
           }}
-          options={options}
+          optionList={selectProductCountList}
           selectInfo={
             isShowingAll
               ? `${language.showingAllProducts} (${productCount})`
