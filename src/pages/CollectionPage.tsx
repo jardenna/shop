@@ -156,13 +156,15 @@ const CollectionPage = () => {
               headerText={categoryText}
               ariaLabelledby={ariaLabelledby}
             />
-            <CollectionAside
-              subMenu={subMenu || null}
-              category={category || 'women'}
-              isLoading={subMenuLoading}
-              onReset={() => refetchSubMenu()}
-              language={language}
-            />
+            {!isMobileSize && (
+              <CollectionAside
+                subMenu={subMenu || null}
+                category={category || 'women'}
+                isLoading={subMenuLoading}
+                onReset={() => refetchSubMenu()}
+                language={language}
+              />
+            )}
           </div>
           <div className="collection-page-content">
             {!isMobileSize && (
