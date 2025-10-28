@@ -181,13 +181,13 @@ const ProductForm = ({
         filesData,
         uploadImages,
         dispatch,
+        clearTempFiles: () => {
+          setFilesData([]);
+          setPreviewData([]);
+        },
       });
 
       values.images = mergedImages;
-
-      // clear temporary upload state
-      setFilesData([]);
-      setPreviewData([]);
 
       const filteredSizes = values.sizes.filter((size) =>
         availableSizes.includes(size),
