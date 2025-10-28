@@ -113,7 +113,7 @@ function useFormValidation<T extends KeyValuePair>({
 
     const formatBytes = (bytes: number) => `${Math.round(bytes / 1000)} KB`;
 
-    // ✅ accumulate instead of overwrite
+    // accumulate instead of overwrite
     const newFiles = Array.from(selectedFiles);
 
     setFilesData((prev) => [...prev, ...newFiles]);
@@ -138,7 +138,7 @@ function useFormValidation<T extends KeyValuePair>({
         size: formatBytes(file.size),
         url: URL.createObjectURL(file),
         reason,
-        // ✅ key property used for removing file by identity, not name
+        // key property used for removing file by identity, not name
         lastModified: file.lastModified,
       };
     });
