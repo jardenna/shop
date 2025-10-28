@@ -97,6 +97,7 @@ daysAgo;days ago;dage siden
 delete;Delete;Slet
 deleteAddress;Delete address;Slet adresse
 deleteCategory;Delete category;Slet kategori
+deleteFoto;Delete foto;Slet foto
 deleted;deleted;slettet
 deleteOrReassignCategory;Cannot be deleted. Category has linked products;Kan ikke slettes. Kategori har tilknyttede produkter
 deleteProduct;Delete product;Slet produkt
@@ -404,6 +405,7 @@ translationKey;Translation key;Oversættelsesnøgle
 translationKeyHelpText;Enter the exact key used for translation in your CSV file;Skriv den præcise nøgle, som bruges til oversættelsen i din CSV-fil
 trashCan;Trash can;Skraldespand
 unavailable;Unavailable;Ikke tilgængelig
+undoDeleteImg;Undo deleting this photo;Fortryd sletning af dette foto
 unknownError;Unknown error;Ukendt fejl
 unsupportedFile;is not supported type;er ikke understøttet
 update;Update;Opdater

@@ -272,7 +272,6 @@ const ProductForm = ({
           >
             <ImageUpload
               images={images}
-              ariaLabel={`${language.delete} ${language.image}`}
               onChange={onFileChange}
               previewData={previewData}
               removePreviewImage={removePreviewImage}

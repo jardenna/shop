@@ -1,3 +1,4 @@
+import { BaseImageUploadProps } from '../../../features/products/components/ImageUpload';
 import ImgListItem from './ImgListItem';
 
 export type PreviewImg = {
@@ -8,10 +9,8 @@ export type PreviewImg = {
   reason?: string;
 };
 
-export type PreviewProps = {
+type PreviewProps = BaseImageUploadProps & {
   ariaLabel: string;
-  previewData: PreviewImg[];
-  removePreviewImage: (lastModified: number) => void;
 };
 
 const Preview = ({
@@ -20,7 +19,7 @@ const Preview = ({
   previewData,
 }: PreviewProps) => (
   <ul className="img-list preview-list">
-    {previewData.map(({ name, url, reason, file }) => (
+    {previewData.map(({ url, reason, file }) => (
       <div key={url}>
         <ImgListItem
           onClick={() => {
@@ -28,7 +27,7 @@ const Preview = ({
           }}
           img={url}
           reason={reason}
-          ariaLabel={`${ariaLabel} ${name}`}
+          ariaLabel={ariaLabel}
         />
       </div>
     ))}

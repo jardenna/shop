@@ -1,13 +1,19 @@
 import FileInput from '../../../components/formElements/fileInput/FileInput';
 import ImgListItem from '../../../components/formElements/fileInput/ImgListItem';
-import type { PreviewProps } from '../../../components/formElements/fileInput/Preview';
-import Preview from '../../../components/formElements/fileInput/Preview';
+import Preview, {
+  type PreviewImg,
+} from '../../../components/formElements/fileInput/Preview';
 import InputInfo from '../../../components/formElements/InputInfo';
 import type { InputChangeHandler } from '../../../types/types';
 import { allowedExtensions, maxFiles } from '../../../utils/utils';
 import useLanguage from '../../language/useLanguage';
 
-type ImageUploadProps = PreviewProps & {
+export type BaseImageUploadProps = {
+  previewData: PreviewImg[];
+  removePreviewImage: (lastModified: number) => void;
+};
+
+type ImageUploadProps = BaseImageUploadProps & {
   disabledImages: string[];
   images: string[];
   onChange: InputChangeHandler;
@@ -19,7 +25,6 @@ const ImageUpload = ({
   removePreviewImage,
   onToggleImage,
   disabledImages,
-  ariaLabel,
   onChange,
   previewData,
 }: ImageUploadProps) => {
@@ -30,9 +35,9 @@ const ImageUpload = ({
     .join(', ');
   const inputInfoText = `${language.filesSupported}  ${allowedImages} | ${language.maximumFileSize} 1MB`;
 
-  // Error text for too many img files
+  // Maksimalt 5 filer kan uploades fjern venligst en eller flere
   const errorText = `${language.maximum} ${maxFiles} ${language.filesCanBeUploaded} ${language.pleaseRemoveOneOrMore}`;
-
+  const deleteAriaText = language.deleteFoto;
   return (
     <div>
       <div className="upload-img-container">
@@ -46,7 +51,11 @@ const ImageUpload = ({
                 }}
                 isImgDisabled={disabledImages.includes(img)}
                 img={img}
-                ariaLabel={ariaLabel}
+                ariaLabel={
+                  disabledImages.includes(img)
+                    ? language.undoDeleteImg
+                    : deleteAriaText
+                }
               />
             ))}
           </ul>
@@ -65,8 +74,8 @@ const ImageUpload = ({
       {previewData.length > 0 && (
         <Preview
           previewData={previewData}
-          ariaLabel={ariaLabel}
           removePreviewImage={removePreviewImage}
+          ariaLabel={deleteAriaText}
         />
       )}
     </div>
