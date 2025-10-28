@@ -10,7 +10,7 @@ import type {
 import type { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import { productUrl } from '../../app/endpoints';
 
-const productApiSlice = apiSlice.injectEndpoints({
+export const productApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllProducts: builder.query<ProductsResponse, ProductsParams>({
       query: (params) => {

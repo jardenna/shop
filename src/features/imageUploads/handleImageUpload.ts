@@ -1,6 +1,6 @@
 import { BaseProduct } from '../../app/api/apiTypes/sharedApiTypes';
 import { AppDispatch } from '../../app/store';
-import shopApiSlice from '../shop/shopApiSlice';
+import { shopApiSlice } from '../shop/shopApiSlice';
 import { useUploadImageMutation } from '../uploadImageApiSlice';
 
 type HandleImageUploadParams = {
