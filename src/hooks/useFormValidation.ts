@@ -112,10 +112,13 @@ function useFormValidation<T extends KeyValuePair>({
     }
 
     const formatBytes = (bytes: number) => `${Math.round(bytes / 1000)} KB`;
-    const fileArray = Array.from(selectedFiles);
-    setFilesData(fileArray);
 
-    const results: ValidatedFile[] = fileArray.map((file) => {
+    // ✅ accumulate instead of overwrite
+    const newFiles = Array.from(selectedFiles);
+
+    setFilesData((prev) => [...prev, ...newFiles]);
+
+    const validatedResults: ValidatedFile[] = newFiles.map((file) => {
       const ext = file.name
         .substring(file.name.lastIndexOf('.') + 1)
         .toLowerCase();
@@ -135,17 +138,21 @@ function useFormValidation<T extends KeyValuePair>({
         size: formatBytes(file.size),
         url: URL.createObjectURL(file),
         reason,
+        // ✅ key property used for removing file by identity, not name
+        lastModified: file.lastModified,
       };
     });
 
-    setPreviewData(results);
+    setPreviewData((prev) => [...prev, ...validatedResults]);
   };
 
-  const removePreviewImage = (name: string) => {
-    setFilesData((prev) => prev.filter((file) => file.name !== name));
-    //  currentValues.filter((item) => item !== value),
+  const removePreviewImage = (lastModified: number) => {
+    setFilesData((prev) =>
+      prev.filter((file) => file.lastModified !== lastModified),
+    );
+
     setPreviewData((prev) =>
-      prev.filter((result) => result.file.name !== name),
+      prev.filter((item) => item.file.lastModified !== lastModified),
     );
   };
 
@@ -251,6 +258,8 @@ function useFormValidation<T extends KeyValuePair>({
     previewData,
     removePreviewImage,
     onFileChange: handleFileChange,
+    setPreviewData,
+    setFilesData,
   };
 }
 

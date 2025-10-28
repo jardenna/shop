@@ -96,3 +96,5 @@ export const {
   usePostReviewsMutation,
   useCheckReviewedQuery,
 } = shopApiSlice;
+
+export default shopApiSlice;

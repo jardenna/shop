@@ -6,6 +6,8 @@ import type {
   ProductRequest,
   SubCategoriesWithParent,
 } from '../../../app/api/apiTypes/adminApiTypes';
+import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
+import { useAppDispatch } from '../../../app/hooks';
 import useDatePicker from '../../../components/datePicker/useDatePicker';
 import Form from '../../../components/form/Form';
 import ControlGroupList from '../../../components/formElements/controlGroup/ControlGroupList';
@@ -29,6 +31,7 @@ import validateProduct from '../../../utils/validation/validateProduct';
 import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
 import useCurrency from '../../currency/useCurrency';
 import useLanguage from '../../language/useLanguage';
+import shopApiSlice from '../../shop/shopApiSlice';
 import { useUploadImageMutation } from '../../uploadImageApiSlice';
 import {
   useCreateProductMutation,
@@ -143,6 +146,8 @@ const ProductForm = ({
     filesData,
     previewData,
     removePreviewImage,
+    setFilesData,
+    setPreviewData,
     onFileChange,
   } = useFormValidation({
     initialState,
@@ -165,6 +170,8 @@ const ProductForm = ({
     useCreateProductMutation();
   const [updateProduct, { isLoading }] = useUpdateProductMutation();
 
+  const dispatch = useAppDispatch();
+
   // Submit handler
   async function handleSubmitProduct() {
     try {
@@ -179,11 +186,28 @@ const ProductForm = ({
         const currentUploadedImages = uploadResponse.images;
 
         values.images = [...activeImages, ...currentUploadedImages];
+
+        // ✅ RTK cache sync (adds 1 single safe line)
+        if (id) {
+          dispatch(
+            shopApiSlice.util.updateQueryData(
+              'getSingleProduct',
+              id,
+              (draft: BaseProduct) => {
+                // eslint-disable-next-line no-param-reassign
+                draft.images = values.images;
+              },
+            ),
+          );
+        }
+
+        // ✅ clear temporary files so they won’t be uploaded again
+        setFilesData([]);
+        setPreviewData([]);
       } else {
         values.images = activeImages;
       }
 
-      // Filtering of sizes before sending
       const filteredSizes = values.sizes.filter((size) =>
         availableSizes.includes(size),
       );
@@ -270,8 +294,8 @@ const ProductForm = ({
               ariaLabel={`${language.delete} ${language.image}`}
               onChange={onFileChange}
               previewData={previewData}
-              onRemovePreviewImage={(name: string) => {
-                removePreviewImage(name);
+              onRemovePreviewImage={(file: File) => {
+                removePreviewImage(file.lastModified);
               }}
               onToggleImage={(id) => {
                 handleToggleImage(id);

@@ -12,8 +12,8 @@ type ImageUploadProps = {
   disabledImages: string[];
   images: string[];
   onChange: InputChangeHandler;
+  onRemovePreviewImage: any;
   previewData: PreviewImg[];
-  onRemovePreviewImage: (id: string) => void;
   onToggleImage: (id: string) => void;
 };
 
@@ -61,8 +61,8 @@ const ImageUpload = ({
           id="images"
           previewData={previewData}
           ariaLabel={language.delete}
-          onRemoveImg={(name: string) => {
-            onRemovePreviewImage(name);
+          onRemoveImg={(file: File) => {
+            onRemovePreviewImage(file.lastModified);
           }}
         />
       </div>
@@ -73,8 +73,8 @@ const ImageUpload = ({
         <Preview
           previewData={previewData}
           ariaLabel={ariaLabel}
-          onRemoveImg={(name: string) => {
-            onRemovePreviewImage(name);
+          onRemoveImg={(file: File) => {
+            onRemovePreviewImage(file.lastModified);
           }}
         />
       )}
