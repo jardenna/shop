@@ -6,6 +6,7 @@ import type {
   ProductRequest,
   SubCategoriesWithParent,
 } from '../../../app/api/apiTypes/adminApiTypes';
+import { useAppDispatch } from '../../../app/hooks';
 import useDatePicker from '../../../components/datePicker/useDatePicker';
 import Form from '../../../components/form/Form';
 import ControlGroupList from '../../../components/formElements/controlGroup/ControlGroupList';
@@ -28,6 +29,7 @@ import { maxFiles, translateKey } from '../../../utils/utils';
 import validateProduct from '../../../utils/validation/validateProduct';
 import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
 import useCurrency from '../../currency/useCurrency';
+import handleImageUpload from '../../imageUploads/handleImageUpload';
 import useLanguage from '../../language/useLanguage';
 import { useUploadImageMutation } from '../../uploadImageApiSlice';
 import {
@@ -165,25 +167,22 @@ const ProductForm = ({
     useCreateProductMutation();
   const [updateProduct, { isLoading }] = useUpdateProductMutation();
 
+  const dispatch = useAppDispatch();
+
   // Submit handler
   async function handleSubmitProduct() {
     try {
-      const formData = new FormData();
+      //  upload logic
+      const mergedImages = await handleImageUpload({
+        id,
+        activeImages,
+        filesData,
+        uploadImages,
+        dispatch,
+      });
 
-      if (filesData.length > 0) {
-        filesData.forEach((file) => {
-          formData.append('images', file);
-        });
+      values.images = mergedImages;
 
-        const uploadResponse = await uploadImages(formData).unwrap();
-        const currentUploadedImages = uploadResponse.images;
-
-        values.images = [...activeImages, ...currentUploadedImages];
-      } else {
-        values.images = activeImages;
-      }
-
-      // Filtering of sizes before sending
       const filteredSizes = values.sizes.filter((size) =>
         availableSizes.includes(size),
       );
@@ -267,12 +266,9 @@ const ProductForm = ({
           >
             <ImageUpload
               images={images}
-              ariaLabel={`${language.delete} ${language.image}`}
               onChange={onFileChange}
               previewData={previewData}
-              onRemovePreviewImage={(name: string) => {
-                removePreviewImage(name);
-              }}
+              removePreviewImage={removePreviewImage}
               onToggleImage={(id) => {
                 handleToggleImage(id);
               }}

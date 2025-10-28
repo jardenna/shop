@@ -8,7 +8,7 @@ import type {
 } from '../../app/api/apiTypes/adminApiTypes';
 import { categoryUrl } from '../../app/endpoints';
 
-const categoryApiSlice = apiSlice.injectEndpoints({
+export const categoryApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllCategories: builder.query<CategoriesResponse, void>({
       query: () => categoryUrl,

@@ -1,28 +1,30 @@
 import FileInput from '../../../components/formElements/fileInput/FileInput';
 import ImgListItem from '../../../components/formElements/fileInput/ImgListItem';
-import type { PreviewImg } from '../../../components/formElements/fileInput/Preview';
-import Preview from '../../../components/formElements/fileInput/Preview';
+import Preview, {
+  type PreviewImg,
+} from '../../../components/formElements/fileInput/Preview';
 import InputInfo from '../../../components/formElements/InputInfo';
 import type { InputChangeHandler } from '../../../types/types';
 import { allowedExtensions, maxFiles } from '../../../utils/utils';
 import useLanguage from '../../language/useLanguage';
 
-type ImageUploadProps = {
-  ariaLabel: string;
+export type BaseImageUploadProps = {
+  previewData: PreviewImg[];
+  removePreviewImage: (lastModified: number) => void;
+};
+
+type ImageUploadProps = BaseImageUploadProps & {
   disabledImages: string[];
   images: string[];
   onChange: InputChangeHandler;
-  previewData: PreviewImg[];
-  onRemovePreviewImage: (id: string) => void;
   onToggleImage: (id: string) => void;
 };
 
 const ImageUpload = ({
   images,
-  onRemovePreviewImage,
+  removePreviewImage,
   onToggleImage,
   disabledImages,
-  ariaLabel,
   onChange,
   previewData,
 }: ImageUploadProps) => {
@@ -31,11 +33,13 @@ const ImageUpload = ({
   const allowedImages = allowedExtensions
     .map((ext) => ext.toUpperCase())
     .join(', ');
+
+  // Tilladte filer  JPG, JPEG, PNG, WEBP, AVIF | Maksimal filstørrelse 1MB
   const inputInfoText = `${language.filesSupported}  ${allowedImages} | ${language.maximumFileSize} 1MB`;
 
-  // Error text for too many img files
+  // Maksimalt 5 filer kan uploades fjern venligst en eller flere
   const errorText = `${language.maximum} ${maxFiles} ${language.filesCanBeUploaded} ${language.pleaseRemoveOneOrMore}`;
-
+  const deleteAriaText = language.deleteFoto;
   return (
     <div>
       <div className="upload-img-container">
@@ -49,7 +53,11 @@ const ImageUpload = ({
                 }}
                 isImgDisabled={disabledImages.includes(img)}
                 img={img}
-                ariaLabel={ariaLabel}
+                ariaLabel={
+                  disabledImages.includes(img)
+                    ? language.undoDeleteImg
+                    : deleteAriaText
+                }
               />
             ))}
           </ul>
@@ -60,10 +68,6 @@ const ImageUpload = ({
           name="images"
           id="images"
           previewData={previewData}
-          ariaLabel={language.delete}
-          onRemoveImg={(name: string) => {
-            onRemovePreviewImage(name);
-          }}
         />
       </div>
 
@@ -72,10 +76,8 @@ const ImageUpload = ({
       {previewData.length > 0 && (
         <Preview
           previewData={previewData}
-          ariaLabel={ariaLabel}
-          onRemoveImg={(name: string) => {
-            onRemovePreviewImage(name);
-          }}
+          removePreviewImage={removePreviewImage}
+          ariaLabel={deleteAriaText}
         />
       )}
     </div>

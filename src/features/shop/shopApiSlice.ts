@@ -15,7 +15,7 @@ import {
   subCategoryMenuUrl,
 } from '../../app/endpoints';
 
-const shopApiSlice = apiSlice.injectEndpoints({
+export const shopApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getProducts: builder.query<ShopAllProductsResponse, ShopProductsParams>({
       query: (params) => {
