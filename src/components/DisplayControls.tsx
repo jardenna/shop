@@ -7,7 +7,7 @@ type DisplayControls = {
   iconName: IconName;
 };
 
-type DisplayControlsProps = {
+export type DisplayControlsProps = {
   displayControlList: DisplayControls[];
   isActive: string;
   onSetDisplay: (id: string) => void;

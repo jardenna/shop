@@ -1,34 +1,16 @@
-import type { Size } from '../../../app/api/apiTypes/sharedApiTypes';
-import DisplayControls from '../../../components/DisplayControls';
-import LiveAnnouncement from '../../../components/LiveAnnouncement';
-import type { FilterValuesType } from '../../../hooks/useFilterParams';
-import type { FilterKeys } from '../../../pages/CollectionPage';
-import type {
-  FiltersCountResult,
-  InputChangeHandler,
-} from '../../../types/types';
-import useLanguage from '../../language/useLanguage';
-import FilterPanel from './FilterPanel';
+import DisplayControls, {
+  DisplayControlsProps,
+} from '../../../components/DisplayControls';
+import LiveAnnouncement, {
+  LiveAnnouncementProps,
+} from '../../../components/LiveAnnouncement';
+import FilterPanel, { FilterPanelProps } from './FilterPanel';
 
-type ProductToolbar = {
-  announce: boolean;
-  ariaLiveText: string;
-  availableBrands: string[];
-  availableSizes: Size[];
-  colors: string[];
-  displayControlList: DisplayControls[];
-  filtersCount: FiltersCountResult;
-  infoText: string;
-  isActive: string;
-  onChange: InputChangeHandler;
-  productCount: number;
-  values: FilterValuesType<string>;
-  onClearAllFilters: () => void;
-  onClearSingleFilter: (filterKey: FilterKeys) => void;
-  onRemoveFilterTag: (key: FilterKeys, value: string) => void;
-  onReset: () => void;
-  onSetDisplay: (id: string) => void;
-};
+type ProductToolbar = FilterPanelProps &
+  DisplayControlsProps &
+  LiveAnnouncementProps & {
+    language: Record<string, string>;
+  };
 
 const ProductToolbar = ({
   onClearSingleFilter,
@@ -48,37 +30,34 @@ const ProductToolbar = ({
   announce,
   onReset,
   ariaLiveText,
-}: ProductToolbar) => {
-  const { language } = useLanguage();
-
-  return (
-    <section className="product-toolbar">
-      <DisplayControls
-        onSetDisplay={onSetDisplay}
-        displayControlList={displayControlList}
-        isActive={isActive}
-      />
-      <LiveAnnouncement
-        infoText={infoText}
-        announce={announce}
-        ariaLiveText={ariaLiveText}
-      />
-      <FilterPanel
-        onClearSingleFilter={onClearSingleFilter}
-        filtersCount={filtersCount}
-        onChange={onChange}
-        values={values}
-        availableBrands={availableBrands}
-        availableSizes={availableSizes}
-        colors={colors}
-        language={language}
-        onRemoveFilterTag={onRemoveFilterTag}
-        onClearAllFilters={onClearAllFilters}
-        productCount={productCount}
-        onReset={onReset}
-      />
-    </section>
-  );
-};
+  language,
+}: ProductToolbar) => (
+  <section className="product-toolbar">
+    <DisplayControls
+      onSetDisplay={onSetDisplay}
+      displayControlList={displayControlList}
+      isActive={isActive}
+    />
+    <LiveAnnouncement
+      infoText={infoText}
+      announce={announce}
+      ariaLiveText={ariaLiveText}
+    />
+    <FilterPanel
+      onClearSingleFilter={onClearSingleFilter}
+      filtersCount={filtersCount}
+      onChange={onChange}
+      values={values}
+      availableBrands={availableBrands}
+      availableSizes={availableSizes}
+      colors={colors}
+      language={language}
+      onRemoveFilterTag={onRemoveFilterTag}
+      onClearAllFilters={onClearAllFilters}
+      productCount={productCount}
+      onReset={onReset}
+    />
+  </section>
+);
 
 export default ProductToolbar;

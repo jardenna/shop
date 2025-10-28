@@ -179,6 +179,7 @@ const CollectionPage = () => {
             {products && (
               <ProductToolbar
                 onReset={() => refetch()}
+                language={language}
                 onSetDisplay={setProductView}
                 displayControlList={productViewIconList}
                 isActive={productView}
