@@ -145,8 +145,6 @@ const ProductForm = ({
     filesData,
     previewData,
     removePreviewImage,
-    setFilesData,
-    setPreviewData,
     onFileChange,
   } = useFormValidation({
     initialState,
@@ -181,10 +179,6 @@ const ProductForm = ({
         filesData,
         uploadImages,
         dispatch,
-        clearTempFiles: () => {
-          setFilesData([]);
-          setPreviewData([]);
-        },
       });
 
       values.images = mergedImages;

@@ -258,8 +258,6 @@ function useFormValidation<T extends KeyValuePair>({
     previewData,
     removePreviewImage,
     onFileChange: handleFileChange,
-    setPreviewData,
-    setFilesData,
   };
 }
 

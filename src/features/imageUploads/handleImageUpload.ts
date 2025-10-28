@@ -9,7 +9,6 @@ type HandleImageUploadParams = {
   filesData: File[];
   id: string | null;
   uploadImages: ReturnType<typeof useUploadImageMutation>[0];
-  clearTempFiles: () => void;
 };
 
 async function handleImageUpload({
@@ -18,7 +17,6 @@ async function handleImageUpload({
   filesData,
   uploadImages,
   dispatch,
-  clearTempFiles,
 }: HandleImageUploadParams): Promise<string[]> {
   if (filesData.length === 0) {
     return activeImages;
@@ -31,8 +29,6 @@ async function handleImageUpload({
 
   const { images: uploadedImages } = await uploadImages(formData).unwrap();
   const merged = [...activeImages, ...uploadedImages];
-
-  clearTempFiles();
 
   if (id) {
     dispatch(
