@@ -275,9 +275,7 @@ const ProductForm = ({
               ariaLabel={`${language.delete} ${language.image}`}
               onChange={onFileChange}
               previewData={previewData}
-              onRemovePreviewImage={(file: File) => {
-                removePreviewImage(file.lastModified);
-              }}
+              removePreviewImage={removePreviewImage}
               onToggleImage={(id) => {
                 handleToggleImage(id);
               }}

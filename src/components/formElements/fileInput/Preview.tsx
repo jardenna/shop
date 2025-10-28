@@ -11,16 +11,20 @@ export type PreviewImg = {
 export type PreviewProps = {
   ariaLabel: string;
   previewData: PreviewImg[];
-  onRemoveImg: (file: File) => void;
+  removePreviewImage: (lastModified: number) => void;
 };
 
-const Preview = ({ onRemoveImg, ariaLabel, previewData }: PreviewProps) => (
+const Preview = ({
+  removePreviewImage,
+  ariaLabel,
+  previewData,
+}: PreviewProps) => (
   <ul className="img-list preview-list">
     {previewData.map(({ name, url, reason, file }) => (
       <div key={url}>
         <ImgListItem
           onClick={() => {
-            onRemoveImg(file);
+            removePreviewImage(file.lastModified);
           }}
           img={url}
           reason={reason}

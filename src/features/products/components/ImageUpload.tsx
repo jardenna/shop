@@ -1,25 +1,22 @@
 import FileInput from '../../../components/formElements/fileInput/FileInput';
 import ImgListItem from '../../../components/formElements/fileInput/ImgListItem';
-import type { PreviewImg } from '../../../components/formElements/fileInput/Preview';
+import type { PreviewProps } from '../../../components/formElements/fileInput/Preview';
 import Preview from '../../../components/formElements/fileInput/Preview';
 import InputInfo from '../../../components/formElements/InputInfo';
 import type { InputChangeHandler } from '../../../types/types';
 import { allowedExtensions, maxFiles } from '../../../utils/utils';
 import useLanguage from '../../language/useLanguage';
 
-type ImageUploadProps = {
-  ariaLabel: string;
+type ImageUploadProps = PreviewProps & {
   disabledImages: string[];
   images: string[];
   onChange: InputChangeHandler;
-  onRemovePreviewImage: any;
-  previewData: PreviewImg[];
   onToggleImage: (id: string) => void;
 };
 
 const ImageUpload = ({
   images,
-  onRemovePreviewImage,
+  removePreviewImage,
   onToggleImage,
   disabledImages,
   ariaLabel,
@@ -60,10 +57,6 @@ const ImageUpload = ({
           name="images"
           id="images"
           previewData={previewData}
-          ariaLabel={language.delete}
-          onRemoveImg={(file: File) => {
-            onRemovePreviewImage(file.lastModified);
-          }}
         />
       </div>
 
@@ -73,9 +66,7 @@ const ImageUpload = ({
         <Preview
           previewData={previewData}
           ariaLabel={ariaLabel}
-          onRemoveImg={(file: File) => {
-            onRemovePreviewImage(file.lastModified);
-          }}
+          removePreviewImage={removePreviewImage}
         />
       )}
     </div>
