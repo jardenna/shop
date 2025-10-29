@@ -1,4 +1,5 @@
 import { useParams } from 'react-router';
+import type { BaseShopProductsParams } from '../app/api/apiTypes/shopApiTypes';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import usePaginationParams from '../components/pagination/hooks/usePaginationParams';
@@ -29,7 +30,7 @@ import { sortSizesDynamic } from '../utils/sizeUtils';
 import { ariaInfoTitle, getFilterSummary } from '../utils/utils';
 import './CollectionPage.styles.scss';
 
-export type FilterKeys = 'sizes' | 'colors' | 'brand';
+export type FilterKeys = keyof BaseShopProductsParams;
 
 const CollectionPage = () => {
   const { category, categoryId } = useParams();

@@ -5,15 +5,18 @@ import type {
   Size,
 } from './sharedApiTypes';
 
-export type ShopProductsParams = BaseProductParams & {
+export type BaseShopProductsParams = {
   brand?: string[];
   colors?: string[];
-  mainCategory?: string;
-  maxPrice?: string;
-  minPrice?: string;
   sizes?: string[];
-  subCategoryId?: string;
 };
+export type ShopProductsParams = BaseProductParams &
+  BaseShopProductsParams & {
+    mainCategory?: string;
+    maxPrice?: string;
+    minPrice?: string;
+    subCategoryId?: string;
+  };
 
 export type ShopAllProductsResponse = {
   availableBrands: string[];
