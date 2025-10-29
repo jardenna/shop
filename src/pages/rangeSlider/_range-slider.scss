@@ -43,3 +43,24 @@ input[type='range']::-webkit-slider-thumb {
 input[type='range']::-moz-range-thumb {
   @include thumb-style;
 }
+
+.rail {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 6px;
+  border-radius: 3px;
+  background: lightgrey;
+}
+
+.inner-rail {
+  position: absolute;
+  height: 100%;
+  background: $color-primary;
+  opacity: 0.5;
+}
+
+.input-wrapper {
+  width: 100%;
+}
