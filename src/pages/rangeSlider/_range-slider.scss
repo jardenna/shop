@@ -13,8 +13,7 @@ $thumb-size: rem(16px);
   pointer-events: all;
   width: $thumb-size;
   height: $thumb-size;
-  border-radius: 0;
-  border: 0 none;
+  border: 0;
   cursor: grab;
 
   &:active {
@@ -22,92 +21,99 @@ $thumb-size: rem(16px);
   }
 }
 
-.range-slider {
-  position: relative;
-  display: flex;
-  align-items: center;
-  margin: 40px calc(#{$thumb-size} / 2);
-  height: calc(#{$thumb-size} + 1.6rem);
-
-  &:has(.range-start:focus-visible) .control-start,
-  &:has(.range-end:focus-visible) .control-end {
-    @include outline;
-  }
-}
-
-.range-input-container {
-  width: calc(100% + #{$thumb-size});
-  margin: 0 calc(#{$thumb-size} / -2);
-  position: absolute;
-  height: $thumb-size;
-}
-
-.control-container {
-  width: 100%;
-  position: absolute;
-  height: $thumb-size;
-}
-
-.input {
-  position: absolute;
-  width: 100%;
-  min-height: auto;
-  pointer-events: none;
-  appearance: none;
-  height: 100%;
-  opacity: 0;
-  z-index: 3;
-  padding: 0;
-
-  &::-ms-track {
-    @include track-styles;
+.range-slider-container {
+  .range-slider-info {
+    display: flex;
+    justify-content: space-between;
   }
 
-  &::-moz-range-track {
-    @include track-styles;
+  .range-slider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 40px calc(#{$thumb-size} / 2);
+    height: calc(#{$thumb-size} + 1.6rem);
+
+    &:has(.range-start:focus-visible) .control-start,
+    &:has(.range-end:focus-visible) .control-end {
+      @include outline($size: 3px);
+    }
   }
 
-  &:focus::-webkit-slider-runnable-track {
-    @include track-styles;
+  .range-input-container {
+    width: calc(100% + #{$thumb-size});
+    margin: 0 calc(#{$thumb-size} / -2);
+    position: absolute;
+    height: $thumb-size;
   }
 
-  &::-ms-thumb {
-    @include thumb-styles;
+  .control-container {
+    width: 100%;
+    position: absolute;
+    height: $thumb-size;
   }
 
-  &::-moz-range-thumb {
-    @include thumb-styles;
+  .input {
+    position: absolute;
+    width: 100%;
+    min-height: auto;
+    pointer-events: none;
+    appearance: none;
+    height: 100%;
+    opacity: 0;
+    z-index: 3;
+    padding: 0;
+
+    &::-ms-track {
+      @include track-styles;
+    }
+
+    &::-moz-range-track {
+      @include track-styles;
+    }
+
+    &:focus::-webkit-slider-runnable-track {
+      @include track-styles;
+    }
+
+    &::-ms-thumb {
+      @include thumb-styles;
+    }
+
+    &::-moz-range-thumb {
+      @include thumb-styles;
+    }
+
+    &::-webkit-slider-thumb {
+      @include thumb-styles;
+    }
   }
 
-  &::-webkit-slider-thumb {
-    @include thumb-styles;
+  .rail {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 4px;
+    border-radius: 4px;
+    background-color: $color-primary;
   }
-}
 
-.rail {
-  position: absolute;
-  width: 100%;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 4px;
-  border-radius: 4px;
-  background-color: $color-primary;
-}
+  .inner-rail {
+    position: absolute;
+    height: 100%;
+    min-height: 6px;
+    background-color: $color-primary;
+  }
 
-.inner-rail {
-  position: absolute;
-  height: 100%;
-  min-height: 6px;
-  background-color: $color-primary;
-}
-
-.control {
-  width: $thumb-size;
-  height: $thumb-size;
-  position: absolute;
-  background-color: $color-primary;
-  top: 50%;
-  margin-left: calc(#{$thumb-size} / -2);
-  transform: translate3d(0, -50%, 0);
-  z-index: 2;
+  .control {
+    width: $thumb-size;
+    height: $thumb-size;
+    position: absolute;
+    background-color: $color-primary;
+    top: 50%;
+    margin-left: calc(#{$thumb-size} / -2);
+    transform: translate3d(0, -50%, 0);
+    z-index: 2;
+  }
 }
