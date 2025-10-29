@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import VisuallyHidden from '../../components/VisuallyHidden';
 import { ChangeInputType } from '../../types/types';
 import './_range-slider.scss';
 
@@ -27,45 +26,38 @@ const RangeSlider = () => {
   };
 
   return (
-    <div className="range-slider">
+    <div className="wrapper">
       <div className="input-wrapper">
-        <div>
-          <VisuallyHidden>
-            <label htmlFor="min">Min</label>
-          </VisuallyHidden>
-          <input
-            type="range"
-            value={minValue}
-            onChange={handleRangeChange}
-            min={min}
-            max={max}
-            step={step}
-            name="min"
-            id="min"
-          />
-        </div>
-        <div>
-          <VisuallyHidden>
-            <label htmlFor="max">Max</label>
-          </VisuallyHidden>
-          <input
-            type="range"
-            value={maxValue}
-            onChange={handleRangeChange}
-            min={min}
-            max={max}
-            step={step}
-            name="max"
-            id="max"
-          />
-        </div>
-      </div>
-
-      <div className="rail">
-        <div
-          className="inner-rail"
-          style={{ left: `${minPos}%`, right: `${100 - maxPos}%` }}
+        <input
+          className="input"
+          type="range"
+          value={minValue}
+          min={min}
+          max={max}
+          name="min"
+          step={step}
+          onChange={handleRangeChange}
         />
+        <input
+          className="input"
+          type="range"
+          value={maxValue}
+          min={min}
+          name="max"
+          max={max}
+          step={step}
+          onChange={handleRangeChange}
+        />
+      </div>
+      <div className="control-wrapper">
+        <div className="control" style={{ left: `${minPos}%` }} />
+        <div className="rail">
+          <div
+            className="inner-rail"
+            style={{ left: `${minPos}%`, right: `${100 - maxPos}%` }}
+          />
+        </div>
+        <div className="control" style={{ left: `${maxPos}%` }} />
       </div>
     </div>
   );
