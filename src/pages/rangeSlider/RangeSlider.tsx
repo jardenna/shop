@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { ChangeInputType } from '../types/types';
+import { ChangeInputType } from '../../types/types';
+import './_range-slider.scss';
 
 const RangeSlider = () => {
   const min = 0;
   const max = 100;
-  const step = 5;
+  const step = 1;
 
   const [minValue, setMinValue] = useState(min);
   const [maxValue, setMaxValue] = useState(max);
@@ -13,7 +14,6 @@ const RangeSlider = () => {
     const { name, value } = event.target;
     const numericValue = parseFloat(value);
 
-    // Note: We clamp values so the slider never crosses over
     if (name === 'min') {
       const safeValue = Math.min(numericValue, maxValue - step);
       setMinValue(safeValue);
