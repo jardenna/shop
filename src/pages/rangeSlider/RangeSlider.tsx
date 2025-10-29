@@ -7,7 +7,7 @@ import './_range-slider.scss';
 const RangeSlider = () => {
   const min = 50;
   const max = 9000;
-  const step = 50;
+  const step = 20;
 
   const [minValue, setMinValue] = useState(min);
   const [maxValue, setMaxValue] = useState(max);
@@ -19,11 +19,11 @@ const RangeSlider = () => {
     const numericValue = parseFloat(value);
 
     if (name === 'min') {
-      const safeValue = Math.min(numericValue, maxValue - step);
-      setMinValue(safeValue);
+      const value = Math.min(numericValue, maxValue - step);
+      setMinValue(value);
     } else {
-      const safeValue = Math.max(numericValue, minValue + step);
-      setMaxValue(safeValue);
+      const value = Math.max(numericValue, minValue + step);
+      setMaxValue(value);
     }
   };
 

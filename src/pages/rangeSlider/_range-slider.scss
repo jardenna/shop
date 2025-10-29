@@ -22,6 +22,11 @@ $thumb-size: rem(16px);
 }
 
 .range-slider-container {
+  margin-block: 24px;
+  gap: 12px;
+  display: flex;
+  flex-direction: column;
+
   .range-slider-info {
     display: flex;
     justify-content: space-between;
@@ -31,8 +36,6 @@ $thumb-size: rem(16px);
     position: relative;
     display: flex;
     align-items: center;
-    margin: 40px calc(#{$thumb-size} / 2);
-    height: calc(#{$thumb-size} + 1.6rem);
 
     &:has(.range-start:focus-visible) .control-start,
     &:has(.range-end:focus-visible) .control-end {
