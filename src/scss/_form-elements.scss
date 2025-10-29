@@ -25,6 +25,7 @@ input[type='checkbox'] {
   clip-path: inset(50%);
   position: absolute;
   margin: 0;
+  accent-color: $color-gray-80;
 }
 
 ::placeholder {
