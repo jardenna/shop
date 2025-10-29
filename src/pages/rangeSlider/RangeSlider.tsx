@@ -28,13 +28,13 @@ const RangeSlider = () => {
   };
 
   return (
-    <div className="range-slider-container">
+    <div className="range-slider-container" aria-labelledby="price-range-label">
+      <VisuallyHidden id="price-range-label">Price range</VisuallyHidden>
       <div className="range-slider-info">
         <ProductPrice price={minValue} />
         <ProductPrice price={maxValue} />
       </div>
-      <div className="range-slider" aria-labelledby="price-range-label">
-        <VisuallyHidden id="price-range-label">Price range</VisuallyHidden>
+      <div className="range-slider">
         <div className="range-input-container">
           <VisuallyHidden as="label" htmlFor="minPriceSliderInput">
             Minimum price kr
