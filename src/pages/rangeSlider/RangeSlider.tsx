@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import VisuallyHidden from '../../components/VisuallyHidden';
 import { ChangeInputType } from '../../types/types';
 import './_range-slider.scss';
 
@@ -26,8 +27,12 @@ const RangeSlider = () => {
   };
 
   return (
-    <div className="wrapper">
+    <div className="wrapper" aria-labelledby="price-range-label">
+      <VisuallyHidden id="price-range-label">Price range</VisuallyHidden>
       <div className="input-wrapper">
+        <VisuallyHidden as="label" htmlFor="minPriceSliderInput">
+          Minimum price kr
+        </VisuallyHidden>
         <input
           className="input range-start"
           type="range"
@@ -35,15 +40,20 @@ const RangeSlider = () => {
           min={min}
           max={max}
           name="min"
+          id="minPriceSliderInput"
           step={step}
           onChange={handleRangeChange}
         />
+        <VisuallyHidden as="label" htmlFor="maxPriceSliderInput">
+          Maximum price kr
+        </VisuallyHidden>
         <input
           className="input range-end"
           type="range"
           value={maxValue}
           min={min}
           name="max"
+          id="maxPriceSliderInput"
           max={max}
           step={step}
           onChange={handleRangeChange}
