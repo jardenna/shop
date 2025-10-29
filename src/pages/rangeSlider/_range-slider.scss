@@ -22,7 +22,7 @@ $thumb-size: rem(16px);
   }
 }
 
-.wrapper {
+.range-slider {
   position: relative;
   display: flex;
   align-items: center;
@@ -35,14 +35,14 @@ $thumb-size: rem(16px);
   }
 }
 
-.input-wrapper {
+.range-input-container {
   width: calc(100% + #{$thumb-size});
   margin: 0 calc(#{$thumb-size} / -2);
   position: absolute;
   height: $thumb-size;
 }
 
-.control-wrapper {
+.control-container {
   width: 100%;
   position: absolute;
   height: $thumb-size;

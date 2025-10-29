@@ -27,9 +27,9 @@ const RangeSlider = () => {
   };
 
   return (
-    <div className="wrapper" aria-labelledby="price-range-label">
+    <div className="range-slider" aria-labelledby="price-range-label">
       <VisuallyHidden id="price-range-label">Price range</VisuallyHidden>
-      <div className="input-wrapper">
+      <div className="range-input-container">
         <VisuallyHidden as="label" htmlFor="minPriceSliderInput">
           Minimum price kr
         </VisuallyHidden>
@@ -59,15 +59,18 @@ const RangeSlider = () => {
           onChange={handleRangeChange}
         />
       </div>
-      <div className="control-wrapper">
-        <div className="control control-start" style={{ left: `${minPos}%` }} />
-        <div className="rail">
-          <div
+      <div className="control-container">
+        <span
+          className="control control-start"
+          style={{ left: `${minPos}%` }}
+        />
+        <span className="rail">
+          <span
             className="inner-rail"
             style={{ left: `${minPos}%`, right: `${100 - maxPos}%` }}
           />
-        </div>
-        <div className="control control-end" style={{ left: `${maxPos}%` }} />
+        </span>
+        <span className="control control-end" style={{ left: `${maxPos}%` }} />
       </div>
     </div>
   );
