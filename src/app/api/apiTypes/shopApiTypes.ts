@@ -10,6 +10,7 @@ export type BaseShopProductsParams = {
   colors?: string[];
   sizes?: string[];
 };
+
 export type ShopProductsParams = BaseProductParams &
   BaseShopProductsParams & {
     mainCategory?: string;
