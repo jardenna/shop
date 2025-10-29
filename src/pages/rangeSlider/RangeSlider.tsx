@@ -29,7 +29,7 @@ const RangeSlider = () => {
     <div className="wrapper">
       <div className="input-wrapper">
         <input
-          className="input"
+          className="input range-start"
           type="range"
           value={minValue}
           min={min}
@@ -39,7 +39,7 @@ const RangeSlider = () => {
           onChange={handleRangeChange}
         />
         <input
-          className="input"
+          className="input range-end"
           type="range"
           value={maxValue}
           min={min}
@@ -50,14 +50,14 @@ const RangeSlider = () => {
         />
       </div>
       <div className="control-wrapper">
-        <div className="control" style={{ left: `${minPos}%` }} />
+        <div className="control control-start" style={{ left: `${minPos}%` }} />
         <div className="rail">
           <div
             className="inner-rail"
             style={{ left: `${minPos}%`, right: `${100 - maxPos}%` }}
           />
         </div>
-        <div className="control" style={{ left: `${maxPos}%` }} />
+        <div className="control control-end" style={{ left: `${maxPos}%` }} />
       </div>
     </div>
   );

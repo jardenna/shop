@@ -1,3 +1,5 @@
+@use '../../scss/globals' as *;
+
 $thumb-size: 16px;
 
 @mixin track-styles {
@@ -28,6 +30,11 @@ $thumb-size: 16px;
   margin: 40px calc(#{$thumb-size} / 2);
   padding-top: 1.6rem;
   height: calc(#{$thumb-size} + 1.6rem);
+
+  &:has(.range-start:focus-visible) .control-start,
+  &:has(.range-end:focus-visible) .control-end {
+    @include outline;
+  }
 }
 
 .input-wrapper {
