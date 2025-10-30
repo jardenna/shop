@@ -16,7 +16,7 @@ const useFilterParams = (initialFilters: FilterValuesType<string>) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const prevFiltersRef = useRef<FilterValuesType<string>>(
-    initialFiltersRef.current,
+    structuredClone(initialFiltersRef.current),
   );
   const { pathname } = useLocation();
   const prevPathRef = useRef(pathname);
@@ -35,10 +35,10 @@ const useFilterParams = (initialFilters: FilterValuesType<string>) => {
       prevPathRef.current !== pathname ||
       Object.keys(updatedFilters).length > 0
     ) {
-      setFilterValues({
-        ...filterValues,
+      setFilterValues((prev) => ({
+        ...prev,
         ...updatedFilters,
-      } as FilterValuesType<string>);
+      }));
       prevPathRef.current = pathname;
     }
   }, [pathname, searchParams]);
@@ -96,8 +96,8 @@ const useFilterParams = (initialFilters: FilterValuesType<string>) => {
         params.delete(pageParamKey);
       }
 
-      // Save new filters as the last known
-      prevFiltersRef.current = filterValues;
+      // Break reference to ensure future comparisons are correct
+      prevFiltersRef.current = structuredClone(filterValues);
 
       setSearchParams(Object.fromEntries(params.entries()), { replace: true });
     }, 300);
@@ -107,7 +107,7 @@ const useFilterParams = (initialFilters: FilterValuesType<string>) => {
         clearTimeout(debounceRef.current);
       }
     };
-  }, [filterValues, setSearchParams]);
+  }, [filterValues, searchParams, setSearchParams]);
 
   const handleFilterChange = (event: ChangeInputType) => {
     const { name, value, checked } = event.target;
@@ -119,22 +119,19 @@ const useFilterParams = (initialFilters: FilterValuesType<string>) => {
 
     setFilterValues({
       ...filterValues,
-      [name]: updated,
-    });
-  };
-
-  const handleRemoveFilterTag = (key: FilterKeys, value: string) => {
-    const current = filterValues[key];
-    const updated = current.filter((val) => val !== value);
-
-    setFilterValues({
-      ...filterValues,
       [key]: updated,
     });
   };
 
+  const handleRemoveFilterTag = (key: FilterKeys, value: string) => {
+    setFilterValues({
+      ...filterValues,
+      [key]: filterValues[key].filter((val) => val !== value),
+    });
+  };
+
   const handleClearAllFilters = () => {
-    setFilterValues(initialFilters);
+    setFilterValues(initialFiltersRef.current);
   };
 
   const handleClearSingleFilter = (filterKey: FilterKeys) => {
