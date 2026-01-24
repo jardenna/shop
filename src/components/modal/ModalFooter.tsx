@@ -28,7 +28,6 @@ const ModalFooter = ({
 
     <Button
       type={primaryActionBtn.buttonType}
-      // Only bind onClick when not submit (WCAG-native behavior)
       onClick={
         primaryActionBtn.buttonType === BtnType.Submit
           ? undefined
