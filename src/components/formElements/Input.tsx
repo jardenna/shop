@@ -1,6 +1,6 @@
-import { ChangeEvent } from 'react';
 import type {
   BlurEventType,
+  ChangeInputType,
   InputChangeHandler,
   InputType,
   RefInputType,
@@ -61,7 +61,7 @@ const Input = ({
   disabled,
   inputInfo,
 }: InputProps) => {
-  const handleOnInput = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleOnInput = (event: ChangeInputType) => {
     const inputValue = event.target.value;
     if (maxLength && inputValue.length > maxLength) {
       // eslint-disable-next-line no-param-reassign

@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import type {
   BlurEventType,
   ChangeInputType,
@@ -105,7 +105,7 @@ function useFormValidation<T extends KeyValuePair>({
     });
   }
 
-  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (event: ChangeInputType) => {
     const selectedFiles = event.target.files;
     if (!selectedFiles) {
       return;
