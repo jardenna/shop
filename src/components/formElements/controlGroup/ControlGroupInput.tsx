@@ -18,7 +18,7 @@ const ControlGroupInput = ({
   value,
   checked,
   disabled,
-  type = 'checkbox',
+  type,
   onChange,
   iconName,
   autoFocus,

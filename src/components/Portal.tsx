@@ -14,11 +14,7 @@ type PortalProps = {
   portalId: string;
   className?: string;
 };
-const Portal = ({
-  children,
-  portalId = 'react-portal-wrapper',
-  className,
-}: PortalProps) => {
+const Portal = ({ children, portalId, className }: PortalProps) => {
   const [wrapperElement, setWrapperElement] = useState<HTMLElement | null>(
     null,
   );

@@ -6,7 +6,7 @@ type PictureProps = ImgProps & {
 };
 
 const Picture = ({
-  alt = '',
+  alt,
   srcSet,
   src,
   className,
