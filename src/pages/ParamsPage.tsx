@@ -2,11 +2,17 @@ import PriceFilter from '../components/filter/PriceFilter';
 import useSearchParamsState from '../hooks/useSearchParamsState';
 
 const ParamsPage = () => {
-  const { values, setValue, toggleValue } = useSearchParamsState({
+  const initialFilters = {
     features: ['apple'],
+    sizes: [],
+    colors: [],
+    brand: [],
     minPrice: '',
     maxPrice: '',
-  });
+  };
+
+  const { values, setValue, toggleValue } =
+    useSearchParamsState(initialFilters);
 
   const checkboxItems = [
     { label: 'banana', value: 'banana' },
