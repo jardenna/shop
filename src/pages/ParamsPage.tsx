@@ -3,8 +3,6 @@ import useSearchParamsState from '../hooks/useSearchParamsState';
 
 const ParamsPage = () => {
   const { values, setValue, toggleValue } = useSearchParamsState({
-    query: '',
-    cat: 'all',
     features: ['apple'],
     minPrice: '',
     maxPrice: '',
@@ -23,23 +21,6 @@ const ParamsPage = () => {
         console.log(values);
       }}
     >
-      <input
-        value={values.query}
-        onChange={(event) => {
-          setValue('query', event.target.value);
-        }}
-      />
-      <select
-        value={values.cat}
-        onChange={(event) => {
-          setValue('cat', event.target.value);
-        }}
-      >
-        <option value="all">All</option>
-        <option value="fruit">Fruit</option>
-        <option value="vegetable">Vegetable</option>
-      </select>
-
       {checkboxItems.map(({ label, value }) => (
         <div key={value}>
           <input
