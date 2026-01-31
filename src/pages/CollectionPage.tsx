@@ -18,8 +18,9 @@ import ProductToolbar from '../features/shop/components/ProductToolbar';
 import useSubMenu from '../features/shop/hooks/useSubMenu';
 import { useGetProductsQuery } from '../features/shop/shopApiSlice';
 import useAnnounce from '../hooks/useAnnounce';
-import type { FilterValuesType } from '../hooks/useFilterParams';
-import useFilterParams from '../hooks/useFilterParams';
+import useFilterParams, {
+  type FilterValuesType,
+} from '../hooks/useFilterParams';
 import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
 import useMediaQuery from '../hooks/useMediaQuery';
 import { LinkText } from '../layout/nav/enums';
