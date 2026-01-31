@@ -1,10 +1,10 @@
-import Img from '../components/Img';
 import MainPageContainer from './pageContainer/MainPageContainer';
+import ParamsPage from './ParamsPage';
 
 const AboutUsPage = () => (
   <MainPageContainer heading="about">
     <section>
-      <Img src="/images/about/about.jpg" alt="" />
+      <ParamsPage />
     </section>
   </MainPageContainer>
 );
