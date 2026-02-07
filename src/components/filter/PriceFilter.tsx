@@ -10,8 +10,7 @@ interface PriceFilterProps {
   max?: number;
   min?: number;
   step?: number;
-  onMaxChange: (value: string) => void;
-  onMinChange: (value: string) => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const clampNumberToRange = (
@@ -32,8 +31,8 @@ const parseFiniteNumberOrNull = (rawValue: string) => {
 const PriceFilter = ({
   minPrice,
   maxPrice,
-  onMinChange,
-  onMaxChange,
+
+  onChange,
   step = 100,
   min = 0,
   max = 10000,
@@ -71,7 +70,12 @@ const PriceFilter = ({
     setMinimumDraft(String(committedValue));
 
     debounce(() => {
-      onMinChange(String(committedValue));
+      onChange({
+        target: {
+          name: 'minPrice',
+          value: String(committedValue),
+        },
+      } as React.ChangeEvent<HTMLInputElement>);
     });
   };
 
@@ -89,7 +93,12 @@ const PriceFilter = ({
     setMaximumDraft(String(committedValue));
 
     debounce(() => {
-      onMaxChange(String(committedValue));
+      onChange({
+        target: {
+          name: 'maxPrice',
+          value: String(committedValue),
+        },
+      } as React.ChangeEvent<HTMLInputElement>);
     });
   };
 
@@ -108,7 +117,12 @@ const PriceFilter = ({
       setMinimumDraft(String(committedValue));
 
       debounce(() => {
-        onMinChange(String(committedValue));
+        onChange({
+          target: {
+            name: 'minPrice',
+            value: String(committedValue),
+          },
+        } as React.ChangeEvent<HTMLInputElement>);
       });
       return;
     }
@@ -120,7 +134,12 @@ const PriceFilter = ({
       setMaximumDraft(String(committedValue));
 
       debounce(() => {
-        onMaxChange(String(committedValue));
+        onChange({
+          target: {
+            name: 'maxPrice',
+            value: String(committedValue),
+          },
+        } as React.ChangeEvent<HTMLInputElement>);
       });
     }
   };
@@ -199,11 +218,6 @@ const PriceFilter = ({
             onBlur={() => {
               commitMinimumValue(minimumDraft);
             }}
-            onKeyDown={(event) => {
-              if (event.key === 'Enter') {
-                commitMinimumValue(minimumDraft);
-              }
-            }}
             aria-label="Indtast minimum pris"
           />
         </div>
@@ -224,11 +238,6 @@ const PriceFilter = ({
             }}
             onBlur={() => {
               commitMaximumValue(maximumDraft);
-            }}
-            onKeyDown={(event) => {
-              if (event.key === 'Enter') {
-                commitMaximumValue(maximumDraft);
-              }
             }}
             aria-label="Indtast maksimum pris"
           />

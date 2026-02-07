@@ -11,7 +11,7 @@ const ParamsPage = () => {
     maxPrice: '',
   };
 
-  const { values, setValue, toggleValue } =
+  const { values, toggleValue, setEventValue } =
     useSearchParamsState(initialFilters);
 
   return (
@@ -69,15 +69,9 @@ const ParamsPage = () => {
       </ul>
 
       <PriceFilter
-        key={`${values.minPrice}-${values.maxPrice}`}
         minPrice={values.minPrice}
         maxPrice={values.maxPrice}
-        onMinChange={(value) => {
-          setValue('minPrice', value);
-        }}
-        onMaxChange={(value) => {
-          setValue('maxPrice', value);
-        }}
+        onChange={setEventValue}
         min={0}
         max={10000}
       />
