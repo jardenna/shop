@@ -111,7 +111,7 @@ const PriceFilter = ({
       return;
     }
 
-    const isMinimumHandle = name === 'min';
+    const isMinimumHandle = name === 'minPrice';
 
     const committedValue = clampNumberToRange(
       numericValue,
@@ -156,7 +156,7 @@ const PriceFilter = ({
 
         <input
           type="range"
-          name="min"
+          name="minPrice"
           id="min"
           min={min}
           max={max}
@@ -173,7 +173,7 @@ const PriceFilter = ({
 
         <input
           type="range"
-          name="max"
+          name="maxPrice"
           id="max"
           min={min}
           max={max}
