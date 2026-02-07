@@ -75,7 +75,13 @@ const ReviewsForm = ({
         FallbackComponent={ErrorBoundaryFallback}
         onReset={onReset}
       >
-        <form onSubmit={onSubmit} className="review-form">
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+            onSubmit();
+          }}
+          className="review-form"
+        >
           <FieldSet legendText={language.rateProduct}>
             <RadioButtonList
               name="rating"
