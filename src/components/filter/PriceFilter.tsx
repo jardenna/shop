@@ -56,50 +56,63 @@ const PriceFilter = ({
     String(clampNumberToRange(Number(maxPrice || max), min, max)),
   );
 
-  const commitMinimumValue = (rawValue: string) => {
+  const commitRangeValue = (
+    rawValue: string,
+    currentValue: number,
+    lowerBound: number,
+    upperBound: number,
+    setValue: (value: number) => void,
+    setDraft: (value: string) => void,
+    outputName: 'minPrice' | 'maxPrice',
+  ) => {
     const parsedValue = parseFiniteNumberOrNull(rawValue);
 
     if (parsedValue === null) {
-      setMinimumDraft(String(minimumValue));
+      setDraft(String(currentValue));
       return;
     }
 
-    const committedValue = clampNumberToRange(parsedValue, min, maximumValue);
+    const committedValue = clampNumberToRange(
+      parsedValue,
+      lowerBound,
+      upperBound,
+    );
 
-    setMinimumValue(committedValue);
-    setMinimumDraft(String(committedValue));
+    setValue(committedValue);
+    setDraft(String(committedValue));
 
     debounce(() => {
       onChange({
         target: {
-          name: 'minPrice',
+          name: outputName,
           value: String(committedValue),
         },
       } as ChangeInputType);
     });
   };
 
+  const commitMinimumValue = (rawValue: string) => {
+    commitRangeValue(
+      rawValue,
+      minimumValue,
+      min,
+      maximumValue,
+      setMinimumValue,
+      setMinimumDraft,
+      'minPrice',
+    );
+  };
+
   const commitMaximumValue = (rawValue: string) => {
-    const parsedValue = parseFiniteNumberOrNull(rawValue);
-
-    if (parsedValue === null) {
-      setMaximumDraft(String(maximumValue));
-      return;
-    }
-
-    const committedValue = clampNumberToRange(parsedValue, minimumValue, max);
-
-    setMaximumValue(committedValue);
-    setMaximumDraft(String(committedValue));
-
-    debounce(() => {
-      onChange({
-        target: {
-          name: 'maxPrice',
-          value: String(committedValue),
-        },
-      } as ChangeInputType);
-    });
+    commitRangeValue(
+      rawValue,
+      maximumValue,
+      minimumValue,
+      max,
+      setMaximumValue,
+      setMaximumDraft,
+      'maxPrice',
+    );
   };
 
   const handleRangeChange = (event: ChangeInputType) => {
