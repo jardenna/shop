@@ -64,35 +64,36 @@ const productSchema = new Schema(
 );
 
 // Custom logic for dynamic size validation
-productSchema.pre('validate', async function (next) {
-  try {
-    if (!this.subCategory) return next();
+productSchema.pre('validate', async function () {
+  const isSizeRelatedUpdate =
+    this.isNew || this.isModified('sizes') || this.isModified('subCategory');
 
-    const subCat = await SubCategory.findById(this.subCategory);
-    if (!subCat) {
-      return next(new Error('Invalid subCategory'));
-    }
+  if (!isSizeRelatedUpdate) return;
 
-    const allowedSizes = subCat.allowedSizes ?? [];
+  if (!this.subCategory) return;
 
-    if (allowedSizes.length === 0) {
-      // if no sizes are allowed, reset
-      this.sizes = [];
-      return next();
-    }
+  const subCat = await SubCategory.findById(this.subCategory);
+  if (!subCat) {
+    throw new Error('Invalid subCategory');
+  }
 
-    if (!this.sizes || this.sizes.length === 0) {
-      return next(new Error('Sizes are required for this subCategory'));
-    }
+  const allowedSizes = subCat.allowedSizes ?? [];
 
-    const invalidSizes = this.sizes.filter((s) => !allowedSizes.includes(s));
-    if (invalidSizes.length > 0) {
-      return next(new Error(`Invalid sizes: ${invalidSizes.join(', ')}`));
-    }
+  if (allowedSizes.length === 0) {
+    this.sizes = [];
+    return;
+  }
 
-    next();
-  } catch (err) {
-    next(err);
+  if (!this.sizes || this.sizes.length === 0) {
+    throw new Error('Sizes are required for this subCategory');
+  }
+
+  const invalidSizes = this.sizes.filter(
+    (size) => !allowedSizes.includes(size),
+  );
+
+  if (invalidSizes.length > 0) {
+    throw new Error(`Invalid sizes: ${invalidSizes.join(', ')}`);
   }
 });
 
