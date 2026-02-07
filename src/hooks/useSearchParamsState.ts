@@ -23,7 +23,7 @@ const useSearchParamsState = <T extends SearchParamState>(defaults: T) => {
     ]),
   ) as T;
 
-  const setEventValue = (event: ChangeInputType) => {
+  const setValue = (event: ChangeInputType) => {
     const { name, value } = event.target;
 
     const updatedSearchParams = new URLSearchParams(searchParams.toString());
@@ -59,7 +59,7 @@ const useSearchParamsState = <T extends SearchParamState>(defaults: T) => {
     setSearchParams(updatedSearchParams);
   };
 
-  return { values, toggleValue, setEventValue };
+  return { values, toggleValue, setValue };
 };
 
 export default useSearchParamsState;
