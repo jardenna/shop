@@ -1,4 +1,5 @@
 import { useSearchParams } from 'react-router';
+import { type ChangeInputType } from '../types/types';
 
 type SearchParamState = Record<string, string | string[]>;
 
@@ -34,21 +35,22 @@ const useSearchParamsState = <T extends SearchParamState>(defaults: T) => {
     setSearchParams(updatedSearchParams);
   };
 
-  const toggleValue = (key: keyof T, value: string) => {
+  const toggleValue = (event: ChangeInputType) => {
+    const { name, value } = event.target;
     const updatedSearchParams = new URLSearchParams(searchParams.toString());
-    const current = values[key] as string[];
+    const current = values[name] as string[];
 
-    updatedSearchParams.delete(key as string);
+    updatedSearchParams.delete(name);
 
     if (!current.includes(value)) {
       [...current, value].forEach((val) => {
-        updatedSearchParams.append(key as string, val);
+        updatedSearchParams.append(name, val);
       });
     } else {
       current
         .filter((val) => val !== value)
         .forEach((val) => {
-          updatedSearchParams.append(key as string, val);
+          updatedSearchParams.append(name, val);
         });
     }
 

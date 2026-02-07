@@ -27,25 +27,26 @@ const ParamsPage = () => {
             <input
               id={value}
               type="checkbox"
+              name="brand"
+              value={value}
               checked={values.brand.includes(value)}
-              onChange={() => {
-                toggleValue('brand', value);
-              }}
+              onChange={toggleValue}
             />
             <label htmlFor={value}>{value}</label>
           </li>
         ))}
       </ul>
+
       <ul className="checkbox-list">
         {availableSizes.map((value) => (
           <li key={value} className="checkbox-item">
             <input
               id={value}
+              name="sizes"
+              value={value}
               type="checkbox"
               checked={values.sizes.includes(value)}
-              onChange={() => {
-                toggleValue('sizes', value);
-              }}
+              onChange={toggleValue}
             />
             <label htmlFor={value}>{value}</label>
           </li>
@@ -57,10 +58,10 @@ const ParamsPage = () => {
             <input
               id={value}
               type="checkbox"
+              name="colors"
+              value={value}
               checked={values.colors.includes(value)}
-              onChange={() => {
-                toggleValue('colors', value);
-              }}
+              onChange={toggleValue}
             />
             <label htmlFor={value}>{value}</label>
           </li>
