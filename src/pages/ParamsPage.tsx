@@ -1,24 +1,18 @@
 import PriceFilter from '../components/filter/PriceFilter';
 import useSearchParamsState from '../hooks/useSearchParamsState';
+import { availableBrands, availableSizes, colors } from '../utils/filters';
 
 const ParamsPage = () => {
   const initialFilters = {
-    features: ['apple'],
-    sizes: [],
-    colors: [],
-    brand: [],
+    sizes: [] as string[],
+    colors: [] as string[],
+    brand: [] as string[],
     minPrice: '',
     maxPrice: '',
   };
 
   const { values, setValue, toggleValue } =
     useSearchParamsState(initialFilters);
-
-  const checkboxItems = [
-    { label: 'banana', value: 'banana' },
-    { label: 'orange', value: 'orange' },
-    { label: 'apple', value: 'apple' },
-  ];
 
   return (
     <form
@@ -27,19 +21,51 @@ const ParamsPage = () => {
         console.log(values);
       }}
     >
-      {checkboxItems.map(({ label, value }) => (
-        <div key={value}>
-          <input
-            id={value}
-            type="checkbox"
-            checked={values.features.includes(value)}
-            onChange={() => {
-              toggleValue('features', value);
-            }}
-          />
-          <label htmlFor={value}>{label}</label>
-        </div>
-      ))}
+      <ul className="checkbox-list">
+        {availableBrands.map((value) => (
+          <li key={value} className="checkbox-item">
+            <input
+              id={value}
+              type="checkbox"
+              checked={values.brand.includes(value)}
+              onChange={() => {
+                toggleValue('brand', value);
+              }}
+            />
+            <label htmlFor={value}>{value}</label>
+          </li>
+        ))}
+      </ul>
+      <ul className="checkbox-list">
+        {availableSizes.map((value) => (
+          <li key={value} className="checkbox-item">
+            <input
+              id={value}
+              type="checkbox"
+              checked={values.sizes.includes(value)}
+              onChange={() => {
+                toggleValue('sizes', value);
+              }}
+            />
+            <label htmlFor={value}>{value}</label>
+          </li>
+        ))}
+      </ul>
+      <ul className="checkbox-list">
+        {colors.map((value) => (
+          <li key={value} className="checkbox-item">
+            <input
+              id={value}
+              type="checkbox"
+              checked={values.colors.includes(value)}
+              onChange={() => {
+                toggleValue('colors', value);
+              }}
+            />
+            <label htmlFor={value}>{value}</label>
+          </li>
+        ))}
+      </ul>
 
       <PriceFilter
         key={`${values.minPrice}-${values.maxPrice}`}
