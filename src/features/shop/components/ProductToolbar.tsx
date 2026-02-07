@@ -6,7 +6,7 @@ import LiveAnnouncement, {
 } from '../../../components/LiveAnnouncement';
 import FilterPanel, { FilterPanelProps } from './FilterPanel';
 
-type ProductToolbar = FilterPanelProps &
+type ProductToolbarProps = FilterPanelProps &
   DisplayControlsProps &
   LiveAnnouncementProps & {
     language: Record<string, string>;
@@ -31,7 +31,7 @@ const ProductToolbar = ({
   onReset,
   ariaLiveText,
   language,
-}: ProductToolbar) => (
+}: ProductToolbarProps) => (
   <section className="product-toolbar">
     <DisplayControls
       onSetDisplay={onSetDisplay}
