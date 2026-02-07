@@ -1,4 +1,5 @@
 import PriceFilter from '../components/filter/PriceFilter';
+import Form from '../components/form/Form';
 import useSearchParamsState from '../hooks/useSearchParamsState';
 import { availableBrands, availableSizes, colors } from '../utils/filters';
 
@@ -15,9 +16,9 @@ const ParamsPage = () => {
     useSearchParamsState(initialFilters);
 
   return (
-    <form
-      onSubmit={(event) => {
-        event.preventDefault();
+    <Form
+      submitBtnLabel="Search"
+      onSubmit={() => {
         console.log(values);
       }}
     >
@@ -75,9 +76,7 @@ const ParamsPage = () => {
         min={0}
         max={10000}
       />
-
-      <button type="submit">Search</button>
-    </form>
+    </Form>
   );
 };
 

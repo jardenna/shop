@@ -3,7 +3,6 @@ import type {
   BlurEventType,
   ChangeInputType,
   ChangeTextAreaType,
-  FormEventType,
 } from '../types/types';
 import { allowedExtensions, maxFileSize } from '../utils/utils';
 
@@ -224,8 +223,7 @@ function useFormValidation<T extends KeyValuePair>({
     }
   };
 
-  const onSubmit = (event: FormEventType) => {
-    event.preventDefault();
+  const onSubmit = () => {
     const validationErrors = validate ? validate(values) : {};
     const formHasNoErrors = !Object.keys(validationErrors).length;
     if (isLoading) {

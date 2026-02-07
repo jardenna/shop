@@ -1,9 +1,8 @@
 import { ReactElement } from 'react';
 import useLanguage from '../../features/language/useLanguage';
-import { BtnType, IconName } from '../../types/enums';
 import type { InputChangeHandler } from '../../types/types';
+import Form from '../form/Form';
 import Input from '../formElements/Input';
-import IconBtn from '../IconBtn';
 
 export type BaseEditTableInput = {
   cellContent: string;
@@ -32,11 +31,12 @@ const EditTableInput = ({
   const { language } = useLanguage();
 
   return (
-    <form
-      onSubmit={(event) => {
-        event.preventDefault();
+    <Form
+      onSubmit={() => {
         onSave();
       }}
+      onCancel={onCancel}
+      submitBtnLabel={language.save}
     >
       <div className="edit-controls">
         {!isAlterntiveInput ? (
@@ -52,20 +52,8 @@ const EditTableInput = ({
         ) : (
           alternativeInput
         )}
-        <IconBtn
-          onClick={onCancel}
-          iconName={IconName.Close}
-          ariaLabel={language.cancel}
-          size="12"
-        />
-        <IconBtn
-          iconName={IconName.Check}
-          ariaLabel={language.save}
-          size="16"
-          btnType={BtnType.Submit}
-        />
       </div>
-    </form>
+    </Form>
   );
 };
 
