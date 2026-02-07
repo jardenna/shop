@@ -10,7 +10,7 @@ interface PriceFilterProps {
   max?: number;
   min?: number;
   step?: number;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (event: ChangeInputType) => void;
 }
 
 const clampNumberToRange = (
@@ -75,7 +75,7 @@ const PriceFilter = ({
           name: 'minPrice',
           value: String(committedValue),
         },
-      } as React.ChangeEvent<HTMLInputElement>);
+      } as ChangeInputType);
     });
   };
 
@@ -98,50 +98,43 @@ const PriceFilter = ({
           name: 'maxPrice',
           value: String(committedValue),
         },
-      } as React.ChangeEvent<HTMLInputElement>);
+      } as ChangeInputType);
     });
   };
 
   const handleRangeChange = (event: ChangeInputType) => {
-    const inputName = event.target.name;
-    const inputValue = Number(event.target.value);
+    const { name, value } = event.target;
 
-    if (!Number.isFinite(inputValue)) {
+    const numericValue = Number(value);
+
+    if (!Number.isFinite(numericValue)) {
       return;
     }
 
-    if (inputName === 'min') {
-      const committedValue = clampNumberToRange(inputValue, min, maximumValue);
+    const isMinimumHandle = name === 'min';
 
+    const committedValue = clampNumberToRange(
+      numericValue,
+      isMinimumHandle ? min : minimumValue,
+      isMinimumHandle ? maximumValue : max,
+    );
+
+    if (isMinimumHandle) {
       setMinimumValue(committedValue);
       setMinimumDraft(String(committedValue));
-
-      debounce(() => {
-        onChange({
-          target: {
-            name: 'minPrice',
-            value: String(committedValue),
-          },
-        } as React.ChangeEvent<HTMLInputElement>);
-      });
-      return;
-    }
-
-    if (inputName === 'max') {
-      const committedValue = clampNumberToRange(inputValue, minimumValue, max);
-
+    } else {
       setMaximumValue(committedValue);
       setMaximumDraft(String(committedValue));
-
-      debounce(() => {
-        onChange({
-          target: {
-            name: 'maxPrice',
-            value: String(committedValue),
-          },
-        } as React.ChangeEvent<HTMLInputElement>);
-      });
     }
+
+    debounce(() => {
+      onChange({
+        target: {
+          name: isMinimumHandle ? 'minimumPrice' : 'maximumPrice',
+          value: String(committedValue),
+        },
+      } as ChangeInputType);
+    });
   };
 
   const leftPercent = ((minimumValue - min) / (max - min)) * 100;
