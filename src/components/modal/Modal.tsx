@@ -5,7 +5,6 @@ import useLanguage from '../../features/language/useLanguage';
 import { selectModalId } from '../../features/modalSlice';
 import useClickOutside from '../../hooks/useClickOutside';
 import { BtnType, BtnVariant, PopupRole, SizeVariant } from '../../types/enums';
-import type { FormEventType } from '../../types/types';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import Overlay from '../overlay/Overlay';
 import Portal from '../Portal';
@@ -27,7 +26,7 @@ export type PrimaryActionBtnProps = {
   showBtnLoader?: boolean;
   variant?: BtnVariant;
   onClick?: () => void;
-  onSubmit?: (event: FormEventType) => void;
+  onSubmit?: () => void;
 };
 
 export type SecondaryActionBtnProps = {

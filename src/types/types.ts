@@ -1,16 +1,9 @@
-import {
-  ChangeEvent,
-  FocusEvent,
-  FormEvent,
-  MouseEvent,
-  RefObject,
-} from 'react';
+import { ChangeEvent, FocusEvent, MouseEvent, RefObject } from 'react';
 
 export type ButtonEventType = MouseEvent<HTMLButtonElement>;
 export type ChangeInputType = ChangeEvent<HTMLInputElement>;
 export type ChangeTextAreaType = ChangeEvent<HTMLTextAreaElement>;
 export type BlurEventType = { target: { name: string } };
-export type FormEventType = FormEvent<HTMLFormElement>;
 export type FocusEventType = FocusEvent<HTMLElement>;
 export type RefElementType = RefObject<HTMLElement | null>;
 export type RefInputType = RefObject<HTMLInputElement | null>;

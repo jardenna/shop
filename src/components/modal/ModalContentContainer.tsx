@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import type { FormEventType } from '../../types/types';
 
 const ModalContentContainer = ({
   isForm,
@@ -8,7 +7,7 @@ const ModalContentContainer = ({
 }: {
   children: ReactNode;
   isForm: boolean;
-  onSubmit?: (event: FormEventType) => void;
+  onSubmit?: () => void;
 }) =>
   isForm ? (
     <form noValidate className="modal-form modal-content" onSubmit={onSubmit}>
