@@ -127,7 +127,7 @@ const PriceFilter = ({
       return;
     }
 
-    if (inputName === 'maxPrice') {
+    if (inputName === 'max') {
       const committedValue = clampNumberToRange(inputValue, minimumValue, max);
 
       setMaximumValue(committedValue);
@@ -180,7 +180,7 @@ const PriceFilter = ({
 
         <input
           type="range"
-          name="maxPrice"
+          name="max"
           id="max"
           min={min}
           max={max}
