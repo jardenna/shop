@@ -1,6 +1,6 @@
+import { SyntheticEvent } from 'react';
 import type {
   BlurEventType,
-  ChangeInputType,
   InputChangeHandler,
   InputType,
   RefInputType,
@@ -61,11 +61,16 @@ const Input = ({
   disabled,
   inputInfo,
 }: InputProps) => {
-  const handleOnInput = (event: ChangeInputType) => {
-    const inputValue = event.target.value;
-    if (maxLength && inputValue.length > maxLength) {
-      // eslint-disable-next-line no-param-reassign
-      event.target.value = inputValue.slice(0, maxLength);
+  const handleOnInput = (event: SyntheticEvent<HTMLInputElement>) => {
+    if (!maxLength) {
+      return;
+    }
+
+    const inputElement = event.currentTarget;
+    const inputValue = inputElement.value;
+
+    if (inputValue.length > maxLength) {
+      inputElement.value = inputValue.slice(0, maxLength);
     }
   };
 
