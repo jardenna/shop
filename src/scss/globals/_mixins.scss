@@ -68,3 +68,24 @@ $animation-timing-function: ease-in-out;
 
   --grid-size: #{$size};
 }
+
+@mixin triangle($size: 6px, $color: $color-white, $dir: down) {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+
+  @if $dir == down {
+    border-width: $size $size 0 $size;
+    border-color: $color transparent transparent transparent;
+  } @else if $dir == up {
+    border-width: 0 $size $size;
+    border-color: transparent transparent $color;
+  } @else if $dir == left {
+    border-width: $size $size $size 0;
+    border-color: transparent transparent transparent $color;
+  } @else if $dir == right {
+    border-width: $size 0 $size $size;
+    border-color: transparent $color transparent transparent;
+  }
+}
