@@ -1,6 +1,6 @@
 import { ChangeInputType } from '../../../types/types';
 
-export type RangeInputProps = {
+export type RangeSliderInputProps = {
   id: string;
   max: number;
   min: number;
@@ -10,7 +10,7 @@ export type RangeInputProps = {
   onChange: (event: ChangeInputType) => void;
 };
 
-const RangeInput = ({
+const RangeSliderInput = ({
   max,
   min,
   value,
@@ -18,7 +18,7 @@ const RangeInput = ({
   name,
   id,
   step,
-}: RangeInputProps) => (
+}: RangeSliderInputProps) => (
   <input
     type="range"
     name={name}
@@ -33,4 +33,4 @@ const RangeInput = ({
   />
 );
 
-export default RangeInput;
+export default RangeSliderInput;

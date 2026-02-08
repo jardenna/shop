@@ -1,7 +1,7 @@
 import { useId } from 'react';
 import type { ChangeInputType } from '../../../types/types';
 import './_range.scss';
-import RangeInput from './RangeInput';
+import RangeSliderInput from './RangeSliderInput';
 import useRangeController from './useRangeController';
 
 interface DualRangeProps {
@@ -47,7 +47,7 @@ const DualRange = ({
             width: `${widthPercent}%`,
           }}
         />
-        <RangeInput
+        <RangeSliderInput
           min={min}
           max={max}
           value={minimumValue}
@@ -56,7 +56,7 @@ const DualRange = ({
           id="min"
           step={step}
         />
-        <RangeInput
+        <RangeSliderInput
           min={min}
           max={max}
           value={maximumValue}
