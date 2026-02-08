@@ -2,6 +2,7 @@ import { SyntheticEvent } from 'react';
 import type {
   BlurEventType,
   InputChangeHandler,
+  InputMode,
   InputType,
   RefInputType,
 } from '../../types/types';
@@ -22,6 +23,7 @@ export type InputProps = {
   errorText?: string;
   inputHasNoLabel?: boolean;
   inputInfo?: string;
+  inputMode?: InputMode;
   inputSuffix?: string;
   max?: number;
   maxLength?: number;
@@ -60,6 +62,7 @@ const Input = ({
   onFocus,
   disabled,
   inputInfo,
+  inputMode,
 }: InputProps) => {
   const handleOnInput = (event: SyntheticEvent<HTMLInputElement>) => {
     if (!maxLength) {
@@ -109,6 +112,7 @@ const Input = ({
           onInput={handleOnInput}
           onFocus={onFocus}
           disabled={disabled}
+          inputMode={inputMode}
         />
         {inputSuffix && <span className="input-suffix">{inputSuffix}</span>}
       </div>

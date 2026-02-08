@@ -48,6 +48,7 @@ const NumberStep = ({
         id={id}
         labelText={labelText}
         inputHasNoLabel
+        inputMode="numeric"
         name={name}
         min={min}
         max={max}

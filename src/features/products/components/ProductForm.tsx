@@ -363,6 +363,7 @@ const ProductForm = ({
                 onChange={onChange}
                 required
                 inputSuffix={currencyText}
+                inputMode="numeric"
               />
               <Input
                 type="number"
@@ -372,6 +373,7 @@ const ProductForm = ({
                 labelText={language.discount}
                 onChange={onChange}
                 inputSuffix="%"
+                inputMode="numeric"
               />
             </div>
             <div className="grid grid-two-col">
@@ -414,6 +416,7 @@ const ProductForm = ({
                 name="quantity"
                 labelText={language.addToStock}
                 onChange={onChange}
+                inputMode="numeric"
               />
               {selectedProduct && (
                 <LabelValueGrid text={language.productsInStock}>

@@ -58,6 +58,7 @@ const NotifyMeForm = ({
           type="email"
           autoFocus={!sizesIsRequered}
           errorText={language[errors.email]}
+          inputMode="email"
         />
       </FieldSet>
     </div>
