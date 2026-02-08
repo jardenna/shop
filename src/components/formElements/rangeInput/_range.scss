@@ -3,12 +3,13 @@
 $thumb-size: 24px;
 $thumb-border: 3px;
 $focus-ring: 0 0 0 3px rgb(0 123 255 / 25%);
+$color-range-primary: $color-blue-30;
 
 @mixin thumb-base {
   width: $thumb-size;
   height: $thumb-size;
   background-color: $color-white;
-  border: $thumb-border solid $color-blue-30;
+  border: $thumb-border solid $color-range-primary;
   border-radius: 50%;
   cursor: grab;
   pointer-events: auto;
@@ -23,12 +24,12 @@ $focus-ring: 0 0 0 3px rgb(0 123 255 / 25%);
 
 @mixin thumb-active {
   cursor: grabbing;
-  background-color: $color-blue-30;
+  background-color: $color-gray-20;
   transform: scale(1.1);
 }
 
 @mixin thumb-focus {
-  outline: 2px solid $color-blue-30;
+  outline: 2px solid $color-range-primary;
   outline-offset: 2px;
   box-shadow: $focus-ring;
 }
@@ -87,7 +88,7 @@ $focus-ring: 0 0 0 3px rgb(0 123 255 / 25%);
 }
 
 .slider-track-filled {
-  background-color: $color-blue-30;
+  background-color: $color-range-primary;
 }
 
 .range-slider-input {
