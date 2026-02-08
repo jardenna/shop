@@ -65,84 +65,84 @@ $color-range-primary: $color-blue-30;
       transform: translateX(-50%) translateX(0.3rem);
     }
   }
-}
 
-.dual-range-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  margin-block: 20px;
-}
-
-.slider-track,
-.slider-track-filled {
-  position: absolute;
-  height: 8px;
-  border-radius: 4px;
-  pointer-events: none;
-}
-
-.slider-track {
-  width: 100%;
-  background-color: $color-gray-20;
-}
-
-.slider-track-filled {
-  background-color: $color-range-primary;
-}
-
-.range-slider-input {
-  position: absolute;
-  width: 100%;
-  appearance: none;
-  background-color: transparent;
-  pointer-events: none;
-  outline: none;
-  margin: 0;
-  padding: 0;
-
-  &::-webkit-slider-track,
-  &::-moz-range-track {
-    background-color: transparent;
-    border: none;
-    height: 0;
+  .dual-range-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-block: 20px;
   }
 
-  &::-webkit-slider-thumb {
+  .slider-track,
+  .slider-track-filled {
+    position: absolute;
+    height: 8px;
+    border-radius: 4px;
+    pointer-events: none;
+  }
+
+  .slider-track {
+    width: 100%;
+    background-color: $color-gray-20;
+  }
+
+  .slider-track-filled {
+    background-color: $color-range-primary;
+  }
+
+  .range-slider-input {
+    position: absolute;
+    width: 100%;
     appearance: none;
+    background-color: transparent;
+    pointer-events: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
 
-    @include thumb-base;
-  }
+    &::-webkit-slider-track,
+    &::-moz-range-track {
+      background-color: transparent;
+      border: none;
+      height: 0;
+    }
 
-  &::-moz-range-thumb {
-    @include thumb-base;
-  }
-
-  &:focus-visible {
     &::-webkit-slider-thumb {
-      @include thumb-focus;
+      appearance: none;
+
+      @include thumb-base;
     }
 
     &::-moz-range-thumb {
-      @include thumb-focus;
-    }
-  }
-
-  &:active {
-    &::-webkit-slider-thumb {
-      @include thumb-active;
+      @include thumb-base;
     }
 
-    &::-moz-range-thumb {
-      @include thumb-active;
+    &:focus-visible {
+      &::-webkit-slider-thumb {
+        @include thumb-focus;
+      }
+
+      &::-moz-range-thumb {
+        @include thumb-focus;
+      }
     }
-  }
 
-  &::-webkit-slider-thumb:hover {
-    @include thumb-hover;
-  }
+    &:active {
+      &::-webkit-slider-thumb {
+        @include thumb-active;
+      }
 
-  &::-moz-range-thumb:hover {
-    @include thumb-hover;
+      &::-moz-range-thumb {
+        @include thumb-active;
+      }
+    }
+
+    &::-webkit-slider-thumb:hover {
+      @include thumb-hover;
+    }
+
+    &::-moz-range-thumb:hover {
+      @include thumb-hover;
+    }
   }
 }
