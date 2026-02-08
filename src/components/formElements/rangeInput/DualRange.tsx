@@ -1,6 +1,7 @@
 import { useId } from 'react';
 import type { ChangeInputType } from '../../../types/types';
 import './_range.scss';
+import RangeNumberInput from './RangeNumberInput';
 import RangeSliderInput from './RangeSliderInput';
 import useRangeController from './useRangeController';
 
@@ -71,44 +72,38 @@ const DualRange = ({
       </output>
       <div className="price-inputs">
         <div className="price-input-group">
-          <label htmlFor="minPrice">Min pris</label>
-          <input
+          <RangeNumberInput
             id="minPrice"
             name="minPrice"
-            type="number"
             value={minimumDraft}
             min={min}
             max={max}
             step={step}
-            inputMode="numeric"
             onChange={(event) => {
               setMinimumDraft(event.target.value);
             }}
             onBlur={() => {
               commitMinimumValue(minimumDraft);
             }}
-            aria-label="Indtast minimum pris"
+            labelText="Minimum pris"
           />
         </div>
 
         <div className="price-input-group">
-          <label htmlFor="maxPrice">Max pris</label>
-          <input
+          <RangeNumberInput
             id="maxPrice"
             name="maxPrice"
-            type="number"
             value={maximumDraft}
             min={min}
             max={max}
             step={step}
-            inputMode="numeric"
             onChange={(event) => {
               setMaximumDraft(event.target.value);
             }}
             onBlur={() => {
               commitMaximumValue(maximumDraft);
             }}
-            aria-label="Indtast maksimum pris"
+            labelText="Maximum pris"
           />
         </div>
       </div>

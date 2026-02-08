@@ -7,7 +7,7 @@ type RangeNumberInputProps = {
   min: number;
   name: string;
   step: number;
-  value: number;
+  value: string;
   onBlur: () => void;
   onChange: (event: ChangeInputType) => void;
 };
@@ -23,7 +23,7 @@ const RangeNumberInput = ({
   step,
   labelText,
 }: RangeNumberInputProps) => (
-  <div className="price-input-group">
+  <>
     <label htmlFor={id}>{labelText}</label>
     <input
       id={id}
@@ -37,7 +37,7 @@ const RangeNumberInput = ({
       onChange={onChange}
       onBlur={onBlur}
     />
-  </div>
+  </>
 );
 
 export default RangeNumberInput;
