@@ -1,6 +1,7 @@
 import { useId } from 'react';
 import type { ChangeInputType } from '../../../types/types';
 import './_range.scss';
+import RangeInput from './RangeInput';
 import useRangeController from './useRangeController';
 
 interface RangeProps {
@@ -36,9 +37,7 @@ const Range = ({
     setMinimumDraft,
   } = useRangeController({ minPrice, maxPrice, onChange });
   return (
-    <fieldset className="price-filter" aria-describedby={describedById}>
-      <legend>Pris</legend>
-
+    <>
       <div className="price-slider-container">
         <div className="slider-track-bg" />
         <div
@@ -48,46 +47,28 @@ const Range = ({
             width: `${widthPercent}%`,
           }}
         />
-
-        <input
-          type="range"
-          name="minPrice"
-          id="min"
+        <RangeInput
           min={min}
           max={max}
-          step={step}
           value={minimumValue}
           onChange={onRangeChange}
-          className="price-slider"
-          aria-label="Minimum pris"
-          aria-valuemin={min}
-          aria-valuemax={max}
-          aria-valuenow={minimumValue}
-          aria-valuetext={`${minimumValue} kroner`}
+          name="minPrice"
+          id="min"
+          step={step}
         />
-
-        <input
-          type="range"
-          name="maxPrice"
-          id="max"
+        <RangeInput
           min={min}
           max={max}
-          step={step}
           value={maximumValue}
           onChange={onRangeChange}
-          className="price-slider"
-          aria-label="Maksimum pris"
-          aria-valuemin={min}
-          aria-valuemax={max}
-          aria-valuenow={maximumValue}
-          aria-valuetext={`${maximumValue} kroner`}
+          name="maxPrice"
+          id="max"
+          step={step}
         />
       </div>
-
       <output id={describedById} className="price-display" aria-live="polite">
         {minimumValue} kr - {maximumValue} kr
       </output>
-
       <div className="price-inputs">
         <div className="price-input-group">
           <label htmlFor="minPrice">Min pris</label>
@@ -131,7 +112,7 @@ const Range = ({
           />
         </div>
       </div>
-    </fieldset>
+    </>
   );
 };
 

@@ -1,11 +1,11 @@
 import { ChangeInputType } from '../../../types/types';
 
 export type RangeInputProps = {
-  ariaValuetext: string;
   id: string;
   max: number;
   min: number;
   name: string;
+  step: number;
   value: number;
   onChange: (event: ChangeInputType) => void;
 };
@@ -17,7 +17,7 @@ const RangeInput = ({
   onChange,
   name,
   id,
-  ariaValuetext,
+  step,
 }: RangeInputProps) => (
   <input
     type="range"
@@ -25,15 +25,11 @@ const RangeInput = ({
     id={id}
     min={min}
     max={max}
-    step={100}
+    step={step}
     value={value}
     onChange={onChange}
     className="range-slider"
-    aria-label="Maksimum pris"
-    aria-valuemin={min}
-    aria-valuemax={max}
-    // aria-valuenow={maximumValue}
-    aria-valuetext={ariaValuetext}
+    aria-label="Minimum pris"
   />
 );
 
