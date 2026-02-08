@@ -1,4 +1,3 @@
-import { useId } from 'react';
 import type { ChangeInputType } from '../../../types/types';
 import './_range.scss';
 import RangeNumberInput from './RangeNumberInput';
@@ -8,6 +7,7 @@ import useRangeController from './useRangeController';
 interface DualRangeProps {
   maxPrice: string;
   minPrice: string;
+  unitLabel: string;
   debounceMs?: number;
   max?: number;
   min?: number;
@@ -22,8 +22,8 @@ const DualRange = ({
   step = 100,
   min = 0,
   max = 10000,
+  unitLabel,
 }: DualRangeProps) => {
-  const describedById = useId();
   const {
     minimumDraft,
     maximumDraft,
@@ -67,8 +67,8 @@ const DualRange = ({
           step={step}
         />
       </div>
-      <output id={describedById} className="price-display" aria-live="polite">
-        {minimumValue} kr - {maximumValue} kr
+      <output className="price-display">
+        {minimumValue} {unitLabel} - {maximumValue} {unitLabel}
       </output>
       <div className="price-inputs">
         <div className="price-input-group">
