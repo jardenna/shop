@@ -38,9 +38,22 @@ const DualRange = ({
     setMinimumDraft,
   } = useRangeController({ minPrice, maxPrice, onChange });
   return (
-    <>
-      <div className="price-slider-container">
-        <div className="slider-track-bg" />
+    <div className="dual-range">
+      <output
+        className="range-label range-label-min"
+        style={{ left: `${leftPercent}%` }}
+      >
+        {minimumValue} {unitLabel}
+      </output>
+
+      <output
+        className="range-label range-label-max"
+        style={{ left: `${leftPercent + widthPercent}%` }}
+      >
+        {maximumValue} {unitLabel}
+      </output>
+      <div className="dual-range-container">
+        <div className="slider-track" />
         <div
           className="slider-track-filled"
           style={{
@@ -67,9 +80,6 @@ const DualRange = ({
           step={step}
         />
       </div>
-      <output className="price-display">
-        {minimumValue} {unitLabel} - {maximumValue} {unitLabel}
-      </output>
       <div className="price-inputs">
         <div className="price-input-group">
           <RangeNumberInput
@@ -107,7 +117,7 @@ const DualRange = ({
           />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

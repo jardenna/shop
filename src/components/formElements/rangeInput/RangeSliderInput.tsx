@@ -28,7 +28,7 @@ const RangeSliderInput = ({
     step={step}
     value={value}
     onChange={onChange}
-    className="range-slider"
+    className="range-slider-input"
     aria-label="Minimum pris"
   />
 );
