@@ -125,7 +125,7 @@ const useRangeController = ({
     debounce(() => {
       onChange({
         target: {
-          name: isMinimumHandle ? 'minimumPrice' : 'maximumPrice',
+          name: isMinimumHandle ? 'minPrice' : 'maxPrice',
           value: String(committedValue),
         },
       } as ChangeInputType);
