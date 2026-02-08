@@ -4,7 +4,7 @@ import './_range.scss';
 import RangeInput from './RangeInput';
 import useRangeController from './useRangeController';
 
-interface RangeProps {
+interface DualRangeProps {
   maxPrice: string;
   minPrice: string;
   debounceMs?: number;
@@ -14,14 +14,14 @@ interface RangeProps {
   onChange: (event: ChangeInputType) => void;
 }
 
-const Range = ({
+const DualRange = ({
   minPrice,
   maxPrice,
   onChange,
   step = 100,
   min = 0,
   max = 10000,
-}: RangeProps) => {
+}: DualRangeProps) => {
   const describedById = useId();
   const {
     minimumDraft,
@@ -116,4 +116,4 @@ const Range = ({
   );
 };
 
-export default Range;
+export default DualRange;

@@ -1,5 +1,5 @@
 import Form from '../components/form/Form';
-import Range from '../components/formElements/rangeInput/Range';
+import DualRange from '../components/formElements/rangeInput/DualRange';
 import useSearchParamsState from '../hooks/useSearchParamsState';
 import { availableBrands, availableSizes, colors } from '../utils/filters';
 
@@ -69,7 +69,7 @@ const ParamsPage = () => {
         ))}
       </ul>
 
-      <Range
+      <DualRange
         minPrice={values.minPrice}
         maxPrice={values.maxPrice}
         onChange={setValue}
