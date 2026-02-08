@@ -1,52 +1,79 @@
-$blue: #007bff;
-$blue-dark: #0056b3;
-$track-bg: #e0e0e0;
+@use '../../../scss/globals' as *;
+
 $thumb-size: 24px;
 $thumb-border: 3px;
-$shadow: 0 2px 8px rgb(0 0 0 / 20%);
-$shadow-hover: 0 4px 12px rgb(0 0 0 / 30%);
 $focus-ring: 0 0 0 3px rgb(0 123 255 / 25%);
 
 @mixin thumb-base {
   width: $thumb-size;
   height: $thumb-size;
-  background-color: #fff;
-  border: $thumb-border solid $blue;
+  background-color: $color-white;
+  border: $thumb-border solid $color-blue-30;
   border-radius: 50%;
   cursor: grab;
   pointer-events: auto;
-  box-shadow: $shadow;
+  box-shadow: $box-shadow;
   transition: all 0.2s ease;
 }
 
 @mixin thumb-hover {
-  background-color: #f8f9fa;
   transform: scale(1.2);
-  box-shadow: $shadow-hover;
+  box-shadow: $box-shadow-input;
 }
 
 @mixin thumb-active {
   cursor: grabbing;
-  background-color: $blue;
+  background-color: $color-blue-30;
   transform: scale(1.1);
 }
 
 @mixin thumb-focus {
-  outline: 3px solid $blue;
-  outline-offset: 3px;
+  outline: 2px solid $color-blue-30;
+  outline-offset: 2px;
   box-shadow: $focus-ring;
 }
 
-.price-slider-container {
+.dual-range {
   position: relative;
-  width: 100%;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  margin: 20px 0;
+  padding-block-start: 36px;
+
+  .range-label {
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
+    pointer-events: none;
+    box-shadow: $box-shadow;
+    padding: 8px;
+    border-radius: 8px;
+    background-color: $color-white;
+
+    &::after {
+      content: '';
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      @include triangle;
+    }
+
+    &.range-label-max {
+      transform: translateX(-50%) translateX(-0.6rem);
+    }
+
+    &.range-label-min {
+      transform: translateX(-50%) translateX(0.3rem);
+    }
+  }
 }
 
-.slider-track-bg,
+.dual-range-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-block: 20px;
+}
+
+.slider-track,
 .slider-track-filled {
   position: absolute;
   height: 8px;
@@ -54,17 +81,16 @@ $focus-ring: 0 0 0 3px rgb(0 123 255 / 25%);
   pointer-events: none;
 }
 
-.slider-track-bg {
+.slider-track {
   width: 100%;
-  background-color: $track-bg;
+  background-color: $color-gray-20;
 }
 
 .slider-track-filled {
-  background: linear-gradient(90deg, $blue-dark, $blue);
+  background-color: $color-blue-30;
 }
 
-.range-slider,
-.price-slider {
+.range-slider-input {
   position: absolute;
   width: 100%;
   appearance: none;
