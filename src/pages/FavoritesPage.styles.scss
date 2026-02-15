@@ -2,7 +2,7 @@
 
 .favorite-page {
   .product-card-list {
-    @include grid-template-column(rem(400px));
+    @include grid-template-column(400px);
   }
 
   .product-card-content {
