@@ -10,7 +10,7 @@ import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
 import useMediaQuery from '../hooks/useMediaQuery';
 import { ShopPath } from '../layout/nav/enums';
 import AdminHeader from './AdminHeader';
-import './aLayout.styles.scss';
+import './adminLayout.styles.scss';
 import Aside from './aside/Aside';
 
 const AdminLayout = () => {
