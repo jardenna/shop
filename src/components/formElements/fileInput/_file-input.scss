@@ -4,6 +4,21 @@
   gap: 8px;
 }
 
+.missing-img {
+  width: rem(200px);
+  height: rem(112px);
+  background-color: $color-light-gray-30;
+  display: inline-grid;
+  place-content: center;
+  border-radius: 4px;
+  margin-bottom: 12px;
+
+  svg {
+    fill: $color-gray-40;
+    stroke: $color-gray-40;
+  }
+}
+
 .gray-scaled {
   display: flex;
   justify-content: center;

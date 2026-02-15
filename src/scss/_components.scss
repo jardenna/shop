@@ -35,21 +35,6 @@
   justify-content: flex-end;
 }
 
-.missing-img {
-  width: rem(200px);
-  height: rem(112px);
-  background-color: $color-light-gray-30;
-  display: inline-grid;
-  place-content: center;
-  border-radius: 4px;
-  margin-bottom: 12px;
-
-  svg {
-    fill: $color-gray-40;
-    stroke: $color-gray-40;
-  }
-}
-
 .option-group-title {
   .title {
     margin-bottom: 4px;
@@ -67,35 +52,6 @@
   }
 }
 
-.badge {
-  width: fit-content;
-  border-radius: 50px;
-  background-color: $color-badge-default;
-  color: $color-light-gray-30;
-  display: flex;
-  padding: 2px 12px;
-  align-items: center;
-  gap: 8px;
-
-  .btn-ghost {
-    color: currentcolor;
-  }
-
-  &.scheduled {
-    background-color: $color-badge-scheduled;
-  }
-
-  &.inactive {
-    background-color: $color-badge-inactive;
-  }
-
-  &.discount {
-    background-color: $color-dust-red-30;
-    padding-block: 8px;
-    border-radius: 4px;
-  }
-}
-
 .badge-container {
   display: flex;
   gap: 8px;
@@ -106,50 +62,5 @@
 
   .control-item {
     @extend %stacked-item-border;
-  }
-}
-
-.page-card {
-  max-height: 78lvh;
-  overflow: auto;
-  overflow-x: clip;
-  background-color: $color-white;
-  border-radius: 4px;
-  box-shadow: $box-shadow;
-  width: 100%;
-  padding: 24px;
-
-  @include max-size($medium) {
-    max-height: 100%;
-    padding: 12px;
-  }
-}
-
-.label-value-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-
-  .text {
-    display: flex;
-    justify-content: flex-end;
-  }
-}
-
-.favorite-page {
-  .product-card-list {
-    @include grid-template-column(rem(400px));
-  }
-
-  .product-card-content {
-    padding-inline: 12px;
-  }
-
-  .card-img-container {
-    aspect-ratio: 4 / 5;
-  }
-
-  .product-card-info {
-    gap: 12px;
-    margin-bottom: 12px;
   }
 }

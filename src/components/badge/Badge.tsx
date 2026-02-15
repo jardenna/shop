@@ -1,3 +1,5 @@
+import './_badge.scss';
+
 type BadgeProps = {
   badgeText: string;
   className?: string;
