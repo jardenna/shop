@@ -4,20 +4,6 @@ form {
   width: 100%;
 }
 
-.form-container {
-  display: flex;
-  gap: 20px;
-
-  @include max-size($medium) {
-    flex-direction: column;
-    gap: 0;
-
-    .form-card {
-      padding: 12px;
-    }
-  }
-}
-
 .form-card {
   background-color: $color-white;
   border-radius: 4px;
