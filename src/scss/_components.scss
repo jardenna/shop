@@ -57,12 +57,6 @@
   }
 }
 
-.price-inputs {
-  @include max-size($large) {
-    flex-direction: column;
-  }
-}
-
 .product-img-list {
   display: flex;
   gap: 4px;
