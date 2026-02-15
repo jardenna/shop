@@ -3,7 +3,7 @@ import type { UserProfileResponse } from '../../app/api/apiTypes/shopApiTypes';
 import DateDisplay from '../../components/datePicker/DateDisplay';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import Icon from '../../components/icons/Icon';
-import LabelValueGrid from '../../components/LabelValueGrid';
+import LabelValueGrid from '../../components/labelValueGrid/LabelValueGrid';
 import Popup from '../../components/popup/Popup';
 import useLanguage from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';

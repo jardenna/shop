@@ -13,7 +13,7 @@ import ControlGroupList from '../../../components/formElements/controlGroup/Cont
 import Input from '../../../components/formElements/Input';
 import Textarea from '../../../components/formElements/Textarea';
 import ToggleSwitch from '../../../components/formElements/toggleSwitch/ToggleSwitch';
-import LabelValueGrid from '../../../components/LabelValueGrid';
+import LabelValueGrid from '../../../components/labelValueGrid/LabelValueGrid';
 import useMessagePopup from '../../../components/messagePopup/useMessagePopup';
 import ColorOptions from '../../../components/selectbox/ColorOptions';
 import Selectbox from '../../../components/selectbox/Selectbox';
@@ -38,6 +38,7 @@ import {
 } from '../productApiSlice';
 import FormCard from './FormCard';
 import ImageUpload from './ImageUpload';
+import './productForm.styles.scss';
 
 type ProductFormProps = {
   allowedSizes: string[];
@@ -242,8 +243,8 @@ const ProductForm = ({
       onCancel={handleGoback}
       isLoading={isLoading || isCreateLoading}
     >
-      <div className="form-container">
-        <div className="flex-2">
+      <div className="product-form-container">
+        <div className="product-form-left-column">
           <FormCard legendText={language.category} onReset={onReset}>
             <Selectbox
               errorText={language[errors.subCategory]}
@@ -294,7 +295,7 @@ const ProductForm = ({
               onChange={onChangeTextArea}
               required
             />
-            <div className="flex">
+            <div className="product-form-2-columns">
               <Input
                 value={values.brand}
                 id="brand"
@@ -316,7 +317,7 @@ const ProductForm = ({
             </div>
           </FormCard>
         </div>
-        <div className="flex-1">
+        <div className="product-form-right-column">
           <FormCard legendText={language.productVariants} onReset={onReset}>
             <Selectbox
               id="colors"
@@ -352,7 +353,7 @@ const ProductForm = ({
             />
           </FormCard>
           <FormCard legendText={language.pricing} onReset={onReset}>
-            <div>
+            <div className="product-form-2-columns">
               <Input
                 type="number"
                 value={values.price || ''}
@@ -376,7 +377,7 @@ const ProductForm = ({
                 inputMode="numeric"
               />
             </div>
-            <div className="grid grid-two-col">
+            <div className="product-form-2-columns">
               <ToggleSwitch
                 id="show-price"
                 checked={showPrice}

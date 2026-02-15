@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import './_label-value-grid.scss';
 
 type LabelValueGridProps = {
   children: ReactNode;

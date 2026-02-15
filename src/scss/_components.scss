@@ -57,13 +57,3 @@
     @extend %stacked-item-border;
   }
 }
-
-.label-value-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-
-  .text {
-    display: flex;
-    justify-content: flex-end;
-  }
-}

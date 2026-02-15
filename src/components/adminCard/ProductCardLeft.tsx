@@ -4,7 +4,7 @@ import useLanguage from '../../features/language/useLanguage';
 import CardContent from '../card/CardContent';
 import MissingImage from '../formElements/fileInput/MissingImage';
 import ImgList from '../ImgList';
-import LabelValueGrid from '../LabelValueGrid';
+import LabelValueGrid from '../labelValueGrid/LabelValueGrid';
 import AdminCardHeading from './AdminCardHeading';
 
 type ProductCardLeftProps = {
