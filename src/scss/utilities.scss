@@ -90,14 +90,6 @@
   text-decoration-line: line-through;
 }
 
-.grid {
-  display: grid;
-
-  &.grid-two-col {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 .position-relative {
   position: relative;
 }
