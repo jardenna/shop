@@ -25,26 +25,6 @@ const usePopup = ({ callback, placement }: usePopupProps) => {
   }, [buttonRef]);
 
   useEffect(() => {
-    const popupElement = popupRef.current;
-
-    if (!popupElement) {
-      return;
-    }
-
-    if (popupIsOpen) {
-      const openTimerId = window.setTimeout(() => {
-        popupElement.classList.add('popup-open');
-      }, 40);
-
-      return () => {
-        window.clearTimeout(openTimerId);
-      };
-    }
-
-    popupElement.classList.remove('popup-open');
-  }, [popupIsOpen]);
-
-  useEffect(() => {
     if (popupIsOpen && buttonRef.current && popupRef.current) {
       popperInstanceRef.current = createPopper(
         buttonRef.current,
