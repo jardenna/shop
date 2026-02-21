@@ -1,6 +1,6 @@
 import type { Status } from '../../app/api/apiTypes/adminApiTypes';
-import ProductPrice from '../../features/currency/components/productPrice/ProductPrice';
 import useLanguage from '../../features/language/useLanguage';
+import ProductPrice from '../../features/shop/components/productPrice/ProductPrice';
 import CardContent from '../card/CardContent';
 import MissingImage from '../formElements/fileInput/MissingImage';
 import ImgList from '../ImgList';

@@ -1,6 +1,6 @@
 import type { ProductPreview } from '../../../app/api/apiTypes/shopApiTypes';
-import ProductPrice from '../../currency/components/productPrice/ProductPrice';
 import ColorList from './productLists/ColorList';
+import ProductPrice from './productPrice/ProductPrice';
 
 type ProductCardGridContentProps = {
   product: ProductPreview;
