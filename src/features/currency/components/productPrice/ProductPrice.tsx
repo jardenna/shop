@@ -1,7 +1,7 @@
-import VisuallyHidden from '../../../components/VisuallyHidden';
-import { discountCalculation } from '../../../utils/utils';
-import useLanguage from '../../language/useLanguage';
-import useCurrency from '../useCurrency';
+import VisuallyHidden from '../../../../components/VisuallyHidden';
+import { discountCalculation } from '../../../../utils/utils';
+import useLanguage from '../../../language/useLanguage';
+import useCurrency from '../../useCurrency';
 import './_product-price.scss';
 
 type ProductPriceProps = {
@@ -9,7 +9,7 @@ type ProductPriceProps = {
   discountPrice?: number;
 };
 
-const Price = ({ price, discountPrice }: ProductPriceProps) => {
+const ProductPrice = ({ price, discountPrice }: ProductPriceProps) => {
   const { language } = useLanguage();
   const discountedValue = discountPrice
     ? discountCalculation(price, discountPrice)
@@ -24,7 +24,7 @@ const Price = ({ price, discountPrice }: ProductPriceProps) => {
   const { convertedPrice: discountedPrice } = useCurrency(discountedValue);
 
   return (
-    <div className="price">
+    <div className="product-price">
       {hasDiscount ? (
         <>
           <span className="discount-price">{discountedPrice}</span>
@@ -41,4 +41,4 @@ const Price = ({ price, discountPrice }: ProductPriceProps) => {
   );
 };
 
-export default Price;
+export default ProductPrice;

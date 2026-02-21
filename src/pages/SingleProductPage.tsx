@@ -4,7 +4,7 @@ import Accordion from '../components/accordion/Accordion';
 import ImgList from '../components/ImgList';
 import SkeletonSinglePage from '../components/skeleton/skeletonSinglePage/SkeletonSinglePage';
 import useAuth from '../features/auth/hooks/useAuth';
-import Price from '../features/currency/components/Price';
+import ProductPrice from '../features/currency/components/productPrice/ProductPrice';
 import SingleProductHeader from '../features/currency/components/SingleProductHeader';
 import useLanguage from '../features/language/useLanguage';
 import InStock from '../features/shop/components/InStock';
@@ -116,7 +116,10 @@ const SingleProductPage = () => {
                 rating={product.rating}
                 onReset={() => refetch}
               />
-              <Price price={product.price} discountPrice={product.discount} />
+              <ProductPrice
+                price={product.price}
+                discountPrice={product.discount}
+              />
               <div className="in-stock-container">
                 <InStock stock={product.countInStock} />
                 {(missingSizes.length > 0 || product.countInStock === 0) && (
