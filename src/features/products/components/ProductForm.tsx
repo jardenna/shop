@@ -27,10 +27,10 @@ import { getColorOptions } from '../../../utils/colorUtils';
 import handleApiError from '../../../utils/handleApiError';
 import { maxFiles, translateKey } from '../../../utils/utils';
 import validateProduct from '../../../utils/validation/validateProduct';
-import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
 import useCurrency from '../../currency/useCurrency';
 import handleImageUpload from '../../imageUploads/handleImageUpload';
 import useLanguage from '../../language/useLanguage';
+import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 import { useUploadImageMutation } from '../../uploadImageApiSlice';
 import {
   useCreateProductMutation,
@@ -385,9 +385,9 @@ const ProductForm = ({
                 labelText="showPrice"
               />
               {showPrice && (
-                <ProductDiscountPrice
+                <ProductPrice
                   price={values.price}
-                  discount={values.discount}
+                  discountPrice={values.discount}
                 />
               )}
             </div>

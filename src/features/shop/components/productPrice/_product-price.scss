@@ -1,0 +1,19 @@
+@use '../../../../scss/globals' as *;
+
+.product-price {
+  font-family: $font-primary-bold;
+
+  .discount-price {
+    color: $color-red-15;
+  }
+
+  .orginal-price {
+    text-decoration: line-through;
+    font-size: $font-mini;
+  }
+
+  .price-seperator {
+    font-size: $font-small;
+    padding-inline: 4px;
+  }
+}

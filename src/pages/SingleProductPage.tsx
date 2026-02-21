@@ -4,17 +4,17 @@ import Accordion from '../components/accordion/Accordion';
 import ImgList from '../components/ImgList';
 import SkeletonSinglePage from '../components/skeleton/skeletonSinglePage/SkeletonSinglePage';
 import useAuth from '../features/auth/hooks/useAuth';
-import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
-import SingleProductHeader from '../features/currency/components/SingleProductHeader';
 import useLanguage from '../features/language/useLanguage';
 import InStock from '../features/shop/components/InStock';
 import NotifyMe from '../features/shop/components/NotifyMe';
 import ProductCareList from '../features/shop/components/ProductCareList';
+import ProductPrice from '../features/shop/components/productPrice/ProductPrice';
 import ReviewList from '../features/shop/components/reviews/ReviewList';
 import ReviewsForm from '../features/shop/components/reviews/ReviewsForm';
 import ReviewStars from '../features/shop/components/reviews/ReviewStars';
 import { getStarsArray } from '../features/shop/components/reviews/reviewsUtil.';
 import SingleProductForm from '../features/shop/components/SingleProductForm';
+import SingleProductHeader from '../features/shop/components/SingleProductHeader';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
 import MetaTags from '../layout/nav/MetaTags';
 import { getColorOptions } from '../utils/colorUtils';
@@ -116,9 +116,9 @@ const SingleProductPage = () => {
                 rating={product.rating}
                 onReset={() => refetch}
               />
-              <ProductDiscountPrice
+              <ProductPrice
                 price={product.price}
-                discount={product.discount}
+                discountPrice={product.discount}
               />
               <div className="in-stock-container">
                 <InStock stock={product.countInStock} />
