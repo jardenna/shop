@@ -16,7 +16,6 @@ export interface BaseDualRangeProps {
 
 interface DualRangeSliderProps extends BaseDualRangeProps {
   committed: RangeCommittedValues;
-  inputNames: InputUtils;
   track: RangeTrackMetrics;
   unitLabel: string;
 }
