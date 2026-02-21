@@ -1,5 +1,5 @@
 import Form from '../components/form/Form';
-import DualRange from '../components/formElements/rangeInput/DualRange';
+import DualRange from '../components/formElements/dualRangeSlider/DualRange';
 import useCurrency from '../features/currency/useCurrency';
 import useSearchParamsState from '../hooks/useSearchParamsState';
 import { availableBrands, availableSizes, colors } from '../utils/filters';
