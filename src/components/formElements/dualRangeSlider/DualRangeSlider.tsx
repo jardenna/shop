@@ -1,91 +1,83 @@
-import useCurrency from '../../../features/currency/useCurrency';
-import type { ChangeInputType } from '../../../types/types';
-import './_range.scss';
-import RangeDual from './RangeDual';
-import RangeNumberInput from './RangeNumberInput';
-import useRangeController, { InputUtils } from './useRangeController';
+import { ChangeInputType } from '../../../types/types';
+import RangeSliderInput from './RangeSliderInput';
+import {
+  InputUtils,
+  RangeCommittedValues,
+  RangeTrackMetrics,
+} from './useRangeController';
 
-interface DualRangeSliderProps {
-  inputLabels: InputUtils;
+export interface BaseDualRangeProps {
   inputNames: InputUtils;
-  maxValue: string;
-  minValue: string;
-  unitLabel: string;
-  max?: number;
-  min?: number;
-  step?: number;
+  max: number;
+  min: number;
+  step: number;
   onChange: (event: ChangeInputType) => void;
 }
 
+interface DualRangeSliderProps extends BaseDualRangeProps {
+  committed: RangeCommittedValues;
+  inputNames: InputUtils;
+  track: RangeTrackMetrics;
+  unitLabel: string;
+}
+
 const DualRangeSlider = ({
-  minValue,
-  maxValue,
-  onChange,
-  step = 100,
-  min = 0,
-  max = 10000,
-  inputNames,
-  inputLabels,
+  track,
   unitLabel,
-}: DualRangeSliderProps) => {
-  const { currencyText } = useCurrency();
+  onChange,
+  committed,
+  inputNames,
+  step,
+  min,
+  max,
+}: DualRangeSliderProps) => (
+  <div className="dual-range">
+    <output
+      className="range-label range-label-min"
+      style={{ left: `${track.startPercent}%` }}
+    >
+      {committed.min} {unitLabel}
+    </output>
 
-  const { input, committed, track, onRangeChange } = useRangeController({
-    minValue,
-    maxValue,
-    onChange,
-    inputNames,
-  });
+    <output
+      className="range-label range-label-max"
+      style={{
+        left: `${track.startPercent + track.widthPercent}%`,
+      }}
+    >
+      {committed.max} {unitLabel}
+    </output>
 
-  return (
-    <>
-      <div>
-        <RangeNumberInput
-          id={inputNames.min}
-          name={inputNames.min}
-          value={input.min}
-          min={min}
-          max={max}
-          step={step}
-          onChange={(event) => {
-            input.setMin(event.target.value);
-          }}
-          onBlur={() => {
-            input.commitMin(input.min);
-          }}
-          labelText={inputLabels.min}
-          inputSuffix={currencyText}
-        />
+    <div className="slider-track" />
 
-        <RangeNumberInput
-          id={inputNames.max}
-          name={inputNames.max}
-          value={input.max}
-          min={min}
-          max={max}
-          step={step}
-          onChange={(event) => {
-            input.setMax(event.target.value);
-          }}
-          onBlur={() => {
-            input.commitMax(input.max);
-          }}
-          labelText={inputLabels.max}
-          inputSuffix={currencyText}
-        />
-      </div>
-      <RangeDual
-        track={track}
-        max={max}
-        min={min}
-        step={step}
-        unitLabel={unitLabel}
-        onChange={onRangeChange}
-        committed={committed}
-        inputNames={inputNames}
-      />
-    </>
-  );
-};
+    <div
+      className="slider-track-filled"
+      style={{
+        left: `${track.startPercent}%`,
+        width: `${track.widthPercent}%`,
+      }}
+    />
+
+    <RangeSliderInput
+      min={min}
+      max={max}
+      value={committed.min}
+      onChange={onChange}
+      name={inputNames.min}
+      id="min"
+      step={step}
+    />
+
+    <RangeSliderInput
+      min={min}
+      max={max}
+      value={committed.max}
+      onChange={onChange}
+      name={inputNames.max}
+      id="max"
+      step={step}
+    />
+  </div>
+);
 
 export default DualRangeSlider;
