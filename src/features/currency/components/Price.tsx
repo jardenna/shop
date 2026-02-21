@@ -5,11 +5,10 @@ import useCurrency from '../useCurrency';
 
 type ProductPriceProps = {
   price: number;
-  className?: string;
   discountPrice?: number;
 };
 
-const Price = ({ price, discountPrice, className }: ProductPriceProps) => {
+const Price = ({ price, discountPrice }: ProductPriceProps) => {
   const { language } = useLanguage();
   const discountedValue = discountPrice
     ? discountCalculation(price, discountPrice)
@@ -23,18 +22,22 @@ const Price = ({ price, discountPrice, className }: ProductPriceProps) => {
   const { convertedPrice: regularPrice } = useCurrency(price);
   const { convertedPrice: discountedPrice } = useCurrency(discountedValue);
 
-  if (hasDiscount) {
-    return (
-      <span className={className}>
-        <span>{discountedPrice}</span>
-        <span aria-hidden="true">/</span>
-        <VisuallyHidden>{language.originaPrice}</VisuallyHidden>
-        <span className="text-line-through">{regularPrice}</span>
-      </span>
-    );
-  }
-
-  return <span className={className}>{regularPrice}</span>;
+  return (
+    <div className="price">
+      {hasDiscount ? (
+        <>
+          <span className="discount-price">{discountedPrice}</span>
+          <span aria-hidden="true">/</span>
+          <VisuallyHidden>{language.originaPrice}</VisuallyHidden>
+          <span className="text-line-through orginal-price">
+            {regularPrice}
+          </span>
+        </>
+      ) : (
+        <span>{regularPrice}</span>
+      )}
+    </div>
+  );
 };
 
 export default Price;
