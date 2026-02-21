@@ -99,7 +99,6 @@ const ViewProductPage = () => {
               colours={product.colors}
               discount={product.discount || 0}
               material={product.material}
-              price={product.price}
               availableSizeList={product.sizes}
               onReset={() => refetch()}
               categoryName={product.categoryName}

@@ -62,13 +62,7 @@ const ImageUpload = ({
             ))}
           </ul>
         )}
-        <FileInput
-          onChange={onChange}
-          multiple
-          name="images"
-          id="images"
-          previewData={previewData}
-        />
+        <FileInput onChange={onChange} multiple name="images" id="images" />
       </div>
 
       <InputInfo inputInfo={inputInfoText} />

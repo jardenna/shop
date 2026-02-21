@@ -4,7 +4,6 @@ import { colorMap } from '../utils/colorUtils';
 
 type ColorItemProps = {
   colorKey: string;
-  className?: string;
   hasBorderColor?: boolean;
   variant?: ProductLabelVariant;
 };

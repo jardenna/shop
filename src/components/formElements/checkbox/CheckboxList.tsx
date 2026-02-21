@@ -6,6 +6,7 @@ import './_checkbox.scss';
 
 type CheckboxListProps = BaseControlProps & {
   checkBoxList: string[];
+  language: Record<string, string>;
   values: string[];
   renderExtra?: (checkbox: string) => ReactNode;
 };
@@ -33,7 +34,7 @@ const CheckboxList = ({
           onChange={onChange}
           autoFocus={autoFocus && index === 0}
           checked={values.includes(checkbox)}
-          label={language ? translateKey(checkbox, language) : checkbox}
+          label={translateKey(checkbox, language)}
           renderExtra={renderExtra ? renderExtra(checkbox) : undefined}
         />
       </li>

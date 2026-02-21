@@ -17,7 +17,6 @@ type ProductCardCenterProps = {
   countInStock: number;
   discount: number;
   material: string;
-  price: number;
   subCategoryName: SubCategoryNames;
   onReset: () => void;
 };

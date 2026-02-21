@@ -4,13 +4,11 @@ import { IconName } from '../../../types/enums';
 import type { InputChangeHandler } from '../../../types/types';
 import Icon from '../../icons/Icon';
 import './_file-input.scss';
-import { PreviewImg } from './Preview';
 
 type FileInputProps = {
   id: string;
   name: FileName;
   onChange: InputChangeHandler;
-  previewData: PreviewImg[];
   errorText?: string;
   multiple?: boolean;
   required?: boolean;

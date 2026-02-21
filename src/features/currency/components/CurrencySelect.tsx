@@ -7,7 +7,6 @@ type PickedHeaderProps = Pick<
 >;
 
 type CurrencySelectProps = PickedHeaderProps & {
-  inputHasNoLabel: boolean;
   labelText: string;
 };
 

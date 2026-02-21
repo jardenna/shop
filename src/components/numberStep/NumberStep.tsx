@@ -14,7 +14,7 @@ type NumberStepProps = {
   max?: number;
   min?: number;
   onChange: (event?: ChangeInputType) => void;
-  onNumberStepChange: (event: any, count: number) => void;
+  // onNumberStepChange: (event: any, count: number) => void;
 };
 
 const NumberStep = ({
@@ -25,6 +25,7 @@ const NumberStep = ({
   max,
   labelText,
   id,
+  // onNumberStepChange,
   name,
 }: NumberStepProps) => (
   <article className="number-step">

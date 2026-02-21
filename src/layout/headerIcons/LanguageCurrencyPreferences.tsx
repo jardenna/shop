@@ -9,7 +9,7 @@ import type { BaseHeaderProps } from '../header/Header';
 
 type OmittedHeaderProps = OmitChecked<
   BaseHeaderProps,
-  'primaryActionBtn' | 'secondaryActionBtn' | 'dropdownBtnList'
+  'primaryActionBtn' | 'dropdownBtnList'
 >;
 
 const LanguageCurrencyPreferences = ({
@@ -35,7 +35,6 @@ const LanguageCurrencyPreferences = ({
       </FieldSet>
       <FieldSet legendText={language.currency} showLegendText>
         <CurrencySelect
-          inputHasNoLabel
           currencyOptions={currencyOptions}
           defaultValue={defaultValue}
           onSelectCurrency={onSelectCurrency}

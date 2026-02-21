@@ -12,7 +12,6 @@ type NavContainerProps = OmittedNavProps & {
   ariaLabel?: string;
   currentUser?: UserResponse | null;
   isMenuCollapsed?: boolean;
-  onCollapseMenu?: () => void;
 };
 
 const NavContainer = ({

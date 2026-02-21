@@ -127,6 +127,7 @@ export default defineConfig(
       ],
       curly: ['error', 'all'],
       'arrow-body-style': 'warn',
+      'react/no-unused-prop-types': 'error',
       'react/no-multi-comp': ['error', { ignoreStateless: false }],
       'react/no-unescaped-entities': 0,
       'react/jsx-curly-brace-presence': 'error',
