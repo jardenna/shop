@@ -10,7 +10,14 @@ const ModalContentContainer = ({
   onSubmit?: () => void;
 }) =>
   isForm ? (
-    <form noValidate className="modal-form modal-content" onSubmit={onSubmit}>
+    <form
+      noValidate
+      className="modal-form modal-content"
+      onSubmit={(event) => {
+        event.preventDefault();
+        onSubmit?.();
+      }}
+    >
       {children}
     </form>
   ) : (

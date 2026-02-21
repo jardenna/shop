@@ -1,8 +1,14 @@
-import { differenceInCalendarDays } from 'date-fns';
+import {
+  differenceInCalendarDays,
+  differenceInCalendarMonths,
+  differenceInCalendarYears,
+  isToday,
+  isYesterday,
+} from 'date-fns';
 
 export type StarType = 'full' | 'half' | 'empty';
 
-const getStarsArray = (rating: number): StarType[] => {
+export const getStarsArray = (rating: number): StarType[] => {
   const fullStars = Math.floor(rating);
   const decimal = rating - fullStars;
 
@@ -25,16 +31,32 @@ const getStarsArray = (rating: number): StarType[] => {
     ...Array<StarType>(emptyStars).fill('empty'),
   ];
 };
-const getDaysAgo = (date: Date, language: Record<string, string>): string => {
-  const days = differenceInCalendarDays(new Date(), date);
 
-  if (days === 0) {
+export const getReviewAgeLabel = (
+  reviewDate: Date,
+  language: Record<string, string>,
+): string => {
+  if (isToday(reviewDate)) {
     return language.today;
   }
-  if (days === 1) {
-    return language.yesterday;
-  }
-  return `${days} ${language.daysAgo}`;
-};
 
-export { getDaysAgo, getStarsArray };
+  if (isYesterday(reviewDate)) {
+    return 'Yesterday';
+  }
+
+  const daysDifference = differenceInCalendarDays(new Date(), reviewDate);
+
+  if (daysDifference < 30) {
+    return `${daysDifference} ${language.daysAgo}`;
+  }
+
+  const monthsDifference = differenceInCalendarMonths(new Date(), reviewDate);
+
+  if (monthsDifference < 12) {
+    return `${monthsDifference} ${language.monthAgo}`;
+  }
+
+  const yearsDifference = differenceInCalendarYears(new Date(), reviewDate);
+
+  return `${yearsDifference} ${language.yearsAgo}`;
+};

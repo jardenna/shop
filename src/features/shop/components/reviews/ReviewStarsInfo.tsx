@@ -10,10 +10,14 @@ const ReviewStarsInfo = ({ rating }: { rating: number }) => {
 
   return (
     <span>
-      {rating ? numberConvert(rating, selectedLanguage) : language.notRatedYet}
-      <VisuallyHidden>
-        {language.outOf} 5 {language.stars}
-      </VisuallyHidden>
+      {rating === 0 && language.notRatedYet}
+
+      {rating > 0 && (
+        <VisuallyHidden>
+          {language.rating}: {numberConvert(rating, selectedLanguage)}{' '}
+          {language.outOf} 5 {language.stars}
+        </VisuallyHidden>
+      )}
     </span>
   );
 };

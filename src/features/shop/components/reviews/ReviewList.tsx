@@ -1,7 +1,7 @@
 import { DisplyReviews } from '../../../../app/api/apiTypes/shopApiTypes';
 import useLanguage from '../../../language/useLanguage';
 import ReviewStars from './ReviewStars';
-import { getDaysAgo, getStarsArray } from './reviewsUtil.';
+import { getReviewAgeLabel, getStarsArray } from './reviewsUtil.';
 
 type ReviewList = {
   reviewList: DisplyReviews[];
@@ -11,6 +11,7 @@ type ReviewList = {
 
 const ReviewList = ({ reviewList, title, onReset }: ReviewList) => {
   const { language } = useLanguage();
+
   return (
     <>
       <span>{title}</span>
@@ -24,7 +25,7 @@ const ReviewList = ({ reviewList, title, onReset }: ReviewList) => {
                 rating={review.rating}
               />
               <p className="text-small text-italic">
-                {getDaysAgo(review.createdAt, language)}
+                {getReviewAgeLabel(review.createdAt, language)}
               </p>
             </div>
             <div className="review-content">
