@@ -12,7 +12,6 @@ export type BaseControlProps = {
   disabled?: boolean;
   iconClassName?: string;
   iconName?: IconName;
-  language?: Record<string, string>;
   type?: ControlInputType;
 };
 

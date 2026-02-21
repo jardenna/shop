@@ -1,5 +1,5 @@
 import { Status } from '../../../app/api/apiTypes/adminApiTypes';
-import Badge from '../../../components/Badge';
+import Badge from '../../../components/badge/Badge';
 import DateDisplay from '../../../components/datePicker/DateDisplay';
 import Icon from '../../../components/icons/Icon';
 import Popup from '../../../components/popup/Popup';

@@ -1,10 +1,10 @@
-import { ChangeEvent, FormEvent, MouseEvent, RefObject } from 'react';
+import { ChangeEvent, FocusEvent, MouseEvent, RefObject } from 'react';
 
 export type ButtonEventType = MouseEvent<HTMLButtonElement>;
 export type ChangeInputType = ChangeEvent<HTMLInputElement>;
 export type ChangeTextAreaType = ChangeEvent<HTMLTextAreaElement>;
 export type BlurEventType = { target: { name: string } };
-export type FormEventType = FormEvent<HTMLFormElement>;
+export type FocusEventType = FocusEvent<HTMLElement>;
 export type RefElementType = RefObject<HTMLElement | null>;
 export type RefInputType = RefObject<HTMLInputElement | null>;
 export type RefFormType = RefObject<HTMLFormElement | null>;
@@ -75,6 +75,14 @@ export type AriaCurrentType =
   | 'time'
   | 'true'
   | 'false';
+
+export type InputMode =
+  | 'numeric'
+  | 'decimal'
+  | 'search'
+  | 'tel'
+  | 'url'
+  | 'email';
 
 export type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 export type AriaLive = 'off' | 'assertive' | 'polite';

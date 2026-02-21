@@ -5,6 +5,7 @@ import { IconName, KeyCode } from '../../types/enums';
 import LayoutElement from '../LayoutElement';
 import { LinkText } from './enums';
 import NavItem from './NavItem';
+import { FocusEventType } from '../../types/types';
 
 export type BaseNav = {
   linkText: LinkText;
@@ -62,7 +63,7 @@ const Nav = ({ navList, ariaLabel, className, hideAriaHasPopup }: NavProps) => {
                 onMouseEnter: handleShowSubNav,
                 onMouseLeave: handleHideSubNav,
                 onFocus: handleShowSubNav,
-                onBlur: (event: React.FocusEvent<HTMLLIElement>) => {
+                onBlur: (event: FocusEventType) => {
                   if (!event.currentTarget.contains(event.relatedTarget)) {
                     handleHideSubNav();
                   }

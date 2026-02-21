@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router';
 import Icon from '../../components/icons/Icon';
 import useLanguage from '../../features/language/useLanguage';
-import type { AriaHasPopup } from '../../types/types';
+import type { AriaHasPopup, FocusEventType } from '../../types/types';
 import type { NavListProps } from './Nav';
 import SubNav from './subNav/SubNav';
 
@@ -10,7 +10,7 @@ type NavItemProps = {
   ariaControls?: string;
   ariaExpanded?: boolean;
   ariaHasPopup?: AriaHasPopup;
-  onBlur?: (event: React.FocusEvent<HTMLLIElement>) => void;
+  onBlur?: (event: FocusEventType) => void;
   onFocus?: () => void;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;

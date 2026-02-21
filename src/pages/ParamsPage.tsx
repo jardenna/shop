@@ -1,8 +1,11 @@
-import PriceFilter from '../components/filter/PriceFilter';
+import Form from '../components/form/Form';
+import DualRange from '../components/formElements/rangeInput/DualRange';
+import useCurrency from '../features/currency/useCurrency';
 import useSearchParamsState from '../hooks/useSearchParamsState';
 import { availableBrands, availableSizes, colors } from '../utils/filters';
 
 const ParamsPage = () => {
+  const { currencyText } = useCurrency();
   const initialFilters = {
     sizes: [] as string[],
     colors: [] as string[],
@@ -11,16 +14,24 @@ const ParamsPage = () => {
     maxPrice: '',
   };
 
-  const { values, setValue, toggleValue } =
+  const { values, toggleValue, setValue } =
     useSearchParamsState(initialFilters);
 
   return (
-    <form
-      onSubmit={(event) => {
-        event.preventDefault();
+    <Form
+      submitBtnLabel="Search"
+      onSubmit={() => {
         console.log(values);
       }}
     >
+      <DualRange
+        minPrice={values.minPrice}
+        maxPrice={values.maxPrice}
+        onChange={setValue}
+        min={0}
+        max={10000}
+        unitLabel={currencyText}
+      />
       <ul className="checkbox-list">
         {availableBrands.map((value) => (
           <li key={value} className="checkbox-item">
@@ -67,23 +78,7 @@ const ParamsPage = () => {
           </li>
         ))}
       </ul>
-
-      <PriceFilter
-        key={`${values.minPrice}-${values.maxPrice}`}
-        minPrice={values.minPrice}
-        maxPrice={values.maxPrice}
-        onMinChange={(value) => {
-          setValue('minPrice', value);
-        }}
-        onMaxChange={(value) => {
-          setValue('maxPrice', value);
-        }}
-        min={0}
-        max={10000}
-      />
-
-      <button type="submit">Search</button>
-    </form>
+    </Form>
   );
 };
 

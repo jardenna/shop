@@ -23,19 +23,7 @@ const useSearchParamsState = <T extends SearchParamState>(defaults: T) => {
     ]),
   ) as T;
 
-  const setValue = (key: keyof T, value: string | string[]) => {
-    const updatedSearchParams = new URLSearchParams(searchParams.toString());
-    updatedSearchParams.delete(key as string);
-
-    const values = isArray(value) ? value : [value];
-    values.forEach((val) => {
-      updatedSearchParams.append(key as string, val);
-    });
-
-    setSearchParams(updatedSearchParams);
-  };
-
-  const setEventValue = (event: ChangeInputType) => {
+  const setValue = (event: ChangeInputType) => {
     const { name, value } = event.target;
 
     const updatedSearchParams = new URLSearchParams(searchParams.toString());
@@ -71,7 +59,7 @@ const useSearchParamsState = <T extends SearchParamState>(defaults: T) => {
     setSearchParams(updatedSearchParams);
   };
 
-  return { values, setValue, toggleValue, setEventValue };
+  return { values, toggleValue, setValue };
 };
 
 export default useSearchParamsState;

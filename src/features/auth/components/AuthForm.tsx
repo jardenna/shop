@@ -8,11 +8,7 @@ import PasswordInput from '../../../components/formElements/password/PasswordInp
 import RadioButtonList from '../../../components/formElements/RadioButtonList';
 import type { KeyValuePair } from '../../../hooks/useFormValidation';
 import { BtnVariant } from '../../../types/enums';
-import type {
-  BlurEventType,
-  FormEventType,
-  InputChangeHandler,
-} from '../../../types/types';
+import type { BlurEventType, InputChangeHandler } from '../../../types/types';
 import { roleList } from '../../../utils/productLists';
 import useLanguage from '../../language/useLanguage';
 import type { CreateAccountProps } from './CreateAccount';
@@ -36,7 +32,7 @@ type AuthFormProps = CreateAccountProps & {
   showPopUpRules?: boolean;
   onBlur: (event: BlurEventType) => void;
   onFocus?: () => void;
-  onSubmit: (event: FormEventType) => void;
+  onSubmit: () => void;
 };
 
 const AuthForm = ({
@@ -87,6 +83,7 @@ const AuthForm = ({
           errorText={language[errors.email]}
           onBlur={onBlur}
           type="email"
+          inputMode="email"
         />
         <PasswordInput
           name="password"

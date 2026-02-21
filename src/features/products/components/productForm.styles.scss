@@ -1,0 +1,28 @@
+@use '../../../scss/globals' as *;
+
+.product-form-container {
+  display: flex;
+  gap: 20px;
+
+  @include max-size($medium) {
+    flex-direction: column;
+    gap: 0;
+
+    .form-card {
+      padding: 12px;
+    }
+  }
+
+  .product-form-left-column {
+    flex: 2;
+  }
+
+  .product-form-right-column {
+    flex: 1;
+    min-width: rem(300px);
+  }
+
+  .product-form-2-columns {
+    @include grid-fixed-columns;
+  }
+}

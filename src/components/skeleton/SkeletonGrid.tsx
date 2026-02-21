@@ -10,7 +10,7 @@ const SkeletonGrid = ({
   return (
     <div className="skeleton-column">
       {skeletons.map((_, index) => (
-        <div key={index} className="grid grid-two-col">
+        <div key={index} className="skeleton-2-col">
           <Skeleton height={height} width={width} />
           <Skeleton height={height} />
         </div>

@@ -5,6 +5,7 @@ import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import useLanguage from '../features/language/useLanguage';
 import ProductCard from '../features/shop/components/ProductCard';
 import { ShopPath } from '../layout/nav/enums';
+import './FavoritesPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const FavoritePage = () => {

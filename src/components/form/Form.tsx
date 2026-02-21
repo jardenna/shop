@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import { BtnType, BtnVariant } from '../../types/enums';
-import type { FormEventType, RefFormType } from '../../types/types';
+import type { RefFormType } from '../../types/types';
 import Button from '../Button';
 import './_form.scss';
 
@@ -15,7 +15,7 @@ type FormProps = {
   isLoading?: boolean;
   ref?: RefFormType;
   onCancel?: () => void;
-  onSubmit: (event: FormEventType) => void;
+  onSubmit: () => void;
 };
 
 const Form = ({
@@ -32,7 +32,15 @@ const Form = ({
   const { language } = useLanguage();
 
   return (
-    <form onSubmit={onSubmit} noValidate className={className} ref={ref}>
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        onSubmit();
+      }}
+      noValidate
+      className={className}
+      ref={ref}
+    >
       {children}
       <LayoutElement as="footer" className="footer" ariaLabel={language.form}>
         {onCancel && (

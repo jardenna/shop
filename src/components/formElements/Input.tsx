@@ -1,7 +1,8 @@
+import { SyntheticEvent } from 'react';
 import type {
   BlurEventType,
-  ChangeInputType,
   InputChangeHandler,
+  InputMode,
   InputType,
   RefInputType,
 } from '../../types/types';
@@ -22,6 +23,7 @@ export type InputProps = {
   errorText?: string;
   inputHasNoLabel?: boolean;
   inputInfo?: string;
+  inputMode?: InputMode;
   inputSuffix?: string;
   max?: number;
   maxLength?: number;
@@ -60,12 +62,18 @@ const Input = ({
   onFocus,
   disabled,
   inputInfo,
+  inputMode,
 }: InputProps) => {
-  const handleOnInput = (event: ChangeInputType) => {
-    const inputValue = event.target.value;
-    if (maxLength && inputValue.length > maxLength) {
-      // eslint-disable-next-line no-param-reassign
-      event.target.value = inputValue.slice(0, maxLength);
+  const handleOnInput = (event: SyntheticEvent<HTMLInputElement>) => {
+    if (!maxLength) {
+      return;
+    }
+
+    const inputElement = event.currentTarget;
+    const inputValue = inputElement.value;
+
+    if (inputValue.length > maxLength) {
+      inputElement.value = inputValue.slice(0, maxLength);
     }
   };
 
@@ -104,6 +112,7 @@ const Input = ({
           onInput={handleOnInput}
           onFocus={onFocus}
           disabled={disabled}
+          inputMode={inputMode}
         />
         {inputSuffix && <span className="input-suffix">{inputSuffix}</span>}
       </div>

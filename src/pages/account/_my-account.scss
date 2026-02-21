@@ -1,24 +1,12 @@
 @use '../../scss/globals' as *;
 
 .my-account {
-  padding-inline: 32px;
   display: flex;
   flex-direction: column;
   gap: 32px;
 
   &.modal.animate-top-center {
     top: 15%;
-  }
-
-  .label-value-grid {
-    .tooltip {
-      display: flex;
-      gap: 4px;
-    }
-
-    .text {
-      justify-content: flex-start;
-    }
   }
 }
 

@@ -1,7 +1,7 @@
 import { Link } from 'react-router';
 import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import { ProductPreview } from '../../../app/api/apiTypes/shopApiTypes';
-import Badge from '../../../components/Badge';
+import Badge from '../../../components/badge/Badge';
 import Button from '../../../components/Button';
 import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import Img from '../../../components/Img';

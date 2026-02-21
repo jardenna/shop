@@ -7,7 +7,7 @@ import useLanguage from '../../features/language/useLanguage';
 import ColorList from '../../features/shop/components/productLists/ColorList';
 import SizeList from '../../features/shop/components/productLists/SizeList';
 import CardContent from '../card/CardContent';
-import LabelValueGrid from '../LabelValueGrid';
+import LabelValueGrid from '../labelValueGrid/LabelValueGrid';
 
 type ProductCardCenterProps = {
   availableSizeList: Size[];
@@ -17,7 +17,6 @@ type ProductCardCenterProps = {
   countInStock: number;
   discount: number;
   material: string;
-  price: number;
   subCategoryName: SubCategoryNames;
   onReset: () => void;
 };

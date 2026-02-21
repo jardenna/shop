@@ -1,8 +1,5 @@
 import { DropdownItem } from '../../components/dropdownBtn/DropdownBtn';
-import type {
-  PrimaryActionBtnProps,
-  SecondaryActionBtnProps,
-} from '../../components/modal/Modal';
+import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import type { SelectedLanguage } from '../../features/language/languageSlice';
 import type { InputChangeHandler, OptionType } from '../../types/types';
 import HeaderIcons from '../headerIcons/HeaderIcons';
@@ -29,7 +26,6 @@ export type BaseHeaderProps = {
   onChange: InputChangeHandler;
   primaryActionBtn: PrimaryActionBtnProps;
   values: Values;
-  secondaryActionBtn?: SecondaryActionBtnProps;
   onSelectCurrency: (selectedOptions: OptionType) => void;
 };
 

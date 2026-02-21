@@ -1,0 +1,14 @@
+@use '../../scss/globals' as *;
+
+.label-value-grid {
+  @include grid-fixed-columns($gap: 20px);
+
+  .tooltip {
+    display: flex;
+    gap: 4px;
+  }
+
+  .label {
+    white-space: nowrap;
+  }
+}

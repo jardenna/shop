@@ -30,6 +30,11 @@
   @include animation(skeleton-animation, 1.5s infinite, linear);
 }
 
+.skeleton-2-col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .skeleton-badge {
   .skeleton {
     border-radius: 50px;

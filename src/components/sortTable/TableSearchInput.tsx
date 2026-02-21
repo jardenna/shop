@@ -1,4 +1,3 @@
-import { FormEvent } from 'react';
 import useLanguage from '../../features/language/useLanguage';
 import type { InputChangeHandler } from '../../types/types';
 import Input from '../formElements/Input';
@@ -18,7 +17,7 @@ const TableSearchInput = ({
   const text = `${language.filter} ${language[title]}`;
   return (
     <form
-      onSubmit={(event: FormEvent) => {
+      onSubmit={(event) => {
         event.preventDefault();
       }}
     >
@@ -33,6 +32,7 @@ const TableSearchInput = ({
         labelText={text}
         inputHasNoLabel
         autoFocus
+        inputMode="search"
       />
     </form>
   );
