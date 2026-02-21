@@ -8,8 +8,8 @@ $color-range-primary: $color-blue-30;
 @mixin thumb-base {
   width: $thumb-size;
   height: $thumb-size;
-  background-color: $color-white;
-  border: $thumb-border solid $color-range-primary;
+  background-color: $color-range-primary;
+  border: $thumb-border solid $color-white;
   border-radius: 50%;
   cursor: grab;
   pointer-events: auto;
@@ -24,7 +24,6 @@ $color-range-primary: $color-blue-30;
 
 @mixin thumb-active {
   cursor: grabbing;
-  background-color: $color-gray-20;
   transform: scale(1.1);
 }
 
@@ -58,11 +57,11 @@ $color-range-primary: $color-blue-30;
     }
 
     &.range-label-max {
-      transform: translateX(-50%) translateX(-0.6rem);
+      transform: translateX(-50%);
     }
 
     &.range-label-min {
-      transform: translateX(-50%) translateX(0.3rem);
+      transform: translateX(-50%) translateX(0.6rem);
     }
   }
 
@@ -70,7 +69,7 @@ $color-range-primary: $color-blue-30;
     position: relative;
     display: flex;
     align-items: center;
-    margin-block: 20px;
+    min-height: rem(120px);
   }
 
   .slider-track,

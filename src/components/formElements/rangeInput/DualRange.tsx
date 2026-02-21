@@ -38,50 +38,7 @@ const DualRange = ({
   } = useRangeController({ minPrice, maxPrice, onChange });
   return (
     <div className="dual-range">
-      <div>
-        <output
-          className="range-label range-label-min"
-          style={{ left: `${leftPercent}%` }}
-        >
-          {minimumValue} {unitLabel}
-        </output>
-
-        <output
-          className="range-label range-label-max"
-          style={{ left: `${leftPercent + widthPercent}%` }}
-        >
-          {maximumValue} {unitLabel}
-        </output>
-        <div className="dual-range-container">
-          <div className="slider-track" />
-          <div
-            className="slider-track-filled"
-            style={{
-              left: `${leftPercent}%`,
-              width: `${widthPercent}%`,
-            }}
-          />
-          <RangeSliderInput
-            min={min}
-            max={max}
-            value={minimumValue}
-            onChange={onRangeChange}
-            name="minPrice"
-            id="min"
-            step={step}
-          />
-          <RangeSliderInput
-            min={min}
-            max={max}
-            value={maximumValue}
-            onChange={onRangeChange}
-            name="maxPrice"
-            id="max"
-            step={step}
-          />
-        </div>
-      </div>
-
+      {' '}
       <div>
         <RangeNumberInput
           id="minPrice"
@@ -98,6 +55,7 @@ const DualRange = ({
           }}
           labelText="Pris fra"
         />
+
         <RangeNumberInput
           id="maxPrice"
           name="maxPrice"
@@ -112,6 +70,51 @@ const DualRange = ({
             commitMaximumValue(maximumDraft);
           }}
           labelText="Pris til"
+        />
+      </div>
+      <div className="dual-range-container">
+        <output
+          className="range-label range-label-min"
+          style={{ left: `${leftPercent}%` }}
+        >
+          {minimumValue} {unitLabel}
+        </output>
+
+        <output
+          className="range-label range-label-max"
+          style={{ left: `${leftPercent + widthPercent}%` }}
+        >
+          {maximumValue} {unitLabel}
+        </output>
+
+        <div className="slider-track" />
+
+        <div
+          className="slider-track-filled"
+          style={{
+            left: `${leftPercent}%`,
+            width: `${widthPercent}%`,
+          }}
+        />
+
+        <RangeSliderInput
+          min={min}
+          max={max}
+          value={minimumValue}
+          onChange={onRangeChange}
+          name="minPrice"
+          id="min"
+          step={step}
+        />
+
+        <RangeSliderInput
+          min={min}
+          max={max}
+          value={maximumValue}
+          onChange={onRangeChange}
+          name="maxPrice"
+          id="max"
+          step={step}
         />
       </div>
     </div>
