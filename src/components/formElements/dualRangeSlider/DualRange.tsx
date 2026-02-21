@@ -25,19 +25,12 @@ const DualRange = ({
   unitLabel,
 }: DualRangeProps) => {
   const { currencyText } = useCurrency();
-  const {
-    minInputValue,
-    maxInputValue,
-    minCommittedValue,
-    maxCommittedValue,
-    trackStartPercent,
-    trackWidthPercent,
-    commitMinInputValue,
-    commitMaxInputValue,
-    onRangeChange,
-    setMinInputValue,
-    setMaxInputValue,
-  } = useRangeController({ minPrice, maxPrice, onChange });
+
+  const { input, committed, track, onRangeChange } = useRangeController({
+    minPrice,
+    maxPrice,
+    onChange,
+  });
 
   return (
     <>
@@ -45,15 +38,15 @@ const DualRange = ({
         <RangeNumberInput
           id="minPrice"
           name="minPrice"
-          value={minInputValue}
+          value={input.min}
           min={min}
           max={max}
           step={step}
           onChange={(event) => {
-            setMinInputValue(event.target.value);
+            input.setMin(event.target.value);
           }}
           onBlur={() => {
-            commitMinInputValue(minInputValue);
+            input.commitMin(input.min);
           }}
           labelText="Pris fra"
           inputSuffix={currencyText}
@@ -62,15 +55,15 @@ const DualRange = ({
         <RangeNumberInput
           id="maxPrice"
           name="maxPrice"
-          value={maxInputValue}
+          value={input.max}
           min={min}
           max={max}
           step={step}
           onChange={(event) => {
-            setMaxInputValue(event.target.value);
+            input.setMax(event.target.value);
           }}
           onBlur={() => {
-            commitMaxInputValue(maxInputValue);
+            input.commitMax(input.max);
           }}
           labelText="Pris til"
           inputSuffix={currencyText}
@@ -80,18 +73,18 @@ const DualRange = ({
       <div className="dual-range">
         <output
           className="range-label range-label-min"
-          style={{ left: `${trackStartPercent}%` }}
+          style={{ left: `${track.startPercent}%` }}
         >
-          {minCommittedValue} {unitLabel}
+          {committed.min} {unitLabel}
         </output>
 
         <output
           className="range-label range-label-max"
           style={{
-            left: `${trackStartPercent + trackWidthPercent}%`,
+            left: `${track.startPercent + track.widthPercent}%`,
           }}
         >
-          {maxCommittedValue} {unitLabel}
+          {committed.max} {unitLabel}
         </output>
 
         <div className="slider-track" />
@@ -99,15 +92,15 @@ const DualRange = ({
         <div
           className="slider-track-filled"
           style={{
-            left: `${trackStartPercent}%`,
-            width: `${trackWidthPercent}%`,
+            left: `${track.startPercent}%`,
+            width: `${track.widthPercent}%`,
           }}
         />
 
         <RangeSliderInput
           min={min}
           max={max}
-          value={minCommittedValue}
+          value={committed.min}
           onChange={onRangeChange}
           name="minPrice"
           id="min"
@@ -117,7 +110,7 @@ const DualRange = ({
         <RangeSliderInput
           min={min}
           max={max}
-          value={maxCommittedValue}
+          value={committed.max}
           onChange={onRangeChange}
           name="maxPrice"
           id="max"

@@ -22,7 +22,6 @@ const useRangeController = ({
 }: PriceFilterProps) => {
   const { debounce } = useDebounce();
 
-  // Canonical committed numeric values
   const [minCommittedValue, setMinCommittedValue] = useState(() =>
     clampNumberToRange(Number(minPrice || min), min, max),
   );
@@ -30,7 +29,6 @@ const useRangeController = ({
     clampNumberToRange(Number(maxPrice || max), min, max),
   );
 
-  // User input values (can be temporarily invalid)
   const [minInputValue, setMinInputValue] = useState(() =>
     String(clampNumberToRange(Number(minPrice || min), min, max)),
   );
@@ -40,7 +38,7 @@ const useRangeController = ({
 
   const commitInputValue = (
     inputValue: string,
-    committedValue: number,
+    currentCommittedValue: number,
     minAllowedValue: number,
     maxAllowedValue: number,
     setCommittedValue: (value: number) => void,
@@ -50,7 +48,7 @@ const useRangeController = ({
     const parsedValue = parseFiniteNumberOrNull(inputValue);
 
     if (parsedValue === null) {
-      setInputValue(String(committedValue));
+      setInputValue(String(currentCommittedValue));
       return;
     }
 
@@ -137,17 +135,23 @@ const useRangeController = ({
     ((maxCommittedValue - minCommittedValue) / (max - min)) * 100;
 
   return {
-    minInputValue,
-    maxInputValue,
-    minCommittedValue,
-    maxCommittedValue,
-    trackStartPercent,
-    trackWidthPercent,
-    commitMinInputValue,
-    commitMaxInputValue,
+    input: {
+      min: minInputValue,
+      max: maxInputValue,
+      setMin: setMinInputValue,
+      setMax: setMaxInputValue,
+      commitMin: commitMinInputValue,
+      commitMax: commitMaxInputValue,
+    },
+    committed: {
+      min: minCommittedValue,
+      max: maxCommittedValue,
+    },
+    track: {
+      startPercent: trackStartPercent,
+      widthPercent: trackWidthPercent,
+    },
     onRangeChange: handleRangeChange,
-    setMinInputValue,
-    setMaxInputValue,
   };
 };
 
