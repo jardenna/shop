@@ -22,131 +22,132 @@ const useRangeController = ({
 }: PriceFilterProps) => {
   const { debounce } = useDebounce();
 
-  // Canonical numeric values (used by range inputs + output)
-  const [minimumValue, setMinimumValue] = useState(() =>
+  // Canonical committed numeric values
+  const [minCommittedValue, setMinCommittedValue] = useState(() =>
     clampNumberToRange(Number(minPrice || min), min, max),
   );
-  const [maximumValue, setMaximumValue] = useState(() =>
+  const [maxCommittedValue, setMaxCommittedValue] = useState(() =>
     clampNumberToRange(Number(maxPrice || max), min, max),
   );
 
-  // Draft values for typing (used by number inputs)
-  const [minimumDraft, setMinimumDraft] = useState(() =>
+  // User input values (can be temporarily invalid)
+  const [minInputValue, setMinInputValue] = useState(() =>
     String(clampNumberToRange(Number(minPrice || min), min, max)),
   );
-  const [maximumDraft, setMaximumDraft] = useState(() =>
+  const [maxInputValue, setMaxInputValue] = useState(() =>
     String(clampNumberToRange(Number(maxPrice || max), min, max)),
   );
 
-  const commitRangeValue = (
-    rawValue: string,
-    currentValue: number,
-    lowerBound: number,
-    upperBound: number,
-    setValue: (value: number) => void,
-    setDraft: (value: string) => void,
+  const commitInputValue = (
+    inputValue: string,
+    committedValue: number,
+    minAllowedValue: number,
+    maxAllowedValue: number,
+    setCommittedValue: (value: number) => void,
+    setInputValue: (value: string) => void,
     outputName: 'minPrice' | 'maxPrice',
   ) => {
-    const parsedValue = parseFiniteNumberOrNull(rawValue);
+    const parsedValue = parseFiniteNumberOrNull(inputValue);
 
     if (parsedValue === null) {
-      setDraft(String(currentValue));
+      setInputValue(String(committedValue));
       return;
     }
 
-    const committedValue = clampNumberToRange(
+    const nextCommittedValue = clampNumberToRange(
       parsedValue,
-      lowerBound,
-      upperBound,
+      minAllowedValue,
+      maxAllowedValue,
     );
 
-    setValue(committedValue);
-    setDraft(String(committedValue));
+    setCommittedValue(nextCommittedValue);
+    setInputValue(String(nextCommittedValue));
 
     debounce(() => {
       onChange({
         target: {
           name: outputName,
-          value: String(committedValue),
+          value: String(nextCommittedValue),
         },
       } as ChangeInputType);
     });
   };
 
-  const commitMinimumValue = (rawValue: string) => {
-    commitRangeValue(
-      rawValue,
-      minimumValue,
+  const commitMinInputValue = (inputValue: string) => {
+    commitInputValue(
+      inputValue,
+      minCommittedValue,
       min,
-      maximumValue,
-      setMinimumValue,
-      setMinimumDraft,
+      maxCommittedValue,
+      setMinCommittedValue,
+      setMinInputValue,
       'minPrice',
     );
   };
 
-  const commitMaximumValue = (rawValue: string) => {
-    commitRangeValue(
-      rawValue,
-      maximumValue,
-      minimumValue,
+  const commitMaxInputValue = (inputValue: string) => {
+    commitInputValue(
+      inputValue,
+      maxCommittedValue,
+      minCommittedValue,
       max,
-      setMaximumValue,
-      setMaximumDraft,
+      setMaxCommittedValue,
+      setMaxInputValue,
       'maxPrice',
     );
   };
 
   const handleRangeChange = (event: ChangeInputType) => {
     const { name, value } = event.target;
-
     const numericValue = Number(value);
 
     if (!Number.isFinite(numericValue)) {
       return;
     }
 
-    const isMinimumHandle = name === 'minPrice';
+    const isMinHandle = name === 'minPrice';
 
-    const committedValue = clampNumberToRange(
+    const nextCommittedValue = clampNumberToRange(
       numericValue,
-      isMinimumHandle ? min : minimumValue,
-      isMinimumHandle ? maximumValue : max,
+      isMinHandle ? min : minCommittedValue,
+      isMinHandle ? maxCommittedValue : max,
     );
 
-    if (isMinimumHandle) {
-      setMinimumValue(committedValue);
-      setMinimumDraft(String(committedValue));
+    if (isMinHandle) {
+      setMinCommittedValue(nextCommittedValue);
+      setMinInputValue(String(nextCommittedValue));
     } else {
-      setMaximumValue(committedValue);
-      setMaximumDraft(String(committedValue));
+      setMaxCommittedValue(nextCommittedValue);
+      setMaxInputValue(String(nextCommittedValue));
     }
 
     debounce(() => {
       onChange({
         target: {
-          name: isMinimumHandle ? 'minPrice' : 'maxPrice',
-          value: String(committedValue),
+          name: isMinHandle ? 'minPrice' : 'maxPrice',
+          value: String(nextCommittedValue),
         },
       } as ChangeInputType);
     });
   };
 
-  const leftPercent = ((minimumValue - min) / (max - min)) * 100;
-  const widthPercent = ((maximumValue - minimumValue) / (max - min)) * 100;
+  const trackStartPercent = ((minCommittedValue - min) / (max - min)) * 100;
+
+  const trackWidthPercent =
+    ((maxCommittedValue - minCommittedValue) / (max - min)) * 100;
 
   return {
-    minimumDraft,
-    maximumDraft,
-    leftPercent,
-    widthPercent,
-    commitMinimumValue,
-    commitMaximumValue,
+    minInputValue,
+    maxInputValue,
+    minCommittedValue,
+    maxCommittedValue,
+    trackStartPercent,
+    trackWidthPercent,
+    commitMinInputValue,
+    commitMaxInputValue,
     onRangeChange: handleRangeChange,
-    minimumValue,
-    maximumValue,
-    setMaximumDraft,
-    setMinimumDraft,
+    setMinInputValue,
+    setMaxInputValue,
   };
 };
 

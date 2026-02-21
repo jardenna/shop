@@ -24,20 +24,20 @@ const DualRange = ({
   max = 10000,
   unitLabel,
 }: DualRangeProps) => {
-  const {
-    minimumDraft,
-    maximumDraft,
-    leftPercent,
-    widthPercent,
-    commitMinimumValue,
-    commitMaximumValue,
-    onRangeChange,
-    minimumValue,
-    maximumValue,
-    setMaximumDraft,
-    setMinimumDraft,
-  } = useRangeController({ minPrice, maxPrice, onChange });
   const { currencyText } = useCurrency();
+  const {
+    minInputValue,
+    maxInputValue,
+    minCommittedValue,
+    maxCommittedValue,
+    trackStartPercent,
+    trackWidthPercent,
+    commitMinInputValue,
+    commitMaxInputValue,
+    onRangeChange,
+    setMinInputValue,
+    setMaxInputValue,
+  } = useRangeController({ minPrice, maxPrice, onChange });
 
   return (
     <>
@@ -45,15 +45,15 @@ const DualRange = ({
         <RangeNumberInput
           id="minPrice"
           name="minPrice"
-          value={minimumDraft}
+          value={minInputValue}
           min={min}
           max={max}
           step={step}
           onChange={(event) => {
-            setMinimumDraft(event.target.value);
+            setMinInputValue(event.target.value);
           }}
           onBlur={() => {
-            commitMinimumValue(minimumDraft);
+            commitMinInputValue(minInputValue);
           }}
           labelText="Pris fra"
           inputSuffix={currencyText}
@@ -62,15 +62,15 @@ const DualRange = ({
         <RangeNumberInput
           id="maxPrice"
           name="maxPrice"
-          value={maximumDraft}
+          value={maxInputValue}
           min={min}
           max={max}
           step={step}
           onChange={(event) => {
-            setMaximumDraft(event.target.value);
+            setMaxInputValue(event.target.value);
           }}
           onBlur={() => {
-            commitMaximumValue(maximumDraft);
+            commitMaxInputValue(maxInputValue);
           }}
           labelText="Pris til"
           inputSuffix={currencyText}
@@ -80,16 +80,18 @@ const DualRange = ({
       <div className="dual-range">
         <output
           className="range-label range-label-min"
-          style={{ left: `${leftPercent}%` }}
+          style={{ left: `${trackStartPercent}%` }}
         >
-          {minimumValue} {unitLabel}
+          {minCommittedValue} {unitLabel}
         </output>
 
         <output
           className="range-label range-label-max"
-          style={{ left: `${leftPercent + widthPercent}%` }}
+          style={{
+            left: `${trackStartPercent + trackWidthPercent}%`,
+          }}
         >
-          {maximumValue} {unitLabel}
+          {maxCommittedValue} {unitLabel}
         </output>
 
         <div className="slider-track" />
@@ -97,15 +99,15 @@ const DualRange = ({
         <div
           className="slider-track-filled"
           style={{
-            left: `${leftPercent}%`,
-            width: `${widthPercent}%`,
+            left: `${trackStartPercent}%`,
+            width: `${trackWidthPercent}%`,
           }}
         />
 
         <RangeSliderInput
           min={min}
           max={max}
-          value={minimumValue}
+          value={minCommittedValue}
           onChange={onRangeChange}
           name="minPrice"
           id="min"
@@ -115,7 +117,7 @@ const DualRange = ({
         <RangeSliderInput
           min={min}
           max={max}
-          value={maximumValue}
+          value={maxCommittedValue}
           onChange={onRangeChange}
           name="maxPrice"
           id="max"
