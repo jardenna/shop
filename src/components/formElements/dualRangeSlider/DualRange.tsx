@@ -1,8 +1,8 @@
 import useCurrency from '../../../features/currency/useCurrency';
 import type { ChangeInputType } from '../../../types/types';
 import './_range.scss';
+import RangeDual from './RangeDual';
 import RangeNumberInput from './RangeNumberInput';
-import RangeSliderInput from './RangeSliderInput';
 import useRangeController from './useRangeController';
 
 interface DualRangeProps {
@@ -73,54 +73,15 @@ const DualRange = ({
           inputSuffix={currencyText}
         />
       </div>
-
-      <div className="dual-range">
-        <output
-          className="range-label range-label-min"
-          style={{ left: `${track.startPercent}%` }}
-        >
-          {committed.min} {unitLabel}
-        </output>
-
-        <output
-          className="range-label range-label-max"
-          style={{
-            left: `${track.startPercent + track.widthPercent}%`,
-          }}
-        >
-          {committed.max} {unitLabel}
-        </output>
-
-        <div className="slider-track" />
-
-        <div
-          className="slider-track-filled"
-          style={{
-            left: `${track.startPercent}%`,
-            width: `${track.widthPercent}%`,
-          }}
-        />
-
-        <RangeSliderInput
-          min={min}
-          max={max}
-          value={committed.min}
-          onChange={onRangeChange}
-          name="minPrice"
-          id="min"
-          step={step}
-        />
-
-        <RangeSliderInput
-          min={min}
-          max={max}
-          value={committed.max}
-          onChange={onRangeChange}
-          name="maxPrice"
-          id="max"
-          step={step}
-        />
-      </div>
+      <RangeDual
+        track={track}
+        max={max}
+        min={min}
+        step={step}
+        unitLabel={unitLabel}
+        onRangeChange={onRangeChange}
+        committed={committed}
+      />
     </>
   );
 };

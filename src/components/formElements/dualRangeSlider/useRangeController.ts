@@ -3,6 +3,16 @@ import useDebounce from '../../../hooks/useDebounce';
 import { ChangeInputType } from '../../../types/types';
 import { clampNumberToRange, parseFiniteNumberOrNull } from './rangeUtils';
 
+export interface RangeCommittedValues {
+  max: number;
+  min: number;
+}
+
+export interface RangeTrackMetrics {
+  startPercent: number;
+  widthPercent: number;
+}
+
 interface RangeControllerProps {
   maxValue: string;
   minValue: string;
