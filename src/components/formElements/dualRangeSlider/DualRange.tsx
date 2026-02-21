@@ -27,9 +27,13 @@ const DualRange = ({
   const { currencyText } = useCurrency();
 
   const { input, committed, track, onRangeChange } = useRangeController({
-    minPrice,
-    maxPrice,
+    minValue: minPrice,
+    maxValue: maxPrice,
     onChange,
+    inputNames: {
+      min: 'minPrice',
+      max: 'maxPrice',
+    },
   });
 
   return (

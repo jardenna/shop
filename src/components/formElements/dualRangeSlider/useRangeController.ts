@@ -3,37 +3,40 @@ import useDebounce from '../../../hooks/useDebounce';
 import { ChangeInputType } from '../../../types/types';
 import { clampNumberToRange, parseFiniteNumberOrNull } from './rangeUtils';
 
-interface PriceFilterProps {
-  maxPrice: string;
-  minPrice: string;
-  debounceMs?: number;
+interface RangeControllerProps {
+  maxValue: string;
+  minValue: string;
+  inputNames?: {
+    max: string;
+    min: string;
+  };
   max?: number;
   min?: number;
-  step?: number;
   onChange: (event: ChangeInputType) => void;
 }
 
 const useRangeController = ({
-  minPrice,
-  maxPrice,
+  minValue,
+  maxValue,
   onChange,
   min = 0,
   max = 10000,
-}: PriceFilterProps) => {
+  inputNames = { min: 'min', max: 'max' },
+}: RangeControllerProps) => {
   const { debounce } = useDebounce();
 
   const [minCommittedValue, setMinCommittedValue] = useState(() =>
-    clampNumberToRange(Number(minPrice || min), min, max),
+    clampNumberToRange(Number(minValue || min), min, max),
   );
   const [maxCommittedValue, setMaxCommittedValue] = useState(() =>
-    clampNumberToRange(Number(maxPrice || max), min, max),
+    clampNumberToRange(Number(maxValue || max), min, max),
   );
 
   const [minInputValue, setMinInputValue] = useState(() =>
-    String(clampNumberToRange(Number(minPrice || min), min, max)),
+    String(clampNumberToRange(Number(minValue || min), min, max)),
   );
   const [maxInputValue, setMaxInputValue] = useState(() =>
-    String(clampNumberToRange(Number(maxPrice || max), min, max)),
+    String(clampNumberToRange(Number(maxValue || max), min, max)),
   );
 
   const commitInputValue = (
@@ -43,7 +46,7 @@ const useRangeController = ({
     maxAllowedValue: number,
     setCommittedValue: (value: number) => void,
     setInputValue: (value: string) => void,
-    outputName: 'minPrice' | 'maxPrice',
+    outputName: string,
   ) => {
     const parsedValue = parseFiniteNumberOrNull(inputValue);
 
@@ -79,7 +82,7 @@ const useRangeController = ({
       maxCommittedValue,
       setMinCommittedValue,
       setMinInputValue,
-      'minPrice',
+      inputNames.min,
     );
   };
 
@@ -91,7 +94,7 @@ const useRangeController = ({
       max,
       setMaxCommittedValue,
       setMaxInputValue,
-      'maxPrice',
+      inputNames.max,
     );
   };
 
@@ -103,7 +106,7 @@ const useRangeController = ({
       return;
     }
 
-    const isMinHandle = name === 'minPrice';
+    const isMinHandle = name === inputNames.min;
 
     const nextCommittedValue = clampNumberToRange(
       numericValue,
@@ -122,7 +125,7 @@ const useRangeController = ({
     debounce(() => {
       onChange({
         target: {
-          name: isMinHandle ? 'minPrice' : 'maxPrice',
+          name: isMinHandle ? inputNames.min : inputNames.max,
           value: String(nextCommittedValue),
         },
       } as ChangeInputType);
