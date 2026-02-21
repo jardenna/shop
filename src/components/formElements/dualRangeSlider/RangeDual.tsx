@@ -1,9 +1,14 @@
 import { ChangeInputType } from '../../../types/types';
 import RangeSliderInput from './RangeSliderInput';
-import { RangeCommittedValues, RangeTrackMetrics } from './useRangeController';
+import {
+  InputUtils,
+  RangeCommittedValues,
+  RangeTrackMetrics,
+} from './useRangeController';
 
 type RangeDualProps = {
   committed: RangeCommittedValues;
+  inputNames: InputUtils;
   max: number;
   min: number;
   step: number;
@@ -17,6 +22,7 @@ const RangeDual = ({
   unitLabel,
   onRangeChange,
   committed,
+  inputNames,
   step,
   min,
   max,
@@ -53,7 +59,7 @@ const RangeDual = ({
       max={max}
       value={committed.min}
       onChange={onRangeChange}
-      name="minPrice"
+      name={inputNames.min}
       id="min"
       step={step}
     />
@@ -63,7 +69,7 @@ const RangeDual = ({
       max={max}
       value={committed.max}
       onChange={onRangeChange}
-      name="maxPrice"
+      name={inputNames.max}
       id="max"
       step={step}
     />

@@ -31,6 +31,10 @@ const ParamsPage = () => {
           min: 'minPrice',
           max: 'maxPrice',
         }}
+        inputLabels={{
+          min: 'Pris fra',
+          max: 'Pris til',
+        }}
         onChange={setValue}
         min={0}
         max={10000}
