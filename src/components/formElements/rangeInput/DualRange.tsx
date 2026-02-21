@@ -37,8 +37,7 @@ const DualRange = ({
     setMinimumDraft,
   } = useRangeController({ minPrice, maxPrice, onChange });
   return (
-    <div className="dual-range">
-      {' '}
+    <>
       <div>
         <RangeNumberInput
           id="minPrice"
@@ -72,7 +71,8 @@ const DualRange = ({
           labelText="Pris til"
         />
       </div>
-      <div className="dual-range-container">
+
+      <div className="dual-range">
         <output
           className="range-label range-label-min"
           style={{ left: `${leftPercent}%` }}
@@ -117,7 +117,7 @@ const DualRange = ({
           step={step}
         />
       </div>
-    </div>
+    </>
   );
 };
 

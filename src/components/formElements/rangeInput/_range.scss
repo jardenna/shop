@@ -33,44 +33,39 @@ $color-range-primary: $color-blue-30;
   box-shadow: $focus-ring;
 }
 
+.range-label {
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: $box-shadow;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: $color-white;
+
+  &::after {
+    content: '';
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @include triangle;
+  }
+
+  &.range-label-max {
+    transform: translateX(-50%);
+  }
+
+  &.range-label-min {
+    transform: translateX(-50%) translateX(0.6rem);
+  }
+}
+
 .dual-range {
   position: relative;
-  padding-block-start: 36px;
-
-  .range-label {
-    position: absolute;
-    top: 0;
-    white-space: nowrap;
-    pointer-events: none;
-    box-shadow: $box-shadow;
-    padding: 8px;
-    border-radius: 8px;
-    background-color: $color-white;
-
-    &::after {
-      content: '';
-      bottom: -6px;
-      left: 50%;
-      transform: translateX(-50%);
-
-      @include triangle;
-    }
-
-    &.range-label-max {
-      transform: translateX(-50%);
-    }
-
-    &.range-label-min {
-      transform: translateX(-50%) translateX(0.6rem);
-    }
-  }
-
-  .dual-range-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    min-height: rem(120px);
-  }
+  display: flex;
+  align-items: center;
+  min-height: rem(120px);
 
   .slider-track,
   .slider-track-filled {
