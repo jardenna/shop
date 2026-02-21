@@ -36,8 +36,6 @@ const ParamsPage = () => {
           max: 'Pris til',
         }}
         onChange={setValue}
-        min={0}
-        max={10000}
         unitLabel={currencyText}
       />
 
