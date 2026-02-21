@@ -2,6 +2,7 @@ import VisuallyHidden from '../../../components/VisuallyHidden';
 import { discountCalculation } from '../../../utils/utils';
 import useLanguage from '../../language/useLanguage';
 import useCurrency from '../useCurrency';
+import './_product-price.scss';
 
 type ProductPriceProps = {
   price: number;
