@@ -1,5 +1,6 @@
 import VisuallyHidden from '../../../components/VisuallyHidden';
 import { discountCalculation } from '../../../utils/utils';
+import useLanguage from '../../language/useLanguage';
 import useCurrency from '../useCurrency';
 
 type ProductPriceProps = {
@@ -9,6 +10,7 @@ type ProductPriceProps = {
 };
 
 const Price = ({ price, discountPrice, className }: ProductPriceProps) => {
+  const { language } = useLanguage();
   const discountedValue = discountPrice
     ? discountCalculation(price, discountPrice)
     : price;
@@ -25,8 +27,8 @@ const Price = ({ price, discountPrice, className }: ProductPriceProps) => {
     return (
       <span className={className}>
         <span>{discountedPrice}</span>
-        <span aria-hidden="true"> / </span>
-        <VisuallyHidden>Original price</VisuallyHidden>
+        <span aria-hidden="true">/</span>
+        <VisuallyHidden>{language.originaPrice}</VisuallyHidden>
         <span className="text-line-through">{regularPrice}</span>
       </span>
     );
