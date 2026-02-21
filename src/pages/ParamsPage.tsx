@@ -1,5 +1,5 @@
 import Form from '../components/form/Form';
-import DualRange from '../components/formElements/dualRangeSlider/DualRange';
+import DualRangeSlider from '../components/formElements/dualRangeSlider/DualRangeSlider';
 import useCurrency from '../features/currency/useCurrency';
 import useSearchParamsState from '../hooks/useSearchParamsState';
 import { availableBrands, availableSizes, colors } from '../utils/filters';
@@ -24,7 +24,7 @@ const ParamsPage = () => {
         console.log(values);
       }}
     >
-      <DualRange
+      <DualRangeSlider
         minPrice={values.minPrice}
         maxPrice={values.maxPrice}
         onChange={setValue}

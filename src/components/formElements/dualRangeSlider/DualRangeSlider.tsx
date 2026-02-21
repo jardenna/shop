@@ -5,7 +5,7 @@ import RangeDual from './RangeDual';
 import RangeNumberInput from './RangeNumberInput';
 import useRangeController from './useRangeController';
 
-interface DualRangeProps {
+interface DualRangeSliderProps {
   maxPrice: string;
   minPrice: string;
   unitLabel: string;
@@ -15,7 +15,7 @@ interface DualRangeProps {
   onChange: (event: ChangeInputType) => void;
 }
 
-const DualRange = ({
+const DualRangeSlider = ({
   minPrice,
   maxPrice,
   onChange,
@@ -23,7 +23,7 @@ const DualRange = ({
   min = 0,
   max = 10000,
   unitLabel,
-}: DualRangeProps) => {
+}: DualRangeSliderProps) => {
   const { currencyText } = useCurrency();
 
   const { input, committed, track, onRangeChange } = useRangeController({
@@ -86,4 +86,4 @@ const DualRange = ({
   );
 };
 
-export default DualRange;
+export default DualRangeSlider;
