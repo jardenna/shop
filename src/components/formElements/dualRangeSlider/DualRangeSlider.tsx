@@ -3,11 +3,12 @@ import type { ChangeInputType } from '../../../types/types';
 import './_range.scss';
 import RangeDual from './RangeDual';
 import RangeNumberInput from './RangeNumberInput';
-import useRangeController from './useRangeController';
+import useRangeController, { InputNames } from './useRangeController';
 
 interface DualRangeSliderProps {
-  maxPrice: string;
-  minPrice: string;
+  inputNames: InputNames;
+  maxValue: string;
+  minValue: string;
   unitLabel: string;
   max?: number;
   min?: number;
@@ -16,32 +17,30 @@ interface DualRangeSliderProps {
 }
 
 const DualRangeSlider = ({
-  minPrice,
-  maxPrice,
+  minValue,
+  maxValue,
   onChange,
   step = 100,
   min = 0,
   max = 10000,
+  inputNames,
   unitLabel,
 }: DualRangeSliderProps) => {
   const { currencyText } = useCurrency();
 
   const { input, committed, track, onRangeChange } = useRangeController({
-    minValue: minPrice,
-    maxValue: maxPrice,
+    minValue,
+    maxValue,
     onChange,
-    inputNames: {
-      min: 'minPrice',
-      max: 'maxPrice',
-    },
+    inputNames,
   });
 
   return (
     <>
       <div>
         <RangeNumberInput
-          id="minPrice"
-          name="minPrice"
+          id={inputNames.min}
+          name={inputNames.min}
           value={input.min}
           min={min}
           max={max}
@@ -57,8 +56,8 @@ const DualRangeSlider = ({
         />
 
         <RangeNumberInput
-          id="maxPrice"
-          name="maxPrice"
+          id={inputNames.max}
+          name={inputNames.max}
           value={input.max}
           min={min}
           max={max}

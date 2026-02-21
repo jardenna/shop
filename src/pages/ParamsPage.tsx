@@ -25,8 +25,12 @@ const ParamsPage = () => {
       }}
     >
       <DualRangeSlider
-        minPrice={values.minPrice}
-        maxPrice={values.maxPrice}
+        minValue={values.minPrice}
+        maxValue={values.maxPrice}
+        inputNames={{
+          min: 'minPrice',
+          max: 'maxPrice',
+        }}
         onChange={setValue}
         min={0}
         max={10000}

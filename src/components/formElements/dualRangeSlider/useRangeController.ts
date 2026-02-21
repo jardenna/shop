@@ -13,13 +13,15 @@ export interface RangeTrackMetrics {
   widthPercent: number;
 }
 
+export interface InputNames {
+  max: string;
+  min: string;
+}
+
 interface RangeControllerProps {
   maxValue: string;
   minValue: string;
-  inputNames?: {
-    max: string;
-    min: string;
-  };
+  inputNames?: InputNames;
   max?: number;
   min?: number;
   onChange: (event: ChangeInputType) => void;
