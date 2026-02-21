@@ -1,3 +1,4 @@
+import useCurrency from '../../../features/currency/useCurrency';
 import type { ChangeInputType } from '../../../types/types';
 import './_range.scss';
 import RangeNumberInput from './RangeNumberInput';
@@ -36,6 +37,8 @@ const DualRange = ({
     setMaximumDraft,
     setMinimumDraft,
   } = useRangeController({ minPrice, maxPrice, onChange });
+  const { currencyText } = useCurrency();
+
   return (
     <>
       <div>
@@ -53,6 +56,7 @@ const DualRange = ({
             commitMinimumValue(minimumDraft);
           }}
           labelText="Pris fra"
+          inputSuffix={currencyText}
         />
 
         <RangeNumberInput
@@ -69,6 +73,7 @@ const DualRange = ({
             commitMaximumValue(maximumDraft);
           }}
           labelText="Pris til"
+          inputSuffix={currencyText}
         />
       </div>
 

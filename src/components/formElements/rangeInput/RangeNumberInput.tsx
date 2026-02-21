@@ -9,6 +9,7 @@ type RangeNumberInputProps = {
   name: string;
   step: number;
   value: string;
+  inputSuffix?: string;
   onBlur: () => void;
   onChange: (event: ChangeInputType) => void;
 };
@@ -23,6 +24,7 @@ const RangeNumberInput = ({
   id,
   step,
   labelText,
+  inputSuffix,
 }: RangeNumberInputProps) => (
   <Input
     id={id}
@@ -36,6 +38,7 @@ const RangeNumberInput = ({
     onChange={onChange}
     onBlur={onBlur}
     labelText={labelText}
+    inputSuffix={inputSuffix}
   />
 );
 
