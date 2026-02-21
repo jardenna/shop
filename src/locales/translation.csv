@@ -216,6 +216,7 @@ mensFashion;Men’s fashion;Heremode
 menu;Menu;Menu
 minLength;At least 8 characters;Mindst 8 tegn
 missingYourSize;Missing your size;Mangler vi din størrelse
+monthAgo;months ago;måneder siden
 multiColor;MultiColour;Flerfarvet
 multipleReviewsNotPermitted;You can't review a product multiple times;Du kan ikke anmelde det samme produkt flere gange
 mustHaveLowercase;At least one lowercase letter;Mindst ét lille bogstav
@@ -330,6 +331,7 @@ published;Published;Udgivet
 publishTime;Publish time;Udgivelsestidspunkt
 purple;Purple;Lilla
 qty;Qty;Antal
+rating;Rating;Bedømmelse
 rateProduct;Rate product;Bedøm produkt
 rating1;1 star: Poor;1 stjerne: Dårlig
 rating2;2 stars: Below average;2 stjerner: Under middel
@@ -446,6 +448,7 @@ women;Women;Damer
 womenAltText;Glamorous woman in a black dress with a large silver buckle, dancing and radiating sophisticated joy.;Glamourøs kvinde i sort kjole med stort sølvspænde danser og udstråler sofistikeret glæde.
 womenBannerAltText;Sophisticated woman in a matching jacket and trousers with a bag and red flowers behind her, completing an elegant tableau.;Sofistikeret kvinde i matchende jakke og bukser med taske og røde blomster bag sig fuldender et elegant tableau.
 womensFashion;Women’s fashion;Damemode
+yearsAgo;years ago;år siden
 yellow;Yellow;Gul
 yesterday;Yesterday;I går
 yourDetailsUpdated;Your details was updated;Dine detaljer blev opdaterede
