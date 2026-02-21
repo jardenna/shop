@@ -80,7 +80,7 @@ const DualRangeSlider = ({
         min={min}
         step={step}
         unitLabel={unitLabel}
-        onRangeChange={onRangeChange}
+        onChange={onRangeChange}
         committed={committed}
         inputNames={inputNames}
       />

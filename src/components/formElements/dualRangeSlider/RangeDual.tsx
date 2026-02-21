@@ -6,21 +6,25 @@ import {
   RangeTrackMetrics,
 } from './useRangeController';
 
-type RangeDualProps = {
-  committed: RangeCommittedValues;
+export interface BaseDualRangeProps {
   inputNames: InputUtils;
   max: number;
   min: number;
   step: number;
+  onChange: (event: ChangeInputType) => void;
+}
+
+interface RangeDualProps extends BaseDualRangeProps {
+  committed: RangeCommittedValues;
+  inputNames: InputUtils;
   track: RangeTrackMetrics;
   unitLabel: string;
-  onRangeChange: (event: ChangeInputType) => void;
-};
+}
 
 const RangeDual = ({
   track,
   unitLabel,
-  onRangeChange,
+  onChange,
   committed,
   inputNames,
   step,
@@ -58,7 +62,7 @@ const RangeDual = ({
       min={min}
       max={max}
       value={committed.min}
-      onChange={onRangeChange}
+      onChange={onChange}
       name={inputNames.min}
       id="min"
       step={step}
@@ -68,7 +72,7 @@ const RangeDual = ({
       min={min}
       max={max}
       value={committed.max}
-      onChange={onRangeChange}
+      onChange={onChange}
       name={inputNames.max}
       id="max"
       step={step}

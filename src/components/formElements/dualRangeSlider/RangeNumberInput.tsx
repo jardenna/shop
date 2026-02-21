@@ -1,7 +1,7 @@
 import { ChangeInputType } from '../../../types/types';
 import Input from '../Input';
 
-type RangeNumberInputProps = {
+interface RangeNumberInputProps {
   id: string;
   labelText: string;
   max: number;
@@ -12,7 +12,7 @@ type RangeNumberInputProps = {
   inputSuffix?: string;
   onBlur: () => void;
   onChange: (event: ChangeInputType) => void;
-};
+}
 
 const RangeNumberInput = ({
   max,
