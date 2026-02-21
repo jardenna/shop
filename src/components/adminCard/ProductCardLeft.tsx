@@ -1,5 +1,5 @@
 import type { Status } from '../../app/api/apiTypes/adminApiTypes';
-import ProductDiscountPrice from '../../features/currency/components/ProductDiscountPrice';
+import Price from '../../features/currency/components/Price';
 import useLanguage from '../../features/language/useLanguage';
 import CardContent from '../card/CardContent';
 import MissingImage from '../formElements/fileInput/MissingImage';
@@ -44,7 +44,7 @@ const ProductCardLeft = ({
       />
       <p>{description}</p>
       <LabelValueGrid text={language.price}>
-        <ProductDiscountPrice price={price} discount={discount} />
+        <Price price={price} discountPrice={discount} />
       </LabelValueGrid>
     </CardContent>
   );

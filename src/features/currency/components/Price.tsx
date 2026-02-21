@@ -27,11 +27,11 @@ const Price = ({ price, discountPrice }: ProductPriceProps) => {
       {hasDiscount ? (
         <>
           <span className="discount-price">{discountedPrice}</span>
-          <span aria-hidden="true">/</span>
-          <VisuallyHidden>{language.originaPrice}</VisuallyHidden>
-          <span className="text-line-through orginal-price">
-            {regularPrice}
+          <span aria-hidden="true" className="price-seperator">
+            /
           </span>
+          <VisuallyHidden>{language.originaPrice}</VisuallyHidden>
+          <span className="orginal-price">{regularPrice}</span>
         </>
       ) : (
         <span>{regularPrice}</span>

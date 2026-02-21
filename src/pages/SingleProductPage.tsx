@@ -5,7 +5,6 @@ import ImgList from '../components/ImgList';
 import SkeletonSinglePage from '../components/skeleton/skeletonSinglePage/SkeletonSinglePage';
 import useAuth from '../features/auth/hooks/useAuth';
 import Price from '../features/currency/components/Price';
-import ProductDiscountPrice from '../features/currency/components/ProductDiscountPrice';
 import SingleProductHeader from '../features/currency/components/SingleProductHeader';
 import useLanguage from '../features/language/useLanguage';
 import InStock from '../features/shop/components/InStock';
@@ -118,10 +117,6 @@ const SingleProductPage = () => {
                 onReset={() => refetch}
               />
               <Price price={product.price} discountPrice={product.discount} />
-              <ProductDiscountPrice
-                price={product.price}
-                discount={product.discount}
-              />
               <div className="in-stock-container">
                 <InStock stock={product.countInStock} />
                 {(missingSizes.length > 0 || product.countInStock === 0) && (

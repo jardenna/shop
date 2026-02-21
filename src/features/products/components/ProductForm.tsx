@@ -27,7 +27,7 @@ import { getColorOptions } from '../../../utils/colorUtils';
 import handleApiError from '../../../utils/handleApiError';
 import { maxFiles, translateKey } from '../../../utils/utils';
 import validateProduct from '../../../utils/validation/validateProduct';
-import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
+import Price from '../../currency/components/Price';
 import useCurrency from '../../currency/useCurrency';
 import handleImageUpload from '../../imageUploads/handleImageUpload';
 import useLanguage from '../../language/useLanguage';
@@ -385,10 +385,7 @@ const ProductForm = ({
                 labelText="showPrice"
               />
               {showPrice && (
-                <ProductDiscountPrice
-                  price={values.price}
-                  discount={values.discount}
-                />
+                <Price price={values.price} discountPrice={values.discount} />
               )}
             </div>
           </FormCard>

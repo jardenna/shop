@@ -1,5 +1,5 @@
 import type { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
-import ProductDiscountPrice from '../../currency/components/ProductDiscountPrice';
+import Price from '../../currency/components/Price';
 import ColorList from './productLists/ColorList';
 import SizeList from './productLists/SizeList';
 
@@ -10,7 +10,7 @@ type ProductCardListContentProps = {
 const ProductCardListContent = ({ product }: ProductCardListContentProps) => (
   <>
     <p className="product-card-description">{product.description}</p>
-    <ProductDiscountPrice price={product.price} discount={product.discount} />
+    <Price price={product.price} discountPrice={product.discount} />
     <SizeList
       availableSizeList={product.sizes}
       subCategoryName={product.subCategoryName}
