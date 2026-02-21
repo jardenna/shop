@@ -32,6 +32,7 @@ const ParamsPage = () => {
         max={10000}
         unitLabel={currencyText}
       />
+
       <ul className="checkbox-list">
         {availableBrands.map((value) => (
           <li key={value} className="checkbox-item">

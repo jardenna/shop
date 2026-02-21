@@ -32,6 +32,7 @@ export type InputProps = {
   placeholder?: string;
   ref?: RefInputType;
   required?: boolean;
+  step?: number;
   type?: InputType;
   onBlur?: (event: BlurEventType) => void;
   onFocus?: () => void;
@@ -41,6 +42,7 @@ const Input = ({
   id,
   ref,
   type,
+  step,
   required,
   labelText,
   name,
@@ -91,6 +93,7 @@ const Input = ({
           errorText={errorText}
         />
         <input
+          step={step}
           ref={ref}
           multiple={multiple}
           type={type || 'text'}

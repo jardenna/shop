@@ -38,83 +38,81 @@ const DualRange = ({
   } = useRangeController({ minPrice, maxPrice, onChange });
   return (
     <div className="dual-range">
-      <output
-        className="range-label range-label-min"
-        style={{ left: `${leftPercent}%` }}
-      >
-        {minimumValue} {unitLabel}
-      </output>
+      <div>
+        <output
+          className="range-label range-label-min"
+          style={{ left: `${leftPercent}%` }}
+        >
+          {minimumValue} {unitLabel}
+        </output>
 
-      <output
-        className="range-label range-label-max"
-        style={{ left: `${leftPercent + widthPercent}%` }}
-      >
-        {maximumValue} {unitLabel}
-      </output>
-      <div className="dual-range-container">
-        <div className="slider-track" />
-        <div
-          className="slider-track-filled"
-          style={{
-            left: `${leftPercent}%`,
-            width: `${widthPercent}%`,
-          }}
-        />
-        <RangeSliderInput
-          min={min}
-          max={max}
-          value={minimumValue}
-          onChange={onRangeChange}
-          name="minPrice"
-          id="min"
-          step={step}
-        />
-        <RangeSliderInput
-          min={min}
-          max={max}
-          value={maximumValue}
-          onChange={onRangeChange}
-          name="maxPrice"
-          id="max"
-          step={step}
-        />
-      </div>
-      <div className="price-inputs">
-        <div className="price-input-group">
-          <RangeNumberInput
-            id="minPrice"
+        <output
+          className="range-label range-label-max"
+          style={{ left: `${leftPercent + widthPercent}%` }}
+        >
+          {maximumValue} {unitLabel}
+        </output>
+        <div className="dual-range-container">
+          <div className="slider-track" />
+          <div
+            className="slider-track-filled"
+            style={{
+              left: `${leftPercent}%`,
+              width: `${widthPercent}%`,
+            }}
+          />
+          <RangeSliderInput
+            min={min}
+            max={max}
+            value={minimumValue}
+            onChange={onRangeChange}
             name="minPrice"
-            value={minimumDraft}
+            id="min"
+            step={step}
+          />
+          <RangeSliderInput
             min={min}
             max={max}
-            step={step}
-            onChange={(event) => {
-              setMinimumDraft(event.target.value);
-            }}
-            onBlur={() => {
-              commitMinimumValue(minimumDraft);
-            }}
-            labelText="Minimum pris"
-          />
-        </div>
-
-        <div className="price-input-group">
-          <RangeNumberInput
-            id="maxPrice"
+            value={maximumValue}
+            onChange={onRangeChange}
             name="maxPrice"
-            value={maximumDraft}
-            min={min}
-            max={max}
+            id="max"
             step={step}
-            onChange={(event) => {
-              setMaximumDraft(event.target.value);
-            }}
-            onBlur={() => {
-              commitMaximumValue(maximumDraft);
-            }}
-            labelText="Maximum pris"
           />
         </div>
+      </div>
+
+      <div>
+        <RangeNumberInput
+          id="minPrice"
+          name="minPrice"
+          value={minimumDraft}
+          min={min}
+          max={max}
+          step={step}
+          onChange={(event) => {
+            setMinimumDraft(event.target.value);
+          }}
+          onBlur={() => {
+            commitMinimumValue(minimumDraft);
+          }}
+          labelText="Pris fra"
+        />
+        <RangeNumberInput
+          id="maxPrice"
+          name="maxPrice"
+          value={maximumDraft}
+          min={min}
+          max={max}
+          step={step}
+          onChange={(event) => {
+            setMaximumDraft(event.target.value);
+          }}
+          onBlur={() => {
+            commitMaximumValue(maximumDraft);
+          }}
+          labelText="Pris til"
+        />
       </div>
     </div>
   );
