@@ -43,10 +43,10 @@ const DualRange = ({
   });
 
   return (
-    <div role="group" aria-labelledby={standAlone ? groupLabelId : undefined}>
-      {standAlone && (
-        <VisuallyHidden id={groupLabelId}>Range slider</VisuallyHidden>
-      )}
+    <div role="group" aria-labelledby={groupLabelId}>
+      <VisuallyHidden id={groupLabelId}>
+        {`${inputLabels.min} to ${inputLabels.max}`}
+      </VisuallyHidden>
 
       {!standAlone && (
         <div>
@@ -85,6 +85,7 @@ const DualRange = ({
           />
         </div>
       )}
+
       <DualRangeSlider
         track={track}
         max={max}
