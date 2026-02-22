@@ -1,11 +1,13 @@
 import Form from '../components/form/Form';
 import DualRange from '../components/formElements/dualRangeSlider/DualRange';
 import useCurrency from '../features/currency/useCurrency';
+import useLanguage from '../features/language/useLanguage';
 import useSearchParamsState from '../hooks/useSearchParamsState';
 import { availableBrands, availableSizes, colors } from '../utils/filters';
 
 const ParamsPage = () => {
   const { currencyText } = useCurrency();
+  const { language } = useLanguage();
   const initialFilters = {
     sizes: [] as string[],
     colors: [] as string[],
@@ -27,6 +29,7 @@ const ParamsPage = () => {
       <DualRange
         minValue={values.minPrice}
         maxValue={values.maxPrice}
+        rangeLabel={language.priceRange}
         inputNames={{
           min: 'minPrice',
           max: 'maxPrice',

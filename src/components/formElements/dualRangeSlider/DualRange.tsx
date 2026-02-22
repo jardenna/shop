@@ -12,6 +12,7 @@ interface DualRangeProps {
   inputNames: InputUtils;
   maxValue: string;
   minValue: string;
+  rangeLabel: string;
   unitLabel: string;
   max?: number;
   min?: number;
@@ -30,6 +31,7 @@ const DualRange = ({
   inputNames,
   inputLabels,
   unitLabel,
+  rangeLabel,
   standAlone = false,
 }: DualRangeProps) => {
   const { currencyText } = useCurrency();
@@ -44,9 +46,7 @@ const DualRange = ({
 
   return (
     <div role="group" aria-labelledby={groupLabelId}>
-      <VisuallyHidden id={groupLabelId}>
-        {`${inputLabels.min} to ${inputLabels.max}`}
-      </VisuallyHidden>
+      <VisuallyHidden id={groupLabelId}>{rangeLabel}</VisuallyHidden>
 
       {!standAlone && (
         <div>
