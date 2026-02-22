@@ -33,39 +33,13 @@ $color-range-primary: $color-blue-30;
   box-shadow: $focus-ring;
 }
 
-.range-label {
-  position: absolute;
-  top: 0;
-  white-space: nowrap;
-  pointer-events: none;
-  box-shadow: $box-shadow;
-  padding: 8px;
-  border-radius: 8px;
-  background-color: $color-white;
-
-  &::after {
-    content: '';
-    bottom: -6px;
-    left: 50%;
-    transform: translateX(-50%);
-
-    @include triangle;
-  }
-
-  &.range-label-max {
-    transform: translateX(-50%);
-  }
-
-  &.range-label-min {
-    transform: translateX(-50%) translateX(0.6rem);
-  }
-}
-
 .dual-range {
   position: relative;
   display: flex;
   align-items: center;
-  min-height: rem(120px);
+  min-height: rem(56px);
+  margin-top: 40px;
+  margin-inline: 12px;
 
   .slider-track,
   .slider-track-filled {
@@ -82,6 +56,34 @@ $color-range-primary: $color-blue-30;
 
   .slider-track-filled {
     background-color: $color-range-primary;
+  }
+
+  .range-label {
+    position: absolute;
+    top: -28px;
+    white-space: nowrap;
+    pointer-events: none;
+    box-shadow: $box-shadow;
+    padding: 8px;
+    border-radius: 8px;
+    background-color: $color-white;
+
+    &::after {
+      content: '';
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      @include triangle;
+    }
+
+    &.range-label-max {
+      transform: translateX(-50%) translateX(-1rem);
+    }
+
+    &.range-label-min {
+      transform: translateX(-50%) translateX(0.6rem);
+    }
   }
 
   .range-slider-input {
@@ -137,6 +139,19 @@ $color-range-primary: $color-blue-30;
 
     &::-moz-range-thumb:hover {
       @include thumb-hover;
+    }
+  }
+}
+
+.dual-number-range {
+  display: flex;
+  justify-content: space-between;
+
+  .input-container {
+    max-width: rem(172px);
+
+    input {
+      min-height: rem(52px);
     }
   }
 }
