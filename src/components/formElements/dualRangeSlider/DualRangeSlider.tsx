@@ -33,15 +33,12 @@ const DualRangeSlider = ({
   max,
   step,
 }: DualRangeSliderProps) => {
-  const minOutputId = useId();
-  const maxOutputId = useId();
   const minRangeId = useId();
   const maxRangeId = useId();
 
   return (
     <div className="dual-range">
       <output
-        id={minOutputId}
         className="range-label range-label-min"
         style={{ left: `${track.startPercent}%` }}
       >
@@ -49,7 +46,6 @@ const DualRangeSlider = ({
       </output>
 
       <output
-        id={maxOutputId}
         className="range-label range-label-max"
         style={{
           left: `${track.startPercent + track.widthPercent}%`,
@@ -81,7 +77,7 @@ const DualRangeSlider = ({
         step={step}
         value={committed.min}
         onChange={onChange}
-        aria-describedby={minOutputId}
+        aria-valuetext={`${committed.min} ${unitLabel}`}
       />
 
       <VisuallyHidden as="label" htmlFor={maxRangeId}>
@@ -96,9 +92,10 @@ const DualRangeSlider = ({
         step={step}
         value={committed.max}
         onChange={onChange}
-        aria-describedby={maxOutputId}
+        aria-valuetext={`${committed.max} ${unitLabel}`}
       />
     </div>
   );
 };
+
 export default DualRangeSlider;
