@@ -1,3 +1,4 @@
+import { useId } from 'react';
 import useCurrency from '../../../features/currency/useCurrency';
 import type { ChangeInputType } from '../../../types/types';
 import VisuallyHidden from '../../VisuallyHidden';
@@ -32,6 +33,7 @@ const DualRange = ({
   standAlone = false,
 }: DualRangeProps) => {
   const { currencyText } = useCurrency();
+  const groupLabelId = useId();
 
   const { input, committed, track, onRangeChange } = useRangeController({
     minValue,
@@ -41,15 +43,11 @@ const DualRange = ({
   });
 
   return (
-    <div
-      {...(standAlone && {
-        role: 'group',
-        'aria-labelledby': 'dual-range-label',
-      })}
-    >
+    <div role="group" aria-labelledby={standAlone ? groupLabelId : undefined}>
       {standAlone && (
-        <VisuallyHidden id="dual-range-label">Range slider</VisuallyHidden>
+        <VisuallyHidden id={groupLabelId}>Range slider</VisuallyHidden>
       )}
+
       {!standAlone && (
         <div>
           <RangeNumberInput
@@ -89,7 +87,6 @@ const DualRange = ({
       )}
       <DualRangeSlider
         track={track}
-        standAlone={standAlone}
         max={max}
         min={min}
         step={step}
