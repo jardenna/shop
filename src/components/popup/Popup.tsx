@@ -1,37 +1,28 @@
+import { Placement } from '@popperjs/core';
 import { ReactNode, useId } from 'react';
 import usePopup from '../../hooks/usePopup';
 import { BtnVariant } from '../../types/enums';
-import type { OmitChecked } from '../../types/types';
+import type { AriaHasPopup } from '../../types/types';
 import Button from '../Button';
-import { DropdownBtnProps } from '../dropdownBtn/DropdownBtn';
 import './_popup.scss';
 
-type OmittedDropdownBtnProps = OmitChecked<
-  DropdownBtnProps,
-  'dropdownList' | 'showArrow'
->;
-
-type PopupProps = OmittedDropdownBtnProps & {
+interface PopupProps {
+  ariaHasPopup: AriaHasPopup;
+  ariaLabel: string;
+  children: ReactNode;
   popupContent: ReactNode | ((helpers: { close: () => void }) => ReactNode);
-};
-
-// interface PopupProp {
-//   ariaHasPopup: AriaHasPopup;
-//   ariaLabel: string;
-//   children: ReactNode;
-//   popupContent: ReactNode | ((helpers: { close: () => void }) => ReactNode);
-//   triggerBtnClassName: string;
-//   triggerBtnVariant: BtnVariant;
-//   placement?: Placement;
-// }
+  placement?: Placement;
+  triggerBtnClassName?: string;
+  triggerBtnVariant?: BtnVariant;
+}
 
 const Popup = ({
   children,
   popupContent,
   ariaLabel,
   ariaHasPopup,
-  triggerBtnVariant = BtnVariant.Ghost,
-  triggerBtnClassName = '',
+  triggerBtnVariant,
+  triggerBtnClassName,
   placement,
 }: PopupProps) => {
   const popupId = useId();
