@@ -5,6 +5,7 @@ type VisuallyHiddenProps = HTMLAttributes<HTMLElement> & {
   children: ReactNode;
   as?: ElementType;
   htmlFor?: string;
+  id?: string;
 };
 
 const VisuallyHidden = ({

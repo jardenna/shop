@@ -8,8 +8,8 @@ $color-range-primary: $color-blue-30;
 @mixin thumb-base {
   width: $thumb-size;
   height: $thumb-size;
-  background-color: $color-white;
-  border: $thumb-border solid $color-range-primary;
+  background-color: $color-range-primary;
+  border: $thumb-border solid $color-white;
   border-radius: 50%;
   cursor: grab;
   pointer-events: auto;
@@ -24,7 +24,6 @@ $color-range-primary: $color-blue-30;
 
 @mixin thumb-active {
   cursor: grabbing;
-  background-color: $color-gray-20;
   transform: scale(1.1);
 }
 
@@ -36,11 +35,32 @@ $color-range-primary: $color-blue-30;
 
 .dual-range {
   position: relative;
-  padding-block-start: 36px;
+  display: flex;
+  align-items: center;
+  min-height: rem(56px);
+  margin-top: 40px;
+  margin-inline: 12px;
+
+  .slider-track,
+  .slider-track-filled {
+    position: absolute;
+    height: 8px;
+    border-radius: 4px;
+    pointer-events: none;
+  }
+
+  .slider-track {
+    width: 100%;
+    background-color: $color-gray-20;
+  }
+
+  .slider-track-filled {
+    background-color: $color-range-primary;
+  }
 
   .range-label {
     position: absolute;
-    top: 0;
+    top: -28px;
     white-space: nowrap;
     pointer-events: none;
     box-shadow: $box-shadow;
@@ -58,36 +78,12 @@ $color-range-primary: $color-blue-30;
     }
 
     &.range-label-max {
-      transform: translateX(-50%) translateX(-0.6rem);
+      transform: translateX(-50%) translateX(-1rem);
     }
 
     &.range-label-min {
-      transform: translateX(-50%) translateX(0.3rem);
+      transform: translateX(-50%) translateX(0.6rem);
     }
-  }
-
-  .dual-range-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin-block: 20px;
-  }
-
-  .slider-track,
-  .slider-track-filled {
-    position: absolute;
-    height: 8px;
-    border-radius: 4px;
-    pointer-events: none;
-  }
-
-  .slider-track {
-    width: 100%;
-    background-color: $color-gray-20;
-  }
-
-  .slider-track-filled {
-    background-color: $color-range-primary;
   }
 
   .range-slider-input {
@@ -143,6 +139,19 @@ $color-range-primary: $color-blue-30;
 
     &::-moz-range-thumb:hover {
       @include thumb-hover;
+    }
+  }
+}
+
+.dual-number-range {
+  display: flex;
+  justify-content: space-between;
+
+  .input-container {
+    max-width: rem(172px);
+
+    input {
+      min-height: rem(52px);
     }
   }
 }

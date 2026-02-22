@@ -1,11 +1,13 @@
 import Form from '../components/form/Form';
-import DualRange from '../components/formElements/rangeInput/DualRange';
+import DualRange from '../components/formElements/dualRangeSlider/DualRange';
 import useCurrency from '../features/currency/useCurrency';
+import useLanguage from '../features/language/useLanguage';
 import useSearchParamsState from '../hooks/useSearchParamsState';
 import { availableBrands, availableSizes, colors } from '../utils/filters';
 
 const ParamsPage = () => {
   const { currencyText } = useCurrency();
+  const { language } = useLanguage();
   const initialFilters = {
     sizes: [] as string[],
     colors: [] as string[],
@@ -25,13 +27,21 @@ const ParamsPage = () => {
       }}
     >
       <DualRange
-        minPrice={values.minPrice}
-        maxPrice={values.maxPrice}
+        minValue={values.minPrice}
+        maxValue={values.maxPrice}
+        rangeLabel={language.priceRange}
+        inputNames={{
+          min: 'minPrice',
+          max: 'maxPrice',
+        }}
+        inputLabels={{
+          min: 'Pris fra',
+          max: 'Pris til',
+        }}
         onChange={setValue}
-        min={0}
-        max={10000}
         unitLabel={currencyText}
       />
+
       <ul className="checkbox-list">
         {availableBrands.map((value) => (
           <li key={value} className="checkbox-item">

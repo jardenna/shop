@@ -1,4 +1,4 @@
-export const clampNumberToRange = (
+export const normalizeValueWithinRange = (
   value: number,
   lowerBound: number,
   upperBound: number,

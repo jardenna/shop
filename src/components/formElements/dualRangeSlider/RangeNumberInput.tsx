@@ -1,6 +1,7 @@
 import { ChangeInputType } from '../../../types/types';
+import Input from '../Input';
 
-type RangeNumberInputProps = {
+interface RangeNumberInputProps {
   id: string;
   labelText: string;
   max: number;
@@ -8,9 +9,10 @@ type RangeNumberInputProps = {
   name: string;
   step: number;
   value: string;
+  inputSuffix?: string;
   onBlur: () => void;
   onChange: (event: ChangeInputType) => void;
-};
+}
 
 const RangeNumberInput = ({
   max,
@@ -22,22 +24,22 @@ const RangeNumberInput = ({
   id,
   step,
   labelText,
+  inputSuffix,
 }: RangeNumberInputProps) => (
-  <>
-    <label htmlFor={id}>{labelText}</label>
-    <input
-      id={id}
-      name={name}
-      type="number"
-      value={value}
-      min={min}
-      max={max}
-      step={step}
-      inputMode="numeric"
-      onChange={onChange}
-      onBlur={onBlur}
-    />
-  </>
+  <Input
+    id={id}
+    name={name}
+    type="number"
+    value={value}
+    min={min}
+    max={max}
+    step={step}
+    inputMode="numeric"
+    onChange={onChange}
+    onBlur={onBlur}
+    labelText={labelText}
+    inputSuffix={inputSuffix}
+  />
 );
 
 export default RangeNumberInput;
