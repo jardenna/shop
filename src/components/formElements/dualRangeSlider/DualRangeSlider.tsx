@@ -77,7 +77,7 @@ const DualRangeSlider = ({
         step={step}
         value={committed.min}
         onChange={onChange}
-        aria-valuetext={`${committed.min} ${unitLabel}`}
+        ariaValuetext={`${committed.min} ${unitLabel}`}
       />
 
       <VisuallyHidden as="label" htmlFor={maxRangeId}>
@@ -92,7 +92,7 @@ const DualRangeSlider = ({
         step={step}
         value={committed.max}
         onChange={onChange}
-        aria-valuetext={`${committed.max} ${unitLabel}`}
+        ariaValuetext={`${committed.max} ${unitLabel}`}
       />
     </div>
   );

@@ -1,3 +1,4 @@
+import { useId } from 'react';
 import { NavLink } from 'react-router';
 import Picture from '../../../components/Picture';
 import { ShopPath } from '../../../layout/nav/enums';
@@ -8,7 +9,6 @@ export type MainCollectionsBaseProps = {
   linkText: string;
   linkTo: ShopPath;
   title: string;
-  ariaLabelledby?: string;
   imgExtention?: ImgExtention;
   imgList?: string[];
 };
@@ -22,16 +22,16 @@ const MainCollectionsItem = ({
   imgList,
   linkTo,
   linkText,
-  ariaLabelledby,
   imgPath,
   imgExtention = 'jpg',
 }: MainCollectionsItemProps) => {
+  const collectionId = useId();
   const { language } = useLanguage();
 
   return (
-    <article className="collections-item" aria-labelledby={ariaLabelledby}>
+    <article className="collections-item" aria-labelledby={collectionId}>
       <div className="collections-content">
-        <h2 id={ariaLabelledby} className="collections-title">
+        <h2 id={collectionId} className="collections-title">
           {title}
         </h2>
         <NavLink className="btn btn-primary" to={linkTo}>

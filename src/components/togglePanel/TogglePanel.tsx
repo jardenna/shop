@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { useId, type ReactNode } from 'react';
 import useLanguage from '../../features/language/useLanguage';
 import useMediaQuery from '../../hooks/useMediaQuery';
 import useTrapFocus from '../../hooks/useTrapFocus';
@@ -21,7 +21,6 @@ type ActionBtnsProps = {
 };
 
 type TogglePanelProps = {
-  ariaControls: string;
   ariaHasPopup: AriaHasPopup;
   children: ReactNode;
   className?: string;
@@ -36,7 +35,6 @@ type TogglePanelProps = {
 
 const TogglePanel = ({
   children,
-  ariaControls,
   panelPosition = 'right',
   className = '',
   triggerBtnClassName,
@@ -47,6 +45,7 @@ const TogglePanel = ({
   footer,
   role,
 }: TogglePanelProps) => {
+  const togglePanelId = useId();
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } = useTogglePanel(
@@ -69,7 +68,7 @@ const TogglePanel = ({
         onClick={onTogglePanel}
         ariaLabel={ariaLabel}
         ariaHasPopup={ariaHasPopup}
-        ariaControls={ariaControls}
+        ariaControls={togglePanelId}
       >
         {triggerBtnContent ? (
           triggerBtnContent
@@ -81,7 +80,7 @@ const TogglePanel = ({
         ref={panelRef}
         role={role}
         className={`toggle-panel ${panelPosition} ${className} ${isPanelShown ? 'shown' : ''}`}
-        id={ariaControls}
+        id={togglePanelId}
         aria-hidden={isPanelShown ? undefined : true}
       >
         {isPanelShown ? children : ''}

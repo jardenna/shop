@@ -37,7 +37,6 @@ const HeaderIcons = ({
         <li>
           <DropdownBtn
             dropdownList={dropdownBtnList}
-            ariaControls="user-dropdown"
             placement="bottom-start"
             ariaHasPopup="menu"
           >

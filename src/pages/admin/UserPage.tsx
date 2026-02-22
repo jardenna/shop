@@ -142,7 +142,6 @@ const UserPage = () => {
                 {allowedEditUser && !isAdmin && (
                   <Popup
                     placement="left-start"
-                    ariaControls="delete-user"
                     ariaHasPopup="dialog"
                     popupContent={({ close }) => (
                       <DeleteUser

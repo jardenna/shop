@@ -1,11 +1,11 @@
 import { Placement } from '@popperjs/core';
-import type { ReactNode } from 'react';
+import { useId, type ReactNode } from 'react';
 import usePopup from '../../hooks/usePopup';
 import { BtnVariant } from '../../types/enums';
+import { AriaHasPopup } from '../../types/types';
 import Button from '../Button';
 import './_dropdown-btn.scss';
 import DropdownList from './DropdownList';
-import { AriaHasPopup } from '../../types/types';
 
 export type DropdownItem = {
   label: string;
@@ -17,7 +17,6 @@ export type DropdownItem = {
 };
 
 export type DropdownBtnProps = {
-  ariaControls: string;
   ariaHasPopup: AriaHasPopup;
   children: ReactNode;
   dropdownList: DropdownItem[];
@@ -31,7 +30,6 @@ export type DropdownBtnProps = {
 const DropdownBtn = ({
   dropdownList,
   triggerBtnVariant = BtnVariant.Ghost,
-  ariaControls,
   children,
   showArrow,
   placement,
@@ -39,6 +37,7 @@ const DropdownBtn = ({
   ariaHasPopup,
   triggerBtnClassName,
 }: DropdownBtnProps) => {
+  const dropdownId = useId();
   const { popupRef, popupIsOpen, togglePopupList, arrowRef, buttonRef } =
     usePopup({ placement });
 
@@ -49,7 +48,7 @@ const DropdownBtn = ({
         onClick={togglePopupList}
         ariaExpanded={popupIsOpen || false}
         ariaHasPopup={ariaHasPopup}
-        ariaControls={ariaControls}
+        ariaControls={dropdownId}
         ariaLabel={ariaLabel}
         className={triggerBtnClassName}
         ref={(el) => {
@@ -59,7 +58,7 @@ const DropdownBtn = ({
         {children}
       </Button>
       {popupIsOpen && (
-        <div ref={popupRef} className="popup-container" id={ariaControls}>
+        <div ref={popupRef} className="popup-container" id={dropdownId}>
           <DropdownList defaultIndex={-1} dropdownList={dropdownList} />
           {showArrow && (
             <span ref={arrowRef} className="popup-arrow" aria-hidden={true} />

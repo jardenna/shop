@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { useId, type ReactNode } from 'react';
 import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import type { AccordionList } from '../../../components/accordion/Accordion';
 import Accordion from '../../../components/accordion/Accordion';
@@ -97,7 +97,7 @@ const FilterPanel = ({
     ),
   }));
 
-  const ariaLabelledby = 'filter-title';
+  const ariaLabelledby = useId();
 
   return (
     <TogglePanel
@@ -111,7 +111,6 @@ const FilterPanel = ({
         secondaryBtnText: language.clearAllFilters,
         primaryBtnDisabled: productCount === 0,
       }}
-      ariaControls="filter-products"
       role="dialog"
       showCloseIcon
       className="filter-panel"

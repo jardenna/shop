@@ -14,7 +14,6 @@ type ButtonProps = {
   children: ReactNode;
   ariaControls?: string;
   ariaCurrent?: AriaCurrentType;
-  ariaDescribedby?: string;
   ariaExpanded?: boolean;
   ariaHasPopup?: AriaHasPopup;
   ariaLabel?: string;
@@ -53,7 +52,6 @@ const Button = ({
   autoFocus,
   disabled,
   name,
-  ariaDescribedby,
   showBtnLoader,
   popupRef,
 }: ButtonProps) => (
@@ -73,7 +71,6 @@ const Button = ({
     disabled={disabled || showBtnLoader ? true : undefined}
     className={`btn btn-${variant} ${className}`}
     name={name}
-    aria-describedby={ariaDescribedby || undefined}
   >
     {ariaLabel && <VisuallyHidden>{ariaLabel}</VisuallyHidden>}
     {!showBtnLoader ? (
