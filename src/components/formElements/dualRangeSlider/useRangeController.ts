@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import useDebounce from '../../../hooks/useDebounce';
 import { ChangeInputType } from '../../../types/types';
-import { clampNumberToRange, parseFiniteNumberOrNull } from './rangeUtils';
+import {
+  normalizeValueWithinRange,
+  parseFiniteNumberOrNull,
+} from './rangeUtils';
 
 export interface InputUtils {
   max: string;
@@ -28,56 +31,56 @@ const useRangeController = ({
   const { debounce } = useDebounce();
 
   const [minCommittedValue, setMinCommittedValue] = useState(() =>
-    clampNumberToRange(Number(minValue || min), min, max),
+    normalizeValueWithinRange(Number(minValue || min), min, max),
   );
   const [maxCommittedValue, setMaxCommittedValue] = useState(() =>
-    clampNumberToRange(Number(maxValue || max), min, max),
+    normalizeValueWithinRange(Number(maxValue || max), min, max),
   );
 
   const [minInputValue, setMinInputValue] = useState(() =>
-    String(clampNumberToRange(Number(minValue || min), min, max)),
+    String(normalizeValueWithinRange(Number(minValue || min), min, max)),
   );
   const [maxInputValue, setMaxInputValue] = useState(() =>
-    String(clampNumberToRange(Number(maxValue || max), min, max)),
+    String(normalizeValueWithinRange(Number(maxValue || max), min, max)),
   );
 
-  const commitInputValue = (
-    inputValue: string,
-    currentCommittedValue: number,
-    minAllowedValue: number,
-    maxAllowedValue: number,
-    setCommittedValue: (value: number) => void,
-    setInputValue: (value: string) => void,
-    outputName: string,
+  const commitParsedInputValue = (
+    rawInputValue: string,
+    fallbackCommittedValue: number,
+    allowedMinimum: number,
+    allowedMaximum: number,
+    updateCommittedValue: (value: number) => void,
+    updateInputValue: (value: string) => void,
+    outputFieldName: string,
   ) => {
-    const parsedValue = parseFiniteNumberOrNull(inputValue);
+    const parsedNumber = parseFiniteNumberOrNull(rawInputValue);
 
-    if (parsedValue === null) {
-      setInputValue(String(currentCommittedValue));
+    if (parsedNumber === null) {
+      updateInputValue(String(fallbackCommittedValue));
       return;
     }
 
-    const nextCommittedValue = clampNumberToRange(
-      parsedValue,
-      minAllowedValue,
-      maxAllowedValue,
+    const committedValue = normalizeValueWithinRange(
+      parsedNumber,
+      allowedMinimum,
+      allowedMaximum,
     );
 
-    setCommittedValue(nextCommittedValue);
-    setInputValue(String(nextCommittedValue));
+    updateCommittedValue(committedValue);
+    updateInputValue(String(committedValue));
 
     debounce(() => {
       onChange({
         target: {
-          name: outputName,
-          value: String(nextCommittedValue),
+          name: outputFieldName,
+          value: String(committedValue),
         },
       } as ChangeInputType);
     });
   };
 
   const commitMinInputValue = (inputValue: string) => {
-    commitInputValue(
+    commitParsedInputValue(
       inputValue,
       minCommittedValue,
       min,
@@ -89,7 +92,7 @@ const useRangeController = ({
   };
 
   const commitMaxInputValue = (inputValue: string) => {
-    commitInputValue(
+    commitParsedInputValue(
       inputValue,
       maxCommittedValue,
       minCommittedValue,
@@ -102,33 +105,33 @@ const useRangeController = ({
 
   const handleRangeChange = (event: ChangeInputType) => {
     const { name, value } = event.target;
-    const numericValue = Number(value);
+    const parsedNumber = Number(value);
 
-    if (!Number.isFinite(numericValue)) {
+    if (!Number.isFinite(parsedNumber)) {
       return;
     }
 
     const isMinHandle = name === inputNames.min;
 
-    const nextCommittedValue = clampNumberToRange(
-      numericValue,
+    const committedValue = normalizeValueWithinRange(
+      parsedNumber,
       isMinHandle ? min : minCommittedValue,
       isMinHandle ? maxCommittedValue : max,
     );
 
     if (isMinHandle) {
-      setMinCommittedValue(nextCommittedValue);
-      setMinInputValue(String(nextCommittedValue));
+      setMinCommittedValue(committedValue);
+      setMinInputValue(String(committedValue));
     } else {
-      setMaxCommittedValue(nextCommittedValue);
-      setMaxInputValue(String(nextCommittedValue));
+      setMaxCommittedValue(committedValue);
+      setMaxInputValue(String(committedValue));
     }
 
     debounce(() => {
       onChange({
         target: {
           name: isMinHandle ? inputNames.min : inputNames.max,
-          value: String(nextCommittedValue),
+          value: String(committedValue),
         },
       } as ChangeInputType);
     });
