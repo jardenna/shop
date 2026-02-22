@@ -1,5 +1,6 @@
 import useCurrency from '../../../features/currency/useCurrency';
 import type { ChangeInputType } from '../../../types/types';
+import VisuallyHidden from '../../VisuallyHidden';
 import './_range.scss';
 import DualRangeSlider from './DualRangeSlider';
 import RangeNumberInput from './RangeNumberInput';
@@ -13,6 +14,7 @@ interface DualRangeProps {
   unitLabel: string;
   max?: number;
   min?: number;
+  standAlone?: boolean;
   step?: number;
   onChange: (event: ChangeInputType) => void;
 }
@@ -27,6 +29,7 @@ const DualRange = ({
   inputNames,
   inputLabels,
   unitLabel,
+  standAlone = false,
 }: DualRangeProps) => {
   const { currencyText } = useCurrency();
 
@@ -38,44 +41,55 @@ const DualRange = ({
   });
 
   return (
-    <>
-      <div>
-        <RangeNumberInput
-          id={inputNames.min}
-          name={inputNames.min}
-          value={input.min}
-          min={min}
-          max={max}
-          step={step}
-          onChange={(event) => {
-            input.setMin(event.target.value);
-          }}
-          onBlur={() => {
-            input.commitMin(input.min);
-          }}
-          labelText={inputLabels.min}
-          inputSuffix={currencyText}
-        />
+    <div
+      {...(standAlone && {
+        role: 'group',
+        'aria-labelledby': 'dual-range-label',
+      })}
+    >
+      {standAlone && (
+        <VisuallyHidden id="dual-range-label">Range slider</VisuallyHidden>
+      )}
+      {!standAlone && (
+        <div>
+          <RangeNumberInput
+            id={inputNames.min}
+            name={inputNames.min}
+            value={input.min}
+            min={min}
+            max={max}
+            step={step}
+            onChange={(event) => {
+              input.setMin(event.target.value);
+            }}
+            onBlur={() => {
+              input.commitMin(input.min);
+            }}
+            labelText={inputLabels.min}
+            inputSuffix={currencyText}
+          />
 
-        <RangeNumberInput
-          id={inputNames.max}
-          name={inputNames.max}
-          value={input.max}
-          min={min}
-          max={max}
-          step={step}
-          onChange={(event) => {
-            input.setMax(event.target.value);
-          }}
-          onBlur={() => {
-            input.commitMax(input.max);
-          }}
-          labelText={inputLabels.max}
-          inputSuffix={currencyText}
-        />
-      </div>
+          <RangeNumberInput
+            id={inputNames.max}
+            name={inputNames.max}
+            value={input.max}
+            min={min}
+            max={max}
+            step={step}
+            onChange={(event) => {
+              input.setMax(event.target.value);
+            }}
+            onBlur={() => {
+              input.commitMax(input.max);
+            }}
+            labelText={inputLabels.max}
+            inputSuffix={currencyText}
+          />
+        </div>
+      )}
       <DualRangeSlider
         track={track}
+        standAlone={standAlone}
         max={max}
         min={min}
         step={step}
@@ -83,8 +97,9 @@ const DualRange = ({
         onChange={onRangeChange}
         committed={committed}
         inputNames={inputNames}
+        inputLabels={inputLabels}
       />
-    </>
+    </div>
   );
 };
 
