@@ -42,7 +42,6 @@ const ProductActions = ({ onCopyProduct, id }: ProductActionsProps) => {
   return (
     <DropdownBtn
       dropdownList={actionsDropdownList}
-      ariaControls="product-actions"
       ariaLabel={language.productActions}
       showArrow
       placement="left-start"

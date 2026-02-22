@@ -25,7 +25,6 @@ const TableSearch = ({
     <div className="table-search-input">
       <Popup
         placement="bottom-start"
-        ariaControls="filter"
         popupContent={
           <TableSearchInput
             title={title}

@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { ReactNode, useId } from 'react';
 import usePopup from '../../hooks/usePopup';
 import { BtnVariant } from '../../types/enums';
 import type { OmitChecked } from '../../types/types';
@@ -15,16 +15,26 @@ type PopupProps = OmittedDropdownBtnProps & {
   popupContent: ReactNode | ((helpers: { close: () => void }) => ReactNode);
 };
 
+// interface PopupProp {
+//   ariaHasPopup: AriaHasPopup;
+//   ariaLabel: string;
+//   children: ReactNode;
+//   popupContent: ReactNode | ((helpers: { close: () => void }) => ReactNode);
+//   triggerBtnClassName: string;
+//   triggerBtnVariant: BtnVariant;
+//   placement?: Placement;
+// }
+
 const Popup = ({
   children,
   popupContent,
-  ariaControls,
   ariaLabel,
   ariaHasPopup,
   triggerBtnVariant = BtnVariant.Ghost,
   triggerBtnClassName = '',
   placement,
 }: PopupProps) => {
+  const popupId = useId();
   const { popupRef, buttonRef, popupIsOpen, togglePopupList, arrowRef } =
     usePopup({ placement });
 
@@ -35,7 +45,7 @@ const Popup = ({
         onClick={togglePopupList}
         ariaExpanded={popupIsOpen}
         ariaHasPopup={ariaHasPopup}
-        ariaControls={ariaControls}
+        ariaControls={popupId}
         ariaLabel={ariaLabel}
         className={triggerBtnClassName}
         popupRef={buttonRef}
@@ -44,7 +54,7 @@ const Popup = ({
       </Button>
 
       {popupIsOpen && (
-        <div ref={popupRef} className="popup popup-container" id={ariaControls}>
+        <div ref={popupRef} className="popup popup-container" id={popupId}>
           {typeof popupContent === 'function'
             ? popupContent({ close: togglePopupList })
             : popupContent}

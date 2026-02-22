@@ -9,7 +9,6 @@ export type AdminNavProps = {
 
 const MobileNav = ({ navList, className }: AdminNavProps) => (
   <TogglePanel
-    ariaControls="nav"
     preventClickOutside
     triggerBtnClassName="menu-burger"
     ariaHasPopup="menu"

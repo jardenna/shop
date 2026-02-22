@@ -111,7 +111,6 @@ const FilterPanel = ({
         secondaryBtnText: language.clearAllFilters,
         primaryBtnDisabled: productCount === 0,
       }}
-      ariaControls="filter-products"
       role="dialog"
       showCloseIcon
       className="filter-panel"
