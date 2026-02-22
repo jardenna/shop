@@ -1,4 +1,4 @@
-import { SyntheticEvent } from 'react';
+import { SyntheticEvent, useId } from 'react';
 import type {
   BlurEventType,
   InputChangeHandler,
@@ -66,6 +66,7 @@ const Input = ({
   inputInfo,
   inputMode,
 }: InputProps) => {
+  const unitId = useId();
   const handleOnInput = (event: SyntheticEvent<HTMLInputElement>) => {
     if (!maxLength) {
       return;
@@ -116,8 +117,13 @@ const Input = ({
           onFocus={onFocus}
           disabled={disabled}
           inputMode={inputMode}
+          aria-describedby={inputSuffix ? unitId : undefined}
         />
-        {inputSuffix && <span className="input-suffix">{inputSuffix}</span>}
+        {inputSuffix && (
+          <span className="input-suffix" id={unitId}>
+            {inputSuffix}
+          </span>
+        )}
       </div>
       {inputInfo && <InputInfo inputInfo={inputInfo} />}
     </>
