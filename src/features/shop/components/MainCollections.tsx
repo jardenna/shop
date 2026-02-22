@@ -25,19 +25,16 @@ const MainCollections = ({
       />
     )}
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
-      {mainCollectionList.map(
-        ({ title, imgList, linkTo, linkText, ariaLabelledby }) => (
-          <MainCollectionsItem
-            key={title}
-            ariaLabelledby={ariaLabelledby}
-            imgPath="/images"
-            title={title}
-            imgList={imgList}
-            linkTo={linkTo}
-            linkText={linkText}
-          />
-        ),
-      )}
+      {mainCollectionList.map(({ title, imgList, linkTo, linkText }) => (
+        <MainCollectionsItem
+          key={title}
+          imgPath="/images"
+          title={title}
+          imgList={imgList}
+          linkTo={linkTo}
+          linkText={linkText}
+        />
+      ))}
     </ErrorBoundary>
   </section>
 );

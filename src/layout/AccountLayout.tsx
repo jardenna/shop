@@ -1,7 +1,8 @@
+import { useId } from 'react';
 import { Outlet, useLocation } from 'react-router';
 import Picture from '../components/Picture';
 import useLanguage from '../features/language/useLanguage';
-import { ariaInfoTitle, getPathName, titleToCamelCase } from '../utils/utils';
+import { getPathName, titleToCamelCase } from '../utils/utils';
 import './accountLayout.styles.scss';
 import MetaTags from './nav/MetaTags';
 import NavContainer from './nav/NavContainer';
@@ -23,7 +24,7 @@ const AccountLayout = () => {
     addresses: 'addressAltText',
   };
   const altText = altTextMap[imgName];
-  const ariaLabelledby = ariaInfoTitle(pathInfo);
+  const adminLayoutId = useId();
 
   return (
     <>
@@ -31,7 +32,7 @@ const AccountLayout = () => {
       <div className="container account-page">
         <section
           className="account-content-container"
-          aria-labelledby={ariaLabelledby}
+          aria-labelledby={adminLayoutId}
         >
           <NavContainer
             navList={accountNavList}
@@ -40,7 +41,7 @@ const AccountLayout = () => {
           />
           <div className="account-page-content">
             <header>
-              <h1 id={ariaLabelledby}>{title}</h1>
+              <h1 id={adminLayoutId}>{title}</h1>
             </header>
             <Outlet />
           </div>
