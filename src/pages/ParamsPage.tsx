@@ -1,9 +1,12 @@
 import Form from '../components/form/Form';
+import ControlInput from '../components/formElements/ControlInput';
 import DualRange from '../components/formElements/dualRangeSlider/DualRange';
 import useCurrency from '../features/currency/useCurrency';
 import useLanguage from '../features/language/useLanguage';
 import useSearchParamsState from '../hooks/useSearchParamsState';
+import { sortColorsByTranslation } from '../utils/colorUtils';
 import { availableBrands, availableSizes, colors } from '../utils/filters';
+import { translateKey } from '../utils/utils';
 
 const ParamsPage = () => {
   const { currencyText } = useCurrency();
@@ -18,6 +21,7 @@ const ParamsPage = () => {
 
   const { values, toggleValue, setValue } =
     useSearchParamsState(initialFilters);
+  const sortedTranslatedColors = sortColorsByTranslation(colors, language);
 
   return (
     <Form
@@ -74,17 +78,17 @@ const ParamsPage = () => {
         ))}
       </ul>
       <ul className="checkbox-list">
-        {colors.map((value) => (
+        {sortedTranslatedColors.map((value) => (
           <li key={value} className="checkbox-item">
-            <input
+            <ControlInput
               id={value}
               type="checkbox"
               name="colors"
               value={value}
               checked={values.colors.includes(value)}
               onChange={toggleValue}
+              label={translateKey(value, language)}
             />
-            <label htmlFor={value}>{value}</label>
           </li>
         ))}
       </ul>
