@@ -1,9 +1,7 @@
 import type { SelectedLanguage } from '../features/language/languageSlice';
-import Locales from './locales';
+import type { Locales } from './locales';
 
-const dateToLocaleMap: Record<SelectedLanguage, Locales> = {
+export const dateToLocaleMap: Record<SelectedLanguage, Locales> = {
   en: 'en-US',
   da: 'da-DK',
 };
-
-export default dateToLocaleMap;

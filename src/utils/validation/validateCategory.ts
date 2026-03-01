@@ -2,7 +2,7 @@ import type { ValidationErrors } from '../../hooks/useFormValidation';
 import type { CategoryState } from '../../pages/category/CreateCategoryPage';
 import { ValidationMessage } from '../../types/enums';
 
-function validateCategory(values: CategoryState) {
+export function validateCategory(values: CategoryState) {
   const errors: ValidationErrors<CategoryState> = {};
   const { categoryName } = values;
 
@@ -12,5 +12,3 @@ function validateCategory(values: CategoryState) {
 
   return errors;
 }
-
-export default validateCategory;

@@ -2,7 +2,7 @@ import type { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
 import { ValidationMessage } from '../../types/enums';
 import { emailRegex } from '../regex';
 
-function validateUpdateUser(values: Partial<UserResponse>) {
+export function validateUpdateUser(values: Partial<UserResponse>) {
   const { username, email } = values;
   let error;
 
@@ -22,5 +22,3 @@ function validateUpdateUser(values: Partial<UserResponse>) {
 
   return error;
 }
-
-export default validateUpdateUser;

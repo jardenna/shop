@@ -2,7 +2,7 @@ import type { AddressInput } from '../../app/api/apiTypes/shopApiTypes';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
 
-function validateAddress(values: AddressInput) {
+export function validateAddress(values: AddressInput) {
   const errors: ValidationErrors<AddressInput> = {};
   const { street, city, zipCode } = values;
 
@@ -18,5 +18,3 @@ function validateAddress(values: AddressInput) {
 
   return errors;
 }
-
-export default validateAddress;

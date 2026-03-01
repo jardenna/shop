@@ -16,8 +16,8 @@ import useTableEditField from '../../hooks/useTableEditField';
 import useTrapFocus from '../../hooks/useTrapFocus';
 import { AdminPath } from '../../layout/nav/enums';
 import { IconName } from '../../types/enums';
-import handleApiError from '../../utils/handleApiError';
-import validateUpdateUser from '../../utils/validation/validateUpdateUser';
+import { handleApiError } from '../../utils/handleApiError';
+import { validateUpdateUser } from '../../utils/validation/validateUpdateUser';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 import DeleteUser from './DeleteUser';
 

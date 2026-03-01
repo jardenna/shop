@@ -1,7 +1,7 @@
 import { ValidationMessage } from '../../types/enums';
 import { emailRegex } from '../regex';
 
-const validateEmail = (email: string) => {
+export const validateEmail = (email: string) => {
   if (!email) {
     return ValidationMessage.PleaseEnterEmail;
   }
@@ -12,5 +12,3 @@ const validateEmail = (email: string) => {
 
   return null;
 };
-
-export default validateEmail;

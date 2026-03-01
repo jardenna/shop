@@ -17,9 +17,9 @@ import SharedCategoryInputs from '../../../components/SharedCategoryInputs';
 import useFormValidation from '../../../hooks/useFormValidation';
 import { AdminPath } from '../../../layout/nav/enums';
 import type { OptionType } from '../../../types/types';
-import handleApiError from '../../../utils/handleApiError';
+import { handleApiError } from '../../../utils/handleApiError';
 import { translateKey } from '../../../utils/utils';
-import validateSubcategory from '../../../utils/validation/validateSubcategory';
+import { validateSubcategory } from '../../../utils/validation/validateSubcategory';
 import useLanguage from '../../language/useLanguage';
 import {
   useCreateSubCategoryMutation,

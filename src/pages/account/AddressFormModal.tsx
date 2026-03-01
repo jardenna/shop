@@ -20,8 +20,8 @@ import {
 import useFormValidation from '../../hooks/useFormValidation';
 import { BtnType, BtnVariant, IconName, SizeVariant } from '../../types/enums';
 import type { InputType } from '../../types/types';
-import handleApiError from '../../utils/handleApiError';
-import validateAddress from '../../utils/validation/validateAddress';
+import { handleApiError } from '../../utils/handleApiError';
+import { validateAddress } from '../../utils/validation/validateAddress';
 
 type AddressFormModalProps = {
   id: string | null;

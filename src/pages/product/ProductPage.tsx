@@ -10,7 +10,7 @@ import {
   useGetHasScheduledDataQuery,
 } from '../../features/products/productApiSlice';
 import { AdminPath } from '../../layout/nav/enums';
-import handleApiError from '../../utils/handleApiError';
+import { handleApiError } from '../../utils/handleApiError';
 import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 import './ProductPage.styles.scss';

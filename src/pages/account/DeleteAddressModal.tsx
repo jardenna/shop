@@ -5,7 +5,7 @@ import ModalContainer from '../../components/modal/ModalContainer';
 import useLanguage from '../../features/language/useLanguage';
 import { useDeleteAddressMutation } from '../../features/profile/profileApiSlice';
 import { BtnVariant, IconName } from '../../types/enums';
-import handleApiError from '../../utils/handleApiError';
+import { handleApiError } from '../../utils/handleApiError';
 
 export type DeleteAddressModalProps = {
   id: string;

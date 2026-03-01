@@ -5,10 +5,8 @@ const baseQuery = fetchBaseQuery({
   credentials: 'include',
 });
 
-const currencyApiSlice = createApi({
+export const currencyApiSlice = createApi({
   reducerPath: 'currencyApi',
   baseQuery,
   endpoints: () => ({}),
 });
-
-export default currencyApiSlice;

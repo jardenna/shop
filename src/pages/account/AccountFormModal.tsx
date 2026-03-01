@@ -15,8 +15,8 @@ import { useUpdateUserProfileMutation } from '../../features/profile/profileApiS
 import useFormValidation from '../../hooks/useFormValidation';
 import { BtnType, SizeVariant } from '../../types/enums';
 import type { OptionType } from '../../types/types';
-import handleApiError from '../../utils/handleApiError';
-import validateProfile from '../../utils/validation/validateProfile';
+import { handleApiError } from '../../utils/handleApiError';
+import { validateProfile } from '../../utils/validation/validateProfile';
 import type { ProfileFieldListProps } from './MyAccountPage';
 
 type AccountFormModalProps = {

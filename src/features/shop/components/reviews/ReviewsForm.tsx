@@ -9,7 +9,7 @@ import useMessagePopup from '../../../../components/messagePopup/useMessagePopup
 import useFormValidation from '../../../../hooks/useFormValidation';
 import { BtnType, IconName } from '../../../../types/enums';
 import type { ChangeInputType } from '../../../../types/types';
-import handleApiError from '../../../../utils/handleApiError';
+import { handleApiError } from '../../../../utils/handleApiError';
 import { createRatingList } from '../../../../utils/productLists';
 import useLanguage from '../../../language/useLanguage';
 import {

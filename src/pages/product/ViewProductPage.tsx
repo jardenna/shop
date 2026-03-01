@@ -13,7 +13,7 @@ import {
 } from '../../features/products/productApiSlice';
 import { AdminPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
-import handleApiError from '../../utils/handleApiError';
+import { handleApiError } from '../../utils/handleApiError';
 import { translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 

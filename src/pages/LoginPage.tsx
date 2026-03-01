@@ -8,8 +8,8 @@ import useLanguage from '../features/language/useLanguage';
 import useFormValidation from '../hooks/useFormValidation';
 import { ShopPath } from '../layout/nav/enums';
 import { BtnVariant } from '../types/enums';
-import handleApiError from '../utils/handleApiError';
-import validateLogin from '../utils/validation/validateLogin';
+import { handleApiError } from '../utils/handleApiError';
+import { validateLogin } from '../utils/validation/validateLogin';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const LoginPage = () => {

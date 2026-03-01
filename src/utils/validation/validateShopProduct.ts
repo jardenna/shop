@@ -2,7 +2,7 @@ import { InitialShopValues } from '../../features/shop/components/SingleProductF
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
 
-function validateShopProduct(values: InitialShopValues) {
+export function validateShopProduct(values: InitialShopValues) {
   const errors: ValidationErrors<InitialShopValues> = {};
   const { color, size } = values;
 
@@ -16,5 +16,3 @@ function validateShopProduct(values: InitialShopValues) {
 
   return errors;
 }
-
-export default validateShopProduct;

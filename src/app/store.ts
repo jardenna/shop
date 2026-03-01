@@ -8,7 +8,7 @@ import messagePopupReducer, {
 } from '../features/messagePopupSlice';
 import modalSlice from '../features/modalSlice';
 import apiSlice from './api/apiSlice';
-import currencyApiSlice from './api/currencyApiSlice';
+import { currencyApiSlice } from './api/currencyApiSlice';
 
 export const rtkQueryErrorLogger: Middleware =
   ({ dispatch }) =>
