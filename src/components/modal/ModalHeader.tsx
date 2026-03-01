@@ -1,4 +1,4 @@
-import useLanguage from '../../features/language/useLanguage';
+import { useLanguage } from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import BtnClose from '../BtnClose';
 

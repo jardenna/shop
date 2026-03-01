@@ -1,4 +1,4 @@
-import useLanguage from '../../features/language/useLanguage';
+import { useLanguage } from '../../features/language/useLanguage';
 import type { OptionType } from '../../types/types';
 import { translateKey } from '../../utils/utils';
 import type { BaseControlProps } from './ControlInput';

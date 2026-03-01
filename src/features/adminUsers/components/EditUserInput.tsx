@@ -5,7 +5,7 @@ import EditTableInput from '../../../components/sortTable/EditTableInput';
 import EditTableText from '../../../components/sortTable/EditTableText';
 import { IconName } from '../../../types/enums';
 import { translateKey } from '../../../utils/utils';
-import useLanguage from '../../language/useLanguage';
+import { useLanguage } from '../../language/useLanguage';
 import RoleRadioBtn from './RoleRadioBtn';
 
 type EditUserInputProps = BaseEditTableInput & {

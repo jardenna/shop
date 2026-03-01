@@ -1,8 +1,9 @@
 import FieldSet from '../../components/fieldset/FieldSet';
 import RadioButtonList from '../../components/formElements/RadioButtonList';
 import CurrencySelect from '../../features/currency/components/CurrencySelect';
-import useLanguage, {
+import {
   languageOptions,
+  useLanguage,
 } from '../../features/language/useLanguage';
 import type { OmitChecked } from '../../types/types';
 import type { BaseHeaderProps } from '../header/Header';

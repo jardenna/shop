@@ -11,7 +11,7 @@ import { BtnType, IconName } from '../../../../types/enums';
 import type { ChangeInputType } from '../../../../types/types';
 import { handleApiError } from '../../../../utils/handleApiError';
 import { createRatingList } from '../../../../utils/productLists';
-import useLanguage from '../../../language/useLanguage';
+import { useLanguage } from '../../../language/useLanguage';
 import {
   useCheckReviewedQuery,
   usePostReviewsMutation,

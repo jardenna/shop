@@ -2,7 +2,7 @@ import { useNavigate, useParams } from 'react-router';
 import CategoryCard from '../../components/adminCard/CategoryCard';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import SkeletonTwoCards from '../../components/skeleton/SkeletonTwoCards';
-import useLanguage from '../../features/language/useLanguage';
+import { useLanguage } from '../../features/language/useLanguage';
 import {
   useDeleteSubCategoryMutation,
   useGetSubCategoryByIdQuery,

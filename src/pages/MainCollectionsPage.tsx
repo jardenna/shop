@@ -1,6 +1,6 @@
 import { MainCategoryNames } from '../app/api/apiTypes/sharedApiTypes';
 import { useGetPublishedCategoriesQuery } from '../features/categories/categoriyApiSlice';
-import useLanguage from '../features/language/useLanguage';
+import { useLanguage } from '../features/language/useLanguage';
 import MainCollections from '../features/shop/components/MainCollections';
 
 import { MainCollectionsBaseProps } from '../features/shop/components/MainCollectionsItem';

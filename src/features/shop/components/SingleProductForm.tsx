@@ -16,7 +16,7 @@ import { resolveIconName } from '../../../utils/iconHelpers';
 import { oneSize } from '../../../utils/sizeUtils';
 import { translateKey } from '../../../utils/utils';
 import { validateShopProduct } from '../../../utils/validation/validateShopProduct';
-import useLanguage from '../../language/useLanguage';
+import { useLanguage } from '../../language/useLanguage';
 
 type SingleProductFormProps = {
   colorList: ColorOption[];

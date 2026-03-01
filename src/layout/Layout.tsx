@@ -7,7 +7,7 @@ import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useCurrency } from '../features/currency/useCurrency';
-import useLanguage from '../features/language/useLanguage';
+import { useLanguage } from '../features/language/useLanguage';
 import { clearMessagePopups } from '../features/messagePopupSlice';
 import { useGetFavoritesQuery } from '../features/shop/shopApiSlice';
 import { useFormValidation } from '../hooks/useFormValidation';

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useParams } from 'react-router';
-import useLanguage from '../../../features/language/useLanguage';
+import { useLanguage } from '../../../features/language/useLanguage';
 import { useSubMenu } from '../../../features/shop/hooks/useSubMenu';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import { LinkText } from '../enums';

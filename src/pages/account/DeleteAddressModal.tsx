@@ -2,7 +2,7 @@ import IconContent from '../../components/IconContent';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
-import useLanguage from '../../features/language/useLanguage';
+import { useLanguage } from '../../features/language/useLanguage';
 import { useDeleteAddressMutation } from '../../features/profile/profileApiSlice';
 import { BtnVariant, IconName } from '../../types/enums';
 import { handleApiError } from '../../utils/handleApiError';

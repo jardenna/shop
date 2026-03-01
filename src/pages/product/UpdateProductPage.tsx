@@ -1,6 +1,6 @@
 import { useParams } from 'react-router';
 import SkeletonPage from '../../components/skeleton/SkeletonPage';
-import useLanguage from '../../features/language/useLanguage';
+import { useLanguage } from '../../features/language/useLanguage';
 import ProductForm from '../../features/products/components/ProductForm';
 import { useGetProductByIdQuery } from '../../features/products/productApiSlice';
 import { useGetSubCategoriesWithParentQuery } from '../../features/subCategories/subCategoryApiSlice';

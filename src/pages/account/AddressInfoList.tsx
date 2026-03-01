@@ -1,6 +1,6 @@
 import { Address } from '../../app/api/apiTypes/shopApiTypes';
 import IconBtn from '../../components/IconBtn';
-import useLanguage from '../../features/language/useLanguage';
+import { useLanguage } from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import AddressInfoListContent from './AddressInfoListContent';
 

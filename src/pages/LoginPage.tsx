@@ -4,7 +4,7 @@ import useMessagePopup from '../components/messagePopup/useMessagePopup';
 import { useLoginMutation } from '../features/auth/authApiSlice';
 import AuthForm from '../features/auth/components/AuthForm';
 import { useAuth } from '../features/auth/hooks/useAuth';
-import useLanguage from '../features/language/useLanguage';
+import { useLanguage } from '../features/language/useLanguage';
 import { useFormValidation } from '../hooks/useFormValidation';
 import { ShopPath } from '../layout/nav/enums';
 import { BtnVariant } from '../types/enums';

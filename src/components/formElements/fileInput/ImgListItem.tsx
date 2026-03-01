@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import useLanguage from '../../../features/language/useLanguage';
+import { useLanguage } from '../../../features/language/useLanguage';
 import { IconName } from '../../../types/enums';
 import IconBtn from '../../IconBtn';
 import Img from '../../Img';

@@ -1,7 +1,7 @@
 import type { BaseProfile } from '../../app/api/apiTypes/shopApiTypes';
 import Skeleton from '../../components/skeleton/Skeleton';
 import SkeletonGrid from '../../components/skeleton/SkeletonGrid';
-import useLanguage from '../../features/language/useLanguage';
+import { useLanguage } from '../../features/language/useLanguage';
 import { useGetUserProfileQuery } from '../../features/profile/profileApiSlice';
 import type { InputType } from '../../types/types';
 import './_my-account.scss';

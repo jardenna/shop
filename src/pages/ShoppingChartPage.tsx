@@ -1,4 +1,4 @@
-import useLanguage from '../features/language/useLanguage';
+import { useLanguage } from '../features/language/useLanguage';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const ShoppingChartPage = () => {

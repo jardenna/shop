@@ -14,7 +14,7 @@ export const languageOptions: OptionType[] = [
   { value: 'en', label: 'English' },
 ];
 
-const useLanguage = () => {
+export const useLanguage = () => {
   const dispatch = useAppDispatch();
   const selectedLanguage = useAppSelector(selectSelectedLanguage);
 
@@ -34,5 +34,3 @@ const useLanguage = () => {
 
   return { switchLanguage, language, selectedLanguage: lang };
 };
-
-export default useLanguage;

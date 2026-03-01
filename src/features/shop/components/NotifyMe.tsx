@@ -7,7 +7,7 @@ import { useFormValidation } from '../../../hooks/useFormValidation';
 import { BtnType, BtnVariant } from '../../../types/enums';
 import { validateNEmail } from '../../../utils/validation/validateNotityEmail';
 import { validateNotityMe } from '../../../utils/validation/validateNotityMe';
-import useLanguage from '../../language/useLanguage';
+import { useLanguage } from '../../language/useLanguage';
 import NotifyMeForm from './NotifyMeForm';
 
 export type InitialNotifyValues = {

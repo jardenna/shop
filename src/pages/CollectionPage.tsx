@@ -9,7 +9,7 @@ import Pagination from '../components/pagination/Pagination';
 import { type PageCountOptions } from '../components/pagination/PaginationSelect';
 import Picture from '../components/Picture';
 import SkeletonCardList from '../components/skeleton/SkeletonCardList';
-import useLanguage from '../features/language/useLanguage';
+import { useLanguage } from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
 import CollectionPageHeader from '../features/shop/components/CollectionPageHeader';
 import NoProductsFound from '../features/shop/components/NoProductsFound';

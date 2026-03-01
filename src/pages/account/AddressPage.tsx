@@ -2,7 +2,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import Skeleton from '../../components/skeleton/Skeleton';
 import SkeletonCardList from '../../components/skeleton/SkeletonCardList';
-import useLanguage from '../../features/language/useLanguage';
+import { useLanguage } from '../../features/language/useLanguage';
 import { useGetUserProfileQuery } from '../../features/profile/profileApiSlice';
 import AddressFormModal from './AddressFormModal';
 import AddressInfoListContent from './AddressInfoListContent';

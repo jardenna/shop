@@ -9,7 +9,7 @@ import { useFormValidation } from '../../../hooks/useFormValidation';
 import { ShopPath } from '../../../layout/nav/enums';
 import { handleApiError } from '../../../utils/handleApiError';
 import { validateSignup } from '../../../utils/validation/validateCreateAccount';
-import useLanguage from '../../language/useLanguage';
+import { useLanguage } from '../../language/useLanguage';
 import { useCreateAccountMutation } from '../authApiSlice';
 import AuthForm from './AuthForm';
 

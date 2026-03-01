@@ -6,7 +6,7 @@ import CardRight from '../../components/card/CardRight';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import SkeletonThreeCards from '../../components/skeleton/SkeletonThreeCards';
-import useLanguage from '../../features/language/useLanguage';
+import { useLanguage } from '../../features/language/useLanguage';
 import {
   useDeleteProductMutation,
   useGetProductByIdQuery,

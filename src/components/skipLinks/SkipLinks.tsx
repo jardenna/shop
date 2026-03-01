@@ -1,4 +1,4 @@
-import useLanguage from '../../features/language/useLanguage';
+import { useLanguage } from '../../features/language/useLanguage';
 import './_skip-links.scss';
 
 const SkipLink = () => {

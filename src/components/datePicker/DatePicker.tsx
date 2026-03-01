@@ -1,7 +1,7 @@
 import { DayPicker, OnSelectHandler } from 'react-day-picker';
 import { da, enGB } from 'react-day-picker/locale';
 import 'react-day-picker/style.css';
-import useLanguage from '../../features/language/useLanguage';
+import { useLanguage } from '../../features/language/useLanguage';
 import VisuallyHidden from '../VisuallyHidden';
 import './_date-picker.scss';
 

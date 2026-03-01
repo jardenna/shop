@@ -1,4 +1,4 @@
-import useLanguage from '../../../features/language/useLanguage';
+import { useLanguage } from '../../../features/language/useLanguage';
 import { ShopPath } from '../../../layout/nav/enums';
 import './_fashion-grid.scss';
 import FashionGridItem from './FashionGridItem';

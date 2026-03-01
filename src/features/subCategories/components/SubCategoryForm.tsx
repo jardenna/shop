@@ -20,7 +20,7 @@ import type { OptionType } from '../../../types/types';
 import { handleApiError } from '../../../utils/handleApiError';
 import { translateKey } from '../../../utils/utils';
 import { validateSubcategory } from '../../../utils/validation/validateSubcategory';
-import useLanguage from '../../language/useLanguage';
+import { useLanguage } from '../../language/useLanguage';
 import {
   useCreateSubCategoryMutation,
   useUpdateSubCategoryMutation,

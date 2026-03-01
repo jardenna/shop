@@ -1,5 +1,5 @@
 import { useLocation, useParams } from 'react-router';
-import useLanguage from '../../features/language/useLanguage';
+import { useLanguage } from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import { isAdminPath } from '../../utils/utils';
 import './_breadcrumbs.scss';

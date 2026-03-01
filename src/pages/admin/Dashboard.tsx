@@ -1,4 +1,4 @@
-import useLanguage from '../../features/language/useLanguage';
+import { useLanguage } from '../../features/language/useLanguage';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const Dashboard = () => {

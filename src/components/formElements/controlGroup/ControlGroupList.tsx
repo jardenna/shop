@@ -1,4 +1,4 @@
-import useLanguage from '../../../features/language/useLanguage';
+import { useLanguage } from '../../../features/language/useLanguage';
 import OptionGroupTitle from '../../../features/shop/components/productLists/OptionGroupTitle';
 import type { ProductLabelVariant } from '../../../features/shop/components/productLists/ProductListItem';
 import { IconName } from '../../../types/enums';

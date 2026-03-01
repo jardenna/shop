@@ -13,7 +13,7 @@ import type { OptionType } from '../../types/types';
 import { handleApiError } from '../../utils/handleApiError';
 import { translateKey } from '../../utils/utils';
 import { validateCategory } from '../../utils/validation/validateCategory';
-import useLanguage from '../language/useLanguage';
+import { useLanguage } from '../language/useLanguage';
 import {
   useCreateCategoryMutation,
   useUpdateCategoryMutation,

@@ -1,6 +1,6 @@
 import type { SubCategoryResponse } from '../../app/api/apiTypes/adminApiTypes';
 import Table from '../../components/sortTable/Table';
-import useLanguage from '../../features/language/useLanguage';
+import { useLanguage } from '../../features/language/useLanguage';
 import SubCategoryTableRows from '../../features/subCategories/components/SubCategoryTableRows';
 import {
   useGetAllSubCategoriesQuery,

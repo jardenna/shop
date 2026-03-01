@@ -3,7 +3,7 @@ import FieldSet from '../../../components/fieldset/FieldSet';
 import ControlGroupList from '../../../components/formElements/controlGroup/ControlGroupList';
 import Input from '../../../components/formElements/Input';
 import type { InputChangeHandler } from '../../../types/types';
-import useLanguage from '../../language/useLanguage';
+import { useLanguage } from '../../language/useLanguage';
 
 type NotifyMeFormProps = {
   errors: Record<string, string>;

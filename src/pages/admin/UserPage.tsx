@@ -7,7 +7,7 @@ import Table from '../../components/sortTable/Table';
 import { useGetAllUsersQuery } from '../../features/adminUsers/adminUserApiSlice';
 import EditUserInput from '../../features/adminUsers/components/EditUserInput';
 import { useAuth } from '../../features/auth/hooks/useAuth';
-import useLanguage from '../../features/language/useLanguage';
+import { useLanguage } from '../../features/language/useLanguage';
 import {
   useDeleteUserMutation,
   useUpdateUserMutation,

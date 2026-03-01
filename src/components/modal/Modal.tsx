@@ -1,7 +1,7 @@
 import { useEffect, type ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useAppSelector } from '../../app/hooks';
-import useLanguage from '../../features/language/useLanguage';
+import { useLanguage } from '../../features/language/useLanguage';
 import { selectModalId } from '../../features/modalSlice';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { BtnType, BtnVariant, PopupRole, SizeVariant } from '../../types/enums';

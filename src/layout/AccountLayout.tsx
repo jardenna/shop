@@ -1,7 +1,7 @@
 import { useId } from 'react';
 import { Outlet, useLocation } from 'react-router';
 import Picture from '../components/Picture';
-import useLanguage from '../features/language/useLanguage';
+import { useLanguage } from '../features/language/useLanguage';
 import { getPathName, titleToCamelCase } from '../utils/utils';
 import './accountLayout.styles.scss';
 import MetaTags from './nav/MetaTags';

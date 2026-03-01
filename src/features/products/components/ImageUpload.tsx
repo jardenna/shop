@@ -6,7 +6,7 @@ import Preview, {
 import InputInfo from '../../../components/formElements/InputInfo';
 import type { InputChangeHandler } from '../../../types/types';
 import { allowedExtensions, maxFiles } from '../../../utils/utils';
-import useLanguage from '../../language/useLanguage';
+import { useLanguage } from '../../language/useLanguage';
 
 export type BaseImageUploadProps = {
   previewData: PreviewImg[];

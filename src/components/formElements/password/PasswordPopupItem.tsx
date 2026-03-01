@@ -1,4 +1,4 @@
-import useLanguage from '../../../features/language/useLanguage';
+import { useLanguage } from '../../../features/language/useLanguage';
 import { IconName } from '../../../types/enums';
 import Icon from '../../icons/Icon';
 import VisuallyHidden from '../../VisuallyHidden';

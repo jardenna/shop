@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import useLanguage from '../../../features/language/useLanguage';
+import { useLanguage } from '../../../features/language/useLanguage';
 import { IconName } from '../../../types/enums';
 import type { OmitChecked } from '../../../types/types';
 import IconBtn from '../../IconBtn';

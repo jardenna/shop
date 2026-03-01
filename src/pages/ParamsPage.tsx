@@ -2,7 +2,7 @@ import Form from '../components/form/Form';
 import ControlInput from '../components/formElements/ControlInput';
 import DualRange from '../components/formElements/dualRangeSlider/DualRange';
 import { useCurrency } from '../features/currency/useCurrency';
-import useLanguage from '../features/language/useLanguage';
+import { useLanguage } from '../features/language/useLanguage';
 import { useGetProductsQuery } from '../features/shop/shopApiSlice';
 import { useSearchParamsState } from '../hooks/useSearchParamsState';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';

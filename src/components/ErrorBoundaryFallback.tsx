@@ -1,4 +1,4 @@
-import useLanguage from '../features/language/useLanguage';
+import { useLanguage } from '../features/language/useLanguage';
 import ErrorContent from './ErrorContent';
 
 // Props are automatically injected by react-error-boundary

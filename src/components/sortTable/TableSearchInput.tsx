@@ -1,4 +1,4 @@
-import useLanguage from '../../features/language/useLanguage';
+import { useLanguage } from '../../features/language/useLanguage';
 import type { InputChangeHandler } from '../../types/types';
 import Input from '../formElements/Input';
 

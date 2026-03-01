@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router';
-import useLanguage from '../../features/language/useLanguage';
+import { useLanguage } from '../../features/language/useLanguage';
 import FieldSet from '../fieldset/FieldSet';
 import Selectbox from '../selectbox/Selectbox';
 

@@ -1,4 +1,4 @@
-import useLanguage from '../../features/language/useLanguage';
+import { useLanguage } from '../../features/language/useLanguage';
 import { BtnVariant } from '../../types/enums';
 import LinkButton from '../LinkButton';
 import CardContent from './CardContent';

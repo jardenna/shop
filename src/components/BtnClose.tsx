@@ -1,4 +1,4 @@
-import useLanguage from '../features/language/useLanguage';
+import { useLanguage } from '../features/language/useLanguage';
 import { BtnVariant, IconName } from '../types/enums';
 import Button from './Button';
 import Icon from './icons/Icon';

@@ -1,5 +1,5 @@
 import { useAuth } from '../../features/auth/hooks/useAuth';
-import useLanguage from '../../features/language/useLanguage';
+import { useLanguage } from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import { BtnVariant } from '../../types/enums';
 import LinkButton from '../LinkButton';
