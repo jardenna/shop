@@ -3,7 +3,7 @@ import type { BaseShopProductsParams } from '../app/api/apiTypes/shopApiTypes';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import { usePaginationParams } from '../components/pagination/hooks/usePaginationParams';
-import usePaginationText from '../components/pagination/hooks/usePaginationText';
+import { usePaginationText } from '../components/pagination/hooks/usePaginationText';
 import { useScrollOnPagination } from '../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../components/pagination/Pagination';
 import { type PageCountOptions } from '../components/pagination/PaginationSelect';

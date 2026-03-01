@@ -8,7 +8,7 @@ type Params = {
   totalBtns: number;
 };
 
-const usePaginationText = ({
+export const usePaginationText = ({
   page,
   productsPerPage,
   productCount,
@@ -28,5 +28,3 @@ const usePaginationText = ({
 
   return { infoText, paginationMobileText: mobile, ariaLiveText };
 };
-
-export default usePaginationText;
