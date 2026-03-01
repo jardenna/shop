@@ -17,7 +17,7 @@ import {
   useAddAddressMutation,
   useUpdateAddressMutation,
 } from '../../features/profile/profileApiSlice';
-import useFormValidation from '../../hooks/useFormValidation';
+import { useFormValidation } from '../../hooks/useFormValidation';
 import { BtnType, BtnVariant, IconName, SizeVariant } from '../../types/enums';
 import type { InputType } from '../../types/types';
 import { handleApiError } from '../../utils/handleApiError';

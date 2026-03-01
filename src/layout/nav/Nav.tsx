@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
-import useKeyPress from '../../hooks/useKeyPress';
+import { useKeyPress } from '../../hooks/useKeyPress';
 import { IconName, KeyCode } from '../../types/enums';
+import { FocusEventType } from '../../types/types';
 import LayoutElement from '../LayoutElement';
 import { LinkText } from './enums';
 import NavItem from './NavItem';
-import { FocusEventType } from '../../types/types';
 
 export type BaseNav = {
   linkText: LinkText;

@@ -13,7 +13,7 @@ import {
   useUpdateUserMutation,
 } from '../../features/users/userApiSlice';
 import useTableEditField from '../../hooks/useTableEditField';
-import useTrapFocus from '../../hooks/useTrapFocus';
+import { useTrapFocus } from '../../hooks/useTrapFocus';
 import { AdminPath } from '../../layout/nav/enums';
 import { IconName } from '../../types/enums';
 import { handleApiError } from '../../utils/handleApiError';

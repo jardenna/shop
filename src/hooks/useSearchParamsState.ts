@@ -5,7 +5,9 @@ type SearchParamState = Record<string, string | string[]>;
 
 const isArray = (value: unknown): value is string[] => Array.isArray(value);
 
-const useSearchParamsState = <T extends SearchParamState>(defaults: T) => {
+export const useSearchParamsState = <T extends SearchParamState>(
+  defaults: T,
+) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const getParamValue = (key: string, defaultValue: string | string[]) => {
@@ -61,5 +63,3 @@ const useSearchParamsState = <T extends SearchParamState>(defaults: T) => {
 
   return { values, toggleValue, setValue };
 };
-
-export default useSearchParamsState;

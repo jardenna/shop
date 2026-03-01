@@ -1,4 +1,4 @@
-import useKeyboardListNav from '../../hooks/useKeyboardListNav';
+import { useKeyboardListNav } from '../../hooks/useKeyboardListNav';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import type { DropdownItem } from './DropdownBtn';

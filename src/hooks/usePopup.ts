@@ -1,15 +1,15 @@
 import { createPopper, Instance, Placement } from '@popperjs/core';
 import { useEffect, useRef, useState } from 'react';
 import { KeyCode } from '../types/enums';
-import useClickOutside from './useClickOutside';
-import useKeyPress from './useKeyPress';
+import { useClickOutside } from './useClickOutside';
+import { useKeyPress } from './useKeyPress';
 
 type usePopupProps = {
   placement?: Placement;
   callback?: () => void;
 };
 
-const usePopup = ({ callback, placement }: usePopupProps) => {
+export const usePopup = ({ callback, placement }: usePopupProps) => {
   const popupRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const arrowRef = useRef<HTMLDivElement | null>(null);
@@ -83,5 +83,3 @@ const usePopup = ({ callback, placement }: usePopupProps) => {
     arrowRef,
   };
 };
-
-export default usePopup;

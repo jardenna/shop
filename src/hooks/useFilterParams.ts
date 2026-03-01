@@ -8,7 +8,7 @@ export type FilterValuesType<T> = {
   [K in FilterKeys]: T[];
 };
 
-const useFilterParams = (initialFilters: FilterValuesType<string>) => {
+export const useFilterParams = (initialFilters: FilterValuesType<string>) => {
   const initialFiltersRef = useRef(initialFilters);
   const [filterValues, setFilterValues] = useState<FilterValuesType<string>>(
     initialFiltersRef.current,
@@ -149,5 +149,3 @@ const useFilterParams = (initialFilters: FilterValuesType<string>) => {
     onClearSingleFilter: handleClearSingleFilter,
   };
 };
-
-export default useFilterParams;

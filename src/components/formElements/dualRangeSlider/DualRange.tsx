@@ -1,5 +1,5 @@
 import { useId } from 'react';
-import useCurrency from '../../../features/currency/useCurrency';
+import { useCurrency } from '../../../features/currency/useCurrency';
 import type { ChangeInputType } from '../../../types/types';
 import VisuallyHidden from '../../VisuallyHidden';
 import './_range.scss';

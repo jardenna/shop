@@ -1,7 +1,7 @@
 import { useId, type ReactNode } from 'react';
 import useLanguage from '../../features/language/useLanguage';
-import useMediaQuery from '../../hooks/useMediaQuery';
-import useTrapFocus from '../../hooks/useTrapFocus';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
+import { useTrapFocus } from '../../hooks/useTrapFocus';
 import LayoutElement from '../../layout/LayoutElement';
 import { BtnVariant } from '../../types/enums';
 import type { AriaHasPopup } from '../../types/types';
@@ -9,7 +9,7 @@ import BtnClose from '../BtnClose';
 import Button from '../Button';
 import Overlay from '../overlay/Overlay';
 import './_toggle-panel.scss';
-import useTogglePanel from './useTogglePanel';
+import { useTogglePanel } from './useTogglePanel';
 
 type PanelPosition = 'right' | 'left' | 'bottom' | 'top';
 

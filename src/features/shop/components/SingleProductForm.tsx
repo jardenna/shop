@@ -7,7 +7,7 @@ import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/form/Form';
 import ControlGroupList from '../../../components/formElements/controlGroup/ControlGroupList';
-import useFormValidation from '../../../hooks/useFormValidation';
+import { useFormValidation } from '../../../hooks/useFormValidation';
 import {
   ColorOption,
   sortColorsByTranslation,

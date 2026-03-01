@@ -1,7 +1,10 @@
 import { useEffect, useRef } from 'react';
 import { KeyCode } from '../types/enums';
 
-function useKeyPress(callback: () => void, keyCombination: KeyCode[]): void {
+export function useKeyPress(
+  callback: () => void,
+  keyCombination: KeyCode[],
+): void {
   const pressedKeysRef = useRef<Set<KeyCode>>(new Set());
 
   const downHandler = (event: KeyboardEvent) => {
@@ -29,5 +32,3 @@ function useKeyPress(callback: () => void, keyCombination: KeyCode[]): void {
     };
   }, [keyCombination, callback]);
 }
-
-export default useKeyPress;

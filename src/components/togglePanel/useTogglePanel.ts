@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router';
-import useClickOutside from '../../hooks/useClickOutside';
-import useKeyPress from '../../hooks/useKeyPress';
+import { useClickOutside } from '../../hooks/useClickOutside';
+import { useKeyPress } from '../../hooks/useKeyPress';
 import { KeyCode } from '../../types/enums';
 
-const useTogglePanel = ({
+export const useTogglePanel = ({
   preventClickOutside,
 }: {
   preventClickOutside: boolean;
@@ -62,5 +62,3 @@ const useTogglePanel = ({
     panelRef,
   };
 };
-
-export default useTogglePanel;

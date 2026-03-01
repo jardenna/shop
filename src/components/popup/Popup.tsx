@@ -1,6 +1,6 @@
 import { Placement } from '@popperjs/core';
 import { ReactNode, useId } from 'react';
-import usePopup from '../../hooks/usePopup';
+import { usePopup } from '../../hooks/usePopup';
 import { BtnVariant } from '../../types/enums';
 import type { AriaHasPopup } from '../../types/types';
 import Button from '../Button';

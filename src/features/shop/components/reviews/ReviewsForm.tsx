@@ -6,7 +6,7 @@ import FieldSet from '../../../../components/fieldset/FieldSet';
 import RadioButtonList from '../../../../components/formElements/RadioButtonList';
 import Textarea from '../../../../components/formElements/Textarea';
 import useMessagePopup from '../../../../components/messagePopup/useMessagePopup';
-import useFormValidation from '../../../../hooks/useFormValidation';
+import { useFormValidation } from '../../../../hooks/useFormValidation';
 import { BtnType, IconName } from '../../../../types/enums';
 import type { ChangeInputType } from '../../../../types/types';
 import { handleApiError } from '../../../../utils/handleApiError';

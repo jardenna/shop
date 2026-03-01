@@ -5,7 +5,7 @@ type useTrapFocusProps = {
   popupRef: RefObject<HTMLElement | null>;
 };
 
-const useTrapFocus = ({ id, popupRef }: useTrapFocusProps) => {
+export const useTrapFocus = ({ id, popupRef }: useTrapFocusProps) => {
   useEffect(() => {
     const handleTabKeyPress = (event: KeyboardEvent) => {
       if (popupRef.current && id) {
@@ -43,5 +43,3 @@ const useTrapFocus = ({ id, popupRef }: useTrapFocusProps) => {
     };
   }, [id, popupRef]);
 };
-
-export default useTrapFocus;

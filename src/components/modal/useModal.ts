@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router';
 import { useAppDispatch } from '../../app/hooks';
 import { toggleModal } from '../../features/modalSlice';
-import useTrapFocus from '../../hooks/useTrapFocus';
+import { useTrapFocus } from '../../hooks/useTrapFocus';
 
 const useModal = (modalId: string | null) => {
   const location = useLocation();

@@ -3,7 +3,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useAppSelector } from '../../app/hooks';
 import useLanguage from '../../features/language/useLanguage';
 import { selectModalId } from '../../features/modalSlice';
-import useClickOutside from '../../hooks/useClickOutside';
+import { useClickOutside } from '../../hooks/useClickOutside';
 import { BtnType, BtnVariant, PopupRole, SizeVariant } from '../../types/enums';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import Overlay from '../overlay/Overlay';

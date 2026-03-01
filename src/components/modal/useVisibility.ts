@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import useKeyPress from '../../hooks/useKeyPress';
+import { useKeyPress } from '../../hooks/useKeyPress';
 import { KeyCode } from '../../types/enums';
 
 const useVisibility = (

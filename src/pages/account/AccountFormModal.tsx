@@ -12,7 +12,7 @@ import ModalContainer from '../../components/modal/ModalContainer';
 import useSubmitStatus from '../../components/modal/useSubmitStatus';
 import useLanguage from '../../features/language/useLanguage';
 import { useUpdateUserProfileMutation } from '../../features/profile/profileApiSlice';
-import useFormValidation from '../../hooks/useFormValidation';
+import { useFormValidation } from '../../hooks/useFormValidation';
 import { BtnType, SizeVariant } from '../../types/enums';
 import type { OptionType } from '../../types/types';
 import { handleApiError } from '../../utils/handleApiError';

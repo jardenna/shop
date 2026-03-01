@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-const useAnnounce = (deps: unknown[]) => {
+export const useAnnounce = (deps: unknown[]) => {
   const hasMounted = useRef(false);
   const [announce, setAnnounce] = useState(false);
 
@@ -20,5 +20,3 @@ const useAnnounce = (deps: unknown[]) => {
 
   return { announce };
 };
-
-export default useAnnounce;
