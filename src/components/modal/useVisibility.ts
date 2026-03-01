@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { KeyCode } from '../../types/enums';
 
-const useVisibility = (
+export const useVisibility = (
   isOpen: boolean,
   closeCallback: () => void,
   onClearAllValues?: () => void,
@@ -42,5 +42,3 @@ const useVisibility = (
 
   return { popupClass, closeModalAnimated: handleCloseModal };
 };
-
-export default useVisibility;

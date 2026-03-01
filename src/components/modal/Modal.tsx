@@ -14,7 +14,7 @@ import ModalFooter from './ModalFooter';
 import ModalHeader from './ModalHeader';
 import { resolveSecondaryBtn } from './resolveSecondaryBtn ';
 import { useModal } from './useModal';
-import useVisibility from './useVisibility';
+import { useVisibility } from './useVisibility';
 
 export type PrimaryActionBtnProps = {
   label: string | null;
