@@ -10,7 +10,7 @@ import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/form/Form';
 import Input from '../../../components/formElements/Input';
-import useMessagePopup from '../../../components/messagePopup/useMessagePopup';
+import { useMessagePopup } from '../../../components/messagePopup/useMessagePopup';
 import Selectbox from '../../../components/selectbox/Selectbox';
 import StatusOptions from '../../../components/selectbox/StatusOptions';
 import SharedCategoryInputs from '../../../components/SharedCategoryInputs';

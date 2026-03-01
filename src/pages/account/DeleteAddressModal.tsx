@@ -1,5 +1,5 @@
 import IconContent from '../../components/IconContent';
-import useMessagePopup from '../../components/messagePopup/useMessagePopup';
+import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
 import { useLanguage } from '../../features/language/useLanguage';

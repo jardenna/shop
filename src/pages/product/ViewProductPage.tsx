@@ -3,7 +3,7 @@ import ProductCardCenter from '../../components/adminCard/ProductCardCenter';
 import ProductCardLeft from '../../components/adminCard/ProductCardLeft';
 import CardFooter from '../../components/card/CardFooter';
 import CardRight from '../../components/card/CardRight';
-import useMessagePopup from '../../components/messagePopup/useMessagePopup';
+import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import SkeletonThreeCards from '../../components/skeleton/SkeletonThreeCards';
 import { useLanguage } from '../../features/language/useLanguage';

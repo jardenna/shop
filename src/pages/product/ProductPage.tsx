@@ -1,5 +1,5 @@
 import type { Product } from '../../app/api/apiTypes/adminApiTypes';
-import useMessagePopup from '../../components/messagePopup/useMessagePopup';
+import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import type { Column } from '../../components/sortTable/Table';
 import Table from '../../components/sortTable/Table';
 import { useLanguage } from '../../features/language/useLanguage';

@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import type { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
 import Icon from '../../components/icons/Icon';
-import useMessagePopup from '../../components/messagePopup/useMessagePopup';
+import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import Popup from '../../components/popup/Popup';
 import Table from '../../components/sortTable/Table';
 import { useGetAllUsersQuery } from '../../features/adminUsers/adminUserApiSlice';

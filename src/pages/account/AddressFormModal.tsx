@@ -5,7 +5,7 @@ import type {
 import FieldSet from '../../components/fieldset/FieldSet';
 import Input from '../../components/formElements/Input';
 import IconContent from '../../components/IconContent';
-import useMessagePopup from '../../components/messagePopup/useMessagePopup';
+import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import {
   PrimaryActionBtnProps,
   SecondaryActionBtnProps,
