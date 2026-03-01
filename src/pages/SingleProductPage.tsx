@@ -3,7 +3,7 @@ import type { AccordionList } from '../components/accordion/Accordion';
 import Accordion from '../components/accordion/Accordion';
 import ImgList from '../components/ImgList';
 import SkeletonSinglePage from '../components/skeleton/skeletonSinglePage/SkeletonSinglePage';
-import useAuth from '../features/auth/hooks/useAuth';
+import { useAuth } from '../features/auth/hooks/useAuth';
 import useLanguage from '../features/language/useLanguage';
 import InStock from '../features/shop/components/InStock';
 import NotifyMe from '../features/shop/components/NotifyMe';

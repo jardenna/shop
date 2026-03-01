@@ -5,7 +5,7 @@ import { DropdownItem } from '../components/dropdownBtn/DropdownBtn';
 import Icon from '../components/icons/Icon';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
-import useAuth from '../features/auth/hooks/useAuth';
+import { useAuth } from '../features/auth/hooks/useAuth';
 import { useCurrency } from '../features/currency/useCurrency';
 import useLanguage from '../features/language/useLanguage';
 import { clearMessagePopups } from '../features/messagePopupSlice';

@@ -1,4 +1,4 @@
-import useAuth from '../../features/auth/hooks/useAuth';
+import { useAuth } from '../../features/auth/hooks/useAuth';
 import useLanguage from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import { BtnVariant } from '../../types/enums';

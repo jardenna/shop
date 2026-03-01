@@ -1,5 +1,5 @@
 import IconBtn from '../../components/IconBtn';
-import useAuth from '../../features/auth/hooks/useAuth';
+import { useAuth } from '../../features/auth/hooks/useAuth';
 import NavContainer from '../../layout/nav/NavContainer';
 import { adminNavList } from '../../layout/nav/navLists';
 import { IconName } from '../../types/enums';

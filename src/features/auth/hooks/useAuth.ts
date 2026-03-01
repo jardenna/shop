@@ -5,7 +5,7 @@ import { ShopPath } from '../../../layout/nav/enums';
 import { useCheckAuthQuery, useLogoutMutation } from '../authApiSlice';
 import { setUser } from '../authSlice';
 
-const useAuth = () => {
+export const useAuth = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -52,5 +52,3 @@ const useAuth = () => {
     onReset: refetch,
   };
 };
-
-export default useAuth;
