@@ -28,7 +28,7 @@ import { handleApiError } from '../../../utils/handleApiError';
 import { maxFiles, translateKey } from '../../../utils/utils';
 import { validateProduct } from '../../../utils/validation/validateProduct';
 import { useCurrency } from '../../currency/useCurrency';
-import handleImageUpload from '../../imageUploads/handleImageUpload';
+import { handleImageUpload } from '../../imageUploads/handleImageUpload';
 import useLanguage from '../../language/useLanguage';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 import { useUploadImageMutation } from '../../uploadImageApiSlice';

@@ -11,7 +11,7 @@ type HandleImageUploadParams = {
   uploadImages: ReturnType<typeof useUploadImageMutation>[0];
 };
 
-async function handleImageUpload({
+export async function handleImageUpload({
   id,
   activeImages,
   filesData,
@@ -45,5 +45,3 @@ async function handleImageUpload({
 
   return merged;
 }
-
-export default handleImageUpload;

@@ -20,7 +20,7 @@ interface RangeControllerProps {
   onChange: (event: ChangeInputType) => void;
 }
 
-const useRangeController = ({
+export const useRangeController = ({
   minValue,
   maxValue,
   onChange,
@@ -162,5 +162,3 @@ const useRangeController = ({
     onRangeChange: handleRangeChange,
   };
 };
-
-export default useRangeController;

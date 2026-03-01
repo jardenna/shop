@@ -1,4 +1,4 @@
-import getRangeText from '../utils';
+import { getRangeText } from '../utils';
 
 type Params = {
   language: Record<string, string>;

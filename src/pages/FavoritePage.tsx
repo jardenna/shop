@@ -1,6 +1,6 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
-import useFavorites from '../components/favorites/useFavorites';
+import { useFavorites } from '../components/favorites/useFavorites';
 import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import useLanguage from '../features/language/useLanguage';
 import ProductCard from '../features/shop/components/ProductCard';

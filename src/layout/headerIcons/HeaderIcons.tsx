@@ -2,7 +2,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { Link } from 'react-router';
 import DropdownBtn from '../../components/dropdownBtn/DropdownBtn';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
-import useFavorites from '../../components/favorites/useFavorites';
+import { useFavorites } from '../../components/favorites/useFavorites';
 import IconContent from '../../components/IconContent';
 import ModalContainer from '../../components/modal/ModalContainer';
 import VisuallyHidden from '../../components/VisuallyHidden';

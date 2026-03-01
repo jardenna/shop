@@ -2,9 +2,9 @@ import { useParams } from 'react-router';
 import type { BaseShopProductsParams } from '../app/api/apiTypes/shopApiTypes';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
-import usePaginationParams from '../components/pagination/hooks/usePaginationParams';
+import { usePaginationParams } from '../components/pagination/hooks/usePaginationParams';
 import usePaginationText from '../components/pagination/hooks/usePaginationText';
-import useScrollOnPagination from '../components/pagination/hooks/useScrollOnPagination';
+import { useScrollOnPagination } from '../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../components/pagination/Pagination';
 import { type PageCountOptions } from '../components/pagination/PaginationSelect';
 import Picture from '../components/Picture';
@@ -15,7 +15,7 @@ import CollectionPageHeader from '../features/shop/components/CollectionPageHead
 import NoProductsFound from '../features/shop/components/NoProductsFound';
 import ProductCardList from '../features/shop/components/ProductCardList';
 import ProductToolbar from '../features/shop/components/ProductToolbar';
-import useSubMenu from '../features/shop/hooks/useSubMenu';
+import { useSubMenu } from '../features/shop/hooks/useSubMenu';
 import { useGetProductsQuery } from '../features/shop/shopApiSlice';
 import { useAnnounce } from '../hooks/useAnnounce';
 import {

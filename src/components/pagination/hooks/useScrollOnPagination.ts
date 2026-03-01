@@ -4,7 +4,9 @@ type useScrollOnPaginationProps = {
   isLoading: boolean;
 };
 
-const useScrollOnPagination = ({ isLoading }: useScrollOnPaginationProps) => {
+export const useScrollOnPagination = ({
+  isLoading,
+}: useScrollOnPaginationProps) => {
   const scrollToRef = useRef<HTMLHeadingElement>(null);
   const [shouldScroll, setShouldScroll] = useState(false);
 
@@ -22,5 +24,3 @@ const useScrollOnPagination = ({ isLoading }: useScrollOnPaginationProps) => {
 
   return { scrollToRef, setShouldScroll };
 };
-
-export default useScrollOnPagination;

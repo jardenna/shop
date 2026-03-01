@@ -5,7 +5,7 @@ import VisuallyHidden from '../../VisuallyHidden';
 import './_range.scss';
 import DualRangeSlider from './DualRangeSlider';
 import RangeNumberInput from './RangeNumberInput';
-import useRangeController, { InputUtils } from './useRangeController';
+import { InputUtils, useRangeController } from './useRangeController';
 
 interface DualRangeProps {
   inputLabels: InputUtils;

@@ -11,7 +11,7 @@ import {
   SecondaryActionBtnProps,
 } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
-import useSubmitStatus from '../../components/modal/useSubmitStatus';
+import { useSubmitStatus } from '../../components/modal/useSubmitStatus';
 import useLanguage from '../../features/language/useLanguage';
 import {
   useAddAddressMutation,

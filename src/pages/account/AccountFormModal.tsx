@@ -9,7 +9,7 @@ import RadioButtonList from '../../components/formElements/RadioButtonList';
 import useMessagePopup from '../../components/messagePopup/useMessagePopup';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
-import useSubmitStatus from '../../components/modal/useSubmitStatus';
+import { useSubmitStatus } from '../../components/modal/useSubmitStatus';
 import useLanguage from '../../features/language/useLanguage';
 import { useUpdateUserProfileMutation } from '../../features/profile/profileApiSlice';
 import { useFormValidation } from '../../hooks/useFormValidation';

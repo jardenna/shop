@@ -12,7 +12,7 @@ import {
   useDeleteUserMutation,
   useUpdateUserMutation,
 } from '../../features/users/userApiSlice';
-import useTableEditField from '../../hooks/useTableEditField';
+import { useTableEditField } from '../../hooks/useTableEditField';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
 import { AdminPath } from '../../layout/nav/enums';
 import { IconName } from '../../types/enums';
