@@ -12,7 +12,7 @@ export type AccordionList = {
 
 type AccordionProps = {
   accordionList: AccordionList[];
-  onReset: () => void;
+  onReset?: () => void;
 };
 
 const Accordion = ({ accordionList, onReset }: AccordionProps) => (

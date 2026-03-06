@@ -1,41 +1,78 @@
+import { ReactNode } from 'react';
+import { Size } from '../app/api/apiTypes/sharedApiTypes';
+import Accordion, { AccordionList } from '../components/accordion/Accordion';
+import Button from '../components/Button';
+import ColorItem from '../components/ColorItem';
 import Form from '../components/form/Form';
-import ControlInput from '../components/formElements/ControlInput';
+import CheckboxList from '../components/formElements/checkbox/CheckboxList';
 import DualRange from '../components/formElements/dualRangeSlider/DualRange';
 import { useCurrency } from '../features/currency/useCurrency';
-import { useLanguage } from '../features/language/useLanguage';
-import { useGetProductsQuery } from '../features/shop/shopApiSlice';
 import { useSearchParamsState } from '../hooks/useSearchParamsState';
-import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
+import { BtnVariant } from '../types/enums';
 import { sortSizesDynamic } from '../utils/sizeUtils';
-import { translateKey } from '../utils/utils';
+import { FilterKeys } from './CollectionPage';
 
-const ParamsPage = () => {
+type AccordionConfigItem<K extends FilterKeys = FilterKeys> = {
+  key: K;
+  list: string[];
+  renderExtra?: (checkbox: string) => ReactNode;
+};
+
+interface FilterProps {
+  availableBrands: string[];
+  availableSizes: Size[];
+  colors: string[];
+  initialFilters: any;
+  language: Record<string, string>;
+}
+
+const ParamsPage = ({
+  initialFilters,
+  availableSizes,
+  availableBrands,
+  colors,
+  language,
+}: FilterProps) => {
   const { currencyText } = useCurrency();
-  const { language } = useLanguage();
-  const initialFilters = {
-    sizes: [] as string[],
-    colors: [] as string[],
-    brand: [] as string[],
-    minPrice: '',
-    maxPrice: '',
-  };
+
   const { values, toggleValue, setValue } =
     useSearchParamsState(initialFilters);
 
-  const { data: products } = useGetProductsQuery({
-    productsPerPage: 10,
-    page: '1',
-    colors: values.colors,
-    brand: values.brand,
-    sizes: values.sizes,
-    mainCategory: 'men',
-    subCategoryId: '',
-  });
+  const accordionConfig: AccordionConfigItem[] = [
+    {
+      key: 'colors',
+      list: colors,
+      renderExtra: (checkbox: string) => (
+        <ColorItem colorKey={checkbox} hasBorderColor={checkbox === 'white'} />
+      ),
+    },
+    { key: 'sizes', list: sortSizesDynamic(availableSizes) },
+    { key: 'brand', list: availableBrands },
+  ];
 
-  const sortedTranslatedColors = sortColorsByTranslation(colorList, language);
+  const accordionList: AccordionList[] = accordionConfig.map((item) => ({
+    title: language[item.key],
+    additionalTitle: 'additionalTitle',
+    content: (
+      <>
+        <Button variant={BtnVariant.Ghost} className="clear-filter-btn">
+          {language.clearFilters}
+        </Button>
+        <CheckboxList
+          checkBoxList={item.list}
+          name={item.key}
+          onChange={toggleValue}
+          values={values[item.key]}
+          language={language}
+          renderExtra={item.renderExtra}
+        />
+      </>
+    ),
+  }));
 
   return (
-    products && (
+    <div>
+      <Accordion accordionList={accordionList} />
       <Form
         submitBtnLabel="Search"
         onSubmit={() => {
@@ -57,55 +94,8 @@ const ParamsPage = () => {
           onChange={setValue}
           unitLabel={currencyText}
         />
-
-        <ul className="checkbox-list">
-          {products.availableBrands.map((value) => (
-            <li key={value} className="checkbox-item">
-              <input
-                id={value}
-                type="checkbox"
-                name="brand"
-                value={value}
-                checked={values.brand.includes(value)}
-                onChange={toggleValue}
-              />
-              <label htmlFor={value}>{value}</label>
-            </li>
-          ))}
-        </ul>
-
-        <ul className="checkbox-list">
-          {sortSizesDynamic(products.availableSizes).map((value) => (
-            <li key={value} className="checkbox-item">
-              <input
-                id={value}
-                name="sizes"
-                value={value}
-                type="checkbox"
-                checked={values.sizes.includes(value)}
-                onChange={toggleValue}
-              />
-              <label htmlFor={value}>{value}</label>
-            </li>
-          ))}
-        </ul>
-        <ul className="checkbox-list">
-          {sortedTranslatedColors.map((value) => (
-            <li key={value} className="checkbox-item">
-              <ControlInput
-                id={value}
-                type="checkbox"
-                name="colors"
-                value={value}
-                checked={values.colors.includes(value)}
-                onChange={toggleValue}
-                label={translateKey(value, language)}
-              />
-            </li>
-          ))}
-        </ul>
       </Form>
-    )
+    </div>
   );
 };
 
