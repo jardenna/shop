@@ -8,7 +8,7 @@ import Img from '../../../components/Img';
 import VisuallyHidden from '../../../components/VisuallyHidden';
 import { BtnVariant } from '../../../types/enums';
 import { ariaInfoTitle } from '../../../utils/utils';
-import useLanguage from '../../language/useLanguage';
+import { useLanguage } from '../../language/useLanguage';
 import './ProductCard.styles.scss';
 import ProductCardGridContent from './ProductCardGridContent';
 import ProductCardListContent from './ProductCardListContent';

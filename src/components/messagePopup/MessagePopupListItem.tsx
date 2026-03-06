@@ -3,7 +3,7 @@ import { MessagePopup } from '../../features/messagePopupSlice';
 import { IconName, PopupRole } from '../../types/enums';
 import BtnClose from '../BtnClose';
 import Icon from '../icons/Icon';
-import useMessagePopup from './useMessagePopup';
+import { useMessagePopup } from './useMessagePopup';
 
 type MessagePopupListItemProps = {
   messagePopup: MessagePopup;

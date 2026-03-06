@@ -7,7 +7,7 @@ type ResolveSecondaryBtnProps = {
   onCloseModal: () => void;
 };
 
-const resolveSecondaryBtn = ({
+export const resolveSecondaryBtn = ({
   action,
   label,
   onCloseModal,
@@ -36,5 +36,3 @@ const resolveSecondaryBtn = ({
     },
   };
 };
-
-export default resolveSecondaryBtn;

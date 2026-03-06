@@ -5,7 +5,7 @@ import { BtnVariant } from '../../../types/enums';
 import { LinkText } from '../enums';
 import { BaseNav } from '../Nav';
 import NavAd from '../NavAd';
-import subNavConfig from './subnavConfig';
+import { subNavConfig } from './subnavConfig';
 
 type SubNavListMobileProps = {
   category: LinkText;

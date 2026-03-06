@@ -1,14 +1,14 @@
 import { useCallback, useRef, useState } from 'react';
 import { DropdownItem } from '../components/dropdownBtn/DropdownBtn';
 import { KeyCode } from '../types/enums';
-import useKeyPress from './useKeyPress';
+import { useKeyPress } from './useKeyPress';
 
 type UseKeyboardListNavProps = {
   dropdownList: DropdownItem[];
   defaultIndex?: number;
 };
 
-const useKeyboardListNav = ({
+export const useKeyboardListNav = ({
   defaultIndex,
   dropdownList,
 }: UseKeyboardListNavProps) => {
@@ -52,5 +52,3 @@ const useKeyboardListNav = ({
 
   return { listRefs };
 };
-
-export default useKeyboardListNav;

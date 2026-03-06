@@ -2,7 +2,7 @@ import type { MessagePopup } from '../../features/messagePopupSlice';
 import Portal from '../Portal';
 import './_message-popup.scss';
 import MessagePopupListItem from './MessagePopupListItem';
-import useMessagePopup from './useMessagePopup';
+import { useMessagePopup } from './useMessagePopup';
 
 const MessagePopupList = () => {
   const { messagePopups } = useMessagePopup();

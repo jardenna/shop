@@ -4,7 +4,7 @@ interface UseDebounceOptions {
   delay?: number;
 }
 
-const useDebounce = ({ delay = 500 }: UseDebounceOptions = {}) => {
+export const useDebounce = ({ delay = 500 }: UseDebounceOptions = {}) => {
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const debounce = (callback: () => void) => {
@@ -16,5 +16,3 @@ const useDebounce = ({ delay = 500 }: UseDebounceOptions = {}) => {
 
   return { debounce };
 };
-
-export default useDebounce;

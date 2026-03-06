@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useSearchParams } from 'react-router';
-import useLanguage from '../../features/language/useLanguage';
-import useLocalStorage, { localStorageKeys } from '../../hooks/useLocalStorage';
+import { useLanguage } from '../../features/language/useLanguage';
+import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
 import variables from '../../scss/variables.module.scss';
 import { BtnVariant, IconName } from '../../types/enums';
 import type { SortOrderType } from '../../types/types';

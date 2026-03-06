@@ -1,11 +1,11 @@
 import { useId } from 'react';
-import useCurrency from '../../../features/currency/useCurrency';
+import { useCurrency } from '../../../features/currency/useCurrency';
 import type { ChangeInputType } from '../../../types/types';
 import VisuallyHidden from '../../VisuallyHidden';
 import './_range.scss';
 import DualRangeSlider from './DualRangeSlider';
 import RangeNumberInput from './RangeNumberInput';
-import useRangeController, { InputUtils } from './useRangeController';
+import { InputUtils, useRangeController } from './useRangeController';
 
 interface DualRangeProps {
   inputLabels: InputUtils;

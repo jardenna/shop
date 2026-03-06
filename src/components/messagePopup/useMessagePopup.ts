@@ -7,10 +7,10 @@ import {
   selectDuration,
   selectMessagePopups,
 } from '../../features/messagePopupSlice';
-import useKeyPress from '../../hooks/useKeyPress';
+import { useKeyPress } from '../../hooks/useKeyPress';
 import { KeyCode } from '../../types/enums';
 
-const useMessagePopup = (messagePopupId?: string) => {
+export const useMessagePopup = (messagePopupId?: string) => {
   const dispatch = useAppDispatch();
   const [isVisible, setIsVisible] = useState(true);
   const messagePopups = useAppSelector(selectMessagePopups);
@@ -97,5 +97,3 @@ const useMessagePopup = (messagePopupId?: string) => {
     popupClass,
   };
 };
-
-export default useMessagePopup;

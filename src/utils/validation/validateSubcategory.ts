@@ -2,7 +2,7 @@ import type { ValidationErrors } from '../../hooks/useFormValidation';
 import type { SubCategoryState } from '../../pages/subCategory/CreateSubCategoryPage';
 import { ValidationMessage } from '../../types/enums';
 
-function validateSubcategory(values: SubCategoryState) {
+export function validateSubcategory(values: SubCategoryState) {
   const errors: ValidationErrors<SubCategoryState> = {};
   const { category, subCategoryName, translationKey } = values;
 
@@ -20,5 +20,3 @@ function validateSubcategory(values: SubCategoryState) {
 
   return errors;
 }
-
-export default validateSubcategory;

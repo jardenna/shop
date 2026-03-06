@@ -6,17 +6,17 @@ import type {
 import FieldSet from '../../components/fieldset/FieldSet';
 import Input from '../../components/formElements/Input';
 import RadioButtonList from '../../components/formElements/RadioButtonList';
-import useMessagePopup from '../../components/messagePopup/useMessagePopup';
+import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
-import useSubmitStatus from '../../components/modal/useSubmitStatus';
-import useLanguage from '../../features/language/useLanguage';
+import { useSubmitStatus } from '../../components/modal/useSubmitStatus';
+import { useLanguage } from '../../features/language/useLanguage';
 import { useUpdateUserProfileMutation } from '../../features/profile/profileApiSlice';
-import useFormValidation from '../../hooks/useFormValidation';
+import { useFormValidation } from '../../hooks/useFormValidation';
 import { BtnType, SizeVariant } from '../../types/enums';
 import type { OptionType } from '../../types/types';
-import handleApiError from '../../utils/handleApiError';
-import validateProfile from '../../utils/validation/validateProfile';
+import { handleApiError } from '../../utils/handleApiError';
+import { validateProfile } from '../../utils/validation/validateProfile';
 import type { ProfileFieldListProps } from './MyAccountPage';
 
 type AccountFormModalProps = {

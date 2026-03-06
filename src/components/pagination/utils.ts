@@ -1,4 +1,4 @@
-const getRangeText = (page: number, perPage: number, total: number) => {
+export const getRangeText = (page: number, perPage: number, total: number) => {
   // Handle zero products early to avoid weird "1–0 of 0" cases
   if (total === 0) {
     return { start: 0, end: 0 };
@@ -18,5 +18,3 @@ const getRangeText = (page: number, perPage: number, total: number) => {
 
   return { start, end };
 };
-
-export default getRangeText;

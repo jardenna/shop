@@ -3,7 +3,7 @@ type subnavConfigItem = {
   textKey: string;
 };
 
-const subNavConfig: Record<string, subnavConfigItem> = {
+export const subNavConfig: Record<string, subnavConfigItem> = {
   kids: {
     headingKey: 'shopKidsHeading',
     textKey: 'shopKidsMenuText',
@@ -17,5 +17,3 @@ const subNavConfig: Record<string, subnavConfigItem> = {
     textKey: 'shopWomenMenuText',
   },
 };
-
-export default subNavConfig;

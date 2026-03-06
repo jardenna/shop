@@ -2,7 +2,7 @@ import type { ProductRequest } from '../../app/api/apiTypes/adminApiTypes';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
 
-function validateProduct(values: ProductRequest) {
+export function validateProduct(values: ProductRequest) {
   const errors: ValidationErrors<ProductRequest> = {};
   const {
     brand,
@@ -48,5 +48,3 @@ function validateProduct(values: ProductRequest) {
 
   return errors;
 }
-
-export default validateProduct;

@@ -5,7 +5,7 @@ import type {
 } from '../../../../app/api/apiTypes/sharedApiTypes';
 import type { OptionGroupHeading } from '../../../../types/types';
 import { getDisplaySizes } from '../../../../utils/sizeUtils';
-import useLanguage from '../../../language/useLanguage';
+import { useLanguage } from '../../../language/useLanguage';
 import ProductList from './ProductList';
 import ProductListItem from './ProductListItem';
 

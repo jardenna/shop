@@ -34,7 +34,7 @@ type ValidatedFile = {
   reason?: 'invalidFileType' | 'fileTooLarge';
 };
 
-function useFormValidation<T extends KeyValuePair>({
+export function useFormValidation<T extends KeyValuePair>({
   initialState,
   callback,
   validate,
@@ -258,5 +258,3 @@ function useFormValidation<T extends KeyValuePair>({
     onFileChange: handleFileChange,
   };
 }
-
-export default useFormValidation;

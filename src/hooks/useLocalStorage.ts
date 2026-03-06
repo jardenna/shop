@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const useLocalStorage = <T>(storageKey: string, fallbackState: T) => {
+export const useLocalStorage = <T>(storageKey: string, fallbackState: T) => {
   const [value, setValue] = useState<T>(() => {
     try {
       const storedValue = localStorage.getItem(storageKey);
@@ -25,5 +25,3 @@ export const localStorageKeys = {
   menuCollapsed: 'menuCollapsed',
   productView: 'productView',
 };
-
-export default useLocalStorage;

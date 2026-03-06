@@ -1,6 +1,6 @@
 import { isBefore, startOfDay } from 'date-fns';
 import type { Status } from '../app/api/apiTypes/adminApiTypes';
-import useLanguage from '../features/language/useLanguage';
+import { useLanguage } from '../features/language/useLanguage';
 import type {
   InputChangeHandler,
   OptionType,

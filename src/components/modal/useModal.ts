@@ -2,9 +2,9 @@ import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router';
 import { useAppDispatch } from '../../app/hooks';
 import { toggleModal } from '../../features/modalSlice';
-import useTrapFocus from '../../hooks/useTrapFocus';
+import { useTrapFocus } from '../../hooks/useTrapFocus';
 
-const useModal = (modalId: string | null) => {
+export const useModal = (modalId: string | null) => {
   const location = useLocation();
   const dispatch = useAppDispatch();
   const popupRef = useRef<HTMLDialogElement | null>(null);
@@ -64,5 +64,3 @@ const useModal = (modalId: string | null) => {
 
   return { closeModalState: handleClosePopup, popupRef };
 };
-
-export default useModal;

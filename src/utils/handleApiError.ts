@@ -7,7 +7,7 @@ type AddMessagePopupFn = ({
 }: MessagePopupWithoutId) => void;
 
 // Global error handler for try/catch and manual API responses
-const handleApiError = (
+export const handleApiError = (
   error: any,
   onAddMessagePopup: AddMessagePopupFn,
 ): void => {
@@ -50,5 +50,3 @@ const handleApiError = (
   // Critical errors (>= 500) → bubble to ErrorBoundary
   throw error;
 };
-
-export default handleApiError;

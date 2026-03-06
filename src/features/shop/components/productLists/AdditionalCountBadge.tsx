@@ -1,5 +1,5 @@
 import VisuallyHidden from '../../../../components/VisuallyHidden';
-import useLanguage from '../../../language/useLanguage';
+import { useLanguage } from '../../../language/useLanguage';
 
 type AdditionalCountBadgeProps = {
   count: number;

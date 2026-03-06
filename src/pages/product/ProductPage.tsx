@@ -1,8 +1,8 @@
 import type { Product } from '../../app/api/apiTypes/adminApiTypes';
-import useMessagePopup from '../../components/messagePopup/useMessagePopup';
+import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import type { Column } from '../../components/sortTable/Table';
 import Table from '../../components/sortTable/Table';
-import useLanguage from '../../features/language/useLanguage';
+import { useLanguage } from '../../features/language/useLanguage';
 import ProductTableRow from '../../features/products/components/ProductTableRow';
 import {
   useDuplicateProductMutation,
@@ -10,7 +10,7 @@ import {
   useGetHasScheduledDataQuery,
 } from '../../features/products/productApiSlice';
 import { AdminPath } from '../../layout/nav/enums';
-import handleApiError from '../../utils/handleApiError';
+import { handleApiError } from '../../utils/handleApiError';
 import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 import './ProductPage.styles.scss';

@@ -1,5 +1,5 @@
 import { DisplyReviews } from '../../../../app/api/apiTypes/shopApiTypes';
-import useLanguage from '../../../language/useLanguage';
+import { useLanguage } from '../../../language/useLanguage';
 import ReviewStars from './ReviewStars';
 import { getReviewAgeLabel, getStarsArray } from './reviewsUtil.';
 

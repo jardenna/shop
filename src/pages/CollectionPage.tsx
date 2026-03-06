@@ -2,27 +2,28 @@ import { useParams } from 'react-router';
 import type { BaseShopProductsParams } from '../app/api/apiTypes/shopApiTypes';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
-import usePaginationParams from '../components/pagination/hooks/usePaginationParams';
-import usePaginationText from '../components/pagination/hooks/usePaginationText';
-import useScrollOnPagination from '../components/pagination/hooks/useScrollOnPagination';
+import { usePaginationParams } from '../components/pagination/hooks/usePaginationParams';
+import { usePaginationText } from '../components/pagination/hooks/usePaginationText';
+import { useScrollOnPagination } from '../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../components/pagination/Pagination';
 import { type PageCountOptions } from '../components/pagination/PaginationSelect';
 import Picture from '../components/Picture';
 import SkeletonCardList from '../components/skeleton/SkeletonCardList';
-import useLanguage from '../features/language/useLanguage';
+import { useLanguage } from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
 import CollectionPageHeader from '../features/shop/components/CollectionPageHeader';
 import NoProductsFound from '../features/shop/components/NoProductsFound';
 import ProductCardList from '../features/shop/components/ProductCardList';
 import ProductToolbar from '../features/shop/components/ProductToolbar';
-import useSubMenu from '../features/shop/hooks/useSubMenu';
+import { useSubMenu } from '../features/shop/hooks/useSubMenu';
 import { useGetProductsQuery } from '../features/shop/shopApiSlice';
-import useAnnounce from '../hooks/useAnnounce';
-import useFilterParams, {
+import { useAnnounce } from '../hooks/useAnnounce';
+import {
+  useFilterParams,
   type FilterValuesType,
 } from '../hooks/useFilterParams';
-import useLocalStorage, { localStorageKeys } from '../hooks/useLocalStorage';
-import useMediaQuery from '../hooks/useMediaQuery';
+import { localStorageKeys, useLocalStorage } from '../hooks/useLocalStorage';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 import { LinkText } from '../layout/nav/enums';
 import MetaTags from '../layout/nav/MetaTags';
 import { IconName } from '../types/enums';
@@ -200,6 +201,7 @@ const CollectionPage = () => {
                 ariaLiveText={ariaLiveText}
               />
             )}
+
             {isLoading && <SkeletonCardList count={productsPerPage} />}
             {productCount > 0 ? (
               products && (

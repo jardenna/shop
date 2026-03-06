@@ -1,9 +1,9 @@
 import { useEffect, type ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useAppSelector } from '../../app/hooks';
-import useLanguage from '../../features/language/useLanguage';
+import { useLanguage } from '../../features/language/useLanguage';
 import { selectModalId } from '../../features/modalSlice';
-import useClickOutside from '../../hooks/useClickOutside';
+import { useClickOutside } from '../../hooks/useClickOutside';
 import { BtnType, BtnVariant, PopupRole, SizeVariant } from '../../types/enums';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import Overlay from '../overlay/Overlay';
@@ -12,9 +12,9 @@ import './_modal.scss';
 import ModalContentContainer from './ModalContentContainer';
 import ModalFooter from './ModalFooter';
 import ModalHeader from './ModalHeader';
-import resolveSecondaryBtn from './resolveSecondaryBtn ';
-import useModal from './useModal';
-import useVisibility from './useVisibility';
+import { resolveSecondaryBtn } from './resolveSecondaryBtn ';
+import { useModal } from './useModal';
+import { useVisibility } from './useVisibility';
 
 export type PrimaryActionBtnProps = {
   label: string | null;

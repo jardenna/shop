@@ -1,6 +1,6 @@
 import Icon from '../../../components/icons/Icon';
 import { IconName } from '../../../types/enums';
-import useLanguage from '../../language/useLanguage';
+import { useLanguage } from '../../language/useLanguage';
 
 type InStockProps = {
   stock: number;

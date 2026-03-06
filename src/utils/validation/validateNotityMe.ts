@@ -1,9 +1,9 @@
 import type { InitialNotifyValues } from '../../features/shop/components/NotifyMe';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
-import validateEmail from './CommonFieldValidation';
+import { validateEmail } from './CommonFieldValidation';
 
-function validateNotityMe(values: InitialNotifyValues) {
+export function validateNotityMe(values: InitialNotifyValues) {
   const errors: ValidationErrors<InitialNotifyValues> = {};
   const { email, sizes } = values;
 
@@ -19,5 +19,3 @@ function validateNotityMe(values: InitialNotifyValues) {
 
   return errors;
 }
-
-export default validateNotityMe;

@@ -6,7 +6,5 @@ const categoryToIconName: Record<string, IconName> = {
   Kids: IconName.Kid,
 };
 
-const resolveIconName = (category: string): IconName =>
+export const resolveIconName = (category: string): IconName =>
   categoryToIconName[category] ?? IconName.Woman;
-
-export default resolveIconName;

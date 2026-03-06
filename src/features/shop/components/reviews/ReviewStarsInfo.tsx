@@ -2,7 +2,7 @@ import { useAppSelector } from '../../../../app/hooks';
 import VisuallyHidden from '../../../../components/VisuallyHidden';
 import { numberConvert } from '../../../../utils/numberConverter';
 import { selectSelectedLanguage } from '../../../language/languageSlice';
-import useLanguage from '../../../language/useLanguage';
+import { useLanguage } from '../../../language/useLanguage';
 
 const ReviewStarsInfo = ({ rating }: { rating: number }) => {
   const { language } = useLanguage();

@@ -10,7 +10,7 @@ import type { KeyValuePair } from '../../../hooks/useFormValidation';
 import { BtnVariant } from '../../../types/enums';
 import type { BlurEventType, InputChangeHandler } from '../../../types/types';
 import { roleList } from '../../../utils/productLists';
-import useLanguage from '../../language/useLanguage';
+import { useLanguage } from '../../language/useLanguage';
 import type { CreateAccountProps } from './CreateAccount';
 
 type UserFields = {

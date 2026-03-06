@@ -7,16 +7,16 @@ import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/form/Form';
 import ControlGroupList from '../../../components/formElements/controlGroup/ControlGroupList';
-import useFormValidation from '../../../hooks/useFormValidation';
+import { useFormValidation } from '../../../hooks/useFormValidation';
 import {
   ColorOption,
   sortColorsByTranslation,
 } from '../../../utils/colorUtils';
-import resolveIconName from '../../../utils/iconHelpers';
+import { resolveIconName } from '../../../utils/iconHelpers';
 import { oneSize } from '../../../utils/sizeUtils';
 import { translateKey } from '../../../utils/utils';
-import validateShopProduct from '../../../utils/validation/validateShopProduct';
-import useLanguage from '../../language/useLanguage';
+import { validateShopProduct } from '../../../utils/validation/validateShopProduct';
+import { useLanguage } from '../../language/useLanguage';
 
 type SingleProductFormProps = {
   colorList: ColorOption[];

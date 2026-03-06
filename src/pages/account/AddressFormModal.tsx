@@ -5,23 +5,23 @@ import type {
 import FieldSet from '../../components/fieldset/FieldSet';
 import Input from '../../components/formElements/Input';
 import IconContent from '../../components/IconContent';
-import useMessagePopup from '../../components/messagePopup/useMessagePopup';
+import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import {
   PrimaryActionBtnProps,
   SecondaryActionBtnProps,
 } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
-import useSubmitStatus from '../../components/modal/useSubmitStatus';
-import useLanguage from '../../features/language/useLanguage';
+import { useSubmitStatus } from '../../components/modal/useSubmitStatus';
+import { useLanguage } from '../../features/language/useLanguage';
 import {
   useAddAddressMutation,
   useUpdateAddressMutation,
 } from '../../features/profile/profileApiSlice';
-import useFormValidation from '../../hooks/useFormValidation';
+import { useFormValidation } from '../../hooks/useFormValidation';
 import { BtnType, BtnVariant, IconName, SizeVariant } from '../../types/enums';
 import type { InputType } from '../../types/types';
-import handleApiError from '../../utils/handleApiError';
-import validateAddress from '../../utils/validation/validateAddress';
+import { handleApiError } from '../../utils/handleApiError';
+import { validateAddress } from '../../utils/validation/validateAddress';
 
 type AddressFormModalProps = {
   id: string | null;

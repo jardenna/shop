@@ -6,7 +6,7 @@ type UseTableEditFieldProps<T extends { id: string }> = {
   callback?: (id: string, values: Partial<T>) => void;
 };
 
-const useTableEditField = <T extends { id: string }>({
+export const useTableEditField = <T extends { id: string }>({
   data,
   callback,
 }: UseTableEditFieldProps<T>) => {
@@ -54,5 +54,3 @@ const useTableEditField = <T extends { id: string }>({
     editValues: values,
   };
 };
-
-export default useTableEditField;

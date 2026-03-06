@@ -4,7 +4,7 @@ import {
   useToggleFavoriteMutation,
 } from '../../features/shop/shopApiSlice';
 
-const useFavorites = ({ id }: { id?: string }) => {
+export const useFavorites = ({ id }: { id?: string }) => {
   const {
     data: favorites,
     isLoading,
@@ -39,5 +39,3 @@ const useFavorites = ({ id }: { id?: string }) => {
     onReset: () => refetch(),
   };
 };
-
-export default useFavorites;

@@ -1,7 +1,7 @@
 import { useSearchParams } from 'react-router';
 import { pageParamKey, productsPerPageParamKey } from '../../../utils/utils';
 
-const usePaginationParams = () => {
+export const usePaginationParams = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const page = Number(searchParams.get(pageParamKey)) || 1;
@@ -36,5 +36,3 @@ const usePaginationParams = () => {
     searchParams,
   };
 };
-
-export default usePaginationParams;

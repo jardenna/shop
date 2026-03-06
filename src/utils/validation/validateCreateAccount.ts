@@ -1,6 +1,6 @@
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
-import validateEmail from './CommonFieldValidation';
+import { validateEmail } from './CommonFieldValidation';
 
 export type AuthFormValues = {
   confirmPassword: string;
@@ -9,7 +9,7 @@ export type AuthFormValues = {
   username: string;
 };
 
-function validateCreateAccount(values: AuthFormValues) {
+export function validateSignup(values: AuthFormValues) {
   const errors: ValidationErrors<AuthFormValues> = {};
   const { username, email, password, confirmPassword } = values;
 
@@ -40,5 +40,3 @@ function validateCreateAccount(values: AuthFormValues) {
 
   return errors;
 }
-
-export default validateCreateAccount;

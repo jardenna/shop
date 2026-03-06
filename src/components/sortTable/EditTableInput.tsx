@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import useLanguage from '../../features/language/useLanguage';
+import { useLanguage } from '../../features/language/useLanguage';
 import type { InputChangeHandler } from '../../types/types';
 import Form from '../form/Form';
 import Input from '../formElements/Input';

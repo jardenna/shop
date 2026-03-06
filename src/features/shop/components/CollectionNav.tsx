@@ -4,7 +4,7 @@ import type { ProductMenuResponse } from '../../../app/api/apiTypes/shopApiTypes
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import { ShopPath } from '../../../layout/nav/enums';
 import { translateKey } from '../../../utils/utils';
-import useLanguage from '../../language/useLanguage';
+import { useLanguage } from '../../language/useLanguage';
 
 type CollectionNavProps = {
   category: string;

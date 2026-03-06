@@ -3,7 +3,7 @@ import type {
   Size,
   SubCategoryNames,
 } from '../../app/api/apiTypes/sharedApiTypes';
-import useLanguage from '../../features/language/useLanguage';
+import { useLanguage } from '../../features/language/useLanguage';
 import ColorList from '../../features/shop/components/productLists/ColorList';
 import SizeList from '../../features/shop/components/productLists/SizeList';
 import CardContent from '../card/CardContent';

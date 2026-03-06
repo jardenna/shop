@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import useLocalStorage, { localStorageKeys } from '../../hooks/useLocalStorage';
+import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
 import {
   CurrencyCode,
   currencyToText,
@@ -8,7 +8,7 @@ import {
 } from './currencyConverterUtil';
 import { selectCurrency, setCurrency } from './currencySlice';
 
-const useCurrency = (price?: number) => {
+export const useCurrency = (price?: number) => {
   const dispatch = useAppDispatch();
   const { rates, selectedCurrency } = useAppSelector(selectCurrency);
   const [exchangeRate, setExchangeRate] = useLocalStorage(
@@ -39,5 +39,3 @@ const useCurrency = (price?: number) => {
     currencyText,
   };
 };
-
-export default useCurrency;

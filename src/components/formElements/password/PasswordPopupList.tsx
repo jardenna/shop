@@ -1,5 +1,5 @@
-import useLanguage from '../../../features/language/useLanguage';
-import passwordRules from '../../../utils/passwordRules';
+import { useLanguage } from '../../../features/language/useLanguage';
+import { passwordRules } from '../../../utils/passwordRules';
 import ProgressBar from '../../progressbar/ProgressBar';
 import PasswordPopupItem from './PasswordPopupItem';
 

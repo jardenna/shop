@@ -1,5 +1,5 @@
-import useLanguage from '../../features/language/useLanguage';
-import dateToLocaleMap from '../../utils/dates';
+import { useLanguage } from '../../features/language/useLanguage';
+import { dateToLocaleMap } from '../../utils/dates';
 
 type DateDisplayProps = {
   date: Date | string;

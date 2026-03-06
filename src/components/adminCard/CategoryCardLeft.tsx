@@ -1,5 +1,5 @@
 import type { Status } from '../../app/api/apiTypes/adminApiTypes';
-import useLanguage from '../../features/language/useLanguage';
+import { useLanguage } from '../../features/language/useLanguage';
 import CardContent from '../card/CardContent';
 import AdminCardHeading from './AdminCardHeading';
 

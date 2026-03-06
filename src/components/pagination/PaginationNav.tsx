@@ -1,5 +1,5 @@
-import useLanguage from '../../features/language/useLanguage';
-import useMediaQuery from '../../hooks/useMediaQuery';
+import { useLanguage } from '../../features/language/useLanguage';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
 import LayoutElement from '../../layout/LayoutElement';
 import { IconName } from '../../types/enums';
 import IconBtn from '../IconBtn';

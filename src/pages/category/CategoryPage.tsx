@@ -5,7 +5,7 @@ import {
   useGetHasCategoriesScheduledQuery,
 } from '../../features/categories/categoriyApiSlice';
 import CategoryTableRow from '../../features/categories/components/CategoryTableRow';
-import useLanguage from '../../features/language/useLanguage';
+import { useLanguage } from '../../features/language/useLanguage';
 import { AdminPath } from '../../layout/nav/enums';
 import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';

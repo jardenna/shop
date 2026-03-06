@@ -5,7 +5,7 @@ import Icon from '../../../components/icons/Icon';
 import Popup from '../../../components/popup/Popup';
 import { IconName } from '../../../types/enums';
 import { translateKey } from '../../../utils/utils';
-import useLanguage from '../../language/useLanguage';
+import { useLanguage } from '../../language/useLanguage';
 
 type AdminBadgeProps = {
   scheduledDate: Date | null;

@@ -1,4 +1,4 @@
-import type Locales from './locales';
+import type { Locales } from './locales';
 
 type LanguageCode = 'da' | 'en' | 'de' | 'sv' | 'no';
 

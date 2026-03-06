@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 // Tracks success/failure state when a modal contains a form
-const useSubmitStatus = (delay = 300) => {
+export const useSubmitStatus = (delay = 300) => {
   const [resultSuccess, setResultSuccess] = useState<boolean | null>(null);
 
   useEffect(() => {
@@ -20,5 +20,3 @@ const useSubmitStatus = (delay = 300) => {
 
   return { resultSuccess, setResultSuccess };
 };
-
-export default useSubmitStatus;

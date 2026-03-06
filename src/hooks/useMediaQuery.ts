@@ -11,7 +11,7 @@ const mq = {
   medium: stripUnit(variables.medium) * 16,
 };
 
-const useMediaQuery = (
+export const useMediaQuery = (
   smallMobileSize = mq.mini,
   mobileSize = mq.small,
   tabletSize = mq.medium,
@@ -52,5 +52,3 @@ const useMediaQuery = (
 
   return matches;
 };
-
-export default useMediaQuery;

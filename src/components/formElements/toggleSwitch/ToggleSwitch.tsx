@@ -1,4 +1,4 @@
-import useLanguage from '../../../features/language/useLanguage';
+import { useLanguage } from '../../../features/language/useLanguage';
 import { translateKey } from '../../../utils/utils';
 import './_toggle-switch.scss';
 
