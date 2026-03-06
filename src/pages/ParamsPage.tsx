@@ -10,6 +10,7 @@ import { useCurrency } from '../features/currency/useCurrency';
 import { useSearchParamsState } from '../hooks/useSearchParamsState';
 import { BtnVariant } from '../types/enums';
 import { sortSizesDynamic } from '../utils/sizeUtils';
+import { getFilterSummary } from '../utils/utils';
 import { FilterKeys } from './CollectionPage';
 
 type AccordionConfigItem<K extends FilterKeys = FilterKeys> = {
@@ -38,6 +39,9 @@ const ParamsPage = ({
   const { values, toggleValue, setValue } =
     useSearchParamsState(initialFilters);
 
+  const filtersCount = getFilterSummary(values);
+  const countsByKey = filtersCount.countsByKey;
+
   const accordionConfig: AccordionConfigItem[] = [
     {
       key: 'colors',
@@ -52,7 +56,7 @@ const ParamsPage = ({
 
   const accordionList: AccordionList[] = accordionConfig.map((item) => ({
     title: language[item.key],
-    additionalTitle: 'additionalTitle',
+    additionalTitle: countsByKey[item.key] || '',
     content: (
       <>
         <Button variant={BtnVariant.Ghost} className="clear-filter-btn">
