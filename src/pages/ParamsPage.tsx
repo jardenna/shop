@@ -106,7 +106,7 @@ const ParamsPage = ({
             ),
         )}
       </ToggleContent>
-      <Accordion accordionList={accordionList} />
+      <Accordion accordionList={accordionList} name="filter" />
       <Form
         submitBtnLabel="Search"
         onSubmit={() => {

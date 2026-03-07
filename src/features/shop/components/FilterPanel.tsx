@@ -147,7 +147,11 @@ const FilterPanel = ({
           )}
         </ToggleContent>
 
-        <Accordion accordionList={accordionList} onReset={onReset} />
+        <Accordion
+          accordionList={accordionList}
+          onReset={onReset}
+          name="filter"
+        />
       </section>
     </TogglePanel>
   );

@@ -12,10 +12,11 @@ export type AccordionList = {
 
 type AccordionProps = {
   accordionList: AccordionList[];
+  name?: string; // undefined = independent toggle, same name = native accordion group
   onReset?: () => void;
 };
 
-const Accordion = ({ accordionList, onReset }: AccordionProps) => (
+const Accordion = ({ accordionList, onReset, name }: AccordionProps) => (
   <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
     <div className="accordion">
       {accordionList.map(({ title, content, additionalTitle }) => (
@@ -23,6 +24,7 @@ const Accordion = ({ accordionList, onReset }: AccordionProps) => (
           key={title}
           title={title}
           additionalTitle={additionalTitle}
+          name={name}
         >
           {content}
         </AccordionItem>
