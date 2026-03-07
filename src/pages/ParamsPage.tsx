@@ -6,11 +6,14 @@ import ColorItem from '../components/ColorItem';
 import Form from '../components/form/Form';
 import CheckboxList from '../components/formElements/checkbox/CheckboxList';
 import DualRange from '../components/formElements/dualRangeSlider/DualRange';
+import TagList from '../components/tags/TagList';
+import ToggleContent from '../components/ToggleContent';
 import { useCurrency } from '../features/currency/useCurrency';
 import { useSearchParamsState } from '../hooks/useSearchParamsState';
 import { BtnVariant } from '../types/enums';
 import { sortSizesDynamic } from '../utils/sizeUtils';
 import { getFilterSummary } from '../utils/utils';
+import { InitialFilters } from './AboutUsPage';
 import { FilterKeys } from './CollectionPage';
 
 type AccordionConfigItem<K extends FilterKeys = FilterKeys> = {
@@ -20,26 +23,32 @@ type AccordionConfigItem<K extends FilterKeys = FilterKeys> = {
 };
 
 interface FilterProps {
-  availableBrands: string[];
-  availableSizes: Size[];
+  brands: string[];
   colors: string[];
-  initialFilters: any;
+  initialFilters: InitialFilters;
   language: Record<string, string>;
+  sizes: Size[];
 }
 
 const ParamsPage = ({
   initialFilters,
-  availableSizes,
-  availableBrands,
+  sizes,
+  brands,
   colors,
   language,
 }: FilterProps) => {
   const { currencyText } = useCurrency();
 
+  const filterProps = {
+    sizes: initialFilters.sizes,
+    colors: initialFilters.colors,
+    brand: initialFilters.brand,
+  };
+
   const { values, toggleValue, setValue } =
     useSearchParamsState(initialFilters);
 
-  const filtersCount = getFilterSummary(values);
+  const filtersCount = getFilterSummary(filterProps);
   const countsByKey = filtersCount.countsByKey;
 
   const accordionConfig: AccordionConfigItem[] = [
@@ -50,8 +59,8 @@ const ParamsPage = ({
         <ColorItem colorKey={checkbox} hasBorderColor={checkbox === 'white'} />
       ),
     },
-    { key: 'sizes', list: sortSizesDynamic(availableSizes) },
-    { key: 'brand', list: availableBrands },
+    { key: 'sizes', list: sortSizesDynamic(sizes) },
+    { key: 'brand', list: brands },
   ];
 
   const accordionList: AccordionList[] = accordionConfig.map((item) => ({
@@ -74,8 +83,29 @@ const ParamsPage = ({
     ),
   }));
 
+  const filteredEntries = Object.entries(values).filter(
+    (entry): entry is [string, string[]] => Array.isArray(entry[1]),
+  );
+
   return (
     <div>
+      <ToggleContent btnVariant={BtnVariant.Default} collapsedHeight={56}>
+        {filteredEntries.map(
+          ([key, values]) =>
+            values.length > 0 && (
+              <TagList
+                key={key}
+                language={language}
+                values={values}
+                filterKey={key as FilterKeys}
+                onClick={() => {
+                  console.log(values);
+                }}
+                ariaLabel={language.removeFilter}
+              />
+            ),
+        )}
+      </ToggleContent>
       <Accordion accordionList={accordionList} />
       <Form
         submitBtnLabel="Search"

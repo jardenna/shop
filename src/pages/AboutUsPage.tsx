@@ -5,14 +5,26 @@ import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import MainPageContainer from './pageContainer/MainPageContainer';
 import ParamsPage from './ParamsPage';
 
+export interface SearchParamState {
+  [paramKey: string]: string | string[];
+}
+export interface InitialFilters extends SearchParamState {
+  brand: string[];
+  colors: string[];
+  maxPrice: string;
+  minPrice: string;
+  sizes: string[];
+}
+
 const AboutUsPage = () => {
-  const initialFilters = {
+  const initialFilters: InitialFilters = {
     sizes: [] as string[],
     colors: [] as string[],
     brand: [] as string[],
     minPrice: '',
     maxPrice: '',
   };
+
   const { values } = useSearchParamsState(initialFilters);
   const { data: products } = useGetProductsQuery({
     productsPerPage: 10,
@@ -33,8 +45,8 @@ const AboutUsPage = () => {
         {products && (
           <ParamsPage
             initialFilters={initialFilters}
-            availableSizes={products.availableSizes}
-            availableBrands={products.availableBrands}
+            sizes={products.availableSizes}
+            brands={products.availableBrands}
             colors={sortedTranslatedColors}
             language={language}
           />
