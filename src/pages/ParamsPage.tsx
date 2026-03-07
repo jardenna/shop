@@ -3,6 +3,7 @@ import { Size } from '../app/api/apiTypes/sharedApiTypes';
 import Accordion, { AccordionList } from '../components/accordion/Accordion';
 import Button from '../components/Button';
 import ColorItem from '../components/ColorItem';
+import FieldSet from '../components/fieldset/FieldSet';
 import Form from '../components/form/Form';
 import CheckboxList from '../components/formElements/checkbox/CheckboxList';
 import DualRange from '../components/formElements/dualRangeSlider/DualRange';
@@ -18,6 +19,7 @@ import { FilterKeys } from './CollectionPage';
 
 type AccordionConfigItem<K extends FilterKeys = FilterKeys> = {
   key: K;
+  label: string;
   list: string[];
   renderExtra?: (checkbox: string) => ReactNode;
 };
@@ -52,20 +54,21 @@ const ParamsPage = ({
   const accordionConfig: AccordionConfigItem[] = [
     {
       key: 'colors',
+      label: language.colors,
       list: colors,
       renderExtra: (checkbox: string) => (
         <ColorItem colorKey={checkbox} hasBorderColor={checkbox === 'white'} />
       ),
     },
-    { key: 'sizes', list: sortSizesDynamic(sizes) },
-    { key: 'brand', list: brands },
+    { key: 'sizes', label: language.sizes, list: sortSizesDynamic(sizes) },
+    { key: 'brand', label: language.brands, list: brands },
   ];
 
   const accordionList: AccordionList[] = accordionConfig.map((item) => ({
     title: language[item.key],
     additionalTitle: countsByKey[item.key] || '',
     content: (
-      <>
+      <FieldSet legendText={item.label}>
         <Button variant={BtnVariant.Ghost} className="clear-filter-btn">
           {language.clearFilters}
         </Button>
@@ -77,12 +80,12 @@ const ParamsPage = ({
           language={language}
           renderExtra={item.renderExtra}
         />
-      </>
+      </FieldSet>
     ),
   }));
 
   return (
-    <div>
+    <>
       <ToggleContent btnVariant={BtnVariant.Default} collapsedHeight={56}>
         {filteredEntries.map(
           ([key, values]) =>
@@ -106,24 +109,26 @@ const ParamsPage = ({
           console.log(values);
         }}
       >
-        <Accordion accordionList={accordionList} name="filter" />
-        <DualRange
-          minValue={values.minPrice}
-          maxValue={values.maxPrice}
-          rangeLabel={language.priceRange}
-          inputNames={{
-            min: 'minPrice',
-            max: 'maxPrice',
-          }}
-          inputLabels={{
-            min: 'Pris fra',
-            max: 'Pris til',
-          }}
-          onChange={setValue}
-          unitLabel={currencyText}
-        />
+        <FieldSet legendText={language.filterProducts}>
+          <Accordion accordionList={accordionList} name="filter" />
+          <DualRange
+            minValue={values.minPrice}
+            maxValue={values.maxPrice}
+            rangeLabel={language.priceRange}
+            inputNames={{
+              min: 'minPrice',
+              max: 'maxPrice',
+            }}
+            inputLabels={{
+              min: 'Pris fra',
+              max: 'Pris til',
+            }}
+            onChange={setValue}
+            unitLabel={currencyText}
+          />
+        </FieldSet>
       </Form>
-    </div>
+    </>
   );
 };
 

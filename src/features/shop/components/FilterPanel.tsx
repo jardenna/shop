@@ -98,7 +98,6 @@ const FilterPanel = ({
   }));
 
   const ariaLabelledby = useId();
-
   return (
     <TogglePanel
       ariaHasPopup="dialog"
@@ -146,7 +145,6 @@ const FilterPanel = ({
               ),
           )}
         </ToggleContent>
-
         <Accordion
           accordionList={accordionList}
           onReset={onReset}
