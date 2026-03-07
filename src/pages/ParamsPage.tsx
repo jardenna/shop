@@ -39,14 +39,18 @@ const ParamsPage = ({
 }: FilterProps) => {
   const { currencyText } = useCurrency();
 
-  const filterProps = {
-    sizes: initialFilters.sizes,
-    colors: initialFilters.colors,
-    brand: initialFilters.brand,
-  };
-
   const { values, toggleValue, setValue } =
     useSearchParamsState(initialFilters);
+
+  const filterProps = {
+    sizes: values.sizes,
+    colors: values.colors,
+    brand: values.brand,
+  };
+
+  const filteredEntries = Object.entries(values).filter(
+    (entry): entry is [string, string[]] => Array.isArray(entry[1]),
+  );
 
   const filtersCount = getFilterSummary(filterProps);
   const countsByKey = filtersCount.countsByKey;
@@ -82,10 +86,6 @@ const ParamsPage = ({
       </>
     ),
   }));
-
-  const filteredEntries = Object.entries(values).filter(
-    (entry): entry is [string, string[]] => Array.isArray(entry[1]),
-  );
 
   return (
     <div>
