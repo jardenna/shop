@@ -1,9 +1,5 @@
 import { AdminPath, ShopPath } from '../layout/nav/enums';
-import type {
-  AriaLabelData,
-  Filters,
-  FiltersCountResult,
-} from '../types/types';
+import type { AriaLabelData, FiltersCountResult } from '../types/types';
 
 const oneDay = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
 const currencyCacheKey = 'exchangeRates';
@@ -59,13 +55,17 @@ function getAriaLabel(count: number, ariaLabelData: AriaLabelData): string {
 }
 
 // Filters count
-const getFilterSummary = (filters: Filters): FiltersCountResult => {
+const getFilterSummary = (
+  filters: Record<string, unknown>,
+): FiltersCountResult => {
   const countsByKey = Object.fromEntries(
-    Object.entries(filters).map(([key, values]) => [key, values.length]),
-  ) as Record<string, number>;
+    Object.entries(filters)
+      .filter((entry): entry is [string, string[]] => Array.isArray(entry[1]))
+      .map(([paramKey, values]) => [paramKey, values.length]),
+  );
 
   const totalCount = Object.values(countsByKey).reduce(
-    (sum, count) => sum + count,
+    (totalSum, countValue) => totalSum + countValue,
     0,
   );
 
