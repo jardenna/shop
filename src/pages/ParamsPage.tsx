@@ -100,13 +100,13 @@ const ParamsPage = ({
             ),
         )}
       </ToggleContent>
-      <Accordion accordionList={accordionList} name="filter" />
       <Form
         submitBtnLabel="Search"
         onSubmit={() => {
           console.log(values);
         }}
       >
+        <Accordion accordionList={accordionList} name="filter" />
         <DualRange
           minValue={values.minPrice}
           maxValue={values.maxPrice}
