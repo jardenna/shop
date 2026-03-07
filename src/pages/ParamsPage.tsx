@@ -41,8 +41,13 @@ const ParamsPage = ({
 }: FilterProps) => {
   const { currencyText } = useCurrency();
 
-  const { values, toggleValue, setValue } =
-    useSearchParamsState(initialFilters);
+  const {
+    values,
+    toggleValue,
+    setValue,
+    onRemoveFilterTag,
+    onClearSingleFilter,
+  } = useSearchParamsState(initialFilters);
 
   const filteredEntries = Object.entries(values).filter(
     (entry): entry is [string, string[]] => Array.isArray(entry[1]),
@@ -69,7 +74,13 @@ const ParamsPage = ({
     additionalTitle: countsByKey[item.key] || '',
     content: (
       <FieldSet legendText={item.label}>
-        <Button variant={BtnVariant.Ghost} className="clear-filter-btn">
+        <Button
+          variant={BtnVariant.Ghost}
+          className="clear-filter-btn"
+          onClick={() => {
+            onClearSingleFilter(item.key);
+          }}
+        >
           {language.clearFilters}
         </Button>
         <CheckboxList
@@ -86,7 +97,7 @@ const ParamsPage = ({
 
   return (
     <>
-      <ToggleContent btnVariant={BtnVariant.Default} collapsedHeight={56}>
+      <ToggleContent btnVariant={BtnVariant.Default}>
         {filteredEntries.map(
           ([key, values]) =>
             values.length > 0 && (
@@ -95,9 +106,7 @@ const ParamsPage = ({
                 language={language}
                 values={values}
                 filterKey={key as FilterKeys}
-                onClick={() => {
-                  console.log(values);
-                }}
+                onClick={onRemoveFilterTag}
                 ariaLabel={language.removeFilter}
               />
             ),
@@ -111,21 +120,32 @@ const ParamsPage = ({
       >
         <FieldSet legendText={language.filterProducts}>
           <Accordion accordionList={accordionList} name="filter" />
-          <DualRange
-            minValue={values.minPrice}
-            maxValue={values.maxPrice}
-            rangeLabel={language.priceRange}
-            inputNames={{
-              min: 'minPrice',
-              max: 'maxPrice',
-            }}
-            inputLabels={{
-              min: 'Pris fra',
-              max: 'Pris til',
-            }}
-            onChange={setValue}
-            unitLabel={currencyText}
-          />
+          <FieldSet legendText="price">
+            {/* <Button
+              variant={BtnVariant.Ghost}
+              className="clear-filter-btn"
+              onClick={() => {
+                onClearSingleFilter('minPrice');
+              }}
+            >
+              {language.clearFilters}
+            </Button> */}
+            <DualRange
+              minValue={values.minPrice}
+              maxValue={values.maxPrice}
+              rangeLabel={language.priceRange}
+              inputNames={{
+                min: 'minPrice',
+                max: 'maxPrice',
+              }}
+              inputLabels={{
+                min: 'Pris fra',
+                max: 'Pris til',
+              }}
+              onChange={setValue}
+              unitLabel={currencyText}
+            />
+          </FieldSet>
         </FieldSet>
       </Form>
     </>

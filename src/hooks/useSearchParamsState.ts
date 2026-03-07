@@ -61,5 +61,39 @@ export const useSearchParamsState = <T extends SearchParamState>(
     setSearchParams(updatedSearchParams);
   };
 
-  return { values, toggleValue, setValue };
+  const handleRemoveFilterTag = (key: string, value: string) => {
+    const updatedSearchParams = new URLSearchParams(searchParams.toString());
+    const currentValues = updatedSearchParams
+      .getAll(key)
+      .filter((item) => item !== value);
+
+    updatedSearchParams.delete(key);
+
+    currentValues.forEach((item) => {
+      updatedSearchParams.append(key, item);
+    });
+
+    setSearchParams(updatedSearchParams);
+  };
+
+  const handleClearAllFilters = () => {
+    setSearchParams(new URLSearchParams());
+  };
+
+  const handleClearSingleFilter = (key: string) => {
+    const updatedSearchParams = new URLSearchParams(searchParams.toString());
+
+    updatedSearchParams.delete(key);
+
+    setSearchParams(updatedSearchParams);
+  };
+
+  return {
+    values,
+    toggleValue,
+    setValue,
+    onRemoveFilterTag: handleRemoveFilterTag,
+    onClearAllFilters: handleClearAllFilters,
+    onClearSingleFilter: handleClearSingleFilter,
+  };
 };
