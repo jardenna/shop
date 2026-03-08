@@ -1,111 +1,154 @@
+import { ReactNode } from 'react';
+import { Size } from '../app/api/apiTypes/sharedApiTypes';
+import Accordion, { AccordionList } from '../components/accordion/Accordion';
+import Button from '../components/Button';
+import ColorItem from '../components/ColorItem';
+import FieldSet from '../components/fieldset/FieldSet';
 import Form from '../components/form/Form';
-import ControlInput from '../components/formElements/ControlInput';
+import CheckboxList from '../components/formElements/checkbox/CheckboxList';
 import DualRange from '../components/formElements/dualRangeSlider/DualRange';
+import TagList from '../components/tags/TagList';
+import ToggleContent from '../components/ToggleContent';
 import { useCurrency } from '../features/currency/useCurrency';
-import { useLanguage } from '../features/language/useLanguage';
-import { useGetProductsQuery } from '../features/shop/shopApiSlice';
 import { useSearchParamsState } from '../hooks/useSearchParamsState';
-import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
+import { BtnVariant } from '../types/enums';
 import { sortSizesDynamic } from '../utils/sizeUtils';
-import { translateKey } from '../utils/utils';
+import { getFilterSummary } from '../utils/utils';
+import { InitialFilters } from './AboutUsPage';
+import { FilterKeys } from './CollectionPage';
 
-const ParamsPage = () => {
+type AccordionConfigItem<K extends FilterKeys = FilterKeys> = {
+  key: K;
+  label: string;
+  list: string[];
+  renderExtra?: (checkbox: string) => ReactNode;
+};
+
+interface FilterProps {
+  brands: string[];
+  colors: string[];
+  initialFilters: InitialFilters;
+  language: Record<string, string>;
+  sizes: Size[];
+}
+
+const ParamsPage = ({
+  initialFilters,
+  sizes,
+  brands,
+  colors,
+  language,
+}: FilterProps) => {
   const { currencyText } = useCurrency();
-  const { language } = useLanguage();
-  const initialFilters = {
-    sizes: [] as string[],
-    colors: [] as string[],
-    brand: [] as string[],
-    minPrice: '',
-    maxPrice: '',
-  };
-  const { values, toggleValue, setValue } =
-    useSearchParamsState(initialFilters);
 
-  const { data: products } = useGetProductsQuery({
-    productsPerPage: 10,
-    page: '1',
-    colors: values.colors,
-    brand: values.brand,
-    sizes: values.sizes,
-    mainCategory: 'men',
-    subCategoryId: '',
-  });
+  const {
+    values,
+    toggleValue,
+    setValue,
+    onRemoveFilterTag,
+    onClearSingleFilter,
+  } = useSearchParamsState(initialFilters);
 
-  const sortedTranslatedColors = sortColorsByTranslation(colorList, language);
+  const filteredEntries = Object.entries(values).filter(
+    (entry): entry is [string, string[]] => Array.isArray(entry[1]),
+  );
+
+  const filtersCount = getFilterSummary(values);
+  const countsByKey = filtersCount.countsByKey;
+
+  const accordionConfig: AccordionConfigItem[] = [
+    {
+      key: 'colors',
+      label: language.colors,
+      list: colors,
+      renderExtra: (checkbox: string) => (
+        <ColorItem colorKey={checkbox} hasBorderColor={checkbox === 'white'} />
+      ),
+    },
+    { key: 'sizes', label: language.sizes, list: sortSizesDynamic(sizes) },
+    { key: 'brand', label: language.brands, list: brands },
+  ];
+
+  const accordionList: AccordionList[] = accordionConfig.map((item) => ({
+    title: language[item.key],
+    additionalTitle: countsByKey[item.key] || '',
+    content: (
+      <FieldSet legendText={item.label}>
+        <Button
+          variant={BtnVariant.Ghost}
+          className="clear-filter-btn"
+          onClick={() => {
+            onClearSingleFilter(item.key);
+          }}
+        >
+          {language.clearFilters}
+        </Button>
+        <CheckboxList
+          checkBoxList={item.list}
+          name={item.key}
+          onChange={toggleValue}
+          values={values[item.key]}
+          language={language}
+          renderExtra={item.renderExtra}
+        />
+      </FieldSet>
+    ),
+  }));
 
   return (
-    products && (
+    <>
+      <ToggleContent btnVariant={BtnVariant.Default}>
+        {filteredEntries.map(
+          ([key, values]) =>
+            values.length > 0 && (
+              <TagList
+                key={key}
+                language={language}
+                values={values}
+                filterKey={key as FilterKeys}
+                onClick={onRemoveFilterTag}
+                ariaLabel={language.removeFilter}
+              />
+            ),
+        )}
+      </ToggleContent>
       <Form
         submitBtnLabel="Search"
         onSubmit={() => {
           console.log(values);
         }}
       >
-        <DualRange
-          minValue={values.minPrice}
-          maxValue={values.maxPrice}
-          rangeLabel={language.priceRange}
-          inputNames={{
-            min: 'minPrice',
-            max: 'maxPrice',
-          }}
-          inputLabels={{
-            min: 'Pris fra',
-            max: 'Pris til',
-          }}
-          onChange={setValue}
-          unitLabel={currencyText}
-        />
-
-        <ul className="checkbox-list">
-          {products.availableBrands.map((value) => (
-            <li key={value} className="checkbox-item">
-              <input
-                id={value}
-                type="checkbox"
-                name="brand"
-                value={value}
-                checked={values.brand.includes(value)}
-                onChange={toggleValue}
-              />
-              <label htmlFor={value}>{value}</label>
-            </li>
-          ))}
-        </ul>
-
-        <ul className="checkbox-list">
-          {sortSizesDynamic(products.availableSizes).map((value) => (
-            <li key={value} className="checkbox-item">
-              <input
-                id={value}
-                name="sizes"
-                value={value}
-                type="checkbox"
-                checked={values.sizes.includes(value)}
-                onChange={toggleValue}
-              />
-              <label htmlFor={value}>{value}</label>
-            </li>
-          ))}
-        </ul>
-        <ul className="checkbox-list">
-          {sortedTranslatedColors.map((value) => (
-            <li key={value} className="checkbox-item">
-              <ControlInput
-                id={value}
-                type="checkbox"
-                name="colors"
-                value={value}
-                checked={values.colors.includes(value)}
-                onChange={toggleValue}
-                label={translateKey(value, language)}
-              />
-            </li>
-          ))}
-        </ul>
+        <FieldSet legendText={language.filterProducts}>
+          <Accordion accordionList={accordionList} name="filter" />
+          <FieldSet legendText="price">
+            <Button
+              variant={BtnVariant.Ghost}
+              className="clear-filter-btn"
+              onClick={() => {
+                onClearSingleFilter(['minPrice', 'maxPrice']);
+              }}
+            >
+              {language.clearFilters}
+            </Button>
+            <DualRange
+              minValue={values.minPrice}
+              maxValue={values.maxPrice}
+              rangeLabel={language.priceRange}
+              inputNames={{
+                min: 'minPrice',
+                max: 'maxPrice',
+              }}
+              inputLabels={{
+                min: 'Pris fra',
+                max: 'Pris til',
+              }}
+              onChange={setValue}
+              unitLabel={currencyText}
+            />
+          </FieldSet>
+        </FieldSet>
       </Form>
-    )
+    </>
   );
 };
 

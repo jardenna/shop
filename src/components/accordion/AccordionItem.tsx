@@ -6,6 +6,7 @@ type AccordionItemProps = {
   children: ReactNode | string;
   title: string;
   additionalTitle?: string | number;
+  name?: string; // undefined = independent toggle, same name = native accordion group
   open?: boolean;
 };
 
@@ -14,8 +15,9 @@ const AccordionItem = ({
   children,
   additionalTitle,
   open,
+  name,
 }: AccordionItemProps) => (
-  <details open={open || undefined}>
+  <details open={open} name={name}>
     <summary>
       <span className="accordion-title">
         {title}
