@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDebounce } from '../../../hooks/useDebounce';
 import { ChangeInputType } from '../../../types/types';
 import {
@@ -30,23 +30,39 @@ export const useRangeController = ({
 }: RangeControllerProps) => {
   const { debounce } = useDebounce();
 
-  const initialMinValue = normalizeValueWithinRange(
+  const normalizedMinValue = normalizeValueWithinRange(
     Number(minValue || min),
     min,
     max,
   );
 
-  const initialMaxValue = normalizeValueWithinRange(
+  const normalizedMaxValue = normalizeValueWithinRange(
     Number(maxValue || max),
     min,
     max,
   );
 
-  const [minCommittedValue, setMinCommittedValue] = useState(initialMinValue);
-  const [maxCommittedValue, setMaxCommittedValue] = useState(initialMaxValue);
+  const [minCommittedValue, setMinCommittedValue] =
+    useState(normalizedMinValue);
+  const [maxCommittedValue, setMaxCommittedValue] =
+    useState(normalizedMaxValue);
 
-  const [minInputValue, setMinInputValue] = useState(String(initialMinValue));
-  const [maxInputValue, setMaxInputValue] = useState(String(initialMaxValue));
+  const [minInputValue, setMinInputValue] = useState(
+    String(normalizedMinValue),
+  );
+  const [maxInputValue, setMaxInputValue] = useState(
+    String(normalizedMaxValue),
+  );
+
+  useEffect(() => {
+    setMinCommittedValue(normalizedMinValue);
+    setMinInputValue(String(normalizedMinValue));
+  }, [normalizedMinValue]);
+
+  useEffect(() => {
+    setMaxCommittedValue(normalizedMaxValue);
+    setMaxInputValue(String(normalizedMaxValue));
+  }, [normalizedMaxValue]);
 
   const emitChange = (fieldName: string, fieldValue: number) => {
     debounce(() => {
