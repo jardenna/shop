@@ -30,33 +30,48 @@ export const useRangeController = ({
 }: RangeControllerProps) => {
   const { debounce } = useDebounce();
 
-  const [minCommittedValue, setMinCommittedValue] = useState(() =>
-    normalizeValueWithinRange(Number(minValue || min), min, max),
-  );
-  const [maxCommittedValue, setMaxCommittedValue] = useState(() =>
-    normalizeValueWithinRange(Number(maxValue || max), min, max),
-  );
-
-  const [minInputValue, setMinInputValue] = useState(() =>
-    String(normalizeValueWithinRange(Number(minValue || min), min, max)),
-  );
-  const [maxInputValue, setMaxInputValue] = useState(() =>
-    String(normalizeValueWithinRange(Number(maxValue || max), min, max)),
+  const initialMinValue = normalizeValueWithinRange(
+    Number(minValue || min),
+    min,
+    max,
   );
 
-  const commitParsedInputValue = (
+  const initialMaxValue = normalizeValueWithinRange(
+    Number(maxValue || max),
+    min,
+    max,
+  );
+
+  const [minCommittedValue, setMinCommittedValue] = useState(initialMinValue);
+  const [maxCommittedValue, setMaxCommittedValue] = useState(initialMaxValue);
+
+  const [minInputValue, setMinInputValue] = useState(String(initialMinValue));
+  const [maxInputValue, setMaxInputValue] = useState(String(initialMaxValue));
+
+  const emitChange = (fieldName: string, fieldValue: number) => {
+    debounce(() => {
+      onChange({
+        target: {
+          name: fieldName,
+          value: String(fieldValue),
+        },
+      } as ChangeInputType);
+    });
+  };
+
+  const commitInputValue = (
     rawInputValue: string,
-    fallbackCommittedValue: number,
+    fallbackValue: number,
     allowedMinimum: number,
     allowedMaximum: number,
     updateCommittedValue: (value: number) => void,
     updateInputValue: (value: string) => void,
-    outputFieldName: string,
+    fieldName: string,
   ) => {
     const parsedNumber = parseFiniteNumberOrNull(rawInputValue);
 
     if (parsedNumber === null) {
-      updateInputValue(String(fallbackCommittedValue));
+      updateInputValue(String(fallbackValue));
       return;
     }
 
@@ -69,18 +84,11 @@ export const useRangeController = ({
     updateCommittedValue(committedValue);
     updateInputValue(String(committedValue));
 
-    debounce(() => {
-      onChange({
-        target: {
-          name: outputFieldName,
-          value: String(committedValue),
-        },
-      } as ChangeInputType);
-    });
+    emitChange(fieldName, committedValue);
   };
 
   const commitMinInputValue = (inputValue: string) => {
-    commitParsedInputValue(
+    commitInputValue(
       inputValue,
       minCommittedValue,
       min,
@@ -92,7 +100,7 @@ export const useRangeController = ({
   };
 
   const commitMaxInputValue = (inputValue: string) => {
-    commitParsedInputValue(
+    commitInputValue(
       inputValue,
       maxCommittedValue,
       minCommittedValue,
@@ -122,19 +130,13 @@ export const useRangeController = ({
     if (isMinHandle) {
       setMinCommittedValue(committedValue);
       setMinInputValue(String(committedValue));
-    } else {
-      setMaxCommittedValue(committedValue);
-      setMaxInputValue(String(committedValue));
+      emitChange(inputNames.min, committedValue);
+      return;
     }
 
-    debounce(() => {
-      onChange({
-        target: {
-          name: isMinHandle ? inputNames.min : inputNames.max,
-          value: String(committedValue),
-        },
-      } as ChangeInputType);
-    });
+    setMaxCommittedValue(committedValue);
+    setMaxInputValue(String(committedValue));
+    emitChange(inputNames.max, committedValue);
   };
 
   const trackStartPercent = ((minCommittedValue - min) / (max - min)) * 100;
