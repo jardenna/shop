@@ -55,8 +55,13 @@ const FilterPanel = ({
   filtersCount,
   onClearSingleFilter,
 }: FilterPanelProps) => {
+  const ariaLabelledby = useId();
   const totalFiltersCount = filtersCount.totalCount;
   const countsByKey = filtersCount.countsByKey;
+  const primaryBtnText =
+    productCount > 0
+      ? `${language.show} ${productCount} ${language.itemLabel}`
+      : language.noItemsToShow;
 
   const accordionConfig: AccordionConfigItem[] = [
     {
@@ -97,15 +102,11 @@ const FilterPanel = ({
     ),
   }));
 
-  const ariaLabelledby = useId();
   return (
     <TogglePanel
       ariaHasPopup="dialog"
       footer={{
-        primaryBtnText:
-          productCount > 0
-            ? `${language.show} ${productCount} ${language.itemLabel}`
-            : language.noItemsToShow,
+        primaryBtnText,
         secondaryAction: onClearAllFilters,
         secondaryBtnText: language.clearAllFilters,
         primaryBtnDisabled: productCount === 0,
