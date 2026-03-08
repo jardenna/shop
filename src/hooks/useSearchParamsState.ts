@@ -80,10 +80,13 @@ export const useSearchParamsState = <T extends SearchParamState>(
     setSearchParams(new URLSearchParams());
   };
 
-  const handleClearSingleFilter = (key: string) => {
+  const handleClearSingleFilter = (keys: string | string[]) => {
     const updatedSearchParams = new URLSearchParams(searchParams.toString());
+    const keysArray = Array.isArray(keys) ? keys : [keys];
 
-    updatedSearchParams.delete(key);
+    keysArray.forEach((key) => {
+      updatedSearchParams.delete(key);
+    });
 
     setSearchParams(updatedSearchParams);
   };
