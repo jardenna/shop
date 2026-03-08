@@ -121,15 +121,15 @@ const ParamsPage = ({
         <FieldSet legendText={language.filterProducts}>
           <Accordion accordionList={accordionList} name="filter" />
           <FieldSet legendText="price">
-            {/* <Button
+            <Button
               variant={BtnVariant.Ghost}
               className="clear-filter-btn"
               onClick={() => {
-                onClearSingleFilter('minPrice');
+                onClearSingleFilter(['minPrice', 'maxPrice']);
               }}
             >
               {language.clearFilters}
-            </Button> */}
+            </Button>
             <DualRange
               minValue={values.minPrice}
               maxValue={values.maxPrice}
