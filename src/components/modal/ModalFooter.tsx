@@ -1,10 +1,8 @@
-import LayoutElement from '../../layout/LayoutElement';
 import { BtnType, BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import { PrimaryActionBtnProps, SecondaryActionBtnProps } from './Modal';
 
 type ModalFooterProps = {
-  ariaLabel: string;
   primaryActionBtn: PrimaryActionBtnProps;
   secondaryBtn?: SecondaryActionBtnProps | null;
   onPrimaryClick?: () => void;
@@ -14,9 +12,8 @@ const ModalFooter = ({
   primaryActionBtn,
   secondaryBtn,
   onPrimaryClick,
-  ariaLabel,
 }: ModalFooterProps) => (
-  <LayoutElement as="footer" className="footer" ariaLabel={ariaLabel}>
+  <footer className="footer">
     {secondaryBtn && (
       <Button
         variant={secondaryBtn.variant ?? BtnVariant.Secondary}
@@ -40,7 +37,7 @@ const ModalFooter = ({
     >
       {primaryActionBtn.label}
     </Button>
-  </LayoutElement>
+  </footer>
 );
 
 export default ModalFooter;
