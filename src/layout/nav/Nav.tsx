@@ -3,7 +3,6 @@ import { useLocation } from 'react-router';
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { IconName, KeyCode } from '../../types/enums';
 import { FocusEventType } from '../../types/types';
-import LayoutElement from '../LayoutElement';
 import { LinkText } from './enums';
 import NavItem from './NavItem';
 
@@ -27,13 +26,12 @@ export type NavListProps = BaseNav & {
 };
 
 export type NavProps = {
-  ariaLabel: string;
   navList: NavListProps[];
   className?: string;
   hideAriaHasPopup?: boolean;
 };
 
-const Nav = ({ navList, ariaLabel, className, hideAriaHasPopup }: NavProps) => {
+const Nav = ({ navList, className, hideAriaHasPopup }: NavProps) => {
   const location = useLocation();
   const [isSubNavShown, setIsSubNavShown] = useState(false);
 
@@ -53,7 +51,7 @@ const Nav = ({ navList, ariaLabel, className, hideAriaHasPopup }: NavProps) => {
   }, [KeyCode.Esc]);
 
   return (
-    <LayoutElement as="nav" ariaLabel={ariaLabel} className={className}>
+    <nav className={className}>
       <ul className="nav-list">
         {navList.map((navItem) => {
           const hasSubNav = Boolean(navItem.subNavList);
@@ -83,7 +81,7 @@ const Nav = ({ navList, ariaLabel, className, hideAriaHasPopup }: NavProps) => {
           );
         })}
       </ul>
-    </LayoutElement>
+    </nav>
   );
 };
 

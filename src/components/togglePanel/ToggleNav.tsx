@@ -20,7 +20,6 @@ const ToggleNav = ({ children }: ToggleNavProps) => {
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } = useTogglePanel(
     { preventClickOutside: true },
   );
-  const ariaLabel = !isPanelShown ? language.showContent : language.hideContent;
 
   useTrapFocus({ id: 'togglePanel', popupRef: panelRef });
 
@@ -30,7 +29,7 @@ const ToggleNav = ({ children }: ToggleNavProps) => {
         variant={BtnVariant.Ghost}
         ariaExpanded={isPanelShown}
         onClick={onTogglePanel}
-        ariaLabel={ariaLabel}
+        ariaLabel={language.mainMenu}
         ariaHasPopup="menu"
         ariaControls={togglePanelId}
         className="menu-burger"

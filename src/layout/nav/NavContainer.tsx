@@ -1,15 +1,10 @@
 import { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
-import { useLanguage } from '../../features/language/useLanguage';
-import type { OmitChecked } from '../../types/types';
 import './_nav.scss';
 import type { NavProps } from './Nav';
 import Nav from './Nav';
 import NavUser from './NavUser';
 
-type OmittedNavProps = OmitChecked<NavProps, 'ariaLabel'>;
-
-type NavContainerProps = OmittedNavProps & {
-  ariaLabel?: string;
+type NavContainerProps = NavProps & {
   currentUser?: UserResponse | null;
   isMenuCollapsed?: boolean;
 };
@@ -19,24 +14,18 @@ const NavContainer = ({
   isMenuCollapsed,
   currentUser,
   className = 'main-nav-container',
-  ariaLabel = 'mainMenu',
   hideAriaHasPopup,
-}: NavContainerProps) => {
-  const { language } = useLanguage();
-
-  return (
-    <>
-      <Nav
-        navList={navList}
-        ariaLabel={language[ariaLabel]}
-        className={className || 'main-nav-container'}
-        hideAriaHasPopup={hideAriaHasPopup}
-      />
-      {currentUser && (
-        <NavUser currentUser={currentUser} isMenuCollapsed={isMenuCollapsed} />
-      )}
-    </>
-  );
-};
+}: NavContainerProps) => (
+  <>
+    <Nav
+      navList={navList}
+      className={className || 'main-nav-container'}
+      hideAriaHasPopup={hideAriaHasPopup}
+    />
+    {currentUser && (
+      <NavUser currentUser={currentUser} isMenuCollapsed={isMenuCollapsed} />
+    )}
+  </>
+);
 
 export default NavContainer;
