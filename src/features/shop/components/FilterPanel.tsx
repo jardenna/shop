@@ -115,7 +115,6 @@ const FilterPanel = ({
         ariaExpanded={isPanelShown}
         onClick={onTogglePanel}
         ariaLabel={language.filtre}
-        ariaHasPopup="dialog"
         ariaControls={togglePanelId}
       >
         <>
@@ -126,7 +125,6 @@ const FilterPanel = ({
       </Button>
       <div
         ref={panelRef}
-        role="dialog"
         className={`toggle-panel filter-panel ${isPanelShown ? 'shown' : ''}`}
         id={togglePanelId}
         aria-hidden={isPanelShown ? undefined : true}
