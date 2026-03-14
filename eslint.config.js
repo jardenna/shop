@@ -166,7 +166,7 @@ export default defineConfig(
       'react/jsx-no-useless-fragment': 'error',
       'prefer-template': 'error',
       'react/no-did-update-set-state': 'warn',
-      // 'class-methods-use-this': 'off',
+      'react/no-unused-prop-types': 'error',
       'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
       'react/no-direct-mutation-state': 1,
       'no-nested-ternary': 'warn',
