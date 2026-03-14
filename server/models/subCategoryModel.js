@@ -34,19 +34,19 @@ const subCategorySchema = new Schema(
   { timestamps: true },
 );
 
-subCategorySchema.pre('save', async function (next) {
-  if (!this.isModified('category')) return next();
+subCategorySchema.pre('save', async function () {
+  if (!this.isModified('category')) return;
 
-  const cat = await Category.findById(this.category);
+  const categoryData = await Category.findById(this.category);
 
-  if (!cat) return next(new Error('Invalid main category'));
+  if (!categoryData) {
+    throw new Error('Invalid main category');
+  }
 
   this.allowedSizes = resolveAllowedSizes({
     subKey: this.translationKey,
-    mainKey: cat.categoryName,
+    mainKey: categoryData.categoryName,
   });
-
-  next();
 });
 
 // Make subCategoryName + category unique (case-insensitive)
