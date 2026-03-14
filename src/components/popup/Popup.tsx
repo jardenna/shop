@@ -2,16 +2,15 @@ import { Placement } from '@popperjs/core';
 import { ReactNode, useId } from 'react';
 import { usePopup } from '../../hooks/usePopup';
 import { BtnVariant } from '../../types/enums';
-import type { AriaHasPopup } from '../../types/types';
 import Button from '../Button';
 import './_popup.scss';
 
 interface PopupProps {
-  ariaHasPopup: AriaHasPopup;
-  ariaLabel: string;
   children: ReactNode;
-  popupContent: ReactNode | ((helpers: { close: () => void }) => ReactNode);
+  popupContent: ReactNode | ((params: { close: () => void }) => ReactNode);
+  ariaLabel?: string;
   placement?: Placement;
+  popupType?: 'tooltip' | 'popover';
   triggerBtnClassName?: string;
   triggerBtnVariant?: BtnVariant;
 }
@@ -20,36 +19,51 @@ const Popup = ({
   children,
   popupContent,
   ariaLabel,
-  ariaHasPopup,
   triggerBtnVariant = BtnVariant.Ghost,
   triggerBtnClassName,
   placement,
+  popupType = 'popover',
 }: PopupProps) => {
   const popupId = useId();
+
   const { popupRef, buttonRef, popupIsOpen, togglePopupList, arrowRef } =
     usePopup({ placement });
+
+  const buttonAriaProps =
+    popupType === 'tooltip'
+      ? {
+          ariaDescribedBy: popupId,
+        }
+      : {
+          ariaExpanded: popupIsOpen,
+          ariaControls: popupId,
+        };
 
   return (
     <div className="popup">
       <Button
         variant={triggerBtnVariant}
         onClick={togglePopupList}
-        ariaExpanded={popupIsOpen}
-        ariaHasPopup={ariaHasPopup}
-        ariaControls={popupId}
         ariaLabel={ariaLabel}
         className={triggerBtnClassName}
         popupRef={buttonRef}
+        {...buttonAriaProps}
       >
         {children}
       </Button>
 
       {popupIsOpen && (
-        <div ref={popupRef} className="popup popup-container" id={popupId}>
+        <div
+          ref={popupRef}
+          className="popup popup-container"
+          id={popupId}
+          role={popupType === 'tooltip' ? 'tooltip' : undefined}
+        >
           {typeof popupContent === 'function'
             ? popupContent({ close: togglePopupList })
             : popupContent}
-          <span ref={arrowRef} className="popup-arrow" aria-hidden={true} />
+
+          <span ref={arrowRef} className="popup-arrow" aria-hidden />
         </div>
       )}
     </div>

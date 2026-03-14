@@ -45,9 +45,9 @@ const AccountInfoList = ({
             tooltip={
               tooltip && (
                 <Popup
+                  popupType="tooltip"
                   ariaLabel={language.viewInfo}
                   popupContent={language.phoneInfo}
-                  ariaHasPopup="dialog"
                 >
                   <Icon iconName={IconName.Info} size="1em" />
                 </Popup>
