@@ -6,11 +6,11 @@ import Button from '../Button';
 import './_toggle-panel.scss';
 
 type TogglePanelProps = {
-  ariaHasPopup: AriaHasPopup;
   children: ReactNode;
   isPanelShown: boolean;
   panelRef: RefObject<HTMLDivElement | null>;
   triggerBtnContent: string;
+  ariaHasPopup?: AriaHasPopup;
   ariaLabel?: string;
   btnVariant?: BtnVariant;
   className?: string;

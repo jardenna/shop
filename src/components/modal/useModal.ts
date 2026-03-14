@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router';
 import { useAppDispatch } from '../../app/hooks';
 import { toggleModal } from '../../features/modalSlice';
+import { useScrollLock } from '../../hooks/useScrollLock';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
 
 export const useModal = (modalId: string | null) => {
@@ -33,6 +34,8 @@ export const useModal = (modalId: string | null) => {
       handleClosePopup();
     }
   }, [location, dispatch]);
+
+  useScrollLock(Boolean(modalId));
 
   // Make background inert (unfocusable and non-interactable) while modal is open
   useEffect(() => {

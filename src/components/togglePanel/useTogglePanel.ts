@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { useKeyPress } from '../../hooks/useKeyPress';
+import { useScrollLock } from '../../hooks/useScrollLock';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
 import { KeyCode } from '../../types/enums';
 
@@ -38,20 +39,7 @@ export const useTogglePanel = ({
 
   useTrapFocus({ id: 'togglePanel', popupRef: panelRef });
 
-  useEffect(() => {
-    if (isPanelShown) {
-      document.body.style.overflow = 'hidden';
-      document.body.style.touchAction = 'none';
-    } else {
-      document.body.style.overflow = '';
-      document.body.style.touchAction = '';
-    }
-
-    return () => {
-      document.body.style.overflow = '';
-      document.body.style.touchAction = '';
-    };
-  }, [isPanelShown]);
+  useScrollLock(isPanelShown);
 
   useEffect(() => {
     if (prevPathname.current !== pathname) {
