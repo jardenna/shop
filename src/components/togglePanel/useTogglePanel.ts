@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { useKeyPress } from '../../hooks/useKeyPress';
+import { useTrapFocus } from '../../hooks/useTrapFocus';
 import { KeyCode } from '../../types/enums';
 
 interface UseTogglePanelParams {
@@ -34,6 +35,8 @@ export const useTogglePanel = ({
   const handleTogglePanel = () => {
     setIsPanelShown(!isPanelShown);
   };
+
+  useTrapFocus({ id: 'togglePanel', popupRef: panelRef });
 
   useEffect(() => {
     if (isPanelShown) {

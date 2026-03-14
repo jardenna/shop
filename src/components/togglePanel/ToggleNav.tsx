@@ -1,7 +1,6 @@
 import { useId, type ReactNode } from 'react';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
-import { useTrapFocus } from '../../hooks/useTrapFocus';
 import { BtnVariant } from '../../types/enums';
 import BtnClose from '../BtnClose';
 import Button from '../Button';
@@ -20,8 +19,6 @@ const ToggleNav = ({ children }: ToggleNavProps) => {
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } = useTogglePanel(
     { preventClickOutside: true },
   );
-
-  useTrapFocus({ id: 'togglePanel', popupRef: panelRef });
 
   return (
     <>

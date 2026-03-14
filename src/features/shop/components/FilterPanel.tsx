@@ -11,7 +11,6 @@ import ToggleContent from '../../../components/ToggleContent';
 import { useTogglePanel } from '../../../components/togglePanel/useTogglePanel';
 import VisuallyHidden from '../../../components/VisuallyHidden';
 import { FilterValuesType } from '../../../hooks/useFilterParams';
-import { useTrapFocus } from '../../../hooks/useTrapFocus';
 import LayoutElement from '../../../layout/LayoutElement';
 import type { FilterKeys } from '../../../pages/CollectionPage';
 import { BtnVariant, IconName } from '../../../types/enums';
@@ -62,7 +61,6 @@ const FilterPanel = ({
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
     useTogglePanel();
 
-  useTrapFocus({ id: 'toggleFilterPanel', popupRef: panelRef });
   const totalFiltersCount = filtersCount.totalCount;
   const countsByKey = filtersCount.countsByKey;
   const primaryBtnText =
