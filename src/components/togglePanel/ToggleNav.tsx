@@ -1,6 +1,8 @@
-import { useId, type ReactNode } from 'react';
+import { useId } from 'react';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
+import { NavListProps } from '../../layout/nav/Nav';
+import NavContainer from '../../layout/nav/NavContainer';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import Overlay from '../overlay/Overlay';
@@ -8,10 +10,11 @@ import './_toggle-panel.scss';
 import { useTogglePanel } from './useTogglePanel';
 
 type ToggleNavProps = {
-  children: ReactNode;
+  navList: NavListProps[];
+  className?: string;
 };
 
-const ToggleNav = ({ children }: ToggleNavProps) => {
+const ToggleNav = ({ navList, className }: ToggleNavProps) => {
   const togglePanelId = useId();
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
@@ -26,7 +29,6 @@ const ToggleNav = ({ children }: ToggleNavProps) => {
         ariaExpanded={isPanelShown}
         onClick={onTogglePanel}
         ariaLabel={language.mainMenu}
-        ariaHasPopup="menu"
         ariaControls={togglePanelId}
         className="menu-burger"
       >
@@ -38,7 +40,11 @@ const ToggleNav = ({ children }: ToggleNavProps) => {
         id={togglePanelId}
         aria-hidden={isPanelShown ? undefined : true}
       >
-        {children}
+        <NavContainer
+          navList={navList}
+          className={className}
+          hideAriaHasPopup
+        />
       </div>
       {isPanelShown && !isMobileSize && <Overlay />}
     </>
