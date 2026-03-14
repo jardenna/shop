@@ -12,9 +12,9 @@ function createWrapperAndAppendToBody(portalId: string) {
 type PortalProps = {
   children: ReactNode;
   portalId: string;
-  className?: string;
 };
-const Portal = ({ children, portalId, className }: PortalProps) => {
+
+const Portal = ({ children, portalId }: PortalProps) => {
   const [wrapperElement, setWrapperElement] = useState<HTMLElement | null>(
     null,
   );
@@ -22,10 +22,12 @@ const Portal = ({ children, portalId, className }: PortalProps) => {
   useLayoutEffect(() => {
     let element: HTMLElement | null = document.getElementById(portalId);
     let systemCreated = false;
+
     if (!element) {
       systemCreated = true;
       element = createWrapperAndAppendToBody(portalId);
     }
+
     setWrapperElement(element);
 
     return () => {
@@ -39,10 +41,7 @@ const Portal = ({ children, portalId, className }: PortalProps) => {
     return null;
   }
 
-  return createPortal(
-    <div className={className}>{children}</div>,
-    wrapperElement,
-  );
+  return createPortal(children, wrapperElement);
 };
 
 export default Portal;

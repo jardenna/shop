@@ -124,7 +124,7 @@ const Modal = ({
   });
 
   const ModalContent = (
-    <section>
+    <div>
       <ModalHeader
         modalHeadertext={modalHeaderText}
         onCloseModal={closeModalAnimated}
@@ -143,7 +143,7 @@ const Modal = ({
         />
       </ModalContentContainer>
       {modalInfo && modalInfo}
-    </section>
+    </div>
   );
 
   return (
