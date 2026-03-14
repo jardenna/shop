@@ -12,7 +12,6 @@ import TagList from '../components/tags/TagList';
 import ToggleContent from '../components/ToggleContent';
 import TogglePanel from '../components/togglePanel/TogglePanel';
 import { useTogglePanel } from '../components/togglePanel/useTogglePanel';
-import VisuallyHidden from '../components/VisuallyHidden';
 import { useCurrency } from '../features/currency/useCurrency';
 import { useSearchParamsState } from '../hooks/useSearchParamsState';
 import { BtnVariant, IconName } from '../types/enums';
@@ -33,6 +32,7 @@ interface FilterProps {
   colors: string[];
   initialFilters: InitialFilters;
   language: Record<string, string>;
+  productCount: number;
   sizes: Size[];
 }
 
@@ -42,21 +42,27 @@ const ParamsPage = ({
   brands,
   colors,
   language,
+  productCount,
 }: FilterProps) => {
   const { currencyText } = useCurrency();
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
     useTogglePanel();
-
+  const primaryBtnText =
+    productCount > 0
+      ? `${language.show} ${productCount} ${language.itemLabel}`
+      : language.noItemsToShow;
   const {
     values,
     toggleValue,
     setValue,
     onRemoveFilterTag,
     onClearSingleFilter,
+    onClearAllFilters,
   } = useSearchParamsState(initialFilters);
 
   const filteredEntries = Object.entries(values).filter(
-    (entry): entry is [string, string[]] => Array.isArray(entry[1]),
+    (entry): entry is [string, string[]] =>
+      Array.isArray(entry[1]) && entry[1].length > 0,
   );
 
   const filtersCount = getFilterSummary(values);
@@ -110,36 +116,30 @@ const ParamsPage = ({
       className="filter-panel"
       triggerBtnContent={
         <>
-          <Icon iconName={IconName.Filter} />
-          <VisuallyHidden>{language.filtersApplied}</VisuallyHidden>
+          {language.filter} <Icon iconName={IconName.Filter} />
         </>
       }
     >
       <section className="filter-panel-content">
-        <ToggleContent btnVariant={BtnVariant.Default}>
-          {filteredEntries.map(
-            ([key, values]) =>
-              values.length > 0 && (
-                <TagList
-                  key={key}
-                  language={language}
-                  values={values}
-                  filterKey={key as FilterKeys}
-                  onClick={onRemoveFilterTag}
-                  ariaLabel={language.removeFilter}
-                />
-              ),
-          )}
-        </ToggleContent>
+        {filteredEntries.length > 0 && (
+          <ToggleContent btnVariant={BtnVariant.Default}>
+            {filteredEntries.map(([key, values]) => (
+              <TagList
+                key={key}
+                language={language}
+                values={values}
+                filterKey={key as FilterKeys}
+                onClick={onRemoveFilterTag}
+                ariaLabel={language.removeFilter}
+              />
+            ))}
+          </ToggleContent>
+        )}
         <Form
-          submitBtnLabel="Search"
-          onSubmit={() => {
-            console.log(values);
-          }}
-          onCancel={() => {
-            console.log(values);
-          }}
-          cancelBtnProps={{ btnLabel: 'Clear' }}
+          submitBtnLabel={primaryBtnText}
+          onSubmit={onHidePanel}
+          onCancel={onClearAllFilters}
+          cancelBtnProps={{ btnLabel: language.clearAllFilters }}
         >
           <FieldSet legendText={language.filterProducts}>
             <Accordion accordionList={accordionList} name="filter" />

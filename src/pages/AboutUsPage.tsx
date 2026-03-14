@@ -49,6 +49,7 @@ const AboutUsPage = () => {
             brands={products.availableBrands}
             colors={sortedTranslatedColors}
             language={language}
+            productCount={products.productCount}
           />
         )}
       </section>
