@@ -14,6 +14,7 @@ type ButtonProps = {
   children: ReactNode;
   ariaControls?: string;
   ariaCurrent?: AriaCurrentType;
+  ariaDescribedBy?: string;
   ariaExpanded?: boolean;
   ariaHasPopup?: AriaHasPopup;
   ariaLabel?: string;
@@ -42,6 +43,7 @@ const Button = ({
   onClick,
   ref,
   ariaPressed,
+  ariaDescribedBy,
   ariaExpanded,
   ariaControls,
   ariaCurrent,
@@ -63,6 +65,7 @@ const Button = ({
     ref={ref || popupRef}
     onClick={onClick}
     aria-pressed={ariaPressed || undefined}
+    aria-describedby={ariaDescribedBy}
     aria-expanded={ariaExpanded}
     aria-current={ariaCurrent || undefined}
     aria-controls={ariaControls}

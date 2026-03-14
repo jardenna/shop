@@ -6,10 +6,11 @@ import Button from '../Button';
 import './_popup.scss';
 
 interface PopupProps {
-  ariaLabel: string;
   children: ReactNode;
-  popupContent: ReactNode | ((helpers: { close: () => void }) => ReactNode);
+  popupContent: ReactNode | ((params: { close: () => void }) => ReactNode);
+  ariaLabel?: string;
   placement?: Placement;
+  popupType?: 'tooltip' | 'popover';
   triggerBtnClassName?: string;
   triggerBtnVariant?: BtnVariant;
 }
@@ -21,31 +22,48 @@ const Popup = ({
   triggerBtnVariant = BtnVariant.Ghost,
   triggerBtnClassName,
   placement,
+  popupType = 'popover',
 }: PopupProps) => {
   const popupId = useId();
+
   const { popupRef, buttonRef, popupIsOpen, togglePopupList, arrowRef } =
     usePopup({ placement });
+
+  const buttonAriaProps =
+    popupType === 'tooltip'
+      ? {
+          ariaDescribedBy: popupId,
+        }
+      : {
+          ariaExpanded: popupIsOpen,
+          ariaControls: popupId,
+        };
 
   return (
     <div className="popup">
       <Button
         variant={triggerBtnVariant}
         onClick={togglePopupList}
-        ariaExpanded={popupIsOpen}
-        ariaControls={popupId}
         ariaLabel={ariaLabel}
         className={triggerBtnClassName}
         popupRef={buttonRef}
+        {...buttonAriaProps}
       >
         {children}
       </Button>
 
       {popupIsOpen && (
-        <div ref={popupRef} className="popup popup-container" id={popupId}>
+        <div
+          ref={popupRef}
+          className="popup popup-container"
+          id={popupId}
+          role={popupType === 'tooltip' ? 'tooltip' : undefined}
+        >
           {typeof popupContent === 'function'
             ? popupContent({ close: togglePopupList })
             : popupContent}
-          <span ref={arrowRef} className="popup-arrow" aria-hidden={true} />
+
+          <span ref={arrowRef} className="popup-arrow" aria-hidden />
         </div>
       )}
     </div>
