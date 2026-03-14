@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import Category from '../models/categoryModel.js';
 import validateScheduledDate from '../utils/validateScheduledDate.js';
 import { t } from './translator.js';
@@ -15,7 +16,15 @@ const validateSubCategory = async ({
     scheduledDate,
     lang,
   );
+
   if (!dateValidation.success) return dateValidation;
+
+  if (!mongoose.Types.ObjectId.isValid(categoryId)) {
+    return {
+      success: false,
+      message: 'The selected category is invalid',
+    };
+  }
 
   const mainCategory = await Category.findById(categoryId);
   if (!mainCategory) {

@@ -34,11 +34,7 @@ const AccountLayout = () => {
           className="account-content-container"
           aria-labelledby={adminLayoutId}
         >
-          <NavContainer
-            navList={accountNavList}
-            ariaLabel={language.account}
-            className="account-nav"
-          />
+          <NavContainer navList={accountNavList} className="account-nav" />
           <div className="account-page-content">
             <header>
               <h1 id={adminLayoutId}>{title}</h1>

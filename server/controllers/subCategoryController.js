@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import { PUBLISHED, SCHEDULED } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import scheduledStatusHandler from '../middleware/scheduledStatusHandler.js';
@@ -285,13 +286,27 @@ const getMenuByParentCategory = asyncHandler(async (req, res) => {
 const updateSubCategory = [
   scheduledStatusHandler('categoryStatus'),
   asyncHandler(async (req, res) => {
-    const {
+    let {
       subCategoryName,
       category,
       categoryStatus,
       scheduledDate,
       translationKey,
     } = req.body;
+
+    // Normalize category if a name like "Men" is sent
+    if (category && !mongoose.Types.ObjectId.isValid(category)) {
+      const categoryDoc = await Category.findOne({ categoryName: category });
+
+      if (!categoryDoc) {
+        return res.status(400).json({
+          success: false,
+          message: 'Invalid category',
+        });
+      }
+
+      category = categoryDoc._id;
+    }
 
     const validationResult = await validateSubCategory({
       categoryStatus,
@@ -306,49 +321,31 @@ const updateSubCategory = [
       return res.status(400).json(validationResult);
     }
 
-    const updateData = {
-      ...(subCategoryName && { subCategoryName }),
-      ...(category && { category }),
-      ...(categoryStatus && { categoryStatus }),
-      translationKey,
-    };
+    const subCategory = await SubCategory.findById(req.params.id);
 
-    if (categoryStatus === SCHEDULED) {
-      updateData.scheduledDate = scheduledDate;
-    } else {
-      updateData.scheduledDate = null; // clear if not scheduled
-    }
-
-    if (subCategoryName) {
-      updateData.allowedSizes = getAllowedSizes(translationKey);
-    }
-
-    const updatedSubCategory = await SubCategory.findByIdAndUpdate(
-      req.params.id,
-      updateData,
-      { new: true },
-    );
-
-    if (!updatedSubCategory) {
+    if (!subCategory) {
       return res.status(404).json({
         success: false,
         message: 'Subcategory not found',
       });
     }
 
+    if (subCategoryName) subCategory.subCategoryName = subCategoryName;
+    if (category) subCategory.category = category;
+    if (categoryStatus) subCategory.categoryStatus = categoryStatus;
+    if (translationKey) subCategory.translationKey = translationKey;
+
+    if (categoryStatus === SCHEDULED) {
+      subCategory.scheduledDate = scheduledDate;
+    } else {
+      subCategory.scheduledDate = null;
+    }
+
+    await subCategory.save();
+
     res.status(200).json({
       message: 'Subcategory updated',
-      updatedSubCategory: {
-        id: updatedSubCategory._id,
-        subCategoryName: updatedSubCategory.subCategoryName,
-        translationKey: updatedSubCategory.translationKey,
-        category: updatedSubCategory.category,
-        categoryStatus: updatedSubCategory.categoryStatus,
-        scheduledDate: updatedSubCategory.scheduledDate,
-        allowedSizes: updatedSubCategory.allowedSizes,
-        createdAt: updatedSubCategory.createdAt,
-        updatedAt: updatedSubCategory.updatedAt,
-      },
+      updatedSubCategory: subCategory,
     });
   }),
 ];

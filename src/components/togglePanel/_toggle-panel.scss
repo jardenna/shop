@@ -9,21 +9,18 @@
   overflow: auto;
   padding-bottom: 4px;
   top: $header-height;
+  right: 0;
+  transform: translateX(100%);
+
+  &.shown {
+    transform: translateX(0);
+  }
 
   @include transition;
 
   &.left {
     left: 0;
     transform: translateX(-100%);
-
-    &.shown {
-      transform: translateX(0);
-    }
-  }
-
-  &.right {
-    right: 0;
-    transform: translateX(100%);
 
     &.shown {
       transform: translateX(0);

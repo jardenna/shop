@@ -21,7 +21,7 @@ const Popup = ({
   popupContent,
   ariaLabel,
   ariaHasPopup,
-  triggerBtnVariant,
+  triggerBtnVariant = BtnVariant.Ghost,
   triggerBtnClassName,
   placement,
 }: PopupProps) => {
