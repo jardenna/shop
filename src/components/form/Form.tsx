@@ -10,6 +10,7 @@ type FormProps = {
   children: ReactNode;
   submitBtnLabel: string;
   ariaLabel?: string;
+  cancelBtnProps?: any;
   className?: string;
   disabled?: boolean;
   isLoading?: boolean;
@@ -26,6 +27,7 @@ const Form = ({
   isLoading,
   ariaLabel,
   onCancel,
+  cancelBtnProps,
   ref,
   disabled,
 }: FormProps) => {
@@ -49,7 +51,7 @@ const Form = ({
             ariaLabel={ariaLabel}
             variant={BtnVariant.Secondary}
           >
-            {language.cancel}
+            {cancelBtnProps ? cancelBtnProps.btnLabel : language.cancel}
           </Button>
         )}
         <Button

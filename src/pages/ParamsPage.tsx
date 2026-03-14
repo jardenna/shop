@@ -7,11 +7,15 @@ import FieldSet from '../components/fieldset/FieldSet';
 import Form from '../components/form/Form';
 import CheckboxList from '../components/formElements/checkbox/CheckboxList';
 import DualRange from '../components/formElements/dualRangeSlider/DualRange';
+import Icon from '../components/icons/Icon';
 import TagList from '../components/tags/TagList';
 import ToggleContent from '../components/ToggleContent';
+import TogglePanel from '../components/togglePanel/TogglePanel';
+import { useTogglePanel } from '../components/togglePanel/useTogglePanel';
+import VisuallyHidden from '../components/VisuallyHidden';
 import { useCurrency } from '../features/currency/useCurrency';
 import { useSearchParamsState } from '../hooks/useSearchParamsState';
-import { BtnVariant } from '../types/enums';
+import { BtnVariant, IconName } from '../types/enums';
 import { sortSizesDynamic } from '../utils/sizeUtils';
 import { getFilterSummary } from '../utils/utils';
 import { InitialFilters } from './AboutUsPage';
@@ -40,6 +44,8 @@ const ParamsPage = ({
   language,
 }: FilterProps) => {
   const { currencyText } = useCurrency();
+  const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
+    useTogglePanel();
 
   const {
     values,
@@ -96,59 +102,77 @@ const ParamsPage = ({
   }));
 
   return (
-    <>
-      <ToggleContent btnVariant={BtnVariant.Default}>
-        {filteredEntries.map(
-          ([key, values]) =>
-            values.length > 0 && (
-              <TagList
-                key={key}
-                language={language}
-                values={values}
-                filterKey={key as FilterKeys}
-                onClick={onRemoveFilterTag}
-                ariaLabel={language.removeFilter}
+    <TogglePanel
+      onTogglePanel={onTogglePanel}
+      onHidePanel={onHidePanel}
+      isPanelShown={isPanelShown}
+      panelRef={panelRef}
+      className="filter-panel"
+      triggerBtnContent={
+        <>
+          <Icon iconName={IconName.Filter} />
+          <VisuallyHidden>{language.filtersApplied}</VisuallyHidden>
+        </>
+      }
+    >
+      <section className="filter-panel-content">
+        <ToggleContent btnVariant={BtnVariant.Default}>
+          {filteredEntries.map(
+            ([key, values]) =>
+              values.length > 0 && (
+                <TagList
+                  key={key}
+                  language={language}
+                  values={values}
+                  filterKey={key as FilterKeys}
+                  onClick={onRemoveFilterTag}
+                  ariaLabel={language.removeFilter}
+                />
+              ),
+          )}
+        </ToggleContent>
+        <Form
+          submitBtnLabel="Search"
+          onSubmit={() => {
+            console.log(values);
+          }}
+          onCancel={() => {
+            console.log(values);
+          }}
+          cancelBtnProps={{ btnLabel: 'Clear' }}
+        >
+          <FieldSet legendText={language.filterProducts}>
+            <Accordion accordionList={accordionList} name="filter" />
+            <FieldSet legendText="price">
+              <Button
+                variant={BtnVariant.Ghost}
+                className="clear-filter-btn"
+                onClick={() => {
+                  onClearSingleFilter(['minPrice', 'maxPrice']);
+                }}
+              >
+                {language.clearFilters}
+              </Button>
+              <DualRange
+                minValue={values.minPrice}
+                maxValue={values.maxPrice}
+                rangeLabel={language.priceRange}
+                inputNames={{
+                  min: 'minPrice',
+                  max: 'maxPrice',
+                }}
+                inputLabels={{
+                  min: 'Pris fra',
+                  max: 'Pris til',
+                }}
+                onChange={setValue}
+                unitLabel={currencyText}
               />
-            ),
-        )}
-      </ToggleContent>
-      <Form
-        submitBtnLabel="Search"
-        onSubmit={() => {
-          console.log(values);
-        }}
-      >
-        <FieldSet legendText={language.filterProducts}>
-          <Accordion accordionList={accordionList} name="filter" />
-          <FieldSet legendText="price">
-            <Button
-              variant={BtnVariant.Ghost}
-              className="clear-filter-btn"
-              onClick={() => {
-                onClearSingleFilter(['minPrice', 'maxPrice']);
-              }}
-            >
-              {language.clearFilters}
-            </Button>
-            <DualRange
-              minValue={values.minPrice}
-              maxValue={values.maxPrice}
-              rangeLabel={language.priceRange}
-              inputNames={{
-                min: 'minPrice',
-                max: 'maxPrice',
-              }}
-              inputLabels={{
-                min: 'Pris fra',
-                max: 'Pris til',
-              }}
-              onChange={setValue}
-              unitLabel={currencyText}
-            />
+            </FieldSet>
           </FieldSet>
-        </FieldSet>
-      </Form>
-    </>
+        </Form>
+      </section>
+    </TogglePanel>
   );
 };
 
