@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useId } from 'react';
 import { Size } from '../app/api/apiTypes/sharedApiTypes';
 import Accordion, { AccordionList } from '../components/accordion/Accordion';
 import Button from '../components/Button';
@@ -44,6 +44,7 @@ const ParamsPage = ({
   language,
   productCount,
 }: FilterProps) => {
+  const ariaLabelledby = useId();
   const { currencyText } = useCurrency();
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
     useTogglePanel();
@@ -120,7 +121,10 @@ const ParamsPage = ({
         </>
       }
     >
-      <section className="filter-panel-content">
+      <section aria-labelledby={ariaLabelledby}>
+        <header className="filter-panel-heading">
+          <h2 id={ariaLabelledby}>{language.filterHeading}</h2>
+        </header>
         {filteredEntries.length > 0 && (
           <ToggleContent btnVariant={BtnVariant.Default}>
             {filteredEntries.map(([key, values]) => (
