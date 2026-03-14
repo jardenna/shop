@@ -1,5 +1,5 @@
 import { useLanguage } from '../../features/language/useLanguage';
-import { BtnVariant, IconName } from '../../types/enums';
+import { IconName } from '../../types/enums';
 import type { InputChangeHandler } from '../../types/types';
 import Icon from '../icons/Icon';
 import Popup from '../popup/Popup';
@@ -25,7 +25,6 @@ const TableSearch = ({
     <div className="table-search-input">
       <Popup
         placement="bottom-start"
-        triggerBtnVariant={BtnVariant.Ghost}
         popupContent={
           <TableSearchInput
             title={title}
