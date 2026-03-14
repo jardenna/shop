@@ -14,14 +14,15 @@ type TogglePanelProps = {
   ariaLabel?: string;
   btnVariant?: BtnVariant;
   className?: string;
-  hideCloseBtn?: boolean;
-  onHidePanel: () => void;
+  triggerBtnClassName?: string;
+  onHidePanel?: () => void;
   onTogglePanel: () => void;
 };
 
 const TogglePanel = ({
   children,
   ariaLabel,
+  triggerBtnClassName,
   onTogglePanel,
   isPanelShown,
   btnVariant = BtnVariant.Ghost,
@@ -30,7 +31,6 @@ const TogglePanel = ({
   ariaHasPopup,
   panelRef,
   onHidePanel,
-  hideCloseBtn,
 }: TogglePanelProps) => {
   const togglePanelId = useId();
   return (
@@ -42,6 +42,7 @@ const TogglePanel = ({
         ariaLabel={ariaLabel}
         ariaHasPopup={ariaHasPopup}
         ariaControls={togglePanelId}
+        className={triggerBtnClassName}
       >
         {triggerBtnContent}
       </Button>
@@ -51,7 +52,7 @@ const TogglePanel = ({
         id={togglePanelId}
         aria-hidden={isPanelShown ? undefined : true}
       >
-        {!hideCloseBtn && <BtnClose onClick={onHidePanel} />}
+        {onHidePanel && <BtnClose onClick={onHidePanel} />}
         {children}
       </div>
     </>
