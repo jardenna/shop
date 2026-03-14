@@ -9,7 +9,7 @@ type TogglePanelProps = {
   children: ReactNode;
   isPanelShown: boolean;
   panelRef: RefObject<HTMLDivElement | null>;
-  triggerBtnContent: string;
+  triggerBtnContent: ReactNode;
   ariaHasPopup?: AriaHasPopup;
   ariaLabel?: string;
   btnVariant?: BtnVariant;
@@ -47,7 +47,6 @@ const TogglePanel = ({
       </Button>
       <div
         ref={panelRef}
-        role="dialog"
         className={`toggle-panel ${className} ${isPanelShown ? 'shown' : ''}`}
         id={togglePanelId}
         aria-hidden={isPanelShown ? undefined : true}

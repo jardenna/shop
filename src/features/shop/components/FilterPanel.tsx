@@ -8,10 +8,10 @@ import CheckboxList from '../../../components/formElements/checkbox/CheckboxList
 import Icon from '../../../components/icons/Icon';
 import TagList from '../../../components/tags/TagList';
 import ToggleContent from '../../../components/ToggleContent';
+import TogglePanel from '../../../components/togglePanel/TogglePanel';
 import { useTogglePanel } from '../../../components/togglePanel/useTogglePanel';
 import VisuallyHidden from '../../../components/VisuallyHidden';
 import { FilterValuesType } from '../../../hooks/useFilterParams';
-import LayoutElement from '../../../layout/LayoutElement';
 import type { FilterKeys } from '../../../pages/CollectionPage';
 import { BtnVariant, IconName } from '../../../types/enums';
 import type {
@@ -56,7 +56,6 @@ const FilterPanel = ({
   onClearSingleFilter,
 }: FilterPanelProps) => {
   const ariaLabelledby = useId();
-  const togglePanelId = useId();
 
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
     useTogglePanel();
@@ -108,34 +107,28 @@ const FilterPanel = ({
   }));
 
   return (
-    <>
-      <Button
-        className="filter-btn"
-        variant={BtnVariant.Ghost}
-        ariaExpanded={isPanelShown}
-        onClick={onTogglePanel}
-        ariaLabel={language.filtre}
-        ariaControls={togglePanelId}
-      >
+    <TogglePanel
+      onTogglePanel={onTogglePanel}
+      onHidePanel={onHidePanel}
+      isPanelShown={isPanelShown}
+      panelRef={panelRef}
+      className="filter-panel"
+      triggerBtnContent={
         <>
           {totalFiltersCount > 0 && `[${totalFiltersCount}]`} {language.filter}{' '}
           <Icon iconName={IconName.Filter} />
           <VisuallyHidden>{language.filtersApplied}</VisuallyHidden>
         </>
-      </Button>
-      <div
-        ref={panelRef}
-        className={`toggle-panel filter-panel ${isPanelShown ? 'shown' : ''}`}
-        id={togglePanelId}
-        aria-hidden={isPanelShown ? undefined : true}
-      >
+      }
+    >
+      <>
         <section
           className="filter-panel-content"
           aria-labelledby={ariaLabelledby}
         >
-          <LayoutElement className="filter-panel-heading">
+          <header className="filter-panel-heading">
             <h2 id={ariaLabelledby}>{language.filterHeading}</h2>
-          </LayoutElement>
+          </header>
 
           <ToggleContent btnVariant={BtnVariant.Default}>
             {Object.entries(values).map(
@@ -167,8 +160,8 @@ const FilterPanel = ({
             {primaryBtnText}
           </Button>
         </footer>
-      </div>
-    </>
+      </>
+    </TogglePanel>
   );
 };
 

@@ -32,7 +32,7 @@ const ProductToolbar = ({
   ariaLiveText,
   language,
 }: ProductToolbarProps) => (
-  <section className="product-toolbar">
+  <div className="product-toolbar">
     <DisplayControls
       onSetDisplay={onSetDisplay}
       displayControlList={displayControlList}
@@ -57,7 +57,7 @@ const ProductToolbar = ({
       productCount={productCount}
       onReset={onReset}
     />
-  </section>
+  </div>
 );
 
 export default ProductToolbar;
