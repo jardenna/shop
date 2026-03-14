@@ -16,7 +16,7 @@ import { getStarsArray } from '../features/shop/components/reviews/reviewsUtil.'
 import SingleProductForm from '../features/shop/components/SingleProductForm';
 import SingleProductHeader from '../features/shop/components/SingleProductHeader';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
-import MetaTags from '../layout/nav/MetaTags';
+import MetaTags from '../layout/MetaTags';
 import { getColorOptions } from '../utils/colorUtils';
 import { getDisplaySizes } from '../utils/sizeUtils';
 import './SingleProductPage.styles.scss';

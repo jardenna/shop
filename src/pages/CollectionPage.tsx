@@ -24,8 +24,8 @@ import {
 } from '../hooks/useFilterParams';
 import { localStorageKeys, useLocalStorage } from '../hooks/useLocalStorage';
 import { useMediaQuery } from '../hooks/useMediaQuery';
+import MetaTags from '../layout/MetaTags';
 import { LinkText } from '../layout/nav/enums';
-import MetaTags from '../layout/nav/MetaTags';
 import { IconName } from '../types/enums';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { sortSizesDynamic } from '../utils/sizeUtils';

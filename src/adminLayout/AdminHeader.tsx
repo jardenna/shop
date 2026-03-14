@@ -4,8 +4,8 @@ import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import Logo from '../layout/header/Logo';
 import LayoutElement from '../layout/LayoutElement';
 import { AdminPath } from '../layout/nav/enums';
+import MobileNav from '../layout/nav/MobileNav';
 import { adminNavList } from '../layout/nav/navLists';
-import ToggleNav from '../components/togglePanel/ToggleNav';
 
 type AdminHeaderProps = {
   btnLabel: string;
@@ -35,7 +35,7 @@ const AdminHeader = ({
           <Button onClick={onLogout}>{btnLabel}</Button>
         </>
       ) : (
-        <ToggleNav navList={adminNavList} className="admin-nav-container" />
+        <MobileNav navList={adminNavList} className="admin-nav-container" />
       )}
     </>
   </LayoutElement>

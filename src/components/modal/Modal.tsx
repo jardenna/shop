@@ -1,10 +1,10 @@
-import { useEffect, type ReactNode } from 'react';
+import { useEffect, useId, type ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useAppSelector } from '../../app/hooks';
 import { useLanguage } from '../../features/language/useLanguage';
 import { selectModalId } from '../../features/modalSlice';
 import { useClickOutside } from '../../hooks/useClickOutside';
-import { BtnType, BtnVariant, PopupRole, SizeVariant } from '../../types/enums';
+import { BtnType, BtnVariant, SizeVariant } from '../../types/enums';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import Overlay from '../overlay/Overlay';
 import Portal from '../Portal';
@@ -40,6 +40,7 @@ export type ModalProps = {
   id: string;
   modalHeaderText: string;
   primaryActionBtn: PrimaryActionBtnProps;
+  ariaControlsId?: string;
   className?: string;
   isAlert?: boolean;
   modalInfo?: ReactNode;
@@ -53,6 +54,7 @@ export type ModalProps = {
 const Modal = ({
   id,
   modalHeaderText,
+  ariaControlsId,
   children,
   primaryActionBtn,
   secondaryActionBtn,
@@ -67,6 +69,7 @@ const Modal = ({
   const { language } = useLanguage();
   const modalId = useAppSelector(selectModalId);
   const { closeModalState, popupRef } = useModal(modalId);
+  const dialogId = useId();
 
   const { closeModalAnimated, popupClass } = useVisibility(
     modalId === id,
@@ -121,12 +124,12 @@ const Modal = ({
   });
 
   const ModalContent = (
-    <article>
+    <div>
       <ModalHeader
         modalHeadertext={modalHeaderText}
         onCloseModal={closeModalAnimated}
         showCloseIcon={showCloseIcon}
-        ariaLabel={language.dialog}
+        id={dialogId}
       />
       <ModalContentContainer
         isForm={primaryActionBtn.buttonType === BtnType.Submit}
@@ -137,19 +140,20 @@ const Modal = ({
           primaryActionBtn={primaryActionBtn}
           secondaryBtn={secondaryBtn}
           onPrimaryClick={handlePrimaryClick}
-          ariaLabel={language.dialog}
         />
       </ModalContentContainer>
       {modalInfo && modalInfo}
-    </article>
+    </div>
   );
 
   return (
     <Portal portalId="modal">
       <dialog
+        id={ariaControlsId}
+        aria-labelledby={dialogId}
         ref={popupRef}
         className={`modal modal-${modalSize} ${className} ${popupClass} animate-top-center`}
-        role={isAlert ? PopupRole.Alert : undefined}
+        role={isAlert ? 'alertdialog' : undefined}
       >
         <ErrorBoundary
           FallbackComponent={ErrorBoundaryFallback}

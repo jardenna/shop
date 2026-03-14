@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { useId, type ReactNode } from 'react';
 import { useAppDispatch } from '../../app/hooks';
 import { toggleModal } from '../../features/modalSlice';
 import { BtnVariant } from '../../types/enums';
@@ -31,6 +31,7 @@ const ModalContainer = ({
   onClearAllValues,
   onBoundaryReset,
 }: ModalContainerProps) => {
+  const ariaControlsId = useId();
   const dispatch = useAppDispatch();
 
   const handleOpenModal = () => {
@@ -46,12 +47,15 @@ const ModalContainer = ({
         onClick={handleOpenModal}
         className={triggerModalClassName}
         disabled={triggerModalDisabled}
+        ariaControls={ariaControlsId}
+        ariaHasPopup="dialog"
       >
         {triggerModalBtnContent}
       </Button>
 
       <Modal
         id={id}
+        ariaControlsId={ariaControlsId}
         showCloseIcon={showCloseIcon}
         modalHeaderText={modalHeaderText}
         primaryActionBtn={primaryActionBtn}

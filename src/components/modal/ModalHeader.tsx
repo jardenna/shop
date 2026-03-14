@@ -1,9 +1,8 @@
 import { useLanguage } from '../../features/language/useLanguage';
-import LayoutElement from '../../layout/LayoutElement';
 import BtnClose from '../BtnClose';
 
 type ModalHeaderProps = {
-  ariaLabel: string;
+  id: string;
   modalHeadertext: string;
   showCloseIcon?: boolean;
   onCloseModal: () => void;
@@ -13,18 +12,18 @@ const ModalHeader = ({
   modalHeadertext,
   onCloseModal,
   showCloseIcon,
-  ariaLabel,
+  id,
 }: ModalHeaderProps) => {
   const { language } = useLanguage();
   return (
-    <LayoutElement className="modal-header" ariaLabel={ariaLabel}>
-      <h2 className="modal-title" id="modal-title">
+    <header className="modal-header">
+      <h2 className="modal-title" id={id}>
         {modalHeadertext}
       </h2>
       {showCloseIcon && (
         <BtnClose onClick={onCloseModal} ariaLabel={language.closeDialog} />
       )}
-    </LayoutElement>
+    </header>
   );
 };
 
