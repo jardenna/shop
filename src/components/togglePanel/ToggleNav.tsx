@@ -38,7 +38,7 @@ const ToggleNav = ({ children }: ToggleNavProps) => {
       </Button>
       <div
         ref={panelRef}
-        className={`toggle-panel right ${isPanelShown ? 'shown' : ''}`}
+        className={`toggle-panel ${isPanelShown ? 'shown' : ''}`}
         id={togglePanelId}
         aria-hidden={isPanelShown ? undefined : true}
       >

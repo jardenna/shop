@@ -11,7 +11,7 @@ import Overlay from '../overlay/Overlay';
 import './_toggle-panel.scss';
 import { useTogglePanel } from './useTogglePanel';
 
-type PanelPosition = 'right' | 'left' | 'bottom' | 'top';
+// type PanelPosition = 'right' | 'left' | 'bottom' | 'top';
 
 type ActionBtnsProps = {
   primaryBtnText: string;
@@ -25,7 +25,6 @@ type TogglePanelProps = {
   children: ReactNode;
   className?: string;
   footer?: ActionBtnsProps;
-  panelPosition?: PanelPosition;
   preventClickOutside?: boolean;
   role?: string;
   showCloseIcon?: boolean;
@@ -35,7 +34,6 @@ type TogglePanelProps = {
 
 const TogglePanel = ({
   children,
-  panelPosition = 'right',
   className = '',
   triggerBtnClassName,
   triggerBtnContent,
@@ -79,7 +77,7 @@ const TogglePanel = ({
       <div
         ref={panelRef}
         role={role}
-        className={`toggle-panel ${panelPosition} ${className} ${isPanelShown ? 'shown' : ''}`}
+        className={`toggle-panel ${className} ${isPanelShown ? 'shown' : ''}`}
         id={togglePanelId}
         aria-hidden={isPanelShown ? undefined : true}
       >
