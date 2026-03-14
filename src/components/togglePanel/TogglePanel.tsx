@@ -3,6 +3,7 @@ import { BtnVariant } from '../../types/enums';
 import type { AriaHasPopup } from '../../types/types';
 import BtnClose from '../BtnClose';
 import Button from '../Button';
+import './_toggle-panel.scss';
 
 type TogglePanelProps = {
   ariaHasPopup: AriaHasPopup;
@@ -35,7 +36,6 @@ const TogglePanel = ({
   return (
     <>
       <Button
-        className={className}
         variant={btnVariant}
         ariaExpanded={isPanelShown}
         onClick={onTogglePanel}
@@ -48,7 +48,7 @@ const TogglePanel = ({
       <div
         ref={panelRef}
         role="dialog"
-        className={`toggle-panel filter-panel ${isPanelShown ? 'shown' : ''}`}
+        className={`toggle-panel ${className} ${isPanelShown ? 'shown' : ''}`}
         id={togglePanelId}
         aria-hidden={isPanelShown ? undefined : true}
       >

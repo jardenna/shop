@@ -2,7 +2,6 @@ import { useId, type ReactNode } from 'react';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { BtnVariant } from '../../types/enums';
-import BtnClose from '../BtnClose';
 import Button from '../Button';
 import Overlay from '../overlay/Overlay';
 import './_toggle-panel.scss';
@@ -16,9 +15,9 @@ const ToggleNav = ({ children }: ToggleNavProps) => {
   const togglePanelId = useId();
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
-  const { isPanelShown, onTogglePanel, panelRef, onHidePanel } = useTogglePanel(
-    { preventClickOutside: true },
-  );
+  const { isPanelShown, onTogglePanel, panelRef } = useTogglePanel({
+    preventClickOutside: true,
+  });
 
   return (
     <>
@@ -40,7 +39,6 @@ const ToggleNav = ({ children }: ToggleNavProps) => {
         aria-hidden={isPanelShown ? undefined : true}
       >
         {children}
-        {isPanelShown && <BtnClose onClick={onHidePanel} />}
       </div>
       {isPanelShown && !isMobileSize && <Overlay />}
     </>
