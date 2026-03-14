@@ -1,6 +1,6 @@
 import { DropdownItem } from '../../components/dropdownBtn/DropdownBtn';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
-import ToggleNav from '../../components/togglePanel/ToggleNav';
+import MobileNav from '../../components/togglePanel/MobileNav';
 import type { SelectedLanguage } from '../../features/language/languageSlice';
 import type { InputChangeHandler, OptionType } from '../../types/types';
 import HeaderIcons from '../headerIcons/HeaderIcons';
@@ -45,7 +45,7 @@ const Header = ({
       {!isMobileSize ? (
         <NavContainer navList={navList} />
       ) : (
-        <ToggleNav navList={navList} />
+        <MobileNav navList={navList} />
       )}
       <HeaderIcons
         dropdownBtnList={dropdownBtnList}

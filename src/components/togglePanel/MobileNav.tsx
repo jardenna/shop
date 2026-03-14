@@ -6,12 +6,12 @@ import Overlay from '../overlay/Overlay';
 import TogglePanel from './TogglePanel';
 import { useTogglePanel } from './useTogglePanel';
 
-type ToggleNavProps = {
+type MobileNavProps = {
   navList: NavListProps[];
   className?: string;
 };
 
-const ToggleNav = ({ navList, className }: ToggleNavProps) => {
+const MobileNav = ({ navList, className }: MobileNavProps) => {
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
   const { isPanelShown, onTogglePanel, panelRef } = useTogglePanel({
@@ -35,4 +35,4 @@ const ToggleNav = ({ navList, className }: ToggleNavProps) => {
   );
 };
 
-export default ToggleNav;
+export default MobileNav;
