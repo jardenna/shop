@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import PageHeader from '../../components/pageHeader/PageHeader';
-import MetaTags from '../../layout/nav/MetaTags';
+import MetaTags from '../../layout/MetaTags';
 import { ariaInfoTitle } from '../../utils/utils';
 
 type AdminPageContainerProps = {

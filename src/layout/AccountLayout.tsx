@@ -4,7 +4,7 @@ import Picture from '../components/Picture';
 import { useLanguage } from '../features/language/useLanguage';
 import { getPathName, titleToCamelCase } from '../utils/utils';
 import './accountLayout.styles.scss';
-import MetaTags from './nav/MetaTags';
+import MetaTags from './MetaTags';
 import NavContainer from './nav/NavContainer';
 import { accountNavList } from './nav/navLists';
 

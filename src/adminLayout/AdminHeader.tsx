@@ -1,10 +1,10 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import Button from '../components/Button';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
-import MobileNav from '../components/togglePanel/MobileNav';
 import Logo from '../layout/header/Logo';
 import LayoutElement from '../layout/LayoutElement';
 import { AdminPath } from '../layout/nav/enums';
+import MobileNav from '../layout/nav/MobileNav';
 import { adminNavList } from '../layout/nav/navLists';
 
 type AdminHeaderProps = {

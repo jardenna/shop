@@ -1,10 +1,10 @@
+import Overlay from '../../components/overlay/Overlay';
+import TogglePanel from '../../components/togglePanel/TogglePanel';
+import { useTogglePanel } from '../../components/togglePanel/useTogglePanel';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
-import { NavListProps } from '../../layout/nav/Nav';
-import NavContainer from '../../layout/nav/NavContainer';
-import Overlay from '../overlay/Overlay';
-import TogglePanel from './TogglePanel';
-import { useTogglePanel } from './useTogglePanel';
+import { NavListProps } from './Nav';
+import NavContainer from './NavContainer';
 
 type MobileNavProps = {
   navList: NavListProps[];
