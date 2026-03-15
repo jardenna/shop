@@ -20,21 +20,23 @@ const FormLabel = ({
   ariaErrorId,
 }: FormLabelErrorProps) => (
   <>
-    <span className={inputHasNoLabel ? '' : 'form-label-container'}>
-      {inputHasNoLabel ? (
-        <VisuallyHidden htmlFor={id} as="label">
-          {labelText}
-        </VisuallyHidden>
-      ) : (
+    {inputHasNoLabel ? (
+      <VisuallyHidden htmlFor={id} as="label">
+        {labelText}
+      </VisuallyHidden>
+    ) : (
+      <span className="form-label-container">
         <label htmlFor={id}>
           {labelText}
           {required && <RequiredIcon />}
         </label>
-      )}
-      {errorText && (
-        <FormError errorText={errorText} ariaErrorId={ariaErrorId} />
-      )}
-    </span>
+
+        {errorText && (
+          <FormError errorText={errorText} ariaErrorId={ariaErrorId} />
+        )}
+      </span>
+    )}
+
     {errorText && (
       <span className="error-icon" aria-hidden="true">
         i
