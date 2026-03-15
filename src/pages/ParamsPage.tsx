@@ -170,8 +170,8 @@ const ParamsPage = ({
                   max: 'maxPrice',
                 }}
                 inputLabels={{
-                  min: 'Pris fra',
-                  max: 'Pris til',
+                  min: language.priceFrom,
+                  max: language.priceTo,
                 }}
                 onChange={setValue}
                 unitLabel={currencyText}

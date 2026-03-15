@@ -36,9 +36,14 @@ $color-range-primary: $color-blue-30;
   position: relative;
   display: flex;
   align-items: center;
-  min-height: rem(56px);
-  margin-top: 40px;
-  margin-inline: 12px;
+  min-height: rem(24px);
+  margin-block: 12px;
+
+  &.has-output {
+    margin: 0 12px;
+    margin-top: 40px;
+    min-height: rem(56px);
+  }
 
   .slider-track,
   .slider-track-filled {
@@ -146,11 +151,17 @@ $color-range-primary: $color-blue-30;
   display: flex;
   justify-content: space-between;
 
+  .input-suffix {
+    top: 35%;
+  }
+
   .input-container {
-    max-width: rem(172px);
+    max-width: rem(100px);
 
     input {
-      min-height: rem(52px);
+      min-height: rem(48px);
+      background-color: $color-white;
+      border: 1px solid $color-border;
     }
   }
 }

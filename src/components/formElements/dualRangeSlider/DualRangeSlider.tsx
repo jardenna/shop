@@ -19,6 +19,7 @@ interface DualRangeSliderProps {
     widthPercent: number;
   };
   unitLabel: string;
+  hideOutput?: boolean;
   onChange: (event: ChangeInputType) => void;
 }
 
@@ -27,6 +28,7 @@ const DualRangeSlider = ({
   unitLabel,
   onChange,
   committed,
+  hideOutput,
   inputNames,
   inputLabels,
   min,
@@ -37,22 +39,25 @@ const DualRangeSlider = ({
   const maxRangeId = useId();
 
   return (
-    <div className="dual-range">
-      <output
-        className="range-label range-label-min"
-        style={{ left: `${track.startPercent}%` }}
-      >
-        {committed.min} {unitLabel}
-      </output>
-
-      <output
-        className="range-label range-label-max"
-        style={{
-          left: `${track.startPercent + track.widthPercent}%`,
-        }}
-      >
-        {committed.max} {unitLabel}
-      </output>
+    <div className={`dual-range ${!hideOutput ? 'has-output' : ''}`}>
+      {!hideOutput && (
+        <>
+          <output
+            className="range-label range-label-min"
+            style={{ left: `${track.startPercent}%` }}
+          >
+            {committed.min} {unitLabel}
+          </output>
+          <output
+            className="range-label range-label-max"
+            style={{
+              left: `${track.startPercent + track.widthPercent}%`,
+            }}
+          >
+            {committed.max} {unitLabel}
+          </output>
+        </>
+      )}
 
       <div className="slider-track" aria-hidden="true" />
 

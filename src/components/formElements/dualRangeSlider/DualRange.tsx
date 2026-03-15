@@ -58,6 +58,7 @@ const DualRange = ({
         committed={committed}
         inputNames={inputNames}
         inputLabels={inputLabels}
+        hideOutput
       />
       {!standAlone && (
         <div className="dual-number-range">
