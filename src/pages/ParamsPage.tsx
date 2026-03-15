@@ -7,6 +7,7 @@ import FieldSet from '../components/fieldset/FieldSet';
 import Form from '../components/form/Form';
 import CheckboxList from '../components/formElements/checkbox/CheckboxList';
 import DualRange from '../components/formElements/dualRangeSlider/DualRange';
+import IconBtn from '../components/IconBtn';
 import Icon from '../components/icons/Icon';
 import TagList from '../components/tags/TagList';
 import ToggleContent from '../components/ToggleContent';
@@ -95,15 +96,18 @@ const ParamsPage = ({
           language={language}
           renderExtra={item.renderExtra}
         />
-        <Button
+        <IconBtn
           variant={BtnVariant.Ghost}
           className="clear-filter-btn"
           onClick={() => {
             onClearSingleFilter(item.key);
           }}
-        >
-          {language.clearFilters}
-        </Button>
+          ariaLabel={language.clearFilters}
+          iconName={IconName.Trash}
+          showLabel
+        />
+        {/* {language.clearFilters}
+        </IconBtn> */}
       </FieldSet>
     ),
   }));
