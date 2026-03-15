@@ -1,7 +1,7 @@
 @use '../../../scss/globals' as *;
 
-$thumb-size: 24px;
-$thumb-border: 3px;
+$thumb-size: 16px;
+$thumb-border: 2px;
 $focus-ring: 0 0 0 3px rgb(0 123 255 / 25%);
 $color-range-primary: $color-blue-30;
 
@@ -10,7 +10,6 @@ $color-range-primary: $color-blue-30;
   height: $thumb-size;
   background-color: $color-range-primary;
   border: $thumb-border solid $color-white;
-  border-radius: 50%;
   cursor: grab;
   pointer-events: auto;
   box-shadow: $box-shadow;
@@ -44,7 +43,7 @@ $color-range-primary: $color-blue-30;
   .slider-track,
   .slider-track-filled {
     position: absolute;
-    height: 8px;
+    height: 4px;
     border-radius: 4px;
     pointer-events: none;
   }
