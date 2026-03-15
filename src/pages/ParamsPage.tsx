@@ -87,6 +87,14 @@ const ParamsPage = ({
     additionalTitle: countsByKey[item.key] || '',
     content: (
       <FieldSet legendText={item.label}>
+        <CheckboxList
+          checkBoxList={item.list}
+          name={item.key}
+          onChange={toggleValue}
+          values={values[item.key]}
+          language={language}
+          renderExtra={item.renderExtra}
+        />
         <Button
           variant={BtnVariant.Ghost}
           className="clear-filter-btn"
@@ -96,14 +104,6 @@ const ParamsPage = ({
         >
           {language.clearFilters}
         </Button>
-        <CheckboxList
-          checkBoxList={item.list}
-          name={item.key}
-          onChange={toggleValue}
-          values={values[item.key]}
-          language={language}
-          renderExtra={item.renderExtra}
-        />
       </FieldSet>
     ),
   }));
@@ -121,7 +121,7 @@ const ParamsPage = ({
         </>
       }
     >
-      <section aria-labelledby={ariaLabelledby}>
+      <section aria-labelledby={ariaLabelledby} className="params">
         <header className="filter-panel-heading">
           <h2 id={ariaLabelledby}>{language.filterHeading}</h2>
         </header>
@@ -140,13 +140,13 @@ const ParamsPage = ({
           </ToggleContent>
         )}
         <Form
+          className="filter-form"
           submitBtnLabel={primaryBtnText}
           onSubmit={onHidePanel}
           onCancel={onClearAllFilters}
           cancelBtnProps={{ btnLabel: language.clearAllFilters }}
         >
           <FieldSet legendText={language.filterProducts}>
-            <Accordion accordionList={accordionList} name="filter" />
             <FieldSet legendText="price">
               <Button
                 variant={BtnVariant.Ghost}
@@ -173,6 +173,7 @@ const ParamsPage = ({
                 unitLabel={currencyText}
               />
             </FieldSet>
+            <Accordion accordionList={accordionList} name="filter" />
           </FieldSet>
         </Form>
       </section>

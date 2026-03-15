@@ -36,3 +36,29 @@
     max-height: rem(112px);
   }
 }
+
+.params {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  .checkbox-list {
+    max-height: 312px;
+    overflow: auto;
+
+    .checkbox-item {
+      padding-right: 8px;
+    }
+  }
+
+  .filter-form {
+    flex: 1;
+    display: grid;
+    grid-template-rows: 1fr auto;
+
+    .fieldset {
+      gap: 0;
+      margin-bottom: 0;
+    }
+  }
+}
