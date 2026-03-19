@@ -1,0 +1,66 @@
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .wrap {
+    background: #0D1117;
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .bottom-bar {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    border-top: 1px solid #2A3D58;
+    padding-top: 12px;
+  }
+  .left { display: flex; align-items: center; gap: 8px; }
+  .selected-count {
+    font-size: 12px; font-weight: 500; color: #5A8AAA;
+    white-space: nowrap;
+  }
+  .divider { width: 2px; height: 20px; background: #2A3D58; border-radius: 2px; flex-shrink: 0; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500; padding: 6px 13px;
+    border-radius: 8px; cursor: pointer; white-space: nowrap;
+    font-family: 'DM Sans', sans-serif;
+    border: 2px solid #6A9AC8;
+    background: #2A4A70; color: #C8E8FF;
+  }
+  .btn:hover { background: #3A5E8A; color: #EAF6FF; }
+  .btn-cancel { border-color: #C06010; background: #3A1E08; color: #FFCC80; }
+  .btn-cancel:hover { background: #4A2810; color: #FFE0A8; }
+
+  .right { display: flex; align-items: center; gap: 4px; }
+  .page-info { font-size: 12px; color: #5A8AAA; padding: 0 8px; white-space: nowrap; }
+  .pg-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 30px; height: 30px; border-radius: 8px; cursor: pointer;
+    font-size: 13px; font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    border: 2px solid #2A3D58; background: #141E2E; color: #7AAAC8;
+  }
+  .pg-btn:hover { border-color: #4A7AAA; color: #A8D8F8; background: #1E3048; }
+  .pg-btn.active { border-color: #6A9AC8; background: #2A4A70; color: #C8E8FF; }
+  .pg-btn svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; }
+</style>
+
+<div class="wrap">
+  <div class="bottom-bar">
+    <div class="left">
+      <span class="selected-count">3 rows selected</span>
+      <div class="divider"></div>
+      <button class="btn">Capture</button>
+      <button class="btn">Close</button>
+      <button class="btn btn-cancel">Cancel</button>
+    </div>
+    <div class="right">
+      <button class="pg-btn"><svg viewBox="0 0 16 16"><path d="M10 12L6 8l4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="pg-btn">1</button>
+      <button class="pg-btn active">2</button>
+      <button class="pg-btn">3</button>
+      <button class="pg-btn">4</button>
+      <button class="pg-btn"><svg viewBox="0 0 16 16"><path d="M6 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+  </div>
+</div>
