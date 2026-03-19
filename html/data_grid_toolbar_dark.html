@@ -1,0 +1,180 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .wrap {
+    background: #0D1117;
+    padding: 1.25rem 1.25rem 1rem;
+    border-radius: 12px;
+    font-family: var(--font-sans);
+  }
+
+  .top-bar {
+    display: flex; align-items: center; gap: 10px;
+    padding-bottom: 12px;
+    border-bottom: 0.5px solid #1E2D42;
+    margin-bottom: 10px;
+  }
+  .burger {
+    width: 32px; height: 32px; display: flex; flex-direction: column;
+    justify-content: center; gap: 5px; cursor: pointer;
+    border-radius: 8px; padding: 6px;
+    background: #131C27; border: 0.5px solid #1E2D42; flex-shrink: 0;
+  }
+  .burger span { display: block; height: 1.5px; background: #5A8FBF; border-radius: 2px; }
+  .heading { font-size: 17px; font-weight: 500; color: #C9DDEF; flex: 1; }
+  .badge-new {
+    font-size: 11px; background: #0A2340; color: #4DB8FF;
+    border-radius: 20px; padding: 3px 10px; font-weight: 500;
+    border: 0.5px solid #1A5080; white-space: nowrap;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .dot-pulse {
+    width: 6px; height: 6px; border-radius: 50%; background: #4DB8FF;
+    animation: pulse 1.8s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .time-badge {
+    font-size: 11px; color: #3D6080; background: #111B27;
+    border: 0.5px solid #1A2E42; border-radius: 20px; padding: 3px 10px; white-space: nowrap;
+  }
+
+  .action-row {
+    display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+    padding-bottom: 10px;
+    border-bottom: 0.5px solid #1E2D42;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 12px; font-weight: 500; padding: 5px 11px;
+    border-radius: 8px; border: 0.5px solid #1E2D42;
+    background: #131C27; color: #5A8FBF; cursor: pointer; white-space: nowrap;
+    transition: background 0.15s, color 0.15s;
+  }
+  .btn svg { width: 13px; height: 13px; flex-shrink: 0; stroke: currentColor; fill: none; }
+  .btn:hover { background: #1A2840; color: #90C4EF; }
+
+  .btn-save {
+    background: #0A2340; color: #4DB8FF; border-color: #1A5080;
+  }
+  .btn-save:hover { background: #0D2E52; color: #7DD3FC; }
+
+  .divider { width: 0.5px; height: 22px; background: #1E2D42; margin: 0 2px; flex-shrink: 0; }
+
+  .filter-bar {
+    display: flex; align-items: center; gap: 6px; flex-wrap: nowrap;
+    overflow: hidden; padding-top: 10px;
+  }
+  .filter-label {
+    font-size: 11px; color: #2A4A66; font-weight: 500;
+    white-space: nowrap; letter-spacing: 0.05em; text-transform: uppercase; flex-shrink: 0;
+  }
+  .filter-pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 12px; background: #111B27;
+    border: 0.5px solid #1E2D42;
+    border-radius: 20px; padding: 4px 10px;
+    cursor: pointer; white-space: nowrap; flex-shrink: 0;
+    transition: border-color 0.15s;
+  }
+  .filter-pill:hover { border-color: #2A5080; }
+  .filter-pill .fname { color: #2E5070; font-size: 11px; }
+  .filter-pill .arrow { color: #1E3A55; font-size: 9px; }
+  .filter-pill .fval { color: #90C4EF; font-weight: 500; }
+  .filter-pill .remove {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: #1A2E42; color: #3D6080; font-size: 10px;
+    cursor: pointer; margin-left: 2px;
+  }
+  .filter-pill .remove:hover { background: #1A3A55; color: #4DB8FF; }
+
+  .filter-spacer { flex: 1; }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; color: #2E5070;
+    background: transparent; border: none;
+    cursor: pointer; padding: 4px 7px; border-radius: 8px; white-space: nowrap; flex-shrink: 0;
+    transition: background 0.15s, color 0.15s;
+  }
+  .btn-ghost:hover { background: #111B27; color: #5A8FBF; }
+  .btn-ghost svg { width: 12px; height: 12px; stroke: currentColor; fill: none; flex-shrink: 0; }
+</style>
+
+<div class="wrap">
+  <div class="top-bar">
+    <div class="burger">
+      <span></span><span></span><span></span>
+    </div>
+    <span class="heading">Customer Orders</span>
+    <div class="badge-new"><div class="dot-pulse"></div>New data available</div>
+    <div class="time-badge">Fetched 12:20</div>
+  </div>
+
+  <div class="action-row">
+    <button class="btn">
+      <svg viewBox="0 0 16 16"><path d="M2 4h12M4 8h8M6 12h4" stroke-linecap="round"/></svg>
+      Columns
+    </button>
+    <button class="btn">
+      <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 4v4l2.5 2.5" stroke-linecap="round"/></svg>
+      UTC+1
+    </button>
+    <button class="btn">
+      <svg viewBox="0 0 16 16"><path d="M2 4h12M2 8h12M2 12h12" stroke-linecap="round"/></svg>
+      Comfortable
+    </button>
+    <div class="divider"></div>
+    <button class="btn">
+      <svg viewBox="0 0 16 16"><path d="M3 10v3h10v-3M8 3v7M5.5 7.5L8 10l2.5-2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Export
+    </button>
+    <button class="btn btn-save">
+      <svg viewBox="0 0 16 16"><path d="M3 3h8l2 2v8H3V3z" stroke-linecap="round" stroke-linejoin="round"/><rect x="5" y="9" width="6" height="4" rx="0.5"/><rect x="5" y="3" width="4" height="3" rx="0.5"/></svg>
+      Save view
+    </button>
+    <button class="btn">
+      <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5.5v.5" stroke-linecap="round"/></svg>
+      Timezone info
+    </button>
+  </div>
+
+  <div class="filter-bar">
+    <span class="filter-label">Filters</span>
+
+    <div class="filter-pill">
+      <span class="fname">Status</span>
+      <span class="arrow">›</span>
+      <span class="fval">Active</span>
+      <span class="remove">✕</span>
+    </div>
+    <div class="filter-pill">
+      <span class="fname">Region</span>
+      <span class="arrow">›</span>
+      <span class="fval">Europe</span>
+      <span class="remove">✕</span>
+    </div>
+    <div class="filter-pill">
+      <span class="fname">Amount</span>
+      <span class="arrow">›</span>
+      <span class="fval">&gt; 500</span>
+      <span class="remove">✕</span>
+    </div>
+    <div class="filter-pill">
+      <span class="fname">Date</span>
+      <span class="arrow">›</span>
+      <span class="fval">This month</span>
+      <span class="remove">✕</span>
+    </div>
+
+    <div class="filter-spacer"></div>
+
+    <button class="btn-ghost">
+      <svg viewBox="0 0 16 16"><path d="M3 8a5 5 0 1 1 1.5 3.6M3 12V8h4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Reset columns
+    </button>
+    <button class="btn-ghost">
+      <svg viewBox="0 0 16 16"><path d="M3 4h10M5 4l.5 8h5L11 4" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 7v4M9.5 7v4" stroke-linecap="round"/></svg>
+      Clear filters
+    </button>
+  </div>
+</div>
