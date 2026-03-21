@@ -80,6 +80,8 @@ const CollectionPage = () => {
     colors: values.colors,
     brand: values.brand,
     sizes: values.sizes,
+    minPrice: values.minPrice,
+    maxPrice: values.maxPrice,
     mainCategory: category,
     subCategoryId: categoryId || '',
   });
