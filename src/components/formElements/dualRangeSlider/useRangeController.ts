@@ -12,11 +12,14 @@ export interface InputUtils {
 }
 
 interface RangeControllerProps {
+  inputNames: {
+    max: string;
+    min: string;
+  };
+  max: number;
   maxValue: string;
+  min: number;
   minValue: string;
-  inputNames?: InputUtils;
-  max?: number;
-  min?: number;
   onChange: (event: ChangeInputType) => void;
 }
 
@@ -24,9 +27,9 @@ export const useRangeController = ({
   minValue,
   maxValue,
   onChange,
-  min = 0,
-  max = 10000,
-  inputNames = { min: 'min', max: 'max' },
+  min,
+  max,
+  inputNames,
 }: RangeControllerProps) => {
   const { debounce } = useDebounce();
 

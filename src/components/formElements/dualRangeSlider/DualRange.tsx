@@ -42,6 +42,8 @@ const DualRange = ({
     maxValue,
     onChange,
     inputNames,
+    min,
+    max,
   });
 
   return (
