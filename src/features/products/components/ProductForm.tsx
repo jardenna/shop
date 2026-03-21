@@ -398,6 +398,7 @@ const ProductForm = ({
                 <ProductPrice
                   price={values.price}
                   discountPrice={values.discount}
+                  hasError={errors.discount}
                 />
               )}
             </div>

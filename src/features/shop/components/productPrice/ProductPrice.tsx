@@ -7,9 +7,14 @@ import './_product-price.scss';
 type ProductPriceProps = {
   price: number;
   discountPrice?: number;
+  hasError?: string;
 };
 
-const ProductPrice = ({ price, discountPrice }: ProductPriceProps) => {
+const ProductPrice = ({
+  price,
+  discountPrice,
+  hasError,
+}: ProductPriceProps) => {
   const { language } = useLanguage();
   const discountedValue = discountPrice
     ? discountCalculation(price, discountPrice)
@@ -17,6 +22,14 @@ const ProductPrice = ({ price, discountPrice }: ProductPriceProps) => {
 
   const { convertedPrice: regularPrice } = useCurrency(price);
   const { convertedPrice: discountedPrice } = useCurrency(discountedValue);
+
+  if (hasError) {
+    return (
+      <span role="alert" aria-live="polite">
+        {language.invalidDiscount}
+      </span>
+    );
+  }
 
   return (
     <div className="product-price">
