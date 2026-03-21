@@ -68,11 +68,17 @@ export const useRangeController = ({
   }, [normalizedMaxValue]);
 
   const emitChange = (fieldName: string, fieldValue: number) => {
+    const isMin = fieldName === inputNames.min;
+    const appliedMinValue = isMin ? fieldValue : minCommittedValue;
+    const appliedMaxValue = isMin ? maxCommittedValue : fieldValue;
+
+    const isDefaultRange = appliedMinValue === min && appliedMaxValue === max;
+
     debounce(() => {
       onChange({
         target: {
           name: fieldName,
-          value: String(fieldValue),
+          value: isDefaultRange ? '' : String(fieldValue),
         },
       } as ChangeInputType);
     });
