@@ -84,16 +84,18 @@ const FilterPanel = ({
     additionalTitle: countsByKey[item.key] > 0 ? countsByKey[item.key] : '',
     content: (
       <>
-        <Button
-          variant={BtnVariant.Ghost}
-          className="clear-filter-btn"
-          disabled={countsByKey[item.key] === 0}
-          onClick={() => {
-            onClearSingleFilter(item.key);
-          }}
-        >
-          {language.clearFilters}
-        </Button>
+        <div className="accordion-footer">
+          <Button
+            variant={BtnVariant.Ghost}
+            disabled={countsByKey[item.key] === 0}
+            onClick={() => {
+              onClearSingleFilter(item.key);
+            }}
+          >
+            {language.clearFilters}
+          </Button>
+        </div>
+
         <CheckboxList
           checkBoxList={item.list}
           name={item.key}
