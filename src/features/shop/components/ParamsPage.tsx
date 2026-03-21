@@ -81,7 +81,7 @@ const ParamsPage = ({
       ),
     },
     { key: 'sizes', label: language.sizes, list: sortSizesDynamic(sizes) },
-    { key: 'brand', label: language.brands, list: brands },
+    { key: 'brand', label: language.brand, list: brands },
   ];
 
   const accordionList: AccordionList[] = accordionConfig.map((item) => ({
