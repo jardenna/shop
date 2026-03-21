@@ -14,6 +14,7 @@ import TagList from '../../../components/tags/TagList';
 import ToggleContent from '../../../components/ToggleContent';
 import TogglePanel from '../../../components/togglePanel/TogglePanel';
 import { useTogglePanel } from '../../../components/togglePanel/useTogglePanel';
+import VisuallyHidden from '../../../components/VisuallyHidden';
 import { FilterKeys } from '../../../pages/CollectionPage';
 import { BtnVariant, IconName } from '../../../types/enums';
 import { ChangeInputType } from '../../../types/types';
@@ -96,6 +97,7 @@ const ParamsPage = ({
 
   const filtersCount = getFilterSummary(values);
   const countsByKey = filtersCount.countsByKey;
+  const totalFiltersCount = filtersCount.totalCount;
 
   const accordionConfig: AccordionConfigItem[] = [
     {
@@ -142,7 +144,9 @@ const ParamsPage = ({
       className="filter-panel"
       triggerBtnContent={
         <>
-          {language.filter} <Icon iconName={IconName.Filter} />
+          {totalFiltersCount > 0 && `[${totalFiltersCount}]`} {language.filter}{' '}
+          <Icon iconName={IconName.Filter} />
+          <VisuallyHidden>{language.filtersApplied}</VisuallyHidden>
         </>
       }
     >
