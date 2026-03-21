@@ -106,8 +106,6 @@ const ParamsPage = ({
           iconName={IconName.Trash}
           showLabel
         />
-        {/* {language.clearFilters}
-        </IconBtn> */}
       </FieldSet>
     ),
   }));
