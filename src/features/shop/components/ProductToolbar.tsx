@@ -1,36 +1,30 @@
-import DisplayControls, {
-  DisplayControlsProps,
-} from '../../../components/DisplayControls';
-import LiveAnnouncement, {
-  LiveAnnouncementProps,
-} from '../../../components/LiveAnnouncement';
-import FilterPanel, { FilterPanelProps } from './FilterPanel';
+import DisplayControls from '../../../components/DisplayControls';
+import LiveAnnouncement from '../../../components/LiveAnnouncement';
+import { IconName } from '../../../types/enums';
 
-type ProductToolbarProps = FilterPanelProps &
-  DisplayControlsProps &
-  LiveAnnouncementProps & {
-    language: Record<string, string>;
-  };
+interface ProductViewIconList {
+  ariaLabel: string;
+  display: string;
+  iconName: IconName;
+  title: string;
+}
+
+interface ProductToolbarProps {
+  announce: boolean;
+  ariaLiveText: string;
+  displayControlList: ProductViewIconList[];
+  infoText: string;
+  isActive: string; // ???
+  onSetDisplay: any;
+}
 
 const ProductToolbar = ({
-  onClearSingleFilter,
-  filtersCount,
-  onChange,
-  values,
-  availableBrands,
-  onClearAllFilters,
   displayControlList,
-  productCount,
-  availableSizes,
   onSetDisplay,
   isActive,
-  colors,
-  onRemoveFilterTag,
   infoText,
   announce,
-  onReset,
   ariaLiveText,
-  language,
 }: ProductToolbarProps) => (
   <div className="product-toolbar">
     <DisplayControls
@@ -42,20 +36,6 @@ const ProductToolbar = ({
       infoText={infoText}
       announce={announce}
       ariaLiveText={ariaLiveText}
-    />
-    <FilterPanel
-      onClearSingleFilter={onClearSingleFilter}
-      filtersCount={filtersCount}
-      onChange={onChange}
-      values={values}
-      availableBrands={availableBrands}
-      availableSizes={availableSizes}
-      colors={colors}
-      language={language}
-      onRemoveFilterTag={onRemoveFilterTag}
-      onClearAllFilters={onClearAllFilters}
-      productCount={productCount}
-      onReset={onReset}
     />
   </div>
 );
