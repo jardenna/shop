@@ -3,10 +3,11 @@ import { BtnVariant, IconName } from '../../../types/enums';
 import { useLanguage } from '../../language/useLanguage';
 
 type ClearFiltersBtnProps = {
+  disabled: boolean;
   onClick: () => void;
 };
 
-const ClearFiltersBtn = ({ onClick }: ClearFiltersBtnProps) => {
+const ClearFiltersBtn = ({ onClick, disabled }: ClearFiltersBtnProps) => {
   const { language } = useLanguage();
 
   return (
@@ -17,6 +18,7 @@ const ClearFiltersBtn = ({ onClick }: ClearFiltersBtnProps) => {
       ariaLabel={language.clearFilters}
       iconName={IconName.Trash}
       showLabel
+      disabled={disabled}
     />
   );
 };

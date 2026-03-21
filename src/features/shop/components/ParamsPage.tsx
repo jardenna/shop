@@ -71,6 +71,9 @@ const ParamsPage = ({
   const filtersCount = getFilterSummary(values);
   const countsByKey = filtersCount.countsByKey;
 
+  const isPriceRangeEmpty =
+    values.minPrice.trim() === '' && values.maxPrice.trim() === '';
+
   const accordionConfig: AccordionConfigItem[] = [
     {
       key: 'colors',
@@ -101,6 +104,7 @@ const ParamsPage = ({
           onClick={() => {
             onClearSingleFilter(item.key);
           }}
+          disabled={countsByKey[item.key] === 0}
         />
       </FieldSet>
     ),
@@ -165,6 +169,7 @@ const ParamsPage = ({
                 onClick={() => {
                   onClearSingleFilter(['minPrice', 'maxPrice']);
                 }}
+                disabled={isPriceRangeEmpty}
               />
             </FieldSet>
             <Accordion accordionList={accordionList} name="filter" />
