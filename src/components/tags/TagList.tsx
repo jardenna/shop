@@ -21,7 +21,7 @@ const TagList = ({
   <ul className="tag-list" aria-relevant="removals" aria-live="polite">
     {values.map((value) => (
       <li key={value} className="tag-item">
-        <span>{value}</span>
+        <span>{translateKey(value, language)}</span>
         <IconBtn
           size="1em"
           onClick={() => {
