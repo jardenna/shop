@@ -26,7 +26,7 @@ const AboutUsPage = () => {
   };
 
   const { values } = useSearchParamsState(initialFilters);
-  const { data: products } = useGetProductsQuery({
+  const { data: products, refetch } = useGetProductsQuery({
     productsPerPage: 10,
     page: '1',
     colors: values.colors,
@@ -50,6 +50,7 @@ const AboutUsPage = () => {
             colors={sortedTranslatedColors}
             language={language}
             productCount={products.productCount}
+            onReset={() => refetch()}
           />
         )}
       </section>

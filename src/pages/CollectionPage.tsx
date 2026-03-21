@@ -12,6 +12,7 @@ import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import { useLanguage } from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
 import CollectionPageHeader from '../features/shop/components/CollectionPageHeader';
+import NoProductsFound from '../features/shop/components/NoProductsFound';
 import ParamsPage from '../features/shop/components/ParamsPage';
 import ProductCardList from '../features/shop/components/ProductCardList';
 import ProductToolbar from '../features/shop/components/ProductToolbar';
@@ -25,6 +26,7 @@ import MetaTags from '../layout/MetaTags';
 import { LinkText } from '../layout/nav/enums';
 import { IconName } from '../types/enums';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
+import { sortSizesDynamic } from '../utils/sizeUtils';
 import { ariaInfoTitle } from '../utils/utils';
 import { InitialFilters } from './AboutUsPage';
 import './CollectionPage.styles.scss';
@@ -74,15 +76,11 @@ const CollectionPage = () => {
     subCategoryId: categoryId || '',
   });
 
-  // Redux hooks
-
   const productCount = products ? products.productCount : 0;
   const totalBtns = products?.pages ?? 1;
 
   const src = `/images/banners/${category}_banner`;
   const altText = `${category}BannerAltText`;
-  // const filtersCount = getFilterSummary(filterValues);
-
   const isShowingAll = productsPerPage >= productCount && productCount > 0;
 
   const { infoText, paginationMobileText, ariaLiveText } = usePaginationText({
@@ -94,7 +92,6 @@ const CollectionPage = () => {
   });
 
   const { announce } = useAnnounce([page, productsPerPage, values]);
-
   const { scrollToRef, setShouldScroll } = useScrollOnPagination({
     isLoading,
   });
@@ -129,7 +126,6 @@ const CollectionPage = () => {
     },
   ];
   const selectProductCountList = ['8', '16'];
-
   const ariaLabelledby = ariaInfoTitle(category || 'women');
 
   return (
@@ -176,32 +172,21 @@ const CollectionPage = () => {
             {products && (
               <>
                 <ProductToolbar
-                  // onReset={() => refetch()}
-                  // language={language}
                   onSetDisplay={setProductView}
                   displayControlList={productViewIconList}
                   isActive={productView}
-                  // onClearSingleFilter={onClearSingleFilter}
-                  // filtersCount={filtersCount}
-                  // onChange={onFilterChange}
-                  // values={filterValues}
-                  // availableBrands={products.availableBrands}
-                  // availableSizes={sortSizesDynamic(products.availableSizes)}
-                  // colors={sortedTranslatedColors}
-                  // onRemoveFilterTag={onRemoveFilterTag}
-                  // onClearAllFilters={onClearAllFilters}
-                  // productCount={productCount}
                   infoText={infoText}
                   announce={announce}
                   ariaLiveText={ariaLiveText}
                 />
                 <ParamsPage
                   initialFilters={initialFilters}
-                  sizes={products.availableSizes}
+                  sizes={sortSizesDynamic(products.availableSizes)}
                   brands={products.availableBrands}
                   colors={sortedTranslatedColors}
                   language={language}
                   productCount={products.productCount}
+                  onReset={() => refetch()}
                 />
               </>
             )}
@@ -217,7 +202,13 @@ const CollectionPage = () => {
                 />
               )
             ) : (
-              <div>No products</div>
+              <NoProductsFound
+                noProductText={language.noProductResult}
+                resetFilters={() => {
+                  console.log('clear all filters func');
+                }}
+                resetBtnText={language.clearAllFilters}
+              />
             )}
           </div>
         </div>

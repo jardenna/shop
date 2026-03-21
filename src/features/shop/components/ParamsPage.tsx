@@ -37,6 +37,7 @@ interface FilterProps {
   language: Record<string, string>;
   productCount: number;
   sizes: Size[];
+  onReset: () => void;
 }
 
 const ParamsPage = ({
@@ -46,16 +47,19 @@ const ParamsPage = ({
   colors,
   language,
   productCount,
+  onReset,
 }: FilterProps) => {
   const ariaLabelledby = useId();
   const [searchParams] = useSearchParams();
   const { currencyText } = useCurrency();
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
     useTogglePanel();
+
   const primaryBtnText =
     productCount > 0
       ? `${language.show} ${productCount} ${language.itemLabel}`
       : language.noItemsToShow;
+
   const {
     values,
     toggleValue,
@@ -68,7 +72,9 @@ const ParamsPage = ({
   const hasActiveFilters = Object.keys(initialFilters).some((key) =>
     searchParams.has(key),
   );
+
   const isClearFiltersDisabled = !hasActiveFilters;
+
   const isClearPriceBtnDisabled =
     values.minPrice.trim() === '' && values.maxPrice.trim() === '';
 
@@ -184,7 +190,11 @@ const ParamsPage = ({
                 disabled={isClearPriceBtnDisabled}
               />
             </FieldSet>
-            <Accordion accordionList={accordionList} name="filter" />
+            <Accordion
+              accordionList={accordionList}
+              name="filter"
+              onReset={onReset}
+            />
           </FieldSet>
         </Form>
       </section>
