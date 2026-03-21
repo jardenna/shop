@@ -8,7 +8,6 @@ import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/form/Form';
 import CheckboxList from '../../../components/formElements/checkbox/CheckboxList';
 import DualRange from '../../../components/formElements/dualRangeSlider/DualRange';
-import IconBtn from '../../../components/IconBtn';
 import Icon from '../../../components/icons/Icon';
 import TagList from '../../../components/tags/TagList';
 import ToggleContent from '../../../components/ToggleContent';
@@ -21,6 +20,7 @@ import { BtnVariant, IconName } from '../../../types/enums';
 import { sortSizesDynamic } from '../../../utils/sizeUtils';
 import { getFilterSummary } from '../../../utils/utils';
 import { useCurrency } from '../../currency/useCurrency';
+import ClearFiltersBtn from './ClearFiltersBtn';
 
 type AccordionConfigItem<K extends FilterKeys = FilterKeys> = {
   key: K;
@@ -97,15 +97,10 @@ const ParamsPage = ({
           language={language}
           renderExtra={item.renderExtra}
         />
-        <IconBtn
-          variant={BtnVariant.Ghost}
-          className="clear-filter-btn"
+        <ClearFiltersBtn
           onClick={() => {
             onClearSingleFilter(item.key);
           }}
-          ariaLabel={language.clearFilters}
-          iconName={IconName.Trash}
-          showLabel
         />
       </FieldSet>
     ),
@@ -151,15 +146,10 @@ const ParamsPage = ({
         >
           <FieldSet legendText={language.filterProducts}>
             <FieldSet legendText="price">
-              <IconBtn
-                variant={BtnVariant.Ghost}
-                className="clear-filter-btn"
+              <ClearFiltersBtn
                 onClick={() => {
                   onClearSingleFilter(['minPrice', 'maxPrice']);
                 }}
-                ariaLabel={language.clearFilters}
-                iconName={IconName.Trash}
-                showLabel
               />
               <DualRange
                 minValue={values.minPrice}
