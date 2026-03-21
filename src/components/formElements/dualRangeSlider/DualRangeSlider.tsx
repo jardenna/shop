@@ -59,7 +59,7 @@ const DualRangeSlider = ({
         </>
       )}
 
-      <div className="slider-track" aria-hidden="true" />
+      <div className="slider-track" aria-hidden />
 
       <div
         className="slider-track-filled"
@@ -67,7 +67,7 @@ const DualRangeSlider = ({
           left: `${track.startPercent}%`,
           width: `${track.widthPercent}%`,
         }}
-        aria-hidden="true"
+        aria-hidden
       />
 
       <VisuallyHidden as="label" htmlFor={minRangeId}>

@@ -28,7 +28,7 @@ const ProductPrice = ({ price, discountPrice }: ProductPriceProps) => {
       {hasDiscount ? (
         <>
           <span className="discount-price">{discountedPrice}</span>
-          <span aria-hidden="true" className="price-seperator">
+          <span aria-hidden className="price-seperator">
             /
           </span>
           <VisuallyHidden>{language.originaPrice}</VisuallyHidden>

@@ -38,7 +38,7 @@ const FormLabel = ({
     )}
 
     {errorText && (
-      <span className="error-icon" aria-hidden="true">
+      <span className="error-icon" aria-hidden>
         i
       </span>
     )}

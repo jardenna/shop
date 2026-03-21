@@ -25,9 +25,7 @@ const MobileNav = ({ navList, className }: MobileNavProps) => {
       panelRef={panelRef}
       ariaLabel={language.mainMenu}
       triggerBtnClassName="menu-burger"
-      triggerBtnContent={
-        <span className="menu-burger-item" aria-hidden={true} />
-      }
+      triggerBtnContent={<span className="menu-burger-item" aria-hidden />}
     >
       <NavContainer navList={navList} className={className} hideAriaHasPopup />
       {isPanelShown && !isMobileSize && <Overlay />}
