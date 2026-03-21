@@ -1,9 +1,9 @@
 import { useLanguage } from '../features/language/useLanguage';
+import ParamsPage from '../features/shop/components/ParamsPage';
 import { useGetProductsQuery } from '../features/shop/shopApiSlice';
 import { useSearchParamsState } from '../hooks/useSearchParamsState';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import MainPageContainer from './pageContainer/MainPageContainer';
-import ParamsPage from './ParamsPage';
 
 export interface SearchParamState {
   [paramKey: string]: string | string[];

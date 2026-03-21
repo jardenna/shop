@@ -1,25 +1,26 @@
 import { ReactNode, useId } from 'react';
-import { Size } from '../app/api/apiTypes/sharedApiTypes';
-import Accordion, { AccordionList } from '../components/accordion/Accordion';
-import Button from '../components/Button';
-import ColorItem from '../components/ColorItem';
-import FieldSet from '../components/fieldset/FieldSet';
-import Form from '../components/form/Form';
-import CheckboxList from '../components/formElements/checkbox/CheckboxList';
-import DualRange from '../components/formElements/dualRangeSlider/DualRange';
-import IconBtn from '../components/IconBtn';
-import Icon from '../components/icons/Icon';
-import TagList from '../components/tags/TagList';
-import ToggleContent from '../components/ToggleContent';
-import TogglePanel from '../components/togglePanel/TogglePanel';
-import { useTogglePanel } from '../components/togglePanel/useTogglePanel';
-import { useCurrency } from '../features/currency/useCurrency';
-import { useSearchParamsState } from '../hooks/useSearchParamsState';
-import { BtnVariant, IconName } from '../types/enums';
-import { sortSizesDynamic } from '../utils/sizeUtils';
-import { getFilterSummary } from '../utils/utils';
-import { InitialFilters } from './AboutUsPage';
-import { FilterKeys } from './CollectionPage';
+import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
+import Accordion, {
+  AccordionList,
+} from '../../../components/accordion/Accordion';
+import ColorItem from '../../../components/ColorItem';
+import FieldSet from '../../../components/fieldset/FieldSet';
+import Form from '../../../components/form/Form';
+import CheckboxList from '../../../components/formElements/checkbox/CheckboxList';
+import DualRange from '../../../components/formElements/dualRangeSlider/DualRange';
+import IconBtn from '../../../components/IconBtn';
+import Icon from '../../../components/icons/Icon';
+import TagList from '../../../components/tags/TagList';
+import ToggleContent from '../../../components/ToggleContent';
+import TogglePanel from '../../../components/togglePanel/TogglePanel';
+import { useTogglePanel } from '../../../components/togglePanel/useTogglePanel';
+import { useSearchParamsState } from '../../../hooks/useSearchParamsState';
+import { InitialFilters } from '../../../pages/AboutUsPage';
+import { FilterKeys } from '../../../pages/CollectionPage';
+import { BtnVariant, IconName } from '../../../types/enums';
+import { sortSizesDynamic } from '../../../utils/sizeUtils';
+import { getFilterSummary } from '../../../utils/utils';
+import { useCurrency } from '../../currency/useCurrency';
 
 type AccordionConfigItem<K extends FilterKeys = FilterKeys> = {
   key: K;
@@ -150,15 +151,16 @@ const ParamsPage = ({
         >
           <FieldSet legendText={language.filterProducts}>
             <FieldSet legendText="price">
-              <Button
+              <IconBtn
                 variant={BtnVariant.Ghost}
                 className="clear-filter-btn"
                 onClick={() => {
                   onClearSingleFilter(['minPrice', 'maxPrice']);
                 }}
-              >
-                {language.clearFilters}
-              </Button>
+                ariaLabel={language.clearFilters}
+                iconName={IconName.Trash}
+                showLabel
+              />
               <DualRange
                 minValue={values.minPrice}
                 maxValue={values.maxPrice}
