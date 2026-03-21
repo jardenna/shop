@@ -15,7 +15,6 @@ import ToggleContent from '../../../components/ToggleContent';
 import TogglePanel from '../../../components/togglePanel/TogglePanel';
 import { useTogglePanel } from '../../../components/togglePanel/useTogglePanel';
 import { useSearchParamsState } from '../../../hooks/useSearchParamsState';
-import { InitialFilters } from '../../../pages/AboutUsPage';
 import { FilterKeys } from '../../../pages/CollectionPage';
 import { BtnVariant, IconName } from '../../../types/enums';
 import { sortSizesDynamic } from '../../../utils/sizeUtils';
@@ -29,6 +28,15 @@ type AccordionConfigItem<K extends FilterKeys = FilterKeys> = {
   list: string[];
   renderExtra?: (checkbox: string) => ReactNode;
 };
+
+export interface InitialFilters {
+  brand: string[];
+  colors: string[];
+  maxPrice: string;
+  minPrice: string;
+  sizes: string[];
+  [paramKey: string]: string | string[];
+}
 
 interface FilterProps {
   brands: string[];

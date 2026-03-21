@@ -13,7 +13,9 @@ import { useLanguage } from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
 import CollectionPageHeader from '../features/shop/components/CollectionPageHeader';
 import NoProductsFound from '../features/shop/components/NoProductsFound';
-import ParamsPage from '../features/shop/components/ParamsPage';
+import ParamsPage, {
+  InitialFilters,
+} from '../features/shop/components/ParamsPage';
 import ProductCardList from '../features/shop/components/ProductCardList';
 import ProductToolbar from '../features/shop/components/ProductToolbar';
 import { useSubMenu } from '../features/shop/hooks/useSubMenu';
@@ -28,7 +30,6 @@ import { IconName } from '../types/enums';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { sortSizesDynamic } from '../utils/sizeUtils';
 import { ariaInfoTitle } from '../utils/utils';
-import { InitialFilters } from './AboutUsPage';
 import './CollectionPage.styles.scss';
 
 export type FilterKeys = keyof BaseShopProductsParams;
