@@ -1,0 +1,76 @@
+{
+  "editor.linkedEditing": true,
+  "editor.minimap.enabled": false,
+  "search.useGlobalIgnoreFiles": true,
+  "git.confirmSync": false,
+  "editor.lightbulb.enabled": "on",
+  "js/ts.updateImportsOnFileMove.enabled": "always",
+  "js/ts.preferences.quoteStyle": "single",
+  "hediet.vscode-drawio.resizeImages": null,
+  "git.enableSmartCommit": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "files.exclude": {
+    "**/.vscode": false
+  },
+  "js/ts.preferences.autoImportFileExcludePatterns": [
+    "node_modules/react-day-picker",
+    "node_modules/react-select/animated"
+  ],
+  "workbench.colorCustomizations": {
+    "editorError.foreground": "#ef1023",
+    "editorWarning.foreground": "#d87315",
+    "list.errorForeground": "#b96506",
+    "list.warningForeground": "#c06c0d"
+  },
+  "html.format.unformatted": "",
+  "editor.accessibilitySupport": "auto",
+  "emmet.showSuggestionsAsSnippets": true,
+
+  "eslint.probe": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.nodePath": "",
+  "js/ts.format.semicolons": "insert",
+  "reactSnippets.settings.prettierEnabled": true,
+  "eslint.rules.customizations": [],
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "eslint.nodeEnv": "",
+  "scss.format.spaceAroundSelectorSeparator": true,
+  "scss.format.enable": true,
+  "workbench.settings.applyToAllProfiles": [],
+  "git.openRepositoryInParentFolders": "always",
+  "diffEditor.maxComputationTime": 0,
+  "emmet.preferences": {},
+  "editor.defaultFoldingRangeProvider": "vscode.typescript-language-features",
+  "workbench.colorTheme": "Visual Studio Light",
+  "workbench.startupEditor": "none",
+  "editor.suggest.localityBonus": true,
+  "editor.suggest.showDeprecated": false,
+  "gitlens.views.remotes.branches.layout": "list",
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
+    "typescriptreact": false
+  },
+  "diffEditor.ignoreTrimWhitespace": false,
+  "gitlens.launchpad.indicator.enabled": false,
+  "chat.instructionsFilesLocations": {
+    ".github/instructions": true,
+    ".claude/rules": true,
+    "~/.copilot/instructions": true,
+    "~/.claude/rules": true,
+    "C:\\Users\\hbjor\\AppData\\Local\\Temp\\postman-collections-post-response.instructions.md": true,
+    "C:\\Users\\hbjor\\AppData\\Local\\Temp\\postman-collections-pre-request.instructions.md": true,
+    "C:\\Users\\hbjor\\AppData\\Local\\Temp\\postman-folder-post-response.instructions.md": true,
+    "C:\\Users\\hbjor\\AppData\\Local\\Temp\\postman-folder-pre-request.instructions.md": true,
+    "C:\\Users\\hbjor\\AppData\\Local\\Temp\\postman-http-request-post-response.instructions.md": true,
+    "C:\\Users\\hbjor\\AppData\\Local\\Temp\\postman-http-request-pre-request.instructions.md": true
+  }
+}

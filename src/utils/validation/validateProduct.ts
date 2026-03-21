@@ -1,4 +1,8 @@
 import type { ProductRequest } from '../../app/api/apiTypes/adminApiTypes';
+import {
+  maxDiscount,
+  minDiscount,
+} from '../../features/products/components/ProductForm';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
 
@@ -12,6 +16,7 @@ export function validateProduct(values: ProductRequest) {
     price,
     subCategory,
     productName,
+    discount,
     sizes,
   } = values;
 
@@ -32,6 +37,10 @@ export function validateProduct(values: ProductRequest) {
 
   if (!price) {
     errors.price = ValidationMessage.PriceRequired;
+  }
+
+  if (discount < minDiscount || discount > maxDiscount) {
+    errors.discount = ValidationMessage.discountRange;
   }
 
   if (subCategory === '') {

@@ -1,3 +1,3 @@
-const RequiredIcon = () => <span aria-hidden="true">*</span>;
+const RequiredIcon = () => <span aria-hidden>*</span>;
 
 export default RequiredIcon;

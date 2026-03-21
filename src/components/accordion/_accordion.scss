@@ -4,48 +4,48 @@
   details {
     border-block-end: 1px solid $color-border-dark;
     overflow: clip;
+  }
 
-    .accordion-content {
-      overflow: hidden auto;
-      max-height: rem(400px);
-      padding-right: 4px;
-      padding-bottom: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+  .accordion-content {
+    overflow: hidden auto;
+    max-height: rem(400px);
+    padding-right: 4px;
+    padding-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 
-      p {
-        margin: 0;
-      }
+    p {
+      margin: 0;
     }
+  }
 
+  &::details-content {
+    block-size: 0;
+    transition:
+      block-size 0.5s,
+      content-visibility 0.5s;
+    transition-behavior: allow-discrete;
+  }
+
+  .accordion-title {
+    display: flex;
+    gap: 4px;
+  }
+
+  .accordion-icon {
+    transform: rotate(0);
+
+    @include transition;
+  }
+
+  &:open {
     &::details-content {
-      block-size: 0;
-      transition:
-        block-size 0.5s,
-        content-visibility 0.5s;
-      transition-behavior: allow-discrete;
-    }
-
-    .accordion-title {
-      display: flex;
-      gap: 4px;
+      block-size: auto;
     }
 
     .accordion-icon {
-      transform: rotate(0);
-
-      @include transition;
-    }
-
-    &:open {
-      &::details-content {
-        block-size: auto;
-      }
-
-      .accordion-icon {
-        transform: rotate(180deg);
-      }
+      transform: rotate(180deg);
     }
   }
 

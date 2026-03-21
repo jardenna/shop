@@ -46,7 +46,7 @@ const DatePicker = ({
         ) : (
           <span>
             {labelText}
-            {required && <span aria-hidden="true">*</span>}
+            {required && <span aria-hidden>*</span>}
           </span>
         )}
         {errorText && <span className="error-message">{errorText}</span>}

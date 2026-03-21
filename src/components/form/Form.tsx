@@ -1,20 +1,25 @@
 import type { ReactNode } from 'react';
 import { useLanguage } from '../../features/language/useLanguage';
-import LayoutElement from '../../layout/LayoutElement';
 import { BtnType, BtnVariant } from '../../types/enums';
 import type { RefFormType } from '../../types/types';
 import Button from '../Button';
 import './_form.scss';
 
+type CancelButtonProps = {
+  btnLabel?: string;
+  isDisabled?: boolean;
+  onCancel: () => void;
+};
+
 type FormProps = {
   children: ReactNode;
   submitBtnLabel: string;
   ariaLabel?: string;
+  cancelBtnProps?: CancelButtonProps;
   className?: string;
   disabled?: boolean;
   isLoading?: boolean;
   ref?: RefFormType;
-  onCancel?: () => void;
   onSubmit: () => void;
 };
 
@@ -25,7 +30,7 @@ const Form = ({
   className,
   isLoading,
   ariaLabel,
-  onCancel,
+  cancelBtnProps,
   ref,
   disabled,
 }: FormProps) => {
@@ -42,14 +47,15 @@ const Form = ({
       ref={ref}
     >
       {children}
-      <LayoutElement as="footer" className="footer" ariaLabel={language.form}>
-        {onCancel && (
+      <footer className="footer">
+        {cancelBtnProps && (
           <Button
-            onClick={onCancel}
+            onClick={cancelBtnProps.onCancel}
             ariaLabel={ariaLabel}
             variant={BtnVariant.Secondary}
+            disabled={cancelBtnProps.isDisabled}
           >
-            {language.cancel}
+            {cancelBtnProps.btnLabel || language.cancel}
           </Button>
         )}
         <Button
@@ -60,7 +66,7 @@ const Form = ({
         >
           {submitBtnLabel}
         </Button>
-      </LayoutElement>
+      </footer>
     </form>
   );
 };

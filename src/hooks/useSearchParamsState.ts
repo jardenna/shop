@@ -25,6 +25,7 @@ export const useSearchParamsState = <T extends SearchParamState>(
     ]),
   ) as T;
 
+  // Set values for input textarea and select
   const setValue = (event: ChangeInputType) => {
     const { name, value } = event.target;
 
@@ -32,13 +33,22 @@ export const useSearchParamsState = <T extends SearchParamState>(
     updatedSearchParams.delete(name);
 
     const values = isArray(value) ? value : [value];
-    values.forEach((val) => {
+
+    const validValues = values.filter((val) => val !== '');
+
+    if (validValues.length === 0) {
+      setSearchParams(updatedSearchParams);
+      return;
+    }
+
+    validValues.forEach((val) => {
       updatedSearchParams.append(name, val);
     });
 
     setSearchParams(updatedSearchParams);
   };
 
+  // Set values for controls input
   const toggleValue = (event: ChangeInputType) => {
     const { name, value } = event.target;
     const updatedSearchParams = new URLSearchParams(searchParams.toString());
@@ -61,6 +71,7 @@ export const useSearchParamsState = <T extends SearchParamState>(
     setSearchParams(updatedSearchParams);
   };
 
+  // Remove tags
   const handleRemoveFilterTag = (key: string, value: string) => {
     const updatedSearchParams = new URLSearchParams(searchParams.toString());
     const currentValues = updatedSearchParams
@@ -76,10 +87,12 @@ export const useSearchParamsState = <T extends SearchParamState>(
     setSearchParams(updatedSearchParams);
   };
 
+  // Clear all filters
   const handleClearAllFilters = () => {
     setSearchParams(new URLSearchParams());
   };
 
+  // Clear single filter
   const handleClearSingleFilter = (keys: string | string[]) => {
     const updatedSearchParams = new URLSearchParams(searchParams.toString());
     const keysArray = Array.isArray(keys) ? keys : [keys];

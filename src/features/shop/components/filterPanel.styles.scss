@@ -1,9 +1,11 @@
 @use '../../../scss/globals' as *;
 
 .filter-panel {
-  .clear-filter-btn {
+  .accordion-footer {
+    display: flex;
     justify-content: flex-end;
     width: 100%;
+    padding-right: 16px;
   }
 
   .filter-panel-heading {
@@ -34,5 +36,36 @@
 
   &.collapsed {
     max-height: rem(112px);
+  }
+}
+
+.params {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  .dural-range-fieldset {
+    border-block-end: 1px solid $color-border-dark;
+    padding-bottom: 12px;
+  }
+
+  .checkbox-list {
+    max-height: 312px;
+    overflow: auto;
+
+    .checkbox-item {
+      padding-right: 8px;
+    }
+  }
+
+  .filter-form {
+    flex: 1;
+    display: grid;
+    grid-template-rows: 1fr auto;
+
+    .fieldset {
+      gap: 0;
+      margin-bottom: 0;
+    }
   }
 }

@@ -7,28 +7,36 @@ import './_product-price.scss';
 type ProductPriceProps = {
   price: number;
   discountPrice?: number;
+  hasError?: string;
 };
 
-const ProductPrice = ({ price, discountPrice }: ProductPriceProps) => {
+const ProductPrice = ({
+  price,
+  discountPrice,
+  hasError,
+}: ProductPriceProps) => {
   const { language } = useLanguage();
   const discountedValue = discountPrice
     ? discountCalculation(price, discountPrice)
     : price;
 
-  const hasDiscount =
-    typeof discountPrice === 'number' &&
-    discountPrice > 0 &&
-    discountPrice < 100;
-
   const { convertedPrice: regularPrice } = useCurrency(price);
   const { convertedPrice: discountedPrice } = useCurrency(discountedValue);
 
+  if (hasError) {
+    return (
+      <span role="alert" aria-live="polite">
+        {language.invalidDiscount}
+      </span>
+    );
+  }
+
   return (
     <div className="product-price">
-      {hasDiscount ? (
+      {discountPrice ? (
         <>
           <span className="discount-price">{discountedPrice}</span>
-          <span aria-hidden="true" className="price-seperator">
+          <span aria-hidden className="price-seperator">
             /
           </span>
           <VisuallyHidden>{language.originaPrice}</VisuallyHidden>

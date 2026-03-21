@@ -1,7 +1,7 @@
 @use '../../../scss/globals' as *;
 
-$thumb-size: 24px;
-$thumb-border: 3px;
+$thumb-size: 16px;
+$thumb-border: 2px;
 $focus-ring: 0 0 0 3px rgb(0 123 255 / 25%);
 $color-range-primary: $color-blue-30;
 
@@ -10,7 +10,6 @@ $color-range-primary: $color-blue-30;
   height: $thumb-size;
   background-color: $color-range-primary;
   border: $thumb-border solid $color-white;
-  border-radius: 50%;
   cursor: grab;
   pointer-events: auto;
   box-shadow: $box-shadow;
@@ -37,14 +36,19 @@ $color-range-primary: $color-blue-30;
   position: relative;
   display: flex;
   align-items: center;
-  min-height: rem(56px);
-  margin-top: 40px;
-  margin-inline: 12px;
+  min-height: rem(24px);
+  margin-block: 12px;
+
+  &.has-output {
+    margin: 0 12px;
+    margin-top: 40px;
+    min-height: rem(56px);
+  }
 
   .slider-track,
   .slider-track-filled {
     position: absolute;
-    height: 8px;
+    height: 4px;
     border-radius: 4px;
     pointer-events: none;
   }
@@ -147,11 +151,17 @@ $color-range-primary: $color-blue-30;
   display: flex;
   justify-content: space-between;
 
+  .input-suffix {
+    top: 35%;
+  }
+
   .input-container {
-    max-width: rem(172px);
+    max-width: rem(100px);
 
     input {
-      min-height: rem(52px);
+      min-height: rem(48px);
+      background-color: $color-white;
+      border: 1px solid $color-border;
     }
   }
 }

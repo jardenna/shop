@@ -27,6 +27,7 @@ const RangeNumberInput = ({
   inputSuffix,
 }: RangeNumberInputProps) => (
   <Input
+    inputHasNoLabel
     id={id}
     name={name}
     type="number"

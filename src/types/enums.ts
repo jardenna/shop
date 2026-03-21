@@ -2,6 +2,7 @@ export enum ValidationMessage {
   BrandRequired = 'brandRequired',
   CategoryRequired = 'categoryRequired',
   ColorRequired = 'colorRequired',
+  discountRange = 'discountRange',
   ImageRequired = 'imageRequired',
   MaterialRequired = 'materialRequired',
   PasswordDoNotMatch = 'passwordDoNotMatch',
