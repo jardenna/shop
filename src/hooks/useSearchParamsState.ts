@@ -33,7 +33,15 @@ export const useSearchParamsState = <T extends SearchParamState>(
     updatedSearchParams.delete(name);
 
     const values = isArray(value) ? value : [value];
-    values.forEach((val) => {
+
+    const validValues = values.filter((val) => val !== '');
+
+    if (validValues.length === 0) {
+      setSearchParams(updatedSearchParams);
+      return;
+    }
+
+    validValues.forEach((val) => {
       updatedSearchParams.append(name, val);
     });
 
