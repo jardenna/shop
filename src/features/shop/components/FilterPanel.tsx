@@ -39,7 +39,7 @@ export interface InitialFilters {
   [paramKey: string]: string | string[];
 }
 
-interface FilterProps {
+interface FilterPanelProps {
   brands: string[];
   colors: string[];
   initialFilters: InitialFilters;
@@ -55,7 +55,7 @@ interface FilterProps {
   toggleValue: (event: ChangeInputType) => void;
 }
 
-const ParamsPage = ({
+const FilterPanel = ({
   initialFilters,
   sizes,
   brands,
@@ -69,7 +69,7 @@ const ParamsPage = ({
   onRemoveFilterTag,
   onClearSingleFilter,
   onClearAllFilters,
-}: FilterProps) => {
+}: FilterPanelProps) => {
   const ariaLabelledby = useId();
   const [searchParams] = useSearchParams();
   const { currencyText } = useCurrency();
@@ -217,4 +217,4 @@ const ParamsPage = ({
   );
 };
 
-export default ParamsPage;
+export default FilterPanel;

@@ -12,10 +12,10 @@ import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import { useLanguage } from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
 import CollectionPageHeader from '../features/shop/components/CollectionPageHeader';
-import NoProductsFound from '../features/shop/components/NoProductsFound';
-import ParamsPage, {
+import FilterPanel, {
   InitialFilters,
-} from '../features/shop/components/ParamsPage';
+} from '../features/shop/components/FilterPanel';
+import NoProductsFound from '../features/shop/components/NoProductsFound';
 import ProductCardList from '../features/shop/components/ProductCardList';
 import ProductToolbar from '../features/shop/components/ProductToolbar';
 import { useSubMenu } from '../features/shop/hooks/useSubMenu';
@@ -186,7 +186,7 @@ const CollectionPage = () => {
                   announce={announce}
                   ariaLiveText={ariaLiveText}
                 />
-                <ParamsPage
+                <FilterPanel
                   initialFilters={initialFilters}
                   sizes={sortSizesDynamic(products.availableSizes)}
                   brands={products.availableBrands}
