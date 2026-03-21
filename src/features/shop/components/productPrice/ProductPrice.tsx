@@ -15,17 +15,12 @@ const ProductPrice = ({ price, discountPrice }: ProductPriceProps) => {
     ? discountCalculation(price, discountPrice)
     : price;
 
-  const hasDiscount =
-    typeof discountPrice === 'number' &&
-    discountPrice > 0 &&
-    discountPrice < 100;
-
   const { convertedPrice: regularPrice } = useCurrency(price);
   const { convertedPrice: discountedPrice } = useCurrency(discountedValue);
 
   return (
     <div className="product-price">
-      {hasDiscount ? (
+      {discountPrice ? (
         <>
           <span className="discount-price">{discountedPrice}</span>
           <span aria-hidden className="price-seperator">

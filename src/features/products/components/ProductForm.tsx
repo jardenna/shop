@@ -49,6 +49,9 @@ type ProductFormProps = {
   onReset: () => void;
 };
 
+export const maxDiscount = 90;
+export const minDiscount = 0;
+
 const ProductForm = ({
   id,
   selectedProduct,
@@ -146,6 +149,7 @@ const ProductForm = ({
     filesData,
     previewData,
     removePreviewImage,
+    onBlur,
     onFileChange,
   } = useFormValidation({
     initialState,
@@ -376,7 +380,11 @@ const ProductForm = ({
                 labelText={language.discount}
                 onChange={onChange}
                 inputSuffix="%"
+                max={maxDiscount}
+                min={minDiscount}
                 inputMode="numeric"
+                errorText={language[errors.discount]}
+                onBlur={onBlur}
               />
             </div>
             <div className="product-form-2-columns">
