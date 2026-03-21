@@ -14,9 +14,9 @@ import TagList from '../../../components/tags/TagList';
 import ToggleContent from '../../../components/ToggleContent';
 import TogglePanel from '../../../components/togglePanel/TogglePanel';
 import { useTogglePanel } from '../../../components/togglePanel/useTogglePanel';
-import { useSearchParamsState } from '../../../hooks/useSearchParamsState';
 import { FilterKeys } from '../../../pages/CollectionPage';
 import { BtnVariant, IconName } from '../../../types/enums';
+import { ChangeInputType } from '../../../types/types';
 import { sortSizesDynamic } from '../../../utils/sizeUtils';
 import { getFilterSummary } from '../../../utils/utils';
 import { useCurrency } from '../../currency/useCurrency';
@@ -45,7 +45,13 @@ interface FilterProps {
   language: Record<string, string>;
   productCount: number;
   sizes: Size[];
+  values: InitialFilters;
+  onClearAllFilters: () => void;
+  onClearSingleFilter: (keys: string | string[]) => void;
+  onRemoveFilterTag: (key: string, value: string) => void;
   onReset: () => void;
+  setValue: (event: ChangeInputType) => void;
+  toggleValue: (event: ChangeInputType) => void;
 }
 
 const ParamsPage = ({
@@ -56,6 +62,12 @@ const ParamsPage = ({
   language,
   productCount,
   onReset,
+  values,
+  toggleValue,
+  setValue,
+  onRemoveFilterTag,
+  onClearSingleFilter,
+  onClearAllFilters,
 }: FilterProps) => {
   const ariaLabelledby = useId();
   const [searchParams] = useSearchParams();
@@ -67,15 +79,6 @@ const ParamsPage = ({
     productCount > 0
       ? `${language.show} ${productCount} ${language.itemLabel}`
       : language.noItemsToShow;
-
-  const {
-    values,
-    toggleValue,
-    setValue,
-    onRemoveFilterTag,
-    onClearSingleFilter,
-    onClearAllFilters,
-  } = useSearchParamsState(initialFilters);
 
   const hasActiveFilters = Object.keys(initialFilters).some((key) =>
     searchParams.has(key),

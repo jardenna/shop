@@ -62,7 +62,14 @@ const CollectionPage = () => {
     maxPrice: '',
   };
 
-  const { values } = useSearchParamsState(initialFilters);
+  const {
+    values,
+    toggleValue,
+    setValue,
+    onRemoveFilterTag,
+    onClearSingleFilter,
+    onClearAllFilters,
+  } = useSearchParamsState(initialFilters);
   const {
     data: products,
     isLoading,
@@ -79,7 +86,6 @@ const CollectionPage = () => {
 
   const productCount = products ? products.productCount : 0;
   const totalBtns = products?.pages ?? 1;
-
   const src = `/images/banners/${category}_banner`;
   const altText = `${category}BannerAltText`;
   const isShowingAll = productsPerPage >= productCount && productCount > 0;
@@ -188,6 +194,12 @@ const CollectionPage = () => {
                   language={language}
                   productCount={products.productCount}
                   onReset={() => refetch()}
+                  values={values}
+                  toggleValue={toggleValue}
+                  setValue={setValue}
+                  onRemoveFilterTag={onRemoveFilterTag}
+                  onClearAllFilters={onClearAllFilters}
+                  onClearSingleFilter={onClearSingleFilter}
                 />
               </>
             )}
@@ -205,9 +217,7 @@ const CollectionPage = () => {
             ) : (
               <NoProductsFound
                 noProductText={language.noProductResult}
-                resetFilters={() => {
-                  console.log('clear all filters func');
-                }}
+                resetFilters={onClearAllFilters}
                 resetBtnText={language.clearAllFilters}
               />
             )}
