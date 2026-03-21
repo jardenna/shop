@@ -1,0 +1,153 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); }
+  .toolbar-wrap { padding: 1rem 0; }
+
+  .top-bar {
+    display: flex; align-items: center; gap: 10px;
+    padding: 0 0 12px 0;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    margin-bottom: 10px;
+  }
+  .burger { width: 32px; height: 32px; display: flex; flex-direction: column; justify-content: center; gap: 5px; cursor: pointer; border-radius: var(--border-radius-md); padding: 6px; background: transparent; border: 0.5px solid var(--color-border-tertiary); flex-shrink: 0; }
+  .burger span { display: block; height: 1.5px; background: var(--color-text-secondary); border-radius: 2px; }
+  .heading { font-size: 17px; font-weight: 500; color: var(--color-text-primary); flex: 1; }
+  .badge-new { font-size: 11px; background: #E1F5EE; color: #0F6E56; border-radius: 20px; padding: 3px 9px; font-weight: 500; border: 0.5px solid #5DCAA5; white-space: nowrap; display: flex; align-items: center; gap: 5px; }
+  .badge-new::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: #1D9E75; }
+  .time-badge { font-size: 11px; color: var(--color-text-secondary); background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: 20px; padding: 3px 9px; white-space: nowrap; }
+
+  .action-row {
+    display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+    padding-bottom: 10px;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 12px; font-weight: 500;
+    padding: 5px 11px; border-radius: var(--border-radius-md);
+    border: 0.5px solid var(--color-border-secondary);
+    background: var(--color-background-primary);
+    color: var(--color-text-secondary);
+    cursor: pointer; white-space: nowrap;
+  }
+  .btn svg { width: 13px; height: 13px; flex-shrink: 0; stroke: currentColor; fill: none; }
+  .btn:hover { background: var(--color-background-secondary); color: var(--color-text-primary); }
+  .btn-save {
+    background: var(--color-background-primary);
+    color: #185FA5;
+    border-color: #85B7EB;
+  }
+  .btn-save:hover { background: #E6F1FB; }
+  .divider { width: 0.5px; height: 22px; background: var(--color-border-tertiary); margin: 0 2px; flex-shrink: 0; }
+
+  .filter-bar {
+    display: flex; align-items: center; gap: 6px; flex-wrap: nowrap;
+    overflow: hidden;
+    padding-top: 10px;
+  }
+  .filter-label { font-size: 11px; color: var(--color-text-tertiary); font-weight: 500; white-space: nowrap; letter-spacing: 0.04em; text-transform: uppercase; flex-shrink: 0; margin-right: 2px; }
+  .filter-pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 12px; color: var(--color-text-secondary);
+    background: var(--color-background-secondary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: 20px; padding: 4px 10px;
+    cursor: pointer; white-space: nowrap; flex-shrink: 0;
+  }
+  .filter-pill .fname { color: var(--color-text-tertiary); font-size: 11px; }
+  .filter-pill .fval { color: var(--color-text-primary); font-weight: 500; }
+  .filter-pill .remove { display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px; border-radius: 50%; background: var(--color-border-tertiary); color: var(--color-text-secondary); font-size: 10px; line-height: 1; cursor: pointer; margin-left: 2px; }
+  .filter-pill .arrow { font-size: 9px; color: var(--color-text-tertiary); }
+  .filter-spacer { flex: 1; }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; color: var(--color-text-tertiary);
+    background: transparent; border: none;
+    cursor: pointer; padding: 4px 6px; border-radius: var(--border-radius-md); white-space: nowrap; flex-shrink: 0;
+  }
+  .btn-ghost:hover { background: var(--color-background-secondary); color: var(--color-text-secondary); }
+  .btn-ghost svg { width: 12px; height: 12px; stroke: currentColor; fill: none; flex-shrink: 0; }
+</style>
+
+<div class="toolbar-wrap">
+  <div class="top-bar">
+    <div class="burger" title="Menu">
+      <span></span><span></span><span></span>
+    </div>
+    <span class="heading">Customer Orders</span>
+    <div class="badge-new">New data available</div>
+    <div class="time-badge">Fetched 12:20</div>
+  </div>
+
+  <div class="action-row">
+    <button class="btn" title="Filter columns">
+      <svg viewBox="0 0 16 16"><path d="M2 4h12M4 8h8M6 12h4" stroke-linecap="round"/></svg>
+      Columns
+    </button>
+    <button class="btn" title="Timezone">
+      <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 4v4l2.5 2.5" stroke-linecap="round"/></svg>
+      UTC+1
+    </button>
+    <button class="btn" title="Density">
+      <svg viewBox="0 0 16 16"><path d="M2 4h12M2 8h12M2 12h12" stroke-linecap="round"/></svg>
+      Comfortable
+    </button>
+    <div class="divider"></div>
+    <button class="btn" title="Export">
+      <svg viewBox="0 0 16 16"><path d="M3 10v3h10v-3M8 3v7M5.5 7.5L8 10l2.5-2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Export
+    </button>
+    <button class="btn btn-save" title="Save view">
+      <svg viewBox="0 0 16 16"><path d="M3 3h8l2 2v8H3V3z" stroke-linecap="round" stroke-linejoin="round"/><rect x="5" y="9" width="6" height="4" rx="0.5"/><rect x="5" y="3" width="4" height="3" rx="0.5"/></svg>
+      Save view
+    </button>
+    <button class="btn" title="Timezone info">
+      <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5.5v.5" stroke-linecap="round"/></svg>
+      Timezone info
+    </button>
+  </div>
+
+  <div class="filter-bar">
+    <span class="filter-label">Filters</span>
+
+    <div class="filter-pill">
+      <span class="fname">Status</span>
+      <span class="arrow">›</span>
+      <span class="fval">Active</span>
+      <span class="remove">✕</span>
+    </div>
+
+    <div class="filter-pill">
+      <span class="fname">Region</span>
+      <span class="arrow">›</span>
+      <span class="fval">Europe</span>
+      <span class="remove">✕</span>
+    </div>
+
+    <div class="filter-pill">
+      <span class="fname">Amount</span>
+      <span class="arrow">›</span>
+      <span class="fval">&gt; 500</span>
+      <span class="remove">✕</span>
+    </div>
+
+    <div class="filter-pill">
+      <span class="fname">Date</span>
+      <span class="arrow">›</span>
+      <span class="fval">This month</span>
+      <span class="remove">✕</span>
+    </div>
+
+    <div class="filter-spacer"></div>
+
+    <button class="btn-ghost" title="Reset columns">
+      <svg viewBox="0 0 16 16"><path d="M3 8a5 5 0 1 1 1.5 3.6M3 12V8h4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Reset columns
+    </button>
+    <button class="btn-ghost" title="Clear filters">
+      <svg viewBox="0 0 16 16"><path d="M3 4h10M5 4l.5 8h5L11 4" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 7v4M9.5 7v4" stroke-linecap="round"/></svg>
+      Clear filters
+    </button>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+Her er den samlede logik:
+Toolbar
+Grid-konfiguration kun — Columns, Timezone, Density, Export, Save view, Timezone info. Ingen action-knapper her.
+Dropdown i grid (enkelt row)
+Hver row har et dropdown med én option: cancel, close eller capture afhængigt af rowens tilstand. Klik på option → modal åbner øjeblikkeligt.
+Modal indhold
+Textarea og confirm-knap. Header ændrer sig efter action — "Cancel order" / "Cancel 3 orders".
+Multi-row selektion + dropdown
+Dropdown på en row mens andre er selected → modal åbner med radio øverst: "Apply to 1 row / Apply to 3 selected rows". Default er altid 1 row. Brugeren tager stilling til scope inde i modalen, ikke før.
+Bund-bar
+Altid til stede. Flex-række med space-between.
+
+Venstre: tom når intet er selected
+Højre: pagination altid synlig
+
+Når rows selectes:
+
+Venstre: "3 rows selected" + action-knapper der er fælles for alle selected rows
+Ingen fælles actions → ingen action-knapper, kun "3 rows selected"
+Klik på action-knap i bund-bar → modal åbner direkte som bulk, ingen radio-valg
+
+Checkmarks i dropdown
+Ingen dynamik — dropdown er altid ren og uændret uanset selektion.
+Export
+Ligger i toolbar, altid tilgængelig uafhængigt af selektion.
+
+DM Sans — Venlig og moderne, runde former der føles clean og professionel. God til dashboards der skal være tilgængelige og lette at læse.
+IBM Plex Sans — Teknisk præcis med et ingeniør-agtig udtryk. Stærk hierarki og meget læsbar i små størrelser — klassisk til enterprise data tools.
+Geist — Minimalistisk og skarp, lavet af Vercel. Føles moderne og luftig, god til tætte UI-layouts som grids og tabeller.
