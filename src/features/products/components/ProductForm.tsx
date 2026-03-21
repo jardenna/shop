@@ -240,7 +240,9 @@ const ProductForm = ({
       onSubmit={onSubmit}
       submitBtnLabel={id ? language.save : language.create}
       ref={formRef}
-      onCancel={handleGoback}
+      cancelBtnProps={{
+        onCancel: handleGoback,
+      }}
       isLoading={isLoading || isCreateLoading}
     >
       <div className="product-form-container">

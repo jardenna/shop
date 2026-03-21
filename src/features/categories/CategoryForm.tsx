@@ -98,7 +98,9 @@ const CategoryForm = ({
       <Form
         onSubmit={onSubmit}
         submitBtnLabel={id ? language.save : language.create}
-        onCancel={handleGoback}
+        cancelBtnProps={{
+          onCancel: handleGoback,
+        }}
         isLoading={isLoading || isCreateLoading}
       >
         <FieldSet legendText={language.categories}>

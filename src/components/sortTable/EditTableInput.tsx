@@ -35,7 +35,9 @@ const EditTableInput = ({
       onSubmit={() => {
         onSave();
       }}
-      onCancel={onCancel}
+      cancelBtnProps={{
+        onCancel,
+      }}
       submitBtnLabel={language.save}
     >
       <div className="edit-controls">

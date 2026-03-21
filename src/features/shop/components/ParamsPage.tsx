@@ -151,10 +151,10 @@ const ParamsPage = ({
           className="filter-form"
           submitBtnLabel={primaryBtnText}
           onSubmit={onHidePanel}
-          onCancel={onClearAllFilters}
           cancelBtnProps={{
             btnLabel: language.clearAllFilters,
             isDisabled: isClearFiltersDisabled,
+            onCancel: onClearAllFilters,
           }}
         >
           <FieldSet legendText={language.filterProducts}>
