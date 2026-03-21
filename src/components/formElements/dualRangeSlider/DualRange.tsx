@@ -47,19 +47,6 @@ const DualRange = ({
   return (
     <div role="group" aria-labelledby={groupLabelId}>
       <VisuallyHidden id={groupLabelId}>{rangeLabel}</VisuallyHidden>
-
-      <DualRangeSlider
-        track={track}
-        max={max}
-        min={min}
-        step={step}
-        unitLabel={unitLabel}
-        onChange={onRangeChange}
-        committed={committed}
-        inputNames={inputNames}
-        inputLabels={inputLabels}
-        hideOutput
-      />
       {!standAlone && (
         <div className="dual-number-range">
           <RangeNumberInput
@@ -97,6 +84,18 @@ const DualRange = ({
           />
         </div>
       )}
+      <DualRangeSlider
+        track={track}
+        max={max}
+        min={min}
+        step={step}
+        unitLabel={unitLabel}
+        onChange={onRangeChange}
+        committed={committed}
+        inputNames={inputNames}
+        inputLabels={inputLabels}
+        hideOutput
+      />
     </div>
   );
 };

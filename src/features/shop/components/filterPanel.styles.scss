@@ -43,6 +43,11 @@
   flex-direction: column;
   flex: 1;
 
+  .dural-range-fieldset {
+    border-block-end: 1px solid $color-border-dark;
+    padding-bottom: 12px;
+  }
+
   .checkbox-list {
     max-height: 312px;
     overflow: auto;

@@ -145,12 +145,7 @@ const ParamsPage = ({
           cancelBtnProps={{ btnLabel: language.clearAllFilters }}
         >
           <FieldSet legendText={language.filterProducts}>
-            <FieldSet legendText="price">
-              <ClearFiltersBtn
-                onClick={() => {
-                  onClearSingleFilter(['minPrice', 'maxPrice']);
-                }}
-              />
+            <FieldSet legendText="price" className="dural-range-fieldset">
               <DualRange
                 minValue={values.minPrice}
                 maxValue={values.maxPrice}
@@ -165,6 +160,11 @@ const ParamsPage = ({
                 }}
                 onChange={setValue}
                 unitLabel={currencyText}
+              />
+              <ClearFiltersBtn
+                onClick={() => {
+                  onClearSingleFilter(['minPrice', 'maxPrice']);
+                }}
               />
             </FieldSet>
             <Accordion accordionList={accordionList} name="filter" />
