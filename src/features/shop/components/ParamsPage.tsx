@@ -149,7 +149,10 @@ const ParamsPage = ({
           cancelBtnProps={{ btnLabel: language.clearAllFilters }}
         >
           <FieldSet legendText={language.filterProducts}>
-            <FieldSet legendText="price" className="dural-range-fieldset">
+            <FieldSet
+              legendText={language.priceRange}
+              className="dural-range-fieldset"
+            >
               <DualRange
                 minValue={values.minPrice}
                 maxValue={values.maxPrice}
