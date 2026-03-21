@@ -1,4 +1,5 @@
 import { ReactNode, useId } from 'react';
+import { useSearchParams } from 'react-router';
 import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import Accordion, {
   AccordionList,
@@ -47,6 +48,7 @@ const ParamsPage = ({
   productCount,
 }: FilterProps) => {
   const ariaLabelledby = useId();
+  const [searchParams] = useSearchParams();
   const { currencyText } = useCurrency();
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
     useTogglePanel();
@@ -63,6 +65,13 @@ const ParamsPage = ({
     onClearAllFilters,
   } = useSearchParamsState(initialFilters);
 
+  const hasActiveFilters = Object.keys(initialFilters).some((key) =>
+    searchParams.has(key),
+  );
+  const isClearFiltersDisabled = !hasActiveFilters;
+  const isClearPriceBtnDisabled =
+    values.minPrice.trim() === '' && values.maxPrice.trim() === '';
+
   const filteredEntries = Object.entries(values).filter(
     (entry): entry is [string, string[]] =>
       Array.isArray(entry[1]) && entry[1].length > 0,
@@ -70,9 +79,6 @@ const ParamsPage = ({
 
   const filtersCount = getFilterSummary(values);
   const countsByKey = filtersCount.countsByKey;
-
-  const isPriceRangeEmpty =
-    values.minPrice.trim() === '' && values.maxPrice.trim() === '';
 
   const accordionConfig: AccordionConfigItem[] = [
     {
@@ -146,7 +152,10 @@ const ParamsPage = ({
           submitBtnLabel={primaryBtnText}
           onSubmit={onHidePanel}
           onCancel={onClearAllFilters}
-          cancelBtnProps={{ btnLabel: language.clearAllFilters }}
+          cancelBtnProps={{
+            btnLabel: language.clearAllFilters,
+            isDisabled: isClearFiltersDisabled,
+          }}
         >
           <FieldSet legendText={language.filterProducts}>
             <FieldSet
@@ -172,7 +181,7 @@ const ParamsPage = ({
                 onClick={() => {
                   onClearSingleFilter(['minPrice', 'maxPrice']);
                 }}
-                disabled={isPriceRangeEmpty}
+                disabled={isClearPriceBtnDisabled}
               />
             </FieldSet>
             <Accordion accordionList={accordionList} name="filter" />
