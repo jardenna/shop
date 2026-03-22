@@ -15,7 +15,7 @@ interface ProductToolbarProps {
   ariaLiveText: string;
   displayControlList: ProductViewIconList[];
   infoText: string;
-  onSetDisplay: any;
+  onSetDisplay: (id: string) => void;
 }
 
 const ProductToolbar = ({
