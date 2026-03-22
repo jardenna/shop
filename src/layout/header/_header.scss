@@ -9,12 +9,6 @@ $animation-distance: 500px;
   align-items: center;
   border-bottom: 1px solid $color-border;
 
-  .toggle-panel {
-    @include max-size($mini) {
-      top: calc($header-height + rem(20px));
-    }
-  }
-
   .btn > svg {
     height: rem(24px);
     width: rem(24px);
@@ -34,7 +28,6 @@ $animation-distance: 500px;
 }
 
 .main-header {
-  min-height: $header-height;
   display: flex;
   width: 100%;
   align-items: center;
@@ -42,6 +35,20 @@ $animation-distance: 500px;
   z-index: 1000;
   top: 0;
   background-color: $color-white;
+
+  .toggle-panel {
+    @include max-size($mini) {
+      top: calc($header-height + rem(20px));
+    }
+  }
+
+  .overlay {
+    top: 88px;
+
+    @include max-size($mini) {
+      top: calc($header-height + rem(20px));
+    }
+  }
 
   .main-header-content {
     padding-block: 30px;
