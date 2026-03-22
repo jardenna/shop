@@ -4,6 +4,7 @@ import type { AriaHasPopup } from '../../types/types';
 import BtnClose from '../BtnClose';
 import Button from '../Button';
 import './_toggle-panel.scss';
+import Overlay from '../overlay/Overlay';
 
 type TogglePanelProps = {
   children: ReactNode;
@@ -54,6 +55,7 @@ const TogglePanel = ({
         {onHidePanel && <BtnClose onClick={onHidePanel} />}
         {children}
       </div>
+      {isPanelShown && <Overlay />}
     </>
   );
 };
