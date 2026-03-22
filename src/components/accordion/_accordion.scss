@@ -20,13 +20,6 @@
     }
   }
 
-  .accordion-footer {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    padding-right: 16px;
-  }
-
   &::details-content {
     block-size: 0;
     transition:
@@ -67,4 +60,11 @@
       content: '';
     }
   }
+}
+
+.accordion-footer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-right: 16px;
 }
