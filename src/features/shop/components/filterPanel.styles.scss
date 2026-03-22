@@ -1,52 +1,20 @@
 @use '../../../scss/globals' as *;
 
 .filter-panel {
-  .accordion-footer {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    padding-right: 16px;
-  }
-
-  .filter-panel-heading {
-    margin-bottom: 4px;
-  }
-
-  .filter-panel-content {
-    flex-grow: 1;
-  }
-
-  &.toggle-panel {
-    max-width: rem(500px);
-    overflow: hidden auto;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-  }
-}
-
-.filter-btn {
-  display: flex;
-  gap: 4px;
-}
-
-.toggle-content {
-  overflow: clip;
-  max-height: rem(1000px);
-
-  &.collapsed {
-    max-height: rem(112px);
-  }
-}
-
-.params {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-
   .dural-range-fieldset {
     border-block-end: 1px solid $color-border-dark;
     padding-bottom: 12px;
+  }
+
+  .filter-panel-heading {
+    margin-bottom: 8px;
+  }
+
+  .filter-form {
+    .fieldset {
+      gap: 0;
+      margin-bottom: 0;
+    }
   }
 
   .checkbox-list {
@@ -58,14 +26,27 @@
     }
   }
 
-  .filter-form {
-    flex: 1;
-    display: grid;
-    grid-template-rows: 1fr auto;
-
-    .fieldset {
-      gap: 0;
-      margin-bottom: 0;
+  .clear-filter-btn {
+    &:disabled {
+      svg {
+        stroke: currentcolor;
+      }
     }
+  }
+
+  // &.toggle-panel {
+  //   max-width: rem(500px);
+  //   overflow: hidden auto;
+  //   padding: 20px;
+  //   display: flex;
+  //   flex-direction: column;
+  // }
+}
+
+.toggle-content {
+  overflow: clip;
+
+  &.collapsed {
+    max-height: rem(112px);
   }
 }
