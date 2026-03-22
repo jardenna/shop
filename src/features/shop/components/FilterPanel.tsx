@@ -138,7 +138,6 @@ const FilterPanel = ({
 
   return (
     <div>
-      {' '}
       <TogglePanel
         onTogglePanel={onTogglePanel}
         onHidePanel={onHidePanel}
