@@ -179,7 +179,7 @@ const CollectionPage = () => {
               />
             )}
             {products && (
-              <>
+              <div className="product-toolbar">
                 <ProductToolbar
                   onSetDisplay={setProductView}
                   displayControlList={productViewIconList}
@@ -203,7 +203,7 @@ const CollectionPage = () => {
                   onClearAllFilters={onClearAllFilters}
                   onClearSingleFilter={onClearSingleFilter}
                 />
-              </>
+              </div>
             )}
 
             {isLoading && <SkeletonCardList count={productsPerPage} />}

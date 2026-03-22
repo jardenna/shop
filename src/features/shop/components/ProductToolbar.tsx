@@ -26,7 +26,7 @@ const ProductToolbar = ({
   announce,
   ariaLiveText,
 }: ProductToolbarProps) => (
-  <div className="product-toolbar">
+  <>
     <DisplayControls
       onSetDisplay={onSetDisplay}
       displayControlList={displayControlList}
@@ -37,7 +37,7 @@ const ProductToolbar = ({
       announce={announce}
       ariaLiveText={ariaLiveText}
     />
-  </div>
+  </>
 );
 
 export default ProductToolbar;
