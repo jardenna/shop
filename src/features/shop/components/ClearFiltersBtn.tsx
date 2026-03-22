@@ -14,6 +14,7 @@ const ClearFiltersBtn = ({ onClick, disabled }: ClearFiltersBtnProps) => {
     <div className="accordion-footer">
       <IconBtn
         variant={BtnVariant.Ghost}
+        className="clear-filter-btn"
         onClick={onClick}
         ariaLabel={language.clearFilters}
         iconName={IconName.Trash}

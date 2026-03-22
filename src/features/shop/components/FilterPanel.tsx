@@ -22,6 +22,7 @@ import { sortSizesDynamic } from '../../../utils/sizeUtils';
 import { getFilterSummary } from '../../../utils/utils';
 import { useCurrency } from '../../currency/useCurrency';
 import ClearFiltersBtn from './ClearFiltersBtn';
+import './filterPanel.styles.scss';
 
 type AccordionConfigItem<K extends FilterKeys = FilterKeys> = {
   key: K;
@@ -150,7 +151,7 @@ const FilterPanel = ({
         </>
       }
     >
-      <section aria-labelledby={ariaLabelledby} className="params">
+      <section aria-labelledby={ariaLabelledby}>
         <header className="filter-panel-heading">
           <h2 id={ariaLabelledby}>{language.filterHeading}</h2>
         </header>

@@ -8,10 +8,6 @@ button:disabled {
   &.btn-ghost {
     background-color: transparent;
     color: $color-gray-60;
-
-    svg {
-      stroke: currentcolor;
-    }
   }
 }
 
@@ -114,10 +110,6 @@ a[class^='btn-'],
 
   &:hover {
     color: $color-link-hover;
-
-    svg {
-      stroke: $color-link-hover;
-    }
   }
 
   &:focus-visible {
