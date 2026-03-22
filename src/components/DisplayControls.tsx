@@ -7,16 +7,16 @@ type DisplayControls = {
   iconName: IconName;
 };
 
-export type DisplayControlsProps = {
+type DisplayControlsProps = {
+  activeDisplay: string;
   displayControlList: DisplayControls[];
-  isActive: string;
   onSetDisplay: (id: string) => void;
 };
 
 const DisplayControls = ({
   displayControlList,
   onSetDisplay,
-  isActive,
+  activeDisplay,
 }: DisplayControlsProps) => (
   <div className="display-controls">
     {displayControlList.map(({ display, iconName, ariaLabel }) => (
@@ -27,7 +27,7 @@ const DisplayControls = ({
         onClick={() => {
           onSetDisplay(display);
         }}
-        disabled={isActive === display}
+        disabled={activeDisplay === display}
       />
     ))}
   </div>

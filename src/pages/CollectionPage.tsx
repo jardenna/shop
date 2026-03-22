@@ -12,24 +12,24 @@ import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import { useLanguage } from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
 import CollectionPageHeader from '../features/shop/components/CollectionPageHeader';
+import FilterPanel, {
+  InitialFilters,
+} from '../features/shop/components/FilterPanel';
 import NoProductsFound from '../features/shop/components/NoProductsFound';
 import ProductCardList from '../features/shop/components/ProductCardList';
 import ProductToolbar from '../features/shop/components/ProductToolbar';
 import { useSubMenu } from '../features/shop/hooks/useSubMenu';
 import { useGetProductsQuery } from '../features/shop/shopApiSlice';
 import { useAnnounce } from '../hooks/useAnnounce';
-import {
-  useFilterParams,
-  type FilterValuesType,
-} from '../hooks/useFilterParams';
 import { localStorageKeys, useLocalStorage } from '../hooks/useLocalStorage';
 import { useMediaQuery } from '../hooks/useMediaQuery';
+import { useSearchParamsState } from '../hooks/useSearchParamsState';
 import MetaTags from '../layout/MetaTags';
 import { LinkText } from '../layout/nav/enums';
 import { IconName } from '../types/enums';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { sortSizesDynamic } from '../utils/sizeUtils';
-import { ariaInfoTitle, getFilterSummary } from '../utils/utils';
+import { ariaInfoTitle } from '../utils/utils';
 import './CollectionPage.styles.scss';
 
 export type FilterKeys = keyof BaseShopProductsParams;
@@ -40,20 +40,6 @@ const CollectionPage = () => {
   const { isMobileSize } = useMediaQuery();
   const { page, productsPerPage, setPage, updatePagination } =
     usePaginationParams();
-
-  const initialFilters: FilterValuesType<string> = {
-    sizes: [],
-    colors: [],
-    brand: [],
-  };
-
-  const {
-    filterValues,
-    onFilterChange,
-    onRemoveFilterTag,
-    onClearAllFilters,
-    onClearSingleFilter,
-  } = useFilterParams(initialFilters);
 
   const { subMenu, subMenuLoading, refetchSubMenu } = useSubMenu(
     category as LinkText,
@@ -68,6 +54,22 @@ const CollectionPage = () => {
   const categoryText = category ? language[category] : '';
 
   // Redux hooks
+  const initialFilters: InitialFilters = {
+    sizes: [] as string[],
+    colors: [] as string[],
+    brand: [] as string[],
+    minPrice: '',
+    maxPrice: '',
+  };
+
+  const {
+    values,
+    toggleValue,
+    setValue,
+    onRemoveFilterTag,
+    onClearSingleFilter,
+    onClearAllFilters,
+  } = useSearchParamsState(initialFilters);
   const {
     data: products,
     isLoading,
@@ -75,20 +77,19 @@ const CollectionPage = () => {
   } = useGetProductsQuery({
     productsPerPage,
     page: page.toString(),
-    colors: filterValues.colors,
-    brand: filterValues.brand,
-    sizes: filterValues.sizes,
+    colors: values.colors,
+    brand: values.brand,
+    sizes: values.sizes,
+    minPrice: values.minPrice,
+    maxPrice: values.maxPrice,
     mainCategory: category,
     subCategoryId: categoryId || '',
   });
 
   const productCount = products ? products.productCount : 0;
   const totalBtns = products?.pages ?? 1;
-
   const src = `/images/banners/${category}_banner`;
   const altText = `${category}BannerAltText`;
-  const filtersCount = getFilterSummary(filterValues);
-
   const isShowingAll = productsPerPage >= productCount && productCount > 0;
 
   const { infoText, paginationMobileText, ariaLiveText } = usePaginationText({
@@ -99,8 +100,7 @@ const CollectionPage = () => {
     language,
   });
 
-  const { announce } = useAnnounce([page, productsPerPage, filterValues]);
-
+  const { announce } = useAnnounce([page, productsPerPage, values]);
   const { scrollToRef, setShouldScroll } = useScrollOnPagination({
     isLoading,
   });
@@ -135,7 +135,6 @@ const CollectionPage = () => {
     },
   ];
   const selectProductCountList = ['8', '16'];
-
   const ariaLabelledby = ariaInfoTitle(category || 'women');
 
   return (
@@ -180,26 +179,31 @@ const CollectionPage = () => {
               />
             )}
             {products && (
-              <ProductToolbar
-                onReset={() => refetch()}
-                language={language}
-                onSetDisplay={setProductView}
-                displayControlList={productViewIconList}
-                isActive={productView}
-                onClearSingleFilter={onClearSingleFilter}
-                filtersCount={filtersCount}
-                onChange={onFilterChange}
-                values={filterValues}
-                availableBrands={products.availableBrands}
-                availableSizes={sortSizesDynamic(products.availableSizes)}
-                colors={sortedTranslatedColors}
-                onRemoveFilterTag={onRemoveFilterTag}
-                onClearAllFilters={onClearAllFilters}
-                productCount={productCount}
-                infoText={infoText}
-                announce={announce}
-                ariaLiveText={ariaLiveText}
-              />
+              <div className="product-toolbar">
+                <ProductToolbar
+                  onSetDisplay={setProductView}
+                  displayControlList={productViewIconList}
+                  activeDisplay={productView}
+                  infoText={infoText}
+                  announce={announce}
+                  ariaLiveText={ariaLiveText}
+                />
+                <FilterPanel
+                  initialFilters={initialFilters}
+                  sizes={sortSizesDynamic(products.availableSizes)}
+                  brands={products.availableBrands}
+                  colors={sortedTranslatedColors}
+                  language={language}
+                  productCount={products.productCount}
+                  onReset={() => refetch()}
+                  values={values}
+                  toggleValue={toggleValue}
+                  setValue={setValue}
+                  onRemoveFilterTag={onRemoveFilterTag}
+                  onClearAllFilters={onClearAllFilters}
+                  onClearSingleFilter={onClearSingleFilter}
+                />
+              </div>
             )}
 
             {isLoading && <SkeletonCardList count={productsPerPage} />}

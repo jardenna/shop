@@ -27,12 +27,12 @@ type SelectboxProps = {
   isFixed?: boolean;
   isLoading?: boolean;
   isMulti?: boolean;
-  isOptionDisabled?: any;
   isSearchable?: boolean;
   menuIsOpen?: boolean;
   ref?: RefElementType;
   required?: boolean;
   selectKey?: string;
+  isOptionDisabled?: (option: { value: string }) => boolean;
   onChange: (value: any) => void;
 };
 
