@@ -46,6 +46,13 @@
   }
 }
 
+.filter-footer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-right: 16px;
+}
+
 .toggle-content {
   overflow: auto;
   max-height: calc(4 * 32px + 12px);
