@@ -11,12 +11,11 @@ import CheckboxList from '../../../components/formElements/checkbox/CheckboxList
 import DualRange from '../../../components/formElements/dualRangeSlider/DualRange';
 import Icon from '../../../components/icons/Icon';
 import TagList from '../../../components/tags/TagList';
-import ToggleContent from '../../../components/ToggleContent';
 import TogglePanel from '../../../components/togglePanel/TogglePanel';
 import { useTogglePanel } from '../../../components/togglePanel/useTogglePanel';
 import VisuallyHidden from '../../../components/VisuallyHidden';
 import { FilterKeys } from '../../../pages/CollectionPage';
-import { BtnVariant, IconName } from '../../../types/enums';
+import { IconName } from '../../../types/enums';
 import { ChangeInputType } from '../../../types/types';
 import { sortSizesDynamic } from '../../../utils/sizeUtils';
 import { getFilterSummary } from '../../../utils/utils';
@@ -142,7 +141,6 @@ const FilterPanel = ({
       onHidePanel={onHidePanel}
       isPanelShown={isPanelShown}
       panelRef={panelRef}
-      className="filter-panel"
       triggerBtnContent={
         <>
           {totalFiltersCount > 0 && `[${totalFiltersCount}]`} {language.filter}{' '}
@@ -151,24 +149,11 @@ const FilterPanel = ({
         </>
       }
     >
-      <section aria-labelledby={ariaLabelledby}>
-        <header className="filter-panel-heading">
+      <section aria-labelledby={ariaLabelledby} className="filter-panel">
+        <VisuallyHidden as="header">
           <h2 id={ariaLabelledby}>{language.filterHeading}</h2>
-        </header>
-        {filteredEntries.length > 0 && (
-          <ToggleContent btnVariant={BtnVariant.Default}>
-            {filteredEntries.map(([key, values]) => (
-              <TagList
-                key={key}
-                language={language}
-                values={values}
-                filterKey={key as FilterKeys}
-                onClick={onRemoveFilterTag}
-                ariaLabel={language.removeFilter}
-              />
-            ))}
-          </ToggleContent>
-        )}
+        </VisuallyHidden>
+
         <Form
           className="filter-form"
           submitBtnLabel={primaryBtnText}
@@ -179,7 +164,25 @@ const FilterPanel = ({
             onCancel: onClearAllFilters,
           }}
         >
-          <FieldSet legendText={language.filterProducts}>
+          <FieldSet
+            legendText={language.filterProducts}
+            className="filter-fieldset"
+            showLegendText
+          >
+            {filteredEntries.length > 0 && (
+              <div className="toggle-content">
+                {filteredEntries.map(([key, values]) => (
+                  <TagList
+                    key={key}
+                    language={language}
+                    values={values}
+                    filterKey={key as FilterKeys}
+                    onClick={onRemoveFilterTag}
+                    ariaLabel={language.removeFilter}
+                  />
+                ))}
+              </div>
+            )}
             <FieldSet
               legendText={language.priceRange}
               className="dural-range-fieldset"
