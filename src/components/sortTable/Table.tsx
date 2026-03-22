@@ -146,7 +146,7 @@ const Table = <T,>({
         <DisplayControls
           onSetDisplay={setPadding}
           displayControlList={tableGridIconList}
-          isActive={padding}
+          activeDisplay={padding}
         />
       </div>
       <div className="fixed-table">

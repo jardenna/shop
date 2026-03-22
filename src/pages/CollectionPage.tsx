@@ -183,7 +183,7 @@ const CollectionPage = () => {
                 <ProductToolbar
                   onSetDisplay={setProductView}
                   displayControlList={productViewIconList}
-                  isActive={productView}
+                  activeDisplay={productView}
                   infoText={infoText}
                   announce={announce}
                   ariaLiveText={ariaLiveText}

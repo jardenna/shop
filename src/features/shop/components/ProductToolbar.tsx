@@ -10,18 +10,18 @@ interface ProductViewIconList {
 }
 
 interface ProductToolbarProps {
+  activeDisplay: string;
   announce: boolean;
   ariaLiveText: string;
   displayControlList: ProductViewIconList[];
   infoText: string;
-  isActive: string; // ???
   onSetDisplay: any;
 }
 
 const ProductToolbar = ({
   displayControlList,
   onSetDisplay,
-  isActive,
+  activeDisplay,
   infoText,
   announce,
   ariaLiveText,
@@ -30,7 +30,7 @@ const ProductToolbar = ({
     <DisplayControls
       onSetDisplay={onSetDisplay}
       displayControlList={displayControlList}
-      isActive={isActive}
+      activeDisplay={activeDisplay}
     />
     <LiveAnnouncement
       infoText={infoText}
