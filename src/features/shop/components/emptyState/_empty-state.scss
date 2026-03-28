@@ -1,5 +1,32 @@
 @use '../../../../scss/globals' as *;
 
-.nothing-to-show {
+.empty-state {
   background-color: $color-light-gray-20;
+  margin: 0 auto;
+  margin-top: 30px;
+  min-height: rem(280px);
+  max-width: 72%;
+  padding-inline: 60px;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+
+  .empty-state-info {
+    min-width: rem(572px);
+
+    .empty-space-heading {
+      text-transform: uppercase;
+    }
+
+    .btn {
+      margin-top: 32px;
+    }
+  }
+
+  .empty-state-img {
+    position: absolute;
+    top: -32px;
+    max-width: rem(220px);
+  }
 }
