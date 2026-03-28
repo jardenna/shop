@@ -1,5 +1,5 @@
-import Button from '../../../components/Button';
-import Img from '../../../components/Img';
+import Button from '../../../../components/Button';
+import Img from '../../../../components/Img';
 
 type NothingToShowProps = {
   noProductText: string;
@@ -18,7 +18,7 @@ const NothingToShow = ({
     aria-atomic="true"
     className="nothing-to-show"
   >
-    <Img src="/images/shop.png" alt="" />
+    <Img src="/images/shopping_bag.png" alt="" />
 
     <div>
       <h2>Ingen produkter matcher dine filtre</h2>
@@ -27,4 +27,5 @@ const NothingToShow = ({
     </div>
   </section>
 );
+
 export default NothingToShow;

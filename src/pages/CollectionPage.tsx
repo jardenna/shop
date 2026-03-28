@@ -12,10 +12,10 @@ import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import { useLanguage } from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
 import CollectionPageHeader from '../features/shop/components/CollectionPageHeader';
+import NothingToShow from '../features/shop/components/emptyState/NothingToShow';
 import FilterPanel, {
   InitialFilters,
 } from '../features/shop/components/FilterPanel';
-import NothingToShow from '../features/shop/components/NothingToShow';
 import ProductCardList from '../features/shop/components/ProductCardList';
 import ProductToolbar from '../features/shop/components/ProductToolbar';
 import { useSubMenu } from '../features/shop/hooks/useSubMenu';
