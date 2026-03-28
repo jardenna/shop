@@ -11,7 +11,7 @@ const NoProductsFound = ({
   noProductText,
   resetBtnText,
 }: NoProductsFound) => (
-  <div role="status">
+  <div role="status" aria-live="polite" aria-atomic="true">
     <p>{noProductText}</p>
     <Button onClick={resetFilters}>{resetBtnText}</Button>
   </div>
