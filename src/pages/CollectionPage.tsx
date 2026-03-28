@@ -225,24 +225,26 @@ const CollectionPage = () => {
             )}
           </div>
         </div>
-        <Pagination
-          totalBtns={totalBtns}
-          page={page}
-          onPagination={handlePagination}
-          onSelectCount={handleSelectCount}
-          totalCount={productCount}
-          paginationMobileText={paginationMobileText}
-          defaultValue={{
-            value: productsPerPage.toString(),
-            label: productsPerPage.toString(),
-          }}
-          optionList={selectProductCountList}
-          selectInfo={
-            isShowingAll
-              ? `${language.showingAllProducts} (${productCount})`
-              : language.productPerPage
-          }
-        />
+        {productCount > 0 && (
+          <Pagination
+            totalBtns={totalBtns}
+            page={page}
+            onPagination={handlePagination}
+            onSelectCount={handleSelectCount}
+            totalCount={productCount}
+            paginationMobileText={paginationMobileText}
+            defaultValue={{
+              value: productsPerPage.toString(),
+              label: productsPerPage.toString(),
+            }}
+            optionList={selectProductCountList}
+            selectInfo={
+              isShowingAll
+                ? `${language.showingAllProducts} (${productCount})`
+                : language.productPerPage
+            }
+          />
+        )}
       </section>
     </>
   );
