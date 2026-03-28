@@ -10,7 +10,6 @@ import Form from '../../../components/form/Form';
 import CheckboxList from '../../../components/formElements/checkbox/CheckboxList';
 import DualRange from '../../../components/formElements/dualRangeSlider/DualRange';
 import Icon from '../../../components/icons/Icon';
-import Overlay from '../../../components/overlay/Overlay';
 import TagList from '../../../components/tags/TagList';
 import TogglePanel from '../../../components/togglePanel/TogglePanel';
 import { useTogglePanel } from '../../../components/togglePanel/useTogglePanel';
@@ -137,91 +136,88 @@ const FilterPanel = ({
   }));
 
   return (
-    <div>
-      <TogglePanel
-        onTogglePanel={onTogglePanel}
-        onHidePanel={onHidePanel}
-        isPanelShown={isPanelShown}
-        panelRef={panelRef}
-        triggerBtnContent={
-          <>
-            {totalFiltersCount > 0 && `[${totalFiltersCount}]`}{' '}
-            {language.filter} <Icon iconName={IconName.Filter} />
-            <VisuallyHidden>{language.filtersApplied}</VisuallyHidden>
-          </>
-        }
-      >
-        <section aria-labelledby={ariaLabelledby} className="filter-panel">
-          <VisuallyHidden as="header">
-            <h2 id={ariaLabelledby}>{language.filterHeading}</h2>
-          </VisuallyHidden>
+    <TogglePanel
+      onTogglePanel={onTogglePanel}
+      onHidePanel={onHidePanel}
+      isPanelShown={isPanelShown}
+      panelRef={panelRef}
+      triggerBtnContent={
+        <>
+          {totalFiltersCount > 0 && `[${totalFiltersCount}]`} {language.filter}{' '}
+          <Icon iconName={IconName.Filter} />
+          <VisuallyHidden>{language.filtersApplied}</VisuallyHidden>
+        </>
+      }
+    >
+      <section aria-labelledby={ariaLabelledby} className="filter-panel">
+        <VisuallyHidden as="header">
+          <h2 id={ariaLabelledby}>{language.filterHeading}</h2>
+        </VisuallyHidden>
 
-          <Form
-            className="filter-form"
-            submitBtnLabel={primaryBtnText}
-            onSubmit={onHidePanel}
-            cancelBtnProps={{
-              btnLabel: language.clearAllFilters,
-              isDisabled: isClearFiltersDisabled,
-              onCancel: onClearAllFilters,
-            }}
+        <Form
+          className="filter-form"
+          submitBtnLabel={primaryBtnText}
+          onSubmit={onHidePanel}
+          cancelBtnProps={{
+            btnLabel: language.clearAllFilters,
+            isDisabled: isClearFiltersDisabled,
+            onCancel: onClearAllFilters,
+          }}
+        >
+          <FieldSet
+            legendText={language.filterProducts}
+            className="filter-fieldset"
+            showLegendText
           >
+            {filteredEntries.length > 0 && (
+              <div className="toggle-content">
+                {filteredEntries.map(([key, values]) => (
+                  <TagList
+                    key={key}
+                    language={language}
+                    values={values}
+                    filterKey={key as FilterKeys}
+                    onClick={onRemoveFilterTag}
+                    ariaLabel={language.removeFilter}
+                  />
+                ))}
+              </div>
+            )}
             <FieldSet
-              legendText={language.filterProducts}
-              className="filter-fieldset"
-              showLegendText
+              legendText={language.priceRange}
+              className="dural-range-fieldset"
             >
-              {filteredEntries.length > 0 && (
-                <div className="toggle-content">
-                  {filteredEntries.map(([key, values]) => (
-                    <TagList
-                      key={key}
-                      language={language}
-                      values={values}
-                      filterKey={key as FilterKeys}
-                      onClick={onRemoveFilterTag}
-                      ariaLabel={language.removeFilter}
-                    />
-                  ))}
-                </div>
-              )}
-              <FieldSet
-                legendText={language.priceRange}
-                className="dural-range-fieldset"
-              >
-                <DualRange
-                  minValue={values.minPrice}
-                  maxValue={values.maxPrice}
-                  rangeLabel={language.priceRange}
-                  inputNames={{
-                    min: 'minPrice',
-                    max: 'maxPrice',
-                  }}
-                  inputLabels={{
-                    min: language.priceFrom,
-                    max: language.priceTo,
-                  }}
-                  onChange={setValue}
-                  unitLabel={currencyText}
-                />
-                <ClearFiltersBtn
-                  onClick={() => {
-                    onClearSingleFilter(['minPrice', 'maxPrice']);
-                  }}
-                  disabled={isClearPriceBtnDisabled}
-                />
-              </FieldSet>
-              <Accordion
-                accordionList={accordionList}
-                name="filter"
-                onReset={onReset}
+              <DualRange
+                minValue={values.minPrice}
+                maxValue={values.maxPrice}
+                rangeLabel={language.priceRange}
+                inputNames={{
+                  min: 'minPrice',
+                  max: 'maxPrice',
+                }}
+                inputLabels={{
+                  min: language.priceFrom,
+                  max: language.priceTo,
+                }}
+                onChange={setValue}
+                unitLabel={currencyText}
+              />
+              <ClearFiltersBtn
+                onClick={() => {
+                  onClearSingleFilter(['minPrice', 'maxPrice']);
+                }}
+                disabled={isClearPriceBtnDisabled}
               />
             </FieldSet>
-          </Form>
-        </section>
-      </TogglePanel>
-      {isPanelShown && <Overlay />}
-    </div>
+            <Accordion
+              accordionList={accordionList}
+              name="filter"
+              onReset={onReset}
+            />
+          </FieldSet>
+        </Form>
+      </section>
+    </TogglePanel>
   );
 };
 
