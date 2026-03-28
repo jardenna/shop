@@ -1,17 +1,19 @@
 import Button from '../../../../components/Button';
 import Img from '../../../../components/Img';
 
-type NothingToShowProps = {
+type EmptyStateProps = {
   noProductText: string;
+  noProductTitle: string;
   resetBtnText: string;
-  resetFilters: () => void;
+  onClearAllFilters: () => void;
 };
 
-const NothingToShow = ({
-  resetFilters,
+const EmptyState = ({
+  onClearAllFilters,
   noProductText,
+  noProductTitle,
   resetBtnText,
-}: NothingToShowProps) => (
+}: EmptyStateProps) => (
   <section
     role="status"
     aria-live="polite"
@@ -21,11 +23,11 @@ const NothingToShow = ({
     <Img src="/images/shopping_bag.png" alt="" />
 
     <div>
-      <h2>Ingen produkter matcher dine filtre</h2>
+      <h2>{noProductTitle}</h2>
       <p>{noProductText}</p>
-      <Button onClick={resetFilters}>{resetBtnText}</Button>
+      <Button onClick={onClearAllFilters}>{resetBtnText}</Button>
     </div>
   </section>
 );
 
-export default NothingToShow;
+export default EmptyState;

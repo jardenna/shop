@@ -12,7 +12,7 @@ import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import { useLanguage } from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
 import CollectionPageHeader from '../features/shop/components/CollectionPageHeader';
-import NothingToShow from '../features/shop/components/emptyState/NothingToShow';
+import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import FilterPanel, {
   InitialFilters,
 } from '../features/shop/components/FilterPanel';
@@ -217,10 +217,10 @@ const CollectionPage = () => {
                 />
               )
             ) : (
-              // <EmptyState onResetFilters={() => refetch()} />
-              <NothingToShow
+              <EmptyState
                 noProductText={language.noProductResult}
-                resetFilters={onClearAllFilters}
+                noProductTitle={language.noProductResultTitle}
+                onClearAllFilters={onClearAllFilters}
                 resetBtnText={language.clearAllFilters}
               />
             )}
