@@ -15,7 +15,7 @@ import CollectionPageHeader from '../features/shop/components/CollectionPageHead
 import FilterPanel, {
   InitialFilters,
 } from '../features/shop/components/FilterPanel';
-import NoProductsFound from '../features/shop/components/NoProductsFound';
+import NothingToShow from '../features/shop/components/NothingToShow';
 import ProductCardList from '../features/shop/components/ProductCardList';
 import ProductToolbar from '../features/shop/components/ProductToolbar';
 import { useSubMenu } from '../features/shop/hooks/useSubMenu';
@@ -217,7 +217,8 @@ const CollectionPage = () => {
                 />
               )
             ) : (
-              <NoProductsFound
+              // <EmptyState onResetFilters={() => refetch()} />
+              <NothingToShow
                 noProductText={language.noProductResult}
                 resetFilters={onClearAllFilters}
                 resetBtnText={language.clearAllFilters}
