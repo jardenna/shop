@@ -153,7 +153,7 @@ const CollectionPage = () => {
           />
         )}
         <div className="collection-page-container">
-          <div>
+          <aside>
             <CollectionPageHeader
               headerText={categoryText}
               ariaLabelledby={ariaLabelledby}
@@ -167,8 +167,8 @@ const CollectionPage = () => {
                 language={language}
               />
             )}
-          </div>
-          <div className="collection-page-content">
+          </aside>
+          <section className="collection-page-content">
             {!isMobileSize && (
               <Picture
                 src={`${src}.jpg`}
@@ -224,7 +224,7 @@ const CollectionPage = () => {
                 resetBtnText={language.clearAllFilters}
               />
             )}
-          </div>
+          </section>
         </div>
         {productCount > 0 && (
           <Pagination
