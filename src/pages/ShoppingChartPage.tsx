@@ -6,7 +6,7 @@ const ShoppingChartPage = () => {
   const { language } = useLanguage();
 
   return (
-    <MainPageContainer heading={language.shopCart}>
+    <MainPageContainer heading="shopCart">
       <section>
         <EmptyState
           noProductText={language.shoppingBagEmpty}
