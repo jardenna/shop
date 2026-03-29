@@ -37,7 +37,7 @@ const FavoritePage = () => {
           <EmptyState
             noProductText={language.noFavorites}
             noProductTitle={language.noFavoritesYet}
-            src="/images/shoppingBags/shopping_bag_1.png"
+            src="/images/shoppingBags/shopping_bag_1"
           />
         )}
       </ErrorBoundary>

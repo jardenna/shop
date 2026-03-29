@@ -1,5 +1,5 @@
 import Button from '../../../../components/Button';
-import Img from '../../../../components/Img';
+import Picture from '../../../../components/Picture';
 import './_empty-state.scss';
 
 type EmptyStateProps = {
@@ -24,7 +24,14 @@ const EmptyState = ({
     className="empty-state"
   >
     <div>
-      <Img src={src} alt="" className="empty-state-img" />
+      <Picture
+        src={`${src}.png`}
+        srcSet={`${src}.avif`}
+        alt=""
+        ratio="16:9"
+        priority
+        className="empty-state-img"
+      />
     </div>
     <div className="empty-state-info">
       <h2 className="empty-space-heading">{noProductTitle}</h2>

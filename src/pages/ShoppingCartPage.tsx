@@ -11,7 +11,7 @@ const ShoppingChartPage = () => {
         <EmptyState
           noProductText={language.shoppingBagEmpty}
           noProductTitle={language.shoppingBagEmptyTitle}
-          src="/images/shoppingBags/shopping_bag_2.png"
+          src="/images/shoppingBags/shopping_bag_2"
         />
       </section>
     </MainPageContainer>
