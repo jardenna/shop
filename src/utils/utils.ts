@@ -70,10 +70,8 @@ const getFilterSummary = (
       countValue = 1;
     }
 
-    if (countValue > 0) {
-      countsByKey[paramKey] = countValue;
-      totalCount += countValue;
-    }
+    countsByKey[paramKey] = countValue;
+    totalCount += countValue;
   }
 
   return { countsByKey, totalCount };
