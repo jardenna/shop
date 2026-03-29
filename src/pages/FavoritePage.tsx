@@ -21,7 +21,7 @@ const FavoritePage = () => {
         onReset={onReset}
       >
         {favorites && favorites.length > 0 ? (
-          <ul>
+          <ul className="product-card-list">
             {favorites.map((product) => (
               <li key={product.id}>
                 <ProductCard

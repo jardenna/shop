@@ -9,8 +9,8 @@ const ShoppingChartPage = () => {
     <MainPageContainer heading={language.shopCart}>
       <section>
         <EmptyState
-          noProductText={language.noProductResult}
-          noProductTitle={language.noProductResultTitle}
+          noProductText={language.shoppingBagEmpty}
+          noProductTitle={language.shoppingBagEmptyTitle}
           src="/images/shoppingBags/shopping_bag_2.png"
         />
       </section>
