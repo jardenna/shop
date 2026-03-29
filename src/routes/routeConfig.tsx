@@ -18,6 +18,7 @@ import CollectionPage from '../pages/CollectionPage';
 import ContactPage from '../pages/ContactPage';
 import CreateAccountPage from '../pages/CreateAccountPage';
 import ErrorPage from '../pages/ErrorPage';
+import FavoritePage from '../pages/FavoritePage';
 import HomePage from '../pages/home/HomePage';
 import LoginPage from '../pages/LoginPage';
 import MainCollectionsPage from '../pages/MainCollectionsPage';
@@ -26,13 +27,12 @@ import ProductPage from '../pages/product/ProductPage';
 import UpdateProductPage from '../pages/product/UpdateProductPage';
 import ViewProductPage from '../pages/product/ViewProductPage';
 import ProtectedRoute from '../pages/ProtectedRoute';
-import ShoppingChartPage from '../pages/ShoppingChartPage';
+import ShoppingChartPage from '../pages/ShoppingCartPage';
 import SingleProductPage from '../pages/SingleProductPage';
 import CreateSubCategoryPage from '../pages/subCategory/CreateSubCategoryPage';
 import SubCategoryPage from '../pages/subCategory/SubCategoryPage';
 import UpdateSubCategoryPage from '../pages/subCategory/UpdateSubCategoryPage';
 import ViewSubCategoryPage from '../pages/subCategory/ViewSubCategoryPage';
-import FavoritePage from '../pages/FavoritePage';
 
 const routeList = [
   {
