@@ -3,6 +3,7 @@ import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useFavorites } from '../components/favorites/useFavorites';
 import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import { useLanguage } from '../features/language/useLanguage';
+import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import ProductCard from '../features/shop/components/ProductCard';
 import { ShopPath } from '../layout/nav/enums';
 import './FavoritesPage.styles.scss';
@@ -33,6 +34,11 @@ const FavoritePage = () => {
             ))
           ) : (
             <div>
+              <EmptyState
+                noProductText={language.noProductResult}
+                noProductTitle={language.noProductResultTitle}
+                src="/images/shoppingBags/shopping_bag_1.png"
+              />
               <h2>{language.noFavoritesYet}</h2>
               <p>{language.noFavorites}</p>
             </div>

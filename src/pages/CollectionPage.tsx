@@ -222,6 +222,7 @@ const CollectionPage = () => {
                 noProductTitle={language.noProductResultTitle}
                 onClearAllFilters={onClearAllFilters}
                 resetBtnText={language.clearAllFilters}
+                src="/images/shoppingBags/shopping_bag.png"
               />
             )}
           </section>
