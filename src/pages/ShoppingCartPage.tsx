@@ -1,5 +1,6 @@
 import { useLanguage } from '../features/language/useLanguage';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
+import { ShopPath } from '../layout/nav/enums';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const ShoppingChartPage = () => {
@@ -12,10 +13,8 @@ const ShoppingChartPage = () => {
           noProductText={language.shoppingBagEmpty}
           noProductTitle={language.shoppingBagEmptyTitle}
           src="/images/shoppingBags/shopping_bag_2"
-          onClearAllFilters={() => {
-            console.log(1);
-          }}
-          resetBtnText={language.getInspired}
+          linkTo={`/${ShopPath.Collection}`}
+          emtyStateCtaText={language.getInspired}
         />
       </section>
     </MainPageContainer>

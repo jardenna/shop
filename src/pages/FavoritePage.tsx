@@ -38,10 +38,8 @@ const FavoritePage = () => {
             noProductText={language.noFavorites}
             noProductTitle={language.noFavoritesYet}
             src="/images/shoppingBags/shopping_bag_1"
-            onClearAllFilters={() => {
-              console.log(1);
-            }}
-            resetBtnText={language.getInspired}
+            linkTo={`/${ShopPath.Collection}`}
+            emtyStateCtaText={language.getInspired}
           />
         )}
       </ErrorBoundary>

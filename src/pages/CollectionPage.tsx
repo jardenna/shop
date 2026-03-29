@@ -220,8 +220,8 @@ const CollectionPage = () => {
               <EmptyState
                 noProductText={language.noProductResult}
                 noProductTitle={language.noProductResultTitle}
-                onClearAllFilters={onClearAllFilters}
-                resetBtnText={language.clearAllFilters}
+                onClick={onClearAllFilters}
+                emtyStateCtaText={language.clearAllFilters}
                 src="/images/shoppingBags/shopping_bag"
               />
             )}

@@ -1,28 +1,39 @@
+import { Link } from 'react-router';
 import Button from '../../../../components/Button';
 import Picture from '../../../../components/Picture';
+import { BtnVariant } from '../../../../types/enums';
 import './_empty-state.scss';
 
-type EmptyStateProps = {
+interface BaseEmptyStateProps {
+  emtyStateCtaText: string;
   noProductText: string;
   noProductTitle: string;
-  resetBtnText: string;
   src: string;
-  onClearAllFilters: () => void;
-};
+  btnVariant?: BtnVariant;
+}
+
+interface LinkVariant {
+  linkTo: string;
+  onClick?: never;
+}
+
+interface ActionVariant {
+  linkTo?: never;
+  onClick: () => void;
+}
+
+type EmptyStateProps = BaseEmptyStateProps & (LinkVariant | ActionVariant);
 
 const EmptyState = ({
-  onClearAllFilters,
+  onClick,
   noProductText,
   noProductTitle,
-  resetBtnText,
+  emtyStateCtaText,
   src,
+  linkTo,
+  btnVariant = BtnVariant.Primary,
 }: EmptyStateProps) => (
-  <section
-    role="status"
-    aria-live="polite"
-    aria-atomic="true"
-    className="empty-state"
-  >
+  <section className="empty-state">
     <div>
       <Picture
         src={`${src}.png`}
@@ -34,9 +45,16 @@ const EmptyState = ({
     </div>
     <div className="empty-state-info">
       <h2 className="empty-space-heading">{noProductTitle}</h2>
-      <p>{noProductText}.</p>
-
-      <Button onClick={onClearAllFilters}>{resetBtnText}</Button>
+      <p role="status" aria-atomic="true">
+        {noProductText}.
+      </p>
+      {linkTo ? (
+        <Link to={linkTo} className={`btn btn-${btnVariant}`}>
+          {emtyStateCtaText}
+        </Link>
+      ) : (
+        <Button onClick={onClick}>{emtyStateCtaText}</Button>
+      )}
     </div>
   </section>
 );
