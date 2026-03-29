@@ -16,13 +16,13 @@ const FavoritePage = () => {
   return (
     <MainPageContainer heading="favorites" className="favorite-page">
       {isLoading && <SkeletonCardList count={4} className="large" />}
-      <ul className="product-card-list">
-        <ErrorBoundary
-          FallbackComponent={ErrorBoundaryFallback}
-          onReset={onReset}
-        >
-          {favorites && favorites.length > 0 ? (
-            favorites.map((product) => (
+      <ErrorBoundary
+        FallbackComponent={ErrorBoundaryFallback}
+        onReset={onReset}
+      >
+        {favorites && favorites.length > 0 ? (
+          <ul>
+            {favorites.map((product) => (
               <li key={product.id}>
                 <ProductCard
                   showAdToCartBtn
@@ -31,20 +31,16 @@ const FavoritePage = () => {
                   linkTo={`${ShopPath.FavoritesProduct}/${product.id}`}
                 />
               </li>
-            ))
-          ) : (
-            <div>
-              <EmptyState
-                noProductText={language.noProductResult}
-                noProductTitle={language.noProductResultTitle}
-                src="/images/shoppingBags/shopping_bag_1.png"
-              />
-              <h2>{language.noFavoritesYet}</h2>
-              <p>{language.noFavorites}</p>
-            </div>
-          )}
-        </ErrorBoundary>
-      </ul>
+            ))}
+          </ul>
+        ) : (
+          <EmptyState
+            noProductText={language.noFavorites}
+            noProductTitle={language.noFavoritesYet}
+            src="/images/shoppingBags/shopping_bag_1.png"
+          />
+        )}
+      </ErrorBoundary>
     </MainPageContainer>
   );
 };
