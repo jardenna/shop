@@ -35,7 +35,7 @@ const EmptyState = ({
     </div>
     <div className="empty-state-info">
       <h2 className="empty-space-heading">{noProductTitle}</h2>
-      <p>{noProductText}</p>
+      <p>{noProductText}.</p>
       {resetBtnText && (
         <Button onClick={onClearAllFilters}>{resetBtnText}</Button>
       )}
