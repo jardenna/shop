@@ -5,9 +5,9 @@ import './_empty-state.scss';
 type EmptyStateProps = {
   noProductText: string;
   noProductTitle: string;
+  resetBtnText: string;
   src: string;
-  resetBtnText?: string;
-  onClearAllFilters?: () => void;
+  onClearAllFilters: () => void;
 };
 
 const EmptyState = ({
@@ -28,7 +28,6 @@ const EmptyState = ({
         src={`${src}.png`}
         srcSet={`${src}.avif`}
         alt=""
-        ratio="16:9"
         priority
         className="empty-state-img"
       />
@@ -36,9 +35,8 @@ const EmptyState = ({
     <div className="empty-state-info">
       <h2 className="empty-space-heading">{noProductTitle}</h2>
       <p>{noProductText}.</p>
-      {resetBtnText && (
-        <Button onClick={onClearAllFilters}>{resetBtnText}</Button>
-      )}
+
+      <Button onClick={onClearAllFilters}>{resetBtnText}</Button>
     </div>
   </section>
 );
