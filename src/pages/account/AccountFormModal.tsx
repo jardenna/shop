@@ -91,7 +91,7 @@ const AccountFormModal = ({
     onSubmit,
     label: language.update,
     buttonType: BtnType.Submit,
-    disabled: isLoading || !isFormDirty,
+    disabled: !isFormDirty,
     showBtnLoader: isLoading,
     resultSuccess,
     isForm: true,
