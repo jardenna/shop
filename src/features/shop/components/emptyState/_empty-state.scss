@@ -19,13 +19,14 @@
   }
 
   @include max-size($small) {
-    display: block;
+    display: flex;
+    flex-direction: column;
   }
 
   .empty-state-info {
     min-width: rem(572px);
 
-    @include max-size($extra-large) {
+    @include max-size($small) {
       min-width: 100%;
     }
 
