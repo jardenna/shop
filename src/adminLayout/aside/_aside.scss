@@ -20,7 +20,7 @@
   @include transition($what: width, $time: 0.2s);
 
   &.collapsed {
-    width: rem(61px);
+    width: rem(68px);
 
     .btn-ghost {
       svg {

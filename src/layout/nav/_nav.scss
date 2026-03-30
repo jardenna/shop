@@ -58,7 +58,8 @@
     padding: 20px;
 
     &.active {
-      background-color: $color-background;
+      background-color: $color-blue-30;
+      color: $color-light-gray-10;
     }
 
     &:hover {
