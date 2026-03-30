@@ -3,7 +3,7 @@ import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import { ShopPath } from '../layout/nav/enums';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
-const ShoppingChartPage = () => {
+const ShoppingCartPage = () => {
   const { language } = useLanguage();
 
   return (
@@ -21,4 +21,4 @@ const ShoppingChartPage = () => {
   );
 };
 
-export default ShoppingChartPage;
+export default ShoppingCartPage;
