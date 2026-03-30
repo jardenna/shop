@@ -223,7 +223,11 @@ export function useFormValidation<T extends KeyValuePair>({
     }
   };
 
+  const isFormDirty = JSON.stringify(values) !== JSON.stringify(initialState);
   const onSubmit = () => {
+    if (!isFormDirty) {
+      return;
+    }
     const validationErrors = validate ? validate(values) : {};
     const formHasNoErrors = !Object.keys(validationErrors).length;
     if (isLoading) {
@@ -256,5 +260,6 @@ export function useFormValidation<T extends KeyValuePair>({
     previewData,
     removePreviewImage,
     onFileChange: handleFileChange,
+    isFormDirty,
   };
 }
