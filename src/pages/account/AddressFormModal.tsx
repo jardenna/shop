@@ -110,6 +110,7 @@ const AddressFormModal = ({
     disabled: isLoading || addIsLoading,
     showBtnLoader: isLoading || addIsLoading,
     resultSuccess,
+    isForm: true,
   };
 
   return (

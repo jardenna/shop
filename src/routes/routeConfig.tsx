@@ -27,7 +27,7 @@ import ProductPage from '../pages/product/ProductPage';
 import UpdateProductPage from '../pages/product/UpdateProductPage';
 import ViewProductPage from '../pages/product/ViewProductPage';
 import ProtectedRoute from '../pages/ProtectedRoute';
-import ShoppingChartPage from '../pages/ShoppingCartPage';
+import ShoppingCartPage from '../pages/ShoppingCartPage';
 import SingleProductPage from '../pages/SingleProductPage';
 import CreateSubCategoryPage from '../pages/subCategory/CreateSubCategoryPage';
 import SubCategoryPage from '../pages/subCategory/SubCategoryPage';
@@ -73,7 +73,7 @@ const routeList = [
   },
   {
     path: ShopPath.ShoppingCart,
-    element: <ShoppingChartPage />,
+    element: <ShoppingCartPage />,
   },
 ];
 

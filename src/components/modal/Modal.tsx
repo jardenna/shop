@@ -22,6 +22,7 @@ export type PrimaryActionBtnProps = {
   className?: string;
   closeOnClick?: boolean;
   disabled?: boolean;
+  isForm?: boolean;
   resultSuccess?: boolean | null;
   showBtnLoader?: boolean;
   variant?: BtnVariant;
@@ -132,7 +133,11 @@ const Modal = ({
         id={dialogId}
       />
       <ModalContentContainer
-        isForm={primaryActionBtn.buttonType === BtnType.Submit}
+        isForm={
+          primaryActionBtn.buttonType === BtnType.Submit ||
+          primaryActionBtn.isForm ||
+          false
+        }
         onSubmit={primaryActionBtn.onSubmit}
       >
         {children}
