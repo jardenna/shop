@@ -24,11 +24,7 @@ const ProductPrice = ({
   const { convertedPrice: discountedPrice } = useCurrency(discountedValue);
 
   if (hasError) {
-    return (
-      <span role="alert" aria-live="polite">
-        {language.invalidDiscount}
-      </span>
-    );
+    return <span role="alert">{language.invalidDiscount}</span>;
   }
 
   return (

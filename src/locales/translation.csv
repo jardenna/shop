@@ -149,6 +149,7 @@ filterHeading;Filter;Filter
 filterProducts;Filter products;Filtrer produkter
 filterRow;Filter row;Filtrer række
 filtersApplied;Filters applied;Filtre anvendt
+getInspired;Get inspired;Bliv inspireret
 globe;Globe;Globus
 goBack;Go back;Gå tilbage
 gold;Gold;Guld
@@ -241,6 +242,7 @@ noOptions;No options;Ingen valgmuligheder
 noPassword;Please enter a password;Indtast venligst en adgangskode
 noProduct;Product not found;Produkt blev ikke fundet
 noProductResult;No products match your filters. Try removing some filters or reset to see all products again.;Der er ingen produkter, der matcher dine filtre. Prøv at fjerne nogle filtre eller nulstil for at se alle produkter igen.
+noProductResultTitle;No product match your filters;Ingen produkter matcher dine filtre
 noReview;Be the first to review this product;Bliv den første til at anmelde dette produkt
 notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 
 notAuthorizedNoToken;Not authorized, no token;Ikke autoriseret, ingen token
@@ -371,6 +373,8 @@ shopKidsMenuText;Turn every playday into a magical adventure with our colorful a
 shopMenHeading;Luxury for men;Luksus til mænd
 shopMenMenuText;Effortless style starts with our curated essentials for the modern gentleman;Træd ind i stil med vores tidløse essentials for manden, der værdsætter kvalitet
 shopNow;Shop now;Shop nu
+shoppingBagEmpty;Keep exploring and discover styles you love. Add items to your bag whenever you’re ready, and come back anytime to continue where you left off;Bliv ved med at udforske og find styles, du elsker. Tilføj varer til din kurv, når du er klar, og vend tilbage når som helst for at fortsætte, hvor du slap
+shoppingBagEmptyTitle;Fill your cart with the season’s best fashion;Fyld din kurv med tidens bedste mode
 shopWomenHeading;Empower Your Everyday;Styrke i din stil
 shopWomenMenuText;Express yourself in every step—effortless, fearless, and made to move. Grab your favorites today;Udtryk dig selv, ubesværet, frygtløst og i bevægelse. Find dine nye favoritter i dag
 show;Show;Vis

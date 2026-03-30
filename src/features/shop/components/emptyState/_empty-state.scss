@@ -1,0 +1,56 @@
+@use '../../../../scss/globals' as *;
+
+.empty-state {
+  background-color: $color-light-gray-20;
+  margin: 0 auto;
+  margin-top: 30px;
+  min-height: rem(280px);
+  max-width: 72%;
+  padding-inline: 60px;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  gap: 32px;
+
+  @include max-size($extra-large) {
+    max-width: 100%;
+    padding: 32px;
+  }
+
+  @include max-size($small) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .empty-state-info {
+    min-width: rem(572px);
+
+    @include max-size($small) {
+      min-width: 100%;
+    }
+
+    .empty-space-heading {
+      text-transform: uppercase;
+    }
+
+    .btn {
+      margin-top: 32px;
+    }
+  }
+
+  .empty-state-img {
+    position: absolute;
+    top: -32px;
+    max-width: rem(220px);
+
+    @include max-size($medium) {
+      max-width: rem(148px);
+      position: static;
+    }
+
+    @include max-size($mini) {
+      display: none;
+    }
+  }
+}

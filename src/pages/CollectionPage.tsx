@@ -12,10 +12,10 @@ import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import { useLanguage } from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
 import CollectionPageHeader from '../features/shop/components/CollectionPageHeader';
+import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import FilterPanel, {
   InitialFilters,
 } from '../features/shop/components/FilterPanel';
-import NoProductsFound from '../features/shop/components/NoProductsFound';
 import ProductCardList from '../features/shop/components/ProductCardList';
 import ProductToolbar from '../features/shop/components/ProductToolbar';
 import { useSubMenu } from '../features/shop/hooks/useSubMenu';
@@ -153,7 +153,7 @@ const CollectionPage = () => {
           />
         )}
         <div className="collection-page-container">
-          <div>
+          <aside>
             <CollectionPageHeader
               headerText={categoryText}
               ariaLabelledby={ariaLabelledby}
@@ -167,8 +167,8 @@ const CollectionPage = () => {
                 language={language}
               />
             )}
-          </div>
-          <div className="collection-page-content">
+          </aside>
+          <section className="collection-page-content">
             {!isMobileSize && (
               <Picture
                 src={`${src}.jpg`}
@@ -217,32 +217,36 @@ const CollectionPage = () => {
                 />
               )
             ) : (
-              <NoProductsFound
+              <EmptyState
                 noProductText={language.noProductResult}
-                resetFilters={onClearAllFilters}
-                resetBtnText={language.clearAllFilters}
+                noProductTitle={language.noProductResultTitle}
+                onClick={onClearAllFilters}
+                emtyStateCtaText={language.clearAllFilters}
+                src="/images/shoppingBags/shopping_bag"
               />
             )}
-          </div>
+          </section>
         </div>
-        <Pagination
-          totalBtns={totalBtns}
-          page={page}
-          onPagination={handlePagination}
-          onSelectCount={handleSelectCount}
-          totalCount={productCount}
-          paginationMobileText={paginationMobileText}
-          defaultValue={{
-            value: productsPerPage.toString(),
-            label: productsPerPage.toString(),
-          }}
-          optionList={selectProductCountList}
-          selectInfo={
-            isShowingAll
-              ? `${language.showingAllProducts} (${productCount})`
-              : language.productPerPage
-          }
-        />
+        {productCount > 0 && (
+          <Pagination
+            totalBtns={totalBtns}
+            page={page}
+            onPagination={handlePagination}
+            onSelectCount={handleSelectCount}
+            totalCount={productCount}
+            paginationMobileText={paginationMobileText}
+            defaultValue={{
+              value: productsPerPage.toString(),
+              label: productsPerPage.toString(),
+            }}
+            optionList={selectProductCountList}
+            selectInfo={
+              isShowingAll
+                ? `${language.showingAllProducts} (${productCount})`
+                : language.productPerPage
+            }
+          />
+        )}
       </section>
     </>
   );

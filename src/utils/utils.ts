@@ -58,16 +58,21 @@ function getAriaLabel(count: number, ariaLabelData: AriaLabelData): string {
 const getFilterSummary = (
   filters: Record<string, unknown>,
 ): FiltersCountResult => {
-  const countsByKey = Object.fromEntries(
-    Object.entries(filters)
-      .filter((entry): entry is [string, string[]] => Array.isArray(entry[1]))
-      .map(([paramKey, values]) => [paramKey, values.length]),
-  );
+  const countsByKey: Record<string, number> = {};
+  let totalCount = 0;
 
-  const totalCount = Object.values(countsByKey).reduce(
-    (totalSum, countValue) => totalSum + countValue,
-    0,
-  );
+  for (const [paramKey, paramValue] of Object.entries(filters)) {
+    let countValue = 0;
+
+    if (Array.isArray(paramValue)) {
+      countValue = paramValue.length;
+    } else if (typeof paramValue === 'string' && paramValue.trim() !== '') {
+      countValue = 1;
+    }
+
+    countsByKey[paramKey] = countValue;
+    totalCount += countValue;
+  }
 
   return { countsByKey, totalCount };
 };
