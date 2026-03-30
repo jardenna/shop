@@ -13,7 +13,7 @@ import { clearMessagePopups } from '../features/messagePopupSlice';
 import { useGetFavoritesQuery } from '../features/shop/shopApiSlice';
 import { useFormValidation } from '../hooks/useFormValidation';
 import { useMediaQuery } from '../hooks/useMediaQuery';
-import { BtnType, IconName } from '../types/enums';
+import { IconName } from '../types/enums';
 import type { OptionType } from '../types/types';
 import { getPathName, pathEquals } from '../utils/utils';
 import Header from './header/Header';
@@ -56,7 +56,7 @@ const Layout = () => {
     onCustomChange(name, selectedOptions.value);
   };
 
-  function handleSubmit() {
+  function handleChangePreferences() {
     switchLanguage(values.languageOption);
     onChangePrice(values.currencyOption);
   }
@@ -67,15 +67,14 @@ const Layout = () => {
     currencyOption: exchangeRate,
   };
 
-  const { onChange, onSubmit, values, onCustomChange } = useFormValidation({
-    callback: handleSubmit,
+  const { onChange, values, onCustomChange } = useFormValidation({
     initialState,
   });
 
   const primaryActionBtn: PrimaryActionBtnProps = {
-    onSubmit,
+    onClick: handleChangePreferences,
     label: language.updatePreferences,
-    buttonType: BtnType.Submit,
+    isForm: true,
   };
 
   // Helper to generate account-related links (for users, employees, admins)
