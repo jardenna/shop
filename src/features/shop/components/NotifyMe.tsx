@@ -63,6 +63,7 @@ const NotifyMe = ({
   const primaryActionBtn: PrimaryActionBtnProps = {
     label: isSuccess ? language.continueShopping : language.notifyMe,
     buttonType: isSuccess ? BtnType.Button : BtnType.Submit,
+    isForm: !isSuccess,
     closeOnClick: isSuccess,
     onSubmit: isSuccess ? undefined : onSubmit,
   };

@@ -83,6 +83,7 @@ const AccountFormModal = ({
     disabled: isLoading,
     showBtnLoader: isLoading,
     resultSuccess,
+    isForm: true,
   };
 
   return (
