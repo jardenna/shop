@@ -106,7 +106,7 @@ const ReviewsForm = ({
                   rows={8}
                 />
               </FieldSet>
-              <Button type={BtnType.Submit} disabled={isLoading} showBtnLoader>
+              <Button type={BtnType.Submit} showBtnLoader={isLoading}>
                 {language.shareReview}
               </Button>
             </div>
