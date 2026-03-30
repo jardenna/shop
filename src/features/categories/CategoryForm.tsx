@@ -53,7 +53,7 @@ const CategoryForm = ({
   const selectedTime = selectedCategory?.scheduledDate;
 
   // Hooks
-  const { onChange, values, onSubmit, errors, onCustomChange } =
+  const { onChange, values, onSubmit, errors, onCustomChange, isFormDirty } =
     useFormValidation({
       initialState,
       validate: validateCategory,
@@ -71,6 +71,13 @@ const CategoryForm = ({
 
   // Submit handler
   async function handleSubmitCategory() {
+    if (!isFormDirty) {
+      onAddMessagePopup({
+        message: language.noChanges,
+      });
+      return;
+    }
+
     try {
       if (id) {
         await updateCategory({
@@ -97,6 +104,7 @@ const CategoryForm = ({
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
       <Form
         onSubmit={onSubmit}
+        disabled={isLoading || !isFormDirty}
         submitBtnLabel={id ? language.save : language.create}
         cancelBtnProps={{
           onCancel: handleGoback,

@@ -54,7 +54,7 @@ const AccountFormModal = ({
     preferredFashion: profile.preferredFashion,
   };
 
-  const { values, onChange, onSubmit, onClearAllValues, errors } =
+  const { values, onChange, onSubmit, onClearAllValues, errors, isFormDirty } =
     useFormValidation({
       initialState,
       callback: handleSubmit,
@@ -64,23 +64,34 @@ const AccountFormModal = ({
   const [updateProfile, { isLoading, reset }] = useUpdateUserProfileMutation();
 
   async function handleSubmit() {
+    if (!isFormDirty) {
+      onAddMessagePopup({
+        message: language.noChanges,
+      });
+      return;
+    }
+
     try {
       await updateProfile(values).unwrap();
+
       onAddMessagePopup({
         message: language.yourDetailsUpdated,
       });
+
       setResultSuccess(true);
       onClearAllValues();
+      reset();
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
       setResultSuccess(false);
     }
   }
+
   const primaryActionBtn: PrimaryActionBtnProps = {
     onSubmit,
     label: language.update,
     buttonType: BtnType.Submit,
-    disabled: isLoading,
+    disabled: isLoading || !isFormDirty,
     showBtnLoader: isLoading,
     resultSuccess,
     isForm: true,
