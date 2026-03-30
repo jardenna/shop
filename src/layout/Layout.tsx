@@ -3,6 +3,7 @@ import { Outlet, useLocation, useNavigate } from 'react-router';
 import { useAppDispatch } from '../app/hooks';
 import { DropdownItem } from '../components/dropdownBtn/DropdownBtn';
 import Icon from '../components/icons/Icon';
+import type { PrimaryActionBtnProps } from '../components/modal/Modal';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
 import { useAuth } from '../features/auth/hooks/useAuth';
@@ -71,7 +72,7 @@ const Layout = () => {
     initialState,
   });
 
-  const primaryActionBtn = {
+  const primaryActionBtn: PrimaryActionBtnProps = {
     onSubmit,
     label: language.updatePreferences,
     buttonType: BtnType.Submit,
