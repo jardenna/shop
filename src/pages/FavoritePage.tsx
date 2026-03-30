@@ -13,6 +13,8 @@ const FavoritePage = () => {
   const { language } = useLanguage();
   const { favorites, isLoading, onReset } = useFavorites({});
 
+  const sortedFavorites = favorites ? [...favorites].reverse() : [];
+
   return (
     <MainPageContainer heading="favorites" className="favorite-page">
       {isLoading && <SkeletonCardList count={4} className="large" />}
@@ -20,9 +22,9 @@ const FavoritePage = () => {
         FallbackComponent={ErrorBoundaryFallback}
         onReset={onReset}
       >
-        {favorites && favorites.length > 0 ? (
+        {sortedFavorites.length > 0 ? (
           <ul className="product-card-list">
-            {favorites.map((product) => (
+            {sortedFavorites.map((product) => (
               <li key={product.id}>
                 <ProductCard
                   showAdToCartBtn
