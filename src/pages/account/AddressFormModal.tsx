@@ -71,7 +71,7 @@ const AddressFormModal = ({
     id: id || null,
   };
 
-  const { values, onChange, onSubmit, errors, onClearAllValues } =
+  const { values, onChange, onSubmit, errors, onClearAllValues, isFormDirty } =
     useFormValidation({
       initialState,
       callback: handleSubmitAddress,
@@ -85,6 +85,13 @@ const AddressFormModal = ({
   const updatedAddress = id ? { ...values, id } : { ...values };
 
   async function handleSubmitAddress() {
+    if (!isFormDirty) {
+      onAddMessagePopup({
+        message: language.noChanges,
+      });
+      return;
+    }
+
     try {
       if (id) {
         await updateAddress({ address: updatedAddress }).unwrap();
@@ -107,7 +114,7 @@ const AddressFormModal = ({
     onSubmit,
     buttonType: BtnType.Submit,
     label: primaryActionBtnLabel,
-    disabled: isLoading || addIsLoading,
+    disabled: !isFormDirty,
     showBtnLoader: isLoading || addIsLoading,
     resultSuccess,
     isForm: true,
