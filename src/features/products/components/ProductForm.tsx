@@ -255,7 +255,7 @@ const ProductForm = ({
   return (
     <Form
       onSubmit={onSubmit}
-      disabled={!isSubmitActive}
+      disabled={!!id && !isSubmitActive}
       submitBtnLabel={id ? language.save : language.create}
       ref={formRef}
       cancelBtnProps={{
