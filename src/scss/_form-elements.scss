@@ -74,6 +74,10 @@ input {
     border-color: $color-primary;
   }
 
+  &:has(input[aria-invalid='true']:focus-visible) {
+    border-color: $color-danger;
+  }
+
   &:has(.input-suffix) {
     .error-icon {
       right: 36px;
@@ -87,15 +91,7 @@ input {
     @extend %styled-input;
   }
 
-  textarea[aria-invalid='true'] {
-    @include outline($color-danger);
-
-    &:focus-visible {
-      border-color: $color-danger;
-      outline: transparent;
-    }
-  }
-
+  textarea[aria-invalid='true'],
   input[aria-invalid='true'] {
     @include outline($color-danger);
 
