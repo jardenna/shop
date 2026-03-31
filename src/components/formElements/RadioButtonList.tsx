@@ -24,7 +24,7 @@ const RadioButtonList = ({
 
   return (
     <ul className={`control-list ${className} ${variant}`}>
-      {radioButtonList.map((radio, index) => (
+      {radioButtonList.map((radio) => (
         <li key={radio.value} className="control-item">
           <ControlInput
             type="radio"
@@ -34,7 +34,7 @@ const RadioButtonList = ({
             checked={initialChecked === radio.value}
             onChange={onChange}
             label={translateKey(radio.label, language)}
-            autoFocus={autoFocus && index === 0}
+            autoFocus={autoFocus && initialChecked === radio.value}
             ariaLabel={translateKey(radio.label, language)}
             className="control-label"
             iconName={iconName}
