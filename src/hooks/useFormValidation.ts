@@ -64,7 +64,7 @@ export function useFormValidation<T extends KeyValuePair>({
 
     setValues({
       ...values,
-      [name]: value,
+      [name]: type === 'number' ? Number(value) : value,
     });
 
     if (type === 'checkbox') {
