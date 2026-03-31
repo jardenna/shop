@@ -46,6 +46,10 @@ textarea {
 
 input {
   min-height: $input-height;
+
+  &:focus-within {
+    border-bottom: 3px solid $color-primary;
+  }
 }
 
 .input-info {
@@ -64,18 +68,9 @@ input {
 .input-container {
   width: 100%;
   position: relative;
-  border-bottom: 3px solid transparent;
 
   + .input-info {
     margin-top: -14px;
-  }
-
-  &:has(input:focus-visible) {
-    border-color: $color-primary;
-  }
-
-  &:has(input[aria-invalid='true']:focus-visible) {
-    border-color: $color-danger;
   }
 
   &:has(.input-suffix) {
