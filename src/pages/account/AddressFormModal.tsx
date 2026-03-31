@@ -114,7 +114,7 @@ const AddressFormModal = ({
     onSubmit,
     buttonType: BtnType.Submit,
     label: primaryActionBtnLabel,
-    disabled: !isFormDirty,
+    disabled: !!id && !isFormDirty,
     showBtnLoader: isLoading || addIsLoading,
     resultSuccess,
     isForm: true,
