@@ -42,6 +42,7 @@
   .empty-state-img {
     position: absolute;
     top: -32px;
+    aspect-ratio: 4 / 5;
     max-width: rem(220px);
 
     @include max-size($medium) {
