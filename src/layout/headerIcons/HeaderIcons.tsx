@@ -20,6 +20,7 @@ const HeaderIcons = ({
   currencyOptions,
   defaultValue,
   onSelectCurrency,
+  localLanguage,
 }: BaseHeaderProps) => {
   const { language } = useLanguage();
   const { favorites, onReset } = useFavorites({});
@@ -56,17 +57,20 @@ const HeaderIcons = ({
         </li>
         <li>
           <ModalContainer
+            secondaryActionBtn={{
+              label: localLanguage.cancel,
+            }}
             triggerModalBtnContent={
               <IconContent
                 iconName={IconName.Language}
-                ariaLabel={language.selectPreferences}
+                ariaLabel={localLanguage.selectPreferences}
               />
             }
             triggerModalBtnVariant={BtnVariant.Ghost}
             id="languageId"
             primaryActionBtn={primaryActionBtn}
             modalSize={SizeVariant.Md}
-            modalHeaderText={language.preferences}
+            modalHeaderText={localLanguage.preferences}
           >
             <LanguageCurrencyPreferences
               values={values}
@@ -74,6 +78,7 @@ const HeaderIcons = ({
               currencyOptions={currencyOptions}
               defaultValue={defaultValue}
               onSelectCurrency={onSelectCurrency}
+              localLanguage={localLanguage}
             />
           </ModalContainer>
         </li>

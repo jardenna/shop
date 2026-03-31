@@ -13,6 +13,8 @@ import { clearMessagePopups } from '../features/messagePopupSlice';
 import { useGetFavoritesQuery } from '../features/shop/shopApiSlice';
 import { useFormValidation } from '../hooks/useFormValidation';
 import { useMediaQuery } from '../hooks/useMediaQuery';
+import danishLang from '../locales/da.json';
+import englishLang from '../locales/en.json';
 import { IconName } from '../types/enums';
 import type { OptionType } from '../types/types';
 import { getPathName, pathEquals } from '../utils/utils';
@@ -71,9 +73,12 @@ const Layout = () => {
     initialState,
   });
 
+  const localLanguage =
+    values.languageOption === 'da' ? danishLang : englishLang;
+
   const primaryActionBtn: PrimaryActionBtnProps = {
     onClick: handleChangePreferences,
-    label: language.updatePreferences,
+    label: localLanguage.updatePreferences,
     isForm: true,
   };
 
@@ -118,6 +123,7 @@ const Layout = () => {
     <div className="main-container">
       {!isMobileSize && <SkipLink />}
       <Header
+        localLanguage={localLanguage}
         dropdownBtnList={dropdownItems}
         primaryActionBtn={primaryActionBtn}
         isMobileSize={isMobileSize}

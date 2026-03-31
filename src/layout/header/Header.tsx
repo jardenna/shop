@@ -23,6 +23,7 @@ export type BaseHeaderProps = {
   currencyOptions: OptionType[];
   defaultValue: OptionType;
   dropdownBtnList: DropdownItem[];
+  localLanguage: Record<string, string>;
   onChange: InputChangeHandler;
   primaryActionBtn: PrimaryActionBtnProps;
   values: Values;
@@ -38,6 +39,7 @@ const Header = ({
   onSelectCurrency,
   defaultValue,
   isMobileSize,
+  localLanguage,
 }: BaseHeaderProps & MobileProps) => (
   <LayoutElement className="main-header">
     <div className="container main-header-content">
@@ -55,6 +57,7 @@ const Header = ({
         currencyOptions={currencyOptions}
         onSelectCurrency={onSelectCurrency}
         defaultValue={defaultValue}
+        localLanguage={localLanguage}
       />
     </div>
   </LayoutElement>
