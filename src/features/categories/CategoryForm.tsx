@@ -104,7 +104,7 @@ const CategoryForm = ({
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
       <Form
         onSubmit={onSubmit}
-        disabled={!isFormDirty}
+        disabled={!!id && !isFormDirty}
         submitBtnLabel={id ? language.save : language.create}
         cancelBtnProps={{
           onCancel: handleGoback,

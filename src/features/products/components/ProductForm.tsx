@@ -151,6 +151,7 @@ const ProductForm = ({
     removePreviewImage,
     onBlur,
     onFileChange,
+    isFormDirty,
   } = useFormValidation({
     initialState,
     validate: validateProduct,
@@ -174,8 +175,20 @@ const ProductForm = ({
 
   const dispatch = useAppDispatch();
 
+  const isSubmitActive =
+    previewData.length > 0 ||
+    isFormDirty ||
+    uploadedImg.length !== activeImages.length;
+
   // Submit handler
   async function handleSubmitProduct() {
+    if (!isSubmitActive) {
+      onAddMessagePopup({
+        message: language.noChanges,
+      });
+      return;
+    }
+
     try {
       //  upload logic
       const mergedImages = await handleImageUpload({
@@ -242,6 +255,7 @@ const ProductForm = ({
   return (
     <Form
       onSubmit={onSubmit}
+      disabled={!!id && !isSubmitActive}
       submitBtnLabel={id ? language.save : language.create}
       ref={formRef}
       cancelBtnProps={{

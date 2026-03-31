@@ -64,7 +64,7 @@ export function useFormValidation<T extends KeyValuePair>({
 
     setValues({
       ...values,
-      [name]: value,
+      [name]: type === 'number' ? Number(value) : value,
     });
 
     if (type === 'checkbox') {
@@ -224,6 +224,7 @@ export function useFormValidation<T extends KeyValuePair>({
   };
 
   const isFormDirty = JSON.stringify(values) !== JSON.stringify(initialState);
+
   const onSubmit = () => {
     const validationErrors = validate ? validate(values) : {};
     const formHasNoErrors = !Object.keys(validationErrors).length;

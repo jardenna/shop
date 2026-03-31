@@ -137,7 +137,7 @@ const SubCategoryForm = ({
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
       <Form
-        disabled={!isFormDirty}
+        disabled={!!id && !isFormDirty}
         onSubmit={onSubmit}
         submitBtnLabel={id ? language.save : language.create}
         cancelBtnProps={{
