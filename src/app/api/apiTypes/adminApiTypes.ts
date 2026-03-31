@@ -92,6 +92,7 @@ export type UpdateCategoryRequest = {
 
 // MainCategories
 export type MainCategory = DefaultResponseType & {
+  _id: string;
   categoryName: string;
   categoryStatus: Status;
   id: string;

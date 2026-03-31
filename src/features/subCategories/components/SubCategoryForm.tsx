@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate } from 'react-router';
 import type {
@@ -65,23 +66,19 @@ const SubCategoryForm = ({
   const initialState: CreateSubCategoryRequest = {
     subCategoryName: selectedCategory?.subCategoryName ?? '',
     categoryStatus: selectedCategory?.categoryStatus ?? 'Inactive',
-    category: selectedCategory?.mainCategory.categoryName ?? '',
+    category: selectedCategory?.mainCategory._id ?? '',
     translationKey: selectedCategory?.translationKey ?? '',
   };
 
   const selectedTime = selectedCategory?.scheduledDate;
 
   // Hooks
-  const { onChange, values, onSubmit, onCustomChange, errors } =
+  const { onChange, values, onSubmit, onCustomChange, errors, isFormDirty } =
     useFormValidation({
       initialState,
       validate: validateSubcategory,
       callback: handleSubmitCategory,
     });
-
-  const preSelectedCategory = parentCategoriesOptions.find(
-    (mainCategoryName) => mainCategoryName.label === values.category,
-  );
 
   const { onAddMessagePopup } = useMessagePopup();
   const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
@@ -94,15 +91,20 @@ const SubCategoryForm = ({
 
   // Submit handler
   async function handleSubmitCategory() {
+    if (!isFormDirty) {
+      onAddMessagePopup({
+        message: language.noChanges,
+      });
+      return;
+    }
+
     try {
       if (id) {
         await updateSubCategory({
           id,
           subCategory: {
             ...values,
-            category: preSelectedCategory
-              ? preSelectedCategory.value
-              : values.category,
+            category: values.category,
             scheduledDate: selectedDate,
           },
         }).unwrap();
@@ -113,6 +115,7 @@ const SubCategoryForm = ({
       } else {
         await createSubCategory({
           ...values,
+          category: values.category,
           scheduledDate: selectedDate,
         }).unwrap();
       }
@@ -128,9 +131,13 @@ const SubCategoryForm = ({
     }
   }
 
+  const selectedCategoryOption = parentCategoriesOptions.find(
+    (option) => option.value === values.category,
+  );
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
       <Form
+        disabled={!isFormDirty}
         onSubmit={onSubmit}
         submitBtnLabel={id ? language.save : language.create}
         cancelBtnProps={{
@@ -141,12 +148,7 @@ const SubCategoryForm = ({
         <FieldSet legendText={language.categories}>
           <Selectbox
             id="category"
-            defaultValue={{
-              label: values.category
-                ? translateKey(values.category, language)
-                : values.category,
-              value: values.category,
-            }}
+            defaultValue={selectedCategoryOption}
             options={parentCategoriesOptions}
             components={{ Option: StatusOptions }}
             onChange={(selectedOptions: OptionType) => {
