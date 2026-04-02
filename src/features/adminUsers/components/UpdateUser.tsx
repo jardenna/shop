@@ -2,26 +2,27 @@ import { Roles } from '../../../app/api/apiTypes/adminApiTypes';
 import Icon from '../../../components/icons/Icon';
 import Popup from '../../../components/popup/Popup';
 import EditTableText from '../../../components/sortTable/EditTableText';
+import { ColumnKey } from '../../../pages/admin/UserPage';
 import { BtnVariant, IconName } from '../../../types/enums';
 import { ChangeInputType } from '../../../types/types';
 import EditUserInput from './EditUserInput';
 
 type UpdateUserProps = {
   ariaLabel: string;
-  columnKey: 'role' | 'email' | 'username';
-  onOpenPopup: any;
+  id: ColumnKey;
   roleValue: Roles;
   text: string;
   value: string;
-  handleSaveEdit: () => void;
   onEditChange: (event: ChangeInputType) => void;
+  onOpenPopup: () => void;
+  onSaveEdit: () => void;
 };
 
 const UpdateUser = ({
   text,
   onOpenPopup,
-  columnKey,
-  handleSaveEdit,
+  id,
+  onSaveEdit,
   onEditChange,
   value,
   ariaLabel,
@@ -33,14 +34,14 @@ const UpdateUser = ({
       onOpenPopup={onOpenPopup}
       popupContent={({ close }) => (
         <EditUserInput
-          labelText={columnKey}
+          labelText={id}
           onSave={() => {
-            handleSaveEdit();
+            onSaveEdit();
             close();
           }}
           onCancel={close}
           onEditChange={onEditChange}
-          id={columnKey}
+          id={id}
           value={value}
           roleValue={roleValue}
         />

@@ -31,6 +31,8 @@ const tableHeaders: { key: keyof UserResponse; label: string; name: string }[] =
 
 const columnKeys = ['username', 'email', 'role'] as const;
 
+export type ColumnKey = (typeof columnKeys)[number];
+
 const UserPage = () => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
@@ -117,10 +119,10 @@ const UserPage = () => {
                       }}
                       text={userItem[columnKey]}
                       ariaLabel={`${language.updateUser} ${columnKey}`}
-                      columnKey={columnKey}
+                      id={columnKey}
                       value={editValues[columnKey] || ''}
                       roleValue={editValues.role || 'User'}
-                      handleSaveEdit={handleSaveEdit}
+                      onSaveEdit={handleSaveEdit}
                     />
                   </td>
                 ))}

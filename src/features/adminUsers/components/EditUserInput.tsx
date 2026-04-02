@@ -13,12 +13,11 @@ const EditUserInput = ({
   onSave,
   onCancel,
   value,
-  labelText,
   roleValue,
 }: EditUserInputProps) => (
   <section className="delete-user-popup">
     <EditTableInput
-      labelText={labelText}
+      labelText={id}
       id={id}
       onEditChange={onEditChange}
       value={value}
