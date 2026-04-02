@@ -1,10 +1,19 @@
 import type { Roles } from '../../../app/api/apiTypes/adminApiTypes';
-import type { BaseEditTableInput } from '../../../components/sortTable/EditTableInput';
-import EditTableInput from '../../../components/sortTable/EditTableInput';
+import Form from '../../../components/form/Form';
+import Input from '../../../components/formElements/Input';
+import { ColumnKey } from '../../../pages/admin/UserPage';
+import { InputChangeHandler } from '../../../types/types';
 import RoleRadioBtn from './RoleRadioBtn';
 
-type EditUserInputProps = BaseEditTableInput & {
+type EditUserInputProps = {
+  id: ColumnKey;
+  labelText: string;
+  onEditChange: InputChangeHandler;
   roleValue: Roles;
+  submitBtnLabel: string;
+  value: string;
+  onCancel: () => void;
+  onSave: () => void;
 };
 
 const EditUserInput = ({
@@ -13,21 +22,35 @@ const EditUserInput = ({
   onSave,
   onCancel,
   value,
+  labelText,
   roleValue,
+  submitBtnLabel,
 }: EditUserInputProps) => (
   <section className="delete-user-popup">
-    <EditTableInput
-      labelText={id}
-      id={id}
-      onEditChange={onEditChange}
-      value={value}
-      onCancel={onCancel}
-      onSave={onSave}
-      isAlterntiveInput={id === 'role'}
-      alternativeInput={
+    <Form
+      submitBtnLabel={submitBtnLabel}
+      onSubmit={() => {
+        onSave();
+      }}
+      cancelBtnProps={{
+        onCancel,
+      }}
+    >
+      {id === 'role' ? (
         <RoleRadioBtn roleValue={roleValue} onChange={onEditChange} />
-      }
-    />
+      ) : (
+        <Input
+          id={id}
+          name={id}
+          onChange={onEditChange}
+          value={value}
+          labelText={labelText}
+          inputHasNoLabel
+          autoFocus
+          autoComplete="off"
+        />
+      )}
+    </Form>
   </section>
 );
 

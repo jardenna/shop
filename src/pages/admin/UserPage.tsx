@@ -113,6 +113,7 @@ const UserPage = () => {
                 {columnKeys.map((columnKey) => (
                   <td key={columnKey}>
                     <UpdateUser
+                      submitBtnLabel={language.save}
                       onEditChange={handleEditChange}
                       onOpenPopup={() => {
                         handleShowEditInput(id, columnKey);
