@@ -1,6 +1,6 @@
 import { useLanguage } from '../../features/language/useLanguage';
 
-const Orders = () => {
+const MyOrdersPage = () => {
   const { language } = useLanguage();
 
   return (
@@ -11,4 +11,4 @@ const Orders = () => {
   );
 };
 
-export default Orders;
+export default MyOrdersPage;
