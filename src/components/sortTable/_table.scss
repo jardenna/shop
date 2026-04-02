@@ -130,10 +130,6 @@ table {
 
   table {
     .edit-cell {
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-
       .edit-cell-text {
         width: max-content;
       }

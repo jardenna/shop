@@ -1,15 +1,10 @@
 type EditTableTextProps = {
-  cellContent: string;
   text: string;
 };
 
-const EditTableText = ({ cellContent, text }: EditTableTextProps) => (
+const EditTableText = ({ text }: EditTableTextProps) => (
   <span className="edit-cell-text">
-    {!cellContent.includes('@') ? (
-      text
-    ) : (
-      <a href={`mailto:${cellContent}`}>{cellContent}</a>
-    )}
+    {!text.includes('@') ? text : <a href={`mailto:${text}`}>{text}</a>}
   </span>
 );
 

@@ -3,6 +3,7 @@ import type { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
 import Icon from '../../components/icons/Icon';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import Popup from '../../components/popup/Popup';
+import EditTableText from '../../components/sortTable/EditTableText';
 import Table from '../../components/sortTable/Table';
 import { useGetAllUsersQuery } from '../../features/adminUsers/adminUserApiSlice';
 import EditUserInput from '../../features/adminUsers/components/EditUserInput';
@@ -29,7 +30,7 @@ const tableHeaders: { key: keyof UserResponse; label: string; name: string }[] =
     { key: 'id', label: '', name: '' },
   ];
 
-const columnKeys: (keyof UserResponse)[] = ['username', 'email', 'role'];
+const columnKeys = ['username', 'email', 'role'] as const;
 
 const UserPage = () => {
   const { language } = useLanguage();
@@ -45,8 +46,6 @@ const UserPage = () => {
   useTrapFocus({ id: 'deleteUser', popupRef });
 
   const {
-    editRowId,
-    editingField,
     handleShowEditInput,
     handleEditChange,
     handleCancelEdit,
@@ -110,72 +109,65 @@ const UserPage = () => {
         emptyHeaderCellText={language.deleteUser}
       >
         {(data) =>
-          data.map(({ id, username, isAdmin }) => (
-            <tr key={id}>
-              {columnKeys.map((columnKey) => (
-                <td key={columnKey}>
-                  <Popup
-                    placement="left-start"
-                    onOpenPopup={() => {
-                      handleShowEditInput(id, columnKey);
-                    }}
-                    popupContent={({ close }) => (
-                      <EditUserInput
-                        isAdmin={isAdmin}
-                        allowedEditUser={allowedEditUser}
-                        onSave={() => {
-                          handleSaveEdit();
-                          close();
-                        }}
-                        showEditInput={
-                          editRowId === id && editingField === columnKey
-                        }
-                        onCancel={handleCancelEdit}
-                        onEditChange={handleEditChange}
-                        onEditBtnClick={() => {
-                          handleShowEditInput(id, columnKey);
-                        }}
-                        id={columnKey}
-                        value={String(editValues[columnKey] || '')}
-                        roleValue={editValues.role || 'User'}
-                        cellContent={String(
-                          allUsers?.find((item) => item.id === id)?.[
-                            columnKey
-                          ] || '',
-                        )}
-                      />
-                    )}
-                    triggerBtnVariant={BtnVariant.Ghost}
-                    ariaLabel={language.deleteUser}
-                  >
-                    <Icon iconName={IconName.Pencil} />
-                  </Popup>
+          data.map((userItem) => {
+            const { id, username, isAdmin } = userItem;
+
+            return (
+              <tr key={id}>
+                {columnKeys.map((columnKey) => (
+                  <td key={columnKey}>
+                    <EditTableText text={userItem[columnKey]} />
+
+                    <Popup
+                      placement="left-start"
+                      onOpenPopup={() => {
+                        handleShowEditInput(id, columnKey);
+                      }}
+                      popupContent={({ close }) => (
+                        <EditUserInput
+                          onSave={() => {
+                            handleSaveEdit();
+                            close();
+                          }}
+                          onCancel={handleCancelEdit}
+                          onEditChange={handleEditChange}
+                          id={columnKey}
+                          value={editValues[columnKey] || ''}
+                          roleValue={editValues.role || 'User'}
+                        />
+                      )}
+                      triggerBtnVariant={BtnVariant.Ghost}
+                      ariaLabel={language.deleteUser}
+                    >
+                      <Icon iconName={IconName.Pencil} />
+                    </Popup>
+                  </td>
+                ))}
+                <td>
+                  {allowedEditUser && !isAdmin && (
+                    <Popup
+                      placement="left-start"
+                      popupContent={({ close }) => (
+                        <DeleteUser
+                          onPrimaryClick={() => {
+                            handleDeleteUser(id, username);
+                            close();
+                          }}
+                          onSecondaryClick={close}
+                          username={username}
+                          ref={popupRef}
+                        />
+                      )}
+                      triggerBtnClassName="danger"
+                      ariaLabel={language.deleteUser}
+                    >
+                      <Icon iconName={IconName.Trash} />
+                    </Popup>
+                  )}
                 </td>
-              ))}
-              <td>
-                {allowedEditUser && !isAdmin && (
-                  <Popup
-                    placement="left-start"
-                    popupContent={({ close }) => (
-                      <DeleteUser
-                        onPrimaryClick={() => {
-                          handleDeleteUser(id, username);
-                          close();
-                        }}
-                        onSecondaryClick={close}
-                        username={username}
-                        ref={popupRef}
-                      />
-                    )}
-                    triggerBtnClassName="danger"
-                    ariaLabel={language.deleteUser}
-                  >
-                    <Icon iconName={IconName.Trash} />
-                  </Popup>
-                )}
-              </td>
-            </tr>
-          ))
+              </tr>
+            );
+          })
         }
       </Table>
     </AdminPageContainer>
