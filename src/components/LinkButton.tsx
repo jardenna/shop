@@ -15,7 +15,7 @@ const LinkButton = ({
   linkTo,
   linkText,
   ariaCurrent,
-  className,
+  className = '',
 }: LinkButtonProps) => (
   <Link
     className={`btn btn-${variant} ${className}`}

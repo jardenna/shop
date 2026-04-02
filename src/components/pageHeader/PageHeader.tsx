@@ -21,7 +21,13 @@ const PageHeader = ({
       <Breadcrumbs currentLabel={heading} />
       <h1 id={ariaLabelledby}>{heading}</h1>
     </div>
-    {linkTo && linkText && <LinkButton linkTo={linkTo} linkText={linkText} />}
+    {linkTo && linkText && (
+      <LinkButton
+        linkTo={linkTo}
+        linkText={linkText}
+        className="page-header-link"
+      />
+    )}
   </LayoutElement>
 );
 

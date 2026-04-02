@@ -6,4 +6,8 @@
   width: 100%;
   margin-block: 20px 12px;
   align-items: flex-end;
+
+  @include max-size($mini) {
+    display: block;
+  }
 }
