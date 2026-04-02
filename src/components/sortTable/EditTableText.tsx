@@ -3,7 +3,7 @@ type EditTableTextProps = {
 };
 
 const EditTableText = ({ text }: EditTableTextProps) => (
-  <span className="edit-cell-text">
+  <span>
     {!text.includes('@') ? text : <a href={`mailto:${text}`}>{text}</a>}
   </span>
 );
