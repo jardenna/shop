@@ -19,7 +19,7 @@ const DeleteUser = ({
   const { language } = useLanguage();
 
   return (
-    <section className="delete-user-popup" ref={ref}>
+    <section className="cell-user-popup" ref={ref}>
       <p>{language.sureToDelete}</p>
       <p>{username}?</p>
 

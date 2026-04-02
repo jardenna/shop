@@ -26,7 +26,7 @@ const EditUserInput = ({
   roleValue,
   submitBtnLabel,
 }: EditUserInputProps) => (
-  <section className="delete-user-popup">
+  <section className="cell-user-popup">
     <Form
       submitBtnLabel={submitBtnLabel}
       onSubmit={() => {
@@ -48,6 +48,7 @@ const EditUserInput = ({
           inputHasNoLabel
           autoFocus
           autoComplete="off"
+          className="edit-user-input"
         />
       )}
     </Form>
