@@ -31,6 +31,7 @@ export const usePopup = ({ callback, placement }: usePopupProps) => {
         popupRef.current,
         {
           placement: placement || 'top-start',
+          strategy: 'fixed',
           // "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end";
           modifiers: [
             {

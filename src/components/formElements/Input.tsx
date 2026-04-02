@@ -15,7 +15,7 @@ export type InputProps = {
   name: string;
   onChange: InputChangeHandler;
   value: string | number;
-  autoComplete?: string;
+  autoComplete?: 'on' | 'off';
   autoFocus?: boolean;
   checked?: boolean;
   className?: string;

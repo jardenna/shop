@@ -6,7 +6,7 @@ import { AdminPath, ShopPath } from '../layout/nav/enums';
 import AboutUsPage from '../pages/AboutUsPage';
 import AddressPage from '../pages/account/AddressPage';
 import MyAccountPage from '../pages/account/MyAccountPage';
-import OrdersPage from '../pages/account/OrdersPage';
+import MyOrdersPage from '../pages/account/MyOrdersPage';
 import AdminCreateUserPage from '../pages/admin/AdminCreateUserPage';
 import AdminOrderPage from '../pages/admin/AdminOrderPage';
 import Dashboard from '../pages/admin/Dashboard';
@@ -167,7 +167,7 @@ const routeConfig = createBrowserRouter([
               },
               {
                 path: ShopPath.MyOrders,
-                element: <OrdersPage />,
+                element: <MyOrdersPage />,
               },
               {
                 path: ShopPath.MyAddresses,

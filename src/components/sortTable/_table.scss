@@ -206,10 +206,7 @@ table {
       &:first-child {
         position: sticky;
         left: 0;
-
-        @include max-size($mini) {
-          z-index: 3;
-        }
+        z-index: 3;
       }
     }
 
