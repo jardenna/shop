@@ -13,6 +13,7 @@ interface PopupProps {
   popupType?: 'tooltip' | 'popover';
   triggerBtnClassName?: string;
   triggerBtnVariant?: BtnVariant;
+  onOpenPopup?: () => void;
 }
 
 const Popup = ({
@@ -22,6 +23,7 @@ const Popup = ({
   triggerBtnVariant = BtnVariant.Ghost,
   triggerBtnClassName,
   placement,
+  onOpenPopup,
   popupType = 'popover',
 }: PopupProps) => {
   const popupId = useId();
@@ -39,11 +41,16 @@ const Popup = ({
           ariaControls: popupId,
         };
 
+  const handleOpenPopup = () => {
+    onOpenPopup?.();
+    togglePopupList();
+  };
+
   return (
     <div className="popup">
       <Button
         variant={triggerBtnVariant}
-        onClick={togglePopupList}
+        onClick={handleOpenPopup}
         ariaLabel={ariaLabel}
         className={triggerBtnClassName}
         popupRef={buttonRef}

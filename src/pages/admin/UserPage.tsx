@@ -15,7 +15,7 @@ import {
 import { useTableEditField } from '../../hooks/useTableEditField';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
 import { AdminPath } from '../../layout/nav/enums';
-import { IconName } from '../../types/enums';
+import { BtnVariant, IconName } from '../../types/enums';
 import { handleApiError } from '../../utils/handleApiError';
 import { validateUpdateUser } from '../../utils/validation/validateUpdateUser';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
@@ -114,28 +114,42 @@ const UserPage = () => {
             <tr key={id}>
               {columnKeys.map((columnKey) => (
                 <td key={columnKey}>
-                  <EditUserInput
-                    isAdmin={isAdmin}
-                    allowedEditUser={allowedEditUser}
-                    onSave={() => {
-                      handleSaveEdit();
-                    }}
-                    showEditInput={
-                      editRowId === id && editingField === columnKey
-                    }
-                    onCancel={handleCancelEdit}
-                    onEditChange={handleEditChange}
-                    onEditBtnClick={() => {
+                  <Popup
+                    placement="left-start"
+                    onOpenPopup={() => {
                       handleShowEditInput(id, columnKey);
                     }}
-                    id={columnKey}
-                    value={String(editValues[columnKey] || '')}
-                    roleValue={editValues.role || 'User'}
-                    cellContent={String(
-                      allUsers?.find((item) => item.id === id)?.[columnKey] ||
-                        '',
+                    popupContent={({ close }) => (
+                      <EditUserInput
+                        isAdmin={isAdmin}
+                        allowedEditUser={allowedEditUser}
+                        onSave={() => {
+                          handleSaveEdit();
+                          close();
+                        }}
+                        showEditInput={
+                          editRowId === id && editingField === columnKey
+                        }
+                        onCancel={handleCancelEdit}
+                        onEditChange={handleEditChange}
+                        onEditBtnClick={() => {
+                          handleShowEditInput(id, columnKey);
+                        }}
+                        id={columnKey}
+                        value={String(editValues[columnKey] || '')}
+                        roleValue={editValues.role || 'User'}
+                        cellContent={String(
+                          allUsers?.find((item) => item.id === id)?.[
+                            columnKey
+                          ] || '',
+                        )}
+                      />
                     )}
-                  />
+                    triggerBtnVariant={BtnVariant.Ghost}
+                    ariaLabel={language.deleteUser}
+                  >
+                    <Icon iconName={IconName.Pencil} />
+                  </Popup>
                 </td>
               ))}
               <td>
