@@ -25,7 +25,7 @@ const NavAd = ({
   >
     <div className="nav-ad-content">
       <h3>{heading}</h3>
-      {text && <p>{text}.</p>}
+      {text && <p className="nav-ad-text">{text}.</p>}
     </div>
   </ImageBackground>
 );

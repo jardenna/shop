@@ -29,12 +29,16 @@
     grid-template-columns: 1fr 1fr 0.8fr;
 
     @include max-size($small) {
-      grid-template-columns: repeat(auto-fit, minmax(rem(400px), 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(rem(370px), 1fr));
 
       .separator,
       .card-top-line {
         display: none;
       }
+    }
+
+    @include max-size($mini) {
+      grid-template-columns: repeat(auto-fit, minmax(rem(300px), 1fr));
     }
   }
 
@@ -124,6 +128,10 @@
     .admin-card-content {
       padding: 24px;
       gap: 12px;
+
+      @include max-size($small) {
+        padding: 6px;
+      }
     }
   }
 

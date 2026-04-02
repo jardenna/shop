@@ -6,7 +6,7 @@
   width: 100%;
   justify-content: center;
   padding: 20px;
-  padding-top: 32px;
+  padding-top: 0;
 }
 
 .admin-page {
@@ -15,6 +15,14 @@
   align-items: center;
   width: 100%;
   max-width: $page-width-large;
+  z-index: 1;
+
+  .page-header-link {
+    @include max-size($mini) {
+      width: 100%;
+      justify-content: flex-end;
+    }
+  }
 
   .page-card {
     max-height: 78lvh;
@@ -27,7 +35,6 @@
     padding: 24px;
 
     @include max-size($medium) {
-      max-height: 100%;
       padding: 12px;
     }
   }
@@ -36,15 +43,28 @@
 .admin-container {
   .main {
     display: flex;
-    height: calc(100svh - $header-height);
+    height: calc(100svh - $admin-header-height);
   }
 
   .admin-header {
-    min-height: $header-height;
+    min-height: $admin-header-height;
     display: flex;
     align-items: center;
     padding-inline: 20px;
     justify-content: space-between;
+
+    .menu-burger {
+      top: 30px;
+    }
+
+    .toggle-panel {
+      height: calc(100svh - $admin-header-height);
+      top: $admin-header-height;
+    }
+
+    .overlay {
+      top: $admin-header-height;
+    }
 
     .btn-primary {
       max-width: rem(100px);

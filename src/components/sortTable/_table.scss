@@ -74,7 +74,6 @@ table {
   th,
   td {
     padding: 4px 12px;
-    white-space: nowrap;
   }
 
   td {
@@ -101,7 +100,6 @@ table {
   border: 1px solid $color-border;
 
   @include max-size($medium) {
-    max-height: rem(400px);
     overflow: auto;
   }
 
@@ -134,6 +132,11 @@ table {
     .edit-cell {
       display: flex;
       justify-content: space-between;
+      gap: 8px;
+
+      .edit-cell-text {
+        width: max-content;
+      }
 
       .control-item {
         max-height: rem(36px);
@@ -184,7 +187,6 @@ table {
       position: sticky;
       top: 0;
       z-index: 2;
-      white-space: nowrap;
 
       &:first-child {
         z-index: 3;
@@ -204,10 +206,9 @@ table {
       &:first-child {
         position: sticky;
         left: 0;
-        white-space: inherit;
 
-        @include max-size($small) {
-          width: auto;
+        @include max-size($mini) {
+          z-index: 3;
         }
       }
     }
@@ -223,6 +224,8 @@ table {
     .table-header-cell {
       display: flex;
       justify-content: space-between;
+      white-space: nowrap;
+      gap: 12px;
     }
 
     .dot {

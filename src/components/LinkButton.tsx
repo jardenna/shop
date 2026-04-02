@@ -6,6 +6,7 @@ type LinkButtonProps = {
   linkText: string;
   linkTo: string;
   ariaCurrent?: AriaCurrentType;
+  className?: string;
   variant?: BtnVariant;
 };
 
@@ -14,8 +15,13 @@ const LinkButton = ({
   linkTo,
   linkText,
   ariaCurrent,
+  className = '',
 }: LinkButtonProps) => (
-  <Link className={`btn btn-${variant}`} to={linkTo} aria-current={ariaCurrent}>
+  <Link
+    className={`btn btn-${variant} ${className}`}
+    to={linkTo}
+    aria-current={ariaCurrent}
+  >
     <span className="btn-text">{linkText}</span>
   </Link>
 );
