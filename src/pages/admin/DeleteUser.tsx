@@ -1,6 +1,5 @@
 import Button from '../../components/Button';
 import { useLanguage } from '../../features/language/useLanguage';
-import LayoutElement from '../../layout/LayoutElement';
 import { BtnVariant } from '../../types/enums';
 import type { RefElementType } from '../../types/types';
 
@@ -24,18 +23,14 @@ const DeleteUser = ({
       <p>{language.sureToDelete}</p>
       <p>{username}?</p>
 
-      <LayoutElement
-        as="footer"
-        className="footer"
-        ariaLabel={language.deleteUser}
-      >
+      <footer className="footer">
         <Button variant={BtnVariant.Secondary} onClick={onSecondaryClick}>
           {language.cancel}
         </Button>
         <Button variant={BtnVariant.Danger} onClick={onPrimaryClick}>
           {language.delete}
         </Button>
-      </LayoutElement>
+      </footer>
     </section>
   );
 };
