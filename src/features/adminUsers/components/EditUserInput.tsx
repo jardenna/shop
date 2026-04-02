@@ -16,18 +16,20 @@ const EditUserInput = ({
   labelText,
   roleValue,
 }: EditUserInputProps) => (
-  <EditTableInput
-    labelText={labelText}
-    id={id}
-    onEditChange={onEditChange}
-    value={value}
-    onCancel={onCancel}
-    onSave={onSave}
-    isAlterntiveInput={id === 'role'}
-    alternativeInput={
-      <RoleRadioBtn roleValue={roleValue} onChange={onEditChange} />
-    }
-  />
+  <section className="delete-user-popup">
+    <EditTableInput
+      labelText={labelText}
+      id={id}
+      onEditChange={onEditChange}
+      value={value}
+      onCancel={onCancel}
+      onSave={onSave}
+      isAlterntiveInput={id === 'role'}
+      alternativeInput={
+        <RoleRadioBtn roleValue={roleValue} onChange={onEditChange} />
+      }
+    />
+  </section>
 );
 
 export default EditUserInput;
