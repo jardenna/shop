@@ -119,12 +119,12 @@ const UserPage = () => {
                     <EditTableText text={userItem[columnKey]} />
 
                     <Popup
-                      placement="left-start"
                       onOpenPopup={() => {
                         handleShowEditInput(id, columnKey);
                       }}
                       popupContent={({ close }) => (
                         <EditUserInput
+                          labelText={columnKey}
                           onSave={() => {
                             handleSaveEdit();
                             close();
@@ -137,7 +137,7 @@ const UserPage = () => {
                         />
                       )}
                       triggerBtnVariant={BtnVariant.Ghost}
-                      ariaLabel={language.deleteUser}
+                      ariaLabel={`${language.updateUser} ${columnKey}`}
                     >
                       <Icon iconName={IconName.Pencil} />
                     </Popup>

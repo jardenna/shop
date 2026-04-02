@@ -6,6 +6,7 @@ import Input from '../formElements/Input';
 
 export type BaseEditTableInput = {
   id: string;
+  labelText: string;
   onEditChange: InputChangeHandler;
   value: string;
   onCancel: () => void;
@@ -25,6 +26,7 @@ const EditTableInput = ({
   onSave,
   isAlterntiveInput,
   alternativeInput,
+  labelText,
 }: EditTableInputProps) => {
   const { language } = useLanguage();
 
@@ -45,7 +47,7 @@ const EditTableInput = ({
             name={id}
             onChange={onEditChange}
             value={value}
-            labelText="cellContent"
+            labelText={labelText}
             inputHasNoLabel
             autoFocus
             autoComplete="off"

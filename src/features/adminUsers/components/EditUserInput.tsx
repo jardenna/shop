@@ -13,10 +13,11 @@ const EditUserInput = ({
   onSave,
   onCancel,
   value,
-
+  labelText,
   roleValue,
 }: EditUserInputProps) => (
   <EditTableInput
+    labelText={labelText}
     id={id}
     onEditChange={onEditChange}
     value={value}
