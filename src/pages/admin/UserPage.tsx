@@ -45,16 +45,11 @@ const UserPage = () => {
   const popupRef = useRef<HTMLDialogElement | null>(null);
   useTrapFocus({ id: 'deleteUser', popupRef });
 
-  const {
-    handleShowEditInput,
-    handleEditChange,
-    handleCancelEdit,
-    editValues,
-    handleSaveEdit,
-  } = useTableEditField({
-    data: allUsers || [],
-    callback: handleUpdateUser,
-  });
+  const { handleShowEditInput, handleEditChange, editValues, handleSaveEdit } =
+    useTableEditField({
+      data: allUsers || [],
+      callback: handleUpdateUser,
+    });
 
   async function handleUpdateUser(id: string) {
     const validation = validateUpdateUser(editValues);
@@ -129,7 +124,7 @@ const UserPage = () => {
                             handleSaveEdit();
                             close();
                           }}
-                          onCancel={handleCancelEdit}
+                          onCancel={close}
                           onEditChange={handleEditChange}
                           id={columnKey}
                           value={editValues[columnKey] || ''}
