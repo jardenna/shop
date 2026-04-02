@@ -186,8 +186,7 @@ table {
     th {
       position: sticky;
       top: 0;
-
-      // z-index: 2;
+      z-index: 2;
 
       &:first-child {
         z-index: 3;
@@ -207,7 +206,10 @@ table {
       &:first-child {
         position: sticky;
         left: 0;
-        z-index: 3;
+
+        @include max-size($mini) {
+          z-index: 3;
+        }
       }
     }
 
