@@ -4,7 +4,7 @@ type EditTableTextProps = {
 };
 
 const EditTableText = ({ cellContent, text }: EditTableTextProps) => (
-  <span>
+  <span className="edit-cell-text">
     {!cellContent.includes('@') ? (
       text
     ) : (
