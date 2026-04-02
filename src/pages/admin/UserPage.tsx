@@ -6,6 +6,7 @@ import Popup from '../../components/popup/Popup';
 import EditTableText from '../../components/sortTable/EditTableText';
 import Table from '../../components/sortTable/Table';
 import { useGetAllUsersQuery } from '../../features/adminUsers/adminUserApiSlice';
+import DeleteUser from '../../features/adminUsers/components/DeleteUser';
 import EditUserInput from '../../features/adminUsers/components/EditUserInput';
 import { useAuth } from '../../features/auth/hooks/useAuth';
 import { useLanguage } from '../../features/language/useLanguage';
@@ -20,7 +21,6 @@ import { BtnVariant, IconName } from '../../types/enums';
 import { handleApiError } from '../../utils/handleApiError';
 import { validateUpdateUser } from '../../utils/validation/validateUpdateUser';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
-import DeleteUser from './DeleteUser';
 
 const tableHeaders: { key: keyof UserResponse; label: string; name: string }[] =
   [

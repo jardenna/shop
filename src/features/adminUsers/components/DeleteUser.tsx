@@ -1,7 +1,7 @@
-import Button from '../../components/Button';
-import { useLanguage } from '../../features/language/useLanguage';
-import { BtnVariant } from '../../types/enums';
-import type { RefElementType } from '../../types/types';
+import Button from '../../../components/Button';
+import { BtnVariant } from '../../../types/enums';
+import type { RefElementType } from '../../../types/types';
+import { useLanguage } from '../../language/useLanguage';
 
 type DeleteUserProps = {
   ref: RefElementType;
