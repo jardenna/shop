@@ -1,37 +1,46 @@
 import Button from '../../../components/Button';
-import { BtnVariant } from '../../../types/enums';
-import type { RefElementType } from '../../../types/types';
+import Icon from '../../../components/icons/Icon';
+import Popup from '../../../components/popup/Popup';
+import { BtnVariant, IconName } from '../../../types/enums';
 import { useLanguage } from '../../language/useLanguage';
 
 type DeleteUserProps = {
-  ref: RefElementType;
+  onDeleteUser: any;
   username: string;
-  onPrimaryClick: () => void;
-  onSecondaryClick?: () => void;
 };
 
-const DeleteUser = ({
-  onPrimaryClick,
-  onSecondaryClick,
-  ref,
-  username,
-}: DeleteUserProps) => {
+const DeleteUser = ({ onDeleteUser, username }: DeleteUserProps) => {
   const { language } = useLanguage();
 
   return (
-    <section className="cell-user-popup" ref={ref}>
-      <p>{language.sureToDelete}</p>
-      <p>{username}?</p>
+    <Popup
+      placement="left-start"
+      popupContent={({ close }) => (
+        <section className="cell-user-popup">
+          <p>{language.sureToDelete}</p>
+          <p>{username}?</p>
 
-      <footer className="footer">
-        <Button variant={BtnVariant.Secondary} onClick={onSecondaryClick}>
-          {language.cancel}
-        </Button>
-        <Button variant={BtnVariant.Danger} onClick={onPrimaryClick}>
-          {language.delete}
-        </Button>
-      </footer>
-    </section>
+          <footer className="footer">
+            <Button variant={BtnVariant.Secondary} onClick={close}>
+              {language.cancel}
+            </Button>
+            <Button
+              variant={BtnVariant.Danger}
+              onClick={() => {
+                onDeleteUser();
+                close();
+              }}
+            >
+              {language.delete}
+            </Button>
+          </footer>
+        </section>
+      )}
+      triggerBtnClassName="danger"
+      ariaLabel={language.deleteUser}
+    >
+      <Icon iconName={IconName.Trash} />
+    </Popup>
   );
 };
 

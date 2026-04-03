@@ -1,8 +1,6 @@
 import { useRef } from 'react';
 import type { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
-import Icon from '../../components/icons/Icon';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
-import Popup from '../../components/popup/Popup';
 import Table from '../../components/sortTable/Table';
 import { useGetAllUsersQuery } from '../../features/adminUsers/adminUserApiSlice';
 import DeleteUser from '../../features/adminUsers/components/DeleteUser';
@@ -16,7 +14,6 @@ import {
 import { useTableEditField } from '../../hooks/useTableEditField';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
 import { AdminPath } from '../../layout/nav/enums';
-import { IconName } from '../../types/enums';
 import { handleApiError } from '../../utils/handleApiError';
 import { validateUpdateUser } from '../../utils/validation/validateUpdateUser';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
@@ -129,24 +126,12 @@ const UserPage = () => {
                 ))}
                 <td>
                   {allowedEditUser && !isAdmin && (
-                    <Popup
-                      placement="left-start"
-                      popupContent={({ close }) => (
-                        <DeleteUser
-                          onPrimaryClick={() => {
-                            handleDeleteUser(id, username);
-                            close();
-                          }}
-                          onSecondaryClick={close}
-                          username={username}
-                          ref={popupRef}
-                        />
-                      )}
-                      triggerBtnClassName="danger"
-                      ariaLabel={language.deleteUser}
-                    >
-                      <Icon iconName={IconName.Trash} />
-                    </Popup>
+                    <DeleteUser
+                      onDeleteUser={() => {
+                        handleDeleteUser(id, username);
+                      }}
+                      username={username}
+                    />
                   )}
                 </td>
               </tr>
