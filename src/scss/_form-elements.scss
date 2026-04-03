@@ -37,6 +37,11 @@ input[type='checkbox'] {
   display: flex;
   justify-content: space-between;
   margin-bottom: 4px;
+
+  @include max-size($medium) {
+    gap: 12px;
+    justify-content: flex-start;
+  }
 }
 
 textarea {
@@ -77,10 +82,13 @@ input {
     background-color: transparent;
   }
 
-  &:has(:focus-visible) {
-    &::after {
-      background-color: $color-primary;
-    }
+  &:has(:focus-visible)::after {
+    opacity: 1;
+    background-color: $color-primary;
+  }
+
+  &:has([aria-invalid='true']:focus-visible)::after {
+    background-color: $color-danger;
   }
 
   + .input-info {
@@ -102,10 +110,9 @@ input {
 
   textarea[aria-invalid='true'],
   input[aria-invalid='true'] {
-    @include outline($color-danger);
+    @include outline($color: $color-danger, $offSet: 0);
 
     &:focus-visible {
-      border-color: $color-danger;
       outline: transparent;
     }
   }
