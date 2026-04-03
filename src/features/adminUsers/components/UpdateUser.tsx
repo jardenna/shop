@@ -30,8 +30,7 @@ const UpdateUser = ({
   roleValue,
   submitBtnLabel,
 }: UpdateUserProps) => (
-  <div>
-    <EditTableText text={text} />
+  <div className="edit-user">
     <Popup
       onOpenPopup={onOpenPopup}
       popupContent={({ close }) => (
@@ -54,6 +53,7 @@ const UpdateUser = ({
     >
       <Icon iconName={IconName.Pencil} />
     </Popup>
+    <EditTableText text={text} />
   </div>
 );
 
