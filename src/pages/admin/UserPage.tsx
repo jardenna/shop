@@ -17,6 +17,7 @@ import { AdminPath } from '../../layout/nav/enums';
 import { handleApiError } from '../../utils/handleApiError';
 import { validateUpdateUser } from '../../utils/validation/validateUpdateUser';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
+import './userPage.styles.scss';
 
 const tableHeaders: { key: keyof UserResponse; label: string; name: string }[] =
   [
