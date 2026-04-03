@@ -79,12 +79,16 @@ input {
     bottom: 0;
     left: 0;
     height: 3px;
-    background-color: transparent;
+    background-color: $color-primary;
+    opacity: 0;
+    transition:
+      opacity 0.5s ease,
+      background-color 0.2s ease;
+    pointer-events: none;
   }
 
   &:has(:focus-visible)::after {
     opacity: 1;
-    background-color: $color-primary;
   }
 
   &:has([aria-invalid='true']:focus-visible)::after {
