@@ -95,6 +95,7 @@ const LoginPage = () => {
           onBlur={onBlur}
           navigateTo={ShopPath.CreateAccount}
           navigateToText={language.createAccount}
+          autoComplete="on"
         />
       )}
     </MainPageContainer>

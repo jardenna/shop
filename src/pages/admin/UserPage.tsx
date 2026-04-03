@@ -1,11 +1,10 @@
 import { useRef } from 'react';
 import type { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
-import Icon from '../../components/icons/Icon';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
-import Popup from '../../components/popup/Popup';
 import Table from '../../components/sortTable/Table';
 import { useGetAllUsersQuery } from '../../features/adminUsers/adminUserApiSlice';
-import EditUserInput from '../../features/adminUsers/components/EditUserInput';
+import DeleteUser from '../../features/adminUsers/components/DeleteUser';
+import UpdateUser from '../../features/adminUsers/components/UpdateUser';
 import { useAuth } from '../../features/auth/hooks/useAuth';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
@@ -15,11 +14,10 @@ import {
 import { useTableEditField } from '../../hooks/useTableEditField';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
 import { AdminPath } from '../../layout/nav/enums';
-import { IconName } from '../../types/enums';
 import { handleApiError } from '../../utils/handleApiError';
 import { validateUpdateUser } from '../../utils/validation/validateUpdateUser';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
-import DeleteUser from './DeleteUser';
+import './userPage.styles.scss';
 
 const tableHeaders: { key: keyof UserResponse; label: string; name: string }[] =
   [
@@ -29,7 +27,9 @@ const tableHeaders: { key: keyof UserResponse; label: string; name: string }[] =
     { key: 'id', label: '', name: '' },
   ];
 
-const columnKeys: (keyof UserResponse)[] = ['username', 'email', 'role'];
+const columnKeys = ['username', 'email', 'role'] as const;
+
+export type ColumnKey = (typeof columnKeys)[number];
 
 const UserPage = () => {
   const { language } = useLanguage();
@@ -44,18 +44,11 @@ const UserPage = () => {
   const popupRef = useRef<HTMLDialogElement | null>(null);
   useTrapFocus({ id: 'deleteUser', popupRef });
 
-  const {
-    editRowId,
-    editingField,
-    handleShowEditInput,
-    handleEditChange,
-    handleCancelEdit,
-    editValues,
-    handleSaveEdit,
-  } = useTableEditField({
-    data: allUsers || [],
-    callback: handleUpdateUser,
-  });
+  const { handleShowEditInput, handleEditChange, editValues, handleSaveEdit } =
+    useTableEditField({
+      data: allUsers || [],
+      callback: handleUpdateUser,
+    });
 
   async function handleUpdateUser(id: string) {
     const validation = validateUpdateUser(editValues);
@@ -110,58 +103,41 @@ const UserPage = () => {
         emptyHeaderCellText={language.deleteUser}
       >
         {(data) =>
-          data.map(({ id, username, isAdmin }) => (
-            <tr key={id}>
-              {columnKeys.map((columnKey) => (
-                <td key={columnKey}>
-                  <EditUserInput
-                    isAdmin={isAdmin}
-                    allowedEditUser={allowedEditUser}
-                    onSave={() => {
-                      handleSaveEdit();
-                    }}
-                    showEditInput={
-                      editRowId === id && editingField === columnKey
-                    }
-                    onCancel={handleCancelEdit}
-                    onEditChange={handleEditChange}
-                    onEditBtnClick={() => {
-                      handleShowEditInput(id, columnKey);
-                    }}
-                    id={columnKey}
-                    value={String(editValues[columnKey] || '')}
-                    roleValue={editValues.role || 'User'}
-                    cellContent={String(
-                      allUsers?.find((item) => item.id === id)?.[columnKey] ||
-                        '',
-                    )}
-                  />
+          data.map((userItem) => {
+            const { id, username, isAdmin } = userItem;
+
+            return (
+              <tr key={id}>
+                {columnKeys.map((columnKey) => (
+                  <td key={columnKey}>
+                    <UpdateUser
+                      submitBtnLabel={language.save}
+                      onEditChange={handleEditChange}
+                      onOpenPopup={() => {
+                        handleShowEditInput(id, columnKey);
+                      }}
+                      text={userItem[columnKey]}
+                      ariaLabel={`${language.updateUser} ${columnKey}`}
+                      id={columnKey}
+                      value={editValues[columnKey] || ''}
+                      roleValue={editValues.role || 'User'}
+                      onSaveEdit={handleSaveEdit}
+                    />
+                  </td>
+                ))}
+                <td>
+                  {allowedEditUser && !isAdmin && (
+                    <DeleteUser
+                      onDeleteUser={() => {
+                        handleDeleteUser(id, username);
+                      }}
+                      username={username}
+                    />
+                  )}
                 </td>
-              ))}
-              <td>
-                {allowedEditUser && !isAdmin && (
-                  <Popup
-                    placement="left-start"
-                    popupContent={({ close }) => (
-                      <DeleteUser
-                        onPrimaryClick={() => {
-                          handleDeleteUser(id, username);
-                          close();
-                        }}
-                        onSecondaryClick={close}
-                        username={username}
-                        ref={popupRef}
-                      />
-                    )}
-                    triggerBtnClassName="danger"
-                    ariaLabel={language.deleteUser}
-                  >
-                    <Icon iconName={IconName.Trash} />
-                  </Popup>
-                )}
-              </td>
-            </tr>
-          ))
+              </tr>
+            );
+          })
         }
       </Table>
     </AdminPageContainer>

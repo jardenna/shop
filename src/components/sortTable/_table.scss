@@ -129,49 +129,6 @@ table {
   }
 
   table {
-    .edit-cell {
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-
-      .edit-cell-text {
-        width: max-content;
-      }
-
-      .control-item {
-        max-height: rem(36px);
-        padding: 4px;
-        border-radius: 4px;
-      }
-
-      .input-container {
-        width: auto;
-      }
-
-      input:not(input[type='radio']) {
-        background-color: $color-white;
-        border: 1px solid $color-gray-60;
-        min-height: rem(38px);
-      }
-
-      .edit-controls {
-        display: flex;
-        gap: 12px;
-
-        @include max-size($small) {
-          flex-direction: column;
-        }
-
-        .control-list {
-          .radio-btn-label {
-            text-transform: none;
-            min-height: auto;
-            padding-inline: 8px;
-          }
-        }
-      }
-    }
-
     tbody {
       display: flex;
       flex-direction: column;

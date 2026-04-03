@@ -1,73 +1,57 @@
 import type { Roles } from '../../../app/api/apiTypes/adminApiTypes';
-import IconBtn from '../../../components/IconBtn';
-import type { BaseEditTableInput } from '../../../components/sortTable/EditTableInput';
-import EditTableInput from '../../../components/sortTable/EditTableInput';
-import EditTableText from '../../../components/sortTable/EditTableText';
-import { IconName } from '../../../types/enums';
-import { translateKey } from '../../../utils/utils';
-import { useLanguage } from '../../language/useLanguage';
+import Form from '../../../components/form/Form';
+import Input from '../../../components/formElements/Input';
+import { ColumnKey } from '../../../pages/admin/UserPage';
+import { InputChangeHandler } from '../../../types/types';
 import RoleRadioBtn from './RoleRadioBtn';
 
-type EditUserInputProps = BaseEditTableInput & {
-  allowedEditUser: boolean;
-  isAdmin: boolean;
+type EditUserInputProps = {
+  id: ColumnKey;
+  labelText: string;
+  onEditChange: InputChangeHandler;
   roleValue: Roles;
-  showEditInput: boolean;
-  onEditBtnClick: () => void;
+  submitBtnLabel: string;
+  value: string;
+  onCancel: () => void;
+  onSave: () => void;
 };
 
 const EditUserInput = ({
-  showEditInput,
   id,
-  allowedEditUser,
-  isAdmin,
   onEditChange,
   onSave,
   onCancel,
   value,
-  cellContent,
-  onEditBtnClick,
+  labelText,
   roleValue,
-}: EditUserInputProps) => {
-  const { language } = useLanguage();
-
-  return !allowedEditUser ? (
-    <EditTableText
-      cellContent={cellContent}
-      text={translateKey(cellContent, language)}
-    />
-  ) : (
-    <div className="edit-cell">
-      {showEditInput ? (
-        <EditTableInput
-          id={id}
-          onEditChange={onEditChange}
-          value={value}
-          cellContent={cellContent}
-          onCancel={onCancel}
-          onSave={onSave}
-          isAlterntiveInput={id === 'role'}
-          alternativeInput={
-            <RoleRadioBtn roleValue={roleValue} onChange={onEditChange} />
-          }
-        />
+  submitBtnLabel,
+}: EditUserInputProps) => (
+  <section className="cell-user-popup">
+    <Form
+      submitBtnLabel={submitBtnLabel}
+      onSubmit={() => {
+        onSave();
+      }}
+      cancelBtnProps={{
+        onCancel,
+      }}
+    >
+      {id === 'role' ? (
+        <RoleRadioBtn roleValue={roleValue} onChange={onEditChange} />
       ) : (
-        <>
-          <EditTableText
-            cellContent={cellContent}
-            text={translateKey(cellContent, language)}
-          />
-          {!isAdmin && (
-            <IconBtn
-              onClick={onEditBtnClick}
-              iconName={IconName.Pencil}
-              ariaLabel={`${language.update} ${translateKey(id, language)}`}
-            />
-          )}
-        </>
+        <Input
+          id={id}
+          name={id}
+          onChange={onEditChange}
+          value={value}
+          labelText={labelText}
+          inputHasNoLabel
+          autoFocus
+          className="edit-user-input"
+        />
       )}
-    </div>
-  );
-};
+    </Form>
+  </section>
+);
 
 export default EditUserInput;
