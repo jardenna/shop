@@ -47,7 +47,6 @@ const EditUserInput = ({
           labelText={labelText}
           inputHasNoLabel
           autoFocus
-          autoComplete="off"
           className="edit-user-input"
         />
       )}
