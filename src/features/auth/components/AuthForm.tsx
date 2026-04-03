@@ -50,6 +50,7 @@ const AuthForm = ({
   navigateToText,
   currentUser,
   canAssignRoles,
+  autoComplete = 'off',
 }: AuthFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
@@ -71,7 +72,7 @@ const AuthForm = ({
             required
             errorText={language[errors.username]}
             onBlur={onBlur}
-            autoComplete="on"
+            autoComplete={autoComplete}
           />
         )}
         <Input
@@ -85,7 +86,7 @@ const AuthForm = ({
           onBlur={onBlur}
           type="email"
           inputMode="email"
-          autoComplete="on"
+          autoComplete={autoComplete}
         />
         <PasswordInput
           name="password"

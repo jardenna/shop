@@ -7,6 +7,7 @@ import type {
 import { useMessagePopup } from '../../../components/messagePopup/useMessagePopup';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { ShopPath } from '../../../layout/nav/enums';
+import { AutoComplete } from '../../../types/types';
 import { handleApiError } from '../../../utils/handleApiError';
 import { validateSignup } from '../../../utils/validation/validateCreateAccount';
 import { useLanguage } from '../../language/useLanguage';
@@ -15,6 +16,7 @@ import AuthForm from './AuthForm';
 
 export type CreateAccountProps = {
   navigateTo: string;
+  autoComplete?: AutoComplete;
   canAssignRoles?: boolean;
   currentUser?: UserResponse | null;
 };
@@ -27,6 +29,7 @@ const CreateAccount = ({
   navigateTo,
   currentUser,
   canAssignRoles,
+  autoComplete,
 }: CreateAccountProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
@@ -84,6 +87,7 @@ const CreateAccount = ({
       navigateToText={language.loginHere}
       currentUser={currentUser}
       canAssignRoles={canAssignRoles}
+      autoComplete={autoComplete}
     />
   );
 };

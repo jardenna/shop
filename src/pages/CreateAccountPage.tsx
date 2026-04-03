@@ -8,7 +8,11 @@ const CreateAccountPage = () => {
 
   return (
     <MainPageContainer heading="createAccount" className="page-small">
-      <CreateAccount navigateTo={ShopPath.Root} currentUser={currentUser} />
+      <CreateAccount
+        navigateTo={ShopPath.Root}
+        currentUser={currentUser}
+        autoComplete="on"
+      />
     </MainPageContainer>
   );
 };

@@ -1,5 +1,6 @@
 import { SyntheticEvent, useId } from 'react';
 import type {
+  AutoComplete,
   BlurEventType,
   InputChangeHandler,
   InputMode,
@@ -15,7 +16,7 @@ export type InputProps = {
   name: string;
   onChange: InputChangeHandler;
   value: string | number;
-  autoComplete?: 'on' | 'off';
+  autoComplete?: AutoComplete;
   autoFocus?: boolean;
   checked?: boolean;
   className?: string;
