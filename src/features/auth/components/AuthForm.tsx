@@ -71,6 +71,7 @@ const AuthForm = ({
             required
             errorText={language[errors.username]}
             onBlur={onBlur}
+            autoComplete="on"
           />
         )}
         <Input
@@ -84,6 +85,7 @@ const AuthForm = ({
           onBlur={onBlur}
           type="email"
           inputMode="email"
+          autoComplete="on"
         />
         <PasswordInput
           name="password"
