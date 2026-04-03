@@ -42,14 +42,12 @@ input[type='checkbox'] {
 textarea {
   resize: none;
   line-height: rem(24px);
+  display: block;
+  margin: 0;
 }
 
 input {
   min-height: $input-height;
-
-  &:focus-within {
-    border-bottom: 3px solid $color-primary;
-  }
 }
 
 .input-info {
@@ -68,6 +66,7 @@ input {
 .input-container {
   width: 100%;
   position: relative;
+  border-bottom: 3px solid transparent;
 
   + .input-info {
     margin-top: -14px;
@@ -77,6 +76,10 @@ input {
     .error-icon {
       right: 36px;
     }
+  }
+
+  &:has(:focus-visible) {
+    border-color: $color-primary;
   }
 
   input,
