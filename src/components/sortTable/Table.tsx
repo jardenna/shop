@@ -220,7 +220,6 @@ const Table = <T,>({
                 )}
               </tbody>
             </table>
-            {!filteredData.length && <div>hello</div>}
           </ErrorBoundary>
         )}
       </div>
