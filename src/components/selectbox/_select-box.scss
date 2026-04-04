@@ -2,12 +2,6 @@
 
 .input-container {
   .select-box,
-  .select-box__menu-portal {
-    input {
-      min-height: auto;
-    }
-  }
-
   &.select-box-container {
     .error-icon {
       right: 32px;
@@ -26,9 +20,6 @@
   }
   .select-box__control {
     @extend %styled-input;
-
-    min-height: $input-height;
-    height: auto;
   }
 
   .select-box__menu {

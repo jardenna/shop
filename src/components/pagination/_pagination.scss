@@ -9,6 +9,10 @@
   padding-block: 20px 32px;
   margin-top: 20px;
 
+  input {
+    height: auto;
+  }
+
   @include max-size($small) {
     flex-direction: column;
   }
@@ -31,7 +35,6 @@
 
     /* stylelint-disable-next-line selector-class-pattern */
     .select-box__control {
-      min-height: auto;
       background-color: $color-white;
       border: 1px solid $color-border-dark;
     }
