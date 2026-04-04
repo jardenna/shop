@@ -411,14 +411,23 @@ const getAdminProducts = asyncHandler(async (req, res) => {
 
   const { page, productsPerPage } = req.pagination;
   const filter = req.filter;
-  const sort = req.sort;
+
+  const sortField = req.query.sortField;
+  const sortOrder = req.query.sortOrder;
+  const sortConfig = {};
+
+  if (sortField && sortOrder) {
+    sortConfig[sortField] = sortOrder === 'desc' ? -1 : 1;
+  } else {
+    sortConfig.createdAt = -1;
+  }
 
   const products = await Product.find(filter)
     .populate({
       path: 'subCategory',
       populate: { path: 'category', model: 'Category' },
     })
-    .sort(sort)
+    .sort(sortConfig)
     .skip(productsPerPage * (page - 1))
     .limit(productsPerPage)
     .lean();
