@@ -1,3 +1,4 @@
+import { useSearchParams } from 'react-router';
 import type { Product } from '../../app/api/apiTypes/adminApiTypes';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import { usePaginationParams } from '../../components/pagination/hooks/usePaginationParams';
@@ -38,6 +39,29 @@ const ProductPage = () => {
 
   const [dublicateProduct] = useDuplicateProductMutation();
   const shouldPollFullList = hasScheduledData?.hasScheduled ?? false;
+
+  const [searchParams] = useSearchParams();
+
+  type ColumnKey = (typeof tableHeaders)[number]['key'];
+
+  const sortField = (searchParams.get('sortField') ??
+    tableHeaders[0]?.key) as ColumnKey;
+
+  const sortOrder = searchParams.get('sortOrder') || 'asc';
+
+  const filters: Partial<Record<ColumnKey, string>> = tableHeaders.reduce<
+    Partial<Record<ColumnKey, string>>
+  >((acc, columnItem) => {
+    const queryValue = searchParams.get(columnItem.key as string);
+
+    if (queryValue) {
+      return { ...acc, [columnItem.key]: queryValue };
+    }
+
+    return acc;
+  }, {});
+
+  console.log(filters, sortField, sortOrder);
 
   const { page, productsPerPage, setPage, updatePagination } =
     usePaginationParams();
