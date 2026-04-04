@@ -7,6 +7,7 @@ import RoleRadioBtn from './RoleRadioBtn';
 
 type EditUserInputProps = {
   id: ColumnKey;
+  isFormDirty: boolean;
   labelText: string;
   onEditChange: InputChangeHandler;
   roleValue: Roles;
@@ -25,10 +26,12 @@ const EditUserInput = ({
   labelText,
   roleValue,
   submitBtnLabel,
+  isFormDirty,
 }: EditUserInputProps) => (
   <section className="cell-user-popup">
     <Form
       submitBtnLabel={submitBtnLabel}
+      disabled={!isFormDirty}
       onSubmit={() => {
         onSave();
       }}
