@@ -4,20 +4,11 @@ import { emailRegex } from '../regex';
 
 export function validateUpdateUser(values: Partial<UserResponse>) {
   const { username, email } = values;
-  let error;
-  // Name Errors
-  if (username === '') {
-    error = ValidationMessage.nothingWasUpdated;
-  }
 
-  // Email Errors
-  if (email === '') {
-    error = ValidationMessage.nothingWasUpdated;
-  }
+  const isEmptyInput = username === '' || email === '';
+  const isInvalidEmail = email ? !emailRegex.test(email) : false;
 
-  if (email && !emailRegex.test(email)) {
-    error = ValidationMessage.nothingWasUpdated;
+  if (isEmptyInput || isInvalidEmail) {
+    return ValidationMessage.nothingWasUpdated;
   }
-
-  return error;
 }
