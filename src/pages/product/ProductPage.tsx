@@ -39,12 +39,15 @@ const ProductPage = () => {
   const [dublicateProduct] = useDuplicateProductMutation();
   const shouldPollFullList = hasScheduledData?.hasScheduled ?? false;
 
+  const { page, productsPerPage, setPage, updatePagination } =
+    usePaginationParams();
+
   const {
     data: allProducts,
     isLoading,
     refetch,
   } = useGetAllProductsQuery(
-    { productsPerPage: 100 },
+    { productsPerPage, page: page.toString() },
     {
       pollingInterval: shouldPollFullList ? 15000 : undefined,
       refetchOnMountOrArgChange: true,
@@ -62,9 +65,6 @@ const ProductPage = () => {
       handleApiError(error, onAddMessagePopup);
     }
   }
-
-  const { page, productsPerPage, setPage, updatePagination } =
-    usePaginationParams();
 
   const selectProductCountList = ['8', '16'];
   const totalBtns = allProducts?.pages ?? 1;
