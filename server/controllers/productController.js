@@ -239,11 +239,11 @@ const getNewProducts = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Get All Products with Pagination
+// @desc    Get Shop products
 // @route   /api/products
 // @method  Get
 // @access  Public
-const getProducts = asyncHandler(async (req, res) => {
+const getShopProducts = asyncHandler(async (req, res) => {
   const productsPerPage = parseInt(req.query.productsPerPage) || 6;
   const page = parseInt(req.query.page) || 1;
   const subCategoryId = req.query.subCategoryId;
@@ -538,8 +538,8 @@ export {
   getAdminProducts,
   getNewProducts,
   getProductById,
-  getProducts,
   getShopProductById,
+  getShopProducts,
   getTopProducts,
   updateProduct,
 };

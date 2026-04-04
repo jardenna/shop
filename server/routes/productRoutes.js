@@ -7,8 +7,8 @@ import {
   getAdminProducts,
   getNewProducts,
   getProductById,
-  getProducts,
   getShopProductById,
+  getShopProducts,
   getTopProducts,
   updateProduct,
 } from '../controllers/productController.js';
@@ -28,7 +28,7 @@ import languageMiddleware from '../middleware/languageMiddleware.js';
 const router = express.Router();
 router
   .route('/')
-  .get(languageMiddleware, filterProductsMiddleware, getProducts)
+  .get(languageMiddleware, filterProductsMiddleware, getShopProducts)
   .post(languageMiddleware, authenticate, authorizeEmployee, createProduct);
 
 router.get('/scheduled', checkScheduled);
