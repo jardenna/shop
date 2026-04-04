@@ -1,6 +1,5 @@
 import type { OmitChecked } from '../../../types/types';
 import type {
-  BasePagination,
   BaseProduct,
   BaseProductParams,
   DefaultResponse,
@@ -183,6 +182,11 @@ export type UpdateProductRequest = {
   product: ProductRequest;
 };
 
-export type ProductsResponse = BasePagination & { products: Product[] };
+export type ProductsResponse = {
+  page: number;
+  pages: number;
+  productCount: number;
+  products: Product[];
+};
 
 export type FileName = 'images';

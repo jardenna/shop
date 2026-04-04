@@ -1,5 +1,9 @@
 import type { Product } from '../../app/api/apiTypes/adminApiTypes';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
+import { usePaginationParams } from '../../components/pagination/hooks/usePaginationParams';
+import { usePaginationText } from '../../components/pagination/hooks/usePaginationText';
+import Pagination from '../../components/pagination/Pagination';
+import { PageCountOptions } from '../../components/pagination/PaginationSelect';
 import type { Column } from '../../components/sortTable/Table';
 import Table from '../../components/sortTable/Table';
 import { useLanguage } from '../../features/language/useLanguage';
@@ -59,6 +63,36 @@ const ProductPage = () => {
     }
   }
 
+  const { page, productsPerPage, setPage, updatePagination } =
+    usePaginationParams();
+
+  const selectProductCountList = ['8', '16'];
+  const totalBtns = allProducts?.pages ?? 1;
+  const productCount = allProducts ? allProducts.productCount : 0;
+  // const totalBtns = 10;
+  const isShowingAll = productsPerPage >= productCount && productCount > 0;
+
+  const handleSelectCount = (option: PageCountOptions) => {
+    const newCount = Number(option.value);
+    updatePagination(1, newCount);
+  };
+
+  const handlePagination = (id: number) => {
+    // Early exit so current page doesn't spam history or rerender
+    if (id === page) {
+      return;
+    }
+    setPage(id);
+  };
+
+  const { paginationMobileText } = usePaginationText({
+    page,
+    productsPerPage,
+    productCount,
+    totalBtns,
+    language,
+  });
+
   return (
     <AdminPageContainer
       heading={language.products}
@@ -108,6 +142,24 @@ const ProductPage = () => {
           )
         }
       </Table>
+      <Pagination
+        totalBtns={totalBtns}
+        page={page}
+        onPagination={handlePagination}
+        onSelectCount={handleSelectCount}
+        totalCount={productCount}
+        paginationMobileText={paginationMobileText}
+        defaultValue={{
+          value: productsPerPage.toString(),
+          label: productsPerPage.toString(),
+        }}
+        optionList={selectProductCountList}
+        selectInfo={
+          isShowingAll
+            ? `${language.showingAllProducts} (${productCount})`
+            : language.productPerPage
+        }
+      />
     </AdminPageContainer>
   );
 };
