@@ -69,7 +69,6 @@ const ProductPage = () => {
   const selectProductCountList = ['8', '16'];
   const totalBtns = allProducts?.pages ?? 1;
   const productCount = allProducts ? allProducts.productCount : 0;
-  // const totalBtns = 10;
   const isShowingAll = productsPerPage >= productCount && productCount > 0;
 
   const handleSelectCount = (option: PageCountOptions) => {

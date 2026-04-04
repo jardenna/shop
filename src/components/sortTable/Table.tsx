@@ -75,6 +75,7 @@ const Table = <T,>({
 
   const sortField =
     (searchParams.get('sortField') as keyof T) || columns[0]?.key;
+
   const sortOrder = searchParams.get('sortOrder') || 'asc';
 
   const filters: Record<keyof T, string> = columns.reduce(
@@ -219,6 +220,7 @@ const Table = <T,>({
                 )}
               </tbody>
             </table>
+            {!filteredData.length && <div>hello</div>}
           </ErrorBoundary>
         )}
       </div>
