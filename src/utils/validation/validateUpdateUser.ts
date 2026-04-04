@@ -5,19 +5,18 @@ import { emailRegex } from '../regex';
 export function validateUpdateUser(values: Partial<UserResponse>) {
   const { username, email } = values;
   let error;
-
   // Name Errors
   if (username === '') {
-    error = ValidationMessage.PleaseEnterName;
+    error = ValidationMessage.nothingWasUpdated;
   }
 
   // Email Errors
   if (email === '') {
-    error = ValidationMessage.PleaseEnterEmail;
+    error = ValidationMessage.nothingWasUpdated;
   }
 
   if (email && !emailRegex.test(email)) {
-    error = ValidationMessage.PleaseEnterValidEmail;
+    error = ValidationMessage.nothingWasUpdated;
   }
 
   return error;
