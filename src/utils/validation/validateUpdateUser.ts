@@ -4,21 +4,11 @@ import { emailRegex } from '../regex';
 
 export function validateUpdateUser(values: Partial<UserResponse>) {
   const { username, email } = values;
-  let error;
 
-  // Name Errors
-  if (username === '') {
-    error = ValidationMessage.PleaseEnterName;
+  const isEmptyInput = username === '' || email === '';
+  const isInvalidEmail = email ? !emailRegex.test(email) : false;
+
+  if (isEmptyInput || isInvalidEmail) {
+    return ValidationMessage.nothingWasUpdated;
   }
-
-  // Email Errors
-  if (email === '') {
-    error = ValidationMessage.PleaseEnterEmail;
-  }
-
-  if (email && !emailRegex.test(email)) {
-    error = ValidationMessage.PleaseEnterValidEmail;
-  }
-
-  return error;
 }

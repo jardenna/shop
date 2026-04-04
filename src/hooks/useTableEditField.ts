@@ -13,13 +13,17 @@ export const useTableEditField = <T extends { id: string }>({
   const [editRowId, setEditRowId] = useState<string | null>(null);
   const [editingField, setEditingField] = useState<keyof T | null>(null);
   const [values, setValues] = useState<Partial<T>>({});
+  const [initialValues, setInitialValues] = useState<Partial<T>>({});
 
   const handleShowEditInput = (id: string, field: keyof T) => {
     setEditRowId(id);
     setEditingField(field);
     const row = data.find((item) => item.id === id);
     if (row) {
-      setValues({ [field]: row[field] } as Partial<T>);
+      const initialFieldValue = { [field]: row[field] } as Partial<T>;
+
+      setValues(initialFieldValue);
+      setInitialValues(initialFieldValue);
     }
   };
 
@@ -33,15 +37,27 @@ export const useTableEditField = <T extends { id: string }>({
     setEditRowId(null);
     setEditingField(null);
     setValues({});
+    setInitialValues({});
   };
 
+  const isFormDirty = Object.keys(values).some((key) => {
+    const typedKey = key as keyof T;
+    return values[typedKey] !== initialValues[typedKey];
+  });
+
   const handleSaveEdit = () => {
+    if (!isFormDirty) {
+      return;
+    }
+
     if (callback && editRowId) {
       callback(editRowId, values);
     }
+
     setEditRowId(null);
     setEditingField(null);
     setValues({});
+    setInitialValues({});
   };
 
   return {
@@ -52,5 +68,6 @@ export const useTableEditField = <T extends { id: string }>({
     handleCancelEdit,
     handleSaveEdit,
     editValues: values,
+    isFormDirty,
   };
 };

@@ -5,6 +5,7 @@ export enum ValidationMessage {
   discountRange = 'discountRange',
   ImageRequired = 'imageRequired',
   MaterialRequired = 'materialRequired',
+  nothingWasUpdated = 'nothingWasUpdated',
   PasswordDoNotMatch = 'passwordDoNotMatch',
   PasswordLowercase = 'passwordLowercase',
   PasswordMinLength = 'passwordMinLength',

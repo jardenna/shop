@@ -248,6 +248,7 @@ noReview;Be the first to review this product;Bliv den første til at anmelde det
 notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 
 notAuthorizedNoToken;Not authorized, no token;Ikke autoriseret, ingen token
 notAuthorizedTokenFailed;Not authorized, token failed;Ikke autoriseret, token mislykkedes
+nothingWasUpdated;No changes were made;Der blev ikke foretaget nogen ændringer
 notifyMe;Notify me;Giv mig besked
 notifyMeMessage;Choose below, and we’ll notify you when it’s restocked; Vælg herunder, så får du en e-mail, når varen igen er på lager
 notifySuccessMeMessage;We got your request. Hopefully we’ll be in touch soon;Vi har modtaget din forespørgsel. Forhåbentlig hører du snart fra os

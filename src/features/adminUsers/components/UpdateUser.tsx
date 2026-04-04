@@ -10,6 +10,7 @@ import EditUserInput from './EditUserInput';
 type UpdateUserProps = {
   ariaLabel: string;
   id: ColumnKey;
+  isFormDirty: boolean;
   roleValue: Roles;
   submitBtnLabel: string;
   text: string;
@@ -27,6 +28,7 @@ const UpdateUser = ({
   onEditChange,
   value,
   ariaLabel,
+  isFormDirty,
   roleValue,
   submitBtnLabel,
 }: UpdateUserProps) => (
@@ -46,6 +48,7 @@ const UpdateUser = ({
           id={id}
           value={value}
           roleValue={roleValue}
+          isFormDirty={isFormDirty}
         />
       )}
       triggerBtnVariant={BtnVariant.Ghost}

@@ -44,11 +44,16 @@ const UserPage = () => {
   const popupRef = useRef<HTMLDialogElement | null>(null);
   useTrapFocus({ id: 'deleteUser', popupRef });
 
-  const { handleShowEditInput, handleEditChange, editValues, handleSaveEdit } =
-    useTableEditField({
-      data: allUsers || [],
-      callback: handleUpdateUser,
-    });
+  const {
+    handleShowEditInput,
+    handleEditChange,
+    editValues,
+    handleSaveEdit,
+    isFormDirty,
+  } = useTableEditField({
+    data: allUsers || [],
+    callback: handleUpdateUser,
+  });
 
   async function handleUpdateUser(id: string) {
     const validation = validateUpdateUser(editValues);
@@ -112,6 +117,7 @@ const UserPage = () => {
                   <td key={columnKey}>
                     <UpdateUser
                       submitBtnLabel={language.save}
+                      isFormDirty={isFormDirty}
                       onEditChange={handleEditChange}
                       onOpenPopup={() => {
                         handleShowEditInput(id, columnKey);
