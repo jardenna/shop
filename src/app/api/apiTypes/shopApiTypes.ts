@@ -1,4 +1,5 @@
 import type {
+  BasePagination,
   BaseProduct,
   BaseProductParams,
   DefaultResponseType,
@@ -19,12 +20,9 @@ export type ShopProductsParams = BaseProductParams &
     subCategoryId?: string;
   };
 
-export type ShopAllProductsResponse = {
+export type ShopAllProductsResponse = BasePagination & {
   availableBrands: string[];
   availableSizes: Size[];
-  page: number;
-  pages: number;
-  productCount: number;
   products: BaseProduct[];
   totalCount: number;
 };

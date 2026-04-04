@@ -1,5 +1,6 @@
 import type { OmitChecked } from '../../../types/types';
 import type {
+  BasePagination,
   BaseProduct,
   BaseProductParams,
   DefaultResponse,
@@ -182,10 +183,7 @@ export type UpdateProductRequest = {
   product: ProductRequest;
 };
 
-export type ProductsResponse = {
-  page: number;
-  pages: number;
-  productCount: number;
+export type ProductsResponse = BasePagination & {
   products: Product[];
 };
 

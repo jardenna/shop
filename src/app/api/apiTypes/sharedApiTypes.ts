@@ -100,3 +100,9 @@ export type ReviewRequest = {
   comment: string;
   rating: number;
 };
+
+export type BasePagination = {
+  page: number;
+  pages: number;
+  productCount: number;
+};
