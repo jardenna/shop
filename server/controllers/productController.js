@@ -212,6 +212,33 @@ const deleteProduct = asyncHandler(async (req, res) => {
     .json({ success: true, message: 'Product deleted successfully' });
 });
 
+// @desc    Get Top Products
+// @route   /api/products/top
+// @method  Get
+// @access  Public
+const getTopProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({}).sort({ rating: -1 }).limit(4).lean();
+
+  res.status(200).json({
+    products: formatMongoData(products),
+  });
+});
+
+// @desc    Get New Products
+// @route   /api/products/new
+// @method  Get
+// @access  Public
+const getNewProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({})
+    .sort({ createdAt: -1 })
+    .limit(5)
+    .lean();
+
+  res.status(200).json({
+    products: formatMongoData(products),
+  });
+});
+
 // @desc    Get All Products with Pagination
 // @route   /api/products
 // @method  Get
@@ -371,11 +398,11 @@ const getProducts = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Get Sorted Products
+// @desc    Get admin Products
 // @route   /api/products/allProducts
 // @method  Get
 // @access  Public
-const getSortedProducts = asyncHandler(async (req, res) => {
+const getAdminProducts = asyncHandler(async (req, res) => {
   await updateScheduledItems({
     items: await Product.find({ productStatus: SCHEDULED }).lean(),
     model: Product,
@@ -422,33 +449,6 @@ const getSortedProducts = asyncHandler(async (req, res) => {
     pages: Math.ceil(productCount / productsPerPage),
     productCount,
     totalCount,
-  });
-});
-
-// @desc    Get Top Products
-// @route   /api/products/top
-// @method  Get
-// @access  Public
-const getTopProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({}).sort({ rating: -1 }).limit(4).lean();
-
-  res.status(200).json({
-    products: formatMongoData(products),
-  });
-});
-
-// @desc    Get New Products
-// @route   /api/products/new
-// @method  Get
-// @access  Public
-const getNewProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({})
-    .sort({ createdAt: -1 })
-    .limit(5)
-    .lean();
-
-  res.status(200).json({
-    products: formatMongoData(products),
   });
 });
 
@@ -535,11 +535,11 @@ export {
   createProduct,
   deleteProduct,
   duplicateProduct,
+  getAdminProducts,
   getNewProducts,
   getProductById,
   getProducts,
   getShopProductById,
-  getSortedProducts,
   getTopProducts,
   updateProduct,
 };

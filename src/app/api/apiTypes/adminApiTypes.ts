@@ -185,9 +185,4 @@ export type UpdateProductRequest = {
 
 export type ProductsResponse = BasePagination & { products: Product[] };
 
-export type GetSortedProductsResponse = DefaultResponseType & {
-  category: Category;
-  product: Product[];
-};
-
 export type FileName = 'images';

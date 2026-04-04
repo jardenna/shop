@@ -4,11 +4,11 @@ import {
   createProduct,
   deleteProduct,
   duplicateProduct,
+  getAdminProducts,
   getNewProducts,
   getProductById,
   getProducts,
   getShopProductById,
-  getSortedProducts,
   getTopProducts,
   updateProduct,
 } from '../controllers/productController.js';
@@ -32,7 +32,7 @@ router
   .post(languageMiddleware, authenticate, authorizeEmployee, createProduct);
 
 router.get('/scheduled', checkScheduled);
-router.get('/allProducts', filterProductsMiddleware, getSortedProducts);
+router.get('/allProducts', filterProductsMiddleware, getAdminProducts);
 router.get('/shop/:id', languageMiddleware, getShopProductById);
 router.post(
   '/:id/reviews',
