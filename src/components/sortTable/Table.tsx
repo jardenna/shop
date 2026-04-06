@@ -18,6 +18,7 @@ export type Column<T> = {
   key: keyof T;
   label: string;
   name: string;
+  tableSearchType: string;
   hideTableControls?: boolean;
 };
 

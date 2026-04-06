@@ -1,5 +1,5 @@
 import type { SubCategoryResponse } from '../../app/api/apiTypes/adminApiTypes';
-import Table from '../../components/sortTable/Table';
+import Table, { Column } from '../../components/sortTable/Table';
 import { useLanguage } from '../../features/language/useLanguage';
 import SubCategoryTableRows from '../../features/subCategories/components/SubCategoryTableRows';
 import {
@@ -9,24 +9,26 @@ import {
 import { AdminPath } from '../../layout/nav/enums';
 import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
-
-const tableHeaders: {
-  key: keyof SubCategoryResponse;
-  label: string;
-  name: string;
-}[] = [
+const tableHeaders: Column<SubCategoryResponse>[] = [
   {
     key: 'mainCategoryName',
     label: 'mainCategoryName',
     name: 'mainCategoryName',
+    tableSearchType: 'text',
   },
   {
     key: 'subCategoryName',
     label: 'name',
     name: 'subCategoryName',
+    tableSearchType: 'text',
   },
-  { key: 'categoryStatus', label: 'status', name: 'categoryStatus' },
-  { key: 'id', label: '', name: '' },
+  {
+    key: 'categoryStatus',
+    label: 'status',
+    name: 'categoryStatus',
+    tableSearchType: 'boolean',
+  },
+  { key: 'id', label: '', name: '', tableSearchType: '' },
 ];
 
 const SubCategoryPage = () => {

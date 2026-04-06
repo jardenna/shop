@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import type { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
-import Table from '../../components/sortTable/Table';
+import Table, { Column } from '../../components/sortTable/Table';
 import { useGetAllUsersQuery } from '../../features/adminUsers/adminUserApiSlice';
 import DeleteUser from '../../features/adminUsers/components/DeleteUser';
 import UpdateUser from '../../features/adminUsers/components/UpdateUser';
@@ -19,13 +19,12 @@ import { validateUpdateUser } from '../../utils/validation/validateUpdateUser';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 import './userPage.styles.scss';
 
-const tableHeaders: { key: keyof UserResponse; label: string; name: string }[] =
-  [
-    { key: 'username', label: 'username', name: 'name' },
-    { key: 'email', label: 'email', name: 'email' },
-    { key: 'role', label: 'role', name: 'role' },
-    { key: 'id', label: '', name: '' },
-  ];
+const tableHeaders: Column<UserResponse>[] = [
+  { key: 'username', label: 'username', name: 'name', tableSearchType: 'text' },
+  { key: 'email', label: 'email', name: 'email', tableSearchType: 'text' },
+  { key: 'role', label: 'role', name: 'role', tableSearchType: 'text' },
+  { key: 'id', label: '', name: '', tableSearchType: '' },
+];
 
 const columnKeys = ['username', 'email', 'role'] as const;
 

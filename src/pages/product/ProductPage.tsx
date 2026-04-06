@@ -22,15 +22,50 @@ import AdminPageContainer from '../pageContainer/AdminPageContainer';
 import './ProductPage.styles.scss';
 
 const tableHeaders: Column<Product>[] = [
-  { key: 'productName', label: 'name', name: 'productName' },
-  { key: 'categoryName', label: 'category', name: 'categoryName' },
-  { key: 'subCategoryName', label: 'subCategory', name: 'subCategoryName' },
-  { key: 'countInStock', label: 'countInStock', name: 'countInStock' },
-  { key: 'price', label: 'price', name: 'price' },
-  { key: 'discount', label: 'discount', name: 'discount' },
-  { key: 'discountedPrice', label: 'finalPrice', name: 'discountPrice' },
-  { key: 'productStatus', label: 'status', name: 'productStatus' },
-  { key: 'id', label: '', name: '' },
+  {
+    key: 'productName',
+    label: 'name',
+    name: 'productName',
+    tableSearchType: 'text',
+  },
+  {
+    key: 'categoryName',
+    label: 'category',
+    name: 'categoryName',
+    tableSearchType: 'text',
+  },
+  {
+    key: 'subCategoryName',
+    label: 'subCategory',
+    name: 'subCategoryName',
+    tableSearchType: 'text',
+  },
+  {
+    key: 'countInStock',
+    label: 'countInStock',
+    name: 'countInStock',
+    tableSearchType: 'number',
+  },
+  { key: 'price', label: 'price', name: 'price', tableSearchType: 'number' },
+  {
+    key: 'discount',
+    label: 'discount',
+    name: 'discount',
+    tableSearchType: 'number',
+  },
+  {
+    key: 'discountedPrice',
+    label: 'finalPrice',
+    name: 'discountPrice',
+    tableSearchType: 'number',
+  },
+  {
+    key: 'productStatus',
+    label: 'status',
+    name: 'productStatus',
+    tableSearchType: 'radio',
+  },
+  { key: 'id', label: '', name: '', tableSearchType: '' },
 ];
 
 const ProductPage = () => {
