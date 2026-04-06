@@ -362,14 +362,6 @@ const getShopProducts = asyncHandler(async (req, res) => {
   const productPipeline = [
     ...categoryJoinPipeline,
     { $match: combinedMatch },
-
-    {
-      $addFields: {
-        discount: { $ifNull: ['$discount', 0] },
-        price: { $ifNull: ['$price', 0] },
-      },
-    },
-
     {
       $addFields: {
         discountedPrice: {
@@ -542,13 +534,12 @@ const getProductById = asyncHandler(async (req, res) => {
     });
   }
 
-  product.discountedPrice = calculateDiscountedPrice(
-    product.price,
-    product.discount,
-  );
+  const discountedPrice =
+    product.price - (product.price * product.discount) / 100;
 
   product.subCategoryName = product.subCategory?.subCategoryName || '';
   product.categoryName = product.subCategory?.category?.categoryName || '';
+  product.discountedPrice = Math.round(discountedPrice);
 
   res.status(200).json(formatMongoData(product));
 });
@@ -576,6 +567,9 @@ const getShopProductById = asyncHandler(async (req, res) => {
     });
   }
 
+  const discountedPrice =
+    product.price - (product.price * product.discount) / 100;
+
   const subCategoryName = product.subCategory?.subCategoryName || '';
   const categoryName = product.subCategory?.category?.categoryName || '';
 
@@ -583,7 +577,7 @@ const getShopProductById = asyncHandler(async (req, res) => {
 
   res.status(200).json({
     ...rest,
-    discountedPrice: calculateDiscountedPrice(product.price, product.discount),
+    discountedPrice: Math.round(discountedPrice),
     subCategoryName,
     categoryName,
   });
