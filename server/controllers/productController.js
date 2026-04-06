@@ -456,11 +456,6 @@ const getAdminProducts = asyncHandler(async (req, res) => {
       },
     },
 
-    { $sort: sortConfig },
-
-    { $skip: productsPerPage * (page - 1) },
-    { $limit: productsPerPage },
-
     {
       $lookup: {
         from: 'subcategories',
@@ -487,6 +482,11 @@ const getAdminProducts = asyncHandler(async (req, res) => {
         categoryName: '$category.categoryName',
       },
     },
+
+    { $sort: sortConfig },
+
+    { $skip: productsPerPage * (page - 1) },
+    { $limit: productsPerPage },
   ];
 
   const products = await Product.aggregate(pipeline);
