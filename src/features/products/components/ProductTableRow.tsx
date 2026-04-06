@@ -9,6 +9,7 @@ import ProductOverviewCell from './ProductOverviewCell';
 type ProductTableRowProps = {
   categoryName: string;
   countInStock: number;
+  discount: number;
   id: string;
   images: string[];
   price: number;
@@ -30,6 +31,7 @@ const ProductTableRow = ({
   scheduledDate,
   onCopyProduct,
   price,
+  discount,
 }: ProductTableRowProps) => {
   const selectedLanguage = useAppSelector(selectSelectedLanguage);
 
@@ -48,6 +50,7 @@ const ProductTableRow = ({
       </td>
       <td>{numberConvert(countInStock, selectedLanguage)}</td>
       <td>{numberConvert(price, selectedLanguage)}</td>
+      <td>{discount}</td>
       <td>
         <AdminBadge status={status} scheduledDate={scheduledDate || null} />
       </td>
