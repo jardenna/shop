@@ -27,7 +27,7 @@ const tableHeaders: Column<Product>[] = [
   { key: 'countInStock', label: 'countInStock', name: 'countInStock' },
   { key: 'price', label: 'price', name: 'price' },
   { key: 'discount', label: 'discount', name: 'discount' },
-  { key: 'discountedPrice', label: 'price', name: 'discountPrice' },
+  { key: 'discountedPrice', label: 'finalPrice', name: 'discountPrice' },
   { key: 'productStatus', label: 'status', name: 'productStatus' },
   { key: 'id', label: '', name: '' },
 ];
@@ -127,6 +127,7 @@ const ProductPage = () => {
       linkText={language.createNewProduct}
       linkTo={AdminPath.AdminProductCreate}
       ariaLabelledby="product-list"
+      variant="x-large"
     >
       <Table
         onReset={() => refetch()}
