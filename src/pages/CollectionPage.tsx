@@ -70,6 +70,7 @@ const CollectionPage = () => {
     onClearSingleFilter,
     onClearAllFilters,
   } = useSearchParamsState(initialFilters);
+
   const {
     data: products,
     isLoading,

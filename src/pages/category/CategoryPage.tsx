@@ -27,7 +27,7 @@ const tableHeaders: Column<Category>[] = [
     key: 'createdAt',
     label: 'createdAt',
     name: 'createdAt',
-    tableSearchType: 'text',
+    tableSearchType: 'date',
   },
   { key: 'id', label: '', name: '' },
 ];
