@@ -25,12 +25,16 @@ import variables from '../../../scss/variables.module.scss';
 import type { OptionType } from '../../../types/types';
 import { getColorOptions } from '../../../utils/colorUtils';
 import { handleApiError } from '../../../utils/handleApiError';
-import { maxFiles, translateKey } from '../../../utils/utils';
+import {
+  discountCalculation,
+  maxFiles,
+  translateKey,
+} from '../../../utils/utils';
 import { validateProduct } from '../../../utils/validation/validateProduct';
 import { useCurrency } from '../../currency/useCurrency';
 import { handleImageUpload } from '../../imageUploads/handleImageUpload';
 import { useLanguage } from '../../language/useLanguage';
-import ProductPrice from '../../shop/components/productPrice/ProductPrice';
+import DiscountedPrice from '../../shop/components/productPrice/DiscountedPrice';
 import { useUploadImageMutation } from '../../uploadImageApiSlice';
 import {
   useCreateProductMutation,
@@ -158,6 +162,7 @@ const ProductForm = ({
     callback: handleSubmitProduct,
   });
 
+  const discountedValue = discountCalculation(values.price, values.discount);
   const { onAddMessagePopup } = useMessagePopup();
   const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
     useDatePicker({ initialTime: selectedTime });
@@ -409,9 +414,10 @@ const ProductForm = ({
                 labelText="showPrice"
               />
               {showPrice && (
-                <ProductPrice
+                <DiscountedPrice
                   price={values.price}
-                  discountPrice={values.discount}
+                  discount={values.discount}
+                  discountedPrice={discountedValue}
                   hasError={errors.discount}
                 />
               )}
