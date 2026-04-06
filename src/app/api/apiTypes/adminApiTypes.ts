@@ -6,6 +6,7 @@ import type {
   DefaultResponse,
   DefaultResponseType,
   Size,
+  SortOrder,
 } from './sharedApiTypes';
 
 export type Roles = 'Employee' | 'User';
@@ -156,6 +157,8 @@ export type Product = BaseProduct & {
 };
 
 export type ProductsParams = BaseProductParams & {
+  sortField: string;
+  sortOrder: SortOrder;
   maxStock?: string;
   minStock?: string;
   productStatus?: Status;
@@ -183,11 +186,8 @@ export type UpdateProductRequest = {
   product: ProductRequest;
 };
 
-export type ProductsResponse = BasePagination & { products: Product[] };
-
-export type GetSortedProductsResponse = DefaultResponseType & {
-  category: Category;
-  product: Product[];
+export type ProductsResponse = BasePagination & {
+  products: Product[];
 };
 
 export type FileName = 'images';

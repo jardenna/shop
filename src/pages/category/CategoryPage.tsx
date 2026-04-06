@@ -1,5 +1,5 @@
-import type { Category } from '../../app/api/apiTypes/adminApiTypes';
-import Table from '../../components/sortTable/Table';
+import { Category } from '../../app/api/apiTypes/adminApiTypes';
+import Table, { Column } from '../../components/sortTable/Table';
 import {
   useGetAllCategoriesQuery,
   useGetHasCategoriesScheduledQuery,
@@ -10,10 +10,25 @@ import { AdminPath } from '../../layout/nav/enums';
 import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
-const tableHeaders: { key: keyof Category; label: string; name: string }[] = [
-  { key: 'categoryName', label: 'name', name: 'categoryName' },
-  { key: 'categoryStatus', label: 'status', name: 'categoryStatus' },
-  { key: 'createdAt', label: 'createdAt', name: 'createdAt' },
+const tableHeaders: Column<Category>[] = [
+  {
+    key: 'categoryName',
+    label: 'name',
+    name: 'categoryName',
+    tableSearchType: 'text',
+  },
+  {
+    key: 'categoryStatus',
+    label: 'status',
+    name: 'categoryStatus',
+    tableSearchType: 'text',
+  },
+  {
+    key: 'createdAt',
+    label: 'createdAt',
+    name: 'createdAt',
+    tableSearchType: 'text',
+  },
   { key: 'id', label: '', name: '' },
 ];
 

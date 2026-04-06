@@ -212,11 +212,38 @@ const deleteProduct = asyncHandler(async (req, res) => {
     .json({ success: true, message: 'Product deleted successfully' });
 });
 
-// @desc    Get All Products with Pagination
+// @desc    Get Top Products
+// @route   /api/products/top
+// @method  Get
+// @access  Public
+const getTopProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({}).sort({ rating: -1 }).limit(4).lean();
+
+  res.status(200).json({
+    products: formatMongoData(products),
+  });
+});
+
+// @desc    Get New Products
+// @route   /api/products/new
+// @method  Get
+// @access  Public
+const getNewProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({})
+    .sort({ createdAt: -1 })
+    .limit(5)
+    .lean();
+
+  res.status(200).json({
+    products: formatMongoData(products),
+  });
+});
+
+// @desc    Get Shop products
 // @route   /api/products
 // @method  Get
 // @access  Public
-const getProducts = asyncHandler(async (req, res) => {
+const getShopProducts = asyncHandler(async (req, res) => {
   const productsPerPage = parseInt(req.query.productsPerPage) || 6;
   const page = parseInt(req.query.page) || 1;
   const subCategoryId = req.query.subCategoryId;
@@ -335,6 +362,23 @@ const getProducts = asyncHandler(async (req, res) => {
   const productPipeline = [
     ...categoryJoinPipeline,
     { $match: combinedMatch },
+    {
+      $addFields: {
+        discountedPrice: {
+          $round: [
+            {
+              $subtract: [
+                '$price',
+                {
+                  $multiply: ['$price', { $divide: ['$discount', 100] }],
+                },
+              ],
+            },
+            0,
+          ],
+        },
+      },
+    },
     { $sort: { createdAt: -1 } },
     { $skip: productsPerPage * (page - 1) },
     { $limit: productsPerPage },
@@ -371,11 +415,11 @@ const getProducts = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Get Sorted Products
+// @desc    Get admin Products
 // @route   /api/products/allProducts
 // @method  Get
 // @access  Public
-const getSortedProducts = asyncHandler(async (req, res) => {
+const getAdminProducts = asyncHandler(async (req, res) => {
   await updateScheduledItems({
     items: await Product.find({ productStatus: SCHEDULED }).lean(),
     model: Product,
@@ -384,17 +428,68 @@ const getSortedProducts = asyncHandler(async (req, res) => {
 
   const { page, productsPerPage } = req.pagination;
   const filter = req.filter;
-  const sort = req.sort;
 
-  const products = await Product.find(filter)
-    .populate({
-      path: 'subCategory',
-      populate: { path: 'category', model: 'Category' },
-    })
-    .sort(sort)
-    .skip(productsPerPage * (page - 1))
-    .limit(productsPerPage)
-    .lean();
+  const sortField = req.query.sortField;
+  const sortOrder = req.query.sortOrder;
+
+  const sortConfig = {};
+
+  if (sortField && sortOrder) {
+    sortConfig[sortField] = sortOrder === 'desc' ? -1 : 1;
+  } else {
+    sortConfig.createdAt = -1;
+  }
+
+  const pipeline = [
+    { $match: filter },
+
+    {
+      $addFields: {
+        discountedPrice: {
+          $subtract: [
+            '$price',
+            {
+              $multiply: ['$price', { $divide: ['$discount', 100] }],
+            },
+          ],
+        },
+      },
+    },
+
+    {
+      $lookup: {
+        from: 'subcategories',
+        localField: 'subCategory',
+        foreignField: '_id',
+        as: 'subCategory',
+      },
+    },
+    { $unwind: { path: '$subCategory', preserveNullAndEmptyArrays: true } },
+
+    {
+      $lookup: {
+        from: 'categories',
+        localField: 'subCategory.category',
+        foreignField: '_id',
+        as: 'category',
+      },
+    },
+    { $unwind: { path: '$category', preserveNullAndEmptyArrays: true } },
+
+    {
+      $addFields: {
+        subCategoryName: '$subCategory.subCategoryName',
+        categoryName: '$category.categoryName',
+      },
+    },
+
+    { $sort: sortConfig },
+
+    { $skip: productsPerPage * (page - 1) },
+    { $limit: productsPerPage },
+  ];
+
+  const products = await Product.aggregate(pipeline);
 
   const productCount = await Product.countDocuments(filter);
   const totalCount = await Product.countDocuments();
@@ -403,15 +498,7 @@ const getSortedProducts = asyncHandler(async (req, res) => {
     success: true,
     products: formatMongoData(
       products.map(({ scheduledDate, ...rest }) => {
-        const subCategory = rest.subCategory;
-        const subCategoryName = subCategory?.subCategoryName;
-        const categoryName = subCategory?.category?.categoryName;
-
-        const base = {
-          ...rest,
-          subCategoryName,
-          categoryName,
-        };
+        const base = { ...rest };
 
         return rest.productStatus === SCHEDULED
           ? { ...base, scheduledDate }
@@ -422,33 +509,6 @@ const getSortedProducts = asyncHandler(async (req, res) => {
     pages: Math.ceil(productCount / productsPerPage),
     productCount,
     totalCount,
-  });
-});
-
-// @desc    Get Top Products
-// @route   /api/products/top
-// @method  Get
-// @access  Public
-const getTopProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({}).sort({ rating: -1 }).limit(4).lean();
-
-  res.status(200).json({
-    products: formatMongoData(products),
-  });
-});
-
-// @desc    Get New Products
-// @route   /api/products/new
-// @method  Get
-// @access  Public
-const getNewProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({})
-    .sort({ createdAt: -1 })
-    .limit(5)
-    .lean();
-
-  res.status(200).json({
-    products: formatMongoData(products),
   });
 });
 
@@ -474,8 +534,12 @@ const getProductById = asyncHandler(async (req, res) => {
     });
   }
 
+  const discountedPrice =
+    product.price - (product.price * product.discount) / 100;
+
   product.subCategoryName = product.subCategory?.subCategoryName || '';
   product.categoryName = product.subCategory?.category?.categoryName || '';
+  product.discountedPrice = Math.round(discountedPrice);
 
   res.status(200).json(formatMongoData(product));
 });
@@ -503,6 +567,9 @@ const getShopProductById = asyncHandler(async (req, res) => {
     });
   }
 
+  const discountedPrice =
+    product.price - (product.price * product.discount) / 100;
+
   const subCategoryName = product.subCategory?.subCategoryName || '';
   const categoryName = product.subCategory?.category?.categoryName || '';
 
@@ -510,6 +577,7 @@ const getShopProductById = asyncHandler(async (req, res) => {
 
   res.status(200).json({
     ...rest,
+    discountedPrice: Math.round(discountedPrice),
     subCategoryName,
     categoryName,
   });
@@ -535,11 +603,11 @@ export {
   createProduct,
   deleteProduct,
   duplicateProduct,
+  getAdminProducts,
   getNewProducts,
   getProductById,
-  getProducts,
   getShopProductById,
-  getSortedProducts,
+  getShopProducts,
   getTopProducts,
   updateProduct,
 };

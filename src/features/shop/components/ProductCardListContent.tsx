@@ -10,7 +10,11 @@ type ProductCardListContentProps = {
 const ProductCardListContent = ({ product }: ProductCardListContentProps) => (
   <>
     <p className="product-card-description">{product.description}</p>
-    <ProductPrice price={product.price} discountPrice={product.discount} />
+    <ProductPrice
+      price={product.price}
+      discount={product.discount}
+      discountedPrice={product.discountedPrice}
+    />
     <SizeList
       availableSizeList={product.sizes}
       subCategoryName={product.subCategoryName}

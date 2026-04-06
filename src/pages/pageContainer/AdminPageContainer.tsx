@@ -9,7 +9,7 @@ type AdminPageContainerProps = {
   heading: string;
   linkText?: string;
   linkTo?: string;
-  variant?: 'small' | 'medium' | 'large';
+  variant?: 'small' | 'medium' | 'large' | 'x-large';
 };
 
 const AdminPageContainer = ({

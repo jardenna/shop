@@ -118,7 +118,8 @@ const SingleProductPage = () => {
               />
               <ProductPrice
                 price={product.price}
-                discountPrice={product.discount}
+                discount={product.discount}
+                discountedPrice={product.discountedPrice}
               />
               <div className="in-stock-container">
                 <InStock stock={product.countInStock} />

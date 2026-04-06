@@ -91,6 +91,7 @@ const ViewProductPage = () => {
               images={product.images}
               price={product.price}
               discount={product.discount || 0}
+              discountedPrice={product.discountedPrice}
               onReset={() => refetch()}
             />
             <ProductCardCenter

@@ -1,11 +1,12 @@
 import type { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useSearchParams } from 'react-router';
+import { SortOrder } from '../../app/api/apiTypes/sharedApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
 import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
 import variables from '../../scss/variables.module.scss';
 import { BtnVariant, IconName } from '../../types/enums';
-import type { SortOrderType } from '../../types/types';
+import { InputType } from '../../types/types';
 import Button from '../Button';
 import DisplayControls from '../DisplayControls';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
@@ -19,6 +20,7 @@ export type Column<T> = {
   label: string;
   name: string;
   hideTableControls?: boolean;
+  tableSearchType?: InputType;
 };
 
 type TableProps<T> = {
@@ -28,7 +30,7 @@ type TableProps<T> = {
   tableCaption: string;
   className?: string;
   emptyHeaderCellText?: string;
-  children: (sortedData: T[]) => ReactNode;
+  children: (data: T[]) => ReactNode;
   onReset: () => void;
 };
 
@@ -75,6 +77,7 @@ const Table = <T,>({
 
   const sortField =
     (searchParams.get('sortField') as keyof T) || columns[0]?.key;
+
   const sortOrder = searchParams.get('sortOrder') || 'asc';
 
   const filters: Record<keyof T, string> = columns.reduce(
@@ -86,7 +89,7 @@ const Table = <T,>({
   );
 
   const handleSort = (field: keyof T) => {
-    const newOrder: SortOrderType =
+    const newOrder: SortOrder =
       sortField === field && sortOrder === 'asc' ? 'desc' : 'asc';
     setSearchParams({
       ...Object.fromEntries(searchParams.entries()),
@@ -121,16 +124,6 @@ const Table = <T,>({
           .includes(filters[key].toLowerCase()),
     ),
   );
-
-  const sortedData = [...filteredData].sort((a, b) => {
-    if (a[sortField] < b[sortField]) {
-      return sortOrder === 'asc' ? -1 : 1;
-    }
-    if (a[sortField] > b[sortField]) {
-      return sortOrder === 'asc' ? 1 : -1;
-    }
-    return 0;
-  });
 
   const sortIcon = sortOrder === 'asc' ? '↑' : '↓';
   const ariaSort = sortOrder !== 'asc' ? 'descending' : 'ascending';
@@ -211,7 +204,7 @@ const Table = <T,>({
               </thead>
               <tbody className={`padding-${padding}`}>
                 {filteredData.length ? (
-                  children(sortedData)
+                  children(data)
                 ) : (
                   <tr>
                     <td colSpan={columns.length}>{language.noData}</td>

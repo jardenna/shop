@@ -10,8 +10,6 @@ export type RefInputType = RefObject<HTMLInputElement | null>;
 export type RefFormType = RefObject<HTMLFormElement | null>;
 export type AutoComplete = 'on' | 'off';
 
-export type SortOrderType = 'asc' | 'desc';
-
 export type OmitChecked<T, K extends keyof T> = Omit<T, K>;
 
 export type OptionType<T = string> = {

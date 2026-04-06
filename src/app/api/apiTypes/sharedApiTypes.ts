@@ -62,6 +62,8 @@ export type ClothingSizes = 'S' | 'M' | 'L' | 'XL';
 export type MainCategoryNames = 'Men' | 'Women' | 'Kids';
 export type SubCategoryNames = 'Shoes' | 'Accessories' | 'Clothing';
 
+export type SortOrder = 'asc' | 'desc';
+
 export type BaseProduct = DefaultResponseType & {
   brand: string;
   categoryName: MainCategoryNames;
@@ -69,6 +71,7 @@ export type BaseProduct = DefaultResponseType & {
   countInStock: number;
   description: string;
   discount: number;
+  discountedPrice: number;
   id: string;
   images: string[];
   material: string;
@@ -104,4 +107,5 @@ export type ReviewRequest = {
 export type BasePagination = {
   page: number;
   pages: number;
+  productCount: number;
 };

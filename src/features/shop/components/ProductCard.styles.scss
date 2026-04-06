@@ -65,6 +65,7 @@ $placement-x: 12px;
       font-family: $font-primary-bold;
       font-size: $font-medium;
       text-transform: uppercase;
+      width: max-content;
     }
 
     &:hover {
@@ -110,8 +111,8 @@ $placement-x: 12px;
       }
     }
 
-    .card-img-container {
-      aspect-ratio: 3 / 4;
-    }
+    // .card-img-container {
+    //   aspect-ratio: 3 / 4;
+    // }
   }
 }
