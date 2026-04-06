@@ -23,7 +23,7 @@ const tableHeaders: Column<UserResponse>[] = [
   { key: 'username', label: 'username', name: 'name', tableSearchType: 'text' },
   { key: 'email', label: 'email', name: 'email', tableSearchType: 'text' },
   { key: 'role', label: 'role', name: 'role', tableSearchType: 'text' },
-  { key: 'id', label: '', name: '', tableSearchType: '' },
+  { key: 'id', label: '', name: '' },
 ];
 
 const columnKeys = ['username', 'email', 'role'] as const;

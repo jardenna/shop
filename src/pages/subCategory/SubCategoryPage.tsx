@@ -26,9 +26,9 @@ const tableHeaders: Column<SubCategoryResponse>[] = [
     key: 'categoryStatus',
     label: 'status',
     name: 'categoryStatus',
-    tableSearchType: 'boolean',
+    tableSearchType: 'radio',
   },
-  { key: 'id', label: '', name: '', tableSearchType: '' },
+  { key: 'id', label: '', name: '' },
 ];
 
 const SubCategoryPage = () => {

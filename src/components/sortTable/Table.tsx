@@ -6,6 +6,7 @@ import { useLanguage } from '../../features/language/useLanguage';
 import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
 import variables from '../../scss/variables.module.scss';
 import { BtnVariant, IconName } from '../../types/enums';
+import { InputType } from '../../types/types';
 import Button from '../Button';
 import DisplayControls from '../DisplayControls';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
@@ -18,8 +19,8 @@ export type Column<T> = {
   key: keyof T;
   label: string;
   name: string;
-  tableSearchType: string;
   hideTableControls?: boolean;
+  tableSearchType?: InputType;
 };
 
 type TableProps<T> = {

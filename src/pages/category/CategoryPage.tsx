@@ -1,5 +1,5 @@
-import type { Category } from '../../app/api/apiTypes/adminApiTypes';
-import Table from '../../components/sortTable/Table';
+import { Category } from '../../app/api/apiTypes/adminApiTypes';
+import Table, { Column } from '../../components/sortTable/Table';
 import {
   useGetAllCategoriesQuery,
   useGetHasCategoriesScheduledQuery,
@@ -10,12 +10,7 @@ import { AdminPath } from '../../layout/nav/enums';
 import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
-const tableHeaders: {
-  key: keyof Category;
-  label: string;
-  name: string;
-  tableSearchType: string;
-}[] = [
+const tableHeaders: Column<Category>[] = [
   {
     key: 'categoryName',
     label: 'name',
@@ -34,7 +29,7 @@ const tableHeaders: {
     name: 'createdAt',
     tableSearchType: 'text',
   },
-  { key: 'id', label: '', name: '', tableSearchType: '' },
+  { key: 'id', label: '', name: '' },
 ];
 
 const CategoryPage = () => {
