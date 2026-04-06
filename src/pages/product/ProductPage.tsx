@@ -27,6 +27,7 @@ const tableHeaders: Column<Product>[] = [
   { key: 'countInStock', label: 'countInStock', name: 'countInStock' },
   { key: 'price', label: 'price', name: 'price' },
   { key: 'discount', label: 'discount', name: 'discount' },
+  { key: 'discountedPrice', label: 'price', name: 'discountPrice' },
   { key: 'productStatus', label: 'status', name: 'productStatus' },
   { key: 'id', label: '', name: '' },
 ];
@@ -53,19 +54,19 @@ const ProductPage = () => {
   const sortOrder: SortOrder =
     searchParams.get('sortOrder') === 'desc' ? 'desc' : 'asc';
 
-  const filters: Partial<Record<ColumnKey, string>> = tableHeaders.reduce<
-    Partial<Record<ColumnKey, string>>
-  >((acc, columnItem) => {
-    const queryValue = searchParams.get(columnItem.key as string);
+  // const filters: Partial<Record<ColumnKey, string>> = tableHeaders.reduce<
+  //   Partial<Record<ColumnKey, string>>
+  // >((acc, columnItem) => {
+  //   const queryValue = searchParams.get(columnItem.key as string);
 
-    if (queryValue) {
-      return { ...acc, [columnItem.key]: queryValue };
-    }
+  //   if (queryValue) {
+  //     return { ...acc, [columnItem.key]: queryValue };
+  //   }
 
-    return acc;
-  }, {});
+  //   return acc;
+  // }, {});
 
-  console.log(filters);
+  // console.log(filters);
 
   const { page, productsPerPage, setPage, updatePagination } =
     usePaginationParams();
@@ -148,6 +149,7 @@ const ProductPage = () => {
               scheduledDate,
               price,
               discount,
+              discountedPrice,
             }) => (
               <ProductTableRow
                 key={id}
@@ -155,6 +157,7 @@ const ProductPage = () => {
                 countInStock={countInStock}
                 images={images}
                 productName={productName}
+                discountedPrice={discountedPrice}
                 status={productStatus}
                 price={price}
                 discount={discount}
