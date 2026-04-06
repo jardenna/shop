@@ -34,7 +34,7 @@ import { validateProduct } from '../../../utils/validation/validateProduct';
 import { useCurrency } from '../../currency/useCurrency';
 import { handleImageUpload } from '../../imageUploads/handleImageUpload';
 import { useLanguage } from '../../language/useLanguage';
-import DiscountedPrice from '../../shop/components/productPrice/DiscountedPrice';
+import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 import { useUploadImageMutation } from '../../uploadImageApiSlice';
 import {
   useCreateProductMutation,
@@ -414,7 +414,7 @@ const ProductForm = ({
                 labelText="showPrice"
               />
               {showPrice && (
-                <DiscountedPrice
+                <ProductPrice
                   price={values.price}
                   discount={values.discount}
                   discountedPrice={discountedValue}
