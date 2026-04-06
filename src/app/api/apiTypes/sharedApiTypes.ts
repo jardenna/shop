@@ -71,6 +71,7 @@ export type BaseProduct = DefaultResponseType & {
   countInStock: number;
   description: string;
   discount: number;
+  discountedPrice: number;
   id: string;
   images: string[];
   material: string;

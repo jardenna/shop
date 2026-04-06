@@ -362,6 +362,23 @@ const getShopProducts = asyncHandler(async (req, res) => {
   const productPipeline = [
     ...categoryJoinPipeline,
     { $match: combinedMatch },
+    {
+      $addFields: {
+        discountedPrice: {
+          $round: [
+            {
+              $subtract: [
+                '$price',
+                {
+                  $multiply: ['$price', { $divide: ['$discount', 100] }],
+                },
+              ],
+            },
+            0,
+          ],
+        },
+      },
+    },
     { $sort: { createdAt: -1 } },
     { $skip: productsPerPage * (page - 1) },
     { $limit: productsPerPage },
@@ -414,6 +431,7 @@ const getAdminProducts = asyncHandler(async (req, res) => {
 
   const sortField = req.query.sortField;
   const sortOrder = req.query.sortOrder;
+
   const sortConfig = {};
 
   if (sortField && sortOrder) {
@@ -422,15 +440,56 @@ const getAdminProducts = asyncHandler(async (req, res) => {
     sortConfig.createdAt = -1;
   }
 
-  const products = await Product.find(filter)
-    .populate({
-      path: 'subCategory',
-      populate: { path: 'category', model: 'Category' },
-    })
-    .sort(sortConfig)
-    .skip(productsPerPage * (page - 1))
-    .limit(productsPerPage)
-    .lean();
+  const pipeline = [
+    { $match: filter },
+
+    {
+      $addFields: {
+        discountedPrice: {
+          $subtract: [
+            '$price',
+            {
+              $multiply: ['$price', { $divide: ['$discount', 100] }],
+            },
+          ],
+        },
+      },
+    },
+
+    { $sort: sortConfig },
+
+    { $skip: productsPerPage * (page - 1) },
+    { $limit: productsPerPage },
+
+    {
+      $lookup: {
+        from: 'subcategories',
+        localField: 'subCategory',
+        foreignField: '_id',
+        as: 'subCategory',
+      },
+    },
+    { $unwind: { path: '$subCategory', preserveNullAndEmptyArrays: true } },
+
+    {
+      $lookup: {
+        from: 'categories',
+        localField: 'subCategory.category',
+        foreignField: '_id',
+        as: 'category',
+      },
+    },
+    { $unwind: { path: '$category', preserveNullAndEmptyArrays: true } },
+
+    {
+      $addFields: {
+        subCategoryName: '$subCategory.subCategoryName',
+        categoryName: '$category.categoryName',
+      },
+    },
+  ];
+
+  const products = await Product.aggregate(pipeline);
 
   const productCount = await Product.countDocuments(filter);
   const totalCount = await Product.countDocuments();
@@ -439,15 +498,7 @@ const getAdminProducts = asyncHandler(async (req, res) => {
     success: true,
     products: formatMongoData(
       products.map(({ scheduledDate, ...rest }) => {
-        const subCategory = rest.subCategory;
-        const subCategoryName = subCategory?.subCategoryName;
-        const categoryName = subCategory?.category?.categoryName;
-
-        const base = {
-          ...rest,
-          subCategoryName,
-          categoryName,
-        };
+        const base = { ...rest };
 
         return rest.productStatus === SCHEDULED
           ? { ...base, scheduledDate }
@@ -482,9 +533,12 @@ const getProductById = asyncHandler(async (req, res) => {
       message: t('couldNotFindInfo', req.lang),
     });
   }
+  const discountedPrice =
+    product.price - (product.price * product.discount) / 100;
 
   product.subCategoryName = product.subCategory?.subCategoryName || '';
   product.categoryName = product.subCategory?.category?.categoryName || '';
+  product.discountedPrice = Math.round(discountedPrice) || '';
 
   res.status(200).json(formatMongoData(product));
 });
