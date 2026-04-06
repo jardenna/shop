@@ -25,6 +25,7 @@ const tableHeaders: Column<Product>[] = [
   { key: 'productName', label: 'name', name: 'productName' },
   { key: 'subCategoryName', label: 'category', name: 'subCategoryName' },
   { key: 'countInStock', label: 'countInStock', name: 'countInStock' },
+  { key: 'price', label: 'price', name: 'price' },
   { key: 'productStatus', label: 'status', name: 'productStatus' },
   { key: 'id', label: '', name: '' },
 ];
@@ -144,6 +145,7 @@ const ProductPage = () => {
               productStatus,
               subCategory,
               scheduledDate,
+              price,
             }) => (
               <ProductTableRow
                 key={id}
@@ -152,6 +154,7 @@ const ProductPage = () => {
                 images={images}
                 productName={productName}
                 status={productStatus}
+                price={price}
                 categoryName={
                   translateKey(subCategory.category.categoryName, language) ||
                   subCategory.category.categoryName

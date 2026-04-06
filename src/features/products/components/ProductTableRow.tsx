@@ -11,6 +11,7 @@ type ProductTableRowProps = {
   countInStock: number;
   id: string;
   images: string[];
+  price: number;
   productName: string;
   scheduledDate: Date | null;
   status: Status;
@@ -28,6 +29,7 @@ const ProductTableRow = ({
   status,
   scheduledDate,
   onCopyProduct,
+  price,
 }: ProductTableRowProps) => {
   const selectedLanguage = useAppSelector(selectSelectedLanguage);
 
@@ -45,6 +47,7 @@ const ProductTableRow = ({
         <span className="text-small text-italic"> ({categoryName})</span>
       </td>
       <td>{numberConvert(countInStock, selectedLanguage)}</td>
+      <td>{numberConvert(price, selectedLanguage)}</td>
       <td>
         <AdminBadge status={status} scheduledDate={scheduledDate || null} />
       </td>
