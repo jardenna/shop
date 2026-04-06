@@ -63,7 +63,7 @@ const tableHeaders: Column<Product>[] = [
     key: 'productStatus',
     label: 'status',
     name: 'productStatus',
-    tableSearchType: 'radio',
+    tableSearchType: 'text',
   },
   { key: 'id', label: '', name: '' },
 ];

@@ -4,13 +4,13 @@ import { BaseTableSearchProps } from './TableSearch';
 
 const TableSearchInput = ({
   title,
+  name,
   onFilterRows,
   value,
   searchType,
 }: BaseTableSearchProps) => {
   const { language } = useLanguage();
   const text = `${language.filter} ${language[title]}`;
-  console.log(searchType);
 
   return (
     <form
@@ -20,8 +20,8 @@ const TableSearchInput = ({
     >
       <Input
         className="table-search"
-        type="search"
-        name={title}
+        type={searchType}
+        name={name}
         id={title}
         placeholder={text}
         value={value}

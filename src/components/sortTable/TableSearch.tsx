@@ -7,10 +7,11 @@ import VisuallyHidden from '../VisuallyHidden';
 import TableSearchInput from './TableSearchInput';
 
 export interface BaseTableSearchProps {
+  name: string;
   onFilterRows: InputChangeHandler;
   searchType: InputType;
   title: string;
-  value: string;
+  value: any;
 }
 
 interface TableSearchProps extends BaseTableSearchProps {
@@ -23,6 +24,7 @@ const TableSearch = ({
   onFilterRows,
   label,
   searchType,
+  name,
 }: TableSearchProps) => {
   const { language } = useLanguage();
 
@@ -32,6 +34,7 @@ const TableSearch = ({
         placement="bottom-start"
         popupContent={
           <TableSearchInput
+            name={name}
             title={title}
             onFilterRows={onFilterRows}
             value={value}

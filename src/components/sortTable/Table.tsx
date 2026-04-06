@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router';
 import { SortOrder } from '../../app/api/apiTypes/sharedApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
 import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
+import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import variables from '../../scss/variables.module.scss';
 import { BtnVariant, IconName } from '../../types/enums';
 import { InputType } from '../../types/types';
@@ -13,6 +14,7 @@ import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import SkeletonList from '../skeleton/SkeletonList';
 import VisuallyHidden from '../VisuallyHidden';
 import './_table.scss';
+import { createInitialFilters } from './initTableFilters';
 import TableSearch from './TableSearch';
 
 export type Column<T> = {
@@ -98,17 +100,17 @@ const Table = <T,>({
     });
   };
 
-  const handleFilter = (field: keyof T, value: string) => {
-    const newParams = new URLSearchParams(searchParams.toString());
+  // const handleFilter = (field: keyof T, value: string) => {
+  //   const newParams = new URLSearchParams(searchParams.toString());
 
-    if (value) {
-      newParams.set(field as string, value);
-    } else {
-      newParams.delete(field as string);
-    }
+  //   if (value) {
+  //     newParams.set(field as string, value);
+  //   } else {
+  //     newParams.delete(field as string);
+  //   }
 
-    setSearchParams(newParams);
-  };
+  //   setSearchParams(newParams);
+  // };
 
   const handleClearAll = () => {
     setSearchParams('');
@@ -124,6 +126,11 @@ const Table = <T,>({
           .includes(filters[key].toLowerCase()),
     ),
   );
+  const initialFilters = createInitialFilters(columns);
+
+  const { values, setValue } = useSearchParamsState(initialFilters);
+
+  console.log(values);
 
   const sortIcon = sortOrder === 'asc' ? '↑' : '↓';
   const ariaSort = sortOrder !== 'asc' ? 'descending' : 'ascending';
@@ -184,11 +191,10 @@ const Table = <T,>({
 
                           {!col.hideTableControls && (
                             <TableSearch
-                              onFilterRows={(e) => {
-                                handleFilter(col.key, e.target.value);
-                              }}
+                              onFilterRows={setValue}
                               title={col.label}
-                              value={filters[col.key]}
+                              name={col.name}
+                              value={values[col.key]}
                               label={language[col.label]}
                               searchType={col.tableSearchType || 'text'}
                             />
