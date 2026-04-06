@@ -1,5 +1,6 @@
 import { useSearchParams } from 'react-router';
 import type { Product } from '../../app/api/apiTypes/adminApiTypes';
+import { SortOrder } from '../../app/api/apiTypes/sharedApiTypes';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import { usePaginationParams } from '../../components/pagination/hooks/usePaginationParams';
 import { usePaginationText } from '../../components/pagination/hooks/usePaginationText';
@@ -47,7 +48,8 @@ const ProductPage = () => {
   const sortField = (searchParams.get('sortField') ??
     tableHeaders[0]?.key) as ColumnKey;
 
-  const sortOrder = searchParams.get('sortOrder') || 'asc';
+  const sortOrder: SortOrder =
+    searchParams.get('sortOrder') === 'desc' ? 'desc' : 'asc';
 
   const filters: Partial<Record<ColumnKey, string>> = tableHeaders.reduce<
     Partial<Record<ColumnKey, string>>
@@ -61,7 +63,7 @@ const ProductPage = () => {
     return acc;
   }, {});
 
-  console.log(filters, sortField, sortOrder);
+  console.log(filters);
 
   const { page, productsPerPage, setPage, updatePagination } =
     usePaginationParams();
@@ -71,7 +73,7 @@ const ProductPage = () => {
     isLoading,
     refetch,
   } = useGetAllProductsQuery(
-    { productsPerPage, page: page.toString() },
+    { productsPerPage, page: page.toString(), sortField, sortOrder },
     {
       pollingInterval: shouldPollFullList ? 15000 : undefined,
       refetchOnMountOrArgChange: true,
