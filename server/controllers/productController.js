@@ -567,6 +567,9 @@ const getShopProductById = asyncHandler(async (req, res) => {
     });
   }
 
+  const discountedPrice =
+    product.price - (product.price * product.discount) / 100;
+
   const subCategoryName = product.subCategory?.subCategoryName || '';
   const categoryName = product.subCategory?.category?.categoryName || '';
 
@@ -574,6 +577,7 @@ const getShopProductById = asyncHandler(async (req, res) => {
 
   res.status(200).json({
     ...rest,
+    discountedPrice: Math.round(discountedPrice),
     subCategoryName,
     categoryName,
   });
