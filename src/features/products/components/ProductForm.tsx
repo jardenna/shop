@@ -388,6 +388,7 @@ const ProductForm = ({
                 labelText={language.price}
                 onChange={onChange}
                 required
+                min={5}
                 inputSuffix={currencyText}
                 inputMode="numeric"
               />
