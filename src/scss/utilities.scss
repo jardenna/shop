@@ -32,6 +32,10 @@
   max-width: $page-width-medium;
 }
 
+.page-x-large {
+  max-width: 90%;
+}
+
 .flex {
   display: flex;
   gap: 20px;

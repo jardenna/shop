@@ -79,15 +79,17 @@ table {
   td {
     line-height: rem(24px);
     background-color: $color-white;
+    width: rem(180px);
   }
 
   th {
     background-color: $color-white;
     border-right: 1px solid $color-border;
     border-bottom: 1px solid $color-border;
+    width: rem(180px);
 
     .input-container {
-      min-width: 180px;
+      min-width: rem(180px);
     }
   }
 }
@@ -156,10 +158,6 @@ table {
 
     th,
     td {
-      &:last-child {
-        width: 15%;
-      }
-
       &:first-child {
         position: sticky;
         left: 0;
