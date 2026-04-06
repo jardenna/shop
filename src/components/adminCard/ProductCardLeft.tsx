@@ -1,6 +1,6 @@
 import type { Status } from '../../app/api/apiTypes/adminApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
-import ProductPrice from '../../features/shop/components/productPrice/ProductPrice';
+import DiscountedPrice from '../../features/shop/components/productPrice/DiscountedPrice';
 import CardContent from '../card/CardContent';
 import MissingImage from '../formElements/fileInput/MissingImage';
 import ImgList from '../ImgList';
@@ -46,8 +46,11 @@ const ProductCardLeft = ({
       />
       <p>{description}</p>
       <LabelValueGrid text={language.price}>
-        {discountedPrice}
-        <ProductPrice price={price} discountPrice={discount} />
+        <DiscountedPrice
+          price={price}
+          discount={discount}
+          discountedPrice={discountedPrice}
+        />
       </LabelValueGrid>
     </CardContent>
   );

@@ -1,27 +1,25 @@
 import VisuallyHidden from '../../../../components/VisuallyHidden';
-import { discountCalculation } from '../../../../utils/utils';
 import { useCurrency } from '../../../currency/useCurrency';
 import { useLanguage } from '../../../language/useLanguage';
 import './_product-price.scss';
 
-type ProductPriceProps = {
+type DiscountedPriceProps = {
+  discount: number;
+  discountedPrice: number;
   price: number;
-  discountPrice?: number;
   hasError?: string;
 };
 
-const ProductPrice = ({
+const DiscountedPrice = ({
   price,
-  discountPrice,
+  discountedPrice,
+  discount,
   hasError,
-}: ProductPriceProps) => {
+}: DiscountedPriceProps) => {
   const { language } = useLanguage();
-  const discountedValue = discountPrice
-    ? discountCalculation(price, discountPrice)
-    : price;
 
+  const { convertedPrice: displayPrice } = useCurrency(discountedPrice);
   const { convertedPrice: regularPrice } = useCurrency(price);
-  const { convertedPrice: discountedPrice } = useCurrency(discountedValue);
 
   if (hasError) {
     return <span role="alert">{language.invalidDiscount}</span>;
@@ -29,9 +27,9 @@ const ProductPrice = ({
 
   return (
     <div className="product-price">
-      {discountPrice ? (
+      {discount ? (
         <>
-          <span className="discount-price">{discountedPrice}</span>
+          <span className="discount-price">{displayPrice}</span>
           <span aria-hidden className="price-seperator">
             /
           </span>
@@ -45,4 +43,4 @@ const ProductPrice = ({
   );
 };
 
-export default ProductPrice;
+export default DiscountedPrice;
