@@ -8,7 +8,7 @@ import { useLanguage } from '../features/language/useLanguage';
 import InStock from '../features/shop/components/InStock';
 import NotifyMe from '../features/shop/components/NotifyMe';
 import ProductCareList from '../features/shop/components/ProductCareList';
-import ProductPrice from '../features/shop/components/productPrice/ProductPrice';
+import DiscountedPrice from '../features/shop/components/productPrice/DiscountedPrice';
 import ReviewList from '../features/shop/components/reviews/ReviewList';
 import ReviewsForm from '../features/shop/components/reviews/ReviewsForm';
 import ReviewStars from '../features/shop/components/reviews/ReviewStars';
@@ -97,6 +97,7 @@ const SingleProductPage = () => {
   const missingSizes = displaySizeList.filter(
     (size) => !product?.sizes.includes(size),
   );
+  console.log(product);
 
   return (
     <div className="container">
@@ -116,9 +117,10 @@ const SingleProductPage = () => {
                 rating={product.rating}
                 onReset={() => refetch}
               />
-              <ProductPrice
+              <DiscountedPrice
                 price={product.price}
-                discountPrice={product.discount}
+                discount={product.discount}
+                discountedPrice={product.discountedPrice}
               />
               <div className="in-stock-container">
                 <InStock stock={product.countInStock} />
