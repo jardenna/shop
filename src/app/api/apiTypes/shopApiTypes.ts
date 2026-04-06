@@ -63,6 +63,7 @@ export type ProductPreview = {
   colors: string[];
   countInStock: number;
   discount: number;
+  discountedPrice: number;
   id: string;
   images: string[];
   price: number;

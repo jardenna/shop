@@ -1,6 +1,6 @@
 import type { ProductPreview } from '../../../app/api/apiTypes/shopApiTypes';
 import ColorList from './productLists/ColorList';
-import ProductPrice from './productPrice/ProductPrice';
+import DiscountedPrice from './productPrice/DiscountedPrice';
 
 type ProductCardGridContentProps = {
   product: ProductPreview;
@@ -8,7 +8,11 @@ type ProductCardGridContentProps = {
 
 const ProductCardGridContent = ({ product }: ProductCardGridContentProps) => (
   <>
-    <ProductPrice price={product.price} discountPrice={product.discount} />
+    <DiscountedPrice
+      price={product.price}
+      discount={product.discount}
+      discountedPrice={product.discountedPrice}
+    />
     <ColorList colors={product.colors} variant="mini" count={3} />
   </>
 );
