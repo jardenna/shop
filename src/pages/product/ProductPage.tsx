@@ -145,6 +145,7 @@ const ProductPage = () => {
               countInStock,
               images,
               productName,
+              categoryName,
               productStatus,
               subCategory,
               scheduledDate,
@@ -163,8 +164,7 @@ const ProductPage = () => {
                 price={price}
                 discount={discount}
                 categoryName={
-                  translateKey(subCategory.category.categoryName, language) ||
-                  subCategory.category.categoryName
+                  translateKey(categoryName, language) || categoryName
                 }
                 subCategoryName={
                   language[subCategory.translationKey] ||
