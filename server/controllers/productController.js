@@ -533,12 +533,13 @@ const getProductById = asyncHandler(async (req, res) => {
       message: t('couldNotFindInfo', req.lang),
     });
   }
+
   const discountedPrice =
     product.price - (product.price * product.discount) / 100;
 
   product.subCategoryName = product.subCategory?.subCategoryName || '';
   product.categoryName = product.subCategory?.category?.categoryName || '';
-  product.discountedPrice = Math.round(discountedPrice) || '';
+  product.discountedPrice = Math.round(discountedPrice);
 
   res.status(200).json(formatMongoData(product));
 });
