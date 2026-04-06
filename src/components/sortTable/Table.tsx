@@ -190,6 +190,7 @@ const Table = <T,>({
                               title={col.label}
                               value={filters[col.key]}
                               label={language[col.label]}
+                              searchType={col.tableSearchType || 'text'}
                             />
                           )}
                         </div>

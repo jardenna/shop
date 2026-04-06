@@ -1,20 +1,17 @@
 import { useLanguage } from '../../features/language/useLanguage';
-import type { InputChangeHandler } from '../../types/types';
 import Input from '../formElements/Input';
-
-type TableSearchInputProps = {
-  onFilterRows: InputChangeHandler;
-  title: string;
-  value: string;
-};
+import { BaseTableSearchProps } from './TableSearch';
 
 const TableSearchInput = ({
   title,
   onFilterRows,
   value,
-}: TableSearchInputProps) => {
+  searchType,
+}: BaseTableSearchProps) => {
   const { language } = useLanguage();
   const text = `${language.filter} ${language[title]}`;
+  console.log(searchType);
+
   return (
     <form
       onSubmit={(event) => {

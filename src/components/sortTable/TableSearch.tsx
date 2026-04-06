@@ -1,23 +1,28 @@
 import { useLanguage } from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
-import type { InputChangeHandler } from '../../types/types';
+import type { InputChangeHandler, InputType } from '../../types/types';
 import Icon from '../icons/Icon';
 import Popup from '../popup/Popup';
 import VisuallyHidden from '../VisuallyHidden';
 import TableSearchInput from './TableSearchInput';
 
-type TableSearchProps = {
-  label: string;
+export interface BaseTableSearchProps {
   onFilterRows: InputChangeHandler;
+  searchType: InputType;
   title: string;
   value: string;
-};
+}
+
+interface TableSearchProps extends BaseTableSearchProps {
+  label: string;
+}
 
 const TableSearch = ({
   title,
   value,
   onFilterRows,
   label,
+  searchType,
 }: TableSearchProps) => {
   const { language } = useLanguage();
 
@@ -30,6 +35,7 @@ const TableSearch = ({
             title={title}
             onFilterRows={onFilterRows}
             value={value}
+            searchType={searchType}
           />
         }
         ariaLabel={`${language.filter} ${label}`}
