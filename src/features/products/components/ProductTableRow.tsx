@@ -46,10 +46,8 @@ const ProductTableRow = ({
           id={id}
         />
       </td>
-      <td>
-        {subCategoryName}
-        <span className="text-small text-italic"> ({categoryName})</span>
-      </td>
+      <td>{categoryName}</td>
+      <td>{subCategoryName}</td>
       <td>{numberConvert(countInStock, selectedLanguage)}</td>
       <td>{numberConvert(price, selectedLanguage)}</td>
       <td>{discount}</td>

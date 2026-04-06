@@ -23,7 +23,8 @@ import './ProductPage.styles.scss';
 
 const tableHeaders: Column<Product>[] = [
   { key: 'productName', label: 'name', name: 'productName' },
-  { key: 'subCategoryName', label: 'category', name: 'subCategoryName' },
+  { key: 'categoryName', label: 'category', name: 'categoryName' },
+  { key: 'subCategoryName', label: 'subCategory', name: 'subCategoryName' },
   { key: 'countInStock', label: 'countInStock', name: 'countInStock' },
   { key: 'price', label: 'price', name: 'price' },
   { key: 'discount', label: 'discount', name: 'discount' },
