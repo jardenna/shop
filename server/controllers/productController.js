@@ -439,6 +439,9 @@ const getAdminProducts = asyncHandler(async (req, res) => {
   } else {
     sortConfig.createdAt = -1;
   }
+  const hasDiscountFilter =
+    req.query.minDiscountedPrice !== undefined ||
+    req.query.maxDiscountedPrice !== undefined;
 
   const pipeline = [
     { $match: filter },
@@ -455,6 +458,23 @@ const getAdminProducts = asyncHandler(async (req, res) => {
         },
       },
     },
+
+    ...(hasDiscountFilter
+      ? [
+          {
+            $match: {
+              discountedPrice: {
+                ...(req.query.minDiscountedPrice && {
+                  $gte: Number(req.query.minDiscountedPrice),
+                }),
+                ...(req.query.maxDiscountedPrice && {
+                  $lte: Number(req.query.maxDiscountedPrice),
+                }),
+              },
+            },
+          },
+        ]
+      : []),
 
     {
       $lookup: {
@@ -573,7 +593,7 @@ const getShopProductById = asyncHandler(async (req, res) => {
   const subCategoryName = product.subCategory?.subCategoryName || '';
   const categoryName = product.subCategory?.category?.categoryName || '';
 
-  const { subCategory, ...rest } = formatMongoData(product);
+  const { ...rest } = formatMongoData(product);
 
   res.status(200).json({
     ...rest,
