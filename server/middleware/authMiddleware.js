@@ -15,6 +15,8 @@ const authenticate = asyncHandler(async (req, res, next) => {
       req.user = await User.findById(decoded.userId).select('-password'); // Exclude password field
       next();
     } catch (error) {
+      console.error(error);
+
       return res.status(401).json({
         success: false,
         message: t('notAuthorizedTokenFailed', req.lang),
