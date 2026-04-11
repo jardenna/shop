@@ -149,6 +149,7 @@ filterHeading;Filter;Filter
 filterProducts;Filter products;Filtrer produkter
 filterRow;Filter row;Filtrer række
 filtersApplied;Filters applied;Filtre anvendt
+from;from;fra
 getInspired;Get inspired;Bliv inspireret
 globe;Globe;Globus
 goBack;Go back;Gå tilbage
@@ -412,6 +413,7 @@ temporarilyOutOfStock;This item is temporarily out of stock;Varen er midlertidig
 temporarilyOutOfStockText;Get notified when the item is back in stock;Få besked, når varen er tilbage på lager
 thereAre;There are;Der findes
 title;Title;Titel
+to;to;til
 today;Today;I dag
 totalProducts;Total products;Antal produkter
 translationKey;Translation key;Oversættelsesnøgle
