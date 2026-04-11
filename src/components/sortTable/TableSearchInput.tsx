@@ -29,7 +29,6 @@ const TableSearchInput = ({
         labelText={text}
         inputHasNoLabel
         autoFocus
-        inputMode="search"
       />
     </form>
   );
