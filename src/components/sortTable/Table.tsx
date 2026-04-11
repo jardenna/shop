@@ -82,14 +82,6 @@ const Table = <T,>({
 
   const sortOrder = searchParams.get('sortOrder') || 'asc';
 
-  const filters: Record<keyof T, string> = columns.reduce(
-    (acc: Record<keyof T, string>, col) => ({
-      ...acc,
-      [col.key]: searchParams.get(col.key as string) || '',
-    }),
-    {} as Record<keyof T, string>,
-  );
-
   const handleSort = (field: keyof T) => {
     const newOrder: SortOrder =
       sortField === field && sortOrder === 'asc' ? 'desc' : 'asc';
@@ -104,16 +96,6 @@ const Table = <T,>({
     setSearchParams('');
   };
 
-  const filteredData = data.filter((item) =>
-    (Object.keys(filters) as (keyof T)[]).every(
-      (key) =>
-        filters[key] === '' ||
-        item[key]
-          ?.toString()
-          .toLowerCase()
-          .includes(filters[key].toLowerCase()),
-    ),
-  );
   const initialFilters = createInitialFilters(columns);
 
   const { values, setValue } = useSearchParamsState(initialFilters);
@@ -197,7 +179,7 @@ const Table = <T,>({
                 </tr>
               </thead>
               <tbody className={`padding-${padding}`}>
-                {filteredData.length ? (
+                {data.length ? (
                   children(data)
                 ) : (
                   <tr>
