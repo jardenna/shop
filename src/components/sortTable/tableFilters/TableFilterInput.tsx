@@ -1,14 +1,14 @@
-import { useLanguage } from '../../features/language/useLanguage';
-import Input from '../formElements/Input';
-import { BaseTableSearchProps } from './TableSearch';
+import { useLanguage } from '../../../features/language/useLanguage';
+import Input from '../../formElements/Input';
+import { BaseTableFilterProps } from './TableFilterPopup';
 
-const TableSearchInput = ({
+const TableFilterInput = ({
   title,
   name,
   onFilterRows,
   value,
   searchType,
-}: BaseTableSearchProps) => {
+}: BaseTableFilterProps) => {
   const { language } = useLanguage();
   const text = `${language.filter} ${language[title]}`;
 
@@ -34,4 +34,4 @@ const TableSearchInput = ({
   );
 };
 
-export default TableSearchInput;
+export default TableFilterInput;

@@ -1,6 +1,5 @@
 /* eslint-disable no-param-reassign */
-
-import { Column } from './Table';
+import { Column } from '../Table';
 
 interface InitialFilters {
   [key: string]: string | string[];

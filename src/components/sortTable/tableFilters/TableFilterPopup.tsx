@@ -1,12 +1,12 @@
-import { useLanguage } from '../../features/language/useLanguage';
-import { IconName } from '../../types/enums';
-import type { InputChangeHandler, InputType } from '../../types/types';
-import Icon from '../icons/Icon';
-import Popup from '../popup/Popup';
-import VisuallyHidden from '../VisuallyHidden';
-import TableSearchInput from './TableSearchInput';
+import { useLanguage } from '../../../features/language/useLanguage';
+import { IconName } from '../../../types/enums';
+import type { InputChangeHandler, InputType } from '../../../types/types';
+import Icon from '../../icons/Icon';
+import Popup from '../../popup/Popup';
+import VisuallyHidden from '../../VisuallyHidden';
+import TableFilterInput from './TableFilterInput';
 
-export interface BaseTableSearchProps {
+export interface BaseTableFilterProps {
   name: string;
   onFilterRows: InputChangeHandler;
   searchType: InputType;
@@ -14,18 +14,18 @@ export interface BaseTableSearchProps {
   value: any;
 }
 
-interface TableSearchProps extends BaseTableSearchProps {
+interface TableFilterPopupProps extends BaseTableFilterProps {
   label: string;
 }
 
-const TableSearch = ({
+const TableFilterPopup = ({
   title,
   value,
   onFilterRows,
   label,
   searchType,
   name,
-}: TableSearchProps) => {
+}: TableFilterPopupProps) => {
   const { language } = useLanguage();
 
   return (
@@ -33,7 +33,7 @@ const TableSearch = ({
       <Popup
         placement="bottom-start"
         popupContent={
-          <TableSearchInput
+          <TableFilterInput
             name={name}
             title={title}
             onFilterRows={onFilterRows}
@@ -56,4 +56,4 @@ const TableSearch = ({
   );
 };
 
-export default TableSearch;
+export default TableFilterPopup;

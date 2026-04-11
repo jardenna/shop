@@ -14,8 +14,8 @@ import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import SkeletonList from '../skeleton/SkeletonList';
 import VisuallyHidden from '../VisuallyHidden';
 import './_table.scss';
-import { createInitialFilters } from './initTableFilters';
-import TableSearch from './TableSearch';
+import { createInitialFilters } from './tableFilters/initTableFilters';
+import TableFilterPopup from './tableFilters/TableFilterPopup';
 
 export type Column<T> = {
   key: keyof T;
@@ -190,7 +190,7 @@ const Table = <T,>({
                           )}
 
                           {!col.hideTableControls && (
-                            <TableSearch
+                            <TableFilterPopup
                               onFilterRows={setValue}
                               title={col.label}
                               name={col.name}
