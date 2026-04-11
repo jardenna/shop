@@ -1,12 +1,14 @@
 /* eslint-disable no-param-reassign */
 import { Column } from '../Table';
 
-interface InitialFilters {
+export interface InitialTableFilters {
   [key: string]: string | string[];
 }
 
-export const createInitialFilters = <T>(headers: Column<T>[]): InitialFilters =>
-  headers.reduce<InitialFilters>((accumulator, header) => {
+export const createInitialFilters = <T>(
+  headers: Column<T>[],
+): InitialTableFilters =>
+  headers.reduce<InitialTableFilters>((accumulator, header) => {
     if (!header.tableFilterType) {
       return accumulator;
     }

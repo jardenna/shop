@@ -7,19 +7,19 @@ import Popup from '../../popup/Popup';
 import VisuallyHidden from '../../VisuallyHidden';
 import './_table-filters.scss';
 import TableFilterInput from './TableFilterInput';
-import { getMinMaxKeys } from './tableFiltersUtils';
+import { getMinMaxKeys, InitialTableFilters } from './tableFiltersUtils';
 
 export interface BaseTableFilterProps {
   filterType: InputType;
   name: string;
   onFilterRows: InputChangeHandler;
   title: string;
-  value: any;
+  value: string;
 }
 
 interface TableFilterPopupProps extends BaseTableFilterProps {
   label: string;
-  values: any;
+  values: InitialTableFilters;
 }
 
 const TableFilterPopup = ({
@@ -52,16 +52,20 @@ const TableFilterPopup = ({
           <section>
             <Input
               id={minKey}
+              type="number"
+              inputMode="numeric"
               name={minKey}
               labelText={`${label} ${language.from}`}
-              value={values[minKey]}
+              value={values[minKey] as string}
               onChange={onFilterRows}
             />
             <Input
               id={maxKey}
               name={maxKey}
+              type="number"
+              inputMode="numeric"
               labelText={`${label} ${language.to}`}
-              value={values[maxKey]}
+              value={values[maxKey] as string}
               onChange={onFilterRows}
             />
           </section>
