@@ -32,6 +32,7 @@ const TableFilterPopup = ({
   values,
 }: TableFilterPopupProps) => {
   const { language } = useLanguage();
+  const { minKey, maxKey } = getMinMaxKeys(name);
 
   const getPopupContent = () => {
     switch (filterType) {
@@ -81,8 +82,6 @@ const TableFilterPopup = ({
         return null;
     }
   };
-
-  const { minKey, maxKey } = getMinMaxKeys(name);
 
   return (
     <div className="table-filter-popup">
