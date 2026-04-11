@@ -43,7 +43,7 @@ const tableHeaders: Column<Product>[] = [
   {
     key: 'countInStock',
     label: 'countInStock',
-    name: 'countInStock',
+    name: 'stock',
     tableFilterType: 'number',
   },
   { key: 'price', label: 'price', name: 'price', tableFilterType: 'number' },
@@ -89,20 +89,6 @@ const ProductPage = () => {
 
   const sortOrder: SortOrder =
     searchParams.get('sortOrder') === 'desc' ? 'desc' : 'asc';
-
-  // const filters: Partial<Record<ColumnKey, string>> = tableHeaders.reduce<
-  //   Partial<Record<ColumnKey, string>>
-  // >((acc, columnItem) => {
-  //   const queryValue = searchParams.get(columnItem.key as string);
-
-  //   if (queryValue) {
-  //     return { ...acc, [columnItem.key]: queryValue };
-  //   }
-
-  //   return acc;
-  // }, {});
-
-  // console.log(filters);
 
   const { page, productsPerPage, setPage, updatePagination } =
     usePaginationParams();
