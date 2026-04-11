@@ -7,13 +7,13 @@ interface InitialFilters {
 
 export function createInitialFilters<T>(headers: Column<T>[]): InitialFilters {
   return headers.reduce<InitialFilters>((accumulator, header) => {
-    if (!header.tableSearchType) {
+    if (!header.tableFilterType) {
       return accumulator;
     }
 
     const keyName = header.key as string;
 
-    switch (header.tableSearchType) {
+    switch (header.tableFilterType) {
       case 'radio':
         // single selectable but often used like filter groups → array
         accumulator[keyName] = [];

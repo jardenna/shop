@@ -22,7 +22,7 @@ export type Column<T> = {
   label: string;
   name: string;
   hideTableControls?: boolean;
-  tableSearchType?: InputType;
+  tableFilterType?: InputType;
 };
 
 type TableProps<T> = {
@@ -196,7 +196,7 @@ const Table = <T,>({
                               name={col.name}
                               value={values[col.key]}
                               label={language[col.label]}
-                              searchType={col.tableSearchType || 'text'}
+                              filterType={col.tableFilterType || 'text'}
                             />
                           )}
                         </div>

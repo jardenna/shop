@@ -10,7 +10,7 @@ import TableFilterInput from './TableFilterInput';
 export interface BaseTableFilterProps {
   name: string;
   onFilterRows: InputChangeHandler;
-  searchType: InputType;
+  filterType: InputType;
   title: string;
   value: any;
 }
@@ -24,7 +24,7 @@ const TableFilterPopup = ({
   value,
   onFilterRows,
   label,
-  searchType,
+  filterType,
   name,
 }: TableFilterPopupProps) => {
   const { language } = useLanguage();
@@ -39,7 +39,7 @@ const TableFilterPopup = ({
             title={title}
             onFilterRows={onFilterRows}
             value={value}
-            searchType={searchType}
+            filterType={filterType}
           />
         }
         ariaLabel={`${language.filter} ${label}`}

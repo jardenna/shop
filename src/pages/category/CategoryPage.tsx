@@ -15,19 +15,19 @@ const tableHeaders: Column<Category>[] = [
     key: 'categoryName',
     label: 'name',
     name: 'categoryName',
-    tableSearchType: 'text',
+    tableFilterType: 'text',
   },
   {
     key: 'categoryStatus',
     label: 'status',
     name: 'categoryStatus',
-    tableSearchType: 'text',
+    tableFilterType: 'text',
   },
   {
     key: 'createdAt',
     label: 'createdAt',
     name: 'createdAt',
-    tableSearchType: 'date',
+    tableFilterType: 'date',
   },
   { key: 'id', label: '', name: '' },
 ];

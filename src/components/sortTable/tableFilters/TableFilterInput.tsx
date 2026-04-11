@@ -7,7 +7,7 @@ const TableFilterInput = ({
   name,
   onFilterRows,
   value,
-  searchType,
+  filterType,
 }: BaseTableFilterProps) => {
   const { language } = useLanguage();
   const text = `${language.filter} ${language[title]}`;
@@ -20,7 +20,7 @@ const TableFilterInput = ({
     >
       <Input
         className="table-filter-input"
-        type={searchType}
+        type={filterType}
         name={name}
         id={title}
         placeholder={text}
