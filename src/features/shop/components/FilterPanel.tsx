@@ -186,11 +186,11 @@ const FilterPanel = ({
             <FieldSet
               legendText={language.priceRange}
               className="dural-range-fieldset"
+              showLegendText
             >
               <DualRange
                 minValue={values.minPrice}
                 maxValue={values.maxPrice}
-                rangeLabel={language.priceRange}
                 inputNames={{
                   min: 'minPrice',
                   max: 'maxPrice',
