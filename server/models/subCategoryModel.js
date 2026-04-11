@@ -35,7 +35,9 @@ const subCategorySchema = new Schema(
 );
 
 subCategorySchema.pre('save', async function () {
-  if (!this.isModified('category')) return;
+  if (!this.isModified('category')) {
+    return;
+  }
 
   const categoryData = await Category.findById(this.category);
 

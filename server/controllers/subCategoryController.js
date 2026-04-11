@@ -269,7 +269,9 @@ const getMenuByParentCategory = asyncHandler(async (req, res) => {
       if (aInPriority) {
         return -1;
       }
-      if (bInPriority) return 1;
+      if (bInPriority) {
+        return 1;
+      }
 
       // fallback: sort by translated label
       return a.label.localeCompare(b.label);
@@ -330,10 +332,18 @@ const updateSubCategory = [
       });
     }
 
-    if (subCategoryName) subCategory.subCategoryName = subCategoryName;
-    if (category) subCategory.category = category;
-    if (categoryStatus) subCategory.categoryStatus = categoryStatus;
-    if (translationKey) subCategory.translationKey = translationKey;
+    if (subCategoryName) {
+      subCategory.subCategoryName = subCategoryName;
+    }
+    if (category) {
+      subCategory.category = category;
+    }
+    if (categoryStatus) {
+      subCategory.categoryStatus = categoryStatus;
+    }
+    if (translationKey) {
+      subCategory.translationKey = translationKey;
+    }
 
     if (categoryStatus === SCHEDULED) {
       subCategory.scheduledDate = scheduledDate;

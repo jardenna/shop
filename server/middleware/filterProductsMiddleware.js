@@ -2,9 +2,12 @@ function filterProductsMiddleware(req, res, next) {
   let page = parseInt(req.query.page);
   let productsPerPage = parseInt(req.query.productsPerPage);
 
-  if (isNaN(page) || page < 1) page = 1;
-  if (isNaN(productsPerPage) || productsPerPage < 1 || productsPerPage > 100)
+  if (isNaN(page) || page < 1) {
+    page = 1;
+  }
+  if (isNaN(productsPerPage) || productsPerPage < 1 || productsPerPage > 100) {
     productsPerPage = 12;
+  }
 
   const filter = {};
 
@@ -15,7 +18,9 @@ function filterProductsMiddleware(req, res, next) {
 
   // Helper to normalize query param into array, optional type casting
   const parseToArray = (param, cast = 'string') => {
-    if (!param) return [];
+    if (!param) {
+      return [];
+    }
     const arr = Array.isArray(param)
       ? param.map((v) => v.trim())
       : param.split(',').map((v) => v.trim());
@@ -59,17 +64,23 @@ function filterProductsMiddleware(req, res, next) {
   // Filter by min/max price
   if (req.query.minPrice || req.query.maxPrice) {
     filter.price = {};
-    if (req.query.minPrice) filter.price.$gte = Number(req.query.minPrice);
-    if (req.query.maxPrice) filter.price.$lte = Number(req.query.maxPrice);
+    if (req.query.minPrice) {
+      filter.price.$gte = Number(req.query.minPrice);
+    }
+    if (req.query.maxPrice) {
+      filter.price.$lte = Number(req.query.maxPrice);
+    }
   }
 
   // Filter by min/max countInStock
   if (req.query.minStock || req.query.maxStock) {
     filter.countInStock = {};
-    if (req.query.minStock)
+    if (req.query.minStock) {
       filter.countInStock.$gte = Number(req.query.minStock);
-    if (req.query.maxStock)
+    }
+    if (req.query.maxStock) {
       filter.countInStock.$lte = Number(req.query.maxStock);
+    }
   }
 
   // Filter by min/max discount
