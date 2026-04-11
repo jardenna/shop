@@ -4,6 +4,7 @@ import type { InputChangeHandler, InputType } from '../../../types/types';
 import Icon from '../../icons/Icon';
 import Popup from '../../popup/Popup';
 import VisuallyHidden from '../../VisuallyHidden';
+import './_table-filters.scss';
 import TableFilterInput from './TableFilterInput';
 
 export interface BaseTableFilterProps {
