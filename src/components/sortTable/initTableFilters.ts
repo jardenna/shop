@@ -1,21 +1,12 @@
 /* eslint-disable no-param-reassign */
 
-import { InputType } from '../../types/types';
+import { Column } from './Table';
 
 interface InitialFilters {
   [key: string]: string | string[];
 }
 
-interface TableHeader<T> {
-  key: keyof T;
-  label: string;
-  name: string;
-  tableSearchType?: InputType;
-}
-
-export function createInitialFilters<T>(
-  headers: TableHeader<T>[],
-): InitialFilters {
+export function createInitialFilters<T>(headers: Column<T>[]): InitialFilters {
   return headers.reduce<InitialFilters>((accumulator, header) => {
     if (!header.tableSearchType) {
       return accumulator;
@@ -29,7 +20,15 @@ export function createInitialFilters<T>(
         accumulator[keyName] = [];
         break;
 
-      case 'number':
+      case 'number': {
+        const capitalizedKey =
+          keyName.charAt(0).toUpperCase() + keyName.slice(1);
+
+        accumulator[`min${capitalizedKey}`] = '';
+        accumulator[`max${capitalizedKey}`] = '';
+        break;
+      }
+
       case 'text':
       case 'date':
         // single value inputs
