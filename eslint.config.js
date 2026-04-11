@@ -224,6 +224,23 @@ export default defineConfig(
     },
   },
   {
+    files: ['server/**/*.js'],
+    rules: {
+      'no-nested-ternary': 'warn',
+      curly: ['error', 'all'],
+
+      // Ignore unused vars if they start with "_"
+      'no-unused-vars': [
+        'warn',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_',
+        },
+      ],
+    },
+  },
+  {
     files: ['**/*.ts'],
     rules: {
       'import/prefer-default-export': 'off',
