@@ -72,6 +72,19 @@ function filterProductsMiddleware(req, res, next) {
       filter.countInStock.$lte = Number(req.query.maxStock);
   }
 
+  // Filter by min/max discount
+  if (req.query.minDiscount || req.query.maxDiscount) {
+    filter.discount = {};
+
+    if (req.query.minDiscount) {
+      filter.discount.$gte = Number(req.query.minDiscount);
+    }
+
+    if (req.query.maxDiscount) {
+      filter.discount.$lte = Number(req.query.maxDiscount);
+    }
+  }
+
   // Filter by productStatus (e.g. 'Active', 'Archived', 'Scheduled')
   if (req.query.productStatus) {
     // Allow multiple values like 'Active,Scheduled'
