@@ -8,9 +8,9 @@ import './_table-filters.scss';
 import TableFilterInput from './TableFilterInput';
 
 export interface BaseTableFilterProps {
+  filterType: InputType;
   name: string;
   onFilterRows: InputChangeHandler;
-  filterType: InputType;
   title: string;
   value: any;
 }
@@ -29,11 +29,10 @@ const TableFilterPopup = ({
 }: TableFilterPopupProps) => {
   const { language } = useLanguage();
 
-  return (
-    <div className="table-filter-popup">
-      <Popup
-        placement="bottom-start"
-        popupContent={
+  const getPopupContent = () => {
+    switch (filterType) {
+      case 'text':
+        return (
           <TableFilterInput
             name={name}
             title={title}
@@ -41,7 +40,40 @@ const TableFilterPopup = ({
             value={value}
             filterType={filterType}
           />
-        }
+        );
+
+      case 'number':
+        return (
+          <TableFilterInput
+            name={name}
+            title={title}
+            onFilterRows={onFilterRows}
+            value={value}
+            filterType={filterType}
+          />
+        );
+
+      case 'radio':
+        return (
+          <TableFilterInput
+            name={name}
+            title={title}
+            onFilterRows={onFilterRows}
+            value={value}
+            filterType={filterType}
+          />
+        );
+
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div className="table-filter-popup">
+      <Popup
+        placement="bottom-start"
+        popupContent={getPopupContent}
         ariaLabel={`${language.filter} ${label}`}
       >
         <Icon iconName={IconName.Filter} />
