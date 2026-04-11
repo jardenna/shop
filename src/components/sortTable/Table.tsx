@@ -197,6 +197,7 @@ const Table = <T,>({
                               value={values[col.key]}
                               label={language[col.label]}
                               filterType={col.tableFilterType || 'text'}
+                              values={values}
                             />
                           )}
                         </div>

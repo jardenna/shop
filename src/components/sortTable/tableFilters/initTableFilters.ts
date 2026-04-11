@@ -38,3 +38,12 @@ export function createInitialFilters<T>(headers: Column<T>[]): InitialFilters {
     return accumulator;
   }, {});
 }
+
+export const getMinMaxKeys = (columnKey: string) => {
+  const capitalizedKey = columnKey.charAt(0).toUpperCase() + columnKey.slice(1);
+
+  return {
+    minKey: `min${capitalizedKey}`,
+    maxKey: `max${capitalizedKey}`,
+  };
+};
