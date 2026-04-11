@@ -14,8 +14,8 @@ import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import SkeletonList from '../skeleton/SkeletonList';
 import VisuallyHidden from '../VisuallyHidden';
 import './_table.scss';
-import { createInitialFilters } from './tableFilters/initTableFilters';
 import TableFilterPopup from './tableFilters/TableFilterPopup';
+import { createInitialFilters } from './tableFilters/tableFiltersUtils';
 
 export type Column<T> = {
   key: keyof T;
@@ -100,18 +100,6 @@ const Table = <T,>({
     });
   };
 
-  // const handleFilter = (field: keyof T, value: string) => {
-  //   const newParams = new URLSearchParams(searchParams.toString());
-
-  //   if (value) {
-  //     newParams.set(field as string, value);
-  //   } else {
-  //     newParams.delete(field as string);
-  //   }
-
-  //   setSearchParams(newParams);
-  // };
-
   const handleClearAll = () => {
     setSearchParams('');
   };
@@ -129,8 +117,6 @@ const Table = <T,>({
   const initialFilters = createInitialFilters(columns);
 
   const { values, setValue } = useSearchParamsState(initialFilters);
-
-  console.log(values);
 
   const sortIcon = sortOrder === 'asc' ? '↑' : '↓';
   const ariaSort = sortOrder !== 'asc' ? 'descending' : 'ascending';

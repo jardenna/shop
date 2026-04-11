@@ -6,8 +6,8 @@ import Icon from '../../icons/Icon';
 import Popup from '../../popup/Popup';
 import VisuallyHidden from '../../VisuallyHidden';
 import './_table-filters.scss';
-import { getMinMaxKeys } from './initTableFilters';
 import TableFilterInput from './TableFilterInput';
+import { getMinMaxKeys } from './tableFiltersUtils';
 
 export interface BaseTableFilterProps {
   filterType: InputType;

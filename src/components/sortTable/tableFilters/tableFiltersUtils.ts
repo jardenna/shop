@@ -5,8 +5,8 @@ interface InitialFilters {
   [key: string]: string | string[];
 }
 
-export function createInitialFilters<T>(headers: Column<T>[]): InitialFilters {
-  return headers.reduce<InitialFilters>((accumulator, header) => {
+export const createInitialFilters = <T>(headers: Column<T>[]): InitialFilters =>
+  headers.reduce<InitialFilters>((accumulator, header) => {
     if (!header.tableFilterType) {
       return accumulator;
     }
@@ -15,7 +15,6 @@ export function createInitialFilters<T>(headers: Column<T>[]): InitialFilters {
 
     switch (header.tableFilterType) {
       case 'radio':
-        // single selectable but often used like filter groups → array
         accumulator[keyName] = [];
         break;
 
@@ -37,7 +36,6 @@ export function createInitialFilters<T>(headers: Column<T>[]): InitialFilters {
 
     return accumulator;
   }, {});
-}
 
 export const getMinMaxKeys = (columnKey: string) => {
   const capitalizedKey = columnKey.charAt(0).toUpperCase() + columnKey.slice(1);
