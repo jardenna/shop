@@ -72,7 +72,7 @@ const duplicateProduct = asyncHandler(async (req, res) => {
       .json({ success: false, message: 'Original product not found' });
   }
 
-  const { _id, images, createdAt, updatedAt, ...rest } = original.toObject();
+  const { ...rest } = original.toObject();
 
   const subCategoryExists = await SubCategory.findById(original.subCategory);
   if (!subCategoryExists) {
