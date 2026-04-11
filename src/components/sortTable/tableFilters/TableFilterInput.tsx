@@ -19,7 +19,7 @@ const TableFilterInput = ({
       }}
     >
       <Input
-        className="table-search"
+        className="table-filter-input"
         type={searchType}
         name={name}
         id={title}

@@ -1,13 +1,13 @@
 @use '../../../scss/globals' as *;
 
-.table-search-input {
+.table-filter-popup {
   .popup-container {
     padding: 0;
     max-width: rem(20px);
   }
 
   .input-container {
-    .table-search {
+    .table-filter-input {
       background-color: $color-white;
       height: rem(48px);
     }

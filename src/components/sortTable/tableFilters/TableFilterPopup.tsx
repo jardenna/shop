@@ -30,7 +30,7 @@ const TableFilterPopup = ({
   const { language } = useLanguage();
 
   return (
-    <div className="table-search-input">
+    <div className="table-filter-popup">
       <Popup
         placement="bottom-start"
         popupContent={
