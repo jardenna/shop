@@ -95,14 +95,24 @@ input {
     background-color: $color-danger;
   }
 
-  + .input-info {
-    margin-top: -14px;
+  .input-suffix-container {
+    position: relative;
+
+    input {
+      padding-right: 40px;
+    }
+
+    .input-suffix {
+      position: absolute;
+      top: 50%;
+      right: 12px;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
   }
 
-  &:has(.input-suffix) {
-    .error-icon {
-      right: 36px;
-    }
+  + .input-info {
+    margin-top: -14px;
   }
 
   input,
@@ -126,11 +136,4 @@ input {
   tbody {
     max-height: rem(250px);
   }
-}
-
-.input-suffix {
-  position: absolute;
-  z-index: 1;
-  top: 52%;
-  right: 12px;
 }

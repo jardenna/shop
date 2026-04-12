@@ -94,37 +94,39 @@ const Input = ({
           inputHasNoLabel={inputHasNoLabel}
           errorText={errorText}
         />
-        <input
-          step={step}
-          ref={ref}
-          multiple={multiple}
-          type={type || 'text'}
-          name={name}
-          checked={checked}
-          onChange={onChange}
-          className={className}
-          value={value}
-          autoFocus={autoFocus}
-          id={id}
-          aria-invalid={errorText ? true : undefined}
-          aria-required={required && !disabled}
-          aria-errormessage={errorText ? ariaErrorId : undefined}
-          onBlur={onBlur}
-          placeholder={placeholder}
-          min={min}
-          max={max}
-          autoComplete={autoComplete}
-          onInput={handleOnInput}
-          onFocus={onFocus}
-          disabled={disabled}
-          inputMode={inputMode}
-          aria-describedby={inputSuffix ? unitId : undefined}
-        />
-        {inputSuffix && (
-          <span className="input-suffix" id={unitId}>
-            {inputSuffix}
-          </span>
-        )}
+        <div className={inputSuffix ? 'input-suffix-container' : ''}>
+          <input
+            step={step}
+            ref={ref}
+            multiple={multiple}
+            type={type || 'text'}
+            name={name}
+            checked={checked}
+            onChange={onChange}
+            className={className}
+            value={value}
+            autoFocus={autoFocus}
+            id={id}
+            aria-invalid={errorText ? true : undefined}
+            aria-required={required && !disabled}
+            aria-errormessage={errorText ? ariaErrorId : undefined}
+            onBlur={onBlur}
+            placeholder={placeholder}
+            min={min}
+            max={max}
+            autoComplete={autoComplete}
+            onInput={handleOnInput}
+            onFocus={onFocus}
+            disabled={disabled}
+            inputMode={inputMode}
+            aria-describedby={inputSuffix ? unitId : undefined}
+          />
+          {inputSuffix && (
+            <span className="input-suffix" id={unitId}>
+              {inputSuffix}
+            </span>
+          )}
+        </div>
       </div>
       {inputInfo && <InputInfo inputInfo={inputInfo} />}
     </>
