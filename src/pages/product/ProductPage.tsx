@@ -26,44 +26,44 @@ const tableHeaders: Column<Product>[] = [
     key: 'productName',
     label: 'name',
     name: 'productName',
-    tableSearchType: 'text',
+    tableFilterType: 'text',
   },
   {
     key: 'categoryName',
     label: 'category',
     name: 'categoryName',
-    tableSearchType: 'text',
+    tableFilterType: 'text',
   },
   {
     key: 'subCategoryName',
     label: 'subCategory',
     name: 'subCategoryName',
-    tableSearchType: 'text',
+    tableFilterType: 'text',
   },
   {
     key: 'countInStock',
     label: 'countInStock',
-    name: 'countInStock',
-    tableSearchType: 'number',
+    name: 'stock',
+    tableFilterType: 'number',
   },
-  { key: 'price', label: 'price', name: 'price', tableSearchType: 'number' },
+  { key: 'price', label: 'price', name: 'price', tableFilterType: 'number' },
   {
     key: 'discount',
     label: 'discount',
     name: 'discount',
-    tableSearchType: 'number',
+    tableFilterType: 'number',
   },
   {
     key: 'discountedPrice',
-    label: 'finalPrice',
+    label: 'totalPrice',
     name: 'discountPrice',
-    tableSearchType: 'number',
+    tableFilterType: 'number',
   },
   {
     key: 'productStatus',
     label: 'status',
     name: 'productStatus',
-    tableSearchType: 'radio',
+    tableFilterType: 'text',
   },
   { key: 'id', label: '', name: '' },
 ];
@@ -89,20 +89,6 @@ const ProductPage = () => {
 
   const sortOrder: SortOrder =
     searchParams.get('sortOrder') === 'desc' ? 'desc' : 'asc';
-
-  // const filters: Partial<Record<ColumnKey, string>> = tableHeaders.reduce<
-  //   Partial<Record<ColumnKey, string>>
-  // >((acc, columnItem) => {
-  //   const queryValue = searchParams.get(columnItem.key as string);
-
-  //   if (queryValue) {
-  //     return { ...acc, [columnItem.key]: queryValue };
-  //   }
-
-  //   return acc;
-  // }, {});
-
-  // console.log(filters);
 
   const { page, productsPerPage, setPage, updatePagination } =
     usePaginationParams();

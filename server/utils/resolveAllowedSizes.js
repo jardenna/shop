@@ -18,10 +18,14 @@ const resolveAllowedSizes = ({ subKey, mainKey }) => {
   }
 
   // If it's a shoe subcategory but not for kids or men, use women’s shoe sizes
-  if (subKey === 'shoes') return SHOE_SIZES;
+  if (subKey === 'shoes') {
+    return SHOE_SIZES;
+  }
 
   // Accessories are always "Onesize"
-  if (subKey.includes('accessories')) return ['Onesize'];
+  if (subKey.includes('accessories')) {
+    return ['Onesize'];
+  }
 
   // Default to general sizes (used by most other categories)
   return CLOTHING_SIZES;

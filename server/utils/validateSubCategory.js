@@ -17,7 +17,9 @@ const validateSubCategory = async ({
     lang,
   );
 
-  if (!dateValidation.success) return dateValidation;
+  if (!dateValidation.success) {
+    return dateValidation;
+  }
 
   if (!mongoose.Types.ObjectId.isValid(categoryId)) {
     return {

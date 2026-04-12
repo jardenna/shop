@@ -20,9 +20,9 @@ import AdminPageContainer from '../pageContainer/AdminPageContainer';
 import './userPage.styles.scss';
 
 const tableHeaders: Column<UserResponse>[] = [
-  { key: 'username', label: 'username', name: 'name', tableSearchType: 'text' },
-  { key: 'email', label: 'email', name: 'email', tableSearchType: 'text' },
-  { key: 'role', label: 'role', name: 'role', tableSearchType: 'text' },
+  { key: 'username', label: 'username', name: 'name', tableFilterType: 'text' },
+  { key: 'email', label: 'email', name: 'email', tableFilterType: 'text' },
+  { key: 'role', label: 'role', name: 'role', tableFilterType: 'text' },
   { key: 'id', label: '', name: '' },
 ];
 

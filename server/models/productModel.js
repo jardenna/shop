@@ -67,9 +67,13 @@ productSchema.pre('validate', async function () {
   const isSizeRelatedUpdate =
     this.isNew || this.isModified('sizes') || this.isModified('subCategory');
 
-  if (!isSizeRelatedUpdate) return;
+  if (!isSizeRelatedUpdate) {
+    return;
+  }
 
-  if (!this.subCategory) return;
+  if (!this.subCategory) {
+    return;
+  }
 
   const subCat = await SubCategory.findById(this.subCategory);
   if (!subCat) {

@@ -14,19 +14,19 @@ const tableHeaders: Column<SubCategoryResponse>[] = [
     key: 'mainCategoryName',
     label: 'mainCategoryName',
     name: 'mainCategoryName',
-    tableSearchType: 'text',
+    tableFilterType: 'text',
   },
   {
     key: 'subCategoryName',
     label: 'name',
     name: 'subCategoryName',
-    tableSearchType: 'text',
+    tableFilterType: 'text',
   },
   {
     key: 'categoryStatus',
     label: 'status',
     name: 'categoryStatus',
-    tableSearchType: 'radio',
+    tableFilterType: 'radio',
   },
   { key: 'id', label: '', name: '' },
 ];

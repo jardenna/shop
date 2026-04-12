@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router';
 import { SortOrder } from '../../app/api/apiTypes/sharedApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
 import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
+import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import variables from '../../scss/variables.module.scss';
 import { BtnVariant, IconName } from '../../types/enums';
 import { InputType } from '../../types/types';
@@ -13,14 +14,15 @@ import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import SkeletonList from '../skeleton/SkeletonList';
 import VisuallyHidden from '../VisuallyHidden';
 import './_table.scss';
-import TableSearch from './TableSearch';
+import TableFilterPopup from './tableFilters/TableFilterPopup';
+import { createInitialFilters } from './tableFilters/tableFiltersUtils';
 
 export type Column<T> = {
   key: keyof T;
   label: string;
   name: string;
   hideTableControls?: boolean;
-  tableSearchType?: InputType;
+  tableFilterType?: InputType;
 };
 
 type TableProps<T> = {
@@ -80,14 +82,6 @@ const Table = <T,>({
 
   const sortOrder = searchParams.get('sortOrder') || 'asc';
 
-  const filters: Record<keyof T, string> = columns.reduce(
-    (acc: Record<keyof T, string>, col) => ({
-      ...acc,
-      [col.key]: searchParams.get(col.key as string) || '',
-    }),
-    {} as Record<keyof T, string>,
-  );
-
   const handleSort = (field: keyof T) => {
     const newOrder: SortOrder =
       sortField === field && sortOrder === 'asc' ? 'desc' : 'asc';
@@ -98,32 +92,13 @@ const Table = <T,>({
     });
   };
 
-  const handleFilter = (field: keyof T, value: string) => {
-    const newParams = new URLSearchParams(searchParams.toString());
-
-    if (value) {
-      newParams.set(field as string, value);
-    } else {
-      newParams.delete(field as string);
-    }
-
-    setSearchParams(newParams);
-  };
-
   const handleClearAll = () => {
     setSearchParams('');
   };
 
-  const filteredData = data.filter((item) =>
-    (Object.keys(filters) as (keyof T)[]).every(
-      (key) =>
-        filters[key] === '' ||
-        item[key]
-          ?.toString()
-          .toLowerCase()
-          .includes(filters[key].toLowerCase()),
-    ),
-  );
+  const initialFilters = createInitialFilters(columns);
+
+  const { values, setValue } = useSearchParamsState(initialFilters);
 
   const sortIcon = sortOrder === 'asc' ? '↑' : '↓';
   const ariaSort = sortOrder !== 'asc' ? 'descending' : 'ascending';
@@ -183,13 +158,13 @@ const Table = <T,>({
                           )}
 
                           {!col.hideTableControls && (
-                            <TableSearch
-                              onFilterRows={(e) => {
-                                handleFilter(col.key, e.target.value);
-                              }}
-                              title={col.label}
-                              value={filters[col.key]}
-                              label={language[col.label]}
+                            <TableFilterPopup
+                              onFilterRows={setValue}
+                              id={col.label}
+                              name={col.name}
+                              value={values[col.key] as string}
+                              filterType={col.tableFilterType || 'text'}
+                              values={values}
                             />
                           )}
                         </div>
@@ -203,7 +178,7 @@ const Table = <T,>({
                 </tr>
               </thead>
               <tbody className={`padding-${padding}`}>
-                {filteredData.length ? (
+                {data.length ? (
                   children(data)
                 ) : (
                   <tr>

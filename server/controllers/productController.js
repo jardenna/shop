@@ -72,7 +72,7 @@ const duplicateProduct = asyncHandler(async (req, res) => {
       .json({ success: false, message: 'Original product not found' });
   }
 
-  const { _id, images, createdAt, updatedAt, ...rest } = original.toObject();
+  const { ...rest } = original.toObject();
 
   const subCategoryExists = await SubCategory.findById(original.subCategory);
   if (!subCategoryExists) {
@@ -440,7 +440,11 @@ const getAdminProducts = asyncHandler(async (req, res) => {
     sortConfig.createdAt = -1;
   }
 
-  const pipeline = [
+  const hasDiscountFilter =
+    req.query.minDiscountedPrice !== undefined ||
+    req.query.maxDiscountedPrice !== undefined;
+
+  const basePipeline = [
     { $match: filter },
 
     {
@@ -455,6 +459,45 @@ const getAdminProducts = asyncHandler(async (req, res) => {
         },
       },
     },
+
+    ...(hasDiscountFilter
+      ? [
+          {
+            $match: {
+              discountedPrice: {
+                ...(req.query.minDiscountedPrice !== undefined && {
+                  $gte: Number(req.query.minDiscountedPrice),
+                }),
+                ...(req.query.maxDiscountedPrice !== undefined && {
+                  $lte: Number(req.query.maxDiscountedPrice),
+                }),
+              },
+            },
+          },
+        ]
+      : []),
+  ];
+
+  // Build name filters (category + subcategory)
+  const nameFilters = {
+    ...(req.query.categoryName && {
+      categoryName: {
+        $in: req.query.categoryName
+          .split(',')
+          .map((value) => new RegExp(`^${value.trim()}$`, 'i')),
+      },
+    }),
+    ...(req.query.subCategoryName && {
+      subCategoryName: {
+        $in: req.query.subCategoryName
+          .split(',')
+          .map((value) => new RegExp(`^${value.trim()}$`, 'i')),
+      },
+    }),
+  };
+
+  const pipeline = [
+    ...basePipeline,
 
     {
       $lookup: {
@@ -483,15 +526,53 @@ const getAdminProducts = asyncHandler(async (req, res) => {
       },
     },
 
-    { $sort: sortConfig },
+    // Apply filters AFTER fields exist
+    ...(Object.keys(nameFilters).length ? [{ $match: nameFilters }] : []),
 
+    { $sort: sortConfig },
     { $skip: productsPerPage * (page - 1) },
     { $limit: productsPerPage },
   ];
 
-  const products = await Product.aggregate(pipeline);
+  const countPipeline = [
+    ...basePipeline,
 
-  const productCount = await Product.countDocuments(filter);
+    {
+      $lookup: {
+        from: 'subcategories',
+        localField: 'subCategory',
+        foreignField: '_id',
+        as: 'subCategory',
+      },
+    },
+    { $unwind: { path: '$subCategory', preserveNullAndEmptyArrays: true } },
+
+    {
+      $lookup: {
+        from: 'categories',
+        localField: 'subCategory.category',
+        foreignField: '_id',
+        as: 'category',
+      },
+    },
+    { $unwind: { path: '$category', preserveNullAndEmptyArrays: true } },
+
+    {
+      $addFields: {
+        subCategoryName: '$subCategory.subCategoryName',
+        categoryName: '$category.categoryName',
+      },
+    },
+
+    ...(Object.keys(nameFilters).length ? [{ $match: nameFilters }] : []),
+
+    { $count: 'total' },
+  ];
+
+  const products = await Product.aggregate(pipeline);
+  const countResult = await Product.aggregate(countPipeline);
+
+  const productCount = countResult[0]?.total || 0;
   const totalCount = await Product.countDocuments();
 
   res.status(200).json({
@@ -573,7 +654,7 @@ const getShopProductById = asyncHandler(async (req, res) => {
   const subCategoryName = product.subCategory?.subCategoryName || '';
   const categoryName = product.subCategory?.category?.categoryName || '';
 
-  const { subCategory, ...rest } = formatMongoData(product);
+  const { ...rest } = formatMongoData(product);
 
   res.status(200).json({
     ...rest,

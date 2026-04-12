@@ -7,6 +7,10 @@
   .dural-range-fieldset {
     border-block-end: 1px solid $color-border-dark;
     padding-bottom: 12px;
+
+    legend {
+      text-transform: uppercase;
+    }
   }
 
   .checkbox-list {
@@ -35,9 +39,9 @@
   .filter-fieldset {
     flex-grow: 1;
 
-    legend {
+    > legend {
       font-size: rem(20px);
-      margin-bottom: 8px;
+      margin-bottom: 16px;
     }
   }
 

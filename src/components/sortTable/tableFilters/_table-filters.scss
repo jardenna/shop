@@ -1,0 +1,21 @@
+@use '../../../scss/globals' as *;
+
+.table-filter-popup {
+  .popup-container {
+    background-color: $color-light-gray-20;
+  }
+
+  .fieldset {
+    margin: 0;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .input-container {
+    input {
+      background-color: $color-white;
+      height: rem(40px);
+      padding: 8px;
+    }
+  }
+}

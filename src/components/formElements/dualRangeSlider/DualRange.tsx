@@ -1,7 +1,5 @@
-import { useId } from 'react';
 import { useCurrency } from '../../../features/currency/useCurrency';
 import type { ChangeInputType } from '../../../types/types';
-import VisuallyHidden from '../../VisuallyHidden';
 import './_range.scss';
 import DualRangeSlider from './DualRangeSlider';
 import RangeNumberInput from './RangeNumberInput';
@@ -12,7 +10,6 @@ interface DualRangeProps {
   inputNames: InputUtils;
   maxValue: string;
   minValue: string;
-  rangeLabel: string;
   unitLabel: string;
   max?: number;
   min?: number;
@@ -31,11 +28,9 @@ const DualRange = ({
   inputNames,
   inputLabels,
   unitLabel,
-  rangeLabel,
   standAlone = false,
 }: DualRangeProps) => {
   const { currencyText } = useCurrency();
-  const groupLabelId = useId();
 
   const { input, committed, track, onRangeChange } = useRangeController({
     minValue,
@@ -47,11 +42,11 @@ const DualRange = ({
   });
 
   return (
-    <div role="group" aria-labelledby={groupLabelId}>
-      <VisuallyHidden id={groupLabelId}>{rangeLabel}</VisuallyHidden>
+    <div role="group">
       {!standAlone && (
         <div className="dual-number-range">
           <RangeNumberInput
+            inputHasNoLabel
             id={inputNames.min}
             name={inputNames.min}
             value={input.min}
@@ -69,6 +64,7 @@ const DualRange = ({
           />
 
           <RangeNumberInput
+            inputHasNoLabel
             id={inputNames.max}
             name={inputNames.max}
             value={input.max}

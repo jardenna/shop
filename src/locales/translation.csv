@@ -75,7 +75,7 @@ copy;Copy;Kopi
 copyAction;Copy;Kopier
 couldNotFindInfo;Sorry, We couldn’t find the information you’re looking for;Vi kunne desværre ikke finde den information, du søger
 country;Country;Land
-countInStock;Items in stock;Antal på lager
+countInStock;Stock quantity;Lagerantal
 create;Create;Opret
 createAccount;Create account;Opret konto
 createNewAccount;Create new account;Opret en ny konto
@@ -149,6 +149,7 @@ filterHeading;Filter;Filter
 filterProducts;Filter products;Filtrer produkter
 filterRow;Filter row;Filtrer række
 filtersApplied;Filters applied;Filtre anvendt
+from;from;fra
 getInspired;Get inspired;Bliv inspireret
 globe;Globe;Globus
 goBack;Go back;Gå tilbage
@@ -230,7 +231,7 @@ myAddresses;My addresses;Mine adresser
 myBag;My bag;Min indkøbskurv
 myOrders;My orders;Mine ordrer
 name;Name;Navn
-finalPrice;Final price;Endelig pris
+totalPrice;Total price;Samlet pris
 noData;No data found;Ingen data fundet
 noAddressData;No matching address found;Ingen matchende adresse
 noChanges;No changes to save;Ingen ændringer at gemme
@@ -412,6 +413,7 @@ temporarilyOutOfStock;This item is temporarily out of stock;Varen er midlertidig
 temporarilyOutOfStockText;Get notified when the item is back in stock;Få besked, når varen er tilbage på lager
 thereAre;There are;Der findes
 title;Title;Titel
+to;to;til
 today;Today;I dag
 totalProducts;Total products;Antal produkter
 translationKey;Translation key;Oversættelsesnøgle

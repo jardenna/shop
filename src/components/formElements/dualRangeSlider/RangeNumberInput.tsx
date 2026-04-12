@@ -9,8 +9,9 @@ interface RangeNumberInputProps {
   name: string;
   step: number;
   value: string;
+  inputHasNoLabel?: boolean;
   inputSuffix?: string;
-  onBlur: () => void;
+  onBlur?: () => void;
   onChange: (event: ChangeInputType) => void;
 }
 
@@ -25,9 +26,10 @@ const RangeNumberInput = ({
   step,
   labelText,
   inputSuffix,
+  inputHasNoLabel,
 }: RangeNumberInputProps) => (
   <Input
-    inputHasNoLabel
+    inputHasNoLabel={inputHasNoLabel}
     id={id}
     name={name}
     type="number"
