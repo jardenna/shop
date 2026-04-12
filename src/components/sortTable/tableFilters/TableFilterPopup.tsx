@@ -12,19 +12,20 @@ import { getMinMaxKeys, InitialTableFilters } from './tableFiltersUtils';
 
 export interface BaseTableFilterProps {
   filterType: InputType;
+  id: string;
   name: string;
   onFilterRows: InputChangeHandler;
-  title: string;
   value: string;
 }
 
 interface TableFilterPopupProps extends BaseTableFilterProps {
+  id: string;
   label: string;
   values: InitialTableFilters;
 }
 
 const TableFilterPopup = ({
-  title,
+  id,
   value,
   onFilterRows,
   label,
@@ -34,7 +35,8 @@ const TableFilterPopup = ({
 }: TableFilterPopupProps) => {
   const { language } = useLanguage();
   const { minKey, maxKey } = getMinMaxKeys(name);
-  const text = `${language.filter} ${language[title]}`;
+  const legendText = `${language.filter} ${language[id]}`;
+  const labelText = `${language.filter} ${language[id]}`;
 
   const getPopupContent = () => {
     switch (filterType) {
@@ -42,17 +44,19 @@ const TableFilterPopup = ({
         return (
           <TableFilterInput
             name={name}
-            title={title}
+            id={id}
             onFilterRows={onFilterRows}
             value={value}
             filterType={filterType}
+            legendText={legendText}
+            labelText={labelText}
           />
         );
 
       case 'number':
         return (
           <form className="table-filter-form">
-            <FieldSet legendText={text}>
+            <FieldSet legendText={legendText}>
               <Input
                 id={minKey}
                 type="number"
@@ -79,10 +83,12 @@ const TableFilterPopup = ({
         return (
           <TableFilterInput
             name={name}
-            title={title}
+            id={id}
             onFilterRows={onFilterRows}
             value={value}
             filterType={filterType}
+            legendText={legendText}
+            labelText={labelText}
           />
         );
 

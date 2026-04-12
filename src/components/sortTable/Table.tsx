@@ -160,7 +160,7 @@ const Table = <T,>({
                           {!col.hideTableControls && (
                             <TableFilterPopup
                               onFilterRows={setValue}
-                              title={col.label}
+                              id={col.label}
                               name={col.name}
                               value={values[col.key] as string}
                               label={language[col.label]}
