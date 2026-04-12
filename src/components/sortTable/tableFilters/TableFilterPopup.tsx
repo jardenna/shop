@@ -64,6 +64,7 @@ const TableFilterPopup = ({
                 labelText={`${labelTextShort} ${language.from}`}
                 value={values[minKey] as string}
                 onChange={onFilterRows}
+                autoFocus
               />
               <Input
                 id={maxKey}

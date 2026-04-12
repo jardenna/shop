@@ -12,14 +12,6 @@
   }
 
   .input-container {
-    &::after {
-      opacity: 1;
-    }
-
-    &:has(:focus-visible)::after {
-      opacity: 0.3;
-    }
-
     label {
       font-weight: normal;
     }
@@ -27,6 +19,7 @@
     input {
       background-color: $color-white;
       height: rem(40px);
+      padding: 8px;
     }
   }
 }
