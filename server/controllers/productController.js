@@ -439,6 +439,7 @@ const getAdminProducts = asyncHandler(async (req, res) => {
   } else {
     sortConfig.createdAt = -1;
   }
+
   const hasDiscountFilter =
     req.query.minDiscountedPrice !== undefined ||
     req.query.maxDiscountedPrice !== undefined;
@@ -477,6 +478,24 @@ const getAdminProducts = asyncHandler(async (req, res) => {
       : []),
   ];
 
+  // Build name filters (category + subcategory)
+  const nameFilters = {
+    ...(req.query.categoryName && {
+      categoryName: {
+        $in: req.query.categoryName
+          .split(',')
+          .map((value) => new RegExp(`^${value.trim()}$`, 'i')),
+      },
+    }),
+    ...(req.query.subCategoryName && {
+      subCategoryName: {
+        $in: req.query.subCategoryName
+          .split(',')
+          .map((value) => new RegExp(`^${value.trim()}$`, 'i')),
+      },
+    }),
+  };
+
   const pipeline = [
     ...basePipeline,
 
@@ -507,16 +526,52 @@ const getAdminProducts = asyncHandler(async (req, res) => {
       },
     },
 
+    // Apply filters AFTER fields exist
+    ...(Object.keys(nameFilters).length ? [{ $match: nameFilters }] : []),
+
     { $sort: sortConfig },
     { $skip: productsPerPage * (page - 1) },
     { $limit: productsPerPage },
   ];
 
-  const countPipeline = [...basePipeline, { $count: 'total' }];
+  const countPipeline = [
+    ...basePipeline,
+
+    {
+      $lookup: {
+        from: 'subcategories',
+        localField: 'subCategory',
+        foreignField: '_id',
+        as: 'subCategory',
+      },
+    },
+    { $unwind: { path: '$subCategory', preserveNullAndEmptyArrays: true } },
+
+    {
+      $lookup: {
+        from: 'categories',
+        localField: 'subCategory.category',
+        foreignField: '_id',
+        as: 'category',
+      },
+    },
+    { $unwind: { path: '$category', preserveNullAndEmptyArrays: true } },
+
+    {
+      $addFields: {
+        subCategoryName: '$subCategory.subCategoryName',
+        categoryName: '$category.categoryName',
+      },
+    },
+
+    ...(Object.keys(nameFilters).length ? [{ $match: nameFilters }] : []),
+
+    { $count: 'total' },
+  ];
 
   const products = await Product.aggregate(pipeline);
-
   const countResult = await Product.aggregate(countPipeline);
+
   const productCount = countResult[0]?.total || 0;
   const totalCount = await Product.countDocuments();
 
