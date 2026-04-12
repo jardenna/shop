@@ -443,7 +443,7 @@ const getAdminProducts = asyncHandler(async (req, res) => {
     req.query.minDiscountedPrice !== undefined ||
     req.query.maxDiscountedPrice !== undefined;
 
-  const pipeline = [
+  const basePipeline = [
     { $match: filter },
 
     {
@@ -464,10 +464,10 @@ const getAdminProducts = asyncHandler(async (req, res) => {
           {
             $match: {
               discountedPrice: {
-                ...(req.query.minDiscountedPrice && {
+                ...(req.query.minDiscountedPrice !== undefined && {
                   $gte: Number(req.query.minDiscountedPrice),
                 }),
-                ...(req.query.maxDiscountedPrice && {
+                ...(req.query.maxDiscountedPrice !== undefined && {
                   $lte: Number(req.query.maxDiscountedPrice),
                 }),
               },
@@ -475,6 +475,10 @@ const getAdminProducts = asyncHandler(async (req, res) => {
           },
         ]
       : []),
+  ];
+
+  const pipeline = [
+    ...basePipeline,
 
     {
       $lookup: {
@@ -504,14 +508,16 @@ const getAdminProducts = asyncHandler(async (req, res) => {
     },
 
     { $sort: sortConfig },
-
     { $skip: productsPerPage * (page - 1) },
     { $limit: productsPerPage },
   ];
 
+  const countPipeline = [...basePipeline, { $count: 'total' }];
+
   const products = await Product.aggregate(pipeline);
 
-  const productCount = await Product.countDocuments(filter);
+  const countResult = await Product.aggregate(countPipeline);
+  const productCount = countResult[0]?.total || 0;
   const totalCount = await Product.countDocuments();
 
   res.status(200).json({
