@@ -1,6 +1,7 @@
 import { useLanguage } from '../../../features/language/useLanguage';
 import { IconName } from '../../../types/enums';
 import type { InputChangeHandler, InputType } from '../../../types/types';
+import FieldSet from '../../fieldset/FieldSet';
 import Input from '../../formElements/Input';
 import Icon from '../../icons/Icon';
 import Popup from '../../popup/Popup';
@@ -33,6 +34,7 @@ const TableFilterPopup = ({
 }: TableFilterPopupProps) => {
   const { language } = useLanguage();
   const { minKey, maxKey } = getMinMaxKeys(name);
+  const text = `${language.filter} ${language[title]}`;
 
   const getPopupContent = () => {
     switch (filterType) {
@@ -49,26 +51,28 @@ const TableFilterPopup = ({
 
       case 'number':
         return (
-          <section>
-            <Input
-              id={minKey}
-              type="number"
-              inputMode="numeric"
-              name={minKey}
-              labelText={`${label} ${language.from}`}
-              value={values[minKey] as string}
-              onChange={onFilterRows}
-            />
-            <Input
-              id={maxKey}
-              name={maxKey}
-              type="number"
-              inputMode="numeric"
-              labelText={`${label} ${language.to}`}
-              value={values[maxKey] as string}
-              onChange={onFilterRows}
-            />
-          </section>
+          <form className="table-filter-form">
+            <FieldSet legendText={text}>
+              <Input
+                id={minKey}
+                type="number"
+                inputMode="numeric"
+                name={minKey}
+                labelText={`${label} ${language.from}`}
+                value={values[minKey] as string}
+                onChange={onFilterRows}
+              />
+              <Input
+                id={maxKey}
+                name={maxKey}
+                type="number"
+                inputMode="numeric"
+                labelText={`${label} ${language.to}`}
+                value={values[maxKey] as string}
+                onChange={onFilterRows}
+              />
+            </FieldSet>
+          </form>
         );
 
       case 'radio':

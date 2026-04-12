@@ -1,4 +1,5 @@
 import { useLanguage } from '../../../features/language/useLanguage';
+import FieldSet from '../../fieldset/FieldSet';
 import Input from '../../formElements/Input';
 import { BaseTableFilterProps } from './TableFilterPopup';
 
@@ -13,23 +14,18 @@ const TableFilterInput = ({
   const text = `${language.filter} ${language[title]}`;
 
   return (
-    <form
-      onSubmit={(event) => {
-        event.preventDefault();
-      }}
-    >
-      <Input
-        className="table-filter-input"
-        type={filterType}
-        name={name}
-        id={title}
-        placeholder={text}
-        value={value}
-        onChange={onFilterRows}
-        labelText={text}
-        inputHasNoLabel
-        autoFocus
-      />
+    <form className="table-filter-form">
+      <FieldSet legendText={title}>
+        <Input
+          type={filterType}
+          name={name}
+          id={title}
+          value={value}
+          onChange={onFilterRows}
+          labelText={text}
+          autoFocus
+        />
+      </FieldSet>
     </form>
   );
 };
