@@ -163,7 +163,6 @@ const Table = <T,>({
                               id={col.label}
                               name={col.name}
                               value={values[col.key] as string}
-                              label={language[col.label]}
                               filterType={col.tableFilterType || 'text'}
                               values={values}
                             />

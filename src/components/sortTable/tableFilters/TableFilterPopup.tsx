@@ -20,7 +20,6 @@ export interface BaseTableFilterProps {
 
 interface TableFilterPopupProps extends BaseTableFilterProps {
   id: string;
-  label: string;
   values: InitialTableFilters;
 }
 
@@ -28,7 +27,6 @@ const TableFilterPopup = ({
   id,
   value,
   onFilterRows,
-  label,
   filterType,
   name,
   values,
@@ -37,6 +35,7 @@ const TableFilterPopup = ({
   const { minKey, maxKey } = getMinMaxKeys(name);
   const legendText = `${language.filter} ${language[id]}`;
   const labelText = `${language.filter} ${language[id]}`;
+  const labelTextShort = language[id];
 
   const getPopupContent = () => {
     switch (filterType) {
@@ -62,7 +61,7 @@ const TableFilterPopup = ({
                 type="number"
                 inputMode="numeric"
                 name={minKey}
-                labelText={`${label} ${language.from}`}
+                labelText={`${labelTextShort} ${language.from}`}
                 value={values[minKey] as string}
                 onChange={onFilterRows}
               />
@@ -71,7 +70,7 @@ const TableFilterPopup = ({
                 name={maxKey}
                 type="number"
                 inputMode="numeric"
-                labelText={`${label} ${language.to}`}
+                labelText={`${labelTextShort} ${language.to}`}
                 value={values[maxKey] as string}
                 onChange={onFilterRows}
               />
@@ -102,7 +101,7 @@ const TableFilterPopup = ({
       <Popup
         placement="bottom-start"
         popupContent={getPopupContent}
-        ariaLabel={`${language.filter} ${label}`}
+        ariaLabel={`${language.filter} ${id}`}
       >
         <Icon iconName={IconName.Filter} />
 
