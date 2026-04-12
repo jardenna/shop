@@ -1,3 +1,4 @@
+import { useCurrency } from '../../../features/currency/useCurrency';
 import { useLanguage } from '../../../features/language/useLanguage';
 import { IconName } from '../../../types/enums';
 import type { InputChangeHandler, InputType } from '../../../types/types';
@@ -32,6 +33,7 @@ const TableFilterPopup = ({
   values,
 }: TableFilterPopupProps) => {
   const { language } = useLanguage();
+  const { currencyText } = useCurrency();
   const { minKey, maxKey } = getMinMaxKeys(name);
   const legendText = `${language.filter} ${language[id]}`;
   const labelText = `${language.filter} ${language[id]}`;
@@ -65,6 +67,7 @@ const TableFilterPopup = ({
                 value={values[minKey] as string}
                 onChange={onFilterRows}
                 autoFocus
+                inputSuffix={currencyText}
               />
               <Input
                 id={maxKey}
@@ -74,6 +77,7 @@ const TableFilterPopup = ({
                 labelText={`${labelTextShort} ${language.to}`}
                 value={values[maxKey] as string}
                 onChange={onFilterRows}
+                inputSuffix={currencyText}
               />
             </FieldSet>
           </form>
