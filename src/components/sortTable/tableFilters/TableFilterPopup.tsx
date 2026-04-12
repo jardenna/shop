@@ -38,6 +38,7 @@ const TableFilterPopup = ({
   const legendText = `${language.filter} ${language[id]}`;
   const labelText = `${language.filter} ${language[id]}`;
   const labelTextShort = language[id];
+  const inputSuffix = id !== 'countInStock' ? currencyText : language.pcs;
 
   const getPopupContent = () => {
     switch (filterType) {
@@ -67,7 +68,7 @@ const TableFilterPopup = ({
                 value={values[minKey] as string}
                 onChange={onFilterRows}
                 autoFocus
-                inputSuffix={currencyText}
+                inputSuffix={inputSuffix}
               />
               <Input
                 id={maxKey}
@@ -77,7 +78,7 @@ const TableFilterPopup = ({
                 labelText={`${labelTextShort} ${language.to}`}
                 value={values[maxKey] as string}
                 onChange={onFilterRows}
-                inputSuffix={currencyText}
+                inputSuffix={inputSuffix}
               />
             </FieldSet>
           </form>

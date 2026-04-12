@@ -55,7 +55,7 @@ const tableHeaders: Column<Product>[] = [
   },
   {
     key: 'discountedPrice',
-    label: 'finalPrice',
+    label: 'totalPrice',
     name: 'discountPrice',
     tableFilterType: 'number',
   },
