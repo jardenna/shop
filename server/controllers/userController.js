@@ -2,6 +2,7 @@ import bcrypt from 'bcryptjs';
 import asyncHandler from '../middleware/asyncHandler.js';
 import User from '../models/userModel.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
+import { sortColumns } from '../utils/sortColumns.js';
 import { t } from '../utils/translator.js';
 import { validateCreateAddress } from '../utils/validateAddress.js';
 import { validateEmail, validatePassword } from '../utils/validateAuth.js';
@@ -11,6 +12,9 @@ import { validateEmail, validatePassword } from '../utils/validateAuth.js';
 // @method  Get
 // @access  Private for admin
 const getAllUsers = asyncHandler(async (req, res) => {
+  const sortField = req.query.sortField;
+  const sortOrder = req.query.sortOrder === 'desc' ? -1 : 1;
+
   const users = await User.find({})
     .select('-password') // Exclude password field
     .lean();
@@ -19,7 +23,13 @@ const getAllUsers = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: t('noData', req.lang) });
   }
 
-  const formattedUsers = formatMongoData(users);
+  const sortedColums = sortColumns({
+    collection: users,
+    sortField,
+    sortOrder,
+  });
+
+  const formattedUsers = formatMongoData(sortedColums);
 
   res.status(200).json(formattedUsers);
 });
