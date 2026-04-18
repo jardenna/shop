@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useSearchParams } from 'react-router';
+import { SortOrder } from '../../app/api/apiTypes/sharedApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
 import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
@@ -28,14 +29,14 @@ type TableProps<T> = {
   columns: Column<T>[];
   data: T[];
   isLoading: boolean;
-  onSort: any;
-  sortField: any;
-  sortOrder: any;
+  sortField: keyof T;
+  sortOrder: SortOrder;
   tableCaption: string;
   className?: string;
   emptyHeaderCellText?: string;
   children: (data: T[]) => ReactNode;
   onReset: () => void;
+  onSort: (field: keyof T) => void;
 };
 
 const Table = <T,>({
