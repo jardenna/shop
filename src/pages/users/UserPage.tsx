@@ -10,7 +10,6 @@ import {
   useDeleteUserMutation,
   useUpdateUserMutation,
 } from '../../features/users/userApiSlice';
-import { useTableEditField } from '../../hooks/useTableEditField';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
 import { AdminPath } from '../../layout/nav/enums';
 import { handleApiError } from '../../utils/handleApiError';
@@ -18,6 +17,7 @@ import { validateUpdateUser } from '../../utils/validation/validateUpdateUser';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 import './userPage.styles.scss';
 import { tableHeaders } from './userTableHeaders';
+import { useTableEditField } from './useTableEditField';
 
 const columnKeys = ['username', 'email', 'role'] as const;
 
