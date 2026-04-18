@@ -28,10 +28,13 @@ const SubCategoryPage = () => {
     data: allSubcategories,
     isLoading,
     refetch,
-  } = useGetAllSubCategoriesQuery(undefined, {
-    pollingInterval: shouldPollFullList ? 15000 : undefined,
-    refetchOnMountOrArgChange: true,
-  });
+  } = useGetAllSubCategoriesQuery(
+    { sortOrder, sortField },
+    {
+      pollingInterval: shouldPollFullList ? 15000 : undefined,
+      refetchOnMountOrArgChange: true,
+    },
+  );
 
   return (
     <AdminPageContainer
