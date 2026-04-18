@@ -4,7 +4,6 @@ import Popup from '../../../components/popup/Popup';
 import { ColumnKey } from '../../../pages/users/UserPage';
 import { BtnVariant, IconName } from '../../../types/enums';
 import { ChangeInputType } from '../../../types/types';
-import EditTableText from './EditTableText';
 import EditUserInput from './EditUserInput';
 
 type UpdateUserProps = {
@@ -13,7 +12,6 @@ type UpdateUserProps = {
   isFormDirty: boolean;
   roleValue: Roles;
   submitBtnLabel: string;
-  text: string;
   value: string;
   onEditChange: (event: ChangeInputType) => void;
   onOpenPopup: () => void;
@@ -21,7 +19,6 @@ type UpdateUserProps = {
 };
 
 const UpdateUser = ({
-  text,
   onOpenPopup,
   id,
   onSaveEdit,
@@ -32,32 +29,29 @@ const UpdateUser = ({
   roleValue,
   submitBtnLabel,
 }: UpdateUserProps) => (
-  <div className="edit-user">
-    <Popup
-      onOpenPopup={onOpenPopup}
-      popupContent={({ close }) => (
-        <EditUserInput
-          submitBtnLabel={submitBtnLabel}
-          labelText={id}
-          onSave={() => {
-            onSaveEdit();
-            close();
-          }}
-          onCancel={close}
-          onEditChange={onEditChange}
-          id={id}
-          value={value}
-          roleValue={roleValue}
-          isFormDirty={isFormDirty}
-        />
-      )}
-      triggerBtnVariant={BtnVariant.Ghost}
-      ariaLabel={ariaLabel}
-    >
-      <Icon iconName={IconName.Pencil} />
-    </Popup>
-    <EditTableText text={text} />
-  </div>
+  <Popup
+    onOpenPopup={onOpenPopup}
+    popupContent={({ close }) => (
+      <EditUserInput
+        submitBtnLabel={submitBtnLabel}
+        labelText={id}
+        onSave={() => {
+          onSaveEdit();
+          close();
+        }}
+        onCancel={close}
+        onEditChange={onEditChange}
+        id={id}
+        value={value}
+        roleValue={roleValue}
+        isFormDirty={isFormDirty}
+      />
+    )}
+    triggerBtnVariant={BtnVariant.Ghost}
+    ariaLabel={ariaLabel}
+  >
+    <Icon iconName={IconName.Pencil} />
+  </Popup>
 );
 
 export default UpdateUser;

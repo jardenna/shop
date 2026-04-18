@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import Table from '../../components/sortTable/Table';
 import DeleteUser from '../../features/adminUsers/components/DeleteUser';
+import EditTableText from '../../features/adminUsers/components/EditTableText';
 import UpdateUser from '../../features/adminUsers/components/UpdateUser';
 import { useAuth } from '../../features/auth/hooks/useAuth';
 import { useLanguage } from '../../features/language/useLanguage';
@@ -119,20 +120,24 @@ const UserPage = () => {
               <tr key={id}>
                 {columnKeys.map((columnKey) => (
                   <td key={columnKey}>
-                    <UpdateUser
-                      submitBtnLabel={language.save}
-                      isFormDirty={isFormDirty}
-                      onEditChange={handleEditChange}
-                      onOpenPopup={() => {
-                        handleShowEditInput(id, columnKey);
-                      }}
-                      text={userItem[columnKey]}
-                      ariaLabel={`${language.updateUser} ${columnKey}`}
-                      id={columnKey}
-                      value={editValues[columnKey] || ''}
-                      roleValue={editValues.role || 'User'}
-                      onSaveEdit={handleSaveEdit}
-                    />
+                    <div className="edit-user">
+                      <EditTableText text={userItem[columnKey]} />
+                      {!isAdmin && (
+                        <UpdateUser
+                          submitBtnLabel={language.save}
+                          isFormDirty={isFormDirty}
+                          onEditChange={handleEditChange}
+                          onOpenPopup={() => {
+                            handleShowEditInput(id, columnKey);
+                          }}
+                          ariaLabel={`${language.updateUser} ${columnKey}`}
+                          id={columnKey}
+                          value={editValues[columnKey] || ''}
+                          roleValue={editValues.role || 'User'}
+                          onSaveEdit={handleSaveEdit}
+                        />
+                      )}
+                    </div>
                   </td>
                 ))}
                 <td>
