@@ -8,6 +8,9 @@ import {
   getPublishedCategories,
   updateCategory,
 } from '../controllers/categoryController.js';
+
+import { filterCategoriesMiddleware } from '../middleware/filterCategoriesMiddleware.js';
+
 import {
   authenticate,
   authorizeAdmin,
@@ -31,7 +34,7 @@ router.get('/published', getPublishedCategories);
 router
   .route('/')
   .post(languageMiddleware, authenticate, authorizeAdmin, createCategory)
-  .get(languageMiddleware, getAllCategories);
+  .get(languageMiddleware, filterCategoriesMiddleware, getAllCategories);
 
 router
   .route('/:id')
