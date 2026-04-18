@@ -53,17 +53,42 @@ const createCategory = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Public
 const getAllCategories = asyncHandler(async (req, res) => {
+  const sortField = req.query.sortField;
+  const sortOrder = req.query.sortOrder === 'desc' ? -1 : 1;
+
   const allCategories = await Category.find({}).lean();
 
-  const categories = await updateScheduledItems({
+  const updatedCategories = await updateScheduledItems({
     items: allCategories,
     model: Category,
     statusKey: 'categoryStatus',
   });
 
-  const formattedCategories = formatMongoData(categories);
+  const sortedCategories = [...updatedCategories].sort(
+    (firstItem, secondItem) => {
+      if (sortField === 'createdAt') {
+        return (
+          (new Date(firstItem.createdAt).getTime() -
+            new Date(secondItem.createdAt).getTime()) *
+          sortOrder
+        );
+      }
 
-  if (!categories?.length) {
+      if (typeof firstItem[sortField] === 'number') {
+        return (firstItem[sortField] - secondItem[sortField]) * sortOrder;
+      }
+
+      return (
+        String(firstItem[sortField]).localeCompare(
+          String(secondItem[sortField]),
+        ) * sortOrder
+      );
+    },
+  );
+
+  const formattedCategories = formatMongoData(sortedCategories);
+
+  if (!updatedCategories?.length) {
     return res.status(404).json({ message: t('noData', req.lang) });
   }
 
