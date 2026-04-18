@@ -1,38 +1,22 @@
-import type { SubCategoryResponse } from '../../app/api/apiTypes/adminApiTypes';
-import Table, { Column } from '../../components/sortTable/Table';
+import Table from '../../components/sortTable/Table';
 import { useLanguage } from '../../features/language/useLanguage';
 import SubCategoryTableRows from '../../features/subCategories/components/SubCategoryTableRows';
 import {
   useGetAllSubCategoriesQuery,
   useGetHasSubCatScheduledQuery,
 } from '../../features/subCategories/subCategoryApiSlice';
+import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { AdminPath } from '../../layout/nav/enums';
 import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
-const tableHeaders: Column<SubCategoryResponse>[] = [
-  {
-    key: 'mainCategoryName',
-    label: 'mainCategoryName',
-    name: 'mainCategoryName',
-    tableFilterType: 'text',
-  },
-  {
-    key: 'subCategoryName',
-    label: 'name',
-    name: 'subCategoryName',
-    tableFilterType: 'text',
-  },
-  {
-    key: 'categoryStatus',
-    label: 'status',
-    name: 'categoryStatus',
-    tableFilterType: 'radio',
-  },
-  { key: 'id', label: '', name: '' },
-];
+import { tableHeaders } from './subCategoryTableHeaders';
 
 const SubCategoryPage = () => {
   const { language } = useLanguage();
+
+  const { sortOrder, onSort, sortField } = useSortParamsState({
+    columns: tableHeaders,
+  });
 
   const { data: hasScheduledData } = useGetHasSubCatScheduledQuery(undefined, {
     pollingInterval: oneDay,
@@ -44,10 +28,13 @@ const SubCategoryPage = () => {
     data: allSubcategories,
     isLoading,
     refetch,
-  } = useGetAllSubCategoriesQuery(undefined, {
-    pollingInterval: shouldPollFullList ? 15000 : undefined,
-    refetchOnMountOrArgChange: true,
-  });
+  } = useGetAllSubCategoriesQuery(
+    { sortOrder, sortField },
+    {
+      pollingInterval: shouldPollFullList ? 15000 : undefined,
+      refetchOnMountOrArgChange: true,
+    },
+  );
 
   return (
     <AdminPageContainer
@@ -64,6 +51,9 @@ const SubCategoryPage = () => {
         tableCaption={language.subCategoryList}
         isLoading={isLoading}
         emptyHeaderCellText={language.viewCategory}
+        onSort={onSort}
+        sortField={sortField}
+        sortOrder={sortOrder}
       >
         {(data) =>
           data.map(

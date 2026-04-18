@@ -29,11 +29,14 @@ type TableProps<T> = {
   columns: Column<T>[];
   data: T[];
   isLoading: boolean;
+  sortField: keyof T;
+  sortOrder: SortOrder;
   tableCaption: string;
   className?: string;
   emptyHeaderCellText?: string;
   children: (data: T[]) => ReactNode;
   onReset: () => void;
+  onSort: (field: keyof T) => void;
 };
 
 const Table = <T,>({
@@ -45,9 +48,11 @@ const Table = <T,>({
   emptyHeaderCellText,
   onReset,
   className,
+  onSort,
+  sortField,
+  sortOrder,
 }: TableProps<T>) => {
   const { language } = useLanguage();
-  const [searchParams, setSearchParams] = useSearchParams();
   const { paddingBlockSmall, paddingBlockMedium, paddingBlockLarge } =
     variables;
 
@@ -77,25 +82,6 @@ const Table = <T,>({
     },
   ];
 
-  const sortField =
-    (searchParams.get('sortField') as keyof T) || columns[0]?.key;
-
-  const sortOrder = searchParams.get('sortOrder') || 'asc';
-
-  const handleSort = (field: keyof T) => {
-    const newOrder: SortOrder =
-      sortField === field && sortOrder === 'asc' ? 'desc' : 'asc';
-    setSearchParams({
-      ...Object.fromEntries(searchParams.entries()),
-      sortField: field as string,
-      sortOrder: newOrder,
-    });
-  };
-
-  const handleClearAll = () => {
-    setSearchParams('');
-  };
-
   const initialFilters = createInitialFilters(columns);
 
   const { values, setValue } = useSearchParamsState(initialFilters);
@@ -105,10 +91,16 @@ const Table = <T,>({
   const ariaLabel =
     sortOrder !== 'asc' ? language.descending : language.ascending;
 
+  const [, setSearchParams] = useSearchParams();
+
+  const handleClearAllParams = () => {
+    setSearchParams('');
+  };
+
   return (
     <>
       <div className="table-controls">
-        <Button onClick={handleClearAll} variant={BtnVariant.Default}>
+        <Button onClick={handleClearAllParams} variant={BtnVariant.Default}>
           {language.clearFilters}
         </Button>
         <DisplayControls
@@ -142,7 +134,7 @@ const Table = <T,>({
                             <Button
                               variant={BtnVariant.Ghost}
                               onClick={() => {
-                                handleSort(col.key);
+                                onSort(col.key);
                               }}
                               ariaLabel={
                                 sortField === col.name

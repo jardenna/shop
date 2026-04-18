@@ -4,12 +4,17 @@ import type {
   CategoryItemResponse,
   CreateCategoryRequest,
   ScheduledResponse,
+  SortParams,
   UpdateCategoryRequest,
 } from '../../app/api/apiTypes/adminApiTypes';
 import { categoryUrl } from '../../app/endpoints';
 
 export const categoryApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
+    getAllCategoriesWithParams: builder.query<CategoriesResponse, SortParams>({
+      query: (params) => ({ url: categoryUrl, params }),
+      providesTags: [TagTypesEnum.Categories],
+    }),
     getAllCategories: builder.query<CategoriesResponse, void>({
       query: () => categoryUrl,
       providesTags: [TagTypesEnum.Categories],
@@ -57,4 +62,5 @@ export const {
   useGetCategoryByIdQuery,
   useGetHasCategoriesScheduledQuery,
   useGetPublishedCategoriesQuery,
+  useGetAllCategoriesWithParamsQuery,
 } = categoryApiSlice;

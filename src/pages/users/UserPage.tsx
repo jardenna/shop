@@ -1,30 +1,25 @@
 import { useRef } from 'react';
-import type { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
-import Table, { Column } from '../../components/sortTable/Table';
-import { useGetAllUsersQuery } from '../../features/adminUsers/adminUserApiSlice';
+import Table from '../../components/sortTable/Table';
 import DeleteUser from '../../features/adminUsers/components/DeleteUser';
+import EditTableText from '../../features/adminUsers/components/EditTableText';
 import UpdateUser from '../../features/adminUsers/components/UpdateUser';
 import { useAuth } from '../../features/auth/hooks/useAuth';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
   useDeleteUserMutation,
+  useGetAllUsersQuery,
   useUpdateUserMutation,
 } from '../../features/users/userApiSlice';
-import { useTableEditField } from '../../hooks/useTableEditField';
+import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
 import { AdminPath } from '../../layout/nav/enums';
 import { handleApiError } from '../../utils/handleApiError';
 import { validateUpdateUser } from '../../utils/validation/validateUpdateUser';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 import './userPage.styles.scss';
-
-const tableHeaders: Column<UserResponse>[] = [
-  { key: 'username', label: 'username', name: 'name', tableFilterType: 'text' },
-  { key: 'email', label: 'email', name: 'email', tableFilterType: 'text' },
-  { key: 'role', label: 'role', name: 'role', tableFilterType: 'text' },
-  { key: 'id', label: '', name: '' },
-];
+import { tableHeaders } from './userTableHeaders';
+import { useUserEditField } from './useUserEditField';
 
 const columnKeys = ['username', 'email', 'role'] as const;
 
@@ -34,7 +29,15 @@ const UserPage = () => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
   const { isAdmin } = useAuth();
-  const { data: allUsers, isLoading, refetch } = useGetAllUsersQuery();
+  const { sortOrder, onSort, sortField } = useSortParamsState({
+    columns: tableHeaders,
+  });
+
+  const {
+    data: allUsers,
+    isLoading,
+    refetch,
+  } = useGetAllUsersQuery({ sortField, sortOrder });
   const [deleteUser] = useDeleteUserMutation();
   const [updateUser] = useUpdateUserMutation();
 
@@ -49,7 +52,7 @@ const UserPage = () => {
     editValues,
     handleSaveEdit,
     isFormDirty,
-  } = useTableEditField({
+  } = useUserEditField({
     data: allUsers || [],
     callback: handleUpdateUser,
   });
@@ -105,6 +108,9 @@ const UserPage = () => {
         tableCaption={language.customersList}
         isLoading={isLoading}
         emptyHeaderCellText={language.deleteUser}
+        onSort={onSort}
+        sortField={sortField}
+        sortOrder={sortOrder}
       >
         {(data) =>
           data.map((userItem) => {
@@ -114,20 +120,24 @@ const UserPage = () => {
               <tr key={id}>
                 {columnKeys.map((columnKey) => (
                   <td key={columnKey}>
-                    <UpdateUser
-                      submitBtnLabel={language.save}
-                      isFormDirty={isFormDirty}
-                      onEditChange={handleEditChange}
-                      onOpenPopup={() => {
-                        handleShowEditInput(id, columnKey);
-                      }}
-                      text={userItem[columnKey]}
-                      ariaLabel={`${language.updateUser} ${columnKey}`}
-                      id={columnKey}
-                      value={editValues[columnKey] || ''}
-                      roleValue={editValues.role || 'User'}
-                      onSaveEdit={handleSaveEdit}
-                    />
+                    <div className="edit-user">
+                      <EditTableText text={userItem[columnKey]} />
+                      {!isAdmin && (
+                        <UpdateUser
+                          submitBtnLabel={language.save}
+                          isFormDirty={isFormDirty}
+                          onEditChange={handleEditChange}
+                          onOpenPopup={() => {
+                            handleShowEditInput(id, columnKey);
+                          }}
+                          ariaLabel={`${language.updateUser} ${columnKey}`}
+                          id={columnKey}
+                          value={editValues[columnKey] || ''}
+                          roleValue={editValues.role || 'User'}
+                          onSaveEdit={handleSaveEdit}
+                        />
+                      )}
+                    </div>
                   </td>
                 ))}
                 <td>

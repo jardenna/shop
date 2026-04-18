@@ -7,6 +7,7 @@ import Product from '../models/productModel.js';
 import SubCategory from '../models/subCategoryModel.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
 import getAllowedSizes from '../utils/getAllowedSizes.js';
+import { sortColumns } from '../utils/sortColumns.js';
 import { t } from '../utils/translator.js';
 import { updateScheduledItems } from '../utils/UpdateScheduledItemsOptions.js';
 import validateSubCategory from '../utils/validateSubCategory.js';
@@ -83,6 +84,8 @@ const createSubCategory = [
 // @access  Public
 const getAllSubCategories = asyncHandler(async (req, res) => {
   const allSubCategories = await SubCategory.find({}).lean();
+  const sortField = req.query.sortField;
+  const sortOrder = req.query.sortOrder === 'desc' ? -1 : 1;
 
   await updateScheduledItems({
     items: allSubCategories,
@@ -135,7 +138,14 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
     },
   ]);
 
-  const formattedCategories = formatMongoData(subCategories);
+  const sortedColums = sortColumns({
+    collection: subCategories,
+    sortField,
+    sortOrder,
+    language: req.lang,
+  });
+
+  const formattedCategories = formatMongoData(sortedColums);
 
   if (!subCategories?.length) {
     return res.status(404).json({ message: t('noData', req.lang) });

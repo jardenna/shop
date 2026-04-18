@@ -3,6 +3,7 @@ import asyncHandler from '../middleware/asyncHandler.js';
 import scheduledStatusHandler from '../middleware/scheduledStatusHandler.js';
 import Category from '../models/categoryModel.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
+import { sortColumns } from '../utils/sortColumns.js';
 import { t } from '../utils/translator.js';
 import { updateScheduledItems } from '../utils/UpdateScheduledItemsOptions.js';
 import validateScheduledDate from '../utils/validateScheduledDate.js';
@@ -53,17 +54,27 @@ const createCategory = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Public
 const getAllCategories = asyncHandler(async (req, res) => {
+  const sortField = req.query.sortField;
+  const sortOrder = req.query.sortOrder === 'desc' ? -1 : 1;
+
   const allCategories = await Category.find({}).lean();
 
-  const categories = await updateScheduledItems({
+  const updatedCategories = await updateScheduledItems({
     items: allCategories,
     model: Category,
     statusKey: 'categoryStatus',
   });
 
-  const formattedCategories = formatMongoData(categories);
+  const sortedColums = sortColumns({
+    collection: updatedCategories,
+    sortField,
+    sortOrder,
+    language: req.lang,
+  });
 
-  if (!categories?.length) {
+  const formattedCategories = formatMongoData(sortedColums);
+
+  if (!updatedCategories?.length) {
     return res.status(404).json({ message: t('noData', req.lang) });
   }
 

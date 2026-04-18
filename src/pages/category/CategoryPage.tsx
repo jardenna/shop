@@ -1,39 +1,21 @@
-import { Category } from '../../app/api/apiTypes/adminApiTypes';
-import Table, { Column } from '../../components/sortTable/Table';
+import Table from '../../components/sortTable/Table';
 import {
-  useGetAllCategoriesQuery,
+  useGetAllCategoriesWithParamsQuery,
   useGetHasCategoriesScheduledQuery,
 } from '../../features/categories/categoriyApiSlice';
 import CategoryTableRow from '../../features/categories/components/CategoryTableRow';
 import { useLanguage } from '../../features/language/useLanguage';
+import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { AdminPath } from '../../layout/nav/enums';
 import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
-
-const tableHeaders: Column<Category>[] = [
-  {
-    key: 'categoryName',
-    label: 'name',
-    name: 'categoryName',
-    tableFilterType: 'text',
-  },
-  {
-    key: 'categoryStatus',
-    label: 'status',
-    name: 'categoryStatus',
-    tableFilterType: 'text',
-  },
-  {
-    key: 'createdAt',
-    label: 'createdAt',
-    name: 'createdAt',
-    tableFilterType: 'date',
-  },
-  { key: 'id', label: '', name: '' },
-];
+import { tableHeaders } from './categoryTableHeaders';
 
 const CategoryPage = () => {
   const { language } = useLanguage();
+  const { sortOrder, onSort, sortField } = useSortParamsState({
+    columns: tableHeaders,
+  });
 
   const { data: hasScheduledData } = useGetHasCategoriesScheduledQuery(
     undefined,
@@ -48,10 +30,13 @@ const CategoryPage = () => {
     data: allCategories,
     isLoading,
     refetch,
-  } = useGetAllCategoriesQuery(undefined, {
-    pollingInterval: shouldPollFullList ? 15000 : undefined,
-    refetchOnMountOrArgChange: true,
-  });
+  } = useGetAllCategoriesWithParamsQuery(
+    { sortOrder, sortField },
+    {
+      pollingInterval: shouldPollFullList ? 15000 : undefined,
+      refetchOnMountOrArgChange: true,
+    },
+  );
 
   return (
     <AdminPageContainer
@@ -68,6 +53,9 @@ const CategoryPage = () => {
         tableCaption={language.categoryList}
         isLoading={isLoading}
         emptyHeaderCellText={language.updateCategory}
+        onSort={onSort}
+        sortField={sortField}
+        sortOrder={sortOrder}
       >
         {(data) =>
           data.map(

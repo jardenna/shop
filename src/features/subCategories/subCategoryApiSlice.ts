@@ -2,6 +2,7 @@ import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import type {
   CreateSubCategoryRequest,
   ScheduledResponse,
+  SortParams,
   SubCategoriesResponse,
   SubCategoriesWithParent,
   SubCategoryResponse,
@@ -13,8 +14,11 @@ import { subCategoryUrl } from '../../app/endpoints';
 
 const subCategoryApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getAllSubCategories: builder.query<SubCategoriesResponse, void>({
-      query: () => subCategoryUrl,
+    getAllSubCategories: builder.query<SubCategoriesResponse, SortParams>({
+      query: (params) => ({
+        url: subCategoryUrl,
+        params,
+      }),
       providesTags: [TagTypesEnum.SubCategories],
     }),
     getSubCategoriesWithParent: builder.query<SubCategoriesWithParent[], void>({

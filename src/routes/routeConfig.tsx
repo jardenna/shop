@@ -7,10 +7,8 @@ import AboutUsPage from '../pages/AboutUsPage';
 import AddressPage from '../pages/account/AddressPage';
 import MyAccountPage from '../pages/account/MyAccountPage';
 import MyOrdersPage from '../pages/account/MyOrdersPage';
-import AdminCreateUserPage from '../pages/admin/AdminCreateUserPage';
 import AdminOrderPage from '../pages/admin/AdminOrderPage';
 import Dashboard from '../pages/admin/Dashboard';
-import UserPage from '../pages/admin/UserPage';
 import CategoryPage from '../pages/category/CategoryPage';
 import CreateCategoryPage from '../pages/category/CreateCategoryPage';
 import UpdateCategoryPage from '../pages/category/UpdateCategoryPage';
@@ -33,6 +31,8 @@ import CreateSubCategoryPage from '../pages/subCategory/CreateSubCategoryPage';
 import SubCategoryPage from '../pages/subCategory/SubCategoryPage';
 import UpdateSubCategoryPage from '../pages/subCategory/UpdateSubCategoryPage';
 import ViewSubCategoryPage from '../pages/subCategory/ViewSubCategoryPage';
+import CreateUserPage from '../pages/users/CreateUserPage';
+import UserPage from '../pages/users/UserPage';
 
 const routeList = [
   {
@@ -88,7 +88,7 @@ const adminRouteList = [
   },
   {
     path: AdminPath.AdminUserCreate,
-    element: <AdminCreateUserPage />,
+    element: <CreateUserPage />,
   },
   {
     path: AdminPath.AdminCategoryCreate,

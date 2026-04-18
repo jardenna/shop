@@ -13,12 +13,10 @@ import { productUrl } from '../../app/endpoints';
 export const productApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllProducts: builder.query<ProductsResponse, ProductsParams>({
-      query: (params) => {
-        const query = new URLSearchParams(
-          params as unknown as Record<string, string>,
-        ).toString();
-        return `${productUrl}/allProducts?${query}`;
-      },
+      query: (params) => ({
+        url: `${productUrl}/allProducts`,
+        params,
+      }),
       providesTags: [TagTypesEnum.Products],
     }),
     getProductById: builder.query<Product, string>({

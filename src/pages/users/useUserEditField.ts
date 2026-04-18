@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import type { ChangeInputType } from '../types/types';
+import type { ChangeInputType } from '../../types/types';
 
 type UseTableEditFieldProps<T extends { id: string }> = {
   data: T[];
   callback?: (id: string, values: Partial<T>) => void;
 };
 
-export const useTableEditField = <T extends { id: string }>({
+export const useUserEditField = <T extends { id: string }>({
   data,
   callback,
 }: UseTableEditFieldProps<T>) => {

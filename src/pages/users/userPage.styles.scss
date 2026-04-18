@@ -2,7 +2,7 @@
 
 .edit-user {
   display: flex;
-  gap: 12px;
+  justify-content: space-between;
 
   .edit-user-text {
     width: max-content;
