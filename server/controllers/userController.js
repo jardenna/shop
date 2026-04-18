@@ -27,6 +27,7 @@ const getAllUsers = asyncHandler(async (req, res) => {
     collection: users,
     sortField,
     sortOrder,
+    language: req.lang,
   });
 
   const formattedUsers = formatMongoData(sortedColums);

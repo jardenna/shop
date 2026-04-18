@@ -1,7 +1,18 @@
-export const sortColumns = ({ collection, sortField, sortOrder }) => {
+export const sortColumns = ({ collection, sortField, sortOrder, language }) => {
   return [...collection].sort((firstItem, secondItem) => {
-    const firstValue = firstItem[sortField];
-    const secondValue = secondItem[sortField];
+    let firstValue = firstItem[sortField];
+    let secondValue = secondItem[sortField];
+
+    // Handle translated fields (object with languages)
+    if (
+      firstValue &&
+      typeof firstValue === 'object' &&
+      language &&
+      firstValue[language]
+    ) {
+      firstValue = firstValue[language];
+      secondValue = secondValue?.[language];
+    }
 
     // Handle date strings (ISO expected)
     if (sortField === 'createdAt') {
@@ -16,7 +27,10 @@ export const sortColumns = ({ collection, sortField, sortOrder }) => {
       return (firstValue - secondValue) * sortOrder;
     }
 
-    // Fallback to string compare
-    return String(firstValue).localeCompare(String(secondValue)) * sortOrder;
+    // Fallback to string compare (locale aware)
+    return (
+      String(firstValue).localeCompare(String(secondValue), language) *
+      sortOrder
+    );
   });
 };

@@ -69,6 +69,7 @@ const getAllCategories = asyncHandler(async (req, res) => {
     collection: updatedCategories,
     sortField,
     sortOrder,
+    language: req.lang,
   });
 
   const formattedCategories = formatMongoData(sortedColums);

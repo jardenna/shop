@@ -142,6 +142,7 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
     collection: subCategories,
     sortField,
     sortOrder,
+    language: req.lang,
   });
 
   const formattedCategories = formatMongoData(sortedColums);
