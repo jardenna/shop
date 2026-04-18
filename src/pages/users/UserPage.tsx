@@ -1,7 +1,6 @@
 import { useRef } from 'react';
-import type { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
-import Table, { Column } from '../../components/sortTable/Table';
+import Table from '../../components/sortTable/Table';
 import { useGetAllUsersQuery } from '../../features/adminUsers/adminUserApiSlice';
 import DeleteUser from '../../features/adminUsers/components/DeleteUser';
 import UpdateUser from '../../features/adminUsers/components/UpdateUser';
@@ -18,13 +17,7 @@ import { handleApiError } from '../../utils/handleApiError';
 import { validateUpdateUser } from '../../utils/validation/validateUpdateUser';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 import './userPage.styles.scss';
-
-const tableHeaders: Column<UserResponse>[] = [
-  { key: 'username', label: 'username', name: 'name', tableFilterType: 'text' },
-  { key: 'email', label: 'email', name: 'email', tableFilterType: 'text' },
-  { key: 'role', label: 'role', name: 'role', tableFilterType: 'text' },
-  { key: 'id', label: '', name: '' },
-];
+import { tableHeaders } from './userTableHeaders';
 
 const columnKeys = ['username', 'email', 'role'] as const;
 

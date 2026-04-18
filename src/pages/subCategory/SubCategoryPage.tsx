@@ -1,5 +1,4 @@
-import type { SubCategoryResponse } from '../../app/api/apiTypes/adminApiTypes';
-import Table, { Column } from '../../components/sortTable/Table';
+import Table from '../../components/sortTable/Table';
 import { useLanguage } from '../../features/language/useLanguage';
 import SubCategoryTableRows from '../../features/subCategories/components/SubCategoryTableRows';
 import {
@@ -9,27 +8,7 @@ import {
 import { AdminPath } from '../../layout/nav/enums';
 import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
-const tableHeaders: Column<SubCategoryResponse>[] = [
-  {
-    key: 'mainCategoryName',
-    label: 'mainCategoryName',
-    name: 'mainCategoryName',
-    tableFilterType: 'text',
-  },
-  {
-    key: 'subCategoryName',
-    label: 'name',
-    name: 'subCategoryName',
-    tableFilterType: 'text',
-  },
-  {
-    key: 'categoryStatus',
-    label: 'status',
-    name: 'categoryStatus',
-    tableFilterType: 'radio',
-  },
-  { key: 'id', label: '', name: '' },
-];
+import { tableHeaders } from './subCategoryTableHeaders';
 
 const SubCategoryPage = () => {
   const { language } = useLanguage();

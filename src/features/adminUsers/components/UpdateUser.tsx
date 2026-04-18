@@ -1,7 +1,7 @@
 import { Roles } from '../../../app/api/apiTypes/adminApiTypes';
 import Icon from '../../../components/icons/Icon';
 import Popup from '../../../components/popup/Popup';
-import { ColumnKey } from '../../../pages/admin/UserPage';
+import { ColumnKey } from '../../../pages/users/UserPage';
 import { BtnVariant, IconName } from '../../../types/enums';
 import { ChangeInputType } from '../../../types/types';
 import EditTableText from './EditTableText';
