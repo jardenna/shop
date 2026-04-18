@@ -26,4 +26,3 @@ const ProgressBar = ({ progressPercentage, isAuto }: ProgressBarProps) => {
 };
 
 export default ProgressBar;
-//
