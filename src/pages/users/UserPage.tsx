@@ -17,7 +17,7 @@ import { validateUpdateUser } from '../../utils/validation/validateUpdateUser';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 import './userPage.styles.scss';
 import { tableHeaders } from './userTableHeaders';
-import { useTableEditField } from './useTableEditField';
+import { useUserEditField } from './useUserEditField';
 
 const columnKeys = ['username', 'email', 'role'] as const;
 
@@ -42,7 +42,7 @@ const UserPage = () => {
     editValues,
     handleSaveEdit,
     isFormDirty,
-  } = useTableEditField({
+  } = useUserEditField({
     data: allUsers || [],
     callback: handleUpdateUser,
   });
