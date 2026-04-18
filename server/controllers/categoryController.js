@@ -3,6 +3,7 @@ import asyncHandler from '../middleware/asyncHandler.js';
 import scheduledStatusHandler from '../middleware/scheduledStatusHandler.js';
 import Category from '../models/categoryModel.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
+import { sortColumns } from '../utils/sortColumns.js';
 import { t } from '../utils/translator.js';
 import { updateScheduledItems } from '../utils/UpdateScheduledItemsOptions.js';
 import validateScheduledDate from '../utils/validateScheduledDate.js';
@@ -64,29 +65,13 @@ const getAllCategories = asyncHandler(async (req, res) => {
     statusKey: 'categoryStatus',
   });
 
-  const sortedCategories = [...updatedCategories].sort(
-    (firstItem, secondItem) => {
-      if (sortField === 'createdAt') {
-        return (
-          (new Date(firstItem.createdAt).getTime() -
-            new Date(secondItem.createdAt).getTime()) *
-          sortOrder
-        );
-      }
+  const sortedColums = sortColumns({
+    collection: updatedCategories,
+    sortField,
+    sortOrder,
+  });
 
-      if (typeof firstItem[sortField] === 'number') {
-        return (firstItem[sortField] - secondItem[sortField]) * sortOrder;
-      }
-
-      return (
-        String(firstItem[sortField]).localeCompare(
-          String(secondItem[sortField]),
-        ) * sortOrder
-      );
-    },
-  );
-
-  const formattedCategories = formatMongoData(sortedCategories);
+  const formattedCategories = formatMongoData(sortedColums);
 
   if (!updatedCategories?.length) {
     return res.status(404).json({ message: t('noData', req.lang) });
