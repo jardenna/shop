@@ -31,7 +31,7 @@ import CreateSubCategoryPage from '../pages/subCategory/CreateSubCategoryPage';
 import SubCategoryPage from '../pages/subCategory/SubCategoryPage';
 import UpdateSubCategoryPage from '../pages/subCategory/UpdateSubCategoryPage';
 import ViewSubCategoryPage from '../pages/subCategory/ViewSubCategoryPage';
-import AdminCreateUserPage from '../pages/users/AdminCreateUserPage';
+import CreateUserPage from '../pages/users/CreateUserPage';
 import UserPage from '../pages/users/UserPage';
 
 const routeList = [
@@ -88,7 +88,7 @@ const adminRouteList = [
   },
   {
     path: AdminPath.AdminUserCreate,
-    element: <AdminCreateUserPage />,
+    element: <CreateUserPage />,
   },
   {
     path: AdminPath.AdminCategoryCreate,
