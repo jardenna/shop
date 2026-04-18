@@ -1,6 +1,6 @@
 import Table from '../../components/sortTable/Table';
 import {
-  useGetAllCategoriesQuery,
+  useGetAllCategoriesWithParamsQuery,
   useGetHasCategoriesScheduledQuery,
 } from '../../features/categories/categoriyApiSlice';
 import CategoryTableRow from '../../features/categories/components/CategoryTableRow';
@@ -30,10 +30,13 @@ const CategoryPage = () => {
     data: allCategories,
     isLoading,
     refetch,
-  } = useGetAllCategoriesQuery(undefined, {
-    pollingInterval: shouldPollFullList ? 15000 : undefined,
-    refetchOnMountOrArgChange: true,
-  });
+  } = useGetAllCategoriesWithParamsQuery(
+    { sortOrder, sortField },
+    {
+      pollingInterval: shouldPollFullList ? 15000 : undefined,
+      refetchOnMountOrArgChange: true,
+    },
+  );
 
   return (
     <AdminPageContainer
