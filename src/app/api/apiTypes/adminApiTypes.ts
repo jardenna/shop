@@ -156,14 +156,18 @@ export type Product = BaseProduct & {
   scheduledDate?: Date;
 };
 
-export type ProductsParams = BaseProductParams & {
+export type SortParams = {
   sortField: string;
   sortOrder: SortOrder;
-  maxStock?: string;
-  minStock?: string;
-  productStatus?: Status;
-  subCategory?: string;
 };
+
+export type ProductsParams = BaseProductParams &
+  SortParams & {
+    maxStock?: string;
+    minStock?: string;
+    productStatus?: Status;
+    subCategory?: string;
+  };
 
 export type ProductRequest = {
   brand: string;

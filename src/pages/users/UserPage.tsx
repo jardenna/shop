@@ -28,13 +28,17 @@ const UserPage = () => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
   const { isAdmin } = useAuth();
-  const { data: allUsers, isLoading, refetch } = useGetAllUsersQuery();
-  const [deleteUser] = useDeleteUserMutation();
-  const [updateUser] = useUpdateUserMutation();
-
   const { sortOrder, onSort, sortField } = useSortParamsState({
     columns: tableHeaders,
   });
+
+  const {
+    data: allUsers,
+    isLoading,
+    refetch,
+  } = useGetAllUsersQuery({ sortField, sortOrder });
+  const [deleteUser] = useDeleteUserMutation();
+  const [updateUser] = useUpdateUserMutation();
 
   const allowedEditUser = isAdmin;
 
