@@ -5,6 +5,7 @@ import {
   useGetAllSubCategoriesQuery,
   useGetHasSubCatScheduledQuery,
 } from '../../features/subCategories/subCategoryApiSlice';
+import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { AdminPath } from '../../layout/nav/enums';
 import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
@@ -12,6 +13,10 @@ import { tableHeaders } from './subCategoryTableHeaders';
 
 const SubCategoryPage = () => {
   const { language } = useLanguage();
+
+  const { sortOrder, onSort, onClearAllParams, sortField } = useSortParamsState(
+    { columns: tableHeaders },
+  );
 
   const { data: hasScheduledData } = useGetHasSubCatScheduledQuery(undefined, {
     pollingInterval: oneDay,
@@ -43,6 +48,10 @@ const SubCategoryPage = () => {
         tableCaption={language.subCategoryList}
         isLoading={isLoading}
         emptyHeaderCellText={language.viewCategory}
+        onClearAllParams={onClearAllParams}
+        onSort={onSort}
+        sortField={sortField}
+        sortOrder={sortOrder}
       >
         {(data) =>
           data.map(

@@ -5,6 +5,7 @@ import {
 } from '../../features/categories/categoriyApiSlice';
 import CategoryTableRow from '../../features/categories/components/CategoryTableRow';
 import { useLanguage } from '../../features/language/useLanguage';
+import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { AdminPath } from '../../layout/nav/enums';
 import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
@@ -12,6 +13,9 @@ import { tableHeaders } from './categoryTableHeaders';
 
 const CategoryPage = () => {
   const { language } = useLanguage();
+  const { sortOrder, onSort, onClearAllParams, sortField } = useSortParamsState(
+    { columns: tableHeaders },
+  );
 
   const { data: hasScheduledData } = useGetHasCategoriesScheduledQuery(
     undefined,
@@ -46,6 +50,10 @@ const CategoryPage = () => {
         tableCaption={language.categoryList}
         isLoading={isLoading}
         emptyHeaderCellText={language.updateCategory}
+        onClearAllParams={onClearAllParams}
+        onSort={onSort}
+        sortField={sortField}
+        sortOrder={sortOrder}
       >
         {(data) =>
           data.map(

@@ -10,6 +10,7 @@ import {
   useDeleteUserMutation,
   useUpdateUserMutation,
 } from '../../features/users/userApiSlice';
+import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
 import { AdminPath } from '../../layout/nav/enums';
 import { handleApiError } from '../../utils/handleApiError';
@@ -30,6 +31,10 @@ const UserPage = () => {
   const { data: allUsers, isLoading, refetch } = useGetAllUsersQuery();
   const [deleteUser] = useDeleteUserMutation();
   const [updateUser] = useUpdateUserMutation();
+
+  const { sortOrder, onSort, onClearAllParams, sortField } = useSortParamsState(
+    { columns: tableHeaders },
+  );
 
   const allowedEditUser = isAdmin;
 
@@ -98,6 +103,10 @@ const UserPage = () => {
         tableCaption={language.customersList}
         isLoading={isLoading}
         emptyHeaderCellText={language.deleteUser}
+        onClearAllParams={onClearAllParams}
+        onSort={onSort}
+        sortField={sortField}
+        sortOrder={sortOrder}
       >
         {(data) =>
           data.map((userItem) => {
