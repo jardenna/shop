@@ -12,11 +12,15 @@ export const useSortParamsState = <T>({ columns }: TableProps<T>) => {
   const sortField =
     (searchParams.get('sortField') as keyof T) || columns[0]?.key;
 
-  const sortOrder = searchParams.get('sortOrder') || 'asc';
+  const rawSortOrder = searchParams.get('sortOrder');
+
+  const sortOrder: SortOrder =
+    rawSortOrder === 'asc' || rawSortOrder === 'desc' ? rawSortOrder : 'asc';
 
   const handleSort = (field: keyof T) => {
     const newOrder: SortOrder =
       sortField === field && sortOrder === 'asc' ? 'desc' : 'asc';
+
     setSearchParams({
       ...Object.fromEntries(searchParams.entries()),
       sortField: field as string,
@@ -32,5 +36,6 @@ export const useSortParamsState = <T>({ columns }: TableProps<T>) => {
     sortOrder,
     onSort: handleSort,
     onClearAllParams: handleClearAllParams,
+    sortField,
   };
 };

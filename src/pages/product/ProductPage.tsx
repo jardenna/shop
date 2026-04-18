@@ -1,5 +1,3 @@
-import { useSearchParams } from 'react-router';
-import { SortOrder } from '../../app/api/apiTypes/sharedApiTypes';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import { usePaginationParams } from '../../components/pagination/hooks/usePaginationParams';
 import { usePaginationText } from '../../components/pagination/hooks/usePaginationText';
@@ -14,13 +12,12 @@ import {
   useGetAllProductsQuery,
   useGetHasScheduledDataQuery,
 } from '../../features/products/productApiSlice';
+import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { AdminPath } from '../../layout/nav/enums';
 import { handleApiError } from '../../utils/handleApiError';
 import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 import './ProductPage.styles.scss';
-
-type ColumnKey = (typeof tableHeaders)[number]['key'];
 
 const ProductPage = () => {
   const { language } = useLanguage();
@@ -34,13 +31,9 @@ const ProductPage = () => {
   const [dublicateProduct] = useDuplicateProductMutation();
   const shouldPollFullList = hasScheduledData?.hasScheduled ?? false;
 
-  const [searchParams] = useSearchParams();
-
-  const sortField = (searchParams.get('sortField') ??
-    tableHeaders[0]?.key) as ColumnKey;
-
-  const sortOrder: SortOrder =
-    searchParams.get('sortOrder') === 'desc' ? 'desc' : 'asc';
+  const { sortOrder, onSort, onClearAllParams, sortField } = useSortParamsState(
+    { columns: tableHeaders },
+  );
 
   const { page, productsPerPage, setPage, updatePagination } =
     usePaginationParams();
@@ -111,6 +104,10 @@ const ProductPage = () => {
         tableCaption={language.productList}
         emptyHeaderCellText={language.updateProduct}
         className="product-table"
+        onClearAllParams={onClearAllParams}
+        onSort={onSort}
+        sortField={sortField}
+        sortOrder={sortOrder}
       >
         {(data) =>
           data.map(

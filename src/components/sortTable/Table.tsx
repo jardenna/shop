@@ -1,7 +1,5 @@
 import type { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { useSearchParams } from 'react-router';
-import { SortOrder } from '../../app/api/apiTypes/sharedApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
 import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
@@ -29,6 +27,10 @@ type TableProps<T> = {
   columns: Column<T>[];
   data: T[];
   isLoading: boolean;
+  onClearAllParams: any;
+  onSort: any;
+  sortField: any;
+  sortOrder: any;
   tableCaption: string;
   className?: string;
   emptyHeaderCellText?: string;
@@ -45,9 +47,12 @@ const Table = <T,>({
   emptyHeaderCellText,
   onReset,
   className,
+  onClearAllParams,
+  onSort,
+  sortField,
+  sortOrder,
 }: TableProps<T>) => {
   const { language } = useLanguage();
-  const [searchParams, setSearchParams] = useSearchParams();
   const { paddingBlockSmall, paddingBlockMedium, paddingBlockLarge } =
     variables;
 
@@ -77,25 +82,6 @@ const Table = <T,>({
     },
   ];
 
-  const sortField =
-    (searchParams.get('sortField') as keyof T) || columns[0]?.key;
-
-  const sortOrder = searchParams.get('sortOrder') || 'asc';
-
-  const handleSort = (field: keyof T) => {
-    const newOrder: SortOrder =
-      sortField === field && sortOrder === 'asc' ? 'desc' : 'asc';
-    setSearchParams({
-      ...Object.fromEntries(searchParams.entries()),
-      sortField: field as string,
-      sortOrder: newOrder,
-    });
-  };
-
-  const handleClearAll = () => {
-    setSearchParams('');
-  };
-
   const initialFilters = createInitialFilters(columns);
 
   const { values, setValue } = useSearchParamsState(initialFilters);
@@ -108,7 +94,7 @@ const Table = <T,>({
   return (
     <>
       <div className="table-controls">
-        <Button onClick={handleClearAll} variant={BtnVariant.Default}>
+        <Button onClick={onClearAllParams} variant={BtnVariant.Default}>
           {language.clearFilters}
         </Button>
         <DisplayControls
@@ -142,7 +128,7 @@ const Table = <T,>({
                             <Button
                               variant={BtnVariant.Ghost}
                               onClick={() => {
-                                handleSort(col.key);
+                                onSort(col.key);
                               }}
                               ariaLabel={
                                 sortField === col.name
