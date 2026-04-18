@@ -1,13 +1,13 @@
 import { useRef } from 'react';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import Table from '../../components/sortTable/Table';
-import { useGetAllUsersQuery } from '../../features/adminUsers/adminUserApiSlice';
 import DeleteUser from '../../features/adminUsers/components/DeleteUser';
 import UpdateUser from '../../features/adminUsers/components/UpdateUser';
 import { useAuth } from '../../features/auth/hooks/useAuth';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
   useDeleteUserMutation,
+  useGetAllUsersQuery,
   useUpdateUserMutation,
 } from '../../features/users/userApiSlice';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
