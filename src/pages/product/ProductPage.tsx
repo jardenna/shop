@@ -31,9 +31,9 @@ const ProductPage = () => {
   const [dublicateProduct] = useDuplicateProductMutation();
   const shouldPollFullList = hasScheduledData?.hasScheduled ?? false;
 
-  const { sortOrder, onSort, onClearAllParams, sortField } = useSortParamsState(
-    { columns: tableHeaders },
-  );
+  const { sortOrder, onSort, sortField } = useSortParamsState({
+    columns: tableHeaders,
+  });
 
   const { page, productsPerPage, setPage, updatePagination } =
     usePaginationParams();
@@ -104,7 +104,6 @@ const ProductPage = () => {
         tableCaption={language.productList}
         emptyHeaderCellText={language.updateProduct}
         className="product-table"
-        onClearAllParams={onClearAllParams}
         onSort={onSort}
         sortField={sortField}
         sortOrder={sortOrder}

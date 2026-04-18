@@ -13,9 +13,9 @@ import { tableHeaders } from './categoryTableHeaders';
 
 const CategoryPage = () => {
   const { language } = useLanguage();
-  const { sortOrder, onSort, onClearAllParams, sortField } = useSortParamsState(
-    { columns: tableHeaders },
-  );
+  const { sortOrder, onSort, sortField } = useSortParamsState({
+    columns: tableHeaders,
+  });
 
   const { data: hasScheduledData } = useGetHasCategoriesScheduledQuery(
     undefined,
@@ -50,7 +50,6 @@ const CategoryPage = () => {
         tableCaption={language.categoryList}
         isLoading={isLoading}
         emptyHeaderCellText={language.updateCategory}
-        onClearAllParams={onClearAllParams}
         onSort={onSort}
         sortField={sortField}
         sortOrder={sortOrder}

@@ -14,9 +14,9 @@ import { tableHeaders } from './subCategoryTableHeaders';
 const SubCategoryPage = () => {
   const { language } = useLanguage();
 
-  const { sortOrder, onSort, onClearAllParams, sortField } = useSortParamsState(
-    { columns: tableHeaders },
-  );
+  const { sortOrder, onSort, sortField } = useSortParamsState({
+    columns: tableHeaders,
+  });
 
   const { data: hasScheduledData } = useGetHasSubCatScheduledQuery(undefined, {
     pollingInterval: oneDay,
@@ -48,7 +48,6 @@ const SubCategoryPage = () => {
         tableCaption={language.subCategoryList}
         isLoading={isLoading}
         emptyHeaderCellText={language.viewCategory}
-        onClearAllParams={onClearAllParams}
         onSort={onSort}
         sortField={sortField}
         sortOrder={sortOrder}

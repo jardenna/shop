@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
+import { useSearchParams } from 'react-router';
 import { useLanguage } from '../../features/language/useLanguage';
 import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
@@ -27,7 +28,6 @@ type TableProps<T> = {
   columns: Column<T>[];
   data: T[];
   isLoading: boolean;
-  onClearAllParams: any;
   onSort: any;
   sortField: any;
   sortOrder: any;
@@ -47,7 +47,6 @@ const Table = <T,>({
   emptyHeaderCellText,
   onReset,
   className,
-  onClearAllParams,
   onSort,
   sortField,
   sortOrder,
@@ -91,10 +90,16 @@ const Table = <T,>({
   const ariaLabel =
     sortOrder !== 'asc' ? language.descending : language.ascending;
 
+  const [, setSearchParams] = useSearchParams();
+
+  const handleClearAllParams = () => {
+    setSearchParams('');
+  };
+
   return (
     <>
       <div className="table-controls">
-        <Button onClick={onClearAllParams} variant={BtnVariant.Default}>
+        <Button onClick={handleClearAllParams} variant={BtnVariant.Default}>
           {language.clearFilters}
         </Button>
         <DisplayControls

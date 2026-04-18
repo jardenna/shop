@@ -32,9 +32,9 @@ const UserPage = () => {
   const [deleteUser] = useDeleteUserMutation();
   const [updateUser] = useUpdateUserMutation();
 
-  const { sortOrder, onSort, onClearAllParams, sortField } = useSortParamsState(
-    { columns: tableHeaders },
-  );
+  const { sortOrder, onSort, sortField } = useSortParamsState({
+    columns: tableHeaders,
+  });
 
   const allowedEditUser = isAdmin;
 
@@ -103,7 +103,6 @@ const UserPage = () => {
         tableCaption={language.customersList}
         isLoading={isLoading}
         emptyHeaderCellText={language.deleteUser}
-        onClearAllParams={onClearAllParams}
         onSort={onSort}
         sortField={sortField}
         sortOrder={sortOrder}
