@@ -33,6 +33,5 @@ export const usePaginationParams = () => {
     setPage,
     resetPage,
     updatePagination,
-    searchParams,
   };
 };
