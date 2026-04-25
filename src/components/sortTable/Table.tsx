@@ -91,8 +91,6 @@ const Table = <T,>({
   const ariaLabel =
     sortOrder !== 'asc' ? language.descending : language.ascending;
 
-  console.log(values);
-
   return (
     <>
       <div className="table-controls">
