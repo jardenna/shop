@@ -27,7 +27,9 @@ import { getColorOptions } from '../../../utils/colorUtils';
 import { handleApiError } from '../../../utils/handleApiError';
 import {
   discountCalculation,
+  maxDiscount,
   maxFiles,
+  minDiscount,
   translateKey,
 } from '../../../utils/utils';
 import { validateProduct } from '../../../utils/validation/validateProduct';
@@ -52,9 +54,6 @@ type ProductFormProps = {
   selectedProduct: Product | null;
   onReset: () => void;
 };
-
-export const maxDiscount = 90;
-export const minDiscount = 0;
 
 const ProductForm = ({
   id,
@@ -204,6 +203,7 @@ const ProductForm = ({
         dispatch,
       });
 
+      // eslint-disable-next-line react-hooks/immutability
       values.images = mergedImages;
 
       const filteredSizes = values.sizes.filter((size) =>
