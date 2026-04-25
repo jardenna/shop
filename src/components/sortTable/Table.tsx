@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { useSearchParams } from 'react-router';
 import { SortOrder } from '../../app/api/apiTypes/sharedApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
 import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
@@ -84,23 +83,18 @@ const Table = <T,>({
 
   const initialFilters = createInitialFilters(columns);
 
-  const { values, setValue } = useSearchParamsState(initialFilters);
+  const { values, setValue, onClearAllFilters } =
+    useSearchParamsState(initialFilters);
 
   const sortIcon = sortOrder === 'asc' ? '↑' : '↓';
   const ariaSort = sortOrder !== 'asc' ? 'descending' : 'ascending';
   const ariaLabel =
     sortOrder !== 'asc' ? language.descending : language.ascending;
 
-  const [, setSearchParams] = useSearchParams();
-
-  const handleClearAllParams = () => {
-    setSearchParams('');
-  };
-
   return (
     <>
       <div className="table-controls">
-        <Button onClick={handleClearAllParams} variant={BtnVariant.Default}>
+        <Button onClick={onClearAllFilters} variant={BtnVariant.Default}>
           {language.clearFilters}
         </Button>
         <DisplayControls
