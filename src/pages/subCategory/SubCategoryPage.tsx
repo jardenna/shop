@@ -28,8 +28,9 @@ const SubCategoryPage = () => {
 
   const initialFilters = createInitialFilters(tableHeaders);
 
-  const { values, setValue } = useSearchParamsState(initialFilters);
-  console.log(values);
+  const { filterParams, setFilterParams } =
+    useSearchParamsState(initialFilters);
+  console.log(filterParams);
 
   const {
     data: allSubcategories,
@@ -52,8 +53,8 @@ const SubCategoryPage = () => {
       ariaLabelledby="sub-categories-list"
     >
       <Table
-        values={values}
-        setValue={setValue}
+        values={filterParams}
+        onFilter={setFilterParams}
         initialFilters={initialFilters}
         onReset={() => refetch()}
         data={allSubcategories?.subCategories || []}

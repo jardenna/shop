@@ -42,8 +42,9 @@ const ProductPage = () => {
 
   const initialFilters = createInitialFilters(tableHeaders);
 
-  const { values, setValue } = useSearchParamsState(initialFilters);
-  console.log(values);
+  const { filterParams, setFilterParams } =
+    useSearchParamsState(initialFilters);
+  console.log(filterParams);
 
   const {
     data: allProducts,
@@ -104,8 +105,8 @@ const ProductPage = () => {
       variant="x-large"
     >
       <Table
-        values={values}
-        setValue={setValue}
+        values={filterParams}
+        onFilter={setFilterParams}
         initialFilters={initialFilters}
         onReset={() => refetch()}
         isLoading={isLoading}

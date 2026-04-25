@@ -105,9 +105,9 @@ export const useSearchParamsState = <T extends SearchParamState>(
   };
 
   return {
-    values,
-    toggleValue,
-    setValue,
+    filterParams: values,
+    toggleFilterParam: toggleValue,
+    setFilterParams: setValue,
     onRemoveFilterTag: handleRemoveFilterTag,
     onClearAllFilters: handleClearAllFilters,
     onClearSingleFilter: handleClearSingleFilter,

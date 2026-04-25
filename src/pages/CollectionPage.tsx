@@ -63,9 +63,9 @@ const CollectionPage = () => {
   };
 
   const {
-    values,
-    toggleValue,
-    setValue,
+    filterParams,
+    toggleFilterParam,
+    setFilterParams,
     onRemoveFilterTag,
     onClearSingleFilter,
     onClearAllFilters,
@@ -78,11 +78,11 @@ const CollectionPage = () => {
   } = useGetProductsQuery({
     productsPerPage,
     page: page.toString(),
-    colors: values.colors,
-    brand: values.brand,
-    sizes: values.sizes,
-    minPrice: values.minPrice,
-    maxPrice: values.maxPrice,
+    colors: filterParams.colors,
+    brand: filterParams.brand,
+    sizes: filterParams.sizes,
+    minPrice: filterParams.minPrice,
+    maxPrice: filterParams.maxPrice,
     mainCategory: category,
     subCategoryId: categoryId || '',
   });
@@ -101,7 +101,7 @@ const CollectionPage = () => {
     language,
   });
 
-  const { announce } = useAnnounce([page, productsPerPage, values]);
+  const { announce } = useAnnounce([page, productsPerPage, filterParams]);
   const { scrollToRef, setShouldScroll } = useScrollOnPagination({
     isLoading,
   });
@@ -197,9 +197,9 @@ const CollectionPage = () => {
                   language={language}
                   productCount={products.productCount}
                   onReset={() => refetch()}
-                  values={values}
-                  toggleValue={toggleValue}
-                  setValue={setValue}
+                  values={filterParams}
+                  toggleValue={toggleFilterParam}
+                  setValue={setFilterParams}
                   onRemoveFilterTag={onRemoveFilterTag}
                   onClearAllFilters={onClearAllFilters}
                   onClearSingleFilter={onClearSingleFilter}

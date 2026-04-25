@@ -15,7 +15,7 @@ export interface BaseTableFilterProps {
   filterType: InputType;
   id: string;
   name: string;
-  onFilterRows: InputChangeHandler;
+  onFilter: InputChangeHandler;
   value: string;
 }
 
@@ -28,7 +28,7 @@ interface TableFilterPopupProps extends BaseTableFilterProps {
 const TableFilterPopup = ({
   id,
   value,
-  onFilterRows,
+  onFilter,
   filterType,
   name,
   values,
@@ -49,7 +49,7 @@ const TableFilterPopup = ({
           <TableFilterInput
             name={name}
             id={id}
-            onFilterRows={onFilterRows}
+            onFilter={onFilter}
             value={value}
             filterType={filterType}
             legendText={legendText}
@@ -68,7 +68,7 @@ const TableFilterPopup = ({
                 name={minKey}
                 labelText={`${labelTextShort} ${language.from}`}
                 value={values[minKey] as string}
-                onChange={onFilterRows}
+                onChange={onFilter}
                 autoFocus
                 inputSuffix={inputSuffix}
               />
@@ -79,7 +79,7 @@ const TableFilterPopup = ({
                 inputMode="numeric"
                 labelText={`${labelTextShort} ${language.to}`}
                 value={values[maxKey] as string}
-                onChange={onFilterRows}
+                onChange={onFilter}
                 inputSuffix={inputSuffix}
               />
             </FieldSet>
@@ -91,7 +91,7 @@ const TableFilterPopup = ({
           <TableFilterInput
             name={name}
             id={id}
-            onFilterRows={onFilterRows}
+            onFilter={onFilter}
             value={value}
             filterType={filterType}
             legendText={legendText}

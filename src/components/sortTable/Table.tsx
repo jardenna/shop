@@ -36,9 +36,9 @@ type TableProps<T> = {
   className?: string;
   emptyHeaderCellText?: string;
   children: (data: T[]) => ReactNode;
+  onFilter: (event: ChangeInputType) => void;
   onReset: () => void;
   onSort: (field: keyof T) => void;
-  setValue: (event: ChangeInputType) => void;
 };
 
 const Table = <T,>({
@@ -55,7 +55,7 @@ const Table = <T,>({
   sortOrder,
   initialFilters,
   values,
-  setValue,
+  onFilter,
 }: TableProps<T>) => {
   const { language } = useLanguage();
   const { paddingBlockSmall, paddingBlockMedium, paddingBlockLarge } =
@@ -148,7 +148,7 @@ const Table = <T,>({
 
                           {!col.hideTableControls && (
                             <TableFilterPopup
-                              onFilterRows={setValue}
+                              onFilter={onFilter}
                               id={col.label}
                               name={col.name}
                               value={values[col.key] as string}
