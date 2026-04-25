@@ -60,7 +60,7 @@ export const useModal = (modalId: string | null) => {
         child.removeAttribute('inert');
       });
     };
-  }, [modalId, popupRef.current]);
+  }, [modalId]);
 
   // Trap focus inside modal (keyboard users cannot tab out)
   useTrapFocus({ id: modalId, popupRef });
