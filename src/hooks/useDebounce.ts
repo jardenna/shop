@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 interface UseDebounceOptions {
   delay?: number;
@@ -11,8 +11,18 @@ export const useDebounce = ({ delay = 500 }: UseDebounceOptions = {}) => {
     if (timerRef.current) {
       clearTimeout(timerRef.current);
     }
+
     timerRef.current = setTimeout(callback, delay);
   };
+
+  useEffect(
+    () => () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
+    },
+    [],
+  );
 
   return { debounce };
 };
