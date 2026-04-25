@@ -1,5 +1,5 @@
-import { Placement } from '@popperjs/core';
-import { ReactNode, useId } from 'react';
+import type { Placement } from '@popperjs/core';
+import { type ReactNode, useId } from 'react';
 import { usePopup } from '../../hooks/usePopup';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
@@ -9,6 +9,7 @@ interface PopupProps {
   children: ReactNode;
   popupContent: ReactNode | ((params: { close: () => void }) => ReactNode);
   ariaLabel?: string;
+  className?: string;
   placement?: Placement;
   popupType?: 'tooltip' | 'popover';
   triggerBtnClassName?: string;
@@ -22,6 +23,7 @@ const Popup = ({
   ariaLabel,
   triggerBtnVariant = BtnVariant.Ghost,
   triggerBtnClassName,
+  className = '',
   placement,
   onOpenPopup,
   popupType = 'popover',
@@ -62,7 +64,7 @@ const Popup = ({
       {popupIsOpen && (
         <div
           ref={popupRef}
-          className="popup popup-container"
+          className={`popup popup-container ${className}`}
           id={popupId}
           role={popupType === 'tooltip' ? 'tooltip' : undefined}
         >
