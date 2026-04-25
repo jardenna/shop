@@ -23,7 +23,7 @@ export const tableHeaders: Column<Product>[] = [
   {
     key: 'countInStock',
     label: 'countInStock',
-    name: 'countInStock',
+    name: 'stock',
     tableFilterType: 'number',
   },
   { key: 'price', label: 'price', name: 'price', tableFilterType: 'number' },
