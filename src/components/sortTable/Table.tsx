@@ -6,7 +6,7 @@ import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import variables from '../../scss/variables.module.scss';
 import { BtnVariant, IconName } from '../../types/enums';
-import { InputType } from '../../types/types';
+import { ChangeInputType, InputType } from '../../types/types';
 import Button from '../Button';
 import DisplayControls from '../DisplayControls';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
@@ -14,7 +14,7 @@ import SkeletonList from '../skeleton/SkeletonList';
 import VisuallyHidden from '../VisuallyHidden';
 import './_table.scss';
 import TableFilterPopup from './tableFilters/TableFilterPopup';
-import { createInitialFilters } from './tableFilters/tableFiltersUtils';
+import { InitialTableFilters } from './tableFilters/tableFiltersUtils';
 
 export type Column<T> = {
   key: keyof T;
@@ -27,15 +27,18 @@ export type Column<T> = {
 type TableProps<T> = {
   columns: Column<T>[];
   data: T[];
+  initialFilters: InitialTableFilters;
   isLoading: boolean;
   sortField: keyof T;
   sortOrder: SortOrder;
   tableCaption: string;
+  values: InitialTableFilters;
   className?: string;
   emptyHeaderCellText?: string;
   children: (data: T[]) => ReactNode;
   onReset: () => void;
   onSort: (field: keyof T) => void;
+  setValue: (event: ChangeInputType) => void;
 };
 
 const Table = <T,>({
@@ -50,6 +53,9 @@ const Table = <T,>({
   onSort,
   sortField,
   sortOrder,
+  initialFilters,
+  values,
+  setValue,
 }: TableProps<T>) => {
   const { language } = useLanguage();
   const { paddingBlockSmall, paddingBlockMedium, paddingBlockLarge } =
@@ -81,10 +87,7 @@ const Table = <T,>({
     },
   ];
 
-  const initialFilters = createInitialFilters(columns);
-
-  const { values, setValue, onClearAllFilters } =
-    useSearchParamsState(initialFilters);
+  const { onClearAllFilters } = useSearchParamsState(initialFilters);
 
   const sortIcon = sortOrder === 'asc' ? '↑' : '↓';
   const ariaSort = sortOrder !== 'asc' ? 'descending' : 'ascending';

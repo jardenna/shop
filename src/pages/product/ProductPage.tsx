@@ -4,6 +4,7 @@ import { usePaginationText } from '../../components/pagination/hooks/usePaginati
 import Pagination from '../../components/pagination/Pagination';
 import { PageCountOptions } from '../../components/pagination/PaginationSelect';
 import Table from '../../components/sortTable/Table';
+import { createInitialFilters } from '../../components/sortTable/tableFilters/tableFiltersUtils';
 import { useLanguage } from '../../features/language/useLanguage';
 import { tableHeaders } from '../../features/products/components/productTableHeaders';
 import ProductTableRow from '../../features/products/components/ProductTableRow';
@@ -12,6 +13,7 @@ import {
   useGetAllProductsQuery,
   useGetHasScheduledDataQuery,
 } from '../../features/products/productApiSlice';
+import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { AdminPath } from '../../layout/nav/enums';
 import { handleApiError } from '../../utils/handleApiError';
@@ -37,6 +39,11 @@ const ProductPage = () => {
 
   const { page, productsPerPage, setPage, updatePagination } =
     usePaginationParams();
+
+  const initialFilters = createInitialFilters(tableHeaders);
+
+  const { values, setValue } = useSearchParamsState(initialFilters);
+  console.log(values);
 
   const {
     data: allProducts,
@@ -97,6 +104,9 @@ const ProductPage = () => {
       variant="x-large"
     >
       <Table
+        values={values}
+        setValue={setValue}
+        initialFilters={initialFilters}
         onReset={() => refetch()}
         isLoading={isLoading}
         data={allProducts?.products ?? []}

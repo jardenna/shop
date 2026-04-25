@@ -1,10 +1,12 @@
 import Table from '../../components/sortTable/Table';
+import { createInitialFilters } from '../../components/sortTable/tableFilters/tableFiltersUtils';
 import {
   useGetAllCategoriesWithParamsQuery,
   useGetHasCategoriesScheduledQuery,
 } from '../../features/categories/categoriyApiSlice';
 import CategoryTableRow from '../../features/categories/components/CategoryTableRow';
 import { useLanguage } from '../../features/language/useLanguage';
+import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { AdminPath } from '../../layout/nav/enums';
 import { oneDay, translateKey } from '../../utils/utils';
@@ -25,6 +27,11 @@ const CategoryPage = () => {
   );
 
   const shouldPollFullList = hasScheduledData?.hasScheduled ?? false;
+
+  const initialFilters = createInitialFilters(tableHeaders);
+
+  const { values, setValue } = useSearchParamsState(initialFilters);
+  console.log(values);
 
   const {
     data: allCategories,
@@ -47,6 +54,9 @@ const CategoryPage = () => {
       ariaLabelledby="categories-list"
     >
       <Table
+        values={values}
+        setValue={setValue}
+        initialFilters={initialFilters}
         onReset={() => refetch()}
         data={allCategories?.categories || []}
         columns={tableHeaders}

@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import Table from '../../components/sortTable/Table';
+import { createInitialFilters } from '../../components/sortTable/tableFilters/tableFiltersUtils';
 import DeleteUser from '../../features/adminUsers/components/DeleteUser';
 import EditTableText from '../../features/adminUsers/components/EditTableText';
 import UpdateUser from '../../features/adminUsers/components/UpdateUser';
@@ -11,6 +12,7 @@ import {
   useGetAllUsersQuery,
   useUpdateUserMutation,
 } from '../../features/users/userApiSlice';
+import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
 import { AdminPath } from '../../layout/nav/enums';
@@ -32,6 +34,11 @@ const UserPage = () => {
   const { sortOrder, onSort, sortField } = useSortParamsState({
     columns: tableHeaders,
   });
+
+  const initialFilters = createInitialFilters(tableHeaders);
+
+  const { values, setValue } = useSearchParamsState(initialFilters);
+  console.log(values);
 
   const {
     data: allUsers,
@@ -102,6 +109,9 @@ const UserPage = () => {
       ariaLabelledby="users"
     >
       <Table
+        values={values}
+        setValue={setValue}
+        initialFilters={initialFilters}
         onReset={() => refetch()}
         data={allUsers || []}
         columns={tableHeaders}
