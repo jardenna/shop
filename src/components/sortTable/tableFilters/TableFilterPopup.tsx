@@ -22,6 +22,7 @@ export interface BaseTableFilterProps {
 interface TableFilterPopupProps extends BaseTableFilterProps {
   id: string;
   values: InitialTableFilters;
+  className?: string;
 }
 
 const TableFilterPopup = ({
@@ -31,6 +32,7 @@ const TableFilterPopup = ({
   filterType,
   name,
   values,
+  className,
 }: TableFilterPopupProps) => {
   const { language } = useLanguage();
   const { currencyText } = useCurrency();
@@ -103,22 +105,21 @@ const TableFilterPopup = ({
   };
 
   return (
-    <div className="table-filter-popup">
-      <Popup
-        placement="bottom-start"
-        popupContent={getPopupContent}
-        ariaLabel={`${language.filter} ${id}`}
-      >
-        <Icon iconName={IconName.Filter} />
+    <Popup
+      placement="bottom-start"
+      popupContent={getPopupContent}
+      ariaLabel={`${language.filter} ${id}`}
+      className={className}
+    >
+      <Icon iconName={IconName.Filter} />
 
-        {value && (
-          <>
-            <VisuallyHidden>{language.filtersApplied}</VisuallyHidden>
-            <span className="dot" aria-hidden />
-          </>
-        )}
-      </Popup>
-    </div>
+      {value && (
+        <>
+          <VisuallyHidden>{language.filtersApplied}</VisuallyHidden>
+          <span className="dot" aria-hidden />
+        </>
+      )}
+    </Popup>
   );
 };
 

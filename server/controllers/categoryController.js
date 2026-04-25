@@ -57,7 +57,7 @@ const getAllCategories = asyncHandler(async (req, res) => {
   const sortField = req.query.sortField;
   const sortOrder = req.query.sortOrder === 'desc' ? -1 : 1;
 
-  const allCategories = await Category.find({}).lean();
+  const allCategories = await Category.find(req.mongoQuery || {}).lean();
 
   const updatedCategories = await updateScheduledItems({
     items: allCategories,

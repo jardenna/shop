@@ -1,10 +1,12 @@
 import Table from '../../components/sortTable/Table';
+import { createInitialFilters } from '../../components/sortTable/tableFilters/tableFiltersUtils';
 import { useLanguage } from '../../features/language/useLanguage';
 import SubCategoryTableRows from '../../features/subCategories/components/SubCategoryTableRows';
 import {
   useGetAllSubCategoriesQuery,
   useGetHasSubCatScheduledQuery,
 } from '../../features/subCategories/subCategoryApiSlice';
+import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { AdminPath } from '../../layout/nav/enums';
 import { oneDay, translateKey } from '../../utils/utils';
@@ -23,6 +25,11 @@ const SubCategoryPage = () => {
   });
 
   const shouldPollFullList = hasScheduledData?.hasScheduled ?? false;
+
+  const initialFilters = createInitialFilters(tableHeaders);
+
+  const { values, setValue } = useSearchParamsState(initialFilters);
+  console.log(values);
 
   const {
     data: allSubcategories,
@@ -45,6 +52,9 @@ const SubCategoryPage = () => {
       ariaLabelledby="sub-categories-list"
     >
       <Table
+        values={values}
+        setValue={setValue}
+        initialFilters={initialFilters}
         onReset={() => refetch()}
         data={allSubcategories?.subCategories || []}
         columns={tableHeaders}

@@ -36,7 +36,7 @@ export const tableHeaders: Column<Product>[] = [
   {
     key: 'discountedPrice',
     label: 'totalPrice',
-    name: 'discountPrice',
+    name: 'discountedPrice',
     tableFilterType: 'number',
   },
   {

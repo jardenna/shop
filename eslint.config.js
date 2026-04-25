@@ -7,7 +7,7 @@ import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import { defineConfig } from 'eslint/config';
-import tseslint, { configs as tsConfigs } from 'typescript-eslint';
+import tseslint from 'typescript-eslint';
 
 export default defineConfig(
   {
@@ -31,26 +31,18 @@ export default defineConfig(
   {
     // use predefined configs in installed eslint plugins
     extends: [
-      // js
       js.configs.recommended,
-      // ts
-      ...tseslint.configs.recommended,
-      tseslint.configs.strict,
-      // react
+      ...tseslint.configs.strictTypeChecked,
       react.configs.flat.recommended,
-      // import
+      reactHooks.configs.flat.recommended,
       importPlugin.flatConfigs.recommended,
-      // a11y (accessibility)
       jsxA11y.flatConfigs.recommended,
-      // prettier
       prettier,
-      ...tsConfigs.strictTypeChecked,
     ],
 
     // specify used plugins
     plugins: {
       perfectionist,
-      'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
     },
     settings: {
@@ -75,12 +67,19 @@ export default defineConfig(
         { endOfLine: 'auto' },
         { usePrettierrc: true },
       ],
-      '@typescript-eslint/no-unused-vars': 'warn',
+      '@typescript-eslint/no-unused-vars': 'error',
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
+        {
+          prefer: 'type-imports',
+        },
+      ],
       '@typescript-eslint/no-invalid-void-type': 'off',
+      '@typescript-eslint/consistent-type-imports': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-confusing-void-expression': 'error',
       '@typescript-eslint/no-duplicate-enum-values': 'warn',
-      '@typescript-eslint/no-empty-interface': 'warn',
+      '@typescript-eslint/no-empty-object-type': 'warn',
       '@typescript-eslint/no-floating-promises': 'off',
       '@typescript-eslint/no-unsafe-assignment': 'off',
       '@typescript-eslint/no-misused-promises': 'off',
@@ -126,14 +125,16 @@ export default defineConfig(
           exceptions: ['-'],
         },
       ],
+      'react-refresh/only-export-components': 'warn',
       curly: ['error', 'all'],
       'arrow-body-style': 'warn',
-      'react/no-unused-prop-types': 'error',
       'react/no-multi-comp': ['error', { ignoreStateless: false }],
       'react/no-unescaped-entities': 0,
       'react/jsx-curly-brace-presence': 'error',
       'no-underscore-dangle': ['error', { allow: ['__esModule', '__extends'] }],
       'react/react-in-jsx-scope': 'off',
+      'react-hooks/exhaustive-deps': 'off',
+      'react-hooks/set-state-in-effect': 'off',
       'jsx-a11y/alt-text': 'error',
       'react/jsx-filename-extension': [
         2,
@@ -162,10 +163,8 @@ export default defineConfig(
         },
       ],
       'react/button-has-type': 'error',
-      'react/prefer-stateless-function': 'warn',
       'react/jsx-no-useless-fragment': 'error',
       'prefer-template': 'error',
-      'react/no-did-update-set-state': 'warn',
       'react/no-unused-prop-types': 'error',
       'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
       'react/no-direct-mutation-state': 1,

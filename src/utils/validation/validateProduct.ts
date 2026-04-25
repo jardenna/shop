@@ -1,10 +1,7 @@
 import type { ProductRequest } from '../../app/api/apiTypes/adminApiTypes';
-import {
-  maxDiscount,
-  minDiscount,
-} from '../../features/products/components/ProductForm';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
+import { maxDiscount, minDiscount } from '../utils';
 
 export function validateProduct(values: ProductRequest) {
   const errors: ValidationErrors<ProductRequest> = {};
