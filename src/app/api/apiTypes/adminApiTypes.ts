@@ -9,8 +9,12 @@ import type {
   SortOrder,
 } from './sharedApiTypes';
 
-export type Roles = 'Employee' | 'User';
-export type Status = 'Published' | 'Inactive' | 'Scheduled';
+export const roleValues = ['Employee', 'User'] as const;
+export const statusValues = ['Published', 'Inactive', 'Scheduled'] as const;
+
+export type Roles = (typeof roleValues)[number];
+
+export type Status = (typeof statusValues)[number];
 
 // --- Users ---
 type EditableUserFields = {

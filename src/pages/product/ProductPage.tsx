@@ -1,3 +1,4 @@
+import { Status } from '../../app/api/apiTypes/adminApiTypes';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import { usePaginationParams } from '../../components/pagination/hooks/usePaginationParams';
 import { usePaginationText } from '../../components/pagination/hooks/usePaginationText';
@@ -61,7 +62,7 @@ const ProductPage = () => {
       maxStock: debouncedFilters.maxStock,
       minStock: debouncedFilters.minStock,
       productName: debouncedFilters.productName,
-      productStatus: 'Published',
+      productStatus: debouncedFilters.productStatus as Status,
       subCategoryName: debouncedFilters.subCategoryName,
       minDiscount: debouncedFilters.minDiscount,
       maxDiscount: debouncedFilters.maxDiscount,
