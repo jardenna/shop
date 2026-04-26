@@ -13,6 +13,7 @@ import {
   useGetAllProductsQuery,
   useGetHasScheduledDataQuery,
 } from '../../features/products/productApiSlice';
+import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { AdminPath } from '../../layout/nav/enums';
@@ -20,6 +21,8 @@ import { handleApiError } from '../../utils/handleApiError';
 import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 import './ProductPage.styles.scss';
+
+// const thisIsAtestConst = 111
 
 const ProductPage = () => {
   const { language } = useLanguage();
@@ -45,12 +48,24 @@ const ProductPage = () => {
   const { filterParams, setFilterParams } =
     useSearchParamsState(initialFilters);
 
+  const debouncedFilters = useDebouncedValue(filterParams);
+
+  const x = debouncedFilters.productName;
+  console.log(x);
+
   const {
     data: allProducts,
     isLoading,
     refetch,
   } = useGetAllProductsQuery(
-    { productsPerPage, page: page.toString(), sortField, sortOrder },
+    {
+      productsPerPage,
+      page: page.toString(),
+      sortField,
+      sortOrder,
+      maxStock: '',
+      productName: '',
+    },
     {
       pollingInterval: shouldPollFullList ? 15000 : undefined,
       refetchOnMountOrArgChange: true,
