@@ -22,8 +22,6 @@ import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 import './ProductPage.styles.scss';
 
-// const thisIsAtestConst = 111
-
 const ProductPage = () => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
