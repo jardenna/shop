@@ -48,9 +48,6 @@ const ProductPage = () => {
 
   const debouncedFilters = useDebouncedValue(filterParams);
 
-  const x = debouncedFilters.productName;
-  console.log(x);
-
   const {
     data: allProducts,
     isLoading,
@@ -61,8 +58,18 @@ const ProductPage = () => {
       page: page.toString(),
       sortField,
       sortOrder,
-      maxStock: '',
-      productName: '',
+      maxStock: debouncedFilters.maxStock,
+      minStock: debouncedFilters.minStock,
+      productName: debouncedFilters.productName,
+      productStatus: 'Published',
+      subCategoryName: debouncedFilters.subCategoryName,
+      minDiscount: debouncedFilters.minDiscount,
+      maxDiscount: debouncedFilters.maxDiscount,
+      // minDiscountedPrice: '',
+      // maxDiscountedPrice: '',
+      minPrice: debouncedFilters.minPrice,
+      maxPrice: debouncedFilters.maxPrice,
+      categoryName: debouncedFilters.categoryName,
     },
     {
       pollingInterval: shouldPollFullList ? 15000 : undefined,

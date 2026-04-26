@@ -163,10 +163,18 @@ export type SortParams = {
 
 export type ProductsParams = BaseProductParams &
   SortParams & {
-    maxStock?: string;
-    minStock?: string;
-    productStatus?: Status;
-    subCategory?: string;
+    categoryName: string;
+    maxDiscount: string;
+    maxPrice: string;
+    maxStock: string;
+    minDiscount: string;
+    minPrice: string;
+    minStock: string;
+    productName: string;
+    productStatus: Status;
+    subCategoryName: string;
+    maxDiscountedPrice?: string;
+    minDiscountedPrice?: string;
   };
 
 export type ProductRequest = {

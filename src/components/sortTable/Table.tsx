@@ -17,7 +17,7 @@ import TableFilterPopup from './tableFilters/TableFilterPopup';
 import { InitialTableFilters } from './tableFilters/tableFiltersUtils';
 
 export type Column<T> = {
-  key: keyof T;
+  key: Extract<keyof T, string>;
   label: string;
   name: string;
   hideTableControls?: boolean;
@@ -151,7 +151,7 @@ const Table = <T,>({
                               onFilter={onFilter}
                               id={col.label}
                               name={col.name}
-                              value={values[col.key] as string}
+                              value={values[col.key]}
                               filterType={col.tableFilterType || 'text'}
                               values={values}
                               className="table-filter-popup"

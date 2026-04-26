@@ -2,7 +2,7 @@
 import { Column } from '../Table';
 
 export interface InitialTableFilters {
-  [key: string]: string | string[];
+  [key: string]: string;
 }
 
 export const createInitialFilters = <T>(
@@ -17,9 +17,8 @@ export const createInitialFilters = <T>(
 
     switch (header.tableFilterType) {
       case 'radio':
-        accumulator[keyName] = [];
+        accumulator[keyName] = '';
         break;
-
       case 'number': {
         const capitalizedKey =
           keyName.charAt(0).toUpperCase() + keyName.slice(1);
