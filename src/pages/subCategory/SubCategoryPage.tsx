@@ -30,7 +30,6 @@ const SubCategoryPage = () => {
 
   const { filterParams, setFilterParams } =
     useSearchParamsState(initialFilters);
-  console.log(filterParams);
 
   const {
     data: allSubcategories,

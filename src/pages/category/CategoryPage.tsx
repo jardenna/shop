@@ -32,7 +32,6 @@ const CategoryPage = () => {
 
   const { filterParams, setFilterParams } =
     useSearchParamsState(initialFilters);
-  console.log(filterParams);
 
   const {
     data: allCategories,
