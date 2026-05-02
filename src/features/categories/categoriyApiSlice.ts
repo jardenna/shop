@@ -2,16 +2,19 @@ import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import type {
   CategoriesResponse,
   CategoryItemResponse,
+  CategoryParams,
   CreateCategoryRequest,
   ScheduledResponse,
-  SortParams,
   UpdateCategoryRequest,
 } from '../../app/api/apiTypes/adminApiTypes';
 import { categoryUrl } from '../../app/endpoints';
 
 export const categoryApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getAllCategoriesWithParams: builder.query<CategoriesResponse, SortParams>({
+    getAllCategoriesWithParams: builder.query<
+      CategoriesResponse,
+      CategoryParams
+    >({
       query: (params) => ({ url: categoryUrl, params }),
       providesTags: [TagTypesEnum.Categories],
     }),

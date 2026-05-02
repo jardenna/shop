@@ -165,6 +165,12 @@ export type SortParams = {
   sortOrder: SortOrder;
 };
 
+export type CategoryParams = SortParams & {
+  categoryName: string;
+  categoryStatus: Status;
+  createdAt: string;
+};
+
 export type ProductsParams = BaseProductParams &
   SortParams & {
     categoryName: string;

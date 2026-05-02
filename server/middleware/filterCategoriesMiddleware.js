@@ -1,6 +1,6 @@
 export function filterCategoriesMiddleware(req, res, next) {
   const {
-    status: statusValue,
+    categoryStatus: statusValue,
     categoryName: categoryNameValue,
     createdAt: createdAtValue,
   } = req.query;
