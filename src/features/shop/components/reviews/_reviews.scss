@@ -47,19 +47,15 @@
   }
 
   .reviews {
-    .control-item {
-      height: auto;
-      background-color: inherit;
-      width: auto;
+    .radio-btn-label {
+      background-color: transparent;
+    }
 
+    .control-item {
       &:has(input:checked) {
         background-color: transparent;
         color: currentcolor;
       }
-    }
-
-    .radio-btn-label {
-      background-color: transparent;
     }
 
     svg {
