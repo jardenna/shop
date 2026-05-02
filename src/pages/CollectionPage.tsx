@@ -6,7 +6,6 @@ import { usePaginationParams } from '../components/pagination/hooks/usePaginatio
 import { usePaginationText } from '../components/pagination/hooks/usePaginationText';
 import { useScrollOnPagination } from '../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../components/pagination/Pagination';
-import { type PageCountOptions } from '../components/pagination/PaginationSelect';
 import Picture from '../components/Picture';
 import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import { useLanguage } from '../features/language/useLanguage';
@@ -27,6 +26,7 @@ import { useSearchParamsState } from '../hooks/useSearchParamsState';
 import MetaTags from '../layout/MetaTags';
 import { LinkText } from '../layout/nav/enums';
 import { IconName } from '../types/enums';
+import { Options } from '../types/types';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { sortSizesDynamic } from '../utils/sizeUtils';
 import { ariaInfoTitle } from '../utils/utils';
@@ -106,7 +106,7 @@ const CollectionPage = () => {
     isLoading,
   });
 
-  const handleSelectCount = (option: PageCountOptions) => {
+  const handleSelectCount = (option: Options) => {
     const newCount = Number(option.value);
     updatePagination(1, newCount);
     setShouldScroll(true);

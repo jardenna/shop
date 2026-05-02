@@ -1,8 +1,8 @@
 import { isBefore, startOfDay } from 'date-fns';
-import type { Status } from '../app/api/apiTypes/adminApiTypes';
 import { useLanguage } from '../features/language/useLanguage';
 import type {
   InputChangeHandler,
+  Options,
   OptionType,
   RefElementType,
 } from '../types/types';
@@ -10,13 +10,8 @@ import DatePicker from './datePicker/DatePicker';
 import TimeInput from './formElements/timeInput/TimeInput';
 import Selectbox from './selectbox/Selectbox';
 
-type StatusOptions = {
-  label: string;
-  value: Status;
-};
-
 export type StatusInputsProps = {
-  defaultStatusValue: StatusOptions;
+  defaultStatusValue: Options;
   labelText: string;
   onTimeChange: InputChangeHandler;
   selectedDate: Date;
@@ -43,7 +38,7 @@ const StatusInputs = ({
   max,
 }: StatusInputsProps) => {
   const { language } = useLanguage();
-  const statusOptions: StatusOptions[] = [
+  const statusOptions: Options[] = [
     {
       label: language.inactive,
       value: 'Inactive',

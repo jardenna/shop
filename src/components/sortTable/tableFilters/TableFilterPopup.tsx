@@ -1,7 +1,18 @@
+import { Status, statusValues } from '../../../app/api/apiTypes/adminApiTypes';
+import {
+  MainCategoryNames,
+  mainCategoryValues,
+  SubCategoryNames,
+  subCategoryValues,
+} from '../../../app/api/apiTypes/sharedApiTypes';
 import { useCurrency } from '../../../features/currency/useCurrency';
 import { useLanguage } from '../../../features/language/useLanguage';
 import { IconName } from '../../../types/enums';
-import type { InputChangeHandler, InputType } from '../../../types/types';
+import type {
+  InputChangeHandler,
+  InputType,
+  Options,
+} from '../../../types/types';
 import FieldSet from '../../fieldset/FieldSet';
 import Input from '../../formElements/Input';
 import RadioButtonList from '../../formElements/RadioButtonList';
@@ -42,34 +53,26 @@ const TableFilterPopup = <T,>({
   const labelText = `${language.filter} ${language[id]}`;
   const labelTextShort = language[id];
   const inputSuffix = id !== 'countInStock' ? currencyText : language.pcs;
-  interface OptionItem {
-    label: string;
-    value: string;
-  }
-
-  type CategoryName = 'Men' | 'Women' | 'Kids';
-  type ProductStatus = 'Published' | 'Inactive' | 'Scheduled';
-  type SubCategoryName = 'Shoes' | 'Accessories' | 'Clothing';
 
   interface ListsMap {
-    categoryName: CategoryName[];
-    productStatus: ProductStatus[];
-    subCategoryName: SubCategoryName[];
+    categoryName: readonly MainCategoryNames[];
+    productStatus: readonly Status[];
+    subCategoryName: readonly SubCategoryNames[];
   }
 
   const listsMap: ListsMap = {
-    categoryName: ['Men', 'Women', 'Kids'],
-    productStatus: ['Published', 'Inactive', 'Scheduled'],
-    subCategoryName: ['Shoes', 'Accessories', 'Clothing'],
+    categoryName: mainCategoryValues,
+    productStatus: statusValues,
+    subCategoryName: subCategoryValues,
   };
 
-  const createOptions = (items: string[]): OptionItem[] =>
+  const createOptions = (items: readonly string[]): Options[] =>
     items.map((item) => ({
       label: item,
       value: item,
     }));
 
-  const getListByName = (name: keyof ListsMap): OptionItem[] =>
+  const getListByName = (name: keyof ListsMap): Options[] =>
     createOptions(listsMap[name]);
 
   const getPopupContent = () => {

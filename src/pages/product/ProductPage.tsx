@@ -3,7 +3,6 @@ import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import { usePaginationParams } from '../../components/pagination/hooks/usePaginationParams';
 import { usePaginationText } from '../../components/pagination/hooks/usePaginationText';
 import Pagination from '../../components/pagination/Pagination';
-import { PageCountOptions } from '../../components/pagination/PaginationSelect';
 import Table from '../../components/sortTable/Table';
 import { createInitialFilters } from '../../components/sortTable/tableFilters/tableFiltersUtils';
 import { useLanguage } from '../../features/language/useLanguage';
@@ -18,6 +17,7 @@ import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { AdminPath } from '../../layout/nav/enums';
+import { Options } from '../../types/types';
 import { handleApiError } from '../../utils/handleApiError';
 import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
@@ -95,7 +95,7 @@ const ProductPage = () => {
   const productCount = allProducts ? allProducts.productCount : 0;
   const isShowingAll = productsPerPage >= productCount && productCount > 0;
 
-  const handleSelectCount = (option: PageCountOptions) => {
+  const handleSelectCount = (option: Options) => {
     const newCount = Number(option.value);
     updatePagination(1, newCount);
   };

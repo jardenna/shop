@@ -1,19 +1,15 @@
 import { useLocation } from 'react-router';
 import { useLanguage } from '../../features/language/useLanguage';
+import { Options } from '../../types/types';
 import FieldSet from '../fieldset/FieldSet';
 import Selectbox from '../selectbox/Selectbox';
 
-export type PageCountOptions = {
-  label: string;
-  value: string;
-};
-
 export type PaginationSelectProps = {
-  defaultValue: PageCountOptions;
+  defaultValue: Options;
   optionList: string[];
   selectInfo: string;
   totalCount: number;
-  onSelectCount: (option: PageCountOptions) => void;
+  onSelectCount: (option: Options) => void;
 };
 
 const PaginationSelect = ({
