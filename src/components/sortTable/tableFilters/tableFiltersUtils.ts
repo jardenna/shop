@@ -1,5 +1,34 @@
 /* eslint-disable no-param-reassign */
+import { Status, statusValues } from '../../../app/api/apiTypes/adminApiTypes';
+import {
+  MainCategoryNames,
+  SubCategoryNames,
+  mainCategoryValues,
+  subCategoryValues,
+} from '../../../app/api/apiTypes/sharedApiTypes';
+import { Options } from '../../../types/types';
 import { Column } from '../Table';
+
+export interface ListsMap {
+  categoryName: readonly MainCategoryNames[];
+  productStatus: readonly Status[];
+  subCategoryName: readonly SubCategoryNames[];
+}
+
+const listsMap: ListsMap = {
+  categoryName: mainCategoryValues,
+  productStatus: statusValues,
+  subCategoryName: subCategoryValues,
+};
+
+const createOptions = (items: readonly string[]): Options[] =>
+  items.map((item) => ({
+    label: item,
+    value: item,
+  }));
+
+export const getListByName = (name: keyof ListsMap): Options[] =>
+  createOptions(listsMap[name]);
 
 export type InitialTableFilters<T> = {
   [Key in Extract<keyof T, string>]: string;
