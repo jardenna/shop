@@ -14,7 +14,9 @@ import {
   authorizeAdmin,
   authorizeEmployee,
 } from '../middleware/authMiddleware.js';
+import { filterCategoriesMiddleware } from '../middleware/filterCategoriesMiddleware.js';
 import languageMiddleware from '../middleware/languageMiddleware.js';
+
 const router = express.Router();
 
 router.get(
@@ -29,7 +31,7 @@ router.get('/menu', languageMiddleware, getMenuByParentCategory);
 router
   .route('/')
   .post(languageMiddleware, authenticate, authorizeEmployee, createSubCategory)
-  .get(languageMiddleware, getAllSubCategories);
+  .get(languageMiddleware, filterCategoriesMiddleware, getAllSubCategories);
 
 router
   .route('/:id')

@@ -9,8 +9,12 @@ import type {
   SortOrder,
 } from './sharedApiTypes';
 
-export type Roles = 'Employee' | 'User';
-export type Status = 'Published' | 'Inactive' | 'Scheduled';
+export const roleValues = ['Employee', 'User'] as const;
+export const statusValues = ['Published', 'Inactive', 'Scheduled'] as const;
+
+export type Roles = (typeof roleValues)[number];
+
+export type Status = (typeof statusValues)[number];
 
 // --- Users ---
 type EditableUserFields = {
@@ -161,12 +165,26 @@ export type SortParams = {
   sortOrder: SortOrder;
 };
 
+export type CategoryParams = SortParams & {
+  categoryName: string;
+  categoryStatus: Status;
+  createdAt: string;
+};
+
 export type ProductsParams = BaseProductParams &
   SortParams & {
-    maxStock?: string;
-    minStock?: string;
-    productStatus?: Status;
-    subCategory?: string;
+    categoryName: string;
+    maxDiscount: string;
+    maxPrice: string;
+    maxStock: string;
+    minDiscount: string;
+    minPrice: string;
+    minStock: string;
+    productName: string;
+    productStatus: Status;
+    subCategoryName: string;
+    maxDiscountedPrice?: string;
+    minDiscountedPrice?: string;
   };
 
 export type ProductRequest = {

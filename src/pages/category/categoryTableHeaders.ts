@@ -6,19 +6,19 @@ export const tableHeaders: Column<Category>[] = [
     key: 'categoryName',
     label: 'name',
     name: 'categoryName',
-    tableFilterType: 'text',
+    tableFilterType: 'radio',
   },
   {
     key: 'categoryStatus',
     label: 'status',
     name: 'categoryStatus',
-    tableFilterType: 'text',
+    tableFilterType: 'radio',
   },
   {
     key: 'createdAt',
     label: 'createdAt',
     name: 'createdAt',
-    tableFilterType: 'date',
+    tableFilterType: 'text',
   },
   { key: 'id', label: '', name: '' },
 ];

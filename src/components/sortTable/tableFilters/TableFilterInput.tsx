@@ -10,7 +10,7 @@ interface TableFilterInputProps extends BaseTableFilterProps {
 const TableFilterInput = ({
   id,
   name,
-  onFilterRows,
+  onFilter,
   value,
   filterType,
   legendText,
@@ -23,7 +23,7 @@ const TableFilterInput = ({
         name={name}
         id={id}
         value={value}
-        onChange={onFilterRows}
+        onChange={onFilter}
         labelText={labelText}
         autoFocus
       />

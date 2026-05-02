@@ -1,3 +1,4 @@
+import { Status } from '../../app/api/apiTypes/adminApiTypes';
 import Table from '../../components/sortTable/Table';
 import { createInitialFilters } from '../../components/sortTable/tableFilters/tableFiltersUtils';
 import {
@@ -6,6 +7,7 @@ import {
 } from '../../features/categories/categoriyApiSlice';
 import CategoryTableRow from '../../features/categories/components/CategoryTableRow';
 import { useLanguage } from '../../features/language/useLanguage';
+import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { AdminPath } from '../../layout/nav/enums';
@@ -30,15 +32,23 @@ const CategoryPage = () => {
 
   const initialFilters = createInitialFilters(tableHeaders);
 
-  const { values, setValue } = useSearchParamsState(initialFilters);
-  console.log(values);
+  const { filterParams, setFilterParams } =
+    useSearchParamsState(initialFilters);
+
+  const debouncedFilters = useDebouncedValue(filterParams);
 
   const {
     data: allCategories,
     isLoading,
     refetch,
   } = useGetAllCategoriesWithParamsQuery(
-    { sortOrder, sortField },
+    {
+      sortOrder,
+      sortField,
+      categoryName: debouncedFilters.categoryName,
+      categoryStatus: debouncedFilters.categoryStatus as Status,
+      createdAt: debouncedFilters.createdAt,
+    },
     {
       pollingInterval: shouldPollFullList ? 15000 : undefined,
       refetchOnMountOrArgChange: true,
@@ -54,8 +64,8 @@ const CategoryPage = () => {
       ariaLabelledby="categories-list"
     >
       <Table
-        values={values}
-        setValue={setValue}
+        values={filterParams}
+        onFilter={setFilterParams}
         initialFilters={initialFilters}
         onReset={() => refetch()}
         data={allCategories?.categories || []}

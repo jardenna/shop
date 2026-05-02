@@ -59,8 +59,11 @@ export type Size =
   | ClothingSizes;
 
 export type ClothingSizes = 'S' | 'M' | 'L' | 'XL';
-export type MainCategoryNames = 'Men' | 'Women' | 'Kids';
-export type SubCategoryNames = 'Shoes' | 'Accessories' | 'Clothing';
+export const mainCategoryValues = ['Men', 'Women', 'Kids'] as const;
+export type MainCategoryNames = (typeof mainCategoryValues)[number];
+
+export const subCategoryValues = ['Shoes', 'Accessories', 'Clothing'] as const;
+export type SubCategoryNames = (typeof subCategoryValues)[number];
 
 export type SortOrder = 'asc' | 'desc';
 

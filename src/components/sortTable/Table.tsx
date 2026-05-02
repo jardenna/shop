@@ -17,7 +17,7 @@ import TableFilterPopup from './tableFilters/TableFilterPopup';
 import { InitialTableFilters } from './tableFilters/tableFiltersUtils';
 
 export type Column<T> = {
-  key: keyof T;
+  key: Extract<keyof T, string>;
   label: string;
   name: string;
   hideTableControls?: boolean;
@@ -27,18 +27,18 @@ export type Column<T> = {
 type TableProps<T> = {
   columns: Column<T>[];
   data: T[];
-  initialFilters: InitialTableFilters;
+  initialFilters: InitialTableFilters<T>;
   isLoading: boolean;
   sortField: keyof T;
   sortOrder: SortOrder;
   tableCaption: string;
-  values: InitialTableFilters;
+  values: InitialTableFilters<T>;
   className?: string;
   emptyHeaderCellText?: string;
   children: (data: T[]) => ReactNode;
+  onFilter: (event: ChangeInputType) => void;
   onReset: () => void;
   onSort: (field: keyof T) => void;
-  setValue: (event: ChangeInputType) => void;
 };
 
 const Table = <T,>({
@@ -55,7 +55,7 @@ const Table = <T,>({
   sortOrder,
   initialFilters,
   values,
-  setValue,
+  onFilter,
 }: TableProps<T>) => {
   const { language } = useLanguage();
   const { paddingBlockSmall, paddingBlockMedium, paddingBlockLarge } =
@@ -148,10 +148,10 @@ const Table = <T,>({
 
                           {!col.hideTableControls && (
                             <TableFilterPopup
-                              onFilterRows={setValue}
+                              onFilter={onFilter}
                               id={col.label}
                               name={col.name}
-                              value={values[col.key] as string}
+                              value={values[col.key]}
                               filterType={col.tableFilterType || 'text'}
                               values={values}
                               className="table-filter-popup"

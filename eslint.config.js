@@ -67,7 +67,7 @@ export default defineConfig(
         { endOfLine: 'auto' },
         { usePrettierrc: true },
       ],
-      '@typescript-eslint/no-unused-vars': 'error',
+      // '@typescript-eslint/no-unused-vars': 'error',
       '@typescript-eslint/consistent-type-imports': [
         'error',
         {

@@ -12,13 +12,13 @@ export const tableHeaders: Column<Product>[] = [
     key: 'categoryName',
     label: 'category',
     name: 'categoryName',
-    tableFilterType: 'text',
+    tableFilterType: 'radio',
   },
   {
     key: 'subCategoryName',
     label: 'subCategory',
     name: 'subCategoryName',
-    tableFilterType: 'text',
+    tableFilterType: 'radio',
   },
   {
     key: 'countInStock',
@@ -43,7 +43,7 @@ export const tableHeaders: Column<Product>[] = [
     key: 'productStatus',
     label: 'status',
     name: 'productStatus',
-    tableFilterType: 'text',
+    tableFilterType: 'radio',
   },
   { key: 'id', label: '', name: '' },
 ];

@@ -1,8 +1,8 @@
+import { Status } from '../../app/api/apiTypes/adminApiTypes';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import { usePaginationParams } from '../../components/pagination/hooks/usePaginationParams';
 import { usePaginationText } from '../../components/pagination/hooks/usePaginationText';
 import Pagination from '../../components/pagination/Pagination';
-import { PageCountOptions } from '../../components/pagination/PaginationSelect';
 import Table from '../../components/sortTable/Table';
 import { createInitialFilters } from '../../components/sortTable/tableFilters/tableFiltersUtils';
 import { useLanguage } from '../../features/language/useLanguage';
@@ -13,9 +13,11 @@ import {
   useGetAllProductsQuery,
   useGetHasScheduledDataQuery,
 } from '../../features/products/productApiSlice';
+import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { AdminPath } from '../../layout/nav/enums';
+import { Options } from '../../types/types';
 import { handleApiError } from '../../utils/handleApiError';
 import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
@@ -42,15 +44,34 @@ const ProductPage = () => {
 
   const initialFilters = createInitialFilters(tableHeaders);
 
-  const { values, setValue } = useSearchParamsState(initialFilters);
-  console.log(values);
+  const { filterParams, setFilterParams } =
+    useSearchParamsState(initialFilters);
+
+  const debouncedFilters = useDebouncedValue(filterParams);
 
   const {
     data: allProducts,
     isLoading,
     refetch,
   } = useGetAllProductsQuery(
-    { productsPerPage, page: page.toString(), sortField, sortOrder },
+    {
+      productsPerPage,
+      page: page.toString(),
+      sortField,
+      sortOrder,
+      maxStock: debouncedFilters.maxStock,
+      minStock: debouncedFilters.minStock,
+      productStatus: debouncedFilters.productStatus as Status,
+      minDiscount: debouncedFilters.minDiscount,
+      maxDiscount: debouncedFilters.maxDiscount,
+      minDiscountedPrice: debouncedFilters.minDiscountedPrice,
+      maxDiscountedPrice: debouncedFilters.maxDiscountedPrice,
+      minPrice: debouncedFilters.minPrice,
+      maxPrice: debouncedFilters.maxPrice,
+      productName: debouncedFilters.productName,
+      subCategoryName: debouncedFilters.subCategoryName,
+      categoryName: debouncedFilters.categoryName,
+    },
     {
       pollingInterval: shouldPollFullList ? 15000 : undefined,
       refetchOnMountOrArgChange: true,
@@ -74,7 +95,7 @@ const ProductPage = () => {
   const productCount = allProducts ? allProducts.productCount : 0;
   const isShowingAll = productsPerPage >= productCount && productCount > 0;
 
-  const handleSelectCount = (option: PageCountOptions) => {
+  const handleSelectCount = (option: Options) => {
     const newCount = Number(option.value);
     updatePagination(1, newCount);
   };
@@ -104,8 +125,8 @@ const ProductPage = () => {
       variant="x-large"
     >
       <Table
-        values={values}
-        setValue={setValue}
+        values={filterParams}
+        onFilter={setFilterParams}
         initialFilters={initialFilters}
         onReset={() => refetch()}
         isLoading={isLoading}

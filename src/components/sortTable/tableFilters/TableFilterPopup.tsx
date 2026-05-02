@@ -4,36 +4,42 @@ import { IconName } from '../../../types/enums';
 import type { InputChangeHandler, InputType } from '../../../types/types';
 import FieldSet from '../../fieldset/FieldSet';
 import Input from '../../formElements/Input';
+import RadioButtonList from '../../formElements/RadioButtonList';
 import Icon from '../../icons/Icon';
 import Popup from '../../popup/Popup';
 import VisuallyHidden from '../../VisuallyHidden';
 import './_table-filters.scss';
 import TableFilterInput from './TableFilterInput';
-import { getMinMaxKeys, InitialTableFilters } from './tableFiltersUtils';
+import {
+  getListByName,
+  getMinMaxKeys,
+  InitialTableFilters,
+  ListsMap,
+} from './tableFiltersUtils';
 
 export interface BaseTableFilterProps {
   filterType: InputType;
   id: string;
   name: string;
-  onFilterRows: InputChangeHandler;
+  onFilter: InputChangeHandler;
   value: string;
 }
 
-interface TableFilterPopupProps extends BaseTableFilterProps {
+interface TableFilterPopupProps<T> extends BaseTableFilterProps {
   id: string;
-  values: InitialTableFilters;
+  values: InitialTableFilters<T>;
   className?: string;
 }
 
-const TableFilterPopup = ({
+const TableFilterPopup = <T,>({
   id,
   value,
-  onFilterRows,
+  onFilter,
   filterType,
   name,
   values,
   className,
-}: TableFilterPopupProps) => {
+}: TableFilterPopupProps<T>) => {
   const { language } = useLanguage();
   const { currencyText } = useCurrency();
   const { minKey, maxKey } = getMinMaxKeys(name);
@@ -49,7 +55,7 @@ const TableFilterPopup = ({
           <TableFilterInput
             name={name}
             id={id}
-            onFilterRows={onFilterRows}
+            onFilter={onFilter}
             value={value}
             filterType={filterType}
             legendText={legendText}
@@ -67,8 +73,8 @@ const TableFilterPopup = ({
                 inputMode="numeric"
                 name={minKey}
                 labelText={`${labelTextShort} ${language.from}`}
-                value={values[minKey] as string}
-                onChange={onFilterRows}
+                value={values[minKey]}
+                onChange={onFilter}
                 autoFocus
                 inputSuffix={inputSuffix}
               />
@@ -78,8 +84,8 @@ const TableFilterPopup = ({
                 type="number"
                 inputMode="numeric"
                 labelText={`${labelTextShort} ${language.to}`}
-                value={values[maxKey] as string}
-                onChange={onFilterRows}
+                value={values[maxKey]}
+                onChange={onFilter}
                 inputSuffix={inputSuffix}
               />
             </FieldSet>
@@ -88,14 +94,11 @@ const TableFilterPopup = ({
 
       case 'radio':
         return (
-          <TableFilterInput
+          <RadioButtonList
+            radioButtonList={getListByName(name as keyof ListsMap)}
             name={name}
-            id={id}
-            onFilterRows={onFilterRows}
-            value={value}
-            filterType={filterType}
-            legendText={legendText}
-            labelText={labelText}
+            onChange={onFilter}
+            initialChecked={value}
           />
         );
 

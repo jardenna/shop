@@ -37,8 +37,8 @@ const UserPage = () => {
 
   const initialFilters = createInitialFilters(tableHeaders);
 
-  const { values, setValue } = useSearchParamsState(initialFilters);
-  console.log(values);
+  const { filterParams, setFilterParams } =
+    useSearchParamsState(initialFilters);
 
   const {
     data: allUsers,
@@ -109,8 +109,8 @@ const UserPage = () => {
       ariaLabelledby="users"
     >
       <Table
-        values={values}
-        setValue={setValue}
+        values={filterParams}
+        onFilter={setFilterParams}
         initialFilters={initialFilters}
         onReset={() => refetch()}
         data={allUsers || []}

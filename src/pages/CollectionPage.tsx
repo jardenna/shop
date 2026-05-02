@@ -6,7 +6,6 @@ import { usePaginationParams } from '../components/pagination/hooks/usePaginatio
 import { usePaginationText } from '../components/pagination/hooks/usePaginationText';
 import { useScrollOnPagination } from '../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../components/pagination/Pagination';
-import { type PageCountOptions } from '../components/pagination/PaginationSelect';
 import Picture from '../components/Picture';
 import SkeletonCardList from '../components/skeleton/SkeletonCardList';
 import { useLanguage } from '../features/language/useLanguage';
@@ -27,6 +26,7 @@ import { useSearchParamsState } from '../hooks/useSearchParamsState';
 import MetaTags from '../layout/MetaTags';
 import { LinkText } from '../layout/nav/enums';
 import { IconName } from '../types/enums';
+import { Options } from '../types/types';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { sortSizesDynamic } from '../utils/sizeUtils';
 import { ariaInfoTitle } from '../utils/utils';
@@ -63,9 +63,9 @@ const CollectionPage = () => {
   };
 
   const {
-    values,
-    toggleValue,
-    setValue,
+    filterParams,
+    toggleFilterParam,
+    setFilterParams,
     onRemoveFilterTag,
     onClearSingleFilter,
     onClearAllFilters,
@@ -78,11 +78,11 @@ const CollectionPage = () => {
   } = useGetProductsQuery({
     productsPerPage,
     page: page.toString(),
-    colors: values.colors,
-    brand: values.brand,
-    sizes: values.sizes,
-    minPrice: values.minPrice,
-    maxPrice: values.maxPrice,
+    colors: filterParams.colors,
+    brand: filterParams.brand,
+    sizes: filterParams.sizes,
+    minPrice: filterParams.minPrice,
+    maxPrice: filterParams.maxPrice,
     mainCategory: category,
     subCategoryId: categoryId || '',
   });
@@ -101,12 +101,12 @@ const CollectionPage = () => {
     language,
   });
 
-  const { announce } = useAnnounce([page, productsPerPage, values]);
+  const { announce } = useAnnounce([page, productsPerPage, filterParams]);
   const { scrollToRef, setShouldScroll } = useScrollOnPagination({
     isLoading,
   });
 
-  const handleSelectCount = (option: PageCountOptions) => {
+  const handleSelectCount = (option: Options) => {
     const newCount = Number(option.value);
     updatePagination(1, newCount);
     setShouldScroll(true);
@@ -197,9 +197,9 @@ const CollectionPage = () => {
                   language={language}
                   productCount={products.productCount}
                   onReset={() => refetch()}
-                  values={values}
-                  toggleValue={toggleValue}
-                  setValue={setValue}
+                  values={filterParams}
+                  toggleValue={toggleFilterParam}
+                  setValue={setFilterParams}
                   onRemoveFilterTag={onRemoveFilterTag}
                   onClearAllFilters={onClearAllFilters}
                   onClearSingleFilter={onClearSingleFilter}

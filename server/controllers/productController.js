@@ -440,9 +440,24 @@ const getAdminProducts = asyncHandler(async (req, res) => {
     sortConfig.createdAt = -1;
   }
 
-  const hasDiscountFilter =
-    req.query.minDiscountedPrice !== undefined ||
-    req.query.maxDiscountedPrice !== undefined;
+  // Validate BEFORE parsing
+  const hasMinDiscountedPrice =
+    req.query.minDiscountedPrice !== undefined &&
+    req.query.minDiscountedPrice !== '';
+
+  const hasMaxDiscountedPrice =
+    req.query.maxDiscountedPrice !== undefined &&
+    req.query.maxDiscountedPrice !== '';
+
+  const parsedMinDiscountedPrice = hasMinDiscountedPrice
+    ? Number(req.query.minDiscountedPrice)
+    : undefined;
+
+  const parsedMaxDiscountedPrice = hasMaxDiscountedPrice
+    ? Number(req.query.maxDiscountedPrice)
+    : undefined;
+
+  const hasDiscountFilter = hasMinDiscountedPrice || hasMaxDiscountedPrice;
 
   const basePipeline = [
     { $match: filter },
@@ -453,7 +468,12 @@ const getAdminProducts = asyncHandler(async (req, res) => {
           $subtract: [
             '$price',
             {
-              $multiply: ['$price', { $divide: ['$discount', 100] }],
+              $multiply: [
+                '$price',
+                {
+                  $divide: [{ $ifNull: ['$discount', 0] }, 100],
+                },
+              ],
             },
           ],
         },
@@ -465,11 +485,11 @@ const getAdminProducts = asyncHandler(async (req, res) => {
           {
             $match: {
               discountedPrice: {
-                ...(req.query.minDiscountedPrice !== undefined && {
-                  $gte: Number(req.query.minDiscountedPrice),
+                ...(hasMinDiscountedPrice && {
+                  $gte: parsedMinDiscountedPrice,
                 }),
-                ...(req.query.maxDiscountedPrice !== undefined && {
-                  $lte: Number(req.query.maxDiscountedPrice),
+                ...(hasMaxDiscountedPrice && {
+                  $lte: parsedMaxDiscountedPrice,
                 }),
               },
             },
@@ -478,8 +498,20 @@ const getAdminProducts = asyncHandler(async (req, res) => {
       : []),
   ];
 
-  // Build name filters (category + subcategory)
   const nameFilters = {
+    ...(req.query.subCategoryName && {
+      $or: req.query.subCategoryName.split(',').map((value) => {
+        const trimmedValue = value.trim();
+
+        return {
+          subCategoryName: {
+            $regex: trimmedValue,
+            $options: 'i',
+          },
+        };
+      }),
+    }),
+
     ...(req.query.categoryName && {
       categoryName: {
         $in: req.query.categoryName
@@ -487,15 +519,7 @@ const getAdminProducts = asyncHandler(async (req, res) => {
           .map((value) => new RegExp(`^${value.trim()}$`, 'i')),
       },
     }),
-    ...(req.query.subCategoryName && {
-      subCategoryName: {
-        $in: req.query.subCategoryName
-          .split(',')
-          .map((value) => new RegExp(`^${value.trim()}$`, 'i')),
-      },
-    }),
   };
-
   const pipeline = [
     ...basePipeline,
 
@@ -526,7 +550,6 @@ const getAdminProducts = asyncHandler(async (req, res) => {
       },
     },
 
-    // Apply filters AFTER fields exist
     ...(Object.keys(nameFilters).length ? [{ $match: nameFilters }] : []),
 
     { $sort: sortConfig },
@@ -592,7 +615,6 @@ const getAdminProducts = asyncHandler(async (req, res) => {
     totalCount,
   });
 });
-
 // @desc    Get Product By ID
 // @route   /api/products/:id
 // @method  Get
