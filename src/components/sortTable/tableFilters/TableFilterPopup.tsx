@@ -4,6 +4,7 @@ import { IconName } from '../../../types/enums';
 import type { InputChangeHandler, InputType } from '../../../types/types';
 import FieldSet from '../../fieldset/FieldSet';
 import Input from '../../formElements/Input';
+import RadioButtonList from '../../formElements/RadioButtonList';
 import Icon from '../../icons/Icon';
 import Popup from '../../popup/Popup';
 import VisuallyHidden from '../../VisuallyHidden';
@@ -41,6 +42,25 @@ const TableFilterPopup = <T,>({
   const labelText = `${language.filter} ${language[id]}`;
   const labelTextShort = language[id];
   const inputSuffix = id !== 'countInStock' ? currencyText : language.pcs;
+
+  // categoryName 'Men' | 'Women' | 'Kids'
+  // categoryStatus: 'Published', 'Inactive', 'Scheduled'
+  // subCategoryNames = 'Shoes' | 'Accessories' | 'Clothing';
+
+  const categoryNameList = [
+    {
+      label: 'Men',
+      value: 'Men',
+    },
+    {
+      label: 'Kids',
+      value: 'Kids',
+    },
+    {
+      label: 'Women',
+      value: 'Women',
+    },
+  ];
 
   const getPopupContent = () => {
     switch (filterType) {
@@ -88,14 +108,12 @@ const TableFilterPopup = <T,>({
 
       case 'radio':
         return (
-          <TableFilterInput
+          <RadioButtonList
+            radioButtonList={categoryNameList}
             name={name}
-            id={id}
-            onFilter={onFilter}
-            value={value}
-            filterType={filterType}
-            legendText={legendText}
-            labelText={labelText}
+            variant="secondary"
+            onChange={onFilter}
+            initialChecked={value}
           />
         );
 
