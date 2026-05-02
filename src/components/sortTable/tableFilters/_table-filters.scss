@@ -4,6 +4,10 @@
   &.popup-container {
     background-color: $color-light-gray-20;
     padding: 20px 16px;
+
+    &:has(.control-list) {
+      padding: 0;
+    }
   }
 
   .fieldset {
