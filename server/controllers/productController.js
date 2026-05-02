@@ -499,6 +499,19 @@ const getAdminProducts = asyncHandler(async (req, res) => {
   ];
 
   const nameFilters = {
+    ...(req.query.subCategoryName && {
+      $or: req.query.subCategoryName.split(',').map((value) => {
+        const trimmedValue = value.trim();
+
+        return {
+          subCategoryName: {
+            $regex: trimmedValue,
+            $options: 'i',
+          },
+        };
+      }),
+    }),
+
     ...(req.query.categoryName && {
       categoryName: {
         $in: req.query.categoryName
@@ -506,15 +519,7 @@ const getAdminProducts = asyncHandler(async (req, res) => {
           .map((value) => new RegExp(`^${value.trim()}$`, 'i')),
       },
     }),
-    ...(req.query.subCategoryName && {
-      subCategoryName: {
-        $in: req.query.subCategoryName
-          .split(',')
-          .map((value) => new RegExp(`^${value.trim()}$`, 'i')),
-      },
-    }),
   };
-
   const pipeline = [
     ...basePipeline,
 
