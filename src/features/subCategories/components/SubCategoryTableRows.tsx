@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import type { Status } from '../../../app/api/apiTypes/adminApiTypes';
 import MoreLink from '../../../components/MoreLink';
 import { AdminPath } from '../../../layout/nav/enums';
@@ -36,4 +35,4 @@ const SubCategoryTableRows = ({
   </tr>
 );
 
-export default memo(SubCategoryTableRows);
+export default SubCategoryTableRows;
