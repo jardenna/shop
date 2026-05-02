@@ -86,10 +86,12 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
   const sortField = req.query.sortField;
   const sortOrder = req.query.sortOrder === 'desc' ? -1 : 1;
 
-  const allSubCategories = await SubCategory.find({}).lean();
+  const scheduledItems = await SubCategory.find({
+    categoryStatus: 'Scheduled',
+  }).lean();
 
   await updateScheduledItems({
-    items: allSubCategories,
+    items: scheduledItems,
     model: SubCategory,
     statusKey: 'categoryStatus',
   });
@@ -106,7 +108,6 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
     baseMatch.createdAt = req.mongoQuery.createdAt;
   }
 
-  // Apply filters AFTER lookup
   if (req.mongoQuery?.categoryName) {
     postLookupMatch.categoryName = req.mongoQuery.categoryName;
   }
