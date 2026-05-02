@@ -1,5 +1,6 @@
 import { useSearchParams } from 'react-router';
 import { type ChangeInputType } from '../types/types';
+import { pageParamKey, productsPerPageParamKey } from '../utils/utils';
 
 type SearchParamState = Record<string, string | string[]>;
 
@@ -9,6 +10,23 @@ export const useSearchParamsState = <T extends SearchParamState>(
   defaults: T,
 ) => {
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const page = Number(searchParams.get(pageParamKey)) || 1;
+  const productsPerPage =
+    Number(searchParams.get(productsPerPageParamKey)) || 8;
+
+  const setPage = (pageNum: number) => {
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set(pageParamKey, pageNum.toString());
+    setSearchParams(newParams);
+  };
+
+  const updatePagination = (pageNum: number, count: number) => {
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set(pageParamKey, pageNum.toString());
+    newParams.set(productsPerPageParamKey, count.toString());
+    setSearchParams(newParams);
+  };
 
   const getParamValue = (key: string, defaultValue: string | string[]) => {
     if (isArray(defaultValue)) {
@@ -30,10 +48,13 @@ export const useSearchParamsState = <T extends SearchParamState>(
     const { name, value } = event.target;
 
     const updatedSearchParams = new URLSearchParams(searchParams.toString());
+
+    // Reset page inside SAME update
+    updatedSearchParams.set(pageParamKey, '1');
+
     updatedSearchParams.delete(name);
 
     const values = isArray(value) ? value : [value];
-
     const validValues = values.filter((val) => val !== '');
 
     if (validValues.length === 0) {
@@ -51,7 +72,12 @@ export const useSearchParamsState = <T extends SearchParamState>(
   // Set values for controls input
   const toggleValue = (event: ChangeInputType) => {
     const { name, value } = event.target;
+
     const updatedSearchParams = new URLSearchParams(searchParams.toString());
+
+    // Reset page here as well
+    updatedSearchParams.set(pageParamKey, '1');
+
     const current = values[name] as string[];
 
     updatedSearchParams.delete(name);
@@ -111,5 +137,9 @@ export const useSearchParamsState = <T extends SearchParamState>(
     onRemoveFilterTag: handleRemoveFilterTag,
     onClearAllFilters: handleClearAllFilters,
     onClearSingleFilter: handleClearSingleFilter,
+    page,
+    productsPerPage,
+    setPage,
+    updatePagination,
   };
 };

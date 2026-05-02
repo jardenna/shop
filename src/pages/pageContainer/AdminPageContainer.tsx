@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { ReactNode, RefObject } from 'react';
 import PageHeader from '../../components/pageHeader/PageHeader';
 import MetaTags from '../../layout/MetaTags';
 import { ariaInfoTitle } from '../../utils/utils';
@@ -9,6 +9,7 @@ type AdminPageContainerProps = {
   heading: string;
   linkText?: string;
   linkTo?: string;
+  scrollToRef?: RefObject<HTMLHeadingElement | null>;
   variant?: 'small' | 'medium' | 'large' | 'x-large';
 };
 
@@ -18,6 +19,7 @@ const AdminPageContainer = ({
   linkText,
   linkTo,
   variant = 'large',
+  scrollToRef,
   ariaLabelledby,
 }: AdminPageContainerProps) => {
   const ariaTitle = ariaInfoTitle(ariaLabelledby);
@@ -34,7 +36,9 @@ const AdminPageContainer = ({
         linkTo={linkTo}
         ariaLabelledby={ariaTitle}
       />
-      <div className="page-card">{children}</div>
+      <div className="page-card" ref={scrollToRef}>
+        {children}
+      </div>
     </section>
   );
 };
