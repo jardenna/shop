@@ -6,13 +6,13 @@ export const tableHeaders: Column<SubCategoryResponse>[] = [
     key: 'categoryName',
     label: 'categoryName',
     name: 'categoryName',
-    tableFilterType: 'text',
+    tableFilterType: 'radio',
   },
   {
     key: 'subCategoryName',
     label: 'name',
     name: 'subCategoryName',
-    tableFilterType: 'text',
+    tableFilterType: 'radio',
   },
   {
     key: 'categoryStatus',
