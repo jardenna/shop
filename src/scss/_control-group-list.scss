@@ -2,7 +2,8 @@
 
 .control-list {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  gap: 8px;
   align-items: center;
 
   .control-label {
@@ -12,35 +13,12 @@
     cursor: pointer;
   }
 
-  &.control-list {
-    flex-wrap: nowrap;
-    gap: 8px;
-  }
-
   .control-item {
     height: $input-height;
     background-color: $color-input-background;
     border-radius: 4px;
     width: 100%;
 
-    .control-label {
-      height: 100%;
-    }
-  }
-
-  &.color-list {
-    gap: 12px;
-
-    .control-item {
-      border: 1px solid transparent;
-
-      .control-label {
-        background-color: $color-light-gray-30;
-      }
-    }
-  }
-
-  .control-item {
     &:has(input:checked) {
       background-color: $color-background-secondary;
       color: $color-white;
@@ -55,6 +33,22 @@
         pointer-events: none;
 
         @extend %disabled-item;
+      }
+    }
+
+    .control-label {
+      height: 100%;
+    }
+  }
+
+  &.color-list {
+    gap: 12px;
+
+    .control-item {
+      border: 1px solid transparent;
+
+      .control-label {
+        background-color: $color-light-gray-30;
       }
     }
   }

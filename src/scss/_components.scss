@@ -54,7 +54,14 @@
 .size-list {
   border-inline-start: 1px solid $color-border;
 
-  .control-item {
-    @extend %stacked-item-border;
+  &.control-list {
+    gap: 0;
+
+    .control-item {
+      border-radius: 0;
+      width: auto;
+
+      @extend %stacked-item-border;
+    }
   }
 }
