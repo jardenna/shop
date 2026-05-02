@@ -100,14 +100,14 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
   const postLookupMatch = {};
 
   // Apply filters BEFORE lookup
-  if (req.mongoQuery?.categoryStatus) {
-    baseMatch.categoryStatus = req.mongoQuery.categoryStatus;
+  if (req.filter?.categoryStatus) {
+    baseMatch.categoryStatus = req.filter.categoryStatus;
   }
 
-  if (req.mongoQuery?.subCategoryName) {
-    const values = Array.isArray(req.mongoQuery.subCategoryName)
-      ? req.mongoQuery.subCategoryName
-      : req.mongoQuery.subCategoryName.split(',');
+  if (req.filter?.subCategoryName) {
+    const values = Array.isArray(req.filter.subCategoryName)
+      ? req.filter.subCategoryName
+      : req.filter.subCategoryName.split(',');
 
     baseMatch.$or = values.map((value) => ({
       subCategoryName: {
@@ -117,12 +117,12 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
     }));
   }
 
-  if (req.mongoQuery?.createdAt) {
-    baseMatch.createdAt = req.mongoQuery.createdAt;
+  if (req.filter?.createdAt) {
+    baseMatch.createdAt = req.filter.createdAt;
   }
 
-  if (req.mongoQuery?.categoryName) {
-    postLookupMatch.categoryName = req.mongoQuery.categoryName;
+  if (req.filter?.categoryName) {
+    postLookupMatch.categoryName = req.filter.categoryName;
   }
 
   const subCategories = await SubCategory.aggregate([

@@ -6,20 +6,20 @@ export function filterCategoriesMiddleware(req, res, next) {
     createdAt: createdAtValue,
   } = req.query;
 
-  const mongoQuery = {};
+  const filter = {};
 
   // Filter by status (exact match)
   if (statusValue) {
-    mongoQuery.categoryStatus = statusValue;
+    filter.categoryStatus = statusValue;
   }
 
   // Filter by category name
   if (categoryNameValue) {
-    mongoQuery.categoryName = categoryNameValue;
+    filter.categoryName = categoryNameValue;
   }
 
   if (subCategoryNameValue) {
-    mongoQuery.subCategoryName = subCategoryNameValue;
+    filter.subCategoryName = subCategoryNameValue;
   }
 
   // Filter by createdAt (expects YYYY-MM-DD or ISO string)
@@ -31,13 +31,13 @@ export function filterCategoriesMiddleware(req, res, next) {
     startDate.setHours(0, 0, 0, 0);
     endDate.setHours(23, 59, 59, 999);
 
-    mongoQuery.createdAt = {
+    filter.createdAt = {
       $gte: startDate,
       $lte: endDate,
     };
   }
 
-  req.mongoQuery = mongoQuery;
+  req.filter = filter;
 
   next();
 }
