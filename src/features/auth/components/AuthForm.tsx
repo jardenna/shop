@@ -130,7 +130,6 @@ const AuthForm = ({
             radioButtonList={roleList}
             name="role"
             initialChecked={values.role}
-            variant="secondary"
             onChange={onChange}
             autoFocus
           />

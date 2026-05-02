@@ -131,7 +131,6 @@ const AccountFormModal = ({
           name="preferredFashion"
           initialChecked={values.preferredFashion}
           onChange={onChange}
-          variant="secondary"
         />
       </FieldSet>
     </ModalContainer>

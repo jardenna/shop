@@ -90,7 +90,6 @@ const ReviewsForm = ({
               onChange={handleChange}
               className="reviews"
               iconName={IconName.Star}
-              variant="secondary"
             />
           </FieldSet>
 

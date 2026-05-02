@@ -10,7 +10,6 @@ type RoleRadioBtnProps = {
 
 const RoleRadioBtn = ({ roleValue, onChange }: RoleRadioBtnProps) => (
   <RadioButtonList
-    variant="secondary"
     radioButtonList={roleList}
     name="role"
     initialChecked={roleValue}

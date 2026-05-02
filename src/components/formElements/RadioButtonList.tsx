@@ -7,7 +7,6 @@ import ControlInput from './ControlInput';
 type RadioButtonListProps = BaseControlProps & {
   initialChecked: string;
   radioButtonList: OptionType[];
-  variant?: 'primary' | 'secondary';
 };
 
 const RadioButtonList = ({
@@ -18,12 +17,11 @@ const RadioButtonList = ({
   autoFocus,
   iconName,
   className = '',
-  variant = 'primary',
 }: RadioButtonListProps) => {
   const { language } = useLanguage();
 
   return (
-    <ul className={`control-list ${className} ${variant}`}>
+    <ul className={`control-list ${className}`}>
       {radioButtonList.map((radio) => (
         <li key={radio.value} className="control-item">
           <ControlInput

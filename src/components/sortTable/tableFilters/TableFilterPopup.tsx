@@ -111,7 +111,6 @@ const TableFilterPopup = <T,>({
           <RadioButtonList
             radioButtonList={categoryNameList}
             name={name}
-            variant="secondary"
             onChange={onFilter}
             initialChecked={value}
           />
