@@ -42,25 +42,35 @@ const TableFilterPopup = <T,>({
   const labelText = `${language.filter} ${language[id]}`;
   const labelTextShort = language[id];
   const inputSuffix = id !== 'countInStock' ? currencyText : language.pcs;
+  interface OptionItem {
+    label: string;
+    value: string;
+  }
 
-  // categoryName 'Men' | 'Women' | 'Kids'
-  // categoryStatus: 'Published', 'Inactive', 'Scheduled'
-  // subCategoryNames = 'Shoes' | 'Accessories' | 'Clothing';
+  type CategoryName = 'Men' | 'Women' | 'Kids';
+  type ProductStatus = 'Published' | 'Inactive' | 'Scheduled';
+  type SubCategoryName = 'Shoes' | 'Accessories' | 'Clothing';
 
-  const categoryNameList = [
-    {
-      label: 'Men',
-      value: 'Men',
-    },
-    {
-      label: 'Kids',
-      value: 'Kids',
-    },
-    {
-      label: 'Women',
-      value: 'Women',
-    },
-  ];
+  interface ListsMap {
+    categoryName: CategoryName[];
+    productStatus: ProductStatus[];
+    subCategoryName: SubCategoryName[];
+  }
+
+  const listsMap: ListsMap = {
+    categoryName: ['Men', 'Women', 'Kids'],
+    productStatus: ['Published', 'Inactive', 'Scheduled'],
+    subCategoryName: ['Shoes', 'Accessories', 'Clothing'],
+  };
+
+  const createOptions = (items: string[]): OptionItem[] =>
+    items.map((item) => ({
+      label: item,
+      value: item,
+    }));
+
+  const getListByName = (name: keyof ListsMap): OptionItem[] =>
+    createOptions(listsMap[name]);
 
   const getPopupContent = () => {
     switch (filterType) {
@@ -109,7 +119,7 @@ const TableFilterPopup = <T,>({
       case 'radio':
         return (
           <RadioButtonList
-            radioButtonList={categoryNameList}
+            radioButtonList={getListByName(name as keyof ListsMap)}
             name={name}
             onChange={onFilter}
             initialChecked={value}
