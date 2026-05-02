@@ -18,7 +18,7 @@ const RadioButtonList = ({
   autoFocus,
   iconName,
   className = '',
-  variant = 'secondary',
+  variant = 'primary',
 }: RadioButtonListProps) => {
   const { language } = useLanguage();
 
