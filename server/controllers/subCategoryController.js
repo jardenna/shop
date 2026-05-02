@@ -104,6 +104,10 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
     baseMatch.categoryStatus = req.mongoQuery.categoryStatus;
   }
 
+  if (req.mongoQuery?.subCategoryName) {
+    baseMatch.subCategoryName = req.mongoQuery.subCategoryName;
+  }
+
   if (req.mongoQuery?.createdAt) {
     baseMatch.createdAt = req.mongoQuery.createdAt;
   }

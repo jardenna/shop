@@ -2,6 +2,7 @@ export function filterCategoriesMiddleware(req, res, next) {
   const {
     categoryStatus: statusValue,
     categoryName: categoryNameValue,
+    subCategoryName: subCategoryNameValue,
     createdAt: createdAtValue,
   } = req.query;
 
@@ -12,17 +13,13 @@ export function filterCategoriesMiddleware(req, res, next) {
     mongoQuery.categoryStatus = statusValue;
   }
 
-  // Filter by category name (case-insensitive, partial match)
+  // Filter by category name
   if (categoryNameValue) {
-    const escapedValue = categoryNameValue.replace(
-      /[.*+?^${}()|[\]\\]/g,
-      '\\$&',
-    );
+    mongoQuery.categoryName = categoryNameValue;
+  }
 
-    mongoQuery.categoryName = {
-      $regex: escapedValue,
-      $options: 'i',
-    };
+  if (subCategoryNameValue) {
+    mongoQuery.subCategoryName = subCategoryNameValue;
   }
 
   // Filter by createdAt (expects YYYY-MM-DD or ISO string)
