@@ -47,6 +47,14 @@
   }
 
   .reviews {
+    &.secondary {
+      .control-item {
+        height: auto;
+        background-color: inherit;
+        width: auto;
+      }
+    }
+
     .radio-btn-label {
       background-color: transparent;
     }
