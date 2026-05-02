@@ -51,6 +51,7 @@ const TableFilterPopup = <T,>({
   const getPopupContent = () => {
     switch (filterType) {
       case 'text':
+      case 'date':
         return (
           <TableFilterInput
             name={name}

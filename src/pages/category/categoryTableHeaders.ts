@@ -18,7 +18,7 @@ export const tableHeaders: Column<Category>[] = [
     key: 'createdAt',
     label: 'createdAt',
     name: 'createdAt',
-    tableFilterType: 'text',
+    tableFilterType: 'date',
   },
   { key: 'id', label: '', name: '' },
 ];
