@@ -83,9 +83,10 @@ const createSubCategory = [
 // @method  Get
 // @access  Public
 const getAllSubCategories = asyncHandler(async (req, res) => {
-  const allSubCategories = await SubCategory.find({}).lean();
   const sortField = req.query.sortField;
   const sortOrder = req.query.sortOrder === 'desc' ? -1 : 1;
+
+  const allSubCategories = await SubCategory.find({}).lean();
 
   await updateScheduledItems({
     items: allSubCategories,
@@ -93,21 +94,26 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
     statusKey: 'categoryStatus',
   });
 
-  // Fetch subcategories with product count and mainCategory details
+  const baseMatch = {};
+  const postLookupMatch = {};
+
+  // Apply filters BEFORE lookup
+  if (req.mongoQuery?.categoryStatus) {
+    baseMatch.categoryStatus = req.mongoQuery.categoryStatus;
+  }
+
+  if (req.mongoQuery?.createdAt) {
+    baseMatch.createdAt = req.mongoQuery.createdAt;
+  }
+
+  // Apply filters AFTER lookup
+  if (req.mongoQuery?.categoryName) {
+    postLookupMatch.categoryName = req.mongoQuery.categoryName;
+  }
+
   const subCategories = await SubCategory.aggregate([
     {
-      $lookup: {
-        from: 'products', // Collection name for products
-        localField: '_id',
-        foreignField: 'subCategory',
-        as: 'products',
-      },
-    },
-    {
-      $addFields: {
-        productCount: { $size: '$products' },
-        categoryName: '$mainCategory.categoryName',
-      },
+      $match: baseMatch,
     },
     {
       $lookup: {
@@ -128,6 +134,22 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
         'mainCategory.id': '$mainCategory._id',
         categoryName: '$mainCategory.categoryName',
       },
+    },
+    {
+      $lookup: {
+        from: 'products',
+        localField: '_id',
+        foreignField: 'subCategory',
+        as: 'products',
+      },
+    },
+    {
+      $addFields: {
+        productCount: { $size: '$products' },
+      },
+    },
+    {
+      $match: postLookupMatch,
     },
     {
       $project: {
