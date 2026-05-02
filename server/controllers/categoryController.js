@@ -74,10 +74,6 @@ const getAllCategories = asyncHandler(async (req, res) => {
 
   const formattedCategories = formatMongoData(sortedColums);
 
-  if (!updatedCategories?.length) {
-    return res.status(404).json({ message: t('noData', req.lang) });
-  }
-
   // Include parent category IDs in the response
   const categoriesWithParent = formattedCategories.map((category) => ({
     ...category,
@@ -128,12 +124,6 @@ const getPublishedCategories = asyncHandler(async (req, res) => {
     { categoryStatus: PUBLISHED },
     'categoryName',
   ).lean();
-
-  if (!publishedCategories?.length) {
-    return res
-      .status(404)
-      .json({ success: false, message: t('noData', req.lang) });
-  }
 
   // Return only an array of category names
   const categories = publishedCategories.map((cat) => cat.categoryName);

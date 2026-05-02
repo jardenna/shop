@@ -147,10 +147,6 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
 
   const formattedCategories = formatMongoData(sortedColums);
 
-  if (!subCategories?.length) {
-    return res.status(404).json({ message: t('noData', req.lang) });
-  }
-
   res.status(200).json({
     success: true,
     subCategories: formattedCategories,
