@@ -72,7 +72,7 @@ const SubCategoryPage = () => {
               scheduledDate,
               subCategoryName,
               categoryStatus,
-              mainCategoryName,
+              categoryName,
               translationKey,
             }) => (
               <SubCategoryTableRows
@@ -81,7 +81,7 @@ const SubCategoryPage = () => {
                 status={categoryStatus}
                 scheduledDate={scheduledDate || null}
                 subCategoryName={language[translationKey] || subCategoryName}
-                mainCategoryName={translateKey(mainCategoryName, language)}
+                categoryName={translateKey(categoryName, language)}
                 linkText={language.viewCategory}
               />
             ),

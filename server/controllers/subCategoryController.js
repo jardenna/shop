@@ -106,7 +106,7 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
     {
       $addFields: {
         productCount: { $size: '$products' },
-        mainCategoryName: '$mainCategory.categoryName',
+        categoryName: '$mainCategory.categoryName',
       },
     },
     {
@@ -126,7 +126,7 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
     {
       $addFields: {
         'mainCategory.id': '$mainCategory._id',
-        mainCategoryName: '$mainCategory.categoryName',
+        categoryName: '$mainCategory.categoryName',
       },
     },
     {

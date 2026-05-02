@@ -123,9 +123,9 @@ export type BaseSubCategory = DefaultResponseType & {
 };
 
 export type SubCategoryResponse = BaseSubCategory & {
+  categoryName: string;
   id: string;
   mainCategory: MainCategory;
-  mainCategoryName: string;
   productCount: number;
   scheduledDate?: Date;
 };

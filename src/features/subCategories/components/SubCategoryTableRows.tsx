@@ -5,9 +5,9 @@ import { AdminPath } from '../../../layout/nav/enums';
 import AdminBadge from '../../products/components/AdminBadge';
 
 type SubCategoryTableRowsProps = {
+  categoryName: string;
   id: string;
   linkText: string;
-  mainCategoryName: string;
   scheduledDate: Date | null;
   status: Status;
   subCategoryName: string;
@@ -18,11 +18,11 @@ const SubCategoryTableRows = ({
   scheduledDate,
   subCategoryName,
   status,
-  mainCategoryName,
+  categoryName,
   linkText,
 }: SubCategoryTableRowsProps) => (
   <tr>
-    <td>{mainCategoryName}</td>
+    <td>{categoryName}</td>
     <td>{subCategoryName}</td>
     <td>
       <AdminBadge status={status} scheduledDate={scheduledDate || null} />

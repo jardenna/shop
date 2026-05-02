@@ -3,9 +3,9 @@ import { Column } from '../../components/sortTable/Table';
 
 export const tableHeaders: Column<SubCategoryResponse>[] = [
   {
-    key: 'mainCategoryName',
-    label: 'mainCategoryName',
-    name: 'mainCategoryName',
+    key: 'categoryName',
+    label: 'categoryName',
+    name: 'categoryName',
     tableFilterType: 'text',
   },
   {
