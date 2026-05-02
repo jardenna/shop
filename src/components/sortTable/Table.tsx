@@ -27,12 +27,12 @@ export type Column<T> = {
 type TableProps<T> = {
   columns: Column<T>[];
   data: T[];
-  initialFilters: InitialTableFilters;
+  initialFilters: InitialTableFilters<T>;
   isLoading: boolean;
   sortField: keyof T;
   sortOrder: SortOrder;
   tableCaption: string;
-  values: InitialTableFilters;
+  values: InitialTableFilters<T>;
   className?: string;
   emptyHeaderCellText?: string;
   children: (data: T[]) => ReactNode;
