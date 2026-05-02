@@ -21,14 +21,21 @@ const listsMap: ListsMap = {
   subCategoryName: subCategoryValues,
 };
 
+type ListName = keyof ListsMap | 'categoryStatus';
+
 const createOptions = (items: readonly string[]): Options[] =>
   items.map((item) => ({
     label: item,
     value: item,
   }));
 
-export const getListByName = (name: keyof ListsMap): Options[] =>
-  createOptions(listsMap[name]);
+export const getListByName = (name: ListName): Options[] => {
+  if (name === 'categoryStatus') {
+    return createOptions(statusValues);
+  }
+
+  return createOptions(listsMap[name]);
+};
 
 export type InitialTableFilters<T> = {
   [Key in Extract<keyof T, string>]: string;
