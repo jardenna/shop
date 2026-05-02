@@ -48,6 +48,15 @@ const TableFilterPopup = <T,>({
   const labelTextShort = language[id];
   const inputSuffix = id !== 'countInStock' ? currencyText : language.pcs;
 
+  // Centralized check for active filter state
+  const isFilterActive = (() => {
+    if (filterType === 'number') {
+      return Boolean(values[minKey] || values[maxKey]);
+    }
+
+    return Boolean(value);
+  })();
+
   const getPopupContent = () => {
     switch (filterType) {
       case 'text':
@@ -117,7 +126,7 @@ const TableFilterPopup = <T,>({
     >
       <Icon iconName={IconName.Filter} />
 
-      {value && (
+      {isFilterActive && (
         <>
           <VisuallyHidden>{language.filtersApplied}</VisuallyHidden>
           <span className="dot" aria-hidden />
