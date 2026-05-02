@@ -105,7 +105,16 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
   }
 
   if (req.mongoQuery?.subCategoryName) {
-    baseMatch.subCategoryName = req.mongoQuery.subCategoryName;
+    const values = Array.isArray(req.mongoQuery.subCategoryName)
+      ? req.mongoQuery.subCategoryName
+      : req.mongoQuery.subCategoryName.split(',');
+
+    baseMatch.$or = values.map((value) => ({
+      subCategoryName: {
+        $regex: value.trim(),
+        $options: 'i',
+      },
+    }));
   }
 
   if (req.mongoQuery?.createdAt) {
