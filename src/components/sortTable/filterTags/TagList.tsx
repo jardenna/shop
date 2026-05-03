@@ -10,7 +10,7 @@ type TagListProps = {
 
 const TagList = ({ tagList, language, onClick }: TagListProps) => (
   <ul className="tag-list" aria-live="polite">
-    {tagList.map(({ value, key }) => (
+    {tagList.map(({ value, key, label }) => (
       <TagListItem
         key={value}
         onClick={() => {
@@ -19,6 +19,7 @@ const TagList = ({ tagList, language, onClick }: TagListProps) => (
         value={value}
         language={language}
       >
+        <span>{translateKey(label, language)}:</span>
         <span>{translateKey(value, language)}</span>
       </TagListItem>
     ))}
