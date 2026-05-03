@@ -15,18 +15,18 @@ const getAllUsers = asyncHandler(async (req, res) => {
   const sortField = req.query.sortField;
   const sortOrder = req.query.sortOrder === 'desc' ? -1 : 1;
 
-  const users = await User.find({})
+  const users = await User.find(req.filter || {})
     .select('-password') // Exclude password field
     .lean();
 
-  const sortedColums = sortColumns({
+  const sortedUsers = sortColumns({
     collection: users,
     sortField,
     sortOrder,
     language: req.lang,
   });
 
-  const formattedUsers = formatMongoData(sortedColums);
+  const formattedUsers = formatMongoData(sortedUsers);
 
   res.status(200).json(formattedUsers);
 });

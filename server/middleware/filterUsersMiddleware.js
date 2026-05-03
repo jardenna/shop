@@ -1,23 +1,34 @@
 function filterUsersMiddleware(req, res, next) {
   const {
     username: usernameValue,
-    email: emailNameValue,
+    email: emailValue,
     role: roleValue,
   } = req.query;
 
   const filter = {};
 
-  // Filter by username
+  // Filter by username (case-insensitive, partial match, supports multiple values)
   if (usernameValue) {
-    filter.username = usernameValue;
+    const values = Array.isArray(usernameValue)
+      ? usernameValue
+      : usernameValue.split(',');
+
+    filter.$or = values.map((value) => ({
+      username: {
+        $regex: value.trim(),
+        $options: 'i',
+      },
+    }));
   }
 
-  // Filter by email
-  if (emailNameValue) {
-    filter.email = emailNameValue;
+  // Filter by email (case-insensitive, partial match)
+  if (emailValue) {
+    filter.email = {
+      $regex: emailValue.trim(),
+      $options: 'i',
+    };
   }
 
-  // Filter by username
   if (roleValue) {
     filter.role = roleValue;
   }
