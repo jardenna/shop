@@ -37,7 +37,7 @@ const UserPage = () => {
 
   const initialFilters = createInitialFilters(tableHeaders);
 
-  const { filterParams, setFilterParams } =
+  const { filterParams, setFilterParams, onRemoveFilterTag } =
     useSearchParamsState(initialFilters);
 
   const {
@@ -110,6 +110,7 @@ const UserPage = () => {
     >
       <Table
         values={filterParams}
+        onRemoveFilterTag={onRemoveFilterTag}
         onFilter={setFilterParams}
         initialFilters={initialFilters}
         onReset={() => refetch()}

@@ -39,6 +39,7 @@ type TableProps<T> = {
   emptyHeaderCellText?: string;
   children: (data: T[]) => ReactNode;
   onFilter: (event: ChangeInputType) => void;
+  onRemoveFilterTag: (key: string, value: string) => void;
   onReset: () => void;
   onSort: (field: keyof T) => void;
 };
@@ -58,6 +59,7 @@ const Table = <T,>({
   initialFilters,
   values,
   onFilter,
+  onRemoveFilterTag,
 }: TableProps<T>) => {
   const { language } = useLanguage();
   const { paddingBlockSmall, paddingBlockMedium, paddingBlockLarge } =
@@ -104,7 +106,11 @@ const Table = <T,>({
         <Button onClick={onClearAllFilters} variant={BtnVariant.Default}>
           {language.clearFilters}
         </Button>
-        <TagList tagList={tagList} language={language} />
+        <TagList
+          tagList={tagList}
+          language={language}
+          onClick={onRemoveFilterTag}
+        />
         <DisplayControls
           onSetDisplay={setPadding}
           displayControlList={tableGridIconList}

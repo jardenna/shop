@@ -30,7 +30,7 @@ const SubCategoryPage = () => {
 
   const initialFilters = createInitialFilters(tableHeaders);
 
-  const { filterParams, setFilterParams } =
+  const { filterParams, setFilterParams, onRemoveFilterTag } =
     useSearchParamsState(initialFilters);
 
   const debouncedFilters = useDebouncedValue(filterParams);
@@ -63,6 +63,7 @@ const SubCategoryPage = () => {
     >
       <Table
         values={filterParams}
+        onRemoveFilterTag={onRemoveFilterTag}
         onFilter={setFilterParams}
         initialFilters={initialFilters}
         onReset={() => refetch()}

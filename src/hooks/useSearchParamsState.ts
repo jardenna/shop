@@ -100,6 +100,18 @@ export const useSearchParamsState = <T extends SearchParamState>(
   // Remove tags
   const handleRemoveFilterTag = (key: string, value: string) => {
     const updatedSearchParams = new URLSearchParams(searchParams.toString());
+
+    // Handle range keys like "minPrice-maxPrice"
+    if (key.includes('-')) {
+      const [minKey, maxKey] = key.split('-');
+
+      updatedSearchParams.delete(minKey);
+      updatedSearchParams.delete(maxKey);
+
+      setSearchParams(updatedSearchParams);
+      return;
+    }
+
     const currentValues = updatedSearchParams
       .getAll(key)
       .filter((item) => item !== value);

@@ -48,6 +48,7 @@ const ProductPage = () => {
     productsPerPage,
     setPage,
     updatePagination,
+    onRemoveFilterTag,
   } = useSearchParamsState(initialFilters);
 
   const debouncedFilters = useDebouncedValue(filterParams);
@@ -147,6 +148,7 @@ const ProductPage = () => {
         onSort={onSort}
         sortField={sortField}
         sortOrder={sortOrder}
+        onRemoveFilterTag={onRemoveFilterTag}
       >
         {(data) =>
           data.map(
