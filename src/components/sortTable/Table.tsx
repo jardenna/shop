@@ -103,14 +103,16 @@ const Table = <T,>({
   return (
     <>
       <div className="table-controls">
-        <Button onClick={onClearAllFilters} variant={BtnVariant.Default}>
-          {language.clearFilters}
-        </Button>
-        <TagList
-          tagList={tagList}
-          language={language}
-          onClick={onRemoveFilterTag}
-        />
+        <div className="table-filter-container">
+          <Button onClick={onClearAllFilters} variant={BtnVariant.Default}>
+            {language.clearFilters}
+          </Button>
+          <TagList
+            tagList={tagList}
+            language={language}
+            onClick={onRemoveFilterTag}
+          />
+        </div>
         <DisplayControls
           onSetDisplay={setPadding}
           displayControlList={tableGridIconList}

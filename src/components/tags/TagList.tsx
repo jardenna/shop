@@ -16,19 +16,26 @@ interface TagListProps {
 
 export const TagList = ({ tagList, language, onClick }: TagListProps) => (
   <ul className="tag-list" aria-live="polite">
-    {tagList.map(({ key, value, label }) => (
-      <TagListItem
-        key={`${key}-${value}`}
-        onClick={() => {
-          onClick(key, value);
-        }}
-        value={value}
-        language={language}
-      >
-        {label && <span>{translateKey(label, language)}:</span>}
-        <span>{translateKey(value, language)}</span>
-      </TagListItem>
-    ))}
+    {tagList.map(({ key, value, label }) => {
+      const labelText = label
+        ? `${translateKey(label, language)} ${translateKey(value, language)}`
+        : translateKey(value, language);
+
+      const ariaLabel = `${language.removeFilter} ${labelText}`;
+
+      return (
+        <TagListItem
+          ariaLabel={ariaLabel}
+          key={`${key}-${value}`}
+          onClick={() => {
+            onClick(key, value);
+          }}
+        >
+          {label && <span>{translateKey(label, language)}:</span>}
+          <span>{translateKey(value, language)}</span>
+        </TagListItem>
+      );
+    })}
   </ul>
 );
 

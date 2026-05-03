@@ -4,7 +4,6 @@
   display: flex;
   gap: 4px;
   flex-wrap: wrap;
-  margin-bottom: 12px;
 
   .tag-item {
     display: flex;
@@ -15,6 +14,7 @@
     text-transform: uppercase;
     gap: 8px;
     white-space: nowrap;
+    max-height: fit-content;
   }
 
   .btn-close {
