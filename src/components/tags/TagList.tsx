@@ -1,25 +1,31 @@
-import type { FilterKeys } from '../../pages/CollectionPage';
 import { translateKey } from '../../utils/utils';
 import './_tag-list.scss';
 import TagListItem from './TagListItem';
 
-type TagListProps = {
-  filterKey: FilterKeys;
+export interface TagItem {
+  key: string;
+  value: string;
+  label?: string;
+}
+
+interface TagListProps {
+  items: TagItem[];
   language: Record<string, string>;
-  values: string[];
-  onClick: (key: FilterKeys, value: string) => void;
-};
-const TagList = ({ values, onClick, filterKey, language }: TagListProps) => (
+  onClick: (key: string, value: string) => void;
+}
+
+export const TagList = ({ items, language, onClick }: TagListProps) => (
   <ul className="tag-list" aria-live="polite">
-    {values.map((value) => (
+    {items.map(({ key, value, label }) => (
       <TagListItem
-        key={value}
+        key={`${key}-${value}`}
         onClick={() => {
-          onClick(filterKey, value);
+          onClick(key, value);
         }}
         value={value}
         language={language}
       >
+        {label && <span>{translateKey(label, language)}:</span>}
         <span>{translateKey(value, language)}</span>
       </TagListItem>
     ))}

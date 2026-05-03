@@ -175,8 +175,10 @@ const FilterPanel = ({
                   <TagList
                     key={key}
                     language={language}
-                    values={values}
-                    filterKey={key as FilterKeys}
+                    items={values.map((value) => ({
+                      key: key as FilterKeys,
+                      value,
+                    }))}
                     onClick={onRemoveFilterTag}
                   />
                 ))}

@@ -11,10 +11,10 @@ import Button from '../Button';
 import DisplayControls from '../DisplayControls';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import SkeletonList from '../skeleton/SkeletonList';
+import TagList from '../tags/TagList';
 import VisuallyHidden from '../VisuallyHidden';
 import './_table.scss';
 import { buildFilterTags } from './filterTags/buildFilterTags';
-import TagList from './filterTags/TagList';
 import TableFilterPopup from './tableFilters/TableFilterPopup';
 import { InitialTableFilters } from './tableFilters/tableFiltersUtils';
 
@@ -107,7 +107,7 @@ const Table = <T,>({
           {language.clearFilters}
         </Button>
         <TagList
-          tagList={tagList}
+          items={tagList}
           language={language}
           onClick={onRemoveFilterTag}
         />
