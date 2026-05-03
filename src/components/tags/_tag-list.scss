@@ -18,6 +18,8 @@
   }
 
   .btn-close {
-    position: static;
+    position: relative;
+    top: auto;
+    right: auto;
   }
 }

@@ -1,7 +1,7 @@
 import type { FilterKeys } from '../../pages/CollectionPage';
 import { translateKey } from '../../utils/utils';
-import BtnClose from '../BtnClose';
 import './_tag-list.scss';
+import TagListItem from './TagListItem';
 
 type TagListProps = {
   filterKey: FilterKeys;
@@ -12,16 +12,16 @@ type TagListProps = {
 const TagList = ({ values, onClick, filterKey, language }: TagListProps) => (
   <ul className="tag-list" aria-live="polite">
     {values.map((value) => (
-      <li key={value} className="tag-item">
+      <TagListItem
+        key={value}
+        onClick={() => {
+          onClick(filterKey, value);
+        }}
+        value={value}
+        language={language}
+      >
         <span>{translateKey(value, language)}</span>
-        <BtnClose
-          size="1em"
-          onClick={() => {
-            onClick(filterKey, value);
-          }}
-          ariaLabel={`${language.removeFilter} ${translateKey(value, language)}`}
-        />
-      </li>
+      </TagListItem>
     ))}
   </ul>
 );
