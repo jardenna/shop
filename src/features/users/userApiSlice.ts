@@ -1,8 +1,8 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import type {
-  SortParams,
   UpdateUserByIdRequest,
   UpdateUserByIdResponse,
+  UserParams,
   UserResponse,
 } from '../../app/api/apiTypes/adminApiTypes';
 import type { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
@@ -10,7 +10,7 @@ import { userUrl } from '../../app/endpoints';
 
 export const userApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getAllUsers: builder.query<UserResponse[], SortParams>({
+    getAllUsers: builder.query<UserResponse[], UserParams>({
       query: (params) => ({
         url: userUrl,
         params,

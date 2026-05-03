@@ -177,6 +177,12 @@ export type SubCategoryParams = SortParams & {
   subCategoryName: string;
 };
 
+export type UserParams = SortParams & {
+  email: string;
+  role: Roles;
+  username: string;
+};
+
 export type ProductsParams = BaseProductParams &
   SortParams & {
     categoryName: string;

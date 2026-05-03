@@ -12,6 +12,7 @@ import {
   useGetAllUsersQuery,
   useUpdateUserMutation,
 } from '../../features/users/userApiSlice';
+import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
@@ -22,6 +23,7 @@ import AdminPageContainer from '../pageContainer/AdminPageContainer';
 import './userPage.styles.scss';
 import { tableHeaders } from './userTableHeaders';
 import { useUserEditField } from './useUserEditField';
+import { Roles } from '../../app/api/apiTypes/adminApiTypes';
 
 const columnKeys = ['username', 'email', 'role'] as const;
 
@@ -40,11 +42,19 @@ const UserPage = () => {
   const { filterParams, setFilterParams, onRemoveFilterTag } =
     useSearchParamsState(initialFilters);
 
+  const debouncedFilters = useDebouncedValue(filterParams);
+
   const {
     data: allUsers,
     isLoading,
     refetch,
-  } = useGetAllUsersQuery({ sortField, sortOrder });
+  } = useGetAllUsersQuery({
+    sortField,
+    sortOrder,
+    username: debouncedFilters.username,
+    email: debouncedFilters.email,
+    role: debouncedFilters.role as Roles,
+  });
   const [deleteUser] = useDeleteUserMutation();
   const [updateUser] = useUpdateUserMutation();
 
