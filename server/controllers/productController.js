@@ -615,6 +615,7 @@ const getAdminProducts = asyncHandler(async (req, res) => {
     totalCount,
   });
 });
+
 // @desc    Get Product By ID
 // @route   /api/products/:id
 // @method  Get

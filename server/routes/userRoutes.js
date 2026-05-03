@@ -12,12 +12,14 @@ import {
   authorizeAdmin,
   authorizeEmployee,
 } from '../middleware/authMiddleware.js';
+import filterUsersMiddleware from '../middleware/filterUsersMiddleware.js';
 import languageMiddleware from '../middleware/languageMiddleware.js';
 
 const router = express.Router();
 
 router.get(
   '/',
+  filterUsersMiddleware,
   languageMiddleware,
   authenticate,
   authorizeEmployee,
