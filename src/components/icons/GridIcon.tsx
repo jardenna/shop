@@ -14,11 +14,9 @@ const GridIcon = ({ size, className, ariaHidden }: IconDefaultProps) => (
     strokeLinejoin="round"
     aria-hidden={ariaHidden}
   >
-    <path d="M3 4h18" />
-    <path d="M3 9h18" />
-    <path d="M3 14h18" />
-    <path d="M3 18h18" />
-    <path d="M3 22h18" />
+    <rect width="18" height="18" x="3" y="3" rx="2" />
+    <path d="M21 9H3" />
+    <path d="M21 15H3" />
   </svg>
 );
 
