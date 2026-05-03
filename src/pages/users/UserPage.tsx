@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { Roles } from '../../app/api/apiTypes/adminApiTypes';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import Table from '../../components/sortTable/Table';
 import { createInitialFilters } from '../../components/sortTable/tableFilters/tableFiltersUtils';
@@ -23,7 +24,6 @@ import AdminPageContainer from '../pageContainer/AdminPageContainer';
 import './userPage.styles.scss';
 import { tableHeaders } from './userTableHeaders';
 import { useUserEditField } from './useUserEditField';
-import { Roles } from '../../app/api/apiTypes/adminApiTypes';
 
 const columnKeys = ['username', 'email', 'role'] as const;
 
@@ -142,7 +142,10 @@ const UserPage = () => {
                 {columnKeys.map((columnKey) => (
                   <td key={columnKey}>
                     <div className="edit-user">
-                      <EditTableText text={userItem[columnKey]} />
+                      <EditTableText
+                        text={userItem[columnKey]}
+                        language={language}
+                      />
                       {!isAdmin && (
                         <UpdateUser
                           submitBtnLabel={language.save}
