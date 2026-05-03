@@ -75,7 +75,6 @@ export const useSearchParamsState = <T extends SearchParamState>(
 
     const updatedSearchParams = new URLSearchParams(searchParams.toString());
 
-    // Reset page here as well
     updatedSearchParams.set(pageParamKey, '1');
 
     const current = values[name] as string[];
@@ -121,6 +120,8 @@ export const useSearchParamsState = <T extends SearchParamState>(
     currentValues.forEach((item) => {
       updatedSearchParams.append(key, item);
     });
+
+    updatedSearchParams.set(pageParamKey, '1');
 
     setSearchParams(updatedSearchParams);
   };
