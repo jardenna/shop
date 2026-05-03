@@ -1,34 +1,25 @@
 import type { FilterKeys } from '../../pages/CollectionPage';
-import { IconName } from '../../types/enums';
 import { translateKey } from '../../utils/utils';
-import IconBtn from '../IconBtn';
+import BtnClose from '../BtnClose';
 import './_tag-list.scss';
 
 type TagListProps = {
-  ariaLabel: string;
   filterKey: FilterKeys;
   language: Record<string, string>;
   values: string[];
   onClick: (key: FilterKeys, value: string) => void;
 };
-const TagList = ({
-  values,
-  onClick,
-  filterKey,
-  ariaLabel,
-  language,
-}: TagListProps) => (
+const TagList = ({ values, onClick, filterKey, language }: TagListProps) => (
   <ul className="tag-list" aria-live="polite">
     {values.map((value) => (
       <li key={value} className="tag-item">
         <span>{translateKey(value, language)}</span>
-        <IconBtn
+        <BtnClose
           size="1em"
           onClick={() => {
             onClick(filterKey, value);
           }}
-          iconName={IconName.Close}
-          ariaLabel={`${ariaLabel} ${translateKey(value, language)}`}
+          ariaLabel={`${language.removeFilter} ${translateKey(value, language)}`}
         />
       </li>
     ))}

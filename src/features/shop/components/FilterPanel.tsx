@@ -178,7 +178,6 @@ const FilterPanel = ({
                     values={values}
                     filterKey={key as FilterKeys}
                     onClick={onRemoveFilterTag}
-                    ariaLabel={language.removeFilter}
                   />
                 ))}
               </div>
