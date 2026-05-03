@@ -13,6 +13,7 @@ import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import SkeletonList from '../skeleton/SkeletonList';
 import VisuallyHidden from '../VisuallyHidden';
 import './_table.scss';
+import { buildFilterTags } from './filterTags/buildFilterTags';
 import TableFilterPopup from './tableFilters/TableFilterPopup';
 import { InitialTableFilters } from './tableFilters/tableFiltersUtils';
 
@@ -93,6 +94,9 @@ const Table = <T,>({
   const ariaSort = sortOrder !== 'asc' ? 'descending' : 'ascending';
   const ariaLabel =
     sortOrder !== 'asc' ? language.descending : language.ascending;
+
+  const tagList = buildFilterTags(columns, values);
+  console.log(tagList);
 
   return (
     <>
