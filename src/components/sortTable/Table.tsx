@@ -14,6 +14,7 @@ import SkeletonList from '../skeleton/SkeletonList';
 import VisuallyHidden from '../VisuallyHidden';
 import './_table.scss';
 import { buildFilterTags } from './filterTags/buildFilterTags';
+import TagList from './filterTags/TagList';
 import TableFilterPopup from './tableFilters/TableFilterPopup';
 import { InitialTableFilters } from './tableFilters/tableFiltersUtils';
 
@@ -96,7 +97,6 @@ const Table = <T,>({
     sortOrder !== 'asc' ? language.descending : language.ascending;
 
   const tagList = buildFilterTags(columns, values);
-  console.log(tagList);
 
   return (
     <>
@@ -104,6 +104,7 @@ const Table = <T,>({
         <Button onClick={onClearAllFilters} variant={BtnVariant.Default}>
           {language.clearFilters}
         </Button>
+        <TagList tagList={tagList} language={language} />
         <DisplayControls
           onSetDisplay={setPadding}
           displayControlList={tableGridIconList}

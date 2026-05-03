@@ -4,7 +4,7 @@ import {
   getMinMaxKeys,
 } from '../tableFilters/tableFiltersUtils';
 
-interface TagItem {
+export interface TagItem {
   key: string;
   label: string;
   value: string;
