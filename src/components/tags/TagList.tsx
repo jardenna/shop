@@ -9,14 +9,14 @@ export interface TagItem {
 }
 
 interface TagListProps {
-  items: TagItem[];
   language: Record<string, string>;
+  tagList: TagItem[];
   onClick: (key: string, value: string) => void;
 }
 
-export const TagList = ({ items, language, onClick }: TagListProps) => (
+export const TagList = ({ tagList, language, onClick }: TagListProps) => (
   <ul className="tag-list" aria-live="polite">
-    {items.map(({ key, value, label }) => (
+    {tagList.map(({ key, value, label }) => (
       <TagListItem
         key={`${key}-${value}`}
         onClick={() => {

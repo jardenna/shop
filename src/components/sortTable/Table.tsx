@@ -107,7 +107,7 @@ const Table = <T,>({
           {language.clearFilters}
         </Button>
         <TagList
-          items={tagList}
+          tagList={tagList}
           language={language}
           onClick={onRemoveFilterTag}
         />

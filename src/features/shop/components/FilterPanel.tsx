@@ -175,7 +175,7 @@ const FilterPanel = ({
                   <TagList
                     key={key}
                     language={language}
-                    items={values.map((value) => ({
+                    tagList={values.map((value) => ({
                       key: key as FilterKeys,
                       value,
                     }))}
