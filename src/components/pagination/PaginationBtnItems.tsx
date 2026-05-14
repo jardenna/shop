@@ -4,7 +4,6 @@ import Icon from '../icons/Icon';
 import type { PaginationItem } from './createPaginationItems';
 
 type PaginationBtnItemsProps = {
-  language: Record<string, string>;
   page: number;
   paginationBtnList: PaginationItem[];
   onPagination: (id: number) => void;

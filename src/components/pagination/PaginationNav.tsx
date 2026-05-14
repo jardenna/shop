@@ -69,7 +69,6 @@ const PaginationNav = ({
           <li>{paginationMobileText}</li>
         ) : (
           <PaginationBtnItems
-            language={language}
             paginationBtnList={paginationBtnList}
             page={page}
             onPagination={onPagination}
