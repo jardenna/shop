@@ -27,11 +27,11 @@ export const getAriaLabel = (
   page: number,
 ) => {
   if (paginationBtn.type === 'jumpPrevious') {
-    return `Go ${paginationBtn.pageCount} pages back`;
+    return `${language.go} ${paginationBtn.pageCount} ${language.pagesBack}`;
   }
 
   if (paginationBtn.type === 'jumpNext') {
-    return `Go ${paginationBtn.pageCount} pages forward`;
+    return `${language.go} ${paginationBtn.pageCount} ${language.pagesForward}`;
   }
 
   if (paginationBtn.value === page) {
