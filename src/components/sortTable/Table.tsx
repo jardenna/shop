@@ -91,7 +91,8 @@ const Table = <T,>({
     },
   ];
 
-  const { onClearAllFilters } = useSearchParamsState(initialFilters);
+  const { onClearAllFilters, hasSearchParams } =
+    useSearchParamsState(initialFilters);
 
   const sortIcon = sortOrder === 'asc' ? '↑' : '↓';
   const ariaSort = sortOrder !== 'asc' ? 'descending' : 'ascending';
@@ -104,7 +105,11 @@ const Table = <T,>({
     <>
       <div className="table-controls">
         <div className="table-filter-container">
-          <Button onClick={onClearAllFilters} variant={BtnVariant.Default}>
+          <Button
+            onClick={onClearAllFilters}
+            variant={BtnVariant.Default}
+            disabled={!hasSearchParams}
+          >
             {language.clearFilters}
           </Button>
           <TagList

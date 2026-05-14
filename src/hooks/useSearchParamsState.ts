@@ -143,6 +143,8 @@ export const useSearchParamsState = <T extends SearchParamState>(
     setSearchParams(updatedSearchParams);
   };
 
+  const hasSearchParams = searchParams.size > 0;
+
   return {
     filterParams: values,
     toggleFilterParam: toggleValue,
@@ -154,5 +156,6 @@ export const useSearchParamsState = <T extends SearchParamState>(
     productsPerPage,
     setPage,
     updatePagination,
+    hasSearchParams,
   };
 };
