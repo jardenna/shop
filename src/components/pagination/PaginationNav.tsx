@@ -4,6 +4,7 @@ import LayoutElement from '../../layout/LayoutElement';
 import { IconName } from '../../types/enums';
 import IconBtn from '../IconBtn';
 import './_pagination.scss';
+import { createPaginationItems } from './createPaginationItems';
 import PaginationBtnItems from './PaginationBtnItems';
 
 export type BasePaginationNav = {
@@ -13,7 +14,9 @@ export type BasePaginationNav = {
   onPagination: (id: number) => void;
 };
 
-type PaginationNavProps = BasePaginationNav & { pageLimit?: number };
+type PaginationNavProps = BasePaginationNav & {
+  pageLimit?: number;
+};
 
 const PaginationNav = ({
   paginationMobileText,
@@ -25,22 +28,7 @@ const PaginationNav = ({
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
 
-  const halfPageLimit = Math.floor(pageLimit / 2);
-
-  let startPage = Math.max(1, page - halfPageLimit);
-
-  const endPage = Math.min(totalBtns, startPage + pageLimit - 1);
-
-  if (endPage - startPage + 1 < pageLimit) {
-    startPage = Math.max(1, endPage - pageLimit + 1);
-  }
-
-  const paginationBtnList = Array.from(
-    {
-      length: endPage - startPage + 1,
-    },
-    (_, pageIndex) => startPage + pageIndex,
-  );
+  const paginationBtnList = createPaginationItems(page, totalBtns, pageLimit);
 
   const handleGotoPrevPage = () => {
     if (page > 1) {
@@ -78,7 +66,7 @@ const PaginationNav = ({
           />
         </li>
         {isMobileSize ? (
-          <div>{paginationMobileText}</div>
+          <li>{paginationMobileText}</li>
         ) : (
           <PaginationBtnItems
             language={language}

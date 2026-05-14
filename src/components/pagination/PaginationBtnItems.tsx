@@ -1,9 +1,10 @@
 import Button from '../Button';
+import type { PaginationItem } from './createPaginationItems';
 
 type PaginationBtnItemsProps = {
   language: Record<string, string>;
   page: number;
-  paginationBtnList: number[];
+  paginationBtnList: PaginationItem[];
   onPagination: (id: number) => void;
 };
 
@@ -13,23 +14,27 @@ const PaginationBtnItems = ({
   page,
   language,
 }: PaginationBtnItemsProps) =>
-  paginationBtnList.map((paginationBtn) => (
-    <li key={paginationBtn}>
-      <Button
-        onClick={() => {
-          onPagination(paginationBtn);
-        }}
-        className={paginationBtn === page ? 'current' : ''}
-        ariaCurrent={paginationBtn === page ? 'page' : undefined}
-        ariaLabel={
-          paginationBtn === page
-            ? `${language.currentPage} ${paginationBtn}`
-            : `${language.gotoPage} ${paginationBtn}`
-        }
-      >
-        {paginationBtn}
-      </Button>
-    </li>
-  ));
+  paginationBtnList.map((paginationBtn) => {
+    const isCurrentPage = paginationBtn.value === page;
+
+    return (
+      <li key={paginationBtn.value}>
+        <Button
+          onClick={() => {
+            onPagination(paginationBtn.value);
+          }}
+          className={isCurrentPage ? 'current' : ''}
+          ariaCurrent={isCurrentPage ? 'page' : undefined}
+          ariaLabel={
+            isCurrentPage
+              ? `${language.currentPage} ${paginationBtn.value}`
+              : `${language.gotoPage} ${paginationBtn.value}`
+          }
+        >
+          {paginationBtn.label}
+        </Button>
+      </li>
+    );
+  });
 
 export default PaginationBtnItems;
