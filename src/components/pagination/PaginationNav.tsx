@@ -6,22 +6,41 @@ import IconBtn from '../IconBtn';
 import './_pagination.scss';
 import PaginationBtnItems from './PaginationBtnItems';
 
-export type PaginationNavProps = {
+export type BasePaginationNav = {
   page: number;
   paginationMobileText: string;
   totalBtns: number;
   onPagination: (id: number) => void;
 };
 
+type PaginationNavProps = BasePaginationNav & { pageLimit?: number };
+
 const PaginationNav = ({
   paginationMobileText,
   page,
   totalBtns,
   onPagination,
+  pageLimit = 5,
 }: PaginationNavProps) => {
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
-  const paginationBtnList = Array.from({ length: totalBtns }, (_, i) => i + 1);
+
+  const halfPageLimit = Math.floor(pageLimit / 2);
+
+  let startPage = Math.max(1, page - halfPageLimit);
+
+  const endPage = Math.min(totalBtns, startPage + pageLimit - 1);
+
+  if (endPage - startPage + 1 < pageLimit) {
+    startPage = Math.max(1, endPage - pageLimit + 1);
+  }
+
+  const paginationBtnList = Array.from(
+    {
+      length: endPage - startPage + 1,
+    },
+    (_, pageIndex) => startPage + pageIndex,
+  );
 
   const handleGotoPrevPage = () => {
     if (page > 1) {
