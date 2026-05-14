@@ -74,7 +74,12 @@ const Popup = ({
               ? popupContent({ close: togglePopupList })
               : popupContent}
 
-            <span ref={arrowRef} className="popup-arrow" aria-hidden />
+            <span
+              ref={arrowRef}
+              className="popup-arrow"
+              data-popper-arrow
+              aria-hidden
+            />
           </div>,
           document.body,
         )}
