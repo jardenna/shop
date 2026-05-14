@@ -25,6 +25,13 @@
       width: 100%;
 
       .control-label {
+        @include transition;
+
+        &:hover {
+          background-color: $color-background-secondary;
+          color: $color-white;
+        }
+
         height: 100%;
       }
     }

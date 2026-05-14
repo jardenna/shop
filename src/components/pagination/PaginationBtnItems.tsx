@@ -1,35 +1,48 @@
+import { BtnVariant, IconName } from '../../types/enums';
 import Button from '../Button';
+import Icon from '../icons/Icon';
+import type { PaginationItem } from './createPaginationItems';
+import { getAriaLabel } from './utils';
 
 type PaginationBtnItemsProps = {
   language: Record<string, string>;
   page: number;
-  paginationBtnList: number[];
+  paginationBtnList: PaginationItem[];
   onPagination: (id: number) => void;
 };
 
 const PaginationBtnItems = ({
   paginationBtnList,
   onPagination,
-  page,
   language,
+  page,
 }: PaginationBtnItemsProps) =>
-  paginationBtnList.map((paginationBtn) => (
-    <li key={paginationBtn}>
-      <Button
-        onClick={() => {
-          onPagination(paginationBtn);
-        }}
-        className={paginationBtn === page ? 'current' : ''}
-        ariaCurrent={paginationBtn === page ? 'page' : undefined}
-        ariaLabel={
-          paginationBtn === page
-            ? `${language.currentPage} ${paginationBtn}`
-            : `${language.gotoPage} ${paginationBtn}`
-        }
-      >
-        {paginationBtn}
-      </Button>
-    </li>
-  ));
+  paginationBtnList.map((paginationBtn) => {
+    const isCurrentPage =
+      paginationBtn.type === 'page' && paginationBtn.value === page;
+
+    const isJumpButton = paginationBtn.type !== 'page';
+
+    return (
+      <li key={`${paginationBtn.type}-${paginationBtn.value}`}>
+        <Button
+          onClick={() => {
+            onPagination(paginationBtn.value);
+          }}
+          variant={isJumpButton ? BtnVariant.Ghost : undefined}
+          disabled={paginationBtn.disabled}
+          className={isCurrentPage ? 'current' : ''}
+          ariaCurrent={isCurrentPage ? 'page' : undefined}
+          ariaLabel={getAriaLabel(paginationBtn, language, page)}
+        >
+          {isJumpButton ? (
+            <Icon iconName={IconName.More} />
+          ) : (
+            paginationBtn.label
+          )}
+        </Button>
+      </li>
+    );
+  });
 
 export default PaginationBtnItems;

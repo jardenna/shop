@@ -51,7 +51,7 @@ const ProductTableRow = ({
       <td>{numberConvert(countInStock, selectedLanguage)}</td>
       <td>{numberConvert(price, selectedLanguage)}</td>
       <td>{discount}</td>
-      <td>{discountedPrice}</td>
+      <td>{numberConvert(discountedPrice, selectedLanguage)}</td>
       <td>
         <AdminBadge status={status} scheduledDate={scheduledDate || null} />
       </td>

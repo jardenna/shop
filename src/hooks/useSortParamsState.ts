@@ -28,14 +28,9 @@ export const useSortParamsState = <T>({ columns }: TableProps<T>) => {
     });
   };
 
-  const handleClearAllParams = () => {
-    setSearchParams('');
-  };
-
   return {
     sortOrder,
     onSort: handleSort,
-    onClearAllParams: handleClearAllParams,
     sortField,
   };
 };

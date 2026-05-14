@@ -1,3 +1,5 @@
+import { PaginationItem } from './createPaginationItems';
+
 export const getRangeText = (page: number, perPage: number, total: number) => {
   // Handle zero products early to avoid weird "1–0 of 0" cases
   if (total === 0) {
@@ -17,4 +19,24 @@ export const getRangeText = (page: number, perPage: number, total: number) => {
   }
 
   return { start, end };
+};
+
+export const getAriaLabel = (
+  paginationBtn: PaginationItem,
+  language: Record<string, string>,
+  page: number,
+) => {
+  if (paginationBtn.type === 'jumpPrevious') {
+    return `${language.go} ${paginationBtn.pageCount} ${language.pagesBack}`;
+  }
+
+  if (paginationBtn.type === 'jumpNext') {
+    return `${language.go} ${paginationBtn.pageCount} ${language.pagesForward}`;
+  }
+
+  if (paginationBtn.value === page) {
+    return `${language.currentPage} ${paginationBtn.value}`;
+  }
+
+  return `${language.gotoPage} ${paginationBtn.value}`;
 };

@@ -4,13 +4,18 @@ import LayoutElement from '../../layout/LayoutElement';
 import { IconName } from '../../types/enums';
 import IconBtn from '../IconBtn';
 import './_pagination.scss';
+import { createPaginationItems } from './createPaginationItems';
 import PaginationBtnItems from './PaginationBtnItems';
 
-export type PaginationNavProps = {
+export type BasePaginationNav = {
   page: number;
   paginationMobileText: string;
   totalBtns: number;
   onPagination: (id: number) => void;
+};
+
+type PaginationNavProps = BasePaginationNav & {
+  pageLimit?: number;
 };
 
 const PaginationNav = ({
@@ -18,10 +23,12 @@ const PaginationNav = ({
   page,
   totalBtns,
   onPagination,
+  pageLimit = 5,
 }: PaginationNavProps) => {
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
-  const paginationBtnList = Array.from({ length: totalBtns }, (_, i) => i + 1);
+
+  const paginationBtnList = createPaginationItems(page, totalBtns, pageLimit);
 
   const handleGotoPrevPage = () => {
     if (page > 1) {
@@ -59,13 +66,13 @@ const PaginationNav = ({
           />
         </li>
         {isMobileSize ? (
-          <div>{paginationMobileText}</div>
+          <li>{paginationMobileText}</li>
         ) : (
           <PaginationBtnItems
-            language={language}
             paginationBtnList={paginationBtnList}
             page={page}
             onPagination={onPagination}
+            language={language}
           />
         )}
         <li>

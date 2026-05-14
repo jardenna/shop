@@ -30,8 +30,10 @@
     }
   }
 
-  .fieldset {
-    margin: 0;
+  .number-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 
   .input-container {

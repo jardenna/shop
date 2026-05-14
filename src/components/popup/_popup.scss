@@ -1,25 +1,13 @@
 @use '../../scss/globals' as *;
 
-$placements: (
-  top: bottom,
-  bottom: top,
-  left: right,
-  right: left,
-);
-
 .popup-container {
   box-shadow: $box-shadow;
   background-color: $color-light-gray-10;
   border-radius: 4px;
-  z-index: 20;
+  z-index: 1000;
+  overflow: visible;
   max-width: rem(280px);
   padding: 8px;
-
-  @each $placement, $side in $placements {
-    &[data-popper-placement^='#{$placement}'] > .popup-arrow {
-      #{$side}: 4px;
-    }
-  }
 
   &:has(.dropdown-item) {
     padding: 0;
@@ -27,16 +15,34 @@ $placements: (
 }
 
 .popup-arrow {
-  visibility: hidden;
-  background: inherit;
+  position: absolute;
+  z-index: -1;
 
   &::before {
-    visibility: visible;
     content: '';
-    transform: rotate(45deg);
     position: absolute;
-    width: 8px;
-    height: 8px;
-    background: inherit;
+    width: 12px;
+    height: 12px;
+    background-color: $color-white;
+    transform: rotate(45deg);
+    box-shadow:
+      0 2px 4px rgb(0 0 0 / 16%),
+      0 0 4px rgb(0 0 0 / 10%);
   }
+}
+
+.popup-container[data-popper-placement^='top'] .popup-arrow {
+  bottom: -4px;
+}
+
+.popup-container[data-popper-placement^='bottom'] .popup-arrow {
+  top: -4px;
+}
+
+.popup-container[data-popper-placement^='left'] .popup-arrow {
+  right: -4px;
+}
+
+.popup-container[data-popper-placement^='right'] .popup-arrow {
+  left: -4px;
 }
