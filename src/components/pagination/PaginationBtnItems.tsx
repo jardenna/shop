@@ -1,4 +1,6 @@
+import { BtnVariant, IconName } from '../../types/enums';
 import Button from '../Button';
+import Icon from '../icons/Icon';
 import type { PaginationItem } from './createPaginationItems';
 
 type PaginationBtnItemsProps = {
@@ -17,19 +19,25 @@ const PaginationBtnItems = ({
     const isCurrentPage =
       paginationBtn.type === 'page' && paginationBtn.value === page;
 
+    const isJumpButton = paginationBtn.type !== 'page';
+
     return (
       <li key={`${paginationBtn.type}-${paginationBtn.value}`}>
         <Button
           onClick={() => {
             onPagination(paginationBtn.value);
           }}
-          variant={paginationBtn.btnVariant}
+          variant={isJumpButton ? BtnVariant.Ghost : undefined}
           disabled={paginationBtn.disabled}
           className={isCurrentPage ? 'current' : ''}
           ariaCurrent={isCurrentPage ? 'page' : undefined}
           ariaLabel={paginationBtn.ariaLabel}
         >
-          {paginationBtn.label}
+          {isJumpButton ? (
+            <Icon iconName={IconName.More} />
+          ) : (
+            paginationBtn.label
+          )}
         </Button>
       </li>
     );

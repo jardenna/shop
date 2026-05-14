@@ -1,12 +1,9 @@
-import { BtnVariant } from '../../types/enums';
-
 export interface PaginationItem {
-  label: string;
   type: 'page' | 'jumpPrevious' | 'jumpNext';
   value: number;
   ariaLabel?: string;
-  btnVariant?: BtnVariant;
   disabled?: boolean;
+  label?: string;
 }
 
 const createPageItems = (
@@ -56,19 +53,15 @@ export const createPaginationItems = (
   const previousJumpItem: PaginationItem = {
     type: 'jumpPrevious',
     value: Math.max(1, page - pageLimit),
-    label: '...',
     disabled: rangeStart === 1,
     ariaLabel: `Go ${previousPageCount} pages back`,
-    btnVariant: BtnVariant.Ghost,
   };
 
   const nextJumpItem: PaginationItem = {
     type: 'jumpNext',
     value: Math.min(totalBtns, page + pageLimit),
-    label: '...',
     ariaLabel: `Go ${nextPageCount} pages forward`,
     disabled: rangeEnd === totalBtns,
-    btnVariant: BtnVariant.Ghost,
   };
 
   return [previousJumpItem, ...pageItems, nextJumpItem];
