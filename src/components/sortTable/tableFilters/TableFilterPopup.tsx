@@ -8,7 +8,6 @@ import Icon from '../../icons/Icon';
 import Popup from '../../popup/Popup';
 import VisuallyHidden from '../../VisuallyHidden';
 import './_table-filters.scss';
-import TableFilterInput from './TableFilterInput';
 import {
   getListByName,
   getMinMaxKeys,
@@ -60,19 +59,22 @@ const TableFilterPopup = <T,>({
       case 'text':
       case 'date':
         return (
-          <TableFilterInput
-            name={name}
-            id={id}
-            onFilter={onFilter}
-            value={value}
-            filterType={filterType}
-            labelText={labelText}
-          />
+          <form>
+            <Input
+              type={filterType}
+              name={name}
+              id={id}
+              value={value}
+              onChange={onFilter}
+              labelText={labelText}
+              autoFocus
+            />
+          </form>
         );
 
       case 'number':
         return (
-          <form className="table-filter-form">
+          <form className="number-container">
             <Input
               id={minKey}
               type="number"
