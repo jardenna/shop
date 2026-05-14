@@ -1,4 +1,4 @@
-import PaginationNav, { BasePaginationNav } from './PaginationNav';
+import PaginationNav, { type BasePaginationNav } from './PaginationNav';
 import PaginationSelect, {
   type PaginationSelectProps,
 } from './PaginationSelect';
