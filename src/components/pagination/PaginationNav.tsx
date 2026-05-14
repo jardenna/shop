@@ -72,6 +72,7 @@ const PaginationNav = ({
             paginationBtnList={paginationBtnList}
             page={page}
             onPagination={onPagination}
+            language={language}
           />
         )}
         <li>

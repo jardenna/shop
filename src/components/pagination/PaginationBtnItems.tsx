@@ -2,8 +2,10 @@ import { BtnVariant, IconName } from '../../types/enums';
 import Button from '../Button';
 import Icon from '../icons/Icon';
 import type { PaginationItem } from './createPaginationItems';
+import { getAriaLabel } from './utils';
 
 type PaginationBtnItemsProps = {
+  language: Record<string, string>;
   page: number;
   paginationBtnList: PaginationItem[];
   onPagination: (id: number) => void;
@@ -12,6 +14,7 @@ type PaginationBtnItemsProps = {
 const PaginationBtnItems = ({
   paginationBtnList,
   onPagination,
+  language,
   page,
 }: PaginationBtnItemsProps) =>
   paginationBtnList.map((paginationBtn) => {
@@ -30,7 +33,7 @@ const PaginationBtnItems = ({
           disabled={paginationBtn.disabled}
           className={isCurrentPage ? 'current' : ''}
           ariaCurrent={isCurrentPage ? 'page' : undefined}
-          ariaLabel={paginationBtn.ariaLabel}
+          ariaLabel={getAriaLabel(paginationBtn, language, page)}
         >
           {isJumpButton ? (
             <Icon iconName={IconName.More} />

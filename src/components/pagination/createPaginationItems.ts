@@ -1,9 +1,9 @@
 export interface PaginationItem {
   type: 'page' | 'jumpPrevious' | 'jumpNext';
   value: number;
-  ariaLabel?: string;
   disabled?: boolean;
   label?: string;
+  pageCount?: number;
 }
 
 const createPageItems = (
@@ -54,14 +54,14 @@ export const createPaginationItems = (
     type: 'jumpPrevious',
     value: Math.max(1, page - pageLimit),
     disabled: rangeStart === 1,
-    ariaLabel: `Go ${previousPageCount} pages back`,
+    pageCount: previousPageCount,
   };
 
   const nextJumpItem: PaginationItem = {
     type: 'jumpNext',
     value: Math.min(totalBtns, page + pageLimit),
-    ariaLabel: `Go ${nextPageCount} pages forward`,
     disabled: rangeEnd === totalBtns,
+    pageCount: nextPageCount,
   };
 
   return [previousJumpItem, ...pageItems, nextJumpItem];
