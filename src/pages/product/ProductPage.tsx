@@ -1,7 +1,7 @@
 import { Status } from '../../app/api/apiTypes/adminApiTypes';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
-import { usePaginationParams } from '../../components/pagination/hooks/usePaginationParams';
 import { usePaginationText } from '../../components/pagination/hooks/usePaginationText';
+import { useScrollOnPagination } from '../../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../../components/pagination/Pagination';
 import Table from '../../components/sortTable/Table';
 import { createInitialFilters } from '../../components/sortTable/tableFilters/tableFiltersUtils';
@@ -39,13 +39,17 @@ const ProductPage = () => {
     columns: tableHeaders,
   });
 
-  const { page, productsPerPage, setPage, updatePagination } =
-    usePaginationParams();
-
   const initialFilters = createInitialFilters(tableHeaders);
 
-  const { filterParams, setFilterParams } =
-    useSearchParamsState(initialFilters);
+  const {
+    filterParams,
+    setFilterParams,
+    page,
+    productsPerPage,
+    setPage,
+    updatePagination,
+    onRemoveFilterTag,
+  } = useSearchParamsState(initialFilters);
 
   const debouncedFilters = useDebouncedValue(filterParams);
 
@@ -100,12 +104,17 @@ const ProductPage = () => {
     updatePagination(1, newCount);
   };
 
+  const { scrollToRef, setShouldScroll } = useScrollOnPagination({
+    isLoading,
+  });
+
   const handlePagination = (id: number) => {
     // Early exit so current page doesn't spam history or rerender
     if (id === page) {
       return;
     }
     setPage(id);
+    setShouldScroll(true);
   };
 
   const { paginationMobileText } = usePaginationText({
@@ -123,6 +132,7 @@ const ProductPage = () => {
       linkTo={AdminPath.AdminProductCreate}
       ariaLabelledby="product-list"
       variant="x-large"
+      scrollToRef={scrollToRef}
     >
       <Table
         values={filterParams}
@@ -138,6 +148,7 @@ const ProductPage = () => {
         onSort={onSort}
         sortField={sortField}
         sortOrder={sortOrder}
+        onRemoveFilterTag={onRemoveFilterTag}
       >
         {(data) =>
           data.map(

@@ -32,7 +32,7 @@ const CategoryPage = () => {
 
   const initialFilters = createInitialFilters(tableHeaders);
 
-  const { filterParams, setFilterParams } =
+  const { filterParams, setFilterParams, onRemoveFilterTag } =
     useSearchParamsState(initialFilters);
 
   const debouncedFilters = useDebouncedValue(filterParams);
@@ -64,6 +64,7 @@ const CategoryPage = () => {
       ariaLabelledby="categories-list"
     >
       <Table
+        onRemoveFilterTag={onRemoveFilterTag}
         values={filterParams}
         onFilter={setFilterParams}
         initialFilters={initialFilters}

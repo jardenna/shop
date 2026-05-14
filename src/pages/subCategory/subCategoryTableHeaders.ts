@@ -3,16 +3,16 @@ import { Column } from '../../components/sortTable/Table';
 
 export const tableHeaders: Column<SubCategoryResponse>[] = [
   {
-    key: 'mainCategoryName',
-    label: 'mainCategoryName',
-    name: 'mainCategoryName',
-    tableFilterType: 'text',
+    key: 'categoryName',
+    label: 'categoryName',
+    name: 'categoryName',
+    tableFilterType: 'radio',
   },
   {
     key: 'subCategoryName',
     label: 'name',
     name: 'subCategoryName',
-    tableFilterType: 'text',
+    tableFilterType: 'radio',
   },
   {
     key: 'categoryStatus',

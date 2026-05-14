@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { Roles } from '../../app/api/apiTypes/adminApiTypes';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import Table from '../../components/sortTable/Table';
 import { createInitialFilters } from '../../components/sortTable/tableFilters/tableFiltersUtils';
@@ -12,6 +13,7 @@ import {
   useGetAllUsersQuery,
   useUpdateUserMutation,
 } from '../../features/users/userApiSlice';
+import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
@@ -37,14 +39,22 @@ const UserPage = () => {
 
   const initialFilters = createInitialFilters(tableHeaders);
 
-  const { filterParams, setFilterParams } =
+  const { filterParams, setFilterParams, onRemoveFilterTag } =
     useSearchParamsState(initialFilters);
+
+  const debouncedFilters = useDebouncedValue(filterParams);
 
   const {
     data: allUsers,
     isLoading,
     refetch,
-  } = useGetAllUsersQuery({ sortField, sortOrder });
+  } = useGetAllUsersQuery({
+    sortField,
+    sortOrder,
+    username: debouncedFilters.username,
+    email: debouncedFilters.email,
+    role: debouncedFilters.role as Roles,
+  });
   const [deleteUser] = useDeleteUserMutation();
   const [updateUser] = useUpdateUserMutation();
 
@@ -110,6 +120,7 @@ const UserPage = () => {
     >
       <Table
         values={filterParams}
+        onRemoveFilterTag={onRemoveFilterTag}
         onFilter={setFilterParams}
         initialFilters={initialFilters}
         onReset={() => refetch()}
@@ -131,7 +142,10 @@ const UserPage = () => {
                 {columnKeys.map((columnKey) => (
                   <td key={columnKey}>
                     <div className="edit-user">
-                      <EditTableText text={userItem[columnKey]} />
+                      <EditTableText
+                        text={userItem[columnKey]}
+                        language={language}
+                      />
                       {!isAdmin && (
                         <UpdateUser
                           submitBtnLabel={language.save}

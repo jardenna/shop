@@ -71,7 +71,7 @@ const ViewSubCategoryPage = () => {
             categoryId={category.id}
             subCategoryName={subCategoryName || category.subCategoryName}
             productsInSubcategory={category.productCount}
-            mainCategoryName={category.mainCategory.categoryName}
+            categoryName={category.mainCategory.categoryName}
             showStatusMessage={
               category.mainCategory.categoryStatus !== 'Published'
             }

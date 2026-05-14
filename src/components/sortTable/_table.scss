@@ -7,20 +7,15 @@
   align-items: flex-end;
   margin-bottom: 8px;
 
+  .table-filter-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
   .btn-default {
     font-size: $font-small;
-  }
-}
-
-.table-actions {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 8px;
-
-  @include max-size($medium) {
-    flex-direction: column;
-    align-items: normal;
+    min-width: max-content;
   }
 }
 

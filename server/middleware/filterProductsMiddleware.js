@@ -11,9 +11,18 @@ function filterProductsMiddleware(req, res, next) {
 
   const filter = {};
 
-  // Search by productName using case-insensitive partial match
+  // Search by productName using case-insensitive partial match (supports multiple values)
   if (req.query.productName) {
-    filter.productName = { $regex: req.query.productName, $options: 'i' };
+    const values = Array.isArray(req.query.productName)
+      ? req.query.productName
+      : req.query.productName.split(',');
+
+    filter.$or = values.map((value) => ({
+      productName: {
+        $regex: value.trim(),
+        $options: 'i',
+      },
+    }));
   }
 
   // Helper to normalize query param into array, optional type casting

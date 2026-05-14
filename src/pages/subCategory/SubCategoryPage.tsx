@@ -1,3 +1,4 @@
+import { Status } from '../../app/api/apiTypes/adminApiTypes';
 import Table from '../../components/sortTable/Table';
 import { createInitialFilters } from '../../components/sortTable/tableFilters/tableFiltersUtils';
 import { useLanguage } from '../../features/language/useLanguage';
@@ -6,6 +7,7 @@ import {
   useGetAllSubCategoriesQuery,
   useGetHasSubCatScheduledQuery,
 } from '../../features/subCategories/subCategoryApiSlice';
+import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { AdminPath } from '../../layout/nav/enums';
@@ -28,15 +30,23 @@ const SubCategoryPage = () => {
 
   const initialFilters = createInitialFilters(tableHeaders);
 
-  const { filterParams, setFilterParams } =
+  const { filterParams, setFilterParams, onRemoveFilterTag } =
     useSearchParamsState(initialFilters);
+
+  const debouncedFilters = useDebouncedValue(filterParams);
 
   const {
     data: allSubcategories,
     isLoading,
     refetch,
   } = useGetAllSubCategoriesQuery(
-    { sortOrder, sortField },
+    {
+      sortOrder,
+      sortField,
+      categoryName: debouncedFilters.categoryName,
+      categoryStatus: debouncedFilters.categoryStatus as Status,
+      subCategoryName: debouncedFilters.subCategoryName,
+    },
     {
       pollingInterval: shouldPollFullList ? 15000 : undefined,
       refetchOnMountOrArgChange: true,
@@ -53,6 +63,7 @@ const SubCategoryPage = () => {
     >
       <Table
         values={filterParams}
+        onRemoveFilterTag={onRemoveFilterTag}
         onFilter={setFilterParams}
         initialFilters={initialFilters}
         onReset={() => refetch()}
@@ -72,7 +83,7 @@ const SubCategoryPage = () => {
               scheduledDate,
               subCategoryName,
               categoryStatus,
-              mainCategoryName,
+              categoryName,
               translationKey,
             }) => (
               <SubCategoryTableRows
@@ -81,7 +92,7 @@ const SubCategoryPage = () => {
                 status={categoryStatus}
                 scheduledDate={scheduledDate || null}
                 subCategoryName={language[translationKey] || subCategoryName}
-                mainCategoryName={translateKey(mainCategoryName, language)}
+                categoryName={translateKey(categoryName, language)}
                 linkText={language.viewCategory}
               />
             ),

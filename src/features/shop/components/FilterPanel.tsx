@@ -175,10 +175,11 @@ const FilterPanel = ({
                   <TagList
                     key={key}
                     language={language}
-                    values={values}
-                    filterKey={key as FilterKeys}
+                    tagList={values.map((value) => ({
+                      key: key as FilterKeys,
+                      value,
+                    }))}
                     onClick={onRemoveFilterTag}
-                    ariaLabel={language.removeFilter}
                   />
                 ))}
               </div>

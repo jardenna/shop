@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import type { Status } from '../../../app/api/apiTypes/adminApiTypes';
 import DateDisplay from '../../../components/datePicker/DateDisplay';
 import MoreLink from '../../../components/MoreLink';
@@ -39,4 +38,4 @@ const CategoryTableRow = ({
   </tr>
 );
 
-export default memo(CategoryTableRow);
+export default CategoryTableRow;

@@ -2,7 +2,6 @@ import { useParams } from 'react-router';
 import type { BaseShopProductsParams } from '../app/api/apiTypes/shopApiTypes';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
-import { usePaginationParams } from '../components/pagination/hooks/usePaginationParams';
 import { usePaginationText } from '../components/pagination/hooks/usePaginationText';
 import { useScrollOnPagination } from '../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../components/pagination/Pagination';
@@ -38,8 +37,6 @@ const CollectionPage = () => {
   const { category, categoryId } = useParams();
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
-  const { page, productsPerPage, setPage, updatePagination } =
-    usePaginationParams();
 
   const { subMenu, subMenuLoading, refetchSubMenu } = useSubMenu(
     category as LinkText,
@@ -69,6 +66,10 @@ const CollectionPage = () => {
     onRemoveFilterTag,
     onClearSingleFilter,
     onClearAllFilters,
+    page,
+    productsPerPage,
+    setPage,
+    updatePagination,
   } = useSearchParamsState(initialFilters);
 
   const {

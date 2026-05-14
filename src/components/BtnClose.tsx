@@ -6,6 +6,7 @@ import Icon from './icons/Icon';
 type BtnCloseProps = {
   ariaLabel?: string;
   autoFocus?: boolean;
+  size?: string;
   onClick: () => void;
 };
 
@@ -13,6 +14,7 @@ const BtnClose = ({
   onClick,
   ariaLabel = 'Close',
   autoFocus,
+  size,
 }: BtnCloseProps) => {
   const { language } = useLanguage();
 
@@ -24,7 +26,7 @@ const BtnClose = ({
       autoFocus={autoFocus}
       className="btn-close"
     >
-      <Icon iconName={IconName.Close} />
+      <Icon iconName={IconName.Close} size={size} />
     </Button>
   );
 };

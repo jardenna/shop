@@ -1,9 +1,14 @@
 /* eslint-disable no-param-reassign */
-import { Status, statusValues } from '../../../app/api/apiTypes/adminApiTypes';
+import {
+  Roles,
+  roleValues,
+  Status,
+  statusValues,
+} from '../../../app/api/apiTypes/adminApiTypes';
 import {
   MainCategoryNames,
-  SubCategoryNames,
   mainCategoryValues,
+  SubCategoryNames,
   subCategoryValues,
 } from '../../../app/api/apiTypes/sharedApiTypes';
 import { Options } from '../../../types/types';
@@ -12,6 +17,7 @@ import { Column } from '../Table';
 export interface ListsMap {
   categoryName: readonly MainCategoryNames[];
   productStatus: readonly Status[];
+  role: readonly Roles[];
   subCategoryName: readonly SubCategoryNames[];
 }
 
@@ -19,6 +25,7 @@ const listsMap: ListsMap = {
   categoryName: mainCategoryValues,
   productStatus: statusValues,
   subCategoryName: subCategoryValues,
+  role: roleValues,
 };
 
 type ListName = keyof ListsMap | 'categoryStatus';

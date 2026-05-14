@@ -11,8 +11,10 @@ import Button from '../Button';
 import DisplayControls from '../DisplayControls';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import SkeletonList from '../skeleton/SkeletonList';
+import TagList from '../tags/TagList';
 import VisuallyHidden from '../VisuallyHidden';
 import './_table.scss';
+import { buildFilterTags } from './filterTags/buildFilterTags';
 import TableFilterPopup from './tableFilters/TableFilterPopup';
 import { InitialTableFilters } from './tableFilters/tableFiltersUtils';
 
@@ -37,6 +39,7 @@ type TableProps<T> = {
   emptyHeaderCellText?: string;
   children: (data: T[]) => ReactNode;
   onFilter: (event: ChangeInputType) => void;
+  onRemoveFilterTag: (key: string, value: string) => void;
   onReset: () => void;
   onSort: (field: keyof T) => void;
 };
@@ -56,6 +59,7 @@ const Table = <T,>({
   initialFilters,
   values,
   onFilter,
+  onRemoveFilterTag,
 }: TableProps<T>) => {
   const { language } = useLanguage();
   const { paddingBlockSmall, paddingBlockMedium, paddingBlockLarge } =
@@ -94,12 +98,21 @@ const Table = <T,>({
   const ariaLabel =
     sortOrder !== 'asc' ? language.descending : language.ascending;
 
+  const tagList = buildFilterTags(columns, values);
+
   return (
     <>
       <div className="table-controls">
-        <Button onClick={onClearAllFilters} variant={BtnVariant.Default}>
-          {language.clearFilters}
-        </Button>
+        <div className="table-filter-container">
+          <Button onClick={onClearAllFilters} variant={BtnVariant.Default}>
+            {language.clearFilters}
+          </Button>
+          <TagList
+            tagList={tagList}
+            language={language}
+            onClick={onRemoveFilterTag}
+          />
+        </div>
         <DisplayControls
           onSetDisplay={setPadding}
           displayControlList={tableGridIconList}

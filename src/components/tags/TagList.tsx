@@ -1,37 +1,41 @@
-import type { FilterKeys } from '../../pages/CollectionPage';
-import { IconName } from '../../types/enums';
 import { translateKey } from '../../utils/utils';
-import IconBtn from '../IconBtn';
 import './_tag-list.scss';
+import TagListItem from './TagListItem';
 
-type TagListProps = {
-  ariaLabel: string;
-  filterKey: FilterKeys;
+export interface TagItem {
+  key: string;
+  value: string;
+  label?: string;
+}
+
+interface TagListProps {
   language: Record<string, string>;
-  values: string[];
-  onClick: (key: FilterKeys, value: string) => void;
-};
-const TagList = ({
-  values,
-  onClick,
-  filterKey,
-  ariaLabel,
-  language,
-}: TagListProps) => (
+  tagList: TagItem[];
+  onClick: (key: string, value: string) => void;
+}
+
+export const TagList = ({ tagList, language, onClick }: TagListProps) => (
   <ul className="tag-list" aria-live="polite">
-    {values.map((value) => (
-      <li key={value} className="tag-item">
-        <span>{translateKey(value, language)}</span>
-        <IconBtn
-          size="1em"
+    {tagList.map(({ key, value, label }) => {
+      const labelText = label
+        ? `${translateKey(label, language)} ${translateKey(value, language)}`
+        : translateKey(value, language);
+
+      const ariaLabel = `${language.removeFilter} ${labelText}`;
+
+      return (
+        <TagListItem
+          ariaLabel={ariaLabel}
+          key={`${key}-${value}`}
           onClick={() => {
-            onClick(filterKey, value);
+            onClick(key, value);
           }}
-          iconName={IconName.Close}
-          ariaLabel={`${ariaLabel} ${translateKey(value, language)}`}
-        />
-      </li>
-    ))}
+        >
+          {label && <span>{translateKey(label, language)}:</span>}
+          <span>{translateKey(value, language)}</span>
+        </TagListItem>
+      );
+    })}
   </ul>
 );
 

@@ -155,7 +155,7 @@ const SubCategoryForm = ({
               handleSelectStatus('category', selectedOptions);
             }}
             name="category"
-            labelText={language.mainCategoryName}
+            labelText={language.categoryName}
             errorText={language[errors.category]}
             required
           />

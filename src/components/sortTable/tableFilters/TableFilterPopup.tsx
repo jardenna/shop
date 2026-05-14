@@ -2,7 +2,6 @@ import { useCurrency } from '../../../features/currency/useCurrency';
 import { useLanguage } from '../../../features/language/useLanguage';
 import { IconName } from '../../../types/enums';
 import type { InputChangeHandler, InputType } from '../../../types/types';
-import FieldSet from '../../fieldset/FieldSet';
 import Input from '../../formElements/Input';
 import RadioButtonList from '../../formElements/RadioButtonList';
 import Icon from '../../icons/Icon';
@@ -43,14 +42,23 @@ const TableFilterPopup = <T,>({
   const { language } = useLanguage();
   const { currencyText } = useCurrency();
   const { minKey, maxKey } = getMinMaxKeys(name);
-  const legendText = `${language.filter} ${language[id]}`;
   const labelText = `${language.filter} ${language[id]}`;
   const labelTextShort = language[id];
   const inputSuffix = id !== 'countInStock' ? currencyText : language.pcs;
 
+  // Centralized check for active filter state
+  const isFilterActive = (() => {
+    if (filterType === 'number') {
+      return Boolean(values[minKey] || values[maxKey]);
+    }
+
+    return Boolean(value);
+  })();
+
   const getPopupContent = () => {
     switch (filterType) {
       case 'text':
+      case 'date':
         return (
           <TableFilterInput
             name={name}
@@ -58,7 +66,6 @@ const TableFilterPopup = <T,>({
             onFilter={onFilter}
             value={value}
             filterType={filterType}
-            legendText={legendText}
             labelText={labelText}
           />
         );
@@ -66,40 +73,40 @@ const TableFilterPopup = <T,>({
       case 'number':
         return (
           <form className="table-filter-form">
-            <FieldSet legendText={legendText}>
-              <Input
-                id={minKey}
-                type="number"
-                inputMode="numeric"
-                name={minKey}
-                labelText={`${labelTextShort} ${language.from}`}
-                value={values[minKey]}
-                onChange={onFilter}
-                autoFocus
-                inputSuffix={inputSuffix}
-              />
-              <Input
-                id={maxKey}
-                name={maxKey}
-                type="number"
-                inputMode="numeric"
-                labelText={`${labelTextShort} ${language.to}`}
-                value={values[maxKey]}
-                onChange={onFilter}
-                inputSuffix={inputSuffix}
-              />
-            </FieldSet>
+            <Input
+              id={minKey}
+              type="number"
+              inputMode="numeric"
+              name={minKey}
+              labelText={`${labelTextShort} ${language.from}`}
+              value={values[minKey]}
+              onChange={onFilter}
+              autoFocus
+              inputSuffix={inputSuffix}
+            />
+            <Input
+              id={maxKey}
+              name={maxKey}
+              type="number"
+              inputMode="numeric"
+              labelText={`${labelTextShort} ${language.to}`}
+              value={values[maxKey]}
+              onChange={onFilter}
+              inputSuffix={inputSuffix}
+            />
           </form>
         );
 
       case 'radio':
         return (
-          <RadioButtonList
-            radioButtonList={getListByName(name as keyof ListsMap)}
-            name={name}
-            onChange={onFilter}
-            initialChecked={value}
-          />
+          <form>
+            <RadioButtonList
+              radioButtonList={getListByName(name as keyof ListsMap)}
+              name={name}
+              onChange={onFilter}
+              initialChecked={value}
+            />
+          </form>
         );
 
       default:
@@ -116,7 +123,7 @@ const TableFilterPopup = <T,>({
     >
       <Icon iconName={IconName.Filter} />
 
-      {value && (
+      {isFilterActive && (
         <>
           <VisuallyHidden>{language.filtersApplied}</VisuallyHidden>
           <span className="dot" aria-hidden />

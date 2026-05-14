@@ -123,9 +123,9 @@ export type BaseSubCategory = DefaultResponseType & {
 };
 
 export type SubCategoryResponse = BaseSubCategory & {
+  categoryName: string;
   id: string;
   mainCategory: MainCategory;
-  mainCategoryName: string;
   productCount: number;
   scheduledDate?: Date;
 };
@@ -169,6 +169,18 @@ export type CategoryParams = SortParams & {
   categoryName: string;
   categoryStatus: Status;
   createdAt: string;
+};
+
+export type SubCategoryParams = SortParams & {
+  categoryName: string;
+  categoryStatus: Status;
+  subCategoryName: string;
+};
+
+export type UserParams = SortParams & {
+  email: string;
+  role: Roles;
+  username: string;
 };
 
 export type ProductsParams = BaseProductParams &

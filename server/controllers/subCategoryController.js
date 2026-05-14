@@ -83,31 +83,51 @@ const createSubCategory = [
 // @method  Get
 // @access  Public
 const getAllSubCategories = asyncHandler(async (req, res) => {
-  const allSubCategories = await SubCategory.find({}).lean();
   const sortField = req.query.sortField;
   const sortOrder = req.query.sortOrder === 'desc' ? -1 : 1;
 
+  const scheduledItems = await SubCategory.find({
+    categoryStatus: 'Scheduled',
+  }).lean();
+
   await updateScheduledItems({
-    items: allSubCategories,
+    items: scheduledItems,
     model: SubCategory,
     statusKey: 'categoryStatus',
   });
 
-  // Fetch subcategories with product count and mainCategory details
+  const baseMatch = {};
+  const postLookupMatch = {};
+
+  // Apply filters BEFORE lookup
+  if (req.filter?.categoryStatus) {
+    baseMatch.categoryStatus = req.filter.categoryStatus;
+  }
+
+  if (req.filter?.subCategoryName) {
+    const values = Array.isArray(req.filter.subCategoryName)
+      ? req.filter.subCategoryName
+      : req.filter.subCategoryName.split(',');
+
+    baseMatch.$or = values.map((value) => ({
+      subCategoryName: {
+        $regex: value.trim(),
+        $options: 'i',
+      },
+    }));
+  }
+
+  if (req.filter?.createdAt) {
+    baseMatch.createdAt = req.filter.createdAt;
+  }
+
+  if (req.filter?.categoryName) {
+    postLookupMatch.categoryName = req.filter.categoryName;
+  }
+
   const subCategories = await SubCategory.aggregate([
     {
-      $lookup: {
-        from: 'products', // Collection name for products
-        localField: '_id',
-        foreignField: 'subCategory',
-        as: 'products',
-      },
-    },
-    {
-      $addFields: {
-        productCount: { $size: '$products' },
-        mainCategoryName: '$mainCategory.categoryName',
-      },
+      $match: baseMatch,
     },
     {
       $lookup: {
@@ -126,8 +146,24 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
     {
       $addFields: {
         'mainCategory.id': '$mainCategory._id',
-        mainCategoryName: '$mainCategory.categoryName',
+        categoryName: '$mainCategory.categoryName',
       },
+    },
+    {
+      $lookup: {
+        from: 'products',
+        localField: '_id',
+        foreignField: 'subCategory',
+        as: 'products',
+      },
+    },
+    {
+      $addFields: {
+        productCount: { $size: '$products' },
+      },
+    },
+    {
+      $match: postLookupMatch,
     },
     {
       $project: {
