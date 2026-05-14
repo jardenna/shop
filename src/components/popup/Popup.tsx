@@ -1,5 +1,6 @@
 import type { Placement } from '@popperjs/core';
 import { type ReactNode, useId } from 'react';
+import { createPortal } from 'react-dom';
 import { usePopup } from '../../hooks/usePopup';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
@@ -61,20 +62,22 @@ const Popup = ({
         {children}
       </Button>
 
-      {popupIsOpen && (
-        <div
-          ref={popupRef}
-          className={`popup popup-container ${className}`}
-          id={popupId}
-          role={popupType === 'tooltip' ? 'tooltip' : undefined}
-        >
-          {typeof popupContent === 'function'
-            ? popupContent({ close: togglePopupList })
-            : popupContent}
+      {popupIsOpen &&
+        createPortal(
+          <div
+            ref={popupRef}
+            className={`popup popup-container ${className}`}
+            id={popupId}
+            role={popupType === 'tooltip' ? 'tooltip' : undefined}
+          >
+            {typeof popupContent === 'function'
+              ? popupContent({ close: togglePopupList })
+              : popupContent}
 
-          <span ref={arrowRef} className="popup-arrow" aria-hidden />
-        </div>
-      )}
+            <span ref={arrowRef} className="popup-arrow" aria-hidden />
+          </div>,
+          document.body,
+        )}
     </div>
   );
 };
