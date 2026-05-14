@@ -1,5 +1,3 @@
-/* eslint-disable no-nested-ternary */
-import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import type { PaginationItem } from './createPaginationItems';
 
@@ -14,33 +12,22 @@ const PaginationBtnItems = ({
   paginationBtnList,
   onPagination,
   page,
-  language,
 }: PaginationBtnItemsProps) =>
-  paginationBtnList.map((paginationBtn, indexValue) => {
+  paginationBtnList.map((paginationBtn) => {
     const isCurrentPage =
       paginationBtn.type === 'page' && paginationBtn.value === page;
 
-    const isJumpButton = paginationBtn.type !== 'page';
-
     return (
-      <li key={`${paginationBtn.type}-${paginationBtn.value}-${indexValue}`}>
+      <li key={`${paginationBtn.type}-${paginationBtn.value}`}>
         <Button
           onClick={() => {
             onPagination(paginationBtn.value);
           }}
-          variant={isJumpButton ? BtnVariant.Ghost : undefined}
+          variant={paginationBtn.btnVariant}
           disabled={paginationBtn.disabled}
           className={isCurrentPage ? 'current' : ''}
           ariaCurrent={isCurrentPage ? 'page' : undefined}
-          ariaLabel={
-            isJumpButton
-              ? paginationBtn.type === 'jumpPrevious'
-                ? language.jumpPagesBack
-                : language.jumpPagesForth
-              : isCurrentPage
-                ? `${language.currentPage} ${paginationBtn.value}`
-                : `${language.gotoPage} ${paginationBtn.value}`
-          }
+          ariaLabel={paginationBtn.ariaLabel}
         >
           {paginationBtn.label}
         </Button>
