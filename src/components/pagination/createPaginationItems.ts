@@ -2,6 +2,7 @@ export interface PaginationItem {
   label: string;
   type: 'page' | 'jumpPrevious' | 'jumpNext';
   value: number;
+  disabled?: boolean;
 }
 
 const createPageItems = (
@@ -40,27 +41,19 @@ export const createPaginationItems = (
 
   const pageItems = createPageItems(rangeStart, rangeEnd);
 
-  const previousJumpItem: PaginationItem[] =
-    rangeStart > 1
-      ? [
-          {
-            type: 'jumpPrevious',
-            value: Math.max(1, page - pageLimit),
-            label: '...',
-          },
-        ]
-      : [];
+  const previousJumpItem: PaginationItem = {
+    type: 'jumpPrevious',
+    value: Math.max(1, page - pageLimit),
+    label: '...',
+    disabled: rangeStart === 1,
+  };
 
-  const nextJumpItem: PaginationItem[] =
-    rangeEnd < totalBtns
-      ? [
-          {
-            type: 'jumpNext',
-            value: Math.min(totalBtns, page + pageLimit),
-            label: '...',
-          },
-        ]
-      : [];
+  const nextJumpItem: PaginationItem = {
+    type: 'jumpNext',
+    value: Math.min(totalBtns, page + pageLimit),
+    label: '...',
+    disabled: rangeEnd === totalBtns,
+  };
 
-  return [...previousJumpItem, ...pageItems, ...nextJumpItem];
+  return [previousJumpItem, ...pageItems, nextJumpItem];
 };
