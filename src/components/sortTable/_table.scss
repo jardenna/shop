@@ -54,7 +54,7 @@ table {
 
   th,
   td {
-    padding: 4px 12px;
+    padding: 4px 8px;
     width: rem(180px);
   }
 
@@ -104,14 +104,6 @@ table {
   }
 
   table {
-    tbody {
-      display: table-row-group;
-    }
-
-    tr {
-      display: table-row;
-    }
-
     th {
       position: sticky;
       top: 0;
