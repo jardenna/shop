@@ -9,7 +9,6 @@ import { validateEmail, validatePassword } from '../utils/validateAuth.js';
 // @route   /api/auth/register
 // @method   POST
 // @access  Public (register) / Admin (create-user)
-
 const createUser = asyncHandler(async (req, res) => {
   const { username, email, password, role } = req.body;
   const currentUser = req.user;
