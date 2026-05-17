@@ -13,10 +13,6 @@
     height: auto;
   }
 
-  @include max-size($small) {
-    flex-direction: column;
-  }
-
   .pagination-select {
     display: flex;
     align-items: center;

@@ -97,6 +97,7 @@ const ProductPage = () => {
   const selectProductCountList = ['8', '16'];
   const totalBtns = allProducts?.pages ?? 1;
   const productCount = allProducts ? allProducts.productCount : 0;
+  const isShowingAll = productsPerPage >= productCount && productCount > 0;
 
   const handleSelectCount = (option: Options) => {
     const newCount = Number(option.value);
@@ -196,6 +197,11 @@ const ProductPage = () => {
         onSelectCount={handleSelectCount}
         totalCount={productCount}
         paginationMobileText={paginationMobileText}
+        selectInfo={
+          isShowingAll
+            ? `${language.showingAllProducts} (${productCount})`
+            : language.productPerPage
+        }
         defaultValue={{
           value: productsPerPage.toString(),
           label: productsPerPage.toString(),

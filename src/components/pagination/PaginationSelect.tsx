@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router';
 import { useLanguage } from '../../features/language/useLanguage';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { Options } from '../../types/types';
 import FieldSet from '../fieldset/FieldSet';
 import Selectbox from '../selectbox/Selectbox';
@@ -7,8 +8,8 @@ import Selectbox from '../selectbox/Selectbox';
 export type PaginationSelectProps = {
   defaultValue: Options;
   optionList: string[];
+  selectInfo: string;
   totalCount: number;
-  selectInfo?: string;
   onSelectCount: (option: Options) => void;
 };
 
@@ -21,6 +22,7 @@ const PaginationSelect = ({
 }: PaginationSelectProps) => {
   const { pathname } = useLocation();
   const { language } = useLanguage();
+  const { isTabletSize } = useMediaQuery();
 
   const options = [
     ...optionList.map((count) => ({
@@ -49,7 +51,7 @@ const PaginationSelect = ({
           isOptionDisabled={isOptionDisabled}
         />
       </FieldSet>
-      {selectInfo && <p>{selectInfo}</p>}
+      {!isTabletSize && <p>{selectInfo}</p>}
     </form>
   );
 };
