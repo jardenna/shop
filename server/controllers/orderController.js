@@ -1,6 +1,6 @@
-import Order from '../models/ordersModel.js';
-// import Product from '../models/productModel';
 import asyncHandler from '../middleware/asyncHandler.js';
+import Order from '../models/ordersModel.js';
+import Product from '../models/productModel.js';
 
 const createOrder = asyncHandler(async (req, res) => {
   const {
@@ -19,6 +19,33 @@ const createOrder = asyncHandler(async (req, res) => {
     });
   }
 
+  const productIds = orderItems.map((item) => item.product);
+
+  const databaseProducts = await Product.find({
+    _id: {
+      $in: productIds,
+    },
+  });
+  console.log({ databaseProducts });
+
+  const productsWithDiscountedPrices = databaseProducts.map(
+    (databaseProduct) => {
+      const discountedPrice =
+        databaseProduct.price -
+        (databaseProduct.price * databaseProduct.discount) / 100;
+      console.log({ databaseProduct });
+
+      return {
+        productId: databaseProduct._id,
+        productName: databaseProduct.productName,
+        image: databaseProduct.images[0],
+        discountedPrice,
+      };
+    },
+  );
+
+  res.status(200).json(productsWithDiscountedPrices);
+
   const order = new Order({
     user: req.user._id,
     orderItems,
@@ -30,9 +57,9 @@ const createOrder = asyncHandler(async (req, res) => {
     totalPrice,
   });
 
-  const createdOrder = await order.save();
+  // const createdOrder = await order.save();
 
-  res.status(201).json(createdOrder);
+  // res.status(201).json(createdOrder);
 });
 
 export { createOrder };
