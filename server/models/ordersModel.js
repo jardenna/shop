@@ -16,7 +16,6 @@ const orderModelSchema = new Schema(
         },
       },
     ],
-
     shippingAddress: {
       address: { type: String, required: true },
       city: { type: String, required: true },
@@ -24,7 +23,8 @@ const orderModelSchema = new Schema(
       country: { type: String, required: true },
     },
     paymentMethod: {
-      address: { type: String, required: true },
+      type: String,
+      required: true,
     },
     paymentResult: {
       id: { type: String },
@@ -53,12 +53,12 @@ const orderModelSchema = new Schema(
       required: true,
       default: 0.0,
     },
-    isPayed: {
+    isPaid: {
       type: Boolean,
       required: true,
       default: false,
     },
-    payedAt: {
+    paidAt: {
       type: Date,
     },
     isDelivered: {
