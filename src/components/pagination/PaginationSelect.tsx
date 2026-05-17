@@ -7,8 +7,8 @@ import Selectbox from '../selectbox/Selectbox';
 export type PaginationSelectProps = {
   defaultValue: Options;
   optionList: string[];
-  selectInfo: string;
   totalCount: number;
+  selectInfo?: string;
   onSelectCount: (option: Options) => void;
 };
 
@@ -49,7 +49,7 @@ const PaginationSelect = ({
           isOptionDisabled={isOptionDisabled}
         />
       </FieldSet>
-      <p>{selectInfo}</p>
+      {selectInfo && <p>{selectInfo}</p>}
     </form>
   );
 };

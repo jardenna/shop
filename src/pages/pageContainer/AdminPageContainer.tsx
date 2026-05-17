@@ -7,6 +7,7 @@ type AdminPageContainerProps = {
   ariaLabelledby: string;
   children: ReactNode;
   heading: string;
+  className?: string;
   linkText?: string;
   linkTo?: string;
   scrollToRef?: RefObject<HTMLHeadingElement | null>;
@@ -20,13 +21,14 @@ const AdminPageContainer = ({
   linkTo,
   variant = 'large',
   scrollToRef,
+  className = '',
   ariaLabelledby,
 }: AdminPageContainerProps) => {
   const ariaTitle = ariaInfoTitle(ariaLabelledby);
 
   return (
     <section
-      className={`admin-page page-${variant}`}
+      className={`admin-page page-${variant} ${className}`}
       aria-labelledby={ariaTitle}
     >
       <MetaTags metaTitle={heading} />

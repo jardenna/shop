@@ -13,6 +13,23 @@
   }
 }
 
+.product-page {
+  .page-card {
+    max-height: fit-content;
+  }
+
+  .pagination {
+    margin: 0;
+    padding-block: 20px 0;
+
+    @include max-size($small) {
+      flex-direction: row;
+      padding: 0;
+      border: 0;
+    }
+  }
+}
+
 .product-overview-cell {
   display: flex;
   gap: 8px;

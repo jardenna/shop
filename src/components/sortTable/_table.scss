@@ -59,6 +59,7 @@ table {
   }
 
   td {
+    background-color: $color-white;
     line-height: rem(24px);
   }
 
@@ -75,8 +76,13 @@ table {
   width: 100%;
   margin-bottom: 12px;
   border: 1px solid $color-border;
-  height: rem(600px);
+  height: rem(664px);
   overflow: auto;
+
+  @include max-size($mini) {
+    height: fit-content;
+    overflow: auto hidden;
+  }
 
   .padding-20 {
     img {
@@ -131,6 +137,12 @@ table {
       justify-content: space-between;
       white-space: nowrap;
       gap: 12px;
+      align-items: center;
+
+      @include max-size($large) {
+        flex-direction: column;
+        gap: 8px;
+      }
     }
 
     .dot {
