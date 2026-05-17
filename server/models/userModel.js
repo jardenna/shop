@@ -97,6 +97,7 @@ const UserSchema = new Schema(
       virtuals: true,
     },
   },
+  { timestamps: true },
 );
 
 const User = model('User', UserSchema);

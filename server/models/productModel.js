@@ -63,42 +63,46 @@ const productSchema = new Schema(
 );
 
 // Custom logic for dynamic size validation
-productSchema.pre('validate', async function () {
-  const isSizeRelatedUpdate =
-    this.isNew || this.isModified('sizes') || this.isModified('subCategory');
+productSchema.pre(
+  'validate',
+  async function () {
+    const isSizeRelatedUpdate =
+      this.isNew || this.isModified('sizes') || this.isModified('subCategory');
 
-  if (!isSizeRelatedUpdate) {
-    return;
-  }
+    if (!isSizeRelatedUpdate) {
+      return;
+    }
 
-  if (!this.subCategory) {
-    return;
-  }
+    if (!this.subCategory) {
+      return;
+    }
 
-  const subCat = await SubCategory.findById(this.subCategory);
-  if (!subCat) {
-    throw new Error('Invalid subCategory');
-  }
+    const subCat = await SubCategory.findById(this.subCategory);
+    if (!subCat) {
+      throw new Error('Invalid subCategory');
+    }
 
-  const allowedSizes = subCat.allowedSizes ?? [];
+    const allowedSizes = subCat.allowedSizes ?? [];
 
-  if (allowedSizes.length === 0) {
-    this.sizes = [];
-    return;
-  }
+    if (allowedSizes.length === 0) {
+      this.sizes = [];
+      return;
+    }
 
-  if (!this.sizes || this.sizes.length === 0) {
-    throw new Error('Sizes are required for this subCategory');
-  }
+    if (!this.sizes || this.sizes.length === 0) {
+      throw new Error('Sizes are required for this subCategory');
+    }
 
-  const invalidSizes = this.sizes.filter(
-    (size) => !allowedSizes.includes(size),
-  );
+    const invalidSizes = this.sizes.filter(
+      (size) => !allowedSizes.includes(size),
+    );
 
-  if (invalidSizes.length > 0) {
-    throw new Error(`Invalid sizes: ${invalidSizes.join(', ')}`);
-  }
-});
+    if (invalidSizes.length > 0) {
+      throw new Error(`Invalid sizes: ${invalidSizes.join(', ')}`);
+    }
+  },
+  { timestamps: true },
+);
 
 const Product = model('Product', productSchema);
 

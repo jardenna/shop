@@ -34,22 +34,26 @@ const subCategorySchema = new Schema(
   { timestamps: true },
 );
 
-subCategorySchema.pre('save', async function () {
-  if (!this.isModified('category')) {
-    return;
-  }
+subCategorySchema.pre(
+  'save',
+  async function () {
+    if (!this.isModified('category')) {
+      return;
+    }
 
-  const categoryData = await Category.findById(this.category);
+    const categoryData = await Category.findById(this.category);
 
-  if (!categoryData) {
-    throw new Error('Invalid main category');
-  }
+    if (!categoryData) {
+      throw new Error('Invalid main category');
+    }
 
-  this.allowedSizes = resolveAllowedSizes({
-    subKey: this.translationKey,
-    mainKey: categoryData.categoryName,
-  });
-});
+    this.allowedSizes = resolveAllowedSizes({
+      subKey: this.translationKey,
+      mainKey: categoryData.categoryName,
+    });
+  },
+  { timestamps: true },
+);
 
 // Make subCategoryName + category unique (case-insensitive)
 subCategorySchema.set('collation', { locale: 'en', strength: 2 });
