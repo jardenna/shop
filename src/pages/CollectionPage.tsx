@@ -135,7 +135,6 @@ const CollectionPage = () => {
       display: 'list',
     },
   ];
-  const selectProductCountList = ['8', '16'];
   const ariaLabelledby = ariaInfoTitle(category || 'women');
 
   return (
@@ -240,7 +239,6 @@ const CollectionPage = () => {
               value: productsPerPage.toString(),
               label: productsPerPage.toString(),
             }}
-            optionList={selectProductCountList}
           />
         )}
       </section>

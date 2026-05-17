@@ -94,7 +94,6 @@ const ProductPage = () => {
     }
   }
 
-  const selectProductCountList = ['8', '16'];
   const totalBtns = allProducts?.pages ?? 1;
   const productCount = allProducts ? allProducts.productCount : 0;
 
@@ -200,7 +199,6 @@ const ProductPage = () => {
           value: productsPerPage.toString(),
           label: productsPerPage.toString(),
         }}
-        optionList={selectProductCountList}
       />
     </AdminPageContainer>
   );

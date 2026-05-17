@@ -7,8 +7,8 @@ import Selectbox from '../selectbox/Selectbox';
 
 export type PaginationSelectProps = {
   defaultValue: Options;
-  optionList: string[];
   totalCount: number;
+  optionList?: string[];
   onSelectCount: (option: Options) => void;
 };
 
@@ -21,9 +21,10 @@ const PaginationSelect = ({
   const { pathname } = useLocation();
   const { language } = useLanguage();
   const { isTabletSize } = useMediaQuery();
+  const selectProductCountList = optionList || ['8', '16', '32'];
 
   const options = [
-    ...optionList.map((count) => ({
+    ...selectProductCountList.map((count) => ({
       value: count,
       label: count,
     })),
