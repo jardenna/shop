@@ -1,12 +1,9 @@
 // import order from '../models/ordersModel';
 // import Product from '../models/productModel';
+import asyncHandler from '../middleware/asyncHandler.js';
 
-const createOrder = async (req, res) => {
-  try {
-    res.send('Hello from order');
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
+const createOrder = asyncHandler((req, res) => {
+  res.send('Hello from order');
+});
 
 export { createOrder };
