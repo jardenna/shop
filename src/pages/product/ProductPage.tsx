@@ -94,10 +94,8 @@ const ProductPage = () => {
     }
   }
 
-  const selectProductCountList = ['8', '16'];
   const totalBtns = allProducts?.pages ?? 1;
   const productCount = allProducts ? allProducts.productCount : 0;
-  const isShowingAll = productsPerPage >= productCount && productCount > 0;
 
   const handleSelectCount = (option: Options) => {
     const newCount = Number(option.value);
@@ -127,6 +125,7 @@ const ProductPage = () => {
 
   return (
     <AdminPageContainer
+      className="product-page"
       heading={language.products}
       linkText={language.createNewProduct}
       linkTo={AdminPath.AdminProductCreate}
@@ -200,12 +199,6 @@ const ProductPage = () => {
           value: productsPerPage.toString(),
           label: productsPerPage.toString(),
         }}
-        optionList={selectProductCountList}
-        selectInfo={
-          isShowingAll
-            ? `${language.showingAllProducts} (${productCount})`
-            : language.productPerPage
-        }
       />
     </AdminPageContainer>
   );

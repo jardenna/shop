@@ -1,33 +1,33 @@
 import { useLocation } from 'react-router';
 import { useLanguage } from '../../features/language/useLanguage';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { Options } from '../../types/types';
 import FieldSet from '../fieldset/FieldSet';
 import Selectbox from '../selectbox/Selectbox';
 
 export type PaginationSelectProps = {
   defaultValue: Options;
-  optionList: string[];
-  selectInfo: string;
   totalCount: number;
+  optionList?: string[];
   onSelectCount: (option: Options) => void;
 };
 
 const PaginationSelect = ({
   defaultValue,
   onSelectCount,
-  selectInfo,
   optionList,
   totalCount,
 }: PaginationSelectProps) => {
   const { pathname } = useLocation();
   const { language } = useLanguage();
+  const { isTabletSize } = useMediaQuery();
+  const selectProductCountList = optionList || ['8', '16', '32'];
 
   const options = [
-    ...optionList.map((count) => ({
+    ...selectProductCountList.map((count) => ({
       value: count,
       label: count,
     })),
-    { value: totalCount.toString(), label: language.all },
   ];
 
   // Check when filtering
@@ -49,7 +49,7 @@ const PaginationSelect = ({
           isOptionDisabled={isOptionDisabled}
         />
       </FieldSet>
-      <p>{selectInfo}</p>
+      {!isTabletSize && <p>{language.productPerPage}</p>}
     </form>
   );
 };

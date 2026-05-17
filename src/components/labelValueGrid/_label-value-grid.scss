@@ -1,6 +1,8 @@
 @use '../../scss/globals' as *;
 
 .label-value-grid {
+  padding-top: 8px;
+
   @include grid-fixed-columns($gap: 20px);
 
   .tooltip {

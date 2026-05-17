@@ -5,8 +5,6 @@
   display: flex;
   width: 100%;
   justify-content: center;
-  padding: 20px;
-  padding-top: 0;
 }
 
 .admin-page {
@@ -32,7 +30,7 @@
     border-radius: 4px;
     box-shadow: $box-shadow;
     width: 100%;
-    padding: 24px;
+    padding: 16px;
 
     @include max-size($medium) {
       padding: 12px;

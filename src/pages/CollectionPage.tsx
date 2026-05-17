@@ -92,7 +92,6 @@ const CollectionPage = () => {
   const totalBtns = products?.pages ?? 1;
   const src = `/images/banners/${category}_banner`;
   const altText = `${category}BannerAltText`;
-  const isShowingAll = productsPerPage >= productCount && productCount > 0;
 
   const { infoText, paginationMobileText, ariaLiveText } = usePaginationText({
     page,
@@ -136,7 +135,6 @@ const CollectionPage = () => {
       display: 'list',
     },
   ];
-  const selectProductCountList = ['8', '16'];
   const ariaLabelledby = ariaInfoTitle(category || 'women');
 
   return (
@@ -241,12 +239,6 @@ const CollectionPage = () => {
               value: productsPerPage.toString(),
               label: productsPerPage.toString(),
             }}
-            optionList={selectProductCountList}
-            selectInfo={
-              isShowingAll
-                ? `${language.showingAllProducts} (${productCount})`
-                : language.productPerPage
-            }
           />
         )}
       </section>
