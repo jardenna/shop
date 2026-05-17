@@ -11,7 +11,6 @@ const Pagination = ({
   onPagination,
   defaultValue,
   onSelectCount,
-  selectInfo,
   optionList,
   totalCount,
   paginationMobileText,
@@ -29,7 +28,6 @@ const Pagination = ({
       optionList={optionList}
       onSelectCount={onSelectCount}
       defaultValue={defaultValue}
-      selectInfo={selectInfo}
       totalCount={totalCount}
     />
   </section>

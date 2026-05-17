@@ -8,7 +8,6 @@ import Selectbox from '../selectbox/Selectbox';
 export type PaginationSelectProps = {
   defaultValue: Options;
   optionList: string[];
-  selectInfo: string;
   totalCount: number;
   onSelectCount: (option: Options) => void;
 };
@@ -16,7 +15,6 @@ export type PaginationSelectProps = {
 const PaginationSelect = ({
   defaultValue,
   onSelectCount,
-  selectInfo,
   optionList,
   totalCount,
 }: PaginationSelectProps) => {
@@ -29,7 +27,6 @@ const PaginationSelect = ({
       value: count,
       label: count,
     })),
-    { value: totalCount.toString(), label: language.all },
   ];
 
   // Check when filtering
@@ -51,7 +48,7 @@ const PaginationSelect = ({
           isOptionDisabled={isOptionDisabled}
         />
       </FieldSet>
-      {!isTabletSize && <p>{selectInfo}</p>}
+      {!isTabletSize && <p>{language.productPerPage}</p>}
     </form>
   );
 };

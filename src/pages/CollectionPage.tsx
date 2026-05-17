@@ -92,7 +92,6 @@ const CollectionPage = () => {
   const totalBtns = products?.pages ?? 1;
   const src = `/images/banners/${category}_banner`;
   const altText = `${category}BannerAltText`;
-  const isShowingAll = productsPerPage >= productCount && productCount > 0;
 
   const { infoText, paginationMobileText, ariaLiveText } = usePaginationText({
     page,
@@ -242,11 +241,6 @@ const CollectionPage = () => {
               label: productsPerPage.toString(),
             }}
             optionList={selectProductCountList}
-            selectInfo={
-              isShowingAll
-                ? `${language.showingAllProducts} (${productCount})`
-                : language.productPerPage
-            }
           />
         )}
       </section>
