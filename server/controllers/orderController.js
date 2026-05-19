@@ -1,3 +1,4 @@
+import { VAT_SHARE } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Order from '../models/ordersModel.js';
 import Product from '../models/productModel.js';
@@ -30,16 +31,15 @@ const createOrder = asyncHandler(async (req, res) => {
         (databaseProduct.price * databaseProduct.discount) / 100;
 
       const subtotal = discountedPrice * matchingOrderItem.qty;
-      const taxPrice = subtotal * 0.2;
+      const taxPrice = subtotal * VAT_SHARE;
       const noTax = subtotal - taxPrice;
-      console.log(req.body);
 
       return {
         productId: databaseProduct._id,
         productName: databaseProduct.productName,
         image: databaseProduct.images[0],
         price: discountedPrice,
-        taxPrice,
+        taxPrice: Math.round(taxPrice * 100) / 100,
         subtotal,
         noTax,
         qty: matchingOrderItem.qty,

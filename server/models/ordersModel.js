@@ -32,7 +32,6 @@ const orderModelSchema = new Schema(
       update_time: { type: String },
       email_address: { type: String },
     },
-
     itemPrice: {
       type: Number,
       required: true,
