@@ -2,6 +2,11 @@ import { VAT_SHARE } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Order from '../models/ordersModel.js';
 import Product from '../models/productModel.js';
+
+// @desc    Create orders
+// @route   /api//orders
+// @method  Post
+// @access  Public for logged-in users
 const createOrder = asyncHandler(async (req, res) => {
   const { orderItems, paymentMethod, shippingAddress } = req.body;
 

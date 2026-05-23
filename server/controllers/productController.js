@@ -418,7 +418,7 @@ const getShopProducts = asyncHandler(async (req, res) => {
 // @desc    Get admin Products
 // @route   /api/products/allProducts
 // @method  Get
-// @access  Public
+// @access  Private for admin and employee
 const getAdminProducts = asyncHandler(async (req, res) => {
   await updateScheduledItems({
     items: await Product.find({ productStatus: SCHEDULED }).lean(),
