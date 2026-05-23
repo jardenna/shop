@@ -211,11 +211,14 @@ const checkScheduled = asyncHandler(async (req, res) => {
 const getSubCategoryById = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
-  const category = await SubCategory.findById(id)
-    .populate('category', 'categoryName categoryStatus') // Populate parent category details
+  const subCategory = await SubCategory.findById(id)
+    .populate({
+      path: 'category',
+      select: 'categoryName categoryStatus',
+    })
     .lean();
 
-  if (!category) {
+  if (!subCategory) {
     return res.status(404).json({
       success: false,
       message: t('couldNotFindInfo', req.lang),
@@ -227,7 +230,7 @@ const getSubCategoryById = asyncHandler(async (req, res) => {
     subCategory: id,
   });
 
-  const { category: mainCategory, ...rest } = category;
+  const { category: mainCategory, ...rest } = subCategory;
 
   res.status(200).json(
     formatMongoData({
@@ -280,8 +283,13 @@ const getSubCategoriesWithParent = asyncHandler(async (req, res) => {
 const getMenuByParentCategory = asyncHandler(async (req, res) => {
   const { parentCategoryName } = req.query;
 
-  const subCategories = await SubCategory.find({ categoryStatus: PUBLISHED })
-    .populate('category', 'categoryName')
+  const subCategories = await SubCategory.find({
+    categoryStatus: PUBLISHED,
+  })
+    .populate({
+      path: 'category',
+      select: 'categoryName',
+    })
     .lean();
 
   // Filter by parent category name
