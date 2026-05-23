@@ -46,6 +46,7 @@ const createOrder = asyncHandler(async (req, res) => {
       };
     },
   );
+
   const itemPrice = productsWithDiscountedPrices.reduce((total, product) => {
     return total + product.subtotal;
   }, 0);
