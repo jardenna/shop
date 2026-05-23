@@ -2,6 +2,7 @@ import { VAT_SHARE } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Order from '../models/ordersModel.js';
 import Product from '../models/productModel.js';
+import { formatMongoData } from '../utils/formatMongoData.js';
 
 // @desc    Create orders
 // @route   /api/orders
@@ -76,7 +77,7 @@ const createOrder = asyncHandler(async (req, res) => {
 
   const createdOrder = await order.save();
 
-  res.status(201).json(createdOrder);
+  res.status(201).json(formatMongoData(createdOrder));
 });
 
 // @desc    Get all orders
@@ -91,7 +92,7 @@ const getAllOrders = asyncHandler(async (req, res) => {
     })
     .lean();
 
-  res.status(200).json(orders);
+  res.status(200).json(formatMongoData(orders));
 });
 
 export { createOrder, getAllOrders };
