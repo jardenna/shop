@@ -3,6 +3,7 @@ import asyncHandler from '../middleware/asyncHandler.js';
 import Order from '../models/ordersModel.js';
 import Product from '../models/productModel.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
+import { t } from '../utils/translator.js';
 
 // @desc    Create orders
 // @route   /api/orders
@@ -14,7 +15,7 @@ const createOrder = asyncHandler(async (req, res) => {
   if (!orderItems || orderItems.length === 0) {
     return res.status(400).json({
       success: false,
-      message: 'No order items',
+      message: t('cartIsEmpty', req.lang),
     });
   }
 
@@ -25,6 +26,13 @@ const createOrder = asyncHandler(async (req, res) => {
       $in: productIds,
     },
   });
+
+  if (databaseProducts.length !== productIds.length) {
+    return res.status(404).json({
+      success: false,
+      message: t('productsNoLongerAvailable', req.lang),
+    });
+  }
 
   const productsWithDiscountedPrices = databaseProducts.map(
     (databaseProduct) => {
@@ -81,7 +89,7 @@ const createOrder = asyncHandler(async (req, res) => {
 });
 
 // @desc    Get all orders
-// @route   /api//orders
+// @route   /api/orders
 // @method  Get
 // @access  Private for admin and employee
 const getAllOrders = asyncHandler(async (req, res) => {
@@ -95,4 +103,14 @@ const getAllOrders = asyncHandler(async (req, res) => {
   res.status(200).json(formatMongoData(orders));
 });
 
-export { createOrder, getAllOrders };
+// @desc    Get orders pr user
+// @route   /api/myorders
+// @method  Get
+// @access  Public for logged in users
+const getUserOrders = asyncHandler(async (req, res) => {
+  const orders = await Order.find({ user: req.user._id }).lean();
+
+  res.status(200).json(formatMongoData(orders));
+});
+
+export { createOrder, getAllOrders, getUserOrders };
