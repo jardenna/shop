@@ -39,6 +39,9 @@ const MB = 1024 * 1024;
 const MAX_FILE_SIZE = 1 * MB;
 const MAX_FILES = 5;
 
+const VAT_RATE = 25;
+const VAT_SHARE = VAT_RATE / (100 + VAT_RATE);
+
 export {
   ALLOWED_FASHION_PREFERENCES,
   ALLOWED_ROLES,
@@ -52,4 +55,5 @@ export {
   SCHEDULED,
   SHOE_SIZES,
   STATUS,
+  VAT_SHARE,
 };

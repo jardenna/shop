@@ -3,7 +3,6 @@ import {
   getFavorites,
   toggleFavorite,
 } from '../controllers/favoritesController.js';
-
 import { authenticate } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
