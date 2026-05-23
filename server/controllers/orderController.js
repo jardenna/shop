@@ -4,7 +4,7 @@ import Order from '../models/ordersModel.js';
 import Product from '../models/productModel.js';
 
 // @desc    Create orders
-// @route   /api//orders
+// @route   /api/orders
 // @method  Post
 // @access  Public for logged-in users
 const createOrder = asyncHandler(async (req, res) => {
@@ -79,4 +79,19 @@ const createOrder = asyncHandler(async (req, res) => {
   res.status(201).json(createdOrder);
 });
 
-export { createOrder };
+// @desc    Get all orders
+// @route   /api//orders
+// @method  Get
+// @access  Private for admin and employee
+const getAllOrders = asyncHandler(async (req, res) => {
+  const orders = await Order.find()
+    .populate({
+      path: 'user',
+      select: '_id username',
+    })
+    .lean();
+
+  res.status(200).json(orders);
+});
+
+export { createOrder, getAllOrders };
