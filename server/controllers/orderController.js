@@ -11,7 +11,7 @@ import { validateFakePayment } from '../utils/validateFakePayment.js';
 // @method  Post
 // @access  Public for logged-in users
 const createOrder = asyncHandler(async (req, res) => {
-  const { orderItems, paymentMethod, shippingAddress } = req.body;
+  const { orderItems, shippingAddress } = req.body;
 
   if (!orderItems || orderItems.length === 0) {
     return res.status(400).json({
@@ -77,7 +77,6 @@ const createOrder = asyncHandler(async (req, res) => {
     user: req.user._id,
     orderItems: productsWithDiscountedPrices,
     shippingAddress,
-    paymentMethod,
     itemPrice,
     taxPrice,
     shippingPrice,

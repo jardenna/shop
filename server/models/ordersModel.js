@@ -31,7 +31,6 @@ const orderModelSchema = new Schema(
     },
     paymentMethod: {
       type: String,
-      required: true,
       enum: ALLOWED_PAYMENT_METHODS,
     },
     paymentResult: {
