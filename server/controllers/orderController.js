@@ -4,6 +4,7 @@ import Order from '../models/ordersModel.js';
 import Product from '../models/productModel.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
+import { validateFakePayment } from '../utils/validateFakePayment.js';
 
 // @desc    Create orders
 // @route   /api/orders
@@ -177,9 +178,24 @@ const payOrder = asyncHandler(async (req, res) => {
     });
   }
 
+  const validationError = validateFakePayment(req.body);
+
+  if (validationError) {
+    return res.status(400).json({
+      success: false,
+      message: validationError,
+    });
+  }
+
   order.isPaid = true;
   order.paidAt = new Date();
   order.paymentMethod = paymentMethod;
+  order.paymentResult = {
+    id: crypto.randomUUID(),
+    status: 'Completed',
+    updateTime: new Date(),
+    email: req.user.email,
+  };
 
   const updatedOrder = await order.save();
   res.status(200).json(updatedOrder);

@@ -1,4 +1,5 @@
 import { model, Schema } from 'mongoose';
+import { ALLOWED_PAYMENT_METHODS } from '../config/constants.js';
 
 const { ObjectId } = Schema;
 
@@ -31,12 +32,13 @@ const orderModelSchema = new Schema(
     paymentMethod: {
       type: String,
       required: true,
+      enum: ALLOWED_PAYMENT_METHODS,
     },
     paymentResult: {
       id: { type: String },
       status: { type: String },
-      update_time: { type: String },
-      email_address: { type: String },
+      updateTime: { type: String },
+      email: { type: String },
     },
     itemPrice: {
       type: Number,

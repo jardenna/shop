@@ -42,8 +42,16 @@ const MAX_FILES = 5;
 const VAT_RATE = 25;
 const VAT_SHARE = VAT_RATE / (100 + VAT_RATE);
 
+const ALLOWED_PAYMENT_METHODS = ['Credit Card', 'PayPal', 'MobilePay'];
+const PAYMENT_METHODS = {
+  CREDIT_CARD: 'Credit Card',
+  PAYPAL: 'PayPal',
+  MOBILEPAY: 'MobilePay',
+};
+
 export {
   ALLOWED_FASHION_PREFERENCES,
+  ALLOWED_PAYMENT_METHODS,
   ALLOWED_ROLES,
   CLOTHING_SIZES,
   INACTIVE,
@@ -51,6 +59,7 @@ export {
   MAX_FILE_SIZE,
   MAX_FILES,
   MEN_SHOE_SIZES,
+  PAYMENT_METHODS,
   PUBLISHED,
   SCHEDULED,
   SHOE_SIZES,
