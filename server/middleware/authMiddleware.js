@@ -47,7 +47,7 @@ const authorizeEmployee = (req, res, next) => {
   } else {
     return res.status(401).json({
       success: false,
-      message: t(notAuthorized),
+      message: t('notAuthorized'),
     });
   }
 };
