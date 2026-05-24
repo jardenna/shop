@@ -85,7 +85,7 @@ const createOrder = asyncHandler(async (req, res) => {
 
   const createdOrder = await order.save();
 
-  res.status(201).json(formatMongoData(createdOrder));
+  res.status(201).json(createdOrder);
 });
 
 // @desc    Get all orders
@@ -146,4 +146,43 @@ const getUserOrders = asyncHandler(async (req, res) => {
   res.status(200).json(formatMongoData(orders));
 });
 
-export { createOrder, getAllOrders, getOrderById, getUserOrders };
+// @desc    Pay order
+// @route   /api/orders/:id/pay
+// @method  Put
+// @access  Public for logged in users
+const payOrder = asyncHandler(async (req, res) => {
+  const { paymentMethod } = req.body;
+  const order = await Order.findById(req.params.id);
+
+  if (!order) {
+    return res.status(404).json({
+      success: false,
+      message: t('couldNotFindInfo', req.lang),
+    });
+  }
+
+  const orderBelongsToUser = order.user.toString() === req.user._id.toString();
+
+  if (!orderBelongsToUser) {
+    return res.status(403).json({
+      success: false,
+      message: t('notAuthorized', req.lang),
+    });
+  }
+
+  if (order.isPaid) {
+    return res.status(400).json({
+      success: false,
+      message: 'order already paid',
+    });
+  }
+
+  order.isPaid = true;
+  order.paidAt = new Date();
+  order.paymentMethod = paymentMethod;
+
+  const updatedOrder = await order.save();
+  res.status(200).json(updatedOrder);
+});
+
+export { createOrder, getAllOrders, getOrderById, getUserOrders, payOrder };

@@ -4,6 +4,7 @@ import {
   getAllOrders,
   getOrderById,
   getUserOrders,
+  payOrder,
 } from '../controllers/orderController.js';
 import {
   authenticate,
@@ -20,5 +21,6 @@ router
 
 router.route('/me').get(languageMiddleware, authenticate, getUserOrders);
 router.route('/:id').get(languageMiddleware, authenticate, getOrderById);
+router.route('/:id/pay').put(languageMiddleware, authenticate, payOrder);
 
 export default router;
