@@ -36,7 +36,7 @@ const authorizeAdmin = (req, res, next) => {
   } else {
     return res.status(401).json({
       success: false,
-      message: t('notAuthorizedAdmin', req.lang),
+      message: t('notAuthorized', req.lang),
     });
   }
 };
@@ -47,7 +47,7 @@ const authorizeEmployee = (req, res, next) => {
   } else {
     return res.status(401).json({
       success: false,
-      message: 'Not authorized as an employee',
+      message: t(notAuthorized),
     });
   }
 };

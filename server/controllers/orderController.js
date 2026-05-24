@@ -103,8 +103,41 @@ const getAllOrders = asyncHandler(async (req, res) => {
   res.status(200).json(formatMongoData(orders));
 });
 
-// @desc    Get orders pr user
-// @route   /api/myorders
+// @desc    Get order by Id
+// @route   /api/orders/id
+// @method  Get
+// @access  Private
+const getOrderById = asyncHandler(async (req, res) => {
+  const currentUserRole = req.user.role;
+
+  const order = await Order.findById(req.params.id)
+    .populate({
+      path: 'user',
+      select: '_id username',
+    })
+    .lean();
+
+  if (!order) {
+    return res
+      .status(404)
+      .json({ success: false, message: t('couldNotFindInfo', req.lang) });
+  }
+  if (currentUserRole === 'User') {
+    const orderBelongsToUser =
+      order.user._id.toString() === req.user._id.toString();
+
+    if (!orderBelongsToUser) {
+      return res.status(403).json({
+        success: false,
+        message: t('notAuthorized', req.lang),
+      });
+    }
+  }
+  res.status(200).json(formatMongoData(order));
+});
+
+// @desc    Get orders as a user
+// @route   /api/orders/me
 // @method  Get
 // @access  Public for logged in users
 const getUserOrders = asyncHandler(async (req, res) => {
@@ -113,4 +146,4 @@ const getUserOrders = asyncHandler(async (req, res) => {
   res.status(200).json(formatMongoData(orders));
 });
 
-export { createOrder, getAllOrders, getUserOrders };
+export { createOrder, getAllOrders, getOrderById, getUserOrders };

@@ -248,7 +248,7 @@ noProduct;Product not found;Produkt blev ikke fundet
 noProductResult;No products match your filters. Try removing some filters or reset to see all products again.;Der er ingen produkter, der matcher dine filtre. Prøv at fjerne nogle filtre eller nulstil for at se alle produkter igen.
 noProductResultTitle;No product match your filters;Ingen produkter matcher dine filtre
 noReview;Be the first to review this product;Bliv den første til at anmelde dette produkt
-notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 
+notAuthorized;Not authorized;Ikke autoriseret
 notAuthorizedNoToken;Not authorized, no token;Ikke autoriseret, ingen token
 notAuthorizedTokenFailed;Not authorized, token failed;Ikke autoriseret, token mislykkedes
 nothingWasUpdated;No changes were made;Der blev ikke foretaget nogen ændringer

@@ -2,6 +2,7 @@ import express from 'express';
 import {
   createOrder,
   getAllOrders,
+  getOrderById,
   getUserOrders,
 } from '../controllers/orderController.js';
 import {
@@ -18,5 +19,6 @@ router
   .get(authenticate, authorizeEmployee, getAllOrders);
 
 router.route('/me').get(languageMiddleware, authenticate, getUserOrders);
+router.route('/:id').get(languageMiddleware, authenticate, getOrderById);
 
 export default router;
