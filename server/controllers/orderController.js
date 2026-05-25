@@ -108,8 +108,6 @@ const getAllOrders = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Private
 const getOrderById = asyncHandler(async (req, res) => {
-  const currentUserRole = req.user.role;
-
   const order = await Order.findById(req.params.id)
     .populate({
       path: 'user',
@@ -122,17 +120,7 @@ const getOrderById = asyncHandler(async (req, res) => {
       .status(404)
       .json({ success: false, message: t('couldNotFindInfo', req.lang) });
   }
-  if (currentUserRole === 'User') {
-    const orderBelongsToUser =
-      order.user._id.toString() === req.user._id.toString();
 
-    if (!orderBelongsToUser) {
-      return res.status(403).json({
-        success: false,
-        message: t('notAuthorized', req.lang),
-      });
-    }
-  }
   res.status(200).json(formatMongoData(order));
 });
 
@@ -200,4 +188,45 @@ const payOrder = asyncHandler(async (req, res) => {
   res.status(200).json(updatedOrder);
 });
 
-export { createOrder, getAllOrders, getOrderById, getUserOrders, payOrder };
+// @desc    Deliver order
+// @route   /api/orders/:id/deliver
+// @method  Put
+// @access  Private for admin and employee
+const deliverOrder = asyncHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id);
+
+  if (!order) {
+    return res.status(404).json({
+      success: false,
+      message: t('couldNotFindInfo', req.lang),
+    });
+  }
+
+  if (!order.isPaid) {
+    return res.status(400).json({
+      success: false,
+      message: 'The order is not paid yet',
+    });
+  }
+
+  if (order.isDelivered) {
+    return res.status(400).json({
+      success: false,
+      message: 'The order is already delivered',
+    });
+  }
+
+  order.isDelivered = true;
+  order.deliveredAt = new Date();
+  const updatedOrder = await order.save();
+  res.status(200).json(updatedOrder);
+});
+
+export {
+  createOrder,
+  deliverOrder,
+  getAllOrders,
+  getOrderById,
+  getUserOrders,
+  payOrder,
+};
