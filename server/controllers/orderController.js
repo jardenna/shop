@@ -158,6 +158,27 @@ const payOrder = asyncHandler(async (req, res) => {
     });
   }
 
+  const productIds = order.orderItems.map((item) => item.productId);
+
+  const databaseProducts = await Product.find({
+    _id: {
+      $in: productIds,
+    },
+  });
+
+  for (const databaseProduct of databaseProducts) {
+    const matchingOrderItem = order.orderItems.find((orderItem) => {
+      return orderItem.productId.toString() === databaseProduct._id.toString();
+    });
+
+    if (databaseProduct.countInStock < matchingOrderItem.qty) {
+      return res.status(400).json({
+        success: false,
+        message: `${databaseProduct.productName} is out of stock`,
+      });
+    }
+  }
+
   if (order.isPaid) {
     return res.status(400).json({
       success: false,
