@@ -38,6 +38,7 @@ browseImages;Browse images;Tilføj produkt billeder
 calendar;Calendar;Kalender
 cancel;Cancel;Annuller
 care;Care;Vaskeanvisning
+cartIsEmpty;Cart is empty;Kurven er tom
 categories;Categories;Kategorier
 category;Category;Kategori
 categoryCard;Category card;Kategori card
@@ -247,7 +248,7 @@ noProduct;Product not found;Produkt blev ikke fundet
 noProductResult;No products match your filters. Try removing some filters or reset to see all products again.;Der er ingen produkter, der matcher dine filtre. Prøv at fjerne nogle filtre eller nulstil for at se alle produkter igen.
 noProductResultTitle;No product match your filters;Ingen produkter matcher dine filtre
 noReview;Be the first to review this product;Bliv den første til at anmelde dette produkt
-notAuthorizedAdmin;Not authorized as an admin;Ikke autoriseret som admin 
+notAuthorized;Not authorized;Ikke autoriseret
 notAuthorizedNoToken;Not authorized, no token;Ikke autoriseret, ingen token
 notAuthorizedTokenFailed;Not authorized, token failed;Ikke autoriseret, token mislykkedes
 nothingWasUpdated;No changes were made;Der blev ikke foretaget nogen ændringer
@@ -267,8 +268,11 @@ onlyAdminsAssignRole;Only admins can assign roles;Kun administratorer kan tildel
 onlyFourAddresses;You may have up to 4 addresses;Du kan højst have 4 adresser
 orange;Orange;Orange
 originaPrice;Original price;Før pris
-orders;Orders;Ordrer
 orderAltText;Young boy in black jeans and a white T-shirt layered with a blue-checkered shirt, looking expectant.;Ung dreng i sorte jeans og hvid T-shirt kombineret med en blåternet skjorte, ser forventningsfuld ud.
+orderAllreadyDelivered;Order is already delivered;Ordren er allerede leveret
+orderAllreadyPaid;Order is already paid;Ordren er allerede betalt
+orderNotPaid;Order has not been paid;Ordren er ikke betalt
+orders;Orders;Ordrer
 outOf;out of;ud af
 outOfStock;Out of stock;Udsolgt
 page;Page;Side
@@ -327,6 +331,7 @@ productName;Product name;Produkt navn
 productNameRequired;Please insert product name;Indsæt venligst produktnavn
 productNavigation;Produkt navigation;Produkt navigation
 productNotFound;Product not found;Produktet findes ikke
+productsNoLongerAvailable;Some products are no longer available;Nogle produkter er ikke længere tilgængelige
 productPerPage;products per page;produkter pr. side
 productPlural;Product(s);Produkt(er)
 productQuantity;Product quantity;Produkt antal
@@ -343,6 +348,7 @@ published;Published;Udgivet
 publishTime;Publish time;Udgivelsestidspunkt
 purple;Purple;Lilla
 qty;Qty;Antal
+qtyMustBeAtLeast;Quantity must be at least 1;Antal skal være mindst 1
 rating;Rating;Bedømmelse
 rateProduct;Rate product;Bedøm produkt
 rating1;1 star: Poor;1 stjerne: Dårlig

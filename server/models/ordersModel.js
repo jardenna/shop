@@ -1,8 +1,18 @@
-import mongoose, { model, Schema } from 'mongoose';
+import { model, Schema } from 'mongoose';
+import {
+  ALLOWED_PAYMENT_METHODS,
+  PAYMENT_STATUS_ENUM,
+} from '../config/constants.js';
+
+const { ObjectId } = Schema;
 
 const orderModelSchema = new Schema(
   {
-    user: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User' },
+    user: {
+      type: ObjectId,
+      required: true,
+      ref: 'User',
+    },
     orderItems: [
       {
         productName: { type: String, required: true },
@@ -10,7 +20,7 @@ const orderModelSchema = new Schema(
         image: { type: String, required: true },
         price: { type: Number, required: true },
         productId: {
-          type: mongoose.Schema.Types.ObjectId,
+          type: ObjectId,
           required: true,
           ref: 'Product',
         },
@@ -24,13 +34,18 @@ const orderModelSchema = new Schema(
     },
     paymentMethod: {
       type: String,
-      required: true,
+      enum: ALLOWED_PAYMENT_METHODS,
     },
     paymentResult: {
       id: { type: String },
       status: { type: String },
-      update_time: { type: String },
-      email_address: { type: String },
+      updateTime: { type: String },
+      email: { type: String },
+    },
+    paymentStatus: {
+      type: String,
+      enum: PAYMENT_STATUS_ENUM,
+      default: 'PENDING',
     },
     itemPrice: {
       type: Number,
