@@ -9,7 +9,7 @@ import { validateFakePayment } from '../utils/validateFakePayment.js';
 // @desc    Create orders
 // @route   /api/orders
 // @method  Post
-// @access  Public for logged-in users
+// @access  Private
 const createOrder = asyncHandler(async (req, res) => {
   const { orderItems, shippingAddress } = req.body;
 
@@ -139,7 +139,7 @@ const getOrderById = asyncHandler(async (req, res) => {
 // @desc    Get orders as a user
 // @route   /api/orders/me
 // @method  Get
-// @access  Public for logged in users
+// @access  Private
 const getUserOrders = asyncHandler(async (req, res) => {
   const orders = await Order.find({ user: req.user._id }).lean();
 
@@ -149,7 +149,7 @@ const getUserOrders = asyncHandler(async (req, res) => {
 // @desc    Pay order
 // @route   /api/orders/:id/pay
 // @method  Put
-// @access  Public for logged in users
+// @access  Private
 const payOrder = asyncHandler(async (req, res) => {
   const { paymentMethod } = req.body;
   const order = await Order.findById(req.params.id);
