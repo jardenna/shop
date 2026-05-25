@@ -205,14 +205,14 @@ const deliverOrder = asyncHandler(async (req, res) => {
   if (!order.isPaid) {
     return res.status(400).json({
       success: false,
-      message: 'The order is not paid yet',
+      message: t('orderNotPaid', req.lang),
     });
   }
 
   if (order.isDelivered) {
     return res.status(400).json({
       success: false,
-      message: 'The order is already delivered',
+      message: t('orderAllreadyDelivered', req.lang),
     });
   }
 
