@@ -1,5 +1,8 @@
 import { model, Schema } from 'mongoose';
-import { ALLOWED_PAYMENT_METHODS } from '../config/constants.js';
+import {
+  ALLOWED_PAYMENT_METHODS,
+  PAYMENT_STATUS_ENUM,
+} from '../config/constants.js';
 
 const { ObjectId } = Schema;
 
@@ -38,6 +41,11 @@ const orderModelSchema = new Schema(
       status: { type: String },
       updateTime: { type: String },
       email: { type: String },
+    },
+    paymentStatus: {
+      type: String,
+      enum: PAYMENT_STATUS_ENUM,
+      default: 'PENDING',
     },
     itemPrice: {
       type: Number,

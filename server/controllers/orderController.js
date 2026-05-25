@@ -1,4 +1,4 @@
-import { VAT_SHARE } from '../config/constants.js';
+import { PAYMENT_STATUS, VAT_SHARE } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Order from '../models/ordersModel.js';
 import Product from '../models/productModel.js';
@@ -77,6 +77,7 @@ const createOrder = asyncHandler(async (req, res) => {
     user: req.user._id,
     orderItems: productsWithDiscountedPrices,
     shippingAddress,
+    paymentStatus: PAYMENT_STATUS.PENDING,
     itemPrice,
     taxPrice,
     shippingPrice,
@@ -158,6 +159,26 @@ const payOrder = asyncHandler(async (req, res) => {
     });
   }
 
+  if (order.isPaid) {
+    return res.status(400).json({
+      success: false,
+      message: t('orderAllreadyPaid', req.lang),
+    });
+  }
+
+  const validationError = validateFakePayment(req.body);
+
+  if (validationError) {
+    order.paymentStatus = PAYMENT_STATUS.FAILED;
+
+    await order.save();
+
+    return res.status(400).json({
+      success: false,
+      message: validationError,
+    });
+  }
+
   const productIds = order.orderItems.map((item) => item.productId);
 
   const databaseProducts = await Product.find({
@@ -172,6 +193,10 @@ const payOrder = asyncHandler(async (req, res) => {
     });
 
     if (databaseProduct.countInStock < matchingOrderItem.qty) {
+      order.paymentStatus = PAYMENT_STATUS.FAILED;
+
+      await order.save();
+
       return res.status(400).json({
         success: false,
         message: `${databaseProduct.productName} is out of stock`,
@@ -179,23 +204,18 @@ const payOrder = asyncHandler(async (req, res) => {
     }
   }
 
-  if (order.isPaid) {
-    return res.status(400).json({
-      success: false,
-      message: t('orderAllreadyPaid', req.lang),
+  for (const databaseProduct of databaseProducts) {
+    const matchingOrderItem = order.orderItems.find((orderItem) => {
+      return orderItem.productId.toString() === databaseProduct._id.toString();
     });
-  }
 
-  const validationError = validateFakePayment(req.body);
+    databaseProduct.countInStock -= matchingOrderItem.qty;
 
-  if (validationError) {
-    return res.status(400).json({
-      success: false,
-      message: validationError,
-    });
+    await databaseProduct.save();
   }
 
   order.isPaid = true;
+  order.paymentStatus = PAYMENT_STATUS.PAID;
   order.paidAt = new Date();
   order.paymentMethod = paymentMethod;
   order.paymentResult = {
@@ -206,6 +226,7 @@ const payOrder = asyncHandler(async (req, res) => {
   };
 
   const updatedOrder = await order.save();
+
   res.status(200).json(updatedOrder);
 });
 
