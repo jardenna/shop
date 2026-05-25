@@ -270,6 +270,7 @@ orange;Orange;Orange
 originaPrice;Original price;Før pris
 orderAltText;Young boy in black jeans and a white T-shirt layered with a blue-checkered shirt, looking expectant.;Ung dreng i sorte jeans og hvid T-shirt kombineret med en blåternet skjorte, ser forventningsfuld ud.
 orderAllreadyDelivered;Order is already delivered;Ordren er allerede leveret
+orderAllreadyPaid;Order is already paid;Ordren er allerede betalt
 orderNotPaid;Order has not been paid;Ordren er ikke betalt
 orders;Orders;Ordrer
 outOf;out of;ud af
