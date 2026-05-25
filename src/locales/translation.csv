@@ -348,6 +348,7 @@ published;Published;Udgivet
 publishTime;Publish time;Udgivelsestidspunkt
 purple;Purple;Lilla
 qty;Qty;Antal
+qtyMustBeAtLeast;Quantity must be at least 1;Antal skal være mindst 1
 rating;Rating;Bedømmelse
 rateProduct;Rate product;Bedøm produkt
 rating1;1 star: Poor;1 stjerne: Dårlig

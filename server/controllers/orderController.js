@@ -20,15 +20,21 @@ const createOrder = asyncHandler(async (req, res) => {
     });
   }
 
-  const productIds = orderItems.map((item) => item.product);
+  const uniqueProductIds = [
+    ...new Set(orderItems.map((orderItem) => orderItem.product)),
+  ];
+
+  const orderItemsMap = new Map(
+    orderItems.map((orderItem) => [orderItem.product, orderItem]),
+  );
 
   const databaseProducts = await Product.find({
     _id: {
-      $in: productIds,
+      $in: uniqueProductIds,
     },
-  });
+  }).lean();
 
-  if (databaseProducts.length !== productIds.length) {
+  if (databaseProducts.length !== uniqueProductIds.length) {
     return res.status(404).json({
       success: false,
       message: t('productsNoLongerAvailable', req.lang),
@@ -37,24 +43,33 @@ const createOrder = asyncHandler(async (req, res) => {
 
   const productsWithDiscountedPrices = databaseProducts.map(
     (databaseProduct) => {
-      const matchingOrderItem = orderItems.find(
-        (orderItem) => orderItem.product === databaseProduct._id.toString(),
+      const matchingOrderItem = orderItemsMap.get(
+        databaseProduct._id.toString(),
       );
+
+      if (!matchingOrderItem?.qty || matchingOrderItem.qty < 1) {
+        return res.status(404).json({
+          success: false,
+          message: t('qtyMustBeAtLeast', req.lang),
+        });
+      }
 
       const discountedPrice =
         databaseProduct.price -
         (databaseProduct.price * databaseProduct.discount) / 100;
 
       const subtotal = discountedPrice * matchingOrderItem.qty;
-      const taxPrice = subtotal * VAT_SHARE;
-      const noTax = subtotal - taxPrice;
+
+      const calculatedTaxPrice = Math.round(subtotal * VAT_SHARE * 100) / 100;
+
+      const noTax = subtotal - calculatedTaxPrice;
 
       return {
         productId: databaseProduct._id,
         productName: databaseProduct.productName,
         image: databaseProduct.images[0],
         price: discountedPrice,
-        taxPrice: Math.round(taxPrice * 100) / 100,
+        taxPrice: calculatedTaxPrice,
         subtotal,
         noTax,
         qty: matchingOrderItem.qty,
@@ -62,15 +77,22 @@ const createOrder = asyncHandler(async (req, res) => {
     },
   );
 
-  const itemPrice = productsWithDiscountedPrices.reduce((total, product) => {
-    return total + product.subtotal;
-  }, 0);
+  const itemPrice = productsWithDiscountedPrices.reduce(
+    (totalPrice, productItem) => {
+      return totalPrice + productItem.subtotal;
+    },
+    0,
+  );
 
-  const taxPrice = productsWithDiscountedPrices.reduce((total, product) => {
-    return total + product.taxPrice;
-  }, 0);
+  const taxPrice = productsWithDiscountedPrices.reduce(
+    (totalPrice, productItem) => {
+      return totalPrice + productItem.taxPrice;
+    },
+    0,
+  );
 
   const shippingPrice = itemPrice >= 1500 ? 0 : 49;
+
   const totalPrice = itemPrice + shippingPrice;
 
   const order = new Order({
