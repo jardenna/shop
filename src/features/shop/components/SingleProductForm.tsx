@@ -57,8 +57,8 @@ const SingleProductForm = ({
     validate: validateShopProduct,
   });
 
-  const [cart, setCart] = useLocalStorage(
-    localStorageKeys.cart,
+  const [cartList, setCartList] = useLocalStorage(
+    localStorageKeys.cartList,
     [] as CartItem[],
   );
 
@@ -69,8 +69,11 @@ const SingleProductForm = ({
       size: values.size,
       color: values.color,
     };
-    cartUtils({ cart, cartItem });
-    setCart([...cart, cartItem]);
+
+    setCartList([...cartList, cartItem]);
+    cartUtils({ cartList, cartItem });
+
+    console.log(cartUtils({ cartList, cartItem }));
   }
 
   const titleSize =
