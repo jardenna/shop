@@ -27,15 +27,21 @@ export const cartUtils = ({ cartList, cartItem }: CartUtilsParams) => {
   const colorChanged = existingProduct?.color !== cartItem.color;
 
   if (identicalVariant) {
-    return 'add to qty';
+    return {
+      action: 'addToQty',
+    };
   }
 
   if (
     sameProductDifferentVariant &&
     ((sizeChanged && !colorChanged) || (!sizeChanged && colorChanged))
   ) {
-    return 'popup';
+    return {
+      action: 'showPopup',
+    };
   }
 
-  return 'add to cartlist';
+  return {
+    action: 'addToCartList',
+  };
 };
