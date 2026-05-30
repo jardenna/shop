@@ -18,6 +18,17 @@ const createCart = asyncHandler(async (req, res) => {
     });
   }
 
+  for (const cartItem of cartItems) {
+    const validationMessage = validateCartItems(cartItem);
+
+    if (validationMessage) {
+      return res.status(400).json({
+        success: false,
+        message: validationMessage,
+      });
+    }
+  }
+
   const uniqueProductIds = [
     ...new Set(cartItems.map((cartItem) => cartItem.productId)),
   ];
@@ -45,32 +56,6 @@ const createCart = asyncHandler(async (req, res) => {
     const updatedCart = await existingCart.save();
 
     return res.status(200).json(updatedCart);
-  }
-
-  const invalidQty = cartItems.some((cartItem) => {
-    return (
-      typeof cartItem.qty !== 'number' ||
-      Number.isNaN(cartItem.qty) ||
-      cartItem.qty < 1
-    );
-  });
-
-  if (invalidQty) {
-    return res.status(400).json({
-      success: false,
-      message: 'Invalid quantity',
-    });
-  }
-
-  const validationError = cartItems.find((cartItem) =>
-    validateCartItems(cartItem),
-  );
-
-  if (validationError) {
-    return res.status(400).json({
-      success: false,
-      message: validateCartItems(validationError),
-    });
   }
 
   const cart = new Cart({
