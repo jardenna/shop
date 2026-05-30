@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import path from 'path';
 import errorHandler from './middleware/errorHandler.js';
 import authRoutes from './routes/authRoutes.js';
+import cartRoutes from './routes/cartRoutes.js';
 import categoryRoutes from './routes/categoryRoutes.js';
 import favoritesRoutes from './routes/favoritesRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
@@ -59,6 +60,7 @@ app.use('/api/products', productRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api/favorites', favoritesRoutes);
 app.use('/api/orders', orderRoutes);
+app.use('/api/cart', cartRoutes);
 
 // Global error handler
 app.use(errorHandler);
