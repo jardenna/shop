@@ -63,7 +63,9 @@ const createCart = asyncHandler(async (req, res) => {
     cartItems,
   });
 
-  res.send(cart);
+  const createdCart = await cart.save();
+
+  return res.status(201).json(createdCart);
 });
 
 export { createCart };
