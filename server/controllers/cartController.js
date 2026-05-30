@@ -2,6 +2,7 @@ import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
 import Product from '../models/productModel.js';
 import { t } from '../utils/translator.js';
+import { validateCartItems } from '../utils/validateCartItems.js';
 
 // @desc    Create cart
 // @route   /api/cart
@@ -61,16 +62,14 @@ const createCart = asyncHandler(async (req, res) => {
     });
   }
 
-  const missingCartFields = cartItems.some((cartItem) => {
-    return (
-      !cartItem.productId || !cartItem.qty || !cartItem.size || !cartItem.color
-    );
-  });
+  const validationError = cartItems.find((cartItem) =>
+    validateCartItems(cartItem),
+  );
 
-  if (missingCartFields) {
+  if (validationError) {
     return res.status(400).json({
       success: false,
-      message: 'Missing cart item fields',
+      message: validateCartItems(validationError),
     });
   }
 
