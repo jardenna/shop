@@ -51,7 +51,7 @@ const createCart = asyncHandler(async (req, res) => {
   });
 
   if (existingCart) {
-    existingCart.cartItems.push(...cartItems);
+    existingCart.cartItems.unshift(...cartItems);
 
     const updatedCart = await existingCart.save();
 

@@ -39,6 +39,7 @@ const SingleProductForm = ({
   const { language } = useLanguage();
 
   const { sizes, categoryName, colors } = selectedProduct;
+  console.log(selectedProduct);
 
   const initialState: InitialShopValues = {
     color: colorList[0].value,
