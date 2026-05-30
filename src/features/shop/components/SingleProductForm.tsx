@@ -1,13 +1,18 @@
 import { ErrorBoundary } from 'react-error-boundary';
-import type {
-  BaseProduct,
-  Size,
+import {
+  type BaseProduct,
+  CartItem,
+  type Size,
 } from '../../../app/api/apiTypes/sharedApiTypes';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/form/Form';
 import ControlGroupList from '../../../components/formElements/controlGroup/ControlGroupList';
 import { useFormValidation } from '../../../hooks/useFormValidation';
+import {
+  localStorageKeys,
+  useLocalStorage,
+} from '../../../hooks/useLocalStorage';
 import {
   ColorOption,
   sortColorsByTranslation,
@@ -38,8 +43,7 @@ const SingleProductForm = ({
 }: SingleProductFormProps) => {
   const { language } = useLanguage();
 
-  const { sizes, categoryName, colors } = selectedProduct;
-  console.log(selectedProduct);
+  const { sizes, categoryName, colors, id } = selectedProduct;
 
   const initialState: InitialShopValues = {
     color: colorList[0].value,
@@ -48,11 +52,25 @@ const SingleProductForm = ({
 
   const { onChange, values, onSubmit, errors } = useFormValidation({
     initialState,
-    callback: () => {
-      console.log(values);
-    },
+    callback: handleAddToCart,
     validate: validateShopProduct,
   });
+
+  const [cart, setCart] = useLocalStorage(
+    localStorageKeys.cart,
+    [] as CartItem[],
+  );
+
+  function handleAddToCart() {
+    const cartItem = {
+      productId: id,
+      qty: 1,
+      size: values.size,
+      color: values.color,
+    };
+
+    setCart([...cart, cartItem]);
+  }
 
   const titleSize =
     values.size === ''
