@@ -22,6 +22,7 @@ import { oneSize } from '../../../utils/sizeUtils';
 import { translateKey } from '../../../utils/utils';
 import { validateShopProduct } from '../../../utils/validation/validateShopProduct';
 import { useLanguage } from '../../language/useLanguage';
+import { cartUtils } from '../cartUtils';
 
 type SingleProductFormProps = {
   colorList: ColorOption[];
@@ -68,7 +69,7 @@ const SingleProductForm = ({
       size: values.size,
       color: values.color,
     };
-
+    cartUtils({ cart, cartItem });
     setCart([...cart, cartItem]);
   }
 
