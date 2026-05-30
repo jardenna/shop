@@ -70,10 +70,14 @@ const SingleProductForm = ({
       color: values.color,
     };
 
-    setCartList([...cartList, cartItem]);
     cartUtils({ cartList, cartItem });
+    const cartResult = cartUtils({ cartList, cartItem });
 
-    console.log(cartUtils({ cartList, cartItem }));
+    if (cartResult.action !== 'showPopup') {
+      setCartList([...cartList, cartItem]);
+    } else {
+      console.log({ cartResult });
+    }
   }
 
   const titleSize =

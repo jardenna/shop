@@ -28,13 +28,20 @@ export const cartUtils = ({ cartList, cartItem }: CartUtilsParams) => {
   });
 
   if (popupVariant) {
+    const changedAttribute =
+      popupVariant.size !== cartItem.size ? 'size' : 'color';
+
     return {
       action: 'showPopup',
       existingVariant: popupVariant,
       incomingVariant: cartItem,
+      changedAttribute,
+      existingValue:
+        changedAttribute === 'size' ? popupVariant.size : popupVariant.color,
+      incomingValue:
+        changedAttribute === 'size' ? cartItem.size : cartItem.color,
     };
   }
-
   return {
     action: 'addToCartList',
     incomingVariant: cartItem,
