@@ -1,16 +1,21 @@
 import { useState } from 'react';
+import { useAuth } from '../../features/auth/hooks/useAuth';
 import {
   useGetFavoritesQuery,
   useToggleFavoriteMutation,
 } from '../../features/shop/shopApiSlice';
 
 export const useFavorites = ({ id }: { id?: string }) => {
+  const { currentUser } = useAuth();
   const {
     data: favorites,
     isLoading,
     isError,
     refetch,
-  } = useGetFavoritesQuery();
+  } = useGetFavoritesQuery(undefined, {
+    skip: !currentUser,
+  });
+
   const [toggleFavorite, { isLoading: isTogglingLoading }] =
     useToggleFavoriteMutation();
 
