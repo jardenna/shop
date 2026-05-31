@@ -26,6 +26,7 @@ import { translateKey } from '../../../../utils/utils';
 import { validateShopProduct } from '../../../../utils/validation/validateShopProduct';
 import { useLanguage } from '../../../language/useLanguage';
 import { CartResult, cartUtils } from '../../cartUtils';
+import SingleProductPanel from './SingleProductPanel';
 
 type SingleProductFormProps = {
   colorList: ColorOption[];
@@ -145,7 +146,9 @@ const SingleProductForm = ({
         panelRef={panelRef}
         onHidePanel={onHidePanel}
       >
-        hh
+        {popupData && (
+          <SingleProductPanel popupData={popupData} language={language} />
+        )}
       </Panel>
       <Form onSubmit={onSubmit} submitBtnLabel={language.addToBag}>
         <FieldSet legendText={language.productVariants}>
