@@ -153,7 +153,7 @@ const CollectionPage = () => {
           />
         )}
         <div className="collection-page-container">
-          <aside>
+          <section>
             <CollectionPageHeader
               headerText={categoryText}
               ariaLabelledby={ariaLabelledby}
@@ -167,7 +167,7 @@ const CollectionPage = () => {
                 language={language}
               />
             )}
-          </aside>
+          </section>
           <section className="collection-page-content">
             {!isMobileSize && (
               <Picture
