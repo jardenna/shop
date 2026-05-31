@@ -34,7 +34,6 @@ export const cartUtils = ({ cartList, cartItem }: CartUtilsParams) => {
     return {
       action: 'showPopup',
       existingVariant: popupVariant,
-      incomingVariant: cartItem,
       changedAttribute,
       existingValue:
         changedAttribute === 'size' ? popupVariant.size : popupVariant.color,
@@ -45,6 +44,5 @@ export const cartUtils = ({ cartList, cartItem }: CartUtilsParams) => {
 
   return {
     action: 'addToCartList',
-    incomingVariant: cartItem,
   };
 };
