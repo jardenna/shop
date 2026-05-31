@@ -1,30 +1,31 @@
+import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import {
   type BaseProduct,
   CartItem,
   type Size,
-} from '../../../app/api/apiTypes/sharedApiTypes';
-import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
-import FieldSet from '../../../components/fieldset/FieldSet';
-import Form from '../../../components/form/Form';
-import ControlGroupList from '../../../components/formElements/controlGroup/ControlGroupList';
-import Panel from '../../../components/togglePanel/Panel';
-import { useTogglePanel } from '../../../components/togglePanel/useTogglePanel';
-import { useFormValidation } from '../../../hooks/useFormValidation';
+} from '../../../../app/api/apiTypes/sharedApiTypes';
+import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
+import FieldSet from '../../../../components/fieldset/FieldSet';
+import Form from '../../../../components/form/Form';
+import ControlGroupList from '../../../../components/formElements/controlGroup/ControlGroupList';
+import Panel from '../../../../components/togglePanel/Panel';
+import { useTogglePanel } from '../../../../components/togglePanel/useTogglePanel';
+import { useFormValidation } from '../../../../hooks/useFormValidation';
 import {
   localStorageKeys,
   useLocalStorage,
-} from '../../../hooks/useLocalStorage';
+} from '../../../../hooks/useLocalStorage';
 import {
   ColorOption,
   sortColorsByTranslation,
-} from '../../../utils/colorUtils';
-import { resolveIconName } from '../../../utils/iconHelpers';
-import { oneSize } from '../../../utils/sizeUtils';
-import { translateKey } from '../../../utils/utils';
-import { validateShopProduct } from '../../../utils/validation/validateShopProduct';
-import { useLanguage } from '../../language/useLanguage';
-import { cartUtils } from '../cartUtils';
+} from '../../../../utils/colorUtils';
+import { resolveIconName } from '../../../../utils/iconHelpers';
+import { oneSize } from '../../../../utils/sizeUtils';
+import { translateKey } from '../../../../utils/utils';
+import { validateShopProduct } from '../../../../utils/validation/validateShopProduct';
+import { useLanguage } from '../../../language/useLanguage';
+import { CartResult, cartUtils } from '../../cartUtils';
 
 type SingleProductFormProps = {
   colorList: ColorOption[];
@@ -72,11 +73,32 @@ const SingleProductForm = ({
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
     useTogglePanel();
 
-  function handleAddToCart() {
-    const cartResult = cartUtils({ cartList, cartItem });
-    const { existingVariant, changedAttribute, existingValue, incomingValue } =
-      cartResult;
+  const cartResult = cartUtils({ cartList, cartItem });
+  const { existingVariant } = cartResult;
 
+  const [popupData, setPopupData] = useState<CartResult | null>(null);
+  console.log(popupData);
+
+  // const x = {
+  //   action: 'showPopup',
+  //   existingVariant: {
+  //     productId: '685124d6e5d1e20900c9add6',
+  //     qty: 1,
+  //     size: '24',
+  //     color: 'blue',
+  //   },
+  //   changedAttribute: 'color',
+  //   existingValue: 'blue',
+  //   incomingValue: 'red',
+  // };
+
+  const handlePanel = () => {
+    setPopupData(cartResult);
+
+    onTogglePanel();
+  };
+
+  function handleAddToCart() {
     switch (cartResult.action) {
       case 'addToCartList':
         setCartList([...cartList, cartItem]);
@@ -97,10 +119,7 @@ const SingleProductForm = ({
         break;
 
       case 'showPopup':
-        console.log(changedAttribute, existingValue, incomingValue);
-        onTogglePanel();
-
-        // Open modal and pass cartDecision
+        handlePanel();
         break;
       default:
         break;

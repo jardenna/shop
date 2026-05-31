@@ -1,9 +1,9 @@
 import { ErrorBoundary } from 'react-error-boundary';
-import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
-import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
-import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
-import LayoutElement from '../../../layout/LayoutElement';
-import { useLanguage } from '../../language/useLanguage';
+import { BaseProduct } from '../../../../app/api/apiTypes/sharedApiTypes';
+import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
+import FavoriteHeart from '../../../../components/favorites/FavoriteHeart';
+import LayoutElement from '../../../../layout/LayoutElement';
+import { useLanguage } from '../../../language/useLanguage';
 
 type SingleProductHeaderProps = {
   product: BaseProduct;
