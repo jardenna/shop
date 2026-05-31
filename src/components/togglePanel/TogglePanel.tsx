@@ -1,10 +1,9 @@
 import { ReactNode, RefObject, useId } from 'react';
 import { BtnVariant } from '../../types/enums';
 import type { AriaHasPopup } from '../../types/types';
-import BtnClose from '../BtnClose';
 import Button from '../Button';
-import Overlay from '../overlay/Overlay';
 import './_toggle-panel.scss';
+import Panel from './Panel';
 
 type TogglePanelProps = {
   children: ReactNode;
@@ -47,15 +46,15 @@ const TogglePanel = ({
       >
         {triggerBtnContent}
       </Button>
-      <div
+      <Panel
+        isPanelShown={isPanelShown}
         ref={panelRef}
-        className={`toggle-panel ${className} ${isPanelShown ? 'shown' : ''}`}
-        id={togglePanelId}
+        togglePanelId={togglePanelId}
+        className={className}
+        onHidePanel={onHidePanel}
       >
-        {onHidePanel && <BtnClose onClick={onHidePanel} />}
         {children}
-      </div>
-      {isPanelShown && <Overlay />}
+      </Panel>
     </>
   );
 };
