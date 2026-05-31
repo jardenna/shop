@@ -57,26 +57,46 @@ const SingleProductForm = ({
     validate: validateShopProduct,
   });
 
+  const cartItem = {
+    productId: id,
+    qty: 1,
+    size: values.size,
+    color: values.color,
+  };
+
   const [cartList, setCartList] = useLocalStorage(
     localStorageKeys.cartList,
     [] as CartItem[],
   );
 
   function handleAddToCart() {
-    const cartItem = {
-      productId: id,
-      qty: 1,
-      size: values.size,
-      color: values.color,
-    };
-
-    cartUtils({ cartList, cartItem });
     const cartResult = cartUtils({ cartList, cartItem });
+    const { existingVariant } = cartResult;
 
-    if (cartResult.action !== 'showPopup') {
-      setCartList([...cartList, cartItem]);
-    } else {
-      console.log({ cartResult });
+    switch (cartResult.action) {
+      case 'addToCartList':
+        setCartList([...cartList, cartItem]);
+        break;
+      case 'addToQty':
+        if (existingVariant) {
+          const updatedCartList = cartList.map((item) =>
+            item === existingVariant
+              ? {
+                  ...item,
+                  qty: item.qty + 1,
+                }
+              : item,
+          );
+
+          setCartList(updatedCartList);
+        }
+        break;
+
+      case 'showPopup':
+        // Open modal and pass cartDecision
+        break;
+      default:
+        break;
     }
   }
 

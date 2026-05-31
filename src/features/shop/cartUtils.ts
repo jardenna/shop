@@ -42,6 +42,7 @@ export const cartUtils = ({ cartList, cartItem }: CartUtilsParams) => {
         changedAttribute === 'size' ? cartItem.size : cartItem.color,
     };
   }
+
   return {
     action: 'addToCartList',
     incomingVariant: cartItem,
