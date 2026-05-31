@@ -4,10 +4,12 @@ const SizeGuide = () => {
   const { language } = useLanguage();
   return (
     <section>
-      Størrelsestabel <p>{language.sizeGuideInfo}</p> Konvertering af størrelse
+      <h2>{language.sizeGuide} </h2>
+      <p>{language.sizeGuideInfo}</p>
+      <p>{language.convertingSize}</p>
       <table>
         <caption>
-          <span>Kropsmål</span>
+          <span>{language.bodyMeasurements}</span>
         </caption>
         <thead>
           <tr>
@@ -18,13 +20,13 @@ const SizeGuide = () => {
               <span>INT</span>
             </th>
             <th scope="col">
-              <span>BRYST</span>
+              <span>{language.chest}</span>
             </th>
             <th scope="col">
-              <span>LIVVIDDE</span>
+              <span>{language.waist}</span>
             </th>
             <th scope="col">
-              <span>HOFTE</span>
+              <span>{language.hips}</span>
             </th>
           </tr>
         </thead>
