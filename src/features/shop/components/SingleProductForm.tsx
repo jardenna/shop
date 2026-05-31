@@ -4,10 +4,12 @@ import {
   CartItem,
   type Size,
 } from '../../../app/api/apiTypes/sharedApiTypes';
+import BtnClose from '../../../components/BtnClose';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/form/Form';
 import ControlGroupList from '../../../components/formElements/controlGroup/ControlGroupList';
+import { useTogglePanel } from '../../../components/togglePanel/useTogglePanel';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import {
   localStorageKeys,
@@ -43,7 +45,6 @@ const SingleProductForm = ({
   onReset,
 }: SingleProductFormProps) => {
   const { language } = useLanguage();
-
   const { sizes, categoryName, colors, id } = selectedProduct;
 
   const initialState: InitialShopValues = {
@@ -68,10 +69,13 @@ const SingleProductForm = ({
     localStorageKeys.cartList,
     [] as CartItem[],
   );
+  const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
+    useTogglePanel();
 
   function handleAddToCart() {
     const cartResult = cartUtils({ cartList, cartItem });
-    const { existingVariant } = cartResult;
+    const { existingVariant, changedAttribute, existingValue, incomingValue } =
+      cartResult;
 
     switch (cartResult.action) {
       case 'addToCartList':
@@ -93,6 +97,9 @@ const SingleProductForm = ({
         break;
 
       case 'showPopup':
+        console.log(changedAttribute, existingValue, incomingValue);
+        onTogglePanel();
+
         // Open modal and pass cartDecision
         break;
       default:
@@ -114,6 +121,13 @@ const SingleProductForm = ({
 
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
+      <div
+        ref={panelRef}
+        className={`toggle-panel  ${isPanelShown ? 'shown' : ''}`}
+      >
+        <BtnClose onClick={onHidePanel} />
+        are you sure
+      </div>
       <Form onSubmit={onSubmit} submitBtnLabel={language.addToBag}>
         <FieldSet legendText={language.productVariants}>
           <ControlGroupList
