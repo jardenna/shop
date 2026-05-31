@@ -3,8 +3,8 @@ import { BtnVariant } from '../../types/enums';
 import type { AriaHasPopup } from '../../types/types';
 import BtnClose from '../BtnClose';
 import Button from '../Button';
-import './_toggle-panel.scss';
 import Overlay from '../overlay/Overlay';
+import './_toggle-panel.scss';
 
 type TogglePanelProps = {
   children: ReactNode;
@@ -59,4 +59,5 @@ const TogglePanel = ({
     </>
   );
 };
+
 export default TogglePanel;
