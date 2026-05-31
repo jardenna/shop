@@ -1,12 +1,15 @@
 import { useLanguage } from '../features/language/useLanguage';
 
-const SizeGuide = () => {
+const ConvertingGuide = () => {
   const { language } = useLanguage();
   return (
     <section>
+      <h2>{language.sizeGuide} </h2>
+      <p>{language.sizeGuideInfo}</p>
+      <p>{language.convertingSize}</p>
       <table>
         <caption>
-          <span>{language.bodyMeasurements}</span>
+          <span>{language.convertingSize}</span>
         </caption>
         <thead>
           <tr>
@@ -17,13 +20,13 @@ const SizeGuide = () => {
               <span>INT</span>
             </th>
             <th scope="col">
-              <span>{language.chest}</span>
+              <span>FR</span>
             </th>
             <th scope="col">
-              <span>{language.waist}</span>
+              <span>IT</span>
             </th>
             <th scope="col">
-              <span>{language.hips}</span>
+              <span>UK</span>
             </th>
           </tr>
         </thead>
@@ -36,13 +39,13 @@ const SizeGuide = () => {
               <span>XXS</span>
             </td>
             <td>
-              <span>76</span>
+              <span>34</span>
             </td>
             <td>
-              <span>63</span>
+              <span>38</span>
             </td>
             <td>
-              <span>85</span>
+              <span>4</span>
             </td>
           </tr>
           <tr>
@@ -53,13 +56,13 @@ const SizeGuide = () => {
               <span>XS</span>
             </td>
             <td>
-              <span>80</span>
+              <span>36</span>
             </td>
             <td>
-              <span>66</span>
+              <span>40</span>
             </td>
             <td>
-              <span>89</span>
+              <span>6</span>
             </td>
           </tr>
           <tr>
@@ -70,13 +73,13 @@ const SizeGuide = () => {
               <span>S</span>
             </td>
             <td>
-              <span>84</span>
+              <span>38</span>
             </td>
             <td>
-              <span>69</span>
+              <span>42</span>
             </td>
             <td>
-              <span>93</span>
+              <span>8</span>
             </td>
           </tr>
           <tr>
@@ -87,13 +90,13 @@ const SizeGuide = () => {
               <span>M</span>
             </td>
             <td>
-              <span>88</span>
+              <span>40</span>
             </td>
             <td>
-              <span>72</span>
+              <span>44</span>
             </td>
             <td>
-              <span>97</span>
+              <span>10</span>
             </td>
           </tr>
           <tr>
@@ -104,13 +107,13 @@ const SizeGuide = () => {
               <span>L</span>
             </td>
             <td>
-              <span>92</span>
+              <span>42</span>
             </td>
             <td>
-              <span>76</span>
+              <span>46</span>
             </td>
             <td>
-              <span>100</span>
+              <span>12</span>
             </td>
           </tr>
           <tr>
@@ -121,13 +124,13 @@ const SizeGuide = () => {
               <span>XL</span>
             </td>
             <td>
-              <span>96</span>
+              <span>44</span>
             </td>
             <td>
-              <span>80</span>
+              <span>48</span>
             </td>
             <td>
-              <span>103</span>
+              <span>14</span>
             </td>
           </tr>
           <tr>
@@ -138,13 +141,13 @@ const SizeGuide = () => {
               <span>XXL</span>
             </td>
             <td>
-              <span>100</span>
+              <span>46</span>
             </td>
             <td>
-              <span>85</span>
+              <span>50</span>
             </td>
             <td>
-              <span>106</span>
+              <span>16</span>
             </td>
           </tr>
           <tr>
@@ -155,13 +158,13 @@ const SizeGuide = () => {
               <span>3XL</span>
             </td>
             <td>
-              <span>104</span>
+              <span>48</span>
             </td>
             <td>
-              <span>90</span>
+              <span>52</span>
             </td>
             <td>
-              <span>109</span>
+              <span>18</span>
             </td>
           </tr>
           <tr>
@@ -172,13 +175,13 @@ const SizeGuide = () => {
               <span>4XL</span>
             </td>
             <td>
-              <span>110</span>
+              <span>50</span>
             </td>
             <td>
-              <span>96.5</span>
+              <span>54</span>
             </td>
             <td>
-              <span>114</span>
+              <span>20</span>
             </td>
           </tr>
           <tr>
@@ -189,13 +192,13 @@ const SizeGuide = () => {
               <span>5XL</span>
             </td>
             <td>
-              <span>116</span>
+              <span>52</span>
             </td>
             <td>
-              <span>103</span>
+              <span>56</span>
             </td>
             <td>
-              <span>119</span>
+              <span>22</span>
             </td>
           </tr>
           <tr>
@@ -206,13 +209,13 @@ const SizeGuide = () => {
               <span>6XL</span>
             </td>
             <td>
-              <span>122</span>
+              <span>54</span>
             </td>
             <td>
-              <span>109.5</span>
+              <span>58</span>
             </td>
             <td>
-              <span>124</span>
+              <span>24</span>
             </td>
           </tr>
           <tr>
@@ -223,13 +226,13 @@ const SizeGuide = () => {
               <span>7XL</span>
             </td>
             <td>
-              <span>128</span>
+              <span>56</span>
             </td>
             <td>
-              <span>116</span>
+              <span>60</span>
             </td>
             <td>
-              <span>130</span>
+              <span>26</span>
             </td>
           </tr>
           <tr>
@@ -240,13 +243,13 @@ const SizeGuide = () => {
               <span>8XL</span>
             </td>
             <td>
-              <span>134</span>
+              <span>58</span>
             </td>
             <td>
-              <span>122.5</span>
+              <span>62</span>
             </td>
             <td>
-              <span>136</span>
+              <span>28</span>
             </td>
           </tr>
           <tr>
@@ -257,13 +260,13 @@ const SizeGuide = () => {
               <span>9XL</span>
             </td>
             <td>
-              <span>140</span>
+              <span>60</span>
             </td>
             <td>
-              <span>129</span>
+              <span>64</span>
             </td>
             <td>
-              <span>142</span>
+              <span>30</span>
             </td>
           </tr>
           <tr>
@@ -274,13 +277,13 @@ const SizeGuide = () => {
               <span>10XL</span>
             </td>
             <td>
-              <span>146</span>
+              <span>62</span>
             </td>
             <td>
-              <span>135.5</span>
+              <span>66</span>
             </td>
             <td>
-              <span>148</span>
+              <span>32</span>
             </td>
           </tr>
         </tbody>
@@ -289,4 +292,4 @@ const SizeGuide = () => {
   );
 };
 
-export default SizeGuide;
+export default ConvertingGuide;

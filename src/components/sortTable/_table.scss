@@ -61,6 +61,7 @@ table {
   td {
     background-color: $color-white;
     line-height: rem(24px);
+    font-variant-numeric: tabular-nums;
   }
 
   th {
