@@ -3,7 +3,7 @@ import Overlay from '../overlay/Overlay';
 import { BaseTogglePanelProps } from './TogglePanel';
 
 interface PanelProps extends BaseTogglePanelProps {
-  togglePanelId: string;
+  togglePanelId?: string;
 }
 
 const Panel = ({

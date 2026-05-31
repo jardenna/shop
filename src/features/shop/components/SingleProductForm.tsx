@@ -4,11 +4,11 @@ import {
   CartItem,
   type Size,
 } from '../../../app/api/apiTypes/sharedApiTypes';
-import BtnClose from '../../../components/BtnClose';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/form/Form';
 import ControlGroupList from '../../../components/formElements/controlGroup/ControlGroupList';
+import Panel from '../../../components/togglePanel/Panel';
 import { useTogglePanel } from '../../../components/togglePanel/useTogglePanel';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import {
@@ -121,13 +121,13 @@ const SingleProductForm = ({
 
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
-      <div
-        ref={panelRef}
-        className={`toggle-panel  ${isPanelShown ? 'shown' : ''}`}
+      <Panel
+        isPanelShown={isPanelShown}
+        panelRef={panelRef}
+        onHidePanel={onHidePanel}
       >
-        <BtnClose onClick={onHidePanel} />
-        are you sure
-      </div>
+        hh
+      </Panel>
       <Form onSubmit={onSubmit} submitBtnLabel={language.addToBag}>
         <FieldSet legendText={language.productVariants}>
           <ControlGroupList
