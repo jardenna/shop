@@ -4,7 +4,20 @@ interface CartUtilsParams {
   cartItem: CartItem;
   cartList: CartItem[];
 }
-export const cartUtils = ({ cartList, cartItem }: CartUtilsParams) => {
+
+export interface CartResult {
+  action: 'addToQty' | 'showPopup' | 'addToCartList';
+  changedAttribute?: 'size' | 'color';
+  existingValue?: string;
+  existingVariant?: CartItem;
+  incomingValue?: string;
+  incomingVariant?: CartItem;
+}
+
+export const cartUtils = ({
+  cartList,
+  cartItem,
+}: CartUtilsParams): CartResult => {
   const existingVariants = cartList.filter(
     (item) => item.productId === cartItem.productId,
   );
