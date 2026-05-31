@@ -1,18 +1,13 @@
-import { ReactNode, RefObject } from 'react';
 import BtnClose from '../BtnClose';
 import Overlay from '../overlay/Overlay';
+import { BaseTogglePanelProps } from './TogglePanel';
 
-type PanelProps = {
-  children: ReactNode;
-  isPanelShown: boolean;
-  ref: RefObject<HTMLDivElement | null>;
+interface PanelProps extends BaseTogglePanelProps {
   togglePanelId: string;
-  className?: string;
-  onHidePanel?: () => void;
-};
+}
 
 const Panel = ({
-  ref,
+  panelRef,
   className = '',
   togglePanelId,
   onHidePanel,
@@ -21,7 +16,7 @@ const Panel = ({
 }: PanelProps) => (
   <>
     <div
-      ref={ref}
+      ref={panelRef}
       className={`toggle-panel ${className} ${isPanelShown ? 'shown' : ''}`}
       id={togglePanelId}
     >

@@ -5,19 +5,22 @@ import Button from '../Button';
 import './_toggle-panel.scss';
 import Panel from './Panel';
 
-type TogglePanelProps = {
+export interface BaseTogglePanelProps {
   children: ReactNode;
   isPanelShown: boolean;
   panelRef: RefObject<HTMLDivElement | null>;
+  className?: string;
+  onHidePanel?: () => void;
+}
+
+interface TogglePanelProps extends BaseTogglePanelProps {
   triggerBtnContent: ReactNode;
   ariaHasPopup?: AriaHasPopup;
   ariaLabel?: string;
   btnVariant?: BtnVariant;
-  className?: string;
   triggerBtnClassName?: string;
-  onHidePanel?: () => void;
   onTogglePanel: () => void;
-};
+}
 
 const TogglePanel = ({
   children,
@@ -48,7 +51,7 @@ const TogglePanel = ({
       </Button>
       <Panel
         isPanelShown={isPanelShown}
-        ref={panelRef}
+        panelRef={panelRef}
         togglePanelId={togglePanelId}
         className={className}
         onHidePanel={onHidePanel}
