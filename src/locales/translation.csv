@@ -67,6 +67,7 @@ collectionSubMenText;From everyday looks to formal, everything for the modern ma
 collectionSubWomenText;Discover stylish news, must-haves and trends of the season.;Opdag stilfulde nyheder, must-haves og sæsonens trends.
 colorRequired;Please select a colour;Vælg venligst farve
 color;Colour;Farve
+colorLowercase;colour;farve
 colors;Colours;Farver
 colours;Colours;Farver
 compact;Compact;Kompakt
@@ -408,6 +409,7 @@ showPassword;Show password;Vis adgangskode
 showPrice;Show price;Vis pris
 silver;Silver;Sølv
 size;Size;Størrelse
+sizeLowercase;size;størrelse
 sizeInfoText;Sizes depend on the selected category;Størrelser afhænger af den valgte kategori
 sizeRequired;Please select a size;Vælg venligst størrelse
 sizes;Sizes;Størrelser

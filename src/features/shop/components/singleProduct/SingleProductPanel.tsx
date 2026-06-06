@@ -21,9 +21,16 @@ const SingleProductPanel = ({
   popupData,
   language,
 }: SingleProductPanelProps) => {
-  const newValue = translateKey(popupData.incomingValue, language);
-  const value = translateKey(popupData.existingValue, language);
-  const changed = translateKey(popupData.changedAttribute, language);
+  const { incomingValue, existingValue, changedAttribute, existingVariant } =
+    popupData;
+
+  const newValue = translateKey(incomingValue, language);
+  const value = translateKey(existingValue, language);
+
+  const changedValue =
+    changedAttribute === 'size'
+      ? language.sizeLowercase
+      : language.colorLowercase;
 
   return (
     <section className="single-product-panel">
@@ -33,21 +40,16 @@ const SingleProductPanel = ({
         og produktoplysninger kan hjælpe dig med at finde den rigtige størrelse.
       </p>
       <div>
-        <Img
-          className="product-panel-img"
-          alt=""
-          src={popupData.existingVariant.image}
-        />
+        <Img className="product-panel-img" alt="" src={existingVariant.image} />
       </div>
 
       <Button>
-        Erstat {changed.toLowerCase()} {value.toLowerCase()} med{' '}
-        {changed.toLowerCase()} {newValue.toLowerCase()}
+        Erstat {changedValue} {value} med {changedValue} {newValue}
       </Button>
       <Button>
-        Behold {changed.toLowerCase()} {value.toLowerCase()}
+        Behold {changedValue} {value}
       </Button>
-      <Button>Behold begge størrelser</Button>
+      <Button>Behold begge {changedValue}r</Button>
     </section>
   );
 };
