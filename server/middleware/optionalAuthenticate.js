@@ -1,3 +1,5 @@
+import jwt from 'jsonwebtoken';
+import User from '../models/userModel.js';
 import asyncHandler from './asyncHandler.js';
 
 const optionalAuthenticate = asyncHandler(async (req, res, next) => {
@@ -14,9 +16,8 @@ const optionalAuthenticate = asyncHandler(async (req, res, next) => {
     req.user = await User.findById(decoded.userId).select('-password');
 
     next();
-  } catch {
-    req.user = null;
-    next();
+  } catch (error) {
+    next(error);
   }
 });
 
