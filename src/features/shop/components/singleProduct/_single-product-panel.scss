@@ -1,0 +1,8 @@
+@use '../../../../scss/globals' as *;
+
+.single-product-panel {
+  .product-panel-img {
+    max-width: rem(232px);
+    border-radius: 0;
+  }
+}

@@ -1,7 +1,9 @@
 import { CartItem } from '../../../../app/api/apiTypes/sharedApiTypes';
+import Button from '../../../../components/Button';
 import Img from '../../../../components/Img';
 import { translateKey } from '../../../../utils/utils';
 import type { ChangedAttribute } from '../../cartUtils';
+import './_single-product-panel.scss';
 
 export interface PopupData {
   changedAttribute: ChangedAttribute;
@@ -24,17 +26,29 @@ const SingleProductPanel = ({
   const changed = translateKey(popupData.changedAttribute, language);
 
   return (
-    <div>
+    <section className="single-product-panel">
       <h2>FLERE STØRRELSER</h2>
       <p>
         Returneringer har en påvirkning på miljøet. Se, om vores størrelsesguide
         og produktoplysninger kan hjælpe dig med at finde den rigtige størrelse.
       </p>
       <div>
-        <Img alt="" src={popupData.existingVariant.image} />
+        <Img
+          className="product-panel-img"
+          alt=""
+          src={popupData.existingVariant.image}
+        />
       </div>
-      {changed} {newValue} {value}
-    </div>
+
+      <Button>
+        Erstat {changed.toLowerCase()} {value.toLowerCase()} med{' '}
+        {changed.toLowerCase()} {newValue.toLowerCase()}
+      </Button>
+      <Button>
+        Behold {changed.toLowerCase()} {value.toLowerCase()}
+      </Button>
+      <Button>Behold begge størrelser</Button>
+    </section>
   );
 };
 
