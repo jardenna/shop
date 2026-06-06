@@ -19,6 +19,7 @@ const MobileNav = ({ navList, className }: MobileNavProps) => {
     <TogglePanel
       onTogglePanel={onTogglePanel}
       isPanelShown={isPanelShown}
+      className="mobile-nav-panel"
       panelRef={panelRef}
       ariaLabel={language.mainMenu}
       triggerBtnClassName="menu-burger"
