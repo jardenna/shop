@@ -1,13 +1,15 @@
 import { CartItem } from '../../app/api/apiTypes/sharedApiTypes';
 
+export type ChangedAttribute = 'size' | 'color';
+
 interface CartUtilsParams {
   cartItem: CartItem;
   cartList: CartItem[];
 }
 
-export interface CartResult {
+interface CartResult {
   action: 'addToQty' | 'showPopup' | 'addToCartList';
-  changedAttribute?: 'size' | 'color';
+  changedAttribute?: ChangedAttribute;
   existingValue?: string;
   existingVariant?: CartItem;
   incomingValue?: string;

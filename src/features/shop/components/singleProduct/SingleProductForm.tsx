@@ -25,8 +25,8 @@ import { oneSize } from '../../../../utils/sizeUtils';
 import { translateKey } from '../../../../utils/utils';
 import { validateShopProduct } from '../../../../utils/validation/validateShopProduct';
 import { useLanguage } from '../../../language/useLanguage';
-import { CartResult, cartUtils } from '../../cartUtils';
-import SingleProductPanel from './SingleProductPanel';
+import { cartUtils } from '../../cartUtils';
+import SingleProductPanel, { PopupData } from './SingleProductPanel';
 
 type SingleProductFormProps = {
   colorList: ColorOption[];
@@ -78,23 +78,10 @@ const SingleProductForm = ({
   const cartResult = cartUtils({ cartList, cartItem });
   const { existingVariant } = cartResult;
 
-  const [popupData, setPopupData] = useState<CartResult | null>(null);
-
-  // const x = {
-  //   action: 'showPopup',
-  //   existingVariant: {
-  //     productId: '685124d6e5d1e20900c9add6',
-  //     qty: 1,
-  //     size: '24',
-  //     color: 'blue',
-  //   },
-  //   changedAttribute: 'color',
-  //   existingValue: 'blue',
-  //   incomingValue: 'red',
-  // };
+  const [popupData, setPopupData] = useState<PopupData | null>(null);
 
   const handleShowPanel = () => {
-    setPopupData(cartResult);
+    setPopupData(cartResult as PopupData);
 
     onTogglePanel();
   };

@@ -1,15 +1,19 @@
+import { CartItem } from '../../../../app/api/apiTypes/sharedApiTypes';
 import Img from '../../../../components/Img';
 import { translateKey } from '../../../../utils/utils';
-import { CartResult } from '../../cartUtils';
+import type { ChangedAttribute } from '../../cartUtils';
 
-// interface PopupData extends CartResult {
-//   existingVariant: CartItem;
-// }
+export interface PopupData {
+  changedAttribute: ChangedAttribute;
+  existingValue: string;
+  existingVariant: CartItem;
+  incomingValue: string;
+}
 
-type SingleProductPanelProps = {
+interface SingleProductPanelProps {
   language: Record<string, string>;
-  popupData: CartResult;
-};
+  popupData: PopupData;
+}
 
 const SingleProductPanel = ({
   popupData,
@@ -27,9 +31,7 @@ const SingleProductPanel = ({
         og produktoplysninger kan hjælpe dig med at finde den rigtige størrelse.
       </p>
       <div>
-        {popupData.existingVariant && (
-          <Img alt="" src={popupData.existingVariant.image} />
-        )}
+        <Img alt="" src={popupData.existingVariant.image} />
       </div>
       {changed} {newValue} {value}
     </div>
