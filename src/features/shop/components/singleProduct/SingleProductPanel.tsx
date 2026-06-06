@@ -34,11 +34,10 @@ const SingleProductPanel = ({
 
   return (
     <section className="single-product-panel">
-      <h2>FLERE STØRRELSER</h2>
-      <p>
-        Returneringer har en påvirkning på miljøet. Se, om vores størrelsesguide
-        og produktoplysninger kan hjælpe dig med at finde den rigtige størrelse.
-      </p>
+      <h2>
+        {language.singleProductPanelHeading} {changedValue}
+      </h2>
+      <p>{language.singleProductPanelText}</p>
       <div>
         <Img className="product-panel-img" alt="" src={existingVariant.image} />
       </div>
