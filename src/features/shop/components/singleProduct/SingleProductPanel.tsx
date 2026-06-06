@@ -43,12 +43,15 @@ const SingleProductPanel = ({
       </div>
 
       <Button>
-        Erstat {changedValue} {value} med {changedValue} {newValue}
+        {language.replace} {changedValue} {value} {language.with} {changedValue}{' '}
+        {newValue}
       </Button>
       <Button>
-        Behold {changedValue} {value}
+        {language.keep} {changedValue} {value}
       </Button>
-      <Button>Behold begge {changedValue}r</Button>
+      <Button>
+        {language.keepBoth} {changedValue}r
+      </Button>
     </section>
   );
 };

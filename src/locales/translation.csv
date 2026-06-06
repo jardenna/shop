@@ -28,6 +28,8 @@ assignRole;Assign role;Tildel rolle
 available;Available;Tilgængelig
 availableColors;Available colours;Tilgængelige farver
 bag;Bag;Indkøbskurv
+keep;Keep;Behold
+keepBoth;Keep both;Behold begge
 black;Black;Sort
 blue;Blue;Blå
 brand;Brand;Brand
@@ -367,6 +369,7 @@ red;Red;Rød
 removeFilter;Remove filter;Fjern filter
 removeFromFavorite;Remove from favorite;Fjern fra favorit
 resetFiltersAndSorting;Reset filters and sorting;Nulstil filtre og sortering
+replace;Replace;Erstat
 retry;Retry;Forsøg igen
 reviews;Reviews;Anmeldelser
 role;Role;Rolle
@@ -474,6 +477,7 @@ warning;Warning;Advarsel
 welcome;Welcome;Velkommen
 whenOrderViewAndTrack;When you order from Fashion Fusion, you can view and track your orders here.;Når du bestiller varer hos Fashion Fusion vil du kunne se og følge dine ordrer her.
 white;White;Hvid
+with;with;med
 woman;Woman;Dame
 women_2AltText;Two women in exclusive outfits with elegant trousers and cropped jackets.;To kvinder i eksklusive outfits med elegante bukser og korte jakker.
 women_3AltText;Woman in a red blazer and stylish high heels leaning against a matching red telephone booth.;Kvinde i rød blazer og stilfulde stiletter læner sig op ad en matchende rød telefonboks.
