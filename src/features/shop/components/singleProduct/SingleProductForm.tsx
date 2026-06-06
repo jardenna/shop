@@ -65,6 +65,7 @@ const SingleProductForm = ({
     qty: 1,
     size: values.size,
     color: values.color,
+    image: selectedProduct.images[0],
   };
 
   const [cartList, setCartList] = useLocalStorage(
@@ -78,7 +79,6 @@ const SingleProductForm = ({
   const { existingVariant } = cartResult;
 
   const [popupData, setPopupData] = useState<CartResult | null>(null);
-  console.log(popupData);
 
   // const x = {
   //   action: 'showPopup',
@@ -93,7 +93,7 @@ const SingleProductForm = ({
   //   incomingValue: 'red',
   // };
 
-  const handlePanel = () => {
+  const handleShowPanel = () => {
     setPopupData(cartResult);
 
     onTogglePanel();
@@ -120,7 +120,7 @@ const SingleProductForm = ({
         break;
 
       case 'showPopup':
-        handlePanel();
+        handleShowPanel();
         break;
       default:
         break;
