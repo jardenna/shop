@@ -138,6 +138,7 @@ const SingleProductForm = ({
             popupData={popupData}
             language={language}
             selectedLanguage={selectedLanguage}
+            onHidePanel={onHidePanel}
           />
         )}
       </Panel>

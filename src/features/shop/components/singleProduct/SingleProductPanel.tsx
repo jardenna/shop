@@ -18,12 +18,14 @@ interface SingleProductPanelProps {
   language: Record<string, string>;
   popupData: PopupData;
   selectedLanguage: SelectedLanguage;
+  onHidePanel: () => void;
 }
 
 const SingleProductPanel = ({
   popupData,
   language,
   selectedLanguage,
+  onHidePanel,
 }: SingleProductPanelProps) => {
   const { incomingValue, existingValue, changedAttribute, existingVariant } =
     popupData;
@@ -43,7 +45,7 @@ const SingleProductPanel = ({
           {language.singleProductPanelHeading} {changedValue}
         </h2>
         <p>{language.singleProductPanelText}</p>
-        <div className="product-panel-img">
+        <div className="panel-img">
           <Img alt="" src={existingVariant.image} />
         </div>
       </div>
@@ -52,7 +54,7 @@ const SingleProductPanel = ({
           {language.replace} {changedValue} {value} {language.with}{' '}
           {changedValue} {newValue}
         </Button>
-        <Button variant={BtnVariant.Secondary}>
+        <Button variant={BtnVariant.Secondary} onClick={onHidePanel}>
           {language.keep} {changedValue} {value}
         </Button>
         <Button variant={BtnVariant.Secondary}>
