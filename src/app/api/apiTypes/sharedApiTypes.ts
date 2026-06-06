@@ -115,6 +115,7 @@ export type BasePagination = {
 
 export interface CartItem {
   color: string;
+  image: string;
   productId: string;
   qty: number;
   size: string;
