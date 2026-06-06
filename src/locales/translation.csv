@@ -28,6 +28,8 @@ assignRole;Assign role;Tildel rolle
 available;Available;Tilgængelig
 availableColors;Available colours;Tilgængelige farver
 bag;Bag;Indkøbskurv
+keep;Keep;Behold
+keepBoth;Keep both;Behold begge
 black;Black;Sort
 blue;Blue;Blå
 brand;Brand;Brand
@@ -67,6 +69,7 @@ collectionSubMenText;From everyday looks to formal, everything for the modern ma
 collectionSubWomenText;Discover stylish news, must-haves and trends of the season.;Opdag stilfulde nyheder, must-haves og sæsonens trends.
 colorRequired;Please select a colour;Vælg venligst farve
 color;Colour;Farve
+colorLowercase;colour;farve
 colors;Colours;Farver
 colours;Colours;Farver
 compact;Compact;Kompakt
@@ -366,6 +369,7 @@ red;Red;Rød
 removeFilter;Remove filter;Fjern filter
 removeFromFavorite;Remove from favorite;Fjern fra favorit
 resetFiltersAndSorting;Reset filters and sorting;Nulstil filtre og sortering
+replace;Replace;Erstat
 retry;Retry;Forsøg igen
 reviews;Reviews;Anmeldelser
 role;Role;Rolle
@@ -384,6 +388,8 @@ selectPreferences;Select preferred language and currency;Vælg sprog og valuta
 selectSize;Select size;Vælg størrelse
 shareReview;Share review;Del anmeldelse
 shareYourExperience;Share your experience;Del din oplevelse
+singleProductPanelHeading;You already have this item in another;Du har allerede denne vare i en anden
+singleProductPanelText;Choose whether you want to replace the existing item or keep both. The size guide and product information can help you make the right choice, avoid unnecessary returns, and thereby reduce the environmental impact.;Vælg, om du vil erstatte den eksisterende vare eller beholde begge. Størrelsesguiden og produktoplysningerne kan hjælpe dig med at træffe det rigtige valg, undgå unødige returneringer og dermed mindske belastningen på miljøet.
 sizeGuideInfo;Compare sizes across different countries with our size guide. Please note that fit and measurements may vary between brands, so this chart should be used as a general guide when converting sizes;Sammenlign størrelser på tværs af forskellige lande med vores størrelsesguide. Bemærk, at pasform og mål kan variere mellem mærker, så tabellen bør bruges som vejledning ved konvertering af størrelser
 sizeGuide;Size guide;Størrelsesguide
 shareYourExperience;Share your experience;Del din oplevelse
@@ -408,6 +414,7 @@ showPassword;Show password;Vis adgangskode
 showPrice;Show price;Vis pris
 silver;Silver;Sølv
 size;Size;Størrelse
+sizeLowercase;size;størrelse
 sizeInfoText;Sizes depend on the selected category;Størrelser afhænger af den valgte kategori
 sizeRequired;Please select a size;Vælg venligst størrelse
 sizes;Sizes;Størrelser
@@ -470,6 +477,7 @@ warning;Warning;Advarsel
 welcome;Welcome;Velkommen
 whenOrderViewAndTrack;When you order from Fashion Fusion, you can view and track your orders here.;Når du bestiller varer hos Fashion Fusion vil du kunne se og følge dine ordrer her.
 white;White;Hvid
+with;with;med
 woman;Woman;Dame
 women_2AltText;Two women in exclusive outfits with elegant trousers and cropped jackets.;To kvinder i eksklusive outfits med elegante bukser og korte jakker.
 women_3AltText;Woman in a red blazer and stylish high heels leaning against a matching red telephone booth.;Kvinde i rød blazer og stilfulde stiletter læner sig op ad en matchende rød telefonboks.

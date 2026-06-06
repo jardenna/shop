@@ -25,8 +25,8 @@ import { oneSize } from '../../../../utils/sizeUtils';
 import { translateKey } from '../../../../utils/utils';
 import { validateShopProduct } from '../../../../utils/validation/validateShopProduct';
 import { useLanguage } from '../../../language/useLanguage';
-import { CartResult, cartUtils } from '../../cartUtils';
-import SingleProductPanel from './SingleProductPanel';
+import { cartUtils } from '../../cartUtils';
+import SingleProductPanel, { PopupData } from './SingleProductPanel';
 
 type SingleProductFormProps = {
   colorList: ColorOption[];
@@ -46,7 +46,7 @@ const SingleProductForm = ({
   displaySizeList,
   onReset,
 }: SingleProductFormProps) => {
-  const { language } = useLanguage();
+  const { language, selectedLanguage } = useLanguage();
   const { sizes, categoryName, colors, id } = selectedProduct;
 
   const initialState: InitialShopValues = {
@@ -65,6 +65,7 @@ const SingleProductForm = ({
     qty: 1,
     size: values.size,
     color: values.color,
+    image: selectedProduct.images[0],
   };
 
   const [cartList, setCartList] = useLocalStorage(
@@ -77,24 +78,10 @@ const SingleProductForm = ({
   const cartResult = cartUtils({ cartList, cartItem });
   const { existingVariant } = cartResult;
 
-  const [popupData, setPopupData] = useState<CartResult | null>(null);
-  console.log(popupData);
+  const [popupData, setPopupData] = useState<PopupData | null>(null);
 
-  // const x = {
-  //   action: 'showPopup',
-  //   existingVariant: {
-  //     productId: '685124d6e5d1e20900c9add6',
-  //     qty: 1,
-  //     size: '24',
-  //     color: 'blue',
-  //   },
-  //   changedAttribute: 'color',
-  //   existingValue: 'blue',
-  //   incomingValue: 'red',
-  // };
-
-  const handlePanel = () => {
-    setPopupData(cartResult);
+  const handleShowPanel = () => {
+    setPopupData(cartResult as PopupData);
 
     onTogglePanel();
   };
@@ -120,7 +107,7 @@ const SingleProductForm = ({
         break;
 
       case 'showPopup':
-        handlePanel();
+        handleShowPanel();
         break;
       default:
         break;
@@ -139,6 +126,20 @@ const SingleProductForm = ({
 
   const sortedTranslatedColors = sortColorsByTranslation(colors, language);
 
+  const handleKeepBoth = () => {
+    setCartList([...cartList, cartItem]);
+    onHidePanel();
+  };
+
+  const handleReplaceItem = () => {
+    const updatedCartList = cartList.map((item) =>
+      item === popupData?.existingVariant ? cartItem : item,
+    );
+
+    setCartList(updatedCartList);
+    onHidePanel();
+  };
+
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
       <Panel
@@ -147,7 +148,14 @@ const SingleProductForm = ({
         onHidePanel={onHidePanel}
       >
         {popupData && (
-          <SingleProductPanel popupData={popupData} language={language} />
+          <SingleProductPanel
+            popupData={popupData}
+            language={language}
+            selectedLanguage={selectedLanguage}
+            onHidePanel={onHidePanel}
+            onReplaceItem={handleReplaceItem}
+            onKeepBoth={handleKeepBoth}
+          />
         )}
       </Panel>
       <Form onSubmit={onSubmit} submitBtnLabel={language.addToBag}>

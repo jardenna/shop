@@ -46,12 +46,23 @@ const createCart = asyncHandler(async (req, res) => {
     });
   }
 
+  const updatedCartItems = cartItems.map((cartItem) => {
+    const databaseProduct = databaseProducts.find(
+      (product) => product._id.toString() === cartItem.productId,
+    );
+
+    return {
+      ...cartItem,
+      image: databaseProduct.images[0],
+    };
+  });
+
   const existingCart = await Cart.findOne({
     user: req.user._id,
   });
 
   if (existingCart) {
-    existingCart.cartItems.unshift(...cartItems);
+    existingCart.cartItems.unshift(...updatedCartItems);
 
     const updatedCart = await existingCart.save();
 
@@ -60,7 +71,7 @@ const createCart = asyncHandler(async (req, res) => {
 
   const cart = new Cart({
     user: req.user._id,
-    cartItems,
+    cartItems: updatedCartItems,
   });
 
   const createdCart = await cart.save();

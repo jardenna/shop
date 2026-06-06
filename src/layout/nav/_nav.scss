@@ -46,6 +46,12 @@
   }
 }
 
+.mobile-nav-panel {
+  &.toggle-panel {
+    padding: 0;
+  }
+}
+
 // Admin nav
 .admin-nav-container {
   flex-grow: 1;
