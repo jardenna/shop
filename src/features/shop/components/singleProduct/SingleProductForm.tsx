@@ -46,7 +46,7 @@ const SingleProductForm = ({
   displaySizeList,
   onReset,
 }: SingleProductFormProps) => {
-  const { language } = useLanguage();
+  const { language, selectedLanguage } = useLanguage();
   const { sizes, categoryName, colors, id } = selectedProduct;
 
   const initialState: InitialShopValues = {
@@ -134,7 +134,11 @@ const SingleProductForm = ({
         onHidePanel={onHidePanel}
       >
         {popupData && (
-          <SingleProductPanel popupData={popupData} language={language} />
+          <SingleProductPanel
+            popupData={popupData}
+            language={language}
+            selectedLanguage={selectedLanguage}
+          />
         )}
       </Panel>
       <Form onSubmit={onSubmit} submitBtnLabel={language.addToBag}>

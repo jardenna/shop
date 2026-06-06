@@ -3,6 +3,7 @@ import Button from '../../../../components/Button';
 import Img from '../../../../components/Img';
 import { BtnVariant } from '../../../../types/enums';
 import { translateKey } from '../../../../utils/utils';
+import { SelectedLanguage } from '../../../language/languageSlice';
 import type { ChangedAttribute } from '../../cartUtils';
 import './_single-product-panel.scss';
 
@@ -16,11 +17,13 @@ export interface PopupData {
 interface SingleProductPanelProps {
   language: Record<string, string>;
   popupData: PopupData;
+  selectedLanguage: SelectedLanguage;
 }
 
 const SingleProductPanel = ({
   popupData,
   language,
+  selectedLanguage,
 }: SingleProductPanelProps) => {
   const { incomingValue, existingValue, changedAttribute, existingVariant } =
     popupData;
@@ -53,7 +56,8 @@ const SingleProductPanel = ({
           {language.keep} {changedValue} {value}
         </Button>
         <Button variant={BtnVariant.Secondary}>
-          {language.keepBoth} {changedValue}r
+          {language.keepBoth} {changedValue}
+          {selectedLanguage === 'da' ? 'r' : undefined}
         </Button>
       </div>
     </section>
