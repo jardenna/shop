@@ -1,6 +1,7 @@
 import { CartItem } from '../../../../app/api/apiTypes/sharedApiTypes';
 import Button from '../../../../components/Button';
 import Img from '../../../../components/Img';
+import { BtnVariant } from '../../../../types/enums';
 import { translateKey } from '../../../../utils/utils';
 import type { ChangedAttribute } from '../../cartUtils';
 import './_single-product-panel.scss';
@@ -34,24 +35,27 @@ const SingleProductPanel = ({
 
   return (
     <section className="single-product-panel">
-      <h2>
-        {language.singleProductPanelHeading} {changedValue}
-      </h2>
-      <p>{language.singleProductPanelText}</p>
-      <div>
-        <Img className="product-panel-img" alt="" src={existingVariant.image} />
+      <div className="panel-content">
+        <h2>
+          {language.singleProductPanelHeading} {changedValue}
+        </h2>
+        <p>{language.singleProductPanelText}</p>
+        <div className="product-panel-img">
+          <Img alt="" src={existingVariant.image} />
+        </div>
       </div>
-
-      <Button>
-        {language.replace} {changedValue} {value} {language.with} {changedValue}{' '}
-        {newValue}
-      </Button>
-      <Button>
-        {language.keep} {changedValue} {value}
-      </Button>
-      <Button>
-        {language.keepBoth} {changedValue}r
-      </Button>
+      <div className="panel-action-btns">
+        <Button>
+          {language.replace} {changedValue} {value} {language.with}{' '}
+          {changedValue} {newValue}
+        </Button>
+        <Button variant={BtnVariant.Secondary}>
+          {language.keep} {changedValue} {value}
+        </Button>
+        <Button variant={BtnVariant.Secondary}>
+          {language.keepBoth} {changedValue}r
+        </Button>
+      </div>
     </section>
   );
 };
