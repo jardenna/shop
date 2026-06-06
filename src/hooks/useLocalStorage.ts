@@ -24,4 +24,5 @@ export const localStorageKeys = {
   tableCellPadding: 'padding',
   menuCollapsed: 'menuCollapsed',
   productView: 'productView',
+  cartList: 'cartList',
 };

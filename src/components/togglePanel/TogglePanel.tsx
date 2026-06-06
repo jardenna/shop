@@ -1,24 +1,26 @@
 import { ReactNode, RefObject, useId } from 'react';
 import { BtnVariant } from '../../types/enums';
 import type { AriaHasPopup } from '../../types/types';
-import BtnClose from '../BtnClose';
 import Button from '../Button';
 import './_toggle-panel.scss';
-import Overlay from '../overlay/Overlay';
+import Panel from './Panel';
 
-type TogglePanelProps = {
+export interface BaseTogglePanelProps {
   children: ReactNode;
   isPanelShown: boolean;
   panelRef: RefObject<HTMLDivElement | null>;
+  className?: string;
+  onHidePanel?: () => void;
+}
+
+interface TogglePanelProps extends BaseTogglePanelProps {
   triggerBtnContent: ReactNode;
   ariaHasPopup?: AriaHasPopup;
   ariaLabel?: string;
   btnVariant?: BtnVariant;
-  className?: string;
   triggerBtnClassName?: string;
-  onHidePanel?: () => void;
   onTogglePanel: () => void;
-};
+}
 
 const TogglePanel = ({
   children,
@@ -47,16 +49,17 @@ const TogglePanel = ({
       >
         {triggerBtnContent}
       </Button>
-      <div
-        ref={panelRef}
-        className={`toggle-panel ${className} ${isPanelShown ? 'shown' : ''}`}
-        id={togglePanelId}
+      <Panel
+        isPanelShown={isPanelShown}
+        panelRef={panelRef}
+        togglePanelId={togglePanelId}
+        className={className}
+        onHidePanel={onHidePanel}
       >
-        {onHidePanel && <BtnClose onClick={onHidePanel} />}
         {children}
-      </div>
-      {isPanelShown && <Overlay />}
+      </Panel>
     </>
   );
 };
+
 export default TogglePanel;

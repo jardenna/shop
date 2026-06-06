@@ -66,12 +66,18 @@ collectionSubKidsText;Comfortable and fun clothes for play, school and adventure
 collectionSubMenText;From everyday looks to formal, everything for the modern man.;Fra hverdagslook til formelt, alt til den moderne mand.
 collectionSubWomenText;Discover stylish news, must-haves and trends of the season.;Opdag stilfulde nyheder, must-haves og sæsonens trends.
 colorRequired;Please select a colour;Vælg venligst farve
+color;Colour;Farve
 colors;Colours;Farver
 colours;Colours;Farver
 compact;Compact;Kompakt
 confirmPassword;Confirm password;Gentag adgangskode
 contact;Contact;Kontakt
 continueShopping;Continue shopping;Fortsæt med at handle
+convertingSize;Size conversion;Konvertering af størrelse
+bodyMeasurements;Body Measurements;Kropsmål
+chest;Chest;Bryst
+waist;Waist;Livvidde
+hips;Hips;Hofte
 copy;Copy;Kopi
 copyAction;Copy;Kopier
 couldNotFindInfo;Sorry, We couldn’t find the information you’re looking for;Vi kunne desværre ikke finde den information, du søger
@@ -377,6 +383,9 @@ selectNumber;Select number;Vælg antal
 selectPreferences;Select preferred language and currency;Vælg sprog og valuta
 selectSize;Select size;Vælg størrelse
 shareReview;Share review;Del anmeldelse
+shareYourExperience;Share your experience;Del din oplevelse
+sizeGuideInfo;Compare sizes across different countries with our size guide. Please note that fit and measurements may vary between brands, so this chart should be used as a general guide when converting sizes;Sammenlign størrelser på tværs af forskellige lande med vores størrelsesguide. Bemærk, at pasform og mål kan variere mellem mærker, så tabellen bør bruges som vejledning ved konvertering af størrelser
+sizeGuide;Size guide;Størrelsesguide
 shareYourExperience;Share your experience;Del din oplevelse
 shoes;Shoes;Sko
 shopCart;Shopping cart;Indkøbskurv

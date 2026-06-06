@@ -12,6 +12,12 @@ import { toggleItemInArray } from '../utils/toggleItemInArray.js';
 const getFavorites = asyncHandler(async (req, res) => {
   const userId = req.user.id;
 
+  if (!req.user) {
+    return res.status(401).json({
+      message: 'Unauthorized',
+    });
+  }
+
   const userWithFavorites = await User.findById(userId)
     .populate({
       path: 'favorites',

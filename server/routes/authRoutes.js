@@ -6,6 +6,7 @@ import {
 } from '../controllers/authController.js';
 import { authenticate, authorizeAdmin } from '../middleware/authMiddleware.js';
 import languageMiddleware from '../middleware/languageMiddleware.js';
+import { optionalAuthenticate } from '../middleware/optionalAuthenticate.js';
 
 const router = express.Router();
 
@@ -30,9 +31,16 @@ router.post(
 router.get(
   '/check-auth',
   languageMiddleware,
-  authenticate,
-
+  optionalAuthenticate,
   (req, res) => {
+    if (!req.user) {
+      return res.status(200).json({
+        success: true,
+        message: 'Anonymous user',
+        user: null,
+      });
+    }
+
     const user = req.user;
 
     res.status(200).json({
