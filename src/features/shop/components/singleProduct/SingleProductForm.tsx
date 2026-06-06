@@ -126,6 +126,20 @@ const SingleProductForm = ({
 
   const sortedTranslatedColors = sortColorsByTranslation(colors, language);
 
+  const handleKeepBoth = () => {
+    setCartList([...cartList, cartItem]);
+    onHidePanel();
+  };
+
+  const handleReplaceItem = () => {
+    const updatedCartList = cartList.map((item) =>
+      item === popupData?.existingVariant ? cartItem : item,
+    );
+
+    setCartList(updatedCartList);
+    onHidePanel();
+  };
+
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
       <Panel
@@ -139,6 +153,8 @@ const SingleProductForm = ({
             language={language}
             selectedLanguage={selectedLanguage}
             onHidePanel={onHidePanel}
+            onReplaceItem={handleReplaceItem}
+            onKeepBoth={handleKeepBoth}
           />
         )}
       </Panel>

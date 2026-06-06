@@ -19,6 +19,8 @@ interface SingleProductPanelProps {
   popupData: PopupData;
   selectedLanguage: SelectedLanguage;
   onHidePanel: () => void;
+  onKeepBoth: () => void;
+  onReplaceItem: () => void;
 }
 
 const SingleProductPanel = ({
@@ -26,6 +28,8 @@ const SingleProductPanel = ({
   language,
   selectedLanguage,
   onHidePanel,
+  onKeepBoth,
+  onReplaceItem,
 }: SingleProductPanelProps) => {
   const { incomingValue, existingValue, changedAttribute, existingVariant } =
     popupData;
@@ -50,14 +54,14 @@ const SingleProductPanel = ({
         </div>
       </div>
       <div className="panel-action-btns">
-        <Button>
+        <Button onClick={onReplaceItem}>
           {language.replace} {changedValue} {value} {language.with}{' '}
           {changedValue} {newValue}
         </Button>
         <Button variant={BtnVariant.Secondary} onClick={onHidePanel}>
           {language.keep} {changedValue} {value}
         </Button>
-        <Button variant={BtnVariant.Secondary}>
+        <Button variant={BtnVariant.Secondary} onClick={onKeepBoth}>
           {language.keepBoth} {changedValue}
           {selectedLanguage === 'da' ? 'r' : undefined}
         </Button>
