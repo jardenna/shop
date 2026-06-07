@@ -47,6 +47,22 @@ const createCart = asyncHandler(async (req, res) => {
     });
   }
 
+  for (const cartItem of cartItems) {
+    const databaseProduct = databaseProducts.find(
+      (product) => product._id.toString() === cartItem.productId,
+    );
+
+    const sizeExists = databaseProduct.sizes.includes(cartItem.size);
+    const colorExists = databaseProduct.colors.includes(cartItem.color);
+
+    if (!sizeExists || !colorExists) {
+      return res.status(400).json({
+        success: false,
+        message: 'The selected variant does not exist',
+      });
+    }
+  }
+
   const updatedCartItems = cartItems.map((cartItem) => {
     const databaseProduct = databaseProducts.find(
       (product) => product._id.toString() === cartItem.productId,
@@ -58,11 +74,32 @@ const createCart = asyncHandler(async (req, res) => {
     };
   });
 
+  //   const updatedCartItems = cartItems.map((cartItem) => {
+  //   const databaseProduct = databaseProducts.find(
+  //     (product) => product._id.toString() === cartItem.productId,
+  //   );
+
+  //   if (!databaseProduct) {
+  //     return res.status(404).json({
+  //       success: false,
+  //       message: 'Product does not exist',
+  //     });
+  //   }
+
+  //   return {
+  //     ...cartItem,
+  //     image: databaseProduct.images[0],
+  //   };
+  // });
+
   const existingCart = await Cart.findOne({
     user: req.user._id,
   });
 
   if (existingCart) {
+    // Identisk variant findes?
+    // Er den samlede quantity på lager?
+
     existingCart.cartItems.unshift(...updatedCartItems);
 
     const updatedCart = await existingCart.save();
@@ -85,11 +122,13 @@ const createCart = asyncHandler(async (req, res) => {
 // @method  Post
 // @access  Private
 const mergeCart = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.user?.id);
+  const user = await User.findById(req.user?._id);
 
-  console.log(user);
+  const existingCart = await Cart.findOne({
+    user,
+  });
 
-  res.send('ok');
+  res.send(existingCart);
 });
 
 export { createCart, mergeCart };
