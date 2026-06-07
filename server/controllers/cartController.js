@@ -54,7 +54,6 @@ const createCart = asyncHandler(async (req, res) => {
     const databaseProduct = databaseProducts.find(
       (product) => product._id.toString() === cartItem.productId,
     );
-    // console.log(databaseProduct.countInStock, existingCart);
 
     if (databaseProduct.countInStock < cartItem.qty) {
       return res.status(400).json({
@@ -98,7 +97,20 @@ const createCart = asyncHandler(async (req, res) => {
       );
 
       if (identicalVariant) {
-        identicalVariant.qty += cartItem.qty;
+        const databaseProduct = databaseProducts.find(
+          (product) => product._id.toString() === cartItem.productId,
+        );
+
+        const totalQuantity = identicalVariant.qty + cartItem.qty;
+
+        if (totalQuantity > databaseProduct.countInStock) {
+          return res.status(400).json({
+            success: false,
+            message: 'The product you selected is out of stock',
+          });
+        }
+
+        identicalVariant.qty = totalQuantity;
       } else {
         existingCart.cartItems.unshift(cartItem);
       }
