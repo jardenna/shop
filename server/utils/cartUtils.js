@@ -20,4 +20,15 @@ const validateVariant = ({ databaseProduct, cartItem }) => {
   );
 };
 
-export { findDatabaseProduct, findIdenticalVariant, validateVariant };
+const cartItemIdentifier = (cartItem) => ({
+  productId: cartItem.productId,
+  size: cartItem.size,
+  color: cartItem.color,
+});
+
+export {
+  cartItemIdentifier,
+  findDatabaseProduct,
+  findIdenticalVariant,
+  validateVariant,
+};

@@ -3,6 +3,7 @@ import Cart from '../models/cartModel.js';
 import Product from '../models/productModel.js';
 import User from '../models/userModel.js';
 import {
+  cartItemIdentifier,
   findDatabaseProduct,
   findIdenticalVariant,
   validateVariant,
@@ -62,11 +63,7 @@ const createCart = asyncHandler(async (req, res) => {
       return res.status(400).json({
         success: false,
         message: 'The product you selected is out of stock',
-        cartItem: {
-          productId: cartItem.productId,
-          size: cartItem.size,
-          color: cartItem.color,
-        },
+        cartItem: cartItemIdentifier(cartItem),
       });
     }
 
@@ -76,11 +73,7 @@ const createCart = asyncHandler(async (req, res) => {
       return res.status(400).json({
         success: false,
         message: 'The selected variant does not exist',
-        cartItem: {
-          productId: cartItem.productId,
-          size: cartItem.size,
-          color: cartItem.color,
-        },
+        cartItem: cartItemIdentifier(cartItem),
       });
     }
   }
@@ -114,11 +107,7 @@ const createCart = asyncHandler(async (req, res) => {
           return res.status(400).json({
             success: false,
             message: 'The product you selected is out of stock',
-            cartItem: {
-              productId: cartItem.productId,
-              size: cartItem.size,
-              color: cartItem.color,
-            },
+            cartItem: cartItemIdentifier(cartItem),
           });
         }
 
