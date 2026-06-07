@@ -34,26 +34,19 @@ const getAllUsers = asyncHandler(async (req, res) => {
 // @desc    Get User profile
 // @route   /api/users/profile
 // @method  Get
-// @access  Private for logged in user
+// @access  Private
 const getCurrentUserProfile = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.user?._id).select(
+  const user = await User.findById(req.user._id).select(
     '-isAdmin -role -password',
   );
 
-  if (user) {
-    res.status(200).json(user);
-  } else {
-    return res.status(404).json({
-      success: false,
-      message: t('noUser', req.lang),
-    });
-  }
+  res.status(200).json(user);
 });
 
 // @desc    Update User profile
 // @route   /api/users/profile
 // @method  Put
-// @access  Private for logged in user
+// @access  Private
 const updateCurrentUserProfile = asyncHandler(async (req, res) => {
   const {
     password,
