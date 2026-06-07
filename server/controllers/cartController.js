@@ -2,6 +2,11 @@ import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
 import Product from '../models/productModel.js';
 import User from '../models/userModel.js';
+import {
+  findDatabaseProduct,
+  findIdenticalVariant,
+  validateVariant,
+} from '../utils/cartUtils.js';
 import { t } from '../utils/translator.js';
 import { validateCartItems } from '../utils/validateCartItems.js';
 
@@ -51,9 +56,7 @@ const createCart = asyncHandler(async (req, res) => {
   }
 
   for (const cartItem of cartItems) {
-    const databaseProduct = databaseProducts.find(
-      (product) => product._id.toString() === cartItem.productId,
-    );
+    const databaseProduct = findDatabaseProduct({ databaseProducts, cartItem });
 
     if (databaseProduct.countInStock < cartItem.qty) {
       return res.status(400).json({
@@ -67,10 +70,9 @@ const createCart = asyncHandler(async (req, res) => {
       });
     }
 
-    const sizeExists = databaseProduct.sizes.includes(cartItem.size);
-    const colorExists = databaseProduct.colors.includes(cartItem.color);
+    const isValidVariant = validateVariant({ databaseProduct, cartItem });
 
-    if (!sizeExists || !colorExists) {
+    if (!isValidVariant) {
       return res.status(400).json({
         success: false,
         message: 'The selected variant does not exist',
@@ -84,9 +86,7 @@ const createCart = asyncHandler(async (req, res) => {
   }
 
   const updatedCartItems = cartItems.map((cartItem) => {
-    const databaseProduct = databaseProducts.find(
-      (product) => product._id.toString() === cartItem.productId,
-    );
+    const databaseProduct = findDatabaseProduct({ databaseProducts, cartItem });
 
     return {
       ...cartItem,
@@ -97,17 +97,16 @@ const createCart = asyncHandler(async (req, res) => {
   if (existingCart) {
     // Identical variant
     for (const cartItem of updatedCartItems) {
-      const identicalVariant = existingCart.cartItems.find(
-        (item) =>
-          item.productId.toString() === cartItem.productId &&
-          item.color === cartItem.color &&
-          item.size === cartItem.size,
-      );
+      const identicalVariant = findIdenticalVariant({
+        cartItems: existingCart.cartItems,
+        cartItem,
+      });
 
       if (identicalVariant) {
-        const databaseProduct = databaseProducts.find(
-          (product) => product._id.toString() === cartItem.productId,
-        );
+        const databaseProduct = findDatabaseProduct({
+          databaseProducts,
+          cartItem,
+        });
 
         const totalQuantity = identicalVariant.qty + cartItem.qty;
 
