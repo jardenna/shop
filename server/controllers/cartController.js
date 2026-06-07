@@ -1,6 +1,7 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
 import Product from '../models/productModel.js';
+import User from '../models/userModel.js';
 import { t } from '../utils/translator.js';
 import { validateCartItems } from '../utils/validateCartItems.js';
 
@@ -79,4 +80,16 @@ const createCart = asyncHandler(async (req, res) => {
   return res.status(201).json(createdCart);
 });
 
-export { createCart };
+// @desc    Merge cart
+// @route   /api/cart/merge
+// @method  Post
+// @access  Private
+const mergeCart = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user?.id);
+
+  console.log(user);
+
+  res.send('ok');
+});
+
+export { createCart, mergeCart };
