@@ -19,4 +19,4 @@ const validateProduct = (product) => {
   }
 };
 
-export default validateProduct;
+export { validateProduct };

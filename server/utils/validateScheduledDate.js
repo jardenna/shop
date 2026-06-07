@@ -25,4 +25,4 @@ const validateScheduledDate = (categoryStatus, scheduledDate, lang) => {
   return { success: true };
 };
 
-export default validateScheduledDate;
+export { validateScheduledDate };

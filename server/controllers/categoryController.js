@@ -6,7 +6,7 @@ import { formatMongoData } from '../utils/formatMongoData.js';
 import { sortColumns } from '../utils/sortColumns.js';
 import { t } from '../utils/translator.js';
 import { updateScheduledItems } from '../utils/UpdateScheduledItemsOptions.js';
-import validateScheduledDate from '../utils/validateScheduledDate.js';
+import { validateScheduledDate } from '../utils/validateScheduledDate.js';
 
 // @desc    Create category
 // @route   /api/category
