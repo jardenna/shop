@@ -11,6 +11,9 @@ import { validateCartItems } from '../utils/validateCartItems.js';
 // @access  Private
 const createCart = asyncHandler(async (req, res) => {
   const { cartItems } = req.body;
+  const existingCart = await Cart.findOne({
+    user: req.user._id,
+  });
 
   if (!cartItems || cartItems.length === 0) {
     return res.status(400).json({
@@ -51,6 +54,14 @@ const createCart = asyncHandler(async (req, res) => {
     const databaseProduct = databaseProducts.find(
       (product) => product._id.toString() === cartItem.productId,
     );
+    // console.log(databaseProduct.countInStock, existingCart);
+
+    if (databaseProduct.countInStock < cartItem.qty) {
+      return res.status(400).json({
+        success: false,
+        message: 'The product you selected is out of stock',
+      });
+    }
 
     const sizeExists = databaseProduct.sizes.includes(cartItem.size);
     const colorExists = databaseProduct.colors.includes(cartItem.color);
@@ -74,33 +85,24 @@ const createCart = asyncHandler(async (req, res) => {
     };
   });
 
-  //   const updatedCartItems = cartItems.map((cartItem) => {
-  //   const databaseProduct = databaseProducts.find(
-  //     (product) => product._id.toString() === cartItem.productId,
-  //   );
-
-  //   if (!databaseProduct) {
-  //     return res.status(404).json({
-  //       success: false,
-  //       message: 'Product does not exist',
-  //     });
-  //   }
-
-  //   return {
-  //     ...cartItem,
-  //     image: databaseProduct.images[0],
-  //   };
-  // });
-
-  const existingCart = await Cart.findOne({
-    user: req.user._id,
-  });
-
   if (existingCart) {
-    // Identisk variant findes?
     // Er den samlede quantity på lager?
 
-    existingCart.cartItems.unshift(...updatedCartItems);
+    // Identical variant
+    for (const cartItem of updatedCartItems) {
+      const identicalVariant = existingCart.cartItems.find(
+        (item) =>
+          item.productId.toString() === cartItem.productId &&
+          item.color === cartItem.color &&
+          item.size === cartItem.size,
+      );
+
+      if (identicalVariant) {
+        identicalVariant.qty += cartItem.qty;
+      } else {
+        existingCart.cartItems.unshift(cartItem);
+      }
+    }
 
     const updatedCart = await existingCart.save();
 
