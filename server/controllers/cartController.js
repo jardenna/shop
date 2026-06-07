@@ -59,6 +59,11 @@ const createCart = asyncHandler(async (req, res) => {
       return res.status(400).json({
         success: false,
         message: 'The product you selected is out of stock',
+        cartItem: {
+          productId: cartItem.productId,
+          size: cartItem.size,
+          color: cartItem.color,
+        },
       });
     }
 
@@ -69,6 +74,11 @@ const createCart = asyncHandler(async (req, res) => {
       return res.status(400).json({
         success: false,
         message: 'The selected variant does not exist',
+        cartItem: {
+          productId: cartItem.productId,
+          size: cartItem.size,
+          color: cartItem.color,
+        },
       });
     }
   }
@@ -85,8 +95,6 @@ const createCart = asyncHandler(async (req, res) => {
   });
 
   if (existingCart) {
-    // Er den samlede quantity på lager?
-
     // Identical variant
     for (const cartItem of updatedCartItems) {
       const identicalVariant = existingCart.cartItems.find(
@@ -107,6 +115,11 @@ const createCart = asyncHandler(async (req, res) => {
           return res.status(400).json({
             success: false,
             message: 'The product you selected is out of stock',
+            cartItem: {
+              productId: cartItem.productId,
+              size: cartItem.size,
+              color: cartItem.color,
+            },
           });
         }
 
