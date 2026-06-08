@@ -26,9 +26,29 @@ const cartItemIdentifier = (cartItem) => ({
   color: cartItem.color,
 });
 
+const mergeCartItems = ({ cartItems, existingCart }) => {
+  for (const cartItem of cartItems) {
+    const identicalVariant = findIdenticalVariant({
+      cartItems: existingCart.cartItems,
+      cartItem,
+    });
+
+    if (identicalVariant) {
+      const totalQuantity = identicalVariant.qty + cartItem.qty;
+      // Check count in stock
+      if (totalQuantity > databaseProduct.countInStock) {
+        return { success: false };
+      } else {
+        return (identicalVariant.qty = totalQuantity);
+      }
+    }
+  }
+};
+
 export {
   cartItemIdentifier,
   findDatabaseProduct,
   findIdenticalVariant,
+  mergeCartItems,
   validateVariant,
 };
