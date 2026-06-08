@@ -1,6 +1,12 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
 import Product from '../models/productModel.js';
+import {
+  cartItemIdentifier,
+  findDatabaseProduct,
+  findIdenticalVariant,
+  validateVariant,
+} from '../utils/cartUtils.js';
 import { t } from '../utils/translator.js';
 import { validateCartItems } from '../utils/validateCartItems.js';
 
@@ -10,6 +16,9 @@ import { validateCartItems } from '../utils/validateCartItems.js';
 // @access  Private
 const createCart = asyncHandler(async (req, res) => {
   const { cartItems } = req.body;
+  const existingCart = await Cart.findOne({
+    user: req.user._id,
+  });
 
   if (!cartItems || cartItems.length === 0) {
     return res.status(400).json({
@@ -46,10 +55,30 @@ const createCart = asyncHandler(async (req, res) => {
     });
   }
 
+  for (const cartItem of cartItems) {
+    const databaseProduct = findDatabaseProduct({ databaseProducts, cartItem });
+
+    if (databaseProduct.countInStock < cartItem.qty) {
+      return res.status(400).json({
+        success: false,
+        message: 'The product you selected is out of stock',
+        cartItem: cartItemIdentifier(cartItem),
+      });
+    }
+
+    const isValidVariant = validateVariant({ databaseProduct, cartItem });
+
+    if (!isValidVariant) {
+      return res.status(400).json({
+        success: false,
+        message: 'The selected variant does not exist',
+        cartItem: cartItemIdentifier(cartItem),
+      });
+    }
+  }
+
   const updatedCartItems = cartItems.map((cartItem) => {
-    const databaseProduct = databaseProducts.find(
-      (product) => product._id.toString() === cartItem.productId,
-    );
+    const databaseProduct = findDatabaseProduct({ databaseProducts, cartItem });
 
     return {
       ...cartItem,
@@ -57,12 +86,35 @@ const createCart = asyncHandler(async (req, res) => {
     };
   });
 
-  const existingCart = await Cart.findOne({
-    user: req.user._id,
-  });
-
   if (existingCart) {
-    existingCart.cartItems.unshift(...updatedCartItems);
+    // Identical variant
+    for (const cartItem of updatedCartItems) {
+      const identicalVariant = findIdenticalVariant({
+        cartItems: existingCart.cartItems,
+        cartItem,
+      });
+
+      if (identicalVariant) {
+        const databaseProduct = findDatabaseProduct({
+          databaseProducts,
+          cartItem,
+        });
+
+        const totalQuantity = identicalVariant.qty + cartItem.qty;
+
+        if (totalQuantity > databaseProduct.countInStock) {
+          return res.status(400).json({
+            success: false,
+            message: 'The product you selected is out of stock',
+            cartItem: cartItemIdentifier(cartItem),
+          });
+        }
+
+        identicalVariant.qty = totalQuantity;
+      } else {
+        existingCart.cartItems.unshift(cartItem);
+      }
+    }
 
     const updatedCart = await existingCart.save();
 
@@ -79,4 +131,57 @@ const createCart = asyncHandler(async (req, res) => {
   return res.status(201).json(createdCart);
 });
 
-export { createCart };
+// @desc    Merge cart
+// @route   /api/cart/merge
+// @method  Post
+// @access  Private
+const mergeCart = asyncHandler(async (req, res) => {
+  const { cartList } = req.body;
+
+  const existingCart = await Cart.findOne({
+    user: req.user._id,
+  }).lean();
+
+  const allCartItems = [...existingCart.cartItems, ...cartList];
+  const uniqueProductIds = [
+    ...new Set(cartList.map((cartItem) => cartItem.productId)),
+  ];
+
+  const databaseProducts = await Product.find({
+    _id: {
+      $in: uniqueProductIds,
+    },
+  });
+
+  for (const cartItem of cartList) {
+    const identicalVariant = findIdenticalVariant({
+      cartItems: existingCart.cartItems,
+      cartItem,
+    });
+
+    if (identicalVariant) {
+      const databaseProduct = findDatabaseProduct({
+        databaseProducts,
+        cartItem,
+      });
+
+      const totalQuantity = identicalVariant.qty + cartItem.qty;
+
+      if (totalQuantity > databaseProduct.countInStock) {
+        return res.status(400).json({
+          success: false,
+          message: 'The product you selected is out of stock',
+          cartItem: cartItemIdentifier(cartItem),
+        });
+      }
+
+      identicalVariant.qty = totalQuantity;
+    } else {
+      existingCart.cartItems.unshift(cartItem);
+    }
+  }
+
+  res.send(allCartItems);
+});
+
+export { createCart, mergeCart };

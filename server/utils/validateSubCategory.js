@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import Category from '../models/categoryModel.js';
-import validateScheduledDate from '../utils/validateScheduledDate.js';
+import { validateScheduledDate } from '../utils/validateScheduledDate.js';
 import { t } from './translator.js';
 
 const validateSubCategory = async ({
@@ -53,4 +53,4 @@ const validateSubCategory = async ({
   return { success: true };
 };
 
-export default validateSubCategory;
+export { validateSubCategory };

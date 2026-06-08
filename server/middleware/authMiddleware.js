@@ -4,28 +4,36 @@ import { t } from '../utils/translator.js';
 import asyncHandler from './asyncHandler.js';
 
 const authenticate = asyncHandler(async (req, res, next) => {
-  let token;
+  const token = req.cookies.jwt;
 
-  // Read JWT from the 'jwt' cookie
-  token = req.cookies.jwt;
+  if (!token) {
+    return res.status(401).json({
+      success: false,
+      message: t('notAuthorizedNoToken', req.lang),
+    });
+  }
 
-  if (token) {
-    try {
-      const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-      req.user = await User.findById(decoded.userId).select('-password'); // Exclude password field
-      next();
-    } catch (error) {
-      console.error(error);
+  try {
+    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
 
+    const user = await User.findById(decoded.userId).select('-password');
+
+    if (!user) {
       return res.status(401).json({
         success: false,
         message: t('notAuthorizedTokenFailed', req.lang),
       });
     }
-  } else {
+
+    req.user = user;
+
+    next();
+  } catch (error) {
+    console.error(error);
+
     return res.status(401).json({
       success: false,
-      message: t('notAuthorizedNoToken', req.lang),
+      message: t('notAuthorizedTokenFailed', req.lang),
     });
   }
 });
