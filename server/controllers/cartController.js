@@ -1,7 +1,6 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
 import Product from '../models/productModel.js';
-import User from '../models/userModel.js';
 import {
   cartItemIdentifier,
   findDatabaseProduct,
@@ -137,13 +136,52 @@ const createCart = asyncHandler(async (req, res) => {
 // @method  Post
 // @access  Private
 const mergeCart = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.user?._id);
+  const { cartList } = req.body;
 
   const existingCart = await Cart.findOne({
-    user,
+    user: req.user._id,
+  }).lean();
+
+  const allCartItems = [...existingCart.cartItems, ...cartList];
+  const uniqueProductIds = [
+    ...new Set(cartList.map((cartItem) => cartItem.productId)),
+  ];
+
+  const databaseProducts = await Product.find({
+    _id: {
+      $in: uniqueProductIds,
+    },
   });
 
-  res.send(existingCart);
+  for (const cartItem of cartList) {
+    const identicalVariant = findIdenticalVariant({
+      cartItems: existingCart.cartItems,
+      cartItem,
+    });
+
+    if (identicalVariant) {
+      const databaseProduct = findDatabaseProduct({
+        databaseProducts,
+        cartItem,
+      });
+
+      const totalQuantity = identicalVariant.qty + cartItem.qty;
+
+      if (totalQuantity > databaseProduct.countInStock) {
+        return res.status(400).json({
+          success: false,
+          message: 'The product you selected is out of stock',
+          cartItem: cartItemIdentifier(cartItem),
+        });
+      }
+
+      identicalVariant.qty = totalQuantity;
+    } else {
+      existingCart.cartItems.unshift(cartItem);
+    }
+  }
+
+  res.send(allCartItems);
 });
 
 export { createCart, mergeCart };
