@@ -4,7 +4,7 @@ import Product from '../models/productModel.js';
 import {
   cartItemIdentifier,
   findDatabaseProduct,
-  findIdenticalVariant,
+  mergeCartItems,
   validateVariant,
 } from '../utils/cartUtils.js';
 import { t } from '../utils/translator.js';
@@ -87,33 +87,18 @@ const createCart = asyncHandler(async (req, res) => {
   });
 
   if (existingCart) {
-    // Identical variant
-    for (const cartItem of updatedCartItems) {
-      const identicalVariant = findIdenticalVariant({
-        cartItems: existingCart.cartItems,
-        cartItem,
+    const mergeResult = mergeCartItems({
+      existingCartItems: existingCart.cartItems,
+      incomingCartItems: updatedCartItems,
+      databaseProducts,
+    });
+
+    if (!mergeResult.success) {
+      return res.status(400).json({
+        success: false,
+        message: 'The product you selected is out of stock',
+        cartItem: mergeResult.cartItem,
       });
-
-      if (identicalVariant) {
-        const databaseProduct = findDatabaseProduct({
-          databaseProducts,
-          cartItem,
-        });
-
-        const totalQuantity = identicalVariant.qty + cartItem.qty;
-
-        if (totalQuantity > databaseProduct.countInStock) {
-          return res.status(400).json({
-            success: false,
-            message: 'The product you selected is out of stock',
-            cartItem: cartItemIdentifier(cartItem),
-          });
-        }
-
-        identicalVariant.qty = totalQuantity;
-      } else {
-        existingCart.cartItems.unshift(cartItem);
-      }
     }
 
     const updatedCart = await existingCart.save();
@@ -142,7 +127,6 @@ const mergeCart = asyncHandler(async (req, res) => {
     user: req.user._id,
   }).lean();
 
-  const allCartItems = [...existingCart.cartItems, ...cartList];
   const uniqueProductIds = [
     ...new Set(cartList.map((cartItem) => cartItem.productId)),
   ];
@@ -153,35 +137,21 @@ const mergeCart = asyncHandler(async (req, res) => {
     },
   });
 
-  for (const cartItem of cartList) {
-    const identicalVariant = findIdenticalVariant({
-      cartItems: existingCart.cartItems,
-      cartItem,
+  const mergeResult = mergeCartItems({
+    existingCartItems: existingCart.cartItems,
+    incomingCartItems: cartList,
+    databaseProducts,
+  });
+
+  if (!mergeResult.success) {
+    return res.status(400).json({
+      success: false,
+      message: 'The product you selected is out of stock',
+      cartItem: mergeResult.cartItem,
     });
-
-    if (identicalVariant) {
-      const databaseProduct = findDatabaseProduct({
-        databaseProducts,
-        cartItem,
-      });
-
-      const totalQuantity = identicalVariant.qty + cartItem.qty;
-
-      if (totalQuantity > databaseProduct.countInStock) {
-        return res.status(400).json({
-          success: false,
-          message: 'The product you selected is out of stock',
-          cartItem: cartItemIdentifier(cartItem),
-        });
-      }
-
-      identicalVariant.qty = totalQuantity;
-    } else {
-      existingCart.cartItems.unshift(cartItem);
-    }
   }
 
-  res.send(allCartItems);
+  res.send(mergeResult.cartItems);
 });
 
 export { createCart, mergeCart };
