@@ -125,7 +125,7 @@ const mergeCart = asyncHandler(async (req, res) => {
 
   const existingCart = await Cart.findOne({
     user: req.user._id,
-  }).lean();
+  });
 
   const uniqueProductIds = [
     ...new Set(cartList.map((cartItem) => cartItem.productId)),
