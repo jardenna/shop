@@ -127,6 +127,17 @@ const mergeCart = asyncHandler(async (req, res) => {
     user: req.user._id,
   });
 
+  if (!existingCart) {
+    const cart = new Cart({
+      user: req.user._id,
+      cartItems: cartList,
+    });
+
+    const createdCart = await cart.save();
+
+    return res.status(201).json(createdCart);
+  }
+
   const uniqueProductIds = [
     ...new Set(cartList.map((cartItem) => cartItem.productId)),
   ];
@@ -146,12 +157,16 @@ const mergeCart = asyncHandler(async (req, res) => {
   if (!mergeResult.success) {
     return res.status(400).json({
       success: false,
-      message: 'The product you selected is out of stock',
+      message: mergeResult.message,
       cartItem: mergeResult.cartItem,
     });
   }
 
-  res.send(mergeResult.cartItems);
+  existingCart.cartItems = mergeResult.cartItems;
+
+  const updatedCart = await existingCart.save();
+
+  return res.status(200).json(updatedCart);
 });
 
 export { createCart, mergeCart };
