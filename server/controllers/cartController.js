@@ -107,7 +107,6 @@ const createCart = asyncHandler(async (req, res) => {
   }
 
   const cart = new Cart({
-    user: req.user._id,
     cartItems: updatedCartItems,
   });
 
