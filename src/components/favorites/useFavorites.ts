@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuth } from '../../features/auth/hooks/useAuth';
 import {
   useGetFavoritesQuery,
@@ -7,6 +7,7 @@ import {
 
 export const useFavorites = ({ id }: { id?: string }) => {
   const { currentUser } = useAuth();
+
   const {
     data: favorites,
     isLoading,
@@ -19,17 +20,25 @@ export const useFavorites = ({ id }: { id?: string }) => {
   const [toggleFavorite, { isLoading: isTogglingLoading }] =
     useToggleFavoriteMutation();
 
-  const isFavorite = (productId: string) =>
-    favorites?.some((product) => product.id === productId);
+  const isFavorite = (productId: string): boolean =>
+    favorites?.some((product) => product.id === productId) ?? false;
 
-  const [animate, setAnimate] = useState(isFavorite(id || ''));
+  const favorite = isFavorite(id ?? '');
+
+  const [animate, setAnimate] = useState(favorite);
+
+  useEffect(() => {
+    setAnimate(favorite);
+  }, [favorite]);
 
   const handleToggle = async (productId: string) => {
-    setAnimate(!animate);
+    setAnimate((current) => !current);
+
     try {
       await toggleFavorite(productId).unwrap();
-    } catch (err) {
-      console.error('Failed to toggle favorite:', err);
+    } catch (error) {
+      console.error('Failed to toggle favorite:', error);
+      setAnimate((current) => !current);
     }
   };
 
