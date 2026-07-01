@@ -29,7 +29,7 @@ export const useFavorites = ({ id }: { id?: string }) => {
     try {
       await toggleFavorite(productId).unwrap();
     } catch (err) {
-      console.error('Failed to toggle favorite:', err);
+      console.error('Failed to toggle favorites:', err);
     }
   };
 
