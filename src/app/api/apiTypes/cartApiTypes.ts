@@ -7,11 +7,10 @@ export interface CartItem {
   size: Size;
 }
 
-export interface cartItemRequest {
+export interface CreateCartRequest {
   cartItems: CartItem[];
 }
 
-export interface cartItemResponse extends DefaultResponseType {
+export interface CreateCartResponse extends DefaultResponseType {
   cartItems: CartItem[];
-  user: string;
 }
