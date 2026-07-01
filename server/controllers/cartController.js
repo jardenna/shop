@@ -169,4 +169,63 @@ const mergeCart = asyncHandler(async (req, res) => {
   return res.status(200).json(updatedCart);
 });
 
-export { createCart, mergeCart };
+// @desc    Get cart
+// @route   /api/cart
+// @method  Get
+// @access  Private
+const getCart = asyncHandler(async (req, res) => {
+  const cart = await Cart.findOne({
+    user: req.user._id,
+  }).lean();
+
+  if (!cart) {
+    return res.status(200).json({
+      cartItems: [],
+    });
+  }
+
+  const uniqueProductIds = [
+    ...new Set(cart.cartItems.map(({ productId }) => productId)),
+  ];
+
+  const databaseProducts = await Product.find({
+    _id: {
+      $in: uniqueProductIds,
+    },
+  })
+    .select('images productName price discount countInStock brand material')
+    .lean();
+
+  const productMap = new Map(
+    databaseProducts.map((product) => [product._id.toString(), product]),
+  );
+
+  const cartItems = cart.cartItems.map((cartItem) => {
+    const product = productMap.get(cartItem.productId.toString());
+
+    return {
+      ...cartItem,
+      image: product.images[0],
+      productName: product.productName,
+      price: product.price,
+      discount: product.discount,
+      countInStock: product.countInStock,
+      brand: product.brand,
+      material: product.material,
+    };
+  });
+
+  if (!product) {
+    return res.status(500).json({
+      success: false,
+      message: t('productsNoLongerAvailable', req.lang),
+    });
+  }
+
+  return res.status(200).json({
+    ...cart,
+    cartItems,
+  });
+});
+
+export { createCart, getCart, mergeCart };
