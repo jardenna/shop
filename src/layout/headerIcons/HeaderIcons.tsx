@@ -27,6 +27,9 @@ const HeaderIcons = ({
   const { favorites, onReset } = useFavorites({});
   console.log(cartList);
 
+  const itemText =
+    favorites && favorites.length === 1 ? language.item : language.items;
+
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
       <ul className="header-icon-list">
@@ -93,7 +96,7 @@ const HeaderIcons = ({
             {favorites && favorites.length > 0 && (
               <CountBadge
                 count={favorites.length}
-                ariaLabel={`${language.favorites}: ${favorites.length} ${favorites.length === 1 ? language.item : language.items}`}
+                ariaLabel={`${language.favorites}: ${favorites.length} ${itemText}`}
               />
             )}
           </Link>
