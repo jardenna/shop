@@ -73,10 +73,6 @@ $animation-distance: 500px;
   display: flex;
   gap: 16px;
 
-  .favorite-link {
-    position: relative;
-  }
-
   .favorites-count {
     font-size: $font-mini;
     position: absolute;
