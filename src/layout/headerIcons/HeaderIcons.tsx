@@ -93,7 +93,7 @@ const HeaderIcons = ({
             {favorites && favorites.length > 0 && (
               <CountBadge
                 count={favorites.length}
-                ariaLabel={language.productPlural}
+                ariaLabel={`${language.favorites}: ${favorites.length} ${favorites.length === 1 ? language.item : language.items}`}
               />
             )}
           </Link>

@@ -147,7 +147,7 @@ fashionGridSaleAltText;"Young woman wearing a short, white 1960s-inspired dress.
 fashionGridWomanLink;Shop Women;Shop dame
 fashionGridWomanText;Find pieces that inspire self-expression, effortless, bold, and made to move with you.;Udtryk dig selv med styles, der er ubesværede, modige og med dig i bevægelse.
 fashionGridWomenAltText;"Woman in a colorful outfit, wearing a beret that matches her sweater.";"Kvinde i farverigt outfit og en alpehue der matcher til hendes sweater."
-favoritesPural;Favorites;Favoritter
+favorites;Favorites;Favoritter
 favorite;Favorite;Favorit
 fashionPreference;Fashion preference;Foretrukne mode
 fileExceedsSize;Selected file(s) exceeds the 1MB limit; Valgte fil(er) overstiger grænsen på 1 MB. Upload venligst en mindre fil
@@ -344,7 +344,6 @@ productNavigation;Produkt navigation;Produkt navigation
 productNotFound;Product not found;Produktet findes ikke
 productsNoLongerAvailable;Some products are no longer available;Nogle produkter er ikke længere tilgængelige
 productPerPage;products per page;produkter pr. side
-productPlural;Product(s);Produkt(er)
 productQuantity;Product quantity;Produkt antal
 products;Products;Produkter
 productsInStock;Products in stock;Produkter på lager
