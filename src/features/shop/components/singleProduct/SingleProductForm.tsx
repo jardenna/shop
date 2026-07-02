@@ -24,6 +24,7 @@ import { resolveIconName } from '../../../../utils/iconHelpers';
 import { oneSize } from '../../../../utils/sizeUtils';
 import { translateKey } from '../../../../utils/utils';
 import { validateShopProduct } from '../../../../utils/validation/validateShopProduct';
+import { useAuth } from '../../../auth/hooks/useAuth';
 import { useLanguage } from '../../../language/useLanguage';
 import { cartUtils } from '../../cartUtils';
 import SingleProductPanel, { PopupData } from './SingleProductPanel';
@@ -47,6 +48,8 @@ const SingleProductForm = ({
   onReset,
 }: SingleProductFormProps) => {
   const { language, selectedLanguage } = useLanguage();
+  const { currentUser } = useAuth();
+
   const { sizes, categoryName, colors, id } = selectedProduct;
 
   const initialState: InitialShopValues = {
@@ -87,6 +90,10 @@ const SingleProductForm = ({
   };
 
   function handleAddToCart() {
+    if (currentUser) {
+      return;
+    }
+
     switch (cartResult.action) {
       case 'addToCartList':
         setCartList([...cartList, cartItem]);
