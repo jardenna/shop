@@ -1,11 +1,11 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { Link } from 'react-router';
+import CountBadge from '../../components/countBadge/CountBadge';
 import DropdownBtn from '../../components/dropdownBtn/DropdownBtn';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import { useFavorites } from '../../components/favorites/useFavorites';
 import IconContent from '../../components/IconContent';
 import ModalContainer from '../../components/modal/ModalContainer';
-import VisuallyHidden from '../../components/VisuallyHidden';
 import { useLanguage } from '../../features/language/useLanguage';
 import { BtnVariant, IconName, SizeVariant } from '../../types/enums';
 import type { BaseHeaderProps } from '../header/Header';
@@ -91,10 +91,10 @@ const HeaderIcons = ({
               ariaLabel={language.viewYourFavorites}
             />
             {favorites && favorites.length > 0 && (
-              <span className="badge">
-                {favorites.length}
-                <VisuallyHidden> {language.productPlural}</VisuallyHidden>
-              </span>
+              <CountBadge
+                count={favorites.length}
+                ariaLabel={language.productPlural}
+              />
             )}
           </Link>
         </li>

@@ -78,7 +78,7 @@ const FilterPanel = ({
 
   const primaryBtnText =
     productCount > 0
-      ? `${language.show} ${productCount} ${language.itemLabel}`
+      ? `${language.show} ${productCount} ${productCount === 1 ? language.item : language.items}`
       : language.noItemsToShow;
 
   const hasActiveFilters = Object.keys(initialFilters).some((key) =>

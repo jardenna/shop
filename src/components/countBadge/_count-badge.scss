@@ -1,0 +1,17 @@
+@use '../../scss/globals' as *;
+
+.count-badge {
+  font-size: $font-mini;
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background-color: $color-blue-30;
+  color: $color-white;
+  width: rem(16px);
+  height: rem(16px);
+  border-radius: 50%;
+  display: inline-grid;
+  place-content: center;
+  min-width: fit-content;
+  padding: 4px;
+}

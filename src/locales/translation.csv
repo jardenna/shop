@@ -147,7 +147,8 @@ fashionGridSaleAltText;"Young woman wearing a short, white 1960s-inspired dress.
 fashionGridWomanLink;Shop Women;Shop dame
 fashionGridWomanText;Find pieces that inspire self-expression, effortless, bold, and made to move with you.;Udtryk dig selv med styles, der er ubesværede, modige og med dig i bevægelse.
 fashionGridWomenAltText;"Woman in a colorful outfit, wearing a beret that matches her sweater.";"Kvinde i farverigt outfit og en alpehue der matcher til hendes sweater."
-favorites;Favorites;Favoritter
+favoritesPural;Favorites;Favoritter
+favorite;Favorite;Favorit
 fashionPreference;Fashion preference;Foretrukne mode
 fileExceedsSize;Selected file(s) exceeds the 1MB limit; Valgte fil(er) overstiger grænsen på 1 MB. Upload venligst en mindre fil
 filesCanBeUploaded;files can be uploaded;filer kan uploades
@@ -192,7 +193,8 @@ invalidDiscount;Invalid discount. Price cannot be calculated correctly;Ugyldig r
 invalidFileType;Invalid file type;Ugyldig fil type
 invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for planlagt dato
 invalidUserData;Invalid user data;Ugyldig bruger data
-itemLabel;item(s);vare(r)
+item;item;vare
+items;items;varer
 kid;Kid;Barn
 kids;Kids;Børn
 kidsAltText;Stylish children, a girl in a white sleeveless top with a matching hat and a boy in a colorful shirt, sitting together in a playful yet elegant pose.;Stilfulde børn, en pige i hvid ærmeløs top med matchende hat og en dreng i farverig skjorte, sidder sammen i et legende men elegant udtryk.
