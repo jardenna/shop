@@ -88,18 +88,20 @@ const HeaderIcons = ({
           </ModalContainer>
         </li>
         <li>
-          <Link to={ShopPath.Favorites} className="btn btn-ghost">
-            <IconContent
-              iconName={IconName.Heart}
-              ariaLabel={language.viewYourFavorites}
-            />
+          <span className="position-relative">
+            <Link to={ShopPath.Favorites} className="btn btn-ghost">
+              <IconContent
+                iconName={IconName.Heart}
+                ariaLabel={language.viewYourFavorites}
+              />
+            </Link>
             {favorites && favorites.length > 0 && (
               <CountBadge
                 count={favorites.length}
-                ariaLabel={`${language.favorites}: ${favorites.length} ${itemText}`}
+                ariaLabel={`${language.favoritesUpdated} ${favorites.length} ${itemText}`}
               />
             )}
-          </Link>
+          </span>
         </li>
       </ul>
     </ErrorBoundary>

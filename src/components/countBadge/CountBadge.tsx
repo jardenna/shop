@@ -1,4 +1,3 @@
-import VisuallyHidden from '../VisuallyHidden';
 import './_count-badge.scss';
 
 interface CountBadgeProps {
@@ -7,10 +6,14 @@ interface CountBadgeProps {
 }
 
 const CountBadge = ({ count, ariaLabel }: CountBadgeProps) => (
-  <span className="count-badge">
-    {count}
-    <VisuallyHidden>{ariaLabel}</VisuallyHidden>
-  </span>
+  <>
+    <span className="count-badge" aria-hidden>
+      {count}
+    </span>
+    <span className="visually-hidden" aria-live="polite" aria-atomic="true">
+      {ariaLabel}
+    </span>
+  </>
 );
 
 export default CountBadge;
