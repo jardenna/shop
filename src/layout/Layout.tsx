@@ -1,19 +1,18 @@
 import { useEffect } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router';
-import { CartItem } from '../app/api/apiTypes/sharedApiTypes';
-import { useAppDispatch } from '../app/hooks';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { DropdownItem } from '../components/dropdownBtn/DropdownBtn';
 import Icon from '../components/icons/Icon';
 import type { PrimaryActionBtnProps } from '../components/modal/Modal';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
 import { useAuth } from '../features/auth/hooks/useAuth';
+import { selectCartList } from '../features/cartItemsSlice';
 import { useCurrency } from '../features/currency/useCurrency';
 import { useLanguage } from '../features/language/useLanguage';
 import { clearMessagePopups } from '../features/messagePopupSlice';
 import { useGetFavoritesQuery } from '../features/shop/shopApiSlice';
 import { useFormValidation } from '../hooks/useFormValidation';
-import { localStorageKeys, useLocalStorage } from '../hooks/useLocalStorage';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import danishLang from '../locales/da.json';
 import englishLang from '../locales/en.json';
@@ -35,10 +34,7 @@ const Layout = () => {
     dispatch(clearMessagePopups());
   }, [pathname, dispatch]);
 
-  const [cartList] = useLocalStorage(
-    localStorageKeys.cartList,
-    [] as CartItem[],
-  );
+  const cartList = useAppSelector(selectCartList);
 
   // Hooks
   const { currentUser, isStaff } = useAuth();
