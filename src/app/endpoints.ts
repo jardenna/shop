@@ -16,9 +16,11 @@ const favoritesUrl = '/favorites';
 const subCategoryMenuUrl = '/subcategories/menu/?parentCategoryName=';
 const productUrl = '/products';
 const uploadUrl = '/upload';
+const cartUrl = '/cart';
 
 export {
   authEndpoints,
+  cartUrl,
   categoryUrl,
   favoritesUrl,
   productUrl,

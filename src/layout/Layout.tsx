@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router';
+import { CartItem } from '../app/api/apiTypes/sharedApiTypes';
 import { useAppDispatch } from '../app/hooks';
 import { DropdownItem } from '../components/dropdownBtn/DropdownBtn';
 import Icon from '../components/icons/Icon';
@@ -12,6 +13,7 @@ import { useLanguage } from '../features/language/useLanguage';
 import { clearMessagePopups } from '../features/messagePopupSlice';
 import { useGetFavoritesQuery } from '../features/shop/shopApiSlice';
 import { useFormValidation } from '../hooks/useFormValidation';
+import { localStorageKeys, useLocalStorage } from '../hooks/useLocalStorage';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import danishLang from '../locales/da.json';
 import englishLang from '../locales/en.json';
@@ -32,6 +34,13 @@ const Layout = () => {
     // Clear all popups whenever the user navigates
     dispatch(clearMessagePopups());
   }, [pathname, dispatch]);
+
+  const [cartList] = useLocalStorage(
+    localStorageKeys.cartList,
+    [] as CartItem[],
+  );
+
+  console.log(cartList);
 
   // Hooks
   const { currentUser, isStaff } = useAuth();

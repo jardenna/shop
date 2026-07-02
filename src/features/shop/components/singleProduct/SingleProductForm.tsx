@@ -49,7 +49,6 @@ const SingleProductForm = ({
 }: SingleProductFormProps) => {
   const { language, selectedLanguage } = useLanguage();
   const { currentUser } = useAuth();
-
   const { sizes, categoryName, colors, id } = selectedProduct;
 
   const initialState: InitialShopValues = {
@@ -71,6 +70,7 @@ const SingleProductForm = ({
     image: selectedProduct.images[0],
   };
 
+  const [popupData, setPopupData] = useState<PopupData | null>(null);
   const [cartList, setCartList] = useLocalStorage(
     localStorageKeys.cartList,
     [] as CartItem[],
@@ -80,14 +80,6 @@ const SingleProductForm = ({
 
   const cartResult = cartUtils({ cartList, cartItem });
   const { existingVariant } = cartResult;
-
-  const [popupData, setPopupData] = useState<PopupData | null>(null);
-
-  const handleShowPanel = () => {
-    setPopupData(cartResult as PopupData);
-
-    onTogglePanel();
-  };
 
   function handleAddToCart() {
     if (currentUser) {
@@ -120,6 +112,12 @@ const SingleProductForm = ({
         break;
     }
   }
+
+  const handleShowPanel = () => {
+    setPopupData(cartResult as PopupData);
+
+    onTogglePanel();
+  };
 
   const titleSize =
     values.size === ''
