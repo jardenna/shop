@@ -21,9 +21,11 @@ const HeaderIcons = ({
   defaultValue,
   onSelectCurrency,
   localLanguage,
+  cartList,
 }: BaseHeaderProps) => {
   const { language } = useLanguage();
   const { favorites, onReset } = useFavorites({});
+  console.log(cartList);
 
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
@@ -83,13 +85,13 @@ const HeaderIcons = ({
           </ModalContainer>
         </li>
         <li>
-          <Link to={ShopPath.Favorites} className="btn btn-ghost favorite-link">
+          <Link to={ShopPath.Favorites} className="btn btn-ghost">
             <IconContent
               iconName={IconName.Heart}
               ariaLabel={language.viewYourFavorites}
             />
             {favorites && favorites.length > 0 && (
-              <span className="favorites-count">
+              <span className="badge">
                 {favorites.length}
                 <VisuallyHidden> {language.productPlural}</VisuallyHidden>
               </span>

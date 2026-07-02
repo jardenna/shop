@@ -40,8 +40,6 @@ const Layout = () => {
     [] as CartItem[],
   );
 
-  console.log(cartList);
-
   // Hooks
   const { currentUser, isStaff } = useAuth();
   const { currencyOptions, onChangePrice, exchangeRate } = useCurrency();
@@ -101,6 +99,7 @@ const Layout = () => {
       icon: <Icon iconName={IconName.Auth} size="2.5em" />,
     },
   ];
+
   // Auth dropdown item
   const authDropdownItem: DropdownItem = {
     label: currentUser ? language.logout : language.login,
@@ -136,6 +135,7 @@ const Layout = () => {
         dropdownBtnList={dropdownItems}
         primaryActionBtn={primaryActionBtn}
         isMobileSize={isMobileSize}
+        cartList={cartList}
         defaultValue={{
           label: exchangeRate,
           value: exchangeRate,

@@ -1,3 +1,4 @@
+import { CartItem } from '../../app/api/apiTypes/sharedApiTypes';
 import { DropdownItem } from '../../components/dropdownBtn/DropdownBtn';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import type { SelectedLanguage } from '../../features/language/languageSlice';
@@ -20,6 +21,7 @@ type MobileProps = {
 };
 
 export type BaseHeaderProps = {
+  cartList: CartItem[];
   currencyOptions: OptionType[];
   defaultValue: OptionType;
   dropdownBtnList: DropdownItem[];
@@ -40,6 +42,7 @@ const Header = ({
   defaultValue,
   isMobileSize,
   localLanguage,
+  cartList,
 }: BaseHeaderProps & MobileProps) => (
   <LayoutElement className="main-header">
     <div className="container main-header-content">
@@ -58,6 +61,7 @@ const Header = ({
         onSelectCurrency={onSelectCurrency}
         defaultValue={defaultValue}
         localLanguage={localLanguage}
+        cartList={cartList}
       />
     </div>
   </LayoutElement>
