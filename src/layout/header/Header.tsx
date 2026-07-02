@@ -21,7 +21,7 @@ type MobileProps = {
 };
 
 export type BaseHeaderProps = {
-  cartList: CartItem[];
+  cartList: CartItem[] | null;
   currencyOptions: OptionType[];
   defaultValue: OptionType;
   dropdownBtnList: DropdownItem[];

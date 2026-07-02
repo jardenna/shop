@@ -1,6 +1,4 @@
 import { ErrorBoundary } from 'react-error-boundary';
-import { Link } from 'react-router';
-import CountBadge from '../../components/countBadge/CountBadge';
 import DropdownBtn from '../../components/dropdownBtn/DropdownBtn';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import { useFavorites } from '../../components/favorites/useFavorites';
@@ -10,6 +8,7 @@ import { useLanguage } from '../../features/language/useLanguage';
 import { BtnVariant, IconName, SizeVariant } from '../../types/enums';
 import type { BaseHeaderProps } from '../header/Header';
 import { ShopPath } from '../nav/enums';
+import HeaderBadgeLinks from './HeaderBadgeLinks';
 import LanguageCurrencyPreferences from './LanguageCurrencyPreferences';
 
 const HeaderIcons = ({
@@ -25,21 +24,15 @@ const HeaderIcons = ({
 }: BaseHeaderProps) => {
   const { language } = useLanguage();
   const { favorites, onReset } = useFavorites({});
-  console.log(cartList);
 
-  const itemText =
+  const favoriteItemText =
     favorites && favorites.length === 1 ? language.item : language.items;
+  const cartListItemText =
+    cartList && cartList.length === 1 ? language.item : language.items;
 
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
       <ul className="header-icon-list">
-        {/* <li>
-            <IconBtn
-              iconName={IconName.Search}
-              onClick={handleSearch}
-              ariaLabel={language.search}
-            />
-          </li> */}
         <li>
           <DropdownBtn
             dropdownList={dropdownBtnList}
@@ -53,12 +46,14 @@ const HeaderIcons = ({
           </DropdownBtn>
         </li>
         <li>
-          <Link to={ShopPath.ShoppingCart} className="btn btn-ghost">
-            <IconContent
-              iconName={IconName.ShoppingBag}
-              ariaLabel={language.viewCart}
-            />
-          </Link>
+          <HeaderBadgeLinks
+            linkTo={ShopPath.ShoppingCart}
+            ariaLabel={language.viewCart}
+            iconName={IconName.ShoppingBag}
+            count={cartList?.length || null}
+            itemUpdatedText={language.itemsUpdated}
+            itemText={cartListItemText}
+          />
         </li>
         <li>
           <ModalContainer
@@ -88,20 +83,14 @@ const HeaderIcons = ({
           </ModalContainer>
         </li>
         <li>
-          <span className="position-relative">
-            <Link to={ShopPath.Favorites} className="btn btn-ghost">
-              <IconContent
-                iconName={IconName.Heart}
-                ariaLabel={language.viewYourFavorites}
-              />
-            </Link>
-            {favorites && favorites.length > 0 && (
-              <CountBadge
-                count={favorites.length}
-                ariaLabel={`${language.favoritesUpdated} ${favorites.length} ${itemText}`}
-              />
-            )}
-          </span>
+          <HeaderBadgeLinks
+            linkTo={ShopPath.Favorites}
+            ariaLabel={language.viewYourFavorites}
+            iconName={IconName.Heart}
+            count={favorites?.length || null}
+            itemUpdatedText={language.favoritesUpdated}
+            itemText={favoriteItemText}
+          />
         </li>
       </ul>
     </ErrorBoundary>
