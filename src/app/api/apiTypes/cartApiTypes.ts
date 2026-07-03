@@ -8,10 +8,10 @@ export interface CartItem {
   size: Size;
 }
 
-export interface CreateCartRequest {
+export interface CartListRequest {
   cartItems: CartItem[];
 }
 
-export interface CreateCartResponse extends DefaultResponseType {
+export interface CartListResponse extends DefaultResponseType {
   cartItems: CartItem[];
 }
