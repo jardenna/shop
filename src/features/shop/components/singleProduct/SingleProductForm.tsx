@@ -9,6 +9,7 @@ import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback'
 import FieldSet from '../../../../components/fieldset/FieldSet';
 import Form from '../../../../components/form/Form';
 import ControlGroupList from '../../../../components/formElements/controlGroup/ControlGroupList';
+import NumberStep from '../../../../components/formElements/numberStep/NumberStep';
 import Panel from '../../../../components/togglePanel/Panel';
 import { useTogglePanel } from '../../../../components/togglePanel/useTogglePanel';
 import { useFormValidation } from '../../../../hooks/useFormValidation';
@@ -39,6 +40,7 @@ type SingleProductFormProps = {
 
 export type InitialShopValues = {
   color: string;
+  qty: number;
   size: string;
 };
 
@@ -56,13 +58,15 @@ const SingleProductForm = ({
   const initialState: InitialShopValues = {
     color: colorList[0].value,
     size: sizes.length === 1 ? oneSize : '',
+    qty: 1,
   };
 
-  const { onChange, values, onSubmit, errors } = useFormValidation({
-    initialState,
-    callback: handleAddToCart,
-    validate: validateShopProduct,
-  });
+  const { onChange, onNumberStepChange, values, onSubmit, errors } =
+    useFormValidation({
+      initialState,
+      callback: handleAddToCart,
+      validate: validateShopProduct,
+    });
 
   const cartItem = {
     productId: id,
@@ -81,8 +85,12 @@ const SingleProductForm = ({
   const cartResult = cartUtils({ cartList, cartItem });
   const { existingVariant } = cartResult;
 
+  // const [cartListAdd] = useAddToCartMutation();
+
   function handleAddToCart() {
     if (currentUser) {
+      console.log(values);
+
       return;
     }
 
@@ -182,7 +190,16 @@ const SingleProductForm = ({
               errorText: language[errors.color],
             }}
           />
-
+          ss
+          <NumberStep
+            onChange={onChange}
+            onNumberStepChange={onNumberStepChange}
+            value={values.qty}
+            min={1}
+            labelText="Qty"
+            id="qty"
+            name="qty"
+          />
           <ControlGroupList
             type="radio"
             initialChecked={values.size}

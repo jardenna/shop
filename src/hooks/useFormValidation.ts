@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import type {
   BlurEventType,
+  ButtonEventType,
   ChangeInputType,
   ChangeTextAreaType,
 } from '../types/types';
@@ -95,6 +96,13 @@ export function useFormValidation<T extends KeyValuePair>({
       return updatedErrors;
     });
   }
+
+  // Special case for number step
+  const handleNumberStepChange = (event: ButtonEventType, amount: number) => {
+    const { name } = event.currentTarget;
+
+    setValues({ ...values, [name]: (values[name] as number) + amount });
+  };
 
   function handleChangeTextArea(event: ChangeTextAreaType) {
     const { name, value } = event.target;
@@ -259,5 +267,6 @@ export function useFormValidation<T extends KeyValuePair>({
     removePreviewImage,
     onFileChange: handleFileChange,
     isFormDirty,
+    onNumberStepChange: handleNumberStepChange,
   };
 }
