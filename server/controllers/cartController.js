@@ -1,6 +1,8 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
 import Product from '../models/productModel.js';
+import { formatMongoData } from '../utils/formatMongoData.js';
+
 import {
   cartItemIdentifier,
   findDatabaseProduct,
@@ -103,7 +105,13 @@ const createCart = asyncHandler(async (req, res) => {
 
     const updatedCart = await existingCart.save();
 
-    return res.status(200).json(updatedCart);
+    const formattedCart = formatMongoData(updatedCart.toObject());
+
+    formattedCart.cartItems = formattedCart.cartItems.map((cartItem) =>
+      formatMongoData(cartItem),
+    );
+
+    return res.status(200).json(formattedCart);
   }
 
   const cart = new Cart({
@@ -113,7 +121,13 @@ const createCart = asyncHandler(async (req, res) => {
 
   const createdCart = await cart.save();
 
-  return res.status(201).json(createdCart);
+  const formattedCart = formatMongoData(createdCart.toObject());
+
+  formattedCart.cartItems = formattedCart.cartItems.map((cartItem) =>
+    formatMongoData(cartItem),
+  );
+
+  return res.status(201).json(formattedCart);
 });
 
 // @desc    Merge cart
