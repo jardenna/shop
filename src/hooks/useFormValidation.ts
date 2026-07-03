@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import type {
   BlurEventType,
-  ButtonEventType,
   ChangeInputType,
   ChangeTextAreaType,
 } from '../types/types';
@@ -98,10 +97,11 @@ export function useFormValidation<T extends KeyValuePair>({
   }
 
   // Special case for number step
-  const handleNumberStepChange = (event: ButtonEventType, amount: number) => {
-    const { name } = event.currentTarget;
-
-    setValues({ ...values, [name]: (values[name] as number) + amount });
+  const handleNumberStepChange = (field: string, amount: number) => {
+    setValues({
+      ...values,
+      [field]: (values[field] as number) + amount,
+    });
   };
 
   function handleChangeTextArea(event: ChangeTextAreaType) {

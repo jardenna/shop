@@ -1,6 +1,6 @@
 import { useLanguage } from '../../../features/language/useLanguage';
 import { IconName } from '../../../types/enums';
-import { ButtonEventType, ChangeInputType } from '../../../types/types';
+import { ChangeInputType } from '../../../types/types';
 import Button from '../../Button';
 import Icon from '../../icons/Icon';
 import Input from '../Input';
@@ -15,7 +15,7 @@ interface NumberStepProps {
   max?: number;
   min?: number;
   onChange: (event: ChangeInputType) => void;
-  onNumberStepChange: (event: ButtonEventType, amount: number) => void;
+  onNumberStepChange: (field: string, amount: number) => void;
 }
 
 const NumberStep = ({
@@ -40,8 +40,8 @@ const NumberStep = ({
           name={id}
           ariaLabel={`${language.subtract} ${initCount} `}
           disabled={value === min}
-          onClick={(event) => {
-            onNumberStepChange(event, value !== min ? -initCount : 0);
+          onClick={() => {
+            onNumberStepChange(name, value !== min ? -initCount : 0);
           }}
         >
           <Icon iconName={IconName.Subtract} />
@@ -58,8 +58,8 @@ const NumberStep = ({
           max={max}
         />
         <Button
-          onClick={(event) => {
-            onNumberStepChange(event, value !== max ? initCount : 0);
+          onClick={() => {
+            onNumberStepChange(name, value !== max ? initCount : 0);
           }}
           ariaLabel={`${language.add} ${initCount} `}
           disabled={value === max}
