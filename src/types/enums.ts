@@ -1,3 +1,5 @@
+import { ButtonHTMLAttributes } from 'react';
+
 export enum ValidationMessage {
   BrandRequired = 'brandRequired',
   CategoryRequired = 'categoryRequired',
@@ -65,11 +67,7 @@ export enum BtnVariant {
   Secondary = 'secondary',
 }
 
-export enum BtnType {
-  Button = 'button',
-  Reset = 'reset',
-  Submit = 'submit',
-}
+export type BtnType = ButtonHTMLAttributes<HTMLButtonElement>['type'];
 
 export enum IconName {
   Account = 'account',

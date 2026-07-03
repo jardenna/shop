@@ -4,7 +4,7 @@ import type { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import { PrimaryActionBtnProps } from '../../../components/modal/Modal';
 import ModalContainer from '../../../components/modal/ModalContainer';
 import { useFormValidation } from '../../../hooks/useFormValidation';
-import { BtnType, BtnVariant } from '../../../types/enums';
+import { BtnVariant } from '../../../types/enums';
 import { validateNEmail } from '../../../utils/validation/validateNotityEmail';
 import { validateNotityMe } from '../../../utils/validation/validateNotityMe';
 import { useLanguage } from '../../language/useLanguage';
@@ -62,7 +62,7 @@ const NotifyMe = ({
 
   const primaryActionBtn: PrimaryActionBtnProps = {
     label: isSuccess ? language.continueShopping : language.notifyMe,
-    buttonType: isSuccess ? BtnType.Button : BtnType.Submit,
+    buttonType: isSuccess ? undefined : 'submit',
     isForm: !isSuccess,
     closeOnClick: isSuccess,
     onSubmit: isSuccess ? undefined : onSubmit,

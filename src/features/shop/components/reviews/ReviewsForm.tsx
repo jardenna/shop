@@ -7,7 +7,7 @@ import RadioButtonList from '../../../../components/formElements/RadioButtonList
 import Textarea from '../../../../components/formElements/Textarea';
 import { useMessagePopup } from '../../../../components/messagePopup/useMessagePopup';
 import { useFormValidation } from '../../../../hooks/useFormValidation';
-import { BtnType, IconName } from '../../../../types/enums';
+import { IconName } from '../../../../types/enums';
 import type { ChangeInputType } from '../../../../types/types';
 import { handleApiError } from '../../../../utils/handleApiError';
 import { createRatingList } from '../../../../utils/productLists';
@@ -107,7 +107,7 @@ const ReviewsForm = ({
                   rows={8}
                 />
               </FieldSet>
-              <Button type={BtnType.Submit} showBtnLoader={isLoading}>
+              <Button type="submit" showBtnLoader={isLoading}>
                 {language.shareReview}
               </Button>
             </div>

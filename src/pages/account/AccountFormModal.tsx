@@ -13,7 +13,7 @@ import { useSubmitStatus } from '../../components/modal/useSubmitStatus';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useUpdateUserProfileMutation } from '../../features/profile/profileApiSlice';
 import { useFormValidation } from '../../hooks/useFormValidation';
-import { BtnType, SizeVariant } from '../../types/enums';
+import { SizeVariant } from '../../types/enums';
 import type { OptionType } from '../../types/types';
 import { handleApiError } from '../../utils/handleApiError';
 import { validateProfile } from '../../utils/validation/validateProfile';
@@ -90,7 +90,7 @@ const AccountFormModal = ({
   const primaryActionBtn: PrimaryActionBtnProps = {
     onSubmit,
     label: language.update,
-    buttonType: BtnType.Submit,
+    buttonType: 'submit',
     disabled: !isFormDirty,
     showBtnLoader: isLoading,
     resultSuccess,
