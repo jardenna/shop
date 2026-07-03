@@ -1,8 +1,7 @@
 import { useLanguage } from '../../../features/language/useLanguage';
-import { IconName } from '../../../types/enums';
+import { BtnVariant, IconName } from '../../../types/enums';
 import { ChangeInputType } from '../../../types/types';
-import Button from '../../Button';
-import Icon from '../../icons/Icon';
+import IconBtn from '../../IconBtn';
 import Input from '../Input';
 import './_number-step.scss';
 
@@ -39,15 +38,15 @@ const NumberStep = ({
     <article className="number-step">
       <label htmlFor={id}>{labelText}</label>
       <div className="number-step-container">
-        <Button
+        <IconBtn
+          iconName={IconName.Subtract}
           ariaLabel={`${language.subtract} ${initCount} `}
           disabled={value === min}
+          variant={BtnVariant.Primary}
           onClick={() => {
             handleNumberStepClick(-initCount);
           }}
-        >
-          <Icon iconName={IconName.Subtract} />
-        </Button>
+        />
         <Input
           type="number"
           value={value}
@@ -59,15 +58,15 @@ const NumberStep = ({
           min={min}
           max={max}
         />
-        <Button
+        <IconBtn
+          iconName={IconName.Add}
+          variant={BtnVariant.Primary}
           onClick={() => {
             handleNumberStepClick(initCount);
           }}
           ariaLabel={`${language.add} ${initCount} `}
           disabled={value === max}
-        >
-          <Icon iconName={IconName.Add} />
-        </Button>
+        />
       </div>
     </article>
   );

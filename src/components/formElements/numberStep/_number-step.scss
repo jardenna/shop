@@ -11,7 +11,6 @@
 
   .number-step-container {
     display: flex;
-    max-width: rem(140px);
     gap: 2px;
   }
 
@@ -32,9 +31,5 @@
   .btn-primary {
     min-width: auto;
     padding: 12px;
-
-    svg {
-      max-width: rem(12px);
-    }
   }
 }
