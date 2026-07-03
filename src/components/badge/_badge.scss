@@ -6,6 +6,8 @@
 }
 
 .badge {
+  display: flex;
+  align-items: center;
   width: fit-content;
   border-radius: 50px;
   background-color: $color-badge-default;

@@ -17,6 +17,11 @@
   .admin-card-left-content {
     display: flex;
     justify-content: space-between;
+    gap: 4px;
+
+    @include between-size($small, $large) {
+      flex-direction: column-reverse;
+    }
   }
 
   .admin-card-left-title {
