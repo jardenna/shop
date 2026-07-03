@@ -1,11 +1,11 @@
-import { IconName } from '../../types/enums';
-import type { ChangeInputType } from '../../types/types';
-import Button from '../Button';
-import Input from '../formElements/Input';
-import Icon from '../icons/Icon';
+import { IconName } from '../../../types/enums';
+import { ButtonEventType, ChangeInputType } from '../../../types/types';
+import Button from '../../Button';
+import Icon from '../../icons/Icon';
+import Input from '../Input';
 import './_number-step.scss';
 
-type NumberStepProps = {
+interface NumberStepProps {
   id: string;
   labelText: string;
   name: string;
@@ -13,19 +13,19 @@ type NumberStepProps = {
   initCount?: number;
   max?: number;
   min?: number;
-  onChange: (event?: ChangeInputType) => void;
-  // onNumberStepChange: (event: any, count: number) => void;
-};
+  onChange: (event: ChangeInputType) => void;
+  onNumberStepChange: (event: ButtonEventType, amount: number) => void;
+}
 
 const NumberStep = ({
   onChange,
+  onNumberStepChange,
   value,
   initCount = 1,
   min = 0,
   max,
   labelText,
   id,
-  // onNumberStepChange,
   name,
 }: NumberStepProps) => (
   <article className="number-step">
@@ -36,9 +36,9 @@ const NumberStep = ({
         name={id}
         ariaLabel={`Subtract ${initCount} `}
         disabled={value === min}
-        // onClick={(event?: ButtonEventType) => {
-        //   onNumberStepChange(event, value !== Number(min) ? -initCount : 0);
-        // }}
+        onClick={(event) => {
+          onNumberStepChange(event, value !== min ? -initCount : 0);
+        }}
       >
         <Icon iconName={IconName.Subtract} />
       </Button>
@@ -49,17 +49,16 @@ const NumberStep = ({
         id={id}
         labelText={labelText}
         inputHasNoLabel
-        inputMode="numeric"
         name={name}
         min={min}
         max={max}
       />
       <Button
-        // onClick={(event?: ButtonEventType) => {
-        //   onNumberStepChange(event, value !== Number(max) ? initCount : 0);
-        // }}
+        onClick={(event) => {
+          onNumberStepChange(event, value !== max ? initCount : 0);
+        }}
         ariaLabel={`Add ${initCount} `}
-        disabled={value === Number(max)}
+        disabled={value === max}
         id="subtract"
         name={id}
       >
