@@ -190,16 +190,7 @@ const SingleProductForm = ({
               errorText: language[errors.color],
             }}
           />
-          ss
-          <NumberStep
-            onChange={onChange}
-            onNumberStepChange={onNumberStepChange}
-            value={values.qty}
-            min={1}
-            labelText="Qty"
-            id="qty"
-            name="qty"
-          />
+
           <ControlGroupList
             type="radio"
             initialChecked={values.size}
@@ -213,6 +204,15 @@ const SingleProductForm = ({
               id: 'choose-product-size',
               errorText: language[errors.size],
             }}
+          />
+          <NumberStep
+            onChange={onChange}
+            onNumberStepChange={onNumberStepChange}
+            value={values.qty}
+            min={1}
+            labelText={language.quantity}
+            id="qty"
+            name="qty"
           />
         </FieldSet>
       </Form>
