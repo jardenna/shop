@@ -5,14 +5,16 @@ const SubtractIcon = ({ size, className, ariaHidden }: IconDefaultProps) => (
     xmlns="http://www.w3.org/2000/svg"
     width={size}
     height={size}
+    viewBox="0 0 24 24"
     className={className}
-    viewBox="0 0 18 4"
-    fillRule="evenodd"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
     strokeLinejoin="round"
-    strokeMiterlimit="2"
     aria-hidden={ariaHidden}
   >
-    <path d="M0 3.6V0h17.964v3.6H0z" fillRule="nonzero" />
+    <path d="M5 12h14" />
   </svg>
 );
 
