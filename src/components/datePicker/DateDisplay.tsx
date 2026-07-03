@@ -20,16 +20,18 @@ const DateDisplay = ({
 }: DateDisplayProps) => {
   const { selectedLanguage } = useLanguage();
 
+  const dateValue = new Date(date);
+
   return (
-    <>
+    <time dateTime={dateValue.toISOString()}>
       {new Intl.DateTimeFormat(dateToLocaleMap[selectedLanguage], {
         day,
         month,
         year,
         hour,
         minute,
-      }).format(new Date(date))}
-    </>
+      }).format(dateValue)}
+    </time>
   );
 };
 
