@@ -30,7 +30,7 @@ type ButtonProps = {
   tabIndex?: 0 | -1;
   type?: BtnType;
   variant?: BtnVariant;
-  onClick?: (event: ButtonEventType | string) => void;
+  onClick?: (event: ButtonEventType) => void;
   ref?: (el: HTMLButtonElement | null) => void;
 };
 
