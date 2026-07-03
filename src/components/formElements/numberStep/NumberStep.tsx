@@ -31,17 +31,19 @@ const NumberStep = ({
 }: NumberStepProps) => {
   const { language } = useLanguage();
 
+  const handleNumberStepClick = (amount: number) => {
+    onNumberStepChange(id, amount);
+  };
+
   return (
     <article className="number-step">
       <label htmlFor={id}>{labelText}</label>
       <div className="number-step-container">
         <Button
-          id={id}
-          name={id}
           ariaLabel={`${language.subtract} ${initCount} `}
           disabled={value === min}
           onClick={() => {
-            onNumberStepChange(name, value !== min ? -initCount : 0);
+            handleNumberStepClick(-initCount);
           }}
         >
           <Icon iconName={IconName.Subtract} />
@@ -59,12 +61,10 @@ const NumberStep = ({
         />
         <Button
           onClick={() => {
-            onNumberStepChange(name, value !== max ? initCount : 0);
+            handleNumberStepClick(initCount);
           }}
           ariaLabel={`${language.add} ${initCount} `}
           disabled={value === max}
-          id={id}
-          name={id}
         >
           <Icon iconName={IconName.Add} />
         </Button>
