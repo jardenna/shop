@@ -22,6 +22,7 @@ import { oneSize } from '../../../../utils/sizeUtils';
 import { translateKey } from '../../../../utils/utils';
 import { validateShopProduct } from '../../../../utils/validation/validateShopProduct';
 import { useAuth } from '../../../auth/hooks/useAuth';
+import { useGetCartsQuery } from '../../../cart/cartApiSlice';
 import {
   addCartItem,
   selectCartList,
@@ -79,6 +80,11 @@ const SingleProductForm = ({
   const [popupData, setPopupData] = useState<PopupData | null>(null);
 
   const cartList = useAppSelector(selectCartList);
+
+  const { data: userCartList } = useGetCartsQuery();
+
+  console.log(userCartList);
+
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
     useTogglePanel();
 
