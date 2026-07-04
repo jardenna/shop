@@ -2,20 +2,17 @@ import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import {
   type BaseProduct,
-  CartItem,
   type Size,
 } from '../../../../app/api/apiTypes/sharedApiTypes';
+import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
 import FieldSet from '../../../../components/fieldset/FieldSet';
 import Form from '../../../../components/form/Form';
 import ControlGroupList from '../../../../components/formElements/controlGroup/ControlGroupList';
+import NumberStep from '../../../../components/formElements/numberStep/NumberStep';
 import Panel from '../../../../components/togglePanel/Panel';
 import { useTogglePanel } from '../../../../components/togglePanel/useTogglePanel';
 import { useFormValidation } from '../../../../hooks/useFormValidation';
-import {
-  localStorageKeys,
-  useLocalStorage,
-} from '../../../../hooks/useLocalStorage';
 import {
   ColorOption,
   sortColorsByTranslation,
@@ -24,6 +21,12 @@ import { resolveIconName } from '../../../../utils/iconHelpers';
 import { oneSize } from '../../../../utils/sizeUtils';
 import { translateKey } from '../../../../utils/utils';
 import { validateShopProduct } from '../../../../utils/validation/validateShopProduct';
+import { useAuth } from '../../../auth/hooks/useAuth';
+import {
+  addCartItem,
+  selectCartList,
+  setCartList,
+} from '../../../cartItemsSlice';
 import { useLanguage } from '../../../language/useLanguage';
 import { cartUtils } from '../../cartUtils';
 import SingleProductPanel, { PopupData } from './SingleProductPanel';
@@ -37,6 +40,7 @@ type SingleProductFormProps = {
 
 export type InitialShopValues = {
   color: string;
+  qty: number;
   size: string;
 };
 
@@ -46,19 +50,23 @@ const SingleProductForm = ({
   displaySizeList,
   onReset,
 }: SingleProductFormProps) => {
+  const dispatch = useAppDispatch();
   const { language, selectedLanguage } = useLanguage();
+  const { currentUser } = useAuth();
   const { sizes, categoryName, colors, id } = selectedProduct;
 
   const initialState: InitialShopValues = {
     color: colorList[0].value,
     size: sizes.length === 1 ? oneSize : '',
+    qty: 1,
   };
 
-  const { onChange, values, onSubmit, errors } = useFormValidation({
-    initialState,
-    callback: handleAddToCart,
-    validate: validateShopProduct,
-  });
+  const { onChange, onNumberStepChange, values, onSubmit, errors } =
+    useFormValidation({
+      initialState,
+      callback: handleAddToCart,
+      validate: validateShopProduct,
+    });
 
   const cartItem = {
     productId: id,
@@ -68,28 +76,28 @@ const SingleProductForm = ({
     image: selectedProduct.images[0],
   };
 
-  const [cartList, setCartList] = useLocalStorage(
-    localStorageKeys.cartList,
-    [] as CartItem[],
-  );
+  const [popupData, setPopupData] = useState<PopupData | null>(null);
+
+  const cartList = useAppSelector(selectCartList);
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
     useTogglePanel();
 
   const cartResult = cartUtils({ cartList, cartItem });
   const { existingVariant } = cartResult;
 
-  const [popupData, setPopupData] = useState<PopupData | null>(null);
-
-  const handleShowPanel = () => {
-    setPopupData(cartResult as PopupData);
-
-    onTogglePanel();
-  };
+  // const [cartListAdd] = useAddToCartMutation();
 
   function handleAddToCart() {
+    if (currentUser) {
+      console.log(values);
+
+      return;
+    }
+
     switch (cartResult.action) {
       case 'addToCartList':
-        setCartList([...cartList, cartItem]);
+        dispatch(addCartItem(cartItem));
+
         break;
       case 'addToQty':
         if (existingVariant) {
@@ -101,8 +109,7 @@ const SingleProductForm = ({
                 }
               : item,
           );
-
-          setCartList(updatedCartList);
+          dispatch(setCartList(updatedCartList));
         }
         break;
 
@@ -113,6 +120,12 @@ const SingleProductForm = ({
         break;
     }
   }
+
+  const handleShowPanel = () => {
+    setPopupData(cartResult as PopupData);
+
+    onTogglePanel();
+  };
 
   const titleSize =
     values.size === ''
@@ -127,7 +140,8 @@ const SingleProductForm = ({
   const sortedTranslatedColors = sortColorsByTranslation(colors, language);
 
   const handleKeepBoth = () => {
-    setCartList([...cartList, cartItem]);
+    dispatch(addCartItem(cartItem));
+
     onHidePanel();
   };
 
@@ -135,8 +149,7 @@ const SingleProductForm = ({
     const updatedCartList = cartList.map((item) =>
       item === popupData?.existingVariant ? cartItem : item,
     );
-
-    setCartList(updatedCartList);
+    dispatch(setCartList(updatedCartList));
     onHidePanel();
   };
 
@@ -191,6 +204,15 @@ const SingleProductForm = ({
               id: 'choose-product-size',
               errorText: language[errors.size],
             }}
+          />
+          <NumberStep
+            onChange={onChange}
+            onNumberStepChange={onNumberStepChange}
+            value={values.qty}
+            min={1}
+            labelText={language.quantity}
+            id="qty"
+            name="qty"
           />
         </FieldSet>
       </Form>

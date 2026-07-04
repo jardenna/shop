@@ -148,6 +148,8 @@ fashionGridWomanLink;Shop Women;Shop dame
 fashionGridWomanText;Find pieces that inspire self-expression, effortless, bold, and made to move with you.;Udtryk dig selv med styles, der er ubesværede, modige og med dig i bevægelse.
 fashionGridWomenAltText;"Woman in a colorful outfit, wearing a beret that matches her sweater.";"Kvinde i farverigt outfit og en alpehue der matcher til hendes sweater."
 favorites;Favorites;Favoritter
+favoritesUpdated;Favorites updated to;Favoritter opdateret til
+itemsUpdated;Items updated to;Varer opdateret til
 fashionPreference;Fashion preference;Foretrukne mode
 fileExceedsSize;Selected file(s) exceeds the 1MB limit; Valgte fil(er) overstiger grænsen på 1 MB. Upload venligst en mindre fil
 filesCanBeUploaded;files can be uploaded;filer kan uploades
@@ -192,7 +194,8 @@ invalidDiscount;Invalid discount. Price cannot be calculated correctly;Ugyldig r
 invalidFileType;Invalid file type;Ugyldig fil type
 invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for planlagt dato
 invalidUserData;Invalid user data;Ugyldig bruger data
-itemLabel;item(s);vare(r)
+item;item;vare
+items;items;varer
 kid;Kid;Barn
 kids;Kids;Børn
 kidsAltText;Stylish children, a girl in a white sleeveless top with a matching hat and a boy in a colorful shirt, sitting together in a playful yet elegant pose.;Stilfulde børn, en pige i hvid ærmeløs top med matchende hat og en dreng i farverig skjorte, sidder sammen i et legende men elegant udtryk.
@@ -342,7 +345,6 @@ productNavigation;Produkt navigation;Produkt navigation
 productNotFound;Product not found;Produktet findes ikke
 productsNoLongerAvailable;Some products are no longer available;Nogle produkter er ikke længere tilgængelige
 productPerPage;products per page;produkter pr. side
-productPlural;Product(s);Produkt(er)
 productQuantity;Product quantity;Produkt antal
 products;Products;Produkter
 productsInStock;Products in stock;Produkter på lager
@@ -357,6 +359,7 @@ published;Published;Udgivet
 publishTime;Publish time;Udgivelsestidspunkt
 purple;Purple;Lilla
 qty;Qty;Antal
+quantity;Quantity;Antal
 qtyMustBeAtLeast;Quantity must be at least 1;Antal skal være mindst 1
 rating;Rating;Bedømmelse
 rateProduct;Rate product;Bedøm produkt
@@ -430,6 +433,7 @@ subCategory;Subcategory;Underkategori
 subCategoryAlreadyExist;Subcategory already exists;Underkategori findes allerede
 subCategoryList;Subcategory list;Underkategori-liste
 subCategoryName;Subcategory name;Underkategori navn
+subtract;Subtract;Fratræk
 success;Success;Succes
 sureToDelete;Do you want to delete;Vil du slette
 switchUser;Switch user;Skift bruger

@@ -7,7 +7,7 @@ import type { BaseHeaderProps } from '../header/Header';
 
 type OmittedHeaderProps = OmitChecked<
   BaseHeaderProps,
-  'primaryActionBtn' | 'dropdownBtnList'
+  'primaryActionBtn' | 'dropdownBtnList' | 'cartList'
 >;
 
 const LanguageCurrencyPreferences = ({

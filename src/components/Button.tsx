@@ -1,16 +1,12 @@
 /* eslint-disable react/button-has-type */
 
-import { type ReactNode, RefObject } from 'react';
-import { BtnType, BtnVariant } from '../types/enums';
-import type {
-  AriaCurrentType,
-  AriaHasPopup,
-  ButtonEventType,
-} from '../types/types';
+import { ButtonHTMLAttributes, type ReactNode, RefObject } from 'react';
+import { BtnVariant } from '../types/enums';
+import { AriaCurrentType, AriaHasPopup } from '../types/types';
 import Loader from './loader/Loader';
 import VisuallyHidden from './VisuallyHidden';
 
-type ButtonProps = {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   ariaControls?: string;
   ariaCurrent?: AriaCurrentType;
@@ -19,24 +15,15 @@ type ButtonProps = {
   ariaHasPopup?: AriaHasPopup;
   ariaLabel?: string;
   ariaPressed?: boolean;
-  autoFocus?: boolean;
-  className?: string;
-  disabled?: boolean;
-  id?: string;
-  name?: string;
   popupRef?: RefObject<HTMLButtonElement | null>;
-  role?: string;
   showBtnLoader?: boolean;
-  tabIndex?: 0 | -1;
-  type?: BtnType;
   variant?: BtnVariant;
-  onClick?: (event: ButtonEventType | string) => void;
   ref?: (el: HTMLButtonElement | null) => void;
-};
+}
 
 const Button = ({
   children,
-  type = BtnType.Button,
+  type,
   id,
   tabIndex,
   variant = BtnVariant.Primary,
@@ -61,7 +48,7 @@ const Button = ({
     id={id}
     tabIndex={tabIndex}
     role={role}
-    type={type}
+    type={type ?? 'button'}
     ref={ref || popupRef}
     onClick={onClick}
     aria-pressed={ariaPressed || undefined}

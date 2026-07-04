@@ -134,7 +134,7 @@ const Modal = ({
       />
       <ModalContentContainer
         isForm={
-          primaryActionBtn.buttonType === BtnType.Submit ||
+          primaryActionBtn.buttonType === 'submit' ||
           primaryActionBtn.isForm ||
           false
         }

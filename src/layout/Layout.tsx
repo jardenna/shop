@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router';
-import { useAppDispatch } from '../app/hooks';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { DropdownItem } from '../components/dropdownBtn/DropdownBtn';
 import Icon from '../components/icons/Icon';
 import type { PrimaryActionBtnProps } from '../components/modal/Modal';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
 import { useAuth } from '../features/auth/hooks/useAuth';
+import { selectCartList } from '../features/cartItemsSlice';
 import { useCurrency } from '../features/currency/useCurrency';
 import { useLanguage } from '../features/language/useLanguage';
 import { clearMessagePopups } from '../features/messagePopupSlice';
@@ -32,6 +33,8 @@ const Layout = () => {
     // Clear all popups whenever the user navigates
     dispatch(clearMessagePopups());
   }, [pathname, dispatch]);
+
+  const cartList = useAppSelector(selectCartList);
 
   // Hooks
   const { currentUser, isStaff } = useAuth();
@@ -92,6 +95,7 @@ const Layout = () => {
       icon: <Icon iconName={IconName.Auth} size="2.5em" />,
     },
   ];
+
   // Auth dropdown item
   const authDropdownItem: DropdownItem = {
     label: currentUser ? language.logout : language.login,
@@ -127,6 +131,7 @@ const Layout = () => {
         dropdownBtnList={dropdownItems}
         primaryActionBtn={primaryActionBtn}
         isMobileSize={isMobileSize}
+        cartList={cartList}
         defaultValue={{
           label: exchangeRate,
           value: exchangeRate,

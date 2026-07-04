@@ -18,7 +18,7 @@ import {
   useUpdateAddressMutation,
 } from '../../features/profile/profileApiSlice';
 import { useFormValidation } from '../../hooks/useFormValidation';
-import { BtnType, BtnVariant, IconName, SizeVariant } from '../../types/enums';
+import { BtnVariant, IconName, SizeVariant } from '../../types/enums';
 import type { InputType } from '../../types/types';
 import { handleApiError } from '../../utils/handleApiError';
 import { validateAddress } from '../../utils/validation/validateAddress';
@@ -112,7 +112,7 @@ const AddressFormModal = ({
 
   const primaryActionBtn: PrimaryActionBtnProps = {
     onSubmit,
-    buttonType: BtnType.Submit,
+    buttonType: 'submit',
     label: primaryActionBtnLabel,
     disabled: !!id && !isFormDirty,
     showBtnLoader: isLoading || addIsLoading,

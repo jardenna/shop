@@ -1,4 +1,4 @@
-import { BtnType, BtnVariant } from '../../types/enums';
+import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import { PrimaryActionBtnProps, SecondaryActionBtnProps } from './Modal';
 
@@ -26,9 +26,7 @@ const ModalFooter = ({
     <Button
       type={primaryActionBtn.buttonType}
       onClick={
-        primaryActionBtn.buttonType === BtnType.Submit
-          ? undefined
-          : onPrimaryClick
+        primaryActionBtn.buttonType === 'submit' ? undefined : onPrimaryClick
       }
       disabled={primaryActionBtn.disabled}
       showBtnLoader={primaryActionBtn.showBtnLoader}

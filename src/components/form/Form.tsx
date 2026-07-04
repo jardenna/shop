@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { useLanguage } from '../../features/language/useLanguage';
-import { BtnType, BtnVariant } from '../../types/enums';
+import { BtnVariant } from '../../types/enums';
 import type { RefFormType } from '../../types/types';
 import Button from '../Button';
 import './_form.scss';
@@ -59,7 +59,7 @@ const Form = ({
           </Button>
         )}
         <Button
-          type={BtnType.Submit}
+          type="submit"
           showBtnLoader={isLoading}
           ariaLabel={ariaLabel}
           disabled={disabled}

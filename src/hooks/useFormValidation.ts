@@ -96,6 +96,14 @@ export function useFormValidation<T extends KeyValuePair>({
     });
   }
 
+  // Special case for number step
+  const handleNumberStepChange = (field: string, amount: number) => {
+    setValues({
+      ...values,
+      [field]: (values[field] as number) + amount,
+    });
+  };
+
   function handleChangeTextArea(event: ChangeTextAreaType) {
     const { name, value } = event.target;
     setValues({
@@ -259,5 +267,6 @@ export function useFormValidation<T extends KeyValuePair>({
     removePreviewImage,
     onFileChange: handleFileChange,
     isFormDirty,
+    onNumberStepChange: handleNumberStepChange,
   };
 }

@@ -16,7 +16,7 @@ const FavoritePage = () => {
   const sortedFavorites = favorites ? [...favorites].reverse() : [];
 
   return (
-    <MainPageContainer heading="favorites" className="favorite-page">
+    <MainPageContainer heading={language.favorites} className="favorite-page">
       {isLoading && <SkeletonCardList count={4} className="large" />}
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}

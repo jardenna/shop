@@ -11,7 +11,6 @@ export type DefaultResponse = {
 
 export type DefaultResponseType = {
   createdAt: Date;
-  reviews: ReviewResponse[];
   updatedAt: Date;
   message?: string;
   success?: boolean;
@@ -61,7 +60,6 @@ export type Size =
 export type ClothingSizes = 'S' | 'M' | 'L' | 'XL';
 export const mainCategoryValues = ['Men', 'Women', 'Kids'] as const;
 export type MainCategoryNames = (typeof mainCategoryValues)[number];
-
 export const subCategoryValues = ['Shoes', 'Accessories', 'Clothing'] as const;
 export type SubCategoryNames = (typeof subCategoryValues)[number];
 
