@@ -199,7 +199,7 @@ const getCart = asyncHandler(async (req, res) => {
   }
 
   const uniqueProductIds = [
-    ...new Set(cart.cartItems.map(({ productId }) => productId)),
+    ...new Set(cart.cartItems.map(({ productId }) => productId.toString())),
   ];
 
   const databaseProducts = await Product.find({
@@ -213,6 +213,17 @@ const getCart = asyncHandler(async (req, res) => {
   const productMap = new Map(
     databaseProducts.map((product) => [product._id.toString(), product]),
   );
+
+  const missingProduct = cart.cartItems.find(
+    (cartItem) => !productMap.has(cartItem.productId.toString()),
+  );
+
+  if (missingProduct) {
+    return res.status(500).json({
+      success: false,
+      message: t('productsNoLongerAvailable', req.lang),
+    });
+  }
 
   const cartItems = cart.cartItems.map((cartItem) => {
     const product = productMap.get(cartItem.productId.toString());
@@ -228,13 +239,6 @@ const getCart = asyncHandler(async (req, res) => {
       material: product.material,
     };
   });
-
-  if (!product) {
-    return res.status(500).json({
-      success: false,
-      message: t('productsNoLongerAvailable', req.lang),
-    });
-  }
 
   return res.status(200).json({
     ...cart,
