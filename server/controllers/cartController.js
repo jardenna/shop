@@ -229,7 +229,7 @@ const getCart = asyncHandler(async (req, res) => {
     const product = productMap.get(cartItem.productId.toString());
 
     return {
-      ...cartItem,
+      ...formatMongoData(cartItem),
       image: product.images[0],
       productName: product.productName,
       price: product.price,
@@ -241,7 +241,7 @@ const getCart = asyncHandler(async (req, res) => {
   });
 
   return res.status(200).json({
-    ...cart,
+    ...formatMongoData(cart),
     cartItems,
   });
 });
