@@ -140,6 +140,7 @@ const SingleProductPage = () => {
                 selectedProduct={product}
                 colorList={colorList}
                 displaySizeList={displaySizeList}
+                currentUser={currentUser}
               />
               <Accordion
                 accordionList={accordionList}

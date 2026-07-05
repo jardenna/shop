@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
+import { UserResponse } from '../../../../app/api/apiTypes/adminApiTypes';
 import {
   type BaseProduct,
   type Size,
@@ -21,8 +22,10 @@ import { resolveIconName } from '../../../../utils/iconHelpers';
 import { oneSize } from '../../../../utils/sizeUtils';
 import { translateKey } from '../../../../utils/utils';
 import { validateShopProduct } from '../../../../utils/validation/validateShopProduct';
-import { useAuth } from '../../../auth/hooks/useAuth';
-import { useGetCartsQuery } from '../../../cart/cartApiSlice';
+import {
+  useAddToCartMutation,
+  useGetCartsQuery,
+} from '../../../cart/cartApiSlice';
 import {
   addCartItem,
   selectCartList,
@@ -32,12 +35,13 @@ import { useLanguage } from '../../../language/useLanguage';
 import { cartUtils } from '../../cartUtils';
 import SingleProductPanel, { PopupData } from './SingleProductPanel';
 
-type SingleProductFormProps = {
+interface SingleProductFormProps {
   colorList: ColorOption[];
+  currentUser: UserResponse | null;
   displaySizeList: Size[];
   selectedProduct: BaseProduct;
   onReset: () => void;
-};
+}
 
 export type InitialShopValues = {
   color: string;
@@ -50,10 +54,10 @@ const SingleProductForm = ({
   colorList,
   displaySizeList,
   onReset,
+  currentUser,
 }: SingleProductFormProps) => {
   const dispatch = useAppDispatch();
   const { language, selectedLanguage } = useLanguage();
-  const { currentUser } = useAuth();
   const { sizes, categoryName, colors, id } = selectedProduct;
 
   const initialState: InitialShopValues = {
@@ -83,30 +87,36 @@ const SingleProductForm = ({
 
   const { data: userCartList } = useGetCartsQuery();
 
-  console.log(userCartList);
-
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
     useTogglePanel();
 
-  const cartResult = cartUtils({ cartList, cartItem });
-  const { existingVariant } = cartResult;
-
-  // const [cartListAdd] = useAddToCartMutation();
+  const [cartListAdd] = useAddToCartMutation();
 
   function handleAddToCart() {
-    if (currentUser) {
-      console.log(values);
-
+    if (currentUser && !userCartList) {
       return;
     }
 
+    const activeCartList =
+      currentUser && userCartList ? userCartList.cartItems : cartList;
+
+    const cartResult = cartUtils({ cartList: activeCartList, cartItem });
+    const { existingVariant } = cartResult;
     switch (cartResult.action) {
       case 'addToCartList':
-        dispatch(addCartItem(cartItem));
+        if (currentUser) {
+          cartListAdd({ cartItems: [cartItem] });
+        } else {
+          dispatch(addCartItem(cartItem));
+        }
 
         break;
       case 'addToQty':
-        if (existingVariant) {
+        if (currentUser) {
+          cartListAdd({
+            cartItems: [cartItem],
+          });
+        } else {
           const updatedCartList = cartList.map((item) =>
             item === existingVariant
               ? {
@@ -115,23 +125,20 @@ const SingleProductForm = ({
                 }
               : item,
           );
+
           dispatch(setCartList(updatedCartList));
         }
+
         break;
 
       case 'showPopup':
-        handleShowPanel();
+        setPopupData(cartResult as PopupData);
+        onTogglePanel();
         break;
       default:
         break;
     }
   }
-
-  const handleShowPanel = () => {
-    setPopupData(cartResult as PopupData);
-
-    onTogglePanel();
-  };
 
   const titleSize =
     values.size === ''
@@ -146,8 +153,13 @@ const SingleProductForm = ({
   const sortedTranslatedColors = sortColorsByTranslation(colors, language);
 
   const handleKeepBoth = () => {
-    dispatch(addCartItem(cartItem));
-
+    if (currentUser) {
+      cartListAdd({
+        cartItems: [cartItem],
+      });
+    } else {
+      dispatch(addCartItem(cartItem));
+    }
     onHidePanel();
   };
 
