@@ -90,11 +90,11 @@ const SingleProductForm = ({
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
     useTogglePanel();
 
-  const [cartListAdd] = useAddToCartMutation();
+  const [addToCartList] = useAddToCartMutation();
 
   const handleAddToCart = () => {
     if (currentUser) {
-      cartListAdd(cartItem);
+      addToCartList(cartItem);
     } else {
       dispatch(addCartItem(cartItem));
     }
@@ -110,34 +110,34 @@ const SingleProductForm = ({
 
     const cartResult = cartUtils({ cartList: activeCartList, cartItem });
     const { existingVariant } = cartResult;
+    const updatedCartList = cartList.map((item) =>
+      item === existingVariant
+        ? {
+            ...item,
+            qty: item.qty + 1,
+          }
+        : item,
+    );
 
     switch (cartResult.action) {
-      case 'addToCartList':
+      case 'addToCartListAction':
         handleAddToCart();
 
         break;
-      case 'addToQty':
+      case 'addToQtyAction':
         if (currentUser) {
-          cartListAdd(cartItem);
+          addToCartList(cartItem);
         } else {
-          const updatedCartList = cartList.map((item) =>
-            item === existingVariant
-              ? {
-                  ...item,
-                  qty: item.qty + 1,
-                }
-              : item,
-          );
-
           dispatch(setCartList(updatedCartList));
         }
 
         break;
 
-      case 'showPopup':
+      case 'showPopupAction':
         setPopupData(cartResult as PopupData);
         onTogglePanel();
         break;
+
       default:
         break;
     }
