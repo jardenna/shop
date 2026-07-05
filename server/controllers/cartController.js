@@ -130,6 +130,41 @@ const createCart = asyncHandler(async (req, res) => {
   return res.status(201).json(formattedCart);
 });
 
+// @desc    Update cart
+// @route   /api/cart/:cartItemId
+// @method  patch
+// @access  Private
+const updateCart = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+
+  const existingCart = await Cart.findOne({
+    user: req.user._id,
+  });
+
+  if (!existingCart) {
+    return res.status(404).json({
+      success: false,
+      message: t('productsNoLongerAvailable', req.lang),
+    });
+  }
+
+  const cartItemToUpdate = existingCart.cartItems.find(
+    (cartItem) => cartItem._id.toString() === id,
+  );
+
+  if (!cartItemToUpdate) {
+    return res.status(404).json({
+      success: false,
+      message: t('productsNoLongerAvailable', req.lang),
+    });
+  }
+  cartItemToUpdate.color = req.body.color;
+  cartItemToUpdate.size = req.body.size;
+
+  const updatedCart = await existingCart.save();
+  return res.status(200).json(updatedCart);
+});
+
 // @desc    Merge cart
 // @route   /api/cart/merge
 // @method  Post
@@ -163,7 +198,7 @@ const mergeCart = asyncHandler(async (req, res) => {
   });
 
   const mergeResult = mergeCartItems({
-    existingCartItems: existingCart.cartItems,
+    existingCarts: existingCart.cartItems,
     incomingCartItems: cartList,
     databaseProducts,
   });
@@ -246,4 +281,4 @@ const getCart = asyncHandler(async (req, res) => {
   });
 });
 
-export { createCart, getCart, mergeCart };
+export { createCart, getCart, mergeCart, updateCart };
