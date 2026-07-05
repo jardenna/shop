@@ -21,7 +21,7 @@ const cartListSlice = createSlice({
       cartStorageUtil.save(state.cartList);
     },
 
-    setCartList: (state, action: PayloadAction<CartItem[]>) => {
+    updateCartList: (state, action: PayloadAction<CartItem[]>) => {
       state.cartList = action.payload;
 
       cartStorageUtil.save(state.cartList);
@@ -29,7 +29,7 @@ const cartListSlice = createSlice({
   },
 });
 
-export const { addCartItem, setCartList } = cartListSlice.actions;
+export const { addCartItem, updateCartList } = cartListSlice.actions;
 
 export const selectCartList = (state: RootState) => state.cartList.cartList;
 

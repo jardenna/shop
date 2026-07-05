@@ -29,7 +29,7 @@ import {
 import {
   addCartItem,
   selectCartList,
-  setCartList,
+  updateCartList,
 } from '../../../cartItemsSlice';
 import { useLanguage } from '../../../language/useLanguage';
 import { cartUtils } from '../../cartUtils';
@@ -69,7 +69,7 @@ const SingleProductForm = ({
   const { onChange, onNumberStepChange, values, onSubmit, errors } =
     useFormValidation({
       initialState,
-      callback: handleUpdateCartList,
+      callback: handleSubmitCartItem,
       validate: validateShopProduct,
     });
 
@@ -100,7 +100,7 @@ const SingleProductForm = ({
     }
   };
 
-  function handleUpdateCartList() {
+  function handleSubmitCartItem() {
     if (currentUser && !userCartList) {
       return;
     }
@@ -124,11 +124,12 @@ const SingleProductForm = ({
         handleAddToCart();
 
         break;
+
       case 'addToQtyAction':
         if (currentUser) {
           addToCartList(cartItem);
         } else {
-          dispatch(setCartList(updatedCartList));
+          dispatch(updateCartList(updatedCartList));
         }
 
         break;
@@ -164,7 +165,7 @@ const SingleProductForm = ({
     const updatedCartList = cartList.map((item) =>
       item === popupData?.existingVariant ? cartItem : item,
     );
-    dispatch(setCartList(updatedCartList));
+    dispatch(updateCartList(updatedCartList));
     onHidePanel();
   };
 
