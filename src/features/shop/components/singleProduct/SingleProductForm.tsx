@@ -114,7 +114,7 @@ const SingleProductForm = ({
       item === existingVariant
         ? {
             ...item,
-            qty: item.qty + 1,
+            qty: item.qty + values.qty,
           }
         : item,
     );
