@@ -1,4 +1,4 @@
-import { CartItem } from '../../app/api/apiTypes/sharedApiTypes';
+import { CartItem } from '../../app/api/apiTypes/cartApiTypes';
 
 export type ChangedAttribute = 'size' | 'color';
 

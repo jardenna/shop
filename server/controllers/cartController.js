@@ -63,7 +63,7 @@ const createCart = asyncHandler(async (req, res) => {
     if (databaseProduct.countInStock < cartItem.qty) {
       return res.status(400).json({
         success: false,
-        message: 'The product you selected is out of stock',
+        message: t(temporarilyOutOfStock, req.lang),
         cartItem: cartItemIdentifier(cartItem),
       });
     }
@@ -98,7 +98,7 @@ const createCart = asyncHandler(async (req, res) => {
     if (!mergeResult.success) {
       return res.status(400).json({
         success: false,
-        message: 'The product you selected is out of stock',
+        message: t(temporarilyOutOfStock, req.lang),
         cartItem: mergeResult.cartItem,
       });
     }
@@ -199,7 +199,7 @@ const getCart = asyncHandler(async (req, res) => {
   }
 
   const uniqueProductIds = [
-    ...new Set(cart.cartItems.map(({ productId }) => productId)),
+    ...new Set(cart.cartItems.map(({ productId }) => productId.toString())),
   ];
 
   const databaseProducts = await Product.find({
@@ -214,11 +214,22 @@ const getCart = asyncHandler(async (req, res) => {
     databaseProducts.map((product) => [product._id.toString(), product]),
   );
 
+  const missingProduct = cart.cartItems.find(
+    (cartItem) => !productMap.has(cartItem.productId.toString()),
+  );
+
+  if (missingProduct) {
+    return res.status(500).json({
+      success: false,
+      message: t('productsNoLongerAvailable', req.lang),
+    });
+  }
+
   const cartItems = cart.cartItems.map((cartItem) => {
     const product = productMap.get(cartItem.productId.toString());
 
     return {
-      ...cartItem,
+      ...formatMongoData(cartItem),
       image: product.images[0],
       productName: product.productName,
       price: product.price,
@@ -229,15 +240,8 @@ const getCart = asyncHandler(async (req, res) => {
     };
   });
 
-  if (!product) {
-    return res.status(500).json({
-      success: false,
-      message: t('productsNoLongerAvailable', req.lang),
-    });
-  }
-
   return res.status(200).json({
-    ...cart,
+    ...formatMongoData(cart),
     cartItems,
   });
 });

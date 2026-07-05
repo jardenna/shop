@@ -15,7 +15,7 @@ export const cartApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.Carts],
     }),
-    mergeCart: builder.mutation<CartListResponse, CartListRequest>({
+    mergeCartList: builder.mutation<CartListResponse, CartListRequest>({
       query: (cartItem) => ({
         url: `${cartUrl}/merge`,
         method: 'POST',
@@ -30,5 +30,8 @@ export const cartApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useAddToCartMutation, useMergeCartMutation, useGetCartsQuery } =
-  cartApiSlice;
+export const {
+  useAddToCartMutation,
+  useMergeCartListMutation,
+  useGetCartsQuery,
+} = cartApiSlice;

@@ -1,4 +1,4 @@
-import { CartItem } from '../../app/api/apiTypes/sharedApiTypes';
+import { CartItem } from '../../app/api/apiTypes/cartApiTypes';
 import { DropdownItem } from '../../components/dropdownBtn/DropdownBtn';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import type { SelectedLanguage } from '../../features/language/languageSlice';

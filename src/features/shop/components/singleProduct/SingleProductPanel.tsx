@@ -1,4 +1,4 @@
-import { CartItem } from '../../../../app/api/apiTypes/sharedApiTypes';
+import { CartItem } from '../../../../app/api/apiTypes/cartApiTypes';
 import Button from '../../../../components/Button';
 import Img from '../../../../components/Img';
 import { BtnVariant } from '../../../../types/enums';
@@ -50,7 +50,7 @@ const SingleProductPanel = ({
         </h2>
         <p>{language.singleProductPanelText}</p>
         <div className="panel-img">
-          <Img alt="" src={existingVariant.image} />
+          {existingVariant.image && <Img alt="" src={existingVariant.image} />}
         </div>
       </div>
       <div className="panel-action-btns">

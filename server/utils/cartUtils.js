@@ -49,6 +49,7 @@ const mergeCartItems = ({
       if (totalQuantity > databaseProduct.countInStock) {
         return {
           success: false,
+          message: 'The product you selected is out of stock',
           cartItem,
         };
       }
