@@ -1,7 +1,7 @@
 import type { Middleware } from '@reduxjs/toolkit';
 import { configureStore, isRejectedWithValue } from '@reduxjs/toolkit';
 import authSliceReducer from '../features/auth/authSlice';
-import cartListSlice from '../features/cartItemsSlice';
+import cartListSlice from '../features/cartListSlice';
 import currencyReducer from '../features/currency/currencySlice';
 import languageReducer from '../features/language/languageSlice';
 import messagePopupReducer, {

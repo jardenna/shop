@@ -7,7 +7,7 @@ import type { PrimaryActionBtnProps } from '../components/modal/Modal';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
 import { useAuth } from '../features/auth/hooks/useAuth';
-import { selectCartList } from '../features/cartItemsSlice';
+import { selectCartList } from '../features/cartListSlice';
 import { useCurrency } from '../features/currency/useCurrency';
 import { useLanguage } from '../features/language/useLanguage';
 import { clearMessagePopups } from '../features/messagePopupSlice';

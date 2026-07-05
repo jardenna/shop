@@ -30,7 +30,7 @@ import {
   addCartItem,
   selectCartList,
   updateCartList,
-} from '../../../cartItemsSlice';
+} from '../../../cartListSlice';
 import { useLanguage } from '../../../language/useLanguage';
 import { cartUtils } from '../../cartUtils';
 import SingleProductPanel, { PopupData } from './SingleProductPanel';
