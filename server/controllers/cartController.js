@@ -63,7 +63,7 @@ const createCart = asyncHandler(async (req, res) => {
     if (databaseProduct.countInStock < cartItem.qty) {
       return res.status(400).json({
         success: false,
-        message: 'The product you selected is out of stock',
+        message: t(temporarilyOutOfStock, req.lang),
         cartItem: cartItemIdentifier(cartItem),
       });
     }
@@ -98,7 +98,7 @@ const createCart = asyncHandler(async (req, res) => {
     if (!mergeResult.success) {
       return res.status(400).json({
         success: false,
-        message: 'The product you selected is out of stock',
+        message: t(temporarilyOutOfStock, req.lang),
         cartItem: mergeResult.cartItem,
       });
     }
