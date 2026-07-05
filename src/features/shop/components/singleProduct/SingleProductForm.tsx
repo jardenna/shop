@@ -69,13 +69,13 @@ const SingleProductForm = ({
   const { onChange, onNumberStepChange, values, onSubmit, errors } =
     useFormValidation({
       initialState,
-      callback: handleAddToCart,
+      callback: handleUpdateCartList,
       validate: validateShopProduct,
     });
 
   const cartItem = {
     productId: id,
-    qty: 1,
+    qty: values.qty,
     size: values.size,
     color: values.color,
     image: selectedProduct.images[0],
@@ -92,7 +92,15 @@ const SingleProductForm = ({
 
   const [cartListAdd] = useAddToCartMutation();
 
-  function handleAddToCart() {
+  const handleAddToCart = () => {
+    if (currentUser) {
+      cartListAdd(cartItem);
+    } else {
+      dispatch(addCartItem(cartItem));
+    }
+  };
+
+  function handleUpdateCartList() {
     if (currentUser && !userCartList) {
       return;
     }
@@ -102,20 +110,15 @@ const SingleProductForm = ({
 
     const cartResult = cartUtils({ cartList: activeCartList, cartItem });
     const { existingVariant } = cartResult;
+
     switch (cartResult.action) {
       case 'addToCartList':
-        if (currentUser) {
-          cartListAdd({ cartItems: [cartItem] });
-        } else {
-          dispatch(addCartItem(cartItem));
-        }
+        handleAddToCart();
 
         break;
       case 'addToQty':
         if (currentUser) {
-          cartListAdd({
-            cartItems: [cartItem],
-          });
+          cartListAdd(cartItem);
         } else {
           const updatedCartList = cartList.map((item) =>
             item === existingVariant
@@ -153,13 +156,7 @@ const SingleProductForm = ({
   const sortedTranslatedColors = sortColorsByTranslation(colors, language);
 
   const handleKeepBoth = () => {
-    if (currentUser) {
-      cartListAdd({
-        cartItems: [cartItem],
-      });
-    } else {
-      dispatch(addCartItem(cartItem));
-    }
+    handleAddToCart();
     onHidePanel();
   };
 
