@@ -2,6 +2,7 @@ import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
 import Product from '../models/productModel.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
+import { t } from '../utils/translator.js';
 
 import {
   cartItemIdentifier,
@@ -9,7 +10,6 @@ import {
   mergeCartItems,
   validateVariant,
 } from '../utils/cartUtils.js';
-import { t } from '../utils/translator.js';
 import { validateCartItems } from '../utils/validateCartItems.js';
 
 // @desc    Create cart
@@ -63,7 +63,7 @@ const createCart = asyncHandler(async (req, res) => {
     if (databaseProduct.countInStock < cartItem.qty) {
       return res.status(400).json({
         success: false,
-        message: t(temporarilyOutOfStock, req.lang),
+        message: t('temporarilyOutOfStock', req.lang),
         cartItem: cartItemIdentifier(cartItem),
       });
     }
@@ -98,7 +98,7 @@ const createCart = asyncHandler(async (req, res) => {
     if (!mergeResult.success) {
       return res.status(400).json({
         success: false,
-        message: t(temporarilyOutOfStock, req.lang),
+        message: t('temporarilyOutOfStock', req.lang),
         cartItem: mergeResult.cartItem,
       });
     }
