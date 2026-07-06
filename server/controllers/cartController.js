@@ -227,59 +227,6 @@ const updateCart = asyncHandler(async (req, res) => {
   return res.status(200).json(updatedCart);
 });
 
-// @desc    Merge cart
-// @route   /api/cart/merge
-// @method  Post
-// @access  Private
-const mergeCart = asyncHandler(async (req, res) => {
-  const { cartList } = req.body;
-
-  const existingCart = await Cart.findOne({
-    user: req.user._id,
-  });
-
-  if (!existingCart) {
-    const cart = new Cart({
-      user: req.user._id,
-      cartItems: cartList,
-    });
-
-    const createdCart = await cart.save();
-
-    return res.status(201).json(createdCart);
-  }
-
-  const uniqueProductIds = [
-    ...new Set(cartList.map((cartItem) => cartItem.productId)),
-  ];
-
-  const databaseProducts = await Product.find({
-    _id: {
-      $in: uniqueProductIds,
-    },
-  });
-
-  const mergeResult = mergeCartItems({
-    existingCarts: existingCart.cartItems,
-    incomingCartItems: cartList,
-    databaseProducts,
-  });
-
-  if (!mergeResult.success) {
-    return res.status(400).json({
-      success: false,
-      message: mergeResult.message,
-      cartItem: mergeResult.cartItem,
-    });
-  }
-
-  existingCart.cartItems = mergeResult.cartItems;
-
-  const updatedCart = await existingCart.save();
-
-  return res.status(200).json(updatedCart);
-});
-
 // @desc    Get cart
 // @route   /api/cart
 // @method  Get
@@ -343,4 +290,4 @@ const getCart = asyncHandler(async (req, res) => {
   });
 });
 
-export { createCart, getCart, mergeCart, updateCart };
+export { createCart, getCart, updateCart };
