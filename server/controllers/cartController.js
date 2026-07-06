@@ -174,8 +174,9 @@ const updateCart = asyncHandler(async (req, res) => {
       message: t('cartItemNotFound', req.lang),
     });
   }
+
   const product = await Product.findById(cartItemToUpdate.productId).select(
-    'sizes colors',
+    'sizes colors countInStock',
   );
 
   if (!product) {
@@ -199,10 +200,30 @@ const updateCart = asyncHandler(async (req, res) => {
     });
   }
 
+  const existingVariant = existingCart.cartItems.find(
+    (cartItem) =>
+      cartItem._id.toString() !== id &&
+      cartItem.productId.toString() === cartItemToUpdate.productId.toString() &&
+      cartItem.color === color &&
+      cartItem.size === size,
+  );
+
+  if (existingVariant) {
+    const totalQuantity = existingVariant.qty + cartItemToUpdate.qty;
+
+    if (totalQuantity > product.countInStock) {
+      return res.status(400).json({
+        success: false,
+        message: t('temporarilyOutOfStock', req.lang),
+      });
+    }
+  }
+
   cartItemToUpdate.color = color;
   cartItemToUpdate.size = size;
 
   const updatedCart = await existingCart.save();
+
   return res.status(200).json(updatedCart);
 });
 
