@@ -162,25 +162,30 @@ const updateCart = asyncHandler(async (req, res) => {
   const productVariants = await Product.findById(
     cartItemToUpdate.productId,
   ).select('sizes colors');
-  console.log(productVariants);
 
-  if (productVariants.colors.includes(color)) {
-    cartItemToUpdate.color = color;
-  } else {
+  if (!productVariants) {
     return res.status(404).json({
+      success: false,
+      message: 'no variant',
+    });
+  }
+
+  if (!productVariants.colors.includes(color)) {
+    return res.status(400).json({
       success: false,
       message: 'no color',
     });
   }
 
-  if (productVariants.sizes.includes(size)) {
-    cartItemToUpdate.size = size;
-  } else {
-    return res.status(404).json({
+  if (!productVariants.sizes.includes(size)) {
+    return res.status(400).json({
       success: false,
       message: 'no size',
     });
   }
+
+  cartItemToUpdate.color = color;
+  cartItemToUpdate.size = size;
 
   const updatedCart = await existingCart.save();
   return res.status(200).json(updatedCart);
