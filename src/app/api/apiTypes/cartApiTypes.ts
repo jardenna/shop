@@ -18,3 +18,14 @@ export interface CartListRequest {
 export interface CartListResponse extends DefaultResponseType {
   cartItems: CartItem[];
 }
+
+export interface UpdatedCart {
+  color: string;
+  size: string;
+  qty?: number;
+}
+
+export interface UpdateCartRequest {
+  cartItem: UpdatedCart;
+  id: string;
+}

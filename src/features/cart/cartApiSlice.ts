@@ -3,6 +3,7 @@ import {
   AddToCartRequest,
   CartListRequest,
   CartListResponse,
+  UpdateCartRequest,
 } from '../../app/api/apiTypes/cartApiTypes';
 import { cartUrl } from '../../app/endpoints';
 
@@ -15,6 +16,14 @@ export const cartApiSlice = apiSlice.injectEndpoints({
         body: {
           cartItems: Array.isArray(cartItem) ? cartItem : [cartItem],
         },
+      }),
+      invalidatesTags: [TagTypesEnum.Carts],
+    }),
+    replaceCart: builder.mutation<CartListResponse, UpdateCartRequest>({
+      query: ({ id, cartItem }) => ({
+        url: `${cartUrl}/${id}`,
+        method: 'PATCH',
+        body: cartItem,
       }),
       invalidatesTags: [TagTypesEnum.Carts],
     }),
@@ -37,4 +46,5 @@ export const {
   useAddToCartMutation,
   useMergeCartListMutation,
   useGetCartsQuery,
+  useReplaceCartMutation,
 } = cartApiSlice;

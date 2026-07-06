@@ -25,12 +25,13 @@ import { validateShopProduct } from '../../../../utils/validation/validateShopPr
 import {
   useAddToCartMutation,
   useGetCartsQuery,
+  useReplaceCartMutation,
 } from '../../../cart/cartApiSlice';
 import {
   addCartItem,
+  replaceCartItem,
   selectCartList,
-  updateCartList,
-} from '../../../cartListSlice';
+} from '../../../cartSlice';
 import { useLanguage } from '../../../language/useLanguage';
 import { cartUtils } from '../../cartUtils';
 import SingleProductPanel, { PopupData } from './SingleProductPanel';
@@ -90,11 +91,12 @@ const SingleProductForm = ({
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
     useTogglePanel();
 
-  const [addToCartList] = useAddToCartMutation();
+  const [addCartItemApi] = useAddToCartMutation();
+  const [replaceCartItemApi] = useReplaceCartMutation();
 
   const handleAddToCart = () => {
     if (currentUser) {
-      addToCartList(cartItem);
+      addCartItemApi(cartItem);
     } else {
       dispatch(addCartItem(cartItem));
     }
@@ -110,6 +112,7 @@ const SingleProductForm = ({
 
     const cartResult = cartUtils({ cartList: activeCartList, cartItem });
     const { existingVariant } = cartResult;
+
     const updatedCartList = cartList.map((item) =>
       item === existingVariant
         ? {
@@ -127,9 +130,9 @@ const SingleProductForm = ({
 
       case 'addToQtyAction':
         if (currentUser) {
-          addToCartList(cartItem);
+          addCartItemApi(cartItem);
         } else {
-          dispatch(updateCartList(updatedCartList));
+          dispatch(replaceCartItem(updatedCartList));
         }
 
         break;
@@ -162,10 +165,16 @@ const SingleProductForm = ({
   };
 
   const handleReplaceItem = () => {
-    const updatedCartList = cartList.map((item) =>
-      item === popupData?.existingVariant ? cartItem : item,
-    );
-    dispatch(updateCartList(updatedCartList));
+    if (currentUser && popupData) {
+      const cartId = popupData.existingVariant.id ?? '';
+      replaceCartItemApi({ id: cartId, cartItem: values });
+    } else {
+      const updatedCartList = cartList.map((item) =>
+        item === popupData?.existingVariant ? cartItem : item,
+      );
+      dispatch(replaceCartItem(updatedCartList));
+    }
+
     onHidePanel();
   };
 
