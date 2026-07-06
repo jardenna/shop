@@ -8,7 +8,7 @@ interface CartUtilsParams {
 }
 
 interface CartResult {
-  action: 'addToQty' | 'showPopup' | 'addToCartList';
+  action: 'addToQtyAction' | 'showPopupAction' | 'addToCartListAction';
   changedAttribute?: ChangedAttribute;
   existingValue?: string;
   existingVariant?: CartItem;
@@ -30,7 +30,7 @@ export const cartUtils = ({
 
   if (identicalVariant) {
     return {
-      action: 'addToQty',
+      action: 'addToQtyAction',
       existingVariant: identicalVariant,
     };
   }
@@ -47,7 +47,7 @@ export const cartUtils = ({
       popupVariant.size !== cartItem.size ? 'size' : 'color';
 
     return {
-      action: 'showPopup',
+      action: 'showPopupAction',
       existingVariant: popupVariant,
       changedAttribute,
       existingValue:
@@ -58,6 +58,6 @@ export const cartUtils = ({
   }
 
   return {
-    action: 'addToCartList',
+    action: 'addToCartListAction',
   };
 };

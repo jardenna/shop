@@ -2,6 +2,7 @@ import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
 import Product from '../models/productModel.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
+import { t } from '../utils/translator.js';
 
 import {
   cartItemIdentifier,
@@ -9,7 +10,6 @@ import {
   mergeCartItems,
   validateVariant,
 } from '../utils/cartUtils.js';
-import { t } from '../utils/translator.js';
 import { validateCartItems } from '../utils/validateCartItems.js';
 
 // @desc    Create cart
@@ -63,7 +63,7 @@ const createCart = asyncHandler(async (req, res) => {
     if (databaseProduct.countInStock < cartItem.qty) {
       return res.status(400).json({
         success: false,
-        message: t(temporarilyOutOfStock, req.lang),
+        message: t('temporarilyOutOfStock', req.lang),
         cartItem: cartItemIdentifier(cartItem),
       });
     }
@@ -98,7 +98,7 @@ const createCart = asyncHandler(async (req, res) => {
     if (!mergeResult.success) {
       return res.status(400).json({
         success: false,
-        message: t(temporarilyOutOfStock, req.lang),
+        message: t('temporarilyOutOfStock', req.lang),
         cartItem: mergeResult.cartItem,
       });
     }
@@ -128,6 +128,67 @@ const createCart = asyncHandler(async (req, res) => {
   );
 
   return res.status(201).json(formattedCart);
+});
+
+// @desc    Update cart
+// @route   /api/cart/:cartItemId
+// @method  patch
+// @access  Private
+const updateCart = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const { color, size } = req.body;
+
+  const existingCart = await Cart.findOne({
+    user: req.user._id,
+  });
+
+  if (!existingCart) {
+    return res.status(404).json({
+      success: false,
+      message: t('cartNotFound', req.lang),
+    });
+  }
+
+  const cartItemToUpdate = existingCart.cartItems.find(
+    (cartItem) => cartItem._id.toString() === id,
+  );
+
+  if (!cartItemToUpdate) {
+    return res.status(404).json({
+      success: false,
+      message: t('cartItemNotFound', req.lang),
+    });
+  }
+  const product = await Product.findById(cartItemToUpdate.productId).select(
+    'sizes colors',
+  );
+
+  if (!product) {
+    return res.status(404).json({
+      success: false,
+      message: t('productNotFound', req.lang),
+    });
+  }
+
+  if (!product.colors.includes(color)) {
+    return res.status(400).json({
+      success: false,
+      message: t('invalidColor', req.lang),
+    });
+  }
+
+  if (!product.sizes.includes(size)) {
+    return res.status(400).json({
+      success: false,
+      message: t('invalidSize', req.lang),
+    });
+  }
+
+  cartItemToUpdate.color = color;
+  cartItemToUpdate.size = size;
+
+  const updatedCart = await existingCart.save();
+  return res.status(200).json(updatedCart);
 });
 
 // @desc    Merge cart
@@ -163,7 +224,7 @@ const mergeCart = asyncHandler(async (req, res) => {
   });
 
   const mergeResult = mergeCartItems({
-    existingCartItems: existingCart.cartItems,
+    existingCarts: existingCart.cartItems,
     incomingCartItems: cartList,
     databaseProducts,
   });
@@ -246,4 +307,4 @@ const getCart = asyncHandler(async (req, res) => {
   });
 });
 
-export { createCart, getCart, mergeCart };
+export { createCart, getCart, mergeCart, updateCart };

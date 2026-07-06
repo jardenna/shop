@@ -1,5 +1,10 @@
 ﻿key;en;da
 about;About us;Om os
+cartNotFound;Your shopping cart could not be found;Din indkøbskurv blev ikke fundet
+cartItemNotFound;This item is no longer in your shopping cart;Denne vare er ikke længere i din indkøbskurv
+productNotFound;This product is no longer available;Dette produkt er ikke længere tilgængeligt
+invalidColor;The selected color is no longer available;Den valgte farve er ikke længere tilgængelig
+invalidSize;The selected size is no longer available;Den valgte størrelse er ikke længere tilgængelig
 accessories;Accessories;Accessories
 accessoriesAndToys;Accessories & Toys;Accessories & legetøj
 account;Account;Konto

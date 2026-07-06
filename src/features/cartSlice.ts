@@ -11,7 +11,7 @@ const initialState: CartItemsState = {
   cartList: cartStorageUtil.load(),
 };
 
-const cartListSlice = createSlice({
+const cartSlice = createSlice({
   name: 'cartItems',
   initialState,
   reducers: {
@@ -21,7 +21,7 @@ const cartListSlice = createSlice({
       cartStorageUtil.save(state.cartList);
     },
 
-    setCartList: (state, action: PayloadAction<CartItem[]>) => {
+    replaceCartItem: (state, action: PayloadAction<CartItem[]>) => {
       state.cartList = action.payload;
 
       cartStorageUtil.save(state.cartList);
@@ -29,8 +29,8 @@ const cartListSlice = createSlice({
   },
 });
 
-export const { addCartItem, setCartList } = cartListSlice.actions;
+export const { addCartItem, replaceCartItem } = cartSlice.actions;
 
 export const selectCartList = (state: RootState) => state.cartList.cartList;
 
-export default cartListSlice.reducer;
+export default cartSlice.reducer;

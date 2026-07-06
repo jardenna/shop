@@ -25,12 +25,13 @@ import { validateShopProduct } from '../../../../utils/validation/validateShopPr
 import {
   useAddToCartMutation,
   useGetCartsQuery,
+  useReplaceCartMutation,
 } from '../../../cart/cartApiSlice';
 import {
   addCartItem,
+  replaceCartItem,
   selectCartList,
-  setCartList,
-} from '../../../cartItemsSlice';
+} from '../../../cartSlice';
 import { useLanguage } from '../../../language/useLanguage';
 import { cartUtils } from '../../cartUtils';
 import SingleProductPanel, { PopupData } from './SingleProductPanel';
@@ -69,13 +70,13 @@ const SingleProductForm = ({
   const { onChange, onNumberStepChange, values, onSubmit, errors } =
     useFormValidation({
       initialState,
-      callback: handleAddToCart,
+      callback: handleSubmitCartItem,
       validate: validateShopProduct,
     });
 
   const cartItem = {
     productId: id,
-    qty: 1,
+    qty: values.qty,
     size: values.size,
     color: values.color,
     image: selectedProduct.images[0],
@@ -90,9 +91,18 @@ const SingleProductForm = ({
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
     useTogglePanel();
 
-  const [cartListAdd] = useAddToCartMutation();
+  const [addCartItemApi] = useAddToCartMutation();
+  const [replaceCartItemApi] = useReplaceCartMutation();
 
-  function handleAddToCart() {
+  const handleAddToCart = () => {
+    if (currentUser) {
+      addCartItemApi(cartItem);
+    } else {
+      dispatch(addCartItem(cartItem));
+    }
+  };
+
+  function handleSubmitCartItem() {
     if (currentUser && !userCartList) {
       return;
     }
@@ -102,39 +112,36 @@ const SingleProductForm = ({
 
     const cartResult = cartUtils({ cartList: activeCartList, cartItem });
     const { existingVariant } = cartResult;
+
+    const updatedCartList = cartList.map((item) =>
+      item === existingVariant
+        ? {
+            ...item,
+            qty: item.qty + values.qty,
+          }
+        : item,
+    );
+
     switch (cartResult.action) {
-      case 'addToCartList':
-        if (currentUser) {
-          cartListAdd({ cartItems: [cartItem] });
-        } else {
-          dispatch(addCartItem(cartItem));
-        }
+      case 'addToCartListAction':
+        handleAddToCart();
 
         break;
-      case 'addToQty':
-        if (currentUser) {
-          cartListAdd({
-            cartItems: [cartItem],
-          });
-        } else {
-          const updatedCartList = cartList.map((item) =>
-            item === existingVariant
-              ? {
-                  ...item,
-                  qty: item.qty + 1,
-                }
-              : item,
-          );
 
-          dispatch(setCartList(updatedCartList));
+      case 'addToQtyAction':
+        if (currentUser) {
+          addCartItemApi(cartItem);
+        } else {
+          dispatch(replaceCartItem(updatedCartList));
         }
 
         break;
 
-      case 'showPopup':
+      case 'showPopupAction':
         setPopupData(cartResult as PopupData);
         onTogglePanel();
         break;
+
       default:
         break;
     }
@@ -153,21 +160,21 @@ const SingleProductForm = ({
   const sortedTranslatedColors = sortColorsByTranslation(colors, language);
 
   const handleKeepBoth = () => {
-    if (currentUser) {
-      cartListAdd({
-        cartItems: [cartItem],
-      });
-    } else {
-      dispatch(addCartItem(cartItem));
-    }
+    handleAddToCart();
     onHidePanel();
   };
 
   const handleReplaceItem = () => {
-    const updatedCartList = cartList.map((item) =>
-      item === popupData?.existingVariant ? cartItem : item,
-    );
-    dispatch(setCartList(updatedCartList));
+    if (currentUser && popupData) {
+      const cartId = popupData.existingVariant.id ?? '';
+      replaceCartItemApi({ id: cartId, cartItem: values });
+    } else {
+      const updatedCartList = cartList.map((item) =>
+        item === popupData?.existingVariant ? cartItem : item,
+      );
+      dispatch(replaceCartItem(updatedCartList));
+    }
+
     onHidePanel();
   };
 

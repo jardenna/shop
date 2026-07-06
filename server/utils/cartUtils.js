@@ -53,7 +53,6 @@ const mergeCartItems = ({
           cartItem,
         };
       }
-
       identicalVariant.qty = totalQuantity;
     } else {
       existingCartItems.unshift(cartItem);

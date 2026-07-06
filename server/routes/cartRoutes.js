@@ -3,6 +3,7 @@ import {
   createCart,
   getCart,
   mergeCart,
+  updateCart,
 } from '../controllers/cartController.js';
 import { authenticate } from '../middleware/authMiddleware.js';
 import languageMiddleware from '../middleware/languageMiddleware.js';
@@ -14,5 +15,7 @@ router
   .route('/')
   .post(languageMiddleware, authenticate, createCart)
   .get(languageMiddleware, authenticate, getCart);
+
+router.route('/:id').patch(languageMiddleware, authenticate, updateCart);
 
 export default router;

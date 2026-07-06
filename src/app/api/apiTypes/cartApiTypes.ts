@@ -9,10 +9,23 @@ export interface CartItem {
   image?: string;
 }
 
+export type AddToCartRequest = CartItem | CartItem[];
+
 export interface CartListRequest {
-  cartItems: CartItem[];
+  cartItems: AddToCartRequest;
 }
 
 export interface CartListResponse extends DefaultResponseType {
   cartItems: CartItem[];
+}
+
+export interface UpdatedCart {
+  color: string;
+  size: string;
+  qty?: number;
+}
+
+export interface UpdateCartRequest {
+  cartItem: UpdatedCart;
+  id: string;
 }
