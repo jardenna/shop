@@ -58,9 +58,18 @@ const createCart = asyncHandler(async (req, res) => {
   }
 
   for (const cartItem of cartItems) {
-    const databaseProduct = findDatabaseProduct({ databaseProducts, cartItem });
+    const databaseProduct = findDatabaseProduct({
+      databaseProducts,
+      cartItem,
+    });
 
-    if (databaseProduct.countInStock < cartItem.qty) {
+    const totalQuantity =
+      (existingCart?.cartItems
+        .filter((item) => item.productId.toString() === cartItem.productId)
+        .reduce((totalQty, item) => totalQty + item.qty, 0) ?? 0) +
+      cartItem.qty;
+
+    if (databaseProduct.countInStock < totalQuantity) {
       return res.status(400).json({
         success: false,
         message: t('temporarilyOutOfStock', req.lang),
@@ -68,7 +77,10 @@ const createCart = asyncHandler(async (req, res) => {
       });
     }
 
-    const isValidVariant = validateVariant({ databaseProduct, cartItem });
+    const isValidVariant = validateVariant({
+      databaseProduct,
+      cartItem,
+    });
 
     if (!isValidVariant) {
       return res.status(400).json({
@@ -80,7 +92,10 @@ const createCart = asyncHandler(async (req, res) => {
   }
 
   const updatedCartItems = cartItems.map((cartItem) => {
-    const databaseProduct = findDatabaseProduct({ databaseProducts, cartItem });
+    const databaseProduct = findDatabaseProduct({
+      databaseProducts,
+      cartItem,
+    });
 
     return {
       ...cartItem,
