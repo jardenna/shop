@@ -60,6 +60,10 @@ const SingleProductForm = ({
   const dispatch = useAppDispatch();
   const { language, selectedLanguage } = useLanguage();
   const { sizes, categoryName, colors, id } = selectedProduct;
+  const [popupData, setPopupData] = useState<PopupData | null>(null);
+  const cartList = useAppSelector(selectCartList);
+  const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
+    useTogglePanel();
 
   const initialState: InitialShopValues = {
     color: colorList[0].value,
@@ -82,15 +86,7 @@ const SingleProductForm = ({
     image: selectedProduct.images[0],
   };
 
-  const [popupData, setPopupData] = useState<PopupData | null>(null);
-
-  const cartList = useAppSelector(selectCartList);
-
   const { data: userCartList } = useGetCartsQuery();
-
-  const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
-    useTogglePanel();
-
   const [addCartItemApi] = useAddToCartMutation();
   const [replaceCartItemApi] = useReplaceCartMutation();
 
@@ -147,18 +143,7 @@ const SingleProductForm = ({
     }
   }
 
-  const titleSize =
-    values.size === ''
-      ? language.selectSize
-      : `${language.selectedSize}: ${values.size}`;
-
-  const titleColor =
-    values.color === ''
-      ? language.selectedColor
-      : `${language.selectedColor}: ${translateKey(values.color, language)}`;
-
-  const sortedTranslatedColors = sortColorsByTranslation(colors, language);
-
+  // SingleProductPanel handlers
   const handleKeepBoth = () => {
     handleAddToCart();
     onHidePanel();
@@ -166,8 +151,8 @@ const SingleProductForm = ({
 
   const handleReplaceItem = () => {
     if (currentUser && popupData) {
-      const cartId = popupData.existingVariant.id ?? '';
-      replaceCartItemApi({ id: cartId, cartItem: values });
+      const cartItemId = popupData.existingVariant.id ?? '';
+      replaceCartItemApi({ cartItemId, cartItem: values });
     } else {
       const updatedCartList = cartList.map((item) =>
         item === popupData?.existingVariant ? cartItem : item,
@@ -177,6 +162,18 @@ const SingleProductForm = ({
 
     onHidePanel();
   };
+
+  const sortedTranslatedColors = sortColorsByTranslation(colors, language);
+
+  const titleSize =
+    values.size === ''
+      ? language.selectSize
+      : `${language.selectedSize}: ${values.size}`;
+
+  const titleColor =
+    values.color === ''
+      ? language.selectedColor
+      : `${language.selectedColor}: ${translateKey(values.color, language)}`;
 
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
