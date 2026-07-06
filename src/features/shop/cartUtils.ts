@@ -61,3 +61,12 @@ export const cartUtils = ({
     action: 'addToCartListAction',
   };
 };
+
+export const getTotalCartQuantity = (
+  cartList: CartItem[],
+  productId: string,
+  quantity: number,
+) =>
+  cartList
+    .filter((item) => item.productId === productId)
+    .reduce((totalQty, item) => totalQty + item.qty, 0) + quantity;

@@ -36,7 +36,7 @@ import {
   selectCartList,
 } from '../../../cartSlice';
 import { useLanguage } from '../../../language/useLanguage';
-import { cartUtils } from '../../cartUtils';
+import { cartUtils, getTotalCartQuantity } from '../../cartUtils';
 import SingleProductPanel, { PopupData } from './SingleProductPanel';
 
 interface SingleProductFormProps {
@@ -69,7 +69,7 @@ const SingleProductForm = ({
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
     useTogglePanel();
 
-  const { data: userCartList } = useGetCartsQuery(
+  const { data: apiCartList } = useGetCartsQuery(
     currentUser ? undefined : skipToken,
   );
 
@@ -119,7 +119,13 @@ const SingleProductForm = ({
     if (currentUser) {
       await handleAddCartItem();
     } else {
-      if (countInStock < cartItem.qty) {
+      const totalCount = getTotalCartQuantity(
+        cartList,
+        cartItem.productId,
+        cartItem.qty,
+      );
+
+      if (countInStock < totalCount) {
         handleApiError(language.temporarilyOutOfStock, onAddMessagePopup);
         return;
       }
@@ -130,12 +136,12 @@ const SingleProductForm = ({
   };
 
   async function handleSubmitCartItem() {
-    if (currentUser && !userCartList) {
+    if (currentUser && !apiCartList) {
       return;
     }
 
     const activeCartList =
-      currentUser && userCartList ? userCartList.cartItems : cartList;
+      currentUser && apiCartList ? apiCartList.cartItems : cartList;
 
     const cartResult = cartUtils({ cartList: activeCartList, cartItem });
     const { existingVariant } = cartResult;
@@ -158,7 +164,13 @@ const SingleProductForm = ({
                 }
               : item,
           );
-          if (countInStock < cartItem.qty) {
+          const totalCount = getTotalCartQuantity(
+            cartList,
+            cartItem.productId,
+            cartItem.qty,
+          );
+
+          if (countInStock < totalCount) {
             handleApiError(language.temporarilyOutOfStock, onAddMessagePopup);
             return;
           }
