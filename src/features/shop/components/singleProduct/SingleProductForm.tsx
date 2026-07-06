@@ -1,3 +1,4 @@
+import { skipToken } from '@reduxjs/toolkit/query';
 import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { UserResponse } from '../../../../app/api/apiTypes/adminApiTypes';
@@ -68,7 +69,9 @@ const SingleProductForm = ({
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
     useTogglePanel();
 
-  const { data: userCartList } = useGetCartsQuery();
+  const { data: userCartList } = useGetCartsQuery(
+    currentUser ? undefined : skipToken,
+  );
 
   const [addCartItemApi, { isLoading: isAddCartItemLoading }] =
     useAddToCartMutation();

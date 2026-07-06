@@ -1,3 +1,4 @@
+import { skipToken } from '@reduxjs/toolkit/query';
 import { useEffect } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
@@ -42,9 +43,9 @@ const Layout = () => {
   const [logout, { isLoading }] = useLogoutMutation();
   const { isMobileSize } = useMediaQuery();
 
-  const { data: favorites = [], refetch } = useGetFavoritesQuery(undefined, {
-    skip: !currentUser, // only fetch if user exists
-  });
+  const { data: favorites = [], refetch } = useGetFavoritesQuery(
+    currentUser ? undefined : skipToken,
+  );
 
   useEffect(() => {
     if (currentUser && favorites.length === 0) {
