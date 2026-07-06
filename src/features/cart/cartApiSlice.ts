@@ -20,8 +20,8 @@ export const cartApiSlice = apiSlice.injectEndpoints({
       invalidatesTags: [TagTypesEnum.Carts],
     }),
     replaceCart: builder.mutation<CartListResponse, UpdateCartRequest>({
-      query: ({ id, cartItem }) => ({
-        url: `${cartUrl}/${id}`,
+      query: ({ cartItemId, cartItem }) => ({
+        url: `${cartUrl}/${cartItemId}`,
         method: 'PATCH',
         body: cartItem,
       }),

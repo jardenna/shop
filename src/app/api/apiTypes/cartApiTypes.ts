@@ -27,5 +27,5 @@ export interface UpdatedCart {
 
 export interface UpdateCartRequest {
   cartItem: UpdatedCart;
-  id: string;
+  cartItemId: string;
 }
