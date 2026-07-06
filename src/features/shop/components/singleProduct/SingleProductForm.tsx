@@ -96,6 +96,7 @@ const SingleProductForm = ({
     } else {
       dispatch(addCartItem(cartItem));
     }
+    onHidePanel();
   };
 
   function handleSubmitCartItem() {
@@ -143,10 +144,6 @@ const SingleProductForm = ({
   }
 
   // SingleProductPanel handlers
-  const handleKeepBoth = () => {
-    addToCart();
-    onHidePanel();
-  };
 
   const handleReplaceItem = () => {
     if (currentUser) {
@@ -191,7 +188,7 @@ const SingleProductForm = ({
             selectedLanguage={selectedLanguage}
             onHidePanel={onHidePanel}
             onReplaceItem={handleReplaceItem}
-            onKeepBoth={handleKeepBoth}
+            onKeepBoth={addToCart}
           />
         </Panel>
       )}
