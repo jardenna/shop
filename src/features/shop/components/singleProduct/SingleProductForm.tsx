@@ -65,6 +65,10 @@ const SingleProductForm = ({
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
     useTogglePanel();
 
+  const { data: userCartList } = useGetCartsQuery();
+  const [addCartItemApi] = useAddToCartMutation();
+  const [replaceCartItemApi] = useReplaceCartMutation();
+
   const initialState: InitialShopValues = {
     color: colorList[0].value,
     size: sizes.length === 1 ? oneSize : '',
@@ -85,10 +89,6 @@ const SingleProductForm = ({
     color: values.color,
     image: selectedProduct.images[0],
   };
-
-  const { data: userCartList } = useGetCartsQuery();
-  const [addCartItemApi] = useAddToCartMutation();
-  const [replaceCartItemApi] = useReplaceCartMutation();
 
   const addToCart = () => {
     if (currentUser) {
