@@ -136,14 +136,11 @@ const createCart = asyncHandler(async (req, res) => {
 // @access  Private
 const updateCart = asyncHandler(async (req, res) => {
   const { id } = req.params;
-  const { productId, color, size } = req.body;
+  const { color, size } = req.body;
 
   const existingCart = await Cart.findOne({
     user: req.user._id,
   });
-
-  const productVariants =
-    await Product.findById(productId).select('sizes colors');
 
   if (!existingCart) {
     return res.status(404).json({
@@ -162,6 +159,10 @@ const updateCart = asyncHandler(async (req, res) => {
       message: t('productsNoLongerAvailable', req.lang),
     });
   }
+  const productVariants = await Product.findById(
+    cartItemToUpdate.productId,
+  ).select('sizes colors');
+  console.log(productVariants);
 
   if (productVariants.colors.includes(color)) {
     cartItemToUpdate.color = color;
