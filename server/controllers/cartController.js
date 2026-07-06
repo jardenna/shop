@@ -145,7 +145,7 @@ const updateCart = asyncHandler(async (req, res) => {
   if (!existingCart) {
     return res.status(404).json({
       success: false,
-      message: t('productsNoLongerAvailable', req.lang),
+      message: t('cartNotFound', req.lang),
     });
   }
 
@@ -156,31 +156,31 @@ const updateCart = asyncHandler(async (req, res) => {
   if (!cartItemToUpdate) {
     return res.status(404).json({
       success: false,
-      message: t('productsNoLongerAvailable', req.lang),
+      message: t('cartItemNotFound', req.lang),
     });
   }
-  const productVariants = await Product.findById(
-    cartItemToUpdate.productId,
-  ).select('sizes colors');
+  const product = await Product.findById(cartItemToUpdate.productId).select(
+    'sizes colors',
+  );
 
-  if (!productVariants) {
+  if (!product) {
     return res.status(404).json({
       success: false,
-      message: 'no variant',
+      message: t('productNotFound', req.lang),
     });
   }
 
-  if (!productVariants.colors.includes(color)) {
+  if (!product.colors.includes(color)) {
     return res.status(400).json({
       success: false,
-      message: 'no color',
+      message: t('invalidColor', req.lang),
     });
   }
 
-  if (!productVariants.sizes.includes(size)) {
+  if (!product.sizes.includes(size)) {
     return res.status(400).json({
       success: false,
-      message: 'no size',
+      message: t('invalidSize', req.lang),
     });
   }
 
