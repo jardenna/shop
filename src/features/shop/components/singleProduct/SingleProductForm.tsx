@@ -195,12 +195,12 @@ const SingleProductForm = ({
 
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
-      {popupData && (
-        <Panel
-          isPanelShown={isPanelShown}
-          panelRef={panelRef}
-          onHidePanel={onHidePanel}
-        >
+      <Panel
+        isPanelShown={isPanelShown}
+        panelRef={panelRef}
+        onHidePanel={onHidePanel}
+      >
+        {popupData && (
           <SingleProductPanel
             popupData={popupData}
             language={language}
@@ -211,8 +211,9 @@ const SingleProductForm = ({
             isAddCartItemLoading={isAddCartItemLoading}
             isReplaceCartItemLoading={isReplaceCartItemLoading}
           />
-        </Panel>
-      )}
+        )}
+      </Panel>
+
       <Form
         onSubmit={onSubmit}
         submitBtnLabel={language.addToBag}
