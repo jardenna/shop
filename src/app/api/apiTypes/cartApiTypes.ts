@@ -1,10 +1,10 @@
-import type { DefaultResponseType } from './sharedApiTypes';
+import type { DefaultResponseType, Size } from './sharedApiTypes';
 
 export interface CartItem {
   color: string;
   productId: string;
   qty: number;
-  size: string;
+  size: Size | '';
   id?: string;
   image?: string;
 }
@@ -21,7 +21,7 @@ export interface CartListResponse extends DefaultResponseType {
 
 export interface UpdatedCart {
   color: string;
-  size: string;
+  size: Size | '';
   qty?: number;
 }
 

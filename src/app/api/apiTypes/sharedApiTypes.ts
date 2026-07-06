@@ -51,13 +51,14 @@ export type WomenShoesSizes =
   | '42'
   | 'Onesize';
 
+export type ClothingSizes = 'S' | 'M' | 'L' | 'XL';
+
 export type Size =
   | KidsShoesSizes
   | MenShoesSizes
   | WomenShoesSizes
   | ClothingSizes;
 
-export type ClothingSizes = 'S' | 'M' | 'L' | 'XL';
 export const mainCategoryValues = ['Men', 'Women', 'Kids'] as const;
 export type MainCategoryNames = (typeof mainCategoryValues)[number];
 export const subCategoryValues = ['Shoes', 'Accessories', 'Clothing'] as const;

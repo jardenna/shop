@@ -50,7 +50,7 @@ interface SingleProductFormProps {
 export type InitialShopValues = {
   color: string;
   qty: number;
-  size: string;
+  size: Size | '';
 };
 
 const SingleProductForm = ({
