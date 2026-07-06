@@ -35,6 +35,8 @@ import {
 import { useLanguage } from '../../../language/useLanguage';
 import { cartUtils } from '../../cartUtils';
 import SingleProductPanel, { PopupData } from './SingleProductPanel';
+import { useMessagePopup } from '../../../../components/messagePopup/useMessagePopup';
+import { handleApiError } from '../../../../utils/handleApiError';
 
 interface SingleProductFormProps {
   colorList: ColorOption[];
@@ -62,6 +64,7 @@ const SingleProductForm = ({
   const { sizes, categoryName, colors, id } = selectedProduct;
   const [popupData, setPopupData] = useState<PopupData | null>(null);
   const cartList = useAppSelector(selectCartList);
+  const { onAddMessagePopup } = useMessagePopup();
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
     useTogglePanel();
 
@@ -90,9 +93,17 @@ const SingleProductForm = ({
     image: selectedProduct.images[0],
   };
 
+  const handleAddCartItem = async () => {
+    try {
+      await addCartItemApi(cartItem).unwrap();
+    } catch (error) {
+      handleApiError(error, onAddMessagePopup);
+    }
+  };
+
   const addToCart = () => {
     if (currentUser) {
-      addCartItemApi(cartItem);
+      handleAddCartItem();
     } else {
       dispatch(addCartItem(cartItem));
     }
@@ -118,7 +129,7 @@ const SingleProductForm = ({
 
       case 'addToQtyAction':
         if (currentUser) {
-          addCartItemApi(cartItem);
+          handleAddCartItem();
         } else {
           const updatedCartList = cartList.map((item) =>
             item === existingVariant
