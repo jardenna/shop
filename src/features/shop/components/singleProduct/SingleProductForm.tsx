@@ -61,7 +61,7 @@ const SingleProductForm = ({
 }: SingleProductFormProps) => {
   const dispatch = useAppDispatch();
   const { language, selectedLanguage } = useLanguage();
-  const { sizes, categoryName, colors, id } = selectedProduct;
+  const { sizes, categoryName, colors, id, countInStock } = selectedProduct;
   const [popupData, setPopupData] = useState<PopupData | null>(null);
   const cartList = useAppSelector(selectCartList);
   const { onAddMessagePopup } = useMessagePopup();
@@ -109,6 +109,11 @@ const SingleProductForm = ({
     if (currentUser) {
       await handleAddCartItem();
     } else {
+      if (countInStock < cartItem.qty) {
+        handleApiError(language.temporarilyOutOfStock, onAddMessagePopup);
+        return;
+      }
+
       dispatch(addCartItem(cartItem));
     }
     onHidePanel();
@@ -143,6 +148,11 @@ const SingleProductForm = ({
                 }
               : item,
           );
+          if (countInStock < cartItem.qty) {
+            handleApiError(language.temporarilyOutOfStock, onAddMessagePopup);
+            return;
+          }
+
           dispatch(replaceCartItem(updatedCartList));
         }
 
@@ -257,6 +267,7 @@ const SingleProductForm = ({
             onNumberStepChange={onNumberStepChange}
             value={values.qty}
             min={1}
+            max={countInStock}
             labelText={language.quantity}
             id="qty"
             name="qty"
