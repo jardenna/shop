@@ -90,7 +90,7 @@ const SingleProductForm = ({
   const [addCartItemApi] = useAddToCartMutation();
   const [replaceCartItemApi] = useReplaceCartMutation();
 
-  const handleAddToCart = () => {
+  const addToCart = () => {
     if (currentUser) {
       addCartItemApi(cartItem);
     } else {
@@ -109,18 +109,9 @@ const SingleProductForm = ({
     const cartResult = cartUtils({ cartList: activeCartList, cartItem });
     const { existingVariant } = cartResult;
 
-    const updatedCartList = cartList.map((item) =>
-      item === existingVariant
-        ? {
-            ...item,
-            qty: item.qty + values.qty,
-          }
-        : item,
-    );
-
     switch (cartResult.action) {
       case 'addToCartListAction':
-        handleAddToCart();
+        addToCart();
 
         break;
 
@@ -128,6 +119,14 @@ const SingleProductForm = ({
         if (currentUser) {
           addCartItemApi(cartItem);
         } else {
+          const updatedCartList = cartList.map((item) =>
+            item === existingVariant
+              ? {
+                  ...item,
+                  qty: item.qty + values.qty,
+                }
+              : item,
+          );
           dispatch(replaceCartItem(updatedCartList));
         }
 
@@ -145,13 +144,16 @@ const SingleProductForm = ({
 
   // SingleProductPanel handlers
   const handleKeepBoth = () => {
-    handleAddToCart();
+    addToCart();
     onHidePanel();
   };
 
   const handleReplaceItem = () => {
-    if (currentUser && popupData) {
-      const cartItemId = popupData.existingVariant.id ?? '';
+    if (currentUser) {
+      if (!popupData?.existingVariant.id) {
+        return;
+      }
+      const cartItemId = popupData.existingVariant.id;
       replaceCartItemApi({ cartItemId, cartItem: values });
     } else {
       const updatedCartList = cartList.map((item) =>
