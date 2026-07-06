@@ -100,9 +100,16 @@ const SingleProductForm = ({
     image: selectedProduct.images[0],
   };
 
+  const cartItemApi = {
+    qty: values.qty,
+    productId: id,
+    size: values.size,
+    color: values.color,
+  };
+
   const handleAddCartItem = async () => {
     try {
-      await addCartItemApi(cartItem).unwrap();
+      await addCartItemApi(cartItemApi).unwrap();
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
     }
@@ -180,7 +187,10 @@ const SingleProductForm = ({
       const cartItemId = popupData.existingVariant.id;
 
       try {
-        await replaceCartItemApi({ cartItemId, cartItem: values }).unwrap();
+        await replaceCartItemApi({
+          cartItemId,
+          cartItem: cartItemApi,
+        }).unwrap();
       } catch (error) {
         handleApiError(error, onAddMessagePopup);
       }
