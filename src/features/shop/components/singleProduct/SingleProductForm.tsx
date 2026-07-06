@@ -179,12 +179,12 @@ const SingleProductForm = ({
 
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
-      <Panel
-        isPanelShown={isPanelShown}
-        panelRef={panelRef}
-        onHidePanel={onHidePanel}
-      >
-        {popupData && (
+      {popupData && (
+        <Panel
+          isPanelShown={isPanelShown}
+          panelRef={panelRef}
+          onHidePanel={onHidePanel}
+        >
           <SingleProductPanel
             popupData={popupData}
             language={language}
@@ -193,8 +193,8 @@ const SingleProductForm = ({
             onReplaceItem={handleReplaceItem}
             onKeepBoth={handleKeepBoth}
           />
-        )}
-      </Panel>
+        </Panel>
+      )}
       <Form onSubmit={onSubmit} submitBtnLabel={language.addToBag}>
         <FieldSet legendText={language.productVariants}>
           <ControlGroupList
