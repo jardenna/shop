@@ -11,6 +11,7 @@ import FieldSet from '../../../../components/fieldset/FieldSet';
 import Form from '../../../../components/form/Form';
 import ControlGroupList from '../../../../components/formElements/controlGroup/ControlGroupList';
 import NumberStep from '../../../../components/formElements/numberStep/NumberStep';
+import { useMessagePopup } from '../../../../components/messagePopup/useMessagePopup';
 import Panel from '../../../../components/togglePanel/Panel';
 import { useTogglePanel } from '../../../../components/togglePanel/useTogglePanel';
 import { useFormValidation } from '../../../../hooks/useFormValidation';
@@ -18,6 +19,7 @@ import {
   ColorOption,
   sortColorsByTranslation,
 } from '../../../../utils/colorUtils';
+import { handleApiError } from '../../../../utils/handleApiError';
 import { resolveIconName } from '../../../../utils/iconHelpers';
 import { oneSize } from '../../../../utils/sizeUtils';
 import { translateKey } from '../../../../utils/utils';
@@ -35,8 +37,6 @@ import {
 import { useLanguage } from '../../../language/useLanguage';
 import { cartUtils } from '../../cartUtils';
 import SingleProductPanel, { PopupData } from './SingleProductPanel';
-import { useMessagePopup } from '../../../../components/messagePopup/useMessagePopup';
-import { handleApiError } from '../../../../utils/handleApiError';
 
 interface SingleProductFormProps {
   colorList: ColorOption[];
@@ -69,8 +69,12 @@ const SingleProductForm = ({
     useTogglePanel();
 
   const { data: userCartList } = useGetCartsQuery();
-  const [addCartItemApi] = useAddToCartMutation();
-  const [replaceCartItemApi] = useReplaceCartMutation();
+
+  const [addCartItemApi, { isLoading: isAddCartItemLoading }] =
+    useAddToCartMutation();
+
+  const [replaceCartItemApi, { isLoading: isReplaceCartItemLoading }] =
+    useReplaceCartMutation();
 
   const initialState: InitialShopValues = {
     color: colorList[0].value,
@@ -101,16 +105,16 @@ const SingleProductForm = ({
     }
   };
 
-  const addToCart = () => {
+  const addToCart = async () => {
     if (currentUser) {
-      handleAddCartItem();
+      await handleAddCartItem();
     } else {
       dispatch(addCartItem(cartItem));
     }
     onHidePanel();
   };
 
-  function handleSubmitCartItem() {
+  async function handleSubmitCartItem() {
     if (currentUser && !userCartList) {
       return;
     }
@@ -123,13 +127,13 @@ const SingleProductForm = ({
 
     switch (cartResult.action) {
       case 'addToCartListAction':
-        addToCart();
+        await addToCart();
 
         break;
 
       case 'addToQtyAction':
         if (currentUser) {
-          handleAddCartItem();
+          await handleAddCartItem();
         } else {
           const updatedCartList = cartList.map((item) =>
             item === existingVariant
@@ -155,14 +159,18 @@ const SingleProductForm = ({
   }
 
   // SingleProductPanel handlers
-
-  const handleReplaceItem = () => {
+  const handleReplaceItem = async () => {
     if (currentUser) {
       if (!popupData?.existingVariant.id) {
         return;
       }
       const cartItemId = popupData.existingVariant.id;
-      replaceCartItemApi({ cartItemId, cartItem: values });
+
+      try {
+        await replaceCartItemApi({ cartItemId, cartItem: values }).unwrap();
+      } catch (error) {
+        handleApiError(error, onAddMessagePopup);
+      }
     } else {
       const updatedCartList = cartList.map((item) =>
         item === popupData?.existingVariant ? cartItem : item,
@@ -200,10 +208,16 @@ const SingleProductForm = ({
             onHidePanel={onHidePanel}
             onReplaceItem={handleReplaceItem}
             onKeepBoth={addToCart}
+            isAddCartItemLoading={isAddCartItemLoading}
+            isReplaceCartItemLoading={isReplaceCartItemLoading}
           />
         </Panel>
       )}
-      <Form onSubmit={onSubmit} submitBtnLabel={language.addToBag}>
+      <Form
+        onSubmit={onSubmit}
+        submitBtnLabel={language.addToBag}
+        isLoading={isAddCartItemLoading}
+      >
         <FieldSet legendText={language.productVariants}>
           <ControlGroupList
             initialChecked={values.color}
