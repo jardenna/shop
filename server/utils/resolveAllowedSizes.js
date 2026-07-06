@@ -5,7 +5,7 @@ import {
   SHOE_SIZES,
 } from '../config/constants.js';
 
-// Returns the allowed sizes based on the main and sub category
+// Returns the allowed sizes based on the main and sub category.
 const resolveAllowedSizes = ({ subKey, mainKey }) => {
   // Special case for kids shoes
   if (mainKey === 'Kids' && subKey === 'shoes') {
