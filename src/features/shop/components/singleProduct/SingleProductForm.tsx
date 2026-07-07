@@ -88,7 +88,6 @@ const SingleProductForm = ({
     qty: values.qty,
     size: values.size,
     color: values.color,
-    image: selectedProduct.images[0],
   };
 
   const cartItemApi = {
@@ -228,6 +227,7 @@ const SingleProductForm = ({
             popupData={popupData}
             language={language}
             selectedLanguage={selectedLanguage}
+            src={selectedProduct.images[0]}
             onHidePanel={onHidePanel}
             onReplaceItem={handleReplaceItem}
             onKeepBoth={addToCart}

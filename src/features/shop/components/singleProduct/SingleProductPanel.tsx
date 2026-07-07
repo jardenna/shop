@@ -20,6 +20,7 @@ interface SingleProductPanelProps {
   language: Record<string, string>;
   popupData: PopupData;
   selectedLanguage: SelectedLanguage;
+  src: string;
   onHidePanel: () => void;
   onKeepBoth: () => void;
   onReplaceItem: () => void;
@@ -34,9 +35,9 @@ const SingleProductPanel = ({
   onReplaceItem,
   isAddCartItemLoading,
   isReplaceCartItemLoading,
+  src,
 }: SingleProductPanelProps) => {
-  const { incomingValue, existingValue, changedAttribute, existingVariant } =
-    popupData;
+  const { incomingValue, existingValue, changedAttribute } = popupData;
 
   const newValue = translateKey(incomingValue, language);
   const value = translateKey(existingValue, language);
@@ -54,7 +55,7 @@ const SingleProductPanel = ({
         </h2>
         <p>{language.singleProductPanelText}</p>
         <div className="panel-img">
-          {existingVariant.image && <Img alt="" src={existingVariant.image} />}
+          <Img alt="" src={src} />
         </div>
       </div>
       <div className="panel-action-btns">

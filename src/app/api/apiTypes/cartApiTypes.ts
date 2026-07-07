@@ -1,6 +1,6 @@
 import type { DefaultResponseType, Size } from './sharedApiTypes';
 
-export interface CartItemRequest {
+export interface CartItem {
   color: string;
   productId: string;
   qty: number;
@@ -8,12 +8,7 @@ export interface CartItemRequest {
   id?: string;
 }
 
-export interface CartItem extends CartItemRequest {
-  image: string;
-  productId: string;
-}
-
-export type AddToCartRequest = CartItemRequest | CartItemRequest[];
+export type AddToCartRequest = CartItem | CartItem[];
 
 export interface CartListRequest {
   cartItems: AddToCartRequest;
@@ -24,6 +19,6 @@ export interface CartListResponse extends DefaultResponseType {
 }
 
 export interface UpdateCartRequest {
-  cartItem: CartItemRequest;
+  cartItem: CartItem;
   cartItemId: string;
 }
