@@ -10,10 +10,9 @@ const ShoppingCartPage = () => {
   const { language } = useLanguage();
   const productIds = ['6a08357409deac1184d4f84a', '6a08357309deac1184d4f832'];
   const { data: guestCard } = useGetGuestCartQuery(productIds);
-  console.log(guestCard);
 
   const { apiCartList } = useActiveCart();
-
+  console.log(guestCard, apiCartList);
   return (
     <MainPageContainer heading="shopCart">
       <div>
