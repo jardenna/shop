@@ -2,9 +2,10 @@ import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import {
   AddToCartRequest,
   CartListResponse,
+  CartProduct,
   UpdateCartRequest,
 } from '../../app/api/apiTypes/cartApiTypes';
-import { cartUrl } from '../../app/endpoints';
+import { cartUrl, guestCartUrl } from '../../app/endpoints';
 
 export const cartApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -30,6 +31,14 @@ export const cartApiSlice = apiSlice.injectEndpoints({
       query: () => cartUrl,
       providesTags: [TagTypesEnum.Carts],
     }),
+    getGuestCart: builder.query<CartProduct[], string[]>({
+      query: (body) => ({
+        url: guestCartUrl,
+        method: 'POST',
+        body,
+      }),
+      providesTags: [TagTypesEnum.Carts],
+    }),
   }),
 });
 
@@ -37,4 +46,5 @@ export const {
   useAddToCartMutation,
   useGetCartsQuery,
   useReplaceCartMutation,
+  useGetGuestCartQuery,
 } = cartApiSlice;

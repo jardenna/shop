@@ -17,12 +17,14 @@ const subCategoryMenuUrl = '/subcategories/menu/?parentCategoryName=';
 const productUrl = '/products';
 const uploadUrl = '/upload';
 const cartUrl = '/cart';
+const guestCartUrl = '/cart/guest';
 
 export {
   authEndpoints,
   cartUrl,
   categoryUrl,
   favoritesUrl,
+  guestCartUrl,
   productUrl,
   profileUrl,
   subCategoryMenuUrl,
