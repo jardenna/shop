@@ -15,6 +15,8 @@ export interface PopupData {
 }
 
 interface SingleProductPanelProps {
+  isAddCartItemLoading: boolean;
+  isReplaceCartItemLoading: boolean;
   language: Record<string, string>;
   popupData: PopupData;
   selectedLanguage: SelectedLanguage;
@@ -30,6 +32,8 @@ const SingleProductPanel = ({
   onHidePanel,
   onKeepBoth,
   onReplaceItem,
+  isAddCartItemLoading,
+  isReplaceCartItemLoading,
 }: SingleProductPanelProps) => {
   const { incomingValue, existingValue, changedAttribute, existingVariant } =
     popupData;
@@ -54,14 +58,21 @@ const SingleProductPanel = ({
         </div>
       </div>
       <div className="panel-action-btns">
-        <Button onClick={onReplaceItem}>
+        <Button
+          onClick={onReplaceItem}
+          showBtnLoader={isReplaceCartItemLoading}
+        >
           {language.replace} {changedValue} {value} {language.with}{' '}
           {changedValue} {newValue}
         </Button>
         <Button variant={BtnVariant.Secondary} onClick={onHidePanel}>
           {language.keep} {changedValue} {value}
         </Button>
-        <Button variant={BtnVariant.Secondary} onClick={onKeepBoth}>
+        <Button
+          variant={BtnVariant.Secondary}
+          onClick={onKeepBoth}
+          showBtnLoader={isAddCartItemLoading}
+        >
           {language.keepBoth} {changedValue}
           {selectedLanguage === 'da' ? 'r' : undefined}
         </Button>

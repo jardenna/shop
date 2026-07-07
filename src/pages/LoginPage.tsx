@@ -4,6 +4,8 @@ import { useMessagePopup } from '../components/messagePopup/useMessagePopup';
 import { useLoginMutation } from '../features/auth/authApiSlice';
 import AuthForm from '../features/auth/components/AuthForm';
 import { useAuth } from '../features/auth/hooks/useAuth';
+import { useAddToCartMutation } from '../features/cart/cartApiSlice';
+import { cartStorageUtil } from '../features/cart/cartStorageUtil';
 import { useLanguage } from '../features/language/useLanguage';
 import { useFormValidation } from '../hooks/useFormValidation';
 import { ShopPath } from '../layout/nav/enums';
@@ -20,9 +22,12 @@ const LoginPage = () => {
   const { onAddMessagePopup } = useMessagePopup();
   const { currentUser, isLoading: isUserLoading, logout } = useAuth();
   const initialState = { email: '', password: '' };
+  // const initialState = { email: 'helle@mail.com', password: 'Helle123!' };
   const from = location.state?.from?.pathname || ShopPath.Root;
   const [searchParams, setSearchParams] = useSearchParams();
   const paramKey = 'mode';
+  const [syncCart] = useAddToCartMutation();
+  const cartList = cartStorageUtil.load();
 
   const handleSwitchAccount = () => {
     searchParams.set(paramKey, 'switchUser');
@@ -41,6 +46,12 @@ const LoginPage = () => {
     try {
       const result = await loginUser(values).unwrap();
       if (result.success) {
+        if (cartList.length > 0) {
+          await syncCart(cartList).unwrap();
+
+          cartStorageUtil.clear();
+        }
+
         navigate(from, { replace: true });
       }
     } catch (error) {
@@ -50,7 +61,7 @@ const LoginPage = () => {
 
   if (isUserLoading) {
     return null;
-  } // or a skeleton/loading spinner
+  }
 
   let heading = language.login;
 
@@ -61,6 +72,7 @@ const LoginPage = () => {
       heading = language.alreadyLoggedIn;
     }
   }
+
   return (
     <MainPageContainer heading={heading} className="page-small">
       {currentUser && !mode ? (

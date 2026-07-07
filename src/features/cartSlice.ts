@@ -20,7 +20,6 @@ const cartSlice = createSlice({
 
       cartStorageUtil.save(state.cartList);
     },
-
     replaceCartItem: (state, action: PayloadAction<CartItem[]>) => {
       state.cartList = action.payload;
 

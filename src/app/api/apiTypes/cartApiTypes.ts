@@ -1,15 +1,19 @@
-import type { DefaultResponseType } from './sharedApiTypes';
+import type { DefaultResponseType, Size } from './sharedApiTypes';
 
-export interface CartItem {
+export interface CartItemRequest {
   color: string;
   productId: string;
   qty: number;
-  size: string;
+  size: Size | '';
   id?: string;
-  image?: string;
 }
 
-export type AddToCartRequest = CartItem | CartItem[];
+export interface CartItem extends CartItemRequest {
+  image: string;
+  productId: string;
+}
+
+export type AddToCartRequest = CartItemRequest | CartItemRequest[];
 
 export interface CartListRequest {
   cartItems: AddToCartRequest;
@@ -19,13 +23,7 @@ export interface CartListResponse extends DefaultResponseType {
   cartItems: CartItem[];
 }
 
-export interface UpdatedCart {
-  color: string;
-  size: string;
-  qty?: number;
-}
-
 export interface UpdateCartRequest {
-  cartItem: UpdatedCart;
-  id: string;
+  cartItem: CartItemRequest;
+  cartItemId: string;
 }

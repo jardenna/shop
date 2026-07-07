@@ -1,7 +1,6 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import {
   AddToCartRequest,
-  CartListRequest,
   CartListResponse,
   UpdateCartRequest,
 } from '../../app/api/apiTypes/cartApiTypes';
@@ -20,17 +19,9 @@ export const cartApiSlice = apiSlice.injectEndpoints({
       invalidatesTags: [TagTypesEnum.Carts],
     }),
     replaceCart: builder.mutation<CartListResponse, UpdateCartRequest>({
-      query: ({ id, cartItem }) => ({
-        url: `${cartUrl}/${id}`,
+      query: ({ cartItemId, cartItem }) => ({
+        url: `${cartUrl}/${cartItemId}`,
         method: 'PATCH',
-        body: cartItem,
-      }),
-      invalidatesTags: [TagTypesEnum.Carts],
-    }),
-    mergeCartList: builder.mutation<CartListResponse, CartListRequest>({
-      query: (cartItem) => ({
-        url: `${cartUrl}/merge`,
-        method: 'POST',
         body: cartItem,
       }),
       invalidatesTags: [TagTypesEnum.Carts],
@@ -44,7 +35,6 @@ export const cartApiSlice = apiSlice.injectEndpoints({
 
 export const {
   useAddToCartMutation,
-  useMergeCartListMutation,
   useGetCartsQuery,
   useReplaceCartMutation,
 } = cartApiSlice;

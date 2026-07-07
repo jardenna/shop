@@ -58,9 +58,18 @@ const createCart = asyncHandler(async (req, res) => {
   }
 
   for (const cartItem of cartItems) {
-    const databaseProduct = findDatabaseProduct({ databaseProducts, cartItem });
+    const databaseProduct = findDatabaseProduct({
+      databaseProducts,
+      cartItem,
+    });
 
-    if (databaseProduct.countInStock < cartItem.qty) {
+    const totalQuantity =
+      (existingCart?.cartItems
+        .filter((item) => item.productId.toString() === cartItem.productId)
+        .reduce((totalQty, item) => totalQty + item.qty, 0) ?? 0) +
+      cartItem.qty;
+
+    if (databaseProduct.countInStock < totalQuantity) {
       return res.status(400).json({
         success: false,
         message: t('temporarilyOutOfStock', req.lang),
@@ -68,7 +77,10 @@ const createCart = asyncHandler(async (req, res) => {
       });
     }
 
-    const isValidVariant = validateVariant({ databaseProduct, cartItem });
+    const isValidVariant = validateVariant({
+      databaseProduct,
+      cartItem,
+    });
 
     if (!isValidVariant) {
       return res.status(400).json({
@@ -80,7 +92,10 @@ const createCart = asyncHandler(async (req, res) => {
   }
 
   const updatedCartItems = cartItems.map((cartItem) => {
-    const databaseProduct = findDatabaseProduct({ databaseProducts, cartItem });
+    const databaseProduct = findDatabaseProduct({
+      databaseProducts,
+      cartItem,
+    });
 
     return {
       ...cartItem,
@@ -159,8 +174,9 @@ const updateCart = asyncHandler(async (req, res) => {
       message: t('cartItemNotFound', req.lang),
     });
   }
+
   const product = await Product.findById(cartItemToUpdate.productId).select(
-    'sizes colors',
+    'sizes colors countInStock',
   );
 
   if (!product) {
@@ -184,60 +200,27 @@ const updateCart = asyncHandler(async (req, res) => {
     });
   }
 
+  const existingVariant = existingCart.cartItems.find(
+    (cartItem) =>
+      cartItem._id.toString() !== id &&
+      cartItem.productId.toString() === cartItemToUpdate.productId.toString() &&
+      cartItem.color === color &&
+      cartItem.size === size,
+  );
+
+  if (existingVariant) {
+    const totalQuantity = existingVariant.qty + cartItemToUpdate.qty;
+
+    if (totalQuantity > product.countInStock) {
+      return res.status(400).json({
+        success: false,
+        message: t('temporarilyOutOfStock', req.lang),
+      });
+    }
+  }
+
   cartItemToUpdate.color = color;
   cartItemToUpdate.size = size;
-
-  const updatedCart = await existingCart.save();
-  return res.status(200).json(updatedCart);
-});
-
-// @desc    Merge cart
-// @route   /api/cart/merge
-// @method  Post
-// @access  Private
-const mergeCart = asyncHandler(async (req, res) => {
-  const { cartList } = req.body;
-
-  const existingCart = await Cart.findOne({
-    user: req.user._id,
-  });
-
-  if (!existingCart) {
-    const cart = new Cart({
-      user: req.user._id,
-      cartItems: cartList,
-    });
-
-    const createdCart = await cart.save();
-
-    return res.status(201).json(createdCart);
-  }
-
-  const uniqueProductIds = [
-    ...new Set(cartList.map((cartItem) => cartItem.productId)),
-  ];
-
-  const databaseProducts = await Product.find({
-    _id: {
-      $in: uniqueProductIds,
-    },
-  });
-
-  const mergeResult = mergeCartItems({
-    existingCarts: existingCart.cartItems,
-    incomingCartItems: cartList,
-    databaseProducts,
-  });
-
-  if (!mergeResult.success) {
-    return res.status(400).json({
-      success: false,
-      message: mergeResult.message,
-      cartItem: mergeResult.cartItem,
-    });
-  }
-
-  existingCart.cartItems = mergeResult.cartItems;
 
   const updatedCart = await existingCart.save();
 
@@ -307,4 +290,4 @@ const getCart = asyncHandler(async (req, res) => {
   });
 });
 
-export { createCart, getCart, mergeCart, updateCart };
+export { createCart, getCart, updateCart };
