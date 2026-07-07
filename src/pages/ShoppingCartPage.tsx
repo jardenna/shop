@@ -1,3 +1,4 @@
+import { useActiveCart } from '../features/cart/useActiveCart';
 import { useLanguage } from '../features/language/useLanguage';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import { ShopPath } from '../layout/nav/enums';
@@ -5,6 +6,9 @@ import MainPageContainer from './pageContainer/MainPageContainer';
 
 const ShoppingCartPage = () => {
   const { language } = useLanguage();
+
+  const { activeCartList } = useActiveCart();
+  console.log(activeCartList);
 
   return (
     <MainPageContainer heading="shopCart">

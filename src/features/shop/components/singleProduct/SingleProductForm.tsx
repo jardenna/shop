@@ -1,4 +1,3 @@
-import { skipToken } from '@reduxjs/toolkit/query';
 import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { UserResponse } from '../../../../app/api/apiTypes/adminApiTypes';
@@ -6,7 +5,7 @@ import {
   type BaseProduct,
   type Size,
 } from '../../../../app/api/apiTypes/sharedApiTypes';
-import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
+import { useAppDispatch } from '../../../../app/hooks';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
 import FieldSet from '../../../../components/fieldset/FieldSet';
 import Form from '../../../../components/form/Form';
@@ -27,14 +26,10 @@ import { translateKey } from '../../../../utils/utils';
 import { validateShopProduct } from '../../../../utils/validation/validateShopProduct';
 import {
   useAddToCartMutation,
-  useGetCartsQuery,
   useReplaceCartMutation,
 } from '../../../cart/cartApiSlice';
-import {
-  addCartItem,
-  replaceCartItem,
-  selectCartList,
-} from '../../../cartSlice';
+import { useActiveCart } from '../../../cart/useActiveCart';
+import { addCartItem, replaceCartItem } from '../../../cartSlice';
 import { useLanguage } from '../../../language/useLanguage';
 import { cartUtils, getTotalCartQuantity } from '../../cartUtils';
 import SingleProductPanel, { PopupData } from './SingleProductPanel';
@@ -62,16 +57,12 @@ const SingleProductForm = ({
 }: SingleProductFormProps) => {
   const dispatch = useAppDispatch();
   const { language, selectedLanguage } = useLanguage();
+  const { activeCartList, apiCartList, cartList } = useActiveCart();
   const { sizes, categoryName, colors, id, countInStock } = selectedProduct;
   const [popupData, setPopupData] = useState<PopupData | null>(null);
-  const cartList = useAppSelector(selectCartList);
   const { onAddMessagePopup } = useMessagePopup();
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
     useTogglePanel();
-
-  const { data: apiCartList } = useGetCartsQuery(
-    currentUser ? undefined : skipToken,
-  );
 
   const [addCartItemApi, { isLoading: isAddCartItemLoading }] =
     useAddToCartMutation();
@@ -139,9 +130,6 @@ const SingleProductForm = ({
     if (currentUser && !apiCartList) {
       return;
     }
-
-    const activeCartList =
-      currentUser && apiCartList ? apiCartList.cartItems : cartList;
 
     const cartResult = cartUtils({ cartList: activeCartList, cartItem });
     const { existingVariant } = cartResult;
