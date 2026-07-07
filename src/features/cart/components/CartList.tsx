@@ -10,8 +10,10 @@ const CartList = ({ cartList }: CartListProps) => (
     {cartList.map((cart) => (
       <li key={cart.id}>
         <article>
-          <Img src={cart.image} alt="" />
-          {cart.id}
+          <div>
+            <Img src={cart.image} alt="" />
+          </div>
+          <div> {cart.productId}</div>
         </article>
       </li>
     ))}
