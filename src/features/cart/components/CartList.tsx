@@ -2,15 +2,13 @@ import { CartProduct } from '../../../app/api/apiTypes/cartApiTypes';
 import Img from '../../../components/Img';
 
 interface CartListProps {
-  cartList: CartProduct[];
+  cartList?: CartProduct[];
 }
 
-const CartList = ({ cartList }: CartListProps) => {
-  console.log(cartList);
-
-  return (
-    <ul>
-      {cartList.map((cart) => (
+const CartList = ({ cartList }: CartListProps) => (
+  <ul>
+    {cartList &&
+      cartList.map((cart) => (
         <li key={cart.productId}>
           <article>
             <div>
@@ -20,8 +18,7 @@ const CartList = ({ cartList }: CartListProps) => {
           </article>
         </li>
       ))}
-    </ul>
-  );
-};
+  </ul>
+);
 
 export default CartList;

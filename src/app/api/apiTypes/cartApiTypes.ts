@@ -33,3 +33,8 @@ export interface UpdateCartRequest {
   cartItem: CartItem;
   cartItemId: string;
 }
+
+export interface GuestCardResponse {
+  missingProductIds: string[];
+  products: CartProduct[];
+}

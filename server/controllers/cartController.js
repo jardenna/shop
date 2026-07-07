@@ -321,24 +321,23 @@ const getGuestCartProducts = asyncHandler(async (req, res) => {
     .select('images productName price discount countInStock')
     .lean();
 
-  const products = databaseProducts.map((product) => ({
-    ...formatMongoData(product),
-    image: product.images[0],
-    productName: product.productName,
-    price: product.price,
-    discount: product.discount,
-    countInStock: product.countInStock,
-  }));
-
-  const foundIds = new Set(products.map((product) => product.id));
+  const foundIds = new Set(
+    databaseProducts.map((product) => product._id.toString()),
+  );
 
   const missingProductIds = productIds.filter(
     (productId) => !foundIds.has(productId),
   );
+
+  const products = databaseProducts.map((product) => ({
+    ...formatMongoData(product),
+    image: product.images[0],
+  }));
 
   return res.status(200).json({
     products,
     missingProductIds,
   });
 });
+
 export { createCart, getCart, getGuestCartProducts, updateCart };

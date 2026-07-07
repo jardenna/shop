@@ -1,3 +1,4 @@
+import { useAuth } from '../features/auth/hooks/useAuth';
 import { useGetGuestCartQuery } from '../features/cart/cartApiSlice';
 import CartList from '../features/cart/components/CartList';
 import { useActiveCart } from '../features/cart/useActiveCart';
@@ -7,19 +8,19 @@ import { ShopPath } from '../layout/nav/enums';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const ShoppingCartPage = () => {
+  const { currentUser } = useAuth();
   const { language } = useLanguage();
-  const productIds = ['6a08357409deac1184d4f84a', '6a08357309deac1184d4f832'];
-  const { data: guestCard } = useGetGuestCartQuery(productIds);
+  const { apiCartList, productIds } = useActiveCart();
+  const { data: guestCart } = useGetGuestCartQuery(productIds);
+  const cartItems = currentUser ? apiCartList?.cartItems : guestCart?.products;
 
-  const { apiCartList } = useActiveCart();
-  console.log(guestCard, apiCartList);
   return (
     <MainPageContainer heading="shopCart">
       <div>
-        {apiCartList && apiCartList.cartItems.length > 0 ? (
+        {cartItems && cartItems.length > 0 ? (
           <div className="flex">
             <section>
-              <CartList cartList={apiCartList.cartItems} />
+              <CartList cartList={cartItems} />
             </section>
             <section>Card</section>
           </div>
