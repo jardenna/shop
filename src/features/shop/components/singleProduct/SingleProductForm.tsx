@@ -90,16 +90,9 @@ const SingleProductForm = ({
     color: values.color,
   };
 
-  const cartItemApi = {
-    qty: values.qty,
-    productId: id,
-    size: values.size,
-    color: values.color,
-  };
-
   const handleAddCartItem = async () => {
     try {
-      await addCartItemApi(cartItemApi).unwrap();
+      await addCartItemApi(cartItem).unwrap();
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
     }
@@ -188,7 +181,7 @@ const SingleProductForm = ({
       try {
         await replaceCartItemApi({
           cartItemId,
-          cartItem: cartItemApi,
+          cartItem,
         }).unwrap();
       } catch (error) {
         handleApiError(error, onAddMessagePopup);
