@@ -301,7 +301,7 @@ const getGuestCartProducts = asyncHandler(async (req, res) => {
   if (!Array.isArray(productIds)) {
     return res.status(400).json({
       success: false,
-      message: t('invalidRequest', req.lang),
+      message: t('invalidRequestProductIds', req.lang),
     });
   }
 
