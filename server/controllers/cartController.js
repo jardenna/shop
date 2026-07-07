@@ -290,4 +290,20 @@ const getCart = asyncHandler(async (req, res) => {
   });
 });
 
-export { createCart, getCart, updateCart };
+// @desc    post cart productId
+// @route   /api/cart/guest
+// @method  Get
+// @access  Public
+const getGuestCartProducts = asyncHandler(async (req, res) => {
+  const databaseProducts = await Product.find({
+    _id: {
+      $in: req.body,
+    },
+  })
+    .select('images productName price discount countInStock')
+    .lean();
+
+  res.send(databaseProducts);
+});
+
+export { createCart, getCart, getGuestCartProducts, updateCart };

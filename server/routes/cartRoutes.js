@@ -2,6 +2,7 @@ import express from 'express';
 import {
   createCart,
   getCart,
+  getGuestCartProducts,
   updateCart,
 } from '../controllers/cartController.js';
 import { authenticate } from '../middleware/authMiddleware.js';
@@ -14,6 +15,7 @@ router
   .post(languageMiddleware, authenticate, createCart)
   .get(languageMiddleware, authenticate, getCart);
 
+router.route('/guest').post(languageMiddleware, getGuestCartProducts);
 router.route('/:id').patch(languageMiddleware, authenticate, updateCart);
 
 export default router;
