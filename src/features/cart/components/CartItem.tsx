@@ -1,6 +1,7 @@
 import { CartProduct } from '../../../app/api/apiTypes/cartApiTypes';
 import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
-import './CartItem.scss';
+import Img from '../../../components/Img';
+import './_cart-list.scss';
 
 interface CartItemProps {
   cartList: CartProduct[];
@@ -22,7 +23,7 @@ const CartItem = ({
 }: CartItemProps) =>
   cartList.map((cart) => (
     <div className="cart-item" key={cart.id}>
-      <img src={cart.image} alt={title} className="cart-item-image" />
+      <Img src={cart.image} alt={title} className="cart-item-image" />
 
       <h3 className="cart-item-title">{title}</h3>
 
