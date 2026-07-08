@@ -27,7 +27,7 @@ export const cartApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.Carts],
     }),
-    getCarts: builder.query<CartListResponse, void>({
+    getCart: builder.query<CartListResponse, void>({
       query: () => cartUrl,
       providesTags: [TagTypesEnum.Carts],
     }),
@@ -44,7 +44,7 @@ export const cartApiSlice = apiSlice.injectEndpoints({
 
 export const {
   useAddToCartMutation,
-  useGetCartsQuery,
+  useGetCartQuery,
   useReplaceCartMutation,
   useGetGuestCartQuery,
 } = cartApiSlice;
