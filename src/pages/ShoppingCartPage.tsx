@@ -7,6 +7,7 @@ import { useGetGuestCartQuery } from '../features/cart/cartApiSlice';
 import CartList from '../features/cart/components/CartList';
 import { useActiveCart } from '../features/cart/useActiveCart';
 import MainPageContainer from './pageContainer/MainPageContainer';
+import './ShoppingCartPage.styles.scss';
 
 const ShoppingCartPage = () => {
   const { currentUser, isAuthReady } = useAuth();
@@ -21,7 +22,7 @@ const ShoppingCartPage = () => {
 
   return (
     <MainPageContainer heading="bag">
-      <div className="flex">
+      <div className="cart-page">
         <section>
           {!cartItems ? (
             <SkeletonCard />

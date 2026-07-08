@@ -1,0 +1,13 @@
+@use '../../../scss/globals' as *;
+
+.cart-list {
+  .cart-list-item {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cart-list-img {
+    max-width: rem(300px);
+    height: rem(380px);
+  }
+}

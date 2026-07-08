@@ -3,6 +3,7 @@ import Img from '../../../components/Img';
 import { ShopPath } from '../../../layout/nav/enums';
 import { useLanguage } from '../../language/useLanguage';
 import EmptyState from '../../shop/components/emptyState/EmptyState';
+import './_cart-list.scss';
 
 interface CartListProps {
   cartList: CartProduct[];
@@ -24,14 +25,21 @@ const CartList = ({ cartList }: CartListProps) => {
   }
 
   return (
-    <ul>
+    <ul className="cart-list">
       {cartList.map((cart) => (
         <li key={cart.id}>
-          <article>
+          <article className="cart-list-item">
             <div>
-              <Img src={cart.image} alt="" />
+              <Img src={cart.image} alt="" className="cart-list-img" />
             </div>
-            <div>{cart.id}</div>
+            <div>
+              <div>{cart.id}</div>
+              <div>{cart.id}</div>
+            </div>
+            <div>
+              <div>{cart.id}</div>
+              <div>{cart.id}</div>
+            </div>
           </article>
         </li>
       ))}
