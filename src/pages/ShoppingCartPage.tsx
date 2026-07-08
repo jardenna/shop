@@ -1,4 +1,6 @@
 import { skipToken } from '@reduxjs/toolkit/query';
+import { ErrorBoundary } from 'react-error-boundary';
+import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import SkeletonCard from '../components/skeleton/SkeletonCard';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useGetGuestCartQuery } from '../features/cart/cartApiSlice';
@@ -12,7 +14,7 @@ const ShoppingCartPage = () => {
     currentUser,
     isAuthReady,
   });
-  const { data: guestCart } = useGetGuestCartQuery(
+  const { data: guestCart, refetch } = useGetGuestCartQuery(
     !currentUser ? productIds : skipToken,
   );
   const cartItems = currentUser ? apiCartList?.cartItems : guestCart?.products;
@@ -21,7 +23,16 @@ const ShoppingCartPage = () => {
     <MainPageContainer heading="shopCart">
       <div className="flex">
         <section>
-          {!cartItems ? <SkeletonCard /> : <CartList cartList={cartItems} />}
+          {!cartItems ? (
+            <SkeletonCard />
+          ) : (
+            <ErrorBoundary
+              FallbackComponent={ErrorBoundaryFallback}
+              onReset={() => refetch}
+            >
+              <CartList cartList={cartItems} />
+            </ErrorBoundary>
+          )}
         </section>
         <section>Card</section>
       </div>
