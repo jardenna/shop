@@ -139,7 +139,9 @@ const CollectionPage = () => {
 
   return (
     <>
-      {category && <MetaTags metaTitle={language[category]} />}
+      {category && (
+        <MetaTags metaTitle={`${language.collection} ${language[category]}`} />
+      )}
       <section
         className="container collection-page"
         ref={scrollToRef}
