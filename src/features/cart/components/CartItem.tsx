@@ -11,20 +11,20 @@ export default function CartItem({
 }: any) {
   return (
     <div className="cart-item">
-      <img src={image} alt={title} className="cart-item__image" />
+      <img src={image} alt={title} className="cart-item-image" />
 
-      <h3 className="cart-item__title">{title}</h3>
+      <h3 className="cart-item-title">{title}</h3>
 
       <div className="price-group">
         {originalPrice > price && (
-          <span className="price-group__original">
+          <span className="price-group-original">
             ${originalPrice.toFixed(2)}
           </span>
         )}
-        <span className="price-group__current">${price.toFixed(2)}</span>
+        <span className="price-group-current">${price.toFixed(2)}</span>
       </div>
 
-      <div className="cart-item__meta">
+      <div className="cart-item-meta">
         <span>{color}</span>
         <span>SIZE {size}</span>
       </div>

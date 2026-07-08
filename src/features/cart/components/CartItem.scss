@@ -16,7 +16,7 @@ $radius-md: 8px;
   background: $bg;
   border-radius: $radius-lg;
 
-  &__image {
+  .cart-item-image {
     grid-area: image;
     align-self: start;
     width: 112px;
@@ -25,7 +25,7 @@ $radius-md: 8px;
     border-radius: $radius-md;
   }
 
-  &__title {
+  .cart-item-title {
     grid-area: title;
     align-self: end;
     margin: 0;
@@ -38,7 +38,7 @@ $radius-md: 8px;
     text-overflow: ellipsis;
   }
 
-  &__meta {
+  .cart-item-meta {
     grid-area: meta;
     align-self: start;
     display: flex;
@@ -57,13 +57,13 @@ $radius-md: 8px;
   align-items: baseline;
   gap: 8px;
 
-  &__original {
+  .cart-item-original {
     color: $text-faint;
     text-decoration: line-through;
     font-size: 14px;
   }
 
-  &__current {
+  .cart-item-current {
     font-weight: 600;
     color: $text-primary;
     font-size: 15px;
