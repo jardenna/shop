@@ -5,7 +5,6 @@ import SkeletonCard from '../components/skeleton/SkeletonCard';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useGetGuestCartQuery } from '../features/cart/cartApiSlice';
 import CartItem from '../features/cart/components/CartItem';
-import CartList from '../features/cart/components/CartList';
 import { useActiveCart } from '../features/cart/useActiveCart';
 import MainPageContainer from './pageContainer/MainPageContainer';
 import './ShoppingCartPage.styles.scss';
@@ -32,8 +31,7 @@ const ShoppingCartPage = () => {
               FallbackComponent={ErrorBoundaryFallback}
               onReset={() => refetch}
             >
-              <CartItem />
-              <CartList cartList={cartItems} />
+              <CartItem cartList={cartItems} />
             </ErrorBoundary>
           )}
         </section>

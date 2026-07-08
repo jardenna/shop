@@ -28,17 +28,27 @@ const CartList = ({ cartList }: CartListProps) => {
     <ul className="cart-list">
       {cartList.map((cart) => (
         <li key={cart.id}>
-          <article className="cart-list-item">
-            <div>
-              <Img src={cart.image} alt="" className="cart-list-img" />
+          <article className="cart-item">
+            <div className="cart-item-image">
+              <Img src={cart.image} alt="" className="cart-item-img" />
             </div>
-            <div>
-              <div>{cart.id}</div>
-              <div>{cart.id}</div>
-            </div>
-            <div>
-              <div>{cart.id}</div>
-              <div>{cart.id}</div>
+
+            <div className="cart-item-content">
+              <h2 className="cart-item-title">{cart.id}</h2>
+
+              <div className="cart-item-meta">
+                <span>{cart.id}</span>
+                <span>{cart.id}</span>
+              </div>
+
+              <div className="quantity">{cart.id}</div>
+
+              <div className="actions">{cart.id}</div>
+
+              <div className="price-group">
+                <span>{cart.id}</span>
+                <span>{cart.id}</span>
+              </div>
             </div>
           </article>
         </li>

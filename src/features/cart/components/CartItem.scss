@@ -1,18 +1,39 @@
+@use '../../../scss/globals' as *;
+
 .cart-item {
   display: grid;
-  grid-template: 'image title price' auto 'image meta meta' auto 'image quantity actions' auto / 112px 1fr auto;
+  grid-template:
+    'image title    price' auto
+    'image meta     meta' auto
+    'image quantity actions' auto
+    / rem(180px) 1fr auto;
   gap: 4px 16px;
   align-items: center;
   width: 100%;
-  max-width: 640px;
-  padding: 16px;
+
+  @media (width <= 800px) {
+    grid-template:
+      'image   image' auto
+      'title   price' auto
+      'meta    meta' auto
+      'quantity actions' auto
+      / 1fr auto;
+  }
 
   .cart-item-image {
     grid-area: image;
     align-self: start;
-    width: 112px;
-    height: 128px;
+    width: rem(180px);
+    height: rem(180px);
+    min-height: 0;
+    min-width: 0;
     object-fit: cover;
+
+    @media (width <= 800px) {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+    }
   }
 
   .cart-item-title {
@@ -28,32 +49,32 @@
     flex-direction: column;
     gap: 2px;
   }
-}
 
-.price-group {
-  grid-area: price;
-  place-self: end end;
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
+  .price-group {
+    grid-area: price;
+    place-self: end end;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
 
-  .cart-item-original {
-    text-decoration: line-through;
+    .cart-item-original {
+      text-decoration: line-through;
+    }
   }
-}
 
-.quantity {
-  grid-area: quantity;
-  align-self: end;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
+  .quantity {
+    grid-area: quantity;
+    align-self: end;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
 
-.actions {
-  grid-area: actions;
-  place-self: end end;
-  display: flex;
-  align-items: center;
-  gap: 16px;
+  .actions {
+    grid-area: actions;
+    place-self: end end;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
 }

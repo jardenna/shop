@@ -1,17 +1,28 @@
+import { CartProduct } from '../../../app/api/apiTypes/cartApiTypes';
+import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import './CartItem.scss';
 
-export default function CartItem({
-  image = 'https://placehold.co/200x200/e5e5e5/999?text=Product',
+interface CartItemProps {
+  cartList: CartProduct[];
+  color?: string;
+  originalPrice?: number;
+  price?: number;
+  qty?: number;
+  size?: Size | '';
+  title?: string;
+}
+const CartItem = ({
   title = 'ELITE PERFORMANCE TEE',
   color = 'GREY',
   size = 'M',
   originalPrice = 35.0,
   price = 28.0,
   qty = 1,
-}: any) {
-  return (
-    <div className="cart-item">
-      <img src={image} alt={title} className="cart-item-image" />
+  cartList,
+}: CartItemProps) =>
+  cartList.map((cart) => (
+    <div className="cart-item" key={cart.id}>
+      <img src={cart.image} alt={title} className="cart-item-image" />
 
       <h3 className="cart-item-title">{title}</h3>
 
@@ -29,15 +40,14 @@ export default function CartItem({
         <span>SIZE {size}</span>
       </div>
 
-      {/* Antal-vælger: minus-knap, antal, plus-knap */}
       <div className="quantity">
         <span>−</span>
         <span>{qty}</span>
         <span>+</span>
       </div>
 
-      {/* Handlinger: fjern fra kurv, læg i ønskeliste */}
       <div className="actions">icon trash icon hart</div>
     </div>
-  );
-}
+  ));
+
+export default CartItem;
