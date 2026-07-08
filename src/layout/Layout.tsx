@@ -135,6 +135,7 @@ const Layout = () => {
         onChange={onChange}
         values={values}
         currencyOptions={currencyOptions}
+        currentUser={currentUser}
         onSelectCurrency={(selectedOptions: OptionType) => {
           handleSelectCurrency('currencyOption', selectedOptions);
         }}

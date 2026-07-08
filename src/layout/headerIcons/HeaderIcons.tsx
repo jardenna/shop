@@ -21,6 +21,7 @@ const HeaderIcons = ({
   defaultValue,
   onSelectCurrency,
   localLanguage,
+  currentUser,
 }: BaseHeaderProps) => {
   const { language } = useLanguage();
   const { favorites, onReset } = useFavorites({});
@@ -28,7 +29,9 @@ const HeaderIcons = ({
   const favoriteItemText =
     favorites && favorites.length === 1 ? language.item : language.items;
 
-  const { activeCartList } = useActiveCart();
+  const { activeCartList } = useActiveCart({
+    currentUser,
+  });
   const cartListItemText =
     activeCartList.length === 1 ? language.item : language.items;
 

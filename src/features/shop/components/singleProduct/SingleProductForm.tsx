@@ -57,7 +57,9 @@ const SingleProductForm = ({
 }: SingleProductFormProps) => {
   const dispatch = useAppDispatch();
   const { language, selectedLanguage } = useLanguage();
-  const { activeCartList, apiCartList, cartList } = useActiveCart();
+  const { activeCartList, apiCartList, cartList } = useActiveCart({
+    currentUser,
+  });
   const { sizes, categoryName, colors, id, countInStock } = selectedProduct;
   const [popupData, setPopupData] = useState<PopupData | null>(null);
   const { onAddMessagePopup } = useMessagePopup();

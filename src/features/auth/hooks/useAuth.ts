@@ -21,13 +21,9 @@ export const useAuth = () => {
 
   useEffect(() => {
     if (!isLoading) {
-      if (userProfile) {
-        dispatch(setUser(userProfile));
-      } else {
-        dispatch(setUser(null));
-      }
+      dispatch(setUser(userProfile ?? null));
     }
-  }, [userProfile, isLoading, dispatch]);
+  }, [dispatch, isLoading, userProfile]);
 
   useEffect(() => {
     if (logoutSuccess) {
@@ -35,14 +31,16 @@ export const useAuth = () => {
     }
   }, [logoutSuccess, navigate]);
 
+  const isAuthReady = !isLoading;
   const currentUser = userProfile?.user ?? null;
   const role = currentUser?.role ?? null;
-  const isAdmin = !!currentUser?.isAdmin;
+  const isAdmin = Boolean(currentUser?.isAdmin);
   const isEmployee = role === 'Employee';
   const isStaff = isAdmin || isEmployee;
 
   return {
     currentUser,
+    isAuthReady,
     role,
     isAdmin,
     isEmployee,

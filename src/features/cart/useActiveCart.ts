@@ -1,16 +1,20 @@
 import { skipToken } from '@reduxjs/toolkit/query';
+import { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
 import { useAppSelector } from '../../app/hooks';
-import { useAuth } from '../auth/hooks/useAuth';
 import { selectCartList } from '../cartSlice';
 import { useGetCartsQuery } from './cartApiSlice';
 
-export const useActiveCart = () => {
-  const { currentUser } = useAuth();
-
+export const useActiveCart = ({
+  currentUser,
+}: {
+  currentUser: UserResponse | null;
+}) => {
   const {
     data: apiCartList,
     isLoading: isCartLoading,
     isError: isCartError,
+
+    isSuccess: isCartSuccess,
   } = useGetCartsQuery(currentUser ? undefined : skipToken);
 
   const cartList = useAppSelector(selectCartList);
@@ -26,5 +30,6 @@ export const useActiveCart = () => {
     activeCartList,
     isCartLoading,
     isCartError,
+    isCartSuccess,
   };
 };

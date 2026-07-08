@@ -1,3 +1,4 @@
+import { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
 import { DropdownItem } from '../../components/dropdownBtn/DropdownBtn';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import type { SelectedLanguage } from '../../features/language/languageSlice';
@@ -21,6 +22,7 @@ type MobileProps = {
 
 export type BaseHeaderProps = {
   currencyOptions: OptionType[];
+  currentUser: UserResponse | null;
   defaultValue: OptionType;
   dropdownBtnList: DropdownItem[];
   localLanguage: Record<string, string>;
@@ -38,6 +40,7 @@ const Header = ({
   currencyOptions,
   onSelectCurrency,
   defaultValue,
+  currentUser,
   isMobileSize,
   localLanguage,
 }: BaseHeaderProps & MobileProps) => (
@@ -58,6 +61,7 @@ const Header = ({
         onSelectCurrency={onSelectCurrency}
         defaultValue={defaultValue}
         localLanguage={localLanguage}
+        currentUser={currentUser}
       />
     </div>
   </LayoutElement>
