@@ -6,9 +6,10 @@ import { useActiveCart } from '../features/cart/useActiveCart';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const ShoppingCartPage = () => {
-  const { currentUser } = useAuth();
+  const { currentUser, isAuthReady } = useAuth();
   const { apiCartList, productIds } = useActiveCart({
     currentUser,
+    isAuthReady,
   });
   const { data: guestCart } = useGetGuestCartQuery(
     !currentUser ? productIds : skipToken,

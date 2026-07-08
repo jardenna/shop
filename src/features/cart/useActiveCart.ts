@@ -4,11 +4,12 @@ import { useAppSelector } from '../../app/hooks';
 import { selectCartList } from '../cartSlice';
 import { useGetCartsQuery } from './cartApiSlice';
 
-export const useActiveCart = ({
-  currentUser,
-}: {
+interface UseActiveCartProps {
   currentUser: UserResponse | null;
-}) => {
+  isAuthReady: boolean;
+}
+
+export const useActiveCart = ({ currentUser }: UseActiveCartProps) => {
   const {
     data: apiCartList,
     isLoading: isCartLoading,

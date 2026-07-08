@@ -25,6 +25,7 @@ export type BaseHeaderProps = {
   currentUser: UserResponse | null;
   defaultValue: OptionType;
   dropdownBtnList: DropdownItem[];
+  isAuthReady: boolean;
   localLanguage: Record<string, string>;
   onChange: InputChangeHandler;
   primaryActionBtn: PrimaryActionBtnProps;
@@ -41,6 +42,7 @@ const Header = ({
   onSelectCurrency,
   defaultValue,
   currentUser,
+  isAuthReady,
   isMobileSize,
   localLanguage,
 }: BaseHeaderProps & MobileProps) => (
@@ -62,6 +64,7 @@ const Header = ({
         defaultValue={defaultValue}
         localLanguage={localLanguage}
         currentUser={currentUser}
+        isAuthReady={isAuthReady}
       />
     </div>
   </LayoutElement>

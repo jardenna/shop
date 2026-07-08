@@ -22,7 +22,7 @@ import { getDisplaySizes } from '../utils/sizeUtils';
 import './SingleProductPage.styles.scss';
 
 const SingleProductPage = () => {
-  const { currentUser } = useAuth();
+  const { currentUser, isAuthReady } = useAuth();
   const { id } = useParams();
   const { language } = useLanguage();
 
@@ -141,6 +141,7 @@ const SingleProductPage = () => {
                 colorList={colorList}
                 displaySizeList={displaySizeList}
                 currentUser={currentUser}
+                isAuthReady={isAuthReady}
               />
               <Accordion
                 accordionList={accordionList}

@@ -35,7 +35,7 @@ const Layout = () => {
   }, [pathname, dispatch]);
 
   // Hooks
-  const { currentUser, isStaff } = useAuth();
+  const { currentUser, isStaff, isAuthReady } = useAuth();
   const { currencyOptions, onChangePrice, exchangeRate } = useCurrency();
   const [logout, { isLoading }] = useLogoutMutation();
   const { isMobileSize } = useMediaQuery();
@@ -136,6 +136,7 @@ const Layout = () => {
         values={values}
         currencyOptions={currencyOptions}
         currentUser={currentUser}
+        isAuthReady={isAuthReady}
         onSelectCurrency={(selectedOptions: OptionType) => {
           handleSelectCurrency('currencyOption', selectedOptions);
         }}
