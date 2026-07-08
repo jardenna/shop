@@ -20,7 +20,7 @@ const ShoppingCartPage = () => {
   const cartItems = currentUser ? apiCartList?.cartItems : guestCart?.products;
 
   return (
-    <MainPageContainer heading="shopCart">
+    <MainPageContainer heading="bag">
       <div className="flex">
         <section>
           {!cartItems ? (
