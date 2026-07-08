@@ -6,11 +6,13 @@ import { useAuth } from '../features/auth/hooks/useAuth';
 import { useGetGuestCartQuery } from '../features/cart/cartApiSlice';
 import CartItem from '../features/cart/components/CartItem';
 import { useActiveCart } from '../features/cart/useActiveCart';
+import { useLanguage } from '../features/language/useLanguage';
 import MainPageContainer from './pageContainer/MainPageContainer';
 import './ShoppingCartPage.styles.scss';
 
 const ShoppingCartPage = () => {
   const { currentUser, isAuthReady } = useAuth();
+  const { language } = useLanguage();
   const { apiCartList, productIds } = useActiveCart({
     currentUser,
     isAuthReady,
@@ -31,7 +33,7 @@ const ShoppingCartPage = () => {
               FallbackComponent={ErrorBoundaryFallback}
               onReset={() => refetch}
             >
-              <CartItem cartList={cartItems} />
+              <CartItem cartList={cartItems} language={language} />
             </ErrorBoundary>
           )}
         </section>
