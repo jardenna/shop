@@ -6,6 +6,7 @@ import { useGetCartsQuery } from './cartApiSlice';
 
 export const useActiveCart = () => {
   const { currentUser } = useAuth();
+
   const {
     data: apiCartList,
     isLoading: isCartLoading,
