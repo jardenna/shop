@@ -3,12 +3,12 @@ import { useCurrency } from '../../../currency/useCurrency';
 import { useLanguage } from '../../../language/useLanguage';
 import './_product-price.scss';
 
-type ProductPriceProps = {
+interface ProductPriceProps {
   discount: number;
   discountedPrice: number;
   price: number;
   hasError?: string;
-};
+}
 
 const ProductPrice = ({
   price,
