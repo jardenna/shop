@@ -26,7 +26,6 @@ import type { OptionType } from '../../../types/types';
 import { getColorOptions } from '../../../utils/colorUtils';
 import { handleApiError } from '../../../utils/handleApiError';
 import {
-  discountCalculation,
   maxDiscount,
   maxFiles,
   minDiscount,
@@ -161,7 +160,6 @@ const ProductForm = ({
     callback: handleSubmitProduct,
   });
 
-  const discountedValue = discountCalculation(values.price, values.discount);
   const { onAddMessagePopup } = useMessagePopup();
   const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
     useDatePicker({ initialTime: selectedTime });
@@ -418,7 +416,6 @@ const ProductForm = ({
                 <ProductPrice
                   price={values.price}
                   discount={values.discount}
-                  discountedPrice={discountedValue}
                   hasError={errors.discount}
                 />
               )}

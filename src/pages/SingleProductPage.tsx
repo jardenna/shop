@@ -116,11 +116,7 @@ const SingleProductPage = () => {
                 rating={product.rating}
                 onReset={() => refetch}
               />
-              <ProductPrice
-                price={product.price}
-                discount={product.discount}
-                discountedPrice={product.discountedPrice}
-              />
+              <ProductPrice price={product.price} discount={product.discount} />
               <div className="in-stock-container">
                 <InStock stock={product.countInStock} />
                 {(missingSizes.length > 0 || product.countInStock === 0) && (

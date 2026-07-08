@@ -1,6 +1,6 @@
 import { CartProduct } from '../../../app/api/apiTypes/cartApiTypes';
 import Img from '../../../components/Img';
-import { discountCalculation, translateKey } from '../../../utils/utils';
+import { translateKey } from '../../../utils/utils';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 import './_cart-list.scss';
 
@@ -17,11 +17,7 @@ const CartItem = ({ language, cartList }: CartItemProps) =>
       <h3 className="cart-item-title">{cart.productName}</h3>
 
       <div className="price-group">
-        <ProductPrice
-          price={cart.price}
-          discount={cart.discount}
-          discountedPrice={discountCalculation(cart.price, cart.discount)}
-        />
+        <ProductPrice price={cart.price} discount={cart.discount} />
       </div>
 
       <div className="cart-item-meta">

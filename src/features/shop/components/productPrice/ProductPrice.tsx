@@ -1,24 +1,29 @@
 import VisuallyHidden from '../../../../components/VisuallyHidden';
+import { discountCalculation } from '../../../../utils/utils';
 import { useCurrency } from '../../../currency/useCurrency';
 import { useLanguage } from '../../../language/useLanguage';
 import './_product-price.scss';
 
 interface ProductPriceProps {
   discount: number;
-  discountedPrice: number;
   price: number;
+  discountedPrice?: number;
   hasError?: string;
 }
 
 const ProductPrice = ({
   price,
-  discountedPrice,
   discount,
   hasError,
+  discountedPrice,
 }: ProductPriceProps) => {
   const { language } = useLanguage();
 
-  const { convertedPrice: displayPrice } = useCurrency(discountedPrice);
+  const calDiscountedPrice = discountCalculation(price, discount);
+
+  const { convertedPrice: displayPrice } = useCurrency(
+    discountedPrice ?? calDiscountedPrice,
+  );
   const { convertedPrice: regularPrice } = useCurrency(price);
 
   if (hasError) {
