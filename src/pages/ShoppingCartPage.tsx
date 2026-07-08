@@ -1,4 +1,5 @@
 import { skipToken } from '@reduxjs/toolkit/query';
+import SkeletonCard from '../components/skeleton/SkeletonCard';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useGetGuestCartQuery } from '../features/cart/cartApiSlice';
 import CartList from '../features/cart/components/CartList';
@@ -20,7 +21,7 @@ const ShoppingCartPage = () => {
     <MainPageContainer heading="shopCart">
       <div className="flex">
         <section>
-          {!cartItems ? <div>hello</div> : <CartList cartList={cartItems} />}
+          {!cartItems ? <SkeletonCard /> : <CartList cartList={cartItems} />}
         </section>
         <section>Card</section>
       </div>
