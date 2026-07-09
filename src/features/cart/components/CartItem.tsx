@@ -70,7 +70,7 @@ const CartItem = ({ language, cartList }: CartItemProps) => {
           <div className="actions">
             <IconBtn
               iconName={IconName.Trash}
-              ariaLabel={language.delete}
+              ariaLabel={`${language.delete} ${cart.productName}`}
               onClick={() => {
                 console.log(cart.id);
               }}
