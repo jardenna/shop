@@ -1,6 +1,7 @@
 import express from 'express';
 import {
   createCart,
+  deleteCart,
   getCart,
   getGuestCartProducts,
   updateCart,
@@ -17,5 +18,6 @@ router
 
 router.route('/guest').post(languageMiddleware, getGuestCartProducts);
 router.route('/:id').patch(languageMiddleware, authenticate, updateCart);
+router.route('/:id').delete(languageMiddleware, authenticate, deleteCart);
 
 export default router;
