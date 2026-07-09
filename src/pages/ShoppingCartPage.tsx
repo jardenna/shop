@@ -7,6 +7,8 @@ import { useGetGuestCartQuery } from '../features/cart/cartApiSlice';
 import CartItem from '../features/cart/components/CartItem';
 import { useActiveCart } from '../features/cart/useActiveCart';
 import { useLanguage } from '../features/language/useLanguage';
+import EmptyState from '../features/shop/components/emptyState/EmptyState';
+import { ShopPath } from '../layout/nav/enums';
 import MainPageContainer from './pageContainer/MainPageContainer';
 import './ShoppingCartPage.styles.scss';
 
@@ -26,20 +28,32 @@ const ShoppingCartPage = () => {
 
   const cartItems = currentUser ? apiCartList?.cartItems : guestCart?.products;
 
+  if (!cartItems) {
+    return <SkeletonCard />;
+  }
+
+  if (cartItems.length === 0) {
+    return (
+      <EmptyState
+        noProductText={language.shoppingBagEmpty}
+        noProductTitle={language.shoppingBagEmptyTitle}
+        src="/images/shoppingBags/shopping_bag_2"
+        linkTo={`/${ShopPath.Collection}`}
+        emtyStateCtaText={language.getInspired}
+      />
+    );
+  }
+
   return (
     <MainPageContainer heading="bag">
       <div className="cart-page">
         <section>
-          {!cartItems ? (
-            <SkeletonCard />
-          ) : (
-            <ErrorBoundary
-              FallbackComponent={ErrorBoundaryFallback}
-              onReset={() => refetch}
-            >
-              <CartItem cartList={cartItems} language={language} />
-            </ErrorBoundary>
-          )}
+          <ErrorBoundary
+            FallbackComponent={ErrorBoundaryFallback}
+            onReset={() => refetch}
+          >
+            <CartItem cartList={cartItems} language={language} />
+          </ErrorBoundary>
         </section>
         <section>Card</section>
       </div>
