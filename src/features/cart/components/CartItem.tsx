@@ -1,8 +1,10 @@
 import { CartProduct } from '../../../app/api/apiTypes/cartApiTypes';
 import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import NumberStep from '../../../components/formElements/numberStep/NumberStep';
+import IconBtn from '../../../components/IconBtn';
 import Img from '../../../components/Img';
 import { useFormValidation } from '../../../hooks/useFormValidation';
+import { IconName } from '../../../types/enums';
 import { translateKey } from '../../../utils/utils';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 import './_cart-list.scss';
@@ -66,7 +68,15 @@ const CartItem = ({ language, cartList }: CartItemProps) => {
           </div>
 
           <div className="actions">
-            icon trash <FavoriteHeart id={cart.productId} />
+            <IconBtn
+              iconName={IconName.Trash}
+              ariaLabel={language.delete}
+              onClick={() => {
+                console.log(cart.id);
+              }}
+            />
+
+            <FavoriteHeart id={cart.productId} />
           </div>
         </div>
       ))}
