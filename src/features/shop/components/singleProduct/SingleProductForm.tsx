@@ -213,6 +213,19 @@ const SingleProductForm = ({
       ? language.selectedColor
       : `${language.selectedColor}: ${translateKey(values.color, language)}`;
 
+  const quantityByProductId = activeCartList.reduce<Record<string, number>>(
+    (result, cartItem) => {
+      // eslint-disable-next-line no-param-reassign
+      result[cartItem.productId] =
+        (result[cartItem.productId] ?? 0) + cartItem.qty;
+
+      return result;
+    },
+    {},
+  );
+
+  const currentProductQuantity = quantityByProductId[id] ?? 0;
+
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
       <Panel
@@ -283,6 +296,7 @@ const SingleProductForm = ({
             id="qty"
             name="qty"
             showLabel
+            disabled={currentProductQuantity + values.qty >= countInStock}
           />
         </FieldSet>
       </Form>

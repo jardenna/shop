@@ -20,6 +20,17 @@ const CartItem = ({ language, cartList }: CartItemProps) => {
     initialState,
   });
 
+  const quantityByProductId = cartList.reduce<Record<string, number>>(
+    (result, cartItem) => {
+      // eslint-disable-next-line no-param-reassign
+      result[cartItem.productId] =
+        (result[cartItem.productId] ?? 0) + values[cartItem.id];
+
+      return result;
+    },
+    {},
+  );
+
   return (
     <div>
       {cartList.map((cart) => (
@@ -47,6 +58,9 @@ const CartItem = ({ language, cartList }: CartItemProps) => {
               labelText={language.quantity}
               id={cart.id}
               name={cart.id}
+              disabled={
+                quantityByProductId[cart.productId] === cart.countInStock
+              }
             />
           </div>
 

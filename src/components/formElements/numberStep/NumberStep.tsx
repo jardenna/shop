@@ -10,6 +10,7 @@ interface NumberStepProps {
   labelText: string;
   name: string;
   value: number;
+  disabled?: boolean;
   initCount?: number;
   max?: number;
   min?: number;
@@ -29,6 +30,7 @@ const NumberStep = ({
   id,
   name,
   showLabel,
+  disabled,
 }: NumberStepProps) => {
   const { language } = useLanguage();
 
@@ -67,7 +69,7 @@ const NumberStep = ({
             handleNumberStepClick(initCount);
           }}
           ariaLabel={`${language.add} ${initCount} `}
-          disabled={value === max}
+          disabled={disabled}
         />
       </div>
     </article>
