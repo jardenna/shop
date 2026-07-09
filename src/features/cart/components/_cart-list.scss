@@ -1,5 +1,15 @@
 @use '../../../scss/globals' as *;
 
+.cart-list {
+  display: flex;
+  flex-direction: column;
+
+  .cart-list-item {
+    border: 1px solid $color-border;
+    padding-block: 16px;
+  }
+}
+
 .cart-item {
   display: grid;
   grid-template:
