@@ -1,29 +1,41 @@
 import type { DefaultResponseType, Size } from './sharedApiTypes';
 
-export interface CartItemRequest {
+export interface BaseCartItem {
   color: string;
   productId: string;
   qty: number;
   size: Size | '';
+}
+
+export interface CartItem extends BaseCartItem {
   id?: string;
 }
 
-export interface CartItem extends CartItemRequest {
+export interface CartProduct extends BaseCartItem {
+  countInStock: number;
+  discount: number;
+  id: string;
   image: string;
-  productId: string;
+  price: number;
+  productName: string;
 }
 
-export type AddToCartRequest = CartItemRequest | CartItemRequest[];
+export type AddToCartRequest = CartItem | CartItem[];
 
 export interface CartListRequest {
   cartItems: AddToCartRequest;
 }
 
 export interface CartListResponse extends DefaultResponseType {
-  cartItems: CartItem[];
+  cartItems: CartProduct[];
 }
 
 export interface UpdateCartRequest {
-  cartItem: CartItemRequest;
+  cartItem: CartItem;
   cartItemId: string;
+}
+
+export interface GuestCardResponse {
+  missingProductIds: string[];
+  products: CartProduct[];
 }

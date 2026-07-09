@@ -22,7 +22,7 @@ import { getDisplaySizes } from '../utils/sizeUtils';
 import './SingleProductPage.styles.scss';
 
 const SingleProductPage = () => {
-  const { currentUser } = useAuth();
+  const { currentUser, isAuthReady } = useAuth();
   const { id } = useParams();
   const { language } = useLanguage();
 
@@ -116,11 +116,7 @@ const SingleProductPage = () => {
                 rating={product.rating}
                 onReset={() => refetch}
               />
-              <ProductPrice
-                price={product.price}
-                discount={product.discount}
-                discountedPrice={product.discountedPrice}
-              />
+              <ProductPrice price={product.price} discount={product.discount} />
               <div className="in-stock-container">
                 <InStock stock={product.countInStock} />
                 {(missingSizes.length > 0 || product.countInStock === 0) && (
@@ -141,6 +137,7 @@ const SingleProductPage = () => {
                 colorList={colorList}
                 displaySizeList={displaySizeList}
                 currentUser={currentUser}
+                isAuthReady={isAuthReady}
               />
               <Accordion
                 accordionList={accordionList}

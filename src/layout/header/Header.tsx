@@ -1,4 +1,4 @@
-import { CartItem } from '../../app/api/apiTypes/cartApiTypes';
+import { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
 import { DropdownItem } from '../../components/dropdownBtn/DropdownBtn';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import type { SelectedLanguage } from '../../features/language/languageSlice';
@@ -21,10 +21,11 @@ type MobileProps = {
 };
 
 export type BaseHeaderProps = {
-  cartList: CartItem[] | null;
   currencyOptions: OptionType[];
+  currentUser: UserResponse | null;
   defaultValue: OptionType;
   dropdownBtnList: DropdownItem[];
+  isAuthReady: boolean;
   localLanguage: Record<string, string>;
   onChange: InputChangeHandler;
   primaryActionBtn: PrimaryActionBtnProps;
@@ -40,9 +41,10 @@ const Header = ({
   currencyOptions,
   onSelectCurrency,
   defaultValue,
+  currentUser,
+  isAuthReady,
   isMobileSize,
   localLanguage,
-  cartList,
 }: BaseHeaderProps & MobileProps) => (
   <LayoutElement className="main-header">
     <div className="container main-header-content">
@@ -61,7 +63,8 @@ const Header = ({
         onSelectCurrency={onSelectCurrency}
         defaultValue={defaultValue}
         localLanguage={localLanguage}
-        cartList={cartList}
+        currentUser={currentUser}
+        isAuthReady={isAuthReady}
       />
     </div>
   </LayoutElement>

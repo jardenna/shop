@@ -4,6 +4,7 @@ import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import { useFavorites } from '../../components/favorites/useFavorites';
 import IconContent from '../../components/IconContent';
 import ModalContainer from '../../components/modal/ModalContainer';
+import { useActiveCart } from '../../features/cart/useActiveCart';
 import { useLanguage } from '../../features/language/useLanguage';
 import { BtnVariant, IconName, SizeVariant } from '../../types/enums';
 import type { BaseHeaderProps } from '../header/Header';
@@ -20,15 +21,21 @@ const HeaderIcons = ({
   defaultValue,
   onSelectCurrency,
   localLanguage,
-  cartList,
+  currentUser,
+  isAuthReady,
 }: BaseHeaderProps) => {
   const { language } = useLanguage();
   const { favorites, onReset } = useFavorites({});
 
   const favoriteItemText =
     favorites && favorites.length === 1 ? language.item : language.items;
+
+  const { activeCartList } = useActiveCart({
+    currentUser,
+    isAuthReady,
+  });
   const cartListItemText =
-    cartList && cartList.length === 1 ? language.item : language.items;
+    activeCartList.length === 1 ? language.item : language.items;
 
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
@@ -50,7 +57,7 @@ const HeaderIcons = ({
             linkTo={ShopPath.ShoppingCart}
             ariaLabel={language.viewCart}
             iconName={IconName.ShoppingBag}
-            count={cartList?.length || null}
+            count={activeCartList.length}
             itemUpdatedText={language.itemsUpdated}
             itemText={cartListItemText}
           />
@@ -87,7 +94,7 @@ const HeaderIcons = ({
             linkTo={ShopPath.Favorites}
             ariaLabel={language.viewYourFavorites}
             iconName={IconName.Heart}
-            count={favorites?.length || null}
+            count={favorites?.length ?? 0}
             itemUpdatedText={language.favoritesUpdated}
             itemText={favoriteItemText}
           />

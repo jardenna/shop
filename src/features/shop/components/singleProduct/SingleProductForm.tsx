@@ -1,4 +1,3 @@
-import { skipToken } from '@reduxjs/toolkit/query';
 import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { UserResponse } from '../../../../app/api/apiTypes/adminApiTypes';
@@ -6,7 +5,7 @@ import {
   type BaseProduct,
   type Size,
 } from '../../../../app/api/apiTypes/sharedApiTypes';
-import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
+import { useAppDispatch } from '../../../../app/hooks';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
 import FieldSet from '../../../../components/fieldset/FieldSet';
 import Form from '../../../../components/form/Form';
@@ -27,14 +26,10 @@ import { translateKey } from '../../../../utils/utils';
 import { validateShopProduct } from '../../../../utils/validation/validateShopProduct';
 import {
   useAddToCartMutation,
-  useGetCartsQuery,
   useReplaceCartMutation,
 } from '../../../cart/cartApiSlice';
-import {
-  addCartItem,
-  replaceCartItem,
-  selectCartList,
-} from '../../../cartSlice';
+import { useActiveCart } from '../../../cart/useActiveCart';
+import { addCartItem, replaceCartItem } from '../../../cartSlice';
 import { useLanguage } from '../../../language/useLanguage';
 import { cartUtils, getTotalCartQuantity } from '../../cartUtils';
 import SingleProductPanel, { PopupData } from './SingleProductPanel';
@@ -43,6 +38,7 @@ interface SingleProductFormProps {
   colorList: ColorOption[];
   currentUser: UserResponse | null;
   displaySizeList: Size[];
+  isAuthReady: boolean;
   selectedProduct: BaseProduct;
   onReset: () => void;
 }
@@ -59,19 +55,19 @@ const SingleProductForm = ({
   displaySizeList,
   onReset,
   currentUser,
+  isAuthReady,
 }: SingleProductFormProps) => {
   const dispatch = useAppDispatch();
   const { language, selectedLanguage } = useLanguage();
+  const { activeCartList, apiCartList, cartList } = useActiveCart({
+    currentUser,
+    isAuthReady,
+  });
   const { sizes, categoryName, colors, id, countInStock } = selectedProduct;
   const [popupData, setPopupData] = useState<PopupData | null>(null);
-  const cartList = useAppSelector(selectCartList);
   const { onAddMessagePopup } = useMessagePopup();
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
     useTogglePanel();
-
-  const { data: apiCartList } = useGetCartsQuery(
-    currentUser ? undefined : skipToken,
-  );
 
   const [addCartItemApi, { isLoading: isAddCartItemLoading }] =
     useAddToCartMutation();
@@ -97,19 +93,11 @@ const SingleProductForm = ({
     qty: values.qty,
     size: values.size,
     color: values.color,
-    image: selectedProduct.images[0],
-  };
-
-  const cartItemApi = {
-    qty: values.qty,
-    productId: id,
-    size: values.size,
-    color: values.color,
   };
 
   const handleAddCartItem = async () => {
     try {
-      await addCartItemApi(cartItemApi).unwrap();
+      await addCartItemApi(cartItem).unwrap();
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
     }
@@ -139,9 +127,6 @@ const SingleProductForm = ({
     if (currentUser && !apiCartList) {
       return;
     }
-
-    const activeCartList =
-      currentUser && apiCartList ? apiCartList.cartItems : cartList;
 
     const cartResult = cartUtils({ cartList: activeCartList, cartItem });
     const { existingVariant } = cartResult;
@@ -201,7 +186,7 @@ const SingleProductForm = ({
       try {
         await replaceCartItemApi({
           cartItemId,
-          cartItem: cartItemApi,
+          cartItem,
         }).unwrap();
       } catch (error) {
         handleApiError(error, onAddMessagePopup);
@@ -228,6 +213,19 @@ const SingleProductForm = ({
       ? language.selectedColor
       : `${language.selectedColor}: ${translateKey(values.color, language)}`;
 
+  const quantityByProductId = activeCartList.reduce<Record<string, number>>(
+    (result, cartItem) => {
+      // eslint-disable-next-line no-param-reassign
+      result[cartItem.productId] =
+        (result[cartItem.productId] ?? 0) + cartItem.qty;
+
+      return result;
+    },
+    {},
+  );
+
+  const currentProductQuantity = quantityByProductId[id] ?? 0;
+
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
       <Panel
@@ -240,6 +238,7 @@ const SingleProductForm = ({
             popupData={popupData}
             language={language}
             selectedLanguage={selectedLanguage}
+            src={selectedProduct.images[0]}
             onHidePanel={onHidePanel}
             onReplaceItem={handleReplaceItem}
             onKeepBoth={addToCart}
@@ -296,6 +295,8 @@ const SingleProductForm = ({
             labelText={language.quantity}
             id="qty"
             name="qty"
+            showLabel
+            disabled={currentProductQuantity + values.qty >= countInStock}
           />
         </FieldSet>
       </Form>

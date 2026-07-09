@@ -1,14 +1,13 @@
 import { skipToken } from '@reduxjs/toolkit/query';
 import { useEffect } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router';
-import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { useAppDispatch } from '../app/hooks';
 import { DropdownItem } from '../components/dropdownBtn/DropdownBtn';
 import Icon from '../components/icons/Icon';
 import type { PrimaryActionBtnProps } from '../components/modal/Modal';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
 import { useAuth } from '../features/auth/hooks/useAuth';
-import { selectCartList } from '../features/cartSlice';
 import { useCurrency } from '../features/currency/useCurrency';
 import { useLanguage } from '../features/language/useLanguage';
 import { clearMessagePopups } from '../features/messagePopupSlice';
@@ -35,10 +34,8 @@ const Layout = () => {
     dispatch(clearMessagePopups());
   }, [pathname, dispatch]);
 
-  const cartList = useAppSelector(selectCartList);
-
   // Hooks
-  const { currentUser, isStaff } = useAuth();
+  const { currentUser, isStaff, isAuthReady } = useAuth();
   const { currencyOptions, onChangePrice, exchangeRate } = useCurrency();
   const [logout, { isLoading }] = useLogoutMutation();
   const { isMobileSize } = useMediaQuery();
@@ -131,7 +128,6 @@ const Layout = () => {
         dropdownBtnList={dropdownItems}
         primaryActionBtn={primaryActionBtn}
         isMobileSize={isMobileSize}
-        cartList={cartList}
         defaultValue={{
           label: exchangeRate,
           value: exchangeRate,
@@ -139,6 +135,8 @@ const Layout = () => {
         onChange={onChange}
         values={values}
         currencyOptions={currencyOptions}
+        currentUser={currentUser}
+        isAuthReady={isAuthReady}
         onSelectCurrency={(selectedOptions: OptionType) => {
           handleSelectCurrency('currencyOption', selectedOptions);
         }}

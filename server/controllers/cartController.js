@@ -1,6 +1,7 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
 import Product from '../models/productModel.js';
+import { getProductsMap } from '../utils/cartUtils.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 
@@ -242,21 +243,9 @@ const getCart = asyncHandler(async (req, res) => {
     });
   }
 
-  const uniqueProductIds = [
-    ...new Set(cart.cartItems.map(({ productId }) => productId.toString())),
-  ];
-
-  const databaseProducts = await Product.find({
-    _id: {
-      $in: uniqueProductIds,
-    },
-  })
-    .select('images productName price discount countInStock brand material')
-    .lean();
-
-  const productMap = new Map(
-    databaseProducts.map((product) => [product._id.toString(), product]),
-  );
+  const productMap = await getProductsMap({
+    productIds: cart.cartItems.map(({ productId }) => productId.toString()),
+  });
 
   const missingProduct = cart.cartItems.find(
     (cartItem) => !productMap.has(cartItem.productId.toString()),
@@ -279,8 +268,6 @@ const getCart = asyncHandler(async (req, res) => {
       price: product.price,
       discount: product.discount,
       countInStock: product.countInStock,
-      brand: product.brand,
-      material: product.material,
     };
   });
 
@@ -290,4 +277,63 @@ const getCart = asyncHandler(async (req, res) => {
   });
 });
 
-export { createCart, getCart, updateCart };
+// @desc    Get guest cart
+// @route   /api/cart/guest
+// @method  Post
+// @access  Public
+const getGuestCartProducts = asyncHandler(async (req, res) => {
+  const cartItems = req.body;
+
+  if (!Array.isArray(cartItems)) {
+    return res.status(400).json({
+      success: false,
+      message: t('invalidRequestProductIds', req.lang),
+    });
+  }
+
+  if (cartItems.length === 0) {
+    return res.status(200).json({
+      products: [],
+      missingProductIds: [],
+    });
+  }
+
+  const productIds = cartItems.map((item) => item.productId);
+
+  const productMap = await getProductsMap({
+    productIds,
+    publishedOnly: true,
+  });
+
+  const missingProductIds = productIds.filter(
+    (productId) => !productMap.has(productId),
+  );
+
+  const products = cartItems.flatMap((item) => {
+    const product = productMap.get(item.productId);
+
+    if (!product) {
+      return [];
+    }
+
+    return {
+      id: item.productId,
+      productId: item.productId,
+      qty: item.qty,
+      size: item.size,
+      color: item.color,
+      image: product.images[0],
+      productName: product.productName,
+      price: product.price,
+      discount: product.discount,
+      countInStock: product.countInStock,
+    };
+  });
+
+  return res.status(200).json({
+    products,
+    missingProductIds,
+  });
+});
+
+export { createCart, getCart, getGuestCartProducts, updateCart };

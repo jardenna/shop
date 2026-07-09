@@ -1,42 +1,37 @@
 ﻿key;en;da
 about;About us;Om os
-cartNotFound;Your shopping cart could not be found;Din indkøbskurv blev ikke fundet
-cartItemNotFound;This item is no longer in your shopping cart;Denne vare er ikke længere i din indkøbskurv
-productNotFound;This product is no longer available;Dette produkt er ikke længere tilgængeligt
-invalidColor;The selected color is no longer available;Den valgte farve er ikke længere tilgængelig
-invalidSize;The selected size is no longer available;Den valgte størrelse er ikke længere tilgængelig
 accessories;Accessories;Accessories
 accessoriesAndToys;Accessories & Toys;Accessories & legetøj
 account;Account;Konto
 accountAltText;Elegant woman in a black coat and matching hat, radiating timeless style. A bold red stripe decorates the background.;Elegant kvinde i sort frakke og matchende hat, der udstråler tidløs stil. En markant rød stribe pryder baggrunden.
 actionOnlyAllowedForAdmin;This action is only allowed for administrator;Denne handling er kun tilladt for administrator
 add;Add;Tilføj
-additionalOptionsCount;additional options not shown in this preview;ekstra muligheder som ikke vises i denne visning
-address;Address;Adresse
-addressCreated;Address was created;Adresse blev tilføjet
-addressUpdated;Address was updated;Adresse blev opdateret
 additionalInfo;Additional info;Supplerende information
+additionalOptionsCount;additional options not shown in this preview;ekstra muligheder som ikke vises i denne visning
 addOrManageAddress;Add or manage your addresses;Tilføj eller ret dine adresser
+address;Address;Adresse
 addressAltText;Man in a tailored suit walking confidently down a wide, stepped staircase.;Mand i skræddersyet jakkesæt, der går selvsikkert ned ad en bred trappe.
+addressCreated;Address was created;Adresse blev tilføjet
 addressDeleted;Address deleted;Addresse blev slettet
+addressUpdated;Address was updated;Adresse blev opdateret
 addToBag;Add to bag;Læg i indkøbskurv
-addToStock;Add to stock;Tilføj til lager
 addToCart;Add to cart;Tilføj til kurv
+addToStock;Add to stock;Tilføj til lager
 admin;Admin;Admin
 adminCannotBeDeleted;Administrator cannot be deleted;Administrator kan ikke slettes
 all;All;Alle
 allowedFormats;Allowed formats;Tilladte formater
+alreadyInUse;Value already in use;Værdien er allerede i brug
 alreadyLoggedIn;You are already logged in;Du er allerede logget ind
 alreadyLoggedInAs;You are already logged in as;Du er allerede logget ind som
 ascending;ascending;stigende
 assignRole;Assign role;Tildel rolle
 available;Available;Tilgængelig
 availableColors;Available colours;Tilgængelige farver
-bag;Bag;Indkøbskurv
-keep;Keep;Behold
-keepBoth;Keep both;Behold begge
+bag;Shopping bag;Indkøbskurv
 black;Black;Sort
 blue;Blue;Blå
+bodyMeasurements;Body Measurements;Kropsmål
 brand;Brand;Brand
 brandRequired;Please insert brand;Indsæt venligst brand
 breadcrumbs;Breadcrumbs;Breadcrumbs
@@ -46,6 +41,8 @@ calendar;Calendar;Kalender
 cancel;Cancel;Annuller
 care;Care;Vaskeanvisning
 cartIsEmpty;Cart is empty;Kurven er tom
+cartItemNotFound;This item is no longer in your shopping cart;Denne vare er ikke længere i din indkøbskurv
+cartNotFound;Your shopping cart could not be found;Din indkøbskurv blev ikke fundet
 categories;Categories;Kategorier
 category;Category;Kategori
 categoryCard;Category card;Kategori card
@@ -59,6 +56,7 @@ categoryNotFound;Category not found;Kategorien findes ikke
 categoryRequired;Please select a category;Vælg venligst kategori
 categoryStatus;Category status;Kategori status
 categoryUpdated;Category was updated;Kategori blev opdateret
+chest;Chest;Bryst
 circleChevronRight;Circle chevron right;Circle chevron right
 city;City;By
 clearAllFilters;Clear all filters;Ryd alle filtre
@@ -72,9 +70,9 @@ collection;Collection;Kollektion
 collectionSubKidsText;Comfortable and fun clothes for play, school and adventures.;Komfortabelt og sjovt tøj til leg, skole og eventyr.
 collectionSubMenText;From everyday looks to formal, everything for the modern man.;Fra hverdagslook til formelt, alt til den moderne mand.
 collectionSubWomenText;Discover stylish news, must-haves and trends of the season.;Opdag stilfulde nyheder, must-haves og sæsonens trends.
-colorRequired;Please select a colour;Vælg venligst farve
 color;Colour;Farve
 colorLowercase;colour;farve
+colorRequired;Please select a colour;Vælg venligst farve
 colors;Colours;Farver
 colours;Colours;Farver
 compact;Compact;Kompakt
@@ -82,19 +80,15 @@ confirmPassword;Confirm password;Gentag adgangskode
 contact;Contact;Kontakt
 continueShopping;Continue shopping;Fortsæt med at handle
 convertingSize;Size conversion;Konvertering af størrelse
-bodyMeasurements;Body Measurements;Kropsmål
-chest;Chest;Bryst
-waist;Waist;Livvidde
-hips;Hips;Hofte
 copy;Copy;Kopi
 copyAction;Copy;Kopier
 couldNotFindInfo;Sorry, We couldn’t find the information you’re looking for;Vi kunne desværre ikke finde den information, du søger
-country;Country;Land
 countInStock;Stock quantity;Lagerantal
+country;Country;Land
 create;Create;Opret
 createAccount;Create account;Opret konto
-createNewAccount;Create new account;Opret en ny konto
 createdAt;Created at;Tilføjet den
+createNewAccount;Create new account;Opret en ny konto
 createNewAddress;Create new address;Opret ny adresse
 createNewCategory;Create new category;Opret ny kategori
 createNewProduct;Create new product;Opret nyt produkt
@@ -112,8 +106,8 @@ daysAgo;days ago;dage siden
 delete;Delete;Slet
 deleteAddress;Delete address;Slet adresse
 deleteCategory;Delete category;Slet kategori
-deleteFoto;Delete foto;Slet foto
 deleted;deleted;slettet
+deleteFoto;Delete foto;Slet foto
 deleteOrReassignCategory;Cannot be deleted. Category has linked products;Kan ikke slettes. Kategori har tilknyttede produkter
 deleteProduct;Delete product;Slet produkt
 deleteUser;Delete user;Slet bruger
@@ -152,10 +146,9 @@ fashionGridSaleAltText;"Young woman wearing a short, white 1960s-inspired dress.
 fashionGridWomanLink;Shop Women;Shop dame
 fashionGridWomanText;Find pieces that inspire self-expression, effortless, bold, and made to move with you.;Udtryk dig selv med styles, der er ubesværede, modige og med dig i bevægelse.
 fashionGridWomenAltText;"Woman in a colorful outfit, wearing a beret that matches her sweater.";"Kvinde i farverigt outfit og en alpehue der matcher til hendes sweater."
+fashionPreference;Fashion preference;Foretrukne mode
 favorites;Favorites;Favoritter
 favoritesUpdated;Favorites updated to;Favoritter opdateret til
-itemsUpdated;Items updated to;Varer opdateret til
-fashionPreference;Fashion preference;Foretrukne mode
 fileExceedsSize;Selected file(s) exceeds the 1MB limit; Valgte fil(er) overstiger grænsen på 1 MB. Upload venligst en mindre fil
 filesCanBeUploaded;files can be uploaded;filer kan uploades
 filesSupported;Files supported;Tilladte filer
@@ -172,11 +165,11 @@ globe;Globe;Globus
 go;Go;Gå
 goBack;Go back;Gå tilbage
 gold;Gold;Guld
-gotoPage;Go to page;Gå til side
 goToContent;Go to content;Gå til indhold
 gotoFirstPage;Go to first page;Gå til første side
 gotoLastPage;Go to last page;Gå til sidste side
 gotoNextPage;Go to next page;Gå til næste side
+gotoPage;Go to page;Gå til side
 gotoPrevPage;Go to previous page;Gå til forrige side
 green;Green;Grøn
 grey;Grey;Grå
@@ -190,17 +183,24 @@ heroText1;For a limited time, enjoy incredible discounts on the latest fashion t
 heroTitle;Exclusive Fashion Sale;Eksklusivt Modesalg
 hideContent;Hide content;Skjul indhold
 hidePassword;Hide password;Skjul adgangskode
+hips;Hips;Hofte
 home;Home;Hjem
 image;Image;Foto
 imageRequired;Please insert image(s);Indsæt venligst billede(r)
 inactive;Inactive;Inaktiv
 inStock;In stock;På lager
+invalidColor;The selected color is no longer available;Den valgte farve er ikke længere tilgængelig
 invalidDiscount;Invalid discount. Price cannot be calculated correctly;Ugyldig rabat. Prisen kan ikke beregnes korrekt
 invalidFileType;Invalid file type;Ugyldig fil type
+invalidRequestProductIds;Invalid product IDs provided;Ugyldige produkt-id'er sendt
 invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for planlagt dato
+invalidSize;The selected size is no longer available;Den valgte størrelse er ikke længere tilgængelig
 invalidUserData;Invalid user data;Ugyldig bruger data
 item;item;vare
 items;items;varer
+itemsUpdated;Items updated to;Varer opdateret til
+keep;Keep;Behold
+keepBoth;Keep both;Behold begge
 kid;Kid;Barn
 kids;Kids;Børn
 kidsAltText;Stylish children, a girl in a white sleeveless top with a matching hat and a boy in a colorful shirt, sitting together in a playful yet elegant pose.;Stilfulde børn, en pige i hvid ærmeløs top med matchende hat og en dreng i farverig skjorte, sidder sammen i et legende men elegant udtryk.
@@ -250,10 +250,9 @@ myAddresses;My addresses;Mine adresser
 myBag;My bag;Min indkøbskurv
 myOrders;My orders;Mine ordrer
 name;Name;Navn
-totalPrice;Total price;Samlet pris
-noData;No data found;Ingen data fundet
 noAddressData;No matching address found;Ingen matchende adresse
 noChanges;No changes to save;Ingen ændringer at gemme
+noData;No data found;Ingen data fundet
 noEmail;Please enter an email;Indtast venligst en e-mail
 noFavorites;Find your must-haves and save them here, so you can easily come back to them;Find dine must-haves og gem dem her, så du nemt kan vende tilbage til dem
 noFavoritesYet;No favorites yet;Ingen favoritter endnu
@@ -261,6 +260,7 @@ noImagesProvided;No images provided;Ingen billeder
 noItemsToShow;No items to show;Ingen varer at vise
 noOptions;No options;Ingen valgmuligheder
 noPassword;Please enter a password;Indtast venligst en adgangskode
+noPreference;No preference;Ingen præference
 noProduct;Product not found;Produkt blev ikke fundet
 noProductResult;No products match your filters. Try removing some filters or reset to see all products again.;Der er ingen produkter, der matcher dine filtre. Prøv at fjerne nogle filtre eller nulstil for at se alle produkter igen.
 noProductResultTitle;No product match your filters;Ingen produkter matcher dine filtre
@@ -272,7 +272,6 @@ nothingWasUpdated;No changes were made;Der blev ikke foretaget nogen ændringer
 notifyMe;Notify me;Giv mig besked
 notifyMeMessage;Choose below, and we’ll notify you when it’s restocked; Vælg herunder, så får du en e-mail, når varen igen er på lager
 notifySuccessMeMessage;We got your request. Hopefully we’ll be in touch soon;Vi har modtaget din forespørgsel. Forhåbentlig hører du snart fra os
-noPreference;No preference;Ingen præference
 notProvided;Not provided;Ikke oplyst
 notPublished;Not published;Ikke udgivet
 notRatedYet;Not rated yet;Ikke bedømt endnu
@@ -284,12 +283,12 @@ of;of;af
 onlyAdminsAssignRole;Only admins can assign roles;Kun administratorer kan tildele roller
 onlyFourAddresses;You may have up to 4 addresses;Du kan højst have 4 adresser
 orange;Orange;Orange
-originaPrice;Original price;Før pris
-orderAltText;Young boy in black jeans and a white T-shirt layered with a blue-checkered shirt, looking expectant.;Ung dreng i sorte jeans og hvid T-shirt kombineret med en blåternet skjorte, ser forventningsfuld ud.
 orderAllreadyDelivered;Order is already delivered;Ordren er allerede leveret
 orderAllreadyPaid;Order is already paid;Ordren er allerede betalt
+orderAltText;Young boy in black jeans and a white T-shirt layered with a blue-checkered shirt, looking expectant.;Ung dreng i sorte jeans og hvid T-shirt kombineret med en blåternet skjorte, ser forventningsfuld ud.
 orderNotPaid;Order has not been paid;Ordren er ikke betalt
 orders;Orders;Ordrer
+originaPrice;Original price;Før pris
 outOf;out of;ud af
 outOfStock;Out of stock;Udsolgt
 page;Page;Side
@@ -329,9 +328,9 @@ pleaseSelectParentCategory;Please select parent category;Vælg venligst hovedkat
 preferences;Preferences;Præferencer
 price;Price;Pris
 priceFrom;Price from;Pris fra
-priceTo;Price to;Pris til
 priceRange;Price range;Prisinterval
 priceRequired;Please insert price;Indsæt venligst pris
+priceTo;Price to;Pris til
 pricing;Pricing;Prissætning
 product;Product;Produkt
 productActions;Product actions;Produkt handlinger
@@ -348,12 +347,13 @@ productName;Product name;Produkt navn
 productNameRequired;Please insert product name;Indsæt venligst produktnavn
 productNavigation;Produkt navigation;Produkt navigation
 productNotFound;Product not found;Produktet findes ikke
-productsNoLongerAvailable;Some products are no longer available;Nogle produkter er ikke længere tilgængelige
+productNotFound;This product is no longer available;Dette produkt er ikke længere tilgængeligt
 productPerPage;products per page;produkter pr. side
 productQuantity;Product quantity;Produkt antal
 products;Products;Produkter
 productsInStock;Products in stock;Produkter på lager
 productsInSubcategory;Products linked to subcategory;Produkter tilknyttet denne underkategori
+productsNoLongerAvailable;Some products are no longer available;Nogle produkter er ikke længere tilgængelige
 productStatus;Product status;Produkt status
 productUpdated;Product was updated;Produkt blev opdateret
 productVariants;Product Variants;Produkt varianter
@@ -364,10 +364,10 @@ published;Published;Udgivet
 publishTime;Publish time;Udgivelsestidspunkt
 purple;Purple;Lilla
 qty;Qty;Antal
-quantity;Quantity;Antal
 qtyMustBeAtLeast;Quantity must be at least 1;Antal skal være mindst 1
-rating;Rating;Bedømmelse
+quantity;Quantity;Antal
 rateProduct;Rate product;Bedøm produkt
+rating;Rating;Bedømmelse
 rating1;1 star: Poor;1 stjerne: Dårlig
 rating2;2 stars: Below average;2 stjerner: Under middel
 rating3;3 stars: Average;3 stjerner: Middel
@@ -376,8 +376,8 @@ rating5;5 stars: Excellent;5 stjerner: Fremragende
 red;Red;Rød
 removeFilter;Remove filter;Fjern filter
 removeFromFavorite;Remove from favorite;Fjern fra favorit
-resetFiltersAndSorting;Reset filters and sorting;Nulstil filtre og sortering
 replace;Replace;Erstat
+resetFiltersAndSorting;Reset filters and sorting;Nulstil filtre og sortering
 retry;Retry;Forsøg igen
 reviews;Reviews;Anmeldelser
 role;Role;Rolle
@@ -396,10 +396,6 @@ selectPreferences;Select preferred language and currency;Vælg sprog og valuta
 selectSize;Select size;Vælg størrelse
 shareReview;Share review;Del anmeldelse
 shareYourExperience;Share your experience;Del din oplevelse
-singleProductPanelHeading;You already have this item in another;Du har allerede denne vare i en anden
-singleProductPanelText;Choose whether you want to replace the existing item or keep both. The size guide and product information can help you make the right choice, avoid unnecessary returns, and thereby reduce the environmental impact.;Vælg, om du vil erstatte den eksisterende vare eller beholde begge. Størrelsesguiden og produktoplysningerne kan hjælpe dig med at træffe det rigtige valg, undgå unødige returneringer og dermed mindske belastningen på miljøet.
-sizeGuideInfo;Compare sizes across different countries with our size guide. Please note that fit and measurements may vary between brands, so this chart should be used as a general guide when converting sizes;Sammenlign størrelser på tværs af forskellige lande med vores størrelsesguide. Bemærk, at pasform og mål kan variere mellem mærker, så tabellen bør bruges som vejledning ved konvertering af størrelser
-sizeGuide;Size guide;Størrelsesguide
 shareYourExperience;Share your experience;Del din oplevelse
 shoes;Shoes;Sko
 shopCart;Shopping cart;Indkøbskurv
@@ -416,14 +412,18 @@ show;Show;Vis
 showAll;Show all;Vis alle
 showAllTags;Show all tags;Vis alle tags
 showContent;Show content;Vis indhold
-showLessTags;Show less tags;Vis færre tags
 showing;Showing;Viser
+showLessTags;Show less tags;Vis færre tags
 showPassword;Show password;Vis adgangskode
 showPrice;Show price;Vis pris
 silver;Silver;Sølv
+singleProductPanelHeading;You already have this item in another;Du har allerede denne vare i en anden
+singleProductPanelText;Choose whether you want to replace the existing item or keep both. The size guide and product information can help you make the right choice, avoid unnecessary returns, and thereby reduce the environmental impact.;Vælg, om du vil erstatte den eksisterende vare eller beholde begge. Størrelsesguiden og produktoplysningerne kan hjælpe dig med at træffe det rigtige valg, undgå unødige returneringer og dermed mindske belastningen på miljøet.
 size;Size;Størrelse
-sizeLowercase;size;størrelse
+sizeGuide;Size guide;Størrelsesguide
+sizeGuideInfo;Compare sizes across different countries with our size guide. Please note that fit and measurements may vary between brands, so this chart should be used as a general guide when converting sizes;Sammenlign størrelser på tværs af forskellige lande med vores størrelsesguide. Bemærk, at pasform og mål kan variere mellem mærker, så tabellen bør bruges som vejledning ved konvertering af størrelser
 sizeInfoText;Sizes depend on the selected category;Størrelser afhænger af den valgte kategori
+sizeLowercase;size;størrelse
 sizeRequired;Please select a size;Vælg venligst størrelse
 sizes;Sizes;Størrelser
 somethingWentWrong;Something went wrong, please try again;Noget gik galt, forsøg venligst igen
@@ -448,6 +448,7 @@ thereAre;There are;Der findes
 title;Title;Titel
 to;to;til
 today;Today;I dag
+totalPrice;Total price;Samlet pris
 totalProducts;Total products;Antal produkter
 translationKey;Translation key;Oversættelsesnøgle
 translationKeyHelpText;Enter the exact key used for translation in your CSV file;Skriv den præcise nøgle, som bruges til oversættelsen i din CSV-fil
@@ -472,16 +473,16 @@ userInfo;User info;Bruger info
 username;User name;Brugernavn
 users;Users;Brugere
 userUpdated;User was updated;Bruger blev opdateret
-alreadyInUse;Value already in use;Værdien er allerede i brug
+verifyAndUpdateInfo;Verify and update your information;Bekræft og opdatér dine oplysninger
 view;View;Se
 viewAndTrackOrders;View and track your orders.;Tjek og følg dine ordrer.
-viewInfo;View info;Se info
-verifyAndUpdateInfo;Verify and update your information;Bekræft og opdatér dine oplysninger
 viewCart;View your cart;Se din indkøbskurv
 viewCategory;View category;Se kategori
+viewInfo;View info;Se info
 viewProduct;View product;Se produkt
 viewScheduledDate;View scheduled date;Se planlagt dato
 viewYourFavorites;View your favorites;Se dine favoritter
+waist;Waist;Livvidde
 warning;Warning;Advarsel
 welcome;Welcome;Velkommen
 whenOrderViewAndTrack;When you order from Fashion Fusion, you can view and track your orders here.;Når du bestiller varer hos Fashion Fusion vil du kunne se og følge dine ordrer her.
