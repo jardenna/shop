@@ -1,3 +1,6 @@
+import { STATUS } from '../config/constants.js';
+import Product from '../models/productModel.js';
+
 const findIdenticalVariant = ({ cartItems, cartItem }) => {
   return cartItems.find(
     (item) =>
@@ -63,6 +66,28 @@ const mergeCartItems = ({
     success: true,
     cartItems: existingCartItems,
   };
+};
+
+export const getProductsMap = async ({ productIds, publishedOnly = false }) => {
+  const uniqueProductIds = [...new Set(productIds)];
+
+  const query = {
+    _id: {
+      $in: uniqueProductIds,
+    },
+  };
+
+  if (publishedOnly) {
+    query.productStatus = STATUS.PUBLISHED;
+  }
+
+  const databaseProducts = await Product.find(query)
+    .select('images productName price discount countInStock')
+    .lean();
+
+  return new Map(
+    databaseProducts.map((product) => [product._id.toString(), product]),
+  );
 };
 
 export {

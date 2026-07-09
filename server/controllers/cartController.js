@@ -1,10 +1,10 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
 import Product from '../models/productModel.js';
+import { getProductsMap } from '../utils/cartUtils.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 
-import { STATUS } from '../config/constants.js';
 import {
   cartItemIdentifier,
   findDatabaseProduct,
@@ -243,21 +243,9 @@ const getCart = asyncHandler(async (req, res) => {
     });
   }
 
-  const uniqueProductIds = [
-    ...new Set(cart.cartItems.map(({ productId }) => productId.toString())),
-  ];
-
-  const databaseProducts = await Product.find({
-    _id: {
-      $in: uniqueProductIds,
-    },
-  })
-    .select('images productName price discount countInStock')
-    .lean();
-
-  const productMap = new Map(
-    databaseProducts.map((product) => [product._id.toString(), product]),
-  );
+  const productMap = await getProductsMap({
+    productIds: cart.cartItems.map(({ productId }) => productId.toString()),
+  });
 
   const missingProduct = cart.cartItems.find(
     (cartItem) => !productMap.has(cartItem.productId.toString()),
@@ -312,16 +300,10 @@ const getGuestCartProducts = asyncHandler(async (req, res) => {
 
   const productIds = cartItems.map((item) => item.productId);
 
-  const databaseProducts = await Product.find({
-    _id: { $in: productIds },
-    productStatus: STATUS.PUBLISHED,
-  })
-    .select('images productName price discount countInStock')
-    .lean();
-
-  const productMap = new Map(
-    databaseProducts.map((product) => [product._id.toString(), product]),
-  );
+  const productMap = await getProductsMap({
+    productIds,
+    publishedOnly: true,
+  });
 
   const missingProductIds = productIds.filter(
     (productId) => !productMap.has(productId),
