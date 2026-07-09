@@ -98,10 +98,10 @@ export function useFormValidation<T extends KeyValuePair>({
 
   // Special case for number step
   const handleNumberStepChange = (field: string, amount: number) => {
-    setValues({
-      ...values,
-      [field]: (values[field] as number) + amount,
-    });
+    setValues((previous) => ({
+      ...previous,
+      [field]: (previous[field] as number) + amount,
+    }));
   };
 
   function handleChangeTextArea(event: ChangeTextAreaType) {
