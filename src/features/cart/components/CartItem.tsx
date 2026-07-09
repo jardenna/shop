@@ -1,4 +1,5 @@
 import { CartProduct } from '../../../app/api/apiTypes/cartApiTypes';
+import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import NumberStep from '../../../components/formElements/numberStep/NumberStep';
 import Img from '../../../components/Img';
 import { useFormValidation } from '../../../hooks/useFormValidation';
@@ -37,7 +38,7 @@ const CartItem = ({ language, cartList }: CartItemProps) => {
         <div className="cart-item" key={cart.id}>
           <Img src={cart.image} alt="" className="cart-item-image" />
 
-          <h3 className="cart-item-title">{cart.productName}</h3>
+          <h2 className="cart-item-title">{cart.productName}</h2>
 
           <div className="price-group">
             <ProductPrice price={cart.price} discount={cart.discount} />
@@ -64,7 +65,9 @@ const CartItem = ({ language, cartList }: CartItemProps) => {
             />
           </div>
 
-          <div className="actions">icon trash icon hart</div>
+          <div className="actions">
+            icon trash <FavoriteHeart id={cart.productId} />
+          </div>
         </div>
       ))}
     </div>
