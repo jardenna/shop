@@ -94,7 +94,7 @@ const HeaderIcons = ({
             linkTo={ShopPath.Favorites}
             ariaLabel={language.viewYourFavorites}
             iconName={IconName.Heart}
-            count={favorites?.length || null}
+            count={favorites?.length ?? 0}
             itemUpdatedText={language.favoritesUpdated}
             itemText={favoriteItemText}
           />

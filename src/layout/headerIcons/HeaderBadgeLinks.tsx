@@ -6,7 +6,7 @@ import { ShopPath } from '../nav/enums';
 
 interface HeaderBadgeLinksProps {
   ariaLabel: string;
-  count: number | null;
+  count: number;
   iconName: IconName;
   itemText: string;
   itemUpdatedText: string;
@@ -25,7 +25,7 @@ const HeaderBadgeLinks = ({
     <Link to={linkTo} className="btn btn-ghost">
       <IconContent iconName={iconName} ariaLabel={ariaLabel} />
     </Link>
-    {count && count > 0 && (
+    {count > 0 && (
       <CountBadge
         count={count}
         ariaLabel={`${itemUpdatedText} ${count} ${itemText}`}
