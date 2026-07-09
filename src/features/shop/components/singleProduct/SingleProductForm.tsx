@@ -282,6 +282,7 @@ const SingleProductForm = ({
             labelText={language.quantity}
             id="qty"
             name="qty"
+            showLabel
           />
         </FieldSet>
       </Form>

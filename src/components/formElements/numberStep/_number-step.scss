@@ -4,9 +4,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-  padding: 8px 20px;
-  border: 1px solid $color-border;
   gap: 20px;
 
   .number-step-container {
@@ -21,15 +18,14 @@
     input {
       text-align: center;
       border: 0;
-
-      &:focus-visible {
-        background-color: transparent;
-      }
+      padding: 0;
+      padding-block: 12px;
+      height: auto;
+      background-color: inherit;
     }
   }
 
-  .btn-primary {
-    min-width: auto;
-    padding: 12px;
+  .btn-ghost {
+    padding-inline: 20px;
   }
 }
