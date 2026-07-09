@@ -1,5 +1,7 @@
 import { CartProduct } from '../../../app/api/apiTypes/cartApiTypes';
+import NumberStep from '../../../components/formElements/numberStep/NumberStep';
 import Img from '../../../components/Img';
+import { useFormValidation } from '../../../hooks/useFormValidation';
 import { translateKey } from '../../../utils/utils';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 import './_cart-list.scss';
@@ -9,30 +11,50 @@ interface CartItemProps {
   language: Record<string, string>;
 }
 
-const CartItem = ({ language, cartList }: CartItemProps) =>
-  cartList.map((cart) => (
-    <div className="cart-item" key={cart.id}>
-      <Img src={cart.image} alt="" className="cart-item-image" />
+const CartItem = ({ language, cartList }: CartItemProps) => {
+  const initialState = Object.fromEntries(
+    cartList.map((cart) => [cart.id, cart.qty]),
+  );
 
-      <h3 className="cart-item-title">{cart.productName}</h3>
+  const { onChange, onNumberStepChange, values } = useFormValidation({
+    initialState,
+  });
 
-      <div className="price-group">
-        <ProductPrice price={cart.price} discount={cart.discount} />
-      </div>
+  return (
+    <div>
+      {cartList.map((cart) => (
+        <div className="cart-item" key={cart.id}>
+          <Img src={cart.image} alt="" className="cart-item-image" />
 
-      <div className="cart-item-meta">
-        <span>{translateKey(cart.color, language)}</span>
-        <span>SIZE {cart.size}</span>
-      </div>
+          <h3 className="cart-item-title">{cart.productName}</h3>
 
-      <div className="quantity">
-        <span>−</span>
-        <span>{cart.qty}</span>
-        <span>+</span>
-      </div>
+          <div className="price-group">
+            <ProductPrice price={cart.price} discount={cart.discount} />
+          </div>
 
-      <div className="actions">icon trash icon hart</div>
+          <div className="cart-item-meta">
+            <span>{translateKey(cart.color, language)}</span>
+            <span>SIZE {cart.size}</span>
+          </div>
+
+          <div className="quantity">
+            <NumberStep
+              onChange={onChange}
+              onNumberStepChange={onNumberStepChange}
+              value={values[cart.id]}
+              min={1}
+              max={cart.countInStock}
+              labelText={language.quantity}
+              id={cart.id}
+              name={cart.id}
+            />
+          </div>
+
+          <div className="actions">icon trash icon hart</div>
+        </div>
+      ))}
     </div>
-  ));
+  );
+};
 
 export default CartItem;

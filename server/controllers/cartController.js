@@ -252,7 +252,7 @@ const getCart = asyncHandler(async (req, res) => {
       $in: uniqueProductIds,
     },
   })
-    .select('images productName price discount countInStockl')
+    .select('images productName price discount countInStock')
     .lean();
 
   const productMap = new Map(
@@ -280,8 +280,6 @@ const getCart = asyncHandler(async (req, res) => {
       price: product.price,
       discount: product.discount,
       countInStock: product.countInStock,
-      brand: product.brand,
-      material: product.material,
     };
   });
 
@@ -291,48 +289,64 @@ const getCart = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    post cart productId
+// @desc    Get guest cart
 // @route   /api/cart/guest
-// @method  Get
+// @method  Post
 // @access  Public
 const getGuestCartProducts = asyncHandler(async (req, res) => {
-  const productIds = req.body;
+  const cartItems = req.body;
 
-  if (!Array.isArray(productIds)) {
+  if (!Array.isArray(cartItems)) {
     return res.status(400).json({
       success: false,
       message: t('invalidRequestProductIds', req.lang),
     });
   }
 
-  if (productIds.length === 0) {
+  if (cartItems.length === 0) {
     return res.status(200).json({
       products: [],
       missingProductIds: [],
     });
   }
 
+  const productIds = cartItems.map((item) => item.productId);
+
   const databaseProducts = await Product.find({
-    _id: {
-      $in: productIds,
-    },
+    _id: { $in: productIds },
     productStatus: STATUS.PUBLISHED,
   })
     .select('images productName price discount countInStock')
     .lean();
 
-  const foundIds = new Set(
-    databaseProducts.map((product) => product._id.toString()),
+  const productMap = new Map(
+    databaseProducts.map((product) => [product._id.toString(), product]),
   );
 
   const missingProductIds = productIds.filter(
-    (productId) => !foundIds.has(productId),
+    (productId) => !productMap.has(productId),
   );
 
-  const products = databaseProducts.map((product) => ({
-    ...formatMongoData(product),
-    image: product.images[0],
-  }));
+  const products = cartItems.flatMap((item) => {
+    const product = productMap.get(item.productId);
+
+    if (!product) {
+      return [];
+    }
+
+    return {
+      id: item.productId,
+      productId: item.productId,
+      qty: item.qty,
+      size: item.size,
+      color: item.color,
+      image: product.images[0],
+      productName: product.productName,
+      price: product.price,
+      discount: product.discount,
+      countInStock: product.countInStock,
+    };
+  });
 
   return res.status(200).json({
     products,

@@ -13,13 +13,17 @@ import './ShoppingCartPage.styles.scss';
 const ShoppingCartPage = () => {
   const { currentUser, isAuthReady } = useAuth();
   const { language } = useLanguage();
-  const { apiCartList, productIds } = useActiveCart({
+  const { apiCartList, cartList } = useActiveCart({
     currentUser,
     isAuthReady,
   });
+
+  const shouldFetchGuestCart = isAuthReady && !currentUser;
+
   const { data: guestCart, refetch } = useGetGuestCartQuery(
-    !currentUser ? productIds : skipToken,
+    shouldFetchGuestCart ? cartList : skipToken,
   );
+
   const cartItems = currentUser ? apiCartList?.cartItems : guestCart?.products;
 
   return (

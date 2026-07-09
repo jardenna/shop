@@ -18,7 +18,6 @@ export const useActiveCart = ({ currentUser }: UseActiveCartProps) => {
   } = useGetCartQuery(currentUser ? undefined : skipToken);
 
   const cartList = useAppSelector(selectCartList);
-  const productIds = cartList.map((list) => list.productId);
 
   const activeCartList =
     currentUser && apiCartList ? apiCartList.cartItems : cartList;
@@ -26,7 +25,6 @@ export const useActiveCart = ({ currentUser }: UseActiveCartProps) => {
   return {
     cartList,
     apiCartList,
-    productIds,
     activeCartList,
     isCartLoading,
     isCartError,
