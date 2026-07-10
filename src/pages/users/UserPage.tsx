@@ -3,7 +3,7 @@ import { Roles } from '../../app/api/apiTypes/adminApiTypes';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import Table from '../../components/sortTable/Table';
 import { createInitialFilters } from '../../components/sortTable/tableFilters/tableFiltersUtils';
-import DeleteUser from '../../features/adminUsers/components/DeleteUser';
+import DeleteItem from '../../features/adminUsers/components/DeleteItem';
 import EditTableText from '../../features/adminUsers/components/EditTableText';
 import UpdateUser from '../../features/adminUsers/components/UpdateUser';
 import { useAuth } from '../../features/auth/hooks/useAuth';
@@ -99,16 +99,17 @@ const UserPage = () => {
     }
   }
 
-  const handleDeleteUser = async (id: string, username: string) => {
+  async function handleDeleteUser(id: string, username: string) {
     try {
       await deleteUser(id).unwrap();
+
       onAddMessagePopup({
         message: `${username} ${language.deleted}`,
       });
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
     }
-  };
+  }
 
   return (
     <AdminPageContainer
@@ -166,11 +167,12 @@ const UserPage = () => {
                 ))}
                 <td>
                   {allowedEditUser && !isAdmin && (
-                    <DeleteUser
-                      onDeleteUser={() => {
+                    <DeleteItem
+                      ariaLabel={language.deleteUser}
+                      onDeleteItem={() => {
                         handleDeleteUser(id, username);
                       }}
-                      username={username}
+                      itemname={username}
                     />
                   )}
                 </td>

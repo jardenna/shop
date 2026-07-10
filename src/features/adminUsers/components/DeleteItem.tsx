@@ -4,12 +4,13 @@ import Popup from '../../../components/popup/Popup';
 import { BtnVariant, IconName } from '../../../types/enums';
 import { useLanguage } from '../../language/useLanguage';
 
-type DeleteUserProps = {
-  onDeleteUser: any;
-  username: string;
-};
+interface DeleteItemProps {
+  ariaLabel: string;
+  itemname: string;
+  onDeleteItem: () => void;
+}
 
-const DeleteUser = ({ onDeleteUser, username }: DeleteUserProps) => {
+const DeleteItem = ({ onDeleteItem, itemname, ariaLabel }: DeleteItemProps) => {
   const { language } = useLanguage();
 
   return (
@@ -18,17 +19,18 @@ const DeleteUser = ({ onDeleteUser, username }: DeleteUserProps) => {
       popupContent={({ close }) => (
         <section className="cell-user-popup">
           <p>{language.sureToDelete}</p>
-          <p>{username}?</p>
+          <p>{itemname}?</p>
 
           <footer className="footer">
             <Button variant={BtnVariant.Secondary} onClick={close}>
               {language.cancel}
             </Button>
+
             <Button
               variant={BtnVariant.Danger}
               onClick={() => {
-                onDeleteUser();
                 close();
+                onDeleteItem();
               }}
             >
               {language.delete}
@@ -37,11 +39,11 @@ const DeleteUser = ({ onDeleteUser, username }: DeleteUserProps) => {
         </section>
       )}
       triggerBtnClassName="danger"
-      ariaLabel={language.deleteUser}
+      ariaLabel={ariaLabel}
     >
       <Icon iconName={IconName.Trash} />
     </Popup>
   );
 };
 
-export default DeleteUser;
+export default DeleteItem;
