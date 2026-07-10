@@ -1,11 +1,10 @@
 import { CartProduct } from '../../../app/api/apiTypes/cartApiTypes';
 import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import NumberStep from '../../../components/formElements/numberStep/NumberStep';
-import IconBtn from '../../../components/IconBtn';
 import Img from '../../../components/Img';
 import { useFormValidation } from '../../../hooks/useFormValidation';
-import { IconName } from '../../../types/enums';
 import { translateKey } from '../../../utils/utils';
+import DeleteItem from '../../adminUsers/components/DeleteItem';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 import './_cart-list.scss';
 
@@ -67,14 +66,20 @@ const CartList = ({ language, cartList, onDeleteCartItem }: CartListProps) => {
               />
             </div>
             <div className="actions">
-              <IconBtn
+              {/* <IconBtn
                 iconName={IconName.Trash}
                 ariaLabel={`${language.delete} ${cart.productName}`}
                 onClick={() => {
                   onDeleteCartItem(cart.id);
                 }}
+              /> */}
+              <DeleteItem
+                ariaLabel={`${language.delete} ${cart.productName}`}
+                onDeleteItem={() => {
+                  onDeleteCartItem(cart.id);
+                }}
+                itemName={cart.productName}
               />
-
               <FavoriteHeart id={cart.productId} />
             </div>
           </article>
