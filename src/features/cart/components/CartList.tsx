@@ -1,10 +1,10 @@
 import { CartProduct } from '../../../app/api/apiTypes/cartApiTypes';
+import DeleteItem from '../../../components/DeleteItem';
 import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import NumberStep from '../../../components/formElements/numberStep/NumberStep';
 import Img from '../../../components/Img';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { translateKey } from '../../../utils/utils';
-import DeleteItem from '../../adminUsers/components/DeleteItem';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 import './_cart-list.scss';
 

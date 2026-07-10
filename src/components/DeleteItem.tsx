@@ -1,8 +1,8 @@
-import Button from '../../../components/Button';
-import Icon from '../../../components/icons/Icon';
-import Popup from '../../../components/popup/Popup';
-import { BtnVariant, IconName } from '../../../types/enums';
-import { useLanguage } from '../../language/useLanguage';
+import { useLanguage } from '../features/language/useLanguage';
+import { BtnVariant, IconName } from '../types/enums';
+import Button from './Button';
+import Icon from './icons/Icon';
+import Popup from './popup/Popup';
 
 interface DeleteItemProps {
   ariaLabel: string;

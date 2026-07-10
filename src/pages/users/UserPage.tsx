@@ -1,9 +1,9 @@
 import { useRef } from 'react';
 import { Roles } from '../../app/api/apiTypes/adminApiTypes';
+import DeleteItem from '../../components/DeleteItem';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import Table from '../../components/sortTable/Table';
 import { createInitialFilters } from '../../components/sortTable/tableFilters/tableFiltersUtils';
-import DeleteItem from '../../features/adminUsers/components/DeleteItem';
 import EditTableText from '../../features/adminUsers/components/EditTableText';
 import UpdateUser from '../../features/adminUsers/components/UpdateUser';
 import { useAuth } from '../../features/auth/hooks/useAuth';
