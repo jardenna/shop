@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
 import Product from '../models/productModel.js';
@@ -339,8 +340,14 @@ const getGuestCartProducts = asyncHandler(async (req, res) => {
 // @desc    Delete cart
 // @route   /api/cart/:id
 // @method  Delete
-// @access  Private
+// @access  Privat
 const deleteCart = asyncHandler(async (req, res) => {
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    return res.status(400).json({
+      message: t('invalidCartItemId', req.lang),
+    });
+  }
+
   const cart = await Cart.findOne({
     user: req.user._id,
   });
@@ -351,7 +358,15 @@ const deleteCart = asyncHandler(async (req, res) => {
     });
   }
 
-  cart.cartItems.pull(req.params.id);
+  const cartItem = cart.cartItems.id(req.params.id);
+
+  if (!cartItem) {
+    return res.status(404).json({
+      message: t('cartItemNotFound', req.lang),
+    });
+  }
+
+  cartItem.deleteOne();
 
   await cart.save();
 
