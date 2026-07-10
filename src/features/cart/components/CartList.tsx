@@ -1,5 +1,5 @@
 import { CartProduct } from '../../../app/api/apiTypes/cartApiTypes';
-import DeleteItem from '../../../components/DeleteItem';
+import DeleteItem from '../../../components/deleteItem/DeleteItem';
 import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import NumberStep from '../../../components/formElements/numberStep/NumberStep';
 import Img from '../../../components/Img';

@@ -9,30 +9,10 @@
   }
 }
 
-.cell-user-popup {
-  min-width: rem(216px);
-
+.action-popup {
   .control-list.secondary {
     .control-item {
       height: rem(48px);
-    }
-  }
-
-  p {
-    margin: 0;
-  }
-
-  .edit-user-input {
-    min-height: rem(32px);
-  }
-
-  .footer {
-    margin-top: 8px;
-
-    .btn {
-      min-height: auto;
-      font-size: $font-small;
-      padding: 8px;
     }
   }
 }

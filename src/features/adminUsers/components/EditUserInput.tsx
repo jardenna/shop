@@ -28,7 +28,7 @@ const EditUserInput = ({
   submitBtnLabel,
   isFormDirty,
 }: EditUserInputProps) => (
-  <section className="cell-user-popup">
+  <section className="delete-item">
     <Form
       submitBtnLabel={submitBtnLabel}
       disabled={!isFormDirty}

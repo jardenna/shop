@@ -1,8 +1,9 @@
-import { useLanguage } from '../features/language/useLanguage';
-import { BtnVariant, IconName } from '../types/enums';
-import Button from './Button';
-import Icon from './icons/Icon';
-import Popup from './popup/Popup';
+import { useLanguage } from '../../features/language/useLanguage';
+import { BtnVariant, IconName } from '../../types/enums';
+import Button from '../Button';
+import Icon from '../icons/Icon';
+import Popup from '../popup/Popup';
+import './_delete-item.scss';
 
 interface DeleteItemProps {
   ariaLabel: string;
@@ -17,7 +18,7 @@ const DeleteItem = ({ onDeleteItem, itemName, ariaLabel }: DeleteItemProps) => {
     <Popup
       placement="left-start"
       popupContent={({ close }) => (
-        <section className="cell-user-popup">
+        <section className="delete-item">
           <p>{language.sureToDelete}</p>
           <p>{itemName}?</p>
 

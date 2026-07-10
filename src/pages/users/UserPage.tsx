@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { Roles } from '../../app/api/apiTypes/adminApiTypes';
-import DeleteItem from '../../components/DeleteItem';
+import DeleteItem from '../../components/deleteItem/DeleteItem';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import Table from '../../components/sortTable/Table';
 import { createInitialFilters } from '../../components/sortTable/tableFilters/tableFiltersUtils';
