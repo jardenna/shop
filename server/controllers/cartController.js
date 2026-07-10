@@ -347,7 +347,7 @@ const deleteCart = asyncHandler(async (req, res) => {
 
   if (!cart) {
     return res.status(404).json({
-      message: t('cartNotFound', req.lang),
+      message: t('cartItemNotFound', req.lang),
     });
   }
 
