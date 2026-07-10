@@ -66,7 +66,6 @@ const CartItem = ({ language, cartList, onDeleteCartItem }: CartItemProps) => {
                 }
               />
             </div>
-
             <div className="actions">
               <IconBtn
                 iconName={IconName.Trash}

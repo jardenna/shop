@@ -28,7 +28,13 @@ export const authApiSlice = apiSlice.injectEndpoints({
         method: 'POST',
         body: user,
       }),
-      invalidatesTags: [TagTypesEnum.Auth],
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
+        const { data } = await queryFulfilled;
+
+        dispatch(
+          authApiSlice.util.updateQueryData('checkAuth', undefined, () => data),
+        );
+      },
     }),
     logout: builder.mutation<DefaultResponse, void>({
       query: () => ({
