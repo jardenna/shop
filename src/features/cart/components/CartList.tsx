@@ -9,13 +9,13 @@ import { translateKey } from '../../../utils/utils';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 import './_cart-list.scss';
 
-interface CartItemProps {
+interface CartListProps {
   cartList: CartProduct[];
   language: Record<string, string>;
   onDeleteCartItem: (cartItemId: string) => void;
 }
 
-const CartItem = ({ language, cartList, onDeleteCartItem }: CartItemProps) => {
+const CartList = ({ language, cartList, onDeleteCartItem }: CartListProps) => {
   const initialState = Object.fromEntries(
     cartList.map((cart) => [cart.id, cart.qty]),
   );
@@ -84,4 +84,4 @@ const CartItem = ({ language, cartList, onDeleteCartItem }: CartItemProps) => {
   );
 };
 
-export default CartItem;
+export default CartList;

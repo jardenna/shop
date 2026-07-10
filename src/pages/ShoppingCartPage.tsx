@@ -9,7 +9,7 @@ import {
   useDeleteCartMutation,
   useGetGuestCartQuery,
 } from '../features/cart/cartApiSlice';
-import CartItem from '../features/cart/components/CartItem';
+import CartList from '../features/cart/components/CartList';
 import { useActiveCart } from '../features/cart/useActiveCart';
 import { deleteGuestCartItem } from '../features/cartSlice';
 import { useLanguage } from '../features/language/useLanguage';
@@ -87,7 +87,7 @@ const ShoppingCartPage = () => {
             FallbackComponent={ErrorBoundaryFallback}
             onReset={() => refetch}
           >
-            <CartItem
+            <CartList
               cartList={cartItems}
               language={language}
               onDeleteCartItem={
