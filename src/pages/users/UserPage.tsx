@@ -172,7 +172,7 @@ const UserPage = () => {
                       onDeleteItem={() => {
                         handleDeleteUser(id, username);
                       }}
-                      itemname={username}
+                      itemName={username}
                     />
                   )}
                 </td>

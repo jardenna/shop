@@ -6,11 +6,11 @@ import { useLanguage } from '../../language/useLanguage';
 
 interface DeleteItemProps {
   ariaLabel: string;
-  itemname: string;
+  itemName: string;
   onDeleteItem: () => void;
 }
 
-const DeleteItem = ({ onDeleteItem, itemname, ariaLabel }: DeleteItemProps) => {
+const DeleteItem = ({ onDeleteItem, itemName, ariaLabel }: DeleteItemProps) => {
   const { language } = useLanguage();
 
   return (
@@ -19,7 +19,7 @@ const DeleteItem = ({ onDeleteItem, itemname, ariaLabel }: DeleteItemProps) => {
       popupContent={({ close }) => (
         <section className="cell-user-popup">
           <p>{language.sureToDelete}</p>
-          <p>{itemname}?</p>
+          <p>{itemName}?</p>
 
           <footer className="footer">
             <Button variant={BtnVariant.Secondary} onClick={close}>
