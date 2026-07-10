@@ -22,17 +22,7 @@ export const useMessagePopup = (messagePopupId?: string) => {
     componentType = 'toast',
     withDelay = false,
   }: MessagePopupWithoutId & { withDelay?: boolean }) => {
-    if (withDelay) {
-      setTimeout(() => {
-        dispatch(
-          addMessagePopup({
-            message,
-            messagePopupType,
-            componentType,
-          }),
-        );
-      }, 50);
-    } else {
+    const addPopup = () => {
       dispatch(
         addMessagePopup({
           message,
@@ -40,7 +30,14 @@ export const useMessagePopup = (messagePopupId?: string) => {
           componentType,
         }),
       );
+    };
+
+    if (withDelay) {
+      setTimeout(addPopup, 50);
+      return;
     }
+
+    addPopup();
   };
 
   const handleDeleteMessagePopup = () => {
