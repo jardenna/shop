@@ -6,6 +6,7 @@ import {
   GuestCardResponse,
   UpdateCartRequest,
 } from '../../app/api/apiTypes/cartApiTypes';
+import { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import { cartUrl, guestCartUrl } from '../../app/endpoints';
 
 export const cartApiSlice = apiSlice.injectEndpoints({
@@ -25,6 +26,13 @@ export const cartApiSlice = apiSlice.injectEndpoints({
         url: `${cartUrl}/${cartItemId}`,
         method: 'PATCH',
         body: cartItem,
+      }),
+      invalidatesTags: [TagTypesEnum.Carts],
+    }),
+    deleteCart: builder.mutation<DefaultResponse, string>({
+      query: (cartItemId) => ({
+        url: `${cartUrl}/${cartItemId}`,
+        method: 'DELETE',
       }),
       invalidatesTags: [TagTypesEnum.Carts],
     }),
@@ -48,4 +56,5 @@ export const {
   useGetCartQuery,
   useReplaceCartMutation,
   useGetGuestCartQuery,
+  useDeleteCartMutation,
 } = cartApiSlice;

@@ -48,6 +48,7 @@ category;Category;Kategori
 categoryCard;Category card;Kategori card
 categoryCreated;Category was created;Kategori blev tilføjet
 categoryDeleted;Category deleted;Kategori blev slettet
+cartItemDeleted;Item deleted;Vare blev slettet
 categoryIs;Category is;Kategori er
 categoryList;Category list;Kategori-liste
 categoryName;Category name;Kategori navn

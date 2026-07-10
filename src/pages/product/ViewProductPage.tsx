@@ -38,11 +38,12 @@ const ViewProductPage = () => {
       const result = await deleteProduct(params.id || '').unwrap();
 
       if (result.success) {
-        navigate(AdminPath.AdminProducts);
         onAddMessagePopup({
-          message: language.productDeleted,
+          message: result.message,
           withDelay: true,
         });
+
+        navigate(AdminPath.AdminProducts);
       } else {
         onAddMessagePopup({
           messagePopupType: 'error',

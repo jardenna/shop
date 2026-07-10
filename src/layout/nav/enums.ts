@@ -37,7 +37,7 @@ enum ShopPath {
   Product = 'product',
   Root = '/',
   ShoppingCart = 'shopping-cart',
-  Women = 'collection/women',
+  Women = '/collection/women',
 }
 
 enum LinkText {

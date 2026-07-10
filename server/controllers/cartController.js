@@ -336,4 +336,29 @@ const getGuestCartProducts = asyncHandler(async (req, res) => {
   });
 });
 
-export { createCart, getCart, getGuestCartProducts, updateCart };
+// @desc    Delete cart
+// @route   /api/cart/:id
+// @method  Delete
+// @access  Private
+const deleteCart = asyncHandler(async (req, res) => {
+  const cart = await Cart.findOne({
+    user: req.user._id,
+  });
+
+  if (!cart) {
+    return res.status(404).json({
+      message: t('cartItemNotFound', req.lang),
+    });
+  }
+
+  cart.cartItems.pull(req.params.id);
+
+  await cart.save();
+
+  res.status(200).json({
+    success: true,
+    message: t('cartItemDeleted', req.lang),
+  });
+});
+
+export { createCart, deleteCart, getCart, getGuestCartProducts, updateCart };
