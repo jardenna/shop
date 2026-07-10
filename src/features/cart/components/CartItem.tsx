@@ -12,9 +12,10 @@ import './_cart-list.scss';
 interface CartItemProps {
   cartList: CartProduct[];
   language: Record<string, string>;
+  onDeleteCartItem: (cartItemId: string) => Promise<void>;
 }
 
-const CartItem = ({ language, cartList }: CartItemProps) => {
+const CartItem = ({ language, cartList, onDeleteCartItem }: CartItemProps) => {
   const initialState = Object.fromEntries(
     cartList.map((cart) => [cart.id, cart.qty]),
   );
@@ -40,9 +41,7 @@ const CartItem = ({ language, cartList }: CartItemProps) => {
         <li key={cart.id} className="cart-list-item">
           <article className="cart-item">
             <Img src={cart.image} alt="" className="cart-item-image" />
-
             <h2 className="cart-item-title">{cart.productName}</h2>
-
             <div className="price-group">
               <ProductPrice price={cart.price} discount={cart.discount} />
             </div>
@@ -73,7 +72,7 @@ const CartItem = ({ language, cartList }: CartItemProps) => {
                 iconName={IconName.Trash}
                 ariaLabel={`${language.delete} ${cart.productName}`}
                 onClick={() => {
-                  console.log(cart.id);
+                  onDeleteCartItem(cart.id);
                 }}
               />
 
