@@ -12,7 +12,7 @@ import './_cart-list.scss';
 interface CartItemProps {
   cartList: CartProduct[];
   language: Record<string, string>;
-  onDeleteCartItem: (cartItemId: string) => Promise<void>;
+  onDeleteCartItem: (cartItemId: string) => void;
 }
 
 const CartItem = ({ language, cartList, onDeleteCartItem }: CartItemProps) => {

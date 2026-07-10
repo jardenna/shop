@@ -1,5 +1,6 @@
 import { skipToken } from '@reduxjs/toolkit/query';
 import { ErrorBoundary } from 'react-error-boundary';
+import { useAppDispatch } from '../app/hooks';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useMessagePopup } from '../components/messagePopup/useMessagePopup';
 import SkeletonCard from '../components/skeleton/SkeletonCard';
@@ -10,6 +11,7 @@ import {
 } from '../features/cart/cartApiSlice';
 import CartItem from '../features/cart/components/CartItem';
 import { useActiveCart } from '../features/cart/useActiveCart';
+import { deleteGuestCartItem } from '../features/cartSlice';
 import { useLanguage } from '../features/language/useLanguage';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import { ShopPath } from '../layout/nav/enums';
@@ -18,6 +20,7 @@ import MainPageContainer from './pageContainer/MainPageContainer';
 import './ShoppingCartPage.styles.scss';
 
 const ShoppingCartPage = () => {
+  const dispatch = useAppDispatch();
   const { currentUser, isAuthReady } = useAuth();
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
@@ -54,6 +57,10 @@ const ShoppingCartPage = () => {
     }
   };
 
+  const handleDeleteGuestCart = (cartItemId: string) => {
+    dispatch(deleteGuestCartItem(cartItemId));
+  };
+
   const cartItems = currentUser ? apiCartList?.cartItems : guestCart?.products;
 
   if (!cartItems) {
@@ -83,7 +90,9 @@ const ShoppingCartPage = () => {
             <CartItem
               cartList={cartItems}
               language={language}
-              onDeleteCartItem={handleDeleteCartItem}
+              onDeleteCartItem={
+                currentUser ? handleDeleteCartItem : handleDeleteGuestCart
+              }
             />
           </ErrorBoundary>
         </section>

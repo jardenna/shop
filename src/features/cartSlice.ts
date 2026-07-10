@@ -25,10 +25,18 @@ const cartSlice = createSlice({
 
       cartStorageUtil.save(state.cartList);
     },
+    deleteGuestCartItem: (state, action: PayloadAction<string>) => {
+      state.cartList = state.cartList.filter(
+        (cart) => cart.productId !== action.payload,
+      );
+
+      cartStorageUtil.save(state.cartList);
+    },
   },
 });
 
-export const { addCartItem, replaceCartItem } = cartSlice.actions;
+export const { addCartItem, replaceCartItem, deleteGuestCartItem } =
+  cartSlice.actions;
 
 export const selectCartList = (state: RootState) => state.cartList.cartList;
 
