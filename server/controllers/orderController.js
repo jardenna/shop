@@ -1,7 +1,8 @@
-import { PAYMENT_STATUS, VAT_SHARE } from '../config/constants.js';
+import { PAYMENT_STATUS } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Order from '../models/ordersModel.js';
 import Product from '../models/productModel.js';
+import { calculateCartSummary } from '../services/cartSummary.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 import { validateFakePayment } from '../utils/validateFakePayment.js';
@@ -41,59 +42,15 @@ const createOrder = asyncHandler(async (req, res) => {
     });
   }
 
-  const productsWithDiscountedPrices = databaseProducts.map(
-    (databaseProduct) => {
-      const matchingOrderItem = orderItemsMap.get(
-        databaseProduct._id.toString(),
-      );
+  const summary = calculateCartSummary(databaseProducts, orderItemsMap);
 
-      if (!matchingOrderItem?.qty || matchingOrderItem.qty < 1) {
-        return res.status(404).json({
-          success: false,
-          message: t('qtyMustBeAtLeast', req.lang),
-        });
-      }
-
-      const discountedPrice =
-        databaseProduct.price -
-        (databaseProduct.price * databaseProduct.discount) / 100;
-
-      const subtotal = discountedPrice * matchingOrderItem.qty;
-
-      const calculatedTaxPrice = Math.round(subtotal * VAT_SHARE * 100) / 100;
-
-      const noTax = subtotal - calculatedTaxPrice;
-
-      return {
-        productId: databaseProduct._id,
-        productName: databaseProduct.productName,
-        image: databaseProduct.images[0],
-        price: discountedPrice,
-        taxPrice: calculatedTaxPrice,
-        subtotal,
-        noTax,
-        qty: matchingOrderItem.qty,
-      };
-    },
-  );
-
-  const itemPrice = productsWithDiscountedPrices.reduce(
-    (totalPrice, productItem) => {
-      return totalPrice + productItem.subtotal;
-    },
-    0,
-  );
-
-  const taxPrice = productsWithDiscountedPrices.reduce(
-    (totalPrice, productItem) => {
-      return totalPrice + productItem.taxPrice;
-    },
-    0,
-  );
-
-  const shippingPrice = itemPrice >= 1500 ? 0 : 49;
-
-  const totalPrice = itemPrice + shippingPrice;
+  const {
+    productsWithDiscountedPrices,
+    itemPrice,
+    taxPrice,
+    shippingPrice,
+    totalPrice,
+  } = summary;
 
   const order = new Order({
     user: req.user._id,
