@@ -1,34 +1,37 @@
-import Button from '../../../components/Button';
-import Icon from '../../../components/icons/Icon';
-import Popup from '../../../components/popup/Popup';
-import { BtnVariant, IconName } from '../../../types/enums';
-import { useLanguage } from '../../language/useLanguage';
+import { useLanguage } from '../../features/language/useLanguage';
+import { BtnVariant, IconName } from '../../types/enums';
+import Button from '../Button';
+import Icon from '../icons/Icon';
+import Popup from '../popup/Popup';
+import './_delete-item.scss';
 
-type DeleteUserProps = {
-  onDeleteUser: any;
-  username: string;
-};
+interface DeleteItemProps {
+  ariaLabel: string;
+  itemName: string;
+  onDeleteItem: () => void;
+}
 
-const DeleteUser = ({ onDeleteUser, username }: DeleteUserProps) => {
+const DeleteItem = ({ onDeleteItem, itemName, ariaLabel }: DeleteItemProps) => {
   const { language } = useLanguage();
 
   return (
     <Popup
       placement="left-start"
       popupContent={({ close }) => (
-        <section className="cell-user-popup">
+        <section className="delete-item">
           <p>{language.sureToDelete}</p>
-          <p>{username}?</p>
+          <p>{itemName}?</p>
 
           <footer className="footer">
             <Button variant={BtnVariant.Secondary} onClick={close}>
               {language.cancel}
             </Button>
+
             <Button
               variant={BtnVariant.Danger}
               onClick={() => {
-                onDeleteUser();
                 close();
+                onDeleteItem();
               }}
             >
               {language.delete}
@@ -37,11 +40,11 @@ const DeleteUser = ({ onDeleteUser, username }: DeleteUserProps) => {
         </section>
       )}
       triggerBtnClassName="danger"
-      ariaLabel={language.deleteUser}
+      ariaLabel={ariaLabel}
     >
       <Icon iconName={IconName.Trash} />
     </Popup>
   );
 };
 
-export default DeleteUser;
+export default DeleteItem;

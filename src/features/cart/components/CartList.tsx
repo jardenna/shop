@@ -1,21 +1,20 @@
 import { CartProduct } from '../../../app/api/apiTypes/cartApiTypes';
+import DeleteItem from '../../../components/deleteItem/DeleteItem';
 import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import NumberStep from '../../../components/formElements/numberStep/NumberStep';
-import IconBtn from '../../../components/IconBtn';
 import Img from '../../../components/Img';
 import { useFormValidation } from '../../../hooks/useFormValidation';
-import { IconName } from '../../../types/enums';
 import { translateKey } from '../../../utils/utils';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 import './_cart-list.scss';
 
-interface CartItemProps {
+interface CartListProps {
   cartList: CartProduct[];
   language: Record<string, string>;
   onDeleteCartItem: (cartItemId: string) => void;
 }
 
-const CartItem = ({ language, cartList, onDeleteCartItem }: CartItemProps) => {
+const CartList = ({ language, cartList, onDeleteCartItem }: CartListProps) => {
   const initialState = Object.fromEntries(
     cartList.map((cart) => [cart.id, cart.qty]),
   );
@@ -67,14 +66,20 @@ const CartItem = ({ language, cartList, onDeleteCartItem }: CartItemProps) => {
               />
             </div>
             <div className="actions">
-              <IconBtn
+              {/* <IconBtn
                 iconName={IconName.Trash}
                 ariaLabel={`${language.delete} ${cart.productName}`}
                 onClick={() => {
                   onDeleteCartItem(cart.id);
                 }}
+              /> */}
+              <DeleteItem
+                ariaLabel={`${language.delete} ${cart.productName}`}
+                onDeleteItem={() => {
+                  onDeleteCartItem(cart.id);
+                }}
+                itemName={cart.productName}
               />
-
               <FavoriteHeart id={cart.productId} />
             </div>
           </article>
@@ -84,4 +89,4 @@ const CartItem = ({ language, cartList, onDeleteCartItem }: CartItemProps) => {
   );
 };
 
-export default CartItem;
+export default CartList;

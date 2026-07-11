@@ -190,6 +190,7 @@ image;Image;Foto
 imageRequired;Please insert image(s);Indsæt venligst billede(r)
 inactive;Inactive;Inaktiv
 inStock;In stock;På lager
+invalidCartItemId;Invalid item ID.;Ugyldigt vareid.
 invalidColor;The selected color is no longer available;Den valgte farve er ikke længere tilgængelig
 invalidDiscount;Invalid discount. Price cannot be calculated correctly;Ugyldig rabat. Prisen kan ikke beregnes korrekt
 invalidFileType;Invalid file type;Ugyldig fil type
