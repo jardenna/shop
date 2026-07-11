@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import { CartProduct } from '../../../app/api/apiTypes/cartApiTypes';
 import DeleteItem from '../../../components/deleteItem/DeleteItem';
 import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
@@ -11,6 +12,7 @@ import { ProductQuantityMap } from './CartList';
 interface CartItemProps {
   cart: CartProduct;
   language: Record<string, string>;
+  linkTo: string;
   quantityByProductId: ProductQuantityMap;
   value: number;
   onChange: (event: ChangeInputType) => void;
@@ -26,22 +28,28 @@ const CartItem = ({
   onChange,
   onNumberStepChange,
   onDeleteCartItem,
+  linkTo,
 }: CartItemProps) => (
   <article className="cart-item">
-    <Img src={cart.image} alt="" className="cart-item-image" />
-    <h2 className="cart-item-title">{cart.productName}</h2>
-    <div className="price-group">
-      <ProductPrice price={cart.price * value} discount={cart.discount} />
-    </div>
+    <Link to={linkTo} className="cart-item-image">
+      <Img src={cart.image} alt="" />
+    </Link>
+    <Link to={linkTo} className="cart-item-title">
+      <h2>{cart.productName}</h2>
+    </Link>
 
-    <div className="cart-item-meta">
+    <Link to={linkTo} className="price-group">
+      <ProductPrice price={cart.price * value} discount={cart.discount} />
+    </Link>
+
+    <Link to={linkTo} className="cart-item-meta">
       <span>
         {language.color}: {translateKey(cart.color, language)}
       </span>
       <span>
         {language.size}: {cart.size}
       </span>
-    </div>
+    </Link>
 
     <div className="quantity">
       <NumberStep

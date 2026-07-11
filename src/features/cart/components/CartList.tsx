@@ -1,4 +1,3 @@
-import { Link } from 'react-router';
 import { CartProduct } from '../../../app/api/apiTypes/cartApiTypes';
 import VisuallyHidden from '../../../components/VisuallyHidden';
 import { useFormValidation } from '../../../hooks/useFormValidation';
@@ -40,22 +39,21 @@ const CartList = ({ language, cartList, onDeleteCartItem }: CartListProps) => {
     <ul className="cart-list">
       {cartList.map((cart) => (
         <li key={cart.id} className="cart-list-item">
-          <Link to={`${ShopPath.AllProducts}/${cart.productId}`}>
-            <VisuallyHidden>
-              {language.view} {cart.productName}
-            </VisuallyHidden>
-            <CartItem
-              cart={cart}
-              language={language}
-              quantityByProductId={quantityByProductId}
-              value={values[cart.id]}
-              onDeleteCartItem={() => {
-                onDeleteCartItem(cart.id);
-              }}
-              onNumberStepChange={onNumberStepChange}
-              onChange={onChange}
-            />
-          </Link>
+          <VisuallyHidden>
+            {language.view} {cart.productName}
+          </VisuallyHidden>
+          <CartItem
+            cart={cart}
+            language={language}
+            quantityByProductId={quantityByProductId}
+            value={values[cart.id]}
+            onDeleteCartItem={() => {
+              onDeleteCartItem(cart.id);
+            }}
+            onNumberStepChange={onNumberStepChange}
+            onChange={onChange}
+            linkTo={`${ShopPath.AllProducts}/${cart.productId}`}
+          />
         </li>
       ))}
     </ul>
