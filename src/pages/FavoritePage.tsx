@@ -30,8 +30,9 @@ const FavoritePage = () => {
                   showAdToCartBtn
                   showSizeOverlay
                   product={product}
-                  linkTo={`${ShopPath.FavoritesProduct}/${product.id}`}
+                  linkTo={`${ShopPath.AllProducts}/${product.id}`}
                 />
+                ff
               </li>
             ))}
           </ul>
