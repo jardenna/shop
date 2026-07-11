@@ -28,6 +28,7 @@ import {
   useAddToCartMutation,
   useReplaceCartMutation,
 } from '../../../cart/cartApiSlice';
+import { ProductQuantityMap } from '../../../cart/components/CartList';
 import { useActiveCart } from '../../../cart/useActiveCart';
 import { addCartItem, replaceCartItem } from '../../../cartSlice';
 import { useLanguage } from '../../../language/useLanguage';
@@ -213,7 +214,7 @@ const SingleProductForm = ({
       ? language.selectedColor
       : `${language.selectedColor}: ${translateKey(values.color, language)}`;
 
-  const quantityByProductId = activeCartList.reduce<Record<string, number>>(
+  const quantityByProductId = activeCartList.reduce<ProductQuantityMap>(
     (result, cartItem) => {
       // eslint-disable-next-line no-param-reassign
       result[cartItem.productId] =
@@ -223,7 +224,6 @@ const SingleProductForm = ({
     },
     {},
   );
-
   const currentProductQuantity = quantityByProductId[id] ?? 0;
 
   return (
