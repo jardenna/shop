@@ -5,7 +5,8 @@ import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import NumberStep from '../../../components/formElements/numberStep/NumberStep';
 import Img from '../../../components/Img';
 import { ChangeInputType } from '../../../types/types';
-import { translateKey } from '../../../utils/utils';
+import { minInStock, translateKey } from '../../../utils/utils';
+import InStock from '../../shop/components/InStock';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 import { ProductQuantityMap } from './CartList';
 
@@ -49,6 +50,11 @@ const CartItem = ({
       <span>
         {language.size}: {cart.size}
       </span>
+      {cart.countInStock < minInStock && (
+        <span className="in-stock-container">
+          <InStock stock={cart.countInStock} />
+        </span>
+      )}
     </Link>
 
     <div className="quantity">

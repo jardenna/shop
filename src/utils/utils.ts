@@ -117,6 +117,7 @@ function calculateBtnsRange(
 const ariaInfoTitle = (info: string) => `${info}-title`;
 export const maxDiscount = 90;
 export const minDiscount = 0;
+export const minInStock = 5;
 
 export {
   allowedExtensions,

@@ -1,12 +1,14 @@
 import Icon from '../../../components/icons/Icon';
 import { IconName } from '../../../types/enums';
+import { minInStock } from '../../../utils/utils';
 import { useLanguage } from '../../language/useLanguage';
 
 type InStockProps = {
   stock: number;
+  minStock?: number;
 };
 
-const InStock = ({ stock }: InStockProps) => {
+const InStock = ({ stock, minStock = minInStock }: InStockProps) => {
   const { language } = useLanguage();
 
   const getStockStatus = ({ stock }: InStockProps) => {
@@ -17,7 +19,7 @@ const InStock = ({ stock }: InStockProps) => {
       };
     }
 
-    if (stock <= 5) {
+    if (stock <= minStock) {
       return {
         icon: IconName.Warning,
         message: `${language.lowStock}: ${stock} ${language.left}`,

@@ -31,26 +31,6 @@
     }
   }
 
-  .in-stock-container {
-    display: flex;
-    gap: 12px;
-    margin-block: 16px;
-
-    @include max-size($small) {
-      flex-direction: column;
-    }
-
-    .btn-ghost {
-      border-bottom: 1px solid currentcolor;
-    }
-  }
-
-  .in-stock {
-    display: flex;
-    gap: 4px;
-    align-items: center;
-  }
-
   .product-price {
     font-size: $font-large;
   }
