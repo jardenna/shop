@@ -46,8 +46,12 @@ const CartList = ({ language, cartList, onDeleteCartItem }: CartListProps) => {
             </div>
 
             <div className="cart-item-meta">
-              <span>{translateKey(cart.color, language)}</span>
-              <span>SIZE {cart.size}</span>
+              <span>
+                {language.color}: {translateKey(cart.color, language)}
+              </span>
+              <span>
+                {language.size}: {cart.size}
+              </span>
             </div>
 
             <div className="quantity">
@@ -66,13 +70,6 @@ const CartList = ({ language, cartList, onDeleteCartItem }: CartListProps) => {
               />
             </div>
             <div className="actions">
-              {/* <IconBtn
-                iconName={IconName.Trash}
-                ariaLabel={`${language.delete} ${cart.productName}`}
-                onClick={() => {
-                  onDeleteCartItem(cart.id);
-                }}
-              /> */}
               <DeleteItem
                 ariaLabel={`${language.delete} ${cart.productName}`}
                 onDeleteItem={() => {
