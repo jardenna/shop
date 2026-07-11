@@ -31,7 +31,7 @@ const CartItem = ({
     <Img src={cart.image} alt="" className="cart-item-image" />
     <h2 className="cart-item-title">{cart.productName}</h2>
     <div className="price-group">
-      <ProductPrice price={cart.price} discount={cart.discount} />
+      <ProductPrice price={cart.price * value} discount={cart.discount} />
     </div>
 
     <div className="cart-item-meta">
