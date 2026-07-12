@@ -198,6 +198,7 @@ invalidRequestProductIds;Invalid product IDs provided;Ugyldige produkt-id'er sen
 invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for planlagt dato
 invalidSize;The selected size is no longer available;Den valgte størrelse er ikke længere tilgængelig
 invalidUserData;Invalid user data;Ugyldig bruger data
+invalidQuantity;Quantity must be at least 1;Antallet skal være mindst 1
 item;item;vare
 items;items;varer
 itemsUpdated;Items updated to;Varer opdateret til
