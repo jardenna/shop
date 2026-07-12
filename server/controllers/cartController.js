@@ -7,13 +7,13 @@ import { getProductsMap } from '../utils/cartUtils.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 
+import { mergeCartItems } from '../utils/cartUtils.js';
+import { validateCartItems } from '../utils/validateCartItems.js';
 import {
   cartItemIdentifier,
   findDatabaseProduct,
-  mergeCartItems,
   validateVariant,
-} from '../utils/cartUtils.js';
-import { validateCartItems } from '../utils/validateCartItems.js';
+} from '../utils/validateShopProducts.js';
 
 // @desc    Create cart
 // @route   /api/cart
