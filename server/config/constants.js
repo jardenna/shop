@@ -35,6 +35,15 @@ const KIDS_SHOE_SIZES = [
 
 const CLOTHING_SIZES = ['S', 'M', 'L', 'XL'];
 
+export const ALLOWED_SIZES = [
+  ...new Set([
+    ...SHOE_SIZES,
+    ...MEN_SHOE_SIZES,
+    ...KIDS_SHOE_SIZES,
+    ...CLOTHING_SIZES,
+  ]),
+];
+
 const MB = 1024 * 1024;
 const MAX_FILE_SIZE = 1 * MB;
 const MAX_FILES = 5;
