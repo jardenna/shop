@@ -6,6 +6,11 @@ import { calculateCartSummary } from '../services/cartSummary.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 import { validateFakePayment } from '../utils/validateFakePayment.js';
+import {
+  cartItemIdentifier,
+  findDatabaseProduct,
+  validateVariant,
+} from '../utils/validateShopProducts.js';
 
 // @desc    Create orders
 // @route   /api/orders
@@ -38,12 +43,6 @@ const createOrder = asyncHandler(async (req, res) => {
     });
   }
 
-  const findDatabaseProduct = ({ databaseProducts, productItem }) => {
-    return databaseProducts.find(
-      (product) => product._id.toString() === productItem.productId,
-    );
-  };
-
   const productItems = orderItems.map((orderItem) => ({
     productId: orderItem.product,
     qty: orderItem.qty,
@@ -54,21 +53,12 @@ const createOrder = asyncHandler(async (req, res) => {
   for (const productItem of productItems) {
     const databaseProduct = findDatabaseProduct({
       databaseProducts,
-      productItem,
+      cartItem: productItem,
     });
 
-    const validateVariant = ({ databaseProduct, productItem }) => {
-      return (
-        databaseProduct.sizes.includes(productItem.size) &&
-        databaseProduct.colors.includes(productItem.color)
-      );
-    };
-    const isValidVariant = validateVariant({ databaseProduct, productItem });
-
-    const cartItemIdentifier = (cartItem) => ({
-      productId: cartItem.productId,
-      size: cartItem.size,
-      color: cartItem.color,
+    const isValidVariant = validateVariant({
+      databaseProduct,
+      cartItem: productItem,
     });
 
     if (!isValidVariant) {
