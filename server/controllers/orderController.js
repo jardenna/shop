@@ -7,8 +7,8 @@ import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 import { validateFakePayment } from '../utils/validateFakePayment.js';
 import {
-  cartItemIdentifier,
   findDatabaseProduct,
+  getVariantIdentity,
   validateVariant,
 } from '../utils/validateShopProducts.js';
 
@@ -65,7 +65,7 @@ const createOrder = asyncHandler(async (req, res) => {
       return res.status(400).json({
         success: false,
         message: 'The selected variant does not exist',
-        cartItem: cartItemIdentifier(productItem),
+        cartItem: getVariantIdentity(productItem),
       });
     }
   }

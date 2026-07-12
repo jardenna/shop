@@ -10,8 +10,8 @@ import { t } from '../utils/translator.js';
 import { mergeCartItems } from '../utils/cartUtils.js';
 import { validateCartItems } from '../utils/validateCartItems.js';
 import {
-  cartItemIdentifier,
   findDatabaseProduct,
+  getVariantIdentity,
   validateVariant,
 } from '../utils/validateShopProducts.js';
 
@@ -76,7 +76,7 @@ const createCart = asyncHandler(async (req, res) => {
       return res.status(400).json({
         success: false,
         message: t('temporarilyOutOfStock', req.lang),
-        cartItem: cartItemIdentifier(cartItem),
+        cartItem: getVariantIdentity(cartItem),
       });
     }
 
@@ -89,7 +89,7 @@ const createCart = asyncHandler(async (req, res) => {
       return res.status(400).json({
         success: false,
         message: 'The selected variant does not exist',
-        cartItem: cartItemIdentifier(cartItem),
+        cartItem: getVariantIdentity(cartItem),
       });
     }
   }

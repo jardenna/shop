@@ -11,10 +11,10 @@ const validateVariant = ({ databaseProduct, cartItem }) => {
   );
 };
 
-const cartItemIdentifier = (cartItem) => ({
+const getVariantIdentity = (cartItem) => ({
   productId: cartItem.productId,
   size: cartItem.size,
   color: cartItem.color,
 });
 
-export { cartItemIdentifier, findDatabaseProduct, validateVariant };
+export { findDatabaseProduct, getVariantIdentity, validateVariant };
