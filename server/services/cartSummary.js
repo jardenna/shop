@@ -54,7 +54,6 @@ export const calculateCartSummary = async (productItems) => {
   const shippingPrice = itemPrice >= 1500 ? 0 : 49;
 
   return {
-    orderItems: summaryItems,
     itemPrice,
     taxPrice,
     shippingPrice,

@@ -12,6 +12,8 @@ import {
   validateVariant,
 } from '../utils/validateShopProducts.js';
 
+import { buildOrderItems } from '../utils/buildOrderItems.js';
+
 // @desc    Create orders
 // @route   /api/orders
 // @method  Post
@@ -79,9 +81,14 @@ const createOrder = asyncHandler(async (req, res) => {
 
   const summary = await calculateCartSummary(productItems);
 
+  const createdOrders = buildOrderItems({
+    databaseProducts,
+    productItems,
+  });
+
   const order = new Order({
     user: req.user._id,
-    orderItems: summary.orderItems,
+    orderItems: createdOrders,
     shippingAddress,
     paymentStatus: PAYMENT_STATUS.PENDING,
     itemPrice: summary.itemPrice,
