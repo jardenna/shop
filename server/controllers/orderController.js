@@ -38,12 +38,47 @@ const createOrder = asyncHandler(async (req, res) => {
     });
   }
 
+  const findDatabaseProduct = ({ databaseProducts, productItem }) => {
+    return databaseProducts.find(
+      (product) => product._id.toString() === productItem.productId,
+    );
+  };
+
   const productItems = orderItems.map((orderItem) => ({
     productId: orderItem.product,
     qty: orderItem.qty,
     color: orderItem.color,
     size: orderItem.size,
   }));
+
+  for (const productItem of productItems) {
+    const databaseProduct = findDatabaseProduct({
+      databaseProducts,
+      productItem,
+    });
+
+    const validateVariant = ({ databaseProduct, productItem }) => {
+      return (
+        databaseProduct.sizes.includes(productItem.size) &&
+        databaseProduct.colors.includes(productItem.color)
+      );
+    };
+    const isValidVariant = validateVariant({ databaseProduct, productItem });
+
+    const cartItemIdentifier = (cartItem) => ({
+      productId: cartItem.productId,
+      size: cartItem.size,
+      color: cartItem.color,
+    });
+
+    if (!isValidVariant) {
+      return res.status(400).json({
+        success: false,
+        message: 'The selected variant does not exist',
+        cartItem: cartItemIdentifier(productItem),
+      });
+    }
+  }
 
   if (productItems.some((productItem) => productItem.qty < 1)) {
     return res.status(400).json({
