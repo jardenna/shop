@@ -10,7 +10,9 @@ export const calculateCartSummary = async (productItems) => {
     _id: {
       $in: uniqueProductIds,
     },
-  }).lean();
+  })
+    .select('price discount')
+    .lean();
 
   const productItemsMap = new Map(
     productItems.map((item) => [item.productId.toString(), item]),
@@ -24,20 +26,16 @@ export const calculateCartSummary = async (productItems) => {
       (databaseProduct.price * databaseProduct.discount) / 100;
 
     const subtotal = price * productItem.qty;
-
     const taxPrice = Math.round(subtotal * VAT_SHARE * 100) / 100;
 
+    const discountPrice =
+      ((databaseProduct.price * databaseProduct.discount) / 100) *
+      productItem.qty;
+
     return {
-      productId: databaseProduct._id,
-      productName: databaseProduct.productName,
-      image: databaseProduct.images[0],
-      qty: productItem.qty,
-      color: productItem.color,
-      size: productItem.size,
-      price,
       subtotal,
       taxPrice,
-      noTax: subtotal - taxPrice,
+      discountPrice,
     };
   });
 
@@ -52,9 +50,14 @@ export const calculateCartSummary = async (productItems) => {
   );
 
   const shippingPrice = itemPrice >= 1500 ? 0 : 49;
+  const discountPrice = summaryItems.reduce(
+    (totalPrice, summaryItem) => totalPrice + summaryItem.discountPrice,
+    0,
+  );
 
   return {
     itemPrice,
+    discountPrice,
     taxPrice,
     shippingPrice,
     totalPrice: itemPrice + shippingPrice,
