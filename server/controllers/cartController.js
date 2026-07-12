@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
 import Product from '../models/productModel.js';
+import { calculateCartSummary } from '../services/cartSummary.js';
 import { getProductsMap } from '../utils/cartUtils.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
@@ -272,9 +273,12 @@ const getCart = asyncHandler(async (req, res) => {
     };
   });
 
+  const summary = await calculateCartSummary(cart.cartItems);
+
   return res.status(200).json({
     ...formatMongoData(cart),
     cartItems,
+    summary,
   });
 });
 

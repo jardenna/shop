@@ -1,64 +1,61 @@
 import { VAT_SHARE } from '../config/constants.js';
-export const calculateCartSummary = (databaseProducts, orderItemsMap) => {
-  const productsWithDiscountedPrices = databaseProducts.map(
-    (databaseProduct) => {
-      const matchingOrderItem = orderItemsMap.get(
-        databaseProduct._id.toString(),
-      );
+import Product from '../models/productModel.js';
 
-      if (!matchingOrderItem?.qty || matchingOrderItem.qty < 1) {
-        return res.status(404).json({
-          success: false,
-          message: t('qtyMustBeAtLeast', req.lang),
-        });
-      }
+export const calculateCartSummary = async (productItems) => {
+  const uniqueProductIds = [
+    ...new Set(productItems.map((item) => item.productId)),
+  ];
 
-      const discountedPrice =
-        databaseProduct.price -
-        (databaseProduct.price * databaseProduct.discount) / 100;
-
-      const subtotal = discountedPrice * matchingOrderItem.qty;
-
-      const calculatedTaxPrice = Math.round(subtotal * VAT_SHARE * 100) / 100;
-
-      const noTax = subtotal - calculatedTaxPrice;
-
-      return {
-        productId: databaseProduct._id,
-        productName: databaseProduct.productName,
-        image: databaseProduct.images[0],
-        price: discountedPrice,
-        taxPrice: calculatedTaxPrice,
-        subtotal,
-        noTax,
-        qty: matchingOrderItem.qty,
-      };
+  const databaseProducts = await Product.find({
+    _id: {
+      $in: uniqueProductIds,
     },
+  }).lean();
+
+  const productItemsMap = new Map(
+    productItems.map((item) => [item.productId.toString(), item]),
   );
 
-  const itemPrice = productsWithDiscountedPrices.reduce(
-    (totalPrice, productItem) => {
-      return totalPrice + productItem.subtotal;
-    },
+  const summaryItems = databaseProducts.map((databaseProduct) => {
+    const productItem = productItemsMap.get(databaseProduct._id.toString());
+
+    const price =
+      databaseProduct.price -
+      (databaseProduct.price * databaseProduct.discount) / 100;
+
+    const subtotal = price * productItem.qty;
+
+    const taxPrice = Math.round(subtotal * VAT_SHARE * 100) / 100;
+
+    return {
+      productId: databaseProduct._id,
+      productName: databaseProduct.productName,
+      image: databaseProduct.images[0],
+      qty: productItem.qty,
+      price,
+      subtotal,
+      taxPrice,
+      noTax: subtotal - taxPrice,
+    };
+  });
+
+  const itemPrice = summaryItems.reduce(
+    (totalPrice, summaryItem) => totalPrice + summaryItem.subtotal,
     0,
   );
 
-  const taxPrice = productsWithDiscountedPrices.reduce(
-    (totalPrice, productItem) => {
-      return totalPrice + productItem.taxPrice;
-    },
+  const taxPrice = summaryItems.reduce(
+    (totalPrice, summaryItem) => totalPrice + summaryItem.taxPrice,
     0,
   );
 
   const shippingPrice = itemPrice >= 1500 ? 0 : 49;
 
-  const totalPrice = itemPrice + shippingPrice;
-
   return {
-    productsWithDiscountedPrices,
+    orderItems: summaryItems,
     itemPrice,
     taxPrice,
     shippingPrice,
-    totalPrice,
+    totalPrice: itemPrice + shippingPrice,
   };
 };

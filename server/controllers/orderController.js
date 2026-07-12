@@ -25,10 +25,6 @@ const createOrder = asyncHandler(async (req, res) => {
     ...new Set(orderItems.map((orderItem) => orderItem.product)),
   ];
 
-  const orderItemsMap = new Map(
-    orderItems.map((orderItem) => [orderItem.product, orderItem]),
-  );
-
   const databaseProducts = await Product.find({
     _id: {
       $in: uniqueProductIds,
@@ -42,25 +38,29 @@ const createOrder = asyncHandler(async (req, res) => {
     });
   }
 
-  const summary = calculateCartSummary(databaseProducts, orderItemsMap);
+  const productItems = orderItems.map((orderItem) => ({
+    productId: orderItem.product,
+    qty: orderItem.qty,
+  }));
 
-  const {
-    productsWithDiscountedPrices,
-    itemPrice,
-    taxPrice,
-    shippingPrice,
-    totalPrice,
-  } = summary;
+  if (productItems.some((productItem) => productItem.qty < 1)) {
+    return res.status(400).json({
+      success: false,
+      message: t('qtyMustBeAtLeast', req.lang),
+    });
+  }
+
+  const summary = await calculateCartSummary(productItems);
 
   const order = new Order({
     user: req.user._id,
-    orderItems: productsWithDiscountedPrices,
+    orderItems: summary.orderItems,
     shippingAddress,
     paymentStatus: PAYMENT_STATUS.PENDING,
-    itemPrice,
-    taxPrice,
-    shippingPrice,
-    totalPrice,
+    itemPrice: summary.itemPrice,
+    taxPrice: summary.taxPrice,
+    shippingPrice: summary.shippingPrice,
+    totalPrice: summary.totalPrice,
   });
 
   const createdOrder = await order.save();
