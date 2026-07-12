@@ -1,6 +1,7 @@
 import { model, Schema } from 'mongoose';
 import {
   ALLOWED_PAYMENT_METHODS,
+  ALLOWED_SIZES,
   PAYMENT_STATUS_ENUM,
 } from '../config/constants.js';
 
@@ -17,6 +18,8 @@ const orderModelSchema = new Schema(
       {
         productName: { type: String, required: true },
         qty: { type: Number, required: true },
+        color: { type: String, required: true },
+        size: { type: String, required: true, enum: ALLOWED_SIZES },
         image: { type: String, required: true },
         price: { type: Number, required: true },
         productId: {

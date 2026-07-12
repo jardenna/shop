@@ -32,6 +32,8 @@ export const calculateCartSummary = async (productItems) => {
       productName: databaseProduct.productName,
       image: databaseProduct.images[0],
       qty: productItem.qty,
+      color: productItem.color,
+      size: productItem.size,
       price,
       subtotal,
       taxPrice,

@@ -41,6 +41,8 @@ const createOrder = asyncHandler(async (req, res) => {
   const productItems = orderItems.map((orderItem) => ({
     productId: orderItem.product,
     qty: orderItem.qty,
+    color: orderItem.color,
+    size: orderItem.size,
   }));
 
   if (productItems.some((productItem) => productItem.qty < 1)) {
@@ -64,7 +66,6 @@ const createOrder = asyncHandler(async (req, res) => {
   });
 
   const createdOrder = await order.save();
-
   res.status(201).json(createdOrder);
 });
 
