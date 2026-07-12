@@ -130,3 +130,23 @@
   width: rem(100px);
   height: rem(120px);
 }
+
+.in-stock-container {
+  display: flex;
+  gap: 12px;
+  margin-block: 16px;
+
+  @include max-size($small) {
+    flex-direction: column;
+  }
+
+  .in-stock {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+
+  .btn-ghost {
+    border-bottom: 1px solid currentcolor;
+  }
+}

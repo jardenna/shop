@@ -2,17 +2,18 @@ import mongoose from 'mongoose';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
 import Product from '../models/productModel.js';
+import { calculateCartSummary } from '../services/cartSummary.js';
 import { getProductsMap } from '../utils/cartUtils.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 
-import {
-  cartItemIdentifier,
-  findDatabaseProduct,
-  mergeCartItems,
-  validateVariant,
-} from '../utils/cartUtils.js';
+import { mergeCartItems } from '../utils/cartUtils.js';
 import { validateCartItems } from '../utils/validateCartItems.js';
+import {
+  findDatabaseProduct,
+  getVariantIdentity,
+  validateVariant,
+} from '../utils/validateShopProducts.js';
 
 // @desc    Create cart
 // @route   /api/cart
@@ -75,7 +76,7 @@ const createCart = asyncHandler(async (req, res) => {
       return res.status(400).json({
         success: false,
         message: t('temporarilyOutOfStock', req.lang),
-        cartItem: cartItemIdentifier(cartItem),
+        cartItem: getVariantIdentity(cartItem),
       });
     }
 
@@ -88,7 +89,7 @@ const createCart = asyncHandler(async (req, res) => {
       return res.status(400).json({
         success: false,
         message: 'The selected variant does not exist',
-        cartItem: cartItemIdentifier(cartItem),
+        cartItem: getVariantIdentity(cartItem),
       });
     }
   }
@@ -272,9 +273,12 @@ const getCart = asyncHandler(async (req, res) => {
     };
   });
 
+  const summary = await calculateCartSummary(cart.cartItems);
+
   return res.status(200).json({
     ...formatMongoData(cart),
     cartItems,
+    summary,
   });
 });
 

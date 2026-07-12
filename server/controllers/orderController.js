@@ -1,10 +1,18 @@
-import { PAYMENT_STATUS, VAT_SHARE } from '../config/constants.js';
+import { PAYMENT_STATUS } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Order from '../models/ordersModel.js';
 import Product from '../models/productModel.js';
+import { calculateCartSummary } from '../services/cartSummary.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 import { validateFakePayment } from '../utils/validateFakePayment.js';
+import {
+  findDatabaseProduct,
+  getVariantIdentity,
+  validateVariant,
+} from '../utils/validateShopProducts.js';
+
+import { buildOrderItems } from '../utils/buildOrderItems.js';
 
 // @desc    Create orders
 // @route   /api/orders
@@ -24,10 +32,6 @@ const createOrder = asyncHandler(async (req, res) => {
     ...new Set(orderItems.map((orderItem) => orderItem.product)),
   ];
 
-  const orderItemsMap = new Map(
-    orderItems.map((orderItem) => [orderItem.product, orderItem]),
-  );
-
   const databaseProducts = await Product.find({
     _id: {
       $in: uniqueProductIds,
@@ -41,73 +45,60 @@ const createOrder = asyncHandler(async (req, res) => {
     });
   }
 
-  const productsWithDiscountedPrices = databaseProducts.map(
-    (databaseProduct) => {
-      const matchingOrderItem = orderItemsMap.get(
-        databaseProduct._id.toString(),
-      );
+  const productItems = orderItems.map((orderItem) => ({
+    productId: orderItem.product,
+    qty: orderItem.qty,
+    color: orderItem.color,
+    size: orderItem.size,
+  }));
 
-      if (!matchingOrderItem?.qty || matchingOrderItem.qty < 1) {
-        return res.status(404).json({
-          success: false,
-          message: t('qtyMustBeAtLeast', req.lang),
-        });
-      }
+  for (const productItem of productItems) {
+    const databaseProduct = findDatabaseProduct({
+      databaseProducts,
+      cartItem: productItem,
+    });
 
-      const discountedPrice =
-        databaseProduct.price -
-        (databaseProduct.price * databaseProduct.discount) / 100;
+    const isValidVariant = validateVariant({
+      databaseProduct,
+      cartItem: productItem,
+    });
 
-      const subtotal = discountedPrice * matchingOrderItem.qty;
+    if (!isValidVariant) {
+      return res.status(400).json({
+        success: false,
+        message: 'The selected variant does not exist',
+        cartItem: getVariantIdentity(productItem),
+      });
+    }
+  }
 
-      const calculatedTaxPrice = Math.round(subtotal * VAT_SHARE * 100) / 100;
+  if (productItems.some((productItem) => productItem.qty < 1)) {
+    return res.status(400).json({
+      success: false,
+      message: t('qtyMustBeAtLeast', req.lang),
+    });
+  }
 
-      const noTax = subtotal - calculatedTaxPrice;
+  const summary = await calculateCartSummary(productItems);
 
-      return {
-        productId: databaseProduct._id,
-        productName: databaseProduct.productName,
-        image: databaseProduct.images[0],
-        price: discountedPrice,
-        taxPrice: calculatedTaxPrice,
-        subtotal,
-        noTax,
-        qty: matchingOrderItem.qty,
-      };
-    },
-  );
-
-  const itemPrice = productsWithDiscountedPrices.reduce(
-    (totalPrice, productItem) => {
-      return totalPrice + productItem.subtotal;
-    },
-    0,
-  );
-
-  const taxPrice = productsWithDiscountedPrices.reduce(
-    (totalPrice, productItem) => {
-      return totalPrice + productItem.taxPrice;
-    },
-    0,
-  );
-
-  const shippingPrice = itemPrice >= 1500 ? 0 : 49;
-
-  const totalPrice = itemPrice + shippingPrice;
+  const createdOrders = buildOrderItems({
+    databaseProducts,
+    productItems,
+  });
 
   const order = new Order({
     user: req.user._id,
-    orderItems: productsWithDiscountedPrices,
+    orderItems: createdOrders,
     shippingAddress,
     paymentStatus: PAYMENT_STATUS.PENDING,
-    itemPrice,
-    taxPrice,
-    shippingPrice,
-    totalPrice,
+    itemPrice: summary.itemPrice,
+    taxPrice: summary.taxPrice,
+    shippingPrice: summary.shippingPrice,
+    totalPrice: summary.totalPrice,
+    discountPrice: summary.discountPrice,
   });
 
   const createdOrder = await order.save();
-
   res.status(201).json(createdOrder);
 });
 

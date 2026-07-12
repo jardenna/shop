@@ -19,6 +19,7 @@ enum AdminPath {
 
 enum ShopPath {
   AboutUs = 'about-us',
+  AllProducts = '/collection/product/all-products',
   Collection = 'collection',
   CollectionCategory = 'collection/:category',
   CollectionCategoryId = 'collection/:category/:categoryId',
@@ -26,7 +27,6 @@ enum ShopPath {
   Contact = 'contact',
   CreateAccount = 'create-account',
   Favorites = 'favorites',
-  FavoritesProduct = '/collection/product/all-products',
   Home = 'home',
   Kids = '/collection/kids',
   Login = 'login',

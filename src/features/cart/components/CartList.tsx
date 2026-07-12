@@ -1,12 +1,13 @@
 import { CartProduct } from '../../../app/api/apiTypes/cartApiTypes';
-import DeleteItem from '../../../components/deleteItem/DeleteItem';
-import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
-import NumberStep from '../../../components/formElements/numberStep/NumberStep';
-import Img from '../../../components/Img';
+import VisuallyHidden from '../../../components/VisuallyHidden';
 import { useFormValidation } from '../../../hooks/useFormValidation';
-import { translateKey } from '../../../utils/utils';
-import ProductPrice from '../../shop/components/productPrice/ProductPrice';
+import { ShopPath } from '../../../layout/nav/enums';
 import './_cart-list.scss';
+import CartItem from './CartItem';
+
+export interface ProductQuantityMap {
+  [productId: string]: number;
+}
 
 interface CartListProps {
   cartList: CartProduct[];
@@ -23,7 +24,7 @@ const CartList = ({ language, cartList, onDeleteCartItem }: CartListProps) => {
     initialState,
   });
 
-  const quantityByProductId = cartList.reduce<Record<string, number>>(
+  const quantityByProductId = cartList.reduce<ProductQuantityMap>(
     (result, cartItem) => {
       // eslint-disable-next-line no-param-reassign
       result[cartItem.productId] =
@@ -38,51 +39,21 @@ const CartList = ({ language, cartList, onDeleteCartItem }: CartListProps) => {
     <ul className="cart-list">
       {cartList.map((cart) => (
         <li key={cart.id} className="cart-list-item">
-          <article className="cart-item">
-            <Img src={cart.image} alt="" className="cart-item-image" />
-            <h2 className="cart-item-title">{cart.productName}</h2>
-            <div className="price-group">
-              <ProductPrice price={cart.price} discount={cart.discount} />
-            </div>
-
-            <div className="cart-item-meta">
-              <span>{translateKey(cart.color, language)}</span>
-              <span>SIZE {cart.size}</span>
-            </div>
-
-            <div className="quantity">
-              <NumberStep
-                onChange={onChange}
-                onNumberStepChange={onNumberStepChange}
-                value={values[cart.id]}
-                min={1}
-                max={cart.countInStock}
-                labelText={language.quantity}
-                id={cart.id}
-                name={cart.id}
-                disabled={
-                  quantityByProductId[cart.productId] === cart.countInStock
-                }
-              />
-            </div>
-            <div className="actions">
-              {/* <IconBtn
-                iconName={IconName.Trash}
-                ariaLabel={`${language.delete} ${cart.productName}`}
-                onClick={() => {
-                  onDeleteCartItem(cart.id);
-                }}
-              /> */}
-              <DeleteItem
-                ariaLabel={`${language.delete} ${cart.productName}`}
-                onDeleteItem={() => {
-                  onDeleteCartItem(cart.id);
-                }}
-                itemName={cart.productName}
-              />
-              <FavoriteHeart id={cart.productId} />
-            </div>
-          </article>
+          <VisuallyHidden>
+            {language.view} {cart.productName}
+          </VisuallyHidden>
+          <CartItem
+            cart={cart}
+            language={language}
+            quantityByProductId={quantityByProductId}
+            value={values[cart.id]}
+            onDeleteCartItem={() => {
+              onDeleteCartItem(cart.id);
+            }}
+            onNumberStepChange={onNumberStepChange}
+            onChange={onChange}
+            linkTo={`${ShopPath.AllProducts}/${cart.productId}`}
+          />
         </li>
       ))}
     </ul>
