@@ -70,6 +70,11 @@ const orderModelSchema = new Schema(
       required: true,
       default: 0.0,
     },
+    discountPrice: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
     isPaid: {
       type: Boolean,
       required: true,

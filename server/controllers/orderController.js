@@ -95,6 +95,7 @@ const createOrder = asyncHandler(async (req, res) => {
     taxPrice: summary.taxPrice,
     shippingPrice: summary.shippingPrice,
     totalPrice: summary.totalPrice,
+    discountPrice: summary.discountPrice,
   });
 
   const createdOrder = await order.save();
