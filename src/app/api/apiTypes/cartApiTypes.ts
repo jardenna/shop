@@ -39,3 +39,8 @@ export interface GuestCardResponse {
   missingProductIds: string[];
   products: CartProduct[];
 }
+
+export interface UpdateCartQtyRequest {
+  cartItemId: string;
+  qty: number;
+}
