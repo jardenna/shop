@@ -4,7 +4,7 @@ import {
   UpdateCartQtyRequest,
 } from '../app/api/apiTypes/cartApiTypes';
 import { RootState } from '../app/store';
-import { cartStorageUtil } from './cart/cartStorageUtil';
+import { cartStorageUtil } from './cart/utils/cartStorageUtil';
 
 interface CartItemsState {
   cartList: CartItem[];

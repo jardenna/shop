@@ -5,7 +5,7 @@ import { useLoginMutation } from '../features/auth/authApiSlice';
 import AuthForm from '../features/auth/components/AuthForm';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useAddToCartMutation } from '../features/cart/cartApiSlice';
-import { cartStorageUtil } from '../features/cart/cartStorageUtil';
+import { cartStorageUtil } from '../features/cart/utils/cartStorageUtil';
 import { useLanguage } from '../features/language/useLanguage';
 import { useFormValidation } from '../hooks/useFormValidation';
 import { ShopPath } from '../layout/nav/enums';

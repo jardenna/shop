@@ -1,5 +1,5 @@
-import { CartItem } from '../../app/api/apiTypes/cartApiTypes';
-import { localStorageKeys } from '../../hooks/useLocalStorage';
+import { CartItem } from '../../../app/api/apiTypes/cartApiTypes';
+import { localStorageKeys } from '../../../hooks/useLocalStorage';
 
 export const cartStorageUtil = {
   load(): CartItem[] {
