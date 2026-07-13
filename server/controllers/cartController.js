@@ -2,17 +2,17 @@ import mongoose from 'mongoose';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
 import Product from '../models/productModel.js';
+import { buildOrderItems } from '../services/buildOrderItems.js';
 import { calculateCartSummary } from '../services/calculateCartSummary.js';
-import { buildOrderItems } from '../utils/buildOrderItems.js';
 import { getProductsMap, mergeCartItems } from '../utils/cartUtils.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
-import { validateCartItems } from '../utils/validateCartItems.js';
+import { validateCartItems } from '../validators/validateCartItems.js';
 import {
   findDatabaseProduct,
   getVariantIdentity,
   validateVariant,
-} from '../utils/validateShopProducts.js';
+} from '../validators/validateShopProducts.js';
 
 // @desc    Create cart
 // @route   /api/cart

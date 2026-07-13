@@ -3,7 +3,7 @@ import asyncHandler from '../middleware/asyncHandler.js';
 import User from '../models/userModel.js';
 import createToken from '../utils/createToken.js';
 import { t } from '../utils/translator.js';
-import { validateEmail, validatePassword } from '../utils/validateAuth.js';
+import { validateEmail, validatePassword } from '../validators/validateAuth.js';
 
 // @desc    Create a new user (used for both self-registration and admin creation)
 // @route   /api/auth/register

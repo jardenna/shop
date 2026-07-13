@@ -5,14 +5,14 @@ import Product from '../models/productModel.js';
 import { calculateCartSummary } from '../services/calculateCartSummary.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
-import { validateFakePayment } from '../utils/validateFakePayment.js';
+import { validateFakePayment } from '../validators/validateFakePayment.js';
 import {
   findDatabaseProduct,
   getVariantIdentity,
   validateVariant,
-} from '../utils/validateShopProducts.js';
+} from '../validators/validateShopProducts.js';
 
-import { buildOrderItems } from '../utils/buildOrderItems.js';
+import { buildOrderItems } from '../services/buildOrderItems.js';
 
 // @desc    Create orders
 // @route   /api/orders

@@ -3,6 +3,7 @@ import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
 import path from 'path';
+import dbConnect from './config/dbConnect.js';
 import errorHandler from './middleware/errorHandler.js';
 import authRoutes from './routes/authRoutes.js';
 import cartRoutes from './routes/cartRoutes.js';
@@ -13,7 +14,6 @@ import productRoutes from './routes/productRoutes.js';
 import subCategoryRoutes from './routes/subCategoryRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
 import userRoutes from './routes/userRoutes.js';
-import dbConnect from './utils/dbConnect.js';
 
 const app = express();
 const __dirname = path.resolve();

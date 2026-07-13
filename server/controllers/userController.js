@@ -4,8 +4,8 @@ import User from '../models/userModel.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
 import { sortColumns } from '../utils/sortColumns.js';
 import { t } from '../utils/translator.js';
-import { validateCreateAddress } from '../utils/validateAddress.js';
-import { validateEmail, validatePassword } from '../utils/validateAuth.js';
+import { validateCreateAddress } from '../validators/validateAddress.js';
+import { validateEmail, validatePassword } from '../validators/validateAuth.js';
 
 // @desc    Get all users
 // @route   /api/users

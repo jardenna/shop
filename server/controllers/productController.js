@@ -9,8 +9,8 @@ import SubCategory from '../models/subCategoryModel.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 import { updateScheduledItems } from '../utils/UpdateScheduledItemsOptions.js';
-import { validateProduct } from '../utils/validateProduct.js';
-import { validateScheduledDate } from '../utils/validateScheduledDate.js';
+import { validateProduct } from '../validators/validateProduct.js';
+import { validateScheduledDate } from '../validators/validateScheduledDate.js';
 
 // @desc    Create Product
 // @route   /api/products

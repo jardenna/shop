@@ -10,7 +10,7 @@ import getAllowedSizes from '../utils/getAllowedSizes.js';
 import { sortColumns } from '../utils/sortColumns.js';
 import { t } from '../utils/translator.js';
 import { updateScheduledItems } from '../utils/UpdateScheduledItemsOptions.js';
-import { validateSubCategory } from '../utils/validateSubCategory.js';
+import { validateSubCategory } from '../validators/validateSubCategory.js';
 
 // @desc    Create SubCategory
 // @route   /api/subcategories
