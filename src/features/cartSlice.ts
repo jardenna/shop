@@ -46,7 +46,7 @@ const cartSlice = createSlice({
     },
     deleteGuestCartItem: (state, action: PayloadAction<string>) => {
       state.cartList = state.cartList.filter(
-        (cart) => cart.productId !== action.payload,
+        (cart) => cart.id !== action.payload,
       );
 
       cartStorageUtil.save(state.cartList);
