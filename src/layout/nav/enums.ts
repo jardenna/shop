@@ -20,6 +20,7 @@ enum AdminPath {
 enum ShopPath {
   AboutUs = 'about-us',
   AllProducts = '/collection/product/all-products',
+  Checkout = 'checkout',
   Collection = 'collection',
   CollectionCategory = 'collection/:category',
   CollectionCategoryId = 'collection/:category/:categoryId',

@@ -12,6 +12,7 @@ import Dashboard from '../pages/admin/Dashboard';
 import CategoryPage from '../pages/category/CategoryPage';
 import CreateCategoryPage from '../pages/category/CreateCategoryPage';
 import UpdateCategoryPage from '../pages/category/UpdateCategoryPage';
+import CheckoutPage from '../pages/CheckoutPage';
 import CollectionPage from '../pages/CollectionPage';
 import ContactPage from '../pages/ContactPage';
 import CreateAccountPage from '../pages/CreateAccountPage';
@@ -157,6 +158,7 @@ const routeConfig = createBrowserRouter([
             path: ShopPath.Favorites,
             element: <FavoritePage />,
           },
+          { path: ShopPath.Checkout, element: <CheckoutPage /> },
           {
             path: ShopPath.MyAccount,
             element: <AccountLayout />,
