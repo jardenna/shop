@@ -1,5 +1,5 @@
-import { emailRegex } from './regex.js';
-import { t } from './translator.js';
+import { emailRegex } from '../utils/regex.js';
+import { t } from '../utils/translator.js';
 
 const validateEmail = (email, lang) => {
   if (!emailRegex.test(email)) {

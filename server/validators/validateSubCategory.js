@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import Category from '../models/categoryModel.js';
-import { validateScheduledDate } from '../utils/validateScheduledDate.js';
-import { t } from './translator.js';
+import { t } from '../utils/translator.js';
+import { validateScheduledDate } from '../validators/validateScheduledDate.js';
 
 const validateSubCategory = async ({
   categoryStatus,

@@ -1,6 +1,6 @@
 import { STATUS } from '../config/constants.js';
 import Product from '../models/productModel.js';
-import { findDatabaseProduct } from '../utils/validateShopProducts.js';
+import { findDatabaseProduct } from '../validators/validateShopProducts.js';
 
 const findIdenticalVariant = ({ cartItems, cartItem }) => {
   return cartItems.find(
