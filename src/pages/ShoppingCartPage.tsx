@@ -11,11 +11,11 @@ import {
   useUpdateQtyMutation,
 } from '../features/cart/cartApiSlice';
 import CartList from '../features/cart/components/CartList';
+import CartSummary from '../features/cart/components/CartSummary';
 import { useActiveCart } from '../features/cart/useActiveCart';
 import { deleteGuestCartItem, updateGuestCartQty } from '../features/cartSlice';
 import { useLanguage } from '../features/language/useLanguage';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
-import ProductPrice from '../features/shop/components/productPrice/ProductPrice';
 import { ShopPath } from '../layout/nav/enums';
 import { handleApiError } from '../utils/handleApiError';
 import MainPageContainer from './pageContainer/MainPageContainer';
@@ -115,32 +115,7 @@ const ShoppingCartPage = () => {
           </ErrorBoundary>
         </section>
         {apiCartList && (
-          <section>
-            <div>
-              <span>{language.subtotal}</span>
-              <span>
-                <ProductPrice price={apiCartList.summary.subTotal} />
-              </span>
-            </div>
-            <div>
-              <span>{language.discount}</span>
-              <span>
-                <ProductPrice price={apiCartList.summary.discountPrice} />
-              </span>
-            </div>
-            <div>
-              <span>{language.estimatedShipping}</span>
-              <span>
-                <ProductPrice price={apiCartList.summary.shippingPrice} />
-              </span>
-            </div>
-            <div>
-              <span>{language.totalPrice}</span>
-              <span>
-                <ProductPrice price={apiCartList.summary.totalPrice} />
-              </span>
-            </div>
-          </section>
+          <CartSummary summary={apiCartList.summary} language={language} />
         )}
       </div>
     </MainPageContainer>
