@@ -5,6 +5,7 @@ import {
   getCart,
   getGuestCartProducts,
   updateCart,
+  updateCartQuantity,
 } from '../controllers/cartController.js';
 import { authenticate } from '../middleware/authMiddleware.js';
 import languageMiddleware from '../middleware/languageMiddleware.js';
@@ -18,6 +19,9 @@ router
 
 router.route('/guest').post(languageMiddleware, getGuestCartProducts);
 router.route('/:id').patch(languageMiddleware, authenticate, updateCart);
+router
+  .route('/:id/quantity')
+  .patch(languageMiddleware, authenticate, updateCartQuantity);
 router.route('/:id').delete(languageMiddleware, authenticate, deleteCart);
 
 export default router;

@@ -379,7 +379,7 @@ const deleteCart = asyncHandler(async (req, res) => {
 });
 
 // @desc    Update cart quantity
-// @route   /api/cart/:id/quantity
+// @route  /api/cart/:id/quantity
 // @method  Patch
 // @access  Private
 const updateCartQuantity = asyncHandler(async (req, res) => {
