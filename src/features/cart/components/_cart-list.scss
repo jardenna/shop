@@ -7,6 +7,10 @@
   .cart-list-item {
     border-bottom: 1px solid $color-border;
     padding-block: 16px;
+
+    &:first-child {
+      padding-top: 0;
+    }
   }
 
   .cart-item {
@@ -50,7 +54,6 @@
 
     .cart-item-title {
       grid-area: title;
-      align-self: end;
       margin: 0;
     }
 
@@ -64,7 +67,7 @@
 
     .price-group {
       grid-area: price;
-      place-self: end end;
+      place-self: start end;
       display: flex;
       align-items: baseline;
       gap: 8px;
