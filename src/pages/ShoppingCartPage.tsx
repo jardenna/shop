@@ -8,6 +8,7 @@ import { useAuth } from '../features/auth/hooks/useAuth';
 import {
   useDeleteCartMutation,
   useGetGuestCartQuery,
+  useUpdateQtyMutation,
 } from '../features/cart/cartApiSlice';
 import CartList from '../features/cart/components/CartList';
 import { useActiveCart } from '../features/cart/useActiveCart';
@@ -36,6 +37,15 @@ const ShoppingCartPage = () => {
   );
 
   const [deleteCartItem] = useDeleteCartMutation();
+  const [updateQty] = useUpdateQtyMutation();
+
+  const handleUpdateQty = async (cartItemId: string, qty: number) => {
+    try {
+      await updateQty({ cartItemId, qty });
+    } catch (error) {
+      handleApiError(error, onAddMessagePopup);
+    }
+  };
 
   const handleDeleteCartItem = async (cartItemId: string) => {
     try {
@@ -93,6 +103,7 @@ const ShoppingCartPage = () => {
               onDeleteCartItem={
                 currentUser ? handleDeleteCartItem : handleDeleteGuestCart
               }
+              onUpdateQty={handleUpdateQty}
             />
           </ErrorBoundary>
         </section>

@@ -53,7 +53,7 @@ export const cartApiSlice = apiSlice.injectEndpoints({
       query: ({ cartItemId, qty }) => ({
         url: `${cartUrl}/${cartItemId}/quantity`,
         method: 'PATCH',
-        body: qty,
+        body: { qty },
       }),
       invalidatesTags: [TagTypesEnum.Carts],
     }),

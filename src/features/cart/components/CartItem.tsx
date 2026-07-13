@@ -18,7 +18,7 @@ interface CartItemProps {
   value: number;
   onChange: (event: ChangeInputType) => void;
   onDeleteCartItem: (cartItemId: string) => void;
-  onNumberStepChange: (field: string, amount: number) => void;
+  onUpdateQty: (field: string, amount: number) => void;
 }
 
 const CartItem = ({
@@ -27,7 +27,7 @@ const CartItem = ({
   quantityByProductId,
   value,
   onChange,
-  onNumberStepChange,
+  onUpdateQty,
   onDeleteCartItem,
   linkTo,
 }: CartItemProps) => (
@@ -60,7 +60,7 @@ const CartItem = ({
     <div className="quantity">
       <NumberStep
         onChange={onChange}
-        onNumberStepChange={onNumberStepChange}
+        onNumberStepChange={onUpdateQty}
         value={value}
         min={1}
         max={cart.countInStock}
