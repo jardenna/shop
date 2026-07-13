@@ -93,7 +93,6 @@ const ShoppingCartPage = () => {
       />
     );
   }
-  console.log(apiCartList?.summary);
 
   return (
     <MainPageContainer heading="bag">
@@ -118,25 +117,25 @@ const ShoppingCartPage = () => {
         {apiCartList && (
           <section>
             <div>
-              <span>Subtotal</span>
+              <span>{language.subtotal}</span>
               <span>
                 <ProductPrice price={apiCartList.summary.subTotal} />
               </span>
             </div>
             <div>
-              <span>Rabat</span>
+              <span>{language.discount}</span>
               <span>
                 <ProductPrice price={apiCartList.summary.discountPrice} />
               </span>
             </div>
             <div>
-              <span>Anslået leveringsgebyr</span>
+              <span>{language.estimatedShipping}</span>
               <span>
                 <ProductPrice price={apiCartList.summary.shippingPrice} />
               </span>
             </div>
             <div>
-              <span>totalPrice</span>
+              <span>{language.totalPrice}</span>
               <span>
                 <ProductPrice price={apiCartList.summary.totalPrice} />
               </span>

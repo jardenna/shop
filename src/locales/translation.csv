@@ -41,6 +41,7 @@ calendar;Calendar;Kalender
 cancel;Cancel;Annuller
 care;Care;Vaskeanvisning
 cartIsEmpty;Cart is empty;Kurven er tom
+cartItemDeleted;Item deleted;Vare blev slettet
 cartItemNotFound;This item is no longer in your shopping cart;Denne vare er ikke længere i din indkøbskurv
 cartNotFound;Your shopping cart could not be found;Din indkøbskurv blev ikke fundet
 categories;Categories;Kategorier
@@ -48,7 +49,6 @@ category;Category;Kategori
 categoryCard;Category card;Kategori card
 categoryCreated;Category was created;Kategori blev tilføjet
 categoryDeleted;Category deleted;Kategori blev slettet
-cartItemDeleted;Item deleted;Vare blev slettet
 categoryIs;Category is;Kategori er
 categoryList;Category list;Kategori-liste
 categoryName;Category name;Kategori navn
@@ -131,6 +131,7 @@ email;Email;E-mail
 employee;Employee;Ansat
 error;Error;Fejl
 errorAltText;A really guilty emoji.;En meget skyldig emoji.
+estimatedShipping;Estimated shipping;Anslået leveringsgebyr
 expanded;Expanded;Udvidet
 expandMenu;Expand menu;Udvid menu
 eye;Eye;Øje
@@ -194,11 +195,11 @@ invalidCartItemId;Invalid item ID.;Ugyldigt vareid.
 invalidColor;The selected color is no longer available;Den valgte farve er ikke længere tilgængelig
 invalidDiscount;Invalid discount. Price cannot be calculated correctly;Ugyldig rabat. Prisen kan ikke beregnes korrekt
 invalidFileType;Invalid file type;Ugyldig fil type
+invalidQuantity;Quantity must be at least 1;Antallet skal være mindst 1
 invalidRequestProductIds;Invalid product IDs provided;Ugyldige produkt-id'er sendt
 invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for planlagt dato
 invalidSize;The selected size is no longer available;Den valgte størrelse er ikke længere tilgængelig
 invalidUserData;Invalid user data;Ugyldig bruger data
-invalidQuantity;Quantity must be at least 1;Antallet skal være mindst 1
 item;item;vare
 items;items;varer
 itemsUpdated;Items updated to;Varer opdateret til
@@ -441,6 +442,7 @@ subCategory;Subcategory;Underkategori
 subCategoryAlreadyExist;Subcategory already exists;Underkategori findes allerede
 subCategoryList;Subcategory list;Underkategori-liste
 subCategoryName;Subcategory name;Underkategori navn
+subtotal;Subtotal;Subtotal
 subtract;Subtract;Fratræk
 success;Success;Succes
 sureToDelete;Do you want to delete;Vil du slette
@@ -452,6 +454,7 @@ title;Title;Titel
 to;to;til
 today;Today;I dag
 totalPrice;Total price;Samlet pris
+totalPrice;Total;I alt
 totalProducts;Total products;Antal produkter
 translationKey;Translation key;Oversættelsesnøgle
 translationKeyHelpText;Enter the exact key used for translation in your CSV file;Skriv den præcise nøgle, som bruges til oversættelsen i din CSV-fil
