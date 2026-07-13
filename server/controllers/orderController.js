@@ -79,19 +79,19 @@ const createOrder = asyncHandler(async (req, res) => {
     });
   }
 
-  const summary = await calculateCartSummary(productItems);
-
   const createdOrders = buildOrderItems({
     databaseProducts,
     productItems,
   });
+
+  const summary = calculateCartSummary(createdOrders);
 
   const order = new Order({
     user: req.user._id,
     orderItems: createdOrders,
     shippingAddress,
     paymentStatus: PAYMENT_STATUS.PENDING,
-    itemPrice: summary.itemPrice,
+    itemPrice: summary.subTotal,
     taxPrice: summary.taxPrice,
     shippingPrice: summary.shippingPrice,
     totalPrice: summary.totalPrice,
@@ -99,6 +99,7 @@ const createOrder = asyncHandler(async (req, res) => {
   });
 
   const createdOrder = await order.save();
+
   res.status(201).json(createdOrder);
 });
 
