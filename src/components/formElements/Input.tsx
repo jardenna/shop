@@ -31,6 +31,7 @@ export type InputProps = {
   min?: number;
   multiple?: boolean;
   placeholder?: string;
+  readOnly?: boolean;
   ref?: RefInputType;
   required?: boolean;
   step?: number;
@@ -66,6 +67,7 @@ const Input = ({
   disabled,
   inputInfo,
   inputMode,
+  readOnly,
 }: InputProps) => {
   const unitId = useId();
   const handleOnInput = (event: SyntheticEvent<HTMLInputElement>) => {
@@ -97,6 +99,7 @@ const Input = ({
         <div className={inputSuffix ? 'input-suffix-container' : ''}>
           <input
             step={step}
+            readOnly={readOnly}
             ref={ref}
             multiple={multiple}
             type={type || 'text'}
