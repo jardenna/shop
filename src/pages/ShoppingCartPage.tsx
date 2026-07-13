@@ -120,7 +120,7 @@ const ShoppingCartPage = () => {
             <div>
               <span>Subtotal</span>
               <span>
-                <ProductPrice price={apiCartList.summary.itemPrice} />
+                <ProductPrice price={apiCartList.summary.subTotal} />
               </span>
             </div>
             <div>

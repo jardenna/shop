@@ -39,7 +39,7 @@ export const calculateCartSummary = async (productItems) => {
     };
   });
 
-  const itemPrice = summaryItems.reduce(
+  const subTotal = summaryItems.reduce(
     (totalPrice, summaryItem) => totalPrice + summaryItem.subtotal,
     0,
   );
@@ -49,17 +49,17 @@ export const calculateCartSummary = async (productItems) => {
     0,
   );
 
-  const shippingPrice = itemPrice >= 1500 ? 0 : 49;
+  const shippingPrice = subTotal >= 1500 ? 0 : 49;
   const discountPrice = summaryItems.reduce(
     (totalPrice, summaryItem) => totalPrice + summaryItem.discountPrice,
     0,
   );
 
   return {
-    itemPrice,
+    subTotal,
     discountPrice,
     taxPrice,
     shippingPrice,
-    totalPrice: itemPrice - discountPrice + shippingPrice,
+    totalPrice: subTotal - discountPrice + shippingPrice,
   };
 };

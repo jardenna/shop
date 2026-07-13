@@ -28,8 +28,8 @@ export interface CartListRequest {
 
 export interface CartListSummary {
   discountPrice: number;
-  itemPrice: number;
   shippingPrice: number;
+  subTotal: number;
   taxPrice: number;
   totalPrice: number;
 }
