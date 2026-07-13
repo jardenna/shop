@@ -20,7 +20,7 @@ const ToggleSwitch = ({
   return (
     <div className="toggle-switch-list">
       <div className="toggle-switch-item">
-        <label htmlFor={id}>
+        <label htmlFor={id} className="switch">
           <span>{translateKey(labelText, language)}</span>
         </label>
         <input
