@@ -9,11 +9,14 @@ export interface ProductQuantityMap {
   [productId: string]: number;
 }
 
-interface CartListProps {
-  cartList: CartProduct[];
+export interface BaseCartProps {
   language: Record<string, string>;
   onDeleteCartItem: (cartItemId: string) => void;
   onUpdateQty: (cartItemId: string, qty: number) => void;
+}
+
+interface CartListProps extends BaseCartProps {
+  cartList: CartProduct[];
 }
 
 const CartList = ({

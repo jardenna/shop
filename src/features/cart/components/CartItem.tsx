@@ -8,17 +8,14 @@ import { ChangeInputType } from '../../../types/types';
 import { minInStock, translateKey } from '../../../utils/utils';
 import InStock from '../../shop/components/InStock';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
-import { ProductQuantityMap } from './CartList';
+import { BaseCartProps, ProductQuantityMap } from './CartList';
 
-interface CartItemProps {
+interface CartItemProps extends BaseCartProps {
   cart: CartProduct;
-  language: Record<string, string>;
   linkTo: string;
   quantityByProductId: ProductQuantityMap;
   value: number;
   onChange: (event: ChangeInputType) => void;
-  onDeleteCartItem: (cartItemId: string) => void;
-  onUpdateQty: (field: string, amount: number) => void;
 }
 
 const CartItem = ({
