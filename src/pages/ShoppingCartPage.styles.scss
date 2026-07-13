@@ -2,6 +2,10 @@
 
 .cart-page {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) rem(400px);
+  grid-template-columns: minmax(0, 1fr) rem(416px);
   gap: 40px;
+
+  @include max-size($mini) {
+    display: block;
+  }
 }
