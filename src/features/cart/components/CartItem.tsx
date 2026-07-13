@@ -64,7 +64,7 @@ const CartItem = ({
         labelText={language.quantity}
         id={cart.id}
         name={cart.id}
-        readOnlyInput
+        displayOnly
         disabled={quantityByProductId[cart.productId] === cart.countInStock}
       />
     </div>
