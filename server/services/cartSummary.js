@@ -1,3 +1,5 @@
+const roundPrice = (amount) => Math.round(amount * 100) / 100;
+
 export const calculateCartSummary = (orderItems) => {
   const subTotal = orderItems.reduce(
     (totalPrice, orderItem) => totalPrice + orderItem.subtotal,
@@ -17,10 +19,10 @@ export const calculateCartSummary = (orderItems) => {
   const shippingPrice = subTotal >= 1500 ? 0 : 49;
 
   return {
-    subTotal,
-    discountPrice,
-    taxPrice,
+    subTotal: roundPrice(subTotal),
+    discountPrice: roundPrice(discountPrice),
+    taxPrice: roundPrice(taxPrice),
     shippingPrice,
-    totalPrice: subTotal - discountPrice + shippingPrice,
+    totalPrice: roundPrice(subTotal - discountPrice + shippingPrice),
   };
 };
