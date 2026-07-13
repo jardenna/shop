@@ -60,6 +60,6 @@ export const calculateCartSummary = async (productItems) => {
     discountPrice,
     taxPrice,
     shippingPrice,
-    totalPrice: itemPrice + shippingPrice,
+    totalPrice: itemPrice - discountPrice + shippingPrice,
   };
 };

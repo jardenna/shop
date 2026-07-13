@@ -5,8 +5,8 @@ import { useLanguage } from '../../../language/useLanguage';
 import './_product-price.scss';
 
 interface ProductPriceProps {
-  discount: number;
   price: number;
+  discount?: number;
   discountedPrice?: number;
   hasError?: string;
 }

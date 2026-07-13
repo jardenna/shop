@@ -26,8 +26,16 @@ export interface CartListRequest {
   cartItems: AddToCartRequest;
 }
 
+export interface CartListSummary {
+  discountPrice: number;
+  itemPrice: number;
+  shippingPrice: number;
+  taxPrice: number;
+  totalPrice: number;
+}
 export interface CartListResponse extends DefaultResponseType {
   cartItems: CartProduct[];
+  summary: CartListSummary;
 }
 
 export interface UpdateCartRequest {

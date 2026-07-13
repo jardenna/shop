@@ -6,8 +6,8 @@ const currencyCacheKey = 'exchangeRates';
 const pageParamKey = 'page';
 const productsPerPageParamKey = 'productsPerPage';
 
-const discountCalculation = (price: number, discount: number) => {
-  const discountPrice = (price * discount) / 100;
+const discountCalculation = (price: number, discount?: number) => {
+  const discountPrice = discount ? (price * discount) / 100 : 0;
   return price - discountPrice;
 };
 

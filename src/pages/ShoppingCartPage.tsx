@@ -15,6 +15,7 @@ import { useActiveCart } from '../features/cart/useActiveCart';
 import { deleteGuestCartItem, updateGuestCartQty } from '../features/cartSlice';
 import { useLanguage } from '../features/language/useLanguage';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
+import ProductPrice from '../features/shop/components/productPrice/ProductPrice';
 import { ShopPath } from '../layout/nav/enums';
 import { handleApiError } from '../utils/handleApiError';
 import MainPageContainer from './pageContainer/MainPageContainer';
@@ -92,6 +93,7 @@ const ShoppingCartPage = () => {
       />
     );
   }
+  console.log(apiCartList?.summary);
 
   return (
     <MainPageContainer heading="bag">
@@ -113,7 +115,34 @@ const ShoppingCartPage = () => {
             />
           </ErrorBoundary>
         </section>
-        <section>Card</section>
+        {apiCartList && (
+          <section>
+            <div>
+              <span>Subtotal</span>
+              <span>
+                <ProductPrice price={apiCartList.summary.itemPrice} />
+              </span>
+            </div>
+            <div>
+              <span>Rabat</span>
+              <span>
+                <ProductPrice price={apiCartList.summary.discountPrice} />
+              </span>
+            </div>
+            <div>
+              <span>Anslået leveringsgebyr</span>
+              <span>
+                <ProductPrice price={apiCartList.summary.shippingPrice} />
+              </span>
+            </div>
+            <div>
+              <span>totalPrice</span>
+              <span>
+                <ProductPrice price={apiCartList.summary.totalPrice} />
+              </span>
+            </div>
+          </section>
+        )}
       </div>
     </MainPageContainer>
   );
