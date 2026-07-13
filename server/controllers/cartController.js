@@ -455,6 +455,7 @@ const updateCartQuantity = asyncHandler(async (req, res) => {
   await existingCart.save();
 
   return res.status(200).json({
+    message: 'Quantity updated',
     success: true,
   });
 });
