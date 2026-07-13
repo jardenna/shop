@@ -66,4 +66,5 @@ export const {
   useReplaceCartMutation,
   useGetGuestCartQuery,
   useDeleteCartMutation,
+  useUpdateQtyMutation,
 } = cartApiSlice;
