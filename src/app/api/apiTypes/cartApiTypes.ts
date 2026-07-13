@@ -26,8 +26,16 @@ export interface CartListRequest {
   cartItems: AddToCartRequest;
 }
 
+export interface CartListSummary {
+  discountPrice: number;
+  shippingPrice: number;
+  subTotal: number;
+  taxPrice: number;
+  totalPrice: number;
+}
 export interface CartListResponse extends DefaultResponseType {
   cartItems: CartProduct[];
+  summary: CartListSummary;
 }
 
 export interface UpdateCartRequest {
@@ -38,4 +46,9 @@ export interface UpdateCartRequest {
 export interface GuestCardResponse {
   missingProductIds: string[];
   products: CartProduct[];
+}
+
+export interface UpdateCartQtyRequest {
+  cartItemId: string;
+  qty: number;
 }

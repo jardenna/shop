@@ -20,6 +20,10 @@ import Selectbox from '../../../components/selectbox/Selectbox';
 import StatusOptions from '../../../components/selectbox/StatusOptions';
 import StatusInputs from '../../../components/StatusInputs';
 import { useFormValidation } from '../../../hooks/useFormValidation';
+import {
+  localStorageKeys,
+  useLocalStorage,
+} from '../../../hooks/useLocalStorage';
 import { AdminPath } from '../../../layout/nav/enums';
 import variables from '../../../scss/variables.module.scss';
 import type { OptionType } from '../../../types/types';
@@ -111,7 +115,6 @@ const ProductForm = ({
   const selectedTime = selectedProduct?.scheduledDate;
   const uploadedImg = selectedProduct?.images || [];
 
-  const [showPrice, setShowPrice] = useState(false);
   const [disabledImages, setDisabledImages] = useState<string[]>([]);
 
   // Helper functions
@@ -159,6 +162,11 @@ const ProductForm = ({
     validate: validateProduct,
     callback: handleSubmitProduct,
   });
+
+  const [showPrice, setShowPrice] = useLocalStorage(
+    localStorageKeys.showPrice,
+    false,
+  );
 
   const { onAddMessagePopup } = useMessagePopup();
   const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =

@@ -25,4 +25,5 @@ export const localStorageKeys = {
   menuCollapsed: 'menuCollapsed',
   productView: 'productView',
   cartList: 'cartList',
+  showPrice: 'showCalculatedPrice',
 };

@@ -2,12 +2,11 @@ import mongoose from 'mongoose';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
 import Product from '../models/productModel.js';
-import { calculateCartSummary } from '../services/cartSummary.js';
-import { getProductsMap } from '../utils/cartUtils.js';
+import { calculateCartSummary } from '../services/calculateCartSummary.js';
+import { buildOrderItems } from '../utils/buildOrderItems.js';
+import { getProductsMap, mergeCartItems } from '../utils/cartUtils.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
-
-import { mergeCartItems } from '../utils/cartUtils.js';
 import { validateCartItems } from '../utils/validateCartItems.js';
 import {
   findDatabaseProduct,
@@ -273,7 +272,12 @@ const getCart = asyncHandler(async (req, res) => {
     };
   });
 
-  const summary = await calculateCartSummary(cart.cartItems);
+  const orderItems = buildOrderItems({
+    databaseProducts: [...productMap.values()],
+    productItems: cart.cartItems,
+  });
+
+  const summary = calculateCartSummary(orderItems);
 
   return res.status(200).json({
     ...formatMongoData(cart),
@@ -322,7 +326,7 @@ const getGuestCartProducts = asyncHandler(async (req, res) => {
     }
 
     return {
-      id: item.productId,
+      id: item.id,
       productId: item.productId,
       qty: item.qty,
       size: item.size,
@@ -380,4 +384,93 @@ const deleteCart = asyncHandler(async (req, res) => {
   });
 });
 
-export { createCart, deleteCart, getCart, getGuestCartProducts, updateCart };
+// @desc    Update cart quantity
+// @route  /api/cart/:id/quantity
+// @method  Patch
+// @access  Private
+const updateCartQuantity = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const { qty } = req.body;
+
+  const existingCart = await Cart.findOne({
+    user: req.user._id,
+  });
+
+  if (!existingCart) {
+    return res.status(404).json({
+      success: false,
+      message: t('cartNotFound', req.lang),
+    });
+  }
+
+  const cartItemToUpdate = existingCart.cartItems.find(
+    (cartItem) => cartItem._id.toString() === id,
+  );
+
+  if (!cartItemToUpdate) {
+    return res.status(404).json({
+      success: false,
+      message: t('cartItemNotFound', req.lang),
+    });
+  }
+
+  if (!Number.isInteger(qty) || qty < 1) {
+    return res.status(400).json({
+      success: false,
+      message: t('invalidQuantity', req.lang),
+    });
+  }
+
+  const product = await Product.findById(cartItemToUpdate.productId).select(
+    'countInStock',
+  );
+
+  if (!product) {
+    return res.status(404).json({
+      success: false,
+      message: t('productNotFound', req.lang),
+    });
+  }
+
+  const totalQuantity = existingCart.cartItems.reduce(
+    (totalQuantity, cartItem) => {
+      if (
+        cartItem.productId.toString() !== cartItemToUpdate.productId.toString()
+      ) {
+        return totalQuantity;
+      }
+
+      if (cartItem._id.toString() === id) {
+        return totalQuantity + qty;
+      }
+
+      return totalQuantity + cartItem.qty;
+    },
+    0,
+  );
+
+  if (totalQuantity > product.countInStock) {
+    return res.status(400).json({
+      success: false,
+      message: t('temporarilyOutOfStock', req.lang),
+    });
+  }
+
+  cartItemToUpdate.qty = qty;
+
+  await existingCart.save();
+
+  return res.status(200).json({
+    message: 'Quantity updated',
+    success: true,
+  });
+});
+
+export {
+  createCart,
+  deleteCart,
+  getCart,
+  getGuestCartProducts,
+  updateCart,
+  updateCartQuantity,
+};

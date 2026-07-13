@@ -90,6 +90,7 @@ const SingleProductForm = ({
     });
 
   const cartItem = {
+    id: crypto.randomUUID(),
     productId: id,
     qty: values.qty,
     size: values.size,

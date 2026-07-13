@@ -1,15 +1,18 @@
 @use '../../../scss/globals' as *;
 
+$switch-height: 25px;
+$thumb-size: 20px;
+
 .toggle-switch-list {
   position: relative;
   gap: 12px;
   display: flex;
   flex-direction: column;
 
-  label {
+  .switch {
     display: flex;
     width: 47px;
-    height: 25px;
+    height: $switch-height;
     background-color: $color-gray-40;
     border-radius: 99px;
     cursor: pointer;
@@ -19,10 +22,10 @@
     &::after {
       content: '';
       position: absolute;
-      top: 2px;
+      top: calc(($switch-height - $thumb-size) / 2);
       left: 2px;
-      width: 20px;
-      height: 20px;
+      width: $thumb-size;
+      height: $thumb-size;
       background-color: $color-white;
       border-radius: 50%;
 
@@ -41,7 +44,7 @@
   }
 
   .toggle-switch-item:has(input:checked) {
-    label {
+    .switch {
       background-color: $color-background-secondary;
 
       &::after {
@@ -51,7 +54,7 @@
   }
 
   .toggle-switch-item:has(input:focus-visible) {
-    label {
+    .switch {
       box-shadow: $box-shadow-input;
     }
   }

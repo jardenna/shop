@@ -19,6 +19,10 @@ export const buildOrderItems = ({ databaseProducts, productItems }) => {
 
     const taxPrice = Math.round(subtotal * VAT_SHARE * 100) / 100;
 
+    const discountPrice =
+      ((databaseProduct.price * databaseProduct.discount) / 100) *
+      productItem.qty;
+
     return {
       productId: databaseProduct._id,
       productName: databaseProduct.productName,
@@ -30,6 +34,7 @@ export const buildOrderItems = ({ databaseProducts, productItems }) => {
       subtotal,
       taxPrice,
       noTax: subtotal - taxPrice,
+      discountPrice,
     };
   });
 };

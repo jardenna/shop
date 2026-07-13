@@ -2,7 +2,7 @@ import { PAYMENT_STATUS } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Order from '../models/ordersModel.js';
 import Product from '../models/productModel.js';
-import { calculateCartSummary } from '../services/cartSummary.js';
+import { calculateCartSummary } from '../services/calculateCartSummary.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 import { validateFakePayment } from '../utils/validateFakePayment.js';
@@ -79,19 +79,19 @@ const createOrder = asyncHandler(async (req, res) => {
     });
   }
 
-  const summary = await calculateCartSummary(productItems);
-
   const createdOrders = buildOrderItems({
     databaseProducts,
     productItems,
   });
+
+  const summary = calculateCartSummary(createdOrders);
 
   const order = new Order({
     user: req.user._id,
     orderItems: createdOrders,
     shippingAddress,
     paymentStatus: PAYMENT_STATUS.PENDING,
-    itemPrice: summary.itemPrice,
+    itemPrice: summary.subTotal,
     taxPrice: summary.taxPrice,
     shippingPrice: summary.shippingPrice,
     totalPrice: summary.totalPrice,
@@ -99,6 +99,7 @@ const createOrder = asyncHandler(async (req, res) => {
   });
 
   const createdOrder = await order.save();
+
   res.status(201).json(createdOrder);
 });
 

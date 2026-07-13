@@ -9,13 +9,22 @@ export interface ProductQuantityMap {
   [productId: string]: number;
 }
 
-interface CartListProps {
-  cartList: CartProduct[];
+export interface BaseCartProps {
   language: Record<string, string>;
   onDeleteCartItem: (cartItemId: string) => void;
+  onUpdateQty: (cartItemId: string, qty: number) => void;
 }
 
-const CartList = ({ language, cartList, onDeleteCartItem }: CartListProps) => {
+interface CartListProps extends BaseCartProps {
+  cartList: CartProduct[];
+}
+
+const CartList = ({
+  language,
+  cartList,
+  onDeleteCartItem,
+  onUpdateQty,
+}: CartListProps) => {
   const initialState = Object.fromEntries(
     cartList.map((cart) => [cart.id, cart.qty]),
   );
@@ -35,6 +44,13 @@ const CartList = ({ language, cartList, onDeleteCartItem }: CartListProps) => {
     {},
   );
 
+  const handleUpdateQty = (cartItemId: string, value: number) => {
+    const nextQuantity = values[cartItemId] + value;
+
+    onNumberStepChange(cartItemId, value);
+    onUpdateQty(cartItemId, nextQuantity);
+  };
+
   return (
     <ul className="cart-list">
       {cartList.map((cart) => (
@@ -50,7 +66,7 @@ const CartList = ({ language, cartList, onDeleteCartItem }: CartListProps) => {
             onDeleteCartItem={() => {
               onDeleteCartItem(cart.id);
             }}
-            onNumberStepChange={onNumberStepChange}
+            onUpdateQty={handleUpdateQty}
             onChange={onChange}
             linkTo={`${ShopPath.AllProducts}/${cart.productId}`}
           />

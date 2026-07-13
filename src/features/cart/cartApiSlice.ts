@@ -4,6 +4,7 @@ import {
   BaseCartItem,
   CartListResponse,
   GuestCardResponse,
+  UpdateCartQtyRequest,
   UpdateCartRequest,
 } from '../../app/api/apiTypes/cartApiTypes';
 import { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
@@ -48,6 +49,14 @@ export const cartApiSlice = apiSlice.injectEndpoints({
       }),
       providesTags: [TagTypesEnum.Carts],
     }),
+    updateQty: builder.mutation<DefaultResponse, UpdateCartQtyRequest>({
+      query: ({ cartItemId, qty }) => ({
+        url: `${cartUrl}/${cartItemId}/quantity`,
+        method: 'PATCH',
+        body: { qty },
+      }),
+      invalidatesTags: [TagTypesEnum.Carts],
+    }),
   }),
 });
 
@@ -57,4 +66,5 @@ export const {
   useReplaceCartMutation,
   useGetGuestCartQuery,
   useDeleteCartMutation,
+  useUpdateQtyMutation,
 } = cartApiSlice;

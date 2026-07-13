@@ -1,0 +1,32 @@
+@use '../../../scss/globals' as *;
+
+.summary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    font-size: rem(16px);
+
+    &.summary-total {
+      border-top: 1px solid $color-border;
+      padding-top: 12px;
+      text-transform: uppercase;
+      font-size: rem(20px);
+    }
+
+    &.summary-discount {
+      .summary-info {
+        color: $color-danger;
+      }
+    }
+  }
+
+  .summary-info {
+    font-family: $font-primary-bold;
+  }
+}

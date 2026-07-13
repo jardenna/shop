@@ -8,17 +8,14 @@ import { ChangeInputType } from '../../../types/types';
 import { minInStock, translateKey } from '../../../utils/utils';
 import InStock from '../../shop/components/InStock';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
-import { ProductQuantityMap } from './CartList';
+import { BaseCartProps, ProductQuantityMap } from './CartList';
 
-interface CartItemProps {
+interface CartItemProps extends BaseCartProps {
   cart: CartProduct;
-  language: Record<string, string>;
   linkTo: string;
   quantityByProductId: ProductQuantityMap;
   value: number;
   onChange: (event: ChangeInputType) => void;
-  onDeleteCartItem: (cartItemId: string) => void;
-  onNumberStepChange: (field: string, amount: number) => void;
 }
 
 const CartItem = ({
@@ -27,7 +24,7 @@ const CartItem = ({
   quantityByProductId,
   value,
   onChange,
-  onNumberStepChange,
+  onUpdateQty,
   onDeleteCartItem,
   linkTo,
 }: CartItemProps) => (
@@ -60,13 +57,14 @@ const CartItem = ({
     <div className="quantity">
       <NumberStep
         onChange={onChange}
-        onNumberStepChange={onNumberStepChange}
+        onNumberStepChange={onUpdateQty}
         value={value}
         min={1}
         max={cart.countInStock}
         labelText={language.quantity}
         id={cart.id}
         name={cart.id}
+        displayOnly
         disabled={quantityByProductId[cart.productId] === cart.countInStock}
       />
     </div>

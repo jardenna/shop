@@ -8,10 +8,12 @@ import { useAuth } from '../features/auth/hooks/useAuth';
 import {
   useDeleteCartMutation,
   useGetGuestCartQuery,
+  useUpdateQtyMutation,
 } from '../features/cart/cartApiSlice';
 import CartList from '../features/cart/components/CartList';
+import CartSummary from '../features/cart/components/CartSummary';
 import { useActiveCart } from '../features/cart/useActiveCart';
-import { deleteGuestCartItem } from '../features/cartSlice';
+import { deleteGuestCartItem, updateGuestCartQty } from '../features/cartSlice';
 import { useLanguage } from '../features/language/useLanguage';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import { ShopPath } from '../layout/nav/enums';
@@ -36,6 +38,19 @@ const ShoppingCartPage = () => {
   );
 
   const [deleteCartItem] = useDeleteCartMutation();
+  const [updateQty] = useUpdateQtyMutation();
+
+  const handleUpdateQty = async (cartItemId: string, qty: number) => {
+    try {
+      await updateQty({ cartItemId, qty });
+    } catch (error) {
+      handleApiError(error, onAddMessagePopup);
+    }
+  };
+
+  const handleUpdateQtyGuestCart = (cartItemId: string, qty: number) => {
+    dispatch(updateGuestCartQty({ cartItemId, qty }));
+  };
 
   const handleDeleteCartItem = async (cartItemId: string) => {
     try {
@@ -93,10 +108,15 @@ const ShoppingCartPage = () => {
               onDeleteCartItem={
                 currentUser ? handleDeleteCartItem : handleDeleteGuestCart
               }
+              onUpdateQty={
+                currentUser ? handleUpdateQty : handleUpdateQtyGuestCart
+              }
             />
           </ErrorBoundary>
         </section>
-        <section>Card</section>
+        {apiCartList && (
+          <CartSummary summary={apiCartList.summary} language={language} />
+        )}
       </div>
     </MainPageContainer>
   );
