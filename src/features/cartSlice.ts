@@ -1,5 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CartItem } from '../app/api/apiTypes/cartApiTypes';
+import {
+  CartItem,
+  UpdateCartQtyRequest,
+} from '../app/api/apiTypes/cartApiTypes';
 import { RootState } from '../app/store';
 import { cartStorageUtil } from './cart/cartStorageUtil';
 
@@ -25,6 +28,22 @@ const cartSlice = createSlice({
 
       cartStorageUtil.save(state.cartList);
     },
+    updateGuestCartQty: (
+      state,
+      action: PayloadAction<UpdateCartQtyRequest>,
+    ) => {
+      const cartItem = state.cartList.find(
+        (item) => item.id === action.payload.cartItemId,
+      );
+
+      if (!cartItem) {
+        return;
+      }
+
+      cartItem.qty = action.payload.qty;
+
+      cartStorageUtil.save(state.cartList);
+    },
     deleteGuestCartItem: (state, action: PayloadAction<string>) => {
       state.cartList = state.cartList.filter(
         (cart) => cart.productId !== action.payload,
@@ -35,8 +54,12 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addCartItem, replaceCartItem, deleteGuestCartItem } =
-  cartSlice.actions;
+export const {
+  addCartItem,
+  replaceCartItem,
+  deleteGuestCartItem,
+  updateGuestCartQty,
+} = cartSlice.actions;
 
 export const selectCartList = (state: RootState) => state.cartList.cartList;
 

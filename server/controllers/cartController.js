@@ -320,7 +320,7 @@ const getGuestCartProducts = asyncHandler(async (req, res) => {
     }
 
     return {
-      id: item.productId,
+      id: item.id,
       productId: item.productId,
       qty: item.qty,
       size: item.size,

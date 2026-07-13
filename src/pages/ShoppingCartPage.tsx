@@ -12,7 +12,7 @@ import {
 } from '../features/cart/cartApiSlice';
 import CartList from '../features/cart/components/CartList';
 import { useActiveCart } from '../features/cart/useActiveCart';
-import { deleteGuestCartItem } from '../features/cartSlice';
+import { deleteGuestCartItem, updateGuestCartQty } from '../features/cartSlice';
 import { useLanguage } from '../features/language/useLanguage';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import { ShopPath } from '../layout/nav/enums';
@@ -45,6 +45,10 @@ const ShoppingCartPage = () => {
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
     }
+  };
+
+  const handleUpdateQtyGuestCart = (cartItemId: string, qty: number) => {
+    dispatch(updateGuestCartQty({ cartItemId, qty }));
   };
 
   const handleDeleteCartItem = async (cartItemId: string) => {
@@ -103,7 +107,9 @@ const ShoppingCartPage = () => {
               onDeleteCartItem={
                 currentUser ? handleDeleteCartItem : handleDeleteGuestCart
               }
-              onUpdateQty={handleUpdateQty}
+              onUpdateQty={
+                currentUser ? handleUpdateQty : handleUpdateQtyGuestCart
+              }
             />
           </ErrorBoundary>
         </section>
