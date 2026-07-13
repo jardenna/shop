@@ -2,7 +2,7 @@ import { PAYMENT_STATUS } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Order from '../models/ordersModel.js';
 import Product from '../models/productModel.js';
-import { calculateCartSummary } from '../services/cartSummary.js';
+import { calculateCartSummary } from '../services/calculateCartSummary.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 import { validateFakePayment } from '../utils/validateFakePayment.js';

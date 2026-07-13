@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
 import Product from '../models/productModel.js';
-import { calculateCartSummary } from '../services/cartSummary.js';
+import { calculateCartSummary } from '../services/calculateCartSummary.js';
 import { buildOrderItems } from '../utils/buildOrderItems.js';
 import { getProductsMap, mergeCartItems } from '../utils/cartUtils.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
