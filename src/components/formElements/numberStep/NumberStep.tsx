@@ -14,6 +14,7 @@ interface NumberStepProps {
   initCount?: number;
   max?: number;
   min?: number;
+  readOnlyInput?: boolean;
   showLabel?: boolean;
   onChange: (event: ChangeInputType) => void;
   onNumberStepChange: (field: string, amount: number) => void;
@@ -27,6 +28,7 @@ const NumberStep = ({
   min = 0,
   max,
   labelText,
+  readOnlyInput,
   id,
   name,
   showLabel,
@@ -51,17 +53,22 @@ const NumberStep = ({
             handleNumberStepClick(-initCount);
           }}
         />
-        <Input
-          type="number"
-          value={value}
-          onChange={onChange}
-          id={id}
-          labelText={labelText}
-          inputHasNoLabel
-          name={name}
-          min={min}
-          max={max}
-        />
+        {readOnlyInput ? (
+          <span className="read-only">{value}</span>
+        ) : (
+          <Input
+            type="number"
+            value={value}
+            onChange={onChange}
+            id={id}
+            labelText={labelText}
+            inputHasNoLabel
+            name={name}
+            min={min}
+            max={max}
+            readOnly={readOnlyInput}
+          />
+        )}
         <IconBtn
           iconName={IconName.Add}
           variant={BtnVariant.Ghost}

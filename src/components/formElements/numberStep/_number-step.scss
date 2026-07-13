@@ -6,6 +6,11 @@
   align-items: center;
   gap: 20px;
 
+  .read-only {
+    padding-inline: 20px;
+    min-width: fit-content;
+  }
+
   .number-step-container {
     display: flex;
     gap: 2px;
@@ -26,6 +31,6 @@
   }
 
   .btn-ghost {
-    padding-inline: 20px;
+    padding-inline: 12px;
   }
 }
