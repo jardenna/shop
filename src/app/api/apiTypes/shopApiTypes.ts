@@ -80,7 +80,7 @@ export type PreferredFashion =
 
 export type StandardAddress = 'addressBilling' | 'addressDelivery';
 
-type BaseAddress = {
+export type BaseAddress = {
   city: string;
   standardAddress: StandardAddress[];
   street: string;
