@@ -132,6 +132,7 @@ const AddressFormModal = ({
   return (
     <ModalContainer
       triggerModalDisabled={triggerModalDisabled}
+      // onClearAllValues={onClearAllValues}
       onBoundaryReset={id ? reset : addReset}
       modalSize={SizeVariant.Md}
       triggerModalBtnContent={
