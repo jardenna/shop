@@ -1,6 +1,6 @@
 const baseAuthApi = 'auth';
 
-const authEndpoints = {
+export const authEndpoints = {
   register: `${baseAuthApi}/register`,
   create: `${baseAuthApi}/admin/create-user`,
   login: `${baseAuthApi}/login`,
@@ -8,27 +8,14 @@ const authEndpoints = {
   checkAuth: `${baseAuthApi}/check-auth`,
 };
 
-const userUrl = '/users';
-const profileUrl = '/users/profile';
-const categoryUrl = '/categories';
-const subCategoryUrl = '/subcategories';
-const favoritesUrl = '/favorites';
-const subCategoryMenuUrl = '/subcategories/menu/?parentCategoryName=';
-const productUrl = '/products';
-const uploadUrl = '/upload';
-const cartUrl = '/cart';
-const guestCartUrl = '/cart/guest';
-
-export {
-  authEndpoints,
-  cartUrl,
-  categoryUrl,
-  favoritesUrl,
-  guestCartUrl,
-  productUrl,
-  profileUrl,
-  subCategoryMenuUrl,
-  subCategoryUrl,
-  uploadUrl,
-  userUrl,
-};
+export const userUrl = '/users';
+export const profileUrl = '/users/profile';
+export const categoryUrl = '/categories';
+export const subCategoryUrl = '/subcategories';
+export const favoritesUrl = '/favorites';
+export const subCategoryMenuUrl = '/subcategories/menu/?parentCategoryName=';
+export const productUrl = '/products';
+export const uploadUrl = '/upload';
+export const cartUrl = '/cart';
+export const guestCartUrl = '/cart/guest';
+export const ordersUrl = '/orders';
