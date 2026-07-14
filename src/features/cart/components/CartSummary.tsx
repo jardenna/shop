@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router';
-import { CartListSummary } from '../../../app/api/apiTypes/cartApiTypes';
+import { Summary } from '../../../app/api/apiTypes/cartApiTypes';
 import Button from '../../../components/Button';
 import { ShopPath } from '../../../layout/nav/enums';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
@@ -7,7 +7,7 @@ import './cartSummary.styles.scss';
 
 interface CartSummaryProps {
   language: Record<string, string>;
-  summary: CartListSummary;
+  summary: Summary;
 }
 
 const CartSummary = ({ summary, language }: CartSummaryProps) => {
