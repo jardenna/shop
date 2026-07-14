@@ -1,8 +1,10 @@
 import type {
   Address,
   AddressInput,
+  StandardAddress,
 } from '../../app/api/apiTypes/shopApiTypes';
 import FieldSet from '../../components/fieldset/FieldSet';
+import CheckboxList from '../../components/formElements/checkbox/CheckboxList';
 import Input from '../../components/formElements/Input';
 import IconContent from '../../components/IconContent';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
@@ -34,8 +36,10 @@ type AddressFormModalProps = {
   triggerModalDisabled?: boolean;
 };
 
+type AddressField = keyof Omit<Address, 'standardAddress'>;
+
 type AddressFieldListProps = {
-  name: keyof Address;
+  name: AddressField;
   required?: boolean;
   type?: InputType;
 };
@@ -62,12 +66,18 @@ const AddressFormModal = ({
   const { onAddMessagePopup } = useMessagePopup();
   const { resultSuccess, setResultSuccess } = useSubmitStatus();
 
+  const standardAddressList: StandardAddress[] = [
+    'addressBilling',
+    'addressDelivery',
+  ];
+
   const initialState: AddressInput = {
     name: address?.name || username,
     street: address?.street ?? '',
     zipCode: address?.zipCode ?? '',
     city: address?.city ?? '',
     country: address?.country ?? 'Danmark',
+    standardAddress: address?.standardAddress ?? [],
     id: id || null,
   };
 
@@ -102,11 +112,10 @@ const AddressFormModal = ({
       }
 
       onAddMessagePopup({ message: popupMessage });
-
-      onClearAllValues();
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
       setResultSuccess(false);
+      onClearAllValues();
     }
   }
 
@@ -123,7 +132,7 @@ const AddressFormModal = ({
   return (
     <ModalContainer
       triggerModalDisabled={triggerModalDisabled}
-      onClearAllValues={onClearAllValues}
+      // onClearAllValues={onClearAllValues}
       onBoundaryReset={id ? reset : addReset}
       modalSize={SizeVariant.Md}
       triggerModalBtnContent={
@@ -148,19 +157,29 @@ const AddressFormModal = ({
       className="address-modal"
     >
       <FieldSet legendText={language.address}>
-        {addressInputList.map(({ name, required, type }) => (
-          <Input
-            key={name}
+        <div className="address-list">
+          {addressInputList.map(({ name, required, type }) => (
+            <Input
+              key={name}
+              onChange={onChange}
+              required={required}
+              name={name}
+              id={name}
+              value={values[name] ?? ''}
+              labelText={language[name]}
+              type={type}
+              errorText={language[errors[name]]}
+            />
+          ))}
+
+          <CheckboxList
+            checkBoxList={standardAddressList}
+            name="standardAddress"
             onChange={onChange}
-            required={required}
-            name={name}
-            id={name}
-            value={values[name] ?? ''}
-            labelText={language[name]}
-            type={type}
-            errorText={language[errors[name]]}
+            values={values.standardAddress}
+            language={language}
           />
-        ))}
+        </div>
       </FieldSet>
     </ModalContainer>
   );

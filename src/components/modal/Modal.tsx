@@ -80,21 +80,13 @@ const Modal = ({
 
   useClickOutside(popupRef, () => {
     closeModalAnimated();
-    onClearAllValues?.();
   }, [popupRef]);
 
   useEffect(() => {
     if (primaryActionBtn.resultSuccess === true && modalId === id) {
       closeModalAnimated();
-      onClearAllValues?.();
     }
-  }, [
-    primaryActionBtn.resultSuccess,
-    modalId,
-    id,
-    closeModalAnimated,
-    onClearAllValues,
-  ]);
+  }, [primaryActionBtn.resultSuccess, modalId, id, closeModalAnimated]);
 
   if (modalId !== id || !modalId) {
     return null;
@@ -108,7 +100,6 @@ const Modal = ({
     const shouldClose = closeOnClick !== false && resultSuccess === undefined;
 
     if (shouldClose) {
-      onClearAllValues?.();
       closeModalAnimated();
     }
   };

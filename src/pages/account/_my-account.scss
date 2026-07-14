@@ -58,9 +58,10 @@
     top: 15%;
   }
 
-  .fieldset {
+  .address-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
 
     .input-container {
       grid-column: 1 / -1;

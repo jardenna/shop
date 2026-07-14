@@ -2,6 +2,7 @@ import { Schema, model } from 'mongoose';
 import {
   ALLOWED_FASHION_PREFERENCES,
   ALLOWED_ROLES,
+  STANDARD_ADDRESS_TYPES,
 } from '../config/constants.js';
 import { renameIdTransform } from '../utils/formatMongoData.js';
 const { ObjectId } = Schema;
@@ -26,6 +27,11 @@ const AddressSchema = new Schema(
     country: {
       type: String,
       default: 'Danmark',
+    },
+    standardAddress: {
+      type: [String],
+      enum: STANDARD_ADDRESS_TYPES,
+      default: [],
     },
   },
   {
