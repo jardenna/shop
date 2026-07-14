@@ -1,4 +1,4 @@
-import { Product } from '../../../app/api/apiTypes/cartApiTypes';
+import { Order } from '../../../app/api/apiTypes/cartApiTypes';
 import VisuallyHidden from '../../../components/VisuallyHidden';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { ShopPath } from '../../../layout/nav/enums';
@@ -16,7 +16,7 @@ export interface BaseCartProps {
 }
 
 interface CartListProps extends BaseCartProps {
-  cartList: Product[];
+  cartList: Order[];
 }
 
 const CartList = ({

@@ -11,7 +11,7 @@ export interface CartItem extends BaseOrder {
   id?: string;
 }
 
-export interface Product extends BaseOrder {
+export interface Order extends BaseOrder {
   countInStock: number;
   discount: number;
   id: string;
@@ -27,7 +27,7 @@ export interface CartListRequest {
 }
 
 export interface CartListResponse extends DefaultResponseType {
-  cartItems: Product[];
+  cartItems: Order[];
   summary: Summary;
 }
 
@@ -38,7 +38,7 @@ export interface UpdateCartRequest {
 
 export interface GuestCardResponse {
   missingProductIds: string[];
-  products: Product[];
+  products: Order[];
 }
 
 export interface UpdateCartQtyRequest {

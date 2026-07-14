@@ -1,4 +1,4 @@
-import { BaseOrder, Product } from './cartApiTypes';
+import { BaseOrder, Order } from './cartApiTypes';
 import { DefaultResponseType, Summary } from './sharedApiTypes';
 import { BaseAddress } from './shopApiTypes';
 
@@ -16,7 +16,7 @@ export interface CreateOrderResponse extends DefaultResponseType {
   billingAddress: BaseAddress;
   isDelivered: boolean;
   isPaid: boolean;
-  orderItems: Product[];
+  orderItems: Order[];
   paymentStatus: PaymentStatus;
   shippingAddress: BaseAddress;
   summary: Summary;
