@@ -1,4 +1,4 @@
-import { BaseProduct } from '../../app/api/apiTypes/sharedApiTypes';
+import { BaseShopProduct } from '../../app/api/apiTypes/sharedApiTypes';
 import { AppDispatch } from '../../app/store';
 import { shopApiSlice } from '../shop/shopApiSlice';
 import { useUploadImageMutation } from '../uploadImageApiSlice';
@@ -35,7 +35,7 @@ export async function handleImageUpload({
       shopApiSlice.util.updateQueryData(
         'getSingleProduct',
         id,
-        (draft: BaseProduct) => {
+        (draft: BaseShopProduct) => {
           // eslint-disable-next-line no-param-reassign
           draft.images = merged;
         },

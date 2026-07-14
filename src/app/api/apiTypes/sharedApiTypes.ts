@@ -66,7 +66,7 @@ export type SubCategoryNames = (typeof subCategoryValues)[number];
 
 export type SortOrder = 'asc' | 'desc';
 
-export type BaseProduct = DefaultResponseType & {
+export type BaseShopProduct = DefaultResponseType & {
   brand: string;
   categoryName: MainCategoryNames;
   colors: string[];

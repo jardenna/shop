@@ -1,7 +1,7 @@
 import type {
   BasePagination,
-  BaseProduct,
   BaseProductParams,
+  BaseShopProduct,
   DefaultResponseType,
   Size,
 } from './sharedApiTypes';
@@ -23,7 +23,7 @@ export type ShopProductsParams = BaseProductParams &
 export type ShopAllProductsResponse = BasePagination & {
   availableBrands: string[];
   availableSizes: Size[];
-  products: BaseProduct[];
+  products: BaseShopProduct[];
   totalCount: number;
 };
 
