@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { CartProduct } from '../../../app/api/apiTypes/cartApiTypes';
+import { Product } from '../../../app/api/apiTypes/cartApiTypes';
 import DeleteItem from '../../../components/deleteItem/DeleteItem';
 import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import NumberStep from '../../../components/formElements/numberStep/NumberStep';
@@ -11,7 +11,7 @@ import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 import { BaseCartProps, ProductQuantityMap } from './CartList';
 
 interface CartItemProps extends BaseCartProps {
-  cart: CartProduct;
+  cart: Product;
   linkTo: string;
   quantityByProductId: ProductQuantityMap;
   value: number;

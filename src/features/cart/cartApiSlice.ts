@@ -1,7 +1,7 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import {
   AddToCartRequest,
-  BaseCartItem,
+  BaseProduct,
   CartListResponse,
   GuestCardResponse,
   UpdateCartQtyRequest,
@@ -41,7 +41,7 @@ export const cartApiSlice = apiSlice.injectEndpoints({
       query: () => cartUrl,
       providesTags: [TagTypesEnum.Carts],
     }),
-    getGuestCart: builder.query<GuestCardResponse, BaseCartItem[]>({
+    getGuestCart: builder.query<GuestCardResponse, BaseProduct[]>({
       query: (body) => ({
         url: guestCartUrl,
         method: 'POST',

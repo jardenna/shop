@@ -1,19 +1,13 @@
-import { Summary } from './cartApiTypes';
-import { DefaultResponseType, Size } from './sharedApiTypes';
+import { BaseProduct, Product, Summary } from './cartApiTypes';
+import { DefaultResponseType } from './sharedApiTypes';
 import { BaseAddress } from './shopApiTypes';
-export interface Order {
-  color: string;
-  product: string;
-  qty: number;
-  size: Size | '';
-}
 
 export type AllowedPaymentMethod = 'Credit Card' | 'PayPal' | 'MobilePay';
 export type PaymentStatus = 'pending' | 'failed' | 'paid';
 
 export interface CreateOrderRequest {
   billingAddressId: string;
-  orderItems: Order[];
+  orderItems: BaseProduct[];
   paymentMethod: AllowedPaymentMethod;
   shippingAddressId: string;
 }
@@ -22,7 +16,7 @@ export interface CreateOrderResponse extends DefaultResponseType {
   billingAddress: BaseAddress;
   isDelivered: boolean;
   isPaid: boolean;
-  orderItems: Order[];
+  orderItems: Product[];
   paymentStatus: PaymentStatus;
   shippingAddress: BaseAddress;
   summary: Summary;

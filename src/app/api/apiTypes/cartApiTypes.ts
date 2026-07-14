@@ -1,17 +1,17 @@
 import type { DefaultResponseType, Size } from './sharedApiTypes';
 
-export interface BaseCartItem {
+export interface BaseProduct {
   color: string;
   productId: string;
   qty: number;
   size: Size | '';
 }
 
-export interface CartItem extends BaseCartItem {
+export interface CartItem extends BaseProduct {
   id?: string;
 }
 
-export interface CartProduct extends BaseCartItem {
+export interface Product extends BaseProduct {
   countInStock: number;
   discount: number;
   id: string;
@@ -34,7 +34,7 @@ export interface Summary {
   totalPrice: number;
 }
 export interface CartListResponse extends DefaultResponseType {
-  cartItems: CartProduct[];
+  cartItems: Product[];
   summary: Summary;
 }
 
@@ -45,7 +45,7 @@ export interface UpdateCartRequest {
 
 export interface GuestCardResponse {
   missingProductIds: string[];
-  products: CartProduct[];
+  products: Product[];
 }
 
 export interface UpdateCartQtyRequest {
