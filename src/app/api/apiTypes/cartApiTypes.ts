@@ -1,17 +1,17 @@
 import type { DefaultResponseType, Size } from './sharedApiTypes';
 
-export interface BaseProduct {
+export interface BaseOrder {
   color: string;
   productId: string;
   qty: number;
   size: Size | '';
 }
 
-export interface CartItem extends BaseProduct {
+export interface CartItem extends BaseOrder {
   id?: string;
 }
 
-export interface Product extends BaseProduct {
+export interface Product extends BaseOrder {
   countInStock: number;
   discount: number;
   id: string;
