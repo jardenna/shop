@@ -14,6 +14,7 @@ const STATUS = {
 };
 
 const { PUBLISHED, INACTIVE, SCHEDULED } = STATUS;
+const STANDARD_ADDRESS_TYPES = ['addressDelivery', 'addressBilling'];
 
 const SHOE_SIZES = ['36', '37', '38', '39', '40', '41', '42', 'Onesize'];
 const MEN_SHOE_SIZES = ['40', '41', '42', '43', '44', '45', '46', 'Onesize'];
@@ -82,6 +83,7 @@ export {
   PUBLISHED,
   SCHEDULED,
   SHOE_SIZES,
+  STANDARD_ADDRESS_TYPES,
   STATUS,
   VAT_SHARE,
 };
