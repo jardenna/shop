@@ -1,5 +1,5 @@
-import { BaseOrder, Product, Summary } from './cartApiTypes';
-import { DefaultResponseType } from './sharedApiTypes';
+import { BaseOrder, Product } from './cartApiTypes';
+import { DefaultResponseType, Summary } from './sharedApiTypes';
 import { BaseAddress } from './shopApiTypes';
 
 export type AllowedPaymentMethod = 'Credit Card' | 'PayPal' | 'MobilePay';

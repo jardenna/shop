@@ -1,4 +1,4 @@
-import type { DefaultResponseType, Size } from './sharedApiTypes';
+import type { DefaultResponseType, Size, Summary } from './sharedApiTypes';
 
 export interface BaseOrder {
   color: string;
@@ -26,13 +26,6 @@ export interface CartListRequest {
   cartItems: AddToCartRequest;
 }
 
-export interface Summary {
-  discountPrice: number;
-  shippingPrice: number;
-  subTotal: number;
-  taxPrice: number;
-  totalPrice: number;
-}
 export interface CartListResponse extends DefaultResponseType {
   cartItems: Product[];
   summary: Summary;

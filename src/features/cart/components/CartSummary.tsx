@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router';
-import { Summary } from '../../../app/api/apiTypes/cartApiTypes';
+import { Summary } from '../../../app/api/apiTypes/sharedApiTypes';
 import Button from '../../../components/Button';
 import { ShopPath } from '../../../layout/nav/enums';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';

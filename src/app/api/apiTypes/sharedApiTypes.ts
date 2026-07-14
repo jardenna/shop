@@ -111,3 +111,11 @@ export type BasePagination = {
   pages: number;
   productCount: number;
 };
+
+export interface Summary {
+  discountPrice: number;
+  shippingPrice: number;
+  subTotal: number;
+  taxPrice: number;
+  totalPrice: number;
+}
