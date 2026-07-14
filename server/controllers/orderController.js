@@ -2,6 +2,7 @@ import { PAYMENT_STATUS } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Order from '../models/ordersModel.js';
 import Product from '../models/productModel.js';
+import User from '../models/userModel.js';
 import { calculateCartSummary } from '../services/calculateCartSummary.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
@@ -19,7 +20,32 @@ import { buildOrderItems } from '../services/buildOrderItems.js';
 // @method  Post
 // @access  Private
 const createOrder = asyncHandler(async (req, res) => {
-  const { orderItems, shippingAddress } = req.body;
+  const { orderItems, shippingAddressId, billingAddressId, paymentMethod } =
+    req.body;
+
+  const userAddresses = await User.findById(req.user._id).select('addresses');
+
+  if (!userAddresses?.addresses.length) {
+    return res.status(400).json({
+      success: false,
+      message: t('noAddressData', req.lang),
+    });
+  }
+
+  const shippingAddress = userAddresses.addresses.find(
+    (address) => address._id.toString() === shippingAddressId,
+  );
+
+  const billingAddress = userAddresses.addresses.find(
+    (address) => address._id.toString() === billingAddressId,
+  );
+
+  if (!shippingAddress || !billingAddress) {
+    return res.status(404).json({
+      success: false,
+      message: t('addressNotFound', req.lang),
+    });
+  }
 
   if (!orderItems || orderItems.length === 0) {
     return res.status(400).json({
@@ -89,7 +115,9 @@ const createOrder = asyncHandler(async (req, res) => {
   const order = new Order({
     user: req.user._id,
     orderItems: createdOrders,
+    paymentMethod,
     shippingAddress,
+    billingAddress,
     paymentStatus: PAYMENT_STATUS.PENDING,
     itemPrice: summary.subTotal,
     taxPrice: summary.taxPrice,

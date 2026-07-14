@@ -15,6 +15,7 @@ addressBilling;Standard billing address;Standard faktureringsadresse
 addressCreated;Address was created;Adresse blev tilføjet
 addressDeleted;Address deleted;Addresse blev slettet
 addressDelivery;Standard delivery address;Standard leveringsadresse
+addressNotFound;The selected address could not be found.;Den valgte adresse blev ikke fundet.
 addressUpdated;Address was updated;Adresse blev opdateret
 addToBag;Add to bag;Læg i indkøbskurv
 addToCart;Add to cart;Tilføj til kurv

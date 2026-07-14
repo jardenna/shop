@@ -30,14 +30,23 @@ const orderModelSchema = new Schema(
       },
     ],
     shippingAddress: {
-      address: { type: String, required: true },
+      name: { type: String, required: true },
+      street: { type: String, required: true },
+      zipCode: { type: String, required: true },
       city: { type: String, required: true },
-      postalCode: { type: String, required: true },
+      country: { type: String, required: true },
+    },
+    billingAddress: {
+      name: { type: String, required: true },
+      street: { type: String, required: true },
+      zipCode: { type: String, required: true },
+      city: { type: String, required: true },
       country: { type: String, required: true },
     },
     paymentMethod: {
       type: String,
       enum: ALLOWED_PAYMENT_METHODS,
+      required: true,
     },
     paymentResult: {
       id: { type: String },
