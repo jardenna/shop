@@ -55,7 +55,7 @@ const createOrder = asyncHandler(async (req, res) => {
   }
 
   const uniqueProductIds = [
-    ...new Set(orderItems.map((orderItem) => orderItem.product)),
+    ...new Set(orderItems.map((orderItem) => orderItem.productId)),
   ];
 
   const databaseProducts = await Product.find({
@@ -71,12 +71,7 @@ const createOrder = asyncHandler(async (req, res) => {
     });
   }
 
-  const productItems = orderItems.map((orderItem) => ({
-    productId: orderItem.product,
-    qty: orderItem.qty,
-    color: orderItem.color,
-    size: orderItem.size,
-  }));
+  const productItems = orderItems;
 
   for (const productItem of productItems) {
     const databaseProduct = findDatabaseProduct({
