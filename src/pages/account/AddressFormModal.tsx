@@ -112,11 +112,10 @@ const AddressFormModal = ({
       }
 
       onAddMessagePopup({ message: popupMessage });
-
-      onClearAllValues();
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
       setResultSuccess(false);
+      onClearAllValues();
     }
   }
 
