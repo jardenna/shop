@@ -1,5 +1,7 @@
+import { useNavigate } from 'react-router';
 import { CartListSummary } from '../../../app/api/apiTypes/cartApiTypes';
 import Button from '../../../components/Button';
+import { ShopPath } from '../../../layout/nav/enums';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 import './cartSummary.styles.scss';
 
@@ -9,6 +11,7 @@ interface CartSummaryProps {
 }
 
 const CartSummary = ({ summary, language }: CartSummaryProps) => {
+  const navigate = useNavigate();
   const summaryItems = [
     {
       label: language.subtotal,
@@ -32,6 +35,10 @@ const CartSummary = ({ summary, language }: CartSummaryProps) => {
     },
   ].filter((item) => item !== null);
 
+  const handleCheckout = () => {
+    navigate(`/${ShopPath.Checkout}`);
+  };
+
   return (
     <section className="summary-list">
       <h2>Summary</h2>
@@ -43,7 +50,7 @@ const CartSummary = ({ summary, language }: CartSummaryProps) => {
           </span>
         </div>
       ))}
-      <Button>Fortsæt til kassen</Button>
+      <Button onClick={handleCheckout}>Fortsæt til kassen</Button>
     </section>
   );
 };
