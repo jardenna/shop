@@ -78,8 +78,11 @@ export type PreferredFashion =
   | 'kidsFashion'
   | 'noPreference';
 
+export type StandardAddress = 'addressBilling' | 'addressDelivery';
+
 type BaseAddress = {
   city: string;
+  standardAddress: StandardAddress[];
   street: string;
   zipCode: string;
   country?: string;
