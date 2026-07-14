@@ -2,6 +2,7 @@ import { model, Schema } from 'mongoose';
 import {
   ALLOWED_PAYMENT_METHODS,
   ALLOWED_SIZES,
+  PAYMENT_STATUS,
   PAYMENT_STATUS_ENUM,
 } from '../config/constants.js';
 
@@ -54,35 +55,37 @@ const orderModelSchema = new Schema(
       updateTime: { type: String },
       email: { type: String },
     },
+    summary: {
+      subTotal: {
+        type: Number,
+        required: true,
+        default: 0,
+      },
+      taxPrice: {
+        type: Number,
+        required: true,
+        default: 0,
+      },
+      shippingPrice: {
+        type: Number,
+        required: true,
+        default: 0,
+      },
+      totalPrice: {
+        type: Number,
+        required: true,
+        default: 0,
+      },
+      discountPrice: {
+        type: Number,
+        required: true,
+        default: 0,
+      },
+    },
     paymentStatus: {
       type: String,
       enum: PAYMENT_STATUS_ENUM,
-      default: 'PENDING',
-    },
-    itemPrice: {
-      type: Number,
-      required: true,
-      default: 0.0,
-    },
-    taxPrice: {
-      type: Number,
-      required: true,
-      default: 0.0,
-    },
-    shippingPrice: {
-      type: Number,
-      required: true,
-      default: 0.0,
-    },
-    totalPrice: {
-      type: Number,
-      required: true,
-      default: 0.0,
-    },
-    discountPrice: {
-      type: Number,
-      required: true,
-      default: 0,
+      default: PAYMENT_STATUS.PENDING,
     },
     isPaid: {
       type: Boolean,
@@ -103,7 +106,6 @@ const orderModelSchema = new Schema(
   },
   { timestamps: true },
 );
-
 const Order = model('orders', orderModelSchema);
 
 export default Order;

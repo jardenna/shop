@@ -119,11 +119,13 @@ const createOrder = asyncHandler(async (req, res) => {
     shippingAddress,
     billingAddress,
     paymentStatus: PAYMENT_STATUS.PENDING,
-    itemPrice: summary.subTotal,
-    taxPrice: summary.taxPrice,
-    shippingPrice: summary.shippingPrice,
-    totalPrice: summary.totalPrice,
-    discountPrice: summary.discountPrice,
+    summary: {
+      subTotal: summary.subTotal,
+      taxPrice: summary.taxPrice,
+      shippingPrice: summary.shippingPrice,
+      totalPrice: summary.totalPrice,
+      discountPrice: summary.discountPrice,
+    },
   });
 
   const createdOrder = await order.save();
