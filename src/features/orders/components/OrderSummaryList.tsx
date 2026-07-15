@@ -2,8 +2,8 @@ import { CartListResponse } from '../../../app/api/apiTypes/cartApiTypes';
 import DeleteItem from '../../../components/deleteItem/DeleteItem';
 import Img from '../../../components/Img';
 import SkeletonList from '../../../components/skeleton/SkeletonList';
-import { translateKey } from '../../../utils/utils';
 import './_order.scss';
+import SummaryInfo from './SummaryInfo';
 
 interface OrderSummaryListProps {
   isLoading: boolean;
@@ -27,30 +27,32 @@ const OrderSummaryList = ({
       <h2 className="summary-title">Order summary [add reduced qty]</h2>
       {orderItems && (
         <ul className="order-summary-list">
-          {orderItems.cartItems.map((order) => (
-            <li key={order.id}>
-              <article className="order-summary-item">
-                <Img src={order.image} alt="" className="summary-img" />
-                <div>
-                  <h3 className="summary-item-title">{order.productName}</h3>
-                  <div className="summery">
-                    <span>QTY {order.qty}</span>
-                    <span aria-hidden>/</span>
-                    <span>{translateKey(order.color, language)}</span>
-                    <span>/</span>
-                    <span>SIZE {order.size}</span>
+          {orderItems.cartItems.map(
+            ({ id, image, productName, color, size, qty }) => (
+              <li key={id}>
+                <article className="order-summary-item">
+                  <Img src={image} alt="" className="summary-img" />
+                  <div>
+                    <h3 className="summary-item-title">{productName}</h3>
+                    <SummaryInfo
+                      qty={qty}
+                      color={color}
+                      size={size}
+                      language={language}
+                    />
+
+                    <DeleteItem
+                      ariaLabel={`${language.delete} ${productName}`}
+                      onDeleteItem={() => {
+                        deleteCartItem(id);
+                      }}
+                      itemName={productName}
+                    />
                   </div>
-                  <DeleteItem
-                    ariaLabel={`${language.delete} ${order.productName}`}
-                    onDeleteItem={() => {
-                      deleteCartItem(order.id);
-                    }}
-                    itemName={order.productName}
-                  />
-                </div>
-              </article>
-            </li>
-          ))}
+                </article>
+              </li>
+            ),
+          )}
         </ul>
       )}
     </section>
