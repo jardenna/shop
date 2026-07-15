@@ -20,3 +20,4 @@ export const cartUrl = '/cart';
 export const guestCartUrl = '/cart/guest';
 export const ordersUrl = '/orders';
 export const userOrdersUrl = '/orders/me';
+export const checkoutUrl = '/checkout';
