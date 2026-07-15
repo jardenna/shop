@@ -40,7 +40,7 @@ const CartSummary = ({ summary, language }: CartSummaryProps) => {
   };
 
   return (
-    <section className="summary-list">
+    <aside className="summary-list">
       <h2>{language.orderSummary}</h2>
       {summaryItems.map(({ label, price, className }) => (
         <div key={label} className={`summary-item ${className ?? ''}`}>
@@ -51,7 +51,7 @@ const CartSummary = ({ summary, language }: CartSummaryProps) => {
         </div>
       ))}
       <Button onClick={handleCheckout}>Fortsæt til kassen</Button>
-    </section>
+    </aside>
   );
 };
 export default CartSummary;
