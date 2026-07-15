@@ -1,4 +1,8 @@
-export const buildCartData = async ({}) => {
+import { getProductsMap } from '../utils/cartUtils.js';
+import { buildOrderItems } from './buildOrderItems.js';
+import { calculateCartSummary } from './calculateCartSummary.js';
+
+export const buildCartData = async ({ cart }) => {
   const productMap = await getProductsMap({
     productIds: cart.cartItems.map(({ productId }) => productId.toString()),
   });
@@ -8,16 +12,22 @@ export const buildCartData = async ({}) => {
   );
 
   if (missingProduct) {
-    return res.status(500).json({
+    return {
       success: false,
-      message: t('productsNoLongerAvailable', req.lang),
-    });
+    };
   }
+
   const orderItems = buildOrderItems({
     databaseProducts: [...productMap.values()],
     productItems: cart.cartItems,
   });
 
   const summary = calculateCartSummary(orderItems);
-  return { summary };
+
+  return {
+    success: true,
+    orderItems,
+    summary,
+    productMap,
+  };
 };
