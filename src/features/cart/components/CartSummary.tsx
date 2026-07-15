@@ -1,7 +1,4 @@
-import { useNavigate } from 'react-router';
 import { Summary } from '../../../app/api/apiTypes/sharedApiTypes';
-import Button from '../../../components/Button';
-import { ShopPath } from '../../../layout/nav/enums';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 import './cartSummary.styles.scss';
 
@@ -11,7 +8,6 @@ interface CartSummaryProps {
 }
 
 const CartSummary = ({ summary, language }: CartSummaryProps) => {
-  const navigate = useNavigate();
   const summaryItems = [
     {
       label: language.subtotal,
@@ -35,13 +31,8 @@ const CartSummary = ({ summary, language }: CartSummaryProps) => {
     },
   ].filter((item) => item !== null);
 
-  const handleCheckout = () => {
-    navigate(`/${ShopPath.Checkout}`);
-  };
-
   return (
-    <aside className="summary-list">
-      <h2>{language.orderSummary}</h2>
+    <section className="summary-list">
       {summaryItems.map(({ label, price, className }) => (
         <div key={label} className={`summary-item ${className ?? ''}`}>
           <span>{label}</span>
@@ -50,8 +41,7 @@ const CartSummary = ({ summary, language }: CartSummaryProps) => {
           </span>
         </div>
       ))}
-      <Button onClick={handleCheckout}>Fortsæt til kassen</Button>
-    </aside>
+    </section>
   );
 };
 export default CartSummary;

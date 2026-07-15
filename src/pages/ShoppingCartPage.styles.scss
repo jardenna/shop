@@ -8,4 +8,10 @@
   @include max-size($mini) {
     display: block;
   }
+
+  .cart-page-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 }

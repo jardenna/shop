@@ -1,4 +1,5 @@
 import { useGetCartQuery } from '../features/cart/cartApiSlice';
+import CartSummary from '../features/cart/components/CartSummary';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
 import { useLanguage } from '../features/language/useLanguage';
 import OrderSummaryList from '../features/orders/components/OrderSummaryList';
@@ -18,6 +19,9 @@ const CheckoutPage = () => {
           language={language}
           deleteCartItem={deleteCartItem}
         />
+        {cartList && (
+          <CartSummary summary={cartList.summary} language={language} />
+        )}
       </section>
     </MainPageContainer>
   );

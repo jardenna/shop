@@ -1,6 +1,8 @@
 import { skipToken } from '@reduxjs/toolkit/query';
 import { ErrorBoundary } from 'react-error-boundary';
+import { useNavigate } from 'react-router';
 import { useAppDispatch } from '../app/hooks';
+import Button from '../components/Button';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useMessagePopup } from '../components/messagePopup/useMessagePopup';
 import SkeletonCard from '../components/skeleton/SkeletonCard';
@@ -22,6 +24,7 @@ import MainPageContainer from './pageContainer/MainPageContainer';
 import './ShoppingCartPage.styles.scss';
 
 const ShoppingCartPage = () => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { currentUser, isAuthReady } = useAuth();
   const { language } = useLanguage();
@@ -74,6 +77,10 @@ const ShoppingCartPage = () => {
     );
   }
 
+  const handleCheckout = () => {
+    navigate(`/${ShopPath.Checkout}`);
+  };
+
   return (
     <MainPageContainer heading="bag">
       <div className="cart-page">
@@ -94,9 +101,14 @@ const ShoppingCartPage = () => {
             />
           </ErrorBoundary>
         </section>
-        {apiCartList && (
-          <CartSummary summary={apiCartList.summary} language={language} />
-        )}
+
+        <aside className="cart-page-aside">
+          <h2>{language.orderSummary}</h2>
+          {apiCartList && (
+            <CartSummary summary={apiCartList.summary} language={language} />
+          )}
+          <Button onClick={handleCheckout}>Fortsæt til kassen</Button>
+        </aside>
       </div>
     </MainPageContainer>
   );
