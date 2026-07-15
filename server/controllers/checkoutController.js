@@ -44,16 +44,16 @@ const getCheckout = asyncHandler(async (req, res) => {
     });
   }
 
-  const cartItems = buildOrderItems({
+  const orderItems = buildOrderItems({
     databaseProducts: [...productMap.values()],
     productItems: cart.cartItems,
   });
 
-  const summary = calculateCartSummary(cartItems);
+  const summary = calculateCartSummary(orderItems);
 
   return res.status(200).json({
     addresses: user.addresses,
-    cartItems,
+    cartItems: orderItems,
     summary,
   });
 });
