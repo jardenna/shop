@@ -6,7 +6,6 @@ import { useMessagePopup } from '../components/messagePopup/useMessagePopup';
 import SkeletonCard from '../components/skeleton/SkeletonCard';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import {
-  useDeleteCartMutation,
   useGetGuestCartQuery,
   useUpdateQtyMutation,
 } from '../features/cart/cartApiSlice';
@@ -14,6 +13,7 @@ import CartList from '../features/cart/components/CartList';
 import CartSummary from '../features/cart/components/CartSummary';
 import { useActiveCart } from '../features/cart/useActiveCart';
 import { deleteGuestCartItem, updateGuestCartQty } from '../features/cartSlice';
+import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
 import { useLanguage } from '../features/language/useLanguage';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import { ShopPath } from '../layout/nav/enums';
@@ -37,7 +37,6 @@ const ShoppingCartPage = () => {
     shouldFetchGuestCart ? cartList : skipToken,
   );
 
-  const [deleteCartItem] = useDeleteCartMutation();
   const [updateQty] = useUpdateQtyMutation();
 
   const handleUpdateQty = async (cartItemId: string, qty: number) => {
@@ -52,26 +51,7 @@ const ShoppingCartPage = () => {
     dispatch(updateGuestCartQty({ cartItemId, qty }));
   };
 
-  const handleDeleteCartItem = async (cartItemId: string) => {
-    try {
-      const result = await deleteCartItem(cartItemId).unwrap();
-
-      if (result.success) {
-        onAddMessagePopup({
-          message: result.message,
-        });
-      } else {
-        onAddMessagePopup({
-          messagePopupType: 'error',
-          message: language.productNotFound,
-          componentType: 'notification',
-        });
-      }
-    } catch (error) {
-      handleApiError(error, onAddMessagePopup);
-    }
-  };
-
+  const { deleteCartItem } = useDeleteCartItem();
   const handleDeleteGuestCart = (cartItemId: string) => {
     dispatch(deleteGuestCartItem(cartItemId));
   };
@@ -106,7 +86,7 @@ const ShoppingCartPage = () => {
               cartList={cartItems}
               language={language}
               onDeleteCartItem={
-                currentUser ? handleDeleteCartItem : handleDeleteGuestCart
+                currentUser ? deleteCartItem : handleDeleteGuestCart
               }
               onUpdateQty={
                 currentUser ? handleUpdateQty : handleUpdateQtyGuestCart
