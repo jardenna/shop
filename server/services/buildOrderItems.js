@@ -1,15 +1,17 @@
 import { VAT_SHARE } from '../config/constants.js';
 
 export const buildOrderItems = ({ databaseProducts, productItems }) => {
-  const productItemsMap = new Map(
-    productItems.map((productItem) => [
-      productItem.productId.toString(),
-      productItem,
+  const databaseProductsMap = new Map(
+    databaseProducts.map((databaseProduct) => [
+      databaseProduct._id.toString(),
+      databaseProduct,
     ]),
   );
 
-  return databaseProducts.map((databaseProduct) => {
-    const productItem = productItemsMap.get(databaseProduct._id.toString());
+  return productItems.map((productItem) => {
+    const databaseProduct = databaseProductsMap.get(
+      productItem.productId.toString(),
+    );
 
     const price =
       databaseProduct.price -
@@ -24,6 +26,7 @@ export const buildOrderItems = ({ databaseProducts, productItems }) => {
       productItem.qty;
 
     return {
+      id: productItem._id,
       productId: databaseProduct._id,
       productName: databaseProduct.productName,
       image: databaseProduct.images[0],
