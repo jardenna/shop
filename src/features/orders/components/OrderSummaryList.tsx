@@ -23,7 +23,7 @@ const OrderSummaryList = ({
   }
 
   return (
-    <section className="order-summary">
+    <aside className="order-summary">
       <h2 className="summary-title">
         {language.orderSummary}[add reduced qty]
       </h2>
@@ -57,7 +57,7 @@ const OrderSummaryList = ({
           )}
         </ul>
       )}
-    </section>
+    </aside>
   );
 };
 export default OrderSummaryList;
