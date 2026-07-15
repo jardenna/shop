@@ -23,29 +23,36 @@ const OrderSummaryList = ({
   }
 
   return (
-    <section>
-      <h2>Order summary [add reduced qty]</h2>
-      {orderItems &&
-        orderItems.cartItems.map((order) => (
-          <article key={order.id} className="order-summary-list">
-            <Img src={order.image} alt="" className="summary-img" />
-            <div>
-              <h3>{order.productName}</h3>
-              <span>QTY {order.qty}</span>
-              <span>/</span>
-              <span>{translateKey(order.color, language)}</span>
-              <span>/</span>
-              <span>SIZE {order.size}</span>
-            </div>
-            <DeleteItem
-              ariaLabel={`${language.delete} ${order.productName}`}
-              onDeleteItem={() => {
-                deleteCartItem(order.id);
-              }}
-              itemName={order.productName}
-            />
-          </article>
-        ))}
+    <section className="order-summary">
+      <h2 className="summary-title">Order summary [add reduced qty]</h2>
+      {orderItems && (
+        <ul className="order-summary-list">
+          {orderItems.cartItems.map((order) => (
+            <li key={order.id}>
+              <article className="order-summary-item">
+                <Img src={order.image} alt="" className="summary-img" />
+                <div>
+                  <h3 className="summary-item-title">{order.productName}</h3>
+                  <div className="summery">
+                    <span>QTY {order.qty}</span>
+                    <span aria-hidden>/</span>
+                    <span>{translateKey(order.color, language)}</span>
+                    <span>/</span>
+                    <span>SIZE {order.size}</span>
+                  </div>
+                  <DeleteItem
+                    ariaLabel={`${language.delete} ${order.productName}`}
+                    onDeleteItem={() => {
+                      deleteCartItem(order.id);
+                    }}
+                    itemName={order.productName}
+                  />
+                </div>
+              </article>
+            </li>
+          ))}
+        </ul>
+      )}
     </section>
   );
 };

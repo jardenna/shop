@@ -1,10 +1,33 @@
 @use '../../../scss/globals' as *;
 
+.order-summary {
+  .summary-title {
+    margin-bottom: 12px;
+  }
+}
+
 .order-summary-list {
   display: flex;
+  gap: 12px;
+  flex-direction: column;
+}
+
+.order-summary-item {
+  display: flex;
+  gap: 8px;
 
   .summary-img {
-    width: rem(180px);
-    height: rem(180px);
+    width: rem(68px);
+    height: rem(100px);
+  }
+
+  .summary-item-title {
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .summery {
+    display: flex;
+    gap: 4px;
   }
 }
