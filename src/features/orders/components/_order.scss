@@ -1,0 +1,10 @@
+@use '../../../scss/globals' as *;
+
+.order-summary-list {
+  display: flex;
+
+  .summary-img {
+    width: rem(180px);
+    height: rem(180px);
+  }
+}

@@ -38,12 +38,9 @@
       grid-area: image;
       align-self: start;
 
-      img {
+      .cart-img {
         width: rem(180px);
         height: rem(180px);
-        min-height: 0;
-        min-width: 0;
-        object-fit: cover;
 
         @include max-size($mini) {
           width: 100%;

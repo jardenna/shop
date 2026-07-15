@@ -30,7 +30,7 @@ const CartItem = ({
 }: CartItemProps) => (
   <article className="cart-item">
     <Link to={linkTo} className="cart-item-image">
-      <Img src={cart.image} alt="" />
+      <Img src={cart.image} alt="" className="cart-img" />
     </Link>
     <Link to={linkTo} className="cart-item-title">
       <h2>{cart.productName}</h2>

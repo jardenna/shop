@@ -3,6 +3,7 @@ import DeleteItem from '../../../components/deleteItem/DeleteItem';
 import Img from '../../../components/Img';
 import SkeletonList from '../../../components/skeleton/SkeletonList';
 import { translateKey } from '../../../utils/utils';
+import './_order.scss';
 
 interface OrderSummaryListProps {
   isLoading: boolean;
@@ -26,10 +27,10 @@ const OrderSummaryList = ({
       <h2>Order summary [add reduced qty]</h2>
       {orderItems &&
         orderItems.cartItems.map((order) => (
-          <article key={order.id}>
-            <h3>{order.productName}</h3>
+          <article key={order.id} className="order-summary-list">
+            <Img src={order.image} alt="" className="summary-img" />
             <div>
-              <Img src={order.image} alt="" />
+              <h3>{order.productName}</h3>
               <span>QTY {order.qty}</span>
               <span>/</span>
               <span>{translateKey(order.color, language)}</span>
