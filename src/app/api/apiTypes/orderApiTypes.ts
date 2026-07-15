@@ -12,7 +12,7 @@ export interface CreateOrderRequest {
   shippingAddressId: string;
 }
 
-export interface CreateOrderResponse extends DefaultResponseType {
+export interface OrderResponse extends DefaultResponseType {
   billingAddress: BaseAddress;
   isDelivered: boolean;
   isPaid: boolean;

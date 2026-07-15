@@ -1,13 +1,13 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import {
   CreateOrderRequest,
-  CreateOrderResponse,
+  OrderResponse,
 } from '../../app/api/apiTypes/orderApiTypes';
 import { ordersUrl, userOrdersUrl } from '../../app/endpoints';
 
 export const orderApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    createOrder: builder.mutation<CreateOrderResponse, CreateOrderRequest>({
+    createOrder: builder.mutation<OrderResponse, CreateOrderRequest>({
       query: (body) => ({
         url: ordersUrl,
         method: 'POST',
@@ -15,7 +15,7 @@ export const orderApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.Order],
     }),
-    getUserOrder: builder.query<any, void>({
+    getUserOrder: builder.query<OrderResponse, void>({
       query: () => userOrdersUrl,
     }),
   }),
