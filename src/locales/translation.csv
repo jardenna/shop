@@ -296,6 +296,7 @@ orderAllreadyPaid;Order is already paid;Ordren er allerede betalt
 orderAltText;Young boy in black jeans and a white T-shirt layered with a blue-checkered shirt, looking expectant.;Ung dreng i sorte jeans og hvid T-shirt kombineret med en blåternet skjorte, ser forventningsfuld ud.
 orderNotPaid;Order has not been paid;Ordren er ikke betalt
 orders;Orders;Ordrer
+orderSummary;Order summary;Ordreoversigt
 originaPrice;Original price;Før pris
 outOf;out of;ud af
 outOfStock;Out of stock;Udsolgt

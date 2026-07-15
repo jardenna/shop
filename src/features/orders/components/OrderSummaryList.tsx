@@ -24,7 +24,9 @@ const OrderSummaryList = ({
 
   return (
     <section className="order-summary">
-      <h2 className="summary-title">Order summary [add reduced qty]</h2>
+      <h2 className="summary-title">
+        {language.orderSummary}[add reduced qty]
+      </h2>
       {orderItems && (
         <ul className="order-summary-list">
           {orderItems.cartItems.map(

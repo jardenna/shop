@@ -41,7 +41,7 @@ const CartSummary = ({ summary, language }: CartSummaryProps) => {
 
   return (
     <section className="summary-list">
-      <h2>Summary</h2>
+      <h2>{language.orderSummary}</h2>
       {summaryItems.map(({ label, price, className }) => (
         <div key={label} className={`summary-item ${className ?? ''}`}>
           <span>{label}</span>
