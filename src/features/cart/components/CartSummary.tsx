@@ -1,4 +1,5 @@
 import { Summary } from '../../../app/api/apiTypes/sharedApiTypes';
+import { vat } from '../../../utils/utils';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 import './cartSummary.styles.scss';
 
@@ -30,7 +31,7 @@ const CartSummary = ({
       price: summary.shippingPrice,
     },
     {
-      label: ` ${language.inclVat} (25%)`,
+      label: ` ${language.inclVat} (${vat}%)`,
       price: summary.taxPrice,
       hideSummaryItem,
     },
