@@ -105,9 +105,15 @@ const ShoppingCartPage = () => {
         <aside className="cart-page-aside">
           <h2>{language.orderSummary}</h2>
           {apiCartList && (
-            <CartSummary summary={apiCartList.summary} language={language} />
+            <CartSummary
+              summary={apiCartList.summary}
+              language={language}
+              hideSummaryItem
+            />
           )}
-          <Button onClick={handleCheckout}>Fortsæt til kassen</Button>
+          <Button onClick={handleCheckout}>
+            {language.continueToCheckout}
+          </Button>
         </aside>
       </div>
     </MainPageContainer>

@@ -84,6 +84,7 @@ compact;Compact;Kompakt
 confirmPassword;Confirm password;Gentag adgangskode
 contact;Contact;Kontakt
 continueShopping;Continue shopping;Fortsæt med at handle
+continueToCheckout;Continue to Checkout;Fortsæt til kassen
 convertingSize;Size conversion;Konvertering af størrelse
 copy;Copy;Kopi
 copyAction;Copy;Kopier
@@ -194,6 +195,7 @@ home;Home;Hjem
 image;Image;Foto
 imageRequired;Please insert image(s);Indsæt venligst billede(r)
 inactive;Inactive;Inaktiv
+inclVat;Incl. vat;Inkl. moms
 inStock;In stock;På lager
 invalidCartItemId;Invalid item ID.;Ugyldigt vareid.
 invalidColor;The selected color is no longer available;Den valgte farve er ikke længere tilgængelig

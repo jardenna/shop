@@ -5,9 +5,14 @@ import './cartSummary.styles.scss';
 interface CartSummaryProps {
   language: Record<string, string>;
   summary: Summary;
+  hideSummaryItem?: boolean;
 }
 
-const CartSummary = ({ summary, language }: CartSummaryProps) => {
+const CartSummary = ({
+  summary,
+  language,
+  hideSummaryItem,
+}: CartSummaryProps) => {
   const summaryItems = [
     {
       label: language.subtotal,
@@ -25,6 +30,11 @@ const CartSummary = ({ summary, language }: CartSummaryProps) => {
       price: summary.shippingPrice,
     },
     {
+      label: ` ${language.inclVat} (25%)`,
+      price: summary.taxPrice,
+      hideSummaryItem,
+    },
+    {
       label: language.totalPrice,
       price: summary.totalPrice,
       className: 'summary-total',
@@ -33,14 +43,17 @@ const CartSummary = ({ summary, language }: CartSummaryProps) => {
 
   return (
     <section className="summary-list">
-      {summaryItems.map(({ label, price, className }) => (
-        <div key={label} className={`summary-item ${className ?? ''}`}>
-          <span>{label}</span>
-          <span className="summary-info">
-            <ProductPrice price={price} />
-          </span>
-        </div>
-      ))}
+      {summaryItems.map(
+        ({ label, price, className, hideSummaryItem }) =>
+          !hideSummaryItem && (
+            <div key={label} className={`summary-item ${className ?? ''}`}>
+              <span>{label}</span>
+              <span className="summary-info">
+                <ProductPrice price={price} />
+              </span>
+            </div>
+          ),
+      )}
     </section>
   );
 };
