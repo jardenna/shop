@@ -252,22 +252,9 @@ const getCart = asyncHandler(async (req, res) => {
     });
   }
 
-  const cartItems = cart.cartItems.map((cartItem) => {
-    const product = cartData.productMap.get(cartItem.productId.toString());
-
-    return {
-      ...formatMongoData(cartItem),
-      image: product.images[0],
-      productName: product.productName,
-      price: product.price,
-      discount: product.discount,
-      countInStock: product.countInStock,
-    };
-  });
-
   return res.status(200).json({
     ...formatMongoData(cart),
-    cartItems,
+    cartItems: cartData.cartItems,
     summary: cartData.summary,
   });
 });

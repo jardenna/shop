@@ -1,4 +1,5 @@
 import { getProductsMap } from '../utils/cartUtils.js';
+import { formatMongoData } from '../utils/formatMongoData.js';
 import { buildOrderItems } from './buildOrderItems.js';
 import { calculateCartSummary } from './calculateCartSummary.js';
 
@@ -22,12 +23,25 @@ export const buildCartData = async ({ cart }) => {
     productItems: cart.cartItems,
   });
 
+  const cartItems = cart.cartItems.map((cartItem) => {
+    const product = productMap.get(cartItem.productId.toString());
+
+    return {
+      ...formatMongoData(cartItem),
+      image: product.images[0],
+      productName: product.productName,
+      price: product.price,
+      discount: product.discount,
+      countInStock: product.countInStock,
+    };
+  });
+
   const summary = calculateCartSummary(orderItems);
 
   return {
     success: true,
-    orderItems,
     summary,
-    productMap,
+    cartItems,
+    orderItems,
   };
 };
