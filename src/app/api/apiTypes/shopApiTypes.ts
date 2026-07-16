@@ -1,7 +1,8 @@
 import type {
+  BaseAddress,
   BasePagination,
-  BaseProduct,
   BaseProductParams,
+  BaseShopProduct,
   DefaultResponseType,
   Size,
 } from './sharedApiTypes';
@@ -23,7 +24,7 @@ export type ShopProductsParams = BaseProductParams &
 export type ShopAllProductsResponse = BasePagination & {
   availableBrands: string[];
   availableSizes: Size[];
-  products: BaseProduct[];
+  products: BaseShopProduct[];
   totalCount: number;
 };
 
@@ -77,17 +78,6 @@ export type PreferredFashion =
   | 'womensFashion'
   | 'kidsFashion'
   | 'noPreference';
-
-export type StandardAddress = 'addressBilling' | 'addressDelivery';
-
-type BaseAddress = {
-  city: string;
-  standardAddress: StandardAddress[];
-  street: string;
-  zipCode: string;
-  country?: string;
-  name?: string;
-};
 
 export type Address = BaseAddress & {
   id: string;

@@ -1,6 +1,6 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
-import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
+import { BaseShopProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import { ProductPreview } from '../../../app/api/apiTypes/shopApiTypes';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import type { OmitChecked } from '../../../types/types';
@@ -12,7 +12,7 @@ type OmitteProductCardProps = OmitChecked<
 >;
 
 type ProductCardListProps = OmitteProductCardProps & {
-  products: Array<BaseProduct | ProductPreview>;
+  products: Array<BaseShopProduct | ProductPreview>;
   onReset: () => void;
 };
 

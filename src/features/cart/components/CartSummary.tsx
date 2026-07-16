@@ -1,17 +1,19 @@
-import { useNavigate } from 'react-router';
-import { CartListSummary } from '../../../app/api/apiTypes/cartApiTypes';
-import Button from '../../../components/Button';
-import { ShopPath } from '../../../layout/nav/enums';
+import { Summary } from '../../../app/api/apiTypes/sharedApiTypes';
+import { vat } from '../../../utils/utils';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 import './cartSummary.styles.scss';
 
 interface CartSummaryProps {
   language: Record<string, string>;
-  summary: CartListSummary;
+  summary: Summary;
+  hideSummaryItem?: boolean;
 }
 
-const CartSummary = ({ summary, language }: CartSummaryProps) => {
-  const navigate = useNavigate();
+const CartSummary = ({
+  summary,
+  language,
+  hideSummaryItem,
+}: CartSummaryProps) => {
   const summaryItems = [
     {
       label: language.subtotal,
@@ -29,28 +31,30 @@ const CartSummary = ({ summary, language }: CartSummaryProps) => {
       price: summary.shippingPrice,
     },
     {
+      label: ` ${language.inclVat} (${vat}%)`,
+      price: summary.taxPrice,
+      hideSummaryItem,
+    },
+    {
       label: language.totalPrice,
       price: summary.totalPrice,
       className: 'summary-total',
     },
   ].filter((item) => item !== null);
 
-  const handleCheckout = () => {
-    navigate(`/${ShopPath.Checkout}`);
-  };
-
   return (
     <section className="summary-list">
-      <h2>Summary</h2>
-      {summaryItems.map(({ label, price, className }) => (
-        <div key={label} className={`summary-item ${className ?? ''}`}>
-          <span>{label}</span>
-          <span className="summary-info">
-            <ProductPrice price={price} />
-          </span>
-        </div>
-      ))}
-      <Button onClick={handleCheckout}>Fortsæt til kassen</Button>
+      {summaryItems.map(
+        ({ label, price, className, hideSummaryItem }) =>
+          !hideSummaryItem && (
+            <div key={label} className={`summary-item ${className ?? ''}`}>
+              <span>{label}</span>
+              <span className="summary-info">
+                <ProductPrice price={price} />
+              </span>
+            </div>
+          ),
+      )}
     </section>
   );
 };

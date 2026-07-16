@@ -1,12 +1,13 @@
 import { skipToken } from '@reduxjs/toolkit/query';
 import { ErrorBoundary } from 'react-error-boundary';
+import { useNavigate } from 'react-router';
 import { useAppDispatch } from '../app/hooks';
+import Button from '../components/Button';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useMessagePopup } from '../components/messagePopup/useMessagePopup';
 import SkeletonCard from '../components/skeleton/SkeletonCard';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import {
-  useDeleteCartMutation,
   useGetGuestCartQuery,
   useUpdateQtyMutation,
 } from '../features/cart/cartApiSlice';
@@ -14,6 +15,7 @@ import CartList from '../features/cart/components/CartList';
 import CartSummary from '../features/cart/components/CartSummary';
 import { useActiveCart } from '../features/cart/useActiveCart';
 import { deleteGuestCartItem, updateGuestCartQty } from '../features/cartSlice';
+import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
 import { useLanguage } from '../features/language/useLanguage';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import { ShopPath } from '../layout/nav/enums';
@@ -22,6 +24,7 @@ import MainPageContainer from './pageContainer/MainPageContainer';
 import './ShoppingCartPage.styles.scss';
 
 const ShoppingCartPage = () => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { currentUser, isAuthReady } = useAuth();
   const { language } = useLanguage();
@@ -37,7 +40,6 @@ const ShoppingCartPage = () => {
     shouldFetchGuestCart ? cartList : skipToken,
   );
 
-  const [deleteCartItem] = useDeleteCartMutation();
   const [updateQty] = useUpdateQtyMutation();
 
   const handleUpdateQty = async (cartItemId: string, qty: number) => {
@@ -52,26 +54,7 @@ const ShoppingCartPage = () => {
     dispatch(updateGuestCartQty({ cartItemId, qty }));
   };
 
-  const handleDeleteCartItem = async (cartItemId: string) => {
-    try {
-      const result = await deleteCartItem(cartItemId).unwrap();
-
-      if (result.success) {
-        onAddMessagePopup({
-          message: result.message,
-        });
-      } else {
-        onAddMessagePopup({
-          messagePopupType: 'error',
-          message: language.productNotFound,
-          componentType: 'notification',
-        });
-      }
-    } catch (error) {
-      handleApiError(error, onAddMessagePopup);
-    }
-  };
-
+  const { deleteCartItem } = useDeleteCartItem();
   const handleDeleteGuestCart = (cartItemId: string) => {
     dispatch(deleteGuestCartItem(cartItemId));
   };
@@ -94,6 +77,10 @@ const ShoppingCartPage = () => {
     );
   }
 
+  const handleCheckout = () => {
+    navigate(`/${ShopPath.Checkout}`);
+  };
+
   return (
     <MainPageContainer heading="bag">
       <div className="cart-page">
@@ -106,7 +93,7 @@ const ShoppingCartPage = () => {
               cartList={cartItems}
               language={language}
               onDeleteCartItem={
-                currentUser ? handleDeleteCartItem : handleDeleteGuestCart
+                currentUser ? deleteCartItem : handleDeleteGuestCart
               }
               onUpdateQty={
                 currentUser ? handleUpdateQty : handleUpdateQtyGuestCart
@@ -114,9 +101,20 @@ const ShoppingCartPage = () => {
             />
           </ErrorBoundary>
         </section>
-        {apiCartList && (
-          <CartSummary summary={apiCartList.summary} language={language} />
-        )}
+
+        <aside className="cart-page-aside">
+          <h2>{language.orderSummary}</h2>
+          {apiCartList && (
+            <CartSummary
+              summary={apiCartList.summary}
+              language={language}
+              hideSummaryItem
+            />
+          )}
+          <Button onClick={handleCheckout}>
+            {language.continueToCheckout}
+          </Button>
+        </aside>
       </div>
     </MainPageContainer>
   );

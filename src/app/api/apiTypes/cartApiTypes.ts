@@ -1,17 +1,18 @@
-import type { DefaultResponseType, Size } from './sharedApiTypes';
+import type { DefaultResponseType, Size, Summary } from './sharedApiTypes';
+import { Address } from './shopApiTypes';
 
-export interface BaseCartItem {
+export interface BaseOrder {
   color: string;
   productId: string;
   qty: number;
   size: Size | '';
 }
 
-export interface CartItem extends BaseCartItem {
+export interface CartItem extends BaseOrder {
   id?: string;
 }
 
-export interface CartProduct extends BaseCartItem {
+export interface Order extends BaseOrder {
   countInStock: number;
   discount: number;
   id: string;
@@ -26,16 +27,13 @@ export interface CartListRequest {
   cartItems: AddToCartRequest;
 }
 
-export interface CartListSummary {
-  discountPrice: number;
-  shippingPrice: number;
-  subTotal: number;
-  taxPrice: number;
-  totalPrice: number;
-}
 export interface CartListResponse extends DefaultResponseType {
-  cartItems: CartProduct[];
-  summary: CartListSummary;
+  cartItems: Order[];
+  summary: Summary;
+}
+
+export interface CheckoutResponse extends CartListResponse {
+  addresses: Address[];
 }
 
 export interface UpdateCartRequest {
@@ -45,7 +43,7 @@ export interface UpdateCartRequest {
 
 export interface GuestCardResponse {
   missingProductIds: string[];
-  products: CartProduct[];
+  products: Order[];
 }
 
 export interface UpdateCartQtyRequest {

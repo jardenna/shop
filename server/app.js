@@ -8,6 +8,7 @@ import errorHandler from './middleware/errorHandler.js';
 import authRoutes from './routes/authRoutes.js';
 import cartRoutes from './routes/cartRoutes.js';
 import categoryRoutes from './routes/categoryRoutes.js';
+import checkoutRoutes from './routes/checkoutRoutes.js';
 import favoritesRoutes from './routes/favoritesRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 import productRoutes from './routes/productRoutes.js';
@@ -61,6 +62,7 @@ app.use('/api/upload', uploadRoutes);
 app.use('/api/favorites', favoritesRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/cart', cartRoutes);
+app.use('/api/checkout', checkoutRoutes);
 
 // Global error handler
 app.use(errorHandler);

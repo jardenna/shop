@@ -1,5 +1,5 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
-import type { BaseProduct } from '../../app/api/apiTypes/sharedApiTypes';
+import type { BaseShopProduct } from '../../app/api/apiTypes/sharedApiTypes';
 import type {
   ProductMenuResponse,
   ProductPreview,
@@ -26,7 +26,7 @@ export const shopApiSlice = apiSlice.injectEndpoints({
       },
       providesTags: [TagTypesEnum.Products],
     }),
-    getSingleProduct: builder.query<BaseProduct, string>({
+    getSingleProduct: builder.query<BaseShopProduct, string>({
       query: (id) => `${productUrl}/shop/${id}`,
       providesTags: [TagTypesEnum.Products],
     }),

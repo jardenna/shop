@@ -1,8 +1,8 @@
 import type { OmitChecked } from '../../../types/types';
 import type {
   BasePagination,
-  BaseProduct,
   BaseProductParams,
+  BaseShopProduct,
   DefaultResponse,
   DefaultResponseType,
   Size,
@@ -153,7 +153,7 @@ export type UpdateSubCategoryRequest = {
 };
 
 // Products
-export type Product = BaseProduct & {
+export type Product = BaseShopProduct & {
   category: Category;
   quantity: number;
   subCategory: BaseSubCategory;

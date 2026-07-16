@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
+import { BaseShopProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import { ProductPreview } from '../../../app/api/apiTypes/shopApiTypes';
 import Badge from '../../../components/badge/Badge';
 import Button from '../../../components/Button';
@@ -16,7 +16,7 @@ import SizeOverlay from './SizeOverlay';
 
 export type ProductCardProps = {
   linkTo: string;
-  product: BaseProduct | ProductPreview;
+  product: BaseShopProduct | ProductPreview;
   productView?: string;
   showAdToCartBtn?: boolean;
   showSizeOverlay?: boolean;
@@ -60,7 +60,7 @@ const ProductCard = ({
           </h2>
           <div className="product-card-info">
             {productView === 'list' ? (
-              <ProductCardListContent product={product as BaseProduct} />
+              <ProductCardListContent product={product as BaseShopProduct} />
             ) : (
               <ProductCardGridContent product={product} />
             )}

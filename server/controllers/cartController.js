@@ -2,8 +2,9 @@ import mongoose from 'mongoose';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
 import Product from '../models/productModel.js';
-import { buildOrderItems } from '../services/buildOrderItems.js';
-import { calculateCartSummary } from '../services/calculateCartSummary.js';
+import User from '../models/userModel.js';
+import { buildCartData } from '../services/buildCartData.js';
+import { getActiveDiscount } from '../services/getActiveDiscount.js';
 import { getProductsMap, mergeCartItems } from '../utils/cartUtils.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
@@ -234,6 +235,7 @@ const updateCart = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Private
 const getCart = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id).select('role');
   const cart = await Cart.findOne({
     user: req.user._id,
   }).lean();
@@ -244,45 +246,25 @@ const getCart = asyncHandler(async (req, res) => {
     });
   }
 
-  const productMap = await getProductsMap({
-    productIds: cart.cartItems.map(({ productId }) => productId.toString()),
+  const activeDiscount = getActiveDiscount(user.role, req.query.promoCode);
+
+  const cartData = await buildCartData({
+    cart,
+    promoDiscountPercent: activeDiscount.percent,
   });
 
-  const missingProduct = cart.cartItems.find(
-    (cartItem) => !productMap.has(cartItem.productId.toString()),
-  );
-
-  if (missingProduct) {
+  if (!cartData.success) {
     return res.status(500).json({
       success: false,
       message: t('productsNoLongerAvailable', req.lang),
     });
   }
 
-  const cartItems = cart.cartItems.map((cartItem) => {
-    const product = productMap.get(cartItem.productId.toString());
-
-    return {
-      ...formatMongoData(cartItem),
-      image: product.images[0],
-      productName: product.productName,
-      price: product.price,
-      discount: product.discount,
-      countInStock: product.countInStock,
-    };
-  });
-
-  const orderItems = buildOrderItems({
-    databaseProducts: [...productMap.values()],
-    productItems: cart.cartItems,
-  });
-
-  const summary = calculateCartSummary(orderItems);
-
   return res.status(200).json({
     ...formatMongoData(cart),
-    cartItems,
-    summary,
+    cartItems: cartData.cartItems,
+    summary: cartData.summary,
+    discount: activeDiscount,
   });
 });
 

@@ -15,6 +15,7 @@ addressBilling;Standard billing address;Standard faktureringsadresse
 addressCreated;Address was created;Adresse blev tilføjet
 addressDeleted;Address deleted;Addresse blev slettet
 addressDelivery;Standard delivery address;Standard leveringsadresse
+addressNotFound;The selected address could not be found.;Den valgte adresse blev ikke fundet.
 addressUpdated;Address was updated;Adresse blev opdateret
 addToBag;Add to bag;Læg i indkøbskurv
 addToCart;Add to cart;Tilføj til kurv
@@ -83,6 +84,7 @@ compact;Compact;Kompakt
 confirmPassword;Confirm password;Gentag adgangskode
 contact;Contact;Kontakt
 continueShopping;Continue shopping;Fortsæt med at handle
+continueToCheckout;Continue to Checkout;Fortsæt til kassen
 convertingSize;Size conversion;Konvertering af størrelse
 copy;Copy;Kopi
 copyAction;Copy;Kopier
@@ -193,6 +195,7 @@ home;Home;Hjem
 image;Image;Foto
 imageRequired;Please insert image(s);Indsæt venligst billede(r)
 inactive;Inactive;Inaktiv
+inclVat;Incl. vat;Inkl. moms
 inStock;In stock;På lager
 invalidCartItemId;Invalid item ID.;Ugyldigt vareid.
 invalidColor;The selected color is no longer available;Den valgte farve er ikke længere tilgængelig
@@ -295,6 +298,7 @@ orderAllreadyPaid;Order is already paid;Ordren er allerede betalt
 orderAltText;Young boy in black jeans and a white T-shirt layered with a blue-checkered shirt, looking expectant.;Ung dreng i sorte jeans og hvid T-shirt kombineret med en blåternet skjorte, ser forventningsfuld ud.
 orderNotPaid;Order has not been paid;Ordren er ikke betalt
 orders;Orders;Ordrer
+orderSummary;Order summary;Ordreoversigt
 originaPrice;Original price;Før pris
 outOf;out of;ud af
 outOfStock;Out of stock;Udsolgt

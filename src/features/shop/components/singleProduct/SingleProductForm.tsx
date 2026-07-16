@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { UserResponse } from '../../../../app/api/apiTypes/adminApiTypes';
 import {
-  type BaseProduct,
+  type BaseShopProduct,
   type Size,
 } from '../../../../app/api/apiTypes/sharedApiTypes';
 import { useAppDispatch } from '../../../../app/hooks';
@@ -40,7 +40,7 @@ interface SingleProductFormProps {
   currentUser: UserResponse | null;
   displaySizeList: Size[];
   isAuthReady: boolean;
-  selectedProduct: BaseProduct;
+  selectedProduct: BaseShopProduct;
   onReset: () => void;
 }
 

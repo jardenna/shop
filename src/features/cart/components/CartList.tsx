@@ -1,4 +1,4 @@
-import { CartProduct } from '../../../app/api/apiTypes/cartApiTypes';
+import { Order } from '../../../app/api/apiTypes/cartApiTypes';
 import VisuallyHidden from '../../../components/VisuallyHidden';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { ShopPath } from '../../../layout/nav/enums';
@@ -16,7 +16,7 @@ export interface BaseCartProps {
 }
 
 interface CartListProps extends BaseCartProps {
-  cartList: CartProduct[];
+  cartList: Order[];
 }
 
 const CartList = ({
@@ -37,7 +37,7 @@ const CartList = ({
     (result, cartItem) => {
       // eslint-disable-next-line no-param-reassign
       result[cartItem.productId] =
-        (result[cartItem.productId] ?? 0) + values[cartItem.id];
+        result[cartItem.productId] + values[cartItem.id];
 
       return result;
     },

@@ -1,9 +1,10 @@
 import { Link } from 'react-router';
-import { CartProduct } from '../../../app/api/apiTypes/cartApiTypes';
+import { Order } from '../../../app/api/apiTypes/cartApiTypes';
 import DeleteItem from '../../../components/deleteItem/DeleteItem';
 import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import NumberStep from '../../../components/formElements/numberStep/NumberStep';
 import Img from '../../../components/Img';
+import VisuallyHidden from '../../../components/VisuallyHidden';
 import { ChangeInputType } from '../../../types/types';
 import { minInStock, translateKey } from '../../../utils/utils';
 import InStock from '../../shop/components/InStock';
@@ -11,7 +12,7 @@ import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 import { BaseCartProps, ProductQuantityMap } from './CartList';
 
 interface CartItemProps extends BaseCartProps {
-  cart: CartProduct;
+  cart: Order;
   linkTo: string;
   quantityByProductId: ProductQuantityMap;
   value: number;
@@ -30,7 +31,10 @@ const CartItem = ({
 }: CartItemProps) => (
   <article className="cart-item">
     <Link to={linkTo} className="cart-item-image">
-      <Img src={cart.image} alt="" />
+      <VisuallyHidden>
+        {language.view} {cart.productName}
+      </VisuallyHidden>
+      <Img src={cart.image} alt="" className="cart-img" />
     </Link>
     <Link to={linkTo} className="cart-item-title">
       <h2>{cart.productName}</h2>

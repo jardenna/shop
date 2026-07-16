@@ -1,10 +1,10 @@
-import type { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
+import type { BaseShopProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import ColorList from './productLists/ColorList';
 import SizeList from './productLists/SizeList';
 import ProductPrice from './productPrice/ProductPrice';
 
 type ProductCardListContentProps = {
-  product: BaseProduct;
+  product: BaseShopProduct;
 };
 
 const ProductCardListContent = ({ product }: ProductCardListContentProps) => (

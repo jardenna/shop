@@ -2,7 +2,10 @@ import { PAYMENT_STATUS } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Order from '../models/ordersModel.js';
 import Product from '../models/productModel.js';
+import User from '../models/userModel.js';
+import { buildOrderItems } from '../services/buildOrderItems.js';
 import { calculateCartSummary } from '../services/calculateCartSummary.js';
+import { getActiveDiscount } from '../services/getActiveDiscount.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 import { validateFakePayment } from '../validators/validateFakePayment.js';
@@ -12,14 +15,39 @@ import {
   validateVariant,
 } from '../validators/validateShopProducts.js';
 
-import { buildOrderItems } from '../services/buildOrderItems.js';
-
 // @desc    Create orders
 // @route   /api/orders
 // @method  Post
 // @access  Private
 const createOrder = asyncHandler(async (req, res) => {
-  const { orderItems, shippingAddress } = req.body;
+  const { orderItems, shippingAddressId, billingAddressId, paymentMethod } =
+    req.body;
+
+  const user = await User.findById(req.user._id).select('addresses role');
+  const activeDiscount = getActiveDiscount(user.role, req.query.promoCode);
+  console.log(user.role);
+
+  if (!user?.addresses.length) {
+    return res.status(400).json({
+      success: false,
+      message: t('noAddressData', req.lang),
+    });
+  }
+
+  const shippingAddress = user.addresses.find(
+    (address) => address._id.toString() === shippingAddressId,
+  );
+
+  const billingAddress = user.addresses.find(
+    (address) => address._id.toString() === billingAddressId,
+  );
+
+  if (!shippingAddress || !billingAddress) {
+    return res.status(404).json({
+      success: false,
+      message: t('addressNotFound', req.lang),
+    });
+  }
 
   if (!orderItems || orderItems.length === 0) {
     return res.status(400).json({
@@ -29,7 +57,7 @@ const createOrder = asyncHandler(async (req, res) => {
   }
 
   const uniqueProductIds = [
-    ...new Set(orderItems.map((orderItem) => orderItem.product)),
+    ...new Set(orderItems.map((orderItem) => orderItem.productId)),
   ];
 
   const databaseProducts = await Product.find({
@@ -45,12 +73,7 @@ const createOrder = asyncHandler(async (req, res) => {
     });
   }
 
-  const productItems = orderItems.map((orderItem) => ({
-    productId: orderItem.product,
-    qty: orderItem.qty,
-    color: orderItem.color,
-    size: orderItem.size,
-  }));
+  const productItems = orderItems;
 
   for (const productItem of productItems) {
     const databaseProduct = findDatabaseProduct({
@@ -84,18 +107,30 @@ const createOrder = asyncHandler(async (req, res) => {
     productItems,
   });
 
-  const summary = calculateCartSummary(createdOrders);
+  const promoDiscountPercent = activeDiscount.percent;
+  const summary = calculateCartSummary(createdOrders, promoDiscountPercent);
 
   const order = new Order({
     user: req.user._id,
     orderItems: createdOrders,
+    paymentMethod,
     shippingAddress,
+    billingAddress,
     paymentStatus: PAYMENT_STATUS.PENDING,
-    itemPrice: summary.subTotal,
-    taxPrice: summary.taxPrice,
-    shippingPrice: summary.shippingPrice,
-    totalPrice: summary.totalPrice,
-    discountPrice: summary.discountPrice,
+    summary: {
+      subTotal: summary.subTotal,
+      taxPrice: summary.taxPrice,
+      shippingPrice: summary.shippingPrice,
+      totalPrice: summary.totalPrice,
+      discountPrice: summary.discountPrice,
+      subTotal: summary.subTotal,
+      taxPrice: summary.taxPrice,
+      shippingPrice: summary.shippingPrice,
+      totalPrice: summary.totalPrice,
+      discountPrice: summary.discountPrice,
+      promoDiscount: summary.promoDiscount,
+    },
+    discount: activeDiscount,
   });
 
   const createdOrder = await order.save();

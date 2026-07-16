@@ -7,6 +7,7 @@ import ModalContainer from '../../components/modal/ModalContainer';
 import { useActiveCart } from '../../features/cart/useActiveCart';
 import { useLanguage } from '../../features/language/useLanguage';
 import { BtnVariant, IconName, SizeVariant } from '../../types/enums';
+import { getCartQuantity } from '../../utils/reduceQty';
 import type { BaseHeaderProps } from '../header/Header';
 import { ShopPath } from '../nav/enums';
 import HeaderBadgeLinks from './HeaderBadgeLinks';
@@ -34,6 +35,9 @@ const HeaderIcons = ({
     currentUser,
     isAuthReady,
   });
+
+  const totalQuantity = getCartQuantity(activeCartList);
+
   const cartListItemText =
     activeCartList.length === 1 ? language.item : language.items;
 
@@ -57,7 +61,7 @@ const HeaderIcons = ({
             linkTo={ShopPath.ShoppingCart}
             ariaLabel={language.viewCart}
             iconName={IconName.ShoppingBag}
-            count={activeCartList.length}
+            count={totalQuantity}
             itemUpdatedText={language.itemsUpdated}
             itemText={cartListItemText}
           />

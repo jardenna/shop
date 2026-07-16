@@ -66,7 +66,7 @@ export type SubCategoryNames = (typeof subCategoryValues)[number];
 
 export type SortOrder = 'asc' | 'desc';
 
-export type BaseProduct = DefaultResponseType & {
+export type BaseShopProduct = DefaultResponseType & {
   brand: string;
   categoryName: MainCategoryNames;
   colors: string[];
@@ -110,4 +110,23 @@ export type BasePagination = {
   page: number;
   pages: number;
   productCount: number;
+};
+
+export interface Summary {
+  discountPrice: number;
+  shippingPrice: number;
+  subTotal: number;
+  taxPrice: number;
+  totalPrice: number;
+}
+
+export type StandardAddress = 'addressBilling' | 'addressDelivery';
+
+export type BaseAddress = {
+  city: string;
+  standardAddress: StandardAddress[];
+  street: string;
+  zipCode: string;
+  country?: string;
+  name?: string;
 };
