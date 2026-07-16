@@ -97,6 +97,7 @@ export type BasePagination = {
 
 export interface Summary {
   discountPrice: number;
+  promoDiscount: number;
   shippingPrice: number;
   subTotal: number;
   taxPrice: number;
@@ -113,3 +114,8 @@ export type BaseAddress = {
   country?: string;
   name?: string;
 };
+
+export interface Discount {
+  label: string;
+  percent: number;
+}

@@ -1,5 +1,10 @@
 import { BaseOrder, Order } from './cartApiTypes';
-import { BaseAddress, DefaultResponseType, Summary } from './sharedApiTypes';
+import {
+  BaseAddress,
+  DefaultResponseType,
+  Discount,
+  Summary,
+} from './sharedApiTypes';
 
 export type AllowedPaymentMethod = 'Credit Card' | 'PayPal' | 'MobilePay';
 export type PaymentStatus = 'pending' | 'failed' | 'paid';
@@ -13,6 +18,7 @@ export interface CreateOrderRequest {
 
 export interface OrderResponse extends DefaultResponseType {
   billingAddress: BaseAddress;
+  discount: Discount;
   isDelivered: boolean;
   isPaid: boolean;
   orderItems: Order[];
