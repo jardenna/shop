@@ -32,7 +32,7 @@ const PromoCodeForm = ({
       isLoading={isLoading}
     >
       <Input
-        labelText={language.discountCode}
+        labelText={`${language.discountCode} (SUMMER15)`}
         value={values.promoCode}
         name="promoCode"
         id="promoCode"

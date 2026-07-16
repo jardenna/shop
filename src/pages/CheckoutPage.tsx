@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from '../features/auth/hooks/useAuth';
+import CartSummary from '../features/cart/components/CartSummary';
 import PromoCodeForm from '../features/cart/components/PromoCodeForm';
 import { useGetCheckoutQuery } from '../features/checkout/checkoutApiSlice';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
@@ -19,7 +20,11 @@ const CheckoutPage = () => {
     setPromo(promoCode);
   };
 
-  const { data: checkoutList, isLoading, refetch } = useGetCheckoutQuery(promo); // SUMMER15
+  const {
+    data: checkoutList,
+    isLoading,
+    refetch,
+  } = useGetCheckoutQuery(promo.toUpperCase());
 
   return (
     <MainPageContainer heading="checkout">
@@ -27,31 +32,19 @@ const CheckoutPage = () => {
         {checkoutList && (
           <>
             <aside className="order-summary">
-              SUMMER15
               <OrderSummaryList
                 orderItems={checkoutList}
                 isLoading={isLoading}
                 language={language}
                 deleteCartItem={deleteCartItem}
-                summary={checkoutList.summary}
               />
-              <PromoCodeForm
-                onSubmitPromoCode={handleSubmit}
-                isLoading={isLoading}
-              />
-              {/* <Form
-                onSubmit={onSubmit}
-                submitBtnLabel={language.apply}
-                isLoading={isLoading}
-              >
-                <Input
-                  labelText={language.discountCode}
-                  value={values.promoCode}
-                  name="promoCode"
-                  id="promoCode"
-                  onChange={onChange}
+              {currentUser?.role === 'User' && (
+                <PromoCodeForm
+                  onSubmitPromoCode={handleSubmit}
+                  isLoading={isLoading}
                 />
-              </Form> */}
+              )}
+              <CartSummary summary={checkoutList.summary} language={language} />
             </aside>
             <AddressList
               addresses={checkoutList.addresses}

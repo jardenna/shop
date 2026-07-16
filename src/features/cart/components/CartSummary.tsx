@@ -31,6 +31,10 @@ const CartSummary = ({
       price: summary.shippingPrice,
     },
     {
+      label: `${language.discountCode} (${vat}%)`,
+      price: summary.promoDiscount,
+    },
+    {
       label: ` ${language.inclVat} (${vat}%)`,
       price: summary.taxPrice,
       hideSummaryItem,
