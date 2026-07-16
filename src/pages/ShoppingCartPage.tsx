@@ -32,6 +32,7 @@ const ShoppingCartPage = () => {
   const { apiCartList, cartList } = useActiveCart({
     currentUser,
     isAuthReady,
+    promoCode: 'SUMMER15',
   });
 
   const shouldFetchGuestCart = isAuthReady && !currentUser;

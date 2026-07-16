@@ -37,8 +37,11 @@ export const cartApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.Carts],
     }),
-    getCart: builder.query<CartListResponse, void>({
-      query: () => cartUrl,
+    getCart: builder.query<CartListResponse, string | undefined>({
+      query: (promoCode) => ({
+        url: cartUrl,
+        params: promoCode ? { promoCode } : undefined,
+      }),
       providesTags: [TagTypesEnum.Carts],
     }),
     getGuestCart: builder.query<GuestCardResponse, BaseOrder[]>({

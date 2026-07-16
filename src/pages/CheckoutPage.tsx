@@ -10,7 +10,11 @@ const CheckoutPage = () => {
   const { language } = useLanguage();
   const { currentUser } = useAuth();
   const { deleteCartItem } = useDeleteCartItem();
-  const { data: checkoutList, isLoading, refetch } = useGetCheckoutQuery();
+  const {
+    data: checkoutList,
+    isLoading,
+    refetch,
+  } = useGetCheckoutQuery('SUMMER15');
 
   return (
     <MainPageContainer heading="checkout">

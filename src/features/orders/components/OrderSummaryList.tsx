@@ -64,7 +64,7 @@ const OrderSummaryList = ({
           </ul>
         </>
       )}
-      <CartSummary summary={summary} language={language} />
+      <CartSummary summary={summary} language={language} /> promo input
     </aside>
   );
 };
