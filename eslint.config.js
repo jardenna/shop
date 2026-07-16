@@ -68,12 +68,13 @@ export default defineConfig(
         { usePrettierrc: true },
       ],
       // '@typescript-eslint/no-unused-vars': 'error',
-      '@typescript-eslint/consistent-type-imports': [
-        'error',
-        {
-          prefer: 'type-imports',
-        },
-      ],
+      // '@typescript-eslint/consistent-type-imports': [
+      //   'error',
+      //   {
+      //     prefer: 'type-imports',
+      //   },
+      // ],
+      '@typescript-eslint/consistent-type-imports': 'off',
       '@typescript-eslint/no-invalid-void-type': 'off',
       '@typescript-eslint/restrict-plus-operands': 'off',
       '@typescript-eslint/no-unsafe-return': 'off',
