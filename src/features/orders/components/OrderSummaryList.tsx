@@ -1,15 +1,18 @@
 import { CartListResponse } from '../../../app/api/apiTypes/cartApiTypes';
+import { Summary } from '../../../app/api/apiTypes/sharedApiTypes';
 import DeleteItem from '../../../components/deleteItem/DeleteItem';
 import Img from '../../../components/Img';
 import SkeletonList from '../../../components/skeleton/SkeletonList';
 import { getCartQuantity } from '../../../utils/reduceQty';
+import CartSummary from '../../cart/components/CartSummary';
 import './_order.scss';
 import SummaryInfo from './SummaryInfo';
 
 interface OrderSummaryListProps {
   isLoading: boolean;
   language: Record<string, string>;
-  orderItems?: CartListResponse | null;
+  summary: Summary;
+  orderItems?: CartListResponse;
   deleteCartItem: (cartItemId: string) => void;
 }
 
@@ -18,6 +21,7 @@ const OrderSummaryList = ({
   isLoading,
   language,
   deleteCartItem,
+  summary,
 }: OrderSummaryListProps) => {
   if (isLoading) {
     return <SkeletonList />;
@@ -60,6 +64,7 @@ const OrderSummaryList = ({
           </ul>
         </>
       )}
+      <CartSummary summary={summary} language={language} />
     </aside>
   );
 };

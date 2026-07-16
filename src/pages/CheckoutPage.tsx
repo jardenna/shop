@@ -1,5 +1,4 @@
 import { useAuth } from '../features/auth/hooks/useAuth';
-import CartSummary from '../features/cart/components/CartSummary';
 import { useGetCheckoutQuery } from '../features/checkout/checkoutApiSlice';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
 import { useLanguage } from '../features/language/useLanguage';
@@ -16,23 +15,22 @@ const CheckoutPage = () => {
   return (
     <MainPageContainer heading="checkout">
       <section>
-        <OrderSummaryList
-          orderItems={checkoutList ?? null}
-          isLoading={isLoading}
-          language={language}
-          deleteCartItem={deleteCartItem}
-        />
         {checkoutList && (
-          <CartSummary summary={checkoutList.summary} language={language} />
-        )}
-
-        {checkoutList && (
-          <AddressList
-            addresses={checkoutList.addresses}
-            language={language}
-            username={currentUser?.username ?? ''}
-            refetch={refetch}
-          />
+          <>
+            <OrderSummaryList
+              orderItems={checkoutList}
+              isLoading={isLoading}
+              language={language}
+              deleteCartItem={deleteCartItem}
+              summary={checkoutList.summary}
+            />
+            <AddressList
+              addresses={checkoutList.addresses}
+              language={language}
+              username={currentUser?.username ?? ''}
+              refetch={refetch}
+            />
+          </>
         )}
       </section>
     </MainPageContainer>
