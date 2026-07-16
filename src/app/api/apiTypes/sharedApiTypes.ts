@@ -32,32 +32,15 @@ export type KidsShoesSizes =
   | 'Onesize';
 
 export type MenShoesSizes =
-  | '40'
-  | '41'
-  | '42'
-  | '43'
-  | '44'
-  | '45'
-  | '46'
-  | 'Onesize';
+  '40' | '41' | '42' | '43' | '44' | '45' | '46' | 'Onesize';
 
 export type WomenShoesSizes =
-  | '36'
-  | '37'
-  | '38'
-  | '39'
-  | '40'
-  | '41'
-  | '42'
-  | 'Onesize';
+  '36' | '37' | '38' | '39' | '40' | '41' | '42' | 'Onesize';
 
 export type ClothingSizes = 'S' | 'M' | 'L' | 'XL';
 
 export type Size =
-  | KidsShoesSizes
-  | MenShoesSizes
-  | WomenShoesSizes
-  | ClothingSizes;
+  KidsShoesSizes | MenShoesSizes | WomenShoesSizes | ClothingSizes;
 
 export const mainCategoryValues = ['Men', 'Women', 'Kids'] as const;
 export type MainCategoryNames = (typeof mainCategoryValues)[number];

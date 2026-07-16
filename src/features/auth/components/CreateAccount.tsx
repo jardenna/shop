@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router';
 import type {
   AuthRequest,
-  Roles,
   UserResponse,
 } from '../../../app/api/apiTypes/adminApiTypes';
 import { useMessagePopup } from '../../../components/messagePopup/useMessagePopup';
@@ -60,7 +59,7 @@ const CreateAccount = ({
 
       const result = await registerUser({
         ...rest,
-        role: rest.role as Roles,
+        role: rest.role,
       }).unwrap();
 
       if (result.success) {

@@ -6,10 +6,7 @@ import VisuallyHidden from '../VisuallyHidden';
 import './_date-picker.scss';
 
 type CaptionLayout =
-  | 'label'
-  | 'dropdown'
-  | 'dropdown-months'
-  | 'dropdown-years';
+  'label' | 'dropdown' | 'dropdown-months' | 'dropdown-years';
 
 type DatePickerProps = {
   labelText: string;

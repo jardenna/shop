@@ -62,9 +62,9 @@ const Selectbox = ({
   const { language } = useLanguage();
   const handleChange = (newValue: SelectedOption) => {
     if (isMulti) {
-      onChange(newValue as OptionType[]);
+      onChange(newValue);
     } else {
-      onChange(newValue as OptionType);
+      onChange(newValue);
     }
   };
 
