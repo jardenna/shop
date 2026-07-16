@@ -28,6 +28,7 @@ alreadyInUse;Value already in use;Værdien er allerede i brug
 alreadyLoggedIn;You are already logged in;Du er allerede logget ind
 alreadyLoggedInAs;You are already logged in as;Du er allerede logget ind som
 ascending;ascending;stigende
+apply;Apply;Tilføj
 assignRole;Assign role;Tildel rolle
 available;Available;Tilgængelig
 availableColors;Available colours;Tilgængelige farver
@@ -125,6 +126,7 @@ description;Description;Beskrivelse
 desktopAltText;A young woman smiles in surprise, elegantly delighted by a young man.;En ung kvinde smiler af overraskelse, elegant overrasket af en ung mand.
 details;Details;Detaljer
 discount;Discount;Rabat
+discountCode;Discount code;Rabatkode
 discountRange;Discount must be between 0% and 90%;Rabat skal være mellem 0% og 90%
 discoverCollection;Discover Collection;Se kollektionen
 discoverLatestTrends;Discover latest trends;Udforsk de nyeste tendenser

@@ -28,7 +28,7 @@ const OrderSummaryList = ({
   }
 
   return (
-    <aside className="order-summary">
+    <>
       {orderItems && (
         <>
           <h2 className="summary-title">
@@ -64,8 +64,8 @@ const OrderSummaryList = ({
           </ul>
         </>
       )}
-      <CartSummary summary={summary} language={language} /> promo input
-    </aside>
+      <CartSummary summary={summary} language={language} />
+    </>
   );
 };
 export default OrderSummaryList;
