@@ -18,11 +18,14 @@ export const calculateCartSummary = (orderItems) => {
 
   const shippingPrice = subTotal >= 1500 ? 0 : 49;
 
+  const totalPrice = roundPrice(subTotal - discountPrice + shippingPrice);
+
   return {
     subTotal: roundPrice(subTotal),
     discountPrice: roundPrice(discountPrice),
     taxPrice: roundPrice(taxPrice),
     shippingPrice,
-    totalPrice: roundPrice(subTotal - discountPrice + shippingPrice),
+    totalPrice,
+    promoDiscount: totalPrice - 100,
   };
 };
