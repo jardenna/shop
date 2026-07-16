@@ -7,7 +7,7 @@ import { buildCartData } from '../services/buildCartData.js';
 // @route   GET /api/checkout
 // @access  Private
 const getCheckout = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.user._id).select('addresses').lean();
+  const user = await User.findById(req.user._id).select('addresses');
 
   if (!user?.addresses.length) {
     return res.status(400).json({
@@ -35,6 +35,7 @@ const getCheckout = asyncHandler(async (req, res) => {
       message: t('productsNoLongerAvailable', req.lang),
     });
   }
+  console.log(user.addresses);
 
   return res.status(200).json({
     addresses: user.addresses,
