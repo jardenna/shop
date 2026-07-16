@@ -1,25 +1,34 @@
-const ALLOWED_ROLES = ['Employee', 'User'];
+export const ALLOWED_ROLES = ['Employee', 'User'];
 
-const ALLOWED_FASHION_PREFERENCES = [
+export const ALLOWED_FASHION_PREFERENCES = [
   'mensFashion',
   'womensFashion',
   'kidsFashion',
   'noPreference',
 ];
 
-const STATUS = {
+export const STATUS = {
   PUBLISHED: 'Published',
   INACTIVE: 'Inactive',
   SCHEDULED: 'Scheduled',
 };
 
-const { PUBLISHED, INACTIVE, SCHEDULED } = STATUS;
-const STANDARD_ADDRESS_TYPES = ['addressDelivery', 'addressBilling'];
+export const { PUBLISHED, INACTIVE, SCHEDULED } = STATUS;
+export const STANDARD_ADDRESS_TYPES = ['addressDelivery', 'addressBilling'];
 
-const SHOE_SIZES = ['36', '37', '38', '39', '40', '41', '42', 'Onesize'];
-const MEN_SHOE_SIZES = ['40', '41', '42', '43', '44', '45', '46', 'Onesize'];
+export const SHOE_SIZES = ['36', '37', '38', '39', '40', '41', '42', 'Onesize'];
+export const MEN_SHOE_SIZES = [
+  '40',
+  '41',
+  '42',
+  '43',
+  '44',
+  '45',
+  '46',
+  'Onesize',
+];
 
-const KIDS_SHOE_SIZES = [
+export const KIDS_SHOE_SIZES = [
   '24',
   '25',
   '26',
@@ -34,7 +43,7 @@ const KIDS_SHOE_SIZES = [
   'Onesize',
 ];
 
-const CLOTHING_SIZES = ['S', 'M', 'L', 'XL'];
+export const CLOTHING_SIZES = ['S', 'M', 'L', 'XL'];
 
 export const ALLOWED_SIZES = [
   ...new Set([
@@ -45,45 +54,42 @@ export const ALLOWED_SIZES = [
   ]),
 ];
 
-const MB = 1024 * 1024;
-const MAX_FILE_SIZE = 1 * MB;
-const MAX_FILES = 5;
+export const MB = 1024 * 1024;
+export const MAX_FILE_SIZE = 1 * MB;
+export const MAX_FILES = 5;
 
-const VAT_RATE = 25;
-const VAT_SHARE = VAT_RATE / (100 + VAT_RATE);
+export const VAT_RATE = 25;
+export const VAT_SHARE = VAT_RATE / (100 + VAT_RATE);
 
-const ALLOWED_PAYMENT_METHODS = ['Credit Card', 'PayPal', 'MobilePay'];
-const PAYMENT_METHODS = {
+export const ALLOWED_PAYMENT_METHODS = ['Credit Card', 'PayPal', 'MobilePay'];
+export const PAYMENT_METHODS = {
   CREDIT_CARD: 'Credit Card',
   PAYPAL: 'PayPal',
   MOBILEPAY: 'MobilePay',
 };
 
-const PAYMENT_STATUS_ENUM = ['PENDING', 'FAILED', 'PAID'];
+export const PAYMENT_STATUS_ENUM = ['PENDING', 'FAILED', 'PAID'];
 
-const PAYMENT_STATUS = {
+export const PAYMENT_STATUS = {
   PENDING: 'PENDING',
   FAILED: 'FAILED',
   PAID: 'PAID',
 };
 
-export {
-  ALLOWED_FASHION_PREFERENCES,
-  ALLOWED_PAYMENT_METHODS,
-  ALLOWED_ROLES,
-  CLOTHING_SIZES,
-  INACTIVE,
-  KIDS_SHOE_SIZES,
-  MAX_FILE_SIZE,
-  MAX_FILES,
-  MEN_SHOE_SIZES,
-  PAYMENT_METHODS,
-  PAYMENT_STATUS,
-  PAYMENT_STATUS_ENUM,
-  PUBLISHED,
-  SCHEDULED,
-  SHOE_SIZES,
-  STANDARD_ADDRESS_TYPES,
-  STATUS,
-  VAT_SHARE,
-};
+export const PROMO_CODES = [
+  {
+    code: 'SUMMER15',
+    label: 'summerSale',
+    percent: 10,
+  },
+  {
+    code: 'WELCOME10',
+    label: 'welcome',
+    percent: 10,
+  },
+  {
+    code: 'BLACKFRIDAY',
+    label: 'blackFriday',
+    percent: 30,
+  },
+];

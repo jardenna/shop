@@ -3,7 +3,7 @@ import { formatMongoData } from '../utils/formatMongoData.js';
 import { buildOrderItems } from './buildOrderItems.js';
 import { calculateCartSummary } from './calculateCartSummary.js';
 
-export const buildCartData = async ({ cart }) => {
+export const buildCartData = async ({ cart, promoDiscountPercent }) => {
   const productMap = await getProductsMap({
     productIds: cart.cartItems.map(({ productId }) => productId.toString()),
   });
@@ -36,7 +36,7 @@ export const buildCartData = async ({ cart }) => {
     };
   });
 
-  const summary = calculateCartSummary(orderItems);
+  const summary = calculateCartSummary(orderItems, promoDiscountPercent);
 
   return {
     success: true,
