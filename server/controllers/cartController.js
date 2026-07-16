@@ -2,7 +2,9 @@ import mongoose from 'mongoose';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
 import Product from '../models/productModel.js';
+import User from '../models/userModel.js';
 import { buildCartData } from '../services/buildCartData.js';
+import { getActiveDiscount } from '../services/getActiveDiscount.js';
 import { getProductsMap, mergeCartItems } from '../utils/cartUtils.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
@@ -233,6 +235,7 @@ const updateCart = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Private
 const getCart = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id).select('role');
   const cart = await Cart.findOne({
     user: req.user._id,
   }).lean();
@@ -243,7 +246,12 @@ const getCart = asyncHandler(async (req, res) => {
     });
   }
 
-  const cartData = await buildCartData({ cart });
+  const activeDiscount = getActiveDiscount(user.role, req.query.promoCode);
+
+  const cartData = await buildCartData({
+    cart,
+    promoDiscountPercent: activeDiscount.percent,
+  });
 
   if (!cartData.success) {
     return res.status(500).json({
@@ -256,6 +264,7 @@ const getCart = asyncHandler(async (req, res) => {
     ...formatMongoData(cart),
     cartItems: cartData.cartItems,
     summary: cartData.summary,
+    discount: activeDiscount,
   });
 });
 

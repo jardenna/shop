@@ -3,7 +3,9 @@ import asyncHandler from '../middleware/asyncHandler.js';
 import Order from '../models/ordersModel.js';
 import Product from '../models/productModel.js';
 import User from '../models/userModel.js';
+import { buildOrderItems } from '../services/buildOrderItems.js';
 import { calculateCartSummary } from '../services/calculateCartSummary.js';
+import { getActiveDiscount } from '../services/getActiveDiscount.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 import { validateFakePayment } from '../validators/validateFakePayment.js';
@@ -13,8 +15,6 @@ import {
   validateVariant,
 } from '../validators/validateShopProducts.js';
 
-import { buildOrderItems } from '../services/buildOrderItems.js';
-
 // @desc    Create orders
 // @route   /api/orders
 // @method  Post
@@ -23,20 +23,22 @@ const createOrder = asyncHandler(async (req, res) => {
   const { orderItems, shippingAddressId, billingAddressId, paymentMethod } =
     req.body;
 
-  const userAddresses = await User.findById(req.user._id).select('addresses');
+  const user = await User.findById(req.user._id).select('addresses role');
+  const activeDiscount = getActiveDiscount(user.role, req.query.promoCode);
+  console.log(user.role);
 
-  if (!userAddresses?.addresses.length) {
+  if (!user?.addresses.length) {
     return res.status(400).json({
       success: false,
       message: t('noAddressData', req.lang),
     });
   }
 
-  const shippingAddress = userAddresses.addresses.find(
+  const shippingAddress = user.addresses.find(
     (address) => address._id.toString() === shippingAddressId,
   );
 
-  const billingAddress = userAddresses.addresses.find(
+  const billingAddress = user.addresses.find(
     (address) => address._id.toString() === billingAddressId,
   );
 
@@ -105,7 +107,8 @@ const createOrder = asyncHandler(async (req, res) => {
     productItems,
   });
 
-  const summary = calculateCartSummary(createdOrders);
+  const promoDiscountPercent = activeDiscount.percent;
+  const summary = calculateCartSummary(createdOrders, promoDiscountPercent);
 
   const order = new Order({
     user: req.user._id,
@@ -120,7 +123,14 @@ const createOrder = asyncHandler(async (req, res) => {
       shippingPrice: summary.shippingPrice,
       totalPrice: summary.totalPrice,
       discountPrice: summary.discountPrice,
+      subTotal: summary.subTotal,
+      taxPrice: summary.taxPrice,
+      shippingPrice: summary.shippingPrice,
+      totalPrice: summary.totalPrice,
+      discountPrice: summary.discountPrice,
+      promoDiscount: summary.promoDiscount,
     },
+    discount: activeDiscount,
   });
 
   const createdOrder = await order.save();
