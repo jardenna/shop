@@ -1,4 +1,5 @@
 import type { DefaultResponseType, Size, Summary } from './sharedApiTypes';
+import { Address } from './shopApiTypes';
 
 export interface BaseOrder {
   color: string;
@@ -29,6 +30,10 @@ export interface CartListRequest {
 export interface CartListResponse extends DefaultResponseType {
   cartItems: Order[];
   summary: Summary;
+}
+
+export interface CheckoutResponse extends CartListResponse {
+  addresses: Address[];
 }
 
 export interface UpdateCartRequest {
