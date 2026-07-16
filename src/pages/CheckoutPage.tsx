@@ -1,3 +1,4 @@
+import { useAuth } from '../features/auth/hooks/useAuth';
 import CartSummary from '../features/cart/components/CartSummary';
 import { useGetCheckoutQuery } from '../features/checkout/checkoutApiSlice';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
@@ -8,9 +9,9 @@ import MainPageContainer from './pageContainer/MainPageContainer';
 
 const CheckoutPage = () => {
   const { language } = useLanguage();
+  const { currentUser } = useAuth();
   const { deleteCartItem } = useDeleteCartItem();
   const { data: checkoutList, isLoading, refetch } = useGetCheckoutQuery();
-  console.log(checkoutList?.addresses);
 
   return (
     <MainPageContainer heading="checkout">
@@ -29,7 +30,7 @@ const CheckoutPage = () => {
           <AddressList
             addresses={checkoutList.addresses}
             language={language}
-            username="checkoutList.username"
+            username={currentUser?.username ?? ''}
             refetch={refetch}
           />
         )}
