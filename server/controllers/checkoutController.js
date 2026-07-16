@@ -35,7 +35,6 @@ const getCheckout = asyncHandler(async (req, res) => {
       message: t('productsNoLongerAvailable', req.lang),
     });
   }
-  console.log(user.addresses);
 
   return res.status(200).json({
     addresses: user.addresses,
