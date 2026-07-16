@@ -1,4 +1,5 @@
 import type {
+  BaseAddress,
   BasePagination,
   BaseProductParams,
   BaseShopProduct,
@@ -77,17 +78,6 @@ export type PreferredFashion =
   | 'womensFashion'
   | 'kidsFashion'
   | 'noPreference';
-
-export type StandardAddress = 'addressBilling' | 'addressDelivery';
-
-export type BaseAddress = {
-  city: string;
-  standardAddress: StandardAddress[];
-  street: string;
-  zipCode: string;
-  country?: string;
-  name?: string;
-};
 
 export type Address = BaseAddress & {
   id: string;

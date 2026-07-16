@@ -119,3 +119,14 @@ export interface Summary {
   taxPrice: number;
   totalPrice: number;
 }
+
+export type StandardAddress = 'addressBilling' | 'addressDelivery';
+
+export type BaseAddress = {
+  city: string;
+  standardAddress: StandardAddress[];
+  street: string;
+  zipCode: string;
+  country?: string;
+  name?: string;
+};
