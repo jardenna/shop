@@ -42,7 +42,7 @@ const CurrencyProvider = ({ children }: { children: ReactNode }) => {
       const rates = Object.fromEntries(
         Object.entries(currency.data).map(([currency, value]) => [
           currency,
-          (value as { value: number }).value,
+          value.value,
         ]),
       );
 

@@ -74,10 +74,7 @@ export type ProductPreview = {
 
 // Profile
 export type PreferredFashion =
-  | 'mensFashion'
-  | 'womensFashion'
-  | 'kidsFashion'
-  | 'noPreference';
+  'mensFashion' | 'womensFashion' | 'kidsFashion' | 'noPreference';
 
 export type Address = BaseAddress & {
   id: string;
