@@ -77,7 +77,6 @@ export default defineConfig(
       '@typescript-eslint/no-invalid-void-type': 'off',
       '@typescript-eslint/restrict-plus-operands': 'off',
       '@typescript-eslint/no-unsafe-return': 'off',
-      '@typescript-eslint/consistent-type-imports': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-confusing-void-expression': 'error',
       '@typescript-eslint/no-duplicate-enum-values': 'warn',
