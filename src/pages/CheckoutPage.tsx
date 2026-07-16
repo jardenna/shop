@@ -1,12 +1,10 @@
 import { useState } from 'react';
-import Form from '../components/form/Form';
-import Input from '../components/formElements/Input';
 import { useAuth } from '../features/auth/hooks/useAuth';
+import PromoCodeForm from '../features/cart/components/PromoCodeForm';
 import { useGetCheckoutQuery } from '../features/checkout/checkoutApiSlice';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
 import { useLanguage } from '../features/language/useLanguage';
 import OrderSummaryList from '../features/orders/components/OrderSummaryList';
-import { useFormValidation } from '../hooks/useFormValidation';
 import AddressList from './account/AddressList';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
@@ -14,20 +12,12 @@ const CheckoutPage = () => {
   const { language } = useLanguage();
   const { currentUser } = useAuth();
   const { deleteCartItem } = useDeleteCartItem();
-  const initialState = {
-    promoCode: '',
-  };
 
-  const { values, onSubmit, onChange } = useFormValidation({
-    initialState,
-    callback: handleSubmit,
-  });
   const [promo, setPromo] = useState('');
 
-  function handleSubmit() {
-    setPromo(values.promoCode);
-  }
-  console.log(promo);
+  const handleSubmit = (promoCode: string) => {
+    setPromo(promoCode);
+  };
 
   const { data: checkoutList, isLoading, refetch } = useGetCheckoutQuery(promo); // SUMMER15
 
@@ -45,7 +35,11 @@ const CheckoutPage = () => {
                 deleteCartItem={deleteCartItem}
                 summary={checkoutList.summary}
               />
-              <Form
+              <PromoCodeForm
+                onSubmitPromoCode={handleSubmit}
+                isLoading={isLoading}
+              />
+              {/* <Form
                 onSubmit={onSubmit}
                 submitBtnLabel={language.apply}
                 isLoading={isLoading}
@@ -57,7 +51,7 @@ const CheckoutPage = () => {
                   id="promoCode"
                   onChange={onChange}
                 />
-              </Form>
+              </Form> */}
             </aside>
             <AddressList
               addresses={checkoutList.addresses}
