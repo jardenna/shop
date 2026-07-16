@@ -25,13 +25,17 @@ const AddressList = ({
     <ul className="my-address-list">
       {addresses.map((address) => (
         <li key={address.id} className="my-address-item">
-          <AddressInfoListContent address={address} username={username} />
+          <AddressInfoListContent
+            address={address}
+            username={address.name ?? ''}
+          />
+
           <div className="my-address-footer">
             <DeleteAddressModal id={address.id} modalMessage={address.street} />
             <AddressFormModal
               id={address.id}
               address={address}
-              username={username}
+              username={address.name ?? ''}
               modalHeaderText={language.updateAddress}
               primaryActionBtnLabel={language.update}
               popupMessage={language.addressUpdated}
