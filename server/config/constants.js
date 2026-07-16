@@ -59,6 +59,7 @@ export const MAX_FILE_SIZE = 1 * MB;
 export const MAX_FILES = 5;
 
 export const VAT_RATE = 25;
+export const EMPLOYEE_DISCOUNT = 15;
 export const VAT_SHARE = VAT_RATE / (100 + VAT_RATE);
 
 export const ALLOWED_PAYMENT_METHODS = ['Credit Card', 'PayPal', 'MobilePay'];

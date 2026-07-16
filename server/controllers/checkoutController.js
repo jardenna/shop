@@ -1,8 +1,8 @@
-import { PROMO_CODES } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
 import User from '../models/userModel.js';
 import { buildCartData } from '../services/buildCartData.js';
+import { getActiveDiscount } from '../services/getActiveDiscount.js';
 
 // @desc    Get checkout
 // @route   GET /api/checkout
@@ -28,30 +28,11 @@ const getCheckout = asyncHandler(async (req, res) => {
     });
   }
 
-  const promoDiscount = () => {
-    if (user.role === 'Employee') {
-      return { percent: 15, label: 'employee' };
-    }
-
-    const promoCode = PROMO_CODES.find(
-      ({ code }) => code === req.query.promoCode,
-    );
-
-    if (promoCode) {
-      return {
-        percent: promoCode.percent,
-        label: promoCode.label,
-      };
-    }
-
-    return { percent: 0, label: '' };
-  };
-
-  const activeDiscount = promoDiscount().percent;
+  const activeDiscount = getActiveDiscount(user.role, req.query.promoCode);
 
   const cartData = await buildCartData({
     cart,
-    promoDiscountPercent: activeDiscount,
+    promoDiscountPercent: activeDiscount.percent,
   });
 
   if (!cartData.success) {
@@ -65,8 +46,7 @@ const getCheckout = asyncHandler(async (req, res) => {
     addresses: user.addresses,
     cartItems: cartData.orderItems,
     summary: cartData.summary,
-    discount: promoDiscount(),
+    discount: activeDiscount,
   });
 });
-
 export { getCheckout };
