@@ -123,10 +123,11 @@ const ShoppingCartPage = () => {
               promoDiscount={apiCartList.discount}
             />
           )}
-          {!isEmployee && (
+          {apiCartList && !isEmployee && (
             <PromoCodeForm
               onSubmitPromoCode={handleApplyPromoCode}
               isLoading={isPromoCodeLoading}
+              promoDiscount={apiCartList.discount}
             />
           )}
           <Button onClick={handleCheckout}>
