@@ -28,7 +28,6 @@ const PromoCodeForm = ({
   function handleSubmit() {
     onSubmitPromoCode(values.promoCode);
   }
-  console.log(promoDiscount);
 
   return (
     <Form
