@@ -8,7 +8,7 @@ import {
   UpdateCartRequest,
 } from '../../app/api/apiTypes/cartApiTypes';
 import { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
-import { cartUrl, guestCartUrl } from '../../app/endpoints';
+import { cartUrl, guestCartUrl, promoCodeurl } from '../../app/endpoints';
 
 export const cartApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -57,6 +57,14 @@ export const cartApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.Carts],
     }),
+    sendPromoCode: builder.mutation<CartListResponse, string>({
+      query: (promoCode) => ({
+        url: promoCodeurl,
+        method: 'PATCH',
+        body: { promoCode },
+      }),
+      invalidatesTags: [TagTypesEnum.Carts],
+    }),
   }),
 });
 
@@ -67,4 +75,5 @@ export const {
   useGetGuestCartQuery,
   useDeleteCartMutation,
   useUpdateQtyMutation,
+  useSendPromoCodeMutation,
 } = cartApiSlice;
