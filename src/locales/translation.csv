@@ -28,6 +28,7 @@ alreadyInUse;Value already in use;Værdien er allerede i brug
 alreadyLoggedIn;You are already logged in;Du er allerede logget ind
 alreadyLoggedInAs;You are already logged in as;Du er allerede logget ind som
 ascending;ascending;stigende
+apply;Apply;Tilføj
 assignRole;Assign role;Tildel rolle
 available;Available;Tilgængelig
 availableColors;Available colours;Tilgængelige farver
@@ -125,6 +126,7 @@ description;Description;Beskrivelse
 desktopAltText;A young woman smiles in surprise, elegantly delighted by a young man.;En ung kvinde smiler af overraskelse, elegant overrasket af en ung mand.
 details;Details;Detaljer
 discount;Discount;Rabat
+discountCode;Discount code;Rabatkode
 discountRange;Discount must be between 0% and 90%;Rabat skal være mellem 0% og 90%
 discoverCollection;Discover Collection;Se kollektionen
 discoverLatestTrends;Discover latest trends;Udforsk de nyeste tendenser
@@ -488,6 +490,8 @@ users;Users;Brugere
 userUpdated;User was updated;Bruger blev opdateret
 verifyAndUpdateInfo;Verify and update your information;Bekræft og opdatér dine oplysninger
 view;View;Se
+noPromoCode;We couldn't recognize the discount code. Please try again.;Vi kunne desværre ikke genkende rabatkoden. Prøv venligst igen.
+promoCodeApplied;Discount code applied successfully.;Rabatkoden er blevet anvendt.
 viewAndTrackOrders;View and track your orders.;Tjek og følg dine ordrer.
 viewCart;View your cart;Se din indkøbskurv
 viewCategory;View category;Se kategori

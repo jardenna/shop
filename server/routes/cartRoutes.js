@@ -1,5 +1,6 @@
 import express from 'express';
 import {
+  applyPromoCode,
   createCart,
   deleteCart,
   getCart,
@@ -11,6 +12,9 @@ import { authenticate } from '../middleware/authMiddleware.js';
 import languageMiddleware from '../middleware/languageMiddleware.js';
 
 const router = express.Router();
+router
+  .route('/promo-code')
+  .patch(languageMiddleware, authenticate, applyPromoCode);
 
 router
   .route('/')
@@ -19,6 +23,7 @@ router
 
 router.route('/guest').post(languageMiddleware, getGuestCartProducts);
 router.route('/:id').patch(languageMiddleware, authenticate, updateCart);
+
 router
   .route('/:id/quantity')
   .patch(languageMiddleware, authenticate, updateCartQuantity);

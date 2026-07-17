@@ -230,6 +230,47 @@ const updateCart = asyncHandler(async (req, res) => {
   return res.status(200).json(updatedCart);
 });
 
+// @desc    Apply promo code
+// @route   /api/cart/promo-code
+// @method  Patch
+// @access  Private
+const applyPromoCode = asyncHandler(async (req, res) => {
+  const cart = await Cart.findOne({
+    user: req.user._id,
+  });
+  const user = await User.findById(req.user._id).select('role');
+
+  if (!cart) {
+    return res.status(404).json({
+      success: false,
+      message: t('cartNotFound', req.lang),
+    });
+  }
+
+  const promoCode = req.body.promoCode;
+  const activeDiscount = getActiveDiscount(user.role, promoCode);
+
+  if (activeDiscount.code === '') {
+    return res.status(400).json({
+      success: false,
+      message: t('noPromoCode', req.lang),
+    });
+  }
+
+  cart.discount = {
+    code: activeDiscount.code,
+    label: activeDiscount.label,
+    percent: activeDiscount.percent,
+  };
+
+  await cart.save();
+
+  res.status(200).json({
+    success: true,
+    message: t('promoCodeApplied', req.lang),
+  });
+});
+
 // @desc    Get cart
 // @route   /api/cart
 // @method  Get
@@ -449,6 +490,7 @@ const updateCartQuantity = asyncHandler(async (req, res) => {
 });
 
 export {
+  applyPromoCode,
   createCart,
   deleteCart,
   getCart,

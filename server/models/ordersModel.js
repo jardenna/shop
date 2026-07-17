@@ -88,8 +88,19 @@ const orderModelSchema = new Schema(
       },
     },
     discount: {
-      label: String,
-      percent: Number,
+      code: {
+        type: String,
+        default: '',
+      },
+      label: {
+        type: String,
+        default: '',
+      },
+      percent: {
+        type: Number,
+        required: true,
+        default: 0,
+      },
     },
     paymentStatus: {
       type: String,
@@ -134,6 +145,7 @@ const orderModelSchema = new Schema(
     },
   },
 );
+
 const Order = model('orders', orderModelSchema);
 
 export default Order;
