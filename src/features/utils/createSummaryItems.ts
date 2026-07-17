@@ -28,17 +28,12 @@ export const createSummaryItems = ({
 
   if (summary.discountPrice > 0) {
     summaryItems.push({
-      label: language.discount,
+      label: language.sale,
       price: summary.discountPrice,
       className: 'summary-discount',
       isDiscount: true,
     });
   }
-
-  summaryItems.push({
-    label: language.estimatedShipping,
-    price: summary.shippingPrice,
-  });
 
   if (summary.promoDiscount > 0 && discount) {
     const discountLabel = `${language[discount.label]} (${discount.percent}%)`;
@@ -47,6 +42,11 @@ export const createSummaryItems = ({
       label: discountLabel,
       price: summary.promoDiscount,
       isDiscount: true,
+    });
+
+    summaryItems.push({
+      label: language.estimatedShipping,
+      price: summary.shippingPrice,
     });
   }
 
