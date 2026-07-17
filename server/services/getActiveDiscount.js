@@ -5,13 +5,14 @@ export const getActiveDiscount = (role, code) => {
     return {
       percent: EMPLOYEE_DISCOUNT,
       label: 'employee',
+      code: '',
     };
   }
 
   const trimmedCode = code?.trim().toUpperCase();
   const promoCode = PROMO_CODES.find(({ code }) => code === trimmedCode);
 
-  if (promoCode) {
+  if (promoCode && promoCode.active) {
     return {
       code: promoCode.code,
       percent: promoCode.percent,
