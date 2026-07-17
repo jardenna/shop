@@ -1,5 +1,6 @@
 import { PAYMENT_STATUS } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
+import Cart from '../models/cartModel.js';
 import Order from '../models/ordersModel.js';
 import Product from '../models/productModel.js';
 import User from '../models/userModel.js';
@@ -24,8 +25,18 @@ const createOrder = asyncHandler(async (req, res) => {
     req.body;
 
   const user = await User.findById(req.user._id).select('addresses role');
-  const activeDiscount = getActiveDiscount(user.role, req.query.promoCode);
-  console.log(user.role);
+  const cart = await Cart.findOne({
+    user: req.user._id,
+  }).select('discount');
+
+  if (!cart) {
+    return res.status(400).json({
+      success: false,
+      message: t('cartNotFound', req.lang),
+    });
+  }
+
+  const activeDiscount = getActiveDiscount(user.role, cart.discount.code);
 
   if (!user?.addresses.length) {
     return res.status(400).json({
@@ -118,11 +129,6 @@ const createOrder = asyncHandler(async (req, res) => {
     billingAddress,
     paymentStatus: PAYMENT_STATUS.PENDING,
     summary: {
-      subTotal: summary.subTotal,
-      taxPrice: summary.taxPrice,
-      shippingPrice: summary.shippingPrice,
-      totalPrice: summary.totalPrice,
-      discountPrice: summary.discountPrice,
       subTotal: summary.subTotal,
       taxPrice: summary.taxPrice,
       shippingPrice: summary.shippingPrice,

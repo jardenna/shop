@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import { PROMO_CODES } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
 import Product from '../models/productModel.js';
@@ -239,6 +238,7 @@ const applyPromoCode = asyncHandler(async (req, res) => {
   const cart = await Cart.findOne({
     user: req.user._id,
   });
+  const user = await User.findById(req.user._id).select('role');
 
   if (!cart) {
     return res.status(404).json({
@@ -247,11 +247,10 @@ const applyPromoCode = asyncHandler(async (req, res) => {
     });
   }
 
-  const promoCode = req.body.promoCode.trim().toUpperCase();
+  const promoCode = req.body.promoCode;
+  const activeDiscount = getActiveDiscount(user.role, promoCode);
 
-  const promo = PROMO_CODES.find((code) => code.code === promoCode);
-
-  if (!promo) {
+  if (activeDiscount.code === '') {
     return res.status(400).json({
       success: false,
       message: t('noPromoCode', req.lang),
@@ -259,9 +258,9 @@ const applyPromoCode = asyncHandler(async (req, res) => {
   }
 
   cart.discount = {
-    code: promo.code,
-    label: promo.label,
-    percent: promo.percent,
+    code: activeDiscount.code,
+    label: activeDiscount.label,
+    percent: activeDiscount.percent,
   };
 
   await cart.save();
