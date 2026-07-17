@@ -29,17 +29,14 @@ export const getFormattedPrice = (
   rates: Record<string, number>,
 ) => {
   const locale = currencyToLocaleMap[currencyCode];
+
   const convertedAmount =
     currencyCode === 'DKK' ? price : price * rates[currencyCode];
 
-  // Always round up
-  const roundedAmount = Math.ceil(convertedAmount);
-
-  // Convert currency to locales
   return new Intl.NumberFormat(locale, {
     style: 'currency',
     currency: currencyCode,
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
-  }).format(roundedAmount);
+  }).format(convertedAmount);
 };
