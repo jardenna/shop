@@ -399,6 +399,14 @@ const deleteCart = asyncHandler(async (req, res) => {
 
   cartItem.deleteOne();
 
+  if (cart.cartItems.length === 0) {
+    cart.discount = {
+      code: '',
+      label: '',
+      percent: 0,
+    };
+  }
+
   await cart.save();
 
   res.status(200).json({
