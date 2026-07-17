@@ -34,6 +34,7 @@ const PromoCodeForm = ({
       onSubmit={onSubmit}
       submitBtnLabel={language.apply}
       isLoading={isLoading}
+      hideSubmitBtnLabel={values.promoCode !== ''}
     >
       <Input
         labelText={`${language.discountCode} (SUMMER15)`}
