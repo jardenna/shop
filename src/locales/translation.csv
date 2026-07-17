@@ -243,6 +243,10 @@ materialRequired;Please insert material;Indsæt venligst materiale
 maximum;Maximum;Maksimalt
 maximumFileLimitExceeded;Maximum file limit exceeded;Maksimalt antal filer er overskredet
 maximumFileSize;Maximum file size;Maksimal filstørrelse
+employeeDiscount;Employee discount;Medarbejder rabat
+summerSale;Summer sale;Sommerrabat
+welcome;Welcome discount;Velkomstrabat
+blackFriday;Black Friday;Black Friday-rabat
 men;Men;Mænd
 menAltText;Elegant man with a hat, suspenders, and a burgundy shirt, lifts his hand to remove his sunglasses.;Elegant mand med hat, seler og bordeaux skjorte, løfter hånden for at tage sine solbriller af.
 menBannerAltText;Stylish man wearing an exclusive jacket and dark sunglasses, exuding timeless confidence.;Stilfuld mand iført eksklusiv jakke og mørke solbriller, udstråler tidløs selvsikkerhed.

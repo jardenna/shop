@@ -4,7 +4,7 @@ export const getActiveDiscount = (role, code) => {
   if (role === 'Employee') {
     return {
       percent: EMPLOYEE_DISCOUNT,
-      label: 'employee',
+      label: 'employeeDiscount',
       code: '',
     };
   }
