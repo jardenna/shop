@@ -4,11 +4,8 @@ import { checkoutUrl } from '../../app/endpoints';
 
 export const checkoutApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getCheckout: builder.query<CheckoutResponse, string | undefined>({
-      query: (promoCode) => ({
-        url: checkoutUrl,
-        params: promoCode ? { promoCode } : undefined,
-      }),
+    getCheckout: builder.query<CheckoutResponse, void>({
+      query: () => checkoutUrl,
       providesTags: [TagTypesEnum.Checkout, TagTypesEnum.Carts],
     }),
   }),

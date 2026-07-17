@@ -7,19 +7,15 @@ import { useGetCartQuery } from './cartApiSlice';
 interface UseActiveCartProps {
   currentUser: UserResponse | null;
   isAuthReady: boolean;
-  promoCode?: string;
 }
 
-export const useActiveCart = ({
-  currentUser,
-  promoCode,
-}: UseActiveCartProps) => {
+export const useActiveCart = ({ currentUser }: UseActiveCartProps) => {
   const {
     data: apiCartList,
     isLoading: isCartLoading,
     isError: isCartError,
     isSuccess: isCartSuccess,
-  } = useGetCartQuery(currentUser ? promoCode : skipToken);
+  } = useGetCartQuery(currentUser ? undefined : skipToken);
 
   const cartList = useAppSelector(selectCartList);
 
