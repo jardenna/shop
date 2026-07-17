@@ -57,7 +57,7 @@ export const cartApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.Carts],
     }),
-    sendPromoCode: builder.mutation<CartListResponse, string>({
+    applyPromoCode: builder.mutation<CartListResponse, string>({
       query: (promoCode) => ({
         url: promoCodeurl,
         method: 'PATCH',
@@ -75,5 +75,5 @@ export const {
   useGetGuestCartQuery,
   useDeleteCartMutation,
   useUpdateQtyMutation,
-  useSendPromoCodeMutation,
+  useApplyPromoCodeMutation,
 } = cartApiSlice;

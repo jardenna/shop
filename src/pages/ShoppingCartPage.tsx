@@ -8,8 +8,8 @@ import { useMessagePopup } from '../components/messagePopup/useMessagePopup';
 import SkeletonCard from '../components/skeleton/SkeletonCard';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import {
+  useApplyPromoCodeMutation,
   useGetGuestCartQuery,
-  useSendPromoCodeMutation,
   useUpdateQtyMutation,
 } from '../features/cart/cartApiSlice';
 import CartList from '../features/cart/components/CartList';
@@ -44,7 +44,7 @@ const ShoppingCartPage = () => {
 
   const [updateQty] = useUpdateQtyMutation();
   const [applyPromoCode, { isLoading: isPromoCodeLoading }] =
-    useSendPromoCodeMutation();
+    useApplyPromoCodeMutation();
   const { deleteCartItem } = useDeleteCartItem();
 
   const handleApplyPromoCode = async (promoCode: string) => {
