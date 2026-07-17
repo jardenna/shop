@@ -84,29 +84,27 @@ const createOrder = asyncHandler(async (req, res) => {
     });
   }
 
-  const productItems = orderItems;
-
-  for (const productItem of productItems) {
+  for (const orderItem of orderItems) {
     const databaseProduct = findDatabaseProduct({
       databaseProducts,
-      cartItem: productItem,
+      cartItem: orderItem,
     });
 
     const isValidVariant = validateVariant({
       databaseProduct,
-      cartItem: productItem,
+      cartItem: orderItem,
     });
 
     if (!isValidVariant) {
       return res.status(400).json({
         success: false,
         message: 'The selected variant does not exist',
-        cartItem: getVariantIdentity(productItem),
+        cartItem: getVariantIdentity(orderItem),
       });
     }
   }
 
-  if (productItems.some((productItem) => productItem.qty < 1)) {
+  if (orderItems.some((orderItem) => orderItem.qty < 1)) {
     return res.status(400).json({
       success: false,
       message: t('qtyMustBeAtLeast', req.lang),
@@ -115,7 +113,7 @@ const createOrder = asyncHandler(async (req, res) => {
 
   const createdOrders = buildOrderItems({
     databaseProducts,
-    productItems,
+    orderItems,
   });
 
   const promoDiscountPercent = activeDiscount.percent;
