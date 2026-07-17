@@ -82,15 +82,18 @@ export const PROMO_CODES = [
     code: 'SUMMER15',
     label: 'summerSale',
     percent: 10,
+    active: true,
   },
   {
     code: 'WELCOME10',
     label: 'welcome',
     percent: 10,
+    active: false,
   },
   {
     code: 'BLACKFRIDAY',
     label: 'blackFriday',
     percent: 30,
+    active: false,
   },
 ];

@@ -2,7 +2,10 @@ import { EMPLOYEE_DISCOUNT, PROMO_CODES } from '../config/constants.js';
 
 export const getActiveDiscount = (role, code) => {
   if (role === 'Employee') {
-    return { percent: EMPLOYEE_DISCOUNT, label: 'employee' };
+    return {
+      percent: EMPLOYEE_DISCOUNT,
+      label: 'employee',
+    };
   }
 
   const trimmedCode = code?.trim().toUpperCase();
@@ -16,5 +19,9 @@ export const getActiveDiscount = (role, code) => {
     };
   }
 
-  return { code: '', percent: 0, label: '' };
+  return {
+    code: '',
+    percent: 0,
+    label: '',
+  };
 };
