@@ -26,8 +26,11 @@ const CheckoutPage = () => {
                 language={language}
                 deleteCartItem={deleteCartItem}
               />
-
-              <CartSummary summary={checkoutList.summary} language={language} />
+              <CartSummary
+                summary={checkoutList.summary}
+                language={language}
+                promoDiscount={checkoutList.discount}
+              />
             </aside>
             <AddressList
               addresses={checkoutList.addresses}

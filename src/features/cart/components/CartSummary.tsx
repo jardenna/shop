@@ -5,8 +5,8 @@ import './cartSummary.styles.scss';
 
 interface CartSummaryProps {
   language: Record<string, string>;
+  promoDiscount: Discount;
   summary: Summary;
-  promoDiscount?: Discount;
 }
 
 const CartSummary = ({
