@@ -43,14 +43,13 @@ export const createSummaryItems = ({
       price: summary.promoDiscount,
       isDiscount: true,
     });
-
-    summaryItems.push({
-      label: language.estimatedShipping,
-      price: summary.shippingPrice,
-    });
   }
 
   summaryItems.push(
+    {
+      label: language.estimatedShipping,
+      price: summary.shippingPrice,
+    },
     {
       label: `${language.inclVat} (${vat}%)`,
       price: summary.taxPrice,
