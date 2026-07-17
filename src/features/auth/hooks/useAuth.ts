@@ -36,7 +36,6 @@ export const useAuth = () => {
   const role = currentUser?.role ?? null;
   const isAdmin = Boolean(currentUser?.isAdmin);
   const isEmployee = role === 'Employee';
-  const isStaff = isAdmin || isEmployee;
 
   return {
     currentUser,
@@ -44,7 +43,7 @@ export const useAuth = () => {
     role,
     isAdmin,
     isEmployee,
-    isStaff,
+
     isLoading,
     logout: sendLogout,
     onReset: refetch,

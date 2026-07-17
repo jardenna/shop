@@ -28,7 +28,7 @@ import './ShoppingCartPage.styles.scss';
 const ShoppingCartPage = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { currentUser, isAuthReady } = useAuth();
+  const { currentUser, isAuthReady, isEmployee } = useAuth();
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
   const { apiCartList, cartList } = useActiveCart({
@@ -115,16 +115,18 @@ const ShoppingCartPage = () => {
         </section>
 
         <aside className="cart-page-aside">
-          <PromoCodeForm
-            onSubmitPromoCode={handleApplyPromoCode}
-            isLoading={isPromoCodeLoading}
-          />
           <h2>{language.orderSummary}</h2>
           {apiCartList && (
             <CartSummary
               summary={apiCartList.summary}
               language={language}
               promoDiscount={apiCartList.discount}
+            />
+          )}
+          {!isEmployee && (
+            <PromoCodeForm
+              onSubmitPromoCode={handleApplyPromoCode}
+              isLoading={isPromoCodeLoading}
             />
           )}
           <Button onClick={handleCheckout}>
