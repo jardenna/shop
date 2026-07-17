@@ -287,7 +287,7 @@ const getCart = asyncHandler(async (req, res) => {
     });
   }
 
-  const activeDiscount = getActiveDiscount(user.role, req.query.promoCode);
+  const activeDiscount = getActiveDiscount(user.role, cart.discount.code);
 
   const cartData = await buildCartData({
     cart,

@@ -9,10 +9,12 @@ import SkeletonCard from '../components/skeleton/SkeletonCard';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import {
   useGetGuestCartQuery,
+  useSendPromoCodeMutation,
   useUpdateQtyMutation,
 } from '../features/cart/cartApiSlice';
 import CartList from '../features/cart/components/CartList';
 import CartSummary from '../features/cart/components/CartSummary';
+import PromoCodeForm from '../features/cart/components/PromoCodeForm';
 import { useActiveCart } from '../features/cart/useActiveCart';
 import { deleteGuestCartItem, updateGuestCartQty } from '../features/cartSlice';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
@@ -41,6 +43,17 @@ const ShoppingCartPage = () => {
   );
 
   const [updateQty] = useUpdateQtyMutation();
+  const [applyPromoCode, { isLoading: isPromoCodeLoading }] =
+    useSendPromoCodeMutation();
+  const { deleteCartItem } = useDeleteCartItem();
+
+  const handleApplyPromoCode = async (promoCode: string) => {
+    try {
+      await applyPromoCode(promoCode);
+    } catch (error) {
+      handleApiError(error, onAddMessagePopup);
+    }
+  };
 
   const handleUpdateQty = async (cartItemId: string, qty: number) => {
     try {
@@ -54,7 +67,6 @@ const ShoppingCartPage = () => {
     dispatch(updateGuestCartQty({ cartItemId, qty }));
   };
 
-  const { deleteCartItem } = useDeleteCartItem();
   const handleDeleteGuestCart = (cartItemId: string) => {
     dispatch(deleteGuestCartItem(cartItemId));
   };
@@ -103,6 +115,10 @@ const ShoppingCartPage = () => {
         </section>
 
         <aside className="cart-page-aside">
+          <PromoCodeForm
+            onSubmitPromoCode={handleApplyPromoCode}
+            isLoading={isPromoCodeLoading}
+          />
           <h2>{language.orderSummary}</h2>
           {apiCartList && (
             <CartSummary
