@@ -1,61 +1,37 @@
-import { Summary } from '../../../app/api/apiTypes/sharedApiTypes';
-import { vat } from '../../../utils/utils';
+import { Discount, Summary } from '../../../app/api/apiTypes/sharedApiTypes';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
+import { createSummaryItems } from '../../utils/createSummaryItems';
 import './cartSummary.styles.scss';
 
 interface CartSummaryProps {
   language: Record<string, string>;
   summary: Summary;
-  hideSummaryItem?: boolean;
+  promoDiscount?: Discount;
 }
 
 const CartSummary = ({
   summary,
   language,
-  hideSummaryItem,
+  promoDiscount,
 }: CartSummaryProps) => {
-  const summaryItems = [
-    {
-      label: language.subtotal,
-      price: summary.subTotal,
-    },
-    summary.discountPrice > 0
-      ? {
-          label: language.discount,
-          price: summary.discountPrice,
-          className: 'summary-discount',
-        }
-      : null,
-    {
-      label: language.estimatedShipping,
-      price: summary.shippingPrice,
-    },
-    {
-      label: ` ${language.inclVat} (${vat}%)`,
-      price: summary.taxPrice,
-      hideSummaryItem,
-    },
-    {
-      label: language.totalPrice,
-      price: summary.totalPrice,
-      className: 'summary-total',
-    },
-  ].filter((item) => item !== null);
+  const summaryItems = createSummaryItems({
+    summary,
+    discount: promoDiscount,
+    language,
+  });
 
   return (
     <section className="summary-list">
-      {summaryItems.map(
-        ({ label, price, className, hideSummaryItem }) =>
-          !hideSummaryItem && (
-            <div key={label} className={`summary-item ${className ?? ''}`}>
-              <span>{label}</span>
-              <span className="summary-info">
-                <ProductPrice price={price} />
-              </span>
-            </div>
-          ),
-      )}
+      {summaryItems.map(({ label, price, className, isDiscount }) => (
+        <div key={label} className={`summary-item ${className ?? ''}`}>
+          <span>{label}</span>
+          <span className="summary-info">
+            <ProductPrice price={price} isNegativeNumber={isDiscount} />
+          </span>
+        </div>
+      ))}
     </section>
   );
 };
+
 export default CartSummary;

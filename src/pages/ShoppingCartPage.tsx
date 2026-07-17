@@ -108,7 +108,7 @@ const ShoppingCartPage = () => {
             <CartSummary
               summary={apiCartList.summary}
               language={language}
-              hideSummaryItem
+              promoDiscount={apiCartList.discount}
             />
           )}
           <Button onClick={handleCheckout}>
