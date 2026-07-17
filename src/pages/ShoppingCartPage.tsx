@@ -49,7 +49,7 @@ const ShoppingCartPage = () => {
 
   const handleApplyPromoCode = async (promoCode: string) => {
     try {
-      await applyPromoCode(promoCode);
+      await applyPromoCode(promoCode).unwrap();
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
     }
