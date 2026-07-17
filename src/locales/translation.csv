@@ -490,6 +490,8 @@ users;Users;Brugere
 userUpdated;User was updated;Bruger blev opdateret
 verifyAndUpdateInfo;Verify and update your information;Bekræft og opdatér dine oplysninger
 view;View;Se
+noPromoCode;We couldn't recognize the discount code. Please try again.;Vi kunne desværre ikke genkende rabatkoden. Prøv venligst igen.
+promoCodeApplied;Discount code applied successfully.;Rabatkoden er blevet anvendt.
 viewAndTrackOrders;View and track your orders.;Tjek og følg dine ordrer.
 viewCart;View your cart;Se din indkøbskurv
 viewCategory;View category;Se kategori

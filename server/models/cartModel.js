@@ -1,7 +1,6 @@
 import { Schema, model } from 'mongoose';
 
 const { ObjectId } = Schema;
-
 const CartSchema = new Schema(
   {
     user: {
@@ -27,6 +26,21 @@ const CartSchema = new Schema(
         },
       },
     ],
+    discount: {
+      code: {
+        type: String,
+        default: '',
+      },
+      label: {
+        type: String,
+        default: '',
+      },
+      percent: {
+        type: Number,
+        required: true,
+        default: 0,
+      },
+    },
   },
   { timestamps: true },
 );

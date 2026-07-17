@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { PROMO_CODES } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
 import Product from '../models/productModel.js';
@@ -230,6 +231,47 @@ const updateCart = asyncHandler(async (req, res) => {
   return res.status(200).json(updatedCart);
 });
 
+// @desc    Apply promo code
+// @route   /api/cart/promo-code
+// @method  Patch
+// @access  Private
+const applyPromoCode = asyncHandler(async (req, res) => {
+  const cart = await Cart.findOne({
+    user: req.user._id,
+  });
+
+  if (!cart) {
+    return res.status(404).json({
+      success: false,
+      message: t('cartNotFound', req.lang),
+    });
+  }
+
+  const promoCode = req.body.promoCode.trim().toUpperCase();
+
+  const promo = PROMO_CODES.find((code) => code.code === promoCode);
+
+  if (!promo) {
+    return res.status(400).json({
+      success: false,
+      message: t('noPromoCode', req.lang),
+    });
+  }
+
+  cart.discount = {
+    code: promo.code,
+    label: promo.label,
+    percent: promo.percent,
+  };
+
+  await cart.save();
+
+  res.status(200).json({
+    success: true,
+    message: t('promoCodeApplied', req.lang),
+  });
+});
+
 // @desc    Get cart
 // @route   /api/cart
 // @method  Get
@@ -449,6 +491,7 @@ const updateCartQuantity = asyncHandler(async (req, res) => {
 });
 
 export {
+  applyPromoCode,
   createCart,
   deleteCart,
   getCart,
