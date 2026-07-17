@@ -9,6 +9,7 @@ interface ProductPriceProps {
   discount?: number;
   discountedPrice?: number;
   hasError?: string;
+  isNegativeNumber?: boolean;
 }
 
 const ProductPrice = ({
@@ -16,6 +17,7 @@ const ProductPrice = ({
   discount,
   hasError,
   discountedPrice,
+  isNegativeNumber,
 }: ProductPriceProps) => {
   const { language } = useLanguage();
 
@@ -42,7 +44,10 @@ const ProductPrice = ({
           <span className="orginal-price">{regularPrice}</span>
         </>
       ) : (
-        <span>{regularPrice}</span>
+        <span>
+          {isNegativeNumber && '- '}
+          {regularPrice}
+        </span>
       )}
     </div>
   );
