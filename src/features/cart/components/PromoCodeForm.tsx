@@ -28,13 +28,14 @@ const PromoCodeForm = ({
   function handleSubmit() {
     onSubmitPromoCode(values.promoCode);
   }
+  console.log(promoDiscount);
 
   return (
     <Form
       onSubmit={onSubmit}
       submitBtnLabel={language.apply}
       isLoading={isLoading}
-      hideSubmitBtnLabel={values.promoCode !== ''}
+      hideSubmitBtnLabel={promoDiscount.code !== ''}
     >
       <Input
         labelText={`${language.discountCode} (SUMMER15)`}
@@ -42,7 +43,7 @@ const PromoCodeForm = ({
         name="promoCode"
         id="promoCode"
         onChange={onChange}
-        readOnly={values.promoCode !== ''}
+        readOnly={promoDiscount.code !== ''}
       />
     </Form>
   );
