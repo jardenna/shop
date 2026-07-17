@@ -116,6 +116,7 @@ export type BaseAddress = {
 };
 
 export interface Discount {
+  code: string;
   label: string;
   percent: number;
 }
