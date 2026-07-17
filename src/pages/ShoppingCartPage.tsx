@@ -8,11 +8,13 @@ import { useMessagePopup } from '../components/messagePopup/useMessagePopup';
 import SkeletonCard from '../components/skeleton/SkeletonCard';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import {
+  useApplyPromoCodeMutation,
   useGetGuestCartQuery,
   useUpdateQtyMutation,
 } from '../features/cart/cartApiSlice';
 import CartList from '../features/cart/components/CartList';
 import CartSummary from '../features/cart/components/CartSummary';
+import PromoCodeForm from '../features/cart/components/PromoCodeForm';
 import { useActiveCart } from '../features/cart/useActiveCart';
 import { deleteGuestCartItem, updateGuestCartQty } from '../features/cartSlice';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
@@ -26,7 +28,7 @@ import './ShoppingCartPage.styles.scss';
 const ShoppingCartPage = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { currentUser, isAuthReady } = useAuth();
+  const { currentUser, isAuthReady, isEmployee } = useAuth();
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
   const { apiCartList, cartList } = useActiveCart({
@@ -41,6 +43,17 @@ const ShoppingCartPage = () => {
   );
 
   const [updateQty] = useUpdateQtyMutation();
+  const [applyPromoCode, { isLoading: isPromoCodeLoading }] =
+    useApplyPromoCodeMutation();
+  const { deleteCartItem } = useDeleteCartItem();
+
+  const handleApplyPromoCode = async (promoCode: string) => {
+    try {
+      await applyPromoCode(promoCode).unwrap();
+    } catch (error) {
+      handleApiError(error, onAddMessagePopup);
+    }
+  };
 
   const handleUpdateQty = async (cartItemId: string, qty: number) => {
     try {
@@ -54,7 +67,6 @@ const ShoppingCartPage = () => {
     dispatch(updateGuestCartQty({ cartItemId, qty }));
   };
 
-  const { deleteCartItem } = useDeleteCartItem();
   const handleDeleteGuestCart = (cartItemId: string) => {
     dispatch(deleteGuestCartItem(cartItemId));
   };
@@ -108,7 +120,14 @@ const ShoppingCartPage = () => {
             <CartSummary
               summary={apiCartList.summary}
               language={language}
-              hideSummaryItem
+              promoDiscount={apiCartList.discount}
+            />
+          )}
+          {apiCartList && !isEmployee && (
+            <PromoCodeForm
+              onSubmitPromoCode={handleApplyPromoCode}
+              isLoading={isPromoCodeLoading}
+              promoDiscount={apiCartList.discount}
             />
           )}
           <Button onClick={handleCheckout}>

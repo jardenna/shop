@@ -287,7 +287,7 @@ const getCart = asyncHandler(async (req, res) => {
     });
   }
 
-  const activeDiscount = getActiveDiscount(user.role, req.query.promoCode);
+  const activeDiscount = getActiveDiscount(user.role, cart.discount.code);
 
   const cartData = await buildCartData({
     cart,
@@ -398,6 +398,14 @@ const deleteCart = asyncHandler(async (req, res) => {
   }
 
   cartItem.deleteOne();
+
+  if (cart.cartItems.length === 0) {
+    cart.discount = {
+      code: '',
+      label: '',
+      percent: 0,
+    };
+  }
 
   await cart.save();
 

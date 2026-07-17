@@ -1,3 +1,7 @@
+import {
+  DISCOUNT_SHIPPING_PRICE,
+  SHIPPING_PRICE,
+} from '../config/constants.js';
 const roundPrice = (amount) => Math.round(amount * 100) / 100;
 
 export const calculateCartSummary = (orderItems, promoDiscountPercent = 0) => {
@@ -16,7 +20,8 @@ export const calculateCartSummary = (orderItems, promoDiscountPercent = 0) => {
     0,
   );
 
-  const shippingPrice = subTotal >= 1500 ? 0 : 49;
+  const shippingPrice =
+    subTotal >= DISCOUNT_SHIPPING_PRICE ? 0 : SHIPPING_PRICE;
   const totalPrice = roundPrice(subTotal - discountPrice);
   const promoDiscount = roundPrice(totalPrice * (promoDiscountPercent / 100));
 

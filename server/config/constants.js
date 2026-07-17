@@ -97,3 +97,6 @@ export const PROMO_CODES = [
     active: false,
   },
 ];
+
+export const SHIPPING_PRICE = 49;
+export const DISCOUNT_SHIPPING_PRICE = 3500;

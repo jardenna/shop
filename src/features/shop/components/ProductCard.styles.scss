@@ -24,6 +24,8 @@ $placement-x: 12px;
 
   .favorite-heart {
     position: absolute;
+    line-height: 1px;
+    padding: 12px;
     z-index: 2;
     right: $placement-x;
     top: $placement-y;
@@ -110,9 +112,5 @@ $placement-x: 12px;
         gap: 12px;
       }
     }
-
-    // .card-img-container {
-    //   aspect-ratio: 3 / 4;
-    // }
   }
 }

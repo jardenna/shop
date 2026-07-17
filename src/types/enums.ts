@@ -17,6 +17,7 @@ export enum ValidationMessage {
   PleaseEnter = 'pleaseEnter',
   PleaseEnterCategoryName = 'pleaseEnterCategoryName',
   PleaseEnterCity = 'pleaseEnterCity',
+  PleaseEnterDiscountCode = 'pleaseEnterDiscountCode',
   PleaseEnterEmail = 'noEmail',
   PleaseEnterName = 'pleaseEnterName',
   PleaseEnterPassword = 'pleaseEnterPassword',

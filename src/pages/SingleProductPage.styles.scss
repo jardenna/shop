@@ -13,6 +13,10 @@
 
   .single-product {
     width: 100%;
+
+    @include max-size($small) {
+      margin-top: 12px;
+    }
   }
 
   .single-product-heading {

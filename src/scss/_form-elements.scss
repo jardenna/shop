@@ -87,8 +87,14 @@ input {
     pointer-events: none;
   }
 
-  &:has(:focus-visible)::after {
+  &:has(:not([readonly]):focus-visible)::after {
     opacity: 1;
+  }
+
+  input[readonly],
+  textarea[readonly] {
+    color: $color-gray-60;
+    cursor: default;
   }
 
   &:has([aria-invalid='true']:focus-visible)::after {

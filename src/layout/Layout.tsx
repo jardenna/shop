@@ -35,7 +35,7 @@ const Layout = () => {
   }, [pathname, dispatch]);
 
   // Hooks
-  const { currentUser, isStaff, isAuthReady } = useAuth();
+  const { currentUser, isEmployee, isAuthReady } = useAuth();
   const { currencyOptions, onChangePrice, exchangeRate } = useCurrency();
   const [logout, { isLoading }] = useLogoutMutation();
   const { isMobileSize } = useMediaQuery();
@@ -106,7 +106,7 @@ const Layout = () => {
     ...getAccountLinks(),
 
     // Dashboard only for employees and admins
-    ...(isStaff
+    ...(isEmployee
       ? [
           {
             label: language.dashboard,
