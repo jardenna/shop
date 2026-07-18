@@ -34,7 +34,6 @@ import './CollectionPage.styles.scss';
 export type FilterKeys = keyof BaseShopProductsParams;
 
 const CollectionPage = () => {
-  console.count('CollectionPage');
   const { category, categoryId } = useParams();
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
