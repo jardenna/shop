@@ -28,33 +28,31 @@ const EditUserInput = ({
   submitBtnLabel,
   isFormDirty,
 }: EditUserInputProps) => (
-  <section className="delete-item">
-    <Form
-      submitBtnLabel={submitBtnLabel}
-      disabled={!isFormDirty}
-      onSubmit={() => {
-        onSave();
-      }}
-      cancelBtnProps={{
-        onCancel,
-      }}
-    >
-      {id === 'role' ? (
-        <RoleRadioBtn roleValue={roleValue} onChange={onEditChange} />
-      ) : (
-        <Input
-          id={id}
-          name={id}
-          onChange={onEditChange}
-          value={value}
-          labelText={labelText}
-          inputHasNoLabel
-          autoFocus
-          className="edit-user-input"
-        />
-      )}
-    </Form>
-  </section>
+  <Form
+    submitBtnLabel={submitBtnLabel}
+    disabled={!isFormDirty}
+    onSubmit={() => {
+      onSave();
+    }}
+    cancelBtnProps={{
+      onCancel,
+    }}
+  >
+    {id === 'role' ? (
+      <RoleRadioBtn roleValue={roleValue} onChange={onEditChange} />
+    ) : (
+      <Input
+        id={id}
+        name={id}
+        onChange={onEditChange}
+        value={value}
+        labelText={labelText}
+        inputHasNoLabel
+        autoFocus
+        className="edit-user-input"
+      />
+    )}
+  </Form>
 );
 
 export default EditUserInput;
