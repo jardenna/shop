@@ -18,4 +18,23 @@
     flex-direction: column;
     gap: 20px;
   }
+
+  .payment-method-list {
+    display: flex;
+    gap: 8px;
+  }
+
+  .cart-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .cart-info-text {
+      padding-right: 4px;
+    }
+
+    a {
+      text-decoration: underline;
+    }
+  }
 }

@@ -1,6 +1,6 @@
 import { skipToken } from '@reduxjs/toolkit/query';
 import { ErrorBoundary } from 'react-error-boundary';
-import { Link, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import { useAppDispatch } from '../app/hooks';
 import Button from '../components/Button';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
@@ -12,6 +12,7 @@ import {
   useGetGuestCartQuery,
   useUpdateQtyMutation,
 } from '../features/cart/cartApiSlice';
+import CartInfo from '../features/cart/components/CartInfo';
 import CartList from '../features/cart/components/CartList';
 import CartSummary from '../features/cart/components/CartSummary';
 import PaymentMethodsList from '../features/cart/components/PaymentMethodsList';
@@ -139,17 +140,7 @@ const ShoppingCartPage = () => {
             <PaymentMethodsList paymentMethods={apiCartList.paymentMethods} />
           )}
 
-          <span>{language.pricesConfirmed}</span>
-
-          <span>
-            <span>{language.returnPeriod}</span>
-            <Link to="/">{language.returnPolicyLink}</Link>
-          </span>
-
-          <span>
-            <span>{language.needHelp}?</span>
-            <Link to="/">{language.contactCustomerService}</Link>
-          </span>
+          <CartInfo language={language} />
         </aside>
       </div>
     </MainPageContainer>
