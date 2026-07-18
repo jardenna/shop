@@ -1,10 +1,9 @@
 import { skipToken } from '@reduxjs/toolkit/query';
 import { ErrorBoundary } from 'react-error-boundary';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { useAppDispatch } from '../app/hooks';
 import Button from '../components/Button';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
-import IconContent from '../components/IconContent';
 import { useMessagePopup } from '../components/messagePopup/useMessagePopup';
 import SkeletonCard from '../components/skeleton/SkeletonCard';
 import { useAuth } from '../features/auth/hooks/useAuth';
@@ -15,6 +14,7 @@ import {
 } from '../features/cart/cartApiSlice';
 import CartList from '../features/cart/components/CartList';
 import CartSummary from '../features/cart/components/CartSummary';
+import PaymentMethodsList from '../features/cart/components/PaymentMethodsList';
 import PromoCodeForm from '../features/cart/components/promoCodeForm/PromoCodeForm';
 import { useActiveCart } from '../features/cart/useActiveCart';
 import { deleteGuestCartItem, updateGuestCartQty } from '../features/cartSlice';
@@ -22,7 +22,6 @@ import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
 import { useLanguage } from '../features/language/useLanguage';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import { ShopPath } from '../layout/nav/enums';
-import { IconName } from '../types/enums';
 import { handleApiError } from '../utils/handleApiError';
 import MainPageContainer from './pageContainer/MainPageContainer';
 import './ShoppingCartPage.styles.scss';
@@ -132,15 +131,25 @@ const ShoppingCartPage = () => {
               promoDiscount={apiCartList.discount}
             />
           )}
-          {apiCartList &&
-            apiCartList.paymentMethods.map((payment) => (
-              <div key={payment}>
-                <IconContent iconName={IconName[payment]} ariaLabel={payment} />
-              </div>
-            ))}
+
           <Button onClick={handleCheckout}>
             {language.continueToCheckout}
           </Button>
+          {apiCartList && (
+            <PaymentMethodsList paymentMethods={apiCartList.paymentMethods} />
+          )}
+
+          <span>{language.pricesConfirmed}</span>
+
+          <span>
+            <span>{language.returnPeriod}</span>
+            <Link to="/">{language.returnPolicyLink}</Link>
+          </span>
+
+          <span>
+            <span>{language.needHelp}?</span>
+            <Link to="/">{language.contactCustomerService}</Link>
+          </span>
         </aside>
       </div>
     </MainPageContainer>
