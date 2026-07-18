@@ -15,6 +15,8 @@ export const useSearchParamsState = <T extends SearchParamState>(
   const productsPerPage =
     Number(searchParams.get(productsPerPageParamKey)) || 8;
 
+  const searchKey = searchParams.toString();
+
   const setPage = (pageNum: number) => {
     const newParams = new URLSearchParams(searchParams);
     newParams.set(pageParamKey, pageNum.toString());
@@ -147,6 +149,7 @@ export const useSearchParamsState = <T extends SearchParamState>(
 
   return {
     filterParams: values,
+    searchKey,
     toggleFilterParam: toggleValue,
     setFilterParams: setValue,
     onRemoveFilterTag: handleRemoveFilterTag,
