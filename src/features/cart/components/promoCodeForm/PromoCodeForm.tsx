@@ -1,9 +1,10 @@
-import { Discount } from '../../../app/api/apiTypes/sharedApiTypes';
-import Form from '../../../components/form/Form';
-import Input from '../../../components/formElements/Input';
-import { useFormValidation } from '../../../hooks/useFormValidation';
-import { validatePromoCode } from '../../../utils/validation/validatePromoCode';
-import { useLanguage } from '../../language/useLanguage';
+import { Discount } from '../../../../app/api/apiTypes/sharedApiTypes';
+import Form from '../../../../components/form/Form';
+import Input from '../../../../components/formElements/Input';
+import { useFormValidation } from '../../../../hooks/useFormValidation';
+import { validatePromoCode } from '../../../../utils/validation/validatePromoCode';
+import { useLanguage } from '../../../language/useLanguage';
+import './_promo-code-form.scss';
 
 interface PromoCodeFormProps {
   isLoading: boolean;

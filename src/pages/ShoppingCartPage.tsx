@@ -14,7 +14,7 @@ import {
 } from '../features/cart/cartApiSlice';
 import CartList from '../features/cart/components/CartList';
 import CartSummary from '../features/cart/components/CartSummary';
-import PromoCodeForm from '../features/cart/components/PromoCodeForm';
+import PromoCodeForm from '../features/cart/components/promoCodeForm/PromoCodeForm';
 import { useActiveCart } from '../features/cart/useActiveCart';
 import { deleteGuestCartItem, updateGuestCartQty } from '../features/cartSlice';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
