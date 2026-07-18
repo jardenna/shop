@@ -3,10 +3,9 @@
 .favorite-heart {
   cursor: pointer;
   border-radius: 8px;
+  line-height: 1px;
 
-  &:hover {
-    background-color: $color-light-gray-40;
-  }
+  @include transition;
 
   &:has(input:focus-visible) {
     @include outline;
