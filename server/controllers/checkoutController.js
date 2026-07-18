@@ -3,19 +3,13 @@ import Cart from '../models/cartModel.js';
 import User from '../models/userModel.js';
 import { buildCartData } from '../services/buildCartData.js';
 import { getActiveDiscount } from '../services/getActiveDiscount.js';
+import { t } from '../utils/translator.js';
 
 // @desc    Get checkout
 // @route   GET /api/checkout
 // @access  Private
 const getCheckout = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id).select('addresses role');
-
-  if (!user?.addresses.length) {
-    return res.status(400).json({
-      success: false,
-      message: t('noAddressData', req.lang),
-    });
-  }
 
   const cart = await Cart.findOne({
     user: req.user._id,
@@ -43,7 +37,7 @@ const getCheckout = asyncHandler(async (req, res) => {
   }
 
   return res.status(200).json({
-    addresses: user.addresses,
+    addresses: user?.addresses ?? [],
     cartItems: cartData.orderItems,
     summary: cartData.summary,
     discount: activeDiscount,

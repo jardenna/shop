@@ -70,6 +70,7 @@ const CollectionPage = () => {
     productsPerPage,
     setPage,
     updatePagination,
+    searchKey,
   } = useSearchParamsState(initialFilters);
 
   const {
@@ -101,7 +102,8 @@ const CollectionPage = () => {
     language,
   });
 
-  const { announce } = useAnnounce([page, productsPerPage, filterParams]);
+  const announce = useAnnounce([page, productsPerPage, searchKey]);
+
   const { scrollToRef, setShouldScroll } = useScrollOnPagination({
     isLoading,
   });

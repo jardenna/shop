@@ -7,7 +7,6 @@ import {
   useGetAllSubCategoriesQuery,
   useGetHasSubCatScheduledQuery,
 } from '../../features/subCategories/subCategoryApiSlice';
-import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { AdminPath } from '../../layout/nav/enums';
@@ -33,8 +32,6 @@ const SubCategoryPage = () => {
   const { filterParams, setFilterParams, onRemoveFilterTag } =
     useSearchParamsState(initialFilters);
 
-  const debouncedFilters = useDebouncedValue(filterParams);
-
   const {
     data: allSubcategories,
     isLoading,
@@ -43,9 +40,9 @@ const SubCategoryPage = () => {
     {
       sortOrder,
       sortField,
-      categoryName: debouncedFilters.categoryName,
-      categoryStatus: debouncedFilters.categoryStatus as Status,
-      subCategoryName: debouncedFilters.subCategoryName,
+      categoryName: filterParams.categoryName,
+      categoryStatus: filterParams.categoryStatus as Status,
+      subCategoryName: filterParams.subCategoryName,
     },
     {
       pollingInterval: shouldPollFullList ? 15000 : undefined,

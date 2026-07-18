@@ -51,7 +51,23 @@ const ProductPage = () => {
     onRemoveFilterTag,
   } = useSearchParamsState(initialFilters);
 
-  const debouncedFilters = useDebouncedValue(filterParams);
+  const debouncedProductName = useDebouncedValue(filterParams.productName);
+
+  const debouncedMinStock = useDebouncedValue(filterParams.minStock);
+  const debouncedMaxStock = useDebouncedValue(filterParams.maxStock);
+
+  const debouncedMinDiscount = useDebouncedValue(filterParams.minDiscount);
+  const debouncedMaxDiscount = useDebouncedValue(filterParams.maxDiscount);
+
+  const debouncedMinDiscountedPrice = useDebouncedValue(
+    filterParams.minDiscountedPrice,
+  );
+  const debouncedMaxDiscountedPrice = useDebouncedValue(
+    filterParams.maxDiscountedPrice,
+  );
+
+  const debouncedMinPrice = useDebouncedValue(filterParams.minPrice);
+  const debouncedMaxPrice = useDebouncedValue(filterParams.maxPrice);
 
   const {
     data: allProducts,
@@ -63,18 +79,23 @@ const ProductPage = () => {
       page: page.toString(),
       sortField,
       sortOrder,
-      maxStock: debouncedFilters.maxStock,
-      minStock: debouncedFilters.minStock,
-      productStatus: debouncedFilters.productStatus as Status,
-      minDiscount: debouncedFilters.minDiscount,
-      maxDiscount: debouncedFilters.maxDiscount,
-      minDiscountedPrice: debouncedFilters.minDiscountedPrice,
-      maxDiscountedPrice: debouncedFilters.maxDiscountedPrice,
-      minPrice: debouncedFilters.minPrice,
-      maxPrice: debouncedFilters.maxPrice,
-      productName: debouncedFilters.productName,
-      subCategoryName: debouncedFilters.subCategoryName,
-      categoryName: debouncedFilters.categoryName,
+      maxStock: debouncedMaxStock,
+      minStock: debouncedMinStock,
+
+      minDiscount: debouncedMinDiscount,
+      maxDiscount: debouncedMaxDiscount,
+
+      minDiscountedPrice: debouncedMinDiscountedPrice,
+      maxDiscountedPrice: debouncedMaxDiscountedPrice,
+
+      minPrice: debouncedMinPrice,
+      maxPrice: debouncedMaxPrice,
+
+      productName: debouncedProductName,
+
+      productStatus: filterParams.productStatus as Status,
+      categoryName: filterParams.categoryName,
+      subCategoryName: filterParams.subCategoryName,
     },
     {
       pollingInterval: shouldPollFullList ? 15000 : undefined,

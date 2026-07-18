@@ -18,7 +18,6 @@ type FormProps = {
   cancelBtnProps?: CancelButtonProps;
   className?: string;
   disabled?: boolean;
-  hideSubmitBtnLabel?: boolean;
   isLoading?: boolean;
   ref?: RefFormType;
   onSubmit: () => void;
@@ -32,7 +31,6 @@ const Form = ({
   isLoading,
   ariaLabel,
   cancelBtnProps,
-  hideSubmitBtnLabel,
   ref,
   disabled,
 }: FormProps) => {
@@ -49,29 +47,28 @@ const Form = ({
       ref={ref}
     >
       {children}
-      {!hideSubmitBtnLabel && (
-        <footer className="footer">
-          {cancelBtnProps && (
-            <Button
-              onClick={cancelBtnProps.onCancel}
-              ariaLabel={ariaLabel}
-              variant={BtnVariant.Secondary}
-              disabled={cancelBtnProps.isDisabled}
-            >
-              {cancelBtnProps.btnLabel || language.cancel}
-            </Button>
-          )}
 
+      <footer className="footer">
+        {cancelBtnProps && (
           <Button
-            type="submit"
-            showBtnLoader={isLoading}
+            onClick={cancelBtnProps.onCancel}
             ariaLabel={ariaLabel}
-            disabled={disabled}
+            variant={BtnVariant.Secondary}
+            disabled={cancelBtnProps.isDisabled}
           >
-            {submitBtnLabel}
+            {cancelBtnProps.btnLabel || language.cancel}
           </Button>
-        </footer>
-      )}
+        )}
+
+        <Button
+          type="submit"
+          showBtnLoader={isLoading}
+          ariaLabel={ariaLabel}
+          disabled={disabled}
+        >
+          {submitBtnLabel}
+        </Button>
+      </footer>
     </form>
   );
 };

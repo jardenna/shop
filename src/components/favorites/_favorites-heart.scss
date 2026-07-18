@@ -3,10 +3,15 @@
 .favorite-heart {
   cursor: pointer;
   border-radius: 8px;
+  line-height: 1px;
 
-  &:hover {
-    background-color: $color-light-gray-40;
+  &:not(.product-cart-favorites) {
+    &:hover {
+      @include animation(heartbeat, 0.3s);
+    }
   }
+
+  @include transition;
 
   &:has(input:focus-visible) {
     @include outline;

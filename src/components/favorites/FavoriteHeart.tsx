@@ -10,9 +10,10 @@ import { useFavorites } from './useFavorites';
 
 type FavoriteHeartProps = {
   id: string;
+  className?: string;
 };
 
-const FavoriteHeart = ({ id }: FavoriteHeartProps) => {
+const FavoriteHeart = ({ id, className }: FavoriteHeartProps) => {
   const { language } = useLanguage();
   const { isFavorite, toggleFavorite, animate, isTogglingLoading, onReset } =
     useFavorites({ id });
@@ -25,7 +26,7 @@ const FavoriteHeart = ({ id }: FavoriteHeartProps) => {
   };
 
   return (
-    <div className="favorite-heart">
+    <div className={`favorite-heart ${className}`}>
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={onReset}

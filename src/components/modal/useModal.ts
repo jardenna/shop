@@ -63,7 +63,7 @@ export const useModal = (modalId: string | null) => {
   }, [modalId]);
 
   // Trap focus inside modal (keyboard users cannot tab out)
-  useTrapFocus({ id: modalId, popupRef });
+  useTrapFocus({ id: modalId, popupRef, enabled: modalId !== null });
 
   return { closeModalState: handleClosePopup, popupRef };
 };

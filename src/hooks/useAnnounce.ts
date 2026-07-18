@@ -1,22 +1,25 @@
-import { useEffect, useRef, useState } from 'react';
+import { DependencyList, useEffect, useRef, useState } from 'react';
 
-export const useAnnounce = (deps: unknown[]) => {
+export const useAnnounce = (deps: DependencyList) => {
   const hasMounted = useRef(false);
   const [announce, setAnnounce] = useState(false);
 
   useEffect(() => {
-    if (hasMounted.current) {
-      // Page actually changed after first render
-      setAnnounce(true);
-      const timer = setTimeout(() => {
-        setAnnounce(false);
-      }, 1000);
-      return () => {
-        clearTimeout(timer);
-      };
+    if (!hasMounted.current) {
+      hasMounted.current = true;
+      return;
     }
-    hasMounted.current = true;
+
+    setAnnounce(true);
+
+    const timer = window.setTimeout(() => {
+      setAnnounce(false);
+    }, 1000);
+
+    return () => {
+      window.clearTimeout(timer);
+    };
   }, deps);
 
-  return { announce };
+  return announce;
 };
