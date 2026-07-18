@@ -3,6 +3,7 @@ import Cart from '../models/cartModel.js';
 import User from '../models/userModel.js';
 import { buildCartData } from '../services/buildCartData.js';
 import { getActiveDiscount } from '../services/getActiveDiscount.js';
+import { t } from '../utils/translator.js';
 
 // @desc    Get checkout
 // @route   GET /api/checkout
