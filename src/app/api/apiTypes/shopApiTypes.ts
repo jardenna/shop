@@ -112,3 +112,16 @@ export type BaseProfile = {
 export type UserProfileRequest = BaseProfile & {
   addresses?: Address[];
 };
+
+export interface PaymentMethodField {
+  label: string;
+  name: string;
+  type: React.HTMLInputTypeAttribute;
+}
+
+export interface PaymentMethod {
+  fields: PaymentMethodField[];
+  icon: string;
+  id: string;
+  label: string;
+}

@@ -4,7 +4,7 @@ import type {
   Size,
   Summary,
 } from './sharedApiTypes';
-import { Address } from './shopApiTypes';
+import { Address, PaymentMethod } from './shopApiTypes';
 
 export interface BaseOrder {
   color: string;
@@ -43,6 +43,7 @@ export interface CartListResponse extends DefaultResponseType {
 
 export interface CheckoutResponse extends CartListResponse {
   addresses: Address[];
+  paymentMethod: PaymentMethod[];
 }
 
 export interface UpdateCartRequest {
