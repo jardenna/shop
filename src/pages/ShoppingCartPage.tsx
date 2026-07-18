@@ -130,6 +130,10 @@ const ShoppingCartPage = () => {
               promoDiscount={apiCartList.discount}
             />
           )}
+          {apiCartList &&
+            apiCartList.paymentMethods.map((payment) => (
+              <div key={payment}>{payment}</div>
+            ))}
           <Button onClick={handleCheckout}>
             {language.continueToCheckout}
           </Button>
