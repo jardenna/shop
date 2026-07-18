@@ -11,13 +11,6 @@ import { t } from '../utils/translator.js';
 const getCheckout = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id).select('addresses role');
 
-  if (!user?.addresses.length) {
-    return res.status(400).json({
-      success: false,
-      message: t('noAddressData', req.lang),
-    });
-  }
-
   const cart = await Cart.findOne({
     user: req.user._id,
   }).lean();
@@ -44,7 +37,7 @@ const getCheckout = asyncHandler(async (req, res) => {
   }
 
   return res.status(200).json({
-    addresses: user.addresses,
+    addresses: user?.addresses ?? [],
     cartItems: cartData.orderItems,
     summary: cartData.summary,
     discount: activeDiscount,
