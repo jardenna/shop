@@ -9,14 +9,22 @@ const Payment = ({ paymentMethod }: PaymentProps) => {
 
   return (
     <section>
-      <h2 className="checkout-title">Payment</h2>
-      <div>
-        <div>h</div>
-        <div>c</div>
-        <div>j</div>
-        <div>f</div>
-        <div>f</div>
-      </div>
+      <h2 className="checkout-title">Payment</h2>Radio
+      <ul>
+        {paymentMethod.map((payment) => (
+          <li key={payment.id}>
+            {payment.label}
+            {payment.label.toLowerCase() === 'visa' && (
+              <div>
+                {payment.fields.map((a) => (
+                  <div key={a.label}>{a.label} </div>
+                ))}
+                hello
+              </div>
+            )}
+          </li>
+        ))}
+      </ul>
     </section>
   );
 };
