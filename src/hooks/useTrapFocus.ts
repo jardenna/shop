@@ -1,12 +1,17 @@
 import { RefObject, useEffect } from 'react';
 
-type useTrapFocusProps = {
+type UseTrapFocusProps = {
   id: string | null;
   popupRef: RefObject<HTMLElement | null>;
+  enabled?: boolean;
 };
 
-export const useTrapFocus = ({ id, popupRef }: useTrapFocusProps) => {
+export const useTrapFocus = ({ id, popupRef, enabled }: UseTrapFocusProps) => {
   useEffect(() => {
+    if (!enabled) {
+      return;
+    }
+
     const handleTabKeyPress = (event: KeyboardEvent) => {
       if (popupRef.current && id) {
         const focusableElements =
@@ -15,7 +20,6 @@ export const useTrapFocus = ({ id, popupRef }: useTrapFocusProps) => {
           );
 
         const firstFocusableElement = focusableElements[0];
-
         const lastFocusableElement =
           focusableElements[focusableElements.length - 1];
 
@@ -38,8 +42,9 @@ export const useTrapFocus = ({ id, popupRef }: useTrapFocusProps) => {
     };
 
     document.addEventListener('keydown', handleTabKeyPress);
+
     return () => {
       document.removeEventListener('keydown', handleTabKeyPress);
     };
-  }, [id, popupRef]);
+  }, [enabled, id, popupRef]);
 };

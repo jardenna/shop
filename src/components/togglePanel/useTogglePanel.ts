@@ -37,7 +37,11 @@ export const useTogglePanel = ({
     setIsPanelShown(!isPanelShown);
   };
 
-  useTrapFocus({ id: 'togglePanel', popupRef: panelRef });
+  useTrapFocus({
+    id: 'togglePanel',
+    popupRef: panelRef,
+    enabled: isPanelShown,
+  });
 
   useScrollLock(isPanelShown);
 

@@ -17,6 +17,8 @@ const Panel = ({
   <>
     <div
       ref={panelRef}
+      inert={!isPanelShown ? true : undefined}
+      aria-hidden={!isPanelShown}
       className={`toggle-panel ${className} ${isPanelShown ? 'shown' : ''}`}
       id={togglePanelId}
     >
