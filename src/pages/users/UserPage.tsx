@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import { Roles } from '../../app/api/apiTypes/adminApiTypes';
 import DeleteItem from '../../components/deleteItem/DeleteItem';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
@@ -16,7 +15,6 @@ import {
 import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
-import { useTrapFocus } from '../../hooks/useTrapFocus';
 import { AdminPath } from '../../layout/nav/enums';
 import { handleApiError } from '../../utils/handleApiError';
 import { validateUpdateUser } from '../../utils/validation/validateUpdateUser';
@@ -60,9 +58,6 @@ const UserPage = () => {
   const [updateUser] = useUpdateUserMutation();
 
   const allowedEditUser = isAdmin;
-
-  const popupRef = useRef<HTMLDialogElement | null>(null);
-  useTrapFocus({ id: 'deleteUser', popupRef });
 
   const {
     handleShowEditInput,
