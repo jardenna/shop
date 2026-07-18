@@ -1,4 +1,4 @@
-import { PAYMENT_STATUS } from '../config/constants.js';
+import { PAYMENT_STATUS } from '../config/paymentConstants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
 import Order from '../models/ordersModel.js';

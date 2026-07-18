@@ -1,7 +1,7 @@
 import {
   ALLOWED_PAYMENT_METHODS,
   VALIDATING_PAYMENT_METHODS,
-} from '../config/constants.js';
+} from '../config/paymentConstants.js';
 
 const validateFakePayment = ({
   paymentMethod,

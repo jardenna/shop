@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { ALLOWED_PAYMENT_METHODS } from '../config/constants.js';
+import { ALLOWED_PAYMENT_METHODS } from '../config/paymentConstants.js';
 
 const { ObjectId } = Schema;
 const CartSchema = new Schema(

@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { ALLOWED_PAYMENT_METHODS } from '../config/constants.js';
+import { ALLOWED_PAYMENT_METHODS } from '../config/paymentConstants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
 import Product from '../models/productModel.js';
