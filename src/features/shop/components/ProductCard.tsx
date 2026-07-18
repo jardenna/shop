@@ -50,7 +50,7 @@ const ProductCard = ({
             {showSizeOverlay && <SizeOverlay sizes={product.sizes} count={5} />}
           </div>
         </Link>
-        <FavoriteHeart id={product.id} />
+        <FavoriteHeart id={product.id} className="product-cart-favorites" />
       </div>
 
       <div className="product-card-content">
