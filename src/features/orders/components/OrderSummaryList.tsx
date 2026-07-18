@@ -26,7 +26,7 @@ const OrderSummaryList = ({
   return (
     orderItems && (
       <>
-        <h2 className="summary-title">
+        <h2 className="checkout-title">
           {language.orderSummary} [ {getCartQuantity(orderItems.cartItems)} ]
         </h2>
         <ul className="order-summary-list">
@@ -36,20 +36,21 @@ const OrderSummaryList = ({
                 <article className="order-summary-item">
                   <Img src={image} alt="" className="summary-img" />
                   <div>
-                    <h3 className="summary-item-title">{productName}</h3>
+                    <div className="flex">
+                      <h3 className="summary-item-title">{productName}</h3>
+                      <DeleteItem
+                        ariaLabel={`${language.delete} ${productName}`}
+                        onDeleteItem={() => {
+                          deleteCartItem(id);
+                        }}
+                        itemName={productName}
+                      />
+                    </div>
                     <SummaryInfo
                       qty={qty}
                       color={color}
                       size={size}
                       language={language}
-                    />
-
-                    <DeleteItem
-                      ariaLabel={`${language.delete} ${productName}`}
-                      onDeleteItem={() => {
-                        deleteCartItem(id);
-                      }}
-                      itemName={productName}
                     />
                   </div>
                 </article>

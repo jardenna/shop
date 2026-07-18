@@ -1,0 +1,33 @@
+@use '../scss/globals' as *;
+
+.checkout-page {
+  max-width: rem(1024px);
+  margin: 0 auto;
+
+  .checkout-container {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: 1fr 1fr;
+
+    .my-address-list {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .my-address-item.add-address {
+    border: 0;
+    align-self: start;
+    place-content: end;
+  }
+
+  .summary-list {
+    margin-top: 20px;
+    padding-block: 20px;
+    border-block: 1px solid $color-border;
+  }
+
+  .checkout-title {
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+}
