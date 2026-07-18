@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { ALLOWED_PAYMENT_METHODS } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
 import Product from '../models/productModel.js';
@@ -306,6 +307,7 @@ const getCart = asyncHandler(async (req, res) => {
     cartItems: cartData.cartItems,
     summary: cartData.summary,
     discount: activeDiscount,
+    paymentMethods: ALLOWED_PAYMENT_METHODS,
   });
 });
 
