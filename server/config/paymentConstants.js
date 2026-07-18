@@ -84,14 +84,18 @@ export const PAYMENT_METHODS = [
   },
 ];
 
-export const ALLOWED_PAYMENT_METHODS = PAYMENT_METHODS.map(({ id }) => id);
+export const ALLOWED_PAYMENT_METHODS = [
+  'Visa',
+  'PayPal',
+  'MobilePay',
+  'Mastercard',
+];
 
-export const VALIDATING_PAYMENT_METHODS = {
-  Visa: 'Visa',
-  PAYPAL: 'PayPal',
-  MOBILEPAY: 'MobilePay',
-  Mastercard: 'Mastercard',
-};
+export const VALIDATING_PAYMENT_METHODS = Object.freeze(
+  Object.fromEntries(
+    PAYMENT_METHODS.map(({ id, label }) => [id.toUpperCase(), label]),
+  ),
+);
 
 export const PAYMENT_STATUS_ENUM = ['PENDING', 'FAILED', 'PAID'];
 
