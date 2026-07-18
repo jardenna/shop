@@ -12,8 +12,10 @@ import {
   useGetGuestCartQuery,
   useUpdateQtyMutation,
 } from '../features/cart/cartApiSlice';
+import CartInfo from '../features/cart/components/CartInfo';
 import CartList from '../features/cart/components/CartList';
 import CartSummary from '../features/cart/components/CartSummary';
+import PaymentMethodsList from '../features/cart/components/PaymentMethodsList';
 import PromoCodeForm from '../features/cart/components/promoCodeForm/PromoCodeForm';
 import { useActiveCart } from '../features/cart/useActiveCart';
 import { deleteGuestCartItem, updateGuestCartQty } from '../features/cartSlice';
@@ -130,9 +132,15 @@ const ShoppingCartPage = () => {
               promoDiscount={apiCartList.discount}
             />
           )}
+
           <Button onClick={handleCheckout}>
             {language.continueToCheckout}
           </Button>
+          {apiCartList && (
+            <PaymentMethodsList paymentMethods={apiCartList.paymentMethods} />
+          )}
+
+          <CartInfo language={language} />
         </aside>
       </div>
     </MainPageContainer>

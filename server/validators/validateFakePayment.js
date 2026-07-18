@@ -1,7 +1,7 @@
 import {
   ALLOWED_PAYMENT_METHODS,
-  PAYMENT_METHODS,
-} from '../config/constants.js';
+  VALIDATING_PAYMENT_METHODS,
+} from '../config/paymentConstants.js';
 
 const validateFakePayment = ({
   paymentMethod,
@@ -21,7 +21,7 @@ const validateFakePayment = ({
     return 'Invalid payment method';
   }
 
-  if (paymentMethod === PAYMENT_METHODS.CREDIT_CARD) {
+  if (paymentMethod === VALIDATING_PAYMENT_METHODS.CREDIT_CARD) {
     const sanitizedCardNumber = cardNumber?.replace(/\s/g, '');
 
     if (!sanitizedCardNumber || !/^\d{16}$/.test(sanitizedCardNumber)) {
@@ -41,7 +41,7 @@ const validateFakePayment = ({
     }
   }
 
-  if (paymentMethod === PAYMENT_METHODS.PAYPAL) {
+  if (paymentMethod === VALIDATING_PAYMENT_METHODS.PAYPAL) {
     if (!paypalEmail?.trim()) {
       return 'PayPal email is required';
     }
@@ -57,7 +57,7 @@ const validateFakePayment = ({
     }
   }
 
-  if (paymentMethod === PAYMENT_METHODS.MOBILEPAY) {
+  if (paymentMethod === VALIDATING_PAYMENT_METHODS.MOBILEPAY) {
     const sanitizedPhoneNumber = phoneNumber?.replace(/\s/g, '');
 
     if (!sanitizedPhoneNumber || !/^\d{8}$/.test(sanitizedPhoneNumber)) {

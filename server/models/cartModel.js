@@ -1,4 +1,5 @@
 import { Schema, model } from 'mongoose';
+import { ALLOWED_PAYMENT_METHODS } from '../config/paymentConstants.js';
 
 const { ObjectId } = Schema;
 const CartSchema = new Schema(
@@ -26,6 +27,11 @@ const CartSchema = new Schema(
         },
       },
     ],
+    paymentMethods: {
+      type: String,
+      enum: ALLOWED_PAYMENT_METHODS,
+      required: true,
+    },
     discount: {
       code: {
         type: String,

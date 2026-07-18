@@ -1,10 +1,11 @@
 import { model, Schema } from 'mongoose';
 import {
   ALLOWED_PAYMENT_METHODS,
-  ALLOWED_SIZES,
   PAYMENT_STATUS,
   PAYMENT_STATUS_ENUM,
-} from '../config/constants.js';
+} from '../config/paymentConstants.js';
+
+import { ALLOWED_SIZES } from '../config/constants.js';
 
 const { ObjectId } = Schema;
 

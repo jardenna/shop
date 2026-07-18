@@ -39,6 +39,10 @@ import LogoIcon from './LogoIcon';
 import LogoutIcon from './LogoutIcon';
 import MoreIcon from './MoreIcon';
 import OrdersIcon from './OrdersIcon';
+import MastercardIcon from './payments/MastercardIcon';
+import MobilePayIcon from './payments/MobilePayIcon';
+import PayPalIcon from './payments/PayPalIcon';
+import VisaIcon from './payments/VisaIcon';
 import PencilIcon from './PencilIcon';
 import ProductsIcon from './ProductsIcon';
 import SearchIcon from './SearchIcon';
@@ -97,9 +101,12 @@ const iconMapping = {
   logo: LogoIcon,
   logout: LogoutIcon,
   man: ManIcon,
+  mastercard: MastercardIcon,
   menuDotsHorizontal: ThreeDotsHorizontalIcon,
+  mobilePay: MobilePayIcon,
   more: MoreIcon,
   orders: OrdersIcon,
+  payPal: PayPalIcon,
   pencil: PencilIcon,
   products: ProductsIcon,
   search: SearchIcon,
@@ -112,6 +119,7 @@ const iconMapping = {
   undo: UndoIcon,
   upload: UploadIcon,
   user: UserIcon,
+  visa: VisaIcon,
   users: UsersIcon,
   warning: WarningIcon,
   woman: WomanIcon,

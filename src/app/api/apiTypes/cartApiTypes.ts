@@ -32,9 +32,12 @@ export interface CartListRequest {
   cartItems: AddToCartRequest;
 }
 
+export type PaymentMethods = 'Visa' | 'PayPal' | 'MobilePay' | 'Mastercard';
+
 export interface CartListResponse extends DefaultResponseType {
   cartItems: Order[];
   discount: Discount;
+  paymentMethods: PaymentMethods[];
   summary: Summary;
 }
 
