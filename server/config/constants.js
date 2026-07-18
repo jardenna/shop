@@ -62,11 +62,18 @@ export const VAT_RATE = 25;
 export const EMPLOYEE_DISCOUNT = 15;
 export const VAT_SHARE = VAT_RATE / (100 + VAT_RATE);
 
-export const ALLOWED_PAYMENT_METHODS = ['Credit Card', 'PayPal', 'MobilePay'];
+export const ALLOWED_PAYMENT_METHODS = [
+  'Visa',
+  'PayPal',
+  'MobilePay',
+  'Mastercard',
+];
+
 export const PAYMENT_METHODS = {
-  CREDIT_CARD: 'Credit Card',
+  Visa: 'Visa',
   PAYPAL: 'PayPal',
   MOBILEPAY: 'MobilePay',
+  Mastercard: 'Mastercard',
 };
 
 export const PAYMENT_STATUS_ENUM = ['PENDING', 'FAILED', 'PAID'];
