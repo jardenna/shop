@@ -42,7 +42,8 @@ const UserPage = () => {
   const { filterParams, setFilterParams, onRemoveFilterTag } =
     useSearchParamsState(initialFilters);
 
-  const debouncedFilters = useDebouncedValue(filterParams);
+  const debouncedUsername = useDebouncedValue(filterParams.username);
+  const debouncedEmail = useDebouncedValue(filterParams.email);
 
   const {
     data: allUsers,
@@ -51,9 +52,9 @@ const UserPage = () => {
   } = useGetAllUsersQuery({
     sortField,
     sortOrder,
-    username: debouncedFilters.username,
-    email: debouncedFilters.email,
-    role: debouncedFilters.role as Roles,
+    username: debouncedUsername,
+    email: debouncedEmail,
+    role: filterParams.role as Roles,
   });
   const [deleteUser] = useDeleteUserMutation();
   const [updateUser] = useUpdateUserMutation();

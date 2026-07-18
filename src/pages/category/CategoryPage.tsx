@@ -35,7 +35,7 @@ const CategoryPage = () => {
   const { filterParams, setFilterParams, onRemoveFilterTag } =
     useSearchParamsState(initialFilters);
 
-  const debouncedFilters = useDebouncedValue(filterParams);
+  const debouncedcreatedAt = useDebouncedValue(filterParams.createdAt);
 
   const {
     data: allCategories,
@@ -45,9 +45,9 @@ const CategoryPage = () => {
     {
       sortOrder,
       sortField,
-      categoryName: debouncedFilters.categoryName,
-      categoryStatus: debouncedFilters.categoryStatus as Status,
-      createdAt: debouncedFilters.createdAt,
+      categoryName: filterParams.categoryName,
+      categoryStatus: filterParams.categoryStatus as Status,
+      createdAt: debouncedcreatedAt,
     },
     {
       pollingInterval: shouldPollFullList ? 15000 : undefined,
