@@ -1,6 +1,7 @@
 import { useAuth } from '../features/auth/hooks/useAuth';
 import CartSummary from '../features/cart/components/CartSummary';
 import { useGetCheckoutQuery } from '../features/checkout/checkoutApiSlice';
+import Payment from '../features/checkout/components/Payment';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
 import { useLanguage } from '../features/language/useLanguage';
 import OrderSummaryList from '../features/orders/components/OrderSummaryList';
@@ -13,28 +14,19 @@ const CheckoutPage = () => {
   const { currentUser } = useAuth();
   const { deleteCartItem } = useDeleteCartItem();
 
-  const { data: checkoutList, isLoading, refetch } = useGetCheckoutQuery();
+  const { data: checkout, isLoading, refetch } = useGetCheckoutQuery();
 
   return (
     <MainPageContainer heading="checkout">
       <div className="checkout-page">
-        {checkoutList && (
+        {checkout && (
           <div className="checkout-container">
             <div>
-              <section>
-                <h2 className="checkout-title">Payment</h2>
-                <div>
-                  <div>h</div>
-                  <div>c</div>
-                  <div>j</div>
-                  <div>f</div>
-                  <div>f</div>
-                </div>
-              </section>
+              <Payment paymentMethod={checkout.paymentMethod} />
               <section className="address-list">
                 <h2 className="checkout-title">{language.addresses}</h2>
                 <AddressList
-                  addresses={checkoutList.addresses}
+                  addresses={checkout.addresses}
                   language={language}
                   username={currentUser?.username ?? ''}
                   refetch={refetch}
@@ -43,15 +35,15 @@ const CheckoutPage = () => {
             </div>
             <aside className="order-summary">
               <OrderSummaryList
-                orderItems={checkoutList}
+                orderItems={checkout}
                 isLoading={isLoading}
                 language={language}
                 deleteCartItem={deleteCartItem}
               />
               <CartSummary
-                summary={checkoutList.summary}
+                summary={checkout.summary}
                 language={language}
-                promoDiscount={checkoutList.discount}
+                promoDiscount={checkout.discount}
               />
             </aside>
           </div>
