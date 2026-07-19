@@ -1,5 +1,5 @@
 import { PaymentMethod } from '../../../app/api/apiTypes/shopApiTypes';
-import RadioBtnList from '../../../components/formElements/radioList/RadioBtnList';
+import RadioBtnList from './paymentMethods/RadioBtnList';
 
 interface PaymentProps {
   paymentMethod: PaymentMethod[];
@@ -14,8 +14,8 @@ const Payment = ({ paymentMethod }: PaymentProps) => (
           {payment.label}
           {payment.label.toLowerCase() === 'visa' && (
             <div>
-              {payment.fields.map((a) => (
-                <div key={a.label}>{a.label} </div>
+              {payment.fields.map((field) => (
+                <div key={field.label}>{field.label} </div>
               ))}
               line
             </div>
