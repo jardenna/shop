@@ -19,13 +19,59 @@ input[type='number'] {
   appearance: textfield;
 }
 
-input[type='radio'],
+.secondary {
+  input[type='radio'] {
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: $color-white;
+    color: currentcolor;
+    width: rem(24px);
+    height: rem(24px);
+    border: 2px solid #617886;
+    transform: translateY(-1.2px);
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+      content: '';
+      display: block;
+      width: rem(15px);
+      height: rem(15px);
+      border-radius: 50%;
+      transform: scale(0);
+
+      @include transition($time: 0.12s);
+
+      box-shadow: inset 16px 0 #617886;
+    }
+
+    &:checked {
+      border-color: #617886;
+      outline: transparent;
+
+      &::before {
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+.primary {
+  input[type='radio'] {
+    appearance: none;
+    clip-path: inset(50%);
+    position: absolute;
+    margin: 0;
+  }
+}
+
 input[type='checkbox'] {
   appearance: none;
   clip-path: inset(50%);
   position: absolute;
   margin: 0;
-  accent-color: $color-gray-80;
 }
 
 ::placeholder {
@@ -53,6 +99,10 @@ textarea {
 
 input {
   height: $input-height;
+
+  &::before {
+    content: '';
+  }
 }
 
 .input-info {

@@ -20,7 +20,7 @@ const RadioBtnList = () => {
   });
 
   return (
-    <ul>
+    <ul className="secondary">
       {list.map((a) => (
         <li key={a.label}>
           <div>
@@ -29,9 +29,9 @@ const RadioBtnList = () => {
               type="radio"
               name="rating"
               id={a.label}
-              onChange={onChange}
-              value={values.rating}
+              value={a.value}
               checked={values.rating === a.value}
+              onChange={onChange}
             />
           </div>
         </li>
