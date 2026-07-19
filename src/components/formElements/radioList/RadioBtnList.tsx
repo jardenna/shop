@@ -1,5 +1,6 @@
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import Input from '../Input';
+import './_radio_btn_list.scss';
 
 const RadioBtnList = () => {
   const initialState = {
