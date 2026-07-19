@@ -1,4 +1,5 @@
 import { useFormValidation } from '../../../hooks/useFormValidation';
+import Input from '../Input';
 
 const RadioBtnList = () => {
   const initialState = {
@@ -20,20 +21,18 @@ const RadioBtnList = () => {
   });
 
   return (
-    <ul className="secondary">
+    <ul className="secondary-radio">
       {list.map((a) => (
         <li key={a.label}>
-          <div>
-            <label htmlFor={a.label}>{a.label}</label>
-            <input
-              type="radio"
-              name="rating"
-              id={a.label}
-              value={a.value}
-              checked={values.rating === a.value}
-              onChange={onChange}
-            />
-          </div>
+          <Input
+            type="radio"
+            name="rating"
+            id={a.label}
+            value={a.value}
+            checked={values.rating === a.value}
+            onChange={onChange}
+            labelText={a.label}
+          />
         </li>
       ))}
     </ul>

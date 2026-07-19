@@ -1,3 +1,4 @@
+import RadioBtnList from '../components/formElements/radioList/RadioBtnList';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import CartSummary from '../features/cart/components/CartSummary';
 import { useGetCheckoutQuery } from '../features/checkout/checkoutApiSlice';
@@ -19,6 +20,7 @@ const CheckoutPage = () => {
   return (
     <MainPageContainer heading="checkout">
       <div className="checkout-page">
+        <RadioBtnList />
         {checkout && (
           <div className="checkout-container">
             <div>

@@ -19,8 +19,8 @@ input[type='number'] {
   appearance: textfield;
 }
 
-.secondary {
-  input[type='radio'] {
+.secondary-radio {
+  input {
     border-radius: 50%;
     margin-right: 10px;
     background-color: $color-white;
@@ -58,13 +58,11 @@ input[type='number'] {
   }
 }
 
-.primary {
-  input[type='radio'] {
-    appearance: none;
-    clip-path: inset(50%);
-    position: absolute;
-    margin: 0;
-  }
+input[type='radio'] {
+  appearance: none;
+  clip-path: inset(50%);
+  position: absolute;
+  margin: 0;
 }
 
 input[type='checkbox'] {
