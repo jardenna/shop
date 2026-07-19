@@ -1,4 +1,3 @@
-import RadioBtnList from '../components/formElements/radioList/RadioBtnList';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import CartSummary from '../features/cart/components/CartSummary';
 import { useGetCheckoutQuery } from '../features/checkout/checkoutApiSlice';
@@ -14,13 +13,11 @@ const CheckoutPage = () => {
   const { language } = useLanguage();
   const { currentUser } = useAuth();
   const { deleteCartItem } = useDeleteCartItem();
-
   const { data: checkout, isLoading, refetch } = useGetCheckoutQuery();
 
   return (
     <MainPageContainer heading="checkout">
       <div className="checkout-page">
-        <RadioBtnList />
         {checkout && (
           <div className="checkout-container">
             <div>
