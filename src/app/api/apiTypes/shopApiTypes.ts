@@ -113,6 +113,8 @@ export type UserProfileRequest = BaseProfile & {
   addresses?: Address[];
 };
 
+export type PaymentType = 'card' | 'wallet' | 'mobilepay';
+
 export interface PaymentMethodField {
   label: string;
   name: string;
@@ -124,4 +126,5 @@ export interface PaymentMethod {
   icon: string;
   id: string;
   label: string;
+  type: PaymentType;
 }
