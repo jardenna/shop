@@ -1,6 +1,7 @@
 import { PaymentMethod } from '../../../app/api/apiTypes/shopApiTypes';
 import RadioBtnList from '../../../components/formElements/radioList/RadioBtnList';
 import { useFormValidation } from '../../../hooks/useFormValidation';
+import CardForm from './paymentForms/CardForm';
 
 interface PaymentProps {
   paymentMethod: PaymentMethod[];
@@ -25,8 +26,6 @@ const Payment = ({ paymentMethod }: PaymentProps) => {
     (method) => method.id === values.paymentMethod,
   );
 
-  console.log(methodToShow);
-
   return (
     <section>
       <h2 className="checkout-title">Payment</h2>
@@ -36,21 +35,7 @@ const Payment = ({ paymentMethod }: PaymentProps) => {
         radioList={paymentMethodList}
         name="paymentMethod"
       />
-      <ul>
-        {paymentMethod.map((payment) => (
-          <li key={payment.id}>
-            {payment.label}
-            {values.paymentMethod.toLowerCase() === 'visa' && (
-              <div>
-                {payment.fields.map((field) => (
-                  <div key={field.label}>{field.label} </div>
-                ))}
-                line
-              </div>
-            )}
-          </li>
-        ))}
-      </ul>
+      {methodToShow && <CardForm fields={methodToShow.fields} />}
     </section>
   );
 };

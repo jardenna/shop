@@ -14,6 +14,7 @@ const CheckoutPage = () => {
   const { currentUser } = useAuth();
   const { deleteCartItem } = useDeleteCartItem();
   const { data: checkout, isLoading, refetch } = useGetCheckoutQuery();
+  console.log(checkout);
 
   return (
     <MainPageContainer heading="checkout">
