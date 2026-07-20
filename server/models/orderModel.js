@@ -45,16 +45,22 @@ const orderModelSchema = new Schema(
       city: { type: String, required: true },
       country: { type: String, required: true },
     },
-    paymentMethod: {
-      type: String,
-      enum: ALLOWED_PAYMENT_METHODS,
-      required: true,
-    },
-    paymentResult: {
-      id: { type: String },
-      status: { type: String },
-      updateTime: { type: String },
-      email: { type: String },
+    payment: {
+      method: {
+        type: String,
+        enum: ALLOWED_PAYMENT_METHODS,
+        required: true,
+      },
+      brand: {
+        type: String,
+        default: '',
+      },
+      result: {
+        id: { type: String },
+        status: { type: String },
+        updateTime: { type: String },
+        email: { type: String },
+      },
     },
     summary: {
       subTotal: {

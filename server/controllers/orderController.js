@@ -113,7 +113,7 @@ const createOrder = asyncHandler(async (req, res) => {
 
   const createdOrders = buildOrderItems({
     databaseProducts,
-    orderItems,
+    productItems: orderItems,
   });
 
   const promoDiscountPercent = activeDiscount.percent;
@@ -122,7 +122,10 @@ const createOrder = asyncHandler(async (req, res) => {
   const order = new Order({
     user: req.user._id,
     orderItems: createdOrders,
-    paymentMethod,
+    payment: {
+      method: paymentMethod,
+      brand: '',
+    },
     shippingAddress,
     billingAddress,
     paymentStatus: PAYMENT_STATUS.PENDING,
