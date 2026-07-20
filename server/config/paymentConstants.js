@@ -1,8 +1,15 @@
+export const PAYMENT_METHOD_TYPES = {
+  CARD: 'card',
+  WALLET: 'wallet',
+  MOBILEPAY: 'mobilepay',
+};
+
 export const PAYMENT_METHODS = [
   {
     id: 'visa',
     label: 'Visa',
     icon: 'visa',
+    type: PAYMENT_METHOD_TYPES.CARD,
     fields: [
       {
         name: 'cardNumber',
@@ -30,6 +37,7 @@ export const PAYMENT_METHODS = [
     id: 'mastercard',
     label: 'Mastercard',
     icon: 'mastercard',
+    type: PAYMENT_METHOD_TYPES.CARD,
     fields: [
       {
         name: 'cardNumber',
@@ -57,6 +65,7 @@ export const PAYMENT_METHODS = [
     id: 'paypal',
     label: 'PayPal',
     icon: 'paypal',
+    type: PAYMENT_METHOD_TYPES.WALLET,
     fields: [
       {
         name: 'paypalEmail',
@@ -74,6 +83,7 @@ export const PAYMENT_METHODS = [
     id: 'mobilepay',
     label: 'MobilePay',
     icon: 'mobilepay',
+    type: PAYMENT_METHOD_TYPES.MOBILEPAY,
     fields: [
       {
         name: 'phoneNumber',
