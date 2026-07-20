@@ -213,6 +213,7 @@ invalidQuantity;Quantity must be at least 1;Antallet skal være mindst 1
 invalidRequestProductIds;Invalid product IDs provided;Ugyldige produkt-id'er sendt
 invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for planlagt dato
 invalidSize;The selected size is no longer available;Den valgte størrelse er ikke længere tilgængelig
+invalidPaymentMethod;The selected payment method is invalid.;Den valgte betalingsmetode er ugyldig.
 invalidUserData;Invalid user data;Ugyldig bruger data
 item;item;vare
 items;items;varer

@@ -1,7 +1,7 @@
 export const PAYMENT_METHOD_TYPES = {
   CARD: 'card',
   WALLET: 'wallet',
-  MOBILEPAY: 'mobilepay',
+  MOBILE: 'mobile',
 };
 
 export const PAYMENT_METHODS = [
@@ -83,7 +83,7 @@ export const PAYMENT_METHODS = [
     id: 'mobilepay',
     label: 'MobilePay',
     icon: 'mobilepay',
-    type: PAYMENT_METHOD_TYPES.MOBILEPAY,
+    type: PAYMENT_METHOD_TYPES.MOBILE,
     fields: [
       {
         name: 'phoneNumber',

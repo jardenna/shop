@@ -1,4 +1,7 @@
-import { PAYMENT_STATUS } from '../config/paymentConstants.js';
+import {
+  ALLOWED_PAYMENT_METHODS,
+  PAYMENT_STATUS,
+} from '../config/paymentConstants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
 import Order from '../models/orderModel.js';
@@ -111,6 +114,12 @@ const createOrder = asyncHandler(async (req, res) => {
     });
   }
 
+  if (!ALLOWED_PAYMENT_METHODS.includes(paymentMethod)) {
+    return res.status(400).json({
+      success: false,
+      message: t('invalidPaymentMethod', req.lang),
+    });
+  }
   const createdOrders = buildOrderItems({
     databaseProducts,
     productItems: orderItems,
