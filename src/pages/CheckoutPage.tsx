@@ -32,7 +32,6 @@ const CheckoutPage = () => {
   const billingAddressId = checkout?.addresses.find((address) =>
     address.standardAddress.includes('addressBilling'),
   )?.id;
-  console.log({ checkout });
 
   const initialState = {
     paymentMethod: 'visa',
@@ -58,12 +57,6 @@ const CheckoutPage = () => {
         {checkout && (
           <div className="checkout-container">
             <div>
-              <Payment
-                paymentMethod={checkout.paymentMethod}
-                values={values}
-                onChange={onChange}
-                name="paymentMethod"
-              />
               <section className="address-list">
                 <h2 className="checkout-title">{language.addresses}</h2>
                 <AddressList
@@ -73,6 +66,12 @@ const CheckoutPage = () => {
                   refetch={refetch}
                 />
               </section>
+              <Payment
+                paymentMethod={checkout.paymentMethod}
+                values={values}
+                onChange={onChange}
+                name="paymentMethod"
+              />
             </div>
             <aside className="order-summary">
               <OrderSummaryList

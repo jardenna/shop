@@ -1,5 +1,4 @@
 import { InputChangeHandler, Options } from '../../../types/types';
-import Input from '../Input';
 import './_radio_btn_list.scss';
 
 interface RadioBtnListProps {
@@ -17,16 +16,16 @@ const RadioBtnList = ({
 }: RadioBtnListProps) => (
   <ul className="secondary-radio">
     {radioList.map((radio) => (
-      <li key={radio.label}>
-        <Input
+      <li key={radio.label} className="secondary-radio-container">
+        <input
           type="radio"
           name={name}
           id={radio.label}
           value={radio.value}
           checked={value === radio.value}
           onChange={onChange}
-          labelText={radio.label}
         />
+        <label htmlFor={radio.label}>{radio.label}</label>
       </li>
     ))}
   </ul>
