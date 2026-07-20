@@ -51,10 +51,6 @@ const orderModelSchema = new Schema(
         enum: ALLOWED_PAYMENT_METHODS,
         required: true,
       },
-      brand: {
-        type: String,
-        default: '',
-      },
       lastFourDigits: {
         type: String,
         default: '',
@@ -65,7 +61,8 @@ const orderModelSchema = new Schema(
       },
       status: {
         type: String,
-        default: '',
+        enum: PAYMENT_STATUS_ENUM,
+        default: PAYMENT_STATUS.PENDING,
       },
       result: {
         id: {
@@ -77,8 +74,7 @@ const orderModelSchema = new Schema(
           default: '',
         },
         updateTime: {
-          type: String,
-          default: '',
+          type: Date,
         },
         email: {
           type: String,

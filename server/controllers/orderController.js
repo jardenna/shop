@@ -130,10 +130,6 @@ const createOrder = asyncHandler(async (req, res) => {
 
   const paymentData = {
     method: payment.method,
-    brand: payment.method,
-    lastFourDigits: payment.cardNumber ? payment.cardNumber.slice(-4) : '',
-    cardholderName: payment.cardholderName ?? '',
-    status: PAYMENT_STATUS.PENDING,
   };
 
   const order = new Order({
