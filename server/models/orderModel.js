@@ -55,11 +55,35 @@ const orderModelSchema = new Schema(
         type: String,
         default: '',
       },
+      lastFourDigits: {
+        type: String,
+        default: '',
+      },
+      cardholderName: {
+        type: String,
+        default: '',
+      },
+      status: {
+        type: String,
+        default: '',
+      },
       result: {
-        id: { type: String },
-        status: { type: String },
-        updateTime: { type: String },
-        email: { type: String },
+        id: {
+          type: String,
+          default: '',
+        },
+        status: {
+          type: String,
+          default: '',
+        },
+        updateTime: {
+          type: String,
+          default: '',
+        },
+        email: {
+          type: String,
+          default: '',
+        },
       },
     },
     summary: {

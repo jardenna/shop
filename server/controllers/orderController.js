@@ -24,8 +24,7 @@ import {
 // @method  Post
 // @access  Private
 const createOrder = asyncHandler(async (req, res) => {
-  const { orderItems, shippingAddressId, billingAddressId, paymentMethod } =
-    req.body;
+  const { orderItems, shippingAddressId, billingAddressId, payment } = req.body;
 
   const user = await User.findById(req.user._id).select('addresses role');
   const cart = await Cart.findOne({
@@ -114,12 +113,13 @@ const createOrder = asyncHandler(async (req, res) => {
     });
   }
 
-  if (!ALLOWED_PAYMENT_METHODS.includes(paymentMethod)) {
+  if (!ALLOWED_PAYMENT_METHODS.includes(payment.method)) {
     return res.status(400).json({
       success: false,
       message: t('invalidPaymentMethod', req.lang),
     });
   }
+
   const createdOrders = buildOrderItems({
     databaseProducts,
     productItems: orderItems,
@@ -128,13 +128,18 @@ const createOrder = asyncHandler(async (req, res) => {
   const promoDiscountPercent = activeDiscount.percent;
   const summary = calculateCartSummary(createdOrders, promoDiscountPercent);
 
+  const paymentData = {
+    method: payment.method,
+    brand: payment.method,
+    lastFourDigits: payment.cardNumber ? payment.cardNumber.slice(-4) : '',
+    cardholderName: payment.cardholderName ?? '',
+    status: PAYMENT_STATUS.PENDING,
+  };
+
   const order = new Order({
     user: req.user._id,
     orderItems: createdOrders,
-    payment: {
-      method: paymentMethod,
-      brand: '',
-    },
+    payment: paymentData,
     shippingAddress,
     billingAddress,
     paymentStatus: PAYMENT_STATUS.PENDING,
@@ -205,7 +210,7 @@ const getUserOrders = asyncHandler(async (req, res) => {
 // @method  Put
 // @access  Private
 const payOrder = asyncHandler(async (req, res) => {
-  const { paymentMethod } = req.body;
+  const { payment } = req.body;
   const order = await Order.findById(req.params.id);
 
   if (!order) {
@@ -282,7 +287,7 @@ const payOrder = asyncHandler(async (req, res) => {
   order.isPaid = true;
   order.paymentStatus = PAYMENT_STATUS.PAID;
   order.paidAt = new Date();
-  order.paymentMethod = paymentMethod;
+  order.payment = payment;
   order.paymentResult = {
     id: crypto.randomUUID(),
     status: 'Completed',
