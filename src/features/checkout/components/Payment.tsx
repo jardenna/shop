@@ -10,29 +10,37 @@ const Payment = ({ paymentMethod }: PaymentProps) => {
   const paymentMethodList = paymentMethod.map(({ id, label }) => ({
     label,
     value: id,
+    id,
   }));
+
   const initialState = {
-    paymentmethod: 'Visa',
+    paymentMethod: 'visa',
   };
 
   const { values, onChange } = useFormValidation({
     initialState,
   });
 
+  const methodToShow = paymentMethod.find(
+    (method) => method.id === values.paymentMethod,
+  );
+
+  console.log(methodToShow);
+
   return (
     <section>
       <h2 className="checkout-title">Payment</h2>
       <RadioBtnList
         onChange={onChange}
-        value={values.paymentmethod}
+        value={values.paymentMethod}
         radioList={paymentMethodList}
-        name="paymentmethod"
+        name="paymentMethod"
       />
       <ul>
         {paymentMethod.map((payment) => (
           <li key={payment.id}>
             {payment.label}
-            {values.paymentmethod.toLowerCase() === 'visa' && (
+            {values.paymentMethod.toLowerCase() === 'visa' && (
               <div>
                 {payment.fields.map((field) => (
                   <div key={field.label}>{field.label} </div>
