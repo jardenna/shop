@@ -1,26 +1,23 @@
 import { PaymentMethod } from '../../../app/api/apiTypes/shopApiTypes';
 import RadioBtnList from '../../../components/formElements/radioList/RadioBtnList';
-import { useFormValidation } from '../../../hooks/useFormValidation';
+import { InputChangeHandler } from '../../../types/types';
 import CardForm from './paymentForms/CardForm';
 
 interface PaymentProps {
+  name: string;
+  onChange: InputChangeHandler;
   paymentMethod: PaymentMethod[];
+  values: {
+    paymentMethod: string;
+  };
 }
 
-const Payment = ({ paymentMethod }: PaymentProps) => {
+const Payment = ({ paymentMethod, onChange, values, name }: PaymentProps) => {
   const paymentMethodList = paymentMethod.map(({ id, label }) => ({
     label,
     value: id,
     id,
   }));
-
-  const initialState = {
-    paymentMethod: 'visa',
-  };
-
-  const { values, onChange } = useFormValidation({
-    initialState,
-  });
 
   const methodToShow = paymentMethod.find(
     (method) => method.id === values.paymentMethod,
@@ -33,7 +30,7 @@ const Payment = ({ paymentMethod }: PaymentProps) => {
         onChange={onChange}
         value={values.paymentMethod}
         radioList={paymentMethodList}
-        name="paymentMethod"
+        name={name}
       />
       {methodToShow && <CardForm fields={methodToShow.fields} />}
     </section>

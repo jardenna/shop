@@ -5,6 +5,7 @@ import Payment from '../features/checkout/components/Payment';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
 import { useLanguage } from '../features/language/useLanguage';
 import OrderSummaryList from '../features/orders/components/OrderSummaryList';
+import { useFormValidation } from '../hooks/useFormValidation';
 import AddressList from './account/AddressList';
 import './CheckoutPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
@@ -14,7 +15,42 @@ const CheckoutPage = () => {
   const { currentUser } = useAuth();
   const { deleteCartItem } = useDeleteCartItem();
   const { data: checkout, isLoading, refetch } = useGetCheckoutQuery();
-  console.log(checkout);
+
+  const orderItems = checkout?.cartItems.map(
+    ({ productId, qty, color, size }) => ({
+      productId,
+      qty,
+      color,
+      size,
+    }),
+  );
+
+  const shippingAddressId = checkout?.addresses.find((address) =>
+    address.standardAddress.includes('addressDelivery'),
+  )?.id;
+
+  const billingAddressId = checkout?.addresses.find((address) =>
+    address.standardAddress.includes('addressBilling'),
+  )?.id;
+  console.log({ checkout });
+
+  const initialState = {
+    paymentMethod: 'visa',
+  };
+
+  const { values, onChange } = useFormValidation({
+    initialState,
+  });
+
+  const payload = {
+    orderItems,
+    shippingAddressId,
+    billingAddressId,
+    payment: {
+      method: values.paymentMethod,
+    },
+  };
+  console.log(payload);
 
   return (
     <MainPageContainer heading="checkout">
@@ -22,7 +58,12 @@ const CheckoutPage = () => {
         {checkout && (
           <div className="checkout-container">
             <div>
-              <Payment paymentMethod={checkout.paymentMethod} />
+              <Payment
+                paymentMethod={checkout.paymentMethod}
+                values={values}
+                onChange={onChange}
+                name="paymentMethod"
+              />
               <section className="address-list">
                 <h2 className="checkout-title">{language.addresses}</h2>
                 <AddressList

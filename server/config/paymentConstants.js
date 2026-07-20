@@ -95,10 +95,10 @@ export const PAYMENT_METHODS = [
 ];
 
 export const ALLOWED_PAYMENT_METHODS = [
-  'visa',
-  'payPal',
-  'mobilePay',
-  'mastercard',
+  'Visa',
+  'PayPal',
+  'MobilePay',
+  'Mastercard',
 ];
 
 export const VALIDATING_PAYMENT_METHODS = Object.freeze(
