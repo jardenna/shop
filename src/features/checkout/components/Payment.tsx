@@ -32,7 +32,7 @@ const Payment = ({ paymentMethod }: PaymentProps) => {
         {paymentMethod.map((payment) => (
           <li key={payment.id}>
             {payment.label}
-            {payment.label.toLowerCase() === 'visa' && (
+            {values.paymentmethod.toLowerCase() === 'visa' && (
               <div>
                 {payment.fields.map((field) => (
                   <div key={field.label}>{field.label} </div>
