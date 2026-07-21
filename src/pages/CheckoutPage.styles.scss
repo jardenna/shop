@@ -21,3 +21,31 @@
     margin-bottom: 12px;
   }
 }
+
+.my-address-list {
+  &.checkout-address-list {
+    display: flex;
+    flex-direction: column;
+
+    .my-address-item {
+      border: 0;
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 12px;
+      border-bottom: 1px solid $color-border;
+
+      &.add-address {
+        justify-content: end;
+      }
+    }
+
+    .my-address-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .my-address-footer {
+      padding: 0;
+    }
+  }
+}

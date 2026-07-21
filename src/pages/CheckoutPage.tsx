@@ -64,6 +64,7 @@ const CheckoutPage = () => {
                   language={language}
                   username={currentUser?.username ?? ''}
                   refetch={refetch}
+                  className="checkout-address-list"
                 />
               </section>
               <Payment
