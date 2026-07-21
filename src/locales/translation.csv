@@ -1,5 +1,11 @@
 ﻿key;en;da
 about;About us;Om os
+paymentSummary;Payment summary;Betalingsoversigt
+cardTestNumber;Card number;Kort nummer
+expiryDate;Expiry date (mm/yy);Udløbsdato (mm/yy)
+securityCode;Security code;Kontrolcifre
+cardholderName;Cardholder name;Kortholder navn
+mobilePhoneNumber;Mobile phone number;Mobilnummer
 pricesConfirmed;Prices and shipping costs are confirmed at checkout.;Priser og leveringsomkostninger bekræftes når du går til checkout.
 returnPeriod;You have a 14-day return policy.;Du har 14 dages returret.
 returnPolicyLink;Read more about returns and refunds.;Læs mere om returnering og tilbagebetaling.
@@ -213,6 +219,7 @@ invalidQuantity;Quantity must be at least 1;Antallet skal være mindst 1
 invalidRequestProductIds;Invalid product IDs provided;Ugyldige produkt-id'er sendt
 invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for planlagt dato
 invalidSize;The selected size is no longer available;Den valgte størrelse er ikke længere tilgængelig
+invalidPaymentMethod;The selected payment method is invalid.;Den valgte betalingsmetode er ugyldig.
 invalidUserData;Invalid user data;Ugyldig bruger data
 item;item;vare
 items;items;varer

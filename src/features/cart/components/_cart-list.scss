@@ -1,11 +1,7 @@
 @use '../../../scss/globals' as *;
 
-.cart-list {
-  display: flex;
-  flex-direction: column;
-  max-width: rem(700px);
-
-  .cart-list-item {
+.order-flow-list {
+  .order-flow-list-item {
     border-bottom: 1px solid $color-border;
     padding-block: 16px;
 

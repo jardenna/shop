@@ -1,0 +1,32 @@
+@use './globals' as *;
+
+.order-flow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) rem(512px);
+  gap: 40px;
+
+  @include max-size($large) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include max-size($medium) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.order-flow-title {
+  text-transform: uppercase;
+  font-family: $font-primary-bold;
+  font-size: $font-medium;
+  margin-bottom: 12px;
+}
+
+.order-flow-list {
+  display: flex;
+  flex-direction: column;
+  max-width: rem(700px);
+
+  @include max-size($medium) {
+    max-width: 100%;
+  }
+}

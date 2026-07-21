@@ -256,6 +256,7 @@ const SingleProductForm = ({
       >
         <FieldSet legendText={language.productVariants}>
           <ControlGroupList
+            classType="secondary"
             initialChecked={values.color}
             type="radio"
             className="color-list"
@@ -274,6 +275,7 @@ const SingleProductForm = ({
           />
 
           <ControlGroupList
+            classType="secondary"
             type="radio"
             initialChecked={values.size}
             required={values.size === ''}

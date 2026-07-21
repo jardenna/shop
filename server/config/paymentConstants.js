@@ -1,97 +1,99 @@
+export const PAYMENT_METHOD_TYPES = {
+  CARD: 'card',
+  WALLET: 'wallet',
+  MOBILE: 'mobile',
+};
+
+const CARD_FIELDS = [
+  {
+    name: 'card',
+    label: 'cardTestNumber',
+    type: 'text',
+    inputMode: null,
+  },
+  {
+    name: 'expiryDate',
+    label: 'expiryDate',
+    type: 'text',
+    inputMode: null,
+  },
+  {
+    name: 'cvvCode',
+    label: 'securityCode',
+    type: 'password',
+    inputMode: 'numeric',
+  },
+  {
+    name: 'cardholderName',
+    label: 'cardholderName',
+    type: 'text',
+    inputMode: null,
+  },
+];
+
 export const PAYMENT_METHODS = [
   {
     id: 'visa',
     label: 'Visa',
     icon: 'visa',
-    fields: [
-      {
-        name: 'cardNumber',
-        label: 'Card number',
-        type: 'text',
-      },
-      {
-        name: 'expiryDate',
-        label: 'Expiry date',
-        type: 'text',
-      },
-      {
-        name: 'cvvCode',
-        label: 'Security code',
-        type: 'password',
-      },
-      {
-        name: 'cardholderName',
-        label: 'Cardholder name',
-        type: 'text',
-      },
-    ],
+    type: PAYMENT_METHOD_TYPES.CARD,
+    fields: CARD_FIELDS,
   },
   {
     id: 'mastercard',
     label: 'Mastercard',
     icon: 'mastercard',
-    fields: [
-      {
-        name: 'cardNumber',
-        label: 'Card number',
-        type: 'text',
-      },
-      {
-        name: 'expiryDate',
-        label: 'Expiry date',
-        type: 'text',
-      },
-      {
-        name: 'cvvCode',
-        label: 'Security code',
-        type: 'password',
-      },
-      {
-        name: 'cardholderName',
-        label: 'Cardholder name',
-        type: 'text',
-      },
-    ],
+    type: PAYMENT_METHOD_TYPES.CARD,
+    fields: CARD_FIELDS,
   },
   {
     id: 'paypal',
     label: 'PayPal',
-    icon: 'paypal',
+    icon: 'payPal',
+    type: PAYMENT_METHOD_TYPES.WALLET,
     fields: [
       {
         name: 'paypalEmail',
-        label: 'Email',
+        label: 'email',
         type: 'email',
+        inputMode: 'email',
       },
       {
         name: 'paypalPassword',
-        label: 'Password',
+        label: 'password',
         type: 'password',
+        inputMode: null,
       },
     ],
   },
   {
     id: 'mobilepay',
     label: 'MobilePay',
-    icon: 'mobilepay',
+    icon: 'mobilePay',
+    type: PAYMENT_METHOD_TYPES.MOBILE,
     fields: [
       {
-        name: 'phoneNumber',
-        label: 'Phone number',
+        name: 'mobilePhoneNumber',
+        label: 'mobilePhoneNumber',
         type: 'tel',
+        inputMode: 'numeric',
       },
     ],
   },
 ];
 
-export const ALLOWED_PAYMENT_METHODS = PAYMENT_METHODS.map(({ id }) => id);
+export const ALLOWED_PAYMENT_METHODS = [
+  'Visa',
+  'PayPal',
+  'MobilePay',
+  'Mastercard',
+];
 
-export const VALIDATING_PAYMENT_METHODS = {
-  Visa: 'Visa',
-  PAYPAL: 'PayPal',
-  MOBILEPAY: 'MobilePay',
-  Mastercard: 'Mastercard',
-};
+export const VALIDATING_PAYMENT_METHODS = Object.freeze(
+  Object.fromEntries(
+    PAYMENT_METHODS.map(({ id, label }) => [id.toUpperCase(), label]),
+  ),
+);
 
 export const PAYMENT_STATUS_ENUM = ['PENDING', 'FAILED', 'PAID'];
 

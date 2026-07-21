@@ -30,7 +30,6 @@ const CartSchema = new Schema(
     paymentMethods: {
       type: String,
       enum: ALLOWED_PAYMENT_METHODS,
-      required: true,
     },
     discount: {
       code: {

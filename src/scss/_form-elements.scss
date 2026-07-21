@@ -19,18 +19,26 @@ input[type='number'] {
   appearance: textfield;
 }
 
-input[type='radio'],
-input[type='checkbox'] {
-  appearance: none;
-  clip-path: inset(50%);
-  position: absolute;
-  margin: 0;
-  accent-color: $color-gray-80;
+.primary,
+.secondary {
+  input[type='radio'] {
+    appearance: none;
+    clip-path: inset(50%);
+    position: absolute;
+    margin: 0;
+  }
 }
 
 ::placeholder {
   color: $color-gray-60;
   opacity: 1;
+}
+
+input[type='checkbox'] {
+  appearance: none;
+  clip-path: inset(50%);
+  position: absolute;
+  margin: 0;
 }
 
 .form-label-container {
@@ -53,6 +61,10 @@ textarea {
 
 input {
   height: $input-height;
+
+  &::before {
+    content: '';
+  }
 }
 
 .input-info {

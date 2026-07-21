@@ -97,7 +97,7 @@ const ShoppingCartPage = () => {
 
   return (
     <MainPageContainer heading="bag">
-      <div className="cart-page">
+      <div className="order-flow">
         <section>
           <ErrorBoundary
             FallbackComponent={ErrorBoundaryFallback}
@@ -116,8 +116,8 @@ const ShoppingCartPage = () => {
           </ErrorBoundary>
         </section>
 
-        <aside className="cart-page-aside">
-          <h2>{language.orderSummary}</h2>
+        <aside>
+          <h2 className="order-flow-title">{language.paymentSummary}</h2>
           {apiCartList && (
             <CartSummary
               summary={apiCartList.summary}
@@ -133,7 +133,7 @@ const ShoppingCartPage = () => {
             />
           )}
 
-          <Button onClick={handleCheckout}>
+          <Button onClick={handleCheckout} className="shopping-cart-btn">
             {language.continueToCheckout}
           </Button>
           {apiCartList && (

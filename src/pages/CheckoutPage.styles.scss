@@ -1,33 +1,101 @@
+/* stylelint-disable selector-class-pattern */
 @use '../scss/globals' as *;
 
 .checkout-page {
-  max-width: rem(1024px);
-  margin: 0 auto;
+  .my-address-title {
+    margin-top: 0;
+  }
 
-  .checkout-container {
+  .select-payment-method {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    background-color: $color-secondary;
+    padding-block: 12px;
+    padding-inline: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+
+  .payment-icon-list {
+    display: flex;
+    gap: 4px;
+
+    @include max-size($mini) {
+      flex-direction: column;
+    }
+  }
+
+  .secondary-radio {
     display: grid;
-    gap: 40px;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
 
-    .my-address-list {
+    @include max-size($small) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include max-size($mini) {
       grid-template-columns: 1fr;
     }
   }
 
-  .my-address-item.add-address {
-    border: 0;
-    align-self: start;
-    place-content: end;
+  .my-address-list {
+    &.checkout-address-list {
+      display: flex;
+      flex-direction: column;
+
+      .my-address-item {
+        border: 0;
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 12px;
+        border-bottom: 1px solid $color-border;
+
+        &.add-address {
+          justify-content: end;
+        }
+      }
+
+      .my-address-content {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .my-address-footer {
+        padding: 0;
+      }
+    }
+  }
+
+  .payment-form {
+    margin-top: 12px;
+  }
+
+  .card-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 24px;
+
+    .input-container {
+      &:has(.card) {
+        grid-column: 1 / -1;
+      }
+
+      &:has(.cardholderName) {
+        grid-column: 1 / -1;
+      }
+    }
+
+    .input-container:has(.expiryDate) {
+      .form-label-container {
+        grid-column: 1 / -1;
+      }
+    }
   }
 
   .summary-list {
     margin-top: 20px;
     padding-block: 20px;
     border-block: 1px solid $color-border;
-  }
-
-  .checkout-title {
-    text-transform: uppercase;
-    margin-bottom: 12px;
   }
 }

@@ -1,7 +1,10 @@
-import { PAYMENT_STATUS } from '../config/paymentConstants.js';
+import {
+  ALLOWED_PAYMENT_METHODS,
+  PAYMENT_STATUS,
+} from '../config/paymentConstants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
-import Order from '../models/ordersModel.js';
+import Order from '../models/orderModel.js';
 import Product from '../models/productModel.js';
 import User from '../models/userModel.js';
 import { buildOrderItems } from '../services/buildOrderItems.js';
@@ -21,8 +24,7 @@ import {
 // @method  Post
 // @access  Private
 const createOrder = asyncHandler(async (req, res) => {
-  const { orderItems, shippingAddressId, billingAddressId, paymentMethod } =
-    req.body;
+  const { orderItems, shippingAddressId, billingAddressId, payment } = req.body;
 
   const user = await User.findById(req.user._id).select('addresses role');
   const cart = await Cart.findOne({
@@ -111,18 +113,29 @@ const createOrder = asyncHandler(async (req, res) => {
     });
   }
 
+  if (!ALLOWED_PAYMENT_METHODS.includes(payment.method)) {
+    return res.status(400).json({
+      success: false,
+      message: t('invalidPaymentMethod', req.lang),
+    });
+  }
+
   const createdOrders = buildOrderItems({
     databaseProducts,
-    orderItems,
+    productItems: orderItems,
   });
 
   const promoDiscountPercent = activeDiscount.percent;
   const summary = calculateCartSummary(createdOrders, promoDiscountPercent);
 
+  const paymentData = {
+    method: payment.method,
+  };
+
   const order = new Order({
     user: req.user._id,
     orderItems: createdOrders,
-    paymentMethod,
+    payment: paymentData,
     shippingAddress,
     billingAddress,
     paymentStatus: PAYMENT_STATUS.PENDING,
@@ -193,7 +206,7 @@ const getUserOrders = asyncHandler(async (req, res) => {
 // @method  Put
 // @access  Private
 const payOrder = asyncHandler(async (req, res) => {
-  const { paymentMethod } = req.body;
+  const { payment } = req.body;
   const order = await Order.findById(req.params.id);
 
   if (!order) {
@@ -270,7 +283,7 @@ const payOrder = asyncHandler(async (req, res) => {
   order.isPaid = true;
   order.paymentStatus = PAYMENT_STATUS.PAID;
   order.paidAt = new Date();
-  order.paymentMethod = paymentMethod;
+  order.payment = payment;
   order.paymentResult = {
     id: crypto.randomUUID(),
     status: 'Completed',
