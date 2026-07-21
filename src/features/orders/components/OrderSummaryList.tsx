@@ -26,7 +26,7 @@ const OrderSummaryList = ({
   return (
     orderItems && (
       <>
-        <h2 className="checkout-title">
+        <h2 className="order-flow-title">
           {language.orderSummary} [ {getCartQuantity(orderItems.cartItems)} ]
         </h2>
         <ul className="order-summary-list">

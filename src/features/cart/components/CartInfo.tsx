@@ -5,14 +5,14 @@ interface CartInfoProps {
 }
 
 const CartInfo = ({ language }: CartInfoProps) => (
-  <div className="cart-page-info">
+  <div className="order-flow-info">
     <span>{language.pricesConfirmed}</span>
     <span>
-      <span className="cart-page-info-text">{language.returnPeriod}</span>
+      <span className="order-flow-info-text">{language.returnPeriod}</span>
       <Link to="/">{language.returnPolicyLink}</Link>
     </span>
     <span>
-      <span className="cart-page-info-text">{language.needHelp}?</span>
+      <span className="order-flow-info-text">{language.needHelp}?</span>
       <Link to="/">{language.contactCustomerService}</Link>
     </span>
   </div>

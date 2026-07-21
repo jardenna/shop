@@ -1,13 +1,13 @@
 @use './globals' as *;
 
-.checkout-title {
+.order-flow-title {
   text-transform: uppercase;
   font-family: $font-primary-bold;
   font-size: $font-medium;
   margin-bottom: 12px;
 }
 
-.cart-page {
+.order-flow {
   display: grid;
   grid-template-columns: minmax(0, 1fr) rem(416px);
   gap: 40px;
@@ -20,14 +20,14 @@
     grid-template-columns: 1fr;
   }
 
-  .cart-page-aside {
+  .order-flow-aside {
     display: flex;
     flex-direction: column;
     gap: 20px;
   }
 }
 
-.cart-list {
+.order-flow-list {
   display: flex;
   flex-direction: column;
   max-width: rem(700px);

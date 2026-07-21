@@ -1,17 +1,17 @@
 @use '../scss/globals' as *;
 
-.cart-page {
+.order-flow {
   .payment-method-list {
     display: flex;
     gap: 8px;
   }
 
-  .cart-page-info {
+  .order-flow-info {
     display: flex;
     flex-direction: column;
     gap: 16px;
 
-    .cart-page-info-text {
+    .order-flow-info-text {
       padding-right: 4px;
     }
 
@@ -20,7 +20,7 @@
     }
   }
 
-  .checkout-title {
+  .order-flow-title {
     margin-bottom: 0;
   }
 }

@@ -39,7 +39,7 @@ const Payment = ({
       <FieldSet
         legendText={language.payment}
         showLegendText
-        legendClassname="checkout-title"
+        legendClassname="order-flow-title"
       >
         <div className="select-payment-method">
           <RadioBtnList

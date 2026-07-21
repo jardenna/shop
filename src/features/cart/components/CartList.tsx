@@ -52,9 +52,9 @@ const CartList = ({
   };
 
   return (
-    <ul className="cart-list">
+    <ul className="order-flow-list">
       {cartList.map((cart) => (
-        <li key={cart.id} className="cart-list-item">
+        <li key={cart.id} className="order-flow-list-item">
           <VisuallyHidden>
             {language.view} {cart.productName}
           </VisuallyHidden>
