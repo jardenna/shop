@@ -44,6 +44,7 @@ const Payment = ({
           fields={methodToShow.fields}
           key={methodToShow.id}
           language={language}
+          iconMap={paymentMethod.map((a) => a.icon)}
         />
       )}
     </section>
