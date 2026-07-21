@@ -8,6 +8,67 @@
     grid-template-columns: 1fr 1fr;
   }
 
+  .secondary-radio {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    background: #f4f4f5;
+    padding-block: 12px;
+    padding-inline: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+
+  .my-address-list {
+    &.checkout-address-list {
+      display: flex;
+      flex-direction: column;
+
+      .my-address-item {
+        border: 0;
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 12px;
+        border-bottom: 1px solid $color-border;
+
+        &.add-address {
+          justify-content: end;
+        }
+      }
+
+      .my-address-content {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .my-address-footer {
+        padding: 0;
+      }
+    }
+  }
+
+  .payment-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 24px;
+
+    .input-container {
+      &:has(.card) {
+        grid-column: 1 / -1;
+      }
+
+      &:has(.cardholderName) {
+        grid-column: 1 / -1;
+      }
+    }
+
+    .input-container:has(.expiryDate) {
+      .form-label-container {
+        grid-column: 1 / -1;
+      }
+    }
+  }
+
   .summary-list {
     margin-top: 20px;
     padding-block: 20px;
@@ -17,55 +78,5 @@
   .checkout-title {
     text-transform: uppercase;
     margin-bottom: 12px;
-  }
-}
-
-.my-address-list {
-  &.checkout-address-list {
-    display: flex;
-    flex-direction: column;
-
-    .my-address-item {
-      border: 0;
-      display: flex;
-      justify-content: space-between;
-      padding-bottom: 12px;
-      border-bottom: 1px solid $color-border;
-
-      &.add-address {
-        justify-content: end;
-      }
-    }
-
-    .my-address-content {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .my-address-footer {
-      padding: 0;
-    }
-  }
-}
-
-.payment-form {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px 24px;
-
-  .input-container {
-    &:has(.card) {
-      grid-column: 1 / -1;
-    }
-
-    &:has(.cardholderName) {
-      grid-column: 1 / -1;
-    }
-  }
-
-  .input-container:has(.expiryDate) {
-    .form-label-container {
-      grid-column: 1 / -1;
-    }
   }
 }
