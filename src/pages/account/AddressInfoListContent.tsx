@@ -10,7 +10,9 @@ const AddressInfoListContent = ({
   username,
 }: AddressInforListProps) => (
   <article className="my-address-content">
-    <h2 className="my-address-title">{address.name || username}</h2>
+    <h2 className="my-address-title">
+      {address.name || username} <span>{address.label}</span>
+    </h2>
     <p>{address.street}</p>
     <p>
       {address.zipCode} {address.city}

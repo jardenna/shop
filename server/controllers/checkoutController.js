@@ -4,6 +4,7 @@ import Cart from '../models/cartModel.js';
 import User from '../models/userModel.js';
 import { buildCartData } from '../services/buildCartData.js';
 import { getActiveDiscount } from '../services/getActiveDiscount.js';
+import { getAddressLabel } from '../utils/getAddressLabel.js';
 import { t } from '../utils/translator.js';
 
 // @desc    Get checkout
@@ -12,6 +13,11 @@ import { t } from '../utils/translator.js';
 const getCheckout = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id).select('addresses role');
 
+  const addresses = user.addresses.map((address) => ({
+    ...address.toObject(),
+    label: getAddressLabel(address.standardAddress),
+  }));
+
   const cart = await Cart.findOne({
     user: req.user._id,
   }).lean();
@@ -19,7 +25,7 @@ const getCheckout = asyncHandler(async (req, res) => {
   if (!cart) {
     return res.status(200).json({
       cartItems: [],
-      addresses: user.addresses,
+      addresses,
     });
   }
 
@@ -38,7 +44,7 @@ const getCheckout = asyncHandler(async (req, res) => {
   }
 
   return res.status(200).json({
-    addresses: user?.addresses ?? [],
+    addresses,
     cartItems: cartData.orderItems,
     summary: cartData.summary,
     discount: activeDiscount,

@@ -112,6 +112,7 @@ export type BaseAddress = {
   street: string;
   zipCode: string;
   country?: string;
+  label?: string;
   name?: string;
 };
 

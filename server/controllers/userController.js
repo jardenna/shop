@@ -41,7 +41,14 @@ const getCurrentUserProfile = asyncHandler(async (req, res) => {
     '-isAdmin -role -password',
   );
 
-  res.status(200).json(user);
+  const responseUser = user.toObject();
+
+  responseUser.addresses = responseUser.addresses.map((address) => ({
+    ...address,
+    label: getAddressLabel(address.standardAddress),
+  }));
+
+  res.status(200).json(responseUser);
 });
 
 // @desc    Update User profile
