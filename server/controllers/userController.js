@@ -142,7 +142,7 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
         if (user.addresses.length >= 4) {
           return res.status(400).json({
             success: false,
-            message: 'You may have up to 4 addresses',
+            message: t('onlyFourAddresses', req.lang),
           });
         }
 
