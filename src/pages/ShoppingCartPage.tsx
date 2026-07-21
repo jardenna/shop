@@ -116,7 +116,7 @@ const ShoppingCartPage = () => {
           </ErrorBoundary>
         </section>
 
-        <aside className="order-flow-aside">
+        <aside>
           <h2 className="order-flow-title">{language.paymentSummary}</h2>
           {apiCartList && (
             <CartSummary

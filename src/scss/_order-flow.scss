@@ -5,18 +5,13 @@
   grid-template-columns: minmax(0, 1fr) rem(512px);
   gap: 40px;
 
-  @include max-size($medium) {
+  @include max-size($large) {
     grid-template-columns: 1fr 1fr;
   }
 
-  @include max-size($small) {
+  @include max-size($medium) {
     grid-template-columns: 1fr;
   }
-}
-
-.order-flow-aside {
-  display: flex;
-  flex-direction: column;
 }
 
 .order-flow-title {
