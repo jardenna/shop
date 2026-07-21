@@ -52,20 +52,20 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px 24px;
-}
 
-.input-container {
-  &:has(.card) {
-    grid-column: 1 / -1;
+  .input-container {
+    &:has(.card) {
+      grid-column: 1 / -1;
+    }
+
+    &:has(.cardholderName) {
+      grid-column: 1 / -1;
+    }
   }
 
-  &:has(.cardholderName) {
-    grid-column: 1 / -1;
-  }
-}
-
-.input-container:has(.expiryDate) {
-  .form-label-container {
-    grid-column: 1 / -1;
+  .input-container:has(.expiryDate) {
+    .form-label-container {
+      grid-column: 1 / -1;
+    }
   }
 }
