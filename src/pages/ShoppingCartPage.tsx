@@ -133,7 +133,7 @@ const ShoppingCartPage = () => {
             />
           )}
 
-          <Button onClick={handleCheckout}>
+          <Button onClick={handleCheckout} className="shopping-cart-btn">
             {language.continueToCheckout}
           </Button>
           {apiCartList && (

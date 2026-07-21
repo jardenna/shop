@@ -57,17 +57,15 @@ const CheckoutPage = () => {
       <div className="checkout-page order-flow">
         {checkout && (
           <>
-            <div className="order-flow-list">
-              <section>
-                <h2 className="order-flow-title">{language.addresses}</h2>
-                <AddressList
-                  addresses={checkout.addresses}
-                  language={language}
-                  username={currentUser?.username ?? ''}
-                  refetch={refetch}
-                  className="checkout-address-list"
-                />
-              </section>
+            <section className="order-flow-list">
+              <h2 className="order-flow-title">{language.addresses}</h2>
+              <AddressList
+                addresses={checkout.addresses}
+                language={language}
+                username={currentUser?.username ?? ''}
+                refetch={refetch}
+                className="checkout-address-list"
+              />
               <Payment
                 paymentMethod={checkout.paymentMethod}
                 values={values}
@@ -75,7 +73,7 @@ const CheckoutPage = () => {
                 name="paymentMethod"
                 language={language}
               />
-            </div>
+            </section>
             <aside className="order-flow-aside">
               <OrderSummaryList
                 orderItems={checkout}

@@ -4,23 +4,24 @@
   .payment-method-list {
     display: flex;
     gap: 8px;
+    margin-block: 12px;
   }
 
-  .order-flow-info {
+  .shopping-cart-btn {
+    margin-top: 20px;
+  }
+
+  .cart-info {
     display: flex;
     flex-direction: column;
     gap: 16px;
 
-    .order-flow-info-text {
+    .cartinfo-text {
       padding-right: 4px;
     }
 
     a {
       text-decoration: underline;
     }
-  }
-
-  .order-flow-title {
-    margin-bottom: 0;
   }
 }

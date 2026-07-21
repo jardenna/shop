@@ -1,15 +1,8 @@
 @use './globals' as *;
 
-.order-flow-title {
-  text-transform: uppercase;
-  font-family: $font-primary-bold;
-  font-size: $font-medium;
-  margin-bottom: 12px;
-}
-
 .order-flow {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) rem(416px);
+  grid-template-columns: minmax(0, 1fr) rem(512px);
   gap: 40px;
 
   @include max-size($medium) {
@@ -19,12 +12,18 @@
   @include max-size($small) {
     grid-template-columns: 1fr;
   }
+}
 
-  .order-flow-aside {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
+.order-flow-aside {
+  display: flex;
+  flex-direction: column;
+}
+
+.order-flow-title {
+  text-transform: uppercase;
+  font-family: $font-primary-bold;
+  font-size: $font-medium;
+  margin-bottom: 12px;
 }
 
 .order-flow-list {
