@@ -1,3 +1,4 @@
+import { IconName } from '../../../types/enums';
 import { InputMode } from './../../../types/types';
 import type {
   BaseAddress,
@@ -125,7 +126,7 @@ export interface PaymentMethodField {
 
 export interface PaymentMethod {
   fields: PaymentMethodField[];
-  icon: string;
+  icon: IconName;
   id: string;
   label: string;
   type: PaymentType;
