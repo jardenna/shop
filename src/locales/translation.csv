@@ -2,8 +2,8 @@
 about;About us;Om os
 cardTestNumber;Card number;Kort nummer
 expiryDate;Expiry date;Udløbsdato
-securityCode;Security code (CVV/CVD);Sikkerhedskode (CVV/CVD)
-cardholderName;Cardholder name;Kortholders navn
+securityCode;Security code;Kontrolcifre
+cardholderName;Cardholder name;Kortholder navn
 mobilePhoneNumber;Mobile phone number;Mobilnummer
 pricesConfirmed;Prices and shipping costs are confirmed at checkout.;Priser og leveringsomkostninger bekræftes når du går til checkout.
 returnPeriod;You have a 14-day return policy.;Du har 14 dages returret.
