@@ -1,3 +1,4 @@
+import { InputMode } from './../../../types/types';
 import type {
   BaseAddress,
   BasePagination,
@@ -116,6 +117,7 @@ export type UserProfileRequest = BaseProfile & {
 export type PaymentType = 'card' | 'wallet' | 'mobilepay';
 
 export interface PaymentMethodField {
+  inputMode: InputMode;
   label: string;
   name: string;
   type: React.HTMLInputTypeAttribute;

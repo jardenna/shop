@@ -4,62 +4,47 @@ export const PAYMENT_METHOD_TYPES = {
   MOBILE: 'mobile',
 };
 
+const CARD_FIELDS = [
+  {
+    name: 'card',
+    label: 'cardTestNumber',
+    type: 'text',
+    inputMode: null,
+  },
+  {
+    name: 'expiryDate',
+    label: 'expiryDate',
+    type: 'text',
+    inputMode: null,
+  },
+  {
+    name: 'cvvCode',
+    label: 'securityCode',
+    type: 'password',
+    inputMode: 'numeric',
+  },
+  {
+    name: 'cardholderName',
+    label: 'cardholderName',
+    type: 'text',
+    inputMode: null,
+  },
+];
+
 export const PAYMENT_METHODS = [
   {
     id: 'visa',
     label: 'Visa',
     icon: 'visa',
     type: PAYMENT_METHOD_TYPES.CARD,
-    fields: [
-      {
-        name: 'cardNumber',
-        label: 'Card number',
-        type: 'text',
-      },
-      {
-        name: 'expiryDate',
-        label: 'Expiry date',
-        type: 'text',
-      },
-      {
-        name: 'cvvCode',
-        label: 'Security code',
-        type: 'password',
-      },
-      {
-        name: 'cardholderName',
-        label: 'Cardholder name',
-        type: 'text',
-      },
-    ],
+    fields: CARD_FIELDS,
   },
   {
     id: 'mastercard',
     label: 'Mastercard',
     icon: 'mastercard',
     type: PAYMENT_METHOD_TYPES.CARD,
-    fields: [
-      {
-        name: 'cardNumber',
-        label: 'Card number',
-        type: 'text',
-      },
-      {
-        name: 'expiryDate',
-        label: 'Expiry date',
-        type: 'text',
-      },
-      {
-        name: 'cvvCode',
-        label: 'Security code',
-        type: 'password',
-      },
-      {
-        name: 'cardholderName',
-        label: 'Cardholder name',
-        type: 'text',
-      },
-    ],
+    fields: CARD_FIELDS,
   },
   {
     id: 'paypal',
@@ -69,13 +54,15 @@ export const PAYMENT_METHODS = [
     fields: [
       {
         name: 'paypalEmail',
-        label: 'Email',
+        label: 'email',
         type: 'email',
+        inputMode: 'email',
       },
       {
         name: 'paypalPassword',
-        label: 'Password',
+        label: 'password',
         type: 'password',
+        inputMode: null,
       },
     ],
   },
@@ -86,9 +73,10 @@ export const PAYMENT_METHODS = [
     type: PAYMENT_METHOD_TYPES.MOBILE,
     fields: [
       {
-        name: 'phoneNumber',
-        label: 'Phone number',
+        name: 'mobilePhoneNumber',
+        label: 'mobilePhoneNumber',
         type: 'tel',
+        inputMode: 'numeric',
       },
     ],
   },
