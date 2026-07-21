@@ -32,7 +32,9 @@ const Payment = ({ paymentMethod, onChange, values, name }: PaymentProps) => {
         radioList={paymentMethodList}
         name={name}
       />
-      {methodToShow && <CardForm fields={methodToShow.fields} />}
+      {methodToShow && (
+        <CardForm fields={methodToShow.fields} key={methodToShow.id} />
+      )}
     </section>
   );
 };

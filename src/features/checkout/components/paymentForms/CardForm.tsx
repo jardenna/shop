@@ -9,15 +9,14 @@ interface CardFormProps {
 
 const CardForm = ({ fields }: CardFormProps) => {
   const { language } = useLanguage();
-  const initialState = {
-    cardNumber: '',
-    expiryDate: '',
-  };
+  const initialValues = Object.fromEntries(
+    fields.map(({ name }) => [name, '']),
+  );
 
   const { values, onChange } = useFormValidation({
-    initialState,
+    initialState: initialValues,
   });
-  console.log(fields);
+  console.log(values);
 
   return (
     <form>
