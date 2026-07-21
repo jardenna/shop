@@ -36,7 +36,11 @@ const Payment = ({
 
   return (
     <form className="payment-form">
-      <FieldSet legendText={language.payment} showLegendText>
+      <FieldSet
+        legendText={language.payment}
+        showLegendText
+        legendClassname="checkout-title"
+      >
         <div className="select-payment-method">
           <RadioBtnList
             onChange={onChange}

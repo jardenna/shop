@@ -54,10 +54,10 @@ const CheckoutPage = () => {
 
   return (
     <MainPageContainer heading="checkout">
-      <div className="checkout-page">
+      <div className="checkout-page cart-page">
         {checkout && (
           <>
-            <div>
+            <div className="cart-list">
               <section>
                 <h2 className="checkout-title">{language.addresses}</h2>
                 <AddressList
@@ -76,7 +76,7 @@ const CheckoutPage = () => {
                 language={language}
               />
             </div>
-            <aside>
+            <aside className="cart-page-aside">
               <OrderSummaryList
                 orderItems={checkout}
                 isLoading={isLoading}

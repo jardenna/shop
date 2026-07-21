@@ -2,10 +2,6 @@
 @use '../scss/globals' as *;
 
 .checkout-page {
-  display: grid;
-  gap: 40px;
-  grid-template-columns: minmax(0, 50%) minmax(0, 50%);
-
   .my-address-title {
     margin-top: 0;
   }
@@ -87,12 +83,5 @@
     margin-top: 20px;
     padding-block: 20px;
     border-block: 1px solid $color-border;
-  }
-
-  .checkout-title {
-    text-transform: uppercase;
-    font-family: $font-primary-bold;
-    font-size: $font-medium;
-    margin-bottom: 12px;
   }
 }

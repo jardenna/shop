@@ -117,7 +117,7 @@ const ShoppingCartPage = () => {
         </section>
 
         <aside className="cart-page-aside">
-          <h2>{language.paymentSummary}</h2>
+          <h2 className="checkout-title">{language.paymentSummary}</h2>
           {apiCartList && (
             <CartSummary
               summary={apiCartList.summary}

@@ -1,24 +1,6 @@
 @use '../scss/globals' as *;
 
 .cart-page {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) rem(416px);
-  gap: 40px;
-
-  @include max-size($medium) {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  @include max-size($small) {
-    grid-template-columns: 1fr;
-  }
-
-  .cart-page-aside {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
   .payment-method-list {
     display: flex;
     gap: 8px;
@@ -36,5 +18,9 @@
     a {
       text-decoration: underline;
     }
+  }
+
+  .checkout-title {
+    margin-bottom: 0;
   }
 }
