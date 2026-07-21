@@ -72,6 +72,7 @@ const CheckoutPage = () => {
                 values={values}
                 onChange={onChange}
                 name="paymentMethod"
+                language={language}
               />
             </div>
             <aside className="order-summary">

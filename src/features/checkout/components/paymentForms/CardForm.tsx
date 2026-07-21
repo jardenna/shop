@@ -1,16 +1,15 @@
 import { PaymentMethodField } from '../../../../app/api/apiTypes/shopApiTypes';
 import Input from '../../../../components/formElements/Input';
 import { useFormValidation } from '../../../../hooks/useFormValidation';
-import { InputType } from '../../../../types/types';
-import { useLanguage } from '../../../language/useLanguage';
+import { ChangeInputType, InputType } from '../../../../types/types';
 import { formatExpiryDate } from '../formatExpiryDateUtil';
 
 interface CardFormProps {
   fields: PaymentMethodField[];
+  language: Record<string, string>;
 }
 
-const CardForm = ({ fields }: CardFormProps) => {
-  const { language } = useLanguage();
+const CardForm = ({ fields, language }: CardFormProps) => {
   const initialValues: Record<string, string> = Object.fromEntries(
     fields.map(({ name }) => [name, '']),
   );
@@ -18,7 +17,7 @@ const CardForm = ({ fields }: CardFormProps) => {
   const { values, onChange } = useFormValidation<Record<string, string>>({
     initialState: initialValues,
   });
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: ChangeInputType) => {
     const currentTarget = event.currentTarget;
 
     if (currentTarget.name === 'expiryDate') {

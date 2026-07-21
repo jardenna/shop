@@ -4,6 +4,7 @@ import { InputChangeHandler } from '../../../types/types';
 import CardForm from './paymentForms/CardForm';
 
 interface PaymentProps {
+  language: Record<string, string>;
   name: string;
   onChange: InputChangeHandler;
   paymentMethod: PaymentMethod[];
@@ -12,7 +13,13 @@ interface PaymentProps {
   };
 }
 
-const Payment = ({ paymentMethod, onChange, values, name }: PaymentProps) => {
+const Payment = ({
+  paymentMethod,
+  onChange,
+  values,
+  name,
+  language,
+}: PaymentProps) => {
   const paymentMethodList = paymentMethod.map(({ id, label }) => ({
     label,
     value: id,
@@ -33,7 +40,11 @@ const Payment = ({ paymentMethod, onChange, values, name }: PaymentProps) => {
         name={name}
       />
       {methodToShow && (
-        <CardForm fields={methodToShow.fields} key={methodToShow.id} />
+        <CardForm
+          fields={methodToShow.fields}
+          key={methodToShow.id}
+          language={language}
+        />
       )}
     </section>
   );
