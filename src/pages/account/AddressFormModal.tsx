@@ -157,7 +157,7 @@ const AddressFormModal = ({
       className="address-modal"
     >
       <FieldSet legendText={language.address}>
-        <div className="address-list">
+        <div className="address-form">
           {addressInputList.map(({ name, required, type }) => (
             <Input
               key={name}

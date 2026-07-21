@@ -57,7 +57,7 @@ const CheckoutPage = () => {
         {checkout && (
           <div className="checkout-container">
             <div>
-              <section className="address-list">
+              <section>
                 <h2 className="checkout-title">{language.addresses}</h2>
                 <AddressList
                   addresses={checkout.addresses}
