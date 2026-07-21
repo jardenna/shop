@@ -9,14 +9,14 @@ const AddressInfoListContent = ({
   address,
   username,
 }: AddressInforListProps) => (
-  <section className="my-address-content">
+  <article className="my-address-content">
     <h2 className="my-address-title">{address.name || username}</h2>
     <p>{address.street}</p>
     <p>
       {address.zipCode} {address.city}
     </p>
     <p>{address.country}</p>
-  </section>
+  </article>
 );
 
 export default AddressInfoListContent;

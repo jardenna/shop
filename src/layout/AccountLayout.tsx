@@ -35,12 +35,12 @@ const AccountLayout = () => {
           aria-labelledby={adminLayoutId}
         >
           <NavContainer navList={accountNavList} className="account-nav" />
-          <div className="account-page-content">
+          <section className="account-page-content">
             <header>
               <h1 id={adminLayoutId}>{title}</h1>
             </header>
             <Outlet />
-          </div>
+          </section>
         </section>
         <div className="account-img-container">
           <Picture
