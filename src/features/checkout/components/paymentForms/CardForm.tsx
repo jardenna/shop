@@ -1,18 +1,15 @@
 import { PaymentMethodField } from '../../../../app/api/apiTypes/shopApiTypes';
 import Input from '../../../../components/formElements/Input';
-import IconContent from '../../../../components/IconContent';
 import { useFormValidation } from '../../../../hooks/useFormValidation';
-import { IconName } from '../../../../types/enums';
 import { ChangeInputType, InputType } from '../../../../types/types';
 import { formatExpiryDate } from '../formatExpiryDateUtil';
 
 interface CardFormProps {
   fields: PaymentMethodField[];
-  iconMap: IconName[];
   language: Record<string, string>;
 }
 
-const CardForm = ({ fields, language, iconMap }: CardFormProps) => {
+const CardForm = ({ fields, language }: CardFormProps) => {
   const initialValues: Record<string, string> = Object.fromEntries(
     fields.map(({ name }) => [name, '']),
   );
@@ -31,7 +28,7 @@ const CardForm = ({ fields, language, iconMap }: CardFormProps) => {
   };
 
   return (
-    <form className="payment-form">
+    <div className="payment-form">
       {fields.map((field) => (
         <Input
           key={field.name}
@@ -45,16 +42,7 @@ const CardForm = ({ fields, language, iconMap }: CardFormProps) => {
           className={field.name}
         />
       ))}
-      <div>
-        <ul className="payment-method-list">
-          {iconMap.map((payment) => (
-            <li key={payment}>
-              <IconContent iconName={payment} ariaLabel={payment} />
-            </li>
-          ))}
-        </ul>
-      </div>
-    </form>
+    </div>
   );
 };
 

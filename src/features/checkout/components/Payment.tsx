@@ -1,5 +1,6 @@
 import { PaymentMethod } from '../../../app/api/apiTypes/shopApiTypes';
 import RadioBtnList from '../../../components/formElements/radioList/RadioBtnList';
+import IconContent from '../../../components/IconContent';
 import { InputChangeHandler } from '../../../types/types';
 import CardForm from './paymentForms/CardForm';
 
@@ -29,9 +30,9 @@ const Payment = ({
   const methodToShow = paymentMethod.find(
     (method) => method.id === values.paymentMethod,
   );
-
+  const x = paymentMethod.map((a) => a.icon);
   return (
-    <section>
+    <form>
       <h2 className="checkout-title">Payment</h2>
       <RadioBtnList
         onChange={onChange}
@@ -39,15 +40,21 @@ const Payment = ({
         radioList={paymentMethodList}
         name={name}
       />
+      <ul className="payment-method-list">
+        {x.map((payment) => (
+          <li key={payment}>
+            <IconContent iconName={payment} ariaLabel={payment} />
+          </li>
+        ))}
+      </ul>
       {methodToShow && (
         <CardForm
           fields={methodToShow.fields}
           key={methodToShow.id}
           language={language}
-          iconMap={paymentMethod.map((a) => a.icon)}
         />
       )}
-    </section>
+    </form>
   );
 };
 
