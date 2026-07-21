@@ -2,6 +2,7 @@ import bcrypt from 'bcryptjs';
 import asyncHandler from '../middleware/asyncHandler.js';
 import User from '../models/userModel.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
+import { getAddressLabel } from '../utils/getAddressLabel.js';
 import { sortColumns } from '../utils/sortColumns.js';
 import { t } from '../utils/translator.js';
 import { validateCreateAddress } from '../validators/validateAddress.js';
@@ -151,7 +152,15 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
     }
 
     const updatedUser = await user.save();
-    res.status(200).json(updatedUser);
+
+    const responseUser = updatedUser.toObject();
+
+    responseUser.addresses = responseUser.addresses.map((address) => ({
+      ...address,
+      label: getAddressLabel(address.standardAddress),
+    }));
+
+    res.status(200).json(responseUser);
   } else {
     return res.status(404).json({
       success: false,

@@ -24,6 +24,7 @@ addOrManageAddress;Add or manage your addresses;Tilføj eller ret dine adresser
 addresses;Addresses;Adresser
 addressAltText;Man in a tailored suit walking confidently down a wide, stepped staircase.;Mand i skræddersyet jakkesæt, der går selvsikkert ned ad en bred trappe.
 addressBilling;Standard billing address;Standard faktureringsadresse
+addressdeliveryAndBilling;Delivery and billing address;Leverings- og faktureringsadresse
 addressCreated;Address was created;Adresse blev tilføjet
 addressDeleted;Address deleted;Addresse blev slettet
 addressDelivery;Standard delivery address;Standard leveringsadresse
