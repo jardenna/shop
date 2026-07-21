@@ -139,6 +139,8 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
         existing.zipCode = address.zipCode ?? existing.zipCode;
         existing.city = address.city ?? existing.city;
         existing.country = address.country ?? existing.country;
+        existing.standardAddress =
+          address.standardAddress ?? existing.standardAddress;
       }
       // Add new
       else {
