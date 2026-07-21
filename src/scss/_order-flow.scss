@@ -25,4 +25,8 @@
   display: flex;
   flex-direction: column;
   max-width: rem(700px);
+
+  @include max-size($medium) {
+    max-width: 100%;
+  }
 }

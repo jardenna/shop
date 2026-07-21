@@ -8,6 +8,7 @@
 
   .select-payment-method {
     display: flex;
+    gap: 20px;
     justify-content: space-between;
     background-color: $color-secondary;
     padding-block: 12px;
@@ -19,10 +20,23 @@
   .payment-icon-list {
     display: flex;
     gap: 4px;
+
+    @include max-size($mini) {
+      flex-direction: column;
+    }
   }
 
   .secondary-radio {
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    @include max-size($small) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include max-size($mini) {
+      grid-template-columns: 1fr;
+    }
   }
 
   .my-address-list {
