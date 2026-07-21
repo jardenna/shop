@@ -28,7 +28,7 @@ const CardForm = ({ fields, language }: CardFormProps) => {
   };
 
   return (
-    <div className="payment-form">
+    <div className="card-form">
       {fields.map((field) => (
         <Input
           key={field.name}

@@ -50,12 +50,13 @@ const CheckoutPage = () => {
     },
   };
   console.log(payload);
+  // justify-self: end;
 
   return (
     <MainPageContainer heading="checkout">
       <div className="checkout-page">
         {checkout && (
-          <div className="checkout-container">
+          <>
             <div>
               <section>
                 <h2 className="checkout-title">{language.addresses}</h2>
@@ -75,7 +76,7 @@ const CheckoutPage = () => {
                 language={language}
               />
             </div>
-            <aside className="order-summary">
+            <aside>
               <OrderSummaryList
                 orderItems={checkout}
                 isLoading={isLoading}
@@ -88,7 +89,7 @@ const CheckoutPage = () => {
                 promoDiscount={checkout.discount}
               />
             </aside>
-          </div>
+          </>
         )}
       </div>
     </MainPageContainer>
