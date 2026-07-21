@@ -6,6 +6,10 @@
   gap: 40px;
   grid-template-columns: minmax(0, 50%) minmax(0, 50%);
 
+  .my-address-title {
+    margin-top: 0;
+  }
+
   .select-payment-method {
     display: flex;
     justify-content: space-between;
@@ -87,6 +91,8 @@
 
   .checkout-title {
     text-transform: uppercase;
+    font-family: $font-primary-bold;
+    font-size: $font-medium;
     margin-bottom: 12px;
   }
 }
