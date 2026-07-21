@@ -1,7 +1,7 @@
 ﻿key;en;da
 about;About us;Om os
 cardTestNumber;Card number;Kort nummer
-expiryDate;Expiry date;Udløbsdato
+expiryDate;Expiry date (mm/yy);Udløbsdato (mm/yy)
 securityCode;Security code;Kontrolcifre
 cardholderName;Cardholder name;Kortholder navn
 mobilePhoneNumber;Mobile phone number;Mobilnummer
