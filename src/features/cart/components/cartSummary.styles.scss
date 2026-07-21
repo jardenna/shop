@@ -11,7 +11,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  font-size: rem(16px);
+  font-size: $font-medium;
 
   &.summary-total {
     border-top: 1px solid $color-border;
