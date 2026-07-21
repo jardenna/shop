@@ -8,16 +8,6 @@
     display: grid;
     gap: 40px;
     grid-template-columns: 1fr 1fr;
-
-    .my-address-list {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .my-address-item.add-address {
-    border: 0;
-    align-self: start;
-    place-content: end;
   }
 
   .summary-list {
