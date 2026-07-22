@@ -96,7 +96,7 @@ export type DeleteAddressRequest = {
   address: string;
 };
 
-export type UpdateAddressRequest = { address: AddressInput };
+export type UpdateAddressRequest = { address: AddressInput; id: string };
 
 export type UserProfileResponse = DefaultResponseType &
   BaseProfile & {

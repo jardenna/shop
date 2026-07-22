@@ -1,7 +1,7 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
+import { BaseAddress } from '../../app/api/apiTypes/sharedApiTypes';
 import {
   AddAddressRequest,
-  DeleteAddressRequest,
   UpdateAddressRequest,
   UserProfileResponse,
 } from '../../app/api/apiTypes/shopApiTypes';
@@ -13,7 +13,7 @@ export const addressesApiSlice = apiSlice.injectEndpoints({
       query: () => addressUrl,
       providesTags: [TagTypesEnum.Address],
     }),
-    addAddress: builder.mutation<UserProfileResponse, AddAddressRequest>({
+    addAddress: builder.mutation<BaseAddress, AddAddressRequest>({
       query: (address) => ({
         url: addressUrl,
         method: 'POST',
@@ -22,18 +22,17 @@ export const addressesApiSlice = apiSlice.injectEndpoints({
       invalidatesTags: [TagTypesEnum.Address],
     }),
     updateAddress: builder.mutation<UserProfileResponse, UpdateAddressRequest>({
-      query: (address) => ({
-        url: addressUrl,
+      query: ({ address, id }) => ({
+        url: `${addressUrl}/${id}`,
         method: 'PATCH',
-        body: address,
+        body: { address },
       }),
       invalidatesTags: [TagTypesEnum.Address],
     }),
-    deleteAddress: builder.mutation<UserProfileResponse, DeleteAddressRequest>({
+    deleteAddress: builder.mutation<BaseAddress, string>({
       query: (id) => ({
-        url: addressUrl,
+        url: `${addressUrl}/${id}`,
         method: 'DELETE',
-        body: id,
       }),
       invalidatesTags: [TagTypesEnum.Address],
     }),

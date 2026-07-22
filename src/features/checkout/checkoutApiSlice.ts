@@ -9,7 +9,7 @@ export const checkoutApiSlice = apiSlice.injectEndpoints({
       providesTags: [
         TagTypesEnum.Checkout,
         TagTypesEnum.Carts,
-        TagTypesEnum.Profile,
+        TagTypesEnum.Address,
       ],
     }),
   }),

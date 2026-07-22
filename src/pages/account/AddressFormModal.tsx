@@ -21,7 +21,7 @@ import { useLanguage } from '../../features/language/useLanguage';
 import {
   useAddAddressMutation,
   useUpdateAddressMutation,
-} from '../../features/profile/profileApiSlice';
+} from '../../features/profile/addressesApiSlice';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { BtnVariant, IconName, SizeVariant } from '../../types/enums';
 import type { InputType } from '../../types/types';
@@ -107,7 +107,7 @@ const AddressFormModal = ({
 
     try {
       if (id) {
-        await updateAddress({ address: updatedAddress }).unwrap();
+        await updateAddress({ address: updatedAddress, id }).unwrap();
         setResultSuccess(true);
       } else {
         await addAddress({ address: updatedAddress }).unwrap();
