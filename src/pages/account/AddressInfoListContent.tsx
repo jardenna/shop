@@ -1,7 +1,8 @@
-import { Address } from '../../app/api/apiTypes/shopApiTypes';
+import { AddressLab } from '../../app/api/apiTypes/shopApiTypes';
+import { useLanguage } from '../../features/language/useLanguage';
 
 type AddressInforListProps = {
-  address: Address;
+  address: AddressLab;
   username: string;
 };
 
@@ -9,16 +10,12 @@ const AddressInfoListContent = ({
   address,
   username,
 }: AddressInforListProps) => {
-  // const { language } = useLanguage();
-  console.log(12);
+  const { language } = useLanguage();
 
   return (
     <article className="my-address-content">
-      <h2 className="my-address-title">
-        {address.name || username}
-
-        {/* <span>{language[address.label]}</span> */}
-      </h2>
+      <span className="my-address-label">{language[address.label]}</span>
+      <h2 className="my-address-title">{address.name || username}</h2>
       <p>{address.street}</p>
       <p>
         {address.zipCode} {address.city}
