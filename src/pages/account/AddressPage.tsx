@@ -1,12 +1,14 @@
 import Skeleton from '../../components/skeleton/Skeleton';
 import SkeletonCardList from '../../components/skeleton/SkeletonCardList';
+import { useAuth } from '../../features/auth/hooks/useAuth';
 import { useLanguage } from '../../features/language/useLanguage';
-import { useGetUserProfileQuery } from '../../features/profile/profileApiSlice';
+import { useGetAddressesQuery } from '../../features/profile/addressesApiSlice';
 import AddressList from './AddressList';
 
 const AddressPage = () => {
   const { language } = useLanguage();
-  const { data: profile, isLoading, refetch } = useGetUserProfileQuery();
+  const { data: addresses, isLoading, refetch } = useGetAddressesQuery();
+  const { currentUser } = useAuth();
 
   return (
     <>
@@ -17,11 +19,11 @@ const AddressPage = () => {
         </SkeletonCardList>
       )}
 
-      {profile && (
+      {addresses && (
         <AddressList
-          addresses={profile.addresses}
+          addresses={addresses}
           language={language}
-          username={profile.username}
+          username={currentUser?.username ?? ''}
           refetch={refetch}
         />
       )}
