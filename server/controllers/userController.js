@@ -1,8 +1,11 @@
 import bcrypt from 'bcryptjs';
 import asyncHandler from '../middleware/asyncHandler.js';
 import User from '../models/userModel.js';
+import {
+  findDuplicateAddress,
+  getAddressLabel,
+} from '../utils/addressUtils.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
-import { getAddressLabel } from '../utils/getAddressLabel.js';
 import { sortColumns } from '../utils/sortColumns.js';
 import { t } from '../utils/translator.js';
 import { validateCreateAddress } from '../validators/validateAddress.js';
@@ -128,6 +131,20 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
       }
       // Update
       else if (address.id) {
+        // Create
+        const error = validateCreateAddress(address);
+        if (error) {
+          return res.status(400).json({ message: error });
+        }
+
+        const duplicateAddress = findDuplicateAddress(user.addresses, address);
+
+        if (duplicateAddress) {
+          return res.status(400).json({
+            message: t('addressAlreadyExists', req.lang),
+          });
+        }
+
         const existing = user.addresses.id(address.id);
         if (!existing) {
           return res
@@ -145,8 +162,17 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
       // Add new
       else {
         const error = validateCreateAddress(address);
+
         if (error) {
           return res.status(400).json({ message: error });
+        }
+
+        const duplicateAddress = findDuplicateAddress(user.addresses, address);
+
+        if (duplicateAddress) {
+          return res.status(400).json({
+            message: t('addressAlreadyExists', req.lang),
+          });
         }
 
         if (user.addresses.length >= 4) {
