@@ -13,6 +13,7 @@ export const authEndpoints = {
 
 export const userUrl = baseUserEndpoint;
 export const profileUrl = `${baseUserEndpoint}/profile`;
+export const addressUrl = `${baseUserEndpoint}/profile/addresses`;
 export const categoryUrl = 'categories';
 export const subCategoryUrl = 'subcategories';
 export const favoritesUrl = 'favorites';
