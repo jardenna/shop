@@ -1,7 +1,7 @@
 import { StandardAddress } from '../../app/api/apiTypes/sharedApiTypes';
 import type {
+  Address,
   AddressInput,
-  AddressLab,
 } from '../../app/api/apiTypes/shopApiTypes';
 import FieldSet from '../../components/fieldset/FieldSet';
 import CheckboxList from '../../components/formElements/checkbox/CheckboxList';
@@ -31,7 +31,7 @@ type AddressFormModalProps = {
   popupMessage: string;
   primaryActionBtnLabel: string;
   username: string;
-  address?: AddressLab;
+  address?: Address;
   secondaryActionBtn?: SecondaryActionBtnProps | null;
   triggerModalDisabled?: boolean;
 };

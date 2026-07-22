@@ -1,8 +1,8 @@
-import { AddressLab } from '../../app/api/apiTypes/shopApiTypes';
+import { Address } from '../../app/api/apiTypes/shopApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
 
 type AddressInforListProps = {
-  address: AddressLab;
+  address: Address;
   username: string;
 };
 

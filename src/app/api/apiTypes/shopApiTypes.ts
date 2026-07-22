@@ -78,7 +78,7 @@ export type ProductPreview = {
 export type PreferredFashion =
   'mensFashion' | 'womensFashion' | 'kidsFashion' | 'noPreference';
 
-export type AddressLab = BaseAddress & {
+export type Address = BaseAddress & {
   id: string;
   label: string;
   name: string;
@@ -101,7 +101,7 @@ export type UpdateAddressRequest = { address: AddressInput };
 
 export type UserProfileResponse = DefaultResponseType &
   BaseProfile & {
-    addresses: AddressLab[];
+    addresses: Address[];
     favorites: string[];
     id: string;
   };
@@ -115,7 +115,7 @@ export type BaseProfile = {
 };
 
 export type UserProfileRequest = BaseProfile & {
-  addresses?: AddressLab[];
+  addresses?: Address[];
 };
 
 export type PaymentType = 'card' | 'wallet' | 'mobilepay';
