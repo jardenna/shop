@@ -24,6 +24,7 @@ const createUserAddress = asyncHandler(async (req, res) => {
 
   if (duplicateAddress) {
     return res.status(400).json({
+      success: false,
       message: t('addressAlreadyExists', req.lang),
     });
   }
@@ -53,18 +54,21 @@ const updateUserAddress = asyncHandler(async (req, res) => {
 
   const validationError = validateCreateAddress(address);
   if (validationError) {
-    return res.status(400).json({ message: validationError });
+    return res.status(400).json({ success: false, message: validationError });
   }
 
   const existingAddress = user.addresses.id(addressId);
   if (!existingAddress) {
-    return res.status(404).json({ message: t('noAddressData', req.lang) });
+    return res
+      .status(404)
+      .json({ success: false, message: t('noAddressData', req.lang) });
   }
 
   const duplicateAddress = findDuplicateAddress(user.addresses, address);
 
   if (duplicateAddress) {
     return res.status(400).json({
+      success: false,
       message: t('addressAlreadyExists', req.lang),
     });
   }
@@ -92,7 +96,9 @@ const deleteUserAddress = asyncHandler(async (req, res) => {
 
   const existingAddress = user.addresses.id(addressId);
   if (!existingAddress) {
-    return res.status(404).json({ message: t('noAddressData', req.lang) });
+    return res
+      .status(404)
+      .json({ success: false, message: t('noAddressData', req.lang) });
   }
   existingAddress.deleteOne();
 
