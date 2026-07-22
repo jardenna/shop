@@ -1,14 +1,9 @@
 import bcrypt from 'bcryptjs';
 import asyncHandler from '../middleware/asyncHandler.js';
 import User from '../models/userModel.js';
-import {
-  findDuplicateAddress,
-  getAddressLabel,
-} from '../utils/addressUtils.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
 import { sortColumns } from '../utils/sortColumns.js';
 import { t } from '../utils/translator.js';
-import { validateCreateAddress } from '../validators/validateAddress.js';
 import { validateEmail, validatePassword } from '../validators/validateAuth.js';
 
 // @desc    Get all users
@@ -44,14 +39,7 @@ const getCurrentUserProfile = asyncHandler(async (req, res) => {
     '-isAdmin -role -password',
   );
 
-  const responseUser = user.toObject();
-
-  responseUser.addresses = responseUser.addresses.map((address) => ({
-    ...address,
-    label: getAddressLabel(address.standardAddress),
-  }));
-
-  res.status(200).json(responseUser);
+  res.status(200).json(user);
 });
 
 // @desc    Update User profile
@@ -59,15 +47,8 @@ const getCurrentUserProfile = asyncHandler(async (req, res) => {
 // @method  Put
 // @access  Private
 const updateCurrentUserProfile = asyncHandler(async (req, res) => {
-  const {
-    password,
-    email,
-    username,
-    phoneNo,
-    dateOfBirth,
-    preferredFashion,
-    address,
-  } = req.body;
+  const { password, email, username, phoneNo, dateOfBirth, preferredFashion } =
+    req.body;
 
   const user = await User.findById(req.user._id);
 
@@ -117,85 +98,9 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
       user.password = hashedPassword;
     }
 
-    // Addresses
-    if (address) {
-      // Delete
-      if (typeof address === 'string') {
-        const existing = user.addresses.id(address);
-        if (!existing) {
-          return res
-            .status(404)
-            .json({ message: t('noAddressData', req.lang) });
-        }
-        existing.deleteOne();
-      }
-      // Update
-      else if (address.id) {
-        // Create
-        const error = validateCreateAddress(address);
-        if (error) {
-          return res.status(400).json({ message: error });
-        }
-
-        const duplicateAddress = findDuplicateAddress(user.addresses, address);
-
-        if (duplicateAddress) {
-          return res.status(400).json({
-            message: t('addressAlreadyExists', req.lang),
-          });
-        }
-
-        const existing = user.addresses.id(address.id);
-        if (!existing) {
-          return res
-            .status(404)
-            .json({ message: t('noAddressData', req.lang) });
-        }
-        existing.name = address.name ?? existing.name;
-        existing.street = address.street ?? existing.street;
-        existing.zipCode = address.zipCode ?? existing.zipCode;
-        existing.city = address.city ?? existing.city;
-        existing.country = address.country ?? existing.country;
-        existing.standardAddress =
-          address.standardAddress ?? existing.standardAddress;
-      }
-      // Add new
-      else {
-        const error = validateCreateAddress(address);
-
-        if (error) {
-          return res.status(400).json({ message: error });
-        }
-
-        const duplicateAddress = findDuplicateAddress(user.addresses, address);
-
-        if (duplicateAddress) {
-          return res.status(400).json({
-            message: t('addressAlreadyExists', req.lang),
-          });
-        }
-
-        if (user.addresses.length >= 4) {
-          return res.status(400).json({
-            success: false,
-            message: t('onlyFourAddresses', req.lang),
-          });
-        }
-
-        user.addresses.push(user.addresses.create(address));
-      }
-    }
-
     const updatedUser = await user.save();
 
-    const responseUser = updatedUser.toObject();
-
-    responseUser.addresses = responseUser.addresses.map((address) => ({
-      ...address,
-      label: getAddressLabel(address.standardAddress),
-    }));
-
-    res.status(200).json(responseUser);
+    res.status(200).json(updatedUser);
   } else {
     return res.status(404).json({
       success: false,

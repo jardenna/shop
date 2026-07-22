@@ -3,7 +3,6 @@ import { BaseAddress } from '../../app/api/apiTypes/sharedApiTypes';
 import {
   AddAddressRequest,
   UpdateAddressRequest,
-  UserProfileResponse,
 } from '../../app/api/apiTypes/shopApiTypes';
 import { addressUrl } from '../../app/endpoints';
 
@@ -21,7 +20,7 @@ export const addressesApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.Address],
     }),
-    updateAddress: builder.mutation<UserProfileResponse, UpdateAddressRequest>({
+    updateAddress: builder.mutation<BaseAddress, UpdateAddressRequest>({
       query: ({ address, id }) => ({
         url: `${addressUrl}/${id}`,
         method: 'PATCH',
