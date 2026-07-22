@@ -11,7 +11,7 @@
 }
 
 .my-address-list {
-  @include grid-template-column(230px);
+  @include grid-template-column(280px);
 
   gap: 12px;
   grid-auto-rows: rem(248px) auto;
@@ -36,6 +36,10 @@
   p {
     margin: 0;
   }
+}
+
+.my-address-label {
+  text-transform: uppercase;
 }
 
 .my-address-title {
