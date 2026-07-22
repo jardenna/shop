@@ -78,24 +78,17 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
     }
 
     if (password) {
-      const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS) || 10;
-      const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
-
       const passwordErrorKey = validatePassword(password);
-
-      if (password === '') {
-        return res.status(401).json({
-          success: false,
-          message: t('noPassword', req.lang),
-        });
-      }
 
       if (passwordErrorKey) {
         return res.status(400).json({
           message: t(passwordErrorKey, req.lang),
         });
       }
-      user.password = hashedPassword;
+
+      const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS) || 10;
+
+      user.password = await bcrypt.hash(password, saltRounds);
     }
 
     const updatedUser = await user.save();
