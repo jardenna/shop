@@ -12,7 +12,7 @@ import {
   createUserAddress,
   deleteUserAddress,
   getUserAddresses,
-  updateUserAddresses,
+  updateUserAddress,
 } from '../controllers/addressController.js';
 import {
   authenticate,
@@ -46,7 +46,7 @@ router
 
 router
   .route('/profile/addresses/:addressId')
-  .patch(languageMiddleware, authenticate, updateUserAddresses)
+  .patch(languageMiddleware, authenticate, updateUserAddress)
   .delete(languageMiddleware, authenticate, deleteUserAddress);
 
 // Employee routes

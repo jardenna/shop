@@ -2,7 +2,7 @@ import asyncHandler from '../middleware/asyncHandler.js';
 import User from '../models/userModel.js';
 import {
   findDuplicateAddress,
-  getAddressLabel,
+  formatAddresses,
 } from '../utils/addressUtils.js';
 import { t } from '../utils/translator.js';
 import { validateCreateAddress } from '../validators/validateAddress.js';
@@ -15,9 +15,9 @@ const createUserAddress = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
   const { address } = req.body;
 
-  const error = validateCreateAddress(address);
-  if (error) {
-    return res.status(400).json({ message: error });
+  const validationError = validateCreateAddress(address);
+  if (validationError) {
+    return res.status(400).json({ message: validationError });
   }
 
   const duplicateAddress = findDuplicateAddress(user.addresses, address);
@@ -39,32 +39,25 @@ const createUserAddress = asyncHandler(async (req, res) => {
 
   await user.save();
 
-  const responseUser = updatedUser.toObject();
-
-  responseUser.addresses = responseUser.addresses.map((address) => ({
-    ...address,
-    label: getAddressLabel(address.standardAddress),
-  }));
-
-  res.status(201).json(responseUser.addresses);
+  res.status(201).json(formatAddresses(user.addresses));
 });
 
 // @desc    Update users address
 // @route   /api/users/profile/addresses/:addressId
 // @method  Patch
 // @access  Private
-const updateUserAddresses = asyncHandler(async (req, res) => {
+const updateUserAddress = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
   const { address } = req.body;
   const { addressId } = req.params;
 
-  const error = validateCreateAddress(address);
-  if (error) {
-    return res.status(400).json({ message: error });
+  const validationError = validateCreateAddress(address);
+  if (validationError) {
+    return res.status(400).json({ message: validationError });
   }
 
-  const existing = user.addresses.id(addressId);
-  if (!existing) {
+  const existingAddress = user.addresses.id(addressId);
+  if (!existingAddress) {
     return res.status(404).json({ message: t('noAddressData', req.lang) });
   }
 
@@ -76,23 +69,17 @@ const updateUserAddresses = asyncHandler(async (req, res) => {
     });
   }
 
-  existing.name = address.name ?? existing.name;
-  existing.street = address.street ?? existing.street;
-  existing.zipCode = address.zipCode ?? existing.zipCode;
-  existing.city = address.city ?? existing.city;
-  existing.country = address.country ?? existing.country;
-  existing.standardAddress =
-    address.standardAddress ?? existing.standardAddress;
+  existingAddress.name = address.name ?? existingAddress.name;
+  existingAddress.street = address.street ?? existingAddress.street;
+  existingAddress.zipCode = address.zipCode ?? existingAddress.zipCode;
+  existingAddress.city = address.city ?? existingAddress.city;
+  existingAddress.country = address.country ?? existingAddress.country;
+  existingAddress.standardAddress =
+    address.standardAddress ?? existingAddress.standardAddress;
 
-  const updatedUser = await user.save();
+  await user.save();
 
-  const responseUser = updatedUser.toObject();
-
-  responseUser.addresses = responseUser.addresses.map((address) => ({
-    ...address,
-    label: getAddressLabel(address.standardAddress),
-  }));
-  res.status(200).json(responseUser);
+  res.status(200).json(formatAddresses(user.addresses));
 });
 
 // @desc    Delete users address
@@ -103,14 +90,14 @@ const deleteUserAddress = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
   const { addressId } = req.params;
 
-  const existing = user.addresses.id(addressId);
-  if (!existing) {
+  const existingAddress = user.addresses.id(addressId);
+  if (!existingAddress) {
     return res.status(404).json({ message: t('noAddressData', req.lang) });
   }
-  existing.deleteOne();
+  existingAddress.deleteOne();
 
   await user.save();
-  res.send(user.addresses);
+  res.status(200).json(formatAddresses(user.addresses));
 });
 
 // @desc    Get users addresses
@@ -120,21 +107,12 @@ const deleteUserAddress = asyncHandler(async (req, res) => {
 const getUserAddresses = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
 
-  const updatedUser = await user.save();
-
-  const responseUser = updatedUser.toObject();
-
-  responseUser.addresses = responseUser.addresses.map((address) => ({
-    ...address,
-    label: getAddressLabel(address.standardAddress),
-  }));
-
-  res.status(200).json(responseUser);
+  res.status(200).json(formatAddresses(user.addresses));
 });
 
 export {
   createUserAddress,
   deleteUserAddress,
   getUserAddresses,
-  updateUserAddresses,
+  updateUserAddress,
 };

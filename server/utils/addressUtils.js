@@ -29,3 +29,10 @@ export const findDuplicateAddress = (userAddresses, address) => {
       normalize(item.country) === normalize(address.country),
   );
 };
+
+export const formatAddresses = (addresses) => {
+  return addresses.map((address) => ({
+    ...address.toObject(),
+    label: getAddressLabel(address.standardAddress),
+  }));
+};
