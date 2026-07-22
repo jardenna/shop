@@ -1,17 +1,21 @@
+import { STANDARD_ADDRESS_TYPES } from '../config/constants.js';
+
+const [deliveryType, billingType] = STANDARD_ADDRESS_TYPES;
+
 export const getAddressLabel = (standardAddress) => {
-  const isDelivery = standardAddress.includes('addressDelivery');
-  const isBilling = standardAddress.includes('addressBilling');
+  const isDelivery = standardAddress.includes(deliveryType);
+  const isBilling = standardAddress.includes(billingType);
 
   if (isDelivery && isBilling) {
     return 'addressdeliveryAndBilling';
   }
 
   if (isDelivery) {
-    return 'addressDelivery';
+    return deliveryType;
   }
 
   if (isBilling) {
-    return 'addressBilling';
+    return billingType;
   }
 
   return '';
