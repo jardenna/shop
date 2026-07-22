@@ -6,6 +6,8 @@ const validateCreateAddress = (address) => {
       return 'Please enter zipcode';
     case !address.city:
       return 'Please enter city';
+    case !address.country:
+      return 'Please enter country';
     default:
       return null; // No errors
   }
