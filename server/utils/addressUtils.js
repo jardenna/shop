@@ -17,7 +17,7 @@ export const getAddressLabel = (standardAddress) => {
   return '';
 };
 
-const normalize = (value) => value.trim().toLowerCase();
+const normalize = (value) => (value ?? '').trim().toLowerCase();
 
 export const findDuplicateAddress = (userAddresses, address) => {
   return userAddresses.find(
