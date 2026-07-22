@@ -86,7 +86,6 @@ export type Address = BaseAddress & {
 
 export type AddressInput = BaseAddress & {
   id: string | null;
-  name: string;
 };
 
 export type AddAddressRequest = {

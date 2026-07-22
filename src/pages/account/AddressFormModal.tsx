@@ -1,4 +1,7 @@
-import { StandardAddress } from '../../app/api/apiTypes/sharedApiTypes';
+import {
+  AddressFields,
+  StandardAddress,
+} from '../../app/api/apiTypes/sharedApiTypes';
 import type {
   Address,
   AddressInput,
@@ -36,10 +39,7 @@ type AddressFormModalProps = {
   triggerModalDisabled?: boolean;
 };
 
-type AddressField = Extract<
-  keyof AddressInput,
-  'name' | 'street' | 'zipCode' | 'city' | 'country'
->;
+type AddressField = keyof AddressFields;
 
 type AddressFieldListProps = {
   name: AddressField;
@@ -168,7 +168,7 @@ const AddressFormModal = ({
               required={required}
               name={name}
               id={name}
-              value={values[name] ?? ''}
+              value={values[name]}
               labelText={language[name]}
               type={type}
               errorText={language[errors[name]]}
