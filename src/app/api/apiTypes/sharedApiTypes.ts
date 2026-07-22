@@ -112,7 +112,6 @@ export type BaseAddress = {
   street: string;
   zipCode: string;
   country?: string;
-  name?: string;
 };
 
 export interface Discount {

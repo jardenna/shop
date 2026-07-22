@@ -1,12 +1,12 @@
 import { ErrorBoundary } from 'react-error-boundary';
-import { Address } from '../../app/api/apiTypes/shopApiTypes';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import AddressFormModal from './AddressFormModal';
 import AddressInfoListContent from './AddressInfoListContent';
 import DeleteAddressModal from './DeleteAddressModal';
+import { AddressLab } from '../../app/api/apiTypes/shopApiTypes';
 
 interface AddressListProps {
-  addresses: Address[];
+  addresses: AddressLab[];
   language: Record<string, string>;
   username: string;
   className?: string;

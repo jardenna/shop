@@ -1,7 +1,7 @@
 import { StandardAddress } from '../../app/api/apiTypes/sharedApiTypes';
 import type {
-  Address,
   AddressInput,
+  AddressLab,
 } from '../../app/api/apiTypes/shopApiTypes';
 import FieldSet from '../../components/fieldset/FieldSet';
 import CheckboxList from '../../components/formElements/checkbox/CheckboxList';
@@ -31,12 +31,15 @@ type AddressFormModalProps = {
   popupMessage: string;
   primaryActionBtnLabel: string;
   username: string;
-  address?: Address;
+  address?: AddressLab;
   secondaryActionBtn?: SecondaryActionBtnProps | null;
   triggerModalDisabled?: boolean;
 };
 
-type AddressField = keyof Omit<Address, 'standardAddress'>;
+type AddressField = Extract<
+  keyof AddressInput,
+  'name' | 'street' | 'zipCode' | 'city' | 'country'
+>;
 
 type AddressFieldListProps = {
   name: AddressField;

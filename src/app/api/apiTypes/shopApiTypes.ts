@@ -82,8 +82,15 @@ export type Address = BaseAddress & {
   id: string;
 };
 
+export type AddressLab = BaseAddress & {
+  id: string;
+  label: string;
+  name: string;
+};
+
 export type AddressInput = BaseAddress & {
   id: string | null;
+  name: string;
 };
 
 export type AddAddressRequest = {
@@ -98,7 +105,7 @@ export type UpdateAddressRequest = { address: AddressInput };
 
 export type UserProfileResponse = DefaultResponseType &
   BaseProfile & {
-    addresses: Address[];
+    addresses: AddressLab[];
     favorites: string[];
     id: string;
   };
