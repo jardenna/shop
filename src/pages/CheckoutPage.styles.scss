@@ -36,6 +36,10 @@
   }
 
   .my-address-list {
+    .my-address-title {
+      margin-top: 4px;
+    }
+
     &.checkout-address-list {
       display: flex;
       flex-direction: column;
