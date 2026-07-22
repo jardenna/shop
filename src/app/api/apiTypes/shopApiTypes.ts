@@ -80,6 +80,8 @@ export type PreferredFashion =
 
 export type Address = BaseAddress & {
   id: string;
+  label: string;
+  name: string;
 };
 
 export type AddressInput = BaseAddress & {
@@ -94,7 +96,7 @@ export type DeleteAddressRequest = {
   address: string;
 };
 
-export type UpdateAddressRequest = { address: AddressInput };
+export type UpdateAddressRequest = { address: AddressInput; id: string };
 
 export type UserProfileResponse = DefaultResponseType &
   BaseProfile & {

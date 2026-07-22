@@ -2,10 +2,6 @@
 @use '../scss/globals' as *;
 
 .checkout-page {
-  .my-address-title {
-    margin-top: 0;
-  }
-
   .select-payment-method {
     display: flex;
     gap: 20px;
@@ -40,6 +36,10 @@
   }
 
   .my-address-list {
+    .my-address-title {
+      margin-top: 4px;
+    }
+
     &.checkout-address-list {
       display: flex;
       flex-direction: column;

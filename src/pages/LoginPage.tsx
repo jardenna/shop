@@ -21,7 +21,8 @@ const LoginPage = () => {
   const [loginUser, { isLoading }] = useLoginMutation();
   const { onAddMessagePopup } = useMessagePopup();
   const { currentUser, isLoading: isUserLoading, logout } = useAuth();
-  const initialState = { email: '', password: '' };
+  // const initialState = { email: '', password: '' };
+  const initialState = { email: 'helle@mail.com', password: 'Helle123!' };
   const from = location.state?.from?.pathname || ShopPath.Root;
   const [searchParams, setSearchParams] = useSearchParams();
   const paramKey = 'mode';

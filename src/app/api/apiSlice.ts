@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export enum TagTypesEnum {
+  Address = 'Address',
   Auth = 'Auth',
   Carts = 'Carts',
   Categories = 'Categories',
@@ -36,6 +37,7 @@ const apiSlice = createApi({
     TagTypesEnum.Carts,
     TagTypesEnum.Order,
     TagTypesEnum.Checkout,
+    TagTypesEnum.Address,
   ],
   endpoints: () => ({}),
 });

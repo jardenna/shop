@@ -7,6 +7,13 @@ import {
   updateCurrentUserProfile,
   updateUserById,
 } from '../controllers/userController.js';
+
+import {
+  createUserAddress,
+  deleteUserAddress,
+  getUserAddresses,
+  updateUserAddress,
+} from '../controllers/addressController.js';
 import {
   authenticate,
   authorizeAdmin,
@@ -31,6 +38,16 @@ router
   .route('/profile')
   .get(languageMiddleware, authenticate, getCurrentUserProfile)
   .put(languageMiddleware, authenticate, updateCurrentUserProfile);
+
+router
+  .route('/profile/addresses')
+  .get(languageMiddleware, authenticate, getUserAddresses)
+  .post(languageMiddleware, authenticate, createUserAddress);
+
+router
+  .route('/profile/addresses/:addressId')
+  .patch(languageMiddleware, authenticate, updateUserAddress)
+  .delete(languageMiddleware, authenticate, deleteUserAddress);
 
 // Employee routes
 router

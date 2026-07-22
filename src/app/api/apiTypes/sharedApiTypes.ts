@@ -106,13 +106,16 @@ export interface Summary {
 
 export type StandardAddress = 'addressBilling' | 'addressDelivery';
 
-export type BaseAddress = {
+export type AddressFields = {
   city: string;
-  standardAddress: StandardAddress[];
+  country: string;
+  name: string;
   street: string;
   zipCode: string;
-  country?: string;
-  name?: string;
+};
+
+export type BaseAddress = AddressFields & {
+  standardAddress: StandardAddress[];
 };
 
 export interface Discount {

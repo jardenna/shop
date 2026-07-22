@@ -6,7 +6,11 @@ export const checkoutApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getCheckout: builder.query<CheckoutResponse, void>({
       query: () => checkoutUrl,
-      providesTags: [TagTypesEnum.Checkout, TagTypesEnum.Carts],
+      providesTags: [
+        TagTypesEnum.Checkout,
+        TagTypesEnum.Carts,
+        TagTypesEnum.Address,
+      ],
     }),
   }),
 });

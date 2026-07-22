@@ -50,7 +50,6 @@ const CheckoutPage = () => {
     },
   };
   console.log(payload);
-  // justify-self: end;
 
   return (
     <MainPageContainer heading="checkout">
