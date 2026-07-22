@@ -1,3 +1,4 @@
+import { STANDARD_ADDRESS_TYPES } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import User from '../models/userModel.js';
 import {
@@ -14,6 +15,8 @@ import { validateCreateAddress } from '../validators/validateAddress.js';
 const createUserAddress = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
   const { address } = req.body;
+
+  const [deliveryType, billingType] = STANDARD_ADDRESS_TYPES;
 
   const validationError = validateCreateAddress(address);
   if (validationError) {
@@ -34,6 +37,30 @@ const createUserAddress = asyncHandler(async (req, res) => {
       success: false,
       message: t('onlyFourAddresses', req.lang),
     });
+  }
+
+  const hasStandardAddress = user.addresses.some(
+    (item) => item.standardAddress.length > 0,
+  );
+
+  if (!hasStandardAddress) {
+    address.standardAddress = STANDARD_ADDRESS_TYPES;
+  } else {
+    if (address.standardAddress.includes(deliveryType)) {
+      user.addresses.forEach((item) => {
+        item.standardAddress = item.standardAddress.filter(
+          (type) => type !== deliveryType,
+        );
+      });
+    }
+
+    if (address.standardAddress.includes(billingType)) {
+      user.addresses.forEach((item) => {
+        item.standardAddress = item.standardAddress.filter(
+          (type) => type !== billingType,
+        );
+      });
+    }
   }
 
   user.addresses.push(user.addresses.create(address));
