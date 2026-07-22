@@ -40,3 +40,21 @@ export const formatAddresses = (addresses) => {
     label: getAddressLabel(address.standardAddress),
   }));
 };
+
+export const updateStandardAddresses = (
+  userAddresses,
+  standardAddress,
+  currentAddressId,
+) => {
+  standardAddress.forEach((addressType) => {
+    userAddresses.forEach((address) => {
+      if (address.id === currentAddressId) {
+        return;
+      }
+
+      address.standardAddress = address.standardAddress.filter(
+        (type) => type !== addressType,
+      );
+    });
+  });
+};

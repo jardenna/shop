@@ -4,6 +4,7 @@ import User from '../models/userModel.js';
 import {
   findDuplicateAddress,
   formatAddresses,
+  updateStandardAddresses,
 } from '../utils/addressUtils.js';
 import { t } from '../utils/translator.js';
 import { validateCreateAddress } from '../validators/validateAddress.js';
@@ -16,11 +17,16 @@ const createUserAddress = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
   const { address } = req.body;
 
-  const [deliveryType, billingType] = STANDARD_ADDRESS_TYPES;
-
   const validationError = validateCreateAddress(address);
   if (validationError) {
     return res.status(400).json({ message: validationError });
+  }
+
+  if (user.addresses.length >= 4) {
+    return res.status(400).json({
+      success: false,
+      message: t('onlyFourAddresses', req.lang),
+    });
   }
 
   const duplicateAddress = findDuplicateAddress(user.addresses, address);
@@ -32,13 +38,6 @@ const createUserAddress = asyncHandler(async (req, res) => {
     });
   }
 
-  if (user.addresses.length >= 4) {
-    return res.status(400).json({
-      success: false,
-      message: t('onlyFourAddresses', req.lang),
-    });
-  }
-
   const hasStandardAddress = user.addresses.some(
     (item) => item.standardAddress.length > 0,
   );
@@ -46,25 +45,10 @@ const createUserAddress = asyncHandler(async (req, res) => {
   if (!hasStandardAddress) {
     address.standardAddress = STANDARD_ADDRESS_TYPES;
   } else {
-    if (address.standardAddress.includes(deliveryType)) {
-      user.addresses.forEach((item) => {
-        item.standardAddress = item.standardAddress.filter(
-          (type) => type !== deliveryType,
-        );
-      });
-    }
-
-    if (address.standardAddress.includes(billingType)) {
-      user.addresses.forEach((item) => {
-        item.standardAddress = item.standardAddress.filter(
-          (type) => type !== billingType,
-        );
-      });
-    }
+    updateStandardAddresses(user.addresses, address.standardAddress);
   }
 
   user.addresses.push(user.addresses.create(address));
-
   await user.save();
 
   res.status(201).json(formatAddresses(user.addresses));
@@ -81,14 +65,19 @@ const updateUserAddress = asyncHandler(async (req, res) => {
 
   const validationError = validateCreateAddress(address);
   if (validationError) {
-    return res.status(400).json({ success: false, message: validationError });
+    return res.status(400).json({
+      success: false,
+      message: validationError,
+    });
   }
 
   const existingAddress = user.addresses.id(addressId);
+
   if (!existingAddress) {
-    return res
-      .status(404)
-      .json({ success: false, message: t('noAddressData', req.lang) });
+    return res.status(404).json({
+      success: false,
+      message: t('noAddressData', req.lang),
+    });
   }
 
   const duplicateAddress = findDuplicateAddress(user.addresses, address);
@@ -100,13 +89,21 @@ const updateUserAddress = asyncHandler(async (req, res) => {
     });
   }
 
+  if (address.standardAddress) {
+    updateStandardAddresses(
+      user.addresses,
+      address.standardAddress,
+      existingAddress.id,
+    );
+
+    existingAddress.standardAddress = address.standardAddress;
+  }
+
   existingAddress.name = address.name ?? existingAddress.name;
   existingAddress.street = address.street ?? existingAddress.street;
   existingAddress.zipCode = address.zipCode ?? existingAddress.zipCode;
   existingAddress.city = address.city ?? existingAddress.city;
   existingAddress.country = address.country ?? existingAddress.country;
-  existingAddress.standardAddress =
-    address.standardAddress ?? existingAddress.standardAddress;
 
   await user.save();
 
