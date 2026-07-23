@@ -28,17 +28,7 @@ cd mern-shop
 
 Install dependencies for both the frontend and backend.
 
-### Frontend
-
 ```bash
-cd client
-npm install
-```
-
-### Backend
-
-```bash
-cd server
 npm install
 ```
 
@@ -55,7 +45,7 @@ NODE_ENV=development
 
 PORT=5000
 
-CLIENT_URL=http://localhost:5173
+CLIENT_URL=http://localhost:3000
 
 MONGO_URI=your_mongodb_connection_string
 
@@ -78,18 +68,9 @@ VITE_CURRENCY_API_KEY=your_currency_api_key
 
 ## Start the application
 
-### Backend
-
 ```bash
-cd server
-npm run dev
-```
 
-### Frontend
-
-```bash
-cd client
-npm run dev
+npm start
 ```
 
 The application will typically be available at:
@@ -138,9 +119,9 @@ Currently supported:
 
 Translations are maintained in CSV files and automatically converted into JSON files during development.
 
-## Features
-
 # Features
+
+## Features
 
 - English and Danish UI
 - Backend validation messages translated
