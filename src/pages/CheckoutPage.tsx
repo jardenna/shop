@@ -40,6 +40,7 @@ const CheckoutPage = () => {
               />
               <Payment
                 paymentMethod={checkout.paymentMethod}
+                paymentMethod1={checkout.paymentMethod1}
                 values={values}
                 onChange={onChange}
                 name="paymentMethod"

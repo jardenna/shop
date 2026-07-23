@@ -110,3 +110,5 @@ export const DELIVERY_STATUS = {
 };
 
 export const DELIVERY_STATUS_ENUM = Object.values(DELIVERY_STATUS);
+
+export const PAYMENT_METHODS1 = ['visa', 'paypal', 'mobilepay', 'mastercard'];

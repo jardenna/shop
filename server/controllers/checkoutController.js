@@ -1,4 +1,7 @@
-import { PAYMENT_METHODS } from '../config/paymentConstants.js';
+import {
+  PAYMENT_METHODS,
+  PAYMENT_METHODS1,
+} from '../config/paymentConstants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
 import User from '../models/userModel.js';
@@ -49,6 +52,7 @@ const getCheckout = asyncHandler(async (req, res) => {
     summary: cartData.summary,
     discount: activeDiscount,
     paymentMethod: PAYMENT_METHODS,
+    paymentMethod1: PAYMENT_METHODS1,
   });
 });
 
