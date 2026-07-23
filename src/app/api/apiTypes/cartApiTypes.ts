@@ -1,10 +1,10 @@
+import { Address } from './addressApiTypes';
 import type {
   DefaultResponseType,
   Discount,
   Size,
   Summary,
 } from './sharedApiTypes';
-import { Address } from './shopApiTypes';
 
 export interface BaseOrder {
   color: string;

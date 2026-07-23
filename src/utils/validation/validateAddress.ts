@@ -1,4 +1,4 @@
-import type { AddressInput } from '../../app/api/apiTypes/shopApiTypes';
+import { AddressInput } from '../../app/api/apiTypes/addressApiTypes';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
 

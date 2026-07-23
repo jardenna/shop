@@ -1,9 +1,10 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
-import { BaseAddress } from '../../app/api/apiTypes/sharedApiTypes';
 import {
   AddAddressRequest,
+  BaseAddress,
   UpdateAddressRequest,
-} from '../../app/api/apiTypes/shopApiTypes';
+} from '../../app/api/apiTypes/addressApiTypes';
+
 import { addressUrl } from '../../app/endpoints';
 
 export const addressesApiSlice = apiSlice.injectEndpoints({

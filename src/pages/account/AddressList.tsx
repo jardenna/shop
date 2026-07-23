@@ -1,5 +1,5 @@
 import { ErrorBoundary } from 'react-error-boundary';
-import { Address } from '../../app/api/apiTypes/shopApiTypes';
+import { Address } from '../../app/api/apiTypes/addressApiTypes';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import AddressFormModal from './AddressFormModal';
 import AddressInfoListContent from './AddressInfoListContent';

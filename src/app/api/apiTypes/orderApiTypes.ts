@@ -1,10 +1,6 @@
+import { BaseAddress } from './addressApiTypes';
 import { BaseOrder, Order, PaymentMethods } from './cartApiTypes';
-import {
-  BaseAddress,
-  DefaultResponseType,
-  Discount,
-  Summary,
-} from './sharedApiTypes';
+import { DefaultResponseType, Discount, Summary } from './sharedApiTypes';
 
 export type PaymentStatus = 'pending' | 'failed' | 'paid';
 

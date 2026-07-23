@@ -1,9 +1,9 @@
 import { HTMLInputTypeAttribute } from 'react';
 import { IconName } from '../../../types/enums';
 import { InputMode } from './../../../types/types';
+import { Address } from './addressApiTypes';
 import { PaymentMethods } from './cartApiTypes';
 import type {
-  BaseAddress,
   BasePagination,
   BaseProductParams,
   BaseShopProduct,
@@ -79,26 +79,6 @@ export type ProductPreview = {
 // Profile
 export type PreferredFashion =
   'mensFashion' | 'womensFashion' | 'kidsFashion' | 'noPreference';
-
-export type Address = BaseAddress & {
-  id: string;
-  label: string;
-  name: string;
-};
-
-export type AddressInput = BaseAddress & {
-  id: string | null;
-};
-
-export type AddAddressRequest = {
-  address: AddressInput;
-};
-
-export type DeleteAddressRequest = {
-  address: string;
-};
-
-export type UpdateAddressRequest = { address: AddressInput; id: string };
 
 export type UserProfileResponse = DefaultResponseType &
   BaseProfile & {
