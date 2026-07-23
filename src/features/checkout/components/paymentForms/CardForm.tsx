@@ -20,13 +20,11 @@ const CardForm = ({
   checkout,
   paymentMethod,
 }: CardFormProps) => {
-  const initialValues: Record<string, string> = Object.fromEntries(
+  const initialValues = Object.fromEntries(
     fields.map(({ name }) => [name, '']),
   );
 
-  const { values, onChange, onSubmit } = useFormValidation<
-    Record<string, string>
-  >({
+  const { values, onChange, onSubmit } = useFormValidation({
     initialState: initialValues,
     callback: handleSubmit,
   });
