@@ -5,6 +5,13 @@ export const PAYMENT_METHODS = Object.freeze({
   MOBILEPAY: 'mobilepay',
 });
 
+export const PAYMENT_METHODS_LIST = [
+  'visa',
+  'paypal',
+  'mobilepay',
+  'mastercard',
+];
+
 export const ALLOWED_PAYMENT_METHODS = Object.values(PAYMENT_METHODS);
 export const PAYMENT_STATUS = {
   PENDING: 'PENDING',
@@ -21,5 +28,3 @@ export const DELIVERY_STATUS = {
 };
 
 export const DELIVERY_STATUS_ENUM = Object.values(DELIVERY_STATUS);
-
-export const PAYMENT_METHODS1 = ['visa', 'paypal', 'mobilepay', 'mastercard'];
