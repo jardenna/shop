@@ -13,7 +13,7 @@ interface PaymentProps {
   language: Record<string, string>;
   name: string;
   onChange: InputChangeHandler;
-  paymentMethod1: PaymentMethods1[];
+  paymentMethod: PaymentMethods1[];
   values: {
     paymentMethod: string;
   };
@@ -24,11 +24,11 @@ const Payment = ({
   values,
   name,
   checkout,
-  paymentMethod1,
+  paymentMethod,
   language,
 }: PaymentProps) => {
   const availablePaymentMethods = paymentMethodsList.filter((method) =>
-    paymentMethod1.includes(method.id),
+    paymentMethod.includes(method.id),
   );
 
   const methodToShow = availablePaymentMethods.find(

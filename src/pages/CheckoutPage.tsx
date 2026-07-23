@@ -39,7 +39,7 @@ const CheckoutPage = () => {
                 className="checkout-address-list"
               />
               <Payment
-                paymentMethod1={checkout.paymentMethod1}
+                paymentMethod={checkout.paymentMethod1}
                 values={values}
                 onChange={onChange}
                 name="paymentMethod"
