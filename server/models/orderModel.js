@@ -1,8 +1,8 @@
 import { model, Schema } from 'mongoose';
 import {
-  ALLOWED_PAYMENT_METHODS,
   DELIVERY_STATUS,
   DELIVERY_STATUS_ENUM,
+  PAYMENT_METHODS_LIST,
   PAYMENT_STATUS,
   PAYMENT_STATUS_ENUM,
 } from '../config/paymentConstants.js';
@@ -50,7 +50,7 @@ const orderModelSchema = new Schema(
     payment: {
       method: {
         type: String,
-        enum: ALLOWED_PAYMENT_METHODS,
+        enum: PAYMENT_METHODS_LIST,
         required: true,
       },
       status: {

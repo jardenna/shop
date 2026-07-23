@@ -1,6 +1,6 @@
 import {
-  ALLOWED_PAYMENT_METHODS,
   PAYMENT_METHODS,
+  PAYMENT_METHODS_LIST,
 } from '../config/paymentConstants.js';
 
 const validateFakePayment = ({
@@ -17,7 +17,7 @@ const validateFakePayment = ({
     return 'Payment method is required';
   }
 
-  if (!ALLOWED_PAYMENT_METHODS.includes(paymentMethod)) {
+  if (!PAYMENT_METHODS_LIST.includes(paymentMethod)) {
     return 'Invalid payment method';
   }
 

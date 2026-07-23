@@ -1,5 +1,5 @@
 import {
-  ALLOWED_PAYMENT_METHODS,
+  PAYMENT_METHODS_LIST,
   PAYMENT_STATUS,
 } from '../config/paymentConstants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
@@ -113,7 +113,7 @@ const createOrder = asyncHandler(async (req, res) => {
     });
   }
 
-  if (!ALLOWED_PAYMENT_METHODS.includes(payment.method)) {
+  if (!PAYMENT_METHODS_LIST.includes(payment.method)) {
     return res.status(400).json({
       success: false,
       message: t('invalidPaymentMethod', req.lang),
