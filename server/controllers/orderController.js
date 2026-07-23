@@ -216,10 +216,6 @@ const payOrder = asyncHandler(async (req, res) => {
     });
   }
 
-  //   validateCardNumber(payment.cardNumber);
-  // validateExpiryDate(payment.expiryDate);
-  // validateCvv(payment.cvv);
-
   const orderBelongsToUser = order.user.toString() === req.user._id.toString();
 
   if (!orderBelongsToUser) {
