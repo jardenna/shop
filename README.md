@@ -43,9 +43,6 @@ Update the environment variables with your own local configuration before starti
 ````
 
 
-
----
-
 ## Start the application
 
 ```bash
