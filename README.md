@@ -90,6 +90,8 @@ Currently supported:
 
 Translations are maintained in CSV files and automatically converted into JSON files during development.
 
+## Features
+
 ### Features
 
 - English and Danish UI
@@ -99,7 +101,7 @@ Translations are maintained in CSV files and automatically converted into JSON f
 - Persisted language preference
 - CSV-based translation workflow
 
-## Features
+````
 
 ### User Experience
 
@@ -234,7 +236,7 @@ server/
 ├── services/
 ├── utils/
 └── validators/
-```
+````
 
 ## Architecture
 
