@@ -104,20 +104,6 @@ export interface Summary {
   totalPrice: number;
 }
 
-export type StandardAddress = 'addressBilling' | 'addressDelivery';
-
-export type AddressFields = {
-  city: string;
-  country: string;
-  name: string;
-  street: string;
-  zipCode: string;
-};
-
-export type BaseAddress = AddressFields & {
-  standardAddress: StandardAddress[];
-};
-
 export interface Discount {
   code: string;
   label: string;

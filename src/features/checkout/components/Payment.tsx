@@ -1,7 +1,5 @@
-import {
-  CheckoutResponse,
-  PaymentMethods,
-} from '../../../app/api/apiTypes/cartApiTypes';
+import { CheckoutResponse } from '../../../app/api/apiTypes/cartApiTypes';
+import { PaymentMethods } from '../../../app/api/apiTypes/paymentApiTypes';
 import RadioBtnList from '../../../components/formElements/radioList/RadioBtnList';
 import { paymentMethodsList } from '../../../config/paymentConfig';
 import { InputChangeHandler } from '../../../types/types';
