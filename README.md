@@ -36,33 +36,13 @@ npm install
 
 ## Environment Variables
 
-Create a `.env` file inside the `server` folder.
+cp .env.sample .env
 
-Example:
+Update the environment variables with your own local configuration before starting the application.
 
-```env
-NODE_ENV=development
+````
 
-PORT=5000
 
-CLIENT_URL=http://localhost:3000
-
-MONGO_URI=your_mongodb_connection_string
-
-JWT_SECRET=your_secret_key
-
-CURRENCY_API_KEY=your_currency_api_key
-```
-
-Create a `.env` file inside the `client` folder.
-
-Example:
-
-```env
-VITE_API_URL=http://localhost:5000/api
-
-VITE_CURRENCY_API_KEY=your_currency_api_key
-```
 
 ---
 
@@ -71,7 +51,7 @@ VITE_CURRENCY_API_KEY=your_currency_api_key
 ```bash
 
 npm start
-```
+````
 
 The application will typically be available at:
 
