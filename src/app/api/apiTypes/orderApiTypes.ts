@@ -15,6 +15,7 @@ export interface CreateOrderRequest {
 export interface OrderResponse extends DefaultResponseType {
   billingAddress: BaseAddress;
   discount: Discount;
+  id: string;
   isDelivered: boolean;
   isPaid: boolean;
   orderItems: Order[];

@@ -206,9 +206,9 @@ const getUserOrders = asyncHandler(async (req, res) => {
 // @method  Put
 // @access  Private
 const payOrder = asyncHandler(async (req, res) => {
-  const { payment } = req.body;
+  const payment = req.body.payment;
   const order = await Order.findById(req.params.id);
-
+  console.log(payment);
   if (!order) {
     return res.status(404).json({
       success: false,
@@ -232,8 +232,7 @@ const payOrder = asyncHandler(async (req, res) => {
     });
   }
 
-  const validationError = validateFakePayment(req.body);
-
+  const validationError = validateFakePayment(payment);
   if (validationError) {
     order.paymentStatus = PAYMENT_STATUS.FAILED;
 

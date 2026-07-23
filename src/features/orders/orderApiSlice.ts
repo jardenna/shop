@@ -15,10 +15,23 @@ export const orderApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.Order],
     }),
+    payOrder: builder.mutation({
+      query: ({ orderId, payment }) => ({
+        url: `${ordersUrl}/${orderId}/pay`,
+        method: 'PUT',
+        body: {
+          payment,
+        },
+      }),
+    }),
     getUserOrder: builder.query<OrderResponse, void>({
       query: () => userOrdersUrl,
     }),
   }),
 });
 
-export const { useCreateOrderMutation, useGetUserOrderQuery } = orderApiSlice;
+export const {
+  useCreateOrderMutation,
+  useGetUserOrderQuery,
+  usePayOrderMutation,
+} = orderApiSlice;

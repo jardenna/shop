@@ -11,7 +11,10 @@ import { useMessagePopup } from '../../../../components/messagePopup/useMessageP
 import { useFormValidation } from '../../../../hooks/useFormValidation';
 import { ChangeInputType, InputType } from '../../../../types/types';
 import { handleApiError } from '../../../../utils/handleApiError';
-import { useCreateOrderMutation } from '../../../orders/orderApiSlice';
+import {
+  useCreateOrderMutation,
+  usePayOrderMutation,
+} from '../../../orders/orderApiSlice';
 import { formatExpiryDate } from '../formatExpiryDateUtil';
 
 interface CardFormProps {
@@ -38,6 +41,7 @@ const CardForm = ({
   });
 
   const [createOrder] = useCreateOrderMutation();
+  const [payOrder] = usePayOrderMutation();
 
   const orderItems = checkout.cartItems.map(
     ({ productId, qty, color, size }) => ({
@@ -47,6 +51,7 @@ const CardForm = ({
       size,
     }),
   );
+  console.log(paymentMethod);
 
   const shippingAddressId = checkout.addresses.find((address) =>
     address.standardAddress.includes('addressDelivery'),
@@ -77,11 +82,17 @@ const CardForm = ({
 
   async function handleSubmit() {
     try {
-      await createOrder(orderPayload);
+      const order = await createOrder(orderPayload).unwrap();
+
+      await payOrder({
+        orderId: order.id,
+        payment: {
+          method: paymentMethod,
+        },
+      }).unwrap();
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
     }
-    console.log(values);
   }
 
   return (
