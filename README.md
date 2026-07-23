@@ -101,6 +101,13 @@ Translations are maintained in CSV files and automatically converted into JSON f
 
 ## Features
 
+### User Experience
+
+- Responsive layout across mobile, tablet, and desktop
+- Skeleton loading states while data is being fetched
+- Accessible navigation and forms
+- Optimized loading experience
+
 ### Authentication
 
 - Register
