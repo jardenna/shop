@@ -16,23 +16,6 @@ const CheckoutPage = () => {
   const { deleteCartItem } = useDeleteCartItem();
   const { data: checkout, isLoading, refetch } = useGetCheckoutQuery();
 
-  const orderItems = checkout?.cartItems.map(
-    ({ productId, qty, color, size }) => ({
-      productId,
-      qty,
-      color,
-      size,
-    }),
-  );
-
-  const shippingAddressId = checkout?.addresses.find((address) =>
-    address.standardAddress.includes('addressDelivery'),
-  )?.id;
-
-  const billingAddressId = checkout?.addresses.find((address) =>
-    address.standardAddress.includes('addressBilling'),
-  )?.id;
-
   const initialState = {
     paymentMethod: 'visa',
   };
@@ -40,16 +23,6 @@ const CheckoutPage = () => {
   const { values, onChange } = useFormValidation({
     initialState,
   });
-
-  const payload = {
-    orderItems,
-    shippingAddressId,
-    billingAddressId,
-    payment: {
-      method: values.paymentMethod,
-    },
-  };
-  console.log(payload);
 
   return (
     <MainPageContainer heading="checkout">
@@ -66,11 +39,12 @@ const CheckoutPage = () => {
                 className="checkout-address-list"
               />
               <Payment
-                paymentMethod={checkout.paymentMethod}
+                paymentMethod={checkout.paymentMethods}
                 values={values}
                 onChange={onChange}
                 name="paymentMethod"
                 language={language}
+                checkout={checkout}
               />
             </section>
             <aside className="order-flow-aside">

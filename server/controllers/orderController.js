@@ -1,5 +1,5 @@
 import {
-  ALLOWED_PAYMENT_METHODS,
+  PAYMENT_METHODS_LIST,
   PAYMENT_STATUS,
 } from '../config/paymentConstants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
@@ -40,7 +40,7 @@ const createOrder = asyncHandler(async (req, res) => {
 
   const activeDiscount = getActiveDiscount(user.role, cart.discount.code);
 
-  if (!user?.addresses.length) {
+  if (!user.addresses.length) {
     return res.status(400).json({
       success: false,
       message: t('noAddressData', req.lang),
@@ -58,7 +58,7 @@ const createOrder = asyncHandler(async (req, res) => {
   if (!shippingAddress || !billingAddress) {
     return res.status(404).json({
       success: false,
-      message: t('addressNotFound', req.lang),
+      message: t('noMatchingAddressData', req.lang),
     });
   }
 
@@ -113,7 +113,7 @@ const createOrder = asyncHandler(async (req, res) => {
     });
   }
 
-  if (!ALLOWED_PAYMENT_METHODS.includes(payment.method)) {
+  if (!PAYMENT_METHODS_LIST.includes(payment.method)) {
     return res.status(400).json({
       success: false,
       message: t('invalidPaymentMethod', req.lang),
@@ -280,13 +280,12 @@ const payOrder = asyncHandler(async (req, res) => {
     await databaseProduct.save();
   }
 
-  order.isPaid = true;
-  order.paymentStatus = PAYMENT_STATUS.PAID;
-  order.paidAt = new Date();
-  order.payment = payment;
-  order.paymentResult = {
-    id: crypto.randomUUID(),
-    status: 'Completed',
+  order.payment.method = payment.method;
+  order.payment.status = PAYMENT_STATUS.COMPLETED;
+  order.payment.paidAt = new Date();
+  order.payment.result = {
+    transactionId: crypto.randomUUID(),
+    status: PAYMENT_STATUS.COMPLETED,
     updateTime: new Date(),
     email: req.user.email,
   };

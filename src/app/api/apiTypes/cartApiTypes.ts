@@ -4,7 +4,7 @@ import type {
   Size,
   Summary,
 } from './sharedApiTypes';
-import { Address, PaymentMethod } from './shopApiTypes';
+import { Address } from './shopApiTypes';
 
 export interface BaseOrder {
   color: string;
@@ -32,7 +32,7 @@ export interface CartListRequest {
   cartItems: AddToCartRequest;
 }
 
-export type PaymentMethods = 'Visa' | 'PayPal' | 'MobilePay' | 'Mastercard';
+export type PaymentMethods = 'visa' | 'paypal' | 'mobilepay' | 'mastercard';
 
 export interface CartListResponse extends DefaultResponseType {
   cartItems: Order[];
@@ -43,7 +43,8 @@ export interface CartListResponse extends DefaultResponseType {
 
 export interface CheckoutResponse extends CartListResponse {
   addresses: Address[];
-  paymentMethod: PaymentMethod[];
+  paymentMethod: PaymentMethods[];
+  s: PaymentMethods[];
 }
 
 export interface UpdateCartRequest {

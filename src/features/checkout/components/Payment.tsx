@@ -1,70 +1,67 @@
-import { PaymentMethod } from '../../../app/api/apiTypes/shopApiTypes';
-import FieldSet from '../../../components/fieldset/FieldSet';
+import {
+  CheckoutResponse,
+  PaymentMethods,
+} from '../../../app/api/apiTypes/cartApiTypes';
 import RadioBtnList from '../../../components/formElements/radioList/RadioBtnList';
-import IconContent from '../../../components/IconContent';
+import { paymentMethodsList } from '../../../config/paymentConfig';
 import { InputChangeHandler } from '../../../types/types';
+import PaymentMethodsList from '../../cart/components/PaymentMethodsList';
 import CardForm from './paymentForms/CardForm';
 
 interface PaymentProps {
+  checkout: CheckoutResponse;
   language: Record<string, string>;
   name: string;
   onChange: InputChangeHandler;
-  paymentMethod: PaymentMethod[];
+  paymentMethod: PaymentMethods[];
   values: {
     paymentMethod: string;
   };
 }
 
 const Payment = ({
-  paymentMethod,
   onChange,
   values,
   name,
+  checkout,
+  paymentMethod,
   language,
 }: PaymentProps) => {
-  const paymentMethodList = paymentMethod.map(({ id, label }) => ({
+  const availablePaymentMethods = paymentMethodsList.filter((method) =>
+    paymentMethod.includes(method.id),
+  );
+
+  const methodToShow = availablePaymentMethods.find(
+    (method) => method.id === values.paymentMethod,
+  );
+
+  const paymentMethodListnew = availablePaymentMethods.map(({ id, label }) => ({
     label,
     value: id,
     id,
   }));
 
-  const paymentIcons = paymentMethod.map((a) => a.icon);
-
-  const methodToShow = paymentMethod.find(
-    (method) => method.id === values.paymentMethod,
-  );
-
   return (
-    <form className="payment-form">
-      <FieldSet
-        legendText={language.payment}
-        showLegendText
-        legendClassname="order-flow-title"
-      >
-        <div className="select-payment-method">
-          <RadioBtnList
-            onChange={onChange}
-            value={values.paymentMethod}
-            radioList={paymentMethodList}
-            name={name}
-          />
-          <ul className="payment-icon-list">
-            {paymentIcons.map((payment) => (
-              <li key={payment}>
-                <IconContent iconName={payment} ariaLabel={payment} />
-              </li>
-            ))}
-          </ul>
-        </div>
-        {methodToShow && (
-          <CardForm
-            fields={methodToShow.fields}
-            key={methodToShow.id}
-            language={language}
-          />
-        )}
-      </FieldSet>
-    </form>
+    <div>
+      <form className="select-payment-method">
+        <RadioBtnList
+          onChange={onChange}
+          value={values.paymentMethod}
+          radioList={paymentMethodListnew}
+          name={name}
+        />
+        <PaymentMethodsList paymentMethods={paymentMethod} />
+      </form>
+      {methodToShow && (
+        <CardForm
+          fields={methodToShow.fields}
+          key={methodToShow.id}
+          language={language}
+          checkout={checkout}
+          paymentMethod={values.paymentMethod}
+        />
+      )}
+    </div>
   );
 };
 
