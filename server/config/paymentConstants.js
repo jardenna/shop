@@ -95,14 +95,13 @@ export const VALIDATING_PAYMENT_METHODS = Object.freeze(
   ),
 );
 
-export const PAYMENT_STATUS_ENUM = ['PENDING', 'FAILED', 'PAID'];
-
 export const PAYMENT_STATUS = {
   PENDING: 'PENDING',
+  COMPLETED: 'COMPLETED',
   FAILED: 'FAILED',
-  PAID: 'PAID',
 };
 
+export const PAYMENT_STATUS_ENUM = Object.values(PAYMENT_STATUS);
 export const DELIVERY_STATUS = {
   PENDING: 'Pending',
   PROCESSING: 'Processing',

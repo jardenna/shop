@@ -216,6 +216,10 @@ const payOrder = asyncHandler(async (req, res) => {
     });
   }
 
+  //   validateCardNumber(payment.cardNumber);
+  // validateExpiryDate(payment.expiryDate);
+  // validateCvv(payment.cvv);
+
   const orderBelongsToUser = order.user.toString() === req.user._id.toString();
 
   if (!orderBelongsToUser) {
@@ -279,14 +283,12 @@ const payOrder = asyncHandler(async (req, res) => {
 
     await databaseProduct.save();
   }
-
-  order.isPaid = true;
-  order.paymentStatus = PAYMENT_STATUS.PAID;
-  order.paidAt = new Date();
-  order.payment = payment;
-  order.paymentResult = {
-    id: crypto.randomUUID(),
-    status: 'Completed',
+  order.payment.method = payment.method;
+  order.payment.status = PAYMENT_STATUS.COMPLETED;
+  order.payment.paidAt = new Date();
+  order.payment.result = {
+    transactionId: crypto.randomUUID(),
+    status: PAYMENT_STATUS.COMPLETED,
     updateTime: new Date(),
     email: req.user.email,
   };
