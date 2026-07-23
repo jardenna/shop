@@ -90,9 +90,7 @@ Currently supported:
 
 Translations are maintained in CSV files and automatically converted into JSON files during development.
 
-## Features
-
-### Features
+Localization includes:
 
 - English and Danish UI
 - Backend validation messages
@@ -101,7 +99,7 @@ Translations are maintained in CSV files and automatically converted into JSON f
 - Persisted language preference
 - CSV-based translation workflow
 
---
+## Features
 
 ### User Experience
 
@@ -127,7 +125,7 @@ Translations are maintained in CSV files and automatically converted into JSON f
 - Subcategories
 - Product images
 - Inventory management
-- Published / Inactive / Scheduled products
+- Published, Inactive and Scheduled products
 
 ### Shopping Cart
 
