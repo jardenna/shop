@@ -6,13 +6,17 @@ import {
   Summary,
 } from './sharedApiTypes';
 
-export type AllowedPaymentMethod = 'Credit Card' | 'PayPal' | 'MobilePay';
+export type AllowedPaymentMethod =
+  'Visa' | 'Mastercard' | 'PayPal' | 'MobilePay';
+
 export type PaymentStatus = 'pending' | 'failed' | 'paid';
 
 export interface CreateOrderRequest {
   billingAddressId: string;
   orderItems: BaseOrder[];
-  paymentMethod: AllowedPaymentMethod;
+  payment: {
+    method: AllowedPaymentMethod;
+  };
   shippingAddressId: string;
 }
 

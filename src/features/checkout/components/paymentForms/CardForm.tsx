@@ -1,10 +1,14 @@
 import { CheckoutResponse } from '../../../../app/api/apiTypes/cartApiTypes';
+import { AllowedPaymentMethod } from '../../../../app/api/apiTypes/orderApiTypes';
 import { PaymentMethodField } from '../../../../app/api/apiTypes/shopApiTypes';
 import FieldSet from '../../../../components/fieldset/FieldSet';
 import Form from '../../../../components/form/Form';
 import Input from '../../../../components/formElements/Input';
+import { useMessagePopup } from '../../../../components/messagePopup/useMessagePopup';
 import { useFormValidation } from '../../../../hooks/useFormValidation';
 import { ChangeInputType, InputType } from '../../../../types/types';
+import { handleApiError } from '../../../../utils/handleApiError';
+import { useCreateOrderMutation } from '../../../orders/orderApiSlice';
 import { formatExpiryDate } from '../formatExpiryDateUtil';
 
 interface CardFormProps {
@@ -20,6 +24,7 @@ const CardForm = ({
   checkout,
   paymentMethod,
 }: CardFormProps) => {
+  const { onAddMessagePopup } = useMessagePopup();
   const initialValues = Object.fromEntries(
     fields.map(({ name }) => [name, '']),
   );
@@ -28,6 +33,8 @@ const CardForm = ({
     initialState: initialValues,
     callback: handleSubmit,
   });
+
+  const [createOrder] = useCreateOrderMutation();
 
   const orderItems = checkout.cartItems.map(
     ({ productId, qty, color, size }) => ({
@@ -46,12 +53,12 @@ const CardForm = ({
     address.standardAddress.includes('addressBilling'),
   )?.id;
 
-  const payload = {
+  const orderPayload = {
     orderItems,
-    shippingAddressId,
-    billingAddressId,
+    shippingAddressId: shippingAddressId ?? '',
+    billingAddressId: billingAddressId ?? '',
     payment: {
-      method: paymentMethod,
+      method: paymentMethod as AllowedPaymentMethod,
     },
   };
 
@@ -65,9 +72,13 @@ const CardForm = ({
     onChange(event);
   };
 
-  function handleSubmit() {
+  async function handleSubmit() {
+    try {
+      await createOrder(orderPayload);
+    } catch (error) {
+      handleApiError(error, onAddMessagePopup);
+    }
     console.log(values);
-    console.log(payload);
   }
 
   return (
