@@ -22,6 +22,7 @@ git clone https://github.com/your-username/mern-shop.git
 cd mern-shop
 ```
 
+The project uses **concurrently** to start both the backend and frontend with a single command.
 ---
 
 ## Install dependencies
