@@ -1,8 +1,4 @@
-import { HTMLInputTypeAttribute } from 'react';
-import { IconName } from '../../../types/enums';
-import { InputMode } from './../../../types/types';
 import { Address } from './addressApiTypes';
-import { PaymentMethods } from './cartApiTypes';
 import type {
   BasePagination,
   BaseProductParams,
@@ -98,17 +94,3 @@ export type BaseProfile = {
 export type UserProfileRequest = BaseProfile & {
   addresses?: Address[];
 };
-
-export interface PaymentMethodField {
-  label: string;
-  name: string;
-  type: HTMLInputTypeAttribute;
-  inputMode?: InputMode;
-}
-
-export interface PaymentMethod {
-  fields: PaymentMethodField[];
-  icon: IconName;
-  id: PaymentMethods;
-  label: string;
-}

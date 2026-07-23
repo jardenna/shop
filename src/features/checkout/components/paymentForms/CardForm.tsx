@@ -1,8 +1,9 @@
+import { CheckoutResponse } from '../../../../app/api/apiTypes/cartApiTypes';
 import {
-  CheckoutResponse,
+  PaymentMethodField,
   PaymentMethods,
-} from '../../../../app/api/apiTypes/cartApiTypes';
-import { PaymentMethodField } from '../../../../app/api/apiTypes/shopApiTypes';
+} from '../../../../app/api/apiTypes/paymentApiTypes';
+
 import FieldSet from '../../../../components/fieldset/FieldSet';
 import Form from '../../../../components/form/Form';
 import Input from '../../../../components/formElements/Input';

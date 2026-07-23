@@ -1,8 +1,7 @@
 import { BaseAddress } from './addressApiTypes';
-import { BaseOrder, Order, PaymentMethods } from './cartApiTypes';
+import { BaseOrder, Order } from './cartApiTypes';
+import { PaymentMethods, PaymentStatus } from './paymentApiTypes';
 import { DefaultResponseType, Discount, Summary } from './sharedApiTypes';
-
-export type PaymentStatus = 'pending' | 'failed' | 'paid';
 
 export interface CreateOrderRequest {
   billingAddressId: string;
