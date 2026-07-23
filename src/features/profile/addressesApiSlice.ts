@@ -1,6 +1,7 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import {
   AddAddressRequest,
+  Address,
   BaseAddress,
   UpdateAddressRequest,
 } from '../../app/api/apiTypes/addressApiTypes';
@@ -9,7 +10,7 @@ import { addressUrl } from '../../app/endpoints';
 
 export const addressesApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getAddresses: builder.query<any, void>({
+    getAddresses: builder.query<Address[], void>({
       query: () => addressUrl,
       providesTags: [TagTypesEnum.Address],
     }),
