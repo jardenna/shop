@@ -1,33 +1,32 @@
 import { HTMLInputTypeAttribute } from 'react';
 import { PaymentMethods1 } from '../app/api/apiTypes/cartApiTypes';
 import { IconName } from '../types/enums';
+import { InputMode } from '../types/types';
 
-export interface PaymentMethodField {
+export interface PaymentMethodField1 {
   label: string;
   name: string;
   type: HTMLInputTypeAttribute;
-  inputMode?: string | null;
+  inputMode?: InputMode;
 }
 
 interface PaymentMethodConfig {
-  fields: PaymentMethodField[];
+  fields: PaymentMethodField1[];
   icon: IconName;
   id: PaymentMethods1;
   label: string;
 }
 
-const cardFields = [
+const cardFields: PaymentMethodField1[] = [
   {
     name: 'card',
     label: 'cardTestNumber',
     type: 'text',
-    inputMode: null,
   },
   {
     name: 'expiryDate',
     label: 'expiryDate',
     type: 'text',
-    inputMode: null,
   },
   {
     name: 'cvvCode',
@@ -39,7 +38,6 @@ const cardFields = [
     name: 'cardholderName',
     label: 'cardholderName',
     type: 'text',
-    inputMode: null,
   },
 ];
 

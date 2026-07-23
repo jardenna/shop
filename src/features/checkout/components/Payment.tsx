@@ -2,7 +2,6 @@ import {
   CheckoutResponse,
   PaymentMethods1,
 } from '../../../app/api/apiTypes/cartApiTypes';
-import { PaymentMethod } from '../../../app/api/apiTypes/shopApiTypes';
 import RadioBtnList from '../../../components/formElements/radioList/RadioBtnList';
 import IconContent from '../../../components/IconContent';
 import { paymentMethodsList } from '../../../config/paymentConfig';
@@ -14,7 +13,6 @@ interface PaymentProps {
   language: Record<string, string>;
   name: string;
   onChange: InputChangeHandler;
-  paymentMethod: PaymentMethod[];
   paymentMethod1: PaymentMethods1[];
   values: {
     paymentMethod: string;
@@ -22,7 +20,6 @@ interface PaymentProps {
 }
 
 const Payment = ({
-  paymentMethod,
   onChange,
   values,
   name,
@@ -30,23 +27,22 @@ const Payment = ({
   paymentMethod1,
   language,
 }: PaymentProps) => {
-  const paymentMethodList = paymentMethod.map(({ id, label }) => ({
+  const availablePaymentMethods = paymentMethodsList.filter((method) =>
+    paymentMethod1.includes(method.id),
+  );
+
+  const methodToShow = availablePaymentMethods.find(
+    (method) => method.id === values.paymentMethod,
+  );
+
+  const paymentMethodListnew = availablePaymentMethods.map(({ id, label }) => ({
     label,
     value: id,
     id,
   }));
 
-  const paymentIcons = paymentMethod.map((a) => a.icon);
-
-  const methodToShow = paymentMethod.find(
-    (method) => method.id === values.paymentMethod,
-  );
-
-  const availablePaymentMethods = paymentMethodsList.filter((method) =>
-    paymentMethod1.includes(method.id),
-  );
-
   console.log(availablePaymentMethods);
+  const paymentIcons = availablePaymentMethods.map((a) => a.icon);
 
   return (
     <div>
@@ -54,7 +50,7 @@ const Payment = ({
         <RadioBtnList
           onChange={onChange}
           value={values.paymentMethod}
-          radioList={paymentMethodList}
+          radioList={paymentMethodListnew}
           name={name}
         />
         <ul className="payment-icon-list">
