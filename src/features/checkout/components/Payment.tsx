@@ -3,9 +3,9 @@ import {
   PaymentMethods1,
 } from '../../../app/api/apiTypes/cartApiTypes';
 import RadioBtnList from '../../../components/formElements/radioList/RadioBtnList';
-import IconContent from '../../../components/IconContent';
 import { paymentMethodsList } from '../../../config/paymentConfig';
 import { InputChangeHandler } from '../../../types/types';
+import PaymentMethodsList from '../../cart/components/PaymentMethodsList';
 import CardForm from './paymentForms/CardForm';
 
 interface PaymentProps {
@@ -41,10 +41,6 @@ const Payment = ({
     id,
   }));
 
-  const paymentIcons = availablePaymentMethods.map(
-    (paymentMethod) => paymentMethod.icon,
-  );
-
   return (
     <div>
       <form className="select-payment-method">
@@ -54,13 +50,7 @@ const Payment = ({
           radioList={paymentMethodListnew}
           name={name}
         />
-        <ul className="payment-icon-list">
-          {paymentIcons.map((payment) => (
-            <li key={payment}>
-              <IconContent iconName={payment} ariaLabel={payment} />
-            </li>
-          ))}
-        </ul>
+        <PaymentMethodsList paymentMethods={paymentMethod} />
       </form>
       {methodToShow && (
         <CardForm
