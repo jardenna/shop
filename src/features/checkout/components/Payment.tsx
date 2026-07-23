@@ -1,6 +1,6 @@
 import {
   CheckoutResponse,
-  PaymentMethods1,
+  PaymentMethods,
 } from '../../../app/api/apiTypes/cartApiTypes';
 import RadioBtnList from '../../../components/formElements/radioList/RadioBtnList';
 import { paymentMethodsList } from '../../../config/paymentConfig';
@@ -13,7 +13,7 @@ interface PaymentProps {
   language: Record<string, string>;
   name: string;
   onChange: InputChangeHandler;
-  paymentMethod: PaymentMethods1[];
+  paymentMethod: PaymentMethods[];
   values: {
     paymentMethod: string;
   };

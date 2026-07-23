@@ -32,20 +32,19 @@ export interface CartListRequest {
   cartItems: AddToCartRequest;
 }
 
-export type PaymentMethods = 'Visa' | 'PayPal' | 'MobilePay' | 'Mastercard';
-export type PaymentMethods1 = 'visa' | 'paypal' | 'mobilepay' | 'mastercard';
+export type PaymentMethods = 'visa' | 'paypal' | 'mobilepay' | 'mastercard';
 
 export interface CartListResponse extends DefaultResponseType {
   cartItems: Order[];
   discount: Discount;
-  paymentMethods: PaymentMethods1[];
+  paymentMethods: PaymentMethods[];
   summary: Summary;
 }
 
 export interface CheckoutResponse extends CartListResponse {
   addresses: Address[];
-  paymentMethod: PaymentMethods1[];
-  paymentMethod1: PaymentMethods1[];
+  paymentMethod: PaymentMethods[];
+  paymentMethod1: PaymentMethods[];
 }
 
 export interface UpdateCartRequest {

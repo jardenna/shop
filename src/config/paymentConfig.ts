@@ -1,5 +1,5 @@
 import { HTMLInputTypeAttribute } from 'react';
-import { PaymentMethods1 } from '../app/api/apiTypes/cartApiTypes';
+import { PaymentMethods } from '../app/api/apiTypes/cartApiTypes';
 import { IconName } from '../types/enums';
 import { InputMode } from '../types/types';
 
@@ -13,7 +13,7 @@ export interface PaymentMethodField1 {
 interface PaymentMethodConfig {
   fields: PaymentMethodField1[];
   icon: IconName;
-  id: PaymentMethods1;
+  id: PaymentMethods;
   label: string;
 }
 

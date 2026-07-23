@@ -1,9 +1,9 @@
-import { PaymentMethods1 } from '../../../app/api/apiTypes/cartApiTypes';
+import { PaymentMethods } from '../../../app/api/apiTypes/cartApiTypes';
 import IconContent from '../../../components/IconContent';
 import { paymentMethodsList } from '../../../config/paymentConfig';
 
 interface PaymentMethodsListProps {
-  paymentMethods: PaymentMethods1[];
+  paymentMethods: PaymentMethods[];
 }
 
 const PaymentMethodsList = ({ paymentMethods }: PaymentMethodsListProps) => {
