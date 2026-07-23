@@ -2,8 +2,8 @@ import {
   Address,
   AddressFields,
   AddressInput,
+  StandardAddress,
 } from '../../app/api/apiTypes/addressApiTypes';
-import { StandardAddress } from '../../app/api/apiTypes/sharedApiTypes';
 import FieldSet from '../../components/fieldset/FieldSet';
 import CheckboxList from '../../components/formElements/checkbox/CheckboxList';
 import Input from '../../components/formElements/Input';

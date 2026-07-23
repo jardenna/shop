@@ -104,8 +104,6 @@ export interface Summary {
   totalPrice: number;
 }
 
-export type StandardAddress = 'addressBilling' | 'addressDelivery';
-
 export interface Discount {
   code: string;
   label: string;

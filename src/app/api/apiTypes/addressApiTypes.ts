@@ -1,5 +1,3 @@
-import { StandardAddress } from './sharedApiTypes';
-
 export type AddressFields = {
   city: string;
   country: string;
@@ -7,6 +5,8 @@ export type AddressFields = {
   street: string;
   zipCode: string;
 };
+
+export type StandardAddress = 'addressBilling' | 'addressDelivery';
 
 export type BaseAddress = AddressFields & {
   standardAddress: StandardAddress[];
