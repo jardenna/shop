@@ -86,9 +86,7 @@ const CardForm = ({
 
       await payOrder({
         orderId: order.id,
-        payment: {
-          method: paymentMethod,
-        },
+        method: paymentMethod,
       }).unwrap();
     } catch (error) {
       handleApiError(error, onAddMessagePopup);

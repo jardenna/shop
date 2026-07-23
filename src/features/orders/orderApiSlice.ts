@@ -16,12 +16,10 @@ export const orderApiSlice = apiSlice.injectEndpoints({
       invalidatesTags: [TagTypesEnum.Order],
     }),
     payOrder: builder.mutation({
-      query: ({ orderId, payment }) => ({
+      query: ({ orderId, ...payment }) => ({
         url: `${ordersUrl}/${orderId}/pay`,
         method: 'PUT',
-        body: {
-          payment,
-        },
+        body: payment,
       }),
     }),
     getUserOrder: builder.query<OrderResponse, void>({
