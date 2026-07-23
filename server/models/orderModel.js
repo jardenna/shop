@@ -1,6 +1,8 @@
 import { model, Schema } from 'mongoose';
 import {
   ALLOWED_PAYMENT_METHODS,
+  DELIVERY_STATUS,
+  DELIVERY_STATUS_ENUM,
   PAYMENT_STATUS,
   PAYMENT_STATUS_ENUM,
 } from '../config/paymentConstants.js';
@@ -51,21 +53,15 @@ const orderModelSchema = new Schema(
         enum: ALLOWED_PAYMENT_METHODS,
         required: true,
       },
-      lastFourDigits: {
-        type: String,
-        default: '',
-      },
-      cardholderName: {
-        type: String,
-        default: '',
-      },
       status: {
         type: String,
         enum: PAYMENT_STATUS_ENUM,
+        required: true,
         default: PAYMENT_STATUS.PENDING,
       },
+      paidAt: Date,
       result: {
-        id: {
+        transactionId: {
           type: String,
           default: '',
         },
@@ -73,9 +69,7 @@ const orderModelSchema = new Schema(
           type: String,
           default: '',
         },
-        updateTime: {
-          type: Date,
-        },
+        updateTime: Date,
         email: {
           type: String,
           default: '',
@@ -129,26 +123,14 @@ const orderModelSchema = new Schema(
         default: 0,
       },
     },
-    paymentStatus: {
-      type: String,
-      enum: PAYMENT_STATUS_ENUM,
-      default: PAYMENT_STATUS.PENDING,
-    },
-    isPaid: {
-      type: Boolean,
-      required: true,
-      default: false,
-    },
-    paidAt: {
-      type: Date,
-    },
-    isDelivered: {
-      type: Boolean,
-      required: true,
-      default: false,
-    },
-    deliveredAt: {
-      type: Date,
+    delivery: {
+      status: {
+        type: String,
+        enum: DELIVERY_STATUS_ENUM,
+        required: true,
+        default: DELIVERY_STATUS.PENDING,
+      },
+      deliveredAt: Date,
     },
   },
   {

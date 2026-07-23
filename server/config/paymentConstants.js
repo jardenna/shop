@@ -102,3 +102,12 @@ export const PAYMENT_STATUS = {
   FAILED: 'FAILED',
   PAID: 'PAID',
 };
+
+export const DELIVERY_STATUS = {
+  PENDING: 'Pending',
+  PROCESSING: 'Processing',
+  SHIPPED: 'Shipped',
+  DELIVERED: 'Delivered',
+};
+
+export const DELIVERY_STATUS_ENUM = Object.values(DELIVERY_STATUS);
