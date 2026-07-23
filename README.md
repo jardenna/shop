@@ -22,7 +22,6 @@ git clone https://github.com/your-username/mern-shop.git
 cd mern-shop
 ```
 
-The project uses **concurrently** to start both the backend and frontend with a single command.
 ---
 
 ## Install dependencies
@@ -42,7 +41,7 @@ cp .env.sample .env
 Update the environment variables with your own local configuration before starting the application.
 
 ````
-
+The project uses **concurrently** to start both the backend and frontend with a single command.
 
 ## Start the application
 
