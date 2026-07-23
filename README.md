@@ -88,7 +88,11 @@ Currently supported:
 - English
 - Danish
 
-Translations are maintained in CSV files and automatically converted into JSON files during development.
+````md
+Translations are maintained in CSV files. Run the following command to generate the JSON translation files:
+
+````bash
+npm run translate
 
 Localization includes:
 
@@ -234,7 +238,8 @@ server/
 ├── services/
 ├── utils/
 └── validators/
-```
+````
+````
 
 ## Architecture
 
