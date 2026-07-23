@@ -41,8 +41,9 @@ const Payment = ({
     id,
   }));
 
-  console.log(availablePaymentMethods);
-  const paymentIcons = availablePaymentMethods.map((a) => a.icon);
+  const paymentIcons = availablePaymentMethods.map(
+    (paymentMethod) => paymentMethod.icon,
+  );
 
   return (
     <div>
