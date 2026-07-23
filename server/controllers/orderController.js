@@ -283,6 +283,7 @@ const payOrder = asyncHandler(async (req, res) => {
 
     await databaseProduct.save();
   }
+
   order.payment.method = payment.method;
   order.payment.status = PAYMENT_STATUS.COMPLETED;
   order.payment.paidAt = new Date();
