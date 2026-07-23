@@ -41,9 +41,11 @@ cp .env.sample .env
 Update the environment variables with your own local configuration before starting the application.
 
 ````
-The project uses **concurrently** to start both the backend and frontend with a single command.
+
 
 ## Start the application
+
+The project uses **concurrently** to start both the backend and frontend with a single command.
 
 ```bash
 
