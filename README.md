@@ -264,6 +264,7 @@ Business logic is kept outside controllers whenever possible.
 - Cookie-based authentication
 - Modular Express backend
 - Shared pricing engine
+- Dedicated customer storefront and admin panel
 - CSV-based localization pipeline
 - WCAG 2.2 accessible component library
 - English and Danish language support
