@@ -281,7 +281,8 @@ myAddresses;My addresses;Mine adresser
 myBag;My bag;Min indkøbskurv
 myOrders;My orders;Mine ordrer
 name;Name;Navn
-noAddressData;No matching address found;Ingen matchende adresse
+noMatchingAddressData;No matching address found;Ingen matchende adresse
+noAddressData;You must add an address before placing an order.;Du skal tilføje en adresse, før du kan gennemføre en ordre.
 noChanges;No changes to save;Ingen ændringer at gemme
 noData;No data found;Ingen data fundet
 noEmail;Please enter an email;Indtast venligst en e-mail

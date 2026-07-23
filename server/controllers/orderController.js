@@ -40,7 +40,7 @@ const createOrder = asyncHandler(async (req, res) => {
 
   const activeDiscount = getActiveDiscount(user.role, cart.discount.code);
 
-  if (!user?.addresses.length) {
+  if (!user.addresses.length) {
     return res.status(400).json({
       success: false,
       message: t('noAddressData', req.lang),
@@ -58,7 +58,7 @@ const createOrder = asyncHandler(async (req, res) => {
   if (!shippingAddress || !billingAddress) {
     return res.status(404).json({
       success: false,
-      message: t('addressNotFound', req.lang),
+      message: t('noMatchingAddressData', req.lang),
     });
   }
 

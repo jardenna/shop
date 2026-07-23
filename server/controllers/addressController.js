@@ -76,7 +76,7 @@ const updateUserAddress = asyncHandler(async (req, res) => {
   if (!existingAddress) {
     return res.status(404).json({
       success: false,
-      message: t('noAddressData', req.lang),
+      message: t('noMatchingAddressData', req.lang),
     });
   }
 
@@ -122,7 +122,7 @@ const deleteUserAddress = asyncHandler(async (req, res) => {
   if (!existingAddress) {
     return res
       .status(404)
-      .json({ success: false, message: t('noAddressData', req.lang) });
+      .json({ success: false, message: t('noMatchingAddressData', req.lang) });
   }
   existingAddress.deleteOne();
 
