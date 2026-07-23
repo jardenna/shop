@@ -3,7 +3,7 @@ import { PaymentMethods } from '../app/api/apiTypes/cartApiTypes';
 import { IconName } from '../types/enums';
 import { InputMode } from '../types/types';
 
-export interface PaymentMethodField1 {
+export interface PaymentMethodField {
   label: string;
   name: string;
   type: HTMLInputTypeAttribute;
@@ -11,13 +11,13 @@ export interface PaymentMethodField1 {
 }
 
 interface PaymentMethodConfig {
-  fields: PaymentMethodField1[];
+  fields: PaymentMethodField[];
   icon: IconName;
   id: PaymentMethods;
   label: string;
 }
 
-const cardFields: PaymentMethodField1[] = [
+const cardFields: PaymentMethodField[] = [
   {
     name: 'card',
     label: 'cardTestNumber',

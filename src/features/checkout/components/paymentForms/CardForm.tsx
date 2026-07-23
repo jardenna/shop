@@ -4,7 +4,7 @@ import FieldSet from '../../../../components/fieldset/FieldSet';
 import Form from '../../../../components/form/Form';
 import Input from '../../../../components/formElements/Input';
 import { useMessagePopup } from '../../../../components/messagePopup/useMessagePopup';
-import { PaymentMethodField1 } from '../../../../config/paymentConfig';
+import { PaymentMethodField } from '../../../../config/paymentConfig';
 import { useFormValidation } from '../../../../hooks/useFormValidation';
 import { ChangeInputType, InputType } from '../../../../types/types';
 import { handleApiError } from '../../../../utils/handleApiError';
@@ -13,7 +13,7 @@ import { formatExpiryDate } from '../formatExpiryDateUtil';
 
 interface CardFormProps {
   checkout: CheckoutResponse;
-  fields: PaymentMethodField1[];
+  fields: PaymentMethodField[];
   language: Record<string, string>;
   paymentMethod: string;
 }
