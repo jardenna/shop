@@ -48,7 +48,7 @@ const getCheckout = asyncHandler(async (req, res) => {
     cartItems: cartData.orderItems,
     summary: cartData.summary,
     discount: activeDiscount,
-    paymentMethod1: PAYMENT_METHODS_LIST,
+    paymentMethods: PAYMENT_METHODS_LIST,
   });
 });
 

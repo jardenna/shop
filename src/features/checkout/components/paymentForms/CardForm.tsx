@@ -1,10 +1,12 @@
-import { CheckoutResponse } from '../../../../app/api/apiTypes/cartApiTypes';
-import { AllowedPaymentMethod } from '../../../../app/api/apiTypes/orderApiTypes';
+import {
+  CheckoutResponse,
+  PaymentMethods,
+} from '../../../../app/api/apiTypes/cartApiTypes';
+import { PaymentMethodField } from '../../../../app/api/apiTypes/shopApiTypes';
 import FieldSet from '../../../../components/fieldset/FieldSet';
 import Form from '../../../../components/form/Form';
 import Input from '../../../../components/formElements/Input';
 import { useMessagePopup } from '../../../../components/messagePopup/useMessagePopup';
-import { PaymentMethodField } from '../../../../config/paymentConfig';
 import { useFormValidation } from '../../../../hooks/useFormValidation';
 import { ChangeInputType, InputType } from '../../../../types/types';
 import { handleApiError } from '../../../../utils/handleApiError';
@@ -58,7 +60,7 @@ const CardForm = ({
     shippingAddressId: shippingAddressId ?? '',
     billingAddressId: billingAddressId ?? '',
     payment: {
-      method: paymentMethod as AllowedPaymentMethod,
+      method: paymentMethod as PaymentMethods,
     },
   };
 

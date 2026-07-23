@@ -1,4 +1,4 @@
-import { BaseOrder, Order } from './cartApiTypes';
+import { BaseOrder, Order, PaymentMethods } from './cartApiTypes';
 import {
   BaseAddress,
   DefaultResponseType,
@@ -6,16 +6,13 @@ import {
   Summary,
 } from './sharedApiTypes';
 
-export type AllowedPaymentMethod =
-  'Visa' | 'Mastercard' | 'PayPal' | 'MobilePay';
-
 export type PaymentStatus = 'pending' | 'failed' | 'paid';
 
 export interface CreateOrderRequest {
   billingAddressId: string;
   orderItems: BaseOrder[];
   payment: {
-    method: AllowedPaymentMethod;
+    method: PaymentMethods;
   };
   shippingAddressId: string;
 }

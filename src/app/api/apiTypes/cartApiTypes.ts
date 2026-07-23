@@ -44,7 +44,7 @@ export interface CartListResponse extends DefaultResponseType {
 export interface CheckoutResponse extends CartListResponse {
   addresses: Address[];
   paymentMethod: PaymentMethods[];
-  paymentMethod1: PaymentMethods[];
+  s: PaymentMethods[];
 }
 
 export interface UpdateCartRequest {

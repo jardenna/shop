@@ -1,21 +1,8 @@
-import { HTMLInputTypeAttribute } from 'react';
-import { PaymentMethods } from '../app/api/apiTypes/cartApiTypes';
+import {
+  PaymentMethod,
+  PaymentMethodField,
+} from '../app/api/apiTypes/shopApiTypes';
 import { IconName } from '../types/enums';
-import { InputMode } from '../types/types';
-
-export interface PaymentMethodField {
-  label: string;
-  name: string;
-  type: HTMLInputTypeAttribute;
-  inputMode?: InputMode;
-}
-
-interface PaymentMethodConfig {
-  fields: PaymentMethodField[];
-  icon: IconName;
-  id: PaymentMethods;
-  label: string;
-}
 
 const cardFields: PaymentMethodField[] = [
   {
@@ -41,7 +28,7 @@ const cardFields: PaymentMethodField[] = [
   },
 ];
 
-export const paymentMethodsList: PaymentMethodConfig[] = [
+export const paymentMethodsList: PaymentMethod[] = [
   {
     id: 'visa',
     label: 'Visa',
