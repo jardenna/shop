@@ -1,12 +1,6 @@
 @use '../scss/globals' as *;
 
 .order-flow {
-  .payment-method-list {
-    display: flex;
-    gap: 8px;
-    margin-block: 12px;
-  }
-
   .shopping-cart-btn {
     margin-top: 20px;
   }

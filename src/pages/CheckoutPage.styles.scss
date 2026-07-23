@@ -2,6 +2,11 @@
 @use '../scss/globals' as *;
 
 .checkout-page {
+  .payment-method-list {
+    margin-block: 0;
+    gap: 4px;
+  }
+
   .select-payment-method {
     display: flex;
     gap: 20px;
@@ -11,15 +16,6 @@
     padding-inline: 4px 12px;
     border-radius: 4px;
     margin-bottom: 12px;
-  }
-
-  .payment-icon-list {
-    display: flex;
-    gap: 4px;
-
-    @include max-size($mini) {
-      flex-direction: column;
-    }
   }
 
   .secondary-radio {
