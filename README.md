@@ -2,9 +2,9 @@
 
 A full-stack e-commerce application built with the MERN stack using modern React and TypeScript.
 
-# Installation
+## Installation
 
-## Prerequisites
+### Prerequisites
 
 Before running the project, make sure the following software is installed:
 
@@ -13,56 +13,50 @@ Before running the project, make sure the following software is installed:
 - MongoDB
 - Git
 
----
-
-## Clone the repository
+### Clone the repository
 
 ```bash
 git clone https://github.com/your-username/mern-shop.git
 cd mern-shop
 ```
 
----
-
-## Install dependencies
-
-Install dependencies for both the frontend and backend.
+### Install dependencies
 
 ```bash
 npm install
 ```
 
----
+### Environment Variables
 
-## Environment Variables
-
-cp .env.sample .env
-
-Update the environment variables with your own local configuration before starting the application.
-
-````
-
-
-## Start the application
-
-The project uses **concurrently** to start both the backend and frontend with a single command.
+Copy the sample environment file:
 
 ```bash
+cp .env.sample .env
+```
 
+Update the variables to match your local environment before starting the application.
+
+### Start the application
+
+Run the application with:
+
+```bash
 npm start
-````
+```
+
+`npm start` uses **concurrently** to start both the frontend and backend with a single command.
 
 The application will typically be available at:
 
-Frontend
+**Frontend**
 
-```
+```text
 http://localhost:3000
 ```
 
-Backend
+**Backend**
 
-```
+```text
 http://localhost:5000
 ```
 
@@ -85,9 +79,7 @@ http://localhost:5000
 - MongoDB
 - Mongoose
 
----
-
-# Localization
+## Localization
 
 The application supports multiple languages.
 
@@ -98,26 +90,27 @@ Currently supported:
 
 Translations are maintained in CSV files and automatically converted into JSON files during development.
 
-## Features
+### Features
 
 - English and Danish UI
-- Backend validation messages translated
+- Backend validation messages
 - Shared translation keys across frontend and backend
 - Automatic language detection
-- Language preference persisted for returning users
+- Persisted language preference
+- CSV-based translation workflow
 
-Translation files are generated automatically, making it easy to add new languages in the future.
+## Features
 
-## Authentication
+### Authentication
 
 - Register
 - Login
 - Logout
-- Cookie based authentication
+- Cookie-based authentication
 - Protected routes
-- Role based permissions
+- Role-based permissions
 
-## Products
+### Products
 
 - Product listing
 - Product details
@@ -127,7 +120,7 @@ Translation files are generated automatically, making it easy to add new languag
 - Inventory management
 - Published / Inactive / Scheduled products
 
-## Shopping Cart
+### Shopping Cart
 
 - Guest cart
 - User cart
@@ -138,7 +131,7 @@ Translation files are generated automatically, making it easy to add new languag
 - Shipping calculation
 - Discount calculation
 
-## Checkout
+### Checkout
 
 - Shipping address selection
 - Billing address selection
@@ -148,7 +141,7 @@ Translation files are generated automatically, making it easy to add new languag
 - Shipping calculation
 - Discount handling
 
-## Payment Methods
+### Payment Methods
 
 - Visa
 - Mastercard
@@ -157,7 +150,7 @@ Translation files are generated automatically, making it easy to add new languag
 
 Current payment flow uses fake payment validation and is designed so a real payment provider can be integrated later.
 
-## Orders
+### Orders
 
 - Create order
 - Order history
@@ -166,7 +159,7 @@ Current payment flow uses fake payment validation and is designed so a real paym
 - Shipping information
 - Billing information
 
-## User Profile
+### User Profile
 
 - Update profile
 - Manage addresses
@@ -175,28 +168,13 @@ Current payment flow uses fake payment validation and is designed so a real paym
 - Duplicate address validation
 - Maximum address limit
 
-## Promotions
+### Promotions
 
 - Promo codes
 - Employee discounts
 - Automatic summary recalculation
 
----
-
-# Internationalization
-
-The application supports multiple languages.
-
-Currently supported:
-
-- English
-- Danish
-
-Translations are maintained as CSV files and automatically converted into language JSON files during development.
-
----
-
-# Accessibility
+## Accessibility
 
 The frontend is built with accessibility as a priority.
 
@@ -207,9 +185,7 @@ The frontend is built with accessibility as a priority.
 - Accessible modals
 - Accessible tooltips
 
----
-
-# API
+## API
 
 REST API built with Express.
 
@@ -224,63 +200,59 @@ Typical resources include:
 - Users
 - Addresses
 
----
+## Project Structure
 
-# Project Structure
-
-```
+```text
 client/
-    src/
-        api/
-        components/
-        features/
-        hooks/
-        layouts/
-        pages/
-        routes/
-        services/
-        styles/
-        utils/
-        locales/
+└── src/
+    ├── api/
+    ├── components/
+    ├── features/
+    ├── hooks/
+    ├── layouts/
+    ├── locales/
+    ├── pages/
+    ├── routes/
+    ├── services/
+    ├── styles/
+    └── utils/
 
 server/
-    config/
-    constants/
-    controllers/
-    middleware/
-    models/
-    routes/
-    services/
-    validators/
-    utils/
+├── config/
+├── constants/
+├── controllers/
+├── middleware/
+├── models/
+├── routes/
+├── services/
+├── utils/
+└── validators/
 ```
 
----
-
-# Architecture
+## Architecture
 
 The project follows a feature-oriented architecture with:
 
 - Reusable UI components
 - Custom hooks
 - RTK Query for server state
-- Utility driven business logic
+- Utility-driven business logic
 - Centralized constants
-- Validation utilities
+- Shared validation utilities
 - Shared pricing calculations
+- Modular Express controllers
+- Reusable services
 
 Business logic is kept outside controllers whenever possible.
 
----
+## Current Highlights
 
-# Current Highlights
-
-- Modern React architecture
+- Modern React 19 architecture
 - Fully typed TypeScript frontend
 - RTK Query data layer
-- Cookie authentication
-- Modular backend
-- Centralized validation
-- Reusable pricing engine
-- Translation pipeline
-- Accessible component library
+- Cookie-based authentication
+- Modular Express backend
+- Shared pricing engine
+- CSV-based localization pipeline
+- WCAG 2.2 accessible component library
+- English and Danish language support
