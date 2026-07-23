@@ -90,6 +90,9 @@ Currently supported:
 
 Translations are maintained in CSV files. Run the following command to generate the JSON translation files:
 
+````bash
+npm run translate
+
 Localization includes:
 
 - English and Danish UI
@@ -234,7 +237,7 @@ server/
 ├── services/
 ├── utils/
 └── validators/
-```
+````
 
 ## Architecture
 
