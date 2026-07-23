@@ -101,7 +101,7 @@ Translations are maintained in CSV files and automatically converted into JSON f
 - Persisted language preference
 - CSV-based translation workflow
 
-````
+---
 
 ### User Experience
 
@@ -236,7 +236,7 @@ server/
 ├── services/
 ├── utils/
 └── validators/
-````
+```
 
 ## Architecture
 
