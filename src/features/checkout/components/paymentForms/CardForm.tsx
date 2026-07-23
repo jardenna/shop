@@ -1,3 +1,4 @@
+import { CheckoutResponse } from '../../../../app/api/apiTypes/cartApiTypes';
 import { PaymentMethodField } from '../../../../app/api/apiTypes/shopApiTypes';
 import FieldSet from '../../../../components/fieldset/FieldSet';
 import Form from '../../../../components/form/Form';
@@ -7,11 +8,18 @@ import { ChangeInputType, InputType } from '../../../../types/types';
 import { formatExpiryDate } from '../formatExpiryDateUtil';
 
 interface CardFormProps {
+  checkout: CheckoutResponse;
   fields: PaymentMethodField[];
   language: Record<string, string>;
+  paymentMethod: string;
 }
 
-const CardForm = ({ fields, language }: CardFormProps) => {
+const CardForm = ({
+  fields,
+  language,
+  checkout,
+  paymentMethod,
+}: CardFormProps) => {
   const initialValues: Record<string, string> = Object.fromEntries(
     fields.map(({ name }) => [name, '']),
   );
@@ -22,6 +30,32 @@ const CardForm = ({ fields, language }: CardFormProps) => {
     initialState: initialValues,
     callback: handleSubmit,
   });
+
+  const orderItems = checkout.cartItems.map(
+    ({ productId, qty, color, size }) => ({
+      productId,
+      qty,
+      color,
+      size,
+    }),
+  );
+
+  const shippingAddressId = checkout.addresses.find((address) =>
+    address.standardAddress.includes('addressDelivery'),
+  )?.id;
+
+  const billingAddressId = checkout.addresses.find((address) =>
+    address.standardAddress.includes('addressBilling'),
+  )?.id;
+
+  const payload = {
+    orderItems,
+    shippingAddressId,
+    billingAddressId,
+    payment: {
+      method: paymentMethod,
+    },
+  };
 
   const handleChange = (event: ChangeInputType) => {
     const currentTarget = event.currentTarget;
@@ -35,6 +69,7 @@ const CardForm = ({ fields, language }: CardFormProps) => {
 
   function handleSubmit() {
     console.log(values);
+    console.log(payload);
   }
 
   return (

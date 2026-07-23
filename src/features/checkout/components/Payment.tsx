@@ -1,3 +1,4 @@
+import { CheckoutResponse } from '../../../app/api/apiTypes/cartApiTypes';
 import { PaymentMethod } from '../../../app/api/apiTypes/shopApiTypes';
 import RadioBtnList from '../../../components/formElements/radioList/RadioBtnList';
 import IconContent from '../../../components/IconContent';
@@ -5,6 +6,7 @@ import { InputChangeHandler } from '../../../types/types';
 import CardForm from './paymentForms/CardForm';
 
 interface PaymentProps {
+  checkout: CheckoutResponse;
   language: Record<string, string>;
   name: string;
   onChange: InputChangeHandler;
@@ -19,6 +21,7 @@ const Payment = ({
   onChange,
   values,
   name,
+  checkout,
   language,
 }: PaymentProps) => {
   const paymentMethodList = paymentMethod.map(({ id, label }) => ({
@@ -55,6 +58,8 @@ const Payment = ({
           fields={methodToShow.fields}
           key={methodToShow.id}
           language={language}
+          checkout={checkout}
+          paymentMethod={values.paymentMethod}
         />
       )}
     </div>
