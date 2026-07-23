@@ -96,8 +96,6 @@ Currently supported:
 
 Translations are maintained in CSV files and automatically converted into JSON files during development.
 
-# Features
-
 ## Features
 
 - English and Danish UI
