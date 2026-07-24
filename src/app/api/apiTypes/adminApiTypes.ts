@@ -1,4 +1,5 @@
 import type { OmitChecked } from '../../../types/types';
+import { roleValues, statusValues } from '../apiConstants';
 import type {
   BasePagination,
   BaseProductParams,
@@ -8,9 +9,6 @@ import type {
   Size,
   SortOrder,
 } from './sharedApiTypes';
-
-export const roleValues = ['Employee', 'User'] as const;
-export const statusValues = ['Published', 'Inactive', 'Scheduled'] as const;
 
 export type Roles = (typeof roleValues)[number];
 

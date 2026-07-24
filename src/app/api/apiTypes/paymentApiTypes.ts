@@ -2,13 +2,7 @@ import { HTMLInputTypeAttribute } from 'react';
 import { KeyValuePair } from '../../../hooks/useFormValidation';
 import { IconName } from '../../../types/enums';
 import { InputMode } from '../../../types/types';
-
-export const paymentMethods = {
-  visa: 'visa',
-  mastercard: 'mastercard',
-  paypal: 'paypal',
-  mobilepay: 'mobilepay',
-} as const;
+import { paymentMethods } from '../apiConstants';
 
 export type PaymentMethods =
   (typeof paymentMethods)[keyof typeof paymentMethods];
