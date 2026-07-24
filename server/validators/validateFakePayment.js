@@ -4,6 +4,14 @@ import {
   PAYMENT_METHODS_LIST,
 } from '../config/paymentConstants.js';
 
+import {
+  cardNumberRegex,
+  emailRegex,
+  expiryDateRegex,
+  mobilePhoneNumberRegex,
+  securityCodeRegex,
+} from '../utils/regex.js';
+
 const validateFakePayment = ({
   method: paymentMethod,
   [PAYMENT_FIELDS.CARD_NUMBER]: cardNumber,
@@ -28,25 +36,25 @@ const validateFakePayment = ({
   ) {
     const sanitizedCardNumber = cardNumber?.replace(/\s/g, '');
 
-    if (!sanitizedCardNumber || !/^\d{16}$/.test(sanitizedCardNumber)) {
+    if (!sanitizedCardNumber || !cardNumberRegex.test(sanitizedCardNumber)) {
       return 'Card number must contain exactly 16 digits';
     }
 
-    if (!expiryDate || !/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiryDate)) {
+    if (!expiryDate || !expiryDateRegex.test(expiryDate)) {
       return 'Expiry date must be in MM/YY format (for example, 09/28)';
     }
 
     const [month, year] = expiryDate.split('/').map(Number);
 
-    const currentDate = new Date();
-    const currentMonth = currentDate.getMonth() + 1;
-    const currentYear = currentDate.getFullYear() % 100;
+    const today = new Date();
+    const currentMonth = today.getMonth() + 1;
+    const currentYear = today.getFullYear() % 100;
 
     if (year < currentYear || (year === currentYear && month < currentMonth)) {
       return 'Card has expired';
     }
 
-    if (!cvvCode || !/^\d{3,4}$/.test(cvvCode)) {
+    if (!cvvCode || !securityCodeRegex.test(cvvCode)) {
       return 'Security code must contain 3 or 4 digits';
     }
 
@@ -60,9 +68,7 @@ const validateFakePayment = ({
       return 'PayPal email is required';
     }
 
-    const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!validEmail.test(paypalEmail)) {
+    if (!emailRegex.test(paypalEmail)) {
       return 'Please enter a valid email address';
     }
 
@@ -74,7 +80,10 @@ const validateFakePayment = ({
   if (paymentMethod === PAYMENT_METHODS.MOBILEPAY) {
     const sanitizedPhoneNumber = mobilePhoneNumber?.replace(/\s/g, '');
 
-    if (!sanitizedPhoneNumber || !/^\d{8}$/.test(sanitizedPhoneNumber)) {
+    if (
+      !sanitizedPhoneNumber ||
+      !mobilePhoneNumberRegex.test(sanitizedPhoneNumber)
+    ) {
       return 'Phone number must contain exactly 8 digits';
     }
   }
