@@ -46,7 +46,7 @@ const Payment = ({
 
   return (
     <div>
-      <form className="select-payment-method">
+      <form className="select-payment-method" noValidate>
         <RadioBtnList
           onChange={onChange}
           value={values.paymentMethod}
