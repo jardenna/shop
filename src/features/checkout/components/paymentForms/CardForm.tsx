@@ -51,7 +51,6 @@ const CardForm = ({
       size,
     }),
   );
-  console.log(paymentMethod);
 
   const shippingAddressId = checkout.addresses.find((address) =>
     address.standardAddress.includes('addressDelivery'),
@@ -87,6 +86,7 @@ const CardForm = ({
       await payOrder({
         orderId: order.id,
         method: paymentMethod,
+        ...values,
       }).unwrap();
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
