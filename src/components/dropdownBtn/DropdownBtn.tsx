@@ -51,8 +51,8 @@ const DropdownBtn = ({
         ariaControls={dropdownId}
         ariaLabel={ariaLabel}
         className={triggerBtnClassName}
-        ref={(el) => {
-          buttonRef.current = el;
+        refCallback={(element) => {
+          buttonRef.current = element;
         }}
       >
         {children}

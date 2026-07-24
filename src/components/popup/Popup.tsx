@@ -56,7 +56,7 @@ const Popup = ({
         onClick={handleOpenPopup}
         ariaLabel={ariaLabel}
         className={triggerBtnClassName}
-        popupRef={buttonRef}
+        ref={buttonRef}
         {...buttonAriaProps}
       >
         {children}

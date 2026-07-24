@@ -1,8 +1,8 @@
 /* eslint-disable react/button-has-type */
 
-import { ButtonHTMLAttributes, type ReactNode, RefObject } from 'react';
+import { ButtonHTMLAttributes, type ReactNode } from 'react';
 import { BtnVariant } from '../types/enums';
-import { AriaCurrentType, AriaHasPopup } from '../types/types';
+import type { AriaCurrentType, AriaHasPopup, RefBtnType } from '../types/types';
 import Loader from './loader/Loader';
 import VisuallyHidden from './VisuallyHidden';
 
@@ -15,10 +15,10 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   ariaHasPopup?: AriaHasPopup;
   ariaLabel?: string;
   ariaPressed?: boolean;
-  popupRef?: RefObject<HTMLButtonElement | null>;
+  ref?: RefBtnType;
   showBtnLoader?: boolean;
   variant?: BtnVariant;
-  ref?: (el: HTMLButtonElement | null) => void;
+  refCallback?: (element: HTMLButtonElement | null) => void;
 }
 
 const Button = ({
@@ -28,7 +28,7 @@ const Button = ({
   tabIndex,
   variant = BtnVariant.Primary,
   onClick,
-  ref,
+  refCallback,
   ariaPressed,
   ariaDescribedBy,
   ariaExpanded,
@@ -42,14 +42,14 @@ const Button = ({
   disabled,
   name,
   showBtnLoader,
-  popupRef,
+  ref,
 }: ButtonProps) => (
   <button
     id={id}
     tabIndex={tabIndex}
     role={role}
     type={type ?? 'button'}
-    ref={ref || popupRef}
+    ref={refCallback || ref}
     onClick={onClick}
     aria-pressed={ariaPressed || undefined}
     aria-describedby={ariaDescribedBy}

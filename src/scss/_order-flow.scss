@@ -29,6 +29,12 @@
   @include max-size($medium) {
     max-width: 100%;
   }
+
+  .order-flow-header {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
 }
 
 .payment-method-list {

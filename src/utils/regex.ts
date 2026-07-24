@@ -1,8 +1,10 @@
-const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-const yearRegex = /^(18(8[9]|9[0-9])|19\d{2}|20\d{2}|2099)$/;
-const lowercase = /[a-z]/;
-const uppercase = /[A-Z]/;
-const isNumber = /[0-9]/;
-const isSymbol = /[!@#$%^&*(),.?":{}|<>£[\]¤/\-_]/;
-
-export { emailRegex, isNumber, isSymbol, lowercase, uppercase, yearRegex };
+export const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+export const yearRegex = /^(18(8[9]|9[0-9])|19\d{2}|20\d{2}|2099)$/;
+export const lowercase = /[a-z]/;
+export const uppercase = /[A-Z]/;
+export const isNumber = /[0-9]/;
+export const isSymbol = /[!@#$%^&*(),.?":{}|<>£[\]¤/\-_]/;
+export const cardNumberRegex = /^\d{16}$/;
+export const expiryDateRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
+export const securityCodeRegex = /^\d{3,4}$/;
+export const mobilePhoneNumberRegex = /^\d{8}$/;

@@ -1,5 +1,5 @@
-import { CheckoutResponse } from '../../../../app/api/apiTypes/cartApiTypes';
 import {
+  PaymentFormValues,
   PaymentMethodField,
   PaymentMethods,
 } from '../../../../app/api/apiTypes/paymentApiTypes';
@@ -11,13 +11,16 @@ import { useMessagePopup } from '../../../../components/messagePopup/useMessageP
 import { useFormValidation } from '../../../../hooks/useFormValidation';
 import { ChangeInputType, InputType } from '../../../../types/types';
 import { handleApiError } from '../../../../utils/handleApiError';
-import { useCreateOrderMutation } from '../../../orders/orderApiSlice';
+import { validatePayment } from '../../../../utils/validation/validatePayment';
+import {
+  useCreateOrderMutation,
+  usePayOrderMutation,
+} from '../../../orders/orderApiSlice';
 import { formatExpiryDate } from '../formatExpiryDateUtil';
+import { BasePaymentProps } from '../Payment';
 
-interface CardFormProps {
-  checkout: CheckoutResponse;
+interface CardFormProps extends BasePaymentProps {
   fields: PaymentMethodField[];
-  language: Record<string, string>;
   paymentMethod: string;
 }
 
@@ -26,18 +29,30 @@ const CardForm = ({
   language,
   checkout,
   paymentMethod,
+  addressSectionRef,
+  addAddressButtonRef,
+  addressLength,
 }: CardFormProps) => {
   const { onAddMessagePopup } = useMessagePopup();
-  const initialValues = Object.fromEntries(
-    fields.map(({ name }) => [name, '']),
-  );
+  const initialValues: PaymentFormValues = {
+    paymentMethod: paymentMethod as PaymentMethods,
+    cardNumber: '',
+    expiryDate: '',
+    cvvCode: '',
+    cardholderName: '',
+    paypalEmail: '',
+    paypalPassword: '',
+    mobilePhoneNumber: '',
+  };
 
-  const { values, onChange, onSubmit } = useFormValidation({
+  const { values, onChange, onSubmit, errors } = useFormValidation({
     initialState: initialValues,
     callback: handleSubmit,
+    validate: validatePayment,
   });
 
   const [createOrder] = useCreateOrderMutation();
+  const [payOrder] = usePayOrderMutation();
 
   const orderItems = checkout.cartItems.map(
     ({ productId, qty, color, size }) => ({
@@ -76,19 +91,42 @@ const CardForm = ({
   };
 
   async function handleSubmit() {
+    if (addressLength === 0) {
+      addressSectionRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+
+      addAddressButtonRef.current?.focus();
+
+      onAddMessagePopup({
+        message: language.addressRequiredToPlaceOrder,
+        messagePopupType: 'info',
+      });
+      return;
+    }
     try {
-      await createOrder(orderPayload);
+      const order = await createOrder(orderPayload).unwrap();
+
+      await payOrder({
+        orderId: order.id,
+        method: paymentMethod,
+        ...values,
+      }).unwrap();
+
+      onAddMessagePopup({
+        message: language.orderPlaced,
+      });
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
     }
-    console.log(values);
   }
 
   return (
     <Form
       className="payment-form"
       onSubmit={onSubmit}
-      submitBtnLabel="Place order"
+      submitBtnLabel={language.placeOrder}
     >
       <FieldSet
         legendText={language.payment}
@@ -107,6 +145,10 @@ const CardForm = ({
               type={field.type as InputType}
               inputMode={field.inputMode}
               className={field.name}
+              required
+              errorText={
+                errors[field.name] ? language[errors[field.name]] : undefined
+              }
             />
           ))}
         </div>

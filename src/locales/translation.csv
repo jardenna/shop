@@ -1,5 +1,15 @@
 ﻿key;en;da
 about;About us;Om os
+cardHasExpired;Card has expired;Kortet er udløbet
+cardNumberMustContainExactly16Digits;Exactly 16 digits;Præcis 16 cifre
+invalidExpiryDateFormat;Use MM/YY (e.g. 09/28);Brug MM/ÅÅ (f.eks. 09/28)
+payPalPasswordMustContainAtLeast6Characters;At least 6 characters;Mindst 6 tegn
+phoneNumberMustContainExactly8Digits;Exactly 8 digits;Præcis 8 cifre
+pleaseEnterCardholderName;Please enter a name;Indtast venligst navn
+securityCodeMustContain3Or4Digits;3 or 4 digits;3 eller 4 cifre
+placeOrder;Place order;Gennemfør ordre
+orderPlaced;Order Placed;Ordre gennemført
+addressRequiredToPlaceOrder;Create an address to complete your order.;Opret en adresse for at gennemføre din ordre.
 paymentSummary;Payment summary;Betalingsoversigt
 cardTestNumber;Card number;Kort nummer
 expiryDate;Expiry date (mm/yy);Udløbsdato (mm/yy)

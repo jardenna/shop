@@ -7,6 +7,18 @@
     gap: 4px;
   }
 
+  .btn {
+    &.add-new-btn {
+      &:focus {
+        @include outline;
+      }
+    }
+  }
+
+  .order-flow-list {
+    scroll-margin-top: 400px;
+  }
+
   .select-payment-method {
     display: flex;
     gap: 20px;
@@ -16,6 +28,16 @@
     padding-inline: 4px 12px;
     border-radius: 4px;
     margin-bottom: 12px;
+  }
+
+  .error-info-icon {
+    position: static;
+  }
+
+  .order-flow-header {
+    .order-flow-title {
+      margin: 0;
+    }
   }
 
   .secondary-radio {

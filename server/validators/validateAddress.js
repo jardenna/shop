@@ -9,7 +9,7 @@ const validateCreateAddress = (address) => {
     case !address.country:
       return 'Please enter country';
     default:
-      return null; // No errors
+      return null;
   }
 };
 

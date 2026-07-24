@@ -1,3 +1,4 @@
+import { mainCategoryValues, subCategoryValues } from '../apiConstants';
 import type { Status } from './adminApiTypes';
 
 export type CurrencyResponse = {
@@ -42,9 +43,8 @@ export type ClothingSizes = 'S' | 'M' | 'L' | 'XL';
 export type Size =
   KidsShoesSizes | MenShoesSizes | WomenShoesSizes | ClothingSizes;
 
-export const mainCategoryValues = ['Men', 'Women', 'Kids'] as const;
 export type MainCategoryNames = (typeof mainCategoryValues)[number];
-export const subCategoryValues = ['Shoes', 'Accessories', 'Clothing'] as const;
+
 export type SubCategoryNames = (typeof subCategoryValues)[number];
 
 export type SortOrder = 'asc' | 'desc';

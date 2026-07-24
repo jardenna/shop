@@ -1,17 +1,27 @@
 import {
+  PAYMENT_FIELDS,
   PAYMENT_METHODS,
   PAYMENT_METHODS_LIST,
 } from '../config/paymentConstants.js';
+import {
+  cardNumberRegex,
+  emailRegex,
+  expiryDateRegex,
+  mobilePhoneNumberRegex,
+  securityCodeRegex,
+} from '../utils/regex.js';
+import { t } from '../utils/translator.js';
 
 const validateFakePayment = ({
-  paymentMethod,
-  cardNumber,
-  expiryDate,
-  cvvCode,
-  cardholderName,
-  paypalEmail,
-  paypalPassword,
-  phoneNumber,
+  method: paymentMethod,
+  [PAYMENT_FIELDS.CARD_NUMBER]: cardNumber,
+  [PAYMENT_FIELDS.EXPIRY_DATE]: expiryDate,
+  [PAYMENT_FIELDS.CVV_CODE]: cvvCode,
+  [PAYMENT_FIELDS.CARDHOLDER_NAME]: cardholderName,
+  [PAYMENT_FIELDS.PAYPAL_EMAIL]: paypalEmail,
+  [PAYMENT_FIELDS.PAYPAL_PASSWORD]: paypalPassword,
+  [PAYMENT_FIELDS.MOBILE_PHONE_NUMBER]: mobilePhoneNumber,
+  lang,
 }) => {
   if (!paymentMethod) {
     return 'Payment method is required';
@@ -27,44 +37,55 @@ const validateFakePayment = ({
   ) {
     const sanitizedCardNumber = cardNumber?.replace(/\s/g, '');
 
-    if (!sanitizedCardNumber || !/^\d{16}$/.test(sanitizedCardNumber)) {
-      return 'Invalid card number';
+    if (!sanitizedCardNumber || !cardNumberRegex.test(sanitizedCardNumber)) {
+      return t('cardNumberMustContainExactly16Digits', lang);
     }
 
-    if (!expiryDate || !/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiryDate)) {
-      return 'Invalid expiry date';
+    if (!expiryDate || !expiryDateRegex.test(expiryDate)) {
+      return t('invalidExpiryDateFormat', lang);
     }
 
-    if (!cvvCode || !/^\d{3,4}$/.test(cvvCode)) {
-      return 'Invalid CVV';
+    const [month, year] = expiryDate.split('/').map(Number);
+
+    const today = new Date();
+    const currentMonth = today.getMonth() + 1;
+    const currentYear = today.getFullYear() % 100;
+
+    if (year < currentYear || (year === currentYear && month < currentMonth)) {
+      return t('cardHasExpired', lang);
+    }
+
+    if (!cvvCode || !securityCodeRegex.test(cvvCode)) {
+      return t('securityCodeMustContain3Or4Digits', lang);
     }
 
     if (!cardholderName?.trim()) {
-      return 'Cardholder name is required';
+      return t('pleaseEnterCardholderName', lang);
     }
   }
 
   if (paymentMethod === PAYMENT_METHODS.PAYPAL) {
     if (!paypalEmail?.trim()) {
-      return 'PayPal email is required';
+      return t('noEmail', lang);
     }
 
-    const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!validEmail.test(paypalEmail)) {
-      return 'Invalid PayPal email';
+    if (!emailRegex.test(paypalEmail)) {
+      return t('pleaseEnterValidEmail', lang);
     }
 
     if (!paypalPassword || paypalPassword.length < 6) {
-      return 'Invalid PayPal password';
+      return t('payPalPasswordMustContainAtLeast6Characters', lang);
     }
   }
 
   if (paymentMethod === PAYMENT_METHODS.MOBILEPAY) {
-    const sanitizedPhoneNumber = phoneNumber?.replace(/\s/g, '');
+    const sanitizedPhoneNumber = mobilePhoneNumber?.replace(/\s/g, '');
 
-    if (!sanitizedPhoneNumber || !/^\d{8}$/.test(sanitizedPhoneNumber)) {
-      return 'Invalid phone number';
+    if (
+      !sanitizedPhoneNumber ||
+      !mobilePhoneNumberRegex.test(sanitizedPhoneNumber)
+    ) {
+      return t('phoneNumberMustContainExactly8Digits', lang);
     }
   }
 

@@ -2,13 +2,23 @@ import { CheckoutResponse } from '../../../app/api/apiTypes/cartApiTypes';
 import { PaymentMethods } from '../../../app/api/apiTypes/paymentApiTypes';
 import RadioBtnList from '../../../components/formElements/radioList/RadioBtnList';
 import { paymentMethodsList } from '../../../config/paymentConfig';
-import { InputChangeHandler } from '../../../types/types';
+import type {
+  InputChangeHandler,
+  RefBtnType,
+  RefElementType,
+} from '../../../types/types';
 import PaymentMethodsList from '../../cart/components/PaymentMethodsList';
 import CardForm from './paymentForms/CardForm';
 
-interface PaymentProps {
+export interface BasePaymentProps {
+  addAddressButtonRef: RefBtnType;
+  addressLength: number;
+  addressSectionRef: RefElementType;
   checkout: CheckoutResponse;
   language: Record<string, string>;
+}
+
+interface PaymentProps extends BasePaymentProps {
   name: string;
   onChange: InputChangeHandler;
   paymentMethod: PaymentMethods[];
@@ -22,8 +32,11 @@ const Payment = ({
   values,
   name,
   checkout,
+  addressLength,
   paymentMethod,
   language,
+  addAddressButtonRef,
+  addressSectionRef,
 }: PaymentProps) => {
   const availablePaymentMethods = paymentMethodsList.filter((method) =>
     paymentMethod.includes(method.id),
@@ -41,7 +54,7 @@ const Payment = ({
 
   return (
     <div>
-      <form className="select-payment-method">
+      <form className="select-payment-method" noValidate>
         <RadioBtnList
           onChange={onChange}
           value={values.paymentMethod}
@@ -52,11 +65,14 @@ const Payment = ({
       </form>
       {methodToShow && (
         <CardForm
+          addressSectionRef={addressSectionRef}
           fields={methodToShow.fields}
           key={methodToShow.id}
           language={language}
           checkout={checkout}
           paymentMethod={values.paymentMethod}
+          addressLength={addressLength}
+          addAddressButtonRef={addAddressButtonRef}
         />
       )}
     </div>

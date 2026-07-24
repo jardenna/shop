@@ -1,4 +1,4 @@
-import { useId, type ReactNode } from 'react';
+import { RefObject, useId, type ReactNode } from 'react';
 import { useAppDispatch } from '../../app/hooks';
 import { toggleModal } from '../../features/modalSlice';
 import { BtnVariant } from '../../types/enums';
@@ -8,6 +8,7 @@ import Modal from './Modal';
 
 export type TriggerModalProps = {
   triggerModalBtnContent: ReactNode | string;
+  triggerButtonRef?: RefObject<HTMLButtonElement | null>;
   triggerModalBtnVariant?: BtnVariant;
   triggerModalClassName?: string;
   triggerModalDisabled?: boolean;
@@ -25,6 +26,7 @@ const ModalContainer = ({
   showCloseIcon,
   triggerModalBtnVariant,
   triggerModalBtnContent,
+  triggerButtonRef,
   modalHeaderText,
   triggerModalClassName,
   triggerModalDisabled,
@@ -49,6 +51,7 @@ const ModalContainer = ({
         disabled={triggerModalDisabled}
         ariaControls={ariaControlsId}
         ariaHasPopup="dialog"
+        ref={triggerButtonRef}
       >
         {triggerModalBtnContent}
       </Button>

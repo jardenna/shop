@@ -2,10 +2,13 @@ import { ButtonHTMLAttributes } from 'react';
 
 export enum ValidationMessage {
   BrandRequired = 'brandRequired',
+  CardHasExpired = 'cardHasExpired',
+  CardNumberMustContainExactly16Digits = 'cardNumberMustContainExactly16Digits',
   CategoryRequired = 'categoryRequired',
   ColorRequired = 'colorRequired',
   discountRange = 'discountRange',
   ImageRequired = 'imageRequired',
+  InvalidExpiryDateFormat = 'invalidExpiryDateFormat',
   MaterialRequired = 'materialRequired',
   nothingWasUpdated = 'nothingWasUpdated',
   PasswordDoNotMatch = 'passwordDoNotMatch',
@@ -14,7 +17,10 @@ export enum ValidationMessage {
   PasswordNumber = 'passwordNumber',
   PasswordSymbol = 'passwordSymbol',
   PasswordUppercase = 'passwordUppercase',
+  PayPalPasswordMustContainAtLeast6Characters = 'payPalPasswordMustContainAtLeast6Characters',
+  PhoneNumberMustContainExactly8Digits = 'phoneNumberMustContainExactly8Digits',
   PleaseEnter = 'pleaseEnter',
+  PleaseEnterCardholderName = 'pleaseEnterCardholderName',
   PleaseEnterCategoryName = 'pleaseEnterCategoryName',
   PleaseEnterCity = 'pleaseEnterCity',
   PleaseEnterDiscountCode = 'pleaseEnterDiscountCode',
@@ -30,6 +36,7 @@ export enum ValidationMessage {
   PriceRequired = 'priceRequired',
   ProductDescriptionRequired = 'productDescriptionRequired',
   ProductNameRequired = 'productNameRequired',
+  SecurityCodeMustContain3Or4Digits = 'securityCodeMustContain3Or4Digits',
   SizeRequired = 'sizeRequired',
   UnknownError = 'unknownError',
 }

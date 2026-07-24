@@ -1,15 +1,14 @@
 /* eslint-disable no-param-reassign */
 import {
-  Roles,
-  roleValues,
-  Status,
+  mainCategoryValues,
   statusValues,
-} from '../../../app/api/apiTypes/adminApiTypes';
+  subCategoryValues,
+  roleValues,
+} from '../../../app/api/apiConstants';
+import { Roles, Status } from '../../../app/api/apiTypes/adminApiTypes';
 import {
   MainCategoryNames,
-  mainCategoryValues,
   SubCategoryNames,
-  subCategoryValues,
 } from '../../../app/api/apiTypes/sharedApiTypes';
 import { Options } from '../../../types/types';
 import { Column } from '../Table';

@@ -6,7 +6,7 @@ import { IconName } from '../types/enums';
 
 const cardFields: PaymentMethodField[] = [
   {
-    name: 'card',
+    name: 'cardNumber',
     label: 'cardTestNumber',
     type: 'text',
   },
