@@ -24,12 +24,3 @@ export const PAYMENT_FIELDS = Object.freeze({
   PAYPAL_PASSWORD: 'paypalPassword',
   MOBILE_PHONE_NUMBER: 'mobilePhoneNumber',
 });
-
-export const DELIVERY_STATUS = {
-  PENDING: 'Pending',
-  PROCESSING: 'Processing',
-  SHIPPED: 'Shipped',
-  DELIVERED: 'Delivered',
-};
-
-export const DELIVERY_STATUS_ENUM = Object.values(DELIVERY_STATUS);

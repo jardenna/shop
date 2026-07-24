@@ -85,3 +85,12 @@ export const PROMO_CODES = [
 
 export const SHIPPING_PRICE = 49;
 export const DISCOUNT_SHIPPING_PRICE = 3500;
+
+export const DELIVERY_STATUS = {
+  PENDING: 'Pending',
+  PROCESSING: 'Processing',
+  SHIPPED: 'Shipped',
+  DELIVERED: 'Delivered',
+};
+
+export const DELIVERY_STATUS_ENUM = Object.values(DELIVERY_STATUS);

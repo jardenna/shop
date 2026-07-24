@@ -1,7 +1,6 @@
 import { model, Schema } from 'mongoose';
+import { DELIVERY_STATUS, DELIVERY_STATUS_ENUM } from '../config/constants.js';
 import {
-  DELIVERY_STATUS,
-  DELIVERY_STATUS_ENUM,
   PAYMENT_METHODS_LIST,
   PAYMENT_STATUS,
   PAYMENT_STATUS_ENUM,
