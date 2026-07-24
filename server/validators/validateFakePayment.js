@@ -1,17 +1,18 @@
 import {
+  PAYMENT_FIELDS,
   PAYMENT_METHODS,
   PAYMENT_METHODS_LIST,
 } from '../config/paymentConstants.js';
 
 const validateFakePayment = ({
   method: paymentMethod,
-  cardNumber,
-  expiryDate,
-  cvvCode,
-  cardholderName,
-  paypalEmail,
-  paypalPassword,
-  mobilePhoneNumber,
+  [PAYMENT_FIELDS.CARD_NUMBER]: cardNumber,
+  [PAYMENT_FIELDS.EXPIRY_DATE]: expiryDate,
+  [PAYMENT_FIELDS.CVV_CODE]: cvvCode,
+  [PAYMENT_FIELDS.CARDHOLDER_NAME]: cardholderName,
+  [PAYMENT_FIELDS.PAYPAL_EMAIL]: paypalEmail,
+  [PAYMENT_FIELDS.PAYPAL_PASSWORD]: paypalPassword,
+  [PAYMENT_FIELDS.MOBILE_PHONE_NUMBER]: mobilePhoneNumber,
 }) => {
   if (!paymentMethod) {
     return 'Payment method is required';

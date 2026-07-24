@@ -5,9 +5,18 @@ import { InputMode } from '../../../types/types';
 export type PaymentMethods = 'visa' | 'paypal' | 'mobilepay' | 'mastercard';
 export type PaymentStatus = 'pending' | 'failed' | 'paid';
 
+export type PaymentFieldName =
+  | 'cardNumber'
+  | 'expiryDate'
+  | 'cvvCode'
+  | 'cardholderName'
+  | 'paypalEmail'
+  | 'paypalPassword'
+  | 'mobilePhoneNumber';
+
 export interface PaymentMethodField {
   label: string;
-  name: string;
+  name: PaymentFieldName;
   type: HTMLInputTypeAttribute;
   inputMode?: InputMode;
 }
