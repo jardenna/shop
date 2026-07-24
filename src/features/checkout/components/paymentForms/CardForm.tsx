@@ -1,5 +1,6 @@
 import { CheckoutResponse } from '../../../../app/api/apiTypes/cartApiTypes';
 import {
+  PaymentFormValues,
   PaymentMethodField,
   PaymentMethods,
 } from '../../../../app/api/apiTypes/paymentApiTypes';
@@ -11,10 +12,7 @@ import { useMessagePopup } from '../../../../components/messagePopup/useMessageP
 import { useFormValidation } from '../../../../hooks/useFormValidation';
 import { ChangeInputType, InputType } from '../../../../types/types';
 import { handleApiError } from '../../../../utils/handleApiError';
-import {
-  PaymentFormValues,
-  validatePayment,
-} from '../../../../utils/validation/validatePayment';
+import { validatePayment } from '../../../../utils/validation/validatePayment';
 import {
   useCreateOrderMutation,
   usePayOrderMutation,

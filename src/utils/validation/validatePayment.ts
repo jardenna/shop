@@ -1,11 +1,8 @@
 import {
-  PaymentMethods,
   paymentMethods,
+  ValidatePayment,
 } from '../../app/api/apiTypes/paymentApiTypes';
-import type {
-  KeyValuePair,
-  ValidationErrors,
-} from '../../hooks/useFormValidation';
+import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
 import {
   cardNumberRegex,
@@ -14,19 +11,6 @@ import {
   mobilePhoneNumberRegex,
   securityCodeRegex,
 } from '../regex';
-
-export interface PaymentFormValues extends KeyValuePair<string> {
-  cardholderName: string;
-  cardNumber: string;
-  cvvCode: string;
-  expiryDate: string;
-  mobilePhoneNumber: string;
-  paymentMethod: PaymentMethods;
-  paypalEmail: string;
-  paypalPassword: string;
-}
-
-type ValidatePayment = PaymentFormValues;
 
 export function validatePayment(values: ValidatePayment) {
   const errors: ValidationErrors<ValidatePayment> = {};

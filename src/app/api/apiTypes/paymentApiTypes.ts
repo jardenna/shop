@@ -1,4 +1,5 @@
 import { HTMLInputTypeAttribute } from 'react';
+import { KeyValuePair } from '../../../hooks/useFormValidation';
 import { IconName } from '../../../types/enums';
 import { InputMode } from '../../../types/types';
 
@@ -36,3 +37,16 @@ export interface PaymentMethod {
   id: PaymentMethods;
   label: string;
 }
+
+export interface PaymentFormValues extends KeyValuePair<string> {
+  cardholderName: string;
+  cardNumber: string;
+  cvvCode: string;
+  expiryDate: string;
+  mobilePhoneNumber: string;
+  paymentMethod: PaymentMethods;
+  paypalEmail: string;
+  paypalPassword: string;
+}
+
+export type ValidatePayment = PaymentFormValues;
