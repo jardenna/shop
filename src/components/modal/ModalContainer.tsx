@@ -8,6 +8,7 @@ import Modal from './Modal';
 
 export type TriggerModalProps = {
   triggerModalBtnContent: ReactNode | string;
+  addAddressButtonRef?: any;
   triggerModalBtnVariant?: BtnVariant;
   triggerModalClassName?: string;
   triggerModalDisabled?: boolean;
@@ -25,6 +26,7 @@ const ModalContainer = ({
   showCloseIcon,
   triggerModalBtnVariant,
   triggerModalBtnContent,
+  addAddressButtonRef,
   modalHeaderText,
   triggerModalClassName,
   triggerModalDisabled,
@@ -49,8 +51,9 @@ const ModalContainer = ({
         disabled={triggerModalDisabled}
         ariaControls={ariaControlsId}
         ariaHasPopup="dialog"
+        ref={addAddressButtonRef}
       >
-        {triggerModalBtnContent}
+        {triggerModalBtnContent}dd
       </Button>
 
       <Modal

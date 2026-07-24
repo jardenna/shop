@@ -22,7 +22,7 @@ import {
 } from '../../features/profile/addressesApiSlice';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { BtnVariant, IconName, SizeVariant } from '../../types/enums';
-import type { InputType } from '../../types/types';
+import type { InputType, RefBtnType } from '../../types/types';
 import { handleApiError } from '../../utils/handleApiError';
 import { validateAddress } from '../../utils/validation/validateAddress';
 
@@ -32,6 +32,7 @@ type AddressFormModalProps = {
   popupMessage: string;
   primaryActionBtnLabel: string;
   username: string;
+  addAddressButtonRef?: RefBtnType;
   address?: Address;
   secondaryActionBtn?: SecondaryActionBtnProps | null;
   triggerModalDisabled?: boolean;
@@ -62,6 +63,7 @@ const AddressFormModal = ({
   popupMessage,
   triggerModalDisabled,
   secondaryActionBtn,
+  addAddressButtonRef,
 }: AddressFormModalProps) => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
@@ -132,6 +134,7 @@ const AddressFormModal = ({
 
   return (
     <ModalContainer
+      addAddressButtonRef={addAddressButtonRef}
       triggerModalDisabled={triggerModalDisabled}
       // onClearAllValues={onClearAllValues}
       onBoundaryReset={id ? reset : addReset}

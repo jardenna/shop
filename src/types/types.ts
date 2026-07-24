@@ -7,6 +7,7 @@ export type BlurEventType = { target: { name: string } };
 export type FocusEventType = FocusEvent<HTMLElement>;
 export type RefElementType = RefObject<HTMLElement | null>;
 export type RefInputType = RefObject<HTMLInputElement | null>;
+export type RefBtnType = RefObject<HTMLButtonElement | null>;
 export type RefFormType = RefObject<HTMLFormElement | null>;
 export type AutoComplete = 'on' | 'off';
 

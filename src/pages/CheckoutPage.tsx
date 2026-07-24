@@ -1,5 +1,4 @@
 import { useRef } from 'react';
-import ErrorInfoIcon from '../components/errorInfoIcon/ErrorInfoIcon';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import CartSummary from '../features/cart/components/CartSummary';
 import { useGetCheckoutQuery } from '../features/checkout/checkoutApiSlice';
@@ -15,10 +14,12 @@ import MainPageContainer from './pageContainer/MainPageContainer';
 const CheckoutPage = () => {
   const { language } = useLanguage();
   const { currentUser } = useAuth();
-  const { deleteCartItem } = useDeleteCartItem();
-  const { data: checkout, isLoading, refetch } = useGetCheckoutQuery();
 
   const addressSectionRef = useRef<HTMLDivElement | null>(null);
+  const addAddressButtonRef = useRef<HTMLButtonElement>(null);
+
+  const { deleteCartItem } = useDeleteCartItem();
+  const { data: checkout, isLoading, refetch } = useGetCheckoutQuery();
 
   const initialState = {
     paymentMethod: 'visa',
@@ -36,10 +37,7 @@ const CheckoutPage = () => {
             <section className="order-flow-list" ref={addressSectionRef}>
               <header className="order-flow-header">
                 <h2 className="order-flow-title">{language.addresses}</h2>
-                <ErrorInfoIcon />
-                <span className="error-message">
-                  {language.addressRequiredToPlaceOrder}
-                </span>
+                {language.addressRequiredToPlaceOrder}
               </header>
 
               <AddressList
@@ -48,6 +46,7 @@ const CheckoutPage = () => {
                 username={currentUser?.username ?? ''}
                 refetch={refetch}
                 className="checkout-address-list"
+                addAddressButtonRef={addAddressButtonRef}
               />
               <Payment
                 paymentMethod={checkout.paymentMethods}
@@ -58,6 +57,7 @@ const CheckoutPage = () => {
                 checkout={checkout}
                 addressLength={checkout.addresses.length}
                 addressSectionRef={addressSectionRef}
+                addAddressButtonRef={addAddressButtonRef}
               />
             </section>
             <aside className="order-flow-aside">

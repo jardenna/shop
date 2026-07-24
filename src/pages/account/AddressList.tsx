@@ -1,6 +1,7 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { Address } from '../../app/api/apiTypes/addressApiTypes';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
+import type { RefBtnType } from '../../types/types';
 import AddressFormModal from './AddressFormModal';
 import AddressInfoListContent from './AddressInfoListContent';
 import DeleteAddressModal from './DeleteAddressModal';
@@ -9,6 +10,7 @@ interface AddressListProps {
   addresses: Address[];
   language: Record<string, string>;
   username: string;
+  addAddressButtonRef?: RefBtnType;
   className?: string;
   refetch: () => void;
 }
@@ -17,6 +19,7 @@ const AddressList = ({
   refetch,
   addresses,
   username,
+  addAddressButtonRef,
   language,
   className = '',
 }: AddressListProps) => (
@@ -50,6 +53,7 @@ const AddressList = ({
           primaryActionBtnLabel={language.createNewAddress}
           popupMessage={language.addressCreated}
           triggerModalDisabled={addresses.length === 4}
+          addAddressButtonRef={addAddressButtonRef}
         />
       </li>
     </ul>

@@ -30,6 +30,7 @@ const CardForm = ({
   checkout,
   paymentMethod,
   addressSectionRef,
+  addAddressButtonRef,
   addressLength,
 }: CardFormProps) => {
   const { onAddMessagePopup } = useMessagePopup();
@@ -95,6 +96,13 @@ const CardForm = ({
         behavior: 'smooth',
         block: 'start',
       });
+
+      addAddressButtonRef.current?.focus();
+
+      onAddMessagePopup({
+        message: language.addressRequiredToPlaceOrder,
+        messagePopupType: 'info',
+      });
       return;
     }
     try {
@@ -105,6 +113,10 @@ const CardForm = ({
         method: paymentMethod,
         ...values,
       }).unwrap();
+
+      onAddMessagePopup({
+        message: 'order placed',
+      });
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
     }
