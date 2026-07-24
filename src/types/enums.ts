@@ -3,7 +3,7 @@ import { ButtonHTMLAttributes } from 'react';
 export enum ValidationMessage {
   BrandRequired = 'brandRequired',
   CardHasExpired = 'cardHasExpired',
-  CardNumberMustContainExactly16Digits = 'CardNumberMustContainExactly16Digits',
+  CardNumberMustContainExactly16Digits = 'cardNumberMustContainExactly16Digits',
   CategoryRequired = 'categoryRequired',
   ColorRequired = 'colorRequired',
   discountRange = 'discountRange',

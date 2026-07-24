@@ -44,7 +44,7 @@ const CardForm = ({
     mobilePhoneNumber: '',
   };
 
-  const { values, onChange, onSubmit } = useFormValidation({
+  const { values, onChange, onSubmit, errors } = useFormValidation({
     initialState: initialValues,
     callback: handleSubmit,
     validate: validatePayment,
@@ -126,6 +126,9 @@ const CardForm = ({
               type={field.type as InputType}
               inputMode={field.inputMode}
               className={field.name}
+              errorText={
+                errors[field.name] ? language[errors[field.name]] : undefined
+              }
             />
           ))}
         </div>
