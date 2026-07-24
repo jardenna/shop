@@ -7,6 +7,8 @@ payPalPasswordMustContainAtLeast6Characters;At least 6 characters;Mindst 6 tegn
 phoneNumberMustContainExactly8Digits;Exactly 8 digits;Præcis 8 cifre
 pleaseEnterCardholderName;Please enter a name;Indtast venligst navn
 securityCodeMustContain3Or4Digits;3 or 4 digits;3 eller 4 cifre
+placeOrder;Place order;Gennemfør ordre
+addressRequiredToPlaceOrder;Add an address to complete your order.;Tilføj en adresse for at gennemføre ordren.
 paymentSummary;Payment summary;Betalingsoversigt
 cardTestNumber;Card number;Kort nummer
 expiryDate;Expiry date (mm/yy);Udløbsdato (mm/yy)
