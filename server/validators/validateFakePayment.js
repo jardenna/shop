@@ -60,8 +60,7 @@ const validateFakePayment = ({
     }
 
     if (!cardholderName?.trim()) {
-      // return t('invalidExpiryDateFormat', lang);
-      return 'Cardholder name is required';
+      return t('pleaseEnterCardholderName', lang);
     }
   }
 
