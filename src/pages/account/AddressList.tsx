@@ -9,7 +9,6 @@ interface AddressListProps {
   addresses: Address[];
   language: Record<string, string>;
   username: string;
-  addressSectionRef?: any;
   className?: string;
   refetch: () => void;
 }
@@ -19,14 +18,13 @@ const AddressList = ({
   addresses,
   username,
   language,
-  addressSectionRef,
   className = '',
 }: AddressListProps) => (
   <ErrorBoundary
     FallbackComponent={ErrorBoundaryFallback}
     onReset={() => refetch}
   >
-    <ul className={`my-address-list ${className}`} ref={addressSectionRef}>
+    <ul className={`my-address-list ${className}`}>
       {addresses.map((address) => (
         <li key={address.id} className="my-address-item">
           <AddressInfoListContent address={address} username={address.name} />

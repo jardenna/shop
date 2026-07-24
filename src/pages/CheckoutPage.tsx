@@ -18,7 +18,7 @@ const CheckoutPage = () => {
   const { deleteCartItem } = useDeleteCartItem();
   const { data: checkout, isLoading, refetch } = useGetCheckoutQuery();
 
-  const addressSectionRef = useRef<HTMLFormElement | null>(null);
+  const addressSectionRef = useRef<HTMLDivElement | null>(null);
 
   const initialState = {
     paymentMethod: 'visa',
@@ -33,7 +33,7 @@ const CheckoutPage = () => {
       <div className="checkout-page order-flow">
         {checkout && (
           <>
-            <section className="order-flow-list">
+            <section className="order-flow-list" ref={addressSectionRef}>
               <header className="order-flow-header">
                 <h2 className="order-flow-title">{language.addresses}</h2>
                 <ErrorInfoIcon />
@@ -43,7 +43,6 @@ const CheckoutPage = () => {
               </header>
 
               <AddressList
-                addressSectionRef={addressSectionRef}
                 addresses={checkout.addresses}
                 language={language}
                 username={currentUser?.username ?? ''}
