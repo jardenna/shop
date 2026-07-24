@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import ErrorInfoIcon from '../components/errorInfoIcon/ErrorInfoIcon';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import CartSummary from '../features/cart/components/CartSummary';
@@ -16,6 +17,8 @@ const CheckoutPage = () => {
   const { currentUser } = useAuth();
   const { deleteCartItem } = useDeleteCartItem();
   const { data: checkout, isLoading, refetch } = useGetCheckoutQuery();
+
+  const addressSectionRef = useRef<HTMLFormElement | null>(null);
 
   const initialState = {
     paymentMethod: 'visa',
@@ -40,6 +43,7 @@ const CheckoutPage = () => {
               </header>
 
               <AddressList
+                addressSectionRef={addressSectionRef}
                 addresses={checkout.addresses}
                 language={language}
                 username={currentUser?.username ?? ''}
@@ -54,6 +58,7 @@ const CheckoutPage = () => {
                 language={language}
                 checkout={checkout}
                 addressLength={checkout.addresses.length}
+                addressSectionRef={addressSectionRef}
               />
             </section>
             <aside className="order-flow-aside">

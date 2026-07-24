@@ -2,12 +2,13 @@ import { CheckoutResponse } from '../../../app/api/apiTypes/cartApiTypes';
 import { PaymentMethods } from '../../../app/api/apiTypes/paymentApiTypes';
 import RadioBtnList from '../../../components/formElements/radioList/RadioBtnList';
 import { paymentMethodsList } from '../../../config/paymentConfig';
-import { InputChangeHandler } from '../../../types/types';
+import type { InputChangeHandler, RefElementType } from '../../../types/types';
 import PaymentMethodsList from '../../cart/components/PaymentMethodsList';
 import CardForm from './paymentForms/CardForm';
 
 export interface BasePaymentProps {
   addressLength: number;
+  addressSectionRef: RefElementType;
   checkout: CheckoutResponse;
   language: Record<string, string>;
 }
@@ -29,6 +30,7 @@ const Payment = ({
   addressLength,
   paymentMethod,
   language,
+  addressSectionRef,
 }: PaymentProps) => {
   const availablePaymentMethods = paymentMethodsList.filter((method) =>
     paymentMethod.includes(method.id),
@@ -57,6 +59,7 @@ const Payment = ({
       </form>
       {methodToShow && (
         <CardForm
+          addressSectionRef={addressSectionRef}
           fields={methodToShow.fields}
           key={methodToShow.id}
           language={language}

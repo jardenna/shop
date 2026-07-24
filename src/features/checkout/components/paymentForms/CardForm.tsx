@@ -29,6 +29,7 @@ const CardForm = ({
   language,
   checkout,
   paymentMethod,
+  addressSectionRef,
   addressLength,
 }: CardFormProps) => {
   const { onAddMessagePopup } = useMessagePopup();
@@ -90,6 +91,10 @@ const CardForm = ({
 
   async function handleSubmit() {
     if (addressLength === 0) {
+      addressSectionRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
       return;
     }
     try {
