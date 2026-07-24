@@ -35,6 +35,7 @@ type AddressFormModalProps = {
   addAddressButtonRef?: RefBtnType;
   address?: Address;
   secondaryActionBtn?: SecondaryActionBtnProps | null;
+  triggerModalClassName?: string;
   triggerModalDisabled?: boolean;
 };
 
@@ -64,6 +65,7 @@ const AddressFormModal = ({
   triggerModalDisabled,
   secondaryActionBtn,
   addAddressButtonRef,
+  triggerModalClassName,
 }: AddressFormModalProps) => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
@@ -136,6 +138,7 @@ const AddressFormModal = ({
     <ModalContainer
       triggerButtonRef={addAddressButtonRef}
       triggerModalDisabled={triggerModalDisabled}
+      triggerModalClassName={triggerModalClassName ?? ''}
       // onClearAllValues={onClearAllValues}
       onBoundaryReset={id ? reset : addReset}
       modalSize={SizeVariant.Md}

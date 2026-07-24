@@ -37,7 +37,8 @@ const CheckoutPage = () => {
             <section className="order-flow-list" ref={addressSectionRef}>
               <header className="order-flow-header">
                 <h2 className="order-flow-title">{language.addresses}</h2>
-                {language.addressRequiredToPlaceOrder}
+                {checkout.addresses.length === 0 &&
+                  language.addressRequiredToPlaceOrder}
               </header>
               <AddressList
                 addresses={checkout.addresses}
@@ -46,6 +47,9 @@ const CheckoutPage = () => {
                 refetch={refetch}
                 className="checkout-address-list"
                 addAddressButtonRef={addAddressButtonRef}
+                triggerModalClassName={
+                  checkout.addresses.length === 0 ? 'add-new-btn' : undefined
+                }
               />
               <Payment
                 paymentMethod={checkout.paymentMethods}

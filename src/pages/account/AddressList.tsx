@@ -12,6 +12,7 @@ interface AddressListProps {
   username: string;
   addAddressButtonRef?: RefBtnType;
   className?: string;
+  triggerModalClassName?: string;
   refetch: () => void;
 }
 
@@ -22,6 +23,7 @@ const AddressList = ({
   addAddressButtonRef,
   language,
   className = '',
+  triggerModalClassName,
 }: AddressListProps) => (
   <ErrorBoundary
     FallbackComponent={ErrorBoundaryFallback}
@@ -54,6 +56,7 @@ const AddressList = ({
           popupMessage={language.addressCreated}
           triggerModalDisabled={addresses.length === 4}
           addAddressButtonRef={addAddressButtonRef}
+          triggerModalClassName={triggerModalClassName}
         />
       </li>
     </ul>
