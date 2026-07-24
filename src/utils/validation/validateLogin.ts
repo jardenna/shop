@@ -4,13 +4,13 @@ import type { OmitChecked } from '../../types/types';
 import { validateEmail } from './CommonFieldValidation';
 import type { AuthFormValues } from './validateCreateAccount';
 
-type OmittedRLoginType = OmitChecked<
+type OmittedLoginType = OmitChecked<
   AuthFormValues,
   'username' | 'confirmPassword'
 >;
 
-export function validateLogin(values: OmittedRLoginType) {
-  const errors: ValidationErrors<OmittedRLoginType> = {};
+export function validateLogin(values: OmittedLoginType) {
+  const errors: ValidationErrors<OmittedLoginType> = {};
   const { email, password } = values;
 
   // Email Errors
