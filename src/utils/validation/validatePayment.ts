@@ -43,7 +43,7 @@ export function validatePayment(values: ValidatePayment) {
     paymentMethod === paymentMethods.visa ||
     paymentMethod === paymentMethods.mastercard
   ) {
-    const sanitizedCardNumber = cardNumber?.replace(/\s/g, '');
+    const sanitizedCardNumber = cardNumber.replace(/\s/g, '');
 
     if (!sanitizedCardNumber || !cardNumberRegex.test(sanitizedCardNumber)) {
       errors.cardNumber =

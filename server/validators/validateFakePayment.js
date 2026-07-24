@@ -66,7 +66,7 @@ const validateFakePayment = ({
 
   if (paymentMethod === PAYMENT_METHODS.PAYPAL) {
     if (!paypalEmail?.trim()) {
-      return t('pleaseEnterEmail', lang);
+      return t('noEmail', lang);
     }
 
     if (!emailRegex.test(paypalEmail)) {
