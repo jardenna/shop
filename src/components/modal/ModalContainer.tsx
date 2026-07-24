@@ -53,7 +53,7 @@ const ModalContainer = ({
         ariaHasPopup="dialog"
         ref={triggerButtonRef}
       >
-        {triggerModalBtnContent}dd
+        {triggerModalBtnContent}
       </Button>
 
       <Modal
