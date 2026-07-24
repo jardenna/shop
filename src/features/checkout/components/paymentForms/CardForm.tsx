@@ -1,4 +1,3 @@
-import { CheckoutResponse } from '../../../../app/api/apiTypes/cartApiTypes';
 import {
   PaymentFormValues,
   PaymentMethodField,
@@ -18,11 +17,10 @@ import {
   usePayOrderMutation,
 } from '../../../orders/orderApiSlice';
 import { formatExpiryDate } from '../formatExpiryDateUtil';
+import { BasePaymentProps } from '../Payment';
 
-interface CardFormProps {
-  checkout: CheckoutResponse;
+interface CardFormProps extends BasePaymentProps {
   fields: PaymentMethodField[];
-  language: Record<string, string>;
   paymentMethod: string;
 }
 
@@ -31,6 +29,7 @@ const CardForm = ({
   language,
   checkout,
   paymentMethod,
+  addressLength,
 }: CardFormProps) => {
   const { onAddMessagePopup } = useMessagePopup();
   const initialValues: PaymentFormValues = {
@@ -90,6 +89,9 @@ const CardForm = ({
   };
 
   async function handleSubmit() {
+    if (addressLength === 0) {
+      return;
+    }
     try {
       const order = await createOrder(orderPayload).unwrap();
 
@@ -107,7 +109,7 @@ const CardForm = ({
     <Form
       className="payment-form"
       onSubmit={onSubmit}
-      submitBtnLabel="Place order"
+      submitBtnLabel={language.placeOrder}
     >
       <FieldSet
         legendText={language.payment}
@@ -126,6 +128,7 @@ const CardForm = ({
               type={field.type as InputType}
               inputMode={field.inputMode}
               className={field.name}
+              required
               errorText={
                 errors[field.name] ? language[errors[field.name]] : undefined
               }

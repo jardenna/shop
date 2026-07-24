@@ -6,9 +6,13 @@ import { InputChangeHandler } from '../../../types/types';
 import PaymentMethodsList from '../../cart/components/PaymentMethodsList';
 import CardForm from './paymentForms/CardForm';
 
-interface PaymentProps {
+export interface BasePaymentProps {
+  addressLength: number;
   checkout: CheckoutResponse;
   language: Record<string, string>;
+}
+
+interface PaymentProps extends BasePaymentProps {
   name: string;
   onChange: InputChangeHandler;
   paymentMethod: PaymentMethods[];
@@ -22,6 +26,7 @@ const Payment = ({
   values,
   name,
   checkout,
+  addressLength,
   paymentMethod,
   language,
 }: PaymentProps) => {
@@ -57,6 +62,7 @@ const Payment = ({
           language={language}
           checkout={checkout}
           paymentMethod={values.paymentMethod}
+          addressLength={addressLength}
         />
       )}
     </div>
