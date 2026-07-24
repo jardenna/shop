@@ -1,5 +1,12 @@
 ﻿key;en;da
 about;About us;Om os
+cardHasExpired;Card has expired;Kortet er udløbet
+cardNumberMustContainExactly16Digits;Card number must contain exactly 16 digits;Kortnummeret skal indeholde præcis 16 cifre
+invalidExpiryDateFormat;Expiry date must be in MM/YY format (for example, 09/28);Udløbsdatoen skal være i formatet MM/ÅÅ (f.eks. 09/28)
+payPalPasswordMustContainAtLeast6Characters;PayPal password must contain at least 6 characters;PayPal-adgangskoden skal indeholde mindst 6 tegn
+phoneNumberMustContainExactly8Digits;Phone number must contain exactly 8 digits;Telefonnummeret skal indeholde præcis 8 cifre
+pleaseEnterCardholderName;Please enter the cardholder name;Indtast kortholderens navn
+securityCodeMustContain3Or4Digits;Security code must contain 3 or 4 digits;Sikkerhedskoden skal indeholde 3 eller 4 cifre
 paymentSummary;Payment summary;Betalingsoversigt
 cardTestNumber;Card number;Kort nummer
 expiryDate;Expiry date (mm/yy);Udløbsdato (mm/yy)

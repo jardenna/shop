@@ -3,7 +3,6 @@ import {
   PAYMENT_METHODS,
   PAYMENT_METHODS_LIST,
 } from '../config/paymentConstants.js';
-
 import {
   cardNumberRegex,
   emailRegex,
@@ -11,6 +10,7 @@ import {
   mobilePhoneNumberRegex,
   securityCodeRegex,
 } from '../utils/regex.js';
+import { t } from '../utils/translator.js';
 
 const validateFakePayment = ({
   method: paymentMethod,
@@ -21,6 +21,7 @@ const validateFakePayment = ({
   [PAYMENT_FIELDS.PAYPAL_EMAIL]: paypalEmail,
   [PAYMENT_FIELDS.PAYPAL_PASSWORD]: paypalPassword,
   [PAYMENT_FIELDS.MOBILE_PHONE_NUMBER]: mobilePhoneNumber,
+  lang,
 }) => {
   if (!paymentMethod) {
     return 'Payment method is required';
@@ -37,11 +38,11 @@ const validateFakePayment = ({
     const sanitizedCardNumber = cardNumber?.replace(/\s/g, '');
 
     if (!sanitizedCardNumber || !cardNumberRegex.test(sanitizedCardNumber)) {
-      return 'Card number must contain exactly 16 digits';
+      return t('cardNumberMustContainExactly16Digits', lang);
     }
 
     if (!expiryDate || !expiryDateRegex.test(expiryDate)) {
-      return 'Expiry date must be in MM/YY format (for example, 09/28)';
+      return t('invalidExpiryDateFormat', lang);
     }
 
     const [month, year] = expiryDate.split('/').map(Number);
@@ -51,29 +52,30 @@ const validateFakePayment = ({
     const currentYear = today.getFullYear() % 100;
 
     if (year < currentYear || (year === currentYear && month < currentMonth)) {
-      return 'Card has expired';
+      return t('cardHasExpired', lang);
     }
 
     if (!cvvCode || !securityCodeRegex.test(cvvCode)) {
-      return 'Security code must contain 3 or 4 digits';
+      return t('securityCodeMustContain3Or4Digits', lang);
     }
 
     if (!cardholderName?.trim()) {
+      // return t('invalidExpiryDateFormat', lang);
       return 'Cardholder name is required';
     }
   }
 
   if (paymentMethod === PAYMENT_METHODS.PAYPAL) {
     if (!paypalEmail?.trim()) {
-      return 'PayPal email is required';
+      return t('pleaseEnterEmail', lang);
     }
 
     if (!emailRegex.test(paypalEmail)) {
-      return 'Please enter a valid email address';
+      return t('pleaseEnterValidEmail', lang);
     }
 
     if (!paypalPassword || paypalPassword.length < 6) {
-      return 'PayPal password must contain at least 6 characters';
+      return t('payPalPasswordMustContainAtLeast6Characters', lang);
     }
   }
 
@@ -84,7 +86,7 @@ const validateFakePayment = ({
       !sanitizedPhoneNumber ||
       !mobilePhoneNumberRegex.test(sanitizedPhoneNumber)
     ) {
-      return 'Phone number must contain exactly 8 digits';
+      return t('phoneNumberMustContainExactly8Digits', lang);
     }
   }
 

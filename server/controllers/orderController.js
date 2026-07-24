@@ -233,7 +233,7 @@ const payOrder = asyncHandler(async (req, res) => {
     });
   }
 
-  const validationError = validateFakePayment(payment);
+  const validationError = validateFakePayment(payment, req.lang);
 
   if (validationError) {
     order.paymentStatus = PAYMENT_STATUS.FAILED;
