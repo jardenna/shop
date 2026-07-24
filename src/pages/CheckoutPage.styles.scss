@@ -7,6 +7,14 @@
     gap: 4px;
   }
 
+  .btn {
+    &.add-new-btn {
+      &:focus {
+        @include outline;
+      }
+    }
+  }
+
   .order-flow-list {
     scroll-margin-top: 400px;
   }
