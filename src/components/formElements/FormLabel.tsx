@@ -1,3 +1,4 @@
+import ErrorInfoIcon from '../errorInfoIcon/ErrorInfoIcon';
 import RequiredIcon from '../RequiredIcon';
 import VisuallyHidden from '../VisuallyHidden';
 import FormError from './FormError';
@@ -37,11 +38,7 @@ const FormLabel = ({
       </span>
     )}
 
-    {errorText && (
-      <span className="error-icon" aria-hidden>
-        i
-      </span>
-    )}
+    {errorText && <ErrorInfoIcon />}
   </>
 );
 

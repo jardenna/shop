@@ -1,0 +1,19 @@
+@use '../../scss/globals' as *;
+
+.error-icon {
+  font-family: Calibri, 'Trebuchet MS', sans-serif;
+  font-size: $font-medium;
+  font-weight: 700;
+  transform: rotate(180deg);
+  position: absolute;
+  right: 8px;
+  top: 48px;
+  background-color: $color-danger;
+  color: $color-white;
+  z-index: 1;
+  width: rem(20px);
+  display: inline-grid;
+  place-content: center;
+  border-radius: 50%;
+  height: rem(20px);
+}
