@@ -2,7 +2,10 @@ import {
   PaymentMethods,
   paymentMethods,
 } from '../../app/api/apiTypes/paymentApiTypes';
-import type { ValidationErrors } from '../../hooks/useFormValidation';
+import type {
+  KeyValuePair,
+  ValidationErrors,
+} from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
 import {
   cardNumberRegex,
@@ -12,7 +15,7 @@ import {
   securityCodeRegex,
 } from '../regex';
 
-export interface PaymentFormValues {
+export interface PaymentFormValues extends KeyValuePair<string> {
   cardholderName: string;
   cardNumber: string;
   cvvCode: string;

@@ -12,6 +12,10 @@ import { useFormValidation } from '../../../../hooks/useFormValidation';
 import { ChangeInputType, InputType } from '../../../../types/types';
 import { handleApiError } from '../../../../utils/handleApiError';
 import {
+  PaymentFormValues,
+  validatePayment,
+} from '../../../../utils/validation/validatePayment';
+import {
   useCreateOrderMutation,
   usePayOrderMutation,
 } from '../../../orders/orderApiSlice';
@@ -31,13 +35,21 @@ const CardForm = ({
   paymentMethod,
 }: CardFormProps) => {
   const { onAddMessagePopup } = useMessagePopup();
-  const initialValues = Object.fromEntries(
-    fields.map(({ name }) => [name, '']),
-  );
+  const initialValues: PaymentFormValues = {
+    paymentMethod: paymentMethod as PaymentMethods,
+    cardNumber: '',
+    expiryDate: '',
+    cvvCode: '',
+    cardholderName: '',
+    paypalEmail: '',
+    paypalPassword: '',
+    mobilePhoneNumber: '',
+  };
 
   const { values, onChange, onSubmit } = useFormValidation({
     initialState: initialValues,
     callback: handleSubmit,
+    validate: validatePayment,
   });
 
   const [createOrder] = useCreateOrderMutation();
