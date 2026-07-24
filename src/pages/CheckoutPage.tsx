@@ -33,7 +33,7 @@ const CheckoutPage = () => {
             <section className="order-flow-list">
               <header className="order-flow-header">
                 <h2 className="order-flow-title">{language.addresses}</h2>
-                <ErrorInfoIcon />{' '}
+                <ErrorInfoIcon />
                 <span className="error-message">
                   {language.addressRequiredToPlaceOrder}
                 </span>
