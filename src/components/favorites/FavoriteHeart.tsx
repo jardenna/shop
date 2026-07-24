@@ -13,7 +13,7 @@ type FavoriteHeartProps = {
   className?: string;
 };
 
-const FavoriteHeart = ({ id, className }: FavoriteHeartProps) => {
+const FavoriteHeart = ({ id, className = '' }: FavoriteHeartProps) => {
   const { language } = useLanguage();
   const { isFavorite, toggleFavorite, animate, isTogglingLoading, onReset } =
     useFavorites({ id });
