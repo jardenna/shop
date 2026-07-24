@@ -115,7 +115,7 @@ const CardForm = ({
       }).unwrap();
 
       onAddMessagePopup({
-        message: 'order placed',
+        message: language.orderPlaced,
       });
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
