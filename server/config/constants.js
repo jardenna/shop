@@ -62,6 +62,8 @@ export const VAT_RATE = 25;
 export const EMPLOYEE_DISCOUNT = 15;
 export const VAT_SHARE = VAT_RATE / (100 + VAT_RATE);
 
+export const MAX_ADDRESS_COUNT = 3;
+
 export const PROMO_CODES = [
   {
     code: 'SUMMER15',

@@ -1,4 +1,7 @@
-import { STANDARD_ADDRESS_TYPES } from '../config/constants.js';
+import {
+  MAX_ADDRESS_COUNT,
+  STANDARD_ADDRESS_TYPES,
+} from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import User from '../models/userModel.js';
 import {
@@ -22,7 +25,7 @@ const createUserAddress = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: validationError });
   }
 
-  if (user.addresses.length >= 4) {
+  if (user.addresses.length >= MAX_ADDRESS_COUNT) {
     return res.status(400).json({
       success: false,
       message: t('onlyFourAddresses', req.lang),
