@@ -1,3 +1,4 @@
+import ErrorInfoIcon from '../components/errorInfoIcon/ErrorInfoIcon';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import CartSummary from '../features/cart/components/CartSummary';
 import { useGetCheckoutQuery } from '../features/checkout/checkoutApiSlice';
@@ -30,7 +31,14 @@ const CheckoutPage = () => {
         {checkout && (
           <>
             <section className="order-flow-list">
-              <h2 className="order-flow-title">{language.addresses}</h2>
+              <header className="order-flow-header">
+                <h2 className="order-flow-title">{language.addresses}</h2>
+                <ErrorInfoIcon />{' '}
+                <span className="error-message">
+                  {language.addressRequiredToPlaceOrder}
+                </span>
+              </header>
+
               <AddressList
                 addresses={checkout.addresses}
                 language={language}
@@ -45,6 +53,7 @@ const CheckoutPage = () => {
                 name="paymentMethod"
                 language={language}
                 checkout={checkout}
+                addressLength={checkout.addresses.length}
               />
             </section>
             <aside className="order-flow-aside">
