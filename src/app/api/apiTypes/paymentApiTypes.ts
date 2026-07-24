@@ -2,7 +2,16 @@ import { HTMLInputTypeAttribute } from 'react';
 import { IconName } from '../../../types/enums';
 import { InputMode } from '../../../types/types';
 
-export type PaymentMethods = 'visa' | 'paypal' | 'mobilepay' | 'mastercard';
+export const paymentMethods = {
+  visa: 'visa',
+  mastercard: 'mastercard',
+  paypal: 'paypal',
+  mobilepay: 'mobilepay',
+} as const;
+
+export type PaymentMethods =
+  (typeof paymentMethods)[keyof typeof paymentMethods];
+
 export type PaymentStatus = 'pending' | 'failed' | 'paid';
 
 export type PaymentFieldName =
