@@ -29,6 +29,10 @@ a[class^='btn-'],
   letter-spacing: rem(0.5px);
   outline: transparent;
 
+  &:focus {
+    background-color: red;
+  }
+
   @include transition;
 
   &::after {

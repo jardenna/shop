@@ -39,7 +39,6 @@ const CheckoutPage = () => {
                 <h2 className="order-flow-title">{language.addresses}</h2>
                 {language.addressRequiredToPlaceOrder}
               </header>
-
               <AddressList
                 addresses={checkout.addresses}
                 language={language}

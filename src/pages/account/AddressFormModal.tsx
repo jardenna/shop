@@ -134,7 +134,7 @@ const AddressFormModal = ({
 
   return (
     <ModalContainer
-      addAddressButtonRef={addAddressButtonRef}
+      triggerButtonRef={addAddressButtonRef}
       triggerModalDisabled={triggerModalDisabled}
       // onClearAllValues={onClearAllValues}
       onBoundaryReset={id ? reset : addReset}
