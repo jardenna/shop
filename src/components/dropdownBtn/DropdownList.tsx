@@ -24,8 +24,8 @@ const DropdownList = ({ dropdownList, defaultIndex }: DropdownListProps) => {
               className={isActive ? 'active' : ''}
               onClick={onClick}
               disabled={disabled}
-              ref={(el) => {
-                listRefs.current[index] = el;
+              refCallback={(element) => {
+                listRefs.current[index] = element;
               }}
             >
               <span>{label}</span>

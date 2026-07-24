@@ -51,7 +51,7 @@ const ModalContainer = ({
         disabled={triggerModalDisabled}
         ariaControls={ariaControlsId}
         ariaHasPopup="dialog"
-        popupRef={triggerButtonRef}
+        ref={triggerButtonRef}
       >
         {triggerModalBtnContent}dd
       </Button>
