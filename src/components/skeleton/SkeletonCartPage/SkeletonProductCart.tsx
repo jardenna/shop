@@ -1,33 +1,33 @@
 import Skeleton from '../Skeleton';
 
 const SkeletonProductCart = () => (
-  <div className="product-card">
+  <span className="product-card">
     <Skeleton className="product-thumb" />
-    <div className="product-body">
-      <div className="top-row">
+    <span className="product-body">
+      <span className="top-row">
         <Skeleton className="title-skeleton" />
         <Skeleton className="price-skeleton" />
-      </div>
+      </span>
 
-      <div className="meta-lines">
+      <span className="meta-lines">
         <Skeleton className="meta-color" />
         <Skeleton className="meta-size" />
-      </div>
+      </span>
 
-      <div className="bottom-row">
-        <div className="qty-selector">
+      <span className="bottom-row">
+        <span className="qty-selector">
           <Skeleton />
           <Skeleton className=" qty-value" />
           <Skeleton />
-        </div>
+        </span>
 
         <div className="action-icons">
           <Skeleton />
           <Skeleton />
         </div>
-      </div>
-    </div>
-  </div>
+      </span>
+    </span>
+  </span>
 );
 
 export default SkeletonProductCart;

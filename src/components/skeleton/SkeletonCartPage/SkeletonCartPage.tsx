@@ -7,7 +7,9 @@ import SkeletonProductCart from './SkeletonProductCart';
 
 const SkeletonCartPage = () => (
   <span className="order-flow">
-    <SkeletonProductCart />
+    <div>
+      <SkeletonProductCart />
+    </div>
     <span className="flex flex-column">
       <SkeletonPriceList />
       <SkeletonButton />

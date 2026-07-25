@@ -2,14 +2,14 @@
 
 .product-card {
   display: flex;
-  gap: 32px;
-  max-width: 1000px;
-  padding-bottom: 24px;
+  gap: 24px;
+  padding-bottom: 12px;
+  border-bottom: $border;
 }
 
 .product-thumb {
-  width: 224px;
-  height: 224px;
+  width: 11.25rem;
+  height: 11.25rem;
   flex-shrink: 0;
 }
 
@@ -42,7 +42,6 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-bottom: auto;
 
   .skeleton {
     height: 16px;
