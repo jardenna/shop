@@ -1,0 +1,31 @@
+@use '../../../../scss/globals' as *;
+
+.product-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: $border;
+}
+
+.product-thumb {
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  padding-top: 4px;
+}
+
+.product-title {
+  width: 70%;
+}
+
+.product-meta {
+  width: 45%;
+}

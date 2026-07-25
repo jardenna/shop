@@ -1,6 +1,6 @@
 import Skeleton from '../Skeleton';
 import SummeryLine from '../summaryLine/SummeryLine';
-import './_skeleton-price-lise.scss';
+import './_skeleton-price-list.scss';
 
 const SkeletonPriceList = () => (
   <span>
