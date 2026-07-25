@@ -32,6 +32,7 @@ const CheckoutPage = () => {
 
   return (
     <MainPageContainer heading="checkout">
+      <SkeletonCheckoutPage />
       {isLoading && <SkeletonCheckoutPage />}
       <div className="checkout-page order-flow">
         {checkout && (

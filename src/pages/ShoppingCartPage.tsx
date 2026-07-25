@@ -26,6 +26,7 @@ import { ShopPath } from '../layout/nav/enums';
 import { handleApiError } from '../utils/handleApiError';
 import MainPageContainer from './pageContainer/MainPageContainer';
 import './ShoppingCartPage.styles.scss';
+import SkeletonCartPage from '../components/skeleton/SkeletonCartPage/SkeletonCartPage';
 
 const ShoppingCartPage = () => {
   const navigate = useNavigate();
@@ -97,6 +98,7 @@ const ShoppingCartPage = () => {
 
   return (
     <MainPageContainer heading="bag">
+      <SkeletonCartPage />
       <div className="order-flow">
         <section>
           <ErrorBoundary

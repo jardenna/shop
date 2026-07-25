@@ -10,9 +10,7 @@ const PaymentMethods = () => (
         <Skeleton className="label-skeleton" />
       </span>
 
-      <span className="card-icons">
-        <PaymentMethodIcons />
-      </span>
+      <PaymentMethodIcons />
     </span>
   </span>
 );

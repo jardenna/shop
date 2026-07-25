@@ -39,6 +39,7 @@
 
 .payment-method-list {
   display: flex;
+  justify-content: flex-end;
   gap: 8px;
   margin-block: 12px;
 }
