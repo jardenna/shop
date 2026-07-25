@@ -1,9 +1,5 @@
-.form-row {
+.skeleton-form-shop {
   display: flex;
-  gap: 24px;
-  margin-bottom: 24px;
-}
-
-.form-field {
-  flex: 1;
+  flex-direction: column;
+  gap: 12px;
 }

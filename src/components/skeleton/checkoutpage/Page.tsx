@@ -1,4 +1,5 @@
 import SkeletonFormShop from '../skelefonForms/SkeletonFormShop';
+import SkeletonAddressList from '../skeletonAddressList/SkeletonAddressList';
 import PaymentMethods from './PaymentMethods';
 import SummeryLine from './SummeryLine';
 
@@ -6,22 +7,7 @@ const Page = () => (
   <div className="layout">
     {/* <!-- LEFT COLUMN --> */}
     <div className="left-col">
-      <div className="section">
-        <div className="address-heading skeleton" />
-        <div className="address-lines">
-          <div className="skeleton line-name" />
-          <div className="skeleton line-street" />
-          <div className="skeleton line-city" />
-          <div className="skeleton line-country" />
-        </div>
-        <div className="address-actions">
-          <div className="skeleton" />
-          <div className="skeleton" />
-        </div>
-        <div className="add-address-row">
-          <div className="skeleton" />
-        </div>
-      </div>
+      <SkeletonAddressList />
       <PaymentMethods />
 
       <SkeletonFormShop />

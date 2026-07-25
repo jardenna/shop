@@ -4,26 +4,16 @@ import SkeletonInput from '../SkeletonInput';
 import './_skeleton-form.scss';
 
 const SkeletonFormShop = () => (
-  <div>
+  <div className="skeleton-form-shop">
     <SkeletonHeading />
 
-    <span className="form-row">
-      <span className="form-field">
-        <SkeletonInput />
-      </span>
-      <span className="form-field">
-        <SkeletonInput />
-      </span>
-    </span>
-
-    <span className="form-field" style={{ marginBottom: '24px' }}>
-      <SkeletonInput className="small" />
-    </span>
-
-    <span className="form-field" style={{ marginBottom: '32px' }}>
+    <span className="flex">
+      <SkeletonInput />
       <SkeletonInput />
     </span>
 
+    <SkeletonInput className="small" />
+    <SkeletonInput />
     <SkeletonButton />
   </div>
 );

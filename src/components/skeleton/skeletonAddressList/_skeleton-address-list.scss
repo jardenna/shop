@@ -1,0 +1,48 @@
+@use '../../../scss/globals' as *;
+
+.address-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+
+  .skeleton {
+    height: 16px;
+  }
+
+  .line-name {
+    width: 45%;
+  }
+
+  .line-street {
+    width: 30%;
+  }
+
+  .line-city {
+    width: 35%;
+  }
+
+  .line-country {
+    width: 25%;
+  }
+}
+
+.address-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid $color-border;
+  margin-bottom: 24px;
+}
+
+.add-address-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 24px;
+
+  .skeleton {
+    width: 150px;
+    height: 18px;
+  }
+}
