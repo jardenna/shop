@@ -21,9 +21,9 @@ const CollectionAside = ({
 }: CollectionAsideProps) => (
   <section className="collection-aside">
     {isLoading && (
-      <div className="flex column">
+      <span className="flex flex-column">
         <Skeleton count={4} />
-      </div>
+      </span>
     )}
     {subMenu && (
       <LayoutElement as="nav" ariaLabel={language.categoryNavigation}>

@@ -100,6 +100,8 @@ const SingleProductPage = () => {
 
   return (
     <div className="container">
+      {' '}
+      <SkeletonSinglePage />
       <MetaTags metaTitle={product?.productName} />
       {isLoading && <SkeletonSinglePage />}
       {product && (
