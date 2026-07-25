@@ -1,0 +1,254 @@
+.breadcrumb-skeleton {
+  width: 140px;
+  height: 16px;
+  margin-bottom: 16px;
+}
+
+.title-skeleton {
+  width: 200px;
+  height: 32px;
+  margin-bottom: 32px;
+}
+
+.layout {
+  display: flex;
+  gap: 96px;
+  align-items: flex-start;
+}
+
+.left-col {
+  flex: 1.4;
+  min-width: 0;
+}
+
+.right-col {
+  flex: 1;
+  min-width: 320px;
+}
+
+/* ---- section spacing ---- */
+.section {
+  margin-bottom: 32px;
+}
+
+.section-label {
+  height: 14px;
+  width: 90px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+}
+
+/* ---- address block ---- */
+.address-heading {
+  height: 14px;
+  width: 220px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.address-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.address-lines .skeleton {
+  height: 16px;
+}
+
+.address-lines .line-name {
+  width: 45%;
+}
+
+.address-lines .line-street {
+  width: 30%;
+}
+
+.address-lines .line-city {
+  width: 35%;
+}
+
+.address-lines .line-country {
+  width: 25%;
+}
+
+.address-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 24px;
+}
+
+.address-actions .skeleton {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+}
+
+.add-address-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 24px;
+}
+
+.add-address-row .skeleton {
+  width: 150px;
+  height: 18px;
+}
+
+/* ---- payment method selector ---- */
+.payment-methods {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  background: #f7f7f7;
+  padding: 20px 24px;
+  border-radius: 8px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.payment-method {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.payment-method .radio-skeleton {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+}
+
+.payment-method .label-skeleton {
+  width: 64px;
+  height: 16px;
+}
+
+.card-icons {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.card-icons .skeleton {
+  width: 40px;
+  height: 26px;
+  border-radius: 4px;
+}
+
+/* ---- form fields ---- */
+.form-row {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.form-field {
+  flex: 1;
+}
+
+.form-field .field-label {
+  width: 40%;
+  height: 14px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.form-field .field-input {
+  height: 56px;
+  border-radius: 4px;
+}
+
+.field-input.small {
+  height: 56px;
+  max-width: 420px;
+}
+
+.submit-btn {
+  height: 56px;
+  border-radius: 4px;
+  margin-top: 12px;
+}
+
+/* ---- order summary ---- */
+.summary-heading {
+  height: 14px;
+  width: 130px;
+  margin-bottom: 24px;
+  border-radius: 4px;
+}
+
+.product-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #eee;
+}
+
+.product-thumb {
+  width: 88px;
+  height: 88px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  padding-top: 4px;
+}
+
+.product-info .skeleton {
+  height: 15px;
+}
+
+.product-title {
+  width: 70%;
+}
+
+.product-meta {
+  width: 45%;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 24px;
+}
+
+.summary-line .label-skeleton {
+  width: 140px;
+  height: 15px;
+}
+
+.summary-line .value-skeleton {
+  width: 70px;
+  height: 15px;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.summary-total .label-skeleton {
+  width: 60px;
+  height: 20px;
+}
+
+.summary-total .value-skeleton {
+  width: 100px;
+  height: 20px;
+}
