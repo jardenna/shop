@@ -1,3 +1,5 @@
+@use '../../../scss/globals' as *;
+
 .breadcrumb-skeleton {
   width: 140px;
   height: 16px;
@@ -32,72 +34,13 @@
 }
 
 .section-label {
-  height: 14px;
+  height: rem(14px);
   width: 90px;
   margin-bottom: 16px;
   border-radius: 4px;
 }
 
 /* ---- address block ---- */
-.address-heading {
-  height: 14px;
-  width: 220px;
-  margin-bottom: 20px;
-  border-radius: 4px;
-}
-
-.address-lines {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 16px;
-}
-
-.address-lines .skeleton {
-  height: 16px;
-}
-
-.address-lines .line-name {
-  width: 45%;
-}
-
-.address-lines .line-street {
-  width: 30%;
-}
-
-.address-lines .line-city {
-  width: 35%;
-}
-
-.address-lines .line-country {
-  width: 25%;
-}
-
-.address-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid #eee;
-  margin-bottom: 24px;
-}
-
-.address-actions .skeleton {
-  width: 24px;
-  height: 24px;
-  border-radius: 6px;
-}
-
-.add-address-row {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 24px;
-}
-
-.add-address-row .skeleton {
-  width: 150px;
-  height: 18px;
-}
 
 /* ---- payment method selector ---- */
 .payment-methods {
@@ -142,7 +85,7 @@
 
 /* ---- order summary ---- */
 .summary-heading {
-  height: 14px;
+  height: rem(14px);
   width: 130px;
   margin-bottom: 24px;
   border-radius: 4px;
