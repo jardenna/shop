@@ -1,31 +1,32 @@
+import Skeleton from '../Skeleton';
+
 const SkeletonProductCart = () => (
   <div className="product-card">
-    <div className="product-thumb skeleton" />
+    <Skeleton className="product-thumb" />
     <div className="product-body">
       <div className="top-row">
-        <div className="title-skeleton skeleton" />
-        <div className="price-skeleton skeleton" />
+        <Skeleton className="title-skeleton" />
+        <Skeleton className="price-skeleton" />
       </div>
 
       <div className="meta-lines">
-        <div className="skeleton meta-color" />
-        <div className="skeleton meta-size" />
+        <Skeleton className="meta-color" />
+        <Skeleton className="meta-size" />
       </div>
 
       <div className="bottom-row">
         <div className="qty-selector">
-          <div className="skeleton" />
-          <div className="skeleton qty-value" />
-          <div className="skeleton" />
+          <Skeleton />
+          <Skeleton className=" qty-value" />
+          <Skeleton />
         </div>
 
         <div className="action-icons">
-          <div className="skeleton" />
-          <div className="skeleton" />
+          <Skeleton />
+          <Skeleton />
         </div>
       </div>
     </div>
-    <hr className="divider" />
   </div>
 );
 

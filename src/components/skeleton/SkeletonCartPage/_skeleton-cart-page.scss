@@ -1,25 +1,5 @@
 @use '../../../scss/globals' as *;
 
-:root {
-  --color-light-gray-30: #ececec;
-  --color-light-gray-40: #dcdcdc;
-}
-
-/* ---- generic skeleton block, matches provided spec ---- */
-.skeleton {
-  background: linear-gradient(
-    90deg,
-    var(--color-light-gray-30) 25%,
-    var(--color-light-gray-40) 50%,
-    var(--color-light-gray-30) 75%
-  );
-  background-size: 200% 100%;
-  height: 36px;
-  width: 100%;
-  border-radius: 8px;
-  display: flex;
-}
-
 .product-card {
   display: flex;
   gap: 32px;
@@ -30,7 +10,6 @@
 .product-thumb {
   width: 224px;
   height: 224px;
-  border-radius: 8px;
   flex-shrink: 0;
 }
 
@@ -64,10 +43,10 @@
   flex-direction: column;
   gap: 12px;
   margin-bottom: auto;
-}
 
-.meta-lines .skeleton {
-  height: 16px;
+  .skeleton {
+    height: 16px;
+  }
 }
 
 .meta-color {
@@ -89,34 +68,24 @@
   display: flex;
   align-items: center;
   gap: 16px;
-}
 
-.qty-selector .skeleton {
-  width: 24px;
-  height: 24px;
-  border-radius: 6px;
-}
+  .skeleton {
+    width: 24px;
+    height: 24px;
+  }
 
-.qty-selector .qty-value {
-  width: 16px;
-  height: 18px;
-  border-radius: 4px;
+  .qty-value {
+    width: 16px;
+    height: 18px;
+  }
 }
 
 .action-icons {
   display: flex;
   gap: 20px;
-}
 
-.action-icons .skeleton {
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
-}
-
-.divider {
-  border: none;
-  border-top: 1px solid #eee;
-  max-width: 1000px;
-  margin-top: 24px;
+  .skeleton {
+    width: 22px;
+    height: 22px;
+  }
 }
