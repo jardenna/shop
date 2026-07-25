@@ -1,6 +1,4 @@
-import '../_skeleton.scss';
-import Skeleton, { PickedSkeletonTypes } from '../Skeleton';
-import './_style.scss';
+import Skeleton, { PickedSkeletonTypes } from '../../Skeleton';
 
 const PaymentMethodIcons = ({ count = 4 }: PickedSkeletonTypes) => {
   const skeletons = Array.from({ length: count });

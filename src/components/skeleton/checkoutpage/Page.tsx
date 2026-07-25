@@ -1,7 +1,7 @@
 import SkeletonFormShop from '../skelefonForms/SkeletonFormShop';
 import SkeletonAddressList from '../skeletonAddressList/SkeletonAddressList';
 import SkeletonPriceList from '../skeletonPriceList/SkeletonPriceList';
-import PaymentMethods from './PaymentMethods';
+import PaymentMethods from './paymentMethods/PaymentMethods';
 import ProductRow from './productRow/ProductRow';
 
 const Page = () => (
