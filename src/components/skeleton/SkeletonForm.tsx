@@ -1,8 +1,8 @@
 import type { PickedSkeletonTypes } from './Skeleton';
 import SkeletonBreadCrumbs from './SkeletonBreadCrumbs';
+import SkeletonButtonList from './SkeletonButtonList';
 import SkeletonHeader from './SkeletonHeader';
 import SkeletonInputList from './SkeletonInputList';
-import SkeletonList from './SkeletonList';
 
 const SkeletonForm = ({ count = 2 }: PickedSkeletonTypes) => (
   <div className="skeleton-column page-small">
@@ -11,7 +11,7 @@ const SkeletonForm = ({ count = 2 }: PickedSkeletonTypes) => (
     <div className="page-card">
       <div className="skeleton-page skeleton-column">
         <SkeletonInputList count={count} />
-        <SkeletonList />
+        <SkeletonButtonList />
       </div>
     </div>
   </div>
