@@ -1,10 +1,11 @@
 import SkeletonButton from '../SkeletonButton';
+import SkeletonHeading from '../SkeletonHeading';
 import SkeletonInput from '../SkeletonInput';
 import './_skeleton-form.scss';
 
 const SkeletonFormShop = () => (
   <div>
-    <div className="section-label skeleton" />
+    <SkeletonHeading />
 
     <span className="form-row">
       <span className="form-field">
