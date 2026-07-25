@@ -1,13 +1,11 @@
 import { CartListResponse } from '../../../app/api/apiTypes/cartApiTypes';
 import DeleteItem from '../../../components/deleteItem/DeleteItem';
 import Img from '../../../components/Img';
-import SkeletonList from '../../../components/skeleton/SkeletonList';
 import { getCartQuantity } from '../../../utils/reduceQty';
 import './_order.scss';
 import SummaryInfo from './SummaryInfo';
 
 interface OrderSummaryListProps {
-  isLoading: boolean;
   language: Record<string, string>;
   orderItems?: CartListResponse;
   deleteCartItem: (cartItemId: string) => void;
@@ -15,51 +13,43 @@ interface OrderSummaryListProps {
 
 const OrderSummaryList = ({
   orderItems,
-  isLoading,
   language,
   deleteCartItem,
-}: OrderSummaryListProps) => {
-  if (isLoading) {
-    return <SkeletonList />;
-  }
-
-  return (
-    orderItems && (
-      <>
-        <h2 className="order-flow-title">
-          {language.orderSummary} [ {getCartQuantity(orderItems.cartItems)} ]
-        </h2>
-        <ul className="order-summary-list">
-          {orderItems.cartItems.map(
-            ({ id, image, productName, color, size, qty }) => (
-              <li key={id}>
-                <article className="order-summary-item">
-                  <Img src={image} alt="" className="summary-img" />
-                  <div>
-                    <div className="flex">
-                      <h3 className="summary-item-title">{productName}</h3>
-                      <DeleteItem
-                        ariaLabel={`${language.delete} ${productName}`}
-                        onDeleteItem={() => {
-                          deleteCartItem(id);
-                        }}
-                        itemName={productName}
-                      />
-                    </div>
-                    <SummaryInfo
-                      qty={qty}
-                      color={color}
-                      size={size}
-                      language={language}
+}: OrderSummaryListProps) =>
+  orderItems && (
+    <>
+      <h2 className="order-flow-title">
+        {language.orderSummary} [ {getCartQuantity(orderItems.cartItems)} ]
+      </h2>
+      <ul className="order-summary-list">
+        {orderItems.cartItems.map(
+          ({ id, image, productName, color, size, qty }) => (
+            <li key={id}>
+              <article className="order-summary-item">
+                <Img src={image} alt="" className="summary-img" />
+                <div>
+                  <div className="flex">
+                    <h3 className="summary-item-title">{productName}</h3>
+                    <DeleteItem
+                      ariaLabel={`${language.delete} ${productName}`}
+                      onDeleteItem={() => {
+                        deleteCartItem(id);
+                      }}
+                      itemName={productName}
                     />
                   </div>
-                </article>
-              </li>
-            ),
-          )}
-        </ul>
-      </>
-    )
+                  <SummaryInfo
+                    qty={qty}
+                    color={color}
+                    size={size}
+                    language={language}
+                  />
+                </div>
+              </article>
+            </li>
+          ),
+        )}
+      </ul>
+    </>
   );
-};
 export default OrderSummaryList;

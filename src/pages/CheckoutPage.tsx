@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import Page from '../components/skeleton/checkoutpage/Page';
+import SkeletonCheckoutPage from '../components/skeleton/checkoutpage/SkeletonCheckoutPage';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import CartSummary from '../features/cart/components/CartSummary';
 import { useGetCheckoutQuery } from '../features/checkout/checkoutApiSlice';
@@ -30,9 +30,16 @@ const CheckoutPage = () => {
     initialState,
   });
 
+  if (isLoading) {
+    return (
+      <MainPageContainer heading="checkout">
+        <SkeletonCheckoutPage />
+      </MainPageContainer>
+    );
+  }
+
   return (
     <MainPageContainer heading="checkout">
-      <Page />
       <div className="checkout-page order-flow">
         {checkout && (
           <>
@@ -68,7 +75,6 @@ const CheckoutPage = () => {
             <aside className="order-flow-aside">
               <OrderSummaryList
                 orderItems={checkout}
-                isLoading={isLoading}
                 language={language}
                 deleteCartItem={deleteCartItem}
               />

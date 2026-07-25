@@ -4,7 +4,7 @@ import SkeletonPriceList from '../skeletonPriceList/SkeletonPriceList';
 import PaymentMethods from './paymentMethods/PaymentMethods';
 import ProductRow from './productRow/ProductRow';
 
-const Page = () => (
+const SkeletonCheckoutPage = () => (
   <div className="checkout-page order-flow">
     <div className="order-flow-list">
       <SkeletonAddressList />
@@ -18,4 +18,4 @@ const Page = () => (
   </div>
 );
 
-export default Page;
+export default SkeletonCheckoutPage;
