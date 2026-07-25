@@ -1,6 +1,5 @@
 import Skeleton from '../../Skeleton';
 import './_payment-method.scss';
-
 import PaymentMethodIcons from './PaymentMethodIcons';
 
 const PaymentMethods = () => (

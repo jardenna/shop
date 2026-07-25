@@ -1,48 +1,5 @@
 @use '../../../../scss/globals' as *;
 
-.breadcrumb-skeleton {
-  width: 140px;
-  height: 16px;
-  margin-bottom: 16px;
-}
-
-.title-skeleton {
-  width: 200px;
-  height: 32px;
-  margin-bottom: 32px;
-}
-
-.layout {
-  display: flex;
-  gap: 96px;
-  align-items: flex-start;
-}
-
-.left-col {
-  flex: 1.4;
-  min-width: 0;
-}
-
-.right-col {
-  flex: 1;
-  min-width: 320px;
-}
-
-/* ---- section spacing ---- */
-.section {
-  margin-bottom: 32px;
-}
-
-.section-label {
-  height: rem(14px);
-  width: 90px;
-  margin-bottom: 16px;
-  border-radius: 4px;
-}
-
-/* ---- address block ---- */
-
-/* ---- payment method selector ---- */
 .payment-methods {
   display: flex;
   align-items: center;
@@ -58,39 +15,26 @@
   display: flex;
   align-items: center;
   gap: 10px;
-}
 
-.payment-method .radio-skeleton {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-}
+  .radio-skeleton {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+  }
 
-.payment-method .label-skeleton {
-  width: 64px;
-  height: 16px;
+  .label-skeleton {
+    width: 64px;
+    height: 16px;
+  }
 }
 
 .card-icons {
   display: flex;
   gap: 8px;
   margin-left: auto;
-}
 
-.card-icons .skeleton {
-  width: 40px;
-  height: 26px;
-  border-radius: 4px;
-}
-
-/* ---- order summary ---- */
-.summary-heading {
-  height: rem(14px);
-  width: 130px;
-  margin-bottom: 24px;
-  border-radius: 4px;
-}
-
-.product-info .skeleton {
-  height: 15px;
+  .skeleton {
+    width: 40px;
+    height: 26px;
+  }
 }
