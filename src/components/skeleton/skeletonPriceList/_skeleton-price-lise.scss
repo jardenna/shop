@@ -1,0 +1,21 @@
+@use '../../../scss/globals/variables' as *;
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  border-top: $border-dark;
+
+  .skeleton {
+    height: 20px;
+  }
+
+  .label-skeleton {
+    width: 60px;
+  }
+
+  .value-skeleton {
+    width: 100px;
+  }
+}

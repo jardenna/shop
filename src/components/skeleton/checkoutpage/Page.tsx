@@ -1,7 +1,7 @@
 import SkeletonFormShop from '../skelefonForms/SkeletonFormShop';
 import SkeletonAddressList from '../skeletonAddressList/SkeletonAddressList';
+import SkeletonPriceList from '../skeletonPriceList/SkeletonPriceList';
 import PaymentMethods from './PaymentMethods';
-import SummeryLine from './SummeryLine';
 
 const Page = () => (
   <div className="layout">
@@ -24,12 +24,7 @@ const Page = () => (
           <div className="skeleton product-meta" />
         </div>
       </div>
-      <SummeryLine />
-
-      <div className="summary-total">
-        <div className="skeleton label-skeleton" />
-        <div className="skeleton value-skeleton" />
-      </div>
+      <SkeletonPriceList />
     </div>
   </div>
 );

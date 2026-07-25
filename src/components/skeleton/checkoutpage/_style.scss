@@ -125,39 +125,3 @@
 .product-meta {
   width: 45%;
 }
-
-.summary-line {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  gap: 24px;
-}
-
-.summary-line .label-skeleton {
-  width: 140px;
-  height: 15px;
-}
-
-.summary-line .value-skeleton {
-  width: 70px;
-  height: 15px;
-}
-
-.summary-total {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 20px;
-  border-top: 1px solid #eee;
-}
-
-.summary-total .label-skeleton {
-  width: 60px;
-  height: 20px;
-}
-
-.summary-total .value-skeleton {
-  width: 100px;
-  height: 20px;
-}

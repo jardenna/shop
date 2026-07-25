@@ -1,6 +1,6 @@
 import '../_skeleton.scss';
 import { PickedSkeletonTypes } from '../Skeleton';
-import './_style.scss';
+import './_summary-line.scss';
 
 const SummeryLine = ({ count = 5 }: PickedSkeletonTypes) => {
   const skeletons = Array.from({ length: count });
