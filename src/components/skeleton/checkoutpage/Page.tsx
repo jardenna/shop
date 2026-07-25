@@ -25,28 +25,28 @@ const Page = () => (
 
       <div className="section-label skeleton" />
 
-      <div className="form-row">
-        <div className="form-field">
-          <div className="field-label skeleton" />
-          <div className="field-input skeleton" />
-        </div>
-        <div className="form-field">
-          <div className="field-label skeleton" />
-          <div className="field-input skeleton" />
-        </div>
-      </div>
+      <span className="form-row">
+        <span className="form-field">
+          <span className="field-label skeleton" />
+          <span className="field-input skeleton" />
+        </span>
+        <span className="form-field">
+          <span className="field-label skeleton" />
+          <span className="field-input skeleton" />
+        </span>
+      </span>
 
-      <div className="form-field" style={{ marginBottom: '24px' }}>
-        <div className="field-label skeleton" />
-        <div className="field-input small skeleton" />
-      </div>
+      <span className="form-field" style={{ marginBottom: '24px' }}>
+        <span className="field-label skeleton" />
+        <span className="field-input small skeleton" />
+      </span>
 
-      <div className="form-field" style={{ marginBottom: '32px' }}>
-        <div className="field-label skeleton" />
-        <div className="field-input skeleton" />
-      </div>
+      <span className="form-field" style={{ marginBottom: '32px' }}>
+        <span className="field-label skeleton" />
+        <span className="field-input skeleton" />
+      </span>
 
-      <div className="submit-btn skeleton" />
+      <span className="submit-btn skeleton" />
     </div>
 
     {/* <!-- RIGHT COLUMN --> */}

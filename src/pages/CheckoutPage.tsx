@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import Page from '../components/skeleton/checkoutpage/Page';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import CartSummary from '../features/cart/components/CartSummary';
 import { useGetCheckoutQuery } from '../features/checkout/checkoutApiSlice';
@@ -31,6 +32,7 @@ const CheckoutPage = () => {
 
   return (
     <MainPageContainer heading="checkout">
+      <Page />
       <div className="checkout-page order-flow">
         {checkout && (
           <>
