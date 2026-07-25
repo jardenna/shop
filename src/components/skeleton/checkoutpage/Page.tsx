@@ -1,3 +1,5 @@
+import SkeletonButton from '../SkeletonButton';
+import SkeletonInput from '../SkeletonInput';
 import PaymentMethods from './PaymentMethods';
 import SummeryLine from './SummeryLine';
 
@@ -27,26 +29,22 @@ const Page = () => (
 
       <span className="form-row">
         <span className="form-field">
-          <span className="field-label skeleton" />
-          <span className="field-input skeleton" />
+          <SkeletonInput />
         </span>
         <span className="form-field">
-          <span className="field-label skeleton" />
-          <span className="field-input skeleton" />
+          <SkeletonInput />
         </span>
       </span>
 
       <span className="form-field" style={{ marginBottom: '24px' }}>
-        <span className="field-label skeleton" />
-        <span className="field-input small skeleton" />
+        <SkeletonInput className="small" />
       </span>
 
       <span className="form-field" style={{ marginBottom: '32px' }}>
-        <span className="field-label skeleton" />
-        <span className="field-input skeleton" />
+        <SkeletonInput />
       </span>
 
-      <span className="submit-btn skeleton" />
+      <SkeletonButton />
     </div>
 
     {/* <!-- RIGHT COLUMN --> */}
