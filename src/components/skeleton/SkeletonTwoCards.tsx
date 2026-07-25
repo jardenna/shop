@@ -1,8 +1,8 @@
 import Skeleton from './Skeleton';
 import SkeletonBadge from './SkeletonBadge';
 import SkeletonBreadCrumbs from './SkeletonBreadCrumbs';
+import SkeletonButton from './SkeletonButton';
 import SkeletonHeader from './SkeletonHeader';
-import SkeletonList from './SkeletonList';
 import SkeletonParagraph from './SkeletonParagraph';
 
 const SkeletonTwoCards = () => (
@@ -21,7 +21,7 @@ const SkeletonTwoCards = () => (
               <SkeletonBadge />
             </div>
             <SkeletonParagraph />
-            <SkeletonList />
+            <SkeletonButton />
           </div>
         </div>
         <Skeleton height="22" width="25" />

@@ -1,9 +1,9 @@
 import Skeleton from './Skeleton';
 import SkeletonBadge from './SkeletonBadge';
+import SkeletonButton from './SkeletonButton';
 import SkeletonControlList from './SkeletonControlList';
 import SkeletonGrid from './SkeletonGrid';
 import SkeletonHeader from './SkeletonHeader';
-import SkeletonList from './SkeletonList';
 import SkeletonParagraph from './SkeletonParagraph';
 
 const SkeletonThreeCards = () => (
@@ -20,7 +20,7 @@ const SkeletonThreeCards = () => (
               <SkeletonBadge />
             </div>
             <SkeletonParagraph />
-            <SkeletonList />
+            <SkeletonButton />
           </div>
         </div>
         <div className="flex column page-card flex-1">
