@@ -4,9 +4,10 @@ import { useGetShopMenuQuery } from '../shopApiSlice';
 export const useSubMenu = (category: LinkText) => {
   const {
     data: subMenu,
-    isLoading: subMenuLoading,
+    isLoading: isLoadingSubMenu,
+    isError: isErrorSubMenu,
     refetch: refetchSubMenu,
   } = useGetShopMenuQuery(category);
 
-  return { subMenu, subMenuLoading, refetchSubMenu };
+  return { subMenu, isLoadingSubMenu, refetchSubMenu, isErrorSubMenu };
 };

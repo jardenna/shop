@@ -41,9 +41,8 @@ const CollectionPage = () => {
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
 
-  const { subMenu, subMenuLoading, refetchSubMenu } = useSubMenu(
-    category as LinkText,
-  );
+  const { subMenu, isLoadingSubMenu, refetchSubMenu, isErrorSubMenu } =
+    useSubMenu(category as LinkText);
 
   const [productView, setProductView] = useLocalStorage(
     localStorageKeys.productView,
@@ -166,6 +165,7 @@ const CollectionPage = () => {
       />
     );
   }
+  console.log(isErrorSubMenu);
 
   return (
     <>
@@ -191,13 +191,19 @@ const CollectionPage = () => {
               ariaLabelledby={ariaLabelledby}
             />
             {!isMobileSize && (
-              <CollectionAside
-                subMenu={subMenu || null}
-                category={category || 'women'}
-                isLoading={subMenuLoading}
+              <ErrorBoundary
+                FallbackComponent={ErrorBoundaryFallback}
                 onReset={() => refetchSubMenu()}
-                language={language}
-              />
+              >
+                <CollectionAside
+                  subMenu={subMenu || null}
+                  category={category || 'women'}
+                  isLoading={isLoadingSubMenu}
+                  onReset={() => refetchSubMenu()}
+                  language={language}
+                  isError={isErrorSubMenu}
+                />
+              </ErrorBoundary>
             )}
           </section>
           <ErrorBoundary
