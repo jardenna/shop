@@ -131,14 +131,16 @@ const SingleProductPage = () => {
               {id && currentUser && (
                 <ReviewsForm productId={id} onReset={() => refetch} />
               )}
-              <SingleProductForm
-                onReset={() => refetch}
-                selectedProduct={product}
-                colorList={colorList}
-                displaySizeList={displaySizeList}
-                currentUser={currentUser}
-                isAuthReady={isAuthReady}
-              />
+              {product.countInStock > 0 && (
+                <SingleProductForm
+                  onReset={() => refetch}
+                  selectedProduct={product}
+                  colorList={colorList}
+                  displaySizeList={displaySizeList}
+                  currentUser={currentUser}
+                  isAuthReady={isAuthReady}
+                />
+              )}
               <Accordion
                 accordionList={accordionList}
                 onReset={() => refetch}
