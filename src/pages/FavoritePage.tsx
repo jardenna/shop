@@ -1,7 +1,7 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useFavorites } from '../components/favorites/useFavorites';
-import SkeletonCardList from '../components/skeleton/skeletonCardList/SkeletonCardList';
+import SkeletonCollection from '../components/skeleton/skeletonCollection/SkeletonCollection';
 import { useLanguage } from '../features/language/useLanguage';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import ProductCard from '../features/shop/components/ProductCard';
@@ -17,7 +17,9 @@ const FavoritePage = () => {
 
   return (
     <MainPageContainer heading={language.favorites} className="favorite-page">
-      {isLoading && <SkeletonCardList count={4} className="large" />}
+      {isLoading && (
+        <SkeletonCollection showCtaBtn className="skeleton-favorites" />
+      )}
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={onReset}

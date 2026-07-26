@@ -6,7 +6,7 @@ import { usePaginationText } from '../components/pagination/hooks/usePaginationT
 import { useScrollOnPagination } from '../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../components/pagination/Pagination';
 import Picture from '../components/Picture';
-import SkeletonCardList from '../components/skeleton/skeletonCardList/SkeletonCardList';
+import SkeletonCollection from '../components/skeleton/skeletonCollection/SkeletonCollection';
 import { useLanguage } from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
 import CollectionPageHeader from '../features/shop/components/CollectionPageHeader';
@@ -210,7 +210,7 @@ const CollectionPage = () => {
               </div>
             )}
 
-            {isLoading && <SkeletonCardList count={productsPerPage} />}
+            {isLoading && <SkeletonCollection count={productsPerPage} />}
             {productCount > 0 ? (
               products && (
                 <ProductCardList
