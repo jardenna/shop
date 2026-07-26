@@ -1,4 +1,6 @@
 import { useRef } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
+import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import SkeletonCheckoutPage from '../components/skeleton/checkoutpage/SkeletonCheckoutPage';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import CartSummary from '../features/cart/components/CartSummary';
@@ -20,7 +22,7 @@ const CheckoutPage = () => {
   const addAddressButtonRef = useRef<HTMLButtonElement>(null);
 
   const { deleteCartItem } = useDeleteCartItem();
-  const { data: checkout, isLoading, refetch } = useGetCheckoutQuery();
+  const { data: checkout, isLoading, refetch, isError } = useGetCheckoutQuery();
 
   const initialState = {
     paymentMethod: 'visa',
@@ -32,10 +34,14 @@ const CheckoutPage = () => {
 
   return (
     <MainPageContainer heading="checkout">
+      {isError && <ErrorBoundaryFallback resetErrorBoundary={refetch} />}
       {isLoading && <SkeletonCheckoutPage />}
       <div className="checkout-page order-flow">
         {checkout && (
-          <>
+          <ErrorBoundary
+            FallbackComponent={ErrorBoundaryFallback}
+            onReset={() => refetch}
+          >
             <section className="order-flow-list" ref={addressSectionRef}>
               <header className="order-flow-header">
                 <h2 className="order-flow-title">{language.addresses}</h2>
@@ -77,7 +83,7 @@ const CheckoutPage = () => {
                 promoDiscount={checkout.discount}
               />
             </aside>
-          </>
+          </ErrorBoundary>
         )}
       </div>
     </MainPageContainer>
