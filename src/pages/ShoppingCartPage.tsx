@@ -33,10 +33,11 @@ const ShoppingCartPage = () => {
   const { currentUser, isAuthReady, isEmployee } = useAuth();
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
-  const { apiCartList, cartList } = useActiveCart({
-    currentUser,
-    isAuthReady,
-  });
+  const { apiCartList, cartList, refetchApiCartList, isCartError } =
+    useActiveCart({
+      currentUser,
+      isAuthReady,
+    });
 
   const shouldFetchGuestCart = isAuthReady && !currentUser;
 
@@ -74,7 +75,13 @@ const ShoppingCartPage = () => {
   };
 
   const cartItems = currentUser ? apiCartList?.cartItems : guestCart?.products;
-
+  if (isCartError) {
+    return (
+      <MainPageContainer heading="bag">
+        <ErrorBoundaryFallback resetErrorBoundary={refetchApiCartList} />
+      </MainPageContainer>
+    );
+  }
   if (!cartItems) {
     return (
       <MainPageContainer heading="bag">
@@ -122,29 +129,34 @@ const ShoppingCartPage = () => {
 
         <aside>
           <h2 className="order-flow-title">{language.paymentSummary}</h2>
-          {apiCartList && (
-            <CartSummary
-              summary={apiCartList.summary}
-              language={language}
-              promoDiscount={apiCartList.discount}
-            />
-          )}
-          {apiCartList && !isEmployee && (
-            <PromoCodeForm
-              onSubmitPromoCode={handleApplyPromoCode}
-              isLoading={isPromoCodeLoading}
-              promoDiscount={apiCartList.discount}
-            />
-          )}
+          <ErrorBoundary
+            FallbackComponent={ErrorBoundaryFallback}
+            onReset={() => refetchApiCartList}
+          >
+            {apiCartList && (
+              <CartSummary
+                summary={apiCartList.summary}
+                language={language}
+                promoDiscount={apiCartList.discount}
+              />
+            )}
+            {apiCartList && !isEmployee && (
+              <PromoCodeForm
+                onSubmitPromoCode={handleApplyPromoCode}
+                isLoading={isPromoCodeLoading}
+                promoDiscount={apiCartList.discount}
+              />
+            )}
 
-          <Button onClick={handleCheckout} className="shopping-cart-btn">
-            {language.continueToCheckout}
-          </Button>
-          {apiCartList && (
-            <PaymentMethodsList paymentMethods={apiCartList.paymentMethods} />
-          )}
+            <Button onClick={handleCheckout} className="shopping-cart-btn">
+              {language.continueToCheckout}
+            </Button>
+            {apiCartList && (
+              <PaymentMethodsList paymentMethods={apiCartList.paymentMethods} />
+            )}
 
-          <CartInfo language={language} />
+            <CartInfo language={language} />
+          </ErrorBoundary>
         </aside>
       </div>
     </MainPageContainer>

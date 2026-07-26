@@ -14,6 +14,7 @@ export const useActiveCart = ({ currentUser }: UseActiveCartProps) => {
     data: apiCartList,
     isLoading: isCartLoading,
     isError: isCartError,
+    refetch: refetchApiCartList,
     isSuccess: isCartSuccess,
   } = useGetCartQuery(currentUser ? undefined : skipToken);
 
@@ -29,5 +30,6 @@ export const useActiveCart = ({ currentUser }: UseActiveCartProps) => {
     isCartLoading,
     isCartError,
     isCartSuccess,
+    refetchApiCartList,
   };
 };
