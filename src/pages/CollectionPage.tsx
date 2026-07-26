@@ -169,7 +169,7 @@ const CollectionPage = () => {
 
   return (
     <>
-      <SkeletonCollectionPage />
+      <SkeletonCollectionPage count={productsPerPage} />
       {category && (
         <MetaTags metaTitle={`${language.collection} ${language[category]}`} />
       )}

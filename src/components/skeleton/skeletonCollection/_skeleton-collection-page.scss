@@ -24,12 +24,6 @@
   border-radius: 4px;
 }
 
-.sidebar-divider {
-  border: none;
-  border-top: 1px solid #e2e2e2;
-  margin-bottom: 20px;
-}
-
 .nav-item {
   display: flex;
   align-items: center;
@@ -96,10 +90,7 @@
 
 /* ---- product grid ---- */
 .product-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 4px;
-  padding: 0 32px 32px 292px;
+  padding-left: 292px;
 }
 
 .product-tile {
