@@ -1,0 +1,54 @@
+.breadcrumb-row {
+  display: flex;
+  justify-content: flex-end;
+  padding-block: 8px;
+}
+
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  padding: 24px 20px;
+  background: #fafafa;
+
+  .sidebar-title {
+    height: 22px;
+    width: 55%;
+    margin: 0 auto 20px;
+  }
+}
+
+.hero-skeleton {
+  flex: 1;
+  height: 460px;
+}
+
+.toolbar-skeleton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 32px 20px 292px;
+
+  .view-toggle {
+    display: flex;
+    gap: 12px;
+
+    .skeleton {
+      width: 26px;
+      height: 26px;
+    }
+  }
+
+  .results-label {
+    height: 16px;
+    width: 170px;
+  }
+
+  .filter-btn {
+    height: 20px;
+    width: 90px;
+  }
+}
+
+.product-grid {
+  padding-left: 292px;
+}

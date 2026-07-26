@@ -1,12 +1,14 @@
+import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import type { BaseShopProductsParams } from '../app/api/apiTypes/shopApiTypes';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
+import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { usePaginationText } from '../components/pagination/hooks/usePaginationText';
 import { useScrollOnPagination } from '../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../components/pagination/Pagination';
 import Picture from '../components/Picture';
-import SkeletonCollection from '../components/skeleton/skeletonCollection/SkeletonCollection';
+import SkeletonCollectionPage from '../components/skeleton/skeletonCollection/SkeletonCollectionPage';
 import { useLanguage } from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
 import CollectionPageHeader from '../features/shop/components/CollectionPageHeader';
@@ -30,6 +32,7 @@ import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { sortSizesDynamic } from '../utils/sizeUtils';
 import { ariaInfoTitle } from '../utils/utils';
 import './CollectionPage.styles.scss';
+import MainPageContainer from './pageContainer/MainPageContainer';
 
 export type FilterKeys = keyof BaseShopProductsParams;
 
@@ -38,7 +41,7 @@ const CollectionPage = () => {
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
 
-  const { subMenu, subMenuLoading, refetchSubMenu } = useSubMenu(
+  const { subMenu, refetchSubMenu, isErrorSubMenu } = useSubMenu(
     category as LinkText,
   );
 
@@ -76,6 +79,7 @@ const CollectionPage = () => {
   const {
     data: products,
     isLoading,
+    isError,
     refetch,
   } = useGetProductsQuery({
     productsPerPage,
@@ -139,11 +143,36 @@ const CollectionPage = () => {
   ];
   const ariaLabelledby = ariaInfoTitle(category || 'women');
 
+  if (isError) {
+    return (
+      <MainPageContainer heading="bag">
+        <ErrorBoundaryFallback resetErrorBoundary={refetch} />
+      </MainPageContainer>
+    );
+  }
+
+  if (!products) {
+    return <SkeletonCollectionPage count={4} />;
+  }
+
+  if (productCount === 0) {
+    return (
+      <EmptyState
+        noProductText={language.noProductResult}
+        noProductTitle={language.noProductResultTitle}
+        onClick={onClearAllFilters}
+        emtyStateCtaText={language.clearAllFilters}
+        src="/images/shoppingBags/shopping_bag"
+      />
+    );
+  }
+
   return (
     <>
       {category && (
         <MetaTags metaTitle={`${language.collection} ${language[category]}`} />
       )}
+
       <section
         className="container collection-page"
         ref={scrollToRef}
@@ -163,26 +192,34 @@ const CollectionPage = () => {
               ariaLabelledby={ariaLabelledby}
             />
             {!isMobileSize && (
-              <CollectionAside
-                subMenu={subMenu || null}
-                category={category || 'women'}
-                isLoading={subMenuLoading}
+              <ErrorBoundary
+                FallbackComponent={ErrorBoundaryFallback}
                 onReset={() => refetchSubMenu()}
-                language={language}
-              />
+              >
+                <CollectionAside
+                  subMenu={subMenu || null}
+                  category={category || 'women'}
+                  onReset={() => refetchSubMenu()}
+                  language={language}
+                  isError={isErrorSubMenu}
+                />
+              </ErrorBoundary>
             )}
           </section>
-          <section className="collection-page-content">
-            {!isMobileSize && (
-              <Picture
-                src={`${src}.jpg`}
-                srcSet={`${src}.avif`}
-                alt={language[altText]}
-                ratio="16:9"
-                priority
-              />
-            )}
-            {products && (
+          <ErrorBoundary
+            FallbackComponent={ErrorBoundaryFallback}
+            onReset={() => refetch()}
+          >
+            <section className="collection-page-content">
+              {!isMobileSize && (
+                <Picture
+                  src={`${src}.jpg`}
+                  srcSet={`${src}.avif`}
+                  alt={language[altText]}
+                  ratio="16:9"
+                  priority
+                />
+              )}
               <div className="product-toolbar">
                 <ProductToolbar
                   onSetDisplay={setProductView}
@@ -208,28 +245,13 @@ const CollectionPage = () => {
                   onClearSingleFilter={onClearSingleFilter}
                 />
               </div>
-            )}
-
-            {isLoading && <SkeletonCollection count={productsPerPage} />}
-            {productCount > 0 ? (
-              products && (
-                <ProductCardList
-                  products={products.products}
-                  productView={productView}
-                  showSizeOverlay={productView !== 'list'}
-                  onReset={() => refetch()}
-                />
-              )
-            ) : (
-              <EmptyState
-                noProductText={language.noProductResult}
-                noProductTitle={language.noProductResultTitle}
-                onClick={onClearAllFilters}
-                emtyStateCtaText={language.clearAllFilters}
-                src="/images/shoppingBags/shopping_bag"
+              <ProductCardList
+                products={products.products}
+                productView={productView}
+                showSizeOverlay={productView !== 'list'}
               />
-            )}
-          </section>
+            </section>
+          </ErrorBoundary>
         </div>
         {productCount > 0 && (
           <Pagination

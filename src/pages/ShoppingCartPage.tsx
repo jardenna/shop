@@ -82,6 +82,7 @@ const ShoppingCartPage = () => {
       </MainPageContainer>
     );
   }
+
   if (!cartItems) {
     return (
       <MainPageContainer heading="bag">
