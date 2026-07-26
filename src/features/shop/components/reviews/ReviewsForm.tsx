@@ -82,7 +82,7 @@ const ReviewsForm = ({
           }}
           className="review-form"
         >
-          <FieldSet legendText={language.rateProduct}>
+          <FieldSet legendText={language.rateProduct} showLegendText>
             <RadioButtonList
               name="rating"
               radioButtonList={createRatingList(totalStars)}

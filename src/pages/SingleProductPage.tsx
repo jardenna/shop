@@ -115,8 +115,8 @@ const SingleProductPage = () => {
                 stars={getStarsArray(product.rating)}
                 rating={product.rating}
                 onReset={() => refetch}
+                className="rating-info"
               />
-              <ProductPrice price={product.price} discount={product.discount} />
               <div className="in-stock-container">
                 <InStock stock={product.countInStock} />
                 {(missingSizes.length > 0 || product.countInStock === 0) && (
@@ -128,17 +128,20 @@ const SingleProductPage = () => {
                   />
                 )}
               </div>
+              <ProductPrice price={product.price} discount={product.discount} />
               {id && currentUser && (
                 <ReviewsForm productId={id} onReset={() => refetch} />
               )}
-              <SingleProductForm
-                onReset={() => refetch}
-                selectedProduct={product}
-                colorList={colorList}
-                displaySizeList={displaySizeList}
-                currentUser={currentUser}
-                isAuthReady={isAuthReady}
-              />
+              {product.countInStock > 0 && (
+                <SingleProductForm
+                  onReset={() => refetch}
+                  selectedProduct={product}
+                  colorList={colorList}
+                  displaySizeList={displaySizeList}
+                  currentUser={currentUser}
+                  isAuthReady={isAuthReady}
+                />
+              )}
               <Accordion
                 accordionList={accordionList}
                 onReset={() => refetch}

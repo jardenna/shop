@@ -1,6 +1,10 @@
 @use '../scss/globals' as *;
 
 .order-flow {
+  .in-stock-container {
+    margin-block: 16px;
+  }
+
   .shopping-cart-btn {
     margin-top: 20px;
   }

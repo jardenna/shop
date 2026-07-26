@@ -1,5 +1,11 @@
 @use './globals' as *;
 
+.container {
+  &.page-small {
+    max-width: $page-width-small;
+  }
+}
+
 .page-small {
   max-width: $page-width-small;
 }

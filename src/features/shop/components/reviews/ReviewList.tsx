@@ -3,13 +3,13 @@ import { useLanguage } from '../../../language/useLanguage';
 import ReviewStars from './ReviewStars';
 import { getReviewAgeLabel, getStarsArray } from './reviewsUtil.';
 
-type ReviewList = {
+type ReviewListProps = {
   reviewList: DisplyReviews[];
   title: string;
   onReset: () => void;
 };
 
-const ReviewList = ({ reviewList, title, onReset }: ReviewList) => {
+const ReviewList = ({ reviewList, title, onReset }: ReviewListProps) => {
   const { language } = useLanguage();
 
   return (

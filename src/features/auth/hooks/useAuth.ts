@@ -43,7 +43,6 @@ export const useAuth = () => {
     role,
     isAdmin,
     isEmployee,
-
     isLoading,
     logout: sendLogout,
     onReset: refetch,

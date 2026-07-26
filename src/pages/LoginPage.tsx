@@ -1,7 +1,10 @@
+import { ErrorBoundary } from 'react-error-boundary';
 import { useLocation, useNavigate, useSearchParams } from 'react-router';
 import Button from '../components/Button';
+import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useMessagePopup } from '../components/messagePopup/useMessagePopup';
 import { useLoginMutation } from '../features/auth/authApiSlice';
+import AlreadyLoggedIn from '../features/auth/components/AlreadyLoggedIn';
 import AuthForm from '../features/auth/components/AuthForm';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useAddToCartMutation } from '../features/cart/cartApiSlice';
@@ -20,7 +23,13 @@ const LoginPage = () => {
   const { language } = useLanguage();
   const [loginUser, { isLoading }] = useLoginMutation();
   const { onAddMessagePopup } = useMessagePopup();
-  const { currentUser, isLoading: isUserLoading, logout } = useAuth();
+  const {
+    currentUser,
+    isLoading: isUserLoading,
+    logout,
+    isAuthReady,
+    onReset,
+  } = useAuth();
   // const initialState = { email: '', password: '' };
   const initialState = { email: 'helle@mail.com', password: 'Helle123!' };
   const from = location.state?.from?.pathname || ShopPath.Root;
@@ -63,24 +72,29 @@ const LoginPage = () => {
     return null;
   }
 
-  let heading = language.login;
+  let heading = 'login';
 
   if (currentUser) {
     if (mode) {
-      heading = language[mode];
+      heading = mode;
     } else {
-      heading = language.alreadyLoggedIn;
+      heading = 'alreadyLoggedIn';
     }
   }
 
   return (
     <MainPageContainer heading={heading} className="page-small">
-      {currentUser && !mode ? (
-        <section>
-          <p>
-            {language.alreadyLoggedInAs} {currentUser.username}
-          </p>
-          <div className="flex">
+      <ErrorBoundary
+        FallbackComponent={ErrorBoundaryFallback}
+        onReset={() => onReset()}
+      >
+        {currentUser && isAuthReady && !mode ? (
+          <AlreadyLoggedIn
+            onSwitchAccount={handleSwitchAccount}
+            navigate={navigate}
+            language={language}
+            username={currentUser.username}
+          >
             <Button
               variant={BtnVariant.Secondary}
               onClick={() => {
@@ -89,27 +103,23 @@ const LoginPage = () => {
             >
               {language.logout}
             </Button>
-            <Button onClick={handleSwitchAccount}>{language.switchUser}</Button>
-            <Button onClick={() => navigate(`/${ShopPath.CreateAccount}`)}>
-              {language.createNewAccount}
-            </Button>
-          </div>
-        </section>
-      ) : (
-        <AuthForm
-          values={values}
-          submitBtnLabel={language.login}
-          onSubmit={onSubmit}
-          isLoading={isLoading}
-          legendText={language.userInfo}
-          onChange={onChange}
-          errors={errors}
-          onBlur={onBlur}
-          navigateTo={ShopPath.CreateAccount}
-          navigateToText={language.createAccount}
-          autoComplete="on"
-        />
-      )}
+          </AlreadyLoggedIn>
+        ) : (
+          <AuthForm
+            values={values}
+            submitBtnLabel={language.login}
+            onSubmit={onSubmit}
+            isLoading={isLoading}
+            legendText={language.userInfo}
+            onChange={onChange}
+            errors={errors}
+            onBlur={onBlur}
+            navigateTo={ShopPath.CreateAccount}
+            navigateToText={language.createAccount}
+            autoComplete="on"
+          />
+        )}
+      </ErrorBoundary>
     </MainPageContainer>
   );
 };

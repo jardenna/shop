@@ -9,12 +9,18 @@ import { StarType } from './reviewsUtil.';
 type ReviewStarsProps = {
   rating: number;
   stars: StarType[];
+  className?: string;
   onReset: () => void;
 };
 
-const ReviewStars = ({ stars, rating, onReset }: ReviewStarsProps) => (
+const ReviewStars = ({
+  stars,
+  rating,
+  onReset,
+  className = '',
+}: ReviewStarsProps) => (
   <div className="stars">
-    <ul className="star-list" aria-hidden={true}>
+    <ul className={`star-list ${className}`} aria-hidden={true}>
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={() => onReset}
