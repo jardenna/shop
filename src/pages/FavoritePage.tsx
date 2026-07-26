@@ -16,7 +16,7 @@ const FavoritePage = () => {
   const sortedFavorites = favorites ? [...favorites].reverse() : [];
 
   return (
-    <MainPageContainer heading={language.favorites} className="favorite-page">
+    <MainPageContainer heading="favorites" className="favorite-page">
       {isLoading && (
         <SkeletonCollection showCtaBtn className="skeleton-favorites" />
       )}
