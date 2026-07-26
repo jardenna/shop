@@ -6,7 +6,7 @@
   gap: 10px;
 
   .skeleton {
-    height: 16px;
+    height: rem(16px);
   }
 
   .line-name {
@@ -45,7 +45,7 @@
   margin-block: 12px;
 
   .skeleton {
-    width: 150px;
-    height: 18px;
+    width: rem(150px);
+    height: rem(18px);
   }
 }

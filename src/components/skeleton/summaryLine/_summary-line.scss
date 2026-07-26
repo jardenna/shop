@@ -1,3 +1,5 @@
+@use '../../../scss/globals/functions' as *;
+
 .summary-line {
   display: flex;
   justify-content: space-between;
@@ -5,12 +7,12 @@
   gap: 24px;
 
   .label-skeleton {
-    width: 140px;
-    height: 15px;
+    width: rem(140px);
+    height: rem(15px);
   }
 
   .value-skeleton {
-    width: 70px;
-    height: 15px;
+    width: rem(70px);
+    height: rem(15px);
   }
 }

@@ -1,4 +1,4 @@
-@use '../../../../scss/globals' as *;
+@use '../../../../scss/globals/functions' as *;
 
 .payment-methods {
   display: flex;
@@ -17,14 +17,14 @@
   gap: 10px;
 
   .radio-skeleton {
-    width: 22px;
-    height: 22px;
+    width: rem(22px);
+    height: rem(22px);
     border-radius: 50%;
   }
 
   .label-skeleton {
-    width: 64px;
-    height: 16px;
+    width: rem(64px);
+    height: rem(16px);
   }
 }
 
@@ -34,7 +34,7 @@
   margin-left: auto;
 
   .skeleton {
-    width: 40px;
-    height: 26px;
+    width: rem(40px);
+    height: rem(26px);
   }
 }

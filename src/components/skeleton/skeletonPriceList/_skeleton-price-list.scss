@@ -1,4 +1,5 @@
 @use '../../../scss/globals/variables' as *;
+@use '../../../scss/globals/functions' as *;
 
 .skeleton-summary-total {
   display: flex;
@@ -9,14 +10,14 @@
   border-top: $border;
 
   .skeleton {
-    height: 20px;
+    height: rem(20px);
   }
 
   .label-skeleton {
-    width: 60px;
+    width: rem(60px);
   }
 
   .value-skeleton {
-    width: 100px;
+    width: rem(100px);
   }
 }

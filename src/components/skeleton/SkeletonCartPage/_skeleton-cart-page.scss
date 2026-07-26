@@ -1,4 +1,5 @@
-@use '../../../scss/globals' as *;
+@use '../../../scss/globals/variables' as *;
+@use '../../../scss/globals/functions' as *;
 
 .skeleton-product-card {
   display: flex;
@@ -7,8 +8,8 @@
   border-bottom: $border;
 
   .product-thumb {
-    width: 11.25rem;
-    height: 11.25rem;
+    width: rem(180px);
+    height: rem(180px);
   }
 }
 
@@ -35,12 +36,12 @@
 
 .title-skeleton {
   width: 45%;
-  height: 26px;
+  height: rem(26px);
 }
 
 .price-skeleton {
-  width: 90px;
-  height: 22px;
+  width: rem(90px);
+  height: rem(22px);
   flex-shrink: 0;
 }
 
@@ -50,16 +51,16 @@
   gap: 12px;
 
   .skeleton {
-    height: 16px;
+    height: rem(16px);
   }
 }
 
 .meta-color {
-  width: 120px;
+  width: rem(120px);
 }
 
 .meta-size {
-  width: 150px;
+  width: rem(150px);
 }
 
 .qty-selector {
@@ -68,13 +69,13 @@
   gap: 16px;
 
   .skeleton {
-    width: 24px;
-    height: 24px;
+    width: rem(24px);
+    height: rem(24px);
   }
 
   .qty-value {
-    width: 16px;
-    height: 18px;
+    width: rem(16px);
+    height: rem(18px);
   }
 }
 
@@ -83,7 +84,7 @@
   gap: 20px;
 
   .skeleton {
-    width: 22px;
-    height: 22px;
+    width: rem(22px);
+    height: rem(22px);
   }
 }
