@@ -8,7 +8,7 @@ import { usePaginationText } from '../components/pagination/hooks/usePaginationT
 import { useScrollOnPagination } from '../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../components/pagination/Pagination';
 import Picture from '../components/Picture';
-import SkeletonCollection from '../components/skeleton/skeletonCollection/SkeletonCollection';
+import SkeletonCollectionPage from '../components/skeleton/skeletonCollection/SkeletonCollectionPage';
 import { useLanguage } from '../features/language/useLanguage';
 import CollectionAside from '../features/shop/components/CollectionAside';
 import CollectionPageHeader from '../features/shop/components/CollectionPageHeader';
@@ -41,8 +41,9 @@ const CollectionPage = () => {
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
 
-  const { subMenu, isLoadingSubMenu, refetchSubMenu, isErrorSubMenu } =
-    useSubMenu(category as LinkText);
+  const { subMenu, refetchSubMenu, isErrorSubMenu } = useSubMenu(
+    category as LinkText,
+  );
 
   const [productView, setProductView] = useLocalStorage(
     localStorageKeys.productView,
@@ -151,7 +152,7 @@ const CollectionPage = () => {
   }
 
   if (!products) {
-    return <SkeletonCollection count={productsPerPage} />;
+    return <SkeletonCollectionPage count={productsPerPage} />;
   }
 
   if (productCount === 0) {
@@ -165,13 +166,14 @@ const CollectionPage = () => {
       />
     );
   }
-  console.log(isErrorSubMenu);
 
   return (
     <>
+      <SkeletonCollectionPage />
       {category && (
         <MetaTags metaTitle={`${language.collection} ${language[category]}`} />
       )}
+      {/* <SkeletonCollectionPage count={productsPerPage} /> */}
       <section
         className="container collection-page"
         ref={scrollToRef}
@@ -198,7 +200,6 @@ const CollectionPage = () => {
                 <CollectionAside
                   subMenu={subMenu || null}
                   category={category || 'women'}
-                  isLoading={isLoadingSubMenu}
                   onReset={() => refetchSubMenu()}
                   language={language}
                   isError={isErrorSubMenu}
