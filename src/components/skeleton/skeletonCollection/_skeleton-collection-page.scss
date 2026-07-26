@@ -1,0 +1,118 @@
+.breadcrumb-row {
+  display: flex;
+  justify-content: flex-end;
+  padding-block: 8px;
+}
+
+.layout {
+  display: flex;
+  align-items: stretch;
+}
+
+/* ---- sidebar ---- */
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  padding: 24px 20px;
+  background: #fafafa;
+}
+
+.sidebar-title {
+  height: 22px;
+  width: 55%;
+  margin: 0 auto 20px;
+  border-radius: 4px;
+}
+
+.sidebar-divider {
+  border: none;
+  border-top: 1px solid #e2e2e2;
+  margin-bottom: 20px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 12px;
+  margin-bottom: 4px;
+  border-radius: 4px;
+}
+
+.nav-item.active {
+  background: #f0f0f0;
+}
+
+.nav-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.nav-label {
+  height: 16px;
+  width: 90px;
+  border-radius: 4px;
+}
+
+/* ---- hero banner ---- */
+.hero-skeleton {
+  flex: 1;
+  height: 460px;
+  border-radius: 0;
+}
+
+/* ---- toolbar below ---- */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 32px 20px 292px;
+}
+
+.view-toggle {
+  display: flex;
+  gap: 12px;
+}
+
+.view-toggle .skeleton {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+}
+
+.results-label {
+  height: 16px;
+  width: 170px;
+  border-radius: 4px;
+}
+
+.filter-btn {
+  height: 20px;
+  width: 90px;
+  border-radius: 4px;
+}
+
+/* ---- product grid ---- */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  padding: 0 32px 32px 292px;
+}
+
+.product-tile {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 0;
+}
+
+.product-tile .heart-skeleton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+}
