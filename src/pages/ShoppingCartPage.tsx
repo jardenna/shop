@@ -76,7 +76,11 @@ const ShoppingCartPage = () => {
   const cartItems = currentUser ? apiCartList?.cartItems : guestCart?.products;
 
   if (!cartItems) {
-    return <SkeletonCartPage />;
+    return (
+      <MainPageContainer heading="bag">
+        <SkeletonCartPage />
+      </MainPageContainer>
+    );
   }
 
   if (cartItems.length === 0) {
