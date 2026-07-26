@@ -32,14 +32,6 @@ const CheckoutPage = () => {
     initialState,
   });
 
-  // if (isError) {
-  //   return (
-  //     <MainPageContainer heading="bag">
-  //       <ErrorBoundaryFallback resetErrorBoundary={refetch} />
-  //     </MainPageContainer>
-  //   );
-  // }
-
   return (
     <MainPageContainer heading="checkout">
       {isError && <ErrorBoundaryFallback resetErrorBoundary={refetch} />}
