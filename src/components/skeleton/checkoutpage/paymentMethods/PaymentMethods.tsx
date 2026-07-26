@@ -9,7 +9,6 @@ const PaymentMethods = () => (
         <Skeleton className="radio-skeleton" />
         <Skeleton className="label-skeleton" />
       </span>
-
       <PaymentMethodIcons />
     </span>
   </span>

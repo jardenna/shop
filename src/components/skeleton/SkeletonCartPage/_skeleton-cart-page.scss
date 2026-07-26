@@ -1,16 +1,15 @@
 @use '../../../scss/globals' as *;
 
-.product-card {
+.skeleton-product-card {
   display: flex;
   gap: 24px;
   padding-bottom: 12px;
   border-bottom: $border;
-}
 
-.product-thumb {
-  width: 11.25rem;
-  height: 11.25rem;
-  flex-shrink: 0;
+  .product-thumb {
+    width: 11.25rem;
+    height: 11.25rem;
+  }
 }
 
 .product-body {
@@ -25,6 +24,13 @@
   align-items: flex-start;
   margin-bottom: 28px;
   gap: 24px;
+}
+
+.bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 36px;
 }
 
 .title-skeleton {
@@ -54,13 +60,6 @@
 
 .meta-size {
   width: 150px;
-}
-
-.bottom-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 36px;
 }
 
 .qty-selector {

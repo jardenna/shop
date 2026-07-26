@@ -1,10 +1,11 @@
 @use '../../../scss/globals/variables' as *;
 
-.summary-total {
+.skeleton-summary-total {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 20px;
+  padding-top: 32px;
+  margin-top: 16px;
   border-top: $border;
 
   .skeleton {

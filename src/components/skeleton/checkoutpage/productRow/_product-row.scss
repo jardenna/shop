@@ -1,31 +1,30 @@
 @use '../../../../scss/globals' as *;
 
-.product-row {
+.skeleton-product-row {
   display: flex;
   gap: 16px;
   margin-bottom: 24px;
   padding-bottom: 24px;
   border-bottom: $border;
-}
 
-.product-thumb {
-  width: 88px;
-  height: 88px;
-  flex-shrink: 0;
-}
+  .product-thumb {
+    width: rem(68px);
+    height: rem(100px);
+  }
 
-.product-info {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  flex: 1;
-  padding-top: 4px;
-}
+  .product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    padding-top: 4px;
+  }
 
-.product-title {
-  width: 70%;
-}
+  .product-title {
+    width: 70%;
+  }
 
-.product-meta {
-  width: 45%;
+  .product-meta {
+    width: 45%;
+  }
 }

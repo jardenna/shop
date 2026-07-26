@@ -5,7 +5,7 @@ import './_skeleton-price-list.scss';
 const SkeletonPriceList = () => (
   <span>
     <SummeryLine />
-    <span className="summary-total">
+    <span className="skeleton-summary-total">
       <Skeleton className="label-skeleton" />
       <Skeleton className="value-skeleton" />
     </span>

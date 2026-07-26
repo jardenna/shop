@@ -5,11 +5,11 @@ import './_product-row.scss';
 const ProductRow = () => (
   <span>
     <SkeletonHeading />
-    <span className="product-row">
+    <span className="skeleton-product-row">
       <Skeleton className="product-thumb" />
       <span className="product-info">
-        <Skeleton className="product-title" />
-        <Skeleton className="product-meta" />
+        <Skeleton className="product-title" height="1" />
+        <Skeleton className="product-meta" height="1" />
       </span>
     </span>
   </span>

@@ -5,7 +5,7 @@ import { useAppDispatch } from '../app/hooks';
 import Button from '../components/Button';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useMessagePopup } from '../components/messagePopup/useMessagePopup';
-import SkeletonCard from '../components/skeleton/SkeletonCard';
+import SkeletonCartPage from '../components/skeleton/SkeletonCartPage/SkeletonCartPage';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import {
   useApplyPromoCodeMutation,
@@ -26,7 +26,6 @@ import { ShopPath } from '../layout/nav/enums';
 import { handleApiError } from '../utils/handleApiError';
 import MainPageContainer from './pageContainer/MainPageContainer';
 import './ShoppingCartPage.styles.scss';
-import SkeletonCartPage from '../components/skeleton/SkeletonCartPage/SkeletonCartPage';
 
 const ShoppingCartPage = () => {
   const navigate = useNavigate();
@@ -77,7 +76,7 @@ const ShoppingCartPage = () => {
   const cartItems = currentUser ? apiCartList?.cartItems : guestCart?.products;
 
   if (!cartItems) {
-    return <SkeletonCard />;
+    return <SkeletonCartPage />;
   }
 
   if (cartItems.length === 0) {
@@ -98,7 +97,6 @@ const ShoppingCartPage = () => {
 
   return (
     <MainPageContainer heading="bag">
-      <SkeletonCartPage />
       <div className="order-flow">
         <section>
           <ErrorBoundary

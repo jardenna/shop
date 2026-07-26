@@ -1,7 +1,7 @@
 import Skeleton from '../Skeleton';
 
 const SkeletonProductCart = () => (
-  <span className="product-card">
+  <span className="skeleton-product-card">
     <Skeleton className="product-thumb" />
     <span className="product-body">
       <span className="top-row">
