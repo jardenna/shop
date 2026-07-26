@@ -41,12 +41,10 @@
 .review-form {
   margin-bottom: 16px;
 
-  legend {
-    padding-bottom: 6px;
-    border-bottom: 2px solid $color-border;
-  }
-
   .reviews {
+    border-top: 2px solid $color-border;
+    padding-top: 8px;
+
     .control-item {
       &:hover {
         color: $color-yellow;

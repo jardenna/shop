@@ -248,7 +248,6 @@ const SingleProductForm = ({
           />
         )}
       </Panel>
-
       <Form
         onSubmit={onSubmit}
         submitBtnLabel={language.addToBag}
@@ -273,7 +272,6 @@ const SingleProductForm = ({
               errorText: language[errors.color],
             }}
           />
-
           <ControlGroupList
             classType="secondary"
             type="radio"
