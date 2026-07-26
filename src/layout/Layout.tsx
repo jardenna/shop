@@ -52,6 +52,7 @@ const Layout = () => {
 
   const handleLogout = () => {
     logout();
+    navigate(ShopPath.Root);
   };
 
   const handleSelectCurrency = (name: string, selectedOptions: OptionType) => {
