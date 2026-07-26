@@ -1,3 +1,5 @@
+@use '../../../scss/globals/functions' as *;
+
 .breadcrumb-row {
   display: flex;
   justify-content: flex-end;
@@ -5,13 +7,12 @@
 }
 
 .sidebar {
-  width: 260px;
+  width: rem(260px);
   flex-shrink: 0;
   padding: 24px 20px;
-  background: #fafafa;
 
   .sidebar-title {
-    height: 22px;
+    height: rem(22px);
     width: 55%;
     margin: 0 auto 20px;
   }
@@ -19,7 +20,7 @@
 
 .hero-skeleton {
   flex: 1;
-  height: 460px;
+  height: rem(460px);
 }
 
 .toolbar-skeleton {
@@ -33,19 +34,19 @@
     gap: 12px;
 
     .skeleton {
-      width: 26px;
-      height: 26px;
+      width: rem(26px);
+      height: rem(26px);
     }
   }
 
   .results-label {
-    height: 16px;
-    width: 170px;
+    height: rem(16px);
+    width: rem(170px);
   }
 
   .filter-btn {
-    height: 20px;
-    width: 90px;
+    height: rem(20px);
+    width: rem(90px);
   }
 }
 

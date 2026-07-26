@@ -1,10 +1,11 @@
 @use '../../../../scss/globals/functions' as *;
+@use '../../../../scss/globals/colors' as *;
 
 .payment-methods {
   display: flex;
   align-items: center;
   gap: 32px;
-  background: #f7f7f7;
+  background-color: $color-light-gray-40;
   padding: 20px 24px;
   border-radius: 8px;
   margin-bottom: 12px;
