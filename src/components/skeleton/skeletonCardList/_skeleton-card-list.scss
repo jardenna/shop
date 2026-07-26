@@ -1,0 +1,31 @@
+@use '../../../scss/globals' as *;
+
+.skeleton-card-list {
+  width: 100%;
+
+  --grid-size: rem(350px);
+
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(100%, var(--grid-size)), 1fr)
+  );
+
+  .skeleton {
+    border-radius: 0;
+    height: 100%;
+  }
+
+  &.large {
+    @include set-grid-size(400px);
+  }
+
+  &.small-card {
+    @include set-grid-size(230px);
+
+    gap: 12px;
+
+    .skeleton {
+      min-height: rem(240px);
+    }
+  }
+}

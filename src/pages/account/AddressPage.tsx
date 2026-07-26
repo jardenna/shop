@@ -1,5 +1,5 @@
 import Skeleton from '../../components/skeleton/Skeleton';
-import SkeletonCardList from '../../components/skeleton/SkeletonCardList';
+import SkeletonCardList from '../../components/skeleton/skeletonCardList/SkeletonCardList';
 import { useAuth } from '../../features/auth/hooks/useAuth';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useGetAddressesQuery } from '../../features/profile/addressesApiSlice';

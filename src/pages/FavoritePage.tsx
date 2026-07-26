@@ -1,7 +1,7 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useFavorites } from '../components/favorites/useFavorites';
-import SkeletonCardList from '../components/skeleton/SkeletonCardList';
+import SkeletonCardList from '../components/skeleton/skeletonCardList/SkeletonCardList';
 import { useLanguage } from '../features/language/useLanguage';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import ProductCard from '../features/shop/components/ProductCard';
@@ -32,7 +32,6 @@ const FavoritePage = () => {
                   product={product}
                   linkTo={`${ShopPath.AllProducts}/${product.id}`}
                 />
-                ff
               </li>
             ))}
           </ul>
