@@ -152,7 +152,7 @@ const CollectionPage = () => {
   }
 
   if (!products) {
-    return <SkeletonCollectionPage count={productsPerPage} />;
+    return <SkeletonCollectionPage count={4} />;
   }
 
   if (productCount === 0) {
@@ -169,11 +169,10 @@ const CollectionPage = () => {
 
   return (
     <>
-      <SkeletonCollectionPage count={productsPerPage} />
       {category && (
         <MetaTags metaTitle={`${language.collection} ${language[category]}`} />
       )}
-      {/* <SkeletonCollectionPage count={productsPerPage} /> */}
+
       <section
         className="container collection-page"
         ref={scrollToRef}

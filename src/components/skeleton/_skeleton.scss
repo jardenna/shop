@@ -31,7 +31,7 @@
   border-radius: 8px;
   display: flex;
 
-  // @include animation(skeleton-animation, 1.5s infinite, linear);
+  @include animation(skeleton-animation, 1.5s infinite, linear);
 }
 
 .skeleton-2-col {
@@ -139,6 +139,29 @@
 
 .skeleton-favorites {
   row-gap: 20px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 12px;
+  margin-bottom: 4px;
+
+  &.active {
+    background: #f0f0f0;
+  }
+
+  .nav-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .nav-label {
+    height: 16px;
+    width: 90px;
+  }
 }
 
 @keyframes skeleton-animation {
