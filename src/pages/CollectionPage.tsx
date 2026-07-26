@@ -1,7 +1,9 @@
+import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import type { BaseShopProductsParams } from '../app/api/apiTypes/shopApiTypes';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
+import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { usePaginationText } from '../components/pagination/hooks/usePaginationText';
 import { useScrollOnPagination } from '../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../components/pagination/Pagination';
@@ -30,6 +32,7 @@ import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { sortSizesDynamic } from '../utils/sizeUtils';
 import { ariaInfoTitle } from '../utils/utils';
 import './CollectionPage.styles.scss';
+import MainPageContainer from './pageContainer/MainPageContainer';
 
 export type FilterKeys = keyof BaseShopProductsParams;
 
@@ -76,6 +79,7 @@ const CollectionPage = () => {
   const {
     data: products,
     isLoading,
+    isError,
     refetch,
   } = useGetProductsQuery({
     productsPerPage,
@@ -139,6 +143,30 @@ const CollectionPage = () => {
   ];
   const ariaLabelledby = ariaInfoTitle(category || 'women');
 
+  if (isError) {
+    return (
+      <MainPageContainer heading="bag">
+        <ErrorBoundaryFallback resetErrorBoundary={refetch} />
+      </MainPageContainer>
+    );
+  }
+
+  if (!products) {
+    return <SkeletonCollection count={productsPerPage} />;
+  }
+
+  if (productCount === 0) {
+    return (
+      <EmptyState
+        noProductText={language.noProductResult}
+        noProductTitle={language.noProductResultTitle}
+        onClick={onClearAllFilters}
+        emtyStateCtaText={language.clearAllFilters}
+        src="/images/shoppingBags/shopping_bag"
+      />
+    );
+  }
+
   return (
     <>
       {category && (
@@ -172,17 +200,20 @@ const CollectionPage = () => {
               />
             )}
           </section>
-          <section className="collection-page-content">
-            {!isMobileSize && (
-              <Picture
-                src={`${src}.jpg`}
-                srcSet={`${src}.avif`}
-                alt={language[altText]}
-                ratio="16:9"
-                priority
-              />
-            )}
-            {products && (
+          <ErrorBoundary
+            FallbackComponent={ErrorBoundaryFallback}
+            onReset={() => refetch()}
+          >
+            <section className="collection-page-content">
+              {!isMobileSize && (
+                <Picture
+                  src={`${src}.jpg`}
+                  srcSet={`${src}.avif`}
+                  alt={language[altText]}
+                  ratio="16:9"
+                  priority
+                />
+              )}
               <div className="product-toolbar">
                 <ProductToolbar
                   onSetDisplay={setProductView}
@@ -208,28 +239,13 @@ const CollectionPage = () => {
                   onClearSingleFilter={onClearSingleFilter}
                 />
               </div>
-            )}
-
-            {isLoading && <SkeletonCollection count={productsPerPage} />}
-            {productCount > 0 ? (
-              products && (
-                <ProductCardList
-                  products={products.products}
-                  productView={productView}
-                  showSizeOverlay={productView !== 'list'}
-                  onReset={() => refetch()}
-                />
-              )
-            ) : (
-              <EmptyState
-                noProductText={language.noProductResult}
-                noProductTitle={language.noProductResultTitle}
-                onClick={onClearAllFilters}
-                emtyStateCtaText={language.clearAllFilters}
-                src="/images/shoppingBags/shopping_bag"
+              <ProductCardList
+                products={products.products}
+                productView={productView}
+                showSizeOverlay={productView !== 'list'}
               />
-            )}
-          </section>
+            </section>
+          </ErrorBoundary>
         </div>
         {productCount > 0 && (
           <Pagination
