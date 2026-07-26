@@ -1,4 +1,4 @@
-@use '../../../scss/globals/functions' as *;
+@use '../../../scss/globals' as *;
 
 .breadcrumb-row {
   display: flex;
@@ -7,14 +7,30 @@
 }
 
 .sidebar {
-  width: rem(260px);
+  max-width: rem(260px);
+  width: 100%;
   flex-shrink: 0;
   padding: 24px 20px;
+
+  @include max-size($small) {
+    max-width: 100%;
+    padding: 0;
+
+    .nav-item {
+      display: none;
+    }
+  }
 
   .sidebar-title {
     height: rem(22px);
     width: 55%;
     margin: 0 auto 20px;
+
+    @include max-size($small) {
+      width: 100%;
+      margin: 0;
+      height: rem(52px);
+    }
   }
 }
 
@@ -28,6 +44,10 @@
   align-items: center;
   justify-content: space-between;
   padding: 20px 32px 20px 292px;
+
+  @include max-size($small) {
+    padding-left: 0;
+  }
 
   .view-toggle {
     display: flex;
@@ -52,4 +72,8 @@
 
 .product-grid {
   padding-left: 292px;
+
+  @include max-size($small) {
+    padding: 0;
+  }
 }
