@@ -1,7 +1,7 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useFavorites } from '../components/favorites/useFavorites';
-import SkeletonCardList from '../components/skeleton/SkeletonCardList';
+import SkeletonCollection from '../components/skeleton/skeletonCollection/SkeletonCollection';
 import { useLanguage } from '../features/language/useLanguage';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import ProductCard from '../features/shop/components/ProductCard';
@@ -16,8 +16,10 @@ const FavoritePage = () => {
   const sortedFavorites = favorites ? [...favorites].reverse() : [];
 
   return (
-    <MainPageContainer heading={language.favorites} className="favorite-page">
-      {isLoading && <SkeletonCardList count={4} className="large" />}
+    <MainPageContainer heading="favorites" className="favorite-page">
+      {isLoading && (
+        <SkeletonCollection showCtaBtn className="skeleton-favorites" />
+      )}
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={onReset}
@@ -32,7 +34,6 @@ const FavoritePage = () => {
                   product={product}
                   linkTo={`${ShopPath.AllProducts}/${product.id}`}
                 />
-                ff
               </li>
             ))}
           </ul>

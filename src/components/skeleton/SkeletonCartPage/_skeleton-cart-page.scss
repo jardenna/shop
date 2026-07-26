@@ -1,0 +1,90 @@
+@use '../../../scss/globals/variables' as *;
+@use '../../../scss/globals/functions' as *;
+
+.skeleton-product-card {
+  display: flex;
+  gap: 24px;
+  padding-bottom: 12px;
+  border-bottom: $border;
+
+  .product-thumb {
+    width: rem(180px);
+    height: rem(180px);
+  }
+}
+
+.product-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 28px;
+  gap: 24px;
+}
+
+.bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 36px;
+}
+
+.title-skeleton {
+  width: 45%;
+  height: rem(26px);
+}
+
+.price-skeleton {
+  width: rem(90px);
+  height: rem(22px);
+  flex-shrink: 0;
+}
+
+.meta-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .skeleton {
+    height: rem(16px);
+  }
+}
+
+.meta-color {
+  width: rem(120px);
+}
+
+.meta-size {
+  width: rem(150px);
+}
+
+.qty-selector {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  .skeleton {
+    width: rem(24px);
+    height: rem(24px);
+  }
+
+  .qty-value {
+    width: rem(16px);
+    height: rem(18px);
+  }
+}
+
+.action-icons {
+  display: flex;
+  gap: 20px;
+
+  .skeleton {
+    width: rem(22px);
+    height: rem(22px);
+  }
+}

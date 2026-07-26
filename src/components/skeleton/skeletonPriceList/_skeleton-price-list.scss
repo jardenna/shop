@@ -1,0 +1,23 @@
+@use '../../../scss/globals/variables' as *;
+@use '../../../scss/globals/functions' as *;
+
+.skeleton-summary-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 32px;
+  margin-top: 16px;
+  border-top: $border;
+
+  .skeleton {
+    height: rem(20px);
+  }
+
+  .label-skeleton {
+    width: rem(60px);
+  }
+
+  .value-skeleton {
+    width: rem(100px);
+  }
+}

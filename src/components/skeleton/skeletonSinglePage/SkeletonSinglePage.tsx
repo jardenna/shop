@@ -8,7 +8,7 @@ const SkeletonSinglePage = () => (
     <div className="width-100 product-img-item ">
       <Skeleton height="45" width="44" />
     </div>
-    <div className="flex column">
+    <div className="flex flex-column">
       <SkeletonParagraph width="4" count={1} />
       <SkeletonHeader hideLink />
       <SkeletonControlList count={4} />

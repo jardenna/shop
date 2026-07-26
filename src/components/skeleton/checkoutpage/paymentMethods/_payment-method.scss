@@ -1,0 +1,40 @@
+@use '../../../../scss/globals/functions' as *;
+
+.payment-methods {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  background: #f7f7f7;
+  padding: 20px 24px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.payment-method {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .radio-skeleton {
+    width: rem(22px);
+    height: rem(22px);
+    border-radius: 50%;
+  }
+
+  .label-skeleton {
+    width: rem(64px);
+    height: rem(16px);
+  }
+}
+
+.card-icons {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+
+  .skeleton {
+    width: rem(40px);
+    height: rem(26px);
+  }
+}

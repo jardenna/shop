@@ -1,0 +1,18 @@
+@use '../../../scss/globals/functions' as *;
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+
+  .label-skeleton {
+    width: rem(140px);
+    height: rem(15px);
+  }
+
+  .value-skeleton {
+    width: rem(70px);
+    height: rem(15px);
+  }
+}

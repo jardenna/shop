@@ -5,7 +5,7 @@ import { useAppDispatch } from '../app/hooks';
 import Button from '../components/Button';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useMessagePopup } from '../components/messagePopup/useMessagePopup';
-import SkeletonCard from '../components/skeleton/SkeletonCard';
+import SkeletonCartPage from '../components/skeleton/SkeletonCartPage/SkeletonCartPage';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import {
   useApplyPromoCodeMutation,
@@ -15,6 +15,7 @@ import {
 import CartInfo from '../features/cart/components/CartInfo';
 import CartList from '../features/cart/components/CartList';
 import CartSummary from '../features/cart/components/CartSummary';
+import PaymentMethodsList from '../features/cart/components/PaymentMethodsList';
 import PromoCodeForm from '../features/cart/components/promoCodeForm/PromoCodeForm';
 import { useActiveCart } from '../features/cart/useActiveCart';
 import { deleteGuestCartItem, updateGuestCartQty } from '../features/cartSlice';
@@ -25,7 +26,6 @@ import { ShopPath } from '../layout/nav/enums';
 import { handleApiError } from '../utils/handleApiError';
 import MainPageContainer from './pageContainer/MainPageContainer';
 import './ShoppingCartPage.styles.scss';
-import PaymentMethodsList from '../features/cart/components/PaymentMethodsList';
 
 const ShoppingCartPage = () => {
   const navigate = useNavigate();
@@ -76,7 +76,11 @@ const ShoppingCartPage = () => {
   const cartItems = currentUser ? apiCartList?.cartItems : guestCart?.products;
 
   if (!cartItems) {
-    return <SkeletonCard />;
+    return (
+      <MainPageContainer heading="bag">
+        <SkeletonCartPage />
+      </MainPageContainer>
+    );
   }
 
   if (cartItems.length === 0) {
