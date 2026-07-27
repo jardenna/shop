@@ -1,4 +1,3 @@
-import { ColorOption } from '../../../utils/colorUtils';
 import { Address } from './addressApiTypes';
 import type {
   BasePagination,
@@ -76,7 +75,6 @@ export type ProductPreview = {
 
 export type ProductPreviewExtended = ProductPreview & {
   categoryName: MainCategoryNames;
-  colors: ColorOption[];
 };
 
 // Profile
