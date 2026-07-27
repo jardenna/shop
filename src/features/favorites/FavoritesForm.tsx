@@ -4,14 +4,16 @@ import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/form/Form';
 import ControlGroupList from '../../components/formElements/controlGroup/ControlGroupList';
 import { useFormValidation } from '../../hooks/useFormValidation';
-import { ColorOption, sortColorsByTranslation } from '../../utils/colorUtils';
+import {
+  getColorOptions,
+  sortColorsByTranslation,
+} from '../../utils/colorUtils';
 import { resolveIconName } from '../../utils/iconHelpers';
 import { oneSize } from '../../utils/sizeUtils';
 import { translateKey } from '../../utils/utils';
 import { useLanguage } from '../language/useLanguage';
 
 interface FavoritesFormProps {
-  colorList: ColorOption[];
   displaySizeList: Size[];
   selectedProduct: ProductPreviewExtended;
 }
@@ -23,12 +25,13 @@ export type InitialShopValues = {
 
 const FavoritesForm = ({
   selectedProduct,
-  colorList,
   displaySizeList,
 }: FavoritesFormProps) => {
   const { language } = useLanguage();
 
   const { sizes, colors, categoryName } = selectedProduct;
+
+  const colorList = getColorOptions({ colors, language });
 
   const initialState: InitialShopValues = {
     color: colorList[0].value,

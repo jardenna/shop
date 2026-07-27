@@ -88,18 +88,13 @@ const FavoritePage = () => {
                     discount={selectedProduct.discount}
                     discountedPrice={selectedProduct.discountedPrice}
                   />
-                  <p>
-                    {selectedProduct.sizes.length === 1
-                      ? `Valgt størrelse ${selectedProduct.sizes[0]}`
-                      : ''}
-                  </p>
                 </div>
               </article>
 
               <FavoritesForm
-                colorList={selectedProduct.colors}
                 displaySizeList={selectedProduct.sizes}
                 selectedProduct={selectedProduct}
+                key={selectedProduct.id}
               />
             </section>
           )}
