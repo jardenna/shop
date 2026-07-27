@@ -377,8 +377,12 @@ const getShopProducts = asyncHandler(async (req, res) => {
             0,
           ],
         },
+        image: {
+          $arrayElemAt: ['$images', 0],
+        },
       },
     },
+    { $unset: 'images' },
     { $sort: { createdAt: -1 } },
     { $skip: productsPerPage * (page - 1) },
     { $limit: productsPerPage },

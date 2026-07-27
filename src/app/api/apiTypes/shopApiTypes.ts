@@ -66,7 +66,7 @@ export type ProductPreview = {
   discount: number;
   discountedPrice: number;
   id: string;
-  images: string[];
+  image: string;
   price: number;
   productName: string;
   sizes: Size[];

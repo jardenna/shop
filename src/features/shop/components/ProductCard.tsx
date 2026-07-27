@@ -46,7 +46,7 @@ const ProductCard = ({
                 className="discount"
               />
             )}
-            <Img alt="" src={product.images[0]} />
+            <Img alt="" src={product.image} />
             {showSizeOverlay && <SizeOverlay sizes={product.sizes} count={5} />}
           </div>
         </Link>

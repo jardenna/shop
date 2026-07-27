@@ -26,7 +26,16 @@ const getFavorites = asyncHandler(async (req, res) => {
     })
     .lean();
 
-  const formattedFavorites = formatMongoData(userWithFavorites.favorites);
+  const formattedFavorites = formatMongoData(
+    userWithFavorites.favorites.map((favorite) => {
+      const { images, ...restData } = favorite;
+
+      return {
+        ...restData,
+        image: images[0],
+      };
+    }),
+  );
 
   res.status(200).json(formattedFavorites);
 });
