@@ -17,7 +17,6 @@ import SingleProductForm from '../features/shop/components/singleProduct/SingleP
 import SingleProductHeader from '../features/shop/components/singleProduct/SingleProductHeader';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
 import MetaTags from '../layout/MetaTags';
-import { getColorOptions } from '../utils/colorUtils';
 import { getDisplaySizes } from '../utils/sizeUtils';
 import './SingleProductPage.styles.scss';
 
@@ -31,10 +30,6 @@ const SingleProductPage = () => {
     isLoading,
     refetch,
   } = useGetSingleProductQuery(id ?? '');
-
-  const colorList = product
-    ? getColorOptions({ colors: product.colors, language })
-    : [];
 
   const accordionList: AccordionList[] = [
     { title: language.description, content: <p>{product?.description}</p> },
@@ -136,7 +131,6 @@ const SingleProductPage = () => {
                 <SingleProductForm
                   onReset={() => refetch}
                   selectedProduct={product}
-                  colorList={colorList}
                   displaySizeList={displaySizeList}
                   currentUser={currentUser}
                 />

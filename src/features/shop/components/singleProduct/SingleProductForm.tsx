@@ -16,7 +16,7 @@ import Panel from '../../../../components/togglePanel/Panel';
 import { useTogglePanel } from '../../../../components/togglePanel/useTogglePanel';
 import { useFormValidation } from '../../../../hooks/useFormValidation';
 import {
-  ColorOption,
+  getColorOptions,
   sortColorsByTranslation,
 } from '../../../../utils/colorUtils';
 import { handleApiError } from '../../../../utils/handleApiError';
@@ -36,7 +36,6 @@ import { cartUtils, getTotalCartQuantity } from '../../cartUtils';
 import SingleProductPanel, { PopupData } from './SingleProductPanel';
 
 interface SingleProductFormProps {
-  colorList: ColorOption[];
   currentUser: UserResponse | null;
   displaySizeList: Size[];
   selectedProduct: BaseShopProduct;
@@ -51,7 +50,6 @@ export type InitialShopValues = {
 
 const SingleProductForm = ({
   selectedProduct,
-  colorList,
   displaySizeList,
   onReset,
   currentUser,
@@ -72,6 +70,8 @@ const SingleProductForm = ({
 
   const [replaceCartItemApi, { isLoading: isReplaceCartItemLoading }] =
     useReplaceCartMutation();
+
+  const colorList = getColorOptions({ colors, language });
 
   const initialState: InitialShopValues = {
     color: colorList[0].value,
