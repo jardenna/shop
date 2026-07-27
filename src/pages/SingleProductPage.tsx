@@ -13,8 +13,8 @@ import ReviewList from '../features/shop/components/reviews/ReviewList';
 import ReviewsForm from '../features/shop/components/reviews/ReviewsForm';
 import ReviewStars from '../features/shop/components/reviews/ReviewStars';
 import { getStarsArray } from '../features/shop/components/reviews/reviewsUtil.';
-import SingleProductForm from '../features/shop/components/singleProduct/SingleProductForm';
 import SingleProductHeader from '../features/shop/components/singleProduct/SingleProductHeader';
+import SingleProductPurchaseSection from '../features/shop/components/singleProduct/SingleProductPurchaseSection';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
 import MetaTags from '../layout/MetaTags';
 import { getDisplaySizes } from '../utils/sizeUtils';
@@ -128,7 +128,7 @@ const SingleProductPage = () => {
                 <ReviewsForm productId={id} onReset={() => refetch} />
               )}
               {product.countInStock > 0 && (
-                <SingleProductForm
+                <SingleProductPurchaseSection
                   onReset={() => refetch}
                   selectedProduct={product}
                   displaySizeList={displaySizeList}

@@ -35,7 +35,7 @@ import { useLanguage } from '../../../language/useLanguage';
 import { cartUtils, getTotalCartQuantity } from '../../cartUtils';
 import SingleProductPanel, { PopupData } from './SingleProductPanel';
 
-interface SingleProductFormProps {
+interface SingleProductPurchaseSectionProps {
   currentUser: UserResponse | null;
   displaySizeList: Size[];
   selectedProduct: BaseShopProduct;
@@ -48,12 +48,12 @@ export type InitialShopValues = {
   size: Size | '';
 };
 
-const SingleProductForm = ({
+const SingleProductPurchaseSection = ({
   selectedProduct,
   displaySizeList,
   onReset,
   currentUser,
-}: SingleProductFormProps) => {
+}: SingleProductPurchaseSectionProps) => {
   const dispatch = useAppDispatch();
   const { language, selectedLanguage } = useLanguage();
   const { activeCartList, apiCartList, cartList } = useActiveCart({
@@ -302,4 +302,4 @@ const SingleProductForm = ({
   );
 };
 
-export default SingleProductForm;
+export default SingleProductPurchaseSection;
