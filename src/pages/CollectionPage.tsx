@@ -145,7 +145,7 @@ const CollectionPage = () => {
 
   if (isError) {
     return (
-      <MainPageContainer heading="bag">
+      <MainPageContainer heading="collection">
         <ErrorBoundaryFallback resetErrorBoundary={refetch} />
       </MainPageContainer>
     );
