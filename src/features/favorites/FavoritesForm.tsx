@@ -1,4 +1,5 @@
-import { BaseShopProduct, Size } from '../../app/api/apiTypes/sharedApiTypes';
+import { Size } from '../../app/api/apiTypes/sharedApiTypes';
+import { ProductPreviewExtended } from '../../app/api/apiTypes/shopApiTypes';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/form/Form';
 import ControlGroupList from '../../components/formElements/controlGroup/ControlGroupList';
@@ -11,7 +12,7 @@ import { useLanguage } from '../language/useLanguage';
 interface FavoritesFormProps {
   colorList: ColorOption[];
   displaySizeList: Size[];
-  selectedProduct: BaseShopProduct;
+  selectedProduct: ProductPreviewExtended;
 }
 
 export type InitialShopValues = {

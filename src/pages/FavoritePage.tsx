@@ -6,6 +6,7 @@ import Img from '../components/Img';
 import SkeletonCollection from '../components/skeleton/skeletonCollection/SkeletonCollection';
 import Panel from '../components/togglePanel/Panel';
 import { useTogglePanel } from '../components/togglePanel/useTogglePanel';
+import FavoritesForm from '../features/favorites/FavoritesForm';
 import { useLanguage } from '../features/language/useLanguage';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import ProductCard from '../features/shop/components/ProductCard';
@@ -53,7 +54,6 @@ const FavoritePage = () => {
       />
     );
   }
-  console.log(panelOrder);
 
   return (
     <MainPageContainer heading="favorites" className="favorite-page">
@@ -87,6 +87,11 @@ const FavoritePage = () => {
                   </p>
                 </div>
               </div>
+              <FavoritesForm
+                colorList={panelOrder.colors}
+                displaySizeList={panelOrder.sizes}
+                selectedProduct={panelOrder}
+              />
             </article>
           )}
         </Panel>

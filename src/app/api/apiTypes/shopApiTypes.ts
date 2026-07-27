@@ -1,3 +1,4 @@
+import { ColorOption } from '../../../utils/colorUtils';
 import { Address } from './addressApiTypes';
 import type {
   BasePagination,
@@ -70,6 +71,10 @@ export type ProductPreview = {
   price: number;
   productName: string;
   sizes: Size[];
+};
+
+export type ProductPreviewExtended = ProductPreview & {
+  colors: ColorOption[];
 };
 
 // Profile
