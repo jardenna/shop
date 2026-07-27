@@ -141,6 +141,7 @@ const CollectionPage = () => {
       display: 'list',
     },
   ];
+
   const ariaLabelledby = ariaInfoTitle(category || 'women');
 
   if (isError) {
