@@ -29,7 +29,9 @@ const FavoritePage = () => {
     onTogglePanel();
   };
 
-  const panelOrder = favorites?.find((favorite) => favorite.id === productId);
+  const selectedProduct = favorites?.find(
+    (favorite) => favorite.id === productId,
+  );
 
   if (isError) {
     return (
@@ -69,30 +71,37 @@ const FavoritePage = () => {
           panelRef={panelRef}
           onHidePanel={onHidePanel}
         >
-          {panelOrder && (
-            <article>
-              <Img src={panelOrder.image} alt="" />
-              <div>
+          {selectedProduct && (
+            <section className="favorite-panel">
+              <article className="favorite-panel-product">
+                <Img
+                  src={selectedProduct.image}
+                  alt=""
+                  className="panel-product-img"
+                />
                 <div>
-                  <h3>{panelOrder.productName}</h3>
+                  <h2 className="panel-product-title">
+                    {selectedProduct.productName}
+                  </h2>
                   <ProductPrice
-                    price={panelOrder.price}
-                    discount={panelOrder.discount}
-                    discountedPrice={panelOrder.discountedPrice}
+                    price={selectedProduct.price}
+                    discount={selectedProduct.discount}
+                    discountedPrice={selectedProduct.discountedPrice}
                   />
                   <p>
-                    {panelOrder.sizes.length === 1
-                      ? `Valgt størrelse${panelOrder.sizes[0]}`
+                    {selectedProduct.sizes.length === 1
+                      ? `Valgt størrelse ${selectedProduct.sizes[0]}`
                       : ''}
                   </p>
                 </div>
-              </div>
+              </article>
+
               <FavoritesForm
-                colorList={panelOrder.colors}
-                displaySizeList={panelOrder.sizes}
-                selectedProduct={panelOrder}
+                colorList={selectedProduct.colors}
+                displaySizeList={selectedProduct.sizes}
+                selectedProduct={selectedProduct}
               />
-            </article>
+            </section>
           )}
         </Panel>
         <ul className="product-card-list">
