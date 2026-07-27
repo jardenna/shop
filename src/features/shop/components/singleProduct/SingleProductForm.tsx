@@ -39,7 +39,6 @@ interface SingleProductFormProps {
   colorList: ColorOption[];
   currentUser: UserResponse | null;
   displaySizeList: Size[];
-  isAuthReady: boolean;
   selectedProduct: BaseShopProduct;
   onReset: () => void;
 }
@@ -56,13 +55,11 @@ const SingleProductForm = ({
   displaySizeList,
   onReset,
   currentUser,
-  isAuthReady,
 }: SingleProductFormProps) => {
   const dispatch = useAppDispatch();
   const { language, selectedLanguage } = useLanguage();
   const { activeCartList, apiCartList, cartList } = useActiveCart({
     currentUser,
-    isAuthReady,
   });
   const { sizes, categoryName, colors, id, countInStock } = selectedProduct;
   const [popupData, setPopupData] = useState<PopupData | null>(null);

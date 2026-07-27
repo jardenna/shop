@@ -23,7 +23,6 @@ const HeaderIcons = ({
   onSelectCurrency,
   localLanguage,
   currentUser,
-  isAuthReady,
 }: BaseHeaderProps) => {
   const { language } = useLanguage();
   const { favorites, onReset } = useFavorites({});
@@ -33,7 +32,6 @@ const HeaderIcons = ({
 
   const { activeCartList } = useActiveCart({
     currentUser,
-    isAuthReady,
   });
 
   const totalQuantity = getCartQuantity(activeCartList);

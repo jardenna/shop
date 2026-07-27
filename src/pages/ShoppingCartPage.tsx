@@ -36,7 +36,6 @@ const ShoppingCartPage = () => {
   const { apiCartList, cartList, refetchApiCartList, isCartError } =
     useActiveCart({
       currentUser,
-      isAuthReady,
     });
 
   const shouldFetchGuestCart = isAuthReady && !currentUser;

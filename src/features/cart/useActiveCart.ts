@@ -6,7 +6,6 @@ import { useGetCartQuery } from './cartApiSlice';
 
 interface UseActiveCartProps {
   currentUser: UserResponse | null;
-  isAuthReady: boolean;
 }
 
 export const useActiveCart = ({ currentUser }: UseActiveCartProps) => {
