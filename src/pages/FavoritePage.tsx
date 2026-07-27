@@ -2,6 +2,8 @@ import { ErrorBoundary } from 'react-error-boundary';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useFavorites } from '../components/favorites/useFavorites';
 import SkeletonCollection from '../components/skeleton/skeletonCollection/SkeletonCollection';
+import Panel from '../components/togglePanel/Panel';
+import { useTogglePanel } from '../components/togglePanel/useTogglePanel';
 import { useLanguage } from '../features/language/useLanguage';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import ProductCard from '../features/shop/components/ProductCard';
@@ -13,9 +15,12 @@ const FavoritePage = () => {
   const { language } = useLanguage();
   const { favorites, isLoading, onReset, isError } = useFavorites({});
   const sortedFavorites = favorites ? [...favorites].reverse() : [];
+  const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
+    useTogglePanel();
 
   const handleAddToCart = () => {
-    console.log(123);
+    console.log(favorites);
+    onTogglePanel();
   };
 
   if (isError) {
@@ -51,6 +56,13 @@ const FavoritePage = () => {
         FallbackComponent={ErrorBoundaryFallback}
         onReset={onReset}
       >
+        <Panel
+          isPanelShown={isPanelShown}
+          panelRef={panelRef}
+          onHidePanel={onHidePanel}
+        >
+          hello
+        </Panel>
         <ul className="product-card-list">
           {sortedFavorites.map((product) => (
             <li key={product.id}>
