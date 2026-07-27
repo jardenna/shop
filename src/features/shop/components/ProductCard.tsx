@@ -19,7 +19,7 @@ export type ProductCardProps = {
   product: ProductPreview;
   productView?: string;
   showSizeOverlay?: boolean;
-  onAddToCart?: () => void;
+  onAddToCart?: (id: string) => void;
 };
 
 const ProductCard = ({
@@ -67,7 +67,12 @@ const ProductCard = ({
           </div>
         </Link>
         {onAddToCart && (
-          <Button onClick={onAddToCart} variant={BtnVariant.Secondary}>
+          <Button
+            onClick={() => {
+              onAddToCart(product.id);
+            }}
+            variant={BtnVariant.Secondary}
+          >
             {language.addToCart}
           </Button>
         )}

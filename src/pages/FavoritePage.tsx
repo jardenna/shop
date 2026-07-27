@@ -1,12 +1,15 @@
+import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useFavorites } from '../components/favorites/useFavorites';
+import Img from '../components/Img';
 import SkeletonCollection from '../components/skeleton/skeletonCollection/SkeletonCollection';
 import Panel from '../components/togglePanel/Panel';
 import { useTogglePanel } from '../components/togglePanel/useTogglePanel';
 import { useLanguage } from '../features/language/useLanguage';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import ProductCard from '../features/shop/components/ProductCard';
+import ProductPrice from '../features/shop/components/productPrice/ProductPrice';
 import { ShopPath } from '../layout/nav/enums';
 import './FavoritesPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
@@ -18,10 +21,14 @@ const FavoritePage = () => {
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
     useTogglePanel();
 
-  const handleAddToCart = () => {
-    console.log(favorites);
+  const [productId, setProductId] = useState<string | null>();
+
+  const handleAddToCart = (id: string) => {
+    setProductId(id);
     onTogglePanel();
   };
+
+  const panelOrder = favorites?.find((favorite) => favorite.id === productId);
 
   if (isError) {
     return (
@@ -46,6 +53,7 @@ const FavoritePage = () => {
       />
     );
   }
+  console.log(panelOrder);
 
   return (
     <MainPageContainer heading="favorites" className="favorite-page">
@@ -61,7 +69,26 @@ const FavoritePage = () => {
           panelRef={panelRef}
           onHidePanel={onHidePanel}
         >
-          hello
+          {panelOrder && (
+            <article>
+              <Img src={panelOrder.image} alt="" />
+              <div>
+                <div>
+                  <h3>{panelOrder.productName}</h3>
+                  <ProductPrice
+                    price={panelOrder.price}
+                    discount={panelOrder.discount}
+                    discountedPrice={panelOrder.discountedPrice}
+                  />
+                  <p>
+                    {panelOrder.sizes.length === 1
+                      ? `Valgt størrelse${panelOrder.sizes[0]}`
+                      : ''}
+                  </p>
+                </div>
+              </div>
+            </article>
+          )}
         </Panel>
         <ul className="product-card-list">
           {sortedFavorites.map((product) => (
