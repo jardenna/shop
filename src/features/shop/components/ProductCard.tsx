@@ -16,7 +16,7 @@ import SizeOverlay from './SizeOverlay';
 
 export type ProductCardProps = {
   linkTo: string;
-  product: BaseShopProduct | ProductPreview;
+  product: ProductPreview;
   productView?: string;
   showSizeOverlay?: boolean;
   onAddToCart?: () => void;

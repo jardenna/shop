@@ -1,5 +1,4 @@
 import { useParams } from 'react-router';
-import { BaseShopProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import { ProductPreview } from '../../../app/api/apiTypes/shopApiTypes';
 import type { OmitChecked } from '../../../types/types';
 import ProductCard, { type ProductCardProps } from './ProductCard';
@@ -10,7 +9,7 @@ type OmitteProductCardProps = OmitChecked<
 >;
 
 type ProductCardListProps = OmitteProductCardProps & {
-  products: Array<BaseShopProduct | ProductPreview>;
+  products: ProductPreview[];
 };
 
 const ProductCardList = ({
