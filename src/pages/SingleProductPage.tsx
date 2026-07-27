@@ -130,7 +130,14 @@ const SingleProductPage = () => {
               {product.countInStock > 0 && (
                 <SingleProductPurchaseSection
                   onReset={() => refetch}
-                  selectedProduct={product}
+                  src={product.image}
+                  productData={{
+                    id: product.id,
+                    sizes: product.sizes,
+                    colors: product.colors,
+                    categoryName: product.categoryName,
+                    countInStock: product.countInStock,
+                  }}
                   displaySizeList={displaySizeList}
                   currentUser={currentUser}
                 />

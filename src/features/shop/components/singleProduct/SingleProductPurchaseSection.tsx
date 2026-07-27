@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { UserResponse } from '../../../../app/api/apiTypes/adminApiTypes';
-import {
-  type BaseShopProduct,
-  type Size,
-} from '../../../../app/api/apiTypes/sharedApiTypes';
+import { type Size } from '../../../../app/api/apiTypes/sharedApiTypes';
+import { ProductData } from '../../../../app/api/apiTypes/shopApiTypes';
 import { useAppDispatch } from '../../../../app/hooks';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
 import FieldSet from '../../../../components/fieldset/FieldSet';
@@ -38,7 +36,8 @@ import SingleProductPanel, { PopupData } from './SingleProductPanel';
 interface SingleProductPurchaseSectionProps {
   currentUser: UserResponse | null;
   displaySizeList: Size[];
-  selectedProduct: BaseShopProduct;
+  productData: ProductData;
+  src: string;
   onReset: () => void;
 }
 
@@ -49,9 +48,10 @@ export type InitialShopValues = {
 };
 
 const SingleProductPurchaseSection = ({
-  selectedProduct,
+  src,
   displaySizeList,
   onReset,
+  productData,
   currentUser,
 }: SingleProductPurchaseSectionProps) => {
   const dispatch = useAppDispatch();
@@ -59,7 +59,7 @@ const SingleProductPurchaseSection = ({
   const { activeCartList, apiCartList, cartList } = useActiveCart({
     currentUser,
   });
-  const { sizes, categoryName, colors, id, countInStock } = selectedProduct;
+  const { sizes, colors, id, countInStock, categoryName } = productData;
   const [popupData, setPopupData] = useState<PopupData | null>(null);
   const { onAddMessagePopup } = useMessagePopup();
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
@@ -222,7 +222,7 @@ const SingleProductPurchaseSection = ({
     },
     {},
   );
-  const currentProductQuantity = quantityByProductId[id] ?? 0;
+  const currentProductQuantity = quantityByProductId[id];
 
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
@@ -236,7 +236,7 @@ const SingleProductPurchaseSection = ({
             popupData={popupData}
             language={language}
             selectedLanguage={selectedLanguage}
-            src={selectedProduct.images[0]}
+            src={src}
             onHidePanel={onHidePanel}
             onReplaceItem={handleReplaceItem}
             onKeepBoth={addToCart}

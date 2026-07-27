@@ -73,6 +73,14 @@ export type ProductPreview = {
   sizes: Size[];
 };
 
+export type ProductData = {
+  categoryName: MainCategoryNames;
+  colors: string[];
+  countInStock: number;
+  id: string;
+  sizes: Size[];
+};
+
 export type ProductPreviewExtended = ProductPreview & {
   categoryName: MainCategoryNames;
 };
