@@ -9,7 +9,7 @@ interface OrderSummaryItemProps {
   language: Record<string, string>;
   productName: string;
   src: string;
-  onDeleteItem?: () => void;
+  onDeleteItem: () => void;
 }
 
 const OrderSummaryItem = ({
@@ -25,13 +25,11 @@ const OrderSummaryItem = ({
     <div>
       <div className="flex">
         <h3 className="summary-item-title">{productName}</h3>
-        {onDeleteItem && (
-          <DeleteItem
-            ariaLabel={ariaLabel}
-            onDeleteItem={onDeleteItem}
-            itemName={productName}
-          />
-        )}
+        <DeleteItem
+          ariaLabel={ariaLabel}
+          onDeleteItem={onDeleteItem}
+          itemName={productName}
+        />
       </div>
       <SummaryInfo cartItem={cartItem} language={language} />
     </div>
