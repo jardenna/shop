@@ -30,7 +30,6 @@ const FavoritesForm = ({
   const { language } = useLanguage();
 
   const { sizes, colors, categoryName } = selectedProduct;
-
   const colorList = getColorOptions({ colors, language });
 
   const initialState: InitialShopValues = {
