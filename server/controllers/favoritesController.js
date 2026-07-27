@@ -22,17 +22,26 @@ const getFavorites = asyncHandler(async (req, res) => {
     .populate({
       path: 'favorites',
       select:
-        'productName price discount sizes colors images brand countInStock',
+        'productName price discount sizes colors images brand countInStock subCategory',
+      populate: {
+        path: 'subCategory',
+        select: 'category',
+        populate: {
+          path: 'category',
+          select: 'categoryName',
+        },
+      },
     })
     .lean();
 
   const formattedFavorites = formatMongoData(
     userWithFavorites.favorites.map((favorite) => {
-      const { images, ...restData } = favorite;
+      const { images, subCategory, ...restData } = favorite;
 
       return {
         ...restData,
         image: images[0],
+        categoryName: subCategory.category.categoryName,
       };
     }),
   );
