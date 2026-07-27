@@ -5,6 +5,7 @@ import type {
   BaseProductParams,
   BaseShopProduct,
   DefaultResponseType,
+  MainCategoryNames,
   Size,
 } from './sharedApiTypes';
 
@@ -74,6 +75,7 @@ export type ProductPreview = {
 };
 
 export type ProductPreviewExtended = ProductPreview & {
+  categoryName: MainCategoryNames;
   colors: ColorOption[];
 };
 

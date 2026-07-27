@@ -5,6 +5,7 @@ import Form from '../../components/form/Form';
 import ControlGroupList from '../../components/formElements/controlGroup/ControlGroupList';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { ColorOption, sortColorsByTranslation } from '../../utils/colorUtils';
+import { resolveIconName } from '../../utils/iconHelpers';
 import { oneSize } from '../../utils/sizeUtils';
 import { translateKey } from '../../utils/utils';
 import { useLanguage } from '../language/useLanguage';
@@ -27,7 +28,7 @@ const FavoritesForm = ({
 }: FavoritesFormProps) => {
   const { language } = useLanguage();
 
-  const { sizes, colors } = selectedProduct;
+  const { sizes, colors, categoryName } = selectedProduct;
 
   const initialState: InitialShopValues = {
     color: colorList[0].value,
@@ -61,6 +62,7 @@ const FavoritesForm = ({
           required={values.color === ''}
           onChange={onChange}
           options={sortedTranslatedColors}
+          iconName={resolveIconName(categoryName)}
           name="color"
           variant="large"
           iconSize="5em"
