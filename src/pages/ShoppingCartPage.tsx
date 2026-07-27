@@ -75,6 +75,7 @@ const ShoppingCartPage = () => {
   };
 
   const cartItems = currentUser ? apiCartList?.cartItems : guestCart?.products;
+
   if (isCartError) {
     return (
       <MainPageContainer heading="bag">

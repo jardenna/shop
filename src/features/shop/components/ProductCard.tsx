@@ -18,8 +18,8 @@ export type ProductCardProps = {
   linkTo: string;
   product: BaseShopProduct | ProductPreview;
   productView?: string;
-  showAdToCartBtn?: boolean;
   showSizeOverlay?: boolean;
+  onAddToCart?: () => void;
 };
 
 const ProductCard = ({
@@ -27,7 +27,7 @@ const ProductCard = ({
   showSizeOverlay,
   productView = '',
   linkTo,
-  showAdToCartBtn,
+  onAddToCart,
 }: ProductCardProps) => {
   const { language } = useLanguage();
   const ariaLabelledby = ariaInfoTitle(product.id);
@@ -66,8 +66,10 @@ const ProductCard = ({
             )}
           </div>
         </Link>
-        {showAdToCartBtn && (
-          <Button variant={BtnVariant.Secondary}>{language.addToCart}</Button>
+        {onAddToCart && (
+          <Button onClick={onAddToCart} variant={BtnVariant.Secondary}>
+            {language.addToCart}
+          </Button>
         )}
       </div>
     </article>
