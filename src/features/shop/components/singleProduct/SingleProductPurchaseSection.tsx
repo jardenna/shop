@@ -1,27 +1,15 @@
 import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { UserResponse } from '../../../../app/api/apiTypes/adminApiTypes';
+import { CartItem } from '../../../../app/api/apiTypes/cartApiTypes';
 import { type Size } from '../../../../app/api/apiTypes/sharedApiTypes';
 import { ProductData } from '../../../../app/api/apiTypes/shopApiTypes';
 import { useAppDispatch } from '../../../../app/hooks';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
-import FieldSet from '../../../../components/fieldset/FieldSet';
-import Form from '../../../../components/form/Form';
-import ControlGroupList from '../../../../components/formElements/controlGroup/ControlGroupList';
-import NumberStep from '../../../../components/formElements/numberStep/NumberStep';
 import { useMessagePopup } from '../../../../components/messagePopup/useMessagePopup';
 import Panel from '../../../../components/togglePanel/Panel';
 import { useTogglePanel } from '../../../../components/togglePanel/useTogglePanel';
-import { useFormValidation } from '../../../../hooks/useFormValidation';
-import {
-  getColorOptions,
-  sortColorsByTranslation,
-} from '../../../../utils/colorUtils';
 import { handleApiError } from '../../../../utils/handleApiError';
-import { resolveIconName } from '../../../../utils/iconHelpers';
-import { oneSize } from '../../../../utils/sizeUtils';
-import { translateKey } from '../../../../utils/utils';
-import { validateShopProduct } from '../../../../utils/validation/validateShopProduct';
 import {
   useAddToCartMutation,
   useReplaceCartMutation,
@@ -31,7 +19,8 @@ import { useActiveCart } from '../../../cart/useActiveCart';
 import { addCartItem, replaceCartItem } from '../../../cartSlice';
 import { useLanguage } from '../../../language/useLanguage';
 import { cartUtils, getTotalCartQuantity } from '../../cartUtils';
-import SingleProductPanel, { PopupData } from './SingleProductPanel';
+import SingleProductForm from './SingleProductForm';
+import SingleProductPanel from './SingleProductPanel';
 
 interface SingleProductPurchaseSectionProps {
   currentUser: UserResponse | null;
@@ -59,8 +48,9 @@ const SingleProductPurchaseSection = ({
   const { activeCartList, apiCartList, cartList } = useActiveCart({
     currentUser,
   });
-  const { sizes, colors, id, countInStock, categoryName } = productData;
-  const [popupData, setPopupData] = useState<PopupData | null>(null);
+  const { id, countInStock } = productData;
+  const [popupData, setPopupData] = useState<any>(null); //  const [popupData, setPopupData] = useState<PopupData | null>(null);
+
   const { onAddMessagePopup } = useMessagePopup();
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
     useTogglePanel();
@@ -71,30 +61,7 @@ const SingleProductPurchaseSection = ({
   const [replaceCartItemApi, { isLoading: isReplaceCartItemLoading }] =
     useReplaceCartMutation();
 
-  const colorList = getColorOptions({ colors, language });
-
-  const initialState: InitialShopValues = {
-    color: colorList[0].value,
-    size: sizes.length === 1 ? oneSize : '',
-    qty: 1,
-  };
-
-  const { onChange, onNumberStepChange, values, onSubmit, errors } =
-    useFormValidation({
-      initialState,
-      callback: handleSubmitCartItem,
-      validate: validateShopProduct,
-    });
-
-  const cartItem = {
-    id: crypto.randomUUID(),
-    productId: id,
-    qty: values.qty,
-    size: values.size,
-    color: values.color,
-  };
-
-  const handleAddCartItem = async () => {
+  const handleAddCartItem = async (cartItem: CartItem) => {
     try {
       await addCartItemApi(cartItem).unwrap();
     } catch (error) {
@@ -102,9 +69,9 @@ const SingleProductPurchaseSection = ({
     }
   };
 
-  const addToCart = async () => {
+  const addToCart = async (cartItem: CartItem) => {
     if (currentUser) {
-      await handleAddCartItem();
+      await handleAddCartItem(cartItem);
     } else {
       const totalCount = getTotalCartQuantity(
         cartList,
@@ -119,26 +86,33 @@ const SingleProductPurchaseSection = ({
 
       dispatch(addCartItem(cartItem));
     }
+
     onHidePanel();
   };
 
-  async function handleSubmitCartItem() {
+  async function handleSubmitCartItem(values: any) {
     if (currentUser && !apiCartList) {
       return;
     }
-
+    const cartItem = {
+      id: crypto.randomUUID(),
+      productId: id,
+      qty: values.qty,
+      size: values.size,
+      color: values.color,
+    };
     const cartResult = cartUtils({ cartList: activeCartList, cartItem });
     const { existingVariant } = cartResult;
 
     switch (cartResult.action) {
       case 'addToCartListAction':
-        await addToCart();
+        await addToCart(cartItem);
 
         break;
 
       case 'addToQtyAction':
         if (currentUser) {
-          await handleAddCartItem();
+          await handleAddCartItem(cartItem);
         } else {
           const updatedCartList = cartList.map((item) =>
             item === existingVariant
@@ -165,7 +139,10 @@ const SingleProductPurchaseSection = ({
         break;
 
       case 'showPopupAction':
-        setPopupData(cartResult as PopupData);
+        setPopupData({
+          ...(cartResult as any), //   setPopupData(cartResult as PopupData);
+          cartItem,
+        });
         onTogglePanel();
         break;
 
@@ -176,41 +153,29 @@ const SingleProductPurchaseSection = ({
 
   // SingleProductPanel handlers
   const handleReplaceItem = async () => {
+    const { existingVariant, incomingVariant } = popupData;
     if (currentUser) {
       if (!popupData?.existingVariant.id) {
         return;
       }
-      const cartItemId = popupData.existingVariant.id;
 
       try {
         await replaceCartItemApi({
-          cartItemId,
-          cartItem,
+          cartItemId: existingVariant.id,
+          cartItem: incomingVariant,
         }).unwrap();
       } catch (error) {
         handleApiError(error, onAddMessagePopup);
       }
     } else {
       const updatedCartList = cartList.map((item) =>
-        item === popupData?.existingVariant ? cartItem : item,
+        item === existingVariant ? incomingVariant : item,
       );
       dispatch(replaceCartItem(updatedCartList));
     }
 
     onHidePanel();
   };
-
-  const sortedTranslatedColors = sortColorsByTranslation(colors, language);
-
-  const titleSize =
-    values.size === ''
-      ? language.selectSize
-      : `${language.selectedSize}: ${values.size}`;
-
-  const titleColor =
-    values.color === ''
-      ? language.selectedColor
-      : `${language.selectedColor}: ${translateKey(values.color, language)}`;
 
   const quantityByProductId = activeCartList.reduce<ProductQuantityMap>(
     (result, cartItem) => {
@@ -245,59 +210,12 @@ const SingleProductPurchaseSection = ({
           />
         )}
       </Panel>
-      <Form
-        onSubmit={onSubmit}
-        submitBtnLabel={language.addToBag}
-        isLoading={isAddCartItemLoading}
-      >
-        <FieldSet legendText={language.productVariants}>
-          <ControlGroupList
-            classType="secondary"
-            initialChecked={values.color}
-            type="radio"
-            className="color-list"
-            required={values.color === ''}
-            onChange={onChange}
-            options={sortedTranslatedColors}
-            name="color"
-            variant="large"
-            iconSize="5em"
-            iconName={resolveIconName(categoryName)}
-            groupTitle={{
-              title: titleColor,
-              id: 'choose-product-color',
-              errorText: language[errors.color],
-            }}
-          />
-          <ControlGroupList
-            classType="secondary"
-            type="radio"
-            initialChecked={values.size}
-            required={values.size === ''}
-            disabledList={sizes}
-            onChange={onChange}
-            options={displaySizeList}
-            name="size"
-            groupTitle={{
-              title: titleSize,
-              id: 'choose-product-size',
-              errorText: language[errors.size],
-            }}
-          />
-          <NumberStep
-            onChange={onChange}
-            onNumberStepChange={onNumberStepChange}
-            value={values.qty}
-            min={1}
-            max={countInStock}
-            labelText={language.quantity}
-            id="qty"
-            name="qty"
-            showLabel
-            disabled={currentProductQuantity + values.qty >= countInStock}
-          />
-        </FieldSet>
-      </Form>
+      <SingleProductForm
+        handleSubmit={handleSubmitCartItem}
+        currentProductQuantity={currentProductQuantity}
+        productData={productData}
+        displaySizeList={displaySizeList}
+      />
     </ErrorBoundary>
   );
 };

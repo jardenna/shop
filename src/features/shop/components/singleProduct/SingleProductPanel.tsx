@@ -8,6 +8,7 @@ import type { ChangedAttribute } from '../../cartUtils';
 import './_single-product-panel.scss';
 
 export interface PopupData {
+  cartItem: CartItem;
   changedAttribute: ChangedAttribute;
   existingValue: string;
   existingVariant: CartItem;
@@ -22,7 +23,7 @@ interface SingleProductPanelProps {
   selectedLanguage: SelectedLanguage;
   src: string;
   onHidePanel: () => void;
-  onKeepBoth: () => void;
+  onKeepBoth: (cartItem: CartItem) => void;
   onReplaceItem: () => void;
 }
 
@@ -71,7 +72,9 @@ const SingleProductPanel = ({
         </Button>
         <Button
           variant={BtnVariant.Secondary}
-          onClick={onKeepBoth}
+          onClick={() => {
+            onKeepBoth(popupData.cartItem);
+          }}
           showBtnLoader={isAddCartItemLoading}
         >
           {language.keepBoth} {changedValue}

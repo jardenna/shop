@@ -1,5 +1,5 @@
 import { Size } from '../../../../app/api/apiTypes/sharedApiTypes';
-import { ProductPreviewExtended } from '../../../../app/api/apiTypes/shopApiTypes';
+import { ProductData } from '../../../../app/api/apiTypes/shopApiTypes';
 import FieldSet from '../../../../components/fieldset/FieldSet';
 import Form from '../../../../components/form/Form';
 import ControlGroupList from '../../../../components/formElements/controlGroup/ControlGroupList';
@@ -18,8 +18,8 @@ import { useLanguage } from '../../../language/useLanguage';
 interface SingleProductFormProps {
   currentProductQuantity: number;
   displaySizeList: Size[];
-  selectedProduct: ProductPreviewExtended;
-  handleSubmit: () => void;
+  productData: ProductData;
+  handleSubmit: (values: InitialShopValues) => void;
 }
 
 export type InitialShopValues = {
@@ -29,14 +29,14 @@ export type InitialShopValues = {
 };
 
 const SingleProductForm = ({
-  selectedProduct,
+  productData,
   displaySizeList,
   currentProductQuantity,
   handleSubmit,
 }: SingleProductFormProps) => {
   const { language } = useLanguage();
 
-  const { sizes, colors, categoryName, countInStock } = selectedProduct;
+  const { sizes, colors, categoryName, countInStock } = productData;
   const colorList = getColorOptions({ colors, language });
 
   const initialState: InitialShopValues = {
@@ -48,9 +48,13 @@ const SingleProductForm = ({
   const { onChange, onNumberStepChange, values, onSubmit, errors } =
     useFormValidation({
       initialState,
-      callback: handleSubmit,
+      callback: submitCart,
       validate: validateShopProduct,
     });
+
+  function submitCart() {
+    handleSubmit(values);
+  }
 
   const sortedTranslatedColors = sortColorsByTranslation(colors, language);
 
