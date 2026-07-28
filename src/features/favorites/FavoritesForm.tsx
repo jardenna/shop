@@ -11,21 +11,25 @@ import {
 import { resolveIconName } from '../../utils/iconHelpers';
 import { oneSize } from '../../utils/sizeUtils';
 import { translateKey } from '../../utils/utils';
+import { validateShopProduct } from '../../utils/validation/validateShopProduct';
 import { useLanguage } from '../language/useLanguage';
 
 interface FavoritesFormProps {
   displaySizeList: Size[];
   productData: FavoriteFormProduct;
+  handleSubmit: (values: InitialShopValues) => void;
 }
 
 export type InitialShopValues = {
   color: string;
+  qty: number;
   size: Size | '';
 };
 
 const FavoritesForm = ({
   displaySizeList,
   productData,
+  handleSubmit,
 }: FavoritesFormProps) => {
   const { language } = useLanguage();
 
@@ -35,11 +39,18 @@ const FavoritesForm = ({
   const initialState: InitialShopValues = {
     color: colorList[0].value,
     size: sizes.length === 1 ? oneSize : '',
+    qty: 1,
   };
 
   const { onChange, values, onSubmit, errors } = useFormValidation({
     initialState,
+    callback: submitCart,
+    validate: validateShopProduct,
   });
+
+  function submitCart() {
+    handleSubmit(values);
+  }
 
   const sortedTranslatedColors = sortColorsByTranslation(colors, language);
 

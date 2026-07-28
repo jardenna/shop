@@ -19,7 +19,7 @@ export type ProductCardProps = {
   product: ProductPreview;
   productView?: string;
   showSizeOverlay?: boolean;
-  onAddToCart?: (id: string) => void;
+  onOpenPanel?: (id: string) => void;
 };
 
 const ProductCard = ({
@@ -27,7 +27,7 @@ const ProductCard = ({
   showSizeOverlay,
   productView = '',
   linkTo,
-  onAddToCart,
+  onOpenPanel,
 }: ProductCardProps) => {
   const { language } = useLanguage();
   const ariaLabelledby = ariaInfoTitle(product.id);
@@ -66,10 +66,10 @@ const ProductCard = ({
             )}
           </div>
         </Link>
-        {onAddToCart && (
+        {onOpenPanel && (
           <Button
             onClick={() => {
-              onAddToCart(product.id);
+              onOpenPanel(product.id);
             }}
             variant={BtnVariant.Secondary}
           >

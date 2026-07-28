@@ -6,7 +6,9 @@ import Img from '../components/Img';
 import SkeletonCollection from '../components/skeleton/skeletonCollection/SkeletonCollection';
 import Panel from '../components/togglePanel/Panel';
 import { useTogglePanel } from '../components/togglePanel/useTogglePanel';
-import FavoritesForm from '../features/favorites/FavoritesForm';
+import FavoritesForm, {
+  InitialShopValues,
+} from '../features/favorites/FavoritesForm';
 import { useLanguage } from '../features/language/useLanguage';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import ProductCard from '../features/shop/components/ProductCard';
@@ -25,10 +27,24 @@ const FavoritePage = () => {
 
   const [productId, setProductId] = useState<string | null>();
 
-  const handleAddToCart = (id: string) => {
+  // const [addCartItemApi, { isLoading: isAddCartItemLoading }] =
+  //   useAddToCartMutation();
+
+  const handleOpenPanel = (id: string) => {
     setProductId(id);
     onTogglePanel();
   };
+
+  function handleSubmitCartItem(values: InitialShopValues) {
+    const cartItem = {
+      id: crypto.randomUUID(),
+      productId: selectedProduct?.id,
+      qty: values.qty,
+      size: values.size,
+      color: values.color,
+    };
+    console.log(cartItem);
+  }
 
   const selectedProduct = favorites?.find(
     (favorite) => favorite.id === productId,
@@ -96,6 +112,7 @@ const FavoritePage = () => {
               <FavoritesForm
                 displaySizeList={selectedProduct.sizes}
                 key={selectedProduct.id}
+                handleSubmit={handleSubmitCartItem}
                 productData={{
                   sizes: selectedProduct.sizes,
                   colors: selectedProduct.colors,
@@ -112,7 +129,7 @@ const FavoritePage = () => {
                 showSizeOverlay
                 product={product}
                 linkTo={`${ShopPath.AllProducts}/${product.id}`}
-                onAddToCart={handleAddToCart}
+                onOpenPanel={handleOpenPanel}
               />
             </li>
           ))}
