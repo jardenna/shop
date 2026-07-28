@@ -92,6 +92,7 @@ const SingleProductPage = () => {
   const missingSizes = displaySizeList.filter(
     (size) => !product?.sizes.includes(size),
   );
+  console.log(product);
 
   return (
     <div className="container">
@@ -130,7 +131,7 @@ const SingleProductPage = () => {
               {product.countInStock > 0 && (
                 <SingleProductPurchaseSection
                   onReset={() => refetch}
-                  src={product.image}
+                  src={product.images[0]}
                   productData={{
                     id: product.id,
                     sizes: product.sizes,
