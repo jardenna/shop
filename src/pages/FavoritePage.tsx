@@ -7,6 +7,7 @@ import { useMessagePopup } from '../components/messagePopup/useMessagePopup';
 import SkeletonCollection from '../components/skeleton/skeletonCollection/SkeletonCollection';
 import Panel from '../components/togglePanel/Panel';
 import { useTogglePanel } from '../components/togglePanel/useTogglePanel';
+import { useAuth } from '../features/auth/hooks/useAuth';
 import { useAddToCartMutation } from '../features/cart/cartApiSlice';
 import FavoritesForm, {
   InitialShopValues,
@@ -22,6 +23,7 @@ import MainPageContainer from './pageContainer/MainPageContainer';
 
 const FavoritePage = () => {
   const { language } = useLanguage();
+  const { currentUser } = useAuth();
   const { favorites, isLoading, onReset, isError } = useFavorites({});
   const sortedFavorites = favorites ? [...favorites].reverse() : [];
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
@@ -142,6 +144,8 @@ const FavoritePage = () => {
                 product={product}
                 linkTo={`${ShopPath.AllProducts}/${product.id}`}
                 onOpenPanel={handleOpenPanel}
+                currentUser={currentUser}
+                isOutOfStock={product.countInStock === 0}
               />
             </li>
           ))}
