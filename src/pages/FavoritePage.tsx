@@ -9,13 +9,13 @@ import Panel from '../components/togglePanel/Panel';
 import { useTogglePanel } from '../components/togglePanel/useTogglePanel';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useAddToCartMutation } from '../features/cart/cartApiSlice';
-import FavoritesForm, {
-  InitialShopValues,
-} from '../features/favorites/FavoritesForm';
 import { useLanguage } from '../features/language/useLanguage';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import ProductCard from '../features/shop/components/ProductCard';
 import ProductPrice from '../features/shop/components/productPrice/ProductPrice';
+import CartForm, {
+  InitialShopValues,
+} from '../features/shop/components/singleProduct/CartForm.tsx';
 import { ShopPath } from '../layout/nav/enums';
 import { handleApiError } from '../utils/handleApiError';
 import './FavoritesPage.styles.scss';
@@ -122,7 +122,7 @@ const FavoritePage = () => {
                 </div>
               </article>
 
-              <FavoritesForm
+              <CartForm
                 displaySizeList={selectedProduct.sizes}
                 isLoading={isAddCartItemLoading}
                 key={selectedProduct.id}
@@ -132,6 +132,7 @@ const FavoritePage = () => {
                   colors: selectedProduct.colors,
                   categoryName: selectedProduct.categoryName,
                 }}
+                currentProductQuantity={0}
               />
             </section>
           )}

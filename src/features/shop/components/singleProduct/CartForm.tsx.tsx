@@ -1,5 +1,5 @@
 import { Size } from '../../../../app/api/apiTypes/sharedApiTypes';
-import { ProductFormData } from '../../../../app/api/apiTypes/shopApiTypes';
+import { BaseProductFormData } from '../../../../app/api/apiTypes/shopApiTypes';
 import FieldSet from '../../../../components/fieldset/FieldSet';
 import Form from '../../../../components/form/Form';
 import ControlGroupList from '../../../../components/formElements/controlGroup/ControlGroupList';
@@ -15,30 +15,32 @@ import { translateKey } from '../../../../utils/utils';
 import { validateShopProduct } from '../../../../utils/validation/validateShopProduct';
 import { useLanguage } from '../../../language/useLanguage';
 
-interface SingleProductFormProps {
-  currentProductQuantity: number;
-  displaySizeList: Size[];
-  isLoading: boolean;
-  productData: ProductFormData;
-  handleSubmit: (values: InitialShopValues) => void;
-}
-
 export type InitialShopValues = {
   color: string;
   qty: number;
   size: Size | '';
 };
 
-const SingleProductForm = ({
+interface CartFormProps {
+  currentProductQuantity: number;
+  displaySizeList: Size[];
+  isLoading: boolean;
+  productData: BaseProductFormData;
+  showQuantity?: boolean;
+  handleSubmit: (values: InitialShopValues) => void;
+}
+
+const CartForm = ({
   productData,
   displaySizeList,
   currentProductQuantity,
   handleSubmit,
   isLoading,
-}: SingleProductFormProps) => {
+  showQuantity,
+}: CartFormProps) => {
   const { language } = useLanguage();
 
-  const { sizes, colors, categoryName, countInStock } = productData;
+  const { sizes, colors, categoryName } = productData;
   const colorList = getColorOptions({ colors, language });
 
   const initialState: InitialShopValues = {
@@ -110,21 +112,25 @@ const SingleProductForm = ({
             errorText: language[errors.size],
           }}
         />
-        <NumberStep
-          onChange={onChange}
-          onNumberStepChange={onNumberStepChange}
-          value={values.qty}
-          min={1}
-          max={countInStock}
-          labelText={language.quantity}
-          id="qty"
-          name="qty"
-          showLabel
-          disabled={currentProductQuantity + values.qty >= countInStock}
-        />
+        {showQuantity && productData.countInStock && (
+          <NumberStep
+            onChange={onChange}
+            onNumberStepChange={onNumberStepChange}
+            value={values.qty}
+            min={1}
+            max={productData.countInStock}
+            labelText={language.quantity}
+            id="qty"
+            name="qty"
+            showLabel
+            disabled={
+              currentProductQuantity + values.qty >= productData.countInStock
+            }
+          />
+        )}
       </FieldSet>
     </Form>
   );
 };
 
-export default SingleProductForm;
+export default CartForm;
