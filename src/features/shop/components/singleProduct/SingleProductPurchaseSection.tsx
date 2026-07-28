@@ -19,7 +19,7 @@ import { useActiveCart } from '../../../cart/useActiveCart';
 import { addCartItem, replaceCartItem } from '../../../cartSlice';
 import { useLanguage } from '../../../language/useLanguage';
 import { cartUtils, getTotalCartQuantity } from '../../cartUtils';
-import SingleProductForm from './SingleProductForm';
+import CartForm, { InitialShopValues } from './CartForm.tsx';
 import SingleProductPanel, { PopupData } from './SingleProductPanel';
 
 interface SingleProductPurchaseSectionProps {
@@ -29,12 +29,6 @@ interface SingleProductPurchaseSectionProps {
   src: string;
   onReset: () => void;
 }
-
-export type InitialShopValues = {
-  color: string;
-  qty: number;
-  size: Size | '';
-};
 
 const SingleProductPurchaseSection = ({
   src,
@@ -215,12 +209,13 @@ const SingleProductPurchaseSection = ({
           />
         )}
       </Panel>
-      <SingleProductForm
+      <CartForm
         handleSubmit={handleSubmitCartItem}
         currentProductQuantity={currentProductQuantity}
         productData={productData}
         displaySizeList={displaySizeList}
         isLoading={isAddCartItemLoading}
+        showQuantity
       />
     </ErrorBoundary>
   );
