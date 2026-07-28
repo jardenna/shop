@@ -20,12 +20,14 @@ type NotifiMeProps = {
   id: string;
   isOutOfStock: boolean;
   options: string[];
+  btnVariant?: BtnVariant;
 };
 
 const NotifyMe = ({
   options,
   id,
   currentUser,
+  btnVariant = BtnVariant.Ghost,
   isOutOfStock,
 }: NotifiMeProps) => {
   const { language } = useLanguage();
@@ -75,7 +77,7 @@ const NotifyMe = ({
       triggerModalBtnContent={
         hasMissingSizes ? language.currentlyUnavailableSizes : language.notifyMe
       }
-      triggerModalBtnVariant={BtnVariant.Ghost}
+      triggerModalBtnVariant={btnVariant}
       id={id}
       onClearAllValues={handleClearAllValues}
       primaryActionBtn={primaryActionBtn}
