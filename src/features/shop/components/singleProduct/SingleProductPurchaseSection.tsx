@@ -20,7 +20,7 @@ import { addCartItem, replaceCartItem } from '../../../cartSlice';
 import { useLanguage } from '../../../language/useLanguage';
 import { cartUtils, getTotalCartQuantity } from '../../cartUtils';
 import SingleProductForm from './SingleProductForm';
-import SingleProductPanel from './SingleProductPanel';
+import SingleProductPanel, { PopupData } from './SingleProductPanel';
 
 interface SingleProductPurchaseSectionProps {
   currentUser: UserResponse | null;
@@ -49,8 +49,7 @@ const SingleProductPurchaseSection = ({
     currentUser,
   });
   const { id, countInStock } = productData;
-  const [popupData, setPopupData] = useState<any>(null); //  const [popupData, setPopupData] = useState<PopupData | null>(null);
-
+  const [popupData, setPopupData] = useState<PopupData | null>(null);
   const { onAddMessagePopup } = useMessagePopup();
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
     useTogglePanel();
@@ -90,7 +89,7 @@ const SingleProductPurchaseSection = ({
     onHidePanel();
   };
 
-  async function handleSubmitCartItem(values: any) {
+  async function handleSubmitCartItem(values: InitialShopValues) {
     if (currentUser && !apiCartList) {
       return;
     }
@@ -102,7 +101,6 @@ const SingleProductPurchaseSection = ({
       color: values.color,
     };
     const cartResult = cartUtils({ cartList: activeCartList, cartItem });
-    const { existingVariant } = cartResult;
 
     switch (cartResult.action) {
       case 'addToCartListAction':
@@ -110,7 +108,9 @@ const SingleProductPurchaseSection = ({
 
         break;
 
-      case 'addToQtyAction':
+      case 'addToQtyAction': {
+        const { existingVariant } = cartResult;
+
         if (currentUser) {
           await handleAddCartItem(cartItem);
         } else {
@@ -122,6 +122,7 @@ const SingleProductPurchaseSection = ({
                 }
               : item,
           );
+
           const totalCount = getTotalCartQuantity(
             cartList,
             cartItem.productId,
@@ -137,12 +138,10 @@ const SingleProductPurchaseSection = ({
         }
 
         break;
+      }
 
       case 'showPopupAction':
-        setPopupData({
-          ...(cartResult as any), //   setPopupData(cartResult as PopupData);
-          cartItem,
-        });
+        setPopupData(cartResult);
         onTogglePanel();
         break;
 
@@ -153,24 +152,30 @@ const SingleProductPurchaseSection = ({
 
   // SingleProductPanel handlers
   const handleReplaceItem = async () => {
-    const { existingVariant, incomingVariant } = popupData;
+    if (!popupData) {
+      return;
+    }
+
+    const { existingVariant, cartItem } = popupData;
+
     if (currentUser) {
-      if (!popupData?.existingVariant.id) {
+      if (!existingVariant.id) {
         return;
       }
 
       try {
         await replaceCartItemApi({
           cartItemId: existingVariant.id,
-          cartItem: incomingVariant,
+          cartItem,
         }).unwrap();
       } catch (error) {
         handleApiError(error, onAddMessagePopup);
       }
     } else {
       const updatedCartList = cartList.map((item) =>
-        item === existingVariant ? incomingVariant : item,
+        item === existingVariant ? cartItem : item,
       );
+
       dispatch(replaceCartItem(updatedCartList));
     }
 

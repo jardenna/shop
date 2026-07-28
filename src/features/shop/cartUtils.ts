@@ -7,14 +7,25 @@ interface CartUtilsParams {
   cartList: CartItem[];
 }
 
-interface CartResult {
-  action: 'addToQtyAction' | 'showPopupAction' | 'addToCartListAction';
-  changedAttribute?: ChangedAttribute;
-  existingValue?: string;
-  existingVariant?: CartItem;
-  incomingValue?: string;
-  incomingVariant?: CartItem;
+interface AddToCartListResult {
+  action: 'addToCartListAction';
 }
+
+interface AddToQtyResult {
+  action: 'addToQtyAction';
+  existingVariant: CartItem;
+}
+
+interface ShowPopupResult {
+  action: 'showPopupAction';
+  cartItem: CartItem;
+  changedAttribute: ChangedAttribute;
+  existingValue: string;
+  existingVariant: CartItem;
+  incomingValue: string;
+}
+
+type CartResult = AddToCartListResult | AddToQtyResult | ShowPopupResult;
 
 export const cartUtils = ({
   cartList,
@@ -45,11 +56,10 @@ export const cartUtils = ({
   if (popupVariant) {
     const changedAttribute =
       popupVariant.size !== cartItem.size ? 'size' : 'color';
-
     return {
       action: 'showPopupAction',
+      cartItem,
       existingVariant: popupVariant,
-      incomingVariant: cartItem,
       changedAttribute,
       existingValue:
         changedAttribute === 'size' ? popupVariant.size : popupVariant.color,
