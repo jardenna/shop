@@ -118,7 +118,7 @@ const SingleProductPage = () => {
                   <NotifyMe
                     options={missingSizes}
                     id="notifyMe"
-                    sizesIsRequered={missingSizes.length > 0}
+                    isOutOfStock={product.countInStock === 0}
                     currentUser={currentUser}
                   />
                 )}
