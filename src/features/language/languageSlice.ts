@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../app/store';
-import danishLang from '../../locales/da.json';
-import englishLang from '../../locales/en.json';
+import { languageFiles } from '../../utils/createLanguageProxy';
 
 export type SelectedLanguage = 'en' | 'da';
 
@@ -10,15 +9,9 @@ type LanguageState = {
   selectedLanguage: SelectedLanguage;
 };
 
-const languageFiles: Record<SelectedLanguage, Record<string, string>> = {
-  da: danishLang,
-  en: englishLang,
-};
-
-// Initial state
 const initialState: LanguageState = {
   selectedLanguage: 'da',
-  language: danishLang,
+  language: languageFiles.da,
 };
 
 const languageSlice = createSlice({
@@ -27,13 +20,15 @@ const languageSlice = createSlice({
   reducers: {
     setLanguage: (state, action: PayloadAction<SelectedLanguage>) => {
       state.selectedLanguage = action.payload;
-      state.language = languageFiles[action.payload]; // Load language synchronously
+      state.language = languageFiles[action.payload];
     },
   },
 });
 
 export const { setLanguage } = languageSlice.actions;
+
 export const selectLanguage = (state: RootState) => state.language.language;
+
 export const selectSelectedLanguage = (state: RootState) =>
   state.language.selectedLanguage;
 
