@@ -21,7 +21,7 @@ const FavoritePage = () => {
   const sortedFavorites = favorites ? [...favorites].reverse() : [];
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
     useTogglePanel();
-  const pageHeading = 'favorites';
+  const pageHeading = language.favorites;
 
   const [productId, setProductId] = useState<string | null>();
 
@@ -36,7 +36,7 @@ const FavoritePage = () => {
 
   if (isError) {
     return (
-      <MainPageContainer heading="favorites">
+      <MainPageContainer heading={pageHeading}>
         <ErrorBoundaryFallback resetErrorBoundary={onReset} />
       </MainPageContainer>
     );

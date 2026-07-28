@@ -38,7 +38,7 @@ const ShoppingCartPage = () => {
       currentUser,
     });
 
-  const pageHeading = 'bag';
+  const pageHeading = language.bag;
   const shouldFetchGuestCart = isAuthReady && !currentUser;
 
   const { data: guestCart, refetch } = useGetGuestCartQuery(
@@ -78,7 +78,7 @@ const ShoppingCartPage = () => {
 
   if (isCartError) {
     return (
-      <MainPageContainer heading="bag">
+      <MainPageContainer heading={pageHeading}>
         <ErrorBoundaryFallback resetErrorBoundary={refetchApiCartList} />
       </MainPageContainer>
     );
@@ -86,7 +86,7 @@ const ShoppingCartPage = () => {
 
   if (!cartItems) {
     return (
-      <MainPageContainer heading="bag">
+      <MainPageContainer heading={pageHeading}>
         <SkeletonCartPage />
       </MainPageContainer>
     );

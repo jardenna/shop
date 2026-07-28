@@ -31,6 +31,7 @@ additionalInfo;Additional info;Supplerende information
 additionalOptionsCount;additional options not shown in this preview;ekstra muligheder som ikke vises i denne visning
 addOrManageAddress;Add or manage your addresses;Tilføj eller ret dine adresser
 addOrManageAddress;Add or manage your addresses;Tilføj eller ret dine adresser
+address;Address;Adresse
 addresses;Addresses;Adresser
 addressAlreadyExists;This address already exists.;Denne adresse findes allerede.
 addressAltText;Man in a tailored suit walking confidently down a wide, stepped staircase.;Mand i skræddersyet jakkesæt, der går selvsikkert ned ad en bred trappe.
@@ -437,6 +438,7 @@ selectedColor;Selected colour;Valgt farve
 selectedSize;Selected size;Valgt størrelse
 selectNumber;Select number;Vælg antal
 selectPreferences;Select preferred language and currency;Vælg sprog og valuta
+selectedLanguage;Selected language;Valgt sprog
 selectSize;Select size;Vælg størrelse
 shareReview;Share review;Del anmeldelse
 shareYourExperience;Share your experience;Del din oplevelse

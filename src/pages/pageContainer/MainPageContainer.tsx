@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
 import PageHeader from '../../components/pageHeader/PageHeader';
-import { useLanguage } from '../../features/language/useLanguage';
 import MetaTags from '../../layout/MetaTags';
 import { ariaInfoTitle } from '../../utils/utils';
 
@@ -10,25 +9,22 @@ type MainPageContainerProps = {
   className?: string;
 };
 
+// Accept display text, not translation keys.
 const MainPageContainer = ({
   children,
   heading,
   className = '',
 }: MainPageContainerProps) => {
-  const { language } = useLanguage();
   const ariaLabelledby = ariaInfoTitle(heading);
 
   return (
     <>
-      <MetaTags metaTitle={language[heading]} />
+      <MetaTags metaTitle={heading} />
       <section
         className={`container ${className}`}
         aria-labelledby={ariaLabelledby}
       >
-        <PageHeader
-          heading={language[heading]}
-          ariaLabelledby={ariaLabelledby}
-        />
+        <PageHeader heading={heading} ariaLabelledby={ariaLabelledby} />
         {children}
       </section>
     </>

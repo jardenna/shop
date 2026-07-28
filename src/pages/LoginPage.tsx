@@ -83,7 +83,7 @@ const LoginPage = () => {
   }
 
   return (
-    <MainPageContainer heading={heading} className="page-small">
+    <MainPageContainer heading={language[heading]} className="page-small">
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={() => onReset()}
