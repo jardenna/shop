@@ -95,8 +95,12 @@ const FavoritePage = () => {
 
               <FavoritesForm
                 displaySizeList={selectedProduct.sizes}
-                selectedProduct={selectedProduct}
                 key={selectedProduct.id}
+                productData={{
+                  sizes: selectedProduct.sizes,
+                  colors: selectedProduct.colors,
+                  categoryName: selectedProduct.categoryName,
+                }}
               />
             </section>
           )}

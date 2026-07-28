@@ -3,7 +3,6 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { UserResponse } from '../../../../app/api/apiTypes/adminApiTypes';
 import { CartItem } from '../../../../app/api/apiTypes/cartApiTypes';
 import { type Size } from '../../../../app/api/apiTypes/sharedApiTypes';
-import { ProductData } from '../../../../app/api/apiTypes/shopApiTypes';
 import { useAppDispatch } from '../../../../app/hooks';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
 import { useMessagePopup } from '../../../../components/messagePopup/useMessagePopup';
@@ -21,11 +20,12 @@ import { useLanguage } from '../../../language/useLanguage';
 import { cartUtils, getTotalCartQuantity } from '../../cartUtils';
 import SingleProductForm from './SingleProductForm';
 import SingleProductPanel, { PopupData } from './SingleProductPanel';
+import { ProductFormData } from '../../../../app/api/apiTypes/shopApiTypes';
 
 interface SingleProductPurchaseSectionProps {
   currentUser: UserResponse | null;
   displaySizeList: Size[];
-  productData: ProductData;
+  productData: ProductFormData;
   src: string;
   onReset: () => void;
 }

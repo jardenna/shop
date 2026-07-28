@@ -1,5 +1,5 @@
 import { Size } from '../../app/api/apiTypes/sharedApiTypes';
-import { ProductPreviewExtended } from '../../app/api/apiTypes/shopApiTypes';
+import { FavoriteFormProduct } from '../../app/api/apiTypes/shopApiTypes';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/form/Form';
 import ControlGroupList from '../../components/formElements/controlGroup/ControlGroupList';
@@ -15,7 +15,7 @@ import { useLanguage } from '../language/useLanguage';
 
 interface FavoritesFormProps {
   displaySizeList: Size[];
-  selectedProduct: ProductPreviewExtended;
+  productData: FavoriteFormProduct;
 }
 
 export type InitialShopValues = {
@@ -24,12 +24,12 @@ export type InitialShopValues = {
 };
 
 const FavoritesForm = ({
-  selectedProduct,
   displaySizeList,
+  productData,
 }: FavoritesFormProps) => {
   const { language } = useLanguage();
 
-  const { sizes, colors, categoryName } = selectedProduct;
+  const { sizes, colors, categoryName } = productData;
   const colorList = getColorOptions({ colors, language });
 
   const initialState: InitialShopValues = {

@@ -1,5 +1,5 @@
 import { Size } from '../../../../app/api/apiTypes/sharedApiTypes';
-import { ProductData } from '../../../../app/api/apiTypes/shopApiTypes';
+import { ProductFormData } from '../../../../app/api/apiTypes/shopApiTypes';
 import FieldSet from '../../../../components/fieldset/FieldSet';
 import Form from '../../../../components/form/Form';
 import ControlGroupList from '../../../../components/formElements/controlGroup/ControlGroupList';
@@ -18,7 +18,7 @@ import { useLanguage } from '../../../language/useLanguage';
 interface SingleProductFormProps {
   currentProductQuantity: number;
   displaySizeList: Size[];
-  productData: ProductData;
+  productData: ProductFormData;
   handleSubmit: (values: InitialShopValues) => void;
 }
 
