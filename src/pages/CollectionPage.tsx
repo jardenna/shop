@@ -141,7 +141,7 @@ const CollectionPage = () => {
       display: 'list',
     },
   ];
-  // const pageHeader = `${language.collection} ${language[category]}`;
+
   const ariaLabelledby = ariaInfoTitle(category || 'women');
 
   if (isError) {
