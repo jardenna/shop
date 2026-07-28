@@ -15,7 +15,7 @@
     "stylelint:fix": "npx stylelint \"**/*.scss\" --fix",
     "prepare": "husky",
     "server": "nodemon server/app.js",
-    "translate": "node src/locales/generateTranslations.js"
+    "translate": "node src/locales/generateTranslations.js && node src/locales/checkTranslations.js"
   },
   "lint-staged": {
     "*.{ts, tsx, js}": [
