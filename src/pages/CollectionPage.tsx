@@ -164,6 +164,7 @@ const CollectionPage = () => {
         onClick={onClearAllFilters}
         emtyStateCtaText={language.clearAllFilters}
         src="/images/shoppingBags/shopping_bag"
+        pageHeading="collection"
       />
     );
   }

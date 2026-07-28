@@ -38,6 +38,7 @@ const ShoppingCartPage = () => {
       currentUser,
     });
 
+  const pageHeading = 'bag';
   const shouldFetchGuestCart = isAuthReady && !currentUser;
 
   const { data: guestCart, refetch } = useGetGuestCartQuery(
@@ -99,6 +100,7 @@ const ShoppingCartPage = () => {
         src="/images/shoppingBags/shopping_bag_2"
         linkTo={`/${ShopPath.Collection}`}
         emtyStateCtaText={language.getInspired}
+        pageHeading={pageHeading}
       />
     );
   }
@@ -108,7 +110,7 @@ const ShoppingCartPage = () => {
   };
 
   return (
-    <MainPageContainer heading="bag">
+    <MainPageContainer heading={pageHeading}>
       <div className="order-flow">
         <section>
           <ErrorBoundary

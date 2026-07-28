@@ -21,6 +21,7 @@ const FavoritePage = () => {
   const sortedFavorites = favorites ? [...favorites].reverse() : [];
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
     useTogglePanel();
+  const pageHeading = 'favorites';
 
   const [productId, setProductId] = useState<string | null>();
 
@@ -53,12 +54,13 @@ const FavoritePage = () => {
         src="/images/shoppingBags/shopping_bag_1"
         linkTo={`/${ShopPath.Collection}`}
         emtyStateCtaText={language.getInspired}
+        pageHeading={pageHeading}
       />
     );
   }
 
   return (
-    <MainPageContainer heading="favorites" className="favorite-page">
+    <MainPageContainer heading={pageHeading} className="favorite-page">
       {isLoading && (
         <SkeletonCollection showCtaBtn className="skeleton-favorites" />
       )}
