@@ -44,6 +44,7 @@ const CollectionPage = () => {
   const { subMenu, refetchSubMenu, isErrorSubMenu } = useSubMenu(
     category as LinkText,
   );
+  console.log(subMenu);
 
   const [productView, setProductView] = useLocalStorage(
     localStorageKeys.productView,
@@ -141,7 +142,7 @@ const CollectionPage = () => {
       display: 'list',
     },
   ];
-
+  // const pageHeader = `${language.collection} ${language[category]}`;
   const ariaLabelledby = ariaInfoTitle(category || 'women');
 
   if (isError) {
@@ -164,7 +165,11 @@ const CollectionPage = () => {
         onClick={onClearAllFilters}
         emtyStateCtaText={language.clearAllFilters}
         src="/images/shoppingBags/shopping_bag"
-        pageHeading={category ?? 'collection'}
+        pageHeading={
+          category
+            ? `${language.collection} ${language[category]}`
+            : language.collection
+        }
       />
     );
   }

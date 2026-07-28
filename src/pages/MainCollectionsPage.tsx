@@ -43,7 +43,7 @@ const CollectionLandingPage = () => {
   );
 
   return (
-    <MainPageContainer heading="collection">
+    <MainPageContainer heading={language.collection}>
       <MainCollections
         mainCollectionList={mainCollectionList}
         onReset={refetch}

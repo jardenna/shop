@@ -14,6 +14,7 @@ type CollectionNavProps = {
 
 const CollectionNav = ({ subMenu, category, onReset }: CollectionNavProps) => {
   const { language } = useLanguage();
+  console.log(subMenu);
 
   return (
     <ul className="collection-nav-list">
