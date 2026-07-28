@@ -51,6 +51,8 @@ const FavoritePage = () => {
 
     try {
       await addCartItemApi(cartItem).unwrap();
+
+      onTogglePanel();
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
     }
