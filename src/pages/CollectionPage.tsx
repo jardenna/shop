@@ -44,7 +44,6 @@ const CollectionPage = () => {
   const { subMenu, refetchSubMenu, isErrorSubMenu } = useSubMenu(
     category as LinkText,
   );
-  console.log(subMenu);
 
   const [productView, setProductView] = useLocalStorage(
     localStorageKeys.productView,
