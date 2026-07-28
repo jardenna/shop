@@ -33,7 +33,6 @@ const FavoritePage = () => {
 
   const [addCartItemApi, { isLoading: isAddCartItemLoading }] =
     useAddToCartMutation();
-  console.log(isAddCartItemLoading);
 
   const handleOpenPanel = (id: string) => {
     setProductId(id);
