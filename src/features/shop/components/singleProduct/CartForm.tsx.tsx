@@ -1,4 +1,5 @@
 import { Size } from '../../../../app/api/apiTypes/sharedApiTypes';
+import { BaseProductFormData } from '../../../../app/api/apiTypes/shopApiTypes';
 import FieldSet from '../../../../components/fieldset/FieldSet';
 import Form from '../../../../components/form/Form';
 import ControlGroupList from '../../../../components/formElements/controlGroup/ControlGroupList';
@@ -20,18 +21,11 @@ export type InitialShopValues = {
   size: Size | '';
 };
 
-interface ShopFormProduct {
-  categoryName: string;
-  colors: string[];
-  sizes: Size[];
-  countInStock?: number;
-}
-
 interface CartFormProps {
   currentProductQuantity: number;
   displaySizeList: Size[];
   isLoading: boolean;
-  productData: ShopFormProduct;
+  productData: BaseProductFormData;
   showQuantity?: boolean;
   handleSubmit: (values: InitialShopValues) => void;
 }
