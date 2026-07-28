@@ -73,13 +73,16 @@ export type ProductPreview = {
   sizes: Size[];
 };
 
-export type ProductData = {
+export interface FavoriteFormProduct {
   categoryName: MainCategoryNames;
   colors: string[];
+  sizes: Size[];
+}
+
+export interface ProductFormData extends FavoriteFormProduct {
   countInStock: number;
   id: string;
-  sizes: Size[];
-};
+}
 
 export type ProductPreviewExtended = ProductPreview & {
   categoryName: MainCategoryNames;

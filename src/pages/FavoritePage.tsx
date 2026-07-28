@@ -3,32 +3,61 @@ import { ErrorBoundary } from 'react-error-boundary';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useFavorites } from '../components/favorites/useFavorites';
 import Img from '../components/Img';
+import { useMessagePopup } from '../components/messagePopup/useMessagePopup';
 import SkeletonCollection from '../components/skeleton/skeletonCollection/SkeletonCollection';
 import Panel from '../components/togglePanel/Panel';
 import { useTogglePanel } from '../components/togglePanel/useTogglePanel';
-import FavoritesForm from '../features/favorites/FavoritesForm';
+import { useAuth } from '../features/auth/hooks/useAuth';
+import { useAddToCartMutation } from '../features/cart/cartApiSlice';
+import FavoritesForm, {
+  InitialShopValues,
+} from '../features/favorites/FavoritesForm';
 import { useLanguage } from '../features/language/useLanguage';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import ProductCard from '../features/shop/components/ProductCard';
 import ProductPrice from '../features/shop/components/productPrice/ProductPrice';
 import { ShopPath } from '../layout/nav/enums';
+import { handleApiError } from '../utils/handleApiError';
 import './FavoritesPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const FavoritePage = () => {
   const { language } = useLanguage();
+  const { currentUser } = useAuth();
   const { favorites, isLoading, onReset, isError } = useFavorites({});
   const sortedFavorites = favorites ? [...favorites].reverse() : [];
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
     useTogglePanel();
   const pageHeading = language.favorites;
+  const { onAddMessagePopup } = useMessagePopup();
 
   const [productId, setProductId] = useState<string | null>();
 
-  const handleAddToCart = (id: string) => {
+  const [addCartItemApi, { isLoading: isAddCartItemLoading }] =
+    useAddToCartMutation();
+
+  const handleOpenPanel = (id: string) => {
     setProductId(id);
     onTogglePanel();
   };
+
+  async function handleSubmitCartItem(values: InitialShopValues) {
+    const cartItem = {
+      id: crypto.randomUUID(),
+      productId: selectedProduct?.id ?? '',
+      qty: values.qty,
+      size: values.size,
+      color: values.color,
+    };
+
+    try {
+      await addCartItemApi(cartItem).unwrap();
+
+      onTogglePanel();
+    } catch (error) {
+      handleApiError(error, onAddMessagePopup);
+    }
+  }
 
   const selectedProduct = favorites?.find(
     (favorite) => favorite.id === productId,
@@ -95,8 +124,14 @@ const FavoritePage = () => {
 
               <FavoritesForm
                 displaySizeList={selectedProduct.sizes}
-                selectedProduct={selectedProduct}
+                isLoading={isAddCartItemLoading}
                 key={selectedProduct.id}
+                handleSubmit={handleSubmitCartItem}
+                productData={{
+                  sizes: selectedProduct.sizes,
+                  colors: selectedProduct.colors,
+                  categoryName: selectedProduct.categoryName,
+                }}
               />
             </section>
           )}
@@ -108,7 +143,9 @@ const FavoritePage = () => {
                 showSizeOverlay
                 product={product}
                 linkTo={`${ShopPath.AllProducts}/${product.id}`}
-                onAddToCart={handleAddToCart}
+                onOpenPanel={handleOpenPanel}
+                currentUser={currentUser}
+                isOutOfStock={product.countInStock === 0}
               />
             </li>
           ))}

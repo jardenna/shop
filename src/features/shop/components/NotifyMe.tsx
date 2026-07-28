@@ -18,18 +18,22 @@ export type InitialNotifyValues = {
 type NotifiMeProps = {
   currentUser: UserResponse | null;
   id: string;
+  isOutOfStock: boolean;
   options: string[];
-  sizesIsRequered?: boolean;
+  btnVariant?: BtnVariant;
 };
 
 const NotifyMe = ({
   options,
   id,
   currentUser,
-  sizesIsRequered,
+  btnVariant = BtnVariant.Ghost,
+  isOutOfStock,
 }: NotifiMeProps) => {
   const { language } = useLanguage();
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+
+  const hasMissingSizes = !isOutOfStock && options.length > 0;
 
   const sizes: Size[] = options.length === 1 ? [options[0] as Size] : [];
   const initialState: InitialNotifyValues = {
@@ -44,7 +48,7 @@ const NotifyMe = ({
     }>({
       initialState,
       callback: handleSendEmail,
-      validate: sizesIsRequered ? validateNotityMe : validateNEmail,
+      validate: hasMissingSizes ? validateNotityMe : validateNEmail,
     });
 
   const handleClearAllValues = () => {
@@ -71,16 +75,16 @@ const NotifyMe = ({
   return (
     <ModalContainer
       triggerModalBtnContent={
-        sizesIsRequered ? language.currentlyUnavailableSizes : language.notifyMe
+        hasMissingSizes ? language.currentlyUnavailableSizes : language.notifyMe
       }
-      triggerModalBtnVariant={BtnVariant.Ghost}
+      triggerModalBtnVariant={btnVariant}
       id={id}
       onClearAllValues={handleClearAllValues}
       primaryActionBtn={primaryActionBtn}
       secondaryActionBtn={null}
       showCloseIcon
       modalHeaderText={
-        sizesIsRequered
+        hasMissingSizes
           ? language.currentlyUnavailableSizes
           : language.temporarilyOutOfStock
       }
@@ -93,7 +97,7 @@ const NotifyMe = ({
           values={values}
           errors={errors}
           onChange={onChange}
-          sizesIsRequered={sizesIsRequered}
+          sizesIsRequered={hasMissingSizes}
         />
       )}
     </ModalContainer>

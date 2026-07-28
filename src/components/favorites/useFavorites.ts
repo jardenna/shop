@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 import { useAuth } from '../../features/auth/hooks/useAuth';
 import {
   useGetFavoritesQuery,
   useToggleFavoriteMutation,
 } from '../../features/favorites/favoritesApiSlice';
+import { ShopPath } from '../../layout/nav/enums';
 
 export const useFavorites = ({ id }: { id?: string }) => {
+  const navigate = useNavigate();
   const { currentUser } = useAuth();
 
   const {
@@ -33,6 +36,11 @@ export const useFavorites = ({ id }: { id?: string }) => {
 
   const handleToggle = async (productId: string) => {
     setAnimate((current) => !current);
+
+    if (!currentUser) {
+      navigate(`/${ShopPath.Login}`);
+      return;
+    }
 
     try {
       await toggleFavorite(productId).unwrap();

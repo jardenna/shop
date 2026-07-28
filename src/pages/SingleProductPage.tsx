@@ -92,7 +92,6 @@ const SingleProductPage = () => {
   const missingSizes = displaySizeList.filter(
     (size) => !product?.sizes.includes(size),
   );
-  console.log(product);
 
   return (
     <div className="container">
@@ -119,7 +118,7 @@ const SingleProductPage = () => {
                   <NotifyMe
                     options={missingSizes}
                     id="notifyMe"
-                    sizesIsRequered={missingSizes.length > 0}
+                    isOutOfStock={product.countInStock === 0}
                     currentUser={currentUser}
                   />
                 )}

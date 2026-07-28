@@ -1,4 +1,5 @@
 import { Link } from 'react-router';
+import { UserResponse } from '../../../app/api/apiTypes/adminApiTypes';
 import { BaseShopProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import { ProductPreview } from '../../../app/api/apiTypes/shopApiTypes';
 import Badge from '../../../components/badge/Badge';
@@ -9,6 +10,7 @@ import VisuallyHidden from '../../../components/VisuallyHidden';
 import { BtnVariant } from '../../../types/enums';
 import { ariaInfoTitle } from '../../../utils/utils';
 import { useLanguage } from '../../language/useLanguage';
+import NotifyMe from './NotifyMe';
 import './ProductCard.styles.scss';
 import ProductCardGridContent from './ProductCardGridContent';
 import ProductCardListContent from './ProductCardListContent';
@@ -17,9 +19,11 @@ import SizeOverlay from './SizeOverlay';
 export type ProductCardProps = {
   linkTo: string;
   product: ProductPreview;
+  currentUser?: UserResponse | null;
+  isOutOfStock?: boolean;
   productView?: string;
   showSizeOverlay?: boolean;
-  onAddToCart?: (id: string) => void;
+  onOpenPanel?: (id: string) => void;
 };
 
 const ProductCard = ({
@@ -27,7 +31,9 @@ const ProductCard = ({
   showSizeOverlay,
   productView = '',
   linkTo,
-  onAddToCart,
+  onOpenPanel,
+  currentUser,
+  isOutOfStock,
 }: ProductCardProps) => {
   const { language } = useLanguage();
   const ariaLabelledby = ariaInfoTitle(product.id);
@@ -44,6 +50,12 @@ const ProductCard = ({
               <Badge
                 badgeText={`- ${product.discount} %`}
                 className="discount"
+              />
+            )}
+            {isOutOfStock && (
+              <Badge
+                badgeText={language.outOfStock}
+                className="out-of-stock "
               />
             )}
             <Img alt="" src={product.image} />
@@ -66,16 +78,27 @@ const ProductCard = ({
             )}
           </div>
         </Link>
-        {onAddToCart && (
-          <Button
-            onClick={() => {
-              onAddToCart(product.id);
-            }}
-            variant={BtnVariant.Secondary}
-          >
-            {language.addToCart}
-          </Button>
-        )}
+        {onOpenPanel &&
+          (isOutOfStock ? (
+            <div className="in-stock-container">
+              <NotifyMe
+                options={[]}
+                id="notifyMe"
+                isOutOfStock
+                currentUser={currentUser ?? null}
+                btnVariant={BtnVariant.Secondary}
+              />
+            </div>
+          ) : (
+            <Button
+              onClick={() => {
+                onOpenPanel(product.id);
+              }}
+              variant={BtnVariant.Secondary}
+            >
+              {language.addToCart}
+            </Button>
+          ))}
       </div>
     </article>
   );

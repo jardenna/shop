@@ -1,5 +1,5 @@
 import { Size } from '../../../../app/api/apiTypes/sharedApiTypes';
-import { ProductData } from '../../../../app/api/apiTypes/shopApiTypes';
+import { ProductFormData } from '../../../../app/api/apiTypes/shopApiTypes';
 import FieldSet from '../../../../components/fieldset/FieldSet';
 import Form from '../../../../components/form/Form';
 import ControlGroupList from '../../../../components/formElements/controlGroup/ControlGroupList';
@@ -18,7 +18,8 @@ import { useLanguage } from '../../../language/useLanguage';
 interface SingleProductFormProps {
   currentProductQuantity: number;
   displaySizeList: Size[];
-  productData: ProductData;
+  isLoading: boolean;
+  productData: ProductFormData;
   handleSubmit: (values: InitialShopValues) => void;
 }
 
@@ -33,6 +34,7 @@ const SingleProductForm = ({
   displaySizeList,
   currentProductQuantity,
   handleSubmit,
+  isLoading,
 }: SingleProductFormProps) => {
   const { language } = useLanguage();
 
@@ -69,7 +71,11 @@ const SingleProductForm = ({
       : `${language.selectedColor}: ${translateKey(values.color, language)}`;
 
   return (
-    <Form onSubmit={onSubmit} submitBtnLabel={language.addToBag}>
+    <Form
+      onSubmit={onSubmit}
+      submitBtnLabel={language.addToBag}
+      isLoading={isLoading}
+    >
       <FieldSet legendText={language.productVariants}>
         <ControlGroupList
           classType="secondary"

@@ -1,5 +1,5 @@
 import { Size } from '../../app/api/apiTypes/sharedApiTypes';
-import { ProductPreviewExtended } from '../../app/api/apiTypes/shopApiTypes';
+import { FavoriteFormProduct } from '../../app/api/apiTypes/shopApiTypes';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/form/Form';
 import ControlGroupList from '../../components/formElements/controlGroup/ControlGroupList';
@@ -11,35 +11,48 @@ import {
 import { resolveIconName } from '../../utils/iconHelpers';
 import { oneSize } from '../../utils/sizeUtils';
 import { translateKey } from '../../utils/utils';
+import { validateShopProduct } from '../../utils/validation/validateShopProduct';
 import { useLanguage } from '../language/useLanguage';
 
 interface FavoritesFormProps {
   displaySizeList: Size[];
-  selectedProduct: ProductPreviewExtended;
+  isLoading: boolean;
+  productData: FavoriteFormProduct;
+  handleSubmit: (values: InitialShopValues) => void;
 }
 
 export type InitialShopValues = {
   color: string;
+  qty: number;
   size: Size | '';
 };
 
 const FavoritesForm = ({
-  selectedProduct,
   displaySizeList,
+  productData,
+  handleSubmit,
+  isLoading,
 }: FavoritesFormProps) => {
   const { language } = useLanguage();
 
-  const { sizes, colors, categoryName } = selectedProduct;
+  const { sizes, colors, categoryName } = productData;
   const colorList = getColorOptions({ colors, language });
 
   const initialState: InitialShopValues = {
     color: colorList[0].value,
     size: sizes.length === 1 ? oneSize : '',
+    qty: 1,
   };
 
   const { onChange, values, onSubmit, errors } = useFormValidation({
     initialState,
+    callback: submitCart,
+    validate: validateShopProduct,
   });
+
+  function submitCart() {
+    handleSubmit(values);
+  }
 
   const sortedTranslatedColors = sortColorsByTranslation(colors, language);
 
@@ -54,7 +67,11 @@ const FavoritesForm = ({
       : `${language.selectedColor}: ${translateKey(values.color, language)}`;
 
   return (
-    <Form onSubmit={onSubmit} submitBtnLabel={language.addToBag}>
+    <Form
+      onSubmit={onSubmit}
+      submitBtnLabel={language.addToBag}
+      isLoading={isLoading}
+    >
       <FieldSet legendText={language.productVariants}>
         <ControlGroupList
           classType="secondary"
