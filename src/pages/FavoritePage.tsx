@@ -3,9 +3,11 @@ import { ErrorBoundary } from 'react-error-boundary';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useFavorites } from '../components/favorites/useFavorites';
 import Img from '../components/Img';
+import { useMessagePopup } from '../components/messagePopup/useMessagePopup';
 import SkeletonCollection from '../components/skeleton/skeletonCollection/SkeletonCollection';
 import Panel from '../components/togglePanel/Panel';
 import { useTogglePanel } from '../components/togglePanel/useTogglePanel';
+import { useAddToCartMutation } from '../features/cart/cartApiSlice';
 import FavoritesForm, {
   InitialShopValues,
 } from '../features/favorites/FavoritesForm';
@@ -14,6 +16,7 @@ import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import ProductCard from '../features/shop/components/ProductCard';
 import ProductPrice from '../features/shop/components/productPrice/ProductPrice';
 import { ShopPath } from '../layout/nav/enums';
+import { handleApiError } from '../utils/handleApiError';
 import './FavoritesPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
@@ -24,26 +27,33 @@ const FavoritePage = () => {
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
     useTogglePanel();
   const pageHeading = language.favorites;
+  const { onAddMessagePopup } = useMessagePopup();
 
   const [productId, setProductId] = useState<string | null>();
 
-  // const [addCartItemApi, { isLoading: isAddCartItemLoading }] =
-  //   useAddToCartMutation();
+  const [addCartItemApi, { isLoading: isAddCartItemLoading }] =
+    useAddToCartMutation();
+  console.log(isAddCartItemLoading);
 
   const handleOpenPanel = (id: string) => {
     setProductId(id);
     onTogglePanel();
   };
 
-  function handleSubmitCartItem(values: InitialShopValues) {
+  async function handleSubmitCartItem(values: InitialShopValues) {
     const cartItem = {
       id: crypto.randomUUID(),
-      productId: selectedProduct?.id,
+      productId: selectedProduct?.id ?? '',
       qty: values.qty,
       size: values.size,
       color: values.color,
     };
-    console.log(cartItem);
+
+    try {
+      await addCartItemApi(cartItem).unwrap();
+    } catch (error) {
+      handleApiError(error, onAddMessagePopup);
+    }
   }
 
   const selectedProduct = favorites?.find(
