@@ -27,4 +27,13 @@
     padding-block: 8px;
     border-radius: 4px;
   }
+
+  &.out-of-stock {
+    background-color: $color-warning;
+    color: $color-primary;
+    padding-block: 12px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-weight: bold;
+  }
 }
