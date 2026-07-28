@@ -9,6 +9,7 @@ import Panel from '../components/togglePanel/Panel';
 import { useTogglePanel } from '../components/togglePanel/useTogglePanel';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useAddToCartMutation } from '../features/cart/cartApiSlice';
+import { useActiveCart } from '../features/cart/useActiveCart.ts';
 import { useLanguage } from '../features/language/useLanguage';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import ProductCard from '../features/shop/components/ProductCard';
@@ -32,6 +33,7 @@ const FavoritePage = () => {
   const { onAddMessagePopup } = useMessagePopup();
 
   const [productId, setProductId] = useState<string | null>();
+  const [openCartPopup, setOpenCartPopup] = useState(false);
 
   const [addCartItemApi, { isLoading: isAddCartItemLoading }] =
     useAddToCartMutation();
@@ -39,7 +41,11 @@ const FavoritePage = () => {
   const handleOpenPanel = (id: string) => {
     setProductId(id);
     onTogglePanel();
+    setOpenCartPopup(true);
   };
+
+  const { apiCartList } = useActiveCart({ currentUser });
+  console.log(apiCartList);
 
   async function handleSubmitCartItem(values: InitialShopValues) {
     const cartItem = {
@@ -97,6 +103,22 @@ const FavoritePage = () => {
         FallbackComponent={ErrorBoundaryFallback}
         onReset={onReset}
       >
+        {openCartPopup && (
+          <ul>
+            {apiCartList?.cartItems.map((item) => (
+              <li key={item.id}>
+                {' '}
+                <article className="favorite-panel-product">
+                  <Img src={item.image} alt="" className="panel-product-img" />
+                  <div>
+                    <h2 className="panel-product-title">{item.productName}</h2>
+                    <ProductPrice price={item.price} discount={item.discount} />
+                  </div>
+                </article>
+              </li>
+            ))}
+          </ul>
+        )}
         <Panel
           isPanelShown={isPanelShown}
           panelRef={panelRef}
