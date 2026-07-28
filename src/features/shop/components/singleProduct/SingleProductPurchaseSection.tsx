@@ -220,6 +220,7 @@ const SingleProductPurchaseSection = ({
         currentProductQuantity={currentProductQuantity}
         productData={productData}
         displaySizeList={displaySizeList}
+        isLoading={isAddCartItemLoading}
       />
     </ErrorBoundary>
   );

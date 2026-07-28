@@ -121,6 +121,7 @@ const FavoritePage = () => {
 
               <FavoritesForm
                 displaySizeList={selectedProduct.sizes}
+                isLoading={isAddCartItemLoading}
                 key={selectedProduct.id}
                 handleSubmit={handleSubmitCartItem}
                 productData={{

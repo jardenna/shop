@@ -16,6 +16,7 @@ import { useLanguage } from '../language/useLanguage';
 
 interface FavoritesFormProps {
   displaySizeList: Size[];
+  isLoading: boolean;
   productData: FavoriteFormProduct;
   handleSubmit: (values: InitialShopValues) => void;
 }
@@ -30,6 +31,7 @@ const FavoritesForm = ({
   displaySizeList,
   productData,
   handleSubmit,
+  isLoading,
 }: FavoritesFormProps) => {
   const { language } = useLanguage();
 
@@ -65,7 +67,11 @@ const FavoritesForm = ({
       : `${language.selectedColor}: ${translateKey(values.color, language)}`;
 
   return (
-    <Form onSubmit={onSubmit} submitBtnLabel={language.addToBag}>
+    <Form
+      onSubmit={onSubmit}
+      submitBtnLabel={language.addToBag}
+      isLoading={isLoading}
+    >
       <FieldSet legendText={language.productVariants}>
         <ControlGroupList
           classType="secondary"

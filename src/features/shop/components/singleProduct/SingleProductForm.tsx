@@ -18,6 +18,7 @@ import { useLanguage } from '../../../language/useLanguage';
 interface SingleProductFormProps {
   currentProductQuantity: number;
   displaySizeList: Size[];
+  isLoading: boolean;
   productData: ProductFormData;
   handleSubmit: (values: InitialShopValues) => void;
 }
@@ -33,6 +34,7 @@ const SingleProductForm = ({
   displaySizeList,
   currentProductQuantity,
   handleSubmit,
+  isLoading,
 }: SingleProductFormProps) => {
   const { language } = useLanguage();
 
@@ -69,7 +71,11 @@ const SingleProductForm = ({
       : `${language.selectedColor}: ${translateKey(values.color, language)}`;
 
   return (
-    <Form onSubmit={onSubmit} submitBtnLabel={language.addToBag}>
+    <Form
+      onSubmit={onSubmit}
+      submitBtnLabel={language.addToBag}
+      isLoading={isLoading}
+    >
       <FieldSet legendText={language.productVariants}>
         <ControlGroupList
           classType="secondary"
