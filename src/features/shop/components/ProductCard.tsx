@@ -16,10 +16,10 @@ import SizeOverlay from './SizeOverlay';
 
 export type ProductCardProps = {
   linkTo: string;
-  product: BaseShopProduct | ProductPreview;
+  product: ProductPreview;
   productView?: string;
-  showAdToCartBtn?: boolean;
   showSizeOverlay?: boolean;
+  onAddToCart?: (id: string) => void;
 };
 
 const ProductCard = ({
@@ -27,7 +27,7 @@ const ProductCard = ({
   showSizeOverlay,
   productView = '',
   linkTo,
-  showAdToCartBtn,
+  onAddToCart,
 }: ProductCardProps) => {
   const { language } = useLanguage();
   const ariaLabelledby = ariaInfoTitle(product.id);
@@ -46,7 +46,7 @@ const ProductCard = ({
                 className="discount"
               />
             )}
-            <Img alt="" src={product.images[0]} />
+            <Img alt="" src={product.image} />
             {showSizeOverlay && <SizeOverlay sizes={product.sizes} count={5} />}
           </div>
         </Link>
@@ -66,8 +66,15 @@ const ProductCard = ({
             )}
           </div>
         </Link>
-        {showAdToCartBtn && (
-          <Button variant={BtnVariant.Secondary}>{language.addToCart}</Button>
+        {onAddToCart && (
+          <Button
+            onClick={() => {
+              onAddToCart(product.id);
+            }}
+            variant={BtnVariant.Secondary}
+          >
+            {language.addToCart}
+          </Button>
         )}
       </div>
     </article>

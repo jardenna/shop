@@ -13,16 +13,15 @@ import ReviewList from '../features/shop/components/reviews/ReviewList';
 import ReviewsForm from '../features/shop/components/reviews/ReviewsForm';
 import ReviewStars from '../features/shop/components/reviews/ReviewStars';
 import { getStarsArray } from '../features/shop/components/reviews/reviewsUtil.';
-import SingleProductForm from '../features/shop/components/singleProduct/SingleProductForm';
 import SingleProductHeader from '../features/shop/components/singleProduct/SingleProductHeader';
+import SingleProductPurchaseSection from '../features/shop/components/singleProduct/SingleProductPurchaseSection';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
 import MetaTags from '../layout/MetaTags';
-import { getColorOptions } from '../utils/colorUtils';
 import { getDisplaySizes } from '../utils/sizeUtils';
 import './SingleProductPage.styles.scss';
 
 const SingleProductPage = () => {
-  const { currentUser, isAuthReady } = useAuth();
+  const { currentUser } = useAuth();
   const { id } = useParams();
   const { language } = useLanguage();
 
@@ -31,10 +30,6 @@ const SingleProductPage = () => {
     isLoading,
     refetch,
   } = useGetSingleProductQuery(id ?? '');
-
-  const colorList = product
-    ? getColorOptions({ colors: product.colors, language })
-    : [];
 
   const accordionList: AccordionList[] = [
     { title: language.description, content: <p>{product?.description}</p> },
@@ -97,6 +92,7 @@ const SingleProductPage = () => {
   const missingSizes = displaySizeList.filter(
     (size) => !product?.sizes.includes(size),
   );
+  console.log(product);
 
   return (
     <div className="container">
@@ -133,13 +129,18 @@ const SingleProductPage = () => {
                 <ReviewsForm productId={id} onReset={() => refetch} />
               )}
               {product.countInStock > 0 && (
-                <SingleProductForm
+                <SingleProductPurchaseSection
                   onReset={() => refetch}
-                  selectedProduct={product}
-                  colorList={colorList}
+                  src={product.images[0]}
+                  productData={{
+                    id: product.id,
+                    sizes: product.sizes,
+                    colors: product.colors,
+                    categoryName: product.categoryName,
+                    countInStock: product.countInStock,
+                  }}
                   displaySizeList={displaySizeList}
                   currentUser={currentUser}
-                  isAuthReady={isAuthReady}
                 />
               )}
               <Accordion

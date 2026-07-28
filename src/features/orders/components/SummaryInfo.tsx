@@ -1,23 +1,21 @@
-import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
+import { BaseOrder } from '../../../app/api/apiTypes/cartApiTypes';
 import { translateKey } from '../../../utils/utils';
 
 interface SummaryInfoProps {
-  color: string;
+  cartItem: BaseOrder;
   language: Record<string, string>;
-  qty: number;
-  size: Size | '';
 }
 
-const SummaryInfo = ({ qty, size, color, language }: SummaryInfoProps) => (
+const SummaryInfo = ({ cartItem, language }: SummaryInfoProps) => (
   <div className="summary">
     <span>
-      {language.qty} {qty}
+      {language.qty} {cartItem.qty}
     </span>
     <span aria-hidden>/</span>
-    <span>{translateKey(color, language)}</span>
+    <span>{translateKey(cartItem.color, language)}</span>
     <span aria-hidden>/</span>
     <span>
-      {language.size} {size}
+      {language.size} {cartItem.size}
     </span>
   </div>
 );

@@ -58,6 +58,7 @@ export type BaseShopProduct = DefaultResponseType & {
   discount: number;
   discountedPrice: number;
   id: string;
+  image: string;
   images: string[];
   material: string;
   numReviews: number;

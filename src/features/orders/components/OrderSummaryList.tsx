@@ -1,9 +1,7 @@
 import { CartListResponse } from '../../../app/api/apiTypes/cartApiTypes';
-import DeleteItem from '../../../components/deleteItem/DeleteItem';
-import Img from '../../../components/Img';
 import { getCartQuantity } from '../../../utils/reduceQty';
 import './_order.scss';
-import SummaryInfo from './SummaryInfo';
+import OrderSummaryItem from './OrderSummaryItem';
 
 interface OrderSummaryListProps {
   language: Record<string, string>;
@@ -22,33 +20,20 @@ const OrderSummaryList = ({
         {language.orderSummary} [ {getCartQuantity(orderItems.cartItems)} ]
       </h2>
       <ul className="order-summary-list">
-        {orderItems.cartItems.map(
-          ({ id, image, productName, color, size, qty }) => (
-            <li key={id}>
-              <article className="order-summary-item">
-                <Img src={image} alt="" className="summary-img" />
-                <div>
-                  <div className="flex">
-                    <h3 className="summary-item-title">{productName}</h3>
-                    <DeleteItem
-                      ariaLabel={`${language.delete} ${productName}`}
-                      onDeleteItem={() => {
-                        deleteCartItem(id);
-                      }}
-                      itemName={productName}
-                    />
-                  </div>
-                  <SummaryInfo
-                    qty={qty}
-                    color={color}
-                    size={size}
-                    language={language}
-                  />
-                </div>
-              </article>
-            </li>
-          ),
-        )}
+        {orderItems.cartItems.map(({ id, image, productName, ...cartItem }) => (
+          <li key={id}>
+            <OrderSummaryItem
+              src={image}
+              cartItem={cartItem}
+              language={language}
+              productName={productName}
+              ariaLabel={`${language.delete} ${productName}`}
+              onDeleteItem={() => {
+                deleteCartItem(id);
+              }}
+            />
+          </li>
+        ))}
       </ul>
     </>
   );

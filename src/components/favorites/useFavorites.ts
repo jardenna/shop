@@ -3,7 +3,7 @@ import { useAuth } from '../../features/auth/hooks/useAuth';
 import {
   useGetFavoritesQuery,
   useToggleFavoriteMutation,
-} from '../../features/shop/shopApiSlice';
+} from '../../features/favorites/favoritesApiSlice';
 
 export const useFavorites = ({ id }: { id?: string }) => {
   const { currentUser } = useAuth();

@@ -141,11 +141,12 @@ const CollectionPage = () => {
       display: 'list',
     },
   ];
+
   const ariaLabelledby = ariaInfoTitle(category || 'women');
 
   if (isError) {
     return (
-      <MainPageContainer heading="bag">
+      <MainPageContainer heading="collection">
         <ErrorBoundaryFallback resetErrorBoundary={refetch} />
       </MainPageContainer>
     );
@@ -163,6 +164,7 @@ const CollectionPage = () => {
         onClick={onClearAllFilters}
         emtyStateCtaText={language.clearAllFilters}
         src="/images/shoppingBags/shopping_bag"
+        pageHeading={category ?? 'collection'}
       />
     );
   }

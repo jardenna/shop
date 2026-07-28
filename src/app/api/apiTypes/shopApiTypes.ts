@@ -4,6 +4,7 @@ import type {
   BaseProductParams,
   BaseShopProduct,
   DefaultResponseType,
+  MainCategoryNames,
   Size,
 } from './sharedApiTypes';
 
@@ -66,10 +67,22 @@ export type ProductPreview = {
   discount: number;
   discountedPrice: number;
   id: string;
-  images: string[];
+  image: string;
   price: number;
   productName: string;
   sizes: Size[];
+};
+
+export type ProductData = {
+  categoryName: MainCategoryNames;
+  colors: string[];
+  countInStock: number;
+  id: string;
+  sizes: Size[];
+};
+
+export type ProductPreviewExtended = ProductPreview & {
+  categoryName: MainCategoryNames;
 };
 
 // Profile

@@ -13,4 +13,31 @@
     gap: 12px;
     margin-bottom: 12px;
   }
+
+  .favorite-panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 20px;
+  }
+
+  .favorite-panel-product {
+    flex-grow: 1;
+    display: flex;
+    gap: 16px;
+  }
+
+  .panel-product-img {
+    max-width: rem(120px);
+    height: rem(180px);
+  }
+
+  .panel-product-title {
+    text-transform: uppercase;
+  }
+
+  .product-price {
+    justify-content: start;
+    font-size: rem(20px);
+  }
 }
