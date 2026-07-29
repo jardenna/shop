@@ -10,7 +10,6 @@ import AdminCardHeading from './AdminCardHeading';
 type ProductCardLeftProps = {
   description: string;
   discount: number;
-  discountedPrice: number;
   images: string[];
   name: string;
   price: number;
@@ -28,7 +27,6 @@ const ProductCardLeft = ({
   onReset,
   price,
   discount,
-  discountedPrice,
 }: ProductCardLeftProps) => {
   const { language } = useLanguage();
 
@@ -46,11 +44,7 @@ const ProductCardLeft = ({
       />
       <p>{description}</p>
       <LabelValueGrid text={language.price}>
-        <ProductPrice
-          price={price}
-          discount={discount}
-          discountedPrice={discountedPrice}
-        />
+        <ProductPrice price={price} discount={discount} />
       </LabelValueGrid>
     </CardContent>
   );

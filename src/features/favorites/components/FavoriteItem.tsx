@@ -1,10 +1,10 @@
-import { GetFavoritesResponse } from '../../../app/api/apiTypes/shopApiTypes';
+import { ProductPreview } from '../../../app/api/apiTypes/shopApiTypes';
 import Img from '../../../components/Img';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 import './_favorite-list.scss';
 
 interface FavoriteItemProps {
-  selectedProduct: GetFavoritesResponse;
+  selectedProduct: ProductPreview;
 }
 
 const FavoriteItem = ({ selectedProduct }: FavoriteItemProps) => (
@@ -15,7 +15,6 @@ const FavoriteItem = ({ selectedProduct }: FavoriteItemProps) => (
       <ProductPrice
         price={selectedProduct.price}
         discount={selectedProduct.discount}
-        discountedPrice={selectedProduct.discountedPrice}
       />
     </div>
   </article>
