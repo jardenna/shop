@@ -1,6 +1,6 @@
 import LabelValueGrid from '../../../../components/labelValueGrid/LabelValueGrid';
 import { useAuth } from '../../../auth/hooks/useAuth';
-import FavoriteCartItem from '../../../favorites/components/FavoriteCartItem';
+import OrderItemCard from '../../../favorites/components/OrderItemCard';
 import { useLanguage } from '../../../language/useLanguage';
 import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 import { useActiveCart } from '../../useActiveCart';
@@ -15,7 +15,7 @@ const MiniCartPopup = () => {
       <ul className="favorite-list">
         {apiCartList.cartItems.map((order) => (
           <li key={order.id} className="favorite-list-item">
-            <FavoriteCartItem order={order} language={language} />
+            <OrderItemCard order={order} language={language} />
           </li>
         ))}
         <div>

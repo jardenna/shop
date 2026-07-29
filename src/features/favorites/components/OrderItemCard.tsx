@@ -3,12 +3,12 @@ import LabelValueGrid from '../../../components/labelValueGrid/LabelValueGrid';
 import { translateKey } from '../../../utils/utils';
 import FavoriteItem from './FavoriteItem';
 
-interface FavoriteCartItemProps {
+interface OrderItemCardProps {
   language: Record<string, string>;
   order: Order;
 }
 
-const FavoriteCartItem = ({ order, language }: FavoriteCartItemProps) => (
+const OrderItemCard = ({ order, language }: OrderItemCardProps) => (
   <FavoriteItem product={order}>
     <div className="favorite-item-info">
       <LabelValueGrid text={language.color}>
@@ -20,4 +20,4 @@ const FavoriteCartItem = ({ order, language }: FavoriteCartItemProps) => (
   </FavoriteItem>
 );
 
-export default FavoriteCartItem;
+export default OrderItemCard;
