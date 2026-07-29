@@ -456,12 +456,12 @@ const ProductForm = ({
                 onChange={onChange}
                 inputMode="numeric"
               />
-              {selectedProduct && (
-                <LabelValueGrid text={language.productsInStock}>
-                  {selectedProduct.countInStock} {language.pcs}
-                </LabelValueGrid>
-              )}
             </div>
+            {selectedProduct && (
+              <LabelValueGrid text={language.productsInStock}>
+                {selectedProduct.countInStock} {language.pcs}
+              </LabelValueGrid>
+            )}
           </FormCard>
         </div>
       </div>
