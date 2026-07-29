@@ -47,7 +47,6 @@ const FavoritePage = () => {
   };
 
   const { apiCartList } = useActiveCart({ currentUser });
-  console.log(apiCartList);
 
   async function handleSubmitCartItem(values: InitialShopValues) {
     const cartItem = {
