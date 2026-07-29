@@ -15,10 +15,10 @@ interface OrderItemContainerProps {
 }
 
 const OrderItemContainer = ({ product, children }: OrderItemContainerProps) => (
-  <article className="favorite-item">
-    <Img src={product.image} alt="" className="favorite-item-img" />
+  <article className="order-item">
+    <Img src={product.image} alt="" className="order-item-img" />
     <div>
-      <h2 className="favorite-item-title">{product.productName}</h2>
+      <h2 className="order-item-title">{product.productName}</h2>
       <ProductPrice price={product.price} discount={product.discount} />
       {children}
     </div>

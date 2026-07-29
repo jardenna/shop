@@ -11,7 +11,7 @@ interface OrderItemCardProps {
 
 const OrderItemCard = ({ order, language }: OrderItemCardProps) => (
   <OrderItemContainer product={order}>
-    <div className="favorite-item-info">
+    <div className="order-item-info">
       <LabelValueGrid text={language.color}>
         {translateKey(order.color, language)}
       </LabelValueGrid>

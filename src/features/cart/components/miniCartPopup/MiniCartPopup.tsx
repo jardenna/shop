@@ -13,9 +13,9 @@ const MiniCartPopup = () => {
 
   return (
     apiCartList && (
-      <ul className="favorite-list">
+      <ul className="mini-cart">
         {apiCartList.cartItems.map((order) => (
-          <li key={order.id} className="favorite-list-item">
+          <li key={order.id} className="mini-cart-item">
             <OrderItemCard order={order} language={language} />
           </li>
         ))}
