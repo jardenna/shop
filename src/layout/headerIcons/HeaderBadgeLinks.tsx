@@ -21,7 +21,7 @@ const HeaderBadgeLinks = ({
   itemUpdatedText,
   iconName,
 }: HeaderBadgeLinksProps) => (
-  <span className="position-relative">
+  <div className="position-relative">
     <Link to={linkTo} className="btn btn-ghost">
       <IconContent iconName={iconName} ariaLabel={ariaLabel} />
     </Link>
@@ -31,7 +31,7 @@ const HeaderBadgeLinks = ({
         ariaLabel={`${itemUpdatedText} ${count} ${itemText}`}
       />
     )}
-  </span>
+  </div>
 );
 
 export default HeaderBadgeLinks;
