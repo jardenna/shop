@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useFavorites } from '../components/favorites/useFavorites';
+import LabelValueGrid from '../components/labelValueGrid/LabelValueGrid.tsx';
 import { useMessagePopup } from '../components/messagePopup/useMessagePopup';
 import SkeletonCollection from '../components/skeleton/skeletonCollection/SkeletonCollection';
 import Panel from '../components/togglePanel/Panel';
@@ -109,6 +110,11 @@ const FavoritePage = () => {
                 <FavoriteCartItem order={order} language={language} />
               </li>
             ))}
+            <p>Hvis du køber for 875, 45 kr. mere er levering gratis</p>
+
+            <LabelValueGrid text="Pris i alt inkl. moms">
+              300,00 kr.
+            </LabelValueGrid>
           </ul>
         )}
         <Panel
