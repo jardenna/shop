@@ -1,10 +1,10 @@
-import { ProductPreview } from '../../../app/api/apiTypes/shopApiTypes';
+import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import Img from '../../../components/Img';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 import './_favorite-list.scss';
 
 interface FavoriteItemProps {
-  selectedProduct: ProductPreview;
+  selectedProduct: BaseProduct;
 }
 
 const FavoriteItem = ({ selectedProduct }: FavoriteItemProps) => (
