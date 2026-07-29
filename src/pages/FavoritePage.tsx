@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useFavorites } from '../components/favorites/useFavorites';
-import Img from '../components/Img';
-import LabelValueGrid from '../components/labelValueGrid/LabelValueGrid.tsx';
 import { useMessagePopup } from '../components/messagePopup/useMessagePopup';
 import SkeletonCollection from '../components/skeleton/skeletonCollection/SkeletonCollection';
 import Panel from '../components/togglePanel/Panel';
@@ -11,17 +9,16 @@ import { useTogglePanel } from '../components/togglePanel/useTogglePanel';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useAddToCartMutation } from '../features/cart/cartApiSlice';
 import { useActiveCart } from '../features/cart/useActiveCart.ts';
+import FavoriteCartItem from '../features/favorites/components/FavoriteCartItem.tsx';
 import FavoriteItem from '../features/favorites/components/FavoriteItem.tsx';
 import { useLanguage } from '../features/language/useLanguage';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import ProductCard from '../features/shop/components/ProductCard';
-import ProductPrice from '../features/shop/components/productPrice/ProductPrice';
 import CartForm, {
   InitialShopValues,
 } from '../features/shop/components/singleProduct/CartForm.tsx';
 import { ShopPath } from '../layout/nav/enums';
 import { handleApiError } from '../utils/handleApiError';
-import { translateKey } from '../utils/utils.ts';
 import './FavoritesPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
@@ -107,26 +104,9 @@ const FavoritePage = () => {
       >
         {openCartPopup && (
           <ul>
-            {apiCartList?.cartItems.map((item) => (
-              <li key={item.id}>
-                <article className="favorite-panel-product">
-                  <Img src={item.image} alt="" className="panel-product-img" />
-                  <div>
-                    <h2 className="panel-product-title">{item.productName}</h2>
-                    <ProductPrice price={item.price} discount={item.discount} />
-                    <div>
-                      <LabelValueGrid text={language.color}>
-                        {translateKey(item.color, language)}
-                      </LabelValueGrid>
-                      <LabelValueGrid text={language.size}>
-                        {item.size}
-                      </LabelValueGrid>
-                      <LabelValueGrid text={language.qty}>
-                        {item.qty}
-                      </LabelValueGrid>
-                    </div>
-                  </div>
-                </article>
+            {apiCartList?.cartItems.map((order) => (
+              <li key={order.id}>
+                <FavoriteCartItem order={order} language={language} />
               </li>
             ))}
           </ul>
