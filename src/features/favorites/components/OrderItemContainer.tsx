@@ -2,19 +2,19 @@ import { ReactNode } from 'react';
 import Img from '../../../components/Img';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 
-interface FavoriteItemData {
+interface OrderItemContainerData {
   discount: number;
   image: string;
   price: number;
   productName: string;
 }
 
-interface FavoriteItemProps {
-  product: FavoriteItemData;
+interface OrderItemContainerProps {
+  product: OrderItemContainerData;
   children?: ReactNode;
 }
 
-const FavoriteItem = ({ product, children }: FavoriteItemProps) => (
+const OrderItemContainer = ({ product, children }: OrderItemContainerProps) => (
   <article className="favorite-item">
     <Img src={product.image} alt="" className="favorite-item-img" />
     <div>
@@ -25,4 +25,4 @@ const FavoriteItem = ({ product, children }: FavoriteItemProps) => (
   </article>
 );
 
-export default FavoriteItem;
+export default OrderItemContainer;

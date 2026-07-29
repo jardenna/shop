@@ -1,7 +1,7 @@
 import { Order } from '../../../app/api/apiTypes/cartApiTypes';
 import LabelValueGrid from '../../../components/labelValueGrid/LabelValueGrid';
 import { translateKey } from '../../../utils/utils';
-import FavoriteItem from './FavoriteItem';
+import FavoriteItem from './OrderItemContainer';
 
 interface OrderItemCardProps {
   language: Record<string, string>;
