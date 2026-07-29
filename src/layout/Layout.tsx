@@ -12,6 +12,7 @@ import { useCurrency } from '../features/currency/useCurrency';
 import { useGetFavoritesQuery } from '../features/favorites/favoritesApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
 import { clearMessagePopups } from '../features/messagePopupSlice';
+import { closeMiniCart } from '../features/miniCartPopupSlice';
 import { useFormValidation } from '../hooks/useFormValidation';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import danishLang from '../locales/da.json';
@@ -23,15 +24,18 @@ import Header from './header/Header';
 import { AdminPath, ShopPath } from './nav/enums';
 
 const Layout = () => {
-  const navigate = useNavigate();
   const { pathname } = useLocation();
-  const pathInfo = getPathName(pathname);
-  const { language, switchLanguage, selectedLanguage } = useLanguage();
+  const navigate = useNavigate();
+
   const dispatch = useAppDispatch();
 
+  const pathInfo = getPathName(pathname);
+  const { language, switchLanguage, selectedLanguage } = useLanguage();
+
+  // Clear all popups whenever the user navigates
   useEffect(() => {
-    // Clear all popups whenever the user navigates
     dispatch(clearMessagePopups());
+    dispatch(closeMiniCart());
   }, [pathname, dispatch]);
 
   // Hooks

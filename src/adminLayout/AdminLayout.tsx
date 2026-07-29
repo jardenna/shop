@@ -23,8 +23,8 @@ const AdminLayout = () => {
 
   const dispatch = useAppDispatch();
 
+  // Clear all popups whenever the user navigates
   useEffect(() => {
-    // Clear all popups whenever the user navigates
     dispatch(clearMessagePopups());
   }, [pathname, dispatch]);
 
