@@ -138,7 +138,7 @@ const FavoritePage = () => {
         >
           {selectedProduct && (
             <section className="favorite-panel">
-              <FavoriteItem selectedProduct={selectedProduct} />
+              <FavoriteItem product={selectedProduct} />
               <CartForm
                 displaySizeList={selectedProduct.sizes}
                 isLoading={isAddCartItemLoading}
