@@ -62,10 +62,10 @@ export type ToggleFavoriteResponse = {
 
 export type ProductPreview = {
   brand: string;
+  categoryName: MainCategoryNames;
   colors: string[];
   countInStock: number;
   discount: number;
-  discountedPrice: number;
   id: string;
   image: string;
   price: number;
@@ -84,10 +84,6 @@ export interface ProductFormData extends BaseProductFormData {
   countInStock: number;
   id: string;
 }
-
-export type GetFavoritesResponse = ProductPreview & {
-  categoryName: MainCategoryNames;
-};
 
 // Profile
 export type PreferredFashion =
