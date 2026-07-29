@@ -37,5 +37,14 @@
     display: flex;
     align-items: center;
     gap: 4px;
+    justify-content: center;
+    padding: 12px;
+    border-radius: 4px;
+    background-color: $color-background;
+    margin-bottom: 8px;
+  }
+
+  .mini-cart-price-info {
+    padding-top: 12px;
   }
 }

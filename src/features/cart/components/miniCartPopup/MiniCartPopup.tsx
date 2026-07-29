@@ -1,6 +1,5 @@
 import { useRef } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
-import LabelValueGrid from '../../../../components/labelValueGrid/LabelValueGrid';
 import Portal from '../../../../components/Portal';
 import { useClickOutside } from '../../../../hooks/useClickOutside';
 import { useKeyPress } from '../../../../hooks/useKeyPress';
@@ -14,6 +13,7 @@ import {
 import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 import { useActiveCart } from '../../useActiveCart';
 import OrderItemCard from '../orderItemCard/OrderItemCard';
+import SummaryItem from '../SummaryItem';
 import './_mini-cart-popup.scss';
 
 const MiniCartPopup = () => {
@@ -44,25 +44,40 @@ const MiniCartPopup = () => {
 
   return (
     <Portal portalId="miniCard">
-      <section className="mini-cart message-popup-list">
+      <section className="mini-cart message-popup-list" ref={miniCartRef}>
         <h2 className="mini-cart-title">Din indkøbskurv</h2>
-        <ul className="mini-cart-list animate-top-right" ref={miniCartRef}>
+        <ul className="mini-cart-list animate-top-right">
           {cartItems.map((order) => (
             <li key={order.id} className="mini-cart-item">
               <OrderItemCard order={order} language={language} />
             </li>
           ))}
         </ul>
-        {summary.remainingForFreeShipping > 0 && (
-          <div className="mini-cart-info">
-            {language.buyForFreeShipping}
-            <ProductPrice price={summary.remainingForFreeShipping} />
-            {language.freeShippingSuffix}
+        <div className="mini-cart-price-info">
+          {summary.remainingForFreeShipping > 0 && (
+            <div className="mini-cart-info">
+              {language.buyForFreeShipping}
+              <ProductPrice price={summary.remainingForFreeShipping} />
+              {language.freeShippingSuffix}
+            </div>
+          )}
+
+          <div>
+            <SummaryItem
+              label={language.employeeDiscount}
+              price={summary.promoDiscount}
+              isDiscount
+            />
+            <SummaryItem
+              label={language.estimatedShipping}
+              price={summary.shippingPrice}
+            />
+            <SummaryItem
+              label={language.orderTotalInclVat}
+              price={summary.totalPrice}
+            />
           </div>
-        )}
-        <LabelValueGrid text={language.orderTotalInclVat}>
-          <ProductPrice price={summary.totalPrice} />
-        </LabelValueGrid>
+        </div>
       </section>
     </Portal>
   );

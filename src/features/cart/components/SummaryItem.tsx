@@ -8,7 +8,7 @@ interface SummaryItemProps {
 }
 
 const SummaryItem = ({
-  className,
+  className = '',
   label,
   price,
   isDiscount,
