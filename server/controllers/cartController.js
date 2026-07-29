@@ -375,18 +375,22 @@ const getGuestCartProducts = asyncHandler(async (req, res) => {
 // @method  Delete
 // @access  Privat
 const deleteCart = asyncHandler(async (req, res) => {
-  const result = await Cart.deleteOne({
+  const cart = await Cart.findOne({
     user: req.user._id,
   });
 
-  if (result.deletedCount === 0) {
+  if (!cart) {
     return res.status(404).json({
       message: t('cartNotFound', req.lang),
     });
   }
+
+  cart.cartItems = [];
+  await cart.save();
+
   res.status(200).json({
     success: true,
-    message: t('cartItemDeleted', req.lang),
+    message: t('cartDeleted', req.lang),
   });
 });
 
