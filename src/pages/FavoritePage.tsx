@@ -2,17 +2,16 @@ import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useFavorites } from '../components/favorites/useFavorites';
-import Img from '../components/Img';
 import { useMessagePopup } from '../components/messagePopup/useMessagePopup';
 import SkeletonCollection from '../components/skeleton/skeletonCollection/SkeletonCollection';
 import Panel from '../components/togglePanel/Panel';
 import { useTogglePanel } from '../components/togglePanel/useTogglePanel';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useAddToCartMutation } from '../features/cart/cartApiSlice';
+import OrderItemContainer from '../features/cart/components/orderItemCard/OrderItemContainer.tsx';
 import { useLanguage } from '../features/language/useLanguage';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import ProductCard from '../features/shop/components/ProductCard';
-import ProductPrice from '../features/shop/components/productPrice/ProductPrice';
 import CartForm, {
   InitialShopValues,
 } from '../features/shop/components/singleProduct/CartForm.tsx';
@@ -104,24 +103,7 @@ const FavoritePage = () => {
         >
           {selectedProduct && (
             <section className="favorite-panel">
-              <article className="favorite-panel-product">
-                <Img
-                  src={selectedProduct.image}
-                  alt=""
-                  className="panel-product-img"
-                />
-                <div>
-                  <h2 className="panel-product-title">
-                    {selectedProduct.productName}
-                  </h2>
-                  <ProductPrice
-                    price={selectedProduct.price}
-                    discount={selectedProduct.discount}
-                    discountedPrice={selectedProduct.discountedPrice}
-                  />
-                </div>
-              </article>
-
+              <OrderItemContainer product={selectedProduct} />
               <CartForm
                 displaySizeList={selectedProduct.sizes}
                 isLoading={isAddCartItemLoading}

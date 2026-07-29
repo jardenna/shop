@@ -1,0 +1,29 @@
+@use '../../../../scss/globals' as *;
+
+.order-item {
+  flex-grow: 1;
+  display: flex;
+  gap: 16px;
+
+  .order-item-img {
+    max-width: rem(120px);
+    height: rem(180px);
+  }
+
+  .order-item-title {
+    text-transform: uppercase;
+    font-size: rem(16px);
+  }
+
+  .product-price {
+    justify-content: start;
+    font-size: rem(20px);
+  }
+
+  .order-item-info {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+}

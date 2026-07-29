@@ -25,12 +25,18 @@ export const calculateCartSummary = (orderItems, promoDiscountPercent = 0) => {
   const totalPrice = roundPrice(subTotal - discountPrice);
   const promoDiscount = roundPrice(totalPrice * (promoDiscountPercent / 100));
 
+  const remainingForFreeShipping = Math.max(
+    0,
+    roundPrice(DISCOUNT_SHIPPING_PRICE - subTotal),
+  );
+
   return {
     subTotal: roundPrice(subTotal),
     discountPrice: roundPrice(discountPrice),
     taxPrice: roundPrice(taxPrice),
     shippingPrice,
-    totalPrice: totalPrice + shippingPrice - promoDiscount,
+    totalPrice: roundPrice(totalPrice + shippingPrice - promoDiscount),
     promoDiscount,
+    remainingForFreeShipping,
   };
 };

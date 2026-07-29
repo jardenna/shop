@@ -1,7 +1,9 @@
 import { Link } from 'react-router';
 import { UserResponse } from '../../../app/api/apiTypes/adminApiTypes';
-import { BaseShopProduct } from '../../../app/api/apiTypes/sharedApiTypes';
-import { ProductPreview } from '../../../app/api/apiTypes/shopApiTypes';
+import {
+  BaseProduct,
+  BaseShopProduct,
+} from '../../../app/api/apiTypes/sharedApiTypes';
 import Badge from '../../../components/badge/Badge';
 import Button from '../../../components/Button';
 import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
@@ -18,7 +20,7 @@ import SizeOverlay from './SizeOverlay';
 
 export type ProductCardProps = {
   linkTo: string;
-  product: ProductPreview;
+  product: BaseProduct;
   currentUser?: UserResponse | null;
   isOutOfStock?: boolean;
   productView?: string;

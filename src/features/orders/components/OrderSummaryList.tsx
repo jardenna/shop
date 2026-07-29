@@ -20,16 +20,14 @@ const OrderSummaryList = ({
         {language.orderSummary} [ {getCartQuantity(orderItems.cartItems)} ]
       </h2>
       <ul className="order-summary-list">
-        {orderItems.cartItems.map(({ id, image, productName, ...cartItem }) => (
-          <li key={id}>
+        {orderItems.cartItems.map((cartItem) => (
+          <li key={cartItem.id}>
             <OrderSummaryItem
-              src={image}
               cartItem={cartItem}
               language={language}
-              productName={productName}
-              ariaLabel={`${language.delete} ${productName}`}
+              ariaLabel={`${language.delete} ${cartItem.productName}`}
               onDeleteItem={() => {
-                deleteCartItem(id);
+                deleteCartItem(cartItem.id);
               }}
             />
           </li>

@@ -49,27 +49,31 @@ export type SubCategoryNames = (typeof subCategoryValues)[number];
 
 export type SortOrder = 'asc' | 'desc';
 
-export type BaseShopProduct = DefaultResponseType & {
+export type BaseProduct = {
   brand: string;
   categoryName: MainCategoryNames;
   colors: string[];
   countInStock: number;
-  description: string;
   discount: number;
-  discountedPrice: number;
   id: string;
   image: string;
-  images: string[];
-  material: string;
-  numReviews: number;
   price: number;
   productName: string;
-  productStatus: Status;
-  rating: number;
-  reviews: ReviewResponse[];
   sizes: Size[];
-  subCategoryName: SubCategoryNames;
 };
+
+export type BaseShopProduct = BaseProduct &
+  DefaultResponseType & {
+    description: string;
+    discountedPrice: number;
+    images: string[];
+    material: string;
+    numReviews: number;
+    productStatus: Status;
+    rating: number;
+    reviews: ReviewResponse[];
+    subCategoryName: SubCategoryNames;
+  };
 
 export type BaseProductParams = {
   page?: string;
@@ -99,6 +103,7 @@ export type BasePagination = {
 export interface Summary {
   discountPrice: number;
   promoDiscount: number;
+  remainingForFreeShipping: number;
   shippingPrice: number;
   subTotal: number;
   taxPrice: number;
