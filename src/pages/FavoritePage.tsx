@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { useAppDispatch, useAppSelector } from '../app/hooks.ts';
+import { useAppDispatch } from '../app/hooks.ts';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useFavorites } from '../components/favorites/useFavorites';
 import { useMessagePopup } from '../components/messagePopup/useMessagePopup';
@@ -11,10 +11,7 @@ import { useAuth } from '../features/auth/hooks/useAuth';
 import { useAddToCartMutation } from '../features/cart/cartApiSlice';
 import OrderItemContainer from '../features/cart/components/orderItemCard/OrderItemContainer.tsx';
 import { useLanguage } from '../features/language/useLanguage';
-import {
-  openMiniCart,
-  selectIsMiniCardOpen,
-} from '../features/miniCartPopupSlice.ts';
+import { openMiniCart } from '../features/miniCartPopupSlice.ts';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import ProductCard from '../features/shop/components/ProductCard';
 import CartForm, {
@@ -36,7 +33,7 @@ const FavoritePage = () => {
     useTogglePanel();
   const pageHeading = language.favorites;
   const [productId, setProductId] = useState<string | null>();
-  const isOpen = useAppSelector(selectIsMiniCardOpen);
+
   const [addCartItemApi, { isLoading: isAddCartItemLoading }] =
     useAddToCartMutation();
 
@@ -44,7 +41,6 @@ const FavoritePage = () => {
     setProductId(id);
     onTogglePanel();
   };
-  console.log(isOpen);
 
   async function handleSubmitCartItem(values: InitialShopValues) {
     const cartItem = {

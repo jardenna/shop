@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { useAppDispatch } from '../../../app/hooks';
-import { ShopPath } from '../../../layout/nav/enums';
 import { useCheckAuthQuery, useLogoutMutation } from '../authApiSlice';
 import { setUser } from '../authSlice';
+import { ShopPath } from '../../../layout/nav/enums';
 
 export const useAuth = () => {
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ export const useAuth = () => {
     if (logoutSuccess) {
       navigate(ShopPath.Root, { replace: true });
     }
-  }, [logoutSuccess, navigate]);
+  }, [logoutSuccess]);
 
   const isAuthReady = !isLoading;
   const currentUser = userProfile?.user ?? null;
