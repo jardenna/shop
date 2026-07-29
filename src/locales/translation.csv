@@ -223,6 +223,11 @@ image;Image;Foto
 imageRequired;Please insert image(s);Indsæt venligst billede(r)
 inactive;Inactive;Inaktiv
 inclVat;Incl. vat;Inkl. moms
+orderTotal;Total price;Pris i alt
+totalPrice;Total price;Samlet pris
+totalPrice;Total;I alt
+buyForFreeShipping;Buy for;Hvis du køber for
+freeShippingSuffix;more, shipping is free.;mere er levering gratis
 inStock;In stock;På lager
 invalidCartItemId;Invalid item ID.;Ugyldigt vareid.
 invalidColor;The selected color is no longer available;Den valgte farve er ikke længere tilgængelig
@@ -495,8 +500,6 @@ thereAre;There are;Der findes
 title;Title;Titel
 to;to;til
 today;Today;I dag
-totalPrice;Total price;Samlet pris
-totalPrice;Total;I alt
 totalProducts;Total products;Antal produkter
 translationKey;Translation key;Oversættelsesnøgle
 translationKeyHelpText;Enter the exact key used for translation in your CSV file;Skriv den præcise nøgle, som bruges til oversættelsen i din CSV-fil

@@ -20,11 +20,11 @@ const MiniCartPopup = () => {
           </li>
         ))}
         <div>
-          Hvis du køber for
+          {language.buyForFreeShipping}
           <ProductPrice price={apiCartList.summary.remainingForFreeShipping} />
-          mere er levering gratis
+          {language.freeShippingSuffix}
         </div>
-        <LabelValueGrid text="Pris i alt inkl. moms">
+        <LabelValueGrid text="orderTotal inclVat">
           <ProductPrice price={apiCartList.summary.totalPrice} />
         </LabelValueGrid>
       </ul>
