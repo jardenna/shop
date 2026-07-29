@@ -1,9 +1,9 @@
 import LabelValueGrid from '../../../../components/labelValueGrid/LabelValueGrid';
 import { useAuth } from '../../../auth/hooks/useAuth';
-import OrderItemCard from '../../../favorites/components/OrderItemCard';
 import { useLanguage } from '../../../language/useLanguage';
 import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 import { useActiveCart } from '../../useActiveCart';
+import OrderItemCard from '../orderItemCard/OrderItemCard';
 
 const MiniCartPopup = () => {
   const { language } = useLanguage();

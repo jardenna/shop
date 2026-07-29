@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
-import Img from '../../../components/Img';
-import ProductPrice from '../../shop/components/productPrice/ProductPrice';
+import Img from '../../../../components/Img';
+import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 
 interface OrderItemContainerData {
   discount: number;

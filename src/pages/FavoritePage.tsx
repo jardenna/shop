@@ -9,7 +9,7 @@ import { useTogglePanel } from '../components/togglePanel/useTogglePanel';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useAddToCartMutation } from '../features/cart/cartApiSlice';
 import MiniCartPopup from '../features/cart/components/miniCartPopup/MiniCartPopup.tsx';
-import OrderItemContainer from '../features/favorites/components/OrderItemContainer.tsx';
+import OrderItemContainer from '../features/cart/components/orderItemCard/OrderItemContainer.tsx';
 import { useLanguage } from '../features/language/useLanguage';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import ProductCard from '../features/shop/components/ProductCard';
