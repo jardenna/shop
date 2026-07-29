@@ -18,6 +18,7 @@ import { ProductQuantityMap } from '../../../cart/components/CartList';
 import { useActiveCart } from '../../../cart/useActiveCart';
 import { addCartItem, replaceCartItem } from '../../../cartSlice';
 import { useLanguage } from '../../../language/useLanguage';
+import { openMiniCart } from '../../../miniCartPopupSlice.ts';
 import { cartUtils, getTotalCartQuantity } from '../../cartUtils';
 import CartForm, { InitialShopValues } from './CartForm.tsx';
 import SingleProductPanel, { PopupData } from './SingleProductPanel';
@@ -87,6 +88,7 @@ const SingleProductPurchaseSection = ({
     if (currentUser && !apiCartList) {
       return;
     }
+
     const cartItem = {
       id: crypto.randomUUID(),
       productId: id,
@@ -142,6 +144,8 @@ const SingleProductPurchaseSection = ({
       default:
         break;
     }
+
+    dispatch(openMiniCart());
   }
 
   // SingleProductPanel handlers
@@ -186,6 +190,7 @@ const SingleProductPurchaseSection = ({
     },
     {},
   );
+
   const currentProductQuantity = quantityByProductId[id];
 
   return (
