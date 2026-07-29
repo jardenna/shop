@@ -30,7 +30,7 @@ export const cartApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.Carts],
     }),
-    deleteCart: builder.mutation<DefaultResponse, string>({
+    deleteCartItem: builder.mutation<DefaultResponse, string>({
       query: (cartItemId) => ({
         url: `${cartUrl}/${cartItemId}`,
         method: 'DELETE',
@@ -73,7 +73,7 @@ export const {
   useGetCartQuery,
   useReplaceCartMutation,
   useGetGuestCartQuery,
-  useDeleteCartMutation,
+  useDeleteCartItemMutation,
   useUpdateQtyMutation,
   useApplyPromoCodeMutation,
 } = cartApiSlice;

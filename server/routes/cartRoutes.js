@@ -2,7 +2,7 @@ import express from 'express';
 import {
   applyPromoCode,
   createCart,
-  deleteCart,
+  deleteCartItem,
   getCart,
   getGuestCartProducts,
   updateCart,
@@ -27,6 +27,6 @@ router.route('/:id').patch(languageMiddleware, authenticate, updateCart);
 router
   .route('/:id/quantity')
   .patch(languageMiddleware, authenticate, updateCartQuantity);
-router.route('/:id').delete(languageMiddleware, authenticate, deleteCart);
+router.route('/:id').delete(languageMiddleware, authenticate, deleteCartItem);
 
 export default router;

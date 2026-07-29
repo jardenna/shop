@@ -370,11 +370,11 @@ const getGuestCartProducts = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Delete cart
+// @desc    Delete cart item
 // @route   /api/cart/:id
 // @method  Delete
 // @access  Privat
-const deleteCart = asyncHandler(async (req, res) => {
+const deleteCartItem = asyncHandler(async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     return res.status(400).json({
       message: t('invalidCartItemId', req.lang),
@@ -502,7 +502,7 @@ const updateCartQuantity = asyncHandler(async (req, res) => {
 export {
   applyPromoCode,
   createCart,
-  deleteCart,
+  deleteCartItem,
   getCart,
   getGuestCartProducts,
   updateCart,
