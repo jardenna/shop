@@ -2,6 +2,7 @@ import express from 'express';
 import {
   applyPromoCode,
   createCart,
+  deleteCart,
   deleteCartItem,
   getCart,
   getGuestCartProducts,
@@ -19,6 +20,7 @@ router
 router
   .route('/')
   .post(languageMiddleware, authenticate, createCart)
+  .delete(languageMiddleware, authenticate, deleteCart)
   .get(languageMiddleware, authenticate, getCart);
 
 router.route('/guest').post(languageMiddleware, getGuestCartProducts);

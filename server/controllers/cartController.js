@@ -370,6 +370,26 @@ const getGuestCartProducts = asyncHandler(async (req, res) => {
   });
 });
 
+// @desc    Delete cart
+// @route   /api/cart
+// @method  Delete
+// @access  Privat
+const deleteCart = asyncHandler(async (req, res) => {
+  const result = await Cart.deleteOne({
+    user: req.user._id,
+  });
+
+  if (result.deletedCount === 0) {
+    return res.status(404).json({
+      message: t('cartNotFound', req.lang),
+    });
+  }
+  res.status(200).json({
+    success: true,
+    message: t('cartItemDeleted', req.lang),
+  });
+});
+
 // @desc    Delete cart item
 // @route   /api/cart/:id
 // @method  Delete
@@ -502,6 +522,7 @@ const updateCartQuantity = asyncHandler(async (req, res) => {
 export {
   applyPromoCode,
   createCart,
+  deleteCart,
   deleteCartItem,
   getCart,
   getGuestCartProducts,

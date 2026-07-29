@@ -50,7 +50,11 @@ const MiniCartPopup = () => {
         ))}
         <div>
           {language.buyForFreeShipping}
-          <ProductPrice price={apiCartList.summary.remainingForFreeShipping} />
+          {apiCartList.summary.remainingForFreeShipping && (
+            <ProductPrice
+              price={apiCartList.summary.remainingForFreeShipping}
+            />
+          )}
           {language.freeShippingSuffix}
         </div>
         <LabelValueGrid text="orderTotal inclVat">
