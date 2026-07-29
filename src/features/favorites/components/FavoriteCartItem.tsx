@@ -10,10 +10,10 @@ interface FavoriteCartItemProps {
 }
 
 const FavoriteCartItem = ({ order, language }: FavoriteCartItemProps) => (
-  <article className="favorite-panel-order">
-    <Img src={order.image} alt="" className="panel-product-img" />
+  <article className="favorite-item">
+    <Img src={order.image} alt="" className="favorite-item-img" />
     <div>
-      <h2 className="panel-product-title">{order.productName}</h2>
+      <h2 className="favorite-item-title">{order.productName}</h2>
       <ProductPrice price={order.price} discount={order.discount} />
       <div>
         <LabelValueGrid text={language.color}>
