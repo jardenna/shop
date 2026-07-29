@@ -35,7 +35,7 @@ export const calculateCartSummary = (orderItems, promoDiscountPercent = 0) => {
     discountPrice: roundPrice(discountPrice),
     taxPrice: roundPrice(taxPrice),
     shippingPrice,
-    totalPrice: totalPrice + shippingPrice - promoDiscount,
+    totalPrice: roundPrice(totalPrice + shippingPrice - promoDiscount),
     promoDiscount,
     remainingForFreeShipping,
   };
