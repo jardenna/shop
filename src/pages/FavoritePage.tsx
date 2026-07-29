@@ -11,6 +11,7 @@ import { useTogglePanel } from '../components/togglePanel/useTogglePanel';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useAddToCartMutation } from '../features/cart/cartApiSlice';
 import { useActiveCart } from '../features/cart/useActiveCart.ts';
+import FavoriteItem from '../features/favorites/components/FavoriteItem.tsx';
 import { useLanguage } from '../features/language/useLanguage';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import ProductCard from '../features/shop/components/ProductCard';
@@ -137,24 +138,7 @@ const FavoritePage = () => {
         >
           {selectedProduct && (
             <section className="favorite-panel">
-              <article className="favorite-panel-product">
-                <Img
-                  src={selectedProduct.image}
-                  alt=""
-                  className="panel-product-img"
-                />
-                <div>
-                  <h2 className="panel-product-title">
-                    {selectedProduct.productName}
-                  </h2>
-                  <ProductPrice
-                    price={selectedProduct.price}
-                    discount={selectedProduct.discount}
-                    discountedPrice={selectedProduct.discountedPrice}
-                  />
-                </div>
-              </article>
-
+              <FavoriteItem selectedProduct={selectedProduct} />
               <CartForm
                 displaySizeList={selectedProduct.sizes}
                 isLoading={isAddCartItemLoading}

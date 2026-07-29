@@ -1,0 +1,21 @@
+@use '../../../scss/globals' as *;
+
+.favorite-item {
+  flex-grow: 1;
+  display: flex;
+  gap: 16px;
+
+  .favorite-item-img {
+    max-width: rem(120px);
+    height: rem(180px);
+  }
+
+  .favorite-item-title {
+    text-transform: uppercase;
+  }
+
+  .product-price {
+    justify-content: start;
+    font-size: rem(20px);
+  }
+}
