@@ -2,6 +2,7 @@ import { Order } from '../../../../app/api/apiTypes/cartApiTypes';
 import LabelValueGrid from '../../../../components/labelValueGrid/LabelValueGrid';
 import { translateKey } from '../../../../utils/utils';
 import OrderItemContainer from './OrderItemContainer';
+import './_order-item-card.scss';
 
 interface OrderItemCardProps {
   language: Record<string, string>;

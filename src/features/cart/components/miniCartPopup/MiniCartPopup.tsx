@@ -4,6 +4,7 @@ import { useLanguage } from '../../../language/useLanguage';
 import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 import { useActiveCart } from '../../useActiveCart';
 import OrderItemCard from '../orderItemCard/OrderItemCard';
+import './_mini-cart-popup.scss';
 
 const MiniCartPopup = () => {
   const { language } = useLanguage();

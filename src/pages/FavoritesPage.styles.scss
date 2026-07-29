@@ -26,47 +26,4 @@
     display: flex;
     gap: 16px;
   }
-
-  .favorite-item {
-    flex-grow: 1;
-    display: flex;
-    gap: 16px;
-
-    .favorite-item-img {
-      max-width: rem(120px);
-      height: rem(180px);
-    }
-
-    .favorite-item-title {
-      text-transform: uppercase;
-      font-size: rem(16px);
-    }
-
-    .product-price {
-      justify-content: start;
-      font-size: rem(20px);
-    }
-  }
-
-  .favorite-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-
-    .favorite-list-item {
-      border-bottom: $border;
-      padding-bottom: 8px;
-    }
-
-    .product-price {
-      font-size: rem(16px);
-    }
-
-    .favorite-item-info {
-      margin-top: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-  }
 }
