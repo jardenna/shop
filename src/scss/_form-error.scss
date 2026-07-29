@@ -1,7 +1,7 @@
 @use './globals' as *;
 
 .error-message {
-  font-weight: bold;
+  font-family: $font-primary-semibold;
   color: $color-danger;
 
   @include max-size($small) {
