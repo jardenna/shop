@@ -102,10 +102,10 @@ const FavoritePage = () => {
         FallbackComponent={ErrorBoundaryFallback}
         onReset={onReset}
       >
-        {openCartPopup && (
-          <ul>
-            {apiCartList?.cartItems.map((order) => (
-              <li key={order.id}>
+        {openCartPopup && apiCartList && (
+          <ul className="favorite-list">
+            {apiCartList.cartItems.map((order) => (
+              <li key={order.id} className="favorite-list-item">
                 <FavoriteCartItem order={order} language={language} />
               </li>
             ))}

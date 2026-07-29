@@ -10,7 +10,7 @@ interface FavoriteCartItemProps {
 
 const FavoriteCartItem = ({ order, language }: FavoriteCartItemProps) => (
   <FavoriteItem product={order}>
-    <div>
+    <div className="favorite-item-info">
       <LabelValueGrid text={language.color}>
         {translateKey(order.color, language)}
       </LabelValueGrid>
