@@ -224,7 +224,7 @@ image;Image;Foto
 imageRequired;Please insert image(s);Indsæt venligst billede(r)
 inactive;Inactive;Inaktiv
 inclVat;Incl. vat;Inkl. moms
-orderTotal;Total price;Pris i alt
+orderTotalInclVat;Total price Incl. vat;Pris i alt Inkl. moms
 totalPriceTableHeader;Total price;Samlet pris
 totalPrice;Total;I alt
 buyForFreeShipping;Buy for;Hvis du køber for

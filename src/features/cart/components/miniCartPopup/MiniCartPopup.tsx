@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 import LabelValueGrid from '../../../../components/labelValueGrid/LabelValueGrid';
 import Portal from '../../../../components/Portal';
+import { useClickOutside } from '../../../../hooks/useClickOutside';
 import { useKeyPress } from '../../../../hooks/useKeyPress';
 import { KeyCode } from '../../../../types/enums';
 import { selectUser } from '../../../auth/authSlice';
@@ -14,7 +15,6 @@ import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 import { useActiveCart } from '../../useActiveCart';
 import OrderItemCard from '../orderItemCard/OrderItemCard';
 import './_mini-cart-popup.scss';
-import { useClickOutside } from '../../../../hooks/useClickOutside';
 
 const MiniCartPopup = () => {
   const dispatch = useAppDispatch();
@@ -40,27 +40,29 @@ const MiniCartPopup = () => {
     return null;
   }
 
+  const { cartItems, summary } = apiCartList;
+
   return (
     <Portal portalId="miniCard">
       <section className="mini-cart message-popup-list">
         <h2 className="mini-cart-title">Din indkøbskurv</h2>
         <ul className="mini-cart-list animate-top-right" ref={miniCartRef}>
-          {apiCartList.cartItems.map((order) => (
+          {cartItems.map((order) => (
             <li key={order.id} className="mini-cart-item">
               <OrderItemCard order={order} language={language} />
             </li>
           ))}
-          <div>
+        </ul>
+        {summary.remainingForFreeShipping > 0 && (
+          <div className="mini-cart-info">
             {language.buyForFreeShipping}
-            <ProductPrice
-              price={apiCartList.summary.remainingForFreeShipping}
-            />
+            <ProductPrice price={summary.remainingForFreeShipping} />
             {language.freeShippingSuffix}
           </div>
-          <LabelValueGrid text="orderTotal inclVat">
-            <ProductPrice price={apiCartList.summary.totalPrice} />
-          </LabelValueGrid>
-        </ul>
+        )}
+        <LabelValueGrid text={language.orderTotalInclVat}>
+          <ProductPrice price={summary.totalPrice} />
+        </LabelValueGrid>
       </section>
     </Portal>
   );
