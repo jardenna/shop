@@ -224,7 +224,7 @@ imageRequired;Please insert image(s);Indsæt venligst billede(r)
 inactive;Inactive;Inaktiv
 inclVat;Incl. vat;Inkl. moms
 orderTotal;Total price;Pris i alt
-totalPrice;Total price;Samlet pris
+totalPriceTableHeader;Total price;Samlet pris
 totalPrice;Total;I alt
 buyForFreeShipping;Buy for;Hvis du køber for
 freeShippingSuffix;more, shipping is free.;mere er levering gratis
