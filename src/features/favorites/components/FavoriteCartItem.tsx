@@ -1,8 +1,7 @@
 import { Order } from '../../../app/api/apiTypes/cartApiTypes';
-import Img from '../../../components/Img';
 import LabelValueGrid from '../../../components/labelValueGrid/LabelValueGrid';
 import { translateKey } from '../../../utils/utils';
-import ProductPrice from '../../shop/components/productPrice/ProductPrice';
+import FavoriteItem from './FavoriteItem';
 
 interface FavoriteCartItemProps {
   language: Record<string, string>;
@@ -10,20 +9,15 @@ interface FavoriteCartItemProps {
 }
 
 const FavoriteCartItem = ({ order, language }: FavoriteCartItemProps) => (
-  <article className="favorite-item">
-    <Img src={order.image} alt="" className="favorite-item-img" />
+  <FavoriteItem product={order}>
     <div>
-      <h2 className="favorite-item-title">{order.productName}</h2>
-      <ProductPrice price={order.price} discount={order.discount} />
-      <div>
-        <LabelValueGrid text={language.color}>
-          {translateKey(order.color, language)}
-        </LabelValueGrid>
-        <LabelValueGrid text={language.size}>{order.size}</LabelValueGrid>
-        <LabelValueGrid text={language.qty}>{order.qty}</LabelValueGrid>
-      </div>
+      <LabelValueGrid text={language.color}>
+        {translateKey(order.color, language)}
+      </LabelValueGrid>
+      <LabelValueGrid text={language.size}>{order.size}</LabelValueGrid>
+      <LabelValueGrid text={language.qty}>{order.qty}</LabelValueGrid>
     </div>
-  </article>
+  </FavoriteItem>
 );
 
 export default FavoriteCartItem;
