@@ -2,15 +2,13 @@ import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useFavorites } from '../components/favorites/useFavorites';
-import LabelValueGrid from '../components/labelValueGrid/LabelValueGrid.tsx';
 import { useMessagePopup } from '../components/messagePopup/useMessagePopup';
 import SkeletonCollection from '../components/skeleton/skeletonCollection/SkeletonCollection';
 import Panel from '../components/togglePanel/Panel';
 import { useTogglePanel } from '../components/togglePanel/useTogglePanel';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useAddToCartMutation } from '../features/cart/cartApiSlice';
-import { useActiveCart } from '../features/cart/useActiveCart.ts';
-import FavoriteCartItem from '../features/favorites/components/FavoriteCartItem.tsx';
+import MiniCartPopup from '../features/cart/components/miniCartPopup/MiniCartPopup.tsx';
 import FavoriteItem from '../features/favorites/components/FavoriteItem.tsx';
 import { useLanguage } from '../features/language/useLanguage';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
@@ -34,7 +32,6 @@ const FavoritePage = () => {
   const { onAddMessagePopup } = useMessagePopup();
 
   const [productId, setProductId] = useState<string | null>();
-  const [openCartPopup, setOpenCartPopup] = useState(false);
 
   const [addCartItemApi, { isLoading: isAddCartItemLoading }] =
     useAddToCartMutation();
@@ -42,10 +39,7 @@ const FavoritePage = () => {
   const handleOpenPanel = (id: string) => {
     setProductId(id);
     onTogglePanel();
-    setOpenCartPopup(true);
   };
-
-  const { apiCartList } = useActiveCart({ currentUser });
 
   async function handleSubmitCartItem(values: InitialShopValues) {
     const cartItem = {
@@ -103,20 +97,7 @@ const FavoritePage = () => {
         FallbackComponent={ErrorBoundaryFallback}
         onReset={onReset}
       >
-        {openCartPopup && apiCartList && (
-          <ul className="favorite-list">
-            {apiCartList.cartItems.map((order) => (
-              <li key={order.id} className="favorite-list-item">
-                <FavoriteCartItem order={order} language={language} />
-              </li>
-            ))}
-            <p>Hvis du køber for 875, 45 kr. mere er levering gratis</p>
-
-            <LabelValueGrid text="Pris i alt inkl. moms">
-              300,00 kr.
-            </LabelValueGrid>
-          </ul>
-        )}
+        <MiniCartPopup />
         <Panel
           isPanelShown={isPanelShown}
           panelRef={panelRef}
