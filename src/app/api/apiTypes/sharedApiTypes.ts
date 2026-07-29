@@ -103,6 +103,7 @@ export type BasePagination = {
 export interface Summary {
   discountPrice: number;
   promoDiscount: number;
+  remainingForFreeShipping: number;
   shippingPrice: number;
   subTotal: number;
   taxPrice: number;
