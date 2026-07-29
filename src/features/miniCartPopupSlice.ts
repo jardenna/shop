@@ -22,7 +22,7 @@ const miniCartPopupSlice = createSlice({
   },
 });
 
-export const selectIsMiniCardOpen = (state: RootState) =>
+export const selectIsMiniCartOpen = (state: RootState) =>
   state.miniCartIsOpen.isOpen;
 export const { openMiniCart, closeMiniCart } = miniCartPopupSlice.actions;
 
