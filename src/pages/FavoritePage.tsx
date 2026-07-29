@@ -8,7 +8,6 @@ import Panel from '../components/togglePanel/Panel';
 import { useTogglePanel } from '../components/togglePanel/useTogglePanel';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useAddToCartMutation } from '../features/cart/cartApiSlice';
-import MiniCartPopup from '../features/cart/components/miniCartPopup/MiniCartPopup.tsx';
 import OrderItemContainer from '../features/cart/components/orderItemCard/OrderItemContainer.tsx';
 import { useLanguage } from '../features/language/useLanguage';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
@@ -97,7 +96,6 @@ const FavoritePage = () => {
         FallbackComponent={ErrorBoundaryFallback}
         onReset={onReset}
       >
-        <MiniCartPopup />
         <Panel
           isPanelShown={isPanelShown}
           panelRef={panelRef}
