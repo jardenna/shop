@@ -14,9 +14,9 @@ import {
 } from '../features/cart/cartApiSlice';
 import CartInfo from '../features/cart/components/CartInfo';
 import CartList from '../features/cart/components/CartList';
-import CartSummary from '../features/cart/components/CartSummary';
 import PaymentMethodsList from '../features/cart/components/PaymentMethodsList';
 import PromoCodeForm from '../features/cart/components/promoCodeForm/PromoCodeForm';
+import SummaryList from '../features/cart/components/SummaryList';
 import { useActiveCart } from '../features/cart/useActiveCart';
 import { deleteGuestCartItem, updateGuestCartQty } from '../features/cartSlice';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
@@ -137,7 +137,7 @@ const ShoppingCartPage = () => {
             onReset={() => refetchApiCartList}
           >
             {apiCartList && (
-              <CartSummary
+              <SummaryList
                 summary={apiCartList.summary}
                 language={language}
                 promoDiscount={apiCartList.discount}

@@ -3,17 +3,17 @@ import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 import { createSummaryItems } from '../../utils/createSummaryItems';
 import './cartSummary.styles.scss';
 
-interface CartSummaryProps {
+interface SummaryListProps {
   language: Record<string, string>;
   promoDiscount: Discount;
   summary: Summary;
 }
 
-const CartSummary = ({
+const SummaryList = ({
   summary,
   language,
   promoDiscount,
-}: CartSummaryProps) => {
+}: SummaryListProps) => {
   const summaryItems = createSummaryItems({
     summary,
     discount: promoDiscount,
@@ -34,4 +34,4 @@ const CartSummary = ({
   );
 };
 
-export default CartSummary;
+export default SummaryList;
