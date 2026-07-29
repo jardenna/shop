@@ -1,9 +1,25 @@
 @use '../../../../scss/globals' as *;
 
 .mini-cart {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  padding: 16px;
+  background-color: $color-white;
+  box-shadow: $box-shadow;
+
+  .order-item {
+    align-items: center;
+  }
+
+  .mini-cart-title {
+    padding-bottom: 8px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .mini-cart-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
 
   .mini-cart-item {
     border-bottom: $border;
