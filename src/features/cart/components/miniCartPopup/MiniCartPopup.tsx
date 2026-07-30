@@ -3,7 +3,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
 import Portal from '../../../../components/Portal';
-import { useMyTransition } from '../../../../components/transition/useTransition';
+import { useAnimatedMount } from '../../../../components/transition/useAnimatedMount';
 import { useClickOutside } from '../../../../hooks/useClickOutside';
 import { useKeyPress } from '../../../../hooks/useKeyPress';
 import { useScrollLock } from '../../../../hooks/useScrollLock';
@@ -29,7 +29,7 @@ const MiniCartPopup = () => {
     currentUser,
   });
   const isMiniCartOpen = useAppSelector(selectIsMiniCartOpen);
-  const { shouldRender, transitionState } = useMyTransition({
+  const { shouldRender, transitionState } = useAnimatedMount({
     isOpen: isMiniCartOpen,
     duration: 300,
   });
