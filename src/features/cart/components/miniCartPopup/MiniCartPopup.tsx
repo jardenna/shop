@@ -15,6 +15,7 @@ import { useActiveCart } from '../../useActiveCart';
 import OrderItemCard from '../orderItemCard/OrderItemCard';
 import SummaryItem from '../SummaryItem';
 import './_mini-cart-popup.scss';
+import { useScrollLock } from '../../../../hooks/useScrollLock';
 
 const MiniCartPopup = () => {
   const dispatch = useAppDispatch();
@@ -31,6 +32,7 @@ const MiniCartPopup = () => {
   };
 
   useKeyPress(handleCloseMiniCart, [KeyCode.Esc]);
+  useScrollLock(isMiniCartOpen);
 
   useClickOutside(miniCartRef, () => {
     handleCloseMiniCart();
