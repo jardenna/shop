@@ -31,7 +31,7 @@ const FavoriteHeart = ({ id, className = '' }: FavoriteHeartProps) => {
         FallbackComponent={ErrorBoundaryFallback}
         onReset={onReset}
       >
-        <label htmlFor={id}>
+        <label htmlFor={id} className="favorite-label">
           <Icon
             iconName={IconName.Heart}
             className={`heart-icon ${animate ? 'animate' : ''}`}
