@@ -242,6 +242,10 @@ invalidPaymentMethod;The selected payment method is invalid.;Den valgte betaling
 invalidUserData;Invalid user data;Ugyldig bruger data
 item;item;vare
 items;items;varer
+orderNumber;Order number;Ordrenummer
+orderSummary;Order summary;Ordreoversigt
+paymentMethod;Payment method;Betalingsmetode
+trackYourOrder;Track your order;Track din ordre
 itemsUpdated;Items updated to;Varer opdateret til
 keep;Keep;Behold
 keepBoth;Keep both;Behold begge
@@ -332,7 +336,10 @@ of;of;af
 onlyAdminsAssignRole;Only admins can assign roles;Kun administratorer kan tildele roller
 onlyFourAddresses;You may have up to 4 addresses;Du kan højst have 4 adresser
 orange;Orange;Orange
-order;Ordre;Order
+order;Order;Ordre
+orderConfirmationTitle;Thank you for your order;Tak for din ordre
+orderConfirmationDescription;Your order has been successfully placed and is now being prepared.;Din ordre er gennemført og bliver nu gjort klar.
+orderConfirmationProcessing;We'll process it within 24 hours on business days and send you an email with tracking details once it ships. In the meantime, you can track your order below.;Vi behandler din ordre inden for 24 timer på hverdage og sender dig en e-mail med sporingsoplysninger, så snart den er afsendt. Indtil da kan du følge din ordre nedenfor.
 orderAllreadyDelivered;Order is already delivered;Ordren er allerede leveret
 orderAllreadyPaid;Order is already paid;Ordren er allerede betalt
 orderAltText;Young boy in black jeans and a white T-shirt layered with a blue-checkered shirt, looking expectant.;Ung dreng i sorte jeans og hvid T-shirt kombineret med en blåternet skjorte, ser forventningsfuld ud.
