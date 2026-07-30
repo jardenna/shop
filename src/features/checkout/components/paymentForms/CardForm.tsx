@@ -12,6 +12,7 @@ import { useFormValidation } from '../../../../hooks/useFormValidation';
 import { ChangeInputType, InputType } from '../../../../types/types';
 import { handleApiError } from '../../../../utils/handleApiError';
 import { validatePayment } from '../../../../utils/validation/validatePayment';
+import { useDeleteCartMutation } from '../../../cart/cartApiSlice';
 import {
   useCreateOrderMutation,
   usePayOrderMutation,
@@ -53,6 +54,7 @@ const CardForm = ({
 
   const [createOrder] = useCreateOrderMutation();
   const [payOrder] = usePayOrderMutation();
+  const [deleteCart] = useDeleteCartMutation();
 
   const orderItems = checkout.cartItems.map(
     ({ productId, qty, color, size }) => ({
@@ -113,6 +115,8 @@ const CardForm = ({
         method: paymentMethod,
         ...values,
       }).unwrap();
+
+      await deleteCart().unwrap();
 
       onAddMessagePopup({
         message: language.orderPlaced,
