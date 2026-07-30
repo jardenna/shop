@@ -1,16 +1,56 @@
 @use '../../../../scss/globals' as *;
 
 .mini-cart {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  padding: 16px;
+  background-color: $color-white;
+  box-shadow: $box-shadow;
+
+  .mini-cart-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 400px;
+    overflow: auto;
+  }
+
+  .order-item {
+    align-items: center;
+  }
+
+  .mini-cart-title {
+    padding-bottom: 8px;
+    display: flex;
+    justify-content: center;
+  }
 
   .mini-cart-item {
     border-bottom: $border;
     padding-bottom: 8px;
+    padding-right: 8px;
   }
 
   .product-price {
     font-size: rem(16px);
+  }
+
+  .mini-cart-info {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    justify-content: center;
+    padding: 12px;
+    border-radius: 4px;
+    background-color: $color-background;
+    margin-bottom: 8px;
+  }
+
+  .mini-cart-price-info {
+    padding-top: 12px;
+  }
+
+  .mini-cart-summary-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
   }
 }

@@ -7,6 +7,7 @@ import languageReducer from '../features/language/languageSlice';
 import messagePopupReducer, {
   addMessagePopup,
 } from '../features/messagePopupSlice';
+import miniCartReducer from '../features/miniCartPopupSlice';
 import modalSlice from '../features/modalSlice';
 import apiSlice from './api/apiSlice';
 import { currencyApiSlice } from './api/currencyApiSlice';
@@ -44,6 +45,7 @@ export const store = configureStore({
     messagePopup: messagePopupReducer,
     language: languageReducer,
     modal: modalSlice,
+    miniCartIsOpen: miniCartReducer,
     cartList: cartSlice,
   },
   middleware: (getDefaultMiddleware) =>

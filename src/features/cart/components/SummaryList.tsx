@@ -1,19 +1,19 @@
 import { Discount, Summary } from '../../../app/api/apiTypes/sharedApiTypes';
-import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 import { createSummaryItems } from '../../utils/createSummaryItems';
 import './cartSummary.styles.scss';
+import SummaryItem from './SummaryItem';
 
-interface CartSummaryProps {
+interface SummaryListProps {
   language: Record<string, string>;
   promoDiscount: Discount;
   summary: Summary;
 }
 
-const CartSummary = ({
+const SummaryList = ({
   summary,
   language,
   promoDiscount,
-}: CartSummaryProps) => {
+}: SummaryListProps) => {
   const summaryItems = createSummaryItems({
     summary,
     discount: promoDiscount,
@@ -23,15 +23,16 @@ const CartSummary = ({
   return (
     <section className="summary-list">
       {summaryItems.map(({ label, price, className, isDiscount }) => (
-        <div key={label} className={`summary-item ${className ?? ''}`}>
-          <span>{label}</span>
-          <span className="summary-info">
-            <ProductPrice price={price} isNegativeNumber={isDiscount} />
-          </span>
-        </div>
+        <SummaryItem
+          key={label}
+          className={className}
+          isDiscount={isDiscount}
+          label={label}
+          price={price}
+        />
       ))}
     </section>
   );
 };
 
-export default CartSummary;
+export default SummaryList;

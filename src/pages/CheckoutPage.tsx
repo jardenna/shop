@@ -3,7 +3,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import SkeletonCheckoutPage from '../components/skeleton/checkoutpage/SkeletonCheckoutPage';
 import { useAuth } from '../features/auth/hooks/useAuth';
-import CartSummary from '../features/cart/components/CartSummary';
+import SummaryList from '../features/cart/components/SummaryList';
 import { useGetCheckoutQuery } from '../features/checkout/checkoutApiSlice';
 import Payment from '../features/checkout/components/Payment';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
@@ -77,7 +77,7 @@ const CheckoutPage = () => {
                 language={language}
                 deleteCartItem={deleteCartItem}
               />
-              <CartSummary
+              <SummaryList
                 summary={checkout.summary}
                 language={language}
                 promoDiscount={checkout.discount}

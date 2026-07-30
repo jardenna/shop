@@ -69,6 +69,7 @@ browseImages;Browse images;Tilføj produkt billeder
 calendar;Calendar;Kalender
 cancel;Cancel;Annuller
 care;Care;Vaskeanvisning
+cartDeleted;Cart has been emptied.;Kurven er blevet tømt.
 cartIsEmpty;Cart is empty;Kurven er tom
 cartItemDeleted;Item deleted;Vare blev slettet
 cartItemNotFound;This item is no longer in your shopping cart;Denne vare er ikke længere i din indkøbskurv
@@ -163,7 +164,7 @@ email;Email;E-mail
 employee;Employee;Ansat
 error;Error;Fejl
 errorAltText;A really guilty emoji.;En meget skyldig emoji.
-estimatedShipping;Estimated shipping;Anslået leveringsgebyr
+estimatedShipping;Estimated shipping;Anslået leveringspris
 expanded;Expanded;Udvidet
 expandMenu;Expand menu;Udvid menu
 eye;Eye;Øje
@@ -223,7 +224,7 @@ image;Image;Foto
 imageRequired;Please insert image(s);Indsæt venligst billede(r)
 inactive;Inactive;Inaktiv
 inclVat;Incl. vat;Inkl. moms
-orderTotal;Total price;Pris i alt
+orderTotalInclVat;Total price Incl. vat;Pris i alt Inkl. moms
 totalPriceTableHeader;Total price;Samlet pris
 totalPrice;Total;I alt
 buyForFreeShipping;Buy for;Hvis du køber for

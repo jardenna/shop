@@ -371,10 +371,34 @@ const getGuestCartProducts = asyncHandler(async (req, res) => {
 });
 
 // @desc    Delete cart
-// @route   /api/cart/:id
+// @route   /api/cart
 // @method  Delete
 // @access  Privat
 const deleteCart = asyncHandler(async (req, res) => {
+  const cart = await Cart.findOne({
+    user: req.user._id,
+  });
+
+  if (!cart) {
+    return res.status(404).json({
+      message: t('cartNotFound', req.lang),
+    });
+  }
+
+  cart.cartItems = [];
+  await cart.save();
+
+  res.status(200).json({
+    success: true,
+    message: t('cartDeleted', req.lang),
+  });
+});
+
+// @desc    Delete cart item
+// @route   /api/cart/:id
+// @method  Delete
+// @access  Privat
+const deleteCartItem = asyncHandler(async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     return res.status(400).json({
       message: t('invalidCartItemId', req.lang),
@@ -503,6 +527,7 @@ export {
   applyPromoCode,
   createCart,
   deleteCart,
+  deleteCartItem,
   getCart,
   getGuestCartProducts,
   updateCart,

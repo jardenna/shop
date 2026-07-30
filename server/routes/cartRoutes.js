@@ -3,6 +3,7 @@ import {
   applyPromoCode,
   createCart,
   deleteCart,
+  deleteCartItem,
   getCart,
   getGuestCartProducts,
   updateCart,
@@ -19,6 +20,7 @@ router
 router
   .route('/')
   .post(languageMiddleware, authenticate, createCart)
+  .delete(languageMiddleware, authenticate, deleteCart)
   .get(languageMiddleware, authenticate, getCart);
 
 router.route('/guest').post(languageMiddleware, getGuestCartProducts);
@@ -27,6 +29,6 @@ router.route('/:id').patch(languageMiddleware, authenticate, updateCart);
 router
   .route('/:id/quantity')
   .patch(languageMiddleware, authenticate, updateCartQuantity);
-router.route('/:id').delete(languageMiddleware, authenticate, deleteCart);
+router.route('/:id').delete(languageMiddleware, authenticate, deleteCartItem);
 
 export default router;

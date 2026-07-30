@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
+import { useAppDispatch } from '../app/hooks.ts';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useFavorites } from '../components/favorites/useFavorites';
 import { useMessagePopup } from '../components/messagePopup/useMessagePopup';
@@ -10,6 +11,7 @@ import { useAuth } from '../features/auth/hooks/useAuth';
 import { useAddToCartMutation } from '../features/cart/cartApiSlice';
 import OrderItemContainer from '../features/cart/components/orderItemCard/OrderItemContainer.tsx';
 import { useLanguage } from '../features/language/useLanguage';
+import { openMiniCart } from '../features/miniCartPopupSlice.ts';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import ProductCard from '../features/shop/components/ProductCard';
 import CartForm, {
@@ -23,13 +25,13 @@ import MainPageContainer from './pageContainer/MainPageContainer';
 const FavoritePage = () => {
   const { language } = useLanguage();
   const { currentUser } = useAuth();
+  const { onAddMessagePopup } = useMessagePopup();
+  const dispatch = useAppDispatch();
   const { favorites, isLoading, onReset, isError } = useFavorites({});
   const sortedFavorites = favorites ? [...favorites].reverse() : [];
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
     useTogglePanel();
   const pageHeading = language.favorites;
-  const { onAddMessagePopup } = useMessagePopup();
-
   const [productId, setProductId] = useState<string | null>();
 
   const [addCartItemApi, { isLoading: isAddCartItemLoading }] =
@@ -51,8 +53,8 @@ const FavoritePage = () => {
 
     try {
       await addCartItemApi(cartItem).unwrap();
-
       onTogglePanel();
+      dispatch(openMiniCart());
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
     }

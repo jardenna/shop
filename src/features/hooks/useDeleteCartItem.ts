@@ -1,11 +1,11 @@
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import { handleApiError } from '../../utils/handleApiError';
-import { useDeleteCartMutation } from '../cart/cartApiSlice';
+import { useDeleteCartItemMutation } from '../cart/cartApiSlice';
 import { useLanguage } from '../language/useLanguage';
 
 export const useDeleteCartItem = () => {
   const { language } = useLanguage();
-  const [deleteCartItemMutation] = useDeleteCartMutation();
+  const [deleteCartItemMutation] = useDeleteCartItemMutation();
   const { onAddMessagePopup } = useMessagePopup();
 
   const deleteCartItem = async (cartItemId: string) => {
