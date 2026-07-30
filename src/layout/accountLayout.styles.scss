@@ -38,11 +38,20 @@
   .account-page-content {
     background-color: $color-background;
     padding: 42px;
-    min-height: rem(400px);
+
+    @include max-size($small) {
+      padding: 12px;
+      padding-block: 20px;
+      margin-top: 20px;
+    }
   }
 
   .account-img-container {
     flex: 1;
+
+    @include max-size($small) {
+      display: none;
+    }
 
     img {
       object-position: top;
