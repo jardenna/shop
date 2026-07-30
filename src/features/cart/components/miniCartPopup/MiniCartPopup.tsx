@@ -3,6 +3,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
 import Portal from '../../../../components/Portal';
+import { useMyTransition } from '../../../../components/transition/useTransition';
 import { useClickOutside } from '../../../../hooks/useClickOutside';
 import { useKeyPress } from '../../../../hooks/useKeyPress';
 import { useScrollLock } from '../../../../hooks/useScrollLock';
@@ -28,6 +29,10 @@ const MiniCartPopup = () => {
     currentUser,
   });
   const isMiniCartOpen = useAppSelector(selectIsMiniCartOpen);
+  const { shouldRender, transitionState } = useMyTransition({
+    isOpen: isMiniCartOpen,
+    duration: 300,
+  });
 
   const miniCartRef = useRef<HTMLUListElement>(null);
 
@@ -42,10 +47,9 @@ const MiniCartPopup = () => {
     handleCloseMiniCart();
   }, [miniCartRef]);
 
-  if (!apiCartList || !isMiniCartOpen) {
+  if (!apiCartList || !shouldRender) {
     return null;
   }
-
   const { cartItems, summary } = apiCartList;
 
   return (
@@ -54,7 +58,7 @@ const MiniCartPopup = () => {
         FallbackComponent={ErrorBoundaryFallback}
         onReset={() => refetchApiCartList()}
       >
-        <section className="mini-cart message-popup-list" ref={miniCartRef}>
+        <section className={`mini-cart ${transitionState}`} ref={miniCartRef}>
           <h2 className="mini-cart-title">Din indkøbskurv</h2>
           <ul className="mini-cart-list animate-top-right">
             {cartItems.map((order) => (
