@@ -1,8 +1,11 @@
 import { useRef } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
+import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
 import Portal from '../../../../components/Portal';
 import { useClickOutside } from '../../../../hooks/useClickOutside';
 import { useKeyPress } from '../../../../hooks/useKeyPress';
+import { useScrollLock } from '../../../../hooks/useScrollLock';
 import { KeyCode } from '../../../../types/enums';
 import { selectUser } from '../../../auth/authSlice';
 import { useLanguage } from '../../../language/useLanguage';
@@ -15,14 +18,15 @@ import { useActiveCart } from '../../useActiveCart';
 import OrderItemCard from '../orderItemCard/OrderItemCard';
 import SummaryItem from '../SummaryItem';
 import './_mini-cart-popup.scss';
-import { useScrollLock } from '../../../../hooks/useScrollLock';
 
 const MiniCartPopup = () => {
   const dispatch = useAppDispatch();
   const loggedInUser = useAppSelector(selectUser);
   const { language } = useLanguage();
   const currentUser = loggedInUser?.user ?? null;
-  const { apiCartList } = useActiveCart({ currentUser });
+  const { apiCartList, refetchApiCartList } = useActiveCart({
+    currentUser,
+  });
   const isMiniCartOpen = useAppSelector(selectIsMiniCartOpen);
 
   const miniCartRef = useRef<HTMLUListElement>(null);
@@ -46,41 +50,46 @@ const MiniCartPopup = () => {
 
   return (
     <Portal portalId="miniCard">
-      <section className="mini-cart message-popup-list" ref={miniCartRef}>
-        <h2 className="mini-cart-title">Din indkøbskurv</h2>
-        <ul className="mini-cart-list animate-top-right">
-          {cartItems.map((order) => (
-            <li key={order.id} className="mini-cart-item">
-              <OrderItemCard order={order} language={language} />
-            </li>
-          ))}
-        </ul>
-        <div className="mini-cart-price-info">
-          {summary.remainingForFreeShipping > 0 && (
-            <div className="mini-cart-info">
-              {language.buyForFreeShipping}
-              <ProductPrice price={summary.remainingForFreeShipping} />
-              {language.freeShippingSuffix}
-            </div>
-          )}
+      <ErrorBoundary
+        FallbackComponent={ErrorBoundaryFallback}
+        onReset={() => refetchApiCartList()}
+      >
+        <section className="mini-cart message-popup-list" ref={miniCartRef}>
+          <h2 className="mini-cart-title">Din indkøbskurv</h2>
+          <ul className="mini-cart-list animate-top-right">
+            {cartItems.map((order) => (
+              <li key={order.id} className="mini-cart-item">
+                <OrderItemCard order={order} language={language} />
+              </li>
+            ))}
+          </ul>
+          <div className="mini-cart-price-info">
+            {summary.remainingForFreeShipping > 0 && (
+              <div className="mini-cart-info">
+                {language.buyForFreeShipping}
+                <ProductPrice price={summary.remainingForFreeShipping} />
+                {language.freeShippingSuffix}
+              </div>
+            )}
 
-          <div className="mini-cart-summary-list">
-            <SummaryItem
-              label={language.employeeDiscount}
-              price={summary.promoDiscount}
-              isDiscount
-            />
-            <SummaryItem
-              label={language.estimatedShipping}
-              price={summary.shippingPrice}
-            />
-            <SummaryItem
-              label={language.orderTotalInclVat}
-              price={summary.totalPrice}
-            />
+            <div className="mini-cart-summary-list">
+              <SummaryItem
+                label={language.employeeDiscount}
+                price={summary.promoDiscount}
+                isDiscount
+              />
+              <SummaryItem
+                label={language.estimatedShipping}
+                price={summary.shippingPrice}
+              />
+              <SummaryItem
+                label={language.orderTotalInclVat}
+                price={summary.totalPrice}
+              />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </ErrorBoundary>
     </Portal>
   );
 };
