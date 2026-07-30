@@ -59,15 +59,15 @@ const MiniCartPopup = () => {
         onReset={() => refetchApiCartList()}
       >
         <section className={`mini-cart ${transitionState}`} ref={miniCartRef}>
-          <h2 className="mini-cart-title">Din indkøbskurv</h2>
-          <ul className="mini-cart-list animate-top-right">
+          <h2 className="mini-cart-title">{language.myBag}</h2>
+          <ul className="mini-cart-list">
             {cartItems.map((order) => (
               <li key={order.id} className="mini-cart-item">
                 <OrderItemCard order={order} language={language} />
               </li>
             ))}
           </ul>
-          <div className="mini-cart-price-info">
+          <article className="mini-cart-price-info">
             {summary.remainingForFreeShipping > 0 && (
               <div className="mini-cart-info">
                 {language.buyForFreeShipping}
@@ -91,7 +91,7 @@ const MiniCartPopup = () => {
                 price={summary.totalPrice}
               />
             </div>
-          </div>
+          </article>
         </section>
       </ErrorBoundary>
     </Portal>
