@@ -2,6 +2,7 @@ import { useId } from 'react';
 import { Outlet, useLocation } from 'react-router';
 import Picture from '../components/Picture';
 import { useLanguage } from '../features/language/useLanguage';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 import { getPathName, titleToCamelCase } from '../utils/utils';
 import './accountLayout.styles.scss';
 import MetaTags from './MetaTags';
@@ -9,6 +10,7 @@ import NavContainer from './nav/NavContainer';
 import { accountNavList } from './nav/navLists';
 
 const AccountLayout = () => {
+  const adminLayoutId = useId();
   const { pathname } = useLocation();
   const { language } = useLanguage();
 
@@ -24,7 +26,8 @@ const AccountLayout = () => {
     addresses: 'addressAltText',
   };
   const altText = altTextMap[imgName];
-  const adminLayoutId = useId();
+
+  const { isMobileSize } = useMediaQuery();
 
   return (
     <>
@@ -42,13 +45,15 @@ const AccountLayout = () => {
             <Outlet />
           </section>
         </section>
-        <div className="account-img-container">
-          <Picture
-            src={`${src}.jpg`}
-            srcSet={`${src}.avif`}
-            alt={language[altText]}
-          />
-        </div>
+        {!isMobileSize && (
+          <div className="account-img-container">
+            <Picture
+              src={`${src}.jpg`}
+              srcSet={`${src}.avif`}
+              alt={language[altText]}
+            />
+          </div>
+        )}
       </div>
     </>
   );

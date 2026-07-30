@@ -49,10 +49,6 @@
   .account-img-container {
     flex: 1;
 
-    @include max-size($small) {
-      display: none;
-    }
-
     img {
       object-position: top;
       height: 100%;
