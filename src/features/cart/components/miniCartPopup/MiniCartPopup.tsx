@@ -58,7 +58,10 @@ const MiniCartPopup = () => {
         FallbackComponent={ErrorBoundaryFallback}
         onReset={() => refetchApiCartList()}
       >
-        <section className={`mini-cart ${transitionState}`} ref={miniCartRef}>
+        <section
+          className={`mini-cart transition ${transitionState}`}
+          ref={miniCartRef}
+        >
           <h2 className="mini-cart-title">{language.myBag}</h2>
           <ul className="mini-cart-list">
             {cartItems.map((order) => (

@@ -2,15 +2,17 @@ import { useEffect, useState } from 'react';
 
 export type TransitionState = 'unmounted' | 'enter' | 'entered' | 'exit';
 
-interface useAnimatedMountProps {
+interface UseAnimatedMountProps {
   isOpen: boolean;
   duration?: number;
+  onEntered?: () => void;
+  onExited?: () => void;
 }
 
 export const useAnimatedMount = ({
   isOpen,
   duration = 300,
-}: useAnimatedMountProps) => {
+}: UseAnimatedMountProps) => {
   const [shouldRender, setShouldRender] = useState(isOpen);
   const [transitionState, setTransitionState] = useState<TransitionState>(
     isOpen ? 'entered' : 'unmounted',

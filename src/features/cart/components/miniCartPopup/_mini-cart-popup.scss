@@ -11,28 +11,21 @@
   display: flex;
   gap: 4px;
   flex-direction: column;
-  transition:
-    transform 300ms ease,
-    opacity 300ms ease;
+  padding: 16px;
+  background-color: $color-white;
+  box-shadow: $box-shadow;
 
   &.enter {
     transform: translateX(100%);
-    opacity: 0;
   }
 
   &.entered {
     transform: translateX(0);
-    opacity: 1;
   }
 
   &.exit {
     transform: translateX(100%);
-    opacity: 0;
   }
-
-  padding: 16px;
-  background-color: $color-white;
-  box-shadow: $box-shadow;
 
   .mini-cart-list {
     display: flex;
