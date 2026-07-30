@@ -41,7 +41,7 @@ const MiniCartPopup = () => {
   };
 
   useKeyPress(handleCloseMiniCart, [KeyCode.Esc]);
-  useScrollLock(isMiniCartOpen);
+  useScrollLock(shouldRender);
 
   useClickOutside(miniCartRef, () => {
     handleCloseMiniCart();
