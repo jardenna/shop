@@ -1,9 +1,31 @@
 @use '../../../../scss/globals' as *;
 
 .mini-cart {
+  position: fixed;
+  width: fit-content;
+  height: fit-content;
+  top: 16px;
+  right: 16px;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  gap: 4px;
+  flex-direction: column;
   padding: 16px;
   background-color: $color-white;
   box-shadow: $box-shadow;
+
+  &.enter {
+    transform: translateX(100%);
+  }
+
+  &.entered {
+    transform: translateX(0);
+  }
+
+  &.exit {
+    transform: translateX(100%);
+  }
 
   .mini-cart-list {
     display: flex;

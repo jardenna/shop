@@ -3,6 +3,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
 import Portal from '../../../../components/Portal';
+import { useAnimatedMount } from '../../../../components/transition/useAnimatedMount';
 import { useClickOutside } from '../../../../hooks/useClickOutside';
 import { useKeyPress } from '../../../../hooks/useKeyPress';
 import { useScrollLock } from '../../../../hooks/useScrollLock';
@@ -28,6 +29,10 @@ const MiniCartPopup = () => {
     currentUser,
   });
   const isMiniCartOpen = useAppSelector(selectIsMiniCartOpen);
+  const { shouldRender, transitionState } = useAnimatedMount({
+    isOpen: isMiniCartOpen,
+    duration: 300,
+  });
 
   const miniCartRef = useRef<HTMLUListElement>(null);
 
@@ -36,16 +41,15 @@ const MiniCartPopup = () => {
   };
 
   useKeyPress(handleCloseMiniCart, [KeyCode.Esc]);
-  useScrollLock(isMiniCartOpen);
+  useScrollLock(shouldRender);
 
   useClickOutside(miniCartRef, () => {
     handleCloseMiniCart();
   }, [miniCartRef]);
 
-  if (!apiCartList || !isMiniCartOpen) {
+  if (!apiCartList || !shouldRender) {
     return null;
   }
-
   const { cartItems, summary } = apiCartList;
 
   return (
@@ -54,16 +58,19 @@ const MiniCartPopup = () => {
         FallbackComponent={ErrorBoundaryFallback}
         onReset={() => refetchApiCartList()}
       >
-        <section className="mini-cart message-popup-list" ref={miniCartRef}>
-          <h2 className="mini-cart-title">Din indkøbskurv</h2>
-          <ul className="mini-cart-list animate-top-right">
+        <section
+          className={`mini-cart transition ${transitionState}`}
+          ref={miniCartRef}
+        >
+          <h2 className="mini-cart-title">{language.myBag}</h2>
+          <ul className="mini-cart-list">
             {cartItems.map((order) => (
               <li key={order.id} className="mini-cart-item">
                 <OrderItemCard order={order} language={language} />
               </li>
             ))}
           </ul>
-          <div className="mini-cart-price-info">
+          <article className="mini-cart-price-info">
             {summary.remainingForFreeShipping > 0 && (
               <div className="mini-cart-info">
                 {language.buyForFreeShipping}
@@ -87,7 +94,7 @@ const MiniCartPopup = () => {
                 price={summary.totalPrice}
               />
             </div>
-          </div>
+          </article>
         </section>
       </ErrorBoundary>
     </Portal>
