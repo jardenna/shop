@@ -47,4 +47,10 @@
   .mini-cart-price-info {
     padding-top: 12px;
   }
+
+  .mini-cart-summary-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
 }

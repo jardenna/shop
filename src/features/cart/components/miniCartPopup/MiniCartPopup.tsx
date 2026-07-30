@@ -62,7 +62,7 @@ const MiniCartPopup = () => {
             </div>
           )}
 
-          <div>
+          <div className="mini-cart-summary-list">
             <SummaryItem
               label={language.employeeDiscount}
               price={summary.promoDiscount}
