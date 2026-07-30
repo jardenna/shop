@@ -34,6 +34,7 @@ enum ShopPath {
   Men = '/collection/men',
   MyAccount = 'my-account',
   MyAddresses = 'my-addresses',
+  MyOrder = 'my-order',
   MyOrders = 'my-orders',
   Product = 'product',
   Root = '/',

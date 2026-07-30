@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router';
 import {
   PaymentFormValues,
   PaymentMethodField,
@@ -9,6 +10,7 @@ import Form from '../../../../components/form/Form';
 import Input from '../../../../components/formElements/Input';
 import { useMessagePopup } from '../../../../components/messagePopup/useMessagePopup';
 import { useFormValidation } from '../../../../hooks/useFormValidation';
+import { ShopPath } from '../../../../layout/nav/enums';
 import { ChangeInputType, InputType } from '../../../../types/types';
 import { handleApiError } from '../../../../utils/handleApiError';
 import { validatePayment } from '../../../../utils/validation/validatePayment';
@@ -34,6 +36,7 @@ const CardForm = ({
   addAddressButtonRef,
   addressLength,
 }: CardFormProps) => {
+  const navigate = useNavigate();
   const { onAddMessagePopup } = useMessagePopup();
   const initialValues: PaymentFormValues = {
     paymentMethod: paymentMethod as PaymentMethods,
@@ -43,7 +46,7 @@ const CardForm = ({
     cardholderName: '',
     paypalEmail: '',
     paypalPassword: '',
-    mobilePhoneNumber: '',
+    mobilePhoneNumber: '12121212',
   };
 
   const { values, onChange, onSubmit, errors } = useFormValidation({
@@ -113,6 +116,8 @@ const CardForm = ({
       }).unwrap();
 
       await deleteCart().unwrap();
+
+      navigate(`/${ShopPath.MyOrder}/${order.id}`);
 
       onAddMessagePopup({
         message: language.orderPlaced,
