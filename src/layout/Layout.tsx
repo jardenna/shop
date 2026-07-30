@@ -26,9 +26,7 @@ import { AdminPath, ShopPath } from './nav/enums';
 const Layout = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
-
   const dispatch = useAppDispatch();
-
   const pathInfo = getPathName(pathname);
   const { language, switchLanguage, selectedLanguage } = useLanguage();
 
