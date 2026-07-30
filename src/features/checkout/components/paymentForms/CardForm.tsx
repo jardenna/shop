@@ -101,10 +101,6 @@ const CardForm = ({
 
       addAddressButtonRef.current?.focus();
 
-      onAddMessagePopup({
-        message: language.addressRequiredToPlaceOrder,
-        messagePopupType: 'info',
-      });
       return;
     }
     try {
