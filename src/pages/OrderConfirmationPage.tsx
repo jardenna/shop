@@ -4,14 +4,23 @@ import Icon from '../components/icons/Icon';
 import OrderItemList from '../features/cart/components/orderItemCard/OrderItemList';
 import { useLanguage } from '../features/language/useLanguage';
 import { useGetOrderByIdQuery } from '../features/orders/orderApiSlice';
+import { createOrderAddressList } from '../features/utils/createOrderAddressList';
 import { IconName } from '../types/enums';
+import AddressList from './account/AddressList';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const OrderConfirmationPage = () => {
   const { id } = useParams();
   const { language } = useLanguage();
 
-  const { data: order } = useGetOrderByIdQuery(id ?? '');
+  const { data: order, refetch } = useGetOrderByIdQuery(id ?? '');
+
+  const addressList = order
+    ? createOrderAddressList({
+        billingAddress: order.billingAddress,
+        shippingAddress: order.shippingAddress,
+      })
+    : [];
 
   return (
     <MainPageContainer heading={language.order}>
@@ -25,7 +34,12 @@ const OrderConfirmationPage = () => {
       <p>{language.orderNumber}</p>
       <p>{language.orderSummary}</p>
       <p>{language.paymentMethod}</p>
-
+      <AddressList
+        addresses={addressList}
+        language={language}
+        username="ff"
+        refetch={refetch}
+      />
       <div>
         <div>
           <p>{language.orderCreated}</p>
