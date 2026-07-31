@@ -16,7 +16,7 @@ import {
 } from '../../../miniCartPopupSlice';
 import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 import { useActiveCart } from '../../useActiveCart';
-import OrderItemCard from '../orderItemCard/OrderItemCard';
+import OrderItemList from '../orderItemCard/OrderItemList';
 import SummaryItem from '../SummaryItem';
 import './_mini-cart-popup.scss';
 
@@ -63,13 +63,8 @@ const MiniCartPopup = () => {
           ref={miniCartRef}
         >
           <h2 className="mini-cart-title">{language.myBag}</h2>
-          <ul className="mini-cart-list">
-            {cartItems.map((order) => (
-              <li key={order.id} className="mini-cart-item">
-                <OrderItemCard order={order} language={language} />
-              </li>
-            ))}
-          </ul>
+          <OrderItemList orders={cartItems} language={language} />
+
           <article className="mini-cart-price-info">
             {summary.remainingForFreeShipping > 0 && (
               <div className="mini-cart-info">

@@ -1,6 +1,7 @@
 import { useParams } from 'react-router';
 import Button from '../components/Button';
 import Icon from '../components/icons/Icon';
+import OrderItemCard from '../features/cart/components/orderItemCard/OrderItemCard';
 import { useLanguage } from '../features/language/useLanguage';
 import { useGetOrderByIdQuery } from '../features/orders/orderApiSlice';
 import { IconName } from '../types/enums';
@@ -18,6 +19,16 @@ const OrderConfirmationPage = () => {
       <h2>{language.orderConfirmationTitle}</h2>
       <p>{language.orderConfirmationDescription}</p>
       <p>{language.orderConfirmationProcessing}</p>
+
+      {order && (
+        <ul className="mini-cart-list">
+          {order.orderItems.map((order) => (
+            <li key={order.id} className="mini-cart-item">
+              <OrderItemCard order={order} language={language} />
+            </li>
+          ))}
+        </ul>
+      )}
 
       <Button>{language.trackYourOrder}</Button>
       <p>{language.orderNumber}</p>
