@@ -1,7 +1,9 @@
 import { useParams } from 'react-router';
 import Button from '../components/Button';
+import Icon from '../components/icons/Icon';
 import { useLanguage } from '../features/language/useLanguage';
 import { useGetOrderByIdQuery } from '../features/orders/orderApiSlice';
+import { IconName } from '../types/enums';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const OrderConfirmationPage = () => {
@@ -23,10 +25,22 @@ const OrderConfirmationPage = () => {
       <p>{language.paymentMethod}</p>
 
       <div>
-        <p>{language.orderCreated}</p>
-        <p>{language.orderInProgress}</p>
-        <p>{language.orderShipped}</p>
-        <p>{language.orderDelivered}</p>
+        <div>
+          <p>{language.orderCreated}</p>
+          <Icon iconName={IconName.Basket} />
+        </div>
+        <div>
+          <p>{language.orderInProgress}</p>
+          <Icon iconName={IconName.PackageOpen} />
+        </div>
+        <div>
+          <p>{language.orderShipped}</p>
+          <Icon iconName={IconName.Deliver} />
+        </div>
+        <div>
+          <p>{language.orderDelivered}</p>
+          <Icon iconName={IconName.Home} />
+        </div>
       </div>
     </MainPageContainer>
   );
