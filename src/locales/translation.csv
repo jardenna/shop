@@ -1,26 +1,5 @@
 ﻿key;en;da
 about;About us;Om os
-cardHasExpired;Card has expired;Kortet er udløbet
-cardNumberMustContainExactly16Digits;Exactly 16 digits;Præcis 16 cifre
-invalidExpiryDateFormat;Use MM/YY (e.g. 09/28);Brug MM/ÅÅ (f.eks. 09/28)
-payPalPasswordMustContainAtLeast6Characters;At least 6 characters;Mindst 6 tegn
-phoneNumberMustContainExactly8Digits;Exactly 8 digits;Præcis 8 cifre
-pleaseEnterCardholderName;Please enter a name;Indtast venligst navn
-securityCodeMustContain3Or4Digits;3 or 4 digits;3 eller 4 cifre
-placeOrder;Place order;Gennemfør ordre
-orderPlaced;Order Placed;Ordre gennemført
-addressRequiredToPlaceOrder;Create an address to complete your order.;Opret en adresse for at gennemføre din ordre.
-paymentSummary;Payment summary;Betalingsoversigt
-cardTestNumber;Card number;Kort nummer
-expiryDate;Expiry date (mm/yy);Udløbsdato (mm/yy)
-securityCode;Security code;Kontrolcifre
-cardholderName;Cardholder name;Kortholder navn
-mobilePhoneNumber;Mobile phone number;Mobilnummer
-pricesConfirmed;Prices and shipping costs are confirmed at checkout.;Priser og leveringsomkostninger bekræftes når du går til checkout.
-returnPeriod;You have a 14-day return policy.;Du har 14 dages returret.
-returnPolicyLink;Read more about returns and refunds.;Læs mere om returnering og tilbagebetaling.
-needHelp;Need help;Har du brug for hjælp
-contactCustomerService;Contact customer service.;Kontakt kundeservice.
 accessories;Accessories;Accessories
 accessoriesAndToys;Accessories & Toys;Accessories & legetøj
 account;Account;Konto
@@ -32,15 +11,16 @@ additionalOptionsCount;additional options not shown in this preview;ekstra mulig
 addOrManageAddress;Add or manage your addresses;Tilføj eller ret dine adresser
 addOrManageAddress;Add or manage your addresses;Tilføj eller ret dine adresser
 address;Address;Adresse
-addresses;Addresses;Adresser
 addressAlreadyExists;This address already exists.;Denne adresse findes allerede.
 addressAltText;Man in a tailored suit walking confidently down a wide, stepped staircase.;Mand i skræddersyet jakkesæt, der går selvsikkert ned ad en bred trappe.
 addressBilling;Billing address;Faktureringsadresse
-addressdeliveryAndBilling;Delivery & billing address;Leverings- & faktureringsadresse
 addressCreated;Address was created;Adresse blev tilføjet
 addressDeleted;Address deleted;Addresse blev slettet
 addressDelivery;Delivery address;Leveringsadresse
+addressdeliveryAndBilling;Delivery & billing address;Leverings- & faktureringsadresse
+addresses;Addresses;Adresser
 addressNotFound;The selected address could not be found.;Den valgte adresse blev ikke fundet.
+addressRequiredToPlaceOrder;Create an address to complete your order.;Opret en adresse for at gennemføre din ordre.
 addressUpdated;Address was updated;Adresse blev opdateret
 addToBag;Add to bag;Læg i indkøbskurv
 addToCart;Add to cart;Tilføj til kurv
@@ -52,13 +32,14 @@ allowedFormats;Allowed formats;Tilladte formater
 alreadyInUse;Value already in use;Værdien er allerede i brug
 alreadyLoggedIn;You are already logged in;Du er allerede logget ind
 alreadyLoggedInAs;You are already logged in as;Du er allerede logget ind som
-ascending;ascending;stigende
 apply;Apply;Tilføj
+ascending;ascending;stigende
 assignRole;Assign role;Tildel rolle
 available;Available;Tilgængelig
 availableColors;Available colours;Tilgængelige farver
 bag;Shopping bag;Indkøbskurv
 black;Black;Sort
+blackFriday;Black Friday;Black Friday-rabat
 blue;Blue;Blå
 bodyMeasurements;Body Measurements;Kropsmål
 brand;Brand;Brand
@@ -66,8 +47,13 @@ brandRequired;Please insert brand;Indsæt venligst brand
 breadcrumbs;Breadcrumbs;Breadcrumbs
 brown;Brown;Brun
 browseImages;Browse images;Tilføj produkt billeder
+buyForFreeShipping;Buy for;Hvis du køber for
 calendar;Calendar;Kalender
 cancel;Cancel;Annuller
+cardHasExpired;Card has expired;Kortet er udløbet
+cardholderName;Cardholder name;Kortholder navn
+cardNumberMustContainExactly16Digits;Exactly 16 digits;Præcis 16 cifre
+cardTestNumber;Card number;Kort nummer
 care;Care;Vaskeanvisning
 cartDeleted;Cart has been emptied.;Kurven er blevet tømt.
 cartIsEmpty;Cart is empty;Kurven er tom
@@ -110,6 +96,7 @@ colours;Colours;Farver
 compact;Compact;Kompakt
 confirmPassword;Confirm password;Gentag adgangskode
 contact;Contact;Kontakt
+contactCustomerService;Contact customer service.;Kontakt kundeservice.
 continueShopping;Continue shopping;Fortsæt med at handle
 continueToCheckout;Continue to Checkout;Fortsæt til kassen
 convertingSize;Size conversion;Konvertering af størrelse
@@ -162,11 +149,13 @@ displayOptions;Display options;Visningsindstillinger
 doNotBleach;Do not bleach;Må ikke bleges
 email;Email;E-mail
 employee;Employee;Ansat
+employeeDiscount;Employee discount;Medarbejder rabat
 error;Error;Fejl
 errorAltText;A really guilty emoji.;En meget skyldig emoji.
 estimatedShipping;Estimated shipping;Anslået leveringspris
 expanded;Expanded;Udvidet
 expandMenu;Expand menu;Udvid menu
+expiryDate;Expiry date (mm/yy);Udløbsdato (mm/yy)
 eye;Eye;Øje
 eyeClosed;Closed eye;Lukket øje
 fashionGridKidsAltText;"Two girls sitting side by side, one in a red polka dot dress and the other in a yellow polka dot dress.";"To søde piger sidder ned, den ene i rød prikket kjole, den anden i gul prikket kjole."
@@ -194,6 +183,7 @@ filterHeading;Filter;Filter
 filterProducts;Filter products;Filtrer produkter
 filterRow;Filter row;Filtrer række
 filtersApplied;Filters applied;Filtre anvendt
+freeShippingSuffix;more, shipping is free.;mere er levering gratis
 from;from;fra
 getInspired;Get inspired;Bliv inspireret
 globe;Globe;Globus
@@ -224,28 +214,20 @@ image;Image;Foto
 imageRequired;Please insert image(s);Indsæt venligst billede(r)
 inactive;Inactive;Inaktiv
 inclVat;Incl. vat;Inkl. moms
-orderTotalInclVat;Total price Incl. vat;Pris i alt Inkl. moms
-totalPriceTableHeader;Total price;Samlet pris
-totalPrice;Total;I alt
-buyForFreeShipping;Buy for;Hvis du køber for
-freeShippingSuffix;more, shipping is free.;mere er levering gratis
 inStock;In stock;På lager
 invalidCartItemId;Invalid item ID.;Ugyldigt vareid.
 invalidColor;The selected color is no longer available;Den valgte farve er ikke længere tilgængelig
 invalidDiscount;Invalid discount. Price cannot be calculated correctly;Ugyldig rabat. Prisen kan ikke beregnes korrekt
+invalidExpiryDateFormat;Use MM/YY (e.g. 09/28);Brug MM/ÅÅ (f.eks. 09/28)
 invalidFileType;Invalid file type;Ugyldig fil type
+invalidPaymentMethod;The selected payment method is invalid.;Den valgte betalingsmetode er ugyldig.
 invalidQuantity;Quantity must be at least 1;Antallet skal være mindst 1
 invalidRequestProductIds;Invalid product IDs provided;Ugyldige produkt-id'er sendt
 invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for planlagt dato
 invalidSize;The selected size is no longer available;Den valgte størrelse er ikke længere tilgængelig
-invalidPaymentMethod;The selected payment method is invalid.;Den valgte betalingsmetode er ugyldig.
 invalidUserData;Invalid user data;Ugyldig bruger data
 item;item;vare
 items;items;varer
-orderNumber;Order number;Ordrenummer
-orderSummary;Order summary;Ordreoversigt
-paymentMethod;Payment method;Betalingsmetode
-trackYourOrder;Track your order;Track din ordre
 itemsUpdated;Items updated to;Varer opdateret til
 keep;Keep;Behold
 keepBoth;Keep both;Behold begge
@@ -279,10 +261,6 @@ materialRequired;Please insert material;Indsæt venligst materiale
 maximum;Maximum;Maksimalt
 maximumFileLimitExceeded;Maximum file limit exceeded;Maksimalt antal filer er overskredet
 maximumFileSize;Maximum file size;Maksimal filstørrelse
-employeeDiscount;Employee discount;Medarbejder rabat
-summerSale;Summer sale;Sommerrabat
-welcome;Welcome discount;Velkomstrabat
-blackFriday;Black Friday;Black Friday-rabat
 men;Men;Mænd
 menAltText;Elegant man with a hat, suspenders, and a burgundy shirt, lifts his hand to remove his sunglasses.;Elegant mand med hat, seler og bordeaux skjorte, løfter hånden for at tage sine solbriller af.
 menBannerAltText;Stylish man wearing an exclusive jacket and dark sunglasses, exuding timeless confidence.;Stilfuld mand iført eksklusiv jakke og mørke solbriller, udstråler tidløs selvsikkerhed.
@@ -290,6 +268,7 @@ mensFashion;Men’s fashion;Heremode
 menu;Menu;Menu
 minLength;At least 8 characters;Mindst 8 tegn
 missingYourSize;Missing your size;Mangler vi din størrelse
+mobilePhoneNumber;Mobile phone number;Mobilnummer
 monthAgo;months ago;måneder siden
 multiColor;MultiColour;Flerfarvet
 multipleReviewsNotPermitted;You can't review a product multiple times;Du kan ikke anmelde det samme produkt flere gange
@@ -302,7 +281,7 @@ myAddresses;My addresses;Mine adresser
 myBag;My bag;Min indkøbskurv
 myOrders;My orders;Mine ordrer
 name;Name;Navn
-noMatchingAddressData;No matching address found;Ingen matchende adresse
+needHelp;Need help;Har du brug for hjælp
 noAddressData;You must add an address before placing an order.;Du skal tilføje en adresse, før du kan gennemføre en ordre.
 noChanges;No changes to save;Ingen ændringer at gemme
 noData;No data found;Ingen data fundet
@@ -311,12 +290,14 @@ noFavorites;Find your must-haves and save them here, so you can easily come back
 noFavoritesYet;No favorites yet;Ingen favoritter endnu
 noImagesProvided;No images provided;Ingen billeder
 noItemsToShow;No items to show;Ingen varer at vise
+noMatchingAddressData;No matching address found;Ingen matchende adresse
 noOptions;No options;Ingen valgmuligheder
 noPassword;Please enter a password;Indtast venligst en adgangskode
 noPreference;No preference;Ingen præference
 noProduct;Product not found;Produkt blev ikke fundet
 noProductResult;No products match your filters. Try removing some filters or reset to see all products again.;Der er ingen produkter, der matcher dine filtre. Prøv at fjerne nogle filtre eller nulstil for at se alle produkter igen.
 noProductResultTitle;No product match your filters;Ingen produkter matcher dine filtre
+noPromoCode;We couldn't recognize the discount code. Please try again.;Vi kunne desværre ikke genkende rabatkoden. Prøv venligst igen.
 noReview;Be the first to review this product;Bliv den første til at anmelde dette produkt
 notAuthorized;Not authorized;Ikke autoriseret
 notAuthorizedNoToken;Not authorized, no token;Ikke autoriseret, ingen token
@@ -337,15 +318,22 @@ onlyAdminsAssignRole;Only admins can assign roles;Kun administratorer kan tildel
 onlyFourAddresses;You may have up to 4 addresses;Du kan højst have 4 adresser
 orange;Orange;Orange
 order;Order;Ordre
-orderConfirmationTitle;Thank you for your order;Tak for din ordre
-orderConfirmationDescription;Your order has been successfully placed and is now being prepared.;Din ordre er gennemført og bliver nu gjort klar.
-orderConfirmationProcessing;We'll process it within 24 hours on business days and send you an email with tracking details once it ships. In the meantime, you can track your order below.;Vi behandler din ordre inden for 24 timer på hverdage og sender dig en e-mail med sporingsoplysninger, så snart den er afsendt. Indtil da kan du følge din ordre nedenfor.
 orderAllreadyDelivered;Order is already delivered;Ordren er allerede leveret
 orderAllreadyPaid;Order is already paid;Ordren er allerede betalt
 orderAltText;Young boy in black jeans and a white T-shirt layered with a blue-checkered shirt, looking expectant.;Ung dreng i sorte jeans og hvid T-shirt kombineret med en blåternet skjorte, ser forventningsfuld ud.
+orderConfirmationDescription;Your order has been successfully placed and is now being prepared.;Din ordre er gennemført og bliver nu gjort klar.
+orderConfirmationProcessing;We'll process it within 24 hours on business days and send you an email with tracking details once it ships. In the meantime, you can track your order below.;Vi behandler din ordre inden for 24 timer på hverdage og sender dig en e-mail med sporingsoplysninger, så snart den er afsendt. Indtil da kan du følge din ordre nedenfor.
+orderConfirmationTitle;Thank you for your order;Tak for din ordre
+orderCreated;Order created;Ordre oprettet
+orderDelivered;Delivered;Leveret
+orderInProgress;In progress;Behandles
+orderShipped;Shipped;Afsendt
 orderNotPaid;Order has not been paid;Ordren er ikke betalt
+orderNumber;Order number;Ordrenummer
+orderPlaced;Order Placed;Ordre gennemført
 orders;Orders;Ordrer
 orderSummary;Order summary;Ordreoversigt
+orderTotalInclVat;Total price Incl. vat;Pris i alt Inkl. moms
 originaPrice;Original price;Før pris
 outOf;out of;ud af
 outOfStock;Out of stock;Udsolgt
@@ -364,19 +352,25 @@ passwordSymbol;Password should contain at least one special character;Adgangskod
 passwordUppercase;Password should contain at least one uppercase letter;Adgangskoden skal indeholde mindst ét stort bogstav
 payment;Payment;Betaling
 paymentAndDelivery;Payment and delivery;Betaling og levering
+paymentMethod;Payment method;Betalingsmetode
+paymentSummary;Payment summary;Betalingsoversigt
 paymentText;You can pay by credit card or MobilePay. We only charge your payment once your order has been shipped;Betaling kan ske med kreditkort eller MobilePay. Vi trækker først beløbet, når din ordre er afsendt
+payPalPasswordMustContainAtLeast6Characters;At least 6 characters;Mindst 6 tegn
 pcs;pcs;stk.
 pencil;Pencil;Blyant
 perPage;per page;pr. side
 phone;Phone;Telefon
 phoneInfo;We’ll only contact you when needed, for instance, to update you on your order or reply to a customer service question.;Vi kontakter dig kun, når det er påkrævet, eksempelvis ved vigtige ændringer i din ordre eller for at svare på en henvendelse til kundeservice.
+phoneNumberMustContainExactly8Digits;Exactly 8 digits;Præcis 8 cifre
 pink;Pink;Pink
+placeOrder;Place order;Gennemfør ordre
 pleaseEnter;Please enter;Indsæt venligst
+pleaseEnterCardholderName;Please enter a name;Indtast venligst navn
 pleaseEnterCategoryName;Please enter a name for category;Indsæt venligst navn på kategori
 pleaseEnterCity;Please enter city;Indsæt venligst by
+pleaseEnterDiscountCode;Please enter discount code;Indsæt venligst rabatkode
 pleaseEnterName;Please enter name;Indsæt venligst navn
 pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
-pleaseEnterDiscountCode;Please enter discount code;Indsæt venligst rabatkode
 pleaseEnterStreet;Please enter  street;Indsæt venligst gade
 pleaseEnterTranslationKey;Please enter a translation key;Indsæt venligst oversættelsesnøgle
 pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
@@ -389,6 +383,7 @@ price;Price;Pris
 priceFrom;Price from;Pris fra
 priceRange;Price range;Prisinterval
 priceRequired;Please insert price;Indsæt venligst pris
+pricesConfirmed;Prices and shipping costs are confirmed at checkout.;Priser og leveringsomkostninger bekræftes når du går til checkout.
 priceTo;Price to;Pris til
 pricing;Pricing;Prissætning
 product;Product;Produkt
@@ -417,6 +412,7 @@ productStatus;Product status;Produkt status
 productUpdated;Product was updated;Produkt blev opdateret
 productVariants;Product Variants;Produkt varianter
 profile;Profile;Profil
+promoCodeApplied;Discount code applied successfully.;Rabatkoden er blevet anvendt.
 publish;Publish;Udgiv
 publishDate;Publish date;Udgivelsesdato
 published;Published;Udgivet
@@ -438,6 +434,8 @@ removeFromFavorite;Remove from favorite;Fjern fra favorit
 replace;Replace;Erstat
 resetFiltersAndSorting;Reset filters and sorting;Nulstil filtre og sortering
 retry;Retry;Forsøg igen
+returnPeriod;You have a 14-day return policy.;Du har 14 dages returret.
+returnPolicyLink;Read more about returns and refunds.;Læs mere om returnering og tilbagebetaling.
 reviews;Reviews;Anmeldelser
 role;Role;Rolle
 sale;Sale;Udsalg
@@ -448,11 +446,13 @@ scheduledDate;Scheduled date;Planlagt dato
 scheduledDateMustBeFuture;Scheduled date must be after now;Planlagt dato skal være efter nu
 scheduledToBePublished;is scheduled to be published at;er planlagt til udgivelse den 
 search;Search;Søg
+securityCode;Security code;Kontrolcifre
+securityCodeMustContain3Or4Digits;3 or 4 digits;3 eller 4 cifre
 selectedColor;Selected colour;Valgt farve
+selectedLanguage;Selected language;Valgt sprog
 selectedSize;Selected size;Valgt størrelse
 selectNumber;Select number;Vælg antal
 selectPreferences;Select preferred language and currency;Vælg sprog og valuta
-selectedLanguage;Selected language;Valgt sprog
 selectSize;Select size;Vælg størrelse
 shareReview;Share review;Del anmeldelse
 shareYourExperience;Share your experience;Del din oplevelse
@@ -501,6 +501,7 @@ subCategoryName;Subcategory name;Underkategori navn
 subtotal;Subtotal;Subtotal
 subtract;Subtract;Fratræk
 success;Success;Succes
+summerSale;Summer sale;Sommerrabat
 sureToDelete;Do you want to delete;Vil du slette
 switchUser;Switch user;Skift bruger
 temporarilyOutOfStock;This item is temporarily out of stock;Varen er midlertidigt udsolgt
@@ -509,7 +510,10 @@ thereAre;There are;Der findes
 title;Title;Titel
 to;to;til
 today;Today;I dag
+totalPrice;Total;I alt
+totalPriceTableHeader;Total price;Samlet pris
 totalProducts;Total products;Antal produkter
+trackYourOrder;Track your order;Track din ordre
 translationKey;Translation key;Oversættelsesnøgle
 translationKeyHelpText;Enter the exact key used for translation in your CSV file;Skriv den præcise nøgle, som bruges til oversættelsen i din CSV-fil
 trashCan;Trash can;Skraldespand
@@ -535,8 +539,6 @@ users;Users;Brugere
 userUpdated;User was updated;Bruger blev opdateret
 verifyAndUpdateInfo;Verify and update your information;Bekræft og opdatér dine oplysninger
 view;View;Se
-noPromoCode;We couldn't recognize the discount code. Please try again.;Vi kunne desværre ikke genkende rabatkoden. Prøv venligst igen.
-promoCodeApplied;Discount code applied successfully.;Rabatkoden er blevet anvendt.
 viewAndTrackOrders;View and track your orders.;Tjek og følg dine ordrer.
 viewCart;View your cart;Se din indkøbskurv
 viewCategory;View category;Se kategori
@@ -546,6 +548,7 @@ viewScheduledDate;View scheduled date;Se planlagt dato
 viewYourFavorites;View your favorites;Se dine favoritter
 waist;Waist;Livvidde
 warning;Warning;Advarsel
+welcome;Welcome discount;Velkomstrabat
 welcome;Welcome;Velkommen
 whenOrderViewAndTrack;When you order from Fashion Fusion, you can view and track your orders here.;Når du bestiller varer hos Fashion Fusion vil du kunne se og følge dine ordrer her.
 white;White;Hvid

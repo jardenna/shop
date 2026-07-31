@@ -21,7 +21,7 @@ import FavoritePage from '../pages/FavoritePage';
 import HomePage from '../pages/home/HomePage';
 import LoginPage from '../pages/LoginPage';
 import MainCollectionsPage from '../pages/MainCollectionsPage';
-import OrderConfirmation from '../pages/OrderConfirmation';
+import OrderConfirmationPage from '../pages/OrderConfirmationPage';
 import CreateProductPage from '../pages/product/CreateProductPage';
 import ProductPage from '../pages/product/ProductPage';
 import UpdateProductPage from '../pages/product/UpdateProductPage';
@@ -160,7 +160,10 @@ const routeConfig = createBrowserRouter([
             element: <FavoritePage />,
           },
           { path: ShopPath.Checkout, element: <CheckoutPage /> },
-          { path: `${ShopPath.MyOrder}/:id`, element: <OrderConfirmation /> },
+          {
+            path: `${ShopPath.MyOrder}/:id`,
+            element: <OrderConfirmationPage />,
+          },
           {
             path: ShopPath.MyAccount,
             element: <AccountLayout />,
