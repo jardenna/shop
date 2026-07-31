@@ -4,8 +4,8 @@ import OrderItemList from '../features/cart/components/orderItemCard/OrderItemLi
 import { useLanguage } from '../features/language/useLanguage';
 import OrderAddressList from '../features/orders/components/OrderAddressList';
 import OrderTracking from '../features/orders/components/OrderTracking';
-import { createOrderAddressList } from '../features/orders/createOrderAddressList';
 import { useGetOrderByIdQuery } from '../features/orders/orderApiSlice';
+import { createOrderAddressList } from '../features/orders/utils/createOrderAddressList';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const OrderConfirmationPage = () => {

@@ -1,5 +1,5 @@
 import Icon from '../../../components/icons/Icon';
-import { orderTrackingList } from '../createTrackingList';
+import { orderTrackingList } from '../utils/createTrackingList';
 
 interface OrderTrackingProps {
   language: Record<string, string>;

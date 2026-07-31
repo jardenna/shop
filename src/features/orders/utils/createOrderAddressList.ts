@@ -1,4 +1,7 @@
-import { Address, BaseAddress } from '../../app/api/apiTypes/addressApiTypes';
+import {
+  Address,
+  BaseAddress,
+} from '../../../app/api/apiTypes/addressApiTypes';
 
 type createOrderAddressListProps = {
   billingAddress: BaseAddress;

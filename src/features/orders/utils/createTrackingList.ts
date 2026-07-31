@@ -1,5 +1,5 @@
-import { DeliveryStatus } from '../../app/api/apiTypes/orderApiTypes';
-import { IconName } from '../../types/enums';
+import { DeliveryStatus } from '../../../app/api/apiTypes/orderApiTypes';
+import { IconName } from '../../../types/enums';
 
 interface OrderTrackingList {
   iconName: IconName;
