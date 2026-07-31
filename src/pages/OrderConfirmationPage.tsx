@@ -26,9 +26,8 @@ const OrderConfirmationPage = () => {
       <h2>{language.orderConfirmationTitle}</h2>
       <p>{language.orderConfirmationDescription}</p>
       <p>{language.orderConfirmationProcessing}</p>
-
-      {order && <OrderItemList orders={order.orderItems} language={language} />}
       <OrderTracking language={language} />
+      {order && <OrderItemList orders={order.orderItems} language={language} />}
       <Button>{language.trackYourOrder}</Button>
       <p>{language.orderNumber}</p>
       <p>{language.orderSummary}</p>

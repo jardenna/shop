@@ -1,5 +1,5 @@
 import Icon from '../../../components/icons/Icon';
-import { IconName } from '../../../types/enums';
+import { orderTrackingList } from '../createTrackingList';
 
 interface OrderTrackingProps {
   language: Record<string, string>;
@@ -7,22 +7,14 @@ interface OrderTrackingProps {
 
 const OrderTracking = ({ language }: OrderTrackingProps) => (
   <section>
-    <div>
-      <p>{language.orderCreated}</p>
-      <Icon iconName={IconName.Basket} />
-    </div>
-    <div>
-      <p>{language.orderInProgress}</p>
-      <Icon iconName={IconName.PackageOpen} />
-    </div>
-    <div>
-      <p>{language.orderShipped}</p>
-      <Icon iconName={IconName.Deliver} />
-    </div>
-    <div>
-      <p>{language.orderDelivered}</p>
-      <Icon iconName={IconName.Home} />
-    </div>
+    <ul>
+      {orderTrackingList.map(({ id, label, iconName }) => (
+        <li key={id}>
+          <p>{language[label]}</p>
+          <Icon iconName={iconName} />
+        </li>
+      ))}
+    </ul>
   </section>
 );
 
