@@ -4,8 +4,8 @@ import Icon from '../components/icons/Icon';
 import OrderItemList from '../features/cart/components/orderItemCard/OrderItemList';
 import { useLanguage } from '../features/language/useLanguage';
 import OrderAddressList from '../features/orders/components/OrderAddressList';
+import { createOrderAddressList } from '../features/orders/createOrderAddressList';
 import { useGetOrderByIdQuery } from '../features/orders/orderApiSlice';
-import { createOrderAddressList } from '../features/utils/createOrderAddressList';
 import { IconName } from '../types/enums';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
