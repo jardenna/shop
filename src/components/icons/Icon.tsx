@@ -5,6 +5,7 @@ import AdminIcon from './AdminIcon';
 import ArrowDownIcon from './ArrowDownIcon';
 import ArrowUpIcon from './ArrowUpIcon';
 import AuthIcon from './AuthIcon';
+import BasketIcon from './BasketIcon';
 import CalendarIcon from './CalendarIcon';
 import CategoriesIcon from './CategoriesIcon';
 import CheckIcon from './CheckIcon';
@@ -19,6 +20,7 @@ import KidIcon from './colors/KidIcon';
 import ManIcon from './colors/ManIcon';
 import WomanIcon from './colors/WomanIcon';
 import DashboardIcon from './DashboardIcon';
+import DeliverIcon from './DeliverIcon';
 import DublicateIcon from './DublicateIcon';
 import ErrorIcon from './ErrorIcon';
 import EyeIcon from './EyeIcon';
@@ -29,6 +31,7 @@ import GridLargeIcon from './GridLargeIcon';
 import GridSmallIcon from './GridSmallIcon';
 import HalfStarIcon from './HalfStarIcon';
 import HeartIcon from './HeartIcon';
+import HomeIcon from './HomeIcon';
 import ImageIcon from './ImageIcon';
 import InfoIcon from './InfoIcon';
 import LanguageIcon from './LanguageIcon';
@@ -39,6 +42,7 @@ import LogoIcon from './LogoIcon';
 import LogoutIcon from './LogoutIcon';
 import MoreIcon from './MoreIcon';
 import OrdersIcon from './OrdersIcon';
+import PackageOpenIcon from './PackageOpenIcon';
 import MastercardIcon from './payments/MastercardIcon';
 import MobilePayIcon from './payments/MobilePayIcon';
 import PayPalIcon from './payments/PayPalIcon';
@@ -70,6 +74,7 @@ const iconMapping = {
   arrowDown: ArrowDownIcon,
   arrowUp: ArrowUpIcon,
   auth: AuthIcon,
+  basket: BasketIcon,
   calendar: CalendarIcon,
   categories: CategoriesIcon,
   check: CheckIcon,
@@ -81,6 +86,7 @@ const iconMapping = {
   circleChevronRight: CircleChevronRightIcon,
   close: CloseIcon,
   dashboard: DashboardIcon,
+  deliver: DeliverIcon,
   dublicate: DublicateIcon,
   error: ErrorIcon,
   eye: EyeIcon,
@@ -91,6 +97,7 @@ const iconMapping = {
   gridSmall: GridSmallIcon,
   halfStar: HalfStarIcon,
   heart: HeartIcon,
+  home: HomeIcon,
   image: ImageIcon,
   info: InfoIcon,
   kid: KidIcon,
@@ -106,6 +113,7 @@ const iconMapping = {
   mobilePay: MobilePayIcon,
   more: MoreIcon,
   orders: OrdersIcon,
+  packageOpen: PackageOpenIcon,
   payPal: PayPalIcon,
   pencil: PencilIcon,
   products: ProductsIcon,
