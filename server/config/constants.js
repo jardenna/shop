@@ -89,7 +89,7 @@ export const SHIPPING_PRICE = 49;
 export const DISCOUNT_SHIPPING_PRICE = 3500;
 
 export const DELIVERY_STATUS = {
-  PENDING: 'Pending',
+  ORDER_CREATED: 'created',
   PROCESSING: 'Processing',
   SHIPPED: 'Shipped',
   DELIVERED: 'Delivered',
