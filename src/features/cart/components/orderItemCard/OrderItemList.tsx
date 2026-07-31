@@ -7,9 +7,9 @@ interface OrderItemListProps {
 }
 
 const OrderItemList = ({ orders, language }: OrderItemListProps) => (
-  <ul className="mini-cart-list">
+  <ul className="order-item-cart-list">
     {orders.map((order) => (
-      <li key={order.id} className="mini-cart-item">
+      <li key={order.id} className="order-cart-item">
         <OrderItemCard order={order} language={language} />
       </li>
     ))}
