@@ -13,12 +13,10 @@ export const createOrderAddressList = ({
     ...billingAddress,
     id: 'billing',
     label: 'addressBilling',
-    standardAddress: ['addressBilling'],
   },
   {
     ...shippingAddress,
     id: 'shipping',
     label: 'addressDelivery',
-    standardAddress: ['addressDelivery'],
   },
 ];

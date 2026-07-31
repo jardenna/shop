@@ -3,7 +3,7 @@ import { useLanguage } from '../../features/language/useLanguage';
 
 type AddressInforListProps = {
   address: Address;
-  username: string;
+  username?: string;
 };
 
 const AddressInfoListContent = ({
