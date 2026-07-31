@@ -12,6 +12,8 @@ export interface CreateOrderRequest {
   shippingAddressId: string;
 }
 
+export type DeliveryStatus = 'created' | 'processing' | 'shipped' | 'delivered';
+
 export interface OrderResponse extends DefaultResponseType {
   billingAddress: BaseAddress;
   discount: Discount;
