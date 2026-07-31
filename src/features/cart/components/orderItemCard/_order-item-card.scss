@@ -28,14 +28,16 @@
   }
 }
 
-.order-cart-item {
+.order-list-item {
   border-bottom: $border;
   padding-bottom: 8px;
   padding-right: 8px;
 }
 
-.order-item-cart-list {
+.order-list {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  height: 400px;
+  overflow: auto;
 }
