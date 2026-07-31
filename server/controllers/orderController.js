@@ -299,7 +299,7 @@ const payOrder = asyncHandler(async (req, res) => {
 
 // @desc    Deliver order
 // @route   /api/orders/:id/deliver
-// @method  Put
+// @method  Patch
 // @access  Private for admin and employee
 const deliverOrder = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
