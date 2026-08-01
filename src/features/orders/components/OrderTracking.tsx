@@ -10,13 +10,17 @@ const status = {
   deliveredAt: null,
 };
 
+const currentStatusIndex = orderTrackingList.findIndex(
+  ({ id }) => id === status.status,
+);
+
 const OrderTracking = ({ language }: OrderTrackingProps) => (
   <section>
     <ul className="order-tracking-list">
-      {orderTrackingList.map(({ id, label, iconName }) => (
+      {orderTrackingList.map(({ id, label, iconName }, index) => (
         <li key={id} className="tracking-list-item">
           <span
-            className={`tracking-list-icon ${status.status === id ? 'completed' : ''}`}
+            className={`tracking-list-icon ${index <= currentStatusIndex ? 'completed' : ''}`}
           >
             <Icon iconName={iconName} aria-hidden />
           </span>
