@@ -1,7 +1,12 @@
 import { useLanguage } from '../../features/language/useLanguage';
+import { orderTrackingList } from '../../features/orders/utils/createTrackingList';
 import { IconName } from '../../types/enums';
 import Icon from '../icons/Icon';
 import './_status-tracker.scss';
+
+interface Status {
+  status: string;
+}
 
 interface TrackingList {
   iconName: IconName;
@@ -10,19 +15,23 @@ interface TrackingList {
 }
 
 interface StatusTrackerProps {
-  status: number;
+  status: Status;
   steps: TrackingList[];
 }
 
 const StatusTracker = ({ steps, status }: StatusTrackerProps) => {
   const { language } = useLanguage();
 
+  const currentStatusIndex = orderTrackingList.findIndex(
+    ({ id }) => id === status.status,
+  );
+
   return (
     <ul className="tracking-list">
       {steps.map(({ id, label, iconName }, index) => (
         <li key={id} className="tracking-list-item">
           <span
-            className={`tracking-list-icon ${index <= status ? 'completed' : ''}`}
+            className={`tracking-list-icon ${index <= currentStatusIndex ? 'completed' : ''}`}
           >
             <Icon iconName={iconName} aria-hidden />
           </span>
