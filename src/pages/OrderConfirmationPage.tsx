@@ -27,10 +27,11 @@ const OrderConfirmationPage = () => {
 
   return (
     <div className="container">
-      <h2>{language.orderConfirmationTitle}</h2>
+      <h1>
+        {order && order.user.username}, {language.orderConfirmationTitle}
+      </h1>
       <p>{language.orderConfirmationDescription}</p>
       <p>{language.orderConfirmationProcessing}</p>
-      <StatusTracker steps={orderTrackingList} status={status} />
       {order && (
         <SummaryList
           language={language}
@@ -40,6 +41,7 @@ const OrderConfirmationPage = () => {
       )}
       {order && <OrderItemList orders={order.orderItems} language={language} />}
       <Button>{language.trackYourOrder}</Button>
+      <StatusTracker steps={orderTrackingList} status={status} />
       <p>{language.orderNumber}</p>
       <p>{language.orderSummary}</p>
       <p>{language.paymentMethod}</p>

@@ -13,6 +13,10 @@ export interface CreateOrderRequest {
 }
 
 export type DeliveryStatus = 'created' | 'processing' | 'shipped' | 'delivered';
+export interface User {
+  id: string;
+  username: string;
+}
 
 export interface OrderResponse extends DefaultResponseType {
   billingAddress: BaseAddress;
@@ -24,4 +28,5 @@ export interface OrderResponse extends DefaultResponseType {
   paymentStatus: PaymentStatus;
   shippingAddress: BaseAddress;
   summary: Summary;
+  user: User;
 }
