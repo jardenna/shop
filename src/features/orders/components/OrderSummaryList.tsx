@@ -35,4 +35,5 @@ const OrderSummaryList = ({
       </ul>
     </>
   );
+
 export default OrderSummaryList;
