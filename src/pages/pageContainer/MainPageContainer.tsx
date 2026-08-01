@@ -7,6 +7,7 @@ type MainPageContainerProps = {
   children: ReactNode;
   heading: string;
   className?: string;
+  hideBreadCrumbs?: boolean;
 };
 
 // Accept display text, not translation keys.
@@ -14,6 +15,7 @@ const MainPageContainer = ({
   children,
   heading,
   className = '',
+  hideBreadCrumbs,
 }: MainPageContainerProps) => {
   const ariaLabelledby = ariaInfoTitle(heading);
 
@@ -24,7 +26,11 @@ const MainPageContainer = ({
         className={`container ${className}`}
         aria-labelledby={ariaLabelledby}
       >
-        <PageHeader heading={heading} ariaLabelledby={ariaLabelledby} />
+        <PageHeader
+          heading={heading}
+          ariaLabelledby={ariaLabelledby}
+          hideBreadCrumbs={hideBreadCrumbs}
+        />
         {children}
       </section>
     </>

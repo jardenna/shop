@@ -6,6 +6,7 @@ import './_page-header.scss';
 type PageHeaderProps = {
   ariaLabelledby: string;
   heading: string;
+  hideBreadCrumbs?: boolean;
   linkText?: string;
   linkTo?: string;
 };
@@ -15,10 +16,11 @@ const PageHeader = ({
   linkTo,
   linkText,
   ariaLabelledby,
+  hideBreadCrumbs,
 }: PageHeaderProps) => (
   <LayoutElement className="page-header">
     <div>
-      <Breadcrumbs currentLabel={heading} />
+      {!hideBreadCrumbs && <Breadcrumbs currentLabel={heading} />}
       <h1 id={ariaLabelledby}>{heading}</h1>
     </div>
     {linkTo && linkText && (

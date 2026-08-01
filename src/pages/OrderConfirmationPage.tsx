@@ -8,6 +8,7 @@ import OrderAddressList from '../features/orders/components/OrderAddressList';
 import { useGetOrderByIdQuery } from '../features/orders/orderApiSlice';
 import { createOrderAddressList } from '../features/orders/utils/createOrderAddressList';
 import { orderTrackingList } from '../features/orders/utils/createTrackingList';
+import MainPageContainer from './pageContainer/MainPageContainer';
 
 const OrderConfirmationPage = () => {
   const { id } = useParams();
@@ -26,10 +27,10 @@ const OrderConfirmationPage = () => {
     : [];
 
   return (
-    <div className="container">
-      <h1>
-        {order && order.user.username}, {language.orderConfirmationTitle}
-      </h1>
+    <MainPageContainer
+      hideBreadCrumbs
+      heading={`${order && order.user.username}, ${language.orderConfirmationTitle}`}
+    >
       <p>{language.orderConfirmationDescription}</p>
       <p>{language.orderConfirmationProcessing}</p>
       {order && (
@@ -46,7 +47,7 @@ const OrderConfirmationPage = () => {
       <p>{language.orderSummary}</p>
       <p>{language.paymentMethod}</p>
       <OrderAddressList addresses={addressList} refetch={refetch} />
-    </div>
+    </MainPageContainer>
   );
 };
 
