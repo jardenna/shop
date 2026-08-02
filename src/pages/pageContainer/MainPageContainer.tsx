@@ -1,7 +1,6 @@
-import type { ReactNode } from 'react';
+import { useId, type ReactNode } from 'react';
 import PageHeader from '../../components/pageHeader/PageHeader';
 import MetaTags from '../../layout/MetaTags';
-import { ariaInfoTitle } from '../../utils/utils';
 
 type MainPageContainerProps = {
   children: ReactNode;
@@ -19,7 +18,7 @@ const MainPageContainer = ({
   variant,
   hideBreadCrumbs,
 }: MainPageContainerProps) => {
-  const ariaLabelledby = ariaInfoTitle(heading);
+  const ariaLabelledby = useId();
 
   return (
     <section
