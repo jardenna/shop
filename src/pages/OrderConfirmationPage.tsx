@@ -1,5 +1,4 @@
 import { useParams } from 'react-router';
-import Button from '../components/Button';
 import DateDisplay from '../components/datePicker/DateDisplay';
 import StatusTracker from '../components/statusTracker/StatusTracker';
 import OrderItemList from '../features/cart/components/orderItemCard/OrderItemList';
@@ -35,6 +34,8 @@ const OrderConfirmationPage = () => {
       <h2>{language.orderConfirmationDescription}</h2>
       <p>{language.orderConfirmationProcessing}</p>
 
+      <StatusTracker steps={orderTrackingList} status={status} />
+
       {order && (
         <div>
           <SummaryList
@@ -44,8 +45,6 @@ const OrderConfirmationPage = () => {
           />
 
           <OrderItemList orders={order.orderItems} language={language} />
-          <Button>{language.trackYourOrder}</Button>
-          <StatusTracker steps={orderTrackingList} status={status} />
           <section>
             <h2>{language.orderSummary}</h2>
             <div>

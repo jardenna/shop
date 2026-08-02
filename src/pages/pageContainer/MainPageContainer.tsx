@@ -20,20 +20,18 @@ const MainPageContainer = ({
   const ariaLabelledby = ariaInfoTitle(heading);
 
   return (
-    <>
+    <section
+      className={`container ${className}`}
+      aria-labelledby={ariaLabelledby}
+    >
       <MetaTags metaTitle={heading} />
-      <section
-        className={`container ${className}`}
-        aria-labelledby={ariaLabelledby}
-      >
-        <PageHeader
-          heading={heading}
-          ariaLabelledby={ariaLabelledby}
-          hideBreadCrumbs={hideBreadCrumbs}
-        />
-        {children}
-      </section>
-    </>
+      <PageHeader
+        heading={heading}
+        ariaLabelledby={ariaLabelledby}
+        hideBreadCrumbs={hideBreadCrumbs}
+      />
+      {children}
+    </section>
   );
 };
 
