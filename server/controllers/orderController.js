@@ -1,3 +1,4 @@
+import { DELIVERY_STATUS } from '../config/constants.js';
 import {
   PAYMENT_METHODS_LIST,
   PAYMENT_STATUS,
@@ -136,9 +137,12 @@ const createOrder = asyncHandler(async (req, res) => {
     user: req.user._id,
     orderItems: createdOrders,
     payment: paymentData,
+    delivery: {
+      status: DELIVERY_STATUS.PROCESSING,
+    },
     shippingAddress,
     billingAddress,
-    paymentStatus: PAYMENT_STATUS.PENDING,
+    paymentStatus: PAYMENT_STATUS.PROCESSING,
     summary: {
       subTotal: summary.subTotal,
       taxPrice: summary.taxPrice,
