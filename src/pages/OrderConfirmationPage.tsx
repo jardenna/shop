@@ -46,7 +46,7 @@ const OrderConfirmationPage = () => {
           <OrderItemList orders={order.orderItems} language={language} />
           <Button>{language.trackYourOrder}</Button>
           <StatusTracker steps={orderTrackingList} status={status} />
-          <article>
+          <section>
             <h2>{language.orderSummary}</h2>
             <div>
               <p>{language.orderNumber}</p>
@@ -60,7 +60,7 @@ const OrderConfirmationPage = () => {
               <p>{language.paymentMethod}</p>
               <p>{order.payment.method}</p>
             </div>
-          </article>
+          </section>
 
           <OrderAddressList addresses={addressList} refetch={refetch} />
         </div>
