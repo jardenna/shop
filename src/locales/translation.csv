@@ -152,7 +152,7 @@ employee;Employee;Ansat
 employeeDiscount;Employee discount;Medarbejder rabat
 error;Error;Fejl
 errorAltText;A really guilty emoji.;En meget skyldig emoji.
-estimatedShipping;Estimated shipping;Anslået leveringspris
+estimatedShipping;Shipping;Leveringspris
 expanded;Expanded;Udvidet
 expandMenu;Expand menu;Udvid menu
 expiryDate;Expiry date (mm/yy);Udløbsdato (mm/yy)
