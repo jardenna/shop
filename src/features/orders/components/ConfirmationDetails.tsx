@@ -15,15 +15,14 @@ const ConfirmationDetails = ({
 }: ConfirmationDetailsProp) => {
   const { language } = useLanguage();
   return (
-    <section>
-      <h2 className="confirmation-summary-heading">{language.orderSummary}</h2>
-
+    <article>
+      <h2 className="order-flow-title">{language.orderSummary}</h2>
       <ul className="confirmation-detail-list">
         <ConfirmationDetailItem text={`# ${id}`} label={language.orderNumber} />
         <ConfirmationDetailItem date={createdAt} label={language.orderPlaced} />
         <ConfirmationDetailItem text={method} label={language.paymentMethod} />
       </ul>
-    </section>
+    </article>
   );
 };
 

@@ -27,53 +27,49 @@
   }
 }
 
-.confirmation-summary {
-  display: flex;
-
-  .order-list {
-    flex: 1;
-  }
-
-  .summary-list {
-    background-color: $color-background;
-    padding: 20px;
-    border-radius: 4px;
-  }
-}
-
-.confirmation-info-container {
-  display: flex;
-
-  .my-address-list {
-    display: flex;
-    gap: 40px;
-    flex: 1;
-    justify-content: flex-end;
-  }
-
-  .my-address-item {
-    border: 0;
-    background: #f9f9f9;
-    border-radius: 4px;
-  }
-}
-
-.text {
+.confirmation-content {
   display: flex;
   flex-direction: column;
   gap: 40px;
-}
 
-.confirmation-sub-header {
-  text-wrap: balance;
-}
+  .confirmation-summary {
+    display: flex;
 
-.confirmation-detail-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+    .summary-list {
+      background-color: $color-background;
+      padding: 20px;
+      border-radius: 4px;
+    }
+  }
 
-  p {
-    margin: 0;
+  .confirmation-info-container {
+    display: flex;
+
+    .confirmation-sub-header {
+      text-wrap: balance;
+    }
+
+    .my-address-list {
+      display: flex;
+      gap: 40px;
+      flex: 1;
+      justify-content: flex-end;
+    }
+
+    .my-address-item {
+      border: 0;
+      background: #f9f9f9;
+      border-radius: 4px;
+    }
+  }
+
+  .confirmation-detail-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    p {
+      margin: 0;
+    }
   }
 }
