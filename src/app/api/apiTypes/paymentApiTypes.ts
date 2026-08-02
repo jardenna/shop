@@ -7,8 +7,6 @@ import { paymentMethods } from '../apiConstants';
 export type PaymentMethods =
   (typeof paymentMethods)[keyof typeof paymentMethods];
 
-export type PaymentStatus = 'pending' | 'failed' | 'paid';
-
 export type PaymentFieldName =
   | 'cardNumber'
   | 'expiryDate'
@@ -44,3 +42,11 @@ export interface PaymentFormValues extends KeyValuePair<string> {
 }
 
 export type ValidatePayment = PaymentFormValues;
+
+export type PaymentStatus = 'completed' | 'pending' | 'failed';
+
+export interface Payment {
+  method: PaymentMethods;
+  paidAt: Date;
+  status: PaymentStatus;
+}
