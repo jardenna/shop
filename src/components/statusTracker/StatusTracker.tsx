@@ -31,7 +31,7 @@ const StatusTracker = ({ steps, status }: StatusTrackerProps) => {
       {steps.map(({ id, label, iconName }, index) => (
         <li key={id} className="tracking-list-item">
           <span
-            className={`tracking-list-icon ${index <= currentStatusIndex ? 'completed' : ''}`}
+            className={`tracking-list-icon ${index <= currentStatusIndex ? 'completed' : ''} ${index === currentStatusIndex ? 'in-procsss' : ''}`}
           >
             <Icon iconName={iconName} aria-hidden />
           </span>

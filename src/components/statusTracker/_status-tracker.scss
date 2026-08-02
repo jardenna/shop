@@ -2,6 +2,7 @@
 @use 'sass:math';
 
 $tracking-base-size: rem(60px);
+$tracking-base-color: $color-gray-60;
 
 .tracking-list {
   position: relative;
@@ -27,6 +28,11 @@ $tracking-base-size: rem(60px);
     display: flex;
     flex-direction: column;
     gap: 4px;
+    color: $tracking-base-color;
+
+    &:has(.completed) {
+      color: inherit;
+    }
   }
 
   .tracking-list-icon {
@@ -38,10 +44,19 @@ $tracking-base-size: rem(60px);
     border-radius: 50%;
     background-color: $color-white;
     border: $border-dark;
+    color: $tracking-base-color;
+    border-color: $tracking-base-color;
 
     &.completed {
-      background-color: $color-gray-60;
+      background-color: $tracking-base-color;
       color: $color-white;
+    }
+
+    &.in-procsss {
+      background-color: $color-blue-25;
+      color: $color-white;
+      border-color: $color-blue-25;
+      box-shadow: $box-shadow;
     }
   }
 }
