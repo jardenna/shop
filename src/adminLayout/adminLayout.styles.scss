@@ -14,6 +14,7 @@
   align-items: center;
   width: 100%;
   z-index: 1;
+  margin-top: 20px;
 
   .page-header-link {
     @include max-size($mini) {
@@ -50,7 +51,6 @@
     align-items: center;
     padding-inline: 20px;
     justify-content: space-between;
-    margin-bottom: 20px;
 
     .menu-burger {
       top: 30px;
