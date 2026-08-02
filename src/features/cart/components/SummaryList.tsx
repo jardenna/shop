@@ -22,10 +22,9 @@ const SummaryList = ({
 
   return (
     <section className="summary-list">
-      {summaryItems.map(({ label, price, className, isDiscount }) => (
+      {summaryItems.map(({ label, price, isDiscount }) => (
         <SummaryItem
           key={label}
-          className={className}
           isDiscount={isDiscount}
           label={label}
           price={price}
