@@ -36,7 +36,7 @@ const ProductPrice = ({
     <div className="product-price">
       {discount ? (
         <>
-          <span className="discount-price">{displayPrice}</span>
+          <span className="discount">{displayPrice}</span>
           <span aria-hidden className="price-seperator">
             /
           </span>
