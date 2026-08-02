@@ -8,6 +8,7 @@ type MainPageContainerProps = {
   heading: string;
   className?: string;
   hideBreadCrumbs?: boolean;
+  variant?: 'small' | 'medium' | 'large';
 };
 
 // Accept display text, not translation keys.
@@ -15,13 +16,14 @@ const MainPageContainer = ({
   children,
   heading,
   className = '',
+  variant,
   hideBreadCrumbs,
 }: MainPageContainerProps) => {
   const ariaLabelledby = ariaInfoTitle(heading);
 
   return (
     <section
-      className={`container ${className}`}
+      className={`container ${variant ? `page-${variant}` : ''} ${className}`}
       aria-labelledby={ariaLabelledby}
     >
       <MetaTags metaTitle={heading} />

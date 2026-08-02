@@ -29,6 +29,7 @@ const OrderConfirmationPage = () => {
   return (
     <MainPageContainer
       hideBreadCrumbs
+      variant="medium"
       heading={`${order && order.user.username}, ${language.orderConfirmationTitle}`}
     >
       <h2>{language.orderConfirmationDescription}</h2>
