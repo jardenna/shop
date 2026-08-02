@@ -1,4 +1,6 @@
+import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
+import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import StatusTracker from '../components/statusTracker/StatusTracker';
 import OrderItemList from '../features/cart/components/orderItemCard/OrderItemList';
 import SummaryList from '../features/cart/components/SummaryList';
@@ -37,37 +39,44 @@ const OrderConfirmationPage = () => {
         <ConfirmationSubHeader />
 
         <StatusTracker steps={orderTrackingList} status={status} />
-
-        {order && (
-          <>
-            <section className="confirmation-summary">
-              <article className="summary-items">
-                <h2 className="order-flow-title">Varer i din ordre</h2>
-                <OrderItemList orders={order.orderItems} language={language} />
-              </article>
-
-              <article>
-                <div className="summary-payment">
-                  <h2 className="order-flow-title">Prisoversigt</h2>
-                  <SummaryList
+        <ErrorBoundary
+          FallbackComponent={ErrorBoundaryFallback}
+          onReset={refetch}
+        >
+          {order && (
+            <>
+              <section className="confirmation-summary">
+                <article className="summary-items">
+                  <h2 className="order-flow-title">Varer i din ordre</h2>
+                  <OrderItemList
+                    orders={order.orderItems}
                     language={language}
-                    summary={order.summary}
-                    promoDiscount={order.discount}
                   />
-                </div>
-              </article>
-            </section>
-            <section className="confirmation-info-container">
-              <ConfirmationDetails
-                createdAt={order.createdAt}
-                id={order.id}
-                method={order.payment.method}
-              />
+                </article>
 
-              <OrderAddressList addresses={addressList} refetch={refetch} />
-            </section>
-          </>
-        )}
+                <article>
+                  <div className="summary-payment">
+                    <h2 className="order-flow-title">Prisoversigt</h2>
+                    <SummaryList
+                      language={language}
+                      summary={order.summary}
+                      promoDiscount={order.discount}
+                    />
+                  </div>
+                </article>
+              </section>
+              <section className="confirmation-info-container">
+                <ConfirmationDetails
+                  createdAt={order.createdAt}
+                  id={order.id}
+                  method={order.payment.method}
+                />
+
+                <OrderAddressList addresses={addressList} refetch={refetch} />
+              </section>
+            </>
+          )}
+        </ErrorBoundary>
       </div>
     </MainPageContainer>
   );
