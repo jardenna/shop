@@ -34,12 +34,7 @@
 
   .confirmation-summary {
     display: flex;
-
-    .summary-list {
-      background-color: $color-background;
-      padding: 20px;
-      border-radius: 4px;
-    }
+    gap: 40px;
   }
 
   .confirmation-info-container {
@@ -66,10 +61,25 @@
   .confirmation-detail-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 20px;
 
     p {
       margin: 0;
     }
+  }
+
+  .summary-payment {
+    background-color: $color-background;
+    padding: 20px;
+    border-radius: 4px;
+  }
+
+  .summary-items {
+    flex: 1;
+  }
+
+  .confirmation-detail-list-title {
+    border-bottom: $border-dark;
+    padding-bottom: 8px;
   }
 }

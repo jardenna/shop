@@ -16,7 +16,9 @@ const ConfirmationDetails = ({
   const { language } = useLanguage();
   return (
     <article>
-      <h2 className="order-flow-title">{language.orderSummary}</h2>
+      <h2 className="order-flow-title confirmation-detail-list-title">
+        {language.orderSummary}
+      </h2>
       <ul className="confirmation-detail-list">
         <ConfirmationDetailItem text={`# ${id}`} label={language.orderNumber} />
         <ConfirmationDetailItem date={createdAt} label={language.orderPlaced} />
