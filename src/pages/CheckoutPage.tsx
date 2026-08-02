@@ -58,8 +58,9 @@ const CheckoutPage = () => {
             <section className="order-flow-list" ref={addressSectionRef}>
               <header className="order-flow-header">
                 <h2 className="order-flow-title">{language.addresses}</h2>
-                {checkout.addresses.length === 0 &&
-                  language.addressRequiredToPlaceOrder}
+                {checkout.addresses.length === 0 && (
+                  <span>({language.addressRequiredToPlaceOrder})</span>
+                )}
               </header>
               <AddressList
                 addresses={checkout.addresses}
