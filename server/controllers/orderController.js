@@ -142,7 +142,6 @@ const createOrder = asyncHandler(async (req, res) => {
     },
     shippingAddress,
     billingAddress,
-    paymentStatus: PAYMENT_STATUS.PROCESSING,
     summary: {
       subTotal: summary.subTotal,
       taxPrice: summary.taxPrice,
