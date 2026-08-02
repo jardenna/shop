@@ -2,17 +2,17 @@ import { PaymentMethods } from '../../../app/api/apiTypes/paymentApiTypes';
 import { useLanguage } from '../../language/useLanguage';
 import ConfirmationDetailItem from './ConfirmationDetailItem';
 
-interface OrderConfirmationDetailsProp {
+interface ConfirmationDetailsProp {
   createdAt: Date;
   id: string;
   method: PaymentMethods;
 }
 
-const OrderConfirmationDetails = ({
+const ConfirmationDetails = ({
   createdAt,
   method,
   id,
-}: OrderConfirmationDetailsProp) => {
+}: ConfirmationDetailsProp) => {
   const { language } = useLanguage();
   return (
     <section>
@@ -27,4 +27,4 @@ const OrderConfirmationDetails = ({
   );
 };
 
-export default OrderConfirmationDetails;
+export default ConfirmationDetails;

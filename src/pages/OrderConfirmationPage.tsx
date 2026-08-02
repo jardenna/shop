@@ -3,8 +3,8 @@ import StatusTracker from '../components/statusTracker/StatusTracker';
 import OrderItemList from '../features/cart/components/orderItemCard/OrderItemList';
 import SummaryList from '../features/cart/components/SummaryList';
 import { useLanguage } from '../features/language/useLanguage';
+import ConfirmationDetails from '../features/orders/components/ConfirmationDetails';
 import OrderAddressList from '../features/orders/components/OrderAddressList';
-import OrderConfirmationDetails from '../features/orders/components/OrderConfirmationDetails';
 import OrderConfirmationSubHeader from '../features/orders/components/OrderConfirmationSubHeader';
 import { useGetOrderByIdQuery } from '../features/orders/orderApiSlice';
 import { createOrderAddressList } from '../features/orders/utils/createOrderAddressList';
@@ -47,7 +47,7 @@ const OrderConfirmationPage = () => {
               promoDiscount={order.discount}
             />
           </div>
-          <OrderConfirmationDetails
+          <ConfirmationDetails
             createdAt={order.createdAt}
             id={order.id}
             method={order.payment.method}
