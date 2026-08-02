@@ -41,6 +41,9 @@ const OrderConfirmationPage = () => {
         {order && (
           <>
             <div className="confirmation-summary">
+              <h2 className="confirmation-summary-heading">
+                Varer i din ordre
+              </h2>
               <OrderItemList orders={order.orderItems} language={language} />
               <SummaryList
                 language={language}
