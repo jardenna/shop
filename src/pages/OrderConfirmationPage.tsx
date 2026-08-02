@@ -1,5 +1,6 @@
 import { useParams } from 'react-router';
 import Button from '../components/Button';
+import DateDisplay from '../components/datePicker/DateDisplay';
 import StatusTracker from '../components/statusTracker/StatusTracker';
 import OrderItemList from '../features/cart/components/orderItemCard/OrderItemList';
 import SummaryList from '../features/cart/components/SummaryList';
@@ -31,22 +32,39 @@ const OrderConfirmationPage = () => {
       hideBreadCrumbs
       heading={`${order && order.user.username}, ${language.orderConfirmationTitle}`}
     >
-      <p>{language.orderConfirmationDescription}</p>
+      <h2>{language.orderConfirmationDescription}</h2>
       <p>{language.orderConfirmationProcessing}</p>
+
       {order && (
-        <SummaryList
-          language={language}
-          summary={order.summary}
-          promoDiscount={order.discount}
-        />
+        <div>
+          <SummaryList
+            language={language}
+            summary={order.summary}
+            promoDiscount={order.discount}
+          />
+
+          <OrderItemList orders={order.orderItems} language={language} />
+          <Button>{language.trackYourOrder}</Button>
+          <StatusTracker steps={orderTrackingList} status={status} />
+          <article>
+            <h2>{language.orderSummary}</h2>
+            <div>
+              <p>{language.orderNumber}</p>
+              <p># {order.id}</p>
+            </div>
+            <div>
+              <p>{language.orderPlaced}</p>
+              <DateDisplay date={order.createdAt} />
+            </div>
+            <div>
+              <p>{language.paymentMethod}</p>
+              <p>{order.payment.method}</p>
+            </div>
+          </article>
+
+          <OrderAddressList addresses={addressList} refetch={refetch} />
+        </div>
       )}
-      {order && <OrderItemList orders={order.orderItems} language={language} />}
-      <Button>{language.trackYourOrder}</Button>
-      <StatusTracker steps={orderTrackingList} status={status} />
-      <p>{language.orderNumber}</p>
-      <p>{language.orderSummary}</p>
-      <p>{language.paymentMethod}</p>
-      <OrderAddressList addresses={addressList} refetch={refetch} />
     </MainPageContainer>
   );
 };
