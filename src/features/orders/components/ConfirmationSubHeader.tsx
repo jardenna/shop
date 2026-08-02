@@ -1,7 +1,8 @@
 import { useLanguage } from '../../language/useLanguage';
 
-const OrderConfirmationSubHeader = () => {
+const ConfirmationSubHeader = () => {
   const { language } = useLanguage();
+
   return (
     <section className="confirmation-sub-header">
       <h2>{language.orderConfirmationDescription}</h2>
@@ -10,4 +11,4 @@ const OrderConfirmationSubHeader = () => {
   );
 };
 
-export default OrderConfirmationSubHeader;
+export default ConfirmationSubHeader;

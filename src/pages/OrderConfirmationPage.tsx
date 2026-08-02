@@ -4,8 +4,8 @@ import OrderItemList from '../features/cart/components/orderItemCard/OrderItemLi
 import SummaryList from '../features/cart/components/SummaryList';
 import { useLanguage } from '../features/language/useLanguage';
 import ConfirmationDetails from '../features/orders/components/ConfirmationDetails';
+import ConfirmationSubHeader from '../features/orders/components/ConfirmationSubHeader';
 import OrderAddressList from '../features/orders/components/OrderAddressList';
-import OrderConfirmationSubHeader from '../features/orders/components/OrderConfirmationSubHeader';
 import { useGetOrderByIdQuery } from '../features/orders/orderApiSlice';
 import { createOrderAddressList } from '../features/orders/utils/createOrderAddressList';
 import { orderTrackingList } from '../features/orders/utils/createTrackingList';
@@ -33,7 +33,7 @@ const OrderConfirmationPage = () => {
       variant="medium"
       heading={`${order && order.user.username}, ${language.orderConfirmationTitle}`}
     >
-      <OrderConfirmationSubHeader />
+      <ConfirmationSubHeader />
 
       <StatusTracker steps={orderTrackingList} status={status} />
 
