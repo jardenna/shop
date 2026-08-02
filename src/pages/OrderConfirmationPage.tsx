@@ -5,6 +5,7 @@ import OrderItemList from '../features/cart/components/orderItemCard/OrderItemLi
 import SummaryList from '../features/cart/components/SummaryList';
 import { useLanguage } from '../features/language/useLanguage';
 import OrderAddressList from '../features/orders/components/OrderAddressList';
+import OrderConfirmationSubHeader from '../features/orders/components/OrderConfirmationSubHeader';
 import { useGetOrderByIdQuery } from '../features/orders/orderApiSlice';
 import { createOrderAddressList } from '../features/orders/utils/createOrderAddressList';
 import { orderTrackingList } from '../features/orders/utils/createTrackingList';
@@ -32,20 +33,20 @@ const OrderConfirmationPage = () => {
       variant="medium"
       heading={`${order && order.user.username}, ${language.orderConfirmationTitle}`}
     >
-      <h2>{language.orderConfirmationDescription}</h2>
-      <p>{language.orderConfirmationProcessing}</p>
+      <OrderConfirmationSubHeader />
 
       <StatusTracker steps={orderTrackingList} status={status} />
 
       {order && (
         <div>
-          <SummaryList
-            language={language}
-            summary={order.summary}
-            promoDiscount={order.discount}
-          />
-
-          <OrderItemList orders={order.orderItems} language={language} />
+          <div className="order-confirmation-summary">
+            <OrderItemList orders={order.orderItems} language={language} />
+            <SummaryList
+              language={language}
+              summary={order.summary}
+              promoDiscount={order.discount}
+            />
+          </div>
           <section>
             <h2>{language.orderSummary}</h2>
             <div>
@@ -61,7 +62,6 @@ const OrderConfirmationPage = () => {
               <p>{order.payment.method}</p>
             </div>
           </section>
-
           <OrderAddressList addresses={addressList} refetch={refetch} />
         </div>
       )}

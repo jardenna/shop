@@ -26,3 +26,17 @@
     gap: 4px;
   }
 }
+
+.order-confirmation-summary {
+  display: flex;
+
+  .order-list {
+    flex: 1;
+  }
+
+  .summary-list {
+    background-color: $color-background;
+    padding: 20px;
+    border-radius: 4px;
+  }
+}
