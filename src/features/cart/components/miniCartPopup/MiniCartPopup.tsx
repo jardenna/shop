@@ -50,7 +50,8 @@ const MiniCartPopup = () => {
   if (!apiCartList || !shouldRender) {
     return null;
   }
-  const { cartItems, summary } = apiCartList;
+  const { cartItems, summary, discount } = apiCartList;
+  const discountLabel = `${language[discount.label]} (${discount.percent}%)`;
 
   return (
     <Portal portalId="miniCard">
@@ -75,11 +76,17 @@ const MiniCartPopup = () => {
             )}
 
             <div className="mini-cart-summary-list">
-              <SummaryItem
-                label={language.employeeDiscount}
-                price={summary.promoDiscount}
-                isDiscount
-              />
+              {summary.promoDiscount > 0 && (
+                <SummaryItem
+                  label={
+                    discount.code === ''
+                      ? language.employeeDiscount
+                      : discountLabel
+                  }
+                  price={summary.promoDiscount}
+                  isDiscount
+                />
+              )}
               <SummaryItem
                 label={language.estimatedShipping}
                 price={summary.shippingPrice}
