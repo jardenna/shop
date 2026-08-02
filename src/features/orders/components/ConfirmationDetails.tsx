@@ -16,9 +16,9 @@ const ConfirmationDetails = ({
   const { language } = useLanguage();
   return (
     <section>
-      <h2>{language.orderSummary}</h2>
+      <h2 className="confirmation-summary-title">{language.orderSummary}</h2>
 
-      <ul>
+      <ul className="confirmation-detail-list">
         <ConfirmationDetailItem text={`# ${id}`} label={language.orderNumber} />
         <ConfirmationDetailItem date={createdAt} label={language.orderPlaced} />
         <ConfirmationDetailItem text={method} label={language.paymentMethod} />

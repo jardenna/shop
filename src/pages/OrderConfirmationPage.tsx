@@ -33,29 +33,33 @@ const OrderConfirmationPage = () => {
       variant="medium"
       heading={`${order && order.user.username}, ${language.orderConfirmationTitle}`}
     >
-      <ConfirmationSubHeader />
+      <div className="text">
+        <ConfirmationSubHeader />
 
-      <StatusTracker steps={orderTrackingList} status={status} />
+        <StatusTracker steps={orderTrackingList} status={status} />
 
-      {order && (
-        <div>
-          <div className="order-confirmation-summary">
-            <OrderItemList orders={order.orderItems} language={language} />
-            <SummaryList
-              language={language}
-              summary={order.summary}
-              promoDiscount={order.discount}
-            />
-          </div>
-          <ConfirmationDetails
-            createdAt={order.createdAt}
-            id={order.id}
-            method={order.payment.method}
-          />
+        {order && (
+          <>
+            <div className="confirmation-summary">
+              <OrderItemList orders={order.orderItems} language={language} />
+              <SummaryList
+                language={language}
+                summary={order.summary}
+                promoDiscount={order.discount}
+              />
+            </div>
+            <div className="confirmation-info-container">
+              <ConfirmationDetails
+                createdAt={order.createdAt}
+                id={order.id}
+                method={order.payment.method}
+              />
 
-          <OrderAddressList addresses={addressList} refetch={refetch} />
-        </div>
-      )}
+              <OrderAddressList addresses={addressList} refetch={refetch} />
+            </div>
+          </>
+        )}
+      </div>
     </MainPageContainer>
   );
 };

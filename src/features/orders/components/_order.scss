@@ -27,7 +27,7 @@
   }
 }
 
-.order-confirmation-summary {
+.confirmation-summary {
   display: flex;
 
   .order-list {
@@ -39,4 +39,48 @@
     padding: 20px;
     border-radius: 4px;
   }
+}
+
+.confirmation-info-container {
+  display: flex;
+
+  .my-address-list {
+    display: flex;
+    gap: 40px;
+    flex: 1;
+    justify-content: flex-end;
+  }
+
+  .my-address-item {
+    border: 0;
+    background: #f9f9f9;
+    border-radius: 4px;
+  }
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.confirmation-sub-header {
+  text-wrap: balance;
+}
+
+.confirmation-detail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  p {
+    margin: 0;
+  }
+}
+
+.confirmation-summary-title {
+  margin-bottom: 20px;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: $font-primary-semibold;
 }
