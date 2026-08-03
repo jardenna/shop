@@ -17,7 +17,12 @@ const OrderConfirmationPage = () => {
   const { id } = useParams();
   const { language } = useLanguage();
 
-  const { data: order, refetch } = useGetOrderByIdQuery(id ?? '');
+  const {
+    data: order,
+    refetch,
+    isError,
+    error,
+  } = useGetOrderByIdQuery(id ?? '');
   const status = {
     status: 'processing',
   };
@@ -29,6 +34,18 @@ const OrderConfirmationPage = () => {
       })
     : [];
 
+  if (isError) {
+    return (
+      <ErrorBoundaryFallback
+        error={error}
+        btnLabel={language.viewMyOrders}
+        resetErrorBoundary={() => {
+          refetch();
+        }}
+      />
+    );
+  }
+
   return (
     <MainPageContainer
       hideBreadCrumbs
@@ -39,6 +56,7 @@ const OrderConfirmationPage = () => {
         <ConfirmationSubHeader />
 
         <StatusTracker steps={orderTrackingList} status={status} />
+
         <ErrorBoundary
           FallbackComponent={ErrorBoundaryFallback}
           onReset={refetch}
