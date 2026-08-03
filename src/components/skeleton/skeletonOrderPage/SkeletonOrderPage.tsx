@@ -1,5 +1,6 @@
 import SkeletonProgress from '../skeletonProgress/SkeletonProgress';
 import './_skeleton-order-page.scss';
+import SkeletonPriceCol from './SkeletonPriceCol';
 import SkeletonSummeryItem from './SkeletonSummeryItem';
 
 const SkeletonOrderPage = () => (
@@ -8,34 +9,7 @@ const SkeletonOrderPage = () => (
 
     <div className="content-row">
       <SkeletonSummeryItem />
-
-      <div className="price-col">
-        <div className="price-box">
-          <div className="section-title skeleton" />
-
-          <div className="price-line">
-            <div className="skeleton label-skeleton" />
-            <div className="skeleton value-skeleton" />
-          </div>
-          <div className="price-line">
-            <div className="skeleton label-skeleton" />
-            <div className="skeleton value-skeleton" />
-          </div>
-          <div className="price-line">
-            <div className="skeleton label-skeleton" />
-            <div className="skeleton value-skeleton" />
-          </div>
-          <div className="price-line">
-            <div className="skeleton label-skeleton" />
-            <div className="skeleton value-skeleton" />
-          </div>
-
-          <div className="price-total">
-            <div className="skeleton label-skeleton" />
-            <div className="skeleton value-skeleton" />
-          </div>
-        </div>
-      </div>
+      <SkeletonPriceCol />
     </div>
 
     <div className="bottom-row">
