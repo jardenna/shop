@@ -12,7 +12,7 @@ const SkeletonOrderPage = () => (
       <SkeletonPriceCol />
     </div>
 
-    <div className="bottom-row">
+    <div className="confirmation-bottom-row">
       <div className="overview-col">
         <div className="overview-title skeleton" />
         <hr className="overview-divider" />
