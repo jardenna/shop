@@ -1,6 +1,5 @@
 @use '../../../scss/globals' as *;
 
-/* ---- items + price row ---- */
 .skeleton-order-page {
   .content-row {
     display: flex;
@@ -37,10 +36,10 @@
     gap: 12px;
     flex: 1;
     padding-top: 4px;
-  }
 
-  .item-info .skeleton {
-    height: 15px;
+    .skeleton {
+      height: 15px;
+    }
   }
 
   .item-name {
@@ -57,62 +56,59 @@
     flex-direction: column;
     gap: 8px;
     margin-top: 8px;
+
+    .skeleton {
+      width: 30%;
+    }
   }
 
-  .item-meta-lines .skeleton {
-    width: 30%;
-  }
-
-  /* ---- price summary box ---- */
   .price-col {
     flex: 1;
+
+    .price-box {
+      background-color: #f7f7f7;
+      padding: 28px;
+
+      .section-title {
+        width: 140px;
+      }
+    }
+
+    .price-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+
+      .label-skeleton {
+        width: 130px;
+        height: 15px;
+      }
+
+      .value-skeleton {
+        width: 80px;
+        height: 15px;
+      }
+    }
+
+    .price-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 20px;
+
+      .label-skeleton {
+        width: 60px;
+        height: 20px;
+      }
+
+      .value-skeleton {
+        width: 110px;
+        height: 20px;
+      }
+    }
   }
 
-  .price-box {
-    background-color: #f7f7f7;
-    padding: 28px;
-  }
-
-  .price-box .section-title {
-    width: 140px;
-  }
-
-  .price-line {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-
-  .price-line .label-skeleton {
-    width: 130px;
-    height: 15px;
-  }
-
-  .price-line .value-skeleton {
-    width: 80px;
-    height: 15px;
-  }
-
-  .price-total {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 20px;
-    border-top: 1px solid #ddd;
-  }
-
-  .price-total .label-skeleton {
-    width: 60px;
-    height: 20px;
-  }
-
-  .price-total .value-skeleton {
-    width: 110px;
-    height: 20px;
-  }
-
-  /* ---- order overview + addresses ---- */
   .confirmation-bottom-row {
     display: flex;
     gap: 48px;
@@ -153,20 +149,20 @@
     display: flex;
     gap: 24px;
     flex: 2;
-  }
 
-  .address-box {
-    flex: 1;
-    background-color: #f7f7f7;
-    padding: 28px;
+    .address-box {
+      flex: 1;
+      background-color: #f7f7f7;
+      padding: 28px;
 
-    .overview-label {
-      width: 150px;
-      margin-bottom: 20px;
-    }
+      .overview-label {
+        width: 150px;
+        margin-bottom: 20px;
+      }
 
-    .address-lines .skeleton {
-      height: 15px;
+      .address-lines .skeleton {
+        height: 15px;
+      }
     }
   }
 }
