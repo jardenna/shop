@@ -165,6 +165,10 @@ const routeConfig = createBrowserRouter([
             element: <OrderConfirmationPage />,
           },
           {
+            path: ShopPath.MyOrders,
+            element: <MyOrdersPage />,
+          },
+          {
             path: ShopPath.MyAccount,
             element: <AccountLayout />,
             children: [
@@ -172,10 +176,7 @@ const routeConfig = createBrowserRouter([
                 path: '',
                 element: <MyAccountPage />,
               },
-              {
-                path: ShopPath.MyOrders,
-                element: <MyOrdersPage />,
-              },
+
               {
                 path: ShopPath.MyAddresses,
                 element: <AddressPage />,

@@ -122,6 +122,7 @@ const Layout = () => {
     // Auth/logout always
     authDropdownItem,
   ];
+  console.log(dropdownItems);
 
   return (
     <div className="main-container">

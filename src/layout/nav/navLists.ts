@@ -74,10 +74,6 @@ const accountNavList: BaseNav[] = [
     path: ShopPath.MyAddresses,
     linkText: LinkText.MyAddresses,
   },
-  {
-    path: ShopPath.MyOrders,
-    linkText: LinkText.MyOrders,
-  },
 ];
 
 export { accountNavList, adminNavList, navList };
