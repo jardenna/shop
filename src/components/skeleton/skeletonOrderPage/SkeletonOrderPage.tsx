@@ -1,4 +1,4 @@
-import SkeletonProgress from '../SkeletonProgress';
+import SkeletonProgress from '../skeletonProgress/SkeletonProgress';
 import './_skeleton-order-page.scss';
 
 const SkeletonOrderPage = () => (

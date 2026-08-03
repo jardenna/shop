@@ -1,4 +1,5 @@
-import Skeleton, { PickedSkeletonTypes } from './Skeleton';
+import Skeleton, { PickedSkeletonTypes } from '../Skeleton';
+import './_skeleton-progress.scss';
 
 const SkeletonProgress = ({ count = 4 }: PickedSkeletonTypes) => {
   const skeletons = Array.from({ length: count });
