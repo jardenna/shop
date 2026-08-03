@@ -1,6 +1,15 @@
 @use '../../../scss/globals' as *;
 
 .skeleton-order-page {
+  .skeleton-sub-header {
+    max-width: rem(712px);
+
+    .skeleton-sub-header-title {
+      max-width: 65%;
+      margin-bottom: 12px;
+    }
+  }
+
   .content-row {
     display: flex;
     gap: 48px;

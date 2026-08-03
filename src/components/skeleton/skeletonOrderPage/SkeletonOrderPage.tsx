@@ -1,3 +1,5 @@
+import Skeleton from '../Skeleton';
+import SkeletonParagraph from '../SkeletonParagraph';
 import SkeletonProgress from '../skeletonProgress/SkeletonProgress';
 import './_skeleton-order-page.scss';
 import SkeletonAddressList from './SkeletonAddressList';
@@ -7,6 +9,10 @@ import SkeletonSummeryItem from './SkeletonSummeryItem';
 
 const SkeletonOrderPage = () => (
   <div className="confirmation-content skeleton-order-page">
+    <span className="skeleton-sub-header">
+      <Skeleton className="skeleton-sub-header-title" />
+      <SkeletonParagraph count={3} />
+    </span>
     <SkeletonProgress />
 
     <div className="content-row">
