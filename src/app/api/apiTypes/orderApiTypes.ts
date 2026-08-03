@@ -1,8 +1,7 @@
 import { BaseAddress } from './addressApiTypes';
 import { BaseOrder, Order } from './cartApiTypes';
-import { OrderItems } from './orderApiTypes';
 import { Payment, PaymentMethods } from './paymentApiTypes';
-import { DefaultResponseType, Discount, Size, Summary } from './sharedApiTypes';
+import { DefaultResponseType, Discount, Summary } from './sharedApiTypes';
 
 export interface CreateOrderRequest {
   billingAddressId: string;
@@ -32,31 +31,20 @@ export interface OrderResponse extends DefaultResponseType {
   user: User;
 }
 
-export interface OrderItems {
-  color: string;
-  id: string;
-  image: string;
-  price: number;
-  productId: string;
-  productName: string;
-  qty: number;
-  size: Size;
-}
-
 type PaymentStatus = 'PENDING' | 'COMPLETED';
 
-export interface Summary {
+export interface SummaryK {
   totalPrice: number;
 }
 
-export interface Payment {
+export interface PaymentT {
   status: PaymentStatus;
 }
 
 export interface MyOrdersResponse {
   createdAt: Date;
   id: string;
-  orderItems: OrderItems;
+  orderItems: Order[];
   payment: Payment;
   summary: Summary;
 }
