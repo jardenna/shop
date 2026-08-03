@@ -194,7 +194,9 @@ const getOrderById = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Private
 const getUserOrders = asyncHandler(async (req, res) => {
-  const orders = await Order.find({ user: req.user._id });
+  const orders = await Order.find({ user: req.user._id }).select(
+    '_id createdAt  paymentStatus payment.status deliveryStatus summary.totalPrice orderItems',
+  );
 
   res.status(200).json(orders);
 });

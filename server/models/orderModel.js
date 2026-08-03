@@ -141,12 +141,14 @@ const orderModelSchema = new Schema(
         returnedObject.id = returnedObject._id.toString();
         delete returnedObject._id;
 
-        returnedObject.orderItems = returnedObject.orderItems.map(
-          ({ _id, ...orderItem }) => ({
-            id: _id.toString(),
-            ...orderItem,
-          }),
-        );
+        if (returnedObject.orderItems) {
+          returnedObject.orderItems = returnedObject.orderItems.map(
+            ({ _id, ...orderItem }) => ({
+              id: _id.toString(),
+              ...orderItem,
+            }),
+          );
+        }
 
         return returnedObject;
       },
