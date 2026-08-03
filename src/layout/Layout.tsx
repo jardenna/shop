@@ -86,12 +86,14 @@ const Layout = () => {
   const accountDropdownList: DropdownItem[] = [
     {
       label: language.myAccount,
+      isActive: pathname.includes(ShopPath.MyAccount),
       onClick: () =>
         navigate(currentUser ? `/${ShopPath.MyAccount}` : `/${ShopPath.Login}`),
       icon: <Icon iconName={IconName.Auth} size="2.5em" />,
     },
     {
       label: language.myOrders,
+      isActive: pathname.includes(ShopPath.MyOrders),
       onClick: () => navigate(ShopPath.MyOrders),
       icon: <Icon iconName={IconName.Basket} />,
     },
@@ -104,7 +106,6 @@ const Layout = () => {
           },
         ]
       : []),
-
     {
       label: currentUser ? language.logout : language.login,
       onClick: currentUser
