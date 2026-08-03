@@ -1,0 +1,258 @@
+@use '../../../scss/globals' as *;
+
+/* ---- header text block ---- */
+.heading-skeleton {
+  width: 420px;
+  height: 26px;
+  margin-bottom: 20px;
+}
+
+.subheading-skeleton {
+  width: 340px;
+  height: 18px;
+  margin-bottom: 16px;
+}
+
+.paragraph-skeleton {
+  width: 90%;
+  max-width: 900px;
+  height: 16px;
+  margin-bottom: 48px;
+}
+
+/* ---- progress steps ---- */
+.progress {
+  display: flex;
+  align-items: center;
+  margin-bottom: 56px;
+  max-width: 1100px;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.step-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.step-label {
+  width: 80px;
+  height: 14px;
+  border-radius: 4px;
+}
+
+.step-line {
+  flex: 1;
+  height: 1px;
+  background: #e2e2e2;
+  margin: 0 12px;
+  align-self: flex-start;
+  margin-top: 30px;
+}
+
+/* ---- items + price row ---- */
+.content-row {
+  display: flex;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.items-col {
+  flex: 1.6;
+}
+
+.section-title {
+  width: 150px;
+  height: 16px;
+  margin-bottom: 24px;
+  border-radius: 4px;
+}
+
+.item-row {
+  display: flex;
+  gap: 20px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #eee;
+}
+
+.item-thumb {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  padding-top: 4px;
+}
+
+.item-info .skeleton {
+  height: 15px;
+}
+
+.item-name {
+  width: 55%;
+}
+
+.item-price {
+  width: 25%;
+  height: 20px;
+}
+
+.item-meta-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.item-meta-lines .skeleton {
+  width: 30%;
+}
+
+/* ---- price summary box ---- */
+.price-col {
+  flex: 1;
+}
+
+.price-box {
+  background: #f7f7f7;
+  border-radius: 4px;
+  padding: 28px;
+}
+
+.price-box .section-title {
+  width: 140px;
+}
+
+.price-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.price-line .label-skeleton {
+  width: 130px;
+  height: 15px;
+}
+
+.price-line .value-skeleton {
+  width: 80px;
+  height: 15px;
+}
+
+.price-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+}
+
+.price-total .label-skeleton {
+  width: 60px;
+  height: 20px;
+}
+
+.price-total .value-skeleton {
+  width: 110px;
+  height: 20px;
+}
+
+/* ---- order overview + addresses ---- */
+.bottom-row {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+.overview-col {
+  flex: 1.6;
+}
+
+.overview-title {
+  width: 170px;
+  height: 18px;
+  margin-bottom: 12px;
+  border-radius: 4px;
+}
+
+.overview-divider {
+  border: none;
+  border-top: 1px solid #ddd;
+  max-width: 260px;
+  margin-bottom: 28px;
+}
+
+.overview-group {
+  margin-bottom: 24px;
+}
+
+.overview-label {
+  width: 130px;
+  height: 13px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.overview-value {
+  width: 200px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.addresses {
+  display: flex;
+  gap: 24px;
+  flex: 2;
+}
+
+.address-box {
+  flex: 1;
+  background: #f7f7f7;
+  border-radius: 4px;
+  padding: 28px;
+}
+
+.address-box .overview-label {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+.address-box .address-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.address-box .address-lines .skeleton {
+  height: 15px;
+}
+
+.address-lines .line-name {
+  width: 50%;
+}
+
+.address-lines .line-street {
+  width: 35%;
+}
+
+.address-lines .line-city {
+  width: 40%;
+}
+
+.address-lines .line-country {
+  width: 28%;
+}
