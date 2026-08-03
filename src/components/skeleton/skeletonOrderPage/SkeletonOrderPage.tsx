@@ -1,32 +1,9 @@
+import SkeletonProgress from '../SkeletonProgress';
 import './_skeleton-order-page.scss';
 
 const SkeletonOrderPage = () => (
-  <section>
-    <div className="heading-skeleton skeleton" />
-    <div className="subheading-skeleton skeleton" />
-    <div className="paragraph-skeleton skeleton" />
-
-    <div className="progress">
-      <div className="step">
-        <div className="step-circle skeleton" />
-        <div className="step-label skeleton" />
-      </div>
-      <div className="step-line" />
-      <div className="step">
-        <div className="step-circle skeleton" />
-        <div className="step-label skeleton" />
-      </div>
-      <div className="step-line" />
-      <div className="step">
-        <div className="step-circle skeleton" />
-        <div className="step-label skeleton" />
-      </div>
-      <div className="step-line" />
-      <div className="step">
-        <div className="step-circle skeleton" />
-        <div className="step-label skeleton" />
-      </div>
-    </div>
+  <div className="confirmation-content">
+    <SkeletonProgress />
 
     <div className="content-row">
       <div className="items-col">
@@ -116,7 +93,7 @@ const SkeletonOrderPage = () => (
         </div>
       </div>
     </div>
-  </section>
+  </div>
 );
 
 export default SkeletonOrderPage;
