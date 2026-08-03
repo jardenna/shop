@@ -11,7 +11,6 @@ import User from '../models/userModel.js';
 import { buildOrderItems } from '../services/buildOrderItems.js';
 import { calculateCartSummary } from '../services/calculateCartSummary.js';
 import { getActiveDiscount } from '../services/getActiveDiscount.js';
-import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 import { validateFakePayment } from '../validators/validateFakePayment.js';
 import {
@@ -163,14 +162,12 @@ const createOrder = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Private for admin and employee
 const getAllOrders = asyncHandler(async (req, res) => {
-  const orders = await Order.find()
-    .populate({
-      path: 'user',
-      select: '_id username',
-    })
-    .lean();
+  const orders = await Order.find().populate({
+    path: 'user',
+    select: '_id username',
+  });
 
-  res.status(200).json(formatMongoData(orders));
+  res.status(200).json(orders);
 });
 
 // @desc    Get order by Id
@@ -197,9 +194,9 @@ const getOrderById = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Private
 const getUserOrders = asyncHandler(async (req, res) => {
-  const orders = await Order.find({ user: req.user._id }).lean();
+  const orders = await Order.find({ user: req.user._id });
 
-  res.status(200).json(formatMongoData(orders));
+  res.status(200).json(orders);
 });
 
 // @desc    Pay order
