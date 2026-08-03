@@ -3,10 +3,10 @@ import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import type { DropdownItem } from './DropdownBtn';
 
-type DropdownListProps = {
+interface DropdownListProps {
   dropdownList: DropdownItem[];
   defaultIndex?: number;
-};
+}
 
 const DropdownList = ({ dropdownList, defaultIndex }: DropdownListProps) => {
   const { listRefs } = useKeyboardListNav({
