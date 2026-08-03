@@ -26,8 +26,8 @@
   }
 
   .item-thumb {
-    width: 100px;
-    height: 100px;
+    width: 104px;
+    height: auto;
     flex-shrink: 0;
   }
 
@@ -126,18 +126,16 @@
   .overview-title {
     width: 170px;
     height: 18px;
-    margin-bottom: 12px;
-  }
-
-  .overview-divider {
-    border: none;
-    border-top: 1px solid #ddd;
-    max-width: 260px;
-    margin-bottom: 28px;
+    margin-bottom: 8px;
   }
 
   .overview-group {
     margin-bottom: 24px;
+    border-top: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 12px;
   }
 
   .overview-label {

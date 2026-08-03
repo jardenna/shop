@@ -16,19 +16,23 @@ const SkeletonOrderPage = () => (
     <div className="confirmation-bottom-row">
       <div className="overview-col">
         <div className="overview-title skeleton" />
-        <hr className="overview-divider" />
 
         <div className="overview-group">
-          <div className="overview-label skeleton" />
-          <div className="overview-value skeleton" />
-        </div>
-        <div className="overview-group">
-          <div className="overview-label skeleton" />
-          <div className="overview-value skeleton" />
-        </div>
-        <div className="overview-group">
-          <div className="overview-label skeleton" />
-          <div className="overview-value skeleton" style={{ width: '120px' }} />
+          <div>
+            <div className="overview-label skeleton" />
+            <div className="overview-value skeleton" />
+          </div>
+          <div>
+            <div className="overview-label skeleton" />
+            <div className="overview-value skeleton" />
+          </div>
+          <div>
+            <div className="overview-label skeleton" />
+            <div
+              className="overview-value skeleton"
+              style={{ width: '120px' }}
+            />
+          </div>
         </div>
       </div>
 
