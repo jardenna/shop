@@ -1,5 +1,6 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
+import { useNavigate } from 'react-router';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import SkeletonCheckoutPage from '../components/skeleton/checkoutpage/SkeletonCheckoutPage';
 import { useAuth } from '../features/auth/hooks/useAuth';
@@ -10,11 +11,13 @@ import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
 import { useLanguage } from '../features/language/useLanguage';
 import OrderSummaryList from '../features/orders/components/OrderSummaryList';
 import { useFormValidation } from '../hooks/useFormValidation';
+import { ShopPath } from '../layout/nav/enums';
 import AddressList from './account/AddressList';
 import './CheckoutPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const CheckoutPage = () => {
+  const navigate = useNavigate();
   const { language } = useLanguage();
   const { currentUser } = useAuth();
 
@@ -32,6 +35,16 @@ const CheckoutPage = () => {
     initialState,
   });
 
+  useEffect(() => {
+    if (checkout && checkout.cartItems.length === 0) {
+      navigate(`/${ShopPath.ShoppingCart}`, { replace: true });
+    }
+  }, [checkout, navigate]);
+
+  if (checkout && checkout.cartItems.length === 0) {
+    return null;
+  }
+
   return (
     <MainPageContainer heading={language.checkout}>
       {isError && <ErrorBoundaryFallback resetErrorBoundary={refetch} />}
@@ -45,8 +58,9 @@ const CheckoutPage = () => {
             <section className="order-flow-list" ref={addressSectionRef}>
               <header className="order-flow-header">
                 <h2 className="order-flow-title">{language.addresses}</h2>
-                {checkout.addresses.length === 0 &&
-                  language.addressRequiredToPlaceOrder}
+                {checkout.addresses.length === 0 && (
+                  <span>({language.addressRequiredToPlaceOrder})</span>
+                )}
               </header>
               <AddressList
                 addresses={checkout.addresses}

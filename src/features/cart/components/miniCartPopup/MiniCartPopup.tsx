@@ -16,7 +16,7 @@ import {
 } from '../../../miniCartPopupSlice';
 import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 import { useActiveCart } from '../../useActiveCart';
-import OrderItemCard from '../orderItemCard/OrderItemCard';
+import OrderItemList from '../orderItemCard/OrderItemList';
 import SummaryItem from '../SummaryItem';
 import './_mini-cart-popup.scss';
 
@@ -50,7 +50,8 @@ const MiniCartPopup = () => {
   if (!apiCartList || !shouldRender) {
     return null;
   }
-  const { cartItems, summary } = apiCartList;
+  const { cartItems, summary, discount } = apiCartList;
+  const discountLabel = `${language[discount.label]} (${discount.percent}%)`;
 
   return (
     <Portal portalId="miniCard">
@@ -63,13 +64,8 @@ const MiniCartPopup = () => {
           ref={miniCartRef}
         >
           <h2 className="mini-cart-title">{language.myBag}</h2>
-          <ul className="mini-cart-list">
-            {cartItems.map((order) => (
-              <li key={order.id} className="mini-cart-item">
-                <OrderItemCard order={order} language={language} />
-              </li>
-            ))}
-          </ul>
+          <OrderItemList orders={cartItems} language={language} />
+
           <article className="mini-cart-price-info">
             {summary.remainingForFreeShipping > 0 && (
               <div className="mini-cart-info">
@@ -80,11 +76,17 @@ const MiniCartPopup = () => {
             )}
 
             <div className="mini-cart-summary-list">
-              <SummaryItem
-                label={language.employeeDiscount}
-                price={summary.promoDiscount}
-                isDiscount
-              />
+              {summary.promoDiscount > 0 && (
+                <SummaryItem
+                  label={
+                    discount.code === ''
+                      ? language.employeeDiscount
+                      : discountLabel
+                  }
+                  price={summary.promoDiscount}
+                  isDiscount
+                />
+              )}
               <SummaryItem
                 label={language.estimatedShipping}
                 price={summary.shippingPrice}

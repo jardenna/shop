@@ -14,7 +14,7 @@ const SkeletonProductCart = () => (
         <Skeleton className="meta-size" />
       </span>
 
-      <span className="bottom-row">
+      <span className="product-cart-bottom-row">
         <span className="qty-selector">
           <Skeleton />
           <Skeleton className=" qty-value" />

@@ -13,7 +13,7 @@ const SummaryItem = ({
   price,
   isDiscount,
 }: SummaryItemProps) => (
-  <div className={`summary-item ${className}`}>
+  <div className={`summary-item  ${isDiscount ? 'discount' : ''} ${className}`}>
     <span>{label}</span>
     <span className="summary-info">
       <ProductPrice price={price} isNegativeNumber={isDiscount} />

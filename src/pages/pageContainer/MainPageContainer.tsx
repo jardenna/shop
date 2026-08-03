@@ -1,12 +1,13 @@
-import type { ReactNode } from 'react';
+import { useId, type ReactNode } from 'react';
 import PageHeader from '../../components/pageHeader/PageHeader';
 import MetaTags from '../../layout/MetaTags';
-import { ariaInfoTitle } from '../../utils/utils';
 
 type MainPageContainerProps = {
   children: ReactNode;
   heading: string;
   className?: string;
+  hideBreadCrumbs?: boolean;
+  variant?: 'small' | 'medium' | 'large';
 };
 
 // Accept display text, not translation keys.
@@ -14,20 +15,24 @@ const MainPageContainer = ({
   children,
   heading,
   className = '',
+  variant,
+  hideBreadCrumbs,
 }: MainPageContainerProps) => {
-  const ariaLabelledby = ariaInfoTitle(heading);
+  const ariaLabelledby = useId();
 
   return (
-    <>
+    <section
+      className={`container ${variant ? `page-${variant}` : ''} ${className}`}
+      aria-labelledby={ariaLabelledby}
+    >
       <MetaTags metaTitle={heading} />
-      <section
-        className={`container ${className}`}
-        aria-labelledby={ariaLabelledby}
-      >
-        <PageHeader heading={heading} ariaLabelledby={ariaLabelledby} />
-        {children}
-      </section>
-    </>
+      <PageHeader
+        heading={heading}
+        ariaLabelledby={ariaLabelledby}
+        hideBreadCrumbs={hideBreadCrumbs}
+      />
+      {children}
+    </section>
   );
 };
 

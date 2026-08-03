@@ -35,6 +35,7 @@ $animation-distance: 500px;
   z-index: 1000;
   top: 0;
   background-color: $color-white;
+  margin-bottom: 20px;
 
   .toggle-panel {
     @include max-size($mini) {

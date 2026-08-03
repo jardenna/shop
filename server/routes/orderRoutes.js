@@ -21,9 +21,7 @@ router
   .get(authenticate, authorizeEmployee, getAllOrders);
 
 router.route('/me').get(languageMiddleware, authenticate, getUserOrders);
-router
-  .route('/:id')
-  .get(languageMiddleware, authenticate, authorizeEmployee, getOrderById);
+router.route('/:id').get(languageMiddleware, authenticate, getOrderById);
 router.route('/:id/pay').put(languageMiddleware, authenticate, payOrder);
 router
   .route('/:id/deliver')

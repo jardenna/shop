@@ -1,3 +1,4 @@
+import { DELIVERY_STATUS } from '../config/constants.js';
 import {
   PAYMENT_METHODS_LIST,
   PAYMENT_STATUS,
@@ -136,9 +137,11 @@ const createOrder = asyncHandler(async (req, res) => {
     user: req.user._id,
     orderItems: createdOrders,
     payment: paymentData,
+    delivery: {
+      status: DELIVERY_STATUS.PROCESSING,
+    },
     shippingAddress,
     billingAddress,
-    paymentStatus: PAYMENT_STATUS.PENDING,
     summary: {
       subTotal: summary.subTotal,
       taxPrice: summary.taxPrice,
@@ -175,20 +178,18 @@ const getAllOrders = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Private
 const getOrderById = asyncHandler(async (req, res) => {
-  const order = await Order.findById(req.params.id)
-    .populate({
-      path: 'user',
-      select: '_id username',
-    })
-    .lean();
+  const order = await Order.findById(req.params.id).populate({
+    path: 'user',
+    select: '_id username',
+  });
 
   if (!order) {
     return res
       .status(404)
-      .json({ success: false, message: t('couldNotFindInfo', req.lang) });
+      .json({ success: false, message: t('orderNotFound', req.lang) });
   }
 
-  res.status(200).json(formatMongoData(order));
+  res.status(200).json(order);
 });
 
 // @desc    Get orders as a user
@@ -301,7 +302,7 @@ const payOrder = asyncHandler(async (req, res) => {
 
 // @desc    Deliver order
 // @route   /api/orders/:id/deliver
-// @method  Put
+// @method  Patch
 // @access  Private for admin and employee
 const deliverOrder = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);

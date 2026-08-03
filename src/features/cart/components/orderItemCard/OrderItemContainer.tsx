@@ -16,7 +16,7 @@ interface OrderItemContainerProps {
 }
 
 const OrderItemContainer = ({ product, children }: OrderItemContainerProps) => (
-  <article className="order-item">
+  <article className="order-item-cart">
     <Img src={product.image} alt="" className="order-item-img" />
     <div>
       <h2 className="order-item-title">{product.productName}</h2>

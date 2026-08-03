@@ -1,9 +1,10 @@
 @use './globals' as *;
 
 .container {
-  &.page-small {
-    max-width: $page-width-small;
-  }
+  max-width: rem(1800px);
+  margin: 0 auto;
+  padding-inline: 20px;
+  width: 100%;
 }
 
 .page-small {
@@ -12,6 +13,10 @@
 
 .page-medium {
   max-width: $page-width-medium;
+}
+
+.page-large {
+  max-width: $page-width-large;
 }
 
 .page-x-large {
@@ -44,6 +49,10 @@
   text-decoration-line: line-through;
 }
 
+.text-uppercase {
+  text-transform: uppercase;
+}
+
 .position-relative {
   position: relative;
 }
@@ -51,6 +60,10 @@
 .danger {
   background-color: transparent;
   color: $color-danger;
+}
+
+.discount {
+  color: $color-red-15;
 }
 
 .disabled-item {

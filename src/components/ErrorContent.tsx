@@ -5,10 +5,16 @@ import Picture from './Picture';
 type ErrorContentProps = {
   btnLabel: string;
   errorText: string;
+  errorCode?: number;
   onClick: () => void;
 };
 
-const ErrorContent = ({ onClick, errorText, btnLabel }: ErrorContentProps) => {
+const ErrorContent = ({
+  onClick,
+  errorText,
+  errorCode,
+  btnLabel,
+}: ErrorContentProps) => {
   const { language } = useLanguage();
 
   const src = '/images/icons/sad_smiley';
@@ -20,8 +26,9 @@ const ErrorContent = ({ onClick, errorText, btnLabel }: ErrorContentProps) => {
         srcSet={`${src}.avif`}
         alt={language.errorAltText}
       />
-
+      {errorCode && <span>{errorCode}</span>}
       <p className="error-info">{errorText}</p>
+
       <Button onClick={onClick}>{btnLabel}</Button>
     </section>
   );

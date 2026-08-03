@@ -14,6 +14,7 @@
   align-items: center;
   width: 100%;
   z-index: 1;
+  margin-top: 20px;
 
   .page-header-link {
     @include max-size($mini) {

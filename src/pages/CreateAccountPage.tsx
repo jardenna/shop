@@ -9,7 +9,7 @@ const CreateAccountPage = () => {
   const { language } = useLanguage();
 
   return (
-    <MainPageContainer heading={language.createAccount} className="page-small">
+    <MainPageContainer heading={language.createAccount} variant="small">
       <CreateAccount
         navigateTo={ShopPath.Root}
         currentUser={currentUser}

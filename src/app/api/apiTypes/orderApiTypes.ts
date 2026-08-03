@@ -1,6 +1,6 @@
 import { BaseAddress } from './addressApiTypes';
 import { BaseOrder, Order } from './cartApiTypes';
-import { PaymentMethods, PaymentStatus } from './paymentApiTypes';
+import { Payment, PaymentMethods } from './paymentApiTypes';
 import { DefaultResponseType, Discount, Summary } from './sharedApiTypes';
 
 export interface CreateOrderRequest {
@@ -12,6 +12,12 @@ export interface CreateOrderRequest {
   shippingAddressId: string;
 }
 
+export type DeliveryStatus = 'created' | 'processing' | 'shipped' | 'delivered';
+export interface User {
+  id: string;
+  username: string;
+}
+
 export interface OrderResponse extends DefaultResponseType {
   billingAddress: BaseAddress;
   discount: Discount;
@@ -19,7 +25,8 @@ export interface OrderResponse extends DefaultResponseType {
   isDelivered: boolean;
   isPaid: boolean;
   orderItems: Order[];
-  paymentStatus: PaymentStatus;
+  payment: Payment;
   shippingAddress: BaseAddress;
   summary: Summary;
+  user: User;
 }

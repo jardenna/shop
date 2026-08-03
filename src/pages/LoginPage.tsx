@@ -31,7 +31,7 @@ const LoginPage = () => {
     onReset,
   } = useAuth();
   // const initialState = { email: '', password: '' };
-  const initialState = { email: 'helle@mail.com', password: 'Helle123!' };
+  const initialState = { email: 'lisbeth@mail.com', password: 'Lisbeth123!' };
   const from = location.state?.from?.pathname || ShopPath.Root;
   const [searchParams, setSearchParams] = useSearchParams();
   const paramKey = 'mode';
@@ -83,7 +83,7 @@ const LoginPage = () => {
   }
 
   return (
-    <MainPageContainer heading={language[heading]} className="page-small">
+    <MainPageContainer heading={language[heading]} variant="small">
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={() => onReset()}

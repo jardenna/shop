@@ -1,0 +1,201 @@
+@use '../../../scss/globals' as *;
+
+.skeleton-order-page {
+  .skeleton-sub-header {
+    max-width: rem(712px);
+
+    .skeleton-sub-header-title {
+      max-width: 65%;
+      margin-bottom: 12px;
+    }
+  }
+
+  .content-row {
+    display: flex;
+    gap: 48px;
+
+    @include max-size($small) {
+      flex-direction: column;
+    }
+  }
+
+  .items-col {
+    flex: 1.6;
+  }
+
+  .section-title {
+    width: rem(150px);
+    height: rem(16px);
+    margin-bottom: 24px;
+  }
+
+  .item-row {
+    display: flex;
+    gap: rem(20px);
+    padding-bottom: 24px;
+    border-bottom: 1px solid $skeleton-border-color;
+  }
+
+  .item-thumb {
+    width: rem(104px);
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  .item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+    padding-top: 4px;
+
+    .skeleton {
+      height: rem(15px);
+    }
+  }
+
+  .item-name {
+    width: 55%;
+  }
+
+  .item-price {
+    width: 25%;
+    height: rem(20px);
+  }
+
+  .item-meta-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+
+    .skeleton {
+      width: 30%;
+    }
+  }
+
+  .price-col {
+    flex: 1;
+
+    .price-box {
+      background-color: $skeleton-background;
+      padding: 28px;
+
+      .section-title {
+        width: rem(140px);
+      }
+    }
+
+    .price-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: rem(20px);
+
+      .label-skeleton {
+        width: rem(130px);
+        height: rem(15px);
+      }
+
+      .value-skeleton {
+        width: rem(80px);
+        height: rem(15px);
+      }
+    }
+
+    .price-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: rem(20px);
+
+      .label-skeleton {
+        width: rem(60px);
+        height: rem(20px);
+      }
+
+      .value-skeleton {
+        width: rem(110px);
+        height: rem(20px);
+      }
+    }
+  }
+
+  .confirmation-bottom-row {
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
+
+    @include max-size($small) {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+
+  .overview-col {
+    flex: 1.6;
+
+    @include max-size($small) {
+      width: 100%;
+    }
+  }
+
+  .overview-title {
+    width: rem(170px);
+    height: rem(18px);
+    margin-bottom: 8px;
+  }
+
+  .overview-group {
+    border-top: 1px solid $skeleton-border-color;
+    display: flex;
+    flex-direction: column;
+    gap: rem(20px);
+    padding-top: 12px;
+  }
+
+  .overview-items {
+    display: flex;
+    gap: 12px;
+  }
+
+  .overview-label {
+    width: rem(130px);
+    height: rem(13px);
+    margin-bottom: 8px;
+  }
+
+  .overview-value {
+    width: rem(200px);
+    height: rem(16px);
+  }
+
+  .addresses {
+    display: flex;
+    gap: 24px;
+    flex: 2;
+
+    @include max-size($small) {
+      width: 100%;
+    }
+
+    @include max-size($mini) {
+      flex-direction: column;
+    }
+
+    .address-box {
+      flex: 1;
+      background-color: $skeleton-background;
+      padding: 28px;
+
+      .overview-label {
+        width: rem(150px);
+        margin-bottom: 20px;
+      }
+
+      .address-lines .skeleton {
+        height: rem(15px);
+      }
+    }
+  }
+}

@@ -27,14 +27,6 @@
     transform: translateX(100%);
   }
 
-  .mini-cart-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    height: 400px;
-    overflow: auto;
-  }
-
   .order-item {
     align-items: center;
   }
@@ -43,12 +35,6 @@
     padding-bottom: 8px;
     display: flex;
     justify-content: center;
-  }
-
-  .mini-cart-item {
-    border-bottom: $border;
-    padding-bottom: 8px;
-    padding-right: 8px;
   }
 
   .product-price {
