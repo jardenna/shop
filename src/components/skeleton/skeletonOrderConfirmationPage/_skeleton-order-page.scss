@@ -21,20 +21,20 @@
   }
 
   .section-title {
-    width: 150px;
-    height: 16px;
+    width: rem(150px);
+    height: rem(16px);
     margin-bottom: 24px;
   }
 
   .item-row {
     display: flex;
-    gap: 20px;
+    gap: rem(20px);
     padding-bottom: 24px;
     border-bottom: 1px solid $skeleton-border-color;
   }
 
   .item-thumb {
-    width: 104px;
+    width: rem(104px);
     height: auto;
     flex-shrink: 0;
   }
@@ -47,7 +47,7 @@
     padding-top: 4px;
 
     .skeleton {
-      height: 15px;
+      height: rem(15px);
     }
   }
 
@@ -57,7 +57,7 @@
 
   .item-price {
     width: 25%;
-    height: 20px;
+    height: rem(20px);
   }
 
   .item-meta-lines {
@@ -79,7 +79,7 @@
       padding: 28px;
 
       .section-title {
-        width: 140px;
+        width: rem(140px);
       }
     }
 
@@ -87,16 +87,16 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: rem(20px);
 
       .label-skeleton {
-        width: 130px;
-        height: 15px;
+        width: rem(130px);
+        height: rem(15px);
       }
 
       .value-skeleton {
-        width: 80px;
-        height: 15px;
+        width: rem(80px);
+        height: rem(15px);
       }
     }
 
@@ -104,16 +104,16 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-top: 20px;
+      padding-top: rem(20px);
 
       .label-skeleton {
-        width: 60px;
-        height: 20px;
+        width: rem(60px);
+        height: rem(20px);
       }
 
       .value-skeleton {
-        width: 110px;
-        height: 20px;
+        width: rem(110px);
+        height: rem(20px);
       }
     }
   }
@@ -129,8 +129,8 @@
   }
 
   .overview-title {
-    width: 170px;
-    height: 18px;
+    width: rem(170px);
+    height: rem(18px);
     margin-bottom: 8px;
   }
 
@@ -139,19 +139,19 @@
     border-top: 1px solid $skeleton-border-color;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: rem(20px);
     padding-top: 12px;
   }
 
   .overview-label {
-    width: 130px;
-    height: 13px;
+    width: rem(130px);
+    height: rem(13px);
     margin-bottom: 10px;
   }
 
   .overview-value {
-    width: 200px;
-    height: 16px;
+    width: rem(200px);
+    height: rem(16px);
   }
 
   .addresses {
@@ -165,12 +165,12 @@
       padding: 28px;
 
       .overview-label {
-        width: 150px;
-        margin-bottom: 20px;
+        width: rem(150px);
+        margin-bottom: rem(20px);
       }
 
       .address-lines .skeleton {
-        height: 15px;
+        height: rem(15px);
       }
     }
   }
