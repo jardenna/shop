@@ -1,27 +1,13 @@
 import SkeletonProgress from '../skeletonProgress/SkeletonProgress';
 import './_skeleton-order-page.scss';
+import SkeletonSummeryItem from './SkeletonSummeryItem';
 
 const SkeletonOrderPage = () => (
   <div className="confirmation-content">
     <SkeletonProgress />
 
     <div className="content-row">
-      <div className="items-col">
-        <div className="section-title skeleton" />
-
-        <div className="item-row">
-          <div className="item-thumb skeleton" />
-          <div className="item-info">
-            <div className="skeleton item-name" />
-            <div className="skeleton item-price" />
-            <div className="item-meta-lines">
-              <div className="skeleton" />
-              <div className="skeleton" />
-              <div className="skeleton" />
-            </div>
-          </div>
-        </div>
-      </div>
+      <SkeletonSummeryItem />
 
       <div className="price-col">
         <div className="price-box">

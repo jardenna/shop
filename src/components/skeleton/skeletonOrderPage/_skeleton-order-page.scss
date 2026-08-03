@@ -1,25 +1,5 @@
 @use '../../../scss/globals' as *;
 
-/* ---- header text block ---- */
-.heading-skeleton {
-  width: 420px;
-  height: 26px;
-  margin-bottom: 20px;
-}
-
-.subheading-skeleton {
-  width: 340px;
-  height: 18px;
-  margin-bottom: 16px;
-}
-
-.paragraph-skeleton {
-  width: 90%;
-  max-width: 900px;
-  height: 16px;
-  margin-bottom: 48px;
-}
-
 /* ---- items + price row ---- */
 .content-row {
   display: flex;
