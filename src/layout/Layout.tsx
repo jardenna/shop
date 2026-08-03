@@ -35,7 +35,7 @@ const Layout = () => {
   }, [pathname, dispatch]);
 
   // Hooks
-  const { currentUser, isAuthReady } = useAuth();
+  const { currentUser, isAuthReady, isEmployee } = useAuth();
   const { currencyOptions, onChangePrice, exchangeRate } = useCurrency();
   const [logout] = useLogoutMutation();
   const { isMobileSize } = useMediaQuery();
@@ -90,11 +90,17 @@ const Layout = () => {
         navigate(currentUser ? `/${ShopPath.MyAccount}` : `/${ShopPath.Login}`),
       icon: <Icon iconName={IconName.Auth} size="2.5em" />,
     },
-    {
-      label: language.dashboard,
-      onClick: () => navigate('/dashboard'),
-      icon: <Icon iconName={IconName.Admin} />,
-    },
+
+    ...(isEmployee
+      ? [
+          {
+            label: language.dashboard,
+            onClick: () => navigate('/dashboard'),
+            icon: <Icon iconName={IconName.Admin} />,
+          },
+        ]
+      : []),
+
     {
       label: currentUser ? language.logout : language.login,
       onClick: currentUser
