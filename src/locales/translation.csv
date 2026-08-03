@@ -27,6 +27,8 @@ addToCart;Add to cart;Tilføj til kurv
 addToStock;Add to stock;Tilføj til lager
 admin;Admin;Admin
 adminCannotBeDeleted;Administrator cannot be deleted;Administrator kan ikke slettes
+orderedItems;Ordered items;Bestilte varer
+priceOverview;Price overview;Prisoversigt
 all;All;Alle
 allowedFormats;Allowed formats;Tilladte formater
 alreadyInUse;Value already in use;Værdien er allerede i brug

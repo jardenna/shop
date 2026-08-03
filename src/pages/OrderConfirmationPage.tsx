@@ -78,7 +78,7 @@ const OrderConfirmationPage = () => {
             <>
               <section className="confirmation-summary">
                 <article className="summary-items">
-                  <h2 className="order-flow-title">Varer i din ordre</h2>
+                  <h2 className="order-flow-title">{language.orderedItems}</h2>
                   <OrderItemList
                     orders={order.orderItems}
                     language={language}
@@ -87,7 +87,9 @@ const OrderConfirmationPage = () => {
 
                 <article>
                   <div className="summary-payment">
-                    <h2 className="order-flow-title">Prisoversigt</h2>
+                    <h2 className="order-flow-title">
+                      {language.priceOverview}
+                    </h2>
                     <SummaryList
                       language={language}
                       summary={order.summary}
