@@ -1,6 +1,7 @@
 import SkeletonProgress from '../skeletonProgress/SkeletonProgress';
 import './_skeleton-order-page.scss';
 import SkeletonAddressList from './SkeletonAddressList';
+import SkeletonOverviewGroup from './SkeletonOverviewGroup';
 import SkeletonPriceCol from './SkeletonPriceCol';
 import SkeletonSummeryItem from './SkeletonSummeryItem';
 
@@ -14,27 +15,7 @@ const SkeletonOrderPage = () => (
     </div>
 
     <div className="confirmation-bottom-row">
-      <div className="overview-col">
-        <div className="overview-title skeleton" />
-
-        <div className="overview-group">
-          <div>
-            <div className="overview-label skeleton" />
-            <div className="overview-value skeleton" />
-          </div>
-          <div>
-            <div className="overview-label skeleton" />
-            <div className="overview-value skeleton" />
-          </div>
-          <div>
-            <div className="overview-label skeleton" />
-            <div
-              className="overview-value skeleton"
-              style={{ width: '120px' }}
-            />
-          </div>
-        </div>
-      </div>
+      <SkeletonOverviewGroup />
 
       <SkeletonAddressList />
     </div>
