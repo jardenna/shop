@@ -6,7 +6,7 @@ const SkeletonPriceCol = ({ count = 4 }: PickedSkeletonTypes) => {
   return (
     <div className="price-col">
       <div className="price-box">
-        <Skeleton className="section-title skeleton" />
+        <Skeleton className="section-title" />
 
         {skeletons.map((_, index) => (
           <span className="price-line" key={index}>

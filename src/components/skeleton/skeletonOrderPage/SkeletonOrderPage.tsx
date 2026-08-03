@@ -1,10 +1,11 @@
 import SkeletonProgress from '../skeletonProgress/SkeletonProgress';
 import './_skeleton-order-page.scss';
+import SkeletonAddressList from './SkeletonAddressList';
 import SkeletonPriceCol from './SkeletonPriceCol';
 import SkeletonSummeryItem from './SkeletonSummeryItem';
 
 const SkeletonOrderPage = () => (
-  <div className="confirmation-content">
+  <div className="confirmation-content skeleton-order-page">
     <SkeletonProgress />
 
     <div className="content-row">
@@ -31,27 +32,7 @@ const SkeletonOrderPage = () => (
         </div>
       </div>
 
-      <div className="addresses">
-        <div className="address-box">
-          <div className="overview-label skeleton" />
-          <div className="address-lines">
-            <div className="skeleton line-name" />
-            <div className="skeleton line-street" />
-            <div className="skeleton line-city" />
-            <div className="skeleton line-country" />
-          </div>
-        </div>
-
-        <div className="address-box">
-          <div className="overview-label skeleton" />
-          <div className="address-lines">
-            <div className="skeleton line-name" />
-            <div className="skeleton line-street" />
-            <div className="skeleton line-city" />
-            <div className="skeleton line-country" />
-          </div>
-        </div>
-      </div>
+      <SkeletonAddressList />
     </div>
   </div>
 );
