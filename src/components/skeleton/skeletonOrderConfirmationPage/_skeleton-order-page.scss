@@ -13,7 +13,10 @@
   .content-row {
     display: flex;
     gap: 48px;
-    margin-bottom: 48px;
+
+    @include max-size($small) {
+      flex-direction: column;
+    }
   }
 
   .items-col {
@@ -122,10 +125,19 @@
     display: flex;
     gap: 48px;
     align-items: flex-start;
+
+    @include max-size($small) {
+      flex-direction: column;
+      gap: 12px;
+    }
   }
 
   .overview-col {
     flex: 1.6;
+
+    @include max-size($small) {
+      width: 100%;
+    }
   }
 
   .overview-title {
@@ -135,7 +147,6 @@
   }
 
   .overview-group {
-    margin-bottom: 24px;
     border-top: 1px solid $skeleton-border-color;
     display: flex;
     flex-direction: column;
@@ -143,10 +154,15 @@
     padding-top: 12px;
   }
 
+  .overview-items {
+    display: flex;
+    gap: 12px;
+  }
+
   .overview-label {
     width: rem(130px);
     height: rem(13px);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   .overview-value {
@@ -159,6 +175,14 @@
     gap: 24px;
     flex: 2;
 
+    @include max-size($small) {
+      width: 100%;
+    }
+
+    @include max-size($mini) {
+      flex-direction: column;
+    }
+
     .address-box {
       flex: 1;
       background-color: $skeleton-background;
@@ -166,7 +190,7 @@
 
       .overview-label {
         width: rem(150px);
-        margin-bottom: rem(20px);
+        margin-bottom: 20px;
       }
 
       .address-lines .skeleton {

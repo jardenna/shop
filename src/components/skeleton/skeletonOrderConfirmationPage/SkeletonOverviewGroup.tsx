@@ -8,7 +8,7 @@ const SkeletonOverviewGroup = ({ count = 3 }: PickedSkeletonTypes) => {
       <Skeleton className="overview-title" />
       <span className="overview-group">
         {skeletons.map((_, index) => (
-          <span key={index}>
+          <span key={index} className="overview-items">
             <Skeleton className="overview-label" />
             <Skeleton className="overview-value" />
           </span>
