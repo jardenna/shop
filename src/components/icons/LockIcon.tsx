@@ -1,6 +1,6 @@
 import type { IconDefaultProps } from './Icon';
 
-const AdminIcon = ({ size, className, ariaHidden }: IconDefaultProps) => (
+const LockIcon = ({ size, className, ariaHidden }: IconDefaultProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -20,4 +20,4 @@ const AdminIcon = ({ size, className, ariaHidden }: IconDefaultProps) => (
   </svg>
 );
 
-export default AdminIcon;
+export default LockIcon;

@@ -96,7 +96,7 @@ const Layout = () => {
           {
             label: language.dashboard,
             onClick: () => navigate('/dashboard'),
-            icon: <Icon iconName={IconName.Admin} />,
+            icon: <Icon iconName={IconName.Lock} />,
           },
         ]
       : []),
