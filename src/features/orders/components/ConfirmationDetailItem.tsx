@@ -11,7 +11,7 @@ const ConfirmationDetailItem = ({
   text,
   date,
 }: ConfirmationDetailItemProps) => (
-  <li>
+  <li className="confirmation-detail-item">
     <p className="text-uppercase">{label}</p>
     {date ? <DateDisplay date={date} /> : <p>{text}</p>}
   </li>

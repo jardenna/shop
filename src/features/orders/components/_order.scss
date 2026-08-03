@@ -36,20 +36,35 @@
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 40px;
+
+    @include max-size($small) {
+      grid-template-columns: 1fr;
+    }
   }
 
   .confirmation-info-container {
     display: flex;
+    gap: 32px;
+
+    @include max-size($small) {
+      flex-direction: column;
+    }
 
     .confirmation-sub-header {
       text-wrap: balance;
     }
 
-    .my-address-list {
-      display: flex;
-      gap: 40px;
+    .confirmation-info {
       flex: 1;
-      justify-content: flex-end;
+    }
+
+    .my-address-list {
+      grid-template-columns: 1fr 1fr;
+      grid-auto-rows: auto;
+
+      @include max-size($mini) {
+        grid-template-columns: 1fr;
+      }
     }
 
     .my-address-item {
@@ -57,6 +72,10 @@
       background: #f9f9f9;
       border-radius: 4px;
       min-width: rem(300px);
+
+      @include max-size($small) {
+        min-width: 50%;
+      }
     }
 
     .my-address-content {
@@ -82,6 +101,16 @@
     }
   }
 
+  .confirmation-detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    @include max-size($small) {
+      flex-direction: row;
+    }
+  }
+
   .summary-payment {
     background-color: $color-background;
     padding: 20px;
@@ -95,5 +124,10 @@
   .confirmation-detail-list-title {
     border-bottom: $border-dark;
     padding-bottom: 8px;
+    max-width: rem(200px);
+
+    @include max-size($small) {
+      max-width: 100%;
+    }
   }
 }
