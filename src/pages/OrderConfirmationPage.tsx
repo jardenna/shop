@@ -1,7 +1,7 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
-import SkeletonOrderPage from '../components/skeleton/skeletonOrderPage/SkeletonOrderPage';
+import SkeletonOrderConfirmationPage from '../components/skeleton/skeletonOrderConfirmationPage/SkeletonOrderConfirmationPage';
 import StatusTracker from '../components/statusTracker/StatusTracker';
 import OrderItemList from '../features/cart/components/orderItemCard/OrderItemList';
 import SummaryList from '../features/cart/components/SummaryList';
@@ -54,7 +54,7 @@ const OrderConfirmationPage = () => {
         variant="large"
         heading={language.orderConfirmationTitle}
       >
-        <SkeletonOrderPage />
+        <SkeletonOrderConfirmationPage />
       </MainPageContainer>
     );
   }
