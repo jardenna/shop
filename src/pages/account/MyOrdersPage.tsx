@@ -1,13 +1,14 @@
 import { useLanguage } from '../../features/language/useLanguage';
+import MainPageContainer from '../pageContainer/MainPageContainer';
 
 const MyOrdersPage = () => {
   const { language } = useLanguage();
 
   return (
-    <div>
+    <MainPageContainer variant="medium" heading={language.myOrders}>
       <p>{language.viewAndTrackOrders}</p>
       <p>{language.whenOrderViewAndTrack}</p>
-    </div>
+    </MainPageContainer>
   );
 };
 
