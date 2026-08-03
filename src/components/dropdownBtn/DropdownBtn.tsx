@@ -11,7 +11,6 @@ export type DropdownItem = {
   label: string;
   btnVariant?: BtnVariant;
   disabled?: boolean;
-  icon?: ReactNode;
   iconName?: IconName;
   isActive?: boolean;
   onClick: () => void;

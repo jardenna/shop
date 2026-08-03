@@ -19,7 +19,7 @@ const DropdownList = ({ dropdownList, defaultIndex }: DropdownListProps) => {
     <ul>
       {dropdownList.map(
         (
-          { label, onClick, icon, btnVariant, disabled, isActive, iconName },
+          { label, onClick, btnVariant, disabled, isActive, iconName },
           index,
         ) => (
           <li key={label} className="dropdown-item">
@@ -33,7 +33,6 @@ const DropdownList = ({ dropdownList, defaultIndex }: DropdownListProps) => {
               }}
             >
               <span>{label}</span>
-              <span>{icon}</span>
               {iconName && <Icon iconName={iconName} />}
             </Button>
           </li>
