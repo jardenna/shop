@@ -1,4 +1,8 @@
+@use 'sass:math';
 @use '../../../scss/globals' as *;
+
+$tracking-base-size: rem(60px);
+$tracking-base-color: $color-gray-60;
 
 /* ---- header text block ---- */
 .heading-skeleton {
@@ -24,38 +28,37 @@
 .progress {
   display: flex;
   align-items: center;
-}
 
-.step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-}
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
 
-.step-circle {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-}
+  .step-circle {
+    width: $tracking-base-size;
+    height: $tracking-base-size;
+    border-radius: 50%;
+  }
 
-.step-label {
-  width: 80px;
-  height: 14px;
-  border-radius: 4px;
-}
+  .step-label {
+    width: 80px;
+    height: 14px;
+  }
 
-.step-line {
-  flex: 1;
-  height: 1px;
-  background: #e2e2e2;
-  margin: 0 12px;
-  align-self: flex-start;
-  margin-top: 30px;
+  .step-line {
+    flex: 1;
+    height: 1px;
+    background: #e2e2e2;
+    margin: 0 12px;
+    align-self: flex-start;
+    margin-top: math.div($tracking-base-size, 2);
 
-  &:last-child {
-    display: none;
+    &:last-child {
+      display: none;
+    }
   }
 }
 
@@ -74,7 +77,6 @@
   width: 150px;
   height: 16px;
   margin-bottom: 24px;
-  border-radius: 4px;
 }
 
 .item-row {
@@ -87,7 +89,6 @@
 .item-thumb {
   width: 100px;
   height: 100px;
-  border-radius: 8px;
   flex-shrink: 0;
 }
 
@@ -130,7 +131,6 @@
 
 .price-box {
   background: #f7f7f7;
-  border-radius: 4px;
   padding: 28px;
 }
 
@@ -188,7 +188,6 @@
   width: 170px;
   height: 18px;
   margin-bottom: 12px;
-  border-radius: 4px;
 }
 
 .overview-divider {
@@ -206,13 +205,11 @@
   width: 130px;
   height: 13px;
   margin-bottom: 10px;
-  border-radius: 4px;
 }
 
 .overview-value {
   width: 200px;
   height: 16px;
-  border-radius: 4px;
 }
 
 .addresses {
@@ -224,7 +221,6 @@
 .address-box {
   flex: 1;
   background: #f7f7f7;
-  border-radius: 4px;
   padding: 28px;
 }
 
