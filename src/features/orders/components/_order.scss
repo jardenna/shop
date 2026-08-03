@@ -32,6 +32,13 @@
   flex-direction: column;
   gap: 40px;
 
+  .confirmation-sub-header {
+    p {
+      text-wrap: pretty;
+      max-width: rem(712px);
+    }
+  }
+
   .confirmation-summary {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -48,10 +55,6 @@
 
     @include max-size($small) {
       flex-direction: column;
-    }
-
-    .confirmation-sub-header {
-      text-wrap: balance;
     }
 
     .confirmation-info {

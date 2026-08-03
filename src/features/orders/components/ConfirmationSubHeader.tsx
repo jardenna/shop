@@ -4,7 +4,7 @@ const ConfirmationSubHeader = () => {
   const { language } = useLanguage();
 
   return (
-    <section>
+    <section className="confirmation-sub-header">
       <h2>{language.orderConfirmationDescription}</h2>
       <p>{language.orderConfirmationProcessing}</p>
     </section>

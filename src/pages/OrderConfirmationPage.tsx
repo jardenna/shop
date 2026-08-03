@@ -1,7 +1,7 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
-import SkeletonCheckoutPage from '../components/skeleton/checkoutpage/SkeletonCheckoutPage';
+import SkeletonOrderPage from '../components/skeleton/skeletonOrderPage/SkeletonOrderPage';
 import StatusTracker from '../components/statusTracker/StatusTracker';
 import OrderItemList from '../features/cart/components/orderItemCard/OrderItemList';
 import SummaryList from '../features/cart/components/SummaryList';
@@ -48,7 +48,7 @@ const OrderConfirmationPage = () => {
     );
   }
   if (isLoading) {
-    return <SkeletonCheckoutPage />;
+    return <SkeletonOrderPage />;
   }
 
   return (
@@ -57,6 +57,7 @@ const OrderConfirmationPage = () => {
       variant="large"
       heading={`${order && order.user.username}, ${language.orderConfirmationTitle}`}
     >
+      <SkeletonOrderPage />
       <div className="confirmation-content">
         <ConfirmationSubHeader />
 
