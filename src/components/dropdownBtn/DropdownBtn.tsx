@@ -1,7 +1,7 @@
 import { Placement } from '@popperjs/core';
 import { useId, type ReactNode } from 'react';
 import { usePopup } from '../../hooks/usePopup';
-import { BtnVariant } from '../../types/enums';
+import { BtnVariant, IconName } from '../../types/enums';
 import { AriaHasPopup } from '../../types/types';
 import Button from '../Button';
 import './_dropdown-btn.scss';
@@ -12,6 +12,7 @@ export type DropdownItem = {
   btnVariant?: BtnVariant;
   disabled?: boolean;
   icon?: ReactNode;
+  iconName?: IconName;
   isActive?: boolean;
   onClick: () => void;
 };

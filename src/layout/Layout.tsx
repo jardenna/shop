@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router';
 import { useAppDispatch } from '../app/hooks';
 import { DropdownItem } from '../components/dropdownBtn/DropdownBtn';
-import Icon from '../components/icons/Icon';
 import type { PrimaryActionBtnProps } from '../components/modal/Modal';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
@@ -89,20 +88,20 @@ const Layout = () => {
       isActive: pathname.includes(ShopPath.MyAccount),
       onClick: () =>
         navigate(currentUser ? `/${ShopPath.MyAccount}` : `/${ShopPath.Login}`),
-      icon: <Icon iconName={IconName.Auth} size="2.5em" />,
+      iconName: IconName.Auth,
     },
     {
       label: language.myOrders,
       isActive: pathname.includes(ShopPath.MyOrders),
       onClick: () => navigate(ShopPath.MyOrders),
-      icon: <Icon iconName={IconName.Basket} />,
+      iconName: IconName.Basket,
     },
     ...(isEmployee
       ? [
           {
             label: language.dashboard,
             onClick: () => navigate(AdminPath.Admin),
-            icon: <Icon iconName={IconName.Lock} />,
+            iconName: IconName.Lock,
           },
         ]
       : []),
@@ -111,7 +110,7 @@ const Layout = () => {
       onClick: currentUser
         ? handleLogout
         : () => navigate(`/${ShopPath.Login}`),
-      icon: <Icon iconName={currentUser ? IconName.Logout : IconName.Login} />,
+      iconName: currentUser ? IconName.Logout : IconName.Login,
     },
   ];
 
