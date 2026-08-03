@@ -21,7 +21,7 @@
     display: flex;
     gap: 20px;
     padding-bottom: 24px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid $skeleton-border-color;
   }
 
   .item-thumb {
@@ -66,7 +66,7 @@
     flex: 1;
 
     .price-box {
-      background-color: #f7f7f7;
+      background-color: $skeleton-background;
       padding: 28px;
 
       .section-title {
@@ -127,7 +127,7 @@
 
   .overview-group {
     margin-bottom: 24px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid $skeleton-border-color;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -152,7 +152,7 @@
 
     .address-box {
       flex: 1;
-      background-color: #f7f7f7;
+      background-color: $skeleton-background;
       padding: 28px;
 
       .overview-label {

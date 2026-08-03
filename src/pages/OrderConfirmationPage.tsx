@@ -48,7 +48,15 @@ const OrderConfirmationPage = () => {
     );
   }
   if (isLoading) {
-    return <SkeletonOrderPage />;
+    return (
+      <MainPageContainer
+        hideBreadCrumbs
+        variant="large"
+        heading={language.orderConfirmationTitle}
+      >
+        <SkeletonOrderPage />
+      </MainPageContainer>
+    );
   }
 
   return (
@@ -57,7 +65,6 @@ const OrderConfirmationPage = () => {
       variant="large"
       heading={`${order && order.user.username}, ${language.orderConfirmationTitle}`}
     >
-      <SkeletonOrderPage />
       <div className="confirmation-content">
         <ConfirmationSubHeader />
 
