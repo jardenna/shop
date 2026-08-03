@@ -3,6 +3,7 @@ import ErrorContent from './ErrorContent';
 
 // Props are automatically injected by react-error-boundary
 type FallbackProps = {
+  btnLabel?: string;
   error?: any;
   resetErrorBoundary: () => void;
 };
@@ -10,18 +11,20 @@ type FallbackProps = {
 const ErrorBoundaryFallback = ({
   resetErrorBoundary,
   error,
+  btnLabel,
 }: FallbackProps) => {
   const { language } = useLanguage();
 
   console.error('Caught error in ErrorBoundary:', error);
 
-  const errorText = error?.data?.message ?? language.somethingWentWrong; // brug RTKQ message hvis den findes
+  const errorText = error?.data?.message ?? language.somethingWentWrong;
 
   return (
     <ErrorContent
       onClick={resetErrorBoundary}
       errorText={errorText}
-      btnLabel={language.retry}
+      errorCode={error.status}
+      btnLabel={!btnLabel ? language.retry : btnLabel}
     />
   );
 };
