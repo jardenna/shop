@@ -19,15 +19,13 @@ import danishLang from '../locales/da.json';
 import englishLang from '../locales/en.json';
 import { IconName } from '../types/enums';
 import type { OptionType } from '../types/types';
-import { getPathName, pathEquals } from '../utils/utils';
 import Header from './header/Header';
-import { AdminPath, ShopPath } from './nav/enums';
+import { ShopPath } from './nav/enums';
 
 const Layout = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const pathInfo = getPathName(pathname);
   const { language, switchLanguage, selectedLanguage } = useLanguage();
 
   // Clear all popups whenever the user navigates
@@ -37,9 +35,9 @@ const Layout = () => {
   }, [pathname, dispatch]);
 
   // Hooks
-  const { currentUser, isEmployee, isAuthReady } = useAuth();
+  const { currentUser, isAuthReady } = useAuth();
   const { currencyOptions, onChangePrice, exchangeRate } = useCurrency();
-  const [logout, { isLoading }] = useLogoutMutation();
+  const [logout] = useLogoutMutation();
   const { isMobileSize } = useMediaQuery();
 
   const { data: favorites = [], refetch } = useGetFavoritesQuery(
@@ -85,51 +83,33 @@ const Layout = () => {
     isForm: true,
   };
 
-  // Helper to generate account-related links (for users, employees, admins)
-  const getAccountLinks = (): DropdownItem[] => [
+  const accountDropdownList: DropdownItem[] = [
     {
       label: language.myAccount,
-      isActive: pathEquals(pathInfo, ShopPath.MyAccount),
       onClick: () =>
         navigate(currentUser ? `/${ShopPath.MyAccount}` : `/${ShopPath.Login}`),
       icon: <Icon iconName={IconName.Auth} size="2.5em" />,
     },
+    {
+      label: language.dashboard,
+      onClick: () => navigate('/dashboard'),
+      icon: <Icon iconName={IconName.Auth} size="2.5em" />,
+    },
+    {
+      label: currentUser ? language.logout : language.login,
+      onClick: currentUser
+        ? handleLogout
+        : () => navigate(`/${ShopPath.Login}`),
+      icon: <Icon iconName={currentUser ? IconName.Logout : IconName.Login} />,
+    },
   ];
-
-  // Auth dropdown item
-  const authDropdownItem: DropdownItem = {
-    label: currentUser ? language.logout : language.login,
-    onClick: currentUser ? handleLogout : () => navigate(`/${ShopPath.Login}`),
-    disabled: isLoading,
-    icon: <Icon iconName={currentUser ? IconName.Logout : IconName.Login} />,
-  };
-
-  const dropdownItems: DropdownItem[] = [
-    // Account links visible to everyone
-    ...getAccountLinks(),
-
-    // Dashboard only for employees and admins
-    ...(isEmployee
-      ? [
-          {
-            label: language.dashboard,
-            icon: <Icon iconName={IconName.Admin} />,
-            onClick: () => navigate(`/${AdminPath.Admin}`),
-          },
-        ]
-      : []),
-
-    // Auth/logout always
-    authDropdownItem,
-  ];
-  console.log(dropdownItems);
 
   return (
     <div className="main-container">
       {!isMobileSize && <SkipLink />}
       <Header
         localLanguage={localLanguage}
-        dropdownBtnList={dropdownItems}
+        dropdownBtnList={accountDropdownList}
         primaryActionBtn={primaryActionBtn}
         isMobileSize={isMobileSize}
         defaultValue={{
