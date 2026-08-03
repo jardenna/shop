@@ -65,6 +65,7 @@ const OrderConfirmationPage = () => {
       variant="large"
       heading={`${order && order.user.username}, ${language.orderConfirmationTitle}`}
     >
+      <SkeletonOrderConfirmationPage />
       <div className="confirmation-content">
         <ConfirmationSubHeader />
 
