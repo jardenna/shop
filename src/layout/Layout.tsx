@@ -93,7 +93,7 @@ const Layout = () => {
     {
       label: language.dashboard,
       onClick: () => navigate('/dashboard'),
-      icon: <Icon iconName={IconName.Auth} size="2.5em" />,
+      icon: <Icon iconName={IconName.Admin} />,
     },
     {
       label: currentUser ? language.logout : language.login,
