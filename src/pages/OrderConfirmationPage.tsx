@@ -1,6 +1,7 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
+import SkeletonCheckoutPage from '../components/skeleton/checkoutpage/SkeletonCheckoutPage';
 import StatusTracker from '../components/statusTracker/StatusTracker';
 import OrderItemList from '../features/cart/components/orderItemCard/OrderItemList';
 import SummaryList from '../features/cart/components/SummaryList';
@@ -22,6 +23,7 @@ const OrderConfirmationPage = () => {
     refetch,
     isError,
     error,
+    isLoading,
   } = useGetOrderByIdQuery(id ?? '');
   const status = {
     status: 'processing',
@@ -44,6 +46,9 @@ const OrderConfirmationPage = () => {
         }}
       />
     );
+  }
+  if (isLoading) {
+    return <SkeletonCheckoutPage />;
   }
 
   return (
