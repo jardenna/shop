@@ -20,7 +20,7 @@ import englishLang from '../locales/en.json';
 import { IconName } from '../types/enums';
 import type { OptionType } from '../types/types';
 import Header from './header/Header';
-import { ShopPath } from './nav/enums';
+import { AdminPath, ShopPath } from './nav/enums';
 
 const Layout = () => {
   const { pathname } = useLocation();
@@ -90,12 +90,16 @@ const Layout = () => {
         navigate(currentUser ? `/${ShopPath.MyAccount}` : `/${ShopPath.Login}`),
       icon: <Icon iconName={IconName.Auth} size="2.5em" />,
     },
-
+    {
+      label: language.myOrders,
+      onClick: () => navigate(ShopPath.MyOrders),
+      icon: <Icon iconName={IconName.Basket} />,
+    },
     ...(isEmployee
       ? [
           {
             label: language.dashboard,
-            onClick: () => navigate('/dashboard'),
+            onClick: () => navigate(AdminPath.Admin),
             icon: <Icon iconName={IconName.Lock} />,
           },
         ]
