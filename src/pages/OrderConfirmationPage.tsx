@@ -5,8 +5,8 @@ import SkeletonOrderConfirmationPage from '../components/skeleton/skeletonOrderC
 import StatusTracker from '../components/statusTracker/StatusTracker';
 import SummaryList from '../features/cart/components/SummaryList';
 import { useLanguage } from '../features/language/useLanguage';
-import ConfirmationDetails from '../features/orders/components/ConfirmationDetails';
-import ConfirmationSubHeader from '../features/orders/components/ConfirmationSubHeader';
+import ConfirmationDetails from '../features/orders/components/confirmation/ConfirmationDetails';
+import ConfirmationSubHeader from '../features/orders/components/confirmation/ConfirmationSubHeader';
 import OrderAddressList from '../features/orders/components/OrderAddressList';
 import OrderItemList from '../features/orders/components/orderItemCard/OrderItemList';
 import { useGetOrderByIdQuery } from '../features/orders/orderApiSlice';

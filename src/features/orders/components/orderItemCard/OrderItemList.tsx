@@ -10,7 +10,6 @@ const OrderItemList = ({ orders, language }: OrderItemListProps) => (
   <ul className="order-list">
     {orders.map((order) => (
       <li key={order.id} className="order-list-item">
-        {order.id}
         <OrderItemCard order={order} language={language} />
       </li>
     ))}

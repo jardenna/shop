@@ -1,7 +1,8 @@
-import { paymentMethodLabels } from '../../../app/api/apiConstants';
-import { PaymentMethods } from '../../../app/api/apiTypes/paymentApiTypes';
-import { useLanguage } from '../../language/useLanguage';
+import { paymentMethodLabels } from '../../../../app/api/apiConstants';
+import { PaymentMethods } from '../../../../app/api/apiTypes/paymentApiTypes';
+import { useLanguage } from '../../../language/useLanguage';
 import ConfirmationDetailItem from './ConfirmationDetailItem';
+import './_confirmation-details.scss';
 
 interface ConfirmationDetailsProp {
   createdAt: Date;

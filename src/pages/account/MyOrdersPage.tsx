@@ -1,5 +1,5 @@
 import { useLanguage } from '../../features/language/useLanguage';
-import OrderItemList from '../../features/orders/components/orderItemCard/OrderItemList';
+import MyOrderItem from '../../features/orders/components/MyOrderItem';
 import { useGetUserOrderQuery } from '../../features/orders/orderApiSlice';
 import MainPageContainer from '../pageContainer/MainPageContainer';
 
@@ -17,13 +17,9 @@ const MyOrdersPage = () => {
         <ul className="order-flow-list">
           {myOrders.map((cart) => (
             <li key={cart.id} className="order-flow-list-item">
-              <article>
-                <OrderItemList
-                  orders={cart.orderItems}
-                  language={language}
-                  key={cart.id}
-                />
-              </article>
+              {cart.orderItems.map((order) => (
+                <MyOrderItem key={order.id} order={order} language={language} />
+              ))}
             </li>
           ))}
         </ul>
