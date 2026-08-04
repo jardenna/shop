@@ -1,8 +1,8 @@
-import { Order } from '../../../app/api/apiTypes/cartApiTypes';
-import Button from '../../../components/Button';
-import Img from '../../../components/Img';
-import { translateKey } from '../../../utils/utils';
-import ProductPrice from '../../shop/components/productPrice/ProductPrice';
+import { Order } from '../../../../app/api/apiTypes/cartApiTypes';
+import Button from '../../../../components/Button';
+import Img from '../../../../components/Img';
+import { translateKey } from '../../../../utils/utils';
+import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 
 interface MyOrderItemProps {
   language: Record<string, string>;
