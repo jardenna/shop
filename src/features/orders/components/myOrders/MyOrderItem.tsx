@@ -9,12 +9,12 @@ interface MyOrderItemProps {
 }
 
 const MyOrderItem = ({ order, language }: MyOrderItemProps) => (
-  <section className="my-order-item">
+  <div className="my-order-item">
     <Img src={order.image} alt="" className="my-order-img" />
-    <div>
+    <section>
       <h2>{order.productName}</h2>
 
-      <span className="my-order-info">
+      <div className="my-order-info">
         <span>
           {language.color}: {translateKey(order.color, language)}
         </span>
@@ -24,9 +24,9 @@ const MyOrderItem = ({ order, language }: MyOrderItemProps) => (
         <span>
           {language.qty}: {order.qty}
         </span>
-      </span>
-    </div>
-  </section>
+      </div>
+    </section>
+  </div>
 );
 
 export default MyOrderItem;

@@ -37,11 +37,11 @@ const MyOrdersPage = () => {
       {myOrders && (
         <section className="my-orders">
           {myOrders.map((cart) => (
-            <article key={cart.id} className="my-orders-content">
+            <article key={cart.id} className="my-order-card">
               <header className="my-order-header">
                 <div>
                   <span>
-                    <span>{language.order}</span>
+                    <span>{language.order}</span>{' '}
                     <span>{formatOrderNumber(cart.id)}</span>
                   </span>
                   <Badge variant="small" badgeText={language.orderCreated} />
@@ -50,19 +50,19 @@ const MyOrdersPage = () => {
               </header>
 
               <ul className="my-order-list">
-                <li key={cart.id} className="my-order-list-item">
-                  {cart.orderItems.map((order) => (
+                {cart.orderItems.map((order) => (
+                  <li key={order.id} className="my-order-list-item">
                     <MyOrderItem
                       key={order.id}
                       order={order}
                       language={language}
                     />
-                  ))}
-                </li>
+                  </li>
+                ))}
               </ul>
               <footer className="my-order-footer">
-                <div>Estimated delivery: Oct 24, 2026 </div>
-                <Button variant={BtnVariant.Ghost}>Vis detaljer </Button>
+                <div>Estimated delivery: Oct 24, 2026</div>
+                <Button variant={BtnVariant.Ghost}>Vis detaljer</Button>
               </footer>
             </article>
           ))}
