@@ -6,8 +6,10 @@ import { useGetUserOrderQuery } from '../../features/orders/orderApiSlice';
 import EmptyState from '../../features/shop/components/emptyState/EmptyState';
 import ProductPrice from '../../features/shop/components/productPrice/ProductPrice';
 import { ShopPath } from '../../layout/nav/enums';
+import { BtnVariant } from '../../types/enums';
 import { formatOrderNumber } from '../../utils/formatOrderNo';
 import MainPageContainer from '../pageContainer/MainPageContainer';
+import './_my-order-page.scss';
 
 const MyOrdersPage = () => {
   const { language } = useLanguage();
@@ -33,32 +35,38 @@ const MyOrdersPage = () => {
       <p>{language.whenOrderViewAndTrack}</p>
 
       {myOrders && (
-        <ul>
+        <section className="my-orders">
           {myOrders.map((cart) => (
-            <>
-              <div>
-                <span>{language.order}</span>
-                <span>{formatOrderNumber(cart.id)}</span>
-                <Badge variant="small" badgeText={language.orderCreated} />
-              </div>
-
-              <div>
+            <article key={cart.id} className="my-orders-content">
+              <header className="my-order-header">
+                <div>
+                  <span>
+                    <span>{language.order}</span>
+                    <span>{formatOrderNumber(cart.id)}</span>
+                  </span>
+                  <Badge variant="small" badgeText={language.orderCreated} />
+                </div>
                 <ProductPrice price={cart.summary.totalPrice} />
-              </div>
-              <li key={cart.id}>
-                {cart.orderItems.map((order) => (
-                  <MyOrderItem
-                    key={order.id}
-                    order={order}
-                    language={language}
-                  />
-                ))}
-              </li>
-              <div>Estimated delivery: Oct 24, 2026 </div>
-              <Button>Vis detaljer </Button>
-            </>
+              </header>
+
+              <ul className="my-order-list">
+                <li key={cart.id} className="my-order-list-item">
+                  {cart.orderItems.map((order) => (
+                    <MyOrderItem
+                      key={order.id}
+                      order={order}
+                      language={language}
+                    />
+                  ))}
+                </li>
+              </ul>
+              <footer className="my-order-footer">
+                <div>Estimated delivery: Oct 24, 2026 </div>
+                <Button variant={BtnVariant.Ghost}>Vis detaljer </Button>
+              </footer>
+            </article>
           ))}
-        </ul>
+        </section>
       )}
     </MainPageContainer>
   );

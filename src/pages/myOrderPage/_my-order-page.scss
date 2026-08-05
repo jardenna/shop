@@ -1,0 +1,32 @@
+@use '../../scss//globals' as *;
+
+.my-orders {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .my-orders-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: $border;
+    padding: 20px;
+  }
+
+  .my-order-list {
+    border-block: $border;
+    padding-block: 20px;
+  }
+
+  .my-order-list-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.my-order-header,
+.my-order-footer {
+  display: flex;
+  justify-content: space-between;
+}

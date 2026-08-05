@@ -1,7 +1,17 @@
 @use '../../../../scss/globals' as *;
 
 .my-order-item {
-  .order-img {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  .my-order-img {
     max-width: rem(80px);
+  }
+
+  .my-order-info {
+    display: flex;
+    gap: 8px;
+    align-items: center;
   }
 }
