@@ -49,17 +49,8 @@ const MyOrdersPage = () => {
                 <ProductPrice price={cart.summary.totalPrice} />
               </header>
 
-              <ul className="my-order-list">
-                {cart.orderItems.map((order) => (
-                  <li key={order.id} className="my-order-list-item">
-                    <MyOrderItem
-                      key={order.id}
-                      order={order}
-                      language={language}
-                    />
-                  </li>
-                ))}
-              </ul>
+              <MyOrderItem orders={cart.orderItems} language={language} />
+
               <footer className="my-order-footer">
                 <div>Estimated delivery: Oct 24, 2026</div>
                 <Button variant={BtnVariant.Ghost}>Vis detaljer</Button>

@@ -5,28 +5,33 @@ import './_my-order.scss';
 
 interface MyOrderItemProps {
   language: Record<string, string>;
-  order: Order;
+  orders: Order[];
 }
 
-const MyOrderItem = ({ order, language }: MyOrderItemProps) => (
-  <div className="my-order-item">
-    <Img src={order.image} alt="" className="my-order-img" />
-    <section>
-      <h2 className="my-order-item-title">{order.productName}</h2>
-
-      <div className="my-order-info">
-        <span>
-          {language.color}: {translateKey(order.color, language)}
-        </span>
-        <span>
-          {language.size}: {order.size}
-        </span>
-        <span>
-          {language.qty}: {order.qty}
-        </span>
-      </div>
-    </section>
-  </div>
+const MyOrderItem = ({ orders, language }: MyOrderItemProps) => (
+  <ul className="my-order-list">
+    {orders.map((order) => (
+      <li className="my-order-list-item" key={order.id}>
+        <div className="my-order-item">
+          <Img src={order.image} alt="" className="my-order-img" />
+          <section>
+            <h2 className="my-order-item-title">{order.productName}</h2>
+            <div className="my-order-info">
+              <span>
+                {language.color}: {translateKey(order.color, language)}
+              </span>
+              <span>
+                {language.size}: {order.size}
+              </span>
+              <span>
+                {language.qty}: {order.qty}
+              </span>
+            </div>
+          </section>
+        </div>
+      </li>
+    ))}
+  </ul>
 );
 
 export default MyOrderItem;
