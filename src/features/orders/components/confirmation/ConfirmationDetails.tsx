@@ -1,5 +1,6 @@
 import { paymentMethodLabels } from '../../../../app/api/apiConstants';
 import { PaymentMethods } from '../../../../app/api/apiTypes/paymentApiTypes';
+import { formatOrderNumber } from '../../../../utils/formatOrderNo';
 import { useLanguage } from '../../../language/useLanguage';
 import ConfirmationDetailItem from './ConfirmationDetailItem';
 import './_confirmation-details.scss';
@@ -22,7 +23,10 @@ const ConfirmationDetails = ({
         {language.orderSummary}
       </h2>
       <ul className="confirmation-detail-list">
-        <ConfirmationDetailItem text={`# ${id}`} label={language.orderNumber} />
+        <ConfirmationDetailItem
+          text={formatOrderNumber(id)}
+          label={language.orderNumber}
+        />
         <ConfirmationDetailItem date={createdAt} label={language.orderPlaced} />
         <ConfirmationDetailItem
           text={paymentMethodLabels[method]}

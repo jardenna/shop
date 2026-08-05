@@ -5,12 +5,12 @@ import { useGetUserOrderQuery } from '../../features/orders/orderApiSlice';
 import EmptyState from '../../features/shop/components/emptyState/EmptyState';
 import ProductPrice from '../../features/shop/components/productPrice/ProductPrice';
 import { ShopPath } from '../../layout/nav/enums';
+import { formatOrderNumber } from '../../utils/formatOrderNo';
 import MainPageContainer from '../pageContainer/MainPageContainer';
 
 const MyOrdersPage = () => {
   const { language } = useLanguage();
   const { data: myOrders } = useGetUserOrderQuery();
-  console.log(myOrders);
 
   const pageHeading = language.myOrders;
 
@@ -37,7 +37,7 @@ const MyOrdersPage = () => {
             <>
               <div>
                 <span>{language.order}</span>
-                <span>{`# ${cart.id}`}</span>
+                <span>{formatOrderNumber(cart.id)}</span>
                 <div className="badge">
                   In transit Preparing Shipped Closed Behandles Leveret Afsendt
                 </div>
