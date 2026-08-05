@@ -127,7 +127,7 @@ const orderModelSchema = new Schema(
         type: String,
         enum: DELIVERY_STATUS_ENUM,
         required: true,
-        default: DELIVERY_STATUS.PROCESSING,
+        default: DELIVERY_STATUS.ORDER_CREATED,
       },
       deliveredAt: Date,
     },

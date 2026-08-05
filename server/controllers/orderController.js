@@ -319,17 +319,25 @@ const deliverOrder = asyncHandler(async (req, res) => {
       message: t('orderNotPaid', req.lang),
     });
   }
-
-  if (order.isDelivered) {
+  if (order.delivery.status === DELIVERY_STATUS.DELIVERED) {
     return res.status(400).json({
       success: false,
       message: t('orderAllreadyDelivered', req.lang),
     });
   }
 
-  order.isDelivered = true;
-  order.deliveredAt = new Date();
+  if (order.delivery.status !== DELIVERY_STATUS.SHIPPED) {
+    return res.status(400).json({
+      success: false,
+      message: t('orderMustBeShippedFirst', req.lang),
+    });
+  }
+
+  order.delivery.status = DELIVERY_STATUS.DELIVERED;
+  order.delivery.deliveredAt = new Date();
+
   const updatedOrder = await order.save();
+
   res.status(200).json(updatedOrder);
 });
 
