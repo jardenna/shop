@@ -23,7 +23,6 @@ export interface OrderResponse extends DefaultResponseType {
   discount: Discount;
   id: string;
   isDelivered: boolean;
-  isPaid: boolean;
   orderItems: Order[];
   payment: Payment;
   shippingAddress: BaseAddress;
