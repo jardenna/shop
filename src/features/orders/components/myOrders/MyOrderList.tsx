@@ -1,7 +1,6 @@
 import { Order } from '../../../../app/api/apiTypes/cartApiTypes';
 import Img from '../../../../components/Img';
 import { translateKey } from '../../../../utils/utils';
-import './_my-order-list.scss';
 
 interface MyOrderListProps {
   language: Record<string, string>;

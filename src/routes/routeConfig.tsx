@@ -20,7 +20,7 @@ import FavoritePage from '../pages/FavoritePage';
 import HomePage from '../pages/home/HomePage';
 import LoginPage from '../pages/LoginPage';
 import MainCollectionsPage from '../pages/MainCollectionsPage';
-import MyOrdersPage from '../pages/myOrderPage/MyOrdersPage';
+import MyOrdersPage from '../pages/MyOrdersPage';
 import OrderConfirmationPage from '../pages/OrderConfirmationPage';
 import CreateProductPage from '../pages/product/CreateProductPage';
 import ProductPage from '../pages/product/ProductPage';

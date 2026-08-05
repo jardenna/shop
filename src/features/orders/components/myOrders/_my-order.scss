@@ -1,4 +1,4 @@
-@use '../../scss//globals' as *;
+@use '../../../../scss/globals' as *;
 
 .my-orders {
   display: flex;
@@ -39,5 +39,40 @@
     gap: 20px;
     border: $border;
     padding: 20px;
+  }
+}
+
+.my-order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-block: $border;
+  padding-block: 20px;
+
+  .my-order-list-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .my-order-item {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .my-order-img {
+    max-width: rem(80px);
+  }
+
+  .my-order-info {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .my-order-item-title {
+    font-family: $font-primary-semibold;
+    font-size: $font-medium;
   }
 }
