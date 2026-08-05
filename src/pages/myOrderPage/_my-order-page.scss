@@ -40,18 +40,4 @@
     border: $border;
     padding: 20px;
   }
-
-  .my-order-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    border-block: $border;
-    padding-block: 20px;
-  }
-
-  .my-order-list-item {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
 }

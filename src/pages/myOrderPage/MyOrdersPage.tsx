@@ -1,7 +1,7 @@
 import Badge from '../../components/badge/Badge';
 import Button from '../../components/Button';
 import { useLanguage } from '../../features/language/useLanguage';
-import MyOrderItem from '../../features/orders/components/myOrders/MyOrderItem';
+import MyOrderList from '../../features/orders/components/myOrders/MyOrderList';
 import { useGetUserOrderQuery } from '../../features/orders/orderApiSlice';
 import EmptyState from '../../features/shop/components/emptyState/EmptyState';
 import ProductPrice from '../../features/shop/components/productPrice/ProductPrice';
@@ -49,7 +49,7 @@ const MyOrdersPage = () => {
                 <ProductPrice price={cart.summary.totalPrice} />
               </header>
 
-              <MyOrderItem orders={cart.orderItems} language={language} />
+              <MyOrderList orders={cart.orderItems} language={language} />
 
               <footer className="my-order-footer">
                 <div>Estimated delivery: Oct 24, 2026</div>

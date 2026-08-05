@@ -1,9 +1,23 @@
 @use '../../../../scss/globals' as *;
 
-.my-order-item {
+.my-order-list {
   display: flex;
+  flex-direction: column;
   gap: 12px;
-  align-items: center;
+  border-block: $border;
+  padding-block: 20px;
+
+  .my-order-list-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .my-order-item {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
 
   .my-order-img {
     max-width: rem(80px);

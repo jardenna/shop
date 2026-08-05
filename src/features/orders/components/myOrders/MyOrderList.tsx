@@ -1,14 +1,14 @@
 import { Order } from '../../../../app/api/apiTypes/cartApiTypes';
 import Img from '../../../../components/Img';
 import { translateKey } from '../../../../utils/utils';
-import './_my-order.scss';
+import './_my-order-list.scss';
 
-interface MyOrderItemProps {
+interface MyOrderListProps {
   language: Record<string, string>;
   orders: Order[];
 }
 
-const MyOrderItem = ({ orders, language }: MyOrderItemProps) => (
+const MyOrderList = ({ orders, language }: MyOrderListProps) => (
   <ul className="my-order-list">
     {orders.map((order) => (
       <li className="my-order-list-item" key={order.id}>
@@ -34,4 +34,4 @@ const MyOrderItem = ({ orders, language }: MyOrderItemProps) => (
   </ul>
 );
 
-export default MyOrderItem;
+export default MyOrderList;
