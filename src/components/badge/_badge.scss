@@ -11,7 +11,6 @@
   width: fit-content;
   border-radius: 50px;
   background-color: $color-badge-default;
-  color: $color-light-gray-30;
   padding: 2px 12px;
 
   &.scheduled {
@@ -26,6 +25,7 @@
     background-color: $color-dust-red-30;
     padding-block: 8px;
     border-radius: 4px;
+    color: $color-light-gray-30;
   }
 
   &.out-of-stock {
