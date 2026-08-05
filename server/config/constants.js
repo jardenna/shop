@@ -90,9 +90,9 @@ export const DISCOUNT_SHIPPING_PRICE = 3500;
 
 export const DELIVERY_STATUS = {
   ORDER_CREATED: 'created',
-  PROCESSING: 'Processing',
-  SHIPPED: 'Shipped',
-  DELIVERED: 'Delivered',
+  PROCESSING: 'processing',
+  SHIPPED: 'shipped',
+  DELIVERED: 'delivered',
 };
 
 export const DELIVERY_STATUS_ENUM = Object.values(DELIVERY_STATUS);
