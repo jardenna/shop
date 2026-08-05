@@ -1,3 +1,4 @@
+import Badge from '../../components/badge/Badge';
 import Button from '../../components/Button';
 import { useLanguage } from '../../features/language/useLanguage';
 import MyOrderItem from '../../features/orders/components/myOrders/MyOrderItem';
@@ -38,9 +39,7 @@ const MyOrdersPage = () => {
               <div>
                 <span>{language.order}</span>
                 <span>{formatOrderNumber(cart.id)}</span>
-                <div className="badge">
-                  In transit Preparing Shipped Closed Behandles Leveret Afsendt
-                </div>
+                <Badge variant="small" badgeText={language.orderCreated} />
               </div>
 
               <div>
