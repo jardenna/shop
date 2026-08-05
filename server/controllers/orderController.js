@@ -226,7 +226,7 @@ const payOrder = asyncHandler(async (req, res) => {
     });
   }
 
-  if (order.isPaid) {
+  if (order.payment.status === PAYMENT_STATUS.COMPLETED) {
     return res.status(400).json({
       success: false,
       message: t('orderAllreadyPaid', req.lang),
@@ -313,12 +313,13 @@ const deliverOrder = asyncHandler(async (req, res) => {
     });
   }
 
-  if (!order.isPaid) {
+  if (order.payment.status !== PAYMENT_STATUS.COMPLETED) {
     return res.status(400).json({
       success: false,
       message: t('orderNotPaid', req.lang),
     });
   }
+
   if (order.delivery.status === DELIVERY_STATUS.DELIVERED) {
     return res.status(400).json({
       success: false,
