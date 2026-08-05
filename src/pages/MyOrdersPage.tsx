@@ -14,8 +14,8 @@ const MyOrdersPage = () => {
   if (myOrders?.length === 0) {
     return (
       <EmptyState
-        noProductText={language.shoppingBagEmpty}
-        noProductTitle={language.shoppingBagEmptyTitle}
+        noProductTitle={language.noOrdersYet}
+        noProductText={language.noOrdersDescription}
         src="/images/shoppingBags/shopping_bag_2"
         linkTo={`/${ShopPath.Collection}`}
         emtyStateCtaText={language.getInspired}

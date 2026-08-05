@@ -10,8 +10,7 @@ interface MyOrderFooterProps {
 const MyOrderFooter = ({ language, estimatedDelivery }: MyOrderFooterProps) => (
   <footer className="my-order-footer">
     <div>
-      {language.estimatedDelivery}:
-      <DateDisplay date={estimatedDelivery} />
+      {language.estimatedDelivery}: <DateDisplay date={estimatedDelivery} />
     </div>
     <Button variant={BtnVariant.Ghost}>{language.showDetails}</Button>
   </footer>
