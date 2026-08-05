@@ -1,12 +1,17 @@
 import './_badge.scss';
 
-type BadgeProps = {
+interface BadgeProps {
   badgeText: string;
   className?: string;
-};
+  variant?: 'small' | 'large';
+}
 
-const Badge = ({ badgeText, className = '' }: BadgeProps) => (
-  <span className={`badge ${className}`}>
+const Badge = ({
+  badgeText,
+  className = '',
+  variant = 'large',
+}: BadgeProps) => (
+  <span className={`badge badge-${variant} ${className}`}>
     <span>{badgeText}</span>
   </span>
 );
