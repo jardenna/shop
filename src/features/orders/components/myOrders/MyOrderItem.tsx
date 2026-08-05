@@ -12,7 +12,7 @@ const MyOrderItem = ({ order, language }: MyOrderItemProps) => (
   <div className="my-order-item">
     <Img src={order.image} alt="" className="my-order-img" />
     <section>
-      <h2>{order.productName}</h2>
+      <h2 className="my-order-item-title">{order.productName}</h2>
 
       <div className="my-order-info">
         <span>

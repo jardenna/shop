@@ -39,7 +39,7 @@ const MyOrdersPage = () => {
           {myOrders.map((cart) => (
             <article key={cart.id} className="my-order-card">
               <header className="my-order-header">
-                <div>
+                <div className="my-order-meta">
                   <span>
                     <span>{language.order}</span>{' '}
                     <span>{formatOrderNumber(cart.id)}</span>

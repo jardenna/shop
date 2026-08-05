@@ -11,12 +11,26 @@
     justify-content: space-between;
   }
 
+  .my-order-footer {
+    font-size: $font-medium;
+  }
+
+  .my-order-meta {
+    font-family: $font-primary-semibold;
+  }
+
   .badge {
     margin-top: 8px;
   }
 
   .product-price {
-    font-size: rem(20px);
+    font-size: $font-medium;
+  }
+
+  .btn-ghost {
+    font-family: $font-primary-semibold;
+    font-size: $font-medium;
+    text-transform: uppercase;
   }
 
   .my-order-card {
