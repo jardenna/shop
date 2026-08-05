@@ -79,11 +79,11 @@ const FavoritePage = () => {
   if (favorites.length === 0) {
     return (
       <EmptyState
-        noProductTitle={language.noFavoritesYet}
-        noProductText={language.noFavorites}
+        emptyStateTitle={language.noFavoritesYet}
+        emptyStateText={language.noFavorites}
         src="/images/shoppingBags/shopping_bag_1"
         linkTo={`/${ShopPath.Collection}`}
-        emtyStateCtaText={language.getInspired}
+        emptyStateCtaText={language.getInspired}
         pageHeading={pageHeading}
       />
     );

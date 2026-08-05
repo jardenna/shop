@@ -14,11 +14,11 @@ const MyOrdersPage = () => {
   if (myOrders?.length === 0) {
     return (
       <EmptyState
-        noProductTitle={language.noOrdersYet}
-        noProductText={language.noOrdersDescription}
+        emptyStateTitle={language.noOrdersYet}
+        emptyStateText={language.noOrdersDescription}
         src="/images/shoppingBags/shopping_bag_2"
         linkTo={`/${ShopPath.Collection}`}
-        emtyStateCtaText={language.getInspired}
+        emptyStateCtaText={language.getInspired}
         pageHeading={pageHeading}
       />
     );

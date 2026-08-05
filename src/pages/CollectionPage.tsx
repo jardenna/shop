@@ -159,10 +159,10 @@ const CollectionPage = () => {
   if (productCount === 0) {
     return (
       <EmptyState
-        noProductText={language.noProductResult}
-        noProductTitle={language.noProductResultTitle}
+        emptyStateText={language.noProductResult}
+        emptyStateTitle={language.noProductResultTitle}
         onClick={onClearAllFilters}
-        emtyStateCtaText={language.clearAllFilters}
+        emptyStateCtaText={language.clearAllFilters}
         src="/images/shoppingBags/shopping_bag"
         pageHeading={
           category
