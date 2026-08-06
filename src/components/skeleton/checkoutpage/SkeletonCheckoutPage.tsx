@@ -2,7 +2,7 @@ import SkeletonFormShop from '../skelefonForms/SkeletonFormShop';
 import SkeletonAddressList from '../skeletonAddressList/SkeletonAddressList';
 import SkeletonHeading from '../SkeletonHeading';
 import SkeletonPriceList from '../skeletonPriceList/SkeletonPriceList';
-import ProductRow from './productRow/ProductRow';
+import SkeletonProductRow from './productRow/SkeletonProductRow';
 import SkeletonPaymentMethods from './skeletonPaymentMethods/SkeletonPaymentMethods';
 
 const SkeletonCheckoutPage = () => (
@@ -16,7 +16,7 @@ const SkeletonCheckoutPage = () => (
       </span>
     </div>
     <div className="order-flow-aside">
-      <ProductRow />
+      <SkeletonProductRow />
       <SkeletonPriceList />
     </div>
   </div>
