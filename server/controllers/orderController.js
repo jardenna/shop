@@ -162,12 +162,34 @@ const createOrder = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Private for admin and employee
 const getAllOrders = asyncHandler(async (req, res) => {
-  const orders = await Order.find().populate({
-    path: 'user',
-    select: '_id username',
-  });
+  const orders = await Order.find()
+    .select([
+      '_id',
+      'createdAt',
+      'orderItems',
+      'summary.totalPrice',
+      'payment.method',
+      'payment.status',
+      'delivery.status',
+    ])
+    .populate({
+      path: 'user',
+      select: '_id username',
+    })
+    .sort({ createdAt: -1 });
 
-  res.status(200).json(orders);
+  res.status(200).json(
+    orders.map((order) => ({
+      id: order.id,
+      createdAt: order.createdAt,
+      customer: order.user?.username ?? '',
+      itemCount: order.orderItems.length,
+      totalPrice: order.summary.totalPrice,
+      paymentMethod: order.payment.method,
+      paymentStatus: order.payment.status,
+      deliveryStatus: order.delivery.status,
+    })),
+  );
 });
 
 // @desc    Get order by Id
