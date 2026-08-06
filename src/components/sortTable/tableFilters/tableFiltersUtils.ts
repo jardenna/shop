@@ -1,23 +1,28 @@
 /* eslint-disable no-param-reassign */
 import {
   mainCategoryValues,
-  paymentMethodsValues,
+  PayValue,
   roleValues,
   statusValues,
   subCategoryValues,
 } from '../../../app/api/apiConstants';
 import { Roles, Status } from '../../../app/api/apiTypes/adminApiTypes';
-import { PaymentMethods } from '../../../app/api/apiTypes/paymentApiTypes';
 import {
   MainCategoryNames,
   SubCategoryNames,
 } from '../../../app/api/apiTypes/sharedApiTypes';
 import { Options } from '../../../types/types';
 import { Column } from '../Table';
+export const payValues: PayValue[] = [
+  'Visa',
+  'Mastercard',
+  'PayPal',
+  'MobilePay',
+];
 
 export interface ListsMap {
   categoryName: readonly MainCategoryNames[];
-  paymentMethod: PaymentMethods[];
+  paymentMethod: PayValue[];
   productStatus: readonly Status[];
   role: readonly Roles[];
   subCategoryName: readonly SubCategoryNames[];
@@ -26,7 +31,7 @@ export interface ListsMap {
 const listsMap: ListsMap = {
   categoryName: mainCategoryValues,
   productStatus: statusValues,
-  paymentMethod: Object.values(paymentMethodsValues),
+  paymentMethod: payValues,
   subCategoryName: subCategoryValues,
   role: roleValues,
 };
