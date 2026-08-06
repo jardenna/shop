@@ -180,6 +180,16 @@ const getOrderById = asyncHandler(async (req, res) => {
     select: '_id username',
   });
 
+  const orderBelongsToUser =
+    order.user._id.toString() === req.user._id.toString();
+
+  if (!orderBelongsToUser) {
+    return res.status(403).json({
+      success: false,
+      message: t('orderNotFound', req.lang),
+    });
+  }
+
   if (!order) {
     return res
       .status(404)
