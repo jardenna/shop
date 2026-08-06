@@ -21,7 +21,7 @@ const OrderTableRow = ({
   id,
   linkText,
 }: OrderTableRowProps) => {
-  console.log(linkText);
+  console.log({ linkText });
 
   return (
     <tr>
@@ -29,10 +29,10 @@ const OrderTableRow = ({
       <td>{createdAt}</td>
       <td>{customer}</td>
       <td>{itemCount}</td>
-      <td>{deliveryStatus}</td>
+      <td>{totalPrice}</td>
       <td>{paymentMethod}</td>
       <td>{paymentStatus}</td>
-      <td>{totalPrice}</td>
+      <td>{deliveryStatus}</td>
     </tr>
   );
 };

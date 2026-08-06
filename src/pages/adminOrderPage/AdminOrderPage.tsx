@@ -21,8 +21,6 @@ const AdminOrderPage = () => {
   const { filterParams, setFilterParams, onRemoveFilterTag } =
     useSearchParamsState(initialFilters);
 
-  console.log(orders);
-
   return (
     <AdminPageContainer heading={language.orders} ariaLabelledby="orders">
       {orders && (

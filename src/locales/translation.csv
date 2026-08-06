@@ -120,6 +120,7 @@ criterionNotMet;Criterion not met;Kriterium ikke opfyldt
 currency;Currency;Valuta
 currentlyUnavailableSizes;Currently unavailable sizes;Midlertidigt udsolgte størrelser
 currentPage;Current page;Nuværende side
+customer;Customer;Kunde
 customersList;Customers list;Kundeliste
 dashboard;Dashboard;Dashboard
 date;Date;Dato
@@ -230,10 +231,12 @@ invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for pla
 invalidSize;The selected size is no longer available;Den valgte størrelse er ikke længere tilgængelig
 invalidUserData;Invalid user data;Ugyldig bruger data
 item;item;vare
+itemCount;Item count;Antal varer
 items;items;varer
 itemsUpdated;Items updated to;Varer opdateret til
 keep;Keep;Behold
 keepBoth;Keep both;Behold begge
+paymentStatus;Payment status;Betalingsstatus
 kid;Kid;Barn
 kids;Kids;Børn
 kidsAltText;Stylish children, a girl in a white sleeveless top with a matching hat and a boy in a colorful shirt, sitting together in a playful yet elegant pose.;Stilfulde børn, en pige i hvid ærmeløs top med matchende hat og en dreng i farverig skjorte, sidder sammen i et legende men elegant udtryk.
