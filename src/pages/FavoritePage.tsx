@@ -9,9 +9,9 @@ import Panel from '../components/togglePanel/Panel';
 import { useTogglePanel } from '../components/togglePanel/useTogglePanel';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useAddToCartMutation } from '../features/cart/cartApiSlice';
-import OrderItemContainer from '../features/cart/components/orderItemCard/OrderItemContainer.tsx';
 import { useLanguage } from '../features/language/useLanguage';
 import { openMiniCart } from '../features/miniCartPopupSlice.ts';
+import OrderItemContainer from '../features/orders/components/orderItemCard/OrderItemContainer.tsx';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import ProductCard from '../features/shop/components/ProductCard';
 import CartForm, {
@@ -79,11 +79,11 @@ const FavoritePage = () => {
   if (favorites.length === 0) {
     return (
       <EmptyState
-        noProductText={language.noFavorites}
-        noProductTitle={language.noFavoritesYet}
+        emptyStateTitle={language.noFavoritesYet}
+        emptyStateText={language.noFavorites}
         src="/images/shoppingBags/shopping_bag_1"
         linkTo={`/${ShopPath.Collection}`}
-        emtyStateCtaText={language.getInspired}
+        emptyStateCtaText={language.getInspired}
         pageHeading={pageHeading}
       />
     );

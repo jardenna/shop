@@ -95,11 +95,11 @@ const ShoppingCartPage = () => {
   if (cartItems.length === 0) {
     return (
       <EmptyState
-        noProductText={language.shoppingBagEmpty}
-        noProductTitle={language.shoppingBagEmptyTitle}
+        emptyStateText={language.shoppingBagEmpty}
+        emptyStateTitle={language.shoppingBagEmptyTitle}
         src="/images/shoppingBags/shopping_bag_2"
         linkTo={`/${ShopPath.Collection}`}
-        emtyStateCtaText={language.getInspired}
+        emptyStateCtaText={language.getInspired}
         pageHeading={pageHeading}
       />
     );

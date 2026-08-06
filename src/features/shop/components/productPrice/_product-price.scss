@@ -6,6 +6,10 @@
   justify-content: end;
   align-items: baseline;
 
+  .discount {
+    color: $color-red-15;
+  }
+
   .orginal-price {
     text-decoration: line-through;
     font-size: $font-mini;

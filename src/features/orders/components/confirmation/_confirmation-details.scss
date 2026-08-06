@@ -1,0 +1,110 @@
+@use '../../../../scss/globals' as *;
+
+.confirmation-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  .confirmation-sub-header {
+    p {
+      text-wrap: pretty;
+      max-width: rem(712px);
+    }
+  }
+
+  .confirmation-summary {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(340px, 1fr);
+    gap: 40px;
+
+    @include max-size($small) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .confirmation-info-container {
+    display: flex;
+    gap: 32px;
+
+    @include max-size($small) {
+      flex-direction: column;
+    }
+
+    .confirmation-info {
+      flex: 1;
+    }
+
+    .my-address-list {
+      grid-template-columns: 1fr 1fr;
+      grid-auto-rows: auto;
+      gap: 20px;
+
+      @include max-size($mini) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .my-address-item {
+      border: 0;
+      background: #f9f9f9;
+      border-radius: 4px;
+      min-width: rem(300px);
+
+      @include max-size($small) {
+        min-width: 50%;
+      }
+    }
+
+    .my-address-content {
+      padding: 32px;
+    }
+
+    .my-address-title {
+      margin: 0;
+    }
+  }
+
+  .confirmation-detail-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .text-uppercase {
+      font-family: $font-primary-semibold;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .confirmation-detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    @include max-size($small) {
+      flex-direction: row;
+    }
+  }
+
+  .summary-payment {
+    background-color: $color-background;
+    padding: 20px;
+    border-radius: 4px;
+  }
+
+  .summary-items {
+    flex: 1;
+  }
+
+  .confirmation-detail-list-title {
+    border-bottom: $border-dark;
+    padding-bottom: 8px;
+    max-width: rem(200px);
+
+    @include max-size($small) {
+      max-width: 100%;
+    }
+  }
+}

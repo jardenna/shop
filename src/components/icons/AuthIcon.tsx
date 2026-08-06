@@ -1,10 +1,10 @@
 import type { IconDefaultProps } from './Icon';
 
-const AuthIcon = ({ size, className, ariaHidden }: IconDefaultProps) => (
+const AuthIcon = ({ className, ariaHidden }: IconDefaultProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={size}
-    height={size}
+    width="2.2em"
+    height="2.2em"
     className={className}
     viewBox="0 0 125 125"
     fill="none"

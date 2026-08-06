@@ -11,7 +11,6 @@ import User from '../models/userModel.js';
 import { buildOrderItems } from '../services/buildOrderItems.js';
 import { calculateCartSummary } from '../services/calculateCartSummary.js';
 import { getActiveDiscount } from '../services/getActiveDiscount.js';
-import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 import { validateFakePayment } from '../validators/validateFakePayment.js';
 import {
@@ -163,14 +162,12 @@ const createOrder = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Private for admin and employee
 const getAllOrders = asyncHandler(async (req, res) => {
-  const orders = await Order.find()
-    .populate({
-      path: 'user',
-      select: '_id username',
-    })
-    .lean();
+  const orders = await Order.find().populate({
+    path: 'user',
+    select: '_id username',
+  });
 
-  res.status(200).json(formatMongoData(orders));
+  res.status(200).json(orders);
 });
 
 // @desc    Get order by Id
@@ -197,9 +194,11 @@ const getOrderById = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Private
 const getUserOrders = asyncHandler(async (req, res) => {
-  const orders = await Order.find({ user: req.user._id }).lean();
+  const orders = await Order.find({ user: req.user._id }).select(
+    '_id createdAt  payment.status delivery.status summary.totalPrice orderItems',
+  );
 
-  res.status(200).json(formatMongoData(orders));
+  res.status(200).json(orders);
 });
 
 // @desc    Pay order
@@ -214,7 +213,7 @@ const payOrder = asyncHandler(async (req, res) => {
   if (!order) {
     return res.status(404).json({
       success: false,
-      message: t('couldNotFindInfo', req.lang),
+      message: t('orderNotFound', req.lang),
     });
   }
 
@@ -227,7 +226,7 @@ const payOrder = asyncHandler(async (req, res) => {
     });
   }
 
-  if (order.isPaid) {
+  if (order.payment.status === PAYMENT_STATUS.COMPLETED) {
     return res.status(400).json({
       success: false,
       message: t('orderAllreadyPaid', req.lang),
@@ -310,27 +309,36 @@ const deliverOrder = asyncHandler(async (req, res) => {
   if (!order) {
     return res.status(404).json({
       success: false,
-      message: t('couldNotFindInfo', req.lang),
+      message: t('orderNotFound', req.lang),
     });
   }
 
-  if (!order.isPaid) {
+  if (order.payment.status !== PAYMENT_STATUS.COMPLETED) {
     return res.status(400).json({
       success: false,
       message: t('orderNotPaid', req.lang),
     });
   }
 
-  if (order.isDelivered) {
+  if (order.delivery.status === DELIVERY_STATUS.DELIVERED) {
     return res.status(400).json({
       success: false,
       message: t('orderAllreadyDelivered', req.lang),
     });
   }
 
-  order.isDelivered = true;
-  order.deliveredAt = new Date();
+  if (order.delivery.status !== DELIVERY_STATUS.SHIPPED) {
+    return res.status(400).json({
+      success: false,
+      message: t('orderMustBeShippedFirst', req.lang),
+    });
+  }
+
+  order.delivery.status = DELIVERY_STATUS.DELIVERED;
+  order.delivery.deliveredAt = new Date();
+
   const updatedOrder = await order.save();
+
   res.status(200).json(updatedOrder);
 });
 

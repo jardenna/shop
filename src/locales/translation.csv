@@ -154,6 +154,7 @@ employee;Employee;Ansat
 employeeDiscount;Employee discount;Medarbejder rabat
 error;Error;Fejl
 errorAltText;A really guilty emoji.;En meget skyldig emoji.
+estimatedDelivery;Estimated delivery;Anslået leveringsdato
 estimatedShipping;Shipping;Leveringspris
 expanded;Expanded;Udvidet
 expandMenu;Expand menu;Udvid menu
@@ -293,6 +294,8 @@ noFavoritesYet;No favorites yet;Ingen favoritter endnu
 noImagesProvided;No images provided;Ingen billeder
 noItemsToShow;No items to show;Ingen varer at vise
 noMatchingAddressData;No matching address found;Ingen matchende adresse
+noOrdersYet;No orders yet;Ingen ordrer endnu
+noOrdersDescription;Once you've placed your first order, it will appear here so you can easily track and review your purchases.;Når du har afgivet din første ordre, vises den her, så du nemt kan følge og se dine køb
 noOptions;No options;Ingen valgmuligheder
 noPassword;Please enter a password;Indtast venligst en adgangskode
 noPreference;No preference;Ingen præference
@@ -330,11 +333,12 @@ orderCreated;Order created;Ordre oprettet
 orderDelivered;Delivered;Leveret
 orderInProgress;In progress;Behandles
 orderNotFound;We couldn't find the order you're looking for. It may have been removed or the link is no longer valid.;Vi kunne ikke finde den ordre, du leder efter. Den kan være blevet fjernet, eller linket er ikke længere gyldigt.
-orderShipped;Shipped;Afsendt
+orderMustBeShippedFirst;The order must be shipped before it can be marked as delivered.;Ordren skal være afsendt, før den kan markeres som leveret.
 orderNotPaid;Order has not been paid;Ordren er ikke betalt
 orderNumber;Order number;Ordrenummer
 orderPlaced;Order Placed;Ordre gennemført
 orders;Orders;Ordrer
+orderShipped;Shipped;Afsendt
 orderSummary;Order summary;Ordreoversigt
 orderTotalInclVat;Total price Incl. vat;Pris i alt Inkl. moms
 originaPrice;Original price;Før pris
@@ -475,6 +479,7 @@ show;Show;Vis
 showAll;Show all;Vis alle
 showAllTags;Show all tags;Vis alle tags
 showContent;Show content;Vis indhold
+showDetails;Show details;Vis detaljer
 showing;Showing;Viser
 showLessTags;Show less tags;Vis færre tags
 showPassword;Show password;Vis adgangskode

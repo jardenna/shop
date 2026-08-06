@@ -6,9 +6,9 @@ import { BtnVariant } from '../../../../types/enums';
 import './_empty-state.scss';
 
 interface BaseEmptyStateProps {
-  emtyStateCtaText: string;
-  noProductText: string;
-  noProductTitle: string;
+  emptyStateCtaText: string;
+  emptyStateText: string;
+  emptyStateTitle: string;
   pageHeading: string;
   src: string;
   btnVariant?: BtnVariant;
@@ -28,9 +28,9 @@ type EmptyStateProps = BaseEmptyStateProps & (LinkVariant | ActionVariant);
 
 const EmptyState = ({
   onClick,
-  noProductText,
-  noProductTitle,
-  emtyStateCtaText,
+  emptyStateText,
+  emptyStateTitle,
+  emptyStateCtaText,
   src,
   linkTo,
   pageHeading,
@@ -48,16 +48,16 @@ const EmptyState = ({
         />
       </div>
       <div className="empty-state-info">
-        <h2 className="empty-space-heading">{noProductTitle}</h2>
+        <h2 className="empty-space-heading">{emptyStateTitle}</h2>
         <p role="status" aria-atomic="true">
-          {noProductText}.
+          {emptyStateText}.
         </p>
         {linkTo ? (
           <Link to={linkTo} className={`btn btn-${btnVariant}`}>
-            {emtyStateCtaText}
+            {emptyStateCtaText}
           </Link>
         ) : (
-          <Button onClick={onClick}>{emtyStateCtaText}</Button>
+          <Button onClick={onClick}>{emptyStateCtaText}</Button>
         )}
       </div>
     </section>

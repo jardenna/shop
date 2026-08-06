@@ -23,10 +23,27 @@ export interface OrderResponse extends DefaultResponseType {
   discount: Discount;
   id: string;
   isDelivered: boolean;
-  isPaid: boolean;
   orderItems: Order[];
   payment: Payment;
   shippingAddress: BaseAddress;
   summary: Summary;
   user: User;
+}
+
+type PaymentStatus = 'PENDING' | 'COMPLETED';
+
+export interface SummaryK {
+  totalPrice: number;
+}
+
+export interface PaymentT {
+  status: PaymentStatus;
+}
+
+export interface MyOrdersResponse {
+  createdAt: Date;
+  id: string;
+  orderItems: Order[];
+  payment: Payment;
+  summary: Summary;
 }

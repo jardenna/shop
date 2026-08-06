@@ -47,6 +47,7 @@ const HeaderIcons = ({
             dropdownList={dropdownBtnList}
             placement="bottom-start"
             ariaHasPopup="menu"
+            triggerBtnClassName="header-icon-btn"
           >
             <IconContent
               ariaLabel={language.myAccount}

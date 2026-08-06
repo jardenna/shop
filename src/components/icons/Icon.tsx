@@ -1,7 +1,6 @@
 import { IconName } from '../../types/enums';
 import AccountIcon from './AccountIcon';
 import AddIcon from './AddIcon';
-import AdminIcon from './AdminIcon';
 import ArrowDownIcon from './ArrowDownIcon';
 import ArrowUpIcon from './ArrowUpIcon';
 import AuthIcon from './AuthIcon';
@@ -37,6 +36,7 @@ import InfoIcon from './InfoIcon';
 import LanguageIcon from './LanguageIcon';
 import LayoutGridIcon from './LayoutGridIcon';
 import LayoutListIcon from './LayoutListIcon';
+import LockIcon from './LockIcon';
 import LoginIcon from './LoginIcon';
 import LogoIcon from './LogoIcon';
 import LogoutIcon from './LogoutIcon';
@@ -70,7 +70,6 @@ type IconProps = IconDefaultProps & {
 const iconMapping = {
   account: AccountIcon,
   add: AddIcon,
-  admin: AdminIcon,
   arrowDown: ArrowDownIcon,
   arrowUp: ArrowUpIcon,
   auth: AuthIcon,
@@ -104,6 +103,7 @@ const iconMapping = {
   language: LanguageIcon,
   layoutGrid: LayoutGridIcon,
   layoutList: LayoutListIcon,
+  lock: LockIcon,
   login: LoginIcon,
   logo: LogoIcon,
   logout: LogoutIcon,

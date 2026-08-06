@@ -80,7 +80,6 @@ export type BtnType = ButtonHTMLAttributes<HTMLButtonElement>['type'];
 export enum IconName {
   Account = 'account',
   Add = 'add',
-  Admin = 'admin',
   ArrowDown = 'arrowDown',
   ArrowUp = 'arrowUp',
   Auth = 'auth',
@@ -114,6 +113,7 @@ export enum IconName {
   Language = 'language',
   LayoutGrid = 'layoutGrid',
   LayoutList = 'layoutList',
+  Lock = 'lock',
   Login = 'login',
   Logo = 'logo',
   Logout = 'logout',

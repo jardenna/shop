@@ -1,12 +1,13 @@
 import { useKeyboardListNav } from '../../hooks/useKeyboardListNav';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
+import Icon from '../icons/Icon';
 import type { DropdownItem } from './DropdownBtn';
 
-type DropdownListProps = {
+interface DropdownListProps {
   dropdownList: DropdownItem[];
   defaultIndex?: number;
-};
+}
 
 const DropdownList = ({ dropdownList, defaultIndex }: DropdownListProps) => {
   const { listRefs } = useKeyboardListNav({
@@ -17,7 +18,10 @@ const DropdownList = ({ dropdownList, defaultIndex }: DropdownListProps) => {
   return (
     <ul>
       {dropdownList.map(
-        ({ label, onClick, icon, btnVariant, disabled, isActive }, index) => (
+        (
+          { label, onClick, btnVariant, disabled, isActive, iconName },
+          index,
+        ) => (
           <li key={label} className="dropdown-item">
             <Button
               variant={btnVariant || BtnVariant.Ghost}
@@ -29,7 +33,7 @@ const DropdownList = ({ dropdownList, defaultIndex }: DropdownListProps) => {
               }}
             >
               <span>{label}</span>
-              <span>{icon}</span>
+              {iconName && <Icon iconName={iconName} />}
             </Button>
           </li>
         ),

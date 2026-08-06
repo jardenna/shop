@@ -127,7 +127,7 @@ const orderModelSchema = new Schema(
         type: String,
         enum: DELIVERY_STATUS_ENUM,
         required: true,
-        default: DELIVERY_STATUS.PROCESSING,
+        default: DELIVERY_STATUS.ORDER_CREATED,
       },
       deliveredAt: Date,
     },
@@ -141,12 +141,14 @@ const orderModelSchema = new Schema(
         returnedObject.id = returnedObject._id.toString();
         delete returnedObject._id;
 
-        returnedObject.orderItems = returnedObject.orderItems.map(
-          ({ _id, ...orderItem }) => ({
-            id: _id.toString(),
-            ...orderItem,
-          }),
-        );
+        if (returnedObject.orderItems) {
+          returnedObject.orderItems = returnedObject.orderItems.map(
+            ({ _id, ...orderItem }) => ({
+              id: _id.toString(),
+              ...orderItem,
+            }),
+          );
+        }
 
         return returnedObject;
       },

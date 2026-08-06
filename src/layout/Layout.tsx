@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router';
 import { useAppDispatch } from '../app/hooks';
 import { DropdownItem } from '../components/dropdownBtn/DropdownBtn';
-import Icon from '../components/icons/Icon';
 import type { PrimaryActionBtnProps } from '../components/modal/Modal';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
@@ -19,7 +18,6 @@ import danishLang from '../locales/da.json';
 import englishLang from '../locales/en.json';
 import { IconName } from '../types/enums';
 import type { OptionType } from '../types/types';
-import { getPathName, pathEquals } from '../utils/utils';
 import Header from './header/Header';
 import { AdminPath, ShopPath } from './nav/enums';
 
@@ -27,7 +25,6 @@ const Layout = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const pathInfo = getPathName(pathname);
   const { language, switchLanguage, selectedLanguage } = useLanguage();
 
   // Clear all popups whenever the user navigates
@@ -37,9 +34,9 @@ const Layout = () => {
   }, [pathname, dispatch]);
 
   // Hooks
-  const { currentUser, isEmployee, isAuthReady } = useAuth();
+  const { currentUser, isAuthReady, isEmployee } = useAuth();
   const { currencyOptions, onChangePrice, exchangeRate } = useCurrency();
-  const [logout, { isLoading }] = useLogoutMutation();
+  const [logout] = useLogoutMutation();
   const { isMobileSize } = useMediaQuery();
 
   const { data: favorites = [], refetch } = useGetFavoritesQuery(
@@ -85,42 +82,36 @@ const Layout = () => {
     isForm: true,
   };
 
-  // Helper to generate account-related links (for users, employees, admins)
-  const getAccountLinks = (): DropdownItem[] => [
+  const accountDropdownList: DropdownItem[] = [
     {
       label: language.myAccount,
-      isActive: pathEquals(pathInfo, ShopPath.MyAccount),
+      isActive: pathname.includes(ShopPath.MyAccount),
       onClick: () =>
         navigate(currentUser ? `/${ShopPath.MyAccount}` : `/${ShopPath.Login}`),
-      icon: <Icon iconName={IconName.Auth} size="2.5em" />,
+      iconName: IconName.Auth,
     },
-  ];
-
-  // Auth dropdown item
-  const authDropdownItem: DropdownItem = {
-    label: currentUser ? language.logout : language.login,
-    onClick: currentUser ? handleLogout : () => navigate(`/${ShopPath.Login}`),
-    disabled: isLoading,
-    icon: <Icon iconName={currentUser ? IconName.Logout : IconName.Login} />,
-  };
-
-  const dropdownItems: DropdownItem[] = [
-    // Account links visible to everyone
-    ...getAccountLinks(),
-
-    // Dashboard only for employees and admins
+    {
+      label: language.myOrders,
+      isActive: pathname.includes(ShopPath.MyOrders),
+      onClick: () => navigate(ShopPath.MyOrders),
+      iconName: IconName.Basket,
+    },
     ...(isEmployee
       ? [
           {
             label: language.dashboard,
-            icon: <Icon iconName={IconName.Admin} />,
-            onClick: () => navigate(`/${AdminPath.Admin}`),
+            onClick: () => navigate(AdminPath.Admin),
+            iconName: IconName.Lock,
           },
         ]
       : []),
-
-    // Auth/logout always
-    authDropdownItem,
+    {
+      label: currentUser ? language.logout : language.login,
+      onClick: currentUser
+        ? handleLogout
+        : () => navigate(`/${ShopPath.Login}`),
+      iconName: currentUser ? IconName.Logout : IconName.Login,
+    },
   ];
 
   return (
@@ -128,7 +119,7 @@ const Layout = () => {
       {!isMobileSize && <SkipLink />}
       <Header
         localLanguage={localLanguage}
-        dropdownBtnList={dropdownItems}
+        dropdownBtnList={accountDropdownList}
         primaryActionBtn={primaryActionBtn}
         isMobileSize={isMobileSize}
         defaultValue={{

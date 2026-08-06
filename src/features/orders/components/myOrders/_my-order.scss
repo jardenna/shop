@@ -1,0 +1,78 @@
+@use '../../../../scss/globals' as *;
+
+.my-orders {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .my-order-header,
+  .my-order-footer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .my-order-footer {
+    font-size: $font-medium;
+    align-items: center;
+  }
+
+  .my-order-meta {
+    font-family: $font-primary-semibold;
+  }
+
+  .badge {
+    margin-top: 6px;
+  }
+
+  .product-price {
+    font-size: $font-medium;
+  }
+
+  .btn-primary {
+    max-width: rem(150px);
+  }
+
+  .my-order-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: $border;
+    padding: 20px;
+  }
+}
+
+.my-order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-block: $border;
+  padding-block: 20px;
+
+  .my-order-list-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .my-order-item {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .my-order-img {
+    width: rem(80px);
+    height: rem(100px);
+  }
+
+  .my-order-info {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .my-order-item-title {
+    font-family: $font-primary-semibold;
+    font-size: $font-medium;
+  }
+}

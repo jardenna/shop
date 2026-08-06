@@ -10,20 +10,34 @@
   align-items: center;
   width: fit-content;
   border-radius: 50px;
-  background-color: $color-badge-default;
-  color: $color-light-gray-30;
+  background-color: $color-light-gray-30;
   padding: 2px 12px;
+  font-family: $font-primary-bold;
+
+  &.badge-small {
+    padding-block: 8px;
+    border-radius: 4px;
+  }
+
+  &.published {
+    background-color: $color-badge-default;
+    color: $color-light-gray-30;
+  }
 
   &.scheduled {
     background-color: $color-badge-scheduled;
+    color: $color-light-gray-30;
   }
 
   &.inactive {
     background-color: $color-badge-inactive;
+    color: $color-light-gray-30;
   }
 
   &.discount {
-    background-color: $color-dust-red-30;
+    background-color: $color-badge-discount;
+    color: $color-light-gray-30;
+    text-transform: uppercase;
     padding-block: 8px;
     border-radius: 4px;
   }
@@ -31,9 +45,7 @@
   &.out-of-stock {
     background-color: $color-warning;
     color: $color-primary;
-    padding-block: 12px;
-    text-transform: uppercase;
+    padding-block: 8px;
     border-radius: 4px;
-    font-family: $font-primary-semibold;
   }
 }

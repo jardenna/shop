@@ -1,4 +1,4 @@
-import DateDisplay from '../../../components/datePicker/DateDisplay';
+import DateDisplay from '../../../../components/datePicker/DateDisplay';
 
 interface ConfirmationDetailItemProps {
   label: string;

@@ -6,7 +6,6 @@ import { AdminPath, ShopPath } from '../layout/nav/enums';
 import AboutUsPage from '../pages/AboutUsPage';
 import AddressPage from '../pages/account/AddressPage';
 import MyAccountPage from '../pages/account/MyAccountPage';
-import MyOrdersPage from '../pages/account/MyOrdersPage';
 import AdminOrderPage from '../pages/admin/AdminOrderPage';
 import Dashboard from '../pages/admin/Dashboard';
 import CategoryPage from '../pages/category/CategoryPage';
@@ -21,6 +20,7 @@ import FavoritePage from '../pages/FavoritePage';
 import HomePage from '../pages/home/HomePage';
 import LoginPage from '../pages/LoginPage';
 import MainCollectionsPage from '../pages/MainCollectionsPage';
+import MyOrdersPage from '../pages/MyOrdersPage';
 import OrderConfirmationPage from '../pages/OrderConfirmationPage';
 import CreateProductPage from '../pages/product/CreateProductPage';
 import ProductPage from '../pages/product/ProductPage';
@@ -165,6 +165,10 @@ const routeConfig = createBrowserRouter([
             element: <OrderConfirmationPage />,
           },
           {
+            path: ShopPath.MyOrders,
+            element: <MyOrdersPage />,
+          },
+          {
             path: ShopPath.MyAccount,
             element: <AccountLayout />,
             children: [
@@ -172,10 +176,7 @@ const routeConfig = createBrowserRouter([
                 path: '',
                 element: <MyAccountPage />,
               },
-              {
-                path: ShopPath.MyOrders,
-                element: <MyOrdersPage />,
-              },
+
               {
                 path: ShopPath.MyAddresses,
                 element: <AddressPage />,
