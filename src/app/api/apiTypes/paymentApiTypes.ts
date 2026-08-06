@@ -2,10 +2,10 @@ import { HTMLInputTypeAttribute } from 'react';
 import { KeyValuePair } from '../../../hooks/useFormValidation';
 import { IconName } from '../../../types/enums';
 import { InputMode } from '../../../types/types';
-import { paymentMethods } from '../apiConstants';
+import { paymentMethodsValues } from '../apiConstants';
 
 export type PaymentMethods =
-  (typeof paymentMethods)[keyof typeof paymentMethods];
+  (typeof paymentMethodsValues)[keyof typeof paymentMethodsValues];
 
 export type PaymentFieldName =
   | 'cardNumber'

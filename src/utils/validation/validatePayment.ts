@@ -1,4 +1,4 @@
-import { paymentMethods } from '../../app/api/apiConstants';
+import { paymentMethodsValues } from '../../app/api/apiConstants';
 import { ValidatePayment } from '../../app/api/apiTypes/paymentApiTypes';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
@@ -25,8 +25,8 @@ export function validatePayment(values: ValidatePayment) {
   } = values;
 
   if (
-    paymentMethod === paymentMethods.visa ||
-    paymentMethod === paymentMethods.mastercard
+    paymentMethod === paymentMethodsValues.visa ||
+    paymentMethod === paymentMethodsValues.mastercard
   ) {
     const sanitizedCardNumber = cardNumber.replace(/\s/g, '');
 
@@ -61,7 +61,7 @@ export function validatePayment(values: ValidatePayment) {
     }
   }
 
-  if (paymentMethod === paymentMethods.paypal) {
+  if (paymentMethod === paymentMethodsValues.paypal) {
     if (!paypalEmail.trim()) {
       errors.paypalEmail = ValidationMessage.PleaseEnterEmail;
     } else if (!emailRegex.test(paypalEmail)) {
@@ -74,7 +74,7 @@ export function validatePayment(values: ValidatePayment) {
     }
   }
 
-  if (paymentMethod === paymentMethods.mobilepay) {
+  if (paymentMethod === paymentMethodsValues.mobilepay) {
     const sanitizedPhoneNumber = mobilePhoneNumber.replace(/\s/g, '');
 
     if (

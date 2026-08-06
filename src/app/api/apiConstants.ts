@@ -4,7 +4,7 @@ export const roleValues = ['Employee', 'User'] as const;
 
 export const statusValues = ['Published', 'Inactive', 'Scheduled'] as const;
 
-export const paymentMethods = {
+export const paymentMethodsValues = {
   visa: 'visa',
   mastercard: 'mastercard',
   paypal: 'paypal',
