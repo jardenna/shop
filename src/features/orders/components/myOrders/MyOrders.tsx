@@ -7,9 +7,10 @@ import './_my-order.scss';
 
 interface MyOrdersProps {
   myOrders: MyOrdersResponse[];
+  onViewDetails: (id: string) => void;
 }
 
-const MyOrders = ({ myOrders }: MyOrdersProps) => {
+const MyOrders = ({ myOrders, onViewDetails }: MyOrdersProps) => {
   const { language } = useLanguage();
 
   return (
@@ -25,6 +26,9 @@ const MyOrders = ({ myOrders }: MyOrdersProps) => {
           <MyOrderFooter
             language={language}
             estimatedDelivery={myOrder.createdAt}
+            onViewDetails={() => {
+              onViewDetails(myOrder.id);
+            }}
           />
         </article>
       ))}

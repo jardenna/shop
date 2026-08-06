@@ -13,6 +13,7 @@
 
   .my-order-footer {
     font-size: $font-medium;
+    align-items: center;
   }
 
   .my-order-meta {
@@ -27,10 +28,8 @@
     font-size: $font-medium;
   }
 
-  .btn-ghost {
-    font-family: $font-primary-semibold;
-    font-size: $font-medium;
-    text-transform: uppercase;
+  .btn-primary {
+    max-width: rem(150px);
   }
 
   .my-order-card {
@@ -62,7 +61,8 @@
   }
 
   .my-order-img {
-    max-width: rem(80px);
+    width: rem(80px);
+    height: rem(100px);
   }
 
   .my-order-info {
