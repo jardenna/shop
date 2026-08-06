@@ -6,7 +6,7 @@ import AdminBadge from './AdminBadge';
 import ProductActions from './ProductActions';
 import ProductOverviewCell from './ProductOverviewCell';
 
-type ProductTableRowProps = {
+interface ProductTableRowProps {
   categoryName: string;
   countInStock: number;
   discount: number;
@@ -19,7 +19,7 @@ type ProductTableRowProps = {
   status: Status;
   subCategoryName: string;
   onCopyProduct: (id: string) => void;
-};
+}
 
 const ProductTableRow = ({
   id,

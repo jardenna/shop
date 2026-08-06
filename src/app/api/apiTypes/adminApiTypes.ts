@@ -223,3 +223,14 @@ export type ProductsResponse = BasePagination & {
 };
 
 export type FileName = 'images';
+
+export interface AdminOrderResponse {
+  createdAt: string;
+  customer: string;
+  deliveryStatus: string;
+  id: string;
+  itemCount: number;
+  paymentMethod: string;
+  paymentStatus: string;
+  totalPrice: number;
+}
