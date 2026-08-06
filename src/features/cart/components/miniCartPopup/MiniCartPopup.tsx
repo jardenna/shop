@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-condition */
 import { useRef } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
@@ -50,8 +51,11 @@ const MiniCartPopup = () => {
   if (!apiCartList || !shouldRender) {
     return null;
   }
+
   const { cartItems, summary, discount } = apiCartList;
-  const discountLabel = `${language[discount.label]} (${discount.percent}%)`;
+  const discountLabel = discount
+    ? `${language[discount.label]} (${discount.percent}%)`
+    : '';
 
   return (
     <Portal portalId="miniCard">
@@ -59,45 +63,47 @@ const MiniCartPopup = () => {
         FallbackComponent={ErrorBoundaryFallback}
         onReset={() => refetchApiCartList()}
       >
-        <section
-          className={`mini-cart transition ${transitionState}`}
-          ref={miniCartRef}
-        >
-          <h2 className="mini-cart-title">{language.myBag}</h2>
-          <OrderItemList orders={cartItems} language={language} />
+        {discount && (
+          <section
+            className={`mini-cart transition ${transitionState}`}
+            ref={miniCartRef}
+          >
+            <h2 className="mini-cart-title">{language.myBag}</h2>
+            <OrderItemList orders={cartItems} language={language} />
 
-          <article className="mini-cart-price-info">
-            {summary.remainingForFreeShipping > 0 && (
-              <div className="mini-cart-info">
-                {language.buyForFreeShipping}
-                <ProductPrice price={summary.remainingForFreeShipping} />
-                {language.freeShippingSuffix}
-              </div>
-            )}
-
-            <div className="mini-cart-summary-list">
-              {summary.promoDiscount > 0 && (
-                <SummaryItem
-                  label={
-                    discount.code === ''
-                      ? language.employeeDiscount
-                      : discountLabel
-                  }
-                  price={summary.promoDiscount}
-                  isDiscount
-                />
+            <article className="mini-cart-price-info">
+              {summary.remainingForFreeShipping > 0 && (
+                <div className="mini-cart-info">
+                  {language.buyForFreeShipping}
+                  <ProductPrice price={summary.remainingForFreeShipping} />
+                  {language.freeShippingSuffix}
+                </div>
               )}
-              <SummaryItem
-                label={language.estimatedShipping}
-                price={summary.shippingPrice}
-              />
-              <SummaryItem
-                label={language.orderTotalInclVat}
-                price={summary.totalPrice}
-              />
-            </div>
-          </article>
-        </section>
+
+              <div className="mini-cart-summary-list">
+                {summary.promoDiscount > 0 && (
+                  <SummaryItem
+                    label={
+                      discount.code === ''
+                        ? language.employeeDiscount
+                        : discountLabel
+                    }
+                    price={summary.promoDiscount}
+                    isDiscount
+                  />
+                )}
+                <SummaryItem
+                  label={language.estimatedShipping}
+                  price={summary.shippingPrice}
+                />
+                <SummaryItem
+                  label={language.orderTotalInclVat}
+                  price={summary.totalPrice}
+                />
+              </div>
+            </article>
+          </section>
+        )}
       </ErrorBoundary>
     </Portal>
   );
