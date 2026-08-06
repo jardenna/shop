@@ -1,6 +1,6 @@
 import Skeleton from '../../Skeleton';
 import './_payment-method.scss';
-import PaymentMethodIcons from './PaymentMethodIcons';
+import SkeletonPaymentMethodIcons from './SkeletonPaymentMethodIcons';
 
 const PaymentMethods = () => (
   <span className="skeleton-column">
@@ -9,7 +9,7 @@ const PaymentMethods = () => (
         <Skeleton className="radio-skeleton" />
         <Skeleton className="label-skeleton" />
       </span>
-      <PaymentMethodIcons />
+      <SkeletonPaymentMethodIcons />
     </span>
   </span>
 );

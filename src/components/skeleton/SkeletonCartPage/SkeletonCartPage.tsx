@@ -1,4 +1,4 @@
-import PaymentMethodIcons from '../checkoutpage/paymentMethods/PaymentMethodIcons';
+import SkeletonPaymentMethodIcons from '../checkoutpage/skeletonPaymentMethods/SkeletonPaymentMethodIcons';
 import SkeletonButton from '../SkeletonButton';
 import SkeletonParagraph from '../SkeletonParagraph';
 import SkeletonPriceList from '../skeletonPriceList/SkeletonPriceList';
@@ -13,7 +13,7 @@ const SkeletonCartPage = () => (
     <span className="flex flex-column">
       <SkeletonPriceList />
       <SkeletonButton />
-      <PaymentMethodIcons />
+      <SkeletonPaymentMethodIcons />
       <SkeletonParagraph />
     </span>
   </span>
