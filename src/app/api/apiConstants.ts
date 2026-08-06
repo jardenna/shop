@@ -1,10 +1,9 @@
 import { PaymentMethods } from './apiTypes/paymentApiTypes';
 
 export const roleValues = ['Employee', 'User'] as const;
-
 export const statusValues = ['Published', 'Inactive', 'Scheduled'] as const;
 export const payValues = ['Visa', 'Mastercard', 'PayPal', 'MobilePay'];
-export type PayValue = 'Visa' | 'Mastercard' | 'PayPal' | 'MobilePay';
+export type PayValues = (typeof payValues)[number];
 
 export const paymentMethodsValues = {
   visa: 'visa',

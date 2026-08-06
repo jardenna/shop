@@ -1,7 +1,8 @@
 /* eslint-disable no-param-reassign */
 import {
   mainCategoryValues,
-  PayValue,
+  payValues,
+  PayValues,
   roleValues,
   statusValues,
   subCategoryValues,
@@ -13,16 +14,10 @@ import {
 } from '../../../app/api/apiTypes/sharedApiTypes';
 import { Options } from '../../../types/types';
 import { Column } from '../Table';
-export const payValues: PayValue[] = [
-  'Visa',
-  'Mastercard',
-  'PayPal',
-  'MobilePay',
-];
 
 export interface ListsMap {
   categoryName: readonly MainCategoryNames[];
-  paymentMethod: PayValue[];
+  paymentMethod: readonly PayValues[];
   productStatus: readonly Status[];
   role: readonly Roles[];
   subCategoryName: readonly SubCategoryNames[];
