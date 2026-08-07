@@ -19,7 +19,11 @@ const AdminOrderPage = () => {
   const { filterParams, setFilterParams, onRemoveFilterTag } =
     useSearchParamsState(initialFilters);
 
-  const { data: orders, isLoading, refetch } = useGetAllOrdersQuery();
+  const {
+    data: orders,
+    isLoading,
+    refetch,
+  } = useGetAllOrdersQuery({ sortField, sortOrder });
 
   return (
     <AdminPageContainer heading={language.orders} variant="x-large">
