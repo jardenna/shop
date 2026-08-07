@@ -54,7 +54,7 @@ const MiniCartPopup = () => {
 
   const { cartItems, summary, discount } = apiCartList;
   const discountLabel = discount
-    ? `${language[discount.label]} (${discount.percent}%)`
+    ? `${language[discount.label]} (${discount.percent} %)`
     : '';
 
   return (
