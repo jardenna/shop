@@ -6,7 +6,7 @@ import DateDisplay from '../../components/datePicker/DateDisplay';
 import ProductPrice from '../../features/shop/components/productPrice/ProductPrice';
 
 interface OrderTableRowProps {
-  createdAt: string;
+  createdAt: Date;
   customer: string;
   deliveryStatus: DeliveryStatusFilterValues;
   id: string;
