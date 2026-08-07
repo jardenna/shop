@@ -1,8 +1,15 @@
 import {
-  PaymentMethod,
   PaymentMethodField,
+  PaymentMethods,
 } from '../app/api/apiTypes/paymentApiTypes';
 import { IconName } from '../types/enums';
+
+interface PaymentMethod {
+  fields: PaymentMethodField[];
+  icon: IconName;
+  id: PaymentMethods;
+  label: string;
+}
 
 const cardFields: PaymentMethodField[] = [
   {

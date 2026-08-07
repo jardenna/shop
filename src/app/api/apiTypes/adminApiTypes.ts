@@ -229,7 +229,6 @@ export interface AdminOrderResponse {
   customer: string;
   deliveryStatus: string;
   id: string;
-  itemCount: number;
   paymentMethod: string;
   paymentStatus: string;
   totalPrice: number;
