@@ -1,12 +1,10 @@
-import type { Roles } from '../app/api/apiTypes/adminApiTypes';
+import { roleValues } from '../app/api/apiConstants';
 import type { Size } from '../app/api/apiTypes/sharedApiTypes';
 import type { OptionType } from '../types/types';
 
 const sizeList: Size[] = ['S', 'M', 'L', 'XL', 'Onesize'];
 
-const roles: Roles[] = ['User', 'Employee'];
-
-const roleList: OptionType[] = roles.map((role) => ({
+const roleList: OptionType[] = roleValues.map((role) => ({
   value: role,
   label: role.toLowerCase(),
 }));
@@ -20,4 +18,4 @@ const createRatingList = (count: number): OptionType[] =>
     };
   });
 
-export { createRatingList, roleList, roles, sizeList };
+export { createRatingList, roleList, roleValues, sizeList };

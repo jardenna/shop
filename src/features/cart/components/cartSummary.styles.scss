@@ -13,6 +13,10 @@
   gap: 12px;
   font-size: $font-medium;
 
+  &.discount {
+    color: $color-discount;
+  }
+
   &.summary-total {
     border-top: 1px solid $color-border;
     padding-top: 12px;

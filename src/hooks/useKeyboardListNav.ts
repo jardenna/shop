@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { DropdownItem } from '../components/dropdownBtn/DropdownBtn';
 import { KeyCode } from '../types/enums';
 import { useKeyPress } from './useKeyPress';
@@ -17,23 +17,20 @@ export const useKeyboardListNav = ({
     defaultIndex ?? 0,
   );
 
-  const handleActivateListItem = useCallback(
-    (index: number) => {
-      setSelectedListItemIndex(index);
-      listRefs.current[index]?.focus();
-    },
-    [listRefs],
-  );
+  const handleActivateListItem = (index: number) => {
+    setSelectedListItemIndex(index);
+    listRefs.current[index]?.focus();
+  };
 
-  const handleNextListItem = useCallback(() => {
+  const handleNextListItem = () => {
     handleActivateListItem((selectedListItemIndex + 1) % dropdownList.length);
-  }, [selectedListItemIndex, dropdownList, handleActivateListItem]);
+  };
 
-  const handlePrevListItem = useCallback(() => {
+  const handlePrevListItem = () => {
     handleActivateListItem(
       (selectedListItemIndex - 1 + dropdownList.length) % dropdownList.length,
     );
-  }, [selectedListItemIndex, dropdownList, handleActivateListItem]);
+  };
 
   const handleGotoFirstListItem = () => {
     handleActivateListItem(0);

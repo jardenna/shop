@@ -60,7 +60,6 @@ const ViewSubCategoryPage = () => {
       {category && (
         <AdminPageContainer
           heading={`${language.category} ${subCategoryName || category.subCategoryName}`}
-          ariaLabelledby="sub-category"
           linkText={language.createNewCategory}
           linkTo={AdminPath.AdminSubCategoryCreate}
           variant="medium"

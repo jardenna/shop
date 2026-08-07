@@ -9,10 +9,7 @@ const CreateProductPage = () => {
 
   return (
     subCategories && (
-      <AdminPageContainer
-        heading={language.createNewProduct}
-        ariaLabelledby="create-product"
-      >
+      <AdminPageContainer heading={language.createNewProduct}>
         <ProductForm
           selectedProduct={null}
           images={[]}

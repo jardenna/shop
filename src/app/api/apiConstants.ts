@@ -1,23 +1,38 @@
-import { PaymentMethods } from './apiTypes/paymentApiTypes';
-
 export const roleValues = ['Employee', 'User'] as const;
-
 export const statusValues = ['Published', 'Inactive', 'Scheduled'] as const;
+export const mainCategoryValues = ['Men', 'Women', 'Kids'] as const;
+export const subCategoryValues = ['Shoes', 'Accessories', 'Clothing'] as const;
 
-export const paymentMethods = {
+export const deliveryStatusFilterValues = [
+  'Created',
+  'Processing',
+  'Shipped',
+  'Delivered',
+] as const;
+
+export const paymentStatusFilterValues = [
+  'Pending',
+  'Completed',
+  'Failed',
+] as const;
+
+export const paymentMethodLabels = {
+  visa: 'Visa',
+  mastercard: 'Mastercard',
+  paypal: 'PayPal',
+  mobilepay: 'MobilePay',
+} as const;
+
+export const paymentMethodFilterValues = [
+  paymentMethodLabels.visa,
+  paymentMethodLabels.mastercard,
+  paymentMethodLabels.paypal,
+  paymentMethodLabels.mobilepay,
+] as const;
+
+export const paymentMethodsValues = {
   visa: 'visa',
   mastercard: 'mastercard',
   paypal: 'paypal',
   mobilepay: 'mobilepay',
 } as const;
-
-export const paymentMethodLabels: Record<PaymentMethods, string> = {
-  visa: 'Visa',
-  mastercard: 'Mastercard',
-  paypal: 'PayPal',
-  mobilepay: 'MobilePay',
-};
-
-export const mainCategoryValues = ['Men', 'Women', 'Kids'] as const;
-
-export const subCategoryValues = ['Shoes', 'Accessories', 'Clothing'] as const;

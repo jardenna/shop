@@ -41,7 +41,7 @@ const ProductCardCenter = ({
         {countInStock} {language.pcs}
       </LabelValueGrid>
       {discount !== 0 && (
-        <LabelValueGrid text={language.discount}>{discount}%</LabelValueGrid>
+        <LabelValueGrid text={language.discount}>{discount} %</LabelValueGrid>
       )}
       <LabelValueGrid text={language.brand}>{brand}</LabelValueGrid>
       <LabelValueGrid text={language.material}>{material}</LabelValueGrid>

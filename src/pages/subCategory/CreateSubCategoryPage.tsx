@@ -21,11 +21,7 @@ const CreateSubCategoryPage = () => {
   return (
     <>
       {isLoading && <SkeletonForm count={4} />}
-      <AdminPageContainer
-        heading={language.createNewCategory}
-        variant="small"
-        ariaLabelledby="create-sub-category"
-      >
+      <AdminPageContainer heading={language.createNewCategory} variant="small">
         {allCategories && (
           <SubCategoryForm
             onReset={() => refetch}

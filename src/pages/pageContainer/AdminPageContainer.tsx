@@ -1,10 +1,8 @@
-import type { ReactNode, RefObject } from 'react';
+import { useId, type ReactNode, type RefObject } from 'react';
 import PageHeader from '../../components/pageHeader/PageHeader';
 import MetaTags from '../../layout/MetaTags';
-import { ariaInfoTitle } from '../../utils/utils';
 
 type AdminPageContainerProps = {
-  ariaLabelledby: string;
   children: ReactNode;
   heading: string;
   className?: string;
@@ -23,21 +21,20 @@ const AdminPageContainer = ({
   variant = 'large',
   scrollToRef,
   className = '',
-  ariaLabelledby,
 }: AdminPageContainerProps) => {
-  const ariaTitle = ariaInfoTitle(ariaLabelledby);
+  const ariaLabelledby = useId();
 
   return (
     <section
       className={`admin-page page-${variant} ${className}`}
-      aria-labelledby={ariaTitle}
+      aria-labelledby={ariaLabelledby}
     >
       <MetaTags metaTitle={heading} />
       <PageHeader
         heading={heading}
         linkText={linkText}
         linkTo={linkTo}
-        ariaLabelledby={ariaTitle}
+        ariaLabelledby={ariaLabelledby}
       />
       <div className="page-card" ref={scrollToRef}>
         {children}

@@ -1,17 +1,17 @@
 import Skeleton from '../../Skeleton';
 import './_payment-method.scss';
-import PaymentMethodIcons from './PaymentMethodIcons';
+import SkeletonPaymentMethodIcons from './SkeletonPaymentMethodIcons';
 
-const PaymentMethods = () => (
+const SkeletonPaymentMethods = () => (
   <span className="skeleton-column">
     <span className="payment-methods">
       <span className="payment-method">
         <Skeleton className="radio-skeleton" />
         <Skeleton className="label-skeleton" />
       </span>
-      <PaymentMethodIcons />
+      <SkeletonPaymentMethodIcons />
     </span>
   </span>
 );
 
-export default PaymentMethods;
+export default SkeletonPaymentMethods;

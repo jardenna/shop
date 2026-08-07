@@ -150,7 +150,6 @@ const ProductPage = () => {
       heading={language.products}
       linkText={language.createNewProduct}
       linkTo={AdminPath.AdminProductCreate}
-      ariaLabelledby="product-list"
       variant="x-large"
       scrollToRef={scrollToRef}
     >

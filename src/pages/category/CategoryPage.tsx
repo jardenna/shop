@@ -61,7 +61,6 @@ const CategoryPage = () => {
       linkText={language.createNewCategory}
       linkTo={AdminPath.AdminCategoryCreate}
       variant="medium"
-      ariaLabelledby="categories-list"
     >
       <Table
         onRemoveFilterTag={onRemoveFilterTag}

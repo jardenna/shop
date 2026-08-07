@@ -97,6 +97,9 @@ colors;Colours;Farver
 colours;Colours;Farver
 compact;Compact;Kompakt
 confirmPassword;Confirm password;Gentag adgangskode
+completed;Completed;Gennemført
+failed;Failed;Mislykket
+pending;Pending;Afventer
 contact;Contact;Kontakt
 contactCustomerService;Contact customer service.;Kontakt kundeservice.
 continueShopping;Continue shopping;Fortsæt med at handle
@@ -120,6 +123,7 @@ criterionNotMet;Criterion not met;Kriterium ikke opfyldt
 currency;Currency;Valuta
 currentlyUnavailableSizes;Currently unavailable sizes;Midlertidigt udsolgte størrelser
 currentPage;Current page;Nuværende side
+customer;Customer;Kunde
 customersList;Customers list;Kundeliste
 dashboard;Dashboard;Dashboard
 date;Date;Dato
@@ -230,10 +234,12 @@ invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for pla
 invalidSize;The selected size is no longer available;Den valgte størrelse er ikke længere tilgængelig
 invalidUserData;Invalid user data;Ugyldig bruger data
 item;item;vare
+itemCount;Item count;Antal varer
 items;items;varer
 itemsUpdated;Items updated to;Varer opdateret til
 keep;Keep;Behold
 keepBoth;Keep both;Behold begge
+paymentStatus;Payment status;Betalingsstatus
 kid;Kid;Barn
 kids;Kids;Børn
 kidsAltText;Stylish children, a girl in a white sleeveless top with a matching hat and a boy in a colorful shirt, sitting together in a playful yet elegant pose.;Stilfulde børn, en pige i hvid ærmeløs top med matchende hat og en dreng i farverig skjorte, sidder sammen i et legende men elegant udtryk.
@@ -329,16 +335,16 @@ orderAltText;Young boy in black jeans and a white T-shirt layered with a blue-ch
 orderConfirmationDescription;Your order has been successfully placed and is now being prepared.;Din ordre er gennemført og bliver nu gjort klar.
 orderConfirmationProcessing;We'll process it within 24 hours on business days and send you an email with tracking details once it ships. In the meantime, you can track your order below.;Vi behandler din ordre inden for 24 timer på hverdage og sender dig en e-mail med sporingsoplysninger, så snart den er afsendt. Indtil da kan du følge din ordre nedenfor.
 orderConfirmationTitle;Thank you for your order;Tak for din ordre
-orderCreated;Order created;Ordre oprettet
-orderDelivered;Delivered;Leveret
-orderInProgress;In progress;Behandles
+created;created;Oprettet
+delivered;Delivered;Leveret
+processing;In progress;Behandles
 orderNotFound;We couldn't find the order you're looking for. It may have been removed or the link is no longer valid.;Vi kunne ikke finde den ordre, du leder efter. Den kan være blevet fjernet, eller linket er ikke længere gyldigt.
 orderMustBeShippedFirst;The order must be shipped before it can be marked as delivered.;Ordren skal være afsendt, før den kan markeres som leveret.
 orderNotPaid;Order has not been paid;Ordren er ikke betalt
 orderNumber;Order number;Ordrenummer
 orderPlaced;Order Placed;Ordre gennemført
 orders;Orders;Ordrer
-orderShipped;Shipped;Afsendt
+shipped;Shipped;Afsendt
 orderSummary;Order summary;Ordreoversigt
 orderTotalInclVat;Total price Incl. vat;Pris i alt Inkl. moms
 originaPrice;Original price;Før pris

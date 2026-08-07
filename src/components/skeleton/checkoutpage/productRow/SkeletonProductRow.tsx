@@ -2,7 +2,7 @@ import Skeleton from '../../Skeleton';
 import SkeletonHeading from '../../SkeletonHeading';
 import './_product-row.scss';
 
-const ProductRow = () => (
+const SkeletonProductRow = () => (
   <span>
     <SkeletonHeading />
     <span className="skeleton-product-row">
@@ -15,4 +15,4 @@ const ProductRow = () => (
   </span>
 );
 
-export default ProductRow;
+export default SkeletonProductRow;

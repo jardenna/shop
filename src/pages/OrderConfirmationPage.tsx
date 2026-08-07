@@ -47,6 +47,7 @@ const OrderConfirmationPage = () => {
       />
     );
   }
+
   if (isLoading) {
     return (
       <MainPageContainer

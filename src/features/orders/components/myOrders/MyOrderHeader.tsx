@@ -18,7 +18,7 @@ const MyOrderHeader = ({
       <span>
         <span>{language.order}</span> <span>{formatOrderNumber(orderId)}</span>
       </span>
-      <Badge variant="small" badgeText={language.orderCreated} />
+      <Badge variant="small" badgeText={language.created} />
     </div>
     <ProductPrice price={totalPrice} />
   </header>

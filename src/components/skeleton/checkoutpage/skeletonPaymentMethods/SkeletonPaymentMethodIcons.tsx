@@ -1,6 +1,6 @@
 import Skeleton, { PickedSkeletonTypes } from '../../Skeleton';
 
-const PaymentMethodIcons = ({ count = 4 }: PickedSkeletonTypes) => {
+const SkeletonPaymentMethodIcons = ({ count = 4 }: PickedSkeletonTypes) => {
   const skeletons = Array.from({ length: count });
   return (
     <span className="card-icons">
@@ -13,4 +13,4 @@ const PaymentMethodIcons = ({ count = 4 }: PickedSkeletonTypes) => {
   );
 };
 
-export default PaymentMethodIcons;
+export default SkeletonPaymentMethodIcons;

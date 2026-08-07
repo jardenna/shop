@@ -1,3 +1,4 @@
+import { useId } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import type { BaseShopProductsParams } from '../app/api/apiTypes/shopApiTypes';
@@ -30,13 +31,13 @@ import { IconName } from '../types/enums';
 import { Options } from '../types/types';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { sortSizesDynamic } from '../utils/sizeUtils';
-import { ariaInfoTitle } from '../utils/utils';
 import './CollectionPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 export type FilterKeys = keyof BaseShopProductsParams;
 
 const CollectionPage = () => {
+  const ariaLabelledby = useId();
   const { category, categoryId } = useParams();
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
@@ -141,8 +142,6 @@ const CollectionPage = () => {
       display: 'list',
     },
   ];
-
-  const ariaLabelledby = ariaInfoTitle(category || 'women');
 
   if (isError) {
     return (

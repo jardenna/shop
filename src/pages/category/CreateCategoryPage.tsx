@@ -10,11 +10,7 @@ const CreateCategoryPage = () => {
   const { language } = useLanguage();
 
   return (
-    <AdminPageContainer
-      heading={language.createNewCategory}
-      variant="small"
-      ariaLabelledby="create-new-category"
-    >
+    <AdminPageContainer heading={language.createNewCategory} variant="small">
       <CategoryForm
         selectedCategory={null}
         id={null}

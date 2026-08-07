@@ -36,7 +36,6 @@ const UpdateProductPage = () => {
       {product && subCategories && (
         <AdminPageContainer
           heading={`${language.update} ${product.productName}`}
-          ariaLabelledby="update-product"
         >
           <ProductForm
             selectedProduct={product}

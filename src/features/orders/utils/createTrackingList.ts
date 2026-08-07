@@ -8,20 +8,20 @@ interface OrderTrackingList {
 }
 
 export const orderTrackingList: OrderTrackingList[] = [
-  { id: 'created', label: 'orderCreated', iconName: IconName.Basket },
+  { id: 'created', label: 'created', iconName: IconName.Basket },
   {
     id: 'processing',
-    label: 'orderInProgress',
+    label: 'processing',
     iconName: IconName.PackageOpen,
   },
   {
     id: 'shipped',
-    label: 'orderShipped',
+    label: 'shipped',
     iconName: IconName.Deliver,
   },
   {
     id: 'delivered',
-    label: 'orderDelivered',
+    label: 'delivered',
     iconName: IconName.Home,
   },
 ];
