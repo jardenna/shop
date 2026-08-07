@@ -1,13 +1,21 @@
-import { PaymentMethods } from './apiTypes/paymentApiTypes';
-
 export const roleValues = ['Employee', 'User'] as const;
 export const statusValues = ['Published', 'Inactive', 'Scheduled'] as const;
+export const mainCategoryValues = ['Men', 'Women', 'Kids'] as const;
+export const subCategoryValues = ['Shoes', 'Accessories', 'Clothing'] as const;
+
+export const paymentMethodLabels = {
+  visa: 'Visa',
+  mastercard: 'Mastercard',
+  paypal: 'PayPal',
+  mobilepay: 'MobilePay',
+} as const;
+
 export const paymentMethodValues = [
-  'Visa',
-  'Mastercard',
-  'PayPal',
-  'MobilePay',
-];
+  paymentMethodLabels.visa,
+  paymentMethodLabels.mastercard,
+  paymentMethodLabels.paypal,
+  paymentMethodLabels.mobilepay,
+] as const;
 
 export const paymentMethodsValues = {
   visa: 'visa',
@@ -15,14 +23,3 @@ export const paymentMethodsValues = {
   paypal: 'paypal',
   mobilepay: 'mobilepay',
 } as const;
-
-export const paymentMethodLabels: Record<PaymentMethods, string> = {
-  visa: 'Visa',
-  mastercard: 'Mastercard',
-  paypal: 'PayPal',
-  mobilepay: 'MobilePay',
-};
-
-export const mainCategoryValues = ['Men', 'Women', 'Kids'] as const;
-
-export const subCategoryValues = ['Shoes', 'Accessories', 'Clothing'] as const;
