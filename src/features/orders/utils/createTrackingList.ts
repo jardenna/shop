@@ -8,7 +8,7 @@ interface OrderTrackingList {
 }
 
 export const orderTrackingList: OrderTrackingList[] = [
-  { id: 'created', label: 'orderCreated', iconName: IconName.Basket },
+  { id: 'created', label: 'created', iconName: IconName.Basket },
   {
     id: 'processing',
     label: 'processing',
