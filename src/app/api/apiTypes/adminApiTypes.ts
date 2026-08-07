@@ -239,11 +239,12 @@ export interface BaseAdminOrder {
 }
 
 export interface AdminOrderParams extends SortParams {
-  customer: string;
-  deliveryStatus: DeliveryStatusFilterValues;
-  paymentMethod: PaymentMethods;
-  paymentStatus: PaymentStatusFilterValues;
-  totalPrice: number;
+  paymentMethod: string;
+  createdAt?: string;
+  customer?: string;
+  deliveryStatus?: string;
+  paymentStatus?: string;
+  totalPrice?: number;
 }
 
 export interface AdminOrderResponse extends BaseAdminOrder {

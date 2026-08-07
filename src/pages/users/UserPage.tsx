@@ -54,6 +54,7 @@ const UserPage = () => {
     email: debouncedEmail,
     role: filterParams.role as Roles,
   });
+
   const [deleteUser] = useDeleteUserMutation();
   const [updateUser] = useUpdateUserMutation();
 
