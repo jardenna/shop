@@ -2,7 +2,7 @@ import Skeleton from '../../Skeleton';
 import './_payment-method.scss';
 import SkeletonPaymentMethodIcons from './SkeletonPaymentMethodIcons';
 
-const PaymentMethods = () => (
+const SkeletonPaymentMethods = () => (
   <span className="skeleton-column">
     <span className="payment-methods">
       <span className="payment-method">
@@ -14,4 +14,4 @@ const PaymentMethods = () => (
   </span>
 );
 
-export default PaymentMethods;
+export default SkeletonPaymentMethods;
