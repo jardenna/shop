@@ -1,5 +1,6 @@
 import type { OmitChecked } from '../../../types/types';
 import { roleValues, statusValues } from '../apiConstants';
+import { PaymentMethods } from './paymentApiTypes';
 import type {
   BasePagination,
   BaseProductParams,
@@ -229,7 +230,7 @@ export interface AdminOrderResponse {
   customer: string;
   deliveryStatus: string;
   id: string;
-  paymentMethod: string;
+  paymentMethod: PaymentMethods;
   paymentStatus: string;
   totalPrice: number;
 }
