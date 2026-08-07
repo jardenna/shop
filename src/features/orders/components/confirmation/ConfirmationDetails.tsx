@@ -17,6 +17,7 @@ const ConfirmationDetails = ({
   id,
 }: ConfirmationDetailsProp) => {
   const { language } = useLanguage();
+
   return (
     <article className="confirmation-info">
       <h2 className="order-flow-title confirmation-detail-list-title">
