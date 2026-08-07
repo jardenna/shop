@@ -3,7 +3,6 @@ interface OrderTableRowProps {
   customer: string;
   deliveryStatus: string;
   id: string;
-  itemCount: number;
   linkText: string;
   paymentMethod: string;
   paymentStatus: string;
@@ -12,7 +11,6 @@ interface OrderTableRowProps {
 
 const OrderTableRow = ({
   customer,
-  itemCount,
   deliveryStatus,
   paymentMethod,
   paymentStatus,
@@ -28,7 +26,6 @@ const OrderTableRow = ({
       <td>{id}</td>
       <td>{createdAt}</td>
       <td>{customer}</td>
-      <td>{itemCount}</td>
       <td>{totalPrice}</td>
       <td>{paymentMethod}</td>
       <td>{paymentStatus}</td>

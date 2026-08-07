@@ -45,7 +45,6 @@ const AdminOrderPage = () => {
                 id,
                 createdAt,
                 customer,
-                itemCount,
                 deliveryStatus,
                 paymentMethod,
                 paymentStatus,
@@ -55,7 +54,6 @@ const AdminOrderPage = () => {
                   key={id}
                   id={id}
                   customer={customer}
-                  itemCount={itemCount}
                   deliveryStatus={deliveryStatus}
                   paymentMethod={paymentMethod}
                   paymentStatus={paymentStatus}

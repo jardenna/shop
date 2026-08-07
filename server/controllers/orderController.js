@@ -183,7 +183,6 @@ const getAllOrders = asyncHandler(async (req, res) => {
       id: order.id,
       createdAt: order.createdAt,
       customer: order.user?.username ?? '',
-      itemCount: order.orderItems.length,
       totalPrice: order.summary.totalPrice,
       paymentMethod: order.payment.method,
       paymentStatus: order.payment.status,

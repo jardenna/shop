@@ -21,12 +21,6 @@ export const tableHeaders: Column<AdminOrderResponse>[] = [
     tableFilterType: 'text',
   },
   {
-    key: 'itemCount',
-    label: 'itemCount',
-    name: 'itemCount',
-    tableFilterType: 'number',
-  },
-  {
     key: 'totalPrice',
     label: 'totalPrice',
     name: 'totalPrice',
