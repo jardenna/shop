@@ -97,6 +97,9 @@ colors;Colours;Farver
 colours;Colours;Farver
 compact;Compact;Kompakt
 confirmPassword;Confirm password;Gentag adgangskode
+completed;Completed;Gennemført
+failed;Failed;Mislykket
+pending;Pending;Afventer
 contact;Contact;Kontakt
 contactCustomerService;Contact customer service.;Kontakt kundeservice.
 continueShopping;Continue shopping;Fortsæt med at handle

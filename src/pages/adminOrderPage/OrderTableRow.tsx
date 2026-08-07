@@ -1,4 +1,5 @@
 import { paymentMethodLabels } from '../../app/api/apiConstants';
+import { DeliveryStatusFilterValues } from '../../app/api/apiTypes/orderApiTypes';
 import { PaymentMethods } from '../../app/api/apiTypes/paymentApiTypes';
 import Badge from '../../components/badge/Badge';
 import DateDisplay from '../../components/datePicker/DateDisplay';
@@ -7,7 +8,7 @@ import ProductPrice from '../../features/shop/components/productPrice/ProductPri
 interface OrderTableRowProps {
   createdAt: string;
   customer: string;
-  deliveryStatus: string;
+  deliveryStatus: DeliveryStatusFilterValues;
   id: string;
   language: Record<string, string>;
   linkText: string;
@@ -38,7 +39,10 @@ const OrderTableRow = ({
     </td>
     <td>{paymentMethodLabels[paymentMethod]}</td>
     <td>
-      <Badge badgeText={paymentStatus} className={paymentStatus} />
+      <Badge
+        badgeText={language[paymentStatus.toLowerCase()]}
+        className={paymentStatus}
+      />
     </td>
     <td>
       <Badge badgeText={language[deliveryStatus]} className={deliveryStatus} />
