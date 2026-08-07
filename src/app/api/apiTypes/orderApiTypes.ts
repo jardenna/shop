@@ -1,4 +1,7 @@
-import { paymentMethodFilterValues } from '../apiConstants';
+import {
+  deliveryStatusFilterValues,
+  paymentMethodFilterValues,
+} from '../apiConstants';
 import { BaseAddress } from './addressApiTypes';
 import { BaseOrder, Order } from './cartApiTypes';
 import { Payment, PaymentMethods } from './paymentApiTypes';
@@ -14,6 +17,9 @@ export interface CreateOrderRequest {
 }
 
 export type DeliveryStatus = 'created' | 'processing' | 'shipped' | 'delivered';
+
+export type DeliveryStatusFilterValues =
+  (typeof deliveryStatusFilterValues)[number];
 
 export type PaymentMethodFilterValues =
   (typeof paymentMethodFilterValues)[number];

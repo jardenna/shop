@@ -42,6 +42,6 @@ export const tableHeaders: Column<AdminOrderResponse>[] = [
     key: 'deliveryStatus',
     label: 'delivery',
     name: 'deliveryStatus',
-    tableFilterType: 'text',
+    tableFilterType: 'radio',
   },
 ];

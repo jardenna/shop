@@ -3,6 +3,13 @@ export const statusValues = ['Published', 'Inactive', 'Scheduled'] as const;
 export const mainCategoryValues = ['Men', 'Women', 'Kids'] as const;
 export const subCategoryValues = ['Shoes', 'Accessories', 'Clothing'] as const;
 
+export const deliveryStatusFilterValues = [
+  'Created',
+  'Processing',
+  'Shipped',
+  'Delivered',
+] as const;
+
 export const paymentMethodLabels = {
   visa: 'Visa',
   mastercard: 'Mastercard',
