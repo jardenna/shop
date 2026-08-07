@@ -229,20 +229,23 @@ export type ProductsResponse = BasePagination & {
 
 export type FileName = 'images';
 
-export type AdminOrderParams = SortParams & {
-  customer: string;
-  deliveryStatus: DeliveryStatusFilterValues;
-  paymentMethod: PaymentMethods;
-  paymentStatus: string;
-  totalPrice: number;
-};
-
-export interface AdminOrderResponse {
+export interface BaseAdminOrder {
   createdAt: Date;
   customer: string;
   deliveryStatus: DeliveryStatusFilterValues;
-  id: string;
   paymentMethod: PaymentMethods;
   paymentStatus: PaymentStatusFilterValues;
   totalPrice: number;
+}
+
+export interface AdminOrderParams extends SortParams {
+  customer: string;
+  deliveryStatus: DeliveryStatusFilterValues;
+  paymentMethod: PaymentMethods;
+  paymentStatus: PaymentStatusFilterValues;
+  totalPrice: number;
+}
+
+export interface AdminOrderResponse extends BaseAdminOrder {
+  id: string;
 }
