@@ -1,7 +1,4 @@
 import { Status } from '../../../app/api/apiTypes/adminApiTypes';
-import { useAppSelector } from '../../../app/hooks';
-import { numberConvert } from '../../../utils/numberConverter';
-import { selectSelectedLanguage } from '../../language/languageSlice';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 import AdminBadge from './AdminBadge';
 import ProductActions from './ProductActions';
@@ -35,36 +32,28 @@ const ProductTableRow = ({
   price,
   discount,
   discountedPrice,
-}: ProductTableRowProps) => {
-  const selectedLanguage = useAppSelector(selectSelectedLanguage);
-
-  return (
-    <tr>
-      <td>
-        <ProductOverviewCell
-          productName={productName}
-          images={images}
-          id={id}
-        />
-      </td>
-      <td>{categoryName}</td>
-      <td>{subCategoryName}</td>
-      <td>{numberConvert(countInStock, selectedLanguage)}</td>
-      <td>
-        <ProductPrice price={price} />
-      </td>
-      <td>{discount} %</td>
-      <td>
-        <ProductPrice price={discountedPrice} />
-      </td>
-      <td>
-        <AdminBadge status={status} scheduledDate={scheduledDate || null} />
-      </td>
-      <td>
-        <ProductActions id={id} onCopyProduct={onCopyProduct} />
-      </td>
-    </tr>
-  );
-};
+}: ProductTableRowProps) => (
+  <tr>
+    <td>
+      <ProductOverviewCell productName={productName} images={images} id={id} />
+    </td>
+    <td>{categoryName}</td>
+    <td>{subCategoryName}</td>
+    <td>{countInStock}</td>
+    <td>
+      <ProductPrice price={price} />
+    </td>
+    <td>{discount} %</td>
+    <td>
+      <ProductPrice price={discountedPrice} />
+    </td>
+    <td>
+      <AdminBadge status={status} scheduledDate={scheduledDate || null} />
+    </td>
+    <td>
+      <ProductActions id={id} onCopyProduct={onCopyProduct} />
+    </td>
+  </tr>
+);
 
 export default ProductTableRow;
