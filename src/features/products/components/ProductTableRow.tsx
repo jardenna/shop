@@ -2,6 +2,7 @@ import { Status } from '../../../app/api/apiTypes/adminApiTypes';
 import { useAppSelector } from '../../../app/hooks';
 import { numberConvert } from '../../../utils/numberConverter';
 import { selectSelectedLanguage } from '../../language/languageSlice';
+import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 import AdminBadge from './AdminBadge';
 import ProductActions from './ProductActions';
 import ProductOverviewCell from './ProductOverviewCell';
@@ -49,9 +50,13 @@ const ProductTableRow = ({
       <td>{categoryName}</td>
       <td>{subCategoryName}</td>
       <td>{numberConvert(countInStock, selectedLanguage)}</td>
-      <td>{numberConvert(price, selectedLanguage)}</td>
-      <td>{discount}</td>
-      <td>{numberConvert(discountedPrice, selectedLanguage)}</td>
+      <td>
+        <ProductPrice price={price} />
+      </td>
+      <td>{discount} %</td>
+      <td>
+        <ProductPrice price={discountedPrice} />
+      </td>
       <td>
         <AdminBadge status={status} scheduledDate={scheduledDate || null} />
       </td>
