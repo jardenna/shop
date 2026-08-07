@@ -333,15 +333,15 @@ orderConfirmationDescription;Your order has been successfully placed and is now 
 orderConfirmationProcessing;We'll process it within 24 hours on business days and send you an email with tracking details once it ships. In the meantime, you can track your order below.;Vi behandler din ordre inden for 24 timer på hverdage og sender dig en e-mail med sporingsoplysninger, så snart den er afsendt. Indtil da kan du følge din ordre nedenfor.
 orderConfirmationTitle;Thank you for your order;Tak for din ordre
 orderCreated;Order created;Ordre oprettet
-orderDelivered;Delivered;Leveret
-orderInProgress;In progress;Behandles
+delivered;Delivered;Leveret
+processing;In progress;Behandles
 orderNotFound;We couldn't find the order you're looking for. It may have been removed or the link is no longer valid.;Vi kunne ikke finde den ordre, du leder efter. Den kan være blevet fjernet, eller linket er ikke længere gyldigt.
 orderMustBeShippedFirst;The order must be shipped before it can be marked as delivered.;Ordren skal være afsendt, før den kan markeres som leveret.
 orderNotPaid;Order has not been paid;Ordren er ikke betalt
 orderNumber;Order number;Ordrenummer
 orderPlaced;Order Placed;Ordre gennemført
 orders;Orders;Ordrer
-orderShipped;Shipped;Afsendt
+shipped;Shipped;Afsendt
 orderSummary;Order summary;Ordreoversigt
 orderTotalInclVat;Total price Incl. vat;Pris i alt Inkl. moms
 originaPrice;Original price;Før pris

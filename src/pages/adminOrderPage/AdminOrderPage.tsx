@@ -58,9 +58,9 @@ const AdminOrderPage = () => {
                   paymentMethod={paymentMethod}
                   paymentStatus={paymentStatus}
                   totalPrice={totalPrice}
-
                   createdAt={createdAt}
                   linkText={language.update}
+                  language={language}
                 />
               ),
             )

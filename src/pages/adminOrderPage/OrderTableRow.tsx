@@ -9,6 +9,7 @@ interface OrderTableRowProps {
   customer: string;
   deliveryStatus: string;
   id: string;
+  language: Record<string, string>;
   linkText: string;
   paymentMethod: PaymentMethods;
   paymentStatus: string;
@@ -24,6 +25,7 @@ const OrderTableRow = ({
   createdAt,
   id,
   linkText,
+  language,
 }: OrderTableRowProps) => (
   <tr>
     <td>{id}</td>
@@ -36,13 +38,12 @@ const OrderTableRow = ({
     </td>
     <td>{paymentMethodLabels[paymentMethod]}</td>
     <td>
-      <Badge badgeText={paymentStatus} />
+      <Badge badgeText={paymentStatus} className={paymentStatus} />
     </td>
     <td>
-      <Badge badgeText={deliveryStatus} />
+      <Badge badgeText={language[deliveryStatus]} className={deliveryStatus} />
     </td>
     <td>{linkText}</td>
   </tr>
 );
-
 export default OrderTableRow;
