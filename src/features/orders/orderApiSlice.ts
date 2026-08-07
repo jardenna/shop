@@ -1,5 +1,8 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
-import { AdminOrderResponse } from '../../app/api/apiTypes/adminApiTypes';
+import {
+  AdminOrderResponse,
+  SortParams,
+} from '../../app/api/apiTypes/adminApiTypes';
 import {
   CreateOrderRequest,
   MyOrdersResponse,
@@ -30,7 +33,7 @@ export const orderApiSlice = apiSlice.injectEndpoints({
     getOrderById: builder.query<OrderResponse, string>({
       query: (id) => `${ordersUrl}/${id}`,
     }),
-    getAllOrders: builder.query<AdminOrderResponse[], any>({
+    getAllOrders: builder.query<AdminOrderResponse[], SortParams>({
       query: (params) => ({
         url: ordersUrl,
         params,
