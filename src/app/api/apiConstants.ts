@@ -10,7 +10,7 @@ export const paymentMethodLabels = {
   mobilepay: 'MobilePay',
 } as const;
 
-export const paymentMethodValues = [
+export const paymentMethodFilterValues = [
   paymentMethodLabels.visa,
   paymentMethodLabels.mastercard,
   paymentMethodLabels.paypal,

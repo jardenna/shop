@@ -1,13 +1,13 @@
 /* eslint-disable no-param-reassign */
 import {
   mainCategoryValues,
-  paymentMethodValues,
+  paymentMethodFilterValues,
   roleValues,
   statusValues,
   subCategoryValues,
 } from '../../../app/api/apiConstants';
 import { Roles, Status } from '../../../app/api/apiTypes/adminApiTypes';
-import { PaymentMethodValues } from '../../../app/api/apiTypes/orderApiTypes';
+import { PaymentMethodFilterValues } from '../../../app/api/apiTypes/orderApiTypes';
 import {
   MainCategoryNames,
   SubCategoryNames,
@@ -17,7 +17,7 @@ import { Column } from '../Table';
 
 export interface ListsMap {
   categoryName: readonly MainCategoryNames[];
-  paymentMethod: readonly PaymentMethodValues[];
+  paymentMethod: readonly PaymentMethodFilterValues[];
   productStatus: readonly Status[];
   role: readonly Roles[];
   subCategoryName: readonly SubCategoryNames[];
@@ -26,7 +26,7 @@ export interface ListsMap {
 const listsMap: ListsMap = {
   categoryName: mainCategoryValues,
   productStatus: statusValues,
-  paymentMethod: paymentMethodValues,
+  paymentMethod: paymentMethodFilterValues,
   subCategoryName: subCategoryValues,
   role: roleValues,
 };
