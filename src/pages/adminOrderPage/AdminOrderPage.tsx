@@ -14,12 +14,12 @@ const AdminOrderPage = () => {
     columns: tableHeaders,
   });
 
-  const { data: orders, isLoading, refetch } = useGetAllOrdersQuery();
-
   const initialFilters = createInitialFilters(tableHeaders);
 
   const { filterParams, setFilterParams, onRemoveFilterTag } =
     useSearchParamsState(initialFilters);
+
+  const { data: orders, isLoading, refetch } = useGetAllOrdersQuery();
 
   return (
     <AdminPageContainer heading={language.orders} variant="x-large">
