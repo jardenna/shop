@@ -81,7 +81,6 @@ const ViewProductPage = () => {
           heading={product.productName}
           linkText={language.createNewProduct}
           linkTo={AdminPath.AdminProductCreate}
-          ariaLabelledby="product"
         >
           <section className="three-col admin-card-container">
             <ProductCardLeft

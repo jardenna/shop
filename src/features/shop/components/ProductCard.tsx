@@ -1,3 +1,4 @@
+import { useId } from 'react';
 import { Link } from 'react-router';
 import { UserResponse } from '../../../app/api/apiTypes/adminApiTypes';
 import {
@@ -10,7 +11,6 @@ import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import Img from '../../../components/Img';
 import VisuallyHidden from '../../../components/VisuallyHidden';
 import { BtnVariant } from '../../../types/enums';
-import { ariaInfoTitle } from '../../../utils/utils';
 import { useLanguage } from '../../language/useLanguage';
 import NotifyMe from './NotifyMe';
 import './ProductCard.styles.scss';
@@ -37,8 +37,8 @@ const ProductCard = ({
   currentUser,
   isOutOfStock,
 }: ProductCardProps) => {
+  const ariaLabelledby = useId();
   const { language } = useLanguage();
-  const ariaLabelledby = ariaInfoTitle(product.id);
 
   return (
     <article aria-labelledby={ariaLabelledby} className="product-card">

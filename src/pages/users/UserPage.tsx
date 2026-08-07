@@ -113,7 +113,6 @@ const UserPage = () => {
       linkText={isAdmin ? language.createNewUser : undefined}
       linkTo={isAdmin ? AdminPath.AdminUserCreate : undefined}
       variant="medium"
-      ariaLabelledby="users"
     >
       <Table
         values={filterParams}

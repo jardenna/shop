@@ -22,11 +22,7 @@ const AdminOrderPage = () => {
     useSearchParamsState(initialFilters);
 
   return (
-    <AdminPageContainer
-      heading={language.orders}
-      ariaLabelledby="orders"
-      variant="x-large"
-    >
+    <AdminPageContainer heading={language.orders} variant="x-large">
       {orders && (
         <Table
           onRemoveFilterTag={onRemoveFilterTag}

@@ -56,7 +56,6 @@ const SubCategoryPage = () => {
       linkText={language.createNewCategory}
       linkTo={AdminPath.AdminSubCategoryCreate}
       variant="medium"
-      ariaLabelledby="sub-categories-list"
     >
       <Table
         values={filterParams}

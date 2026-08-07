@@ -26,7 +26,6 @@ const UpdateSubCategoryPage = () => {
         <AdminPageContainer
           variant="small"
           heading={`${language.update} ${translateKey(category.subCategoryName, language) || category.subCategoryName}`}
-          ariaLabelledby={category.subCategoryName}
         >
           <SubCategoryForm
             selectedCategory={category}
