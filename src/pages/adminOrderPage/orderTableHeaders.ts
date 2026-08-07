@@ -36,7 +36,7 @@ export const tableHeaders: Column<AdminOrderResponse>[] = [
     key: 'paymentStatus',
     label: 'paymentStatus',
     name: 'paymentStatus',
-    tableFilterType: 'text',
+    tableFilterType: 'radio',
   },
   {
     key: 'deliveryStatus',

@@ -10,6 +10,12 @@ export const deliveryStatusFilterValues = [
   'Delivered',
 ] as const;
 
+export const paymentStatusFilterValues = [
+  'Pending',
+  'Completed',
+  'Failed',
+] as const;
+
 export const paymentMethodLabels = {
   visa: 'Visa',
   mastercard: 'Mastercard',

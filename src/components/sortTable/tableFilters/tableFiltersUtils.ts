@@ -3,6 +3,7 @@ import {
   deliveryStatusFilterValues,
   mainCategoryValues,
   paymentMethodFilterValues,
+  paymentStatusFilterValues,
   roleValues,
   statusValues,
   subCategoryValues,
@@ -11,6 +12,7 @@ import { Roles, Status } from '../../../app/api/apiTypes/adminApiTypes';
 import {
   DeliveryStatusFilterValues,
   PaymentMethodFilterValues,
+  PaymentStatusFilterValues,
 } from '../../../app/api/apiTypes/orderApiTypes';
 import {
   MainCategoryNames,
@@ -23,6 +25,7 @@ export interface ListsMap {
   categoryName: readonly MainCategoryNames[];
   deliveryStatus: readonly DeliveryStatusFilterValues[];
   paymentMethod: readonly PaymentMethodFilterValues[];
+  paymentStatus: readonly PaymentStatusFilterValues[];
   productStatus: readonly Status[];
   role: readonly Roles[];
   subCategoryName: readonly SubCategoryNames[];
@@ -32,6 +35,7 @@ const listsMap: ListsMap = {
   categoryName: mainCategoryValues,
   productStatus: statusValues,
   paymentMethod: paymentMethodFilterValues,
+  paymentStatus: paymentStatusFilterValues,
   deliveryStatus: deliveryStatusFilterValues,
   subCategoryName: subCategoryValues,
   role: roleValues,

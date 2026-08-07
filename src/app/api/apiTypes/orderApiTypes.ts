@@ -1,6 +1,7 @@
 import {
   deliveryStatusFilterValues,
   paymentMethodFilterValues,
+  paymentStatusFilterValues,
 } from '../apiConstants';
 import { BaseAddress } from './addressApiTypes';
 import { BaseOrder, Order } from './cartApiTypes';
@@ -20,6 +21,9 @@ export type DeliveryStatus = 'created' | 'processing' | 'shipped' | 'delivered';
 
 export type DeliveryStatusFilterValues =
   (typeof deliveryStatusFilterValues)[number];
+
+export type PaymentStatusFilterValues =
+  (typeof paymentStatusFilterValues)[number];
 
 export type PaymentMethodFilterValues =
   (typeof paymentMethodFilterValues)[number];
@@ -41,14 +45,8 @@ export interface OrderResponse extends DefaultResponseType {
   user: User;
 }
 
-type PaymentStatus = 'PENDING' | 'COMPLETED';
-
 export interface SummaryK {
   totalPrice: number;
-}
-
-export interface PaymentT {
-  status: PaymentStatus;
 }
 
 export interface MyOrdersResponse {
