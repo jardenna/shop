@@ -243,6 +243,7 @@ export interface AdminOrderParams extends SortParams {
   createdAt?: string;
   customer?: string;
   deliveryStatus?: string;
+  id?: string;
   paymentStatus?: string;
   totalPrice?: number;
 }

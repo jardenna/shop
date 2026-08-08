@@ -2,6 +2,7 @@ import Table from '../../components/sortTable/Table';
 import { createInitialFilters } from '../../components/sortTable/tableFilters/tableFiltersUtils';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useGetAllOrdersQuery } from '../../features/orders/orderApiSlice';
+import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
@@ -19,11 +20,24 @@ const AdminOrderPage = () => {
   const { filterParams, setFilterParams, onRemoveFilterTag } =
     useSearchParamsState(initialFilters);
 
+  const debounceCustomerName = useDebouncedValue(filterParams.customer);
+  const debounceCreatedAt = useDebouncedValue(filterParams.createdAt);
+  const debounceOrderId = useDebouncedValue(filterParams.id);
+
   const {
     data: orders,
     isLoading,
     refetch,
-  } = useGetAllOrdersQuery({ sortField, sortOrder });
+  } = useGetAllOrdersQuery({
+    sortField,
+    sortOrder,
+    customer: debounceCustomerName,
+    paymentMethod: filterParams.paymentMethod,
+    paymentStatus: filterParams.paymentStatus,
+    deliveryStatus: filterParams.deliveryStatus,
+    createdAt: debounceCreatedAt,
+    id: debounceOrderId,
+  });
 
   return (
     <AdminPageContainer heading={language.orders} variant="x-large">
