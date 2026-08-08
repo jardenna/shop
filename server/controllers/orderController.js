@@ -166,7 +166,7 @@ const getAllOrders = asyncHandler(async (req, res) => {
   const sortField = req.query.sortField;
   const sortOrder = req.query.sortOrder === 'desc' ? -1 : 1;
 
-  const orders = await Order.find()
+  const orders = await Order.find(req.filter || {})
     .select([
       '_id',
       'createdAt',
