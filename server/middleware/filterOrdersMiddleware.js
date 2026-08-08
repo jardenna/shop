@@ -7,13 +7,12 @@ const filterOrdersMiddleware = async (req, res, next) => {
     paymentStatus: paymentStatusValue,
     deliveryStatus: deliveryStatusValue,
     createdAt: createdAtValue,
+    id: idValue,
   } = req.query;
 
   const filter = {};
 
   if (createdAtValue) {
-    console.log(createdAtValue, 3);
-
     const startDate = new Date(createdAtValue);
     const endDate = new Date(createdAtValue);
 
@@ -43,6 +42,16 @@ const filterOrdersMiddleware = async (req, res, next) => {
 
     filter.user = {
       $in: users.map((user) => user._id),
+    };
+  }
+
+  if (idValue) {
+    filter.$expr = {
+      $regexMatch: {
+        input: { $toString: '$_id' },
+        regex: idValue.trim(),
+        options: 'i',
+      },
     };
   }
 
