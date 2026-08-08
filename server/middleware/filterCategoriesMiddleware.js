@@ -1,31 +1,27 @@
 export function filterCategoriesMiddleware(req, res, next) {
-  const {
-    categoryStatus: statusValue,
-    categoryName: categoryNameValue,
-    subCategoryName: subCategoryNameValue,
-    createdAt: createdAtValue,
-  } = req.query;
+  const { categoryStatus, categoryName, subCategoryName, createdAt } =
+    req.query;
 
   const filter = {};
 
   // Filter by status (exact match)
-  if (statusValue) {
-    filter.categoryStatus = statusValue;
+  if (categoryStatus) {
+    filter.categoryStatus = categoryStatus;
   }
 
   // Filter by category name
-  if (categoryNameValue) {
-    filter.categoryName = categoryNameValue;
+  if (categoryName) {
+    filter.categoryName = categoryName;
   }
 
-  if (subCategoryNameValue) {
-    filter.subCategoryName = subCategoryNameValue;
+  if (subCategoryName) {
+    filter.subCategoryName = subCategoryName;
   }
 
   // Filter by createdAt (expects YYYY-MM-DD or ISO string)
-  if (createdAtValue) {
-    const startDate = new Date(createdAtValue);
-    const endDate = new Date(createdAtValue);
+  if (createdAt) {
+    const startDate = new Date(createdAt);
+    const endDate = new Date(createdAt);
 
     // Normalize to full day range
     startDate.setHours(0, 0, 0, 0);

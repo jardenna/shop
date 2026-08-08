@@ -2,19 +2,22 @@ import User from '../models/userModel.js';
 
 const filterOrdersMiddleware = async (req, res, next) => {
   const {
-    customer: customerValue,
-    paymentMethod: paymentMethodValue,
-    paymentStatus: paymentStatusValue,
-    deliveryStatus: deliveryStatusValue,
-    createdAt: createdAtValue,
-    id: idValue,
+    customer,
+    paymentMethod,
+    paymentStatus,
+    deliveryStatus,
+    createdAt,
+    id,
+    minTotalPrice,
+    maxTotalPrice,
   } = req.query;
 
   const filter = {};
 
-  if (createdAtValue) {
-    const startDate = new Date(createdAtValue);
-    const endDate = new Date(createdAtValue);
+  // Filter by createdAt
+  if (createdAt) {
+    const startDate = new Date(createdAt);
+    const endDate = new Date(createdAt);
 
     // Normalize to full day range
     startDate.setHours(0, 0, 0, 0);
@@ -26,10 +29,9 @@ const filterOrdersMiddleware = async (req, res, next) => {
     };
   }
 
-  if (customerValue) {
-    const values = Array.isArray(customerValue)
-      ? customerValue
-      : customerValue.split(',');
+  // Filter by user
+  if (customer) {
+    const values = Array.isArray(customer) ? customer : customer.split(',');
 
     const users = await User.find({
       $or: values.map((value) => ({
@@ -45,26 +47,40 @@ const filterOrdersMiddleware = async (req, res, next) => {
     };
   }
 
-  if (idValue) {
+  // Filter by min/max price
+  if (minTotalPrice || maxTotalPrice) {
+    filter['summary.totalPrice'] = {};
+
+    if (minTotalPrice) {
+      filter['summary.totalPrice'].$gte = Number(minTotalPrice);
+    }
+
+    if (maxTotalPrice) {
+      filter['summary.totalPrice'].$lte = Number(maxTotalPrice);
+    }
+  }
+
+  // Filter by order id
+  if (id) {
     filter.$expr = {
       $regexMatch: {
         input: { $toString: '$_id' },
-        regex: idValue.trim(),
+        regex: id.trim(),
         options: 'i',
       },
     };
   }
 
-  if (paymentMethodValue) {
-    filter['payment.method'] = paymentMethodValue;
+  if (paymentMethod) {
+    filter['payment.method'] = paymentMethod;
   }
 
-  if (paymentStatusValue) {
-    filter['payment.status'] = paymentStatusValue;
+  if (paymentStatus) {
+    filter['payment.status'] = paymentStatus;
   }
 
-  if (deliveryStatusValue) {
-    filter['delivery.status'] = deliveryStatusValue;
+  if (deliveryStatus) {
+    filter['delivery.status'] = deliveryStatus;
   }
 
   req.filter = filter;
