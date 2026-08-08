@@ -244,8 +244,9 @@ export interface AdminOrderParams extends SortParams {
   customer?: string;
   deliveryStatus?: string;
   id?: string;
+  maxTotalPrice?: string;
+  minTotalPrice?: string;
   paymentStatus?: string;
-  totalPrice?: number;
 }
 
 export interface AdminOrderResponse extends BaseAdminOrder {

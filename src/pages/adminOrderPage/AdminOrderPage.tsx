@@ -23,6 +23,8 @@ const AdminOrderPage = () => {
   const debounceCustomerName = useDebouncedValue(filterParams.customer);
   const debounceCreatedAt = useDebouncedValue(filterParams.createdAt);
   const debounceOrderId = useDebouncedValue(filterParams.id);
+  const debounceOrderMaxprice = useDebouncedValue(filterParams.maxTotalPrice);
+  const debounceOrderMinprice = useDebouncedValue(filterParams.minTotalPrice);
 
   const {
     data: orders,
@@ -32,11 +34,13 @@ const AdminOrderPage = () => {
     sortField,
     sortOrder,
     customer: debounceCustomerName,
-    paymentMethod: filterParams.paymentMethod,
-    paymentStatus: filterParams.paymentStatus,
-    deliveryStatus: filterParams.deliveryStatus,
+    paymentMethod: filterParams.paymentMethod.toLowerCase(),
+    paymentStatus: filterParams.paymentStatus.toUpperCase(),
+    deliveryStatus: filterParams.deliveryStatus.toLowerCase(),
     createdAt: debounceCreatedAt,
     id: debounceOrderId,
+    maxTotalPrice: debounceOrderMaxprice,
+    minTotalPrice: debounceOrderMinprice,
   });
 
   return (
