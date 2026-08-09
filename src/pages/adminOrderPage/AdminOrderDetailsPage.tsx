@@ -1,6 +1,6 @@
 import { useParams } from 'react-router';
 import { useLanguage } from '../../features/language/useLanguage';
-import MyOrderList from '../../features/orders/components/myOrders/MyOrderList';
+import MyOrderList from '../../features/orders/components/orders/OrderList';
 import { useGetOrderByIdQuery } from '../../features/orders/orderApiSlice';
 import { AdminPath } from '../../layout/nav/enums';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
