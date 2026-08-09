@@ -116,7 +116,7 @@ const ProductPage = () => {
   }
 
   const totalBtns = allProducts?.pages ?? 1;
-  const productCount = allProducts ? allProducts.productCount : 0;
+  const itemCount = allProducts ? allProducts.productCount : 0;
 
   const handleSelectCount = (option: Options) => {
     const newCount = Number(option.value);
@@ -138,8 +138,8 @@ const ProductPage = () => {
 
   const { paginationMobileText } = usePaginationText({
     page,
-    productsPerPage: itemsPerPage,
-    productCount,
+    itemsPerPage,
+    itemCount,
     totalBtns,
     language,
   });
@@ -213,7 +213,7 @@ const ProductPage = () => {
         page={page}
         onPagination={handlePagination}
         onSelectCount={handleSelectCount}
-        totalCount={productCount}
+        totalCount={itemCount}
         paginationMobileText={paginationMobileText}
         defaultValue={{
           value: itemsPerPage.toString(),

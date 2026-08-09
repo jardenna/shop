@@ -94,15 +94,15 @@ const CollectionPage = () => {
     subCategoryId: categoryId || '',
   });
 
-  const productCount = products ? products.productCount : 0;
+  const itemCount = products ? products.productCount : 0;
   const totalBtns = products?.pages ?? 1;
   const src = `/images/banners/${category}_banner`;
   const altText = `${category}BannerAltText`;
 
   const { infoText, paginationMobileText, ariaLiveText } = usePaginationText({
     page,
-    productsPerPage: itemsPerPage,
-    productCount,
+    itemsPerPage,
+    itemCount,
     totalBtns,
     language,
   });
@@ -155,7 +155,7 @@ const CollectionPage = () => {
     return <SkeletonCollectionPage count={4} />;
   }
 
-  if (productCount === 0) {
+  if (itemCount === 0) {
     return (
       <EmptyState
         emptyStateText={language.noProductResult}
@@ -258,13 +258,13 @@ const CollectionPage = () => {
             </section>
           </ErrorBoundary>
         </div>
-        {productCount > 0 && (
+        {itemCount > 0 && (
           <Pagination
             totalBtns={totalBtns}
             page={page}
             onPagination={handlePagination}
             onSelectCount={handleSelectCount}
-            totalCount={productCount}
+            totalCount={itemCount}
             paginationMobileText={paginationMobileText}
             defaultValue={{
               value: itemsPerPage.toString(),
