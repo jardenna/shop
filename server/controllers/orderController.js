@@ -163,10 +163,13 @@ const createOrder = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Private for admin and employee
 const getAllOrders = asyncHandler(async (req, res) => {
+  const { page, productsPerPage } = req.pagination;
+  const filter = req.filter;
+
   const sortField = req.query.sortField;
   const sortOrder = req.query.sortOrder === 'desc' ? -1 : 1;
 
-  const orders = await Order.find(req.filter || {})
+  const orders = await Order.find(filter || {})
     .select([
       '_id',
       'createdAt',
@@ -197,8 +200,15 @@ const getAllOrders = asyncHandler(async (req, res) => {
     language: req.lang,
   });
 
-  res.status(200).json(
-    sortedOrders.map((order) => ({
+  const startIndex = productsPerPage * (page - 1);
+  const paginatedOrders = sortedOrders.slice(
+    startIndex,
+    startIndex + productsPerPage,
+  );
+
+  res.status(200).json({
+    success: true,
+    orders: paginatedOrders.map((order) => ({
       id: order.id,
       createdAt: order.createdAt,
       customer: order.user?.username ?? '',
@@ -207,7 +217,10 @@ const getAllOrders = asyncHandler(async (req, res) => {
       paymentStatus: order.payment.status,
       deliveryStatus: order.delivery.status,
     })),
-  );
+    page,
+    pages: Math.ceil(sortedOrders.length / productsPerPage),
+    orderCount: sortedOrders.length,
+  });
 });
 
 // @desc    Get order by Id

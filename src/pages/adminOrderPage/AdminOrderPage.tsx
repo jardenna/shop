@@ -27,7 +27,7 @@ const AdminOrderPage = () => {
   const debounceOrderMinprice = useDebouncedValue(filterParams.minTotalPrice);
 
   const {
-    data: orders,
+    data: orderResponse,
     isLoading,
     refetch,
   } = useGetAllOrdersQuery({
@@ -45,14 +45,14 @@ const AdminOrderPage = () => {
 
   return (
     <AdminPageContainer heading={language.orders} variant="x-large">
-      {orders && (
+      {orderResponse && (
         <Table
           onRemoveFilterTag={onRemoveFilterTag}
           values={filterParams}
           onFilter={setFilterParams}
           initialFilters={initialFilters}
           onReset={() => refetch()}
-          data={orders}
+          data={orderResponse.orders}
           columns={tableHeaders}
           tableCaption={language.categoryList}
           isLoading={isLoading}
