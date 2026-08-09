@@ -76,15 +76,6 @@ function filterProductsMiddleware(req, res, next) {
     }
   });
 
-  // Pass through categoryName and subCategoryName for aggregation filtering
-  if (req.query.categoryName) {
-    req.query.categoryName = req.query.categoryName;
-  }
-
-  if (req.query.subCategoryName) {
-    req.query.subCategoryName = req.query.subCategoryName;
-  }
-
   // Filter by min/max price
   if (minPrice || maxPrice) {
     filter.price = {};
