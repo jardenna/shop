@@ -33,10 +33,6 @@ const PaginationSelect = ({
       label: count,
     }));
 
-  // Check when filtering
-  const isOptionDisabled = (option: { value: string }) =>
-    Number(option.value) > totalCount;
-
   return (
     <form className="pagination-select">
       <FieldSet legendText={language.displayOptions}>
@@ -49,7 +45,6 @@ const PaginationSelect = ({
           labelText={language.selectNumber}
           defaultValue={defaultValue}
           inputHasNoLabel
-          isOptionDisabled={isOptionDisabled}
         />
       </FieldSet>
       {!isTabletSize && <p>{language.productPerPage}</p>}
