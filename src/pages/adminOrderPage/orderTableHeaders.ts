@@ -44,4 +44,5 @@ export const tableHeaders: Column<OrderItems>[] = [
     name: 'deliveryStatus',
     tableFilterType: 'radio',
   },
+  { key: 'id', label: '', name: '' },
 ];

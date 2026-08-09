@@ -99,9 +99,9 @@ const AdminOrderPage = () => {
         onReset={() => refetch()}
         data={allOrders?.orders ?? []}
         columns={tableHeaders}
-        tableCaption={language.categoryList}
+        tableCaption={language.orderList}
         isLoading={isLoading}
-        emptyHeaderCellText={language.updateCategory}
+        emptyHeaderCellText={language.orderActions}
         onSort={onSort}
         sortField={sortField}
         sortOrder={sortOrder}
@@ -126,7 +126,6 @@ const AdminOrderPage = () => {
                 paymentStatus={paymentStatus}
                 totalPrice={totalPrice}
                 createdAt={createdAt}
-                linkText={language.update}
                 language={language}
               />
             ),

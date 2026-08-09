@@ -11,7 +11,6 @@ interface OrderTableRowProps {
   deliveryStatus: DeliveryStatusFilterValues;
   id: string;
   language: Record<string, string>;
-  linkText: string;
   paymentMethod: PaymentMethods;
   paymentStatus: string;
   totalPrice: number;
@@ -25,7 +24,6 @@ const OrderTableRow = ({
   totalPrice,
   createdAt,
   id,
-  linkText,
   language,
 }: OrderTableRowProps) => (
   <tr>
@@ -49,7 +47,7 @@ const OrderTableRow = ({
     <td>
       <Badge badgeText={language[deliveryStatus]} className={deliveryStatus} />
     </td>
-    <td>{linkText}</td>
+    <td>{language[deliveryStatus]}</td>
   </tr>
 );
 export default OrderTableRow;
