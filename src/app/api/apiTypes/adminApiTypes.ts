@@ -239,6 +239,8 @@ export interface BaseAdminOrder {
 }
 
 export interface AdminOrderParams extends SortParams {
+  ordersPerPage: number;
+  page: string;
   paymentMethod: string;
   createdAt?: string;
   customer?: string;
