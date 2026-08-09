@@ -2,26 +2,28 @@ import { BaseOrder } from '../../../../app/api/apiTypes/cartApiTypes';
 import Img from '../../../../components/Img';
 import { translateKey } from '../../../../utils/utils';
 
-export interface MyOrderItems extends BaseOrder {
+export interface OrderItems extends BaseOrder {
   id: string;
   image: string;
   productName: string;
 }
 
-interface MyOrderListProps {
+interface OrderListProps {
   language: Record<string, string>;
-  orders: MyOrderItems[];
+  orders: OrderItems[];
 }
 
-const MyOrderList = ({ orders, language }: MyOrderListProps) => (
-  <ul className="my-order-list">
+// eslint-disable-next-line no-warning-comments
+// TODO
+const OrderList = ({ orders, language }: OrderListProps) => (
+  <ul className="order-list">
     {orders.map((order) => (
-      <li className="my-order-list-item" key={order.id}>
-        <div className="my-order-item">
-          <Img src={order.image} alt="" className="my-order-img" />
+      <li className="order-list-item" key={order.id}>
+        <div className="order-item">
+          <Img src={order.image} alt="" className="order-img" />
           <section>
-            <h2 className="my-order-item-title">{order.productName}</h2>
-            <div className="my-order-info">
+            <h2 className="order-item-title">{order.productName}</h2>
+            <div className="order-info">
               <span>
                 {language.color}: {translateKey(order.color, language)}
               </span>
@@ -39,4 +41,4 @@ const MyOrderList = ({ orders, language }: MyOrderListProps) => (
   </ul>
 );
 
-export default MyOrderList;
+export default OrderList;
