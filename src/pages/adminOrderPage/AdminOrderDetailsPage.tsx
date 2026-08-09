@@ -9,17 +9,15 @@ const AdminOrderDetailsPage = () => {
   const { id } = useParams();
   const { language } = useLanguage();
   const { data: order } = useGetAdminOrderByIdQuery(id ?? '');
-  console.log(order);
 
   return (
     <AdminPageContainer
-      heading={language.category}
+      heading={id ?? ''}
       linkText={language.createNewCategory}
       linkTo={AdminPath.AdminSubCategoryCreate}
     >
       {order && (
         <article className="order-cart">
-          her
           <OrderList orders={order.orderItems} language={language} />
         </article>
       )}
