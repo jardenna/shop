@@ -1,4 +1,15 @@
 function filterProductsMiddleware(req, res, next) {
+  const {
+    productName,
+    maxPrice,
+    minPrice,
+    maxStock,
+    minStock,
+    minDiscount,
+    maxDiscount,
+    productStatus,
+  } = req.query;
+
   let page = parseInt(req.query.page);
   let productsPerPage = parseInt(req.query.productsPerPage);
 
@@ -12,10 +23,10 @@ function filterProductsMiddleware(req, res, next) {
   const filter = {};
 
   // Search by productName using case-insensitive partial match (supports multiple values)
-  if (req.query.productName) {
-    const values = Array.isArray(req.query.productName)
-      ? req.query.productName
-      : req.query.productName.split(',');
+  if (productName) {
+    const values = Array.isArray(productName)
+      ? productName
+      : productName.split(',');
 
     filter.$or = values.map((value) => ({
       productName: {
@@ -75,44 +86,44 @@ function filterProductsMiddleware(req, res, next) {
   }
 
   // Filter by min/max price
-  if (req.query.minPrice || req.query.maxPrice) {
+  if (minPrice || maxPrice) {
     filter.price = {};
-    if (req.query.minPrice) {
-      filter.price.$gte = Number(req.query.minPrice);
+    if (minPrice) {
+      filter.price.$gte = Number(minPrice);
     }
-    if (req.query.maxPrice) {
-      filter.price.$lte = Number(req.query.maxPrice);
+    if (maxPrice) {
+      filter.price.$lte = Number(maxPrice);
     }
   }
 
   // Filter by min/max countInStock
-  if (req.query.minStock || req.query.maxStock) {
+  if (minStock || maxStock) {
     filter.countInStock = {};
-    if (req.query.minStock) {
-      filter.countInStock.$gte = Number(req.query.minStock);
+    if (minStock) {
+      filter.countInStock.$gte = Number(minStock);
     }
-    if (req.query.maxStock) {
-      filter.countInStock.$lte = Number(req.query.maxStock);
+    if (maxStock) {
+      filter.countInStock.$lte = Number(maxStock);
     }
   }
 
   // Filter by min/max discount
-  if (req.query.minDiscount || req.query.maxDiscount) {
+  if (minDiscount || maxDiscount) {
     filter.discount = {};
 
-    if (req.query.minDiscount) {
-      filter.discount.$gte = Number(req.query.minDiscount);
+    if (minDiscount) {
+      filter.discount.$gte = Number(minDiscount);
     }
 
-    if (req.query.maxDiscount) {
-      filter.discount.$lte = Number(req.query.maxDiscount);
+    if (maxDiscount) {
+      filter.discount.$lte = Number(maxDiscount);
     }
   }
 
   // Filter by productStatus (e.g. 'Active', 'Archived', 'Scheduled')
-  if (req.query.productStatus) {
+  if (productStatus) {
     // Allow multiple values like 'Active,Scheduled'
-    const statuses = req.query.productStatus.split(',').map((s) => s.trim());
+    const statuses = productStatus.split(',').map((s) => s.trim());
     filter.productStatus = { $in: statuses };
   }
 

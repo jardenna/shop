@@ -11,6 +11,7 @@ import User from '../models/userModel.js';
 import { buildOrderItems } from '../services/buildOrderItems.js';
 import { calculateCartSummary } from '../services/calculateCartSummary.js';
 import { getActiveDiscount } from '../services/getActiveDiscount.js';
+import { sortColumns } from '../utils/sortColumns.js';
 import { t } from '../utils/translator.js';
 import { validateFakePayment } from '../validators/validateFakePayment.js';
 import {
@@ -162,7 +163,10 @@ const createOrder = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Private for admin and employee
 const getAllOrders = asyncHandler(async (req, res) => {
-  const orders = await Order.find()
+  const sortField = req.query.sortField;
+  const sortOrder = req.query.sortOrder === 'desc' ? -1 : 1;
+
+  const orders = await Order.find(req.filter || {})
     .select([
       '_id',
       'createdAt',
@@ -178,8 +182,23 @@ const getAllOrders = asyncHandler(async (req, res) => {
     })
     .sort({ createdAt: -1 });
 
+  const orderSortFields = {
+    customer: 'user.username',
+    totalPrice: 'summary.totalPrice',
+    paymentMethod: 'payment.method',
+    paymentStatus: 'payment.status',
+    deliveryStatus: 'delivery.status',
+  };
+
+  const sortedOrders = sortColumns({
+    collection: orders,
+    sortField: orderSortFields[sortField] ?? 'createdAt',
+    sortOrder,
+    language: req.lang,
+  });
+
   res.status(200).json(
-    orders.map((order) => ({
+    sortedOrders.map((order) => ({
       id: order.id,
       createdAt: order.createdAt,
       customer: order.user?.username ?? '',

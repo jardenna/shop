@@ -6,7 +6,7 @@ import DateDisplay from '../../components/datePicker/DateDisplay';
 import ProductPrice from '../../features/shop/components/productPrice/ProductPrice';
 
 interface OrderTableRowProps {
-  createdAt: string;
+  createdAt: Date;
   customer: string;
   deliveryStatus: DeliveryStatusFilterValues;
   id: string;
@@ -29,11 +29,13 @@ const OrderTableRow = ({
   language,
 }: OrderTableRowProps) => (
   <tr>
-    <td>{id}</td>
     <td>
+      <span className="text-ellipsis">{id}</span>
+    </td>
+    <td className="text-no-wrap">
       <DateDisplay date={createdAt} />
     </td>
-    <td>{customer}</td>
+    <td className="text-no-wrap">{customer}</td>
     <td>
       <ProductPrice price={totalPrice} />
     </td>

@@ -1,6 +1,9 @@
 import type { OmitChecked } from '../../../types/types';
 import { roleValues, statusValues } from '../apiConstants';
-import { DeliveryStatusFilterValues } from './orderApiTypes';
+import {
+  DeliveryStatusFilterValues,
+  PaymentStatusFilterValues,
+} from './orderApiTypes';
 import { PaymentMethods } from './paymentApiTypes';
 import type {
   BasePagination,
@@ -226,12 +229,26 @@ export type ProductsResponse = BasePagination & {
 
 export type FileName = 'images';
 
-export interface AdminOrderResponse {
-  createdAt: string;
+export interface BaseAdminOrder {
+  createdAt: Date;
   customer: string;
   deliveryStatus: DeliveryStatusFilterValues;
-  id: string;
   paymentMethod: PaymentMethods;
-  paymentStatus: string;
+  paymentStatus: PaymentStatusFilterValues;
   totalPrice: number;
+}
+
+export interface AdminOrderParams extends SortParams {
+  paymentMethod: string;
+  createdAt?: string;
+  customer?: string;
+  deliveryStatus?: string;
+  id?: string;
+  maxTotalPrice?: string;
+  minTotalPrice?: string;
+  paymentStatus?: string;
+}
+
+export interface AdminOrderResponse extends BaseAdminOrder {
+  id: string;
 }

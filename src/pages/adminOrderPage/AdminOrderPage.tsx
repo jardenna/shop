@@ -2,6 +2,7 @@ import Table from '../../components/sortTable/Table';
 import { createInitialFilters } from '../../components/sortTable/tableFilters/tableFiltersUtils';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useGetAllOrdersQuery } from '../../features/orders/orderApiSlice';
+import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
@@ -19,7 +20,28 @@ const AdminOrderPage = () => {
   const { filterParams, setFilterParams, onRemoveFilterTag } =
     useSearchParamsState(initialFilters);
 
-  const { data: orders, isLoading, refetch } = useGetAllOrdersQuery();
+  const debounceCustomerName = useDebouncedValue(filterParams.customer);
+  const debounceCreatedAt = useDebouncedValue(filterParams.createdAt);
+  const debounceOrderId = useDebouncedValue(filterParams.id);
+  const debounceOrderMaxprice = useDebouncedValue(filterParams.maxTotalPrice);
+  const debounceOrderMinprice = useDebouncedValue(filterParams.minTotalPrice);
+
+  const {
+    data: orders,
+    isLoading,
+    refetch,
+  } = useGetAllOrdersQuery({
+    sortField,
+    sortOrder,
+    customer: debounceCustomerName,
+    paymentMethod: filterParams.paymentMethod.toLowerCase(),
+    paymentStatus: filterParams.paymentStatus.toUpperCase(),
+    deliveryStatus: filterParams.deliveryStatus.toLowerCase(),
+    createdAt: debounceCreatedAt,
+    id: debounceOrderId,
+    maxTotalPrice: debounceOrderMaxprice,
+    minTotalPrice: debounceOrderMinprice,
+  });
 
   return (
     <AdminPageContainer heading={language.orders} variant="x-large">

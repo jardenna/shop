@@ -5,7 +5,6 @@ import { usePopup } from '../../hooks/usePopup';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import './_popup.scss';
-
 interface PopupProps {
   children: ReactNode;
   popupContent: ReactNode | ((params: { close: () => void }) => ReactNode);
@@ -31,8 +30,14 @@ const Popup = ({
 }: PopupProps) => {
   const popupId = useId();
 
-  const { popupRef, buttonRef, popupIsOpen, togglePopupList, arrowRef } =
-    usePopup({ placement });
+  const {
+    popupRef,
+    buttonRef,
+    popupIsOpen,
+    togglePopupList,
+    onCallback,
+    arrowRef,
+  } = usePopup({ placement });
 
   const buttonAriaProps =
     popupType === 'tooltip'
@@ -50,17 +55,15 @@ const Popup = ({
   };
 
   return (
-    <div className="popup">
-      <Button
-        variant={triggerBtnVariant}
-        onClick={handleOpenPopup}
-        ariaLabel={ariaLabel}
-        className={triggerBtnClassName}
-        ref={buttonRef}
-        {...buttonAriaProps}
-      >
-        {children}
-      </Button>
+    <Button
+      variant={triggerBtnVariant}
+      onClick={handleOpenPopup}
+      ariaLabel={ariaLabel}
+      className={triggerBtnClassName}
+      ref={buttonRef}
+      {...buttonAriaProps}
+    >
+      {children}
 
       {popupIsOpen &&
         createPortal(
@@ -71,7 +74,7 @@ const Popup = ({
             role={popupType === 'tooltip' ? 'tooltip' : undefined}
           >
             {typeof popupContent === 'function'
-              ? popupContent({ close: togglePopupList })
+              ? popupContent({ close: onCallback })
               : popupContent}
 
             <span
@@ -83,7 +86,7 @@ const Popup = ({
           </div>,
           document.body,
         )}
-    </div>
+    </Button>
   );
 };
 
