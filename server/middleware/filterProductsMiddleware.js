@@ -16,6 +16,7 @@ function filterProductsMiddleware(req, res, next) {
   if (isNaN(page) || page < 1) {
     page = 1;
   }
+
   if (isNaN(productsPerPage) || productsPerPage < 1 || productsPerPage > 100) {
     productsPerPage = 12;
   }
