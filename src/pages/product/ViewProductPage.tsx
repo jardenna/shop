@@ -18,7 +18,7 @@ import { translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const ViewProductPage = () => {
-  const params = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
   const { language } = useLanguage();
 
@@ -29,13 +29,13 @@ const ViewProductPage = () => {
     data: product,
     isLoading,
     refetch,
-  } = useGetProductByIdQuery(params.id || '');
+  } = useGetProductByIdQuery(id || '');
 
   const [deleteProduct] = useDeleteProductMutation();
 
   const handleDeleteProduct = async () => {
     try {
-      const result = await deleteProduct(params.id || '').unwrap();
+      const result = await deleteProduct(id || '').unwrap();
 
       if (result.success) {
         onAddMessagePopup({
@@ -119,7 +119,7 @@ const ViewProductPage = () => {
               primaryActionBtn={primaryActionBtn}
               name={product.productName}
               modalHeaderText={language.deleteProduct}
-              linkTo={`${AdminPath.AdminProductUpdate}/${params.id}`}
+              linkTo={`${AdminPath.AdminProductUpdate}/${id}`}
             />
           </section>
         </AdminPageContainer>

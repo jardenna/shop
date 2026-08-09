@@ -7,14 +7,14 @@ import { translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const UpdateCategoryPage = () => {
-  const params = useParams();
+  const { id } = useParams();
   const { language } = useLanguage();
 
   const {
     data: { category } = {},
     isLoading,
     refetch,
-  } = useGetCategoryByIdQuery(params.id || '');
+  } = useGetCategoryByIdQuery(id || '');
 
   return (
     <>
@@ -27,7 +27,7 @@ const UpdateCategoryPage = () => {
           <CategoryForm
             selectedCategory={category}
             onReset={() => refetch()}
-            id={params.id || ''}
+            id={id || ''}
             popupMessage={language.categoryUpdated}
           />
         </AdminPageContainer>
