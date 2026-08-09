@@ -207,14 +207,6 @@ const getAllOrders = asyncHandler(async (req, res) => {
     success: true,
     orders: paginatedOrders.map((order) => ({
       id: order.id,
-      orderItems: order.orderItems.map((item) => ({
-        productName: item.productName,
-        image: item.image,
-        qty: item.qty,
-        color: item.color,
-        size: item.size,
-        price: item.price,
-      })),
       createdAt: order.createdAt,
       customer: order.user?.username ?? '',
       totalPrice: order.summary.totalPrice,
