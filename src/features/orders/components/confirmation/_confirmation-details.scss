@@ -20,6 +20,15 @@
     @include max-size($small) {
       grid-template-columns: 1fr;
     }
+
+    .order-item-img {
+      max-width: rem(88px);
+      height: rem(132px);
+    }
+
+    .product-price {
+      font-size: $font-medium;
+    }
   }
 
   .confirmation-info-container {
@@ -66,7 +75,6 @@
 
   .confirmation-detail-list {
     display: flex;
-    flex-direction: column;
     gap: 20px;
 
     .text-uppercase {
@@ -81,7 +89,7 @@
   .confirmation-detail-item {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 4px;
 
     @include max-size($small) {
       flex-direction: row;
