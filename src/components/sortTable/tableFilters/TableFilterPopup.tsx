@@ -54,12 +54,17 @@ const TableFilterPopup = <T,>({
     return Boolean(value);
   })();
 
-  const getPopupContent = () => {
+  const getPopupContent = ({ close }: { close: () => void }) => {
     switch (filterType) {
       case 'text':
       case 'date':
         return (
-          <form>
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              close();
+            }}
+          >
             <Input
               type={filterType}
               name={name}
@@ -74,7 +79,13 @@ const TableFilterPopup = <T,>({
 
       case 'number':
         return (
-          <form className="number-container">
+          <form
+            className="number-container"
+            onSubmit={(event) => {
+              event.preventDefault();
+              close();
+            }}
+          >
             <Input
               id={minKey}
               type="number"
@@ -101,7 +112,12 @@ const TableFilterPopup = <T,>({
 
       case 'radio':
         return (
-          <form>
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              close();
+            }}
+          >
             <RadioButtonList
               radioButtonList={getListByName(name as keyof ListsMap)}
               name={name}
