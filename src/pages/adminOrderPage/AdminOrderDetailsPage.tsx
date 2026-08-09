@@ -1,5 +1,6 @@
 import { useParams } from 'react-router';
 import { useLanguage } from '../../features/language/useLanguage';
+import MyOrderList from '../../features/orders/components/myOrders/MyOrderList';
 import { useGetOrderByIdQuery } from '../../features/orders/orderApiSlice';
 import { AdminPath } from '../../layout/nav/enums';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
@@ -16,7 +17,7 @@ const AdminOrderDetailsPage = () => {
       linkText={language.createNewCategory}
       linkTo={AdminPath.AdminSubCategoryCreate}
     >
-      hello
+      {order && <MyOrderList orders={order.orderItems} language={language} />}
     </AdminPageContainer>
   );
 };
