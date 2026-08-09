@@ -23,12 +23,15 @@ const PaginationSelect = ({
   const { isTabletSize } = useMediaQuery();
   const selectProductCountList = optionList || ['8', '16', '32'];
 
-  const options = [
-    ...selectProductCountList.map((count) => ({
+  const options = [...selectProductCountList, String(totalCount)]
+    .filter(
+      (count, index, values) =>
+        Number(count) <= totalCount && values.indexOf(count) === index,
+    )
+    .map((count) => ({
       value: count,
       label: count,
-    })),
-  ];
+    }));
 
   // Check when filtering
   const isOptionDisabled = (option: { value: string }) =>
