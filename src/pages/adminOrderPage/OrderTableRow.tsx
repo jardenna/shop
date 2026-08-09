@@ -3,7 +3,9 @@ import { DeliveryStatusFilterValues } from '../../app/api/apiTypes/orderApiTypes
 import { PaymentMethods } from '../../app/api/apiTypes/paymentApiTypes';
 import Badge from '../../components/badge/Badge';
 import DateDisplay from '../../components/datePicker/DateDisplay';
+import MoreLink from '../../components/MoreLink';
 import ProductPrice from '../../features/shop/components/productPrice/ProductPrice';
+import { AdminPath } from '../../layout/nav/enums';
 
 interface OrderTableRowProps {
   createdAt: Date;
@@ -47,7 +49,12 @@ const OrderTableRow = ({
     <td>
       <Badge badgeText={language[deliveryStatus]} className={deliveryStatus} />
     </td>
-    <td>{language[deliveryStatus]}</td>
+    <td>
+      <MoreLink
+        linkText={language.updateOrder}
+        linkTo={`${AdminPath.AdminCategoryUpdate}/${id}`}
+      />
+    </td>
   </tr>
 );
 export default OrderTableRow;
