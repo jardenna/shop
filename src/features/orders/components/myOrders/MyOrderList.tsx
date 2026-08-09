@@ -1,10 +1,16 @@
-import { Order } from '../../../../app/api/apiTypes/cartApiTypes';
+import { BaseOrder } from '../../../../app/api/apiTypes/cartApiTypes';
 import Img from '../../../../components/Img';
 import { translateKey } from '../../../../utils/utils';
 
+export interface MyOrderItems extends BaseOrder {
+  id: string;
+  image: string;
+  productName: string;
+}
+
 interface MyOrderListProps {
   language: Record<string, string>;
-  orders: Order[];
+  orders: MyOrderItems[];
 }
 
 const MyOrderList = ({ orders, language }: MyOrderListProps) => (
