@@ -9,6 +9,7 @@ export const authEndpoints = {
   login: `${baseAuthEndpoint}/login`,
   logout: `${baseAuthEndpoint}/logout`,
   checkAuth: `${baseAuthEndpoint}/check-auth`,
+  orderById: `admin/orders/orders`,
 };
 
 export const userUrl = baseUserEndpoint;
@@ -26,3 +27,4 @@ export const promoCodeurl = `${baseCartEndpoint}/promo-code`;
 export const ordersUrl = baseOrderEndpoint;
 export const userOrdersUrl = `${baseOrderEndpoint}/me`;
 export const checkoutUrl = 'checkout';
+export const adminOrdersUrl = 'admin/orders/';

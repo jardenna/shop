@@ -1,14 +1,14 @@
 import { useParams } from 'react-router';
 import { useLanguage } from '../../features/language/useLanguage';
 import OrderList from '../../features/orders/components/orders/OrderList';
-import { useGetOrderByIdQuery } from '../../features/orders/orderApiSlice';
+import { useGetAdminOrderByIdQuery } from '../../features/orders/orderApiSlice';
 import { AdminPath } from '../../layout/nav/enums';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const AdminOrderDetailsPage = () => {
   const { id } = useParams();
   const { language } = useLanguage();
-  const { data: order } = useGetOrderByIdQuery(id ?? '');
+  const { data: order } = useGetAdminOrderByIdQuery(id ?? '');
   console.log(order);
 
   return (
