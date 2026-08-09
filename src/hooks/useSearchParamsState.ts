@@ -12,8 +12,8 @@ export const useSearchParamsState = <T extends SearchParamState>(
   const [searchParams, setSearchParams] = useSearchParams();
 
   const page = Number(searchParams.get(pageParamKey)) || 1;
-  const productsPerPage =
-    Number(searchParams.get(productsPerPageParamKey)) || 8;
+
+  const itemsPerPage = Number(searchParams.get(productsPerPageParamKey)) || 8;
 
   const searchKey = searchParams.toString();
 
@@ -156,7 +156,7 @@ export const useSearchParamsState = <T extends SearchParamState>(
     onClearAllFilters: handleClearAllFilters,
     onClearSingleFilter: handleClearSingleFilter,
     page,
-    productsPerPage,
+    itemsPerPage,
     setPage,
     updatePagination,
     hasSearchParams,

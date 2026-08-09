@@ -45,7 +45,7 @@ const ProductPage = () => {
     filterParams,
     setFilterParams,
     page,
-    productsPerPage,
+    itemsPerPage,
     setPage,
     updatePagination,
     onRemoveFilterTag,
@@ -75,7 +75,7 @@ const ProductPage = () => {
     refetch,
   } = useGetAllProductsQuery(
     {
-      productsPerPage,
+      productsPerPage: itemsPerPage,
       page: page.toString(),
       sortField,
       sortOrder,
@@ -138,7 +138,7 @@ const ProductPage = () => {
 
   const { paginationMobileText } = usePaginationText({
     page,
-    productsPerPage,
+    productsPerPage: itemsPerPage,
     productCount,
     totalBtns,
     language,
@@ -216,8 +216,8 @@ const ProductPage = () => {
         totalCount={productCount}
         paginationMobileText={paginationMobileText}
         defaultValue={{
-          value: productsPerPage.toString(),
-          label: productsPerPage.toString(),
+          value: itemsPerPage.toString(),
+          label: itemsPerPage.toString(),
         }}
       />
     </AdminPageContainer>

@@ -71,7 +71,7 @@ const CollectionPage = () => {
     onClearSingleFilter,
     onClearAllFilters,
     page,
-    productsPerPage,
+    itemsPerPage,
     setPage,
     updatePagination,
     searchKey,
@@ -83,7 +83,7 @@ const CollectionPage = () => {
     isError,
     refetch,
   } = useGetProductsQuery({
-    productsPerPage,
+    productsPerPage: itemsPerPage,
     page: page.toString(),
     colors: filterParams.colors,
     brand: filterParams.brand,
@@ -101,13 +101,13 @@ const CollectionPage = () => {
 
   const { infoText, paginationMobileText, ariaLiveText } = usePaginationText({
     page,
-    productsPerPage,
+    productsPerPage: itemsPerPage,
     productCount,
     totalBtns,
     language,
   });
 
-  const announce = useAnnounce([page, productsPerPage, searchKey]);
+  const announce = useAnnounce([page, itemsPerPage, searchKey]);
 
   const { scrollToRef, setShouldScroll } = useScrollOnPagination({
     isLoading,
@@ -267,8 +267,8 @@ const CollectionPage = () => {
             totalCount={productCount}
             paginationMobileText={paginationMobileText}
             defaultValue={{
-              value: productsPerPage.toString(),
-              label: productsPerPage.toString(),
+              value: itemsPerPage.toString(),
+              label: itemsPerPage.toString(),
             }}
           />
         )}

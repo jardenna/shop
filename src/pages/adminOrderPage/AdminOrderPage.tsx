@@ -26,7 +26,7 @@ const AdminOrderPage = () => {
     setFilterParams,
     onRemoveFilterTag,
     page,
-    productsPerPage,
+    itemsPerPage,
     setPage,
     updatePagination,
   } = useSearchParamsState(initialFilters);
@@ -42,7 +42,7 @@ const AdminOrderPage = () => {
     isLoading,
     refetch,
   } = useGetAllOrdersQuery({
-    ordersPerPage: productsPerPage,
+    ordersPerPage: itemsPerPage,
     page: page.toString(),
     sortField,
     sortOrder,
@@ -79,7 +79,7 @@ const AdminOrderPage = () => {
 
   const { paginationMobileText } = usePaginationText({
     page,
-    productsPerPage,
+    productsPerPage: itemsPerPage,
     productCount,
     totalBtns,
     language,
@@ -143,8 +143,8 @@ const AdminOrderPage = () => {
             totalCount={productCount}
             paginationMobileText={paginationMobileText}
             defaultValue={{
-              value: productsPerPage.toString(),
-              label: productsPerPage.toString(),
+              value: itemsPerPage.toString(),
+              label: itemsPerPage.toString(),
             }}
           />
         </>
