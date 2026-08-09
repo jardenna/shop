@@ -29,11 +29,13 @@ const OrderTableRow = ({
   language,
 }: OrderTableRowProps) => (
   <tr>
-    <td>{id}</td>
     <td>
+      <span className="text-ellipsis">{id}</span>
+    </td>
+    <td className="text-no-wrap">
       <DateDisplay date={createdAt} />
     </td>
-    <td>{customer}</td>
+    <td className="text-no-wrap">{customer}</td>
     <td>
       <ProductPrice price={totalPrice} />
     </td>
