@@ -25,8 +25,9 @@ const OrderConfirmationPage = () => {
     error,
     isLoading,
   } = useGetOrderByIdQuery(id ?? '');
+
   const status = {
-    status: 'processing',
+    status: order?.delivery.status ?? 'created',
   };
 
   const addressList = order
