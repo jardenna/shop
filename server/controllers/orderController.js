@@ -163,7 +163,7 @@ const createOrder = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Private for admin and employee
 const getAllOrders = asyncHandler(async (req, res) => {
-  const { page, productsPerPage } = req.pagination;
+  const { page, ordersPerPage } = req.pagination;
   const filter = req.filter;
 
   const sortField = req.query.sortField;
@@ -200,10 +200,10 @@ const getAllOrders = asyncHandler(async (req, res) => {
     language: req.lang,
   });
 
-  const startIndex = productsPerPage * (page - 1);
+  const startIndex = ordersPerPage * (page - 1);
   const paginatedOrders = sortedOrders.slice(
     startIndex,
-    startIndex + productsPerPage,
+    startIndex + ordersPerPage,
   );
 
   res.status(200).json({
@@ -218,7 +218,7 @@ const getAllOrders = asyncHandler(async (req, res) => {
       deliveryStatus: order.delivery.status,
     })),
     page,
-    pages: Math.ceil(sortedOrders.length / productsPerPage),
+    pages: Math.ceil(sortedOrders.length / ordersPerPage),
     orderCount: sortedOrders.length,
   });
 });

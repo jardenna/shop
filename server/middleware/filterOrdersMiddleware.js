@@ -13,14 +13,14 @@ const filterOrdersMiddleware = async (req, res, next) => {
   } = req.query;
 
   let page = parseInt(req.query.page);
-  let productsPerPage = parseInt(req.query.productsPerPage);
+  let ordersPerPage = parseInt(req.query.ordersPerPage);
 
   if (isNaN(page) || page < 1) {
     page = 1;
   }
 
-  if (isNaN(productsPerPage) || productsPerPage < 1 || productsPerPage > 100) {
-    productsPerPage = 12;
+  if (isNaN(ordersPerPage) || ordersPerPage < 1 || ordersPerPage > 100) {
+    ordersPerPage = 12;
   }
 
   const filter = {};
@@ -94,7 +94,7 @@ const filterOrdersMiddleware = async (req, res, next) => {
     filter['delivery.status'] = deliveryStatus;
   }
 
-  req.pagination = { page, productsPerPage };
+  req.pagination = { page, ordersPerPage };
   req.filter = filter;
 
   next();
