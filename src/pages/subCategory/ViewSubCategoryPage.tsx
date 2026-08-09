@@ -13,7 +13,7 @@ import { translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const ViewSubCategoryPage = () => {
-  const params = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
   const { language } = useLanguage();
 
@@ -24,7 +24,7 @@ const ViewSubCategoryPage = () => {
     data: category,
     isLoading,
     refetch,
-  } = useGetSubCategoryByIdQuery(params.id || '', {
+  } = useGetSubCategoryByIdQuery(id || '', {
     refetchOnMountOrArgChange: true,
   });
 
@@ -32,7 +32,7 @@ const ViewSubCategoryPage = () => {
 
   const handleDeleteSubCategory = async () => {
     try {
-      const result = await deleteSubCategory(params.id || '').unwrap();
+      const result = await deleteSubCategory(id || '').unwrap();
 
       if (result.success) {
         navigate(AdminPath.AdminSubCategories);
