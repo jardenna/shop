@@ -239,6 +239,8 @@ export interface BaseAdminOrder {
 }
 
 export interface AdminOrderParams extends SortParams {
+  ordersPerPage: number;
+  page: string;
   paymentMethod: string;
   createdAt?: string;
   customer?: string;
@@ -249,6 +251,20 @@ export interface AdminOrderParams extends SortParams {
   paymentStatus?: string;
 }
 
-export interface AdminOrderResponse extends BaseAdminOrder {
+export interface OrderItems {
+  createdAt: Date;
+  customer: string;
+  deliveryStatus: DeliveryStatusFilterValues;
   id: string;
+  paymentMethod: PaymentMethods;
+  paymentStatus: PaymentStatusFilterValues;
+  totalPrice: number;
+}
+
+export interface AdminOrderResponse {
+  orderCount: number;
+  orders: OrderItems[];
+  page: number;
+  pages: number;
+  success: boolean;
 }

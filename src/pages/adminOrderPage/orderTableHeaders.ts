@@ -1,7 +1,7 @@
-import { AdminOrderResponse } from '../../app/api/apiTypes/adminApiTypes';
+import { OrderItems } from '../../app/api/apiTypes/adminApiTypes';
 import { Column } from '../../components/sortTable/Table';
 
-export const tableHeaders: Column<AdminOrderResponse>[] = [
+export const tableHeaders: Column<OrderItems>[] = [
   {
     key: 'id',
     label: 'order',

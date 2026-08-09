@@ -24,7 +24,7 @@
   }
 
   .page-card {
-    max-height: 78lvh;
+    max-height: fit-content;
     overflow: auto;
     overflow-x: clip;
     background-color: $color-white;

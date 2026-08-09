@@ -71,7 +71,7 @@ const CollectionPage = () => {
     onClearSingleFilter,
     onClearAllFilters,
     page,
-    productsPerPage,
+    itemsPerPage,
     setPage,
     updatePagination,
     searchKey,
@@ -83,7 +83,7 @@ const CollectionPage = () => {
     isError,
     refetch,
   } = useGetProductsQuery({
-    productsPerPage,
+    productsPerPage: itemsPerPage,
     page: page.toString(),
     colors: filterParams.colors,
     brand: filterParams.brand,
@@ -94,20 +94,20 @@ const CollectionPage = () => {
     subCategoryId: categoryId || '',
   });
 
-  const productCount = products ? products.productCount : 0;
+  const itemCount = products ? products.productCount : 0;
   const totalBtns = products?.pages ?? 1;
   const src = `/images/banners/${category}_banner`;
   const altText = `${category}BannerAltText`;
 
   const { infoText, paginationMobileText, ariaLiveText } = usePaginationText({
     page,
-    productsPerPage,
-    productCount,
+    itemsPerPage,
+    itemCount,
     totalBtns,
     language,
   });
 
-  const announce = useAnnounce([page, productsPerPage, searchKey]);
+  const announce = useAnnounce([page, itemsPerPage, searchKey]);
 
   const { scrollToRef, setShouldScroll } = useScrollOnPagination({
     isLoading,
@@ -155,7 +155,7 @@ const CollectionPage = () => {
     return <SkeletonCollectionPage count={4} />;
   }
 
-  if (productCount === 0) {
+  if (itemCount === 0) {
     return (
       <EmptyState
         emptyStateText={language.noProductResult}
@@ -258,17 +258,17 @@ const CollectionPage = () => {
             </section>
           </ErrorBoundary>
         </div>
-        {productCount > 0 && (
+        {itemCount > 0 && (
           <Pagination
             totalBtns={totalBtns}
             page={page}
             onPagination={handlePagination}
             onSelectCount={handleSelectCount}
-            totalCount={productCount}
+            totalCount={itemCount}
             paginationMobileText={paginationMobileText}
             defaultValue={{
-              value: productsPerPage.toString(),
-              label: productsPerPage.toString(),
+              value: itemsPerPage.toString(),
+              label: itemsPerPage.toString(),
             }}
           />
         )}

@@ -45,7 +45,7 @@ const ProductPage = () => {
     filterParams,
     setFilterParams,
     page,
-    productsPerPage,
+    itemsPerPage,
     setPage,
     updatePagination,
     onRemoveFilterTag,
@@ -75,7 +75,7 @@ const ProductPage = () => {
     refetch,
   } = useGetAllProductsQuery(
     {
-      productsPerPage,
+      productsPerPage: itemsPerPage,
       page: page.toString(),
       sortField,
       sortOrder,
@@ -116,7 +116,7 @@ const ProductPage = () => {
   }
 
   const totalBtns = allProducts?.pages ?? 1;
-  const productCount = allProducts ? allProducts.productCount : 0;
+  const itemCount = allProducts ? allProducts.productCount : 0;
 
   const handleSelectCount = (option: Options) => {
     const newCount = Number(option.value);
@@ -138,8 +138,8 @@ const ProductPage = () => {
 
   const { paginationMobileText } = usePaginationText({
     page,
-    productsPerPage,
-    productCount,
+    itemsPerPage,
+    itemCount,
     totalBtns,
     language,
   });
@@ -213,11 +213,11 @@ const ProductPage = () => {
         page={page}
         onPagination={handlePagination}
         onSelectCount={handleSelectCount}
-        totalCount={productCount}
+        totalCount={itemCount}
         paginationMobileText={paginationMobileText}
         defaultValue={{
-          value: productsPerPage.toString(),
-          label: productsPerPage.toString(),
+          value: itemsPerPage.toString(),
+          label: itemsPerPage.toString(),
         }}
       />
     </AdminPageContainer>
