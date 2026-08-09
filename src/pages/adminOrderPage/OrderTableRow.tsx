@@ -52,7 +52,7 @@ const OrderTableRow = ({
     <td>
       <MoreLink
         linkText={language.updateOrder}
-        linkTo={`${AdminPath.AdminCategoryUpdate}/${id}`}
+        linkTo={`${AdminPath.AdminOrders}/${id}`}
       />
     </td>
   </tr>

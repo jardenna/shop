@@ -35,6 +35,7 @@ import UpdateSubCategoryPage from '../pages/subCategory/UpdateSubCategoryPage';
 import ViewSubCategoryPage from '../pages/subCategory/ViewSubCategoryPage';
 import CreateUserPage from '../pages/users/CreateUserPage';
 import UserPage from '../pages/users/UserPage';
+import AdminOrderDetailsPage from '../pages/adminOrderPage/AdminOrderDetailsPage';
 
 const routeList = [
   {
@@ -139,6 +140,10 @@ const adminRouteList = [
   {
     path: AdminPath.AdminOrders,
     element: <AdminOrderPage />,
+  },
+  {
+    path: `${AdminPath.AdminOrders}/:id`,
+    element: <AdminOrderDetailsPage />,
   },
 ];
 
