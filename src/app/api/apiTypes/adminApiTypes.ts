@@ -256,6 +256,7 @@ export interface OrderItems {
   customer: string;
   deliveryStatus: DeliveryStatusFilterValues;
   id: string;
+  orderId: string;
   paymentMethod: PaymentMethods;
   paymentStatus: PaymentStatusFilterValues;
   totalPrice: number;
