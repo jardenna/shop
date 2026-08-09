@@ -137,9 +137,6 @@ const createOrder = asyncHandler(async (req, res) => {
     user: req.user._id,
     orderItems: createdOrders,
     payment: paymentData,
-    delivery: {
-      status: DELIVERY_STATUS.PROCESSING,
-    },
     shippingAddress,
     billingAddress,
     summary: {
