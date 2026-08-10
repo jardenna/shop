@@ -69,12 +69,7 @@ const MiniCartPopup = () => {
             ref={miniCartRef}
           >
             <h2 className="mini-cart-title">{language.myBag}</h2>
-            <OrderList
-              orders={cartItems}
-              language={language}
-              variant="test"
-              showPrice
-            />
+            <OrderList orders={cartItems} language={language} />
 
             <article className="mini-cart-price-info">
               {summary.remainingForFreeShipping > 0 && (

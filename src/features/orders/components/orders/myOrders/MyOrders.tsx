@@ -23,12 +23,7 @@ const MyOrders = ({ myOrders, onViewDetails }: MyOrdersProps) => {
             orderId={myOrder.id}
           />
 
-          <OrderList
-            orders={myOrder.orderItems}
-            language={language}
-            variant="test"
-            showPrice
-          />
+          <OrderList orders={myOrder.orderItems} language={language} />
           <MyOrderFooter
             language={language}
             estimatedDelivery={myOrder.createdAt}

@@ -82,12 +82,7 @@ const OrderConfirmationPage = () => {
                 <article className="summary-items">
                   <h2 className="order-flow-title">{language.orderedItems}</h2>
 
-                  <OrderList
-                    orders={order.orderItems}
-                    language={language}
-                    variant="test"
-                    showPrice
-                  />
+                  <OrderList orders={order.orderItems} language={language} />
                 </article>
 
                 <article className="summary-payment">

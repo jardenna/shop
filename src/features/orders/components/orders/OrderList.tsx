@@ -16,24 +16,24 @@ export interface OrderItems extends BaseOrder {
 interface OrderListProps {
   language: Record<string, string>;
   orders: OrderItems[];
-  showPrice?: boolean;
+  hidePrice?: boolean;
   variant?: string;
 }
 
 const OrderList = ({
   orders,
   language,
-  showPrice,
+  hidePrice,
   variant = '',
 }: OrderListProps) => (
-  <ul className={`order-list ${variant}`}>
+  <ul className={`order-list ${variant}-order-list`}>
     {orders.map((order) => (
       <li className="order-list-item" key={order.id}>
         <div className="order-item">
           <Img src={order.image} alt="" className="order-img" />
           <div>
             <h2 className="order-item-title">{order.productName}</h2>
-            {showPrice && (
+            {!hidePrice && (
               <ProductPrice price={order.price} discount={order.discount} />
             )}
             <div className="new-order-meta">
