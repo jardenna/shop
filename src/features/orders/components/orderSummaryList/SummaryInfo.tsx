@@ -1,5 +1,5 @@
-import { BaseOrder } from '../../../app/api/apiTypes/cartApiTypes';
-import { translateKey } from '../../../utils/utils';
+import { BaseOrder } from '../../../../app/api/apiTypes/cartApiTypes';
+import { translateKey } from '../../../../utils/utils';
 
 interface SummaryInfoProps {
   cartItem: BaseOrder;
