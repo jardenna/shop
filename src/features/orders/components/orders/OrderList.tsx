@@ -1,5 +1,6 @@
 import { BaseOrder } from '../../../../app/api/apiTypes/cartApiTypes';
 import Img from '../../../../components/Img';
+import LabelValue from '../../../../components/LabelValue';
 import { translateKey } from '../../../../utils/utils';
 
 export interface OrderItems extends BaseOrder {
@@ -23,16 +24,13 @@ const OrderList = ({ orders, language }: OrderListProps) => (
           <Img src={order.image} alt="" className="order-img" />
           <section>
             <h2 className="order-item-title">{order.productName}</h2>
-            <div className="order-info">
-              <span>
-                {language.color}: {translateKey(order.color, language)}
-              </span>
-              <span>
-                {language.size}: {order.size}
-              </span>
-              <span>
-                {language.qty}: {order.qty}
-              </span>
+            <div className="new-order-meta">
+              <LabelValue
+                label={language.color}
+                text={translateKey(order.color, language)}
+              />
+              <LabelValue label={language.size} text={order.size} />
+              <LabelValue label={language.qty} text={order.qty} />
             </div>
           </section>
         </div>
