@@ -8,7 +8,7 @@ import { translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const UpdateSubCategoryPage = () => {
-  const params = useParams();
+  const { id } = useParams();
   const { language } = useLanguage();
 
   // Redux hooks
@@ -17,7 +17,7 @@ const UpdateSubCategoryPage = () => {
     data: category,
     isLoading,
     refetch,
-  } = useGetSubCategoryByIdQuery(params.id || '');
+  } = useGetSubCategoryByIdQuery(id || '');
 
   return (
     <>
@@ -30,7 +30,7 @@ const UpdateSubCategoryPage = () => {
           <SubCategoryForm
             selectedCategory={category}
             onReset={() => refetch()}
-            id={params.id || ''}
+            id={id || ''}
             parentCategories={allCategories.categories}
             popupMessage={language.categoryUpdated}
           />

@@ -7,14 +7,14 @@ import { useGetSubCategoriesWithParentQuery } from '../../features/subCategories
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const UpdateProductPage = () => {
-  const params = useParams();
+  const { id } = useParams();
   const { language } = useLanguage();
 
   const {
     data: product,
     isLoading,
     refetch,
-  } = useGetProductByIdQuery(params.id || '');
+  } = useGetProductByIdQuery(id || '');
 
   const {
     data: subCategories,
@@ -40,7 +40,7 @@ const UpdateProductPage = () => {
           <ProductForm
             selectedProduct={product}
             images={product.images}
-            id={params.id || null}
+            id={id || null}
             parentCategories={subCategories}
             allowedSizes={product.subCategory.allowedSizes}
             onReset={handleReset}

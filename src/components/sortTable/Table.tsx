@@ -37,6 +37,8 @@ type TableProps<T> = {
   values: InitialTableFilters<T>;
   className?: string;
   emptyHeaderCellText?: string;
+  skeletonCount?: number;
+  skeletonHeight?: string;
   children: (data: T[]) => ReactNode;
   onFilter: (event: ChangeInputType) => void;
   onRemoveFilterTag: (key: string, value: string) => void;
@@ -59,6 +61,8 @@ const Table = <T,>({
   initialFilters,
   values,
   onFilter,
+  skeletonHeight = '2.75',
+  skeletonCount = 8,
   onRemoveFilterTag,
 }: TableProps<T>) => {
   const { language } = useLanguage();
@@ -126,7 +130,11 @@ const Table = <T,>({
       </div>
       <div className="fixed-table">
         {isLoading ? (
-          <SkeletonList count={6} className="flex-column" height="2.75" />
+          <SkeletonList
+            count={skeletonCount}
+            className="flex-column"
+            height={skeletonHeight}
+          />
         ) : (
           <ErrorBoundary
             FallbackComponent={ErrorBoundaryFallback}

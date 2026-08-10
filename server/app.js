@@ -61,6 +61,7 @@ app.use('/api/products', productRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api/favorites', favoritesRoutes);
 app.use('/api/orders', orderRoutes);
+app.use('/api/admin/orders', orderRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/checkout', checkoutRoutes);
 

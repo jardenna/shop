@@ -33,11 +33,15 @@ export interface User {
   username: string;
 }
 
+export interface Delivery {
+  status: DeliveryStatus;
+}
+
 export interface OrderResponse extends DefaultResponseType {
   billingAddress: BaseAddress;
+  delivery: Delivery;
   discount: Discount;
   id: string;
-  isDelivered: boolean;
   orderItems: Order[];
   payment: Payment;
   shippingAddress: BaseAddress;

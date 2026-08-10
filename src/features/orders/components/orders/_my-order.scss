@@ -1,6 +1,6 @@
 @use '../../../../scss/globals' as *;
 
-.my-orders {
+.orders {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -32,7 +32,7 @@
     max-width: rem(150px);
   }
 
-  .my-order-card {
+  .order-cart {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -41,37 +41,31 @@
   }
 }
 
-.my-order-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  border-block: $border;
-  padding-block: 20px;
-
-  .my-order-list-item {
+.order-list {
+  .order-list-item {
     display: flex;
     flex-direction: column;
     gap: 12px;
   }
 
-  .my-order-item {
+  .order-item {
     display: flex;
     gap: 12px;
     align-items: center;
   }
 
-  .my-order-img {
+  .order-img {
     width: rem(80px);
     height: rem(100px);
   }
 
-  .my-order-info {
+  .order-info {
     display: flex;
     gap: 8px;
     align-items: center;
   }
 
-  .my-order-item-title {
+  .order-item-title {
     font-family: $font-primary-semibold;
     font-size: $font-medium;
   }

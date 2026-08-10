@@ -2,6 +2,7 @@ import express from 'express';
 import {
   createOrder,
   deliverOrder,
+  getAdminOrderById,
   getAllOrders,
   getOrderById,
   getUserOrders,
@@ -23,6 +24,10 @@ router
   .get(filterOrdersMiddleware, authenticate, authorizeEmployee, getAllOrders);
 
 router.route('/me').get(languageMiddleware, authenticate, getUserOrders);
+router
+  .route('/:id')
+  .get(languageMiddleware, authenticate, authorizeEmployee, getAdminOrderById);
+
 router.route('/:id').get(languageMiddleware, authenticate, getOrderById);
 router.route('/:id/pay').put(languageMiddleware, authenticate, payOrder);
 router

@@ -137,9 +137,6 @@ const createOrder = asyncHandler(async (req, res) => {
     user: req.user._id,
     orderItems: createdOrders,
     payment: paymentData,
-    delivery: {
-      status: DELIVERY_STATUS.PROCESSING,
-    },
     shippingAddress,
     billingAddress,
     summary: {
@@ -233,6 +230,12 @@ const getOrderById = asyncHandler(async (req, res) => {
     select: '_id username',
   });
 
+  if (!order) {
+    return res
+      .status(404)
+      .json({ success: false, message: t('orderNotFound', req.lang) });
+  }
+
   const orderBelongsToUser =
     order.user._id.toString() === req.user._id.toString();
 
@@ -242,6 +245,19 @@ const getOrderById = asyncHandler(async (req, res) => {
       message: t('orderNotFound', req.lang),
     });
   }
+
+  res.status(200).json(order);
+});
+
+// @desc    Get admin order by ID
+// @route   GET /api/admin/orders/:id
+// @method  GET
+// @access  Private for admin and employees
+const getAdminOrderById = asyncHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id).populate({
+    path: 'user',
+    select: '_id username',
+  });
 
   if (!order) {
     return res
@@ -408,6 +424,7 @@ const deliverOrder = asyncHandler(async (req, res) => {
 export {
   createOrder,
   deliverOrder,
+  getAdminOrderById,
   getAllOrders,
   getOrderById,
   getUserOrders,

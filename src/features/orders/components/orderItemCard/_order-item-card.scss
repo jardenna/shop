@@ -5,11 +5,6 @@
   display: flex;
   gap: 16px;
 
-  .order-item-img {
-    max-width: rem(104px);
-    height: rem(164px);
-  }
-
   .order-item-title {
     text-transform: uppercase;
     font-size: rem(16px);
@@ -26,6 +21,11 @@
     flex-direction: column;
     gap: 4px;
   }
+}
+
+.order-item-img {
+  max-width: rem(104px);
+  height: rem(164px);
 }
 
 .order-list-item {

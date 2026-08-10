@@ -3,6 +3,7 @@ enum AdminPath {
   AdminCategories = '/dashboard/categories',
   AdminCategoryCreate = '/dashboard/categories/create',
   AdminCategoryUpdate = '/dashboard/categories/update',
+  AdminOrderById = '/dashboard/admin/orders/',
   AdminOrders = '/dashboard/orders',
   AdminProductCreate = '/dashboard/products/create',
   AdminProducts = '/dashboard/products',

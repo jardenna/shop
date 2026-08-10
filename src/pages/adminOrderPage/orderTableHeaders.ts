@@ -3,7 +3,7 @@ import { Column } from '../../components/sortTable/Table';
 
 export const tableHeaders: Column<OrderItems>[] = [
   {
-    key: 'id',
+    key: 'orderId',
     label: 'order',
     name: 'id',
     tableFilterType: 'text',
@@ -44,4 +44,5 @@ export const tableHeaders: Column<OrderItems>[] = [
     name: 'deliveryStatus',
     tableFilterType: 'radio',
   },
+  { key: 'id', label: '', name: '' },
 ];

@@ -91,50 +91,48 @@ const AdminOrderPage = () => {
       variant="x-large"
       scrollToRef={scrollToRef}
     >
-      {allOrders && (
-        <Table
-          onRemoveFilterTag={onRemoveFilterTag}
-          values={filterParams}
-          onFilter={setFilterParams}
-          initialFilters={initialFilters}
-          onReset={() => refetch()}
-          data={allOrders.orders}
-          columns={tableHeaders}
-          tableCaption={language.categoryList}
-          isLoading={isLoading}
-          emptyHeaderCellText={language.updateCategory}
-          onSort={onSort}
-          sortField={sortField}
-          sortOrder={sortOrder}
-        >
-          {(data) =>
-            data.map(
-              ({
-                id,
-                createdAt,
-                customer,
-                deliveryStatus,
-                paymentMethod,
-                paymentStatus,
-                totalPrice,
-              }) => (
-                <OrderTableRow
-                  key={id}
-                  id={id}
-                  customer={customer}
-                  deliveryStatus={deliveryStatus}
-                  paymentMethod={paymentMethod}
-                  paymentStatus={paymentStatus}
-                  totalPrice={totalPrice}
-                  createdAt={createdAt}
-                  linkText={language.update}
-                  language={language}
-                />
-              ),
-            )
-          }
-        </Table>
-      )}{' '}
+      <Table
+        onRemoveFilterTag={onRemoveFilterTag}
+        values={filterParams}
+        onFilter={setFilterParams}
+        initialFilters={initialFilters}
+        onReset={() => refetch()}
+        data={allOrders?.orders ?? []}
+        columns={tableHeaders}
+        tableCaption={language.orderList}
+        isLoading={isLoading}
+        emptyHeaderCellText={language.orderActions}
+        onSort={onSort}
+        sortField={sortField}
+        sortOrder={sortOrder}
+      >
+        {(data) =>
+          data.map(
+            ({
+              id,
+              createdAt,
+              customer,
+              deliveryStatus,
+              paymentMethod,
+              paymentStatus,
+              totalPrice,
+            }) => (
+              <OrderTableRow
+                key={id}
+                id={id}
+                customer={customer}
+                deliveryStatus={deliveryStatus}
+                paymentMethod={paymentMethod}
+                paymentStatus={paymentStatus}
+                totalPrice={totalPrice}
+                createdAt={createdAt}
+                language={language}
+              />
+            ),
+          )
+        }
+      </Table>
+
       <Pagination
         totalBtns={totalBtns}
         page={page}

@@ -2,7 +2,7 @@ import { MyOrdersResponse } from '../../../../app/api/apiTypes/orderApiTypes';
 import { useLanguage } from '../../../language/useLanguage';
 import MyOrderFooter from './MyOrderFooter';
 import MyOrderHeader from './MyOrderHeader';
-import MyOrderList from './MyOrderList';
+import OrderList from './OrderList';
 import './_my-order.scss';
 
 interface MyOrdersProps {
@@ -14,15 +14,16 @@ const MyOrders = ({ myOrders, onViewDetails }: MyOrdersProps) => {
   const { language } = useLanguage();
 
   return (
-    <section className="my-orders">
+    <section className="orders">
       {myOrders.map((myOrder) => (
-        <article key={myOrder.id} className="my-order-card">
+        <article key={myOrder.id} className="order-cart">
           <MyOrderHeader
             language={language}
             totalPrice={myOrder.summary.totalPrice}
             orderId={myOrder.id}
           />
-          <MyOrderList orders={myOrder.orderItems} language={language} />
+
+          <OrderList orders={myOrder.orderItems} language={language} />
           <MyOrderFooter
             language={language}
             estimatedDelivery={myOrder.createdAt}

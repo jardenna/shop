@@ -3,7 +3,9 @@ import { DeliveryStatusFilterValues } from '../../app/api/apiTypes/orderApiTypes
 import { PaymentMethods } from '../../app/api/apiTypes/paymentApiTypes';
 import Badge from '../../components/badge/Badge';
 import DateDisplay from '../../components/datePicker/DateDisplay';
+import MoreLink from '../../components/MoreLink';
 import ProductPrice from '../../features/shop/components/productPrice/ProductPrice';
+import { AdminPath } from '../../layout/nav/enums';
 
 interface OrderTableRowProps {
   createdAt: Date;
@@ -11,7 +13,6 @@ interface OrderTableRowProps {
   deliveryStatus: DeliveryStatusFilterValues;
   id: string;
   language: Record<string, string>;
-  linkText: string;
   paymentMethod: PaymentMethods;
   paymentStatus: string;
   totalPrice: number;
@@ -25,7 +26,6 @@ const OrderTableRow = ({
   totalPrice,
   createdAt,
   id,
-  linkText,
   language,
 }: OrderTableRowProps) => (
   <tr>
@@ -49,7 +49,13 @@ const OrderTableRow = ({
     <td>
       <Badge badgeText={language[deliveryStatus]} className={deliveryStatus} />
     </td>
-    <td>{linkText}</td>
+    <td>
+      <MoreLink
+        linkText={language.updateOrder}
+        linkTo={`${AdminPath.AdminOrderById}/${id}`}
+      />
+    </td>
   </tr>
 );
+
 export default OrderTableRow;
