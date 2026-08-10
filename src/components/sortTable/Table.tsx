@@ -29,7 +29,9 @@ export type Column<T> = {
 type TableProps<T> = {
   columns: Column<T>[];
   data: T[];
+  error: any;
   initialFilters: InitialTableFilters<T>;
+  isError: boolean;
   isLoading: boolean;
   sortField: keyof T;
   sortOrder: SortOrder;
@@ -54,6 +56,8 @@ const Table = <T,>({
   isLoading,
   emptyHeaderCellText,
   onReset,
+  isError,
+  error,
   className,
   onSort,
   sortField,
@@ -104,6 +108,18 @@ const Table = <T,>({
     sortOrder !== 'asc' ? language.descending : language.ascending;
 
   const tagList = buildFilterTags(columns, values);
+
+  if (isError) {
+    return (
+      <ErrorBoundaryFallback
+        error={error}
+        btnLabel={language.viewMyOrders}
+        resetErrorBoundary={() => {
+          onReset();
+        }}
+      />
+    );
+  }
 
   return (
     <>

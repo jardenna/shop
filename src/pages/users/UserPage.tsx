@@ -1,6 +1,5 @@
 import { Roles } from '../../app/api/apiTypes/adminApiTypes';
 import DeleteItem from '../../components/deleteItem/DeleteItem';
-import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import Table from '../../components/sortTable/Table';
 import { createInitialFilters } from '../../components/sortTable/tableFilters/tableFiltersUtils';
@@ -111,18 +110,6 @@ const UserPage = () => {
     }
   }
 
-  if (isError) {
-    return (
-      <ErrorBoundaryFallback
-        error={error}
-        btnLabel={language.viewMyOrders}
-        resetErrorBoundary={() => {
-          refetch();
-        }}
-      />
-    );
-  }
-
   return (
     <AdminPageContainer
       heading={language.users}
@@ -131,6 +118,8 @@ const UserPage = () => {
       variant="medium"
     >
       <Table
+        isError={isError}
+        error={error}
         values={filterParams}
         onRemoveFilterTag={onRemoveFilterTag}
         onFilter={setFilterParams}

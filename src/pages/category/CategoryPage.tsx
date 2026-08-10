@@ -41,6 +41,8 @@ const CategoryPage = () => {
     data: allCategories,
     isLoading,
     refetch,
+    isError,
+    error,
   } = useGetAllCategoriesWithParamsQuery(
     {
       sortOrder,
@@ -64,6 +66,8 @@ const CategoryPage = () => {
     >
       <Table
         onRemoveFilterTag={onRemoveFilterTag}
+        isError={isError}
+        error={error}
         values={filterParams}
         onFilter={setFilterParams}
         initialFilters={initialFilters}

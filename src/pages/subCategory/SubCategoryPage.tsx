@@ -36,6 +36,8 @@ const SubCategoryPage = () => {
     data: allSubcategories,
     isLoading,
     refetch,
+    isError,
+    error,
   } = useGetAllSubCategoriesQuery(
     {
       sortOrder,
@@ -58,6 +60,8 @@ const SubCategoryPage = () => {
       variant="medium"
     >
       <Table
+        isError={isError}
+        error={error}
         values={filterParams}
         onRemoveFilterTag={onRemoveFilterTag}
         onFilter={setFilterParams}

@@ -41,6 +41,8 @@ const AdminOrderPage = () => {
     data: allOrders,
     isLoading,
     refetch,
+    isError,
+    error,
   } = useGetAllAdminOrdersQuery({
     ordersPerPage: itemsPerPage,
     page: page.toString(),
@@ -94,6 +96,8 @@ const AdminOrderPage = () => {
       <Table
         onRemoveFilterTag={onRemoveFilterTag}
         values={filterParams}
+        isError={isError}
+        error={error}
         onFilter={setFilterParams}
         initialFilters={initialFilters}
         onReset={() => refetch()}

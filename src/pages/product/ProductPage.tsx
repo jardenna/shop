@@ -73,6 +73,8 @@ const ProductPage = () => {
     data: allProducts,
     isLoading,
     refetch,
+    isError,
+    error,
   } = useGetAllProductsQuery(
     {
       productsPerPage: itemsPerPage,
@@ -155,6 +157,8 @@ const ProductPage = () => {
     >
       <Table
         values={filterParams}
+        isError={isError}
+        error={error}
         onFilter={setFilterParams}
         initialFilters={initialFilters}
         onReset={() => refetch()}
