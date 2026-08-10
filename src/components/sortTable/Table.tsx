@@ -114,9 +114,7 @@ const Table = <T,>({
       <ErrorBoundaryFallback
         error={error}
         btnLabel={language.viewMyOrders}
-        resetErrorBoundary={() => {
-          onReset();
-        }}
+        resetErrorBoundary={onReset}
       />
     );
   }
@@ -154,7 +152,7 @@ const Table = <T,>({
         ) : (
           <ErrorBoundary
             FallbackComponent={ErrorBoundaryFallback}
-            onReset={() => onReset}
+            onReset={onReset}
           >
             <table className={className}>
               <VisuallyHidden as="caption">{tableCaption}</VisuallyHidden>
