@@ -1,39 +1,5 @@
 @use '../../../../scss/globals' as *;
 
-.new-order-meta {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: max-content;
-  gap: 8px;
-
-  .order-img {
-    width: rem(80px);
-    height: rem(100px);
-  }
-
-  &.test {
-    grid-auto-flow: row;
-    gap: 4px;
-
-    .order-img {
-      width: rem(104px);
-      height: rem(164px);
-    }
-
-    .label-value {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-auto-columns: max-content;
-      gap: 30px;
-    }
-  }
-}
-
-.label-value {
-  display: flex;
-  gap: 4px;
-}
-
 .orders {
   display: flex;
   flex-direction: column;
@@ -76,6 +42,49 @@
 }
 
 .order-list {
+  .order-img {
+    width: rem(80px);
+    height: rem(100px);
+  }
+
+  .label-value {
+    display: flex;
+    gap: 4px;
+  }
+
+  .new-order-meta {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  &.test {
+    .order-img {
+      width: rem(120px);
+      height: rem(132px);
+    }
+
+    .product-price {
+      justify-content: start;
+      font-size: $font-medium;
+    }
+
+    .label-value {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-auto-columns: max-content;
+      gap: 30px;
+    }
+
+    .new-order-meta {
+      margin-top: 16px;
+      grid-auto-flow: row;
+      gap: 4px;
+    }
+  }
+
   .order-list-item {
     display: flex;
     flex-direction: column;
@@ -88,11 +97,6 @@
     align-items: center;
   }
 
-  .order-img {
-    width: rem(80px);
-    height: rem(100px);
-  }
-
   .order-info {
     display: flex;
     gap: 8px;
@@ -100,6 +104,7 @@
   }
 
   .order-item-title {
+    text-transform: uppercase;
     font-family: $font-primary-semibold;
     font-size: $font-medium;
   }
