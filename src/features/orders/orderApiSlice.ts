@@ -1,14 +1,10 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import {
-  AdminOrderParams,
-  AdminOrderResponse,
-} from '../../app/api/apiTypes/adminApiTypes';
-import {
   CreateOrderRequest,
   MyOrdersResponse,
   OrderResponse,
 } from '../../app/api/apiTypes/orderApiTypes';
-import { adminOrdersUrl, ordersUrl, userOrdersUrl } from '../../app/endpoints';
+import { ordersUrl, userOrdersUrl } from '../../app/endpoints';
 
 export const orderApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -33,15 +29,6 @@ export const orderApiSlice = apiSlice.injectEndpoints({
     getOrderById: builder.query<OrderResponse, string>({
       query: (id) => `${ordersUrl}/${id}`,
     }),
-    getAdminOrderById: builder.query<OrderResponse, string>({
-      query: (id) => `${adminOrdersUrl}${id}`,
-    }),
-    getAllOrders: builder.query<AdminOrderResponse, AdminOrderParams>({
-      query: (params) => ({
-        url: adminOrdersUrl,
-        params,
-      }),
-    }),
   }),
 });
 
@@ -50,6 +37,4 @@ export const {
   useGetUserOrderQuery,
   usePayOrderMutation,
   useGetOrderByIdQuery,
-  useGetAllOrdersQuery,
-  useGetAdminOrderByIdQuery,
 } = orderApiSlice;

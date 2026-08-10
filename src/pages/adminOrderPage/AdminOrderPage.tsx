@@ -4,7 +4,7 @@ import Pagination from '../../components/pagination/Pagination';
 import Table from '../../components/sortTable/Table';
 import { createInitialFilters } from '../../components/sortTable/tableFilters/tableFiltersUtils';
 import { useLanguage } from '../../features/language/useLanguage';
-import { useGetAllOrdersQuery } from '../../features/orders/orderApiSlice';
+import { useGetAllAdminOrdersQuery } from '../../features/orders/AdminOrderApiSlice';
 import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
@@ -41,7 +41,7 @@ const AdminOrderPage = () => {
     data: allOrders,
     isLoading,
     refetch,
-  } = useGetAllOrdersQuery({
+  } = useGetAllAdminOrdersQuery({
     ordersPerPage: itemsPerPage,
     page: page.toString(),
     sortField,

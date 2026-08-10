@@ -5,11 +5,11 @@ import { useLanguage } from '../../features/language/useLanguage';
 import ConfirmationDetails from '../../features/orders/components/confirmation/ConfirmationDetails';
 import OrderAddressList from '../../features/orders/components/OrderAddressList';
 import OrderList from '../../features/orders/components/orders/OrderList';
-import { useGetAdminOrderByIdQuery } from '../../features/orders/orderApiSlice';
 import { createOrderAddressList } from '../../features/orders/utils/createOrderAddressList';
 import { orderTrackingList } from '../../features/orders/utils/createTrackingList';
 import { AdminPath } from '../../layout/nav/enums';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
+import { useGetAdminOrderByIdQuery } from '../../features/orders/AdminOrderApiSlice';
 
 const AdminOrderDetailsPage = () => {
   const { id } = useParams();
