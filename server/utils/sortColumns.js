@@ -1,9 +1,13 @@
 const getNestedValue = (object, path) =>
   path
-    .split('.')
+    ?.split('.')
     .reduce((value, key) => (value == null ? undefined : value[key]), object);
 
 export const sortColumns = ({ collection, sortField, sortOrder, language }) => {
+  if (!sortField) {
+    return collection;
+  }
+
   return [...collection].sort((firstItem, secondItem) => {
     let firstValue = getNestedValue(firstItem, sortField);
     let secondValue = getNestedValue(secondItem, sortField);
