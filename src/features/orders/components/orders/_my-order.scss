@@ -1,5 +1,15 @@
 @use '../../../../scss/globals' as *;
 
+.new-order-meta {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  gap: 4px;
+
+  &.test {
+    grid-template-columns: repeat(3, max-content);
+  }
+}
+
 .orders {
   display: flex;
   flex-direction: column;
