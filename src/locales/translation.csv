@@ -18,6 +18,7 @@ addressCreated;Address was created;Adresse blev tilføjet
 addressDeleted;Address deleted;Addresse blev slettet
 addressDelivery;Delivery address;Leveringsadresse
 addressdeliveryAndBilling;Delivery & billing address;Leverings- & faktureringsadresse
+serverError;Server error. Please try again later.;Der opstod en fejl. Prøv igen senere.
 addresses;Addresses;Adresser
 addressNotFound;The selected address could not be found.;Den valgte adresse blev ikke fundet.
 addressRequiredToPlaceOrder;Create an address to complete your order.;Opret en adresse for at gennemføre din ordre.

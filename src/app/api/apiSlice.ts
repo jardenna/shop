@@ -1,4 +1,10 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import {
+  BaseQueryFn,
+  createApi,
+  FetchArgs,
+  fetchBaseQuery,
+  FetchBaseQueryError,
+} from '@reduxjs/toolkit/query/react';
 
 export enum TagTypesEnum {
   Address = 'Address',
@@ -24,8 +30,29 @@ const baseQuery = fetchBaseQuery({
   },
 });
 
+const baseQueryWithErrorHandling: BaseQueryFn<
+  string | FetchArgs,
+  unknown,
+  FetchBaseQueryError
+> = async (args, api, extraOptions) => {
+  const result = await baseQuery(args, api, extraOptions);
+
+  if (result.error?.status === 'PARSING_ERROR') {
+    const fetchError: FetchBaseQueryError = {
+      status: 'FETCH_ERROR',
+      error: 'Request failed',
+    };
+
+    return {
+      error: fetchError,
+    };
+  }
+
+  return result;
+};
+
 const apiSlice = createApi({
-  baseQuery,
+  baseQuery: baseQueryWithErrorHandling,
   tagTypes: [
     TagTypesEnum.Users,
     TagTypesEnum.Auth,
