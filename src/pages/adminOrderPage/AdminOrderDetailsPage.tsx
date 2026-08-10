@@ -2,6 +2,7 @@ import { useParams } from 'react-router';
 import StatusTracker from '../../components/statusTracker/StatusTracker';
 import SummaryList from '../../features/cart/components/SummaryList';
 import { useLanguage } from '../../features/language/useLanguage';
+import ConfirmationDetails from '../../features/orders/components/confirmation/ConfirmationDetails';
 import OrderAddressList from '../../features/orders/components/OrderAddressList';
 import OrderList from '../../features/orders/components/orders/OrderList';
 import { useGetAdminOrderByIdQuery } from '../../features/orders/orderApiSlice';
@@ -42,7 +43,15 @@ const AdminOrderDetailsPage = () => {
             promoDiscount={order.discount}
           />
 
-          <OrderAddressList addresses={addressList} refetch={refetch} />
+          <section className="confirmation-info-container">
+            <ConfirmationDetails
+              createdAt={order.createdAt}
+              id={order.id}
+              method={order.payment.method}
+            />
+
+            <OrderAddressList addresses={addressList} refetch={refetch} />
+          </section>
         </article>
       )}
     </AdminPageContainer>
