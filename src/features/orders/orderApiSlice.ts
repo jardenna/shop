@@ -38,7 +38,7 @@ export const orderApiSlice = apiSlice.injectEndpoints({
     }),
     getAllOrders: builder.query<AdminOrderResponse, AdminOrderParams>({
       query: (params) => ({
-        url: ordersUrl,
+        url: adminOrdersUrl,
         params,
       }),
     }),
