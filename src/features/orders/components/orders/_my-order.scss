@@ -1,5 +1,18 @@
 @use '../../../../scss/globals' as *;
 
+.new-order-meta {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.label-value {
+  display: flex;
+  gap: 4px;
+}
+
 .orders {
   display: flex;
   flex-direction: column;
@@ -45,19 +58,6 @@
   .order-img {
     width: rem(80px);
     height: rem(100px);
-  }
-
-  .label-value {
-    display: flex;
-    gap: 4px;
-  }
-
-  .new-order-meta {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: max-content;
-    gap: 8px;
-    margin-top: 4px;
   }
 
   &.test {

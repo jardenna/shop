@@ -1,11 +1,5 @@
 @use '../../../../scss/globals' as *;
 
-.order-summary {
-  .summary-title {
-    margin-bottom: 12px;
-  }
-}
-
 .order-summary-list {
   display: flex;
   gap: 8px;
@@ -19,10 +13,5 @@
   .summary-img {
     width: rem(68px);
     height: rem(100px);
-  }
-
-  .summary {
-    display: flex;
-    gap: 4px;
   }
 }

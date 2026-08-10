@@ -1,4 +1,5 @@
 import { BaseOrder } from '../../../../app/api/apiTypes/cartApiTypes';
+import LabelValue from '../../../../components/LabelValue';
 import { translateKey } from '../../../../utils/utils';
 
 interface SummaryInfoProps {
@@ -7,16 +8,13 @@ interface SummaryInfoProps {
 }
 
 const SummaryInfo = ({ cartItem, language }: SummaryInfoProps) => (
-  <div className="summary">
-    <span>
-      {language.qty} {cartItem.qty}
-    </span>
-    <span aria-hidden>/</span>
-    <span>{translateKey(cartItem.color, language)}</span>
-    <span aria-hidden>/</span>
-    <span>
-      {language.size} {cartItem.size}
-    </span>
+  <div className="new-order-meta">
+    <LabelValue
+      label={language.color}
+      text={translateKey(cartItem.color, language)}
+    />
+    <LabelValue label={language.size} text={cartItem.size} />
+    <LabelValue label={language.qty} text={cartItem.qty} />
   </div>
 );
 
