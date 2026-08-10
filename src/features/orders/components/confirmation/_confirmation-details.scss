@@ -77,6 +77,10 @@
     display: flex;
     gap: 20px;
 
+    @include max-size($medium) {
+      flex-direction: column;
+    }
+
     .text-uppercase {
       font-family: $font-primary-semibold;
     }
