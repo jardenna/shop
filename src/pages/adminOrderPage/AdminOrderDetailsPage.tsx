@@ -1,4 +1,5 @@
 import { useParams } from 'react-router';
+import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import StatusTracker from '../../components/statusTracker/StatusTracker';
 import SummaryList from '../../features/cart/components/SummaryList';
 import { useLanguage } from '../../features/language/useLanguage';
@@ -14,7 +15,12 @@ import AdminPageContainer from '../pageContainer/AdminPageContainer';
 const AdminOrderDetailsPage = () => {
   const { id } = useParams();
   const { language } = useLanguage();
-  const { data: order, refetch } = useGetAdminOrderByIdQuery(id ?? '');
+  const {
+    data: order,
+    refetch,
+    error,
+    isError,
+  } = useGetAdminOrderByIdQuery(id ?? '');
 
   const status = {
     status: order?.delivery.status ?? 'created',
@@ -26,6 +32,18 @@ const AdminOrderDetailsPage = () => {
         shippingAddress: order.shippingAddress,
       })
     : [];
+
+  if (isError) {
+    return (
+      <ErrorBoundaryFallback
+        error={error}
+        btnLabel={language.viewMyOrders}
+        resetErrorBoundary={() => {
+          refetch();
+        }}
+      />
+    );
+  }
 
   return (
     <AdminPageContainer
