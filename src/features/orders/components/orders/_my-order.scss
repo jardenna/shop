@@ -6,9 +6,19 @@
   grid-auto-columns: max-content;
   gap: 8px;
 
+  .order-img {
+    width: rem(80px);
+    height: rem(100px);
+  }
+
   &.test {
     grid-auto-flow: row;
     gap: 4px;
+
+    .order-img {
+      width: rem(104px);
+      height: rem(164px);
+    }
 
     .label-value {
       display: grid;

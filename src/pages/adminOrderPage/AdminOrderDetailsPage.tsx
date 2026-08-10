@@ -38,6 +38,11 @@ const AdminOrderDetailsPage = () => {
       {order && (
         <article className="order-cart">
           <OrderList orders={order.orderItems} language={language} />
+          <OrderList
+            orders={order.orderItems}
+            language={language}
+            variant="test"
+          />
           <article className="summary-items">
             <h2 className="order-flow-title">{language.orderedItems}</h2>
             <OrderItemList orders={order.orderItems} language={language} />

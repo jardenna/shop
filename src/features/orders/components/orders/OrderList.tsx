@@ -12,17 +12,16 @@ export interface OrderItems extends BaseOrder {
 interface OrderListProps {
   language: Record<string, string>;
   orders: OrderItems[];
+  variant?: string;
 }
 
-// eslint-disable-next-line no-warning-comments
-// TODO
-const OrderList = ({ orders, language }: OrderListProps) => (
-  <ul className="order-list">
+const OrderList = ({ orders, language, variant = '' }: OrderListProps) => (
+  <ul className={`order-list ${variant}`}>
     {orders.map((order) => (
       <li className="order-list-item" key={order.id}>
         <div className="order-item">
           <Img src={order.image} alt="" className="order-img" />
-          <section>
+          <div>
             <h2 className="order-item-title">{order.productName}</h2>
             <div className="new-order-meta">
               <LabelValue
@@ -32,7 +31,7 @@ const OrderList = ({ orders, language }: OrderListProps) => (
               <LabelValue label={language.size} text={order.size} />
               <LabelValue label={language.qty} text={order.qty} />
             </div>
-          </section>
+          </div>
         </div>
       </li>
     ))}
