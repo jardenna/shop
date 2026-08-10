@@ -4,7 +4,7 @@ import Pagination from '../../components/pagination/Pagination';
 import Table from '../../components/sortTable/Table';
 import { createInitialFilters } from '../../components/sortTable/tableFilters/tableFiltersUtils';
 import { useLanguage } from '../../features/language/useLanguage';
-import { useGetAllAdminOrdersQuery } from '../../features/orders/aOrderApiSlice';
+import { useGetAllAdminOrdersQuery } from '../../features/orders/adminOrderApiSlice';
 import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';

@@ -2,7 +2,7 @@ import { useParams } from 'react-router';
 import StatusTracker from '../../components/statusTracker/StatusTracker';
 import SummaryList from '../../features/cart/components/SummaryList';
 import { useLanguage } from '../../features/language/useLanguage';
-import { useGetAdminOrderByIdQuery } from '../../features/orders/aOrderApiSlice';
+import { useGetAdminOrderByIdQuery } from '../../features/orders/adminOrderApiSlice';
 import ConfirmationDetails from '../../features/orders/components/confirmation/ConfirmationDetails';
 import OrderAddressList from '../../features/orders/components/OrderAddressList';
 import OrderList from '../../features/orders/components/orders/OrderList';
