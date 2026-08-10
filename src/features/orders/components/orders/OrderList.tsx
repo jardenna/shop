@@ -3,6 +3,7 @@ import Img from '../../../../components/Img';
 import LabelValue from '../../../../components/LabelValue';
 import { translateKey } from '../../../../utils/utils';
 import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
+import './_order-list.scss';
 
 export interface OrderItems extends BaseOrder {
   discount: number;

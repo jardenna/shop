@@ -39,12 +39,6 @@ const AdminOrderDetailsPage = () => {
           <article className="summary-items">
             <h2 className="order-flow-title">{language.orderedItems}</h2>
             <OrderList orders={order.orderItems} language={language} />
-            <OrderList
-              orders={order.orderItems}
-              language={language}
-              variant="test"
-              showPrice
-            />
           </article>
           <article className="summary-payment">
             <h2 className="order-flow-title">{language.priceOverview}</h2>

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router';
 import { useLanguage } from '../features/language/useLanguage';
-import MyOrders from '../features/orders/components/orders/MyOrders';
+import MyOrders from '../features/orders/components/orders/myOrders/MyOrders';
 import { useGetUserOrderQuery } from '../features/orders/orderApiSlice';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import { ShopPath } from '../layout/nav/enums';

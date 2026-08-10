@@ -1,0 +1,40 @@
+.orders {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .my-order-header,
+  .my-order-footer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .my-order-footer {
+    font-size: $font-medium;
+    align-items: center;
+  }
+
+  .my-order-meta {
+    font-family: $font-primary-semibold;
+  }
+
+  .badge {
+    margin-top: 6px;
+  }
+
+  .product-price {
+    font-size: $font-medium;
+  }
+
+  .btn-primary {
+    max-width: rem(150px);
+  }
+
+  .order-cart {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: $border;
+    padding: 20px;
+  }
+}

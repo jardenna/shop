@@ -1,9 +1,9 @@
-import { MyOrdersResponse } from '../../../../app/api/apiTypes/orderApiTypes';
-import { useLanguage } from '../../../language/useLanguage';
+import { MyOrdersResponse } from '../../../../../app/api/apiTypes/orderApiTypes';
+import { useLanguage } from '../../../../language/useLanguage';
+import OrderList from '../OrderList';
+import './_my-orders.scss';
 import MyOrderFooter from './MyOrderFooter';
 import MyOrderHeader from './MyOrderHeader';
-import OrderList from './OrderList';
-import './_my-order.scss';
 
 interface MyOrdersProps {
   myOrders: MyOrdersResponse[];
