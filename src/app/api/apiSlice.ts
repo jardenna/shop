@@ -1,5 +1,5 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
-import { baseQueryWithErrorHandling } from './apiBaseQuery';
+import { baseQueryWithErrorHandling } from './baseQueryWithErrorHandling';
 
 export enum TagTypesEnum {
   Address = 'Address',
