@@ -8,7 +8,7 @@ interface SummaryInfoProps {
 }
 
 const SummaryInfo = ({ cartItem, language }: SummaryInfoProps) => (
-  <div className="new-order-meta">
+  <div className="order-info-meta">
     <LabelValue
       label={language.color}
       text={translateKey(cartItem.color, language)}

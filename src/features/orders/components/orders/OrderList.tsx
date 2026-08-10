@@ -36,7 +36,7 @@ const OrderList = ({
             {!hidePrice && (
               <ProductPrice price={order.price} discount={order.discount} />
             )}
-            <div className="new-order-meta">
+            <div className="order-info-meta">
               <LabelValue
                 label={language.color}
                 text={translateKey(order.color, language)}
