@@ -4,7 +4,7 @@ import SummaryList from '../../features/cart/components/SummaryList';
 import { useLanguage } from '../../features/language/useLanguage';
 import ConfirmationDetails from '../../features/orders/components/confirmation/ConfirmationDetails';
 import OrderAddressList from '../../features/orders/components/OrderAddressList';
-import OrderList from '../../features/orders/components/orders/OrderList';
+import OrderItemList from '../../features/orders/components/orderItemCard/OrderItemList';
 import { useGetAdminOrderByIdQuery } from '../../features/orders/orderApiSlice';
 import { createOrderAddressList } from '../../features/orders/utils/createOrderAddressList';
 import { orderTrackingList } from '../../features/orders/utils/createTrackingList';
@@ -36,13 +36,19 @@ const AdminOrderDetailsPage = () => {
       <StatusTracker steps={orderTrackingList} status={status} />
       {order && (
         <article className="order-cart">
-          <OrderList orders={order.orderItems} language={language} />
-          <SummaryList
-            language={language}
-            summary={order.summary}
-            promoDiscount={order.discount}
-          />
-
+          {/* <OrderList orders={order.orderItems} language={language} /> */}
+          <article className="summary-items">
+            <h2 className="order-flow-title">{language.orderedItems}</h2>
+            <OrderItemList orders={order.orderItems} language={language} />
+          </article>
+          <article className="summary-payment">
+            <h2 className="order-flow-title">{language.priceOverview}</h2>
+            <SummaryList
+              language={language}
+              summary={order.summary}
+              promoDiscount={order.discount}
+            />
+          </article>
           <section className="confirmation-info-container">
             <ConfirmationDetails
               createdAt={order.createdAt}

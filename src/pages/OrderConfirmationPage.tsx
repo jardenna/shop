@@ -87,17 +87,13 @@ const OrderConfirmationPage = () => {
                   />
                 </article>
 
-                <article>
-                  <div className="summary-payment">
-                    <h2 className="order-flow-title">
-                      {language.priceOverview}
-                    </h2>
-                    <SummaryList
-                      language={language}
-                      summary={order.summary}
-                      promoDiscount={order.discount}
-                    />
-                  </div>
+                <article className="summary-payment">
+                  <h2 className="order-flow-title">{language.priceOverview}</h2>
+                  <SummaryList
+                    language={language}
+                    summary={order.summary}
+                    promoDiscount={order.discount}
+                  />
                 </article>
               </section>
               <section className="confirmation-info-container">
