@@ -20,15 +20,6 @@
     @include max-size($small) {
       grid-template-columns: 1fr;
     }
-
-    .order-item-img {
-      max-width: rem(88px);
-      height: rem(132px);
-    }
-
-    .product-price {
-      font-size: $font-medium;
-    }
   }
 
   .confirmation-info-container {

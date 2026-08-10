@@ -11,7 +11,6 @@ import { useAuth } from '../features/auth/hooks/useAuth';
 import { useAddToCartMutation } from '../features/cart/cartApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
 import { openMiniCart } from '../features/miniCartPopupSlice.ts';
-import OrderItemContainer from '../features/orders/components/orderItemCard/OrderItemContainer.tsx';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import ProductCard from '../features/shop/components/ProductCard';
 import CartForm, {
@@ -21,6 +20,8 @@ import { ShopPath } from '../layout/nav/enums';
 import { handleApiError } from '../utils/handleApiError';
 import './FavoritesPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
+
+import FavoritesPanelCart from '../features/favorites/components/FavoritesPanelCart.tsx';
 
 const FavoritePage = () => {
   const { language } = useLanguage();
@@ -105,7 +106,7 @@ const FavoritePage = () => {
         >
           {selectedProduct && (
             <section className="favorite-panel">
-              <OrderItemContainer product={selectedProduct} />
+              <FavoritesPanelCart product={selectedProduct} />
               <CartForm
                 displaySizeList={selectedProduct.sizes}
                 isLoading={isAddCartItemLoading}
