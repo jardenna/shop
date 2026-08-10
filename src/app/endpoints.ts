@@ -9,7 +9,6 @@ export const authEndpoints = {
   login: `${baseAuthEndpoint}/login`,
   logout: `${baseAuthEndpoint}/logout`,
   checkAuth: `${baseAuthEndpoint}/check-auth`,
-  orderById: `admin/orders/orders`,
 };
 
 export const userUrl = baseUserEndpoint;

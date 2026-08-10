@@ -22,6 +22,7 @@ const MyOrders = ({ myOrders, onViewDetails }: MyOrdersProps) => {
             totalPrice={myOrder.summary.totalPrice}
             orderId={myOrder.id}
           />
+
           <OrderList orders={myOrder.orderItems} language={language} />
           <MyOrderFooter
             language={language}
