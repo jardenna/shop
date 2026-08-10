@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import path from 'path';
 import dbConnect from './config/dbConnect.js';
 import errorHandler from './middleware/errorHandler.js';
+import adminOrderRoutes from './routes/adminOrderRoutes.js';
 import authRoutes from './routes/authRoutes.js';
 import cartRoutes from './routes/cartRoutes.js';
 import categoryRoutes from './routes/categoryRoutes.js';
@@ -61,7 +62,7 @@ app.use('/api/products', productRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api/favorites', favoritesRoutes);
 app.use('/api/orders', orderRoutes);
-app.use('/api/admin/orders', orderRoutes);
+app.use('/api/admin/orders', adminOrderRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/checkout', checkoutRoutes);
 
