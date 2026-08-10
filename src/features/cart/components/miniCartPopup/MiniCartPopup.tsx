@@ -15,7 +15,7 @@ import {
   closeMiniCart,
   selectIsMiniCartOpen,
 } from '../../../miniCartPopupSlice';
-import OrderItemList from '../../../orders/components/orderItemCard/OrderItemList';
+import OrderList from '../../../orders/components/orders/OrderList';
 import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 import { useActiveCart } from '../../useActiveCart';
 import SummaryItem from '../SummaryItem';
@@ -69,7 +69,12 @@ const MiniCartPopup = () => {
             ref={miniCartRef}
           >
             <h2 className="mini-cart-title">{language.myBag}</h2>
-            <OrderItemList orders={cartItems} language={language} />
+            <OrderList
+              orders={cartItems}
+              language={language}
+              variant="test"
+              showPrice
+            />
 
             <article className="mini-cart-price-info">
               {summary.remainingForFreeShipping > 0 && (
