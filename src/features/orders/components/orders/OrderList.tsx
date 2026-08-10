@@ -1,40 +1,50 @@
 import { BaseOrder } from '../../../../app/api/apiTypes/cartApiTypes';
 import Img from '../../../../components/Img';
+import LabelValue from '../../../../components/LabelValue';
 import { translateKey } from '../../../../utils/utils';
+import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
+import './_order-list.scss';
 
 export interface OrderItems extends BaseOrder {
+  discount: number;
   id: string;
   image: string;
+  price: number;
   productName: string;
 }
 
 interface OrderListProps {
   language: Record<string, string>;
   orders: OrderItems[];
+  hidePrice?: boolean;
+  variant?: string;
 }
 
-// eslint-disable-next-line no-warning-comments
-// TODO
-const OrderList = ({ orders, language }: OrderListProps) => (
-  <ul className="order-list">
+const OrderList = ({
+  orders,
+  language,
+  hidePrice,
+  variant = '',
+}: OrderListProps) => (
+  <ul className={`order-list ${variant}-order-list`}>
     {orders.map((order) => (
       <li className="order-list-item" key={order.id}>
         <div className="order-item">
           <Img src={order.image} alt="" className="order-img" />
-          <section>
+          <div>
             <h2 className="order-item-title">{order.productName}</h2>
-            <div className="order-info">
-              <span>
-                {language.color}: {translateKey(order.color, language)}
-              </span>
-              <span>
-                {language.size}: {order.size}
-              </span>
-              <span>
-                {language.qty}: {order.qty}
-              </span>
+            {!hidePrice && (
+              <ProductPrice price={order.price} discount={order.discount} />
+            )}
+            <div className="new-order-meta">
+              <LabelValue
+                label={language.color}
+                text={translateKey(order.color, language)}
+              />
+              <LabelValue label={language.size} text={order.size} />
+              <LabelValue label={language.qty} text={order.qty} />
             </div>
-          </section>
+          </div>
         </div>
       </li>
     ))}

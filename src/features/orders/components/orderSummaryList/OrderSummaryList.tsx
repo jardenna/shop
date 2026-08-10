@@ -1,6 +1,6 @@
-import { CartListResponse } from '../../../app/api/apiTypes/cartApiTypes';
-import { getCartQuantity } from '../../../utils/reduceQty';
-import './_order.scss';
+import { CartListResponse } from '../../../../app/api/apiTypes/cartApiTypes';
+import { getCartQuantity } from '../../../../utils/reduceQty';
+import './_order-summary-list.scss';
 import OrderSummaryItem from './OrderSummaryItem';
 
 interface OrderSummaryListProps {

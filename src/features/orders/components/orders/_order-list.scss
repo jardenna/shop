@@ -1,0 +1,73 @@
+@use '../../../../scss/globals' as *;
+
+.label-value {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-columns: max-content;
+  gap: 30px;
+}
+
+.new-order-meta {
+  margin-top: 16px;
+  grid-auto-flow: row;
+  gap: 4px;
+}
+
+.order-list {
+  &.small-order-list {
+    .order-img {
+      width: rem(80px);
+      height: rem(100px);
+    }
+
+    .new-order-meta {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: max-content;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .label-value {
+      display: flex;
+      gap: 4px;
+    }
+  }
+
+  .order-img {
+    width: rem(120px);
+    height: rem(132px);
+  }
+
+  .product-price {
+    justify-content: start;
+    font-size: $font-medium;
+  }
+
+  .order-list-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-bottom: $border;
+    padding-bottom: 8px;
+    padding-right: 8px;
+  }
+
+  .order-item {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .order-info {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .order-item-title {
+    text-transform: uppercase;
+    font-family: $font-primary-semibold;
+    font-size: $font-medium;
+  }
+}

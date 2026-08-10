@@ -1,5 +1,5 @@
-import Button from '../../../../components/Button';
-import DateDisplay from '../../../../components/datePicker/DateDisplay';
+import Button from '../../../../../components/Button';
+import DateDisplay from '../../../../../components/datePicker/DateDisplay';
 
 interface MyOrderFooterProps {
   estimatedDelivery: Date;

@@ -1,6 +1,6 @@
-import Badge from '../../../../components/badge/Badge';
-import { formatOrderNumber } from '../../../../utils/formatOrderNo';
-import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
+import Badge from '../../../../../components/badge/Badge';
+import { formatOrderNumber } from '../../../../../utils/formatOrderNo';
+import ProductPrice from '../../../../shop/components/productPrice/ProductPrice';
 
 interface MyOrderHeaderProps {
   language: Record<string, string>;

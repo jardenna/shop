@@ -1,6 +1,6 @@
-import { Order } from '../../../app/api/apiTypes/cartApiTypes';
-import DeleteItem from '../../../components/deleteItem/DeleteItem';
-import Img from '../../../components/Img';
+import { Order } from '../../../../app/api/apiTypes/cartApiTypes';
+import DeleteItem from '../../../../components/deleteItem/DeleteItem';
+import Img from '../../../../components/Img';
 import SummaryInfo from './SummaryInfo';
 
 interface OrderSummaryItemProps {

@@ -8,7 +8,7 @@ import { useLanguage } from '../features/language/useLanguage';
 import ConfirmationDetails from '../features/orders/components/confirmation/ConfirmationDetails';
 import ConfirmationSubHeader from '../features/orders/components/confirmation/ConfirmationSubHeader';
 import OrderAddressList from '../features/orders/components/OrderAddressList';
-import OrderItemList from '../features/orders/components/orderItemCard/OrderItemList';
+import OrderList from '../features/orders/components/orders/OrderList';
 import { useGetOrderByIdQuery } from '../features/orders/orderApiSlice';
 import { createOrderAddressList } from '../features/orders/utils/createOrderAddressList';
 import { orderTrackingList } from '../features/orders/utils/createTrackingList';
@@ -81,10 +81,8 @@ const OrderConfirmationPage = () => {
               <section className="confirmation-summary">
                 <article className="summary-items">
                   <h2 className="order-flow-title">{language.orderedItems}</h2>
-                  <OrderItemList
-                    orders={order.orderItems}
-                    language={language}
-                  />
+
+                  <OrderList orders={order.orderItems} language={language} />
                 </article>
 
                 <article className="summary-payment">
