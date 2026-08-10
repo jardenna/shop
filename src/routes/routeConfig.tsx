@@ -142,7 +142,7 @@ const adminRouteList = [
     element: <AdminOrderPage />,
   },
   {
-    path: `${AdminPath.AdminOrders}/:id`,
+    path: `${AdminPath.AdminOrderById}:id`,
     element: <AdminOrderDetailsPage />,
   },
 ];
