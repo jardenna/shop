@@ -5,6 +5,7 @@ import {
   fetchBaseQuery,
   FetchBaseQueryError,
 } from '@reduxjs/toolkit/query/react';
+import { selectLanguage } from '../../features/language/languageSlice';
 
 export enum TagTypesEnum {
   Address = 'Address',
@@ -38,9 +39,12 @@ const baseQueryWithErrorHandling: BaseQueryFn<
   const result = await baseQuery(args, api, extraOptions);
 
   if (result.error?.status === 'PARSING_ERROR') {
+    const state = api.getState() as any;
+    const language = selectLanguage(state);
+
     const fetchError: FetchBaseQueryError = {
       status: 'FETCH_ERROR',
-      error: 'Request failed',
+      error: language.serverError,
     };
 
     return {
