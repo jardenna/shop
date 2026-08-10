@@ -7,6 +7,7 @@ import AboutUsPage from '../pages/AboutUsPage';
 import AddressPage from '../pages/account/AddressPage';
 import MyAccountPage from '../pages/account/MyAccountPage';
 import Dashboard from '../pages/admin/Dashboard';
+import AdminOrderDetailsPage from '../pages/adminOrderPage/AdminOrderDetailsPage';
 import AdminOrderPage from '../pages/adminOrderPage/AdminOrderPage';
 import CategoryPage from '../pages/category/CategoryPage';
 import CreateCategoryPage from '../pages/category/CreateCategoryPage';
@@ -35,7 +36,6 @@ import UpdateSubCategoryPage from '../pages/subCategory/UpdateSubCategoryPage';
 import ViewSubCategoryPage from '../pages/subCategory/ViewSubCategoryPage';
 import CreateUserPage from '../pages/users/CreateUserPage';
 import UserPage from '../pages/users/UserPage';
-import AdminOrderDetailsPage from '../pages/adminOrderPage/AdminOrderDetailsPage';
 
 const routeList = [
   {
