@@ -27,7 +27,7 @@ const ErrorContent = ({
         alt={language.errorAltText}
       />
       {errorCode && <span>{errorCode}</span>}
-      <p className="error-info">{errorText}</p>
+      <h1 className="error-info">{errorText}</h1>
 
       <Button onClick={onClick}>{btnLabel}</Button>
     </section>
