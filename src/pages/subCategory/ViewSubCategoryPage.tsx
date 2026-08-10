@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from 'react-router';
 import CategoryCard from '../../components/adminCard/CategoryCard';
+import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import SkeletonTwoCards from '../../components/skeleton/SkeletonTwoCards';
 import { useLanguage } from '../../features/language/useLanguage';
@@ -24,6 +25,8 @@ const ViewSubCategoryPage = () => {
     data: category,
     isLoading,
     refetch,
+    isError,
+    error,
   } = useGetSubCategoryByIdQuery(id || '', {
     refetchOnMountOrArgChange: true,
   });
@@ -53,6 +56,18 @@ const ViewSubCategoryPage = () => {
   };
 
   const subCategoryName = category ? language[category.translationKey] : '';
+
+  if (isError) {
+    return (
+      <ErrorBoundaryFallback
+        error={error}
+        btnLabel={language.viewMyOrders}
+        resetErrorBoundary={() => {
+          refetch();
+        }}
+      />
+    );
+  }
 
   return (
     <>

@@ -3,6 +3,7 @@ import ProductCardCenter from '../../components/adminCard/ProductCardCenter';
 import ProductCardLeft from '../../components/adminCard/ProductCardLeft';
 import CardFooter from '../../components/card/CardFooter';
 import CardRight from '../../components/card/CardRight';
+import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import SkeletonThreeCards from '../../components/skeleton/SkeletonThreeCards';
@@ -29,9 +30,23 @@ const ViewProductPage = () => {
     data: product,
     isLoading,
     refetch,
+    isError,
+    error,
   } = useGetProductByIdQuery(id || '');
 
   const [deleteProduct] = useDeleteProductMutation();
+
+  if (isError) {
+    return (
+      <ErrorBoundaryFallback
+        error={error}
+        btnLabel={language.viewMyOrders}
+        resetErrorBoundary={() => {
+          refetch();
+        }}
+      />
+    );
+  }
 
   const handleDeleteProduct = async () => {
     try {

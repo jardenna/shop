@@ -1,4 +1,5 @@
 import { useParams } from 'react-router';
+import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import SkeletonForm from '../../components/skeleton/SkeletonForm';
 import { useGetAllCategoriesQuery } from '../../features/categories/categoriyApiSlice';
 import { useLanguage } from '../../features/language/useLanguage';
@@ -17,7 +18,21 @@ const UpdateSubCategoryPage = () => {
     data: category,
     isLoading,
     refetch,
+    isError,
+    error,
   } = useGetSubCategoryByIdQuery(id || '');
+
+  if (isError) {
+    return (
+      <ErrorBoundaryFallback
+        error={error}
+        btnLabel={language.viewMyOrders}
+        resetErrorBoundary={() => {
+          refetch();
+        }}
+      />
+    );
+  }
 
   return (
     <>

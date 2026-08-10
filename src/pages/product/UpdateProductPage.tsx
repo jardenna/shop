@@ -1,4 +1,5 @@
 import { useParams } from 'react-router';
+import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import SkeletonPage from '../../components/skeleton/SkeletonPage';
 import { useLanguage } from '../../features/language/useLanguage';
 import ProductForm from '../../features/products/components/ProductForm';
@@ -14,18 +15,33 @@ const UpdateProductPage = () => {
     data: product,
     isLoading,
     refetch,
+    isError,
+    error,
   } = useGetProductByIdQuery(id || '');
 
   const {
     data: subCategories,
     refetch: refetchSubCategories,
     isLoading: isSubCategoriesLoading,
+    isError: isSubCategoriesError,
   } = useGetSubCategoriesWithParentQuery();
 
   const handleReset = () => {
     refetch(); // refetch product
     refetchSubCategories(); // refetch subcategories
   };
+
+  if (isError || isSubCategoriesError) {
+    return (
+      <ErrorBoundaryFallback
+        error={error}
+        btnLabel={language.viewMyOrders}
+        resetErrorBoundary={() => {
+          refetch();
+        }}
+      />
+    );
+  }
 
   return (
     <>

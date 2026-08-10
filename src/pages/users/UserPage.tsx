@@ -1,5 +1,6 @@
 import { Roles } from '../../app/api/apiTypes/adminApiTypes';
 import DeleteItem from '../../components/deleteItem/DeleteItem';
+import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import Table from '../../components/sortTable/Table';
 import { createInitialFilters } from '../../components/sortTable/tableFilters/tableFiltersUtils';
@@ -47,6 +48,8 @@ const UserPage = () => {
     data: allUsers,
     isLoading,
     refetch,
+    isError,
+    error,
   } = useGetAllUsersQuery({
     sortField,
     sortOrder,
@@ -106,6 +109,18 @@ const UserPage = () => {
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
     }
+  }
+
+  if (isError) {
+    return (
+      <ErrorBoundaryFallback
+        error={error}
+        btnLabel={language.viewMyOrders}
+        resetErrorBoundary={() => {
+          refetch();
+        }}
+      />
+    );
   }
 
   return (
