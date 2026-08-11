@@ -10,16 +10,21 @@
   padding-block: 20px;
   width: 100%;
 
+  h1 {
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    max-width: 310px;
+    text-wrap: pretty;
+
+    @include max-size($small) {
+      max-width: 100%;
+      text-align: center;
+    }
+  }
+
   .emoji {
     max-width: rem(152px);
-  }
-
-  h1 {
-    font-size: $font-medium;
-  }
-
-  .btn {
-    max-width: 300px;
   }
 
   .btn-secondary {
@@ -28,6 +33,28 @@
 
   .error-info {
     margin: 0;
+  }
+
+  .error-code {
+    font-family: $font-primary-semibold;
+    font-size: 9rem;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    letter-spacing: -0.1em;
+
+    @include max-size($small) {
+      &::after {
+        display: none;
+      }
+    }
+
+    &::after {
+      content: '';
+      height: 124px;
+      width: 2px;
+      background: $color-primary;
+    }
   }
 }
 
@@ -40,10 +67,6 @@
 
   .emoji {
     max-width: 100%;
-  }
-
-  h1 {
-    font-size: $font-large;
   }
 
   .error {

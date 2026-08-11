@@ -1,17 +1,22 @@
 import { useLanguage } from '../features/language/useLanguage';
 import ErrorContent from './ErrorContent';
 
-// Props are automatically injected by react-error-boundary
-type FallbackProps = {
+export interface BaseFallbackProps {
   btnLabel?: string;
+  className?: string;
+}
+
+// Props are automatically injected by react-error-boundary
+interface FallbackProps extends BaseFallbackProps {
   error?: any;
   resetErrorBoundary: () => void;
-};
+}
 
 const ErrorBoundaryFallback = ({
   resetErrorBoundary,
   error,
   btnLabel,
+  className,
 }: FallbackProps) => {
   const { language } = useLanguage();
 
@@ -21,6 +26,7 @@ const ErrorBoundaryFallback = ({
 
   return (
     <ErrorContent
+      className={className}
       onClick={resetErrorBoundary}
       errorText={errorText}
       errorCode={error.status}
