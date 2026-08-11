@@ -150,8 +150,8 @@ const CollectionPage = () => {
       <MainPageContainer heading="collection">
         <NotFoundError
           error={error}
-          btnLabel="subCategory"
-          path={ShopPath.Collection}
+          btnLabel="collection"
+          path={`/${ShopPath.Collection}`}
         />
       </MainPageContainer>
     );
