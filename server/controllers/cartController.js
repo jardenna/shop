@@ -311,6 +311,31 @@ const getCart = asyncHandler(async (req, res) => {
   });
 });
 
+// @desc    Get cart Qty
+// @route   /api/cart/qty
+// @method  Get
+// @access  Private
+const getCartQty = asyncHandler(async (req, res) => {
+  const cart = await Cart.findOne({
+    user: req.user._id,
+  }).lean();
+
+  if (!cart) {
+    return res.status(200).json({
+      cartItems: [],
+    });
+  }
+
+  const getCartQuantity = (cartItems) =>
+    cartItems.reduce((totalQty, cartItem) => totalQty + cartItem.qty, 0);
+
+  const reducedItems = getCartQuantity(cart.cartItems);
+
+  return res.status(200).json({
+    reducedItems,
+  });
+});
+
 // @desc    Get guest cart
 // @route   /api/cart/guest
 // @method  Post
@@ -529,6 +554,7 @@ export {
   deleteCart,
   deleteCartItem,
   getCart,
+  getCartQty,
   getGuestCartProducts,
   updateCart,
   updateCartQuantity,
