@@ -279,9 +279,17 @@ const getShopProducts = asyncHandler(async (req, res) => {
 
   // Category/Subcategory filters
   const categoryMatchStage = [];
+
   if (subCategoryId) {
+    if (!mongoose.isValidObjectId(subCategoryId)) {
+      return res.status(400).json({
+        success: false,
+        message: t('resourceNotFound', req.lang),
+      });
+    }
+
     categoryMatchStage.push({
-      'subCategoryData._id': new mongoose.Types.ObjectId(String(subCategoryId)),
+      'subCategoryData._id': new mongoose.Types.ObjectId(subCategoryId),
     });
   }
 

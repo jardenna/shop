@@ -4,9 +4,9 @@ import Button from './Button';
 import Picture from './Picture';
 
 interface NotFoundErrorProps {
-  btnLabel: string;
   error: any;
-  path: string;
+  btnLabel?: string;
+  path?: string;
 }
 
 const NotFoundError = ({ path, error, btnLabel }: NotFoundErrorProps) => {
@@ -32,9 +32,17 @@ const NotFoundError = ({ path, error, btnLabel }: NotFoundErrorProps) => {
       </div>
       <Button
         onClick={() => {
-          navigate(path);
+          if (path) {
+            navigate(path);
+          } else {
+            navigate(-1);
+          }
         }}
-      >{`${language.goBackTo} ${language[btnLabel]}`}</Button>
+      >
+        {btnLabel
+          ? `${language.goBackTo} ${language[btnLabel]}`
+          : language.goBack}
+      </Button>
     </section>
   );
 };

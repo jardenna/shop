@@ -27,7 +27,7 @@ import { localStorageKeys, useLocalStorage } from '../hooks/useLocalStorage';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import { useSearchParamsState } from '../hooks/useSearchParamsState';
 import MetaTags from '../layout/MetaTags';
-import { LinkText, ShopPath } from '../layout/nav/enums';
+import { LinkText } from '../layout/nav/enums';
 import { IconName } from '../types/enums';
 import { Options } from '../types/types';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
@@ -148,11 +148,7 @@ const CollectionPage = () => {
   if (isError) {
     return (
       <MainPageContainer heading="collection">
-        <NotFoundError
-          error={error}
-          btnLabel="collection"
-          path={`/${ShopPath.Collection}`}
-        />
+        <NotFoundError error={error} />
       </MainPageContainer>
     );
   }
