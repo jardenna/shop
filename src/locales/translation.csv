@@ -340,6 +340,7 @@ orderConfirmationTitle;Thank you for your order;Tak for din ordre
 created;created;Oprettet
 delivered;Delivered;Leveret
 processing;In progress;Behandles
+resourceNotFound;We couldn't find what you're looking for. It may have been removed, or the link is no longer valid.;Vi kunne ikke finde det, du leder efter. Det kan være blevet fjernet, eller linket er ikke længere gyldigt.
 orderNotFound;We couldn't find the order you're looking for. It may have been removed or the link is no longer valid.;Vi kunne ikke finde den ordre, du leder efter. Den kan være blevet fjernet, eller linket er ikke længere gyldigt.
 orderMustBeShippedFirst;The order must be shipped before it can be marked as delivered.;Ordren skal være afsendt, før den kan markeres som leveret.
 orderNotPaid;Order has not been paid;Ordren er ikke betalt

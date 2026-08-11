@@ -10,13 +10,13 @@ const errorHandler = (error, req, res, next) => {
 
     if (isIdParam) {
       statusCode = 404;
-      message = t('couldNotFindInfo', req.lang);
+      message = t('resourceNotFound', req.lang);
     } else {
       console.warn(
         `[CastError] Path: ${error.path} | Value: ${error.value} | Route: ${req.originalUrl}`,
       );
       statusCode = 400;
-      message = t('couldNotFindInfo', req.lang);
+      message = t('resourceNotFound', req.lang);
     }
   }
 
