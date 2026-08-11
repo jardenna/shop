@@ -5,6 +5,7 @@ import type { BaseShopProductsParams } from '../app/api/apiTypes/shopApiTypes';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
+import NotFoundError from '../components/NotFoundError';
 import { usePaginationText } from '../components/pagination/hooks/usePaginationText';
 import { useScrollOnPagination } from '../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../components/pagination/Pagination';
@@ -81,6 +82,7 @@ const CollectionPage = () => {
     data: products,
     isLoading,
     isError,
+    error,
     refetch,
   } = useGetProductsQuery({
     productsPerPage: itemsPerPage,
@@ -146,7 +148,7 @@ const CollectionPage = () => {
   if (isError) {
     return (
       <MainPageContainer heading="collection">
-        <ErrorBoundaryFallback resetErrorBoundary={refetch} />
+        <NotFoundError error={error} />
       </MainPageContainer>
     );
   }
@@ -260,7 +262,9 @@ const CollectionPage = () => {
         </div>
         {itemCount > 0 && (
           <Pagination
+            refetch={refetch}
             totalBtns={totalBtns}
+            isError={isError}
             page={page}
             onPagination={handlePagination}
             onSelectCount={handleSelectCount}

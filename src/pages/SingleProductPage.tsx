@@ -2,6 +2,7 @@ import { useParams } from 'react-router';
 import type { AccordionList } from '../components/accordion/Accordion';
 import Accordion from '../components/accordion/Accordion';
 import ImgList from '../components/ImgList';
+import NotFoundError from '../components/NotFoundError';
 import SkeletonSinglePage from '../components/skeleton/skeletonSinglePage/SkeletonSinglePage';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useLanguage } from '../features/language/useLanguage';
@@ -29,7 +30,17 @@ const SingleProductPage = () => {
     data: product,
     isLoading,
     refetch,
+    isError,
+    error,
   } = useGetSingleProductQuery(id ?? '');
+
+  if (isError) {
+    return (
+      <div className="container">
+        <NotFoundError error={error} />
+      </div>
+    );
+  }
 
   const accordionList: AccordionList[] = [
     { title: language.description, content: <p>{product?.description}</p> },

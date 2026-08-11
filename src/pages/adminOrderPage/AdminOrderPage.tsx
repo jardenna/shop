@@ -4,10 +4,11 @@ import Pagination from '../../components/pagination/Pagination';
 import Table from '../../components/sortTable/Table';
 import { createInitialFilters } from '../../components/sortTable/tableFilters/tableFiltersUtils';
 import { useLanguage } from '../../features/language/useLanguage';
-import { useGetAllOrdersQuery } from '../../features/orders/orderApiSlice';
+import { useGetAllAdminOrdersQuery } from '../../features/orders/adminOrderApiSlice';
 import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
+import { AdminPath } from '../../layout/nav/enums';
 import { Options } from '../../types/types';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 import { tableHeaders } from './orderTableHeaders';
@@ -41,7 +42,9 @@ const AdminOrderPage = () => {
     data: allOrders,
     isLoading,
     refetch,
-  } = useGetAllOrdersQuery({
+    isError,
+    error,
+  } = useGetAllAdminOrdersQuery({
     ordersPerPage: itemsPerPage,
     page: page.toString(),
     sortField,
@@ -92,8 +95,12 @@ const AdminOrderPage = () => {
       scrollToRef={scrollToRef}
     >
       <Table
+        btnLabel="orders"
+        navigationPath={AdminPath.AdminOrders}
         onRemoveFilterTag={onRemoveFilterTag}
         values={filterParams}
+        isError={isError}
+        error={error}
         onFilter={setFilterParams}
         initialFilters={initialFilters}
         onReset={() => refetch()}
@@ -134,6 +141,8 @@ const AdminOrderPage = () => {
       </Table>
 
       <Pagination
+        isError={isError}
+        refetch={refetch}
         totalBtns={totalBtns}
         page={page}
         onPagination={handlePagination}

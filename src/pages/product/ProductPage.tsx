@@ -73,6 +73,8 @@ const ProductPage = () => {
     data: allProducts,
     isLoading,
     refetch,
+    isError,
+    error,
   } = useGetAllProductsQuery(
     {
       productsPerPage: itemsPerPage,
@@ -154,7 +156,11 @@ const ProductPage = () => {
       scrollToRef={scrollToRef}
     >
       <Table
+        btnLabel="products"
+        navigationPath={AdminPath.AdminProducts}
         values={filterParams}
+        isError={isError}
+        error={error}
         onFilter={setFilterParams}
         initialFilters={initialFilters}
         onReset={() => refetch()}
@@ -210,7 +216,10 @@ const ProductPage = () => {
           )
         }
       </Table>
+
       <Pagination
+        isError={isError}
+        refetch={refetch}
         totalBtns={totalBtns}
         page={page}
         onPagination={handlePagination}

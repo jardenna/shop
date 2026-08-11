@@ -1,9 +1,16 @@
+@use '../scss/globals' as *;
+
 .flex {
   display: flex;
   gap: 20px;
   width: 100%;
 
   &.align-items-center {
+    align-items: center;
+  }
+
+  @include max-size($small) {
+    flex-direction: column;
     align-items: center;
   }
 }

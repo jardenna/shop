@@ -1,9 +1,11 @@
 import { useParams } from 'react-router';
+import NotFoundError from '../../components/NotFoundError';
 import SkeletonPage from '../../components/skeleton/SkeletonPage';
 import { useLanguage } from '../../features/language/useLanguage';
 import ProductForm from '../../features/products/components/ProductForm';
 import { useGetProductByIdQuery } from '../../features/products/productApiSlice';
 import { useGetSubCategoriesWithParentQuery } from '../../features/subCategories/subCategoryApiSlice';
+import { AdminPath } from '../../layout/nav/enums';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const UpdateProductPage = () => {
@@ -14,18 +16,31 @@ const UpdateProductPage = () => {
     data: product,
     isLoading,
     refetch,
+    isError,
+    error,
   } = useGetProductByIdQuery(id || '');
 
   const {
     data: subCategories,
     refetch: refetchSubCategories,
     isLoading: isSubCategoriesLoading,
+    isError: isSubCategoriesError,
   } = useGetSubCategoriesWithParentQuery();
 
   const handleReset = () => {
     refetch(); // refetch product
     refetchSubCategories(); // refetch subcategories
   };
+
+  if (isError || isSubCategoriesError) {
+    return (
+      <NotFoundError
+        error={error}
+        btnLabel="products"
+        path={AdminPath.AdminProducts}
+      />
+    );
+  }
 
   return (
     <>

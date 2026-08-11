@@ -5,6 +5,7 @@ import CardFooter from '../../components/card/CardFooter';
 import CardRight from '../../components/card/CardRight';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
+import NotFoundError from '../../components/NotFoundError';
 import SkeletonThreeCards from '../../components/skeleton/SkeletonThreeCards';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
@@ -29,9 +30,21 @@ const ViewProductPage = () => {
     data: product,
     isLoading,
     refetch,
+    isError,
+    error,
   } = useGetProductByIdQuery(id || '');
 
   const [deleteProduct] = useDeleteProductMutation();
+
+  if (isError) {
+    return (
+      <NotFoundError
+        error={error}
+        btnLabel="products"
+        path={AdminPath.AdminProducts}
+      />
+    );
+  }
 
   const handleDeleteProduct = async () => {
     try {

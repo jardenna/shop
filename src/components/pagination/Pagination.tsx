@@ -1,9 +1,15 @@
+import { ErrorBoundary } from 'react-error-boundary';
+import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import PaginationNav, { type BasePaginationNav } from './PaginationNav';
 import PaginationSelect, {
   type PaginationSelectProps,
 } from './PaginationSelect';
 
-type PaginationProps = BasePaginationNav & { pageLimit?: number };
+interface PaginationProps extends BasePaginationNav {
+  isError: boolean;
+  pageLimit?: number;
+  refetch: () => void;
+}
 
 const Pagination = ({
   page,
@@ -14,23 +20,34 @@ const Pagination = ({
   optionList,
   totalCount,
   paginationMobileText,
+  isError,
+  refetch,
   pageLimit = 5,
 }: PaginationProps & PaginationSelectProps) => (
-  <section className="pagination">
-    <PaginationNav
-      totalBtns={totalBtns}
-      page={page}
-      onPagination={onPagination}
-      paginationMobileText={paginationMobileText}
-      pageLimit={pageLimit}
-    />
-    <PaginationSelect
-      optionList={optionList}
-      onSelectCount={onSelectCount}
-      defaultValue={defaultValue}
-      totalCount={totalCount}
-    />
-  </section>
+  <ErrorBoundary
+    FallbackComponent={ErrorBoundaryFallback}
+    onReset={() => {
+      refetch();
+    }}
+  >
+    {!isError && (
+      <section className="pagination">
+        <PaginationNav
+          totalBtns={totalBtns}
+          page={page}
+          onPagination={onPagination}
+          paginationMobileText={paginationMobileText}
+          pageLimit={pageLimit}
+        />
+        <PaginationSelect
+          optionList={optionList}
+          onSelectCount={onSelectCount}
+          defaultValue={defaultValue}
+          totalCount={totalCount}
+        />
+      </section>
+    )}
+  </ErrorBoundary>
 );
 
 export default Pagination;

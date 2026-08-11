@@ -1,4 +1,5 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi } from '@reduxjs/toolkit/query/react';
+import { baseQueryWithErrorHandling } from './baseQueryWithErrorHandling';
 
 export enum TagTypesEnum {
   Address = 'Address',
@@ -14,18 +15,8 @@ export enum TagTypesEnum {
   Users = 'Users',
 }
 
-const baseQuery = fetchBaseQuery({
-  baseUrl: 'http://localhost:5000/api',
-  credentials: 'include',
-  prepareHeaders: (headers) => {
-    const lang = localStorage.getItem('lang') || 'da'; // Get language from storage
-    headers.set('x-language', lang);
-    return headers;
-  },
-});
-
 const apiSlice = createApi({
-  baseQuery,
+  baseQuery: baseQueryWithErrorHandling,
   tagTypes: [
     TagTypesEnum.Users,
     TagTypesEnum.Auth,

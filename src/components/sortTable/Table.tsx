@@ -10,6 +10,7 @@ import { ChangeInputType, InputType } from '../../types/types';
 import Button from '../Button';
 import DisplayControls from '../DisplayControls';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
+import NotFoundError from '../NotFoundError';
 import SkeletonList from '../skeleton/SkeletonList';
 import TagList from '../tags/TagList';
 import VisuallyHidden from '../VisuallyHidden';
@@ -27,10 +28,14 @@ export type Column<T> = {
 };
 
 type TableProps<T> = {
+  btnLabel: string;
   columns: Column<T>[];
   data: T[];
+  error: any;
   initialFilters: InitialTableFilters<T>;
+  isError: boolean;
   isLoading: boolean;
+  navigationPath: string;
   sortField: keyof T;
   sortOrder: SortOrder;
   tableCaption: string;
@@ -54,6 +59,9 @@ const Table = <T,>({
   isLoading,
   emptyHeaderCellText,
   onReset,
+  isError,
+  btnLabel,
+  error,
   className,
   onSort,
   sortField,
@@ -64,6 +72,7 @@ const Table = <T,>({
   skeletonHeight = '2.75',
   skeletonCount = 8,
   onRemoveFilterTag,
+  navigationPath,
 }: TableProps<T>) => {
   const { language } = useLanguage();
   const { paddingBlockSmall, paddingBlockMedium, paddingBlockLarge } =
@@ -105,6 +114,12 @@ const Table = <T,>({
 
   const tagList = buildFilterTags(columns, values);
 
+  if (isError) {
+    return (
+      <NotFoundError error={error} btnLabel={btnLabel} path={navigationPath} />
+    );
+  }
+
   return (
     <>
       <div className="table-controls">
@@ -138,7 +153,7 @@ const Table = <T,>({
         ) : (
           <ErrorBoundary
             FallbackComponent={ErrorBoundaryFallback}
-            onReset={() => onReset}
+            onReset={onReset}
           >
             <table className={className}>
               <VisuallyHidden as="caption">{tableCaption}</VisuallyHidden>

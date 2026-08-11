@@ -1,9 +1,11 @@
 import { useParams } from 'react-router';
+import NotFoundError from '../../components/NotFoundError';
 import SkeletonForm from '../../components/skeleton/SkeletonForm';
 import { useGetAllCategoriesQuery } from '../../features/categories/categoriyApiSlice';
 import { useLanguage } from '../../features/language/useLanguage';
 import SubCategoryForm from '../../features/subCategories/components/SubCategoryForm';
 import { useGetSubCategoryByIdQuery } from '../../features/subCategories/subCategoryApiSlice';
+import { AdminPath } from '../../layout/nav/enums';
 import { translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
@@ -11,13 +13,24 @@ const UpdateSubCategoryPage = () => {
   const { id } = useParams();
   const { language } = useLanguage();
 
-  // Redux hooks
   const { data: allCategories } = useGetAllCategoriesQuery();
   const {
     data: category,
     isLoading,
     refetch,
+    isError,
+    error,
   } = useGetSubCategoryByIdQuery(id || '');
+
+  if (isError) {
+    return (
+      <NotFoundError
+        error={error}
+        btnLabel="subCategories"
+        path={AdminPath.AdminSubCategories}
+      />
+    );
+  }
 
   return (
     <>

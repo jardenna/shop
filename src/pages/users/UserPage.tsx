@@ -47,6 +47,8 @@ const UserPage = () => {
     data: allUsers,
     isLoading,
     refetch,
+    isError,
+    error,
   } = useGetAllUsersQuery({
     sortField,
     sortOrder,
@@ -116,6 +118,10 @@ const UserPage = () => {
       variant="medium"
     >
       <Table
+        btnLabel="users"
+        navigationPath="users"
+        isError={isError}
+        error={error}
         values={filterParams}
         onRemoveFilterTag={onRemoveFilterTag}
         onFilter={setFilterParams}

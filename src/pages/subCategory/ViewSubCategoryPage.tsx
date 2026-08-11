@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from 'react-router';
 import CategoryCard from '../../components/adminCard/CategoryCard';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
+import NotFoundError from '../../components/NotFoundError';
 import SkeletonTwoCards from '../../components/skeleton/SkeletonTwoCards';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
@@ -24,6 +25,8 @@ const ViewSubCategoryPage = () => {
     data: category,
     isLoading,
     refetch,
+    isError,
+    error,
   } = useGetSubCategoryByIdQuery(id || '', {
     refetchOnMountOrArgChange: true,
   });
@@ -53,6 +56,16 @@ const ViewSubCategoryPage = () => {
   };
 
   const subCategoryName = category ? language[category.translationKey] : '';
+
+  if (isError) {
+    return (
+      <NotFoundError
+        error={error}
+        btnLabel="subCategories"
+        path={AdminPath.AdminSubCategories}
+      />
+    );
+  }
 
   return (
     <>

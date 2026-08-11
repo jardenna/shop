@@ -1,11 +1,12 @@
 import { useParams } from 'react-router';
+import NotFoundError from '../../components/NotFoundError';
 import StatusTracker from '../../components/statusTracker/StatusTracker';
 import SummaryList from '../../features/cart/components/SummaryList';
 import { useLanguage } from '../../features/language/useLanguage';
+import { useGetAdminOrderByIdQuery } from '../../features/orders/adminOrderApiSlice';
 import ConfirmationDetails from '../../features/orders/components/confirmation/ConfirmationDetails';
 import OrderAddressList from '../../features/orders/components/OrderAddressList';
 import OrderList from '../../features/orders/components/orders/OrderList';
-import { useGetAdminOrderByIdQuery } from '../../features/orders/orderApiSlice';
 import { createOrderAddressList } from '../../features/orders/utils/createOrderAddressList';
 import { orderTrackingList } from '../../features/orders/utils/createTrackingList';
 import { AdminPath } from '../../layout/nav/enums';
@@ -14,7 +15,12 @@ import AdminPageContainer from '../pageContainer/AdminPageContainer';
 const AdminOrderDetailsPage = () => {
   const { id } = useParams();
   const { language } = useLanguage();
-  const { data: order, refetch } = useGetAdminOrderByIdQuery(id ?? '');
+  const {
+    data: order,
+    refetch,
+    error,
+    isError,
+  } = useGetAdminOrderByIdQuery(id ?? '');
 
   const status = {
     status: order?.delivery.status ?? 'created',
@@ -26,6 +32,16 @@ const AdminOrderDetailsPage = () => {
         shippingAddress: order.shippingAddress,
       })
     : [];
+
+  if (isError) {
+    return (
+      <NotFoundError
+        error={error}
+        btnLabel="orders"
+        path={AdminPath.AdminOrders}
+      />
+    );
+  }
 
   return (
     <AdminPageContainer

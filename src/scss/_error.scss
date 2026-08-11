@@ -10,12 +10,21 @@
   padding-block: 20px;
   width: 100%;
 
-  .emoji {
-    max-width: rem(152px);
+  h1 {
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    max-width: rem(548px);
+    text-wrap: pretty;
+
+    @include max-size($small) {
+      max-width: 100%;
+      text-align: center;
+    }
   }
 
-  .btn {
-    max-width: 300px;
+  .emoji {
+    max-width: rem(152px);
   }
 
   .btn-secondary {
@@ -24,6 +33,28 @@
 
   .error-info {
     margin: 0;
+  }
+
+  .error-code {
+    font-family: $font-primary-semibold;
+    font-size: 9rem;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    letter-spacing: -0.1em;
+
+    @include max-size($small) {
+      &::after {
+        display: none;
+      }
+    }
+
+    &::after {
+      content: '';
+      height: 124px;
+      width: 2px;
+      background: $color-primary;
+    }
   }
 }
 

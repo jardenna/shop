@@ -41,6 +41,8 @@ const CategoryPage = () => {
     data: allCategories,
     isLoading,
     refetch,
+    isError,
+    error,
   } = useGetAllCategoriesWithParamsQuery(
     {
       sortOrder,
@@ -63,7 +65,11 @@ const CategoryPage = () => {
       variant="medium"
     >
       <Table
+        btnLabel="categories"
+        navigationPath={AdminPath.AdminCategories}
         onRemoveFilterTag={onRemoveFilterTag}
+        isError={isError}
+        error={error}
         values={filterParams}
         onFilter={setFilterParams}
         initialFilters={initialFilters}
