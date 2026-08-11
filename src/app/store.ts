@@ -17,22 +17,33 @@ export const rtkQueryErrorLogger: Middleware =
   (next) =>
   (action) => {
     if (isRejectedWithValue(action)) {
-      if (
-        action.payload &&
-        typeof action.payload === 'object' &&
-        'error' in action.payload
-      ) {
-        const errorMessage = (action.payload as { error: string }).error;
+      const payload = action.payload as
+        | {
+            data?: {
+              message?: string;
+            };
+            status?: number;
+          }
+        | undefined;
+
+      const errorStatus = payload?.status;
+
+      if (typeof errorStatus === 'number' && errorStatus < 500) {
+        const errorMessage =
+          typeof payload?.data?.message === 'string'
+            ? payload.data.message
+            : 'An error occurred';
 
         dispatch(
           addMessagePopup({
             messagePopupType: 'error',
-            message: `Error: ${errorMessage}`,
+            message: errorMessage,
             componentType: 'notification',
           }),
         );
       }
     }
+
     return next(action);
   };
 
