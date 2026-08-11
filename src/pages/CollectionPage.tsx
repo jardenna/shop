@@ -260,7 +260,9 @@ const CollectionPage = () => {
         </div>
         {itemCount > 0 && (
           <Pagination
+            refetch={refetch}
             totalBtns={totalBtns}
+            isError={isError}
             page={page}
             onPagination={handlePagination}
             onSelectCount={handleSelectCount}
