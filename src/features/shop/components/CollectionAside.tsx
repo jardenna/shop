@@ -15,7 +15,6 @@ type CollectionAsideProps = {
 const CollectionAside = ({
   subMenu,
   category,
-
   onReset,
   language,
   isError,
