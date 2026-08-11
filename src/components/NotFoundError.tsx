@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router';
 import { useLanguage } from '../features/language/useLanguage';
 import Button from './Button';
 import Picture from './Picture';
@@ -5,13 +6,15 @@ import Picture from './Picture';
 interface NotFoundErrorProps {
   btnLabel: string;
   error: any;
-  onClick: () => void;
+  path: string;
 }
 
-const NotFoundError = ({ onClick, error, btnLabel }: NotFoundErrorProps) => {
+const NotFoundError = ({ path, error, btnLabel }: NotFoundErrorProps) => {
+  const navigate = useNavigate();
   const { language } = useLanguage();
   const errorText = error?.data?.message ?? language.somethingWentWrong;
   const src = '/images/icons/sad_smiley';
+
   return (
     <section className="error-content">
       <Picture
@@ -27,7 +30,11 @@ const NotFoundError = ({ onClick, error, btnLabel }: NotFoundErrorProps) => {
         )}
         <h1 className="error-info">{errorText}</h1>
       </div>
-      <Button onClick={onClick}>{btnLabel}</Button>
+      <Button
+        onClick={() => {
+          navigate(path);
+        }}
+      >{`${language.goBackTo} ${language[btnLabel]}`}</Button>
     </section>
   );
 };

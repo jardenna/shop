@@ -5,6 +5,7 @@ import { useLanguage } from '../../features/language/useLanguage';
 import ProductForm from '../../features/products/components/ProductForm';
 import { useGetProductByIdQuery } from '../../features/products/productApiSlice';
 import { useGetSubCategoriesWithParentQuery } from '../../features/subCategories/subCategoryApiSlice';
+import { AdminPath } from '../../layout/nav/enums';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const UpdateProductPage = () => {
@@ -35,10 +36,8 @@ const UpdateProductPage = () => {
     return (
       <NotFoundError
         error={error}
-        btnLabel={language.viewMyOrders}
-        onClick={() => {
-          refetch();
-        }}
+        btnLabel="products"
+        path={AdminPath.AdminProducts}
       />
     );
   }

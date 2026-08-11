@@ -1,6 +1,7 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
+import NotFoundError from '../components/NotFoundError';
 import SkeletonOrderConfirmationPage from '../components/skeleton/skeletonOrderConfirmationPage/SkeletonOrderConfirmationPage';
 import StatusTracker from '../components/statusTracker/StatusTracker';
 import SummaryList from '../features/cart/components/SummaryList';
@@ -12,8 +13,8 @@ import OrderList from '../features/orders/components/orders/OrderList';
 import { useGetOrderByIdQuery } from '../features/orders/orderApiSlice';
 import { createOrderAddressList } from '../features/orders/utils/createOrderAddressList';
 import { orderTrackingList } from '../features/orders/utils/createTrackingList';
+import { ShopPath } from '../layout/nav/enums';
 import MainPageContainer from './pageContainer/MainPageContainer';
-import NotFoundError from '../components/NotFoundError';
 
 const OrderConfirmationPage = () => {
   const { id } = useParams();
@@ -42,10 +43,8 @@ const OrderConfirmationPage = () => {
     return (
       <NotFoundError
         error={error}
-        btnLabel={language.viewMyOrders}
-        onClick={() => {
-          refetch();
-        }}
+        btnLabel="viewOrders"
+        path={ShopPath.MyOrder}
       />
     );
   }

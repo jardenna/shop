@@ -118,6 +118,8 @@ const UserPage = () => {
       variant="medium"
     >
       <Table
+        btnLabel="users"
+        navigationPath="users"
         isError={isError}
         error={error}
         values={filterParams}

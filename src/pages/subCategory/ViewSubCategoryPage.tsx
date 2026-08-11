@@ -61,10 +61,8 @@ const ViewSubCategoryPage = () => {
     return (
       <NotFoundError
         error={error}
-        btnLabel={language.viewMyOrders}
-        onClick={() => {
-          refetch();
-        }}
+        btnLabel="subCategories"
+        path={AdminPath.AdminSubCategories}
       />
     );
   }

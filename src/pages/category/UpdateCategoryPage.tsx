@@ -1,11 +1,12 @@
 import { useParams } from 'react-router';
+import NotFoundError from '../../components/NotFoundError';
 import SkeletonForm from '../../components/skeleton/SkeletonForm';
 import CategoryForm from '../../features/categories/CategoryForm';
 import { useGetCategoryByIdQuery } from '../../features/categories/categoriyApiSlice';
 import { useLanguage } from '../../features/language/useLanguage';
+import { AdminPath } from '../../layout/nav/enums';
 import { translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
-import NotFoundError from '../../components/NotFoundError';
 
 const UpdateCategoryPage = () => {
   const { id } = useParams();
@@ -23,10 +24,8 @@ const UpdateCategoryPage = () => {
     return (
       <NotFoundError
         error={error}
-        btnLabel={language.viewMyOrders}
-        onClick={() => {
-          refetch();
-        }}
+        btnLabel="categories"
+        path={AdminPath.AdminCategories}
       />
     );
   }

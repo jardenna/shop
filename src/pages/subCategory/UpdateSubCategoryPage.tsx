@@ -5,6 +5,7 @@ import { useGetAllCategoriesQuery } from '../../features/categories/categoriyApi
 import { useLanguage } from '../../features/language/useLanguage';
 import SubCategoryForm from '../../features/subCategories/components/SubCategoryForm';
 import { useGetSubCategoryByIdQuery } from '../../features/subCategories/subCategoryApiSlice';
+import { AdminPath } from '../../layout/nav/enums';
 import { translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
@@ -25,10 +26,8 @@ const UpdateSubCategoryPage = () => {
     return (
       <NotFoundError
         error={error}
-        btnLabel={language.viewMyOrders}
-        onClick={() => {
-          refetch();
-        }}
+        btnLabel="subCategories"
+        path={AdminPath.AdminSubCategories}
       />
     );
   }

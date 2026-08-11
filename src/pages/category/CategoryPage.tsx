@@ -65,6 +65,8 @@ const CategoryPage = () => {
       variant="medium"
     >
       <Table
+        btnLabel="categories"
+        navigationPath={AdminPath.AdminCategories}
         onRemoveFilterTag={onRemoveFilterTag}
         isError={isError}
         error={error}

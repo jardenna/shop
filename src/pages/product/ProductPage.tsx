@@ -156,6 +156,8 @@ const ProductPage = () => {
       scrollToRef={scrollToRef}
     >
       <Table
+        btnLabel="products"
+        navigationPath={AdminPath.AdminProducts}
         values={filterParams}
         isError={isError}
         error={error}

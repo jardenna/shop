@@ -37,10 +37,8 @@ const AdminOrderDetailsPage = () => {
     return (
       <NotFoundError
         error={error}
-        btnLabel={language.viewMyOrders}
-        onClick={() => {
-          refetch();
-        }}
+        btnLabel="orders"
+        path={AdminPath.AdminOrders}
       />
     );
   }

@@ -28,12 +28,14 @@ export type Column<T> = {
 };
 
 type TableProps<T> = {
+  btnLabel: string;
   columns: Column<T>[];
   data: T[];
   error: any;
   initialFilters: InitialTableFilters<T>;
   isError: boolean;
   isLoading: boolean;
+  navigationPath: string;
   sortField: keyof T;
   sortOrder: SortOrder;
   tableCaption: string;
@@ -58,6 +60,7 @@ const Table = <T,>({
   emptyHeaderCellText,
   onReset,
   isError,
+  btnLabel,
   error,
   className,
   onSort,
@@ -69,6 +72,7 @@ const Table = <T,>({
   skeletonHeight = '2.75',
   skeletonCount = 8,
   onRemoveFilterTag,
+  navigationPath,
 }: TableProps<T>) => {
   const { language } = useLanguage();
   const { paddingBlockSmall, paddingBlockMedium, paddingBlockLarge } =
@@ -112,11 +116,7 @@ const Table = <T,>({
 
   if (isError) {
     return (
-      <NotFoundError
-        error={error}
-        btnLabel={language.viewMyOrders}
-        onClick={onReset}
-      />
+      <NotFoundError error={error} btnLabel={btnLabel} path={navigationPath} />
     );
   }
 

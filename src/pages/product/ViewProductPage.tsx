@@ -40,10 +40,8 @@ const ViewProductPage = () => {
     return (
       <NotFoundError
         error={error}
-        btnLabel={language.viewMyOrders}
-        onClick={() => {
-          refetch();
-        }}
+        btnLabel="products"
+        path={AdminPath.AdminProducts}
       />
     );
   }

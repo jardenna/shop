@@ -8,6 +8,7 @@ import { useGetAllAdminOrdersQuery } from '../../features/orders/adminOrderApiSl
 import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
+import { AdminPath } from '../../layout/nav/enums';
 import { Options } from '../../types/types';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 import { tableHeaders } from './orderTableHeaders';
@@ -94,6 +95,8 @@ const AdminOrderPage = () => {
       scrollToRef={scrollToRef}
     >
       <Table
+        btnLabel="orders"
+        navigationPath={AdminPath.AdminOrders}
         onRemoveFilterTag={onRemoveFilterTag}
         values={filterParams}
         isError={isError}

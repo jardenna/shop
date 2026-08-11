@@ -60,6 +60,8 @@ const SubCategoryPage = () => {
       variant="medium"
     >
       <Table
+        btnLabel="subCategory"
+        navigationPath={AdminPath.AdminSubCategoryView}
         isError={isError}
         error={error}
         values={filterParams}
