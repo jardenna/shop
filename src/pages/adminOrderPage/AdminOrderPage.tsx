@@ -138,6 +138,8 @@ const AdminOrderPage = () => {
       </Table>
 
       <Pagination
+        isError={isError}
+        refetch={refetch}
         totalBtns={totalBtns}
         page={page}
         onPagination={handlePagination}

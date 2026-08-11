@@ -3,9 +3,9 @@ import ProductCardCenter from '../../components/adminCard/ProductCardCenter';
 import ProductCardLeft from '../../components/adminCard/ProductCardLeft';
 import CardFooter from '../../components/card/CardFooter';
 import CardRight from '../../components/card/CardRight';
-import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
+import NotFoundError from '../../components/NotFoundError';
 import SkeletonThreeCards from '../../components/skeleton/SkeletonThreeCards';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
@@ -38,10 +38,10 @@ const ViewProductPage = () => {
 
   if (isError) {
     return (
-      <ErrorBoundaryFallback
+      <NotFoundError
         error={error}
         btnLabel={language.viewMyOrders}
-        resetErrorBoundary={() => {
+        onClick={() => {
           refetch();
         }}
       />
