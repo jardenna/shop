@@ -1,5 +1,5 @@
 import { useParams } from 'react-router';
-import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
+import NotFoundError from '../../components/NotFoundError';
 import SkeletonPage from '../../components/skeleton/SkeletonPage';
 import { useLanguage } from '../../features/language/useLanguage';
 import ProductForm from '../../features/products/components/ProductForm';
@@ -33,10 +33,10 @@ const UpdateProductPage = () => {
 
   if (isError || isSubCategoriesError) {
     return (
-      <ErrorBoundaryFallback
+      <NotFoundError
         error={error}
         btnLabel={language.viewMyOrders}
-        resetErrorBoundary={() => {
+        onClick={() => {
           refetch();
         }}
       />

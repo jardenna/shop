@@ -1,5 +1,5 @@
 import { useParams } from 'react-router';
-import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
+import NotFoundError from '../../components/NotFoundError';
 import SkeletonForm from '../../components/skeleton/SkeletonForm';
 import { useGetAllCategoriesQuery } from '../../features/categories/categoriyApiSlice';
 import { useLanguage } from '../../features/language/useLanguage';
@@ -12,7 +12,6 @@ const UpdateSubCategoryPage = () => {
   const { id } = useParams();
   const { language } = useLanguage();
 
-  // Redux hooks
   const { data: allCategories } = useGetAllCategoriesQuery();
   const {
     data: category,
@@ -24,10 +23,10 @@ const UpdateSubCategoryPage = () => {
 
   if (isError) {
     return (
-      <ErrorBoundaryFallback
+      <NotFoundError
         error={error}
         btnLabel={language.viewMyOrders}
-        resetErrorBoundary={() => {
+        onClick={() => {
           refetch();
         }}
       />

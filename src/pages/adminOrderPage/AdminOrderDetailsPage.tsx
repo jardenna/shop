@@ -1,5 +1,5 @@
 import { useParams } from 'react-router';
-import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
+import NotFoundError from '../../components/NotFoundError';
 import StatusTracker from '../../components/statusTracker/StatusTracker';
 import SummaryList from '../../features/cart/components/SummaryList';
 import { useLanguage } from '../../features/language/useLanguage';
@@ -35,10 +35,10 @@ const AdminOrderDetailsPage = () => {
 
   if (isError) {
     return (
-      <ErrorBoundaryFallback
+      <NotFoundError
         error={error}
         btnLabel={language.viewMyOrders}
-        resetErrorBoundary={() => {
+        onClick={() => {
           refetch();
         }}
       />

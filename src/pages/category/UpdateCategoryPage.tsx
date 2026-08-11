@@ -1,11 +1,11 @@
 import { useParams } from 'react-router';
-import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import SkeletonForm from '../../components/skeleton/SkeletonForm';
 import CategoryForm from '../../features/categories/CategoryForm';
 import { useGetCategoryByIdQuery } from '../../features/categories/categoriyApiSlice';
 import { useLanguage } from '../../features/language/useLanguage';
 import { translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
+import NotFoundError from '../../components/NotFoundError';
 
 const UpdateCategoryPage = () => {
   const { id } = useParams();
@@ -21,10 +21,10 @@ const UpdateCategoryPage = () => {
 
   if (isError) {
     return (
-      <ErrorBoundaryFallback
+      <NotFoundError
         error={error}
         btnLabel={language.viewMyOrders}
-        resetErrorBoundary={() => {
+        onClick={() => {
           refetch();
         }}
       />

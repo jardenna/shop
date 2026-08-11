@@ -13,6 +13,7 @@ import { useGetOrderByIdQuery } from '../features/orders/orderApiSlice';
 import { createOrderAddressList } from '../features/orders/utils/createOrderAddressList';
 import { orderTrackingList } from '../features/orders/utils/createTrackingList';
 import MainPageContainer from './pageContainer/MainPageContainer';
+import NotFoundError from '../components/NotFoundError';
 
 const OrderConfirmationPage = () => {
   const { id } = useParams();
@@ -39,10 +40,10 @@ const OrderConfirmationPage = () => {
 
   if (isError) {
     return (
-      <ErrorBoundaryFallback
+      <NotFoundError
         error={error}
         btnLabel={language.viewMyOrders}
-        resetErrorBoundary={() => {
+        onClick={() => {
           refetch();
         }}
       />

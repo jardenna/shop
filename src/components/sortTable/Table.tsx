@@ -10,6 +10,7 @@ import { ChangeInputType, InputType } from '../../types/types';
 import Button from '../Button';
 import DisplayControls from '../DisplayControls';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
+import NotFoundError from '../NotFoundError';
 import SkeletonList from '../skeleton/SkeletonList';
 import TagList from '../tags/TagList';
 import VisuallyHidden from '../VisuallyHidden';
@@ -111,10 +112,10 @@ const Table = <T,>({
 
   if (isError) {
     return (
-      <ErrorBoundaryFallback
+      <NotFoundError
         error={error}
         btnLabel={language.viewMyOrders}
-        resetErrorBoundary={onReset}
+        onClick={onReset}
       />
     );
   }
