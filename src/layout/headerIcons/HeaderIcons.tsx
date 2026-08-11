@@ -36,8 +36,7 @@ const HeaderIcons = ({
 
   const totalQuantity = getCartQuantity(activeCartList);
 
-  const cartListItemText =
-    activeCartList.length === 1 ? language.item : language.items;
+  const cartListItemText = totalQuantity === 1 ? language.item : language.items;
 
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
