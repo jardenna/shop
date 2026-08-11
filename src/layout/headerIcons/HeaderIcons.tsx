@@ -4,10 +4,9 @@ import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import { useFavorites } from '../../components/favorites/useFavorites';
 import IconContent from '../../components/IconContent';
 import ModalContainer from '../../components/modal/ModalContainer';
-import { useActiveCart } from '../../features/cart/useActiveCart';
+import { useGetTotalQtyQuery } from '../../features/cart/cartApiSlice';
 import { useLanguage } from '../../features/language/useLanguage';
 import { BtnVariant, IconName, SizeVariant } from '../../types/enums';
-import { getCartQuantity } from '../../utils/reduceQty';
 import type { BaseHeaderProps } from '../header/Header';
 import { ShopPath } from '../nav/enums';
 import HeaderBadgeLinks from './HeaderBadgeLinks';
@@ -30,14 +29,11 @@ const HeaderIcons = ({
   const favoriteItemText =
     favorites && favorites.length === 1 ? language.item : language.items;
 
-  const { activeCartList } = useActiveCart({
-    currentUser,
-  });
+  const { data: qty } = useGetTotalQtyQuery();
 
-  const totalQuantity = getCartQuantity(activeCartList);
+  const totalQuantity = qty?.totalQuantity ?? 0;
 
-  const cartListItemText =
-    activeCartList.length === 1 ? language.item : language.items;
+  const cartListItemText = totalQuantity === 1 ? language.item : language.items;
 
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>

@@ -5,6 +5,7 @@ import {
   deleteCart,
   deleteCartItem,
   getCart,
+  getCartQty,
   getGuestCartProducts,
   updateCart,
   updateCartQuantity,
@@ -24,6 +25,7 @@ router
   .get(languageMiddleware, authenticate, getCart);
 
 router.route('/guest').post(languageMiddleware, getGuestCartProducts);
+router.route('/qty').get(languageMiddleware, authenticate, getCartQty);
 router.route('/:id').patch(languageMiddleware, authenticate, updateCart);
 
 router

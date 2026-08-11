@@ -94,3 +94,7 @@ export type BaseProfile = {
 export type UserProfileRequest = BaseProfile & {
   addresses?: Address[];
 };
+
+export interface QtyResponse {
+  totalQuantity: number;
+}
