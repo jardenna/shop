@@ -10,14 +10,14 @@ import { AutoComplete } from '../../../types/types';
 import { handleApiError } from '../../../utils/handleApiError';
 import { validateSignup } from '../../../utils/validation/validateCreateAccount';
 import { useLanguage } from '../../language/useLanguage';
-import AuthForm from './AuthForm';
 import { useRegisterUserMutation } from '../authApiSlice';
+import AuthForm from './AuthForm';
 
 export type CreateAccountProps = {
+  currentUser: UserResponse | null;
   navigateTo: string;
   autoComplete?: AutoComplete;
   canAssignRoles?: boolean;
-  currentUser?: UserResponse | null;
 };
 
 export type InitialState = AuthRequest & {
