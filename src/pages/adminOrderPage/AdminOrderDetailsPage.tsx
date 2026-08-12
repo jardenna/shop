@@ -2,7 +2,6 @@ import { useParams } from 'react-router';
 import { Fragment } from 'react/jsx-runtime';
 import Icon from '../../components/icons/Icon';
 import NotFoundError from '../../components/NotFoundError';
-import SkeletonProgress from '../../components/skeleton/skeletonProgress/SkeletonProgress';
 import SummaryList from '../../features/cart/components/SummaryList';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useGetAdminOrderByIdQuery } from '../../features/orders/adminOrderApiSlice';
@@ -47,8 +46,7 @@ const AdminOrderDetailsPage = () => {
       linkText={language.createNewCategory}
       linkTo={AdminPath.AdminSubCategoryCreate}
     >
-      <SkeletonProgress />
-      <ul className="progress">
+      <ul className="progress-tracker">
         {orderTrackingList.map(({ id, label, iconName }) => (
           <Fragment key={id}>
             <li className="step">
