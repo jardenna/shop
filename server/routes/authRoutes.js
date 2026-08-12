@@ -1,10 +1,10 @@
 import express from 'express';
 import {
-  createUser,
+  createNewUser,
   loginUser,
   logoutCurrentUser,
 } from '../controllers/authController.js';
-import { authenticate, authorizeAdmin } from '../middleware/authMiddleware.js';
+import { authenticate } from '../middleware/authMiddleware.js';
 import languageMiddleware from '../middleware/languageMiddleware.js';
 import { optionalAuthenticate } from '../middleware/optionalAuthenticate.js';
 
@@ -13,7 +13,7 @@ const router = express.Router();
 // @desc    Public registration
 // @route   POST /api/auth/register
 // @access  Public
-router.post('/register', languageMiddleware, createUser);
+router.post('/register', languageMiddleware, createNewUser);
 router.post('/login', languageMiddleware, loginUser);
 router.post('/logout', languageMiddleware, logoutCurrentUser);
 
@@ -24,8 +24,7 @@ router.post(
   '/admin/create-user',
   languageMiddleware,
   authenticate,
-  authorizeAdmin,
-  createUser,
+  createNewUser,
 );
 
 router.get(

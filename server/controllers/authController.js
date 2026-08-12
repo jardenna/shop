@@ -9,7 +9,7 @@ import { validateEmail, validatePassword } from '../validators/validateAuth.js';
 // @route   /api/auth/register
 // @method   POST
 // @access  Public (register) / Admin (create-user)
-const createUser = asyncHandler(async (req, res) => {
+const createNewUser = asyncHandler(async (req, res) => {
   const { username, email, password, role } = req.body;
   const currentUser = req.user;
   const isAdmin = currentUser?.isAdmin === true;
@@ -150,4 +150,4 @@ const logoutCurrentUser = asyncHandler(async (req, res) => {
   });
 });
 
-export { createUser, loginUser, logoutCurrentUser };
+export { createNewUser, loginUser, logoutCurrentUser };

@@ -113,8 +113,8 @@ const UserPage = () => {
   return (
     <AdminPageContainer
       heading={language.users}
-      linkText={isAdmin ? language.createNewUser : undefined}
-      linkTo={isAdmin ? AdminPath.AdminUserCreate : undefined}
+      linkText={language.createNewUser}
+      linkTo={AdminPath.AdminUserCreate}
       variant="medium"
     >
       <Table
@@ -149,21 +149,20 @@ const UserPage = () => {
                         text={userItem[columnKey]}
                         language={language}
                       />
-                      {!isAdmin && (
-                        <UpdateUser
-                          submitBtnLabel={language.save}
-                          isFormDirty={isFormDirty}
-                          onEditChange={handleEditChange}
-                          onOpenPopup={() => {
-                            handleShowEditInput(id, columnKey);
-                          }}
-                          ariaLabel={`${language.updateUser} ${columnKey}`}
-                          id={columnKey}
-                          value={editValues[columnKey] || ''}
-                          roleValue={editValues.role || 'User'}
-                          onSaveEdit={handleSaveEdit}
-                        />
-                      )}
+
+                      <UpdateUser
+                        submitBtnLabel={language.save}
+                        isFormDirty={isFormDirty}
+                        onEditChange={handleEditChange}
+                        onOpenPopup={() => {
+                          handleShowEditInput(id, columnKey);
+                        }}
+                        ariaLabel={`${language.updateUser} ${columnKey}`}
+                        id={columnKey}
+                        value={editValues[columnKey] || ''}
+                        roleValue={editValues.role || 'User'}
+                        onSaveEdit={handleSaveEdit}
+                      />
                     </div>
                   </td>
                 ))}
