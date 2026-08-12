@@ -11,7 +11,7 @@ import { validateScheduledDate } from '../validators/validateScheduledDate.js';
 // @desc    Create category
 // @route   /api/category
 // @method  Post
-// @access  Private for admin and employee
+// @access  Private for admin and employees
 const createCategory = asyncHandler(async (req, res) => {
   const { categoryName, categoryStatus, scheduledDate } = req.body;
 
@@ -134,7 +134,7 @@ const getPublishedCategories = asyncHandler(async (req, res) => {
 // @desc    Update category
 // @route   /api/category/id
 // @method  Put
-// @access  Private for admin and employee
+// @access  Private for admin and employees
 const updateCategory = [
   scheduledStatusHandler('categoryStatus'), // Pass the field name
   asyncHandler(async (req, res) => {

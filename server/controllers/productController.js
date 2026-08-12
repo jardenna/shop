@@ -15,7 +15,7 @@ import { validateScheduledDate } from '../validators/validateScheduledDate.js';
 // @desc    Create Product
 // @route   /api/products
 // @method  Post
-// @access  Private for admin and employee
+// @access  Private for admin and employees
 const createProduct = [
   scheduledStatusHandler('productStatus'),
   asyncHandler(async (req, res) => {
@@ -62,7 +62,7 @@ const createProduct = [
 // @desc    Dublicate Product
 // @route   /api/products/:id/duplicate
 // @method  Post
-// @access  Private for admin and employee
+// @access  Private for admin and employees
 const duplicateProduct = asyncHandler(async (req, res) => {
   const original = await Product.findById(req.params.id);
 
@@ -102,7 +102,7 @@ const duplicateProduct = asyncHandler(async (req, res) => {
 // @desc    Update Product
 // @route   /api/products/:id
 // @method  Put
-// @access  Private for admin and employee
+// @access  Private for admin and employees
 const updateProduct = [
   scheduledStatusHandler('productStatus'),
   asyncHandler(async (req, res) => {
@@ -430,7 +430,7 @@ const getShopProducts = asyncHandler(async (req, res) => {
 // @desc    Get admin Products
 // @route   /api/products/allProducts
 // @method  Get
-// @access  Private for admin and employee
+// @access  Private for admin and employees
 const getAdminProducts = asyncHandler(async (req, res) => {
   await updateScheduledItems({
     items: await Product.find({ productStatus: SCHEDULED }).lean(),

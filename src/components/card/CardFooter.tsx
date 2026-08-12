@@ -1,6 +1,4 @@
-import { useAuth } from '../../features/auth/hooks/useAuth';
 import { useLanguage } from '../../features/language/useLanguage';
-import LayoutElement from '../../layout/LayoutElement';
 import { BtnVariant } from '../../types/enums';
 import LinkButton from '../LinkButton';
 import type { PrimaryActionBtnProps } from '../modal/Modal';
@@ -24,32 +22,26 @@ const CardFooter = ({
   triggerModalDisabled,
 }: CardFooterProps) => {
   const { language } = useLanguage();
-  const { isAdmin } = useAuth();
 
   return (
-    <LayoutElement
-      as="footer"
-      className="footer"
-      ariaLabel={language.productCard}
-    >
-      {isAdmin && (
-        <ModalContainer
-          triggerModalBtnContent={language.delete}
-          triggerModalBtnVariant={BtnVariant.Danger}
-          id={id}
-          primaryActionBtn={primaryActionBtn}
-          modalHeaderText={modalHeaderText}
-          triggerModalDisabled={triggerModalDisabled}
-        >
-          {language.sureToDelete} {name}
-        </ModalContainer>
-      )}
+    <footer className="footer">
+      <ModalContainer
+        triggerModalBtnContent={language.delete}
+        triggerModalBtnVariant={BtnVariant.Danger}
+        id={id}
+        primaryActionBtn={primaryActionBtn}
+        modalHeaderText={modalHeaderText}
+        triggerModalDisabled={triggerModalDisabled}
+      >
+        {language.sureToDelete} {name}
+      </ModalContainer>
+
       <LinkButton
         linkTo={linkTo}
         linkText={language.update}
         variant={BtnVariant.Primary}
       />
-    </LayoutElement>
+    </footer>
   );
 };
 

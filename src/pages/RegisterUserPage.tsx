@@ -1,22 +1,24 @@
+import { useRegisterUserMutation } from '../features/auth/authApiSlice';
 import CreateAccount from '../features/auth/components/CreateAccount';
-import { useAuth } from '../features/auth/hooks/useAuth';
 import { useLanguage } from '../features/language/useLanguage';
 import { ShopPath } from '../layout/nav/enums';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
-const CreateAccountPage = () => {
-  const { currentUser } = useAuth();
+const RegisterUserPage = () => {
   const { language } = useLanguage();
+  const [registerUser, { isLoading }] = useRegisterUserMutation();
 
   return (
     <MainPageContainer heading={language.createAccount} variant="small">
       <CreateAccount
         navigateTo={ShopPath.Root}
-        currentUser={currentUser}
+        currentUser={null}
         autoComplete="on"
+        isLoading={isLoading}
+        createUser={(userData) => registerUser(userData).unwrap()}
       />
     </MainPageContainer>
   );
 };
 
-export default CreateAccountPage;
+export default RegisterUserPage;

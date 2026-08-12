@@ -18,7 +18,6 @@ import {
 } from '../controllers/productReviewController.js';
 import {
   authenticate,
-  authorizeAdmin,
   authorizeEmployee,
 } from '../middleware/authMiddleware.js';
 import checkId from '../middleware/checkId.js';
@@ -56,6 +55,6 @@ router
   .route('/:id')
   .get(languageMiddleware, getProductById)
   .put(languageMiddleware, authenticate, authorizeEmployee, updateProduct)
-  .delete(languageMiddleware, authenticate, authorizeAdmin, deleteProduct);
+  .delete(languageMiddleware, authenticate, deleteProduct);
 
 export default router;

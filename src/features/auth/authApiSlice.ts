@@ -6,20 +6,24 @@ import type {
 } from '../../app/api/apiTypes/adminApiTypes';
 import type { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import { authEndpoints } from '../../app/endpoints';
-import { store } from '../../app/store';
 import { logout } from './authSlice';
 
 export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    createAccount: builder.mutation<AuthResponse, AuthRequest>({
-      query: (user) => {
-        const isAdmin = store.getState().auth.user?.user.isAdmin;
-        return {
-          url: isAdmin ? authEndpoints.create : authEndpoints.register,
-          method: 'POST',
-          body: user,
-        };
-      },
+    registerUser: builder.mutation<AuthResponse, AuthRequest>({
+      query: (user) => ({
+        url: authEndpoints.register,
+        method: 'POST',
+        body: user,
+      }),
+      invalidatesTags: [TagTypesEnum.Auth],
+    }),
+    createUser: builder.mutation<AuthResponse, AuthRequest>({
+      query: (user) => ({
+        url: authEndpoints.create,
+        method: 'POST',
+        body: user,
+      }),
       invalidatesTags: [TagTypesEnum.Auth],
     }),
     login: builder.mutation<AuthResponse, OmittedUserRequest>({
@@ -59,8 +63,9 @@ export const authApiSlice = apiSlice.injectEndpoints({
 });
 
 export const {
-  useCreateAccountMutation,
+  useRegisterUserMutation,
   useLoginMutation,
   useLogoutMutation,
   useCheckAuthQuery,
+  useCreateUserMutation,
 } = authApiSlice;

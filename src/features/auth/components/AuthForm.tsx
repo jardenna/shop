@@ -11,19 +11,18 @@ import { BtnVariant } from '../../../types/enums';
 import type { BlurEventType, InputChangeHandler } from '../../../types/types';
 import { roleList } from '../../../utils/productLists';
 import { useLanguage } from '../../language/useLanguage';
-import type { CreateAccountProps } from './CreateAccount';
+import { BaseCreateAccountProps } from './CreateAccount';
 
-type UserFields = {
+interface UserFields {
   email: string;
   password: string;
   confirmPassword?: string;
   role?: Roles;
   username?: string;
-};
+}
 
-type AuthFormProps = CreateAccountProps & {
+interface AuthFormProps extends BaseCreateAccountProps {
   errors: KeyValuePair<string>;
-  isLoading: boolean;
   legendText: string;
   navigateToText: string;
   onChange: InputChangeHandler;
@@ -33,7 +32,7 @@ type AuthFormProps = CreateAccountProps & {
   onBlur: (event: BlurEventType) => void;
   onFocus?: () => void;
   onSubmit: () => void;
-};
+}
 
 const AuthForm = ({
   values,

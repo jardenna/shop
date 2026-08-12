@@ -117,6 +117,7 @@ const LoginPage = () => {
             navigateTo={ShopPath.CreateAccount}
             navigateToText={language.createAccount}
             autoComplete="on"
+            currentUser={null}
           />
         )}
       </ErrorBoundary>

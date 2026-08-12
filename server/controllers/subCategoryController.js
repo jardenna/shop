@@ -15,7 +15,7 @@ import { validateSubCategory } from '../validators/validateSubCategory.js';
 // @desc    Create SubCategory
 // @route   /api/subcategories
 // @method  Post
-// @access  Private for admin and employee
+// @access  Private for admin and employees
 const createSubCategory = [
   scheduledStatusHandler('categoryStatus'),
   asyncHandler(async (req, res) => {
@@ -334,7 +334,7 @@ const getMenuByParentCategory = asyncHandler(async (req, res) => {
 // @desc    Update SubCategory
 // @route   /api/subcategories/:id
 // @method  Put
-// @access  Private for admin and employee
+// @access  Private for admin and employees
 const updateSubCategory = [
   scheduledStatusHandler('categoryStatus'),
   asyncHandler(async (req, res) => {

@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router';
 import type {
   AuthRequest,
+  AuthResponse,
   UserResponse,
 } from '../../../app/api/apiTypes/adminApiTypes';
 import { useMessagePopup } from '../../../components/messagePopup/useMessagePopup';
@@ -10,17 +11,21 @@ import { AutoComplete } from '../../../types/types';
 import { handleApiError } from '../../../utils/handleApiError';
 import { validateSignup } from '../../../utils/validation/validateCreateAccount';
 import { useLanguage } from '../../language/useLanguage';
-import { useCreateAccountMutation } from '../authApiSlice';
 import AuthForm from './AuthForm';
 
-export type CreateAccountProps = {
+export interface BaseCreateAccountProps {
+  currentUser: UserResponse | null;
+  isLoading: boolean;
   navigateTo: string;
   autoComplete?: AutoComplete;
   canAssignRoles?: boolean;
-  currentUser?: UserResponse | null;
-};
+}
 
-export type InitialState = AuthRequest & {
+interface CreateAccountProps extends BaseCreateAccountProps {
+  createUser: (user: AuthRequest) => Promise<AuthResponse>;
+}
+
+type InitialState = AuthRequest & {
   confirmPassword: string;
 };
 
@@ -29,6 +34,8 @@ const CreateAccount = ({
   currentUser,
   canAssignRoles,
   autoComplete,
+  isLoading,
+  createUser,
 }: CreateAccountProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
@@ -46,21 +53,19 @@ const CreateAccount = ({
   const { values, errors, onChange, onBlur, isFocused, onFocus, onSubmit } =
     useFormValidation({
       initialState,
-      callback: handleCreateAccount,
+      callback: handleRegisterUser,
       validate: validateSignup,
     });
 
-  const [registerUser, { isLoading }] = useCreateAccountMutation();
-
-  async function handleCreateAccount() {
+  async function handleRegisterUser() {
     try {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { confirmPassword, ...rest } = values;
 
-      const result = await registerUser({
+      const result = await createUser({
         ...rest,
         role: rest.role,
-      }).unwrap();
+      });
 
       if (result.success) {
         navigate(navigateTo);
