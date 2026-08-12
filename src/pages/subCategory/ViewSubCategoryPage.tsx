@@ -2,7 +2,7 @@ import { useNavigate, useParams } from 'react-router';
 import CategoryCard from '../../components/adminCard/CategoryCard';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import NotFoundError from '../../components/NotFoundError';
-import SkeletonTwoCards from '../../components/skeleton/SkeletonTwoCards';
+import SkeletonTwoCarts from '../../components/skeleton/SkeletonTwoCarts';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
   useDeleteSubCategoryMutation,
@@ -69,7 +69,7 @@ const ViewSubCategoryPage = () => {
 
   return (
     <>
-      {isLoading && <SkeletonTwoCards />}
+      {isLoading && <SkeletonTwoCarts />}
       {category && (
         <AdminPageContainer
           heading={`${language.category} ${subCategoryName || category.subCategoryName}`}

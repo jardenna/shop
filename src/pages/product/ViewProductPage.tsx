@@ -6,7 +6,7 @@ import CardRight from '../../components/card/CardRight';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import NotFoundError from '../../components/NotFoundError';
-import SkeletonThreeCards from '../../components/skeleton/SkeletonThreeCards';
+import SkeletonThreeCarts from '../../components/skeleton/SkeletonThreeCarts';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
   useDeleteProductMutation,
@@ -87,7 +87,7 @@ const ViewProductPage = () => {
 
   return (
     <>
-      {isLoading && <SkeletonThreeCards />}
+      {isLoading && <SkeletonThreeCarts />}
 
       {product && (
         <AdminPageContainer

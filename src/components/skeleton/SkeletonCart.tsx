@@ -2,7 +2,7 @@ import Skeleton from './Skeleton';
 import SkeletonControlList from './SkeletonControlList';
 import SkeletonParagraph from './SkeletonParagraph';
 
-const SkeletonCard = () => (
+const SkeletonCart = () => (
   <div className="skeleton-card">
     <Skeleton className="img" />
     <SkeletonParagraph count={1} height="2" width="18" />
@@ -11,4 +11,4 @@ const SkeletonCard = () => (
   </div>
 );
 
-export default SkeletonCard;
+export default SkeletonCart;
