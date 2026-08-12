@@ -2,7 +2,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import NotFoundError from '../components/NotFoundError';
-import ProgressTrackerNew from '../components/progressTracker/ProgressTrackerNew';
+import ProgressTracker from '../components/progressTracker/ProgressTracker';
 import SkeletonOrderConfirmationPage from '../components/skeleton/skeletonOrderConfirmationPage/SkeletonOrderConfirmationPage';
 import SummaryList from '../features/cart/components/SummaryList';
 import { useLanguage } from '../features/language/useLanguage';
@@ -70,7 +70,7 @@ const OrderConfirmationPage = () => {
       <div className="confirmation-content">
         <ConfirmationSubHeader />
 
-        <ProgressTrackerNew steps={orderTrackingList} status={status} />
+        <ProgressTracker steps={orderTrackingList} status={status} />
 
         <ErrorBoundary
           FallbackComponent={ErrorBoundaryFallback}
