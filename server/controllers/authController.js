@@ -5,6 +5,10 @@ import { createUserService } from '../services/userService.js';
 import createToken from '../utils/createToken.js';
 import { t } from '../utils/translator.js';
 
+// @desc    Register a new user
+// @route   /api/auth/register
+// @method  POST
+// @access  Public
 const registerUser = asyncHandler(async (req, res) => {
   const { username, email, password } = req.body;
 
@@ -37,6 +41,10 @@ const registerUser = asyncHandler(async (req, res) => {
   });
 });
 
+// @desc    Create a new user
+// @route   /api/auth/admin/create-user
+// @method  POST
+// @access  Private for admin and employees
 const createUser = asyncHandler(async (req, res) => {
   const { username, email, password, role } = req.body;
 
