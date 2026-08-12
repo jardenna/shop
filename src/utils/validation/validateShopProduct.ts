@@ -1,4 +1,4 @@
-import { InitialShopValues } from '../../features/shop/components/singleProduct/CartForm.tsx';
+import { InitialShopValues } from '../../features/shop/components/singleProduct/CartForm';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
 
