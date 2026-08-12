@@ -10,8 +10,8 @@ import { AutoComplete } from '../../../types/types';
 import { handleApiError } from '../../../utils/handleApiError';
 import { validateSignup } from '../../../utils/validation/validateCreateAccount';
 import { useLanguage } from '../../language/useLanguage';
-import { useCreateAccountMutation } from '../authApiSlice';
 import AuthForm from './AuthForm';
+import { useRegisterUserMutation } from '../authApiSlice';
 
 export type CreateAccountProps = {
   navigateTo: string;
@@ -46,13 +46,13 @@ const CreateAccount = ({
   const { values, errors, onChange, onBlur, isFocused, onFocus, onSubmit } =
     useFormValidation({
       initialState,
-      callback: handleCreateAccount,
+      callback: handleRegisterUser,
       validate: validateSignup,
     });
 
-  const [registerUser, { isLoading }] = useCreateAccountMutation();
+  const [registerUser, { isLoading }] = useRegisterUserMutation();
 
-  async function handleCreateAccount() {
+  async function handleRegisterUser() {
     try {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { confirmPassword, ...rest } = values;

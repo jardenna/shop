@@ -7,6 +7,8 @@ import MainPageContainer from './pageContainer/MainPageContainer';
 const CreateAccountPage = () => {
   const { currentUser } = useAuth();
   const { language } = useLanguage();
+  // const [createUser, { isLoading: isCreateuserLoading }] =
+  //   useCreateUserMutation();
 
   return (
     <MainPageContainer heading={language.createAccount} variant="small">

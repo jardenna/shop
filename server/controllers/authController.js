@@ -1,18 +1,12 @@
 import bcrypt from 'bcryptjs';
 import asyncHandler from '../middleware/asyncHandler.js';
 import User from '../models/userModel.js';
+import { createUserService } from '../services/userService.js';
 import createToken from '../utils/createToken.js';
 import { t } from '../utils/translator.js';
-import { validateEmail, validatePassword } from '../validators/validateAuth.js';
 
-// @desc    Create a new user (used for both self-registration and admin creation)
-// @route   /api/auth/register
-// @method   POST
-// @access  Public (register) / Admin (create-user)
-const createNewUser = asyncHandler(async (req, res) => {
-  const { username, email, password, role } = req.body;
-  const currentUser = req.user;
-  const isAdmin = currentUser?.isAdmin === true;
+const registerUser = asyncHandler(async (req, res) => {
+  const { username, email, password } = req.body;
 
   if (!username || !email || !password) {
     return res.status(400).json({
@@ -21,55 +15,54 @@ const createNewUser = asyncHandler(async (req, res) => {
     });
   }
 
-  // Non-admins are not allowed to set role
-  if (!isAdmin) {
-    delete req.body.role;
-  }
-
-  const userExists = await User.findOne({ email });
-  if (userExists) {
-    return res.status(400).json({
-      success: false,
-      message: t('userAlreadyExist', req.lang),
-    });
-  }
-
-  const emailResult = validateEmail(email, req.lang);
-  if (!emailResult.isValid) {
-    return res.status(emailResult.status).json(emailResult.payload);
-  }
-
-  const passwordErrorKey = validatePassword(password);
-  if (passwordErrorKey) {
-    return res.status(400).json({
-      message: t(passwordErrorKey, req.lang),
-    });
-  }
-
-  const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS) || 10;
-  const hashPassword = await bcrypt.hash(password, saltRounds);
-
-  const newUser = new User({
+  const user = await createUserService({
     username,
     email,
-    password: hashPassword,
-    role: isAdmin ? role : 'User', // enforce "User" role if not admin
+    password,
+    role: 'User',
+    language: req.lang,
   });
 
-  await newUser.save();
-
-  if (!isAdmin) {
-    createToken(res, newUser._id);
-  }
+  createToken(res, user._id);
 
   res.status(201).json({
     success: true,
     user: {
-      id: newUser._id,
-      username: newUser.username,
-      email: newUser.email,
-      isAdmin: newUser.isAdmin,
-      role: newUser.role,
+      id: user._id,
+      username: user.username,
+      email: user.email,
+      isAdmin: user.isAdmin,
+      role: user.role,
+    },
+  });
+});
+
+const createUser = asyncHandler(async (req, res) => {
+  const { username, email, password, role } = req.body;
+
+  if (!username || !email || !password || !role) {
+    return res.status(400).json({
+      success: false,
+      message: t('fillAll', req.lang),
+    });
+  }
+
+  const user = await createUserService({
+    username,
+    email,
+    password,
+    role,
+    language: req.lang,
+  });
+
+  res.status(201).json({
+    success: true,
+    user: {
+      id: user._id,
+      username: user.username,
+      email: user.email,
+      isAdmin: user.isAdmin,
+      role: user.role,
     },
   });
 });
@@ -150,4 +143,4 @@ const logoutCurrentUser = asyncHandler(async (req, res) => {
   });
 });
 
-export { createNewUser, loginUser, logoutCurrentUser };
+export { createUser, loginUser, logoutCurrentUser, registerUser };
