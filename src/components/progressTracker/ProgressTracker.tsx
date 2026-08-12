@@ -26,21 +26,30 @@ const ProgressTracker = ({ steps, status }: ProgressTrackerProps) => {
   const currentStatusIndex = orderTrackingList.findIndex(
     ({ id }) => id === status.status,
   );
+
   return (
     <ul className="progress-tracker">
-      {steps.map(({ id, label, iconName }, index) => (
-        <Fragment key={id}>
-          <li className="tracker-step">
-            <span
-              className={`tracker-step-circle ${index <= currentStatusIndex ? 'completed' : ''} ${index === currentStatusIndex ? 'in-procsss' : ''}`}
-            >
-              <Icon iconName={iconName} aria-hidden />
-            </span>
-            <span>{language[label]}</span>
-          </li>
-          <li className="tracker-step-line" />
-        </Fragment>
-      ))}
+      {steps.map(({ id, label, iconName }, index) => {
+        let stepClassName = '';
+
+        if (index < currentStatusIndex) {
+          stepClassName = 'completed';
+        } else if (index === currentStatusIndex) {
+          stepClassName = 'in-progress';
+        }
+
+        return (
+          <Fragment key={id}>
+            <li className="tracker-step">
+              <span className={`tracker-step-circle ${stepClassName}`}>
+                <Icon iconName={iconName} aria-hidden />
+              </span>
+              <span>{language[label]}</span>
+            </li>
+            <li className="tracker-step-line" />
+          </Fragment>
+        );
+      })}
     </ul>
   );
 };
