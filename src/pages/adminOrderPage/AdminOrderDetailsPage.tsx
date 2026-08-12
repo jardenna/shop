@@ -40,6 +40,13 @@ const AdminOrderDetailsPage = () => {
     );
   }
 
+  const status = {
+    status: order?.delivery.status ?? 'created',
+  };
+
+  const currentStatusIndex = orderTrackingList.findIndex(
+    ({ id }) => id === status.status,
+  );
   return (
     <AdminPageContainer
       heading={id ?? ''}
@@ -47,10 +54,12 @@ const AdminOrderDetailsPage = () => {
       linkTo={AdminPath.AdminSubCategoryCreate}
     >
       <ul className="progress-tracker">
-        {orderTrackingList.map(({ id, label, iconName }) => (
+        {orderTrackingList.map(({ id, label, iconName }, index) => (
           <Fragment key={id}>
             <li className="step">
-              <span className="step-circle">
+              <span
+                className={`step-circle ${index <= currentStatusIndex ? 'completed' : ''} ${index === currentStatusIndex ? 'in-procsss' : ''}`}
+              >
                 <Icon iconName={iconName} aria-hidden />
               </span>
               <span className="step-label">{language[label]}</span>

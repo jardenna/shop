@@ -14,12 +14,12 @@ interface TrackingList {
   label: string;
 }
 
-interface ProgressTrackerProps {
+interface StatusTrackerProps {
   status: Status;
   steps: TrackingList[];
 }
 
-const ProgressTracker = ({ steps, status }: ProgressTrackerProps) => {
+const StatusTracker = ({ steps, status }: StatusTrackerProps) => {
   const { language } = useLanguage();
 
   const currentStatusIndex = orderTrackingList.findIndex(
@@ -42,4 +42,4 @@ const ProgressTracker = ({ steps, status }: ProgressTrackerProps) => {
   );
 };
 
-export default ProgressTracker;
+export default StatusTracker;
