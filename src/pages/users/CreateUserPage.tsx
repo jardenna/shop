@@ -18,7 +18,7 @@ const CreateUserPage = () => {
         currentUser={currentUser}
         canAssignRoles={currentUser?.isAdmin}
         isLoadingNew={isLoading}
-        createUser={createUser}
+        createUser={(userData) => createUser(userData).unwrap()}
       />
     </AdminPageContainer>
   );

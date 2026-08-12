@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router';
 import type {
   AuthRequest,
+  AuthResponse,
   UserResponse,
 } from '../../../app/api/apiTypes/adminApiTypes';
 import { useMessagePopup } from '../../../components/messagePopup/useMessagePopup';
@@ -18,7 +19,7 @@ interface CreateAccountProps {
   navigateTo: string;
   autoComplete?: AutoComplete;
   canAssignRoles?: boolean;
-  createUser?: any;
+  createUser: (user: AuthRequest) => Promise<AuthResponse>;
 }
 
 type InitialState = AuthRequest & {
@@ -61,7 +62,7 @@ const CreateAccount = ({
       const result = await createUser({
         ...rest,
         role: rest.role,
-      }).unwrap();
+      });
 
       if (result.success) {
         navigate(navigateTo);

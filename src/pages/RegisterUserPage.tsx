@@ -15,7 +15,7 @@ const RegisterUserPage = () => {
         currentUser={null}
         autoComplete="on"
         isLoadingNew={isLoading}
-        createUser={registerUser}
+        createUser={(userData) => registerUser(userData).unwrap()}
       />
     </MainPageContainer>
   );
