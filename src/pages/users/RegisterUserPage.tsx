@@ -4,7 +4,7 @@ import { useLanguage } from '../../features/language/useLanguage';
 import { AdminPath } from '../../layout/nav/enums';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
-const CreateUserPage = () => {
+const RegisterUserPage = () => {
   const { language } = useLanguage();
   const { currentUser } = useAuth();
 
@@ -19,4 +19,4 @@ const CreateUserPage = () => {
   );
 };
 
-export default CreateUserPage;
+export default RegisterUserPage;
