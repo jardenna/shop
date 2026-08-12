@@ -22,7 +22,7 @@ import MainPageContainer from './pageContainer/MainPageContainer';
 import FavoritesPanelCart from '../features/favorites/components/FavoritesPanelCart';
 import CartForm, {
   InitialShopValues,
-} from '../features/shop/components/singleProduct/CartForm';
+} from '../features/shop/components/singleProduct/CartFormNew';
 
 const FavoritePage = () => {
   const { language } = useLanguage();
