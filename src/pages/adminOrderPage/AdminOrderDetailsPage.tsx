@@ -1,6 +1,8 @@
 import { useParams } from 'react-router';
+import { Fragment } from 'react/jsx-runtime';
+import Icon from '../../components/icons/Icon';
 import NotFoundError from '../../components/NotFoundError';
-import ProgressTracker from '../../components/progressTracker/ProgressTracker';
+import SkeletonProgress from '../../components/skeleton/skeletonProgress/SkeletonProgress';
 import SummaryList from '../../features/cart/components/SummaryList';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useGetAdminOrderByIdQuery } from '../../features/orders/adminOrderApiSlice';
@@ -21,10 +23,6 @@ const AdminOrderDetailsPage = () => {
     error,
     isError,
   } = useGetAdminOrderByIdQuery(id ?? '');
-
-  const status = {
-    status: order?.delivery.status ?? 'created',
-  };
 
   const addressList = order
     ? createOrderAddressList({
@@ -49,7 +47,21 @@ const AdminOrderDetailsPage = () => {
       linkText={language.createNewCategory}
       linkTo={AdminPath.AdminSubCategoryCreate}
     >
-      <ProgressTracker steps={orderTrackingList} status={status} />
+      <SkeletonProgress />
+      <ul className="progress">
+        {orderTrackingList.map(({ id, label, iconName }) => (
+          <Fragment key={id}>
+            <li className="step">
+              <span className="step-circle">
+                <Icon iconName={iconName} aria-hidden />
+              </span>
+              <span className="step-label">{language[label]}</span>
+            </li>
+            <li className="step-line" />
+          </Fragment>
+        ))}
+      </ul>
+
       {order && (
         <article className="order-cart">
           <article className="summary-items">

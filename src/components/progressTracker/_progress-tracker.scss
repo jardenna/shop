@@ -4,63 +4,74 @@
 $tracking-base-size: rem(60px);
 $tracking-base-color: $color-gray-60;
 
-.tracking-list {
-  position: relative;
+// .tracking-list {
+//   position: relative;
+//   display: flex;
+//   justify-content: space-between;
+//   gap: 12px;
+
+//   &::after {
+//     content: '';
+//     display: flex;
+//     width: 100%;
+//     z-index: -1;
+//     position: absolute;
+//     height: math.div($tracking-base-size, 2);
+//     border-bottom: $border-dark;
+//   }
+
+//   .tracking-list-label {
+//     margin: 0;
+
+//     @include max-size($small) {
+//       max-width: 60px;
+//       text-wrap: wrap;
+//     }
+//   }
+
+//   .tracking-list-item {
+//     display: flex;
+//     flex-direction: column;
+//     gap: 4px;
+//     color: $tracking-base-color;
+
+//     &:has(.completed) {
+//       color: inherit;
+//     }
+//   }
+
+//   .tracking-list-icon {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     width: $tracking-base-size;
+//     height: $tracking-base-size;
+//     border-radius: 50%;
+//     background-color: $color-white;
+//     border: $border-dark;
+//     color: $tracking-base-color;
+
+//     &.completed {
+//       background-color: $tracking-base-color;
+//       color: $color-white;
+//     }
+
+//     &.in-procsss {
+//       background-color: $color-blue-25;
+//       color: $color-white;
+//       border-color: $color-blue-25;
+//       box-shadow: $box-shadow;
+//     }
+//   }
+// }
+
+.progress .step-circle {
+  width: $tracking-base-size;
+  height: $tracking-base-size;
   display: flex;
-  justify-content: space-between;
-  gap: 12px;
-
-  &::after {
-    content: '';
-    display: flex;
-    width: 100%;
-    z-index: -1;
-    position: absolute;
-    height: math.div($tracking-base-size, 2);
-    border-bottom: $border-dark;
-  }
-
-  .tracking-list-label {
-    margin: 0;
-
-    @include max-size($small) {
-      max-width: 60px;
-      text-wrap: wrap;
-    }
-  }
-
-  .tracking-list-item {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    color: $tracking-base-color;
-
-    &:has(.completed) {
-      color: inherit;
-    }
-  }
-
-  .tracking-list-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: $tracking-base-size;
-    height: $tracking-base-size;
-    border-radius: 50%;
-    background-color: $color-white;
-    border: $border-dark;
-    color: $tracking-base-color;
-
-    &.completed {
-      background-color: $tracking-base-color;
-      color: $color-white;
-    }
-
-    &.in-procsss {
-      background-color: $color-blue-25;
-      color: $color-white;
-      border-color: $color-blue-25;
-      box-shadow: $box-shadow;
-    }
-  }
+  border-radius: 50%;
+  background-color: $color-white;
+  border: $border-dark;
+  align-items: center;
+  justify-content: center;
 }
