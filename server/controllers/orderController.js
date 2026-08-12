@@ -158,7 +158,7 @@ const createOrder = asyncHandler(async (req, res) => {
 // @desc    Get all orders
 // @route   /api/orders
 // @method  Get
-// @access  Private for admin and employee
+// @access  Private for admin and employees
 const getAllOrders = asyncHandler(async (req, res) => {
   const { page, ordersPerPage } = req.pagination;
   const filter = req.filter;
@@ -381,7 +381,7 @@ const payOrder = asyncHandler(async (req, res) => {
 // @desc    Deliver order
 // @route   /api/orders/:id/deliver
 // @method  Patch
-// @access  Private for admin and employee
+// @access  Private for admin and employees
 const deliverOrder = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
 
