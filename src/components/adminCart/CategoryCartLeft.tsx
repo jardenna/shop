@@ -1,7 +1,7 @@
 import type { Status } from '../../app/api/apiTypes/adminApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
 import CartContent from '../cart/CartContent';
-import AdminCardHeading from './AdminCartHeading';
+import AdminCartHeading from './AdminCartHeading';
 
 type CategoryCartLeftProps = {
   name: string;
@@ -22,7 +22,7 @@ const CategoryCartLeft = ({
 
   return (
     <CartContent onReset={onReset}>
-      <AdminCardHeading
+      <AdminCartHeading
         scheduledDate={scheduledDate || null}
         name={name}
         status={status}

@@ -8,15 +8,15 @@ type OmitteProductCardProps = OmitChecked<
   'product' | 'linkTo'
 >;
 
-type ProductCardListProps = OmitteProductCardProps & {
+type ProductCartListProps = OmitteProductCardProps & {
   products: BaseProduct[];
 };
 
-const ProductCardList = ({
+const ProductCartList = ({
   products,
   productView = '',
   showSizeOverlay,
-}: ProductCardListProps) => {
+}: ProductCartListProps) => {
   const { categoryId } = useParams();
 
   return (
@@ -35,4 +35,4 @@ const ProductCardList = ({
   );
 };
 
-export default ProductCardList;
+export default ProductCartList;
