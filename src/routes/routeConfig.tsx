@@ -15,7 +15,7 @@ import UpdateCategoryPage from '../pages/category/UpdateCategoryPage';
 import CheckoutPage from '../pages/CheckoutPage';
 import CollectionPage from '../pages/CollectionPage';
 import ContactPage from '../pages/ContactPage';
-import CreateAccountPage from '../pages/CreateAccountPage';
+import CreateUserPage from '../pages/CreateUserPage';
 import ErrorPage from '../pages/ErrorPage';
 import FavoritePage from '../pages/FavoritePage';
 import HomePage from '../pages/home/HomePage';
@@ -72,7 +72,7 @@ const routeList = [
   },
   {
     path: ShopPath.CreateAccount,
-    element: <CreateAccountPage />,
+    element: <CreateUserPage />,
   },
   {
     path: ShopPath.ShoppingCart,

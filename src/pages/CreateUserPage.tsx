@@ -4,7 +4,7 @@ import { useLanguage } from '../features/language/useLanguage';
 import { ShopPath } from '../layout/nav/enums';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
-const CreateAccountPage = () => {
+const CreateUserPage = () => {
   const { currentUser } = useAuth();
   const { language } = useLanguage();
   // const [createUser, { isLoading: isCreateuserLoading }] =
@@ -21,4 +21,4 @@ const CreateAccountPage = () => {
   );
 };
 
-export default CreateAccountPage;
+export default CreateUserPage;
