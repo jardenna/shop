@@ -3,8 +3,8 @@ import { useLanguage } from '../../features/language/useLanguage';
 import { AdminPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
 import { translateKey } from '../../utils/utils';
-import CardFooter from '../card/CardFooter';
-import CardRight from '../card/CardRight';
+import CardFooter from '../cart/CartFooter';
+import CardRight from '../cart/CartRight';
 import type { PrimaryActionBtnProps } from '../modal/Modal';
 import CategoryCartLeft from './CategoryCartLeft';
 

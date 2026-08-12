@@ -2,19 +2,19 @@ import type { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 
-type CardContentProps = {
+type CartContentProps = {
   children: ReactNode;
   className?: string;
   heading?: string;
   onReset?: () => void;
 };
 
-const CardContent = ({
+const CartContent = ({
   children,
   className = '',
   heading,
   onReset,
-}: CardContentProps) => (
+}: CartContentProps) => (
   <article className={`admin-card ${className}`}>
     <span className="card-top-line" aria-hidden={true} />
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
@@ -26,4 +26,4 @@ const CardContent = ({
   </article>
 );
 
-export default CardContent;
+export default CartContent;

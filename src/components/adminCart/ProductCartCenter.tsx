@@ -6,7 +6,7 @@ import type {
 import { useLanguage } from '../../features/language/useLanguage';
 import ColorList from '../../features/shop/components/productLists/ColorList';
 import SizeList from '../../features/shop/components/productLists/SizeList';
-import CardContent from '../card/CardContent';
+import CartContent from '../cart/CartContent';
 import LabelValueGrid from '../labelValueGrid/LabelValueGrid';
 
 type ProductCartCenterProps = {
@@ -35,7 +35,7 @@ const ProductCartCenter = ({
   const { language } = useLanguage();
 
   return (
-    <CardContent onReset={onReset} className="center">
+    <CartContent onReset={onReset} className="center">
       <span className="separator" aria-hidden={true} />
       <LabelValueGrid text={language.productsInStock}>
         {countInStock} {language.pcs}
@@ -62,7 +62,7 @@ const ProductCartCenter = ({
           id: 'view-product-sizes',
         }}
       />
-    </CardContent>
+    </CartContent>
   );
 };
 

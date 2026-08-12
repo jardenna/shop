@@ -4,7 +4,7 @@ import LinkButton from '../LinkButton';
 import type { PrimaryActionBtnProps } from '../modal/Modal';
 import ModalContainer from '../modal/ModalContainer';
 
-type CardFooterProps = {
+type CartFooterProps = {
   id: string;
   linkTo: string;
   modalHeaderText: string;
@@ -13,14 +13,14 @@ type CardFooterProps = {
   triggerModalDisabled?: boolean;
 };
 
-const CardFooter = ({
+const CartFooter = ({
   id,
   linkTo,
   name,
   primaryActionBtn,
   modalHeaderText,
   triggerModalDisabled,
-}: CardFooterProps) => {
+}: CartFooterProps) => {
   const { language } = useLanguage();
 
   return (
@@ -45,4 +45,4 @@ const CardFooter = ({
   );
 };
 
-export default CardFooter;
+export default CartFooter;

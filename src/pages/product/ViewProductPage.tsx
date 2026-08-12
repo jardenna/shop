@@ -1,7 +1,8 @@
 import { useNavigate, useParams } from 'react-router';
-import ProductCardCenter from '../../components/adminCart/ProductCartCenter';
-import CardFooter from '../../components/card/CardFooter';
-import CardRight from '../../components/card/CardRight';
+import ProductCartCenter from '../../components/adminCart/ProductCartCenter';
+import ProductCartLeft from '../../components/adminCart/ProductCartLeft';
+import CartFooter from '../../components/cart/CartFooter';
+import CartRight from '../../components/cart/CartRight';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import NotFoundError from '../../components/NotFoundError';
@@ -16,7 +17,6 @@ import { BtnVariant } from '../../types/enums';
 import { handleApiError } from '../../utils/handleApiError';
 import { translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
-import ProductCartLeft from '../../components/adminCart/ProductCartLeft';
 
 const ViewProductPage = () => {
   const { id } = useParams();
@@ -106,7 +106,7 @@ const ViewProductPage = () => {
               discount={product.discount || 0}
               onReset={() => refetch()}
             />
-            <ProductCardCenter
+            <ProductCartCenter
               countInStock={product.countInStock}
               brand={product.brand}
               colours={product.colors}
@@ -117,7 +117,7 @@ const ViewProductPage = () => {
               categoryName={product.categoryName}
               subCategoryName={product.subCategoryName}
             />
-            <CardRight
+            <CartRight
               linkTo={AdminPath.AdminSubCategories}
               heading={heading}
               onReset={() => refetch()}
@@ -127,7 +127,7 @@ const ViewProductPage = () => {
               }
               statusMessage={statusMessage}
             />
-            <CardFooter
+            <CartFooter
               id={product.id}
               primaryActionBtn={primaryActionBtn}
               name={product.productName}

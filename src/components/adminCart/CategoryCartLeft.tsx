@@ -1,6 +1,6 @@
 import type { Status } from '../../app/api/apiTypes/adminApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
-import CardContent from '../card/CardContent';
+import CartContent from '../cart/CartContent';
 import AdminCardHeading from './AdminCartHeading';
 
 type CategoryCartLeftProps = {
@@ -21,7 +21,7 @@ const CategoryCartLeft = ({
   const { language } = useLanguage();
 
   return (
-    <CardContent onReset={onReset}>
+    <CartContent onReset={onReset}>
       <AdminCardHeading
         scheduledDate={scheduledDate || null}
         name={name}
@@ -30,7 +30,7 @@ const CategoryCartLeft = ({
       <span>
         {language.productsInSubcategory}: {productsInSubcategory} {language.pcs}
       </span>
-    </CardContent>
+    </CartContent>
   );
 };
 
