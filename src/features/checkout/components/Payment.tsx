@@ -8,7 +8,7 @@ import type {
   RefElementType,
 } from '../../../types/types';
 import PaymentMethodsList from '../../cart/components/PaymentMethodsList';
-import CardForm from './paymentForms/CardForm';
+import PaymentCardForm from './PaymentCardForm';
 
 export interface BasePaymentProps {
   addAddressButtonRef: RefBtnType;
@@ -64,7 +64,7 @@ const Payment = ({
         <PaymentMethodsList paymentMethods={paymentMethod} />
       </form>
       {methodToShow && (
-        <CardForm
+        <PaymentCardForm
           addressSectionRef={addressSectionRef}
           fields={methodToShow.fields}
           key={methodToShow.id}
