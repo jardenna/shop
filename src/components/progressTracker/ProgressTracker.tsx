@@ -30,15 +30,15 @@ const ProgressTracker = ({ steps, status }: ProgressTrackerProps) => {
     <ul className="progress-tracker">
       {steps.map(({ id, label, iconName }, index) => (
         <Fragment key={id}>
-          <li className="step">
+          <li className="tracker-step">
             <span
-              className={`step-circle ${index <= currentStatusIndex ? 'completed' : ''} ${index === currentStatusIndex ? 'in-procsss' : ''}`}
+              className={`tracker-step-circle ${index <= currentStatusIndex ? 'completed' : ''} ${index === currentStatusIndex ? 'in-procsss' : ''}`}
             >
               <Icon iconName={iconName} aria-hidden />
             </span>
-            <span className="step-label">{language[label]}</span>
+            <span>{language[label]}</span>
           </li>
-          <li className="step-line" />
+          <li className="tracker-step-line" />
         </Fragment>
       ))}
     </ul>
