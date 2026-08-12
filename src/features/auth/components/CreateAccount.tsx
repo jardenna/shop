@@ -13,12 +13,15 @@ import { validateSignup } from '../../../utils/validation/validateCreateAccount'
 import { useLanguage } from '../../language/useLanguage';
 import AuthForm from './AuthForm';
 
-interface CreateAccountProps {
+export interface BaseCreateAccountProps {
   currentUser: UserResponse | null;
   isLoading: boolean;
   navigateTo: string;
   autoComplete?: AutoComplete;
   canAssignRoles?: boolean;
+}
+
+interface CreateAccountProps extends BaseCreateAccountProps {
   createUser: (user: AuthRequest) => Promise<AuthResponse>;
 }
 
@@ -38,10 +41,10 @@ const CreateAccount = ({
   const { language } = useLanguage();
 
   const initialState: InitialState = {
-    username: 'TestNewUser',
-    email: 'testNew@mail.com',
-    password: 'Test123!',
-    confirmPassword: 'Test123!',
+    username: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
     role: 'User',
   };
 

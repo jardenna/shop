@@ -1,8 +1,5 @@
 import { useNavigate } from 'react-router';
-import type {
-  Roles,
-  UserResponse,
-} from '../../../app/api/apiTypes/adminApiTypes';
+import type { Roles } from '../../../app/api/apiTypes/adminApiTypes';
 import Button from '../../../components/Button';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/form/Form';
@@ -11,20 +8,10 @@ import PasswordInput from '../../../components/formElements/password/PasswordInp
 import RadioButtonList from '../../../components/formElements/RadioButtonList';
 import type { KeyValuePair } from '../../../hooks/useFormValidation';
 import { BtnVariant } from '../../../types/enums';
-import type {
-  AutoComplete,
-  BlurEventType,
-  InputChangeHandler,
-} from '../../../types/types';
+import type { BlurEventType, InputChangeHandler } from '../../../types/types';
 import { roleList } from '../../../utils/productLists';
 import { useLanguage } from '../../language/useLanguage';
-
-interface CreateAccountProps {
-  currentUser: UserResponse | null;
-  navigateTo: string;
-  autoComplete?: AutoComplete;
-  canAssignRoles?: boolean;
-}
+import { BaseCreateAccountProps } from './CreateAccount';
 
 interface UserFields {
   email: string;
@@ -34,9 +21,8 @@ interface UserFields {
   username?: string;
 }
 
-interface AuthFormProps extends CreateAccountProps {
+interface AuthFormProps extends BaseCreateAccountProps {
   errors: KeyValuePair<string>;
-  isLoading: boolean;
   legendText: string;
   navigateToText: string;
   onChange: InputChangeHandler;
