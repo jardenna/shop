@@ -1,20 +1,16 @@
 import { useParams } from 'react-router';
 import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
-import type { OmitChecked } from '../../../types/types';
-import ProductCart, { type ProductCardProps } from './ProductCart';
+import ProductCart from './ProductCart';
 
-type OmitteProductCardProps = OmitChecked<
-  ProductCardProps,
-  'product' | 'linkTo'
->;
-
-type ProductCartListProps = OmitteProductCardProps & {
+interface ProductCartListProps {
   products: BaseProduct[];
-};
+  productView: string;
+  showSizeOverlay: boolean;
+}
 
 const ProductCartList = ({
   products,
-  productView = '',
+  productView,
   showSizeOverlay,
 }: ProductCartListProps) => {
   const { categoryId } = useParams();
