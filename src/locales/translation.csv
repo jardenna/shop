@@ -550,7 +550,7 @@ updateSubCategory;Update subcategory;Opdater underkategori
 updateUser;Update user;Opdater bruger
 updateYourInfo;Update your details;Opdatér dine oplysninger
 user;User;Bruger
-userAlreadyExist;A profile with this email already exists. Try logging in instead;Der findes en profil med denne e-mail. Prøv at logge ind i stedet
+userAlreadyExist;A profile already exists. Try logging in instead;Der findes allerede en profil. Prøv at logge ind i stedet
 userDeleted;User deleted;Bruger slettet
 userInfo;User info;Bruger info
 username;User name;Brugernavn

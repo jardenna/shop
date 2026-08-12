@@ -1,7 +1,8 @@
 import { t } from '../utils/translator.js';
 
 const errorHandler = (error, req, res, next) => {
-  let statusCode = res.statusCode === 200 ? 500 : res.statusCode;
+  let statusCode =
+    error.statusCode || (res.statusCode === 200 ? 500 : res.statusCode);
   let message = error.message;
 
   // Handle CastError (e.g. invalid ObjectId)
@@ -22,8 +23,6 @@ const errorHandler = (error, req, res, next) => {
 
   // Duplicate key error
   if (error.code === 11000) {
-    console.log(error);
-
     statusCode = 400;
     message = t('alreadyInUse', req.lang);
   }
