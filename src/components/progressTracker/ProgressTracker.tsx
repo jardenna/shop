@@ -20,6 +20,18 @@ interface ProgressTrackerProps {
   steps: TrackingList[];
 }
 
+const getStepClassName = (index: number, currentStatusIndex: number) => {
+  if (index < currentStatusIndex) {
+    return 'completed';
+  }
+
+  if (index === currentStatusIndex) {
+    return 'in-progress';
+  }
+
+  return '';
+};
+
 const ProgressTracker = ({ steps, status }: ProgressTrackerProps) => {
   const { language } = useLanguage();
 
@@ -29,27 +41,22 @@ const ProgressTracker = ({ steps, status }: ProgressTrackerProps) => {
 
   return (
     <ul className="progress-tracker">
-      {steps.map(({ id, label, iconName }, index) => {
-        let stepClassName = '';
-
-        if (index < currentStatusIndex) {
-          stepClassName = 'completed';
-        } else if (index === currentStatusIndex) {
-          stepClassName = 'in-progress';
-        }
-
-        return (
-          <Fragment key={id}>
-            <li className="tracker-step">
-              <span className={`tracker-step-circle ${stepClassName}`}>
-                <Icon iconName={iconName} aria-hidden />
-              </span>
-              <span>{language[label]}</span>
-            </li>
-            <li className="tracker-step-line" />
-          </Fragment>
-        );
-      })}
+      {steps.map(({ id, label, iconName }, index) => (
+        <Fragment key={id}>
+          <li className="tracker-step">
+            <span
+              className={`tracker-step-circle ${getStepClassName(
+                index,
+                currentStatusIndex,
+              )}`}
+            >
+              <Icon iconName={iconName} aria-hidden />
+            </span>
+            <span>{language[label]}</span>
+          </li>
+          <li className="tracker-step-line" />
+        </Fragment>
+      ))}
     </ul>
   );
 };
