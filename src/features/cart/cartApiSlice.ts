@@ -3,7 +3,7 @@ import {
   AddToCartRequest,
   BaseOrder,
   CartListResponse,
-  GuestCardResponse,
+  GuestCartResponse,
   UpdateCartQtyRequest,
   UpdateCartRequest,
 } from '../../app/api/apiTypes/cartApiTypes';
@@ -54,7 +54,7 @@ export const cartApiSlice = apiSlice.injectEndpoints({
       query: () => cartUrl,
       providesTags: [TagTypesEnum.Carts],
     }),
-    getGuestCart: builder.query<GuestCardResponse, BaseOrder[]>({
+    getGuestCart: builder.query<GuestCartResponse, BaseOrder[]>({
       query: (body) => ({
         url: guestCartUrl,
         method: 'POST',

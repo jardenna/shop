@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import type { SkeletonProps } from '../Skeleton';
 import SkeletonCart from '../SkeletonCart';
-import './_skeleton-card-list.scss';
+import './_skeleton-cart-list.scss';
 
 type SkeletonCardListProps = SkeletonProps & {
   children?: ReactNode;

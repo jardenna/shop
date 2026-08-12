@@ -1,18 +1,18 @@
 import SummaryItem from '../SummaryItem';
 
-interface MiniCardSummaryListProps {
+interface MiniCartSummaryListProps {
   language: Record<string, string>;
   promoDiscount: number;
   shippingPrice: number;
   totalPrice: number;
 }
 
-const MiniCardSummaryList = ({
+const MiniCartSummaryList = ({
   language,
   totalPrice,
   promoDiscount,
   shippingPrice,
-}: MiniCardSummaryListProps) => (
+}: MiniCartSummaryListProps) => (
   <div className="mini-cart-summary-list">
     <SummaryItem
       label={language.employeeDiscount}
@@ -24,4 +24,4 @@ const MiniCardSummaryList = ({
   </div>
 );
 
-export default MiniCardSummaryList;
+export default MiniCartSummaryList;

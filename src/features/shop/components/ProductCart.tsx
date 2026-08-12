@@ -18,7 +18,7 @@ import ProductCartGridContent from './ProductCartGridContent';
 import ProductCartListContent from './ProductCartListContent';
 import SizeOverlay from './SizeOverlay';
 
-export type ProductCardProps = {
+export type ProductCartProps = {
   linkTo: string;
   product: BaseProduct;
   currentUser?: UserResponse | null;
@@ -36,7 +36,7 @@ const ProductCart = ({
   onOpenPanel,
   currentUser,
   isOutOfStock,
-}: ProductCardProps) => {
+}: ProductCartProps) => {
   const ariaLabelledby = useId();
   const { language } = useLanguage();
 

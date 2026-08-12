@@ -12,7 +12,7 @@ import { useAddToCartMutation } from '../features/cart/cartApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
 import { openMiniCart } from '../features/miniCartPopupSlice';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
-import ProductCard from '../features/shop/components/ProductCart';
+import ProductCart from '../features/shop/components/ProductCart';
 
 import { ShopPath } from '../layout/nav/enums';
 import { handleApiError } from '../utils/handleApiError';
@@ -126,7 +126,7 @@ const FavoritePage = () => {
         <ul className="product-card-list">
           {sortedFavorites.map((product) => (
             <li key={product.id}>
-              <ProductCard
+              <ProductCart
                 showSizeOverlay
                 product={product}
                 linkTo={`${ShopPath.AllProducts}/${product.id}`}
