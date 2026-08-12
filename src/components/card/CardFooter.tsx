@@ -1,5 +1,4 @@
 import { useLanguage } from '../../features/language/useLanguage';
-import LayoutElement from '../../layout/LayoutElement';
 import { BtnVariant } from '../../types/enums';
 import LinkButton from '../LinkButton';
 import type { PrimaryActionBtnProps } from '../modal/Modal';
@@ -25,11 +24,7 @@ const CardFooter = ({
   const { language } = useLanguage();
 
   return (
-    <LayoutElement
-      as="footer"
-      className="footer"
-      ariaLabel={language.productCard}
-    >
+    <footer className="footer">
       <ModalContainer
         triggerModalBtnContent={language.delete}
         triggerModalBtnVariant={BtnVariant.Danger}
@@ -46,7 +41,7 @@ const CardFooter = ({
         linkText={language.update}
         variant={BtnVariant.Primary}
       />
-    </LayoutElement>
+    </footer>
   );
 };
 
