@@ -4,14 +4,15 @@ import { useLanguage } from '../features/language/useLanguage';
 import { ShopPath } from '../layout/nav/enums';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
-const CreateUserPage = () => {
+const RegisterUserPage = () => {
   const { currentUser } = useAuth();
   const { language } = useLanguage();
   // const [createUser, { isLoading: isCreateuserLoading }] =
   //   useCreateUserMutation();
-
+  // user register
   return (
     <MainPageContainer heading={language.createAccount} variant="small">
+      user
       <CreateAccount
         navigateTo={ShopPath.Root}
         currentUser={currentUser}
@@ -21,4 +22,4 @@ const CreateUserPage = () => {
   );
 };
 
-export default CreateUserPage;
+export default RegisterUserPage;

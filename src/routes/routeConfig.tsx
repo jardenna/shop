@@ -15,7 +15,6 @@ import UpdateCategoryPage from '../pages/category/UpdateCategoryPage';
 import CheckoutPage from '../pages/CheckoutPage';
 import CollectionPage from '../pages/CollectionPage';
 import ContactPage from '../pages/ContactPage';
-import CreateUserPage from '../pages/CreateUserPage';
 import ErrorPage from '../pages/ErrorPage';
 import FavoritePage from '../pages/FavoritePage';
 import HomePage from '../pages/home/HomePage';
@@ -28,13 +27,14 @@ import ProductPage from '../pages/product/ProductPage';
 import UpdateProductPage from '../pages/product/UpdateProductPage';
 import ViewProductPage from '../pages/product/ViewProductPage';
 import ProtectedRoute from '../pages/ProtectedRoute';
+import RegisterUserPage from '../pages/RegisterUserPage';
 import ShoppingCartPage from '../pages/ShoppingCartPage';
 import SingleProductPage from '../pages/SingleProductPage';
 import CreateSubCategoryPage from '../pages/subCategory/CreateSubCategoryPage';
 import SubCategoryPage from '../pages/subCategory/SubCategoryPage';
 import UpdateSubCategoryPage from '../pages/subCategory/UpdateSubCategoryPage';
 import ViewSubCategoryPage from '../pages/subCategory/ViewSubCategoryPage';
-import RegisterUserPage from '../pages/users/RegisterUserPage';
+import CreateUserPage from '../pages/users/CreateUserPage';
 import UserPage from '../pages/users/UserPage';
 
 const routeList = [
@@ -72,7 +72,7 @@ const routeList = [
   },
   {
     path: ShopPath.CreateAccount,
-    element: <CreateUserPage />,
+    element: <RegisterUserPage />,
   },
   {
     path: ShopPath.ShoppingCart,
@@ -91,7 +91,7 @@ const adminRouteList = [
   },
   {
     path: AdminPath.AdminUserCreate,
-    element: <RegisterUserPage />,
+    element: <CreateUserPage />,
   },
   {
     path: AdminPath.AdminCategoryCreate,

@@ -4,12 +4,13 @@ import { useLanguage } from '../../features/language/useLanguage';
 import { AdminPath } from '../../layout/nav/enums';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
-const RegisterUserPage = () => {
+const CreateUserPage = () => {
   const { language } = useLanguage();
   const { currentUser } = useAuth();
-
+  // Admin Create user
   return (
     <AdminPageContainer heading={language.createNewUser} variant="small">
+      admin
       <CreateAccount
         navigateTo={AdminPath.AdminUser}
         currentUser={currentUser}
@@ -19,4 +20,4 @@ const RegisterUserPage = () => {
   );
 };
 
-export default RegisterUserPage;
+export default CreateUserPage;
