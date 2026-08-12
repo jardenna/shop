@@ -29,7 +29,9 @@ const HeaderIcons = ({
   const favoriteItemText =
     favorites && favorites.length === 1 ? language.item : language.items;
 
-  const { data: qty } = useGetTotalQtyQuery();
+  const { data: qty } = useGetTotalQtyQuery(undefined, {
+    skip: !currentUser,
+  });
 
   const totalQuantity = qty?.totalQuantity ?? 0;
 
