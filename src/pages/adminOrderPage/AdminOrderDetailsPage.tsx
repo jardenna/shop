@@ -1,7 +1,6 @@
 import { useParams } from 'react-router';
-import { Fragment } from 'react/jsx-runtime';
-import Icon from '../../components/icons/Icon';
 import NotFoundError from '../../components/NotFoundError';
+import ProgressTrackerNew from '../../components/progressTracker/ProgressTrackerNew';
 import SummaryList from '../../features/cart/components/SummaryList';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useGetAdminOrderByIdQuery } from '../../features/orders/adminOrderApiSlice';
@@ -44,30 +43,13 @@ const AdminOrderDetailsPage = () => {
     status: order?.delivery.status ?? 'created',
   };
 
-  const currentStatusIndex = orderTrackingList.findIndex(
-    ({ id }) => id === status.status,
-  );
   return (
     <AdminPageContainer
       heading={id ?? ''}
       linkText={language.createNewCategory}
       linkTo={AdminPath.AdminSubCategoryCreate}
     >
-      <ul className="progress-tracker">
-        {orderTrackingList.map(({ id, label, iconName }, index) => (
-          <Fragment key={id}>
-            <li className="step">
-              <span
-                className={`step-circle ${index <= currentStatusIndex ? 'completed' : ''} ${index === currentStatusIndex ? 'in-procsss' : ''}`}
-              >
-                <Icon iconName={iconName} aria-hidden />
-              </span>
-              <span className="step-label">{language[label]}</span>
-            </li>
-            <li className="step-line" />
-          </Fragment>
-        ))}
-      </ul>
+      <ProgressTrackerNew steps={orderTrackingList} status={status} />
 
       {order && (
         <article className="order-cart">
