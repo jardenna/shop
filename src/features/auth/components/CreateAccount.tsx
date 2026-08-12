@@ -10,17 +10,18 @@ import { AutoComplete } from '../../../types/types';
 import { handleApiError } from '../../../utils/handleApiError';
 import { validateSignup } from '../../../utils/validation/validateCreateAccount';
 import { useLanguage } from '../../language/useLanguage';
-import { useRegisterUserMutation } from '../authApiSlice';
 import AuthForm from './AuthForm';
 
-export type CreateAccountProps = {
+interface CreateAccountProps {
   currentUser: UserResponse | null;
+  isLoadingNew: boolean;
   navigateTo: string;
   autoComplete?: AutoComplete;
   canAssignRoles?: boolean;
-};
+  createUser?: any;
+}
 
-export type InitialState = AuthRequest & {
+type InitialState = AuthRequest & {
   confirmPassword: string;
 };
 
@@ -29,15 +30,17 @@ const CreateAccount = ({
   currentUser,
   canAssignRoles,
   autoComplete,
+  isLoadingNew,
+  createUser,
 }: CreateAccountProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
 
   const initialState: InitialState = {
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
+    username: 'TestNewUser',
+    email: 'testNew@mail.com',
+    password: 'Test123!',
+    confirmPassword: 'Test123!',
     role: 'User',
   };
 
@@ -50,14 +53,12 @@ const CreateAccount = ({
       validate: validateSignup,
     });
 
-  const [registerUser, { isLoading }] = useRegisterUserMutation();
-
   async function handleRegisterUser() {
     try {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { confirmPassword, ...rest } = values;
 
-      const result = await registerUser({
+      const result = await createUser({
         ...rest,
         role: rest.role,
       }).unwrap();
@@ -75,7 +76,7 @@ const CreateAccount = ({
       values={values}
       submitBtnLabel={language.createAccount}
       onSubmit={onSubmit}
-      isLoading={isLoading}
+      isLoading={isLoadingNew}
       legendText={language.userInfo}
       onChange={onChange}
       errors={errors}

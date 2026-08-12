@@ -1,3 +1,7 @@
+import bcrypt from 'bcryptjs';
+import User from '../models/userModel.js';
+import { t } from '../utils/translator.js';
+
 import { validateEmail, validatePassword } from '../validators/validateAuth.js';
 
 // @desc    Create a new user (Common for self-registration and admin creation)
@@ -11,14 +15,6 @@ export const createUserService = async ({
   role,
   language,
 }) => {
-  const userExists = await User.findOne({ email });
-
-  if (userExists) {
-    const error = new Error(t('userAlreadyExist', language));
-    error.statusCode = 400;
-    throw error;
-  }
-
   const emailResult = validateEmail(email, language);
 
   if (!emailResult.isValid) {
@@ -38,12 +34,21 @@ export const createUserService = async ({
   const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS) || 10;
   const hashPassword = await bcrypt.hash(password, saltRounds);
 
-  const newUser = await User.create({
-    username,
-    email,
-    password: hashPassword,
-    role,
-  });
+  try {
+    return await User.create({
+      username,
+      email,
+      password: hashPassword,
+      role,
+    });
+  } catch (error) {
+    if (error.code === 11000) {
+      const duplicateError = new Error(t('userAlreadyExist', language));
 
-  return newUser;
+      duplicateError.statusCode = 400;
+      throw duplicateError;
+    }
+
+    throw error;
+  }
 };
