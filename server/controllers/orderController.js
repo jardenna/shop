@@ -1,4 +1,3 @@
-import { DELIVERY_STATUS } from '../config/constants.js';
 import {
   PAYMENT_METHODS_LIST,
   PAYMENT_STATUS,
@@ -11,7 +10,6 @@ import User from '../models/userModel.js';
 import { buildOrderItems } from '../services/buildOrderItems.js';
 import { calculateCartSummary } from '../services/calculateCartSummary.js';
 import { getActiveDiscount } from '../services/getActiveDiscount.js';
-import { sortColumns } from '../utils/sortColumns.js';
 import { t } from '../utils/translator.js';
 import { validateFakePayment } from '../validators/validateFakePayment.js';
 import {
@@ -155,71 +153,6 @@ const createOrder = asyncHandler(async (req, res) => {
   res.status(201).json(createdOrder);
 });
 
-// @desc    Get all orders
-// @route   /api/orders
-// @method  Get
-// @access  Private for admin and employees
-const getAllOrders = asyncHandler(async (req, res) => {
-  const { page, ordersPerPage } = req.pagination;
-  const filter = req.filter;
-
-  const sortField = req.query.sortField;
-  const sortOrder = req.query.sortOrder === 'desc' ? -1 : 1;
-
-  const orders = await Order.find(filter || {})
-    .select([
-      '_id',
-      'createdAt',
-      'orderItems',
-      'summary.totalPrice',
-      'payment.method',
-      'payment.status',
-      'delivery.status',
-    ])
-    .populate({
-      path: 'user',
-      select: '_id username',
-    })
-    .sort({ createdAt: -1 });
-
-  const orderSortFields = {
-    customer: 'user.username',
-    totalPrice: 'summary.totalPrice',
-    paymentMethod: 'payment.method',
-    paymentStatus: 'payment.status',
-    deliveryStatus: 'delivery.status',
-  };
-
-  const sortedOrders = sortColumns({
-    collection: orders,
-    sortField: orderSortFields[sortField] ?? 'createdAt',
-    sortOrder,
-    language: req.lang,
-  });
-
-  const startIndex = ordersPerPage * (page - 1);
-  const paginatedOrders = sortedOrders.slice(
-    startIndex,
-    startIndex + ordersPerPage,
-  );
-
-  res.status(200).json({
-    success: true,
-    orders: paginatedOrders.map((order) => ({
-      id: order.id,
-      createdAt: order.createdAt,
-      customer: order.user?.username ?? '',
-      totalPrice: order.summary.totalPrice,
-      paymentMethod: order.payment.method,
-      paymentStatus: order.payment.status,
-      deliveryStatus: order.delivery.status,
-    })),
-    page,
-    pages: Math.ceil(sortedOrders.length / ordersPerPage),
-    orderCount: sortedOrders.length,
-  });
-});
-
 // @desc    Get order by Id
 // @route   /api/orders/id
 // @method  Get
@@ -244,25 +177,6 @@ const getOrderById = asyncHandler(async (req, res) => {
       success: false,
       message: t('orderNotFound', req.lang),
     });
-  }
-
-  res.status(200).json(order);
-});
-
-// @desc    Get admin order by ID
-// @route   GET /api/admin/orders/:id
-// @method  GET
-// @access  Private for admin and employees
-const getAdminOrderById = asyncHandler(async (req, res) => {
-  const order = await Order.findById(req.params.id).populate({
-    path: 'user',
-    select: '_id username',
-  });
-
-  if (!order) {
-    return res
-      .status(404)
-      .json({ success: false, message: t('orderNotFound', req.lang) });
   }
 
   res.status(200).json(order);
@@ -378,55 +292,4 @@ const payOrder = asyncHandler(async (req, res) => {
   res.status(200).json(updatedOrder);
 });
 
-// @desc    Deliver order
-// @route   /api/orders/:id/deliver
-// @method  Patch
-// @access  Private for admin and employees
-const deliverOrder = asyncHandler(async (req, res) => {
-  const order = await Order.findById(req.params.id);
-
-  if (!order) {
-    return res.status(404).json({
-      success: false,
-      message: t('orderNotFound', req.lang),
-    });
-  }
-
-  if (order.payment.status !== PAYMENT_STATUS.COMPLETED) {
-    return res.status(400).json({
-      success: false,
-      message: t('orderNotPaid', req.lang),
-    });
-  }
-
-  if (order.delivery.status === DELIVERY_STATUS.DELIVERED) {
-    return res.status(400).json({
-      success: false,
-      message: t('orderAllreadyDelivered', req.lang),
-    });
-  }
-
-  if (order.delivery.status !== DELIVERY_STATUS.SHIPPED) {
-    return res.status(400).json({
-      success: false,
-      message: t('orderMustBeShippedFirst', req.lang),
-    });
-  }
-
-  order.delivery.status = DELIVERY_STATUS.DELIVERED;
-  order.delivery.deliveredAt = new Date();
-
-  const updatedOrder = await order.save();
-
-  res.status(200).json(updatedOrder);
-});
-
-export {
-  createOrder,
-  deliverOrder,
-  getAdminOrderById,
-  getAllOrders,
-  getOrderById,
-  getUserOrders,
-  payOrder,
-};
+export { createOrder, getOrderById, getUserOrders, payOrder };

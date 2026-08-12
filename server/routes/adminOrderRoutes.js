@@ -3,7 +3,7 @@ import {
   deliverOrder,
   getAdminOrderById,
   getAllOrders,
-} from '../controllers/orderController.js';
+} from '../controllers/adminOrderController.js';
 import {
   authenticate,
   authorizeEmployee,
