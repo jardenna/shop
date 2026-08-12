@@ -9,7 +9,7 @@ import SizeList from '../../features/shop/components/productLists/SizeList';
 import CardContent from '../card/CardContent';
 import LabelValueGrid from '../labelValueGrid/LabelValueGrid';
 
-type ProductCardCenterProps = {
+type ProductCartCenterProps = {
   availableSizeList: Size[];
   brand: string;
   categoryName: MainCategoryNames;
@@ -21,7 +21,7 @@ type ProductCardCenterProps = {
   onReset: () => void;
 };
 
-const ProductCardCenter = ({
+const ProductCartCenter = ({
   brand,
   colours,
   discount,
@@ -31,7 +31,7 @@ const ProductCardCenter = ({
   countInStock,
   categoryName,
   subCategoryName,
-}: ProductCardCenterProps) => {
+}: ProductCartCenterProps) => {
   const { language } = useLanguage();
 
   return (
@@ -66,4 +66,4 @@ const ProductCardCenter = ({
   );
 };
 
-export default ProductCardCenter;
+export default ProductCartCenter;

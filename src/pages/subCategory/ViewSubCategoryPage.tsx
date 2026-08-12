@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from 'react-router';
-import CategoryCard from '../../components/adminCard/CategoryCard';
+import CategoryCart from '../../components/adminCart/CategoryCart';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import NotFoundError from '../../components/NotFoundError';
 import SkeletonTwoCarts from '../../components/skeleton/SkeletonTwoCarts';
@@ -77,7 +77,7 @@ const ViewSubCategoryPage = () => {
           linkTo={AdminPath.AdminSubCategoryCreate}
           variant="medium"
         >
-          <CategoryCard
+          <CategoryCart
             onReset={() => refetch()}
             onDeleteSubCategory={handleDeleteSubCategory}
             categoryId={category.id}

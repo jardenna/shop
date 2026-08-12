@@ -1,21 +1,21 @@
 import { Status } from '../../app/api/apiTypes/adminApiTypes';
 import AdminBadge from '../../features/products/components/AdminBadge';
 
-type AdminCardHeadingProps = {
+interface AdminCartHeadingProps {
   name: string;
   scheduledDate: Date | null;
   status: Status;
-};
+}
 
-const AdminCardHeading = ({
+const AdminCartHeading = ({
   scheduledDate,
   name,
   status,
-}: AdminCardHeadingProps) => (
+}: AdminCartHeadingProps) => (
   <div className="admin-card-left-content">
     <p className="admin-card-left-title">{name}</p>
     <AdminBadge status={status} scheduledDate={scheduledDate || null} />
   </div>
 );
 
-export default AdminCardHeading;
+export default AdminCartHeading;

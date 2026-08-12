@@ -6,9 +6,9 @@ import { translateKey } from '../../utils/utils';
 import CardFooter from '../card/CardFooter';
 import CardRight from '../card/CardRight';
 import type { PrimaryActionBtnProps } from '../modal/Modal';
-import CategoryCardLeft from './CategoryCardLeft';
+import CategoryCartLeft from './CategoryCartLeft';
 
-type CategoryCardProps = {
+type CategoryCartProps = {
   categoryId: string;
   categoryName: string;
   productsInSubcategory: number;
@@ -22,7 +22,7 @@ type CategoryCardProps = {
   onReset: () => void;
 };
 
-const CategoryCard = ({
+const CategoryCart = ({
   subCategoryName,
   productsInSubcategory,
   categoryName,
@@ -34,7 +34,7 @@ const CategoryCard = ({
   onDeleteSubCategory,
   onReset,
   triggerModalDisabled,
-}: CategoryCardProps) => {
+}: CategoryCartProps) => {
   const { language } = useLanguage();
 
   const primaryActionBtn: PrimaryActionBtnProps = {
@@ -45,7 +45,7 @@ const CategoryCard = ({
 
   return (
     <section className="two-col admin-card-container">
-      <CategoryCardLeft
+      <CategoryCartLeft
         name={subCategoryName}
         status={status}
         productsInSubcategory={productsInSubcategory}
@@ -72,4 +72,4 @@ const CategoryCard = ({
   );
 };
 
-export default CategoryCard;
+export default CategoryCart;

@@ -1,9 +1,9 @@
 import type { Status } from '../../app/api/apiTypes/adminApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
 import CardContent from '../card/CardContent';
-import AdminCardHeading from './AdminCardHeading';
+import AdminCardHeading from './AdminCartHeading';
 
-type CategoryCardLeftProps = {
+type CategoryCartLeftProps = {
   name: string;
   productsInSubcategory: number;
   scheduledDate: Date | null;
@@ -11,13 +11,13 @@ type CategoryCardLeftProps = {
   onReset: () => void;
 };
 
-const CategoryCardLeft = ({
+const CategoryCartLeft = ({
   status,
   scheduledDate,
   productsInSubcategory,
   name,
   onReset,
-}: CategoryCardLeftProps) => {
+}: CategoryCartLeftProps) => {
   const { language } = useLanguage();
 
   return (
@@ -34,4 +34,4 @@ const CategoryCardLeft = ({
   );
 };
 
-export default CategoryCardLeft;
+export default CategoryCartLeft;

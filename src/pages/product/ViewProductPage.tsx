@@ -1,6 +1,5 @@
 import { useNavigate, useParams } from 'react-router';
-import ProductCardCenter from '../../components/adminCard/ProductCardCenter';
-import ProductCardLeft from '../../components/adminCard/ProductCardLeft';
+import ProductCardCenter from '../../components/adminCart/ProductCartCenter';
 import CardFooter from '../../components/card/CardFooter';
 import CardRight from '../../components/card/CardRight';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
@@ -17,6 +16,7 @@ import { BtnVariant } from '../../types/enums';
 import { handleApiError } from '../../utils/handleApiError';
 import { translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
+import ProductCartLeft from '../../components/adminCart/ProductCartLeft';
 
 const ViewProductPage = () => {
   const { id } = useParams();
@@ -96,7 +96,7 @@ const ViewProductPage = () => {
           linkTo={AdminPath.AdminProductCreate}
         >
           <section className="three-col admin-card-container">
-            <ProductCardLeft
+            <ProductCartLeft
               name={product.productName}
               scheduledDate={product.scheduledDate || null}
               status={product.productStatus}
