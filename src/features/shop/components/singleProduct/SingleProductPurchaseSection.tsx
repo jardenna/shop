@@ -20,7 +20,7 @@ import { addCartItem, replaceCartItem } from '../../../cartSlice';
 import { useLanguage } from '../../../language/useLanguage';
 import { openMiniCart } from '../../../miniCartPopupSlice';
 import { cartUtils, getTotalCartQuantity } from '../../cartUtils';
-import CartForm, { InitialShopValues } from './CartFormNew';
+import CartForm, { InitialShopValues } from './CartForm';
 import SingleProductPanel, { PopupData } from './SingleProductPanel';
 
 interface SingleProductPurchaseSectionProps {
