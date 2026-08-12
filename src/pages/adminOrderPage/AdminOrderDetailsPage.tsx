@@ -1,6 +1,6 @@
 import { useParams } from 'react-router';
 import NotFoundError from '../../components/NotFoundError';
-import StatusTracker from '../../components/statusTracker/StatusTracker';
+import ProgressTracker from '../../components/progressTracker/ProgressTracker';
 import SummaryList from '../../features/cart/components/SummaryList';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useGetAdminOrderByIdQuery } from '../../features/orders/adminOrderApiSlice';
@@ -49,7 +49,7 @@ const AdminOrderDetailsPage = () => {
       linkText={language.createNewCategory}
       linkTo={AdminPath.AdminSubCategoryCreate}
     >
-      <StatusTracker steps={orderTrackingList} status={status} />
+      <ProgressTracker steps={orderTrackingList} status={status} />
       {order && (
         <article className="order-cart">
           <article className="summary-items">

@@ -2,7 +2,7 @@ import { useLanguage } from '../../features/language/useLanguage';
 import { orderTrackingList } from '../../features/orders/utils/createTrackingList';
 import { IconName } from '../../types/enums';
 import Icon from '../icons/Icon';
-import './_status-tracker.scss';
+import './_progress-tracker.scss';
 
 interface Status {
   status: string;
@@ -14,12 +14,12 @@ interface TrackingList {
   label: string;
 }
 
-interface StatusTrackerProps {
+interface ProgressTrackerProps {
   status: Status;
   steps: TrackingList[];
 }
 
-const StatusTracker = ({ steps, status }: StatusTrackerProps) => {
+const ProgressTracker = ({ steps, status }: ProgressTrackerProps) => {
   const { language } = useLanguage();
 
   const currentStatusIndex = orderTrackingList.findIndex(
@@ -42,4 +42,4 @@ const StatusTracker = ({ steps, status }: StatusTrackerProps) => {
   );
 };
 
-export default StatusTracker;
+export default ProgressTracker;
