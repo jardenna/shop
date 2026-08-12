@@ -11,10 +11,8 @@ const CreateUserPage = () => {
 
   const [createUser, { isLoading }] = useCreateUserMutation();
 
-  // Admin Create user
   return (
     <AdminPageContainer heading={language.createNewUser} variant="small">
-      admin
       <CreateAccount
         navigateTo={AdminPath.AdminUser}
         currentUser={currentUser}

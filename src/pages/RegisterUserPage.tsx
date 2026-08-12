@@ -8,10 +8,8 @@ const RegisterUserPage = () => {
   const { language } = useLanguage();
   const [registerUser, { isLoading }] = useRegisterUserMutation();
 
-  // user register
   return (
     <MainPageContainer heading={language.createAccount} variant="small">
-      user
       <CreateAccount
         navigateTo={ShopPath.Root}
         currentUser={null}
