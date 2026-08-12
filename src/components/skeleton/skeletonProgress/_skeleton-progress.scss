@@ -30,7 +30,7 @@ $tracking-base-color: $color-gray-60;
   .step-line {
     flex: 1;
     height: 1px;
-    background: #e2e2e2;
+    background-color: #e2e2e2;
     margin: 0 12px;
     align-self: flex-start;
     margin-top: math.div($tracking-base-size, 2);
