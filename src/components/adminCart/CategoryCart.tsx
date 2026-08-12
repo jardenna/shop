@@ -3,8 +3,8 @@ import { useLanguage } from '../../features/language/useLanguage';
 import { AdminPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
 import { translateKey } from '../../utils/utils';
-import CardFooter from '../cart/CartFooter';
-import CardRight from '../cart/CartRight';
+import CartFooter from '../cart/CartFooter';
+import CartRight from '../cart/CartRight';
 import type { PrimaryActionBtnProps } from '../modal/Modal';
 import CategoryCartLeft from './CategoryCartLeft';
 
@@ -52,7 +52,7 @@ const CategoryCart = ({
         scheduledDate={scheduledDate}
         onReset={onReset}
       />
-      <CardRight
+      <CartRight
         linkTo={AdminPath.AdminCategories}
         heading={`${language.categoryName}: ${translateKey(categoryName, language)}`}
         name={subCategoryName}
@@ -60,7 +60,7 @@ const CategoryCart = ({
         statusMessage={`${language.parentCategoryIs} ${translateKey(statusMessage, language)}`}
         onReset={onReset}
       />
-      <CardFooter
+      <CartFooter
         id={categoryId}
         primaryActionBtn={primaryActionBtn}
         name={subCategoryName}

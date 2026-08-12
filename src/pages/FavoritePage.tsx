@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { useAppDispatch } from '../app/hooks.ts';
+import { useAppDispatch } from '../app/hooks';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useFavorites } from '../components/favorites/useFavorites';
 import { useMessagePopup } from '../components/messagePopup/useMessagePopup';
@@ -10,18 +10,19 @@ import { useTogglePanel } from '../components/togglePanel/useTogglePanel';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useAddToCartMutation } from '../features/cart/cartApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
-import { openMiniCart } from '../features/miniCartPopupSlice.ts';
+import { openMiniCart } from '../features/miniCartPopupSlice';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
-import ProductCard from '../features/shop/components/ProductCard';
-import CartForm, {
-  InitialShopValues,
-} from '../features/shop/components/singleProduct/CartForm.tsx';
+import ProductCard from '../features/shop/components/ProductCart';
+
 import { ShopPath } from '../layout/nav/enums';
 import { handleApiError } from '../utils/handleApiError';
 import './FavoritesPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
-import FavoritesPanelCart from '../features/favorites/components/FavoritesPanelCart.tsx';
+import FavoritesPanelCart from '../features/favorites/components/FavoritesPanelCart';
+import CartForm, {
+  InitialShopValues,
+} from '../features/shop/components/singleProduct/CartForm';
 
 const FavoritePage = () => {
   const { language } = useLanguage();

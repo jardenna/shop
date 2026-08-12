@@ -13,9 +13,9 @@ import VisuallyHidden from '../../../components/VisuallyHidden';
 import { BtnVariant } from '../../../types/enums';
 import { useLanguage } from '../../language/useLanguage';
 import NotifyMe from './NotifyMe';
-import './ProductCard.styles.scss';
-import ProductCardGridContent from './ProductCardGridContent';
-import ProductCardListContent from './ProductCardListContent';
+import './ProductCart.styles.scss';
+import ProductCartGridContent from './ProductCartGridContent';
+import ProductCartListContent from './ProductCartListContent';
 import SizeOverlay from './SizeOverlay';
 
 export type ProductCardProps = {
@@ -28,7 +28,7 @@ export type ProductCardProps = {
   onOpenPanel?: (id: string) => void;
 };
 
-const ProductCard = ({
+const ProductCart = ({
   product,
   showSizeOverlay,
   productView = '',
@@ -76,9 +76,9 @@ const ProductCard = ({
           </h2>
           <div className="product-card-info">
             {productView === 'list' ? (
-              <ProductCardListContent product={product as BaseShopProduct} />
+              <ProductCartListContent product={product as BaseShopProduct} />
             ) : (
-              <ProductCardGridContent product={product} />
+              <ProductCartGridContent product={product} />
             )}
           </div>
         </Link>
@@ -108,4 +108,4 @@ const ProductCard = ({
   );
 };
 
-export default ProductCard;
+export default ProductCart;

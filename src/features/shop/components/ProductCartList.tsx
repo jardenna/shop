@@ -1,7 +1,7 @@
 import { useParams } from 'react-router';
-import type { OmitChecked } from '../../../types/types';
-import ProductCard, { type ProductCardProps } from './ProductCard';
 import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
+import type { OmitChecked } from '../../../types/types';
+import ProductCart, { type ProductCardProps } from './ProductCart';
 
 type OmitteProductCardProps = OmitChecked<
   ProductCardProps,
@@ -23,7 +23,7 @@ const ProductCardList = ({
     <ul className={`product-card-list ${productView}`}>
       {products.map((product) => (
         <li key={product.id}>
-          <ProductCard
+          <ProductCart
             showSizeOverlay={showSizeOverlay}
             productView={productView}
             linkTo={categoryId ? product.id : `all-products/${product.id}`}
