@@ -58,7 +58,7 @@ const MiniCartPopup = () => {
     : '';
 
   return (
-    <Portal portalId="miniCard">
+    <Portal portalId="miniCart">
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={() => refetchApiCartList()}

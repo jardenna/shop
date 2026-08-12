@@ -18,7 +18,7 @@ import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import FilterPanel, {
   InitialFilters,
 } from '../features/shop/components/FilterPanel';
-import ProductCardList from '../features/shop/components/ProductCardList';
+import ProductCartList from '../features/shop/components/ProductCartList';
 import ProductToolbar from '../features/shop/components/ProductToolbar';
 import { useSubMenu } from '../features/shop/hooks/useSubMenu';
 import { useGetProductsQuery } from '../features/shop/shopApiSlice';
@@ -252,7 +252,7 @@ const CollectionPage = () => {
                   onClearSingleFilter={onClearSingleFilter}
                 />
               </div>
-              <ProductCardList
+              <ProductCartList
                 products={products.products}
                 productView={productView}
                 showSizeOverlay={productView !== 'list'}

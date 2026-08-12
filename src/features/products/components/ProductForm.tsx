@@ -45,7 +45,7 @@ import {
   useCreateProductMutation,
   useUpdateProductMutation,
 } from '../productApiSlice';
-import FormCard from './FormCard';
+import FormCart from './FormCart';
 import ImageUpload from './ImageUpload';
 import './productForm.styles.scss';
 
@@ -276,7 +276,7 @@ const ProductForm = ({
     >
       <div className="product-form-container">
         <div className="product-form-left-column">
-          <FormCard legendText={language.category} onReset={onReset}>
+          <FormCart legendText={language.category} onReset={onReset}>
             <Selectbox
               errorText={language[errors.subCategory]}
               id="subCategory"
@@ -291,8 +291,8 @@ const ProductForm = ({
               }}
               required
             />
-          </FormCard>
-          <FormCard
+          </FormCart>
+          <FormCart
             legendText={`${language.productImages} (${language.maximum} ${maxFiles})`}
             onReset={onReset}
           >
@@ -306,8 +306,8 @@ const ProductForm = ({
               }}
               disabledImages={disabledImages}
             />
-          </FormCard>
-          <FormCard legendText={language.productInformation} onReset={onReset}>
+          </FormCart>
+          <FormCart legendText={language.productInformation} onReset={onReset}>
             <Input
               value={values.productName}
               id="productName"
@@ -346,10 +346,10 @@ const ProductForm = ({
                 required
               />
             </div>
-          </FormCard>
+          </FormCart>
         </div>
         <div className="product-form-right-column">
-          <FormCard legendText={language.productVariants} onReset={onReset}>
+          <FormCart legendText={language.productVariants} onReset={onReset}>
             <Selectbox
               id="colors"
               name="colors"
@@ -382,8 +382,8 @@ const ProductForm = ({
                 errorText: language[errors.sizes],
               }}
             />
-          </FormCard>
-          <FormCard legendText={language.pricing} onReset={onReset}>
+          </FormCart>
+          <FormCart legendText={language.pricing} onReset={onReset}>
             <div className="product-form-2-columns">
               <Input
                 type="number"
@@ -428,8 +428,8 @@ const ProductForm = ({
                 />
               )}
             </div>
-          </FormCard>
-          <FormCard legendText={language.details} onReset={onReset}>
+          </FormCart>
+          <FormCart legendText={language.details} onReset={onReset}>
             <StatusInputs
               labelText={language.productStatus}
               ref={formRef}
@@ -462,7 +462,7 @@ const ProductForm = ({
                 {selectedProduct.countInStock} {language.pcs}
               </LabelValueGrid>
             )}
-          </FormCard>
+          </FormCart>
         </div>
       </div>
     </Form>

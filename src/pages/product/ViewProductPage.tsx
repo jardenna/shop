@@ -1,12 +1,12 @@
 import { useNavigate, useParams } from 'react-router';
-import ProductCardCenter from '../../components/adminCard/ProductCardCenter';
-import ProductCardLeft from '../../components/adminCard/ProductCardLeft';
-import CardFooter from '../../components/card/CardFooter';
-import CardRight from '../../components/card/CardRight';
+import ProductCartCenter from '../../components/adminCart/ProductCartCenter';
+import ProductCartLeft from '../../components/adminCart/ProductCartLeft';
+import CartFooter from '../../components/cart/CartFooter';
+import CartRight from '../../components/cart/CartRight';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import NotFoundError from '../../components/NotFoundError';
-import SkeletonThreeCards from '../../components/skeleton/SkeletonThreeCards';
+import SkeletonThreeCarts from '../../components/skeleton/SkeletonThreeCarts';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
   useDeleteProductMutation,
@@ -87,7 +87,7 @@ const ViewProductPage = () => {
 
   return (
     <>
-      {isLoading && <SkeletonThreeCards />}
+      {isLoading && <SkeletonThreeCarts />}
 
       {product && (
         <AdminPageContainer
@@ -96,7 +96,7 @@ const ViewProductPage = () => {
           linkTo={AdminPath.AdminProductCreate}
         >
           <section className="three-col admin-card-container">
-            <ProductCardLeft
+            <ProductCartLeft
               name={product.productName}
               scheduledDate={product.scheduledDate || null}
               status={product.productStatus}
@@ -106,7 +106,7 @@ const ViewProductPage = () => {
               discount={product.discount || 0}
               onReset={() => refetch()}
             />
-            <ProductCardCenter
+            <ProductCartCenter
               countInStock={product.countInStock}
               brand={product.brand}
               colours={product.colors}
@@ -117,7 +117,7 @@ const ViewProductPage = () => {
               categoryName={product.categoryName}
               subCategoryName={product.subCategoryName}
             />
-            <CardRight
+            <CartRight
               linkTo={AdminPath.AdminSubCategories}
               heading={heading}
               onReset={() => refetch()}
@@ -127,7 +127,7 @@ const ViewProductPage = () => {
               }
               statusMessage={statusMessage}
             />
-            <CardFooter
+            <CartFooter
               id={product.id}
               primaryActionBtn={primaryActionBtn}
               name={product.productName}

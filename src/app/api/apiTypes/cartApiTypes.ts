@@ -51,7 +51,7 @@ export interface UpdateCartRequest {
   cartItemId: string;
 }
 
-export interface GuestCardResponse {
+export interface GuestCartResponse {
   missingProductIds: string[];
   products: Order[];
 }

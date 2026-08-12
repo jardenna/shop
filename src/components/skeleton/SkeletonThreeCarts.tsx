@@ -6,7 +6,7 @@ import SkeletonGrid from './SkeletonGrid';
 import SkeletonHeader from './SkeletonHeader';
 import SkeletonParagraph from './SkeletonParagraph';
 
-const SkeletonThreeCards = () => (
+const SkeletonThreeCarts = () => (
   <div className="skeleton-column">
     <SkeletonParagraph count={1} width="24" />
     <SkeletonHeader />
@@ -34,4 +34,4 @@ const SkeletonThreeCards = () => (
   </div>
 );
 
-export default SkeletonThreeCards;
+export default SkeletonThreeCarts;

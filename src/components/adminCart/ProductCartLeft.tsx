@@ -1,13 +1,13 @@
 import type { Status } from '../../app/api/apiTypes/adminApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
 import ProductPrice from '../../features/shop/components/productPrice/ProductPrice';
-import CardContent from '../card/CardContent';
+import CartContent from '../cart/CartContent';
 import MissingImage from '../formElements/fileInput/MissingImage';
 import ImgList from '../ImgList';
 import LabelValueGrid from '../labelValueGrid/LabelValueGrid';
-import AdminCardHeading from './AdminCardHeading';
+import AdminCartHeading from './AdminCartHeading';
 
-type ProductCardLeftProps = {
+type ProductCartLeftProps = {
   description: string;
   discount: number;
   images: string[];
@@ -18,7 +18,7 @@ type ProductCardLeftProps = {
   onReset: () => void;
 };
 
-const ProductCardLeft = ({
+const ProductCartLeft = ({
   status,
   name,
   scheduledDate,
@@ -27,17 +27,17 @@ const ProductCardLeft = ({
   onReset,
   price,
   discount,
-}: ProductCardLeftProps) => {
+}: ProductCartLeftProps) => {
   const { language } = useLanguage();
 
   return (
-    <CardContent onReset={onReset} className="left">
+    <CartContent onReset={onReset} className="left">
       {images.length > 0 ? (
         <ImgList images={images} onReset={onReset} />
       ) : (
         <MissingImage />
       )}
-      <AdminCardHeading
+      <AdminCartHeading
         status={status}
         scheduledDate={scheduledDate || null}
         name={name}
@@ -46,8 +46,8 @@ const ProductCardLeft = ({
       <LabelValueGrid text={language.price}>
         <ProductPrice price={price} discount={discount} />
       </LabelValueGrid>
-    </CardContent>
+    </CartContent>
   );
 };
 
-export default ProductCardLeft;
+export default ProductCartLeft;

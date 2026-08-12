@@ -3,31 +3,31 @@ import {
   PaymentFormValues,
   PaymentMethodField,
   PaymentMethods,
-} from '../../../../app/api/apiTypes/paymentApiTypes';
+} from '../../../app/api/apiTypes/paymentApiTypes';
 
-import FieldSet from '../../../../components/fieldset/FieldSet';
-import Form from '../../../../components/form/Form';
-import Input from '../../../../components/formElements/Input';
-import { useMessagePopup } from '../../../../components/messagePopup/useMessagePopup';
-import { useFormValidation } from '../../../../hooks/useFormValidation';
-import { ShopPath } from '../../../../layout/nav/enums';
-import { ChangeInputType, InputType } from '../../../../types/types';
-import { handleApiError } from '../../../../utils/handleApiError';
-import { validatePayment } from '../../../../utils/validation/validatePayment';
-import { useDeleteCartMutation } from '../../../cart/cartApiSlice';
+import FieldSet from '../../../components/fieldset/FieldSet';
+import Form from '../../../components/form/Form';
+import Input from '../../../components/formElements/Input';
+import { useMessagePopup } from '../../../components/messagePopup/useMessagePopup';
+import { useFormValidation } from '../../../hooks/useFormValidation';
+import { ShopPath } from '../../../layout/nav/enums';
+import { ChangeInputType, InputType } from '../../../types/types';
+import { handleApiError } from '../../../utils/handleApiError';
+import { validatePayment } from '../../../utils/validation/validatePayment';
+import { useDeleteCartMutation } from '../../cart/cartApiSlice';
 import {
   useCreateOrderMutation,
   usePayOrderMutation,
-} from '../../../orders/orderApiSlice';
-import { formatExpiryDate } from '../formatExpiryDateUtil';
-import { BasePaymentProps } from '../Payment';
+} from '../../orders/orderApiSlice';
+import { formatExpiryDate } from './formatExpiryDateUtil';
+import { BasePaymentProps } from './Payment';
 
-interface CardFormProps extends BasePaymentProps {
+interface PaymentCardFormProps extends BasePaymentProps {
   fields: PaymentMethodField[];
   paymentMethod: string;
 }
 
-const CardForm = ({
+const PaymentCardForm = ({
   fields,
   language,
   checkout,
@@ -35,7 +35,7 @@ const CardForm = ({
   addressSectionRef,
   addAddressButtonRef,
   addressLength,
-}: CardFormProps) => {
+}: PaymentCardFormProps) => {
   const navigate = useNavigate();
   const { onAddMessagePopup } = useMessagePopup();
   const initialValues: PaymentFormValues = {
@@ -46,7 +46,7 @@ const CardForm = ({
     cardholderName: '',
     paypalEmail: '',
     paypalPassword: '',
-    mobilePhoneNumber: '12121212',
+    mobilePhoneNumber: '',
   };
 
   const { values, onChange, onSubmit, errors } = useFormValidation({
@@ -162,4 +162,4 @@ const CardForm = ({
   );
 };
 
-export default CardForm;
+export default PaymentCardForm;

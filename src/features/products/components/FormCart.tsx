@@ -3,13 +3,13 @@ import { ErrorBoundary } from 'react-error-boundary';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import FieldSet from '../../../components/fieldset/FieldSet';
 
-type FormCardProps = {
+type FormCartProps = {
   children: ReactNode;
   legendText: string;
   onReset: () => void;
 };
 
-const FormCard = ({ children, legendText, onReset }: FormCardProps) => (
+const FormCart = ({ children, legendText, onReset }: FormCartProps) => (
   <div className="form-card">
     <FieldSet legendText={legendText}>
       <ErrorBoundary
@@ -22,4 +22,4 @@ const FormCard = ({ children, legendText, onReset }: FormCardProps) => (
   </div>
 );
 
-export default FormCard;
+export default FormCart;

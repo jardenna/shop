@@ -5,7 +5,7 @@ import SkeletonButton from './SkeletonButton';
 import SkeletonHeader from './SkeletonHeader';
 import SkeletonParagraph from './SkeletonParagraph';
 
-const SkeletonTwoCards = () => (
+const SkeletonTwoCarts = () => (
   <div className="skeleton-column  page-medium">
     <SkeletonBreadCrumbs />
     <SkeletonHeader />
@@ -30,4 +30,4 @@ const SkeletonTwoCards = () => (
   </div>
 );
 
-export default SkeletonTwoCards;
+export default SkeletonTwoCarts;

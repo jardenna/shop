@@ -1,5 +1,5 @@
 import Skeleton from '../../components/skeleton/Skeleton';
-import SkeletonCardList from '../../components/skeleton/skeletonCardList/SkeletonCardList';
+import SkeletonCartList from '../../components/skeleton/skeletonCardList/SkeletonCartList';
 import { useAuth } from '../../features/auth/hooks/useAuth';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useGetAddressesQuery } from '../../features/profile/addressesApiSlice';
@@ -14,9 +14,9 @@ const AddressPage = () => {
     <>
       <p>{language.addOrManageAddress}</p>
       {isLoading && (
-        <SkeletonCardList count={3} className="small-card">
+        <SkeletonCartList count={3} className="small-card">
           <Skeleton />
-        </SkeletonCardList>
+        </SkeletonCartList>
       )}
 
       {addresses && (

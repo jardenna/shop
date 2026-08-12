@@ -1,9 +1,9 @@
 import { useLanguage } from '../../features/language/useLanguage';
 import { BtnVariant } from '../../types/enums';
 import LinkButton from '../LinkButton';
-import CardContent from './CardContent';
+import CartContent from './CartContent';
 
-type CardRightProps = {
+type CartRightProps = {
   heading: string;
   linkTo: string;
   name: string;
@@ -12,18 +12,18 @@ type CardRightProps = {
   onReset: () => void;
 };
 
-const CardRight = ({
+const CartRight = ({
   linkTo,
   heading,
   name,
   showStatusMessage,
   statusMessage,
   onReset,
-}: CardRightProps) => {
+}: CartRightProps) => {
   const { language } = useLanguage();
 
   return (
-    <CardContent className="right" heading={heading} onReset={onReset}>
+    <CartContent className="right" heading={heading} onReset={onReset}>
       {showStatusMessage && (
         <>
           <div>
@@ -39,8 +39,8 @@ const CardRight = ({
           />
         </>
       )}
-    </CardContent>
+    </CartContent>
   );
 };
 
-export default CardRight;
+export default CartRight;

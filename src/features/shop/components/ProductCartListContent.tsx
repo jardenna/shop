@@ -3,11 +3,11 @@ import ColorList from './productLists/ColorList';
 import SizeList from './productLists/SizeList';
 import ProductPrice from './productPrice/ProductPrice';
 
-type ProductCardListContentProps = {
+type ProductCartListContentProps = {
   product: BaseShopProduct;
 };
 
-const ProductCardListContent = ({ product }: ProductCardListContentProps) => (
+const ProductCartListContent = ({ product }: ProductCartListContentProps) => (
   <>
     <p className="product-card-description">{product.description}</p>
     <ProductPrice price={product.price} discount={product.discount} />
@@ -20,4 +20,4 @@ const ProductCardListContent = ({ product }: ProductCardListContentProps) => (
   </>
 );
 
-export default ProductCardListContent;
+export default ProductCartListContent;

@@ -3,12 +3,12 @@ import { useLanguage } from '../../features/language/useLanguage';
 import { AdminPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
 import { translateKey } from '../../utils/utils';
-import CardFooter from '../card/CardFooter';
-import CardRight from '../card/CardRight';
+import CartFooter from '../cart/CartFooter';
+import CartRight from '../cart/CartRight';
 import type { PrimaryActionBtnProps } from '../modal/Modal';
-import CategoryCardLeft from './CategoryCardLeft';
+import CategoryCartLeft from './CategoryCartLeft';
 
-type CategoryCardProps = {
+type CategoryCartProps = {
   categoryId: string;
   categoryName: string;
   productsInSubcategory: number;
@@ -22,7 +22,7 @@ type CategoryCardProps = {
   onReset: () => void;
 };
 
-const CategoryCard = ({
+const CategoryCart = ({
   subCategoryName,
   productsInSubcategory,
   categoryName,
@@ -34,7 +34,7 @@ const CategoryCard = ({
   onDeleteSubCategory,
   onReset,
   triggerModalDisabled,
-}: CategoryCardProps) => {
+}: CategoryCartProps) => {
   const { language } = useLanguage();
 
   const primaryActionBtn: PrimaryActionBtnProps = {
@@ -45,14 +45,14 @@ const CategoryCard = ({
 
   return (
     <section className="two-col admin-card-container">
-      <CategoryCardLeft
+      <CategoryCartLeft
         name={subCategoryName}
         status={status}
         productsInSubcategory={productsInSubcategory}
         scheduledDate={scheduledDate}
         onReset={onReset}
       />
-      <CardRight
+      <CartRight
         linkTo={AdminPath.AdminCategories}
         heading={`${language.categoryName}: ${translateKey(categoryName, language)}`}
         name={subCategoryName}
@@ -60,7 +60,7 @@ const CategoryCard = ({
         statusMessage={`${language.parentCategoryIs} ${translateKey(statusMessage, language)}`}
         onReset={onReset}
       />
-      <CardFooter
+      <CartFooter
         id={categoryId}
         primaryActionBtn={primaryActionBtn}
         name={subCategoryName}
@@ -72,4 +72,4 @@ const CategoryCard = ({
   );
 };
 
-export default CategoryCard;
+export default CategoryCart;

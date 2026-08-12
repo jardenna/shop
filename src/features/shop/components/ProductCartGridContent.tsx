@@ -2,15 +2,15 @@ import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import ColorList from './productLists/ColorList';
 import ProductPrice from './productPrice/ProductPrice';
 
-type ProductCardGridContentProps = {
+interface ProductCartGridContentProps {
   product: BaseProduct;
-};
+}
 
-const ProductCardGridContent = ({ product }: ProductCardGridContentProps) => (
+const ProductCartGridContent = ({ product }: ProductCartGridContentProps) => (
   <>
     <ProductPrice price={product.price} discount={product.discount} />
     <ColorList colors={product.colors} variant="mini" count={3} />
   </>
 );
 
-export default ProductCardGridContent;
+export default ProductCartGridContent;
