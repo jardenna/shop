@@ -1,0 +1,58 @@
+@use '../../scss/globals' as *;
+@use 'sass:math';
+
+$tracking-base-size: rem(60px);
+$tracking-base-color: $color-gray-60;
+
+.progress-tracker {
+  display: flex;
+  align-items: center;
+
+  .tracker-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  .tracker-step-circle {
+    width: $tracking-base-size;
+    height: $tracking-base-size;
+    display: flex;
+    border-radius: 50%;
+    background-color: $color-white;
+    border: $border-dark;
+    align-items: center;
+    justify-content: center;
+
+    &.completed {
+      background-color: $tracking-base-color;
+      color: $color-white;
+    }
+
+    &.in-progress {
+      background-color: $color-blue-25;
+      color: $color-white;
+      border-color: $color-blue-25;
+      box-shadow: $box-shadow;
+    }
+  }
+
+  .tracker-step-line {
+    flex: 1;
+    height: 1px;
+    background-color: $tracking-base-color;
+    margin: 0 12px;
+    align-self: flex-start;
+    margin-top: math.div($tracking-base-size, 2);
+
+    &:last-child {
+      display: none;
+    }
+
+    @include max-size($mini) {
+      margin-inline: 0;
+    }
+  }
+}
