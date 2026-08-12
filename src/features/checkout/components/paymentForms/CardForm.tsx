@@ -46,7 +46,7 @@ const CardForm = ({
     cardholderName: '',
     paypalEmail: '',
     paypalPassword: '',
-    mobilePhoneNumber: '12121212',
+    mobilePhoneNumber: '',
   };
 
   const { values, onChange, onSubmit, errors } = useFormValidation({
