@@ -1,15 +1,15 @@
 @use '../scss/globals' as *;
 
 .favorite-page {
-  .product-card-list {
+  .product-cart-list {
     @include grid-template-column(300px);
   }
 
-  .product-card-content {
+  .product-cart-content {
     padding-inline: 12px;
   }
 
-  .product-card-info {
+  .product-cart-info {
     gap: 12px;
     margin-bottom: 12px;
   }

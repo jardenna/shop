@@ -15,11 +15,11 @@ const CartContent = ({
   heading,
   onReset,
 }: CartContentProps) => (
-  <article className={`admin-card ${className}`}>
-    <span className="card-top-line" aria-hidden={true} />
+  <article className={`admin-cart ${className}`}>
+    <span className="cart-top-line" aria-hidden={true} />
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
-      <div className="admin-card-content">
-        {heading && <p className="admin-card-title">{heading}</p>}
+      <div className="admin-cart-content">
+        {heading && <p className="admin-cart-title">{heading}</p>}
         {children}
       </div>
     </ErrorBoundary>

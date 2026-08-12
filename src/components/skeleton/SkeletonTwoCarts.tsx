@@ -9,7 +9,7 @@ const SkeletonTwoCarts = () => (
   <div className="skeleton-column  page-medium">
     <SkeletonBreadCrumbs />
     <SkeletonHeader />
-    <div className="page-card">
+    <div className="page-cart">
       <div className="flex">
         <div className="flex-1">
           <div

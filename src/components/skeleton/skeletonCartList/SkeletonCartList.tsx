@@ -3,7 +3,7 @@ import type { SkeletonProps } from '../Skeleton';
 import SkeletonCart from '../SkeletonCart';
 import './_skeleton-cart-list.scss';
 
-type SkeletonCardListProps = SkeletonProps & {
+type SkeletonCartListProps = SkeletonProps & {
   children?: ReactNode;
 };
 
@@ -11,10 +11,10 @@ const SkeletonCartList = ({
   count = 5,
   children,
   className = '',
-}: SkeletonCardListProps) => {
+}: SkeletonCartListProps) => {
   const skeletons = Array.from({ length: count });
   return (
-    <div className={`skeleton-card-list ${className}`}>
+    <div className={`skeleton-cart-list ${className}`}>
       {skeletons.map((_, index) =>
         children ? children : <SkeletonCart key={index} />,
       )}

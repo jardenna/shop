@@ -41,13 +41,13 @@ const ProductCart = ({
   const { language } = useLanguage();
 
   return (
-    <article aria-labelledby={ariaLabelledby} className="product-card">
+    <article aria-labelledby={ariaLabelledby} className="product-cart">
       <div className="position-relative">
         <Link to={linkTo}>
           <VisuallyHidden>
             {language.view} {product.productName}
           </VisuallyHidden>
-          <div className="card-img-container">
+          <div className="cart-img-container">
             {product.discount > 0 && (
               <Badge
                 variant="small"
@@ -69,12 +69,12 @@ const ProductCart = ({
         <FavoriteHeart id={product.id} className="product-cart-favorites" />
       </div>
 
-      <div className="product-card-content">
+      <div className="product-cart-content">
         <Link to={linkTo} tabIndex={-1}>
-          <h2 className="product-card-title" id={ariaLabelledby}>
+          <h2 className="product-cart-title" id={ariaLabelledby}>
             {product.productName}
           </h2>
-          <div className="product-card-info">
+          <div className="product-cart-info">
             {productView === 'list' ? (
               <ProductCartListContent product={product as BaseShopProduct} />
             ) : (

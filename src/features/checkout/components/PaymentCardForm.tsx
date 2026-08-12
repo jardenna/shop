@@ -138,7 +138,7 @@ const PaymentCardForm = ({
         showLegendText
         legendClassname="order-flow-title"
       >
-        <div className="card-form">
+        <div className="payment-card-form">
           {fields.map((field) => (
             <Input
               key={field.name}
