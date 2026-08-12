@@ -10,9 +10,9 @@ const SkeletonThreeCarts = () => (
   <div className="skeleton-column">
     <SkeletonParagraph count={1} width="24" />
     <SkeletonHeader />
-    <div className="page-card">
+    <div className="page-cart">
       <div className="flex">
-        <div className="page-card flex-1">
+        <div className="page-cart flex-1">
           <div className="flex flex-column">
             <Skeleton height="12" />
             <div className="flex">
@@ -23,7 +23,7 @@ const SkeletonThreeCarts = () => (
             <SkeletonButton />
           </div>
         </div>
-        <div className="flex flex-column page-card flex-1">
+        <div className="flex flex-column page-cart flex-1">
           <SkeletonGrid />
           <SkeletonControlList count={4} />
           <SkeletonControlList count={5} className="medium-item" />

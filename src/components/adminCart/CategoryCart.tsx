@@ -44,7 +44,7 @@ const CategoryCart = ({
   };
 
   return (
-    <section className="two-col admin-card-container">
+    <section className="two-col admin-cart-container">
       <CategoryCartLeft
         name={subCategoryName}
         status={status}

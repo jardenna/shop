@@ -15,7 +15,7 @@ const SkeletonCollection = ({
   const skeletons = Array.from({ length: count });
 
   return (
-    <div className={`product-card-list ${className}`}>
+    <div className={`product-cart-list ${className}`}>
       {skeletons.map((_, index) => (
         <span key={index} className="flex flex-column">
           <Skeleton height="34" />

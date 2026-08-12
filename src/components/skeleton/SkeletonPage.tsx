@@ -7,7 +7,7 @@ const SkeletonPage = ({ count = 2, height = '' }: PickedSkeletonTypes) => (
   <div className="skeleton-column">
     <SkeletonBreadCrumbs />
     <SkeletonHeader hideLink />
-    <div className="page-card">
+    <div className="page-cart">
       <div className="skeleton-page skeleton-column">
         <Skeleton count={count} height={height} />
       </div>

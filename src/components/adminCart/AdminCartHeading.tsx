@@ -12,8 +12,8 @@ const AdminCartHeading = ({
   name,
   status,
 }: AdminCartHeadingProps) => (
-  <div className="admin-card-left-content">
-    <p className="admin-card-left-title">{name}</p>
+  <div className="admin-cart-left-content">
+    <p className="admin-cart-left-title">{name}</p>
     <AdminBadge status={status} scheduledDate={scheduledDate || null} />
   </div>
 );

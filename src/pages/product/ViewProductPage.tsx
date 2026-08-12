@@ -95,7 +95,7 @@ const ViewProductPage = () => {
           linkText={language.createNewProduct}
           linkTo={AdminPath.AdminProductCreate}
         >
-          <section className="three-col admin-card-container">
+          <section className="three-col admin-cart-container">
             <ProductCartLeft
               name={product.productName}
               scheduledDate={product.scheduledDate || null}

@@ -16,7 +16,7 @@ const ProductCartList = ({
   const { categoryId } = useParams();
 
   return (
-    <ul className={`product-card-list ${productView}`}>
+    <ul className={`product-cart-list ${productView}`}>
       {products.map((product) => (
         <li key={product.id}>
           <ProductCart

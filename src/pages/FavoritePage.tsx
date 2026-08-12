@@ -123,7 +123,7 @@ const FavoritePage = () => {
             </section>
           )}
         </Panel>
-        <ul className="product-card-list">
+        <ul className="product-cart-list">
           {sortedFavorites.map((product) => (
             <li key={product.id}>
               <ProductCart

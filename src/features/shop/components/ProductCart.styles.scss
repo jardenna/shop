@@ -3,9 +3,9 @@
 $placement-y: 8px;
 $placement-x: 12px;
 
-.product-card {
+.product-cart {
   &:has(a:focus-visible, a:hover) {
-    .product-card-content a {
+    .product-cart-content a {
       color: $color-gray-60;
     }
 
@@ -31,7 +31,7 @@ $placement-x: 12px;
     }
   }
 
-  .product-card-info {
+  .product-cart-info {
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -78,7 +78,7 @@ $placement-x: 12px;
     @include transition($what: transform);
   }
 
-  .product-card-content {
+  .product-cart-content {
     margin-block: 8px 16px;
 
     .product-price {
@@ -88,7 +88,7 @@ $placement-x: 12px;
       justify-content: start;
     }
 
-    .product-card-title {
+    .product-cart-title {
       font-family: $font-primary-bold;
       font-size: $font-medium;
       text-transform: uppercase;
@@ -96,7 +96,7 @@ $placement-x: 12px;
     }
   }
 
-  .card-img-container {
+  .cart-img-container {
     aspect-ratio: 3 / 5;
     width: 100%;
     overflow: clip;
@@ -111,7 +111,7 @@ $placement-x: 12px;
   }
 }
 
-.product-card-list {
+.product-cart-list {
   @include grid-template-column;
 
   // List view
@@ -119,13 +119,13 @@ $placement-x: 12px;
     grid-template-columns: 1fr;
     row-gap: 16px;
 
-    .product-card {
+    .product-cart {
       gap: 20px;
       align-items: center;
 
       @include grid-template-column;
 
-      .product-card-info {
+      .product-cart-info {
         gap: 12px;
       }
     }

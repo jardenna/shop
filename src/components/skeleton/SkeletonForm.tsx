@@ -8,7 +8,7 @@ const SkeletonForm = ({ count = 2 }: PickedSkeletonTypes) => (
   <div className="skeleton-column page-small">
     <SkeletonBreadCrumbs />
     <SkeletonHeader hideLink />
-    <div className="page-card">
+    <div className="page-cart">
       <div className="skeleton-page skeleton-column">
         <SkeletonInputList count={count} />
         <SkeletonButtonList />

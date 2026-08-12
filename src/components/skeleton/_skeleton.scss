@@ -57,7 +57,7 @@
   margin-bottom: 12px;
 }
 
-.skeleton-card {
+.skeleton-cart {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -85,7 +85,7 @@
     max-width: 50%;
   }
 
-  .page-card {
+  .page-cart {
     min-height: rem(360px);
 
     @include max-size($small) {

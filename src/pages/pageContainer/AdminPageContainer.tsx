@@ -36,7 +36,7 @@ const AdminPageContainer = ({
         linkTo={linkTo}
         ariaLabelledby={ariaLabelledby}
       />
-      <div className="page-card" ref={scrollToRef}>
+      <div className="page-cart" ref={scrollToRef}>
         {children}
       </div>
     </section>

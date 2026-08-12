@@ -1,6 +1,6 @@
 @use './globals' as *;
 
-.admin-card-container {
+.admin-cart-container {
   &.two-col {
     display: grid;
     grid-template-columns: 1fr 0.7fr;
@@ -8,13 +8,13 @@
     @include max-size($mini) {
       grid-template-columns: repeat(auto-fit, minmax(rem(235px), 1fr));
 
-      .card-top-line {
+      .cart-top-line {
         display: none;
       }
     }
   }
 
-  .admin-card-left-content {
+  .admin-cart-left-content {
     display: flex;
     justify-content: space-between;
     gap: 4px;
@@ -24,7 +24,7 @@
     }
   }
 
-  .admin-card-left-title {
+  .admin-cart-left-title {
     margin: 0;
     font-size: rem(20px);
   }
@@ -37,7 +37,7 @@
       grid-template-columns: repeat(auto-fit, minmax(rem(370px), 1fr));
 
       .separator,
-      .card-top-line {
+      .cart-top-line {
         display: none;
       }
     }
@@ -61,7 +61,7 @@
     background-color: $color-gray-60;
   }
 
-  .admin-card-title {
+  .admin-cart-title {
     text-wrap: balance;
 
     @include min-size($medium) {
@@ -86,7 +86,7 @@
   }
 }
 
-.admin-card {
+.admin-cart {
   background-color: $color-white;
   padding-top: 42px;
 
@@ -100,14 +100,14 @@
     }
   }
 
-  .card-top-line {
+  .cart-top-line {
     display: flex;
     height: 4px;
     width: 100%;
     background-color: $color-gray-80;
   }
 
-  .admin-card-content {
+  .admin-cart-content {
     min-height: rem(252px);
     position: relative;
     display: flex;
@@ -130,7 +130,7 @@
   }
 
   &.center {
-    .admin-card-content {
+    .admin-cart-content {
       padding: 24px;
       gap: 12px;
 
@@ -154,15 +154,15 @@
       padding: 0;
     }
 
-    .admin-card-content {
+    .admin-cart-content {
       padding-left: 20px;
     }
 
-    .card-top-line {
+    .cart-top-line {
       height: 6px;
     }
 
-    .admin-card-date {
+    .admin-cart-date {
       text-align: right;
     }
 
