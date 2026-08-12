@@ -15,7 +15,7 @@ import AuthForm from './AuthForm';
 
 interface CreateAccountProps {
   currentUser: UserResponse | null;
-  isLoadingNew: boolean;
+  isLoading: boolean;
   navigateTo: string;
   autoComplete?: AutoComplete;
   canAssignRoles?: boolean;
@@ -31,7 +31,7 @@ const CreateAccount = ({
   currentUser,
   canAssignRoles,
   autoComplete,
-  isLoadingNew,
+  isLoading,
   createUser,
 }: CreateAccountProps) => {
   const navigate = useNavigate();
@@ -77,7 +77,7 @@ const CreateAccount = ({
       values={values}
       submitBtnLabel={language.createAccount}
       onSubmit={onSubmit}
-      isLoading={isLoadingNew}
+      isLoading={isLoading}
       legendText={language.userInfo}
       onChange={onChange}
       errors={errors}

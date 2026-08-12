@@ -14,7 +14,7 @@ const RegisterUserPage = () => {
         navigateTo={ShopPath.Root}
         currentUser={null}
         autoComplete="on"
-        isLoadingNew={isLoading}
+        isLoading={isLoading}
         createUser={(userData) => registerUser(userData).unwrap()}
       />
     </MainPageContainer>

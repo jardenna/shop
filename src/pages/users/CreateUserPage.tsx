@@ -7,7 +7,7 @@ import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const CreateUserPage = () => {
   const { language } = useLanguage();
-  const { currentUser } = useAuth();
+  const { currentUser, isAdmin } = useAuth();
 
   const [createUser, { isLoading }] = useCreateUserMutation();
 
@@ -16,8 +16,8 @@ const CreateUserPage = () => {
       <CreateAccount
         navigateTo={AdminPath.AdminUser}
         currentUser={currentUser}
-        canAssignRoles={currentUser?.isAdmin}
-        isLoadingNew={isLoading}
+        canAssignRoles={isAdmin}
+        isLoading={isLoading}
         createUser={(userData) => createUser(userData).unwrap()}
       />
     </AdminPageContainer>
