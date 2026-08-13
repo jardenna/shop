@@ -1,11 +1,11 @@
 import type { Status } from '../../app/api/apiTypes/adminApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
 import ProductPrice from '../../features/shop/components/productPrice/ProductPrice';
-import CartContent from '../cart/CartContent';
 import MissingImage from '../formElements/fileInput/MissingImage';
 import ImgList from '../ImgList';
 import LabelValueGrid from '../labelValueGrid/LabelValueGrid';
-import AdminCartHeading from './AdminCartHeading';
+import CartContent from './CartContent';
+import CartHeading from './CartHeading';
 
 type ProductCartLeftProps = {
   description: string;
@@ -37,7 +37,7 @@ const ProductCartLeft = ({
       ) : (
         <MissingImage />
       )}
-      <AdminCartHeading
+      <CartHeading
         status={status}
         scheduledDate={scheduledDate || null}
         name={name}

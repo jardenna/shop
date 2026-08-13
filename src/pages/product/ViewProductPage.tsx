@@ -1,8 +1,8 @@
 import { useNavigate, useParams } from 'react-router';
+import CartFooter from '../../components/adminCart/CartFooter';
+import CartRight from '../../components/adminCart/CartRight';
 import ProductCartCenter from '../../components/adminCart/ProductCartCenter';
 import ProductCartLeft from '../../components/adminCart/ProductCartLeft';
-import CartFooter from '../../components/cart/CartFooter';
-import CartRight from '../../components/cart/CartRight';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import NotFoundError from '../../components/NotFoundError';

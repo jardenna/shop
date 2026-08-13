@@ -1,11 +1,11 @@
-import { Status } from '../../../app/api/apiTypes/adminApiTypes';
-import Badge from '../../../components/badge/Badge';
-import DateDisplay from '../../../components/datePicker/DateDisplay';
-import Icon from '../../../components/icons/Icon';
-import Popup from '../../../components/popup/Popup';
-import { IconName } from '../../../types/enums';
-import { translateKey } from '../../../utils/utils';
-import { useLanguage } from '../../language/useLanguage';
+import { Status } from '../../app/api/apiTypes/adminApiTypes';
+import { useLanguage } from '../../features/language/useLanguage';
+import { IconName } from '../../types/enums';
+import { translateKey } from '../../utils/utils';
+import Badge from '../badge/Badge';
+import DateDisplay from '../datePicker/DateDisplay';
+import Icon from '../icons/Icon';
+import Popup from '../popup/Popup';
 
 type AdminBadgeProps = {
   scheduledDate: Date | null;
