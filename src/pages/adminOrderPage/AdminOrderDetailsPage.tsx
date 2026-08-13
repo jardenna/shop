@@ -47,6 +47,10 @@ const AdminOrderDetailsPage = () => {
     status: order?.delivery.status ?? 'created',
   };
 
+  // const orderHistoryList=[
+  //   {title: 'status', }
+  // ]
+
   return (
     <AdminPageContainer
       variant="medium"
@@ -71,6 +75,32 @@ const AdminOrderDetailsPage = () => {
                     variant="underline"
                     heading={language.orderHistory}
                   />
+                  <table>
+                    <thead>
+                      <tr>
+                        <th scope="col">STATUS</th>
+                        <th scope="col">DATO & TID</th>
+                        <th scope="col">BRUGER</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Behandles</td>
+                        <td>31. juli 2026 14:32</td>
+                        <td>Lisbeth</td>
+                      </tr>
+                      <tr>
+                        <td>Afsendt</td>
+                        <td>31. juli 2026 14:32</td>
+                        <td>Lisbeth</td>
+                      </tr>
+                      <tr>
+                        <td>Oprettet</td>
+                        <td>31. juli 2026 14:32</td>
+                        <td>Kunde (Helle Bjørnum)</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </article>
                 <ConfirmationDetails
                   createdAt={order.createdAt}
@@ -95,6 +125,7 @@ const AdminOrderDetailsPage = () => {
               </section>
               <section className="confirmation-info-container">
                 <OrderHeading heading={language.customerInformation} />
+                {language.paymentMethod}
                 <OrderAddressList addresses={addressList} refetch={refetch} />
               </section>
             </div>
