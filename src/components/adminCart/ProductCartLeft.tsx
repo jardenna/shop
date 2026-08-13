@@ -31,7 +31,7 @@ const ProductCartLeft = ({
   const { language } = useLanguage();
 
   return (
-    <CartContent onReset={onReset} className="left">
+    <CartContent onReset={onReset}>
       {images.length > 0 ? (
         <ImgList images={images} onReset={onReset} />
       ) : (
