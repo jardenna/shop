@@ -19,6 +19,10 @@ input[type='number'] {
   appearance: textfield;
 }
 
+form {
+  width: 100%;
+}
+
 .primary,
 .secondary {
   input[type='radio'] {

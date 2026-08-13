@@ -10,7 +10,7 @@ type FormCartProps = {
 };
 
 const FormCart = ({ children, legendText, onReset }: FormCartProps) => (
-  <div className="form-cart">
+  <div className="cart">
     <FieldSet legendText={legendText}>
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}

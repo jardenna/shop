@@ -1,5 +1,6 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
+import Cart from '../../components/carts/Cart';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import NotFoundError from '../../components/NotFoundError';
 import ProgressTracker from '../../components/progressTracker/ProgressTracker';
@@ -52,9 +53,9 @@ const AdminOrderDetailsPage = () => {
       linkTo={AdminPath.AdminSubCategoryCreate}
     >
       <div className="confirmation-content">
-        <div className="form-cart">
+        <Cart>
           <ProgressTracker steps={orderTrackingList} status={status} />
-        </div>
+        </Cart>
 
         <ErrorBoundary
           FallbackComponent={ErrorBoundaryFallback}

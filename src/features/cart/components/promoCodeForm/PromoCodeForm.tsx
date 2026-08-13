@@ -1,5 +1,5 @@
 import { Discount } from '../../../../app/api/apiTypes/sharedApiTypes';
-import Form from '../../../../components/form/Form';
+import Form from '../../../../components/Form';
 import Input from '../../../../components/formElements/Input';
 import { useFormValidation } from '../../../../hooks/useFormValidation';
 import { validatePromoCode } from '../../../../utils/validation/validatePromoCode';

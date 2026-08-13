@@ -6,7 +6,7 @@ import {
 } from '../../../app/api/apiTypes/paymentApiTypes';
 
 import FieldSet from '../../../components/fieldset/FieldSet';
-import Form from '../../../components/form/Form';
+import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
 import { useMessagePopup } from '../../../components/messagePopup/useMessagePopup';
 import { useFormValidation } from '../../../hooks/useFormValidation';

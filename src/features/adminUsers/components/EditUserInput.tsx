@@ -1,5 +1,5 @@
 import type { Roles } from '../../../app/api/apiTypes/adminApiTypes';
-import Form from '../../../components/form/Form';
+import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
 import { ColumnKey } from '../../../pages/users/UserPage';
 import { InputChangeHandler } from '../../../types/types';

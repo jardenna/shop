@@ -9,7 +9,7 @@ import type {
 import { useAppDispatch } from '../../../app/hooks';
 import FormCart from '../../../components/carts/FormCart';
 import { useDatePicker } from '../../../components/datePicker/useDatePicker';
-import Form from '../../../components/form/Form';
+import Form from '../../../components/Form';
 import ControlGroupList from '../../../components/formElements/controlGroup/ControlGroupList';
 import Input from '../../../components/formElements/Input';
 import Textarea from '../../../components/formElements/Textarea';
