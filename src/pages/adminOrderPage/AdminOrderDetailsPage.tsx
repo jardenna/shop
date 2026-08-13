@@ -9,6 +9,7 @@ import { useLanguage } from '../../features/language/useLanguage';
 import { useGetAdminOrderByIdQuery } from '../../features/orders/adminOrderApiSlice';
 import ConfirmationDetails from '../../features/orders/components/confirmation/ConfirmationDetails';
 import OrderAddressList from '../../features/orders/components/OrderAddressList';
+import OrderHeading from '../../features/orders/components/orderHeading/OrderHeading';
 import OrderList from '../../features/orders/components/orders/OrderList';
 import { createOrderAddressList } from '../../features/orders/utils/createOrderAddressList';
 import { orderTrackingList } from '../../features/orders/utils/createTrackingList';
@@ -48,6 +49,7 @@ const AdminOrderDetailsPage = () => {
 
   return (
     <AdminPageContainer
+      variant="medium"
       heading={id ?? ''}
       linkText={language.createNewCategory}
       linkTo={AdminPath.AdminSubCategoryCreate}
@@ -63,15 +65,27 @@ const AdminOrderDetailsPage = () => {
         >
           {order && (
             <div className="confirmation-content">
+              <section>
+                <article className="confirmation-info">
+                  <OrderHeading
+                    variant="underline"
+                    heading={language.orderHistory}
+                  />
+                </article>
+                <ConfirmationDetails
+                  createdAt={order.createdAt}
+                  id={order.id}
+                  method={order.payment.method}
+                />
+              </section>
               <section className="confirmation-summary">
                 <article className="summary-items">
-                  <h2 className="order-flow-title">{language.orderedItems}</h2>
-
+                  <OrderHeading heading={language.orderedItems} />
                   <OrderList orders={order.orderItems} language={language} />
                 </article>
 
                 <article className="summary-payment">
-                  <h2 className="order-flow-title">{language.priceOverview}</h2>
+                  <OrderHeading heading={language.priceOverview} />
                   <SummaryList
                     language={language}
                     summary={order.summary}
@@ -80,12 +94,7 @@ const AdminOrderDetailsPage = () => {
                 </article>
               </section>
               <section className="confirmation-info-container">
-                <ConfirmationDetails
-                  createdAt={order.createdAt}
-                  id={order.id}
-                  method={order.payment.method}
-                />
-
+                <OrderHeading heading={language.customerInformation} />
                 <OrderAddressList addresses={addressList} refetch={refetch} />
               </section>
             </div>

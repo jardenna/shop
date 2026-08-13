@@ -21,6 +21,7 @@ import { useActiveCart } from '../features/cart/useActiveCart';
 import { deleteGuestCartItem, updateGuestCartQty } from '../features/cartSlice';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
 import { useLanguage } from '../features/language/useLanguage';
+import OrderHeading from '../features/orders/components/orderHeading/OrderHeading';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import { ShopPath } from '../layout/nav/enums';
 import { handleApiError } from '../utils/handleApiError';
@@ -131,7 +132,7 @@ const ShoppingCartPage = () => {
         </section>
 
         <aside>
-          <h2 className="order-flow-title">{language.paymentSummary}</h2>
+          <OrderHeading heading={language.paymentSummary} />
           <ErrorBoundary
             FallbackComponent={ErrorBoundaryFallback}
             onReset={() => refetchApiCartList}

@@ -47,9 +47,8 @@
   .order-list-item {
     display: flex;
     flex-direction: column;
-    gap: 12px;
     border-bottom: $border;
-    padding-bottom: 8px;
+    padding-block: 12px;
     padding-right: 8px;
   }
 

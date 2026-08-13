@@ -26,6 +26,8 @@ addressUpdated;Address was updated;Adresse blev opdateret
 addToBag;Add to bag;Læg i indkøbskurv
 addToCart;Add to cart;Tilføj til kurv
 addToStock;Add to stock;Tilføj til lager
+orderHistory;Order history;Ordrehistorik
+customerInformation;Customer information;Kundeinformation
 admin;Admin;Admin
 adminCannotBeDeleted;Administrator cannot be deleted;Administrator kan ikke slettes
 orderedItems;Ordered items;Bestilte varer
