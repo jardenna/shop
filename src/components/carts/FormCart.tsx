@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
-import FieldSet from '../../../components/fieldset/FieldSet';
+import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
+import FieldSet from '../fieldset/FieldSet';
 
 type FormCartProps = {
   children: ReactNode;
