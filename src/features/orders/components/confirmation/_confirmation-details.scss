@@ -100,14 +100,4 @@
   .summary-items {
     flex: 1;
   }
-
-  .confirmation-detail-list-title {
-    border-bottom: $border-dark;
-    padding-bottom: 8px;
-    max-width: rem(200px);
-
-    @include max-size($small) {
-      max-width: 100%;
-    }
-  }
 }

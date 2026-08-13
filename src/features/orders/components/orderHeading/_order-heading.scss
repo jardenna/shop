@@ -1,0 +1,18 @@
+@use '../../../../scss/globals' as *;
+
+.order-heading {
+  text-transform: uppercase;
+  font-family: $font-primary-bold;
+  font-size: $font-medium;
+  margin-bottom: 12px;
+
+  &.underline {
+    border-bottom: $border-dark;
+    padding-bottom: 8px;
+    max-width: rem(200px);
+
+    @include max-size($small) {
+      max-width: 100%;
+    }
+  }
+}

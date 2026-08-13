@@ -2,6 +2,7 @@ import { paymentMethodLabels } from '../../../../app/api/apiConstants';
 import { PaymentMethods } from '../../../../app/api/apiTypes/paymentApiTypes';
 import { formatOrderNumber } from '../../../../utils/formatOrderNo';
 import { useLanguage } from '../../../language/useLanguage';
+import OrderHeading from '../orderHeading/OrderHeading';
 import ConfirmationDetailItem from './ConfirmationDetailItem';
 import './_confirmation-details.scss';
 
@@ -20,9 +21,8 @@ const ConfirmationDetails = ({
 
   return (
     <article className="confirmation-info">
-      <h2 className="order-flow-title confirmation-detail-list-title">
-        {language.orderSummary}
-      </h2>
+      <OrderHeading variant="underline" heading={language.orderSummary} />
+
       <ul className="confirmation-detail-list">
         <ConfirmationDetailItem
           text={formatOrderNumber(id)}

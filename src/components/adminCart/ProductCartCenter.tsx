@@ -6,8 +6,8 @@ import type {
 import { useLanguage } from '../../features/language/useLanguage';
 import ColorList from '../../features/shop/components/productLists/ColorList';
 import SizeList from '../../features/shop/components/productLists/SizeList';
-import CartContent from '../cart/CartContent';
 import LabelValueGrid from '../labelValueGrid/LabelValueGrid';
+import CartContent from './CartContent';
 
 type ProductCartCenterProps = {
   availableSizeList: Size[];

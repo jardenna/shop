@@ -1,7 +1,7 @@
 import { Size } from '../../../../app/api/apiTypes/sharedApiTypes';
 import { BaseProductFormData } from '../../../../app/api/apiTypes/shopApiTypes';
 import FieldSet from '../../../../components/fieldset/FieldSet';
-import Form from '../../../../components/form/Form';
+import Form from '../../../../components/Form';
 import ControlGroupList from '../../../../components/formElements/controlGroup/ControlGroupList';
 import NumberStep from '../../../../components/formElements/numberStep/NumberStep';
 import { useFormValidation } from '../../../../hooks/useFormValidation';

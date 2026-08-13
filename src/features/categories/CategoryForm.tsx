@@ -4,7 +4,7 @@ import type { CreateCategoryRequest } from '../../app/api/apiTypes/adminApiTypes
 import { useDatePicker } from '../../components/datePicker/useDatePicker';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import FieldSet from '../../components/fieldset/FieldSet';
-import Form from '../../components/form/Form';
+import Form from '../../components/Form';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import SharedCategoryInputs from '../../components/SharedCategoryInputs';
 import { useFormValidation } from '../../hooks/useFormValidation';

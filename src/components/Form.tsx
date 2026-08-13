@@ -1,9 +1,8 @@
 import type { ReactNode } from 'react';
-import { useLanguage } from '../../features/language/useLanguage';
-import { BtnVariant } from '../../types/enums';
-import type { RefFormType } from '../../types/types';
-import Button from '../Button';
-import './_form.scss';
+import { useLanguage } from '../features/language/useLanguage';
+import { BtnVariant } from '../types/enums';
+import type { RefFormType } from '../types/types';
+import Button from './Button';
 
 type CancelButtonProps = {
   btnLabel?: string;

@@ -15,6 +15,7 @@ import { createOrderAddressList } from '../features/orders/utils/createOrderAddr
 import { orderTrackingList } from '../features/orders/utils/createTrackingList';
 import { ShopPath } from '../layout/nav/enums';
 import MainPageContainer from './pageContainer/MainPageContainer';
+import OrderHeading from '../features/orders/components/orderHeading/OrderHeading';
 
 const OrderConfirmationPage = () => {
   const { id } = useParams();
@@ -80,13 +81,13 @@ const OrderConfirmationPage = () => {
             <>
               <section className="confirmation-summary">
                 <article className="summary-items">
-                  <h2 className="order-flow-title">{language.orderedItems}</h2>
+                  <OrderHeading heading={language.orderedItems} />
 
                   <OrderList orders={order.orderItems} language={language} />
                 </article>
 
                 <article className="summary-payment">
-                  <h2 className="order-flow-title">{language.priceOverview}</h2>
+                  <OrderHeading heading={language.priceOverview} />
                   <SummaryList
                     language={language}
                     summary={order.summary}

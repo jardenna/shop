@@ -1,7 +1,7 @@
 import type { Status } from '../../../app/api/apiTypes/adminApiTypes';
+import AdminBadge from '../../../components/adminCart/AdminBadge';
 import MoreLink from '../../../components/MoreLink';
 import { AdminPath } from '../../../layout/nav/enums';
-import AdminBadge from '../../products/components/AdminBadge';
 
 type SubCategoryTableRowsProps = {
   categoryName: string;

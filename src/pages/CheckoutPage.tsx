@@ -9,6 +9,7 @@ import { useGetCheckoutQuery } from '../features/checkout/checkoutApiSlice';
 import Payment from '../features/checkout/components/Payment';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
 import { useLanguage } from '../features/language/useLanguage';
+import OrderHeading from '../features/orders/components/orderHeading/OrderHeading';
 import OrderSummaryList from '../features/orders/components/orderSummaryList/OrderSummaryList';
 import { useFormValidation } from '../hooks/useFormValidation';
 import { ShopPath } from '../layout/nav/enums';
@@ -57,7 +58,7 @@ const CheckoutPage = () => {
           >
             <section className="order-flow-list" ref={addressSectionRef}>
               <header className="order-flow-header">
-                <h2 className="order-flow-title">{language.addresses}</h2>
+                <OrderHeading heading={language.addresses} />
                 {checkout.addresses.length === 0 && (
                   <span>({language.addressRequiredToPlaceOrder})</span>
                 )}

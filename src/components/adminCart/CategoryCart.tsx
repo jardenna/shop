@@ -3,9 +3,9 @@ import { useLanguage } from '../../features/language/useLanguage';
 import { AdminPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
 import { translateKey } from '../../utils/utils';
-import CartFooter from '../cart/CartFooter';
-import CartRight from '../cart/CartRight';
 import type { PrimaryActionBtnProps } from '../modal/Modal';
+import CartFooter from './CartFooter';
+import CartRight from './CartRight';
 import CategoryCartLeft from './CategoryCartLeft';
 
 type CategoryCartProps = {

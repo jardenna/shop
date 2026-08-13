@@ -1,4 +1,7 @@
+import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
+import Cart from '../../components/carts/Cart';
+import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import NotFoundError from '../../components/NotFoundError';
 import ProgressTracker from '../../components/progressTracker/ProgressTracker';
 import SummaryList from '../../features/cart/components/SummaryList';
@@ -6,6 +9,7 @@ import { useLanguage } from '../../features/language/useLanguage';
 import { useGetAdminOrderByIdQuery } from '../../features/orders/adminOrderApiSlice';
 import ConfirmationDetails from '../../features/orders/components/confirmation/ConfirmationDetails';
 import OrderAddressList from '../../features/orders/components/OrderAddressList';
+import OrderHeading from '../../features/orders/components/orderHeading/OrderHeading';
 import OrderList from '../../features/orders/components/orders/OrderList';
 import { createOrderAddressList } from '../../features/orders/utils/createOrderAddressList';
 import { orderTrackingList } from '../../features/orders/utils/createTrackingList';
@@ -43,44 +47,91 @@ const AdminOrderDetailsPage = () => {
     status: order?.delivery.status ?? 'created',
   };
 
+  // const orderHistoryList=[
+  //   {title: 'status', }
+  // ]
+
   return (
     <AdminPageContainer
+      variant="medium"
       heading={id ?? ''}
       linkText={language.createNewCategory}
       linkTo={AdminPath.AdminSubCategoryCreate}
     >
-      <ProgressTracker steps={orderTrackingList} status={status} />
+      <div className="confirmation-content">
+        <Cart>
+          <ProgressTracker steps={orderTrackingList} status={status} />
+        </Cart>
 
-      {order && (
-        <article className="order-cart">
-          <article className="summary-items">
-            <h2 className="order-flow-title">{language.orderedItems}</h2>
-            <OrderList
-              orders={order.orderItems}
-              language={language}
-              hidePrice
-              variant="small"
-            />
-          </article>
-          <article className="summary-payment">
-            <h2 className="order-flow-title">{language.priceOverview}</h2>
-            <SummaryList
-              language={language}
-              summary={order.summary}
-              promoDiscount={order.discount}
-            />
-          </article>
-          <section className="confirmation-info-container">
-            <ConfirmationDetails
-              createdAt={order.createdAt}
-              id={order.id}
-              method={order.payment.method}
-            />
+        <ErrorBoundary
+          FallbackComponent={ErrorBoundaryFallback}
+          onReset={refetch}
+        >
+          {order && (
+            <div className="confirmation-content">
+              <section>
+                <article className="confirmation-info">
+                  <OrderHeading
+                    variant="underline"
+                    heading={language.orderHistory}
+                  />
+                  <table>
+                    <thead>
+                      <tr>
+                        <th scope="col">STATUS</th>
+                        <th scope="col">DATO & TID</th>
+                        <th scope="col">BRUGER</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Behandles</td>
+                        <td>31. juli 2026 14:32</td>
+                        <td>Lisbeth</td>
+                      </tr>
+                      <tr>
+                        <td>Afsendt</td>
+                        <td>31. juli 2026 14:32</td>
+                        <td>Lisbeth</td>
+                      </tr>
+                      <tr>
+                        <td>Oprettet</td>
+                        <td>31. juli 2026 14:32</td>
+                        <td>Kunde (Helle Bjørnum)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </article>
+                <ConfirmationDetails
+                  createdAt={order.createdAt}
+                  id={order.id}
+                  method={order.payment.method}
+                />
+              </section>
+              <section className="confirmation-summary">
+                <article className="summary-items">
+                  <OrderHeading heading={language.orderedItems} />
+                  <OrderList orders={order.orderItems} language={language} />
+                </article>
 
-            <OrderAddressList addresses={addressList} refetch={refetch} />
-          </section>
-        </article>
-      )}
+                <article className="summary-payment">
+                  <OrderHeading heading={language.priceOverview} />
+                  <SummaryList
+                    language={language}
+                    summary={order.summary}
+                    promoDiscount={order.discount}
+                  />
+                </article>
+              </section>
+              <section className="confirmation-info-container">
+                <OrderHeading heading={language.customerInformation} />
+                {language.paymentMethod}
+                <OrderAddressList addresses={addressList} refetch={refetch} />
+              </section>
+            </div>
+          )}
+        </ErrorBoundary>
+      </div>
     </AdminPageContainer>
   );
 };

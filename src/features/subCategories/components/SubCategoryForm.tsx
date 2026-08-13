@@ -9,7 +9,7 @@ import type {
 import { useDatePicker } from '../../../components/datePicker/useDatePicker';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import FieldSet from '../../../components/fieldset/FieldSet';
-import Form from '../../../components/form/Form';
+import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
 import { useMessagePopup } from '../../../components/messagePopup/useMessagePopup';
 import Selectbox from '../../../components/selectbox/Selectbox';

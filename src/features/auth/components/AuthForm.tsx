@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router';
 import type { Roles } from '../../../app/api/apiTypes/adminApiTypes';
 import Button from '../../../components/Button';
 import FieldSet from '../../../components/fieldset/FieldSet';
-import Form from '../../../components/form/Form';
+import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
 import PasswordInput from '../../../components/formElements/password/PasswordInput';
 import RadioButtonList from '../../../components/formElements/RadioButtonList';

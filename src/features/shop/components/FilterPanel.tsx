@@ -6,7 +6,7 @@ import Accordion, {
 } from '../../../components/accordion/Accordion';
 import ColorItem from '../../../components/ColorItem';
 import FieldSet from '../../../components/fieldset/FieldSet';
-import Form from '../../../components/form/Form';
+import Form from '../../../components/Form';
 import CheckboxList from '../../../components/formElements/checkbox/CheckboxList';
 import DualRange from '../../../components/formElements/dualRangeSlider/DualRange';
 import Icon from '../../../components/icons/Icon';
