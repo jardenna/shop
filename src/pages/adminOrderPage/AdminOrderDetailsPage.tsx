@@ -1,4 +1,6 @@
+import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
+import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import NotFoundError from '../../components/NotFoundError';
 import ProgressTracker from '../../components/progressTracker/ProgressTracker';
 import SummaryList from '../../features/cart/components/SummaryList';
@@ -49,38 +51,46 @@ const AdminOrderDetailsPage = () => {
       linkText={language.createNewCategory}
       linkTo={AdminPath.AdminSubCategoryCreate}
     >
-      <ProgressTracker steps={orderTrackingList} status={status} />
+      <div className="confirmation-content">
+        <div className="form-cart">
+          <ProgressTracker steps={orderTrackingList} status={status} />
+        </div>
 
-      {order && (
-        <article className="order-cart">
-          <article className="summary-items">
-            <h2 className="order-flow-title">{language.orderedItems}</h2>
-            <OrderList
-              orders={order.orderItems}
-              language={language}
-              hidePrice
-              variant="small"
-            />
-          </article>
-          <article className="summary-payment">
-            <h2 className="order-flow-title">{language.priceOverview}</h2>
-            <SummaryList
-              language={language}
-              summary={order.summary}
-              promoDiscount={order.discount}
-            />
-          </article>
-          <section className="confirmation-info-container">
-            <ConfirmationDetails
-              createdAt={order.createdAt}
-              id={order.id}
-              method={order.payment.method}
-            />
+        <ErrorBoundary
+          FallbackComponent={ErrorBoundaryFallback}
+          onReset={refetch}
+        >
+          {order && (
+            <div className="confirmation-content">
+              <section className="confirmation-summary">
+                <article className="summary-items">
+                  <h2 className="order-flow-title">{language.orderedItems}</h2>
 
-            <OrderAddressList addresses={addressList} refetch={refetch} />
-          </section>
-        </article>
-      )}
+                  <OrderList orders={order.orderItems} language={language} />
+                </article>
+
+                <article className="summary-payment">
+                  <h2 className="order-flow-title">{language.priceOverview}</h2>
+                  <SummaryList
+                    language={language}
+                    summary={order.summary}
+                    promoDiscount={order.discount}
+                  />
+                </article>
+              </section>
+              <section className="confirmation-info-container">
+                <ConfirmationDetails
+                  createdAt={order.createdAt}
+                  id={order.id}
+                  method={order.payment.method}
+                />
+
+                <OrderAddressList addresses={addressList} refetch={refetch} />
+              </section>
+            </div>
+          )}
+        </ErrorBoundary>
+      </div>
     </AdminPageContainer>
   );
 };
