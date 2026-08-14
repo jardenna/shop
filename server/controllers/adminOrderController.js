@@ -3,6 +3,7 @@ import { PAYMENT_STATUS } from '../config/paymentConstants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Order from '../models/orderModel.js';
 import { sortColumns } from '../utils/sortColumns.js';
+
 import { t } from '../utils/translator.js';
 
 // @desc    Get all orders
@@ -90,7 +91,7 @@ const getAdminOrderById = asyncHandler(async (req, res) => {
 });
 
 // @desc    Deliver order
-// @route   /api/orders/:id/deliver
+// @route   /api/admin/orders/:id/deliver
 // @method  Patch
 // @access  Private for admin and employees
 const deliverOrder = asyncHandler(async (req, res) => {
@@ -117,19 +118,29 @@ const deliverOrder = asyncHandler(async (req, res) => {
     });
   }
 
-  if (order.delivery.status !== DELIVERY_STATUS.SHIPPED) {
-    return res.status(400).json({
-      success: false,
-      message: t('orderMustBeShippedFirst', req.lang),
-    });
-  }
+  // if (order.delivery.status !== DELIVERY_STATUS.SHIPPED) {
+  //   return res.status(400).json({
+  //     success: false,
+  //     message: t('orderMustBeShippedFirst', req.lang),
+  //   });
+  // }
+
+  const statusHistory = {
+    status: order.delivery.status,
+    changedAt: order.createdAt,
+    changedBy: order.user,
+  };
 
   order.delivery.status = DELIVERY_STATUS.DELIVERED;
   order.delivery.deliveredAt = new Date();
+  order.delivery.statusHistory.push(statusHistory);
+  const delivery = order.delivery;
 
-  const updatedOrder = await order.save();
+  res.send(delivery);
 
-  res.status(200).json(updatedOrder);
+  // const updatedOrder = await order.save();
+
+  // res.status(200).json(updatedOrder);
 });
 
 export { deliverOrder, getAdminOrderById, getAllOrders };
