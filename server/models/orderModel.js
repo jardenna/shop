@@ -129,6 +129,7 @@ const orderModelSchema = new Schema(
         required: true,
         default: DELIVERY_STATUS.ORDER_CREATED,
       },
+      shippedAt: Date,
       deliveredAt: Date,
       statusHistory: [
         {

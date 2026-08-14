@@ -177,11 +177,11 @@ const cancelOrder = asyncHandler(async (req, res) => {
   res.status(200).json(order);
 });
 
-// @desc    Deliver order
-// @route   /api/admin/orders/:id/deliver
+// @desc    Ship order
+// @route   /api/admin/orders/:id/ship
 // @method  PATCH
 // @access  Private for admin and employees
-const deliverOrder = asyncHandler(async (req, res) => {
+const shipOrder = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
 
   if (!order) {
@@ -198,42 +198,32 @@ const deliverOrder = asyncHandler(async (req, res) => {
     });
   }
 
-  if (order.delivery.status === DELIVERY_STATUS.DELIVERED) {
+  if (order.delivery.status !== DELIVERY_STATUS.PROCESSING) {
     return res.status(400).json({
       success: false,
-      message: t('orderAllreadyDelivered', req.lang),
+      message: t('orderMustBeProcessingFirst', req.lang),
     });
   }
 
-  // if (order.delivery.status !== DELIVERY_STATUS.SHIPPED) {
-  //   return res.status(400).json({
-  //     success: false,
-  //     message: t('orderMustBeShippedFirst', req.lang),
-  //   });
-  // }
-
   const statusHistory = {
-    status: order.delivery.status,
-    changedAt: order.createdAt,
-    changedBy: order.user,
+    status: DELIVERY_STATUS.SHIPPED,
+    changedAt: new Date(),
+    changedBy: req.user._id,
   };
 
-  order.delivery.status = DELIVERY_STATUS.DELIVERED;
-  order.delivery.deliveredAt = new Date();
+  order.delivery.status = DELIVERY_STATUS.SHIPPED;
+  order.delivery.shippedAt = statusHistory.changedAt;
   order.delivery.statusHistory.push(statusHistory);
-  const delivery = order.delivery;
 
-  res.send(delivery);
+  const updatedOrder = await order.save();
 
-  // const updatedOrder = await order.save();
-
-  // res.status(200).json(updatedOrder);
+  res.status(200).json(updatedOrder);
 });
 
 export {
   cancelOrder,
-  deliverOrder,
   getAdminOrderById,
   getAllOrders,
+  shipOrder,
   updateOrderStatus,
 };

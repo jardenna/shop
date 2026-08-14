@@ -1,9 +1,9 @@
 import express from 'express';
 import {
   cancelOrder,
-  deliverOrder,
   getAdminOrderById,
   getAllOrders,
+  shipOrder,
   updateOrderStatus,
 } from '../controllers/adminOrderController.js';
 import {
@@ -25,7 +25,7 @@ router
 
 router
   .route('/:id/deliver')
-  .patch(languageMiddleware, authenticate, authorizeEmployee, deliverOrder);
+  .patch(languageMiddleware, authenticate, authorizeEmployee, shipOrder);
 
 router
   .route('/:id/status')
