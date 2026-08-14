@@ -49,7 +49,7 @@ const AdminOrderDetailsPage = () => {
 
   // const orderHistoryList=[
   //   {title: 'status', }
-  // ]/
+  // ]
 
   return (
     <AdminPageContainer
