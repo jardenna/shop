@@ -180,6 +180,15 @@ const getOrderById = asyncHandler(async (req, res) => {
     });
   }
 
+  const orderHistory = order.delivery.statusHistory.map(
+    ({ status, changedAt }) => ({
+      status,
+      changedAt,
+    }),
+  );
+
+  order.delivery.statusHistory = orderHistory;
+
   res.status(200).json(order);
 });
 
