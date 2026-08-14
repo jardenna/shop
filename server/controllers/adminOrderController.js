@@ -1,4 +1,8 @@
-import { DELIVERY_STATUS } from '../config/constants.js';
+import {
+  allowedStatusTransitions,
+  DELIVERY_STATUS,
+  DELIVERY_STATUS_ENUM,
+} from '../config/constants.js';
 import { PAYMENT_STATUS } from '../config/paymentConstants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Order from '../models/orderModel.js';
@@ -95,6 +99,16 @@ const getAdminOrderById = asyncHandler(async (req, res) => {
 // @method  PATCH
 // @access  Private for admin and employees
 const updateOrderStatus = asyncHandler(async (req, res) => {
+  const { status } = req.body;
+  const isValidStatus = DELIVERY_STATUS_ENUM.includes(status);
+
+  if (!isValidStatus) {
+    return res.status(400).json({
+      success: false,
+      message: t('invalidOrderStatus', req.lang),
+    });
+  }
+
   const order = await Order.findById(req.params.id);
 
   if (!order) {
@@ -102,6 +116,16 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
       .status(404)
       .json({ success: false, message: t('orderNotFound', req.lang) });
   }
+  const currentStatus = order.delivery.status;
+  const allowedStatuses = allowedStatusTransitions[currentStatus] ?? [];
+
+  if (!allowedStatuses.includes(status)) {
+    return res.status(400).json({
+      success: false,
+      message: t('orderStatusUpdateNotAllowed', req.lang),
+    });
+  }
+
   res.send(order);
   // res.status(200).json(order);
 });
