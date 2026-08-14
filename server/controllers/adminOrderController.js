@@ -8,7 +8,7 @@ import { t } from '../utils/translator.js';
 
 // @desc    Get all orders
 // @route   /api/orders
-// @method  Get
+// @method  GET
 // @access  Private for admin and employees
 const getAllOrders = asyncHandler(async (req, res) => {
   const { page, ordersPerPage } = req.pagination;
@@ -72,7 +72,7 @@ const getAllOrders = asyncHandler(async (req, res) => {
 });
 
 // @desc    Get admin order by ID
-// @route   GET /api/admin/orders/:id
+// @route   /api/admin/orders/:id
 // @method  GET
 // @access  Private for admin and employees
 const getAdminOrderById = asyncHandler(async (req, res) => {
@@ -90,9 +90,41 @@ const getAdminOrderById = asyncHandler(async (req, res) => {
   res.status(200).json(order);
 });
 
+// @desc    Update order status
+// @route   /api/admin/orders/:id/status
+// @method  PATCH
+// @access  Private for admin and employees
+const updateOrderStatus = asyncHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id);
+
+  if (!order) {
+    return res
+      .status(404)
+      .json({ success: false, message: t('orderNotFound', req.lang) });
+  }
+  res.send(order);
+  // res.status(200).json(order);
+});
+
+// @desc    Cancel order
+// @route   /api/admin/orders/:id/cancel
+// @method  PATCH
+// @access  Private for admin and employees
+const cancelOrder = asyncHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id);
+
+  if (!order) {
+    return res
+      .status(404)
+      .json({ success: false, message: t('orderNotFound', req.lang) });
+  }
+  res.send(order);
+  // res.status(200).json(order);
+});
+
 // @desc    Deliver order
 // @route   /api/admin/orders/:id/deliver
-// @method  Patch
+// @method  PATCH
 // @access  Private for admin and employees
 const deliverOrder = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
@@ -143,4 +175,10 @@ const deliverOrder = asyncHandler(async (req, res) => {
   // res.status(200).json(updatedOrder);
 });
 
-export { deliverOrder, getAdminOrderById, getAllOrders };
+export {
+  cancelOrder,
+  deliverOrder,
+  getAdminOrderById,
+  getAllOrders,
+  updateOrderStatus,
+};

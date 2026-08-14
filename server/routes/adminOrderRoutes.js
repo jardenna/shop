@@ -1,8 +1,10 @@
 import express from 'express';
 import {
+  cancelOrder,
   deliverOrder,
   getAdminOrderById,
   getAllOrders,
+  updateOrderStatus,
 } from '../controllers/adminOrderController.js';
 import {
   authenticate,
@@ -24,5 +26,18 @@ router
 router
   .route('/:id/deliver')
   .patch(languageMiddleware, authenticate, authorizeEmployee, deliverOrder);
+
+router
+  .route('/:id/status')
+  .patch(
+    languageMiddleware,
+    authenticate,
+    authorizeEmployee,
+    updateOrderStatus,
+  );
+
+router
+  .route('/:id/cancel')
+  .patch(languageMiddleware, authenticate, authorizeEmployee, cancelOrder);
 
 export default router;
