@@ -1,4 +1,4 @@
-import { model, Schema } from 'mongoose';
+import { model, mongoose, Schema } from 'mongoose';
 import { DELIVERY_STATUS, DELIVERY_STATUS_ENUM } from '../config/constants.js';
 import {
   PAYMENT_METHODS_LIST,
@@ -130,6 +130,24 @@ const orderModelSchema = new Schema(
         default: DELIVERY_STATUS.ORDER_CREATED,
       },
       deliveredAt: Date,
+      statusHistory: [
+        {
+          status: {
+            type: String,
+            enum: DELIVERY_STATUS_ENUM,
+            required: true,
+          },
+          changedAt: {
+            type: Date,
+            required: true,
+          },
+          changedBy: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
+            required: true,
+          },
+        },
+      ],
     },
   },
   {
