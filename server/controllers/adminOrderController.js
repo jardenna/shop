@@ -2,6 +2,7 @@ import { DELIVERY_STATUS } from '../config/constants.js';
 import { PAYMENT_STATUS } from '../config/paymentConstants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Order from '../models/orderModel.js';
+import { cancelOrderService } from '../services/cancelOrderService.js';
 import { sortColumns } from '../utils/sortColumns.js';
 import { t } from '../utils/translator.js';
 
@@ -117,32 +118,15 @@ const cancelOrder = asyncHandler(async (req, res) => {
       .status(404)
       .json({ success: false, message: t('orderNotFound', req.lang) });
   }
-
-  const deliveryStatus = order.delivery.status;
-
-  if (
-    deliveryStatus === DELIVERY_STATUS.SHIPPED ||
-    deliveryStatus === DELIVERY_STATUS.CANCELLED ||
-    deliveryStatus === DELIVERY_STATUS.DELIVERED
-  ) {
+  const cancelled = await cancelOrderService(order, req.user._id);
+  if (!cancelled) {
     return res.status(400).json({
       success: false,
       message: t('orderCancellationNotAllowed', req.lang),
     });
   }
 
-  const statusHistory = {
-    status: DELIVERY_STATUS.CANCELLED,
-    changedAt: new Date(),
-    changedBy: req.user._id,
-  };
-
-  order.delivery.status = DELIVERY_STATUS.CANCELLED;
-  order.delivery.statusHistory.push(statusHistory);
-
-  const updatedOrder = await order.save();
-
-  res.status(200).json(updatedOrder);
+  res.status(200).json(order);
 });
 
 // @desc    Deliver order
