@@ -294,7 +294,7 @@ const payOrder = asyncHandler(async (req, res) => {
 });
 
 // @desc    Cancel my order
-// @route   /api/orders/me
+// @route   /api/orders/:id/cancel
 // @method  PATCH
 // @access  Private
 const cancelMyOrder = asyncHandler(async (req, res) => {
