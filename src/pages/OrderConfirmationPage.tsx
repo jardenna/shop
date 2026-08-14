@@ -7,15 +7,14 @@ import SkeletonOrderConfirmationPage from '../components/skeleton/skeletonOrderC
 import SummaryList from '../features/cart/components/SummaryList';
 import { useLanguage } from '../features/language/useLanguage';
 import ConfirmationDetails from '../features/orders/components/confirmation/ConfirmationDetails';
-import ConfirmationSubHeader from '../features/orders/components/confirmation/ConfirmationSubHeader';
 import OrderAddressList from '../features/orders/components/OrderAddressList';
+import OrderHeading from '../features/orders/components/orderHeading/OrderHeading';
 import OrderList from '../features/orders/components/orders/OrderList';
 import { useGetOrderByIdQuery } from '../features/orders/orderApiSlice';
 import { createOrderAddressList } from '../features/orders/utils/createOrderAddressList';
 import { orderTrackingList } from '../features/orders/utils/createTrackingList';
 import { ShopPath } from '../layout/nav/enums';
 import MainPageContainer from './pageContainer/MainPageContainer';
-import OrderHeading from '../features/orders/components/orderHeading/OrderHeading';
 
 const OrderConfirmationPage = () => {
   const { id } = useParams();
@@ -61,6 +60,7 @@ const OrderConfirmationPage = () => {
       </MainPageContainer>
     );
   }
+  console.log(order?.delivery.status);
 
   return (
     <MainPageContainer
@@ -69,7 +69,8 @@ const OrderConfirmationPage = () => {
       heading={`${order && order.user.username}, ${language.orderConfirmationTitle}`}
     >
       <div className="confirmation-content">
-        <ConfirmationSubHeader />
+        <h2>{language.orderStatusMessage}</h2>
+        <h2>{language.orderCancelled}</h2>
 
         <ProgressTracker steps={orderTrackingList} status={status} />
 
