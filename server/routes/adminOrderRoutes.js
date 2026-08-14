@@ -23,6 +23,6 @@ router
 
 router
   .route('/:id/deliver')
-  .put(languageMiddleware, authenticate, authorizeEmployee, deliverOrder);
+  .patch(languageMiddleware, authenticate, authorizeEmployee, deliverOrder);
 
 export default router;
