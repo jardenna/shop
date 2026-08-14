@@ -8,7 +8,7 @@ import { validateEmail, validatePassword } from '../validators/validateAuth.js';
 
 // @desc    Get all users
 // @route   /api/users
-// @method  Get
+// @method  GET
 // @access  Private for admin
 const getAllUsers = asyncHandler(async (req, res) => {
   const sortField = req.query.sortField;
@@ -32,7 +32,7 @@ const getAllUsers = asyncHandler(async (req, res) => {
 
 // @desc    Get User profile
 // @route   /api/users/profile
-// @method  Get
+// @method  GET
 // @access  Private
 const getCurrentUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id).select(
@@ -44,7 +44,7 @@ const getCurrentUserProfile = asyncHandler(async (req, res) => {
 
 // @desc    Update User profile
 // @route   /api/users/profile
-// @method  Put
+// @method  PUT
 // @access  Private
 const updateCurrentUserProfile = asyncHandler(async (req, res) => {
   const { password, email, username, phoneNo, dateOfBirth, preferredFashion } =
@@ -104,7 +104,7 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
 
 // @desc    Delete user
 // @route   /api/users/:id
-// @method  Delete
+// @method  DELETE
 // @params  id
 // @access  Private for Admin
 const deleteUserById = asyncHandler(async (req, res) => {
@@ -134,7 +134,7 @@ const deleteUserById = asyncHandler(async (req, res) => {
 
 // @desc    Get user by Id
 // @route   /api/users/:id
-// @method  Get
+// @method  GET
 // @params  id
 // @access  Private for admin and employees
 const getUserById = asyncHandler(async (req, res) => {
@@ -152,7 +152,7 @@ const getUserById = asyncHandler(async (req, res) => {
 
 // @desc    Update user by Id
 // @route   /api/users/:id
-// @method   Put
+// @method   PUT
 // @params  id
 // @access  Private
 const updateUserById = asyncHandler(async (req, res) => {

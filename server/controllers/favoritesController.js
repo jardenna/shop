@@ -7,7 +7,7 @@ import { toggleItemInArray } from '../utils/toggleItemInArray.js';
 
 // @desc    Get favorite
 // @route   /api/favorites
-// @method  Get
+// @method  GET
 // @access  Private
 const getFavorites = asyncHandler(async (req, res) => {
   const userId = req.user.id;
@@ -51,7 +51,7 @@ const getFavorites = asyncHandler(async (req, res) => {
 
 // @desc    Toggle favorite
 // @route   /api/favorites/:id
-// @method  Post
+// @method  POST
 // @access  Public
 const toggleFavorite = asyncHandler(async (req, res) => {
   const userId = req.user.id;

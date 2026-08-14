@@ -4,7 +4,7 @@ import { t } from '../utils/translator.js';
 
 // @desc    Create Product Reviews
 // @route   /api/products/:id/reviews
-// @method  Post
+// @method  POST
 // @access  Public for logged-in users
 const createProductReviews = asyncHandler(async (req, res) => {
   const { rating, comment } = req.body;
@@ -54,7 +54,7 @@ const createProductReviews = asyncHandler(async (req, res) => {
 
 // @desc    Create Product Reviews
 // @route   /api/products/:id/reviewed
-// @method  Get
+// @method  GET
 // @access  Public for logged-in users
 const hasReviewed = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);

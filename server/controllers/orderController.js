@@ -197,7 +197,7 @@ const getUserOrders = asyncHandler(async (req, res) => {
 
 // @desc    Pay order
 // @route   /api/orders/:id/pay
-// @method  put
+// @method  PUT
 // @access  Private
 const payOrder = asyncHandler(async (req, res) => {
   const payment = req.body;

@@ -18,7 +18,7 @@ import {
 
 // @desc    Create cart
 // @route   /api/cart
-// @method  Post
+// @method  POST
 // @access  Private
 const createCart = asyncHandler(async (req, res) => {
   const { cartItems } = req.body;
@@ -151,7 +151,7 @@ const createCart = asyncHandler(async (req, res) => {
 
 // @desc    Update cart
 // @route   /api/cart/:cartItemId
-// @method  patch
+// @method  PATCH
 // @access  Private
 const updateCart = asyncHandler(async (req, res) => {
   const { id } = req.params;
@@ -233,7 +233,7 @@ const updateCart = asyncHandler(async (req, res) => {
 
 // @desc    Apply promo code
 // @route   /api/cart/promo-code
-// @method  Patch
+// @method  PATCH
 // @access  Private
 const applyPromoCode = asyncHandler(async (req, res) => {
   const cart = await Cart.findOne({
@@ -274,7 +274,7 @@ const applyPromoCode = asyncHandler(async (req, res) => {
 
 // @desc    Get cart
 // @route   /api/cart
-// @method  Get
+// @method  GET
 // @access  Private
 const getCart = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id).select('role');
@@ -313,7 +313,7 @@ const getCart = asyncHandler(async (req, res) => {
 
 // @desc    Get cart quantity
 // @route   /api/cart/qty
-// @method  Get
+// @method  GET
 // @access  Private
 const getCartQty = asyncHandler(async (req, res) => {
   const cart = await Cart.findOne({
@@ -340,7 +340,7 @@ const getCartQty = asyncHandler(async (req, res) => {
 
 // @desc    Get guest cart
 // @route   /api/cart/guest
-// @method  Post
+// @method  POST
 // @access  Public
 const getGuestCartProducts = asyncHandler(async (req, res) => {
   const cartItems = req.body;
@@ -399,7 +399,7 @@ const getGuestCartProducts = asyncHandler(async (req, res) => {
 
 // @desc    Delete cart
 // @route   /api/cart
-// @method  Delete
+// @method  DELETE
 // @access  Privat
 const deleteCart = asyncHandler(async (req, res) => {
   const cart = await Cart.findOne({
@@ -423,7 +423,7 @@ const deleteCart = asyncHandler(async (req, res) => {
 
 // @desc    Delete cart item
 // @route   /api/cart/:id
-// @method  Delete
+// @method  DELETE
 // @access  Privat
 const deleteCartItem = asyncHandler(async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
@@ -470,7 +470,7 @@ const deleteCartItem = asyncHandler(async (req, res) => {
 
 // @desc    Update cart quantity
 // @route  /api/cart/:id/quantity
-// @method  Patch
+// @method  PATCH
 // @access  Private
 const updateCartQuantity = asyncHandler(async (req, res) => {
   const { id } = req.params;

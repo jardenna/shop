@@ -14,7 +14,7 @@ import { validateSubCategory } from '../validators/validateSubCategory.js';
 
 // @desc    Create SubCategory
 // @route   /api/subcategories
-// @method  Post
+// @method  POST
 // @access  Private for admin and employees
 const createSubCategory = [
   scheduledStatusHandler('categoryStatus'),
@@ -80,7 +80,7 @@ const createSubCategory = [
 
 // @desc    Get All SubCategories
 // @route   /api/subcategories
-// @method  Get
+// @method  GET
 // @access  Public
 const getAllSubCategories = asyncHandler(async (req, res) => {
   const sortField = req.query.sortField;
@@ -191,7 +191,7 @@ const getAllSubCategories = asyncHandler(async (req, res) => {
 
 // @desc    Check if category is scheduled
 // @route   /api/scheduled
-// @method  Get
+// @method  GET
 // @access  Public
 const checkScheduled = asyncHandler(async (req, res) => {
   const now = new Date();
@@ -206,7 +206,7 @@ const checkScheduled = asyncHandler(async (req, res) => {
 
 // @desc    Get category by id
 // @route   /api/category/id
-// @method  Get
+// @method  GET
 // @access  Public
 const getSubCategoryById = asyncHandler(async (req, res) => {
   const { id } = req.params;
@@ -243,7 +243,7 @@ const getSubCategoryById = asyncHandler(async (req, res) => {
 
 // @desc    Get subcategories with parent category
 // @route   /api/subcategories/with-parent
-// @method  Get
+// @method  GET
 // @access  Private for employees
 const getSubCategoriesWithParent = asyncHandler(async (req, res) => {
   const subCategories = await SubCategory.aggregate([
@@ -278,7 +278,7 @@ const getSubCategoriesWithParent = asyncHandler(async (req, res) => {
 
 // @desc    Get sub cat items if main cat is published
 // @route   /api/subcategories//menu/?parentCategoryName=Kids
-// @method  Get
+// @method  GET
 // @access  Public
 const getMenuByParentCategory = asyncHandler(async (req, res) => {
   const { parentCategoryName } = req.query;
@@ -333,7 +333,7 @@ const getMenuByParentCategory = asyncHandler(async (req, res) => {
 
 // @desc    Update SubCategory
 // @route   /api/subcategories/:id
-// @method  Put
+// @method  PUT
 // @access  Private for admin and employees
 const updateSubCategory = [
   scheduledStatusHandler('categoryStatus'),
@@ -412,7 +412,7 @@ const updateSubCategory = [
 
 // @desc    Delete SubCategory
 // @route   /api/subcategories/:id
-// @method  Delete
+// @method  DELETE
 // @access  Private for admin
 const deleteSubCategory = asyncHandler(async (req, res) => {
   const subCategoryId = req.params.id;

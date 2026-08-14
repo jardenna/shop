@@ -10,7 +10,7 @@ import { validateScheduledDate } from '../validators/validateScheduledDate.js';
 
 // @desc    Create category
 // @route   /api/category
-// @method  Post
+// @method  POST
 // @access  Private for admin and employees
 const createCategory = asyncHandler(async (req, res) => {
   const { categoryName, categoryStatus, scheduledDate } = req.body;
@@ -49,9 +49,9 @@ const createCategory = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Get all categories
+// @desc   Get all categories
 // @route   /api/category
-// @method  Get
+// @method  GET
 // @access  Public
 const getAllCategories = asyncHandler(async (req, res) => {
   const sortField = req.query.sortField;
@@ -85,7 +85,7 @@ const getAllCategories = asyncHandler(async (req, res) => {
 
 // @desc    Check if category is scheduled
 // @route   /api/scheduled
-// @method  Get
+// @method  GET
 // @access  Public
 const checkScheduled = asyncHandler(async (req, res) => {
   const now = new Date();
@@ -98,9 +98,9 @@ const checkScheduled = asyncHandler(async (req, res) => {
   res.status(200).json({ hasScheduled: !!hasScheduled });
 });
 
-// @desc    Get category by id
+// @desc   Get category by id
 // @route   /api/category/id
-// @method  Get
+// @method  GET
 // @access  Public
 const getCategoryById = asyncHandler(async (req, res) => {
   const category = await Category.findById(req.params.id).lean();
@@ -115,9 +115,9 @@ const getCategoryById = asyncHandler(async (req, res) => {
   res.status(200).json({ success: true, category: formattedCategory });
 });
 
-// @desc    Get all published main categories (array of strings)
+// @desc   Get all published main categories (array of strings)
 // @route   /api/category/published
-// @method  Get
+// @method  GET
 // @access  Public
 const getPublishedCategories = asyncHandler(async (req, res) => {
   const publishedCategories = await Category.find(
@@ -133,7 +133,7 @@ const getPublishedCategories = asyncHandler(async (req, res) => {
 
 // @desc    Update category
 // @route   /api/category/id
-// @method  Put
+// @method  PUT
 // @access  Private for admin and employees
 const updateCategory = [
   scheduledStatusHandler('categoryStatus'), // Pass the field name
@@ -181,7 +181,7 @@ const updateCategory = [
 
 // @desc    Delete category
 // @route   /api/category/id
-// @method  Delete
+// @method  DELETE
 // @access  Private for admin
 const deleteCategory = asyncHandler(async (req, res) => {
   try {

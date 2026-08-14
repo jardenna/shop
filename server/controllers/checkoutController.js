@@ -8,7 +8,8 @@ import { getAddressLabel } from '../utils/addressUtils.js';
 import { t } from '../utils/translator.js';
 
 // @desc    Get checkout
-// @route   GET /api/checkout
+// @route   /api/checkout
+// @method  GET
 // @access  Private
 const getCheckout = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id).select('addresses role');

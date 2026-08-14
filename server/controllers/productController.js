@@ -14,7 +14,7 @@ import { validateScheduledDate } from '../validators/validateScheduledDate.js';
 
 // @desc    Create Product
 // @route   /api/products
-// @method  Post
+// @method  POST
 // @access  Private for admin and employees
 const createProduct = [
   scheduledStatusHandler('productStatus'),
@@ -61,7 +61,7 @@ const createProduct = [
 
 // @desc    Dublicate Product
 // @route   /api/products/:id/duplicate
-// @method  Post
+// @method  POST
 // @access  Private for admin and employees
 const duplicateProduct = asyncHandler(async (req, res) => {
   const original = await Product.findById(req.params.id);
@@ -101,7 +101,7 @@ const duplicateProduct = asyncHandler(async (req, res) => {
 
 // @desc    Update Product
 // @route   /api/products/:id
-// @method  Put
+// @method  PUT
 // @access  Private for admin and employees
 const updateProduct = [
   scheduledStatusHandler('productStatus'),
@@ -180,7 +180,7 @@ const updateProduct = [
 
 // @desc    Delete Product
 // @route   /api/products/:id
-// @method  Delete
+// @method  DELETE
 // @access  Private for admin
 const deleteProduct = asyncHandler(async (req, res) => {
   const product = await Product.findByIdAndDelete(req.params.id);
@@ -214,7 +214,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
 
 // @desc    Get Top Products
 // @route   /api/products/top
-// @method  Get
+// @method  GET
 // @access  Public
 const getTopProducts = asyncHandler(async (req, res) => {
   const products = await Product.find({}).sort({ rating: -1 }).limit(4).lean();
@@ -226,7 +226,7 @@ const getTopProducts = asyncHandler(async (req, res) => {
 
 // @desc    Get New Products
 // @route   /api/products/new
-// @method  Get
+// @method  GET
 // @access  Public
 const getNewProducts = asyncHandler(async (req, res) => {
   const products = await Product.find({})
@@ -241,7 +241,7 @@ const getNewProducts = asyncHandler(async (req, res) => {
 
 // @desc    Get Shop products
 // @route   /api/products
-// @method  Get
+// @method  GET
 // @access  Public
 const getShopProducts = asyncHandler(async (req, res) => {
   const productsPerPage = parseInt(req.query.productsPerPage) || 6;
@@ -429,7 +429,7 @@ const getShopProducts = asyncHandler(async (req, res) => {
 
 // @desc    Get admin Products
 // @route   /api/products/allProducts
-// @method  Get
+// @method  GET
 // @access  Private for admin and employees
 const getAdminProducts = asyncHandler(async (req, res) => {
   await updateScheduledItems({
@@ -630,7 +630,7 @@ const getAdminProducts = asyncHandler(async (req, res) => {
 
 // @desc    Get Product By ID
 // @route   /api/products/:id
-// @method  Get
+// @method  GET
 // @access  Public
 const getProductById = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id)
@@ -662,7 +662,7 @@ const getProductById = asyncHandler(async (req, res) => {
 
 // @desc    Get shop product by ID
 // @route   /api/products/shop/:id
-// @method  Get
+// @method  GET
 // @access  Public
 const getShopProductById = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id)
@@ -701,7 +701,7 @@ const getShopProductById = asyncHandler(async (req, res) => {
 
 // @desc    Check Scheduled Products
 // @route   /api/products/scheduled
-// @method  Get
+// @method  GET
 // @access  Public
 const checkScheduled = asyncHandler(async (req, res) => {
   const now = new Date();
