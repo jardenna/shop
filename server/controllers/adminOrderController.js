@@ -80,16 +80,33 @@ const getAllOrders = asyncHandler(async (req, res) => {
 // @method  GET
 // @access  Private for admin and employees
 const getAdminOrderById = asyncHandler(async (req, res) => {
-  const order = await Order.findById(req.params.id).populate({
-    path: 'user',
-    select: '_id username',
-  });
+  const order = await Order.findById(req.params.id).populate([
+    {
+      path: 'user',
+      select: '_id username',
+    },
+    {
+      path: 'delivery.statusHistory.changedBy',
+      select: '_id username',
+    },
+  ]);
 
   if (!order) {
     return res
       .status(404)
       .json({ success: false, message: t('orderNotFound', req.lang) });
   }
+
+  const createdHistory = {
+    status: DELIVERY_STATUS.ORDER_CREATED,
+    changedAt: order.createdAt,
+    changedBy: order.user,
+  };
+
+  order.delivery.statusHistory = [
+    createdHistory,
+    ...order.delivery.statusHistory,
+  ];
 
   res.status(200).json(order);
 });
