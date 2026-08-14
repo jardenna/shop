@@ -1,5 +1,5 @@
 import {
-  allowedStatusTransitions,
+  ALLOWED_STATUS_TRANSITIONS,
   DELIVERY_STATUS,
   DELIVERY_STATUS_ENUM,
 } from '../config/constants.js';
@@ -117,7 +117,7 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
       .json({ success: false, message: t('orderNotFound', req.lang) });
   }
   const currentStatus = order.delivery.status;
-  const allowedStatuses = allowedStatusTransitions[currentStatus] ?? [];
+  const allowedStatuses = ALLOWED_STATUS_TRANSITIONS[currentStatus] ?? [];
 
   if (!allowedStatuses.includes(status)) {
     return res.status(400).json({
