@@ -1,4 +1,3 @@
-import { DELIVERY_STATUS } from '../config/constants.js';
 import {
   PAYMENT_METHODS_LIST,
   PAYMENT_STATUS,
@@ -10,6 +9,7 @@ import Product from '../models/productModel.js';
 import User from '../models/userModel.js';
 import { buildOrderItems } from '../services/buildOrderItems.js';
 import { calculateCartSummary } from '../services/calculateCartSummary.js';
+import { cancelOrderService } from '../services/cancelOrderService.js';
 import { getActiveDiscount } from '../services/getActiveDiscount.js';
 import { t } from '../utils/translator.js';
 import { validateFakePayment } from '../validators/validateFakePayment.js';
@@ -314,32 +314,15 @@ const cancelMyOrder = asyncHandler(async (req, res) => {
       message: t('notAuthorized', req.lang),
     });
   }
-
-  const deliveryStatus = order.delivery.status;
-
-  if (
-    deliveryStatus === DELIVERY_STATUS.SHIPPED ||
-    deliveryStatus === DELIVERY_STATUS.CANCELLED ||
-    deliveryStatus === DELIVERY_STATUS.DELIVERED
-  ) {
+  const cancelled = await cancelOrderService(order, req.user._id);
+  if (!cancelled) {
     return res.status(400).json({
       success: false,
       message: t('orderCancellationNotAllowed', req.lang),
     });
   }
 
-  const statusHistory = {
-    status: DELIVERY_STATUS.CANCELLED,
-    changedAt: new Date(),
-    changedBy: order.user,
-  };
-
-  order.delivery.status = DELIVERY_STATUS.CANCELLED;
-  order.delivery.statusHistory.push(statusHistory);
-
-  const updatedOrder = await order.save();
-
-  res.status(200).json(updatedOrder);
+  res.status(200).json(order);
 });
 
 export { cancelMyOrder, createOrder, getOrderById, getUserOrders, payOrder };
