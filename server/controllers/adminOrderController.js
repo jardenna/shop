@@ -126,8 +126,15 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
     });
   }
 
-  res.send(order);
-  // res.status(200).json(order);
+  order.delivery.status = status;
+  order.delivery.statusHistory.push({
+    status,
+    changedAt: new Date(),
+    changedBy: req.user._id,
+  });
+  await order.save();
+
+  res.status(200).json(order);
 });
 
 // @desc    Cancel order
