@@ -337,6 +337,8 @@ order;Order;Ordre
 orderAllreadyDelivered;Order is already delivered;Ordren er allerede leveret
 orderAllreadyPaid;Order is already paid;Ordren er allerede betalt
 orderAltText;Young boy in black jeans and a white T-shirt layered with a blue-checkered shirt, looking expectant.;Ung dreng i sorte jeans og hvid T-shirt kombineret med en blåternet skjorte, ser forventningsfuld ud.
+orderStatusUpdateNotAllowed;The order cannot be changed to the selected status.;Ordren kan ikke ændres til den valgte status.
+orderCancellationNotAllowed;This order can no longer be cancelled.;Denne ordre kan ikke længere annulleres.
 orderConfirmationDescription;Your order has been successfully placed and is now being prepared.;Din ordre er gennemført og bliver nu gjort klar.
 orderConfirmationProcessing;We'll process it within 24 hours on business days and send you an email with tracking details once it ships. In the meantime, you can track your order below.;Vi behandler din ordre inden for 24 timer på hverdage og sender dig en e-mail med sporingsoplysninger, så snart den er afsendt. Indtil da kan du følge din ordre nedenfor.
 orderConfirmationTitle;Thank you for your order;Tak for din ordre

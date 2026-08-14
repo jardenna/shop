@@ -2,6 +2,7 @@ import { DELIVERY_STATUS } from '../config/constants.js';
 import { PAYMENT_STATUS } from '../config/paymentConstants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Order from '../models/orderModel.js';
+import User from '../models/userModel.js';
 import { sortColumns } from '../utils/sortColumns.js';
 
 import { t } from '../utils/translator.js';
@@ -112,14 +113,36 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
 // @access  Private for admin and employees
 const cancelOrder = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
+  const user = await User.findById(req.user._id).select('username, role');
 
   if (!order) {
     return res
       .status(404)
       .json({ success: false, message: t('orderNotFound', req.lang) });
   }
+
+  const deliveryStatus = order.delivery.status;
+  if (
+    deliveryStatus === DELIVERY_STATUS.SHIPPED ||
+    deliveryStatus === DELIVERY_STATUS.CANCELLED
+  ) {
+    return res.status(400).json({
+      success: false,
+      message: t('orderStatusUpdateNotAllowed', req.lang),
+    });
+  }
+
+  const statusHistory = {
+    status: DELIVERY_STATUS.CANCELLED,
+    changedAt: new Date(),
+    changedBy: user,
+  };
+
+  order.delivery.status = DELIVERY_STATUS.CANCELLED;
+
+  order.delivery.statusHistory.push(statusHistory);
+
   res.send(order);
-  // res.status(200).json(order);
 });
 
 // @desc    Deliver order
