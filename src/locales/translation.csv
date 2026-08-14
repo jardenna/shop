@@ -350,7 +350,7 @@ orderNotFound;We couldn't find the order you're looking for. It may have been re
 orderMustBeShippedFirst;The order must be shipped before it can be marked as delivered.;Ordren skal være afsendt, før den kan markeres som leveret.
 orderNotPaid;Order has not been paid;Ordren er ikke betalt
 orderNumber;Order number;Ordrenummer
-orderPlaced;Order Placed;Ordre gennemført
+orderCreated;Order created;Ordre oprettet
 orderStatusMessage;We process your order within 24 hours on weekdays. You can follow your order status below.;Vi behandler din ordre inden for 24 timer på hverdage. Du kan følge status på din ordre nedenfor.
 orders;Orders;Ordrer
 shipped;Shipped;Afsendt
