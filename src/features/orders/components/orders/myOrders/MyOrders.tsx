@@ -21,7 +21,7 @@ const MyOrders = ({ myOrders, onViewDetails }: MyOrdersProps) => {
             language={language}
             totalPrice={myOrder.summary.totalPrice}
             orderId={myOrder.id}
-            delivery={myOrder.delivery}
+            orderStatus={myOrder.delivery.status}
           />
 
           <OrderList orders={myOrder.orderItems} language={language} />

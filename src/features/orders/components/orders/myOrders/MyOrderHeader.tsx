@@ -1,12 +1,12 @@
-import { Delivery } from '../../../../../app/api/apiTypes/orderApiTypes';
+import { DeliveryStatus } from '../../../../../app/api/apiTypes/orderApiTypes';
 import Badge from '../../../../../components/badge/Badge';
 import { formatOrderNumber } from '../../../../../utils/formatOrderNo';
 import ProductPrice from '../../../../shop/components/productPrice/ProductPrice';
 
 interface MyOrderHeaderProps {
-  delivery: Delivery;
   language: Record<string, string>;
   orderId: string;
+  orderStatus: DeliveryStatus;
   totalPrice: number;
 }
 
@@ -14,7 +14,7 @@ const MyOrderHeader = ({
   orderId,
   totalPrice,
   language,
-  delivery,
+  orderStatus,
 }: MyOrderHeaderProps) => (
   <header className="my-order-header">
     <div className="my-order-meta">
@@ -22,14 +22,11 @@ const MyOrderHeader = ({
         <span>{language.order}</span> <span>{formatOrderNumber(orderId)}</span>
       </span>
       <Badge
-        badgeText={language[delivery.status]}
-        className={delivery.status === 'cancelled' ? 'cancelled' : ''}
+        badgeText={language[orderStatus]}
+        className={orderStatus === 'cancelled' ? 'cancelled' : ''}
       />
     </div>
-    <ProductPrice
-      price={totalPrice}
-      cancelled={delivery.status === 'cancelled'}
-    />
+    <ProductPrice price={totalPrice} cancelled={orderStatus === 'cancelled'} />
   </header>
 );
 export default MyOrderHeader;
