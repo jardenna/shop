@@ -70,7 +70,11 @@ const OrderConfirmationPage = () => {
     >
       <div className="confirmation-content">
         {order?.delivery.status === 'cancelled' ? (
-          <Badge variant="large" badgeText={language.orderCancelled} />
+          <Badge
+            className="cancelled"
+            variant="large"
+            badgeText={language.orderCancelled}
+          />
         ) : (
           <h2>{language.orderStatusMessage}</h2>
         )}
@@ -96,6 +100,7 @@ const OrderConfirmationPage = () => {
                     language={language}
                     summary={order.summary}
                     promoDiscount={order.discount}
+                    cancelled={order.delivery.status === 'cancelled'}
                   />
                 </article>
               </section>

@@ -7,24 +7,25 @@ interface SummaryListProps {
   language: Record<string, string>;
   promoDiscount: Discount;
   summary: Summary;
+  cancelled?: boolean;
 }
 
 const SummaryList = ({
   summary,
   language,
   promoDiscount,
+  cancelled,
 }: SummaryListProps) => {
-  const summaryItems = createSummaryItemList({
+  const summaryItemList = createSummaryItemList({
     summary,
     discount: promoDiscount,
     language,
-    cancelled: true,
+    cancelled,
   });
-  console.log(summaryItems);
 
   return (
     <section className="summary-list">
-      {summaryItems.map(
+      {summaryItemList.map(
         ({ label, price, className, isDiscount, cancelled }) => (
           <SummaryItem
             key={label}

@@ -48,6 +48,12 @@
     text-transform: uppercase;
   }
 
+  &.cancelled {
+    background-color: $color-red-30;
+    color: $color-light-gray-30;
+    text-transform: uppercase;
+  }
+
   &.out-of-stock {
     background-color: $color-warning;
     color: $color-primary;

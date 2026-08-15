@@ -22,7 +22,7 @@ export const createSummaryItemList = ({
   cancelled,
   language,
 }: createSummaryItemListProps): SummaryItemProps[] => {
-  const summaryItems: SummaryItemProps[] = [
+  const summaryItemList: SummaryItemProps[] = [
     {
       label: language.subtotal,
       price: summary.subTotal,
@@ -30,7 +30,7 @@ export const createSummaryItemList = ({
   ];
 
   if (summary.discountPrice > 0) {
-    summaryItems.push({
+    summaryItemList.push({
       label: language.sale,
       price: summary.discountPrice,
       className: 'summary-discount',
@@ -41,14 +41,14 @@ export const createSummaryItemList = ({
   if (summary.promoDiscount > 0 && discount) {
     const discountLabel = `${language[discount.label]} (${discount.percent}%)`;
 
-    summaryItems.push({
+    summaryItemList.push({
       label: discountLabel,
       price: summary.promoDiscount,
       isDiscount: true,
     });
   }
 
-  summaryItems.push(
+  summaryItemList.push(
     {
       label: language.estimatedShipping,
       price: summary.shippingPrice,
@@ -65,5 +65,5 @@ export const createSummaryItemList = ({
     },
   );
 
-  return summaryItems;
+  return summaryItemList;
 };
