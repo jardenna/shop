@@ -94,14 +94,16 @@ const OrderConfirmationPage = () => {
                   <OrderList orders={order.orderItems} language={language} />
                 </article>
 
-                <article className="summary-payment">
+                <article>
                   <OrderHeading heading={language.priceOverview} />
-                  <SummaryList
-                    language={language}
-                    summary={order.summary}
-                    promoDiscount={order.discount}
-                    cancelled={order.delivery.status === 'cancelled'}
-                  />
+                  <div className="summary-payment">
+                    <SummaryList
+                      language={language}
+                      summary={order.summary}
+                      promoDiscount={order.discount}
+                      cancelled={order.delivery.status === 'cancelled'}
+                    />
+                  </div>
                 </article>
               </section>
               <section className="confirmation-info-container">
