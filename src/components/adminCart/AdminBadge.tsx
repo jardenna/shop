@@ -20,6 +20,7 @@ const AdminBadge = ({ scheduledDate, status }: AdminBadgeProps) => {
       <Badge
         badgeText={translateKey(status, language)}
         className={status.toLowerCase()}
+        variant="small"
       />
       {scheduledDate && (
         <Popup

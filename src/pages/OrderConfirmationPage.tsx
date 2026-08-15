@@ -1,5 +1,6 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
+import Badge from '../components/badge/Badge';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import NotFoundError from '../components/NotFoundError';
 import ProgressTracker from '../components/progressTracker/ProgressTracker';
@@ -60,7 +61,6 @@ const OrderConfirmationPage = () => {
       </MainPageContainer>
     );
   }
-  console.log(order?.delivery.status);
 
   return (
     <MainPageContainer
@@ -69,8 +69,11 @@ const OrderConfirmationPage = () => {
       heading={`${order && order.user.username}, ${language.orderConfirmationTitle}`}
     >
       <div className="confirmation-content">
-        <h2>{language.orderStatusMessage}</h2>
-        <h2>{language.orderCancelled}</h2>
+        {order?.delivery.status === 'cancelled' ? (
+          <Badge variant="large" badgeText={language.orderCancelled} />
+        ) : (
+          <h2>{language.orderStatusMessage}</h2>
+        )}
 
         <ProgressTracker steps={orderTrackingList} status={status} />
 
