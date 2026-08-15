@@ -120,7 +120,7 @@ const PaymentCardForm = ({
       navigate(`/${ShopPath.MyOrder}/${order.id}`);
 
       onAddMessagePopup({
-        message: language.orderPlaced,
+        message: language.orderCreated,
       });
     } catch (error) {
       handleApiError(error, onAddMessagePopup);

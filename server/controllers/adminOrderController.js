@@ -1,13 +1,18 @@
-import { DELIVERY_STATUS } from '../config/constants.js';
+import {
+  ALLOWED_STATUS_TRANSITIONS,
+  DELIVERY_STATUS,
+  DELIVERY_STATUS_ENUM,
+} from '../config/constants.js';
 import { PAYMENT_STATUS } from '../config/paymentConstants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Order from '../models/orderModel.js';
+import { cancelOrderService } from '../services/cancelOrderService.js';
 import { sortColumns } from '../utils/sortColumns.js';
 import { t } from '../utils/translator.js';
 
 // @desc    Get all orders
 // @route   /api/orders
-// @method  Get
+// @method  GET
 // @access  Private for admin and employees
 const getAllOrders = asyncHandler(async (req, res) => {
   const { page, ordersPerPage } = req.pagination;
@@ -71,14 +76,20 @@ const getAllOrders = asyncHandler(async (req, res) => {
 });
 
 // @desc    Get admin order by ID
-// @route   GET /api/admin/orders/:id
+// @route   /api/admin/orders/:id
 // @method  GET
 // @access  Private for admin and employees
 const getAdminOrderById = asyncHandler(async (req, res) => {
-  const order = await Order.findById(req.params.id).populate({
-    path: 'user',
-    select: '_id username',
-  });
+  const order = await Order.findById(req.params.id).populate([
+    {
+      path: 'user',
+      select: '_id username',
+    },
+    {
+      path: 'delivery.statusHistory.changedBy',
+      select: '_id username',
+    },
+  ]);
 
   if (!order) {
     return res
@@ -86,14 +97,91 @@ const getAdminOrderById = asyncHandler(async (req, res) => {
       .json({ success: false, message: t('orderNotFound', req.lang) });
   }
 
+  const createdHistory = {
+    status: DELIVERY_STATUS.ORDER_CREATED,
+    changedAt: order.createdAt,
+    changedBy: order.user,
+  };
+
+  order.delivery.statusHistory = [
+    createdHistory,
+    ...order.delivery.statusHistory,
+  ];
+
   res.status(200).json(order);
 });
 
-// @desc    Deliver order
-// @route   /api/orders/:id/deliver
-// @method  Patch
+// @desc    Update order status
+// @route   /api/admin/orders/:id/status
+// @method  PATCH
 // @access  Private for admin and employees
-const deliverOrder = asyncHandler(async (req, res) => {
+const updateOrderStatus = asyncHandler(async (req, res) => {
+  const { status } = req.body;
+  const isValidStatus = DELIVERY_STATUS_ENUM.includes(status);
+
+  if (!isValidStatus) {
+    return res.status(400).json({
+      success: false,
+      message: t('invalidOrderStatus', req.lang),
+    });
+  }
+
+  const order = await Order.findById(req.params.id);
+
+  if (!order) {
+    return res
+      .status(404)
+      .json({ success: false, message: t('orderNotFound', req.lang) });
+  }
+  const currentStatus = order.delivery.status;
+  const allowedStatuses = ALLOWED_STATUS_TRANSITIONS[currentStatus] ?? [];
+
+  if (!allowedStatuses.includes(status)) {
+    return res.status(400).json({
+      success: false,
+      message: t('orderStatusUpdateNotAllowed', req.lang),
+    });
+  }
+
+  order.delivery.status = status;
+  order.delivery.statusHistory.push({
+    status,
+    changedAt: new Date(),
+    changedBy: req.user._id,
+  });
+  await order.save();
+
+  res.status(200).json(order);
+});
+
+// @desc    Cancel order
+// @route   /api/admin/orders/:id/cancel
+// @method  PATCH
+// @access  Private for admin and employees
+const cancelOrder = asyncHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id);
+
+  if (!order) {
+    return res
+      .status(404)
+      .json({ success: false, message: t('orderNotFound', req.lang) });
+  }
+  const cancelled = await cancelOrderService(order, req.user._id);
+  if (!cancelled) {
+    return res.status(400).json({
+      success: false,
+      message: t('orderCancellationNotAllowed', req.lang),
+    });
+  }
+
+  res.status(200).json(order);
+});
+
+// @desc    Ship order
+// @route   /api/admin/orders/:id/ship
+// @method  PATCH
+// @access  Private for admin and employees
+const shipOrder = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
 
   if (!order) {
@@ -110,26 +198,32 @@ const deliverOrder = asyncHandler(async (req, res) => {
     });
   }
 
-  if (order.delivery.status === DELIVERY_STATUS.DELIVERED) {
+  if (order.delivery.status !== DELIVERY_STATUS.PROCESSING) {
     return res.status(400).json({
       success: false,
-      message: t('orderAllreadyDelivered', req.lang),
+      message: t('orderMustBeProcessingFirst', req.lang),
     });
   }
 
-  if (order.delivery.status !== DELIVERY_STATUS.SHIPPED) {
-    return res.status(400).json({
-      success: false,
-      message: t('orderMustBeShippedFirst', req.lang),
-    });
-  }
+  const statusHistory = {
+    status: DELIVERY_STATUS.SHIPPED,
+    changedAt: new Date(),
+    changedBy: req.user._id,
+  };
 
-  order.delivery.status = DELIVERY_STATUS.DELIVERED;
-  order.delivery.deliveredAt = new Date();
+  order.delivery.status = DELIVERY_STATUS.SHIPPED;
+  order.delivery.shippedAt = statusHistory.changedAt;
+  order.delivery.statusHistory.push(statusHistory);
 
   const updatedOrder = await order.save();
 
   res.status(200).json(updatedOrder);
 });
 
-export { deliverOrder, getAdminOrderById, getAllOrders };
+export {
+  cancelOrder,
+  getAdminOrderById,
+  getAllOrders,
+  shipOrder,
+  updateOrderStatus,
+};

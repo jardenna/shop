@@ -14,7 +14,7 @@ import { validateCreateAddress } from '../validators/validateAddress.js';
 
 // @desc    Create users address
 // @route   /api/users/profile/addresses
-// @method  Post
+// @method  POST
 // @access  Private
 const createUserAddress = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
@@ -59,7 +59,7 @@ const createUserAddress = asyncHandler(async (req, res) => {
 
 // @desc    Update users address
 // @route   /api/users/profile/addresses/:addressId
-// @method  Patch
+// @method  PATCH
 // @access  Private
 const updateUserAddress = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
@@ -115,7 +115,7 @@ const updateUserAddress = asyncHandler(async (req, res) => {
 
 // @desc    Delete users address
 // @route   /api/users/profile/addresses/:addressId
-// @method  Delete
+// @method  DELETE
 // @access  Private
 const deleteUserAddress = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
@@ -135,7 +135,7 @@ const deleteUserAddress = asyncHandler(async (req, res) => {
 
 // @desc    Get users addresses
 // @route  /api/users/profile/addresses
-// @method  Get
+// @method  GET
 // @access  Private
 const getUserAddresses = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);

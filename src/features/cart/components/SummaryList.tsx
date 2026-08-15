@@ -1,5 +1,5 @@
 import { Discount, Summary } from '../../../app/api/apiTypes/sharedApiTypes';
-import { createSummaryItems } from '../../utils/createSummaryItems';
+import { createSummaryItemList } from '../../utils/createSummaryItemList';
 import './cartSummary.styles.scss';
 import SummaryItem from './SummaryItem';
 
@@ -7,30 +7,36 @@ interface SummaryListProps {
   language: Record<string, string>;
   promoDiscount: Discount;
   summary: Summary;
+  cancelled?: boolean;
 }
 
 const SummaryList = ({
   summary,
   language,
   promoDiscount,
+  cancelled,
 }: SummaryListProps) => {
-  const summaryItems = createSummaryItems({
+  const summaryItemList = createSummaryItemList({
     summary,
     discount: promoDiscount,
     language,
+    cancelled,
   });
 
   return (
     <section className="summary-list">
-      {summaryItems.map(({ label, price, className, isDiscount }) => (
-        <SummaryItem
-          key={label}
-          className={className}
-          isDiscount={isDiscount}
-          label={label}
-          price={price}
-        />
-      ))}
+      {summaryItemList.map(
+        ({ label, price, className, isDiscount, cancelled }) => (
+          <SummaryItem
+            key={label}
+            className={className}
+            isDiscount={isDiscount}
+            label={label}
+            price={price}
+            cancelled={cancelled}
+          />
+        ),
+      )}
     </section>
   );
 };

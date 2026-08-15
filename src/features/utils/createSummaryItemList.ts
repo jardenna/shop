@@ -1,25 +1,28 @@
 import { Discount, Summary } from '../../app/api/apiTypes/sharedApiTypes';
 import { vat } from '../../utils/utils';
 
-type SummaryItem = {
+interface SummaryItemProps {
   label: string;
   price: number;
+  cancelled?: boolean;
   className?: string;
   isDiscount?: boolean;
-};
+}
 
-type CreateSummaryItemsProps = {
+interface createSummaryItemListProps {
   language: Record<string, string>;
   summary: Summary;
+  cancelled?: boolean;
   discount?: Discount;
-};
+}
 
-export const createSummaryItems = ({
+export const createSummaryItemList = ({
   summary,
   discount,
+  cancelled,
   language,
-}: CreateSummaryItemsProps): SummaryItem[] => {
-  const summaryItems: SummaryItem[] = [
+}: createSummaryItemListProps): SummaryItemProps[] => {
+  const summaryItemList: SummaryItemProps[] = [
     {
       label: language.subtotal,
       price: summary.subTotal,
@@ -27,7 +30,7 @@ export const createSummaryItems = ({
   ];
 
   if (summary.discountPrice > 0) {
-    summaryItems.push({
+    summaryItemList.push({
       label: language.sale,
       price: summary.discountPrice,
       className: 'summary-discount',
@@ -38,14 +41,14 @@ export const createSummaryItems = ({
   if (summary.promoDiscount > 0 && discount) {
     const discountLabel = `${language[discount.label]} (${discount.percent}%)`;
 
-    summaryItems.push({
+    summaryItemList.push({
       label: discountLabel,
       price: summary.promoDiscount,
       isDiscount: true,
     });
   }
 
-  summaryItems.push(
+  summaryItemList.push(
     {
       label: language.estimatedShipping,
       price: summary.shippingPrice,
@@ -58,8 +61,9 @@ export const createSummaryItems = ({
       label: language.totalPrice,
       price: summary.totalPrice,
       className: 'summary-total',
+      cancelled,
     },
   );
 
-  return summaryItems;
+  return summaryItemList;
 };

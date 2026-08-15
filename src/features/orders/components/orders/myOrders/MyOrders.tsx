@@ -16,16 +16,18 @@ const MyOrders = ({ myOrders, onViewDetails }: MyOrdersProps) => {
   return (
     <section className="orders">
       {myOrders.map((myOrder) => (
-        <article key={myOrder.id} className="order-cart">
+        <article key={myOrder.id} className="my-order-cart">
           <MyOrderHeader
             language={language}
             totalPrice={myOrder.summary.totalPrice}
             orderId={myOrder.id}
+            orderStatus={myOrder.delivery.status}
           />
 
           <OrderList orders={myOrder.orderItems} language={language} />
           <MyOrderFooter
             language={language}
+            orderStatus={myOrder.delivery.status}
             estimatedDelivery={myOrder.createdAt}
             onViewDetails={() => {
               onViewDetails(myOrder.id);

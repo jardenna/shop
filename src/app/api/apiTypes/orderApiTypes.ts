@@ -17,7 +17,8 @@ export interface CreateOrderRequest {
   shippingAddressId: string;
 }
 
-export type DeliveryStatus = 'created' | 'processing' | 'shipped' | 'delivered';
+export type DeliveryStatus =
+  'created' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
 
 export type DeliveryStatusFilterValues =
   (typeof deliveryStatusFilterValues)[number];
@@ -33,8 +34,17 @@ export interface User {
   username: string;
 }
 
-export interface Delivery {
+export interface StatusHistory {
+  changedAt: Date;
+  changedBy: string;
   status: DeliveryStatus;
+}
+
+export interface Delivery {
+  deliveredAt: Date;
+  shippedAt: Date;
+  status: DeliveryStatus;
+  statusHistory: StatusHistory;
 }
 
 export interface OrderResponse extends DefaultResponseType {
@@ -55,6 +65,7 @@ export interface SummaryK {
 
 export interface MyOrdersResponse {
   createdAt: Date;
+  delivery: Delivery;
   id: string;
   orderItems: Order[];
   payment: Payment;

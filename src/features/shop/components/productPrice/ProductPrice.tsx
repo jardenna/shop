@@ -6,6 +6,7 @@ import './_product-price.scss';
 
 interface ProductPriceProps {
   price: number;
+  cancelled?: boolean;
   discount?: number;
   discountedPrice?: number;
   hasError?: string;
@@ -18,6 +19,7 @@ const ProductPrice = ({
   hasError,
   discountedPrice,
   isNegativeNumber,
+  cancelled,
 }: ProductPriceProps) => {
   const { language } = useLanguage();
 
@@ -33,7 +35,7 @@ const ProductPrice = ({
   }
 
   return (
-    <div className="product-price">
+    <div className={`product-price ${cancelled ? 'text-line-through' : ''}`}>
       {discount ? (
         <>
           <span className="discount">{displayPrice}</span>

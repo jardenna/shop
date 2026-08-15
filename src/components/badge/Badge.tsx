@@ -3,13 +3,13 @@ import './_badge.scss';
 interface BadgeProps {
   badgeText: string;
   className?: string;
-  variant?: 'small' | 'large';
+  variant?: 'small' | 'medium' | 'large';
 }
 
 const Badge = ({
   badgeText,
   className = '',
-  variant = 'large',
+  variant = 'small',
 }: BadgeProps) => (
   <span className={`badge badge-${variant} ${className}`}>
     <span>{badgeText}</span>

@@ -1,8 +1,10 @@
 import express from 'express';
 import {
-  deliverOrder,
+  cancelOrder,
   getAdminOrderById,
   getAllOrders,
+  shipOrder,
+  updateOrderStatus,
 } from '../controllers/adminOrderController.js';
 import {
   authenticate,
@@ -23,6 +25,19 @@ router
 
 router
   .route('/:id/deliver')
-  .put(languageMiddleware, authenticate, authorizeEmployee, deliverOrder);
+  .patch(languageMiddleware, authenticate, authorizeEmployee, shipOrder);
+
+router
+  .route('/:id/status')
+  .patch(
+    languageMiddleware,
+    authenticate,
+    authorizeEmployee,
+    updateOrderStatus,
+  );
+
+router
+  .route('/:id/cancel')
+  .patch(languageMiddleware, authenticate, authorizeEmployee, cancelOrder);
 
 export default router;

@@ -9,6 +9,7 @@ import Product from '../models/productModel.js';
 import User from '../models/userModel.js';
 import { buildOrderItems } from '../services/buildOrderItems.js';
 import { calculateCartSummary } from '../services/calculateCartSummary.js';
+import { cancelOrderService } from '../services/cancelOrderService.js';
 import { getActiveDiscount } from '../services/getActiveDiscount.js';
 import { t } from '../utils/translator.js';
 import { validateFakePayment } from '../validators/validateFakePayment.js';
@@ -20,7 +21,7 @@ import {
 
 // @desc    Create orders
 // @route   /api/orders
-// @method  Post
+// @method  POST
 // @access  Private
 const createOrder = asyncHandler(async (req, res) => {
   const { orderItems, shippingAddressId, billingAddressId, payment } = req.body;
@@ -153,9 +154,9 @@ const createOrder = asyncHandler(async (req, res) => {
   res.status(201).json(createdOrder);
 });
 
-// @desc    Get order by Id
+// @desc    Get my order by Id
 // @route   /api/orders/id
-// @method  Get
+// @method  GET
 // @access  Private
 const getOrderById = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id).populate({
@@ -179,12 +180,21 @@ const getOrderById = asyncHandler(async (req, res) => {
     });
   }
 
+  const orderHistory = order.delivery.statusHistory.map(
+    ({ status, changedAt }) => ({
+      status,
+      changedAt,
+    }),
+  );
+
+  order.delivery.statusHistory = orderHistory;
+
   res.status(200).json(order);
 });
 
-// @desc    Get orders as a user
+// @desc    GET All my orders
 // @route   /api/orders/me
-// @method  Get
+// @method  GET
 // @access  Private
 const getUserOrders = asyncHandler(async (req, res) => {
   const orders = await Order.find({ user: req.user._id }).select(
@@ -196,7 +206,7 @@ const getUserOrders = asyncHandler(async (req, res) => {
 
 // @desc    Pay order
 // @route   /api/orders/:id/pay
-// @method  Put
+// @method  PUT
 // @access  Private
 const payOrder = asyncHandler(async (req, res) => {
   const payment = req.body;
@@ -292,4 +302,36 @@ const payOrder = asyncHandler(async (req, res) => {
   res.status(200).json(updatedOrder);
 });
 
-export { createOrder, getOrderById, getUserOrders, payOrder };
+// @desc    Cancel my order
+// @route   /api/orders/:id/cancel
+// @method  PATCH
+// @access  Private
+const cancelMyOrder = asyncHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id);
+
+  if (!order) {
+    return res
+      .status(404)
+      .json({ success: false, message: t('orderNotFound', req.lang) });
+  }
+
+  const orderBelongsToUser = order.user.toString() === req.user._id.toString();
+
+  if (!orderBelongsToUser) {
+    return res.status(403).json({
+      success: false,
+      message: t('notAuthorized', req.lang),
+    });
+  }
+  const cancelled = await cancelOrderService(order, req.user._id);
+  if (!cancelled) {
+    return res.status(400).json({
+      success: false,
+      message: t('orderCancellationNotAllowed', req.lang),
+    });
+  }
+
+  res.status(200).json(order);
+});
+
+export { cancelMyOrder, createOrder, getOrderById, getUserOrders, payOrder };

@@ -1,5 +1,6 @@
 import express from 'express';
 import {
+  cancelMyOrder,
   createOrder,
   getOrderById,
   getUserOrders,
@@ -17,5 +18,8 @@ router.route('/me').get(languageMiddleware, authenticate, getUserOrders);
 
 router.route('/:id').get(languageMiddleware, authenticate, getOrderById);
 router.route('/:id/pay').put(languageMiddleware, authenticate, payOrder);
+router
+  .route('/:id/cancel')
+  .patch(languageMiddleware, authenticate, cancelMyOrder);
 
 export default router;

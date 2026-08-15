@@ -55,6 +55,7 @@ browseImages;Browse images;Tilføj produkt billeder
 buyForFreeShipping;Buy for;Hvis du køber for
 calendar;Calendar;Kalender
 cancel;Cancel;Annuller
+cancelled;Cancelled;Annulleret
 cardHasExpired;Card has expired;Kortet er udløbet
 cardholderName;Cardholder name;Kortholder navn
 cardNumberMustContainExactly16Digits;Exactly 16 digits;Præcis 16 cifre
@@ -236,6 +237,7 @@ invalidPaymentMethod;The selected payment method is invalid.;Den valgte betaling
 invalidQuantity;Quantity must be at least 1;Antallet skal være mindst 1
 invalidRequestProductIds;Invalid product IDs provided;Ugyldige produkt-id'er sendt
 invalidScheduledDateFormat;Invalid scheduled date format;Ugyldigt format for planlagt dato
+invalidOrderStatus;Invalid order status.;Ugyldig ordrestatus.
 invalidSize;The selected size is no longer available;Den valgte størrelse er ikke længere tilgængelig
 invalidUserData;Invalid user data;Ugyldig bruger data
 item;item;vare
@@ -337,18 +339,20 @@ order;Order;Ordre
 orderAllreadyDelivered;Order is already delivered;Ordren er allerede leveret
 orderAllreadyPaid;Order is already paid;Ordren er allerede betalt
 orderAltText;Young boy in black jeans and a white T-shirt layered with a blue-checkered shirt, looking expectant.;Ung dreng i sorte jeans og hvid T-shirt kombineret med en blåternet skjorte, ser forventningsfuld ud.
-orderConfirmationDescription;Your order has been successfully placed and is now being prepared.;Din ordre er gennemført og bliver nu gjort klar.
-orderConfirmationProcessing;We'll process it within 24 hours on business days and send you an email with tracking details once it ships. In the meantime, you can track your order below.;Vi behandler din ordre inden for 24 timer på hverdage og sender dig en e-mail med sporingsoplysninger, så snart den er afsendt. Indtil da kan du følge din ordre nedenfor.
+orderStatusUpdateNotAllowed;The order cannot be changed to the selected status.;Ordren kan ikke ændres til den valgte status.
+orderCancellationNotAllowed;This order can no longer be cancelled.;Denne ordre kan ikke længere annulleres.
 orderConfirmationTitle;Thank you for your order;Tak for din ordre
 created;created;Oprettet
 delivered;Delivered;Leveret
 processing;In progress;Behandles
 resourceNotFound;We couldn't find what you're looking for. It may have been removed, or the link is no longer valid.;Vi kunne ikke finde det, du leder efter. Det kan være blevet fjernet, eller linket er ikke længere gyldigt.
+orderCancelled;This order has been cancelled;Denne ordre er annulleret
 orderNotFound;We couldn't find the order you're looking for. It may have been removed or the link is no longer valid.;Vi kunne ikke finde den ordre, du leder efter. Den kan være blevet fjernet, eller linket er ikke længere gyldigt.
 orderMustBeShippedFirst;The order must be shipped before it can be marked as delivered.;Ordren skal være afsendt, før den kan markeres som leveret.
 orderNotPaid;Order has not been paid;Ordren er ikke betalt
 orderNumber;Order number;Ordrenummer
-orderPlaced;Order Placed;Ordre gennemført
+orderCreated;Order created;Ordre oprettet
+orderStatusMessage;We process your order within 24 hours on weekdays. You can follow your order status below.;Vi behandler din ordre inden for 24 timer på hverdage. Du kan følge status på din ordre nedenfor.
 orders;Orders;Ordrer
 shipped;Shipped;Afsendt
 orderSummary;Order summary;Ordreoversigt

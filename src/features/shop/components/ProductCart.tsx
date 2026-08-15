@@ -50,16 +50,16 @@ const ProductCart = ({
           <div className="cart-img-container">
             {product.discount > 0 && (
               <Badge
-                variant="small"
                 badgeText={`- ${product.discount} %`}
                 className="discount"
+                variant="medium"
               />
             )}
             {isOutOfStock && (
               <Badge
                 badgeText={language.outOfStock}
                 className="out-of-stock"
-                variant="small"
+                variant="medium"
               />
             )}
             <Img alt="" src={product.image} />

@@ -1,5 +1,6 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
+import Badge from '../components/badge/Badge';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import NotFoundError from '../components/NotFoundError';
 import ProgressTracker from '../components/progressTracker/ProgressTracker';
@@ -7,15 +8,14 @@ import SkeletonOrderConfirmationPage from '../components/skeleton/skeletonOrderC
 import SummaryList from '../features/cart/components/SummaryList';
 import { useLanguage } from '../features/language/useLanguage';
 import ConfirmationDetails from '../features/orders/components/confirmation/ConfirmationDetails';
-import ConfirmationSubHeader from '../features/orders/components/confirmation/ConfirmationSubHeader';
 import OrderAddressList from '../features/orders/components/OrderAddressList';
+import OrderHeading from '../features/orders/components/orderHeading/OrderHeading';
 import OrderList from '../features/orders/components/orders/OrderList';
 import { useGetOrderByIdQuery } from '../features/orders/orderApiSlice';
 import { createOrderAddressList } from '../features/orders/utils/createOrderAddressList';
 import { orderTrackingList } from '../features/orders/utils/createTrackingList';
 import { ShopPath } from '../layout/nav/enums';
 import MainPageContainer from './pageContainer/MainPageContainer';
-import OrderHeading from '../features/orders/components/orderHeading/OrderHeading';
 
 const OrderConfirmationPage = () => {
   const { id } = useParams();
@@ -69,7 +69,15 @@ const OrderConfirmationPage = () => {
       heading={`${order && order.user.username}, ${language.orderConfirmationTitle}`}
     >
       <div className="confirmation-content">
-        <ConfirmationSubHeader />
+        {order?.delivery.status === 'cancelled' ? (
+          <Badge
+            className="cancelled"
+            variant="large"
+            badgeText={language.orderCancelled}
+          />
+        ) : (
+          <h2>{language.orderStatusMessage}</h2>
+        )}
 
         <ProgressTracker steps={orderTrackingList} status={status} />
 
@@ -86,13 +94,16 @@ const OrderConfirmationPage = () => {
                   <OrderList orders={order.orderItems} language={language} />
                 </article>
 
-                <article className="summary-payment">
+                <article>
                   <OrderHeading heading={language.priceOverview} />
-                  <SummaryList
-                    language={language}
-                    summary={order.summary}
-                    promoDiscount={order.discount}
-                  />
+                  <div className="summary-payment">
+                    <SummaryList
+                      language={language}
+                      summary={order.summary}
+                      promoDiscount={order.discount}
+                      cancelled={order.delivery.status === 'cancelled'}
+                    />
+                  </div>
                 </article>
               </section>
               <section className="confirmation-info-container">

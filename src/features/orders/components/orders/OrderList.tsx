@@ -17,19 +17,13 @@ interface OrderListProps {
   language: Record<string, string>;
   orders: OrderItems[];
   hidePrice?: boolean;
-  variant?: string;
 }
 
-const OrderList = ({
-  orders,
-  language,
-  hidePrice,
-  variant = '',
-}: OrderListProps) => (
-  <ul className={`order-list ${variant}-order-list`}>
+const OrderList = ({ orders, language, hidePrice }: OrderListProps) => (
+  <ul className="order-list">
     {orders.map((order) => (
       <li className="order-list-item" key={order.id}>
-        <div className="order-item">
+        <article className="order-cart">
           <Img src={order.image} alt="" className="order-img" />
           <div>
             <h2 className="order-item-title">{order.productName}</h2>
@@ -45,7 +39,7 @@ const OrderList = ({
               <LabelValue label={language.qty} text={order.qty} />
             </div>
           </div>
-        </div>
+        </article>
       </li>
     ))}
   </ul>

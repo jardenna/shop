@@ -9,14 +9,22 @@
   display: flex;
   align-items: center;
   width: fit-content;
-  border-radius: 50px;
   background-color: $color-light-gray-30;
-  padding: 2px 12px;
   font-family: $font-primary-bold;
 
-  &.badge-small {
-    padding-block: 8px;
+  &.badge-large {
+    border-radius: 50px;
+    padding: 12px 20px;
+  }
+
+  &.badge-medium {
     border-radius: 4px;
+    padding: 8px 12px;
+  }
+
+  &.badge-small {
+    border-radius: 50px;
+    padding: 2px 12px;
   }
 
   &.published {
@@ -38,14 +46,16 @@
     background-color: $color-badge-discount;
     color: $color-light-gray-30;
     text-transform: uppercase;
-    padding-block: 8px;
-    border-radius: 4px;
+  }
+
+  &.cancelled {
+    background-color: $color-red-30;
+    color: $color-light-gray-30;
+    text-transform: uppercase;
   }
 
   &.out-of-stock {
     background-color: $color-warning;
     color: $color-primary;
-    padding-block: 8px;
-    border-radius: 4px;
   }
 }

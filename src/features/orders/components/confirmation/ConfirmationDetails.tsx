@@ -28,7 +28,10 @@ const ConfirmationDetails = ({
           text={formatOrderNumber(id)}
           label={language.orderNumber}
         />
-        <ConfirmationDetailItem date={createdAt} label={language.orderPlaced} />
+        <ConfirmationDetailItem
+          date={createdAt}
+          label={language.orderCreated}
+        />
         <ConfirmationDetailItem
           text={paymentMethodLabels[method]}
           label={language.paymentMethod}
