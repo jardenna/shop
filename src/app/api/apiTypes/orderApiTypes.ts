@@ -65,6 +65,7 @@ export interface SummaryK {
 
 export interface MyOrdersResponse {
   createdAt: Date;
+  delivery: Delivery;
   id: string;
   orderItems: Order[];
   payment: Payment;

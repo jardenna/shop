@@ -55,6 +55,7 @@ browseImages;Browse images;Tilføj produkt billeder
 buyForFreeShipping;Buy for;Hvis du køber for
 calendar;Calendar;Kalender
 cancel;Cancel;Annuller
+cancelled;Cancelled;Annulleret
 cardHasExpired;Card has expired;Kortet er udløbet
 cardholderName;Cardholder name;Kortholder navn
 cardNumberMustContainExactly16Digits;Exactly 16 digits;Præcis 16 cifre
