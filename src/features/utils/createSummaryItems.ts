@@ -1,25 +1,28 @@
 import { Discount, Summary } from '../../app/api/apiTypes/sharedApiTypes';
 import { vat } from '../../utils/utils';
 
-type SummaryItem = {
+interface SummaryItemProps {
   label: string;
   price: number;
+  cancelled?: boolean;
   className?: string;
   isDiscount?: boolean;
-};
+}
 
-type CreateSummaryItemsProps = {
+interface CreateSummaryItemsProps {
   language: Record<string, string>;
   summary: Summary;
+  cancelled?: boolean;
   discount?: Discount;
-};
+}
 
 export const createSummaryItems = ({
   summary,
   discount,
+  cancelled,
   language,
-}: CreateSummaryItemsProps): SummaryItem[] => {
-  const summaryItems: SummaryItem[] = [
+}: CreateSummaryItemsProps): SummaryItemProps[] => {
+  const summaryItems: SummaryItemProps[] = [
     {
       label: language.subtotal,
       price: summary.subTotal,
@@ -58,6 +61,7 @@ export const createSummaryItems = ({
       label: language.totalPrice,
       price: summary.totalPrice,
       className: 'summary-total',
+      cancelled,
     },
   );
 

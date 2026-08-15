@@ -18,19 +18,24 @@ const SummaryList = ({
     summary,
     discount: promoDiscount,
     language,
+    cancelled: true,
   });
+  console.log(summaryItems);
 
   return (
     <section className="summary-list">
-      {summaryItems.map(({ label, price, className, isDiscount }) => (
-        <SummaryItem
-          key={label}
-          className={className}
-          isDiscount={isDiscount}
-          label={label}
-          price={price}
-        />
-      ))}
+      {summaryItems.map(
+        ({ label, price, className, isDiscount, cancelled }) => (
+          <SummaryItem
+            key={label}
+            className={className}
+            isDiscount={isDiscount}
+            label={label}
+            price={price}
+            cancelled={cancelled}
+          />
+        ),
+      )}
     </section>
   );
 };
