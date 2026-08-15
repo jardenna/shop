@@ -9,19 +9,19 @@ interface SummaryItemProps {
   isDiscount?: boolean;
 }
 
-interface CreateSummaryItemsProps {
+interface createSummaryItemListProps {
   language: Record<string, string>;
   summary: Summary;
   cancelled?: boolean;
   discount?: Discount;
 }
 
-export const createSummaryItems = ({
+export const createSummaryItemList = ({
   summary,
   discount,
   cancelled,
   language,
-}: CreateSummaryItemsProps): SummaryItemProps[] => {
+}: createSummaryItemListProps): SummaryItemProps[] => {
   const summaryItems: SummaryItemProps[] = [
     {
       label: language.subtotal,

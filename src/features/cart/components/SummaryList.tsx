@@ -1,5 +1,5 @@
 import { Discount, Summary } from '../../../app/api/apiTypes/sharedApiTypes';
-import { createSummaryItems } from '../../utils/createSummaryItems';
+import { createSummaryItemList } from '../../utils/createSummaryItemList';
 import './cartSummary.styles.scss';
 import SummaryItem from './SummaryItem';
 
@@ -14,7 +14,7 @@ const SummaryList = ({
   language,
   promoDiscount,
 }: SummaryListProps) => {
-  const summaryItems = createSummaryItems({
+  const summaryItems = createSummaryItemList({
     summary,
     discount: promoDiscount,
     language,
