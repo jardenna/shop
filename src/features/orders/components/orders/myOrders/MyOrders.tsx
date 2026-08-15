@@ -27,6 +27,7 @@ const MyOrders = ({ myOrders, onViewDetails }: MyOrdersProps) => {
           <OrderList orders={myOrder.orderItems} language={language} />
           <MyOrderFooter
             language={language}
+            orderStatus={myOrder.delivery.status}
             estimatedDelivery={myOrder.createdAt}
             onViewDetails={() => {
               onViewDetails(myOrder.id);
