@@ -13,6 +13,7 @@ import { useLanguage } from '../../features/language/useLanguage';
 import {
   useGetAdminOrderByIdQuery,
   useShipOrderMutation,
+  useUpdateOrderMutation,
 } from '../../features/orders/adminOrderApiSlice';
 import ConfirmationDetails from '../../features/orders/components/confirmation/ConfirmationDetails';
 import OrderAddressList from '../../features/orders/components/OrderAddressList';
@@ -36,7 +37,25 @@ const AdminOrderDetailsPage = () => {
     isError,
   } = useGetAdminOrderByIdQuery(id ?? '');
 
+  const [updateOrder] = useUpdateOrderMutation();
   const [shipOrder] = useShipOrderMutation();
+
+  const handleUpdateOrder = async () => {
+    try {
+      const result = await updateOrder({
+        orderId: id ?? '',
+        status: 'processing',
+      }).unwrap();
+
+      if (result.success) {
+        onAddMessagePopup({
+          message: result.message,
+        });
+      }
+    } catch (error) {
+      handleApiError(error, onAddMessagePopup);
+    }
+  };
 
   const handleShipOrder = async () => {
     try {
@@ -44,7 +63,7 @@ const AdminOrderDetailsPage = () => {
 
       if (result.success) {
         onAddMessagePopup({
-          message: language.ordershipped,
+          message: result.message,
         });
       }
     } catch (error) {
@@ -89,7 +108,7 @@ const AdminOrderDetailsPage = () => {
         <Cart>
           <ProgressTracker steps={orderTrackingList} status={status} />
           <div>
-            <Button>{language.reopenOrder}</Button>
+            <Button onClick={handleUpdateOrder}>{language.reopenOrder}</Button>
             <Button onClick={handleShipOrder}>{language.sendOrder}</Button>
           </div>
         </Cart>

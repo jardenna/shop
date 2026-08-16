@@ -3,7 +3,10 @@ import {
   AdminOrderParams,
   AdminOrderResponse,
 } from '../../app/api/apiTypes/adminApiTypes';
-import { OrderResponse } from '../../app/api/apiTypes/orderApiTypes';
+import {
+  OrderResponse,
+  UpdateOrderRequest,
+} from '../../app/api/apiTypes/orderApiTypes';
 import { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import { adminOrdersUrl } from '../../app/endpoints';
 
@@ -21,7 +24,16 @@ export const adminOrderApiSlice = apiSlice.injectEndpoints({
         { type: TagTypesEnum.Order, id: orderId },
       ],
     }),
-
+    updateOrder: builder.mutation<DefaultResponse, UpdateOrderRequest>({
+      query: ({ orderId, status }) => ({
+        url: `${adminOrdersUrl}${orderId}/status`,
+        method: 'PATCH',
+        body: { status },
+      }),
+      invalidatesTags: (_result, _error, { orderId }) => [
+        { type: TagTypesEnum.Order, id: orderId },
+      ],
+    }),
     shipOrder: builder.mutation<DefaultResponse, string>({
       query: (orderId) => ({
         url: `${adminOrdersUrl}${orderId}/send-order`,
@@ -38,4 +50,5 @@ export const {
   useGetAllAdminOrdersQuery,
   useGetAdminOrderByIdQuery,
   useShipOrderMutation,
+  useUpdateOrderMutation,
 } = adminOrderApiSlice;

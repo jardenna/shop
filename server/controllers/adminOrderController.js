@@ -153,7 +153,15 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
     });
   }
 
+  if (
+    currentStatus === DELIVERY_STATUS.SHIPPED &&
+    status === DELIVERY_STATUS.PROCESSING
+  ) {
+    order.delivery.shippedAt = null;
+  }
+
   order.delivery.status = status;
+
   order.delivery.statusHistory.push({
     status,
     changedAt: new Date(),
@@ -165,6 +173,7 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
 
   res.status(200).json({
     success: true,
+    message: t('orderUpdated', req.lang),
   });
 });
 
