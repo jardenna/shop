@@ -356,7 +356,7 @@ orderNumber;Order number;Ordrenummer
 orderCreated;Order created;Ordre oprettet
 orderStatusMessage;We process your order within 24 hours on weekdays. You can follow your order status below.;Vi behandler din ordre inden for 24 timer på hverdage. Du kan følge status på din ordre nedenfor.
 orders;Orders;Ordrer
-shipped;Shipped;Afsendt
+ordershipped;Order shipped;Ordrer sendt
 orderSummary;Order summary;Ordreoversigt
 orderSummaryList;Order summary list;Ordreoversigtsliste
 orderTotalInclVat;Total price Incl. vat;Pris i alt Inkl. moms
@@ -486,7 +486,7 @@ selectSize;Select size;Vælg størrelse
 sendOrder;Send order;Send ordre
 shareReview;Share review;Del anmeldelse
 shareYourExperience;Share your experience;Del din oplevelse
-shareYourExperience;Share your experience;Del din oplevelse
+shipped;Shipped;Afsendt
 shoes;Shoes;Sko
 shopCart;Shopping cart;Indkøbskurv
 shopKidsHeading;Playful by Nature;Leg er liv
