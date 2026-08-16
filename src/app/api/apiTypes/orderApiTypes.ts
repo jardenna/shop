@@ -38,7 +38,10 @@ interface ChangedBy {
   username: string;
 }
 
+type ActorType = 'customer' | 'employee';
+
 export interface StatusHistory {
+  actorType: ActorType;
   changedAt: Date;
   changedBy: ChangedBy;
   status: DeliveryStatus;
