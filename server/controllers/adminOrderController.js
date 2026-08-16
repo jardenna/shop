@@ -1,4 +1,5 @@
 import {
+  ACTOR_TYPE,
   ALLOWED_STATUS_TRANSITIONS,
   DELIVERY_STATUS,
   DELIVERY_STATUS_ENUM,
@@ -101,6 +102,7 @@ const getAdminOrderById = asyncHandler(async (req, res) => {
     status: DELIVERY_STATUS.ORDER_CREATED,
     changedAt: order.createdAt,
     changedBy: order.user,
+    actorType: ACTOR_TYPE.CUSTOMER,
   };
 
   order.delivery.statusHistory = [
@@ -166,7 +168,13 @@ const cancelOrder = asyncHandler(async (req, res) => {
       .status(404)
       .json({ success: false, message: t('orderNotFound', req.lang) });
   }
-  const cancelled = await cancelOrderService(order, req.user._id);
+
+  const cancelled = await cancelOrderService(
+    order,
+    req.user._id,
+    ACTOR_TYPE.EMPLOYEE,
+  );
+
   if (!cancelled) {
     return res.status(400).json({
       success: false,
