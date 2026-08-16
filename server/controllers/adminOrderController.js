@@ -1,8 +1,9 @@
 import {
+  ACTOR_TYPE,
   ALLOWED_STATUS_TRANSITIONS,
   DELIVERY_STATUS,
   DELIVERY_STATUS_ENUM,
-} from '../config/constants.js';
+} from '../config/deliveryConstants.js';
 import { PAYMENT_STATUS } from '../config/paymentConstants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Order from '../models/orderModel.js';
@@ -97,10 +98,18 @@ const getAdminOrderById = asyncHandler(async (req, res) => {
       .json({ success: false, message: t('orderNotFound', req.lang) });
   }
 
+  order.delivery.statusHistory = order.delivery.statusHistory.map(
+    (historyItem) => ({
+      ...historyItem.toObject(),
+      actorType: historyItem.actorType ?? ACTOR_TYPE.EMPLOYEE,
+    }),
+  );
+
   const createdHistory = {
     status: DELIVERY_STATUS.ORDER_CREATED,
     changedAt: order.createdAt,
     changedBy: order.user,
+    actorType: ACTOR_TYPE.CUSTOMER,
   };
 
   order.delivery.statusHistory = [
@@ -166,7 +175,13 @@ const cancelOrder = asyncHandler(async (req, res) => {
       .status(404)
       .json({ success: false, message: t('orderNotFound', req.lang) });
   }
-  const cancelled = await cancelOrderService(order, req.user._id);
+
+  const cancelled = await cancelOrderService({
+    order,
+    userId: req.user._id,
+    actorType: ACTOR_TYPE.EMPLOYEE,
+  });
+
   if (!cancelled) {
     return res.status(400).json({
       success: false,

@@ -1,8 +1,8 @@
 import { Roles } from '../../app/api/apiTypes/adminApiTypes';
 import DeleteItem from '../../components/deleteItem/DeleteItem';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
-import Table from '../../components/sortTable/Table';
-import { createInitialFilters } from '../../components/sortTable/tableFilters/tableFiltersUtils';
+import SortTable from '../../components/sortTable/SortTable';
+import { createInitialFilters } from '../../components/sortTable/utils/tableFiltersUtils';
 import EditTableText from '../../features/adminUsers/components/EditTableText';
 import UpdateUser from '../../features/adminUsers/components/UpdateUser';
 import { useAuth } from '../../features/auth/hooks/useAuth';
@@ -117,7 +117,7 @@ const UserPage = () => {
       linkTo={AdminPath.AdminUserCreate}
       variant="medium"
     >
-      <Table
+      <SortTable
         btnLabel="users"
         navigationPath="users"
         isError={isError}
@@ -181,7 +181,7 @@ const UserPage = () => {
             );
           })
         }
-      </Table>
+      </SortTable>
     </AdminPageContainer>
   );
 };

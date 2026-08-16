@@ -1,0 +1,26 @@
+@use '../../scss/globals' as *;
+
+table {
+  &.simple-table {
+    border: $border;
+    border-bottom: 0;
+
+    th {
+      background-color: $color-background;
+      text-align: left;
+      text-transform: uppercase;
+    }
+
+    tr {
+      &:nth-child(odd) {
+        td {
+          background-color: $color-white;
+        }
+      }
+    }
+
+    td {
+      border-bottom: $border;
+    }
+  }
+}

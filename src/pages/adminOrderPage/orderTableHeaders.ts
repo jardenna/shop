@@ -1,5 +1,5 @@
 import { OrderItems } from '../../app/api/apiTypes/adminApiTypes';
-import { Column } from '../../components/sortTable/Table';
+import { Column } from '../../components/sortTable/SortTable';
 
 export const tableHeaders: Column<OrderItems>[] = [
   {

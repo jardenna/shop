@@ -1,9 +1,11 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import Cart from '../../components/carts/Cart';
+import DateDisplay from '../../components/datePicker/DateDisplay';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import NotFoundError from '../../components/NotFoundError';
 import ProgressTracker from '../../components/progressTracker/ProgressTracker';
+import SimpleTable from '../../components/simpleTable/SimpleTable';
 import SummaryList from '../../features/cart/components/SummaryList';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useGetAdminOrderByIdQuery } from '../../features/orders/adminOrderApiSlice';
@@ -47,13 +49,14 @@ const AdminOrderDetailsPage = () => {
     status: order?.delivery.status ?? 'created',
   };
 
-  // const orderHistoryList=[
-  //   {title: 'status', }
-  // ]
+  const tableHeaderList = [
+    { label: 'status' },
+    { label: 'dateAndTime' },
+    { label: 'performedBy' },
+  ];
 
   return (
     <AdminPageContainer
-      variant="medium"
       heading={id ?? ''}
       linkText={language.createNewCategory}
       linkTo={AdminPath.AdminSubCategoryCreate}
@@ -71,36 +74,31 @@ const AdminOrderDetailsPage = () => {
             <div className="confirmation-content">
               <section>
                 <article className="confirmation-info">
-                  <OrderHeading
-                    variant="underline"
-                    heading={language.orderHistory}
+                  <OrderHeading heading={language.orderHistory} />
+                  <SimpleTable
+                    tableCaption={language.orderSummaryList}
+                    tableHeaderList={tableHeaderList}
+                    tableDataList={order.delivery.statusHistory}
+                    getRowKey={({ status, changedAt }) =>
+                      `${status}-${changedAt}`
+                    }
+                    renderCells={({
+                      status,
+                      changedAt,
+                      changedBy,
+                      actorType,
+                    }) => (
+                      <>
+                        <td>{language[status]}</td>
+                        <td>
+                          <DateDisplay date={changedAt} />
+                        </td>
+                        <td>
+                          {changedBy.username} ({language[actorType]})
+                        </td>
+                      </>
+                    )}
                   />
-                  <table>
-                    <thead>
-                      <tr>
-                        <th scope="col">STATUS</th>
-                        <th scope="col">DATO & TID</th>
-                        <th scope="col">BRUGER</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Behandles</td>
-                        <td>31. juli 2026 14:32</td>
-                        <td>Lisbeth</td>
-                      </tr>
-                      <tr>
-                        <td>Afsendt</td>
-                        <td>31. juli 2026 14:32</td>
-                        <td>Lisbeth</td>
-                      </tr>
-                      <tr>
-                        <td>Oprettet</td>
-                        <td>31. juli 2026 14:32</td>
-                        <td>Kunde (Helle Bjørnum)</td>
-                      </tr>
-                    </tbody>
-                  </table>
                 </article>
                 <ConfirmationDetails
                   createdAt={order.createdAt}

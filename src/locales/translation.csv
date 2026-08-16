@@ -72,8 +72,8 @@ categoryCard;Category card;Kategori card
 categoryCreated;Category was created;Kategori blev tilføjet
 categoryDeleted;Category deleted;Kategori blev slettet
 categoryIs;Category is;Kategori er
-categoryList;Category list;Kategori-liste
-orderList;Order list;Ordre-liste
+categoryList;Category list;Kategoriliste
+orderList;Order list;Ordreliste
 categoryName;Category name;Kategori navn
 categoryNavigation;Category navigation;Kategorinavigation
 categoryNotFound;Category not found;Kategorien findes ikke
@@ -133,6 +133,7 @@ customersList;Customers list;Kundeliste
 dashboard;Dashboard;Dashboard
 date;Date;Dato
 dateOfBirth;Date of birth;Fødselsdato
+dateAndTime;Date & time;Dato & tid
 daysAgo;days ago;dage siden
 delete;Delete;Slet
 deleteAddress;Delete address;Slet adresse
@@ -356,6 +357,7 @@ orderStatusMessage;We process your order within 24 hours on weekdays. You can fo
 orders;Orders;Ordrer
 shipped;Shipped;Afsendt
 orderSummary;Order summary;Ordreoversigt
+orderSummaryList;Order summary list;Ordreoversigtsliste
 orderTotalInclVat;Total price Incl. vat;Pris i alt Inkl. moms
 originaPrice;Original price;Før pris
 outOf;out of;ud af
@@ -381,6 +383,7 @@ paymentText;You can pay by credit card or MobilePay. We only charge your payment
 payPalPasswordMustContainAtLeast6Characters;At least 6 characters;Mindst 6 tegn
 pcs;pcs;stk.
 pencil;Pencil;Blyant
+performedBy;Performed by;Udført af
 perPage;per page;pr. side
 phone;Phone;Telefon
 phoneInfo;We’ll only contact you when needed, for instance, to update you on your order or reply to a customer service question.;Vi kontakter dig kun, når det er påkrævet, eksempelvis ved vigtige ændringer i din ordre eller for at svare på en henvendelse til kundeservice.

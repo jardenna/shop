@@ -1,5 +1,9 @@
 import { model, mongoose, Schema } from 'mongoose';
-import { DELIVERY_STATUS, DELIVERY_STATUS_ENUM } from '../config/constants.js';
+import {
+  ACTOR_TYPE_ENUM,
+  DELIVERY_STATUS,
+  DELIVERY_STATUS_ENUM,
+} from '../config/deliveryConstants.js';
 import {
   PAYMENT_METHODS_LIST,
   PAYMENT_STATUS,
@@ -145,6 +149,11 @@ const orderModelSchema = new Schema(
           changedBy: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
+            required: true,
+          },
+          actorType: {
+            type: String,
+            enum: ACTOR_TYPE_ENUM,
             required: true,
           },
         },

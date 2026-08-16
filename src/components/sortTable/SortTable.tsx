@@ -14,10 +14,10 @@ import NotFoundError from '../NotFoundError';
 import SkeletonList from '../skeleton/SkeletonList';
 import TagList from '../tags/TagList';
 import VisuallyHidden from '../VisuallyHidden';
-import './_table.scss';
-import { buildFilterTags } from './filterTags/buildFilterTags';
+import './_sort-table.scss';
 import TableFilterPopup from './tableFilters/TableFilterPopup';
-import { InitialTableFilters } from './tableFilters/tableFiltersUtils';
+import { buildFilterTagsUtils } from './utils/buildFilterTagsUtils';
+import { InitialTableFilters } from './utils/tableFiltersUtils';
 
 export type Column<T> = {
   key: Extract<keyof T, string>;
@@ -51,7 +51,7 @@ type TableProps<T> = {
   onSort: (field: keyof T) => void;
 };
 
-const Table = <T,>({
+const SortTable = <T,>({
   data,
   columns,
   children,
@@ -112,7 +112,7 @@ const Table = <T,>({
   const ariaLabel =
     sortOrder !== 'asc' ? language.descending : language.ascending;
 
-  const tagList = buildFilterTags(columns, values);
+  const tagList = buildFilterTagsUtils(columns, values);
 
   if (isError) {
     return (
@@ -225,4 +225,4 @@ const Table = <T,>({
   );
 };
 
-export default Table;
+export default SortTable;

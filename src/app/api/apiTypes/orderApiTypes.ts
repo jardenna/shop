@@ -34,9 +34,16 @@ export interface User {
   username: string;
 }
 
+interface ChangedBy {
+  username: string;
+}
+
+type ActorType = 'customer' | 'employee';
+
 export interface StatusHistory {
+  actorType: ActorType;
   changedAt: Date;
-  changedBy: string;
+  changedBy: ChangedBy;
   status: DeliveryStatus;
 }
 
@@ -44,7 +51,7 @@ export interface Delivery {
   deliveredAt: Date;
   shippedAt: Date;
   status: DeliveryStatus;
-  statusHistory: StatusHistory;
+  statusHistory: StatusHistory[];
 }
 
 export interface OrderResponse extends DefaultResponseType {

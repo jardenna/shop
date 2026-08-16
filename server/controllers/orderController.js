@@ -1,3 +1,4 @@
+import { ACTOR_TYPE } from '../config/deliveryConstants.js';
 import {
   PAYMENT_METHODS_LIST,
   PAYMENT_STATUS,
@@ -323,7 +324,13 @@ const cancelMyOrder = asyncHandler(async (req, res) => {
       message: t('notAuthorized', req.lang),
     });
   }
-  const cancelled = await cancelOrderService(order, req.user._id);
+
+  const cancelled = await cancelOrderService({
+    order,
+    userId: req.user._id,
+    actorType: ACTOR_TYPE.CUSTOMER,
+  });
+
   if (!cancelled) {
     return res.status(400).json({
       success: false,
