@@ -169,11 +169,11 @@ const cancelOrder = asyncHandler(async (req, res) => {
       .json({ success: false, message: t('orderNotFound', req.lang) });
   }
 
-  const cancelled = await cancelOrderService(
+  const cancelled = await cancelOrderService({
     order,
-    req.user._id,
-    ACTOR_TYPE.EMPLOYEE,
-  );
+    userId: req.user._id,
+    actorType: ACTOR_TYPE.EMPLOYEE,
+  });
 
   if (!cancelled) {
     return res.status(400).json({

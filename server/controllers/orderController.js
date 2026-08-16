@@ -325,11 +325,11 @@ const cancelMyOrder = asyncHandler(async (req, res) => {
     });
   }
 
-  const cancelled = await cancelOrderService(
+  const cancelled = await cancelOrderService({
     order,
-    req.user._id,
-    ACTOR_TYPE.CUSTOMER,
-  );
+    userId: req.user._id,
+    actorType: ACTOR_TYPE.CUSTOMER,
+  });
 
   if (!cancelled) {
     return res.status(400).json({

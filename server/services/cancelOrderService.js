@@ -1,6 +1,6 @@
 import { DELIVERY_STATUS } from '../config/deliveryConstants.js';
 
-export const cancelOrderService = async (order, userId, actorType) => {
+export const cancelOrderService = async ({ order, userId, actorType }) => {
   const deliveryStatus = order.delivery.status;
 
   if (
@@ -20,7 +20,7 @@ export const cancelOrderService = async (order, userId, actorType) => {
     actorType,
   });
 
-  // await order.save();
+  await order.save();
 
   return true;
 };
