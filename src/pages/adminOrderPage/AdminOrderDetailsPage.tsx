@@ -1,5 +1,6 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
+import Button from '../../components/Button';
 import Cart from '../../components/carts/Cart';
 import DateDisplay from '../../components/datePicker/DateDisplay';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
@@ -16,6 +17,7 @@ import OrderList from '../../features/orders/components/orders/OrderList';
 import { createOrderAddressList } from '../../features/orders/utils/createOrderAddressList';
 import { orderTrackingList } from '../../features/orders/utils/createTrackingList';
 import { AdminPath } from '../../layout/nav/enums';
+import { BtnVariant } from '../../types/enums';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const AdminOrderDetailsPage = () => {
@@ -64,6 +66,10 @@ const AdminOrderDetailsPage = () => {
       <div className="confirmation-content">
         <Cart>
           <ProgressTracker steps={orderTrackingList} status={status} />
+          <div>
+            <Button>{language.reopenOrder}</Button>
+            <Button>{language.sendOrder}</Button>
+          </div>
         </Cart>
 
         <ErrorBoundary
@@ -130,6 +136,15 @@ const AdminOrderDetailsPage = () => {
                 {language.paymentMethod}
                 <OrderAddressList addresses={addressList} refetch={refetch} />
               </section>
+
+              <div>
+                <Button variant={BtnVariant.Secondary}>
+                  {language.printOrder}
+                </Button>
+                <Button variant={BtnVariant.Danger}>
+                  {language.cancelOrder}
+                </Button>
+              </div>
             </div>
           )}
         </ErrorBoundary>

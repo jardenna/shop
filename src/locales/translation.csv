@@ -55,6 +55,7 @@ browseImages;Browse images;Tilføj produkt billeder
 buyForFreeShipping;Buy for;Hvis du køber for
 calendar;Calendar;Kalender
 cancel;Cancel;Annuller
+cancelOrder;Cancel order;Annuller ordre
 cancelled;Cancelled;Annulleret
 cardHasExpired;Card has expired;Kortet er udløbet
 cardholderName;Cardholder name;Kortholder navn
@@ -362,6 +363,7 @@ orderTotalInclVat;Total price Incl. vat;Pris i alt Inkl. moms
 originaPrice;Original price;Før pris
 outOf;out of;ud af
 outOfStock;Out of stock;Udsolgt
+reopenOrder;Reopen order;Genåbn ordre
 page;Page;Side
 pagesBack;pages back;sider tilbage
 pagesForward;pages forward;sider tilbage
@@ -415,6 +417,7 @@ pricing;Pricing;Prissætning
 product;Product;Produkt
 productActions;Product actions;Produkt handlinger
 orderActions;Order actions;Ordrehandlinger
+printOrder;Print order;Udskriv ordre
 productCopied;Product copied;Produkt blev kopieret
 productCreated;Product was created;Produkt blev tilføjet
 productDeleted;Product deleted;Produkt blev slettet
@@ -480,6 +483,7 @@ selectedSize;Selected size;Valgt størrelse
 selectNumber;Select number;Vælg antal
 selectPreferences;Select preferred language and currency;Vælg sprog og valuta
 selectSize;Select size;Vælg størrelse
+sendOrder;Send order;Send ordre
 shareReview;Share review;Del anmeldelse
 shareYourExperience;Share your experience;Del din oplevelse
 shareYourExperience;Share your experience;Del din oplevelse
