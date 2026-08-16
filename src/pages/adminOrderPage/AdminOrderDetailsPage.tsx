@@ -91,7 +91,11 @@ const AdminOrderDetailsPage = () => {
                       <>
                         <td>{language[status]}</td>
                         <td>
-                          <DateDisplay date={changedAt} />
+                          <DateDisplay
+                            date={changedAt}
+                            hour="2-digit"
+                            minute="2-digit"
+                          />
                         </td>
                         <td>
                           {changedBy.username} ({language[actorType]})
