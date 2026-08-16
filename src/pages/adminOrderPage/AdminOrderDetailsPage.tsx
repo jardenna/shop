@@ -87,14 +87,14 @@ const AdminOrderDetailsPage = () => {
                     </thead>
                     <tbody>
                       {order.delivery.statusHistory.map(
-                        ({ status, changedAt }) => (
+                        ({ status, changedAt, changedBy }) => (
                           <tr key={`${status}-${changedAt}`}>
                             <td>{language[status]}</td>
                             <td>
                               <DateDisplay date={changedAt} />
                             </td>
                             <td>
-                              a
+                              {changedBy.username}
                               {/* {changedBy === changedBy.username
                                 ? `${language.customer} (${changedBy.username})`
                                 : changedBy.username} */}

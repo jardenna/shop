@@ -34,9 +34,13 @@ export interface User {
   username: string;
 }
 
+interface ChangedBy {
+  username: string;
+}
+
 export interface StatusHistory {
   changedAt: Date;
-  changedBy: string;
+  changedBy: ChangedBy;
   status: DeliveryStatus;
 }
 
