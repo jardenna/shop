@@ -1,6 +1,6 @@
 import { model, mongoose, Schema } from 'mongoose';
 import {
-  ACTOR_TYPE,
+  ACTOR_TYPE_ENUM,
   DELIVERY_STATUS,
   DELIVERY_STATUS_ENUM,
 } from '../config/deliveryConstants.js';
@@ -153,7 +153,7 @@ const orderModelSchema = new Schema(
           },
           actorType: {
             type: String,
-            enum: ACTOR_TYPE,
+            enum: ACTOR_TYPE_ENUM,
             required: true,
           },
         },

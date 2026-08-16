@@ -26,3 +26,4 @@ export const ALLOWED_STATUS_TRANSITIONS = {
 };
 
 export const DELIVERY_STATUS_ENUM = Object.values(DELIVERY_STATUS);
+export const ACTOR_TYPE_ENUM = Object.values(ACTOR_TYPE);
