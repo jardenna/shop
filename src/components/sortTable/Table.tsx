@@ -15,9 +15,9 @@ import SkeletonList from '../skeleton/SkeletonList';
 import TagList from '../tags/TagList';
 import VisuallyHidden from '../VisuallyHidden';
 import './_table.scss';
-import { buildFilterTags } from './filterTags/buildFilterTags';
 import TableFilterPopup from './tableFilters/TableFilterPopup';
-import { InitialTableFilters } from './tableFilters/tableFiltersUtils';
+import { buildFilterTagsUtils } from './utils/buildFilterTagsUtils';
+import { InitialTableFilters } from './utils/tableFiltersUtils';
 
 export type Column<T> = {
   key: Extract<keyof T, string>;
@@ -112,7 +112,7 @@ const Table = <T,>({
   const ariaLabel =
     sortOrder !== 'asc' ? language.descending : language.ascending;
 
-  const tagList = buildFilterTags(columns, values);
+  const tagList = buildFilterTagsUtils(columns, values);
 
   if (isError) {
     return (

@@ -1,6 +1,6 @@
 import { Status } from '../../app/api/apiTypes/adminApiTypes';
 import Table from '../../components/sortTable/Table';
-import { createInitialFilters } from '../../components/sortTable/tableFilters/tableFiltersUtils';
+import { createInitialFilters } from '../../components/sortTable/utils/tableFiltersUtils';
 import { useLanguage } from '../../features/language/useLanguage';
 import SubCategoryTableRows from '../../features/subCategories/components/SubCategoryTableRows';
 import {

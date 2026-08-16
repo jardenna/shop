@@ -2,7 +2,7 @@ import { usePaginationText } from '../../components/pagination/hooks/usePaginati
 import { useScrollOnPagination } from '../../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../../components/pagination/Pagination';
 import Table from '../../components/sortTable/Table';
-import { createInitialFilters } from '../../components/sortTable/tableFilters/tableFiltersUtils';
+import { createInitialFilters } from '../../components/sortTable/utils/tableFiltersUtils';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useGetAllAdminOrdersQuery } from '../../features/orders/adminOrderApiSlice';
 import { useDebouncedValue } from '../../hooks/useDebouncedValue';

@@ -1,11 +1,8 @@
 import { TagItem } from '../../tags/TagList';
 import { Column } from '../Table';
-import {
-  InitialTableFilters,
-  getMinMaxKeys,
-} from '../tableFilters/tableFiltersUtils';
+import { InitialTableFilters, getMinMaxKeys } from './tableFiltersUtils';
 
-export const buildFilterTags = <T>(
+export const buildFilterTagsUtils = <T>(
   tableHeaders: Column<T>[],
   filters: InitialTableFilters<T>,
 ): TagItem[] =>

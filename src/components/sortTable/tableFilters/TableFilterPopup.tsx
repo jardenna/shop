@@ -7,13 +7,13 @@ import RadioButtonList from '../../formElements/RadioButtonList';
 import Icon from '../../icons/Icon';
 import Popup from '../../popup/Popup';
 import VisuallyHidden from '../../VisuallyHidden';
-import './_table-filters.scss';
 import {
   getListByName,
   getMinMaxKeys,
   InitialTableFilters,
   ListsMap,
-} from './tableFiltersUtils';
+} from '../utils/tableFiltersUtils';
+import './_table-filters.scss';
 
 export interface BaseTableFilterProps {
   filterType: InputType;
