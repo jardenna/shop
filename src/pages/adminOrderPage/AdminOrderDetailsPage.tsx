@@ -1,5 +1,6 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
+import { DeliveryStatus } from '../../app/api/apiTypes/orderApiTypes';
 import Button from '../../components/Button';
 import Cart from '../../components/carts/Cart';
 import DateDisplay from '../../components/datePicker/DateDisplay';
@@ -40,11 +41,11 @@ const AdminOrderDetailsPage = () => {
   const [updateOrder] = useUpdateOrderMutation();
   const [shipOrder] = useShipOrderMutation();
 
-  const handleUpdateOrder = async () => {
+  const handleUpdateOrder = async (status: DeliveryStatus) => {
     try {
       const result = await updateOrder({
         orderId: id ?? '',
-        status: 'processing',
+        status,
       }).unwrap();
 
       if (result.success) {
@@ -88,7 +89,7 @@ const AdminOrderDetailsPage = () => {
     );
   }
 
-  const status = {
+  const orderStatus = {
     status: order?.delivery.status ?? 'created',
   };
 
@@ -106,9 +107,13 @@ const AdminOrderDetailsPage = () => {
     >
       <div className="confirmation-content">
         <Cart>
-          <ProgressTracker steps={orderTrackingList} status={status} />
+          <ProgressTracker steps={orderTrackingList} status={orderStatus} />
           <div>
-            <Button onClick={handleUpdateOrder}>{language.reopenOrder}</Button>
+            <Button onClick={() => handleUpdateOrder('processing')}>
+              {orderStatus.status === 'shipped'
+                ? language.reopenOrder
+                : language.processOrder}
+            </Button>
             <Button onClick={handleShipOrder}>{language.sendOrder}</Button>
           </div>
         </Cart>
