@@ -5,6 +5,7 @@ import DateDisplay from '../../components/datePicker/DateDisplay';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import NotFoundError from '../../components/NotFoundError';
 import ProgressTracker from '../../components/progressTracker/ProgressTracker';
+import VisuallyHidden from '../../components/VisuallyHidden';
 import SummaryList from '../../features/cart/components/SummaryList';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useGetAdminOrderByIdQuery } from '../../features/orders/adminOrderApiSlice';
@@ -48,14 +49,14 @@ const AdminOrderDetailsPage = () => {
     status: order?.delivery.status ?? 'created',
   };
 
-  // const orderHistoryList=[
-  //   {title: 'status', }
-  // ]
+  const tableHeaderList = [
+    { label: 'status' },
+    { label: 'dateAndTime' },
+    { label: 'performedBy' },
+  ];
 
-  console.log(order?.delivery.statusHistory);
   return (
     <AdminPageContainer
-      variant="medium"
       heading={id ?? ''}
       linkText={language.createNewCategory}
       linkTo={AdminPath.AdminSubCategoryCreate}
@@ -77,27 +78,25 @@ const AdminOrderDetailsPage = () => {
                     variant="underline"
                     heading={language.orderHistory}
                   />
-                  <table>
+                  <table className="table-simple">
+                    <VisuallyHidden as="caption">tableCaption</VisuallyHidden>
                     <thead>
                       <tr>
-                        <th scope="col">STATUS</th>
-                        <th scope="col">DATO & TID</th>
-                        <th scope="col">BRUGER</th>
+                        {tableHeaderList.map(({ label }) => (
+                          <th key={label}>{language[label]}</th>
+                        ))}
                       </tr>
                     </thead>
                     <tbody>
                       {order.delivery.statusHistory.map(
-                        ({ status, changedAt, changedBy }) => (
+                        ({ status, changedAt, changedBy, actorType }) => (
                           <tr key={`${status}-${changedAt}`}>
                             <td>{language[status]}</td>
                             <td>
                               <DateDisplay date={changedAt} />
                             </td>
                             <td>
-                              {changedBy.username}
-                              {/* {changedBy === changedBy.username
-                                ? `${language.customer} (${changedBy.username})`
-                                : changedBy.username} */}
+                              {changedBy.username} ({language[actorType]})
                             </td>
                           </tr>
                         ),
