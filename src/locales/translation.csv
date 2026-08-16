@@ -72,8 +72,8 @@ categoryCard;Category card;Kategori card
 categoryCreated;Category was created;Kategori blev tilføjet
 categoryDeleted;Category deleted;Kategori blev slettet
 categoryIs;Category is;Kategori er
-categoryList;Category list;Kategori-liste
-orderList;Order list;Ordre-liste
+categoryList;Category list;Kategoriliste
+orderList;Order list;Ordreliste
 categoryName;Category name;Kategori navn
 categoryNavigation;Category navigation;Kategorinavigation
 categoryNotFound;Category not found;Kategorien findes ikke
@@ -357,6 +357,7 @@ orderStatusMessage;We process your order within 24 hours on weekdays. You can fo
 orders;Orders;Ordrer
 shipped;Shipped;Afsendt
 orderSummary;Order summary;Ordreoversigt
+orderSummaryList;Order summary list;Ordreoversigtsliste
 orderTotalInclVat;Total price Incl. vat;Pris i alt Inkl. moms
 originaPrice;Original price;Før pris
 outOf;out of;ud af
