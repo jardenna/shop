@@ -103,6 +103,12 @@ Localization includes:
 - Persisted language preference
 - CSV-based translation workflow
 
+Currency
+
+Users can select their preferred currency from the available currency options.
+
+Currency conversion uses live exchange rates with DKK as the base currency. Exchange rates are fetched through the currency API and used to convert displayed prices to the selected currency.
+
 ## Features
 
 ### User Experience
