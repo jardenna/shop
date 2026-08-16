@@ -231,9 +231,12 @@ const shipOrder = asyncHandler(async (req, res) => {
   order.delivery.shippedAt = statusHistory.changedAt;
   order.delivery.statusHistory.push(statusHistory);
 
-  const updatedOrder = await order.save();
+  await order.save();
 
-  res.status(200).json(updatedOrder);
+  res.status(200).json({
+    success: true,
+    message: t('ordershipped', req.lang),
+  });
 });
 
 export {
