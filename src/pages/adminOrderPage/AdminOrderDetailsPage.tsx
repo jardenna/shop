@@ -5,7 +5,7 @@ import DateDisplay from '../../components/datePicker/DateDisplay';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import NotFoundError from '../../components/NotFoundError';
 import ProgressTracker from '../../components/progressTracker/ProgressTracker';
-import VisuallyHidden from '../../components/VisuallyHidden';
+import SimpleTable from '../../components/simpleTable/SimpleTable';
 import SummaryList from '../../features/cart/components/SummaryList';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useGetAdminOrderByIdQuery } from '../../features/orders/adminOrderApiSlice';
@@ -74,35 +74,31 @@ const AdminOrderDetailsPage = () => {
             <div className="confirmation-content">
               <section>
                 <article className="confirmation-info">
-                  <OrderHeading
-                    variant="underline"
-                    heading={language.orderHistory}
+                  <OrderHeading heading={language.orderHistory} />
+                  <SimpleTable
+                    tableCaption={language.orderSummaryList}
+                    tableHeaderList={tableHeaderList}
+                    tableDataList={order.delivery.statusHistory}
+                    getRowKey={({ status, changedAt }) =>
+                      `${status}-${changedAt}`
+                    }
+                    renderCells={({
+                      status,
+                      changedAt,
+                      changedBy,
+                      actorType,
+                    }) => (
+                      <>
+                        <td>{language[status]}</td>
+                        <td>
+                          <DateDisplay date={changedAt} />
+                        </td>
+                        <td>
+                          {changedBy.username} ({language[actorType]})
+                        </td>
+                      </>
+                    )}
                   />
-                  <table className="table-simple">
-                    <VisuallyHidden as="caption">tableCaption</VisuallyHidden>
-                    <thead>
-                      <tr>
-                        {tableHeaderList.map(({ label }) => (
-                          <th key={label}>{language[label]}</th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {order.delivery.statusHistory.map(
-                        ({ status, changedAt, changedBy, actorType }) => (
-                          <tr key={`${status}-${changedAt}`}>
-                            <td>{language[status]}</td>
-                            <td>
-                              <DateDisplay date={changedAt} />
-                            </td>
-                            <td>
-                              {changedBy.username} ({language[actorType]})
-                            </td>
-                          </tr>
-                        ),
-                      )}
-                    </tbody>
-                  </table>
                 </article>
                 <ConfirmationDetails
                   createdAt={order.createdAt}
