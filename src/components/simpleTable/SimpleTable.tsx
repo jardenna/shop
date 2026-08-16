@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { useLanguage } from '../../features/language/useLanguage';
 import VisuallyHidden from '../VisuallyHidden';
+import './_simple-table.scss';
 
 interface TableHeaderItem {
   label: string;

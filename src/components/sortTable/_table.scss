@@ -56,26 +56,6 @@ table {
     }
   }
 
-  &.simple-table {
-    th {
-      background-color: $color-background;
-      text-align: left;
-      text-transform: uppercase;
-    }
-
-    tr {
-      &:nth-child(odd) {
-        td {
-          background-color: $color-white;
-        }
-      }
-    }
-
-    td {
-      border-bottom: $border;
-    }
-  }
-
   th,
   td {
     padding: 4px 8px;
