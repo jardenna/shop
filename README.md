@@ -103,7 +103,7 @@ Localization includes:
 - Persisted language preference
 - CSV-based translation workflow
 
-### Currency
+## Currency
 
 Users can select their preferred currency from the available currency options.
 
