@@ -14,7 +14,7 @@ import NotFoundError from '../NotFoundError';
 import SkeletonList from '../skeleton/SkeletonList';
 import TagList from '../tags/TagList';
 import VisuallyHidden from '../VisuallyHidden';
-import './_table.scss';
+import './_sort-table.scss';
 import TableFilterPopup from './tableFilters/TableFilterPopup';
 import { buildFilterTagsUtils } from './utils/buildFilterTagsUtils';
 import { InitialTableFilters } from './utils/tableFiltersUtils';
