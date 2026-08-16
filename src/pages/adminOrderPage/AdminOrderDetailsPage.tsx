@@ -1,6 +1,7 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import Cart from '../../components/carts/Cart';
+import DateDisplay from '../../components/datePicker/DateDisplay';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import NotFoundError from '../../components/NotFoundError';
 import ProgressTracker from '../../components/progressTracker/ProgressTracker';
@@ -51,6 +52,7 @@ const AdminOrderDetailsPage = () => {
   //   {title: 'status', }
   // ]
 
+  console.log(order?.delivery.statusHistory);
   return (
     <AdminPageContainer
       variant="medium"
@@ -84,21 +86,22 @@ const AdminOrderDetailsPage = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Behandles</td>
-                        <td>31. juli 2026 14:32</td>
-                        <td>Lisbeth</td>
-                      </tr>
-                      <tr>
-                        <td>Afsendt</td>
-                        <td>31. juli 2026 14:32</td>
-                        <td>Lisbeth</td>
-                      </tr>
-                      <tr>
-                        <td>Oprettet</td>
-                        <td>31. juli 2026 14:32</td>
-                        <td>Kunde (Helle Bjørnum)</td>
-                      </tr>
+                      {order.delivery.statusHistory.map(
+                        ({ status, changedAt }) => (
+                          <tr key={`${status}-${changedAt}`}>
+                            <td>{language[status]}</td>
+                            <td>
+                              <DateDisplay date={changedAt} />
+                            </td>
+                            <td>
+                              a
+                              {/* {changedBy === changedBy.username
+                                ? `${language.customer} (${changedBy.username})`
+                                : changedBy.username} */}
+                            </td>
+                          </tr>
+                        ),
+                      )}
                     </tbody>
                   </table>
                 </article>

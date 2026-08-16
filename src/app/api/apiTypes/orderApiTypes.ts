@@ -44,7 +44,7 @@ export interface Delivery {
   deliveredAt: Date;
   shippedAt: Date;
   status: DeliveryStatus;
-  statusHistory: StatusHistory;
+  statusHistory: StatusHistory[];
 }
 
 export interface OrderResponse extends DefaultResponseType {
