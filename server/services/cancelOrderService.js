@@ -1,4 +1,4 @@
-import { DELIVERY_STATUS } from '../config/constants.js';
+import { DELIVERY_STATUS } from '../config/deliveryConstants.js';
 
 export const cancelOrderService = async (order, userId) => {
   const deliveryStatus = order.delivery.status;

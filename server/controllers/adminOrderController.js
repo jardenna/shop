@@ -2,7 +2,7 @@ import {
   ALLOWED_STATUS_TRANSITIONS,
   DELIVERY_STATUS,
   DELIVERY_STATUS_ENUM,
-} from '../config/constants.js';
+} from '../config/deliveryConstants.js';
 import { PAYMENT_STATUS } from '../config/paymentConstants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Order from '../models/orderModel.js';
