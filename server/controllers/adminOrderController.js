@@ -224,6 +224,7 @@ const shipOrder = asyncHandler(async (req, res) => {
     status: DELIVERY_STATUS.SHIPPED,
     changedAt: new Date(),
     changedBy: req.user._id,
+    actorType: ACTOR_TYPE.EMPLOYEE,
   };
 
   order.delivery.status = DELIVERY_STATUS.SHIPPED;
