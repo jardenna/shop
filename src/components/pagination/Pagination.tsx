@@ -17,7 +17,6 @@ const Pagination = ({
   onPagination,
   defaultValue,
   onSelectCount,
-  optionList,
   totalCount,
   paginationMobileText,
   isError,
@@ -40,7 +39,6 @@ const Pagination = ({
           pageLimit={pageLimit}
         />
         <PaginationSelect
-          optionList={optionList}
           onSelectCount={onSelectCount}
           defaultValue={defaultValue}
           totalCount={totalCount}
