@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router';
 import { SortOrder } from '../app/api/apiTypes/sharedApiTypes';
-import { Column } from '../components/sortTable/Table';
+import { Column } from '../components/sortTable/SortTable';
 
 type TableProps<T> = {
   columns: Column<T>[];

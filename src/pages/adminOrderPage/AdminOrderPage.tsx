@@ -1,7 +1,7 @@
 import { usePaginationText } from '../../components/pagination/hooks/usePaginationText';
 import { useScrollOnPagination } from '../../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../../components/pagination/Pagination';
-import Table from '../../components/sortTable/Table';
+import SortTable from '../../components/sortTable/SortTable';
 import { createInitialFilters } from '../../components/sortTable/utils/tableFiltersUtils';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useGetAllAdminOrdersQuery } from '../../features/orders/adminOrderApiSlice';
@@ -94,7 +94,7 @@ const AdminOrderPage = () => {
       variant="x-large"
       scrollToRef={scrollToRef}
     >
-      <Table
+      <SortTable
         btnLabel="orders"
         navigationPath={AdminPath.AdminOrders}
         onRemoveFilterTag={onRemoveFilterTag}
@@ -138,7 +138,7 @@ const AdminOrderPage = () => {
             ),
           )
         }
-      </Table>
+      </SortTable>
 
       <Pagination
         isError={isError}

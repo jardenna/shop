@@ -1,5 +1,5 @@
 import { TagItem } from '../../tags/TagList';
-import { Column } from '../Table';
+import { Column } from '../SortTable';
 import { InitialTableFilters, getMinMaxKeys } from './tableFiltersUtils';
 
 export const buildFilterTagsUtils = <T>(

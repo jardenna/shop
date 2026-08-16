@@ -3,7 +3,7 @@ import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import { usePaginationText } from '../../components/pagination/hooks/usePaginationText';
 import { useScrollOnPagination } from '../../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../../components/pagination/Pagination';
-import Table from '../../components/sortTable/Table';
+import SortTable from '../../components/sortTable/SortTable';
 import { createInitialFilters } from '../../components/sortTable/utils/tableFiltersUtils';
 import { useLanguage } from '../../features/language/useLanguage';
 import { tableHeaders } from '../../features/products/components/productTableHeaders';
@@ -155,7 +155,7 @@ const ProductPage = () => {
       variant="x-large"
       scrollToRef={scrollToRef}
     >
-      <Table
+      <SortTable
         btnLabel="products"
         navigationPath={AdminPath.AdminProducts}
         values={filterParams}
@@ -215,7 +215,7 @@ const ProductPage = () => {
             ),
           )
         }
-      </Table>
+      </SortTable>
 
       <Pagination
         isError={isError}

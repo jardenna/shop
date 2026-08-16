@@ -19,7 +19,7 @@ import {
   SubCategoryNames,
 } from '../../../app/api/apiTypes/sharedApiTypes';
 import { Options } from '../../../types/types';
-import { Column } from '../Table';
+import { Column } from '../SortTable';
 
 export interface ListsMap {
   categoryName: readonly MainCategoryNames[];

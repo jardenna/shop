@@ -51,7 +51,7 @@ type TableProps<T> = {
   onSort: (field: keyof T) => void;
 };
 
-const Table = <T,>({
+const SortTable = <T,>({
   data,
   columns,
   children,
@@ -225,4 +225,4 @@ const Table = <T,>({
   );
 };
 
-export default Table;
+export default SortTable;

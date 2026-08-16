@@ -1,5 +1,5 @@
 import { Status } from '../../app/api/apiTypes/adminApiTypes';
-import Table from '../../components/sortTable/Table';
+import SortTable from '../../components/sortTable/SortTable';
 import { createInitialFilters } from '../../components/sortTable/utils/tableFiltersUtils';
 import {
   useGetAllCategoriesWithParamsQuery,
@@ -64,7 +64,7 @@ const CategoryPage = () => {
       linkTo={AdminPath.AdminCategoryCreate}
       variant="medium"
     >
-      <Table
+      <SortTable
         btnLabel="categories"
         navigationPath={AdminPath.AdminCategories}
         onRemoveFilterTag={onRemoveFilterTag}
@@ -104,7 +104,7 @@ const CategoryPage = () => {
             ),
           )
         }
-      </Table>
+      </SortTable>
     </AdminPageContainer>
   );
 };

@@ -1,5 +1,5 @@
 import { Status } from '../../app/api/apiTypes/adminApiTypes';
-import Table from '../../components/sortTable/Table';
+import SortTable from '../../components/sortTable/SortTable';
 import { createInitialFilters } from '../../components/sortTable/utils/tableFiltersUtils';
 import { useLanguage } from '../../features/language/useLanguage';
 import SubCategoryTableRows from '../../features/subCategories/components/SubCategoryTableRows';
@@ -59,7 +59,7 @@ const SubCategoryPage = () => {
       linkTo={AdminPath.AdminSubCategoryCreate}
       variant="medium"
     >
-      <Table
+      <SortTable
         btnLabel="subCategory"
         navigationPath={AdminPath.AdminSubCategoryView}
         isError={isError}
@@ -100,7 +100,7 @@ const SubCategoryPage = () => {
             ),
           )
         }
-      </Table>
+      </SortTable>
     </AdminPageContainer>
   );
 };
