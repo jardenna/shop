@@ -38,14 +38,15 @@ const AdminOrderDetailsPage = () => {
 
   const [shipOrder] = useShipOrderMutation();
 
-  const handleShipOrder = () => {
+  const handleShipOrder = async () => {
     try {
-      if (id) {
-        shipOrder(id).unwrap();
+      const result = await shipOrder(id ?? '').unwrap();
+
+      if (result.success) {
+        onAddMessagePopup({
+          message: language.ordershipped,
+        });
       }
-      onAddMessagePopup({
-        message: language.ordershipped,
-      });
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
     }

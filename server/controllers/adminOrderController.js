@@ -142,6 +142,7 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
       .status(404)
       .json({ success: false, message: t('orderNotFound', req.lang) });
   }
+
   const currentStatus = order.delivery.status;
   const allowedStatuses = ALLOWED_STATUS_TRANSITIONS[currentStatus] ?? [];
 
@@ -157,10 +158,14 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
     status,
     changedAt: new Date(),
     changedBy: req.user._id,
+    actorType: ACTOR_TYPE.EMPLOYEE,
   });
+
   await order.save();
 
-  res.status(200).json(order);
+  res.status(200).json({
+    success: true,
+  });
 });
 
 // @desc    Cancel order
