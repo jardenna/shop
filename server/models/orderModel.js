@@ -1,5 +1,6 @@
 import { model, mongoose, Schema } from 'mongoose';
 import {
+  ACTOR_TYPE,
   ACTOR_TYPE_ENUM,
   DELIVERY_STATUS,
   DELIVERY_STATUS_ENUM,
@@ -149,7 +150,9 @@ const orderModelSchema = new Schema(
           changedBy: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
-            required: true,
+            required() {
+              return this.actorType !== ACTOR_TYPE.SYSTEM;
+            },
           },
           actorType: {
             type: String,

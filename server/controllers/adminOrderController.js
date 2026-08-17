@@ -8,6 +8,7 @@ import { PAYMENT_STATUS } from '../config/paymentConstants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Order from '../models/orderModel.js';
 import { cancelOrderService } from '../services/cancelOrderService.js';
+import { deliveryService } from '../services/deliveryService.js';
 import { sortColumns } from '../utils/sortColumns.js';
 import { t } from '../utils/translator.js';
 
@@ -98,12 +99,7 @@ const getAdminOrderById = asyncHandler(async (req, res) => {
       .json({ success: false, message: t('orderNotFound', req.lang) });
   }
 
-  order.delivery.statusHistory = order.delivery.statusHistory.map(
-    (historyItem) => ({
-      ...historyItem.toObject(),
-      actorType: historyItem.actorType ?? ACTOR_TYPE.EMPLOYEE,
-    }),
-  );
+  await deliveryService(order);
 
   const createdHistory = {
     status: DELIVERY_STATUS.ORDER_CREATED,
@@ -111,6 +107,13 @@ const getAdminOrderById = asyncHandler(async (req, res) => {
     changedBy: order.user,
     actorType: ACTOR_TYPE.CUSTOMER,
   };
+
+  order.delivery.statusHistory = order.delivery.statusHistory.map(
+    (historyItem) => ({
+      ...historyItem.toObject(),
+      actorType: historyItem.actorType ?? ACTOR_TYPE.EMPLOYEE,
+    }),
+  );
 
   order.delivery.statusHistory = [
     createdHistory,
@@ -142,6 +145,7 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
       .status(404)
       .json({ success: false, message: t('orderNotFound', req.lang) });
   }
+
   const currentStatus = order.delivery.status;
   const allowedStatuses = ALLOWED_STATUS_TRANSITIONS[currentStatus] ?? [];
 
@@ -152,15 +156,28 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
     });
   }
 
+  if (
+    currentStatus === DELIVERY_STATUS.SHIPPED &&
+    status === DELIVERY_STATUS.PROCESSING
+  ) {
+    order.delivery.shippedAt = null;
+  }
+
   order.delivery.status = status;
+
   order.delivery.statusHistory.push({
     status,
     changedAt: new Date(),
     changedBy: req.user._id,
+    actorType: ACTOR_TYPE.EMPLOYEE,
   });
+
   await order.save();
 
-  res.status(200).json(order);
+  res.status(200).json({
+    success: true,
+    message: t('orderUpdated', req.lang),
+  });
 });
 
 // @desc    Cancel order
@@ -224,15 +241,19 @@ const shipOrder = asyncHandler(async (req, res) => {
     status: DELIVERY_STATUS.SHIPPED,
     changedAt: new Date(),
     changedBy: req.user._id,
+    actorType: ACTOR_TYPE.EMPLOYEE,
   };
 
   order.delivery.status = DELIVERY_STATUS.SHIPPED;
   order.delivery.shippedAt = statusHistory.changedAt;
   order.delivery.statusHistory.push(statusHistory);
 
-  const updatedOrder = await order.save();
+  await order.save();
 
-  res.status(200).json(updatedOrder);
+  res.status(200).json({
+    success: true,
+    message: t('ordershipped', req.lang),
+  });
 });
 
 export {

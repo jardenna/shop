@@ -24,7 +24,7 @@ router
   .get(languageMiddleware, authenticate, authorizeEmployee, getAdminOrderById);
 
 router
-  .route('/:id/deliver')
+  .route('/:id/send-order')
   .patch(languageMiddleware, authenticate, authorizeEmployee, shipOrder);
 
 router

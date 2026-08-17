@@ -78,3 +78,8 @@ export interface MyOrdersResponse {
   payment: Payment;
   summary: Summary;
 }
+
+export type UpdateOrderRequest = {
+  orderId: string;
+  status: DeliveryStatus;
+};

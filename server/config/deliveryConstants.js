@@ -1,6 +1,7 @@
 export const ACTOR_TYPE = {
   EMPLOYEE: 'employee',
   CUSTOMER: 'customer',
+  SYSTEM: 'system',
 };
 
 export const DELIVERY_STATUS = {

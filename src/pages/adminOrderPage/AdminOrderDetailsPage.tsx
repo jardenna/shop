@@ -1,14 +1,21 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
+import { DeliveryStatus } from '../../app/api/apiTypes/orderApiTypes';
+import Button from '../../components/Button';
 import Cart from '../../components/carts/Cart';
 import DateDisplay from '../../components/datePicker/DateDisplay';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
+import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import NotFoundError from '../../components/NotFoundError';
 import ProgressTracker from '../../components/progressTracker/ProgressTracker';
 import SimpleTable from '../../components/simpleTable/SimpleTable';
 import SummaryList from '../../features/cart/components/SummaryList';
 import { useLanguage } from '../../features/language/useLanguage';
-import { useGetAdminOrderByIdQuery } from '../../features/orders/adminOrderApiSlice';
+import {
+  useGetAdminOrderByIdQuery,
+  useShipOrderMutation,
+  useUpdateOrderMutation,
+} from '../../features/orders/adminOrderApiSlice';
 import ConfirmationDetails from '../../features/orders/components/confirmation/ConfirmationDetails';
 import OrderAddressList from '../../features/orders/components/OrderAddressList';
 import OrderHeading from '../../features/orders/components/orderHeading/OrderHeading';
@@ -16,17 +23,54 @@ import OrderList from '../../features/orders/components/orders/OrderList';
 import { createOrderAddressList } from '../../features/orders/utils/createOrderAddressList';
 import { orderTrackingList } from '../../features/orders/utils/createTrackingList';
 import { AdminPath } from '../../layout/nav/enums';
+import { BtnVariant } from '../../types/enums';
+import { handleApiError } from '../../utils/handleApiError';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const AdminOrderDetailsPage = () => {
   const { id } = useParams();
   const { language } = useLanguage();
+  const { onAddMessagePopup } = useMessagePopup();
   const {
     data: order,
     refetch,
     error,
     isError,
   } = useGetAdminOrderByIdQuery(id ?? '');
+
+  const [updateOrder] = useUpdateOrderMutation();
+  const [shipOrder] = useShipOrderMutation();
+
+  const handleUpdateOrder = async (status: DeliveryStatus) => {
+    try {
+      const result = await updateOrder({
+        orderId: id ?? '',
+        status,
+      }).unwrap();
+
+      if (result.success) {
+        onAddMessagePopup({
+          message: result.message,
+        });
+      }
+    } catch (error) {
+      handleApiError(error, onAddMessagePopup);
+    }
+  };
+
+  const handleShipOrder = async () => {
+    try {
+      const result = await shipOrder(id ?? '').unwrap();
+
+      if (result.success) {
+        onAddMessagePopup({
+          message: result.message,
+        });
+      }
+    } catch (error) {
+      handleApiError(error, onAddMessagePopup);
+    }
+  };
 
   const addressList = order
     ? createOrderAddressList({
@@ -45,7 +89,7 @@ const AdminOrderDetailsPage = () => {
     );
   }
 
-  const status = {
+  const orderStatus = {
     status: order?.delivery.status ?? 'created',
   };
 
@@ -63,7 +107,15 @@ const AdminOrderDetailsPage = () => {
     >
       <div className="confirmation-content">
         <Cart>
-          <ProgressTracker steps={orderTrackingList} status={status} />
+          <ProgressTracker steps={orderTrackingList} status={orderStatus} />
+          <div>
+            <Button onClick={() => handleUpdateOrder('processing')}>
+              {orderStatus.status === 'shipped'
+                ? language.reopenOrder
+                : language.processOrder}
+            </Button>
+            <Button onClick={handleShipOrder}>{language.sendOrder}</Button>
+          </div>
         </Cart>
 
         <ErrorBoundary
@@ -130,6 +182,15 @@ const AdminOrderDetailsPage = () => {
                 {language.paymentMethod}
                 <OrderAddressList addresses={addressList} refetch={refetch} />
               </section>
+
+              <div>
+                <Button variant={BtnVariant.Secondary}>
+                  {language.printOrder}
+                </Button>
+                <Button variant={BtnVariant.Danger}>
+                  {language.cancelOrder}
+                </Button>
+              </div>
             </div>
           )}
         </ErrorBoundary>
