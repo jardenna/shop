@@ -7,6 +7,7 @@ import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import NotFoundError from '../../components/NotFoundError';
 import SimpleTable from '../../components/simpleTable/SimpleTable';
+import SkeletonOrderConfirmationPage from '../../components/skeleton/skeletonOrderConfirmationPage/SkeletonOrderConfirmationPage';
 import SummaryList from '../../features/cart/components/SummaryList';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
@@ -34,6 +35,7 @@ const AdminOrderDetailsPage = () => {
     refetch,
     error,
     isError,
+    isLoading,
   } = useGetAdminOrderByIdQuery(id ?? '');
 
   const [updateOrder] = useUpdateOrderMutation();
@@ -103,6 +105,7 @@ const AdminOrderDetailsPage = () => {
       linkText={language.createNewCategory}
       linkTo={AdminPath.AdminSubCategoryCreate}
     >
+      {isLoading && <SkeletonOrderConfirmationPage />}
       <div className="confirmation-content">
         <ErrorBoundary
           FallbackComponent={ErrorBoundaryFallback}
