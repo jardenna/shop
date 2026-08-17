@@ -11,6 +11,7 @@ import User from '../models/userModel.js';
 import { buildOrderItems } from '../services/buildOrderItems.js';
 import { calculateCartSummary } from '../services/calculateCartSummary.js';
 import { cancelOrderService } from '../services/cancelOrderService.js';
+import { deliveryService } from '../services/deliveryService.js';
 import { getActiveDiscount } from '../services/getActiveDiscount.js';
 import { t } from '../utils/translator.js';
 import { validateFakePayment } from '../validators/validateFakePayment.js';
@@ -180,6 +181,8 @@ const getOrderById = asyncHandler(async (req, res) => {
       message: t('orderNotFound', req.lang),
     });
   }
+
+  await deliveryService(order);
 
   const orderHistory = order.delivery.statusHistory.map(
     ({ status, changedAt }) => ({
