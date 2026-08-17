@@ -24,7 +24,7 @@ const OrderStatusActions = ({
   const { language } = useLanguage();
 
   return (
-    <Cart>
+    <Cart className="order-status-action">
       <ProgressTracker steps={orderTrackingList} status={orderStatus} />
       {orderStatus.status === 'cancelled' ? (
         <CancelledOrderInfo language={language} status={orderStatus.status} />
