@@ -8,6 +8,7 @@ import { PAYMENT_STATUS } from '../config/paymentConstants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Order from '../models/orderModel.js';
 import { cancelOrderService } from '../services/cancelOrderService.js';
+import { deliveryService } from '../services/deliveryService.js';
 import { sortColumns } from '../utils/sortColumns.js';
 import { t } from '../utils/translator.js';
 
@@ -105,12 +106,7 @@ const getAdminOrderById = asyncHandler(async (req, res) => {
     }),
   );
 
-  const createdHistory = {
-    status: DELIVERY_STATUS.ORDER_CREATED,
-    changedAt: order.createdAt,
-    changedBy: order.user,
-    actorType: ACTOR_TYPE.CUSTOMER,
-  };
+  const createdHistory = await deliveryService({ delivery: order.delivery });
 
   order.delivery.statusHistory = [
     createdHistory,
