@@ -1,5 +1,6 @@
 import { model, mongoose, Schema } from 'mongoose';
 import {
+  ACTOR_TYPE,
   ACTOR_TYPE_ENUM,
   DELIVERY_STATUS,
   DELIVERY_STATUS_ENUM,
