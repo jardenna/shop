@@ -2,12 +2,10 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import { DeliveryStatus } from '../../app/api/apiTypes/orderApiTypes';
 import Button from '../../components/Button';
-import Cart from '../../components/carts/Cart';
 import DateDisplay from '../../components/datePicker/DateDisplay';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import NotFoundError from '../../components/NotFoundError';
-import ProgressTracker from '../../components/progressTracker/ProgressTracker';
 import SimpleTable from '../../components/simpleTable/SimpleTable';
 import SummaryList from '../../features/cart/components/SummaryList';
 import { useLanguage } from '../../features/language/useLanguage';
@@ -20,8 +18,8 @@ import ConfirmationDetails from '../../features/orders/components/confirmation/C
 import OrderAddressList from '../../features/orders/components/OrderAddressList';
 import OrderHeading from '../../features/orders/components/orderHeading/OrderHeading';
 import OrderList from '../../features/orders/components/orders/OrderList';
+import OrderStatusActions from '../../features/orders/components/OrderStatusActions';
 import { createOrderAddressList } from '../../features/orders/utils/createOrderAddressList';
-import { orderTrackingList } from '../../features/orders/utils/createTrackingList';
 import { AdminPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
 import { handleApiError } from '../../utils/handleApiError';
@@ -106,22 +104,16 @@ const AdminOrderDetailsPage = () => {
       linkTo={AdminPath.AdminSubCategoryCreate}
     >
       <div className="confirmation-content">
-        <Cart>
-          <ProgressTracker steps={orderTrackingList} status={orderStatus} />
-          <div>
-            <Button onClick={() => handleUpdateOrder('processing')}>
-              {orderStatus.status === 'shipped'
-                ? language.reopenOrder
-                : language.processOrder}
-            </Button>
-            <Button onClick={handleShipOrder}>{language.sendOrder}</Button>
-          </div>
-        </Cart>
-
         <ErrorBoundary
           FallbackComponent={ErrorBoundaryFallback}
           onReset={refetch}
         >
+          <OrderStatusActions
+            onUpdateOrder={handleUpdateOrder}
+            onShipOrder={handleShipOrder}
+            orderStatus={orderStatus}
+          />
+
           {order && (
             <div className="confirmation-content">
               <section>
