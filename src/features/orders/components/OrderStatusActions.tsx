@@ -4,6 +4,7 @@ import Cart from '../../../components/carts/Cart';
 import ProgressTracker from '../../../components/progressTracker/ProgressTracker';
 import { useLanguage } from '../../language/useLanguage';
 import { orderTrackingList } from '../utils/createTrackingList';
+import CancelledOrderInfo from './CancelledOrderInfo';
 
 interface OrderStatusProps {
   status: DeliveryStatus;
@@ -25,18 +26,22 @@ const OrderStatusActions = ({
   return (
     <Cart>
       <ProgressTracker steps={orderTrackingList} status={orderStatus} />
-      <div>
-        <Button
-          onClick={() => {
-            onUpdateOrder('processing');
-          }}
-        >
-          {orderStatus.status === 'shipped'
-            ? language.reopenOrder
-            : language.processOrder}
-        </Button>
-        <Button onClick={onShipOrder}>{language.sendOrder}</Button>
-      </div>
+      {orderStatus.status === 'cancelled' ? (
+        <CancelledOrderInfo language={language} status={orderStatus.status} />
+      ) : (
+        <div>
+          <Button
+            onClick={() => {
+              onUpdateOrder('processing');
+            }}
+          >
+            {orderStatus.status === 'shipped'
+              ? language.reopenOrder
+              : language.processOrder}
+          </Button>
+          <Button onClick={onShipOrder}>{language.sendOrder}</Button>
+        </div>
+      )}
     </Cart>
   );
 };
