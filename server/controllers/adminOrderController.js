@@ -99,14 +99,21 @@ const getAdminOrderById = asyncHandler(async (req, res) => {
       .json({ success: false, message: t('orderNotFound', req.lang) });
   }
 
+  await deliveryService(order);
+
+  const createdHistory = {
+    status: DELIVERY_STATUS.ORDER_CREATED,
+    changedAt: order.createdAt,
+    changedBy: order.user,
+    actorType: ACTOR_TYPE.CUSTOMER,
+  };
+
   order.delivery.statusHistory = order.delivery.statusHistory.map(
     (historyItem) => ({
       ...historyItem.toObject(),
       actorType: historyItem.actorType ?? ACTOR_TYPE.EMPLOYEE,
     }),
   );
-
-  const createdHistory = await deliveryService({ delivery: order.delivery });
 
   order.delivery.statusHistory = [
     createdHistory,

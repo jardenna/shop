@@ -1,25 +1,32 @@
 import { addBusinessDays, isAfter } from 'date-fns';
 import { DELIVERY_STATUS } from '../config/deliveryConstants.js';
 
-export const deliveryService = async ({ delivery }) => {
-  if (delivery.status === DELIVERY_STATUS.SHIPPED) {
-    const deliveryDate = addBusinessDays(delivery.shippedAt, 3);
-    const isCurrentdateAfter = isAfter(new Date(), new Date(deliveryDate));
-    console.log(isCurrentdateAfter);
+export const deliveryService = async (order) => {
+  const { delivery } = order;
 
-    if (isCurrentdateAfter) {
-      return {
-        status: DELIVERY_STATUS.DELIVERED,
-        changedAt: deliveryDate,
-        changedBy: ACTOR_TYPE.SYSTEM,
-        actorType: ACTOR_TYPE.CUSTOMER,
-      };
-    }
+  if (delivery.status !== DELIVERY_STATUS.SHIPPED || !delivery.shippedAt) {
+    return false;
   }
-  return {
-    status: DELIVERY_STATUS.ORDER_CREATED,
-    changedAt: order.createdAt,
-    changedBy: order.user,
-    actorType: ACTOR_TYPE.CUSTOMER,
-  };
+
+  const deliveryDate = addBusinessDays(delivery.shippedAt, 3);
+  const currentDate = new Date();
+
+  if (
+    !isAfter(currentDate, deliveryDate) &&
+    !isEqual(currentDate, deliveryDate)
+  ) {
+    return false;
+  }
+
+  delivery.status = DELIVERY_STATUS.DELIVERED;
+  delivery.deliveredAt = deliveryDate;
+  delivery.statusHistory.push({
+    status: DELIVERY_STATUS.DELIVERED,
+    changedAt: deliveryDate,
+    actorType: ACTOR_TYPE.SYSTEM,
+  });
+
+  await order.save();
+
+  return true;
 };

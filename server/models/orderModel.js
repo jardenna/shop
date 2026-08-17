@@ -149,7 +149,9 @@ const orderModelSchema = new Schema(
           changedBy: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
-            required: true,
+            required() {
+              return this.actorType !== ACTOR_TYPE.SYSTEM;
+            },
           },
           actorType: {
             type: String,
