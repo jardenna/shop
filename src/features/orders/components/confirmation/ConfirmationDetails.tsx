@@ -22,7 +22,6 @@ const ConfirmationDetails = ({
   return (
     <article className="confirmation-info">
       <OrderHeading variant="underline" heading={language.orderSummary} />
-
       <ul className="confirmation-detail-list">
         <ConfirmationDetailItem
           text={formatOrderNumber(id)}

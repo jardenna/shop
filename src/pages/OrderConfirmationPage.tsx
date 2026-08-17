@@ -1,12 +1,12 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
-import Badge from '../components/badge/Badge';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import NotFoundError from '../components/NotFoundError';
 import ProgressTracker from '../components/progressTracker/ProgressTracker';
 import SkeletonOrderConfirmationPage from '../components/skeleton/skeletonOrderConfirmationPage/SkeletonOrderConfirmationPage';
 import SummaryList from '../features/cart/components/SummaryList';
 import { useLanguage } from '../features/language/useLanguage';
+import CancelledOrderInfo from '../features/orders/components/CancelledOrderInfo';
 import ConfirmationDetails from '../features/orders/components/confirmation/ConfirmationDetails';
 import OrderAddressList from '../features/orders/components/OrderAddressList';
 import OrderHeading from '../features/orders/components/orderHeading/OrderHeading';
@@ -69,24 +69,18 @@ const OrderConfirmationPage = () => {
       heading={`${order && order.user.username}, ${language.orderConfirmationTitle}`}
     >
       <div className="confirmation-content">
-        {order?.delivery.status === 'cancelled' ? (
-          <Badge
-            className="cancelled"
-            variant="large"
-            badgeText={language.orderCancelled}
-          />
-        ) : (
-          <h2>{language.orderStatusMessage}</h2>
-        )}
-
-        <ProgressTracker steps={orderTrackingList} status={status} />
-
         <ErrorBoundary
           FallbackComponent={ErrorBoundaryFallback}
           onReset={refetch}
         >
           {order && (
             <>
+              <CancelledOrderInfo
+                language={language}
+                status={order.delivery.status}
+              />
+
+              <ProgressTracker steps={orderTrackingList} status={status} />
               <section className="confirmation-summary">
                 <article className="summary-items">
                   <OrderHeading heading={language.orderedItems} />
