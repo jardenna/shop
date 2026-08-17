@@ -1,5 +1,5 @@
 import { paymentMethodLabels } from '../../app/api/apiConstants';
-import { DeliveryStatusFilterValues } from '../../app/api/apiTypes/orderApiTypes';
+import { DeliveryStatus } from '../../app/api/apiTypes/orderApiTypes';
 import { PaymentMethods } from '../../app/api/apiTypes/paymentApiTypes';
 import Badge from '../../components/badge/Badge';
 import DateDisplay from '../../components/datePicker/DateDisplay';
@@ -10,7 +10,7 @@ import { AdminPath } from '../../layout/nav/enums';
 interface OrderTableRowProps {
   createdAt: Date;
   customer: string;
-  deliveryStatus: DeliveryStatusFilterValues;
+  deliveryStatus: DeliveryStatus;
   id: string;
   language: Record<string, string>;
   paymentMethod: PaymentMethods;
@@ -51,7 +51,11 @@ const OrderTableRow = ({
     </td>
     <td>
       <MoreLink
-        linkText={language.updateOrder}
+        linkText={
+          deliveryStatus === 'cancelled'
+            ? language.viewOrder
+            : language.updateOrder
+        }
         linkTo={`${AdminPath.AdminOrderById}/${id}`}
       />
     </td>
