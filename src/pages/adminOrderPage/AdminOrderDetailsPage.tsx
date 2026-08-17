@@ -1,7 +1,6 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import { DeliveryStatus } from '../../app/api/apiTypes/orderApiTypes';
-import Button from '../../components/Button';
 import DateDisplay from '../../components/datePicker/DateDisplay';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
@@ -15,6 +14,7 @@ import {
   useShipOrderMutation,
   useUpdateOrderMutation,
 } from '../../features/orders/adminOrderApiSlice';
+import AdminOrderFooter from '../../features/orders/components/AdminOrderFooter';
 import ConfirmationDetails from '../../features/orders/components/confirmation/ConfirmationDetails';
 import OrderAddressList from '../../features/orders/components/OrderAddressList';
 import OrderHeading from '../../features/orders/components/orderHeading/OrderHeading';
@@ -22,7 +22,6 @@ import OrderList from '../../features/orders/components/orders/OrderList';
 import OrderStatusActions from '../../features/orders/components/OrderStatusActions';
 import { createOrderAddressList } from '../../features/orders/utils/createOrderAddressList';
 import { AdminPath } from '../../layout/nav/enums';
-import { BtnVariant } from '../../types/enums';
 import { handleApiError } from '../../utils/handleApiError';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
@@ -177,15 +176,10 @@ const AdminOrderDetailsPage = () => {
                 {language.paymentMethod}
                 <OrderAddressList addresses={addressList} refetch={refetch} />
               </section>
-
-              <div>
-                <Button variant={BtnVariant.Secondary}>
-                  {language.printOrder}
-                </Button>
-                <Button variant={BtnVariant.Danger}>
-                  {language.cancelOrder}
-                </Button>
-              </div>
+              <AdminOrderFooter
+                language={language}
+                isCanceled={order.delivery.status === 'cancelled'}
+              />
             </div>
           )}
         </ErrorBoundary>
