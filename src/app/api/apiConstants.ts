@@ -8,6 +8,7 @@ export const deliveryStatusFilterValues = [
   'Processing',
   'Shipped',
   'Delivered',
+  'Cancelled',
 ] as const;
 
 export const paymentStatusFilterValues = [
