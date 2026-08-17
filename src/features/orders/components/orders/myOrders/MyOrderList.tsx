@@ -5,12 +5,12 @@ import './_my-orders.scss';
 import MyOrderFooter from './MyOrderFooter';
 import MyOrderHeader from './MyOrderHeader';
 
-interface MyOrdersProps {
+interface MyOrderListProps {
   myOrders: MyOrdersResponse[];
   onViewDetails: (id: string) => void;
 }
 
-const MyOrders = ({ myOrders, onViewDetails }: MyOrdersProps) => {
+const MyOrderList = ({ myOrders, onViewDetails }: MyOrderListProps) => {
   const { language } = useLanguage();
 
   return (
@@ -39,4 +39,4 @@ const MyOrders = ({ myOrders, onViewDetails }: MyOrdersProps) => {
   );
 };
 
-export default MyOrders;
+export default MyOrderList;
