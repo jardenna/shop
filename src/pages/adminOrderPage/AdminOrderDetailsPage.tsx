@@ -15,11 +15,10 @@ import {
   useUpdateOrderMutation,
 } from '../../features/orders/adminOrderApiSlice';
 import AdminOrderFooter from '../../features/orders/components/AdminOrderFooter';
-import ConfirmationDetails from '../../features/orders/components/confirmation/ConfirmationDetails';
 import OrderAddressList from '../../features/orders/components/OrderAddressList';
 import OrderHeading from '../../features/orders/components/orderHeading/OrderHeading';
 import OrderList from '../../features/orders/components/orders/OrderList';
-import OrderStatusActions from '../../features/orders/components/OrderStatusActions';
+import OrderStatusActions from '../../features/orders/components/orderStatusActions/OrderStatusActions';
 import { createOrderAddressList } from '../../features/orders/utils/createOrderAddressList';
 import { AdminPath } from '../../layout/nav/enums';
 import { handleApiError } from '../../utils/handleApiError';
@@ -100,7 +99,7 @@ const AdminOrderDetailsPage = () => {
 
   return (
     <AdminPageContainer
-      heading={id ?? ''}
+      heading={id ? `# ${id}` : ''}
       linkText={language.createNewCategory}
       linkTo={AdminPath.AdminSubCategoryCreate}
     >
@@ -150,11 +149,6 @@ const AdminOrderDetailsPage = () => {
                     )}
                   />
                 </article>
-                <ConfirmationDetails
-                  createdAt={order.createdAt}
-                  id={order.id}
-                  method={order.payment.method}
-                />
               </section>
               <section className="confirmation-summary">
                 <article className="summary-items">
@@ -173,7 +167,11 @@ const AdminOrderDetailsPage = () => {
               </section>
               <section className="confirmation-info-container">
                 <OrderHeading heading={language.customerInformation} />
-                {language.paymentMethod}
+
+                <span>
+                  {language.paymentMethod}
+                  {order.payment.method}
+                </span>
                 <OrderAddressList addresses={addressList} refetch={refetch} />
               </section>
               <AdminOrderFooter

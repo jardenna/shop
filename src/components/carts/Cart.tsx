@@ -6,7 +6,7 @@ interface CartProps {
 }
 
 const Cart = ({ children, className = '' }: CartProps) => (
-  <div className={`cart ${className}`}>{children}</div>
+  <section className={`cart ${className}`}>{children}</section>
 );
 
 export default Cart;
