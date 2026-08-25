@@ -96,7 +96,6 @@ const AdminOrderDetailsPage = () => {
     { label: 'dateAndTime' },
     { label: 'performedBy' },
   ];
-  console.log(orderStatus);
 
   return (
     <AdminPageContainer
@@ -152,19 +151,19 @@ const AdminOrderDetailsPage = () => {
                 />
               </article>
 
+              <article className="cart summary-payment">
+                <OrderHeading heading={language.priceOverview} />
+                <SummaryList
+                  language={language}
+                  summary={order.summary}
+                  promoDiscount={order.discount}
+                />
+              </article>
+
               <section className="confirmation-summary">
                 <article className="summary-items">
                   <OrderHeading heading={language.orderedItems} />
                   <OrderList orders={order.orderItems} language={language} />
-                </article>
-
-                <article className="summary-payment">
-                  <OrderHeading heading={language.priceOverview} />
-                  <SummaryList
-                    language={language}
-                    summary={order.summary}
-                    promoDiscount={order.discount}
-                  />
                 </article>
               </section>
               <section className="confirmation-info-container">
