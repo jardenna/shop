@@ -181,6 +181,7 @@ const AdminOrderDetailsPage = () => {
               <AdminOrderFooter
                 language={language}
                 isCanceled={orderStatus.status === 'cancelled'}
+                isDelivered={orderStatus.status === 'delivered'}
               />
             </div>
           )}
