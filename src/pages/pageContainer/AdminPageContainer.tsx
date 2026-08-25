@@ -12,7 +12,6 @@ type AdminPageContainerProps = {
   variant?: 'small' | 'medium' | 'large' | 'x-large';
 };
 
-// Accept display text, not translation keys.
 const AdminPageContainer = ({
   children,
   heading,
