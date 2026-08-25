@@ -54,7 +54,7 @@ export const createSummaryItemList = ({
       price: summary.shippingPrice,
     },
     {
-      label: `${language.inclVat} (${vat}%)`,
+      label: `${language.vat} (${vat}%)`,
       price: summary.taxPrice,
     },
     {
