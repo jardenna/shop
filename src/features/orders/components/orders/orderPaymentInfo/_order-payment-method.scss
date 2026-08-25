@@ -1,0 +1,7 @@
+@use '../../../../../scss/globals' as *;
+
+.order-payment-info {
+  display: flex;
+  flex: 2;
+  background-color: $color-background;
+}

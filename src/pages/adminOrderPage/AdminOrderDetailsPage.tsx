@@ -1,5 +1,6 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
+import { paymentMethodLabels } from '../../app/api/apiConstants';
 import { DeliveryStatus } from '../../app/api/apiTypes/orderApiTypes';
 import DateDisplay from '../../components/datePicker/DateDisplay';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
@@ -18,6 +19,7 @@ import AdminOrderFooter from '../../features/orders/components/AdminOrderFooter'
 import OrderAddressList from '../../features/orders/components/OrderAddressList';
 import OrderHeading from '../../features/orders/components/orderHeading/OrderHeading';
 import OrderList from '../../features/orders/components/orders/OrderList';
+import OrderPaymentInfo from '../../features/orders/components/orders/orderPaymentInfo/OrderPaymentInfo';
 import OrderStatusActions from '../../features/orders/components/orderStatusActions/OrderStatusActions';
 import { createOrderAddressList } from '../../features/orders/utils/createOrderAddressList';
 import { AdminPath } from '../../layout/nav/enums';
@@ -165,13 +167,16 @@ const AdminOrderDetailsPage = () => {
                   />
                 </article>
               </section>
-              <section className="cart confirmation-info-container">
+              <section className="cart">
                 <OrderHeading heading={language.customerInformation} />
-                <span>
-                  {language.paymentMethod}
-                  {order.payment.method}
-                </span>
-                <OrderAddressList addresses={addressList} refetch={refetch} />
+                <article className="confirmation-info-container">
+                  <OrderPaymentInfo
+                    paymentMethod={paymentMethodLabels[order.payment.method]}
+                    label={language.paymentMethod}
+                  />
+
+                  <OrderAddressList addresses={addressList} refetch={refetch} />
+                </article>
               </section>
               <AdminOrderFooter
                 language={language}
