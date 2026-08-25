@@ -333,6 +333,9 @@ onlyAdminsAssignRole;Only admins can assign roles;Kun administratorer kan tildel
 onlyFourAddresses;You may have up to 4 addresses;Du kan højst have 4 adresser
 orange;Orange;Orange
 order;Order;Ordre
+orderDetails;Order details;Ordredetaljer
+orderNo;Order No.;Ordrenr.
+backToOrderList;Back to order list;Tilbage til ordrelisten
 orderActions;Order actions;Ordrehandlinger
 orderAllreadyDelivered;Order is already delivered;Ordren er allerede leveret
 orderAllreadyPaid;Order is already paid;Ordren er allerede betalt

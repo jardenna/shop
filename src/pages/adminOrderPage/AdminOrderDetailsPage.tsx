@@ -101,13 +101,22 @@ const AdminOrderDetailsPage = () => {
   ];
 
   return (
-    <AdminPageContainer heading={id ? `# ${id}` : ''} variant="medium">
+    <AdminPageContainer
+      heading={language.orderDetails}
+      variant="medium"
+      hideBreadCrumbs
+      linkText={language.backToOrderList}
+      linkTo={AdminPath.AdminOrders}
+    >
       {isLoading && <SkeletonOrderConfirmationPage />}
       <div className="confirmation-content">
         <ErrorBoundary
           FallbackComponent={ErrorBoundaryFallback}
           onReset={refetch}
         >
+          <h2>
+            {language.orderNo}: # {id}
+          </h2>
           <OrderStatusActions
             onUpdateOrder={handleUpdateOrder}
             onShipOrder={handleShipOrder}
@@ -156,13 +165,15 @@ const AdminOrderDetailsPage = () => {
                   <OrderList orders={order.orderItems} language={language} />
                 </article>
 
-                <article className="summary-payment">
-                  <SummaryList
-                    language={language}
-                    summary={order.summary}
-                    promoDiscount={order.discount}
-                  />
-                </article>
+                <div>
+                  <article className="summary-payment">
+                    <SummaryList
+                      language={language}
+                      summary={order.summary}
+                      promoDiscount={order.discount}
+                    />
+                  </article>
+                </div>
               </Cart>
               <Cart>
                 <OrderHeading heading={language.customerInformation} />
