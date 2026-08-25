@@ -101,12 +101,7 @@ const AdminOrderDetailsPage = () => {
   ];
 
   return (
-    <AdminPageContainer
-      heading={id ? `# ${id}` : ''}
-      linkText={language.createNewCategory}
-      linkTo={AdminPath.AdminSubCategoryCreate}
-      variant="medium"
-    >
+    <AdminPageContainer heading={id ? `# ${id}` : ''} variant="medium">
       {isLoading && <SkeletonOrderConfirmationPage />}
       <div className="confirmation-content">
         <ErrorBoundary
