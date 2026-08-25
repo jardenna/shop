@@ -143,7 +143,9 @@ const AdminOrderDetailsPage = () => {
                           />
                         </td>
                         <td>
-                          {changedBy.username} ({language[actorType]})
+                          {actorType === 'system'
+                            ? language.system
+                            : `${changedBy.username} (${language[actorType]})`}
                         </td>
                       </>
                     )}
@@ -167,7 +169,6 @@ const AdminOrderDetailsPage = () => {
               </section>
               <section className="confirmation-info-container">
                 <OrderHeading heading={language.customerInformation} />
-
                 <span>
                   {language.paymentMethod}
                   {order.payment.method}
