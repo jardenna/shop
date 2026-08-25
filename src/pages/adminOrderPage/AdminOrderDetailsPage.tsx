@@ -118,41 +118,40 @@ const AdminOrderDetailsPage = () => {
 
           {order && (
             <div className="confirmation-content">
-              <section>
-                <article className="confirmation-info">
-                  <OrderHeading heading={language.orderHistory} />
-                  <SimpleTable
-                    tableCaption={language.orderSummaryList}
-                    tableHeaderList={tableHeaderList}
-                    tableDataList={order.delivery.statusHistory}
-                    getRowKey={({ status, changedAt }) =>
-                      `${status}-${changedAt}`
-                    }
-                    renderCells={({
-                      status,
-                      changedAt,
-                      changedBy,
-                      actorType,
-                    }) => (
-                      <>
-                        <td>{language[status]}</td>
-                        <td>
-                          <DateDisplay
-                            date={changedAt}
-                            hour="2-digit"
-                            minute="2-digit"
-                          />
-                        </td>
-                        <td>
-                          {actorType === 'system'
-                            ? language.system
-                            : `${changedBy.username} (${language[actorType]})`}
-                        </td>
-                      </>
-                    )}
-                  />
-                </article>
-              </section>
+              <article className="cart confirmation-info">
+                <OrderHeading heading={language.orderHistory} />
+                <SimpleTable
+                  tableCaption={language.orderSummaryList}
+                  tableHeaderList={tableHeaderList}
+                  tableDataList={order.delivery.statusHistory}
+                  getRowKey={({ status, changedAt }) =>
+                    `${status}-${changedAt}`
+                  }
+                  renderCells={({
+                    status,
+                    changedAt,
+                    changedBy,
+                    actorType,
+                  }) => (
+                    <>
+                      <td>{language[status]}</td>
+                      <td>
+                        <DateDisplay
+                          date={changedAt}
+                          hour="2-digit"
+                          minute="2-digit"
+                        />
+                      </td>
+                      <td>
+                        {actorType === 'system'
+                          ? language.system
+                          : `${changedBy.username} (${language[actorType]})`}
+                      </td>
+                    </>
+                  )}
+                />
+              </article>
+
               <section className="confirmation-summary">
                 <article className="summary-items">
                   <OrderHeading heading={language.orderedItems} />
