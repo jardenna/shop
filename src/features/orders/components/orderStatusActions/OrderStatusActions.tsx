@@ -24,12 +24,18 @@ const OrderStatusActions = ({
 }: OrderStatusActionsProps) => {
   const { language } = useLanguage();
 
+  const isCancelled = orderStatus.status === 'cancelled';
+  const isDelivered = orderStatus.status === 'delivered';
+
   return (
     <Cart className="order-status-actions">
       <ProgressTracker steps={orderTrackingList} status={orderStatus} />
-      {orderStatus.status === 'cancelled' ? (
+
+      {isCancelled && (
         <CancelledOrderInfo language={language} status={orderStatus.status} />
-      ) : (
+      )}
+
+      {!isCancelled && !isDelivered && (
         <footer className="footer">
           <Button
             onClick={() => {

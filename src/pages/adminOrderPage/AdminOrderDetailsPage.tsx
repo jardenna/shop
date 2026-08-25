@@ -96,6 +96,7 @@ const AdminOrderDetailsPage = () => {
     { label: 'dateAndTime' },
     { label: 'performedBy' },
   ];
+  console.log(orderStatus);
 
   return (
     <AdminPageContainer
@@ -177,7 +178,7 @@ const AdminOrderDetailsPage = () => {
               </section>
               <AdminOrderFooter
                 language={language}
-                isCanceled={order.delivery.status === 'cancelled'}
+                isCanceled={orderStatus.status === 'cancelled'}
               />
             </div>
           )}
