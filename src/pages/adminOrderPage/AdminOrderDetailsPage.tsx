@@ -2,6 +2,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import { paymentMethodLabels } from '../../app/api/apiConstants';
 import { DeliveryStatus } from '../../app/api/apiTypes/orderApiTypes';
+import Cart from '../../components/carts/Cart';
 import DateDisplay from '../../components/datePicker/DateDisplay';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
@@ -104,6 +105,7 @@ const AdminOrderDetailsPage = () => {
       heading={id ? `# ${id}` : ''}
       linkText={language.createNewCategory}
       linkTo={AdminPath.AdminSubCategoryCreate}
+      variant="medium"
     >
       {isLoading && <SkeletonOrderConfirmationPage />}
       <div className="confirmation-content">
@@ -119,7 +121,7 @@ const AdminOrderDetailsPage = () => {
 
           {order && (
             <div className="confirmation-content">
-              <article className="cart confirmation-info">
+              <Cart className="confirmation-info">
                 <OrderHeading heading={language.orderHistory} />
                 <SimpleTable
                   tableCaption={language.orderSummaryList}
@@ -151,9 +153,9 @@ const AdminOrderDetailsPage = () => {
                     </>
                   )}
                 />
-              </article>
+              </Cart>
 
-              <section className="cart confirmation-summary">
+              <Cart className="confirmation-summary">
                 <article className="summary-items">
                   <OrderHeading heading={language.orderedItems} />
                   <OrderList orders={order.orderItems} language={language} />
@@ -166,8 +168,8 @@ const AdminOrderDetailsPage = () => {
                     promoDiscount={order.discount}
                   />
                 </article>
-              </section>
-              <section className="cart">
+              </Cart>
+              <Cart>
                 <OrderHeading heading={language.customerInformation} />
                 <article className="confirmation-info-container">
                   <OrderPaymentInfo
@@ -177,7 +179,7 @@ const AdminOrderDetailsPage = () => {
 
                   <OrderAddressList addresses={addressList} refetch={refetch} />
                 </article>
-              </section>
+              </Cart>
               <AdminOrderFooter
                 language={language}
                 isCanceled={orderStatus.status === 'cancelled'}

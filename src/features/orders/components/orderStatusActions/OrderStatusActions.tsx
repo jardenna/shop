@@ -62,7 +62,7 @@ const OrderStatusActions = ({
       )}
 
       {!isCancelled && !isDelivered && (
-        <footer className="footer">
+        <footer className="footer order-status-footer">
           <Button onClick={handleStatusAction}>{getActionLabel()}</Button>
         </footer>
       )}
