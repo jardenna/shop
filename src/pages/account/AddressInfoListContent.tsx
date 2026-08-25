@@ -14,8 +14,8 @@ const AddressInfoListContent = ({
 
   return (
     <article className="my-address-content">
-      <span className="my-address-label">{language[address.label]}</span>
-      <h2 className="my-address-title">{address.name || username}</h2>
+      <h2 className="my-address-label">{language[address.label]}</h2>
+      <h3 className="my-address-title">{address.name || username}</h3>
       <p>{address.street}</p>
       <p>
         {address.zipCode} {address.city}

@@ -7,7 +7,7 @@ interface OrderPaymentInfoProps {
 
 const OrderPaymentInfo = ({ paymentMethod, label }: OrderPaymentInfoProps) => (
   <div className="order-payment-info">
-    <span>{label}</span>
+    <h2 className="order-payment-label">{label}</h2>
     <span>{paymentMethod}</span>
   </div>
 );

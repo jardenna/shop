@@ -2,6 +2,14 @@
 
 .order-payment-info {
   display: flex;
+  padding: 32px;
+  flex-direction: column;
   flex: 2;
+  gap: 4px;
   background-color: $color-background;
+
+  .order-payment-label {
+    text-transform: uppercase;
+    font-size: $font-small;
+  }
 }
