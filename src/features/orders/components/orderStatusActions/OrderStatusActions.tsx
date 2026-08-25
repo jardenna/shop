@@ -27,6 +27,32 @@ const OrderStatusActions = ({
   const isCancelled = orderStatus.status === 'cancelled';
   const isDelivered = orderStatus.status === 'delivered';
 
+  const handleStatusAction = () => {
+    if (orderStatus.status === 'created') {
+      onUpdateOrder('processing');
+      return;
+    }
+
+    if (orderStatus.status === 'shipped') {
+      onUpdateOrder('processing');
+      return;
+    }
+
+    onShipOrder();
+  };
+
+  const getActionLabel = () => {
+    if (orderStatus.status === 'created') {
+      return language.processOrder;
+    }
+
+    if (orderStatus.status === 'shipped') {
+      return language.reopenOrder;
+    }
+
+    return language.sendOrder;
+  };
+
   return (
     <Cart className="order-status-actions">
       <ProgressTracker steps={orderTrackingList} status={orderStatus} />
@@ -37,16 +63,7 @@ const OrderStatusActions = ({
 
       {!isCancelled && !isDelivered && (
         <footer className="footer">
-          <Button
-            onClick={() => {
-              onUpdateOrder('processing');
-            }}
-          >
-            {orderStatus.status === 'shipped'
-              ? language.reopenOrder
-              : language.processOrder}
-          </Button>
-          <Button onClick={onShipOrder}>{language.sendOrder}</Button>
+          <Button onClick={handleStatusAction}>{getActionLabel()}</Button>
         </footer>
       )}
     </Cart>
