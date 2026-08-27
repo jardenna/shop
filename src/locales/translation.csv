@@ -110,7 +110,7 @@ countInStock;Stock quantity;Lagerantal
 country;Country;Land
 create;Create;Opret
 createAccount;Create account;Opret konto
-created;created;Oprettet
+created;Created;Oprettet
 createdAt;Created at;Tilføjet den
 createNewAccount;Create new account;Opret en ny konto
 createNewAddress;Create new address;Opret ny adresse
@@ -152,6 +152,7 @@ discountRange;Discount must be between 0% and 90%;Rabat skal være mellem 0% og 
 discoverCollection;Discover Collection;Se kollektionen
 discoverLatestTrends;Discover latest trends;Udforsk de nyeste tendenser
 discoverLatestTrendsAltText;A man playfully surprises a woman by covering her eyes from behinds.;En mand overrasker legende en kvinde ved at dække hendes øjne bagfra.
+dismiss;Dismiss;Fortryd
 displayDensity;Display density;Visningstæthed
 displayOptions;Display options;Visningsindstillinger
 doNotBleach;Do not bleach;Må ikke bleges
@@ -334,7 +335,7 @@ onlyFourAddresses;You may have up to 4 addresses;Du kan højst have 4 adresser
 orange;Orange;Orange
 order;Order;Ordre
 orderDetails;Order details;Ordre detaljer
-orderNo;Order No.;Ordrenr.
+orderNo;Order Number;Ordrenummer
 backToOrderList;Back to order list;Tilbage til ordrelisten
 orderActions;Order actions;Ordrehandlinger
 orderAllreadyDelivered;Order is already delivered;Ordren er allerede leveret
