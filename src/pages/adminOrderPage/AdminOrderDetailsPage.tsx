@@ -12,6 +12,7 @@ import SkeletonOrderConfirmationPage from '../../components/skeleton/skeletonOrd
 import SummaryList from '../../features/cart/components/SummaryList';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
+  useCancelOrderMutation,
   useGetAdminOrderByIdQuery,
   useShipOrderMutation,
   useUpdateOrderMutation,
@@ -41,6 +42,7 @@ const AdminOrderDetailsPage = () => {
 
   const [updateOrder] = useUpdateOrderMutation();
   const [shipOrder] = useShipOrderMutation();
+  const [cancelOrder] = useCancelOrderMutation();
 
   const handleUpdateOrder = async (status: DeliveryStatus) => {
     try {
@@ -62,6 +64,20 @@ const AdminOrderDetailsPage = () => {
   const handleShipOrder = async () => {
     try {
       const result = await shipOrder(id ?? '').unwrap();
+
+      if (result.success) {
+        onAddMessagePopup({
+          message: result.message,
+        });
+      }
+    } catch (error) {
+      handleApiError(error, onAddMessagePopup);
+    }
+  };
+
+  const handleCancelOrder = async () => {
+    try {
+      const result = await cancelOrder(id ?? '').unwrap();
 
       if (result.success) {
         onAddMessagePopup({
@@ -188,6 +204,7 @@ const AdminOrderDetailsPage = () => {
               </Cart>
               <AdminOrderFooter
                 language={language}
+                onCancelOrder={handleCancelOrder}
                 isCanceled={orderStatus.status === 'cancelled'}
                 isDelivered={orderStatus.status === 'delivered'}
               />
