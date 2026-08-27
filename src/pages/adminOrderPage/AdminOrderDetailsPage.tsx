@@ -9,7 +9,7 @@ import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import NotFoundError from '../../components/NotFoundError';
 import SimpleTable from '../../components/simpleTable/SimpleTable';
 import SkeletonOrderConfirmationPage from '../../components/skeleton/skeletonOrderConfirmationPage/SkeletonOrderConfirmationPage';
-import SummaryList from '../../features/cart/components/SummaryList';
+import PaymentSummary from '../../features/cart/components/paymentSummery/PaymentSummary';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
   useCancelOrderMutation,
@@ -20,7 +20,6 @@ import {
 import AdminOrderFooter from '../../features/orders/components/AdminOrderFooter';
 import OrderAddressList from '../../features/orders/components/OrderAddressList';
 import OrderHeading from '../../features/orders/components/orderHeading/OrderHeading';
-import OrderList from '../../features/orders/components/orders/OrderList';
 import OrderPaymentInfo from '../../features/orders/components/orders/orderPaymentInfo/OrderPaymentInfo';
 import OrderStatusActions from '../../features/orders/components/orderStatusActions/OrderStatusActions';
 import { createOrderAddressList } from '../../features/orders/utils/createOrderAddressList';
@@ -125,96 +124,75 @@ const AdminOrderDetailsPage = () => {
       linkTo={AdminPath.AdminOrders}
     >
       {isLoading && <SkeletonOrderConfirmationPage />}
-      <div className="confirmation-content">
-        <ErrorBoundary
-          FallbackComponent={ErrorBoundaryFallback}
-          onReset={refetch}
-        >
-          <h2>
-            {language.orderNo}: # {id}
-          </h2>
-          <OrderStatusActions
-            onUpdateOrder={handleUpdateOrder}
-            onShipOrder={handleShipOrder}
-            orderStatus={orderStatus}
-          />
 
-          {order && (
-            <div className="confirmation-content">
-              <Cart className="confirmation-info">
-                <OrderHeading heading={language.orderHistory} />
-                <SimpleTable
-                  tableCaption={language.orderSummaryList}
-                  tableHeaderList={tableHeaderList}
-                  tableDataList={order.delivery.statusHistory}
-                  getRowKey={({ status, changedAt }) =>
-                    `${status}-${changedAt}`
-                  }
-                  renderCells={({
-                    status,
-                    changedAt,
-                    changedBy,
-                    actorType,
-                  }) => (
-                    <>
-                      <td>{language[status]}</td>
-                      <td>
-                        <DateDisplay
-                          date={changedAt}
-                          hour="2-digit"
-                          minute="2-digit"
-                        />
-                      </td>
-                      <td>
-                        {actorType === 'system'
-                          ? language.system
-                          : `${changedBy.username} (${language[actorType]})`}
-                      </td>
-                    </>
-                  )}
-                />
-              </Cart>
+      <ErrorBoundary
+        FallbackComponent={ErrorBoundaryFallback}
+        onReset={refetch}
+      >
+        <h2>
+          {language.orderNo}: # {id}
+        </h2>
+        <OrderStatusActions
+          onUpdateOrder={handleUpdateOrder}
+          onShipOrder={handleShipOrder}
+          orderStatus={orderStatus}
+        />
 
-              <Cart className="confirmation-summary">
-                <article className="summary-items">
-                  <OrderHeading heading={language.orderedItems} />
-                  <OrderList orders={order.orderItems} language={language} />
-                </article>
-
-                <div>
-                  <article className="summary-payment">
-                    <SummaryList
-                      language={language}
-                      summary={order.summary}
-                      promoDiscount={order.discount}
-                    />
-                  </article>
-                </div>
-              </Cart>
-              <Cart>
-                <OrderHeading heading={language.customerInformation} />
-                <article className="confirmation-info-container">
-                  <OrderPaymentInfo
-                    paymentMethod={paymentMethodLabels[order.payment.method]}
-                    label={language.paymentMethod}
-                  />
-
-                  <OrderAddressList addresses={addressList} refetch={refetch} />
-                </article>
-              </Cart>
-              <AdminOrderFooter
-                language={language}
-                onCancelOrder={handleCancelOrder}
-                id={order.id}
-                triggerModalDisabled={
-                  orderStatus.status !== 'created' &&
-                  orderStatus.status !== 'processing'
-                }
+        {order && (
+          <div className="confirmation-content">
+            <Cart>
+              <OrderHeading heading={language.orderHistory} />
+              <SimpleTable
+                tableCaption={language.orderSummaryList}
+                tableHeaderList={tableHeaderList}
+                tableDataList={order.delivery.statusHistory}
+                getRowKey={({ status, changedAt }) => `${status}-${changedAt}`}
+                renderCells={({ status, changedAt, changedBy, actorType }) => (
+                  <>
+                    <td>{language[status]}</td>
+                    <td>
+                      <DateDisplay
+                        date={changedAt}
+                        hour="2-digit"
+                        minute="2-digit"
+                      />
+                    </td>
+                    <td>
+                      {actorType === 'system'
+                        ? language.system
+                        : `${changedBy.username} (${language[actorType]})`}
+                    </td>
+                  </>
+                )}
               />
-            </div>
-          )}
-        </ErrorBoundary>
-      </div>
+            </Cart>
+
+            <Cart>
+              <PaymentSummary language={language} order={order} />
+            </Cart>
+            <Cart>
+              <OrderHeading heading={language.customerInformation} />
+              <article className="confirmation-info-container">
+                <OrderPaymentInfo
+                  paymentMethod={paymentMethodLabels[order.payment.method]}
+                  label={language.paymentMethod}
+                />
+
+                <OrderAddressList addresses={addressList} refetch={refetch} />
+              </article>
+            </Cart>
+            <AdminOrderFooter
+              language={language}
+              onCancelOrder={handleCancelOrder}
+              id={order.id}
+              triggerModalDisabled={
+                orderStatus.status !== 'created' &&
+                orderStatus.status !== 'processing'
+              }
+            />
+          </div>
+        )}
+      </ErrorBoundary>
     </AdminPageContainer>
   );
 };

@@ -1,4 +1,4 @@
-import ProductPrice from '../../shop/components/productPrice/ProductPrice';
+import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 
 interface SummaryItemProps {
   label: string;

@@ -18,7 +18,7 @@ import {
 import OrderList from '../../../orders/components/orders/OrderList';
 import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 import { useActiveCart } from '../../useActiveCart';
-import SummaryItem from '../SummaryItem';
+import SummaryItem from '../paymentSummery/SummaryItem';
 import './_mini-cart-popup.scss';
 
 const MiniCartPopup = () => {

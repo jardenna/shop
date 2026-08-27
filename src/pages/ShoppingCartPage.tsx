@@ -15,8 +15,8 @@ import {
 import CartInfo from '../features/cart/components/CartInfo';
 import CartList from '../features/cart/components/CartList';
 import PaymentMethodsList from '../features/cart/components/PaymentMethodsList';
+import SummaryList from '../features/cart/components/paymentSummery/SummaryList';
 import PromoCodeForm from '../features/cart/components/promoCodeForm/PromoCodeForm';
-import SummaryList from '../features/cart/components/SummaryList';
 import { useActiveCart } from '../features/cart/useActiveCart';
 import { deleteGuestCartItem, updateGuestCartQty } from '../features/cartSlice';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';

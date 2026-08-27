@@ -4,13 +4,11 @@ import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import NotFoundError from '../components/NotFoundError';
 import ProgressTracker from '../components/progressTracker/ProgressTracker';
 import SkeletonOrderConfirmationPage from '../components/skeleton/skeletonOrderConfirmationPage/SkeletonOrderConfirmationPage';
-import SummaryList from '../features/cart/components/SummaryList';
+import PaymentSummary from '../features/cart/components/paymentSummery/PaymentSummary';
 import { useLanguage } from '../features/language/useLanguage';
 import CancelledOrderInfo from '../features/orders/components/CancelledOrderInfo';
 import ConfirmationDetails from '../features/orders/components/confirmation/ConfirmationDetails';
 import OrderAddressList from '../features/orders/components/OrderAddressList';
-import OrderHeading from '../features/orders/components/orderHeading/OrderHeading';
-import OrderList from '../features/orders/components/orders/OrderList';
 import { useGetOrderByIdQuery } from '../features/orders/orderApiSlice';
 import { createOrderAddressList } from '../features/orders/utils/createOrderAddressList';
 import { orderTrackingList } from '../features/orders/utils/createTrackingList';
@@ -81,25 +79,8 @@ const OrderConfirmationPage = () => {
               />
 
               <ProgressTracker steps={orderTrackingList} status={status} />
-              <section className="confirmation-summary">
-                <article className="summary-items">
-                  <OrderHeading heading={language.orderedItems} />
+              <PaymentSummary language={language} order={order} />
 
-                  <OrderList orders={order.orderItems} language={language} />
-                </article>
-
-                <article>
-                  <OrderHeading heading={language.priceOverview} />
-                  <div className="summary-payment">
-                    <SummaryList
-                      language={language}
-                      summary={order.summary}
-                      promoDiscount={order.discount}
-                      cancelled={order.delivery.status === 'cancelled'}
-                    />
-                  </div>
-                </article>
-              </section>
               <section className="confirmation-info-container">
                 <ConfirmationDetails
                   createdAt={order.createdAt}

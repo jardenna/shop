@@ -1,4 +1,4 @@
-import SummaryItem from '../SummaryItem';
+import SummaryItem from '../paymentSummery/SummaryItem';
 
 interface MiniCartSummaryListProps {
   language: Record<string, string>;
