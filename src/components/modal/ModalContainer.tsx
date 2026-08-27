@@ -21,6 +21,7 @@ const ModalContainer = ({
   children,
   primaryActionBtn,
   secondaryActionBtn,
+  secondaryActionBtnLabel,
   modalSize,
   className,
   showCloseIcon,
@@ -63,6 +64,7 @@ const ModalContainer = ({
         modalHeaderText={modalHeaderText}
         primaryActionBtn={primaryActionBtn}
         secondaryActionBtn={secondaryActionBtn}
+        secondaryActionBtnLabel={secondaryActionBtnLabel}
         modalSize={modalSize}
         className={className}
         onClearAllValues={onClearAllValues}
