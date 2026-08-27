@@ -205,8 +205,11 @@ const AdminOrderDetailsPage = () => {
               <AdminOrderFooter
                 language={language}
                 onCancelOrder={handleCancelOrder}
-                isCanceled={orderStatus.status === 'cancelled'}
-                isDelivered={orderStatus.status === 'delivered'}
+                id={order.id}
+                triggerModalDisabled={
+                  orderStatus.status !== 'created' &&
+                  orderStatus.status !== 'processing'
+                }
               />
             </div>
           )}
