@@ -89,3 +89,11 @@
   margin: 0;
   min-height: 100%;
 }
+
+.container {
+  max-width: rem(1800px);
+  margin: 0 auto;
+  padding-inline: 20px;
+  width: 100%;
+  padding-bottom: 20px;
+}

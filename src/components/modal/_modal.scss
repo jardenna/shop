@@ -30,10 +30,6 @@
 
   &.modal-sm {
     max-width: rem(400px);
-
-    @include max-size($medium) {
-      min-width: 90%;
-    }
   }
 
   &.modal-md {

@@ -1,9 +1,6 @@
 import type { OmitChecked } from '../../../types/types';
 import { roleValues, statusValues } from '../apiConstants';
-import {
-  DeliveryStatusFilterValues,
-  PaymentStatusFilterValues,
-} from './orderApiTypes';
+import { DeliveryStatus, PaymentStatusFilterValues } from './orderApiTypes';
 import { PaymentMethods } from './paymentApiTypes';
 import type {
   BasePagination,
@@ -245,7 +242,7 @@ export interface AdminOrderParams extends SortParams {
 export interface OrderItems {
   createdAt: Date;
   customer: string;
-  deliveryStatus: DeliveryStatusFilterValues;
+  deliveryStatus: DeliveryStatus;
   id: string;
   orderId: string;
   paymentMethod: PaymentMethods;

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router';
 import { useLanguage } from '../features/language/useLanguage';
-import MyOrders from '../features/orders/components/orders/myOrders/MyOrders';
+import MyOrderList from '../features/orders/components/orders/myOrders/MyOrderList';
 import { useGetUserOrderQuery } from '../features/orders/orderApiSlice';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import { ShopPath } from '../layout/nav/enums';
@@ -35,7 +35,7 @@ const MyOrdersPage = () => {
       <p>{language.whenOrderViewAndTrack}</p>
 
       {myOrders && (
-        <MyOrders myOrders={myOrders} onViewDetails={handleViewDetails} />
+        <MyOrderList myOrders={myOrders} onViewDetails={handleViewDetails} />
       )}
     </MainPageContainer>
   );

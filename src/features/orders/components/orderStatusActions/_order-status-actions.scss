@@ -1,0 +1,15 @@
+@use '../../../../scss/globals' as *;
+
+.order-status-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.order-status-footer {
+  justify-content: center;
+
+  .btn {
+    max-width: rem(400px);
+  }
+}

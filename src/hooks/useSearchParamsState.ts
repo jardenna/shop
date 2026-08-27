@@ -8,12 +8,14 @@ const isArray = (value: unknown): value is string[] => Array.isArray(value);
 
 export const useSearchParamsState = <T extends SearchParamState>(
   defaults: T,
+  defaultItemsPerPage = 8,
 ) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const page = Number(searchParams.get(pageParamKey)) || 1;
 
-  const itemsPerPage = Number(searchParams.get(productsPerPageParamKey)) || 8;
+  const itemsPerPage =
+    Number(searchParams.get(productsPerPageParamKey)) || defaultItemsPerPage;
 
   const searchKey = searchParams.toString();
 

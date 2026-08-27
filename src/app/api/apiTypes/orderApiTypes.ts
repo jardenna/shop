@@ -38,7 +38,7 @@ interface ChangedBy {
   username: string;
 }
 
-type ActorType = 'customer' | 'employee';
+type ActorType = 'customer' | 'employee' | 'system';
 
 export interface StatusHistory {
   actorType: ActorType;

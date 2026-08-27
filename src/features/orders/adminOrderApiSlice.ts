@@ -34,6 +34,15 @@ export const adminOrderApiSlice = apiSlice.injectEndpoints({
         { type: TagTypesEnum.Order, id: orderId },
       ],
     }),
+    cancelOrder: builder.mutation<DefaultResponse, string>({
+      query: (orderId) => ({
+        url: `${adminOrdersUrl}${orderId}/cancel`,
+        method: 'PATCH',
+      }),
+      invalidatesTags: (_result, _error, orderId) => [
+        { type: TagTypesEnum.Order, id: orderId },
+      ],
+    }),
     shipOrder: builder.mutation<DefaultResponse, string>({
       query: (orderId) => ({
         url: `${adminOrdersUrl}${orderId}/send-order`,
@@ -51,4 +60,5 @@ export const {
   useGetAdminOrderByIdQuery,
   useShipOrderMutation,
   useUpdateOrderMutation,
+  useCancelOrderMutation,
 } = adminOrderApiSlice;

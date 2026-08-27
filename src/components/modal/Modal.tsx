@@ -47,6 +47,7 @@ export type ModalProps = {
   modalInfo?: ReactNode;
   modalSize?: SizeVariant;
   secondaryActionBtn?: SecondaryActionBtnProps | null;
+  secondaryActionBtnLabel?: string;
   showCloseIcon?: boolean;
   onBoundaryReset?: () => void;
   onClearAllValues?: () => void;
@@ -59,6 +60,7 @@ const Modal = ({
   children,
   primaryActionBtn,
   secondaryActionBtn,
+  secondaryActionBtnLabel,
   showCloseIcon,
   modalSize = SizeVariant.Sm,
   className = '',
@@ -111,7 +113,7 @@ const Modal = ({
 
   const secondaryBtn = resolveSecondaryBtn({
     action: secondaryActionBtn,
-    label: language.cancel,
+    label: secondaryActionBtnLabel ?? language.cancel,
     onCloseModal: closeModalAnimated,
   });
 

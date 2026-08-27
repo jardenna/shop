@@ -6,13 +6,13 @@ type AdminPageContainerProps = {
   children: ReactNode;
   heading: string;
   className?: string;
+  hideBreadCrumbs?: boolean;
   linkText?: string;
   linkTo?: string;
   scrollToRef?: RefObject<HTMLHeadingElement | null>;
   variant?: 'small' | 'medium' | 'large' | 'x-large';
 };
 
-// Accept display text, not translation keys.
 const AdminPageContainer = ({
   children,
   heading,
@@ -21,6 +21,7 @@ const AdminPageContainer = ({
   variant = 'large',
   scrollToRef,
   className = '',
+  hideBreadCrumbs,
 }: AdminPageContainerProps) => {
   const ariaLabelledby = useId();
 
@@ -35,6 +36,7 @@ const AdminPageContainer = ({
         linkText={linkText}
         linkTo={linkTo}
         ariaLabelledby={ariaLabelledby}
+        hideBreadCrumbs={hideBreadCrumbs}
       />
       <div className="page-cart" ref={scrollToRef}>
         {children}

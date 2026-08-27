@@ -110,7 +110,7 @@ countInStock;Stock quantity;Lagerantal
 country;Country;Land
 create;Create;Opret
 createAccount;Create account;Opret konto
-created;created;Oprettet
+created;Created;Oprettet
 createdAt;Created at;Tilføjet den
 createNewAccount;Create new account;Opret en ny konto
 createNewAddress;Create new address;Opret ny adresse
@@ -152,6 +152,7 @@ discountRange;Discount must be between 0% and 90%;Rabat skal være mellem 0% og 
 discoverCollection;Discover Collection;Se kollektionen
 discoverLatestTrends;Discover latest trends;Udforsk de nyeste tendenser
 discoverLatestTrendsAltText;A man playfully surprises a woman by covering her eyes from behinds.;En mand overrasker legende en kvinde ved at dække hendes øjne bagfra.
+dismiss;Dismiss;Fortryd
 displayDensity;Display density;Visningstæthed
 displayOptions;Display options;Visningsindstillinger
 doNotBleach;Do not bleach;Må ikke bleges
@@ -224,7 +225,7 @@ home;Home;Hjem
 image;Image;Foto
 imageRequired;Please insert image(s);Indsæt venligst billede(r)
 inactive;Inactive;Inaktiv
-inclVat;Incl. vat;Inkl. moms
+vat;Vat;Moms
 inStock;In stock;På lager
 invalidCartItemId;Invalid item ID.;Ugyldigt vareid.
 invalidColor;The selected color is no longer available;Den valgte farve er ikke længere tilgængelig
@@ -333,6 +334,9 @@ onlyAdminsAssignRole;Only admins can assign roles;Kun administratorer kan tildel
 onlyFourAddresses;You may have up to 4 addresses;Du kan højst have 4 adresser
 orange;Orange;Orange
 order;Order;Ordre
+orderDetails;Order details;Ordre detaljer
+orderNo;Order Number;Ordrenummer
+backToOrderList;Back to order list;Tilbage til ordrelisten
 orderActions;Order actions;Ordrehandlinger
 orderAllreadyDelivered;Order is already delivered;Ordren er allerede leveret
 orderAllreadyPaid;Order is already paid;Ordren er allerede betalt
@@ -538,6 +542,7 @@ success;Success;Succes
 summerSale;Summer sale;Sommerrabat
 sureToDelete;Do you want to delete;Vil du slette
 switchUser;Switch user;Skift bruger
+system;System;System
 temporarilyOutOfStock;This item is temporarily out of stock;Varen er midlertidigt udsolgt
 temporarilyOutOfStockText;Get notified when the item is back in stock;Få besked, når varen er tilbage på lager
 thereAre;There are;Der findes
@@ -580,6 +585,7 @@ viewCategory;View category;Se kategori
 viewInfo;View info;Se info
 viewMyOrders;View my orders;Se mine ordrer
 viewProduct;View product;Se produkt
+viewOrder;View order;Se ordre
 viewScheduledDate;View scheduled date;Se planlagt dato
 viewYourFavorites;View your favorites;Se dine favoritter
 waist;Waist;Livvidde

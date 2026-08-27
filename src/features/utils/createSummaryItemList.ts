@@ -9,7 +9,7 @@ interface SummaryItemProps {
   isDiscount?: boolean;
 }
 
-interface createSummaryItemListProps {
+interface CreateSummaryItemListProps {
   language: Record<string, string>;
   summary: Summary;
   cancelled?: boolean;
@@ -21,7 +21,7 @@ export const createSummaryItemList = ({
   discount,
   cancelled,
   language,
-}: createSummaryItemListProps): SummaryItemProps[] => {
+}: CreateSummaryItemListProps): SummaryItemProps[] => {
   const summaryItemList: SummaryItemProps[] = [
     {
       label: language.subtotal,
@@ -54,7 +54,7 @@ export const createSummaryItemList = ({
       price: summary.shippingPrice,
     },
     {
-      label: `${language.inclVat} (${vat}%)`,
+      label: `${language.vat} (${vat}%)`,
       price: summary.taxPrice,
     },
     {
