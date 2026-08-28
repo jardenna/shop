@@ -177,7 +177,6 @@ const AdminOrderDetailsPage = () => {
                   paymentMethod={paymentMethodLabels[order.payment.method]}
                   label={language.paymentMethod}
                 />
-
                 <OrderAddressList addresses={addressList} refetch={refetch} />
               </article>
             </Cart>
