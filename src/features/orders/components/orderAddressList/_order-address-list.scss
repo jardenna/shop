@@ -4,7 +4,12 @@
   display: flex;
   gap: 20px;
 
+  @include max-size($mini) {
+    flex-direction: column;
+  }
+
   .order-address-item {
+    flex: 1;
     background-color: $color-background;
     padding: 32px;
     border-radius: $border-radius;

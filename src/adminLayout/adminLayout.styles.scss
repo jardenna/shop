@@ -13,7 +13,7 @@
   align-items: center;
   width: 100%;
   z-index: 1;
-  padding-block: 20px;
+  padding: 20px;
 
   @include max-size($small) {
     padding: 20px;
