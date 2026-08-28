@@ -57,3 +57,16 @@
     font-size: $font-medium;
   }
 }
+
+.order-details {
+  display: flex;
+  gap: 20px;
+
+  @include max-size($small) {
+    flex-direction: column;
+  }
+
+  .order-details-info {
+    flex: 1;
+  }
+}
