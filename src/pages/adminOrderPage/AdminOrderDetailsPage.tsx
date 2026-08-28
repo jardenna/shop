@@ -19,7 +19,7 @@ import {
 import AdminOrderFooter from '../../features/orders/components/AdminOrderFooter';
 import OrderAddressList from '../../features/orders/components/orderAddressList/OrderAddressList';
 import OrderHeading from '../../features/orders/components/orderHeading/OrderHeading';
-import OrderPaymentInfo from '../../features/orders/components/orderPaymentInfo/OrderPaymentInfo';
+import OrderMethodInfo from '../../features/orders/components/orderMethodInfo/OrderMethodInfo';
 import OrderStatusActions from '../../features/orders/components/orderStatusActions/OrderStatusActions';
 import OrderSummary from '../../features/orders/components/OrderSummary';
 import { createOrderAddressList } from '../../features/orders/utils/createOrderAddressList';
@@ -173,7 +173,7 @@ const AdminOrderDetailsPage = () => {
             <Cart>
               <OrderHeading heading={language.customerInformation} />
               <article className="order-details-info-container">
-                <OrderPaymentInfo
+                <OrderMethodInfo
                   paymentMethod={paymentMethodLabels[order.payment.method]}
                   label={language.paymentMethod}
                 />
