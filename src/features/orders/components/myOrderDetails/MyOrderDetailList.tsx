@@ -3,35 +3,32 @@ import { PaymentMethods } from '../../../../app/api/apiTypes/paymentApiTypes';
 import { formatOrderNumber } from '../../../../utils/formatOrderNo';
 import { useLanguage } from '../../../language/useLanguage';
 import OrderHeading from '../orderHeading/OrderHeading';
-import ConfirmationDetailItem from './ConfirmationDetailItem';
+import MyOrderDetailItem from './MyOrderDetailItem';
 import './_confirmation-details.scss';
 
-interface ConfirmationDetailsProp {
+interface MyOrderDetailListProp {
   createdAt: Date;
   id: string;
   method: PaymentMethods;
 }
 
-const ConfirmationDetails = ({
+const MyOrderDetailList = ({
   createdAt,
   method,
   id,
-}: ConfirmationDetailsProp) => {
+}: MyOrderDetailListProp) => {
   const { language } = useLanguage();
 
   return (
     <article className="confirmation-info">
       <OrderHeading variant="underline" heading={language.orderSummary} />
       <ul className="confirmation-detail-list">
-        <ConfirmationDetailItem
+        <MyOrderDetailItem
           text={formatOrderNumber(id)}
           label={language.orderNumber}
         />
-        <ConfirmationDetailItem
-          date={createdAt}
-          label={language.orderCreated}
-        />
-        <ConfirmationDetailItem
+        <MyOrderDetailItem date={createdAt} label={language.orderCreated} />
+        <MyOrderDetailItem
           text={paymentMethodLabels[method]}
           label={language.paymentMethod}
         />
@@ -40,4 +37,4 @@ const ConfirmationDetails = ({
   );
 };
 
-export default ConfirmationDetails;
+export default MyOrderDetailList;

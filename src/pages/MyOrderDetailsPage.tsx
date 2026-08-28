@@ -7,7 +7,7 @@ import SkeletonOrderDetailsPage from '../components/skeleton/skeletonOrderDetail
 import PaymentSummary from '../features/cart/components/paymentSummery/PaymentSummary';
 import { useLanguage } from '../features/language/useLanguage';
 import CancelledOrderInfo from '../features/orders/components/CancelledOrderInfo';
-import ConfirmationDetails from '../features/orders/components/confirmation/ConfirmationDetails';
+import MyOrderDetailList from '../features/orders/components/myOrderDetails/MyOrderDetailList';
 import OrderAddressList from '../features/orders/components/OrderAddressList';
 import { useGetOrderByIdQuery } from '../features/orders/orderApiSlice';
 import { createOrderAddressList } from '../features/orders/utils/createOrderAddressList';
@@ -82,7 +82,7 @@ const MyOrderDetailsPage = () => {
               <PaymentSummary language={language} order={order} />
 
               <section className="confirmation-info-container">
-                <ConfirmationDetails
+                <MyOrderDetailList
                   createdAt={order.createdAt}
                   id={order.id}
                   method={order.payment.method}
