@@ -124,14 +124,13 @@ const AdminOrderDetailsPage = () => {
       linkTo={AdminPath.AdminOrders}
     >
       {isLoading && <SkeletonOrderDetailsPage />}
-      <SkeletonOrderDetailsPage />
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={refetch}
       >
-        <h2>
+        <p>
           {language.orderNo}: # {id}
-        </h2>
+        </p>
         <OrderStatusActions
           onUpdateOrder={handleUpdateOrder}
           onShipOrder={handleShipOrder}
@@ -139,7 +138,7 @@ const AdminOrderDetailsPage = () => {
         />
 
         {order && (
-          <div>
+          <>
             <Cart>
               <OrderHeading heading={language.orderHistory} />
               <SimpleTable
@@ -172,7 +171,7 @@ const AdminOrderDetailsPage = () => {
             </Cart>
             <Cart>
               <OrderHeading heading={language.customerInformation} />
-              <article className="order-details-info-container">
+              <article className="order-details">
                 <OrderMethodInfo
                   paymentMethod={paymentMethodLabels[order.payment.method]}
                   label={language.paymentMethod}
@@ -189,7 +188,7 @@ const AdminOrderDetailsPage = () => {
                 orderStatus.status !== 'processing'
               }
             />
-          </div>
+          </>
         )}
       </ErrorBoundary>
     </AdminPageContainer>

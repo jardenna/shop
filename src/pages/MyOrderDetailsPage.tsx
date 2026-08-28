@@ -80,7 +80,7 @@ const MyOrderDetailsPage = () => {
             <ProgressTracker steps={orderTrackingList} status={status} />
             <OrderSummary language={language} order={order} />
 
-            <section className="order-details-info-container">
+            <section className="order-details">
               <MyOrderDetailList
                 createdAt={order.createdAt}
                 id={order.id}
