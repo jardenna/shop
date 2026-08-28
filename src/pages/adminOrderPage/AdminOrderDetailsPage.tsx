@@ -17,7 +17,7 @@ import {
   useUpdateOrderMutation,
 } from '../../features/orders/adminOrderApiSlice';
 import AdminOrderFooter from '../../features/orders/components/AdminOrderFooter';
-import OrderAddressList from '../../features/orders/components/OrderAddressList';
+import OrderAddressList from '../../features/orders/components/orderAddressList/OrderAddressList';
 import OrderHeading from '../../features/orders/components/orderHeading/OrderHeading';
 import OrderPaymentInfo from '../../features/orders/components/orderPaymentInfo/OrderPaymentInfo';
 import OrderStatusActions from '../../features/orders/components/orderStatusActions/OrderStatusActions';

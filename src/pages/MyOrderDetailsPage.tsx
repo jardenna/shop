@@ -7,7 +7,7 @@ import SkeletonOrderDetailsPage from '../components/skeleton/skeletonOrderDetail
 import { useLanguage } from '../features/language/useLanguage';
 import CancelledOrderInfo from '../features/orders/components/CancelledOrderInfo';
 import MyOrderDetailList from '../features/orders/components/myOrderDetails/MyOrderDetailList';
-import OrderAddressList from '../features/orders/components/OrderAddressList';
+import OrderAddressList from '../features/orders/components/orderAddressList/OrderAddressList';
 import OrderSummary from '../features/orders/components/OrderSummary';
 import { useGetOrderByIdQuery } from '../features/orders/orderApiSlice';
 import { createOrderAddressList } from '../features/orders/utils/createOrderAddressList';

@@ -11,6 +11,10 @@
 }
 
 .address-list {
+  .address-title {
+    margin-top: 20px;
+  }
+
   @include grid-template-column(280px);
 
   gap: 12px;
@@ -36,17 +40,6 @@
   p {
     margin: 0;
   }
-}
-
-.address-label {
-  text-transform: uppercase;
-  font-size: $font-small;
-}
-
-.address-title {
-  font-family: $font-primary-bold;
-  font-size: $font-medium;
-  margin-top: 20px;
 }
 
 .address-footer {
@@ -76,4 +69,14 @@
       }
     }
   }
+}
+
+.address-label {
+  text-transform: uppercase;
+  font-size: $font-small;
+}
+
+.address-title {
+  font-family: $font-primary-bold;
+  font-size: $font-medium;
 }

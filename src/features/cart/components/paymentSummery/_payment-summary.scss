@@ -3,7 +3,7 @@
 .payment-summary {
   background-color: $color-background;
   padding: 20px;
-  border-radius: 4px;
+  border-radius: $border-radius;
 
   .summary-list {
     display: flex;
