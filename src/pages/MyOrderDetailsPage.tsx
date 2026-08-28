@@ -8,7 +8,7 @@ import { useLanguage } from '../features/language/useLanguage';
 import CancelledOrderInfo from '../features/orders/components/CancelledOrderInfo';
 import MyOrderDetailList from '../features/orders/components/myOrderDetails/MyOrderDetailList';
 import OrderAddressList from '../features/orders/components/OrderAddressList';
-import PaymentSummary from '../features/orders/components/PaymentSummary';
+import OrderSummary from '../features/orders/components/OrderSummary';
 import { useGetOrderByIdQuery } from '../features/orders/orderApiSlice';
 import { createOrderAddressList } from '../features/orders/utils/createOrderAddressList';
 import { orderTrackingList } from '../features/orders/utils/createTrackingList';
@@ -79,7 +79,7 @@ const MyOrderDetailsPage = () => {
               />
 
               <ProgressTracker steps={orderTrackingList} status={status} />
-              <PaymentSummary language={language} order={order} />
+              <OrderSummary language={language} order={order} />
 
               <section className="order-details-info-container">
                 <MyOrderDetailList

@@ -3,12 +3,12 @@ import PaymentSummaryList from '../../cart/components/paymentSummery/PaymentSumm
 import OrderHeading from './orderHeading/OrderHeading';
 import OrderList from './OrderList';
 
-interface PaymentSummaryProps {
+interface OrderSummaryProps {
   language: Record<string, string>;
   order: OrderResponse;
 }
 
-const PaymentSummary = ({ language, order }: PaymentSummaryProps) => (
+const OrderSummary = ({ language, order }: OrderSummaryProps) => (
   <section className="order-summary">
     <article>
       <OrderHeading heading={language.orderedItems} />
@@ -26,4 +26,4 @@ const PaymentSummary = ({ language, order }: PaymentSummaryProps) => (
   </section>
 );
 
-export default PaymentSummary;
+export default OrderSummary;

@@ -21,7 +21,7 @@ import OrderAddressList from '../../features/orders/components/OrderAddressList'
 import OrderHeading from '../../features/orders/components/orderHeading/OrderHeading';
 import OrderPaymentInfo from '../../features/orders/components/orderPaymentInfo/OrderPaymentInfo';
 import OrderStatusActions from '../../features/orders/components/orderStatusActions/OrderStatusActions';
-import PaymentSummary from '../../features/orders/components/PaymentSummary';
+import OrderSummary from '../../features/orders/components/OrderSummary';
 import { createOrderAddressList } from '../../features/orders/utils/createOrderAddressList';
 import { AdminPath } from '../../layout/nav/enums';
 import { handleApiError } from '../../utils/handleApiError';
@@ -168,7 +168,7 @@ const AdminOrderDetailsPage = () => {
             </Cart>
 
             <Cart>
-              <PaymentSummary language={language} order={order} />
+              <OrderSummary language={language} order={order} />
             </Cart>
             <Cart>
               <OrderHeading heading={language.customerInformation} />
