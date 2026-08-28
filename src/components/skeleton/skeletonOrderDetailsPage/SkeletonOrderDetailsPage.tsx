@@ -20,7 +20,7 @@ const SkeletonOrderDetailsPage = () => (
       <SkeletonPriceCol />
     </div>
 
-    <div className="confirmation-bottom-row">
+    <div className="order-bottom-row">
       <SkeletonOverviewGroup />
 
       <SkeletonAddressList />
