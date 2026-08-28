@@ -174,11 +174,7 @@ const SortTable = <T,>({
                               onClick={() => {
                                 onSort(col.key);
                               }}
-                              ariaLabel={
-                                sortField === col.name
-                                  ? `${language.sort} ${language[col.name]} ${ariaLabel}`
-                                  : `${language.sort} ${language[col.name]}`
-                              }
+                              ariaLabel={`${language.sort} ${ariaLabel}`}
                             >
                               {language[col.label]}
                               <span className="sort-icon" aria-hidden>

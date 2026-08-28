@@ -133,7 +133,7 @@ const TableFilterPopup = <T,>({
     <Popup
       placement="bottom-start"
       popupContent={getPopupContent}
-      ariaLabel={`${language.filter} ${id}`}
+      ariaLabel={language.filter}
       className={className}
     >
       <Icon iconName={IconName.Filter} />

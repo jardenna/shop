@@ -2,7 +2,7 @@ import { IconName } from '../../types/enums';
 import { AdminPath, LinkText, ShopPath } from './enums';
 import type { BaseNav, NavListProps } from './Nav';
 
-const navList: NavListProps[] = [
+export const navList: NavListProps[] = [
   {
     path: ShopPath.Collection,
     linkText: LinkText.Collection,
@@ -36,7 +36,7 @@ const navList: NavListProps[] = [
   },
 ];
 
-const adminNavList: BaseNav[] = [
+export const adminNavList: BaseNav[] = [
   {
     path: AdminPath.AdminProducts,
     linkText: LinkText.Products,
@@ -64,7 +64,7 @@ const adminNavList: BaseNav[] = [
   },
 ];
 
-const accountNavList: BaseNav[] = [
+export const accountNavList: BaseNav[] = [
   {
     path: '',
     linkText: LinkText.MyAccount,
@@ -75,5 +75,3 @@ const accountNavList: BaseNav[] = [
     linkText: LinkText.MyAddresses,
   },
 ];
-
-export { accountNavList, adminNavList, navList };
