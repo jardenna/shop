@@ -15,7 +15,7 @@ import {
   closeMiniCart,
   selectIsMiniCartOpen,
 } from '../../../miniCartPopupSlice';
-import OrderList from '../../../orders/components/orders/OrderList';
+import OrderList from '../../../orders/components/OrderList';
 import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 import { useActiveCart } from '../../useActiveCart';
 import PaymentSummaryItem from '../paymentSummery/PaymentSummaryItem';

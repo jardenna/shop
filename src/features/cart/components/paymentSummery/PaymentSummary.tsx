@@ -1,8 +1,8 @@
 import { OrderResponse } from '../../../../app/api/apiTypes/orderApiTypes';
 import OrderHeading from '../../../orders/components/orderHeading/OrderHeading';
-import OrderList from '../../../orders/components/orders/OrderList';
-import PaymentSummaryList from './PaymentSummaryList';
+import OrderList from '../../../orders/components/OrderList';
 import './paymentSummary.styles.scss';
+import PaymentSummaryList from './PaymentSummaryList';
 
 interface PaymentSummaryProps {
   language: Record<string, string>;

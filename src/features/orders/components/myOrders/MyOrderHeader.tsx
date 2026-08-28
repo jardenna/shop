@@ -1,7 +1,7 @@
-import { DeliveryStatus } from '../../../../../app/api/apiTypes/orderApiTypes';
-import Badge from '../../../../../components/badge/Badge';
-import { formatOrderNumber } from '../../../../../utils/formatOrderNo';
-import ProductPrice from '../../../../shop/components/productPrice/ProductPrice';
+import { DeliveryStatus } from '../../../../app/api/apiTypes/orderApiTypes';
+import Badge from '../../../../components/badge/Badge';
+import { formatOrderNumber } from '../../../../utils/formatOrderNo';
+import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 
 interface MyOrderHeaderProps {
   language: Record<string, string>;

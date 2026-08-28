@@ -20,7 +20,7 @@ import {
 import AdminOrderFooter from '../../features/orders/components/AdminOrderFooter';
 import OrderAddressList from '../../features/orders/components/OrderAddressList';
 import OrderHeading from '../../features/orders/components/orderHeading/OrderHeading';
-import OrderPaymentInfo from '../../features/orders/components/orders/orderPaymentInfo/OrderPaymentInfo';
+import OrderPaymentInfo from '../../features/orders/components/orderPaymentInfo/OrderPaymentInfo';
 import OrderStatusActions from '../../features/orders/components/orderStatusActions/OrderStatusActions';
 import { createOrderAddressList } from '../../features/orders/utils/createOrderAddressList';
 import { AdminPath } from '../../layout/nav/enums';
