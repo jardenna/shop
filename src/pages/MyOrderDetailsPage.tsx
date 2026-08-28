@@ -71,7 +71,7 @@ const MyOrderDetailsPage = () => {
         onReset={refetch}
       >
         {order && (
-          <>
+          <div className="my-orders-page">
             <CancelledOrderInfo
               language={language}
               status={order.delivery.status}
@@ -89,7 +89,7 @@ const MyOrderDetailsPage = () => {
 
               <OrderAddressList addresses={addressList} refetch={refetch} />
             </section>
-          </>
+          </div>
         )}
       </ErrorBoundary>
     </MainPageContainer>
