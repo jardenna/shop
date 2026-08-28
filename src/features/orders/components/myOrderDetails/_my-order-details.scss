@@ -3,11 +3,10 @@
 .order-details-content {
   display: flex;
   flex-direction: column;
-  gap: 40px;
 
   .order-details-info-container {
     display: flex;
-    gap: 32px;
+    gap: 20px;
 
     @include max-size($small) {
       flex-direction: column;
