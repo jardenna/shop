@@ -8,7 +8,7 @@ import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import NotFoundError from '../../components/NotFoundError';
 import SimpleTable from '../../components/simpleTable/SimpleTable';
-import SkeletonOrderDetailsPage from '../../components/skeleton/skeletonOrderDetailsPage/SkeletonOrderDetailsPage';
+import SkeletonAdminOrderDetailsPage from '../../components/skeleton/skeletonOrderDetailsPage/SkeletonAdminOrderDetailsPage';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
   useCancelOrderMutation,
@@ -123,7 +123,7 @@ const AdminOrderDetailsPage = () => {
       linkText={language.backToOrderList}
       linkTo={AdminPath.AdminOrders}
     >
-      {isLoading && <SkeletonOrderDetailsPage />}
+      {isLoading && <SkeletonAdminOrderDetailsPage />}
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={refetch}
