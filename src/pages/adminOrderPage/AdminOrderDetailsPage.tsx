@@ -9,7 +9,6 @@ import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import NotFoundError from '../../components/NotFoundError';
 import SimpleTable from '../../components/simpleTable/SimpleTable';
 import SkeletonOrderDetailsPage from '../../components/skeleton/skeletonOrderDetailsPage/SkeletonOrderDetailsPage';
-import PaymentSummary from '../../features/cart/components/paymentSummery/PaymentSummary';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
   useCancelOrderMutation,
@@ -22,6 +21,7 @@ import OrderAddressList from '../../features/orders/components/OrderAddressList'
 import OrderHeading from '../../features/orders/components/orderHeading/OrderHeading';
 import OrderPaymentInfo from '../../features/orders/components/orderPaymentInfo/OrderPaymentInfo';
 import OrderStatusActions from '../../features/orders/components/orderStatusActions/OrderStatusActions';
+import PaymentSummary from '../../features/orders/components/PaymentSummary';
 import { createOrderAddressList } from '../../features/orders/utils/createOrderAddressList';
 import { AdminPath } from '../../layout/nav/enums';
 import { handleApiError } from '../../utils/handleApiError';
