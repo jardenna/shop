@@ -15,7 +15,7 @@ import { orderTrackingList } from '../features/orders/utils/createTrackingList';
 import { ShopPath } from '../layout/nav/enums';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
-const OrderConfirmationPage = () => {
+const MyOrderDetailsPage = () => {
   const { id } = useParams();
   const { language } = useLanguage();
 
@@ -98,4 +98,4 @@ const OrderConfirmationPage = () => {
   );
 };
 
-export default OrderConfirmationPage;
+export default MyOrderDetailsPage;
