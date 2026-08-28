@@ -17,14 +17,12 @@ const PaymentSummary = ({ language, order }: PaymentSummaryProps) => (
     </article>
     <article>
       <OrderHeading heading={language.priceOverview} />
-      <div className="summary-payment">
-        <PaymentSummaryList
-          language={language}
-          summary={order.summary}
-          promoDiscount={order.discount}
-          cancelled={order.delivery.status === 'cancelled'}
-        />
-      </div>
+      <PaymentSummaryList
+        language={language}
+        summary={order.summary}
+        promoDiscount={order.discount}
+        cancelled={order.delivery.status === 'cancelled'}
+      />
     </article>
   </section>
 );

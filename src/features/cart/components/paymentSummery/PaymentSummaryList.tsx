@@ -23,20 +23,22 @@ const PaymentSummaryList = ({
   });
 
   return (
-    <section className="summary-list">
-      {summaryItemList.map(
-        ({ label, price, className, isDiscount, cancelled }) => (
-          <PaymentSummaryItem
-            key={label}
-            className={className}
-            isDiscount={isDiscount}
-            label={label}
-            price={price}
-            cancelled={cancelled}
-          />
-        ),
-      )}
-    </section>
+    <div className="summary-payment">
+      <div className="summary-list">
+        {summaryItemList.map(
+          ({ label, price, className, isDiscount, cancelled }) => (
+            <PaymentSummaryItem
+              key={label}
+              className={className}
+              isDiscount={isDiscount}
+              label={label}
+              price={price}
+              cancelled={cancelled}
+            />
+          ),
+        )}
+      </div>
+    </div>
   );
 };
 
