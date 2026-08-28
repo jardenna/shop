@@ -1,6 +1,7 @@
 import { Discount, Summary } from '../../../../app/api/apiTypes/sharedApiTypes';
 import { createSummaryItemList } from '../../../utils/createSummaryItemList';
 import PaymentSummaryItem from './PaymentSummaryItem';
+import './_payment-summary.scss';
 
 interface PaymentSummaryListProps {
   language: Record<string, string>;
