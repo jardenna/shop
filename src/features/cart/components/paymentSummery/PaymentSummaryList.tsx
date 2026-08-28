@@ -1,6 +1,5 @@
 import { Discount, Summary } from '../../../../app/api/apiTypes/sharedApiTypes';
 import { createSummaryItemList } from '../../../utils/createSummaryItemList';
-import './cartSummary.styles.scss';
 import PaymentSummaryItem from './PaymentSummaryItem';
 
 interface PaymentSummaryListProps {
