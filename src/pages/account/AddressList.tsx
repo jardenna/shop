@@ -29,7 +29,7 @@ const AddressList = ({
     FallbackComponent={ErrorBoundaryFallback}
     onReset={() => refetch}
   >
-    <ul className={`my-address-list ${className}`}>
+    <ul className={`address-list ${className}`}>
       {addresses.map((address) => (
         <li key={address.id} className="my-address-item">
           <AddressInfoListContent address={address} username={address.name} />

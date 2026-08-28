@@ -10,7 +10,7 @@
   }
 }
 
-.my-address-list {
+.address-list {
   @include grid-template-column(280px);
 
   gap: 12px;

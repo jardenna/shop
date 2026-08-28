@@ -13,7 +13,7 @@ const OrderAddressList = ({ addresses, refetch }: OrderAddressListProps) => (
     FallbackComponent={ErrorBoundaryFallback}
     onReset={() => refetch}
   >
-    <ul className="my-address-list">
+    <ul className="address-list">
       {addresses.map((address) => (
         <li key={address.id} className="my-address-item">
           <AddressInfoListContent address={address} />
