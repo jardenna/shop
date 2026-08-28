@@ -139,7 +139,7 @@ const AdminOrderDetailsPage = () => {
         />
 
         {order && (
-          <div className="confirmation-content">
+          <div className="order-details-content">
             <Cart>
               <OrderHeading heading={language.orderHistory} />
               <SimpleTable
@@ -172,7 +172,7 @@ const AdminOrderDetailsPage = () => {
             </Cart>
             <Cart>
               <OrderHeading heading={language.customerInformation} />
-              <article className="confirmation-info-container">
+              <article className="order-details-info-container">
                 <OrderPaymentInfo
                   paymentMethod={paymentMethodLabels[order.payment.method]}
                   label={language.paymentMethod}

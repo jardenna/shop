@@ -66,7 +66,7 @@ const MyOrderDetailsPage = () => {
       variant="large"
       heading={`${order && order.user.username}, ${language.orderConfirmationTitle}`}
     >
-      <div className="confirmation-content">
+      <div className="order-details-content">
         <ErrorBoundary
           FallbackComponent={ErrorBoundaryFallback}
           onReset={refetch}
@@ -81,7 +81,7 @@ const MyOrderDetailsPage = () => {
               <ProgressTracker steps={orderTrackingList} status={status} />
               <PaymentSummary language={language} order={order} />
 
-              <section className="confirmation-info-container">
+              <section className="order-details-info-container">
                 <MyOrderDetailList
                   createdAt={order.createdAt}
                   id={order.id}

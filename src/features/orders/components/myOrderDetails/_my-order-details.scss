@@ -1,11 +1,11 @@
 @use '../../../../scss/globals' as *;
 
-.confirmation-content {
+.order-details-content {
   display: flex;
   flex-direction: column;
   gap: 40px;
 
-  .confirmation-info-container {
+  .order-details-info-container {
     display: flex;
     gap: 32px;
 
@@ -13,7 +13,7 @@
       flex-direction: column;
     }
 
-    .confirmation-info {
+    .order-details-info {
       flex: 1;
     }
 

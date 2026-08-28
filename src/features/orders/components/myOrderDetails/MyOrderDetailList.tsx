@@ -20,7 +20,7 @@ const MyOrderDetailList = ({
   const { language } = useLanguage();
 
   return (
-    <article className="confirmation-info">
+    <article className="order-details-info">
       <OrderHeading variant="underline" heading={language.orderSummary} />
       <ul className="confirmation-detail-list">
         <MyOrderDetailItem
