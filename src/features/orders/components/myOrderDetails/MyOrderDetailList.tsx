@@ -4,7 +4,7 @@ import { formatOrderNumber } from '../../../../utils/formatOrderNo';
 import { useLanguage } from '../../../language/useLanguage';
 import OrderHeading from '../orderHeading/OrderHeading';
 import MyOrderDetailItem from './MyOrderDetailItem';
-import './_confirmation-details.scss';
+import './_my-order-details.scss';
 
 interface MyOrderDetailListProp {
   createdAt: Date;
