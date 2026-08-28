@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import NotFoundError from '../components/NotFoundError';
 import ProgressTracker from '../components/progressTracker/ProgressTracker';
-import SkeletonOrderConfirmationPage from '../components/skeleton/skeletonOrderConfirmationPage/SkeletonOrderConfirmationPage';
+import SkeletonOrderDetailsPage from '../components/skeleton/skeletonOrderDetailsPage/SkeletonOrderDetailsPage';
 import PaymentSummary from '../features/cart/components/paymentSummery/PaymentSummary';
 import { useLanguage } from '../features/language/useLanguage';
 import CancelledOrderInfo from '../features/orders/components/CancelledOrderInfo';
@@ -55,7 +55,7 @@ const OrderConfirmationPage = () => {
         variant="large"
         heading={language.orderConfirmationTitle}
       >
-        <SkeletonOrderConfirmationPage />
+        <SkeletonOrderDetailsPage />
       </MainPageContainer>
     );
   }

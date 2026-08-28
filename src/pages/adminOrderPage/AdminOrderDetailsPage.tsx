@@ -8,7 +8,7 @@ import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import NotFoundError from '../../components/NotFoundError';
 import SimpleTable from '../../components/simpleTable/SimpleTable';
-import SkeletonOrderConfirmationPage from '../../components/skeleton/skeletonOrderConfirmationPage/SkeletonOrderConfirmationPage';
+import SkeletonOrderDetailsPage from '../../components/skeleton/skeletonOrderDetailsPage/SkeletonOrderDetailsPage';
 import PaymentSummary from '../../features/cart/components/paymentSummery/PaymentSummary';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
@@ -123,7 +123,7 @@ const AdminOrderDetailsPage = () => {
       linkText={language.backToOrderList}
       linkTo={AdminPath.AdminOrders}
     >
-      {isLoading && <SkeletonOrderConfirmationPage />}
+      {isLoading && <SkeletonOrderDetailsPage />}
 
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
