@@ -1,0 +1,11 @@
+@use '../../../../scss/globals' as *;
+
+.order-summary {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(340px, 1fr);
+  gap: 40px;
+
+  @include max-size($small) {
+    grid-template-columns: 1fr;
+  }
+}

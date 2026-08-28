@@ -2,6 +2,7 @@ import { OrderResponse } from '../../../../app/api/apiTypes/orderApiTypes';
 import OrderHeading from '../../../orders/components/orderHeading/OrderHeading';
 import OrderList from '../../../orders/components/orders/OrderList';
 import SummaryList from './SummaryList';
+import './paymentSummary.styles.scss';
 
 interface PaymentSummaryProps {
   language: Record<string, string>;
@@ -9,12 +10,11 @@ interface PaymentSummaryProps {
 }
 
 const PaymentSummary = ({ language, order }: PaymentSummaryProps) => (
-  <section className="confirmation-summary">
+  <section className="order-summary">
     <article className="summary-items">
       <OrderHeading heading={language.orderedItems} />
       <OrderList orders={order.orderItems} language={language} />
     </article>
-
     <article>
       <OrderHeading heading={language.priceOverview} />
       <div className="summary-payment">
