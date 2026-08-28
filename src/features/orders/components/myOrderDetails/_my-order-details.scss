@@ -3,11 +3,10 @@
 .order-details-content {
   display: flex;
   flex-direction: column;
-  gap: 40px;
 
   .order-details-info-container {
     display: flex;
-    gap: 32px;
+    gap: 20px;
 
     @include max-size($small) {
       flex-direction: column;
@@ -15,35 +14,6 @@
 
     .order-details-info {
       flex: 1;
-    }
-
-    .address-list {
-      grid-template-columns: 1fr 1fr;
-      grid-auto-rows: auto;
-      gap: 20px;
-
-      @include max-size($mini) {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .address-item {
-      border: 0;
-      background-color: $color-background;
-      border-radius: 4px;
-      min-width: rem(300px);
-
-      @include max-size($small) {
-        min-width: 50%;
-      }
-    }
-
-    .address-content {
-      padding: 32px;
-    }
-
-    .address-title {
-      margin: 0;
     }
   }
 

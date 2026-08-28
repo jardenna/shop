@@ -1,0 +1,22 @@
+@use '../../../../scss/globals' as *;
+
+.order-address-list {
+  display: flex;
+  gap: 20px;
+
+  .order-address-item {
+    background-color: $color-background;
+    padding: 32px;
+    border-radius: $border-radius;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .order-address-content {
+    gap: 4px;
+    display: flex;
+    flex-direction: column;
+  }
+}
