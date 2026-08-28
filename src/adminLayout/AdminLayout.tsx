@@ -19,7 +19,7 @@ const AdminLayout = () => {
   const { language } = useLanguage();
   const [logout] = useLogoutMutation();
   const { currentUser, onReset } = useAuth();
-  const { isMobileSize } = useMediaQuery();
+  const { isMobileSize, isLargeTabletSize } = useMediaQuery();
 
   const dispatch = useAppDispatch();
 
@@ -50,10 +50,10 @@ const AdminLayout = () => {
         btnLabel={language.logout}
         onReset={() => onReset()}
         welcomeMessage={`${language.welcome} ${currentUser?.username}`}
-        isMobileSize={isMobileSize}
+        isMobileSize={isLargeTabletSize}
       />
       <div className="main">
-        {!isMobileSize && (
+        {!isLargeTabletSize && (
           <Aside
             isShown={isMenuCollapsed}
             onTogglePanel={handleCollapseMenu}
