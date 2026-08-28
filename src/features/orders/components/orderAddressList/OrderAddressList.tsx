@@ -3,6 +3,7 @@ import { Address } from '../../../../app/api/apiTypes/addressApiTypes';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
 import { useLanguage } from '../../../language/useLanguage';
 import './_order-address-list.scss';
+import OrderAddressItem from './OrderAddressItem';
 
 interface OrderAddressListProps {
   addresses: Address[];
@@ -19,17 +20,11 @@ const OrderAddressList = ({ addresses, refetch }: OrderAddressListProps) => {
     >
       <ul className="order-address-list">
         {addresses.map((address) => (
-          <li key={address.id} className="order-address-item">
-            <article className="order-address-content">
-              <h2 className="address-label">{language[address.label]}</h2>
-              <h3 className="address-title">{address.name}</h3>
-              <p>{address.street}</p>
-              <p>
-                {address.zipCode} {address.city}
-              </p>
-              <p>{address.country}</p>
-            </article>
-          </li>
+          <OrderAddressItem
+            address={address}
+            key={address.id}
+            language={language}
+          />
         ))}
       </ul>
     </ErrorBoundary>
