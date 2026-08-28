@@ -1,4 +1,4 @@
-import './_order-payment-method.scss';
+import './_order-payment-info.scss';
 
 interface OrderPaymentInfoProps {
   label: string;
