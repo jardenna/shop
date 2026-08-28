@@ -124,7 +124,7 @@ const AdminOrderDetailsPage = () => {
       linkTo={AdminPath.AdminOrders}
     >
       {isLoading && <SkeletonOrderDetailsPage />}
-
+      <SkeletonOrderDetailsPage />
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={refetch}
@@ -139,7 +139,7 @@ const AdminOrderDetailsPage = () => {
         />
 
         {order && (
-          <div className="order-details-content">
+          <div>
             <Cart>
               <OrderHeading heading={language.orderHistory} />
               <SimpleTable

@@ -22,7 +22,7 @@ const MyOrderDetailList = ({
   return (
     <article className="order-details-info">
       <OrderHeading variant="underline" heading={language.orderSummary} />
-      <ul className="order-detail-list">
+      <ul className="my-order-detail-list">
         <MyOrderDetailItem
           text={formatOrderNumber(id)}
           label={language.orderNumber}

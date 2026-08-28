@@ -66,34 +66,32 @@ const MyOrderDetailsPage = () => {
       variant="large"
       heading={`${order && order.user.username}, ${language.orderConfirmationTitle}`}
     >
-      <div className="order-details-content">
-        <ErrorBoundary
-          FallbackComponent={ErrorBoundaryFallback}
-          onReset={refetch}
-        >
-          {order && (
-            <>
-              <CancelledOrderInfo
-                language={language}
-                status={order.delivery.status}
+      <ErrorBoundary
+        FallbackComponent={ErrorBoundaryFallback}
+        onReset={refetch}
+      >
+        {order && (
+          <>
+            <CancelledOrderInfo
+              language={language}
+              status={order.delivery.status}
+            />
+
+            <ProgressTracker steps={orderTrackingList} status={status} />
+            <OrderSummary language={language} order={order} />
+
+            <section className="order-details-info-container">
+              <MyOrderDetailList
+                createdAt={order.createdAt}
+                id={order.id}
+                method={order.payment.method}
               />
 
-              <ProgressTracker steps={orderTrackingList} status={status} />
-              <OrderSummary language={language} order={order} />
-
-              <section className="order-details-info-container">
-                <MyOrderDetailList
-                  createdAt={order.createdAt}
-                  id={order.id}
-                  method={order.payment.method}
-                />
-
-                <OrderAddressList addresses={addressList} refetch={refetch} />
-              </section>
-            </>
-          )}
-        </ErrorBoundary>
-      </div>
+              <OrderAddressList addresses={addressList} refetch={refetch} />
+            </section>
+          </>
+        )}
+      </ErrorBoundary>
     </MainPageContainer>
   );
 };
