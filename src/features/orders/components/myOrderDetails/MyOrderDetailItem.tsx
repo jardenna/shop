@@ -7,7 +7,7 @@ interface MyOrderDetailItemProps {
 }
 
 const MyOrderDetailItem = ({ label, text, date }: MyOrderDetailItemProps) => (
-  <li className="confirmation-detail-item">
+  <li className="order-detail-item">
     <p className="text-uppercase">{label}</p>
     {date ? <DateDisplay date={date} /> : <p>{text}</p>}
   </li>
