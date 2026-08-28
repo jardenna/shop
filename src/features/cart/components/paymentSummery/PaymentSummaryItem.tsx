@@ -1,6 +1,6 @@
 import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 
-interface SummaryItemProps {
+interface PaymentSummaryItemProps {
   label: string;
   price: number;
   cancelled?: boolean;
@@ -8,13 +8,13 @@ interface SummaryItemProps {
   isDiscount?: boolean;
 }
 
-const SummaryItem = ({
+const PaymentSummaryItem = ({
   className = '',
   label,
   price,
   isDiscount,
   cancelled,
-}: SummaryItemProps) => (
+}: PaymentSummaryItemProps) => (
   <div className={`summary-item  ${isDiscount ? 'discount' : ''} ${className}`}>
     <span>{label}</span>
     <span className="summary-info">
@@ -27,4 +27,4 @@ const SummaryItem = ({
   </div>
 );
 
-export default SummaryItem;
+export default PaymentSummaryItem;

@@ -1,7 +1,7 @@
 import { Discount, Summary } from '../../../../app/api/apiTypes/sharedApiTypes';
 import { createSummaryItemList } from '../../../utils/createSummaryItemList';
 import './cartSummary.styles.scss';
-import SummaryItem from './SummaryItem';
+import PaymentSummaryItem from './PaymentSummaryItem';
 
 interface PaymentSummaryListProps {
   language: Record<string, string>;
@@ -27,7 +27,7 @@ const PaymentSummaryList = ({
     <section className="summary-list">
       {summaryItemList.map(
         ({ label, price, className, isDiscount, cancelled }) => (
-          <SummaryItem
+          <PaymentSummaryItem
             key={label}
             className={className}
             isDiscount={isDiscount}

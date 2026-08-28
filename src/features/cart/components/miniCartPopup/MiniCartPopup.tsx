@@ -18,7 +18,7 @@ import {
 import OrderList from '../../../orders/components/orders/OrderList';
 import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 import { useActiveCart } from '../../useActiveCart';
-import SummaryItem from '../paymentSummery/SummaryItem';
+import PaymentSummaryItem from '../paymentSummery/PaymentSummaryItem';
 import './_mini-cart-popup.scss';
 
 const MiniCartPopup = () => {
@@ -82,7 +82,7 @@ const MiniCartPopup = () => {
 
               <div className="mini-cart-summary-list">
                 {summary.promoDiscount > 0 && (
-                  <SummaryItem
+                  <PaymentSummaryItem
                     label={
                       discount.code === ''
                         ? language.employeeDiscount
@@ -92,11 +92,11 @@ const MiniCartPopup = () => {
                     isDiscount
                   />
                 )}
-                <SummaryItem
+                <PaymentSummaryItem
                   label={language.estimatedShipping}
                   price={summary.shippingPrice}
                 />
-                <SummaryItem
+                <PaymentSummaryItem
                   label={language.orderTotalInclVat}
                   price={summary.totalPrice}
                 />
