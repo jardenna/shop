@@ -3,19 +3,19 @@ import { createSummaryItemList } from '../../../utils/createSummaryItemList';
 import './cartSummary.styles.scss';
 import SummaryItem from './SummaryItem';
 
-interface SummaryListProps {
+interface PaymentSummaryListProps {
   language: Record<string, string>;
   promoDiscount: Discount;
   summary: Summary;
   cancelled?: boolean;
 }
 
-const SummaryList = ({
+const PaymentSummaryList = ({
   summary,
   language,
   promoDiscount,
   cancelled,
-}: SummaryListProps) => {
+}: PaymentSummaryListProps) => {
   const summaryItemList = createSummaryItemList({
     summary,
     discount: promoDiscount,
@@ -41,4 +41,4 @@ const SummaryList = ({
   );
 };
 
-export default SummaryList;
+export default PaymentSummaryList;
