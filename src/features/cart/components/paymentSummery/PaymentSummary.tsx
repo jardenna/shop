@@ -11,7 +11,7 @@ interface PaymentSummaryProps {
 
 const PaymentSummary = ({ language, order }: PaymentSummaryProps) => (
   <section className="order-summary">
-    <article className="summary-items">
+    <article>
       <OrderHeading heading={language.orderedItems} />
       <OrderList orders={order.orderItems} language={language} />
     </article>
