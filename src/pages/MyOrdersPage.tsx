@@ -1,9 +1,12 @@
 import { useNavigate } from 'react-router';
 import { useLanguage } from '../features/language/useLanguage';
-import MyOrderList from '../features/orders/components/myOrders/MyOrderList';
+import MyOrderFooter from '../features/orders/components/myOrderDetails/MyOrderFooter';
+import MyOrderHeader from '../features/orders/components/myOrderDetails/MyOrderHeader';
+import OrderList from '../features/orders/components/OrderList';
 import { useGetUserOrderQuery } from '../features/orders/orderApiSlice';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import { ShopPath } from '../layout/nav/enums';
+import './MyOrdersPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const MyOrdersPage = () => {
@@ -35,7 +38,28 @@ const MyOrdersPage = () => {
       <p>{language.whenOrderViewAndTrack}</p>
 
       {myOrders && (
-        <MyOrderList myOrders={myOrders} onViewDetails={handleViewDetails} />
+        <section className="orders">
+          {myOrders.map((myOrder) => (
+            <article key={myOrder.id} className="my-order-cart">
+              <MyOrderHeader
+                language={language}
+                totalPrice={myOrder.summary.totalPrice}
+                orderId={myOrder.id}
+                orderStatus={myOrder.delivery.status}
+              />
+
+              <OrderList orders={myOrder.orderItems} language={language} />
+              <MyOrderFooter
+                language={language}
+                orderStatus={myOrder.delivery.status}
+                estimatedDelivery={myOrder.createdAt}
+                onViewDetails={() => {
+                  handleViewDetails(myOrder.id);
+                }}
+              />
+            </article>
+          ))}
+        </section>
       )}
     </MainPageContainer>
   );
