@@ -13,9 +13,9 @@ const AddressInfoListContent = ({
   const { language } = useLanguage();
 
   return (
-    <article className="my-address-content">
-      <h2 className="my-address-label">{language[address.label]}</h2>
-      <h3 className="my-address-title">{address.name || username}</h3>
+    <article className="address-content">
+      <h2 className="address-label">{language[address.label]}</h2>
+      <h3 className="address-title">{address.name || username}</h3>
       <p>{address.street}</p>
       <p>
         {address.zipCode} {address.city}

@@ -31,10 +31,10 @@ const AddressList = ({
   >
     <ul className={`address-list ${className}`}>
       {addresses.map((address) => (
-        <li key={address.id} className="my-address-item">
+        <li key={address.id} className="address-item">
           <AddressInfoListContent address={address} username={address.name} />
 
-          <div className="my-address-footer">
+          <div className="address-footer">
             <DeleteAddressModal id={address.id} modalMessage={address.street} />
             <AddressFormModal
               id={address.id}
@@ -47,7 +47,7 @@ const AddressList = ({
           </div>
         </li>
       ))}
-      <li className="my-address-item add-address">
+      <li className="address-item add-address">
         <AddressFormModal
           id={null}
           username={username}

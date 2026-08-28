@@ -15,7 +15,7 @@ const OrderAddressList = ({ addresses, refetch }: OrderAddressListProps) => (
   >
     <ul className="address-list">
       {addresses.map((address) => (
-        <li key={address.id} className="my-address-item">
+        <li key={address.id} className="address-item">
           <AddressInfoListContent address={address} />
         </li>
       ))}
