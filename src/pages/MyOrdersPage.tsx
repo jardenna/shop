@@ -38,9 +38,9 @@ const MyOrdersPage = () => {
       <p>{language.whenOrderViewAndTrack}</p>
 
       {myOrders && (
-        <section className="orders">
+        <section className="my-orders-page">
           {myOrders.map((myOrder) => (
-            <article key={myOrder.id} className="my-order-cart">
+            <article key={myOrder.id} className="my-orders-page-cart">
               <MyOrderHeader
                 language={language}
                 totalPrice={myOrder.summary.totalPrice}
