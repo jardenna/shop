@@ -15,9 +15,11 @@ const PaymentSummaryItem = ({
   isDiscount,
   cancelled,
 }: PaymentSummaryItemProps) => (
-  <div className={`summary-item  ${isDiscount ? 'discount' : ''} ${className}`}>
+  <div
+    className={`payment-summary-item   ${isDiscount ? 'discount' : ''} ${className}`}
+  >
     <span>{label}</span>
-    <span className="summary-info">
+    <span className="payment-summary-info">
       <ProductPrice
         price={price}
         isNegativeNumber={isDiscount}

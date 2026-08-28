@@ -5,7 +5,7 @@
   grid-template-columns: minmax(0, 2fr) minmax(340px, 1fr);
   gap: 40px;
 
-  .summary-payment {
+  .payment-summary {
     background-color: $color-background;
     padding: 20px;
     border-radius: 4px;
@@ -22,7 +22,7 @@
   gap: 20px;
 }
 
-.summary-item {
+.payment-summary-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,12 +41,12 @@
   }
 
   &.summary-discount {
-    .summary-info {
+    .payment-summary-info {
       color: $color-danger;
     }
   }
 }
 
-.summary-info {
+.payment-summary-info {
   font-family: $font-primary-bold;
 }
