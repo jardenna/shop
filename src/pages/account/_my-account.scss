@@ -10,14 +10,14 @@
   }
 }
 
-.my-address-list {
+.address-list {
   @include grid-template-column(280px);
 
   gap: 12px;
   grid-auto-rows: rem(248px) auto;
 }
 
-.my-address-item {
+.address-item {
   border: 1px solid $color-gray-40;
   display: grid;
   grid-row: span 2;
@@ -27,7 +27,7 @@
   }
 }
 
-.my-address-content {
+.address-content {
   padding: 52px;
   display: grid;
   grid-row: span 3;
@@ -38,18 +38,18 @@
   }
 }
 
-.my-address-label {
+.address-label {
   text-transform: uppercase;
   font-size: $font-small;
 }
 
-.my-address-title {
+.address-title {
   font-family: $font-primary-bold;
   font-size: $font-medium;
   margin-top: 20px;
 }
 
-.my-address-footer {
+.address-footer {
   display: flex;
   align-items: flex-end;
   gap: 32px;

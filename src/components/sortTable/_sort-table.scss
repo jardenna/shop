@@ -23,12 +23,11 @@
   width: 100%;
   margin-bottom: 12px;
   border: $border;
-  height: rem(584px);
+  height: rem(528px);
   overflow: auto;
 
-  @include max-size($mini) {
-    height: fit-content;
-    overflow: auto hidden;
+  @include max-size($small) {
+    height: rem(492px);
   }
 
   .padding-20 {

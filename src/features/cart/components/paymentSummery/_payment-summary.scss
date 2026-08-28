@@ -1,12 +1,18 @@
-@use '../../../scss/globals' as *;
+@use '../../../../scss/globals' as *;
 
-.summary-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.payment-summary {
+  background-color: $color-background;
+  padding: 20px;
+  border-radius: 4px;
+
+  .summary-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 }
 
-.summary-item {
+.payment-summary-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -24,13 +30,13 @@
     font-size: rem(20px);
   }
 
+  .payment-summary-info {
+    font-family: $font-primary-bold;
+  }
+
   &.summary-discount {
-    .summary-info {
+    .payment-summary-info {
       color: $color-danger;
     }
   }
-}
-
-.summary-info {
-  font-family: $font-primary-bold;
 }

@@ -7,8 +7,8 @@ import SkeletonOverviewGroup from './SkeletonOverviewGroup';
 import SkeletonPriceCol from './SkeletonPriceCol';
 import SkeletonSummeryItem from './SkeletonSummeryItem';
 
-const SkeletonOrderConfirmationPage = () => (
-  <div className="confirmation-content skeleton-order-page">
+const SkeletonOrderDetailsPage = () => (
+  <div className="order-details-content skeleton-order-page">
     <span className="skeleton-sub-header">
       <Skeleton className="skeleton-sub-header-title" />
       <SkeletonParagraph count={3} />
@@ -20,7 +20,7 @@ const SkeletonOrderConfirmationPage = () => (
       <SkeletonPriceCol />
     </div>
 
-    <div className="confirmation-bottom-row">
+    <div className="order-bottom-row">
       <SkeletonOverviewGroup />
 
       <SkeletonAddressList />
@@ -28,4 +28,4 @@ const SkeletonOrderConfirmationPage = () => (
   </div>
 );
 
-export default SkeletonOrderConfirmationPage;
+export default SkeletonOrderDetailsPage;

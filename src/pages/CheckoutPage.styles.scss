@@ -43,8 +43,8 @@
     }
   }
 
-  .my-address-list {
-    .my-address-title {
+  .address-list {
+    .address-title {
       margin-top: 4px;
     }
 
@@ -52,7 +52,7 @@
       display: flex;
       flex-direction: column;
 
-      .my-address-item {
+      .address-item {
         border: 0;
         display: flex;
         justify-content: space-between;
@@ -64,13 +64,13 @@
         }
       }
 
-      .my-address-content {
+      .address-content {
         display: flex;
         flex-direction: column;
         padding: 0;
       }
 
-      .my-address-footer {
+      .address-footer {
         padding: 0;
       }
     }

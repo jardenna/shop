@@ -1,21 +1,11 @@
 @use '../../../../scss/globals' as *;
 
-.confirmation-content {
+.order-details-content {
   display: flex;
   flex-direction: column;
   gap: 40px;
 
-  .confirmation-summary {
-    display: grid;
-    grid-template-columns: minmax(0, 2fr) minmax(340px, 1fr);
-    gap: 40px;
-
-    @include max-size($small) {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .confirmation-info-container {
+  .order-details-info-container {
     display: flex;
     gap: 32px;
 
@@ -23,11 +13,11 @@
       flex-direction: column;
     }
 
-    .confirmation-info {
+    .order-details-info {
       flex: 1;
     }
 
-    .my-address-list {
+    .address-list {
       grid-template-columns: 1fr 1fr;
       grid-auto-rows: auto;
       gap: 20px;
@@ -37,9 +27,9 @@
       }
     }
 
-    .my-address-item {
+    .address-item {
       border: 0;
-      background-color: #f9f9f9;
+      background-color: $color-background;
       border-radius: 4px;
       min-width: rem(300px);
 
@@ -48,16 +38,16 @@
       }
     }
 
-    .my-address-content {
+    .address-content {
       padding: 32px;
     }
 
-    .my-address-title {
+    .address-title {
       margin: 0;
     }
   }
 
-  .confirmation-detail-list {
+  .order-detail-list {
     display: flex;
     gap: 20px;
 
@@ -74,7 +64,7 @@
     }
   }
 
-  .confirmation-detail-item {
+  .order-detail-item {
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -82,12 +72,6 @@
     @include max-size($small) {
       flex-direction: row;
     }
-  }
-
-  .summary-payment {
-    background-color: $color-background;
-    padding: 20px;
-    border-radius: 4px;
   }
 
   .summary-items {

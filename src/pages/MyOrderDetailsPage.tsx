@@ -3,21 +3,19 @@ import { useParams } from 'react-router';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import NotFoundError from '../components/NotFoundError';
 import ProgressTracker from '../components/progressTracker/ProgressTracker';
-import SkeletonOrderConfirmationPage from '../components/skeleton/skeletonOrderConfirmationPage/SkeletonOrderConfirmationPage';
-import SummaryList from '../features/cart/components/SummaryList';
+import SkeletonOrderDetailsPage from '../components/skeleton/skeletonOrderDetailsPage/SkeletonOrderDetailsPage';
 import { useLanguage } from '../features/language/useLanguage';
 import CancelledOrderInfo from '../features/orders/components/CancelledOrderInfo';
-import ConfirmationDetails from '../features/orders/components/confirmation/ConfirmationDetails';
+import MyOrderDetailList from '../features/orders/components/myOrderDetails/MyOrderDetailList';
 import OrderAddressList from '../features/orders/components/OrderAddressList';
-import OrderHeading from '../features/orders/components/orderHeading/OrderHeading';
-import OrderList from '../features/orders/components/orders/OrderList';
+import OrderSummary from '../features/orders/components/OrderSummary';
 import { useGetOrderByIdQuery } from '../features/orders/orderApiSlice';
 import { createOrderAddressList } from '../features/orders/utils/createOrderAddressList';
 import { orderTrackingList } from '../features/orders/utils/createTrackingList';
 import { ShopPath } from '../layout/nav/enums';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
-const OrderConfirmationPage = () => {
+const MyOrderDetailsPage = () => {
   const { id } = useParams();
   const { language } = useLanguage();
 
@@ -57,7 +55,7 @@ const OrderConfirmationPage = () => {
         variant="large"
         heading={language.orderConfirmationTitle}
       >
-        <SkeletonOrderConfirmationPage />
+        <SkeletonOrderDetailsPage />
       </MainPageContainer>
     );
   }
@@ -68,7 +66,7 @@ const OrderConfirmationPage = () => {
       variant="large"
       heading={`${order && order.user.username}, ${language.orderConfirmationTitle}`}
     >
-      <div className="confirmation-content">
+      <div className="order-details-content">
         <ErrorBoundary
           FallbackComponent={ErrorBoundaryFallback}
           onReset={refetch}
@@ -81,27 +79,10 @@ const OrderConfirmationPage = () => {
               />
 
               <ProgressTracker steps={orderTrackingList} status={status} />
-              <section className="confirmation-summary">
-                <article className="summary-items">
-                  <OrderHeading heading={language.orderedItems} />
+              <OrderSummary language={language} order={order} />
 
-                  <OrderList orders={order.orderItems} language={language} />
-                </article>
-
-                <article>
-                  <OrderHeading heading={language.priceOverview} />
-                  <div className="summary-payment">
-                    <SummaryList
-                      language={language}
-                      summary={order.summary}
-                      promoDiscount={order.discount}
-                      cancelled={order.delivery.status === 'cancelled'}
-                    />
-                  </div>
-                </article>
-              </section>
-              <section className="confirmation-info-container">
-                <ConfirmationDetails
+              <section className="order-details-info-container">
+                <MyOrderDetailList
                   createdAt={order.createdAt}
                   id={order.id}
                   method={order.payment.method}
@@ -117,4 +98,4 @@ const OrderConfirmationPage = () => {
   );
 };
 
-export default OrderConfirmationPage;
+export default MyOrderDetailsPage;

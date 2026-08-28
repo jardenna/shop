@@ -1,4 +1,4 @@
-import SummaryItem from '../SummaryItem';
+import PaymentSummaryItem from '../paymentSummery/PaymentSummaryItem';
 
 interface MiniCartSummaryListProps {
   language: Record<string, string>;
@@ -14,13 +14,16 @@ const MiniCartSummaryList = ({
   shippingPrice,
 }: MiniCartSummaryListProps) => (
   <div className="mini-cart-summary-list">
-    <SummaryItem
+    <PaymentSummaryItem
       label={language.employeeDiscount}
       price={promoDiscount}
       isDiscount
     />
-    <SummaryItem label={language.estimatedShipping} price={shippingPrice} />
-    <SummaryItem label={language.orderTotalInclVat} price={totalPrice} />
+    <PaymentSummaryItem
+      label={language.estimatedShipping}
+      price={shippingPrice}
+    />
+    <PaymentSummaryItem label={language.orderTotalInclVat} price={totalPrice} />
   </div>
 );
 

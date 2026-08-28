@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import SkeletonCheckoutPage from '../components/skeleton/checkoutpage/SkeletonCheckoutPage';
 import { useAuth } from '../features/auth/hooks/useAuth';
-import SummaryList from '../features/cart/components/SummaryList';
+import PaymentSummaryList from '../features/cart/components/paymentSummery/PaymentSummaryList';
 import { useGetCheckoutQuery } from '../features/checkout/checkoutApiSlice';
 import Payment from '../features/checkout/components/Payment';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
@@ -92,7 +92,7 @@ const CheckoutPage = () => {
                 language={language}
                 deleteCartItem={deleteCartItem}
               />
-              <SummaryList
+              <PaymentSummaryList
                 summary={checkout.summary}
                 language={language}
                 promoDiscount={checkout.discount}

@@ -1,6 +1,6 @@
-import { DeliveryStatus } from '../../../../../app/api/apiTypes/orderApiTypes';
-import Button from '../../../../../components/Button';
-import DateDisplay from '../../../../../components/datePicker/DateDisplay';
+import { DeliveryStatus } from '../../../../app/api/apiTypes/orderApiTypes';
+import Button from '../../../../components/Button';
+import DateDisplay from '../../../../components/datePicker/DateDisplay';
 
 interface MyOrderFooterProps {
   estimatedDelivery: Date;

@@ -257,25 +257,25 @@ const CollectionPage = () => {
                 productView={productView}
                 showSizeOverlay={productView !== 'list'}
               />
+              {itemCount > 0 && (
+                <Pagination
+                  refetch={refetch}
+                  totalBtns={totalBtns}
+                  isError={isError}
+                  page={page}
+                  onPagination={handlePagination}
+                  onSelectCount={handleSelectCount}
+                  totalCount={itemCount}
+                  paginationMobileText={paginationMobileText}
+                  defaultValue={{
+                    value: itemsPerPage.toString(),
+                    label: itemsPerPage.toString(),
+                  }}
+                />
+              )}
             </section>
           </ErrorBoundary>
         </div>
-        {itemCount > 0 && (
-          <Pagination
-            refetch={refetch}
-            totalBtns={totalBtns}
-            isError={isError}
-            page={page}
-            onPagination={handlePagination}
-            onSelectCount={handleSelectCount}
-            totalCount={itemCount}
-            paginationMobileText={paginationMobileText}
-            defaultValue={{
-              value: itemsPerPage.toString(),
-              label: itemsPerPage.toString(),
-            }}
-          />
-        )}
       </section>
     </>
   );

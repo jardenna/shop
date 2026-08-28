@@ -16,11 +16,11 @@ const OrderSummaryItem = ({
   language,
   cartItem,
 }: OrderSummaryItemProps) => (
-  <article className="order-summary-item">
+  <article className="order-payment-summary-item ">
     <Img src={cartItem.image} alt="" className="summary-img" />
     <div>
       <div className="flex">
-        <h3 className="summary-item-title">{cartItem.productName}</h3>
+        <h3 className="payment-summary-item -title">{cartItem.productName}</h3>
         <DeleteItem
           ariaLabel={ariaLabel}
           onDeleteItem={onDeleteItem}
