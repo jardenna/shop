@@ -1,7 +1,7 @@
 import Skeleton from '../Skeleton';
 import SkeletonParagraph from '../SkeletonParagraph';
 import './_skeleton-order-page.scss';
-import SkeletonSummeryItem from './SkeletonSummeryItem';
+import SkeletonMyOrderSummary from './SkeletonMyOrderSummary';
 
 const SkeletonMyOrderPage = () => (
   <div className="skeleton-order-page">
@@ -10,7 +10,9 @@ const SkeletonMyOrderPage = () => (
       <SkeletonParagraph count={2} />
     </span>
 
-    <SkeletonSummeryItem />
+    <div className="content-row">
+      <SkeletonMyOrderSummary />
+    </div>
   </div>
 );
 
