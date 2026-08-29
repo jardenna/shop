@@ -6,7 +6,7 @@ import SkeletonMyOrderSummary from './SkeletonMyOrderSummary';
 import './_skeleton-my-order-page.scss';
 
 const SkeletonMyOrderPage = () => (
-  <div className="skeleton-order-page">
+  <div className="skeleton-order-page my-orders-page-cart">
     <span className="skeleton-sub-header">
       <Skeleton className="skeleton-sub-header-title" />
       <SkeletonParagraph count={2} />
