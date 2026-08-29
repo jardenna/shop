@@ -14,23 +14,6 @@
   }
 }
 
-.popup-arrow {
-  position: absolute;
-  z-index: -1;
-
-  &::before {
-    content: '';
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    background-color: $color-white;
-    transform: rotate(45deg);
-    box-shadow:
-      0 2px 4px rgb(0 0 0 / 16%),
-      0 0 4px rgb(0 0 0 / 10%);
-  }
-}
-
 .popup-container[data-popper-placement^='top'] .popup-arrow {
   bottom: -4px;
 }
