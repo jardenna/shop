@@ -1,11 +1,7 @@
 import Skeleton from '../Skeleton';
-import SkeletonBadge from '../SkeletonBadge';
 
 const SkeletonMyOrderSummary = () => (
   <div className="items-col">
-    <Skeleton />
-    <SkeletonBadge />
-
     <div className="item-row">
       <Skeleton className="item-thumb" />
       <div className="item-info">
