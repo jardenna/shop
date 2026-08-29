@@ -9,7 +9,7 @@ const SkeletonMyOrderPage = () => (
       <SkeletonParagraph count={2} />
     </span>
 
-    <div className="content-row">
+    <div className="skeleton-content-row">
       <SkeletonMyOrderSummary />
     </div>
   </div>

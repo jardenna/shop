@@ -15,7 +15,7 @@ const SkeletonOrderDetailsPage = () => (
     </span>
     <SkeletonProgress />
 
-    <div className="content-row">
+    <div className="skeleton-content-row">
       <SkeletonSummeryItem />
       <SkeletonPriceCol />
     </div>
