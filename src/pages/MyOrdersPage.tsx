@@ -48,6 +48,7 @@ const MyOrdersPage = () => {
       />
     );
   }
+
   return (
     <MainPageContainer variant="medium" heading={pageHeading}>
       {isLoading && <SkeletonMyOrderPage />}
@@ -71,8 +72,7 @@ const MyOrdersPage = () => {
                 <OrderList orders={myOrder.orderItems} language={language} />
                 <MyOrderFooter
                   language={language}
-                  orderStatus={myOrder.delivery.status}
-                  estimatedDelivery={myOrder.createdAt}
+                  delivery={myOrder.delivery}
                   onViewDetails={() => {
                     handleViewDetails(myOrder.id);
                   }}

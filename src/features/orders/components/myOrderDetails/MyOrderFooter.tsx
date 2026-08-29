@@ -1,33 +1,33 @@
-import { DeliveryStatus } from '../../../../app/api/apiTypes/orderApiTypes';
+import { Delivery } from '../../../../app/api/apiTypes/orderApiTypes';
 import Button from '../../../../components/Button';
 import DateDisplay from '../../../../components/datePicker/DateDisplay';
+import { createDeliveryDateText } from '../../utils/createDeliveryDateText';
 
 interface MyOrderFooterProps {
-  estimatedDelivery: Date;
+  delivery: Delivery;
   language: Record<string, string>;
-  orderStatus: DeliveryStatus;
   onViewDetails: () => void;
 }
 
 const MyOrderFooter = ({
   language,
-  estimatedDelivery,
   onViewDetails,
-  orderStatus,
-}: MyOrderFooterProps) => (
-  <footer className="my-order-footer">
-    {orderStatus !== 'cancelled' ? (
-      <div>
-        {language.estimatedDelivery}: <DateDisplay date={estimatedDelivery} />
-      </div>
-    ) : (
-      <div>
-        {language.cancelled}: <DateDisplay date={estimatedDelivery} />
-      </div>
-    )}
+  delivery,
+}: MyOrderFooterProps) => {
+  const footerText = createDeliveryDateText(delivery);
 
-    <Button onClick={onViewDetails}>{language.showDetails}</Button>
-  </footer>
-);
+  return (
+    <footer className="my-order-footer">
+      {footerText.date && (
+        <div>
+          <span>{language[footerText.text]}: </span>
+          <DateDisplay date={footerText.date} />
+        </div>
+      )}
+
+      <Button onClick={onViewDetails}>{language.showDetails}</Button>
+    </footer>
+  );
+};
 
 export default MyOrderFooter;
