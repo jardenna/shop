@@ -8,7 +8,7 @@ import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import NotFoundError from '../../components/NotFoundError';
 import SimpleTable from '../../components/simpleTable/SimpleTable';
-import SkeletonOrderDetailsPage from '../../components/skeleton/skeletonOrderDetailsPage/SkeletonOrderDetailsPage';
+import SkeletonAdminOrderDetailsPage from '../../components/skeleton/skeletonOrderDetailsPage/SkeletonAdminOrderDetailsPage';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
   useCancelOrderMutation,
@@ -123,15 +123,14 @@ const AdminOrderDetailsPage = () => {
       linkText={language.backToOrderList}
       linkTo={AdminPath.AdminOrders}
     >
-      {isLoading && <SkeletonOrderDetailsPage />}
-
+      {isLoading && <SkeletonAdminOrderDetailsPage />}
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={refetch}
       >
-        <h2>
+        <p>
           {language.orderNo}: # {id}
-        </h2>
+        </p>
         <OrderStatusActions
           onUpdateOrder={handleUpdateOrder}
           onShipOrder={handleShipOrder}
@@ -139,7 +138,7 @@ const AdminOrderDetailsPage = () => {
         />
 
         {order && (
-          <div className="order-details-content">
+          <>
             <Cart>
               <OrderHeading heading={language.orderHistory} />
               <SimpleTable
@@ -172,7 +171,7 @@ const AdminOrderDetailsPage = () => {
             </Cart>
             <Cart>
               <OrderHeading heading={language.customerInformation} />
-              <article className="order-details-info-container">
+              <article className="order-details">
                 <OrderMethodInfo
                   paymentMethod={paymentMethodLabels[order.payment.method]}
                   label={language.paymentMethod}
@@ -189,7 +188,7 @@ const AdminOrderDetailsPage = () => {
                 orderStatus.status !== 'processing'
               }
             />
-          </div>
+          </>
         )}
       </ErrorBoundary>
     </AdminPageContainer>

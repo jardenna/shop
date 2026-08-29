@@ -1,50 +1,18 @@
 @use '../../../../scss/globals' as *;
 
-.order-details-content {
+.my-order-detail-list {
   display: flex;
-  flex-direction: column;
+  gap: 20px;
 
-  .order-details-info-container {
-    display: flex;
-    gap: 20px;
-
-    @include max-size($small) {
-      flex-direction: column;
-    }
-
-    .order-details-info {
-      flex: 1;
-    }
-  }
-
-  .order-detail-list {
-    display: flex;
-    gap: 20px;
-
-    @include max-size($medium) {
-      flex-direction: column;
-    }
-
-    .text-uppercase {
-      font-family: $font-primary-semibold;
-    }
-
-    p {
-      margin: 0;
-    }
-  }
-
-  .order-detail-item {
-    display: flex;
+  @include max-size($medium) {
     flex-direction: column;
-    gap: 4px;
-
-    @include max-size($small) {
-      flex-direction: row;
-    }
   }
 
-  .summary-items {
-    flex: 1;
+  .text-uppercase {
+    font-family: $font-primary-semibold;
+  }
+
+  p {
+    margin: 0;
   }
 }

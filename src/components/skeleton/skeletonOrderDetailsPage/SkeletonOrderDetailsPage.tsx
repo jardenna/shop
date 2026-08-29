@@ -8,7 +8,7 @@ import SkeletonPriceCol from './SkeletonPriceCol';
 import SkeletonSummeryItem from './SkeletonSummeryItem';
 
 const SkeletonOrderDetailsPage = () => (
-  <div className="order-details-content skeleton-order-page">
+  <div className="skeleton-order-page">
     <span className="skeleton-sub-header">
       <Skeleton className="skeleton-sub-header-title" />
       <SkeletonParagraph count={3} />

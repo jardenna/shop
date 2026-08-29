@@ -1,6 +1,14 @@
 @use '../../../scss/globals' as *;
 
 .skeleton-order-page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  &.admin-detail {
+    gap: 20px;
+  }
+
   .skeleton-sub-header {
     max-width: rem(712px);
 
@@ -155,7 +163,7 @@
 
   .overview-items {
     display: flex;
-    gap: 12px;
+    flex-direction: column;
   }
 
   .overview-label {
@@ -169,7 +177,7 @@
     height: rem(16px);
   }
 
-  .addresses {
+  .address-list {
     display: flex;
     gap: 24px;
     flex: 2;

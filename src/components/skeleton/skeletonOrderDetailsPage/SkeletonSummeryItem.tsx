@@ -1,8 +1,9 @@
 import Skeleton from '../Skeleton';
+import SkeletonHeading from '../SkeletonHeading';
 
 const SkeletonSummeryItem = () => (
   <div className="items-col">
-    <Skeleton className="section-title" />
+    <SkeletonHeading />
 
     <div className="item-row">
       <Skeleton className="item-thumb" />
