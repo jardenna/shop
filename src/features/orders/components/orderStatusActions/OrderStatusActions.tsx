@@ -1,10 +1,10 @@
 import { DeliveryStatus } from '../../../../app/api/apiTypes/orderApiTypes';
-import Badge from '../../../../components/badge/Badge';
 import Button from '../../../../components/Button';
 import Cart from '../../../../components/carts/Cart';
 import ProgressTracker from '../../../../components/progressTracker/ProgressTracker';
 import { useLanguage } from '../../../language/useLanguage';
 import { orderTrackingList } from '../../utils/createTrackingList';
+import OrderCancelledBadge from '../OrderCancelledBadge';
 import './_order-status-actions.scss';
 
 interface OrderStatusProps {
@@ -56,13 +56,7 @@ const OrderStatusActions = ({
   return (
     <Cart className="order-status-actions">
       <ProgressTracker steps={orderTrackingList} status={orderStatus} />
-      {isCancelled && (
-        <Badge
-          className="cancelled"
-          variant="large"
-          badgeText={language.orderCancelled}
-        />
-      )}
+      {isCancelled && <OrderCancelledBadge language={language} />}
       {!isCancelled && !isDelivered && (
         <footer className="footer order-status-footer">
           <Button onClick={handleStatusAction}>{getActionLabel()}</Button>

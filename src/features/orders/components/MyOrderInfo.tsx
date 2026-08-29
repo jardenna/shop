@@ -1,5 +1,5 @@
 import { DeliveryStatus } from '../../../app/api/apiTypes/orderApiTypes';
-import Badge from '../../../components/badge/Badge';
+import OrderCancelledBadge from './OrderCancelledBadge';
 
 interface MyOrderInfoProps {
   language: Record<string, string>;
@@ -9,11 +9,7 @@ interface MyOrderInfoProps {
 const MyOrderInfo = ({ status, language }: MyOrderInfoProps) => (
   <div>
     {status === 'cancelled' ? (
-      <Badge
-        className="cancelled"
-        variant="large"
-        badgeText={language.orderCancelled}
-      />
+      <OrderCancelledBadge language={language} />
     ) : (
       <h2>{language.orderStatusMessage}</h2>
     )}
