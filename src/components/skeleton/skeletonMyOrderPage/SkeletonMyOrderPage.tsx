@@ -1,6 +1,5 @@
 import Skeleton from '../Skeleton';
 import SkeletonParagraph from '../SkeletonParagraph';
-import './_skeleton-order-page.scss';
 import SkeletonMyOrderSummary from './SkeletonMyOrderSummary';
 
 const SkeletonMyOrderPage = () => (

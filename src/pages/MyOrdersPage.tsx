@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router';
-import SkeletonMyOrderPage from '../components/skeleton/skeletonOrderDetailsPage/SkeletonMyOrderPage';
+import SkeletonMyOrderPage from '../components/skeleton/skeletonMyOrderPage/SkeletonMyOrderPage';
 import { useLanguage } from '../features/language/useLanguage';
 import MyOrderFooter from '../features/orders/components/myOrderDetails/MyOrderFooter';
 import MyOrderHeader from '../features/orders/components/myOrderDetails/MyOrderHeader';
