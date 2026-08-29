@@ -5,6 +5,7 @@
   display: flex;
   justify-content: end;
   align-items: baseline;
+  text-wrap: nowrap;
 
   .discount {
     color: $color-discount;
