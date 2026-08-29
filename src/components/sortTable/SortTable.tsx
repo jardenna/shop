@@ -131,7 +131,7 @@ const SortTable = <T,>({
             disabled={!hasSearchParams}
           >
             <span>{language.clearFilters}</span>
-            {hasSearchParams && <span>({tagList.length})</span>}
+            {tagList.length > 0 && <span>({tagList.length})</span>}
           </Button>
           <TagList
             tagList={tagList}
