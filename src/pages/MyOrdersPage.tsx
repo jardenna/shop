@@ -1,3 +1,4 @@
+import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate } from 'react-router';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import SkeletonMyOrderPage from '../components/skeleton/skeletonMyOrderPage/SkeletonMyOrderPage';
@@ -53,30 +54,35 @@ const MyOrdersPage = () => {
       <p>{language.viewAndTrackOrders}</p>
       <p>{language.whenOrderViewAndTrack}</p>
 
-      {myOrders && (
-        <section className="my-orders-page">
-          {myOrders.map((myOrder) => (
-            <article key={myOrder.id} className="my-orders-page-cart">
-              <MyOrderHeader
-                language={language}
-                totalPrice={myOrder.summary.totalPrice}
-                orderId={myOrder.id}
-                orderStatus={myOrder.delivery.status}
-              />
+      <ErrorBoundary
+        FallbackComponent={ErrorBoundaryFallback}
+        onReset={refetch}
+      >
+        {myOrders && (
+          <section className="my-orders-page">
+            {myOrders.map((myOrder) => (
+              <article key={myOrder.id} className="my-orders-page-cart">
+                <MyOrderHeader
+                  language={language}
+                  totalPrice={myOrder.summary.totalPrice}
+                  orderId={myOrder.id}
+                  orderStatus={myOrder.delivery.status}
+                />
 
-              <OrderList orders={myOrder.orderItems} language={language} />
-              <MyOrderFooter
-                language={language}
-                orderStatus={myOrder.delivery.status}
-                estimatedDelivery={myOrder.createdAt}
-                onViewDetails={() => {
-                  handleViewDetails(myOrder.id);
-                }}
-              />
-            </article>
-          ))}
-        </section>
-      )}
+                <OrderList orders={myOrder.orderItems} language={language} />
+                <MyOrderFooter
+                  language={language}
+                  orderStatus={myOrder.delivery.status}
+                  estimatedDelivery={myOrder.createdAt}
+                  onViewDetails={() => {
+                    handleViewDetails(myOrder.id);
+                  }}
+                />
+              </article>
+            ))}
+          </section>
+        )}
+      </ErrorBoundary>
     </MainPageContainer>
   );
 };
