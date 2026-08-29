@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import { useCurrency } from '../../../features/currency/useCurrency';
 import { useLanguage } from '../../../features/language/useLanguage';
 import { IconName } from '../../../types/enums';
@@ -67,6 +68,11 @@ const TableFilterPopup = <T,>({
             <Input
               type={filterType}
               name={name}
+              max={
+                filterType === 'date'
+                  ? format(new Date(), 'yyyy-MM-dd')
+                  : undefined
+              }
               id={id}
               value={value}
               onChange={onFilter}
