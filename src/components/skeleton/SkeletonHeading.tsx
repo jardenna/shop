@@ -1,7 +1,7 @@
-import Skeleton from './Skeleton';
+import Skeleton, { SkeletonProps } from './Skeleton';
 
-const SkeletonHeading = () => (
-  <Skeleton height="1.5" width="12" className="skeleton-heading" />
+const SkeletonHeading = ({ width = '12' }: SkeletonProps) => (
+  <Skeleton height="1.5" width={width} className="skeleton-heading" />
 );
 
 export default SkeletonHeading;

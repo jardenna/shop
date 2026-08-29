@@ -4,7 +4,7 @@ const SkeletonAddressList = ({ count = 2 }: PickedSkeletonTypes) => {
   const skeletons = Array.from({ length: count });
 
   return (
-    <span className="addresses">
+    <span className="address-list">
       {skeletons.map((_, index) => (
         <div className="address-box" key={index}>
           <div className="overview-label skeleton" />
