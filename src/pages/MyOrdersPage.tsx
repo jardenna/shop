@@ -48,7 +48,6 @@ const MyOrdersPage = () => {
       />
     );
   }
-  console.log(myOrders);
 
   return (
     <MainPageContainer variant="medium" heading={pageHeading}>
@@ -76,6 +75,7 @@ const MyOrdersPage = () => {
                   orderStatus={myOrder.delivery.status}
                   estimatedDelivery={new Date()}
                   shippedAt={myOrder.delivery.shippedAt}
+                  delivery={myOrder.delivery}
                   onViewDetails={() => {
                     handleViewDetails(myOrder.id);
                   }}

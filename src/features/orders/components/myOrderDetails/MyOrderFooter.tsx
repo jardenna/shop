@@ -1,9 +1,13 @@
 import { addBusinessDays } from 'date-fns';
-import { DeliveryStatus } from '../../../../app/api/apiTypes/orderApiTypes';
+import {
+  Delivery,
+  DeliveryStatus,
+} from '../../../../app/api/apiTypes/orderApiTypes';
 import Button from '../../../../components/Button';
 import DateDisplay from '../../../../components/datePicker/DateDisplay';
 
 interface MyOrderFooterProps {
+  delivery: Delivery;
   estimatedDelivery: Date;
   language: Record<string, string>;
   orderStatus: DeliveryStatus;
@@ -17,10 +21,13 @@ const MyOrderFooter = ({
   shippedAt,
   onViewDetails,
   orderStatus,
+  delivery,
 }: MyOrderFooterProps) => {
   const currentDate = new Date();
   const deliveryDate = addBusinessDays(currentDate, 3);
-  console.log(shippedAt);
+
+  const latestHistory = delivery.statusHistory.at(-1);
+  console.log(latestHistory);
 
   return (
     <footer className="my-order-footer">
