@@ -68,7 +68,6 @@ const MyOrdersPage = () => {
                   orderId={myOrder.id}
                   orderStatus={myOrder.delivery.status}
                 />
-
                 <OrderList orders={myOrder.orderItems} language={language} />
                 <MyOrderFooter
                   language={language}
