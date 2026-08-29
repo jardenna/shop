@@ -19,7 +19,7 @@ const SkeletonAdminOrderDetailsPage = () => (
       <SkeletonList count={5} className="flex-column" height="1" />
     </div>
 
-    <div className="content-row">
+    <div className="skeleton-content-row">
       <SkeletonSummeryItem />
       <SkeletonPriceCol />
     </div>

@@ -18,15 +18,6 @@
     }
   }
 
-  .content-row {
-    display: flex;
-    gap: 48px;
-
-    @include max-size($small) {
-      flex-direction: column;
-    }
-  }
-
   .items-col {
     flex: 1.6;
   }

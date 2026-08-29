@@ -1,7 +1,7 @@
-import Skeleton from './Skeleton';
+import Skeleton, { SkeletonProps } from './Skeleton';
 
-const SkeletonButton = () => (
-  <Skeleton height="3.75" className="skeleton-btn" />
+const SkeletonButton = ({ width }: SkeletonProps) => (
+  <Skeleton height="3.75" width={width} className="skeleton-btn" />
 );
 
 export default SkeletonButton;

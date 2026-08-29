@@ -34,6 +34,15 @@
   @include animation(skeleton-animation, 1.5s infinite, linear);
 }
 
+.skeleton-content-row {
+  display: flex;
+  gap: 48px;
+
+  @include max-size($small) {
+    flex-direction: column;
+  }
+}
+
 .skeleton-2-col {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -162,6 +171,10 @@
     height: 16px;
     width: 90px;
   }
+}
+
+.skeleton-divider {
+  height: 1px;
 }
 
 @keyframes skeleton-animation {
