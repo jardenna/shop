@@ -1,3 +1,5 @@
+@use '../../../scss/globals/functions' as *;
+
 .skeleton-order-cart {
   .skeleton-badge {
     margin-top: 4px;
@@ -10,23 +12,23 @@
   }
 
   .delivery-date {
-    width: 220px;
-    height: 14px;
-  }
-}
-
-.order-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-
-  .order-id {
-    width: 120px;
-    height: 14px;
+    width: rem(220px);
+    height: rem(14px);
   }
 
-  .order-price {
-    width: 90px;
-    height: 20px;
+  .order-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    .order-id {
+      width: rem(120px);
+      height: rem(14px);
+    }
+
+    .order-price {
+      width: rem(90px);
+      height: rem(20px);
+    }
   }
 }

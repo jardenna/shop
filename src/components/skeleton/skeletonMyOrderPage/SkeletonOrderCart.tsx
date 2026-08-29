@@ -7,19 +7,15 @@ const SkeletonOrderCart = () => (
   <div className="my-orders-page-cart skeleton-order-cart">
     <div className="order-header">
       <div>
-        <div className="skeleton order-id" />
+        <Skeleton className="order-id" />
         <SkeletonBadge width="8" />
       </div>
-      <div className="skeleton order-price" />
+      <Skeleton className="order-price" />
     </div>
-
-    <div className="skeleton-content-row">
-      <SkeletonMyOrderSummary />
-    </div>
+    <SkeletonMyOrderSummary />
     <Skeleton className="skeleton-divider" />
-
     <div className="footer-row">
-      <div className="skeleton delivery-date" />
+      <Skeleton className="delivery-date" />
       <SkeletonButton width="10" />
     </div>
   </div>
