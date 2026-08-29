@@ -202,7 +202,7 @@ const getOrderById = asyncHandler(async (req, res) => {
 // @access  Private
 const getUserOrders = asyncHandler(async (req, res) => {
   const orders = await Order.find({ user: req.user._id }).select(
-    '_id createdAt  payment.status delivery.status summary.totalPrice orderItems',
+    '_id createdAt payment.status delivery.status delivery.shippedAt delivery.statusHistory summary.totalPrice orderItems',
   );
 
   res.status(200).json(orders);

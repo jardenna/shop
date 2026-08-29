@@ -48,6 +48,8 @@ const MyOrdersPage = () => {
       />
     );
   }
+  console.log(myOrders);
+
   return (
     <MainPageContainer variant="medium" heading={pageHeading}>
       {isLoading && <SkeletonMyOrderPage />}
@@ -72,7 +74,8 @@ const MyOrdersPage = () => {
                 <MyOrderFooter
                   language={language}
                   orderStatus={myOrder.delivery.status}
-                  estimatedDelivery={myOrder.createdAt}
+                  estimatedDelivery={new Date()}
+                  shippedAt={myOrder.delivery.shippedAt}
                   onViewDetails={() => {
                     handleViewDetails(myOrder.id);
                   }}

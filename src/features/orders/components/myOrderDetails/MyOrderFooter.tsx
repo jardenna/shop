@@ -1,3 +1,4 @@
+import { addBusinessDays } from 'date-fns';
 import { DeliveryStatus } from '../../../../app/api/apiTypes/orderApiTypes';
 import Button from '../../../../components/Button';
 import DateDisplay from '../../../../components/datePicker/DateDisplay';
@@ -6,28 +7,42 @@ interface MyOrderFooterProps {
   estimatedDelivery: Date;
   language: Record<string, string>;
   orderStatus: DeliveryStatus;
+  shippedAt?: Date;
   onViewDetails: () => void;
 }
 
 const MyOrderFooter = ({
   language,
   estimatedDelivery,
+  shippedAt,
   onViewDetails,
   orderStatus,
-}: MyOrderFooterProps) => (
-  <footer className="my-order-footer">
-    {orderStatus !== 'cancelled' ? (
-      <div>
-        {language.estimatedDelivery}: <DateDisplay date={estimatedDelivery} />
-      </div>
-    ) : (
-      <div>
-        {language.cancelled}: <DateDisplay date={estimatedDelivery} />
-      </div>
-    )}
+}: MyOrderFooterProps) => {
+  const currentDate = new Date();
+  const deliveryDate = addBusinessDays(currentDate, 3);
+  console.log(shippedAt);
 
-    <Button onClick={onViewDetails}>{language.showDetails}</Button>
-  </footer>
-);
+  return (
+    <footer className="my-order-footer">
+      {orderStatus === 'created' && (
+        <div>
+          {language.estimatedDelivery}:<DateDisplay date={deliveryDate} />
+        </div>
+      )}
+      {orderStatus === 'cancelled' && (
+        <div>
+          {language.cancelled}: <DateDisplay date={estimatedDelivery} />
+        </div>
+      )}
+      {shippedAt && (
+        <div>
+          {language.estimatedDelivery}: <DateDisplay date={shippedAt} />
+        </div>
+      )}
+
+      <Button onClick={onViewDetails}>{language.showDetails}</Button>
+    </footer>
+  );
+};
 
 export default MyOrderFooter;
