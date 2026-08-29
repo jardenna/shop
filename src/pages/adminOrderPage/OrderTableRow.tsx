@@ -47,7 +47,11 @@ const OrderTableRow = ({
       />
     </td>
     <td>
-      <Badge badgeText={language[deliveryStatus]} className={deliveryStatus} />
+      <Badge
+        badgeText={language[deliveryStatus]}
+        className={deliveryStatus}
+        showDot
+      />
     </td>
     <td>
       <MoreLink

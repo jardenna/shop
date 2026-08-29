@@ -8,9 +8,23 @@
 .badge {
   display: flex;
   align-items: center;
+  gap: 4px;
   width: fit-content;
   background-color: $color-light-gray-30;
   font-family: $font-primary-bold;
+  border: $border;
+
+  &:has(.badge-dot) {
+    border-color: inherit;
+
+    .badge-dot {
+      display: flex;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: currentcolor;
+    }
+  }
 
   &.badge-large {
     border-radius: 50px;
@@ -24,7 +38,23 @@
 
   &.badge-small {
     border-radius: 50px;
-    padding: 2px 12px;
+    padding: 1px 12px;
+  }
+
+  &.delivered {
+    color: $color-info;
+  }
+
+  &.cancelled {
+    color: $color-red-30;
+  }
+
+  &.created {
+    color: $color-badge-default;
+  }
+
+  &.processing {
+    color: $color-yellow;
   }
 
   &.published {
@@ -50,11 +80,11 @@
 
   &.uppercase {
     text-transform: uppercase;
-  }
 
-  &.cancelled {
-    background-color: $color-red-30;
-    color: $color-light-gray-30;
+    &.cancelled {
+      background-color: $color-red-30;
+      color: $color-light-gray-30;
+    }
   }
 
   &.out-of-stock {
