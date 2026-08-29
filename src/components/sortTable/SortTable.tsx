@@ -125,11 +125,13 @@ const SortTable = <T,>({
       <div className="table-controls">
         <div className="table-filter-container">
           <Button
+            className="clear-filter-btn"
             onClick={onClearAllFilters}
             variant={BtnVariant.Default}
             disabled={!hasSearchParams}
           >
-            {language.clearFilters}
+            <span>{language.clearFilters}</span>
+            {tagList.length > 0 && <span>({tagList.length})</span>}
           </Button>
           <TagList
             tagList={tagList}

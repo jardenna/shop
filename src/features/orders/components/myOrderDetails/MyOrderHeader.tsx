@@ -23,7 +23,8 @@ const MyOrderHeader = ({
       </span>
       <Badge
         badgeText={language[orderStatus]}
-        className={orderStatus === 'cancelled' ? 'cancelled' : ''}
+        className={orderStatus}
+        showDot
       />
     </div>
     <ProductPrice price={totalPrice} cancelled={orderStatus === 'cancelled'} />
