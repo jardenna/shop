@@ -173,6 +173,11 @@
   }
 }
 
+.skeleton-divider {
+  height: 1px;
+  margin-block: 20px;
+}
+
 @keyframes skeleton-animation {
   0% {
     background-position: 100%;

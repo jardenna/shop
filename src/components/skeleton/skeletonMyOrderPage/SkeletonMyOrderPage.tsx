@@ -1,5 +1,6 @@
 import Skeleton from '../Skeleton';
 import SkeletonBadge from '../SkeletonBadge';
+import SkeletonButton from '../SkeletonButton';
 import SkeletonParagraph from '../SkeletonParagraph';
 import SkeletonMyOrderSummary from './SkeletonMyOrderSummary';
 import './_skeleton-my-order-page.scss';
@@ -19,11 +20,11 @@ const SkeletonMyOrderPage = () => (
       <div className="skeleton-content-row">
         <SkeletonMyOrderSummary />
       </div>
-      <div className="divider" />
+      <Skeleton className="skeleton-divider" />
 
       <div className="footer-row">
         <div className="skeleton delivery-date" />
-        <div className="skeleton details-button" />
+        <SkeletonButton width="10" />
       </div>
     </div>
   </div>
