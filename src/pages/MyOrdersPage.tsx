@@ -72,9 +72,6 @@ const MyOrdersPage = () => {
                 <OrderList orders={myOrder.orderItems} language={language} />
                 <MyOrderFooter
                   language={language}
-                  orderStatus={myOrder.delivery.status}
-                  estimatedDelivery={new Date()}
-                  shippedAt={myOrder.delivery.shippedAt}
                   delivery={myOrder.delivery}
                   onViewDetails={() => {
                     handleViewDetails(myOrder.id);
