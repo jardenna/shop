@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router';
+import SkeletonMyOrderPage from '../components/skeleton/skeletonOrderDetailsPage/SkeletonMyOrderPage';
 import { useLanguage } from '../features/language/useLanguage';
 import MyOrderFooter from '../features/orders/components/myOrderDetails/MyOrderFooter';
 import MyOrderHeader from '../features/orders/components/myOrderDetails/MyOrderHeader';
@@ -34,6 +35,7 @@ const MyOrdersPage = () => {
   }
   return (
     <MainPageContainer variant="medium" heading={pageHeading}>
+      <SkeletonMyOrderPage />
       <p>{language.viewAndTrackOrders}</p>
       <p>{language.whenOrderViewAndTrack}</p>
 
