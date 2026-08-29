@@ -1,12 +1,12 @@
 import { DeliveryStatus } from '../../../app/api/apiTypes/orderApiTypes';
 import Badge from '../../../components/badge/Badge';
 
-interface CancelledOrderInfoProps {
+interface MyOrderInfoProps {
   language: Record<string, string>;
   status: DeliveryStatus;
 }
 
-const CancelledOrderInfo = ({ status, language }: CancelledOrderInfoProps) => (
+const MyOrderInfo = ({ status, language }: MyOrderInfoProps) => (
   <div>
     {status === 'cancelled' ? (
       <Badge
@@ -20,4 +20,4 @@ const CancelledOrderInfo = ({ status, language }: CancelledOrderInfoProps) => (
   </div>
 );
 
-export default CancelledOrderInfo;
+export default MyOrderInfo;

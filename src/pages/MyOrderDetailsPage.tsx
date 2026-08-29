@@ -5,8 +5,8 @@ import NotFoundError from '../components/NotFoundError';
 import ProgressTracker from '../components/progressTracker/ProgressTracker';
 import SkeletonOrderDetailsPage from '../components/skeleton/skeletonOrderDetailsPage/SkeletonOrderDetailsPage';
 import { useLanguage } from '../features/language/useLanguage';
-import CancelledOrderInfo from '../features/orders/components/CancelledOrderInfo';
 import MyOrderDetailList from '../features/orders/components/myOrderDetails/MyOrderDetailList';
+import MyOrderInfo from '../features/orders/components/MyOrderInfo';
 import OrderAddressList from '../features/orders/components/orderAddressList/OrderAddressList';
 import OrderSummary from '../features/orders/components/OrderSummary';
 import { useGetOrderByIdQuery } from '../features/orders/orderApiSlice';
@@ -72,10 +72,7 @@ const MyOrderDetailsPage = () => {
       >
         {order && (
           <div className="my-orders-page">
-            <CancelledOrderInfo
-              language={language}
-              status={order.delivery.status}
-            />
+            <MyOrderInfo language={language} status={order.delivery.status} />
 
             <ProgressTracker steps={orderTrackingList} status={status} />
             <OrderSummary language={language} order={order} />
