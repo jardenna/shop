@@ -53,8 +53,12 @@
     color: $color-badge-default;
   }
 
+  &.shipped {
+    color: $color-blue-70;
+  }
+
   &.processing {
-    color: $color-yellow;
+    color: $color-yellow-80;
   }
 
   &.published {
