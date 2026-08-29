@@ -124,7 +124,6 @@ const AdminOrderDetailsPage = () => {
       linkTo={AdminPath.AdminOrders}
     >
       {isLoading && <SkeletonAdminOrderDetailsPage />}
-      <SkeletonAdminOrderDetailsPage />
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={refetch}
