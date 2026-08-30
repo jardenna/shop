@@ -11,9 +11,7 @@ interface MobileNavProps {
 
 const MobileNav = ({ navList, className }: MobileNavProps) => {
   const { language } = useLanguage();
-  const { isPanelShown, onTogglePanel, panelRef } = useTogglePanel({
-    preventClickOutside: true,
-  });
+  const { isPanelShown, onTogglePanel, panelRef } = useTogglePanel();
 
   return (
     <TogglePanel
