@@ -7,7 +7,7 @@ type useScrollOnPaginationProps = {
 export const useScrollOnPagination = ({
   isLoading,
 }: useScrollOnPaginationProps) => {
-  const scrollToRef = useRef<HTMLHeadingElement>(null);
+  const scrollToRef = useRef<HTMLElement>(null);
   const [shouldScroll, setShouldScroll] = useState(false);
 
   useLayoutEffect(() => {

@@ -89,12 +89,9 @@ const AdminOrderPage = () => {
   });
 
   return (
-    <AdminPageContainer
-      heading={language.orders}
-      variant="x-large"
-      scrollToRef={scrollToRef}
-    >
+    <AdminPageContainer heading={language.orders} variant="x-large">
       <SortTable
+        scrollToRef={scrollToRef}
         btnLabel="orders"
         navigationPath={AdminPath.AdminOrders}
         onRemoveFilterTag={onRemoveFilterTag}
