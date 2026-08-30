@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { ReactNode, RefObject } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { SortOrder } from '../../app/api/apiTypes/sharedApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
@@ -42,7 +42,7 @@ type TableProps<T> = {
   values: InitialTableFilters<T>;
   className?: string;
   emptyHeaderCellText?: string;
-  scrollToRef?: any;
+  scrollToRef?: RefObject<HTMLTableElement | null>;
   skeletonCount?: number;
   skeletonHeight?: string;
   children: (data: T[]) => ReactNode;

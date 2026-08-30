@@ -1,13 +1,13 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 
-type useScrollOnPaginationProps = {
+type UseScrollOnPaginationProps = {
   isLoading: boolean;
 };
 
-export const useScrollOnPagination = ({
+export const useScrollOnPagination = <TElement extends HTMLElement>({
   isLoading,
-}: useScrollOnPaginationProps) => {
-  const scrollToRef = useRef<HTMLElement>(null);
+}: UseScrollOnPaginationProps) => {
+  const scrollToRef = useRef<TElement>(null);
   const [shouldScroll, setShouldScroll] = useState(false);
 
   useLayoutEffect(() => {

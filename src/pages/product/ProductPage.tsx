@@ -125,9 +125,10 @@ const ProductPage = () => {
     updatePagination(1, newCount);
   };
 
-  const { scrollToRef, setShouldScroll } = useScrollOnPagination({
-    isLoading,
-  });
+  const { scrollToRef, setShouldScroll } =
+    useScrollOnPagination<HTMLTableElement>({
+      isLoading,
+    });
 
   const handlePagination = (id: number) => {
     // Early exit so current page doesn't spam history or rerender
