@@ -7,9 +7,14 @@ import type { DropdownItem } from './DropdownBtn';
 interface DropdownListProps {
   dropdownList: DropdownItem[];
   defaultIndex?: number;
+  closePopup?: () => void;
 }
 
-const DropdownList = ({ dropdownList, defaultIndex }: DropdownListProps) => {
+const DropdownList = ({
+  dropdownList,
+  defaultIndex,
+  closePopup,
+}: DropdownListProps) => {
   const { listRefs } = useKeyboardListNav({
     defaultIndex,
     dropdownList,
@@ -26,7 +31,10 @@ const DropdownList = ({ dropdownList, defaultIndex }: DropdownListProps) => {
             <Button
               variant={btnVariant || BtnVariant.Ghost}
               className={isActive ? 'active' : ''}
-              onClick={onClick}
+              onClick={() => {
+                onClick();
+                closePopup?.();
+              }}
               disabled={disabled}
               refCallback={(element) => {
                 listRefs.current[index] = element;

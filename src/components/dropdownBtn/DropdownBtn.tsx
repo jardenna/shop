@@ -38,8 +38,14 @@ const DropdownBtn = ({
   triggerBtnClassName,
 }: DropdownBtnProps) => {
   const dropdownId = useId();
-  const { popupRef, popupIsOpen, togglePopupList, arrowRef, buttonRef } =
-    usePopup({ placement });
+  const {
+    popupRef,
+    popupIsOpen,
+    togglePopupList,
+    arrowRef,
+    buttonRef,
+    closePopup,
+  } = usePopup({ placement });
 
   return (
     <div>
@@ -59,7 +65,11 @@ const DropdownBtn = ({
       </Button>
       {popupIsOpen && (
         <div ref={popupRef} className="popup-container" id={dropdownId}>
-          <DropdownList defaultIndex={-1} dropdownList={dropdownList} />
+          <DropdownList
+            defaultIndex={-1}
+            dropdownList={dropdownList}
+            closePopup={closePopup}
+          />
           {showArrow && (
             <span ref={arrowRef} className="popup-arrow" aria-hidden={true} />
           )}
