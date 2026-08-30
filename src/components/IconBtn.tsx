@@ -14,6 +14,7 @@ type IconBtnProps = BaseIconBtn & {
   ariaExpanded?: boolean;
   btnType?: BtnType;
   disabled?: boolean;
+  isLoading?: boolean;
   variant?: BtnVariant;
   onClick?: () => void;
 };
@@ -28,6 +29,7 @@ const IconBtn = ({
   variant = BtnVariant.Ghost,
   size,
   disabled,
+  isLoading,
   showLabel,
 }: IconBtnProps) => (
   <Button
@@ -37,6 +39,7 @@ const IconBtn = ({
     ariaExpanded={ariaExpanded}
     type={btnType}
     disabled={disabled}
+    showBtnLoader={isLoading}
   >
     <IconContent
       iconName={iconName}

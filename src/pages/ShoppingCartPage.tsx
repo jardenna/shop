@@ -46,7 +46,7 @@ const ShoppingCartPage = () => {
     shouldFetchGuestCart ? cartList : skipToken,
   );
 
-  const [updateQty] = useUpdateQtyMutation();
+  const [updateQty, { isLoading: isUpdateQtyLoading }] = useUpdateQtyMutation();
   const [applyPromoCode, { isLoading: isPromoCodeLoading }] =
     useApplyPromoCodeMutation();
   const { deleteCartItem } = useDeleteCartItem();
@@ -121,6 +121,7 @@ const ShoppingCartPage = () => {
             <CartList
               cartList={cartItems}
               language={language}
+              isLoading={isUpdateQtyLoading}
               onDeleteCartItem={
                 currentUser ? deleteCartItem : handleDeleteGuestCart
               }
