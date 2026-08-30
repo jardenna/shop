@@ -4,10 +4,10 @@ import { useLanguage } from '../../features/language/useLanguage';
 import { NavListProps } from './Nav';
 import NavContainer from './NavContainer';
 
-type MobileNavProps = {
+interface MobileNavProps {
   navList: NavListProps[];
   className?: string;
-};
+}
 
 const MobileNav = ({ navList, className }: MobileNavProps) => {
   const { language } = useLanguage();
