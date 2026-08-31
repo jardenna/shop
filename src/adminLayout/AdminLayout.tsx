@@ -43,7 +43,10 @@ const AdminLayout = () => {
   return (
     <div className="main-container admin-container">
       {!isMobileSize && <SkipLink />}
-      <AdminHeader onLogout={handleLogout} isMobileSize={isLargeTabletSize} />
+      <AdminHeader
+        onLogout={handleLogout}
+        isLargeTabletSize={isLargeTabletSize}
+      />
       <div className="main">
         {!isLargeTabletSize && (
           <Aside

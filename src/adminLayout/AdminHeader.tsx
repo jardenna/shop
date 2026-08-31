@@ -6,15 +6,15 @@ import { adminNavList } from '../layout/nav/navLists';
 import Logout from './Logout';
 
 type AdminHeaderProps = {
-  isMobileSize: boolean;
+  isLargeTabletSize: boolean;
   onLogout: () => void;
 };
 
-const AdminHeader = ({ onLogout, isMobileSize }: AdminHeaderProps) => (
+const AdminHeader = ({ onLogout, isLargeTabletSize }: AdminHeaderProps) => (
   <LayoutElement className="admin-header">
     <>
       <Logo linkTo={`/${AdminPath.Admin}`} />
-      {!isMobileSize ? (
+      {!isLargeTabletSize ? (
         <Logout onLogout={onLogout} />
       ) : (
         <MobileNav navList={adminNavList} className="admin-nav-container" />
