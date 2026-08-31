@@ -14,7 +14,6 @@ import {
 } from '../../features/products/productApiSlice';
 import { AdminPath } from '../../layout/nav/enums';
 import { BtnVariant } from '../../types/enums';
-import { handleApiError } from '../../utils/handleApiError';
 import { translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
@@ -47,25 +46,21 @@ const ViewProductPage = () => {
   }
 
   const handleDeleteProduct = async () => {
-    try {
-      const result = await deleteProduct(id || '').unwrap();
+    const result = await deleteProduct(id || '').unwrap();
 
-      if (result.success) {
-        onAddMessagePopup({
-          message: result.message,
-          withDelay: true,
-        });
+    if (result.success) {
+      onAddMessagePopup({
+        message: result.message,
+        withDelay: true,
+      });
 
-        navigate(AdminPath.AdminProducts);
-      } else {
-        onAddMessagePopup({
-          messagePopupType: 'error',
-          message: language.productNotFound,
-          componentType: 'notification',
-        });
-      }
-    } catch (error) {
-      handleApiError(error, onAddMessagePopup);
+      navigate(AdminPath.AdminProducts);
+    } else {
+      onAddMessagePopup({
+        messagePopupType: 'error',
+        message: language.productNotFound,
+        componentType: 'notification',
+      });
     }
   };
 

@@ -29,7 +29,6 @@ import { AdminPath } from '../../../layout/nav/enums';
 import variables from '../../../scss/variables.module.scss';
 import type { OptionType } from '../../../types/types';
 import { getColorOptions } from '../../../utils/colorUtils';
-import { handleApiError } from '../../../utils/handleApiError';
 import {
   maxDiscount,
   maxFiles,
@@ -199,47 +198,43 @@ const ProductForm = ({
       return;
     }
 
-    try {
-      //  upload logic
-      const mergedImages = await handleImageUpload({
+    //  upload logic
+    const mergedImages = await handleImageUpload({
+      id,
+      activeImages,
+      filesData,
+      uploadImages,
+      dispatch,
+    });
+
+    // eslint-disable-next-line react-hooks/immutability
+    values.images = mergedImages;
+
+    const filteredSizes = values.sizes.filter((size) =>
+      availableSizes.includes(size),
+    );
+
+    const productData = {
+      ...values,
+      sizes: filteredSizes,
+      scheduledDate: selectedDate,
+    };
+
+    if (id) {
+      await updateProduct({
         id,
-        activeImages,
-        filesData,
-        uploadImages,
-        dispatch,
-      });
-
-      // eslint-disable-next-line react-hooks/immutability
-      values.images = mergedImages;
-
-      const filteredSizes = values.sizes.filter((size) =>
-        availableSizes.includes(size),
-      );
-
-      const productData = {
-        ...values,
-        sizes: filteredSizes,
-        scheduledDate: selectedDate,
-      };
-
-      if (id) {
-        await updateProduct({
-          id,
-          product: productData,
-        }).unwrap();
-      } else {
-        await createProduct(productData).unwrap();
-      }
-
-      onAddMessagePopup({
-        message: id ? language.productUpdated : language.productCreated,
-        withDelay: true,
-      });
-
-      navigate(AdminPath.AdminProducts);
-    } catch (error) {
-      handleApiError(error, onAddMessagePopup);
+        product: productData,
+      }).unwrap();
+    } else {
+      await createProduct(productData).unwrap();
     }
+
+    onAddMessagePopup({
+      message: id ? language.productUpdated : language.productCreated,
+      withDelay: true,
+    });
+
+    navigate(AdminPath.AdminProducts);
   }
 
   // allowedSizes

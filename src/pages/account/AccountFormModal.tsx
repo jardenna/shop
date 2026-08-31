@@ -15,7 +15,6 @@ import { useUpdateUserProfileMutation } from '../../features/profile/profileApiS
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { SizeVariant } from '../../types/enums';
 import type { OptionType } from '../../types/types';
-import { handleApiError } from '../../utils/handleApiError';
 import { validateProfile } from '../../utils/validation/validateProfile';
 import type { ProfileFieldListProps } from './MyAccountPage';
 
@@ -71,20 +70,15 @@ const AccountFormModal = ({
       return;
     }
 
-    try {
-      await updateProfile(values).unwrap();
+    await updateProfile(values).unwrap();
 
-      onAddMessagePopup({
-        message: language.yourDetailsUpdated,
-      });
+    onAddMessagePopup({
+      message: language.yourDetailsUpdated,
+    });
 
-      setResultSuccess(true);
-      onClearAllValues();
-      reset();
-    } catch (error) {
-      handleApiError(error, onAddMessagePopup);
-      setResultSuccess(false);
-    }
+    setResultSuccess(true);
+    onClearAllValues();
+    reset();
   }
 
   const primaryActionBtn: PrimaryActionBtnProps = {

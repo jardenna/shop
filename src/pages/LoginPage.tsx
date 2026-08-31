@@ -2,7 +2,6 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useLocation, useNavigate, useSearchParams } from 'react-router';
 import Button from '../components/Button';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
-import { useMessagePopup } from '../components/messagePopup/useMessagePopup';
 import { useLoginMutation } from '../features/auth/authApiSlice';
 import AlreadyLoggedIn from '../features/auth/components/AlreadyLoggedIn';
 import AuthForm from '../features/auth/components/AuthForm';
@@ -13,7 +12,6 @@ import { useLanguage } from '../features/language/useLanguage';
 import { useFormValidation } from '../hooks/useFormValidation';
 import { ShopPath } from '../layout/nav/enums';
 import { BtnVariant } from '../types/enums';
-import { handleApiError } from '../utils/handleApiError';
 import { validateLogin } from '../utils/validation/validateLogin';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
@@ -22,7 +20,6 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const [loginUser, { isLoading }] = useLoginMutation();
-  const { onAddMessagePopup } = useMessagePopup();
   const {
     currentUser,
     isLoading: isUserLoading,
@@ -52,19 +49,15 @@ const LoginPage = () => {
   });
 
   async function handleLoginUser() {
-    try {
-      const result = await loginUser(values).unwrap();
-      if (result.success) {
-        if (cartList.length > 0) {
-          await syncCart(cartList).unwrap();
+    const result = await loginUser(values).unwrap();
+    if (result.success) {
+      if (cartList.length > 0) {
+        await syncCart(cartList).unwrap();
 
-          cartStorageUtil.clear();
-        }
-
-        navigate(from, { replace: true });
+        cartStorageUtil.clear();
       }
-    } catch (error) {
-      handleApiError(error, onAddMessagePopup);
+
+      navigate(from, { replace: true });
     }
   }
 

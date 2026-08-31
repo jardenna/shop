@@ -9,7 +9,6 @@ import {
   useGetSubCategoryByIdQuery,
 } from '../../features/subCategories/subCategoryApiSlice';
 import { AdminPath } from '../../layout/nav/enums';
-import { handleApiError } from '../../utils/handleApiError';
 import { translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
@@ -34,24 +33,20 @@ const ViewSubCategoryPage = () => {
   const [deleteSubCategory] = useDeleteSubCategoryMutation();
 
   const handleDeleteSubCategory = async () => {
-    try {
-      const result = await deleteSubCategory(id || '').unwrap();
+    const result = await deleteSubCategory(id || '').unwrap();
 
-      if (result.success) {
-        navigate(AdminPath.AdminSubCategories);
-        onAddMessagePopup({
-          message: language.categoryDeleted,
-          withDelay: true,
-        });
-      } else {
-        onAddMessagePopup({
-          messagePopupType: 'error',
-          message: language.categoryNotFound,
-          componentType: 'notification',
-        });
-      }
-    } catch (error) {
-      handleApiError(error, onAddMessagePopup);
+    if (result.success) {
+      navigate(AdminPath.AdminSubCategories);
+      onAddMessagePopup({
+        message: language.categoryDeleted,
+        withDelay: true,
+      });
+    } else {
+      onAddMessagePopup({
+        messagePopupType: 'error',
+        message: language.categoryNotFound,
+        componentType: 'notification',
+      });
     }
   };
 

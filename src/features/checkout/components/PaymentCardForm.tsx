@@ -12,7 +12,6 @@ import { useMessagePopup } from '../../../components/messagePopup/useMessagePopu
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { ShopPath } from '../../../layout/nav/enums';
 import { ChangeInputType, InputType } from '../../../types/types';
-import { handleApiError } from '../../../utils/handleApiError';
 import { validatePayment } from '../../../utils/validation/validatePayment';
 import { useDeleteCartMutation } from '../../cart/cartApiSlice';
 import {
@@ -107,25 +106,21 @@ const PaymentCardForm = ({
 
       return;
     }
-    try {
-      const order = await createOrder(orderPayload).unwrap();
+    const order = await createOrder(orderPayload).unwrap();
 
-      await payOrder({
-        orderId: order.id,
-        method: paymentMethod,
-        ...values,
-      }).unwrap();
+    await payOrder({
+      orderId: order.id,
+      method: paymentMethod,
+      ...values,
+    }).unwrap();
 
-      await deleteCart().unwrap();
+    await deleteCart().unwrap();
 
-      navigate(`/${ShopPath.MyOrder}/${order.id}`);
+    navigate(`/${ShopPath.MyOrder}/${order.id}`);
 
-      onAddMessagePopup({
-        message: language.orderCreated,
-      });
-    } catch (error) {
-      handleApiError(error, onAddMessagePopup);
-    }
+    onAddMessagePopup({
+      message: language.orderCreated,
+    });
   }
 
   return (

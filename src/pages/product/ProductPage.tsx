@@ -18,7 +18,6 @@ import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { AdminPath } from '../../layout/nav/enums';
 import { Options } from '../../types/types';
-import { handleApiError } from '../../utils/handleApiError';
 import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 import './ProductPage.styles.scss';
@@ -107,14 +106,10 @@ const ProductPage = () => {
 
   // Copy row handler
   async function handleCopyProduct(id: string) {
-    try {
-      await dublicateProduct(id);
-      onAddMessagePopup({
-        message: language.productCopied,
-      });
-    } catch (error) {
-      handleApiError(error, onAddMessagePopup);
-    }
+    await dublicateProduct(id).unwrap();
+    onAddMessagePopup({
+      message: language.productCopied,
+    });
   }
 
   const totalBtns = allProducts?.pages ?? 1;

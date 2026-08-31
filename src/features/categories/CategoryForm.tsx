@@ -10,7 +10,6 @@ import SharedCategoryInputs from '../../components/SharedCategoryInputs';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { AdminPath } from '../../layout/nav/enums';
 import type { OptionType } from '../../types/types';
-import { handleApiError } from '../../utils/handleApiError';
 import { translateKey } from '../../utils/utils';
 import { validateCategory } from '../../utils/validation/validateCategory';
 import { useLanguage } from '../language/useLanguage';
@@ -78,26 +77,22 @@ const CategoryForm = ({
       return;
     }
 
-    try {
-      if (id) {
-        await updateCategory({
-          id,
-          category: { ...values, scheduledDate: selectedDate },
-        }).unwrap();
-      } else {
-        await createCategory({
-          ...values,
-          scheduledDate: selectedDate,
-        }).unwrap();
-      }
-      onAddMessagePopup({
-        message: popupMessage,
-        withDelay: true,
-      });
-      navigate(AdminPath.AdminCategories);
-    } catch (error) {
-      handleApiError(error, onAddMessagePopup);
+    if (id) {
+      await updateCategory({
+        id,
+        category: { ...values, scheduledDate: selectedDate },
+      }).unwrap();
+    } else {
+      await createCategory({
+        ...values,
+        scheduledDate: selectedDate,
+      }).unwrap();
     }
+    onAddMessagePopup({
+      message: popupMessage,
+      withDelay: true,
+    });
+    navigate(AdminPath.AdminCategories);
   }
 
   return (

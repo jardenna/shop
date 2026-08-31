@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router';
 import { useAppDispatch } from '../app/hooks';
 import Button from '../components/Button';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
-import { useMessagePopup } from '../components/messagePopup/useMessagePopup';
 import SkeletonCartPage from '../components/skeleton/SkeletonCartPage/SkeletonCartPage';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import {
@@ -24,7 +23,6 @@ import { useLanguage } from '../features/language/useLanguage';
 import OrderHeading from '../features/orders/components/orderHeading/OrderHeading';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import { ShopPath } from '../layout/nav/enums';
-import { handleApiError } from '../utils/handleApiError';
 import MainPageContainer from './pageContainer/MainPageContainer';
 import './ShoppingCartPage.styles.scss';
 
@@ -33,7 +31,6 @@ const ShoppingCartPage = () => {
   const dispatch = useAppDispatch();
   const { currentUser, isAuthReady, isEmployee } = useAuth();
   const { language } = useLanguage();
-  const { onAddMessagePopup } = useMessagePopup();
   const { apiCartList, cartList, refetchApiCartList, isCartError } =
     useActiveCart({
       currentUser,
@@ -52,19 +49,11 @@ const ShoppingCartPage = () => {
   const { deleteCartItem } = useDeleteCartItem();
 
   const handleApplyPromoCode = async (promoCode: string) => {
-    try {
-      await applyPromoCode(promoCode).unwrap();
-    } catch (error) {
-      handleApiError(error, onAddMessagePopup);
-    }
+    await applyPromoCode(promoCode).unwrap();
   };
 
   const handleUpdateQty = async (cartItemId: string, qty: number) => {
-    try {
-      await updateQty({ cartItemId, qty });
-    } catch (error) {
-      handleApiError(error, onAddMessagePopup);
-    }
+    await updateQty({ cartItemId, qty }).unwrap();
   };
 
   const handleUpdateQtyGuestCart = (cartItemId: string, qty: number) => {

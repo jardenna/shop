@@ -5,7 +5,6 @@ import ModalContainer from '../../components/modal/ModalContainer';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useDeleteAddressMutation } from '../../features/profile/addressesApiSlice';
 import { BtnVariant, IconName } from '../../types/enums';
-import { handleApiError } from '../../utils/handleApiError';
 
 export type DeleteAddressModalProps = {
   id: string;
@@ -18,14 +17,10 @@ const DeleteAddressModal = ({ id, modalMessage }: DeleteAddressModalProps) => {
   const [deleteAddress, { reset, isLoading }] = useDeleteAddressMutation();
 
   const handleDeleteAddress = async (id: string) => {
-    try {
-      await deleteAddress(id).unwrap();
-      onAddMessagePopup({
-        message: language.addressDeleted,
-      });
-    } catch (error) {
-      handleApiError(error, onAddMessagePopup);
-    }
+    await deleteAddress(id).unwrap();
+    onAddMessagePopup({
+      message: language.addressDeleted,
+    });
   };
   const primaryActionBtn: PrimaryActionBtnProps = {
     onClick: () => {
