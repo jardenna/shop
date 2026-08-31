@@ -67,9 +67,10 @@ const AdminOrderPage = () => {
     updatePagination(1, newCount);
   };
 
-  const { scrollToRef, setShouldScroll } = useScrollOnPagination({
-    isLoading,
-  });
+  const { scrollToRef, setShouldScroll } =
+    useScrollOnPagination<HTMLTableElement>({
+      isLoading,
+    });
 
   const handlePagination = (id: number) => {
     // Early exit so current page doesn't spam history or rerender
@@ -89,12 +90,9 @@ const AdminOrderPage = () => {
   });
 
   return (
-    <AdminPageContainer
-      heading={language.orders}
-      variant="x-large"
-      scrollToRef={scrollToRef}
-    >
+    <AdminPageContainer heading={language.orders} variant="x-large">
       <SortTable
+        scrollToRef={scrollToRef}
         btnLabel="orders"
         navigationPath={AdminPath.AdminOrders}
         onRemoveFilterTag={onRemoveFilterTag}

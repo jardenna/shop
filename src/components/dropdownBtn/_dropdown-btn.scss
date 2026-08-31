@@ -15,10 +15,14 @@
   }
 
   &:has(.btn.active),
-  &:has(.btn:focus-visible),
   &:has(.btn:hover) {
-    border-color: $color-blue-25;
+    border-left-color: $color-blue-25;
     background-color: $color-background;
+  }
+
+  &:has(.btn:focus-visible) {
+    border-left-color: $color-blue-25;
+    background-color: $color-white;
   }
 
   .btn-ghost {

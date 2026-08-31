@@ -15,7 +15,7 @@ export type DeleteAddressModalProps = {
 const DeleteAddressModal = ({ id, modalMessage }: DeleteAddressModalProps) => {
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
-  const [deleteAddress, { reset }] = useDeleteAddressMutation();
+  const [deleteAddress, { reset, isLoading }] = useDeleteAddressMutation();
 
   const handleDeleteAddress = async (id: string) => {
     try {
@@ -33,6 +33,7 @@ const DeleteAddressModal = ({ id, modalMessage }: DeleteAddressModalProps) => {
     },
     label: language.delete,
     variant: BtnVariant.Danger,
+    showBtnLoader: isLoading,
   };
 
   return (

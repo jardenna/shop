@@ -13,6 +13,7 @@ interface NumberStepProps {
   disabled?: boolean;
   displayOnly?: boolean;
   initCount?: number;
+  isLoading?: boolean;
   max?: number;
   min?: number;
   showLabel?: boolean;
@@ -33,6 +34,7 @@ const NumberStep = ({
   name,
   showLabel,
   disabled,
+  isLoading,
 }: NumberStepProps) => {
   const { language } = useLanguage();
 
@@ -46,6 +48,7 @@ const NumberStep = ({
       <div className="number-step-container">
         <IconBtn
           iconName={IconName.Subtract}
+          isLoading={isLoading}
           ariaLabel={`${language.subtract} ${initCount} `}
           disabled={value === min}
           variant={BtnVariant.Ghost}
@@ -70,6 +73,7 @@ const NumberStep = ({
           />
         )}
         <IconBtn
+          isLoading={isLoading}
           iconName={IconName.Add}
           variant={BtnVariant.Ghost}
           onClick={() => {

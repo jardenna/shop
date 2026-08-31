@@ -55,8 +55,9 @@ const PaymentCardForm = ({
     validate: validatePayment,
   });
 
-  const [createOrder] = useCreateOrderMutation();
-  const [payOrder] = usePayOrderMutation();
+  const [createOrder, { isLoading: isCreateOrderLoading }] =
+    useCreateOrderMutation();
+  const [payOrder, { isLoading }] = usePayOrderMutation();
   const [deleteCart] = useDeleteCartMutation();
 
   const orderItems = checkout.cartItems.map(
@@ -132,6 +133,7 @@ const PaymentCardForm = ({
       className="payment-form"
       onSubmit={onSubmit}
       submitBtnLabel={language.placeOrder}
+      isLoading={isCreateOrderLoading || isLoading}
     >
       <FieldSet
         legendText={language.payment}

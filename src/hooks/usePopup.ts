@@ -12,16 +12,20 @@ type usePopupProps = {
 export const usePopup = ({ callback, placement }: usePopupProps) => {
   const popupRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
-  const arrowRef = useRef<HTMLDivElement | null>(null);
+  const arrowRef = useRef<HTMLSpanElement | null>(null);
   const [popupIsOpen, setPopupIsOpen] = useState(false);
   const popperInstanceRef = useRef<Instance | null>(null);
 
-  useKeyPress(() => {
+  const closePopup = () => {
     setPopupIsOpen(false);
+  };
+
+  useKeyPress(() => {
+    closePopup();
   }, [KeyCode.Esc]);
 
   useClickOutside(popupRef, () => {
-    setPopupIsOpen(false);
+    closePopup();
   }, [buttonRef]);
 
   useEffect(() => {
@@ -72,7 +76,7 @@ export const usePopup = ({ callback, placement }: usePopupProps) => {
 
   const handleCallback = () => {
     callback?.();
-    setPopupIsOpen(false);
+    closePopup();
   };
 
   return {
@@ -80,6 +84,7 @@ export const usePopup = ({ callback, placement }: usePopupProps) => {
     buttonRef,
     popupIsOpen,
     togglePopupList,
+    closePopup,
     onCallback: handleCallback,
     arrowRef,
   };

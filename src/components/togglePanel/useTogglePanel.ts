@@ -18,6 +18,15 @@ export const useTogglePanel = ({
   const [isPanelShown, setIsPanelShown] = useState(false);
 
   const handleHidePanel = () => {
+    const activeElement = document.activeElement;
+
+    if (
+      activeElement instanceof HTMLElement &&
+      panelRef.current?.contains(activeElement)
+    ) {
+      activeElement.blur();
+    }
+
     setIsPanelShown(false);
   };
 

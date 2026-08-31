@@ -78,6 +78,7 @@ const ViewSubCategoryPage = () => {
           variant="medium"
         >
           <CategoryCart
+            isLoading={isLoading}
             onReset={() => refetch()}
             onDeleteSubCategory={handleDeleteSubCategory}
             categoryId={category.id}

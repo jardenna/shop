@@ -91,6 +91,7 @@ const CheckoutPage = () => {
                 orderItems={checkout}
                 language={language}
                 deleteCartItem={deleteCartItem}
+                isLoading={isLoading}
               />
               <PaymentSummaryList
                 summary={checkout.summary}

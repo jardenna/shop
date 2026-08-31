@@ -58,9 +58,9 @@ const HeaderIcons = ({
             linkTo={ShopPath.ShoppingCart}
             ariaLabel={language.viewCart}
             iconName={IconName.ShoppingBag}
-            count={totalQuantity}
             itemUpdatedText={language.itemsUpdated}
             itemText={cartListItemText}
+            count={currentUser ? totalQuantity : 0}
           />
         </li>
         <li>

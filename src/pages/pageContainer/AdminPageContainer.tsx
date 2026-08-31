@@ -1,4 +1,4 @@
-import { useId, type ReactNode, type RefObject } from 'react';
+import { useId, type ReactNode } from 'react';
 import PageHeader from '../../components/pageHeader/PageHeader';
 import MetaTags from '../../layout/MetaTags';
 
@@ -9,7 +9,6 @@ type AdminPageContainerProps = {
   hideBreadCrumbs?: boolean;
   linkText?: string;
   linkTo?: string;
-  scrollToRef?: RefObject<HTMLHeadingElement | null>;
   variant?: 'small' | 'medium' | 'large' | 'x-large';
 };
 
@@ -19,7 +18,6 @@ const AdminPageContainer = ({
   linkText,
   linkTo,
   variant = 'large',
-  scrollToRef,
   className = '',
   hideBreadCrumbs,
 }: AdminPageContainerProps) => {
@@ -38,9 +36,7 @@ const AdminPageContainer = ({
         ariaLabelledby={ariaLabelledby}
         hideBreadCrumbs={hideBreadCrumbs}
       />
-      <div className="page-cart" ref={scrollToRef}>
-        {children}
-      </div>
+      <div className="page-cart">{children}</div>
     </section>
   );
 };

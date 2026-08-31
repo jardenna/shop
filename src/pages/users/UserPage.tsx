@@ -169,6 +169,7 @@ const UserPage = () => {
                 <td>
                   {allowedEditUser && !isAdmin && (
                     <DeleteItem
+                      isLoading={isLoading}
                       ariaLabel={language.deleteUser}
                       onDeleteItem={() => {
                         handleDeleteUser(id, username);

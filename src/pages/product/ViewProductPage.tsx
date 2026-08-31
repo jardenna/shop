@@ -73,6 +73,7 @@ const ViewProductPage = () => {
     onClick: handleDeleteProduct,
     label: language.delete,
     variant: BtnVariant.Danger,
+    showBtnLoader: isLoading,
   };
 
   const mainCategory = product ? product.categoryName : '';

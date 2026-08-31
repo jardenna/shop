@@ -26,7 +26,7 @@ export type InputProps = {
   inputInfo?: string;
   inputMode?: InputMode;
   inputSuffix?: string;
-  max?: number;
+  max?: number | string;
   maxLength?: number;
   min?: number;
   multiple?: boolean;

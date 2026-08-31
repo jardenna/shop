@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { ReactNode, RefObject } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { SortOrder } from '../../app/api/apiTypes/sharedApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
@@ -42,6 +42,7 @@ type TableProps<T> = {
   values: InitialTableFilters<T>;
   className?: string;
   emptyHeaderCellText?: string;
+  scrollToRef?: RefObject<HTMLTableElement | null>;
   skeletonCount?: number;
   skeletonHeight?: string;
   children: (data: T[]) => ReactNode;
@@ -73,6 +74,7 @@ const SortTable = <T,>({
   skeletonCount = 8,
   onRemoveFilterTag,
   navigationPath,
+  scrollToRef,
 }: TableProps<T>) => {
   const { language } = useLanguage();
   const { paddingBlockSmall, paddingBlockMedium, paddingBlockLarge } =
@@ -157,7 +159,7 @@ const SortTable = <T,>({
             FallbackComponent={ErrorBoundaryFallback}
             onReset={onReset}
           >
-            <table className={className}>
+            <table className={className} ref={scrollToRef}>
               <VisuallyHidden as="caption">{tableCaption}</VisuallyHidden>
               <thead>
                 <tr>

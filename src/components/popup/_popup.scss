@@ -2,12 +2,12 @@
 
 .popup-container {
   box-shadow: $box-shadow;
-  background-color: $color-light-gray-10;
   border-radius: 4px;
   z-index: 1000;
   overflow: visible;
   max-width: rem(280px);
   padding: 8px;
+  background-color: $color-white;
 
   &:has(.dropdown-item) {
     padding: 0;
@@ -23,11 +23,8 @@
     position: absolute;
     width: 12px;
     height: 12px;
-    background-color: $color-white;
+    background-color: inherit;
     transform: rotate(45deg);
-    box-shadow:
-      0 2px 4px rgb(0 0 0 / 16%),
-      0 0 4px rgb(0 0 0 / 10%);
   }
 }
 

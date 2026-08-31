@@ -182,6 +182,7 @@ const AdminOrderDetailsPage = () => {
             <AdminOrderFooter
               language={language}
               onCancelOrder={handleCancelOrder}
+              isLoading={isLoading}
               id={order.id}
               triggerModalDisabled={
                 orderStatus.status !== 'created' &&

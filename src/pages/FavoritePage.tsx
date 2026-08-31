@@ -9,20 +9,18 @@ import Panel from '../components/togglePanel/Panel';
 import { useTogglePanel } from '../components/togglePanel/useTogglePanel';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useAddToCartMutation } from '../features/cart/cartApiSlice';
+import FavoritesPanelCart from '../features/favorites/components/FavoritesPanelCart';
 import { useLanguage } from '../features/language/useLanguage';
 import { openMiniCart } from '../features/miniCartPopupSlice';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import ProductCart from '../features/shop/components/ProductCart';
-
+import CartForm, {
+  InitialShopValues,
+} from '../features/shop/components/singleProduct/CartForm';
 import { ShopPath } from '../layout/nav/enums';
 import { handleApiError } from '../utils/handleApiError';
 import './FavoritesPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
-
-import FavoritesPanelCart from '../features/favorites/components/FavoritesPanelCart';
-import CartForm, {
-  InitialShopValues,
-} from '../features/shop/components/singleProduct/CartForm';
 
 const FavoritePage = () => {
   const { language } = useLanguage();

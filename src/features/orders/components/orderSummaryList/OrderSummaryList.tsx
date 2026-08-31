@@ -4,6 +4,7 @@ import './_order-summary-list.scss';
 import OrderSummaryItem from './OrderSummaryItem';
 
 interface OrderSummaryListProps {
+  isLoading: boolean;
   language: Record<string, string>;
   orderItems?: CartListResponse;
   deleteCartItem: (cartItemId: string) => void;
@@ -13,6 +14,7 @@ const OrderSummaryList = ({
   orderItems,
   language,
   deleteCartItem,
+  isLoading,
 }: OrderSummaryListProps) =>
   orderItems && (
     <>
@@ -29,6 +31,7 @@ const OrderSummaryList = ({
               onDeleteItem={() => {
                 deleteCartItem(cartItem.id);
               }}
+              isLoading={isLoading}
             />
           </li>
         ))}
