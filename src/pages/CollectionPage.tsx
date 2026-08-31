@@ -32,7 +32,7 @@ import { IconName } from '../types/enums';
 import { Options } from '../types/types';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { sortSizesDynamic } from '../utils/sizeUtils';
-import './cCollectionPage.styles.scss';
+import './collectionPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 export type FilterKeys = keyof BaseShopProductsParams;

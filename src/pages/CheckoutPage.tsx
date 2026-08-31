@@ -14,7 +14,7 @@ import OrderSummaryList from '../features/orders/components/orderSummaryList/Ord
 import { useFormValidation } from '../hooks/useFormValidation';
 import { ShopPath } from '../layout/nav/enums';
 import AddressList from './account/AddressList';
-import './cNewheckoutPage.styles.scss';
+import './checkoutPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const CheckoutPage = () => {

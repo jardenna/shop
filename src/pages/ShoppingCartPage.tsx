@@ -24,7 +24,7 @@ import OrderHeading from '../features/orders/components/orderHeading/OrderHeadin
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import { ShopPath } from '../layout/nav/enums';
 import MainPageContainer from './pageContainer/MainPageContainer';
-import './sShoppingCartPage.styles.scss';
+import './shoppingCartPage.styles.scss';
 
 const ShoppingCartPage = () => {
   const navigate = useNavigate();

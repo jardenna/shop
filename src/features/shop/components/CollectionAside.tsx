@@ -1,7 +1,7 @@
 import type { ProductMenuResponse } from '../../../app/api/apiTypes/shopApiTypes';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import LayoutElement from '../../../layout/LayoutElement';
-import './cCollectionAside.styles.scss';
+import './collectionAside.styles.scss';
 import CollectionNav from './CollectionNav';
 
 type CollectionAsideProps = {
