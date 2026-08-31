@@ -7,11 +7,17 @@ import './_delete-item.scss';
 
 interface DeleteItemProps {
   ariaLabel: string;
+  isLoading: boolean;
   itemName: string;
   onDeleteItem: () => void;
 }
 
-const DeleteItem = ({ onDeleteItem, itemName, ariaLabel }: DeleteItemProps) => {
+const DeleteItem = ({
+  onDeleteItem,
+  itemName,
+  ariaLabel,
+  isLoading,
+}: DeleteItemProps) => {
   const { language } = useLanguage();
 
   return (
@@ -28,6 +34,7 @@ const DeleteItem = ({ onDeleteItem, itemName, ariaLabel }: DeleteItemProps) => {
             </Button>
 
             <Button
+              showBtnLoader={isLoading}
               variant={BtnVariant.Danger}
               onClick={() => {
                 close();

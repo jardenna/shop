@@ -6,6 +6,7 @@ import SummaryInfo from './SummaryInfo';
 interface OrderSummaryItemProps {
   ariaLabel: string;
   cartItem: Order;
+  isLoading: boolean;
   language: Record<string, string>;
   onDeleteItem: () => void;
 }
@@ -15,6 +16,7 @@ const OrderSummaryItem = ({
   onDeleteItem,
   language,
   cartItem,
+  isLoading,
 }: OrderSummaryItemProps) => (
   <article className="order-payment-summary-item ">
     <Img src={cartItem.image} alt="" className="summary-img" />
@@ -22,6 +24,7 @@ const OrderSummaryItem = ({
       <div className="flex">
         <h3 className="payment-summary-item -title">{cartItem.productName}</h3>
         <DeleteItem
+          isLoading={isLoading}
           ariaLabel={ariaLabel}
           onDeleteItem={onDeleteItem}
           itemName={cartItem.productName}

@@ -76,6 +76,7 @@ const CartItem = ({
     </div>
     <div className="actions">
       <DeleteItem
+        isLoading={isLoading}
         ariaLabel={`${language.delete} ${cart.productName}`}
         onDeleteItem={() => {
           onDeleteCartItem(cart.id);
