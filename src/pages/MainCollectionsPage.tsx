@@ -5,7 +5,7 @@ import MainCollections from '../features/shop/components/MainCollections';
 import { MainCollectionsBaseProps } from '../features/shop/components/MainCollectionsItem';
 import { ShopPath } from '../layout/nav/enums';
 import { translateKey } from '../utils/utils';
-import './MainCollectionPage.styles.scss';
+import './mMainCollectionPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 type AdImages = Partial<Record<MainCategoryNames, string[]>> & {

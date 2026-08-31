@@ -9,7 +9,7 @@ import OrderList from '../features/orders/components/OrderList';
 import { useGetUserOrderQuery } from '../features/orders/orderApiSlice';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import { ShopPath } from '../layout/nav/enums';
-import './MyOrdersPage.styles.scss';
+import './mMyOrdersPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const MyOrdersPage = () => {

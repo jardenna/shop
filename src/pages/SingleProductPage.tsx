@@ -19,7 +19,7 @@ import SingleProductPurchaseSection from '../features/shop/components/singleProd
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
 import MetaTags from '../layout/MetaTags';
 import { getDisplaySizes } from '../utils/sizeUtils';
-import './SingleProductPage.styles.scss';
+import './sSingleProductPage.styles.scss';
 
 const SingleProductPage = () => {
   const { currentUser } = useAuth();

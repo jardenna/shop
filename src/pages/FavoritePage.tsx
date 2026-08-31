@@ -17,7 +17,7 @@ import CartForm, {
   InitialShopValues,
 } from '../features/shop/components/singleProduct/CartForm';
 import { ShopPath } from '../layout/nav/enums';
-import './FavoritesPage.styles.scss';
+import './fFavoritesPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const FavoritePage = () => {
