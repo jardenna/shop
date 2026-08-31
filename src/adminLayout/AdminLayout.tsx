@@ -18,7 +18,7 @@ const AdminLayout = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const [logout] = useLogoutMutation();
-  const { currentUser, onReset } = useAuth();
+  const { onReset } = useAuth();
   const { isMobileSize, isLargeTabletSize } = useMediaQuery();
 
   const dispatch = useAppDispatch();
@@ -47,9 +47,7 @@ const AdminLayout = () => {
       {!isMobileSize && <SkipLink />}
       <AdminHeader
         onLogout={handleLogout}
-        btnLabel={language.logout}
         onReset={() => onReset()}
-        welcomeMessage={`${language.welcome} ${currentUser?.username}`}
         isMobileSize={isLargeTabletSize}
       />
       <div className="main">
