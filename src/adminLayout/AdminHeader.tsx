@@ -8,22 +8,15 @@ import Logout from './Logout';
 type AdminHeaderProps = {
   isMobileSize: boolean;
   onLogout: () => void;
-  onReset: () => void;
 };
-const AdminHeader = ({ onLogout, isMobileSize, onReset }: AdminHeaderProps) => (
+
+const AdminHeader = ({ onLogout, isMobileSize }: AdminHeaderProps) => (
   <LayoutElement className="admin-header">
     <>
       <Logo linkTo={`/${AdminPath.Admin}`} />
       {!isMobileSize ? (
-        <Logout onReset={onReset} onLogout={onLogout} />
+        <Logout onLogout={onLogout} />
       ) : (
-        // <ErrorBoundary
-        //   FallbackComponent={ErrorBoundaryFallback}
-        //   onReset={onReset}
-        // >
-        //   <p>{welcomeMessage && welcomeMessage}</p>
-        //   <Button onClick={onLogout}>{btnLabel}</Button>
-        // </ErrorBoundary>
         <MobileNav navList={adminNavList} className="admin-nav-container" />
       )}
     </>

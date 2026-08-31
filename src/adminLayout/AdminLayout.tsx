@@ -3,7 +3,6 @@ import { Outlet, useLocation, useNavigate } from 'react-router';
 import { useAppDispatch } from '../app/hooks';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
-import { useAuth } from '../features/auth/hooks/useAuth';
 import { useLanguage } from '../features/language/useLanguage';
 import { clearMessagePopups } from '../features/messagePopupSlice';
 import { localStorageKeys, useLocalStorage } from '../hooks/useLocalStorage';
@@ -18,7 +17,6 @@ const AdminLayout = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const [logout] = useLogoutMutation();
-  const { onReset } = useAuth();
   const { isMobileSize, isLargeTabletSize } = useMediaQuery();
 
   const dispatch = useAppDispatch();
@@ -45,11 +43,7 @@ const AdminLayout = () => {
   return (
     <div className="main-container admin-container">
       {!isMobileSize && <SkipLink />}
-      <AdminHeader
-        onLogout={handleLogout}
-        onReset={() => onReset()}
-        isMobileSize={isLargeTabletSize}
-      />
+      <AdminHeader onLogout={handleLogout} isMobileSize={isLargeTabletSize} />
       <div className="main">
         {!isLargeTabletSize && (
           <Aside

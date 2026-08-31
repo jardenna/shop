@@ -6,12 +6,11 @@ import { useLanguage } from '../features/language/useLanguage';
 
 interface LogoutProps {
   onLogout: () => void;
-  onReset: () => void;
 }
 
-const Logout = ({ onReset, onLogout }: LogoutProps) => {
+const Logout = ({ onLogout }: LogoutProps) => {
   const { language } = useLanguage();
-  const { currentUser } = useAuth();
+  const { currentUser, onReset } = useAuth();
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
       {currentUser && (
