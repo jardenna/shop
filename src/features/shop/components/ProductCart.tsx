@@ -13,7 +13,7 @@ import VisuallyHidden from '../../../components/VisuallyHidden';
 import { BtnVariant } from '../../../types/enums';
 import { useLanguage } from '../../language/useLanguage';
 import NotifyMe from './NotifyMe';
-import './ProductCart.styles.scss';
+import './productCart.styles.scss';
 import ProductCartGridContent from './ProductCartGridContent';
 import ProductCartListContent from './ProductCartListContent';
 import SizeOverlay from './SizeOverlay';
