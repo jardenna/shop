@@ -16,7 +16,6 @@ import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { AdminPath } from '../../layout/nav/enums';
-import { handleApiError } from '../../utils/handleApiError';
 import { validateUpdateUser } from '../../utils/validation/validateUpdateUser';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 import './userPage.styles.scss';
@@ -85,29 +84,21 @@ const UserPage = () => {
       return;
     }
 
-    try {
-      await updateUser({
-        id,
-        user: editValues,
-      }).unwrap();
-      onAddMessagePopup({
-        message: language.userUpdated,
-      });
-    } catch (error) {
-      handleApiError(error, onAddMessagePopup);
-    }
+    await updateUser({
+      id,
+      user: editValues,
+    }).unwrap();
+    onAddMessagePopup({
+      message: language.userUpdated,
+    });
   }
 
   async function handleDeleteUser(id: string, username: string) {
-    try {
-      await deleteUser(id).unwrap();
+    await deleteUser(id).unwrap();
 
-      onAddMessagePopup({
-        message: `${username} ${language.deleted}`,
-      });
-    } catch (error) {
-      handleApiError(error, onAddMessagePopup);
-    }
+    onAddMessagePopup({
+      message: `${username} ${language.deleted}`,
+    });
   }
 
   return (

@@ -56,11 +56,7 @@ const SingleProductPurchaseSection = ({
     useReplaceCartMutation();
 
   const handleAddCartItem = async (cartItem: CartItem) => {
-    try {
-      await addCartItemApi(cartItem).unwrap();
-    } catch (error) {
-      handleApiError(error, onAddMessagePopup);
-    }
+    await addCartItemApi(cartItem).unwrap();
   };
 
   const addToCart = async (cartItem: CartItem) => {
@@ -161,14 +157,10 @@ const SingleProductPurchaseSection = ({
         return;
       }
 
-      try {
-        await replaceCartItemApi({
-          cartItemId: existingVariant.id,
-          cartItem,
-        }).unwrap();
-      } catch (error) {
-        handleApiError(error, onAddMessagePopup);
-      }
+      await replaceCartItemApi({
+        cartItemId: existingVariant.id,
+        cartItem,
+      }).unwrap();
     } else {
       const updatedCartList = cartList.map((item) =>
         item === existingVariant ? cartItem : item,

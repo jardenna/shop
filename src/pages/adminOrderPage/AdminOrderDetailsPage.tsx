@@ -24,7 +24,6 @@ import OrderStatusActions from '../../features/orders/components/orderStatusActi
 import OrderSummary from '../../features/orders/components/OrderSummary';
 import { createOrderAddressList } from '../../features/orders/utils/createOrderAddressList';
 import { AdminPath } from '../../layout/nav/enums';
-import { handleApiError } from '../../utils/handleApiError';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const AdminOrderDetailsPage = () => {
@@ -44,47 +43,35 @@ const AdminOrderDetailsPage = () => {
   const [cancelOrder] = useCancelOrderMutation();
 
   const handleUpdateOrder = async (status: DeliveryStatus) => {
-    try {
-      const result = await updateOrder({
-        orderId: id ?? '',
-        status,
-      }).unwrap();
+    const result = await updateOrder({
+      orderId: id ?? '',
+      status,
+    }).unwrap();
 
-      if (result.success) {
-        onAddMessagePopup({
-          message: result.message,
-        });
-      }
-    } catch (error) {
-      handleApiError(error, onAddMessagePopup);
+    if (result.success) {
+      onAddMessagePopup({
+        message: result.message,
+      });
     }
   };
 
   const handleShipOrder = async () => {
-    try {
-      const result = await shipOrder(id ?? '').unwrap();
+    const result = await shipOrder(id ?? '').unwrap();
 
-      if (result.success) {
-        onAddMessagePopup({
-          message: result.message,
-        });
-      }
-    } catch (error) {
-      handleApiError(error, onAddMessagePopup);
+    if (result.success) {
+      onAddMessagePopup({
+        message: result.message,
+      });
     }
   };
 
   const handleCancelOrder = async () => {
-    try {
-      const result = await cancelOrder(id ?? '').unwrap();
+    const result = await cancelOrder(id ?? '').unwrap();
 
-      if (result.success) {
-        onAddMessagePopup({
-          message: result.message,
-        });
-      }
-    } catch (error) {
-      handleApiError(error, onAddMessagePopup);
+    if (result.success) {
+      onAddMessagePopup({
+        message: result.message,
+      });
     }
   };
 

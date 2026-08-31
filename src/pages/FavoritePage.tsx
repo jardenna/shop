@@ -3,7 +3,6 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useAppDispatch } from '../app/hooks';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useFavorites } from '../components/favorites/useFavorites';
-import { useMessagePopup } from '../components/messagePopup/useMessagePopup';
 import SkeletonCollection from '../components/skeleton/skeletonCollection/SkeletonCollection';
 import Panel from '../components/togglePanel/Panel';
 import { useTogglePanel } from '../components/togglePanel/useTogglePanel';
@@ -18,14 +17,12 @@ import CartForm, {
   InitialShopValues,
 } from '../features/shop/components/singleProduct/CartForm';
 import { ShopPath } from '../layout/nav/enums';
-import { handleApiError } from '../utils/handleApiError';
 import './FavoritesPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const FavoritePage = () => {
   const { language } = useLanguage();
   const { currentUser } = useAuth();
-  const { onAddMessagePopup } = useMessagePopup();
   const dispatch = useAppDispatch();
   const { favorites, isLoading, onReset, isError } = useFavorites({});
   const sortedFavorites = favorites ? [...favorites].reverse() : [];
@@ -51,13 +48,9 @@ const FavoritePage = () => {
       color: values.color,
     };
 
-    try {
-      await addCartItemApi(cartItem).unwrap();
-      onTogglePanel();
-      dispatch(openMiniCart());
-    } catch (error) {
-      handleApiError(error, onAddMessagePopup);
-    }
+    await addCartItemApi(cartItem).unwrap();
+    onTogglePanel();
+    dispatch(openMiniCart());
   }
 
   const selectedProduct = favorites?.find(

@@ -18,7 +18,6 @@ import SharedCategoryInputs from '../../../components/SharedCategoryInputs';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { AdminPath } from '../../../layout/nav/enums';
 import type { OptionType } from '../../../types/types';
-import { handleApiError } from '../../../utils/handleApiError';
 import { translateKey } from '../../../utils/utils';
 import { validateSubcategory } from '../../../utils/validation/validateSubcategory';
 import { useLanguage } from '../../language/useLanguage';
@@ -98,37 +97,33 @@ const SubCategoryForm = ({
       return;
     }
 
-    try {
-      if (id) {
-        await updateSubCategory({
-          id,
-          subCategory: {
-            ...values,
-            category: values.category,
-            scheduledDate: selectedDate,
-          },
-        }).unwrap();
-
-        onAddMessagePopup({
-          message: language.categoryUpdated,
-        });
-      } else {
-        await createSubCategory({
+    if (id) {
+      await updateSubCategory({
+        id,
+        subCategory: {
           ...values,
           category: values.category,
           scheduledDate: selectedDate,
-        }).unwrap();
-      }
+        },
+      }).unwrap();
 
       onAddMessagePopup({
-        message: popupMessage,
-        withDelay: true,
+        message: language.categoryUpdated,
       });
-
-      navigate(AdminPath.AdminSubCategories);
-    } catch (error) {
-      handleApiError(error, onAddMessagePopup);
+    } else {
+      await createSubCategory({
+        ...values,
+        category: values.category,
+        scheduledDate: selectedDate,
+      }).unwrap();
     }
+
+    onAddMessagePopup({
+      message: popupMessage,
+      withDelay: true,
+    });
+
+    navigate(AdminPath.AdminSubCategories);
   }
 
   const selectedCategoryOption = parentCategoriesOptions.find(

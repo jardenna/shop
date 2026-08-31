@@ -4,11 +4,9 @@ import type {
   AuthResponse,
   UserResponse,
 } from '../../../app/api/apiTypes/adminApiTypes';
-import { useMessagePopup } from '../../../components/messagePopup/useMessagePopup';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { ShopPath } from '../../../layout/nav/enums';
 import { AutoComplete } from '../../../types/types';
-import { handleApiError } from '../../../utils/handleApiError';
 import { validateSignup } from '../../../utils/validation/validateCreateAccount';
 import { useLanguage } from '../../language/useLanguage';
 import AuthForm from './AuthForm';
@@ -48,8 +46,6 @@ const CreateAccount = ({
     role: 'User',
   };
 
-  const { onAddMessagePopup } = useMessagePopup();
-
   const { values, errors, onChange, onBlur, isFocused, onFocus, onSubmit } =
     useFormValidation({
       initialState,
@@ -58,20 +54,16 @@ const CreateAccount = ({
     });
 
   async function handleRegisterUser() {
-    try {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { confirmPassword, ...rest } = values;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { confirmPassword, ...rest } = values;
 
-      const result = await createUser({
-        ...rest,
-        role: rest.role,
-      });
+    const result = await createUser({
+      ...rest,
+      role: rest.role,
+    });
 
-      if (result.success) {
-        navigate(navigateTo);
-      }
-    } catch (error) {
-      handleApiError(error, onAddMessagePopup);
+    if (result.success) {
+      navigate(navigateTo);
     }
   }
 
