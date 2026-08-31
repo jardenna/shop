@@ -5,6 +5,7 @@ import { BtnVariant } from '../../../types/enums';
 
 interface AdminOrderFooterProps {
   id: string;
+  isLoading: boolean;
   language: Record<string, string>;
   triggerModalDisabled: boolean;
   onCancelOrder: () => void;
@@ -13,6 +14,7 @@ interface AdminOrderFooterProps {
 const AdminOrderFooter = ({
   language,
   id,
+  isLoading,
   onCancelOrder,
   triggerModalDisabled,
 }: AdminOrderFooterProps) => {
@@ -20,6 +22,7 @@ const AdminOrderFooter = ({
     onClick: onCancelOrder,
     label: language.cancelOrder,
     variant: BtnVariant.Danger,
+    showBtnLoader: isLoading,
   };
 
   return (

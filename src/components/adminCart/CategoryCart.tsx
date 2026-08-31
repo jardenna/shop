@@ -11,6 +11,7 @@ import CategoryCartLeft from './CategoryCartLeft';
 type CategoryCartProps = {
   categoryId: string;
   categoryName: string;
+  isLoading: boolean;
   productsInSubcategory: number;
   scheduledDate: Date | null;
   showStatusMessage: boolean;
@@ -33,6 +34,7 @@ const CategoryCart = ({
   categoryId,
   onDeleteSubCategory,
   onReset,
+  isLoading,
   triggerModalDisabled,
 }: CategoryCartProps) => {
   const { language } = useLanguage();
@@ -41,6 +43,7 @@ const CategoryCart = ({
     onClick: onDeleteSubCategory,
     label: language.delete,
     variant: BtnVariant.Danger,
+    showBtnLoader: isLoading,
   };
 
   return (
