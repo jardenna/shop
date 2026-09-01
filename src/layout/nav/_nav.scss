@@ -58,6 +58,10 @@
 .admin-nav-container {
   flex-grow: 1;
 
+  .nav-item {
+    border-bottom: $border;
+  }
+
   .nav-link {
     width: 100%;
     display: flex;
