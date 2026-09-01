@@ -17,7 +17,9 @@
 // Main nav
 .main-nav-container {
   .nav-list {
-    padding-bottom: 32px;
+    @include max-size($mini) {
+      margin-bottom: 32px;
+    }
 
     @include min-size($small) {
       display: flex;
