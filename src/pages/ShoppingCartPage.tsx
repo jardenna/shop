@@ -21,6 +21,7 @@ import { deleteGuestCartItem, updateGuestCartQty } from '../features/cartSlice';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
 import { useLanguage } from '../features/language/useLanguage';
 import OrderHeading from '../features/orders/components/orderHeading/OrderHeading';
+import TotalPrice from '../features/orders/components/TotalPrice';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import { ShopPath } from '../layout/nav/enums';
 import MainPageContainer from './pageContainer/MainPageContainer';
@@ -95,9 +96,10 @@ const ShoppingCartPage = () => {
     );
   }
 
-  const handleCheckout = () => {
+  const goToCheckoutPage = () => {
     navigate(`/${ShopPath.Checkout}`);
   };
+  console.log(apiCartList?.summary);
 
   return (
     <MainPageContainer heading={pageHeading}>
@@ -128,28 +130,36 @@ const ShoppingCartPage = () => {
             onReset={() => refetchApiCartList}
           >
             {apiCartList && (
-              <PaymentSummaryList
-                summary={apiCartList.summary}
-                language={language}
-                promoDiscount={apiCartList.discount}
-              />
+              <>
+                <PaymentSummaryList
+                  summary={apiCartList.summary}
+                  language={language}
+                  promoDiscount={apiCartList.discount}
+                />
+                {!isEmployee && (
+                  <PromoCodeForm
+                    onSubmitPromoCode={handleApplyPromoCode}
+                    isLoading={isPromoCodeLoading}
+                    promoDiscount={apiCartList.discount}
+                  />
+                )}
+                <div className="fixed-bottom-container">
+                  <TotalPrice price={apiCartList.summary.totalPrice} />
+                  <Button
+                    onClick={goToCheckoutPage}
+                    className="shopping-cart-btn"
+                  >
+                    {language.continueToCheckout}
+                  </Button>
+                </div>
+                <div className="payment-info">
+                  <PaymentMethodsList
+                    paymentMethods={apiCartList.paymentMethods}
+                  />
+                  <CartInfo language={language} />
+                </div>
+              </>
             )}
-            {apiCartList && !isEmployee && (
-              <PromoCodeForm
-                onSubmitPromoCode={handleApplyPromoCode}
-                isLoading={isPromoCodeLoading}
-                promoDiscount={apiCartList.discount}
-              />
-            )}
-
-            <Button onClick={handleCheckout} className="shopping-cart-btn">
-              {language.continueToCheckout}
-            </Button>
-            {apiCartList && (
-              <PaymentMethodsList paymentMethods={apiCartList.paymentMethods} />
-            )}
-
-            <CartInfo language={language} />
           </ErrorBoundary>
         </aside>
       </div>

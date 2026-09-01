@@ -5,6 +5,8 @@
   font-size: $font-medium;
   display: flex;
   justify-content: space-between;
+  padding: 20px;
+  box-shadow: $box-shadow;
 }
 
 .order-summary {

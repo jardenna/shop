@@ -131,6 +131,7 @@ const PaymentCardForm = ({
       submitBtnLabel={language.placeOrder}
       isLoading={isCreateOrderLoading || isLoading}
       additionalFooterInfo={additionalFooterInfo}
+      fixedFooter
     >
       <FieldSet
         legendText={language.payment}

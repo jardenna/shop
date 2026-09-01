@@ -54,9 +54,7 @@ const Form = ({
       <footer
         className={`footer ${fixedFooter ? 'fixed-bottom-container' : ''}`}
       >
-        {additionalFooterInfo && (
-          <div className="aditional-form-info">{additionalFooterInfo}</div>
-        )}
+        {additionalFooterInfo && additionalFooterInfo}
         {cancelBtnProps && (
           <Button
             onClick={cancelBtnProps.onCancel}
