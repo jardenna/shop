@@ -26,6 +26,10 @@
   }
 
   .single-product-content {
+    @include max-size($small) {
+      margin-bottom: 80px;
+    }
+
     @include min-size($medium) {
       max-width: rem(500px);
     }

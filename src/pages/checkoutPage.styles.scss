@@ -78,23 +78,6 @@
 
   .payment-form {
     margin-top: 12px;
-
-    .form-footer {
-      flex-direction: column;
-      gap: 0;
-      background-color: $color-white;
-
-      @include max-size($small) {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-
-        .btn-primary {
-          border-radius: 0;
-        }
-      }
-    }
   }
 
   .payment-card-form {

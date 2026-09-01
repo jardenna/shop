@@ -71,9 +71,9 @@ const MiniCartPopup = () => {
             <article>
               {summary.remainingForFreeShipping > 0 && (
                 <div className="mini-cart-info">
-                  {language.buyForFreeShipping}
+                  <span>{language.buyForFreeShipping}</span>
                   <ProductPrice price={summary.remainingForFreeShipping} />
-                  {language.freeShippingSuffix}
+                  <span>{language.freeShippingSuffix}</span>
                 </div>
               )}
 

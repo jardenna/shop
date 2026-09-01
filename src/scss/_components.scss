@@ -11,6 +11,25 @@
   display: flex;
   gap: 12px;
   margin-top: 12px;
+  background-color: $color-white;
+}
+
+.fixed-bottom-container {
+  &:has(.btn) {
+    flex-direction: column;
+    gap: 0;
+
+    @include max-size($small) {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+
+      .btn {
+        border-radius: 0;
+      }
+    }
+  }
 }
 
 .more-link {

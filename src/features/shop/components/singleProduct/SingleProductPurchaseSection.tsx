@@ -213,6 +213,7 @@ const SingleProductPurchaseSection = ({
         displaySizeList={displaySizeList}
         isLoading={isAddCartItemLoading}
         showQuantity
+        fixedFooter
       />
     </ErrorBoundary>
   );

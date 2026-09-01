@@ -18,6 +18,7 @@ type FormProps = {
   cancelBtnProps?: CancelButtonProps;
   className?: string;
   disabled?: boolean;
+  fixedFooter?: boolean;
   isLoading?: boolean;
   ref?: RefFormType;
   onSubmit: () => void;
@@ -30,6 +31,7 @@ const Form = ({
   className,
   isLoading,
   ariaLabel,
+  fixedFooter,
   cancelBtnProps,
   additionalFooterInfo,
   ref,
@@ -49,7 +51,9 @@ const Form = ({
     >
       {children}
 
-      <footer className="footer form-footer">
+      <footer
+        className={`footer ${fixedFooter ? 'fixed-bottom-container' : ''}`}
+      >
         {additionalFooterInfo && (
           <div className="aditional-form-info">{additionalFooterInfo}</div>
         )}

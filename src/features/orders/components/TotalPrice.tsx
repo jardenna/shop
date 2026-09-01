@@ -14,4 +14,5 @@ const TotalPrice = ({ price }: TotalPriceProps) => {
     </div>
   );
 };
+
 export default TotalPrice;
