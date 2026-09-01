@@ -8,7 +8,7 @@ import NavContainer from './NavContainer';
 interface MobileNavProps {
   navList: NavListProps[];
   className?: string;
-  navHeader?: string;
+  navHeading?: string;
   onLogout?: () => void;
 }
 
@@ -16,7 +16,7 @@ const MobileNav = ({
   navList,
   className,
   onLogout,
-  navHeader,
+  navHeading,
 }: MobileNavProps) => {
   const { language } = useLanguage();
   const { isPanelShown, onTogglePanel, panelRef } = useTogglePanel({
@@ -33,7 +33,7 @@ const MobileNav = ({
       triggerBtnClassName="menu-burger"
       triggerBtnContent={<span className="menu-burger-item" aria-hidden />}
     >
-      {navHeader && <div className="nav-header">{navHeader}</div>}
+      {navHeading && <div className="nav-header">{navHeading}</div>}
       <NavContainer navList={navList} className={className} hideAriaHasPopup />
       {onLogout && <Button onClick={onLogout}>{language.logout}</Button>}
     </TogglePanel>

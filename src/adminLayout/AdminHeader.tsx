@@ -7,14 +7,14 @@ import Logout from './Logout';
 
 type AdminHeaderProps = {
   isLargeTabletSize: boolean;
-  navHeader: string;
+  navHeading: string;
   onLogout: () => void;
 };
 
 const AdminHeader = ({
   onLogout,
   isLargeTabletSize,
-  navHeader,
+  navHeading,
 }: AdminHeaderProps) => (
   <LayoutElement className="admin-header">
     <>
@@ -26,7 +26,7 @@ const AdminHeader = ({
           navList={adminNavList}
           className="admin-nav-container"
           onLogout={onLogout}
-          navHeader={navHeader}
+          navHeading={navHeading}
         />
       )}
     </>
