@@ -55,6 +55,10 @@
     padding-inline: 20px;
     justify-content: space-between;
 
+    .toggle-panel {
+      overflow: hidden;
+    }
+
     .menu-burger {
       top: 30px;
     }

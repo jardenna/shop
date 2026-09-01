@@ -33,7 +33,7 @@ const MobileNav = ({
       triggerBtnClassName="menu-burger"
       triggerBtnContent={<span className="menu-burger-item" aria-hidden />}
     >
-      {navHeading && <div className="nav-header">{navHeading}</div>}
+      {navHeading && <div className="nav-heading">{navHeading}</div>}
       <NavContainer navList={navList} className={className} hideAriaHasPopup />
       {onLogout && <Button onClick={onLogout}>{language.logout}</Button>}
     </TogglePanel>
