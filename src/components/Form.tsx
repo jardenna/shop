@@ -13,7 +13,7 @@ type CancelButtonProps = {
 type FormProps = {
   children: ReactNode;
   submitBtnLabel: string;
-  additionalFooterInfo?: string;
+  additionalFooterInfo?: ReactNode;
   ariaLabel?: string;
   cancelBtnProps?: CancelButtonProps;
   className?: string;

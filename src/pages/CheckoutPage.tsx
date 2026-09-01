@@ -11,6 +11,7 @@ import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
 import { useLanguage } from '../features/language/useLanguage';
 import OrderHeading from '../features/orders/components/orderHeading/OrderHeading';
 import OrderSummaryList from '../features/orders/components/orderSummaryList/OrderSummaryList';
+import TotalPrice from '../features/orders/components/TotalPrice';
 import { useFormValidation } from '../hooks/useFormValidation';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import { ShopPath } from '../layout/nav/enums';
@@ -87,9 +88,9 @@ const CheckoutPage = () => {
                 addressSectionRef={addressSectionRef}
                 addAddressButtonRef={addAddressButtonRef}
                 additionalFooterInfo={
-                  isMobileSize
-                    ? `${language.orderTotalInclVat}: ${checkout.summary.totalPrice}`
-                    : undefined
+                  isMobileSize ? (
+                    <TotalPrice price={checkout.summary.totalPrice} />
+                  ) : undefined
                 }
               />
             </section>

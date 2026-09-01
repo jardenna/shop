@@ -1,5 +1,12 @@
 @use '../../../scss/globals' as *;
 
+.total-price {
+  text-transform: uppercase;
+  font-size: $font-medium;
+  display: flex;
+  justify-content: space-between;
+}
+
 .order-summary {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(340px, 1fr);
