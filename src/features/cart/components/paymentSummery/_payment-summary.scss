@@ -1,14 +1,22 @@
 @use '../../../../scss/globals' as *;
 
+.payment-info {
+  margin-bottom: 120px;
+}
+
 .payment-summary {
   background-color: $color-background;
   padding: 20px;
   border-radius: $border-radius;
+}
 
-  .summary-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.payment-summary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  @include max-size($small) {
+    margin-bottom: 32px;
   }
 }
 
@@ -33,11 +41,5 @@
 
   .payment-summary-info {
     font-family: $font-primary-bold;
-  }
-
-  &.summary-discount {
-    .payment-summary-info {
-      color: $color-danger;
-    }
   }
 }

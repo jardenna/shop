@@ -22,7 +22,7 @@ const OrderSummary = ({ language, order }: OrderSummaryProps) => (
           summary={order.summary}
           promoDiscount={order.discount}
           cancelled={order.delivery.status === 'cancelled'}
-        />{' '}
+        />
       </div>
     </article>
   </section>

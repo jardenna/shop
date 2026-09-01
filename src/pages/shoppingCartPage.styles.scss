@@ -7,6 +7,10 @@
 
   .shopping-cart-btn {
     margin-top: 20px;
+
+    @include max-size($small) {
+      margin: 0;
+    }
   }
 
   .cart-info {

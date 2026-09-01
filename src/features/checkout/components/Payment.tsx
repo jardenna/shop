@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { CheckoutResponse } from '../../../app/api/apiTypes/cartApiTypes';
 import { PaymentMethods } from '../../../app/api/apiTypes/paymentApiTypes';
 import RadioBtnList from '../../../components/formElements/radioList/RadioBtnList';
@@ -16,6 +17,7 @@ export interface BasePaymentProps {
   addressSectionRef: RefElementType;
   checkout: CheckoutResponse;
   language: Record<string, string>;
+  additionalFooterInfo?: ReactNode;
 }
 
 interface PaymentProps extends BasePaymentProps {
@@ -37,6 +39,7 @@ const Payment = ({
   language,
   addAddressButtonRef,
   addressSectionRef,
+  additionalFooterInfo,
 }: PaymentProps) => {
   const availablePaymentMethods = paymentMethodsList.filter((method) =>
     paymentMethod.includes(method.id),
@@ -65,6 +68,7 @@ const Payment = ({
       </form>
       {methodToShow && (
         <PaymentCardForm
+          additionalFooterInfo={additionalFooterInfo}
           addressSectionRef={addressSectionRef}
           fields={methodToShow.fields}
           key={methodToShow.id}

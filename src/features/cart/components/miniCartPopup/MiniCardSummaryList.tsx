@@ -13,7 +13,7 @@ const MiniCartSummaryList = ({
   promoDiscount,
   shippingPrice,
 }: MiniCartSummaryListProps) => (
-  <div className="mini-cart-summary-list">
+  <div>
     <PaymentSummaryItem
       label={language.employeeDiscount}
       price={promoDiscount}

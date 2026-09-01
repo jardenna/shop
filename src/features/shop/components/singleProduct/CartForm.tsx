@@ -26,6 +26,7 @@ interface CartFormProps {
   displaySizeList: Size[];
   isLoading: boolean;
   productData: BaseProductFormData;
+  fixedFooter?: boolean;
   showQuantity?: boolean;
   handleSubmit: (values: InitialShopValues) => void;
 }
@@ -37,6 +38,7 @@ const CartForm = ({
   handleSubmit,
   isLoading,
   showQuantity,
+  fixedFooter,
 }: CartFormProps) => {
   const { language } = useLanguage();
 
@@ -77,6 +79,7 @@ const CartForm = ({
       onSubmit={onSubmit}
       submitBtnLabel={language.addToBag}
       isLoading={isLoading}
+      fixedFooter={fixedFooter}
     >
       <FieldSet legendText={language.productVariants}>
         <ControlGroupList

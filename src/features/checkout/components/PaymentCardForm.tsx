@@ -34,6 +34,7 @@ const PaymentCardForm = ({
   addressSectionRef,
   addAddressButtonRef,
   addressLength,
+  additionalFooterInfo,
 }: PaymentCardFormProps) => {
   const navigate = useNavigate();
   const { onAddMessagePopup } = useMessagePopup();
@@ -129,6 +130,8 @@ const PaymentCardForm = ({
       onSubmit={onSubmit}
       submitBtnLabel={language.placeOrder}
       isLoading={isCreateOrderLoading || isLoading}
+      additionalFooterInfo={additionalFooterInfo}
+      fixedFooter
     >
       <FieldSet
         legendText={language.payment}

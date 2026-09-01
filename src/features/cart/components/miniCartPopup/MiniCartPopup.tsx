@@ -18,7 +18,7 @@ import {
 import OrderList from '../../../orders/components/OrderList';
 import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 import { useActiveCart } from '../../useActiveCart';
-import PaymentSummaryItem from '../paymentSummery/PaymentSummaryItem';
+import PaymentSummaryList from '../paymentSummery/PaymentSummaryList';
 import './_mini-cart-popup.scss';
 
 const MiniCartPopup = () => {
@@ -53,9 +53,6 @@ const MiniCartPopup = () => {
   }
 
   const { cartItems, summary, discount } = apiCartList;
-  const discountLabel = discount
-    ? `${language[discount.label]} (${discount.percent} %)`
-    : '';
 
   return (
     <Portal portalId="miniCart">
@@ -71,36 +68,20 @@ const MiniCartPopup = () => {
             <h2 className="mini-cart-title">{language.myBag}</h2>
             <OrderList orders={cartItems} language={language} />
 
-            <article className="mini-cart-price-info">
+            <article>
               {summary.remainingForFreeShipping > 0 && (
                 <div className="mini-cart-info">
-                  {language.buyForFreeShipping}
+                  <span>{language.buyForFreeShipping}</span>
                   <ProductPrice price={summary.remainingForFreeShipping} />
-                  {language.freeShippingSuffix}
+                  <span>{language.freeShippingSuffix}</span>
                 </div>
               )}
 
-              <div className="mini-cart-summary-list">
-                {summary.promoDiscount > 0 && (
-                  <PaymentSummaryItem
-                    label={
-                      discount.code === ''
-                        ? language.employeeDiscount
-                        : discountLabel
-                    }
-                    price={summary.promoDiscount}
-                    isDiscount
-                  />
-                )}
-                <PaymentSummaryItem
-                  label={language.estimatedShipping}
-                  price={summary.shippingPrice}
-                />
-                <PaymentSummaryItem
-                  label={language.orderTotalInclVat}
-                  price={summary.totalPrice}
-                />
-              </div>
+              <PaymentSummaryList
+                language={language}
+                summary={summary}
+                promoDiscount={discount}
+              />
             </article>
           </section>
         )}

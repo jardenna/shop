@@ -13,10 +13,12 @@ type CancelButtonProps = {
 type FormProps = {
   children: ReactNode;
   submitBtnLabel: string;
+  additionalFooterInfo?: ReactNode;
   ariaLabel?: string;
   cancelBtnProps?: CancelButtonProps;
   className?: string;
   disabled?: boolean;
+  fixedFooter?: boolean;
   isLoading?: boolean;
   ref?: RefFormType;
   onSubmit: () => void;
@@ -29,7 +31,9 @@ const Form = ({
   className,
   isLoading,
   ariaLabel,
+  fixedFooter,
   cancelBtnProps,
+  additionalFooterInfo,
   ref,
   disabled,
 }: FormProps) => {
@@ -47,7 +51,10 @@ const Form = ({
     >
       {children}
 
-      <footer className="footer">
+      <footer
+        className={`footer ${fixedFooter ? 'fixed-bottom-container' : ''}`}
+      >
+        {additionalFooterInfo && additionalFooterInfo}
         {cancelBtnProps && (
           <Button
             onClick={cancelBtnProps.onCancel}
@@ -58,7 +65,6 @@ const Form = ({
             {cancelBtnProps.btnLabel || language.cancel}
           </Button>
         )}
-
         <Button
           type="submit"
           showBtnLoader={isLoading}

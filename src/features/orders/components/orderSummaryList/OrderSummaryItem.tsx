@@ -18,11 +18,11 @@ const OrderSummaryItem = ({
   cartItem,
   isLoading,
 }: OrderSummaryItemProps) => (
-  <article className="order-payment-summary-item ">
-    <Img src={cartItem.image} alt="" className="summary-img" />
+  <article className="order-list-content">
+    <Img src={cartItem.image} alt="" className="order-img" />
     <div>
-      <div className="flex">
-        <h3 className="payment-summary-item -title">{cartItem.productName}</h3>
+      <div className="order-list-content-action">
+        <h3 className="payment-summary-item">{cartItem.productName}</h3>
         <DeleteItem
           isLoading={isLoading}
           ariaLabel={ariaLabel}

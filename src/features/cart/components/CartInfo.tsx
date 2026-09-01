@@ -6,7 +6,6 @@ interface CartInfoProps {
 
 const CartInfo = ({ language }: CartInfoProps) => (
   <div className="cart-info">
-    <span>{language.pricesConfirmed}</span>
     <span>
       <span className="cartinfo-text">{language.returnPeriod}</span>
       <Link to="/">{language.returnPolicyLink}</Link>

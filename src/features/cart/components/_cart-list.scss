@@ -38,8 +38,8 @@
         width: rem(180px);
         height: rem(180px);
 
-        @include max-size($small) {
-          width: auto;
+        @include max-size($mini) {
+          width: 100%;
         }
       }
     }
