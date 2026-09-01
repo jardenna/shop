@@ -17,7 +17,11 @@ const AdminHeader = ({ onLogout, isLargeTabletSize }: AdminHeaderProps) => (
       {!isLargeTabletSize ? (
         <Logout onLogout={onLogout} />
       ) : (
-        <MobileNav navList={adminNavList} className="admin-nav-container" />
+        <MobileNav
+          navList={adminNavList}
+          className="admin-nav-container"
+          onLogout={onLogout}
+        />
       )}
     </>
   </LayoutElement>
