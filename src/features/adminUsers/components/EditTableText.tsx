@@ -1,3 +1,4 @@
+import MailTo from '../../../components/MailTo';
 import { translateKey } from '../../../utils/utils';
 
 type EditTableTextProps = {
@@ -10,7 +11,7 @@ const EditTableText = ({ text, language }: EditTableTextProps) => (
     {!text.includes('@') ? (
       translateKey(text, language)
     ) : (
-      <a href={`mailto:${text}`}>{text}</a>
+      <MailTo email={text} />
     )}
   </span>
 );

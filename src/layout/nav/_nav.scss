@@ -7,9 +7,20 @@
   @include transition;
 }
 
+.nav-heading {
+  text-transform: uppercase;
+  padding: 20px;
+  border: $border;
+  font-family: $font-primary-semibold;
+}
+
 // Main nav
 .main-nav-container {
   .nav-list {
+    @include max-size($mini) {
+      margin-bottom: 32px;
+    }
+
     @include min-size($small) {
       display: flex;
 
@@ -48,6 +59,8 @@
 
 .mobile-nav-panel {
   &.toggle-panel {
+    display: flex;
+    flex-direction: column;
     padding: 0;
   }
 }
@@ -55,6 +68,10 @@
 // Admin nav
 .admin-nav-container {
   flex-grow: 1;
+
+  .nav-item {
+    border-bottom: $border;
+  }
 
   .nav-link {
     width: 100%;

@@ -3,7 +3,6 @@ import { Outlet, useLocation, useNavigate } from 'react-router';
 import { useAppDispatch } from '../app/hooks';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
-import { useAuth } from '../features/auth/hooks/useAuth';
 import { useLanguage } from '../features/language/useLanguage';
 import { clearMessagePopups } from '../features/messagePopupSlice';
 import { localStorageKeys, useLocalStorage } from '../hooks/useLocalStorage';
@@ -18,7 +17,6 @@ const AdminLayout = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const [logout] = useLogoutMutation();
-  const { currentUser, onReset } = useAuth();
   const { isMobileSize, isLargeTabletSize } = useMediaQuery();
 
   const dispatch = useAppDispatch();
@@ -35,7 +33,7 @@ const AdminLayout = () => {
 
   const handleLogout = () => {
     logout();
-    navigate(ShopPath.Root);
+    navigate(`/${ShopPath.Login}`);
   };
 
   const handleCollapseMenu = () => {
@@ -46,11 +44,9 @@ const AdminLayout = () => {
     <div className="main-container admin-container">
       {!isMobileSize && <SkipLink />}
       <AdminHeader
+        navHeading={language.menu}
         onLogout={handleLogout}
-        btnLabel={language.logout}
-        onReset={() => onReset()}
-        welcomeMessage={`${language.welcome} ${currentUser?.username}`}
-        isMobileSize={isLargeTabletSize}
+        isLargeTabletSize={isLargeTabletSize}
       />
       <div className="main">
         {!isLargeTabletSize && (

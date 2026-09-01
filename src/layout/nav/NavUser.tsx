@@ -1,5 +1,6 @@
 import type { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
 import Icon from '../../components/icons/Icon';
+import MailTo from '../../components/MailTo';
 import { IconName } from '../../types/enums';
 
 type NavUserProps = {
@@ -15,11 +16,7 @@ const NavUser = ({ currentUser, isMenuCollapsed }: NavUserProps) => (
       </span>
       <span className="user-text nav-text">
         <span className="text-bold">{currentUser.username}</span>
-        {!isMenuCollapsed && (
-          <span>
-            <a href={`mailto:${currentUser.email}`}>{currentUser.email}</a>
-          </span>
-        )}
+        {!isMenuCollapsed && <MailTo email={currentUser.email} />}
       </span>
     </span>
   </div>

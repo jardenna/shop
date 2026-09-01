@@ -3,8 +3,7 @@
 .mobile-sub-item {
   grid-column: span 3;
   border-top: 1px solid $color-gray-70;
-  padding: 12px 8px;
-  margin-inline: 20px;
+  padding-inline: 20px;
 }
 
 .nav-btn {
@@ -35,7 +34,7 @@
 
   &.shown {
     display: flex;
-    max-height: 500px;
+    max-height: rem(500px);
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
