@@ -21,7 +21,7 @@ const OrderSummaryItem = ({
   <article className="order-list-content">
     <Img src={cartItem.image} alt="" className="order-img" />
     <div>
-      <div className="flex">
+      <div className="order-list-content-action">
         <h3 className="payment-summary-item">{cartItem.productName}</h3>
         <DeleteItem
           isLoading={isLoading}

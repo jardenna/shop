@@ -2,10 +2,10 @@
 
 .order-list-content {
   display: flex;
-  gap: 16px;
+  gap: 20px;
 
-  .order-img {
-    width: rem(68px);
-    height: rem(100px);
+  .order-list-content-action {
+    display: flex;
+    gap: 20px;
   }
 }
