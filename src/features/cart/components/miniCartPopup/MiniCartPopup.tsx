@@ -18,7 +18,7 @@ import {
 import OrderList from '../../../orders/components/OrderList';
 import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 import { useActiveCart } from '../../useActiveCart';
-import PaymentSummaryItem from '../paymentSummery/PaymentSummaryItem';
+import PaymentSummaryList from '../paymentSummery/PaymentSummaryList';
 import './_mini-cart-popup.scss';
 
 const MiniCartPopup = () => {
@@ -53,9 +53,6 @@ const MiniCartPopup = () => {
   }
 
   const { cartItems, summary, discount } = apiCartList;
-  const discountLabel = discount
-    ? `${language[discount.label]} (${discount.percent} %)`
-    : '';
 
   return (
     <Portal portalId="miniCart">
@@ -80,33 +77,11 @@ const MiniCartPopup = () => {
                 </div>
               )}
 
-              {/* <PaymentSummaryList
+              <PaymentSummaryList
                 language={language}
                 summary={summary}
-                promoDiscount={summary.promoDiscount}
-              /> */}
-
-              <div className="payment-summary-list">
-                {summary.promoDiscount > 0 && (
-                  <PaymentSummaryItem
-                    label={
-                      discount.code === ''
-                        ? language.employeeDiscount
-                        : discountLabel
-                    }
-                    price={summary.promoDiscount}
-                    isDiscount
-                  />
-                )}
-                <PaymentSummaryItem
-                  label={language.estimatedShipping}
-                  price={summary.shippingPrice}
-                />
-                <PaymentSummaryItem
-                  label={language.orderTotalInclVat}
-                  price={summary.totalPrice}
-                />
-              </div>
+                promoDiscount={discount}
+              />
             </article>
           </section>
         )}
