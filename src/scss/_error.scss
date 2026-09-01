@@ -51,7 +51,7 @@
 
     &::after {
       content: '';
-      height: 124px;
+      height: rem(124px);
       width: 2px;
       background: $color-primary;
     }

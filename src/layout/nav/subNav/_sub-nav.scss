@@ -34,7 +34,7 @@
 
   &.shown {
     display: flex;
-    max-height: 500px;
+    max-height: rem(500px);
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;

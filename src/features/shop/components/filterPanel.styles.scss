@@ -18,11 +18,11 @@
   }
 
   .checkbox-list {
-    max-height: 272px;
+    max-height: rem(272px);
     overflow: auto;
 
     @media (height <= 700px) {
-      max-height: 100px;
+      max-height: rem(100px);
     }
 
     .checkbox-item {
@@ -74,6 +74,6 @@
 
 .toggle-content {
   overflow: auto;
-  max-height: calc(4 * 32px + 12px);
+  max-height: calc(4 * rem(32px) + rem(12px));
   margin-bottom: 8px;
 }
