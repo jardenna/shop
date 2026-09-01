@@ -33,7 +33,7 @@ const AdminLayout = () => {
 
   const handleLogout = () => {
     logout();
-    navigate(ShopPath.Root);
+    navigate(`/${ShopPath.Login}`);
   };
 
   const handleCollapseMenu = () => {
