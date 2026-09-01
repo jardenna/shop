@@ -4,12 +4,12 @@
   background-color: $color-background;
   padding: 20px;
   border-radius: $border-radius;
+}
 
-  .summary-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
+.payment-summary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .payment-summary-item {

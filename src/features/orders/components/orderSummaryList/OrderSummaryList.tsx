@@ -21,9 +21,9 @@ const OrderSummaryList = ({
       <h2 className="order-flow-title">
         {language.orderSummary} [ {getCartQuantity(orderItems.cartItems)} ]
       </h2>
-      <ul className="order-summary-list">
+      <ul className="order-list">
         {orderItems.cartItems.map((cartItem) => (
-          <li key={cartItem.id}>
+          <li key={cartItem.id} className="order-list-item">
             <OrderSummaryItem
               cartItem={cartItem}
               language={language}

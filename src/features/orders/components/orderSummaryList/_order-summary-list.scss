@@ -1,16 +1,10 @@
 @use '../../../../scss/globals' as *;
 
-.order-summary-list {
-  display: flex;
-  gap: 8px;
-  flex-direction: column;
-}
-
-.order-payment-summary-item {
+.order-list-content {
   display: flex;
   gap: 16px;
 
-  .summary-img {
+  .order-img {
     width: rem(68px);
     height: rem(100px);
   }

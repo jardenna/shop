@@ -71,7 +71,7 @@ const MiniCartPopup = () => {
             <h2 className="mini-cart-title">{language.myBag}</h2>
             <OrderList orders={cartItems} language={language} />
 
-            <article className="mini-cart-price-info">
+            <article>
               {summary.remainingForFreeShipping > 0 && (
                 <div className="mini-cart-info">
                   {language.buyForFreeShipping}
@@ -80,7 +80,13 @@ const MiniCartPopup = () => {
                 </div>
               )}
 
-              <div className="mini-cart-summary-list">
+              {/* <PaymentSummaryList
+                language={language}
+                summary={summary}
+                promoDiscount={summary.promoDiscount}
+              /> */}
+
+              <div className="payment-summary-list">
                 {summary.promoDiscount > 0 && (
                   <PaymentSummaryItem
                     label={
