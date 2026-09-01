@@ -11,7 +11,6 @@
   display: flex;
   gap: 12px;
   margin-top: 12px;
-  background-color: $color-white;
 }
 
 .fixed-bottom-container {
@@ -21,9 +20,11 @@
 
     @include max-size($small) {
       position: fixed;
+      z-index: 1;
       bottom: 0;
       left: 0;
       width: 100%;
+      background-color: $color-white;
 
       .btn {
         border-radius: 0;
