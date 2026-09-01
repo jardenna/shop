@@ -7,10 +7,15 @@ import Logout from './Logout';
 
 type AdminHeaderProps = {
   isLargeTabletSize: boolean;
+  navHeader: string;
   onLogout: () => void;
 };
 
-const AdminHeader = ({ onLogout, isLargeTabletSize }: AdminHeaderProps) => (
+const AdminHeader = ({
+  onLogout,
+  isLargeTabletSize,
+  navHeader,
+}: AdminHeaderProps) => (
   <LayoutElement className="admin-header">
     <>
       <Logo linkTo={`/${AdminPath.Admin}`} />
@@ -21,6 +26,7 @@ const AdminHeader = ({ onLogout, isLargeTabletSize }: AdminHeaderProps) => (
           navList={adminNavList}
           className="admin-nav-container"
           onLogout={onLogout}
+          navHeader={navHeader}
         />
       )}
     </>

@@ -72,6 +72,11 @@
       max-width: rem(100px);
       padding-block: 12px;
       min-height: auto;
+
+      @include max-size($large) {
+        max-width: 100%;
+        border-radius: 0;
+      }
     }
   }
 }
