@@ -10,6 +10,10 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+
+  @include max-size($small) {
+    margin-bottom: 32px;
+  }
 }
 
 .payment-summary-item {

@@ -12,6 +12,7 @@ import { useLanguage } from '../features/language/useLanguage';
 import OrderHeading from '../features/orders/components/orderHeading/OrderHeading';
 import OrderSummaryList from '../features/orders/components/orderSummaryList/OrderSummaryList';
 import { useFormValidation } from '../hooks/useFormValidation';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 import { ShopPath } from '../layout/nav/enums';
 import AddressList from './account/AddressList';
 import './checkoutPage.styles.scss';
@@ -21,6 +22,7 @@ const CheckoutPage = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const { currentUser } = useAuth();
+  const { isMobileSize } = useMediaQuery();
 
   const addressSectionRef = useRef<HTMLDivElement | null>(null);
   const addAddressButtonRef = useRef<HTMLButtonElement>(null);
@@ -84,6 +86,11 @@ const CheckoutPage = () => {
                 addressLength={checkout.addresses.length}
                 addressSectionRef={addressSectionRef}
                 addAddressButtonRef={addAddressButtonRef}
+                additionalFooterInfo={
+                  isMobileSize
+                    ? `${language.orderTotalInclVat}: ${checkout.summary.totalPrice}`
+                    : undefined
+                }
               />
             </section>
             <aside className="order-flow-aside">
