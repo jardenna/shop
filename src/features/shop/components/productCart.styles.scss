@@ -14,8 +14,9 @@ $placement-x: 12px;
     }
   }
 
-  p {
+  .product-cart-description {
     margin: 0;
+    text-wrap: balance;
   }
 
   a {
