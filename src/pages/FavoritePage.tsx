@@ -39,6 +39,10 @@ const FavoritePage = () => {
     onTogglePanel();
   };
 
+  const selectedProduct = favorites?.find(
+    (favorite) => favorite.id === productId,
+  );
+
   async function handleSubmitCartItem(values: InitialShopValues) {
     const cartItem = {
       id: crypto.randomUUID(),
@@ -52,10 +56,6 @@ const FavoritePage = () => {
     onTogglePanel();
     dispatch(openMiniCart());
   }
-
-  const selectedProduct = favorites?.find(
-    (favorite) => favorite.id === productId,
-  );
 
   if (isError) {
     return (
