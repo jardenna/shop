@@ -27,14 +27,12 @@ import {
 } from '../../../../utils/colorUtils';
 import { sortSizesDynamic } from '../../../../utils/sizeUtils';
 import { useLanguage } from '../../../language/useLanguage';
-import CollectionAside from '../../../shop/components/CollectionAside';
-import CollectionPageHeader from '../../../shop/components/CollectionPageHeader';
-import EmptyState from '../../../shop/components/emptyState/EmptyState';
-import FilterPanel, {
-  InitialFilters,
-} from '../../../shop/components/FilterPanel';
-import ProductCartList from '../../../shop/components/ProductCartList';
-import ProductToolbar from '../../../shop/components/ProductToolbar';
+import CollectionAside from '../CollectionAside';
+import CollectionPageHeader from '../CollectionPageHeader';
+import EmptyState from '../emptyState/EmptyState';
+import FilterPanel, { InitialFilters } from '../FilterPanel';
+import ProductCartList from '../ProductCartList';
+import ProductToolbar from '../ProductToolbar';
 import './_product-listing.scss';
 
 interface ProductListingProps {
