@@ -1,6 +1,5 @@
 import { useId } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { useParams } from 'react-router';
 import {
   ProductMenuResponse,
   ShopAllProductsResponse,
@@ -19,7 +18,7 @@ import {
 } from '../../../../hooks/useLocalStorage';
 import { useMediaQuery } from '../../../../hooks/useMediaQuery';
 import { useSearchParamsState } from '../../../../hooks/useSearchParamsState';
-import MetaTags from '../../../../layout/MetaTags';
+import { LinkText } from '../../../../layout/nav/enums';
 import { IconName } from '../../../../types/enums';
 import { OptionType } from '../../../../types/types';
 import {
@@ -39,8 +38,10 @@ import ProductToolbar from '../../../shop/components/ProductToolbar';
 import './_product-listing.scss';
 
 interface ProductListingProps {
+  category: LinkText;
   isError: boolean;
   isLoading: boolean;
+  pageHeading: string;
   products: ShopAllProductsResponse;
   subMenu: ProductMenuResponse[];
   refetch: () => void;
@@ -51,12 +52,13 @@ const ProductListing = ({
   products,
   isLoading,
   refetch,
+  category,
   isError,
   subMenu,
   refetchSubMenu,
+  pageHeading,
 }: ProductListingProps) => {
   const ariaLabelledby = useId();
-  const { category } = useParams();
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
 
@@ -66,7 +68,7 @@ const ProductListing = ({
   );
 
   const sortedTranslatedColors = sortColorsByTranslation(colorList, language);
-  const categoryText = category ? language[category] : '';
+  const categoryText = language[category];
 
   // Redux hooks
   const initialFilters: InitialFilters = {
@@ -148,118 +150,108 @@ const ProductListing = ({
         onClick={onClearAllFilters}
         emptyStateCtaText={language.clearAllFilters}
         src="/images/shoppingBags/shopping_bag"
-        pageHeading={
-          category
-            ? `${language.collection} ${language[category]}`
-            : language.collection
-        }
+        pageHeading={pageHeading}
       />
     );
   }
 
   return (
-    <>
-      {category && (
-        <MetaTags metaTitle={`${language.collection} ${language[category]}`} />
-      )}
+    <section
+      className="container product-listing"
+      ref={scrollToRef}
+      aria-labelledby={ariaLabelledby}
+    >
+      <Breadcrumbs
+        routeList={breadcrumbsList}
+        subMenu={subMenu}
+        productName=""
+      />
 
-      <section
-        className="container prdouct-listing"
-        ref={scrollToRef}
-        aria-labelledby={ariaLabelledby}
-      >
-        <Breadcrumbs
-          routeList={breadcrumbsList}
-          subMenu={subMenu}
-          productName=""
-        />
-
-        <div className="prdouct-listing-container">
-          <section>
-            <CollectionPageHeader
-              headerText={categoryText}
-              ariaLabelledby={ariaLabelledby}
+      <div className="product-listing-container">
+        <section>
+          <CollectionPageHeader
+            headerText={pageHeading}
+            ariaLabelledby={ariaLabelledby}
+          />
+          {!isMobileSize && (
+            <CollectionAside
+              subMenu={subMenu}
+              category={category}
+              onReset={() => {
+                refetchSubMenu();
+              }}
+              language={language}
             />
+          )}
+        </section>
+        <ErrorBoundary
+          FallbackComponent={ErrorBoundaryFallback}
+          onReset={() => {
+            refetch();
+          }}
+        >
+          <section className="product-listing-content">
             {!isMobileSize && (
-              <CollectionAside
-                subMenu={subMenu}
-                category={category || 'women'}
-                onReset={() => {
-                  refetchSubMenu();
-                }}
+              <Picture
+                src={`${src}.jpg`}
+                srcSet={`${src}.avif`}
+                alt={language[altText]}
+                ratio="16:9"
+                priority
+              />
+            )}
+            <div className="product-toolbar">
+              <ProductToolbar
+                onSetDisplay={setProductView}
+                displayControlList={productViewIconList}
+                activeDisplay={productView}
+                infoText={infoText}
+                announce={announce}
+                ariaLiveText={ariaLiveText}
+              />
+              <FilterPanel
+                initialFilters={initialFilters}
+                sizes={sortSizesDynamic(products.availableSizes)}
+                brands={products.availableBrands}
+                colors={sortedTranslatedColors}
                 language={language}
+                productCount={products.productCount}
+                onReset={() => {
+                  refetch();
+                }}
+                values={filterParams}
+                toggleValue={toggleFilterParam}
+                setValue={setFilterParams}
+                onRemoveFilterTag={onRemoveFilterTag}
+                onClearAllFilters={onClearAllFilters}
+                onClearSingleFilter={onClearSingleFilter}
+              />
+            </div>
+            <ProductCartList
+              products={products.products}
+              productView={productView}
+              showSizeOverlay={productView !== 'list'}
+            />
+            {itemCount > 0 && (
+              <Pagination
+                refetch={refetch}
+                totalBtns={totalBtns}
+                isError={isError}
+                page={page}
+                onPagination={handlePagination}
+                onSelectCount={handleSelectCount}
+                totalCount={itemCount}
+                paginationMobileText={paginationMobileText}
+                defaultValue={{
+                  value: itemsPerPage.toString(),
+                  label: itemsPerPage.toString(),
+                }}
               />
             )}
           </section>
-          <ErrorBoundary
-            FallbackComponent={ErrorBoundaryFallback}
-            onReset={() => {
-              refetch();
-            }}
-          >
-            <section className="prdouct-listing-content">
-              {!isMobileSize && (
-                <Picture
-                  src={`${src}.jpg`}
-                  srcSet={`${src}.avif`}
-                  alt={language[altText]}
-                  ratio="16:9"
-                  priority
-                />
-              )}
-              <div className="product-toolbar">
-                <ProductToolbar
-                  onSetDisplay={setProductView}
-                  displayControlList={productViewIconList}
-                  activeDisplay={productView}
-                  infoText={infoText}
-                  announce={announce}
-                  ariaLiveText={ariaLiveText}
-                />
-                <FilterPanel
-                  initialFilters={initialFilters}
-                  sizes={sortSizesDynamic(products.availableSizes)}
-                  brands={products.availableBrands}
-                  colors={sortedTranslatedColors}
-                  language={language}
-                  productCount={products.productCount}
-                  onReset={() => {
-                    refetch();
-                  }}
-                  values={filterParams}
-                  toggleValue={toggleFilterParam}
-                  setValue={setFilterParams}
-                  onRemoveFilterTag={onRemoveFilterTag}
-                  onClearAllFilters={onClearAllFilters}
-                  onClearSingleFilter={onClearSingleFilter}
-                />
-              </div>
-              <ProductCartList
-                products={products.products}
-                productView={productView}
-                showSizeOverlay={productView !== 'list'}
-              />
-              {itemCount > 0 && (
-                <Pagination
-                  refetch={refetch}
-                  totalBtns={totalBtns}
-                  isError={isError}
-                  page={page}
-                  onPagination={handlePagination}
-                  onSelectCount={handleSelectCount}
-                  totalCount={itemCount}
-                  paginationMobileText={paginationMobileText}
-                  defaultValue={{
-                    value: itemsPerPage.toString(),
-                    label: itemsPerPage.toString(),
-                  }}
-                />
-              )}
-            </section>
-          </ErrorBoundary>
-        </div>
-      </section>
-    </>
+        </ErrorBoundary>
+      </div>
+    </section>
   );
 };
 

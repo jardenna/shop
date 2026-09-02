@@ -1,7 +1,7 @@
 @use '../../../../scss/globals' as *;
 
-.prdouct-listing {
-  .prdouct-listing-header {
+.product-listing {
+  .product-listing-header {
     padding: 32px;
     display: flex;
     justify-content: center;
@@ -26,7 +26,7 @@
   }
 }
 
-.prdouct-listing-container {
+.product-listing-container {
   display: flex;
   gap: 20px;
   width: 100%;
@@ -36,7 +36,7 @@
   }
 }
 
-.prdouct-listing-content {
+.product-listing-content {
   width: 100%;
 }
 
