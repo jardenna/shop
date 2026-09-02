@@ -1,15 +1,17 @@
 import { useId } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
+import {
+  ProductMenuResponse,
+  ShopAllProductsResponse,
+} from '../../../../app/api/apiTypes/shopApiTypes';
 import Breadcrumbs from '../../../../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../../../../components/breadcrumbs/breadcrumbsLists';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
-import NotFoundError from '../../../../components/NotFoundError';
 import { usePaginationText } from '../../../../components/pagination/hooks/usePaginationText';
 import { useScrollOnPagination } from '../../../../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../../../../components/pagination/Pagination';
 import Picture from '../../../../components/Picture';
-import SkeletonCollectionPage from '../../../../components/skeleton/skeletonCollection/SkeletonCollectionPage';
 import { useAnnounce } from '../../../../hooks/useAnnounce';
 import {
   localStorageKeys,
@@ -18,8 +20,6 @@ import {
 import { useMediaQuery } from '../../../../hooks/useMediaQuery';
 import { useSearchParamsState } from '../../../../hooks/useSearchParamsState';
 import MetaTags from '../../../../layout/MetaTags';
-import { LinkText } from '../../../../layout/nav/enums';
-import MainPageContainer from '../../../../pages/pageContainer/MainPageContainer';
 import { IconName } from '../../../../types/enums';
 import { OptionType } from '../../../../types/types';
 import {
@@ -36,17 +36,29 @@ import FilterPanel, {
 } from '../../../shop/components/FilterPanel';
 import ProductCartList from '../../../shop/components/ProductCartList';
 import ProductToolbar from '../../../shop/components/ProductToolbar';
-import { useSubMenu } from '../../../shop/hooks/useSubMenu';
-import { useGetProductsQuery } from '../../../shop/shopApiSlice';
 import './_product-listing.scss';
 
-const ProductListing = () => {
+interface ProductListingProps {
+  isError: boolean;
+  isLoading: boolean;
+  products: ShopAllProductsResponse;
+  subMenu: ProductMenuResponse[];
+  refetch: () => void;
+  refetchSubMenu: () => void;
+}
+
+const ProductListing = ({
+  products,
+  isLoading,
+  refetch,
+  isError,
+  subMenu,
+  refetchSubMenu,
+}: ProductListingProps) => {
   const ariaLabelledby = useId();
-  const { category, categoryId } = useParams();
+  const { category } = useParams();
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
-
-  const { subMenu, refetchSubMenu } = useSubMenu(category as LinkText);
 
   const [productView, setProductView] = useLocalStorage(
     localStorageKeys.productView,
@@ -79,26 +91,8 @@ const ProductListing = () => {
     searchKey,
   } = useSearchParamsState(initialFilters);
 
-  const {
-    data: products,
-    isLoading,
-    isError,
-    error,
-    refetch,
-  } = useGetProductsQuery({
-    productsPerPage: itemsPerPage,
-    page: page.toString(),
-    colors: filterParams.colors,
-    brand: filterParams.brand,
-    sizes: filterParams.sizes,
-    minPrice: filterParams.minPrice,
-    maxPrice: filterParams.maxPrice,
-    mainCategory: category,
-    subCategoryId: categoryId || '',
-  });
-
-  const itemCount = products ? products.productCount : 0;
-  const totalBtns = products?.pages ?? 1;
+  const itemCount = products.productCount;
+  const totalBtns = products.pages;
   const src = `/images/banners/${category}_banner`;
   const altText = `${category}BannerAltText`;
 
@@ -146,18 +140,6 @@ const ProductListing = () => {
     },
   ];
 
-  if (isError) {
-    return (
-      <MainPageContainer heading="collection">
-        <NotFoundError error={error} />
-      </MainPageContainer>
-    );
-  }
-
-  if (!products) {
-    return <SkeletonCollectionPage count={4} />;
-  }
-
   if (itemCount === 0) {
     return (
       <EmptyState
@@ -182,18 +164,17 @@ const ProductListing = () => {
       )}
 
       <section
-        className="container collection-page"
+        className="container prdouct-listing"
         ref={scrollToRef}
         aria-labelledby={ariaLabelledby}
       >
-        {subMenu && (
-          <Breadcrumbs
-            routeList={breadcrumbsList}
-            subMenu={subMenu}
-            productName=""
-          />
-        )}
-        <div className="collection-page-container">
+        <Breadcrumbs
+          routeList={breadcrumbsList}
+          subMenu={subMenu}
+          productName=""
+        />
+
+        <div className="prdouct-listing-container">
           <section>
             <CollectionPageHeader
               headerText={categoryText}
@@ -201,18 +182,22 @@ const ProductListing = () => {
             />
             {!isMobileSize && (
               <CollectionAside
-                subMenu={subMenu || null}
+                subMenu={subMenu}
                 category={category || 'women'}
-                onReset={() => refetchSubMenu()}
+                onReset={() => {
+                  refetchSubMenu();
+                }}
                 language={language}
               />
             )}
           </section>
           <ErrorBoundary
             FallbackComponent={ErrorBoundaryFallback}
-            onReset={() => refetch()}
+            onReset={() => {
+              refetch();
+            }}
           >
-            <section className="collection-page-content">
+            <section className="prdouct-listing-content">
               {!isMobileSize && (
                 <Picture
                   src={`${src}.jpg`}
@@ -238,7 +223,9 @@ const ProductListing = () => {
                   colors={sortedTranslatedColors}
                   language={language}
                   productCount={products.productCount}
-                  onReset={() => refetch()}
+                  onReset={() => {
+                    refetch();
+                  }}
                   values={filterParams}
                   toggleValue={toggleFilterParam}
                   setValue={setFilterParams}
