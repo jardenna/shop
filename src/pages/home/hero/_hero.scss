@@ -58,24 +58,4 @@
       margin: 0;
     }
   }
-
-  .hero-btn-container {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .hero-btn-decoration {
-    height: 2px;
-    background-color: $color-dust-red-30;
-    width: 100%;
-  }
-
-  .btn-ghost {
-    font-size: inherit;
-    font-family: $font-primary-semibold;
-    text-transform: uppercase;
-    min-width: rem(80px);
-    color: $color-dust-red-40;
-  }
 }
