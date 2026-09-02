@@ -1,0 +1,51 @@
+@use '../../../../scss/globals' as *;
+
+.prdouct-listing {
+  .prdouct-listing-header {
+    padding: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-light-gray-20;
+    border-bottom: 4px solid $color-gray-30;
+
+    @include max-size($small) {
+      border-bottom: 0;
+      padding: 12px;
+    }
+  }
+
+  .breadcrumbs-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+
+    @include max-size($small) {
+      justify-content: center;
+    }
+  }
+}
+
+.prdouct-listing-container {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+
+  @include max-size($small) {
+    flex-direction: column;
+  }
+}
+
+.prdouct-listing-content {
+  width: 100%;
+}
+
+.product-toolbar {
+  display: flex;
+  justify-content: space-between;
+  margin-block: 16px;
+
+  p {
+    margin: 0;
+  }
+}
