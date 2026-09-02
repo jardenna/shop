@@ -29,7 +29,7 @@ import { useSearchParamsState } from '../hooks/useSearchParamsState';
 import MetaTags from '../layout/MetaTags';
 import { LinkText } from '../layout/nav/enums';
 import { IconName } from '../types/enums';
-import { Options } from '../types/types';
+import { OptionType } from '../types/types';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { sortSizesDynamic } from '../utils/sizeUtils';
 import './collectionPage.styles.scss';
@@ -113,7 +113,7 @@ const CollectionPage = () => {
     isLoading,
   });
 
-  const handleSelectCount = (option: Options) => {
+  const handleSelectCount = (option: OptionType) => {
     const newCount = Number(option.value);
     updatePagination(1, newCount);
     setShouldScroll(true);

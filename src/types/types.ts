@@ -18,11 +18,6 @@ export type OptionType<T = string> = {
   value: T;
 };
 
-export type Options = {
-  label: string;
-  value: string;
-};
-
 export type AriaLabelData = {
   ariaLabels: string[];
   unit: string;

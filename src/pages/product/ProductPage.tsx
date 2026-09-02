@@ -17,7 +17,7 @@ import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { AdminPath } from '../../layout/nav/enums';
-import { Options } from '../../types/types';
+import { OptionType } from '../../types/types';
 import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 import './productPage.styles.scss';
@@ -115,7 +115,7 @@ const ProductPage = () => {
   const totalBtns = allProducts?.pages ?? 1;
   const itemCount = allProducts ? allProducts.productCount : 0;
 
-  const handleSelectCount = (option: Options) => {
+  const handleSelectCount = (option: OptionType) => {
     const newCount = Number(option.value);
     updatePagination(1, newCount);
   };
