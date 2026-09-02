@@ -20,6 +20,15 @@ export const shopApiSlice = apiSlice.injectEndpoints({
       },
       providesTags: [TagTypesEnum.Products],
     }),
+    getSaleProducts: builder.query<ShopAllProductsResponse, ShopProductsParams>(
+      {
+        query: (params) => ({
+          url: `${productUrl}/sale`,
+          params,
+        }),
+        providesTags: [TagTypesEnum.Products],
+      },
+    ),
     getSingleProduct: builder.query<BaseShopProduct, string>({
       query: (id) => `${productUrl}/shop/${id}`,
       providesTags: [TagTypesEnum.Products],
@@ -49,4 +58,5 @@ export const {
   useGetSingleProductQuery,
   usePostReviewsMutation,
   useCheckReviewedQuery,
+  useGetSaleProductsQuery,
 } = shopApiSlice;
