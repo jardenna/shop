@@ -212,33 +212,6 @@ const deleteProduct = asyncHandler(async (req, res) => {
     .json({ success: true, message: 'Product deleted successfully' });
 });
 
-// @desc    Get Top Products
-// @route   /api/products/top
-// @method  GET
-// @access  Public
-const getTopProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({}).sort({ rating: -1 }).limit(4).lean();
-
-  res.status(200).json({
-    products: formatMongoData(products),
-  });
-});
-
-// @desc    Get New Products
-// @route   /api/products/new
-// @method  GET
-// @access  Public
-const getNewProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({})
-    .sort({ createdAt: -1 })
-    .limit(5)
-    .lean();
-
-  res.status(200).json({
-    products: formatMongoData(products),
-  });
-});
-
 // @desc    Get Shop products
 // @route   /api/products
 // @method  GET
@@ -720,10 +693,8 @@ export {
   deleteProduct,
   duplicateProduct,
   getAdminProducts,
-  getNewProducts,
   getProductById,
   getShopProductById,
   getShopProducts,
-  getTopProducts,
   updateProduct,
 };
