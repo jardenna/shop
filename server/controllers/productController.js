@@ -468,25 +468,46 @@ const getSaleProducts = asyncHandler(async (req, res) => {
       },
     },
     {
-      $addFields: {
-        discountedPrice: {
-          $subtract: [
-            '$price',
-            {
-              $multiply: ['$price', { $divide: ['$discount', 100] }],
-            },
-          ],
-        },
+      $lookup: {
+        from: 'subcategories',
+        localField: 'subCategory',
+        foreignField: '_id',
+        as: 'subCategory',
       },
     },
     {
-      $addFields: {
+      $unwind: '$subCategory',
+    },
+    {
+      $lookup: {
+        from: 'categories',
+        localField: 'subCategory.category',
+        foreignField: '_id',
+        as: 'category',
+      },
+    },
+    {
+      $unwind: '$category',
+    },
+    {
+      $project: {
+        _id: 0,
+        id: '$_id',
+        productName: 1,
+        brand: 1,
+        price: 1,
+        discount: 1,
+        countInStock: 1,
+        sizes: 1,
+        colors: 1,
         image: { $arrayElemAt: ['$images', 0] },
+        categoryName: '$category.categoryName',
+        categoryId: '$category._id',
       },
     },
     {
       $sort: {
-        createdAt: -1,
+        productName: 1,
       },
     },
   ]);

@@ -30,12 +30,7 @@ router
   .post(languageMiddleware, authenticate, authorizeEmployee, createProduct);
 
 router.get('/scheduled', checkScheduled);
-router.get(
-  '/sale',
-  languageMiddleware,
-  filterProductsMiddleware,
-  getSaleProducts,
-);
+router.get('/sale', languageMiddleware, getSaleProducts);
 router.get('/allProducts', filterProductsMiddleware, getAdminProducts);
 router.get('/shop/:id', languageMiddleware, getShopProductById);
 router.post(
