@@ -1,8 +1,6 @@
-import Button from '../../../components/Button';
 import ImageBackground from '../../../components/imageBackground/ImageBackground';
 import { useLanguage } from '../../../features/language/useLanguage';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
-import { BtnVariant } from '../../../types/enums';
 import './_hero.scss';
 
 const Hero = () => {
@@ -24,17 +22,10 @@ const Hero = () => {
     >
       <div className="hero-content">
         <h1 className="hero-title" id={ariaLabeldBy}>
-          {language.heroTitle}
+          {language.fashionGridNewHeading}
         </h1>
         <div className="hero-text">
-          <p>{language.heroText}</p>
-          <p>{language.heroText1}</p>
-        </div>
-        <div className="hero-btn-container">
-          <span className="hero-btn-decoration" />
-          <Button variant={BtnVariant.Ghost}>
-            <span>{language.shopNow}</span>
-          </Button>
+          <p>{language.fashionGridNewText}</p>
         </div>
       </div>
     </ImageBackground>
