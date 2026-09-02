@@ -456,6 +456,48 @@ const getAdminProducts = asyncHandler(async (req, res) => {
   });
 });
 
+// @desc    Get Sale products
+// @route   /api/products/sale
+// @method  GET
+// @access  Public
+const getSaleProducts = asyncHandler(async (req, res) => {
+  const { page, productsPerPage } = req.pagination;
+  const { subCategoryId, mainCategory } = req.query;
+
+  if (subCategoryId && !mongoose.isValidObjectId(subCategoryId)) {
+    return res.status(400).json({
+      success: false,
+      message: t('resourceNotFound', req.lang),
+    });
+  }
+
+  const {
+    products,
+    productCount,
+    totalCount,
+    availableBrands,
+    availableSizes,
+  } = await getProductListing({
+    page,
+    productsPerPage,
+    subCategoryId,
+    mainCategory,
+    filter: req.filter,
+    saleOnly: true,
+  });
+
+  res.status(200).json({
+    success: true,
+    products,
+    page,
+    pages: Math.ceil(productCount / productsPerPage),
+    productCount,
+    totalCount,
+    availableBrands,
+    availableSizes,
+  });
+});
+
 // @desc    Get Product By ID
 // @route   /api/products/:id
 // @method  GET
@@ -549,6 +591,7 @@ export {
   duplicateProduct,
   getAdminProducts,
   getProductById,
+  getSaleProducts,
   getShopProductById,
   getShopProducts,
   updateProduct,
