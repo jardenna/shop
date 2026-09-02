@@ -1,13 +1,12 @@
 import fs from 'fs';
 import mongoose from 'mongoose';
 import path from 'path';
-import { SCHEDULED } from '../config/constants.js';
-import getProductListing from '../services/getProductListing.js';
-
+import { PUBLISHED, SCHEDULED } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import scheduledStatusHandler from '../middleware/scheduledStatusHandler.js';
 import Product from '../models/productModel.js';
 import SubCategory from '../models/subCategoryModel.js';
+import getProductListing from '../services/getProductListing.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 import { updateScheduledItems } from '../utils/UpdateScheduledItemsOptions.js';
@@ -461,43 +460,42 @@ const getAdminProducts = asyncHandler(async (req, res) => {
 // @method  GET
 // @access  Public
 const getSaleProducts = asyncHandler(async (req, res) => {
-  const { page, productsPerPage } = req.pagination;
-  const { subCategoryId, mainCategory } = req.query;
-
-  if (subCategoryId && !mongoose.isValidObjectId(subCategoryId)) {
-    return res.status(400).json({
-      success: false,
-      message: t('resourceNotFound', req.lang),
-    });
-  }
-
-  const {
-    products,
-    productCount,
-    totalCount,
-    availableBrands,
-    availableSizes,
-  } = await getProductListing({
-    page,
-    productsPerPage,
-    subCategoryId,
-    mainCategory,
-    filter: req.filter,
-    saleOnly: true,
-  });
+  const products = await Product.aggregate([
+    {
+      $match: {
+        productStatus: PUBLISHED,
+        discount: { $gt: 0 },
+      },
+    },
+    {
+      $addFields: {
+        discountedPrice: {
+          $subtract: [
+            '$price',
+            {
+              $multiply: ['$price', { $divide: ['$discount', 100] }],
+            },
+          ],
+        },
+      },
+    },
+    {
+      $addFields: {
+        image: { $arrayElemAt: ['$images', 0] },
+      },
+    },
+    {
+      $sort: {
+        createdAt: -1,
+      },
+    },
+  ]);
 
   res.status(200).json({
     success: true,
     products,
-    page,
-    pages: Math.ceil(productCount / productsPerPage),
-    productCount,
-    totalCount,
-    availableBrands,
-    availableSizes,
   });
 });
-
 // @desc    Get Product By ID
 // @route   /api/products/:id
 // @method  GET

@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-
 import { PUBLISHED } from '../config/constants.js';
 import Product from '../models/productModel.js';
 
