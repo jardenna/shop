@@ -28,12 +28,12 @@ import { useMediaQuery } from '../hooks/useMediaQuery';
 import { useSearchParamsState } from '../hooks/useSearchParamsState';
 import MetaTags from '../layout/MetaTags';
 import { LinkText } from '../layout/nav/enums';
-import { IconName } from '../types/enums';
 import { OptionType } from '../types/types';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { sortSizesDynamic } from '../utils/sizeUtils';
 import './collectionPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
+import { productViewIconList } from '../utils/productViewIconList';
 
 export type FilterKeys = keyof BaseShopProductsParams;
 
@@ -127,21 +127,6 @@ const CollectionPage = () => {
     setPage(id);
     setShouldScroll(true);
   };
-
-  const productViewIconList = [
-    {
-      iconName: IconName.LayoutGrid,
-      title: language.grid,
-      ariaLabel: language.grid,
-      display: 'grid',
-    },
-    {
-      iconName: IconName.LayoutList,
-      title: language.list,
-      ariaLabel: language.list,
-      display: 'list',
-    },
-  ];
 
   if (isError) {
     return (

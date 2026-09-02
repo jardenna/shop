@@ -6,7 +6,6 @@ interface ProductViewIconList {
   ariaLabel: string;
   display: string;
   iconName: IconName;
-  title: string;
 }
 
 interface ProductToolbarProps {
