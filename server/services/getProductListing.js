@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+
 import { PUBLISHED } from '../config/constants.js';
 import Product from '../models/productModel.js';
 
@@ -111,15 +112,34 @@ const getProductListing = async ({
     mainCategory,
   });
 
-  const baseMatch = {
-    ...filter,
+  const publishedMatch = {
     productStatus: PUBLISHED,
-    ...(saleOnly && { discount: { $gt: 0 } }),
   };
+
+  const saleMatch = saleOnly ? { discount: { $gt: 0 } } : {};
+
+  const filteredMatch = {
+    ...filter,
+    ...publishedMatch,
+    ...saleMatch,
+  };
+
+  const totalCountPipeline = [
+    ...categoryJoinPipeline,
+    { $match: publishedMatch },
+    ...(saleOnly ? [{ $match: saleMatch }] : []),
+    { $count: 'total' },
+  ];
+
+  const productCountPipeline = [
+    ...categoryJoinPipeline,
+    { $match: filteredMatch },
+    { $count: 'total' },
+  ];
 
   const productPipeline = [
     ...categoryJoinPipeline,
-    { $match: baseMatch },
+    { $match: filteredMatch },
     ...buildProductFieldsPipeline(),
     { $sort: { createdAt: -1 } },
     { $skip: productsPerPage * (page - 1) },
@@ -127,16 +147,10 @@ const getProductListing = async ({
     ...buildShopProductProjection(),
   ];
 
-  const countPipeline = [
-    ...categoryJoinPipeline,
-    { $match: baseMatch },
-    { $count: 'total' },
-  ];
-
   const metaPipeline = [
     ...categoryJoinPipeline,
-    { $match: { productStatus: PUBLISHED } },
-    ...(saleOnly ? [{ $match: { discount: { $gt: 0 } } }] : []),
+    { $match: publishedMatch },
+    ...(saleOnly ? [{ $match: saleMatch }] : []),
     {
       $group: {
         _id: null,
@@ -153,13 +167,16 @@ const getProductListing = async ({
     },
   ];
 
-  const [products, countResult, metaResult] = await Promise.all([
-    Product.aggregate(productPipeline),
-    Product.aggregate(countPipeline),
-    Product.aggregate(metaPipeline),
-  ]);
+  const [products, productCountResult, totalCountResult, metaResult] =
+    await Promise.all([
+      Product.aggregate(productPipeline),
+      Product.aggregate(productCountPipeline),
+      Product.aggregate(totalCountPipeline),
+      Product.aggregate(metaPipeline),
+    ]);
 
-  const productCount = countResult[0]?.total || 0;
+  const productCount = productCountResult[0]?.total || 0;
+  const totalCount = totalCountResult[0]?.total || 0;
 
   const availableSizesRaw = metaResult[0]?.sizes?.flat() || [];
   const availableSizes = [...new Set(availableSizesRaw)];
@@ -175,6 +192,7 @@ const getProductListing = async ({
   return {
     products,
     productCount,
+    totalCount,
     availableBrands,
     availableSizes,
   };
