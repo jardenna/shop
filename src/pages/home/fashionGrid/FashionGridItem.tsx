@@ -10,7 +10,6 @@ type FashionGridItemProps = {
   linkTo: string;
   text: string;
   backgroundImageName?: string;
-  subHading?: string;
 };
 
 const FashionGridItem = ({
@@ -18,7 +17,6 @@ const FashionGridItem = ({
   heading,
   linkTo,
   linkText,
-  subHading,
   backgroundImageName = 'sale',
   text,
   alt,
@@ -35,7 +33,6 @@ const FashionGridItem = ({
     <div className="fashion-grid-content">
       <div className="fashion-grid-text">
         <h2 id={ariaLabelledby}>{heading}</h2>
-        {subHading && <h3>{subHading}</h3>}
         <p>{text}</p>
         <MoreLink linkText={linkText} linkTo={linkTo} />
       </div>
