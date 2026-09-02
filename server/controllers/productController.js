@@ -460,63 +460,42 @@ const getAdminProducts = asyncHandler(async (req, res) => {
 // @method  GET
 // @access  Public
 const getSaleProducts = asyncHandler(async (req, res) => {
-  const products = await Product.aggregate([
-    {
-      $match: {
-        productStatus: PUBLISHED,
-        discount: { $gt: 0 },
+  const saleProducts = await Product.find({
+    productStatus: PUBLISHED,
+    discount: { $gt: 0 },
+  })
+    .select(
+      'productName price discount sizes colors images brand countInStock subCategory',
+    )
+    .populate({
+      path: 'subCategory',
+      select: 'category',
+      populate: {
+        path: 'category',
+        select: 'categoryName',
       },
-    },
-    {
-      $lookup: {
-        from: 'subcategories',
-        localField: 'subCategory',
-        foreignField: '_id',
-        as: 'subCategory',
-      },
-    },
-    {
-      $unwind: '$subCategory',
-    },
-    {
-      $lookup: {
-        from: 'categories',
-        localField: 'subCategory.category',
-        foreignField: '_id',
-        as: 'category',
-      },
-    },
-    {
-      $unwind: '$category',
-    },
-    {
-      $project: {
-        _id: 0,
-        id: '$_id',
-        productName: 1,
-        brand: 1,
-        price: 1,
-        discount: 1,
-        countInStock: 1,
-        sizes: 1,
-        colors: 1,
-        image: { $arrayElemAt: ['$images', 0] },
-        categoryName: '$category.categoryName',
-        categoryId: '$category._id',
-      },
-    },
-    {
-      $sort: {
-        productName: 1,
-      },
-    },
-  ]);
+    })
+    .lean();
+
+  const formattedSaleProducts = formatMongoData(
+    saleProducts.map((product) => {
+      const { images, subCategory, ...restData } = product;
+
+      return {
+        ...restData,
+        image: images[0],
+        categoryName: subCategory.category.categoryName,
+        categoryId: subCategory.category._id,
+      };
+    }),
+  );
 
   res.status(200).json({
     success: true,
-    products,
+    products: formattedSaleProducts,
   });
 });
+
 // @desc    Get Product By ID
 // @route   /api/products/:id
 // @method  GET
