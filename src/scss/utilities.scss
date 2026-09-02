@@ -56,6 +56,10 @@
   position: relative;
 }
 
+.discount {
+  color: $color-discount;
+}
+
 .danger {
   background-color: transparent;
   color: $color-danger;

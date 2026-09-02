@@ -39,6 +39,7 @@ enum ShopPath {
   MyOrders = 'my-orders',
   Product = 'product',
   Root = '/',
+  Sale = 'sale',
   ShoppingCart = 'shopping-cart',
   Women = '/collection/women',
 }
@@ -66,6 +67,7 @@ enum LinkText {
   Orders = 'orders',
   Products = 'products',
   Profile = 'profile',
+  Sale = 'sale',
   SubCategories = 'subCategories',
   Update = 'update',
   Users = 'users',

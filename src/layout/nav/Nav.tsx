@@ -13,6 +13,7 @@ export type BaseNav = {
   end?: boolean;
   heading?: string;
   iconName?: IconName;
+  type?: string;
 };
 
 type OmittedBaseNav = Omit<BaseNav, 'end' | 'heading' | 'iconName'>;

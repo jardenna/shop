@@ -27,6 +27,11 @@ export const navList: NavListProps[] = [
     ],
   },
   {
+    path: ShopPath.Sale,
+    linkText: LinkText.Sale,
+    type: 'discount',
+  },
+  {
     path: ShopPath.AboutUs,
     linkText: LinkText.AboutUs,
   },
