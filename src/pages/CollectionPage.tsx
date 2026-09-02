@@ -30,10 +30,10 @@ import MetaTags from '../layout/MetaTags';
 import { LinkText } from '../layout/nav/enums';
 import { OptionType } from '../types/types';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
+import { productViewIconList } from '../utils/productViewIconList';
 import { sortSizesDynamic } from '../utils/sizeUtils';
 import './collectionPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
-import { productViewIconList } from '../utils/productViewIconList';
 
 export type FilterKeys = keyof BaseShopProductsParams;
 
@@ -206,7 +206,7 @@ const CollectionPage = () => {
               )}
               <div className="product-toolbar">
                 <ProductToolbar
-                  onSetDisplay={setProductView}
+                  setProductView={setProductView}
                   displayControlList={productViewIconList}
                   activeDisplay={productView}
                   infoText={infoText}
