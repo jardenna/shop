@@ -22,10 +22,10 @@ const Hero = () => {
     >
       <div className="hero-content">
         <h1 className="hero-title" id={ariaLabeldBy}>
-          {language.fashionGridNewHeading}
+          {language.heroTitle}
         </h1>
         <div className="hero-text">
-          <p>{language.fashionGridNewText}</p>
+          <p>{language.heroText}</p>
         </div>
       </div>
     </ImageBackground>
