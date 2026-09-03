@@ -86,7 +86,7 @@ const ShoppingCartPage = () => {
   if (cartItems.length === 0) {
     return (
       <EmptyState
-        emptyStateText={language.shoppingBagEmpty}
+        emptyStateText={language.shoppingBagEmptyText}
         emptyStateTitle={language.shoppingBagEmptyTitle}
         src="/images/shoppingBags/cart_shopping_bag"
         linkTo={`/${ShopPath.Collection}`}
