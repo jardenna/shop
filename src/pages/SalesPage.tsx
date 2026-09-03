@@ -21,13 +21,7 @@ const SalesPage = () => {
     'grid',
   );
 
-  const {
-    data: products,
-    // isLoading,
-    isError,
-    error,
-    refetch,
-  } = useGetSaleProductsQuery();
+  const { data: products, isError, error, refetch } = useGetSaleProductsQuery();
 
   if (!products) {
     return <SkeletonCollectionPage count={4} />;
