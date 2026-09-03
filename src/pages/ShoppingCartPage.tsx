@@ -99,7 +99,6 @@ const ShoppingCartPage = () => {
   const goToCheckoutPage = () => {
     navigate(`/${ShopPath.Checkout}`);
   };
-  console.log(apiCartList?.summary);
 
   return (
     <MainPageContainer heading={pageHeading}>
