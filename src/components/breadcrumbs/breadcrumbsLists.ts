@@ -4,10 +4,8 @@ export type breadcrumbsListProps = {
   path: string;
 };
 
-const breadcrumbsList: breadcrumbsListProps[] = [
+export const breadcrumbsList: breadcrumbsListProps[] = [
   { path: ShopPath.CollectionCategory },
   { path: ShopPath.CollectionCategoryId },
   { path: ShopPath.CollectionSingleProduct },
 ];
-
-export { breadcrumbsList };
