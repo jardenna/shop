@@ -1,3 +1,4 @@
+import { useId } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import DisplayControls from '../components/DisplayControls';
@@ -16,6 +17,8 @@ import { productViewIconList } from '../utils/productViewIconList';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const MainSalespage = () => {
+  const ariaLabelledby = useId();
+
   const { category } = useParams();
   const { language } = useLanguage();
 
@@ -56,7 +59,6 @@ const MainSalespage = () => {
     { label: 'women', categoryId: '680091d574682cc14143e248' },
     { label: 'kids', categoryId: '680091c674682cc14143e243' },
   ];
-  console.log(subMenu);
 
   return (
     <MainPageContainer heading={language.sale}>
@@ -71,7 +73,9 @@ const MainSalespage = () => {
         />
 
         <CollectionAside
+          ariaLabelledby={ariaLabelledby}
           subMenu={subMenu}
+          headerText={language.sale}
           category={category || 'women'}
           onReset={() => {
             console.log(123);

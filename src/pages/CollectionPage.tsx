@@ -14,7 +14,6 @@ import SkeletonCollectionPage from '../components/skeleton/skeletonCollection/Sk
 import { useLanguage } from '../features/language/useLanguage';
 import { getProductLink } from '../features/shop/cartUtils';
 import CollectionAside from '../features/shop/components/CollectionAside';
-import CollectionPageHeader from '../features/shop/components/CollectionPageHeader';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import FilterPanel, {
   InitialFilters,
@@ -177,23 +176,20 @@ const CollectionPage = () => {
           />
         )}
         <div className="collection-page-container">
-          <section>
-            <CollectionPageHeader
+          {!isMobileSize && subMenu && (
+            <CollectionAside
               headerText={categoryText}
               ariaLabelledby={ariaLabelledby}
+              subMenu={subMenu}
+              category={category || 'women'}
+              onReset={() => refetchSubMenu()}
+              language={language}
+              getProductLink={(productId) =>
+                `/${ShopPath.Collection}/${category}/${productId}`
+              }
             />
-            {!isMobileSize && subMenu && (
-              <CollectionAside
-                subMenu={subMenu}
-                category={category || 'women'}
-                onReset={() => refetchSubMenu()}
-                language={language}
-                getProductLink={(productId) =>
-                  `/${ShopPath.Collection}/${category}/${productId}`
-                }
-              />
-            )}
-          </section>
+          )}
+
           <ErrorBoundary
             FallbackComponent={ErrorBoundaryFallback}
             onReset={() => refetch()}

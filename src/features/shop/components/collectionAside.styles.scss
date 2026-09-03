@@ -10,6 +10,20 @@
   }
 }
 
+.collection-page-header {
+  padding: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-light-gray-20;
+  border-bottom: 4px solid $color-gray-30;
+
+  @include max-size($small) {
+    border-bottom: 0;
+    padding: 12px;
+  }
+}
+
 .collection-nav-list {
   margin-top: 12px;
   font-size: $font-medium;

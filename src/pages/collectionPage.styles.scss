@@ -1,20 +1,6 @@
 @use '../scss/globals' as *;
 
 .collection-page {
-  .collection-page-header {
-    padding: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: $color-light-gray-20;
-    border-bottom: 4px solid $color-gray-30;
-
-    @include max-size($small) {
-      border-bottom: 0;
-      padding: 12px;
-    }
-  }
-
   .breadcrumbs-container {
     display: flex;
     justify-content: flex-end;
