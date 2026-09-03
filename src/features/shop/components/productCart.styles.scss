@@ -59,11 +59,15 @@ $placement-x: 12px;
     }
   }
 
-  .badge {
-    left: $placement-x;
+  .cart-badge-container {
+    left: 0;
     position: absolute;
     z-index: 1;
-    top: $placement-y;
+    width: 100%;
+    top: 0;
+    display: flex;
+    gap: 8px;
+    padding: 12px;
   }
 
   .size-overlay {

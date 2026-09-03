@@ -48,20 +48,22 @@ const ProductCart = ({
             {language.view} {product.productName}
           </VisuallyHidden>
           <div className="cart-img-container">
-            {product.discount > 0 && (
-              <Badge
-                badgeText={`- ${product.discount} %`}
-                className="discount"
-                variant="medium"
-              />
-            )}
-            {isOutOfStock && (
-              <Badge
-                badgeText={language.outOfStock}
-                className="out-of-stock"
-                variant="medium"
-              />
-            )}
+            <div className="cart-badge-container">
+              {product.discount > 0 && (
+                <Badge
+                  badgeText={`- ${product.discount} %`}
+                  className="discount"
+                  variant="medium"
+                />
+              )}
+              {isOutOfStock && (
+                <Badge
+                  badgeText={language.outOfStock}
+                  className="out-of-stock"
+                  variant="medium"
+                />
+              )}
+            </div>
             <Img alt="" src={product.image} />
             {showSizeOverlay && <SizeOverlay sizes={product.sizes} count={5} />}
           </div>
