@@ -88,7 +88,7 @@ const ShoppingCartPage = () => {
       <EmptyState
         emptyStateText={language.shoppingBagEmpty}
         emptyStateTitle={language.shoppingBagEmptyTitle}
-        src="/images/shoppingBags/shopping_bag_2"
+        src="/images/shoppingBags/cart_shopping_bag"
         linkTo={`/${ShopPath.Collection}`}
         emptyStateCtaText={language.getInspired}
         pageHeading={pageHeading}
