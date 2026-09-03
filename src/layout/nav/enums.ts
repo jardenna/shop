@@ -40,6 +40,7 @@ enum ShopPath {
   Product = 'product',
   Root = '/',
   Sale = 'sale',
+  SaleCategory = 'sale/:category',
   ShoppingCart = 'shopping-cart',
   Women = '/collection/women',
 }

@@ -65,7 +65,7 @@ const routeList = [
     element: <MainSalespage />,
   },
   {
-    path: `${ShopPath.Sale}/:id`,
+    path: ShopPath.SaleCategory,
     element: <SalesPage />,
   },
   {
