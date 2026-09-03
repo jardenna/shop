@@ -299,8 +299,8 @@ noAddressData;You must add an address before placing an order.;Du skal tilføje 
 noChanges;No changes to save;Ingen ændringer at gemme
 noData;No data found;Ingen data fundet
 noEmail;Please enter an email;Indtast venligst en e-mail
-noFavorites;Find your must-haves and save them here, so you can easily come back to them;Find dine must-haves og gem dem her, så du nemt kan vende tilbage til dem
-noFavoritesYet;No favorites yet;Ingen favoritter endnu
+noFavoritesText;Find your must-haves and save them here, so you can easily come back to them;Find dine must-haves og gem dem her, så du nemt kan vende tilbage til dem
+noFavoritesTitle;No favorites yet;Ingen favoritter endnu
 noImagesProvided;No images provided;Ingen billeder
 noItemsToShow;No items to show;Ingen varer at vise
 noMatchingAddressData;No matching address found;Ingen matchende adresse

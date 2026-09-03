@@ -72,8 +72,8 @@ const FavoritePage = () => {
   if (favorites.length === 0) {
     return (
       <EmptyState
-        emptyStateTitle={language.noFavoritesYet}
-        emptyStateText={language.noFavorites}
+        emptyStateTitle={language.noFavoritesTitle}
+        emptyStateText={language.noFavoritesText}
         src="/images/shoppingBags/favorites_shopping_bag"
         linkTo={`/${ShopPath.Collection}`}
         emptyStateCtaText={language.getInspired}
