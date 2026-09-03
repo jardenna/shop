@@ -1,4 +1,7 @@
+import { ErrorBoundary } from 'react-error-boundary';
 import DisplayControls from '../components/DisplayControls';
+import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
+import NotFoundError from '../components/NotFoundError';
 import SkeletonCollectionPage from '../components/skeleton/skeletonCollection/SkeletonCollectionPage';
 import { useLanguage } from '../features/language/useLanguage';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
@@ -20,12 +23,21 @@ const SalesPage = () => {
   const {
     data: productsOnSale,
     // isLoading,
-    // isError,
-    // error,
-    // refetch,
+    isError,
+    error,
+    refetch,
   } = useGetSaleProductsQuery();
+
   if (!productsOnSale) {
     return <SkeletonCollectionPage count={4} />;
+  }
+
+  if (isError) {
+    return (
+      <MainPageContainer heading="collection">
+        <NotFoundError error={error} />
+      </MainPageContainer>
+    );
   }
 
   if (productsOnSale.products.length === 0) {
@@ -43,16 +55,21 @@ const SalesPage = () => {
 
   return (
     <MainPageContainer heading={language.sale}>
-      <DisplayControls
-        onSetDisplay={setProductView}
-        displayControlList={productViewIconList}
-        activeDisplay={productView}
-      />
-      <ProductCartList
-        products={productsOnSale.products}
-        productView={productView}
-        showSizeOverlay={productView !== 'list'}
-      />
+      <ErrorBoundary
+        FallbackComponent={ErrorBoundaryFallback}
+        onReset={() => refetch()}
+      >
+        <DisplayControls
+          onSetDisplay={setProductView}
+          displayControlList={productViewIconList}
+          activeDisplay={productView}
+        />
+        <ProductCartList
+          products={productsOnSale.products}
+          productView={productView}
+          showSizeOverlay={productView !== 'list'}
+        />
+      </ErrorBoundary>
     </MainPageContainer>
   );
 };
