@@ -24,6 +24,7 @@ const ProductCartList = ({
             productView={productView}
             linkTo={categoryId ? product.id : `all-products/${product.id}`}
             product={product}
+            isOutOfStock={product.countInStock === 0}
           />
         </li>
       ))}
