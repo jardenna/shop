@@ -4,14 +4,17 @@ import LayoutElement from '../../layout/LayoutElement';
 import { isAdminPath } from '../../utils/utils';
 import './_breadcrumbs.scss';
 import BreadcrumbItem from './BreadcrumbItem';
-import { breadcrumbsListProps } from './breadcrumbsLists';
 
-type BreadcrumbsProps = {
+export interface breadcrumbsListProps {
+  path: string;
+}
+
+interface BreadcrumbsProps {
   currentLabel?: string;
   productName?: string;
   routeList?: breadcrumbsListProps[];
   subMenu?: { categoryId: string; label: string }[];
-};
+}
 
 const Breadcrumbs = ({
   routeList,
