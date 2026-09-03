@@ -140,7 +140,7 @@ const CollectionPage = () => {
     return <SkeletonCollectionPage count={4} />;
   }
 
-  if (itemCount > 0) {
+  if (itemCount === 0) {
     return (
       <EmptyState
         emptyStateText={language.noProductText}
