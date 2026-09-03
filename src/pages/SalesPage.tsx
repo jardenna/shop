@@ -64,12 +64,6 @@ const SalesPage = () => {
           displayControlList={productViewIconList}
           activeDisplay={productView}
         />
-        {/* <ProductCartList
-          products={products}
-          productView={productView}
-          showSizeOverlay={productView !== 'list'}
-        /> */}
-
         <ul className="product-cart-list">
           {products.map((product) => (
             <li key={product.id}>
