@@ -140,11 +140,11 @@ const CollectionPage = () => {
     return <SkeletonCollectionPage count={4} />;
   }
 
-  if (itemCount === 0) {
+  if (itemCount > 0) {
     return (
       <EmptyState
-        emptyStateText={language.noProductResult}
-        emptyStateTitle={language.noProductResultTitle}
+        emptyStateText={language.noProductText}
+        emptyStateTitle={language.noProductTitle}
         onClick={onClearAllFilters}
         emptyStateCtaText={language.clearAllFilters}
         src="/images/shoppingBags/collection_shopping_bag"
