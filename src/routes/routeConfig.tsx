@@ -20,6 +20,7 @@ import FavoritePage from '../pages/FavoritePage';
 import HomePage from '../pages/home/HomePage';
 import LoginPage from '../pages/LoginPage';
 import MainCollectionsPage from '../pages/MainCollectionsPage';
+import MainSalespage from '../pages/MainSalesPage';
 import MyOrderDetailsPage from '../pages/MyOrderDetailsPage';
 import MyOrdersPage from '../pages/MyOrdersPage';
 import CreateProductPage from '../pages/product/CreateProductPage';
@@ -61,6 +62,10 @@ const routeList = [
   },
   {
     path: ShopPath.Sale,
+    element: <MainSalespage />,
+  },
+  {
+    path: `${ShopPath.Sale}/:id`,
     element: <SalesPage />,
   },
   {
