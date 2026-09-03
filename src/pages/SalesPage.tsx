@@ -31,11 +31,11 @@ const SalesPage = () => {
   if (productsOnSale.products.length > 0) {
     return (
       <EmptyState
-        emptyStateTitle={language.noFavoritesYet}
-        emptyStateText={language.noFavorites}
+        emptyStateTitle={language.noSaleTitle}
+        emptyStateText={language.noSaleText}
         src="/images/shoppingBags/sale_shopping_bag"
         linkTo={`/${ShopPath.Collection}`}
-        emptyStateCtaText={language.getInspired}
+        emptyStateCtaText={language.noSaleCta}
         pageHeading={language.sale}
       />
     );
