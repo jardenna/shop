@@ -6,7 +6,7 @@ import CollectionNav from './CollectionNav';
 type CollectionAsideProps = {
   category: string;
   language: Record<string, string>;
-  subMenu: ProductMenuResponse[] | null;
+  subMenu: ProductMenuResponse[];
   onReset: () => void;
 };
 
@@ -17,15 +17,9 @@ const CollectionAside = ({
   language,
 }: CollectionAsideProps) => (
   <section className="collection-aside">
-    {subMenu && (
-      <LayoutElement as="nav" ariaLabel={language.categoryNavigation}>
-        <CollectionNav
-          subMenu={subMenu}
-          category={category}
-          onReset={onReset}
-        />
-      </LayoutElement>
-    )}
+    <LayoutElement as="nav" ariaLabel={language.categoryNavigation}>
+      <CollectionNav subMenu={subMenu} category={category} onReset={onReset} />
+    </LayoutElement>
   </section>
 );
 export default CollectionAside;

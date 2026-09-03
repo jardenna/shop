@@ -12,6 +12,7 @@ import Pagination from '../components/pagination/Pagination';
 import Picture from '../components/Picture';
 import SkeletonCollectionPage from '../components/skeleton/skeletonCollection/SkeletonCollectionPage';
 import { useLanguage } from '../features/language/useLanguage';
+import { getProductLink } from '../features/shop/cartUtils';
 import CollectionAside from '../features/shop/components/CollectionAside';
 import CollectionPageHeader from '../features/shop/components/CollectionPageHeader';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
@@ -34,7 +35,6 @@ import { productViewIconList } from '../utils/productViewIconList';
 import { sortSizesDynamic } from '../utils/sizeUtils';
 import './collectionPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
-import { getProductLink } from '../features/shop/cartUtils';
 
 export type FilterKeys = keyof BaseShopProductsParams;
 
@@ -182,9 +182,9 @@ const CollectionPage = () => {
               headerText={categoryText}
               ariaLabelledby={ariaLabelledby}
             />
-            {!isMobileSize && (
+            {!isMobileSize && subMenu && (
               <CollectionAside
-                subMenu={subMenu || null}
+                subMenu={subMenu}
                 category={category || 'women'}
                 onReset={() => refetchSubMenu()}
                 language={language}
