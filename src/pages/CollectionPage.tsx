@@ -27,7 +27,7 @@ import { localStorageKeys, useLocalStorage } from '../hooks/useLocalStorage';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import { useSearchParamsState } from '../hooks/useSearchParamsState';
 import MetaTags from '../layout/MetaTags';
-import { LinkText } from '../layout/nav/enums';
+import { LinkText, ShopPath } from '../layout/nav/enums';
 import { OptionType } from '../types/types';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { productViewIconList } from '../utils/productViewIconList';
@@ -233,7 +233,7 @@ const CollectionPage = () => {
                 products={products.products}
                 productView={productView}
                 showSizeOverlay={productView !== 'list'}
-                categoryId={categoryId}
+                getProductLink={(id) => `${ShopPath.AllProducts}/${id}`}
               />
               {itemCount > 0 && (
                 <Pagination

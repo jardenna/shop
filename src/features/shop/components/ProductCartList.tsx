@@ -1,19 +1,23 @@
+import { UserResponse } from '../../../app/api/apiTypes/adminApiTypes';
 import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
-import { ShopPath } from '../../../layout/nav/enums';
 import ProductCart from './ProductCart';
 
 interface ProductCartListProps {
   products: BaseProduct[];
   productView: string;
   showSizeOverlay: boolean;
-  categoryId?: string;
+  currentUser?: UserResponse | null;
+  getProductLink: (id: string) => string;
+  onOpenPanel?: (id: string) => void;
 }
 
 const ProductCartList = ({
   products,
   productView,
   showSizeOverlay,
-  categoryId,
+  getProductLink,
+  onOpenPanel,
+  currentUser,
 }: ProductCartListProps) => (
   <ul className={`product-cart-list ${productView}`}>
     {products.map((product) => (
@@ -21,11 +25,11 @@ const ProductCartList = ({
         <ProductCart
           showSizeOverlay={showSizeOverlay}
           productView={productView}
-          linkTo={
-            categoryId ? product.id : `${ShopPath.AllProducts}/${product.id}`
-          }
+          linkTo={getProductLink(product.id)}
           product={product}
           isOutOfStock={product.countInStock === 0}
+          onOpenPanel={onOpenPanel}
+          currentUser={currentUser}
         />
       </li>
     ))}

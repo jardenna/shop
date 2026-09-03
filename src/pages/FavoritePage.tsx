@@ -12,7 +12,7 @@ import FavoritesPanelCart from '../features/favorites/components/FavoritesPanelC
 import { useLanguage } from '../features/language/useLanguage';
 import { openMiniCart } from '../features/miniCartPopupSlice';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
-import ProductCart from '../features/shop/components/ProductCart';
+import ProductCartList from '../features/shop/components/ProductCartList';
 import CartForm, {
   InitialShopValues,
 } from '../features/shop/components/singleProduct/CartForm';
@@ -114,20 +114,14 @@ const FavoritePage = () => {
             </section>
           )}
         </Panel>
-        <ul className="product-cart-list">
-          {sortedFavorites.map((product) => (
-            <li key={product.id}>
-              <ProductCart
-                showSizeOverlay
-                product={product}
-                linkTo={`${ShopPath.AllProducts}/${product.id}`}
-                onOpenPanel={handleOpenPanel}
-                currentUser={currentUser}
-                isOutOfStock={product.countInStock === 0}
-              />
-            </li>
-          ))}
-        </ul>
+        <ProductCartList
+          products={sortedFavorites}
+          productView="grid"
+          onOpenPanel={handleOpenPanel}
+          currentUser={currentUser}
+          showSizeOverlay
+          getProductLink={(id) => `${ShopPath.AllProducts}/${id}`}
+        />
       </ErrorBoundary>
     </MainPageContainer>
   );

@@ -5,7 +5,7 @@ import NotFoundError from '../components/NotFoundError';
 import SkeletonCollectionPage from '../components/skeleton/skeletonCollection/SkeletonCollectionPage';
 import { useLanguage } from '../features/language/useLanguage';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
-import ProductCart from '../features/shop/components/ProductCart';
+import ProductCartList from '../features/shop/components/ProductCartList';
 import { useGetSaleProductsQuery } from '../features/shop/shopApiSlice';
 import { localStorageKeys, useLocalStorage } from '../hooks/useLocalStorage';
 import { ShopPath } from '../layout/nav/enums';
@@ -64,18 +64,13 @@ const SalesPage = () => {
           displayControlList={productViewIconList}
           activeDisplay={productView}
         />
-        <ul className="product-cart-list">
-          {products.map((product) => (
-            <li key={product.id}>
-              <ProductCart
-                showSizeOverlay
-                product={product}
-                linkTo={`${ShopPath.AllProducts}/${product.id}`}
-                isOutOfStock={product.countInStock === 0}
-              />
-            </li>
-          ))}
-        </ul>
+
+        <ProductCartList
+          products={products}
+          productView={productView}
+          showSizeOverlay={productView !== 'list'}
+          getProductLink={(id) => `${ShopPath.AllProducts}/${id}`}
+        />
       </ErrorBoundary>
     </MainPageContainer>
   );
