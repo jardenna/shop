@@ -9,26 +9,35 @@ import { useLanguage } from '../../language/useLanguage';
 type CollectionNavProps = {
   category: string;
   subMenu: ProductMenuResponse[];
+  linkTo?: string;
+  getProductLink: (id: string) => string;
   onReset: () => void;
 };
 
-const CollectionNav = ({ subMenu, category, onReset }: CollectionNavProps) => {
+const CollectionNav = ({
+  subMenu,
+  category,
+  onReset,
+  getProductLink,
+  linkTo = `/${ShopPath.Collection}/${category}`,
+}: CollectionNavProps) => {
   const { language } = useLanguage();
 
   return (
     <ul className="collection-nav-list">
       <li className="collection-nav-item">
-        <NavLink to={`/${ShopPath.Collection}/${category}`} end>
+        <NavLink to={linkTo} end>
           {language.showAll}
         </NavLink>
       </li>
+
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={onReset}
       >
         {subMenu.map(({ label, categoryId }) => (
           <li className="collection-nav-item" key={categoryId}>
-            <NavLink to={`/${ShopPath.Collection}/${category}/${categoryId}`}>
+            <NavLink to={getProductLink(categoryId)}>
               {translateKey(label, language)}
             </NavLink>
           </li>

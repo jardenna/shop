@@ -2,7 +2,7 @@ import { ProductMenuResponse } from '../../../app/api/apiTypes/shopApiTypes';
 import Button from '../../../components/Button';
 import CollectionNav from '../../../features/shop/components/CollectionNav';
 import { BtnVariant } from '../../../types/enums';
-import { LinkText } from '../enums';
+import { LinkText, ShopPath } from '../enums';
 import { BaseNav } from '../Nav';
 import NavAd from '../NavAd';
 import { subNavConfig } from './subnavConfig';
@@ -45,6 +45,9 @@ const SubNavListMobile = ({
       ))}
       <li className="mobile-sub-item">
         <CollectionNav
+          getProductLink={(productId) =>
+            `/${ShopPath.Collection}/${category}/${productId}`
+          }
           subMenu={subMenu}
           category={category}
           onReset={onReset}

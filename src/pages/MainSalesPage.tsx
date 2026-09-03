@@ -77,6 +77,8 @@ const MainSalespage = () => {
             console.log(123);
           }}
           language={language}
+          getProductLink={(productId) => `/${ShopPath.Sale}/${productId}`}
+          linkTo={`/${ShopPath.Sale}`}
         />
 
         <ProductCartList

@@ -28,7 +28,7 @@ import { localStorageKeys, useLocalStorage } from '../hooks/useLocalStorage';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import { useSearchParamsState } from '../hooks/useSearchParamsState';
 import MetaTags from '../layout/MetaTags';
-import { LinkText } from '../layout/nav/enums';
+import { LinkText, ShopPath } from '../layout/nav/enums';
 import { OptionType } from '../types/types';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { productViewIconList } from '../utils/productViewIconList';
@@ -188,6 +188,9 @@ const CollectionPage = () => {
                 category={category || 'women'}
                 onReset={() => refetchSubMenu()}
                 language={language}
+                getProductLink={(productId) =>
+                  `/${ShopPath.Collection}/${category}/${productId}`
+                }
               />
             )}
           </section>
