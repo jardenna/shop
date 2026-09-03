@@ -4,6 +4,7 @@ import type {
   ProductMenuResponse,
   ReviewsRequest,
   ReviewsResponse,
+  SaleProductResponse,
   ShopAllProductsResponse,
   ShopProductsParams,
 } from '../../app/api/apiTypes/shopApiTypes';
@@ -20,7 +21,7 @@ export const shopApiSlice = apiSlice.injectEndpoints({
       },
       providesTags: [TagTypesEnum.Products],
     }),
-    getSaleProducts: builder.query<ShopAllProductsResponse, void>({
+    getSaleProducts: builder.query<SaleProductResponse[], void>({
       query: () => `${productUrl}/sale`,
       providesTags: [TagTypesEnum.Products],
     }),

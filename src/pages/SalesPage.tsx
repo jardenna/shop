@@ -21,14 +21,14 @@ const SalesPage = () => {
   );
 
   const {
-    data: productsOnSale,
+    data: products,
     // isLoading,
     isError,
     error,
     refetch,
   } = useGetSaleProductsQuery();
 
-  if (!productsOnSale) {
+  if (!products) {
     return <SkeletonCollectionPage count={4} />;
   }
 
@@ -40,7 +40,7 @@ const SalesPage = () => {
     );
   }
 
-  if (productsOnSale.products.length === 0) {
+  if (products.length === 0) {
     return (
       <EmptyState
         emptyStateTitle={language.noSaleTitle}
@@ -65,7 +65,7 @@ const SalesPage = () => {
           activeDisplay={productView}
         />
         <ProductCartList
-          products={productsOnSale.products}
+          products={products}
           productView={productView}
           showSizeOverlay={productView !== 'list'}
         />

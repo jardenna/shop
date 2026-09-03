@@ -490,10 +490,7 @@ const getSaleProducts = asyncHandler(async (req, res) => {
     }),
   );
 
-  res.status(200).json({
-    success: true,
-    products: formattedSaleProducts,
-  });
+  res.status(200).json(formattedSaleProducts);
 });
 
 // @desc    Get Product By ID
