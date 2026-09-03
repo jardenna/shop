@@ -305,8 +305,8 @@ noImagesProvided;No images provided;Ingen billeder
 noItemsToShow;No items to show;Ingen varer at vise
 noMatchingAddressData;No matching address found;Ingen matchende adresse
 noOptions;No options;Ingen valgmuligheder
-noOrdersDescription;Once you've placed your first order, it will appear here so you can easily track and review your purchases.;Når du har afgivet din første ordre, vises den her, så du nemt kan følge og se dine køb
-noOrdersYet;No orders yet;Ingen ordrer endnu
+noOrdersText;Once you've placed your first order, it will appear here so you can easily track and review your purchases.;Når du har afgivet din første ordre, vises den her, så du nemt kan følge og se dine køb
+noOrdersTitle;No orders yet;Ingen ordrer endnu
 noPassword;Please enter a password;Indtast venligst en adgangskode
 noPreference;No preference;Ingen præference
 noProduct;Product not found;Produkt blev ikke fundet
