@@ -51,7 +51,7 @@ const SubNav = ({
             onClick={handleUpdateCategory}
             subMenu={subMenu}
             category={selectedCategory}
-            onReset={refetchSubMenu}
+            onReset={() => refetchSubMenu()}
             language={language}
           />
         )

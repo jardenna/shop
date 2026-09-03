@@ -16,7 +16,7 @@ const AdminBadge = ({ scheduledDate, status }: AdminBadgeProps) => {
   const { language } = useLanguage();
 
   return (
-    <div className="badge-container">
+    <div className="admin-badge-container">
       <Badge
         badgeText={translateKey(status, language)}
         className={status.toLowerCase()}

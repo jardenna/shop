@@ -6,7 +6,6 @@ interface ProductViewIconList {
   ariaLabel: string;
   display: string;
   iconName: IconName;
-  title: string;
 }
 
 interface ProductToolbarProps {
@@ -15,12 +14,12 @@ interface ProductToolbarProps {
   ariaLiveText: string;
   displayControlList: ProductViewIconList[];
   infoText: string;
-  onSetDisplay: (id: string) => void;
+  setProductView: (id: string) => void;
 }
 
 const ProductToolbar = ({
   displayControlList,
-  onSetDisplay,
+  setProductView,
   activeDisplay,
   infoText,
   announce,
@@ -28,7 +27,7 @@ const ProductToolbar = ({
 }: ProductToolbarProps) => (
   <>
     <DisplayControls
-      onSetDisplay={onSetDisplay}
+      onSetDisplay={setProductView}
       displayControlList={displayControlList}
       activeDisplay={activeDisplay}
     />

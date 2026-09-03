@@ -1,6 +1,7 @@
 import { Address } from './addressApiTypes';
 import type {
   BasePagination,
+  BaseProduct,
   BaseProductParams,
   BaseShopProduct,
   DefaultResponseType,
@@ -98,3 +99,7 @@ export type UserProfileRequest = BaseProfile & {
 export interface QtyResponse {
   totalQuantity: number;
 }
+
+export type SaleProductResponse = BaseProduct & {
+  categoryId: string;
+};

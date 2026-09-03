@@ -6,6 +6,7 @@ import asyncHandler from '../middleware/asyncHandler.js';
 import scheduledStatusHandler from '../middleware/scheduledStatusHandler.js';
 import Product from '../models/productModel.js';
 import SubCategory from '../models/subCategoryModel.js';
+import getProductListing from '../services/getProductListing.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 import { updateScheduledItems } from '../utils/UpdateScheduledItemsOptions.js';
@@ -212,216 +213,42 @@ const deleteProduct = asyncHandler(async (req, res) => {
     .json({ success: true, message: 'Product deleted successfully' });
 });
 
-// @desc    Get Top Products
-// @route   /api/products/top
-// @method  GET
-// @access  Public
-const getTopProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({}).sort({ rating: -1 }).limit(4).lean();
-
-  res.status(200).json({
-    products: formatMongoData(products),
-  });
-});
-
-// @desc    Get New Products
-// @route   /api/products/new
-// @method  GET
-// @access  Public
-const getNewProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({})
-    .sort({ createdAt: -1 })
-    .limit(5)
-    .lean();
-
-  res.status(200).json({
-    products: formatMongoData(products),
-  });
-});
-
 // @desc    Get Shop products
 // @route   /api/products
 // @method  GET
 // @access  Public
 const getShopProducts = asyncHandler(async (req, res) => {
-  const productsPerPage = parseInt(req.query.productsPerPage) || 6;
-  const page = parseInt(req.query.page) || 1;
-  const subCategoryId = req.query.subCategoryId;
-  const mainCategory = req.query.mainCategory;
+  const { page, productsPerPage } = req.pagination;
+  const { subCategoryId, mainCategory } = req.query;
 
-  // Helper: common pipeline for category/subcategory joins
-  const categoryJoinPipeline = [
-    {
-      $lookup: {
-        from: 'subcategories',
-        localField: 'subCategory',
-        foreignField: '_id',
-        as: 'subCategoryData',
-      },
-    },
-    { $unwind: '$subCategoryData' },
-    {
-      $lookup: {
-        from: 'categories',
-        localField: 'subCategoryData.category',
-        foreignField: '_id',
-        as: 'categoryData',
-      },
-    },
-    { $unwind: '$categoryData' },
-    {
-      $match: {
-        'subCategoryData.categoryStatus': PUBLISHED,
-        'categoryData.categoryStatus': PUBLISHED,
-      },
-    },
-  ];
-
-  // Category/Subcategory filters
-  const categoryMatchStage = [];
-
-  if (subCategoryId) {
-    if (!mongoose.isValidObjectId(subCategoryId)) {
-      return res.status(400).json({
-        success: false,
-        message: t('resourceNotFound', req.lang),
-      });
-    }
-
-    categoryMatchStage.push({
-      'subCategoryData._id': new mongoose.Types.ObjectId(subCategoryId),
+  if (subCategoryId && !mongoose.isValidObjectId(subCategoryId)) {
+    return res.status(400).json({
+      success: false,
+      message: t('resourceNotFound', req.lang),
     });
   }
 
-  if (mainCategory) {
-    categoryMatchStage.push({
-      'categoryData.categoryName': {
-        $regex: `^${mainCategory}$`,
-        $options: 'i',
-      },
-    });
-  }
-
-  if (categoryMatchStage.length) {
-    categoryJoinPipeline.push({ $match: { $and: categoryMatchStage } });
-  }
-
-  // Meta aggregation (brands/sizes unfiltered by product filters)
-  const metaPipeline = [
-    ...categoryJoinPipeline,
-    { $match: { productStatus: PUBLISHED } }, // only published products in meta
-    {
-      $group: {
-        _id: null,
-        brands: { $addToSet: '$brand' },
-        sizes: { $addToSet: '$sizes' },
-      },
-    },
-    { $project: { _id: 0, brands: 1, sizes: 1 } },
-  ];
-
-  const metaResult = await Product.aggregate(metaPipeline);
-  const availableSizesRaw = metaResult[0]?.sizes?.flat() || [];
-  const availableSizes = [...new Set(availableSizesRaw)];
-  const availableBrandsRaw = metaResult[0]?.brands || [];
-  const availableBrands = [...new Set(availableBrandsRaw)].sort((a, b) =>
-    a.localeCompare(b, undefined, { sensitivity: 'base' }),
-  );
-
-  // Product filters
-  const combinedMatch =
-    req.filter && Object.keys(req.filter).length ? { ...req.filter } : {};
-
-  // Always only published products
-  combinedMatch.productStatus = PUBLISHED;
-
-  if (categoryMatchStage.length) {
-    if (Object.keys(combinedMatch).length) {
-      combinedMatch.$and = [
-        ...(combinedMatch.$and || []),
-        ...categoryMatchStage,
-      ];
-    } else {
-      Object.assign(combinedMatch, { $and: categoryMatchStage });
-    }
-  }
-
-  // Count all published products in same category scope (before filters)
-  const baseCategoryPipeline = [
-    ...categoryJoinPipeline,
-    {
-      $match: { productStatus: PUBLISHED },
-    },
-  ];
-
-  const totalCountResult = await Product.aggregate([
-    ...baseCategoryPipeline,
-    { $count: 'total' },
-  ]);
-  const totalCount = totalCountResult[0]?.total || 0;
-
-  const filteredCountResult = await Product.aggregate([
-    ...categoryJoinPipeline,
-    { $match: combinedMatch },
-    { $count: 'total' },
-  ]);
-  const filteredCount = filteredCountResult[0]?.total || 0;
-
-  const productPipeline = [
-    ...categoryJoinPipeline,
-    { $match: combinedMatch },
-    {
-      $addFields: {
-        discountedPrice: {
-          $round: [
-            {
-              $subtract: [
-                '$price',
-                {
-                  $multiply: ['$price', { $divide: ['$discount', 100] }],
-                },
-              ],
-            },
-            0,
-          ],
-        },
-        image: {
-          $arrayElemAt: ['$images', 0],
-        },
-      },
-    },
-    { $unset: 'images' },
-    { $sort: { createdAt: -1 } },
-    { $skip: productsPerPage * (page - 1) },
-    { $limit: productsPerPage },
-    {
-      $addFields: {
-        id: '$_id',
-        subCategoryId: '$subCategory',
-        subCategoryName: '$subCategoryData.subCategoryName',
-        categoryName: '$categoryData.categoryName',
-      },
-    },
-    {
-      $project: {
-        _id: 0,
-        subCategoryData: 0,
-        categoryData: 0,
-        __v: 0,
-        subCategory: 0,
-      },
-    },
-  ];
-
-  const products = await Product.aggregate(productPipeline);
+  const {
+    products,
+    productCount,
+    totalCount,
+    availableBrands,
+    availableSizes,
+  } = await getProductListing({
+    page,
+    productsPerPage,
+    subCategoryId,
+    mainCategory,
+    filter: req.filter,
+  });
 
   res.status(200).json({
     success: true,
     products,
     page,
-    pages: Math.ceil(filteredCount / productsPerPage),
-    productCount: filteredCount, // for pagination
-    totalCount, // all products within same category scope
+    pages: Math.ceil(productCount / productsPerPage),
+    productCount,
+    totalCount,
     availableBrands,
     availableSizes,
   });
@@ -628,6 +455,44 @@ const getAdminProducts = asyncHandler(async (req, res) => {
   });
 });
 
+// @desc    Get Sale products
+// @route   /api/products/sale
+// @method  GET
+// @access  Public
+const getSaleProducts = asyncHandler(async (req, res) => {
+  const saleProducts = await Product.find({
+    productStatus: PUBLISHED,
+    discount: { $gt: 0 },
+  })
+    .select(
+      'productName price discount sizes colors images brand countInStock subCategory',
+    )
+    .populate({
+      path: 'subCategory',
+      select: 'category',
+      populate: {
+        path: 'category',
+        select: 'categoryName',
+      },
+    })
+    .lean();
+
+  const formattedSaleProducts = formatMongoData(
+    saleProducts.map((product) => {
+      const { images, subCategory, ...restData } = product;
+
+      return {
+        ...restData,
+        image: images[0],
+        categoryName: subCategory.category.categoryName,
+        categoryId: subCategory.category._id,
+      };
+    }),
+  );
+
+  res.status(200).json(formattedSaleProducts);
+});
+
 // @desc    Get Product By ID
 // @route   /api/products/:id
 // @method  GET
@@ -720,10 +585,9 @@ export {
   deleteProduct,
   duplicateProduct,
   getAdminProducts,
-  getNewProducts,
   getProductById,
+  getSaleProducts,
   getShopProductById,
   getShopProducts,
-  getTopProducts,
   updateProduct,
 };

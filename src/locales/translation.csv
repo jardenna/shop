@@ -175,8 +175,8 @@ fashionGridKidsText;Fun, functional, and built for adventure-styles kids love an
 fashionGridMenAltText;"Man wearing sunglasses, reclining and looking up with a cheerful smile.";"Mand med solbriller ligger afslappet og kigger glad op."
 fashionGridMenLink;Shop men;Shop herre
 fashionGridMenText;Premium materials and considered design. For the man who knows that calm is a kind of strength.;Eksklusive materialer og gennemtænkt design. Til manden der forstår, at ro også er styrke.
-fashionGridNewHeading;Celebrating Life;Celebrating Life
-fashionGridNewText;Discover style made to move with your passions and celebrate what makes you unique.;Opdag stil skabt til at følge dine passioner og hyld det, der gør dig unik.
+heroTitle;Celebrating Life;Celebrating Life
+heroText;Discover style made to move with your passions and celebrate what makes you unique.;Opdag stil skabt til at følge dine passioner og hyld det, der gør dig unik.
 fashionGridSaleAltText;"Young woman wearing a short, white 1960s-inspired dress.";"Ung kvinde i kort hvid 60’er-inspireret kjole."
 fashionGridWomanLink;Shop Women;Shop dame
 fashionGridWomanText;Find pieces that inspire self-expression, effortless, bold, and made to move with you.;Udtryk dig selv med styles, der er ubesværede, modige og med dig i bevægelse.
@@ -215,9 +215,8 @@ gridLarge; Large grid;Bredt grid
 gridSmall; Small grid;Smalt grid
 heart;Heart;Hjerte
 heroAltText;"Two women dressed in matching blazers, posing fashionably.";"To kvinder iført smarte matchende blazere."
-heroText;Upgrade your wardrobe with exclusive deals!;Opgradér din garderobe med eksklusive tilbud!
-heroText1;For a limited time, enjoy incredible discounts on the latest fashion trends.;I en begrænset periode kan du få fantastiske rabatter på de nyeste modetrends.
-heroTitle;Exclusive Fashion Sale;Eksklusivt Modesalg
+fashionGridSaleText;For a limited time, enjoy incredible discounts on the latest fashion trends.;I en begrænset periode kan du få fantastiske rabatter på de nyeste modetrends.
+fashionGridMSaleText;Exclusive Fashion Sale;Eksklusivt Modesalg
 hideContent;Hide content;Skjul indhold
 hidePassword;Hide password;Skjul adgangskode
 hips;Hips;Hofte
@@ -300,20 +299,20 @@ noAddressData;You must add an address before placing an order.;Du skal tilføje 
 noChanges;No changes to save;Ingen ændringer at gemme
 noData;No data found;Ingen data fundet
 noEmail;Please enter an email;Indtast venligst en e-mail
-noFavorites;Find your must-haves and save them here, so you can easily come back to them;Find dine must-haves og gem dem her, så du nemt kan vende tilbage til dem
-noFavoritesYet;No favorites yet;Ingen favoritter endnu
+noFavoritesText;Find your must-haves and save them here, so you can easily come back to them;Find dine must-haves og gem dem her, så du nemt kan vende tilbage til dem
+noFavoritesTitle;No favorites yet;Ingen favoritter endnu
 noImagesProvided;No images provided;Ingen billeder
 noItemsToShow;No items to show;Ingen varer at vise
 noMatchingAddressData;No matching address found;Ingen matchende adresse
 noOptions;No options;Ingen valgmuligheder
-noOrdersDescription;Once you've placed your first order, it will appear here so you can easily track and review your purchases.;Når du har afgivet din første ordre, vises den her, så du nemt kan følge og se dine køb
-noOrdersYet;No orders yet;Ingen ordrer endnu
+noOrdersText;Once you've placed your first order, it will appear here so you can easily track and review your purchases.;Når du har afgivet din første ordre, vises den her, så du nemt kan følge og se dine køb
+noOrdersTitle;No orders yet;Ingen ordrer endnu
 noPassword;Please enter a password;Indtast venligst en adgangskode
 noPreference;No preference;Ingen præference
 noProduct;Product not found;Produkt blev ikke fundet
-noProductResult;No products match your filters. Try removing some filters or reset to see all products again.;Der er ingen produkter, der matcher dine filtre. Prøv at fjerne nogle filtre eller nulstil for at se alle produkter igen.
-noProductResultTitle;No product match your filters;Ingen produkter matcher dine filtre
-noPromoCode;We couldn't recognize the discount code. Please try again.;Vi kunne desværre ikke genkende rabatkoden. Prøv venligst igen.
+noProductText;No products match your filters. Try removing some filters or reset to see all products again;Der er ingen produkter, der matcher dine filtre. Prøv at fjerne nogle filtre eller nulstil for at se alle produkter igen
+noProductTitle;No product match your filters;Ingen produkter matcher dine filtre
+noPromoCode;We couldn't recognize the discount code Please try again;Vi kunne desværre ikke genkende rabatkoden Prøv venligst igen
 noReview;Be the first to review this product;Bliv den første til at anmelde dette produkt
 notAuthorized;Not authorized;Ikke autoriseret
 notAuthorizedNoToken;Not authorized, no token;Ikke autoriseret, ingen token
@@ -327,6 +326,9 @@ notPublished;Not published;Ikke udgivet
 notRatedYet;Not rated yet;Ikke bedømt endnu
 noTumbleDry;Not suitable for tumble drying;Ikke egnet til tørretumbler
 notVisibleInShop;is not visible in the shop until the main category is published;bliver først synlig i shoppen, når hovedkategorien er udgivet
+noSaleCta;Explore our collections;Udforsk vores kollektioner
+noSaleText;There are no sale items at the moment, but great deals have a habit of showing up when you least expect them. Check back soon and see what’s waiting for you;Der er ingen tilbudsvarer lige nu, men gode tilbud dukker ofte op, når du mindst venter det. Kom snart tilbage og se, hvad der venter på dig
+noSaleTitle;No sale items right now;Ingen tilbud lige nu
 noUser;User not found. Please sign up first;Bruger blev ikke fundet. Opret dig først
 numberOfReviews;Number of reviews;Antal reviews
 of;of;af
@@ -500,7 +502,7 @@ shopKidsMenuText;Turn every playday into a magical adventure with our colorful a
 shopMenHeading;Luxury for men;Luksus til mænd
 shopMenMenuText;Effortless style starts with our curated essentials for the modern gentleman;Træd ind i stil med vores tidløse essentials for manden, der værdsætter kvalitet
 shopNow;Shop now;Shop nu
-shoppingBagEmpty;Keep exploring and discover styles you love. Add items to your bag whenever you’re ready, and come back anytime to continue where you left off;Bliv ved med at udforske og find styles, du elsker. Tilføj varer til din kurv, når du er klar, og vend tilbage når som helst for at fortsætte, hvor du slap
+shoppingBagEmptyText;Keep exploring and discover styles you love. Add items to your bag whenever you’re ready, and come back anytime to continue where you left off;Bliv ved med at udforske og find styles, du elsker. Tilføj varer til din kurv, når du er klar, og vend tilbage når som helst for at fortsætte, hvor du slap
 shoppingBagEmptyTitle;Fill your cart with the season’s best fashion;Fyld din kurv med tidens bedste mode
 shopWomenHeading;Empower Your Everyday;Styrke i din stil
 shopWomenMenuText;Express yourself in every step effortless, fearless, and made to move. Grab your favorites today;Udtryk dig selv, ubesværet, frygtløst og i bevægelse. Find dine nye favoritter i dag

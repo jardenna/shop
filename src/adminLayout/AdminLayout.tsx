@@ -8,6 +8,7 @@ import { clearMessagePopups } from '../features/messagePopupSlice';
 import { localStorageKeys, useLocalStorage } from '../hooks/useLocalStorage';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import { ShopPath } from '../layout/nav/enums';
+import PageErrorBoundary from '../pages/PageErrorBoundary';
 import AdminHeader from './AdminHeader';
 import './adminLayout.styles.scss';
 import Aside from './aside/Aside';
@@ -58,9 +59,11 @@ const AdminLayout = () => {
             }
           />
         )}
-        <main id="main" className="admin">
-          <Outlet />
-        </main>
+        <PageErrorBoundary>
+          <main id="main" className="admin">
+            <Outlet />
+          </main>
+        </PageErrorBoundary>
       </div>
     </div>
   );

@@ -1,14 +1,14 @@
 import { useLocation } from 'react-router';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
-import { Options } from '../../types/types';
+import { OptionType } from '../../types/types';
 import FieldSet from '../fieldset/FieldSet';
 import Selectbox from '../selectbox/Selectbox';
 
 export type PaginationSelectProps = {
-  defaultValue: Options;
+  defaultValue: OptionType;
   totalCount: number;
-  onSelectCount: (option: Options) => void;
+  onSelectCount: (option: OptionType) => void;
 };
 
 const PaginationSelect = ({

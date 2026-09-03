@@ -110,7 +110,11 @@ const SingleProductPage = () => {
       {isLoading && <SkeletonSinglePage />}
       {product && (
         <div className="single-product-container">
-          <ImgList images={product.images} onReset={() => refetch} />
+          <ImgList
+            images={product.images}
+            onReset={() => refetch}
+            isOutOfStock={product.countInStock === 0}
+          />
           <section
             className="single-product"
             aria-labelledby={`product-${product.id}-title`}

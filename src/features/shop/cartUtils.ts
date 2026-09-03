@@ -1,4 +1,5 @@
 import { CartItem } from '../../app/api/apiTypes/cartApiTypes';
+import { ShopPath } from '../../layout/nav/enums';
 
 export type ChangedAttribute = 'size' | 'color';
 
@@ -81,3 +82,6 @@ export const getTotalCartQuantity = (
   cartList
     .filter((item) => item.productId === productId)
     .reduce((totalQty, item) => totalQty + item.qty, 0) + quantity;
+
+export const getProductLink = (productId: string) =>
+  `${ShopPath.AllProducts}/${productId}`;

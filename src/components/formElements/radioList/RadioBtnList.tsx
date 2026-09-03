@@ -1,10 +1,10 @@
-import { InputChangeHandler, Options } from '../../../types/types';
+import { InputChangeHandler, OptionType } from '../../../types/types';
 import './_radio_btn_list.scss';
 
 interface RadioBtnListProps {
   name: string;
   onChange: InputChangeHandler;
-  radioList: Options[];
+  radioList: OptionType[];
   value: string;
 }
 

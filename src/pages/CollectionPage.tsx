@@ -28,12 +28,13 @@ import { useMediaQuery } from '../hooks/useMediaQuery';
 import { useSearchParamsState } from '../hooks/useSearchParamsState';
 import MetaTags from '../layout/MetaTags';
 import { LinkText } from '../layout/nav/enums';
-import { IconName } from '../types/enums';
-import { Options } from '../types/types';
+import { OptionType } from '../types/types';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
+import { productViewIconList } from '../utils/productViewIconList';
 import { sortSizesDynamic } from '../utils/sizeUtils';
 import './collectionPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
+import { getProductLink } from '../features/shop/cartUtils';
 
 export type FilterKeys = keyof BaseShopProductsParams;
 
@@ -43,9 +44,7 @@ const CollectionPage = () => {
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
 
-  const { subMenu, refetchSubMenu, isErrorSubMenu } = useSubMenu(
-    category as LinkText,
-  );
+  const { subMenu, refetchSubMenu } = useSubMenu(category as LinkText);
 
   const [productView, setProductView] = useLocalStorage(
     localStorageKeys.productView,
@@ -115,7 +114,7 @@ const CollectionPage = () => {
     isLoading,
   });
 
-  const handleSelectCount = (option: Options) => {
+  const handleSelectCount = (option: OptionType) => {
     const newCount = Number(option.value);
     updatePagination(1, newCount);
     setShouldScroll(true);
@@ -129,21 +128,6 @@ const CollectionPage = () => {
     setPage(id);
     setShouldScroll(true);
   };
-
-  const productViewIconList = [
-    {
-      iconName: IconName.LayoutGrid,
-      title: language.grid,
-      ariaLabel: language.grid,
-      display: 'grid',
-    },
-    {
-      iconName: IconName.LayoutList,
-      title: language.list,
-      ariaLabel: language.list,
-      display: 'list',
-    },
-  ];
 
   if (isError) {
     return (
@@ -160,11 +144,11 @@ const CollectionPage = () => {
   if (itemCount === 0) {
     return (
       <EmptyState
-        emptyStateText={language.noProductResult}
-        emptyStateTitle={language.noProductResultTitle}
+        emptyStateText={language.noProductText}
+        emptyStateTitle={language.noProductTitle}
         onClick={onClearAllFilters}
         emptyStateCtaText={language.clearAllFilters}
-        src="/images/shoppingBags/shopping_bag"
+        src="/images/shoppingBags/collection_shopping_bag"
         pageHeading={
           category
             ? `${language.collection} ${language[category]}`
@@ -199,18 +183,12 @@ const CollectionPage = () => {
               ariaLabelledby={ariaLabelledby}
             />
             {!isMobileSize && (
-              <ErrorBoundary
-                FallbackComponent={ErrorBoundaryFallback}
+              <CollectionAside
+                subMenu={subMenu || null}
+                category={category || 'women'}
                 onReset={() => refetchSubMenu()}
-              >
-                <CollectionAside
-                  subMenu={subMenu || null}
-                  category={category || 'women'}
-                  onReset={() => refetchSubMenu()}
-                  language={language}
-                  isError={isErrorSubMenu}
-                />
-              </ErrorBoundary>
+                language={language}
+              />
             )}
           </section>
           <ErrorBoundary
@@ -229,7 +207,7 @@ const CollectionPage = () => {
               )}
               <div className="product-toolbar">
                 <ProductToolbar
-                  onSetDisplay={setProductView}
+                  setProductView={setProductView}
                   displayControlList={productViewIconList}
                   activeDisplay={productView}
                   infoText={infoText}
@@ -256,6 +234,7 @@ const CollectionPage = () => {
                 products={products.products}
                 productView={productView}
                 showSizeOverlay={productView !== 'list'}
+                getProductLink={getProductLink}
               />
               {itemCount > 0 && (
                 <Pagination

@@ -86,9 +86,9 @@ const ShoppingCartPage = () => {
   if (cartItems.length === 0) {
     return (
       <EmptyState
-        emptyStateText={language.shoppingBagEmpty}
+        emptyStateText={language.shoppingBagEmptyText}
         emptyStateTitle={language.shoppingBagEmptyTitle}
-        src="/images/shoppingBags/shopping_bag_2"
+        src="/images/shoppingBags/cart_shopping_bag"
         linkTo={`/${ShopPath.Collection}`}
         emptyStateCtaText={language.getInspired}
         pageHeading={pageHeading}
@@ -99,7 +99,6 @@ const ShoppingCartPage = () => {
   const goToCheckoutPage = () => {
     navigate(`/${ShopPath.Checkout}`);
   };
-  console.log(apiCartList?.summary);
 
   return (
     <MainPageContainer heading={pageHeading}>

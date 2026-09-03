@@ -12,13 +12,14 @@ import FavoritesPanelCart from '../features/favorites/components/FavoritesPanelC
 import { useLanguage } from '../features/language/useLanguage';
 import { openMiniCart } from '../features/miniCartPopupSlice';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
-import ProductCart from '../features/shop/components/ProductCart';
+import ProductCartList from '../features/shop/components/ProductCartList';
 import CartForm, {
   InitialShopValues,
 } from '../features/shop/components/singleProduct/CartForm';
 import { ShopPath } from '../layout/nav/enums';
 import './favoritesPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
+import { getProductLink } from '../features/shop/cartUtils';
 
 const FavoritePage = () => {
   const { language } = useLanguage();
@@ -39,6 +40,10 @@ const FavoritePage = () => {
     onTogglePanel();
   };
 
+  const selectedProduct = favorites?.find(
+    (favorite) => favorite.id === productId,
+  );
+
   async function handleSubmitCartItem(values: InitialShopValues) {
     const cartItem = {
       id: crypto.randomUUID(),
@@ -52,10 +57,6 @@ const FavoritePage = () => {
     onTogglePanel();
     dispatch(openMiniCart());
   }
-
-  const selectedProduct = favorites?.find(
-    (favorite) => favorite.id === productId,
-  );
 
   if (isError) {
     return (
@@ -72,9 +73,9 @@ const FavoritePage = () => {
   if (favorites.length === 0) {
     return (
       <EmptyState
-        emptyStateTitle={language.noFavoritesYet}
-        emptyStateText={language.noFavorites}
-        src="/images/shoppingBags/shopping_bag_1"
+        emptyStateTitle={language.noFavoritesTitle}
+        emptyStateText={language.noFavoritesText}
+        src="/images/shoppingBags/favorites_shopping_bag"
         linkTo={`/${ShopPath.Collection}`}
         emptyStateCtaText={language.getInspired}
         pageHeading={pageHeading}
@@ -114,20 +115,14 @@ const FavoritePage = () => {
             </section>
           )}
         </Panel>
-        <ul className="product-cart-list">
-          {sortedFavorites.map((product) => (
-            <li key={product.id}>
-              <ProductCart
-                showSizeOverlay
-                product={product}
-                linkTo={`${ShopPath.AllProducts}/${product.id}`}
-                onOpenPanel={handleOpenPanel}
-                currentUser={currentUser}
-                isOutOfStock={product.countInStock === 0}
-              />
-            </li>
-          ))}
-        </ul>
+        <ProductCartList
+          products={sortedFavorites}
+          productView="grid"
+          onOpenPanel={handleOpenPanel}
+          currentUser={currentUser}
+          showSizeOverlay
+          getProductLink={getProductLink}
+        />
       </ErrorBoundary>
     </MainPageContainer>
   );

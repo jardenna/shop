@@ -39,9 +39,9 @@ const MyOrdersPage = () => {
   if (myOrders?.length === 0) {
     return (
       <EmptyState
-        emptyStateTitle={language.noOrdersYet}
-        emptyStateText={language.noOrdersDescription}
-        src="/images/shoppingBags/shopping_bag_2"
+        emptyStateTitle={language.noOrdersTitle}
+        emptyStateText={language.noOrdersText}
+        src="/images/shoppingBags/my_order_shopping_bag"
         linkTo={`/${ShopPath.Collection}`}
         emptyStateCtaText={language.getInspired}
         pageHeading={pageHeading}

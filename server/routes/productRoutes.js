@@ -5,11 +5,10 @@ import {
   deleteProduct,
   duplicateProduct,
   getAdminProducts,
-  getNewProducts,
   getProductById,
+  getSaleProducts,
   getShopProductById,
   getShopProducts,
-  getTopProducts,
   updateProduct,
 } from '../controllers/productController.js';
 import {
@@ -31,6 +30,7 @@ router
   .post(languageMiddleware, authenticate, authorizeEmployee, createProduct);
 
 router.get('/scheduled', checkScheduled);
+router.get('/sale', languageMiddleware, getSaleProducts);
 router.get('/allProducts', filterProductsMiddleware, getAdminProducts);
 router.get('/shop/:id', languageMiddleware, getShopProductById);
 router.post(
@@ -41,8 +41,6 @@ router.post(
   createProductReviews,
 );
 router.get('/:id/reviewed', authenticate, checkId, hasReviewed);
-router.get('/top', getTopProducts);
-router.get('/new', getNewProducts);
 router.post(
   '/:id/duplicate',
   languageMiddleware,

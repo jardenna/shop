@@ -14,8 +14,9 @@ $placement-x: 12px;
     }
   }
 
-  p {
+  .product-cart-description {
     margin: 0;
+    text-wrap: balance;
   }
 
   a {
@@ -56,13 +57,6 @@ $placement-x: 12px;
         stroke: $color-light-gray-40;
       }
     }
-  }
-
-  .badge {
-    left: $placement-x;
-    position: absolute;
-    z-index: 1;
-    top: $placement-y;
   }
 
   .size-overlay {

@@ -10,13 +10,12 @@ const FashionGrid = () => {
     <section className="fashion-grid">
       <FashionGridItem
         className="grid-item-1"
-        heading={language.fashionGridNewHeading}
-        linkTo="/"
+        heading={language.fashionGridMSaleText}
+        linkTo={ShopPath.Sale}
         linkText={language.discoverCollection}
-        subHading="NewArrivals"
-        text={language.fashionGridNewText}
+        text={language.fashionGridSaleText}
         alt={language.fashionGridSaleAltText}
-        ariaLabelledby="new-arivals"
+        ariaLabelledby="sales"
       />
       <FashionGridItem
         className="grid-item-2"

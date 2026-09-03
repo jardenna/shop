@@ -4,6 +4,7 @@ import type {
   ProductMenuResponse,
   ReviewsRequest,
   ReviewsResponse,
+  SaleProductResponse,
   ShopAllProductsResponse,
   ShopProductsParams,
 } from '../../app/api/apiTypes/shopApiTypes';
@@ -18,6 +19,10 @@ export const shopApiSlice = apiSlice.injectEndpoints({
         ).toString();
         return `${productUrl}?${query}`;
       },
+      providesTags: [TagTypesEnum.Products],
+    }),
+    getSaleProducts: builder.query<SaleProductResponse[], void>({
+      query: () => `${productUrl}/sale`,
       providesTags: [TagTypesEnum.Products],
     }),
     getSingleProduct: builder.query<BaseShopProduct, string>({
@@ -49,4 +54,5 @@ export const {
   useGetSingleProductQuery,
   usePostReviewsMutation,
   useCheckReviewedQuery,
+  useGetSaleProductsQuery,
 } = shopApiSlice;
