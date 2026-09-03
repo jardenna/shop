@@ -28,7 +28,7 @@ const SalesPage = () => {
     return <SkeletonCollectionPage count={4} />;
   }
 
-  if (productsOnSale.products.length > 0) {
+  if (productsOnSale.products.length === 0) {
     return (
       <EmptyState
         emptyStateTitle={language.noSaleTitle}
