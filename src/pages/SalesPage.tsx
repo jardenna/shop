@@ -28,12 +28,12 @@ const SalesPage = () => {
     return <SkeletonCollectionPage count={4} />;
   }
 
-  if (productsOnSale.products.length === 0) {
+  if (productsOnSale.products.length > 0) {
     return (
       <EmptyState
         emptyStateTitle={language.noFavoritesYet}
         emptyStateText={language.noFavorites}
-        src="/images/shoppingBags/shopping_bag_1"
+        src="/images/shoppingBags/sale_shopping_bag"
         linkTo={`/${ShopPath.Collection}`}
         emptyStateCtaText={language.getInspired}
         pageHeading={language.sale}
