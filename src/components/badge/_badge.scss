@@ -1,8 +1,19 @@
 @use '../../scss/globals' as *;
 
-.badge-container {
+.admin-badge-container {
   display: flex;
   gap: 8px;
+}
+
+.badge-container {
+  left: 0;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  top: 0;
+  display: flex;
+  gap: 8px;
+  padding: 12px;
 }
 
 .badge {
@@ -12,6 +23,7 @@
   width: fit-content;
   background-color: $color-light-gray-30;
   font-family: $font-primary-bold;
+  text-wrap: nowrap;
 
   &:has(.badge-dot) {
     border: 1px solid;

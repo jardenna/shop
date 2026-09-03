@@ -48,7 +48,7 @@ const ProductCart = ({
             {language.view} {product.productName}
           </VisuallyHidden>
           <div className="cart-img-container">
-            <div className="cart-badge-container">
+            <div className="badge-container">
               {product.discount > 0 && (
                 <Badge
                   badgeText={`- ${product.discount} %`}

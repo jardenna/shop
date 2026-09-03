@@ -233,6 +233,7 @@ const CollectionPage = () => {
                 products={products.products}
                 productView={productView}
                 showSizeOverlay={productView !== 'list'}
+                categoryId={categoryId}
               />
               {itemCount > 0 && (
                 <Pagination
