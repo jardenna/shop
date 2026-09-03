@@ -20,6 +20,7 @@ import { IconName } from '../types/enums';
 import type { OptionType } from '../types/types';
 import Header from './header/Header';
 import { AdminPath, ShopPath } from './nav/enums';
+import PageErrorBoundary from '../pages/PageErrorBoundary';
 
 const Layout = () => {
   const { pathname } = useLocation();
@@ -135,9 +136,11 @@ const Layout = () => {
           handleSelectCurrency('currencyOption', selectedOptions);
         }}
       />
-      <main id="main">
-        <Outlet />
-      </main>
+      <PageErrorBoundary>
+        <main id="main">
+          <Outlet />
+        </main>
+      </PageErrorBoundary>
     </div>
   );
 };
