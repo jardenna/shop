@@ -4,6 +4,7 @@ import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import NotFoundError from '../components/NotFoundError';
 import SkeletonCollectionPage from '../components/skeleton/skeletonCollection/SkeletonCollectionPage';
 import { useLanguage } from '../features/language/useLanguage';
+import { getProductLink } from '../features/shop/cartUtils';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import ProductCartList from '../features/shop/components/ProductCartList';
 import { useGetSaleProductsQuery } from '../features/shop/shopApiSlice';
@@ -69,7 +70,7 @@ const SalesPage = () => {
           products={products}
           productView={productView}
           showSizeOverlay={productView !== 'list'}
-          getProductLink={(id) => `${ShopPath.AllProducts}/${id}`}
+          getProductLink={getProductLink}
         />
       </ErrorBoundary>
     </MainPageContainer>

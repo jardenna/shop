@@ -19,6 +19,7 @@ import CartForm, {
 import { ShopPath } from '../layout/nav/enums';
 import './favoritesPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
+import { getProductLink } from '../features/shop/cartUtils';
 
 const FavoritePage = () => {
   const { language } = useLanguage();
@@ -120,7 +121,7 @@ const FavoritePage = () => {
           onOpenPanel={handleOpenPanel}
           currentUser={currentUser}
           showSizeOverlay
-          getProductLink={(id) => `${ShopPath.AllProducts}/${id}`}
+          getProductLink={getProductLink}
         />
       </ErrorBoundary>
     </MainPageContainer>
