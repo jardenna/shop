@@ -26,15 +26,13 @@ const CollectionNav = ({ subMenu, category, onReset }: CollectionNavProps) => {
         FallbackComponent={ErrorBoundaryFallback}
         onReset={onReset}
       >
-        <>
-          {subMenu.map(({ label, categoryId }) => (
-            <li className="collection-nav-item" key={categoryId}>
-              <NavLink to={`/${ShopPath.Collection}/${category}/${categoryId}`}>
-                {translateKey(label, language)}
-              </NavLink>
-            </li>
-          ))}
-        </>
+        {subMenu.map(({ label, categoryId }) => (
+          <li className="collection-nav-item" key={categoryId}>
+            <NavLink to={`/${ShopPath.Collection}/${category}/${categoryId}`}>
+              {translateKey(label, language)}
+            </NavLink>
+          </li>
+        ))}
       </ErrorBoundary>
     </ul>
   );
