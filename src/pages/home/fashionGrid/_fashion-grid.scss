@@ -21,6 +21,10 @@
       font-size: $font-large;
     }
 
+    p {
+      text-wrap: pretty;
+    }
+
     a {
       font-size: $font-medium;
       color: $color-dust-red-40;
@@ -57,7 +61,11 @@
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      padding: 0 20px;
+      padding-inline: 20px 60px;
+
+      p {
+        max-width: rem(300px);
+      }
 
       @include max-size($small) {
         padding: 0;
