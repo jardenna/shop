@@ -1,6 +1,6 @@
 import type { BaseShopProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import ColorList from './productLists/ColorList';
-import SizeList from './productLists/SizeList';
+import ProductListItem from './productLists/ProductListItem';
 import ProductPrice from './productPrice/ProductPrice';
 
 type ProductCartListContentProps = {
@@ -11,11 +11,16 @@ const ProductCartListContent = ({ product }: ProductCartListContentProps) => (
   <>
     <p className="product-cart-description">{product.description}</p>
     <ProductPrice price={product.price} discount={product.discount} />
-    <SizeList
-      availableSizeList={product.sizes}
-      subCategoryName={product.subCategoryName}
-      categoryName={product.categoryName}
-    />
+    <ul className="product-list size-list size-list">
+      {product.allowedSizes.map((size) => (
+        <ProductListItem
+          key={size}
+          text={size}
+          unavailable={!product.sizes.includes(size)}
+        />
+      ))}
+    </ul>
+
     <ColorList colors={product.colors} variant="small" />
   </>
 );
