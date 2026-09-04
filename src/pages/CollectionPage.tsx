@@ -201,6 +201,7 @@ const CollectionPage = () => {
                   alt={language[altText]}
                   ratio="16:9"
                   priority
+                  className="collection-banner-img"
                 />
               )}
               <div className="product-toolbar">

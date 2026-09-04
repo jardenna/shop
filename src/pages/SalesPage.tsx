@@ -57,19 +57,25 @@ const Salespage = () => {
     );
   }
 
-  const src = `/images/banners/sale_${category}_banner`;
-  const altText = `${category}BannerAltText`;
-
   const subMenu = [
+    { label: 'kids', categoryId: '680091c674682cc14143e243' },
     { label: 'men', categoryId: '68145e5d1ac3dd2a44867016' },
     { label: 'women', categoryId: '680091d574682cc14143e248' },
-    { label: 'kids', categoryId: '680091c674682cc14143e243' },
   ];
+
+  const selectedCategory = subMenu.find(
+    ({ categoryId }) => categoryId === category,
+  );
+
+  const categoryLabel = selectedCategory?.label ?? 'women';
+
+  const src = `/images/banners/sale_${categoryLabel}_banner`;
+  const altText = `${category}BannerAltText`;
 
   return (
     <>
       {category && (
-        <MetaTags metaTitle={`${language.sale} ${language[category]}`} />
+        <MetaTags metaTitle={`${language.sale} ${language[categoryLabel]}`} />
       )}
 
       <section className="container collection-page">
@@ -84,7 +90,7 @@ const Salespage = () => {
             ariaLabelledby={ariaLabelledby}
             subMenu={subMenu}
             headerText={language.sale}
-            category={category || 'women'}
+            category=""
             onReset={() => {
               console.log(123);
             }}
@@ -103,6 +109,7 @@ const Salespage = () => {
                 alt={language[altText]}
                 ratio="16:9"
                 priority
+                className="collection-banner-img"
               />
               <DisplayControls
                 onSetDisplay={setProductView}
