@@ -1,7 +1,6 @@
 import { useId } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
-import src from 'react-select';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import DisplayControls from '../components/DisplayControls';
@@ -58,6 +57,9 @@ const Salespage = () => {
     );
   }
 
+  const src = `/images/banners/sale_${category}_banner`;
+  const altText = `${category}BannerAltText`;
+
   const subMenu = [
     { label: 'men', categoryId: '68145e5d1ac3dd2a44867016' },
     { label: 'women', categoryId: '680091d574682cc14143e248' },
@@ -98,7 +100,7 @@ const Salespage = () => {
               <Picture
                 src={`${src}.jpg`}
                 srcSet={`${src}.avif`}
-                alt="language[altText]"
+                alt={language[altText]}
                 ratio="16:9"
                 priority
               />
@@ -113,7 +115,7 @@ const Salespage = () => {
                 showSizeOverlay={productView !== 'list'}
                 getProductLink={getProductLink}
               />
-            </section>{' '}
+            </section>
           </ErrorBoundary>
         </div>
       </section>
