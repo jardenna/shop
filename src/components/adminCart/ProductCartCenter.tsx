@@ -1,7 +1,7 @@
 import type { Size } from '../../app/api/apiTypes/sharedApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
 import ColorList from '../../features/shop/components/productLists/ColorList';
-import ProductListItem from '../../features/shop/components/productLists/ProductListItem';
+import SizeList from '../../features/shop/components/SizeList';
 import LabelValueGrid from '../labelValueGrid/LabelValueGrid';
 import CartContent from './CartContent';
 
@@ -53,15 +53,7 @@ const ProductCartCenter = ({
           {language.sizes}
         </span>
       </div>
-      <ul className="product-list size-list">
-        {allowedSizes.map((size) => (
-          <ProductListItem
-            key={size}
-            text={size}
-            unavailable={!sizes.includes(size)}
-          />
-        ))}
-      </ul>
+      <SizeList allowedSizes={allowedSizes} sizes={sizes} />
     </CartContent>
   );
 };
