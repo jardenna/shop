@@ -18,20 +18,23 @@ import ProductCartGridContent from './ProductCartGridContent';
 import ProductCartListContent from './ProductCartListContent';
 import SizeOverlay from './SizeOverlay';
 
-export type ProductCartProps = {
+export interface BaseProductCart {
+  productView: string;
+  showSizeOverlay: boolean;
+  currentUser?: UserResponse | null;
+  onOpenPanel?: (id: string) => void;
+}
+
+interface ProductCartProps extends BaseProductCart {
   linkTo: string;
   product: BaseProduct;
-  currentUser?: UserResponse | null;
   isOutOfStock?: boolean;
-  productView?: string;
-  showSizeOverlay?: boolean;
-  onOpenPanel?: (id: string) => void;
-};
+}
 
 const ProductCart = ({
   product,
   showSizeOverlay,
-  productView = '',
+  productView,
   linkTo,
   onOpenPanel,
   currentUser,
