@@ -110,7 +110,7 @@ const Salespage = () => {
                 alt={language[altText]}
                 ratio="16:9"
                 priority
-                className="collection-banner-img"
+                className="collection-banner"
               />
               <DisplayControls
                 onSetDisplay={setProductView}

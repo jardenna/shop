@@ -26,8 +26,10 @@
   width: 100%;
 }
 
-.collection-banner-img {
-  max-height: rem(486px);
+.collection-banner {
+  img {
+    max-height: rem(476px);
+  }
 }
 
 .product-toolbar {
