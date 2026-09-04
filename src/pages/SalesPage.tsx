@@ -105,7 +105,7 @@ const Salespage = () => {
               />
               <ProductCartList
                 products={selectedProducts}
-                productView="grid"
+                productView="list"
                 showSizeOverlay
                 getProductLink={getProductLink}
               />
