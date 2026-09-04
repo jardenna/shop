@@ -16,7 +16,7 @@ import { ShopPath } from '../layout/nav/enums';
 import { productViewIconList } from '../utils/productViewIconList';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
-const MainSalespage = () => {
+const Salespage = () => {
   const ariaLabelledby = useId();
 
   const { category } = useParams();
@@ -96,4 +96,4 @@ const MainSalespage = () => {
   );
 };
 
-export default MainSalespage;
+export default Salespage;

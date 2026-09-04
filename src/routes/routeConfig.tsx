@@ -20,7 +20,6 @@ import FavoritePage from '../pages/FavoritePage';
 import HomePage from '../pages/home/HomePage';
 import LoginPage from '../pages/LoginPage';
 import MainCollectionsPage from '../pages/MainCollectionsPage';
-import MainSalespage from '../pages/MainSalesPage';
 import MyOrderDetailsPage from '../pages/MyOrderDetailsPage';
 import MyOrdersPage from '../pages/MyOrdersPage';
 import CreateProductPage from '../pages/product/CreateProductPage';
@@ -29,6 +28,7 @@ import UpdateProductPage from '../pages/product/UpdateProductPage';
 import ViewProductPage from '../pages/product/ViewProductPage';
 import ProtectedRoute from '../pages/ProtectedRoute';
 import RegisterUserPage from '../pages/RegisterUserPage';
+import Salespage from '../pages/SalesPage';
 import ShoppingCartPage from '../pages/ShoppingCartPage';
 import SingleProductPage from '../pages/SingleProductPage';
 import CreateSubCategoryPage from '../pages/subCategory/CreateSubCategoryPage';
@@ -61,11 +61,11 @@ const routeList = [
   },
   {
     path: ShopPath.Sale,
-    element: <MainSalespage />,
+    element: <Salespage />,
   },
   {
     path: ShopPath.SaleCategory,
-    element: <MainSalespage />,
+    element: <Salespage />,
   },
   {
     path: ShopPath.AboutUs,
