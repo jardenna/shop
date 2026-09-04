@@ -536,7 +536,7 @@ const getShopProductById = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id)
     .populate({
       path: 'subCategory',
-      select: 'subCategoryName category',
+      select: 'subCategoryName category allowedSizes',
       populate: {
         path: 'category',
         select: 'categoryName',
@@ -556,6 +556,7 @@ const getShopProductById = asyncHandler(async (req, res) => {
 
   const subCategoryName = product.subCategory?.subCategoryName || '';
   const categoryName = product.subCategory?.category?.categoryName || '';
+  const allowedSizes = product.subCategory?.allowedSizes || [];
 
   const { ...rest } = formatMongoData(product);
 
@@ -564,6 +565,7 @@ const getShopProductById = asyncHandler(async (req, res) => {
     discountedPrice: Math.round(discountedPrice),
     subCategoryName,
     categoryName,
+    allowedSizes,
   });
 });
 
