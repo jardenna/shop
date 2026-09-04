@@ -1,7 +1,9 @@
 import { useId } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
-import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
+import Breadcrumbs, {
+  breadcrumbsListProps,
+} from '../components/breadcrumbs/Breadcrumbs';
 import DisplayControls from '../components/DisplayControls';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import NotFoundError from '../components/NotFoundError';
@@ -21,7 +23,7 @@ import MainPageContainer from './pageContainer/MainPageContainer';
 
 const Salespage = () => {
   const ariaLabelledby = useId();
-  const { category } = useParams();
+  const params = useParams();
   const { language } = useLanguage();
 
   const [productView, setProductView] = useLocalStorage(
@@ -62,23 +64,27 @@ const Salespage = () => {
     { label: 'women', categoryId: '680091d574682cc14143e248' },
   ];
 
+  const saleBreadcrumbsList: breadcrumbsListProps[] = [
+    { path: ShopPath.SaleCategory },
+  ];
+
   const selectedCategory = subMenu.find(
-    ({ categoryId }) => categoryId === category,
+    ({ categoryId }) => categoryId === params.categoryId,
   );
 
   const categoryLabel = selectedCategory?.label ?? 'women';
 
   const src = `/images/banners/sale_${categoryLabel}_banner`;
-  const altText = `${category}BannerAltText`;
+  const altText = `${params.category}BannerAltText`;
 
   return (
     <>
-      {category && (
+      {params.category && (
         <MetaTags metaTitle={`${language.sale} ${language[categoryLabel]}`} />
       )}
 
       <section className="container collection-page">
-        <Breadcrumbs />
+        <Breadcrumbs routeList={saleBreadcrumbsList} subMenu={subMenu} />
 
         <div className="collection-page-container">
           <CollectionAside
