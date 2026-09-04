@@ -6,6 +6,7 @@ import asyncHandler from '../middleware/asyncHandler.js';
 import scheduledStatusHandler from '../middleware/scheduledStatusHandler.js';
 import Product from '../models/productModel.js';
 import SubCategory from '../models/subCategoryModel.js';
+import { getProductByIdService } from '../services/getProductByIdService.js';
 import getProductListing from '../services/getProductListing.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
@@ -499,16 +500,7 @@ const getSaleProducts = asyncHandler(async (req, res) => {
 // @method  GET
 // @access  Public
 const getProductById = asyncHandler(async (req, res) => {
-  const product = await Product.findById(req.params.id)
-    .populate({
-      path: 'subCategory',
-      select: 'categoryStatus allowedSizes',
-      populate: {
-        path: 'category',
-        model: 'Category',
-      },
-    })
-    .lean();
+  const product = await getProductByIdService(req.params.id, true);
 
   if (!product) {
     return res.status(404).json({
@@ -517,15 +509,7 @@ const getProductById = asyncHandler(async (req, res) => {
     });
   }
 
-  const discountedPrice =
-    product.price - (product.price * product.discount) / 100;
-
-  product.subCategoryName = product.subCategory?.subCategoryName || '';
-  product.categoryName = product.subCategory?.category?.categoryName || '';
-  product.discountedPrice = Math.round(discountedPrice);
-  product.allowedSizes = product.subCategory?.allowedSizes || [];
-
-  res.status(200).json(formatMongoData(product));
+  res.status(200).json(product);
 });
 
 // @desc    Get shop product by ID
@@ -533,16 +517,7 @@ const getProductById = asyncHandler(async (req, res) => {
 // @method  GET
 // @access  Public
 const getShopProductById = asyncHandler(async (req, res) => {
-  const product = await Product.findById(req.params.id)
-    .populate({
-      path: 'subCategory',
-      select: 'subCategoryName category allowedSizes',
-      populate: {
-        path: 'category',
-        select: 'categoryName',
-      },
-    })
-    .lean();
+  const product = await getProductByIdService(req.params.id);
 
   if (!product) {
     return res.status(404).json({
@@ -551,22 +526,7 @@ const getShopProductById = asyncHandler(async (req, res) => {
     });
   }
 
-  const discountedPrice =
-    product.price - (product.price * product.discount) / 100;
-
-  const subCategoryName = product.subCategory?.subCategoryName || '';
-  const categoryName = product.subCategory?.category?.categoryName || '';
-  const allowedSizes = product.subCategory?.allowedSizes || [];
-
-  const { ...rest } = formatMongoData(product);
-
-  res.status(200).json({
-    ...rest,
-    discountedPrice: Math.round(discountedPrice),
-    subCategoryName,
-    categoryName,
-    allowedSizes,
-  });
+  res.status(200).json(product);
 });
 
 // @desc    Check Scheduled Products
