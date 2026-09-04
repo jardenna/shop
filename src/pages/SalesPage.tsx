@@ -2,6 +2,7 @@ import { useId } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
+import { saleBreadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import NotFoundError from '../components/NotFoundError';
 import Picture from '../components/Picture';
@@ -15,7 +16,6 @@ import { useGetSaleProductsQuery } from '../features/shop/shopApiSlice';
 import MetaTags from '../layout/MetaTags';
 import { ShopPath } from '../layout/nav/enums';
 import MainPageContainer from './pageContainer/MainPageContainer';
-import { saleBreadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 
 const Salespage = () => {
   const ariaLabelledby = useId();
@@ -66,7 +66,7 @@ const Salespage = () => {
   const categoryLabel = selectedCategory?.label ?? 'women';
 
   const src = `/images/banners/sale_${categoryLabel}_banner`;
-  const altText = `${params.category}BannerAltText`;
+  const altText = `${categoryLabel}SalesBannerAltText`;
 
   return (
     <>
