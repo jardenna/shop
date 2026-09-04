@@ -469,7 +469,7 @@ const getSaleProducts = asyncHandler(async (req, res) => {
     )
     .populate({
       path: 'subCategory',
-      select: 'category',
+      select: 'category allowedSizes',
       populate: {
         path: 'category',
         select: 'categoryName',
@@ -484,6 +484,7 @@ const getSaleProducts = asyncHandler(async (req, res) => {
       return {
         ...restData,
         image: images[0],
+        allowedSizes: subCategory.allowedSizes,
         categoryName: subCategory.category.categoryName,
         categoryId: subCategory.category._id,
       };
