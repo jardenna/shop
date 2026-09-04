@@ -1,7 +1,9 @@
 import type { Size } from '../../app/api/apiTypes/sharedApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
 import ColorList from '../../features/shop/components/productLists/ColorList';
+import ProductList from '../../features/shop/components/productLists/ProductList';
 import SizeList from '../../features/shop/components/SizeList';
+
 import LabelValueGrid from '../labelValueGrid/LabelValueGrid';
 import CartContent from './CartContent';
 
@@ -48,12 +50,12 @@ const ProductCartCenter = ({
         }}
       />
 
-      <div className="form-label-container">
-        <span className="title" id="view-product-sizes">
-          {language.sizes}
-        </span>
-      </div>
-      <SizeList allowedSizes={allowedSizes} sizes={sizes} />
+      <ProductList
+        groupTitle={{ title: language.sizes, id: '' }}
+        className="color-list"
+      >
+        <SizeList allowedSizes={allowedSizes} sizes={sizes} />
+      </ProductList>
     </CartContent>
   );
 };
