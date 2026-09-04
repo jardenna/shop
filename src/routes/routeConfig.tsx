@@ -28,7 +28,7 @@ import UpdateProductPage from '../pages/product/UpdateProductPage';
 import ViewProductPage from '../pages/product/ViewProductPage';
 import ProtectedRoute from '../pages/ProtectedRoute';
 import RegisterUserPage from '../pages/RegisterUserPage';
-import SalesPage from '../pages/SalesPage';
+import Salespage from '../pages/SalesPage';
 import ShoppingCartPage from '../pages/ShoppingCartPage';
 import SingleProductPage from '../pages/SingleProductPage';
 import CreateSubCategoryPage from '../pages/subCategory/CreateSubCategoryPage';
@@ -61,7 +61,11 @@ const routeList = [
   },
   {
     path: ShopPath.Sale,
-    element: <SalesPage />,
+    element: <Salespage />,
+  },
+  {
+    path: ShopPath.SaleCategory,
+    element: <Salespage />,
   },
   {
     path: ShopPath.AboutUs,

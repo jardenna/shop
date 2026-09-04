@@ -11,6 +11,7 @@ import { useAddToCartMutation } from '../features/cart/cartApiSlice';
 import FavoritesPanelCart from '../features/favorites/components/FavoritesPanelCart';
 import { useLanguage } from '../features/language/useLanguage';
 import { openMiniCart } from '../features/miniCartPopupSlice';
+import { getProductLink } from '../features/shop/cartUtils';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import ProductCartList from '../features/shop/components/ProductCartList';
 import CartForm, {
@@ -19,7 +20,6 @@ import CartForm, {
 import { ShopPath } from '../layout/nav/enums';
 import './favoritesPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
-import { getProductLink } from '../features/shop/cartUtils';
 
 const FavoritePage = () => {
   const { language } = useLanguage();
@@ -84,7 +84,11 @@ const FavoritePage = () => {
   }
 
   return (
-    <MainPageContainer heading={pageHeading} className="favorite-page">
+    <MainPageContainer
+      heading={pageHeading}
+      variant="large"
+      className="favorite-page"
+    >
       {isLoading && (
         <SkeletonCollection showCtaBtn className="skeleton-favorites" />
       )}

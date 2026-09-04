@@ -3,7 +3,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import type { BaseShopProductsParams } from '../app/api/apiTypes/shopApiTypes';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
-import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
+import { collectionBreadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import NotFoundError from '../components/NotFoundError';
 import { usePaginationText } from '../components/pagination/hooks/usePaginationText';
@@ -12,8 +12,8 @@ import Pagination from '../components/pagination/Pagination';
 import Picture from '../components/Picture';
 import SkeletonCollectionPage from '../components/skeleton/skeletonCollection/SkeletonCollectionPage';
 import { useLanguage } from '../features/language/useLanguage';
+import { getProductLink } from '../features/shop/cartUtils';
 import CollectionAside from '../features/shop/components/CollectionAside';
-import CollectionPageHeader from '../features/shop/components/CollectionPageHeader';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import FilterPanel, {
   InitialFilters,
@@ -27,14 +27,13 @@ import { localStorageKeys, useLocalStorage } from '../hooks/useLocalStorage';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import { useSearchParamsState } from '../hooks/useSearchParamsState';
 import MetaTags from '../layout/MetaTags';
-import { LinkText } from '../layout/nav/enums';
+import { LinkText, ShopPath } from '../layout/nav/enums';
 import { OptionType } from '../types/types';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { productViewIconList } from '../utils/productViewIconList';
 import { sortSizesDynamic } from '../utils/sizeUtils';
 import './collectionPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
-import { getProductLink } from '../features/shop/cartUtils';
 
 export type FilterKeys = keyof BaseShopProductsParams;
 
@@ -43,7 +42,6 @@ const CollectionPage = () => {
   const { category, categoryId } = useParams();
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
-
   const { subMenu, refetchSubMenu } = useSubMenu(category as LinkText);
 
   const [productView, setProductView] = useLocalStorage(
@@ -171,26 +169,26 @@ const CollectionPage = () => {
       >
         {subMenu && (
           <Breadcrumbs
-            routeList={breadcrumbsList}
             subMenu={subMenu}
             productName=""
+            routeList={collectionBreadcrumbsList}
           />
         )}
         <div className="collection-page-container">
-          <section>
-            <CollectionPageHeader
+          {!isMobileSize && subMenu && (
+            <CollectionAside
               headerText={categoryText}
               ariaLabelledby={ariaLabelledby}
+              subMenu={subMenu}
+              category={category || 'women'}
+              onReset={() => refetchSubMenu()}
+              language={language}
+              getProductLink={(productId) =>
+                `/${ShopPath.Collection}/${category}/${productId}`
+              }
             />
-            {!isMobileSize && (
-              <CollectionAside
-                subMenu={subMenu || null}
-                category={category || 'women'}
-                onReset={() => refetchSubMenu()}
-                language={language}
-              />
-            )}
-          </section>
+          )}
+
           <ErrorBoundary
             FallbackComponent={ErrorBoundaryFallback}
             onReset={() => refetch()}
@@ -203,6 +201,7 @@ const CollectionPage = () => {
                   alt={language[altText]}
                   ratio="16:9"
                   priority
+                  className="collection-banner"
                 />
               )}
               <div className="product-toolbar">
