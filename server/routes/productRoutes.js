@@ -1,16 +1,19 @@
 import express from 'express';
 import {
+  getSaleProducts,
+  getShopProductById,
+  getShopProducts,
+} from '../controllers/productController.js';
+
+import {
   checkScheduled,
   createProduct,
   deleteProduct,
   duplicateProduct,
-  getAdminProducts,
+  getAllProducts,
   getProductById,
-  getSaleProducts,
-  getShopProductById,
-  getShopProducts,
   updateProduct,
-} from '../controllers/productController.js';
+} from '../controllers/adminProductController.js';
 import {
   createProductReviews,
   hasReviewed,
@@ -31,7 +34,7 @@ router
 
 router.get('/scheduled', checkScheduled);
 router.get('/sale', languageMiddleware, getSaleProducts);
-router.get('/allProducts', filterProductsMiddleware, getAdminProducts);
+router.get('/allProducts', filterProductsMiddleware, getAllProducts);
 router.get('/shop/:id', languageMiddleware, getShopProductById);
 router.post(
   '/:id/reviews',
