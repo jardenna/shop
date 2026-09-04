@@ -1,9 +1,13 @@
 import { useId } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
+import src from 'react-select';
+import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
+import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import DisplayControls from '../components/DisplayControls';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import NotFoundError from '../components/NotFoundError';
+import Picture from '../components/Picture';
 import SkeletonCollectionPage from '../components/skeleton/skeletonCollection/SkeletonCollectionPage';
 import { useLanguage } from '../features/language/useLanguage';
 import { getProductLink } from '../features/shop/cartUtils';
@@ -12,13 +16,13 @@ import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import ProductCartList from '../features/shop/components/ProductCartList';
 import { useGetSaleProductsQuery } from '../features/shop/shopApiSlice';
 import { localStorageKeys, useLocalStorage } from '../hooks/useLocalStorage';
+import MetaTags from '../layout/MetaTags';
 import { ShopPath } from '../layout/nav/enums';
 import { productViewIconList } from '../utils/productViewIconList';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const Salespage = () => {
   const ariaLabelledby = useId();
-
   const { category } = useParams();
   const { language } = useLanguage();
 
@@ -61,38 +65,59 @@ const Salespage = () => {
   ];
 
   return (
-    <MainPageContainer heading={language.sale}>
-      <ErrorBoundary
-        FallbackComponent={ErrorBoundaryFallback}
-        onReset={() => refetch()}
-      >
-        <DisplayControls
-          onSetDisplay={setProductView}
-          displayControlList={productViewIconList}
-          activeDisplay={productView}
-        />
+    <>
+      {category && (
+        <MetaTags metaTitle={`${language.sale} ${language[category]}`} />
+      )}
 
-        <CollectionAside
-          ariaLabelledby={ariaLabelledby}
+      <section className="container collection-page">
+        <Breadcrumbs
+          routeList={breadcrumbsList}
           subMenu={subMenu}
-          headerText={language.sale}
-          category={category || 'women'}
-          onReset={() => {
-            console.log(123);
-          }}
-          language={language}
-          getProductLink={(productId) => `/${ShopPath.Sale}/${productId}`}
-          linkTo={`/${ShopPath.Sale}`}
+          productName=""
         />
 
-        <ProductCartList
-          products={products}
-          productView={productView}
-          showSizeOverlay={productView !== 'list'}
-          getProductLink={getProductLink}
-        />
-      </ErrorBoundary>
-    </MainPageContainer>
+        <div className="collection-page-container">
+          <CollectionAside
+            ariaLabelledby={ariaLabelledby}
+            subMenu={subMenu}
+            headerText={language.sale}
+            category={category || 'women'}
+            onReset={() => {
+              console.log(123);
+            }}
+            language={language}
+            getProductLink={(productId) => `/${ShopPath.Sale}/${productId}`}
+            linkTo={`/${ShopPath.Sale}`}
+          />
+          <ErrorBoundary
+            FallbackComponent={ErrorBoundaryFallback}
+            onReset={() => refetch()}
+          >
+            <section className="collection-page-content">
+              <Picture
+                src={`${src}.jpg`}
+                srcSet={`${src}.avif`}
+                alt="language[altText]"
+                ratio="16:9"
+                priority
+              />
+              <DisplayControls
+                onSetDisplay={setProductView}
+                displayControlList={productViewIconList}
+                activeDisplay={productView}
+              />
+              <ProductCartList
+                products={products}
+                productView={productView}
+                showSizeOverlay={productView !== 'list'}
+                getProductLink={getProductLink}
+              />
+            </section>{' '}
+          </ErrorBoundary>
+        </div>
+      </section>
+    </>
   );
 };
 
