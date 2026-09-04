@@ -53,7 +53,7 @@ const ProductCartCenter = ({
           {language.sizes}
         </span>
       </div>
-      <ul className="product-list size-list size-list">
+      <ul className="product-list size-list">
         {allowedSizes.map((size) => (
           <ProductListItem
             key={size}

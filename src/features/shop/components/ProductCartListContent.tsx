@@ -11,7 +11,7 @@ const ProductCartListContent = ({ product }: ProductCartListContentProps) => (
   <>
     <p className="product-cart-description">{product.description}</p>
     <ProductPrice price={product.price} discount={product.discount} />
-    <ul className="product-list size-list size-list">
+    <ul className="product-list size-list">
       {product.allowedSizes.map((size) => (
         <ProductListItem
           key={size}
