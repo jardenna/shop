@@ -1,7 +1,7 @@
 import { ShopPath } from '../../layout/nav/enums';
 import { breadcrumbsListProps } from './Breadcrumbs';
 
-export const breadcrumbsList: breadcrumbsListProps[] = [
+export const collectionBreadcrumbsList: breadcrumbsListProps[] = [
   { path: ShopPath.CollectionCategory },
   { path: ShopPath.CollectionCategoryId },
   { path: ShopPath.CollectionSingleProduct },

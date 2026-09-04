@@ -2,7 +2,6 @@ import { useId } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
-import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import DisplayControls from '../components/DisplayControls';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import NotFoundError from '../components/NotFoundError';
@@ -79,11 +78,7 @@ const Salespage = () => {
       )}
 
       <section className="container collection-page">
-        <Breadcrumbs
-          routeList={breadcrumbsList}
-          subMenu={subMenu}
-          productName=""
-        />
+        <Breadcrumbs />
 
         <div className="collection-page-container">
           <CollectionAside

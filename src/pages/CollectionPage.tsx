@@ -3,7 +3,6 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import type { BaseShopProductsParams } from '../app/api/apiTypes/shopApiTypes';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
-import { breadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import NotFoundError from '../components/NotFoundError';
 import { usePaginationText } from '../components/pagination/hooks/usePaginationText';
@@ -34,6 +33,7 @@ import { productViewIconList } from '../utils/productViewIconList';
 import { sortSizesDynamic } from '../utils/sizeUtils';
 import './collectionPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
+import { collectionBreadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 
 export type FilterKeys = keyof BaseShopProductsParams;
 
@@ -169,9 +169,9 @@ const CollectionPage = () => {
       >
         {subMenu && (
           <Breadcrumbs
-            routeList={breadcrumbsList}
             subMenu={subMenu}
             productName=""
+            routeList={collectionBreadcrumbsList}
           />
         )}
         <div className="collection-page-container">
