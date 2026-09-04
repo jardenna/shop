@@ -23,20 +23,22 @@ import { useLanguage } from '../features/language/useLanguage';
 import OrderHeading from '../features/orders/components/orderHeading/OrderHeading';
 import TotalPrice from '../features/orders/components/TotalPrice';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 import { ShopPath } from '../layout/nav/enums';
 import MainPageContainer from './pageContainer/MainPageContainer';
 import './shoppingCartPage.styles.scss';
 
 const ShoppingCartPage = () => {
   const navigate = useNavigate();
+  const { language } = useLanguage();
   const dispatch = useAppDispatch();
   const { currentUser, isAuthReady, isEmployee } = useAuth();
-  const { language } = useLanguage();
   const { apiCartList, cartList, refetchApiCartList, isCartError } =
     useActiveCart({
       currentUser,
     });
 
+  const { isMobileSize } = useMediaQuery();
   const pageHeading = language.bag;
   const shouldFetchGuestCart = isAuthReady && !currentUser;
 
@@ -77,7 +79,7 @@ const ShoppingCartPage = () => {
 
   if (!cartItems) {
     return (
-      <MainPageContainer heading={pageHeading}>
+      <MainPageContainer heading={pageHeading} variant="large">
         <SkeletonCartPage />
       </MainPageContainer>
     );
@@ -101,7 +103,7 @@ const ShoppingCartPage = () => {
   };
 
   return (
-    <MainPageContainer heading={pageHeading}>
+    <MainPageContainer heading={pageHeading} variant="large">
       <div className="order-flow">
         <section>
           <ErrorBoundary
@@ -143,7 +145,9 @@ const ShoppingCartPage = () => {
                   />
                 )}
                 <div className="fixed-bottom-container">
-                  <TotalPrice price={apiCartList.summary.totalPrice} />
+                  {isMobileSize && (
+                    <TotalPrice price={apiCartList.summary.totalPrice} />
+                  )}
                   <Button
                     onClick={goToCheckoutPage}
                     className="shopping-cart-btn"
