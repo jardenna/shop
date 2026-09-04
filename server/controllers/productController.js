@@ -502,7 +502,7 @@ const getProductById = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id)
     .populate({
       path: 'subCategory',
-      select: 'categoryStatus',
+      select: 'categoryStatus allowedSizes',
       populate: {
         path: 'category',
         model: 'Category',

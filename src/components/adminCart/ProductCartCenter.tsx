@@ -5,11 +5,13 @@ import type {
 } from '../../app/api/apiTypes/sharedApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
 import ColorList from '../../features/shop/components/productLists/ColorList';
+import ProductListItem from '../../features/shop/components/productLists/ProductListItem';
 import SizeList from '../../features/shop/components/productLists/SizeList';
 import LabelValueGrid from '../labelValueGrid/LabelValueGrid';
 import CartContent from './CartContent';
 
 type ProductCartCenterProps = {
+  allowedSizes: Size[];
   availableSizeList: Size[];
   brand: string;
   categoryName: MainCategoryNames;
@@ -17,6 +19,7 @@ type ProductCartCenterProps = {
   countInStock: number;
   discount: number;
   material: string;
+  sizes: Size[];
   subCategoryName: SubCategoryNames;
   onReset: () => void;
 };
@@ -31,6 +34,8 @@ const ProductCartCenter = ({
   countInStock,
   categoryName,
   subCategoryName,
+  sizes,
+  allowedSizes,
 }: ProductCartCenterProps) => {
   const { language } = useLanguage();
 
@@ -53,6 +58,21 @@ const ProductCartCenter = ({
           id: 'view-product-colors',
         }}
       />
+
+      <div className="form-label-container">
+        <span className="title" id="view-product-sizes">
+          {language.sizes}
+        </span>
+      </div>
+      <ul className="product-list size-list size-list">
+        {allowedSizes.map((size) => (
+          <ProductListItem
+            key={size}
+            text={size}
+            unavailable={!sizes.includes(size)}
+          />
+        ))}
+      </ul>
       <SizeList
         availableSizeList={availableSizeList}
         categoryName={categoryName}
