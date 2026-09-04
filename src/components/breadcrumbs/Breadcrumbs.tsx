@@ -5,14 +5,14 @@ import { isAdminPath } from '../../utils/utils';
 import './_breadcrumbs.scss';
 import BreadcrumbItem from './BreadcrumbItem';
 
-export interface breadcrumbsListProps {
+export interface BreadcrumbsListProps {
   path: string;
 }
 
 interface BreadcrumbsProps {
   currentLabel?: string;
   productName?: string;
-  routeList?: breadcrumbsListProps[];
+  routeList?: BreadcrumbsListProps[];
   subMenu?: { categoryId: string; label: string }[];
 }
 

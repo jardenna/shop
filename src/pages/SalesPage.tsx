@@ -2,7 +2,7 @@ import { useId } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import Breadcrumbs, {
-  breadcrumbsListProps,
+  BreadcrumbsListProps,
 } from '../components/breadcrumbs/Breadcrumbs';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import NotFoundError from '../components/NotFoundError';
@@ -60,7 +60,7 @@ const Salespage = () => {
     ? products.filter((product) => product.categoryId === params.categoryId)
     : products;
 
-  const saleBreadcrumbsList: breadcrumbsListProps[] = [
+  const saleBreadcrumbsList: BreadcrumbsListProps[] = [
     { path: ShopPath.SaleCategory },
   ];
 
