@@ -502,6 +502,7 @@ const getProductById = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id)
     .populate({
       path: 'subCategory',
+      select: 'categoryStatus',
       populate: {
         path: 'category',
         model: 'Category',
@@ -522,6 +523,7 @@ const getProductById = asyncHandler(async (req, res) => {
   product.subCategoryName = product.subCategory?.subCategoryName || '';
   product.categoryName = product.subCategory?.category?.categoryName || '';
   product.discountedPrice = Math.round(discountedPrice);
+  product.allowedSizes = product.subCategory?.allowedSizes || [];
 
   res.status(200).json(formatMongoData(product));
 });
