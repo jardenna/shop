@@ -55,10 +55,19 @@ const Breadcrumbs = ({
       return language[lastSegment];
     }
 
+    const selectedCategory = subMenu?.find(
+      ({ categoryId }) => categoryId === lastSegment,
+    );
+
+    const categoryLabel = selectedCategory
+      ? language[selectedCategory.label]
+      : undefined;
+
     const matchedRoute = routeList?.find((route) => {
       if (!route.path) {
         return false;
       }
+
       const routeParts = split(route.path);
       return (
         routeParts.length === parts.length &&
@@ -72,9 +81,16 @@ const Breadcrumbs = ({
       }
 
       if (matchedRoute.path.includes(':categoryId') && categoryId && subMenu) {
-        const found = subMenu.find((m) => m.categoryId === categoryId);
+        if (categoryLabel) {
+          return categoryLabel;
+        }
+
+        const found = subMenu.find(
+          (menuItem) => menuItem.categoryId === categoryId,
+        );
+
         if (found) {
-          return found.label;
+          return language[found.label] ?? found.label;
         }
       }
 
