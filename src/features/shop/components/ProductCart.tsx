@@ -83,7 +83,11 @@ const ProductCart = ({
             {productView === 'list' ? (
               <ProductCartListContent product={product as BaseShopProduct} />
             ) : (
-              <ProductCartGridContent product={product} />
+              <ProductCartGridContent
+                discount={product.discount}
+                price={product.price}
+                colors={product.colors}
+              />
             )}
           </div>
         </Link>
