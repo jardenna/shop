@@ -6,3 +6,7 @@ export const collectionBreadcrumbsList: BreadcrumbsListProps[] = [
   { path: ShopPath.CollectionCategoryId },
   { path: ShopPath.CollectionSingleProduct },
 ];
+
+export const saleBreadcrumbsList: BreadcrumbsListProps[] = [
+  { path: ShopPath.SaleCategory },
+];

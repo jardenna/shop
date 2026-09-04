@@ -1,9 +1,7 @@
 import { useId } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
-import Breadcrumbs, {
-  BreadcrumbsListProps,
-} from '../components/breadcrumbs/Breadcrumbs';
+import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import NotFoundError from '../components/NotFoundError';
 import Picture from '../components/Picture';
@@ -17,6 +15,7 @@ import { useGetSaleProductsQuery } from '../features/shop/shopApiSlice';
 import MetaTags from '../layout/MetaTags';
 import { ShopPath } from '../layout/nav/enums';
 import MainPageContainer from './pageContainer/MainPageContainer';
+import { saleBreadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 
 const Salespage = () => {
   const ariaLabelledby = useId();
@@ -59,10 +58,6 @@ const Salespage = () => {
   const selectedProducts = params.categoryId
     ? products.filter((product) => product.categoryId === params.categoryId)
     : products;
-
-  const saleBreadcrumbsList: BreadcrumbsListProps[] = [
-    { path: ShopPath.SaleCategory },
-  ];
 
   const selectedCategory = subMenu.find(
     ({ categoryId }) => categoryId === params.categoryId,
