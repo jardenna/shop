@@ -53,7 +53,7 @@ router
 router
   .route('/:id')
   .delete(languageMiddleware, authenticate, authorizeAdmin, deleteUserById)
-  .get(languageMiddleware, authenticate, authorizeAdmin, getUserById)
-  .put(languageMiddleware, authenticate, authorizeAdmin, updateUserById);
+  .get(languageMiddleware, authenticate, getUserById)
+  .put(languageMiddleware, authenticate, updateUserById);
 
 export default router;
