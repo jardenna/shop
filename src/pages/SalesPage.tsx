@@ -48,7 +48,7 @@ const Salespage = () => {
 
   if (isError) {
     return (
-      <MainPageContainer heading="collection">
+      <MainPageContainer heading={language.sale}>
         <NotFoundError error={error} />
       </MainPageContainer>
     );
@@ -76,15 +76,14 @@ const Salespage = () => {
   );
 
   const categoryLabel = selectedCategory?.label ?? 'all';
+  const pageHeading = `${language.sale} ${language[categoryLabel]}`;
 
   const src = `/images/banners/sale_${categoryLabel}_banner`;
   const altText = `${categoryLabel}SalesBannerAltText`;
 
   return (
     <>
-      {params.category && (
-        <MetaTags metaTitle={`${language.sale} ${language[categoryLabel]}`} />
-      )}
+      {params.category && <MetaTags metaTitle={pageHeading} />}
 
       <section className="container collection-page">
         <Breadcrumbs routeList={saleBreadcrumbsList} subMenu={subMenu} />
@@ -94,7 +93,7 @@ const Salespage = () => {
             <ProductAside
               ariaLabelledby={ariaLabelledby}
               subMenu={filteredSubMenu ?? []}
-              headerText={`${language.sale} ${language[categoryLabel]}`}
+              headerText={pageHeading}
               onReset={() => {
                 refetchSubMenu();
               }}
