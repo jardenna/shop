@@ -32,8 +32,8 @@ import { OptionType } from '../types/types';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { productViewIconList } from '../utils/productViewIconList';
 import { sortSizesDynamic } from '../utils/sizeUtils';
-import './collectionPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
+import './shopProductPage.styles.scss';
 
 export type FilterKeys = keyof BaseShopProductsParams;
 
