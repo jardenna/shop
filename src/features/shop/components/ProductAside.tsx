@@ -1,6 +1,6 @@
 import LayoutElement from '../../../layout/LayoutElement';
 import CollectionNav, { CollectionNavProps } from './CollectionNav';
-import CollectionPageHeader from './CollectionPageHeader';
+import ProductAsideHeader from './ProductAsideHeader';
 import './productAside.styles.scss';
 
 interface ProductAsideProps extends CollectionNavProps {
@@ -20,11 +20,11 @@ const ProductAside = ({
   getProductLink,
 }: ProductAsideProps) => (
   <div>
-    <CollectionPageHeader
+    <ProductAsideHeader
       headerText={headerText}
       ariaLabelledby={ariaLabelledby}
     />
-    <section className="collection-aside">
+    <section className="product-aside">
       <LayoutElement as="nav" ariaLabel={language.categoryNavigation}>
         <CollectionNav
           subMenu={subMenu}
