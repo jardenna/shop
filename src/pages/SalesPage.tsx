@@ -110,11 +110,13 @@ const Salespage = () => {
                 priority
                 className="collection-banner"
               />
-              <DisplayControls
-                onSetDisplay={setProductView}
-                displayControlList={productViewIconList}
-                activeDisplay={productView}
-              />
+              <div className="product-toolbar">
+                <DisplayControls
+                  onSetDisplay={setProductView}
+                  displayControlList={productViewIconList}
+                  activeDisplay={productView}
+                />
+              </div>
               <ProductCartList
                 products={selectedProducts}
                 showSizeOverlay
